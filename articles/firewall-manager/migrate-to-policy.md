@@ -1,6 +1,6 @@
 ---
-title: Migrace konfigurací Azure Firewall do zásad Azure Firewall (Preview) pomocí PowerShellu
-description: Přečtěte si, jak migrovat konfigurace Azure Firewall na zásady Azure Firewall (Preview).
+title: Migrace konfigurací Azure Firewall do zásad Azure Firewall (preview) pomocí PowerShellu
+description: Přečtěte si, jak migrovat konfigurace Azure Firewall do zásad Azure Firewall (preview)
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
@@ -8,27 +8,27 @@ ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: victorh
 ms.openlocfilehash: 498863c98f308a9fd9b47f80328d572187475901
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77443104"
 ---
-# <a name="migrate-azure-firewall-configurations-to-azure-firewall-policy-preview-using-powershell"></a>Migrace konfigurací Azure Firewall do zásad Azure Firewall (Preview) pomocí PowerShellu
+# <a name="migrate-azure-firewall-configurations-to-azure-firewall-policy-preview-using-powershell"></a>Migrace konfigurací Azure Firewall do zásad Azure Firewall (preview) pomocí Powershellu
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-Skript Azure PowerShell můžete použít k migraci stávajících Azure Firewall konfigurací do prostředku zásad Azure Firewall. Pak můžete zásadu nasadit pomocí nástroje Azure Firewall Manager.
+Skript Azure PowerShellu můžete použít k migraci existujících konfigurací Azure Firewall do prostředku zásad Azure Firewall. Potom můžete použít Správce azure firewall k nasazení zásady.
 
-Skript `AZFWMigrationScript.ps1` vytvoří FirewallPolicy se třemi RuleCollectionGroup objekty pro ApplicationRuleCollections, NetworkRuleCollections a NatRuleCollections. 
+Skript `AZFWMigrationScript.ps1` vytvoří firewallPolicy se třemi objekty RuleCollectionGroup pro ApplicationRuleCollections, NetworkRuleCollections a NatRuleCollections. 
 
-RuleCollectionGroup je nové seskupení na nejvyšší úrovni pro kolekce pravidel pro budoucí rozšíření. Používání výše uvedených výchozích hodnot se doporučuje a provádí se automaticky z portálu.
+A RuleCollectionGroup je nové seskupení nejvyšší úrovně pro kolekce pravidel pro budoucí rozšiřitelnost. Použití výše uvedených výchozích hodnot se doporučuje a provádí se automaticky z portálu.
 
 Začátek skriptu definuje název zdrojové brány firewall a skupinu prostředků a název a umístění cílové zásady. Změňte tyto hodnoty podle potřeby pro vaši organizaci.
 
-## <a name="migration-script"></a>Skript migrace
+## <a name="migration-script"></a>Skript pro migraci
 
-Úpravou následujícího skriptu proveďte migraci konfigurace brány firewall.
+Chcete-li migrovat konfiguraci brány firewall, upravte následující skript.
 
 ```azurepowershell
 #Input params to be modified as needed
@@ -161,4 +161,4 @@ If ($azfw.NatRuleCollections.Count -gt 0) {
 ```
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o nasazení Azure Firewall Manageru: [Přehled nasazení Preview Azure firewall Manageru](deployment-overview.md)
+Další informace o nasazení Správce azure firewall: [Přehled nasazení Azure Firewall Manager Preview](deployment-overview.md).

@@ -1,7 +1,7 @@
 ---
 title: Podnikové zabezpečení
 titleSuffix: Azure Machine Learning
-description: 'Bezpečně používejte Azure Machine Learning: ověřování, autorizace, zabezpečení sítě, šifrování dat a monitorování.'
+description: 'Azure Machine Learning můžete bezpečně používat: ověřování, autorizace, zabezpečení sítě, šifrování dat a monitorování.'
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,260 +10,257 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/09/2020
-ms.openlocfilehash: b37b386273947f8c39fe182e4f29b7b080addf7b
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: d945540a769f01c33ca3d3e467fe7c983fb5e286
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605621"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80287352"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Podnikové zabezpečení pro Azure Machine Learning
 
-V tomto článku se dozvíte o funkcích zabezpečení dostupných pro Azure Machine Learning.
+V tomto článku se dozvíte o funkcích zabezpečení, které jsou k dispozici pro Azure Machine Learning.
 
-Když použijete cloudovou službu, osvědčeným postupem je omezit přístup jenom na uživatele, kteří ho potřebují. Začněte tím, že rozumíte modelu ověřování a autorizace používaném službou. Můžete taky chtít omezit přístup k síti nebo bezpečně připojit prostředky v místní síti ke cloudu. Šifrování dat je také důležité v klidovém režimu i při přesunu dat mezi službami. Nakonec musíte být schopni sledovat službu a vystavit protokol auditu pro všechny aktivity.
+Při použití cloudové služby je osvědčeným postupem omezit přístup pouze na uživatele, kteří ji potřebují. Začněte pochopením modelu ověřování a autorizace používaného službou. Můžete také omezit přístup k síti nebo bezpečně připojit prostředky v místní síti s cloudem. Šifrování dat je také důležité, a to jak v klidovém stavu, tak při pohybu dat mezi službami. Nakonec musíte být schopni sledovat službu a vytvořit protokol auditu všech aktivit.
 
 > [!NOTE]
-> Informace v tomto článku jsou v sadě Azure Machine Learning Python SDK verze 1.0.83.1 nebo vyšší.
+> Informace v tomto článku funguje s Azure Machine Learning Python SDK verze 1.0.83.1 nebo vyšší.
 
 ## <a name="authentication"></a>Ověřování
 
-Služba Multi-Factor Authentication je podporovaná, pokud je služba Azure Active Directory (Azure AD) nakonfigurovaná tak, aby ji používala. Toto je proces ověřování:
+Vícefaktorové ověřování je podporované, pokud je azure active directory (Azure AD) nakonfigurovaný na jeho použití. Zde je proces ověřování:
 
-1. Klient se přihlásí do služby Azure AD a získá token Azure Resource Manager.  Uživatelé a instanční objekty jsou plně podporované.
-1. Klient prezentuje token pro Azure Resource Manager a všem Azure Machine Learning.
-1. Služba Machine Learning poskytuje Machine Learning token služby pro výpočetní cíl pro uživatele (například Výpočetní prostředky služby Machine Learning). Tento token používá cílový výpočetní cíl pro zpětné volání do služby Machine Learning po dokončení spuštění. Rozsah je omezen na pracovní prostor.
+1. Klient se přihlásí ke službě Azure AD a získá token Azure Resource Manager.  Uživatelé a instanční objekty jsou plně podporovány.
+1. Klient představuje token pro Azure Resource Manager a pro všechny Azure Machine Learning.
+1. Služba Machine Learning poskytuje token služby Machine Learning pro cíl výpočetního výkonu uživatele (například Machine Learning Compute). Tento token používá cíl výpočetního výkonu uživatele k volání zpět do služby Machine Learning po dokončení spuštění. Obor je omezen na pracovní prostor.
 
-[Ověřování ![v Azure Machine Learning](media/concept-enterprise-security/authentication.png)](media/concept-enterprise-security/authentication-expanded.png#lightbox)
+[![Ověřování v Azure Machine Learning](media/concept-enterprise-security/authentication.png)](media/concept-enterprise-security/authentication-expanded.png#lightbox)
 
-Další informace najdete v tématu [nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy](how-to-setup-authentication.md). Tento článek obsahuje informace a příklady ověřování, včetně použití instančních objektů a automatizovaných pracovních postupů.
+Další informace najdete v tématu [Nastavení ověřování pro prostředky a pracovní postupy Azure Machine Learning](how-to-setup-authentication.md). Tento článek obsahuje informace a příklady ověřování, včetně použití instančních objektů a automatizovaných pracovních postupů.
 
 ### <a name="authentication-for-web-service-deployment"></a>Ověřování pro nasazení webové služby
 
-Azure Machine Learning podporuje dvě formy ověřování pro webové služby: klíč a token. Každá webová služba může současně povolit jenom jednu formu ověřování.
+Azure Machine Learning podporuje dvě formy ověřování pro webové služby: klíč a token. Každá webová služba může povolit pouze jednu formu ověřování najednou.
 
 |Metoda ověřování|Popis|Azure Container Instances|AKS|
 |---|---|---|---|
-|Klíč|Klíče jsou statické a není nutné je aktualizovat. Klíče je možné znovu vygenerovat ručně.|Zakázáno ve výchozím nastavení| Ve výchozím nastavení povolena|
-|Podpisový|Po zadaném časovém období vyprší platnost tokenů a je nutné ji aktualizovat.| Není k dispozici.| Zakázáno ve výchozím nastavení |
+|Klíč|Klíče jsou statické a není nutné je aktualizovat. Klíče lze obnovit ručně.|Ve výchozím nastavení zakázáno| Ve výchozím nastavení povolená|
+|Podpisový|Platnost tokenů vyprší po uplynutí zadaného časového období a je třeba je aktualizovat.| Není k dispozici.| Ve výchozím nastavení zakázáno |
 
 Příklady kódu naleznete v [části ověřování webové služby](how-to-setup-authentication.md#web-service-authentication).
 
 ## <a name="authorization"></a>Autorizace
 
-Můžete vytvořit víc pracovních prostorů a každý pracovní prostor může být sdílen více lidí. Když sdílíte pracovní prostor, můžete k němu řídit přístup přiřazením těchto rolí uživatelům:
+Můžete vytvořit více pracovních prostorů a každý pracovní prostor může sdílet více osob. Když sdílíte pracovní prostor, můžete k němu řídit přístup přiřazením těchto rolí uživatelům:
 
 * Vlastník
 * Přispěvatel
 * Čtenář
 
-V následující tabulce jsou uvedené některé hlavní operace Azure Machine Learning a role, které je můžou provádět:
+V následující tabulce jsou uvedeny některé hlavní operace Azure Machine Learning a role, které je můžou provádět:
 
 | Operace Azure Machine Learning | Vlastník | Přispěvatel | Čtenář |
 | ---- |:----:|:----:|:----:|
 | Vytvoření pracovního prostoru | ✓ | ✓ | |
-| Sdílet pracovní prostor | ✓ | |  |
-| Upgrade pracovního prostoru na Enterprise Edition | ✓ | |
-| Vytvořit cíl výpočtů | ✓ | ✓ | |
-| Připojit cíl výpočtů | ✓ | ✓ | |
+| Sdílení pracovního prostoru | ✓ | |  |
+| Upgrade pracovního prostoru na edici Enterprise | ✓ | |
+| Vytvořit výpočetní cíl | ✓ | ✓ | |
+| Připojit výpočetní cíl | ✓ | ✓ | |
 | Připojení úložišť dat | ✓ | ✓ | |
-| Spusťte experiment | ✓ | ✓ | |
-| Zobrazit běhy/metriky | ✓ | ✓ | ✓ |
+| Spustit experiment | ✓ | ✓ | |
+| Zobrazení sběhů/metrik | ✓ | ✓ | ✓ |
 | Registrace modelu | ✓ | ✓ | |
-| Vytvořit bitovou kopii | ✓ | ✓ | |
+| Vytvořit obrázek | ✓ | ✓ | |
 | Nasazení webové služby | ✓ | ✓ | |
-| Zobrazení modelů a imagí | ✓ | ✓ | ✓ |
-| Volání webové služby | ✓ | ✓ | ✓ |
+| Zobrazit modely/obrázky | ✓ | ✓ | ✓ |
+| Zavolat na webovou službu | ✓ | ✓ | ✓ |
 
-Pokud předdefinované role nevyhovují vašim potřebám, můžete vytvořit vlastní role. Vlastní role se podporují jenom pro operace v pracovním prostoru a Výpočetní prostředky služby Machine Learning. Vlastní role mohou mít oprávnění číst, zapisovat nebo odstranit v pracovním prostoru a výpočetní prostředky v daném pracovním prostoru. Role může být dostupná na konkrétní úrovni pracovního prostoru, na konkrétní úrovni skupiny prostředků nebo na konkrétní úrovni předplatného. Další informace najdete v tématu [Správa uživatelů a rolí v pracovním prostoru Azure Machine Learning](how-to-assign-roles.md).
+Pokud předdefinované role neodpovídají vašim potřebám, můžete vytvořit vlastní role. Vlastní role jsou podporovány pouze pro operace v pracovním prostoru a výpočetních strojových učení. Vlastní role mohou mít oprávnění ke čtení, zápisu nebo odstranění v pracovním prostoru a na výpočetní prostředek v tomto pracovním prostoru. Roli můžete zpřístupnit na určité úrovni pracovního prostoru, na úrovni konkrétní skupiny prostředků nebo na konkrétní úrovni předplatného. Další informace najdete [v tématu Správa uživatelů a rolí v pracovním prostoru Azure Machine Learning](how-to-assign-roles.md).
 
 > [!WARNING]
-> Azure Machine Learning se v současné době Azure Active Directory spolupráci mezi společnostmi nepodporují.
+> Azure Machine Learning není momentálně podporovaný díky spolupráci mezi podniky azure active directory.
 
 ### <a name="securing-compute-targets-and-data"></a>Zabezpečení výpočetních cílů a dat
 
 Vlastníci a přispěvatelé můžou používat všechny výpočetní cíle a úložiště dat, která jsou připojená k pracovnímu prostoru.  
 
-Každý pracovní prostor má také přidruženou spravovanou identitu přiřazenou systémem, která má stejný název jako pracovní prostor. Spravovaná identita má následující oprávnění k připojeným prostředkům použitým v pracovním prostoru.
+Každý pracovní prostor má také přidruženou spravovanou identitu přiřazenou systémem, která má stejný název jako pracovní prostor. Spravovaná identita má následující oprávnění pro připojené prostředky používané v pracovním prostoru.
 
-Další informace o spravovaných identitách najdete v tématu [spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+Další informace o spravovaných identitách najdete [v tématu Spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
 | Prostředek | Oprávnění |
 | ----- | ----- |
 | Pracovní prostor | Přispěvatel |
-| Účet úložiště | Přispěvatel dat objektu BLOB služby Storage |
-| Trezor klíčů | Přístup ke všem klíčům, tajným klíčům, certifikátům |
+| Účet úložiště | Přispěvatel dat objektu blob úložiště |
+| Trezor klíčů | Přístup ke všem klíčům, tajným kódům, certifikátům |
 | Azure Container Registry | Přispěvatel |
-| Skupina prostředků, která obsahuje pracovní prostor | Přispěvatel |
-| Skupina prostředků, která obsahuje Trezor klíčů (Pokud se liší od tu, která obsahuje pracovní prostor) | Přispěvatel |
+| Skupina prostředků obsahující pracovní prostor | Přispěvatel |
+| Skupina prostředků, která obsahuje trezor klíčů (pokud se liší od té, která obsahuje pracovní prostor) | Přispěvatel |
 
-Nedoporučujeme, aby správci odvolali přístup ke spravované identitě k prostředkům uvedeným v předchozí tabulce. Přístup můžete obnovit pomocí operace opětovné synchronizace klíčů.
+Nedoporučujeme, aby správci odvolali přístup spravované identity k prostředkům uvedeným v předchozí tabulce. Přístup můžete obnovit pomocí operace resync klíčů.
 
-Azure Machine Learning vytvoří další aplikaci (název začíná na `aml-` nebo `Microsoft-AzureML-Support-App-`) s přístupem na úrovni přispěvatele ve vašem předplatném pro každou oblast pracovního prostoru. Například pokud máte jeden pracovní prostor v Východní USA a druhý v Severní Evropa ve stejném předplatném, uvidíte dvě z těchto aplikací. Tyto aplikace umožňují Azure Machine Learning, které vám pomůžou se správou výpočetních prostředků.
+Azure Machine Learning vytvoří další aplikaci `aml-` `Microsoft-AzureML-Support-App-`(název začíná nebo ) s přístupem na úrovni přispěvatele ve vašem předplatném pro každou oblast pracovního prostoru. Například pokud máte jeden pracovní prostor ve východním USA a jeden v severní Evropě ve stejném předplatném, uvidíte dvě z těchto aplikací. Tyto aplikace umožňují Azure Machine Learning, který vám pomůže spravovat výpočetní prostředky.
 
 ## <a name="network-security"></a>Zabezpečení sítě
 
-Azure Machine Learning spoléhá na další služby Azure pro výpočetní prostředky. Výpočetní prostředky (cíle výpočtů) se používají ke školení a nasazení modelů. Tyto výpočetní cíle můžete vytvořit ve virtuální síti. Můžete například použít Azure Data Science Virtual Machine k vytvoření výukového modelu a nasazení modelu do AKS.  
+Azure Machine Learning závisí na jiných službách Azure pro výpočetní prostředky. Výpočetní prostředky (výpočetní cíle) se používají k trénování a nasazování modelů. Tyto výpočetní cíle můžete vytvořit ve virtuální síti. Virtuální počítač Azure Data Science můžete například použít k trénování modelu a následném nasazení modelu do AKS.  
 
-Další informace najdete v tématu [Jak spustit experimenty a odvozování ve virtuální síti](how-to-enable-virtual-network.md).
+Další informace najdete v tématu [Jak spustit experimenty a odvození ve virtuální síti](how-to-enable-virtual-network.md).
 
 ## <a name="data-encryption"></a>Šifrování dat
 
 ### <a name="encryption-at-rest"></a>Šifrování v klidovém stavu
 
 > [!IMPORTANT]
-> Pokud váš pracovní prostor obsahuje citlivá data, doporučujeme při vytváření pracovního prostoru nastavit [příznak hbi_workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) . Tím se řídí množství dat, která Microsoft shromažďuje pro účely diagnostiky, a umožňuje další šifrování ve spravovaných prostředích Microsoftu.
+> Pokud pracovní prostor obsahuje citlivá data, doporučujeme nastavit [příznak hbi_workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) při vytváření pracovního prostoru. To řídí množství dat, která společnost Microsoft shromažďuje pro diagnostické účely, a umožňuje další šifrování v prostředích spravovaných společností Microsoft.
 
-Další informace o tom, jak šifrování v klidovém umístění funguje v Azure, najdete v tématu [šifrování dat Azure v klidovém umístění](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest).
+Další informace o tom, jak šifrování v klidovém stavu funguje, najdete v [tématu šifrování dat Azure v klidovém stavu](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest).
 
 #### <a name="azure-blob-storage"></a>Azure Blob Storage
 
-Azure Machine Learning ukládá snímky, výstup a protokoly v účtu služby Azure Blob Storage, který je svázán s pracovním prostorem Azure Machine Learning a vaším předplatným. Všechna data uložená v úložišti objektů BLOB v Azure jsou v klidovém stavu šifrovaná pomocí klíčů spravovaných Microsoftem.
+Azure Machine Learning ukládá snímky, výstup y a protokoly v účtu úložiště objektů blob Azure, který je vázaný na pracovní prostor Azure Machine Learning a vaše předplatné. Všechna data uložená v úložišti objektů Blob Azure se šifrují v klidovém stavu pomocí klíčů spravovaných Microsoftem.
 
-Informace o tom, jak používat vlastní klíče pro data uložená v úložišti objektů BLOB v Azure, najdete [v tématu Azure Storage šifrování pomocí klíčů spravovaných zákazníkem v Azure Key Vault](../storage/common/storage-encryption-keys-portal.md).
+Informace o tom, jak používat vlastní klíče pro data uložená v úložišti objektů Blob Azure, najdete v [tématu šifrování azure storage s klíči spravovanými zákazníky v Azure Key Vault](../storage/common/storage-encryption-keys-portal.md).
 
-Data školení se většinou ukládají také v úložišti objektů BLOB v Azure, aby byla dostupná pro školení výpočetních cílů. Toto úložiště není spravované nástrojem Azure Machine Learning, ale je připojené k výpočetním cílům jako vzdálený systém souborů.
+Trénovací data se obvykle taky ukládají v úložišti objektů blob Azure, takže jsou přístupná trénovacím výpočetním cílům. Toto úložiště není spravované Azure Machine Learning, ale připojené k výpočetním cílům jako vzdálený souborový systém.
 
-Informace o opětovném generování přístupových klíčů najdete v tématu [opětovné vygenerování přístupových klíčů k úložišti](how-to-change-storage-access-key.md).
+Informace o obnovení přístupových klíčů naleznete v tématu [Regenerate storage access keys](how-to-change-storage-access-key.md).
 
-#### <a name="azure-cosmos-db"></a>Databáze Azure Cosmos
+#### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-Azure Machine Learning ukládá metriky a metadata v instanci Azure Cosmos DB. Tato instance je přidružená k předplatnému Microsoftu spravovanému pomocí Azure Machine Learning. Všechna data uložená v Azure Cosmos DB jsou v klidovém stavu šifrovaná pomocí klíčů spravovaných Microsoftem.
+Azure Machine Learning ukládá metriky a metadata v instanci Azure Cosmos DB. Tato instance je přidružena k předplatnému Microsoftu spravovanému Azure Machine Learning. Všechna data uložená v Azure Cosmos DB se šifrují v klidovém stavu pomocí klíčů spravovaných microsoftem.
 
-Pokud chcete k šifrování instance Azure Cosmos DB použít vlastní klíče (spravované zákazníkem), můžete vytvořit vyhrazenou instanci Cosmos DB pro použití s vaším pracovním prostorem. Tento postup doporučujeme, pokud chcete ukládat data, jako jsou informace o historii spuštění, mimo instanci víceklientské Cosmos DB hostované v předplatném Microsoftu. 
+Chcete-li k šifrování instance Azure Cosmos DB použít vlastní klíče (spravované zákazníkem), můžete vytvořit vyhrazenou instanci Cosmos DB pro použití s pracovním prostorem. Tento přístup doporučujeme, pokud chcete ukládat data, jako jsou informace o historii spuštění, mimo víceklientské instance Cosmos DB hostované v našem předplatném Microsoftu. 
 
-> [!NOTE]
-> Tato funkce je aktuálně dostupná pouze v USA – východ, USA – západ 2 USA (střed) – jih.
+Chcete-li povolit zřizování instance Cosmos DB v předplatném pomocí klíčů spravovaných zákazníkem, proveďte následující akce:
 
-Pokud chcete ve svém předplatném povolit zřizování Cosmos DB instance pomocí klíčů spravovaných zákazníkem, proveďte následující akce:
+* Povolte klíčové funkce spravované zákazníkem pro Cosmos DB. V tomto okamžiku je nutné požádat o přístup k použití této funkce. Chcete-li tak [cosmosdbpm@microsoft.com](mailto:cosmosdbpm@microsoft.com)učinit, obraťte se na společnost .
 
-* Povolte klíčové funkce spravované zákazníkem pro Cosmos DB. V tuto chvíli musíte požádat o přístup k používání této možnosti. Pokud to chcete udělat, kontaktujte prosím [cosmosdbpm@microsoft.com](mailto:cosmosdbpm@microsoft.com).
+* Zaregistrujte zprostředkovatele prostředků Azure Machine Learning a Azure Cosmos DB ve svém předplatném, pokud to už není hotové.
 
-* Pokud jste to ještě neudělali, zaregistrujte Azure Machine Learning a poskytovatele prostředků Azure Cosmos DB v předplatném.
+* Autorizujte aplikaci Machine Learning (ve správě identit a přístupu) s oprávněními přispěvatele k vašemu předplatnému.
 
-* Autorizaci aplikace Machine Learning (v části Správa identit a přístupu) s oprávněními přispěvatele v předplatném.
+    ![Autorizace aplikace Azure Machine Learning App ve správě identit a přístupu na portálu](./media/concept-enterprise-security/authorize-azure-machine-learning.png)
 
-    ![Autorizovat Azure Machine Learning App na portálu pro správu identit a přístupu](./media/concept-enterprise-security/authorize-azure-machine-learning.png)
+* Při vytváření pracovního prostoru Azure Machine Learning použijte následující parametry. Oba parametry jsou povinné a podporované v šablonách Sady SDK, CLI, REST API a Resource Manager.
 
-* Při vytváření pracovního prostoru Azure Machine Learning použijte následující parametry. Oba parametry jsou povinné a podporují se v šablonách SDK, CLI, REST API a Správce prostředků.
+    * `resource_cmk_uri`: Tento parametr je úplný identifikátor URI prostředku klienta spravovaného klíče v trezoru klíčů, včetně [informací o verzi klíče](../key-vault/about-keys-secrets-and-certificates.md#objects-identifiers-and-versioning). 
 
-    * `resource_cmk_uri`: Tento parametr je úplným identifikátorem URI spravovaného klíče zákazníka ve vašem trezoru klíčů, včetně [informací o verzi klíče](../key-vault/about-keys-secrets-and-certificates.md#objects-identifiers-and-versioning). 
-
-    * `cmk_keyvault`: Tento parametr je ID prostředku pro Trezor klíčů v rámci vašeho předplatného. Tento Trezor klíčů musí být ve stejné oblasti a předplatném, které budete používat pro Azure Machine Learning pracovní prostor. 
+    * `cmk_keyvault`: Tento parametr je ID prostředku trezoru klíčů v předplatném. Tento trezor klíčů musí být ve stejné oblasti a předplatné, které budete používat pro pracovní prostor Azure Machine Learning. 
     
         > [!NOTE]
-        > Tato instance trezoru klíčů se může lišit od trezoru klíčů, který je vytvořený Azure Machine Learning při zřizování pracovního prostoru. Pokud chcete pro pracovní prostor použít stejnou instanci trezoru klíčů, předejte stejný Trezor klíčů při zřizování pracovního prostoru pomocí [parametru key_vault](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-). 
+        > Tato instance trezoru klíčů se může lišit od trezoru klíčů vytvořeného Azure Machine Learning při zřizování pracovního prostoru. Pokud chcete pro pracovní prostor použít stejnou instanci trezoru klíčů, předejte stejný trezor klíčů při zřizování pracovního prostoru pomocí [parametru key_vault](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-). 
 
-Tato instance Cosmos DB se vytvoří ve skupině prostředků spravovaných Microsoftem v rámci vašeho předplatného. 
+Tato instance Cosmos DB se vytvoří ve skupině prostředků spravované společností Microsoft ve vašem předplatném. 
 
 > [!IMPORTANT]
-> * Pokud potřebujete tuto instanci Cosmos DB odstranit, je nutné odstranit Azure Machine Learning pracovní prostor, který ji používá. 
-> * Výchozí [__jednotky žádostí__](../cosmos-db/request-units.md) pro tento účet Cosmos DB jsou nastavené na __8000__. Změna této hodnoty není podporována. 
+> * Pokud potřebujete odstranit tuto instanci Cosmos DB, musíte odstranit pracovní prostor Azure Machine Learning, který ji používá. 
+> * Výchozí [__jednotky požadavků__](../cosmos-db/request-units.md) pro tento účet Cosmos DB jsou nastaveny na __hodnotu 8000__. Změna této hodnoty není podporována. 
 
-Další informace o klíčích spravovaných zákazníkem pomocí Cosmos DB najdete v tématu [konfigurace klíčů spravovaných zákazníkem pro účet Azure Cosmos DB](../cosmos-db/how-to-setup-cmk.md).
+Další informace o klíčích spravovaných zákazníky pomocí služby Cosmos DB najdete v [tématu Konfigurace klíčů spravovaných zákazníky pro váš účet Azure Cosmos DB](../cosmos-db/how-to-setup-cmk.md).
 
 #### <a name="azure-container-registry"></a>Azure Container Registry
 
-Všechny Image kontejneru v registru (Azure Container Registry) jsou v klidovém stavu šifrované. Azure tento obrázek před uložením automaticky zašifruje a dešifruje, když Azure Machine Learning načte image.
+Všechny image kontejneru ve vašem registru (Azure Container Registry) jsou šifrované v klidovém stavu. Azure automaticky zašifruje image před uložením a dešifruje ji, když Azure Machine Learning vytáhne image.
 
-Pokud chcete své Azure Container Registry šifrovat pomocí vlastních klíčů (spravovaných zákazníkem), musíte si vytvořit vlastní ACR a připojit ho při zřizování pracovního prostoru nebo zašifrování výchozí instance, která se vytvoří v době zřizování pracovního prostoru.
+Chcete-li k šifrování registru kontejnerů Azure použít vlastní klíče (spravované zákazníkem), musíte vytvořit vlastní acr a připojit ho při zřizování pracovního prostoru nebo šifrovat výchozí instanci, která se vytvoří v době zřizování pracovního prostoru.
 
-Příklad vytvoření pracovního prostoru pomocí existující Azure Container Registry najdete v následujících článcích:
+Příklad vytvoření pracovního prostoru pomocí existujícího registru kontejnerů Azure najdete v následujících článcích:
 
 * [Vytvořte pracovní prostor pro Azure Machine Learning pomocí Azure CLI](how-to-manage-workspace-cli.md).
-* [Použití šablony Azure Resource Manager k vytvoření pracovního prostoru pro Azure Machine Learning](how-to-create-workspace-template.md)
+* [Vytvoření pracovního prostoru pro Azure Machine Learning pomocí šablony Azure Resource Manageru](how-to-create-workspace-template.md)
 
 #### <a name="azure-container-instance"></a>Instance kontejneru Azure
 
-Instance kontejneru Azure nepodporuje šifrování disku. Pokud potřebujete šifrování disku, doporučujeme místo toho [nasadit instanci služby Azure Kubernetes](how-to-deploy-azure-kubernetes-service.md) . V takovém případě můžete také použít podporu Azure Machine Learning pro řízení přístupu na základě rolí, abyste zabránili nasazením instance kontejneru Azure v rámci vašeho předplatného.
+Azure Container Instance nepodporuje šifrování disku. Pokud potřebujete šifrování disku, doporučujeme místo toho [nasadit na instanci služby Azure Kubernetes.](how-to-deploy-azure-kubernetes-service.md) V takovém případě můžete také chtít použít podporu Azure Machine Learning pro ovládací prvky přístupu založené na rolích, abyste zabránili nasazení instance kontejneru Azure ve vašem předplatném.
 
 #### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
-Nasazený prostředek služby Azure Kubernetes můžete šifrovat kdykoli pomocí klíčů spravovaných zákazníkem. Další informace najdete v tématu [Přineste si vlastní klíče ke službě Azure Kubernetes](../aks/azure-disk-customer-managed-keys.md). 
+Nasazený prostředek služby Azure Kubernetes můžete kdykoli zašifrovat pomocí klíčů spravovaných zákazníky. Další informace najdete [v tématu Bring your own keys with Azure Kubernetes Service](../aks/azure-disk-customer-managed-keys.md). 
 
-Tento proces umožňuje šifrovat data i disk s operačním systémem nasazených virtuálních počítačů v clusteru Kubernetes.
+Tento proces umožňuje šifrovat data i disk operačního systému nasazených virtuálních počítačů v clusteru Kubernetes.
 
 > [!IMPORTANT]
-> Tento proces funguje jenom s AKS K8s verze 1,17 nebo vyšší. Azure Machine Learning přidat podporu pro AKS 1,17 na 13. ledna 2020.
+> Tento proces funguje pouze s AKS K8s verze 1.17 nebo vyšší. Azure Machine Learning přidal podporu pro AKS 1.17 na 13 ledna 2020.
 
-#### <a name="machine-learning-compute"></a>Výpočetní prostředky služby Machine Learning
+#### <a name="machine-learning-compute"></a>Výpočetní výkon strojového učení
 
-Disk s operačním systémem pro každý výpočetní uzel, který je uložený v Azure Storage, je zašifrovaný pomocí klíčů spravovaných Microsoftem v Azure Machine Learning účty úložiště. Tento cílový výpočetní výkon je dočasný a clustery se obvykle škálují, když nejsou žádné běhy ve frontě. V podkladovém virtuálním počítači se zruší zřízení a disk s operačním systémem se odstraní. Pro disk s operačním systémem se Azure Disk Encryption nepodporuje.
+Disk operačního systému pro každý výpočetní uzel uložený ve službě Azure Storage je šifrovaný pomocí klíčů spravovaných Microsoftem v účtech úložiště Azure Machine Learning. Tento výpočetní cíl je dočasný a clustery jsou obvykle zmenšeny, když nejsou zařazeny do fronty žádné spuštění. Základní virtuální počítač je de-zřídit a disk operačního systému se odstraní. Azure Disk Encryption není pro disk operačního systému podporován.
 
-Každý virtuální počítač má také místní dočasný disk pro operace s operačním systémem. Pokud chcete, můžete použít disk pro přípravu školicích dat. Disk je ve výchozím nastavení zašifrovaný pro pracovní prostory s parametrem `hbi_workspace` nastaveným na hodnotu `TRUE`. Toto prostředí je krátkodobé jenom po dobu trvání běhu a podpora šifrování je omezená jenom na klíče spravované systémem.
+Každý virtuální počítač má také místní dočasný disk pro operace operačního systému. Pokud chcete, můžete použít disk k fázi trénovací data. Disk je ve výchozím nastavení zašifrován pro pracovní prostory s parametrem `hbi_workspace` nastaveným na `TRUE`. Toto prostředí je krátkodobé pouze po dobu trvání vašeho spuštění a podpora šifrování je omezena pouze na klíče spravované systémem.
 
 #### <a name="azure-databricks"></a>Azure Databricks
 
-Azure Databricks lze použít v kanálech Azure Machine Learning. Ve výchozím nastavení je systém souborů datacihly (DBFS) používaný Azure Databricks zašifrovaný pomocí klíče spravovaného společností Microsoft. Pokud chcete nakonfigurovat Azure Databricks pro použití klíčů spravovaných zákazníkem, přečtěte si téma [konfigurace klíčů spravovaných zákazníkem ve výchozím nastavení (root) DBFS](/azure/databricks/security/customer-managed-keys-dbfs).
+Azure Databricks se dá použít v kanálech Azure Machine Learning. Ve výchozím nastavení je systém souborů Databricks (DBFS) používaný společností Azure Databricks šifrován pomocí klíče spravovaného společností Microsoft. Pokud chcete nakonfigurovat Azure Databricks tak, aby používaly klíče spravované zákazníkem, přečtěte si informace [o konfiguraci klíčů spravovaných zákazníky ve výchozím (kořenovém) DBFS](/azure/databricks/security/customer-managed-keys-dbfs).
 
-### <a name="encryption-in-transit"></a>Šifrování při přenosu
+### <a name="encryption-in-transit"></a>Šifrování během přenosu
 
-Protokol SSL můžete použít k zabezpečení interní komunikace mezi Azure Machine Learning mikroslužby a k zabezpečení externích volání do bodového koncového bodu. K přístupu k Azure Storage dojde taky přes zabezpečený kanál.
+TLS můžete použít k zabezpečení interní komunikace mezi mikroslužbami Azure Machine Learning a k zabezpečení externích volání do koncového bodu vyhodnocování. Veškerý přístup k úložišti Azure storage se také vyskytuje přes zabezpečený kanál.
 
-Další informace najdete v tématu [použití protokolu SSL k zabezpečení webové služby prostřednictvím Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service).
+Další informace najdete [v tématu Použití TLS k zabezpečení webové služby prostřednictvím Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service).
 
-### <a name="using-azure-key-vault"></a>Použití Azure Key Vault
+### <a name="using-azure-key-vault"></a>Použití trezoru klíčů Azure
 
-Azure Machine Learning používá instanci Azure Key Vault přidruženou k pracovnímu prostoru k ukládání přihlašovacích údajů různých typů:
+Azure Machine Learning používá instanci Azure Key Vault přidruženou k pracovnímu prostoru k ukládání přihlašovacích údajů různých druhů:
 
 * Přidružený připojovací řetězec účtu úložiště
-* Hesla k instancím služby Azure Container úložiště
+* Hesla do instancí úložiště kontejnerů Azure
 * Připojovací řetězce k úložištím dat
 
-Hesla a klíče SSH k výpočetním cílům, jako je Azure HDInsight a virtuální počítače, jsou uložené v jiném trezoru klíčů, který je přidružený k předplatnému Microsoft. Azure Machine Learning neukládají žádná hesla ani klíče poskytované uživateli. Místo toho generuje, autorizuje a ukládá vlastní klíče SSH pro připojení k virtuálním počítačům a HDInsight pro spuštění experimentů.
+Hesla a klíče SSH pro výpočetní cíle, jako je Azure HDInsight a virtuální počítače, se ukládají v samostatném trezoru klíčů, který je přidružený k předplatnému Microsoftu. Azure Machine Learning neukládá žádná hesla ani klíče poskytované uživateli. Místo toho generuje, autorizuje a ukládá vlastní klíče SSH pro připojení k virtuálním zařízením a HDInsight ke spuštění experimentů.
 
 Každý pracovní prostor má přidruženou spravovanou identitu přiřazenou systémem, která má stejný název jako pracovní prostor. Tato spravovaná identita má přístup ke všem klíčům, tajným klíčům a certifikátům v trezoru klíčů.
 
 ## <a name="data-collection-and-handling"></a>Shromažďování a zpracování dat
 
-### <a name="microsoft-collected-data"></a>Shromážděná data společnosti Microsoft
+### <a name="microsoft-collected-data"></a>Společnost Microsoft shromáždila data
 
-Společnost Microsoft může shromažďovat neuživatelem identifikovatelné informace, jako jsou názvy prostředků (například název datové sady nebo název experimentu Machine Learning), nebo proměnné prostředí úloh pro účely diagnostiky. Všechna taková data se ukládají pomocí klíčů spravovaných Microsoftem v úložišti hostovaném v předplatných vlastněných společností Microsoft a [na základě standardních zásad ochrany osobních údajů společnosti Microsoft a standardů pro zpracování dat](https://privacy.microsoft.com/privacystatement).
+Společnost Microsoft může shromažďovat informace, které nejsou uživatelem, jako jsou názvy prostředků (například název datové sady nebo název experimentu strojového učení) nebo proměnné prostředí úloh y pro diagnostické účely. Všechna tato data jsou uložena pomocí klíčů spravovaných společností Microsoft v úložišti hostovaném v předplatných vlastněných společností Microsoft a řídí se [standardními zásadami ochrany osobních údajů a standardy zpracování dat společnosti Microsoft](https://privacy.microsoft.com/privacystatement).
 
-Microsoft také doporučuje do proměnných prostředí ukládat citlivé informace (třeba klíčová tajná klíče účtu). Proměnné prostředí jsou protokolovány, šifrovány a uloženy v USA. Podobně při pojmenování [RunId](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)se vyhněte zahrnutí citlivých informací, jako jsou uživatelská jména nebo tajné názvy projektů. Tyto informace se mohou zobrazit v protokolech telemetrie, které jsou přístupné pro podpora Microsoftu inženýry.
+Společnost Microsoft také doporučuje neukládat citlivé informace (například tajné klíče klíče účtu) v proměnných prostředí. Proměnné prostředí jsou protokolovány, šifrovány a ukládány námi. Podobně při pojmenování [runid](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py), vyhnout se zahrnutí citlivých informací, jako jsou uživatelská jména nebo tajné názvy projektů. Tyto informace se mohou zobrazit v protokolech telemetrie, které jsou přístupné technikům podpory společnosti Microsoft.
 
-Shromážděná diagnostická data můžete odhlásit tím, že nastavíte parametr `hbi_workspace`, který `TRUE` při zřizování pracovního prostoru. Tato funkce se podporuje při použití šablon aplikace AzureML Python SDK, CLI, REST API nebo Azure Resource Manager.
+Můžete odhlásit z diagnostických dat `hbi_workspace` shromažďovaných nastavením parametru při `TRUE` zřizování pracovního prostoru. Tato funkce je podporovaná při použití šablon AzureML Python SDK, CLI, REST API nebo Azure Resource Manager.
 
 ### <a name="microsoft-generated-data"></a>Data generovaná společností Microsoft
 
-Při používání služeb, jako jsou například automatizované Machine Learning, může společnost Microsoft vygenerovat přechodná a předem zpracovaná data pro školení více modelů. Tato data jsou uložená v úložišti dat ve vašem pracovním prostoru, což vám umožní patřičně vymáhat řízení přístupu a šifrování.
+Při použití služeb, jako je například automatizované strojové učení, může společnost Microsoft generovat přechodná, předem zpracovaná data pro školení více modelů. Tato data jsou uložena v úložišti dat ve vašem pracovním prostoru, což umožňuje vhodně vynutit ovládací prvky přístupu a šifrování.
 
-Můžete také chtít šifrovat [diagnostické informace zaznamenané z nasazeného koncového bodu](how-to-enable-app-insights.md) do instance služby Azure Application Insights.
+Můžete také chtít šifrovat [diagnostické informace zaznamenané z nasazeného koncového bodu](how-to-enable-app-insights.md) do instance Azure Application Insights.
 
 ## <a name="monitoring"></a>Monitorování
 
 ### <a name="metrics"></a>Metriky
 
-Metriky Azure Monitor můžete použít k zobrazení a monitorování metrik pro pracovní prostor Azure Machine Learning. V [Azure Portal](https://portal.azure.com)vyberte svůj pracovní prostor a pak vyberte **metriky**:
+Metriky Azure Monitoru můžete použít k zobrazení a monitorování metrik pro váš pracovní prostor Azure Machine Learning. Na [webu Azure Portal](https://portal.azure.com)vyberte pracovní prostor a pak vyberte **Metriky**:
 
-[![snímek obrazovky ukazující ukázkovou metriku pro pracovní prostor](media/concept-enterprise-security/workspace-metrics.png)](media/concept-enterprise-security/workspace-metrics-expanded.png#lightbox)
+[![Snímek obrazovky s ukázkovou metrikou pracovního prostoru](media/concept-enterprise-security/workspace-metrics.png)](media/concept-enterprise-security/workspace-metrics-expanded.png#lightbox)
 
-Metriky obsahují informace o spuštění, nasazení a registracích.
+Metriky zahrnují informace o spuštění, nasazení a registrace.
 
-Další informace najdete v tématu [metriky v Azure monitor](/azure/azure-monitor/platform/data-platform-metrics).
+Další informace najdete [v tématu Metriky v Azure Monitoru](/azure/azure-monitor/platform/data-platform-metrics).
 
 ### <a name="activity-log"></a>Protokol aktivit
 
-Můžete zobrazit protokol aktivit pracovního prostoru a zobrazit různé operace, které se provádějí v pracovním prostoru. Protokol obsahuje základní informace, jako je název operace, iniciátor události a časové razítko.
+Můžete zobrazit protokol aktivit pracovního prostoru a zobrazit různé operace, které jsou prováděny v pracovním prostoru. Protokol obsahuje základní informace, jako je název operace, iniciátor události a časové razítko.
 
-Na tomto snímku obrazovky vidíte protokol aktivity pracovního prostoru:
+Tento snímek obrazovky ukazuje protokol aktivit pracovního prostoru:
 
-[![snímek obrazovky ukazující protokol aktivity pracovního prostoru](media/concept-enterprise-security/workspace-activity-log.png)](media/concept-enterprise-security/workspace-activity-log-expanded.png#lightbox)
+[![Snímek obrazovky s protokolem aktivit pracovního prostoru](media/concept-enterprise-security/workspace-activity-log.png)](media/concept-enterprise-security/workspace-activity-log-expanded.png#lightbox)
 
-Podrobnosti žádosti o vyhodnocování jsou uložené v Application Insights. Při vytváření pracovního prostoru se ve vašem předplatném vytvoří Application Insights. Protokolované informace obsahují pole jako:
+Podrobnosti požadavku na vyhodnocování jsou uloženy v Application Insights. Application Insights se vytvoří ve vašem předplatném při vytváření pracovního prostoru. Protokolované informace zahrnují pole, jako jsou:
 
-* HTTPMethod
-* UserAgent
+* Metoda HTTP
+* Useragent
 * ComputeType
-* RequestUrl
-* StatusCode
-* Identifikátor
+* Adresa RequestUrl
+* Statuscode
+* Requestid
 * Doba trvání
 
 > [!IMPORTANT]
-> Některé akce v pracovním prostoru Azure Machine Learning neprotokolují informace do protokolu aktivit. Například spuštění školicího programu a registrace modelu se nezaprotokolují.
+> Některé akce v pracovním prostoru Azure Machine Learning nezaznamenávají informace do protokolu aktivit. Například spuštění školení a registrace modelu nejsou zaznamenány.
 >
-> Některé z těchto akcí se zobrazí v oblasti **aktivity** pracovního prostoru, ale tato oznámení nenaznačují, kdo aktivitu inicioval.
+> Některé z těchto akcí se zobrazí v oblasti **Aktivity** v pracovním prostoru, ale tato oznámení neoznačují, kdo aktivitu inicioval.
 
 ## <a name="data-flow-diagrams"></a>Diagramy toku dat
 
@@ -271,79 +268,79 @@ Podrobnosti žádosti o vyhodnocování jsou uložené v Application Insights. P
 
 Následující diagram znázorňuje pracovní postup vytvoření pracovního prostoru.
 
-* Přihlašujete se ke službě Azure AD z některého z podporovaných klientů Azure Machine Learning (Azure CLI, Python SDK, Azure Portal) a vyžádejte si příslušný Azure Resource Manager token.
-* Zavoláte Azure Resource Manager k vytvoření pracovního prostoru. 
+* K Azure AD se přihlásíte z jednoho z podporovaných klientů Azure Machine Learning (Azure CLI, Python SDK, portál Azure) a požádáte o příslušný token Azure Resource Manager.
+* Zavoláte Správce prostředků Azure k vytvoření pracovního prostoru. 
 * Azure Resource Manager kontaktuje poskytovatele prostředků Azure Machine Learning a zřídí pracovní prostor.
 
-V předplatném uživatele se vytvoří další prostředky během vytváření pracovního prostoru:
+Další prostředky jsou vytvořeny v předplatném uživatele během vytváření pracovního prostoru:
 
-* Key Vault (pro ukládání tajných klíčů)
-* Účet služby Azure Storage (včetně objektů BLOB a sdílených souborů)
-* Azure Container Registry (pro ukládání imagí Docker pro odvození/bodování a experimentování)
-* Application Insights (pro uložení telemetrie)
+* Trezor klíčů (pro uložení tajných klíčů)
+* Účet úložiště Azure (včetně objektu blob a sdílené složky)
+* Azure Container Registry (pro ukládání ibi Dockeru pro odvození/vyhodnocování a experimentování)
+* Application Insights (pro ukládání telemetrie)
 
-Uživatel může také zřídit jiné výpočetní cíle, které jsou připojeny k pracovnímu prostoru (například službě Azure Kubernetes nebo virtuálním počítačům) podle potřeby.
+Uživatel může také zřídit další výpočetní cíle, které jsou připojené k pracovnímu prostoru (jako je služba Azure Kubernetes service nebo virtuální počítače) podle potřeby.
 
-[pracovní postup vytvoření ![pracovního prostoru](media/concept-enterprise-security/create-workspace.png)](media/concept-enterprise-security/create-workspace-expanded.png#lightbox)
+[![Vytvoření pracovního postupu pracovního prostoru](media/concept-enterprise-security/create-workspace.png)](media/concept-enterprise-security/create-workspace-expanded.png#lightbox)
 
-### <a name="save-source-code-training-scripts"></a>Uložit zdrojový kód (školicí skripty)
+### <a name="save-source-code-training-scripts"></a>Uložení zdrojového kódu (školicí skripty)
 
-Následující diagram znázorňuje pracovní postup snímku kódu.
+Následující diagram znázorňuje pracovní postup snímek kódu.
 
-Přidruženo k pracovnímu prostoru Azure Machine Learning jsou adresáře (experimenty), které obsahují zdrojový kód (školicí skripty). Tyto skripty se ukládají na vašem místním počítači a v cloudu (ve službě Azure Blob Storage pro vaše předplatné). Snímky kódu se používají ke spuštění nebo kontrole historických auditů.
+Přidružené k pracovnímu prostoru Azure Machine Learning jsou adresáře (experimenty), které obsahují zdrojový kód (školicí skripty). Tyto skripty se ukládají ve vašem místním počítači a v cloudu (v úložišti objektů Blob Azure pro vaše předplatné). Snímky kódu se používají pro provádění nebo kontrolu pro historické auditování.
 
-[pracovní postup snímku kódu ![](media/concept-enterprise-security/code-snapshot.png)](media/concept-enterprise-security/code-snapshot-expanded.png#lightbox)
+[![Pracovní postup snímek kódu](media/concept-enterprise-security/code-snapshot.png)](media/concept-enterprise-security/code-snapshot-expanded.png#lightbox)
 
 ### <a name="training"></a>Školení
 
 Následující diagram znázorňuje pracovní postup školení.
 
-* Azure Machine Learning se volá s ID snímku pro snímek kódu uložený v předchozí části.
-* Azure Machine Learning vytvoří ID spuštění (volitelné) a token služby Machine Learning, který je později využíván výpočetními cíli, jako je Výpočetní prostředky služby Machine Learning/virtuální počítače ke komunikaci se službou Machine Learning.
-* Ke spuštění školicích úloh můžete vybrat buď spravovaný cíl služby COMPUTE (například Výpočetní prostředky služby Machine Learning), nebo nespravovaný cíl služby COMPUTE (například virtuální počítače). Zde jsou datové toky pro oba scénáře:
-   * Virtuální počítače/HDInsight, ke kterým mají přístup přihlašovací údaje SSH v trezoru klíčů v předplatném Microsoftu. Azure Machine Learning spouští kód pro správu na výpočetním cíli, který:
+* Azure Machine Learning se volá s ID snímku pro snímek kódu uložené v předchozí části.
+* Azure Machine Learning vytvoří run ID (volitelné) a token služby Machine Learning, který se později používá výpočetní cíle, jako je Machine Learning Compute/VMke komunikaci se službou Machine Learning.
+* Můžete si vybrat buď spravovaný výpočetní cíl (jako je Machine Learning Compute) nebo nespravovaný výpočetní cíl (jako virtuální počítače) pro spuštění trénovacích úloh. Tady jsou toky dat pro oba scénáře:
+   * Virtuální ms/HDInsight, přístup k pověření SSH v trezoru klíčů v předplatném Microsoftu. Azure Machine Learning spouští kód pro správu na výpočetním cíli, který:
 
-   1. Připraví prostředí. (Docker je možnost pro virtuální počítače a místní počítače. Pokud chcete zjistit, jak fungují experimenty na kontejnerech Docker, Projděte si následující postup Výpočetní prostředky služby Machine Learning.)
+   1. Připravuje životní prostředí. (Docker je možnost pro virtuální počítače a místní počítače. V následujících krocích pro Machine Learning Compute zjistěte, jak funguje spuštění experimentů na kontejnerech Dockeru.)
    1. Stáhne kód.
-   1. Nastaví proměnné prostředí a konfigurace.
+   1. Nastaví proměnné a konfigurace prostředí.
    1. Spustí uživatelské skripty (snímek kódu uvedený v předchozí části).
 
-   * K Výpočetní prostředky služby Machine Learning přistupované prostřednictvím identity spravované v pracovním prostoru.
-Vzhledem k tomu, že Výpočetní prostředky služby Machine Learning je spravovaný výpočetní cíl (to znamená, že ho spravuje Microsoft), běží pod vaším předplatným Microsoft.
+   * Machine Learning Compute, přístupná prostřednictvím identity spravované pracovním prostorem.
+Vzhledem k tomu, že Machine Learning Compute je cíle spravovaného výpočetního výkonu (to znamená, že je spravovaný společností Microsoft), běží pod vaším předplatným Microsoftu.
 
-   1. V případě potřeby se spustí konstrukce vzdáleného Docker.
-   1. Kód správy je zapsán do sdílené složky souborů Azure uživatele.
+   1. V případě potřeby je zahájena výstavba vzdáleného Dockeru.
+   1. Kód správy se zapisuje do sdílené složky Souborů Azure uživatele.
    1. Kontejner je spuštěn s počátečním příkazem. To znamená kód správy, jak je popsáno v předchozím kroku.
 
-#### <a name="querying-runs-and-metrics"></a>Dotazování na běhy a metriky
+#### <a name="querying-runs-and-metrics"></a>Dotazování běhů a metrik
 
-V níže uvedeném diagramu se tento krok stane, když výpočetní cíl školení zapíše metriky Run zpátky do Azure Machine Learning z úložiště v databázi Cosmos DB. Klienti můžou volat Azure Machine Learning. Machine Learning bude z databáze Cosmos DB znovu aktivovat metriky a vracet je zpět klientovi.
+V diagramu toku níže k tomuto kroku dochází, když cíl výpočetní výpočetní výpočetní zapíše metriky spuštění zpět do Azure Machine Learning z úložiště v databázi Cosmos DB. Klienti můžou volat Azure Machine Learning. Machine Learning bude zase vyžádat metriky z databáze Cosmos DB a vrátit je zpět klientovi.
 
-[pracovní postup školení ![](media/concept-enterprise-security/training-and-metrics.png)](media/concept-enterprise-security/training-and-metrics-expanded.png#lightbox)
+[![Tréninkový pracovní postup](media/concept-enterprise-security/training-and-metrics.png)](media/concept-enterprise-security/training-and-metrics-expanded.png#lightbox)
 
 ### <a name="creating-web-services"></a>Vytváření webových služeb
 
-Následující diagram znázorňuje odvozený pracovní postup. Odvození modelu nebo Bodové hodnocení je fáze, ve které se nasazený model používá pro předpověď, nejčastěji pro produkční data.
+Následující diagram znázorňuje pracovní postup odvození. Odvození nebo vyhodnocování modelu je fáze, ve které se nasazený model používá pro předpověď, nejčastěji na produkčních datech.
 
-Podrobnosti najdete tady:
+Zde jsou podrobnosti:
 
 * Uživatel zaregistruje model pomocí klienta, jako je Azure Machine Learning SDK.
-* Uživatel vytvoří obrázek pomocí modelu, souboru skóre a dalších závislostí modelu.
-* Image Docker se vytvoří a uloží v Azure Container Registry.
-* Webová služba je nasazena do cíle služby COMPUTE (Container Instances/AKS) pomocí image vytvořené v předchozím kroku.
-* Podrobnosti žádosti o vyhodnocování jsou uložené v Application Insights, který je v předplatném uživatele.
-* Telemetrii se taky vloží do předplatného Microsoft/Azure.
+* Uživatel vytvoří bitovou kopii pomocí modelu, souboru skóre a dalších závislostí modelu.
+* Image Dockeru se vytvoří a uloží v registru kontejnerů Azure.
+* Webová služba se nasadí na výpočetní cíl (Instance kontejneru/AKS) pomocí bitové kopie vytvořené v předchozím kroku.
+* Podrobnosti požadavku na vyhodnocování jsou uloženy v Application Insights, který je v předplatném uživatele.
+* Telemetrie se také přenese do předplatného Microsoft/Azure.
 
-[pracovní postup odvození ![](media/concept-enterprise-security/inferencing.png)](media/concept-enterprise-security/inferencing-expanded.png#lightbox)
+[![Pracovní postup odvození](media/concept-enterprise-security/inferencing.png)](media/concept-enterprise-security/inferencing-expanded.png#lightbox)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Zabezpečené Azure Machine Learning webové služby pomocí protokolu SSL](how-to-secure-web-service.md)
-* [Využití modelu Machine Learning nasazeného jako webové služby](how-to-consume-web-service.md)
-* [Jak spustit Batch předpovědi](how-to-use-parallel-run-step.md)
-* [Monitorování modelů Azure Machine Learning s využitím Application Insights](how-to-enable-app-insights.md)
-* [Shromažďování dat pro modely v produkčním prostředí](how-to-enable-data-collection.md)
-* [Sada Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
-* [Použití Azure Machine Learning s využitím Azure Virtual Network](how-to-enable-virtual-network.md)
-* [Osvědčené postupy pro sestavování doporučení pro systémy](https://github.com/Microsoft/Recommenders)
-* [Sestavení rozhraní API pro doporučení v reálném čase v Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/real-time-recommendation)
+* [Zabezpečené webové služby Azure Machine Learning s TLS](how-to-secure-web-service.md)
+* [Využití modelu Machine Learning usazeného jako webová služba](how-to-consume-web-service.md)
+* [Jak spustit predikce dávky](how-to-use-parallel-run-step.md)
+* [Monitorování modelů Azure Machine Learning pomocí přehledů aplikací](how-to-enable-app-insights.md)
+* [Shromažďování dat pro modely ve výrobě](how-to-enable-data-collection.md)
+* [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
+* [Použití Azure Machine Learning u virtuální sítě Azure](how-to-enable-virtual-network.md)
+* [Osvědčené postupy pro vytváření doporučených systémů](https://github.com/Microsoft/Recommenders)
+* [Vytvoření rozhraní API doporučení v reálném čase v Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/real-time-recommendation)

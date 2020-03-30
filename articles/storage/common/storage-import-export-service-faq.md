@@ -1,161 +1,158 @@
 ---
-title: Nejčastější dotazy ke službě Azure import/export | Microsoft Docs
-description: Přečtěte si odpovědi na nejčastější dotazy týkající se služby Azure import export.
+title: Nejčastější dotazy ke službě Azure Import/Export | Dokumenty společnosti Microsoft
+description: Přečtěte si odpovědi na nejčastější dotazy týkající se služby Export importu Azure.
 author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 07/18/2019
+ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 109f541157716ae4f9b195d0a3ed02a1d8c91960
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: dcf9a278bfc0ede844f8eb59e3a256e40a47c57d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314113"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282422"
 ---
-# <a name="azure-importexport-service-frequently-asked-questions"></a>Služba import/export v Azure: nejčastější dotazy 
-Níže najdete otázky a odpovědi, které můžete mít, když použijete službu Azure import/export k přenosu dat do služby Azure Storage. Otázky a odpovědi jsou uspořádané do těchto kategorií:
+# <a name="azure-importexport-service-frequently-asked-questions"></a>Služba Azure Import/Export: nejčastější dotazy
 
-- O službě Import/export
+Následují otázky a odpovědi, které můžete mít při použití služby Azure Import/Export k přenosu dat do úložiště Azure. Otázky a odpovědi jsou uspořádané do těchto kategorií:
+
+- O službě Import/Export
 - Příprava disků pro import a export
-- Úlohy importu/exportu
-- Jednotky pro expedici
-- Různé 
+- Úlohy importu a exportu
+- Přepravní disky
+- Různé
 
-## <a name="about-importexport-service"></a>O službě Import/export
+## <a name="about-importexport-service"></a>O službě Import/Export
 
-### <a name="can-i-copy-azure-file-storage-using-the-azure-importexport-service"></a>Můžu zkopírovat službu Azure File Storage pomocí služby Azure import/export?
+### <a name="can-i-copy-azure-file-storage-using-the-azure-importexport-service"></a>Můžu zkopírovat úložiště souborů Azure pomocí služby Azure Import/Export?
 
-Ano. Služba Azure import/export podporuje import do Azure File Storage. V tuto chvíli nepodporuje export souborů Azure.
+Ano. Služba Import a export Azure podporuje import do úložiště souborů Azure. V tuto chvíli nepodporuje export souborů Azure.
 
-### <a name="is-the-azure-importexport-service-available-for-csp-subscriptions"></a>Je k dispozici služba Azure import/export pro předplatné CSP?
+### <a name="is-the-azure-importexport-service-available-for-csp-subscriptions"></a>Je služba Import a export Azure dostupná pro předplatná CSP?
 
-Ano. Služba import/export pro Azure podporuje odběry Cloud Solution Provider (CSP).
+Ano. Služba Azure Import/Export podporuje předplatná zprostředkovatelů cloudových řešení (CSP).
 
-### <a name="can-i-use-the-azure-importexport-service-to-copy-pst-mailboxes-and-sharepoint-data-to-o365"></a>Můžu použít službu import/export Azure ke kopírování poštovních schránek PST a dat SharePointu do O365?
+### <a name="can-i-use-the-azure-importexport-service-to-copy-pst-mailboxes-and-sharepoint-data-to-o365"></a>Můžu ke kopírování poštovních schránek PST a sharepointových dat do O365 použít službu Import a Export Azure?
 
-Ano. Další informace najdete v pro [Import souborů PST nebo dat služby SharePoint do sady Office 365](https://technet.microsoft.com/library/ms.o365.cc.ingestionhelp.aspx).
+Ano. Další informace najdete [v části Import souborů PST nebo sharepointových dat do Office 365](https://technet.microsoft.com/library/ms.o365.cc.ingestionhelp.aspx).
 
-### <a name="can-i-use-the-azure-importexport-service-to-copy-my-backups-offline-to-the-azure-backup-service"></a>Můžu použít službu import/export Azure ke kopírování záloh do offline služby Azure Backup?
+### <a name="can-i-use-the-azure-importexport-service-to-copy-my-backups-offline-to-the-azure-backup-service"></a>Můžu použít službu Azure Import/Export ke kopírování záloh offline do služby Azure Backup Service?
 
-Ano. Další informace najdete [v pracovní postup offline zálohování v Azure Backup](../../backup/backup-azure-backup-import-export.md).
+Ano. Další informace najdete [v pracovním postupu Offline zálohování v azure backup .](../../backup/backup-azure-backup-import-export.md)
 
-### <a name="can-i-purchase-drives-for-importexport-jobs-from-microsoft"></a>Můžu koupit jednotky pro úlohy importu/exportu od Microsoftu?
+### <a name="can-i-purchase-drives-for-importexport-jobs-from-microsoft"></a>Mohu zakoupit jednotky pro importace a export úlohod microsoftu?
 
-Ne. Pro úlohy importu a exportu musíte dodávat vlastní jednotky.
-
+Ne. Musíte dobýt vlastní disky pro import a export úloh.
 
 ## <a name="preparing-disks-for-importexport"></a>Příprava disků pro import a export
 
-### <a name="can-i-skip-the-drive-preparation-step-for-an-import-job-can-i-prepare-a-drive-without-copying"></a>Můžu pro úlohu importu přeskočit krok přípravy jednotky? Můžu připravit jednotku bez kopírování?
+### <a name="can-i-skip-the-drive-preparation-step-for-an-import-job-can-i-prepare-a-drive-without-copying"></a>Je možné přeskočit krok přípravy jednotky pro úlohu importu? Mohu připravit disk bez kopírování?
 
-Ne. Libovolná jednotka používaná k importu dat musí být připravená pomocí nástroje Azure WAImportExport Tool. Pomocí tohoto nástroje můžete také kopírovat data na disk.
+Ne. Všechny jednotky použité k importu dat musí být připraveny pomocí nástroje Azure WAImportExport. Pomocí nástroje můžete také kopírovat data na jednotku.
 
-### <a name="do-i-need-to-perform-any-disk-preparation-when-creating-an-export-job"></a>Potřebuji při vytváření úlohy exportu provést přípravu na disk?
+### <a name="do-i-need-to-perform-any-disk-preparation-when-creating-an-export-job"></a>Musím při vytváření úlohy exportu provádět přípravu disku?
 
-Ne. Doporučuje se provést několik předkontrol. Pokud chcete zjistit počet požadovaných disků, použijte příkaz PreviewExport nástroje WAImportExport. Další informace najdete v tématu [zobrazení náhledu využití jednotky u úlohy exportu](https://msdn.microsoft.com/library/azure/dn722414.aspx). Příkaz vám pomůže zobrazit náhled využití jednotky pro vybrané objekty blob, a to na základě velikosti jednotek, které budete používat. Také ověřte, zda můžete číst a zapisovat na pevný disk, který je dodán pro úlohu exportu.
+Ne. Doporučujeme některé předběžné kontroly. Chcete-li zkontrolovat požadovaný počet disků, použijte příkaz NáhledExport nástroje WAImportExport. Další informace naleznete v [tématu Náhled využití jednotky pro úlohu exportu](https://msdn.microsoft.com/library/azure/dn722414.aspx). Příkaz vám pomůže zobrazit náhled využití jednotky pro vybrané objekty BLOB na základě velikosti jednotek, které budete používat. Zkontrolujte také, zda můžete číst z pevného disku, který je dodáván pro úlohu exportu, a zapisovat jej.
 
-## <a name="importexport-jobs"></a>Úlohy importu/exportu
+## <a name="importexport-jobs"></a>Úlohy importu a exportu
 
-### <a name="can-i-cancel-my-job"></a>Můžu tuto úlohu zrušit?
-Ano. Při **vytváření** nebo **přesouvání**stavu můžete úlohu zrušit. Mimo tyto fáze nelze úlohu zrušit a pokračuje do konečné fáze.
+### <a name="can-i-cancel-my-job"></a>Můžu zrušit svou práci?
 
-### <a name="how-long-can-i-view-the-status-of-completed-jobs-in-the-azure-portal"></a>Jak dlouho můžu zobrazit stav dokončených úloh v Azure Portal?
-Můžete zobrazit stav dokončených úloh po dobu až 90 dní. Dokončené úlohy se odstraní po 90 dnech.
+Ano. Úlohu můžete zrušit, pokud je její stav **Vytvoření** nebo **Odeslání**. Kromě těchto fází nelze úlohu zrušit a pokračovat až do závěrečné fáze.
 
-### <a name="if-i-want-to-import-or-export-more-than-10-drives-what-should-i-do"></a>Pokud chci importovat nebo exportovat více než 10 jednotek, co mám dělat?
-Jedna úloha importu nebo exportu může na jednu úlohu odkazovat pouze na 10 jednotek. K dodávání více než 10 jednotek byste měli vytvořit více úloh. Jednotky přidružené ke stejné úloze se musí odeslat společně ve stejném balíčku. Další informace a pokyny, pokud datová kapacita zahrnuje více úloh importu disků, získáte od podpora Microsoftu. 
+### <a name="how-long-can-i-view-the-status-of-completed-jobs-in-the-azure-portal"></a>Jak dlouho můžu na webu Azure Portal zobrazit stav dokončených úloh?
 
-### <a name="the-uploaded-blob-shows-status-as-lease-expired-what-should-i-do"></a>Nahraného objektu BLOB zobrazuje stav "zapůjčení vypršelo". Co bych měl/a dělat?
-Můžete ignorovat pole zapůjčení vypršelo. Import/export během nahrávání bere v objektu BLOB zapůjčení, aby bylo zajištěno, že žádný jiný proces nemůže současně aktualizovat objekt BLOB. Vypršení platnosti zapůjčení znamená, že se do něj již neodesílají import/export a objekt BLOB je k dispozici pro vaše použití. 
+Můžete zobrazit stav dokončených úloh po dobu až 90 dnů. Dokončené úlohy jsou odstraněny po 90 dnech.
 
-## <a name="shipping-disks"></a>Jednotky pro expedici
+### <a name="if-i-want-to-import-or-export-more-than-10-drives-what-should-i-do"></a>Co mám dělat, když chci importovat nebo exportovat více než 10 jednotek?
 
-### <a name="what-is-the-maximum-number-of-hdd-for-in-one-shipment"></a>Jaký je maximální počet HDD v jedné zásilce?
-Počet HDD v jedné zásilce není nijak omezený. Pokud disky patří do více úloh, doporučujeme: 
-- Označte disky pomocí odpovídajících názvů úloh.
-- aktualizuje úlohy s číslem sledování s příponou-1,-2 atd.
+Jedna úloha importu nebo exportu může odkazovat pouze na 10 jednotek v jedné úloze. Chcete-li dobýt více než 10 jednotek, měli byste vytvořit více úloh. Jednotky přidružené ke stejné úloze musí být dodány společně ve stejném balíčku.
+Další informace a pokyny v případě, že kapacita dat zahrnuje více úloh importu disku, obraťte se na podporu společnosti Microsoft.
 
-### <a name="should-i-include-anything-other-than-the-hdd-in-my-package"></a>Mám do balíčku zahrnout cokoli jiného než HDD?
-Dodejte pouze pevné disky do expedičního balíčku. Nezahrnujte položky jako kabely napájení nebo kabely USB.
+### <a name="the-uploaded-blob-shows-status-as-lease-expired-what-should-i-do"></a>Nahraný objekt blob zobrazuje stav jako "Zapůjčení vypršelo". Co bych měl/a dělat?
 
-### <a name="do-i-have-to-ship-my-drives-using-fedex-or-dhl"></a>Musím dodávat své jednotky pomocí FedEx nebo DHL?
-Jednotky můžete dodávat do datacentra Azure pomocí libovolného známého nosiče, jako je FedEx, DHL, UPS nebo poštovní služba USA. Pokud ale chcete vrátit zpět odeslání jednotek z datového centra, musíte zadat následující:
+Pole Vypršela platnost zapůjčení. Import nebo export trvá zapůjčení objektu blob během nahrávání a ujistěte se, že žádný jiný proces můžete aktualizovat objekt blob paralelně. Platnost zapůjčení znamená, že import nebo export se do něj už nenahrává a objekt blob je k dispozici pro vaše použití.
+
+## <a name="shipping-disks"></a>Přepravní disky
+
+### <a name="what-is-the-maximum-number-of-hdd-for-in-one-shipment"></a>Jaký je maximální počet pevných disků v jedné zásilce?
+
+Počet pevných disků v jedné zásilce není nijak omezen. Pokud disky patří do více úloh, doporučujeme:
+
+- označte disky odpovídajícími názvy úloh.
+- aktualizovat úlohy se sledovacím číslem s upevněným -1, -2 atd.
+
+### <a name="should-i-include-anything-other-than-the-hdd-in-my-package"></a>Mám do balíčku zahrnout něco jiného než hdd?
+
+Do přepravního balíčku odesílejte pouze pevné disky. Nezahrnejte položky, jako jsou napájecí kabely nebo kabely USB.
+
+### <a name="do-i-have-to-ship-my-drives-using-fedex-or-dhl"></a>Musím své disky odesílat pomocí fedexu nebo dhl?
+
+Disky můžete do datového centra Azure odesílat pomocí libovolného známého operátora, jako je FedEx, DHL, UPS nebo US Postal Service. Pro vrácení zásilky jednotek z datového centra je však nutné zadat:
 
 - Číslo účtu FedEx v USA a EU nebo
 - Číslo účtu DHL v oblastech Asie a Austrálie.
 
 > [!NOTE]
-> Datacentra v Indii vyžadují, aby se na hlavičkovém panelu (Delivery Challan) vrátilo prohlášení, které jednotky vrátí. Chcete-li uspořádat požadované zadání Pass, je nutné také zarezervovat vybraný operátor a sdílet podrobnosti s datovým centrem.
+> Datová centra v Indii vyžadují prohlášení dopis na hlavičkový papír (doručení challan) vrátit jednotky. Chcete-li zajistit požadovaný vstupní průkaz, musíte si také rezervovat vyzvednutí u vybraného operátora a sdílet podrobnosti s datovým centrem.
 
-### <a name="are-there-any-restrictions-with-shipping-my-drive-internationally"></a>Existují nějaká omezení s tím, jak se má jednotka dopravovat do zahraničí?
-Počítejte s tím, že fyzické médium, které budete dodávat, může být potřeba pro různé mezinárodní hranice. Zodpovídáte za to, abyste měli jistotu, že se vaše fyzická média a data importují nebo exportují v souladu s platnými zákony. Před odesláním fyzických médií se poraďte se svými poradci a ověřte, že vaše média a data lze právně dodávat do identifikovaného datového centra. To vám pomůže zajistit včas, aby se zajistila společnost Microsoft.
+### <a name="are-there-any-restrictions-with-shipping-my-drive-internationally"></a>Existují nějaká omezení s odesláním můj disk mezinárodně?
 
-### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>Existují zvláštní požadavky na poskytování mých disků do datacentra?
+Vezměte prosím na vědomí, že fyzická média, která odesíláte, mohou vyžadovat překročení mezinárodních hranic. Nesete odpovědnost za to, že vaše fyzická média a data budou importována a/nebo exportována v souladu s platnými zákony. Před odesláním fyzického média se obraťte na své poradce a ověřte, zda mohou být vaše média a data legálně odeslána do identifikovaného datového centra. To pomůže zajistit, že se dostane microsoft včas.
 
-Požadavky závisí na konkrétním omezení datacentra Azure.
-- K dispozici je několik webů, které vyžadují, aby bylo na parcele zapsáno číslo příchozího ID služby Microsoft datacenter z bezpečnostních důvodů. Před odesláním jednotek nebo disků do datového centra kontaktujte Azure Databox Operations (adbops@microsoft.com) a získejte toto číslo. Bez tohoto čísla se balíček odmítne.
-- Datová centra v Indii vyžadují osobní údaje ovladače, jako je například karta státní správy nebo č. ověření. (například PAN, AADHAR, DL), jméno, kontakt a číslo desky auta pro získání průchodu položky brány. Aby nedošlo k prodlevám při doručování, informujte svého dopravce o těchto požadavcích.
+### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>Existují nějaké zvláštní požadavky na doručení disků do datového centra?
 
+Požadavky závisí na konkrétní omezení datového centra Azure.
 
-### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>Při vytváření úlohy je doručovací adresa umístění, které se liší od umístění svého účtu úložiště. Co bych měl/a dělat?
+- Existuje několik webů, které vyžadují, aby bylo na parcelu z bezpečnostních důvodů zapsáno číslo Příchozí id datového centra společnosti Microsoft. Před odesláním jednotek nebo disků do datového centraadbops@microsoft.comkontaktujte Azure DataBox Operations ( ) a získejte toto číslo. Bez tohoto čísla bude balíček odmítnut.
+- Datová centra v Indii vyžadují osobní údaje řidiče, například vládní průkaz nebo číslo dokladu. (například PAN, AADHAR, DL), jméno, kontakt a číslo poznávací značky vozidla, abyste získali vstupní propustku brány. Chcete-li se vyhnout zpoždění dodávek, informujte o těchto požadavcích svého operátora.
 
-Některá umístění účtu úložiště jsou namapována na alternativní umístění expedice. Dříve dostupná umístění expedice mohou být také dočasně mapována na alternativní umístění. Před odesláním jednotek vždy kontrolovat doručovací adresu poskytnutou během vytváření úlohy.
+### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>Při vytváření úlohy je dodací adresa místem, které se liší od umístění účtu úložiště. Co bych měl/a dělat?
 
-### <a name="when-shipping-my-drive-the-carrier-asks-for-the-data-center-contact-address-and-phone-number-what-should-i-provide"></a>Při expedici jednotky se v nosiči zobrazí kontaktní adresa a telefonní číslo datového centra. Co mám zadat?
+Některá umístění účtů úložiště jsou mapována na alternativní místa expedice. Dříve dostupná místa expedice lze také dočasně mapovat na alternativní místa. Před odesláním disků vždy zkontrolujte dodací adresu poskytnutou při vytváření úloh.
 
-Telefonní číslo a adresa řadiče domény jsou k dispozici v rámci vytváření úlohy.
+### <a name="when-shipping-my-drive-the-carrier-asks-for-the-data-center-contact-address-and-phone-number-what-should-i-provide"></a>Při odesílání disku se dopravce zeptá na kontaktní adresu datového centra a telefonní číslo. Co bych měl poskytnout?
 
+Telefonní číslo a adresa dc je poskytována jako součást vytváření pracovních míst.
 
 ## <a name="miscellaneous"></a>Různé
 
-### <a name="what-happens-if-i-accidentally-send-an-hdd-that-does-not-conform-to-the-supported-requirements"></a>Co se stane, když omylem odešlem pevný disk, který nedodržuje podporované požadavky?
+### <a name="what-happens-if-i-accidentally-send-an-hdd-that-does-not-conform-to-the-supported-requirements"></a>Co se stane, když omylem odešlu pevný disk, který nevyhovuje podporovaným požadavkům?
 
-Datové centrum Azure vrátí jednotku, která nedodržuje podporované požadavky. Pokud pouze některé jednotky v balíčku splňují požadavky na podporu, budou tyto jednotky zpracovány a jednotky, které požadavky nesplňují, budou vráceny.
+Datové centrum Azure vrátí disk, který nevyhovuje podporovaným požadavkům. Pokud pouze některé jednotky v balíčku splňují požadavky na podporu, budou tyto jednotky zpracovány a jednotky, které nesplňují požadavky, budou vráceny.
 
 ### <a name="does-the-service-format-the-drives-before-returning-them"></a>Naformátuje služba jednotky před jejich vrácením?
 
-Ne. Všechny jednotky jsou šifrovány pomocí nástroje BitLocker.
+Ne. Všechny jednotky jsou šifrovány nástrojem BitLocker.
 
-### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>Jak mohu získat přístup k datům, která jsou importována touto službou?
+### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>Jak lze získat přístup k datům importovaným touto službou?
 
-Pro přístup k datům v rámci vašeho účtu úložiště Azure použijte Azure Portal nebo [Průzkumník služby Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) .  
+Pomocí portálu Azure nebo [Průzkumníka úložiště](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) můžete přistupovat k datům v rámci účtu úložiště Azure.  
 
-### <a name="after-the-import-is-complete-what-does-my-data-look-like-in-the-storage-account-is-my-directory-hierarchy-preserved"></a>Jak budou data po dokončení importu vypadat jako v účtu úložiště? Je moje hierarchie adresáře zachovaná?
+### <a name="after-the-import-is-complete-what-does-my-data-look-like-in-the-storage-account-is-my-directory-hierarchy-preserved"></a>Jak budou data po dokončení importu vypadat v účtu úložiště? Je hierarchie adresářů zachována?
 
-Když připravujete pevný disk pro úlohu importu, určí se cíl v poli DstBlobPathOrPrefix v souboru CSV sady dat. Toto je cílový kontejner v účtu úložiště, do kterého se zkopírují data z pevného disku. V rámci tohoto cílového kontejneru se vytvoří virtuální adresáře pro složky z pevného disku a objekty BLOB se vytvoří pro soubory. 
+Při přípravě pevného disku pro úlohu importu je cíl určen polem DstBlobPathOrPrefix v datové sadě CSV. Toto je cílový kontejner v účtu úložiště, do kterého jsou zkopírována data z pevného disku. V rámci tohoto cílového kontejneru jsou vytvořeny virtuální adresáře pro složky z pevného disku a objekty BLOB jsou vytvořeny pro soubory.
 
-### <a name="if-a-drive-has-files-that-already-exist-in-my-storage-account-does-the-service-overwrite-existing-blobs-or-files"></a>Pokud má jednotka soubory, které už existují v účtu úložiště, služba přepíše existující objekty blob nebo soubory?
+### <a name="if-a-drive-has-files-that-already-exist-in-my-storage-account-does-the-service-overwrite-existing-blobs-or-files"></a>Pokud jednotka obsahuje soubory, které již existují v účtu úložiště, přepíše služba existující objekty BLOB nebo soubory?
 
-Závislosti. Při přípravě jednotky můžete určit, jestli se mají cílové soubory přepsat nebo ignorovat pomocí pole v souboru CSV s datovou sadou s názvem Disposition: < přejmenovat | No-Overwrite | přepsat >. Ve výchozím nastavení služba přejmenuje nové soubory místo přepsání existujících objektů BLOB nebo souborů.
+Závisí. Při přípravě jednotky můžete určit, zda mají být cílové soubory přepsány nebo ignorovány pomocí pole v souboru CSV datové sady s názvem Dispozice:<přejmenovat|nepřepsání|přepsat>. Ve výchozím nastavení služba přejmenuje nové soubory, nikoli přepsat existující objekty BLOB nebo soubory.
 
-### <a name="is-the-waimportexport-tool-compatible-with-32-bit-operating-systems"></a>Je nástroj WAImportExport kompatibilní s 32 operačními systémy?
-Ne. Nástroj WAImportExport je kompatibilní jenom s 64 operačními systémy Windows. Úplný seznam podporovaného operačního systému najdete v části [podporované operační systémy](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements). 
+### <a name="is-the-waimportexport-tool-compatible-with-32-bit-operating-systems"></a>Je nástroj WAImportExport kompatibilní s 32bitovými operačními systémy?
 
+Ne. Nástroj WAImportExport je kompatibilní pouze s 64bitovými operačními systémy Windows. Úplný seznam podporovaného operačního systému naleznete v [části Podporované operační systémy](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements).
 
-### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Jaký je maximální velikost objektů blob bloku a velikosti objektu blob stránky podporované službou Azure import/export?
+### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Co je maximální velikost objektu blob bloku a velikost objektu blob stránky podporovaná importem a exportem Azure?
 
-Maximální velikost objektu blob bloku je přibližně 4.768 TB nebo 5 000 000 MB.
-Maximální velikost objektu blob stránky je 8TB.
+- Maximální velikost objektu blob bloku je přibližně 4,768 TB nebo 5 000 000 MB.
+- Maximální velikost objektu blob stránky je 8 TB.
 
+### <a name="does-azure-importexport-support-aes-256-encryption"></a>Podporuje Azure Import/Export šifrování AES-256?
 
-### <a name="does-azure-importexport-support-aes-256-encryption"></a>Podporuje Azure import/export šifrování AES-256?
-Služba import/export Azure používá ve výchozím nastavení šifrování BitLockeru AES-128. Můžete to změnit na AES-256, a to ručním šifrováním pomocí BitLockeru před kopírováním dat. 
+Ne. Služba Azure Import/Export používá šifrování nástroje AES-128 BitLocker.
 
-- Pokud používáte [WAImportExport v1](https://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip), níže je ukázkový příkaz
-    ```
-    WAImportExport PrepImport /sk:<StorageAccountKey> /csas:<ContainerSas> /t: <TargetDriveLetter> [/format] [/silentmode] [/encrypt] [/bk:<BitLockerKey>] [/logdir:<LogDirectory>] /j:<JournalFile> /id:<SessionId> /srcdir:<SourceDirectory> /dstdir:<DestinationBlobVirtualDirectory> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>] 
-    ```
-- Pokud používáte [WAImportExport v2](https://www.microsoft.com/download/details.aspx?id=55280) , zadejte "AlreadyEncrypted" a poskytněte klíč ve formátu CSV driveset.
-    ```
-    DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
-    G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631 |
-    ```
+## <a name="next-steps"></a>Další kroky
 
-## <a name="next-steps"></a>Další postup
-
-* [Co je Azure import/export?](storage-import-export-service.md)
-
-
+* [Co je služba Azure Import/Export?](storage-import-export-service.md)

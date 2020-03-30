@@ -1,181 +1,181 @@
 ---
-title: Úložiště dotazů – Azure Database for MySQL
-description: Přečtěte si o funkci úložiště dotazů v Azure Database for MySQL, která vám pomůžou sledovat výkon v průběhu času.
+title: Úložiště dotazů – databáze Azure pro MySQL
+description: Přečtěte si o funkci Úložiště dotazů v Azure Database for MySQL, která vám pomůže sledovat výkon v průběhu času.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 4ac6e4c71b028b66ef50ac949c169a1e02a2c0e3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: d138c2fb8ed667d5b3c961c9f567264fa40edaee
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770832"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79537036"
 ---
-# <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>Monitorování výkonu Azure Database for MySQL s využitím úložiště dotazů
+# <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>Monitorování azure databáze pro výkon MySQL pomocí úložiště dotazů
 
-**Platí pro:** Azure Database for MySQL 5,7
+**Platí pro:** Databáze Azure pro MySQL 5.7
 
-Funkce úložiště dotazů v Azure Database for MySQL poskytuje způsob, jak sledovat výkon dotazů v průběhu času. Úložiště dotazů zjednodušuje řešení potíží s výkonem tím, že vám pomůže rychle najít nejdelší běžící a většinu dotazů náročných na prostředky. Úložiště dotazů automaticky zachycuje historii dotazů a statistik za běhu a zachovává je pro vaši kontrolu. Odděluje data podle časových oken, takže můžete vidět vzory využití databáze. Data pro všechny uživatele, databáze a dotazy se ukládají do databáze schématu **MySQL** v instanci Azure Database for MySQL.
+Funkce Úložiště dotazů v Azure Database for MySQL poskytuje způsob, jak sledovat výkon dotazů v čase. Úložiště dotazů zjednodušuje řešení potíží s výkonem tím, že vám pomůže rychle najít nejdéle spuštěné a nejvíce náročné dotazy. Úložiště dotazů automaticky zachytí historii dotazů a statistik za běhu a zachová je pro vaši kontrolu. Odděluje data podle časových oken, takže můžete zobrazit vzory využití databáze. Data pro všechny uživatele, databáze a dotazy jsou uložena v databázi **schématu mysql** v instanci Azure Database for MySQL.
 
-## <a name="common-scenarios-for-using-query-store"></a>Běžné scénáře použití úložiště dotazů
+## <a name="common-scenarios-for-using-query-store"></a>Běžné scénáře pro použití úložiště dotazů
 
-Úložiště dotazů je možné použít v několika scénářích, včetně následujících:
+Úložiště dotazů lze použít v řadě scénářů, včetně následujících:
 
-- Zjišťování vrácených dotazů
-- Určení počtu spuštění dotazu v daném časovém intervalu
-- Porovnání průměrné doby provádění dotazu napříč časovými okny pro zobrazení velkých rozdílů
+- Zjišťování regresovaných dotazů
+- Určení počtu spuštění dotazu v daném časovém okně
+- Porovnání průměrné doby provádění dotazu v časových oknech za účelem zobrazení velkých rozdílových hodnot
 
-## <a name="enabling-query-store"></a>Povoluje se úložiště dotazů.
+## <a name="enabling-query-store"></a>Povolení úložiště dotazů
 
-Úložiště dotazů je funkce výslovného souhlasu, takže není ve výchozím nastavení na serveru aktivní. Úložiště dotazů je globálně povolené nebo zakázané pro všechny databáze na daném serveru a nedá se zapnout nebo vypnout pro každou databázi.
+Úložiště dotazů je funkce pro přihlášení, takže není ve výchozím nastavení na serveru aktivní. Úložiště dotazů je povoleno nebo globálně zakázáno pro všechny databáze na daném serveru a nelze je zapnout nebo vypnout na databázi.
 
-### <a name="enable-query-store-using-the-azure-portal"></a>Povolit úložiště dotazů pomocí Azure Portal
+### <a name="enable-query-store-using-the-azure-portal"></a>Povolení úložiště dotazů pomocí portálu Azure
 
-1. Přihlaste se k Azure Portal a vyberte Azure Database for MySQL server.
-1. V části **Nastavení** v nabídce vyberte **parametry serveru** .
+1. Přihlaste se na portál Azure a vyberte databázi Azure pro server MySQL.
+1. V nabídce **nastavení** vyberte **Parametry serveru.**
 1. Vyhledejte parametr query_store_capture_mode.
-1. Nastavte hodnotu vše a **uložte**.
+1. Nastavte hodnotu na VŠE a **Uložit**.
 
-Postup při povolování statistik čekání v úložišti dotazů:
+Povolení statistiky čekání v úložišti dotazů:
 
 1. Vyhledejte parametr query_store_wait_sampling_capture_mode.
-1. Nastavte hodnotu vše a **uložte**.
+1. Nastavte hodnotu na VŠE a **Uložit**.
 
-Umožňuje trvat až 20 minut, než se první dávka dat uloží v databázi MySQL.
+Povolit až 20 minut pro první dávka dat zachovat v databázi mysql.
 
 ## <a name="information-in-query-store"></a>Informace v úložišti dotazů
 
-Úložiště dotazů má dvě úložiště:
+Úložiště dotazů má dva obchody:
 
-- Běhové úložiště statistiky pro uchování informací o statistice provádění dotazů.
-- Úložiště statistiky čekání na trvalé informace o statistice čekání.
+- Úložiště statistik y za běhu pro uchování informací statistiky spuštění dotazu.
+- Čekání statistiky úložiště pro trvalé čekání statistiky informací.
 
-Za účelem minimalizace využití místa jsou statistiky spouštění za běhu v úložišti statistiky za běhu agregované přes pevný a konfigurovatelný časový interval. Informace v těchto úložištích jsou viditelné při dotazování zobrazení úložiště dotazů.
+Aby se minimalizovalo využití místa, statistiky spuštění za běhu v úložišti statistik y runtime jsou agregovány přes pevné, konfigurovatelné časové okno. Informace v těchto úložištích jsou viditelné dotazováním na zobrazení úložiště dotazů.
 
-Následující dotaz vrátí informace o dotazech v úložišti dotazů:
+Následující dotaz vrací informace o dotazech v úložišti dotazů:
 
 ```sql
 SELECT * FROM mysql.query_store;
 ```
 
-Nebo tento dotaz pro statistiku čekání:
+Nebo tento dotaz pro statistiky čekání:
 
 ```sql
 SELECT * FROM mysql.query_store_wait_stats;
 ```
 
-## <a name="finding-wait-queries"></a>Hledání dotazů čekání
+## <a name="finding-wait-queries"></a>Hledání dotazů na čekání
 
 > [!NOTE]
-> V hodinách úlohy špičky by se nemělo povolit statistiku čekání nebo je u citlivých úloh zapnutá možnost neomezeně. <br>Pro úlohy, které běží s vysokým využitím procesoru nebo na serverech konfigurovaných s nižším virtuální jádra, buďte při povolování statistik čekání opatrní. Neměl by být zapnutý po neomezenou dobu. 
+> Statistiky čekání by neměly být povoleny během pracovního vytížení ve špičce nebo by neměly být zapnuty neomezeně dlouho pro citlivé úlohy. <br>U úloh spuštěných s vysokým využitím procesoru nebo na serverech nakonfigurovaných s nižšími virtuálními jádry buďte opatrní při povolování statistik čekání. Neměl by být zapnutý donekonečna. 
 
-Typy událostí čekání spojují různé události čekání do sad podle podobnosti. Úložiště dotazů poskytuje typ události čekání, název konkrétní události čekání a dotaz na něj. Možnost korelovat tyto informace o čekání pomocí statistiky za běhu dotazů znamená, že můžete získat hlubší přehled o tom, co přispívá k charakteristikám výkonu dotazů.
+Wait typy událostí kombinovat různé události čekání do bloků podle podobnosti. Úložiště dotazů poskytuje typ události čekání, konkrétní název události čekání a dotaz. Možnost korelovat tyto informace čekání se statistikou za běhu dotazu znamená, že můžete získat hlubší pochopení toho, co přispívá k výkonu charakteristikdotazu.
 
-Tady je několik příkladů, jak můžete získat další přehledy o svých úlohách pomocí statistik čekání v úložišti dotazů:
+Tady je několik příkladů, jak můžete získat další přehled o vaší pracovní zátěži pomocí statistiky čekání v úložišti dotazů:
 
-| **Příležitostný** | **Akce** |
+| **Pozorování** | **Akce** |
 |---|---|
-|Čekání na vysoký zámek | Ověřte texty dotazů pro ovlivněné dotazy a Identifikujte cílové entity. Hledání v úložišti dotazů pro další dotazy upravující stejnou entitu, která se spouští často a/nebo mají vysokou dobu trvání. Po identifikaci těchto dotazů zvažte změnu aplikační logiky pro zlepšení souběžnosti nebo použijte méně omezující úroveň izolace. |
-|Vysoká vyrovnávací paměť v/v – čeká | Vyhledá dotazy s vysokým počtem fyzických čtení v úložišti dotazů. Pokud se shodují s dotazy s vysokým počtem vstupně-výstupních operací, zvažte, jestli v základní entitě zadáte index a nebudete moct hledat místo kontrol. Tím by došlo k minimalizaci režie v/v dotazů. Podívejte se na **doporučení týkající se výkonu** vašeho serveru na portálu a zjistěte, jestli existují doporučení indexu pro tento server, který by tyto dotazy optimalizoval. |
-|Vysoká paměťová čekání | Vyhledá v úložišti dotazů nejlepší dotazy náročné na paměť. Tyto dotazy jsou pravděpodobně zpožděny o další průběh ovlivněných dotazů. Podívejte se na **doporučení týkající se výkonu** vašeho serveru na portálu a zjistěte, jestli existují doporučení indexu, která by tyto dotazy optimalizoval.|
+|High Lock čeká | Zkontrolujte texty dotazů pro ovlivněné dotazy a identifikujte cílové entity. Vyhledejte v úložišti dotazů další dotazy, které upravují stejnou entitu, která se provádí často a/nebo má vysokou dobu trvání. Po identifikaci těchto dotazů zvažte změnu aplikační logiky ke zlepšení souběžnosti nebo použijte méně omezující úroveň izolace. |
+|Vysoká vyrovnávací paměť IO čeká | Najděte dotazy s vysokým počtem fyzických čtení v úložišti dotazů. Pokud odpovídají dotazy s vysoké vi čeká, zvažte zavedení indexu na podkladové entity, chcete-li provést hledá místo prohledává. To by minimalizovalo vsazení vi režie dotazů. Zkontrolujte **doporučení výkonu** pro váš server na portálu a zjistěte, zda existují doporučení indexu pro tento server, který by optimalizoval dotazy. |
+|Vysoká paměť čeká | Najděte nejvyšší paměti náročné dotazy v úložišti dotazů. Tyto dotazy pravděpodobně zpožďují další průběh ovlivněných dotazů. Zkontrolujte **doporučení výkonu** pro váš server na portálu a zjistěte, zda existují doporučení indexu, které by tyto dotazy optimalizovaly.|
 
 ## <a name="configuration-options"></a>Možnosti konfigurace
 
-Když je povoleno úložiště dotazů, ukládá data v oknech agregace 15 minut, až 500 různých dotazů na každé okno.
+Pokud je povoleno úložiště dotazů, ukládá data v 15minutových oknech agregace, až 500 různých dotazů na okno.
 
 Pro konfiguraci parametrů úložiště dotazů jsou k dispozici následující možnosti.
 
-| **Ukazatele** | **Popis** | **Výchozí** | **Rozsah** |
+| **Parametr** | **Popis** | **Výchozí** | **Rozsah** |
 |---|---|---|---|
-| query_store_capture_mode | Zapněte nebo vypněte funkci úložiště dotazů na základě hodnoty. Poznámka: Pokud je performance_schema VYPNUTá, zapnutí query_store_capture_mode zapnete performance_schema a podmnožinu nástrojů schématu výkonu, které jsou pro tuto funkci nutné. | VŠEM | ŽÁDNÉ, VŠE |
-| query_store_capture_interval | Interval zachycení úložiště dotazů je v řádu minut. Umožňuje zadat interval, ve kterém jsou metriky dotazu agregovány. | 15 | 5 - 60 |
-| query_store_capture_utility_queries | Zapnutí nebo vypnutí zaznamenání všech obslužných dotazů, které jsou spuštěny v systému. | NO | ANO, NE |
-| query_store_retention_period_in_days | Časový interval ve dnech, po který se mají uchovávat data v úložišti dotazů | 7 | 1 - 30 |
+| query_store_capture_mode | Zapnutí/vypnutí funkce úložiště dotazů zapnuto/vypnuto na základě hodnoty. Poznámka: Pokud je performance_schema vypnutý, zapnutí query_store_capture_mode zapne performance_schema a podmnožinu nástrojů schématu výkonu požadovaných pro tuto funkci. | VŠE | ŽÁDNÉ, VŠECHNY |
+| query_store_capture_interval | Interval zachycení úložiště dotazů v minutách. Umožňuje zadat interval, ve kterém jsou agregovány metriky dotazu. | 15 | 5 - 60 |
+| query_store_capture_utility_queries | Zapnutí nebo vypnutí zachytit všechny dotazy nástroje, který je spuštěn v systému. | NO | ANO, NE |
+| query_store_retention_period_in_days | Časové okno ve dnech pro uchování dat v úložišti dotazů. | 7 | 1 - 30 |
 
-Následující možnosti platí konkrétně pro čekání na statistiku.
+Následující možnosti platí konkrétně čekat statistiky.
 
-| **Ukazatele** | **Popis** | **Výchozí** | **Rozsah** |
+| **Parametr** | **Popis** | **Výchozí** | **Rozsah** |
 |---|---|---|---|
-| query_store_wait_sampling_capture_mode | Umožňuje zapnout nebo vypnout statistiku čekání. | NTATO | ŽÁDNÉ, VŠE |
-| query_store_wait_sampling_frequency | Mění frekvenci příkazu Wait-vzorkování v sekundách. 5 až 300 sekund. | 30 | 5-300 |
+| query_store_wait_sampling_capture_mode | Umožňuje zapnutí / vypnutí statistiky čekání. | Žádný | ŽÁDNÉ, VŠECHNY |
+| query_store_wait_sampling_frequency | Změní frekvenci vyčkávacích odběrů vzorků v sekundách. 5 až 300 sekund. | 30 | 5-300 |
 
 > [!NOTE]
-> V současné době **query_store_capture_mode** nahrazuje tuto konfiguraci, což znamená, že je nutné povolit obě **QUERY_STORE_CAPTURE_MODE** a **query_store_wait_sampling_capture_mode** všem, aby statistiky čekání fungovaly. Pokud je **query_store_capture_mode** vypnutý, vystaví se nevyřízená statistika, protože statistiky čekání využívají performance_schema povolené a query_text zachycené úložištěm dotazů.
+> V současné době **query_store_capture_mode** nahrazuje tuto konfiguraci, což znamená, **jak query_store_capture_mode,** tak **query_store_wait_sampling_capture_mode** musí být povoleny všem pro čekání statistiky do práce. Pokud **je query_store_capture_mode** vypnuto, statistiky čekání jsou také vypnuty, protože statistika čekání využívá performance_schema povolena a query_text zachycené úložištěm dotazů.
 
-K získání nebo nastavení jiné hodnoty parametru použijte [Azure Portal](howto-server-parameters.md) nebo  [Azure CLI](howto-configure-server-parameters-using-cli.md) .
+Pomocí [portálu Azure nebo](howto-server-parameters.md)  [rozhraní příkazového](howto-configure-server-parameters-using-cli.md) řádku Azure získáte nebo nastavíte jinou hodnotu parametru.
 
-## <a name="views-and-functions"></a>Zobrazení a funkce
+## <a name="views-and-functions"></a>Pohledy a funkce
 
-Umožňuje zobrazit a spravovat úložiště dotazů pomocí následujících zobrazení a funkcí. Kdokoli z [veřejné role vybrat oprávnění](howto-create-users.md#how-to-create-additional-admin-users-in-azure-database-for-mysql) může tato zobrazení použít k zobrazení dat v úložišti dotazů. Tato zobrazení jsou k dispozici pouze v databázi **MySQL** .
+Zobrazení a správa úložiště dotazů pomocí následujících zobrazení a funkcí. Kdokoli ve [veřejné roli select privilege](howto-create-users.md#how-to-create-additional-admin-users-in-azure-database-for-mysql) může tato zobrazení zobrazit v úložišti dotazů pomocí těchto zobrazení. Tato zobrazení jsou k dispozici pouze v databázi **mysql.**
 
-Dotazy jsou normalizovány tím, že si po odebrání literálů a konstant vyhledají jejich strukturu. Pokud jsou dva dotazy stejné s výjimkou hodnot literálů, budou mít stejnou hodnotu hash.
+Dotazy jsou normalizovány při pohledu na jejich strukturu po odebrání literály a konstanty. Pokud dva dotazy jsou identické s výjimkou literál hodnoty, budou mít stejnou hodnotu hash.
 
-### <a name="mysqlquery_store"></a>MySQL. query_store
+### <a name="mysqlquery_store"></a>mysql.query_store
 
-Toto zobrazení vrátí všechna data v úložišti dotazů. Pro každé jedinečné ID databáze, ID uživatele a ID dotazu je k dispozici jeden řádek.
+Toto zobrazení vrátí všechna data v úložišti dotazů. Pro každé odlišné ID databáze, ID uživatele a ID dotazu existuje jeden řádek.
 
-| **Název** | **Datový typ** | **IS_NULLABLE** | **Popis** |
+| **Název** | **Typ dat** | **IS_NULLABLE** | **Popis** |
 |---|---|---|---|
-| `schema_name`| varchar (64) | NO | Název schématu |
-| `query_id`| bigint (20) | NO| Jedinečné ID generované pro konkrétní dotaz, pokud se stejný dotaz spustí v jiném schématu, vygeneruje se nové ID. |
-| `timestamp_id` | časové razítko| NO| Časové razítko, ve kterém je dotaz spuštěn. To je založené na konfiguraci query_store_interval|
-| `query_digest_text`| longtext| NO| Normalizovaný text dotazu po odebrání všech literálů|
-| `query_sample_text` | longtext| NO| První vzhled skutečného dotazu s literály|
-| `query_digest_truncated` | 40bitového| Ano| Určuje, zda byl text dotazu zkrácen. Pokud je dotaz delší než 1 KB, hodnota bude Ano.|
-| `execution_count` | bigint (20)| NO| Počet spuštění dotazu pro toto ID časového razítka/během nakonfigurovaného časového intervalu|
-| `warning_count` | bigint (20)| NO| Počet upozornění, které tento dotaz vygeneroval během interního|
-| `error_count` | bigint (20)| NO| Počet chyb, které tento dotaz vygeneroval během intervalu|
-| `sum_timer_wait` | double| Ano| Celková doba provádění tohoto dotazu během intervalu|
-| `avg_timer_wait` | double| Ano| Průměrná doba provádění tohoto dotazu během intervalu|
-| `min_timer_wait` | double| Ano| Minimální doba provádění tohoto dotazu|
-| `max_timer_wait` | double| Ano| Maximální doba spuštění|
-| `sum_lock_time` | bigint (20)| NO| Celková doba trvání všech zámků pro toto spuštění dotazu během tohoto časového intervalu|
-| `sum_rows_affected` | bigint (20)| NO| Počet ovlivněných řádků|
-| `sum_rows_sent` | bigint (20)| NO| Počet řádků odeslaných klientovi|
-| `sum_rows_examined` | bigint (20)| NO| Počet testovaných řádků|
-| `sum_select_full_join` | bigint (20)| NO| Počet úplných spojení|
-| `sum_select_scan` | bigint (20)| NO| Počet kontrol vybraných pro výběr |
-| `sum_sort_rows` | bigint (20)| NO| Počet seřazených řádků|
-| `sum_no_index_used` | bigint (20)| NO| Počet pokusů, kolikrát dotaz nepoužil žádné indexy|
-| `sum_no_good_index_used` | bigint (20)| NO| Počet pokusů, kolikrát prováděcí modul dotazu nepoužil žádné dobré indexy|
-| `sum_created_tmp_tables` | bigint (20)| NO| Celkový počet vytvořených dočasných tabulek|
-| `sum_created_tmp_disk_tables` | bigint (20)| NO| Celkový počet dočasných tabulek vytvořených na disku (generuje se I/O)|
-| `first_seen` | časové razítko| NO| První výskyt dotazu (UTC) během okna agregace|
-| `last_seen` | časové razítko| NO| Poslední výskyt dotazu (UTC) během tohoto okna agregace|
+| `schema_name`| Varchar(64) | NO | Název schématu |
+| `query_id`| bigint(20) | NO| Jedinečné ID generované pro konkrétní dotaz, pokud se stejný dotaz spustí v jiném schématu, bude vygenerováno nové ID |
+| `timestamp_id` | časové razítko| NO| Časové razítko, ve kterém je dotaz spuštěn. To je založeno na konfiguraci query_store_interval|
+| `query_digest_text`| dlouhý text| NO| Normalizovaný text dotazu po odebrání všech literál|
+| `query_sample_text` | dlouhý text| NO| První výskyt skutečného dotazu s literály|
+| `query_digest_truncated` | bitové| ANO| Zda byl zkrácen text dotazu. Hodnota bude Ano, pokud je dotaz delší než 1 KB|
+| `execution_count` | bigint(20)| NO| Počet spuštění dotazu pro toto ID časového razítka / během nakonfigurovaného intervalového období|
+| `warning_count` | bigint(20)| NO| Počet upozornění, která tento dotaz generoval během interního|
+| `error_count` | bigint(20)| NO| Počet chyb, které tento dotaz generoval během intervalu|
+| `sum_timer_wait` | double| ANO| Celková doba spuštění tohoto dotazu během intervalu|
+| `avg_timer_wait` | double| ANO| Průměrná doba spuštění tohoto dotazu během intervalu|
+| `min_timer_wait` | double| ANO| Minimální doba spuštění tohoto dotazu|
+| `max_timer_wait` | double| ANO| Maximální doba provádění|
+| `sum_lock_time` | bigint(20)| NO| Celková doba strávená pro všechny zámky pro toto spuštění dotazu během tohoto časového období|
+| `sum_rows_affected` | bigint(20)| NO| Počet ovlivněných řádků|
+| `sum_rows_sent` | bigint(20)| NO| Počet řádků odeslaných klientovi|
+| `sum_rows_examined` | bigint(20)| NO| Počet zkoumaných řádků|
+| `sum_select_full_join` | bigint(20)| NO| Počet úplných spojení|
+| `sum_select_scan` | bigint(20)| NO| Počet vybraných skenů |
+| `sum_sort_rows` | bigint(20)| NO| Počet seřazených řádků|
+| `sum_no_index_used` | bigint(20)| NO| Počet, kdy dotaz nepoužil žádné indexy|
+| `sum_no_good_index_used` | bigint(20)| NO| Počet, kolikrát modul provádění dotazů nepoužil žádné dobré indexy|
+| `sum_created_tmp_tables` | bigint(20)| NO| Celkový počet vytvořených dočasných tabulek|
+| `sum_created_tmp_disk_tables` | bigint(20)| NO| Celkový počet dočasných tabulek vytvořených na disku (generuje vstupně-va)|
+| `first_seen` | časové razítko| NO| První výskyt (UTC) dotazu během okna agregace|
+| `last_seen` | časové razítko| NO| Poslední výskyt (UTC) dotazu během tohoto okna agregace|
 
-### <a name="mysqlquery_store_wait_stats"></a>MySQL. query_store_wait_stats
+### <a name="mysqlquery_store_wait_stats"></a>mysql.query_store_wait_stats
 
-Toto zobrazení vrátí data událostí čekání v úložišti dotazů. Pro každé jedinečné ID databáze, ID uživatele, ID dotazu a událost je jeden řádek.
+Toto zobrazení vrátí data událostí čekání v úložišti dotazů. Existuje jeden řádek pro každý odlišný ID databáze, ID uživatele, ID dotazu a událost.
 
-| **Název**| **Datový typ** | **IS_NULLABLE** | **Popis** |
+| **Název**| **Typ dat** | **IS_NULLABLE** | **Popis** |
 |---|---|---|---|
-| `interval_start` | časové razítko | NO| Začátek intervalu (přírůstek 15 minut)|
-| `interval_end` | časové razítko | NO| Konec intervalu (přírůstek 15 minut)|
-| `query_id` | bigint (20) | NO| Generované jedinečné ID u normalizovaného dotazu (z úložiště dotazů)|
-| `query_digest_id` | varchar (32) | NO| Normalizovaný text dotazu po odebrání všech literálů (z úložiště dotazů) |
-| `query_digest_text` | longtext | NO| První vzhled skutečného dotazu s literály (z úložiště dotazů) |
-| `event_type` | varchar (32) | NO| Kategorie události čekání |
-| `event_name` | varchar (128) | NO| Název události čekání |
-| `count_star` | bigint (20) | NO| Počet událostí čekání vzorků vydaných během intervalu pro dotaz |
-| `sum_timer_wait_ms` | double | NO| Celková doba čekání (v milisekundách) tohoto dotazu během intervalu |
+| `interval_start` | časové razítko | NO| Začátek intervalu (15minutový přírůstek)|
+| `interval_end` | časové razítko | NO| Konec intervalu (15minutový přírůstek)|
+| `query_id` | bigint(20) | NO| Generované jedinečné ID na normalizovaném dotazu (z úložiště dotazů)|
+| `query_digest_id` | Varchar(32) | NO| Normalizovaný text dotazu po odebrání všech literál (z úložiště dotazů) |
+| `query_digest_text` | dlouhý text | NO| První vzhled skutečného dotazu s literály (z úložiště dotazů) |
+| `event_type` | Varchar(32) | NO| Kategorie události čekání |
+| `event_name` | Varchar(128) | NO| Název události čekání |
+| `count_star` | bigint(20) | NO| Počet událostí čekání odebraných během intervalu pro dotaz |
+| `sum_timer_wait_ms` | double | NO| Celková čekací doba (v milisekundách) tohoto dotazu během intervalu |
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Funkce
 
 | **Název**| **Popis** |
 |---|---|
-| `mysql.az_purge_querystore_data(TIMESTAMP)` | Vymaže všechna data z úložiště dotazů před daným časovým razítkem. |
-| `mysql.az_procedure_purge_querystore_event(TIMESTAMP)` | Vymaže všechna data události čekání před daným časovým razítkem. |
-| `mysql.az_procedure_purge_recommendation(TIMESTAMP)` | Vyprázdní doporučení, jejichž vypršení platnosti je před daným časovým razítkem. |
+| `mysql.az_purge_querystore_data(TIMESTAMP)` | Vyčistí všechna data úložiště dotazů před daným časovým razítkem. |
+| `mysql.az_procedure_purge_querystore_event(TIMESTAMP)` | Vyčistí všechna data události čekání před daným časovým razítkem. |
+| `mysql.az_procedure_purge_recommendation(TIMESTAMP)` | Vyčistí doporučení, jejichž vypršení je před daným časovým razítkem |
 
 ## <a name="limitations-and-known-issues"></a>Omezení a známé problémy
 
-- Pokud má server MySQL parametr `default_transaction_read_only` na, nemůže úložiště dotazů zachytit data.
-- Funkce úložiště dotazů se dá přerušit, pokud dojde k dlouhým dotazům v kódování Unicode (\>= 6000 bajtů).
-- Doba uchování pro statistiku čekání je 24 hodin.
-- V případě, že statistika čekání používá ukázku pro zachycení zlomku událostí. Četnost lze upravit pomocí `query_store_wait_sampling_frequency`parametru.
+- Pokud má server MySQL `default_transaction_read_only` parametr zapnutý, úložiště dotazů nemůže zachytit data.
+- Funkce úložiště dotazů může být přerušena, pokud\>narazí na dlouhé dotazy Unicode ( = 6000 bajtů).
+- Doba uchovávání statistiky čekání je 24 hodin.
+- Wait statistiky používá vzorek zachytit zlomek událostí. Frekvenci lze upravit pomocí `query_store_wait_sampling_frequency`parametru .
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o službě [Query Performance Insights](concepts-query-performance-insight.md)
+- Další informace o [přehledech výkonu dotazů](concepts-query-performance-insight.md)

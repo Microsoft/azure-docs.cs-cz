@@ -1,61 +1,61 @@
 ---
-title: Odkaz na síť Azure Service Fabric Maven
-description: Obsahuje referenční informace o tom, jak používat modul plug-in Maven pro Service Fabric síť.
+title: Azure Service Fabric Mesh Maven odkaz
+description: Obsahuje odkaz na použití modulu plug-in Maven pro service fabric mesh
 author: suhuruli
 ms.author: suhuruli
 ms.date: 11/26/2018
 ms.topic: reference
 ms.openlocfilehash: bcc3fb7c6c3adce0997d0960c4d98227089b048b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75459019"
 ---
-# <a name="maven-plugin-for-service-fabric-mesh"></a>Modul plug-in Maven pro Service Fabric sítě
+# <a name="maven-plugin-for-service-fabric-mesh"></a>Maven Plugin pro service fabric mesh
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Java SDK
 - Maven
-- Rozhraní příkazového řádku Azure s rozšířením sítě
+- Azure CLI s rozšířením sítě
 - Service Fabric CLI
 
 ## <a name="goals"></a>Cíle
 
 ### `azure-sfmesh:init`
-- Vytvoří `servicefabric` složku, která obsahuje složku `appresources` s `application.yaml`m souborem. 
+- Vytvoří `servicefabric` složku, která `appresources` obsahuje složku, která má `application.yaml` soubor. 
 
 ### `azure-sfmesh:addservice`
-- Vytvoří složku v `servicefabric` složce s názvem služby a vytvoří soubor YAML služby. 
+- Vytvoří složku `servicefabric` uvnitř složky s názvem služby a vytvoří soubor YAML služby. 
 
 ### `azure-sfmesh:addnetwork`
-- Vygeneruje `network` YAML se zadaným názvem sítě ve složce `appresources` 
+- Generuje YAML `network` s poskytnutým názvem sítě `appresources` ve složce 
 
 ### `azure-sfmesh:addgateway`
-- Vygeneruje `gateway` YAML se zadaným názvem brány ve složce `appresources` 
+- Generuje YAML `gateway` s názvem zadaný mchy ve složce. `appresources` 
 
 #### `azure-sfmesh:addvolume`
-- Vygeneruje `volume` YAML se zadaným názvem svazku ve složce `appresources`.
+- Generuje YAML `volume` s zadaným názvem `appresources` svazku ve složce.
 
 ### `azure-sfmesh:addsecret`
-- Vygeneruje `secret` YAML se zadaným tajným názvem ve složce `appresources` 
+- Generuje YAML `secret` s poskytnutým tajným `appresources` názvem ve složce 
 
 ### `azure-sfmesh:addsecretvalue`
-- Vygeneruje `secretvalue` YAML se zadaným tajným kódem a názvem tajné hodnoty ve složce `appresources` 
+- Generuje YAML `secretvalue` s poskytnutým tajným a tajným názvem hodnoty ve složce. `appresources` 
 
 ### `azure-sfmesh:deploy`
-- Sloučí yamls ze složky `servicefabric` a v aktuální složce vytvoří Azure Resource Manager JSON šablony.
-- Nasadí všechny prostředky do prostředí sítě Azure Service Fabric. 
+- Sloučí yamls `servicefabric` ze složky a vytvoří šablonu Azure Resource Manager JSON v aktuální složce.
+- Nasazuje všechny prostředky do prostředí Azure Service Fabric Mesh. 
 
 ### `azure-sfmesh:deploytocluster`
-- Vytvoří složku (`meshDeploy`), která obsahuje JSON nasazení vygenerované z yamls, které platí pro Service Fabric clustery.
-- Nasadí všechny prostředky do clusteru Service Fabric.
+- Vytvoří složku`meshDeploy`( ), která obsahuje nasazení JSONs generované z yamls, které jsou použitelné pro clustery Service Fabric
+- Nasazuje všechny prostředky do clusteru Service Fabric.
  
 
 ## <a name="usage"></a>Využití
 
-Pokud chcete použít modul plug-in Maven v aplikaci Maven Java, přidejte do souboru pom. XML následující fragment kódu:
+Chcete-li v aplikaci Maven Java používat plugin Maven, přidejte do souboru pom.xml následující úryvek:
 
 ```XML
 <project>
@@ -76,103 +76,103 @@ Pokud chcete použít modul plug-in Maven v aplikaci Maven Java, přidejte do so
 
 ## <a name="common-configuration"></a>Společná konfigurace
 
-Modul plug-in Maven aktuálně nepodporuje společné konfigurace modulů plug-in Maven pro Azure.
+Modul plug-in Maven v současné době nepodporuje běžné konfigurace modulů plug-in Maven pro Azure.
 
 ## <a name="how-to"></a>Postupy
 
-### <a name="initialize-maven-project-for-azure-service-fabric-mesh"></a>Inicializovat projekt Maven pro síť Azure Service Fabric
-Spuštěním následujícího příkazu vytvořte soubor YAML aplikačních prostředků.
+### <a name="initialize-maven-project-for-azure-service-fabric-mesh"></a>Inicializovat projekt Maven pro síť Azure Service Fabric Mesh
+Spusťte následující příkaz k vytvoření souboru YAML prostředku aplikace.
 
 ```cmd
 mvn azure-sfmesh:init -DapplicationName=helloworldserver
 ```
 
-- Vytvoří složku s názvem `servicefabric->appresources` v kořenové složce obsahující YAML aplikace s názvem `app_helloworldserver`
+- Vytvoří složku `servicefabric->appresources` volanou v kořenové složce, která obsahuje aplikaci YAML s názvem`app_helloworldserver`
 
 ### <a name="add-resource-to-your-application"></a>Přidání prostředku do aplikace
 
 #### <a name="add-a-new-network-to-your-application"></a>Přidání nové sítě do aplikace
-Spuštěním následujícího příkazu vytvořte YAML síťového prostředku. 
+Spusťte níže uvedený příkaz a vytvořte síťový prostředek yaml. 
 
 ```cmd
 mvn azure-sfmesh:addnetwork -DnetworkName=helloworldservicenetwork -DnetworkAddressPrefix=10.0.0.0/22
 ```
 
-- Vytvoří síťovou YAML ve složce `servicefabric->appresources` s názvem `network_helloworldservicenetwork`
+- Vytvoří síť YAML `servicefabric->appresources` ve složce s názvem`network_helloworldservicenetwork`
 
 #### <a name="add-a-new-service-to-your-application"></a>Přidání nové služby do aplikace
-Spuštěním následujícího příkazu vytvořte službu YAML. 
+Spusťte níže uvedený příkaz a vytvořte servisní yaml. 
 
 ```cmd
 mvn azure-sfmesh:addservice -DapplicationName=helloworldserver -DserviceName=helloworldservice -DimageName=helloworldserver:latest -DlistenerPort=8080 -DnetworkRef=helloworldservicenetwork
 ```
 
-- Vytvoří službu YAML ve složce `servicefabric->helloworldservice` s názvem `service_helloworldservice`, která odkazuje `helloworldservicenetwork` & aplikaci `helloworldserver`.
-- Služba by naslouchala na portu 8080
-- Služba by používala ***helloworldserver: nejnovější*** jako image kontejneru.
+- Vytvoří službu YAML `servicefabric->helloworldservice` `service_helloworldservice` ve složce s názvem, která odkazuje `helloworldservicenetwork` & aplikaci `helloworldserver`
+- Služba by poslouchat na portu 8080
+- Služba by se pomocí ***helloworldserver: nejnovější,*** jak je to image kontejneru.
 
 #### <a name="add-a-new-gateway-resource-to-your-application"></a>Přidání nového prostředku brány do aplikace
-Spuštěním následujícího příkazu vytvořte prostředek brány YAML. 
+Spusťte následující příkaz a vytvořte prostředek brány yaml. 
 
 ```cmd
 mvn azure-sfmesh:addgateway -DapplicationName=helloworldserver -DdestinationNetwork=helloworldservicenetwork -DgatewayName=helloworldgateway -DlistenerName=helloworldserviceListener -DserviceName=helloworldservice -DsourceNetwork=open -DtcpPort=80
 ```
 
-- Vytvoří novou YAML brány ve složce `servicefabric->appresources` s názvem `gateway_helloworldgateway`
-- Odkazuje na `helloworldservicelistener` jako naslouchací proces služby, který naslouchá volání z této brány. Také odkazuje na `helloworldservice` jako služba, `helloworldservicenetwork` jako síť a `helloworldserver` jako aplikace. 
-- Naslouchá požadavkům na portu 80.
+- Vytvoří novou bránu YAML ve složce `servicefabric->appresources` s názvem`gateway_helloworldgateway`
+- Odkazy `helloworldservicelistener` jako naslouchací proces služby, který naslouchá volání z této brány. Také odkazuje `helloworldservice` jako služba, `helloworldservicenetwork` jako síť `helloworldserver` a jako aplikace. 
+- Naslouchá požadavkům na portu 80
 
 #### <a name="add-a-new-volume-to-your-application"></a>Přidání nového svazku do aplikace
-Spuštěním následujícího příkazu vytvořte prostředek svazku YAML. 
+Spusťte následující příkaz a vytvořte zdroj svazku yaml. 
 
 ```cmd
 mvn azure-sfmesh:addvolume -DvolumeAccountKey=key -DvolumeAccountName=name -DvolumeName=vol1 -DvolumeShareName=share
 ```
 
-- Vytvoří svazek YAML ve složce `servicefabric->appresources` s názvem `volume_vol1`
-- Nastaví vlastnosti požadovaných parametrů, `volumeAccountKey`a `volumeShareName`, jak je uvedeno výše.
-- Další informace o tom, jak odkazovat na tento vytvořený svazek, najdete v následujícím článku [nasazení aplikace pomocí svazku souborů Azure](service-fabric-mesh-howto-deploy-app-azurefiles-volume.md) .
+- Vytvoří svazek YAML `servicefabric->appresources` ve složce s názvem`volume_vol1`
+- Nastaví vlastnosti pro `volumeAccountKey`požadované `volumeShareName` parametry , a jak je uvedeno výše
+- Další informace o tom, jak odkazovat na tento vytvořený svazek, najdete v následujícím, [nasazení aplikace pomocí svazku souborů Azure](service-fabric-mesh-howto-deploy-app-azurefiles-volume.md)
 
 #### <a name="add-a-new-secret-resource-to-your-application"></a>Přidání nového tajného prostředku do aplikace
-Spuštěním následujícího příkazu vytvořte tajný prostředek YAML. 
+Spusťte níže uvedený příkaz a vytvořte tajný zdroj yaml. 
 
 ```cmd
 mvn azure-sfmesh:addsecret -DsecretName=secret1
 ```
 
-- Vytvoří tajný YAML ve složce `servicefabric->appresources` s názvem `secret_secret1`
-- Další informace o tom, jak odkazovat na tento vytvořený tajný klíč, najdete v následujících tématu [Správa tajných klíčů](service-fabric-mesh-howto-manage-secrets.md) .
+- Vytvoří tajný yaml `servicefabric->appresources` ve složce s názvem`secret_secret1`
+- Další informace o tom, jak odkazovat na tento vytvořený tajný klíč, naleznete v následujícím, [Spravovat tajné kódy](service-fabric-mesh-howto-manage-secrets.md)
 
-#### <a name="add-a-new-secretvalue-resource-to-your-application"></a>Přidání nového prostředku secretvalue do aplikace
-Spuštěním následujícího příkazu vytvořte secretvalue prostředku YAML. 
+#### <a name="add-a-new-secretvalue-resource-to-your-application"></a>Přidání nového prostředku skreční hodnoty do aplikace
+Spusťte níže uvedený příkaz a vytvořte zdroj yaml s utajovnou hodnotou. 
 
 ```cmd
 mvn azure-sfmesh:addsecretvalue -DsecretValue=someVal -DsecretValueName=secret1/v1
 ```
 
-- Vytvořte secretvalue YAML ve složce `servicefabric->appresources` s názvem `secretvalue_secret1_v1`
+- Vytvoření tajné hodnoty YAML `servicefabric->appresources` ve složce s názvem`secretvalue_secret1_v1`
 
 ### <a name="run-the-application-locally"></a>Místní spuštění aplikace
 
-V nápovědě k cíli `azure-sfmesh:deploytocluster`můžete aplikaci spustit místně pomocí příkazu níže:
+Pomocí cíle `azure-sfmesh:deploytocluster`můžete spustit aplikaci místně pomocí následujícího příkazu:
 
 ```cmd
 mvn azure-sfmesh:deploytocluster
 ```
 
-Ve výchozím nastavení tento cíl nasadí prostředky do místního clusteru. Pokud nasazujete do místního clusteru, předpokládá se, že máte spuštěný místní Cluster Service Fabric. Místní Service Fabric cluster pro prostředky je aktuálně podporován pouze v [systému Windows](service-fabric-mesh-howto-setup-developer-environment-sdk.md).
+Ve výchozím nastavení tento cíl nasazuje prostředky do místního clusteru. Pokud nasazujete do místního clusteru, předpokládá se, že máte místní cluster Service Fabric v provozu. Cluster Local Service Fabric pro prostředky je aktuálně podporován pouze v [systému Windows](service-fabric-mesh-howto-setup-developer-environment-sdk.md).
 
-- Vytvoří z yamls JSON, které platí pro Service Fabric clustery.
-- Nasadí do koncového bodu clusteru.
+- Vytvoří jsony z yamls, které jsou použitelné pro clustery Service Fabric
+- Nasazení pak do koncového bodu clusteru
 
-### <a name="deploy-application-to-azure-service-fabric-mesh"></a>Nasazení aplikace do sítě Azure Service Fabric
+### <a name="deploy-application-to-azure-service-fabric-mesh"></a>Nasazení aplikace do sítě Azure Service Fabric Mesh
 
-Pomocí následujícího příkazu můžete `azure-sfmesh:deploy`nasadit do Service Fabric prostředí pro práci s cíli:
+Pomocí cíle `azure-sfmesh:deploy`můžete nasadit do prostředí Service Fabric Mesh pomocí následujícího příkazu:
 
 ```cmd
 mvn azure-sfmesh:deploy -DresourceGroup=todoapprg -Dlocation=eastus
 ```
 
-- Vytvoří skupinu prostředků s názvem `todoapprg`, pokud neexistuje.
-- Vytvoří Azure Resource Manager JSON šablony sloučením YAMLs. 
-- Nasadí kód JSON do prostředí sítě Azure Service Fabric.
+- Vytvoří skupinu `todoapprg` prostředků s názvem, pokud neexistuje.
+- Vytvoří šablonu Azure Resource Manager JSON sloučením YAML. 
+- Nasazuje JSON do prostředí Azure Service Fabric Mesh.

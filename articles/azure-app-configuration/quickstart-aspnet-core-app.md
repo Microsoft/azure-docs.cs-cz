@@ -1,6 +1,6 @@
 ---
-title: Rychlý Start pro konfiguraci aplikací Azure s ASP.NET Core | Microsoft Docs
-description: Rychlý Start pro použití konfigurace aplikací Azure s aplikacemi ASP.NET Core
+title: Úvodní příručka pro konfiguraci aplikací Azure s ASP.NET jádrem | Dokumenty společnosti Microsoft
+description: Úvodní příručka pro používání konfigurace aplikací Azure s aplikacemi ASP.NET Core
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -8,112 +8,119 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: ee50d180c579e117c16f1a956871068f0a46e976
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 537dabe09c41012b9e15998ce3af8198dcfb62d3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77498559"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80245770"
 ---
-# <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace ASP.NET Core s využitím konfigurace aplikace Azure
+# <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Úvodní příručka: Vytvoření aplikace ASP.NET Core s konfigurací aplikací Azure
 
-V tomto rychlém startu použijete Azure App Configuration k centralizaci úložiště a správy nastavení aplikace pro ASP.NET Core aplikaci. ASP.NET Core vytvoří objekt konfigurace s jedním klíčem na základě hodnoty pomocí nastavení z jednoho nebo více zdrojů dat, které jsou určeny aplikací. Tyto zdroje dat jsou známé jako *poskytovatelé konfigurace*. Vzhledem k tomu, že klient .NET Core konfigurace aplikace je implementovaný jako poskytovatel konfigurace, služba se zobrazí jako jiný zdroj dat.
+V tomto rychlém startu použijete Azure App Configuration k centralizaci úložiště a správy nastavení aplikací pro ASP.NET základní aplikaci. ASP.NET Core vytvoří jeden konfigurační objekt založený na hodnotě klíče pomocí nastavení z jednoho nebo více zdrojů dat určených aplikací. Tyto zdroje dat jsou označovány jako *zprostředkovatelé konfigurace*. Vzhledem k tomu, že klient .NET Core konfigurace aplikace je implementován jako zprostředkovatel konfigurace, služba se zobrazí jako jiný zdroj dat.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+- Předplatné Azure – [vytvořte si ho zdarma](https://azure.microsoft.com/free/)
 - [Sada .NET Core SDK](https://dotnet.microsoft.com/download)
 
 >[!TIP]
-> Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít ke spuštění instrukcí příkazového řádku v tomto článku.  Má předinstalované běžné nástroje Azure, včetně .NET Core SDK. Pokud jste přihlášeni ke svému předplatnému Azure, spusťte [Azure Cloud Shell](https://shell.azure.com) z Shell.Azure.com.  Další informace o Azure Cloud Shell najdete v [naší dokumentaci](../cloud-shell/overview.md) .
+> Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít ke spuštění pokynů příkazového řádku v tomto článku.  Má společné nástroje Azure předinstalované, včetně sady .NET Core SDK. Pokud jste přihlášení k předplatnému Azure, spusťte [Azure Cloud Shell](https://shell.azure.com) z shell.azure.com.  Další informace o Azure Cloud Shellu najdete v [naší dokumentaci](../cloud-shell/overview.md)
 
-## <a name="create-an-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikace
+## <a name="create-an-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikací
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Vyberte **Průzkumník konfigurace** > **vytvořit** a přidejte následující páry klíč-hodnota:
+6. Vyberte **Průzkumník** > konfigurace**Vytvořit** > **hodnotu klíče a** přidejte následující dvojice klíč-hodnota:
 
     | Klíč | Hodnota |
     |---|---|
-    | TestApp:Settings:BackgroundColor | White |
-    | TestApp: nastavení: FontSize | 24 |
-    | TestApp:Settings:FontColor | Black |
-    | TestApp: nastavení: zpráva | Data z konfigurace aplikace Azure |
+    | testapp:nastavení:barva na pozadí | White |
+    | testapp:nastavení:velikost písma | 24 |
+    | testapp:nastavení:barva písma | Black |
+    | testapp:nastavení:zpráva | Data z konfigurace aplikací Azure |
 
-    V tuto chvíli ponechat **popisek** a **typ obsahu** prázdné.
+    Ponechte **popisek** a **typ obsahu** prozatím prázdný. Vyberte **Použít**.
 
 ## <a name="create-an-aspnet-core-web-app"></a>Vytvoření webové aplikace ASP.NET Core
 
-K vytvoření nového projektu webové aplikace ASP.NET Core MVC použijte [rozhraní příkazového řádku .NET Core (CLI)](https://docs.microsoft.com/dotnet/core/tools/) . [Azure Cloud Shell](https://shell.azure.com) poskytuje tyto nástroje za vás.  Jsou k dispozici také na platformách Windows, macOS a Linux.
+Pomocí [rozhraní příkazového řádku .NET Core (CLI)](https://docs.microsoft.com/dotnet/core/tools/) vytvořte nový ASP.NET projektu webové aplikace Core MVC. [Azure Cloud Shell](https://shell.azure.com) poskytuje tyto nástroje pro vás.  Jsou také k dispozici na platformách Windows, macOS a Linux.
 
-1. Vytvořte novou složku pro váš projekt. V tomto rychlém startu pojmenujte ho *TestAppConfig*.
+1. Vytvořte novou složku pro váš projekt. Pro tento rychlý start jej pojmenujte *TestAppConfig*.
 
-1. V nové složce spusťte následující příkaz pro vytvoření nového projektu webové aplikace ASP.NET Core MVC:
+1. V nové složce spusťte následující příkaz a vytvořte nový ASP.NET projektu webové aplikace Core MVC:
 
 ```dotnetcli
 dotnet new mvc --no-https
 ```
 
-## <a name="add-secret-manager"></a>Přidat správce tajných klíčů
+## <a name="add-secret-manager"></a>Přidat správce tajných služeb
 
-Chcete-li použít Správce tajných klíčů, přidejte `UserSecretsId` element do souboru *. csproj* .
+Chcete-li použít Správce `UserSecretsId` tajných barev, přidejte prvek do souboru *.csproj.*
 
-Otevřete soubor *. csproj* . Přidejte `UserSecretsId` element, jak je znázorněno zde. Můžete použít stejný identifikátor GUID, nebo můžete tuto hodnotu nahradit vlastními. Uložte soubor.
+1. Otevřete soubor *.csproj.*
 
-> [!IMPORTANT]
-> `CreateHostBuilder` nahrazuje `CreateWebHostBuilder` v .NET Core 3,0.  Vyberte správnou syntaxi na základě vašeho prostředí.
+1.  Přidejte `UserSecretsId` prvek, jak je znázorněno zde. Můžete použít stejný identifikátor GUID nebo můžete tuto hodnotu nahradit vlastní hodnotou.
 
-#### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
-
-```xml
-<Project Sdk="Microsoft.NET.Sdk.Web">
-
-    <PropertyGroup>
-        <TargetFramework>netcoreapp2.1</TargetFramework>
-        <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.App" />
-        <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
-    </ItemGroup>
-
-</Project>
-```
-
-#### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
-
-```xml
-<Project Sdk="Microsoft.NET.Sdk.Web">
+    > [!IMPORTANT]
+    > `CreateHostBuilder`nahrazuje `CreateWebHostBuilder` v rozhraní .NET Core 3.0.  Vyberte správnou syntaxi na základě vašeho prostředí.
     
-    <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
-        <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
-    </PropertyGroup>
+    #### <a name="net-core-2x"></a>[.NET Jádro 2.x](#tab/core2x)
+    
+    ```xml
+    <Project Sdk="Microsoft.NET.Sdk.Web">
+    
+        <PropertyGroup>
+            <TargetFramework>netcoreapp2.1</TargetFramework>
+            <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
+        </PropertyGroup>
+    
+        <ItemGroup>
+            <PackageReference Include="Microsoft.AspNetCore.App" />
+            <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+        </ItemGroup>
+    
+    </Project>
+    ```
+    
+    #### <a name="net-core-3x"></a>[.NET Jádro 3.x](#tab/core3x)
+    
+    ```xml
+    <Project Sdk="Microsoft.NET.Sdk.Web">
+        
+        <PropertyGroup>
+            <TargetFramework>netcoreapp3.1</TargetFramework>
+            <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
+        </PropertyGroup>
+    
+    </Project>
+    ```
+    ---
 
-</Project>
-```
----
+1. Uložte soubor *.csproj.*
 
-Nástroj Secret Manager ukládá citlivá data související s vývojem mimo strom vašeho projektu. Tento přístup pomáhá zabránit náhodnému sdílení tajných kódů aplikace ve zdrojovém kódu. Další informace o Správci tajných klíčů najdete v článku [bezpečné úložiště tajných kódů aplikací ve vývoji v tématu ASP.NET Core](https://docs.microsoft.com/aspnet/core/security/app-secrets)
+Nástroj Secret Manager ukládá citlivá data související s vývojem mimo strom vašeho projektu. Tento přístup pomáhá zabránit náhodnému sdílení tajných kódů aplikace ve zdrojovém kódu.
 
-## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
+> [!TIP]
+> Další informace o Tajném správci najdete [v tématu Bezpečné ukládání tajných kódů aplikací ve vývoji v ASP.NET Core](https://docs.microsoft.com/aspnet/core/security/app-secrets)
 
-1. Přidejte odkaz na `Microsoft.Azure.AppConfiguration.AspNetCore` balíček NuGet spuštěním následujícího příkazu:
+## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikací
+
+1. Přidejte odkaz `Microsoft.Azure.AppConfiguration.AspNetCore` na balíček NuGet spuštěním následujícího příkazu:
 
     ```dotnetcli
     dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore
     ```
 
-1. Spusťte následující příkaz pro obnovení balíčků pro váš projekt:
+1. Chcete-li obnovit balíčky pro projekt, spusťte následující příkaz:
 
     ```dotnetcli
     dotnet restore
     ```
 
-1. Přidejte tajný klíč s názvem *connectionStrings: appconfig* do správce tajných klíčů.
+1. Přidejte tajný klíč s názvem *ConnectionStrings:AppConfig* do Správce tajných služeb.
 
-    Tento tajný klíč obsahuje připojovací řetězec pro přístup k úložišti konfigurace aplikace. Hodnotu v následujícím příkazu nahraďte připojovacím řetězcem pro úložiště konfigurace aplikace.
+    Tento tajný klíč obsahuje připojovací řetězec pro přístup k úložišti konfigurace aplikace. Nahraďte hodnotu v následujícím příkazu připojovacím řetězcem pro úložiště konfigurace aplikací. Připojovací řetězec najdete v části **Přístupové klíče** na webu Azure Portal.
 
     Tento příkaz se musí spustit ve stejném adresáři jako soubor *.csproj*.
 
@@ -122,24 +129,24 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
     ```
 
     > [!IMPORTANT]
-    > Některá prostředí zkrátí připojovací řetězec, pokud není uzavřen v uvozovkách. Ujistěte se, že výstup příkazu `dotnet user-secrets` zobrazuje celý připojovací řetězec. Pokud tomu tak není, spusťte příkaz znovu a uzavřete připojovací řetězec do uvozovek.
+    > Některá skořepiny zkrátí připojovací řetězec, pokud není uzavřen v uvozovkách. Ujistěte se, `dotnet user-secrets` že výstup příkazu zobrazuje celý připojovací řetězec. Pokud tomu tak není, znovu spusťte příkaz a ohraničovací řetězec ohraničující řetězec do uvozovek.
 
-    Správce tajného klíče se používá jenom k místnímu testování webové aplikace. Při nasazení aplikace do [Azure App Service](https://azure.microsoft.com/services/app-service/web)například použijete nastavení aplikace **připojovací řetězce** v App Service namísto správce tajných klíčů k uložení připojovacího řetězce.
+    Správce tajných barev se používá pouze k místnímu testování webové aplikace. Když se aplikace nasadí do [služby Azure App Service](https://azure.microsoft.com/services/app-service/web), použijete například nastavení aplikace **připojovací řetězce** ve službě App Service namísto Správce tajných služeb k uložení připojovacího řetězce.
 
-    Přístup k tomuto tajnému kódu pomocí konfiguračního rozhraní API. Dvojtečka (:) funguje v názvu konfigurace s rozhraním API konfigurace na všech podporovaných platformách. Viz [Konfigurace podle prostředí](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0).
+    Přístup k tomuto tajnému klíči pomocí konfiguračního rozhraní API. Dvojtečka (:) pracuje v názvu konfigurace s konfiguračním rozhraním API na všech podporovaných platformách. Viz [Konfigurace podle prostředí](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0).
 
-1. Otevřete *program.cs*a přidejte odkaz na poskytovatele konfigurace aplikace .NET Core.
+1. Otevřete *Program.cs*a přidejte odkaz na zprostředkovatele konfigurace aplikace .NET Core.
 
     ```csharp
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-1. Aktualizujte metodu `CreateWebHostBuilder`, aby používala konfiguraci aplikace, voláním metody `config.AddAzureAppConfiguration()`.
+1. Aktualizujte `CreateWebHostBuilder` metodu pro použití `config.AddAzureAppConfiguration()` konfigurace aplikace voláním metody.
 
     > [!IMPORTANT]
-    > `CreateHostBuilder` nahrazuje `CreateWebHostBuilder` v .NET Core 3,0.  Vyberte správnou syntaxi na základě vašeho prostředí.
+    > `CreateHostBuilder`nahrazuje `CreateWebHostBuilder` v rozhraní .NET Core 3.0.  Vyberte správnou syntaxi na základě vašeho prostředí.
 
-    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Jádro 2.x](#tab/core2x)
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -152,7 +159,7 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
             .UseStartup<Startup>();
     ```
 
-    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Jádro 3.x](#tab/core3x)
 
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -168,7 +175,7 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
 
     ---
 
-1. Přejděte na *<app root>/views/Home* a otevřete *index. cshtml*. Nahraďte jeho obsah následujícím kódem:
+1. Přejděte na * <app root>/Views/Home* a otevřete *soubor Index.cshtml*. Nahraďte jeho obsah následujícím kódem:
 
     ```HTML
     @using Microsoft.Extensions.Configuration
@@ -187,7 +194,7 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
     <h1>@Configuration["TestApp:Settings:Message"]</h1>
     ```
 
-1. Přejděte na *<app root>/views/Shared* a otevřete *_Layout. cshtml*. Nahraďte jeho obsah následujícím kódem:
+1. Přejděte na * <app root>/Zobrazení/Sdílené* a otevřete *soubor _Layout.cshtml*. Nahraďte jeho obsah následujícím kódem:
 
     ```HTML
     <!DOCTYPE html>
@@ -214,27 +221,27 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
     </html>
     ```
 
-## <a name="build-and-run-the-app-locally"></a>Místní sestavení a spuštění aplikace
+## <a name="build-and-run-the-app-locally"></a>Sestavení a spuštění aplikace místně
 
-1. Pokud chcete aplikaci vytvořit pomocí .NET Core CLI, přejděte do kořenového adresáře aplikace a spusťte v příkazovém prostředí následující příkaz:
+1. Chcete-li vytvořit aplikaci pomocí rozhraní PŘÍKAZOVÉHO PŘÍKAZU .NET Core, přejděte do kořenového adresáře aplikace a spusťte následující příkaz v příkazovém prostředí:
 
     ```dotnetcli
     dotnet build
     ```
 
-1. Po úspěšném dokončení sestavení spusťte následující příkaz pro místní spuštění webové aplikace:
+1. Po úspěšném dokončení sestavení spusťte následující příkaz a spusťte webovou aplikaci místně:
 
     ```dotnetcli
     dotnet run
     ```
 
-1. Pokud pracujete na místním počítači, přejděte k `http://localhost:5000`pomocí prohlížeče. Toto je výchozí adresa URL webové aplikace hostované na místním počítači.  
+1. Pokud pracujete na místním počítači, přejděte `http://localhost:5000`pomocí prohlížeče na aplikaci . Toto je výchozí adresa URL webové aplikace hostované místně.  
 
-Pokud pracujete na Azure Cloud Shell, klikněte na tlačítko *Náhled webu* a potom na *Konfigurovat*.  
+Pokud pracujete v prostředí Azure Cloud Shell, vyberte tlačítko *Web Preview* následované *tlačítkem Configure*.  
 
-![Najít tlačítko Náhled webu](./media/quickstarts/cloud-shell-web-preview.png)
+![Vyhledání tlačítka Náhled na webu](./media/quickstarts/cloud-shell-web-preview.png)
 
-Po zobrazení výzvy ke konfiguraci portu pro verzi Preview zadejte ' 5000 ' a vyberte *otevřít a procházet*.  Webová stránka načte data z konfigurace aplikace Azure.
+Po zobrazení výzvy ke konfiguraci portu pro náhled zadejte "5000" a vyberte *Otevřít a procházet*.  Na webové stránce se bude číst "Data z konfigurace aplikace Azure".
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -242,7 +249,7 @@ Po zobrazení výzvy ke konfiguraci portu pro verzi Preview zadejte ' 5000 ' a v
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikace a použili ho s ASP.NET Core webovou aplikací prostřednictvím [poskytovatele konfigurace aplikace](https://go.microsoft.com/fwlink/?linkid=2074664). Další informace o tom, jak nakonfigurovat aplikaci ASP.NET Core, aby dynamicky aktualizovala nastavení konfigurace, najdete v dalším kurzu.
+V tomto rychlém startu jste vytvořili nový obchod SKonfiguraci aplikací a použili ho s ASP.NET webovou aplikací Core prostřednictvím [poskytovatele konfigurace aplikace](https://go.microsoft.com/fwlink/?linkid=2074664). Chcete-li se dozvědět, jak nakonfigurovat aplikaci ASP.NET Core pro dynamickou aktualizaci nastavení konfigurace, pokračujte dalším kurzem.
 
 > [!div class="nextstepaction"]
 > [Povolit dynamickou konfiguraci](./enable-dynamic-configuration-aspnet-core.md)

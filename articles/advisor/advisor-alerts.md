@@ -1,20 +1,20 @@
 ---
-title: Vytvořit výstrahy Azure Advisor pro nová doporučení
-description: Vytvořit upozornění Azure Advisor pro nové doporučení
+title: Vytváření výstrah Azure Advisor pro nová doporučení
+description: Vytvoření výstrah Azure Advisor pro nové doporučení
 ms.topic: article
 ms.date: 09/09/2019
 ms.openlocfilehash: 07cbc57ef718b6cac104d2b5238ff4e3196f197a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75443155"
 ---
-# <a name="create-azure-advisor-alerts-on-new-recommendations"></a>Vytváření upozornění Azure Advisor při nových doporučeních 
+# <a name="create-azure-advisor-alerts-on-new-recommendations"></a>Vytváření výstrah Azure Advisor u nových doporučení 
 
-V tomto článku se dozvíte, jak nastavit upozornění pro nová doporučení od Azure Advisor pomocí šablon Azure Portal a Azure Resource Manager. 
+Tento článek ukazuje, jak nastavit výstrahu pro nová doporučení od Azure Advisor pomocí portálu Azure a šablony Azure Resource Manager. 
 
-Kdykoli Azure Advisor zjistí nové doporučení pro jeden z vašich prostředků, uloží se do [protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview). Pro tyto události můžete nastavit výstrahy z Azure Advisor pomocí prostředí pro vytváření výstrah specifických pro doporučení. Můžete vybrat předplatné a volitelně také skupinu prostředků a určit prostředky, na které chcete dostávat výstrahy. 
+Kdykoli Azure Advisor zjistí nové doporučení pro jeden z vašich prostředků, událost se uloží v [protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview). Můžete nastavit výstrahy pro tyto události z Azure Advisor pomocí prostředí pro vytváření výstrah specifických pro doporučení. Můžete vybrat předplatné a volitelně skupinu prostředků a určit prostředky, na které chcete dostávat výstrahy. 
 
 Můžete také určit typy doporučení pomocí těchto vlastností:
 
@@ -22,48 +22,48 @@ Můžete také určit typy doporučení pomocí těchto vlastností:
 * Úroveň dopadu
 * Typ doporučení
 
-Můžete taky nakonfigurovat akci, která se provede, když se aktivuje výstraha:  
+Můžete také nakonfigurovat akci, která se bude konat, když je výstraha spuštěna:  
 
 * Výběr existující skupiny akcí
-* Vytváří se nová skupina akcí.
+* Vytvoření nové skupiny akcí
 
-Další informace o skupinách akcí najdete v tématu [Vytváření a správa skupin akcí](../azure-monitor/platform/action-groups.md).
+Další informace o skupinách akcí najdete v [tématu Vytváření a správa skupin akcí](../azure-monitor/platform/action-groups.md).
 
 > [!NOTE] 
-> Výstrahy služby Advisor jsou momentálně dostupné jenom pro doporučení vysoké dostupnosti, výkonu a nákladů. Doporučení zabezpečení nejsou podporovaná. 
+> Upozornění poradců jsou v současné době k dispozici pouze pro doporučení vysoké dostupnosti, výkonu a nákladů. Doporučení zabezpečení nejsou podporována. 
 
 ## <a name="in-the-azure-portal"></a>Na webu Azure Portal
 1. Na **portálu**vyberte **Azure Advisor**.
 
     ![Azure Advisor na portálu](./media/advisor-alerts/create1.png)
 
-2. V části **monitorování** v levé nabídce vyberte **výstrahy**. 
+2. V části **Monitorování** v levé nabídce vyberte **výstrahy**. 
 
-    ![Výstrahy v Advisoru](./media/advisor-alerts/create2.png)
+    ![Upozornění v poradci](./media/advisor-alerts/create2.png)
 
-3. Vyberte **nové upozornění poradce**.
+3. Vyberte **výstrahu nového poradce**.
 
-    ![Nové upozornění poradce](./media/advisor-alerts/create3.png)
+    ![Výstraha nového poradce](./media/advisor-alerts/create3.png)
 
-4. V části **obor** vyberte předplatné a volitelně skupinu prostředků, na které chcete být upozorňováni. 
+4. V části **Obor** vyberte předplatné a volitelně skupinu prostředků, na kterou chcete být upozorňováni. 
 
-    ![Rozsah upozornění Advisoru](./media/advisor-alerts/create4.png)
+    ![Obor výstrahy poradce](./media/advisor-alerts/create4.png)
 
-5. V části **Podmínka** vyberte metodu, kterou chcete použít pro konfiguraci výstrahy. Pokud chcete upozornit na všechna doporučení pro určitou kategorii a úroveň dopadu, vyberte **kategorie a úroveň dopadu**. Pokud chcete upozornit na všechna doporučení určitého typu, vyberte **typ doporučení**.
+5. V části **Podmínka** vyberte metodu, kterou chcete použít pro konfiguraci výstrahy. Pokud chcete upozornit na všechna doporučení pro určitou kategorii a/nebo úroveň dopadu, vyberte **kategorii a úroveň dopadu**. Pokud chcete upozornit na všechna doporučení určitého typu, vyberte **typ doporučení**.
 
-    ![Podmínka upozornění Azure Advisor](./media/advisor-alerts/create5.png)
+    ![Podmínka výstrahy Azure Advisor](./media/advisor-alerts/create5.png)
 
-6. V závislosti na vybrané možnosti konfigurace podle budete moct zadat kritéria. Pokud chcete všechna doporučení, ponechte zbývající pole prázdné. 
+6. V závislosti na možnosti Konfigurovat podle, kterou vyberete, budete moci zadat kritéria. Pokud chcete všechna doporučení, nechte zbývající pole prázdná. 
 
-    ![Skupina akcí výstrah Advisoru](./media/advisor-alerts/create6.png)
+    ![Skupina akcí upozornění poradce](./media/advisor-alerts/create6.png)
 
-7. V části **skupiny akcí** vyberte **Přidat existující** a použijte skupinu akcí, kterou jste už vytvořili, nebo vyberte **vytvořit novou** a nastavte novou [skupinu akcí](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups). 
+7. V části **Skupiny akcí** vyberte **Přidat existující,** chcete-li použít skupinu akcí, kterou jste již vytvořili, nebo vyberte **Vytvořit nový** a nastavte novou [skupinu akcí](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups). 
 
     ![Upozornění poradce přidat existující](./media/advisor-alerts/create7.png)
 
-8. V části Podrobnosti výstrahy zadejte název a krátký popis výstrahy. Pokud chcete, aby byla výstraha povolená, nechte možnost **Povolit pravidlo při vytváření** výběru nastavenou na **Ano**. Pak vyberte skupinu prostředků, do které chcete upozornění Uložit. Tato akce nemá vliv na obor cíle doporučení. 
+8. V části Podrobnosti upozornění pojmenujte výstrahu, pojmenujete a uvězněte krátký popis. Pokud chcete, aby byla výstraha povolena, **ponechejte povolit pravidlo při výběru vytvoření** nastavenou na **ano**. Pak vyberte skupinu prostředků, do které chcete výstrahu uložit. To nebude mít vliv na rozsah cílení doporučení. 
 
-    ![Azure Advisor banner](./media/advisor-alerts/create8.png)
+    ![Azure Advisor Banner](./media/advisor-alerts/create8.png)
 
 
 ## <a name="with-an-azure-resource-manager-template"></a>Se šablonou Azure Resource Manager
@@ -165,16 +165,16 @@ Tato šablona Správce prostředků vytvoří výstrahu doporučení a novou sku
 }
   ```
 
-## <a name="configure-recommendation-alerts-to-use-a-webhook"></a>Konfigurace výstrah doporučení pro použití Webhooku
-V této části se dozvíte, jak nakonfigurovat výstrahy Azure Advisor pro posílání dat doporučení prostřednictvím webhooků do stávajících systémů. 
+## <a name="configure-recommendation-alerts-to-use-a-webhook"></a>Konfigurace upozornění na doporučení pro použití webového háku
+Tato část ukazuje, jak nakonfigurovat výstrahy Azure Advisor pro odesílání dat doporučení prostřednictvím webhooků do vašich stávajících systémů. 
 
-Můžete nastavit upozornění, která se mají upozornit, když máte nové doporučení Poradce pro jeden z vašich prostředků. Tyto výstrahy vás můžou poslat e-mailem nebo textovou zprávou, ale dají se taky použít k integraci s vašimi stávajícími systémy prostřednictvím Webhooku. 
+Můžete nastavit výstrahy, které mají být upozorňovány, když máte nové doporučení poradce na jednom z vašich prostředků. Tato upozornění vás mohou upozornit prostřednictvím e-mailu nebo textové zprávy, ale mohou být také použity k integraci s vašimi stávajícími systémy prostřednictvím webhooku. 
 
 
-### <a name="using-the-advisor-recommendation-alert-payload"></a>Použití datové části upozornění pro doporučení Advisoru
-Pokud chcete integrovat výstrahy služby Advisor do vlastních systémů pomocí Webhooku, budete muset analyzovat datovou část JSON, která je odeslána z oznámení. 
+### <a name="using-the-advisor-recommendation-alert-payload"></a>Použití datové části upozornění na doporučení poradce
+Pokud chcete integrovat upozornění poradce do vlastních systémů pomocí webhooku, budete muset analyzovat datovou část JSON, která je odeslána z oznámení. 
 
-Když nastavíte skupinu akcí pro tuto výstrahu, můžete vybrat, jestli chcete použít společné schéma výstrah. Pokud vyberete běžné schéma výstrah, bude datová část vypadat takto: 
+Při nastavování skupiny akcí pro tuto výstrahu vyberete, zda chcete použít společné schéma výstrah. Pokud vyberete společné schéma výstrah, bude vaše datová část vypadat takto: 
 
 ```json
 {  
@@ -223,7 +223,7 @@ Když nastavíte skupinu akcí pro tuto výstrahu, můžete vybrat, jestli chcet
 }
   ```
 
-Pokud nepoužíváte společné schéma, vaše datová část vypadá následovně: 
+Pokud nepoužíváte běžné schéma, vaše datová část vypadá takto: 
 
 ```json
 {  
@@ -268,32 +268,32 @@ Pokud nepoužíváte společné schéma, vaše datová část vypadá následovn
 }
 ```
 
-V obou schématech můžete identifikovat události doporučení poradce pomocí hledání **EventSource** je `Recommendation` a **operace** `Microsoft.Advisor/recommendations/available/action`.
+V obou schématech můžete identifikovat události doporučení poradce hledáním `Recommendation` **eventSource** `Microsoft.Advisor/recommendations/available/action`je a **operationName** je .
 
-Mezi další důležitá pole, která byste mohli chtít použít, patří: 
+Některé z dalších důležitých polí, které můžete chtít použít, jsou: 
 
-* *alertTargetIDs* (ve společném schématu) nebo *ResourceID* (starší schéma)
+* *alertTargetID (ve* společném schématu) nebo *resourceId* (starší schéma)
 * *recommendationType*
-* *doporučení*
-* *recommendationCategory*
-* *recommendationImpact*
-* *recommendationResourceLink*
+* *název doporučení*
+* *doporučeníKategorie*
+* *doporučeníDopad*
+* *doporučeníResourceLink*
 
 
 ## <a name="manage-your-alerts"></a>Správa výstrah 
 
-Z Azure Advisor můžete výstrahy pro doporučení upravit, odstranit nebo zakázat a povolit. 
+Z Azure Advisor můžete upravit, odstranit nebo zakázat a povolit upozornění doporučení. 
 
 1. Na **portálu**vyberte **Azure Advisor**.
 
-    ![Azure Advisor banner](./media/advisor-alerts/create1.png)
+    ![Azure Advisor Banner](./media/advisor-alerts/create1.png)
 
-2. V části **monitorování** v levé nabídce vyberte **výstrahy**.
+2. V části **Monitorování** v levé nabídce vyberte **výstrahy**.
 
-    ![Azure Advisor banner](./media/advisor-alerts/create2.png)
+    ![Azure Advisor Banner](./media/advisor-alerts/create2.png)
 
-3. Chcete-li upravit výstrahu, kliknutím na název výstrahy otevřete výstrahu a upravte pole, která chcete upravit.
+3. Chcete-li výstrahu upravit, kliknutím na název výstrahy otevřete výstrahu a upravíte pole, která chcete upravit.
 
-4. Pokud chcete výstrahu odstranit, povolit nebo zakázat, klikněte na tři tečky na konci řádku a pak vyberte akci, kterou chcete provést.
+4. Chcete-li výstrahu odstranit, povolit nebo zakázat, klikněte na elipsu na konci řádku a vyberte akci, kterou chcete provést.
  
 

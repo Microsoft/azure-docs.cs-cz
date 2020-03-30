@@ -1,5 +1,5 @@
 ---
-title: Vytvoření datové továrny Azure pomocí sady .NET SDK
+title: Vytvoření Azure data factory pomocí .NET SDK
 description: Vytvořte datovou továrnu Azure ke zkopírování dat z jednoho umístění v úložišti objektů blob v Azure do jiného.
 services: data-factory
 documentationcenter: ''
@@ -14,19 +14,19 @@ ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
 ms.openlocfilehash: a2b775afcd9e603a11b560bb7c42d6cf76be9b34
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79241553"
 ---
-# <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Rychlý Start: vytvoření datové továrny a kanálu pomocí sady .NET SDK
+# <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Úvodní příručka: Vytvoření datové továrny a kanálu pomocí sady .NET SDK
 
-> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 > * [Verze 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuální verze](quickstart-create-data-factory-dot-net.md)
 
-Tento rychlý start popisuje použití sady .NET SDK k vytvoření datové továrny Azure. Kanál, který vytvoříte v této datové továrně, **kopíruje** data z jedné složky do jiné složky v úložišti objektů blob Azure. Kurz předvádějící způsoby **transformace** dat pomocí Azure Data Factory najdete v tématu [Kurz: Transformace dat pomocí Sparku](tutorial-transform-data-spark-portal.md).
+Tento rychlý start popisuje použití sady .NET SDK k vytvoření datové továrny Azure. Kanál, který vytvoříte v této datové **továrně, zkopíruje** data z jedné složky do jiné složky v úložišti objektů blob Azure. Návod, jak **transformovat** data pomocí Azure Data Factory, najdete [v tématu Kurz: Transformace dat pomocí Spark](tutorial-transform-data-spark-portal.md).
 
 > [!NOTE]
 > Tento článek neposkytuje podrobný úvod do služby Data Factory. Úvod do služby Azure Data Factory najdete v tématu [Úvod do Azure Data Factory](introduction.md).
@@ -43,26 +43,26 @@ Stáhněte sadu [Azure .NET SDK](https://azure.microsoft.com/downloads/) a nains
 
 ## <a name="create-an-application-in-azure-active-directory"></a>Vytvoření aplikace v Azure Active Directory
 
-V části *Postupy: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům*, postupujte podle pokynů k provedení těchto úloh:
+V částech *v části Postup: Pomocí portálu vytvořte instanční objekt azure a služby, který má přístup k prostředkům*, postupujte podle pokynů k provedení těchto úkolů:
 
-1. V části [vytvořit aplikaci Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)vytvořte aplikaci, která představuje aplikaci .NET, kterou vytváříte v tomto kurzu. Jako přihlašovací adresu URL můžete poskytnout fiktivní URL, jak ukazuje článek (`https://contoso.org/exampleapp`).
-2. V poli [získat hodnoty pro přihlášení](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)Získejte **ID aplikace** a **ID tenanta**a poznamenejte si tyto hodnoty, které použijete později v tomto kurzu. 
-3. V části [certifikáty a tajné](../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets)klíče Získejte **ověřovací klíč**a poznamenejte si tuto hodnotu, kterou použijete později v tomto kurzu.
-4. V části [přiřadit aplikaci k roli](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)přiřaďte aplikaci roli **Přispěvatel** na úrovni předplatného, aby aplikace mohla vytvářet datové továrny v rámci předplatného.
+1. V [části Vytvoření aplikace Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)vytvořte aplikaci, která představuje aplikaci .NET, kterou vytváříte v tomto kurzu. Jako přihlašovací adresu URL můžete poskytnout fiktivní URL, jak ukazuje článek (`https://contoso.org/exampleapp`).
+2. V [části Získat hodnoty pro přihlášení](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)získejte **ID aplikace** a **ID klienta**a poznamenejte si tyto hodnoty, které použijete později v tomto kurzu. 
+3. V [certifikáty a tajné klíče](../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets), získat ověřovací **klíč**a poznamenejte si tuto hodnotu, kterou použijete později v tomto kurzu.
+4. V [přiřazování aplikace k roli](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)přiřaďte aplikaci roli **přispěvatele** na úrovni předplatného, aby aplikace mohla v předplatném vytvářet datové továrny.
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
 
-Dále vytvořte konzolovou C# aplikaci .NET v aplikaci Visual Studio:
+Dále vytvořte aplikaci konzoly C# .NET v sadě Visual Studio:
 
 1. Spusťte **Visual Studio**.
-2. V okně Start vyberte **vytvořit nový projekt** > **Konzolová aplikace (.NET Framework)** . Vyžaduje se .NET verze 4.5.2 nebo novější.
-3. Do **název projektu**zadejte **ADFv2QuickStart**.
+2. V okně Start vyberte **Vytvořit novou aplikaci** > konzoly projektu **(.NET Framework)**. Vyžaduje se .NET verze 4.5.2 nebo novější.
+3. Do **pole Název projektu**zadejte **adfv2quickstart**.
 4. Vyberte **Vytvořit** a vytvořte projekt.
 
 ## <a name="install-nuget-packages"></a>Instalace balíčků NuGet
 
-1. Vyberte **nástroje** > **správce balíčků NuGet** > **konzole správce balíčků**.
-2. V podokně **konzoly Správce balíčků** spusťte následující příkazy pro instalaci balíčků. Další informace najdete v [balíčku NuGet pro Microsoft. Azure. Management. DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/).
+1. Vyberte **možnost Nástroje,** > vyberte**konzolu Správce balíčků****nástroje** > NuGet .
+2. V podokně **Konzola Správce balíčků** spusťte následující příkazy pro instalaci balíčků. Další informace naleznete v [balíčku nuget microsoft.azure.management.datafactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/).
 
     ```powershell
     Install-Package Microsoft.Azure.Management.DataFactory
@@ -85,7 +85,7 @@ Dále vytvořte konzolovou C# aplikaci .NET v aplikaci Visual Studio:
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
 
-2. Do metody **Main** přidejte následující kód, který nastaví proměnné. Zástupné symboly nahraďte vlastními hodnotami. Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:** [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database a další) a výpočetní prostředí (HDInsight a další) používané datovou továrnou můžou být v jiných oblastech.
+2. Do metody **Main** přidejte následující kód, který nastaví proměnné. Nahraďte zástupné symboly vlastními hodnotami. Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:**[Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database a další) a výpočetní prostředky (HDInsight a další) používané společností data můžou být v jiných oblastech.
 
    ```csharp
    // Set variables
@@ -113,7 +113,7 @@ Dále vytvořte konzolovou C# aplikaci .NET v aplikaci Visual Studio:
    string pipelineName = "Adfv2QuickStartPipeline";
    ```
 
-3. Do metody **Main** přidejte následující kód, který vytvoří instanci třídy **DataFactoryManagementClient**. Tento objekt použijete k vytvoření datové továrny, propojené služby, datových sad a kanálu. Použijete ho také k monitorování podrobných informací o spuštění kanálu.
+3. Přidejte následující kód do metody **Main,** která vytvoří instanci třídy **DataFactoryManagementClient.** Tento objekt použijete k vytvoření datové továrny, propojené služby, datových sad a kanálu. Použijete ho také k monitorování podrobných informací o spuštění kanálu.
 
    ```csharp
    // Authenticate and create a data factory management client
@@ -153,7 +153,7 @@ while (client.Factories.Get(resourceGroup, dataFactoryName).ProvisioningState ==
 
 Do metody **Main** přidejte následující kód, který vytvoří **propojenou službu Azure Storage**.
 
-V datové továrně vytvoříte propojené služby, abyste svá úložiště dat a výpočetní služby spojili s datovou továrnou. V tomto rychlém startu stačí vytvořit jednu Azure Storage propojenou službu pro zdroj kopírování i úložiště jímky. má název "AzureStorageLinkedService" v ukázce.
+V datové továrně vytvoříte propojené služby, abyste svá úložiště dat a výpočetní služby spojili s datovou továrnou. V tomto rychlém startu stačí vytvořit jednu propojenou službu Azure Storage pro zdroj kopií i úložiště jímek; je s názvem "AzureStorageLinkedService" v ukázce.
 
 ```csharp
 // Create an Azure Storage linked service
@@ -177,7 +177,7 @@ Console.WriteLine(SafeJsonConvert.SerializeObject(
 
 Do metody **Main** přidejte následující kód, který vytvoří **datovou sadu objektů blob Azure**.
 
-Nadefinujete datovou sadu, která představuje data ke kopírování ze zdroje do jímky. Tato datová sada objektů blob v tomto příkladu odkazuje na propojenou službu Azure Storage, kterou jste vytvořili v předchozím kroku: Datová sada přebírá parametr, jehož hodnota je nastavená v aktivitě, která tuto datovou sadu využívá. Parametr se používá k vytvoření "folderPath" ukazující na místo, kde jsou uložena data.
+Definujete datovou sadu, která představuje data pro kopírování ze zdroje do jímky. Tato datová sada objektů blob v tomto příkladu odkazuje na propojenou službu Azure Storage, kterou jste vytvořili v předchozím kroku: Datová sada přebírá parametr, jehož hodnota je nastavená v aktivitě, která tuto datovou sadu využívá. Parametr se používá k vytvoření "folderPath" ukazující na místo, kde jsou uložena nebo je uložena data.
 
 ```csharp
 // Create an Azure Blob dataset
@@ -206,7 +206,7 @@ Console.WriteLine(
 
 Do metody **Main** přidejte následující kód, který vytvoří **kanál s aktivitou kopírování**.
 
-V tomto příkladu tento kanál obsahuje jednu aktivitu a přebírá dva parametry: vstupní cestu objektu BLOB a cestu k výstupnímu objektu BLOB. Hodnoty pro tyto parametry se nastaví při aktivaci nebo spuštění kanálu. Aktivita kopírování odkazuje na stejnou datovou sadu objektů blob, kterou jste vytvořili v předchozím kroku jako vstup a výstup. Když se tato datová sada použije jako vstupní, zadá se vstupní cesta. A když se tato datová sada použije jako výstupní, zadá se výstupní cesta. 
+V tomto příkladu tento kanál obsahuje jednu aktivitu a trvá dva parametry: vstupní cesta objektu blob a cesta k výstupnímu objektu blob. Hodnoty pro tyto parametry se nastaví při aktivaci nebo spuštění kanálu. Aktivita kopírování odkazuje na stejnou datovou sadu objektů blob, kterou jste vytvořili v předchozím kroku jako vstup a výstup. Když se tato datová sada použije jako vstupní, zadá se vstupní cesta. A když se tato datová sada použije jako výstupní, zadá se výstupní cesta. 
 
 ```csharp
 // Create a pipeline with a copy activity
@@ -258,7 +258,7 @@ Console.WriteLine(SafeJsonConvert.SerializeObject(pipeline, client.Serialization
 
 Do metody **Main** přidejte následující kód, který **aktivuje spuštění kanálu**.
 
-Tento kód také nastaví hodnoty parametrů **inputPath** a **outputPath** zadaných v kanálu se skutečnými hodnotami zdrojových a podřízených cest objektů BLOB.
+Tento kód také nastaví hodnoty **inputPath** a **outputPath** parametry zadané v kanálu se skutečné hodnoty zdrojové a jímací objekt blob cesty.
 
 ```csharp
 // Create a pipeline run
@@ -294,7 +294,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
    }
    ```
 
-2. Do metody **Main** přidejte následující kód, který načte podrobnosti o spuštění aktivity kopírování, například velikost čtených nebo zapsaných dat.
+2. Přidejte následující kód do **hlavní** metody, která načítá podrobnosti spuštění aktivity kopírování, například velikost dat, která jsou přečtena nebo zapsána.
 
    ```csharp
    // Check the copy activity run details
@@ -316,7 +316,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 Sestavte a spusťte aplikaci a potom ověřte spuštění kanálu.
 
-Konzola vytiskne průběh vytváření datové továrny, propojených služeb, datových sad, kanálu a spuštění kanálu. Potom zkontroluje stav spuštění kanálu. Počkejte, dokud se nezobrazí podrobnosti o spuštění aktivity kopírování s velikostí dat pro čtení a zápis. Pak pomocí nástrojů, jako je [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) , zkontrolujte, že se objekty blob zkopírují do "outputBlobPath" z "inputBlobPath", jak jste určili v proměnných.
+Konzola vytiskne průběh vytváření datové továrny, propojených služeb, datových sad, kanálu a spuštění kanálu. Potom zkontroluje stav spuštění kanálu. Počkejte, až se zobrazí podrobnosti o aktivitě kopírování spustit s velikostí dat pro čtení a zápis. Pak použijte nástroje, jako je [například Průzkumník Azure Storage](https://azure.microsoft.com/features/storage-explorer/) ke kontrole objektů blob se zkopíruje do "outputBlobPath" z "inputBlobPath", jak jste zadali v proměnných.
 
 ### <a name="sample-output"></a>Ukázkový výstup
 
@@ -428,15 +428,15 @@ Press any key to exit...
 
 ## <a name="verify-the-output"></a>Ověření výstupu
 
-Kanál automaticky vytvoří výstupní složku v kontejneru objektů BLOB **adftutorial** . Pak zkopíruje soubor **EMP. txt** ze vstupní složky do výstupní složky. 
+Kanál automaticky vytvoří výstupní složku v kontejneru objektů blob **adftutorial.** Potom zkopíruje soubor **emp.txt** ze vstupní složky do výstupní složky. 
 
-1. V Azure Portal na stránce kontejneru **adftutorial** , kterou jste zastavili v části [přidání vstupní složky a souboru pro kontejner objektů BLOB](#add-an-input-folder-and-file-for-the-blob-container) výše, vyberte **aktualizovat** , aby se zobrazila výstupní složka. 
-2. V seznamu složka vyberte možnost **výstup**.
+1. Na webu Azure Portal na stránce **kontejneru adftutorial,** na které jste se zastavili ve [vstupní složce a souboru pro](#add-an-input-folder-and-file-for-the-blob-container) oddíl kontejner objektů blob výše, vyberte **aktualizovat,** abyste viděli výstupní složku. 
+2. V seznamu složek vyberte **výstup**.
 3. Potvrďte, že je do výstupní složky zkopírovaný soubor **emp.txt**. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete datovou továrnu odstranit programově, přidejte do programu následující řádky kódu: 
+Chcete-li programově odstranit datovou továrnu, přidejte do programu následující řádky kódu: 
 
 ```csharp
 Console.WriteLine("Deleting the data factory");
@@ -445,4 +445,4 @@ client.Factories.Delete(resourceGroup, dataFactoryName);
 
 ## <a name="next-steps"></a>Další kroky
 
-Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob v Azure. Projděte si [kurzy](tutorial-copy-data-dot-net.md), kde se dozvíte o použití služby Data Factory ve více scénářích. 
+Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob Azure. Projděte si [kurzy](tutorial-copy-data-dot-net.md), kde se dozvíte o použití služby Data Factory ve více scénářích. 

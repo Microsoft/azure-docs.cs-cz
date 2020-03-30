@@ -1,6 +1,6 @@
 ---
-title: Zprávy z cloudu na zařízení pomocí služby Azure IoT Hub (Python) | Microsoft Docs
-description: Postup posílání zpráv z cloudu na zařízení ze služby Azure IoT Hub pomocí sad SDK Azure IoT pro Python. Aplikaci simulovaného zařízení upravíte tak, aby přijímala zprávy z cloudu na zařízení a upravila back-end aplikaci pro posílání zpráv z cloudu na zařízení.
+title: Zprávy z cloudu na zařízení s Azure IoT Hub (Python) | Dokumenty společnosti Microsoft
+description: Jak odesílat zprávy z cloudu na zařízení do zařízení z centra Azure IoT pomocí sad Azure IoT SDK pro Python. Můžete upravit simulované zařízení aplikace přijímat zprávy z cloudu na zařízení a upravit back-end aplikace pro odesílání zpráv z cloudu na zařízení.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -9,51 +9,51 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: robinsh
 ms.openlocfilehash: 3613062cf8765a4aec3327b660bb5818898f2dd1
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110431"
 ---
-# <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>Posílání zpráv z cloudu na zařízení pomocí IoT Hub (Python)
+# <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>Odesílání zpráv z cloudu na zařízení pomocí služby IoT Hub (Python)
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-Azure IoT Hub je plně spravovaná služba, která pomáhá zajistit spolehlivou a zabezpečenou obousměrnou komunikaci mezi miliony zařízení a back-endu řešení. V rychlém startu [pro odeslání ze zařízení do služby IoT Hub](quickstart-send-telemetry-python.md) se dozvíte, jak vytvořit centrum IoT, zřídit v něm identitu zařízení a zakódovat aplikaci simulovaného zařízení, která odesílá zprávy typu zařízení-Cloud.
+Azure IoT Hub je plně spravovaná služba, která pomáhá umožnit spolehlivou a zabezpečenou obousměrnou komunikaci mezi miliony zařízení a back-endem řešení. [Odeslat telemetrii ze zařízení do služby IoT hub](quickstart-send-telemetry-python.md) rychlý start ukazuje, jak vytvořit službu IoT hub, zřízení identity zařízení v něm a kód simulované zařízení aplikace, která odesílá zprávy zařízení cloud.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Tento kurz sestaví na [odeslání telemetrie ze zařízení do služby IoT Hub](quickstart-send-telemetry-python.md). Ukazuje, jak:
+Tento kurz staví na [odesílání telemetrie ze zařízení do služby IoT hub](quickstart-send-telemetry-python.md). To vám ukáže, jak:
 
-* Z back-endu vašeho řešení odesílají zprávy typu cloud-zařízení do jediného zařízení prostřednictvím IoT Hub.
+* Z back-endu vašeho řešení můžete odesílat zprávy z cloudu na zařízení do jednoho zařízení prostřednictvím služby IoT Hub.
 
-* Příjem zpráv typu cloud-zařízení na zařízení.
+* Příjem zpráv z cloudu na zařízení na zařízení.
 
-* Z back-endu vašeho řešení požadavek na doručení zprávodesílaných do zařízení z IoT Hub.
+* Z back-endu vašeho řešení požádejte o potvrzení doručení *(zpětnou vazbu)* pro zprávy odeslané do zařízení ze služby IoT Hub.
 
-Další informace o zprávách z cloudu na zařízení najdete v [příručce pro vývojáře IoT Hub](iot-hub-devguide-messaging.md).
+Další informace o zprávách mezi cloudy najdete v [průvodci vývojáři služby IoT Hub](iot-hub-devguide-messaging.md).
 
 Na konci tohoto kurzu spustíte dvě konzolové aplikace Pythonu:
 
-* **SimulatedDevice.py**upravenou verzi aplikace vytvořenou v části [odeslání telemetrie ze zařízení do služby IoT Hub](quickstart-send-telemetry-python.md), která se připojí ke službě IoT Hub a přijímá zprávy typu cloud-zařízení.
+* **SimulatedDevice.py**, upravená verze aplikace vytvořená v [aplikaci Send telemetrie ze zařízení do služby IoT hub](quickstart-send-telemetry-python.md), která se připojuje k centru IoT hub a přijímá zprávy z cloudu na zařízení.
 
-* **SendCloudToDeviceMessage.py**, která pošle zprávu typu cloud-zařízení do aplikace simulovaného zařízení prostřednictvím IoT Hub a potom obdrží potvrzení o doručení.
+* **SendCloudToDeviceMessage.py**, který odešle zprávu z cloudu na zařízení do aplikace simulované zařízení prostřednictvím služby IoT Hub a pak obdrží potvrzení o doručení.
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
-* Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto článku používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* Zkontrolujte, zda je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto článku používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokován v některých prostředích podnikové a vzdělávací sítě. Další informace a způsoby, jak tento problém vyřešit, najdete [v tématu připojení k centru IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="receive-messages-in-the-simulated-device-app"></a>Přijímání zpráv v aplikaci simulovaného zařízení
+## <a name="receive-messages-in-the-simulated-device-app"></a>Příjem zpráv v aplikaci pro simulované zařízení
 
-V této části vytvoříte konzolovou aplikaci v Pythonu pro simulaci zařízení a příjem zpráv z cloudu na zařízení ze služby IoT Hub.
+V této části vytvoříte konzolovou aplikaci Pythonu, která simuluje zařízení a přijímá zprávy z cloudu na zařízení z centra IoT Hub.
 
-1. Pomocí textového editoru vytvořte soubor **SimulatedDevice.py** .
+1. Pomocí textového editoru vytvořte **soubor SimulatedDevice.py.**
 
-2. Na začátek souboru **SimulatedDevice.py** přidejte následující příkazy a proměnné `import`:
+2. Na začátek **SimulatedDevice.py** souboru přidejte následující `import` příkazy a proměnné:
 
    ```python
     import threading
@@ -62,13 +62,13 @@ V této části vytvoříte konzolovou aplikaci v Pythonu pro simulaci zařízen
     RECEIVED_MESSAGES = 0
     ```
 
-3. Do souboru **SimulatedDevice.py** přidejte následující kód. Nahraďte zástupný symbol {deviceConnectionString} připojovacím řetězcem zařízení pro zařízení, které jste vytvořili v části [poslat telemetrii ze zařízení, do rychlého startu služby IoT Hub](quickstart-send-telemetry-python.md) :
+3. Do **SimulatedDevice.py** souboru přidejte následující kód. Nahraďte zástupnou hodnotu {deviceConnectionString}připojovacím řetězcem zařízení pro zařízení, které jste vytvořili v [modulu Odeslat telemetrii ze zařízení do rychlého startu služby IoT hub:](quickstart-send-telemetry-python.md)
 
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
     ```
 
-4. Přidejte následující funkci, která vytiskne přijaté zprávy do konzoly:
+4. Přidejte následující funkci pro tisk přijatých zpráv do konzoly:
 
     ```python
     def message_listener(client):
@@ -82,7 +82,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu pro simulaci zařízen
             print( "    Total calls received: {}".format(RECEIVED_MESSAGES))
     ```
 
-5. Přidejte následující kód pro inicializaci klienta a počkejte na přijetí zprávy z cloudu na zařízení:
+5. Přidejte následující kód pro inicializaci klienta a počkejte na příjem zprávy z cloudu na zařízení:
 
     ```python
     def iothub_client_sample_run():
@@ -110,21 +110,21 @@ V této části vytvoříte konzolovou aplikaci v Pythonu pro simulaci zařízen
         iothub_client_sample_run()
     ```
 
-7. Uložte a zavřete soubor **SimulatedDevice.py** .
+7. Uložit a zavřít **SimulatedDevice.py** soubor.
 
-## <a name="get-the-iot-hub-connection-string"></a>Získání připojovacího řetězce centra IoT Hub
+## <a name="get-the-iot-hub-connection-string"></a>Získání připojovacího řetězce centra IoT hub
 
-V tomto článku vytvoříte back-end službu pro posílání zpráv z cloudu na zařízení prostřednictvím služby IoT Hub, kterou jste vytvořili v tématu [odeslání telemetrie ze zařízení do služby IoT Hub](quickstart-send-telemetry-python.md). K posílání zpráv z cloudu na zařízení potřebuje služba oprávnění **připojit** se. Ve výchozím nastavení se všechny IoT Hub vytvoří pomocí zásad sdíleného přístupu s názvem **Služba** , která toto oprávnění udělí.
+V tomto článku vytvoříte back-endovou službu pro odesílání zpráv mezi cloudy prostřednictvím služby IoT hub, kterou jste vytvořili v [aplikaci Send telemetrie ze zařízení do služby IoT hub](quickstart-send-telemetry-python.md). K odesílání zpráv z cloudu na zařízení potřebuje vaše služba oprávnění **k připojení služby.** Ve výchozím nastavení je každé centrum IoT Hub vytvořeno pomocí zásady sdíleného přístupu s názvem **služba,** která uděluje toto oprávnění.
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
-## <a name="send-a-cloud-to-device-message"></a>Odeslání zprávy typu cloud-zařízení
+## <a name="send-a-cloud-to-device-message"></a>Odeslání zprávy z cloudu na zařízení
 
-V této části vytvoříte konzolovou aplikaci v Pythonu, která posílá zprávy typu cloud-zařízení do aplikace simulovaného zařízení. Budete potřebovat ID zařízení, které jste přidali v části [odeslání telemetrie ze zařízení do rychlého startu služby IoT Hub](quickstart-send-telemetry-python.md) . Také potřebujete připojovací řetězec centra IoT, který jste zkopírovali dříve, v [části získání připojovacího řetězce centra IoT Hub](#get-the-iot-hub-connection-string).
+V této části vytvoříte konzolovou aplikaci Pythonu, která odesílá zprávy z cloudu na zařízení do aplikace simulovaných zařízení. Potřebujete ID zařízení zařízení, které jste přidali v [odesílání telemetrie ze zařízení do rychlého startu služby IoT hub.](quickstart-send-telemetry-python.md) Potřebujete také připojovací řetězec centra IoT, který jste dříve zkopírovali v [připojovacím řetězci Centra IoT](#get-the-iot-hub-connection-string).
 
-1. Pomocí textového editoru vytvořte soubor **SendCloudToDeviceMessage.py** .
+1. Pomocí textového editoru vytvořte **soubor SendCloudToDeviceMessage.py.**
 
-2. Na začátek souboru **SendCloudToDeviceMessage.py** přidejte následující příkazy a proměnné `import`:
+2. Na začátek **SendCloudToDeviceMessage.py** souboru přidejte následující `import` příkazy a proměnné:
 
     ```python
     import random
@@ -139,7 +139,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která posílá zprá
     MSG_TXT = "{\"service client sent a message\": %.2f}"
     ```
 
-3. Do souboru **SendCloudToDeviceMessage.py** přidejte následující kód. Nahraďte zástupné hodnoty {IoT Hub Connection String} a {ID zařízení} připojovacím řetězcem centra IoT a ID zařízení, které jste si poznamenali dříve:
+3. Do **SendCloudToDeviceMessage.py** souboru přidejte následující kód. Nahraďte zástupné hodnoty "{iot hub connection string}" a {device id}zástupným symbolem připojovacím řetězcem ioT hubu a ID zařízení, které jste si dříve poznamenali:
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"
@@ -158,7 +158,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která posílá zprá
         print ( 'messagingResult : {0}'.format(messaging_result) )
     ```
 
-5. Přidejte následující kód, který odešle zprávu do zařízení a zpracuje zprávu o zpětné vazbě, když zařízení potvrdí zprávu typu cloud-zařízení:
+5. Přidejte následující kód, který odešle zprávu do zařízení a zpracovat zprávu o zpětné vazbě, když zařízení potvrdí zprávu z cloudu na zařízení:
 
     ```python
     def iothub_messaging_sample_run():
@@ -210,25 +210,25 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která posílá zprá
         iothub_messaging_sample_run()
     ```
 
-7. Uložte a zavřete soubor **SendCloudToDeviceMessage.py** .
+7. Uložit a zavřít **soubor SendCloudToDeviceMessage.py.**
 
 ## <a name="run-the-applications"></a>Spuštění aplikací
 
 Nyní můžete spustit aplikace.
 
-1. Otevřete příkazový řádek a nainstalujte **sadu SDK pro zařízení Azure IoT Hub pro Python**.
+1. Otevřete příkazový řádek a nainstalujte **sadku Azure IoT Hub Device SDK pro Python**.
 
     ```shell
     pip install azure-iothub-device-client
     ```
 
-2. Na příkazovém řádku spusťte následující příkaz pro příjem zpráv z cloudu na zařízení:
+2. Na příkazovém řádku spusťte následující příkaz pro poslech zpráv z cloudu na zařízení:
 
     ```shell
     python SimulatedDevice.py
     ```
 
-    ![Spuštění aplikace simulovaného zařízení](./media/iot-hub-python-python-c2d/simulated-device.png)
+    ![Spuštění aplikace simulované zařízení](./media/iot-hub-python-python-c2d/simulated-device.png)
 
 3. Otevřete nový příkazový řádek a nainstalujte **sadu Azure IoT Hub Service SDK pro Python**.
 
@@ -236,22 +236,22 @@ Nyní můžete spustit aplikace.
     pip install azure-iothub-service-client
     ```
 
-4. Na příkazovém řádku spusťte následující příkaz pro odeslání zprávy typu cloud-zařízení a počkejte na zpětnou vazbu zprávy:
+4. Na příkazovém řádku spusťte následující příkaz, který odešle zprávu z cloudu na zařízení a vyčká te na zpětnou vazbu:
 
     ```shell
     python SendCloudToDeviceMessage.py
     ```
 
-    ![Spuštění aplikace pro odeslání příkazu Cloud-zařízení](./media/iot-hub-python-python-c2d/send-command.png)
+    ![Spuštění aplikace pro odeslání příkazu cloud-to-device](./media/iot-hub-python-python-c2d/send-command.png)
 
-5. Poznamenejte si zprávu, kterou zařízení přijalo.
+5. Poznamenejte si zprávu přijatou zařízením.
 
     ![Přijatá zpráva](./media/iot-hub-python-python-c2d/message-received.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak odesílat a přijímat zprávy z cloudu do zařízení.
+V tomto kurzu jste se naučili, jak odesílat a přijímat zprávy z cloudu na zařízení.
 
-Příklady kompletních řešení, která používají IoT Hub, najdete v tématu [akcelerátor řešení vzdáleného monitorování Azure IoT](https://azure.microsoft.com/documentation/suites/iot-suite/).
+Příklady kompletních komplexních řešení, která používají službu IoT Hub, najdete v [tématu Akcelerátor řešení vzdáleného monitorování Azure IoT](https://azure.microsoft.com/documentation/suites/iot-suite/).
 
-Další informace o vývoji řešení pomocí IoT Hub najdete v příručce pro [vývojáře IoT Hub](iot-hub-devguide.md).
+Další informace o vývoji řešení pomocí služby IoT Hub najdete v [průvodci vývojáři služby IoT Hub](iot-hub-devguide.md).

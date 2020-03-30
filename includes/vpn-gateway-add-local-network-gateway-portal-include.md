@@ -9,16 +9,16 @@ ms.date: 10/04/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 9648f4c16e8d266bbdd504d4a7599b67a5c846b4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73522551"
 ---
-1. V nabídce [Azure Portal](https://portal.azure.com) vyberte **vytvořit prostředek**. 
+1. V nabídce [Portál Azure](https://portal.azure.com) vyberte **Vytvořit prostředek**. 
 
-   ![Vytvoření prostředku v Azure Portal](./media/vpn-gateway-add-local-network-gateway-portal-include/azure-portal-create-resource.png)
-2. Do pole **Hledat na Marketplace** zadejte **Brána místní sítě**a potom stiskněte klávesu **ENTER** pro hledání. Zobrazí se seznam výsledků. Klikněte na **Brána místní sítě** a pak kliknutím na **Vytvořit** otevřete stránku **Vytvořit bránu místní sítě**.
+   ![Vytvoření prostředku na webu Azure Portal](./media/vpn-gateway-add-local-network-gateway-portal-include/azure-portal-create-resource.png)
+2. Do pole **Hledat na tržišti** zadejte **Místní síťovou bránu**a stiskněte **Enter** a hledejte. Zobrazí se seznam výsledků. Klikněte na **Brána místní sítě** a pak kliknutím na **Vytvořit** otevřete stránku **Vytvořit bránu místní sítě**.
 
    ![Vytvoření brány místní sítě](./media/vpn-gateway-add-local-network-gateway-portal-include/create-local-network-gateway.png "Vytvoření brány místní sítě")
 
@@ -30,6 +30,6 @@ ms.locfileid: "73522551"
    - **Konfigurovat nastavení protokolu BGP:** Používejte jenom při konfiguraci BGP. V jiných případech tuto možnost nevybírejte.
    - **Předplatné**: Zkontrolujte, že se zobrazuje správné předplatné.
    - **Skupina prostředků**: Vyberte skupinu prostředků, kterou chcete použít. Můžete vytvořit novou skupinu prostředků, nebo vybrat skupinu prostředků, kterou jste už vytvořili.
-   - **Umístění:** Umístění je stejné jako **oblast** v jiném nastavení. Vyberte umístění, ve kterém bude tento objekt vytvořen. Můžete vybrat stejné umístění, ve kterém se nachází vaše virtuální síť, ale není to povinné.
+   - **Umístění:** Umístění je stejné jako **oblast** v jiných nastaveních. Vyberte umístění, ve které bude tento objekt vytvořen. Můžete vybrat stejné umístění, ve kterém se nachází vaše virtuální síť, ale není to povinné.
 
 4. Až zadáte všechny hodnoty, klikněte na tlačítko **Vytvořit** v dolní části stránky a vytvořte bránu místní sítě.

@@ -1,7 +1,7 @@
 ---
-title: Použití funkcí usnadnění v Návrháři (Preview)
+title: Použití funkcí usnadnění v návrháři (náhled)
 titleSuffix: Azure Machine Learning
-description: Přečtěte si o funkcích, které jsou k dispozici v návrháři, klávesových zkratek a obrazovkách čtečky
+description: Přečtěte si o klávesových zkratkách a funkcích usnadnění čtečky obrazovky dostupných v návrháři.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,73 +10,73 @@ ms.author: peterlu
 author: peterclu
 ms.date: 01/09/2020
 ms.openlocfilehash: 59199291589a81d0a0d96b7867078b8196be086f
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77366195"
 ---
-# <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>Použití klávesnice k použití návrháře Azure Machine Learning (Preview)
+# <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>Použití návrháře Azure Machine Learning pomocí klávesnice (preview)
 
-Naučte se používat čtečku klávesnice a obrazovky k používání návrháře Azure Machine Learning. Seznam klávesových zkratek, které fungují všude v Azure Portal, najdete v tématu [klávesové zkratky v Azure Portal](../azure-portal/azure-portal-keyboard-shortcuts.md)
+Naučte se používat klávesnici a čtečku obrazovky k použití návrháře Azure Machine Learning. Seznam klávesových zkratek, které fungují všude na webu Azure Portal, najdete [v tématu Klávesové zkratky na webu Azure Portal.](../azure-portal/azure-portal-keyboard-shortcuts.md)
 
-Tento pracovní postup byl testován pomocí programu [Narrator](https://support.microsoft.com/help/22798/windows-10-complete-guide-to-narrator) a [JAWS](https://www.freedomscientific.com/products/software/jaws/), ale měl by fungovat s dalšími standardními čtečkami obrazovky.
+Tento pracovní postup byl testován pomocí [předčítání](https://support.microsoft.com/help/22798/windows-10-complete-guide-to-narrator) a [jaws](https://www.freedomscientific.com/products/software/jaws/), ale měl by fungovat s jinými standardními programy pro čtení z obrazovky.
 
 ## <a name="navigate-the-pipeline-graph"></a>Navigace v grafu kanálu
 
-Graf kanálu je uspořádaný jako vnořený seznam. Vnější seznam je seznam modulů, který popisuje všechny moduly v grafu kanálu. Vnitřní seznam je seznam připojení, který popisuje všechna připojení určitého modulu.  
+Graf potrubí je uspořádán jako vnořený seznam. Vnější seznam je seznam modulů, který popisuje všechny moduly v grafu potrubí. Vnitřní seznam je seznam připojení, který popisuje všechna připojení určitého modulu.  
 
-1. V seznamu modul použijte klávesu šipka k přepínání modulů.
-1. Pomocí karty otevřete seznam připojení pro cílový modul.
-1. K přepínání mezi porty připojení pro modul použijte klávesu šipka.
-1. K přechodu na cílový modul použijte "G".
+1. V seznamu modulů přepínejte pomocí klávesy se šipkou.
+1. Karta slouží k otevření seznamu připojení pro cílový modul.
+1. Pomocí klávesy se šipkou můžete přepínat mezi porty připojení modulu.
+1. Použijte "G" pro přejděte do cílového modulu.
 
-## <a name="edit-the-pipeline-graph"></a>Úprava grafu kanálu
+## <a name="edit-the-pipeline-graph"></a>Úprava grafu potrubí
 
 ### <a name="add-a-module-to-the-graph"></a>Přidání modulu do grafu
 
-1. Stisknutím kombinace kláves CTRL + F6 přepnete fokus z plátna do stromu modulu.
-1. Vyhledá požadovaný modul ve stromu modulu pomocí standardního ovládacího prvku TreeView.
+1. Pomocí kombinace kláves Ctrl+F6 můžete přepnout fokus z plátna do stromu modulu.
+1. Najděte požadovaný modul ve stromu modulu pomocí standardního ovládacího prvku treeview.
 
-### <a name="edit-a-module"></a>Upravit modul
+### <a name="edit-a-module"></a>Úprava modulu
 
 Připojení modulu k jinému modulu:
 
-1. Pokud chcete otevřít pomocníka připojení, použijte Ctrl + Shift + H při cílení na modul v seznamu modul.
-1. Upravte porty připojení pro modul.
+1. Při cílení na modul v seznamu modulů použijte kombinaci kláves Ctrl + Shift + H k otevření pomocníka pro připojení.
+1. Upravte porty připojení modulu.
 
-Úprava vlastností modulu:
+Nastavení vlastností modulu:
 
-1. Pro otevření vlastností modulu použijte CTRL + SHIFT + E při cílení na modul.
+1. Při cílení na modul použijte kombinaci kláves Ctrl + Shift + E k otevření vlastností modulu.
 1. Upravte vlastnosti modulu.
 
-## <a name="navigation-shortcuts"></a>Navigační zástupci
+## <a name="navigation-shortcuts"></a>Navigační zkratky
 
-| Stisknutí kláves | Popis |
+| Stisknutí klávesy | Popis |
 |-|-|
-| CTRL + F6 | Přepnout fokus mezi plátnem a stromem modulu |
-| CTRL + F1   | Při zaměření na uzel ve stromu modulů otevřít informační kartu |
-| CTRL + SHIFT + H | Otevřete pomocníka připojení, pokud se fokus nachází na uzlu. |
-| CTRL + SHIFT + E | Otevřete vlastnosti modulu, když je fokus na uzlu. |
-| CTRL + G | Přesunout fokus na první neúspěšný uzel, pokud selhalo spuštění kanálu |
+| Ctrl+F6 | Přepínat fokus mezi plátnem a stromem modulu |
+| Ctrl + F1   | Otevření informační karty při zaostřování na uzel ve stromu modulů |
+| Ctrl + Shift + H | Otevření pomocné hodu připojení při fokusu na uzlu |
+| Ctrl + Shift + E | Otevření vlastností modulu při zaostření na uzlu |
+| Ctrl + G | Přesunutí fokusu na první neúspěšný uzel, pokud se spuštění kanálu nezdařilo |
 
-## <a name="action-shortcuts"></a>Zástupci akcí
+## <a name="action-shortcuts"></a>Zkratky akcí
 
-Použijte následující klávesové zkratky s přístupovým klíčem. Další informace o přístupových klíčích najdete v tématu https://en.wikipedia.org/wiki/Access_key.
+Pomocí přístupové klávesy použijte následující klávesy. Další informace o přístupových https://en.wikipedia.org/wiki/Access_keyklíčích naleznete v tématu .
 
-| Stisknutí kláves | Akce |
+| Stisknutí klávesy | Akce |
 |-|-|
-| Přístupový klíč + R | Spustit |
-| Přístupový klíč + P | Publikovat |
-| Přístupová klávesa + C | Klonovat |
-| Přístupová klávesa + D | Nasadit |
+| Přístupový klíč + R | Spusťte |
+| Přístupový klíč + P | Publikování |
+| Přístupový klíč + C | Klonování |
+| Přístupový klíč + D | Nasazení |
 | Přístupový klíč + I | Vytvořit nebo aktualizovat kanál odvození |
 | Přístupový klíč + B | Vytvořit nebo aktualizovat kanál odvození dávky |
-| Přístupový klíč + K | Otevřete rozevírací seznam vytvořit kanál odvození. |
-| Přístupový klíč + U | Otevření rozevíracího seznamu pro odvození kanálu aktualizace |
-| Přístupový klíč + M | Otevřít rozevírací seznam další (...) |
+| Přístupový klíč + K | Otevřete rozevírací seznam Vytvořit kanál odvození. |
+| Přístupový klíč + U | Otevřete rozbalovací seznam Aktualizace odvození |
+| Přístupový klíč + M | Otevřít další(...) rozevírací informace |
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Zapnutí vysokého kontrastu nebo změna motivu](../azure-portal/azure-portal-change-theme-high-contrast.md)
-- [Nástroje související s přístupností v Microsoftu](https://www.microsoft.com/accessibility)
+- [Nástroje související s usnadněním přístupu ve společnosti Microsoft](https://www.microsoft.com/accessibility)

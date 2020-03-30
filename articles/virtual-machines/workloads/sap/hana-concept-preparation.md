@@ -1,5 +1,5 @@
 ---
-title: Zásady zotavení po havárii a příprava na SAP HANA v Azure (velké instance) | Microsoft Docs
+title: Zásady zotavení po havárii a příprava na SAP HANA v Azure (velké instance) | Dokumenty společnosti Microsoft
 description: Zásady zotavení po havárii a příprava na SAP HANA v Azure (velké instance)
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,96 +14,96 @@ ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 33d52f871de75a7f7d34016b040e44d6f1623fd8
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70101260"
 ---
-# <a name="disaster-recovery-principles"></a>Principy zotavení po havárii
+# <a name="disaster-recovery-principles"></a>Zásady zotavení po havárii
 
-Velké instance HANA nabízí funkce zotavení po havárii mezi velkými razítky instancí HANA v různých oblastech Azure. Pokud například nasadíte velké jednotky instancí HANA v USA – západ oblasti Azure, můžete použít jednotky velkých instancí HANA v USA – východ oblasti jako jednotky pro zotavení po havárii. Jak bylo zmíněno dříve, zotavení po havárii není automaticky nakonfigurováno, protože vyžaduje, abyste zaplatili za jinou jednotku velkých instancí HANA v oblasti zotavení po havárii. Nastavení zotavení po havárii funguje pro horizontální navýšení kapacity i pro nastavení horizontálního navýšení kapacity. 
+Velké instance HANA nabízejí funkci zotavení po havárii mezi razítky velké instance HANA v různých oblastech Azure. Pokud například nasadíte jednotky velké instance HANA v oblasti Azure – západ USA, můžete jednotky velké instance HANA v oblasti USA – východ použít jako jednotky zotavení po havárii. Jak již bylo zmíněno dříve, zotavení po havárii není nakonfigurováno automaticky, protože vyžaduje, abyste zaplatili za jinou jednotku velké instance HANA v oblasti zotavení po Havárii. Nastavení zotavení po havárii funguje pro škálování i horizontální navýšení kapacity. 
 
-Ve scénářích nasazených doposud zákazníci používají jednotku v oblasti zotavení po havárii ke spouštění neprodukčních systémů, které používají nainstalovanou instanci HANA. Jednotka velké instance HANA musí být stejná jako SKU, která se používá pro produkční účely. Následující obrázek ukazuje, jak konfigurace disku mezi jednotkou serveru v produkční oblasti Azure a oblastí zotavení po havárii vypadá takto:
+Ve scénářích, které byly dosud nasazeny, zákazníci používají jednotku v oblasti zotavení po Havárii ke spuštění neprodukčních systémů, které používají nainstalovanou instanci HANA. Jednotka velké instance HANA musí být stejné skladové položky jako skladová položka používaná pro výrobní účely. Následující obrázek ukazuje, jak vypadá konfigurace disku mezi jednotkou serveru v produkční oblasti Azure a oblastí zotavení po havárii:
 
-![Konfigurace instalace DR z místa na disku](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_setup.PNG)
+![Konfigurace nastavení zotavení po havárii z diskového hlediska](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_setup.PNG)
 
-Jak je znázorněno na obrázku tohoto přehledu, je třeba seřadit druhou sadu diskových svazků. Svazky cílového disku mají stejnou velikost jako produkční svazky pro instanci výroby v jednotkách zotavení po havárii. Tyto diskové svazky jsou spojené s jednotkou serveru velké instance HANA na webu pro zotavení po havárii. Následující svazky se replikují z produkční oblasti do lokality DR:
+Jak je znázorněno na tomto přehledu grafiky, je třeba objednat druhou sadu svazků disku. Cílové diskové svazky mají stejnou velikost jako objemy výroby pro produkční instanci v jednotkách zotavení po havárii. Tyto diskové svazky jsou přidruženy k jednotce serveru velké instance HANA v lokalitě pro zotavení po havárii. Následující svazky jsou replikovány z produkční oblasti do lokality zotavení po Havárii:
 
 - /hana/data
 - /hana/logbackups 
-- /Hana/Shared (zahrnuje/usr/SAP)
+- /hana/shared (včetně /usr/sap)
 
-Svazek/Hana/log není replikovaný, protože protokol transakcí SAP HANA není potřeba v tom, jak se provádí obnovení z těchto svazků. 
+Svazek /hana/log není replikován, protože protokol transakcí SAP HANA není potřeba způsobem, jakým se provádí obnovení z těchto svazků. 
 
-Nabízená funkce zotavení po havárii je základem funkce replikace úložiště nabízené infrastrukturou velkých instancí HANA. Funkce, která se používá na straně úložiště, není konstantní datový proud změn, které se replikují asynchronně, protože změny svazku úložiště probíhají. Místo toho je to mechanismus, který spoléhá na skutečnost, že snímky těchto svazků jsou pravidelně vytvářeny. Rozdíl mezi již replikovaným snímkem a novým snímkem, který ještě není replikovaný, se pak přenese do lokality pro zotavení po havárii do cílových diskových svazků.  Tyto snímky se ukládají na svazcích a v případě převzetí služeb při selhání v případě zotavení po havárii je nutné na těchto svazcích obnovit.  
+Základem nabízené funkce zotavení po havárii je funkce replikace úložiště, kterou nabízí infrastruktura velké instance HANA. Funkce, která se používá na straně úložiště není konstantní proud změn, které se replikují asynchronním způsobem jako změny dojít ke svazku úložiště. Místo toho je mechanismus, který závisí na skutečnosti, že snímky těchto svazků jsou vytvářeny pravidelně. Rozdíl mezi již replikovaný snímek a nový snímek, který ještě není replikován je pak převedena do lokality zotavení po havárii do cílových diskových svazků.  Tyto snímky jsou uloženy na svazcích a pokud dojde k převzetí služeb při selhání zotavení po havárii, je třeba je obnovit na těchto svazcích.  
 
-První přenos úplných dat svazku by měl být před tím, než se objem dat zmenší na rozdíl mezi snímky. V důsledku toho svazky na webu DR obsahují všechny snímky svazků provedené v provozní lokalitě. Nakonec můžete pomocí tohoto systému DR přejít k dřívějšímu stavu a obnovit ztracená data, aniž byste museli vrátit provozní systém.
+První přenos úplných dat svazku by měl být dříve, než se množství dat stane menším než rozdíly mezi snímky. V důsledku toho svazky v lokalitě zotavení po Havárii obsahují každý snímek svazku provedený chod v produkčním lokalitě. Nakonec můžete tento systém zotavení po havárii použít k získání dřívějšího stavu k obnovení ztracených dat bez vrácení produkčního systému.
 
-Pokud existuje nasazení MCOD s více nezávisle SAP HANA instancemi na jedné jednotce velké instance HANA, očekává se, že všechny instance SAP HANA na straně zotavení replikují úložiště.
+Pokud je nasazení MCOD s více nezávislých instancí SAP HANA na jedné jednotce velké instance HANA, očekává se, že všechny instance SAP HANA jsou stále replikovány úložiště na straně zotavení po Havárii.
 
-V případech, kdy použijete replikaci systému HANA jako funkci vysoké dostupnosti v produkčním webu a použijete replikaci založenou na úložištích pro lokalitu DR, replikují se svazky obou uzlů z primární lokality do instance zotavení po havárii. Další úložiště (stejná velikost jako primární uzel) se musí koupit v lokalitě DR, aby se pokryla replikace z primárního i sekundárního na server DR. 
+V případech, kdy používáte replikaci systému HANA jako funkci s vysokou dostupností v produkční lokalitě a používáte replikaci založenou na úložišti pro lokalitu zotavení po Havárii, jsou replikovány svazky obou uzlů z primární lokality do instance zotavení po Havárii. Je nutné zakoupit další úložiště (stejnou velikost jako primární uzel) v lokalitě zotavení po Havárii, aby bylo možné replikovat replikaci z primární i sekundární do zotavení po havárii. 
 
 
 
 >[!NOTE]
->Funkce replikace úložiště s velkou instancí HANA je zrcadlení a replikuje snímky úložiště. Pokud neprovedete snímky úložiště, které byly zavedeny v části zálohování a obnovení tohoto článku, nemůžete mít žádnou replikaci na lokalitu pro zotavení po havárii. Spuštění snímku úložiště je předpokladem pro replikaci úložiště na lokalitu pro zotavení po havárii.
+>Funkce replikace úložiště velké instance HANA je zrcadlení a replikace snímků úložiště. Pokud neprovedete snímky úložiště, jak je uvedeno v části Zálohování a obnovení tohoto článku, nemůže existovat žádná replikace lokality pro zotavení po havárii. Spuštění snímku úložiště je předpokladem pro replikaci úložiště do lokality zotavení po havárii.
 
 
 
 ## <a name="preparation-of-the-disaster-recovery-scenario"></a>Příprava scénáře zotavení po havárii
-V tomto scénáři máte produkční systém běžící na rozsáhlých instancích služby HANA v produkční oblasti Azure. V následujících krocích se předpokládá, že identifikátor SID tohoto systému HANA je "PRD" a že máte neprodukční systém spuštěný v rozsáhlých instancích služby HANA v oblasti Azure DR. V takovém případě se předpokládá, že jeho identifikátor SID je "TST". Tato konfigurace je znázorněna na následujícím obrázku:
+V tomto scénáři máte produkční systém spuštěný na velké instance HANA v oblasti produkčníazure. Pro následující kroky předpokládejme, že SID tohoto systému HANA je "PRD" a že máte neprodukční systém spuštěný na velkých instancích HANA v oblasti Dr Azure. Pro druhé, předpokládejme, že jeho SID je "TST." Následující obrázek ukazuje tuto konfiguraci:
 
-![Spuštění instalace DR](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start1.PNG)
+![Zahájení instalace zotavení po Havárii](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start1.PNG)
 
-Pokud se instance serveru ještě neobjednala s dodatečnou nastavenou svazkem úložiště, SAP HANA v Azure Service managementu připojí další sadu svazků jako cíl pro produkční repliku do jednotky velkých instancí HANA, na které spouštíte TST. Instance HANA Pro tento účel musíte zadat identifikátor SID vaší provozní instance HANA. Po SAP HANA na Azure Service Management potvrdí, že se tyto svazky připojí, musíte tyto svazky připojit k jednotce velké instance HANA.
+Pokud instance serveru ještě nebyla objednána s další sadou svazků úložiště, SAP HANA ve službě Azure Service Management připojí další sadu svazků jako cíl pro produkční repliku k jednotce velké instance HANA, na které spouštěte TST Hana instance. Za tímto účelem je třeba zadat SID vaší produkční instance HANA. Poté, co SAP HANA ve správě služeb Azure potvrdí připojení těchto svazků, je třeba připojit tyto svazky do jednotky velké instance HANA.
 
-![Další krok instalace DR](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start2.PNG)
+![Další krok nastavení zotavení po havárii](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start2.PNG)
 
-Dalším krokem je instalace druhé instance SAP HANA na velké jednotce instance HANA v oblasti Azure v systému DR, kde spustíte instanci služby TST HANA. Nově nainstalovaná SAP HANA instance musí mít stejný identifikátor SID. Uživatelé, kteří vytvořili, musí mít stejné UID a ID skupiny jako provozní instance. Podrobnosti najdete v tématu [zálohování a obnovení](hana-backup-restore.md) . Pokud byla instalace úspěšná, musíte:
+Dalším krokem je instalace druhé instance SAP HANA do jednotky velké instance HANA v oblasti Azure zotavení po Havárii, kde spustíte instanci TST HANA. Nově nainstalovaná instance SAP HANA musí mít stejný SID. Vytvoření uživatelé musí mít stejné ID UID a ID skupiny, které má produkční instance. Podrobnosti [nasviťte na zálohování a obnovení.](hana-backup-restore.md) Pokud byla instalace úspěšná, je třeba:
 
-- Proveďte krok 2 pro přípravu snímku úložiště, který je popsaný v tématu [zálohování a obnovení](hana-backup-restore.md).
-- Pokud jste tak ještě neučinili, vytvořte veřejný klíč pro jednotku velkých instancí HANA jednotky pro zotavení po havárii. Viz krok 3 přípravy snímku úložiště, který je popsaný v tématu [zálohování a obnovení](hana-backup-restore.md).
-- Udržujte *HANABackupCustomerDetails. txt* s novou instancí Hana a otestujete, jestli připojení k úložišti funguje správně.  
-- Zastavte nově nainstalovanou instanci SAP HANA na jednotce velkých instancí HANA v oblasti Azure DR.
-- Odpojte tyto svazky PRD a obraťte se SAP HANA na správu služeb Azure. Svazky nemůžou zůstat připojené k jednotce, protože nemůžou být dostupné, když budou fungovat jako cíl replikace úložiště.  
+- Spusťte krok 2 přípravy snímku úložiště popsanév [části Zálohování a obnovení](hana-backup-restore.md).
+- Pokud jste tak ještě neučinili, vytvořte veřejný klíč pro jednotku DR jednotky velké instance HANA. Viz krok 3 přípravy snímku úložiště popsané v [části Zálohování a obnovení](hana-backup-restore.md).
+- Udržovat *HANABackupCustomerDetails.txt* s novou instanci HANA a otestovat, zda připojení do úložiště funguje správně.  
+- Zastavte nově nainstalovanou instanci SAP HANA v jednotce velké instance HANA v oblasti Azure zotavení po Havárii.
+- Odpojte tyto svazky PRD a obraťte se na SAP HANA ve službě Azure Service Management. Svazky nemohou zůstat připojené k jednotce, protože nemohou být přístupné a zároveň fungují jako cíl replikace úložiště.  
 
-![Krok instalace DR před vytvořením replikace](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
+![Krok nastavení zotavení po havárii před navázáním replikace](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
 
-Provozní tým vytvoří vztah replikace mezi PRD svazky v produkční oblasti Azure a PRD svazky v oblasti Azure DR.
+Provozní tým vytvoří vztah replikace mezi svazky PRD v oblasti produkčního Azure a svazky PRD v oblasti Azure zotavení po Havárii.
 
 >[!IMPORTANT]
->Svazek/Hana/log není replikovaný, protože není nutné obnovovat replikovanou databázi SAP HANA do konzistentního stavu na webu pro zotavení po havárii.
+>Svazek /hana/log není replikován, protože není nutné obnovit replikovanou databázi SAP HANA do konzistentního stavu v lokalitě pro zotavení po havárii.
 
-V dalším kroku nastavte nebo upravte plán zálohování snímků úložiště, abyste se dostali k vašemu RTO a RPO v případě havárie. Chcete-li minimalizovat cíl bodu obnovení, nastavte následující intervaly replikace ve službě velká instance HANA:
-- Pro svazky zahrnuté do kombinovaného snímku (typ snímku **Hana**) nastavte hodnotu replikovat každých 15 minut na ekvivalentní cíle svazku úložiště na webu pro zotavení po havárii.
-- Pro svazek zálohy protokolu transakcí ( **protokoly**typu snímku) nastavte na hodnotu replikovat každé 3 minuty na ekvivalentní cíle svazku úložiště v lokalitě pro obnovení po havárii.
+Dále nastavte nebo upravte plán zálohování snímků úložiště, abyste se v případě katastrofy dostali k rto a rpo. Chcete-li minimalizovat cíl bodu obnovení, nastavte ve službě Velká instance HANA následující intervaly replikace:
+- Pro svazky, na které se vztahuje kombinovaný snímek (typ snímku **hana**), nastavte replikovat každých 15 minut na ekvivalentní cíle svazku úložiště v lokalitě zotavení po havárii.
+- Pro svazek zálohování protokolu transakcí **(protokoly**typu snímek ) nastavte replikaci každé 3 minuty na ekvivalentní cíle svazku úložiště v lokalitě zotavení po havárii.
 
 Chcete-li minimalizovat cíl bodu obnovení, nastavte následující:
-- Provedení snímku úložiště typu **Hana** (viz krok 7: Provede snímky ") každých 30 minut až 1 hodinu.
-- Proveďte SAP HANA zálohy protokolu transakcí každých 5 minut.
-- Do **protokolů** zadejte snímek úložiště každých 5-15 minut. Po uplynutí tohoto intervalu dosáhnete cílení na přibližně 15-25 minut.
+- Proveďte snímek úložiště typu **hana** (viz "Krok 7: Provedení snímků") každých 30 minut až 1 hodinu.
+- Proveďte zálohy protokolu transakcí SAP HANA každých 5 minut.
+- Proveďte snímek úložiště typu **protokoly** každých 5-15 minut. S tímto intervalem, můžete dosáhnout RPO kolem 15-25 minut.
 
-V rámci tohoto nastavení může posloupnost zálohování protokolů transakcí, snímků úložiště a replikace záložního svazku protokolu transakcí HANA a/Hana/data a/Hana/Shared (zahrnuje/usr/SAP) vypadat jako data zobrazená na tomto obrázku:
+S tímto nastavením může vypadat posloupnost záloh protokolu transakcí, snímků úložiště a replikace svazku zálohování protokolu transakcí HANA a /hana/data a /hana/shared (includes /usr/sap) jako data zobrazená na této grafice:
 
- ![Vztah mezi snímkem zálohování protokolu transakcí a zrcadlem pro přichycení na časové ose](./media/hana-overview-high-availability-disaster-recovery/snapmirror.PNG)
+ ![Vztah mezi snap zálohování protokolu transakcí a přichycení zrcadlo na časové ose](./media/hana-overview-high-availability-disaster-recovery/snapmirror.PNG)
 
-Pokud chcete dosáhnout ještě lepšího bodu obnovení v případě zotavení po havárii, můžete zkopírovat zálohy protokolu transakcí HANA z SAP HANA v Azure (velké instance) do jiné oblasti Azure. K dosažení tohoto dalšího omezení RPO proveďte následující kroky:
+Chcete-li dosáhnout ještě lepší RPO v případě zotavení po havárii, můžete zkopírovat zálohy protokolu transakcí HANA z SAP HANA v Azure (velké instance) do jiné oblasti Azure. Chcete-li dosáhnout dalšího snížení rpo, proveďte následující kroky:
 
-1. Zálohujte protokol transakcí HANA tak často, jak je možné/Hana/logbackups.
-1. Pomocí rsync zkopírujte zálohy protokolu transakcí do virtuálních počítačů Azure hostovaných v rámci sdílené složky systému souborů NFS. Virtuální počítače jsou ve virtuálních sítích Azure v produkční oblasti Azure a v oblastech zotavení po havárii. Musíte připojit virtuální sítě Azure k okruhu připojujícím se velké instance provozní HANA do Azure. Přečtěte si část s [informacemi o sítích při zotavení po havárii s velkými instancemi Hana](#Network-considerations-for-disaster recovery-with-HANA-Large-Instances) . 
-1. Ponechejte zálohy transakčních protokolů v oblasti ve virtuálním počítači připojeném k exportovanému úložišti NFS.
-1. V případě převzetí služeb při selhání v případě zotavení po havárii doplňte zálohy protokolu transakcí, které najdete na svazku/Hana/logbackups, s použitím dalších nedávno pořízených záloh protokolu transakcí ve sdílené složce NFS na webu pro zotavení po havárii. 
-1. Spusťte zálohu protokolu transakcí, která se má obnovit do poslední zálohy, kterou je možné uložit do oblasti zotavení po havárii.
+1. Zálohujte transakční protokol HANA co nejčastěji na /hana/logbackups.
+1. Pomocí rsync zkopírujte zálohy protokolů transakcí do virtuálních počítačů Azure hostovaných službou NFS. Virtuální počítače jsou ve virtuálních sítích Azure v produkční oblasti Azure a v oblastech zotavení po Havárii. Je potřeba připojit obě virtuální sítě Azure k okruhu spojujícímu produkční velké instance HANA s Azure. Podívejte se na grafiku v [aspekty sítě pro zotavení po havárii s HANA velké instance](#Network-considerations-for-disaster recovery-with-HANA-Large-Instances) části. 
+1. Udržujte zálohy transakčníprotokol v oblasti ve virtuálním počítače připojeném k úložišti exportovaného systému souborů NFS.
+1. V případě převzetí služeb při selhání případě doplnit zálohy protokolu transakcí najdete na svazku /hana/logbackups s více nedávno provedené zálohy protokolu transakcí na sdílené sfs v lokalitě zotavení po havárii. 
+1. Spusťte zálohu transakčního protokolu a obnovte nejnovější zálohu, která může být uložena do oblasti zotavení po Havárii.
 
-Když operace velkých instancí HANA potvrdí instalaci replikačního vztahu a zahájíte zálohování snímků úložiště spouštění, zahájí se replikace dat.
+Když operace velké instance HANA potvrďte nastavení vztahu replikace a spustíte zálohování snímků úložiště spuštění, začne replikace dat.
 
-![Krok instalace DR před vytvořením replikace](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start4.PNG)
+![Krok nastavení zotavení po havárii před navázáním replikace](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start4.PNG)
 
-V průběhu replikace nebudou obnoveny snímky na svazcích PRD v oblastech Azure DR. Jsou uloženy pouze. Pokud jsou svazky připojeny v takovém stavu, představují stav, ve kterém jste tyto svazky odpojili po instalaci instance PRD SAP HANA v serverové jednotce v oblasti Azure DR. Představují taky zálohy úložiště, které se ještě neobnovily.
+Jak pokračuje replikace, snímky na svazcích PRD v oblastech Azure zotavení po Havárii nejsou obnoveny. Jsou uloženy pouze. Pokud jsou svazky připojeny v takovém stavu, představují stav, ve kterém jste tyto svazky odmontovali po instalaci instance PRD SAP HANA v serverové jednotce v oblasti Azure zotavení po Havárii. Představují také zálohy úložiště, které ještě nejsou obnoveny.
 
-Pokud dojde k převzetí služeb při selhání, můžete také zvolit obnovení do staršího snímku úložiště místo nejnovějšího snímku úložiště.
+Pokud je převzetí služeb při selhání, můžete také obnovit na starší snímek úložiště namísto nejnovější snímek úložiště.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si [postup převzetí služeb při selhání zotavení po havárii](hana-failover-procedure.md)
+- Odkazovat [zotavení po havárii převzetí služeb při selhání postup](hana-failover-procedure.md).

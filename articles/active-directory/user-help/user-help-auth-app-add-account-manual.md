@@ -1,6 +1,6 @@
 ---
-title: Ruční přidání účtu do aplikace – Azure Active Directory | Microsoft Docs
-description: Postup ručního přidání účtů do aplikace Microsoft Authenticator pro účely dvojúrovňového ověřování.
+title: Ruční přidání účtu do aplikace – Azure Active Directory | Dokumenty společnosti Microsoft
+description: Jak ručně přidat své účty do aplikace Microsoft Authenticator pro dvoufaktorové ověření.
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,98 +12,98 @@ ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: b237f710866ad3960dd65902c0789228d8c391bc
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77062315"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>Ruční přidání účtu do aplikace
 
-Pokud fotoaparát nedokáže zachytit kód QR, můžete ručně přidat informace o svém účtu do aplikace Microsoft Authenticator pro dvoustupňové ověřování. Tento postup funguje pro pracovní nebo školní účty a účty jiných společností než Microsoft.
+Pokud fotoaparát nedokáže zachytit QR kód, můžete ručně přidat informace o účtu do aplikace Microsoft Authenticator pro dvoufaktorové ověření. To funguje pro pracovní nebo školní účty a účty jiných společností než Microsoft.
 
-Kódy poskytované pro vaše účty nerozlišují velká a malá písmena a při přidávání do aplikace Microsoft Authenticator nevyžadují mezery.
+Kódy poskytnuté pro vaše účty nerozlišují malá a velká písmena a při přidání do aplikace Microsoft Authenticator nevyžadují mezery.
 
 >[!Important]
->Než budete moct přidat svůj účet, musíte si stáhnout a nainstalovat aplikaci Microsoft Authenticator. Pokud jste to ještě neudělali, postupujte podle kroků v článku [Stažení a instalace aplikace](user-help-auth-app-download-install.md) .
+>Před přidáním účtu je nutné stáhnout a nainstalovat aplikaci Microsoft Authenticator. Pokud jste to ještě neudělali, postupujte podle pokynů v článku [Ke stažení a instalaci aplikace.](user-help-auth-app-download-install.md)
 
-## <a name="add-your-work-or-school-account"></a>Přidat svůj pracovní nebo školní účet
+## <a name="add-your-work-or-school-account"></a>Přidání pracovního nebo školního účtu
 
-1. V počítači si poznamenejte informace o **kódu** a **adrese URL** na stránce **Konfigurace mobilní aplikace** . Tuto stránku nechte otevřenou, abyste viděli kód a adresu URL.
+1. Na počítači si poznamenejte informace o **kódu** a **adrese URL** na stránce Konfigurovat **mobilní aplikaci.** Ponechte tuto stránku otevřenou, abyste viděli kód a adresu URL.
 
-    ![Obrazovka, která poskytuje kód QR](./media/user-help-auth-app-add-account-manual/auth-app-barcode.png)
+    ![Obrazovka, která poskytuje QR kód](./media/user-help-auth-app-add-account-manual/auth-app-barcode.png)
 
-2. Otevřete aplikaci Microsoft Authenticator, v pravém horním rohu vyberte **Přidat účet** **a potom** vyberte **pracovní nebo školní účet**.
+2. Otevřete aplikaci Microsoft Authenticator, **vyberte Přidat účet** z ikony **Přizpůsobit a řídit** v pravém horním bodě a pak vyberte Pracovní nebo **školní účet**.
 
-3. Vyberte **nebo zadejte kód ručně**.
+3. Vyberte **nebo zadat kód ručně**.
 
-    ![Obrazovka pro skenování kódu QR](./media/user-help-auth-app-add-account-manual/auth-app-manual-code.png)
+    ![Obrazovka pro skenování QR kódu](./media/user-help-auth-app-add-account-manual/auth-app-manual-code.png)
 
 4. Zadejte **kód** a **adresu URL** z kroku 1 a pak vyberte **Dokončit**.
 
     ![Obrazovka pro zadání kódu a adresy URL](./media/user-help-auth-app-add-account-manual/auth-app-code-url.png)
 
-    Obrazovka **účty** aplikace zobrazuje název vašeho účtu a dvanáctimístný ověřovací kód. Pro zvýšení zabezpečení se ověřovací kód každých 30 sekund nebrání někomu, aby používal kód několikrát.
+    Na obrazovce **Účty** v aplikaci se zobrazí název vašeho účtu a šestimístný ověřovací kód. Z důvodu dodatečného zabezpečení se ověřovací kód mění každých 30 sekund, aby někdo mohl kód používat vícekrát.
 
-## <a name="add-your-google-account"></a>Přidat účet Google
+## <a name="add-your-google-account"></a>Přidání účtu Google
 
-1. V počítači vyberte možnost **Nekontrolovat** na stránce **nastavit ověřovací data** pomocí kódu QR.
+1. Na počítači vyberte **možnost CAN'T Skenovat IT** na stránce **Nastavit ověřování** s QR kódem.
 
-    Zobrazená stránka bez **kontroly čárového** kódu se zobrazí s tajným kódem. Tuto stránku nechte otevřenou, abyste viděli tajný kód.
+    Zobrazí se stránka **Čárový kód nelze skenovat** s tajným kódem. Ponechte tuto stránku otevřenou, abyste viděli tajný kód.
 
-2. Otevřete aplikaci Microsoft Authenticator, v pravém horním rohu vyberte **Přidat účet** **a** v pravém horním rohu vyberte **Další účet (Google, Facebook atd.)** a pak vyberte **nebo zadejte kód ručně**.
+2. Otevřete aplikaci Microsoft Authenticator, vyberte **Přidat účet** z ikony **Přizpůsobit a ovládat** v pravém horním, vyberte Jiný účet **(Google, Facebook atd.)** a pak vyberte **NEBO ZADAT kód ručně**.
 
-3. Zadejte **název účtu** (například Google), zadejte **tajný klíč** z kroku 1 a pak vyberte **Dokončit**.
+3. Zadejte **název účtu** (například Google) a z kroku 1 zadejte klíč Tajný **klíč** a pak vyberte **Dokončit**.
 
-4. Na stránce **nastavit ověřovací data** v počítači zadejte pro svůj účet Google kód ověřování, který jste zadali v aplikaci, a pak vyberte **ověřit**.
+4. Na stránce **Nastavit pravost** v počítači zadejte šestimístný ověřovací kód uvedený v aplikaci pro váš účet Google a pak vyberte **Ověřit**.
 
-    Obrazovka **účty** aplikace zobrazuje název vašeho účtu a dvanáctimístný ověřovací kód. Pro zvýšení zabezpečení se ověřovací kód každých 30 sekund nebrání někomu, aby používal kód několikrát.
-
-    >[!NOTE]
-    >Další informace o dvojúrovňovém ověřování a účtu Google najdete v tématu [Zapnutí ověřování 2 kroky](https://support.google.com/accounts/answer/185839) a další [informace o 2 krocích ověřování](https://www.google.com/landing/2step/help.html).
-
-## <a name="add-your-facebook-account"></a>Přidat účet Facebook
-
-1. Na stránce **nastavit prostřednictvím ověřovacích dat třetích stran** , která zahrnuje kód QR, a kód vypsaný pro vstup do aplikace. Tuto stránku nechte otevřenou, abyste mohli vidět kód.
-
-2. Otevřete aplikaci Microsoft Authenticator, v pravém horním rohu vyberte **Přidat účet** **a** v pravém horním rohu vyberte **Další účet (Google, Facebook atd.)** a pak vyberte **nebo zadejte kód ručně**.
-
-3. Zadejte **název účtu** (například Facebook), zadejte **tajný klíč** z kroku 1 a pak vyberte **Dokončit**.
-
-4. Na stránce **dvojúrovňové ověřovacích dat** v počítači zadejte pro svůj účet Facebook 6 Číslicový ověřovací kód, který jste zadali v aplikaci, a pak vyberte **ověřit**.
-
-    Obrazovka **účty** aplikace zobrazuje název vašeho účtu a dvanáctimístný ověřovací kód. Pro zvýšení zabezpečení se ověřovací kód každých 30 sekund nebrání někomu, aby používal kód několikrát.
+    Na obrazovce **Účty** v aplikaci se zobrazí název vašeho účtu a šestimístný ověřovací kód. Z důvodu dodatečného zabezpečení se ověřovací kód mění každých 30 sekund, aby někdo mohl kód používat vícekrát.
 
     >[!NOTE]
-    >Další informace o dvojúrovňovém ověřování a účtu na Facebooku najdete v tématu [co je dvojúrovňové ověřování a jak to funguje?](https://www.facebook.com/help/148233965247823).
+    >Další informace o dvoufaktorovém ověření a účtu Google najdete v [tématu Zapnutí dvoufázového ověření](https://support.google.com/accounts/answer/185839) a [další informace o dvoufázovém ověření](https://www.google.com/landing/2step/help.html).
 
-## <a name="add-your-amazon-account"></a>Přidat účet Amazon
+## <a name="add-your-facebook-account"></a>Přidání facebookového účtu
 
-Svůj účet Amazon můžete přidat tak, že zapnete dvojúrovňové ověřování a potom účet přidáte do aplikace.
+1. Na stránce **Nastavit pomocí ověřovací strany třetí strany,** která obsahuje QR kód a kód napsaný pro vstup do vaší aplikace. Ponechte tuto stránku otevřenou, abyste viděli kód.
 
-1. V počítači vyberte možnost **Nekontrolovat čárový** kód z pole **zvolit způsob, jakým se zobrazí kódy** pro kód QR.
+2. Otevřete aplikaci Microsoft Authenticator, vyberte **Přidat účet** z ikony **Přizpůsobit a ovládat** v pravém horním, vyberte Jiný účet **(Google, Facebook atd.)** a pak vyberte **NEBO ZADAT kód ručně**.
 
-    Zpráva s **čárovým** kódem se zobrazí s tajným kódem. Tuto zprávu nechte otevřenou, abyste mohli zobrazit tajný kód.
+3. Zadejte **název účtu** (například Facebook) a z kroku 1 zadejte klíč Tajný **klíč** a pak vyberte **Dokončit**.
 
-2. Otevřete aplikaci Microsoft Authenticator, v pravém horním rohu vyberte **Přidat účet** **a** v pravém horním rohu vyberte **Další účet (Google, Facebook atd.)** a pak vyberte **nebo zadejte kód ručně**.
+4. Na stránce **Dvoufaktorový autentizační** program v počítači zadejte šestimístný ověřovací kód uvedený v aplikaci pro váš facebookový účet a pak vyberte **Ověřit**.
 
-3. Zadejte **název účtu** (například Amazon), zadejte **tajný klíč** z kroku 1 a pak vyberte **Dokončit**.
-
-4. Dokončete zbývající část procesu registrace, včetně přidání metody ověřování zálohování, jako je například textová zpráva, a pak vyberte **Odeslat kód**.
-
-5. Na stránce **Přidat způsob ověření zálohy** zadejte na svém počítači čtyřmístný ověřovací kód, který vám poskytla metoda ověření zálohování pro váš účet Amazon, a pak vyberte **ověřit kód a pokračovat**.
-
-6. Na stránce skoro dokončeno rozhodněte, jestli počítač má mít důvěryhodné zařízení, a pak **ho vyberte. Zapněte dvoustupňové ověřování**.
-
-    Zobrazí se stránka **Upřesnit nastavení zabezpečení** se zobrazenými aktualizovanými podrobnostmi o dvou faktorech ověřování.
+    Na obrazovce **Účty** v aplikaci se zobrazí název vašeho účtu a šestimístný ověřovací kód. Z důvodu dodatečného zabezpečení se ověřovací kód mění každých 30 sekund, aby někdo mohl kód používat vícekrát.
 
     >[!NOTE]
-    >Další informace o dvojúrovňovém ověřování a účtu Amazon najdete v článku [o dvoustupňovém ověřování](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) a [přihlašování pomocí dvoustupňového ověřování](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440).    
+    >Další informace o dvoufaktorovém ověřování a facebookovém účtu najdete v tématu [Co je dvoufaktorové ověřování a jak funguje?](https://www.facebook.com/help/148233965247823)
+
+## <a name="add-your-amazon-account"></a>Přidejte svůj účet Amazon
+
+Svůj účet Amazon můžete přidat tak, že zapnete dvoufaktorové ověření a pak účet přidáte do aplikace.
+
+1. Na počítači vyberte **Možnost Nelze naskenovat čárový kód** na stránce **Zvolit, jak budete přijímat kódy** s QR kódem.
+
+    Zobrazí se zpráva S **kódem Nelze skenovat** s tajným kódem. Ponechte tuto zprávu otevřenou, abyste viděli tajný kód.
+
+2. Otevřete aplikaci Microsoft Authenticator, vyberte **Přidat účet** z ikony **Přizpůsobit a ovládat** v pravém horním, vyberte Jiný účet **(Google, Facebook atd.)** a pak vyberte **NEBO ZADAT kód ručně**.
+
+3. Zadejte **název účtu** (například Amazon) a z kroku 1 zadejte tajný **klíč** a pak vyberte **Dokončit**.
+
+4. Dokončete zbytek procesu registrace, včetně přidání metody ověření zálohy, například textové zprávy, a pak vyberte **Odeslat kód**.
+
+5. Na stránce **Přidat metodu ověření zálohy** v počítači zadejte šestimístný ověřovací kód poskytnutý metodou ověření zálohování pro váš účet Amazon a pak vyberte **Ověřit kód a pokračujte**.
+
+6. Na stránce Téměř hotovo se rozhodněte, zda chcete počítač vytvořit důvěryhodné zařízení, a pak vyberte **Možnost Mám. Zapněte dvoustupňové ověření**.
+
+    Zobrazí se stránka **Upřesnit nastavení zabezpečení** s aktualizovanými dvoufaktorovémi ověřovacími údaji.
+
+    >[!NOTE]
+    >Další informace o dvoufaktorovém ověření a vašem účtu Amazon najdete v [tématu O dvoufázovém ověření](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) a [přihlášení pomocí dvoufázového ověření](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440).    
 
 ## <a name="next-steps"></a>Další kroky
 
-- Po přidání účtů do aplikace se můžete přihlásit pomocí aplikace Microsoft Authenticator na svém zařízení. Další informace najdete v tématu [přihlášení pomocí aplikace](user-help-auth-app-sign-in.md).
+- Po přidání účtů do aplikace se můžete přihlásit pomocí aplikace Microsoft Authenticator na svém zařízení. Další informace najdete [v tématu Přihlášení pomocí aplikace](user-help-auth-app-sign-in.md).
 
-- Pokud máte potíže s získáním ověřovacího kódu pro osobní účet Microsoft, přečtěte si část **problémy s ověřovacím kódem pro řešení potíží** v článku [účet Microsoft informace o zabezpečení & ověřovací kódy](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) .
+- Pokud máte potíže se získáním ověřovacího kódu pro svůj osobní účet Microsoft, přečtěte si článek **Problémy s ověřovacím kódem řešení potíží** v článku [bezpečnostní údaje účtu Microsoft & ověřovací kódy.](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes)
 
-- U zařízení se systémem iOS můžete také zálohovat přihlašovací údaje účtu a související nastavení aplikace, jako je například pořadí účtů, do cloudu. Další informace najdete v tématu [zálohování a obnovení pomocí aplikace Microsoft Authenticator](user-help-auth-app-backup-recovery.md).
+- U zařízení se systémem iOS můžete také zálohovat přihlašovací údaje k účtu a související nastavení aplikací, jako je pořadí vašich účtů, do cloudu. Další informace naleznete v [tématu Zálohování a obnovení pomocí aplikace Microsoft Authenticator](user-help-auth-app-backup-recovery.md).

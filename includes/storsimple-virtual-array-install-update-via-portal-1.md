@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: b4c3fcb86fb098263840accc561785a40b767952
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175195"
 ---
 #### <a name="to-install-updates-via-the-azure-portal"></a>Instalace aktualizací prostřednictvím webu Azure Portal
@@ -21,11 +21,11 @@ ms.locfileid: "67175195"
 
     ![aktualizace zařízení](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate2m.png)  
 
-3. Pokud jsou k dispozici aktualizace softwaru, zobrazí se zpráva. Aktualizace můžete zkontrolovat také kliknutím na **Vyhledat**. Poznamenejte si verzi softwaru, které jsou spuštěné. 
+3. Pokud jsou k dispozici aktualizace softwaru, zobrazí se zpráva. Aktualizace můžete zkontrolovat také kliknutím na **Vyhledat**. Poznamenejte si verzi softwaru, kterou používáte. 
 
     ![aktualizace zařízení](../includes/media/storsimple-virtual-array-install-update-via-portal-1/azupdate3m1.png)
 
-    Při vyhledávání spuštění a úspěšném dokončení, se zobrazí oznámení.
+    Budete upozorněni při úspěšném spuštění a dokončení prohledávky.
 
     ![aktualizace zařízení](../includes/media/storsimple-virtual-array-install-update-via-portal-1/azupdate5m.png)
 
@@ -33,7 +33,7 @@ ms.locfileid: "67175195"
 
     ![aktualizace zařízení](../includes/media/storsimple-virtual-array-install-update-via-portal-1/azupdate6m.png)
 
-5. V **nové aktualizace** okno, přečtěte si poznámky k verzi. Všimněte si také, že až se aktualizace stáhnou, budete muset Potvrdit instalaci. Klikněte na **OK**.
+5. V okně **Nové aktualizace** si přečtěte poznámky k verzi. Všimněte si také, že po stažení aktualizací je třeba instalaci potvrdit. Klikněte na tlačítko **OK**.
 
     ![aktualizace zařízení](../includes/media/storsimple-virtual-array-install-update-via-portal-1/azupdate7m.png)
 
@@ -57,11 +57,11 @@ ms.locfileid: "67175195"
 
     ![aktualizace zařízení](../includes/media/storsimple-virtual-array-install-update-via-portal-1/azupdate15m1.png)
 
-    Tím přejdete do **instalovat aktualizace** okno. Tady si můžete prohlédnout podrobné informace o úloze.
+    Tato akce vás přenese do okna **Instalovat aktualizace.** Tady si můžete prohlédnout podrobné informace o úloze.
 
     ![aktualizace zařízení](../includes/media/storsimple-virtual-array-install-update-via-portal-1/azupdate16m1.png)
 
-9. Pokud jste začali s virtuálním polem spuštěným verze softwaru aktualizace 0.6 (10.0.10293.0), jsou teď softwarem Update 1 a dokončení. Můžete přeskočit zbývající kroky. Pokud jste začali s virtuálním polem spuštěným verze softwaru před aktualizace 0.6 (10.0.10293.0), jsou teď aktualizovaný na aktualizace 0.6. Zobrazí další zpráva označující, že jsou k dispozici aktualizace. Opakujte kroky 4. – 8 k instalaci aktualizace 1.
+9. Pokud jste začali s virtuálním polem se spuštěnou verzí softwaru Update 0.6 (10.0.10293.0), nyní používáte aktualizaci 1 a jste hotovi. Zbývající kroky můžete přeskočit. Pokud jste začali s virtuálním polem se spuštěnou verzí softwaru před aktualizací 0.6 (10.0.10293.0), budete nyní aktualizováni na aktualizaci 0.6. Zobrazí se další zpráva oznamující, že aktualizace jsou k dispozici. Opakujte kroky 4-8 pro instalaci aktualizace 1.
 
     ![aktualizace zařízení](../includes/media/storsimple-virtual-array-install-update-via-portal-1/azupdate17.png)
 

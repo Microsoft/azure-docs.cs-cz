@@ -1,6 +1,6 @@
 ---
-title: Nasazení modulů ve velkém měřítku pomocí Azure CLI – Azure IoT Edge
-description: Použití rozšíření IoT pro Azure CLI k vytvoření automatického nasazení pro skupiny služby IoT Edge zařízení
+title: Nasazení modulů ve velkém měřítku pomocí rozhraní příkazového příkazu Azure – Azure IoT Edge
+description: Použití rozšíření IoT pro Azure CLI k vytvoření automatických nasazení pro skupiny zařízení IoT Edge
 keywords: ''
 author: kgremban
 manager: philmea
@@ -10,34 +10,34 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 9152b38a0155b610f39f7de239bcc377ad96be5d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79271470"
 ---
-# <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Nasazení a monitorování modulů IoT Edge ve velkém měřítku pomocí Azure CLI
+# <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Nasazení a monitorování modulů IoT Edge ve velkém měřítku pomocí rozhraní příkazového příkazu Azure
 
-Pomocí rozhraní příkazového řádku Azure můžete vytvořit **IoT Edge automatické nasazení** , abyste mohli spravovat průběžná nasazení v mnoha zařízeních najednou. Automatická nasazení pro IoT Edge jsou součástí funkce [automatické správy zařízení](/azure/iot-hub/iot-hub-automatic-device-management) v IoT Hub. Nasazení jsou dynamické procesy, které umožňují nasadit více modulů na více zařízení, sledovat stav a stav modulů a v případě potřeby provádět změny.
+Vytvořte **automatické nasazení IoT Edge** pomocí rozhraní příkazového řádku Azure pro správu probíhajících nasazení pro mnoho zařízení najednou. Automatická nasazení pro IoT Edge jsou součástí funkce [automatické správy zařízení](/azure/iot-hub/iot-hub-automatic-device-management) služby IoT Hub. Nasazení jsou dynamické procesy, které umožňují nasadit více modulů do více zařízení, sledovat stav a stav modulů a v případě potřeby provádět změny.
 
-Další informace najdete v tématu [vysvětlení IoT Edge automatického nasazení pro jednotlivá zařízení nebo ve velkém měřítku](module-deployment-monitoring.md).
+Další informace najdete [v tématu Principy automatického nasazení IoT Edge pro jednotlivá zařízení nebo ve velkém měřítku](module-deployment-monitoring.md).
 
-V tomto článku se nastavení rozhraní příkazového řádku Azure a rozšíření IoT. Pak se dozvíte, jak nasadit moduly do sady IoT Edge zařízení a jak sledovat průběh pomocí dostupných příkazů rozhraní příkazového řádku.
+V tomto článku nastavíte Azure CLI a rozšíření IoT. Pak se dozvíte, jak nasadit moduly do sady zařízení IoT Edge a sledovat průběh pomocí dostupných příkazů rozhraní příkazového příkazu.
 
-## <a name="cli-prerequisites"></a>Požadavky na rozhraní příkazového řádku
+## <a name="cli-prerequisites"></a>Požadavky cli
 
-* [IoT Hub](../iot-hub/iot-hub-create-using-cli.md) ve vašem předplatném Azure.
-* [IoT Edge zařízení](how-to-register-device.md#prerequisites-for-the-azure-cli) s nainstalovaným modulem runtime IoT Edge.
-* Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) ve vašem prostředí. Minimální verze rozhraní příkazového řádku Azure CLI musí být 2.0.70 nebo vyšší. Ke kontrole použijte příkaz `az --version`. Tato verze podporuje příkazy rozšíření az a zavádí příkazové rozhraní Knack.
-* [Rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension)
+* Centrum [IoT v](../iot-hub/iot-hub-create-using-cli.md) předplacenéazure.
+* [Zařízení IoT Edge](how-to-register-device.md#prerequisites-for-the-azure-cli) s nainstalovaným runtimem IoT Edge.
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) ve vašem prostředí. Minimálně vaše verze Azure CLI musí být 2.0.70 nebo vyšší. Ke kontrole použijte příkaz `az --version`. Tato verze podporuje příkazy rozšíření az a zavádí příkazové rozhraní Knack.
+* [Rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension).
 
 ## <a name="configure-a-deployment-manifest"></a>Konfigurace manifestu nasazení
 
-Manifest nasazení je dokument JSON, který popisuje, které moduly chcete nasadit, tok dat mezi moduly a požadované vlastnosti dvojčat modulů. Další informace najdete v tématu [Naučte se nasazovat moduly a navázat trasy v IoT Edge](module-composition.md).
+Manifest nasazení je dokument JSON, který popisuje, které moduly nasadit, jak toky dat mezi moduly a požadované vlastnosti dvojčat modulu. Další informace najdete v [tématu Naučte se nasazovat moduly a navazovat trasy v IoT Edge](module-composition.md).
 
-Můžete nasadit moduly pomocí Azure CLI, uložte jako soubor .txt místně manifest nasazení. Cestu k souboru použijete v další části, když spustíte příkaz, který aplikuje konfiguraci na vaše zařízení.
+Chcete-li nasadit moduly pomocí rozhraní příkazového příkazu Azure, uložte manifest nasazení místně jako soubor TXT. Cestu k souboru v další části použijete při spuštění příkazu k použití konfigurace zařízení.
 
-Tady je manifest základní nasazení s jeden modul jako příklad:
+Zde je základní manifest nasazení s jedním modulem jako příklad:
 
 ```json
 {
@@ -108,15 +108,15 @@ Tady je manifest základní nasazení s jeden modul jako příklad:
 }
 ```
 
-## <a name="layered-deployment"></a>Vrstvené nasazení
+## <a name="layered-deployment"></a>Nasazení s vrstvami
 
-Navrstvená nasazení představují typ automatického nasazení, který je možné naskládat navzájem na sebe navrchu. Další informace o vrstveném nasazení najdete v tématu [vysvětlení IoT Edge automatického nasazení pro jednotlivá zařízení nebo ve velkém měřítku](module-deployment-monitoring.md).
+Vrstvené nasazení jsou typ automatického nasazení, který lze stohovat na sebe. Další informace o nasazeních s vrstvami najdete [v tématu Principy automatických nasazení IoT Edge pro jednotlivá zařízení nebo ve velkém měřítku](module-deployment-monitoring.md).
 
-Navrstvená nasazení je možné vytvářet a spravovat pomocí rozhraní příkazového řádku Azure CLI, jako je jakékoli automatické nasazení, a to jenom s několika rozdíly. Po vytvoření vrstveného nasazení je stejná práce Azure CLI pro vrstvená nasazení stejná jako u libovolného nasazení. Chcete-li vytvořit vrstvené nasazení, přidejte příznak `--layered` do příkazu CREATE.
+Vrstvená nasazení lze vytvářet a spravovat pomocí azure cli jako každé automatické nasazení, s několika rozdíly. Po vytvoření vrstvené nasazení, stejné Azure CLI práce pro vrstvené nasazení stejné jako jakékoli nasazení. Chcete-li vytvořit nasazení s `--layered` vrstvami, přidejte příznak do příkazu create.
 
-Druhý rozdíl je v konstrukci manifestu nasazení. Standardní automatické nasazení musí kromě libovolných uživatelských modulů obsahovat i moduly modulu runtime systému, navrstvená nasazení mohou obsahovat pouze uživatelské moduly. Místo toho navrstvená nasazení potřebují na zařízení standardní automatické nasazení, aby bylo možné dodat požadované součásti každého zařízení IoT Edge, jako jsou moduly runtime systému.
+Druhý rozdíl je v konstrukci manifestu nasazení. Zatímco standardní automatické nasazení musí obsahovat moduly modulů modulů runtime systému kromě všech uživatelských modulů, vrstvená nasazení mohou obsahovat pouze uživatelské moduly. Místo toho vrstvené nasazení potřebují standardní automatické nasazení být na zařízení, také dodávat požadované součásti každého zařízení IoT Edge, jako jsou moduly runtime systému.
 
-Tady je základní navrstvený manifest nasazení s jedním modulem jako příklad:
+Zde je základní vrstvené nasazení manifest s jedním modulem jako příklad:
 
 ```json
 {
@@ -148,7 +148,7 @@ Tady je základní navrstvený manifest nasazení s jedním modulem jako příkl
 }
 ```
 
-Předchozí příklad ukázal nastavení vrstveného nasazení `properties.desired` pro modul. Pokud toto navrstvené nasazení cílí na zařízení, kde už byl stejný modul použit, přepíše všechny existující požadované vlastnosti. Chcete-li aktualizovat místo přepsání, požadované vlastnosti, můžete definovat nový pododdíl. Příklad:
+Předchozí příklad ukázal vrstvené `properties.desired` nasazení nastavení pro modul. Pokud by toto vrstvené nasazení cílilo na zařízení, kde byl již použit stejný modul, přepsalo by všechny existující požadované vlastnosti. Chcete-li aktualizovat, namísto přepsání požadovaných vlastností, můžete definovat novou podsekci. Například:
 
 ```json
 "SimulatedTEmperatureSensor": {
@@ -159,11 +159,11 @@ Předchozí příklad ukázal nastavení vrstveného nasazení `properties.desir
 }
 ```
 
-Další informace o konfiguraci vláken modulů v vrstveném nasazení najdete v tématu [vrstvené nasazení](module-deployment-monitoring.md#layered-deployment) .
+Další informace o konfiguraci dvojčat modulů v nasazeních s vrstvami naleznete v tématu [Layered deployment](module-deployment-monitoring.md#layered-deployment)
 
 ## <a name="identify-devices-using-tags"></a>Identifikace zařízení pomocí značek
 
-Před vytvořením nasazení, budete muset mít k určení zařízení, která chcete ovlivnit. Azure IoT Edge identifikuje zařízení pomocí **značek** v zařízení s dvojitou signalizací. Každé zařízení může mít několik značek, které můžete definovat jakýmkoli způsobem, který dává smysl pro vaše řešení. Například pokud spravujete areálu Chytré budovy, můžete přidat následující značky k zařízení:
+Před vytvořením nasazení musíte být schopni určit, která zařízení chcete ovlivnit. Azure IoT Edge identifikuje zařízení pomocí **značek** v dvojčeti zařízení. Každé zařízení může mít více značek, které definujete jakýmkoli způsobem, který dává smysl pro vaše řešení. Pokud například spravujete kampus inteligentních budov, můžete do zařízení přidat následující značky:
 
 ```json
 "tags":{
@@ -176,107 +176,107 @@ Před vytvořením nasazení, budete muset mít k určení zařízení, která c
 }
 ```
 
-Další informace o tom, jaké jsou vlákna a značky zařízení, najdete [v tématu pochopení a používání nevláken zařízení v IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md).
+Další informace o dvojčata zařízení a značky, [najdete v tématu Principy a použití dvojčatzařízení v centru IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md).
 
 ## <a name="create-a-deployment"></a>Vytvoření nasazení
 
-Můžete nasadit moduly pro cílová zařízení vytvořením nasazení, které se skládá z manifestu nasazení, stejně jako ostatní parametry.
+Nasadíte moduly do cílových zařízení vytvořením nasazení, které se skládá z manifestu nasazení, jakož i další parametry.
 
-Pomocí příkazu [AZ IoT Edge Deployment Create](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-create) vytvořte nasazení:
+Pomocí příkazu [az iot edge deployment create](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-create) vytvořte nasazení:
 
 ```cli
 az iot edge deployment create --deployment-id [deployment id] --hub-name [hub name] --content [file path] --labels "[labels]" --target-condition "[target query]" --priority [int]
 ```
 
-K vytvoření vrstveného deploymet použijte stejný příkaz s příznakem `--layered`.
+Použijte stejný příkaz `--layered` s příznakem k vytvoření layered deploymet.
 
-Příkaz pro vytvoření nasazení má následující parametry:
+Příkaz create nasazení má následující parametry:
 
-* **--vrstvený** – volitelný příznak k identifikaci nasazení v podobě vrstveného nasazení.
-* **--Deployment-ID** – název nasazení, které se vytvoří ve službě IoT Hub. Zadejte jedinečný název, který je malá písmena až 128 vašeho nasazení. Vyhněte se mezerám a následujícími neplatnými znaky: `& ^ [ ] { } \ | " < > /`. Jedná se o požadovaný parametr.
-* **--Content** -FilePath pro manifest nasazení JSON. Jedná se o požadovaný parametr.
-* **--hub-název** – název centra IoT, ve kterém se nasazení vytvoří. Centrum musí být v rámci aktuálního předplatného. Pomocí příkazu `az account set -s [subscription name]` změňte své aktuální předplatné.
-* **--Labels** – přidejte popisky, které vám pomůžou sledovat vaše nasazení. Popisky jsou název, páry hodnota, která popisují vaše nasazení. Pro názvy a hodnoty mají popisky formát JSON. Například `{"HostPlatform":"Linux", "Version:"3.0.1"}`.
-* **--target-Condition** -zadejte cílovou podmínku, abyste zjistili, která zařízení budou cílem tohoto nasazení. Podmínka je založena na nevyhovujících značkách zařízení nebo na dohlášených vlastnostech zařízení, které se musí shodovat s formátem výrazu. Například `tags.environment='test' and properties.reported.devicemodel='4000x'`.
-* **--priority** – kladné celé číslo. V případě, že dvě nebo víc nasazení cílí na stejném zařízení, budou platit nasazení s nejvyšší číselnou hodnotou priority.
-* **--metriky** – vytvoří metriky, které dotazují vlastnosti edgeHub hlášené na sledování stavu nasazení. Metriky přebírají vstup JSON nebo FilePath. například `'{"queries": {"mymetric": "SELECT deviceId FROM devices WHERE properties.reported.lastDesiredStatus.code = 200"}}'`.
+* **--layered** - Volitelný příznak k identifikaci nasazení jako vrstvené nasazení.
+* **--deployment-id** - Název nasazení, který bude vytvořen v centru IoT. Pojmenujte nasazení jedinečný název, který je až 128 malá písmena. Vyhněte se mezerám `& ^ [ ] { } \ | " < > /`a následujícím neplatným znakům: . Jedná se o požadovaný parametr.
+* **--content** - Filepath do manifestu nasazení JSON. Jedná se o požadovaný parametr.
+* **--název centra** – název služby IoT hub, ve kterém bude nasazení vytvořeno. Centrum musí být v aktuálním předplatném. Změňte aktuální předplatné `az account set -s [subscription name]` pomocí příkazu.
+* **--labels** - Přidejte popisky, které vám pomohou sledovat vaše nasazení. Popisky jsou Název, Dvojice hodnot, které popisují vaše nasazení. Popisky přebírají formátování JSON pro názvy a hodnoty. Například `{"HostPlatform":"Linux", "Version:"3.0.1"}`.
+* **--target-condition** – Zadejte cílovou podmínku k určení, která zařízení budou cílem tohoto nasazení.Podmínka je založena na značky dvojčete zařízení nebo dvojče zařízení hlášené vlastnosti a by měla odpovídat formátu výrazu.Například, `tags.environment='test' and properties.reported.devicemodel='4000x'`.
+* **--priority** - Kladné celé číslo. V případě, že dvě nebo více nasazení jsou zaměřeny na stejné zařízení, nasazení s nejvyšší číselnou hodnotou priority bude platit.
+* **--metrics** – Vytvořte metriky, které dotaz u vlastností oznamované edgeHub sledovat stav nasazení. Metriky trvat Vstup JSON nebo filepath. Například, `'{"queries": {"mymetric": "SELECT deviceId FROM devices WHERE properties.reported.lastDesiredStatus.code = 200"}}'`.
 
-## <a name="monitor-a-deployment"></a>Monitorování nasazení
+## <a name="monitor-a-deployment"></a>Sledování nasazení
 
-Pomocí příkazu [AZ IoT Edge Deployment show](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-show) zobrazíte podrobnosti o jednom nasazení:
+Pomocí příkazu [az iot edge deployment show](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-show) zobrazíte podrobnosti o jednom nasazení:
 
 ```cli
 az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name]
 ```
 
-Příkaz pro zobrazení nasazení má následující parametry:
+Příkaz deployment show má následující parametry:
 
-* **--Deployment-ID** – název nasazení, které existuje ve službě IoT Hub. Jedná se o požadovaný parametr.
-* **--hub – název** – název centra IoT, ve kterém existuje nasazení. Centrum musí být v rámci aktuálního předplatného. Přepněte na požadované předplatné s příkazem `az account set -s [subscription name]`
+* **--deployment-id** - Název nasazení, který existuje v centru IoT. Jedná se o požadovaný parametr.
+* **--název centra** – název služby IoT hub, ve kterém existuje nasazení. Centrum musí být v aktuálním předplatném. Přepněte na požadované předplatné pomocí příkazu`az account set -s [subscription name]`
 
-Zkontrolujte nasazení v příkazovém okně. Vlastnost **metriky** uvádí počet pro každou metriku, která je vyhodnocována jednotlivými rozbočovači:
+Zkontrolujte nasazení v příkazovém okně.Vlastnost **metriky** uvádí počet pro každou metriku, která je vyhodnocována každým centrem:
 
-* **targetedCount** – systémová metrika, která určuje počet vláken zařízení v IoT Hub, které odpovídají podmínce cíle.
-* **appliedCount** – systémová metrika určuje počet zařízení, ve kterých byl obsah nasazení aplikován na vlákna v modulu IoT Hub.
-* **reportedSuccessfulCount** – metrika zařízení, která určuje počet IoT Edge zařízení v rámci generování sestav nasazení v IoT Edge modulu runtime klienta.
-* **reportedFailedCount** – metrika zařízení, která určuje počet IoT Edge zařízení v hlášení nasazení, které se nezdařily z modulu runtime klienta IoT Edge.
+* **targetedCount** - systémová metrika, která určuje počet dvojčat zařízení v centru IoT Hub, které odpovídají podmínce cílení.
+* **appliedCount** - systémová metrika určuje počet zařízení, u kterých byl obsah nasazení použit pro dvojčata modulů v centru IoT Hub.
+* **reportedSuccessfulCount** - metrika zařízení, která určuje počet zařízení IoT Edge v systému hlášení o úspěchu z runtime klienta IoT Edge.
+* **reportedFailedCount** - Metrika zařízení, která určuje počet zařízení IoT Edge v selhání hlášení nasazení z runtime klienta IoT Edge.
 
-Seznam ID zařízení nebo objektů pro každou z těchto metrik můžete zobrazit pomocí příkazu [AZ IoT Edge Deployment show-metric](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-show-metric) :
+Seznam ID zařízení nebo objektů pro každou z metrik můžete zobrazit pomocí příkazu [az iot edge deployment show-metric:](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-show-metric)
 
 ```cli
 az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [metric id] --hub-name [hub name]
 ```
 
-Příkaz pro zobrazení metriky nasazení má následující parametry:
+Příkaz show-metric nasazení má následující parametry:
 
-* **--Deployment-ID** – název nasazení, které existuje ve službě IoT Hub.
-* **--metrika-ID** – název metriky, pro kterou chcete zobrazit seznam ID zařízení, například `reportedFailedCount`.
-* **--hub – název** – název centra IoT, ve kterém existuje nasazení. Centrum musí být v rámci aktuálního předplatného. Přepněte na požadované předplatné s příkazem `az account set -s [subscription name]`.
+* **--deployment-id** - Název nasazení, který existuje v centru IoT.
+* **--metric-id** - Název metriky, pro kterou chcete zobrazit seznam ID `reportedFailedCount`zařízení, například .
+* **--název centra** – název služby IoT hub, ve kterém existuje nasazení. Centrum musí být v aktuálním předplatném. Přepněte na požadované předplatné `az account set -s [subscription name]`pomocí příkazu .
 
-## <a name="modify-a-deployment"></a>Upravit nasazení
+## <a name="modify-a-deployment"></a>Úprava nasazení
 
-Při úpravě nasazení změny se okamžitě replikují do všechna cílová zařízení.
+Když upravíte nasazení, změny se okamžitě replikují do všech cílených zařízení.
 
-Pokud aktualizujete cílovou podmínku, dojde k následující aktualizace:
+Pokud aktualizujete cílovou podmínku, dojde k následujícím aktualizacím:
 
-* Pokud nesplnilo původní cílovou podmínku zařízení, ale splňuje novou cílovou podmínku a toto nasazení je nejvyšší prioritou pro dané zařízení, se použije toto nasazení do zařízení.
-* Pokud zařízení aktuálně s tímto nasazením již splňuje cílovou podmínku, dojde k odinstalování tohoto nasazení a provede na další nejvyšší prioritu nasazení.
-* Pokud se zařízení aktuálně s tímto nasazením již splňuje cílovou podmínku a nesplňuje cílová podmínka všechna nasazení, pak nedošlo k žádné změně na zařízení. Zařízení pokračuje její aktuální moduly v jejich aktuální stav, ale jako součást tohoto nasazení už nespravuje. Jakmile splňuje cílovou podmínku jakékoli jiné nasazení, dojde k odinstalování tohoto nasazení a provede na novou.
+* Pokud zařízení nesplnilo starou cílovou podmínku, ale splňuje novou cílovou podmínku a toto nasazení je pro toto zařízení nejvyšší prioritou, bude toto nasazení použito pro zařízení.
+* Pokud zařízení, které aktuálně používá toto nasazení, již nesplňuje cílovou podmínku, odinstaluje toto nasazení a převezme další nasazení s nejvyšší prioritou.
+* Pokud zařízení aktuálně spuštěné toto nasazení již nesplňuje cílovou podmínku a nesplňuje cílovou podmínku jiných nasazení, nedojde v zařízení k žádné změně. Zařízení pokračuje ve spuštění svých aktuálních modulů v aktuálním stavu, ale již není spravováno jako součást tohoto nasazení. Jakmile splní cílovou podmínku jiného nasazení, odinstaluje toto nasazení a převezme nové.
 
-Nemůžete aktualizovat obsah nasazení, který zahrnuje moduly a trasy definované v manifestu nasazení. Pokud chcete aktualizovat obsah nasazení, provedete to tak, že vytvoříte nové nasazení, které cílí na stejná zařízení s vyšší prioritou. Můžete upravit některé vlastnosti existujícího modulu, včetně cílové podmínky, popisků, metrik a priority.
+Nelze aktualizovat obsah nasazení, který zahrnuje moduly a trasy definované v manifestu nasazení. Pokud chcete aktualizovat obsah nasazení, uděláte to vytvořením nového nasazení, které se zaměřuje na stejná zařízení s vyšší prioritou. Můžete upravit určité vlastnosti existujícího modulu, včetně cílové podmínky, popisky, metriky a prioritu.
 
-Pomocí příkazu [AZ IoT Edge Deployment Update](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-update) aktualizujte nasazení:
+K aktualizaci nasazení použijte příkaz [aktualizace nasazení az iot edge:](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-update)
 
 ```cli
 az iot edge deployment update --deployment-id [deployment id] --hub-name [hub name] --set [property1.property2='value']
 ```
 
-Příkaz pro aktualizaci nasazení má následující parametry:
+Příkaz aktualizace nasazení má následující parametry:
 
-* **--Deployment-ID** – název nasazení, které existuje ve službě IoT Hub.
-* **--hub – název** – název centra IoT, ve kterém existuje nasazení. Centrum musí být v rámci aktuálního předplatného. Přepněte na požadované předplatné s příkazem `az account set -s [subscription name]`
-* **--set** -aktualizuje vlastnost v nasazení. Můžete aktualizovat následujícími vlastnostmi:
-  * targetCondition – například `targetCondition=tags.location.state='Oregon'`
-  * popisky
-  * priority
-* **--Přidat** – přidá do nasazení novou vlastnost, včetně cílových podmínek nebo popisků.
-* **--Remove** -odebere existující vlastnost, včetně cílových podmínek nebo popisků.
+* **--deployment-id** - Název nasazení, který existuje v centru IoT.
+* **--název centra** – název služby IoT hub, ve kterém existuje nasazení. Centrum musí být v aktuálním předplatném. Přepněte na požadované předplatné pomocí příkazu`az account set -s [subscription name]`
+* **--set** - Aktualizace vlastnosti v nasazení. Můžete aktualizovat následující vlastnosti:
+  * targetCondition - například`targetCondition=tags.location.state='Oregon'`
+  * Popisky
+  * Prioritou
+* **--add** - Přidejte novou vlastnost do nasazení, včetně cílových podmínek nebo popisků.
+* **--remove** - Odeberte existující vlastnost, včetně cílových podmínek nebo popisků.
 
-## <a name="delete-a-deployment"></a>Odstranit nasazení
+## <a name="delete-a-deployment"></a>Odstranění nasazení
 
-Při odstranění nasazení nějaká zařízení provést další nejvyšší prioritu nasazení. Pokud vaše zařízení nesplňuje cílová podmínka jakékoli jiné nasazení, moduly se neodeberou při nasazení se odstraní.
+Když odstraníte nasazení, všechna zařízení převezmou další nasazení s nejvyšší prioritou. Pokud vaše zařízení nesplňují cílovou podmínku jiného nasazení, moduly se při odstranění nasazení neodeberou.
 
-Pomocí příkazu [AZ IoT Edge Deployment Delete](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-delete) odstraňte nasazení:
+Pomocí příkazu [delete nasazení az iot edge odstraňte](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-delete) nasazení:
 
 ```cli
 az iot edge deployment delete --deployment-id [deployment id] --hub-name [hub name]
 ```
 
-Příkaz pro odstranění nasazení má následující parametry:
+Příkaz delete nasazení má následující parametry:
 
-* **--Deployment-ID** – název nasazení, které existuje ve službě IoT Hub.
-* **--hub – název** – název centra IoT, ve kterém existuje nasazení. Centrum musí být v rámci aktuálního předplatného. Přepněte na požadované předplatné s příkazem `az account set -s [subscription name]`
+* **--deployment-id** - Název nasazení, který existuje v centru IoT.
+* **--název centra** – název služby IoT hub, ve kterém existuje nasazení. Centrum musí být v aktuálním předplatném. Přepněte na požadované předplatné pomocí příkazu`az account set -s [subscription name]`
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [nasazení modulů do zařízení IoT Edge](module-deployment-monitoring.md).
+Další informace o [nasazení modulů do zařízení IoT Edge](module-deployment-monitoring.md).

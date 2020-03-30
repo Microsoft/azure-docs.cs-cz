@@ -1,6 +1,6 @@
 ---
-title: Přehled programu Microsoft Azure StorSimple a Cloudová řešení | Dokumentace Microsoftu
-description: Přehled o StorSimple a zprostředkovatele kryptografických služeb pro partnery StorSimple.
+title: Microsoft Azure StorSimple a Cloud Solutions – přehled programů | Dokumenty společnosti Microsoft
+description: Přehled o StorSimple a CSP pro partnery StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,32 +15,32 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: e2adccaf1371cf322b5a50b0e1f6ef64dde14b66
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60628655"
 ---
-# <a name="what-is-storsimple-for-cloud-solutions-providers-program"></a>Co je StorSimple pro Program poskytovatelů řešení pro Cloud?
+# <a name="what-is-storsimple-for-cloud-solutions-providers-program"></a>Co je StorSimple pro poskytovatele cloudových řešení Program?
 
 
 ## <a name="overview"></a>Přehled
 
-Microsoft Azure StorSimple je jedinečné přístup k podnikovým úložištím s možností skutečně hybridní cloudové úložiště. To umožňuje zákazníkům využít výhod úsporného cloudového úložiště pro neaktivní data a zajistit přitom ochranu svých nejdůležitějších dat on-premises pro nejvyšší úroveň výkonu. 
+Microsoft Azure StorSimple je jedinečný přístup k podnikovému úložišti se skutečnými možnostmi hybridního cloudového úložiště. Umožňuje zákazníkům využívat výhod hospodárného cloudového úložiště pro neaktivní data a zároveň zachovat jejich důležitá data v místním prostředí pro nejvyšší úroveň výkonu. 
 
-StorSimple Virtual Array pro Cloud Solutions Provider (CSP) umožňuje partnerům, aby využijte této příležitosti. Partneři vlastního životního cyklu zákazníků začátku do konce se přímé zřízení, fakturaci a podporu cloudových služeb od Microsoftu. Stručně řečeno partnery, kteří teď transact StorSimple spolu s jejich služeb zákazníkům.
+StorSimple Virtual Array for Cloud Solutions Provider (CSP) umožňuje partnerům využít této příležitosti. Partneři vlastní komplexní životní cyklus zákazníků s přímým zřizováním, fakturací a podporou cloudových služeb Microsoftu. Stručně řečeno, partneři mohou nyní transkasovat StorSimple spolu se svými službami zákazníkům.
 
-Další informace o StorSimple pro CSP [základní informace o Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview) stránky.
+Další informace o StorSimple pro csp, navštivte stránku [přehled u osvojování couvá.](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)
 
-Další informace o fakturaci, ceny, pobídky a získání podpory v CSP, přejděte na [StorSimple v CSP: NEJČASTĚJŠÍ DOTAZY K](storsimple-partner-csp-faq.md). 
+Další informace o fakturaci, cenách, pobídkách a získání podpory v csp najdete na [stránce StorSimple in CSP: FAQ](storsimple-partner-csp-faq.md). 
 
-## <a name="deploy-and-manage-storsimple-for-csp"></a>Nasazení a správa StorSimple pro CSP
+## <a name="deploy-and-manage-storsimple-for-csp"></a>Nasazení a správa StorSimple pro csp
 
-StorSimple pro CSP je dostupný jako služba založená na využití na všech trzích, kde StorSimple je v současnosti dostupné. StorSimple pro CSP pomocí webu Azure portal a ve službě Správce zařízení StorSimple. CSP partner, můžete vytvořit Správce zařízení StorSimple ke správě virtuálních polí StorSimple, sdílené složky, svazky a zálohy. Můžete spravovat virtuální pole zaregistrovaný do služby Správce zařízení StorSimple pomocí webu Azure portal.
+StorSimple pro CSP je k dispozici jako služba založená na využití na všech trzích, kde je dnes k dispozici StorSimple. StorSimple pro CSP používá portál Azure a službu StorSimple Device Manager. Partner csp můžete vytvořit StorSimple Správce zařízení pro správu StorSimple Virtuální pole, sdílené složky, svazky a zálohy. Můžete spravovat všechna virtuální pole registrovaná ve službě StorSimple Device Manager prostřednictvím portálu Azure.
 
-Další informace najdete v části [nasadit a spravovat vaše virtuální pole StorSimple pro CSP](storsimple-partner-csp-deploy.md).
+Další informace naleznete v najdete v poli [Nasazení a správa virtuálního pole StorSimple pro csp](storsimple-partner-csp-deploy.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Pokud máte další otázky týkající se StorSimple v CSP, přejděte na [StorSimple pro CSP: Nejčastější dotazy k](storsimple-partner-csp-faq.md).
-- Pokud jste připraveni k nasazení řešení StorSimple, přejděte na [nasazení řešení StorSimple pro CSP](storsimple-partner-csp-deploy.md).
+- Máte-li další otázky týkající se StorSimple v CSP, přejděte na [StorSimple pro CSP: Často kladené otázky](storsimple-partner-csp-faq.md).
+- Pokud jste připraveni nasadit StorSimple, přejděte na [nasazení StorSimple pro CSP](storsimple-partner-csp-deploy.md).

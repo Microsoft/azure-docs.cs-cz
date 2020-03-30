@@ -1,53 +1,53 @@
 ---
-title: Data geoprostorového a geografického umístění JSON v Azure Cosmos DB
-description: Naučte se vytvářet prostorové objekty pomocí Azure Cosmos DB a rozhraní SQL API.
+title: Geoprostorová data a data o poloze GeoJSON v Azure Cosmos DB
+description: Zjistěte, jak vytvořit prostorové objekty pomocí Azure Cosmos DB a rozhraní SQL API.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
 ms.openlocfilehash: 59c8b31dcc8594d2cafb2db7832e290b01026f60
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79367580"
 ---
-# <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Data geoprostorového a geografického umístění JSON v Azure Cosmos DB
+# <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Geoprostorová data a data o poloze GeoJSON v Azure Cosmos DB
 
-Tento článek je úvodem do geoprostorové funkce ve službě Azure Cosmos DB. V současné době jsou ukládání a přístup k geoprostorovému datům podporované jenom pomocí Azure Cosmos DBch jenom účtů rozhraní SQL API. Po přečtení naší dokumentace k geoprostorovému indexování budete moci zodpovědět následující otázky:
+Tento článek je úvod do geoprostorové funkce v Azure Cosmos DB. V současné době ukládání a přístup ke geoprostorovým datům je podporována azure cosmos DB SQL API účty jenom. Po přečtení naší dokumentace o geoprostorovéindexingu budete schopni odpovědět na následující otázky:
 
-* Jak můžu ukládat prostorová data ve službě Azure Cosmos DB?
-* Jak lze Geoprostorová data ve službě Azure Cosmos DB v SQL a LINQ dotaz?
-* Jak povolit nebo zakázat prostorového indexování ve službě Azure Cosmos DB?
+* Jak můžu ukládat prostorová data v Azure Cosmos DB?
+* Jak se můžu dotazovat na geoprostorová data v Azure Cosmos DB v SQL a LINQ?
+* Jak povolím nebo zakážu prostorové indexování v Azure Cosmos DB?
 
 ## <a name="introduction-to-spatial-data"></a>Úvod do prostorových dat
 
-Prostorová data popisuje pozice a tvar objektů v prostoru. Ve většině aplikací tyto odpovídá objektům na světě a Geoprostorová data. Prostorová data slouží k reprezentaci umístění osoby, místa, které vás zajímají nebo hranici město nebo jezera. Běžné případy použití často zahrnují blízkých výrazů dotazů, třeba, "najít všechny v kavárnách téměř moji aktuální polohu."
+Prostorová data popisují polohu a tvar objektů v prostoru. Ve většině aplikací odpovídají objektům na zemi a geoprostorovým datům. Prostorová data lze použít k reprezentaci umístění osoby, místa zájmu nebo hranice města nebo jezera. Běžné případy použití často zahrnují dotazy na blízkost, například "najít všechny kavárny v blízkosti mé aktuální polohy."
 
-Rozhraní SQL API Azure Cosmos DB podporuje dva typy prostorových dat: typ dat **geometrie** a **zeměpisný** datový typ.
+Rozhraní SQL API služby Azure Cosmos DB podporuje dva typy prostorových dat: datový typ **geometrie** a typ dat **zeměpisu.**
 
-- Typ **geometrie** reprezentuje data v Euclidean (plochý) souřadnicový systém.
-- **Zeměpisný** typ představuje data v systému souřadnic pro kulatou zemi.
+- Typ **geometrie** představuje data v euklidovský (plochý) souřadnicový systém
+- Typ **geografie** představuje data v souřadnicovém systému s kulatá země.
 
 ## <a name="supported-data-types"></a>Podporované datové typy
 
-Azure Cosmos DB podporuje indexování a dotazování na data geoprostorového bodu, která se reprezentují pomocí [specifikace pro injson](https://tools.ietf.org/html/rfc7946). GeoJSON datové struktury jsou vždycky platné objekty JSON, tak můžete ukládat a dotazovat pomocí služby Azure Cosmos DB bez jakékoli specializované nástroje a knihovny.
+Azure Cosmos DB podporuje indexování a dotazování geoprostorových bodových dat, která jsou reprezentována pomocí [specifikace GeoJSON](https://tools.ietf.org/html/rfc7946). Datové struktury GeoJSON jsou vždy platné objekty JSON, takže je můžete ukládat a dotazovat pomocí Azure Cosmos DB bez specializovaných nástrojů nebo knihoven.
 
-Azure Cosmos DB podporuje následující prostorové datové typy:
+Azure Cosmos DB podporuje následující typy prostorových dat:
 
-- Vyberte
-- LineString
-- Postupně
-- MultiPolygon
+- Bod
+- Linestring
+- Mnohoúhelník
+- Multipolygon
 
-### <a name="points"></a>body
+### <a name="points"></a>Points
 
-**Bod** označuje jednu pozici v prostoru. V Geoprostorová data představuje bod přesné umístění, které by mohly být adresu blízkým úložiště, jako veřejný terminál, automobilu nebo město.  Bod je vyjádřena v páru GeoJSON (a Azure Cosmos DB) pomocí jeho souřadnice nebo zeměpisné šířky a délky.
+A **Point** označuje jednu pozici v prostoru. V geoprostorových datech point představuje přesnou polohu, která může být adresou ulice obchodu s potravinami, kiosku, automobilu nebo města.  Bod je reprezentován v GeoJSON (a Azure Cosmos DB) pomocí jeho souřadnice dvojice nebo zeměpisnou délku a šířku.
 
-Tady je příklad JSON pro bod:
+Zde je příklad JSON pro bod:
 
-**Body v Azure Cosmos DB**
+**Body v Db Azure Cosmos**
 
 ```json
 {
@@ -56,9 +56,9 @@ Tady je příklad JSON pro bod:
 }
 ```
 
-Typy prostorových dat lze vložit do dokumentu Azure Cosmos DB, jak je znázorněno v tomto příkladu profilu uživatele obsahujícího údaje o umístění:
+Typy prostorových dat lze vložit do dokumentu Azure Cosmos DB, jak je znázorněno v tomto příkladu profilu uživatele obsahujícího data o poloze:
 
-**Použít profil s umístěním uloženým v Azure Cosmos DB**
+**Použití profilu s umístěním uloženým v Azure Cosmos DB**
 
 ```json
 {
@@ -73,21 +73,21 @@ Typy prostorových dat lze vložit do dokumentu Azure Cosmos DB, jak je znázorn
 }
 ```
 
-### <a name="points-in-a-geometry-coordinate-system"></a>Body v systému souřadnic geometrie
+### <a name="points-in-a-geometry-coordinate-system"></a>Body v souřadnicovém systému geometrie
 
-Pro **geometrický** typ dat určuje specifikace injson jako první a svislou osu druhé.
+Pro datový typ **geometrie** specifikuje specifikace GeoJSON nejprve vodorovnou osu a druhou svislou osu.
 
-### <a name="points-in-a-geography-coordinate-system"></a>Body v systému geografických souřadnic
+### <a name="points-in-a-geography-coordinate-system"></a>Body v souřadnicovém systému zeměpisu
 
-Pro zeměpisný datový typ Určuje specifikace **geografické** JSON délku první a zeměpisnou šířku sekund. Stejně jako v ostatních aplikacích mapování zeměpisné šířky a délky se jedná o úhly a reprezentovat z hlediska stupňů. Zeměpisná délka hodnoty se měří z poledníku, který a jsou v rozmezí od-180 stupňů a 180.0 stupňů, a hodnoty zeměpisné šířky se měří od rovníku spadají do rozsahu-90.0 stupňů a 90.0 stupňů.
+Pro **geografický** datový typ specifikace GeoJSON určuje zeměpisnou délku první a druhou zeměpisnou šířku. Stejně jako v jiných mapovacích aplikacích jsou zeměpisná délka a šířka úhly a reprezentovány z hlediska stupňů. Hodnoty zeměpisné délky se měří od prime poledníku a jsou mezi -180 stupňů a 180,0 stupňů a hodnoty zeměpisné šířky jsou měřeny od rovníku a jsou mezi -90,0 a 90,0 stupňů.
 
-Azure Cosmos DB interpretuje souřadnice reprezentovaný za WGS 84 referenčního systému. Níže naleznete další podrobnosti o souřadnic referenčních systémů.
+Azure Cosmos DB interpretuje souřadnice tak, jak jsou reprezentovány podle referenčního systému WGS-84. Další podrobnosti o souřadnicových referenčních systémech naleznete níže.
 
-### <a name="linestrings"></a>LineStrings
+### <a name="linestrings"></a>Řetězce řádků
 
-**LineStrings** představuje řadu dvou nebo více bodů v prostoru a segmentů čáry, které je spojují. V Geoprostorová data jsou LineStrings běžně používaných ke znázornění dálnice nebo řek.
+**LineStrings** představují řadu dvou nebo více bodů v prostoru a segmenty čáry, které je spojují. V geoprostorových datech linestrings se běžně používají k reprezentaci dálnic nebo řek.
 
-**LineStrings v rámečku JSON**
+**LineStrings v GeoJSON**
 
 ```json
     "type":"LineString",
@@ -99,9 +99,9 @@ Azure Cosmos DB interpretuje souřadnice reprezentovaný za WGS 84 referenčníh
 
 ### <a name="polygons"></a>Mnohoúhelníky
 
-**Mnohoúhelník** je hranice propojených bodů, které tvoří uzavřenou LineString. Mnohoúhelníky se běžně používá k reprezentování fyzických struktur jako jezera nebo politickou jurisdikce jako měst a států. Tady je příklad mnohoúhelníku v Azure Cosmos DB:
+**Polygon** je hranice propojených bodů, která tvoří uzavřený LineString. Polygony se běžně používají k reprezentaci přírodních útvarů, jako jsou jezera nebo politické jurisdikce, jako jsou města a státy. Tady je příklad polygonu v Azure Cosmos DB:
 
-**Mnohoúhelníky v typu injson**
+**Polygony v GeoJSON**
 
 ```json
 {
@@ -117,17 +117,17 @@ Azure Cosmos DB interpretuje souřadnice reprezentovaný za WGS 84 referenčníh
 ```
 
 > [!NOTE]
-> Specifikaci GeoJSON vyžaduje, že pro platné mnohoúhelníky poslední souřadnic pár poskytuje by měl být stejný jako první, chcete-li vytvořit zavřeného tvaru.
+> Specifikace GeoJSON vyžaduje, aby pro platné polygony měla být poslední poskytnutá dvojice souřadnic stejná jako první, aby se vytvořil uzavřený tvar.
 >
-> Body v rámci mnohoúhelníku musí zadat v pořadí proti směru hodinových ručiček. Mnohoúhelník zadat v pořadí po směru hodinových ručiček představuje inverzní oblasti v rámci něj.
+> Body v polygonu musí být zadány v pořadí proti směru hodinových ručiček. Polygon zadaný v pořadí ve směru hodinových ručiček představuje inverzní oblast v něm.
 >
 >
 
-### <a name="multipolygons"></a>Více mnohoúhelníků
+### <a name="multipolygons"></a>Multipolygony
 
-Více **mnohoúhelníků** je pole nula nebo více mnohoúhelníků. U více **mnohoúhelníků** nelze překrývat strany nebo mít žádnou běžnou oblast. Můžou se dotýkat v jednom nebo několika bodech.
+**MultiPolygon** je pole nula nebo více mnohonoly. **MultiPolygony** se nemohou překrývat se stranami nebo mají žádnou společnou oblast. Mohou se dotýkat na jednom nebo více místech.
 
-**Další mnohoúhelníky v typu injson**
+**Multipolygony v GeoJSON**
 
 ```json
 {
@@ -149,16 +149,16 @@ Více **mnohoúhelníků** je pole nula nebo více mnohoúhelníků. U více **m
 }
 ```
 
-## <a name="coordinate-reference-systems"></a>Souřadnice referenčních systémů
+## <a name="coordinate-reference-systems"></a>Souřadnicové referenční systémy
 
-Vzhledem k tomu, že tvar země je nepravidelný, jsou souřadnice geograficky geoprostorového data zastoupeny v mnoha referenčních systémech (počítačový systém), každý s vlastními snímky odkazů a jednotkami měření. Například "National mřížky z Británie" je referenční systém je přesné pro Spojené království, ale ne mimo něj.
+Vzhledem k tomu, že tvar Země je nepravidelný, jsou souřadnice geoprostorových dat geografie reprezentovány v mnoha souřadnicových referenčních systémech (CRS), z nichž každý má své vlastní referenční rámce a měrné jednotky. Například "National Grid of Britain" je referenční systém je přesný pro Spojené království, ale ne mimo něj.
 
-Nejoblíbenější počítačový systém používaný v současnosti dnes je World Geodetic System [WGS-84](https://earth-info.nga.mil/GandG/update/index.php). GPS zařízení a mnoho služeb mapování, včetně mapy Google a rozhraní API map Bing použijte WGS 84. Azure Cosmos DB podporuje indexování geograficky geoprostorového data a jejich dotazování jenom pomocí POČÍTAČového systému WGS-84.
+Nejpopulárnější CRS v provozu dnes je Svět geodetický systém [WGS-84](https://earth-info.nga.mil/GandG/update/index.php). Zařízení GPS a mnoho mapových služeb, včetně rozhraní API Map Google a Map Bing, používá rozhraní WGS-84. Azure Cosmos DB podporuje indexování a dotazování geoprostorových dat zeměpisu pomocí pouze služby CRS WGS-84.
 
-## <a name="creating-documents-with-spatial-data"></a>Vytváření dokumentů s prostorovými daty formátu
-Při vytváření dokumentů, které obsahují hodnoty GeoJSON se automaticky indexují se prostorový index podle zásady indexování kontejneru. Pokud pracujete s využitím Azure Cosmos DB SDK v dynamicky psaný jazyk, jako je Python nebo Node.js, je nutné vytvořit platný GeoJSON.
+## <a name="creating-documents-with-spatial-data"></a>Vytváření dokumentů s prostorovými daty
+Když vytvoříte dokumenty, které obsahují hodnoty GeoJSON, jsou automaticky indexovány prostorovým indexem v souladu se zásadami indexování kontejneru. Pokud pracujete s Azure Cosmos DB SDK v dynamicky zadaný jazyk, jako je Python nebo Node.js, musíte vytvořit platný GeoJSON.
 
-**Vytvoření dokumentu s Geoprostorovémi daty v Node. js**
+**Vytvořit dokument s geoprostorovými daty v souboru Node.js**
 
 ```javascript
 var userProfileDocument = {
@@ -174,9 +174,9 @@ client.createDocument(`dbs/${databaseName}/colls/${collectionName}`, userProfile
 });
 ```
 
-Pokud pracujete s rozhraními API SQL, můžete použít třídy `Point`, `LineString`, `Polygon`a `MultiPolygon` v rámci oboru názvů `Microsoft.Azure.Cosmos.Spatial` pro vložení informací o poloze v objektech aplikace. Tyto třídy pomáhají zjednodušit serializace a deserializace prostorových dat do GeoJSON.
+Pokud pracujete s sql api, můžete použít `Point` `LineString`, `Polygon`, `MultiPolygon` a `Microsoft.Azure.Cosmos.Spatial` třídy v oboru názvů k vložení informací o umístění v objektech aplikace. Tyto třídy pomáhají zjednodušit serializaci a deserializaci prostorových dat do GeoJSON.
 
-**Vytváření dokumentů s Geoprostorovémi daty v .NET**
+**Vytvořit dokument s geoprostorovými daty v rozhraní .NET**
 
 ```csharp
 using Microsoft.Azure.Cosmos.Spatial;
@@ -199,12 +199,12 @@ await container.CreateItemAsync( new UserProfile
     });
 ```
 
-Pokud nemáte informace o zeměpisné šířce a délce, ale máte fyzické adresy nebo název umístění, jako je město nebo země nebo oblast, můžete vyhledat skutečné souřadnice pomocí služby geografické kódování, jako je například služba Bing Maps služby REST. Další informace o geografickém kódování mapy Bing [najdete tady](https://msdn.microsoft.com/library/ff701713.aspx).
+Pokud nemáte informace o zeměpisné šířce a zeměpisné šířce, ale máte fyzické adresy nebo název lokality, jako je město nebo země nebo oblast, můžete vyhledat skutečné souřadnice pomocí služby geokódování, jako je služba Bing Maps REST Services. Další informace o geokódování Map Bing [naleznete zde](https://msdn.microsoft.com/library/ff701713.aspx).
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili, jak začít pracovat s podporuje geoprostorové funkce ve službě Azure Cosmos DB, dále můžete:
+Teď, když jste se naučili, jak začít s geoprostorovou podporou v Azure Cosmos DB, můžete další:
 
-* Další informace o [Azure Cosmos DB dotaz](sql-query-getting-started.md)
+* Další informace o [dotazu Azure Cosmos DB Query](sql-query-getting-started.md)
 * Další informace o [dotazování prostorových dat pomocí Azure Cosmos DB](sql-query-geospatial-query.md)
 * Další informace o [indexování prostorových dat pomocí Azure Cosmos DB](sql-query-geospatial-index.md)

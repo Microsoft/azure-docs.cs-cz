@@ -1,6 +1,6 @@
 ---
-title: Čas synchronizace pro virtuální počítače se systémem Linux v Azure
-description: Čas synchronizace pro virtuální počítače se systémem Linux.
+title: Synchronizace času pro virtuální počítače s Linuxem v Azure
+description: Synchronizace času pro virtuální počítače s Linuxem.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -13,77 +13,77 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 1e459e96c128e20f44f1a5adcb18c5b1824c3bf5
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: c3571d9ba94e1803259457d473ed3f1669ea67ea
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534127"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80330578"
 ---
-# <a name="time-sync-for-linux-vms-in-azure"></a>Čas synchronizace pro virtuální počítače se systémem Linux v Azure
+# <a name="time-sync-for-linux-vms-in-azure"></a>Synchronizace času pro virtuální počítače s Linuxem v Azure
 
-Synchronizace času je důležitá pro korelaci zabezpečení a událostí. Někdy se používá pro implementaci distribuovaných transakcí. Časová přesnost mezi několika počítači se dosahuje prostřednictvím synchronizace. Synchronizace může být ovlivněna několika akcemi, včetně restartování a síťového provozu mezi zdrojem času a počítačem, který načítá čas. 
+Synchronizace času je důležitá pro zabezpečení a korelaci událostí. Někdy se používá pro implementaci distribuovaných transakcí. Časové přesnosti mezi více počítačovými systémy je dosaženo prostřednictvím synchronizace. Synchronizace může být ovlivněna více věcmi, včetně restartování a síťového provozu mezi zdrojem času a počítačem, který načítá čas. 
 
-Azure je zajištěn infrastrukturou, na které běží Windows Server 2016. Systém Windows Server 2016 má vylepšené algoritmy používané pro správný čas a podmínky, že se místní hodiny synchronizují s časem UTC.  Funkce přesný čas systému Windows Server 2016 významně vylepšuje, jak služba VMICTimeSync řídí virtuálním počítačům s hostitelem pro přesný čas. Mezi vylepšení patří přesnější počáteční čas při spuštění virtuálního počítače nebo oprava latence pro obnovení virtuálního počítače a přerušení. 
+Azure je podpořený infrastrukturou se systémem Windows Server 2016. Windows Server 2016 vylepšil algoritmy používané ke spravení času a stavu místních hodin pro synchronizaci s utc.  Funkce Přesný čas systému Windows Server 2016 výrazně zlepšila způsob, jakým služba VMICTimeSync, která řídí virtuální moduly s hostitelem pro přesný čas. Vylepšení zahrnují přesnější počáteční čas na spuštění virtuálního počítači nebo obnovení virtuálního počítači a opravu latence přerušení. 
 
 >[!NOTE]
->Rychlý přehled služby Systémový čas najdete v tomto [videu s přehledem vysoké úrovně](https://aka.ms/WS2016TimeVideo).
+>Rychlý přehled služby Systémový čas naleznete v tomto [video přehledu na vysoké úrovni](https://aka.ms/WS2016TimeVideo).
 >
-> Další informace najdete v tématu [přesný čas pro Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time). 
+> Další informace naleznete [v tématu Přesný čas pro systém Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time). 
 
 ## <a name="overview"></a>Přehled
 
-Přesnost na hodiny počítače je měřená v tom, jak je čas počítače v hodinách na standard UTC (Coordinated Universal Time). UTC je definovaná ve více národních vzorích přesných atomických hodin, které můžou být v 300 letech v rozmezí od jedné sekundy. Čtení UTC je ale přímo vyžaduje specializovaný hardware. Místo toho jsou časové servery synchronizované s časem UTC a jsou dostupné z jiných počítačů, abyste zajistili škálovatelnost a odolnost. Každý počítač má spuštěnou časovou synchronizační službu, která ví, jaké časové servery se mají použít, a pravidelně kontroluje, jestli je potřeba opravit hodiny počítače, a v případě potřeby upraví čas. 
+Přesnost počítačových hodin je měřena podle toho, jak blízko jsou hodiny počítače k časovému standardu Koordinovaný světový čas (UTC). UTC je definována nadnárodním vzorkem přesných atomových hodin, které mohou být vypnuty pouze o jednu sekundu za 300 let. Čtení UTC však přímo vyžaduje specializovaný hardware. Místo toho časové servery jsou synchronizovány s UTC a jsou přístupné z jiných počítačů za účelem zajištění škálovatelnosti a robustnosti. Každý počítač má spuštěnou službu synchronizace času, která ví, jaké časové servery použít, a pravidelně kontroluje, zda je třeba opravit hodiny počítače, a v případě potřeby upraví čas. 
 
-Hostitelé Azure se synchronizují s interními servery Microsoftu, které přijímají čas od zařízení vrstvy 1 vlastněných společností Microsoft a s anténami GPS. Virtuální počítače v Azure můžou buď záviset na svém hostiteli, aby předávali přesný čas (*čas hostitele*) na virtuálním počítači nebo aby se virtuální počítač mohl dostat přímo na časový server, nebo kombinaci obou. 
+Hostitelé Azure jsou synchronizováni s interními časovými servery Microsoftu, které si berou čas ze zařízení Stratum 1 vlastněných microsoftem s anténami GPS. Virtuální počítače v Azure můžou buď záviset na jejich hostiteli, aby předali přesný čas *(čas hostitele)* na virtuální počítač, nebo virtuální počítač může přímo získat čas z časového serveru nebo kombinaci obou. 
 
-Na samostatném hardwaru přečte operační systém Linux jenom hardwarové hodiny hostitele při spuštění. Pak se hodiny uchovávají pomocí časovače přerušení v jádře Linux. V této konfiguraci se hodiny posunou časem. V novějších distribucích pro Linux v Azure můžou virtuální počítače používat poskytovatele VMICTimeSync, který je zahrnutý v systému Linux Integration Services (LIS), a dotazovat se na aktualizace hodin od hostitele častěji.
+Na samostatném hardwaru linuxový operační systém čte pouze hodiny hostitelského hardwaru při startu. Poté jsou hodiny udržovány pomocí časovače přerušení v jádře Linuxu. V této konfiguraci se hodiny posunou v průběhu času. V novějších distribucích Linuxu v Azure můžou virtuální počítače používat zprostředkovatele VMICTimeSync, který je součástí integračních služeb Linuxu (LIS), k častějšímu dotazování na aktualizace hodin z hostitele.
 
-Interakce virtuálních počítačů s hostitelem může také ovlivnit hodiny. Během [údržby paměti](../maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot)se virtuální počítače pozastaví po dobu až 30 sekund. Například před zahájením údržby se hodiny na virtuálním počítači zobrazí 10:00:00 a trvá 28 sekund. Po obnovení virtuálního počítače se v hodinách na VIRTUÁLNÍm počítači stále zobrazuje 10:00:00, což bude 28 sekund vypnuto. Za tímto účelem služba VMICTimeSync monitoruje, co se děje na hostiteli, a vyzývá k tomu, aby se změny projevily na virtuálních počítačích, které se mají kompenzovat.
+Interakce virtuálního počítače s hostitelem může také ovlivnit hodiny. Během [údržby zachování paměti](../maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot)se virtuální míchají po dobu až 30 sekund. Například před zahájením údržby se hodiny virtuálního času zobrazí v 10:00:00 a vydrží 28 sekund. Po obnovení virtuálního počítače hodiny na virtuálním počítači by stále zobrazit 10:00:00 AM, což by bylo 28 sekund off. Chcete-li opravit, služba VMICTimeSync monitoruje, co se děje na hostiteli a vyzve ke změnám, které mají nastat na virtuálních počítačích kompenzovat.
 
-Při nesprávném provedení synchronizace by hodiny na virtuálním počítači nashromáždily chyby. Pokud existuje jenom jeden virtuální počítač, efekt nemusí být významný, pokud úloha nevyžaduje vysoce přesný Timekeeping. Ve většině případů máme několik propojených virtuálních počítačů, které používají čas ke sledování transakcí a dobu, po kterou je potřeba zajistit konzistenci v celém nasazení. Pokud je čas mezi virtuálními počítači jiný, můžete zobrazit následující důsledky:
+Bez synchronizace času funguje, hodiny na virtuálním počítači by hromadit chyby. Pokud existuje pouze jeden virtuální virtuální ms, efekt nemusí být významný, pokud zatížení vyžaduje vysoce přesné měření času. Ale ve většině případů máme několik propojených virtuálních počítačů, které používají čas ke sledování transakcí a čas musí být konzistentní v celém nasazení. Když se čas mezi virtuálními virtuálními stránkami liší, můžete vidět následující efekty:
 
-- Ověřování se nezdaří. Protokoly zabezpečení, jako je Kerberos nebo technologie závislá na certifikátech, spoléhají na čas, který je konzistentní napříč systémy.
-- Je velmi obtížné zjistit, co se v systému stalo, pokud protokoly (nebo jiná data) nesouhlasí včas. Stejná událost by vypadala v různou dobu, což by mohlo ztížit souvislost.
-- Pokud je čas vypnutý, může se fakturace vypočítat nesprávně.
+- Ověřování se nezdaří. Protokoly zabezpečení, jako je protokol Kerberos nebo technologie závislé na certifikátu, spoléhají na to, že čas je konzistentní v systémech.
+- Je velmi těžké zjistit, co se stalo v systému, pokud protokoly (nebo jiná data) nesouhlasí s časem. Stejná událost by vypadala, jako by k ní došlo v různých časech, což ztěžuje korelaci.
+- Pokud jsou hodiny vypnuté, může být fakturace vypočtena nesprávně.
 
 
 
 ## <a name="configuration-options"></a>Možnosti konfigurace
 
-Existují všeobecně tři způsoby konfigurace času synchronizace pro virtuální počítače se systémem Linux hostované v Azure:
+Obecně existují tři způsoby konfigurace synchronizace času pro vaše virtuální počítače s Linuxem hostované v Azure:
 
-- Výchozí konfigurace Azure Marketplace imagí používá čas NTP i čas hostitele VMICTimeSync. 
-- Pouze hostitel s použitím VMICTimeSync.
-- Použijte jiný externí časový server s nebo bez použití VMICTimeSync v čase hostitele.
+- Výchozí konfigurace pro image Azure Marketplace používá čas NTP i host-time VMICTimeSync. 
+- Pouze pro hostitele pomocí Aplikace VMICTimeSync.
+- Použijte jiný externí časový server s nebo bez použití host-time VMICTimeSync.
 
 
 ### <a name="use-the-default"></a>Použít výchozí
 
-Ve výchozím nastavení je většina Azure Marketplace imagí pro Linux nakonfigurovaná tak, aby se synchronizovala ze dvou zdrojů: 
+Ve výchozím nastavení je většina inamů Azure Marketplace pro Linux nakonfigurovaná pro synchronizaci ze dvou zdrojů: 
 
-- NTP jako primární, který získává čas od serveru NTP. Například Image Ubuntu 16,04 LTS na webu Marketplace používají **NTP.Ubuntu.com**.
-- Služba VMICTimeSync jako sekundární, která slouží ke komunikaci času hostitele s virtuálními počítači a provádí opravy po pozastavení virtuálního počítače za účelem údržby. Hostitelé Azure používají zařízení vrstvy 1 vlastněná společností Microsoft k udržení přesného času.
+- NTP jako primární, který získá čas ze serveru NTP. Například obrázky Ubuntu 16.04 LTS Marketplace používají **ntp.ubuntu.com**.
+- Služba VMICTimeSync jako sekundární, slouží ke komunikaci času hostitele virtuálních hostitelů a provést opravy po pozastavení virtuálního účtu pro údržbu. Hostitelé Azure používají zařízení Stratum 1 vlastněná microsoftem, aby udrželi přesný čas.
 
-V novějších distribucích systému Linux služba VMICTimeSync používá protokol PTP (Precision Time Protocol), ale starší distribuce nemusí podporovat PTP a při získávání času od hostitele se vrátí do NTP.
+V novějších distribucích Linuxu používá služba VMICTimeSync protokol přesnosti (PTP), ale dřívější distribuce nemusí podporovat PTP a vrátí se do NTP pro získání času od hostitele.
 
-Pokud chcete potvrdit, že se NTP synchronizuje správně, spusťte příkaz `ntpq -p`.
+Chcete-li potvrdit, že se `ntpq -p` ntp synchronizuje správně, spusťte příkaz.
 
-### <a name="host-only"></a>Pouze hostitel 
+### <a name="host-only"></a>Pouze pro hostitele 
 
-Vzhledem k tomu, že servery NTP, jako jsou time.windows.com a ntp.ubuntu.com, jsou veřejné, synchronizace času s nimi vyžaduje posílání přenosů přes Internet. Proměnlivé zpoždění paketů může negativně ovlivnit kvalitu času synchronizace. Odebrání NTP pomocí přepnutí na synchronizaci pouze s hostitelem může někdy zlepšit výsledky synchronizace času.
+Vzhledem k tomu, že servery NTP, jako jsou time.windows.com a ntp.ubuntu.com, jsou veřejné, synchronizace času s nimi vyžaduje odesílání provozu přes Internet. Různá zpoždění paketů mohou negativně ovlivnit kvalitu synchronizace času. Odebrání ntp přepnutím na synchronizaci pouze pro hostitele může někdy zlepšit výsledky synchronizace času.
 
-Přechod na čas pouze hostitele má smysl, pokud zaznamenáte problémy s synchronizací pomocí výchozí konfigurace. Vyzkoušejte jenom synchronizaci hostitele, abyste zjistili, jestli by se vylepšila doba synchronizace na vašem VIRTUÁLNÍm počítači. 
+Přepnutí na synchronizaci času pouze pro hostitele má smysl, pokud dochází k problémům se synchronizací času pomocí výchozí konfigurace. Vyzkoušejte synchronizaci jedinou hostitele, abyste zjistili, jestli by to zlepšilo synchronizaci času na vašem virtuálním počítači. 
 
 ### <a name="external-time-server"></a>Externí časový server
 
-Pokud máte specifické požadavky na synchronizaci času, existuje také možnost použití externích časových serverů. Externí časové servery můžou poskytovat určitý čas, což může být užitečné pro testovací scénáře, což zajišťuje jednotnou časovou prodlevu u počítačů hostovaných v datových centrech jiných než Microsoftu, nebo speciálním způsobem zpracování přestupných sekund.
+Pokud máte specifické požadavky na synchronizaci času, je také možnost použití externích časových serverů. Externí časové servery mohou poskytovat určitý čas, což může být užitečné pro testovací scénáře, zajištění rovnoměrnosti času se stroji hostovanými v datových centrech jiných společností nebo zpracování přestupných sekund zvláštním způsobem.
 
-Můžete zkombinovat externí časový server se službou VMICTimeSync a poskytnout výsledky podobné výchozí konfiguraci. Kombinování externího časového serveru s VMICTimeSync je nejlepší možností pro řešení problémů, které mohou nastat při pozastavení virtuálních počítačů za účelem údržby. 
+Externí časový server můžete kombinovat se službou VMICTimeSync a poskytovat tak výsledky podobné výchozí konfiguraci. Kombinace externího časového serveru s VMICTimeSync je nejlepší volbou pro řešení problémů, které mohou být příčinou, když jsou virtuální moduly pozastaveny z důvodu údržby. 
 
 ## <a name="tools-and-resources"></a>Nástroje a prostředky
 
-K dispozici jsou některé základní příkazy pro kontrolu konfigurace synchronizace času. Dokumentace pro distribuci systému Linux bude obsahovat další podrobnosti o tom, jak nejlépe nakonfigurovat synchronizaci času pro tuto distribuci.
+Existují některé základní příkazy pro kontrolu konfigurace synchronizace času. Dokumentace pro distribuci Linuxu bude mít další podrobnosti o nejlepším způsobu konfigurace synchronizace času pro tuto distribuci.
 
 ### <a name="integration-services"></a>Integrační služby
 
@@ -92,20 +92,20 @@ Zkontrolujte, zda je načtena integrační služba (hv_utils).
 ```bash
 lsmod | grep hv_utils
 ```
-Mělo by se zobrazit něco podobného:
+Měli byste vidět něco podobného:
 
 ```
 hv_utils               24418  0
 hv_vmbus              397185  7 hv_balloon,hyperv_keyboard,hv_netvsc,hid_hyperv,hv_utils,hyperv_fb,hv_storvsc
 ```
 
-Zkontrolujte, zda je spuštěn démon služby Hyper-V Integration Services.
+Podívejte se, jestli je spuštěn daemon integračních služeb Hyper-V.
 
 ```bash
 ps -ef | grep hv
 ```
 
-Mělo by se zobrazit něco podobného:
+Měli byste vidět něco podobného:
 
 ```
 root        229      2  0 17:52 ?        00:00:00 [hv_vmbus_con]
@@ -113,57 +113,58 @@ root        391      2  0 17:52 ?        00:00:00 [hv_balloon]
 ```
 
 
-### <a name="check-for-ptp"></a>Vyhledat PTP
+### <a name="check-for-ptp"></a>Zkontrolujte PTP
 
-V novějších verzích systému Linux je zdroj hodin protokolu PTP (Precision Time Protocol) dostupný jako součást poskytovatele VMICTimeSync. Ve starších verzích Red Hat Enterprise Linux nebo CentOS 7. x můžete stáhnout a použít k instalaci aktualizovaného ovladače [služby Linux Integration Services](https://github.com/LIS/lis-next) . Při použití PTP bude zařízení se systémem Linux ve formátu/dev/PTP*x*. 
+V novějších verzích Linuxu je jako součást zprostředkovatele VMICTimeSync k dispozici zdroj hodin přesného časového protokolu (PTP). Ve starších verzích Red Hat Enterprise Linux nebo CentOS 7.x lze [služby Linux Integration Services](https://github.com/LIS/lis-next) stáhnout a použít k instalaci aktualizovaného ovladače. Při použití PTP bude linuxové zařízení ve formě /dev/ptp*x*. 
 
-Podívejte se, které zdroje s hodinami PTP jsou k dispozici.
+Podívejte se, které zdroje hodin PTP jsou k dispozici.
 
 ```bash
 ls /sys/class/ptp
 ```
 
-V tomto příkladu je vrácená hodnota *ptp0*, takže ji používáme ke kontrole názvu hodin. Pokud chcete zařízení ověřit, zkontrolujte název hodin.
+V tomto příkladu je vrácená hodnota *ptp0*, takže ji používáme ke kontrole názvu hodin. Chcete-li zařízení ověřit, zkontrolujte název hodin.
 
 ```bash
 cat /sys/class/ptp/ptp0/clock_name
 ```
 
-To by mělo vrátit **HyperV**.
+To by mělo vrátit **hyperv**.
 
 ### <a name="chrony"></a>chrony
 
-V Red Hat Enterprise Linux a CentOS 7. x je [Chrony](https://chrony.tuxfamily.org/) nakonfigurovaná tak, aby používala zdrojové hodiny PTP. Démon ntpd (Network Time Protocol) nepodporuje zdroje přes PTP, proto se doporučuje použití **chronyd** . Pokud chcete povolit PTP, aktualizujte **Chrony. conf**.
+Na Ubuntu 19.10 a novějších verzích, Red Hat Enterprise Linux a CentOS 7.x, je [chrony](https://chrony.tuxfamily.org/) nakonfigurován tak, aby používal zdrojové hodiny PTP. Namísto chrony, starší linuxové verze používají daemon Network Time Protocol (ntpd), který nepodporuje ptp zdroje. Chcete-li povolit PTP v těchto verzích, musí být chrony ručně nainstalována a konfigurována (v chrony.conf) pomocí následujícího kódu:
 
 ```bash
 refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
 ```
 
-Další informace o Red Hat a NTP najdete v tématu [Konfigurace NTP](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/s1-configure_ntp). 
+Další informace o ubuntu a ntp naleznete v [tématu Synchronizace času](https://help.ubuntu.com/lts/serverguide/NTP.html).
 
-Další informace o Chrony najdete v tématu [použití Chrony](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-using_chrony).
+Další informace o aplikacích Red Hat a NTP naleznete v [tématu Konfigurace protokolu NTP](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/s1-configure_ntp). 
 
-Pokud jsou současně povoleny současně Chrony i TimeSync zdroje, můžete jeden označit jako **preferovaný** , což nastaví druhý zdroj jako zálohu. Vzhledem k tomu, že služby NTP neaktualizují hodiny pro rozsáhlá zkosení s výjimkou po dlouhou dobu, VMICTimeSync obnoví hodiny z pozastavených událostí virtuálního počítače mnohem rychleji než samostatné nástroje založené na NTP.
+Další informace o chrony, naleznete [v tématu Použití chrony](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-using_chrony).
 
-Ve výchozím nastavení chronyd zrychluje nebo zpomaluje systémové hodiny, aby se opravila doba chodu. Pokud se posun změní na příliš velký, Chrony se nepodaří opravit posun. K překonání tohoto parametru `makestep` lze změnit parametr v **/etc/Chrony.conf** pro vynucení timesync, pokud posun překročí zadanou prahovou hodnotu.
+Pokud jsou zdroje chrony i TimeSync povoleny současně, můžete jeden označit jako **preferovaný**, který nastaví druhý zdroj jako zálohu. Vzhledem k tomu, že služby NTP neaktualizují hodiny pro velké zkosení s výjimkou po dlouhé době, VMICTimeSync obnoví hodiny z pozastavených událostí virtuálního modulu mnohem rychleji než samotné nástroje založené na NTP.
+
+Ve výchozím nastavení chronyd zrychluje nebo zpomaluje systémové hodiny opravit jakýkoli časový posun. Pokud se drift stane příliš velký, chrony nedokáže opravit drift. Chcete-li tento `makestep` problém překonat, parametr v **/etc/chrony.conf** lze změnit tak, aby platnost timesync, pokud posun překročí zadanou prahovou hodnotu.
+
  ```bash
 makestep 1.0 -1
 ```
-V tomto případě Chrony vynutí aktualizaci času, pokud je posun větší než 1 sekunda. Změny se projeví až po restartování služby chronyd.
+
+Zde chrony vynutí aktualizaci času, pokud je posun větší než 1 sekunda. Chcete-li použít změny, restartujte službu chronyd:
 
 ```bash
 systemctl restart chronyd
 ```
 
-
 ### <a name="systemd"></a>systemd 
 
-V Ubuntu a SUSE čas synchronizace se konfiguruje pomocí [systému](https://www.freedesktop.org/wiki/Software/systemd/). Další informace o Ubuntu najdete v tématu [synchronizace času](https://help.ubuntu.com/lts/serverguide/NTP.html). Další informace o SUSE najdete v části 4.5.8 v [poznámkách k verzi SUSE Linux Enterprise Server 12 SP3](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement).
-
-
+Na SUSE a Ubuntu zprávy před 19.10, synchronizace času je konfigurován pomocí [systemd](https://www.freedesktop.org/wiki/Software/systemd/). Další informace o Ubuntu naleznete v [tématu Synchronizace času](https://help.ubuntu.com/lts/serverguide/NTP.html). Další informace o SUSE naleznete v části 4.5.8 v [suse linuxové matné verzi 12 SP3 poznámky k verzi](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v tématu [přesný čas pro Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time).
+Další informace naleznete [v tématu Přesný čas pro systém Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time).
 
 

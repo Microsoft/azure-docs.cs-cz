@@ -1,6 +1,6 @@
 ---
-title: Zásady v Azure API Management | Microsoft Docs
-description: Naučte se vytvářet, upravovat a konfigurovat zásady v API Management.
+title: Zásady ve správě rozhraní Azure API | Dokumenty společnosti Microsoft
+description: Naučte se vytvářet, upravovat a konfigurovat zásady ve správě rozhraní API.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,32 +13,32 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
 ms.openlocfilehash: c10939b50a66cd608d27a71f02d959fbc2380f59
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70072307"
 ---
-# <a name="policies-in-azure-api-management"></a>Zásady v Azure API Management
+# <a name="policies-in-azure-api-management"></a>Zásady ve službě Azure API Management
 
-V Azure API Management (APIM) jsou zásady účinnou funkcí systému, které umožňují vydavateli změnit chování rozhraní API prostřednictvím konfigurace. Zásady jsou kolekce příkazů, které jsou spouštěny postupně na žádost nebo na reakci rozhraní API. Mezi oblíbené příkazy patří převod formátu z XML na JSON a omezení rychlosti volání, aby se omezilo množství příchozích volání od vývojáře. Mnoho dalších zásad je dostupných mimo box.
+Ve správě rozhraní API Azure (APIM) jsou zásady mocnou funkcí systému, která vydavateli umožňuje změnit chování rozhraní API prostřednictvím konfigurace. Zásady jsou kolekce příkazů, které jsou prováděny postupně na požadavek nebo odpověď rozhraní API. Mezi oblíbené příkazy patří převod formátu z XML na JSON a omezení rychlosti volání, která omezuje množství příchozích hovorů od vývojáře. Mnoho dalších zásad je k dispozici izokrabice.
 
-Zásady se aplikují v bráně, která je umístěná mezi příjemcem rozhraní API a spravovaným rozhraním API. Brána obdrží všechny požadavky a obvykle je předává beze změny na základní rozhraní API. Zásady ale můžou použít změny v příchozím požadavku i v odchozí odpovědi.
+Zásady se používají uvnitř brány, která je mezi příjemcem rozhraní API a spravované rozhraní API. Brána přijímá všechny požadavky a obvykle je předává beze změny do základního rozhraní API. Zásada však může použít změny jak příchozí požadavek a odchozí odpověď.
 
 Výrazy zásad můžete použít jako hodnoty atributů nebo textové hodnoty v libovolných zásadách API Management (pokud zásady neurčí jinak). Některé zásady, například [řízení toku][Control flow] a [nastavená proměnná][Set variable], jsou založené na výrazech zásad. Další informace najdete v článcích [Pokročilé zásady][Advanced policies] a [Výrazy zásad][Policy expressions].
 
-## <a name="sections"> </a>Principy konfigurace zásad
+## <a name="understanding-policy-configuration"></a><a name="sections"> </a>Principy konfigurace zásad
 
-Definice zásady je jednoduchý dokument XML, který popisuje sekvenci příchozích a odchozích příkazů. KÓD XML lze upravit přímo v okně definice. Vpravo a příkazy, které se vztahují k aktuálnímu oboru, jsou povoleny a zvýrazněny v seznamu příkazů.
+Definice zásady je jednoduchý dokument XML, který popisuje posloupnost příchozích a odchozích příkazů. XML lze upravovat přímo v definičním okně. Seznam výpisů je k dispozici vpravo a příkazy použitelné pro aktuální obor jsou povoleny a zvýrazněny.
 
-Kliknutím na příkaz Enabled přidáte příslušný kód XML do umístění kurzoru v zobrazení definice. 
+Kliknutím na povolený příkaz přidáte příslušný xml v umístění kurzoru v zobrazení definice. 
 
 > [!NOTE]
-> Pokud není povolená zásada, kterou chcete přidat, ujistěte se, že jste ve správném oboru pro tyto zásady. Jednotlivé příkazy zásad jsou určené pro použití v určitých oborech a oddílech zásad. Pokud chcete zkontrolovat oddíly a obory zásad pro zásady, podívejte se v části **použití** této zásady v tématu [referenční informace o zásadách][Policy Reference].
+> Pokud zásady, které chcete přidat, není povolena, ujistěte se, že jste ve správném oboru pro tuto zásadu. Každé prohlášení o zásadách je navrženo pro použití v určitých oborech a oddílech zásad. Chcete-li zkontrolovat oddíly zásad a obory zásad, podívejte se do části **Použití** pro tuto zásadu v [odkazu na zásady][Policy Reference].
 > 
 > 
 
-Konfigurace je rozdělena do `inbound`, `backend`, `outbound`a `on-error`. Řada zadaných příkazů zásad se spustí v pořadí podle požadavku a odpovědi.
+Konfigurace je rozdělena `inbound` `backend`na `outbound`, `on-error`, a . Řada zadaných příkazů zásad je provedena v pořadí pro požadavek a odpověď.
 
 ```xml
 <policies>
@@ -58,25 +58,25 @@ Konfigurace je rozdělena do `inbound`, `backend`, `outbound`a `on-error`. Řada
 </policies> 
 ```
 
-Pokud během zpracování požadavku dojde k chybě, všechny zbývající kroky `inbound`v, `backend`nebo `outbound` se přeskočí `on-error` a provádění přejde na příkazy v části. Vložením příkazů zásad v `on-error` části můžete zkontrolovat chybu `context.LastError` pomocí vlastnosti, zkontrolovat a přizpůsobit chybovou odpověď pomocí `set-body` zásad a nakonfigurovat, co se stane, když dojde k chybě. K dispozici jsou kódy chyb pro integrované kroky a chyby, ke kterým může dojít během zpracování příkazů zásad. Další informace najdete v tématu [zpracování chyb v zásadách API Management](/azure/api-management/api-management-error-handling-policies).
+Pokud dojde k chybě během zpracování požadavku, všechny zbývající `inbound` `backend`kroky `outbound` v , nebo oddíly jsou přeskočeny a spuštění přeskočí na příkazy v `on-error` části. Umístěním příkazů zásad `on-error` v části můžete zkontrolovat `context.LastError` chybu pomocí vlastnosti, zkontrolovat `set-body` a přizpůsobit odpověď na chybu pomocí zásady a nakonfigurovat, co se stane, pokud dojde k chybě. Existují kódy chyb pro předdefinované kroky a chyby, ke kterým může dojít během zpracování příkazů zásad. Další informace naleznete [v tématu Zpracování chyb v zásadách správy rozhraní API](/azure/api-management/api-management-error-handling-policies).
 
-## <a name="scopes"> </a>Postup konfigurace zásad
+## <a name="how-to-configure-policies"></a><a name="scopes"> </a>Konfigurace zásad
 
-Informace o tom, jak nakonfigurovat zásady, najdete v tématu [nastavení nebo úprava zásad](set-edit-policies.md).
+Informace o konfiguraci zásad naleznete v tématu [Nastavení nebo úpravy zásad](set-edit-policies.md).
 
-## <a name="policy-reference"></a>Reference k zásadám
+## <a name="policy-reference"></a>Odkaz na zásady
 
-Úplný seznam [](api-management-policy-reference.md) příkazů zásad a jejich nastavení najdete v referenčních informacích k zásadám.
+Úplný seznam prohlášení o zásadách a jejich nastavení naleznete v [odkazu na zásady.](api-management-policy-reference.md)
 
 ## <a name="policy-samples"></a>Ukázky zásad
 
-Další příklady kódu najdete v tématu [ukázky zásad](policy-samples.md) .
+Další příklady kódu najdete v [tématu Ukázky](policy-samples.md) zásad.
 
 ## <a name="examples"></a>Příklady
 
-### <a name="apply-policies-specified-at-different-scopes"></a>Použití zásad zadaných v různých oborech
+### <a name="apply-policies-specified-at-different-scopes"></a>Použití zásad určených v různých oborech
 
-Pokud máte zásadu na globální úrovni a zásadu nakonfigurovanou pro rozhraní API, pak se při každém použití konkrétního rozhraní API použijí obě zásady. API Management umožňuje deterministické řazení kombinovaných příkazů zásad prostřednictvím základního prvku. 
+Pokud máte zásady na globální úrovni a zásady nakonfigurované pro rozhraní API, pak při každém použití tohoto konkrétního rozhraní API budou použity obě zásady. Správa rozhraní API umožňuje deterministické řazení kombinovaných příkazů zásad prostřednictvím základního prvku. 
 
 ```xml
 <policies>
@@ -88,15 +88,15 @@ Pokud máte zásadu na globální úrovni a zásadu nakonfigurovanou pro rozhran
 </policies>
 ```
 
-V příkladu výše uvedené `cross-domain` definice zásad se příkaz spustí před všemi vyššími zásadami, které by pak následovala `find-and-replace` zásada. 
+V příkladu definice zásad `cross-domain` výše by prohlášení provést před vyšší politiky, `find-and-replace` které by zase následovat zásady. 
 
-### <a name="restrict-incoming-requests"></a>Omezit příchozí požadavky
+### <a name="restrict-incoming-requests"></a>Omezení příchozích požadavků
 
-Chcete-li přidat nový příkaz pro omezení příchozích požadavků na zadané IP adresy, umístěte kurzor přímo do obsahu `inbound` elementu XML a klikněte na příkaz omezit počet **IP adres volajícího** .
+Chcete-li přidat nový příkaz pro omezení příchozích požadavků na zadané adresy IP, umístěte kurzor přímo do obsahu elementu `inbound` XML a klepněte na příkaz Omezit ip adresy **volajícího.**
 
-![Zásady omezení][policies-restrict]
+![Omezení][policies-restrict]
 
-Tím se přidá fragment kódu XML k `inbound` elementu, který poskytuje pokyny ke konfiguraci příkazu.
+Tím přidáte fragment XML do elementu, `inbound` který poskytuje pokyny ke konfiguraci příkazu.
 
 ```xml
 <ip-filter action="allow | forbid">
@@ -105,7 +105,7 @@ Tím se přidá fragment kódu XML k `inbound` elementu, který poskytuje pokyny
 </ip-filter>
 ```
 
-Chcete-li omezit příchozí požadavky a přijmout pouze ty z IP adresy 1.2.3.4, upravte XML následujícím způsobem:
+Chcete-li omezit příchozí požadavky a přijmout pouze požadavky z adresy IP 1.2.3.4, upravte xml následujícím způsobem:
 
 ```xml
 <ip-filter action="allow">
@@ -113,12 +113,12 @@ Chcete-li omezit příchozí požadavky a přijmout pouze ty z IP adresy 1.2.3.4
 </ip-filter>
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o práci se zásadami najdete v těchto tématech:
+Další informace o práci se zásadami naleznete v tématu:
 
-+ [Transformační rozhraní API](transform-api.md)
-+ [Odkaz na zásady](api-management-policy-reference.md) pro úplný seznam příkazů zásad a jejich nastavení
++ [Transformovat api](transform-api.md)
++ [Odkaz na zásady](api-management-policy-reference.md) pro úplný seznam prohlášení zásad a jejich nastavení
 + [Ukázky zásad](policy-samples.md)   
 
 [Policy Reference]: api-management-policy-reference.md

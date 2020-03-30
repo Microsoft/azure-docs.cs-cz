@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: migrace služby RDS SQL Server Online na SQL Database'
+title: 'Kurz: Migrace serveru RDS SQL Server online do databáze SQL'
 titleSuffix: Azure Database Migration Service
-description: Naučte se provádět online migraci ze služby RDS SQL Server Azure SQL Database izolovanou databázi nebo spravované instanci pomocí Azure Database Migration Service.
+description: Naučte se provádět online migraci z RDS SQL Server do jedné databáze Azure SQL Database nebo spravované instance pomocí služby Migrace databáze Azure.
 services: dms
 author: pochiraju
 ms.author: rajpo
@@ -12,19 +12,19 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: db561761acbd5ff991f88cfd18cec8d4625336f2
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 8d538deca610fd9981d401d28b6bea1c31c6d4c8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255527"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298871"
 ---
-# <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>Kurz: migrace SQL Server RDS do Azure SQL Database nebo Azure SQL Database spravované instance online pomocí DMS
-Azure Database Migration Service můžete použít k migraci databází z instance služby RDS SQL Server do [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) nebo [spravované instance Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) s minimálními prostoji. V tomto kurzu migrujete databázi **Adventureworks2012** obnovenou do instance služby RDS SQL Server SQL Server 2012 (nebo novější) na Azure SQL Database nebo Azure SQL Database spravovanou instanci pomocí Azure Database Migration Service.
+# <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>Kurz: Migrace RDS SQL Serveru do Azure SQL Database nebo instance spravované azure SQL database online pomocí DMS
+Službu migrace databáze Azure můžete použít k migraci databází z instance RDS SQL Server do [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) nebo instance spravované azure SQL [database](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) s minimálními prostoji. V tomto kurzu migrujete databázi **Adventureworks2012** obnovenou do instance RDS SQL Server SQL Serveru SQL Serveru 2012 (nebo novější) do Azure SQL Database nebo spravované instance Azure SQL Database pomocí služby Migrace databáze Azure.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
-> * Vytvoří instanci Azure SQL Database nebo Azure SQL Database spravovanou instanci. 
+> * Vytvořte instanci Azure SQL Database nebo spravované instance Azure SQL Database. 
 > * Migrace ukázkového schématu pomocí nástroje Data Migration Assistant
 > * Vytvoření instance služby Azure Database Migration Service
 > * Vytvoření projektu migrace pomocí služby Azure Database Migration Service
@@ -33,50 +33,50 @@ V tomto kurzu se naučíte:
 > * Stažení sestavy migrace
 
 > [!NOTE]
-> Použití Azure Database Migration Service k provedení online migrace vyžaduje vytvoření instance založené na cenové úrovni Premium. Další informace najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/database-migration/) Azure Database Migration Service.
+> Použití služby migrace databáze Azure k provedení migrace online vyžaduje vytvoření instance založené na cenové úrovni Premium. Další informace najdete na stránce [s cenami](https://azure.microsoft.com/pricing/details/database-migration/) služby Azure Database Migration Service.
 
 > [!IMPORTANT]
 > Aby migrace proběhla optimálním způsobem, doporučuje Microsoft vytvořit instanci služby Azure Database Migration Service ve stejné oblasti Azure, ve které je cílová databáze. Přenášení dat mezi oblastmi geografickými lokalitami může zpomalit proces migrace a způsobit chyby.
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
-Tento článek popisuje online migraci ze služby RDS SQL Server do Azure SQL Database nebo Azure SQL Database spravované instance.
+Tento článek popisuje online migraci z RDS SQL Server do Azure SQL Database nebo spravované instance Azure SQL Database.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
-* Vytvořte [databázi služby RDS SQL Server](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.SQLServer.html).
-* Vytvořte instanci Azure SQL Database, kterou provedete podle podrobných pokynů v článku [Vytvoření databáze SQL Azure v Azure Portal](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal).
+* Vytvořte [databázi serveru RDS SQL Server](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.SQLServer.html).
+* Vytvořte instanci Azure SQL Database, kterou uděláte podle podrobností v článku [Vytvoření databáze Azure SQL na webu Azure Portal](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal).
 
     > [!NOTE]
-    > Pokud migrujete do spravované instance Azure SQL Database, postupujte podle podrobných pokynů v článku [Vytvoření spravované instance Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)a pak vytvořte prázdnou databázi s názvem **AdventureWorks2012**. 
+    > Pokud migrujete na spravovanou instanci Azure SQL Database, postupujte podle podrobností v článku [Vytvoření instance spravované službou Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)a pak vytvořte prázdnou databázi s názvem **AdventureWorks2012**. 
  
 * Stáhněte a nainstalujte nástroj [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) verze 3.3 nebo novější.
-* Vytvořte Microsoft Azure Virtual Network pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manager. Pokud migrujete do spravované instance Azure SQL Database, ujistěte se, že jste instanci DMS vytvořili ve stejné virtuální síti, která se používá pro Azure SQL Database spravovanou instanci, ale v jiné podsíti.  Pokud použijete jinou virtuální síť pro DMS, budete muset vytvořit partnerský vztah virtuální sítě mezi oběma virtuálními sítěmi. Další informace o vytváření virtuálních sítí najdete v [dokumentaci k Virtual Network](https://docs.microsoft.com/azure/virtual-network/)a zejména v článcích rychlý Start s podrobnými údaji.
+* Vytvořte službu migrace databáze Microsoft Azure pro Azure pomocí modelu nasazení Azure Resource Manageru. Pokud migrujete na spravovanou instanci Azure SQL Database, nezapomeňte vytvořit instanci DMS ve stejné virtuální síti, která se používá pro spravovanou instanci Azure SQL Database, ale v jiné podsíti.  Případně pokud používáte jinou virtuální síť pro DMS, budete muset vytvořit partnerský vztah virtuální sítě mezi dvěma virtuálními sítěmi. Další informace o vytvoření virtuální sítě naleznete v [dokumentaci k virtuální síti](https://docs.microsoft.com/azure/virtual-network/)a zejména v článcích rychlého startu s podrobnými podrobnostmi.
 
     > [!NOTE]
-    > Pokud při instalaci virtuální sítě používáte ExpressRoute s partnerským vztahem k síti Microsoftu, přidejte do podsítě, ve které se služba zřídí, tyto [koncové body](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) služby:
+    > Pokud během instalace virtuální sítě používáte ExpressRoute s partnerským vztahem k síti společnosti Microsoft, přidejte do podsítě, ve které bude služba zřízena, následující [koncové body služby:](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)
     >
-    > * Koncový bod cílové databáze (například koncový bod SQL, Cosmos DB koncový bod atd.)
+    > * Cílový koncový bod databáze (například koncový bod SQL, koncový bod Cosmos DB a tak dále)
     > * Koncový bod úložiště
-    > * Koncový bod služby Service Bus
+    > * Koncový bod sběrnice
     >
-    > Tato konfigurace je nezbytná, protože Azure Database Migration Service nemá připojení k Internetu. 
+    > Tato konfigurace je nezbytná, protože služba migrace databáze Azure nemá připojení k internetu. 
 
-* Zajistěte, aby pravidla skupiny zabezpečení sítě virtuálních sítí neblokovala následující příchozí komunikační porty Azure Database Migration Service: 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+* Ujistěte se, že pravidla skupiny zabezpečení sítě virtuální sítě neblokují následující příchozí komunikační porty služby Azure Database Migration Service: 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování přenosů skupin nsg ve virtuální síti naleznete v článku [Filtrování síťového provozu se skupinami zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 * Nakonfigurujte bránu [Windows Firewall pro přístup k databázovému stroji](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 * Otevřete bránu Windows Firewall a povolte službě Azure Database Migration Service přístup ke zdrojovému SQL Serveru, který ve výchozím nastavení probíhá přes port TCP 1433.
-* Vytvořte pro server služby Azure SQL Database [pravidlo brány firewall](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) na úrovni serveru, které službě Azure Database Migration Service povolí přístup k cílovým databázím. Zadejte rozsah podsítě virtuální sítě, která se používá pro Azure Database Migration Service.
-* Zajistěte, aby se přihlašovací údaje použité pro připojení ke zdrojové instanci služby RDS SQL Server přidružil k účtu, který je členem role serveru "processadmin", a členem rolí databáze "db_owner" na všech databázích, které mají být migrovány.
-* Zajistěte, aby přihlašovací údaje použité pro připojení k cílové instanci Azure SQL Database měly oprávnění řídicí databáze pro cílové databáze Azure SQL a členy role sysadmin v případě migrace do spravované instance Azure SQL Database.
-* Zdrojová verze SQL Server VP musí být SQL Server 2012 a vyšší. Návod k určení verze vaší instance SQL Serveru najdete v článku [Určení verze, edice a úrovně aktualizace SQL Serveru a jeho komponent](https://support.microsoft.com/help/321185/how-to-determine-the-version-edition-and-update-level-of-sql-server-an).
-* Povolte funkci Change Data Capture (CDC) v databázi RDS SQL Server a všech uživatelských tabulkách vybraných pro migraci.
+* Vytvořte pro server služby Azure SQL Database [pravidlo brány firewall](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) na úrovni serveru, které službě Azure Database Migration Service povolí přístup k cílovým databázím. Zadejte rozsah podsítí virtuální sítě používané pro službu migrace databáze Azure.
+* Ujistěte se, že pověření použitá pro připojení ke zdrojové instanci rds sql serveru jsou přidružena k účtu, který je členem role serveru "Processadmin" a členem databázových rolí "db_owner" ve všech databázích, které mají být migrovány.
+* Ujistěte se, že přihlašovací údaje použité pro připojení k cílové instanci Azure SQL Database mají oprávnění DATABÁZE CONTROL v cílových databázích Azure SQL a člena role sysadmin, pokud se migrují do spravované instance Azure SQL Database.
+* Zdrojová verze serveru RDS SQL Server musí být SQL Server 2012 a vyšší. Návod k určení verze vaší instance SQL Serveru najdete v článku [Určení verze, edice a úrovně aktualizace SQL Serveru a jeho komponent](https://support.microsoft.com/help/321185/how-to-determine-the-version-edition-and-update-level-of-sql-server-an).
+* Povolte sběr dat změny (CDC) v databázi serveru RDS SQL Server a všechny uživatelské tabulky vybrané pro migraci.
     > [!NOTE]
-    > Pomocí následujícího skriptu můžete povolit funkci CDC v databázi služby RDS SQL Server.
+    > Pomocí níže uvedeného skriptu můžete povolit cdc v databázi serveru RDS SQL Server.
     ```
     exec msdb.dbo.rds_cdc_enable_db 'AdventureWorks2012'
     ```
-    > Pomocí níže uvedeného skriptu můžete na všech tabulkách povolit funkci CDC.
+    > Pomocí níže uvedeného skriptu můžete povolit CDC ve všech tabulkách.
     ```
     use <Database name>
     go
@@ -98,10 +98,10 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
     Další informace najdete v článku [DISABLE TRIGGER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/disable-trigger-transact-sql?view=sql-server-2017).
 
 ## <a name="migrate-the-sample-schema"></a>Migrace ukázkového schématu
-K migraci schématu do Azure SQL Database použijte technologii DMA.
+Pomocí dma migrovat schéma do Azure SQL Database.
 
 > [!NOTE]
-> Před vytvořením projektu migrace v DMA se ujistěte, že už máte zřízenou databázi Azure SQL, jak je uvedeno v požadavcích. Pro účely tohoto kurzu se název Azure SQL Database považuje za **AdventureWorks2012**, ale můžete zadat jakýkoli název, který si přejete.
+> Před vytvořením projektu migrace v DMA se ujistěte, že už máte zřízenou databázi Azure SQL, jak je uvedeno v požadavcích. Pro účely tohoto kurzu se předpokládá, že název azure SQL database **adventureworks2012**, ale můžete zadat libovolné jméno, které chcete.
 
 Pokud chcete migrovat schéma **AdventureWorks2012** do služby Azure SQL Database, proveďte následující kroky:
 
@@ -118,7 +118,7 @@ Pokud chcete migrovat schéma **AdventureWorks2012** do služby Azure SQL Databa
 
     ![Podrobnosti o připojení ke zdroji v nástroji Data Migration Assistant](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dma-source-connect.png)
 
-6. Vyberte **Další**, v části **připojit k cílovému serveru**zadejte podrobnosti o CÍLOVÉM připojení pro Azure SQL Database, vyberte **připojit**a pak vyberte databázi **AdventureWorksAzure** , kterou jste předem zřídili v Azure SQL Database.
+6. Vyberte **Další**, v části **Připojit k cílovému serveru**zadejte podrobnosti cílového připojení pro databázi Azure SQL, vyberte **Připojit**a pak vyberte databázi **AdventureWorksAzure,** kterou jste předem zřídit i v Azure SQL Database.
 
     ![Podrobnosti o připojení k cíli v nástroji Data Migration Assistant](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dma-target-connect.png)
 
@@ -166,11 +166,11 @@ Pokud chcete migrovat schéma **AdventureWorks2012** do služby Azure SQL Databa
 
 5. Vyberte existující virtuální síť nebo vytvořte novou.
 
-    Virtuální síť poskytuje Azure Database Migration Service s přístupem ke zdrojovému SQL Server a cílové instanci Azure SQL Database.
+    Virtuální síť poskytuje službě Migrace databáze Azure přístup ke zdrojovému serveru SQL Server a cílové instanci Azure SQL Database.
 
-    Další informace o tom, jak vytvořit virtuální síť v Azure Portal, najdete v článku [vytvoření virtuální sítě pomocí Azure Portal](https://aka.ms/DMSVnet).
+    Další informace o tom, jak vytvořit virtuální síť na webu Azure Portal, najdete v článku [Vytvoření virtuální sítě pomocí portálu Azure](https://aka.ms/DMSVnet).
 
-6. Vyberte cenovou úroveň; v případě této online migrace nezapomeňte vybrat cenovou úroveň Premium.
+6. Vyberte cenovou úroveň; Pro tuto online migraci nezapomeňte vybrat cenovou úroveň Premium.
 
     Další informace o nákladech a cenových úrovních najdete na [stránce s cenami](https://aka.ms/dms-pricing).
 
@@ -191,22 +191,22 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
      ![Vyhledání instance služby Azure Database Migration Service](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-instance-search.png)
 
 3. Vyberte **+ Nový projekt migrace**.
-4. Na obrazovce **Nový projekt migrace** zadejte název projektu, v textovém poli **typ zdrojového serveru** vyberte **AWS VP pro SQL Server**v textovém poli **typ cílového serveru** vyberte možnost **Azure SQL Database**.
+4. Na obrazovce **Nový projekt migrace** zadejte název projektu, v textovém poli Typ **zdrojového serveru** vyberte **aws RDS pro SQL Server**, v textovém poli Typ **cílového serveru** vyberte Azure SQL **Database**.
 
     > [!NOTE]
-    > V případě typu cílového serveru vyberte **Azure SQL Database** pro migraci do databáze typu Singleton Azure SQL Database a i do spravované instance Azure SQL Database.
+    > Pro typ cílového serveru vyberte **Azure SQL Database** pro migraci do databáze singleton Azure SQL Database a také do instance spravované službou Azure SQL Database.
 
-5. V části **Zvolte typ aktivity** vyberte možnost **migrace online dat**.
+5. V části **Zvolit typ aktivity** vyberte **Online migraci dat**.
 
     > [!IMPORTANT]
-    > Ujistěte se, že jste vybrali **online migraci dat**; offline migrace nejsou v tomto scénáři podporovány.
+    > Nezapomeňte vybrat **online migraci dat**. offline migrace nejsou pro tento scénář podporovány.
 
     ![Vytvoření projektu Database Migration Service](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-create-project4.png)
 
     > [!NOTE]
-    > Alternativně můžete zvolit **vytvořit projekt pouze** k vytvoření projektu migrace a provést migraci později.
+    > Alternativně můžete zvolit **Vytvořit projekt pouze** k vytvoření projektu migrace nyní a provést migraci později.
 
-6. Vyberte **Save** (Uložit).
+6. Vyberte **Uložit**.
 
 7. Vyberte **Vytvořit a spustit aktivitu** a vytvořte projekt a spusťte aktivitu migrace.
 
@@ -223,7 +223,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
     Pokud není nainstalovaný důvěryhodný certifikát, SQL Server při spuštění instance vygeneruje certifikát podepsaný svým držitelem. Tento certifikát slouží k šifrování přihlašovacích údajů pro připojení klientů.
 
     > [!CAUTION]
-    > Připojení SSL šifrovaná pomocí certifikátu podepsaného svým držitelem neposkytují silné zabezpečení. Jsou náchylná na útoky, kdy se útočníci vydávají za prostředníky. Na připojení SSL s použitím certifikátů podepsaných svým držitelem byste neměli spoléhat v produkčním prostředí ani na serverech připojených k internetu.
+    > Připojení TLS, která jsou šifrována pomocí certifikátu podepsaného svým držitelem, neposkytují silné zabezpečení. Jsou náchylná na útoky, kdy se útočníci vydávají za prostředníky. Na protokol TLS byste neměli spoléhat pomocí certifikátů podepsaných svým držitelem v produkčním prostředí nebo na serverech, které jsou připojeny k Internetu.
 
    ![Podrobnosti zdroje](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-source-details3.png)
 
@@ -241,19 +241,19 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
 
 3. Vyberte **Uložit**, na obrazovce **Vybrat tabulky** rozbalte seznam tabulek a zkontrolujte seznam ovlivněných polí.
 
-    Azure Database Migration Service automaticky vybere všechny prázdné zdrojové tabulky, které existují v cílové instanci služby Azure SQL Database. Chcete-li znovu migrovat tabulky, které již obsahují data, je nutné explicitně vybrat tabulky na této obrazovce.
+    Azure Database Migration Service automaticky vybere všechny prázdné zdrojové tabulky, které existují v cílové instanci služby Azure SQL Database. Pokud chcete znovu emigrovat tabulky, které již obsahují data, musíte explicitně vybrat tabulky na této obrazovce.
 
     ![Výběr tabulek](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-configure-setting-activity4.png)
 
-4. Po nastavení následujících **Nastavení rozšířeného online migrace**vyberte **Save (Uložit**).
+4. Po nastavení následujícího **nastavení rozšířené migrace online**vyberte **možnost Uložit**.
 
     | Nastavení | Popis |
     | ------------- | ------------- |
-    | **Maximální počet tabulek, které se mají načítat paralelně** | Určuje počet tabulek, které se během migrace paralelně spustí. Výchozí hodnota je 5, ale je možné ji nastavit na optimální hodnotu pro splnění konkrétních potřeb migrace v závislosti na všech migracích ověření koncepce. |
-    | **Když je zdrojová tabulka zkrácená** | Určuje, zda DMS během migrace zkrátí cílovou tabulku. Toto nastavení může být užitečné, když se jedna nebo víc tabulek zkrátí v rámci procesu migrace. |
-    | **Konfigurace nastavení pro data pro velké objekty (LOB)** | Určuje, zda DMS migruje neomezená obchodní data nebo omezuje data LOB migrovaná na konkrétní velikost.  V případě, že je u migrovaných dat LOB povolený limit, všechna data LOB nad rámec tohoto limitu se zkrátí. Pro produkční migrace se doporučuje vybrat možnost **Povolení neomezené velikosti LOB** , aby se zabránilo ztrátě dat. Když zadáte, že povolíte neomezenou velikost LOB, zaškrtněte políčko **migrovat data LOB v jednom bloku, pokud je velikost objektu LOB menší než (KB)** , aby se zlepšil výkon. |
+    | **Maximální počet stolů, které se mají načíst paralelně** | Určuje počet tabulek, které dms provádí paralelně během migrace. Výchozí hodnota je 5, ale lze ji nastavit na optimální hodnotu, aby vyhovovala specifickým potřebám migrace na základě všech migrací POC. |
+    | **Při zkrácení zdrojové tabulky** | Určuje, zda systém DMS během migrace zkrátí cílovou tabulku. Toto nastavení může být užitečné, pokud je jedna nebo více tabulek zkráceno jako součást procesu migrace. |
+    | **Konfigurace nastavení dat velkých objektů (LOB)** | Určuje, zda dms migruje neomezená obchodní data nebo omezuje přenesená obchodní data na určitou velikost.  Pokud je limit na degrovaná data migrovaná, všechna obchodní data nad rámec tohoto limitu je zkrácena. Pro produkční migrace se doporučuje vybrat **povolit neomezenou velikost LOB,** abyste zabránili ztrátě dat. Při zadávání, chcete-li povolit neomezenou velikost LOB, **zaškrtněte políčko Migrovat obchodní data v jednom bloku, pokud je zadaný formát LOB menší než (KB),** abyste zvýšili výkon. |
 
-    ![Nastavení upřesňujících nastavení online migrace](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-advanced-online-migration-settings.png)
+    ![Nastavení upřesňujících nastavení migrace online](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-advanced-online-migration-settings.png)
 
 5. Vyberte **Uložit**, na obrazovce **Shrnutí migrace** do textového pole **Název aktivity** zadejte název aktivity migrace a pak zkontrolujte souhrnné informace a ujistěte se, že podrobnosti zdroje a cíle odpovídají dříve zadaným informacím.
 
@@ -291,7 +291,7 @@ Po dokončení počátečního úplného načtení se databáze označí jako **
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o známých problémech a omezeních při provádění online migrace do služby Azure SQL Database najdete v článku [známé problémy a řešení Azure SQL Database online migrace](known-issues-azure-sql-online.md).
+* Informace o známých problémech a omezeních při provádění online migrací do Azure SQL DatabaseL najdete v článku [Známé problémy a řešení migrace online databáze Azure SQL Database](known-issues-azure-sql-online.md).
 * Informace o službě Azure Database Migration Service najdete v článku [Co je Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).
-* Informace o Azure SQL Database najdete v článku [co je služba Azure SQL Database?](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview).
-* Informace o Azure SQL Database spravovaných instancích najdete na stránce [Azure SQL Database Managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index).
+* Informace o Azure SQL Database najdete v článku [Co je služba Azure SQL Database?](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview).
+* Informace o spravovaných instancích Azure SQL Database najdete na stránce [Azure SQL Database Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index).
