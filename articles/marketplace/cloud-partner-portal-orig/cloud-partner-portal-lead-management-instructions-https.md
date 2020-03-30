@@ -1,49 +1,48 @@
 ---
 title: Koncový bod HTTPS | Azure Marketplace
-description: Konfigurace správy zájemců pro koncový bod HTTPS
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+description: Nakonfigurujte správu zájemců pro koncový bod HTTPS.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/24/2018
-ms.author: pabutler
-ms.openlocfilehash: 817e431f5386b10345d414190e8bda0954ef2aca
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: cb6ef173e97a7c2bbd7d7cad5e5074b1f2d0f066
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825226"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288593"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>Konfigurace správy potenciálních zákazníků pomocí koncového bodu HTTPS
 
-Ke zpracování zájemců Azure Marketplace a AppSource můžete použít koncový bod HTTPS. Do těchto zájemců se dají zapisovat do systému pro správu vztahů se zákazníky (CRM), nebo se můžou poslat jako e-mailové oznámení. Tento článek popisuje, jak nakonfigurovat správu potenciálních zákazníků pomocí služby [Microsoft Flow](https://powerapps.microsoft.com/automate-processes/) Automation.
+Ke zpracování potenciálních zákazníků Azure Marketplace a AppSource můžete použít koncový bod HTTPS. Tito zájemci mohou být zapsáni do systému řízení vztahů se zákazníky (CRM) nebo odesláni jako e-mailové oznámení. Tento článek popisuje, jak nakonfigurovat správu zájemců pomocí služby automatizace [Microsoft Flow.](https://powerapps.microsoft.com/automate-processes/)
 
 ## <a name="create-a-flow-using-microsoft-flow"></a>Vytvoření toku pomocí Microsoft Flow
 
-1. Otevřete webovou stránku [Flow](https://flow.microsoft.com/) . Vyberte **Přihlásit** se nebo vyberte **zaregistrovat se zdarma** , abyste mohli vytvořit bezplatný účet toku.
+1. Otevřete webovou stránku [Flow.](https://flow.microsoft.com/) Vyberte **Přihlásit** se nebo **zvolte Registrace zdarma** a vytvořte si bezplatný účet Toku.
 
-2. Přihlaste se a v řádku nabídek vyberte **Moje toky** .
+2. Přihlaste se a na řádku nabídek vyberte **Moje toky.**
 
     ![Moje toky](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows.png)
 
-3. Vyberte **+ vytvořit z prázdné**.
+3. Vyberte **+ Vytvořit z prázdné**.
 
-    ![vytvořit z prázdné](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank.png)
+    ![Vytvořit z prázdné](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank.png)
 
-4. Vyberte **vytvořit z prázdné**.
+4. Vyberte **Vytvořit z prázdné**.
 
-    ![vytvořit z prázdné](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank2.png)
+    ![Vytvořit z prázdné](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank2.png)
 
-5. V poli **vyhledávací konektory a triggery** zadejte "Request" a najděte konektor požadavků.
-6. V části **triggery**vyberte, **kdy se přijme požadavek HTTP**. 
+5. Do pole Hledat konektory a aktivační události zadejte "request" pro **vyhledání** konektoru Požadavku.
+6. V části **Triggers**vyberte **Při přijetí požadavku HTTP**. 
 
-    ![Vyberte Trigger přijatý žádostí HTTP](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
+    ![Vyberte aktivační událost přijatého požadavku HTTP.](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
 
-7. Ke konfiguraci **schématu JSON těla žádosti**použijte jeden z následujících kroků:
+7. Ke konfiguraci **schématu JSON tělo požadavku**použijte jeden z následujících kroků :
 
-   - Zkopírujte [schéma JSON](#json-schema) na konci tohoto článku do textového pole **schématu JSON textu žádosti** .
-   - Vyberte **K vygenerování schématu použijte ukázkovou datovou část**. Do textového pole **Zadejte nebo vložte ukázkovou datovou část JSON** vložte do [příkladu JSON](#json-example). Vyberte **Hotovo** a vytvořte schéma.
+   - Zkopírujte [schéma JSON](#json-schema) na konci tohoto článku do textového pole **Schéma Text požadavku JSON.**
+   - Vyberte **K vygenerování schématu použijte ukázkovou datovou část**. V **textovém poli Enter nebo paste ukázkové datové části JSON** vložte do [příkladu JSON](#json-example). Chcete-li vytvořit schéma, **vyberte Hotovo.**
 
    >[!Note]
    >V tomto okamžiku toku se můžete připojit k systému CRM nebo nakonfigurovat e-mailové oznámení.
@@ -51,61 +50,61 @@ Ke zpracování zájemců Azure Marketplace a AppSource můžete použít koncov
 ### <a name="to-connect-to-a-crm-system"></a>Připojení k systému CRM
 
 1. Vyberte **+ Nový krok**.
-2. Zvolte systém CRM podle vašeho výběru a akci pro vytvoření nového záznamu. Následující snímek obrazovky ukazuje **Dynamics 365 – vytvoří nový záznam** jako příklad.
+2. Vyberte si crm systém podle vašeho výběru s akcí k vytvoření nového záznamu. Následující snímek obrazovky ukazuje **Dynamics 365 - Vytvoření nového záznamu** jako příklad.
 
-    ![Vytvořit nový záznam](./media/cloud-partner-portal-lead-management-instructions-https/https-image009.png)
+    ![Vytvoření nového záznamu](./media/cloud-partner-portal-lead-management-instructions-https/https-image009.png)
 
-3. Zadejte **název organizace** , který bude obsahovat vstupy připojení pro váš konektor. V rozevíracím seznamu **název entity** vyberte **zájemci** .
+3. Zadejte **název organizace,** který je vstupy připojení pro konektor. V rozevíracím seznamu Název entity vyberte **Zájemce.** **Entity Name**
 
-    ![Vybrat potenciální zákazníky](./media/cloud-partner-portal-lead-management-instructions-https/https-image011.png)
+    ![Vybrat zájemce](./media/cloud-partner-portal-lead-management-instructions-https/https-image011.png)
 
-4. Flow zobrazuje formulář pro poskytování informací o potenciálních vedoucích. Položky ze vstupní žádosti můžete mapovat tak, že vyberete možnost Přidat dynamický obsah. Následující snímek obrazovky ukazuje **OfferTitle** jako příklad.
+4. Tok zobrazuje formulář pro poskytování informací o zájemcích. Položky ze vstupní žádosti můžete mapovat tak, že chcete přidat dynamický obsah. Následující snímek obrazovky zobrazuje **OfferTitle** jako příklad.
 
     ![Přidat dynamický obsah](./media/cloud-partner-portal-lead-management-instructions-https/https-image013.png)
 
-5. Namapujte požadovaná pole a potom vyberte **Uložit** . tím tok uložíte.
+5. Namapujte požadovaná pole a pak vyberte **Uložit,** chcete-li tok uložit.
 
-6. V žádosti se vytvoří adresa URL POST protokolu HTTP. Zkopírujte tuto adresu URL a použijte ji jako koncový bod HTTPS.
+6. V požadavku je vytvořena adresa URL HTTP POST. Zkopírujte tuto adresu URL a použijte ji jako koncový bod HTTPS.
 
-    ![Adresa URL pro post HTTP](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-get-post-url.png)
+    ![Adresa URL příspěvku HTTP](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-get-post-url.png)
 
 ### <a name="to-set-up-email-notification"></a>Nastavení e-mailového oznámení
 
 1. Vyberte **+ Nový krok**.
-2. V části **zvolit akci**vyberte **Akce**.
+2. V části **Zvolit akci**vyberte **Akce**.
 3. V části **Akce** zvolte **Odeslat e-mail**.
 
-    ![Přidat akci e-mailu](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-add-email-action.png)
+    ![Přidání akce e-mailu](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-add-email-action.png)
 
-4. V části **Odeslat e-mail**nakonfigurujte následující povinná pole:
+4. V **části Odeslat e-mail**nakonfigurujte následující povinná pole:
 
-   - Zadejte alespoň jednu platnou **e-** mailovou adresu.
-   - Tok **předmětu** vám dává možnost Přidat dynamický obsah, jako je například **LeadSource** , na následujícím snímku obrazovky.
+   - **Chcete-li** - Zadejte alespoň jednu platnou e-mailovou adresu.
+   - **Předmět** – tok vám dává možnost přidat dynamický obsah, například **LeadSource** v následujícím snímání obrazovky.
 
-     ![Přidání e-mailové akce pomocí dynamického obsahu](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-configure-email-dynamic-content.png)
+     ![Přidání akce e-mailu pomocí dynamického obsahu](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-configure-email-dynamic-content.png)
 
-   - **Tělo** – ze seznamu dynamického obsahu přidejte do textu e-mailu požadované informace. Například LastName, FirstName, E-mail a společnost.
+   - **Tělo** – ze seznamu Dynamický obsah přidejte požadované informace do textu e-mailu. Například Příjmení, Jméno, E-mail a Společnost.
 
-   Až budete hotovi s nastavením e-mailového oznámení, bude vypadat jako v příkladu na následujícím snímku obrazovky.
+   Po dokončení nastavení e-mailového oznámení bude vypadat jako příklad v následujícím zachycení obrazovky.
 
-   ![Přidat akci e-mailu](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-configure-email-action.png)
+   ![Přidání akce e-mailu](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-configure-email-action.png)
 
-5. Kliknutím na **Uložit** dokončete tok.
-6. V žádosti se vytvoří adresa URL POST protokolu HTTP. Zkopírujte tuto adresu URL a použijte ji jako koncový bod HTTPS.
+5. Chcete-li dokončit tok, vyberte **uložit.**
+6. V požadavku je vytvořena adresa URL HTTP POST. Zkopírujte tuto adresu URL a použijte ji jako koncový bod HTTPS.
 
-    ![Adresa URL pro post HTTP](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-get-post-url.png)
+    ![Adresa URL příspěvku HTTP](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-get-post-url.png)
 
-## <a name="configure-your-offer-to-send-leads-to-the-https-endpoint"></a>Konfigurace nabídky pro odeslání zájemců do koncového bodu HTTPS
+## <a name="configure-your-offer-to-send-leads-to-the-https-endpoint"></a>Konfigurace nabídky pro odesílání zájemců do koncového bodu HTTPS
 
-Když nakonfigurujete informace o správě zájemců pro vaši nabídku, vyberte **koncový bod HTTPS** pro **cíl zájemce** a vložte adresu URL post protokolu HTTP, kterou jste zkopírovali v předchozím kroku.  
+Při konfiguraci informací o správě zájemců pro vaši nabídku vyberte **koncový bod HTTPS** pro cíl **zájemce** a vložte do adresy URL HTTP POST, kterou jste zkopírovali v předchozím kroku.  
 
 ![Přidat dynamický obsah](./media/cloud-partner-portal-lead-management-instructions-https/https-image017.png)
 
-Po vygenerování zájemců pošle Microsoft do toku zájemce, který se směruje na systém nebo e-mailovou adresu, kterou jste nakonfigurovali.
+Při generování zájemců odesílá společnost Microsoft zájemce na tok, který se směruje na nakonfigurovaný systém CRM nebo e-mailovou adresu.
 
-## <a name="json-schema-and-example"></a>Schéma a příklad JSON
+## <a name="json-schema-and-example"></a>Schéma JSON a příklad
 
-Příklad testu JSON používá následující schéma:
+Testovací příklad JSON používá následující schéma:
 
 ### <a name="json-schema"></a>Schéma JSON
 
@@ -166,7 +165,7 @@ Příklad testu JSON používá následující schéma:
 }
 ```
 
-Následující příklad JSON můžete zkopírovat a upravit tak, aby se v MS Flow používal jako test.
+Můžete zkopírovat a upravit následující příklad JSON použít jako test v MS Flow.
 
 ### <a name="json-example"></a>Příklad JSON
 
@@ -188,4 +187,4 @@ Následující příklad JSON můžete zkopírovat a upravit tak, aby se v MS Fl
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste to ještě neudělali, nakonfigurujte [potenciální](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) zákazníky v portál partnerů cloudu.
+Pokud jste tak ještě neučinili, nakonfigurujte [zájemce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) zákazníků na portálu partnerů cloudu.

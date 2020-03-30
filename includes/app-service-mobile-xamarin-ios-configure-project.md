@@ -5,36 +5,36 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: a69df0cc9ea14a2c9fa172c77663afb1d6861f9b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175507"
 ---
-#### <a name="configure-the-ios-project-in-xamarin-studio"></a>Konfigurace projektu pro iOS v nástroji Xamarin Studio
-1. V Xamarin.Studio, otevřete **Info.plist**a aktualizovat **identifikátor sady prostředků** s ID sady prostředků, kterou jste vytvořili pomocí ID aplikace.
+#### <a name="configure-the-ios-project-in-xamarin-studio"></a>Konfigurace projektu iOS v Xamarin Studiu
+1. V Xamarin.Studiu otevřete **soubor Info.plist**a aktualizujte **identifikátor sady** s ID sady, které jste vytvořili dříve, pomocí nového ID aplikace.
 
     ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-21.png)
-2. Přejděte dolů k položce **režimy běhu na pozadí**. Vyberte **povolit režimy pozadí** pole a **Vzdálená oznámení** pole.
+2. Posuňte se dolů do **režimu pozadí**. Zaškrtněte **políčko Povolit režimy na pozadí** a **Vzdálená oznámení.**
 
     ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-22.png)
-3. Dvakrát klikněte na projekt v panelu řešení otevřete **možnosti projektu**.
-4. V části **sestavení**, zvolte **podepsání sady prostředků aplikace pro iOS**a vyberte odpovídající identitu a zřizovací profil jste právě nastavili nahoru pro tento projekt.
+3. Poklepáním na projekt v panelu Řešení otevřete **možnosti projektu**.
+4. V **části Sestavení**zvolte **podepisování balíčků pro iOS**a vyberte odpovídající profil identity a zřizování, který jste právě nastavili pro tento projekt.
 
    ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-20.png)
 
-   Tím se zajistí, že projekt používá nový profil pro podepisování kódu. Oficiální Xamarin zřizování zařízení dokumentaci, naleznete v tématu [Xamarin Device Provisioning].
+   Tím je zajištěno, že projekt používá nový profil pro podepisování kódu. Oficiální dokumentace pro zřizování zařízení Xamarin naleznete v tématu [Xamarin Device Provisioning].
 
-#### <a name="configure-the-ios-project-in-visual-studio"></a>Konfigurace projektu pro iOS v sadě Visual Studio
-1. V sadě Visual Studio, klikněte pravým tlačítkem na projekt a potom klikněte na tlačítko **vlastnosti**.
-2. Na stránkách vlastností, klikněte na tlačítko **aplikace pro iOS** kartě a aktualizovat **identifikátor** ID, které jste vytvořili dříve.
+#### <a name="configure-the-ios-project-in-visual-studio"></a>Konfigurace projektu iOS v sadě Visual Studio
+1. V sadě Visual Studio klikněte pravým tlačítkem myši na projekt a potom klikněte na **příkaz Vlastnosti**.
+2. Na stránkách vlastností klikněte na kartu **Aplikace pro iOS** a aktualizujte **identifikátor** s ID, které jste vytvořili dříve.
 
     ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-23.png)
-3. V **podepsání sady prostředků aplikace pro iOS** kartu, vyberte odpovídající identitu a zřizovací profil, stačí nastavit pro tento projekt.
+3. Na kartě **podepisování balíčků iOS** vyberte odpovídající profil identity a zřizování, který jste právě nastavili pro tento projekt.
 
     ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-24.png)
 
-    Tím se zajistí, že projekt používá nový profil pro podepisování kódu. Oficiální Xamarin zřizování zařízení dokumentaci, naleznete v tématu [Xamarin Device Provisioning].
-4. Poklikejte na soubor Info.plist ji otevřete a potom povolit **RemoteNotifications** pod **režimy běhu na pozadí**.
+    Tím je zajištěno, že projekt používá nový profil pro podepisování kódu. Oficiální dokumentace pro zřizování zařízení Xamarin naleznete v tématu [Xamarin Device Provisioning].
+4. Poklepáním na soubor Info.plist jej otevřete a povolte **vzdálené oznámení** v části **Režimy pozadí**.
 
-[Xamarin Device Provisioning]: http://developer.xamarin.com/guides/ios/getting_started/installation/device_provisioning/
+[Zřizování zařízení Xamarin]: http://developer.xamarin.com/guides/ios/getting_started/installation/device_provisioning/

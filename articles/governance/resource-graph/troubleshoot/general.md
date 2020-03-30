@@ -1,38 +1,38 @@
 ---
 title: Odstraňování běžných chyb
-description: Naučte se řešit problémy s různými sadami SDK při dotazování na prostředky Azure pomocí Azure Resource graphu.
+description: Zjistěte, jak řešit problémy s různými sadami SDK při dotazování prostředků Azure pomocí Azure Resource Graph.
 ms.date: 10/18/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: f881db4f75bcee8c13221717596442ac29a4b1ac
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74303898"
 ---
-# <a name="troubleshoot-errors-using-azure-resource-graph"></a>Řešení chyb pomocí Azure Resource graphu
+# <a name="troubleshoot-errors-using-azure-resource-graph"></a>Poradce při potížích pomocí Azure Resource Graph
 
-Při dotazování na prostředky Azure pomocí Azure Resource graphu může dojít k chybám. Tento článek popisuje různé chyby, ke kterým může dojít, a jejich řešení.
+Můžete narazit na chyby při dotazování prostředků Azure pomocí Azure Resource Graph. Tento článek popisuje různé chyby, které mohou nastat a jak je vyřešit.
 
 ## <a name="finding-error-details"></a>Hledání podrobností o chybě
 
-Většina chyb je výsledkem problému při spouštění dotazu pomocí grafu prostředků Azure. Pokud se dotaz nezdařil, sada SDK poskytuje podrobnosti o neúspěšném dotazu. Tyto informace označují problém tak, aby mohl být vyřešen a pozdější dotaz bude úspěšný.
+Většina chyb je výsledkem problému při spuštění dotazu pomocí Azure Resource Graph. Pokud se dotaz nezdaří, sada SDK poskytuje podrobnosti o neúspěšném dotazu. Tyto informace označují problém tak, aby jej lze opravit a pozdější dotaz úspěšné.
 
 ## <a name="general-errors"></a>Obecné chyby
 
-### <a name="toomanysubscription"></a>Scénář: moc velký počet předplatných
+### <a name="scenario-too-many-subscriptions"></a><a name="toomanysubscription"></a>Scénář: Příliš mnoho předplatných
 
 #### <a name="issue"></a>Problém
 
-Zákazníci, kteří mají přístup k více než 1000 předplatným, včetně předplatných mezi klienty a [Azure Lighthouse](../../../lighthouse/overview.md), nemůžou v rámci všech předplatných načíst data v jednom volání do Azure Resource graphu.
+Zákazníci s přístupem k více než 1000 předplatným, včetně předplatných napříč tenanty s [Azure Lighthouse](../../../lighthouse/overview.md), nemohou načíst data napříč všemi předplatnými v jediném volání do Azure Resource Graph.
 
 #### <a name="cause"></a>Příčina
 
-Azure CLI a PowerShell předávají jenom prvních 1000 předplatných do Azure Resource graphu. REST API pro Azure Resource Graph přijímá maximální počet odběrů, na kterých se má dotaz provést.
+Azure CLI a PowerShell předávají jenom prvních 1000 předplatných do Azure Resource Graph. Rozhraní REST API pro Azure Resource Graph přijímá maximální počet předplatných k provedení dotazu.
 
 #### <a name="resolution"></a>Řešení
 
-Dávkové zpracování požadavků pro dotaz s podmnožinou předplatných, které mají zůstat v rámci limitu předplatného 1000. Řešení používá parametr **předplatného** v prostředí PowerShell.
+Dávkové požadavky na dotaz s podmnožinou odběrů, aby zůstaly pod limitem 1000 předplatného. Řešení používá parametr **Subscription** v PowerShellu.
 
 ```azurepowershell-interactive
 # Replace this query with your own
@@ -57,38 +57,38 @@ foreach ($batch in $subscriptionsBatch){ $response += Search-AzGraph -Query $que
 $response
 ```
 
-### <a name="rest-contenttype"></a>Scénář: Nepodporovaná hlavička REST typu obsahu
+### <a name="scenario-unsupported-content-type-rest-header"></a><a name="rest-contenttype"></a>Scénář: Nepodporovaná hlavička REST typu obsahu
 
 #### <a name="issue"></a>Problém
 
-Zákazníci, kteří se dotazují do grafu prostředků Azure REST API obdrží odpověď _500_ (interní chyba serveru).
+Zákazníci dotazující se rozhraní REST rozhraní AZURE Resource Graph získají vrácenou odpověď _500_ (vnitřní chyba serveru).
 
 #### <a name="cause"></a>Příčina
 
-Graf prostředků Azure REST API podporuje jenom `Content-Type` **Application/JSON**. Některé nástroje nebo agenti REST mají výchozí hodnotu **Text/prostý**, což REST API nepodporuje.
+Rozhraní API REST grafu prostředků `Content-Type` Azure podporuje jenom **aplikace/json**. Některé nástroje REST nebo agenti výchozí **text/plain**, který není podporován rozhraní MATROZHRANÍ API.
 
 #### <a name="resolution"></a>Řešení
 
-Ověřte, že nástroj nebo agent, který používáte k dotazování na Azure Resource Graph, má REST API záhlaví `Content-Type` nakonfigurovaná pro **Application/JSON**.
+Ověřte, zda nástroj nebo agent, který používáte k `Content-Type` dotazování na Azure Resource Graph, má hlavičku rozhraní REST API nakonfigurovanou pro **aplikaci/json**.
 
-### <a name="rest-403"></a>Scénář: žádné oprávnění ke čtení pro všechna předplatná v seznamu
+### <a name="scenario-no-read-permission-to-all-subscriptions-in-list"></a><a name="rest-403"></a>Scénář: Žádné oprávnění ke čtení pro všechna předplatná v seznamu
 
 #### <a name="issue"></a>Problém
 
-Zákazníci, kteří explicitně předají seznam předplatných s dotazem na Azure Resource Graph, získají odpověď _403_ (zakázáno).
+Zákazníci, kteří explicitně předat seznam předplatných s dotazem Azure Resource Graph získat _odpověď 403_ (Zakázáno).
 
 #### <a name="cause"></a>Příčina
 
-Pokud zákazník nemá oprávnění ke čtení pro všechna poskytnutá předplatná, je žádost zamítnuta z důvodu nedostatku příslušných zabezpečovacích práv.
+Pokud zákazník nemá oprávnění ke čtení všech poskytnutých předplatných, je žádost zamítnuta z důvodu nedostatku příslušných práv na zabezpečení.
 
 #### <a name="resolution"></a>Řešení
 
-V seznamu předplatných uveďte aspoň jedno předplatné, ke kterému má zákazník, který dotaz spouští, oprávnění ke čtení. Další informace najdete v tématu [oprávnění v Azure Resource graphu](../overview.md#permissions-in-azure-resource-graph).
+Do seznamu odběrů zahrňte alespoň jedno předplatné, ke kterému má zákazník, který dotaz spouštěný dotaz, alespoň pro čtení. Další informace najdete [v tématu Oprávnění v Azure Resource Graph](../overview.md#permissions-in-azure-resource-graph).
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
+Pokud jste problém nezjistili nebo se vám nedaří problém vyřešit, navštivte jeden z následujících kanálů, kde najdete další podporu:
 
-- Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure](https://azure.microsoft.com/support/forums/).
-- Spojte se s [@AzureSupport](https://twitter.com/azuresupport). Tento oficiální účet Microsoft Azure pomáhá vylepšovat uživatelské prostředí tím, že propojuje komunitu Azure s vhodnými zdroji: odpověďmi, podporou a odborníky.
-- Pokud potřebujete další pomoc, můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
+- Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure .](https://azure.microsoft.com/support/forums/)
+- Spojte [@AzureSupport](https://twitter.com/azuresupport) se s – oficiálním účtem Microsoft Azure pro zlepšení zákaznického prostředí propojením komunity Azure se správnými prostředky: odpověďmi, podporou a odborníky.
+- Pokud potřebujete další pomoc, můžete nastolet incident podpory Azure. Přejděte na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte Získat **podporu**.

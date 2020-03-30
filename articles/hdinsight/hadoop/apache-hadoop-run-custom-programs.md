@@ -1,6 +1,6 @@
 ---
-title: Spouštění vlastních programů MapReduce – Azure HDInsight
-description: Kdy a jak spouštět vlastní programy Apache MapReduce v clusterech Azure HDInsight.
+title: Spuštění vlastních programů MapReduce – Azure HDInsight
+description: Kdy a jak spustit vlastní programy Apache MapReduce v clusterech Azure HDInsight.
 author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
@@ -9,70 +9,70 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
 ms.openlocfilehash: 78623f738285e781cb561a3844db8fbf37226929
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645017"
 ---
 # <a name="run-custom-mapreduce-programs"></a>Spuštění vlastních programů MapReduce
 
-Apache Hadoop systémy velkých objemů dat, jako je HDInsight, umožňují zpracování dat pomocí široké škály nástrojů a technologií. Následující tabulka popisuje hlavní výhody a požadavky pro každé z nich.
+Velké datové systémy založené na Apache Hadoop, jako je HDInsight, umožňují zpracování dat pomocí široké škály nástrojů a technologií. Následující tabulka popisuje hlavní výhody a důležité informace pro každou z nich.
 
 | Mechanismus dotazů | Výhody | Požadavky |
 | --- | --- | --- |
-| **Apache Hive pomocí HiveQL** | <ul><li>Skvělé řešení pro dávkové zpracování a analýzu velkých objemů neproměnlivých dat, pro shrnutí dat a pro dotazování na vyžádání. Používá známou syntaxi jako SQL.</li><li>Dá se použít k vytvoření trvalých tabulek dat, které je možné snadno rozdělit a indexovat.</li><li>Pro stejná data lze vytvořit více externích tabulek a zobrazení.</li><li>Podporuje jednoduchou implementaci datového skladu, která poskytuje rozsáhlé možnosti škálování na více instancí a odolnost proti chybám pro ukládání a zpracování dat.</li></ul> | <ul><li>Vyžaduje, aby zdrojová data měla aspoň určitou identifikovatelnou strukturu.</li><li>Není vhodný pro dotazy a aktualizace na úrovni řádků v reálném čase. Je nejvhodnější pro dávkové úlohy pro velké sady dat.</li><li>Nemusí být schopni provést některé typy složitých úloh zpracování.</li></ul> |
-| **Apache vepřové prase s latinkou** | <ul><li>Vynikající řešení pro manipulaci s daty jako sady, sloučení a filtrování datových sad, použití funkcí u záznamů nebo skupin záznamů a pro restrukturalizaci dat definováním sloupců, seskupením hodnot nebo převodem sloupců na řádky.</li><li>Může použít přístup na základě pracovního postupu jako posloupnost operací s daty.</li></ul> | <ul><li>Uživatelé SQL můžou najít pro vepřové prostředí latinku méně obeznámené a obtížnější je používat než HiveQL.</li><li>Výchozím výstupem je obvykle textový soubor a proto může být obtížné ho použít s nástroji vizualizace, jako je Excel. Obvykle budete navrstvit tabulku podregistru na výstup.</li></ul> |
-| **Vlastní mapování/zmenšení** | <ul><li>Poskytuje plnou kontrolu nad rozvržením a snížením fází a provádění.</li><li>Umožňuje optimalizovat dotazy pro dosažení maximálního výkonu clusteru nebo pro minimalizaci zatížení serverů a sítě.</li><li>Komponenty lze zapsat v řadě známých jazyků.</li></ul> | <ul><li>Je obtížnější, než použití prasete nebo podregistru, protože je nutné vytvořit vlastní mapu a omezit komponenty.</li><li>Procesy, které vyžadují připojení sad dat, jsou obtížnější k implementaci.</li><li>I když jsou k dispozici testovací rozhraní, ladění kódu je složitější než normální aplikace, protože kód se spouští jako úloha služby Batch pod ovládacím prvkem plánovače úloh Hadoop.</li></ul> |
-| **Apache HCatalog** | <ul><li>V této části najdete informace o cestě k úložišti, což usnadňuje správu a odstraňuje nutnost uživatelů, kteří znají, kde jsou data uložená.</li><li>Umožňuje oznámení o událostech, jako je například dostupnost dat, což umožňuje jiným nástrojům, jako je například Oozie, rozpoznat, kdy došlo k operacím.</li><li>Zpřístupňuje relační zobrazení dat, včetně dělení podle klíče, a usnadňuje přístup k datům.</li></ul> | <ul><li>Ve výchozím nastavení podporuje formáty souborů RCFile, CSV text, JSON text, SequenceFile a ORC, ale možná budete muset napsat vlastní SerDe pro jiné formáty.</li><li>HCatalog není bezpečný pro přístup z více vláken.</li><li>Existují určitá omezení pro datové typy pro sloupce při použití zavaděče HCatalog ve skriptech prasete. Další informace najdete v tématu [HCatLoader data types](https://cwiki.apache.org/confluence/display/Hive/HCatalog%20LoadStore#HCatalogLoadStore-HCatLoaderDataTypes) v dokumentaci Apache HCatalog.</li></ul> |
+| **Apache Hive pomocí HiveQL** | <ul><li>Vynikající řešení pro dávkové zpracování a analýzu velkého množství neměnných dat, pro shrnutí dat a pro dotazování na vyžádání. Používá známou syntaxi podobné SQL.</li><li>Lze jej použít k vytvoření trvalé tabulky dat, které lze snadno rozdělit a indexovat.</li><li>Přes stejná data lze vytvořit více externích tabulek a zobrazení.</li><li>Podporuje jednoduchou implementaci datového skladu, která poskytuje možnosti masivníškálování a odolnosti proti chybám pro ukládání a zpracování dat.</li></ul> | <ul><li>Vyžaduje, aby zdrojová data měla alespoň nějakou identifikovatelnou strukturu.</li><li>Není vhodný pro dotazy v reálném čase a aktualizace na úrovni řádků. Nejlépe se používá pro dávkové úlohy přes velké sady dat.</li><li>Nemusí být schopen provádět některé typy složitých úloh zpracování.</li></ul> |
+| **Apache Prase pomocí Pig Latin** | <ul><li>Vynikající řešení pro manipulaci s daty jako sady, slučování a filtrování datových sad, použití funkcí na záznamy nebo skupiny záznamů a pro restrukturalizaci dat definováním sloupců, seskupením hodnot nebo převodem sloupců na řádky.</li><li>Může použít přístup založený na pracovním postupu jako posloupnost operací s daty.</li></ul> | <ul><li>Sql uživatelé mohou najít Pig Latin je méně známé a obtížnější než HiveQL.</li><li>Výchozí výstup je obvykle textový soubor, a proto může být obtížnější používat s vizualizačními nástroji, jako je Excel. Obvykle budete vrstvit tabulku Hive nad výstupem.</li></ul> |
+| **Vlastní mapa/redukce** | <ul><li>Poskytuje plnou kontrolu nad mapou a snížit fáze a provádění.</li><li>Umožňuje optimalizovat dotazy tak, aby bylo dosaženo maximálního výkonu z clusteru nebo aby se minimalizovalo zatížení serverů a sítě.</li><li>Komponenty mohou být napsány v řadě známých jazyků.</li></ul> | <ul><li>Je to těžší než použití Pig nebo Hive, protože musíte vytvořit vlastní mapu a snížit komponenty.</li><li>Procesy, které vyžadují spojení sad dat je obtížnější implementovat.</li><li>I když jsou k dispozici testovací architektury, ladicí kód je složitější než normální aplikace, protože kód je spuštěn jako dávková úloha pod kontrolou plánovače úloh Hadoop.</li></ul> |
+| **Apache HCatalog** | <ul><li>Abstrahuje podrobnosti cesty úložiště, usnadňuje správu a odstraňuje potřebu uživatelů vědět, kde jsou data uložena.</li><li>Umožňuje oznámení událostí, jako je dostupnost dat, což umožňuje jiným nástrojům, jako je Oozie zjistit, kdy došlo k operacím.</li><li>Poskytuje relační zobrazení dat, včetně dělení podle klíče a usnadňuje přístup k datům.</li></ul> | <ul><li>Ve výchozím nastavení podporuje formáty souborů RCFile, CSV, JSON, SequenceFile a ORC, ale možná budete muset napsat vlastní SerDe pro jiné formáty.</li><li>HCatalog není bezpečný pro přístup z více vláken.</li><li>Existují určitá omezení datových typů pro sloupce při použití zavaděče HCatalog ve skriptech Pig. Další informace naleznete v [tématu HCatLoader Datové typy](https://cwiki.apache.org/confluence/display/Hive/HCatalog%20LoadStore#HCatalogLoadStore-HCatLoaderDataTypes) v dokumentaci Apache HCatalog.</li></ul> |
 
-Obvykle použijete nejjednodušší z těchto přístupů, které vám poskytnou požadované výsledky. Například může být možné dosáhnout těchto výsledků jenom pomocí podregistru, ale u složitějších scénářů možná budete muset použít prase nebo dokonce napsat vlastní mapu a omezit komponenty. Můžete se také rozhodnout, že po experimentování s podregistru nebo vepřovým sádlem může tato vlastní mapa a omezení komponent poskytovat lepší výkon tím, že vám umožní doladit a optimalizovat zpracování.
+Obvykle použijete nejjednodušší z těchto přístupů, které mohou poskytnout výsledky, které požadujete. Například můžete být schopni dosáhnout těchto výsledků pomocí pouze Hive, ale pro složitější scénáře budete muset použít Pig, nebo dokonce napsat vlastní mapu a snížit komponenty. Můžete se také rozhodnout, po experimentování s Hive nebo Pig, že vlastní mapa a snížit komponenty může poskytnout lepší výkon tím, že vám umožní doladit a optimalizovat zpracování.
 
-## <a name="custom-mapreduce-components"></a>Vlastní mapa/omezení součástí
+## <a name="custom-mapreduce-components"></a>Vlastní mapování/zmenšení komponent
 
-Mapování/snížení kódu se skládá ze dvou samostatných funkcí implementovaných jako **map** a **omezení** součástí. Součást **mapy** je spuštěna paralelně na více uzlech clusteru, každý uzel, který používá mapování na vlastní podmnožinu dat uzlu. Funkce **zmenšování** seřazení a shrnutí výsledků ze všech funkcí mapy. Další informace o těchto dvou součástech najdete v tématu [použití MapReduce v systému Hadoop ve službě HDInsight](hdinsight-use-mapreduce.md).
+Kód Map/reduce se skládá ze dvou samostatných funkcí implementovaných jako **mapa** a **snížení** komponent. Součást **mapy** je spuštěna paralelně na více uzlech clusteru, přičemž každý uzel použije mapování na vlastní podmnožinu dat uzlu. Komponenta **reduce** shromažďuje a shrnuje výsledky ze všech mapových funkcí. Další informace o těchto dvou součástech naleznete [v tématu Použití mapreduce v Hadoop na HDInsight](hdinsight-use-mapreduce.md).
 
-Ve většině scénářů zpracování HDInsight je jednodušší a efektivnější používat abstrakce vyšší úrovně, jako je například prase nebo podregistr. Můžete také vytvořit vlastní mapu a omezit komponenty pro použití v rámci skriptů podregistru a provádět tak sofistikované zpracování.
+Ve většině scénářů zpracování HDInsight je jednodušší a efektivnější použít abstrakce vyšší úrovně, jako je Pig nebo Hive. Můžete také vytvořit vlastní mapu a snížit součásti pro použití ve skriptech Hive k provedení složitějšího zpracování.
 
-Vlastní mapování/snížení součástí se obvykle napisují v jazyce Java. Hadoop poskytuje rozhraní pro streamování, které umožňuje také použití komponent vyvinutých v jiných jazycích C#, F#například,, Visual Basic, Pythonu a JavaScriptu.
+Vlastní součásti mapy nebo snížení jsou obvykle napsány v Jazyce Java. Hadoop poskytuje rozhraní pro streamování, které také umožňuje použití komponent, které jsou vyvinuty v jiných jazycích, jako je C#, F#, Visual Basic, Python a JavaScript.
 
-* Návod pro vývoj vlastních programů Java MapReduce najdete v tématu [vývoj programů Java MapReduce pro Hadoop v HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md).
+* Návod k vývoji vlastních programů Java MapReduce najdete v [tématu Vývoj programů Java MapReduce pro Hadoop na WEBU HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md).
 
-Zvažte vytvoření vlastní mapy a omezení součástí těchto podmínek:
+Zvažte vytvoření vlastní mapy a zmenšení komponent pro následující podmínky:
 
-* Je nutné zpracovat data, která jsou zcela nestrukturovaná, pomocí analýzy dat a pomocí vlastní logiky získat z ní strukturované informace.
-* Chcete provádět složité úkoly, které jsou obtížné (nebo nemusí) vyjádřit se v prase nebo v podregistru, aniž byste museli vytvářet disk UDF. Například může být nutné použít externí geografickou službu pro převod zeměpisných a zeměpisných souřadnic nebo IP adres ve zdrojových datech na názvy zeměpisných poloh.
-* Chcete znovu použít stávající kód .NET, Python nebo JavaScript v části map/zmenšovat komponenty pomocí rozhraní pro streamování Hadoop.
+* Je třeba zpracovat data, která je zcela nestrukturované analýzou dat a pomocí vlastní logiky získat strukturované informace z nich.
+* Chcete provádět složité úkoly, které je obtížné (nebo nemožné) vyjádřit v Pig nebo Hive bez použití k vytvoření UDF. Může být například nutné použít externí službu geokódování k převodu souřadnic zeměpisné šířky a délky nebo ADRES IP ve zdrojových datech na názvy zeměpisných umístění.
+* Chcete znovu použít existující kód .NET, Python nebo JavaScript v mapových/zmenšených komponentách pomocí rozhraní streamování Hadoop.
 
 ## <a name="upload-and-run-your-custom-mapreduce-program"></a>Nahrání a spuštění vlastního programu MapReduce
 
-Nejběžnější programy MapReduce jsou napsané v jazyce Java a kompilovány do souboru jar.
+Nejběžnější Programy MapReduce jsou napsány v Jazyce Java a kompilovány do souboru jar.
 
-1. Po vývoji, kompilování a otestování programu MapReduce použijte příkaz `scp` pro nahrání souboru jar do hlavnímu uzlu.
+1. Po vývoji, kompilaci a testování programu MapReduce použijte `scp` příkaz k nahrání souboru jar do headnode.
 
     ```cmd
     scp mycustomprogram.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-    Položku název_clusteru nahraďte názvem clusteru. Pokud jste použili heslo k zabezpečení účtu SSH, budete vyzváni k zadání hesla. Pokud jste použili certifikát, možná budete muset použít parametr `-i` k určení souboru privátního klíče.
+    Nahraďte název clusteru názvem clusteru. Pokud jste k zabezpečení účtu SSH použili heslo, budete vyzváni k zadání hesla. Pokud jste použili certifikát, bude `-i` pravděpodobně nutné použít parametr k určení souboru soukromého klíče.
 
-1. Připojte se ke clusteru pomocí [příkazu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) . Níže uvedený příkaz upravte tak, že ho nahradíte názvem clusteru a pak zadáte tento příkaz:
+1. Pomocí [příkazu ssh](../hdinsight-hadoop-linux-use-ssh-unix.md) se připojte ke clusteru. Upravte níže uvedený příkaz nahrazením názvu clusteru názvem clusteru a zadejte příkaz:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Z relace SSH spusťte program MapReduce prostřednictvím PŘÍZe.
+1. Z relace SSH spusťte program MapReduce prostřednictvím YARN.
 
     ```bash
     yarn jar mycustomprogram.jar mynamespace.myclass /example/data/sample.log /example/data/logoutput
     ```
 
-    Tento příkaz odešle úlohu MapReduce do PŘÍZe. Vstupní soubor je `/example/data/sample.log`a výstupní adresář je `/example/data/logoutput`. Vstupní soubor a všechny výstupní soubory jsou uloženy do výchozího úložiště pro cluster.
+    Tento příkaz odešle úlohu MapReduce do yarn. Vstupní soubor `/example/data/sample.log`je a výstupní `/example/data/logoutput`adresář je . Vstupní soubor a všechny výstupní soubory jsou uloženy do výchozího úložiště pro cluster.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Použití C# se službou MapReduce streaming na Apache Hadoop ve službě HDInsight](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
-* [Vývoj programů Java MapReduce pro Apache Hadoop v HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
-* [Použití Azure Toolkit for Eclipse k vytvoření Apache Spark aplikací pro cluster HDInsight](../spark/apache-spark-eclipse-tool-plugin.md)
-* [Použití uživatelem definovaných funkcí Pythonu (UDF) s Apache Hive a Apache prasetem v HDInsight](python-udf-hdinsight.md)
+* [Použití Jazyka C# s mapovým streamováním MapReduce na Apache Hadoop v HDInsightu](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
+* [Vývoj Java MapReduce programy pro Apache Hadoop na HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
+* [Použití sady Nástrojů Azure pro Eclipse k vytváření aplikací Apache Spark pro cluster HDInsight](../spark/apache-spark-eclipse-tool-plugin.md)
+* [Použití uživatelem definovaných funkcí Pythonu (UDF) s Apache Hive a Apache Pig v HDInsightu](python-udf-hdinsight.md)

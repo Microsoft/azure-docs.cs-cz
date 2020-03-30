@@ -8,19 +8,18 @@ ms.topic: include
 ms.date: 04/08/2019
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 5972f5745a2a01cbb7f23cc0523b2aef75e08a61
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 7ecc36218df23d81c4646612b5474a1465f428eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673283"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282473"
 ---
-FedEx UPS a DHL lze použít k odeslání balíčku do datacentra Azure. Pokud chcete použít dopravce než FedEx/DHL, obraťte se na tým Azure Data Box operací na adrese `adbops@microsoft.com`
+FedEx, UPS nebo DHL lze použít k odeslání balíčku do datového centra Azure. Pokud chcete použít jiného operátora než FedEx/DHL, obraťte se na tým Azure Data Box Operations na adrese`adbops@microsoft.com`
 
-- Zadejte platný FedEx, UPS nebo DHL dopravce číslo, bude společnost Microsoft používat k odeslání zpět jednotky účtu. 
-    
-    - FedEx UPS a DHL číslo účtu je požadovaná pro přesouvání jednotky zpět z USA a Evropě umístění. 
-    - Číslo účtu DHL je upřednostňována pro přesouvání jednotky zpět z umístění Asie a Austrálie. 
-    - Pokud nemáte číslo účtu, vytvořte [FedEx](https://www.fedex.com/us/oadr/) nebo [DHL](http://www.dhl.com/) účtu dopravce.
-- Při přesouvání balíčků, je nutné postupovat podle [podmínek pro používání služby Microsoft Azure](https://azure.microsoft.com/support/legal/services-terms/).
-- Vaše disky vyhnout se tak možnému poškození a zpožděním při zpracování správně balíček.
+* Zadejte platné číslo účtu operátora FedEx, UPS nebo DHL, které společnost Microsoft použije k odeslání disků zpět.
+  * Pro přepravu zásilek zpět z usa a Evropy je vyžadováno číslo účtu FedEx, UPS nebo DHL.
+    * Číslo účtu DHL je upřednostňováno pro přepravní jízdy zpět z asie a austrálie.
+    * Pokud nemáte číslo účtu, vytvořte si účet operátora [FedEx](https://www.fedex.com/us/oadr/) nebo [DHL.](http://www.dhl.com/)
+* Při odesílání zásilek musíte dodržovat [smluvní podmínky Microsoft Azure](https://azure.microsoft.com/support/legal/services-terms/).
+* Správně zabalte vaše disky, abyste zabránili potenciálnímu poškození a zpoždění při zpracování.

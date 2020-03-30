@@ -1,79 +1,79 @@
 ---
 title: Podrobnosti o podporovaném formátu dat | Mapy Microsoft Azure
-description: Přečtěte si, jak se v modulu pro prostorové vstupně-výstupní operace analyzují oddělená prostorová data.
-author: farah-alyasari
-ms.author: v-faalya
+description: Zjistěte, jak se v modulu prostorových vidníných dat analyzují oddělená prostorová data.
+author: philmea
+ms.author: philmea
 ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: fff801731c3c3a94b4039a8c65ad8ccaab7cc725
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 3353620f1751e939a04543115fe704555fb3bc21
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78402739"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334085"
 ---
 # <a name="supported-data-format-details"></a>Podrobnosti o podporovaném formátu dat
 
-Tento článek poskytuje konkrétní informace o podpoře čtení a zápisu pro všechny značky XML a dobře známé typy geometrie textu. Také popisuje způsob, jakým se v modulu pro prostorové vstupně-výstupní operace analyzují data oddělená prostorovými daty.
+Tento článek obsahuje podrobnosti o podpoře čtení a zápisu pro všechny značky XML a typy geometrie známého textu. Také podrobně popisuje, jak jsou oddělená prostorová data analyzována v modulu prostorových iO.
 
 ## <a name="supported-xml-namespaces"></a>Podporované obory názvů XML
 
-Modul pro prostorové vstupně-výstupní operace podporuje značky XML z následujících oborů názvů.
+Prostorový modul IO podporuje značky XML z následujících oborů názvů.
 
-| Předpona oboru názvů | Identifikátor URI oboru názvů   | Poznámky:                                                                    |
+| Předpona oboru názvů | Identifikátor URI oboru názvů   | Poznámky                                                                    |
 |:------------------|:-----------------|:----------------------------------------|
 | `atom`           | `http://www.w3.org/2005/Atom`   |                                         |
-| `geo`            | `http://www.w3.org/2003/01/geo/wgs84_pos#`  | Podpora jen pro čtení v souborech GeoRSS.           |
+| `geo`            | `http://www.w3.org/2003/01/geo/wgs84_pos#`  | Podpora pouze pro čtení v souborech GeoRSS.           |
 | `georss`         | `http://www.georss.org/georss`  |                                                |
-| `geourl`         | `http://geourl.org/rss/module/` | Podpora jen pro čtení v souborech GeoRSS.                       |
+| `geourl`         | `http://geourl.org/rss/module/` | Podpora pouze pro čtení v souborech GeoRSS.                       |
 | `gml`            | `http://www.opengis.net/gml`    |                                                        |
 | `gpx`            | `http://www.topografix.com/GPX/1/1` |                                                   |
-| `gpxx`           | `http://www.garmin.com/xmlschemas/GpxExtensions/v3` | Podpora jen pro čtení v souborech GPX. Analyzuje a používá DisplayColor. Všechny ostatní vlastnosti přidané k metadatům obrazce |
-| `gpx_style`      | `http://www.topografix.com/GPX/gpx_style/0/2`      | Podporováno v souborech GPX. Používá barvu čáry. |
+| `gpxx`           | `http://www.garmin.com/xmlschemas/GpxExtensions/v3` | Podpora pouze pro čtení v souborech GPX. Analyzuje a používá DisplayColor. Všechny ostatní vlastnosti přidané do metadat obrazce. |
+| `gpx_style`      | `http://www.topografix.com/GPX/gpx_style/0/2`      | Podporováno v souborech GPX. Použije barvu čáry. |
 | `gx`             | `http://www.google.com/kml/ext/2.2` |                                                      |
 | `kml`            | `http://www.opengis.net/kml/2.2`    |                                                      |
-| `rss`            |                                 | Jen pro čtení. GeoRSS zápisy pomocí formátu Atom.              |
+| `rss`            |                                 | Jen pro čtení. GeoRSS píše pomocí formátu Atom.              |
 
 ## <a name="supported-xml-elements"></a>Podporované elementy XML
 
-Modul pro prostorové vstupně-výstupní operace podporuje následující elementy XML. Všechny značky XML, které nejsou podporovány, budou převedeny na objekt JSON. Následně se každá značka přidá jako vlastnost v poli `properties` nadřazeného obrazce nebo vrstvy.
+Prostorový iO modul podporuje následující elementy XML. Všechny značky XML, které nejsou podporovány, budou převedeny na objekt JSON. Poté bude každá značka přidána jako `properties` vlastnost do pole nadřazeného obrazce nebo vrstvy.
 
-### <a name="kml-elements"></a>KML elementy
+### <a name="kml-elements"></a>Prvky KML
 
-Modul pro prostorové vstupně-výstupní operace podporuje následující elementy KML.
+Prostorový iO modul podporuje následující prvky KML.
 
-| Název elementu         | Čtení    | Zápis   | Poznámky:                                                                                                                      |
+| Název prvku         | Čtení    | Zápis   | Poznámky                                                                                                                      |
 |----------------------|---------|---------|----------------------------------------------------------------------------------------------------------------------------|
-| `address`            | partial | ano     | Objekt je analyzován, ale není použit pro obrazec umístění.                                                                    |
-| `AddressDetails`     | partial | ne      | Objekt je analyzován, ale není použit pro obrazec umístění.                                                                    |
+| `address`            | partial | ano     | Objekt je analyzován, ale nepoužívá se pro umístění tvaru.                                                                    |
+| `AddressDetails`     | partial | ne      | Objekt je analyzován, ale nepoužívá se pro umístění tvaru.                                                                    |
 | `atom:author`        | ano     | ano     |                                                                                                                            |
 | `atom:link`          | ano     | ano     |                                                                                                                            |
 | `atom:name`          | ano     | ano     |                                                                                                                            |
-| `BalloonStyle`       | partial | partial | `displayMode` se nepodporuje. Převedeno na `PopupTemplate`. Chcete-li zapisovat, přidejte vlastnost `popupTemplate` jako vlastnost funkce, pro kterou chcete zapisovat. |
+| `BalloonStyle`       | partial | partial | `displayMode`není podporována. Převedeno na `PopupTemplate`. Chcete-li psát, přidejte `popupTemplate` vlastnost jako vlastnost funkce, pro kterou ji chcete zapsat. |
 | `begin`              | ano     | ano     |                                                                                                                            |
-| `color`              | ano     | ano     | Zahrnuje `#AABBGGRR` a `#BBGGRR`. Analyzováno na řetězec barvy CSS                                                           |
+| `color`              | ano     | ano     | Zahrnuje `#AABBGGRR` `#BBGGRR`a . Analyzovat na řetězec barev CSS                                                           |
 | `colorMode`          | ano     | ne      |                                                                                                                            |
 | `coordinates`        | ano     | ano     |                                                                                                                            |
 | `Data`               | ano     | ano     |                                                                                                                            |
 | `description`        | ano     | ano     |                                                                                                                            |
 | `displayName`        | ano     | ano     |                                                                                                                            |
 | `Document`           | ano     | ano     |                                                                                                                            |
-| `drawOrder`          | partial | ne      | Přečtěte si pro překrytí základní desky a slouží k jejich řazení. 
+| `drawOrder`          | partial | ne      | Přečtěte si pro pozemní překryvy a slouží k jejich třídění. 
 | `east`               | ano     | ano     |                                                                                                                            |
 | `end`                | ano     | ano     |                                                                                                                            |
-| `ExtendedData`       | ano     | ano     | Podporuje netypové `Data`, `SimpleData` nebo `Schema`a náhrady entit `$[dataName]`formuláře.                      |
-| `extrude`            | partial | partial | Podporováno pouze pro mnohoúhelníky. Více geometrie, které mají mnohoúhelníky s různou výškou, budou rozděleny na jednotlivé funkce. Styly čar nejsou podporovány. Mnohoúhelníky s nadmořskou výškou 0 se vykreslí jako plochý mnohoúhelník. Při čtení se výška první souřadnice v vnějším prstenci přidá jako vlastnost výšky mnohoúhelníku. Pak se výška první souřadnice použije pro vykreslení mnohoúhelníku na mapě. |
+| `ExtendedData`       | ano     | ano     | Podporuje `Data`netypové `SimpleData` `Schema`nebo a entity nahrazení `$[dataName]`formuláře .                      |
+| `extrude`            | partial | partial | Podporováno pouze pro polygony. MultiGeometry, které mají mnohonoly různých výšek budou rozděleny do jednotlivých funkcí. Styly čar nejsou podporovány. Polygony s výškou 0 budou vykresleny jako plochý polygon. Při čtení se jako výšková vlastnost polyga přidá výška první souřadnice v vnějším kroužku. Poté bude k vykreslení polygonu na mapě použita nadmořská výška první souřadnice. |
 | `fill`               | ano     | ano     |                                                                                                                            |
 | `Folder`             | ano     | ano     |                                                                                                                            |
-| `GroundOverlay`      | ano     | ano     | `color` se nepodporuje.                                                                                                   |
-| `heading`            | partial | ne      | Analyzovány, ale nebyly vykresleny `SimpleDataLayer`. Zapisuje pouze, pokud jsou data uložena ve vlastnosti obrazce.                 |
-| `hotSpot`            | ano     | partial | Zapisuje pouze, pokud jsou data uložena ve vlastnosti obrazce. Jednotky jsou výstupy jenom jako pixely.                         |
+| `GroundOverlay`      | ano     | ano     | `color`není podporováno                                                                                                   |
+| `heading`            | partial | ne      | Analyzovat, ale nevykresleno `SimpleDataLayer`. Zápisy pouze v případě, že data jsou uložena ve vlastnosti obrazce.                 |
+| `hotSpot`            | ano     | partial | Zápisy pouze v případě, že data jsou uložena ve vlastnosti obrazce. Jednotky jsou vydávány pouze jako "pixely".                         |
 | `href`               | ano     | ano     |                                                                                                                            |
-| `Icon`               | partial | partial | Analyzovány, ale nebyly vykresleny `SimpleDataLayer`. Zapíše vlastnost Icon obrazce pouze v případě, že obsahuje data identifikátoru URI. Podporuje se jenom `href`. |
-| `IconStyle`          | partial | partial | hodnoty `icon`, `heading`, `colorMode`a `hotspots` jsou analyzovány, ale nejsou vykreslovány `SimpleDataLayer`         |
+| `Icon`               | partial | partial | Analyzovat, ale nevykresleno `SimpleDataLayer`. Vlastnost ikony obrazce zapíše pouze v případě, že obsahuje data identifikátoru URI. Je `href` podporována pouze. |
+| `IconStyle`          | partial | partial | `icon`, `heading` `colorMode`, `hotspots` a hodnoty jsou analyzovány, ale nejsou vykresleny`SimpleDataLayer`         |
 | `innerBoundaryIs`    | ano     | ano     |                                                                                                                            |
 | `kml`                | ano     | ano     |                                                                                                                            |
 | `LabelStyle`         | ne      | ne      |                                                                                                                            |
@@ -81,9 +81,9 @@ Modul pro prostorové vstupně-výstupní operace podporuje následující eleme
 | `gx:LatLonQuad`      | ano     | ano     |                                                                                                                            |
 | `LinearRing`         | ano     | ano     |                                                                                                                            |
 | `LineString`         | ano     | ano     |                                                                                                                            |
-| `LineStyle`          | ano     | ano     | `colorMode` se nepodporuje.                                                                                         |
-| `Link`               | ano     | ne      | Pro síťová propojení je podporována pouze vlastnost `href`.                                                                   |
-| `MultiGeometry`      | partial | partial | Můžou být při čtení rozdělené do jednotlivých funkcí.                                                                     |
+| `LineStyle`          | ano     | ano     | `colorMode`není podporována.                                                                                         |
+| `Link`               | ano     | ne      | Pro `href` síťová propojení je podporována pouze vlastnost.                                                                   |
+| `MultiGeometry`      | partial | partial | Při čtení může být rozděleno do jednotlivých funkcí.                                                                     |
 | `name`               | ano     | ano     |                                                                                                                            |
 | `NetworkLink`        | ano     | ne      | Odkazy musí být ve stejné doméně jako dokument.                                                                  |
 | `NetworkLinkControl` | ne      | ne      |                                                                                                                            |
@@ -92,46 +92,46 @@ Modul pro prostorové vstupně-výstupní operace podporuje následující eleme
 | `outerBoundaryIs`    | ano     | ano     |                                                                                                                            |
 | `outline`            | ano     | ano     |                                                                                                                            |
 | `overlayXY`          | ne      | ne      |                                                                                                                            |
-| `Pair`               | partial | ne      | Podporován je pouze styl `normal` v `StyleMap`. `highlight` se nepodporuje.                                   |
+| `Pair`               | partial | ne      | Podporován `normal` je pouze `StyleMap` styl v a. `highlight`není podporována.                                   |
 | `phoneNumber`        | ano     | ano     |                                                                                                                            |
 | `PhotoOverlay`       | ne      | ne      |                                                                                                                            |
 | `Placemark`          | ano     | ano     |                                                                                                                            |
 | `Point`              | ano     | ano     |                                                                                                                            |
 | `Polygon`            | ano     | ano     |                                                                                                                            |
 | `PolyStyle`          | ano     | ano     |                                                                                                                            |
-| `Region`             | partial | partial | `LatLongBox` se podporuje na úrovni dokumentu.                                                                      |
+| `Region`             | partial | partial | `LatLongBox`je podporována na úrovni dokumentu.                                                                      |
 | `rotation`           | ne      | ne      |                                                                                                                            |
 | `rotationXY`         | ne      | ne      |                                                                                                                            |
 | `scale`              | ne      | ne      |                                                                                                                            |
 | `Schema`             | ano     | ano     |                                                                                                                            |
 | `SchemaData`         | ano     | ano     |                                                                                                                            |
-| `schemaUrl`          | partial | ano     | Nepodporuje načítání stylů z externích dokumentů, které nejsou zahrnuté v KMZ.                             |
+| `schemaUrl`          | partial | ano     | Nepodporuje načítání stylů z externích dokumentů, které nejsou zahrnuty v KMZ.                             |
 | `ScreenOverlay`      | ne      | ne      |                                                                                                                            |
 | `screenXY`           | ne      | ne      |                                                                                                                            |
 | `SimpleData`         | ano     | ano     |                                                                                                                            |
 | `SimpleField`        | ano     | ano     |                                                                                                                            |
 | `size`               | ne      | ne      |                                                                                                                            |
-| `Snippet`            | partial | partial | atribut `maxLines` je ignorován.                                                                                  |
+| `Snippet`            | partial | partial | `maxLines`atribut je ignorován.                                                                                  |
 | `south`              | ano     | ano     |                                                                                                                            |
 | `Style`              | ano     | ano     |                                                                                                                            |
-| `StyleMap`           | partial | ne      | Podporován je pouze normální styl ve `StyleMap`.                                                                        |
-| `styleUrl`           | partial | ano     | Adresy URL externích stylů se nepodporují.                                                                         |
-| `text`               | ano     | ano     | Náhrada `$[geDirections]` není podporovaná.                                                                          |
+| `StyleMap`           | partial | ne      | Podporován je pouze `StyleMap` normální styl v a.                                                                        |
+| `styleUrl`           | partial | ano     | Adresy URL externího stylu nejsou podporovány.                                                                         |
+| `text`               | ano     | ano     | Nahrazení `$[geDirections]` není podporováno.                                                                          |
 | `textColor`          | ano     | ano     |                                                                                                                            |
 | `TimeSpan`           | ano     | ano     |                                                                                                                            |
 | `TimeStamp`          | ano     | ano     |                                                                                                                            |
 | `value`              | ano     | ano     |                                                                                                                            |
-| `viewRefreshMode`    | partial | ne      |  Pokud odkazujete na službu WMS, pro překryvy na pozadí se podporuje jenom `onStop`. Připojí se `BBOX=[bboxWest],[bboxSouth],[bboxEast],[bboxNorth]` k adrese URL a aktualizuje se, jak se přesune mapa.  |
+| `viewRefreshMode`    | partial | ne      |  Pokud ukazuje na službu WMS, pak je podporována pouze `onStop` pro pozemní překrytí. Připojí `BBOX=[bboxWest],[bboxSouth],[bboxEast],[bboxNorth]` se k adrese URL a aktualizuje se podle pohybu mapy.  |
 | `visibility`         | ano     | ano     |                                                                                                                            |
 | `west`               | ano     | ano     |                                                                                                                            |
 | `when`               | ano     | ano     |                                                                                                                            |
 | `width`              | ano     | ano     |                                                                                                                            |
 
-### <a name="georss-elements"></a>GeoRSS elementy
+### <a name="georss-elements"></a>Prvky GeoRSS
 
-Modul pro prostorové vstupně-výstupní operace podporuje následující elementy GeoRSS.
+Prostorový iO modul podporuje následující prvky GeoRSS.
 
-| Název elementu             | Čtení    | Zápis | Poznámky:                                                                                          |
+| Název prvku             | Čtení    | Zápis | Poznámky                                                                                          |
 |--------------------------|---------|-------|------------------------------------------------------------------------------------------------|
 | `atom:author`            | ano     | ano   |                                                                                                |
 | `atom:category`          | ano     | ano   |                                                                                                |
@@ -153,10 +153,10 @@ Modul pro prostorové vstupně-výstupní operace podporuje následující eleme
 | `atom:title`             | ano     | ano   |                                                                                                |
 | `atom:updated`           | ano     | ano   |                                                                                                |
 | `atom:uri`               | ano     | ano   |                                                                                                |
-| `geo:lat`                | ano     | ne    | Zapsáno jako `georss:point`.                                                                   |
-| `geo:lon`                | ano     | ne    | Zapsáno jako `georss:point`.                                                                   |
-| `geo:long`               | ano     | ne    | Zapsáno jako `georss:point`.                                                                   |
-| `georss:box`             | ano     | ne    | Číst jako mnohoúhelník a má vlastnost `subType` "Rectangle".                                |
+| `geo:lat`                | ano     | ne    | Napsáno `georss:point`jako .                                                                   |
+| `geo:lon`                | ano     | ne    | Napsáno `georss:point`jako .                                                                   |
+| `geo:long`               | ano     | ne    | Napsáno `georss:point`jako .                                                                   |
+| `georss:box`             | ano     | ne    | Čtení jako polygon a `subType` dané vlastnost "Obdélník"                                |
 | `georss:circle`          | ano     | ano   |                                                                                                |
 | `georss:elev`            | ano     | ano   |                                                                                                |
 | `georss:featurename`     | ano     | ano   |                                                                                                |
@@ -168,71 +168,71 @@ Modul pro prostorové vstupně-výstupní operace podporuje následující eleme
 | `georss:radius`          | ano     | ano   |                                                                                                |
 | `georss:relationshiptag` | ano     | ano   |                                                                                                |
 | `georss:where`           | ano     | ano   |                                                                                                |
-| `geourl:latitude`        | ano     | ne    | Zapsáno jako `georss:point`.                                                                   |
-| `geourl:longitude`       | ano     | ne    | Zapsáno jako `georss:point`.                                                                   |
-| `position`               | ano     | ne    | Některé kanály XML zabalí GML se značkou pozice místo jejich zabalení pomocí značky GeoRSS: WHERE. Přečte tuto značku, ale zapíše ji pomocí značky GeoRSS: WHERE. |
-| `rss`                    | ano     | ne    | GeoRSS napsaný ve formátu ATOM.                                                                 |
-| `rss:author`             | ano     | partial | Zapsáno jako `atom:author`.                                                                 |
-| `rss:category`           | ano     | partial | Zapsáno jako `atom:category`.                                                               |
+| `geourl:latitude`        | ano     | ne    | Napsáno `georss:point`jako .                                                                   |
+| `geourl:longitude`       | ano     | ne    | Napsáno `georss:point`jako .                                                                   |
+| `position`               | ano     | ne    | Některé informační kanály XML zabalí GML značkou polohy `georss:where` namísto jeho zabalení značkou. Bude číst tuto značku, ale `georss:where` bude psát pomocí značky. |
+| `rss`                    | ano     | ne    | GeoRSS napsané ve formátu ATOM.                                                                 |
+| `rss:author`             | ano     | partial | Napsáno `atom:author`jako .                                                                 |
+| `rss:category`           | ano     | partial | Napsáno `atom:category`jako .                                                               |
 | `rss:channel`            | ano     | ne    |                                                                                                |
 | `rss:cloud`              | ano     | ne    |                                                                                                |
 | `rss:comments`           | ano     | ne    |                                                                                                |
-| `rss:copyright`          | ano     | partial | Zapsáno jako `atom:rights`, pokud tvar nemá již vlastnost `rights` `properties`.       |
-| `rss:description`        | ano     | partial | Zapsáno jako `atom:content`, pokud tvar nemá již vlastnost `content` `properties`.      |
+| `rss:copyright`          | ano     | partial | Napsáno `atom:rights` jako if shape ještě `rights` `properties` nemá vlastnost.       |
+| `rss:description`        | ano     | partial | Napsáno `atom:content` jako if shape ještě `content` `properties` nemá vlastnost.      |
 | `rss:docs`               | ano     | ne    |                                                                                                |
 | `rss:enclosure`          | ano     | ne    |                                                                                                |
 | `rss:generator`          | ano     | ne    |                                                                                                |
-| `rss:guid`               | ano     | partial | Zapsáno jako `atom:id`, pokud tvar nemá již vlastnost `id` `properties`.         |
-| `rss:image`              | ano     | partial | Zapsáno jako `atom:logo`, pokud tvar nemá již vlastnost `logo` `properties`.      |
-| `rss:item`               | ano     | partial | Zapsáno jako `atom:entry`.                                                                  |
+| `rss:guid`               | ano     | partial | Napsáno `atom:id` jako if shape ještě `id` `properties` nemá vlastnost.         |
+| `rss:image`              | ano     | partial | Napsáno `atom:logo` jako if shape ještě `logo` `properties` nemá vlastnost.      |
+| `rss:item`               | ano     | partial | Napsáno `atom:entry`jako .                                                                  |
 | `rss:language`           | ano     | ne    |                                                                                                |
-| `rss:lastBuildDate`      | ano     | partial | Zapsáno jako `atom:updated`, pokud tvar nemá již vlastnost `updated` `properties`.     |
-| `rss:link`               | ano     | partial | Zapsáno jako `atom:link`.                                                                   |
-| `rss:managingEditor`     | ano     | partial | Zapsáno jako `atom:contributor`.                                                            |
-| `rss:pubDate`            | ano     | partial | Zapsáno jako `atom:published`, pokud tvar nemá již vlastnost `published` `properties`.  |
+| `rss:lastBuildDate`      | ano     | partial | Napsáno `atom:updated` jako if shape ještě `updated` `properties` nemá vlastnost.     |
+| `rss:link`               | ano     | partial | Napsáno `atom:link`jako .                                                                   |
+| `rss:managingEditor`     | ano     | partial | Napsáno `atom:contributor`jako .                                                            |
+| `rss:pubDate`            | ano     | partial | Napsáno `atom:published` jako if shape ještě `published` `properties` nemá vlastnost.  |
 | `rss:rating`             | ano     | ne    |                                                                                                |
 | `rss:skipDays`           | ano     | ne    |                                                                                                |
 | `rss:skipHours`          | ano     | ne    |                                                                                                |
-| `rss:source`             | ano     | partial | Zapsáno jako `atom:source` obsahující `atom:link`.                                       |
+| `rss:source`             | ano     | partial | Napsáno `atom:source` jako obsahující `atom:link`.                                       |
 | `rss:textInput`          | ano     | ne    |                                                                                                |
-| `rss:title`              | ano     | partial | Zapsáno jako `atom:title`.                                                                  |
+| `rss:title`              | ano     | partial | Napsáno `atom:title`jako .                                                                  |
 | `rss:ttl`                | ano     | ne    |                                                                                                |
 | `rss:webMaster`          | ano     | ne    |                                                                                                |
 
-### <a name="gml-elements"></a>GML elementy
+### <a name="gml-elements"></a>Prvky GML
 
-Modul pro prostorové vstupně-výstupní operace podporuje následující elementy GML. 
+Prostorový iO modul podporuje následující prvky GML. 
 
-| Název elementu            | Čtení | Zápis | Poznámky:                                                                                  |
+| Název prvku            | Čtení | Zápis | Poznámky                                                                                  |
 |-------------------------|------|-------|----------------------------------------------------------------------------------------|
-| `gml:coordinates`       | ano  | ne    | Zapsáno jako `gml:posList`.                                                              |
+| `gml:coordinates`       | ano  | ne    | Napsáno `gml:posList`jako .                                                              |
 | `gml:curveMember`       | ano  | ne    |                                                                                        |
 | `gml:curveMembers`      | ano  | ne    |                                                                                        |
-| `gml:Box`               | ano  | ne    | Zapsáno jako `gml:Envelope`.                                                             |
+| `gml:Box`               | ano  | ne    | Napsáno `gml:Envelope`jako .                                                             |
 | `gml:description`       | ano  | ano   |                                                                                        |
 | `gml:Envelope`          | ano  | ano   |                                                                                        |
 | `gml:exterior`          | ano  | ano   |                                                                                        |
-| `gml:Feature`           | ano  | ne    | Zapsáno jako obrazec.                                                                    |
+| `gml:Feature`           | ano  | ne    | Napsáno jako tvar.                                                                    |
 | `gml:FeatureCollection` | ano  | ne    | Zapsáno jako kolekce geometrie.                                                      |
 | `gml:featureMember`     | ano  | ne    | Zapsáno jako kolekce geometrie.                                                      |
-| `gml:geometry`          | ano  | ne    | Zapsáno jako obrazec.                                                                    |
+| `gml:geometry`          | ano  | ne    | Napsáno jako tvar.                                                                    |
 | `gml:geometryMember`    | ano  | ano   |                                                                                        |
 | `gml:geometryMembers`   | ano  | ano   |                                                                                        |
 | `gml:identifier`        | ano  | ano   |                                                                                        |
-| `gml:innerBoundaryIs`   | ano  | ne    | Napsáno pomocí `gml.interior`.                                                          |
+| `gml:innerBoundaryIs`   | ano  | ne    | Napsáno `gml.interior`pomocí .                                                          |
 | `gml:interior`          | ano  | ano   |                                                                                        |
 | `gml:LinearRing`        | ano  | ano   |                                                                                        |
 | `gml:LineString`        | ano  | ano   |                                                                                        |
 | `gml:lineStringMember`  | ano  | ano   |                                                                                        |
 | `gml:lineStringMembers` | ano  | ne    |                                                                                        |
-| `gml:MultiCurve`        | ano  | ne    | Čte pouze `gml:LineString` členy. Zapsáno jako `gml.MultiLineString`                  |
-| `gml:MultiGeometry`     | partial  | partial   | Pouze číst jako Součástcollection.                                              |
+| `gml:MultiCurve`        | ano  | ne    | Čte `gml:LineString` pouze členy. Napsáno jako`gml.MultiLineString`                  |
+| `gml:MultiGeometry`     | partial  | partial   | Přečtěte si pouze jako FeatureCollection.                                              |
 | `gml:MultiLineString`   | ano  | ano   |                                                                                        |
 | `gml:MultiPoint`        | ano  | ano   |                                                                                        |
 | `gml:MultiPolygon`      | ano  | ano   |                                                                                        |
-| `gml:MultiSurface`      | ano  | ne    | Čte pouze `gml:Polygon` členy. Zapsáno jako `gml.MultiPolygon`                        |
+| `gml:MultiSurface`      | ano  | ne    | Čte `gml:Polygon` pouze členy. Napsáno jako`gml.MultiPolygon`                        |
 | `gml:name`              | ano  | ano   |                                                                                        |
-| `gml:outerBoundaryIs`   | ano  | ne    | Napsáno pomocí `gml.exterior`.                                                          |
+| `gml:outerBoundaryIs`   | ano  | ne    | Napsáno `gml.exterior`pomocí .                                                          |
 | `gml:Point`             | ano  | ano   |                                                                                        |
 | `gml:pointMember`       | ano  | ano   |                                                                                        |
 | `gml:pointMembers`      | ano  | ne    |                                                                                        |
@@ -243,28 +243,28 @@ Modul pro prostorové vstupně-výstupní operace podporuje následující eleme
 | `gml:posList`           | ano  | ano   |                                                                                        |
 | `gml:surfaceMember`     | ano  | ano   |                                                                                        |
 
-#### <a name="additional-notes"></a>Další poznámky
+#### <a name="additional-notes"></a>další poznámky
 
-- Prvky členů budou prohledány na geometrii, která může být ukryto v rámci podřízených elementů. Tato operace hledání je nutná, protože mnoho formátů XML, které rozšiřuje z GML, nesmí umístit geometrii jako přímý podřízený prvek člena.
-- `srsName` je částečně podporován pro souřadnice WGS84 a následující kódy:[EPSG: 4326](https://epsg.io/4326)) a web Mercator ([EPSG: 3857](https://epsg.io/3857) nebo jeden z jeho alternativních kódů. Všechny ostatní systémy souřadnic se budou analyzovat jako WGS84 tak, jak jsou.
-- Pokud není zadána při čtení datového kanálu XML, je pořadí osy určeno na základě pokynů v informačním kanálu XML. Pro pořadí osy "Zeměpisná délka" Zeměpisná délka je uvedena předvolba.
-- Pokud není pro vlastnosti při zápisu do souboru GML zadán vlastní obor názvů GML, další informace o vlastnostech nebudou přidány.
+- Členské prvky budou vyhledány pro geometrii, která může být pohřbena v podřízených prvcích. Tato operace hledání je nezbytná, protože mnoho formátů XML, které se rozprostírají od GML, nemusí umístit geometrii jako přímý podřízený prvek člena.
+- `srsName`je částečně podporován pro souřadnice WGS84 a následující kódy:[EPSG:4326](https://epsg.io/4326)) a web Mercator ([EPSG:3857](https://epsg.io/3857) nebo jeden z jeho alternativních kódů. Jakýkoli jiný souřadný systém bude analyzován jako WGS84 tak, jak je.
+- Pokud není zadáno při čtení informačního kanálu XML, pořadí os je určeno na základě rad v informačním kanálu XML. Upřednostňují se pořadí osy "zeměpisná šířka, délka".
+- Pokud není pro vlastnosti při zápisu do souboru GML určen vlastní obor názvů GML, nebudou přidány další informace o vlastnostech.
 
-### <a name="gpx-elements"></a>GPX elementy
+### <a name="gpx-elements"></a>Prvky GPX
 
-Modul pro prostorové vstupně-výstupní operace podporuje následující elementy GPX.
+Prostorový IO modul podporuje následující prvky GPX.
 
-| Název elementu             | Čtení    | Zápis   | Poznámky:                                                                                       |
+| Název prvku             | Čtení    | Zápis   | Poznámky                                                                                       |
 |--------------------------|---------|---------|---------------------------------------------------------------------------------------------|
 | `gpx:ageofdgpsdata`      | ano     | ano     |                                                                                             |
 | `gpx:author`             | ano     | ano     |                                                                                             |
-| `gpx:bounds`             | ano     | ano     | Převádí na LocationRect při čtení.                                                    |
+| `gpx:bounds`             | ano     | ano     | Převedeno na LocationRect při čtení.                                                    |
 | `gpx:cmt`                | ano     | ano     |                                                                                             |
 | `gpx:copyright`          | ano     | ano     |                                                                                             |
-| `gpx:desc`               | ano     | ano     | Zkopírována do vlastnosti Description při čtení, aby byla zarovnána s jinými formáty XML.               |
+| `gpx:desc`               | ano     | ano     | Zkopírována do vlastnosti popisu při čtení zarovnat s jinými formáty XML.               |
 | `gpx:dgpsid`             | ano     | ano     |                                                                                             |
 | `gpx:ele`                | ano     | ano     |                                                                                             |
-| `gpx:extensions`         | partial | partial | Při čtení jsou extrahovány informace o stylu. Všechna ostatní rozšíření budou shrnuta do jednoduchého objektu JSON. Napíší se jenom informace o stylu obrazce. |
+| `gpx:extensions`         | partial | partial | Při čtení se extrahují informace o stylu. Všechna ostatní rozšíření budou sloučí do jednoduchého objektu JSON. Zapsány jsou pouze informace o stylu obrazce. |
 | `gpx:geoidheight`        | ano     | ano     |                                                                                             |
 | `gpx:gpx`                | ano     | ano     |                                                                                             |
 | `gpx:hdop`               | ano     | ano     |                                                                                             |
@@ -277,7 +277,7 @@ Modul pro prostorové vstupně-výstupní operace podporuje následující eleme
 | `gpx:rtept`              | ano     | ano     |                                                                                             |
 | `gpx:sat`                | ano     | ano     |                                                                                             |
 | `gpx:src`                | ano     | ano     |                                                                                             |
-| `gpx:sym`                | ano     | ano     | Hodnota je zachycena, ale není použita k změně ikony připínáček.                               |
+| `gpx:sym`                | ano     | ano     | Hodnota je zachycena, ale nepoužívá se ke změně ikony připínáčku.                               |
 | `gpx:text`               | ano     | ano     |                                                                                             |
 | `gpx:time`               | ano     | ano     |                                                                                             |
 | `gpx:trk`                | ano     | ano     |                                                                                             |
@@ -287,67 +287,67 @@ Modul pro prostorové vstupně-výstupní operace podporuje následující eleme
 | `gpx:vdop`               | ano     | ano     |                                                                                             |
 | `gpx:wpt`                | ano     | ano     |                                                                                             |
 | `gpx_style:color`        | ano     | ano     |                                                                                             |
-| `gpx_style:line`         | partial | partial | jsou podporovány `color`, `opacity`, `width``lineCap`.                                           |
+| `gpx_style:line`         | partial | partial | `color`, `opacity` `width`, `lineCap` , jsou podporovány.                                           |
 | `gpx_style:opacity`      | ano     | ano     |                                                                                             |
 | `gpx_style:width`        | ano     | ano     |                                                                                             |
-| `gpxx:DisplayColor`      | ano     | ne      | Slouží k určení barvy tvaru. Při psaní se místo toho použije `gpx_style:line` barva.  |
-| `gpxx:RouteExtension`    | partial | ne      | Všechny vlastnosti jsou čteny do `properties`. Používá se pouze `DisplayColor`.                     |
-| `gpxx:TrackExtension`    | partial | ne      | Všechny vlastnosti jsou čteny do `properties`. Používá se pouze `DisplayColor`.                     |
-| `gpxx:WaypointExtension` | partial | ne      | Všechny vlastnosti jsou čteny do `properties`. Používá se pouze `DisplayColor`.                     |
+| `gpxx:DisplayColor`      | ano     | ne      | Slouží k určení barvy obrazce. Při psaní `gpx_style:line` se místo toho použije barva.  |
+| `gpxx:RouteExtension`    | partial | ne      | Všechny vlastnosti `properties`jsou přečteny do . Používá `DisplayColor` se pouze.                     |
+| `gpxx:TrackExtension`    | partial | ne      | Všechny vlastnosti `properties`jsou přečteny do . Používá `DisplayColor` se pouze.                     |
+| `gpxx:WaypointExtension` | partial | ne      | Všechny vlastnosti `properties`jsou přečteny do . Používá `DisplayColor` se pouze.                     |
 | `gpx:keywords`           | ano     | ano     |                                                                                             |
 | `gpx:fix`                | ano     | ano     |                                                                                             |
 
-#### <a name="additional-notes"></a>Další poznámky
+#### <a name="additional-notes"></a>další poznámky
 
 Při psaní;
 
-- Odkazy na jednotlivé Waypoints se budou rozdělit do jednotlivých.
-- Mnohoúhelníky a další mnohoúhelníky budou zapsány jako stopy. 
+- MultiPoints budou rozděleny do jednotlivých trasových bodů.
+- Mnoholyana a MultiPolygons budou zapsány jako stopy. 
   
-## <a name="supported-well-known-text-geometry-types"></a>Podporované typy geometrie známého textu
+## <a name="supported-well-known-text-geometry-types"></a>Podporované typy geometrie dobře známý text
 
 | Typ geometrie | Čtení | Zápis |
 |--------------|:----:|:-----:|
-| Vyberte | x | x |
+| Bod | x | x |
 | BOD Z | x | x | 
 | BOD M | x | x<sup>[2]</sup> |
-| ZM BODU | x<sup>[1]</sup><sup>[2]</sup> | | 
-| LINESTRING | x | x |
+| BOD ZM | x<sup>[1]</sup><sup>[2]</sup> | | 
+| Linestring | x | x |
 | LINESTRING Z | x | x | 
 | LINESTRING M | x | x<sup>[2]</sup> |
 | LINESTRING ZM | x<sup>[1]</sup><sup>[2]</sup> | | 
-| POSTUPNĚ | x | x |
-| MNOHOÚHELNÍK Z | x | x |
-| MNOHOÚHELNÍK M | x | x<sup>[2]</sup> |
-| ZM MNOHOÚHELNÍKU | x<sup>[1]</sup><sup>[2]</sup> | | 
-| MULTIPOINT | x | x |
-| SYSTÉM MULTIPOINT Z | x | x | 
+| Mnohoúhelník | x | x |
+| POLYGON Z | x | x |
+| POLYGON M | x | x<sup>[2]</sup> |
+| POLYGON ZM | x<sup>[1]</sup><sup>[2]</sup> | | 
+| Multipoint | x | x |
+| MULTIPOINT Z | x | x | 
 | MULTIPOINT M | x | x<sup>[2]</sup> |
 | POMULTIPOINTINT ZM | x<sup>[1]</sup><sup>[2]</sup> | | 
-| MULTILINESTRING | x | x |
+| Multilinestring | x | x |
 | MULTILINESTRING Z | x | x | 
 | MULTILINESTRING M | x | x<sup>[2]</sup> |
 | MULTILINESTRING ZM | x<sup>[1]</sup><sup>[2]</sup> | | 
-| MULTIPOLYGON | x | x |
-| VÍCE MNOHOÚHELNÍKŮ Z | x | x | 
-| VÍCE MNOHOÚHELNÍKŮ M | x | x<sup>[2]</sup> |
-| ZM S VÍCE MNOHOÚHELNÍKY | x<sup>[1]</sup><sup>[2]</sup> | | 
-| GEOMETRYCOLLECTION | x | x |
-| GEOMETRIECOLLECTION Z | x | x | 
-| GEOMETRIECOLLECTION M | x | x<sup>[2]</sup> | 
-| GEOMETRIECOLLECTION ZM | x<sup>[1]</sup><sup>[2]</sup> | x | 
+| Multipolygon | x | x |
+| MULTIPOLYGON Z | x | x | 
+| MULTIPOLYGON M | x | x<sup>[2]</sup> |
+| MULTIPOLYGON ZM | x<sup>[1]</sup><sup>[2]</sup> | | 
+| Geometrycollection | x | x |
+| GEOMETRYCOLLECTION Z | x | x | 
+| GEOMETRYCOLLECTION M | x | x<sup>[2]</sup> | 
+| GEOMETRYCOLLECTION ZM | x<sup>[1]</sup><sup>[2]</sup> | x | 
 
-\[1\] pouze parametr Z je zachycen a přidán jako třetí hodnota v hodnotě pozice.
+\[1\] Pouze Z parametr je zachycen a přidán jako třetí hodnota v Position hodnotě.
 
-parametr \[2\] M není zachycen.
+\[Parametr\] 2 M není zachycen.
 
-## <a name="delimited-spatial-data-support"></a>Podpora prostorových dat s oddělovači
+## <a name="delimited-spatial-data-support"></a>Podpora oddělených prostorových dat
 
-Oddělená prostorová data, jako jsou textový soubor s oddělovači (CSV), mají často sloupce, které obsahují prostorová data. Například mohou být sloupce obsahující informace o zeměpisné šířce a délce. Ve známém textovém formátu může být sloupec, který obsahuje data prostorové geometrie.
+Prostorová data oddělená, například soubory hodnot oddělených čárkami (CSV), mají často sloupce obsahující prostorová data. Mohou například existovat sloupce, které obsahují informace o zeměpisné šířce a zeměpisné délky. Ve formátu Známý text může existovat sloupec, který obsahuje data prostorové geometrie.
 
-### <a name="spatial-data-column-detection"></a>Detekce sloupce prostorových dat
+### <a name="spatial-data-column-detection"></a>Detekce sloupců prostorových dat
 
-Při čtení souboru s oddělovači, který obsahuje prostorová data, se hlavička analyzuje, aby se určilo, které sloupce obsahují pole umístění. Pokud hlavička obsahuje informace o typu, použije se k přetypování hodnot buněk na příslušný typ. Pokud není zadaný žádný nadpis, bude se analyzovat první řádek, který se použije k vygenerování hlavičky. Při analýze prvního řádku se spustí kontroly tak, aby odpovídaly názvům sloupců s následujícími názvy při nerozlišování velkých a malých písmen. V případě, že v souboru existují dva nebo více názvů, pořadí názvů je priorita.
+Při čtení odděleného souboru, který obsahuje prostorová data, bude záhlaví analyzováno, aby se zjistilo, které sloupce obsahují pole umístění. Pokud záhlaví obsahuje informace o typu, bude použito k přetypovátí hodnot buněk na příslušný typ. Pokud není zadána žádná hlavička, první řádek bude analyzován a použit ke generování záhlaví. Při analýze prvního řádku je provedena kontrola tak, aby odpovídala názvům sloupců s následujícími názvy způsobem bez rozlišování velkých a malých písmen. Pořadí názvů je prioritou v případě, že v souboru existují dva nebo více názvů.
 
 #### <a name="latitude"></a>Zeměpisná šířka
 
@@ -375,7 +375,7 @@ Při čtení souboru s oddělovači, který obsahuje prostorová data, se hlavi�
 - `xcenter`
 - `point-x`
 
-#### <a name="elevation"></a>Zvýšení oprávnění
+#### <a name="elevation"></a>Zvýšení
 
 - `elevation`
 - `elv`
@@ -383,53 +383,53 @@ Při čtení souboru s oddělovači, který obsahuje prostorová data, se hlavi�
 - `alt`
 - `z`
 
-#### <a name="geography"></a>Geografické
+#### <a name="geography"></a>Geography
 
-První řádek dat bude prohledáván pro řetězce, které jsou ve známém formátu textu. 
+První řádek dat bude zkontrolován na řetězce, které jsou ve formátu známý text. 
 
-### <a name="delimited-data-column-types"></a>Typy datových sloupců s oddělovači
+### <a name="delimited-data-column-types"></a>Oddělované typy datových sloupců
 
-Při kontrole řádku záhlaví budou všechny informace o typu, které jsou v názvu sloupce, extrahovány a použity k přetypování buněk v daném sloupci. Tady je příklad názvu sloupce, který má hodnotu typu: ColumnName (typeName). Podporují se následující názvy typů bez rozlišení velkých a malých písmen:
+Při skenování řádku záhlaví budou extrahovány všechny informace o textu, které jsou v názvu sloupce, a použity k obsazení buněk v tomto sloupci. Zde je příklad názvu sloupce, který má hodnotu typu: "ColumnName (typeName)". Podporovány jsou následující názvy typů bez podomů:
 
 #### <a name="numbers"></a>Čísla
 
-- EDM. Int64
+- edm.int64
 - int
 - long
-- EDM. Double
+- edm.double
 - float
 - double
 - číslo
 
-#### <a name="booleans"></a>logické hodnoty
+#### <a name="booleans"></a>Booleans
 
-- EDM. Boolean
-- logick
+- edm.boolean
+- bool
 - Boolean
 
-#### <a name="dates"></a>Kalendářní data
+#### <a name="dates"></a>Dates
 
-- EDM. DateTime
+- edm.datetime
 - date
 - datetime
 
-#### <a name="geography"></a>Geografické
+#### <a name="geography"></a>Geography
 
-- EDM. geografie
-- Geografické
+- edm.geography
+- Geografie
 
 #### <a name="strings"></a>Řetězce
 
-- EDM. String
+- edm.string
 - varchar
 - text
-- řetězec Case
+- řetězec
 
-Pokud nelze extrahovat žádné informace o typu z hlavičky a možnost dynamického zápisu je povolena při čtení, pak se každá buňka jednotlivě analyzuje a určí, jaký datový typ je nejvhodnější k přetypování.
+Pokud nelze extrahovat žádné informace o typu ze záhlaví a možnost dynamického psaní je povolena při čtení, bude každá buňka individuálně analyzována, aby se zjistilo, jaký datový typ je nejvhodnější pro přetypování.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další ukázky kódu pro přidání do vašich map najdete v následujících článcích:
+Další ukázky kódu, které chcete přidat do map, naleznete v následujících článcích:
 
 > [!div class="nextstepaction"]
 > [Čtení a zápis prostorových dat](spatial-io-read-write-spatial-data.md)

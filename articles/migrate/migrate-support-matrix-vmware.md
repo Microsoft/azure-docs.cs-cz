@@ -2,25 +2,25 @@
 title: Podpora hodnocení VMware v Azure Migrate
 description: Přečtěte si o podpoře pro vyhodnocení virtuálních počítačích VMware pomocí Azure Migrate Server Assessment.
 ms.topic: conceptual
-ms.date: 03/23/2020
-ms.openlocfilehash: 03d07adb6f19346901286bdae148f95e68290e4e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/29/2020
+ms.openlocfilehash: e0172656d06075f89a7c3a06e8d4e9be94e6f5d0
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336880"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389303"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Matice podpory pro hodnocení vmware 
 
-Tento článek shrnuje požadavky na požadavky na požadavky na požadavky na požadavky na podporu pro posouzení virtuálních počítačů VMware v rámci přípravy na migraci do Azure. Pokud chcete migrovat virtuální počítače VMware do Azure, zkontrolujte [matici podpory migrace](migrate-support-matrix-vmware-migration.md).
+Tento článek shrnuje požadavky na požadavky na požadavky na požadavky na požadavky na podporu při posuzování virtuálních počítačích VMware pro migraci do Azure pomocí nástroje Azure Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool). Pokud chcete migrovat virtuální počítače VMware do Azure, zkontrolujte [matici podpory migrace](migrate-support-matrix-vmware-migration.md).
 
-Fyzické servery můžete vyhodnocovat pomocí nástroje [Azure Migrate:Server Assessment.](migrate-services-overview.md#azure-migrate-server-assessment-tool) Vytvoříte projekt Migrace Azure a pak přidáte nástroj do projektu. Po přidání nástroje nasadíte [zařízení Azure Migrate](migrate-appliance.md). Zařízení průběžně zjišťuje místní počítače a odesílá metadata a údaje o výkonu počítače do Azure. Po zjišťování počítače shromáždíte zjištěné počítače do skupin a spustíte hodnocení pro skupinu.
+Chcete-li vyhodnotit virtuální počítače VMware, vytvořte projekt Migrace Azure a pak do projektu přidejte nástroj vyhodnocení serveru. Po přidání nástroje nasadíte [zařízení Azure Migrate](migrate-appliance.md). Zařízení průběžně zjišťuje místní počítače a odesílá metadata a údaje o výkonu počítače do Azure. Po dokončení zjišťování shromáždíte zjištěné počítače do skupin a spustíte hodnocení pro skupinu.
 
 ## <a name="limitations"></a>Omezení
 
 **Podpora** | **Podrobnosti**
 --- | ---
-**Limity projektu** | V předplaceně Azure můžete vytvořit více projektů.<br/><br/> Můžete objevit a vyhodnotit až 35 000 virtuálních virtuálních měn VMware v jednom [projektu](migrate-support-matrix.md#azure-migrate-projects). Projekt může zahrnovat virtuální servery VMware, fyzické servery a virtuální aplikace Hyper-V až do limitů hodnocení pro každý.
+**Limity projektu** | V předplaceně Azure můžete vytvořit více projektů.<br/><br/> Můžete objevit a vyhodnotit až 35 000 virtuálních virtuálních měn VMware v jednom [projektu](migrate-support-matrix.md#azure-migrate-projects). Projekt může také zahrnovat fyzické servery a virtuální chod hyper-V až do limitů hodnocení pro každý.
 **Objev** | Zařízení Migrace Azure může zjistit až 10 000 virtuálních počítačů VMware na serveru vCenter.
 **Posouzení** | V jedné skupině můžete přidat až 35 000 počítačů.<br/><br/> Můžete vyhodnotit až 35 000 virtuálních můe v rámci jednoho hodnocení.
 
@@ -29,11 +29,11 @@ Fyzické servery můžete vyhodnocovat pomocí nástroje [Azure Migrate:Server A
 
 ## <a name="application-discovery"></a>Zjišťování aplikací
 
-Kromě zjišťování počítačů může Azure Migrate: Server Assessment zjišťovat aplikace, role a funkce spuštěné na počítačích. Zjišťování inventáře aplikací vám umožní identifikovat a naplánovat cestu migrace přizpůsobenou místním úlohám. 
+Kromě zjišťování počítačů může server Assessment zjišťovat aplikace, role a funkce spuštěné na počítačích. Zjišťování inventáře aplikací vám umožní identifikovat a naplánovat cestu migrace přizpůsobenou místním úlohám. 
 
 **Podpora** | **Podrobnosti**
 --- | ---
-**Podporované stroje** | Zjišťování aplikací je momentálně podporované pouze pro místní virtuální počítače VMware.
+**Podporované stroje** | Zjišťování aplikací je aktuálně podporované pouze pro virtuální majech VMware.
 **Objev** | Zjišťování aplikací je bez agenta. Používá pověření pro hosta počítače a vzdáleně přistupuje k počítačům pomocí volání WMI a SSH.
 **Podpora virtuálních her** | Zjišťování aplikací je podporováno pro všechny verze Windows a Linux.
 **pověření aplikace vCenter** | Zjišťování aplikací vyžaduje účet vCenter Serveru s přístupem jen pro čtení a oprávněními povolenými pro virtuální počítače > operace hosta.
@@ -58,7 +58,7 @@ Kromě zjišťování počítačů může Azure Migrate: Server Assessment zjiš
 
 ## <a name="azure-migrate-appliance-requirements"></a>Požadavky zařízení Azure Migrate
 
-Azure Migrate používá [zařízení Azure Migrate](migrate-appliance.md) pro zjišťování a hodnocení. Zařízení pro vMware je nasazeno pomocí šablony OVA importované do serveru vCenter. 
+Azure Migrate používá [zařízení Azure Migrate](migrate-appliance.md) pro zjišťování a hodnocení. Zařízení můžete nasadit jako virtuální hod VMWare pomocí šablony OVA, importované na server vCenter nebo pomocí [skriptu prostředí PowerShell](deploy-appliance-script.md).
 
 - Seznamte se s [požadavky na zařízení](migrate-appliance.md#appliance---vmware) pro společnost VMware.
 - Přečtěte si o [adresách URL,](migrate-appliance.md#url-access) ke kterým zařízení potřebuje přístup.
@@ -77,7 +77,7 @@ Hostitelé ESXi (analýza zjišťování/závislostí bez agentů) | Pokud chcet
 
 **Požadavek** | **Podrobnosti**
 --- | --- 
-**Před nasazením** | Měli byste mít projekt Migrace Azure na místě, s nástrojem Azure Migrate: Server Assessment přidané do projektu.<br/><br/>  Vizualizaci závislostí nasadíte po nastavení zařízení Azure Migrate, abyste zjistili místní počítače VMWare.<br/><br/> [Přečtěte si, jak](create-manage-projects.md) vytvořit projekt poprvé.<br/> [Přečtěte si, jak](how-to-assess.md) přidat nástroj pro hodnocení do existujícího projektu.<br/> [Přečtěte si, jak](how-to-set-up-appliance-vmware.md) nastavit zařízení Azure Migrate pro vyhodnocení virtuálních počítačů VMware.
+**Před nasazením** | Měli byste mít projekt Migrace Azure na místě, s nástrojem hodnocení serveru přidán do projektu.<br/><br/>  Vizualizaci závislostí nasadíte po nastavení zařízení Azure Migrate, abyste zjistili místní počítače VMWare.<br/><br/> [Přečtěte si, jak](create-manage-projects.md) vytvořit projekt poprvé.<br/> [Přečtěte si, jak](how-to-assess.md) přidat nástroj pro hodnocení do existujícího projektu.<br/> [Přečtěte si, jak](how-to-set-up-appliance-vmware.md) nastavit zařízení Azure Migrate pro vyhodnocení virtuálních počítačů VMware.
 **Podpora virtuálních her** | Momentálně podporované pouze pro virtuální měny VMware.
 **Virtuální počítače s Windows** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64bitový).
 **Účet systému Windows** |  Pro analýzu závislostí zařízení Azure Migrate potřebuje pro přístup k virtuálním účtům Windows účet místního správce nebo správce domény.

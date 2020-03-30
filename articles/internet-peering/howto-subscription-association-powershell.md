@@ -1,7 +1,7 @@
 ---
-title: Přidružení partnerského čísla ASN k předplatnému Azure pomocí PowerShellu
+title: Přidružení přidružení partnerského partnera ASN k předplatnému Azure pomocí PowerShellu
 titleSuffix: Azure
-description: Přidružení partnerského čísla ASN k předplatnému Azure pomocí PowerShellu
+description: Přidružení přidružení partnerského partnera ASN k předplatnému Azure pomocí PowerShellu
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,44 +9,44 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 77cc4732e017d95cbae19578cf26b1111b08fdde
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75908990"
 ---
-# <a name="associate-peer-asn-to-azure-subscription-using-powershell"></a>Přidružení partnerského čísla ASN k předplatnému Azure pomocí PowerShellu
+# <a name="associate-peer-asn-to-azure-subscription-using-powershell"></a>Přidružení přidružení partnerského partnera ASN k předplatnému Azure pomocí PowerShellu
 
-Před odesláním žádosti o vytvoření partnerského vztahu byste nejdřív měli přidružit své ASN k předplatnému Azure pomocí následujících kroků.
+Před odesláním požadavku partnerského vztahu byste měli nejprve přidružit asn s předplatným Azure pomocí následujících kroků.
 
-Pokud budete chtít, můžete tuto příručku dokončit pomocí [portálu](howto-subscription-association-portal.md).
+Pokud chcete, můžete tuto příručku dokončit pomocí [portálu](howto-subscription-association-portal.md).
 
-### <a name="working-with-azure-powershell"></a>Práce s využitím Azure Powershellu
+### <a name="working-with-azure-powershell"></a>Práce s Azure PowerShellem
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
 
-## <a name="create-peerasn-to-associate-your-asn-with-azure-subscription"></a>Vytvoření PeerASN k přidružení vašeho ASN k předplatnému Azure
+## <a name="create-peerasn-to-associate-your-asn-with-azure-subscription"></a>Vytvoření programu PeerASN pro přidružení vašeho asn k předplatnému Azure
 
-### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Přihlaste se ke svému účtu Azure a vyberte své předplatné
+### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Přihlaste se ke svému účtu Azure a vyberte předplatné.
 [!INCLUDE [Account](./includes/account-powershell.md)]
 
-### <a name="register-for-peering-resource-provider"></a>Registrace pro poskytovatele prostředků partnerského vztahu
-Zaregistrujte se do poskytovatele prostředků partnerského vztahu ve vašem předplatném Pomocí následujícího příkazu. Pokud to neprovedete, prostředky Azure potřebné k nastavení partnerského vztahu nejsou přístupné.
+### <a name="register-for-peering-resource-provider"></a>Zaregistrovat se pro zprostředkovatele prostředků partnerského vztahu
+Zaregistrujte se pro zprostředkovatele partnerského vztahu v předplatném pomocí níže uvedeného příkazu. Pokud to neprovedete, prostředky Azure potřebné k nastavení partnerského vztahu nejsou přístupné.
 
 ```powershell
 Register-AzResourceProvider -ProviderNamespace Microsoft.Peering
 ```
 
-Stav registrace můžete kontrolovat pomocí níže uvedených příkazů:
+Stav registrace můžete zkontrolovat pomocí následujících příkazů:
 ```powershell
 Get-AzResourceProvider -ProviderNamespace Microsoft.Peering
 ```
 
 > [!IMPORTANT]
-> Než budete pokračovat, počkejte, až *RegistrationState* zaregistrujte. Po provedení příkazu může trvat 5 až 30 minut.
+> Počkejte *na RegistrationState* zase "Registrováno" před pokračováním. Po spuštění příkazu může trvat 5 až 30 minut.
 
-### <a name="update-the-peer-information-associated-with-this-subscription"></a>Aktualizovat informace o partnerském vztahu přidruženého k tomuto předplatnému
+### <a name="update-the-peer-information-associated-with-this-subscription"></a>Aktualizace informací partnera přidružených k tomuto předplatnému
 
-Níže je příklad, jak aktualizovat informace o partnerovi.
+Níže je uveden příklad aktualizace informací o partnerské straně.
 
 ```powershell
 New-AzPeerAsn `
@@ -58,23 +58,23 @@ New-AzPeerAsn `
 ```
 
 > [!NOTE]
-> – Název odpovídá názvu prostředku a může to být cokoli, co si zvolíte. Nicméně peerName odpovídá názvu vaší společnosti a musí být co nejblíže vašemu profilu PeeringDB. Všimněte si, že hodnota peerName podporuje pouze znaky a-z, a-Z a mezeru.
+> -Název odpovídá názvu prostředku a může být cokoliv, co si vyberete. Však -peerName odpovídá názvu vaší společnosti a musí být co nejblíže profilu PeeringDB. Všimněte si, že hodnota pro -peerName podporuje pouze znaky a-z, A-Z a mezeru.
 
-Předplatné může mít víc čísla ASN. Aktualizujte informace o partnerském vztahu pro každé číslo ASN. Ujistěte se, že "název" je jedinečný pro každé číslo ASN.
+Předplatné může mít více asns. Aktualizujte informace o partnerském vztahu pro každý asn. Ujistěte se, že "název" je jedinečný pro každý ASN.
 
-U partnerských vztahů se očekává, že budou mít úplný a aktuální profil pro [PeeringDB](https://www.peeringdb.com). Tyto informace používáme během registrace k ověření detailů partnerského vztahu, jako jsou NOC informace, technické kontaktní informace a jejich přítomnost v zařízeních partnerských vztahů atd.
+Očekává se, že partneři budou mít úplný a aktuální profil v [PeeringDB](https://www.peeringdb.com). Tyto informace používáme při registraci k ověření podrobností partnera, jako jsou informace o NOC, technické kontaktní informace a jejich přítomnost v peeringových zařízeních atd.
 
-Všimněte si, že místo **{SubscriptionId}** ve výstupu výše se zobrazí aktuální ID předplatného.
+Všimněte si, že místo **{subscriptionId}** ve výstupu výše se zobrazí skutečné ID předplatného.
 
-## <a name="view-status-of-a-peerasn"></a>Zobrazit stav PeerASN
+## <a name="view-status-of-a-peerasn"></a>Zobrazit stav peerasn
 
-Ověřte stav ověření ASN pomocí následujícího příkazu:
+Zkontrolujte stav ověření ASN pomocí následujícího příkazu:
 
 ```powershell
 Get-AzPeerAsn
 ```
 
-Níže je uvedená příklad odpovědi:
+Níže je příklad odpovědi:
 ```powershell
 PeerContactInfo : Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSContactInfo
 PeerName        : Contoso
@@ -86,27 +86,27 @@ Type            : Microsoft.Peering/peerAsns
 ```
 
 > [!IMPORTANT]
-> Před odesláním žádosti o partnerský vztah počkejte, než ValidationState zapnete "Schváleno". Toto schválení může trvat až 12 hodin.
+> Před odesláním požadavku partnerského vztahu počkejte na stav ValidationState, který se změní na "Schváleno". Toto schválení může trvat až 12 hodin.
 
 ## <a name="modify-peerasn"></a>Upravit PeerAsn
 Kontaktní údaje NOC můžete kdykoli upravit.
 
-Níže je příklad:
+Níže je uveden příklad:
 
 ```powershell
 Set-PeerAsn -Name Contoso_1234 -Email "newemail@test.com" -Phone "1800-000-0000"
 ```
 
 ## <a name="delete-peerasn"></a>Odstranit PeerAsn
-Odstranění PeerASN se v tuto chvíli nepodporuje. Pokud potřebujete odstranit PeerASN, obraťte se na [partnerský vztah Microsoftu](mailto:peering@microsoft.com).
+Odstranění nepodporovaného souboru PeerASN není aktuálně podporováno. Pokud potřebujete odstranit peerasn, obraťte se na [partnerský vztah společnosti Microsoft](mailto:peering@microsoft.com).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vytvoření nebo úprava přímého partnerského vztahu](howto-direct-powershell.md)
-* [Převod starší verze přímého partnerského vztahu na prostředek Azure](howto-legacy-direct-powershell.md)
-* [Vytvoření nebo úprava partnerského vztahu serveru Exchange](howto-exchange-powershell.md)
-* [Převod starší verze serveru Exchange peering na prostředek Azure](howto-legacy-exchange-powershell.md)
+* [Vytvoření nebo úprava peeringu typu Direct](howto-direct-powershell.md)
+* [Převod starší verze peeringu typu Direct na prostředek Azure](howto-legacy-direct-powershell.md)
+* [Vytvoření nebo úprava partnerského vztahu Exchange](howto-exchange-powershell.md)
+* [Převod starší verze peeringu typu Exchange na prostředek Azure](howto-legacy-exchange-powershell.md)
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
-Další informace najdete v tématu [Nejčastější dotazy týkající se partnerského vztahu Internetu](faqs.md) .
+Další informace naleznete v [nejčastějších dotazech k internetovému partnerovi](faqs.md)

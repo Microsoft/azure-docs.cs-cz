@@ -1,6 +1,6 @@
 ---
-title: Propojení virtuálních sítí s partnerským vztahem virtuální sítě – Azure CLI
-description: V tomto článku se dozvíte, jak propojit virtuální sítě s využitím partnerského vztahu virtuálních sítí pomocí Azure CLI.
+title: Připojení virtuálních sítí pomocí partnerského vztahu virtuální sítě – rozhraní příkazového příkazu Azure
+description: V tomto článku se dozvíte, jak připojit virtuální sítě s partnerským vztahem virtuální sítě pomocí azure CLI.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 4ba37ea99ddc0903e1febd53f8d8fbd84b417b87
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: aa2d75173b14e768a207336b54b3dc10a8c3ea5c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201403"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235165"
 ---
-# <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>Propojení virtuálních sítí s využitím partnerského vztahu virtuálních sítí pomocí Azure CLI
+# <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>Propojení virtuálních sítí s partnerským vztahem virtuální sítě pomocí azure cli
 
 Virtuální sítě můžete mezi sebou propojit s využitím partnerského vztahu virtuálních sítí. Po vytvoření partnerského vztahu virtuálních sítí budou moct prostředky v obou virtuálních sítích komunikovat mezi sebou se stejnou latencí a šířkou pásma, jako kdyby byly ve stejné virtuální síti. V tomto článku získáte informace o těchto tématech:
 
@@ -31,15 +31,15 @@ Virtuální sítě můžete mezi sebou propojit s využitím partnerského vztah
 * Nasazení virtuálního počítače do obou virtuálních sítí
 * Komunikace mezi virtuálními počítači
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.28 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). 
+Pokud se rozhodnete nainstalovat a používat příkaz cli místně, tento článek vyžaduje, abyste spouštěli Azure CLI verze 2.0.28 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). 
 
 ## <a name="create-virtual-networks"></a>Vytvoření virtuálních sítí
 
-Před vytvořením virtuální sítě je nutné vytvořit skupinu prostředků pro virtuální síť a všechny další prostředky vytvořené v tomto článku. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
+Před vytvořením virtuální sítě je třeba vytvořit skupinu prostředků pro virtuální síť a všechny ostatní prostředky vytvořené v tomto článku. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
@@ -69,7 +69,7 @@ az network vnet create \
 
 ## <a name="peer-virtual-networks"></a>Vytvoření partnerského vztahu virtuálních sítí
 
-Partnerské vztahy se navázaly mezi identifikátory virtuální sítě, takže musíte nejdřív získat ID každé virtuální sítě pomocí [AZ Network VNet show](/cli/azure/network/vnet) a uložit ID v proměnné.
+Partnerských společností jsou vytvořeny mezi ID virtuální sítě, takže musíte nejprve získat ID každé virtuální sítě s [az sítě virtuální sítě zobrazit](/cli/azure/network/vnet) a uložit ID v proměnné.
 
 ```azurecli-interactive
 # Get the id for myVirtualNetwork1.
@@ -86,7 +86,7 @@ vNet2Id=$(az network vnet show \
   --out tsv)
 ```
 
-Vytvořte partnerský vztah z *myVirtualNetwork1* k *myVirtualNetwork2* pomocí [AZ Network VNet peering Create](/cli/azure/network/vnet/peering). Pokud není zadán parametr `--allow-vnet-access`, je navázán partnerský vztah, ale nemůžete prostřednictvím něj procházet žádná komunikace.
+Vytvořte partnerský vztah z *myVirtualNetwork1* na *myVirtualNetwork2* s [vytvořením partnerského vztahu sítě az](/cli/azure/network/vnet/peering). Pokud `--allow-vnet-access` parametr není zadán, je vytvořen partnerský vztah, ale žádná komunikace může protékat.
 
 ```azurecli-interactive
 az network vnet peering create \
@@ -97,7 +97,7 @@ az network vnet peering create \
   --allow-vnet-access
 ```
 
-Ve výstupu vráceném po provedení předchozího příkazu se zobrazí zpráva, že **peeringState** je *inicializován*. Partnerský vztah zůstane v *inicializovaném* stavu, dokud nevytvoříte partnerský vztah z *myVirtualNetwork2* do *myVirtualNetwork1*. Vytvořte partnerský vztah z *myVirtualNetwork2* do *myVirtualNetwork1*. 
+Ve výstupu vráceném po provedení předchozího příkazu uvidíte, že **peeringState** je *Initiated*. Partnerský vztah zůstane ve stavu *Zahájeno,* dokud nevytvoříte partnerský vztah z *myVirtualNetwork2* na *myVirtualNetwork1*. Vytvořte partnerský vztah z *myVirtualNetwork2* do *myVirtualNetwork1*. 
 
 ```azurecli-interactive
 az network vnet peering create \
@@ -108,7 +108,7 @@ az network vnet peering create \
   --allow-vnet-access
 ```
 
-Ve výstupu vráceném po provedení předchozího příkazu se zobrazí informace o tom, že je **PeeringState** *připojený*. Azure také změnil stav partnerského vztahu partnerského vztahu *myVirtualNetwork1-myVirtualNetwork2* na *připojeno*. Potvrďte, že stav partnerského vztahu pro partnerský vztah *myVirtualNetwork1-myVirtualNetwork2* se změnil na *připojeno* pomocí [AZ Network VNet peering show](/cli/azure/network/vnet/peering).
+Ve výstupu vráceném po provedení předchozího příkazu uvidíte, že **peeringState** je *Připojeno*. Azure také změnil stav partnerského vztahu partnerského vztahu partnerského vztahu *myVirtualNetwork1-myVirtualNetwork2* na *Connected*. Zkontrolujte, zda se stav partnerského vztahu pro partnerský vztah *myVirtualNetwork1-myVirtualNetwork2* změnil na *Připojeno* s [pořadem partnerského vztahu sítě AZ](/cli/azure/network/vnet/peering).
 
 ```azurecli-interactive
 az network vnet peering show \
@@ -118,7 +118,7 @@ az network vnet peering show \
   --query peeringState
 ```
 
-Prostředky v jedné virtuální síti nemůžou komunikovat s prostředky ve druhé virtuální síti, dokud nejsou *připojené* **peeringStatey** partnerských vztahů v obou virtuálních sítích. 
+Prostředky v jedné virtuální síti nemohou komunikovat s prostředky v jiné virtuální **síti,** dokud není partnerský stav pro partnerské partnery v obou virtuálních sítích *připojen*. 
 
 ## <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
 
@@ -126,7 +126,7 @@ Vytvořte v obou virtuálních sítích virtuální počítač, abyste mezi nimi
 
 ### <a name="create-the-first-vm"></a>Vytvoření prvního virtuálního počítače
 
-Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Následující příklad vytvoří virtuální počítač s názvem *myVm1* ve virtuální síti *myVirtualNetwork1* . Pokud ve výchozím umístění klíčů ještě neexistují klíče SSH, příkaz je vytvoří. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`. Možnost `--no-wait` vytvoří virtuální počítač na pozadí, takže můžete pokračovat k dalšímu kroku.
+Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Následující příklad vytvoří virtuální počítač s názvem *myVm1* ve virtuální síti *myVirtualNetwork1.* Pokud ve výchozím umístění klíčů ještě neexistují klíče SSH, příkaz je vytvoří. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`. Tato `--no-wait` možnost vytvoří virtuální hovirtuální ho na pozadí, takže můžete pokračovat k dalšímu kroku.
 
 ```azurecli-interactive
 az vm create \
@@ -141,9 +141,9 @@ az vm create \
 
 ### <a name="create-the-second-vm"></a>Vytvoření druhého virtuálního počítače
 
-Vytvořte virtuální počítač ve virtuální síti *myVirtualNetwork2* .
+Vytvořte virtuální počítač ve virtuální síti *myVirtualNetwork2.*
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
   --name myVm2 \
@@ -153,9 +153,9 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Vytvoření virtuálního počítače trvá několik minut. Po vytvoření virtuálního počítače se v Azure CLI zobrazí podobné informace jako v následujícím příkladu: 
+Vytvoření virtuálního počítače trvá několik minut. Po vytvoření virtuálního počítače azure cli zobrazí informace podobné v následujícím příkladu: 
 
-```azurecli 
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVm2",
@@ -168,36 +168,36 @@ Vytvoření virtuálního počítače trvá několik minut. Po vytvoření virtu
 }
 ```
 
-Poznamenejte si hodnotu **publicIpAddress**. Tato adresa se používá pro přístup k virtuálnímu počítači z Internetu v pozdějším kroku.
+Poznamenejte si hodnotu **publicIpAddress**. Tato adresa se používá pro přístup k virtuálnímu virtuálnímu mněmu z internetu v pozdějším kroku.
 
 ## <a name="communicate-between-vms"></a>Komunikace mezi virtuálními počítači
 
-Pomocí následujícího příkazu vytvořte relaci SSH s virtuálním počítačem s *myVm2* . Nahraďte `<publicIpAddress>` veřejnou IP adresou vašeho virtuálního počítače. V předchozím příkladu je veřejná IP adresa *13.90.242.231*.
+Pomocí následujícího příkazu vytvořte relaci SSH s virtuálním virtuálním *mem myVm2.* Nahraďte `<publicIpAddress>` veřejnou IP adresou virtuálního počítače. V předchozím příkladu je veřejná IP adresa *13.90.242.231*.
 
-```bash 
+```bash
 ssh <publicIpAddress>
 ```
 
-Otestujte virtuální počítač v *myVirtualNetwork1*.
+Příkaz ping na virtuální počítač v *programu myVirtualNetwork1*.
 
-```bash 
+```bash
 ping 10.0.0.4 -c 4
 ```
 
-Dostanete čtyři odpovědi. 
+Obdržíte čtyři odpovědi. 
 
-Zavřete relaci SSH k virtuálnímu počítači *myVm2* . 
+Zavřete relaci SSH na virtuální m *myVm2.* 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, odeberte skupinu prostředků a všechny prostředky, které obsahuje, pomocí [AZ Group Delete](/cli/azure/group) .
+Pokud již není potřeba, použijte [az skupiny odstranit](/cli/azure/group) odebrat skupinu prostředků a všechny prostředky, které obsahuje.
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup --yes
 ```
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak propojit dvě sítě ve stejné oblasti Azure s partnerským vztahem virtuální sítě. Můžete vytvářet také partnerské vztahy virtuálních sítí v různých [podporovaných oblastech](virtual-network-manage-peering.md#cross-region) a [různých předplatných Azure](create-peering-different-subscriptions.md#cli), stejně jako vytvářet [návrhy hvězdicovitých sítí](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering) s partnerskými vztahy. Další informace o partnerských vztazích virtuálních sítí najdete v tématech [Přehled partnerských vztahů virtuálních sítí](virtual-network-peering-overview.md) a [Správa partnerských vztahů virtuálních sítí](virtual-network-manage-peering.md).
+V tomto článku jste se dozvěděli, jak připojit dvě sítě ve stejné oblasti Azure, s partnerským vztahem virtuální sítě. Můžete vytvářet také partnerské vztahy virtuálních sítí v různých [podporovaných oblastech](virtual-network-manage-peering.md#cross-region) a [různých předplatných Azure](create-peering-different-subscriptions.md#cli), stejně jako vytvářet [návrhy hvězdicovitých sítí](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering) s partnerskými vztahy. Další informace o partnerských vztazích virtuálních sítí najdete v tématech [Přehled partnerských vztahů virtuálních sítí](virtual-network-peering-overview.md) a [Správa partnerských vztahů virtuálních sítí](virtual-network-manage-peering.md).
 
-[Vlastní počítač můžete připojit k virtuální síti](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) pomocí sítě VPN a pracovat s prostředky ve virtuální síti nebo v partnerských virtuálních sítích. Aby bylo možné opakovaně použitelným skriptům dokončit mnoho úloh popsaných v článcích o virtuální síti, přečtěte si téma [ukázky skriptů](cli-samples.md).
+Vlastní [počítač](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) můžete připojit k virtuální síti prostřednictvím sítě VPN a pracovat s prostředky ve virtuální síti nebo ve virtuálních sítích. Opakovaně použitelné skripty k dokončení mnoha úkolů zahrnutých v článcích virtuální sítě naleznete v [tématu ukázky skriptů](cli-samples.md).

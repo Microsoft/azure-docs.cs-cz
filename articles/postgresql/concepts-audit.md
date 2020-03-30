@@ -1,98 +1,98 @@
 ---
-title: Protokolování auditu – Azure Database for PostgreSQL – jeden server
-description: Koncepty pro protokolování auditu pgAudit v Azure Database for PostgreSQL-Single server.
+title: Protokolování auditu – databáze Azure pro PostgreSQL – jeden server
+description: Koncepty pro protokolování auditu pgAudit v databázi Azure pro PostgreSQL – jeden server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.openlocfilehash: 45490e398abd8b5bd3c10adb95b56e1019d2bb94
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76842465"
 ---
-# <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Protokolování auditu Azure Database for PostgreSQL – jeden server
+# <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Protokolování auditu v databázi Azure pro PostgreSQL – jeden server
 
-Auditování protokolování databázových aktivit na serveru Azure Database for PostgreSQL je k dispozici prostřednictvím rozšíření audit PostgreSQL: [pgAudit](https://www.pgaudit.org/). pgAudit poskytuje podrobné protokolování relací a/nebo objektů auditu.
+Protokolování auditu databázových aktivit v Azure Database for PostgreSQL – jeden server je k dispozici prostřednictvím rozšíření postgresql auditu: [pgAudit](https://www.pgaudit.org/). pgAudit poskytuje podrobné protokolování relace a/nebo auditu objektů.
 
 > [!NOTE]
-> pgAudit je ve verzi Preview na Azure Database for PostgreSQL.
-> Rozšíření lze povolit pouze na Pro obecné účely a paměťově optimalizovaných serverech.
+> pgAudit je ve verzi Preview v Azure Database for PostgreSQL.
+> Rozšíření lze povolit pouze na serverech s podporou pro obecné účely a paměť.
 
-Pokud chcete protokoly na úrovni prostředků Azure pro operace, jako jsou výpočty a škálování úložiště, si můžete prohlédnout v [protokolu aktivit Azure](../azure-monitor/platform/platform-logs-overview.md).
+Pokud chcete protokoly na úrovni prostředků Azure pro operace, jako je výpočetní a škálování úložiště, najdete v tématu [Protokol aktivit Azure](../azure-monitor/platform/platform-logs-overview.md).
 
-## <a name="usage-considerations"></a>Požadavky na využití
-Ve výchozím nastavení příkazy protokolování pgAudit vysílá standardní protokolovací zařízení Postgres společně s normálními příkazy protokolování. Ve službě Azure Database for PostgreSQL je možné tyto soubory .log stáhnout prostřednictvím webu Azure Portal nebo rozhraní příkazového řádku. Maximální velikost úložiště pro kolekci souborů je 1 GB a každý soubor je k dispozici po dobu maximálně sedmi dnů (výchozí hodnota je tři dny). Tato služba je krátkodobá možnost uložení.
+## <a name="usage-considerations"></a>Aspekty použití
+Ve výchozím nastavení příkazy protokolování pgAudit vysílá standardní protokolovací zařízení Postgres společně s normálními příkazy protokolování. Ve službě Azure Database for PostgreSQL je možné tyto soubory .log stáhnout prostřednictvím webu Azure Portal nebo rozhraní příkazového řádku. Maximální úložiště pro shromažďování souborů je 1 GB a každý soubor je k dispozici maximálně sedm dní (výchozí hodnota je tři dny). Tato služba je možnost krátkodobého úložiště.
 
-Případně můžete nakonfigurovat všechny protokoly, které se mají vysílat do služby diagnostiky protokolu Azure Monitor. Pokud povolíte protokolování diagnostiky Azure Monitor, vaše protokoly se automaticky odešlou (ve formátu JSON) do protokolů Azure Storage, Event Hubs nebo Azure Monitor, podle toho, co jste vybrali.
+Případně můžete nakonfigurovat všechny protokoly, které mají být emitovány do služby protokolu diagnostiky Azure Monitor. Pokud povolíte protokolování diagnostiky Azure Monitor, vaše protokoly se automaticky odešlou (ve formátu JSON) do Azure Storage, Event Hubs a/nebo Azure Monitor protokoly, v závislosti na vaší volbě.
 
 Po povolení rozšíření pgAudit se na serveru generuje velký objem protokolování, což má vliv na výkon a úložiště protokolů. Doporučujeme využít službu protokolování diagnostiky Azure, která nabízí možnosti dlouhodobějšího úložiště a také funkce pro analýzy a upozorňování. Doporučujeme vypnout standardní protokolování, aby se snížil vliv dalšího protokolování na výkon:
 
    1. Nastavte parametr `logging_collector` na OFF. 
-   2. Restartujte server, aby se tato změna projevila.
+   2. Chcete-li tuto změnu použít, restartujte server.
 
-Informace o tom, jak nastavit protokolování do protokolů Azure Storage, Event Hubs nebo Azure Monitor, najdete v části protokoly diagnostiky v [článku protokol serveru](concepts-server-logs.md).
+Informace o tom, jak nastavit protokolování do Azure Storage, Event Hubs nebo Azure Monitor protokoly, navštivte diagnostické protokoly části [protokolu serveru článku](concepts-server-logs.md).
 
 ## <a name="installing-pgaudit"></a>Instalace pgAudit
 
-Chcete-li nainstalovat pgAudit, je třeba jej zahrnout do sdílených předem načtených knihoven serveru. Změna parametru `shared_preload_libraries` Postgres vyžaduje, aby se restart serveru projevil. Parametry můžete měnit pomocí [Azure Portal](howto-configure-server-parameters-using-portal.md), rozhraní příkazového [řádku Azure](howto-configure-server-parameters-using-cli.md)nebo [REST API](/rest/api/postgresql/configurations/createorupdate).
+Chcete-li nainstalovat pgAudit, musíte jej zahrnout do sdílených knihoven přednačtení serveru. Změna `shared_preload_libraries` parametru Postgres vyžaduje restartování serveru, aby se projevilo. Parametry můžete změnit pomocí [portálu Azure Portal](howto-configure-server-parameters-using-portal.md), [Azure CLI](howto-configure-server-parameters-using-cli.md)nebo [rozhraní REST API](/rest/api/postgresql/configurations/createorupdate).
 
-Použití [Azure Portal](https://portal.azure.com):
+Použití [portálu Azure](https://portal.azure.com):
 
    1. Vyberte svůj server Azure Database for PostgreSQL.
-   2. Na bočním panelu vyberte **parametry serveru**.
-   3. Vyhledejte parametr `shared_preload_libraries`.
+   2. Na postranním panelu vyberte **Parametry serveru**.
+   3. Vyhledejte `shared_preload_libraries` parametr.
    4. Vyberte **pgaudit**.
-   5. Restartujte server, aby se změna projevila.
+   5. Chcete-li změnu použít, restartujte server.
 
-   6. Připojte se k serveru pomocí klienta (například psql) a povolte rozšíření pgAudit.
+   6. Připojte se k serveru pomocí klienta (jako psql) a povolte rozšíření pgAudit
       ```SQL
       CREATE EXTENSION pgaudit;
       ```
 
 > [!TIP]
-> Pokud se zobrazí chyba, potvrďte, že jste restart serveru po uložení `shared_preload_libraries`.
+> Pokud se zobrazí chyba, potvrďte, že `shared_preload_libraries`jste po uložení server restartovali.
 
-## <a name="pgaudit-settings"></a>nastavení pgAudit
+## <a name="pgaudit-settings"></a>pgAudit nastavení
 
-pgAudit umožňuje konfigurovat protokolování auditu relace nebo objektů. [Protokolování auditu relace](https://github.com/pgaudit/pgaudit/blob/master/README.md#session-audit-logging) generuje podrobné protokoly provedených příkazů. [Protokolování auditu objektů](https://github.com/pgaudit/pgaudit/blob/master/README.md#object-audit-logging) je auditování v oboru pro konkrétní vztahy. Můžete zvolit nastavení jednoho nebo obou typů protokolování. 
-
-> [!NOTE]
-> nastavení pgAudit jsou určena gloabally a nelze je zadat na úrovni databáze nebo role.
-
-Jakmile [nainstalujete pgAudit](#installing-pgaudit), můžete nakonfigurovat jeho parametry pro spuštění protokolování. [Dokumentace k pgAudit](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings) poskytuje definici každého parametru. Nejprve otestujte parametry a potvrďte, že se vám zobrazuje očekávané chování.
+pgAudit umožňuje konfigurovat protokolování relací nebo auditu objektů. [Protokolování auditu relace](https://github.com/pgaudit/pgaudit/blob/master/README.md#session-audit-logging) vydává podrobné protokoly provedených příkazů. [Protokolování auditu objektů](https://github.com/pgaudit/pgaudit/blob/master/README.md#object-audit-logging) je auditován pro konkrétní vztahy. Můžete nastavit jeden nebo oba typy protokolování. 
 
 > [!NOTE]
-> Nastavení `pgaudit.log_client` na ZAPNUTo bude přesměrovat protokoly do klientského procesu (například psql) místo zápisu do souboru. Toto nastavení by se obecně mělo nechávat zakázané. <br> <br>
-> `pgaudit.log_level` je povoleno pouze v případě, že je `pgaudit.log_client` zapnuto.
+> pgAudit nastavení jsou určeny gloabally a nelze zadat na úrovni databáze nebo role.
+
+Po [instalaci pgAudit](#installing-pgaudit), můžete nakonfigurovat jeho parametry pro spuštění protokolování. [Dokumentace pgAudit](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings) poskytuje definici každého parametru. Nejprve otestujte parametry a potvrďte, že se vám dostává očekávané chování.
 
 > [!NOTE]
-> V Azure Database for PostgreSQL nelze `pgaudit.log` nastavit pomocí zástupce `-` (mínus), jak je popsáno v dokumentaci k pgAudit. Všechny požadované třídy příkazů (ČTENÍ, ZÁPIS atd.) je potřeba zadat zvlášť.
+> Nastavení `pgaudit.log_client` na ZAPNUTO přesměruje protokoly na klientský proces (jako psql) namísto zápisu do souboru. Toto nastavení by se obecně mělo nechávat zakázané. <br> <br>
+> `pgaudit.log_level`je povolena `pgaudit.log_client` pouze v případě, že je zapnutá.
+
+> [!NOTE]
+> V Azure Database pro `pgaudit.log` PostgreSQL nelze `-` nastavit pomocí zástupce znaménka (mínus), jak je popsáno v dokumentaci pgAudit. Všechny požadované třídy příkazů (ČTENÍ, ZÁPIS atd.) je potřeba zadat zvlášť.
 
 ### <a name="audit-log-format"></a>Formát protokolu auditu
-Každý záznam auditu je uveden `AUDIT:` poblíž začátku řádku protokolu. Formát zbytku položky je podrobně popsán v [dokumentaci k pgAudit](https://github.com/pgaudit/pgaudit/blob/master/README.md#format).
+Každá položka auditu `AUDIT:` je označena v blízkosti začátku řádku protokolu. Formát zbytku záznamu je podrobně popsán v [dokumentaci pgAudit](https://github.com/pgaudit/pgaudit/blob/master/README.md#format).
 
-Pokud k splnění požadavků na audit potřebujete další pole, použijte parametr Postgres `log_line_prefix`. `log_line_prefix` je řetězec, který je výstupem na začátku každého řádku protokolu Postgres. Například následující nastavení `log_line_prefix` poskytuje časové razítko, uživatelské jméno, název databáze a ID procesu:
+Pokud potřebujete další pole ke splnění požadavků na audit, `log_line_prefix`použijte parametr Postgres . `log_line_prefix`je řetězec, který je výstup emituje na začátku každého řádku protokolu Postgres. Například následující `log_line_prefix` nastavení poskytuje časové razítko, uživatelské jméno, název databáze a ID procesu:
 
 ```
 t=%m u=%u db=%d pid=[%p]:
 ```
 
-Další informace o `log_line_prefix`najdete v [dokumentaci k PostgreSQL](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-LINE-PREFIX).
+Další informace `log_line_prefix`naleznete v [dokumentaci k PostgreSQL](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-LINE-PREFIX).
 
 ### <a name="getting-started"></a>Začínáme
-Chcete-li rychle začít, nastavte `pgaudit.log` na `WRITE`a otevřete protokoly a zkontrolujte výstup. 
+Chcete-li rychle `pgaudit.log` začít, nastavte na `WRITE`a otevřete protokoly a zkontrolujte výstup. 
 
 ## <a name="viewing-audit-logs"></a>Zobrazení protokolů auditu
-Pokud používáte soubory. log, budou se protokoly auditu zahrnovat do stejného souboru jako protokoly chyb PostgreSQL. Soubory protokolu si můžete stáhnout z webu Azure [Portal](howto-configure-server-logs-in-portal.md) nebo rozhraní příkazového [řádku](howto-configure-server-logs-using-cli.md). 
+Pokud používáte soubory .log, budou protokoly auditu zahrnuty do stejného souboru jako protokoly chyb PostgreSQL. Soubory protokolu můžete stáhnout z [portálu](howto-configure-server-logs-in-portal.md) Azure nebo [rozhraní příkazového příkazu .](howto-configure-server-logs-using-cli.md) 
 
-Pokud používáte diagnostické protokolování Azure, způsob přístupu k protokolům závisí na tom, který koncový bod zvolíte. Azure Storage najdete v článku [log Storage Account](../azure-monitor/platform/resource-logs-collect-storage.md) . Event Hubs najdete v článku [streamování protokolů Azure](../azure-monitor/platform/resource-logs-stream-event-hubs.md) .
+Pokud používáte protokolování diagnostiky Azure, způsob, jakým přistupujete k protokolům, závisí na tom, který koncový bod zvolíte. Azure Storage najdete v článku [účet úložiště protokolů.](../azure-monitor/platform/resource-logs-collect-storage.md) Centra událostí najdete v [článku datového proudu Azure protokoly.](../azure-monitor/platform/resource-logs-stream-event-hubs.md)
 
-Protokoly Azure Monitor jsou odesílány do vybraného pracovního prostoru. Protokoly Postgres používají režim kolekce **AzureDiagnostics** , takže se dají dotazovat z tabulky AzureDiagnostics. Pole v tabulce jsou popsána níže. Přečtěte si další informace o dotazování a upozorňování v přehledu [dotazů Azure Monitorch protokolů](../azure-monitor/log-query/log-query-overview.md) .
+Pro protokoly monitorování Azure protokoly jsou odesílány do pracovního prostoru, který jste vybrali. Postgres protokoly použít režim kolekce **AzureDiagnostics,** takže mohou být dotazováni z tabulky AzureDiagnostics. Pole v tabulce jsou popsána níže. Další informace o dotazování a upozorňování v přehledu [dotazů protokolů Azure Monitors.](../azure-monitor/log-query/log-query-overview.md)
 
-Pomocí tohoto dotazu můžete začít. Výstrahy můžete konfigurovat na základě dotazů.
+Tento dotaz můžete použít k zahájení. Výstrahy můžete konfigurovat na základě dotazů.
 
 Vyhledat všechny protokoly Postgres pro konkrétní server za poslední den
 ```
@@ -103,5 +103,5 @@ AzureDiagnostics
 ```
 
 ## <a name="next-steps"></a>Další kroky
-- [Další informace o přihlašování Azure Database for PostgreSQL](concepts-server-logs.md)
-- Naučte se, jak nastavit parametry pomocí [Azure Portal](howto-configure-server-parameters-using-portal.md), [Azure CLI](howto-configure-server-parameters-using-cli.md)nebo [REST API](/rest/api/postgresql/configurations/createorupdate).
+- [Informace o protokolování v Azure Database pro PostgreSQL](concepts-server-logs.md)
+- Zjistěte, jak nastavit parametry pomocí [portálu Azure Portal](howto-configure-server-parameters-using-portal.md), [Azure CLI](howto-configure-server-parameters-using-cli.md)nebo [rozhraní REST API](/rest/api/postgresql/configurations/createorupdate).

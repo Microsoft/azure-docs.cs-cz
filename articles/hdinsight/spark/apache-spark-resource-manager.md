@@ -1,6 +1,6 @@
 ---
-title: Správa prostředků pro cluster Apache Spark ve službě Azure HDInsight
-description: Naučte se spravovat prostředky pro clustery Spark v Azure HDInsight, aby se zajistil vyšší výkon.
+title: Správa prostředků pro cluster Apache Spark na Azure HDInsight
+description: Zjistěte, jak spravovat prostředky pro clustery Spark na Azure HDInsight pro lepší výkon.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,155 +9,155 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 3aab89f86dcd48328771cd0fda03d1c9de4bc2c2
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75932109"
 ---
-# <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Správa prostředků pro cluster Apache Spark ve službě Azure HDInsight
+# <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Správa prostředků pro cluster Apache Spark na Azure HDInsight
 
-Naučte se, jak získat přístup k rozhraním, jako je uživatelské rozhraní [Apache Ambari](https://ambari.apache.org/) , [Apache Hadoop příz](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) UI a [serveru historie Sparku](./apache-azure-spark-history-server.md) přidruženému k vašemu clusteru [Apache Spark](https://spark.apache.org/) a jak vyladit konfiguraci clusteru pro optimální výkon.
+Zjistěte, jak přistupovat k rozhraním, jako je uživatelské rozhraní [Apache Ambari,](https://ambari.apache.org/) uživatelské rozhraní [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) a [Spark History Server](./apache-azure-spark-history-server.md) přidružený k vašemu clusteru [Apache Spark,](https://spark.apache.org/) a jak optimalizovat konfiguraci clusteru pro optimální výkon.
 
-## <a name="open-the-spark-history-server"></a>Otevřete Server historie Spark.
+## <a name="open-the-spark-history-server"></a>Otevření serveru historie Spark
 
-Server historie Spark je webové uživatelské rozhraní pro kompletní a běžící aplikace Spark. Jedná se o rozšíření webového uživatelského rozhraní Spark. Úplné informace najdete v tématu [Server historie Spark](./apache-azure-spark-history-server.md).
+Spark History Server je webové uživatelské uživatelské nastavení pro dokončené a spuštěné aplikace Spark. Je to rozšíření webového uživatelského uživatelského prostředí Spark. Úplné informace naleznete v tématu [Spark History Server](./apache-azure-spark-history-server.md).
 
-## <a name="open-the-yarn-ui"></a>Otevřete uživatelské rozhraní příze.
+## <a name="open-the-yarn-ui"></a>Otevření ui příze
 
-Pomocí uživatelského rozhraní PŘÍZe můžete monitorovat aplikace, které jsou aktuálně spuštěny v clusteru Spark.
+UI YARN můžete použít ke sledování aplikací, které jsou aktuálně spuštěny v clusteru Spark.
 
-1. Z [Azure Portal](https://portal.azure.com/)otevřete cluster Spark. Další informace najdete v tématech [seznam a zobrazení clusterů](../hdinsight-administer-use-portal-linux.md#showClusters).
+1. Na [portálu Azure](https://portal.azure.com/)otevřete cluster Spark. Další informace naleznete v [tématu Seznam a zobrazení clusterů](../hdinsight-administer-use-portal-linux.md#showClusters).
 
-2. Z **řídicích panelů clusteru**vyberte možnost **příze**. Po zobrazení výzvy zadejte přihlašovací údaje správce pro cluster Spark.
+2. V **řídicích panelech clusteru**vyberte **položku Příze**. Po zobrazení výzvy zadejte přihlašovací údaje správce pro cluster Spark.
 
-    ![Spustit rozhraní PŘÍZe](./media/apache-spark-resource-manager/azure-portal-dashboard-yarn.png)
+    ![Spuštění YARN UI](./media/apache-spark-resource-manager/azure-portal-dashboard-yarn.png)
 
    > [!TIP]  
-   > Alternativně můžete také spustit rozhraní PŘÍZe z uživatelského rozhraní Ambari. V uživatelském rozhraní Ambari přejděte na **příze** > **Rychlé odkazy** > **aktivní** > **Správce prostředků uživatelském rozhraní**.
+   > Případně můžete také spustit UI YARN z ui Ambari. V uzdu Ambari přejděte na**Quick Links** > **Active** >  **aktivní** > **uj.**
 
 ## <a name="optimize-clusters-for-spark-applications"></a>Optimalizace clusterů pro aplikace Spark
 
-Tři klíčové parametry, které lze použít pro konfiguraci Sparku v závislosti na požadavcích aplikace, jsou `spark.executor.instances`, `spark.executor.cores`a `spark.executor.memory`. Vykonavatel je proces, který se spustil pro aplikaci Spark. Běží na pracovním uzlu a zodpovídá za provádění úkolů aplikace. Výchozí počet prováděcích modulů a velikosti prováděcího modulu pro jednotlivé clustery se vypočítávají na základě počtu pracovních uzlů a velikosti pracovního uzlu. Tyto informace jsou uloženy v `spark-defaults.conf` v hlavních uzlech clusteru.
+Tři klíčové parametry, které lze použít pro konfiguraci `spark.executor.cores`Spark `spark.executor.memory`v závislosti na požadavcích aplikace jsou `spark.executor.instances`, a . Exekutor je proces spuštěný pro aplikaci Spark. Spustí se na pracovní uzel a je zodpovědný za provádění úkolů pro aplikaci. Výchozí počet vykonavatelů a velikosti vykonavatelů pro každý cluster se vypočítá na základě počtu pracovních uzlů a velikosti pracovního uzlu. Tyto informace jsou `spark-defaults.conf` uloženy v hlavní uzly clusteru.
 
-Tři konfigurační parametry lze nakonfigurovat na úrovni clusteru (pro všechny aplikace, které jsou spuštěny v clusteru), nebo je lze zadat také pro každou jednotlivou aplikaci.
+Tři konfigurační parametry lze konfigurovat na úrovni clusteru (pro všechny aplikace spuštěné v clusteru) nebo mohou být určeny také pro každou jednotlivou aplikaci.
 
-### <a name="change-the-parameters-using-ambari-ui"></a>Změna parametrů pomocí uživatelského rozhraní Ambari
+### <a name="change-the-parameters-using-ambari-ui"></a>Změna parametrů pomocí ui.
 
-1. V uživatelském rozhraní Ambari přejděte do **Spark2** > **config** > **Custom Spark2-Defaults**.
+1. Z uzlového nastavení Ambari přejděte na výchozí hodnoty **Spark2** > **Configs** > **.**
 
-    ![Nastavení parametrů pomocí Ambari Custom](./media/apache-spark-resource-manager/ambari-ui-spark2-configs.png "Nastavení parametrů pomocí Ambari Custom")
+    ![Nastavení parametrů pomocí vlastního nastavení Ambari](./media/apache-spark-resource-manager/ambari-ui-spark2-configs.png "Nastavení parametrů pomocí vlastního nastavení Ambari")
 
-1. Výchozí hodnoty jsou vhodné k souběžnému spuštění čtyř aplikací Spark v clusteru. Tyto hodnoty můžete změnit z uživatelského rozhraní, jak je znázorněno na následujícím snímku obrazovky:
+1. Výchozí hodnoty jsou dobré mít čtyři aplikace Spark spustit souběžně v clusteru. Tyto hodnoty můžete změnit z uživatelského rozhraní, jak je znázorněno na následujícím snímku obrazovky:
 
     ![Nastavení parametrů pomocí Ambari](./media/apache-spark-resource-manager/ambari-ui-spark2-defaults.png "Nastavení parametrů pomocí Ambari")
 
-1. Kliknutím na **Uložit** uložte změny konfigurace. V horní části stránky budete vyzváni k restartování všech ovlivněných služeb. Vyberte **restartovat**.
+1. Chcete-li uložit změny konfigurace, vyberte **uložit.** V horní části stránky budete vyzváni k restartování všech ohrožených služeb. Vyberte **restartovat**.
 
     ![Restartovat služby](./media/apache-spark-resource-manager/apache-ambari-restart-services.png)
 
-### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>Změna parametrů aplikace spuštěné v Jupyter poznámkovém bloku
+### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>Změna parametrů aplikace spuštěné v notebooku Jupyter
 
-Pro aplikace spuštěné v poznámkovém bloku Jupyter můžete provádět změny konfigurace pomocí `%%configure` Magic. V ideálním případě je nutné provést tyto změny na začátku aplikace před spuštěním první buňky kódu. Tím se zajistí, že se konfigurace použije pro relaci Livy při jejím vytvoření. Pokud chcete změnit konfiguraci v pozdější fázi aplikace, musíte použít parametr `-f`. Nicméně tím dojde ke ztrátě veškerého postupu v aplikaci.
+Pro aplikace spuštěné v poznámkovém bloku `%%configure` Jupyter, můžete použít kouzlo k provádění změn konfigurace. V ideálním případě je nutné provést takové změny na začátku aplikace před spuštěním první buňky kódu. Tím zajistíte, že konfigurace se použije na relaci Livy, když se vytvoří. Pokud chcete změnit konfiguraci v pozdější fázi aplikace, musíte `-f` použít parametr. Tím však veškerý pokrok v aplikaci je ztracen.
 
-Následující fragment kódu ukazuje, jak změnit konfiguraci aplikace běžící v Jupyter.
+Následující výstřižek ukazuje, jak změnit konfiguraci pro aplikaci spuštěnou v Jupyteru.
 
     %%configure
     {"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
 
-Parametry konfigurace musí být předány jako řetězec JSON a musí být na dalším řádku po Magic, jak je znázorněno v příkladu sloupce.
+Konfigurační parametry musí být předány jako řetězec JSON a musí být na dalším řádku za magic, jak je znázorněno v příkladu sloupce.
 
-### <a name="change-the-parameters-for-an-application-submitted-using-spark-submit"></a>Změna parametrů aplikace odeslané pomocí Spark-Submit
+### <a name="change-the-parameters-for-an-application-submitted-using-spark-submit"></a>Změna parametrů žádosti podané pomocí spark-submit
 
-Následující příkaz je příkladem, jak změnit parametry konfigurace pro aplikaci Batch, která je odeslána pomocí `spark-submit`.
+Následující příkaz je příkladem toho, jak změnit parametry konfigurace dávkové aplikace, která je odeslána pomocí `spark-submit`aplikace .
 
     spark-submit --class <the application class to execute> --executor-memory 3072M --executor-cores 4 –-num-executors 10 <location of application jar file> <application parameters>
 
-### <a name="change-the-parameters-for-an-application-submitted-using-curl"></a>Změna parametrů aplikace odeslané pomocí objektu kudrlinkou
+### <a name="change-the-parameters-for-an-application-submitted-using-curl"></a>Změna parametrů žádosti podané pomocí cURL
 
-Následující příkaz je příkladem, jak změnit parametry konfigurace pro aplikaci Batch, která je odeslána pomocí objektu kudrlinkou.
+Následující příkaz je příkladem toho, jak změnit parametry konfigurace dávkové aplikace, která je odeslána pomocí cURL.
 
     curl -k -v -H 'Content-Type: application/json' -X POST -d '{"file":"<location of application jar file>", "className":"<the application class to execute>", "args":[<application parameters>], "numExecutors":10, "executorMemory":"2G", "executorCores":5' localhost:8998/batches
 
 ### <a name="change-these-parameters-on-a-spark-thrift-server"></a>Změna těchto parametrů na serveru Spark Thrift
 
-Spark Thrift Server poskytuje přístup JDBC/ODBC ke clusteru Spark a používá se k provozování dotazů Spark SQL. Nástroje jako Power BI, Tableau a tak dále používají protokol ODBC ke komunikaci se serverem Spark Thrift ke spouštění dotazů Spark SQL jako aplikace Spark. Po vytvoření clusteru Spark se spustí dvě instance serveru Spark Thrift, jednu na každý hlavní uzel. Každý server Spark Thrift je v uživatelském rozhraní PŘÍZe viditelný jako aplikace Spark.
+Spark Thrift Server poskytuje jdbc/ODBC přístup ke clusteru Spark a používá se ke správě dotazů Spark SQL. Nástroje jako Power BI, Tableau a tak dále používají protokol ODBC ke komunikaci se Spark Thrift Server a spouštějí dotazy Spark SQL jako aplikaci Spark. Při vytvoření clusteru Spark jsou spuštěny dvě instance serveru Spark Thrift Server, jedna na každém hlavním uzlu. Každý Spark Thrift Server je viditelný jako aplikace Spark v ui YARN.
 
-Spark Thrift Server používá přidělování dynamického prováděcího modulu Spark, takže se `spark.executor.instances` nepoužijí. Místo toho Spark Thrift Server používá `spark.dynamicAllocation.maxExecutors` a `spark.dynamicAllocation.minExecutors` k určení počtu prováděcích modulů. Parametry konfigurace `spark.executor.cores`a `spark.executor.memory` slouží k úpravě velikosti prováděcího modulu. Tyto parametry můžete změnit, jak je znázorněno v následujícím postupu:
+Spark Thrift Server používá dynamickou alokaci vykonavatelů `spark.executor.instances` Spark, a proto se nepoužívá. Místo toho Spark Thrift Server používá `spark.dynamicAllocation.maxExecutors` a `spark.dynamicAllocation.minExecutors` určit počet vykonavatel. Konfigurační `spark.executor.cores`parametry a `spark.executor.memory` slouží k úpravě velikosti vykonavatele. Tyto parametry můžete změnit, jak je znázorněno v následujících krocích:
 
-* Rozbalením kategorie **Advanced spark2-Thrift-sparkconf** aktualizujte parametry `spark.dynamicAllocation.maxExecutors`a `spark.dynamicAllocation.minExecutors`.
+* Rozbalte kategorii **Advanced spark2-srift-sparkconf** a `spark.dynamicAllocation.maxExecutors`aktualizujte `spark.dynamicAllocation.minExecutors`parametry a .
 
-    ![Konfigurace serveru Spark Thrift](./media/apache-spark-resource-manager/ambari-ui-advanced-thrift-sparkconf.png "Konfigurace serveru Spark Thrift")
+    ![Konfigurace šetrnějšího serveru Spark](./media/apache-spark-resource-manager/ambari-ui-advanced-thrift-sparkconf.png "Konfigurace šetrnějšího serveru Spark")
 
-* Rozbalením kategorie **Custom spark2-Thrift-sparkconf** aktualizujte parametry `spark.executor.cores`a `spark.executor.memory`.
+* Rozbalte vlastní **spark2-šetrnost-sparkconf** kategorie `spark.executor.cores`aktualizovat `spark.executor.memory`parametry a .
 
-    ![Konfigurace parametru serveru Spark Thrift](./media/apache-spark-resource-manager/ambari-ui-custom-thrift-sparkconf.png "Konfigurace parametru serveru Spark Thrift")
+    ![Konfigurace parametru serveru spořivosti Spark](./media/apache-spark-resource-manager/ambari-ui-custom-thrift-sparkconf.png "Konfigurace parametru serveru spořivosti Spark")
 
-### <a name="change-the-driver-memory-of-the-spark-thrift-server"></a>Změna paměti ovladače serveru Spark Thrift
+### <a name="change-the-driver-memory-of-the-spark-thrift-server"></a>Změna paměti ovladače serveru Spark Thrift Server
 
-Paměť ovladače serveru Spark Thrift je nakonfigurovaná na 25% velikosti paměti RAM hlavního uzlu, a to za předpokladu, že celková velikost paměti RAM hlavního uzlu je větší než 14 GB. Pomocí uživatelského rozhraní Ambari můžete změnit konfiguraci paměti ovladače, jak je znázorněno na následujícím snímku obrazovky:
+Paměť ovladače Spark Thrift Server je nakonfigurována na 25 % velikosti paměti RAM hlavního uzlu za předpokladu, že celková velikost paměti RAM hlavního uzlu je větší než 14 GB. Pomocí ui Ambari můžete změnit konfiguraci paměti ovladače, jak je znázorněno na následujícím snímku obrazovky:
 
-V uživatelském rozhraní Ambari přejděte na **Spark2** > **config** > **Advanced Spark2-ENV**. Pak zadejte hodnotu pro **spark_thrift_cmd_opts**.
+Z ui Ambari přejděte na **Spark2** > **Configs** > **Advanced spark2-env**. Poté zadejte hodnotu pro **spark_thrift_cmd_opts**.
 
-## <a name="reclaim-spark-cluster-resources"></a>Uvolnění prostředků clusteru Spark
+## <a name="reclaim-spark-cluster-resources"></a>Rekultivace prostředků clusteru Spark
 
-Z důvodu dynamického přidělování Spark jsou jediné prostředky, které jsou využívány serverem Thrift, prostředky pro dva hlavní aplikační servery. Chcete-li tyto prostředky získat zpět, je nutné zastavit služby serveru Thrift spuštěné v clusteru.
+Z důvodu dynamického přidělení Spark jsou jedinými prostředky, které jsou spotřebovány šetrnostserverem prostředky pro dvě hlavní aplikační servery. Chcete-li tyto prostředky získat zpět, je nutné zastavit služby serveru thrift server spuštěné v clusteru.
 
-1. V uživatelském rozhraní Ambari vyberte v levém podokně **Spark2**.
+1. V uzu Ambari v levém podokně vyberte **Spark2**.
 
-2. Na další stránce vyberte **Spark2 servery Thrift**.
+2. Na další stránce vyberte **možnost Spark2 Thrift Servers**.
 
-    ![Restartovat Thrift Server1](./media/apache-spark-resource-manager/ambari-ui-spark2-thrift-servers.png "Restartovat Thrift Server1")
+    ![Restartovat šetrný server1](./media/apache-spark-resource-manager/ambari-ui-spark2-thrift-servers.png "Restartovat šetrný server1")
 
-3. Měli byste vidět dva hlavních, na kterých běží server Spark2 Thrift. Vyberte jednu z hlavních.
+3. Měli byste vidět dva headnodes, na kterém Spark2 Thrift Server běží. Vyberte jeden z hlavových uzlů.
 
-    ![Restartovat Thrift Server2](./media/apache-spark-resource-manager/restart-thrift-server-2.png "Restartovat Thrift Server2")
+    ![Restartovat šetrný server2](./media/apache-spark-resource-manager/restart-thrift-server-2.png "Restartovat šetrný server2")
 
-4. Na další stránce jsou uvedeny všechny služby běžící na tomto hlavnímu uzlu. V seznamu vyberte rozevírací tlačítko vedle Spark2 Thrift Server a pak vyberte **zastavit**.
+4. Na další stránce jsou uvedeny všechny služby spuštěné na tomto headnode. V seznamu vyberte rozevírací tlačítko vedle sparku 2 Thrift Server a pak vyberte **Zastavit**.
 
-    ![Restartovat Thrift Server3](./media/apache-spark-resource-manager/ambari-ui-spark2-thriftserver-restart.png "Restartovat Thrift Server3")
-5. Tyto kroky opakujte i na ostatních hlavnímu uzlu.
+    ![Restartovat šetrný server3](./media/apache-spark-resource-manager/ambari-ui-spark2-thriftserver-restart.png "Restartovat šetrný server3")
+5. Opakujte tyto kroky i na druhém headnode.
 
-## <a name="restart-the-jupyter-service"></a>Restartujte službu Jupyter.
+## <a name="restart-the-jupyter-service"></a>Restartujte službu Jupyter
 
-Spusťte webové uživatelské rozhraní Ambari, jak je znázorněno na začátku článku. V levém navigačním podokně vyberte **Jupyter**, vyberte **Akce služby**a pak vyberte **restartovat vše**. Tím se spustí služba Jupyter ve všech hlavních.
+Launch the Ambari Web UI as shown in the beginning of the article. V levém navigačním podokně vyberte **Jupyter**, vyberte **Akce služby**a pak vyberte **Restartovat vše**. Tím se spustí služba Jupyter na všech headuzeldes.
 
-![Restartovat Jupyter](./media/apache-spark-resource-manager/apache-ambari-restart-jupyter.png "Restartujte Jupyter.")
+![Restartujte Jupyter.](./media/apache-spark-resource-manager/apache-ambari-restart-jupyter.png "Restartujte Jupyter.")
 
 ## <a name="monitor-resources"></a>Sledování prostředků
 
-Spusťte uživatelské rozhraní příze, jak je znázorněno na začátku článku. V tabulce metriky clusteru v horní části obrazovky ověřte hodnoty **využité paměti** a **Celkový počet sloupců paměti** . Pokud jsou tyto dvě hodnoty blízko, nemusí být k dispozici dostatek prostředků ke spuštění další aplikace. Totéž platí pro sloupce **virtuální jádra použité** a **virtuální jádra celkem** . Pokud je v hlavním zobrazení aplikace nechali v **přijatém** stavu a nepřechází do stavu **spuštěno** ani **selhání** , může to být také označením, že není dostatek prostředků ke spuštění.
+Spusťte ui příze, jak je znázorněno na začátku článku. V tabulce Metriky clusteru v horní části obrazovky zkontrolujte hodnoty **sloupců Využitá paměť** a **Celkový počet paměti.** Pokud jsou tyto dvě hodnoty blízko, nemusí být dostatek prostředků ke spuštění další aplikace. Totéž platí pro **sloupce Použitá virtuální jádra** a **Celkový počet virtuálních jader.** Také v hlavním zobrazení, pokud je aplikace zůstala ve stavu **PŘIJAT** a není přechod do **spuštěné** nebo **neúspěšný** stav, může to být také údaj, že není dostatek prostředků pro spuštění.
 
-![Omezení prostředků](./media/apache-spark-resource-manager/apache-ambari-resource-limit.png "Omezení prostředků")
+![Limit zdroje](./media/apache-spark-resource-manager/apache-ambari-resource-limit.png "Limit zdroje")
 
-## <a name="kill-running-applications"></a>Ukončit běžící aplikace
+## <a name="kill-running-applications"></a>Ustlat spuštěné aplikace
 
-1. V uživatelském rozhraní příze na levém panelu vyberte **Spustit**. V seznamu spuštěných aplikací určete aplikaci, která se má ukončit, a vyberte **ID**.
+1. V uzlina příze, z levého panelu, vyberte **Běh**. Ze seznamu spuštěných aplikací určete aplikaci, která má být ustupována, a vyberte **ID**.
 
-    ![Kill app1](./media/apache-spark-resource-manager/apache-ambari-kill-app1.png "Kill app1")
+    ![Zabít App1](./media/apache-spark-resource-manager/apache-ambari-kill-app1.png "Zabít App1")
 
-2. V pravém horním rohu vyberte **ukončit aplikaci** a pak vyberte **OK**.
+2. V pravém horním rohu vyberte **Příkaz zabít aplikaci** a pak vyberte **OK**.
 
-    ![Kill app2](./media/apache-spark-resource-manager/apache-ambari-kill-app2.png "Kill app2")
+    ![Zabít App2](./media/apache-spark-resource-manager/apache-ambari-kill-app2.png "Zabít App2")
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
-* [Sledování a ladění úloh spuštěných v clusteru Apache Spark v HDInsight](apache-spark-job-debugging.md)
+* [Sledování a ladění úloh spuštěných v clusteru serveru Apache Spark v HDInsight](apache-spark-job-debugging.md)
 
-### <a name="for-data-analysts"></a>Pro analytiky dat
+### <a name="for-data-analysts"></a>Pro datové analytiky
 
-* [Apache Spark s Machine Learning: pomocí Sparku v HDInsight můžete analyzovat teplotu budovy pomocí dat TVK.](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark s Machine Learning: pomocí Sparku v HDInsight předpovídat výsledky kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
-* [Analýza webového protokolu pomocí Apache Spark ve službě HDInsight](apache-spark-custom-library-website-log-analysis.md)
-* [Analýza dat telemetrie Application Insight pomocí Apache Spark ve službě HDInsight](apache-spark-analyze-application-insight-logs.md)
+* [Apache Spark se strojovým učením: Použijte Spark v HDInsightu pro analýzu teploty budovy pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s machine learningem: Využijte Spark v HDInsightu k předvídání výsledků kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
+* [Analýza protokolu webových stránek pomocí Apache Spark v HDInsight](apache-spark-custom-library-website-log-analysis.md)
+* [Analýza telemetrických dat Application Insight pomocí Apache Spark v HDInsightu](apache-spark-analyze-application-insight-logs.md)
 
-### <a name="for-apache-spark-developers"></a>Pro Apache Spark vývojáře
+### <a name="for-apache-spark-developers"></a>Pro vývojáře Apache Spark
 
 * [Vytvoření samostatné aplikace pomocí Scala](apache-spark-create-standalone-application.md)
-* [Vzdálené spouštění úloh na clusteru Apache Spark s využitím Apache Livy](apache-spark-livy-rest-interface.md)
+* [Spouštění úloh na dálku v clusteru Apache Spark pomocí Apache Livy](apache-spark-livy-rest-interface.md)
 * [Modul plug-in nástroje HDInsight pro IntelliJ IDEA pro vytvoření a odesílání aplikací Spark Scala](apache-spark-intellij-tool-plugin.md)
-* [Použití modulu plug-in nástrojů HDInsight pro IntelliJ NÁPADu při vzdáleném ladění aplikací Apache Spark](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v HDInsight](apache-spark-zeppelin-notebook.md)
-* [Jádra dostupná pro Poznámkový blok Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
-* [Použití externích balíčků s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
-* [Instalace Jupyteru do počítače a připojení ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)
+* [Použití HDInsight Tools Plugin pro IntelliJ IDEA k ladění aplikací Apache Spark na dálku](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Používejte notebooky Apache Zeppelin s clusterem Apache Spark na HDInsightu](apache-spark-zeppelin-notebook.md)
+* [Jádra dostupná pro notebook Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Použijte externí balíčky s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
+* [Nainstalujte do počítače Jupyter a připojte ho ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)

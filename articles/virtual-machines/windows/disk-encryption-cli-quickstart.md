@@ -1,31 +1,31 @@
 ---
-title: Vytvoření a šifrování virtuálního počítače s Windows pomocí Azure CLI
-description: V tomto rychlém startu se dozvíte, jak pomocí Azure CLI vytvořit a zašifrovat virtuální počítač s Windows.
+title: Vytvoření a šifrování virtuálního počítače s Windows s využitím Azure CLI
+description: V tomto rychlém startu se dozvíte, jak pomocí azure cli vytvořit a zašifrovat virtuální počítač s Windows
 author: msmbaldwin
 ms.author: mbaldwin
 ms.service: security
 ms.topic: quickstart
 ms.date: 05/17/2019
-ms.openlocfilehash: 9bbe74bd2f3137443b4e239201c604d9de52582e
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 786a906241b355cdae403c6ed08b60eb27045d6f
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72246064"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80385244"
 ---
-# <a name="quickstart-create-and-encrypt-a-windows-vm-with-the-azure-cli"></a>Rychlý Start: vytvoření a šifrování virtuálního počítače s Windows pomocí Azure CLI
+# <a name="quickstart-create-and-encrypt-a-windows-vm-with-the-azure-cli"></a>Úvodní příručka: Vytvoření a šifrování virtuálního počítače s Windows pomocí azure cli
 
-Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. V tomto rychlém startu se dozvíte, jak pomocí rozhraní příkazového řádku Azure vytvořit a zašifrovat virtuální počítač s Windows serverem 2016 (VM).
+Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. Tento rychlý start ukazuje, jak pomocí azure cli vytvořit a zašifrovat virtuální počítač (VM) Windows Serveru 2016.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.30 nebo novější. Pokud chcete zjistit verzi, spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI]( /cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat Azure CLI místně, tento rychlý start vyžaduje, abyste spustili Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí příkazu [AZ Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) . Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* :
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus:*
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -33,7 +33,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
-Vytvořte virtuální počítač pomocí [AZ VM Create](/cli/azure/vm?view=azure-cli-latest#az-vm-create). Následující příklad vytvoří virtuální počítač s názvem *myVM*. Tento příklad používá *azureuser* jako uživatelské jméno správce a *myPassword12* jako heslo. 
+Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm?view=azure-cli-latest#az-vm-create). Následující příklad vytvoří virtuální hod s názvem *myVM*. Tento příklad používá jako uživatelské jméno správce *azureuser* a jako heslo *myPassword12*.
 
 ```azurecli-interactive
 az vm create \
@@ -44,9 +44,9 @@ az vm create \
     --admin-password myPassword12
 ```
 
-Vytvoření virtuálního počítače a podpůrných prostředků trvá několik minut. Následující příklad výstupu ukazuje, že operace vytvoření virtuálního počítače byla úspěšná.
+Vytvoření virtuálního počítače a podpůrných prostředků trvá několik minut. Následující příklad ukazuje, že operace vytvoření virtuálního počítače byla úspěšná.
 
-```azurecli-interactive
+```
 {
   "fqdns": "",
   "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -59,39 +59,39 @@ Vytvoření virtuálního počítače a podpůrných prostředků trvá několik
 }
 ```
 
-## <a name="create-a-key-vault-configured-for-encryption-keys"></a>Vytvoření Key Vault nakonfigurovaného pro šifrovací klíče
+## <a name="create-a-key-vault-configured-for-encryption-keys"></a>Vytvoření trezoru klíčů nakonfigurovaného pro šifrovací klíče
 
-Azure Disk Encryption ukládá šifrovací klíč do Azure Key Vault. Vytvořte Key Vault pomocí [AZ datatrezor Create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create). Pokud chcete povolit Key Vault ukládání šifrovacích klíčů, použijte parametr--Enabled-pro-Disk-Encryption.
+Šifrování disku Azure ukládá svůj šifrovací klíč v trezoru klíčů Azure. Vytvořte trezor klíčů s [vytvořením trezoru az keyvault](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create). Chcete-li povolit trezor klíčů pro ukládání šifrovacích klíčů, použijte parametr --enabled-for-disk-encryption.
 > [!Important]
-> Každý Key Vault musí mít jedinečný název. Následující příklad vytvoří Key Vault s názvem *myKV*, ale je nutné, abyste si pojmenovali něco jiného.
+> Každý trezor klíčů musí mít jedinečný název. Následující příklad vytvoří trezor klíčů s názvem *myKV*, ale musíte pojmenovat svůj něco jiného.
 
-```azurecli
+```azurecli-interactive
 az keyvault create --name "myKV" --resource-group "myResourceGroup" --location eastus --enabled-for-disk-encryption
 ```
 
-## <a name="encrypt-the-virtual-machine"></a>Zašifrovat virtuální počítač
+## <a name="encrypt-the-virtual-machine"></a>Šifrování virtuálního počítače
 
-Pomocí příkaz [AZ VM Encryption](/cli/azure/vm/encryption?view=azure-cli-latest)Zašifrujte virtuální počítač zadáním jedinečného názvu Key Vault parametru--Disk-Encryption-File trezor.
+Šifrujte svůj virtuální počítač pomocí [šifrování virtuálního počítače a](/cli/azure/vm/encryption?view=azure-cli-latest)zadejte jedinečný název trezoru klíčů parametru --disk-encryption-keyvault.
 
 ```azurecli-interactive
 az vm encryption enable -g MyResourceGroup --name MyVM --disk-encryption-keyvault myKV
 ```
 
-Můžete ověřit, že je na vašem VIRTUÁLNÍm počítači povolené šifrování pomocí [AZ VM show](/cli/azure/vm/encryption#az-vm-encryption-show) .
+Můžete ověřit, že šifrování je povoleno na vašem virtuálním počítači s [az vm show](/cli/azure/vm/encryption#az-vm-encryption-show)
 
 ```azurecli-interactive
 az vm show --name MyVM -g MyResourceGroup
 ```
 
-Ve vráceném výstupu se zobrazí následující:
+Ve vráceném výstupu uvidíte následující:
 
-```azurecli-interactive
+```
 "EncryptionOperation": "EnableEncryption"
 ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, virtuálního počítače a Key Vault použít příkaz [AZ Group Delete](/cli/azure/group) . 
+Když už nepotřebujete, můžete pomocí příkazu [delete skupiny az](/cli/azure/group) odebrat skupinu prostředků, virtuální ho dispozičního virtuálního soudu a trezor klíčů.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
@@ -99,8 +99,7 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili virtuální počítač, vytvořili Key Vault, která byla povolená pro šifrovací klíče, a zašifroval virtuální počítač.  V dalším článku se dozvíte víc o Azure Disk Encryption předpoklady pro virtuální počítače s IaaS.
+V tomto rychlém startu jste vytvořili virtuální počítač, vytvořili trezor klíčů, který byl povolen pro šifrovací klíče, a zašifrovali virtuální počítač.  V dalším článku najdete další informace o požadavcích na službu Azure Disk Encryption pro virtuální počítače IaaS.
 
 > [!div class="nextstepaction"]
-> [Přehled Azure Disk Encryption](disk-encryption-overview.md)
-
+> [Azure Disk Encryption – přehled](disk-encryption-overview.md)

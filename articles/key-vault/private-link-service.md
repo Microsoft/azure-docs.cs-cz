@@ -6,12 +6,12 @@ ms.author: sudbalas
 ms.date: 03/08/2020
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: c24be648e4ca1433c7c2af3d659bf4520a7a188c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 53036a43cbb0fe3c3a1e61f7124fe7dcbef228f3
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79457283"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388929"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Integrace trezoru klíčů s privátním propojením Azure
 
@@ -57,7 +57,7 @@ Po konfiguraci základů trezoru klíčů vyberte kartu Síť a postupujte takto
 1. Ponechte možnost "integrovat se soukromou zónou DNS" beze změny.  
 1. Vyberte možnost "Ok".
 
-    ![Image](./media/private-link-service-2.png)
+    ![Image](./media/private-link-service-8.png)
  
 Nyní budete moci zobrazit nakonfigurovaný soukromý koncový bod. Nyní máte možnost odstranit a upravit tento soukromý koncový bod. Vyberte tlačítko "Revize + vytvoření" a vytvořte trezor klíčů. Dokončení nasazení bude trvat 5-10 minut. 
 

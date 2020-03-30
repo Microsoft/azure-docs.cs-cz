@@ -1,44 +1,43 @@
 ---
-title: Publikování nabídky imagí Azure Containers | Azure Marketplace
+title: Publikovat nabídku image kontejnerů Azure | Azure Marketplace
 description: Jak publikovat nabídku kontejneru Azure.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
-ms.author: pabutler
-ms.openlocfilehash: cf422e3d77fa0722fe10a52073cf89ab2a76dcc0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: c612d2234e6c3c4e93c3c984242bb283ed85c27f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823169"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279976"
 ---
 # <a name="publish-container-offer"></a>Publikace nabídky kontejnerů
 
- Po vytvoření nové nabídky pomocí stránky **Nová nabídka** můžete tuto nabídku publikovat. Vyberte **publikovat** a spusťte proces publikování.
+ Po vytvoření nové nabídky pomocí stránky **Nová nabídka** můžete nabídku publikovat. Chcete-li zahájit proces publikování, vyberte **publikovat.**
 
-Následující diagram znázorňuje hlavní kroky v procesu publikování pro nabídku "jít živě".
+Následující diagram znázorňuje hlavní kroky v procesu publikování pro nabídku "přejít do provozu".
 
-![Kroky publikování pro nabídku kontejneru](./media/offer-publishing-steps.png)
+![Kroky publikování pro nabídku kontejnerů](./media/offer-publishing-steps.png)
 
 ## <a name="detailed-description-of-publishing-steps"></a>Podrobný popis kroků publikování
 
-V následující tabulce jsou popsány jednotlivé kroky publikování. Také je uvedena předpokládaná doba pro dokončení každého kroku.
+Následující tabulka popisuje každý krok publikování. Je také uveden odhadovaný čas dokončení každého kroku.
 
 
-|  **Krok publikování**           | **Interval**    | **Popis**                                                            |
+|  **Krok publikování**           | **Čas**    | **Popis**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
-| Ověřit požadavky         | 15 min   | Budou ověřeny informace nabídky a nastavení nabídky.                        |
-| Certifikace                  | 1 týden | Nabídka se analyzuje prostřednictvím certifikačního týmu Azure. V nabídce se hledají viry, malware, dodržování bezpečnostních předpisů a problémy se zabezpečením. V rámci této nabídky se kontroluje, že splňuje všechna kritéria způsobilosti. Další informace najdete v tématu [požadavky](./cpp-prerequisites.md) a [Příprava technických prostředků](./cpp-create-technical-assets.md). V případě, že dojde k problému, je poskytnuta zpětná vazba. |
-| Balení | 1 hodina  | Technické prostředky nabídky jsou zabaleny pro zákazníky a jsou nakonfigurované a nastavené systémy pro potenciální zákazníky. |
-|  Odhlášení vydavatele             |  -        | Poslední kontrola a potvrzení vydavatele před tím, než bude nabídka živá. Nabídku můžete nasadit ve vybraných předplatných (v informacích o nabídce) a ověřit, že splňuje všechny vaše požadavky.  Vyberte možnost **Přejít do provozu** , aby vaše nabídka mohla přejít k dalšímu kroku. |
-| Balení                 | 1 hodina | Nabídka dokončená se replikuje na Marketplace v produkčních systémech a oblastech. | 
+| Ověřit požadavky         | 15 min   | Informace o nabídce a nastavení nabídky jsou ověřeny.                        |
+| Certifikace                  | 1 týden | Nabídku analyzuje certifikační tým Azure. V nabídce se zkontrolují viry, malware, dodržování bezpečnostních předpisů a problémy se zabezpečením. Nabídka se zkontroluje, aby se zjistilo, jestli splňuje všechna kritéria způsobilosti. Další informace naleznete [v požadavcích a](./cpp-prerequisites.md) [přípravě technických prostředků](./cpp-create-technical-assets.md). Pokud je nalezen problém, je k dispozici zpětná vazba. |
+| Balení | 1 hodina  | Technické prostředky nabídky jsou baleny pro použití zákazníkem a systémy zájemců jsou konfigurovány a nastaveny. |
+|  Odhlášení vydavatele             |  -        | Konečná recenze a potvrzení vydavatele před tím, než nabídka začne být v provozu. Nabídku můžete nasadit ve vybraných předplatných (v krocích informací o nabídce) a ověřit, zda splňuje všechny vaše požadavky.  Vyberte **Přejít na živo,** aby se vaše nabídka mohla přesunout k dalšímu kroku. |
+| Balení                 | 1 hodina | Hotová nabídka je replikována v produkčních systémech a oblastech tržiště. | 
 | Živé                           | 4 dny |Nabídka je uvolněna, replikována do požadovaných oblastí a zpřístupněna veřejnosti. |
 
-Povolí až 10 pracovních dní pro dokončení procesu publikování a nabídka se uvolní. Po dokončení procesu publikování se vaše nabídka kontejneru zobrazí v [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules).
+Vyčkejte až 10 pracovních dnů, než proces publikování skončí, a nabídka bude vydána. Po dokončení procesu publikování bude nabídka kontejneru uvedena na [webu Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules).
 
 ## <a name="next-steps"></a>Další kroky
 
-[Aktualizovat existující nabídku kontejneru na Azure Marketplace](./cpp-update-existing-offer.md)
+[Aktualizace existující nabídky kontejnerů na Azure Marketplace](./cpp-update-existing-offer.md)

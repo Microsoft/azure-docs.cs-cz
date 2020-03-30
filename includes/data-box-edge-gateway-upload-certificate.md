@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 06/26/2019
 ms.author: alkohli
 ms.openlocfilehash: 09d9b5bbf3f9ca7a4eef37891d03c9c865e7f74b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67448637"
 ---
-Správný certifikát SSL zajišťuje, že posíláte šifrované informace ke správnému serveru. Kromě šifrování tento certifikát také umožňuje pro ověřování. Můžete nahrát vlastní důvěryhodný certifikát SSL prostřednictvím rozhraní PowerShell zařízení.
+Správný certifikát SSL zajišťuje, že odesíláte šifrované informace na správný server. Kromě šifrování certifikát také umožňuje ověřování. Svůj vlastní důvěryhodný certifikát SSL můžete nahrát prostřednictvím rozhraní prostředí PowerShell zařízení.
 
-1. [Připojení k rozhraní PowerShell](#connect-to-the-powershell-interface).
-2. Použití `Set-HcsCertificate` rutiny, na kterou certifikát nahrajete. Po zobrazení výzvy zadejte následující parametry:
+1. [Připojte se k rozhraní prostředí PowerShell](#connect-to-the-powershell-interface).
+2. Pomocí `Set-HcsCertificate` rutiny nahrajte certifikát. Po zobrazení výzvy zadejte následující parametry:
 
-   - `CertificateFilePath` – Cesta ke sdílené složce, která obsahuje soubor certifikátu v *.pfx* formátu.
-   - `CertificatePassword` – Heslo použité k ochraně certifikátu.
-   - `Credentials` -Uživatelské jméno pro přístup do sdílené složky, který obsahuje certifikát. Zadejte heslo do sdílené síťové složky Po zobrazení výzvy.
+   - `CertificateFilePath`- Cesta ke sdílené složce, která obsahuje soubor certifikátu ve formátu *.pfx.*
+   - `CertificatePassword`- Heslo používané k ochraně certifikátu.
+   - `Credentials`- Uživatelské jméno pro přístup ke sdílené položce, která obsahuje certifikát. Po zobrazení výzvy zadejte heslo ke sdílené síťové složce.
 
      Následující příklad ukazuje použití této rutiny:
 

@@ -5,34 +5,34 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
 ms.openlocfilehash: 5bde217601d27129e044b64d90184727ea717950
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67174815"
 ---
-Pomocí Azure Resource Manageru definujete parametry pro hodnoty, které chcete zadat při nasazení šablony. Šablona obsahuje část s názvem parametry, které obsahuje všechny hodnoty parametrů.
-Byste měli definovat parametr pro tyto hodnoty, které se liší podle projektu, které nasazujete nebo podle prostředí, které nasazujete. Nedefinujte parametry pro hodnoty, které zůstane vždy stejný. Každá hodnota parametru se v šabloně použije k definování nasazovaných prostředků. 
+Pomocí Azure Resource Manageru definujete parametry pro hodnoty, které chcete zadat při nasazení šablony. Šablona obsahuje oddíl s názvem Parametry, který obsahuje všechny hodnoty parametrů.
+Měli byste definovat parametr pro tyto hodnoty, které se budou lišit v závislosti na projektu, který nasazujete, nebo na základě prostředí, do kterého nasazujete. Nedefinujte parametry pro hodnoty, které zůstanou vždy stejné. Každá hodnota parametru se v šabloně použije k definování nasazovaných prostředků. 
 
-Při definování parametrů, použijte **allowedValues** pole k určení, jaké hodnoty uživatele můžete během nasazení zadat. Použití **defaultValue** pole pro přiřazení hodnoty na parametr, pokud se nezadá žádná hodnota během nasazení.
+Při definování parametrů použijte pole **allowedValues** k určení hodnot, které může uživatel poskytnout během nasazení. Pole **defaultValue** slouží k přiřazení hodnoty parametru, pokud během nasazení není k dispozici žádná hodnota.
 
 Popíšeme každý parametr v šabloně.
 
-### <a name="sitename"></a>Název webu
+### <a name="sitename"></a>Sitename
 Název webové aplikace, kterou chcete vytvořit.
 
     "siteName":{
       "type":"string"
     }
 
-### <a name="hostingplanname"></a>hostingPlanName
-Název plánu služby App Service pro hostování webové aplikace.
+### <a name="hostingplanname"></a>hostingNázev_plánu
+Název plánu služby App Service, který se má použít pro hostování webové aplikace.
 
     "hostingPlanName":{
       "type":"string"
     }
 
-### <a name="sku"></a>Skladová položka
+### <a name="sku"></a>Sku
 Cenová úroveň pro plán hostování.
 
     "sku": {
@@ -57,10 +57,10 @@ Cenová úroveň pro plán hostování.
       }
     }
 
-Šablona definuje hodnoty, které jsou povoleny pro tento parametr a přiřadí výchozí hodnotu (S1), pokud není zadána žádná hodnota.
+Šablona definuje hodnoty, které jsou pro tento parametr povoleny, a přiřadí výchozí hodnotu (S1), pokud není zadána žádná hodnota.
 
 ### <a name="workersize"></a>workerSize
-Velikost instance plánu hostování (malá, střední nebo velké).
+Velikost instance plánu hostování (malé, střední nebo velké).
 
     "workerSize":{
       "type":"string",
@@ -72,5 +72,5 @@ Velikost instance plánu hostování (malá, střední nebo velké).
       "defaultValue":"0"
     }
 
-Šablona definuje hodnoty, které jsou povoleny pro tento parametr (0, 1 nebo 2) a přiřadí výchozí hodnotu (0), pokud není zadána žádná hodnota. Hodnoty odpovídají malé, střední a velké.
+Šablona definuje hodnoty, které jsou povoleny pro tento parametr (0, 1 nebo 2), a přiřadí výchozí hodnotu (0), pokud není zadána žádná hodnota. Hodnoty odpovídají malým, středním a velkým.
 

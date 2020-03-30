@@ -1,77 +1,76 @@
 ---
-title: Zpracování zpětné vazby pro kontrolu aplikací Azure | Azure Marketplace
-description: Vysvětluje, jak používat Azure DevOps ke zpracování zpětné vazby k nabídkám aplikací Azure pro Azure Marketplace.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Zpracování zpětné vazby ke kontrole aplikací Azure | Azure Marketplace
+description: Vysvětluje, jak používat Azure DevOps ke zpracování zpětné vazby ke kontrole nabídek aplikací Azure pro Azure Marketplace.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/05/2019
-ms.author: pabutler
-ms.openlocfilehash: ef4aff57948034fb369bd74564306b7b8674b377
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: b5f290bae908ac753801eef2c9b8394ca1bb7a40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827586"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285295"
 ---
 # <a name="handling-review-feedback"></a>Zpracování zpětné vazby
 
-Tento článek vysvětluje, jak získat přístup k prostředí Azure DevOps, které používá tým pro kontrolu Microsoft Azure Marketplace.  V případě, že se v rámci nabídky aplikace Azure v rámci **Revize Microsoftu** nacházejí kritické problémy, můžete se přihlásit k tomuto systému a zobrazit podrobné informace o těchto problémech (zpětná vazba).  Po vyřešení všech těchto problémů je nutné znovu odeslat nabídku, abyste mohli pokračovat v jejím publikování na Azure Marketplace.  Následující obrázek znázorňuje, jak se tento proces zpětné vazby týká procesu publikování.
+Tento článek vysvětluje, jak získat přístup k prostředí Azure DevOps používanému týmem pro kontrolu webu Microsoft Azure Marketplace.  Pokud se v nabídce aplikace Azure během kroku **kontroly Microsoftu** našly kritické problémy, můžete se přihlásit do tohoto systému a zobrazit podrobné informace o těchto problémech (zpětná vazba ke kontrole).  Po opravě všech těchto problémů je nutné znovu odeslat nabídku a pokračovat v publikování na Azure Marketplace.  Následující diagram znázorňuje, jak tento proces zpětné vazby souvisí s procesem publikování.
 
-![Publikování kroků pomocí zpětné vazby Azure DevOps](./media/pub-flow-vsts-access.png)
+![Kroky publikování pomocí zpětné vazby od Azure DevOps](./media/pub-flow-vsts-access.png)
 
-Obvykle se odkazy na problémy odkazují jako žádosti o přijetí změn (PR).  Každá žádost o přijetí změn je propojená s online položkou [Azure DevOps](https://azure.microsoft.com/services/devops/) (dříve pojmenovanou Visual Studio Team Services (VSTS)), která obsahuje podrobnosti o problému.  Následující obrázek ukazuje příklad odkazu na revizi žádosti o přijetí změn.  V případě složitých situací vás můžou také e-mailem kontrolovat i týmy pro kontrolu a podporu. 
+Problémy s recenzemi se obvykle zvolávají jako žádost o přijetí vzato ( PR).  Každý PR je propojen s online [Azure DevOps](https://azure.microsoft.com/services/devops/) (dříve s názvem Visual Studio Team Services (VSTS)) položky, která obsahuje podrobnosti o problému.  Následující obrázek zobrazuje příklad odkazu na pr recenzování.  V případě složitých situací vám mohou týmy pro kontrolu a podporu také poslat e-mail. 
 
-![Karta stav zobrazující názor na revizi](./media/status-tab-ms-review.png)
+![Karta Stav zobrazující zpětnou vazbu k revizním uzmě](./media/status-tab-ms-review.png)
 
 
 ## <a name="azure-devops-access"></a>Přístup k Azure DevOps
 
-Chcete-li zobrazit položky žádosti o přijetí změn, na které se odkazuje při kontrole zpětné vazby, musí být vydavateli nejprve udělena správná autorizace  Jinak noví vydavatelé obdrží stránku odpovědi `401 - Not Authorized` při pokusu o zobrazení pr.  Pokud chcete požádat o přístup k tomuto úložišti Azure DevOps, proveďte následující kroky:
+Chcete-li zobrazit položky PR odkazované ve zpětné vazbě recenze, musí být vydavatelům nejprve uděleno řádné oprávnění.  V opačném případě noví `401 - Not Authorized` vydavatelé obdrží stránku odpovědí při pokusu o zobrazení pr.  Chcete-li požádat o přístup k tomuto úložišti Azure DevOps, proveďte následující kroky:
 
-1. Shromážděte následující informace:
-    - Název a ID vydavatele
-    - Typ nabídky (aplikace Azure), název nabídky a ID SKU
-    - Odkaz na žádost o přijetí změn, například: `https://solutiontemplates.visualstudio.com/marketplacesolutions/_git/contoso/pullrequest/<number>` tuto adresu URL lze načíst ze zprávy oznámení nebo adresy stránky odpovědi 401.
-    - E-mailové adresy jednotlivců z vaší organizace publikování, pro které chcete udělit přístup.  Tento seznam by měl obsahovat adresy vlastníka, které jste zadali při registraci vydavatele na portál partnerů cloudu.
-2. Vytvořte incident podpory.  V záhlaví portál partnerů cloudu vyberte tlačítko **help** a v nabídce zvolte možnost **Podpora** .  Měli byste spustit výchozí webový prohlížeč a přejít na stránku Microsoft New support incident.  (Možná se budete muset přihlásit jako první.)
-3. Zadejte **typ problému** jako **registraci do Marketplace** a **kategorii** jako problém s **přístupem**a pak vyberte **Spustit požadavek**.
+1. Shromážděte následující údaje:
+    - Jméno a ID vydavatele
+    - Typ nabídky (aplikace Azure), název nabídky a ID skladové položky
+    - Odkaz na žádost o `https://solutiontemplates.visualstudio.com/marketplacesolutions/_git/contoso/pullrequest/<number>` přijetí akce, například: Tuto adresu URL lze načíst z oznámení nebo adresy stránky odpovědi 401.
+    - E-mailové adresy jednotlivců z vaší publikační organizace, které chcete přístup udělen.  Tento seznam by měl obsahovat adresy vlastníka, které jste zadali při registraci jako vydavatel na portálu partnerů cloudu.
+2. Vytvořte incident podpory.  V záhlaví portálu partnerů cloudu vyberte tlačítko **Nápověda** a v nabídce zvolte **Podpora.**  Výchozí webový prohlížeč by měl spustit a přejít na stránku nové podpory společnosti Microsoft.  (Možná se budete muset nejprve přihlásit.)
+3. Zadejte **typ problem** jako marketplace **onboarding** a **category** as **Access problem**, pak vyberte **Spustit požadavek**.
 
     ![Kategorie lístku podpory](./media/support-incident1.png)
 
-4. Na stránce **Krok 1 z 2** zadejte kontaktní informace a vyberte **pokračovat**.
-5. V **kroku 2** na stránce zadejte název incidentu (například `Request Azure DevOps access`) a zadejte informace, které jste shromáždili v prvním kroku (výše).  Přečtěte si a přijměte smlouvu a pak vyberte **Odeslat**.
+4. V **kroku 1 ze 2** zadejte kontaktní informace a vyberte **pokračovat**.
+5. V **kroku 2 ze strany 2** zadejte název incidentu (například) `Request Azure DevOps access`a zadejte informace shromážděné v prvním kroku (výše).  Přečtěte si smlouvu a přijměte ji a pak vyberte **Odeslat**.
 
-Pokud bylo vytvoření incidentu úspěšné, zobrazí se stránka s potvrzením.  Uložte informace o potvrzení na této stránce pro svůj odkaz.  Tým podpora Microsoftu by měl do několika pracovních dnů odpovědět na vaši žádost o přístup.
+Pokud bylo vytvoření incidentu úspěšné, zobrazí se stránka s potvrzením.  Uložte informace o potvrzení na této stránce pro referenci.  Tým podpory společnosti Microsoft by měl odpovědět na vaši žádost o přístup během několika pracovních dnů.
 
 
-## <a name="reviewing-the-pull-request"></a>Kontrola žádosti o získání dat 
+## <a name="reviewing-the-pull-request"></a>Kontrola žádosti o přijetí vyhovení 
 
-Pomocí následujícího postupu můžete zkontrolovat problémy popsané v žádosti o přijetí změn.
+Pomocí následujícího postupu zkontrolujte problémy zdokumentované v žádosti o přijetí vyžádat.
 
-1. V části **Microsoft recenze** formuláře **kroků publikování** klikněte na odkaz PR a spusťte prohlížeč a přejděte na stránku **Přehled** (domovské) pro tuto žádost o přijetí změn.  Následující obrázek znázorňuje příklad domovské stránky kritického problému pro nabídku ukázkové aplikace contoso.  Tato stránka obsahuje užitečné souhrnné informace o problémech kontroly, které najdete v aplikaci Azure.  
+1. V části **Microsoft recenze** **publikování kroky** formuláře, klikněte na odkaz PR spusťte prohlížeč a přejděte na **přehled** (domov) stránku pro tento PR.  Následující obrázek znázorňuje příklad domovské stránky kritického problému pro nabídku ukázkové aplikace Contoso.  Tato stránka obsahuje užitečné souhrnné informace o problémech s recenzemi, které se nacházejí v aplikaci Azure.  
 
+    [![Domovská stránka žádosti o přijetí vyžádat](./media/pr-home-page-thumb.png)](./media/pr-home-page.png)
+    <br/> *Klikněte na obrázek rozbalit.*
     
-   [domovské stránky žádosti o získání dat![](./media/pr-home-page-thumb.png)](./media/pr-home-page.png)  <br/> *Klikněte na obrázek a rozbalte ho.*
-    
-2. Volitelné Na pravé straně okna v části **zásady**klikněte na zprávu problému (v tomto příkladě **se nezdařilo ověření zásad**) a prozkoumejte podrobnosti o nízké úrovni problému včetně přidružených souborů protokolu.  Chyby se obvykle zobrazují v dolní části souborů protokolu.
+2. (Nepovinné) Na pravé straně okna v části **Zásady**klikněte na zprávu o problému (v tomto příkladu: **Ověření zásad se nezdařilo)** a prozkoumejte podrobnosti problému na nižší úrovni, včetně přidružených souborů protokolu.  Chyby jsou obvykle zobrazeny v dolní části souborů protokolu.
 
-3. V nabídce na levé straně domovské stránky vyberte **soubory** , abyste zobrazili seznam souborů, které obsahují technické prostředky pro tuto nabídku.  Kontroloři společnosti Microsoft by měli přidat komentáře popisující zjištěné kritické problémy.  V následujícím příkladu byly zjištěny dva problémy. 
+3. V nabídce na levé straně domovské stránky vyberte **Soubory,** chcete-li zobrazit soubory seznamu, které obsahují technické prostředky pro tuto nabídku.  Recenzenti společnosti Microsoft měli přidat komentáře popisující zjištěné kritické problémy.  V následujícím příkladu byly zjištěny dva problémy. 
 
-    
-   [domovské stránky žádosti o získání dat![](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)  <br/> *Klikněte na obrázek a rozbalte ho.*
+    [![Domovská stránka žádosti o přijetí vyžádat](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
+    <br/> *Klikněte na obrázek rozbalit.*
 
-4. Kliknutím na každý uzel komentáře v levém stromu přejděte k komentáři v kontextu okolního kódu.  Opravte zdrojový kód v projektu týmu a opravte problém popsaný v komentáři.
+4. Kliknutím na každý uzel komentáře v levém stromu přejdete na komentář v kontextu okolního kódu.  Opravte zdrojový kód v projektu týmu a opravte problém popsaný v komentáři.
 
 > [!Note]
-> Technické prostředky vaší nabídky nemůžete upravit v prostředí Azure DevOps týmu revize.  Pro vydavatele je toto prostředí jen pro čtení pro obsažený zdrojový kód.  Můžete však nechat odpovědi na komentáře a využít tak výhod týmu revize společnosti Microsoft.
+> Technické prostředky nabídky nelze upravovat v prostředí Azure DevOps v týmu pro kontrolu.  Pro vydavatele se jedná o prostředí jen pro čtení pro obsažený zdrojový kód.  Odpovědi na komentáře však můžete zanechat ve prospěch týmu recenzentů společnosti Microsoft.
 
-   V následujícím příkladu byl Vydavatel zkontrolován, opraven a zodpovězen prvního problému.
+   V následujícím příkladu vydavatel zkontroloval, opravil a odpověděl na první vydání.
 
-   ![První oprava a odpověď na komentář](./media/first-comment-reply.png)
+   ![První oprava a komentář odpověď](./media/first-comment-reply.png)
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Po opravě důležitých problémů popsaných v revizi žádosti o přijetí změn je nutné [znovu publikovat nabídku aplikace Azure](./cpp-publish-offer.md).
+Po opravě kritických problémů zdokumentovaných v pr(s review) je nutné [znovu publikovat nabídku aplikace Azure](./cpp-publish-offer.md).

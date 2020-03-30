@@ -1,6 +1,6 @@
 ---
-title: Bezpečné skóre v Azure Security Center | Microsoft Docs
-description: " Určete prioritu doporučení zabezpečení pomocí zabezpečeného skóre v Azure Security Center. "
+title: Zabezpečené skóre v Azure Security Center | Dokumenty společnosti Microsoft
+description: " Upřednostněte doporučení zabezpečení pomocí Zabezpečené skóre v Centru zabezpečení Azure. "
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,76 +13,72 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/15/2019
 ms.author: memildin
-ms.openlocfilehash: 15a94a9724fac29d36f6bb88ee4810b3bc7ca607
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 30405ce5cc875144fcd1cf83d4a3f883a0304989
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79245249"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79415769"
 ---
-# <a name="improve-your-secure-score-in-azure-security-center"></a>Vylepšit vaše zabezpečené skóre v Azure Security Center
+# <a name="improve-your-secure-score-in-azure-security-center"></a>Vylepšete své skóre zabezpečení v Azure Security Center
 
 > [!NOTE]
-> Ve verzi Preview je k dispozici vylepšené zabezpečené skóre. Rozšířené zabezpečené skóre nakonec nahradí stávající bezpečné skóre, ale v době, kdy budou spuštěny souběžně, aby se přechod usnadnil.
+> Tento článek pojednává o předchozí verzi zabezpečeného skóre. Toto prostředí zabezpečené skóre je stále k dispozici z uživatelského rozhraní, ale bude postupně vyřazena v průběhu času. Dvě možnosti zabezpečenéskóre běží vedle sebe, aby umožnily hladší přechod.
 >
-> Podrobnosti o výhodách rozšířeného zabezpečeného skóre najdete [tady](secure-score-security-controls.md).
+> Podrobnosti o novějším zabezpečeném skóre naleznete [zde](secure-score-security-controls.md).
 >
-> Pokud se chcete účastnit verze Preview, otevřete portál Azure, spusťte Azure Security Center a vyberte zabezpečené skóre. Odtud se zobrazí banner v horní části stránky, která nabízí nové možnosti bezpečného skóre. Případně klikněte [sem](https://aka.ms/ascnewscore).
 
-Díky mnoha službám, které nabízí výhody zabezpečení, je často obtížné zjistit, jaké kroky je potřeba nejdřív zabezpečit a posílit vaše úlohy. Bezpečnostní skóre kontroluje vaše doporučení zabezpečení a určí jejich prioritu za vás, takže víte, jaká doporučení je třeba provést jako první. To vám pomůže najít závažná slabá místa zabezpečení, abyste mohli určit prioritu šetření. Bezpečné skóre je nástroj, který vám pomůže vyhodnotit stav zabezpečení zatížení.
+S tolika službami, které nabízejí výhody zabezpečení, je často těžké vědět, jaké kroky je třeba nejprve podniknout k zabezpečení a posílení pracovního vytížení. Skóre zabezpečení zkontroluje vaše bezpečnostní doporučení a upřednostní je za vás, abyste věděli, která doporučení chcete provést jako první. To vám pomůže najít nejzávažnější chyby zabezpečení, abyste mohli upřednostnit vyšetřování. Secure Score je nástroj, který vám pomůže posoudit stav zabezpečení pracovního vytížení.
 
-## <a name="secure-score-calculation"></a>Výpočet skóre zabezpečení
+## <a name="secure-score-calculation"></a>Výpočet zabezpečeného skóre
 
-Security Center napodobuje práci s analytikem zabezpečení, kontroluje doporučení zabezpečení a pomocí pokročilých algoritmů určuje, jak je každé doporučení důležité.
-Azure Security Center neustále kontroluje aktivní doporučení a počítá vaše zabezpečené skóre na základě nich, skóre doporučení je odvozeno od závažnosti a osvědčených postupů zabezpečení, které mají vliv na zabezpečení vašich úloh.
+Security Center napodobuje práci analytika zabezpečení, kontroluje vaše doporučení zabezpečení a používá pokročilé algoritmy k určení, jak zásadní je každé doporučení.
+Azure Security Center neustále kontroluje vaše aktivní doporučení a vypočítá vaše skóre zabezpečení na základě nich, skóre doporučení je odvozeno z jeho závažnosti a zabezpečení osvědčených postupů, které budou mít vliv na zabezpečení úlohy nejvíce.
 
-Security Center také poskytuje **celkové skóre**. 
+Security Center také poskytuje **celkové skóre zabezpečení**. 
 
-**Celkově bezpečné skóre** je akumulace všech hodnocení vašich doporučení. V závislosti na tom, co jste vybrali, si můžete v rámci předplatných nebo skupin pro správu zobrazit celkové bezpečné skóre. Skóre se bude lišit v závislosti na vybraném předplatném a aktivních doporučeních pro tyto odběry.
+**Celkové skóre Secure je** akumulace všech vašich doporučení skóre. Celkové skóre zabezpečení můžete zobrazit v rámci předplatných nebo skupin pro správu v závislosti na tom, co vyberete. Skóre se bude lišit v závislosti na vybraném předplatném a aktivních doporučeních pro tato předplatná.
 
-Pokud chcete zjistit, která doporučení mají největší dopad na vaše zabezpečené skóre, můžete na řídicím panelu Security Center zobrazit první tři nejdůležitější doporučení, nebo můžete tato doporučení seřadit v okně se seznamem doporučení pomocí sloupce **zabezpečený dopad skóre** .
+Chcete-li zkontrolovat, která doporučení mají největší vliv na vaše skóre zabezpečení, můžete zobrazit tři nejpůsobivější doporučení na řídicím panelu Centra zabezpečení nebo můžete seřadit doporučení v okně seznamu doporučení pomocí sloupce **Dopad na zabezpečené skóre.**
 
-Zobrazení celkového zabezpečeného skóre:
+Zobrazení celkového skóre zabezpečení:
 
-1. Na řídicím panelu Azure klikněte na **Security Center** a pak na **zabezpečené skóre**.
+1. Na řídicím panelu Azure klikněte na **Security Center** a potom klikněte na **Zabezpečené skóre**.
 
-2. V horní části uvidíte nejdůležitější body zabezpečeného skóre:
-   - **Celkový počet bodů zabezpečení** představuje skóre na základě jednotlivých zásad na vybrané předplatné.
-   - V části **zabezpečení skóre podle kategorie** se dozvíte, které prostředky potřebují nejvíc pozornosti.
-   - **Nejdůležitější doporučení podle zabezpečeného dopadu na skóre** poskytují seznam doporučení, která budou vylepšit vaše zabezpečené skóre, pokud je budete implementovat.
+2. V horní části můžete vidět Secure Score zdůrazňuje:
+   - **Celkové skóre zabezpečení** představuje skóre podle zásad na vybrané předplatné.
+   - **Bezpečné skóre podle kategorií** ukazuje, které zdroje vyžadují největší pozornost
+   - **Nejlepší doporučení podle dopadu zabezpečeného skóre** vám poskytne seznam doporučení, která nejvíce zlepší vaše skóre zabezpečení, pokud je implementujete.
  
-   ![Bezpečné skóre](./media/security-center-secure-score/secure-score-dashboard.png)
+   ![Bezpečnostní skóre](./media/security-center-secure-score/secure-score-dashboard.png)
 
-3. V následující tabulce vidíte každé z vašich předplatných a celkové bezpečné skóre pro každý z nich.
+3. V následující tabulce si můžete prohlédnout každé z vašich předplatných a celkové skóre zabezpečení pro každé z nich.
 
    > [!NOTE]
-   > Součet zabezpečeného skóre každého předplatného se nerovná celkovému počtu zabezpečených bodů. Bezpečné skóre je výpočet založený na poměru mezi vašimi dobrými prostředky a celkovými prostředky na doporučení, nikoli součtem bezpečných skóre v rámci vašich předplatných. 
+   > Součet skóre zabezpečení každého předplatného se nerovná celkovému skóre zabezpečení. Zabezpečené skóre je výpočet založený na poměru mezi prostředky v pořádku a celkovými prostředky na doporučení, nikoli součtem zabezpečeného skóre napříč vašimi předplatnými. 
    >
-4. Kliknutím na **Zobrazit doporučení** zobrazíte doporučení k tomuto předplatnému, které můžete opravit, aby se zlepšilo vaše zabezpečené skóre.
-4. V seznamu doporučení vidíte, že pro každé doporučení existuje sloupec, který představuje **dopad na zabezpečený skóre**. Toto číslo představuje, kolik vašich celkových bezpečných skóre bude vylepší, pokud budete postupovat podle doporučení. Například na následující obrazovce, pokud v **konfiguraci zabezpečení kontejneru opravíte chyby zabezpečení**, vaše zabezpečené skóre se zvýší o 35 bodů.
+4. Kliknutím na **Zobrazit doporučení** zobrazíte doporučení pro toto předplatné, která můžete napravit, abyste zlepšili své skóre zabezpečení.
+4. V seznamu doporučení uvidíte, že pro každé doporučení je sloupec, který představuje **vliv zabezpečenéskóre**. Toto číslo představuje, o kolik se vaše celkové skóre zabezpečení zlepší, pokud budete postupovat podle doporučení. Pokud například na obrazovce níže **napravíte slabá místa v konfiguracích zabezpečení kontejneru**, vaše skóre Zabezpečení se zvýší o 35 bodů.
 
-   ![Bezpečné skóre](./media/security-center-secure-score/security-center-secure-score1.png)
-
-
-
-## <a name="individual-secure-score"></a>Individuální bezpečnostní skóre
-
-Pokud chcete zobrazit jednotlivá zabezpečená skóre, najdete je v okně individuální doporučení.  
-
-**Skóre bezpečné pro doporučení** je výpočet založený na poměru mezi dobrými a celkovými prostředky. Pokud se počet zdravých prostředků rovná celkovému počtu prostředků, získáte maximální bezpečné skóre doporučení 50. Pokud se chcete pokusit získat zabezpečené skóre Blíže k maximálnímu skóre, opravte prostředky, které nejsou v pořádku, pomocí doporučených postupů.
-
-**Dopad na doporučení** vám umožní zjistit, kolik bezpečného skóre se zlepšuje, pokud použijete postup doporučení. Pokud je například vaše zabezpečené skóre 42 a **dopad na doporučení** je + 3, provedením kroků popsaných v doporučení Vylepšete Vaše skóre, aby se staly 45.
-
-Doporučení ukazuje, které hrozby vaše zatížení budou vystaveny, pokud nejsou podniknuty kroky k nápravě.
-
-![Bezpečnostní skóre jednotlivých doporučení](./media/security-center-secure-score/indiv-recommendation-secure-score.png)
+   ![Bezpečnostní skóre](./media/security-center-secure-score/security-center-secure-score1.png)
 
 
+
+## <a name="individual-secure-score"></a>Individuální skóre zabezpečení
+
+Kromě toho můžete zobrazit jednotlivé zabezpečené skóre, najdete je v rámci jednotlivých doporučení.  
+
+**Skóre zabezpečení doporučení** je výpočet založený na poměru mezi prostředky v pořádku a celkovými zdroji. Pokud se počet prostředků v pořádku rovná celkovému počtu zdrojů, získáte maximální skóre zabezpečení doporučení 50. Chcete-li se pokusit získat zabezpečené skóre blíže k maximálnískóre, opravit nezdravé prostředky podle doporučení.
+
+**Dopad doporučení** vám umožní zjistit, jak moc se vaše skóre zabezpečení zlepšuje, pokud použijete kroky doporučení. Pokud je například vaše skóre zabezpečení 42 a **dopad doporučení** je +3, provedení kroků uvedených v doporučení zlepší vaše skóre tak, aby se stalo 45.
+
+Doporučení ukazuje, které hrozby vaše úloha je vystavena, pokud nejsou podniknuty nápravné kroky.
+
+![individuální doporučení bezpečné skóre](./media/security-center-secure-score/indiv-recommendation-secure-score.png)
 
 
 ## <a name="next-steps"></a>Další kroky
-Tento článek vám ukázal, jak vylepšit stav zabezpečení pomocí **zabezpečeného skóre** v Azure Security Center. Další informace o Security Center najdete v těchto tématech:
+V tomto článku se ukazuje, jak zlepšit stav zabezpečení pomocí **zabezpečeného skóre** v Centru zabezpečení Azure. Další informace o Centru zabezpečení najdete v tématu:
 
-* [Nejčastější dotazy Azure Security Center](faq-general.md)– Přečtěte si nejčastější dotazy týkající se služby a zabezpečení skóre.
+* [Azure Security Center – nejčastější dotazy](security-center-faq.md) – Přečtěte si nejčastější dotazy o použití této služby.
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se monitorovat stav svých prostředků Azure.
-* [Bezpečné skóre – vylepšené](secure-score-security-controls.md)– Přečtěte si o výhodách aktuálně vylepšeného zabezpečeného skóre v současnosti ve verzi Preview.

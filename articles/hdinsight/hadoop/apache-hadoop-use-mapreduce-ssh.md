@@ -1,6 +1,6 @@
 ---
-title: MapReduce and SSH connection with Apache Hadoop - Azure HDInsight
-description: Learn how to use SSH to run MapReduce jobs using Apache Hadoop on HDInsight.
+title: Propojení MapReduce a SSH s Apache Hadoop - Azure HDInsight
+description: Naučte se používat SSH ke spuštění mapreduce úloh pomocí Apache Hadoop na HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,45 +9,45 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/10/2020
 ms.openlocfilehash: 543bc29adc85bd767de9479607d067fadf7b0078
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75934702"
 ---
-# <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>Use MapReduce with Apache Hadoop on HDInsight with SSH
+# <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>Použití MapReduce s Apache Hadoop na HDInsight s SSH
 
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
-Learn how to submit MapReduce jobs from a Secure Shell (SSH) connection to HDInsight.
+Zjistěte, jak odeslat úlohy MapReduce z připojení zabezpečeného prostředí (SSH) do hdinsightu.
 
 > [!NOTE]
-> If you are already familiar with using Linux-based Apache Hadoop servers, but you are new to HDInsight, see [Linux-based HDInsight tips](../hdinsight-hadoop-linux-information.md).
+> Pokud jste již obeznámeni s používáním linuxových serverů Apache Hadoop, ale jste v HDInsightu noví, přečtěte [si tipy hdinsight založený na Linuxu](../hdinsight-hadoop-linux-information.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-An Apache Hadoop cluster on HDInsight. See [Create Apache Hadoop clusters using the Azure portal](../hdinsight-hadoop-create-linux-clusters-portal.md).
+Cluster Apache Hadoop na HDInsight. Viz [Vytvoření clusterů Apache Hadoop pomocí portálu Azure](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
-## <a name="use-hadoop-commands"></a>Use Hadoop commands
+## <a name="use-hadoop-commands"></a>Použití příkazů Hadoop
 
-1. Use [ssh command](../hdinsight-hadoop-linux-use-ssh-unix.md) to connect to your cluster. Edit the command below by replacing CLUSTERNAME with the name of your cluster, and then enter the command:
+1. Pomocí [příkazu ssh](../hdinsight-hadoop-linux-use-ssh-unix.md) se připojte ke clusteru. Upravte níže uvedený příkaz nahrazením názvu clusteru názvem clusteru a zadejte příkaz:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. After you are connected to the HDInsight cluster, use the following command to start a MapReduce job:
+1. Po připojení ke clusteru HDInsight spusťte úlohu MapReduce pomocí následujícího příkazu:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/WordCountOutput
     ```
 
-    This command starts the `wordcount` class, which is contained in the `hadoop-mapreduce-examples.jar` file. It uses the `/example/data/gutenberg/davinci.txt` document as input, and output is stored at `/example/data/WordCountOutput`.
+    Tento příkaz `wordcount` spustí třídu, která `hadoop-mapreduce-examples.jar` je obsažena v souboru. Používá `/example/data/gutenberg/davinci.txt` dokument jako vstup a výstup `/example/data/WordCountOutput`je uložen na .
 
     > [!NOTE]
-    > For more information about this MapReduce job and the example data, see [Use MapReduce in Apache Hadoop on HDInsight](hdinsight-use-mapreduce.md).
+    > Další informace o této úloze MapReduce a ukázkových datech naleznete v tématu [Použití mapreduce v Apache Hadoop na HDInsight](hdinsight-use-mapreduce.md).
 
-    The job emits details as it processes, and it returns information similar to the following text when the job completes:
+    Úloha vydává podrobnosti při procesu a vrací informace podobné následujícímu textu po dokončení úlohy:
 
     ```output
     File Input Format Counters
@@ -56,24 +56,24 @@ An Apache Hadoop cluster on HDInsight. See [Create Apache Hadoop clusters using 
     Bytes Written=337623
     ```
 
-1. When the job completes, use the following command to list the output files:
+1. Po dokončení úlohy vypsat výstupní soubory pomocí následujícího příkazu:
 
     ```bash
     hdfs dfs -ls /example/data/WordCountOutput
     ```
 
-    This command display two files, `_SUCCESS` and `part-r-00000`. The `part-r-00000` file contains the output for this job.
+    Tento příkaz zobrazí `_SUCCESS` dva `part-r-00000`soubory a . Soubor `part-r-00000` obsahuje výstup pro tuto úlohu.
 
     > [!NOTE]  
-    > Some MapReduce jobs may split the results across multiple **part-r-#####** files. If so, use the ##### suffix to indicate the order of the files.
+    > Některé úlohy MapReduce mohou rozdělit výsledky mezi více souborů **part-r-#######.Some** MapReduce jobs may split the results across multiple part-r-##### files. Pokud ano, použijte příponu ##### k označení pořadí souborů.
 
-1. To view the output, use the following command:
+1. Chcete-li zobrazit výstup, použijte následující příkaz:
 
     ```bash
     hdfs dfs -cat /example/data/WordCountOutput/part-r-00000
     ```
 
-    This command displays a list of the words that are contained in the **wasbs://example/data/gutenberg/davinci.txt** file and the number of times each word occurred. The following text is an example of the data that is contained in the file:
+    Tento příkaz zobrazí seznam slov obsažených v **wasbs://example/data/gutenberg/davinci.txt** souboru a počet, kolikrát došlo ke každému slovu. Následující text je příkladem dat obsažených v souboru:
 
     ```output
     wreathed        3
@@ -87,7 +87,7 @@ An Apache Hadoop cluster on HDInsight. See [Create Apache Hadoop clusters using 
 
 ## <a name="next-steps"></a>Další kroky
 
-As you can see, Hadoop commands provide an easy way to run MapReduce jobs in an HDInsight cluster and then view the job output. For information about other ways you can work with Hadoop on HDInsight:
+Jak můžete vidět, příkazy Hadoop poskytují snadný způsob, jak spustit mapreduce úlohy v clusteru HDInsight a potom zobrazit výstup úlohy. Informace o dalších způsobech práce s Hadoopem na HDInsightu:
 
-* [Use MapReduce on HDInsight Hadoop](hdinsight-use-mapreduce.md)
-* [Use Apache Hive with Apache Hadoop on HDInsight](hdinsight-use-hive.md)
+* [Použití mapreduce na HDInsight Hadoop](hdinsight-use-mapreduce.md)
+* [Použití Apache Hive s Apache Hadoop na HDInsight](hdinsight-use-hive.md)

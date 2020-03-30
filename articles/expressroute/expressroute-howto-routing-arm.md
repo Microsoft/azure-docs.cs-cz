@@ -1,5 +1,5 @@
 ---
-title: 'Azure ExpressRoute: konfigurace partnerského vztahu: PowerShell'
+title: 'Azure ExpressRoute: Konfigurace partnerského vztahu: PowerShell'
 description: Tento článek vás provede kroky pro vytváření a zřizování soukromého a veřejného partnerského vztahu a partnerského vztahu Microsoftu okruhu ExpressRoute. Tento článek také ukazuje, jak kontrolovat stav partnerských vztahů pro váš okruh, aktualizovat je nebo je odstranit.
 services: expressroute
 author: jaredr80
@@ -8,61 +8,61 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
 ms.openlocfilehash: 2c28df35eec862afb5b0078ca7693898e9b58533
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79264840"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>Vytvoření a úprava partnerského vztahu pro okruh ExpressRoute pomocí prostředí PowerShell
 
-Tento článek pomůže při vytváření a správě konfigurace směrování pro okruh ExpressRoute v modelu nasazení Resource Manageru pomocí prostředí PowerShell. Můžete také zkontrolovat stav, update nebo delete a zrušit jejich zřízení partnerských vztahů pro okruh ExpressRoute. Pokud chcete použít jinou metodu pro práci se váš okruh, vyberte článek z následujícího seznamu:
+Tento článek vám pomůže vytvořit a spravovat konfiguraci směrování pro okruh ExpressRoute v modelu nasazení Správce prostředků pomocí prostředí PowerShell. Můžete také zkontrolovat stav, aktualizovat nebo odstranit a zrušit poskytování partnerských vztahu pro okruh ExpressRoute. Pokud chcete pro práci s okruhem použít jinou metodu, vyberte článek z následujícího seznamu:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
+> * [Portál Azure](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
-> * [Veřejné partnerské vztahy](about-public-peering.md)
-> * [Video – privátní partnerské vztahy](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
+> * [Veřejný partnerský vztah](about-public-peering.md)
+> * [Video - Soukromý partnerský vztah](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
 > * [Video – partnerský vztah Microsoftu](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
 > * [PowerShell (Classic)](expressroute-howto-routing-classic.md)
 > 
 
 
-Tyto pokyny platí jenom pro okruhy vytvořené poskytovateli služeb nabízejícími služby připojení vrstvy 2. Pokud používáte poskytovatele služeb, který nabízí spravované vrstvy 3 služby (obvykle IPVPN, např. MPLS), se svého poskytovatele připojení, konfiguraci a správu směrování za vás.
+Tyto pokyny platí jenom pro okruhy vytvořené poskytovateli služeb nabízejícími služby připojení vrstvy 2. Pokud používáte poskytovatele služeb, který nabízí spravované služby vrstvy 3 (obvykle IPVPN, jako je MPLS), váš poskytovatel připojení nakonfiguruje a spravuje směrování za vás.
 
 > [!IMPORTANT]
-> Aktuálně prostřednictvím portálu pro správu služeb neinzerujeme partnerské vztahy nakonfigurované poskytovateli služeb. Pracujeme na tom, aby tato možnost brzy fungovala. Před konfigurací partnerských vztahů protokolu BGP, obraťte se na svého poskytovatele služeb.
+> Aktuálně prostřednictvím portálu pro správu služeb neinzerujeme partnerské vztahy nakonfigurované poskytovateli služeb. Pracujeme na tom, aby tato možnost brzy fungovala. Před konfigurací partnerských stran Protokolu BGP se obraťte na svého poskytovatele služeb.
 > 
 > 
 
-Pro okruh ExpressRoute můžete nakonfigurovat privátní partnerské vztahy a partnerské vztahy Microsoftu (veřejný partnerský vztah Azure se pro nové okruhy už nepoužívá). Partnerské vztahy se dají konfigurovat v libovolném pořadí, ve kterém si zvolíte. Musíte se ale přesvědčit, že jste vždy konfiguraci každého partnerského vztahu dokončili. Další informace o doménách směrování a partnerských vztazích najdete v tématu věnovaném [doménám směrování ExpressRoute](expressroute-circuit-peerings.md). Informace o veřejném partnerském vztahu najdete v tématu [veřejné partnerské vztahy ExpressRoute](about-public-peering.md).
+Můžete nakonfigurovat privátní partnerský vztah a partnerský vztah Microsoftu pro okruh ExpressRoute (veřejný partnerský vztah Azure se nezastaral pro nové okruhy). Partnerských stran lze nakonfigurovat v libovolném pořadí, které zvolíte. Musíte se ale přesvědčit, že jste vždy konfiguraci každého partnerského vztahu dokončili. Další informace o směrovacích doménách a partnerských serverech naleznete v tématu [Směrovací domény ExpressRoute](expressroute-circuit-peerings.md). Informace o veřejném partnerského vztahu naleznete v tématu [ExpressRoute public peering](about-public-peering.md).
 
 ## <a name="configuration-prerequisites"></a>Předpoklady konfigurace
 
 * Před zahájením konfigurace se ujistěte, že jste si přečetli stránku s [předpoklady](expressroute-prerequisites.md), stránku s [požadavky směrování](expressroute-routing.md) a stránku s [pracovními postupy](expressroute-workflows.md).
-* Musí mít aktivní okruh ExpressRoute. Než budete pokračovat, podle pokynů [vytvořte okruh ExpressRoute](expressroute-howto-circuit-arm.md) a mějte ho povolený vaším poskytovatelem připojení. Okruh ExpressRoute musí být ve stavu zřízený a povolený pro, abyste mohli spouštět rutiny v tomto článku.
+* Musí mít aktivní okruh ExpressRoute. Než budete pokračovat, podle pokynů [vytvořte okruh ExpressRoute](expressroute-howto-circuit-arm.md) a mějte ho povolený vaším poskytovatelem připojení. Okruh ExpressRoute musí být v zřízeném a povoleném stavu, abyste mohli spouštět rutiny v tomto článku.
 
-### <a name="working-with-azure-powershell"></a>Práce s využitím Azure Powershellu
+### <a name="working-with-azure-powershell"></a>Práce s Azure PowerShellem
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
-## <a name="msft"></a>Partnerský vztah Microsoftu
+## <a name="microsoft-peering"></a><a name="msft"></a>Partnerský vztah Microsoftu
 
-Tato část umožňuje vytvořit, získat, aktualizovat a odstranit konfiguraci partnerského vztahu Microsoftu pro okruh ExpressRoute.
+Tato část vám pomůže vytvořit, získat, aktualizovat a odstranit konfiguraci partnerského vztahu Microsoftu pro okruh ExpressRoute.
 
 > [!IMPORTANT]
-> Partnerský vztah Microsoftu okruhů ExpressRoute, které byly nakonfigurovány před 1. srpna 2017 budou mít všechny služby předpony inzerované prostřednictvím Microsoft partnerský vztah, i když nejsou definovány filtry tras. Partnerský vztah Microsoftu okruhů ExpressRoute, které jsou nakonfigurované 1. srpna 2017 nebo později nebude mít všechny předpony inzerované, dokud se filtr tras je připojen k okruhu. Další informace najdete v tématu [Konfigurace filtru tras pro partnerský vztah Microsoftu](how-to-routefilter-powershell.md).
+> Microsoft peering obvodů ExpressRoute, které byly nakonfigurovány před 1. Microsoft peering obvodů ExpressRoute, které jsou nakonfigurovány na nebo po srpnu 1, 2017 nebude mít žádné předpony inzerované, dokud není připojen filtr trasy k okruhu. Další informace naleznete [v tématu Konfigurace filtru postupu pro partnerský vztah společnosti Microsoft](how-to-routefilter-powershell.md).
 > 
 > 
 
 ### <a name="to-create-microsoft-peering"></a>Vytvoření partnerského vztahu Microsoftu
 
-1. Přihlaste se a vyberte své předplatné.
+1. Přihlaste se a vyberte předplatné.
 
-   Pokud jste nainstalovali PowerShell místně, přihlaste se. Pokud používáte Azure Cloud Shell, můžete tento krok přeskočit.
+   Pokud jste powershell nainstalovali místně, přihlaste se. Pokud používáte Azure Cloud Shell, můžete tento krok přeskočit.
 
    ```azurepowershell
    Connect-AzAccount
@@ -75,9 +75,9 @@ Tato část umožňuje vytvořit, získat, aktualizovat a odstranit konfiguraci 
    ```
 2. Vytvořte okruh ExpressRoute.
 
-   Podle pokynů vytvořte [okruh ExpressRoute](expressroute-howto-circuit-arm.md) a mějte ho zřízený poskytovatelem připojení. f poskytovatel připojení nabízí spravované služby vrstvy 3, můžete požádat svého poskytovatele připojení partnerského vztahu Microsoftu pro můžete povolit. V takovém případě nebudete muset postupovat podle pokynů uvedených v dalších částech. Pokud poskytovatel připojení nespravuje směrování, po vytvoření okruhu, ale dál používat další kroky konfigurace. 
+   Podle pokynů vytvořte [okruh ExpressRoute](expressroute-howto-circuit-arm.md) a mějte ho zřízený poskytovatelem připojení. f váš poskytovatel připojení nabízí spravované služby Vrstva 3, můžete požádat svého poskytovatele připojení, aby za vás povolil partnerský vztah Microsoftu. V takovém případě nebudete muset postupovat podle pokynů uvedených v dalších částech. Pokud však váš poskytovatel připojení nespravuje směrování za vás, po vytvoření okruhu pokračujte v konfiguraci pomocí dalších kroků. 
 
-3. Zkontrolujte okruh ExpressRoute a ujistěte se, že je zřízený a také povolený. Použijte následující příklad:
+3. Zkontrolujte okruh ExpressRoute a ujistěte se, že je zřízena a také povolena. Použijte následující příklad:
 
    ```azurepowershell-interactive
    Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -110,24 +110,24 @@ Tato část umožňuje vytvořit, získat, aktualizovat a odstranit konfiguraci 
    ```
 4. Nakonfigurujte partnerský vztah Microsoftu pro okruh. Před pokračováním se ujistěte, že máte k dispozici následující informace.
 
-   * / 30 nebo/126 podsíť pro primární propojení. Musí se jednat o platné veřejné IPv4 nebo IPv6 předponu vlastníte a registrované u RIR / IRR.
-   * / 30 nebo/126 podsítě pro sekundární propojení. Musí se jednat o platné veřejné IPv4 nebo IPv6 předponu vlastníte a registrované u RIR / IRR.
+   * Podsíť /30 nebo /126 pro primární propojení. Musí se jednat o platnou veřejnou předponu IPv4 nebo IPv6, kterou vlastníte a která je registrována v RIR / IRR.
+   * Podsíť /30 nebo /126 pro sekundární propojení. Musí se jednat o platnou veřejnou předponu IPv4 nebo IPv6, kterou vlastníte a která je registrována v RIR / IRR.
    * Platné ID sítě VLAN, na kterém se má partnerský vztah vytvořit. Zajistěte, aby žádný jiný partnerský vztah v okruhu nepoužíval stejné ID sítě VLAN.
    * Číslo AS pro partnerský vztah. Můžete použít 2bajtová i 4bajtová čísla AS.
-   * Inzerované předpony: Musíte poskytnout seznam všech předpon, které plánujete inzerovat přes relaci protokolu BGP. Přijímají se jenom předpony veřejných IP adres. Pokud chcete odeslat sadu předpon, můžete odeslat seznam oddělený čárkami. Tyto předpony musí být v RIR/IRR zaregistrované na vás. Relace protokolu BGP IPv4 vyžadovat že IPv4 inzerované předpony a relace protokolu BGP IPv6 vyžadující, že inzerované předpony protokolu IPv6. 
+   * Inzerované předpony: Musíte poskytnout seznam všech předpon, které plánujete inzerovat přes relaci protokolu BGP. Přijímají se jenom předpony veřejných IP adres. Pokud plánujete odeslat sadu předpon, můžete odeslat seznam oddělený čárkami. Tyto předpony musí být v RIR/IRR zaregistrované na vás. Relace Protokolu BGP protokolu IPv4 vyžadují inzerované předpony Protokolu IPv4 a relace protokolu BGP protokolu IPv6 vyžadují inzerované předpony Protokolu IPv6. 
    * Název registru směrování: Můžete zadat RIR/IRR, kde jsou předpony a číslo AS registrované.
    * Volitelné:
      * Zákaznické číslo ASN: Pokud inzerujete předpony, které nejsou registrované na číslo AS partnerského vztahu, můžete zadat číslo AS, na které jsou registrované.
      * Hodnota hash MD5, pokud se ji rozhodnete použít.
 
 > [!IMPORTANT]
-> Microsoft ověří, jestli se vám v registru směrování Internetu přiřadí zadané "inzerované veřejné předpony" a "partnerské číslo ASN" (nebo číslo ASN zákazníka). Pokud získáváte veřejné předpony z jiné entity a pokud přiřazení není zaznamenané u registru směrování, automatické ověřování se nedokončí a bude vyžadovat ruční ověření. Pokud se automatické ověření nezdaří, zobrazí se ve výstupu příkazu Get-AzExpressRouteCircuitPeeringConfig možnost "AdvertisedPublicPrefixesState", která je potřeba ověřit. (Další informace najdete v tématu získání podrobných informací o partnerském vztahu Microsoftu níže). 
+> Společnost Microsoft ověří, zda jsou v registru směrování v Internetu přiřazeny zadané předpony inzerované veřejné a peer asn (nebo "ASN zákazníka". Pokud získáváte veřejné předpony z jiné entity a přiřazení není zaznamenáno v registru směrování, automatické ověření nebude dokončeno a bude vyžadovat ruční ověření. Pokud se automatické ověření nezdaří, zobrazí se příkaz AdvertisedPublicPrefixesState jako "Ověření potřebné" na výstupu příkazu "Get-AzExpressRouteCircuitPeeringConfig" (viz "Chcete-li získat podrobnosti partnerského vztahu Microsoftu" níže). 
 > 
-> Pokud se zobrazí zpráva potřebná pro ověření, shromážděte dokumenty, které zobrazují veřejné předpony, do vaší organizace podle entity, která je uvedena jako vlastník předpon v registru směrování, a odešlete tyto dokumenty k ručnímu ověření pomocí Otevřete lístek podpory, jak je znázorněno níže. 
+> Pokud se zobrazí zpráva "Ověření je potřeba", shromážděte dokumenty, které ukazují, že veřejné předpony jsou přiřazeny vaší organizaci entitou, která je uvedena jako vlastník předpon v registru směrování, a odešlete tyto dokumenty k ručnímu ověření otevření lístku podpory, jak je uvedeno níže. 
 > 
 >
 
-   Konfigurace partnerského vztahu Microsoftu pro váš okruh, použijte následující příklad:
+   Ke konfiguraci partnerského vztahu Microsoftu pro okruh použijte následující příklad:
 
    ```azurepowershell-interactive
    Add-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt -PeeringType MicrosoftPeering -PeerASN 100 -PeerAddressType IPv4 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 300 -MicrosoftConfigAdvertisedPublicPrefixes "123.1.0.0/24" -MicrosoftConfigCustomerAsn 23 -MicrosoftConfigRoutingRegistryName "ARIN"
@@ -137,9 +137,9 @@ Tato část umožňuje vytvořit, získat, aktualizovat a odstranit konfiguraci 
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
 
-### <a name="getmsft"></a>Získání podrobností o partnerském vztahu Microsoftu
+### <a name="to-get-microsoft-peering-details"></a><a name="getmsft"></a>Získání podrobností partnerského vztahu Microsoftu
 
-Můžete získat podrobnosti o konfiguraci pomocí následujícího příkladu:
+Podrobnosti o konfiguraci můžete získat v následujícím příkladu:
 
 ```azurepowershell-interactive
 $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -147,9 +147,9 @@ $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupNa
 Get-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
 ```
 
-### <a name="updatemsft"></a>Aktualizace konfigurace partnerského vztahu Microsoftu
+### <a name="to-update-microsoft-peering-configuration"></a><a name="updatemsft"></a>Aktualizace konfigurace partnerského vztahu Microsoftu
 
-Libovolnou část konfigurace podle následujícího příkladu lze aktualizovat:
+Libovolnou část konfigurace můžete aktualizovat pomocí následujícího příkladu:
 
 ```azurepowershell-interactive
 Set-AzExpressRouteCircuitPeeringConfig  -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt -PeeringType MicrosoftPeering -PeerASN 100 -PeerAddressType IPv4 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 300 -MicrosoftConfigAdvertisedPublicPrefixes "124.1.0.0/24" -MicrosoftConfigCustomerAsn 23 -MicrosoftConfigRoutingRegistryName "ARIN"
@@ -159,7 +159,7 @@ Set-AzExpressRouteCircuitPeeringConfig  -Name "MicrosoftPeering" -ExpressRouteCi
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-### <a name="deletemsft"></a>Odstranění partnerského vztahu Microsoftu
+### <a name="to-delete-microsoft-peering"></a><a name="deletemsft"></a>Odstranění partnerského vztahu Microsoftu
 
 Konfiguraci partnerského vztahu můžete odebrat spuštěním následující rutiny:
 
@@ -169,9 +169,9 @@ Remove-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRoute
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-## <a name="private"></a>Soukromý partnerský vztah Azure
+## <a name="azure-private-peering"></a><a name="private"></a>Soukromý partnerský vztah Azure
 
-Tato část umožňuje vytvořit, získat, aktualizovat a odstranit Azure konfiguraci soukromého partnerského vztahu pro okruh ExpressRoute.
+Tato část vám pomůže vytvořit, získat, aktualizovat a odstranit konfiguraci privátního partnerského vztahu Azure pro okruh ExpressRoute.
 
 ### <a name="to-create-azure-private-peering"></a>Vytvoření soukromého partnerského vztahu Azure
 
@@ -183,13 +183,13 @@ Tato část umožňuje vytvořit, získat, aktualizovat a odstranit Azure konfig
    Install-Module Az
    ```
 
-   Importujte všechny moduly AZ.\* v rozsahu známé sémantické verze.
+   Importujte všechny moduly\* Az. v rozsahu známých sémantických verzí.
 
    ```azurepowershell-interactive
    Import-Module Az
    ```
 
-   Je můžete také naimportovat jenom modul select v rozsahu známé sémantické verze.
+   Můžete také pouze importovat vybraný modul v rámci známého rozsahu sémantických verzí.
 
    ```azurepowershell-interactive
    Import-Module Az.Network 
@@ -208,9 +208,9 @@ Tato část umožňuje vytvořit, získat, aktualizovat a odstranit Azure konfig
    ```
 2. Vytvořte okruh ExpressRoute.
 
-   Podle pokynů vytvořte [okruh ExpressRoute](expressroute-howto-circuit-arm.md) a mějte ho zřízený poskytovatelem připojení. Pokud poskytovatel připojení nabízí spravované služby vrstvy 3, můžete požádat svého poskytovatele připojení povolit soukromý partnerský vztah Azure za vás. V takovém případě nebudete muset postupovat podle pokynů uvedených v dalších částech. Pokud poskytovatel připojení nespravuje směrování, po vytvoření okruhu, ale dál používat další kroky konfigurace.
+   Podle pokynů vytvořte [okruh ExpressRoute](expressroute-howto-circuit-arm.md) a mějte ho zřízený poskytovatelem připojení. Pokud váš poskytovatel připojení nabízí spravované služby Vrstvy 3, můžete požádat svého poskytovatele připojení o povolení privátního partnerského vztahu Azure. V takovém případě nebudete muset postupovat podle pokynů uvedených v dalších částech. Pokud však váš poskytovatel připojení nespravuje směrování za vás, po vytvoření okruhu pokračujte v konfiguraci pomocí dalších kroků.
 
-3. Zkontrolujte okruh ExpressRoute a ujistěte se, že je zřízený a také povolený. Použijte následující příklad:
+3. Zkontrolujte okruh ExpressRoute a ujistěte se, že je zřízena a také povolena. Použijte následující příklad:
 
    ```azurepowershell-interactive
    Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -243,14 +243,14 @@ Tato část umožňuje vytvořit, získat, aktualizovat a odstranit Azure konfig
    ```
 4. Nakonfigurujte soukromý partnerský vztah Azure pro okruh. Před zahájením dalších kroků se ujistěte, že máte k dispozici následující položky:
 
-   * Podsíť /30 pro primární propojení. Podsítě nesmí být součástí žádného adresního prostor vyhrazeného pro virtuální sítě.
-   * Podsíť /30 pro sekundární propojení. Podsítě nesmí být součástí žádného adresního prostor vyhrazeného pro virtuální sítě.
+   * Podsíť /30 pro primární propojení. Podsíť nesmí být součástí žádného adresního prostoru vyhrazeného pro virtuální sítě.
+   * Podsíť /30 pro sekundární propojení. Podsíť nesmí být součástí žádného adresního prostoru vyhrazeného pro virtuální sítě.
    * Platné ID sítě VLAN, na kterém se má partnerský vztah vytvořit. Zajistěte, aby žádný jiný partnerský vztah v okruhu nepoužíval stejné ID sítě VLAN.
    * Číslo AS pro partnerský vztah. Můžete použít 2bajtová i 4bajtová čísla AS. Pro tento partnerský vztah můžete použít soukromé číslo AS. Zkontrolujte, že nepoužíváte 65515.
    * Volitelné:
      * Hodnota hash MD5, pokud se ji rozhodnete použít.
 
-   Můžete nakonfigurovat soukromý partnerský vztah Azure pro váš okruh v následujícím příkladu:
+   Pomocí následujícího příkladu nakonfigurujte privátní partnerský vztah Azure pro váš okruh:
 
    ```azurepowershell-interactive
    Add-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "10.0.0.0/30" -SecondaryPeerAddressPrefix "10.0.0.4/30" -VlanId 200
@@ -258,7 +258,7 @@ Tato část umožňuje vytvořit, získat, aktualizovat a odstranit Azure konfig
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
 
-   Pokud se rozhodnete použít hodnotu hash MD5, použijte následující příklad:
+   Pokud se rozhodnete použít hash MD5, použijte následující příklad:
 
    ```azurepowershell-interactive
    Add-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "10.0.0.0/30" -SecondaryPeerAddressPrefix "10.0.0.4/30" -VlanId 200  -SharedKey "A1B2C3D4"
@@ -269,7 +269,7 @@ Tato část umožňuje vytvořit, získat, aktualizovat a odstranit Azure konfig
    > 
    >
 
-### <a name="getprivate"></a>Získání podrobností o privátním partnerském vztahu Azure
+### <a name="to-get-azure-private-peering-details"></a><a name="getprivate"></a>Získání podrobností soukromého partnerského vztahu Azure
 
 Podrobnosti o konfiguraci můžete získat pomocí následujícího příkladu:
 
@@ -279,9 +279,9 @@ $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupNa
 Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt
 ```
 
-### <a name="updateprivate"></a>Aktualizace konfigurace privátního partnerského vztahu Azure
+### <a name="to-update-azure-private-peering-configuration"></a><a name="updateprivate"></a>Aktualizace konfigurace soukromého partnerského vztahu Azure
 
-Libovolnou část konfigurace podle následujícího příkladu můžete aktualizovat. V tomto příkladu je ID sítě VLAN okruhu aktualizované ze 100 na 500.
+Libovolnou část konfigurace můžete aktualizovat v následujícím příkladu. V tomto příkladu je ID sítě VLAN okruhu aktualizováno ze 100 na 500.
 
 ```azurepowershell-interactive
 Set-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "10.0.0.0/30" -SecondaryPeerAddressPrefix "10.0.0.4/30" -VlanId 200
@@ -289,12 +289,12 @@ Set-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRoute
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-### <a name="deleteprivate"></a>Odstranění privátního partnerského vztahu Azure
+### <a name="to-delete-azure-private-peering"></a><a name="deleteprivate"></a>Odstranění soukromého partnerského vztahu Azure
 
-Konfiguraci partnerského vztahu můžete odebrat spuštěním následující příklad:
+Konfiguraci partnerského vztahu můžete odebrat spuštěním následujícího příkladu:
 
 > [!WARNING]
-> Ujistěte se, že před spuštěním tohoto příkladu se odeberou všechny virtuální sítě a připojení ExpressRoute globální dosah. 
+> Před spuštěním tohoto příkladu je nutné zajistit, aby byly odebrány všechny virtuální sítě a připojení ExpressRoute Global Reach. 
 > 
 > 
 

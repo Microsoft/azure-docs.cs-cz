@@ -1,26 +1,26 @@
 ---
 title: Schéma událostí protokolu automatického škálování Azure
-description: Formát protokolů pro monitorování a odstraňování potíží s akcemi automatického škálování
+description: Formát protokolů pro sledování a odstraňování potíží s akcemi automatického škálování
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.subservice: autoscale
 ms.openlocfilehash: 3c32f15208a8e692054ee6c1f7effc6b7c89de3d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75395947"
 ---
-# <a name="azure-monitor-autoscale-actions-resource-log-schema"></a>Azure Monitor schéma protokolu prostředků akcí automatického škálování
+# <a name="azure-monitor-autoscale-actions-resource-log-schema"></a>Schéma protokolu prostředků automatického škálování azure monitoru
 
-Níže jsou uvedeny obecné formáty pro protokoly prostředků automatického škálování s ukázkovými daty. Ne všechny níže uvedené příklady jsou správně ve formátu JSON, protože mohou obsahovat více hodnot, které mohou být pro dané pole platné. 
+Následují obecné formáty pro protokoly prostředků automatického škálování s ukázkovými daty. Ne všechny níže uvedené příklady jsou správně vytvořeny JSON, protože mohou obsahovat více hodnot, které by mohly být platné pro dané pole. 
 
-Pomocí událostí tohoto typu můžete řešit problémy, které můžete mít s automatického škálování. Další informace najdete v tématu [řešení potíží s funkcí automatického škálování](autoscale-troubleshoot.md).
+Události tohoto typu slouží k řešení problémů, které mohou být s automatickým škálování. Další informace naleznete [v tématu Poradce při potížích s automatickým škálováním](autoscale-troubleshoot.md).
 
 
-## <a name="profile-evaluation"></a>Vyhodnocení profilu
+## <a name="profile-evaluation"></a>Hodnocení profilu
 
-Zaznamenané, když se automatické škálování poprvé vyhledá v profilu automatického škálování.
+Záznam při prvním zobrazení automatického škálování na profil automatického škálování
 
 ```json
 {
@@ -37,9 +37,9 @@ Zaznamenané, když se automatické škálování poprvé vyhledá v profilu aut
 }
 ```
 
-## <a name="profile-cooldown-evaluation"></a>Hodnocení cooldown profilu
+## <a name="profile-cooldown-evaluation"></a>Hodnocení přebíjecí úběr profilu
 
-Zaznamenáno, když automatické škálování vyhodnotí, pokud by se nemělo provádět škálování z důvodu doby chladnutí. 
+Zaznamenáno při automatickém škálování vyhodnocuje, pokud by nemělo provést měřítko z důvodu období ochlazování. 
 
 ```json
 {
@@ -60,9 +60,9 @@ Zaznamenáno, když automatické škálování vyhodnotí, pokud by se nemělo p
 }
 ```
 
-## <a name="rule-evaluation"></a>Vyhodnocení pravidla
+## <a name="rule-evaluation"></a>Vyhodnocení pravidel
 
-Zaznamenáno se, když automatické škálování začne vyhodnocovat konkrétní pravidlo škálování. 
+Záznam při prvním spuštění automatického škálování vyhodnocující ho určité pravidlo měřítka. 
 
 ```json
 {
@@ -87,9 +87,9 @@ Zaznamenáno se, když automatické škálování začne vyhodnocovat konkrétn�
 }
 ```
 
-## <a name="metric-evaluation"></a>Vyhodnocení metriky
+## <a name="metric-evaluation"></a>Metrické hodnocení
 
-Zaznamenáno, když automatické škálování vyhodnotilo metriku, která se používá k aktivaci akce škálování. 
+Záznam při vyhodnocení metriky, která se používá ke spuštění akce škálování. 
 
 ```json
 {
@@ -113,7 +113,7 @@ Zaznamenáno, když automatické škálování vyhodnotilo metriku, která se po
 
 ## <a name="instance-count-evaluation"></a>Vyhodnocení počtu instancí
 
-Zaznamenáno, když automatické škálování vyhodnotí počet instancí, které jsou již spuštěny, při přípravě na rozhodování o tom, zda by měl spustit více, vypnout některé nebo nedělat nic. 
+Zaznamenáno při automatickém škálování vyhodnotí počet instancí, které již běží v rámci přípravy na rozhodování, zda by měla spustit více, vypnout některé nebo nedělat nic. 
 
 ```json
 {
@@ -132,9 +132,9 @@ Zaznamenáno, když automatické škálování vyhodnotí počet instancí, kter
 }
 ```
 
-## <a name="scale-action-evaluation"></a>Vyhodnocení akcí škálování
+## <a name="scale-action-evaluation"></a>Hodnocení akce měřítka
 
-Zaznamenáno, když automatické škálování začíná vyhodnocením, pokud by měla probíhat akce škálování. 
+Zaznamenáno při automatickém škálování spustí vyhodnocení, pokud by měla být akce škálování. 
 
 ```json
 {
@@ -154,7 +154,7 @@ Zaznamenáno, když automatické škálování začíná vyhodnocením, pokud by
 
 ## <a name="instance-update-evaluation"></a>Vyhodnocení aktualizace instance
 
-Zaznamenáno, když automatické škálování aktualizuje počet spuštěných výpočetních instancí, a to buď nahoru, nebo dolů.
+Nahraný při aktualizaci automatického škálování počet spuštěných výpočetních instancí, nahoru nebo dolů.
 
 ```json
 {
@@ -173,9 +173,9 @@ Zaznamenáno, když automatické škálování aktualizuje počet spuštěných 
 }
 ```
 
-## <a name="scale-action"></a>Akce škálování
+## <a name="scale-action"></a>Akce měřítka
 
-Zaznamenává se, když automatické škálování iniciuje akci škálování, a to buď nahoru, nebo dolů. 
+Nahráno, když automatické škálování iniciuje akci měřítka, nahoru nebo dolů. 
 ```json
 {
   "time": "2018-09-10 18:12:00.6132593",
@@ -196,9 +196,9 @@ Zaznamenává se, když automatické škálování iniciuje akci škálování, 
 }
 ```
 
-## <a name="scale-action-tracking"></a>Škálování sledování akcí
+## <a name="scale-action-tracking"></a>Sledování akce škálování
 
-Zaznamenáváno v různých intervalech akce škálování instance.
+Zaznamenáno v různých intervalech akce měřítka instance.
 
 ```json
 {

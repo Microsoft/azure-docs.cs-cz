@@ -1,6 +1,6 @@
 ---
-title: Přidání panelu do řešení vzdálené monitorování uživatelské rozhraní – Azure | Dokumentace Microsoftu
-description: Tento článek ukazuje, jak přidat na řídicí panel ve vzdálené monitorování řešení akcelerátoru webové uživatelské rozhraní nového panelu.
+title: Přidání panelu do uživatelského uživatelského nastavení řešení vzdáleného monitorování – Azure | Dokumenty společnosti Microsoft
+description: Tento článek ukazuje, jak přidat nový panel do řídicího panelu ve webovém uživatelském uživatelském nastavení akcelerátoru řešení vzdáleného monitorování.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,47 +9,47 @@ services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
 ms.openlocfilehash: 3b855c3bed75945f44b55463bdacd049b7930aa7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61447059"
 ---
-# <a name="add-a-custom-panel-to-the-dashboard-in-the-remote-monitoring-solution-accelerator-web-ui"></a>Přidat vlastní panel na řídicím panelu vzdáleného monitorování řešení akcelerátoru webového uživatelského rozhraní
+# <a name="add-a-custom-panel-to-the-dashboard-in-the-remote-monitoring-solution-accelerator-web-ui"></a>Přidání vlastního panelu do řídicího panelu ve webovém uživatelském uživatelském uživatelském uživatelském panelu akcelerátoru řešení vzdáleného monitorování
 
-Tento článek ukazuje, jak přidat nového panelu na stránce řídicího panelu ve vzdálené monitorování řešení akcelerátoru webového uživatelského rozhraní. Tento článek popisuje:
+Tento článek ukazuje, jak přidat nový panel na stránku řídicího panelu ve webovém uživatelském uživatelském nastavení akcelerátoru řešení vzdáleného monitorování. Článek popisuje:
 
-- Jak připravit místní vývojové prostředí.
-- Postup přidání nového panelu na stránce řídicího panelu ve webovém uživatelském rozhraní.
+- Jak připravit prostředí místního rozvoje.
+- Jak přidat nový panel na stránku řídicího panelu ve webovém uživatelském uživatelském nastavení.
 
-Panel příklad v tomto článku se zobrazuje na existující stránky řídicího panelu.
+Panel příkladu v tomto článku se zobrazí na existující stránce řídicího panelu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení kroků v této příručce s postupy, musíte na svém místním vývojovém počítači nainstalovaný následující software:
+Chcete-li provést kroky v tomto návodu, potřebujete v místním vývojovém počítači nainstalovaný následující software:
 
 - [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/download/)
 
 ## <a name="before-you-start"></a>Než začnete
 
-By se měla dokončit kroky v [přidat vlastní stránky pro vzdálené monitorování řešení akcelerátoru webového uživatelského rozhraní](iot-accelerators-remote-monitoring-customize-page.md) článek, než budete pokračovat.
+Než budete pokračovat, měli byste dokončit kroky v článku Přidat vlastní stránku do článku [webového uživatelského uživatelského nastavení akcelerátoru řešení vzdáleného monitorování.](iot-accelerators-remote-monitoring-customize-page.md)
 
 ## <a name="add-a-panel"></a>Přidat panel
 
-Přidání panelu do webového uživatelského rozhraní, budete muset přidat zdrojové soubory, které definují panelu a pak upravit na řídicím panelu zobrazí na panelu.
+Chcete-li přidat panel do webového uživatelského uživatelského nastavení, musíte přidat zdrojové soubory, které panel definují, a pak upravit řídicí panel tak, aby se panel zobrazil.
 
-### <a name="add-the-new-files-that-define-the-panel"></a>Přidat nové soubory, které definují panelu
+### <a name="add-the-new-files-that-define-the-panel"></a>Přidání nových souborů, které definují panel
 
-Abyste mohli začít, **src/návod/součásti/stránek/řídicí panel/panely/examplePanel** složka obsahuje soubory, které definují panelu, včetně:
+Chcete-li začít, **src/návod/komponenty/stránky/řídicí panel/panely/examplePanel** složka obsahuje soubory, které definují panel, včetně:
 
 **examplePanel.js**
 
 [!code-javascript[Example panel](~/remote-monitoring-webui/src/walkthrough/components/pages/dashboard/panels/examplePanel/examplePanel.js?name=panel "Example panel")]
 
-Kopírování **src/návod/součásti/stránek/řídicí panel/panely/examplePanel** složku **src/součásti/stránek/řídicí panel/panelů** složky.
+Zkopírujte **složku src/walkthrough/components/pages/dashboard/panels/examplePanel** do složky **src/components/pages/dashboard/panels.**
 
-Přidejte následující exportu **src/walkthrough/components/pages/dashboard/panels/index.js** souboru:
+Přidejte následující export do souboru **src/walkthrough/components/pages/dashboard/panels/index.js:**
 
 ```js
 export * from './examplePanel';
@@ -57,9 +57,9 @@ export * from './examplePanel';
 
 ### <a name="add-the-panel-to-the-dashboard"></a>Přidání panelu na řídicí panel
 
-Upravit **src/components/pages/dashboard/dashboard.js** přidání panelu.
+Upravte **src/components/pages/dashboard/dashboard.js** a přidejte panel.
 
-Příklad panelu přidáte do seznamu importů z panelů:
+Přidejte panel příkladu do seznamu importů z panelů:
 
 ```js
 import {
@@ -74,7 +74,7 @@ import {
 } from './panels';
 ```
 
-Přidejte následující definice buňky do mřížky v obsahu stránky:
+Přidejte do mřížky v obsahu stránky následující definici buňky:
 
 ```js
           <Cell className="col-2">
@@ -82,18 +82,18 @@ Přidejte následující definice buňky do mřížky v obsahu stránky:
           </Cell>
 ```
 
-## <a name="test-the-flyout"></a>Testování informační rámeček
+## <a name="test-the-flyout"></a>Otestujte informační rámeček
 
-Pokud webové uživatelské rozhraní není spuštěná místně, spusťte následující příkaz v kořenové složce místní kopie úložiště:
+Pokud webové uživatelské uživatelské prostředí ještě není spuštěno místně, spusťte v kořenovém adresáři místní kopie úložiště následující příkaz:
 
 ```cmd/sh
 npm start
 ```
 
-Předchozí příkaz se spustí místně na uživatelské rozhraní [ http://localhost:3000/dashboard ](http://localhost:3000/dashboard). Přejděte **řídicí panel** stránku, abyste zobrazili nový panel.
+Předchozí příkaz spustí ui místně [http://localhost:3000/dashboard](http://localhost:3000/dashboard)na . Přejděte na stránku **Řídicí panel** a zobrazte nový panel.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o prostředky dostupné pro umožňují přidat nebo upravit řídicí panely ve webovém uživatelském rozhraní v akcelerátoru řešení vzdáleného monitorování.
+V tomto článku jste se dozvěděli o dostupných prostředcích, které vám pomohou přidat nebo přizpůsobit řídicí panely ve webovém uživatelském rozhraní v akcelerátoru řešení vzdáleného monitorování.
 
-Další koncepční informace o akcelerátoru řešení vzdáleného monitorování najdete v tématu [architektura vzdáleného monitorování](iot-accelerators-remote-monitoring-sample-walkthrough.md).
+Další rámcové informace o akcelerátoru řešení vzdáleného monitorování naleznete v [tématu Architektura vzdáleného monitorování](iot-accelerators-remote-monitoring-sample-walkthrough.md).

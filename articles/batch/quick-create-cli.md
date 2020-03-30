@@ -11,10 +11,10 @@ ms.date: 07/03/2018
 ms.author: labrenne
 ms.custom: mvc
 ms.openlocfilehash: 9106741e18354d39909fa84ce6e9f3a66ccf2014
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77024496"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Rychlý start: Spuštění první úlohy služby Batch pomocí rozhraní příkazového řádku Azure
@@ -39,7 +39,7 @@ az group create \
     --location eastus2
 ```
 
-## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
+## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
 Účet Batch můžete propojit s účtem Azure Storage. I když to k tomuto rychlému startu není nutné, účet úložiště je užitečný při nasazování aplikací a ukládání vstupních a výstupních dat ve většině reálných způsobů využití. Ve vaší skupině prostředků vytvořte účet úložiště pomocí příkazu [az storage account create](/cli/azure/storage/account#az-storage-account-create).
 
@@ -51,7 +51,7 @@ az storage account create \
     --sku Standard_LRS
 ```
 
-## <a name="create-a-batch-account"></a>Vytvoření účtu služby Batch
+## <a name="create-a-batch-account"></a>Vytvoření účtu Batch
 
 K vytvoření účtu Batch použijte příkaz [az batch account create](/cli/azure/batch/account#az-batch-account-create). Účet potřebujete pro vytvoření výpočetních prostředků (fondy výpočetních uzlů) a úloh služby Batch.
 
@@ -170,7 +170,7 @@ az batch task file download \
     --destination ./stdout.txt
 ```
 
-Obsah souboru `stdout.txt` můžete zobrazit v textovém editoru. Obsah zahrnuje proměnné prostředí služby Azure Batch nastavené v uzlu. Při vytváření vlastních úloh služby Batch můžete na tyto proměnné prostředí odkazovat na příkazových řádcích úkolů a v aplikacích a skriptech spouštěných těmito příkazovými řádky. Příklad:
+Obsah souboru `stdout.txt` můžete zobrazit v textovém editoru. Obsah zahrnuje proměnné prostředí služby Azure Batch nastavené v uzlu. Při vytváření vlastních úloh služby Batch můžete na tyto proměnné prostředí odkazovat na příkazových řádcích úkolů a v aplikacích a skriptech spouštěných těmito příkazovými řádky. Například:
 
 ```
 AZ_BATCH_TASK_DIR=/mnt/batch/tasks/workitems/myjob/job-1/mytask1

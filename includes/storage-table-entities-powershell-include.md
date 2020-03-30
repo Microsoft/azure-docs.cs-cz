@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/27/2019
 ms.author: tamram
 ms.openlocfilehash: 9a60c624b181a1efd2f6deebd349daa82214a8a4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67174682"
 ---
 <!--created by Robin Shahan to go in the articles for table storage w/powershell.
@@ -16,18 +16,18 @@ ms.locfileid: "67174682"
 
 ## <a name="managing-table-entities"></a>Správa entit tabulky
 
-Teď, když máte tabulku, Podívejme se na tom, jak spravovat entity nebo řádky v tabulce. 
+Teď, když máte tabulku, podívejme se na to, jak spravovat entity nebo řádky v tabulce. 
 
-Entity můžete mít až 255 vlastnosti, včetně tři systémové vlastnosti: **PartitionKey**, **RowKey**, a **časové razítko**. Zodpovídáte za vkládání a aktualizacích hodnoty **PartitionKey** a **RowKey**. Server spravuje hodnotu **časové razítko**, která nelze upravit. Společně **PartitionKey** a **RowKey** jednoznačně identifikovat každou entitu v tabulce.
+Entity mohou mít až 255 vlastností, včetně tří vlastností systému: **PartitionKey**, **RowKey**a **Timestamp**. Jste zodpovědní za vkládání a aktualizaci hodnot **PartitionKey** a **RowKey**. Server spravuje hodnotu **časového razítka**, kterou nelze změnit. Společně **PartitionKey** a **RowKey** jednoznačně identifikovat každou entitu v rámci tabulky.
 
-* **PartitionKey**: Určuje oddíl, který entitu je uložen v.
+* **PartitionKey**: Určuje oddíl, ve které je entita uložena.
 * **RowKey**: Jednoznačně identifikuje entitu v rámci oddílu.
 
-Můžete definovat až 252 vlastností vlastní entity. 
+Pro entitu můžete definovat až 252 vlastních vlastností. 
 
-### <a name="add-table-entities"></a>Přidání tabulky entit
+### <a name="add-table-entities"></a>Přidání entit tabulky
 
-Přidání entity do tabulky pomocí **přidat AzTableRow**. Tyto příklady používají klíče oddílů s hodnotami `partition1` a `partition2`, a klíče řádku rovno zkratky států. Vlastnosti v každé entity jsou `username` a `userid`. 
+Přidejte entity do tabulky pomocí **add-AzTableRow**. Tyto příklady používají klíče `partition1` `partition2`oddílů s hodnotami a klávesy řádků, které se rovnají zkratkám stavu. Vlastnosti v každé `username` `userid`entitě jsou a . 
 
 ```powershell
 $partitionKey1 = "partition1"
@@ -55,42 +55,42 @@ Add-AzTableRow `
     -rowKey ("TX") -property @{"username"="Steven";"userid"=4}
 ```
 
-### <a name="query-the-table-entities"></a>Dotaz na tabulku entity
+### <a name="query-the-table-entities"></a>Dotaz na entity tabulky
 
-Entity v tabulce můžete dotazovat pomocí **Get-AzTableRow** příkazu.
+Entity v tabulce můžete dotazovat pomocí příkazu **Get-AzTableRow.**
 
 > [!NOTE]
-> Rutiny **Get-AzureStorageTableRowAll**, **Get-AzureStorageTableRowByPartitionKey**, **Get-AzureStorageTableRowByColumnName**, a  **Get-AzureStorageTableRowByCustomFilter** jsou zastaralé a bude v aktualizace budoucí verzi odebrána.
+> Rutiny **Get-AzureStorageTableRowAll**, **Get-AzureStorageTableRowByPartitionKey**, **Get-AzureStorageTableRowByColumnName**a **Get-AzureStorageTableRowByCustomFilter** jsou zastaralé a budou odebrány v budoucí aktualizaci verze.
 
-#### <a name="retrieve-all-entities"></a>Načtení všech entit
+#### <a name="retrieve-all-entities"></a>Načíst všechny entity
 
 ```powershell
 Get-AzTableRow -table $cloudTable | ft
 ```
 
-Tento příkaz vrátí výsledky, podobně jako v následující tabulce:
+Tento příkaz poskytuje výsledky podobné následující tabulce:
 
-| userid | username jméno | oddíl | rowkey |
+| Userid | uživatelské jméno | partition | řádek |
 |----|---------|---------------|----|
-| 1 | Chris | Oddíl1 | CA |
-| 3 | Jana | Oddíl1 | WA |
-| 2 | Jessie | Oddíl2 | NM |
-| 4 | Steven | Oddíl2 | TX |
+| 1 | Chris | oddíl1 | CA |
+| 3 | Christine | oddíl1 | WA |
+| 2 | Jessie | oddíl2 | NM |
+| 4 | Steven | oddíl2 | TX |
 
-#### <a name="retrieve-entities-for-a-specific-partition"></a>Načtení entit u konkrétního oddílu
+#### <a name="retrieve-entities-for-a-specific-partition"></a>Načtení entit pro konkrétní oddíl
 
 ```powershell
 Get-AzTableRow -table $cloudTable -partitionKey $partitionKey1 | ft
 ```
 
-Výsledky vypadat podobně jako v následující tabulce:
+Výsledky vypadají podobně jako v následující tabulce:
 
-| userid | username jméno | oddíl | rowkey |
+| Userid | uživatelské jméno | partition | řádek |
 |----|---------|---------------|----|
-| 1 | Chris | Oddíl1 | CA |
-| 3 | Jana | Oddíl1 | WA |
+| 1 | Chris | oddíl1 | CA |
+| 3 | Christine | oddíl1 | WA |
 
-#### <a name="retrieve-entities-for-a-specific-value-in-a-specific-column"></a>Načtení entit pro určitou hodnotu v konkrétním sloupci
+#### <a name="retrieve-entities-for-a-specific-value-in-a-specific-column"></a>Načtení entit pro určitou hodnotu v určitém sloupci
 
 ```powershell
 Get-AzTableRow -table $cloudTable `
@@ -101,14 +101,14 @@ Get-AzTableRow -table $cloudTable `
 
 Tento dotaz načte jeden záznam.
 
-|Pole|value|
+|pole|value|
 |----|----|
-| userid | 1 |
-| username jméno | Chris |
-| PartitionKey | Oddíl1 |
+| Userid | 1 |
+| uživatelské jméno | Chris |
+| PartitionKey | oddíl1 |
 | RowKey      | CA |
 
-#### <a name="retrieve-entities-using-a-custom-filter"></a>Načtení entity pomocí vlastního filtru 
+#### <a name="retrieve-entities-using-a-custom-filter"></a>Načtení entit pomocí vlastního filtru 
 
 ```powershell
 Get-AzTableRow `
@@ -118,18 +118,18 @@ Get-AzTableRow `
 
 Tento dotaz načte jeden záznam.
 
-|Pole|value|
+|pole|value|
 |----|----|
-| userid | 1 |
-| username jméno | Chris |
-| PartitionKey | Oddíl1 |
+| Userid | 1 |
+| uživatelské jméno | Chris |
+| PartitionKey | oddíl1 |
 | RowKey      | CA |
 
 ### <a name="updating-entities"></a>Aktualizace entit 
 
-Existují tři kroky pro aktualizaci entity. Nejdřív načtěte entitu, chcete-li změnit. Za druhé proveďte požadovanou změnu. Třetí, potvrzení změn pomocí **aktualizace AzTableRow**.
+Existují tři kroky pro aktualizaci entit. Nejprve načtěte entitu změnit. Za druhé, proveďte změnu. Za třetí, potvrďte změnu pomocí **Update-AzTableRow**.
 
-Aktualizovat entitu s uživatelským jménem = "Jessie" mít uživatelské jméno = "Jessie2". Tento příklad také uvádí dalším způsobem, jak vytvořit vlastní filtr pomocí typy .NET.
+Aktualizujte entitu uživatelským jménem = 'Jessie' mít uživatelské jméno = 'Jessie2'. Tento příklad také ukazuje jiný způsob, jak vytvořit vlastní filtr pomocí typů .NET.
 
 ```powershell
 # Create a filter and get the entity to be updated.
@@ -151,22 +151,22 @@ Get-AzTableRow -table $cloudTable `
     -customFilter "(username eq 'Jessie2')"
 ```
 
-Ve výsledcích zobrazí Jessie2 záznamu.
+Výsledky ukazují rekord Jessie2.
 
-|Pole|value|
+|pole|value|
 |----|----|
-| userid | 2 |
-| username jméno | Jessie2 |
-| PartitionKey | Oddíl2 |
+| Userid | 2 |
+| uživatelské jméno | Jessie2 |
+| PartitionKey | oddíl2 |
 | RowKey      | NM |
 
-### <a name="deleting-table-entities"></a>Odstraňuje se tabulka entity
+### <a name="deleting-table-entities"></a>Odstranění entit tabulky
 
-Můžete odstranit jednu entitu nebo pro všechny entity v tabulce.
+Můžete odstranit jednu entitu nebo všechny entity v tabulce.
 
-#### <a name="deleting-one-entity"></a>Odstranění entit
+#### <a name="deleting-one-entity"></a>Odstranění jedné entity
 
-Pokud chcete odstranit jednu entitu, získáte odkaz na dané entitě a zřetězit ho do **odebrat AzTableRow**.
+Chcete-li odstranit jednu entitu, získejte odkaz na tuto entitu a přepojijte ji do **příkazu Remove-AzTableRow**.
 
 ```powershell
 # Set filter.
@@ -184,9 +184,9 @@ $userToDelete | Remove-AzTableRow -table $cloudTable
 Get-AzTableRow -table $cloudTable | ft
 ```
 
-#### <a name="delete-all-entities-in-the-table"></a>Odstranit všechny entity v tabulce
+#### <a name="delete-all-entities-in-the-table"></a>Odstranění všech entit v tabulce
 
-Pokud chcete odstranit všechny entity v tabulce, načítat a kanálem výsledky do rutiny remove. 
+Chcete-li odstranit všechny entity v tabulce, načtěte je a výsledky natápějte do odebrané rutiny. 
 
 ```powershell
 # Get all rows and pipe the result into the remove cmdlet.

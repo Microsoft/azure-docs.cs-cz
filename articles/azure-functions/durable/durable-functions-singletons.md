@@ -1,26 +1,26 @@
 ---
-title: Singleton pro Durable Functions – Azure
-description: Způsob použití typu Singleton v rozšíření Durable Functions pro Azure Functions.
+title: Singletons pro trvalé funkce - Azure
+description: Jak používat singletons v rozšíření trvalé funkce pro funkce Azure.
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4eff7c4c91ed664fcf1f4fc7a8be2d43d24e5c6b
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76262805"
 ---
-# <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Orchestrace singleton v Durable Functions (Azure Functions)
+# <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Orchestrátory singletonu v odolných funkcích (Funkce Azure)
 
-Pro úlohy na pozadí často potřebujete zajistit, aby v jednom okamžiku běžela jenom jedna instance konkrétního nástroje Orchestrator. Tento druh chování typu Singleton v [Durable Functions](durable-functions-overview.md) můžete zajistit přiřazením konkrétního ID instance ke Orchestrator při jeho vytváření.
+Pro úlohy na pozadí je často nutné zajistit, aby současně byla spuštěna pouze jedna instance určitého orchestrátoru. Tento druh singleton chování v [trvalé funkce](durable-functions-overview.md) přiřazením konkrétní id instance orchestrátoru při jeho vytváření.
 
-## <a name="singleton-example"></a>Příklad typu Singleton
+## <a name="singleton-example"></a>Singleton příklad
 
-Následující příklad ukazuje funkci triggeru HTTP, která vytvoří orchestraci úlohy na pozadí s jedním prvkem. Kód zajišťuje, aby pro zadané ID instance existovala pouze jedna instance.
+Následující příklad ukazuje funkci aktivační událost HTTP, která vytváří orchestraci úlohy na pozadí singletonu. Kód zajišťuje, že pro zadané ID instance existuje pouze jedna instance.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```cs
 [FunctionName("HttpStartSingle")]
@@ -52,9 +52,9 @@ public static async Task<HttpResponseMessage> RunSingle(
 ```
 
 > [!NOTE]
-> Předchozí C# kód je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít atribut `OrchestrationClient` namísto atributu `DurableClient` a musíte použít typ parametru `DurableOrchestrationClient` namísto `IDurableOrchestrationClient`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí kód Jazyka C# je pro durable functions 2.x. Pro trvalé funkce 1.x `OrchestrationClient` je nutné `DurableClient` použít atribut namísto `DurableOrchestrationClient` atributu a `IDurableOrchestrationClient`místo . Další informace o rozdílech mezi verzemi naleznete v článku [verze durable functions.](durable-functions-versions.md)
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 **function.json**
 
@@ -114,14 +114,14 @@ module.exports = async function(context, req) {
 
 ---
 
-Ve výchozím nastavení jsou identifikátory instancí náhodně generované identifikátory GUID. V předchozím příkladu se ale ID instance předává v datech směrování z adresy URL. Kód volá `GetStatusAsync`(C#) nebo `getStatus` (JavaScript), aby zkontroloval, jestli instance se zadaným ID už je spuštěná. Pokud taková instance není spuštěná, vytvoří se nová instance s tímto ID.
+Ve výchozím nastavení jsou ID instancí náhodně generovaná identifikátory GUID. V předchozím příkladu je však ID instance předáno v datech trasy z adresy URL. Kód volá `GetStatusAsync`(C#) `getStatus` nebo (JavaScript) a zkontroluje, jestli je instance se zadaným ID již spuštěna. Pokud žádná taková instance je spuštěna, je vytvořena nová instance s tímto ID.
 
 > [!NOTE]
-> V této ukázce je potenciální podmínka časování. Pokud se dvě instance **HttpStartSingle** spustí souběžně, obě volání funkce budou hlásit úspěch, ale pouze jedna instance orchestrace bude skutečně spuštěna. V závislosti na vašich požadavcích může to mít nežádoucí vedlejší účinky. Z tohoto důvodu je důležité zajistit, aby žádné dvě požadavky nemohly současně spouštět tuto triggerovou funkci.
+> V této ukázce je potenciální spor. Pokud dvě instance **HttpStartSingle** spustit souběžně, obě volání funkce bude hlásit úspěch, ale pouze jedna instance orchestrace bude skutečně spuštěna. V závislosti na vašich požadavcích, To může mít nežádoucí vedlejší účinky. Z tohoto důvodu je důležité zajistit, aby žádné dva požadavky můžete spustit tuto funkci aktivační události současně.
 
-Podrobnosti implementace funkce Orchestrator nezáleží na tom. Může se jednat o běžnou funkci Orchestrator, která se spustí a dokončí, nebo to může být jedna z nich, která je trvale spuštěná (to znamená [orchestrace externí](durable-functions-eternal-orchestrations.md)). Důležitým bodem je, že v jednu chvíli běží jenom jedna instance.
+Podrobnosti implementace funkce orchestrator ve skutečnosti nezáleží. Mohlo by to být pravidelné orchestrator funkce, která začíná a dokončí, nebo by to mohlo být ten, který běží navždy (to znamená, [že věčný Orchestrace](durable-functions-eternal-orchestrations.md)). Důležité je, že je vždy pouze jedna instance spuštěna najednou.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Seznamte se s nativními funkcemi protokolu HTTP pro orchestraci](durable-functions-http-features.md)
+> [Informace o nativních funkcích HTTP orchestrations](durable-functions-http-features.md)

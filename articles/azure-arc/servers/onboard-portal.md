@@ -1,80 +1,85 @@
 ---
-title: Připojení hybridních počítačů k Azure z Azure Portal
-description: V tomto článku se dozvíte, jak nainstalovat agenta a připojit počítače k Azure pomocí Azure ARC pro servery (Preview) z Azure Portal.
+title: Připojení hybridních počítačů k Azure z portálu Azure
+description: V tomto článku se dozvíte, jak nainstalovat agenta a připojit počítače k Azure pomocí Azure Arc pro servery (náhled) z webu Azure Portal.
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 02/24/2020
+ms.date: 03/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7465ec4ef717f709aacb5e543a8f1cf4fa37bfb5
-ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.openlocfilehash: 40885e1de4ff4c16d2a50399c654d8596396ab53
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79139007"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366367"
 ---
-# <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Připojení hybridních počítačů k Azure z Azure Portal
+# <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Připojení hybridních počítačů k Azure z portálu Azure
 
-Můžete povolit Azure ARC pro servery (Preview) pro jeden nebo malý počet počítačů se systémem Windows nebo Linux v prostředí provedením sady kroků ručně. Nebo můžete použít automatizovanou metodu spuštěním skriptu šablony, který poskytujeme. Tento skript automatizuje stahování a instalaci obou agentů.
+Azure Arc pro servery (náhled) pro jeden nebo malý počet počítačů s Windows nebo Linuxem ve vašem prostředí můžete povolit ručním provedením sady kroků. Nebo můžete použít automatizovanou metodu spuštěním skriptu šablony, který poskytujeme. Tento skript automatizuje stahování a instalaci obou agentů.
 
-Tato metoda vyžaduje, abyste na počítači měli oprávnění správce pro instalaci a konfiguraci agenta. V systému Linux, pomocí kořenového účtu a ve Windows, jste členem místní skupiny Administrators.
+Tato metoda vyžaduje, abyste měli oprávnění správce v počítači k instalaci a konfiguraci agenta. V Linuxu, pomocí kořenového účtu a v systému Windows jste členem skupiny Místní správci.
 
-Než začnete, zkontrolujte [požadavky](overview.md#prerequisites) a ověřte, že vaše předplatné a prostředky splňují požadavky.
+Než začnete, zkontrolujte [požadavky](overview.md#prerequisites) a ověřte, zda vaše předplatné a prostředky splňují požadavky.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
-## <a name="generate-the-installation-script-from-the-azure-portal"></a>Vygenerujte instalační skript z Azure Portal
+## <a name="generate-the-installation-script-from-the-azure-portal"></a>Generování instalačního skriptu z webu Azure Portal
 
-Skript pro automatizaci stahování a instalace a navázání připojení pomocí ARC Azure je dostupný z Azure Portal. Chcete-li dokončit proces, postupujte následovně:
+Skript pro automatizaci stahování a instalace a navázání spojení s Azure Arc je k dispozici na webu Azure Portal. Proces dokončíte takto:
 
-1. V prohlížeči přejdete na [Azure Portal](https://aka.ms/hybridmachineportal).
+1. V prohlížeči přejděte na [portál Azure](https://aka.ms/hybridmachineportal).
 
-1. Na stránce **počítače – ARC Azure** vyberte buď **Přidat**, v levém horním rohu nebo možnost **vytvořit počítač – Azure ARC** v dolní části prostředního podokna. 
+1. Na **stránce Počítače – Azure Arc** vyberte možnost **Přidat**v levém horním rohu nebo možnost Vytvořit počítač – **Oblouk Azure** v dolní části prostředního podokna. 
 
-1. Na stránce **Vyberte metodu** vyberte dlaždici **přidat počítače pomocí interaktivního skriptu** a pak vyberte **vygenerovat skript**.
+1. Na stránce **Vybrat metodu** vyberte **položku Přidat počítače pomocí interaktivní** ho skriptu a pak vyberte Generovat **skript**.
 
-1. Na stránce **vygenerovat skript** vyberte předplatné a skupinu prostředků, ve které chcete, aby se počítač spravoval v rámci Azure. Vyberte umístění Azure, kam se budou ukládat metadata počítače.
+1. Na stránce **Generovat skript** vyberte předplatné a skupinu prostředků, kde chcete, aby se počítač spravoval v rámci Azure. Vyberte umístění Azure, kde se budou uložena metadata počítače.
 
     >[!NOTE]
-    >Azure ARC pro servery (Preview) podporuje jenom tyto oblasti:
-    >- WestUS2
+    >Azure Arc pro servery (preview) podporuje pouze následující oblasti:
+    >- Západní US2
     >- WestEurope
-    >- WestAsia
+    >- Západní Asie
     >
-    >Přečtěte si další informace o výběru [oblasti v](overview.md#supported-regions) článku Přehled.
+    >Přečtěte si další aspekty při výběru oblasti [zde](overview.md#supported-regions) v článku Přehled.
 
-1. Na stránce **vygenerovat skript** v rozevíracím seznamu **operační systém** vyberte operační systém, ve kterém bude skript spuštěn.
+1. Na stránce **Generovat skript** vyberte v rozevíracím seznamu **Operační systém** operační systém operační systém, ve které bude skript spuštěn.
 
-1. Pokud počítač komunikuje prostřednictvím proxy server pro připojení k Internetu, vyberte **Další: proxy server**. 
-1. Na kartě **proxy server** zadejte proxy server IP adresu nebo název a číslo portu, které bude počítač používat ke komunikaci s proxy server. Zadejte hodnotu ve formátu `http://<proxyURL>:<proxyport>`. 
-1. Vyberte **zkontrolovat a generovat**.
+1. Pokud počítač komunikuje přes proxy server pro připojení k Internetu, vyberte **další: Proxy server**. 
+1. Na kartě **Proxy server** zadejte adresu IP serveru proxy nebo název a číslo portu, které bude počítač používat ke komunikaci se serverem proxy. Zadejte hodnotu `http://<proxyURL>:<proxyport>`ve formátu . 
+1. Vyberte **Zkontrolovat + generovat**.
 
-1. Na kartě **Revize + generovat** zkontrolujte souhrnné informace a pak vyberte **Stáhnout**. Pokud stále potřebujete dělat změny, vyberte **Předchozí**.
+1. Na kartě **Revize + generovat** zkontrolujte souhrnné informace a pak vyberte **Stáhnout**. Pokud stále potřebujete provést změny, vyberte **Předchozí**.
 
-## <a name="install-and-validate-the-agent-on-windows"></a>Instalace a ověření agenta ve Windows
+## <a name="install-and-validate-the-agent-on-windows"></a>Instalace a ověření agenta v systému Windows
 
 ### <a name="install-manually"></a>Ruční instalace
 
-Agenta připojeného počítače můžete nainstalovat ručně spuštěním balíčku Instalační služba systému Windows *AzureConnectedMachineAgent. msi*. 
+Agenta připojeného počítače můžete nainstalovat ručně spuštěním balíčku Instalační služby systému Windows *AzureConnectedMachineAgent.msi*. 
 
 > [!NOTE]
-> * Chcete-li nainstalovat nebo odinstalovat agenta, je nutné mít oprávnění *správce* .
-> * Nejdřív musíte stáhnout a zkopírovat instalační balíček do složky na cílovém serveru nebo ze sdílené síťové složky. Pokud spustíte instalační balíček bez jakýchkoli možností, spustí se Průvodce instalací nástroje, který můžete použít k interaktivní instalaci agenta.
+> * Chcete-li nainstalovat nebo odinstalovat agenta, musíte mít oprávnění *správce.*
+> * Nejprve je nutné stáhnout a zkopírovat balíček Instalační služby do složky na cílovém serveru nebo ze sdílené síťové složky. Pokud spustíte balíček Instalační služba bez jakýchkoli možností, spustí se průvodce instalací, který můžete sledovat a nainstalovat agenta interaktivně.
 
-Pokud počítač potřebuje komunikovat prostřednictvím proxy server ke službě, po instalaci agenta musíte spustit příkaz, který je popsán dále v článku. Tím se nastaví proměnná prostředí proxy server systému `https_proxy`.
+Pokud počítač potřebuje komunikovat prostřednictvím proxy serveru ke službě, po instalaci agenta je třeba spustit příkaz, který je popsán dále v článku. Tím nastavíte proměnnou `https_proxy`prostředí systému proxy serveru .
 
-Následující tabulka obsahuje parametry, které podporují instalaci agenta z příkazového řádku.
+Pokud nejste obeznámeni s možnostmi příkazového řádku pro balíčky Instalační služby systému Windows, přečtěte si [standardní možnosti příkazového řádku Msiexec](https://docs.microsoft.com/windows/win32/msi/standard-installer-command-line-options) a [možnosti příkazového řádku Msiexec](https://docs.microsoft.com/windows/win32/msi/command-line-options).
 
-| Parametr | Popis |
-|:--|:--|
-| /? | Vrátí seznam možností příkazového řádku. |
-| /S | Provádí tichou instalaci bez zásahu uživatele. |
+Například spusťte instalační `/?` program s parametrem a zkontrolujte možnost nápovědy a rychléreference. 
 
-Pokud třeba chcete spustit instalační program s parametrem `/?`, zadejte `msiexec.exe /i AzureConnectedMachineAgent.msi /?`.
+```dos
+msiexec.exe /i AzureConnectedMachineAgent.msi /?
+```
 
-Soubory pro agenta připojeného počítače jsou ve výchozím nastavení nainstalovány ve *složce C:\Program Files\AzureConnectedMachineAgent* . Pokud se agent po dokončení instalace nepovede spustit, podívejte se do protokolů, kde najdete podrobnější informace o chybě. Adresář protokolu je *%ProgramFiles%\AzureConnectedMachineAgentAgent\logs*.
+Chcete-li agenta nainstalovat beze sušárna a vytvořit soubor protokolu instalace ve `C:\Support\Logs` složce, spusťte následující příkaz.
+
+```dos
+msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
+```
+
+Soubory agenta připojeného počítače jsou ve výchozím nastavení nainstalovány v *aplikaci C:\Program Files\AzureConnectedMachineAgent*. Pokud se agentovi nepodaří spustit po dokončení instalace, zkontrolujte v protokolech podrobné informace o chybě. Adresář protokolu je *%Programfiles%\AzureConnectedMachineAgent\logs*.
 
 ### <a name="install-with-the-scripted-method"></a>Instalace pomocí skriptované metody
 
@@ -82,11 +87,11 @@ Soubory pro agenta připojeného počítače jsou ve výchozím nastavení nains
 
 1. Otevřete příkazový řádek PowerShellu se zvýšenými oprávněními.
 
-1. Přejděte do složky nebo sdílené složky, do které jste zkopírovali skript, a spusťte ho na serveru spuštěním skriptu `./OnboardingScript.ps1`.
+1. Změňte na složku nebo sdílenou složku, do které jste skript `./OnboardingScript.ps1` zkopírovali, a spusťte jej na serveru spuštěním skriptu.
 
-### <a name="configure-the-agent-proxy-setting"></a>Konfigurace nastavení proxy agenta
+### <a name="configure-the-agent-proxy-setting"></a>Konfigurace nastavení proxy serveru agenta
 
-Chcete-li nastavit proměnnou prostředí proxy server, spusťte následující příkaz:
+Chcete-li nastavit proměnnou prostředí proxy serveru, spusťte následující příkaz:
 
 ```powershell
 # If a proxy server is needed, execute these commands with the proxy URL and port.
@@ -97,25 +102,25 @@ Restart-Service -Name himds
 ```
 
 >[!NOTE]
->Agent nepodporuje nastavení ověřování proxy serveru v této verzi Preview.
+>Agent nepodporuje nastavení ověřování proxy v tomto náhledu.
 >
 
 ### <a name="configure-agent-communication"></a>Konfigurace komunikace agenta
 
-Po instalaci agenta je nutné nakonfigurovat agenta, aby komunikoval se službou Azure ARC, spuštěním následujícího příkazu:
+Po instalaci agenta je třeba nakonfigurovat agenta pro komunikaci se službou Azure Arc spuštěním následujícího příkazu:
 
 `%ProgramFiles%\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "<resourceGroupName>" --tenant-id "<tenantID>" --location "<regionName>" --subscription-id "<subscriptionID>"`
 
-## <a name="install-and-validate-the-agent-on-linux"></a>Instalace a ověření agenta v systému Linux
+## <a name="install-and-validate-the-agent-on-linux"></a>Instalace a ověření agenta na Linuxu
 
-Agent připojeného počítače pro Linux je k dispozici v preferovaném formátu balíčku pro distribuci (. Ot./min. nebo. DEB), která je hostovaná v [úložišti balíčků](https://packages.microsoft.com/)Microsoftu. [Sada prostředků skriptu prostředí `Install_linux_azcmagent.sh`](https://aka.ms/azcmagent) provádí následující akce:
+Agent Connected Machine pro Linux je k dispozici v preferovaném formátu balíčku pro distribuci (. rpm nebo . DEB), který je hostován v [úložišti balíčků](https://packages.microsoft.com/)Microsoftu . [Sada skriptů `Install_linux_azcmagent.sh` prostředí](https://aka.ms/azcmagent) provádí následující akce:
 
-- Nakonfiguruje hostitelský počítač ke stažení balíčku agenta z packages.microsoft.com.
-- Nainstaluje balíček hybridního poskytovatele prostředků.
+- Nakonfiguruje hostitelský počítač tak, aby stáhl balíček agenta z packages.microsoft.com.
+- Nainstaluje balíček Hybrid Resource Provider.
 
-Volitelně můžete agenta nakonfigurovat pomocí informací o proxy serveru zahrnutím parametru `--proxy "{proxy-url}:{proxy-port}"`.
+Volitelně můžete nakonfigurovat agenta s informacemi `--proxy "{proxy-url}:{proxy-port}"` o serveru proxy zahrnutím parametru.
 
-Skript obsahuje také logiku pro identifikaci podporovaných a nepodporovaných distribucí a ověřuje oprávnění, která jsou nutná k provedení instalace. 
+Skript také obsahuje logiku k identifikaci podporovaných a nepodporovaných distribucí a ověřuje oprávnění, která jsou potřebná k provedení instalace. 
 
 Následující příklad stáhne agenta a nainstaluje ho:
 
@@ -127,7 +132,7 @@ wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
 bash ~/Install_linux_azcmagent.sh
 ```
 
-Chcete-li stáhnout a nainstalovat agenta, včetně parametru `--proxy` pro konfiguraci agenta pro komunikaci přes proxy server, spusťte následující příkazy:
+Chcete-li stáhnout a nainstalovat `--proxy` agenta, včetně parametru pro konfiguraci agenta pro komunikaci prostřednictvím serveru proxy, spusťte následující příkazy:
 
 ```bash
 # Download the installation package.
@@ -139,70 +144,18 @@ bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 
 ### <a name="configure-the-agent-communication"></a>Konfigurace komunikace agenta
 
-Když nainstalujete agenta, nakonfigurujte ho tak, aby komunikoval se službou Azure ARC, spuštěním následujícího příkazu:
+Po instalaci agenta ho nakonfigurujte tak, aby komunikoval se službou Azure Arc, spuštěním následujícího příkazu:
 
 `/opt/azcmagent/bin/azcmagent.exe" connect --resource-group "<resourceGroupName>" --tenant-id "<tenantID>" --location "<regionName>" --subscription-id "<subscriptionID>"`
 
-## <a name="verify-the-connection-with-azure-arc"></a>Ověření připojení pomocí ARC Azure
+## <a name="verify-the-connection-with-azure-arc"></a>Ověření připojení k Azure Arc
 
-Po nainstalování agenta a jeho konfiguraci pro připojení k Azure ARC pro servery (Preview), navštivte Azure Portal a ověřte, že se server úspěšně připojil. Zobrazte počítače v [Azure Portal](https://aka.ms/hybridmachineportal).
+Po instalaci agenta a nakonfigurajete ho pro připojení k Azure Arc pro servery (preview), přejděte na portál Azure a ověřte, že server byl úspěšně připojen. Zobrazení počítačů na [webu Azure Portal](https://aka.ms/hybridmachineportal).
 
 ![Úspěšné připojení k serveru](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
-## <a name="clean-up"></a>Vyčištění
-
-Pokud chcete odpojit počítač od Arc Azure pro servery (Preview), udělejte toto:
-
-1. Kliknutím na [Azure Portal](https://aka.ms/hybridmachineportal)otevřete položku Azure ARC pro servery (Preview).
-
-1. Vyberte počítač v seznamu, vyberte tři tečky ( **...** ) a pak vyberte **Odstranit**.
-
-1. Chcete-li odinstalovat agenta systému Windows z počítače, postupujte takto:
-
-    a. Přihlaste se k počítači pomocí účtu, který má oprávnění správce.  
-    b. V **Ovládacích panelech**vyberte **programy a funkce**.  
-    c. V **programech a funkcích**vyberte **Azure Connected Machine agent**, vyberte **odinstalovat**a pak vyberte **Ano**.  
-
-    >[!NOTE]
-    > Průvodce instalací agenta můžete také spustit dvojitým kliknutím na balíček instalačního programu **AzureConnectedMachineAgent. msi** .
-
-    Pokud chcete odebrat skript odebrání agenta, můžete použít následující příklad, který načte kód produktu a odinstaluje agenta pomocí příkazového řádku Msiexec. exe-`msiexec /x {Product Code}`. Postup:  
-    
-    a. Otevřete Editor registru.  
-    b. V části klíč registru `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall`vyhledejte a zkopírujte identifikátor GUID kódu produktu.  
-    c. Pak můžete agenta odinstalovat pomocí programu Msiexec.
-
-    Následující příklad ukazuje, jak odinstalovat agenta:
-
-    ```powershell
-    Get-ChildItem -Path HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall | `
-    Get-ItemProperty | `
-    Where-Object {$_.DisplayName -eq "Azure Connected Machine Agent"} | `
-    ForEach-Object {MsiExec.exe /x "$($_.PsChildName)" /qn}
-    ```
-
-1. Pokud chcete odinstalovat agenta pro Linux, použitý příkaz závisí na operačním systému Linux.
-
-    - V případě Ubuntu spusťte následující příkaz:
-
-      ```bash
-      sudo apt purge azcmagent
-      ```
-
-    - Pro RHEL, CentOS a Amazon Linux spusťte následující příkaz:
-
-      ```bash
-      sudo yum remove azcmagent
-      ```
-
-    - V případě SLES spusťte následující příkaz:
-
-      ```bash
-      sudo zypper remove azcmagent
-      ```
-
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se, jak spravovat počítač pomocí [Azure Policy](../../governance/policy/overview.md), jako je [Konfigurace hosta](../../governance/policy/concepts/guest-configuration.md)virtuálního počítače, ověření, že se počítač hlásí k očekávanému log Analyticsmu pracovnímu prostoru, povolit monitorování pomocí [Azure monitor s virtuálními počítači](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)a mnohem víc.
+- Zjistěte, jak spravovat počítač pomocí [Zásad Azure](../../governance/policy/overview.md), pro takové věci, jako je [konfigurace hosta](../../governance/policy/concepts/guest-configuration.md)virtuálního počítače , ověření, že počítač hlásí očekávanému pracovnímu prostoru Log Analytics, povolit monitorování pomocí [Azure Monitoru pomocí virtuálních počítačů](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)a mnoho dalšího.
 
-- Přečtěte si další informace o [agentovi Log Analytics](../../azure-monitor/platform/log-analytics-agent.md). Agent Log Analytics pro systém Windows a Linux je nutný, pokud chcete aktivně monitorovat operační systém a úlohy běžící v počítači, spravovat je pomocí runbooků nebo řešení automatizace, jako je Update Management, nebo použít jiné služby Azure, jako je [Azure Security Center](../../security-center/security-center-intro.md).
+- Další informace o [agentovi Analýzy protokolů](../../azure-monitor/platform/log-analytics-agent.md). Agent Log Analytics pro Windows a Linux je vyžadován, pokud chcete proaktivně sledovat operační systém a úlohy spuštěné na počítači, spravovat jej pomocí runbooků automation nebo řešení, jako je správa aktualizací, nebo používat jiné služby Azure, jako je [Azure Security Center](../../security-center/security-center-intro.md).

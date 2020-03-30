@@ -1,38 +1,38 @@
 ---
-title: Připojení k portálu Azure Certified for IoT | Microsoft Docs
-description: Připojte se k portálu Azure Certified for IoT.
+title: Na palubě portálu Azure Certified for IoT | Dokumenty společnosti Microsoft
+description: Na palubě k portálu Azure Certified for IoT.
 author: Philmea
 manager: philmea
 ms.service: iot-pnp
 services: iot-pnp
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/26/2019
 ms.author: philmea
-ms.openlocfilehash: c73848af299f87edf60ab36713d09ad4421b18fd
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 4969c4f10787fa9b2d601d5b12edf823d1987301
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531226"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80159128"
 ---
 # <a name="onboard-to-the-azure-certified-for-iot-portal"></a>Nasazení do portálu Azure Certified for IoT
 
-[Portál Azure Certified for IoT](https://aka.ms/ACFI) můžete použít k těmto akcím:
+[Na portálu Azure Certified for IoT](https://aka.ms/ACFI) můžete použít:
 
-- Dokončete proces certifikace pro vaše zařízení IoT.
-- Vyhledá v modelu IoT technologie Plug and Play ve verzi Preview možnosti zařízení. Tyto modely můžete použít k rychlému sestavení zařízení s připraveným pro IoT a jejich integraci s řešeními.
+- Dokončete certifikační proces pro vaše zařízení IoT.
+- Najděte modely možností zařízení IoT Plug and Play Preview. Pomocí těchto modelů můžete rychle vytvářet zařízení připravená pro IoT a integrovat je s řešeními.
 - Publikujte model schopností zařízení do veřejného úložiště.
 
-## <a name="sign-in"></a>Přihlásit se
+## <a name="sign-in"></a>Přihlášení
 
-Pomocí _pracovního účtu_ Microsoft se přihlaste k portálu [Azure Certified for IoT Portal](https://aka.ms/ACFI) . Když se přihlásíte, portál zkontroluje vaše členství v partnerském centru Microsoftu:
+Pomocí svého _pracovního účtu_ Microsoft se přihlaste k [portálu portálu Azure Certified for IoT Portal.](https://aka.ms/ACFI) Portál kontroluje vaše členství v Centru partnerů Microsoftu při přihlášení:
 
-- Pokud je vaše organizace už členem [partnerského centra Microsoftu](https://docs.microsoft.com/partner-center/), máte přístup ke všem funkcím na portálu.
-- Pokud vaše organizace není členem [partnerského centra Microsoftu](https://docs.microsoft.com/partner-center/), můžete spustit testy certifikace a procházet úložiště modelu schopností zařízení. Vaše zařízení nemůžete publikovat v katalogu zařízení s certifikací IoT.
-- Pokud se zobrazí zpráva s oznámením, že chybí ID Microsoft Partner Network, měli byste [vytvořit účet partnerského centra](https://docs.microsoft.com/partner-center/mpn-create-a-partner-center-account). Po schválení účtu se můžete vrátit na portál a publikovat své zařízení. Další informace najdete v tématu [Nejčastější dotazy k partnerskému centru](https://support.microsoft.com/help/4340639/partner-center-account-faqs).
+- Pokud je vaše organizace již členem [centra Microsoft Partner Center](https://docs.microsoft.com/partner-center/), máte přístup ke všem funkcím na portálu.
+- Pokud vaše organizace není členem [Centra partnerů společnosti Microsoft](https://docs.microsoft.com/partner-center/), můžete spustit certifikační testy a procházet úložiště modelů schopností zařízení. Zařízení nelze publikovat v katalogu certifikovaných zařízení IoT.
+- Pokud se zobrazí oznámení, že chybí ID sítě partnerů společnosti Microsoft, měli byste [si vytvořit účet Centra partnerů](https://docs.microsoft.com/partner-center/mpn-create-a-partner-center-account). Po schválení účtu se můžete vrátit na portál a publikovat zařízení. Další informace naleznete v [nejčastějších dotazech k Partnerskému centru](https://support.microsoft.com/help/4340639/partner-center-account-faqs).
 
-Před publikováním zařízení do katalogu zařízení s certifikací IoT si přečtěte a přijměte smlouvu k programu. Smlouvu najdete na stránce nastavení na portálu Azure Certified for IoT.
+Než zařízení publikujete do katalogu certifikovaných zařízení IoT, přečtěte si a přijměte programovou smlouvu. Smlouvu najdete na stránce nastavení na portálu Azure Certified for IoT Portal.
 
 ## <a name="next-steps"></a>Další kroky
 
-Navržený další krok se naučíte, jak [Odeslat zařízení IoT technologie Plug and Play pro certifikaci](tutorial-certification-test.md).
+Dalším navrhovaným krokem je naučit se [odesílat zařízení IoT Plug and Play pro certifikaci](tutorial-certification-test.md).

@@ -1,18 +1,18 @@
 ---
-title: Chyby rezervovaného názvu prostředku
-description: Popisuje, jak vyřešit chyby při poskytování názvu prostředku, který obsahuje rezervované slovo.
+title: Chyby názvu rezervovaného prostředku
+description: Popisuje, jak vyřešit chyby při poskytování názvu prostředku, který obsahuje vyhrazené slovo.
 ms.topic: troubleshooting
 ms.date: 11/08/2017
 ms.openlocfilehash: e76f4bf9bfee7de6e7523d69acf1388d2dd80e93
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75477626"
 ---
-# <a name="resolve-reserved-resource-name-errors"></a>Vyřešit chyby názvů rezervovaných prostředků
+# <a name="resolve-reserved-resource-name-errors"></a>Vyřešit chyby názvu rezervovaného prostředku
 
-Tento článek popisuje chybu, se kterou se setkáte při nasazování prostředku, který obsahuje rezervované slovo v názvu.
+Tento článek popisuje chybu, na kterou narazíte při nasazování prostředku, který obsahuje vyhrazené slovo v jeho názvu.
 
 ## <a name="symptom"></a>Příznak
 
@@ -25,46 +25,46 @@ Message=The resource name <resource-name> or a part of the name is a trademarked
 
 ## <a name="cause"></a>Příčina
 
-Prostředky, které mají veřejný koncový bod, nemůžou v názvu používat vyhrazená slova nebo ochranné známky.
+Prostředky, které mají veřejný koncový bod, nemohou v názvu používat vyhrazená slova nebo ochranné známky.
 
-Jsou vyhrazena následující slova:
+Jsou vyhrazena tato slova:
 
 * PŘÍSTUP
-* AZURE
-* ZJIŠŤUJE
-* BIZSPARK
-* BIZTALK
-* CORTANA
-* DIRECTX
-* DOTNET
-* DYNAMICS
+* Azure
+* Bing
+* Bizspark
+* Biztalk
+* Cortana
+* Directx
+* Dotnet
+* Dynamics
 * EXCEL
-* VÝMĚN
-* Díky
-* GROOVE
+* Exchange
+* Forefront
+* Groove
 * HOLOLENS
 * HYPERV
-* KINECT
-* LYNC
+* Kinect
+* Lync
 * MSDN
 * O365
-* OFFICE
+* Office
 * OFFICE365
-* ONEDRIVEM
-* APLIKACÍ
-* APL
-* APLIKACÍCH
-* SERVEREM
-* SI
-* VISIU
+* ONEDRIVE
+* Aplikace onenote
+* Aplikace outlook
+* Powerpoint
+* Sharepoint
+* Skype
+* Aplikace visio
 * VISUALSTUDIO
 
-Následující slova nelze použít buď jako celé slovo, nebo jako podřetězec v názvu:
+Následující slova nelze použít jako celé slovo nebo podřetězec v názvu:
 
-* HLAS
-* MICROSOFT
-* SYSTÉMU
-* OVLÁDÁNÍ
+* Přihlášení
+* Microsoft
+* Windows
+* Xbox
 
 ## <a name="solution"></a>Řešení
 

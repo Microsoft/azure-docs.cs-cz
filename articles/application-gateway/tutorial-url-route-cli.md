@@ -1,6 +1,6 @@
 ---
 title: Směrování webového provozu na základě adresy URL – Azure CLI
-description: V tomto článku se dozvíte, jak směrovat webový provoz na základě adresy URL na konkrétní škálovatelné fondy serverů pomocí Azure CLI.
+description: V tomto článku se dozvíte, jak směrovat webový provoz na základě adresy URL na konkrétní škálovatelné fondy serverů pomocí azure CLI.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,15 +9,15 @@ ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: b6bc0b00579bdef0a358f756b8cf2b6034aca017
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68688181"
 ---
-# <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Směrování webového provozu na základě adresy URL pomocí Azure CLI
+# <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Směrování webového provozu na základě adresy URL pomocí příkazového příkazu k příkazu Azure
 
-Jako správce IT, který má na starosti správu webového provozu, chcete zákazníkům nebo uživatelům pomoct co nejrychleji získat informace, které potřebují. Jedním ze způsobů, jak můžete jejich prostředí optimalizovat, je směrovat různé druhy webového provozu do různých prostředků serveru. V tomto článku se dozvíte, jak pomocí Azure CLI nastavit a nakonfigurovat Application Gateway směrování pro různé typy provozu z vaší aplikace. Toto směrování pak bude na základě adresy URL směrovat provoz do různých fondů serverů.
+Jako správce IT, který má na starosti správu webového provozu, chcete zákazníkům nebo uživatelům pomoct co nejrychleji získat informace, které potřebují. Jedním ze způsobů, jak můžete jejich prostředí optimalizovat, je směrovat různé druhy webového provozu do různých prostředků serveru. Tento článek ukazuje, jak pomocí rozhraní příkazového příkazu Azure nastavit a nakonfigurovat směrování aplikační brány pro různé typy provozu z vaší aplikace. Toto směrování pak bude na základě adresy URL směrovat provoz do různých fondů serverů.
 
 ![Příklad směrování na základě adresy URL](./media/tutorial-url-route-cli/scenario.png)
 
@@ -31,13 +31,13 @@ V tomto článku získáte informace o těchto tématech:
 > * Vytvoření škálovacích sad pro jednotlivé fondy, aby se mohly automaticky škálovat
 > * Spuštění testu, abyste mohli ověřit směrování různých typů provozu do správných fondů
 
-Pokud budete chtít, můžete tento postup dokončit pomocí [Azure PowerShell](tutorial-url-route-powershell.md) nebo [Azure Portal](create-url-route-portal.md).
+Pokud chcete, můžete tento postup provést pomocí [Azure PowerShellu](tutorial-url-route-powershell.md) nebo [portálu Azure](create-url-route-portal.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte spustit Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat příkaz cli místně, tento článek vyžaduje spuštění Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -77,7 +77,7 @@ az network public-ip create \
 
 ## <a name="create-the-app-gateway-with-a-url-map"></a>Vytvoření aplikační brány s mapou adres URL
 
-Pomocí příkazu `az network application-gateway create` vytvořte aplikační bránu *myAppGateway*. Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. Aplikační brána je přiřazena k *myAGSubnet* a *myAGPublicIPAddress*.
+Pomocí příkazu `az network application-gateway create` vytvořte aplikační bránu *myAppGateway*. Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. Aplikační brána je *přiřazena myAGSubnet* a *myAGPublicIPAddress*.
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -167,7 +167,7 @@ az network application-gateway url-path-map rule create \
   --address-pool videoBackendPool
 ```
 
-### <a name="add-a-routing-rule"></a>Přidat pravidlo směrování
+### <a name="add-a-routing-rule"></a>Přidání pravidla směrování
 
 Pravidlo směrování přidruží mapy adres URL k dříve vytvořenému naslouchacímu procesu. Pomocí příkazu `az network application-gateway rule create` přidejte pravidlo *rule2*.
 
@@ -184,7 +184,7 @@ az network application-gateway rule create \
 
 ## <a name="create-virtual-machine-scale-sets"></a>Vytvoření škálovacích sad virtuálních počítačů
 
-V tomto článku vytvoříte tři sady škálování virtuálních počítačů, které podporují tři back-end fondy, které jste vytvořili. Vytvořené škálovací sady se jmenují *myvmss1*, *myvmss2* a *myvmss3*. Každá škálovací sada obsahuje dvě instance virtuálních počítačů, na které nainstalujete server NGINX.
+V tomto článku vytvoříte tři škálovací sady virtuálních strojů, které podporují tři back-endové fondy, které jste vytvořili. Vytvořené škálovací sady se jmenují *myvmss1*, *myvmss2* a *myvmss3*. Každá škálovací sada obsahuje dvě instance virtuálních počítačů, na které nainstalujete server NGINX.
 
 ```azurecli-interactive
 for i in `seq 1 3`; do
@@ -234,9 +234,9 @@ for i in `seq 1 3`; do
 done
 ```
 
-## <a name="test-the-application-gateway"></a>Otestování aplikační brány
+## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
 
-K získání veřejné IP adresy aplikační brány použijte příkaz az network public-ip show. Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. Například, `http://40.121.222.19`, `http://40.121.222.19:8080/images/test.htm`nebo. `http://40.121.222.19:8080/video/test.htm`
+K získání veřejné IP adresy aplikační brány použijte příkaz az network public-ip show. Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. Například `http://40.121.222.19`, `http://40.121.222.19:8080/images/test.htm`, `http://40.121.222.19:8080/video/test.htm`nebo .
 
 ```azurecli-interactive
 az network public-ip show \
@@ -246,13 +246,13 @@ az network public-ip show \
   --output tsv
 ```
 
-![Otestování základní adresy URL v aplikační bráně](./media/tutorial-url-route-cli/application-gateway-nginx.png)
+![Testování základní adresy URL v aplikační bráně](./media/tutorial-url-route-cli/application-gateway-nginx.png)
 
-Změňte adresu URL na http://&lt;IP-address&gt;: 8080/images/test.html, &lt;nahraďte svou IP adresu IP-address&gt;a měli byste vidět něco jako v následujícím příkladu:
+Změňte adresu&lt;URL na&gt;http:// ip-adresu :8080/images/test.html, která nahradí ip adresu pro &lt;ip adresu&gt;, a měli byste vidět něco jako v následujícím příkladu:
 
 ![Testování adresy URL obrázků v aplikační bráně](./media/tutorial-url-route-cli/application-gateway-nginx-images.png)
 
-Změňte adresu URL na http://&lt;IP-address&gt;: 8080/video/test.html, &lt;nahraďte svou IP adresu IP-address&gt;a měli byste vidět podobné jako v následujícím příkladu.
+Změňte adresu&lt;URL na&gt;http:// ip-adresu :8080/video/test.html, která nahradí vaši IP adresu pro &lt;IP adresu&gt;, a měli byste vidět něco jako v následujícím příkladu.
 
 ![Testování adresy URL videa v aplikační bráně](./media/tutorial-url-route-cli/application-gateway-nginx-video.png)
 

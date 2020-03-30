@@ -1,13 +1,13 @@
 ---
-title: Konfigurace požadovaného stavu pro Azure – přehled
-description: Naučte se používat obslužnou rutinu rozšíření Microsoft Azure pro konfiguraci požadovaného stavu prostředí PowerShell (DSC). Tento článek obsahuje požadavky, architekturu a rutiny.
+title: Přehled konfigurace požadovaného stavu pro Azure
+description: Přečtěte si, jak používat obslužnou rutinu rozšíření Microsoft Azure pro konfiguraci požadovaného stavu prostředí PowerShell (DSC). Článek obsahuje požadavky, architekturu a rutiny.
 services: virtual-machines-windows
 documentationcenter: ''
 author: bobbytreed
 manager: carmonm
 editor: ''
 tags: azure-resource-manager
-keywords: dsc
+keywords: Dsc
 ms.assetid: bbacbc93-1e7b-4611-a3ec-e3320641f9ba
 ms.service: virtual-machines-windows
 ms.topic: article
@@ -15,107 +15,107 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: b6b9d0f146fd98fd90aa8858e522449be571842c
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: dcb63031e6c033ce2372dc05e588b0f54cb1609f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293160"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294804"
 ---
-# <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Úvod k obslužné rutině rozšíření konfigurace požadovaného stavu Azure
+# <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Úvod k obslužné rutině rozšíření Azure Desired State Configuration
 
-Agent virtuálního počítače Azure a přidružená rozšíření jsou součástí služby infrastruktury Microsoft Azure. Rozšíření virtuálních počítačů jsou softwarové komponenty, které zvyšují funkčnost virtuálních počítačů a zjednodušují různé operace správy virtuálních počítačů.
+Agent virtuálních počítačích Azure a přidružená rozšíření jsou součástí infrastrukturních služeb Microsoft Azure. Rozšíření virtuálních počítače jsou softwarové součásti, které rozšiřují funkce virtuálních zařízení a zjednodušují různé operace správy virtuálních zařízení.
 
-Primárním případem použití rozšíření DSC (Konfigurace požadovaného stavu) Azure je zavedení virtuálního počítače do [služby konfigurace stavu Azure Automation (DSC)](../../automation/automation-dsc-overview.md).
-Služba poskytuje [výhody](/powershell/scripting/dsc/managing-nodes/metaConfig#pull-service) , které zahrnují průběžnou správu konfigurace virtuálních počítačů a integraci s jinými operačními nástroji, jako je monitorování Azure.
-Použití rozšíření k registraci virtuálního počítače do služby poskytuje flexibilní řešení, které funguje i v rámci předplatných Azure.
+Primární případ použití pro rozšíření Azure Desired State Configuration (DSC) je zavést virtuální počítač do [služby Azure Automation State Configuration (DSC).](../../automation/automation-dsc-overview.md)
+Služba poskytuje [výhody,](/powershell/scripting/dsc/managing-nodes/metaConfig#pull-service) které zahrnují průběžnou správu konfigurace virtuálních počítačů a integraci s dalšími provozními nástroji, jako je například Monitorování Azure.
+Použití rozšíření pro registraci virtuálních her do služby poskytuje flexibilní řešení, které funguje i napříč předplatnými Azure.
 
-Rozšíření DSC můžete použít nezávisle na službě Automatizace DSC.
-Tím se ale do virtuálního počítače zasune jenom konfigurace.
-Ve virtuálním počítači není k dispozici žádné Průběžné vytváření sestav, jiné než místně.
+Rozšíření DSC můžete použít nezávisle na službě Automation DSC.
+To však bude pouze vysunout konfiguraci do virtuálního počítače.
+Žádné průběžné vytváření sestav je k dispozici, než místně ve virtuálním ms.
 
-Tento článek poskytuje informace o obou scénářích: použití rozšíření DSC pro službu Automation pro automatizaci a používání rozšíření DSC jako nástroje pro přiřazení konfigurací k virtuálním počítačům pomocí sady Azure SDK.
+Tento článek obsahuje informace o obou scénářích: použití rozšíření DSC pro automatizaci onboarding a použití rozšíření DSC jako nástroj pro přiřazení konfigurace virtuálních počítačů pomocí Azure SDK.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- **Místní počítač**: Pokud chcete pracovat s rozšířením virtuálního počítače Azure, musíte použít Azure Portal nebo sadu Azure PowerShell SDK.
-- **Agent hosta**: virtuální počítač Azure NAKONFIGUROVANÝ konfigurací DSC musí být operační systém, který podporuje Windows Management Framework (WMF) 4,0 nebo novější. Úplný seznam podporovaných verzí operačních systémů najdete v části [Historie verzí rozšíření DSC](/powershell/scripting/dsc/getting-started/azuredscexthistory).
+- **Místní počítač:** Chcete-li pracovat s rozšířením virtuálního počítače Azure, musíte použít buď portál Azure Nebo Azure PowerShell SDK.
+- **Agent hosta**: Virtuální počítač Azure, který je nakonfigurovaný konfigurací DSC, musí být operační systém, který podporuje rozhraní WMF (Windows Management Framework) 4.0 nebo novější. Úplný seznam podporovaných verzí operačního systému naleznete v [historii verzí rozšíření DSC](/powershell/scripting/dsc/getting-started/azuredscexthistory).
 
-## <a name="terms-and-concepts"></a>Pojmy a koncepty
+## <a name="terms-and-concepts"></a>Pojmy a pojmy
 
-V této příručce se předpokládá znalost s následujícími koncepty:
+Tato příručka předpokládá znalost následujících konceptů:
 
-- **Konfigurace**: dokument konfigurace DSC.
-- **Uzel**: cíl pro konfiguraci DSC. V tomto dokumentu se *uzel* vždy odkazuje na virtuální počítač Azure.
-- **Konfigurační data**: soubor. psd1, který obsahuje data o životním prostředí pro konfiguraci.
+- **Konfigurace**: Konfigurační dokument DSC.
+- **Uzel**: Cíl pro konfiguraci DSC. V tomto dokumentu *uzel* vždy odkazuje na virtuální počítač Azure.
+- **Konfigurační data**: Soubor PSD1, který obsahuje environmentální data pro konfiguraci.
 
 ## <a name="architecture"></a>Architektura
 
-Rozšíření Azure DSC využívá architekturu agenta virtuálního počítače Azure k doručování, přijetí a vytváření sestav o konfiguracích DSC spuštěných na virtuálních počítačích Azure. Rozšíření DSC přijímá konfigurační dokument a sadu parametrů. Pokud není zadán žádný soubor, je do rozšíření vložen [výchozí konfigurační skript](#default-configuration-script) . Výchozí konfigurační skript se používá pouze k nastavení metadat v [místních Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaConfig).
+Rozšíření Azure DSC používá rozhraní agenta virtuálních počítačů Azure k doručování, uzákonění a sestavování konfigurací DSC spuštěných na virtuálních počítačích Azure. Rozšíření DSC přijímá konfigurační dokument a sadu parametrů. Pokud není k dispozici žádný soubor, je s příponou vložen [výchozí konfigurační skript.](#default-configuration-script) Výchozí konfigurační skript se používá pouze k nastavení metadat v [místním konfiguračním správci](/powershell/scripting/dsc/managing-nodes/metaConfig).
 
-Při prvním volání rozšíření se nainstaluje verze WMF pomocí následující logiky:
+Při prvním volání rozšíření nainstaluje verzi wmf pomocí následující logiky:
 
-- Pokud je operačním systémem virtuálního počítače Azure Windows Server 2016, není provedena žádná akce. V systému Windows Server 2016 již je nainstalována nejnovější verze prostředí PowerShell.
-- Pokud je zadána vlastnost **wmfVersion** , je nainstalována verze WMF, pokud není tato verze kompatibilní s operačním systémem virtuálního počítače.
-- Pokud není zadána žádná vlastnost **wmfVersion** , je nainstalována nejnovější příslušná verze WMF.
+- Pokud je operační systém Azure VM Windows Server 2016, nepodnikne se žádná akce. Windows Server 2016 už má nainstalovanou nejnovější verzi PowerShellu.
+- Pokud je zadána vlastnost **wmfVersion,** je nainstalována tato verze WMF, pokud tato verze není nekompatibilní s os virtuálního zařízení.
+- Pokud není zadána žádná vlastnost **wmfVersion,** je nainstalována nejnovější příslušná verze wmf.
 
-Instalace WMF vyžaduje restart. Po restartování bude rozšíření stahovat soubor zip, který je zadán ve vlastnosti **modulesUrl** , pokud je k dispozici. Pokud je toto umístění v úložišti objektů BLOB v Azure, můžete pro přístup k souboru zadat token SAS ve vlastnosti **sasToken** . Po stažení a rozbalení souboru. zip se funkce konfigurace definovaná v **configurationFunction** spustí a vygeneruje soubor. mof ([Formát MOF (Managed Object Format)](https://docs.microsoft.com/windows/win32/wmisdk/managed-object-format--mof-)). Rozšíření potom spustí `Start-DscConfiguration -Force` pomocí generovaného souboru. mof. Rozšíření zachytí výstup a zapíše ho do kanálu stavu Azure.
+Instalace wmf vyžaduje restartování. Po restartování rozšíření stáhne soubor ZIP, který je zadán ve **vlastnosti modulesUrl,** pokud je k dispozici. Pokud je toto umístění v úložišti objektů Blob Azure, můžete zadat token SAS ve vlastnosti **sasToken** pro přístup k souboru. Po stažení a rozbalení .zip se spustí konfigurační funkce definovaná v **configurationFunction,** aby se vygeneroval soubor .mof([Managed Object Format).](https://docs.microsoft.com/windows/win32/wmisdk/managed-object-format--mof-) Přípona `Start-DscConfiguration -Force` se pak spustí pomocí generovaného souboru MOF. Rozšíření zachytí výstup a zapíše jej do kanálu stavu Azure.
 
 ### <a name="default-configuration-script"></a>Výchozí konfigurační skript
 
-Rozšíření Azure DSC obsahuje výchozí konfigurační skript, který se má použít při připojování virtuálního počítače ke službě Azure Automation DSC. Parametry skriptu jsou zarovnané s konfigurovatelnými vlastnostmi [místních Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaConfig). Parametry skriptu najdete v tématu [výchozí konfigurační skript](dsc-template.md#default-configuration-script) v [požadovaném rozšíření konfigurace stavu pomocí šablon Azure Resource Manager](dsc-template.md). Úplný skript najdete v tématu šablona pro [rychlý Start Azure v GitHubu](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true).
+Rozšíření Azure DSC obsahuje výchozí konfigurační skript, který je určen pro použití při napalubě virtuálního počítače do služby Azure Automation DSC. Parametry skriptu jsou zarovnány s konfigurovatelnými vlastnostmi [nástroje Local Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaConfig). Parametry skriptu najdete [v tématu Výchozí konfigurační skript](dsc-template.md#default-configuration-script) v [rozšíření Konfigurace požadovaného stavu se šablonami Azure Resource Manageru](dsc-template.md). Úplný skript najdete [v šabloně azure quickstart na GitHubu](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true).
 
-## <a name="information-for-registering-with-azure-automation-state-configuration-dsc-service"></a>Informace k registraci ve službě Azure Automation State Configuration (DSC)
+## <a name="information-for-registering-with-azure-automation-state-configuration-dsc-service"></a>Informace pro registraci ve službě Azure Automation State Configuration (DSC)
 
-Při použití rozšíření DSC k registraci uzlu se službou konfigurace stavu se musí zadat tři hodnoty.
+Při použití rozšíření DSC zaregistrovat uzel se službou konfigurace stavu, bude nutné zadat tři hodnoty.
 
 - RegistrationUrl – adresa https účtu Azure Automation
-- RegistrationKey – sdílený tajný klíč, který se používá k registraci uzlů u služby
-- NodeConfigurationName – název konfigurace uzlu (MOF), který se má vyžádat od služby za účelem konfigurace role serveru.
+- RegistrationKey - sdílený tajný klíč používaný k registraci uzlů u služby
+- NodeConfigurationName - název konfigurace uzlu (MOF) pro vyžádat ze služby ke konfiguraci role serveru
 
-Tyto informace se dají zobrazit v [Azure Portal](../../automation/automation-dsc-onboarding.md#azure-portal) nebo můžete použít PowerShell.
+Tyto informace se můžou vidět na [webu Azure Portal](../../automation/automation-dsc-onboarding.md#onboard-a-vm-using-azure-portal) nebo můžete použít PowerShell.
 
 ```powershell
 (Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).Endpoint
 (Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).PrimaryKey
 ```
 
-V případě názvu konfigurace uzlu se ujistěte, že konfigurace uzlu existuje v konfiguraci stavu Azure.  Pokud tomu tak není, nasazení rozšíření vrátí chybu.  Také se ujistěte, že používáte název *konfigurace uzlu* , a ne konfiguraci.
-Konfigurace je definována ve skriptu, který se používá [ke kompilaci konfigurace uzlu (soubor MOF)](https://docs.microsoft.com/azure/automation/automation-dsc-compile).
-Název bude vždycky konfigurace následovaná tečkou `.` a buď `localhost` nebo konkrétního názvu počítače.
+Pro název konfigurace uzlu se ujistěte, že konfigurace uzlu existuje v konfiguraci stavu Azure.  Pokud tomu tak není, nasazení rozšíření vrátí selhání.  Také se ujistěte, že používáte název *konfigurace uzlu* a nikoli konfigurace.
+Konfigurace je definována ve skriptu, který se používá [ke kompilaci konfigurace uzlu (soubor MOF).](https://docs.microsoft.com/azure/automation/automation-dsc-compile)
+Název bude vždy konfigurace následovaná `.` tečkou `localhost` a buď nebo určitým názvem počítače.
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>Rozšíření DSC v šablonách Správce prostředků
 
-Ve většině scénářů Správce prostředků šablony nasazení očekávaný způsob, jak pracovat s rozšířením DSC. Další informace a příklady, jak zahrnout rozšíření DSC do šablon nasazení Správce prostředků naleznete v tématu [rozšíření konfigurace požadovaného stavu pomocí šablon Azure Resource Manager](dsc-template.md).
+Ve většině scénářů jsou šablony nasazení Správce prostředků očekávaným způsobem práce s rozšířením DSC. Další informace a příklady, jak zahrnout rozšíření DSC v šablonách nasazení Správce prostředků, najdete v [tématu rozšíření Konfigurace požadovaného stavu se šablonami Azure Resource Manager](dsc-template.md).
 
-## <a name="dsc-extension-powershell-cmdlets"></a>Rutiny PowerShellu rozšíření DSC
+## <a name="dsc-extension-powershell-cmdlets"></a>Rutiny powershellu rozšíření DSC
 
-Rutiny PowerShellu, které se používají ke správě rozšíření DSC, se nejlépe použijí při řešení potíží s interaktivním řešením a shromažďování informací. Rutiny můžete použít k balení, publikování a monitorování nasazení rozšíření DSC. Rutiny pro rozšíření DSC se ještě neaktualizovaly, aby fungovaly s [výchozím konfiguračním skriptem](#default-configuration-script).
+Rutiny prostředí PowerShell, které se používají ke správě rozšíření DSC, se nejlépe používají v interaktivních scénářích řešení potíží a shromažďování informací. Rutiny můžete použít k balení, publikování a monitorování nasazení rozšíření DSC. Rutiny pro rozšíření DSC ještě nejsou aktualizovány pro práci s [výchozím konfiguračním skriptem](#default-configuration-script).
 
-Rutina **Publish-AzVMDscConfiguration** přebírá v konfiguračním souboru, hledá závislé prostředky DSC a pak vytvoří soubor. zip. Soubor. zip obsahuje konfiguraci a prostředky DSC, které jsou potřeba k tomu, aby se konfigurace přijala. Rutina může balíček také vytvořit místně pomocí parametru *-OutputArchivePath* . V opačném případě rutina publikuje soubor. zip do úložiště objektů BLOB a pak ho zabezpečí pomocí tokenu SAS.
+Rutina **Publish-AzVMDscConfiguration** pořídí konfigurační soubor, prohledá jej pro závislé prostředky DSC a potom vytvoří soubor ZIP. Soubor ZIP obsahuje konfigurace a DSC prostředky, které jsou potřebné k provedení konfigurace. Rutina můžete také vytvořit balíček místně pomocí *parametru -OutputArchivePath.* V opačném případě rutina publikuje soubor ZIP do úložiště objektů blob a pak jej zabezpečí tokenem SAS.
 
-Konfigurační skript. ps1, který rutina vytvoří, je v souboru. zip v kořenovém adresáři složky archivu. Složka modulu je umístěná ve složce archivu v prostředcích.
+Konfigurační skript PS1, který rutina vytvoří, je v souboru ZIP v kořenovém adresáři složky archivu. Složka modulu je umístěna do složky archivu ve zdrojích.
 
-Rutina **set-AzVMDscExtension** vloží nastavení, které vyžaduje rozšíření PowerShell DSC, do objektu konfigurace virtuálního počítače.
+Rutina **Set-AzVMDscExtension** vloží nastavení, která vyžaduje rozšíření PowerShell DSC, do objektu konfigurace virtuálního počítače.
 
-Rutina **Get-AzVMDscExtension** načte stav rozšíření DSC pro konkrétní virtuální počítač.
+Rutina **Get-AzVMDscExtension** načte stav rozšíření DSC konkrétního virtuálního soudu.
 
-Rutina **Get-AzVMDscExtensionStatus** načte stav konfigurace DSC vydanou obslužnou rutinou rozšíření DSC. Tuto akci je možné provést na jednom virtuálním počítači nebo ve skupině virtuálních počítačů.
+Rutina **Get-AzVMDscExtensionStatus** načte stav konfigurace DSC, která je uzákoněna obslužnou rutinou rozšíření DSC. Tuto akci lze provést na jednom virtuálním počítači nebo na skupině virtuálních počítačích.
 
-Rutina **Remove-AzVMDscExtension** odebere obslužnou rutinu rozšíření z konkrétního virtuálního počítače. Tato rutina *neodebere konfiguraci* , odinstaluje WMF ani nemění použitá nastavení virtuálního počítače. Pouze odebere obslužnou rutinu rozšíření. 
+Rutina **Remove-AzVMDscExtension** odebere obslužnou rutinu rozšíření z určitého virtuálního virtuálního soudu. Tato rutina *neodebere* konfiguraci, odinstaluje WMF ani nezmění použitá nastavení na virtuálním počítači. Odebere pouze obslužnou rutinu rozšíření. 
 
-Důležité informace o rutinách rozšíření DSC Správce prostředků:
+Důležité informace o rutinách rozšíření Resource Manager DSC:
 
 - Rutiny Azure Resource Manager jsou synchronní.
-- Parametry *ResourceGroupName*, *VMName*, *ArchiveStorageAccountName*, *Version*a *Location* jsou všechny povinné.
-- *ArchiveResourceGroupName* je nepovinný parametr. Tento parametr můžete zadat, pokud váš účet úložiště patří do jiné skupiny prostředků, než v jaké je virtuální počítač vytvořený.
-- Pokud je k dispozici, použijte přepínač **AutoUpdate** k automatické aktualizaci obslužné rutiny rozšíření na nejnovější verzi. Tento parametr může při vydání nové verze WMF způsobit restart virtuálního počítače.
+- Jsou vyžadovány parametry *ResourceGroupName*, *VMName*, *ArchiveStorageAccountName*, *Version*a *Location.*
+- *ArchiveResourceGroupName* je volitelný parametr. Tento parametr můžete zadat, když váš účet úložiště patří do jiné skupiny prostředků, než ve které je virtuální počítač vytvořen.
+- Pomocí **přepínače Automatické aktualizace** můžete automaticky aktualizovat obslužnou rutinu rozšíření na nejnovější verzi, jakmile bude k dispozici. Tento parametr má potenciál způsobit restartování na virtuálním počítači při vydání nové verze WMF.
 
 ### <a name="get-started-with-cmdlets"></a>Začínáme s rutinami
 
-Rozšíření Azure DSC může použít konfigurační dokumenty DSC k přímé konfiguraci virtuálních počítačů Azure během nasazování. Tento krok neregistruje uzel do automatizace. Uzel *není centrálně* spravovaný.
+Rozšíření Azure DSC můžete použít dokumenty konfigurace DSC přímo nakonfigurovat virtuální počítače Azure během nasazení. Tento krok nezaregistruje uzel automatizace. Uzel *není* centrálně spravován.
 
-Následující příklad ukazuje jednoduchý příklad konfigurace. Místní konfiguraci uložte jako iisInstall. ps1.
+Následující příklad ukazuje jednoduchý příklad konfigurace. Uložte konfiguraci místně jako iisInstall.ps1.
 
 ```powershell
 configuration IISInstall
@@ -131,7 +131,7 @@ configuration IISInstall
 }
 ```
 
-Následující příkazy umístí skript iisInstall. ps1 na zadaný virtuální počítač. Příkazy také spustí konfiguraci a následně nahlásí stav zpět na.
+Následující příkazy umístí skript iisInstall.ps1 na určený virtuální počítač. Příkazy také provést konfiguraci a potom zprávu zpět o stavu.
 
 ```powershell
 $resourceGroup = 'dscVmDemo'
@@ -143,11 +143,11 @@ Publish-AzVMDscConfiguration -ConfigurationPath .\iisInstall.ps1 -ResourceGroupN
 Set-AzVMDscExtension -Version '2.76' -ResourceGroupName $resourceGroup -VMName $vmName -ArchiveStorageAccountName $storageName -ArchiveBlobName 'iisInstall.ps1.zip' -AutoUpdate -ConfigurationName 'IISInstall'
 ```
 
-## <a name="azure-cli-deployment"></a>Nasazení v Azure CLI
+## <a name="azure-cli-deployment"></a>Nasazení azure cli
 
-Rozhraní příkazového řádku Azure můžete použít k nasazení rozšíření DSC do existujícího virtuálního počítače.
+Azure CLI slouží k nasazení rozšíření DSC do existujícího virtuálního počítače.
 
-Pro virtuální počítač s Windows:
+Pro virtuální počítač se systémem Windows:
 
 ```azurecli
 az vm extension set \
@@ -159,7 +159,7 @@ az vm extension set \
   --settings '{}'
 ```
 
-Pro virtuální počítač se systémem Linux:
+Pro virtuální stroj se systémem Linux:
 
 ```azurecli
 az vm extension set \
@@ -171,40 +171,40 @@ az vm extension set \
   --settings '{}'
 ```
 
-## <a name="azure-portal-functionality"></a>Funkce Azure Portal
+## <a name="azure-portal-functionality"></a>Funkce portálu Azure
 
 Nastavení DSC na portálu:
 
-1. Přejít na virtuální počítač.
+1. Přejděte na virtuální hod.
 2. V části **Nastavení** vyberte **Rozšíření**.
-3. Na nově vytvořené stránce vyberte **+ Přidat**a pak vyberte **Konfigurace požadovaného stavu prostředí PowerShell**.
-4. V dolní části stránky s informacemi o rozšíření klikněte na **vytvořit** .
+3. Na nové stránce, která je vytvořena, vyberte **+ Přidat**a pak vyberte **Konfigurace požadovaného stavu prostředí PowerShell**.
+4. V dolní části stránky s informacemi o rozšíření klikněte na **Vytvořit.**
 
-Portál shromažďuje následující vstup:
+Portál shromažďuje následující vstupy:
 
-- **Moduly nebo skripty konfigurace**: Toto pole je povinné (formulář nebyl aktualizován pro [výchozí konfigurační skript](#default-configuration-script)). Konfigurační moduly a skripty vyžadují soubor. ps1, který má konfigurační skript nebo soubor. zip, který obsahuje konfigurační skript. ps1 v kořenovém adresáři. Použijete-li soubor. zip, musí být všechny závislé prostředky zahrnuty do složek modulů v souboru. zip. Soubor. zip můžete vytvořit pomocí rutiny **Publish-AzureVMDscConfiguration-OutputArchivePath** , která je součástí sady Azure PowerShell SDK. Soubor. zip se nahraje do úložiště objektů BLOB uživatele a zabezpečený tokenem SAS.
+- **Konfigurační moduly nebo skript**: Toto pole je povinné (formulář nebyl aktualizován pro [výchozí konfigurační skript](#default-configuration-script)). Konfigurační moduly a skripty vyžadují soubor PS1, který má konfigurační skript nebo soubor ZIP s konfiguračním skriptem PS1 v kořenovém adresáři. Pokud používáte soubor ZIP, musí být všechny závislé prostředky zahrnuty do složek modulu v souboru ZIP. Soubor ZIP můžete vytvořit pomocí **rutiny Publish-AzureVMDscConfiguration -OutputArchivePath,** která je součástí sady Azure PowerShell SDK. Soubor ZIP se nahraje do úložiště objektů blob uživatele a bude zabezpečen tokenem SAS.
 
-- **Modul – kvalifikovaný název konfigurace**: v souboru. ps1 můžete zahrnout více funkcí konfigurace. Zadejte název skriptu Configuration. ps1 následovaný \\ a názvem konfigurační funkce. Pokud například váš skript. ps1 má název Configuration. ps1 a konfigurace je **IisInstall**, zadejte **Configuration. ps1\IisInstall**.
+- **Název konfigurace s kvalifikací modulu**: Do souboru PS1 můžete zahrnout více konfiguračních funkcí. Zadejte název konfiguračního skriptu PS1 následovaný \\ a název konfigurační funkce. Pokud má například skript PS1 název configuration.ps1 a konfigurace je **IisInstall**, zadejte **configuration.ps1\IisInstall**.
 
-- **Argumenty konfigurace**: Pokud funkce konfigurace přebírá argumenty, zadejte je tady ve formátu **argumentName1 = Hodnota1, argumentName2 = hodnota2**. Tento formát je jiný formát, ve kterém jsou konfigurační argumenty přijaty v rutinách PowerShellu nebo šablonách Správce prostředků.
+- **Argumenty konfigurace**: Pokud konfigurační funkce přebírá argumenty, zadejte je zde do formátu **argumentName1=value1,argumentName2=value2**. Tento formát je jiný formát, ve kterém jsou argumenty konfigurace přijímány v rutinách prostředí PowerShell nebo šablonách Správce prostředků.
 
-- **Soubor psd1 konfiguračních dat**: Toto pole je volitelné. Pokud vaše konfigurace vyžaduje soubor konfiguračních dat v souboru. psd1, pomocí tohoto pole vyberte datové pole a nahrajte ho do úložiště objektů BLOB uživatele. Soubor konfiguračních dat je zabezpečený tokenem SAS v úložišti objektů BLOB.
+- **Konfigurační data PSD1 Soubor**: Toto pole je volitelné. Pokud vaše konfigurace vyžaduje konfigurační datový soubor v .psd1, použijte toto pole k výběru datového pole a jeho nahrání do úložiště objektů blob uživatele. Konfigurační datový soubor je zabezpečený tokenem SAS v úložišti objektů blob.
 
-- **Verze WMF**: Určuje verzi rozhraní Windows Management Framework (WMF), která má být na vašem virtuálním počítači nainstalovaná. Nastavení této vlastnosti na nejnovější nainstaluje nejnovější verzi WMF. V současné době jsou jedinou možnou hodnotou této vlastnosti 4,0, 5,0, 5,1 a nejnovější. Tyto možné hodnoty se vztahují na aktualizace. Výchozí hodnota je **nejnovější**.
+- **Verze WMF**: Určuje verzi rozhraní WMF (Windows Management Framework), která by měla být nainstalována na vašem virtuálním počítači. Nastavení této vlastnosti na nejnovější nainstaluje nejnovější verzi WMF. V současné době pouze možné hodnoty pro tuto vlastnost jsou 4.0, 5.0, 5.1 a nejnovější. Tyto možné hodnoty podléhají aktualizacím. Výchozí hodnota je **nejnovější**.
 
-- **Shromažďování dat**: Určuje, zda bude rozšíření shromažďovat telemetrii. Další informace najdete v tématu [shromažďování dat rozšíření Azure DSC](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/).
+- **Shromažďování dat**: Určuje, zda rozšíření bude shromažďovat telemetrii. Další informace naleznete v [tématu Azure DSC rozšíření kolekce dat](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/).
 
-- **Version (verze**): Určuje verzi rozšíření DSC, která se má nainstalovat. Informace o verzích najdete v tématu [Historie verzí rozšíření DSC](/powershell/scripting/dsc/getting-started/azuredscexthistory).
+- **Verze**: Určuje verzi rozšíření DSC k instalaci. Informace o verzích naleznete v [tématu Historie verzí rozšíření DSC](/powershell/scripting/dsc/getting-started/azuredscexthistory).
 
-- **Dílčí verze automatického upgradu**: Toto pole se mapuje na přepínač **AutoUpdate** v rutinách a umožňuje rozšíření při instalaci automaticky aktualizovat na nejnovější verzi. Hodnota **Ano** vydá pokyn obslužné rutině rozšíření k použití nejnovější dostupné verze a hodnota **ne** vynutí instalaci **verze** určeného k instalaci. Výběr možnosti **ne** **není stejný, ale** **ne** .
+- **Automatická inovace dílčí verze**: Toto pole se mapuje na přepínač **automatické aktualizace** v rutinách a umožňuje rozšíření automaticky aktualizovat na nejnovější verzi během instalace. **Ano** dá pokyn obslužné rutině rozšíření, aby používala nejnovější dostupnou verzi, a **ne** vynutí instalaci zadané **verze.** Výběr možnosti **Ano** ani **Ne** je stejný jako výběr **možnosti Ne**.
 
 ## <a name="logs"></a>Protokoly
 
-Protokoly pro rozšíření jsou uložené v následujícím umístění: `C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\<version number>`
+Protokoly pro rozšíření jsou uloženy v následujícím umístění:`C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\<version number>`
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o prostředí PowerShell DSC najdete v [centru dokumentace PowerShellu](/powershell/scripting/dsc/overview/overview).
-- Projděte si [šablonu správce prostředků pro rozšíření DSC](dsc-template.md).
-- Další funkce, které můžete spravovat pomocí prostředí PowerShell DSC a další prostředky DSC, najdete v [galerii prostředí PowerShell](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).
-- Podrobnosti o předávání citlivých parametrů do konfigurací najdete v tématu [Zabezpečená Správa přihlašovacích údajů s obslužným rutinou rozšíření DSC](dsc-credentials.md).
+- Další informace o prostředí PowerShell DSC naleznete v [dokumentačním centru prostředí PowerShell](/powershell/scripting/dsc/overview/overview).
+- Zkontrolujte [šablonu Správce prostředků pro rozšíření DSC](dsc-template.md).
+- Další funkce, které můžete spravovat pomocí prostředí PowerShell DSC, a další prostředky DSC naleznete v [galerii prostředí PowerShell](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).
+- Podrobnosti o předávání citlivých parametrů do konfigurací naleznete v [tématu Správa pověření bezpečně pomocí obslužné rutiny rozšíření DSC](dsc-credentials.md).

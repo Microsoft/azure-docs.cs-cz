@@ -1,30 +1,29 @@
 ---
-title: Ceny za nabídky virtuálních počítačů | Azure Marketplace
-description: Vysvětluje tři metody určení cen nabídek virtuálních počítačů.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Ceny za nabídky virtuálních strojů | Azure Marketplace
+description: Vysvětluje tři metody určení cen nabídek virtuálních strojů.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: c7ea5afeb46c30837c2ae53e871bb64f5d8cf292
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: b96dcfa6a140d5c16208fd8183003a7462b1aa56
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827340"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280435"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>Ceny nabídek virtuálních počítačů
 ==================================
 
-K dispozici jsou tři způsoby, jak zadat ceny pro virtuální počítače: vlastní ceny za základní ceny, ceny za jádro a ceny v tabulce.
+Existují tři způsoby, jak určit ceny pro nabídky virtuálních strojů: přizpůsobené základní ceny, ceny za jádro a ceny tabulek.
 
 
-<a name="customized-core-pricing"></a>Vlastní ceny za Core
+<a name="customized-core-pricing"></a>Přizpůsobené základní ceny
 -----------------------
 
-Ceny jsou specifické pro každou oblast a kombinaci jader. Každá oblast v seznamu prodejů musí být zadána v části **virtualMachinePricing**/**regionPrices** definice.  Pro každou [oblast](#regions) ve vaší žádosti použijte správné kódy měn.  Následující příklad znázorňuje tyto požadavky:
+Ceny jsou specifické pro každou oblast a základní kombinaci. Každá oblast v seznamu prodeje musí být zadána v části **virtualMachinePricing**/**regionPrices** definice.  Použijte správné kódy měn pro každou [oblast](#regions) v požadavku.  Následující příklad ukazuje tyto požadavky:
 
 ``` json
     "virtualMachinePricing": 
@@ -67,10 +66,10 @@ Ceny jsou specifické pro každou oblast a kombinaci jader. Každá oblast v sez
 ```
 
 
-<a name="per-core-pricing"></a>Ceny za jádro
+<a name="per-core-pricing"></a>Ceny pro jádro
 ----------------
 
-V tomto případě vydavatelé určí jednu cenu v USD pro svou skladovou jednotku a všechny ostatní ceny se vygenerují automaticky. Cena za jádro je uvedena v **jednom** parametru v žádosti.
+V tomto případě vydavatelé zadat jednu cenu v USD pro jejich Skladovou položku a všechny ostatní ceny jsou generovány automaticky. Cena za jádro je uvedena v **jediném** parametru v požadavku.
 
 ``` json
      "virtualMachinePricing": 
@@ -85,10 +84,10 @@ V tomto případě vydavatelé určí jednu cenu v USD pro svou skladovou jednot
 ```
 
 
-<a name="spreadsheet-pricing"></a>Ceny tabulky
+<a name="spreadsheet-pricing"></a>Ceny tabulek
 -------------------
 
-Vydavatel může také odeslat tabulku s cenami do dočasného umístění úložiště a pak zahrnout identifikátor URI do žádosti jako jiné artefakty souborů. Tabulka se pak nahraje, převede na vyhodnocení zadaného časového plánu a nakonec tuto nabídku aktualizuje o ceny. Následné žádosti o získání nabídky vrátí identifikátor URI tabulky a vyhodnocené ceny pro oblast.
+Vydavatel může také nahrát svou cenovou tabulku do dočasného umístění úložiště a pak zahrnout identifikátor URI do požadavku stejně jako ostatní artefakty souborů. Tabulka je pak odeslána, přeložena za účelem vyhodnocení zadaného cenového plánu a nakonec aktualizuje nabídku informacemi o cenách. Následné požadavky GET pro nabídku vrátí identifikátor URI tabulky a vyhodnocené ceny pro oblast.
 
 ``` json
      "virtualMachinePricing": 
@@ -101,39 +100,39 @@ Vydavatel může také odeslat tabulku s cenami do dočasného umístění úlo�
      }
 ```
 
-<a name="new-core-sizes-added-on-722019"></a>Nové základní velikosti přidané v 7/2/2019
+<a name="new-core-sizes-added-on-722019"></a>Nové velikosti jader přidané dne 7/2/2019
 ---------------------------
 
-Vydavatelé virtuálních počítačů byli informováni 2. července 2019 o přidání nových cen pro nové velikosti virtuálních počítačů Azure (na základě počtu jader).  Nové ceny jsou pro základní velikosti 10, 44, 48, 60, 120, 208 a 416.  Pro existující virtuální počítač se automaticky vypočítaly nové ceny pro tyto velikosti jader na základě aktuálních cen.  Vydavatelé mají od 1. srpna 2019 kontrolu nad dalšími cenami a provádět požadované změny.  Po tomto datu se projeví automaticky vypočtené ceny pro tyto nové základní velikosti, pokud už je Vydavatel znovu Nepublikovaná.
+2. července 2019 byli vydavatelé virtuálních počítače upozorněni na přidání nových cen pro nové velikosti virtuálních automatů Azure (na základě počtu jader).  Nové ceny jsou pro velikosti jádra 10, 44, 48, 60, 120, 208 a 416.  Pro stávající virtuální počítač nabízí nové ceny pro tyto velikosti jader byly automaticky vypočteny na základě aktuálních cen.  Srpen 2019 mají vydavatelé čas do 1.  Po tomto datu, pokud již není vydavatelem znovu publikován, se automaticky vypočtené ceny pro tyto nové velikosti jádra projeví.
 
 
 <a name="regions"></a>Oblasti
 -------
 
-V následující tabulce jsou uvedeny různé oblasti, které můžete zadat pro vlastní ceny za základní jádro a jejich odpovídající kódy měn.
+V následující tabulce jsou uvedeny různé oblasti, které můžete zadat pro vlastní základní ceny, a jejich odpovídající kódy měn.
 
-| **Oblast** | **Název**             | **Kód měny** |
+| **Oblasti** | **Název**             | **Kód měny** |
 |------------|----------------------|-------------------|
-| DZ         | Alžírsko              | DZD               |
+| DZ         | Alžírsko              | Dzd               |
 | AR         | Argentina            | ARS               |
 | AU         | Austrálie            | AUD               |
 | AT         | Rakousko              | EUR               |
-| BH         | Bahrajn              | BHD               |
+| BH         | Bahrajn              | Bhd               |
 | BY         | Bělorusko              | RUB               |
 | BE         | Belgie              | EUR               |
 | BR         | Brazílie               | USD               |
-| BG         | Bulharsko             | BGN               |
+| BG         | Bulharsko             | Bgn               |
 | CA         | Kanada               | CAD               |
-| CL         | Chile                | CLP               |
-| CO         | Kolumbie             | NÁKLADY               |
-| CR         | Kostarika           | KONTROLNÍ               |
-| HR         | Chorvatsko              | HRK               |
+| CL         | Chile                | Clp               |
+| CO         | Kolumbie             | Policajt               |
+| CR         | Kostarika           | Crc               |
+| HR         | Chorvatsko              | Hrk               |
 | CY         | Kypr               | EUR               |
-| CZ         | Česká republika       | CZK               |
+| CZ         | Česká republika       | Kč               |
 | DK         | Dánsko              | DKK               |
 | DO         | Dominikánská republika   | USD               |
 | EC         | Ekvádor              | USD               |
-| EG         | Egypt                | EGP               |
+| EG         | Egypt                | Egp               |
 | SV         | Salvador          | USD               |
 | EE         | Estonsko              | EUR               |
 | FI         | Finsko              | EUR               |
@@ -142,47 +141,47 @@ V následující tabulce jsou uvedeny různé oblasti, které můžete zadat pro
 | GR         | Řecko               | EUR               |
 | GT         | Guatemala            | GTQ               |
 | HK         | Hongkong – zvláštní správní oblast        | HKD               |
-| HU         | Maďarsko              | HUF               |
-| IS         | Island              | PŘIDĚLENÍ               |
+| HU         | Maďarsko              | Huf               |
+| IS         | Island              | Isk               |
 | IN         | Indie                | INR               |
 | ID         | Indonésie            | IDR               |
 | IE         | Irsko              | EUR               |
-| IL         | Izrael               | ILS               |
+| IL         | Izrael               | Ils               |
 | IT         | Itálie                | EUR               |
 | JP         | Japonsko                | JPY               |
 | JO         | Jordánsko               | JOD               |
-| KZ         | Kazachstán           | KZT               |
-| KE         | Keňa                | KES               |
+| KZ         | Kazachstán           | Kzt               |
+| KE         | Keňa                | Kes               |
 | KR         | Jižní Korea                | KRW               |
-| KW         | Kuvajt               | KWD               |
+| KW         | Kuvajt               | Kwd               |
 | LV         | Lotyšsko               | EUR               |
 | LI         | Lichtenštejnsko        | CHF               |
 | LT         | Litva            | EUR               |
 | LU         | Lucembursko           | EUR               |
-| MK         | Severní Makedonie      | MKD               |
+| MK         | Severní Makedonie      | Mkd               |
 | MY         | Malajsie             | MYR               |
 | MT         | Malta                | EUR               |
 | MX         | Mexiko               | MXN               |
-| PAMATOVAT         | Černá Hora           | EUR               |
-| MA         | Maroko              | Mad –               |
+| ME         | Černá Hora           | EUR               |
+| MA         | Maroko              | Šílený               |
 | NL         | Nizozemsko          | EUR               |
 | NZ         | Nový Zéland          | NZD               |
 | NG         | Nigérie              | NGN               |
 | NO         | Norsko               | NOK               |
 | OM         | Omán                 | OMR               |
-| PK         | Pákistán             | PKR               |
+| PK         | Pákistán             | Pkr               |
 | PA         | Panama               | USD               |
 | PY         | Paraguay             | PYG               |
-| PE         | Peru                 | PSANÉ               |
+| PE         | Peru                 | Pero               |
 | PH         | Filipíny          | PHP               |
-| PL         | Polsko               | PLN               |
+| PL         | Polsko               | Pln               |
 | PT         | Portugalsko             | EUR               |
 | PR         | Portoriko          | USD               |
-| QA         | Katar                | QAR               |
-| RO         | Rumunsko              | RON               |
+| QA         | Katar                | Qar               |
+| RO         | Rumunsko              | Ron               |
 | RU         | Rusko               | RUB               |
 | SA         | Saúdská Arábie         | SAR               |
-| RS         | Srbsko               | RSD               |
+| RS         | Srbsko               | Rsd               |
 | SG         | Singapur            | SGD               |
 | SK         | Slovensko             | EUR               |
 | SI         | Slovinsko             | EUR               |
@@ -192,11 +191,11 @@ V následující tabulce jsou uvedeny různé oblasti, které můžete zadat pro
 | SE         | Švédsko               | SEK               |
 | CH         | Švýcarsko          | CHF               |
 | TW         | Tchaj-wan               | TWD               |
-| TH         | Thajsko             | THB               |
-| TT         | Trinidad a Tobago  | TTD               |
+| TH         | Thajsko             | Thb               |
+| TT         | Trinidad a Tobago  | Ttd               |
 | TN         | Tunisko              | TND               |
 | TR         | Turecko               | TRY               |
-| UA         | Ukrajina              | UAH               |
+| UA         | Ukrajina              | Uah               |
 | AE         | Spojené arabské emiráty | EUR               |
 | GB         | Spojené království       | GBP               |
 | USA         | Spojené státy        | USD               |

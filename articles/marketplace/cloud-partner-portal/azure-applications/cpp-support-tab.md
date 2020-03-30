@@ -1,44 +1,43 @@
 ---
 title: Konfigurace podpory aplikací Azure | Azure Marketplace
-description: Konfigurace podpory aplikací Azure pro nabídku Azure Marketplace.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+description: Nakonfigurujte podporu aplikací Azure pro nabídku na Azure Marketplace.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: pabutler
-ms.openlocfilehash: b6616f4caed3483af9e23c7d5d1326478213f6f0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 93dd8636f60ceca0f43d806d4f5b1a037ed21ee4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818182"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80289018"
 ---
 # <a name="azure-application-support-tab"></a>Karta Podpora aplikací Azure
 
-Karta Podpora slouží k poskytování informací o technické a zákaznické podpoře.
+Karta Podpora slouží k poskytování technických informací a informací o zákaznické podpoře.
  
 ## <a name="identify-contacts-and-websites"></a>Identifikace kontaktů a webů
 
-Použijte následující snímek obrazovky jako vodítko k poskytnutí požadovaných informací. Všechny názvy polí připojené pomocí červené hvězdičky (*) se musí dokončit.
+Použijte další snímek obrazovky jako vodítko k poskytnutí požadovaných informací. Musí být vyplněny všechny názvy polí připojené červenou hvězdičkou (*).
 
   ![Formulář podpory pro nabídku](./media/azureapp-support-tab.png)
 
-1. V části **technický kontakt**zadejte informace pro následující pole:
+1. V části **Technický kontakt**uveďte informace pro následující pole:
 
-   - **Název\*** – zadejte název technického kontaktu pro vaši aplikaci. Tento kontakt dostane technickou komunikaci od Microsoftu.
-   - **E-mailová\*** – zadejte e-mailovou adresu technického kontaktu.
-   - **Telefon\*** – zadejte telefonní číslo technického kontaktu.
+   - **Název\* ** – Zadejte název technického kontaktu aplikace. Tento kontakt obdrží technickou komunikaci od společnosti Microsoft.
+   - **E-mail\* ** - Zadejte e-mailovou adresu technického kontaktu.
+   - **Telefon\* ** - Zadejte telefonní číslo technického kontaktu.
   
-2. V části **kontakt podpory**zadejte informace pro následující pole:
+2. V části **Kontakt podpory**uveďte informace pro následující pole:
 
-   - **Název\*** – zadejte název kontaktu podpory pro vaši aplikaci. Tento kontakt obdrží od Microsoftu sdělení týkající se podpory.
-   - **E-mail\*** – zadejte e-mailovou adresu kontaktu podpory pro vaši aplikaci.
-   - **Telefon\*** – zadejte telefonní číslo kontaktu podpory.
+   - **Jméno\* ** – Zadejte název kontaktu podpory pro vaši aplikaci. Tento kontakt obdrží komunikaci související s podporou od společnosti Microsoft.
+   - **E-mail\* ** – Zadejte e-mailovou adresu kontaktu podpory pro vaši aplikaci.
+   - **Telefon\* ** - Zadejte telefonní číslo kontaktu podpory.
  
-3. V části **adresy URL podpory**zadejte příslušné adresy URL podpory, které Microsoft použije, když vaši zákazníci otevřou lístky podpory. Tyto adresy URL budou pro veřejný Azure nebo pro cloud Azure Government.
-4. Až budete hotovi, vyberte **Uložit** .
+3. V části **Adresy URL podpory**zadejte příslušné adresy URL podpory, které bude společnost Microsoft používat, když vaši zákazníci otevřou lístky podpory. Tyto adresy URL budou pro veřejný Azure nebo Azure Government Cloud.
+4. Po dokončení vyberte **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky
 

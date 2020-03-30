@@ -5,12 +5,12 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 03/24/2020
-ms.openlocfilehash: 430df504c677b005f5ff5e7fdd9346aed3e168af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1ca4b70139ed5e0a136f6f5f2b0382b8c1688983
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294455"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389405"
 ---
 # <a name="integrate-azure-ad-in-azure-kubernetes-service-preview"></a>Integrace Azure AD ve službě Azure Kubernetes (Preview)
 
@@ -51,7 +51,7 @@ az extension list
 
 Chcete-li nainstalovat kubectl, použijte následující
 ```azurecli
-curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.18.0-beta.2/bin/darwin/amd64/kubectl"
+curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.18.0-beta.2/bin/linux/amd64/kubectl"
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 kubectl version --client

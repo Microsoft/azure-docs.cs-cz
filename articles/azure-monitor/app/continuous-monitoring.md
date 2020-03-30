@@ -1,102 +1,102 @@
 ---
-title: Nepřetržité monitorování kanálu pro vydávání verzí DevOps pomocí Azure Pipelines a Azure Application Insights | Microsoft Docs
-description: Poskytuje pokyny pro rychlé nastavení nepřetržitého monitorování pomocí Application Insights
+title: Průběžné monitorování kanálu vydání DevOps pomocí Azure Pipelines a Azure Application Insights | Dokumenty společnosti Microsoft
+description: Obsahuje pokyny pro rychlé nastavení průběžného monitorování pomocí funkce Application Insights
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.openlocfilehash: e565101218b975ef2bd29b8a32a4aa1bf4300b6d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77655391"
 ---
-# <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Přidání průběžného monitorování do kanálu pro vydávání verzí
+# <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Přidání průběžného monitorování do kanálu vydání
 
-Azure Pipelines se integruje se službou Azure Application Insights, která umožňuje nepřetržité monitorování kanálu verzí DevOps v průběhu životního cyklu vývoje softwaru. 
+Azure Pipelines se integruje s Azure Application Insights, aby bylo možné nepřetržitě sledovat kanál vydání DevOps v průběhu životního cyklu vývoje softwaru. 
 
-Díky průběžnému monitorování můžou kanály vydávání verzí zahrnovat monitorování dat z Application Insights a dalších prostředků Azure. Když kanál vydaných verzí zjistí výstrahu Application Insights, kanál může bránu nebo vrácení nasazení vrátit, dokud se upozornění nevyřeší. Pokud všechny kontroly projde, můžou nasazení automaticky pokračovat z testu na produkční prostředí bez nutnosti ručního zásahu. 
+Díky průběžnému monitorování můžou kanály verzí zahrnovat data monitorování z Application Insights a dalších prostředků Azure. Když kanál vydání zjistí výstrahu Application Insights, kanál může gate nebo vrátit zpět nasazení, dokud se výstraha vyřešena. Pokud všechny kontroly projít, nasazení může probíhat automaticky z testování celou cestu do produkčního prostředí, bez nutnosti ručního zásahu. 
 
-## <a name="configure-continuous-monitoring"></a>Konfigurovat průběžné monitorování
+## <a name="configure-continuous-monitoring"></a>Konfigurace nepřetržitého monitorování
 
 1. V [Azure DevOps](https://dev.azure.com)vyberte organizaci a projekt.
    
-1. V levé nabídce stránky projektu vyberte **kanály** > **vydání**. 
+1. V levé nabídce stránky projektu vyberte **Možnost Uvolnění** > kanálů **.** 
    
-1. Přetáhněte šipku vedle tlačítka **Nový** a vyberte **Nový kanál vydání**. Nebo, pokud ještě nemáte kanál, vyberte na zobrazené stránce **Nový kanál** .
+1. Rozbalte šipku vedle **položky Nový** a vyberte **Nový kanál vydání**. Nebo pokud ještě nemáte kanál, vyberte nový **kanál** na stránce, která se zobrazí.
    
-1. V podokně **Vybrat šablonu** vyhledejte a vyberte **nasazení Azure App Service s nepřetržitým monitorováním**a pak vyberte **použít**. 
+1. V podokně **Vybrat předlohu** vyhledejte a vyberte **nasazení služby Azure App Service s nepřetržitým monitorováním**a pak vyberte **Použít**. 
 
-   ![Nový kanál verze Azure Pipelines](media/continuous-monitoring/001.png)
+   ![Nový kanál y Azure Pipelines](media/continuous-monitoring/001.png)
 
-1. V poli **fáze 1** vyberte hypertextový odkaz pro **zobrazení úloh fáze.**
+1. V poli **Fáze 1** vyberte hypertextový odkaz na zobrazení **úkolů fáze.**
 
-   ![Zobrazit úlohy fáze](media/continuous-monitoring/002.png)
+   ![Zobrazení úkolů fáze](media/continuous-monitoring/002.png)
 
-1. V podokně Konfigurace **fáze 1** vyplňte následující pole: 
+1. V konfiguračním podokně **Fáze 1** vyplňte následující pole: 
 
     | Parametr        | Hodnota |
    | ------------- |:-----|
-   | **Název fáze**      | Zadejte název fáze nebo ho ponechte ve **fázi 1**. |
-   | **Předplatné Azure** | Rozevírací seznam a vyberte propojené předplatné Azure, které chcete použít.|
-   | **Typ aplikace** | Rozevírací seznam a vyberte typ aplikace. |
-   | **Název App Service** | Zadejte název vašeho Azure App Service. |
-   | **Název skupiny prostředků pro Application Insights**    | Rozevírací seznam a vyberte skupinu prostředků, kterou chcete použít. |
-   | **Název prostředku Application Insights** | Rozevírací seznam a vyberte prostředek Application Insights pro skupinu prostředků, kterou jste vybrali.
+   | **Název fáze**      | Zadejte název etapy nebo jej ponechte ve **fázi 1**. |
+   | **Předplatné Azure** | Rozbalte a vyberte propojené předplatné Azure, které chcete použít.|
+   | **Typ aplikace** | Rozbalte a vyberte typ aplikace. |
+   | **Název služby App Service** | Zadejte název služby Azure App Service. |
+   | **Název skupiny prostředků pro přehledy aplikací**    | Rozevírací seznam a vyberte skupinu prostředků, kterou chcete použít. |
+   | **Název prostředku Application Insights** | Rozbalte a vyberte prostředek Application Insights pro vybranou skupinu prostředků.
 
-1. Pokud chcete uložit kanál s výchozím nastavením pravidla upozornění, vyberte **Uložit** v pravém horním rohu okna Azure DevOps. Zadejte popisný komentář a pak vyberte **OK**.
+1. Pokud chcete uložit kanál s výchozím nastavením pravidla výstrahy, vyberte **Uložit** vpravo nahoře v okně Azure DevOps. Zadejte popisný komentář a pak vyberte **OK**.
 
-## <a name="modify-alert-rules"></a>Upravit pravidla upozornění
+## <a name="modify-alert-rules"></a>Úprava pravidel výstrah
 
-Dopředné: **nasazení Azure App Service se šablonou nepřetržitého monitorování** má čtyři pravidla výstrahy **: dostupnost**, **neúspěšné požadavky**, **Doba odezvy serveru**a **výjimky serveru**. Můžete přidat další pravidla nebo změnit nastavení pravidla tak, aby splňovalo potřeby úrovně služeb. 
+Mimo pole má **nasazení služby Azure App Service se šablonou průběžného monitorování** čtyři pravidla výstrah: **dostupnost**, neúspěšné požadavky , doba **odezvy** **serveru**a **výjimky serveru**. Můžete přidat další pravidla nebo změnit nastavení pravidel tak, aby vyhovovalo potřebám úrovně služeb. 
 
-Úprava nastavení pravidla výstrahy:
+Změna nastavení pravidla výstrahy:
 
-1. V levém podokně stránky kanál verze vyberte **konfigurovat Application Insights výstrahy**.
+1. V levém podokně stránky kanálu vydání vyberte **Konfigurovat výstrahy přehledů aplikací**.
 
-1. V podokně **výstrahy Azure monitor** vyberte tři tečky. **..** vedle **pravidel upozornění**.
+1. V podokně **Výstrahy monitoru Azure** vyberte tři tečky **...** vedle **pravidel výstrah**.
    
-1. V dialogovém okně **pravidla výstrah** vyberte symbol rozevíracího seznamu vedle pravidla výstrahy, například **dostupnost**. 
+1. V dialogovém okně **Pravidla výstrah** vyberte symbol rozevíracího souboru vedle pravidla výstrahy, například **Dostupnost**. 
    
-1. Upravte **prahovou hodnotu** a další nastavení tak, aby splňovalo vaše požadavky.
+1. Upravte **prahovou hodnotu** a další nastavení tak, aby vyhovovaly vašim požadavkům.
    
-   ![Upravit upozornění](media/continuous-monitoring/003.png)
+   ![Upravit výstrahu](media/continuous-monitoring/003.png)
    
-1. Vyberte **OK**a pak v okně Azure DevOps vyberte **Uložit** v pravém horním rohu. Zadejte popisný komentář a pak vyberte **OK**.
+1. V yberte **OK**a pak v okně Azure DevOps vyberte **Uložit** vpravo nahoře. Zadejte popisný komentář a pak vyberte **OK**.
 
-## <a name="add-deployment-conditions"></a>Přidat podmínky nasazení
+## <a name="add-deployment-conditions"></a>Přidání podmínek nasazení
 
-Když do kanálu pro vydání přidáte brány nasazení, výstraha, která přesahuje nastavené prahové hodnoty, zabrání v povýšení nechtěného vydání. Po vyřešení výstrahy může nasazení automaticky pokračovat.
+Když přidáte brány nasazení do kanálu vydání, výstraha, která překročí nastavené prahové hodnoty, zabrání nechtěné propagaci vydání. Po vyřešení výstrahy může nasazení pokračovat automaticky.
 
 Přidání bran nasazení:
 
-1. Na hlavní stránce kanálu vyberte v části **fáze**možnost **podmínky před nasazením** nebo symbol **podmínky po nasazení** . v závislosti na tom, kterou fázi potřebuje nepřetržitý monitorovací bránu.
+1. Na stránce hlavního kanálu včásti **Fáze**vyberte symbol **Podmínky před nasazením** nebo Podmínky po **nasazení,** v závislosti na tom, která fáze vyžaduje nepřetržitou monitorovací bránu.
    
    ![Podmínky před nasazením](media/continuous-monitoring/004.png)
    
-1. V podokně Konfigurace **podmínek před nasazením** nastavte možnost **brány** na **povoleno**.
+1. V konfiguračním podokně **Podmínky před nasazením** nastavte **gate gate na** **Povoleno**.
    
-1. Vedle pole **brány nasazení**vyberte **Přidat**.
+1. Vedle **brány nasazení**vyberte **Přidat**.
    
-1. V rozevírací nabídce vyberte možnost **dotaz Azure monitor výstrahy** . Tato možnost umožňuje přístup k výstrahám Azure Monitor i Application Insights.
+1. V rozevírací nabídce vyberte **výstrahy Programu Azure Monitor** dotazu. Tato možnost umožňuje přístup k výstrahám Azure Monitor a Application Insights.
    
-   ![Výstrahy Azure Monitor dotazů](media/continuous-monitoring/005.png)
+   ![Dotaz na výstrahy Azure Monitor](media/continuous-monitoring/005.png)
    
-1. V části **Možnosti vyhodnocení**zadejte hodnoty, jako je **čas mezi opakovaným vyhodnocením bran** a **časovým limitem, po kterém selžou**. 
+1. V části **Možnosti vyhodnocení**zadejte požadované hodnoty pro nastavení, jako **je Doba mezi přehodnocením bran** a Časový **majek, po kterém brány selžou**. 
 
 ## <a name="view-release-logs"></a>Zobrazit protokoly verzí
 
-V protokolech vydaných verzí uvidíte chování brány nasazení a další kroky vydání. Otevření protokolů:
+Chování brány nasazení a další kroky vydání se zobrazí v protokolech vydání. Otevření protokolů:
 
-1. V levé nabídce stránky kanálu vyberte **releases (vydané verze** ). 
+1. V levé nabídce stránky kanálu vyberte **Uvolnit.** 
    
 1. Vyberte libovolnou verzi. 
    
-1. V části **fáze**výběrem libovolné fáze zobrazíte souhrn vydaných verzí. 
+1. V části **Fáze**vyberte libovolnou fázi, ve které chcete zobrazit souhrn vydání. 
    
-1. Pokud chcete zobrazit protokoly, vyberte v souhrnu verzí možnost **Zobrazit protokoly** , v libovolné fázi vyberte hypertextový odkaz **úspěšný** nebo **neúspěšný** , nebo najeďte myší na libovolnou fázi a vyberte **protokoly**. 
+1. Chcete-li zobrazit protokoly, vyberte **možnost Zobrazit protokoly** v souhrnu vydání, vyberte hypertextový odkaz **Proběhlý** nebo **Neúspěšný** v libovolné fázi nebo najeďte na libovolnou fázi a vyberte **Protokoly**. 
    
    ![Zobrazit protokoly verzí](media/continuous-monitoring/006.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure Pipelines najdete v dokumentaci k [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines).
+Další informace o Azure Pipelines najdete v [dokumentaci k Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines).

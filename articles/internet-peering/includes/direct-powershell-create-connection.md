@@ -9,17 +9,17 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: e1cb1bec6273fa79315b9439bec1412622ebfe28
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774299"
 ---
-Následující příklad ukazuje, jak vytvořit přímý partnerský vztah peering – v Seattlu.
+Následující příklad ukazuje, jak vytvořit přímý partnerský vztah 10 Gb/s v Seattlu.
 
-Pomocí rutiny prostředí PowerShell **New-AzPeeringDirectConnectionObject** vytvořte DirectConnections, která se má použít v novém požadavku partnerského vztahu.
+Pomocí rutiny prostředí PowerShell **New-AzPeeringDirectConnectionObject** vytvořte directconnections, která mají být použita v novém požadavku partnerského vztahu.
 
-Níže je příklad vytvoření DirectConnection:
+Níže je uveden příklad pro vytvoření rozhraní DirectConnection:
 
 ```powershell
 $connection1 = New-AzPeeringDirectConnectionObject `
@@ -32,9 +32,9 @@ $connection1 = New-AzPeeringDirectConnectionObject `
 ```
 
 > [!NOTE]
-> <index> pro $peeringLocation [<index>] ve výše uvedeném příkladu by měla odpovídat umístění partnerského vztahu dle vašeho výběru.
+> For <index> $peeringLocation[<index>] ve výše uvedeném příkladu by měl odpovídat umístění partnerského vztahu podle vašeho výběru
 
-Vytvořte další připojení pro případ, že budete potřebovat redundanci v daném umístění partnerského vztahu:
+Vytvořte další připojení v případě, že potřebujete redundanci v daném umístění partnerského vztahu:
 
 ```powershell
 $connection2 = New-AzPeeringDirectConnectionObject `
@@ -60,7 +60,7 @@ New-AzPeering `
 ```
 &nbsp;
 
-Níže je uvedená ukázková odpověď, když se požadavek úspěšně zpracoval:
+Níže je uveden příklad odpovědi při úspěšném zpracování požadavku:
 
 ```powershell
 
@@ -78,4 +78,4 @@ Níže je uvedená ukázková odpověď, když se požadavek úspěšně zpracov
     Tags                 : {}
 
 ```
-Všimněte si, že místo **{SubscriptionId}** ve výstupu výše se zobrazí aktuální ID předplatného.
+Všimněte si, že místo **{subscriptionId}** ve výstupu výše se zobrazí skutečné ID předplatného.

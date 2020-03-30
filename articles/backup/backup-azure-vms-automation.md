@@ -1,41 +1,41 @@
 ---
 title: Zálohování a obnovení virtuálních počítačů Azure pomocí PowerShellu
-description: Popisuje postup zálohování a obnovení virtuálních počítačů Azure pomocí Azure Backup pomocí prostředí PowerShell.
+description: Popisuje, jak zálohovat a obnovovat virtuální počítače Azure pomocí Azure Backup s PowerShellem.
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: 733a06a84aa170f1361ea74d126ec9752586fce2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79247979"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Zálohování a obnovení virtuálních počítačů Azure pomocí PowerShellu
 
-Tento článek vysvětluje, jak zálohovat a obnovit virtuální počítač Azure ve službě [Azure Backup](backup-overview.md) Recovery Services trezoru pomocí rutin PowerShellu.
+Tento článek vysvětluje, jak zálohovat a obnovovat virtuální počítač Azure v trezoru [služby Azure Backup](backup-overview.md) Recovery Services pomocí rutin PowerShell.
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 >
-> * Vytvořte Trezor Recovery Services a nastavte kontext trezoru.
+> * Vytvořte trezor služby Recovery Services a nastavte kontext úschovny.
 > * Definice zásady zálohování
 > * Použití zásady zálohování k ochraně několika virtuálních počítačů
-> * Aktivujte úlohu zálohování na vyžádání pro chráněné virtuální počítače, abyste mohli zálohovat virtuální počítač (nebo ho chránit), musíte splnit [předpoklady](backup-azure-arm-vms-prepare.md) pro přípravu vašeho prostředí pro ochranu vašich virtuálních počítačů.
+> * Aktivace úlohy zálohování na vyžádání pro chráněné virtuální počítače Než budete moct zálohovat (nebo chránit) virtuální počítač, musíte dokončit [předpoklady](backup-azure-arm-vms-prepare.md) pro přípravu prostředí pro ochranu virtuálních počítačů.
 
 ## <a name="before-you-start"></a>Než začnete
 
-* [Přečtěte si další informace](backup-azure-recovery-services-vault-overview.md) o úložištích Recovery Services.
-* [Projděte si](backup-architecture.md#architecture-built-in-azure-vm-backup) architekturu zálohování virtuálních počítačů Azure, [Zjistěte informace o](backup-azure-vms-introduction.md) procesu zálohování a [Projděte si](backup-support-matrix-iaas.md) podporu, omezení a požadavky.
-* Zkontrolujte hierarchii objektů PowerShell pro Recovery Services.
+* [Přečtěte si další informace](backup-azure-recovery-services-vault-overview.md) o trezorech služby Recovery Services.
+* [Zkontrolujte](backup-architecture.md#architecture-built-in-azure-vm-backup) architekturu pro zálohování virtuálních počítačích Azure, [získejte informace o](backup-azure-vms-introduction.md) procesu zálohování a [zkontrolujte](backup-support-matrix-iaas.md) podporu, omezení a požadavky.
+* Zkontrolujte hierarchii objektů prostředí PowerShell pro služby recovery Services.
 
-## <a name="recovery-services-object-hierarchy"></a>Recovery Services hierarchie objektů
+## <a name="recovery-services-object-hierarchy"></a>Hierarchie objektů služby Recovery Services
 
 Hierarchie objektů je shrnuta v následujícím diagramu.
 
-![Recovery Services hierarchie objektů](./media/backup-azure-vms-arm-automation/recovery-services-object-hierarchy.png)
+![Hierarchie objektů služby Recovery Services](./media/backup-azure-vms-arm-automation/recovery-services-object-hierarchy.png)
 
-Přečtěte si referenční informace k [rutině](https://docs.microsoft.com/powershell/module/Az.RecoveryServices/?view=azps-1.4.0) **AZ. RecoveryServices** v knihovně Azure.
+Zkontrolujte odkaz [na rutinu rutiny](https://docs.microsoft.com/powershell/module/Az.RecoveryServices/?view=azps-1.4.0) **Az.RecoveryServices** v knihovně Azure.
 
 ## <a name="set-up-and-register"></a>Nastavení a registrace
 
@@ -43,60 +43,60 @@ Přečtěte si referenční informace k [rutině](https://docs.microsoft.com/pow
 
 Začněte následovně:
 
-1. [Stáhnout nejnovější verzi PowerShellu](https://docs.microsoft.com/powershell/azure/install-az-ps)
+1. [Stažení nejnovější verze PowerShellu](https://docs.microsoft.com/powershell/azure/install-az-ps)
 
-2. Pomocí následujícího příkazu Najděte dostupné rutiny Azure Backup PowerShellu:
+2. Najděte rutiny Azure Backup PowerShell, které jsou k dispozici, zadáním následujícího příkazu:
 
     ```powershell
     Get-Command *azrecoveryservices*
     ```
 
-    Zobrazí se aliasy a rutiny pro Azure Backup, Azure Site Recovery a Recovery Services trezor. Následující obrázek je příkladem toho, co se vám zobrazí. Nejedná se o úplný seznam rutin.
+    Zobrazí se aliasy a rutiny pro Azure Backup, Azure Site Recovery a trezor služby Recovery Services. Následující obrázek je příkladem toho, co uvidíte. Nejedná se o úplný seznam rutin.
 
-    ![seznam Recovery Services](./media/backup-azure-vms-automation/list-of-recoveryservices-ps.png)
+    ![seznam služeb pro obnovení](./media/backup-azure-vms-automation/list-of-recoveryservices-ps.png)
 
-3. Přihlaste se k účtu Azure pomocí **Connect-AzAccount**. Tato rutina zobrazí webovou stránku s výzvou k zadání přihlašovacích údajů k účtu:
+3. Přihlaste se ke svému účtu Azure pomocí **connect-azaccount**. Tato rutina zobrazí webovou stránku s výzvou k zadání přihlašovacích údajů k účtu:
 
-    * Alternativně můžete do rutiny **Connect-AzAccount** zahrnout přihlašovací údaje účtu a použít parametr **-Credential** .
-    * Pokud jste partnerem CSP při práci jménem tenanta, zadejte zákazníka jako tenanta pomocí názvu primární domény tenantID nebo tenanta. Příklad: **Connect-AzAccount-tenant "fabrikam.com"**
+    * Případně můžete zahrnout pověření účtu jako parametr v rutině **Connect-AzAccount** pomocí parametru **-Credential.**
+    * Pokud jste partnerem CSP pracujícím jménem tenanta, zadejte zákazníka jako tenanta pomocí jejich id tenanta nebo primárního názvu domény klienta. Příklad: **Connect-AzAccount -Tenant "fabrikam.com"**
 
-4. Přidružte předplatné, které chcete používat s účtem, protože účet může mít několik předplatných:
+4. Přidružte předplatné, které chcete použít, k účtu, protože účet může mít několik předplatných:
 
     ```powershell
     Select-AzSubscription -SubscriptionName $SubscriptionName
     ```
 
-5. Pokud používáte Azure Backup poprvé, musíte pomocí rutiny **[Register-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/register-azresourceprovider)** zaregistrovat poskytovatele služby Azure Recovery Services s vaším předplatným.
+5. Pokud používáte Azure Backup poprvé, musíte použít rutinu **[Register-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/register-azresourceprovider)** k registraci poskytovatele služby Azure Recovery Service s vaším předplatným.
 
     ```powershell
     Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-6. Pomocí následujících příkazů můžete ověřit, jestli se poskytovatelé úspěšně zaregistrovali:
+6. Můžete ověřit, zda se poskytovatelé úspěšně zaregistrovali pomocí následujících příkazů:
 
     ```powershell
     Get-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-    Ve výstupu příkazu by se **RegistrationState** měl změnit na **registrováno**. Pokud ne, stačí znovu spustit rutinu **[Register-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/register-azresourceprovider)** .
+    Ve výstupu příkazu **RegistrationState** by měl změnit na **Registered**. Pokud ne, stačí znovu spustit rutinu **[Register-AzResourceProvider.](https://docs.microsoft.com/powershell/module/az.resources/register-azresourceprovider)**
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
-Následující kroky vás provedou vytvořením trezoru Recovery Services. Recovery Services trezor se liší od trezoru záloh.
+Následující kroky vás provedou vytvořením trezoru služby Recovery Services. Trezor služby Recovery Services se liší od trezoru zálohování.
 
-1. Recovery Services trezor je prostředek Správce prostředků, takže ho musíte umístit do skupiny prostředků. Můžete použít existující skupinu prostředků nebo vytvořit skupinu prostředků pomocí rutiny **[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)** . Při vytváření skupiny prostředků zadejte název a umístění skupiny prostředků.  
+1. Trezor služby Recovery Services je prostředek Správce prostředků, takže jej musíte umístit do skupiny prostředků. Můžete použít existující skupinu prostředků nebo vytvořit skupinu prostředků s rutinou **[New-AzResourceGroup.](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)** Při vytváření skupiny prostředků zadejte název a umístění skupiny prostředků.  
 
     ```powershell
     New-AzResourceGroup -Name "test-rg" -Location "West US"
     ```
 
-2. K vytvoření trezoru Recovery Services použijte rutinu [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesvault?view=azps-1.4.0) . Nezapomeňte zadat stejné umístění úložiště, jaké bylo použito pro skupinu prostředků.
+2. K vytvoření trezoru služby Recovery Services použijte rutinu [New-AzRecoveryServicesVault.](https://docs.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesvault?view=azps-1.4.0) Nezapomeňte zadat stejné umístění pro úschovnu, jaké bylo použito pro skupinu prostředků.
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
 
-3. Zadejte typ redundance úložiště, který se má použít. můžete použít [místně redundantní úložiště (LRS)](../storage/common/storage-redundancy-lrs.md) nebo [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy-grs.md). Následující příklad ukazuje možnost-BackupStorageRedundancy pro testvault je nastavená na geograficky redundantní.
+3. Zadejte typ redundance úložiště, která se má použít. můžete použít [místně redundantní úložiště (LRS)](../storage/common/storage-redundancy-lrs.md) nebo [geograficky redundantní úložiště (GRS).](../storage/common/storage-redundancy-grs.md) Následující příklad ukazuje -BackupStorageRedundancy možnost testvault je nastavena na GeoRedundant.
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
@@ -110,13 +110,13 @@ Následující kroky vás provedou vytvořením trezoru Recovery Services. Recov
 
 ## <a name="view-the-vaults-in-a-subscription"></a>Zobrazení trezorů v předplatném
 
-Pokud chcete zobrazit všechny trezory v rámci předplatného, použijte [příkaz Get-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault?view=azps-1.4.0):
+Chcete-li zobrazit všechny trezory v předplatném, použijte [get-azrecoveryservicesvault](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault?view=azps-1.4.0):
 
 ```powershell
 Get-AzRecoveryServicesVault
 ```
 
-Výstup je podobný následujícímu příkladu, Všimněte si, že je k dispozici přidružený ResourceGroupName a umístění.
+Výstup je podobný následujícímu příkladu, všimněte si, že jsou k dispozici přidružené ResourceGroupName a Location.
 
 ```output
 Name              : Contoso-vault
@@ -130,11 +130,11 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 
 ## <a name="back-up-azure-vms"></a>Zálohování virtuálních počítačů Azure
 
-K ochraně virtuálních počítačů použijte Recovery Services trezor. Před použitím ochrany nastavte kontext trezoru (typ chráněných dat v trezoru) a ověřte zásady ochrany. Zásada ochrany je plán, kdy se spouštějí úlohy zálohování a jak dlouho se mají uchovávat snímky záloh.
+K ochraně virtuálních počítačů použijte trezor služby Recovery Services. Před použitím ochrany nastavte kontext úschovny (typ dat chráněných v úschovně) a ověřte zásady ochrany. Zásady ochrany je plán při spuštění úlohy zálohování a jak dlouho každý snímek zálohy je zachována.
 
-### <a name="set-vault-context"></a>Nastavit kontext trezoru
+### <a name="set-vault-context"></a>Nastavení kontextu úschovny
 
-Než povolíte ochranu na virtuálním počítači, nastavte kontext trezoru pomocí [set-AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext?view=azps-1.4.0) . Po nastavení se kontext trezoru použije pro všechny další rutiny. Následující příklad nastaví kontext trezoru pro trezor *testvault*.
+Před povolením ochrany na virtuálním počítači nastavte kontext úschovny pomocí [set-AzRecoveryServicesVaultContext.](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext?view=azps-1.4.0) Po nastavení se kontext trezoru použije pro všechny další rutiny. Následující příklad nastaví kontext úložiště pro trezor *testvault*.
 
 ```powershell
 Get-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "Contoso-docs-rg" | Set-AzRecoveryServicesVaultContext
@@ -142,7 +142,7 @@ Get-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "Contoso-docs-r
 
 ### <a name="fetch-the-vault-id"></a>Načtení ID trezoru
 
-V souladu s pokyny pro Azure PowerShell plánujeme vyřadit nastavení kontextu trezoru. Místo toho můžete uložit nebo načíst ID trezoru a předat ho relevantním příkazům. Takže pokud jste nastavili kontext trezoru nebo chcete zadat příkaz, který se má spustit pro určitý trezor, předejte ID trezoru jako "-vaultID" do všech relevantních příkazů, a to takto:
+Plánujeme zanesit nastavení kontextu trezoru v souladu s pokyny Azure PowerShellu. Místo toho můžete ID úschovny uložit nebo načíst a předat ho příslušným příkazům. Pokud jste tedy nenastavili kontext úložiště nebo chcete zadat příkaz ke spuštění určitého trezoru, předejte ID úschovny jako "-vaultID" všem relevantním příkazům takto:
 
 ```powershell
 $targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault"
@@ -155,22 +155,22 @@ Nebo
 $targetVaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault" | select -ExpandProperty ID
 ```
 
-### <a name="modifying-storage-replication-settings"></a>Mění se nastavení replikace úložiště.
+### <a name="modifying-storage-replication-settings"></a>Změna nastavení replikace úložiště
 
-Pomocí příkazu [set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/Set-AzRecoveryServicesBackupProperty) nastavte konfiguraci replikace úložiště pro trezor na LRS/GRS.
+Použití [příkazu Set-AzRecoveryServicesBackupProperty k](https://docs.microsoft.com/powershell/module/az.recoveryservices/Set-AzRecoveryServicesBackupProperty) nastavení konfigurace replikace úložiště úložiště v úložišti na LRS/GRS
 
 ```powershell
 Set-AzRecoveryServicesBackupProperty -Vault $targetVault -BackupStorageRedundancy GeoRedundant/LocallyRedundant
 ```
 
 > [!NOTE]
-> Redundanci úložiště lze upravit pouze v případě, že nejsou k tomuto trezoru chráněny žádné zálohované položky.
+> Redundanci úložiště lze upravit pouze v případě, že neexistují žádné položky zálohování chráněné do trezoru.
 
-### <a name="create-a-protection-policy"></a>Vytvoření zásady ochrany
+### <a name="create-a-protection-policy"></a>Vytvoření zásad ochrany
 
-Při vytváření trezoru služby Recovery Services se vytvoří i výchozí zásady ochrany a uchovávání informací. Výchozí zásady ochrany aktivují úlohu zálohování každý den v určenou dobu. Výchozí zásady uchovávání informací uchovávají denní bod obnovení po dobu 30 dnů. Pomocí výchozích zásad můžete rychle chránit svůj virtuální počítač a upravit zásady později pomocí různých podrobností.
+Při vytváření trezoru služby Recovery Services se vytvoří i výchozí zásady ochrany a uchovávání informací. Výchozí zásady ochrany aktivují úlohu zálohování každý den v určenou dobu. Výchozí zásady uchovávání informací uchovávají denní bod obnovení po dobu 30 dnů. Pomocí výchozích zásad můžete rychle chránit virtuální počítač a upravit zásady později s různými podrobnostmi.
 
-K zobrazení zásad ochrany dostupných v trezoru použijte **[Get-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy)** . Pomocí této rutiny můžete získat konkrétní zásadu nebo zobrazit zásady spojené s typem úlohy. Následující příklad získá zásady pro typ úlohy AzureVM.
+Pomocí **[zásad ochrany Get-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy)** zobrazíte zásady ochrany dostupné v úschovně. Pomocí této rutiny můžete získat konkrétní zásady nebo zobrazit zásady přidružené k typu pracovního vytížení. Následující příklad získá zásady pro typ pracovního vytížení AzureVM.
 
 ```powershell
 Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM" -VaultId $targetVault.ID
@@ -185,18 +185,18 @@ DefaultPolicy        AzureVM            AzureVM              4/14/2016 5:00:00 P
 ```
 
 > [!NOTE]
-> Časové pásmo pole BackupTime v PowerShellu je UTC. Pokud se ale čas zálohování zobrazuje v Azure Portal, upraví se čas na své místní časové pásmo.
+> Časové pásmo pole BackupTime v prostředí PowerShell je UTC. Pokud se však čas zálohování zobrazí na webu Azure Portal, čas se upraví na místní časové pásmo.
 >
 >
 
-Zásada ochrany zálohování je přidružená minimálně k jedné zásadě uchovávání informací. Zásady uchovávání informací definují, jak dlouho je bod obnovení udržován před jeho odstraněním.
+Zásady ochrany zálohování jsou přidruženy alespoň k jedné zásadě uchovávání informací. Zásady uchovávání informací definují, jak dlouho je bod obnovení uchováván před jeho odstraněním.
 
-* K zobrazení výchozích zásad uchovávání informací použijte [Get-AzRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject) .
-* Podobně můžete použít [příkaz Get-AzRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject) k získání výchozích zásad plánování.
+* Pomocí [objektu Get-AzRecoveryServicesBackupBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject) zobrazte výchozí zásady uchovávání informací.
+* Podobně můžete použít [Get-AzRecoveryServicesBackupBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject) získat výchozí zásady plánu.
 * Rutina [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy) vytvoří objekt prostředí PowerShell, který obsahuje informace o zásadách zálohování.
-* Objekty zásad plánování a uchovávání se používají jako vstupy rutiny New-AzRecoveryServicesBackupProtectionPolicy.
+* Objekty zásad plánování a uchovávání informací se používají jako vstupy do rutiny New-AzRecoveryServicesBackupProtectionPolicy.
 
-Ve výchozím nastavení je v objektu zásad plánování definován počáteční čas. Pomocí následujícího příkladu změňte čas spuštění na požadovaný čas zahájení. Požadovaný čas spuštění by měl být také ve formátu UTC. Následující příklad předpokládá, že požadovaný počáteční čas je 01:00 UTC pro denní zálohy.
+Ve výchozím nastavení je čas zahájení definován v objektu zásad plánu. Pomocí následujícího příkladu můžete změnit čas zahájení na požadovaný čas zahájení. Požadovaný čas zahájení by měl být také v UTC. Níže uvedený příklad předpokládá, že požadovaný čas zahájení je 01:00 AM UTC pro denní zálohování.
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM" -VaultId $targetVault.ID
@@ -206,9 +206,9 @@ $schpol.ScheduleRunTimes[0] = $UtcTime
 ```
 
 > [!IMPORTANT]
-> Je nutné zadat čas spuštění pouze v 30 minutách pouze násobcích. V tomto příkladu může být pouze "01:00:00" nebo "02:30:00". Počáteční čas nemůže být "01:15:00"
+> Je třeba zadat čas zahájení pouze v násobcích 30 minut. Ve výše uvedeném příkladu může být pouze "01:00:00" nebo "02:30:00". Čas zahájení nemůže být "01:15:00"
 
-V následujícím příkladu jsou uloženy zásady plánu a zásady uchovávání informací v proměnných. V příkladu se tyto proměnné používají k definování parametrů při vytváření zásad ochrany, *NewPolicy*.
+Následující příklad ukládá zásady plánu a zásady uchovávání informací v proměnných. Příklad používá tyto proměnné k definování parametrů při vytváření zásad ochrany *NewPolicy*.
 
 ```powershell
 $retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM" -VaultId $targetVault.ID
@@ -225,21 +225,21 @@ NewPolicy           AzureVM            AzureVM              4/24/2016 1:30:00 AM
 
 ### <a name="enable-protection"></a>Povolení ochrany
 
-Po definování zásady ochrany je stále nutné povolit zásadu pro položku. K povolení ochrany použijte [Enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) . Povolení ochrany vyžaduje dva objekty – položku a zásadu. Po přidružení zásady k trezoru se spustí pracovní postup zálohování v čase definovaném v plánu zásad.
+Po definování zásad ochrany je stále nutné povolit zásady pro položku. Chcete-li povolit ochranu, použijte příkaz [Enable-AzRecoveryServicesBackupProtection.](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) Povolení ochrany vyžaduje dva objekty - položku a zásadu. Jakmile je zásada přidružena k úschovně, pracovní postup zálohování se aktivuje v době definované v plánu zásad.
 
 > [!IMPORTANT]
-> Když použijete PS k povolení zálohování pro víc virtuálních počítačů najednou, ujistěte se, že k jedné zásadě nemáte k dispozici víc než 100 virtuálních počítačů. Toto je [doporučený postup](https://docs.microsoft.com/azure/backup/backup-azure-vm-backup-faq#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-a-same-backup-policy). V současné době klient PS explicitně neblokuje, pokud je k dispozici více než 100 virtuálních počítačů, ale tato kontrolní služba bude plánována do budoucna.
+> Při použití PS povolit zálohování pro více virtuálních počítačů najednou, ujistěte se, že jedna zásada nemá více než 100 virtuálních počítačů s ním spojené. Toto je [doporučený osvědčený postup](https://docs.microsoft.com/azure/backup/backup-azure-vm-backup-faq#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-a-same-backup-policy). V současné době klient PS explicitně neblokuje, pokud existuje více než 100 virtuálních připojení, ale kontrola je plánována na přidání v budoucnu.
 
-Následující příklady umožňují ochranu položky V2VM pomocí zásad NewPolicy. Příklady se liší v závislosti na tom, jestli je virtuální počítač zašifrovaný a jaký typ šifrování.
+Následující příklady povolit ochranu pro položku, V2VM, pomocí zásady NewPolicy. Příklady se liší v závislosti na tom, zda je virtuální počítač šifrovaný a jaký typ šifrování.
 
-Povolení ochrany u **nešifrovaných správce prostředků virtuálních počítačů**:
+Povolení ochrany na **nešifrovaných virtuálních počítačích Správce prostředků**:
 
 ```powershell
 $pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -VaultId $targetVault.ID
 Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1" -VaultId $targetVault.ID
 ```
 
-Pokud chcete povolit ochranu šifrovaných virtuálních počítačů (šifrovaných pomocí klíče bek a KEK), musíte Azure Backup službě udělit oprávnění ke čtení klíčů a tajných kódů z trezoru klíčů.
+Chcete-li povolit ochranu na šifrovaných virtuálních počítačích (šifrované pomocí BEK a KEK), musíte službě Azure Backup udělit oprávnění ke čtení klíčů a tajných kódů z trezoru klíčů.
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName "KeyVaultName" -ResourceGroupName "RGNameOfKeyVault" -PermissionsToKeys backup,get,list -PermissionsToSecrets get,list -ServicePrincipalName 262044b1-e2ce-469f-a196-69ab7ada62d3
@@ -247,7 +247,7 @@ $pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -VaultId $
 Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1" -VaultId $targetVault.ID
 ```
 
-Pokud chcete povolit ochranu **šifrovaných virtuálních počítačů (jenom zašifrovaných pomocí klíče bek)** , musíte dát službě Azure Backup oprávnění ke čtení tajných kódů z trezoru klíčů.
+Chcete-li povolit ochranu na **šifrovaných virtuálních počítačích (šifrované pouze pomocí BEK)**, musíte službě Azure Backup udělit oprávnění ke čtení tajných kódů z trezoru klíčů.
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName "KeyVaultName" -ResourceGroupName "RGNameOfKeyVault" -PermissionsToSecrets backup,get,list -ServicePrincipalName 262044b1-e2ce-469f-a196-69ab7ada62d3
@@ -256,12 +256,12 @@ Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGro
 ```
 
 > [!NOTE]
-> Pokud používáte cloud Azure Government, použijte hodnotu ff281ffe-705c-4F53-9f37-a40e6f2c68f3 pro parametr ServicePrincipalName v rutině [set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) .
+> Pokud používáte cloud Azure Government, použijte pro parametr ServicePrincipalName v rutině [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) hodnotu ff281ffe-705c-4f53-9f37-a40e6f2c68f3.
 >
 
-## <a name="monitoring-a-backup-job"></a>Monitorování úlohy zálohování
+## <a name="monitoring-a-backup-job"></a>Sledování úlohy zálohování
 
-Dlouho běžící operace, jako jsou úlohy zálohování, můžete monitorovat bez použití Azure Portal. Chcete-li získat stav probíhající úlohy, použijte rutinu [Get-AzRecoveryservicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) . Tato rutina načte úlohy zálohování pro určitý trezor a tento trezor je zadaný v kontextu trezoru. Následující příklad získá stav probíhající úlohy jako pole a uloží stav do proměnné $joblist.
+Můžete sledovat dlouhotrvající operace, jako jsou úlohy zálohování, bez použití portálu Azure. Chcete-li získat stav probíhající úlohy, použijte rutinu [Get-AzRecoveryservicesBackupJob.](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) Tato rutina získá úlohy zálohování pro konkrétní úschovnu a tento trezor je určen v kontextu úschovny. Následující příklad získá stav probíhající úlohy jako pole a uloží stav do proměnné $joblist.
 
 ```powershell
 $joblist = Get-AzRecoveryservicesBackupJob –Status "InProgress" -VaultId $targetVault.ID
@@ -276,7 +276,7 @@ WorkloadName     Operation            Status               StartTime            
 V2VM             Backup               InProgress            4/23/2016                5:00:30 PM                cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
 ```
 
-Místo cyklického dotazování těchto úloh na dokončení – což je zbytečné další použití rutiny [Wait-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/wait-azrecoveryservicesbackupjob) . Tato rutina pozastaví provádění, dokud se úloha nedokončí nebo nedosáhne zadané hodnoty časového limitu.
+Namísto dotazování těchto úloh pro dokončení - což je zbytečné další kód - použijte [Rutina Wait-AzRecoveryServicesBackupJob.](https://docs.microsoft.com/powershell/module/az.recoveryservices/wait-azrecoveryservicesbackupjob) Tato rutina pozastaví provádění, dokud nebude dokončena úloha nebo dokud nebude dosaženo zadané hodnoty časového času.
 
 ```powershell
 Wait-AzRecoveryServicesBackupJob -Job $joblist[0] -Timeout 43200 -VaultId $targetVault.ID
@@ -284,13 +284,13 @@ Wait-AzRecoveryServicesBackupJob -Job $joblist[0] -Timeout 43200 -VaultId $targe
 
 ## <a name="manage-azure-vm-backups"></a>Správa záloh virtuálních počítačů Azure
 
-### <a name="modify-a-protection-policy"></a>Úprava zásady ochrany
+### <a name="modify-a-protection-policy"></a>Změna zásad ochrany
 
-Chcete-li upravit zásady ochrany, použijte [příkaz set-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy) pro úpravu objektů SchedulePolicy nebo RetentionPolicy.
+Chcete-li změnit zásady ochrany, použijte [set-AzRecoveryServicesBackupBackupProtectionProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy) k úpravě objektů SchedulePolicy nebo RetentionPolicy.
 
-#### <a name="modifying-scheduled-time"></a>Změna naplánovaného času
+#### <a name="modifying-scheduled-time"></a>Úprava naplánovaného času
 
-Když vytvoříte zásady ochrany, ve výchozím nastavení se mu přiřadí čas spuštění. Následující příklady ukazují, jak upravit čas zahájení zásady ochrany.
+Když vytvoříte zásadu ochrany, je ve výchozím nastavení přiřazen čas zahájení. Následující příklady ukazují, jak změnit čas zahájení zásad ochrany.
 
 ````powershell
 $SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
@@ -301,9 +301,9 @@ $pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -VaultId $
 Set-AzRecoveryServicesBackupProtectionPolicy -Policy $pol  -SchedulePolicy $SchPol -VaultId $targetVault.ID
 ````
 
-#### <a name="modifying-retention"></a>Úprava uchovávání informací
+#### <a name="modifying-retention"></a>Změna uchovávání informací
 
-Následující příklad změní dobu uchování bodu obnovení na 365 dní.
+Následující příklad změní bod obnovení uchovávání na 365 dní.
 
 ```powershell
 $retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM"
@@ -312,10 +312,10 @@ $pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -VaultId $
 Set-AzRecoveryServicesBackupProtectionPolicy -Policy $pol  -RetentionPolicy $RetPol -VaultId $targetVault.ID
 ```
 
-#### <a name="configuring-instant-restore-snapshot-retention"></a>Konfigurace uchování snímku okamžitého obnovení
+#### <a name="configuring-instant-restore-snapshot-retention"></a>Konfigurace uchovávání snímků okamžitého obnovení
 
 > [!NOTE]
-> Z AZ PS Version 1.6.0 a vyšší můžete aktualizovat dobu uchování snímku okamžitého obnovení v zásadách pomocí PowerShellu.
+> Od Az PS verze 1.6.0 dále, jeden může aktualizovat okamžité obnovení snímku retenční období v zásadách pomocí Powershellu
 
 ````powershell
 $bkpPol = Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM" -VaultId $targetVault.ID
@@ -323,11 +323,11 @@ $bkpPol.SnapshotRetentionInDays=7
 Set-AzRecoveryServicesBackupProtectionPolicy -policy $bkpPol -VaultId $targetVault.ID
 ````
 
-Výchozí hodnota bude 2, uživatel může nastavit hodnotu s minimálním počtem 1 a Max z 5. Pro týdenní zásady zálohování je Tato perioda nastavená na 5 a nedá se změnit.
+Výchozí hodnota bude 2, uživatel může nastavit hodnotu s min 1 a max 5. Pro zásady týdenní zálohování období je nastavena na 5 a nelze změnit.
 
-### <a name="trigger-a-backup"></a>Aktivace zálohování
+### <a name="trigger-a-backup"></a>Spuštění zálohy
 
-K aktivaci úlohy zálohování použijte [Backup-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem) . Pokud se jedná o počáteční zálohu, jedná se o úplnou zálohu. Následné zálohy přebírají přírůstkovou kopii. V následujícím příkladu se zachová záloha virtuálního počítače po dobu 60 dnů.
+Pomocí [položky Backup-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem) aktivujte úlohu zálohování. Pokud se jedná o počáteční zálohu, je to úplná záloha. Následné zálohy trvat přírůstkové kopie. Následující příklad trvá záloha virtuálních počítače, které mají být zachovány po dobu 60 dnů.
 
 ```powershell
 $namedContainer = Get-AzRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM" -VaultId $targetVault.ID
@@ -345,13 +345,13 @@ V2VM              Backup              InProgress          4/23/2016             
 ```
 
 > [!NOTE]
-> Časové pásmo polí Čas_spuštění a čas_ukončení v PowerShellu je UTC. Pokud je však čas zobrazen v Azure Portal, čas se upraví na vaše místní časové pásmo.
+> Časové pásmo polí StartTime a EndTime v prostředí PowerShell je UTC. Když se však čas zobrazí na portálu Azure, čas se upraví na místní časové pásmo.
 >
 >
 
-### <a name="change-policy-for-backup-items"></a>Změnit zásady pro zálohované položky
+### <a name="change-policy-for-backup-items"></a>Změnit zásady pro položky zálohování
 
-Uživatel může buď upravit existující zásady, nebo změnit zásadu zálohované položky z Policy1 na Policy2. Chcete-li přepnout zásady pro zálohovanou položku, načtěte příslušné zásady a zálohujte položku a použijte příkaz [Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) s položkou Backup jako parametr.
+Uživatel může změnit existující zásady nebo zásady zálohované položky ze zásad1 na Policy2. Chcete-li přepnout zásady pro zálohovanou položku, načíst příslušné zásady a zálohovat položku a použít [příkaz Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) s položkou zálohování jako parametr.
 
 ````powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName> -VaultId $targetVault.ID
@@ -359,7 +359,7 @@ $anotherBkpItem = Get-AzRecoveryServicesBackupItem -WorkloadType AzureVM -Backup
 Enable-AzRecoveryServicesBackupProtection -Item $anotherBkpItem -Policy $TargetPol1 -VaultId $targetVault.ID
 ````
 
-Příkaz čeká na dokončení zálohování konfigurace a vrátí následující výstup.
+Příkaz čeká na dokončení konfigurace zálohy a vrátí následující výstup.
 
 ```powershell
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
@@ -369,9 +369,9 @@ TestVM           ConfigureBackup      Completed            3/18/2019 8:00:21 PM 
 
 ### <a name="stop-protection"></a>Zastavení ochrany
 
-#### <a name="retain-data"></a>Zachovat data
+#### <a name="retain-data"></a>Zachování dat
 
-Pokud si uživatel přeje zastavit ochranu, může použít rutinu [Disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) PS. Tím se zastaví naplánovaná zálohování, ale data zálohovaná, dokud se teď neuchovávají trvale.
+Pokud si uživatel přeje ochranu zastavit, může použít rutinu [PS Disable-AzRecoveryServicesBackupProtection.](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) Tím se zastaví plánované zálohování, ale data zálohovaná až dosud jsou zachována navždy.
 
 ````powershell
 $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -Name "<backup item name>" -VaultId $targetVault.ID
@@ -380,7 +380,7 @@ Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.
 
 #### <a name="delete-backup-data"></a>Odstranění zálohovaných dat
 
-Pokud chcete uložená zálohovaná data z trezoru úplně odebrat, stačí přidat příznak/RemoveRecoveryPoints nebo přepnout na [příkaz "Zakázat" ochranu](#retain-data).
+Chcete-li zcela odstranit uložená záložní data v trezoru, stačí přidat příznak /přepnout na příkaz "zakázat" příznak /přepnout do [příkazu 'zakázat' ochranu](#retain-data).
 
 ````powershell
 Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID -RemoveRecoveryPoints
@@ -388,40 +388,40 @@ Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.
 
 ## <a name="restore-an-azure-vm"></a>Obnovení virtuálního počítače Azure
 
-Je důležitý rozdíl mezi obnovením virtuálního počítače pomocí Azure Portal a obnovením virtuálního počítače pomocí PowerShellu. V prostředí PowerShell je operace obnovení dokončena až po vytvoření disků a informací o konfiguraci z bodu obnovení. Operace obnovení nevytvoří virtuální počítač. Postup vytvoření virtuálního počítače z disku najdete v části [Vytvoření virtuálního počítače z obnovených disků](backup-azure-vms-automation.md#create-a-vm-from-restored-disks). Pokud nechcete obnovit celý virtuální počítač, ale chcete obnovit nebo obnovit několik souborů ze zálohy virtuálního počítače Azure, přečtěte si [část obnovení souborů](backup-azure-vms-automation.md#restore-files-from-an-azure-vm-backup).
+Je důležitý rozdíl mezi obnovení virtuálního počítače pomocí portálu Azure a obnovení virtuálního počítače pomocí Prostředí PowerShell. S Prostředím PowerShell je operace obnovení dokončena po vytvoření disků a informací o konfiguraci z bodu obnovení. Operace obnovení nevytvoří virtuální počítač. Pokud chcete vytvořit virtuální počítač z disku, přečtěte si část [Vytvoření virtuálního počítače z obnovených disků](backup-azure-vms-automation.md#create-a-vm-from-restored-disks). Pokud nechcete obnovit celý virtuální počítač, ale chcete obnovit nebo obnovit několik souborů ze zálohy virtuálního počítače Azure, přečtěte si [část obnovení souboru](backup-azure-vms-automation.md#restore-files-from-an-azure-vm-backup).
 
 > [!Tip]
-> Operace obnovení nevytváří virtuální počítač.
+> Operace obnovení nevytvoří virtuální počítač.
 >
 >
 
-Následující obrázek znázorňuje hierarchii objektů z RecoveryServicesVault dolů do BackupRecoveryPoint.
+Následující obrázek znázorňuje hierarchii objektů od recoveryservicesvault až po BackupRecoveryPoint.
 
-![Recovery Services hierarchie objektů zobrazující BackupContainer](./media/backup-azure-vms-arm-automation/backuprecoverypoint-only.png)
+![Hierarchie objektů služby Recovery Services zobrazující kontejner BackupContainer](./media/backup-azure-vms-arm-automation/backuprecoverypoint-only.png)
 
-Chcete-li obnovit zálohovaná data, identifikujte zálohovanou položku a bod obnovení, který obsahuje data k určitému bodu v čase. K obnovení dat z trezoru na svůj účet použijte [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) .
+Chcete-li obnovit záložní data, identifikujte zálohovanou položku a bod obnovení, který obsahuje data bodu v čase. Pomocí [nástroje Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) obnovte data z úložiště do svého účtu.
 
-Základní kroky pro obnovení virtuálního počítače Azure jsou:
+Základní kroky k obnovení virtuálního počítače Azure jsou:
 
 * Vyberte virtuální počítač.
-* Vyberte bod obnovení.
+* Zvolte bod obnovení.
 * Obnovte disky.
-* Vytvořte virtuální počítač z uložených disků.
+* Vytvořte virtuální ho svitek z uložených disků.
 
-### <a name="select-the-vm"></a>Vyberte virtuální počítač.
+### <a name="select-the-vm"></a>Výběr virtuálního virtuálního mísy
 
-Chcete-li získat objekt prostředí PowerShell, který identifikuje správnou zálohovanou položku, začněte z kontejneru v trezoru a Pracujte způsobem v hierarchii objektů. Pokud chcete vybrat kontejner, který představuje virtuální počítač, použijte rutinu [Get-AzRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer) a kanál, který rutinu [Get-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) .
+Chcete-li získat objekt Prostředí PowerShell, který identifikuje správnou položku zálohování, začněte z kontejneru v úschovně a propracujte se dolů hierarchií objektů. Chcete-li vybrat kontejner, který představuje virtuální hod, použijte rutinu [Get-AzRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer) a kanál, který do rutiny [Get-AzRecoveryServicesBackupItem.](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem)
 
 ```powershell
 $namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM" -VaultId $targetVault.ID
 $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $targetVault.ID
 ```
 
-### <a name="choose-a-recovery-point"></a>Zvolit bod obnovení
+### <a name="choose-a-recovery-point"></a>Zvolte bod obnovení
 
-Pomocí rutiny [Get-AzRecoveryServicesBackupRecoveryPoint Zobrazte](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) seznam všech bodů obnovení pro zálohovanou položku. Pak zvolte bod obnovení, který chcete obnovit. Pokud si nejste jistí, který bod obnovení chcete použít, je dobrým zvykem zvolit nejnovější RecoveryPointType = AppConsistent bod v seznamu.
+Pomocí rutiny [Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) vypsat všechny body obnovení pro položku zálohování. Pak zvolte bod obnovení, který chcete obnovit. Pokud si nejste jisti, který bod obnovení použít, je vhodné zvolit nejnovější RecoveryPointType = AppConsistent bod v seznamu.
 
-V následujícím skriptu je proměnná, **$RP**pole bodů obnovení pro vybranou zálohovanou položku, z posledních sedmi dnů. Pole je seřazené v opačném pořadí s nejnovějším bodem obnovení na indexu 0. Pro výběr bodu obnovení použijte standardní indexování pole v PowerShellu. V příkladu $rp [0] vybere nejnovější bod obnovení.
+V následujícím skriptu je proměnná **$rp**, pole bodů obnovení pro vybranou položku zálohování za posledních sedm dní. Pole je seřazeno v obráceném pořadí času s nejnovějším bodem obnovení v indexu 0. K výběru bodu obnovení použijte standardní indexování pole PowerShell. V příkladu $rp[0] vybere nejnovější bod obnovení.
 
 ```powershell
 $startDate = (Get-Date).AddDays(-7)
@@ -448,9 +448,9 @@ BackupManagementType        : AzureVM
 
 ### <a name="restore-the-disks"></a>Obnovení disků
 
-Pomocí rutiny [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) obnovte data a konfiguraci zálohované položky do bodu obnovení. Jakmile identifikujete bod obnovení, použijte jej jako hodnotu parametru **-RecoveryPoint** . Ve výše uvedeném příkladu byl **$RP [0]** bod obnovení, který se má použít. V následujícím ukázkovém kódu **$RP [0]** bod obnovení, který se má použít pro obnovení disku.
+Pomocí rutiny [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) obnovte data a konfiguraci položky zálohy do bodu obnovení. Jakmile identifikujete bod obnovení, použijte jej jako hodnotu parametru **-RecoveryPoint.** Ve výše uvedeném vzorku byl **$rp[0]** bodem obnovení, který se měl použít. V následujícím ukázkovém kódu je **$rp[0]** bod obnovení, který se má použít pro obnovení disku.
 
-Postup obnovení disků a informací o konfiguraci:
+Obnovení disků a informací o konfiguraci:
 
 ```powershell
 $restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -VaultId $targetVault.ID
@@ -460,14 +460,14 @@ $restorejob
 #### <a name="restore-managed-disks"></a>Obnovení spravovaných disků
 
 > [!NOTE]
-> Pokud má zálohovaný virtuální počítač spravované disky a chcete je obnovit jako spravované disky, zavedli jsme možnost Azure PowerShell RM Module v 6.7.0. a vyšší
+> Pokud podporovaný virtuální počítač spravuje disky a chcete je obnovit jako spravované disky, zavedli jsme funkce z modulu Azure PowerShell RM v 6.7.0. a dále
 >
 >
 
-Zadejte další parametr **TargetResourceGroupName** a určete tak RG, na které se budou spravované disky obnovovat.
+Zadejte další parametr **TargetResourceGroupName** pro určení RG, na které budou obnoveny spravované disky.
 
 > [!NOTE]
-> Pro obnovení spravovaných disků se důrazně doporučuje použít parametr **TargetResourceGroupName** , protože výsledkem je výrazné zlepšení výkonu. Kromě toho z Azure PowerShellu AZ Module 1,0 a vyšší, je tento parametr pro případ obnovení se spravovanými disky povinný.
+> Důrazně doporučujeme použít parametr **TargetResourceGroupName** pro obnovení spravovaných disků, protože výsledkem jsou významná vylepšení výkonu. Také z modulu Azure Powershell Az 1.0 dále je tento parametr povinný v případě obnovení se spravovanými disky
 >
 >
 
@@ -475,7 +475,7 @@ Zadejte další parametr **TargetResourceGroupName** a určete tak RG, na které
 $restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -VaultId $targetVault.ID
 ```
 
-Soubor **VMConfig. JSON** se obnoví do účtu úložiště a spravované disky se obnoví do zadaného cílového RG.
+Soubor **VMConfig.JSON** bude obnoven do účtu úložiště a spravované disky budou obnoveny na zadaný cílový RG.
 
 Výstup se podobá následujícímu příkladu:
 
@@ -485,43 +485,43 @@ WorkloadName     Operation          Status               StartTime              
 V2VM              Restore           InProgress           4/23/2016 5:00:30 PM                        cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
 ```
 
-Počkejte na dokončení úlohy obnovení pomocí rutiny [Wait-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/wait-azrecoveryservicesbackupjob) .
+Pomocí rutiny [Wait-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/wait-azrecoveryservicesbackupjob) počkejte na dokončení úlohy obnovení.
 
 ```powershell
 Wait-AzRecoveryServicesBackupJob -Job $restorejob -Timeout 43200
 ```
 
-Po dokončení úlohy obnovení použijte k získání podrobností o operaci obnovení rutinu [Get-AzRecoveryServicesBackupJobDetails](https://docs.microsoft.com/powershell/module/az.recoveryservices/wait-azrecoveryservicesbackupjob) . Vlastnost JobDetails obsahuje informace potřebné k opětovnému sestavení virtuálního počítače.
+Po dokončení úlohy obnovení použijte rutinu [Get-AzRecoveryServicesBackupJobDetails,](https://docs.microsoft.com/powershell/module/az.recoveryservices/wait-azrecoveryservicesbackupjob) abyste získali podrobnosti o operaci obnovení. Vlastnost JobDetails má informace potřebné k opětovnému sestavení virtuálního účtu.
 
 ```powershell
 $restorejob = Get-AzRecoveryServicesBackupJob -Job $restorejob -VaultId $targetVault.ID
 $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $targetVault.ID
 ```
 
-Po obnovení disků použijte k vytvoření virtuálního počítače v další části.
+Po obnovení disků přejděte k další části a vytvořte virtuální počítače.
 
-## <a name="replace-disks-in-azure-vm"></a>Výměna disků ve virtuálním počítači Azure
+## <a name="replace-disks-in-azure-vm"></a>Nahrazení disků ve virtuálním počítači Azure
 
-Chcete-li nahradit informace o discích a konfiguraci, proveďte následující kroky:
+Chcete-li nahradit disky a informace o konfiguraci, proveďte následující kroky:
 
-* Krok 1: [obnovení disků](backup-azure-vms-automation.md#restore-the-disks)
-* Krok 2: [odpojení datového disku pomocí PowerShellu](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-powershell)
-* Krok 3: [připojení datového disku k virtuálnímu počítači s Windows pomocí PowerShellu](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps)
+* Krok 1: [Obnovení disků](backup-azure-vms-automation.md#restore-the-disks)
+* Krok 2: [Odpojení datového disku pomocí prostředí PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-powershell)
+* Krok 3: [Připojení datového disku k virtuálnímu počítače s Windows pomocí Prostředí PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps)
 
 ## <a name="create-a-vm-from-restored-disks"></a>Vytvoření virtuálního počítače z obnovených disků
 
-Po obnovení disků pomocí následujících kroků vytvořte a nakonfigurujte virtuální počítač z disku.
+Po obnovení disků vytvořte a nakonfigurujte virtuální počítač z disku pomocí následujících kroků.
 
 > [!NOTE]
 >
-> 1. AzureAz modul 3.0.0 nebo vyšší je povinný. <br>
-> 2. Aby bylo možné vytvořit šifrované virtuální počítače z obnovených disků, musí mít vaše role Azure oprávnění k provedení této akce, **trezoru Microsoft. a trezorů/nasazení/akce**. Pokud vaše role nemá toto oprávnění, vytvořte pomocí této akce vlastní roli. Další informace najdete v tématu [vlastní role v Azure RBAC](../role-based-access-control/custom-roles.md). <br>
-> 3. Po obnovení disků teď můžete získat šablonu nasazení, kterou můžete použít přímo k vytvoření nového virtuálního počítače. Žádné další rutiny PS pro vytváření spravovaných a nespravovaných virtuálních počítačů, které jsou šifrované/nešifrované.<br>
+> 1. Je vyžadován modul AzureAz 3.0.0 nebo vyšší. <br>
+> 2. Chcete-li vytvořit šifrované virtuální počítače z obnovených disků, musí mít vaše role Azure oprávnění k provedení akce **Microsoft.KeyVault/vaults/deploy/action**. Pokud vaše role nemá toto oprávnění, vytvořte vlastní roli s touto akcí. Další informace najdete [v tématu vlastní role v Azure RBAC](../role-based-access-control/custom-roles.md). <br>
+> 3. Po obnovení disků teď můžete získat šablonu nasazení, kterou můžete přímo použít k vytvoření nového virtuálního počítače. Žádné další různé rutiny PS k vytvoření spravovaných/nespravovaných virtuálních mandů, které jsou šifrované nebo nezašifrované.<br>
 > <br>
 
 ### <a name="create-a-vm-using-the-deployment-template"></a>Vytvoření virtuálního počítače pomocí šablony nasazení
 
-Výsledné Podrobnosti úlohy poskytují identifikátor URI šablony, který lze dotazovat a nasadit.
+Podrobnosti výsledné úlohy poskytují identifikátor URI šablony, který lze dotazovat a nasazovat.
 
 ```powershell
    $properties = $details.properties
@@ -530,35 +530,35 @@ Výsledné Podrobnosti úlohy poskytují identifikátor URI šablony, který lze
    $templateBlobURI = $properties["Template Blob Uri"]
 ```
 
-Šablona není přímo dostupná, protože se nachází v účtu úložiště zákazníka a v daném kontejneru. Pro přístup k této šabloně potřebujeme úplnou adresu URL (spolu s dočasným tokenem SAS).
+Šablona není přímo přístupná, protože je pod účtem úložiště zákazníka a daným kontejnerem. Potřebujeme úplnou adresu URL (spolu s dočasným tokenem SAS) pro přístup k této šabloně.
 
-1. Nejprve rozbalte název šablony z templateBlobURI. Formát je uveden níže. K extrakci konečné název šablony z této adresy URL můžete použít operaci rozdělit v prostředí PowerShell.
+1. Nejprve extrahujte název šablony ze šablonyBlobURI. Formát je uveden níže. Pomocí operace rozdělení v prostředí Powershell můžete extrahovat konečný název šablony z této adresy URL.
 
 ```http
 https://<storageAccountName.blob.core.windows.net>/<containerName>/<templateName>
 ```
 
-2. Pak můžete vytvořit úplnou adresu URL, jak je vysvětleno [zde](https://docs.microsoft.com/azure/azure-resource-manager/templates/secure-template-with-sas-token?tabs=azure-powershell#provide-sas-token-during-deployment).
+2. Pak může být vygenerována úplná adresa URL, jak je vysvětleno [zde](https://docs.microsoft.com/azure/azure-resource-manager/templates/secure-template-with-sas-token?tabs=azure-powershell#provide-sas-token-during-deployment).
 
 ```powershell
 Set-AzCurrentStorageAccount -Name $storageAccountName -ResourceGroupName <StorageAccount RG name>
 $templateBlobFullURI = New-AzStorageBlobSASToken -Container $containerName -Blob <templateName> -Permission r -FullUri
 ```
 
-3. Nasaďte šablonu k vytvoření nového virtuálního počítače, jak je vysvětleno [zde](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy).
+3. Nasazení šablony k vytvoření nového virtuálního počítače, jak je vysvětleno [zde](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy).
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleResourceGroup -TemplateUri $templateBlobFullURI -storageAccountType Standard_GRS
 ```
 
-### <a name="create-a-vm-using-the-config-file"></a>Vytvoření virtuálního počítače pomocí konfiguračního souboru
+### <a name="create-a-vm-using-the-config-file"></a>Vytvoření virtuálního virtuálního mísa pomocí konfiguračního souboru
 
-V následující části jsou uvedené kroky potřebné k vytvoření virtuálního počítače pomocí souboru "VMConfig".
+V následující části jsou uvedeny kroky nezbytné k vytvoření virtuálního virtuálního mísy pomocí souboru VMConfig.
 
 > [!NOTE]
-> Pro vytvoření virtuálního počítače se důrazně doporučuje použít šablonu nasazení podrobnou výše. Tato část (body 1-6) bude brzy zastaralá.
+> Důrazně doporučujeme použít šablonu nasazení podrobně uvedenou výše k vytvoření virtuálního počítače. Tato sekce (body 1-6) bude brzy zastaralá.
 
-1. Dotaz na vlastnosti obnoveného disku pro podrobnosti úlohy.
+1. Dotaz na obnovené vlastnosti disku pro podrobnosti o úloze.
 
    ```powershell
    $properties = $details.properties
@@ -567,7 +567,7 @@ V následující části jsou uvedené kroky potřebné k vytvoření virtuáln�
    $configBlobName = $properties["Config Blob Name"]
    ```
 
-2. Nastavte kontext služby Azure Storage a obnovte konfigurační soubor JSON.
+2. Nastavte kontext úložiště Azure a obnovte konfigurační soubor JSON.
 
    ```powershell
    Set-AzCurrentStorageAccount -Name $storageaccountname -ResourceGroupName "testvault"
@@ -576,15 +576,15 @@ V následující části jsou uvedené kroky potřebné k vytvoření virtuáln�
    $obj = ((Get-Content -Path $destination_path -Raw -Encoding Unicode)).TrimEnd([char]0x00) | ConvertFrom-Json
    ```
 
-3. Vytvořte konfiguraci virtuálního počítače pomocí konfiguračního souboru JSON.
+3. K vytvoření konfigurace virtuálního počítače použijte konfigurační soubor JSON.
 
    ```powershell
    $vm = New-AzVMConfig -VMSize $obj.'properties.hardwareProfile'.vmSize -VMName "testrestore"
    ```
 
-4. Připojte disk s operačním systémem a datové disky. Tento krok popisuje příklady různých spravovaných a šifrovaných konfigurací virtuálních počítačů. Použijte příklad, který odpovídá konfiguraci virtuálního počítače.
+4. Připojte disk operačního systému a datové disky. Tento krok obsahuje příklady pro různé spravované a šifrované konfigurace virtuálních počítačů. Použijte příklad, který vyhovuje konfiguraci virtuálního počítače.
 
-* **Nespravované a nešifrované virtuální počítače** – použijte následující ukázku pro nespravované, nešifrované virtuální počítače.
+* **Nespravované a nešifrované virtuální aplikace** – následující ukázka se použije pro nespravované nešifrované virtuální viny.
 
 ```powershell
        Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
@@ -595,7 +595,7 @@ V následující části jsou uvedené kroky potřebné k vytvoření virtuáln�
        }
 ```
 
-* **Nespravované a šifrované virtuální počítače s Azure AD (jenom klíče bek)** – pro nespravované a šifrované virtuální počítače se službou Azure AD (ŠIFROVANÉ pomocí klíče bek) je potřeba před připojením disků obnovit tajný klíč do trezoru klíčů. Další informace najdete v tématu [obnovení šifrovaného virtuálního počítače z Azure Backup bodu obnovení](backup-azure-restore-key-secret.md). Následující příklad ukazuje, jak připojit operační systém a datové disky pro šifrované virtuální počítače. Při nastavování disku s operačním systémem nezapomeňte uvést příslušný typ operačního systému.
+* **Nespravované a šifrované virtuální počítače s Azure AD (pouze BEK)** – pro nespravované, šifrované virtuální počítače s Azure AD (šifrované pouze pomocí BEK), je třeba obnovit tajný klíč do trezoru klíčů, než budete moct připojit disky. Další informace najdete v tématu [Obnovení šifrovaného virtuálního počítače z bodu obnovení zálohování Azure](backup-azure-restore-key-secret.md). Následující ukázka ukazuje, jak připojit operační systém a datové disky pro šifrované virtuální počítače. Při nastavování disku operačního systému nezapomeňte uvést příslušný typ operačního systému.
 
 ```powershell
       $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -608,7 +608,7 @@ V následující části jsou uvedené kroky potřebné k vytvoření virtuáln�
       }
 ```
 
-* **Nespravované a šifrované virtuální počítače s Azure AD (klíče bek a KEK)** – pro nespravované a šifrované virtuální počítače se službou Azure AD (ŠIFROVANÉ pomocí klíče bek a KEK) před připojením disků obnovte klíč a tajný klíč do trezoru klíčů. Další informace najdete v tématu [obnovení šifrovaného virtuálního počítače z Azure Backup bodu obnovení](backup-azure-restore-key-secret.md). Následující příklad ukazuje, jak připojit operační systém a datové disky pro šifrované virtuální počítače.
+* **Nespravované a šifrované virtuální počítače s Azure AD (BEK a KEK)** – pro nespravované, šifrované virtuální počítače s Azure AD (šifrované pomocí BEK a KEK), obnovit klíč a tajný klíč do trezoru klíčů před připojením disků. Další informace najdete [v tématu Obnovení šifrovaného virtuálního počítače z bodu obnovení zálohování Azure](backup-azure-restore-key-secret.md). Následující ukázka ukazuje, jak připojit operační systém a datové disky pro šifrované virtuální počítače.
 
 ```powershell
       $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -622,9 +622,9 @@ V následující části jsou uvedené kroky potřebné k vytvoření virtuáln�
      }
 ```
 
-* **Nespravované a šifrované virtuální počítače bez Azure AD (jenom klíče bek)** – pro nespravované a šifrované virtuální počítače bez služby Azure AD (ŠIFROVANÉ pomocí klíče bek), pokud **není k dispozici zdrojový Trezor klíčů nebo tajný klíč** , obnovujte tajné klíče do trezoru klíčů pomocí postupu v části [obnovení nešifrovaného virtuálního počítače z Azure Backupho bodu obnovení](backup-azure-restore-key-secret.md). Pak spusťte následující skripty a nastavte podrobnosti o šifrování obnoveného objektu BLOB operačního systému (Tento krok se nevyžaduje pro datový objekt BLOB). $Dekurl lze načíst z obnoveného trezoru klíčů.
+* **Nespravované a šifrované virtuální počítače bez Azure AD (pouze BEK)** – pro nespravované, šifrované virtuální počítače bez Azure AD (šifrované pouze pomocí BEK), pokud zdroj **keyVault/secret nejsou k dispozici** obnovit tajné klíče do trezoru klíčů pomocí postupu v [obnovení nešifrovaného virtuálního počítače z bodu obnovení zálohování Azure](backup-azure-restore-key-secret.md). Pak spusťte následující skripty pro nastavení podrobností šifrování na obnoveném objektu blob operačního spoje (tento krok není vyžadován pro objekt blob dat). $dekurl lze načíst z obnovenékeyVault.
 
-Níže uvedený skript je nutné provést pouze v případě, že není k dispozici zdrojový trezor a tajný klíč.
+Níže uvedený skript musí být proveden pouze v případě, že zdrojový klíčVault/tajný klíč není k dispozici.
 
 ```powershell
       $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -636,9 +636,9 @@ Níže uvedený skript je nutné provést pouze v případě, že není k dispoz
       $osBlob.ICloudBlob.SetMetadata()
 ```
 
-Po **zpřístupnění tajných** kódů a zadání podrobností o šifrování také v objektu BLOB operačního systému připojte disky pomocí skriptu uvedeného níže.
+Poté, co **jsou k dispozici tajné klíče** a podrobnosti šifrování jsou také nastaveny na objekt blob operačního systému, připojte disky pomocí skriptu uvedeného níže.
 
-Pokud je zdrojový Trezor klíčů nebo tajné kódy již k dispozici, není nutné provést tento skript.
+Pokud zdrojový klíčVault/secrets jsou již k dispozici, pak výše uvedený skript nemusí být provedeny.
 
 ```powershell
       Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
@@ -649,9 +649,9 @@ Pokud je zdrojový Trezor klíčů nebo tajné kódy již k dispozici, není nut
       }
 ```
 
-* **Nespravované a šifrované virtuální počítače bez služby Azure AD (klíče bek a KEK)** – pro nespravované a šifrované virtuální počítače bez služby Azure AD (ŠIFROVANÉ pomocí klíče bek & KEK), pokud **není k dispozici zdrojový trezor** klíčů, klíč a tajné klíče, a to pomocí postupu v části [obnovení nešifrovaného virtuálního počítače z Azure Backup bodu obnovení](backup-azure-restore-key-secret.md). Pak spusťte následující skripty a nastavte podrobnosti o šifrování obnoveného objektu BLOB operačního systému (Tento krok se nevyžaduje pro datový objekt BLOB). $Dekurl a $kekurl je možné načíst z obnoveného trezoru klíčů.
+* **Nespravované a šifrované virtuální počítače bez Azure AD (BEK a KEK)** – pro nespravované, šifrované virtuální počítače bez Azure AD (šifrované pomocí BEK & KEK), pokud zdroj **keyVault/key/secret nejsou k dispozici** obnovit klíč a tajné klíče do trezoru klíčů pomocí postupu v [obnovení nešifrovaného virtuálního počítače z bodu obnovení Azure](backup-azure-restore-key-secret.md). Pak spusťte následující skripty pro nastavení podrobností šifrování na obnoveném objektu blob operačního spoje (tento krok není vyžadován pro objekt blob dat). $dekurl a $kekurl lze načíst z obnovenékeyVault.
 
-Níže uvedený skript je nutné provést pouze v případě, že není k dispozici zdrojový Trezor klíčů, klíč nebo tajný klíč.
+Níže uvedený skript musí být proveden pouze v případě, že zdrojový klíčVault/key/secret není k dispozici.
 
 ```powershell
       $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -664,9 +664,9 @@ Níže uvedený skript je nutné provést pouze v případě, že není k dispoz
       $osBlob.ICloudBlob.SetMetadata()
 ```
 
-Až **budou klíče a tajné klíče k dispozici** a podrobnosti o šifrování jsou nastaveny v objektu BLOB operačního systému, připojte disky pomocí skriptu uvedeného níže.
+Po **klíč/tajné klíče jsou k dispozici** a podrobnosti šifrování jsou nastaveny na objekt blob operačního systému, připojte disky pomocí skriptu uvedeného níže.
 
-Pokud jsou k dispozici zdrojový Trezor klíčů/tajné klíče, není nutné spustit výše uvedený skript.
+Pokud zdrojový klíčVault/key/secrets jsou k dispozici, pak výše uvedený skript nemusí být provedeny.
 
 ```powershell
       Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
@@ -677,15 +677,15 @@ Pokud jsou k dispozici zdrojový Trezor klíčů/tajné klíče, není nutné sp
       }
 ```
 
-* **Spravované a nešifrované virtuální počítače** – pro spravované nešifrované virtuální počítače připojte obnovené spravované disky. Podrobné informace najdete v tématu [připojení datového disku k virtuálnímu počítači s Windows pomocí PowerShellu](../virtual-machines/windows/attach-disk-ps.md).
+* **Spravované a nešifrované virtuální počítače** – pro spravované nešifrované virtuální počítače připojte obnovené spravované disky. Podrobné informace najdete v [tématu Připojení datového disku k virtuálnímu virtuálnímu počítače se systémem Windows pomocí prostředí PowerShell](../virtual-machines/windows/attach-disk-ps.md).
 
-* **Spravované a šifrované virtuální počítače s Azure AD (jenom klíče bek)** – pro spravované šifrované virtuální počítače s Azure AD (šifrované jenom pomocí klíče bek) připojte obnovené spravované disky. Podrobné informace najdete v tématu [připojení datového disku k virtuálnímu počítači s Windows pomocí PowerShellu](../virtual-machines/windows/attach-disk-ps.md).
+* **Spravované a šifrované virtuální počítače s Azure AD (pouze BEK)** – pro spravované šifrované virtuální počítače s Azure AD (šifrované pouze pomocí BEK) připojte obnovené spravované disky. Podrobné informace najdete v [tématu Připojení datového disku k virtuálnímu virtuálnímu počítače se systémem Windows pomocí prostředí PowerShell](../virtual-machines/windows/attach-disk-ps.md).
 
-* **Spravované a šifrované virtuální počítače s Azure AD (klíče bek a KEK)** – pro spravované šifrované virtuální počítače s Azure AD (ŠIFROVANÉ pomocí klíče bek a KEK) připojte obnovené spravované disky. Podrobné informace najdete v tématu [připojení datového disku k virtuálnímu počítači s Windows pomocí PowerShellu](../virtual-machines/windows/attach-disk-ps.md).
+* **Spravované a šifrované virtuální počítače s Azure AD (BEK a KEK)** – pro spravované šifrované virtuální počítače s Azure AD (šifrované pomocí BEK a KEK) připojte obnovené spravované disky. Podrobné informace najdete v [tématu Připojení datového disku k virtuálnímu virtuálnímu počítače se systémem Windows pomocí prostředí PowerShell](../virtual-machines/windows/attach-disk-ps.md).
 
-* **Spravované a šifrované virtuální počítače bez Azure AD (jenom klíče bek)** – pro spravované a šifrované virtuální počítače bez služby Azure AD (šifrované jenom pomocí klíče bek), pokud **není k dispozici zdrojový Trezor klíčů nebo tajný klíč** , obnovte tajné klíče do trezoru klíčů pomocí postupu v části [obnovení nešifrovaného virtuálního počítače z Azure Backup bodu obnovení](backup-azure-restore-key-secret.md). Pak spusťte následující skripty a nastavte podrobnosti o šifrování obnoveného disku s operačním systémem (Tento krok se nevyžaduje pro datový disk). $Dekurl lze načíst z obnoveného trezoru klíčů.
+* **Spravované a šifrované virtuální počítače bez Azure AD (pouze BEK)** -Pro spravované, šifrované virtuální počítače bez Azure AD (šifrované pouze pomocí BEK), pokud zdroj **keyVault/tajný klíč nejsou k dispozici** obnovit tajné klíče do trezoru klíčů pomocí postupu v obnovení [nešifrovaného virtuálního počítače z bodu obnovení zálohování Azure](backup-azure-restore-key-secret.md). Poté spusťte následující skripty pro nastavení podrobností šifrování na obnoveném disku operačního systému (tento krok není vyžadován pro datový disk). $dekurl lze načíst z obnovenékeyVault.
 
-Níže uvedený skript je nutné provést pouze v případě, že není k dispozici zdrojový trezor a tajný klíč.  
+Níže uvedený skript musí být proveden pouze v případě, že zdrojový klíčVault/tajný klíč není k dispozici.  
 
 ```powershell
 $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -702,11 +702,11 @@ $diskupdateconfig.EncryptionSettingsCollection.EncryptionSettingsVersion = "1.1"
 Update-AzDisk -ResourceGroupName "testvault" -DiskName $obj.'properties.StorageProfile'.osDisk.name -DiskUpdate $diskupdateconfig
 ```
 
-Po dostupnosti tajných kódů a zadání podrobností o šifrování na disku s operačním systémem, které se mají připojit k obnoveným spravovaným diskům, najdete v tématu [připojení datového disku k virtuálnímu počítači s Windows pomocí PowerShellu](../virtual-machines/windows/attach-disk-ps.md).
+Po tajné klíče jsou k dispozici a podrobnosti šifrování jsou nastaveny na disku operačního systému připojit obnovené spravované disky, najdete v [tématu připojení datového disku k virtuálnímu počítači systému Windows pomocí prostředí PowerShell](../virtual-machines/windows/attach-disk-ps.md).
 
-* **Spravované a šifrované virtuální počítače bez služby Azure AD (klíče bek a KEK)** – pro spravované a šifrované virtuální počítače bez služby Azure AD (ŠIFROVANÉ pomocí klíče bek & KEK), pokud **není k dispozici zdrojový Trezor klíčů/tajný** klíč, obnovte klíč a tajné klíče do trezoru klíčů pomocí postupu v části [obnovení nešifrovaného virtuálního počítače z Azure Backup bodu obnovení](backup-azure-restore-key-secret.md). Pak spusťte následující skripty a nastavte podrobnosti o šifrování obnoveného disku s operačním systémem (Tento krok se nevyžaduje u datových disků). $Dekurl a $kekurl je možné načíst z obnoveného trezoru klíčů.
+* **Spravované a šifrované virtuální počítače bez Azure AD (BEK a KEK)** – pro spravované, šifrované virtuální počítače bez Azure AD (šifrované pomocí BEK & KEK), pokud zdroj **keyVault/key/secret nejsou k dispozici** obnovit klíč a tajné klíče do trezoru klíčů pomocí postupu v [obnovení nešifrovaného virtuálního počítače z bodu obnovení Azure](backup-azure-restore-key-secret.md). Poté spusťte následující skripty pro nastavení podrobností šifrování na obnoveném disku operačního systému (tento krok není vyžadován pro datové disky). $dekurl a $kekurl lze načíst z obnovenékeyVault.
 
-Níže uvedený skript je nutné provést pouze v případě, že není k dispozici zdrojový Trezor klíčů, klíč nebo tajný klíč.
+Níže uvedený skript musí být proveden pouze v případě, že zdrojový klíčVault/key/secret není k dispozici.
 
 ```powershell
 $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -728,7 +728,7 @@ $diskupdateconfig.EncryptionSettingsCollection.EncryptionSettingsVersion = "1.1"
 Update-AzDisk -ResourceGroupName "testvault" -DiskName $obj.'properties.StorageProfile'.osDisk.name -DiskUpdate $diskupdateconfig
 ```
 
-Až budou klíče a tajné kódy k dispozici a na disku s operačním systémem jsou nastavené podrobnosti o šifrování, aby bylo možné připojit obnovené spravované disky, přečtěte si téma [připojení datového disku k virtuálnímu počítači s Windows pomocí PowerShellu](../virtual-machines/windows/attach-disk-ps.md).
+Po klíč/tajné klíče jsou k dispozici a podrobnosti šifrování jsou nastaveny na disku operačního systému připojit obnovené spravované disky, najdete v [tématu připojení datového disku k virtuálnímu počítači systému Windows pomocí prostředí PowerShell](../virtual-machines/windows/attach-disk-ps.md).
 
 5. Nastavte nastavení sítě.
 
@@ -749,68 +749,68 @@ Až budou klíče a tajné kódy k dispozici a na disku s operačním systémem 
     New-AzVM -ResourceGroupName "test" -Location "WestUS" -VM $vm
     ```
 
-7. Vložení rozšíření ADE
-   Pokud nejsou vložená rozšíření ADE, budou se datové disky označovat jako nešifrované, takže je povinná pro provedení následujících kroků:
+7. Push ADE rozšíření.
+   Pokud rozšíření ADE nejsou nabízeny, pak datové disky budou označeny jako nešifrované, takže je povinné pro níže uvedené kroky, které mají být provedeny:
 
-   * **Pro virtuální počítač s Azure AD** – k ručnímu povolení šifrování pro datové disky použijte následující příkaz.  
+   * **Pro virtuální počítač s Azure AD** – pomocí následujícího příkazu ručně povolit šifrování pro datové disky  
 
-     **Jenom klíče bek**
+     **Pouze BEK**
 
       ```powershell  
       Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm.Name -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -VolumeType Data
       ```
 
-     **KLÍČE bek a KEK**
+     **BEK a KEK**
 
       ```powershell  
       Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm.Name -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId  -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -VolumeType Data
       ```
 
-   * **Pro virtuální počítač bez Azure AD** – pomocí následujícího příkazu ručně povolte šifrování datových disků.
+   * **Pro virtuální počítač bez Azure AD** – pomocí následujícího příkazu ručně povolit šifrování pro datové disky.
 
-     Pokud během provádění příkazu žádá o AADClientID, je potřeba aktualizovat Azure PowerShell.
+     Pokud během spuštění příkazu požádá o AADClientID, pak je potřeba aktualizovat Azure PowerShell.
 
-     **Jenom klíče bek**
+     **Pouze BEK**
 
       ```powershell  
       Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm.Name -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -SkipVmBackup -VolumeType "All"
       ```
 
-      **KLÍČE bek a KEK**
+      **BEK a KEK**
 
       ```powershell  
       Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm.Name -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -SkipVmBackup -VolumeType "All"
       ```
 
 > [!NOTE]
-> Zajistěte ruční odstranění souborů JASON vytvořených v rámci šifrovaného procesu disku pro obnovení virtuálního počítače.
+> Ujistěte se, že ručně odstranit soubory JASON vytvořené jako součást procesu obnovení šifrovaného virtuálního počítače disku.
 
 ## <a name="restore-files-from-an-azure-vm-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
-Kromě obnovování disků můžete také obnovit jednotlivé soubory ze zálohy virtuálního počítače Azure. Funkce obnovit soubory poskytuje přístup ke všem souborům v bodu obnovení. Soubory můžete spravovat prostřednictvím Průzkumníka souborů, stejně jako u běžných souborů.
+Kromě obnovení disků můžete také obnovit jednotlivé soubory ze zálohy virtuálního počítače Azure. Funkce obnovení souborů poskytuje přístup ke všem souborům v bodě obnovení. Spravujte soubory pomocí Průzkumníka souborů stejně jako u běžných souborů.
 
-Základní kroky pro obnovení souboru ze zálohy virtuálního počítače Azure jsou:
+Základní kroky k obnovení souboru ze zálohy virtuálního počítače Azure jsou:
 
-* Vyberte virtuální počítač.
-* Zvolit bod obnovení
-* Připojit disky bodu obnovení
-* Zkopírujte požadované soubory.
-* Odpojení disku
+* Výběr virtuálního virtuálního mísy
+* Zvolte bod obnovení
+* Připojení disků bodu obnovení
+* Kopírování požadovaných souborů
+* Odpojit disk
 
-### <a name="select-the-vm"></a>Vyberte virtuální počítač.
+### <a name="select-the-vm"></a>Výběr virtuálního virtuálního mísy
 
-Chcete-li získat objekt prostředí PowerShell, který identifikuje správnou zálohovanou položku, začněte z kontejneru v trezoru a Pracujte způsobem v hierarchii objektů. Pokud chcete vybrat kontejner, který představuje virtuální počítač, použijte rutinu [Get-AzRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer) a kanál, který rutinu [Get-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) .
+Chcete-li získat objekt Prostředí PowerShell, který identifikuje správnou položku zálohování, začněte z kontejneru v úschovně a propracujte se dolů hierarchií objektů. Chcete-li vybrat kontejner, který představuje virtuální hod, použijte rutinu [Get-AzRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer) a kanál, který do rutiny [Get-AzRecoveryServicesBackupItem.](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem)
 
 ```powershell
 $namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM" -VaultId $targetVault.ID
 $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $targetVault.ID
 ```
 
-### <a name="choose-a-recovery-point"></a>Zvolit bod obnovení
+### <a name="choose-a-recovery-point"></a>Zvolte bod obnovení
 
-Pomocí rutiny [Get-AzRecoveryServicesBackupRecoveryPoint Zobrazte](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) seznam všech bodů obnovení pro zálohovanou položku. Pak zvolte bod obnovení, který chcete obnovit. Pokud si nejste jistí, který bod obnovení chcete použít, je dobrým zvykem zvolit nejnovější RecoveryPointType = AppConsistent bod v seznamu.
+Pomocí rutiny [Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) vypsat všechny body obnovení pro položku zálohování. Pak zvolte bod obnovení, který chcete obnovit. Pokud si nejste jisti, který bod obnovení použít, je vhodné zvolit nejnovější RecoveryPointType = AppConsistent bod v seznamu.
 
-V následujícím skriptu je proměnná, **$RP**pole bodů obnovení pro vybranou zálohovanou položku, z posledních sedmi dnů. Pole je seřazené v opačném pořadí s nejnovějším bodem obnovení na indexu 0. Pro výběr bodu obnovení použijte standardní indexování pole v PowerShellu. V příkladu $rp [0] vybere nejnovější bod obnovení.
+V následujícím skriptu je proměnná **$rp**, pole bodů obnovení pro vybranou položku zálohování za posledních sedm dní. Pole je seřazeno v obráceném pořadí času s nejnovějším bodem obnovení v indexu 0. K výběru bodu obnovení použijte standardní indexování pole PowerShell. V příkladu $rp[0] vybere nejnovější bod obnovení.
 
 ```powershell
 $startDate = (Get-Date).AddDays(-7)
@@ -835,12 +835,12 @@ ContainerType               : AzureVM
 BackupManagementType        : AzureVM
 ```
 
-### <a name="mount-the-disks-of-recovery-point"></a>Připojit disky bodu obnovení
+### <a name="mount-the-disks-of-recovery-point"></a>Připojení disků bodu obnovení
 
-Pomocí rutiny [Get-AzRecoveryServicesBackupRPMountScript](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprpmountscript) Získejte skript pro připojení všech disků bodu obnovení.
+Pomocí rutiny [Get-AzRecoveryServicesBackupRPMountScript](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprpmountscript) získáte skript pro připojení všech disků bodu obnovení.
 
 > [!NOTE]
-> Disky jsou připojené jako připojené disky iSCSI k počítači, na kterém se skript spouští. K okamžitému připojení dochází a neúčtují se žádné poplatky.
+> Disky jsou připojeny jako disky iSCSI k počítači, ve kterém je skript spuštěn. Montáž nastane okamžitě a neúčtuje vám žádné poplatky.
 >
 >
 
@@ -856,11 +856,11 @@ OsType  Password        Filename
 Windows e3632984e51f496 V2VM_wus2_8287309959960546283_451516692429_cbd6061f7fc543c489f1974d33659fed07a6e0c2e08740.exe
 ```
 
-Spusťte skript na počítači, kde chcete soubory obnovit. Chcete-li spustit skript, je nutné zadat zadané heslo. Po připojení disků použijte Průzkumníka souborů Windows a procházejte nové svazky a soubory. Další informace najdete v článku zálohování, [obnovení souborů ze zálohy virtuálního počítače Azure](backup-azure-restore-files-from-vm.md).
+Spusťte skript v počítači, kde chcete obnovit soubory. Chcete-li spustit skript, musíte zadat zadaný hesel. Po připojení disků můžete pomocí Průzkumníka souborů systému Windows procházet nové svazky a soubory. Další informace najdete v článku Zálohování, [obnovení souborů ze zálohy virtuálního počítače Azure](backup-azure-restore-files-from-vm.md).
 
-### <a name="unmount-the-disks"></a>Odpojení disků
+### <a name="unmount-the-disks"></a>Odpojit disky
 
-Po zkopírování požadovaných souborů použijte [příkaz disable-AzRecoveryServicesBackupRPMountScript](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackuprpmountscript) k odpojení disků. Nezapomeňte odpojit disky, aby byl odebraný přístup k souborům bodu obnovení.
+Po zkopírování požadovaných souborů odpojte disky pomocí [příkazu Disable-AzRecoveryServicesBackupRPMountScript.](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackuprpmountscript) Nezapomeňte odpojit disky, aby byl odebrán přístup k souborům bodu obnovení.
 
 ```powershell
 Disable-AzRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0] -VaultId $targetVault.ID
@@ -868,4 +868,4 @@ Disable-AzRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0] -VaultId $ta
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud upřednostňujete použití PowerShellu k zapojení prostředků Azure, přečtěte si článek o PowerShellu, [nasazení a správu zálohování pro Windows Server](backup-client-automation.md). Pokud spravujete zálohy DPM, přečtěte si článek [nasazení a Správa zálohování pro DPM](backup-dpm-automation.md).
+Pokud dáváte přednost použití PowerShellu k interakci s prostředky Azure, přečtěte si článek o PowerShellu [Nasazení a správa zálohování pro Windows Server](backup-client-automation.md). Pokud spravujete zálohy Aplikace DPM, přečtěte si článek [Nasazení a správa zálohování pro aplikace DPM](backup-dpm-automation.md).

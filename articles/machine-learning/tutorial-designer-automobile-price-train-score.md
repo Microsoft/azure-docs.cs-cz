@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/12/2020
-ms.openlocfilehash: 8b471dd509dca02ab2a66d70dbc7fac9988f1afe
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0488002352d222abb0166737f9a042060b1a1bb1
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79472233"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389422"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Kurz: Předvídejte cenu automobilu s designérem (náhled)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -103,7 +103,7 @@ Můžete vizualizovat data, abyste porozuměli datové sadě, kterou budete pou�
 
 1. Vyberte modul **Data cen automobilů (Raw).**
 
-1. V podokně podrobností modulu vpravo od plátna vyberte **Výstupy**.
+1. V podokně podrobností modulu vpravo od plátna vyberte **Výstupy + protokol**.
 
 1. Vyberte ikonu grafu pro vizualizaci dat.
 
@@ -269,7 +269,7 @@ Pomocí modulu **Vyhodnotit model** můžete vyhodnotit, jak dobře váš model 
 
 ## <a name="submit-the-pipeline"></a>Odeslat potrubí
 
-Teď, když je váš kanál nastavený, můžete odeslat spuštění kanálu pro trénování modelu strojového učení. Můžete odeslat kanálu spustit kdykolipři vytváření kanálů v návrháři. Můžete to provést zkontrolovat svou práci, jak budete chtít ověřit, že váš kanál funguje podle očekávání.
+Teď, když je váš kanál nastavený, můžete odeslat spuštění kanálu pro trénování modelu strojového učení. Můžete odeslat platný kanál spustit kdykoliv, který lze použít ke kontrole změny kanálu během vývoje.
 
 1. V horní části plátna vyberte **Odeslat**.
 
@@ -283,6 +283,8 @@ Teď, když je váš kanál nastavený, můžete odeslat spuštění kanálu pro
     1. Vyberte **Odeslat**.
     
     Stav spuštění a podrobnosti můžete zobrazit v pravém horním rohu plátna.
+    
+    Pokud je první spuštění, může trvat až 20 minut pro spuštění kanálu. Výchozí nastavení výpočetních prostředků mají minimální velikost uzlu 0, což znamená, že návrhář musí přidělit prostředky po nečinnosti. Opakované spuštění kanálu bude trvat kratší dobu, protože výpočetní prostředky jsou již přiděleny. Kromě toho návrhář používá výsledky uložené v mezipaměti pro každý modul k dalšímu zlepšení efektivity.
 
 ### <a name="view-scored-labels"></a>Zobrazit popisky s vyhotovenými body
 
@@ -290,7 +292,7 @@ Po dokončení spuštění můžete zobrazit výsledky spuštění kanálu. Nejp
 
 1. Chcete-li zobrazit jeho výstup, vyberte modul **Model skóre.**
 
-1. V podokně podrobností modulu vpravo od plátna ![vyberte](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) **Výstupy** > ikonou grafu vizualizovat, abyste zobrazili výsledky.
+1. V podokně podrobností modulu vpravo od plátna vyberte ![ **Výstupy + protokoly** > ikonou grafu vizualizovat,](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) abyste zobrazili výsledky.
 
     Zde si můžete prohlédnout předpokládané ceny a skutečné ceny z testovacích dat.
 
@@ -302,7 +304,7 @@ Pomocí **vyhodnotit model** zobrazíte, jak dobře trénovaný model provádí 
 
 1. Chcete-li zobrazit jeho výstup, vyberte modul **Vyhodnotit model.**
 
-1. V podokně podrobností modulu vpravo od plátna vyberte](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) **Výstupní** > ikona grafu ![vizualizovat, abyste zobrazili výsledky.
+1. V podokně podrobností modulu vpravo od plátna vyberte ![ **Výstupy + protokoly** > ikonou grafu vizualizovat,](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) abyste zobrazili výsledky.
 
 Pro váš model jsou zobrazeny následující statistiky:
 
