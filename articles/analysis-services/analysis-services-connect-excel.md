@@ -1,6 +1,6 @@
 ---
-title: Připojení k Azure Analysis Services s využitím Excelu | Microsoft Docs
-description: Přečtěte si, jak se připojit k serveru Azure Analysis Services pomocí Excelu. Po připojení můžou uživatelé vytvářet kontingenční tabulky pro zkoumání dat.
+title: Připojení ke službě Azure Analysis Services pomocí Excelu | Dokumenty společnosti Microsoft
+description: Zjistěte, jak se připojit k serveru Azure Analysis Services pomocí Excelu. Po připojení mohou uživatelé vytvářet kontingenční tabulky a zkoumat data.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,36 +8,36 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: bb76accfef94327386d0ff58d003782a9fe3b0d2
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73573150"
 ---
 # <a name="connect-with-excel"></a>Propojení s Excelem
 
-Po vytvoření serveru a nasazení tabelárního modelu do něj mohou klienti připojit a začít prozkoumat data. 
+Jakmile vytvoříte server a nasadíte do něj tabulkový model, klienti se mohou připojit a začít zkoumat data. 
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Účet, pomocí kterého se přihlašujete, musí patřit k roli databáze modelu s alespoň oprávněními ke čtení. Další informace najdete v tématu [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md). 
+Účet, pomocí kterých se přihlašujete, musí patřit do role databáze modelu s oprávněními ke čtení alespoň. Další informace najdete v tématu [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md). 
 
-## <a name="connect-in-excel"></a>Připojit v Excelu
+## <a name="connect-in-excel"></a>Připojení v Excelu
 
-Připojení k serveru v Excelu je podporované pomocí získat data v Excelu 2016 a novějším. Připojení pomocí Průvodce importem tabulky v Power Pivot není podporováno. 
+Připojení k serveru v Excelu je podporované pomocí funkce Získat data v Excelu 2016 a novějším. Připojení pomocí Průvodce importem tabulky v PowerPivotu není podporováno. 
 
-1. V Excelu na pásu karet **data** klikněte na **načíst externí data** > **z jiných zdrojů** > **z Analysis Services**.
+1. V Excelu klikněte na pásu karet **Data** na **Načíst externí data** > **z jiných zdrojů** > **ze služby Analysis Services**.
 
-2. V Průvodci datovým připojením zadejte do pole **název serveru**název serveru včetně protokolu a identifikátoru URI. Například asazure://westcentralus.asazure.windows.net/advworks. Pak v části přihlašovací **údaje pro přihlášení**vyberte **použít následující uživatelské jméno a heslo**a zadejte uživatelské jméno organizace, například nancy@adventureworks.coma heslo.
+2. V Průvodci datovým připojením zadejte v **názvu serveru**název serveru včetně protokolu a identifikátoru URI. Například asazure://westcentralus.asazure.windows.net/advworks. Potom v **přihlašovacích pověřeních**vyberte **použít následující uživatelské jméno a heslo a**zadejte například nancy@adventureworks.comuživatelské jméno organizace a heslo.
 
     > [!IMPORTANT]
-    > Pokud se přihlásíte pomocí účtu Microsoft, Live ID, Yahoo, Gmail atd. nebo se budete muset přihlásit pomocí služby Multi-Factor Authentication, ponechejte pole pro heslo prázdné. Po kliknutí na tlačítko Další se zobrazí výzva k zadání hesla. 
+    > Pokud se přihlásíte pomocí účtu Microsoft, Live ID, Yahoo, Gmailu atd., nebo se musíte přihlásit pomocí vícefaktorového ověřování, ponechte pole s heslem prázdné. Po klepnutí na tlačítko Další budete vyzváni k zadání hesla. 
 
-    ![Připojení z aplikace Excel přihlášení](./media/analysis-services-connect-excel/aas-connect-excel-logon.png)
+    ![Připojení z přihlášení k Excelu](./media/analysis-services-connect-excel/aas-connect-excel-logon.png)
 
-3. V části **Vybrat databázi a tabulku**vyberte databázi a model nebo perspektivu a potom klikněte na **Dokončit**.
+3. V **části Vybrat databázi a tabulku**vyberte databázi a model nebo perspektivu a klepněte na tlačítko **Dokončit**.
    
-    ![Připojit z aplikace Excel vybrat model](./media/analysis-services-connect-excel/aas-connect-excel-select.png)
+    ![Připojení z vybraného modelu Excelu](./media/analysis-services-connect-excel/aas-connect-excel-select.png)
 
 
 ## <a name="see-also"></a>Viz také

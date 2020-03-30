@@ -1,6 +1,6 @@
 ---
-title: Jak nasadit modul s dvojitým OPCm do existujícího projektu Azure | Microsoft Docs
-description: Tento článek popisuje, jak nasadit OPC vlákna do existujícího projektu. Můžete se také dozvědět, jak řešit potíže s nasazením.
+title: Jak nasadit modul OPC Twin do existujícího projektu Azure | Dokumenty společnosti Microsoft
+description: Tento článek popisuje, jak nasadit OPC Twin do existujícího projektu. Můžete se také dozvědět, jak řešit selhání nasazení.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -9,83 +9,83 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: b971ec13c71ccfd7d28ae6987593d09201b9b764
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73824123"
 ---
-# <a name="deploy-opc-twin-to-an-existing-project"></a>Nasazení OPC vlákna do existujícího projektu
+# <a name="deploy-opc-twin-to-an-existing-project"></a>Nasazení OPC Twin do existujícího projektu
 
-OPC modul se spouští na IoT Edge a poskytuje několik hraničních služeb OPCům a službám registru.
+Modul OPC Twin běží na IoT Edge a poskytuje několik hraničních služeb pro služby OPC Twin a Registry.
 
-Mikroslužba s doOPCnou mikroslužbou usnadňuje komunikaci mezi operátory výrobního rozhraní a zařízeními OPC UA serveru v produkčním zařízení pomocí modulu OPC s dvojitou IoT Edge. Mikroslužba zpřístupňuje služby OPC UA (Procházet, číst, zapisovat a spouštět) prostřednictvím své REST API. 
+Mikroslužba OPC Twin usnadňuje komunikaci mezi továrními operátory a serverovými zařízeními OPC UA ve výrobním závodě prostřednictvím modulu OPC Twin IoT Edge. Mikroslužba zpřístupňuje služby OPC UA (Procházet, číst, psát a spouštět) prostřednictvím rozhraní REST API. 
 
-Mikroslužba registru zařízení OPC UA poskytuje přístup k registrovaným aplikacím OPC UA a jejich koncovým bodům. Operátoři a správci můžou registrovat a odregistrovat nové aplikace OPC UA a procházet stávající, včetně jejich koncových bodů. Kromě správy aplikací a koncových bodů registruje služba registru také katalogy registrovaných IoT Edgech OPCch vláken. Rozhraní API služby poskytuje kontrolu nad funkcemi modulu Edge, například spouštění nebo zastavování zjišťování serveru (skenovací služby) nebo Aktivace nových vláken koncového bodu, ke kterým lze získat pøístup pomocí OPC s dvojitou mikroslužbou.
+Mikroslužba registru zařízení OPC UA poskytuje přístup k registrovaným aplikacím OPC UA a jejich koncovým bodům. Operátoři a správci mohou registrovat a odregistrovat nové aplikace OPC UA a procházet stávající, včetně jejich koncových bodů. Kromě správy aplikací a koncových bodů služba registru také katalogizuje registrované moduly OPC Twin IoT Edge. Rozhraní API služby umožňuje řízení funkcí hraničního modulu, například spuštění nebo zastavení zjišťování serveru (skenovací služby) nebo aktivaci nových dvojčat koncových bodů, ke kterým lze přistupovat pomocí mikroslužby OPC Twin.
 
-Jádrem modulu je identita správce. Správce spravuje vlákna koncového bodu, které odpovídá koncovým bodům serveru OPC UA, které jsou aktivovány pomocí odpovídajícího rozhraní API registru OPC UA. Tento koncový bod vystaví překlad formátu JSON OPC UA přijatý od OPC s dvojitou životností běžící v cloudu do binárních zpráv OPC UA, které se odesílají přes stavový zabezpečený kanál do spravovaného koncového bodu. Správce taky poskytuje služby zjišťování, které odesílají události zjišťování zařízení do služby připojování zařízení OPC UA ke zpracování, kde tyto události vedou k aktualizacím registru OPC UA.  V tomto článku se dozvíte, jak nasadit modul OPC, který je v existujícím projektu.
+Jádrem modulu je identita supervisor. Nadřízený spravuje dvojče koncového bodu, což odpovídá koncovým bodům serveru OPC UA, které jsou aktivovány pomocí odpovídajícího rozhraní API registru OPC UA. Tato dvojčata koncového bodu přeložit OPC UA JSON přijaté z mikroslužby OPC Twin spuštěné v cloudu do binárních zpráv OPC UA, které jsou odesílány přes stavový zabezpečený kanál do spravovaného koncového bodu. Nadřízený také poskytuje služby zjišťování, které odesílají události zjišťování zařízení službě zapnutí zařízení OPC UA pro zpracování, kde tyto události vedou k aktualizacím registru OPC UA.  Tento článek ukazuje, jak nasadit modul OPC Twin do existujícího projektu.
 
 > [!NOTE]
-> Další informace o podrobnostech a pokynech k nasazení najdete v [úložišti](https://github.com/Azure/azure-iiot-opc-twin-module)GitHub.
+> Další informace o podrobnostech nasazení a pokyny naleznete v [úložišti](https://github.com/Azure/azure-iiot-opc-twin-module)GitHub .
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ujistěte se, že máte nainstalované rozšíření PowerShell a [AzureRM prostředí PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) . Pokud jste to ještě neudělali, naklonujte toto úložiště GitHub. V prostředí PowerShell spusťte následující příkazy:
+Ujistěte se, že máte nainstalovaná rozšíření PowerShellu a [AzureRM PowerShellu.](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) Pokud jste tak ještě neučinili, naklonovat toto úložiště GitHub. Spusťte v PowerShellu následující příkazy:
 
 ```powershell
 git clone --recursive https://github.com/Azure/azure-iiot-components.git
 cd azure-iiot-components
 ```
 
-## <a name="deploy-industrial-iot-services-to-azure"></a>Nasazení služeb průmyslových IoT do Azure
+## <a name="deploy-industrial-iot-services-to-azure"></a>Nasazení průmyslových služeb IoT do Azure
 
-1. V relaci PowerShellu spusťte příkaz:
+1. V relaci PowerShellu spusťte:
 
     ```powershell
     set-executionpolicy -ExecutionPolicy Unrestricted -Scope Process
     .\deploy.cmd
     ```
 
-2. Podle zobrazených výzev přiřaďte název ke skupině prostředků nasazení a názvu webu.   Tento skript nasadí mikroslužby a jejich závislosti na platformě Azure do skupiny prostředků ve vašem předplatném Azure.  Skript také zaregistruje aplikaci v tenantovi Azure Active Directory (AAD), aby podporovala ověřování založené na protokolu OAUTH.  Nasazení bude trvat několik minut.  Příklad toho, co se vám po úspěšném nasazení řešení zobrazí:
+2. Podle pokynů přiřaďte název skupině prostředků nasazení a název webu.   Skript nasazuje mikroslužeb a jejich závislosti platformy Azure do skupiny prostředků ve vašem předplatném Azure.  Skript také zaregistruje aplikaci ve vašem tenantovi Služby Azure Active Directory (AAD) pro podporu ověřování na základě OAUTH.  Nasazení bude trvat několik minut.  Příklad toho, co se zobrazí po úspěšném nasazení řešení:
 
-   ![Průmyslový OPC s dvojitým nasazením do existujícího projektu](media/howto-opc-twin-deploy-existing/opc-twin-deploy-existing1.png)
+   ![Průmyslové IoT OPC Twin nasadit do stávajícího projektu](media/howto-opc-twin-deploy-existing/opc-twin-deploy-existing1.png)
 
-   Výstup zahrnuje adresu URL veřejného koncového bodu. 
+   Výstup obsahuje adresu URL veřejného koncového bodu. 
 
-3. Po úspěšném dokončení skriptu vyberte, zda chcete soubor `.env` Uložit.  Pokud se chcete připojit ke koncovému bodu cloudu pomocí nástrojů, jako je konzola nebo nasadit moduly pro vývoj a ladění, budete potřebovat soubor `.env` prostředí.
+3. Po úspěšném dokončení skriptu vyberte, zda `.env` chcete soubor uložit.  Soubor `.env` prostředí potřebujete, pokud se chcete připojit ke koncovému bodu cloudu pomocí nástrojů, jako je konzola nebo nasazení modulů pro vývoj a ladění.
 
-## <a name="troubleshooting-deployment-failures"></a>Řešení potíží se selháním nasazení
+## <a name="troubleshooting-deployment-failures"></a>Poradce při potížích s chybami nasazení
 
 ### <a name="resource-group-name"></a>Název skupiny prostředků
 
-Ujistěte se, že používáte krátký a jednoduchý název skupiny prostředků.  Název se používá také k pojmenování prostředků, které musí splňovat požadavky na pojmenovávání prostředků.  
+Ujistěte se, že používáte krátký a jednoduchý název skupiny prostředků.  Název se používá také k názvu prostředků jako takové musí splňovat požadavky na pojmenování prostředků.  
 
-### <a name="website-name-already-in-use"></a>Název webu se už používá.
+### <a name="website-name-already-in-use"></a>Název webu, který je již používán
 
-Je možné, že název webu se už používá.  Pokud narazíte na tuto chybu, je nutné použít jiný název aplikace.
+Je možné, že název webových stránek je již používán.  Pokud narazíte na tuto chybu, je třeba použít jiný název aplikace.
 
-### <a name="azure-active-directory-aad-registration"></a>Registrace Azure Active Directory (AAD)
+### <a name="azure-active-directory-aad-registration"></a>Registrace služby Azure Active Directory (AAD)
 
-Skript nasazení se pokusí zaregistrovat dvě aplikace AAD v Azure Active Directory.  V závislosti na vašich právech vybraného tenanta AAD může nasazení selhat. K dispozici jsou dvě možnosti:
+Skript nasazení se pokusí zaregistrovat dvě aplikace AAD ve službě Azure Active Directory.  V závislosti na vašich právech k vybranému tenantovi AAD může nasazení selhat. Existují dvě možnosti:
 
-1. Pokud jste zvolili tenanta AAD ze seznamu tenantů, restartujte skript a zvolte jiný ze seznamu.
-2. Případně můžete nasadit privátního tenanta AAD v jiném předplatném, restartovat skript a vybrat ho pro použití.
+1. Pokud jste ze seznamu klientů vybrali klienta AAD, restartujte skript a ze seznamu zvolte jiný.
+2. Případně nasadit soukromého klienta AAD v jiném předplatném, restartovat skript a vybrat jeho použití.
 
 > [!WARNING]
-> NIKDY nepokračovat bez ověřování.  Pokud se rozhodnete tak učinit, kdokoli bude mít přístup k vašim OPCm neověřeným koncovým bodům z Internetu.   V případě, že se chcete pustit do těchto pneumatik, můžete vždy vybrat [možnost místní nasazení](howto-opc-twin-deploy-dependencies.md) .
+> NIKDY pokračovat bez ověřování.  Pokud se tak rozhodnete, může kdokoli přistupovat k koncovým bodům OPC Twin z Internetu neověřené.   Vždy si můžete vybrat [možnost "místního" nasazení,](howto-opc-twin-deploy-dependencies.md) abyste mohli pneumatiky kopnout.
 
-## <a name="deploy-an-all-in-one-industrial-iot-services-demo"></a>Nasazení kompletní ukázky služby IoT v průmyslu
+## <a name="deploy-an-all-in-one-industrial-iot-services-demo"></a>Nasazení ukázky in-one průmyslových služeb IoT
 
-Místo pouze služeb a závislostí můžete také nasadit ukázku All-in-One.  Vše v jedné ukázce obsahuje tři servery OPC UA, modul OPC s dvojitou příponou, všechny mikroslužby a ukázkovou webovou aplikaci.  Je určena pro demonstrační účely.
+Namísto pouze služby a závislosti můžete také nasadit all-in-one ukázku.  Vše v jedné ukázce obsahuje tři OPC UA servery, Modul OPC Twin, všechny mikroslužby a ukázkovou webovou aplikaci.  Je určen pro demonstrační účely.
 
-1. Ujistěte se, že máte klon úložiště (viz výše). V kořenovém adresáři úložiště otevřete příkazový řádek PowerShellu a spusťte tento příkaz:
+1. Ujistěte se, že máte klon úložiště (viz výše). Otevřete výzvu Prostředí PowerShell v kořenovém adresáři úložiště a spusťte:
 
     ```powershell
     set-executionpolicy -ExecutionPolicy Unrestricted -Scope Process
     .\deploy -type demo
     ```
 
-2. Podle zobrazených výzev přiřaďte k této skupině prostředků nový název a název webu.  Po úspěšném nasazení se ve skriptu zobrazí adresa URL koncového bodu webové aplikace.
+2. Podle pokynů přiřadíte skupině prostředků nový název a název webu.  Po úspěšném nasazení se ve skriptu zobrazí adresa URL koncového bodu webové aplikace.
 
 ## <a name="deployment-script-options"></a>Možnosti skriptu nasazení
 
@@ -95,19 +95,19 @@ Skript má následující parametry:
 -type
 ```
 
-Typ nasazení (virtuální počítač, místní, ukázka)
+Typ nasazení (vm, místní, ukázka)
 
 ```powershell
 -resourceGroupName
 ```
 
-Může to být název existující nebo nové skupiny prostředků.
+Může se na pojmenovat existující nebo nová skupina prostředků.
 
 ```powershell
 -subscriptionId
 ```
 
-Volitelné, ID předplatného, kde budou nasazeny prostředky.
+Volitelné ID předplatného, kde se nasadí prostředky.
 
 ```powershell
 -subscriptionName
@@ -119,19 +119,19 @@ Nebo název předplatného.
 -resourceGroupLocation
 ```
 
-Volitelné, umístění skupiny prostředků. Když se tato akce zadá, pokusí se na tomto místě vytvořit novou skupinu prostředků.
+Volitelné umístění skupiny prostředků. Pokud je zadán, pokusí se vytvořit novou skupinu prostředků v tomto umístění.
 
 ```powershell
 -aadApplicationName
 ```
 
-Název aplikace AAD, která se má zaregistrovat
+Název aplikace AAD pro registraci pod.
 
 ```powershell
 -tenantId
 ```
 
-Tenant AAD, který se má použít
+AAD tenanta k použití.
 
 ```powershell
 -credentials
@@ -139,7 +139,7 @@ Tenant AAD, který se má použít
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili, jak nasadit OPC vlákna do existujícího projektu, je tady doporučený další krok:
+Nyní, když jste se naučili, jak nasadit OPC Twin do existujícího projektu, zde je navrhovaný další krok:
 
 > [!div class="nextstepaction"]
-> [Zabezpečená komunikace klienta OPC UA a OPC UA PLC](howto-opc-vault-secure.md)
+> [Bezpečná komunikace OPC UA Client a OPC UA PLC](howto-opc-vault-secure.md)

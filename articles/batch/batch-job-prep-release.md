@@ -1,6 +1,6 @@
 ---
-title: Vytvoření úkolů pro přípravu & dokončených úloh na výpočetních uzlech – Azure Batch
-description: K minimalizaci přenosu dat do Azure Batch výpočetních uzlů a vyplňování úloh pro vyčištění uzlů při dokončování úloh můžete použít úkoly přípravy na úrovni úlohy.
+title: Vytváření úkolů pro přípravu & dokončení úloh na výpočetních uzlech – Azure Batch
+description: Pomocí úloh přípravy na úrovni úloh minimalizujte přenos dat do výpočetních uzlů Azure Batch a uvolněte úlohy pro vyčištění uzlu při dokončení úlohy.
 services: batch
 documentationcenter: .net
 author: LauraBrenner
@@ -15,75 +15,75 @@ ms.date: 02/17/2020
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: d9f6f015c210592d5d8053b1b34d5357bb357629
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77586780"
 ---
-# <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Spuštění úkolů přípravy úloh a uvolnění úloh na výpočetních uzlech Batch
+# <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Spuštění úloh přípravy úloh a úloh y uvolnění úloh y dávkových výpočetních uzlů
 
- Úloha Azure Batch často vyžaduje určitou formu nastavení před spuštěním úkolů a údržbou po dokončení úloh. Je možné, že budete muset stáhnout běžná vstupní data úkolů do výpočetních uzlů nebo odeslat výstupní data úkolu do Azure Storage po dokončení úlohy. K provedení těchto operací můžete použít úkoly **přípravy úlohy** a **vydání úlohy** .
+ Dávková úloha Azure často vyžaduje určitou formu nastavení před provedením jejích úkolů a údržbu po dokončení úloh. Možná budete muset stáhnout společná vstupní data úlohy do výpočetních uzlů nebo nahrát výstupní data úlohy do Azure Storage po dokončení úlohy. K provedení těchto operací můžete použít **úkoly přípravy úloh** y a **uvolnění úlohy.**
 
-## <a name="what-are-job-preparation-and-release-tasks"></a>Co jsou úkoly přípravy a uvolnění úloh?
-Než se spustí úlohy úlohy, úloha přípravy úlohy se spustí na všech výpočetních uzlech, na kterých je naplánované spuštění aspoň jedné úlohy. Po dokončení úlohy se úloha uvolnění úlohy spustí na každém uzlu ve fondu, který provedl alespoň jeden úkol. Stejně jako u běžných úloh Batch můžete zadat příkazový řádek, který se má vyvolat, když se spustí Příprava úlohy nebo úloha vydání.
+## <a name="what-are-job-preparation-and-release-tasks"></a>Co jsou úkoly přípravy a uvolnění úlohy?
+Před spuštěním úlohy se úloha přípravy úloh spustí na všech výpočetních uzlech, které mají spustit alespoň jednu úlohu. Po dokončení úlohy se úloha uvolnění úlohy spustí na každém uzlu ve fondu, který provedl alespoň jednu úlohu. Stejně jako u běžných dávkových úloh můžete určit příkazový řádek, který má být vyvolán při spuštění úlohy přípravy úlohy nebo vydání.
 
-Úkoly přípravy a uvolnění úloh nabízejí známé funkce dávkové úlohy, jako je například stahování souborů ([soubory prostředků][net_job_prep_resourcefiles]), spuštění se zvýšenými oprávněními, vlastní proměnné prostředí, maximální doba provádění, počet opakování a doba uchovávání souborů.
+Úlohy přípravy a vydání nabízejí známé funkce dávkových úloh, jako je stahování souborů[(soubory prostředků),][net_job_prep_resourcefiles]zvýšené provádění, proměnné vlastního prostředí, maximální doba provádění, počet opakování a doba uchovávání souborů.
 
-V následujících částech se dozvíte, jak používat třídy [JobPreparationTask][net_job_prep] a [JobReleaseTask][net_job_release] , které se nacházejí v knihovně [Batch .NET][api_net] .
+V následujících částech se dozvíte, jak používat třídy [JobPreparationTask][net_job_prep] a [JobReleaseTask][net_job_release] nalezené v knihovně [Batch .NET.][api_net]
 
 > [!TIP]
-> Úkoly přípravy a uvolnění úloh jsou zvláště užitečné v prostředích sdíleného fondu, ve kterém se mezi spouštěním úloh přetrvají fondy výpočetních uzlů a používají se v mnoha úlohách.
+> Úlohy přípravy a vydání úlohy jsou užitečné zejména v prostředích "sdíleného fondu", ve kterém fond výpočetních uzlů přetrvává mezi spuštění úloh a používá mnoho úloh.
 > 
 > 
 
-## <a name="when-to-use-job-preparation-and-release-tasks"></a>Kdy použít úkoly přípravy a uvolnění úloh
-Úkoly přípravy úloh a uvolnění úlohy jsou vhodné v následujících situacích:
+## <a name="when-to-use-job-preparation-and-release-tasks"></a>Kdy použít úlohy přípravy a uvolnění úlohy
+Úkoly přípravy na práci a uvolnění úlohy jsou vhodné pro následující situace:
 
-**Stáhnout běžná data úlohy**
+**Stažení běžných dat úkolů**
 
-Dávkové úlohy často vyžadují pro úkoly úlohy společnou sadu dat jako vstup. Například při denních výpočtech analýzy rizik jsou tržní data specifická pro jednotlivé úlohy, ale společná pro všechny úlohy v rámci úlohy. Tato data z trhu, často i několik gigabajtů, by se měla do každého výpočetního uzlu stáhnout jenom jednou, aby se mohl použít libovolný úkol, který na uzlu běží. Použijte **úkol přípravy úlohy** ke stažení těchto dat do každého uzlu před provedením dalších úloh úlohy.
+Dávkové úlohy často vyžadují společnou sadu dat jako vstup pro úkoly úlohy. Například při výpočtech denní analýzy rizik jsou údaje o trhu specifické pro danou úlohu, ale jsou společné pro všechny úkoly v úloze. Tato data o trhu, často několik gigabajtů ve velikosti, by měly být staženy do každého výpočetního uzlu pouze jednou tak, aby všechny úlohy, které běží na uzlu můžete použít. Pomocí **úlohy přípravy úlohy** můžete tato data stáhnout do každého uzlu před provedením dalších úloh úlohy.
 
-**Odstranit výstup úlohy a úlohy**
+**Odstranit úlohu a výstup úlohy**
 
-V prostředí "Shared Pool", kde výpočetní uzly fondu nejsou vyřazeny z provozu mezi úlohami, může být nutné odstranit data úlohy mezi spuštěním. Možná budete muset na uzlech ušetřit místo na disku nebo vyhovět zásadám zabezpečení vaší organizace. **Úkol uvolnění úlohy** slouží k odstranění dat, která byla stažena úlohou přípravy úlohy nebo vygenerována během provádění úkolu.
+V prostředí "sdíleného fondu", kde výpočetní uzly fondu nejsou vyřazeny z provozu mezi úlohami, může být nutné odstranit data úloh mezi spuštěními. Možná budete muset ušetřit místo na disku v uzlech nebo uspokojit zásady zabezpečení vaší organizace. Pomocí **úlohy uvolnění úlohy** odstraňte data stažená úlohou přípravy úlohy nebo generovaná během provádění úloh.
 
-**Uchovávání protokolů**
+**Uchovávání protokolu**
 
-Možná budete chtít uchovat kopii souborů protokolu, které vaše úkoly generují, nebo možná soubory s výpisem stavu systému, které se dají vygenerovat v neúspěšných aplikacích. V takových případech použijte **úkol uvolnění úlohy** pro komprimaci a nahrání těchto dat do účtu [Azure Storage][azure_storage] .
+Můžete chtít zachovat kopii souborů protokolu, které vaše úkoly generovat nebo případně soubory s výpisem stavu systému, které mohou být generovány neúspěšných aplikací. V takových případech použijte **úlohu uvolnění úlohy** ke kompresi a nahrání těchto dat do účtu [Azure Storage.][azure_storage]
 
 > [!TIP]
-> Dalším způsobem, jak uchovat protokoly a další úlohy a výstupní data úloh, je použít knihovnu [Azure Batchch konvencí souborů](batch-task-output.md) .
+> Dalším způsobem, jak zachovat protokoly a další výstupní data úloh a úloh, je použití [knihovny Azure Batch File Conventions.](batch-task-output.md)
 >
 >
 
 ## <a name="job-preparation-task"></a>Úkol přípravy úlohy
 
 
-Před provedením úkolů úlohy Batch spustí úkol přípravy úlohy na každém výpočetním uzlu naplánovaném pro spuštění úkolu. Ve výchozím nastavení bude služba Batch čekat na dokončení úlohy přípravy úlohy před spuštěním úloh, které jsou naplánovány k provedení na uzlu. Službu však můžete nakonfigurovat tak, aby nečekala. Pokud se uzel restartuje, úloha přípravy úlohy se znovu spustí. Toto chování můžete také zakázat. Pokud máte úlohu s nakonfigurovanou úlohou přípravy úlohy a úlohou Správce úloh, úloha přípravy úlohy se spustí před úkolem správce úloh stejně jako u všech ostatních úloh. Úkol přípravy úlohy se vždycky spustí nejdřív.
+Před provedením úlohy úlohy Batch provede úlohu přípravy úlohy na každém výpočetním uzlu naplánovaném ke spuštění úlohy. Ve výchozím nastavení batch čeká na dokončení úlohy přípravy úlohy před spuštěním úloh y naplánované ke spuštění v uzlu. Můžete však nakonfigurovat službu nečekat. Pokud se uzel restartuje, úloha přípravy úlohy se spustí znovu. Toto chování můžete také zakázat. Pokud máte úlohu s nakonfigurovanou úlohou přípravy úlohy a úlohou správce úloh, úloha přípravy úlohy se spustí před úlohou správce úloh, stejně jako u všech ostatních úkolů. Úloha přípravy úlohy je vždy spuštěna jako první.
 
-Úkol přípravy úlohy je proveden pouze v uzlech, které mají naplánované spuštění úlohy. Tím se zabrání zbytečnému provedení přípravné úlohy pro případ, že uzel není přiřazený úkol. Tato situace může nastat, pokud je počet úloh úlohy menší než počet uzlů ve fondu. Platí také v případě, že je povoleno [Souběžné provádění úloh](batch-parallel-node-tasks.md) , což ponechá některé uzly nečinné, pokud je počet úloh nižší než celkové možné souběžné úlohy. Nespuštěním úlohy přípravy úlohy na nečinných uzlech můžete strávit poplatky za přenos dat bez dalších poplatků.
+Úloha přípravy úlohy je spouštěna pouze na uzlech, které jsou naplánovány ke spuštění úlohy. Tím se zabrání zbytečnému spuštění přípravné úlohy v případě, že uzlu není přiřazen úkol. K tomu může dojít, pokud je počet úkolů pro úlohu menší než počet uzlů ve fondu. Platí také v případě, že je povoleno [souběžné provádění úloh,](batch-parallel-node-tasks.md) což ponechává některé uzly nečinné, pokud je počet úloh nižší než celkový počet možných souběžných úloh. Tím, že nespouštějte úlohu přípravy úlohy na nečinných uzlech, můžete utratit méně peněz za poplatky za přenos dat.
 
 > [!NOTE]
-> [JobPreparationTask][net_job_prep_cloudjob] se liší od [CloudPool. StartTask][pool_starttask] v tom, že JobPreparationTask spouští na začátku každé úlohy, zatímco StartTask se spustí jenom v případě, že se výpočetní uzel nejdřív připojí k fondu nebo restartuje.
+> [JobPreparationTask][net_job_prep_cloudjob] se liší od [CloudPool.StartTask][pool_starttask] v tom, že JobPreparationTask provede na začátku každé úlohy, vzhledem k tomu, StartTask provede pouze v případě, že výpočetní uzel nejprve připojí fondu nebo restartuje.
 >
 
 
->## <a name="job-release-task"></a>Úkol uvolnění úlohy
+>## <a name="job-release-task"></a>Úloha uvolnění úlohy
 
-Jakmile je úloha označena jako dokončená, úkol uvolnění úlohy se spustí na každém uzlu ve fondu, který provedl alespoň jeden úkol. Úlohu označíte jako dokončenou vyvoláním žádosti o ukončení. Služba Batch pak nastaví stav úlohy na *ukončení*, ukončí všechny aktivní nebo spuštěné úlohy přidružené k úloze a spustí úlohu uvolnění úlohy. Úloha se pak přesune do *dokončeného* stavu.
+Jakmile je úloha označena jako dokončená, úloha uvolnění úlohy je spuštěna na každém uzlu ve fondu, který provedl alespoň jednu úlohu. Úlohu označíte jako dokončenou vydáním žádosti o ukončení. Služba Batch pak nastaví stav úlohy na *ukončování*, ukončí všechny aktivní nebo spuštěné úlohy přidružené k úloze a spustí úlohu uvolnění úlohy. Úloha se pak přesune do *stavu dokončení.*
 
 > [!NOTE]
-> Úkol uvolnění úlohy se taky provede odstraněním úlohy. Pokud se ale úloha už ukončila, úloha vydání se nespustí podruhé, pokud se úloha později odstraní.
+> Odstranění úlohy také provede úlohu uvolnění úlohy. Pokud však úloha již byla ukončena, úloha vydání není spuštěna podruhé, pokud je úloha později odstraněna.
 
-Úlohy uvolnění úloh se můžou spouštět po dobu maximálně 15 minut, než se služba Batch ukončí. Další informace najdete v [dokumentaci REST API Reference](https://docs.microsoft.com/rest/api/batchservice/job/add#jobreleasetask).
+Úlohy vydání úlohy lze spustit maximálně 15 minut před ukončením služby Batch. Další informace naleznete v [referenční dokumentaci rozhraní REST API](https://docs.microsoft.com/rest/api/batchservice/job/add#jobreleasetask).
 > 
 > 
 
-## <a name="job-prep-and-release-tasks-with-batch-net"></a>Úkoly přípravy a uvolnění úloh pomocí batch .NET
-Pokud chcete použít úkol přípravy úlohy, přiřaďte objekt [JobPreparationTask][net_job_prep] k vlastnosti [vlastnosti cloudjob. JobPreparationTask][net_job_prep_cloudjob] vaší úlohy. Podobně inicializujte [JobReleaseTask][net_job_release] a přiřaďte ji k vlastnosti [vlastnosti cloudjob. JobReleaseTask][net_job_prep_cloudjob] vaší úlohy, abyste mohli nastavit úlohu verze úlohy.
+## <a name="job-prep-and-release-tasks-with-batch-net"></a>Úlohy přípravy a uvolnění úloh y Batch .NET
+Chcete-li použít úlohu přípravy úlohy, přiřaďte objekt [JobPreparationTask][net_job_prep] k vlastnosti [CloudJob.JobPreparationTask][net_job_prep_cloudjob] vaší úlohy. Podobně inicializovat [JobReleaseTask][net_job_release] a přiřadit jej k vaší úlohy [CloudJob.JobReleaseTask][net_job_prep_cloudjob] vlastnost nastavit úlohu vydání úlohy.
 
-V tomto fragmentu kódu `myBatchClient` je instance [BatchClient][net_batch_client]a `myPool` je existující fond v rámci účtu Batch.
+V tomto fragmentu kódu `myBatchClient` je instancí [BatchClient][net_batch_client]a `myPool` je existujícím fondem v rámci účtu Batch.
 
 ```csharp
 // Create the CloudJob for CloudPool "myPool"
@@ -109,7 +109,7 @@ myJob.JobReleaseTask =
 await myJob.CommitAsync();
 ```
 
-Jak už bylo zmíněno dříve, úloha vydání se spustí, když se úloha ukončí nebo odstraní. Ukončení úlohy pomocí [JobOperations. TerminateJobAsync][net_job_terminate]. Odstraňte úlohu pomocí [JobOperations. DeleteJobAsync][net_job_delete]. Při dokončení jeho úkolů nebo při dosažení časového limitu, který jste nadefinovali, se obvykle úloha ukončí nebo odstraní.
+Jak již bylo zmíněno dříve, úloha vydání je spuštěna při ukončení nebo odstranění úlohy. Ukončete úlohu pomocí [joboperations.TerminateJobAsync][net_job_terminate]. Odstraňte úlohu s [JobOperations.DeleteJobAsync][net_job_delete]. Úlohu obvykle ukončíte nebo odstraníte po dokončení jejích úkolů nebo po dosažení časového času, který jste definovali.
 
 ```csharp
 // Terminate the job to mark it as Completed; this will initiate the
@@ -120,16 +120,16 @@ await myBatchClient.JobOperations.TerminateJobAsync("JobPrepReleaseSampleJob");
 ```
 
 ## <a name="code-sample-on-github"></a>Ukázka kódu na GitHubu
-Pokud chcete zobrazit úkoly přípravy úlohy a vydání v akci, podívejte se na vzorový projekt [JobPrepRelease][job_prep_release_sample] na GitHubu. Tato Konzolová aplikace provede následující akce:
+Chcete-li zobrazit úkoly přípravy úloh a uvolnění v akci, podívejte se na ukázkový projekt [JobPrepRelease][job_prep_release_sample] na GitHubu. Tato konzolová aplikace provádí následující akce:
 
 1. Vytvoří fond se dvěma uzly.
-2. Vytvoří úlohu s přípravou, vydanou verzí a standardní úlohou úlohy.
-3. Spustí úkol přípravy úlohy, který nejdřív zapíše ID uzlu do textového souboru v adresáři Shared (sdílený) uzlu.
-4. Spustí úlohu na každém uzlu, který zapíše své ID úlohy do stejného textového souboru.
-5. Po dokončení všech úloh (nebo vypršení časového limitu) vytiskne obsah každého textového souboru uzlu do konzoly.
-6. Po dokončení úlohy spustí úkol uvolnění úlohy, aby se soubor odstranil z uzlu.
-7. Vytiskne kódy ukončení úloh přípravy a uvolnění úlohy pro každý uzel, na kterém byly provedeny.
-8. Pozastaví provádění, aby bylo možné potvrzovat úlohu nebo odstranění fondu.
+2. Vytvoří úlohu s přípravami, uvolněním úloh a standardními úkoly.
+3. Spustí úlohu přípravy úlohy, která nejprve zapíše ID uzlu do textového souboru v adresáři "sdílené" uzlu.
+4. Spustí úlohu na každém uzlu, který zapíše id úlohy do stejného textového souboru.
+5. Po dokončení všech úkolů (nebo je dosaženo časového času) vytiskne obsah textového souboru každého uzlu do konzoly.
+6. Po dokončení úlohy spustí úlohu uvolnění úlohy k odstranění souboru z uzlu.
+7. Vytiskne ukončovací kódy úloh přípravy úloh a uvolnění úloh pro každý uzel, na kterém byly provedeny.
+8. Pozastaví provádění povolit potvrzení úlohy nebo odstranění fondu.
 
 Výstup z ukázkové aplikace je podobný následujícímu:
 
@@ -177,27 +177,27 @@ Sample complete, hit ENTER to exit...
 ```
 
 > [!NOTE]
-> Vzhledem k vytvoření proměnné a času spuštění uzlů v novém fondu (některé uzly jsou připravené na úlohy před ostatními) se může zobrazit jiný výstup. Konkrétně vzhledem k tomu, že úkoly jsou dokončeny rychle, jeden z uzlů fondu může spustit všechny úkoly úlohy. Pokud k tomu dojde, budete si všimnout, že úlohy přípravy a vydání úlohy pro uzel, který neprovede žádné úlohy, neexistují.
+> Vzhledem k vytvoření proměnné a čas zahájení uzlů v novém fondu (některé uzly jsou připraveny pro úkoly před ostatními), může se zobrazit jiný výstup. Konkrétně vzhledem k tomu, že úkoly dokončit rychle, jeden z uzlů fondu může provést všechny úkoly úlohy. Pokud k tomu dojde, zjistíte, že úlohy přípravy a uvolnění úlohy úlohy úlohy projektu neexistují pro uzel, který provedl žádné úkoly.
 > 
 > 
 
-### <a name="inspect-job-preparation-and-release-tasks-in-the-azure-portal"></a>Kontrola úloh přípravy a vydání úloh v Azure Portal
-Když spustíte ukázkovou aplikaci, můžete použít [Azure Portal][portal] k zobrazení vlastností úlohy a jejích úkolů nebo dokonce stáhnout sdílený textový soubor, který je upraven úlohami úlohy.
+### <a name="inspect-job-preparation-and-release-tasks-in-the-azure-portal"></a>Kontrola úloh přípravy a uvolnění na webu Azure Portal
+Při spuštění ukázkové aplikace můžete pomocí [portálu Azure][portal] zobrazit vlastnosti úlohy a její úkoly nebo dokonce stáhnout sdílený textový soubor, který je upraven úkoly úlohy úlohy.
 
-Níže uvedený snímek obrazovky ukazuje okno **přípravné úkoly** v Azure Portal po spuštění ukázkové aplikace. Až se vaše úkoly dokončí (ale před odstraněním úlohy a fondu), přejděte do vlastností *JobPrepReleaseSampleJob* a zobrazte jejich vlastnosti kliknutím na **Příprava úkolů** nebo na úlohy vydaných **verzí** .
+Snímek obrazovky níže ukazuje **okno Úlohy přípravy** na webu Azure portal po spuštění ukázkové aplikace. Po dokončení úloh (ale před odstraněním úlohy a fondu) přejděte na vlastnosti *JobPrepReleaseSampleJob* a kliknutím na **úkoly přípravy** nebo **Uvolnění** zobrazte jejich vlastnosti.
 
-![Vlastnosti přípravy úlohy v Azure Portal][1]
+![Vlastnosti přípravy úloh na webu Azure Portal][1]
 
 ## <a name="next-steps"></a>Další kroky
 ### <a name="application-packages"></a>Balíčky aplikací
-Kromě úlohy přípravy úlohy můžete také použít funkci [balíčky aplikací](batch-application-packages.md) služby Batch k přípravě výpočetních uzlů pro provádění úloh. Tato funkce je zvláště užitečná pro nasazení aplikací, které nevyžadují spuštění instalačního programu, aplikací, které obsahují mnoho (100) souborů, nebo aplikací, které vyžadují striktní správu verzí.
+Kromě úlohy přípravy úlohy můžete také použít funkci [balíčky aplikací](batch-application-packages.md) Batch k přípravě výpočetních uzlů pro spuštění úlohy. Tato funkce je užitečná zejména pro nasazení aplikací, které nevyžadují spuštění instalačního programu, aplikací obsahujících mnoho (100+) souborů nebo aplikací, které vyžadují přísné řízení verzí.
 
-### <a name="installing-applications-and-staging-data"></a>Instalace aplikací a pracovních dat
-Tento příspěvek na blogu MSDN poskytuje přehled několika metod přípravy uzlů na spuštěné úlohy:
+### <a name="installing-applications-and-staging-data"></a>Instalace aplikací a přípravná data
+Tento příspěvek na fóru MSDN poskytuje přehled několika způsobů přípravy uzlů pro spouštění úloh:
 
 [Instalace aplikací a pracovních dat na výpočetních uzlech Batch][forum_post]
 
-Napsaný jedním z Azure Batch členů týmu, popisuje několik postupů, které můžete použít k nasazení aplikací a dat do výpočetních uzlů.
+Napsaný jedním z členů týmu Azure Batch, popisuje několik technik, které můžete použít k nasazení aplikací a dat pro výpočet uzlů.
 
 [api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_listjobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx

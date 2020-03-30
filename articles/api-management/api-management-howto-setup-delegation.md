@@ -1,6 +1,6 @@
 ---
-title: Delegování registrace uživatelů a předplatného produktu
-description: Přečtěte si, jak delegovat registraci uživatelů a předplatné produktů na třetí stranu v Azure API Management.
+title: Jak delegovat registraci uživatelů a předplatné produktu
+description: Zjistěte, jak delegovat registraci uživatelů a předplatné produktu na třetí stranu ve správě rozhraní Azure API.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,133 +14,133 @@ ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
 ms.openlocfilehash: a69babdf2fffb4cb9d963f1806f3c85755e50294
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74454356"
 ---
-# <a name="how-to-delegate-user-registration-and-product-subscription"></a>Delegování registrace uživatelů a předplatného produktu
+# <a name="how-to-delegate-user-registration-and-product-subscription"></a>Jak delegovat registraci uživatelů a předplatné produktu
 
-Delegování vám umožňuje používat stávající web ke zpracování přihlašování a předplatného pro vývojáře k produktům, a to na rozdíl od používání integrované funkce portálu pro vývojáře. Umožňuje vašemu webu vlastnit uživatelská data a provádět ověřování těchto kroků vlastním způsobem.
+Delegování umožňuje používat stávající web pro zpracování vývojáře přihlášení nebo registraci a předplatné produktů, na rozdíl od použití integrované funkce na portálu pro vývojáře. Umožňuje vašim webovým stránkám vlastnit uživatelská data a provádět ověření těchto kroků vlastním způsobem.
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="delegate-signin-up"> </a>Delegování přihlašování a registrace vývojářů
+## <a name="delegating-developer-sign-in-and-sign-up"></a><a name="delegate-signin-up"> </a>Delegování přihlášení a registrace vývojáře
 
-Abyste mohli delegovat vývojáře, přihlaste se a přihlaste se k existujícímu webu, budete muset na svém webu vytvořit speciální koncový bod delegování. Musí fungovat jako vstupní bod pro všechny takové žádosti iniciované z API Management portálu pro vývojáře.
+Chcete-li delegovat vývojáře, přihlásit se a přihlásit se na svůj stávající web, budete muset na svém webu vytvořit speciální koncový bod delegování. Musí fungovat jako vstupní bod pro všechny takové požadavky iniciované z portálu pro vývojáře správy rozhraní API.
 
 Konečný pracovní postup bude následující:
 
-1. Vývojář klikne na odkaz Přihlásit se nebo zaregistrovat na portálu pro vývojáře API Management
-2. Prohlížeč se přesměruje na koncový bod delegování.
-3. Koncový bod delegování v vratcích se přesměrovává na nebo prezentuje uživatelské rozhraní žádající uživatele o přihlášení nebo registraci.
-4. Po úspěšném dokončení se uživatel přesměruje zpátky na stránku API Management portálu pro vývojáře, ze které začala.
+1. Vývojář klikne na přihlašovací nebo zaregistrovací odkaz na portálu pro vývojáře api managementu.
+2. Prohlížeč je přesměrován na koncový bod delegování.
+3. Koncový bod delegování na oplátku přesměruje na nebo představuje uživatelské rozhraní s žádostí o přihlášení nebo registraci uživatele
+4. Pokud je uživatel úspěšný, je přesměrován zpět na stránku portálu pro vývojáře pro správu rozhraní API, ze které začal
 
-Začněte tím, že nejprve nastavíte API Management pro směrování požadavků prostřednictvím vašeho koncového bodu delegování. V Azure Portal vyhledejte v prostředku API Management **zabezpečení** a pak klikněte na položku **delegování** . Kliknutím na zaškrtávací políčko povolíte delegáta & Přihlásit se.
+Chcete-li začít, pojďme nejprve nastavit správu rozhraní API pro směrování požadavků prostřednictvím koncového bodu delegování. Na webu Azure Portal vyhledejte **zabezpečení** ve vašem prostředku správy rozhraní API a klikněte na položku **Delegování.** Kliknutím na zaškrtávací políčko povolíte možnost Přihlásit se & se zaregistrovat.Click the check box to enable 'Delegate sign in & sign up'.
 
 ![Stránka delegování][api-management-delegation-signin-up]
 
-* Rozhodněte, jaká adresa URL vašeho speciálního koncového bodu delegování bude a zadejte ji do pole **Adresa URL koncového bodu delegování** . 
-* V poli klíč pro ověření delegování zadejte tajný klíč, který se použije k výpočtu podpisu, který jste dostali k ověření, aby se zajistilo, že požadavek bude skutečně přijít z Azure API Management. Kliknutím na tlačítko **Generovat** můžete API Management pro vás vygenerovat náhodně klíč.
+* Rozhodněte, jaká bude adresa URL vašeho zvláštního koncového bodu delegování, a zadejte ji do pole **URL koncového bodu delegování.** 
+* V rámci pole ověřovacíklíč delegování zadejte tajný klíč, který se použije k výpočtu podpisu, který vám byl poskytnut k ověření, aby bylo zajištěno, že požadavek skutečně pochází ze správy rozhraní Azure API. Kliknutím na tlačítko **generovat** můžete mít api management náhodně generovat klíč pro vás.
 
-Nyní je třeba vytvořit **koncový bod delegování**. Je potřeba provést několik akcí:
+Nyní je třeba vytvořit **koncový bod delegování**. Musí provést řadu akcí:
 
-1. Příjem žádosti v následujícím formátu:
+1. Obdržíte žádost v následujícím formuláři:
    
-   > *http:\//www.yourwebsite.com/apimdelegation? operace = přihlášení & returnUrl = {URL zdrojové stránky} & Salt = {String} & SIG = {String}*
+   > *http:\//www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={URL zdrojové stránky}&salt={string}&sig={string}*
    > 
    > 
    
-    Parametry dotazu pro případ přihlášení/přihlášení:
+    Parametry dotazu pro případ přihlášení nebo registrace:
    
-   * **operace**: Určuje, který typ požadavku na delegování je. v takovém případě se může **Přihlásit** pouze v tomto případě.
-   * **ReturnUrl**: adresa URL stránky, na které se uživatel kliknul na přihlášení nebo odkaz pro registraci
-   * **Salt**: speciální řetězec Salt používaný k výpočtu hodnoty hash zabezpečení
-   * **SIG**: vypočítaná hodnota hash zabezpečení, která se má použít pro porovnání s vámi vypočítanou hodnotou hash
-2. Ověřte, že požadavek přichází z Azure API Management (volitelné, ale důrazně se doporučuje pro zabezpečení).
+   * **operace**: určuje, o jaký typ žádosti o delegování se jedná - v tomto případě může být **pouze Přihlášení**
+   * **returnUrl**: URL stránky, na které uživatel kliknul na přihlašovací nebo registrační odkaz
+   * **sůl**: speciální solný řetězec používaný pro výpočet bezpečnostního hašiše
+   * **sig**: vypočítaný hash zabezpečení, který má být použit pro srovnání s vlastní vypočítanou hash
+2. Ověřte, že požadavek pochází ze správy rozhraní AZURE API (volitelné, ale vysoce doporučeno pro zabezpečení)
    
-   * Vypočítat hodnotu hash HMAC-SHA512 řetězce na základě parametrů dotazu **ReturnUrl** a **Salt** ([vzorový kód uvedený níže]):
+   * Vypočítejte hodnotu hash HMAC-SHA512 řetězce na základě parametrů dotazu **returnUrl** a **salt** [(příklad kódu uvedeného níže]):
      
-     > HMAC (**sůl** + ' \n ' + **ReturnUrl**)
+     > HMAC(**sůl** + '\n' + **returnUrl**)
      > 
      > 
-   * Porovná výše vypočítanou hodnotu hash s hodnotou parametru dotazu **SIG** . Pokud se dvě hodnoty hash shodují, přejděte k dalšímu kroku, jinak zakažte požadavek.
-3. Ověřte, že jste obdrželi žádost o přihlášení nebo přihlášení: parametr dotazu **operace** bude nastaven na "Signing" (přihlásit**se).**
-4. Prezentovat uživatele s uživatelským ROZHRANÍm pro přihlášení nebo registraci
-5. Pokud se uživatel přihlásí, musíte pro ně vytvořit odpovídající účet v API Management. [Vytvoření uživatele] s REST APIem API Management. Když to uděláte, ujistěte se, že jste nastavili ID uživatele na stejnou hodnotu jako ve vašem úložišti uživatelů nebo na ID, které můžete sledovat.
-6. Po úspěšném ověření uživatele:
+   * Porovnejte výše vypočítaný hash s hodnotou parametru **sig** dotazu. Pokud se dva hashy shodují, přejděte k dalšímu kroku, jinak požadavek zamítnete.
+3. Ověřte, zda přijímáte požadavek na přihlášení/registraci: parametr **operačního** dotazu bude nastaven na "**SignIn**".
+4. Představit uživateli uživatelské rozhraní pro přihlášení nebo registraci
+5. Pokud se uživatel přihlašuje, musíte pro ně vytvořit odpovídající účet ve správě rozhraní API. [Vytvořte uživatele] pomocí rozhraní REST API pro správu rozhraní API. Přitom se ujistěte, že jste nastavili ID uživatele na stejnou hodnotu jako v úložišti uživatelů nebo na ID, které můžete sledovat.
+6. Když je uživatel úspěšně ověřen:
    
-   * [požadavek na token jednotného přihlašování (SSO)] prostřednictvím API Management REST API
-   * Přidejte parametr dotazu returnUrl k adrese URL jednotného přihlašování, kterou jste dostali z volání rozhraní API výše:
+   * [vyžádání jednotného přihlašování (SSO) token] prostřednictvím rozhraní API pro správu rozhraní API
+   * Připojit parametr dotazu returnUrl k adrese URL služby SSO, kterou jste obdrželi z výše uvedeného volání rozhraní API:
      
-     > například https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url 
+     > napříkladhttps://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url 
      > 
      > 
-   * přesměruje uživatele na výše vytvořenou adresu URL.
+   * přesměrovat uživatele na výše vyprodukovanou adresu URL
 
-Kromě operace **přihlášení** můžete také provádět správu účtů podle předchozích kroků a pomocí jedné z následujících operací:
+Kromě operace **Přihlášení** můžete také provádět správu účtu podle předchozích kroků a pomocí jedné z následujících operací:
 
-* **Metodu ChangePassword**
-* **ChangeProfile**
-* **CloseAccount**
+* **Changepassword**
+* **Změnit profil**
+* **Zavřítúčet**
 
-Pro operace správy účtů musíte předat následující parametry dotazu.
+Pro operace správy účtů je nutné předat následující parametry dotazu.
 
-* **operace**: Určuje, který typ požadavku na delegování je (ChangePassword, ChangeProfile nebo CloseAccount).
-* **userId**: ID uživatele účtu, který se má spravovat
-* **Salt**: speciální řetězec Salt používaný k výpočtu hodnoty hash zabezpečení
-* **SIG**: vypočítaná hodnota hash zabezpečení, která se má použít pro porovnání s vámi vypočítanou hodnotou hash
+* **operace**: určuje, jaký typ požadavku na delegování je (ChangePassword, ChangeProfile nebo CloseAccount)
+* **userId**: ID uživatele účtu pro správu
+* **sůl**: speciální solný řetězec používaný pro výpočet bezpečnostního hašiše
+* **sig**: vypočítaný hash zabezpečení, který má být použit pro srovnání s vlastní vypočítanou hash
 
-## <a name="delegate-product-subscription"> </a>Delegování předplatného produktu
-Delegování předplatného produktu funguje podobně jako delegování přihlášení uživatele. Konečný pracovní postup by byl následující:
+## <a name="delegating-product-subscription"></a><a name="delegate-product-subscription"> </a>Delegování předplatného produktu
+Delegování předplatného produktu funguje podobně jako delegování přihlášení/přístupu uživatele. Konečný pracovní postup by byl následující:
 
-1. Vývojář vybere produkt na portálu pro vývojáře API Management a klikne na tlačítko přihlásit k odběru.
+1. Vývojář vybere produkt na portálu pro vývojáře správy rozhraní API a klikne na tlačítko Přihlásit se k odběru.
 2. Prohlížeč je přesměrován na koncový bod delegování.
-3. Koncový bod delegování provádí požadované kroky odběru produktu. Pro návrh kroků je to na vás. Mohou zahrnovat přesměrování na jinou stránku, aby vyžadovaly informace o fakturaci, požadovali další otázky nebo jednoduše ukládali informace a nevyžadovali akci uživatele.
+3. Koncový bod delegování provádí požadované kroky předplatného produktu. Je na vás, abyste navrhli kroky. Mohou zahrnovat přesměrování na jinou stránku, která požaduje fakturační údaje, kladení dalších otázek nebo pouhé ukládání informací a nevyžaduje žádnou akci uživatele.
 
-Pokud chcete tuto funkci povolit, na stránce **delegování** klikněte na **delegovat předplatné produktu**.
+Chcete-li tuto funkci povolit, klikněte na stránce **Delegování** na **příkaz Delegovat předplatné produktu**.
 
-Dále zajistěte, aby koncový bod delegování provede následující akce:
+Dále zajistěte, aby koncový bod delegování provádí následující akce:
 
-1. Příjem žádosti v následujícím formátu:
+1. Obdržíte žádost v následujícím formuláři:
    
-   > *http:\//www.yourwebsite.com/apimdelegation? operace = {operace} & productId = {Product pro přihlášení k odběru} & userId = {usering Request} & Salt = {String} & SIG = {String}*
+   > *http:\//www.yourwebsite.com/apimdelegation?operation={operation}&productId={product to subscribe to}&userId={user making request}&salt={string}&sig={string}*
    >
    
-    Parametry dotazu pro případ odběru produktu:
+    Parametry dotazu pro případ předplatného produktu:
    
-   * **operace**: Určuje, jaký typ požadavku na delegování je. U předplatného produktu si vyžádá platné možnosti:
-     * "Předplatné": žádost o přihlášení uživatele k danému produktu se zadaným ID (viz níže)
-     * "Zrušit odběr": požadavek na zrušení odběru uživatele z produktu
-     * "Prodloužit": požadavek na obnovení předplatného (například může vypršet platnost)
-   * **ProductID**: ID produktu, který uživatel požádal o přihlášení k odběru
-   * **SubscriptionId**: při *zrušení odběru* a *obnovení* – ID předplatného produktu
-   * **userId**: ID uživatele, který požadavek odeslal.
-   * **Salt**: speciální řetězec Salt používaný k výpočtu hodnoty hash zabezpečení
-   * **SIG**: vypočítaná hodnota hash zabezpečení, která se má použít pro porovnání s vámi vypočítanou hodnotou hash
+   * **operace**: určuje, o jaký typ žádosti o delegování se jedná. Pro požadavky na předplatné produktu jsou platné možnosti:
+     * "Přihlásit se": žádost o přihlášení uživatele k odběru daného produktu s poskytnutým ID (viz níže)
+     * "Odhlásit se": žádost o odhlášení uživatele z produktu
+     * "Obnovit": žádost o obnovení předplatného (například, která může být vypršení platnosti)
+   * **ProductId**: ID produktu, o jehož přihlášení uživatel požádal, aby se přihlásil
+   * **subscriptionID**: on *Unsubscribe* and *Renew* - ID předplatného produktu
+   * **userId**: ID uživatele, pro které je žádost podána
+   * **sůl**: speciální solný řetězec používaný pro výpočet bezpečnostního hašiše
+   * **sig**: vypočítaný hash zabezpečení, který má být použit pro srovnání s vlastní vypočítanou hash
 
-2. Ověřte, že požadavek přichází z Azure API Management (volitelné, ale důrazně se doporučuje pro zabezpečení).
+2. Ověřte, že požadavek pochází ze správy rozhraní AZURE API (volitelné, ale vysoce doporučeno pro zabezpečení)
    
-   * Vypočítat HMAC-SHA512 řetězce na základě parametrů dotazu **ProductID**, **userId**a **Salt** :
+   * Vypočítat HMAC-SHA512 řetězce na základě **productId**, **userId**a **salt** query parametry:
      
-     > HMAC (**sůl** + ' \n ' + **ProductID** + ' \n ' + **userId**)
+     > HMAC(**sůl** + '\n' + **productId** + '\n' + **userId**)
      > 
      > 
-   * Porovná výše vypočítanou hodnotu hash s hodnotou parametru dotazu **SIG** . Pokud se dvě hodnoty hash shodují, přejděte k dalšímu kroku, jinak zakažte požadavek.
-3. Zpracuje předplatné produktu na základě typu operace požadované v **operaci** – například fakturace, další otázky atd.
-4. Po úspěšném přihlášení uživatele k produktu na vaši stranu se přihlaste k odběru API Management produktu tím, že [volání REST API pro odběry].
+   * Porovnejte výše vypočítaný hash s hodnotou parametru **sig** dotazu. Pokud se dva hashy shodují, přejděte k dalšímu kroku, jinak požadavek zamítnete.
+3. Zpracovat předplatné produktu na základě typu operace požadované v **provozu** - například fakturace, další otázky atd.
+4. Při úspěšném přihlášení uživatele k odběru produktu na vaší straně se přihlaste k odběru produktu API Management voláním rozhraní [REST API pro odběry].
 
-## <a name="delegate-example-code"></a> Příklad kódu
+## <a name="example-code"></a><a name="delegate-example-code"> </a> Ukázkový kód
 
 Tyto ukázky kódu ukazují, jak:
 
-* Pořídit *klíč pro ověření delegování*, který je nastavený na obrazovce delegování na portálu vydavatele
-* Vytvořte HMAC, který se pak použije k ověření podpisu a určení platnosti úspěšného returnUrl.
+* Vezměte *ověřovací klíč delegování*, který je nastaven na obrazovce Delegování na portálu pro vydavatele.
+* Vytvořte HMAC, který se pak používá k ověření podpisu, prokazující platnost předané returnUrl.
 
 Stejný kód funguje pro productId a userId s mírnou úpravou.
 
-**C#kód pro vygenerování hodnoty hash returnUrl**
+**C# kód pro generování hash returnUrl**
 
 ```csharp
 using System.Security.Cryptography;
@@ -157,7 +157,7 @@ using (var encoder = new HMACSHA512(Convert.FromBase64String(key)))
 }
 ```
 
-**NodeJS kód pro vygenerování hodnoty hash returnUrl**
+**NodeJS kód pro generování hash returnUrl**
 
 ```
 var crypto = require('crypto');
@@ -175,7 +175,7 @@ var signature = digest.toString('base64');
 ```
 
 > [!IMPORTANT]
-> Aby se změny delegování projevily, je potřeba [znovu publikovat portál pro vývojáře](api-management-howto-developer-portal-customize.md#publish) .
+> Je třeba [znovu publikovat portál pro vývojáře](api-management-howto-developer-portal-customize.md#publish) pro delegování se projeví.
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o delegování najdete v následujícím videu:
@@ -186,10 +186,10 @@ Další informace o delegování najdete v následujícím videu:
 
 [Delegating developer sign in and sign up]: #delegate-signin-up
 [Delegating product subscription]: #delegate-product-subscription
-[požadavek na token jednotného přihlašování (SSO)]: https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/User/GenerateSsoUrl
-[Vytvoření uživatele]: https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user/createorupdate
-[volání REST API pro odběry]: https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription/createorupdate
+[vyžádání tokenu jednotného přihlašování (SSO)]: https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/User/GenerateSsoUrl
+[vytvoření uživatele]: https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user/createorupdate
+[volání rozhraní REST API pro odběry]: https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription/createorupdate
 [Next steps]: #next-steps
-[vzorový kód uvedený níže]: #delegate-example-code
+[příklad kódu uvedeného níže]: #delegate-example-code
 
 [api-management-delegation-signin-up]: ./media/api-management-howto-setup-delegation/api-management-delegation-signin-up.png 

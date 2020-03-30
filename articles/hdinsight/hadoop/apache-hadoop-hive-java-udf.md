@@ -1,6 +1,6 @@
 ---
-title: Uživatelsky definovaná funkce Java (UDF) s Apache Hivem Azure HDInsight
-description: Naučte se vytvořit uživatelsky definovanou funkci (UDF) založenou na jazyce Java, která funguje s Apache Hive. V tomto příkladu UDF převede tabulku textových řetězců na malá.
+title: Uživatelem definovaná funkce Java (UDF) s Apache Hive Azure HDInsight
+description: Přečtěte si, jak vytvořit uživatelsky definovanou funkci (UDF) založenou na javě, která funguje s Apache Hive. Tento příklad UDF převede tabulku textových řetězců na malá písmena.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,48 +9,48 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/20/2019
 ms.openlocfilehash: 73a2a612a4eeb4a59f12abf0660fffb092f0547f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74327196"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Použití Java UDF s Apache Hive v HDInsight
 
-Naučte se vytvořit uživatelsky definovanou funkci (UDF) založenou na jazyce Java, která funguje s Apache Hive. Jazyk Java UDF v tomto příkladu převede tabulku textových řetězců na všechny znaky s malými písmeny.
+Přečtěte si, jak vytvořit uživatelsky definovanou funkci (UDF) založenou na javě, která funguje s Apache Hive. Java UDF v tomto příkladu převede tabulku textových řetězců na znaky s velkým a malých písmen.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Cluster Hadoop ve službě HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](./apache-hadoop-linux-tutorial-get-started.md).
+* Cluster Hadoop na HDInsight. Viz [Začínáme s HDInsight na Linuxu](./apache-hadoop-linux-tutorial-get-started.md).
 * [Java Developer Kit (JDK) verze 8](https://aka.ms/azure-jdks)
-* [Apache Maven](https://maven.apache.org/download.cgi) správně [nainstalované](https://maven.apache.org/install.html) v souladu s Apache.  Maven je systém sestavení projektu pro projekty v jazyce Java.
-* [Schéma identifikátoru URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) pro primární úložiště clusterů. To je wasb://pro Azure Storage, abfs://pro Azure Data Lake Storage Gen2 nebo adl://pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage povolený zabezpečený přenos, `wasbs://`identifikátor URI.  Viz také [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md).
+* [Apache Maven](https://maven.apache.org/download.cgi) správně [nainstalován](https://maven.apache.org/install.html) podle Apache.  Maven je systém vytváření projektů pro java projekty.
+* [Schéma URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) pro primární úložiště clusterů. To by bylo wasb:// pro Azure Storage, abfs:// pro Azure Data Lake Storage Gen2 nebo adl:// pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage povolený zabezpečený přenos, identifikátor URI bude `wasbs://`.  Viz také [bezpečný přenos](../../storage/common/storage-require-secure-transfer.md).
 
 * Textový editor nebo Java IDE
 
     > [!IMPORTANT]  
-    > Pokud vytvoříte soubory Pythonu na klientovi se systémem Windows, je nutné použít editor, který jako konec řádku používá LF. Pokud si nejste jistí, jestli editor používá LF nebo CRLF, přečtěte si část [řešení potíží](#troubleshooting) , kde najdete postup odebrání znaku CR.
+    > Pokud vytvoříte soubory Pythonu v klientovi systému Windows, musíte použít editor, který používá LF jako konec řádku. Pokud si nejste jisti, zda editor používá LF nebo CRLF, postup odebrání znaku CR najdete v části [Poradce při potížích.](#troubleshooting)
 
 ## <a name="test-environment"></a>Testovací prostředí
 
-Prostředí použité pro tento článek bylo počítač se systémem Windows 10.  Příkazy byly provedeny v příkazovém řádku a různé soubory byly upraveny pomocí poznámkového bloku. Upravte odpovídajícím způsobem pro vaše prostředí.
+Prostředí používané pro tento článek byl počítač se systémem Windows 10.  Příkazy byly provedeny v příkazovém řádku a různé soubory byly upraveny pomocí poznámkového bloku. Upravte odpovídajícím způsobem pro vaše prostředí.
 
-Z příkazového řádku zadejte níže uvedené příkazy pro vytvoření funkčního prostředí:
+Z příkazového řádku zadejte níže uvedené příkazy a vytvořte pracovní prostředí:
 
 ```cmd
 IF NOT EXIST C:\HDI MKDIR C:\HDI
 cd C:\HDI
 ```
 
-## <a name="create-an-example-java-udf"></a>Vytvoření ukázkového Java UDF
+## <a name="create-an-example-java-udf"></a>Vytvoření příkladu Java UDF
 
-1. Zadáním následujícího příkazu vytvořte nový projekt Maven:
+1. Vytvořte nový projekt Maven zadáním následujícího příkazu:
 
     ```cmd
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=ExampleUDF -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-    Tento příkaz vytvoří adresář s názvem `exampleudf`, který obsahuje projekt Maven.
+    Tento příkaz vytvoří `exampleudf`adresář s názvem , který obsahuje projekt Maven.
 
 2. Po vytvoření projektu odstraňte `exampleudf/src/test` adresář, který byl vytvořen jako součást projektu, zadáním následujícího příkazu:
 
@@ -59,13 +59,13 @@ cd C:\HDI
     rmdir /S /Q "src/test"
     ```
 
-3. Otevřete `pom.xml` zadáním následujícího příkazu:
+3. Otevřít `pom.xml` zadáním níže uvedeného příkazu:
 
     ```cmd
     notepad pom.xml
     ```
 
-    Pak existující položku `<dependencies>` nahraďte následujícím kódem XML:
+    Poté nahraďte existující `<dependencies>` položku následujícím xml:
 
     ```xml
     <dependencies>
@@ -84,9 +84,9 @@ cd C:\HDI
     </dependencies>
     ```
 
-    Tyto položky určují verzi Hadoop a podregistr, který je součástí HDInsight 3,6. Můžete najít informace o verzích Hadoop a podregistru dodaných v HDInsight z dokumentu [správy verzí komponent HDInsight](../hdinsight-component-versioning.md) .
+    Tyto položky určují verzi Hadoop a Hive, která je součástí HDInsight 3.6. Informace o verzích Hadoopu a Hive s rozhraním HDInsight naleznete v dokumentu [pro správu verzí komponent HDInsight.](../hdinsight-component-versioning.md)
 
-    Přidejte část `<build>` před `</project>` řádek na konci souboru. Tato část by měla obsahovat následující kód XML:
+    Přidejte `<build>` oddíl `</project>` před řádek na konec souboru. Tato část by měla obsahovat následující xml:
 
     ```xml
     <build>
@@ -140,17 +140,17 @@ cd C:\HDI
     </build>
     ```
 
-    Tyto položky definují, jak sestavit projekt. Konkrétně verze jazyka Java, kterou projekt používá, a postup sestavení uberjar pro nasazení do clusteru.
+    Tyto položky definují způsob sestavení projektu. Konkrétně verze Java, který projekt používá a jak vytvořit uberjar pro nasazení do clusteru.
 
-    Až změny provedete, soubor uložte.
+    Po provedení změn soubor uložte.
 
-4. Zadáním následujícího příkazu vytvořte a otevřete nový soubor `ExampleUDF.java`:
+4. Chcete-li vytvořit a otevřít nový `ExampleUDF.java`soubor, zadejte následující příkaz :
 
     ```cmd
     notepad src/main/java/com/microsoft/examples/ExampleUDF.java
     ```
 
-    Pak zkopírujte a vložte kód Java níže do nového souboru. Pak soubor zavřete.
+    Pak zkopírujte a vložte java kód níže do nového souboru. Potom soubor zavřete.
 
     ```java
     package com.microsoft.examples;
@@ -177,21 +177,21 @@ cd C:\HDI
     }
     ```
 
-    Tento kód implementuje systém souborů UDF, který přijímá řetězcovou hodnotu, a vrátí verzi řetězce v malých písmenech.
+    Tento kód implementuje UDF, který přijímá řetězcovou hodnotu a vrací malou verzi řetězce.
 
-## <a name="build-and-install-the-udf"></a>Sestavení a instalace systému souborů UDF
+## <a name="build-and-install-the-udf"></a>Sestavení a instalace udf
 
-V následujících příkazech nahraďte `sshuser` skutečným uživatelským jménem, pokud se liší. Nahraďte `mycluster` skutečným názvem clusteru.
+V níže uvedených `sshuser` příkazech nahraďte skutečným uživatelským jménem, pokud se liší. Nahraďte `mycluster` skutečným názvem clusteru.
 
-1. Zkompilujte a zabalite systém souborů UDF zadáním následujícího příkazu:
+1. Zkompilujte a zabalte UDF zadáním následujícího příkazu:
 
     ```cmd
     mvn compile package
     ```
 
-    Tento příkaz sestaví a zabalí systém souborů UDF do souboru `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar`.
+    Tento příkaz vytvoří a zabalí `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` UDF do souboru.
 
-2. Pomocí příkazu `scp` zkopírujte soubor do clusteru HDInsight zadáním následujícího příkazu:
+2. Pomocí `scp` příkazu zkopírujte soubor do clusteru HDInsight zadáním následujícího příkazu:
 
     ```cmd
     scp ./target/ExampleUDF-1.0-SNAPSHOT.jar sshuser@mycluster-ssh.azurehdinsight.net:
@@ -203,13 +203,13 @@ V následujících příkazech nahraďte `sshuser` skutečným uživatelským jm
     ssh sshuser@mycluster-ssh.azurehdinsight.net
     ```
 
-4. Z otevřené relace SSH zkopírujte soubor JAR do úložiště HDInsight.
+4. Z otevřené relace SSH zkopírujte soubor jar do úložiště HDInsight.
 
     ```bash
     hdfs dfs -put ExampleUDF-1.0-SNAPSHOT.jar /example/jars
     ```
 
-## <a name="use-the-udf-from-hive"></a>Použití UDF z podregistru
+## <a name="use-the-udf-from-hive"></a>Použití UDF z Úlu
 
 1. Spusťte klienta Beeline z relace SSH zadáním následujícího příkazu:
 
@@ -217,22 +217,22 @@ V následujících příkazech nahraďte `sshuser` skutečným uživatelským jm
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
     ```
 
-    Tento příkaz předpokládá, že jste pro svůj cluster použili výchozí účet **správce** .
+    Tento příkaz předpokládá, že jste použili výchozí **nastavení správce** pro přihlašovací účet pro váš cluster.
 
-2. Po přijetí `jdbc:hive2://localhost:10001/>` výzvy zadejte následující text a přidejte ho do podregistru a vystavte ho jako funkci.
+2. Jakmile se dostanete `jdbc:hive2://localhost:10001/>` na výzvu, zadejte následující přidat UDF do Hive a vystavit jako funkci.
 
     ```hiveql
     ADD JAR wasbs:///example/jars/ExampleUDF-1.0-SNAPSHOT.jar;
     CREATE TEMPORARY FUNCTION tolower as 'com.microsoft.examples.ExampleUDF';
     ```
 
-3. Pomocí systému souborů UDF převeďte hodnoty načtené z tabulky do malých řetězců Case.
+3. Pomocí udf převést hodnoty načtené z tabulky na řetězce s malá písmena.
 
     ```hiveql
     SELECT tolower(state) AS ExampleUDF, state FROM hivesampletable LIMIT 10;
     ```
 
-    Tento dotaz vybere stav z tabulky, převede řetězec na malá písmena a pak je zobrazí spolu s nezměněným názvem. Výstup se zobrazí podobně jako následující text:
+    Tento dotaz vybere stav z tabulky, převede řetězec na malá písmena a zobrazí je spolu s nezměněným názvem. Výstup se podobá následujícímu textu:
 
         +---------------+---------------+--+
         |  exampleudf   |     state     |
@@ -251,13 +251,13 @@ V následujících příkazech nahraďte `sshuser` skutečným uživatelským jm
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Při spuštění úlohy podregistru se může vycházet z chyby podobné následujícímu textu:
+Při spuštění úlohy podregistru se může naskytnout chyba podobná následujícímu textu:
 
     Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An error occurred while reading or writing to your custom script. It may have crashed with an error.
 
-Tento problém může být způsoben koncem řádku v souboru Python. Mnoho editorů Windows ve výchozím nastavení používá klávesu CRLF jako zakončení řádku, ale aplikace pro Linux obvykle očekávají LF.
+Tento problém může být způsoben zakončení řádků v souboru Pythonu. Mnoho editorů systému Windows výchozí použití CRLF jako konec řádku, ale linuxové aplikace obvykle očekávají LF.
 
-Před nahráním souboru do HDInsight můžete pomocí následujících příkazů PowerShellu odebrat znaky CR:
+Před nahráním souboru do HDInsightu můžete odebrat následující příkazy prostředí PowerShell:
 
 ```PowerShell
 # Set $original_file to the python file path
@@ -267,6 +267,6 @@ $text = [IO.File]::ReadAllText($original_file) -replace "`r`n", "`n"
 
 ## <a name="next-steps"></a>Další kroky
 
-Další způsoby práce s podregistrem najdete v tématu [použití Apache Hive se službou HDInsight](hdinsight-use-hive.md).
+Další způsoby práce s Hive najdete v [tématu Použití Apache Hive s HDInsight](hdinsight-use-hive.md).
 
-Další informace o uživatelsky definovaných funkcích pro podregistr najdete v části [operátory Apache Hive a uživatelsky definované funkce](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) na wikiwebu webwiki na adrese Apache.org.
+Další informace o uživatelem definovaných funkcích Hive najdete v článku [Apache Hive Operators and User-Defined Functions](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) na wiki Hive na apache.org.

@@ -1,6 +1,6 @@
 ---
-title: Přidání značek do testovacího prostředí v Azure DevTest Labs | Microsoft Docs
-description: Naučte se, jak přidat značku do testovacího prostředí v Azure DevTest Labs
+title: Přidání značek do testovacího prostředí v laboratořích Azure DevTest Labs | Dokumenty společnosti Microsoft
+description: Přečtěte si, jak přidat značku do testovacího prostředí v Azure DevTest Labs
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: spelluru
@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 10/13/2019
 ms.author: spelluru
 ms.openlocfilehash: 1d7175d000eebd3f68665e7f097bbe3f68025bc8
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72302800"
 ---
-# <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>Přidání značek do testovacího prostředí v Azure DevTest Labs
+# <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>Přidání značek do testovacího prostředí v laboratořích Azure DevTest Labs
 
-Můžete vytvořit vlastní značky a použít je v prostředcích DevTest Labs k logickému kategorizaci prostředků. Později můžete rychle a snadno zobrazit všechny prostředky ve vašem předplatném, které mají tuto značku. Značky jsou užitečné v případě, že potřebujete organizovat prostředky pro účely fakturace nebo správy.
+Můžete vytvořit vlastní značky a použít je na vaše prostředky DevTest Labs logicky kategorizovat své prostředky. Později můžete rychle a snadno zobrazit všechny prostředky v předplatném, které mají tuto značku. Značky jsou užitečné, když potřebujete uspořádat prostředky pro fakturaci nebo správu.
 
-Mezi prostředky, které tyto značky podporují, patří
+Mezi prostředky podporované značkami patří
 
 * Výpočetní virtuální počítače
 * Síťové karty
@@ -34,28 +34,28 @@ Mezi prostředky, které tyto značky podporují, patří
 * Účty úložiště
 * Spravované disky
 
-Značky můžete použít při [vytváření testovacího prostředí](devtest-lab-create-lab.md) a později ho spravovat pomocí okna značky v části Konfigurace a nastavení.
+Značky můžete použít při [vytváření testovacího prostředí](devtest-lab-create-lab.md) a později je spravovat pomocí okna Značky v části Konfigurace a nastavení.
 
-Každá značka se skládá z **názvu**/dvojici **hodnot** . Například je možné vytvořit značku s názvem *CostCenter* , který má hodnotu *34543*. Tato značka vám může pomáhat později identifikovat prostředky testovacího prostředí, které jsou Fakturovatelné do této konkrétní oblasti vaší organizace. Dostanete se k výběru názvů a hodnot, které mají smysl pro uspořádání vašeho předplatného.
+Každá značka se skládá z dvojice**hodnot** **názvu.**/ Můžete například vytvořit značku s názvem *costcenter,* která má hodnotu *34543*. Značka, jako je tato, vám může pomoci později identifikovat laboratorní prostředky, které jsou fakturovatelné do této konkrétní oblasti vaší organizace. Můžete si vybrat názvy a hodnoty, které mají smysl pro uspořádání předplatného.
 
-## <a name="steps-to-manage-tags-in-an-existing-lab"></a>Postup pro správu značek v existujícím testovacím prostředí
+## <a name="steps-to-manage-tags-in-an-existing-lab"></a>Postup správy značek v existujícím testovacím prostředí
 
-1. Přihlásit se na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. V případě potřeby vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** . Vaše testovací prostředí se už možná zobrazuje na řídicím panelu v části **všechny prostředky**.
-1. V seznamu cvičení vyberte testovací prostředí, ve kterém chcete přidat nebo spravovat značky.
+1. Přihlaste se k [portálu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. V případě potřeby vyberte **všechny služby**a ze seznamu vyberte **DevTest Labs.** Vaše testovací prostředí se už může zobrazit na řídicím panelu v části **Všechny prostředky**.
+1. Ze seznamu testovacích prostředí vyberte testovací prostředí, ve kterém chcete přidat nebo spravovat značky.
 1. V oblasti **Přehled** testovacího prostředí vyberte **Konfigurace a zásady**.
 
     ![Tlačítko Konfigurace a zásady](./media/devtest-lab-add-tag/devtestlab-config-and-policies.png)
 
-1. Na levé straně v části **Spravovat**vyberte **značky**.
-1. Pokud chcete pro toto testovací prostředí vytvořit novou značku, zadejte dvojici **název**/**hodnota** a vyberte **Uložit**. Můžete také vybrat existující značku ze seznamu pro zobrazení nebo správu prostředků přidružených k této značce.
+1. Vlevo v části **MANAGE**vyberte **Tagy**.
+1. Chcete-li vytvořit novou značku pro toto testovací prostředí, zadejte**dvojici Hodnota** **názvu**/a vyberte **Uložit**. Můžete také vybrat existující značku ze seznamu a zobrazit nebo spravovat prostředky přidružené k této značce.
 
     ![Správa značek](./media/devtest-lab-add-tag/devtestlab-manage-tags.png)
 
 > [!NOTE]
-> Značky vytvořené na úrovni testovacího prostředí jsou zaměřené na všechny Fakturovatelné prostředky, ve kterých se ve vašem předplatném prostředí vytočí. Například značky úrovně testovacího prostředí se přesměrují na základní výpočetní virtuální počítače testovacích prostředí. v kontextu služby cost Management můžete značky použít. Značky úrovně testovacího prostředí se zobrazí ve filtru značek pro správu nákladů.
+> Značky vytvořené na úrovni testovacího prostředí toku přes všechny fakturovatelné prostředky, které testovací prostředí se točí ve vašem předplatném. Například značky na úrovni testovacího prostředí toku do podkladových výpočetních virtuálních počítačů virtuálních počítačích testovacího prostředí.Můžete použít značky v kontextu správy nákladů. Značky úrovně testovacího prostředí se zobrazují ve filtru značek pro správu nákladů.
 
-## <a name="understanding-limitations-to-tags"></a>Porozumění omezením pro značky
+## <a name="understanding-limitations-to-tags"></a>Principy omezení značek
 
 Na značky se vztahují následující omezení:
 
@@ -63,10 +63,10 @@ Na značky se vztahují následující omezení:
 * Název značky je omezen na 512 znaků a hodnota značky je omezena na 256 znaků. Pro účty úložiště je název značky omezen na 128 znaků a hodnota značky je omezena na 256 znaků.
 * Prostředky ve skupině prostředků nedědí značky použité na danou skupinu prostředků.
 
-[Pomocí značek k uspořádání prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) získáte více podrobností o používání značek v Azure, včetně způsobu správy značek pomocí PowerShellu nebo Azure CLI.
+[Značky slouží k uspořádání prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) poskytuje další podrobnosti o používání značek v Azure, včetně jak spravovat značky pomocí PowerShellu nebo Azure CLI.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>Další kroky
-* Omezení a konvence v rámci předplatného můžete uplatnit pomocí přizpůsobených zásad. Zásada, kterou definujete, může vyžadovat, aby všechny prostředky měly hodnotu pro konkrétní značku. Další informace najdete v tématu [nastavení zásad a plánů](devtest-lab-set-lab-policy.md).
-* Prozkoumejte [galerii šablon rychlého startu Azure Resource Manager DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).
+* Omezení a konvence v rámci předplatného můžete použít pomocí přizpůsobených zásad. Zásada, kterou definujete, může vyžadovat, aby všechny prostředky měly hodnotu pro určitou značku. Další informace naleznete v tématu [Nastavení zásad a plánů](devtest-lab-set-lab-policy.md).
+* Prozkoumejte [galerii šablon rychlého startu Nástroje pro co vyvěšení pomocí nástroje DevTest Labs azure .](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)

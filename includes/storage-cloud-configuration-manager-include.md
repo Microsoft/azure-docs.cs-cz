@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 5102866cdda51ef545fd95b32946cb17c6e40a3c
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72038165"
 ---
-[Knihovna správce konfigurace Microsoft Azure pro .NET](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) poskytuje třídu pro potřeby analýzy připojovacího řetězce z konfiguračního souboru. Třída [CloudConfigurationManager](https://msdn.microsoft.com/library/azure/mt634650.aspx) analyzuje nastavení konfigurace. Analyzuje nastavení pro klientské aplikace, které běží na ploše, na mobilním zařízení, na virtuálním počítači Azure nebo v cloudové službě Azure.
+[Knihovna správce konfigurace Microsoft Azure pro .NET](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) poskytuje třídu pro potřeby analýzy připojovacího řetězce z konfiguračního souboru. Třída [CloudConfigurationManager](https://msdn.microsoft.com/library/azure/mt634650.aspx) analyzuje nastavení konfigurace. Analyzuje nastavení pro klientské aplikace, které běží na ploše, na mobilním zařízení, ve virtuálním počítači Azure nebo v cloudové službě Azure.
 
-Chcete-li odkazovat na balíček `CloudConfigurationManager`, přidejte následující direktivy `using`:
+Chcete-li `CloudConfigurationManager` odkazovat na `using` balíček, přidejte následující direktivy:
 
 ```csharp
 using Microsoft.Azure; //Namespace for CloudConfigurationManager
@@ -28,4 +28,4 @@ CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     CloudConfigurationManager.GetSetting("StorageConnectionString"));
 ```
 
-Použití nástroje Azure Configuration Manager není povinné. Můžete také použít rozhraní API, například [třídu ConfigurationManager](/dotnet/api/system.configuration.configurationmanager).NET Framework.
+Použití nástroje Azure Configuration Manager není povinné. Můžete také použít rozhraní API, jako je například [třída ConfigurationManager](/dotnet/api/system.configuration.configurationmanager)rozhraní .NET Framework .

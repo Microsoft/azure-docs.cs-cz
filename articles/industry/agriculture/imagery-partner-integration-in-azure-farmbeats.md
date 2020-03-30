@@ -1,35 +1,35 @@
 ---
 title: Integrace partnerských řešení pro snímky
-description: Tento článek popisuje integraci partnerských serverů z více snímků.
+description: Tento článek popisuje integraci partnerů snímků.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 62e5b363f8008380a61e24c0549573a30ecaeb73
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77131854"
 ---
 # <a name="imagery-partner-integration"></a>Integrace partnerských řešení pro snímky
 
-Tento článek popisuje, jak pomocí komponenty překladače Azure FarmBeats posílat data z snímků do FarmBeats. Data ze zemědělských snímků je možné vygenerovat z různých zdrojů, jako jsou například spektrální kamery, satelity a DRONY zachraňují životy. Partneři zemědělských snímků se mohou integrovat s FarmBeats a poskytovat zákazníkům s vlastními mapami generovanými pro své farmy.
+Tento článek popisuje, jak používat komponentu Azure FarmBeats Translator k odesílání dat snímků do FarmBeats. Data zemědělských snímků lze generovat z různých zdrojů, jako jsou multispektrální kamery, satelity a drony. Partneři pro zemědělské snímky se mohou integrovat s FarmBeats a poskytnout zákazníkům mapy vytvořené na zakázku pro své farmy.
 
-Data, jakmile jsou k dispozici, je možné vizuálně rozpracovat prostřednictvím akcelerátoru FarmBeats a potenciálně použít pro modelování dat a Machine Learning/umělá inteligentní funkce (ML/AI) podle zemědělských podniků nebo integrátorů systému zákazníka.
+Data, jakmile jsou k dispozici, mohou být vizualizována prostřednictvím akcelerátoru FarmBeats a potenciálně použita pro fúzi dat a strojové učení / umělou inteligenci (ML / AI) model budovy zemědělskými podniky nebo integrátory zákaznického systému.
 
-FarmBeats poskytuje možnosti:
+FarmBeats poskytuje možnost:
 
-- Pomocí rozhraní API/ExtendedType definujte vlastní typy obrázků, zdrojový soubor a formát souboru.
-- Ingestování datových snímků z různých zdrojů prostřednictvím rozhraní API/Scene a/SceneFile
+- Definujte vlastní typy obrazů, zdroj a formát souboru pomocí souborů /ExtendedType API.
+- Ingestovat data snímků z různých zdrojů prostřednictvím /Scene a /SceneFile API.
 
-Následující informace se zaměřují na získání jakékoli formy snímků do systému FarmBeats.
+Následující informace se zaměřuje na získání jakékoli formy snímků do systému FarmBeats.
 
-Když vyberete část **pomocí dronů** , zobrazí se automaticky otevírané okno s obrázkem s vysokým rozlišením orthomosaicu pomocí dronů. Můžete získat přístup k partnerskému softwaru, který pomáhá plánovat pomocí dronů lety a získávat nezpracovaná data. Budete nadále používat software partnera pro plánování cest a orthomosaicí obrázků.
+Když vyberete sekci **Snímky drone,** otevře se vyskakovací okno, které zobrazí obraz ortomozaiky drone ve vysokém rozlišení. Můžete přistupovat k partnerskému softwaru, který pomáhá plánovat lety dronů a získat nezpracovaná data. Budete i nadále používat software partnera pro plánování cesty a ortomosaic prošívání obrazu.
 
-Partneři pomocí dronů musí zákazníkům povolit propojení svého zákaznického účtu s instancí FarmBeats na Azure.
+Partneři dronů musí zákazníkům umožnit propojit svůj zákaznický účet s instancí FarmBeats v Azure.
 
-K propojení FarmBeats musíte použít následující přihlašovací údaje v partnerském softwaru pomocí dronů:
+Pro propojení FarmBeats musíte použít následující pověření v softwaru partnera pro drony:
 
 - Koncový bod rozhraní API
 - ID tenanta
@@ -38,27 +38,27 @@ K propojení FarmBeats musíte použít následující přihlašovací údaje v 
 
 ## <a name="api-development"></a>Vývoj rozhraní API
 
-Rozhraní API obsahují technickou dokumentaci k Swagger. Informace o rozhraních API a odpovídajících požadavcích nebo odpovědích naleznete v části [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).
+Api obsahují swagger technickou dokumentaci. Informace o api a odpovídající požadavky nebo odpovědi, naleznete v tématu [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).
 
 ## <a name="authentication"></a>Ověřování
 
-FarmBeats používá Microsoft Azure [Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) (Azure AD). Azure App Service poskytuje integrovanou podporu ověřování a autorizace. 
+FarmBeats používá [Službu](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) Microsoft Azure Active Directory (Azure AD). Služba Azure App Service poskytuje integrovanou podporu ověřování a autorizace. 
 
-Další informace o Azure AD najdete v tématu [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization).   
+Další informace o Azure AD najdete v [tématu Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization).   
 
-FarmBeats DataHub používá ověřování pomocí nosiče, které potřebuje následující přihlašovací údaje:
+FarmBeats Datahub používá ověřování nosiče, které vyžaduje následující pověření:
 
 - ID klienta
 - Tajný klíč klienta
 - ID tenanta
 
-Pomocí předchozích přihlašovacích údajů může volající požádat o přístupový token, který se musí poslat v následujících požadavcích rozhraní API, a to následujícím způsobem:
+Pomocí předchozích pověření může volající požádat o přístupový token, který je třeba odeslat v následujících požadavcích rozhraní API v části záhlaví, a to následovně:
 
 ```
 headers = {"Authorization": "Bearer " + access_token, …} 
 ```
 
-Následující ukázka kódu Pythonu načte přístupový token. Pak můžete použít token pro následné volání rozhraní API do FarmBeats.
+Následující ukázka kódu Pythonu načte přístupový token. Potom můžete použít token pro následné volání rozhraní API farmbeats.
 
 ```python
 from azure.common.credentials import ServicePrincipalCredentials 
@@ -77,29 +77,29 @@ token_response = context.acquire_token_with_client_credentials(ENDPOINT, CLI
 access_token = token_response.get('accessToken') 
 ```
 
-## <a name="http-request-headers"></a>Hlavičky požadavku HTTP
+## <a name="http-request-headers"></a>Hlavičky požadavků HTTP
 
-Tady jsou nejběžnější hlavičky požadavků, které je potřeba zadat při volání rozhraní API FarmBeats DataHub.
+Zde jsou nejčastější hlavičky požadavků, které je třeba zadat při volání rozhraní API farmbeats Datahub.
 
-**Hlavička** | **Popis a příklad**
+**Záhlaví** | **Popis a příklad**
 --- | ---
-Content-Type  | Formát požadavku (Content-Type: Application/<format>). Pro rozhraní FarmBeats DataHub API je formát JSON. Content-Type: Application/JSON
-Autorizace | Určuje přístupový token potřebný k vytvoření volání rozhraní API. Autorizace: nosný < přístup-token >
-Přijmout  | Formát odpovědi Pro rozhraní FarmBeats DataHub API je formát JSON. Přijmout: Application/JSON
+Typ obsahu  | Formát požadavku (Content-Type:<format>application/ ). Pro FarmBeats Datahub API formát je JSON. Typ obsahu: aplikace/json
+Autorizace | Určuje přístupový token potřebný k volání rozhraní API. Autorizace:> přístupového tokenu <nosiče
+Accept  | Formát odpovědi. Pro FarmBeats Datahub API formát je JSON. Přijmout: aplikace/json
 
 
 ## <a name="api-requests"></a>Požadavky rozhraní API
 
-Chcete-li vytvořit požadavek REST API, zkombinujete:
+Chcete-li vytvořit požadavek rozhraní REST API, zkombinujte:
 
 - Metoda HTTP (GET, POST a PUT).
-- Adresa URL služby API.
-- Identifikátor URI prostředku (pro dotazování, odesílání dat, aktualizaci nebo odstranění).
-- Jedna nebo více hlaviček požadavku HTTP.
+- Adresa URL služby rozhraní API.
+- Identifikátor URI prostředku (dotaz, odeslání dat, aktualizace nebo odstranění).
+- Jedna nebo více hlaviček požadavků HTTP.
 
-Volitelně můžete zahrnout parametry dotazu pro volání funkce GET k filtrování, omezení velikosti a řazení dat v odpovědích.
+Volitelně můžete zahrnout parametry dotazu na volání GET pro filtrování, omezení velikosti a řazení dat v odpovědích.
 
-Následující ukázková žádost slouží k získání seznamu zařízení:
+Následující ukázkový požadavek je získat seznam zařízení:
 
 ```bash
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
@@ -107,9 +107,9 @@ curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 "Authorization: Bearer <Access-Token>”
 ```
 
-Většina volání GET, POST a PUT vyžaduje tělo požadavku JSON.
+Většina get, post a PUT volání vyžadují tělo požadavku JSON.
 
-Následující ukázková žádost slouží k vytvoření zařízení. Tato ukázka obsahuje vstupní JSON s textem žádosti.
+Následující ukázkový požadavek je vytvořit zařízení. Tato ukázka má vstupní JSON s tělo požadavku.
 
 
 ```bash
@@ -122,34 +122,34 @@ curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 
 ## <a name="data-format"></a>Formát dat
 
-JSON je běžný jazyk nezávislý na jazyce, který poskytuje jednoduchou textovou reprezentaci libovolných datových struktur. Další informace najdete v tématu věnovaném nástroji [JSON org](https://JSON.org).
+JSON je společný jazykově nezávislý formát dat, který poskytuje jednoduchou textovou reprezentaci libovolných datových struktur. Další informace naleznete v [tématu JSON org](https://JSON.org).
 
-## <a name="ingest-imagery-into-farmbeats"></a>Ingestování snímků do FarmBeats
+## <a name="ingest-imagery-into-farmbeats"></a>Požití snímků do FarmBeats
 
-Po tom, co partner získá přihlašovací údaje pro připojení k FarmBeats DataHub, partner provede následující kroky v součásti překladatele.
+Poté, co partner má pověření pro připojení k FarmBeats Datahub, partner provede následující kroky v translator komponenty.
 
-1.  Vytvořte nový rozšířený typ pro následující pole v souladu s typem ukládaného textu, který se má nahrát:
+1.  Vytvořte nový rozšířený typ pro následující pole v souladu s typem snímků, které mají být nahrány:
 
-    - **Zdroj scény**: například drone_partner_name
-    - **Typ scény**: například pomocí dronů
-    - **Typ souboru scény**: například index Chlorophyll
-    - **Typ obsahu souboru scény**: například Image/TIFF
+    - **Zdroj scény**: Například drone_partner_name
+    - **Typ scény**: Například drone
+    - **Typ souboru scény**: Například index chlorofylu
+    - **Typ obsahu souboru scény**: Například obrázek/tiff
 
-2.  Voláním rozhraní/Farms API získáte seznam farem v rámci systému Azure FarmBeats.
-3.  Poskytněte zákazníkovi možnost zvolit jednu farmu ze seznamu Farm.
+2.  Volání /Farms API získat seznam farem z v rámci systému Azure FarmBeats.
+3.  Poskytněte zákazníkovi možnost vybrat si jednu farmu ze seznamu farem.
 
-    Partnerský systém musí zobrazit farmu v rámci partnerského softwaru, aby bylo možné provádět plánování a pomocí dronů let a shromažďování imagí.
+    Partnerský systém musí zobrazit farmu v rámci partnerského softwaru, aby mohl plánovat cestu a shromažďování letů a obrázků drone.
 
-4.  Zavolejte rozhraní/Scene API a poskytněte požadované podrobnosti pro vytvoření nové scény s jedinečným ID scény.
-5.  Přihlaste se k adrese URL SAS objektu BLOB pro nahrání požadovaných imagí do FarmBeats DataHub v kontextu zvolené farmy v systému FarmBeats.
+4.  Volání /Scene API a poskytnout požadované podrobnosti k vytvoření nové scény s jedinečným ID scény.
+5.  Získejte adresu URL blob SAS a nahrajte požadované obrázky do FarmBeats Datahub v kontextu zvolené farmy v systému FarmBeats.
 
 Tady je podrobný tok volání rozhraní API.
 
 ### <a name="step-1-extendedtype"></a>Krok 1: ExtendedType
 
-Vraťte se změnami rozhraní/ExtendedType API a zjistěte, jestli je typ a zdroj souborů k dispozici na FarmBeats. Provedete to tak, že zavoláte metodu GET na rozhraní/ExtendedType API.
+Chcete-li zjistit, zda jsou typ a zdroj souboru k dispozici na FarmBeats, zkontrolujte rozhraní API /ExtendedType. Chcete-li tak učinit, volání GET na /ExtendedType ROZHRANÍ API.
 
-Zde jsou hodnoty definované systémem:
+Zde jsou systémem definované hodnoty:
 
 ```json
 {
@@ -331,9 +331,9 @@ Zde jsou hodnoty definované systémem:
 }
 ```
 
-Tento krok je jednorázové nastavení. Rozsah tohoto nového typu scény je omezený na předplatné, ve kterém je nainstalovaná aplikace Azure FarmBeats.
+Tento krok je jednorázové nastavení. Rozsah tohoto nového typu scény je omezen na předplatné, ve kterém je nainstalován Azure FarmBeats.
 
-Například pro přidání SceneSource: "SlantRange", můžete provést vložení na ID rozhraní/ExtendedType API se vstupní datovou částí "SceneSource".
+Chcete-li například přidat SceneSource: "SlantRange", proveďte PUT na ID rozhraní /ExtendedType API s klíčem "SceneSource" vstupní datové části.
 
 ```json
 {
@@ -351,13 +351,13 @@ Například pro přidání SceneSource: "SlantRange", můžete provést vložen�
 
 ```
 
-Zelené pole je nově přidané do systémových hodnot scény definovaných v systému.
+Zelené pole je nový přírůstek do systémem definovaných zdrojových hodnot scény.
 
 ### <a name="step-2-get-farm-details"></a>Krok 2: Získání podrobností o farmě
 
-Scény (soubory. TIFF nebo. csv) jsou v kontextu farmy. Podrobnosti o farmě potřebujete získat na/Farm API. Rozhraní API vrátí seznam farem, které jsou k dispozici v FarmBeats. Můžete vybrat farmu, pro kterou chcete data ingestovat.
+Scény (.tiff nebo .csv soubory) jsou v kontextu farmy. Musíte získat podrobnosti farmy tím, že dělá GET na /Farm API. Rozhraní API vrátí seznam farem, které jsou k dispozici v FarmBeats. Můžete vybrat farmu, pro kterou chcete data ingestovat.
 
-ZÍSKAT odpověď/Farm:
+GET /Farm odpověď:
 
 ```json
 {
@@ -403,13 +403,13 @@ ZÍSKAT odpověď/Farm:
 }
  ```
 
-### <a name="step-3-create-a-scene-id-post-call"></a>Krok 3: vytvoření ID scény (po volání)
+### <a name="step-3-create-a-scene-id-post-call"></a>Krok 3: Vytvoření ID scény (volání POST)
 
-Vytvořte novou scénu (soubor. TIFF nebo. csv) s danými informacemi, které poskytují datum, sekvenci a ID farmy, se kterými je scéna přidružená. Metadata přidružená k scéně lze definovat v části vlastnosti, která zahrnuje dobu trvání a typ míry.
+Vytvořte novou scénu (soubor .tiff nebo .csv) s danými informacemi, které poskytují datum, pořadí a ID farmy, ke kterým je scéna přidružena. Metadata přidružená ke scéně lze definovat pod vlastnostmi, které zahrnují dobu trvání a typ míry.
 
-Při vytvoření nové scény se vytvoří nové ID scény, které je přidružené k farmě. Po vytvoření ID scény může uživatel použít stejný soubor k vytvoření nového souboru (. TIFF nebo. csv) a uložit obsah souboru.
+Vytvořením nové scény vytvoříte nové ID scény, které je přidruženo k farmě. Po vytvoření ID scény může uživatel použít stejný k vytvoření nového souboru (.tiff nebo .csv) a uložení obsahu souboru.
 
-Příklad vstupní datové části pro volání POST na rozhraní/Scene API:
+Příklad vstupní datové části pro volání POST v rozhraní /Scene API:
 
 ```json
 {
@@ -445,13 +445,13 @@ Odpověď rozhraní API:
 
 ```
 
-**Vytvořit soubor scény**
+**Vytvoření souboru scény**
 
-ID scény vrácené v kroku 3 je vstup pro soubor scény. Soubor scény vrátí token URL SAS, který je platný po dobu 24 hodin.
+ID scény vrácené v kroku 3 je vstupem pro soubor scény. Soubor scény vrátí token adresy URL SAS, který je platný po dobu 24 hodin.
 
-Pokud uživatel vyžaduje programový způsob, jak nahrát datový proud imagí, je možné použít sadu SDK služby Blob Storage k definování metody pomocí ID souboru scény, umístění a adresy URL.
+Pokud uživatel vyžaduje programový způsob nahrávání datového proudu bitových kopií, lze k definování metody pomocí ID souboru scény, umístění a adresy URL sada objektů blob úložiště s udatnou metodou použít metodu.
 
-Příklad vstupní datové části pro volání POST na rozhraní/SceneFile API:
+Příklad vstupní datové části pro volání POST v rozhraní /SceneFile API:
 
 ```json
 {
@@ -487,9 +487,9 @@ Odpověď rozhraní API:
 
 ```
 
-Po volání rozhraní/SceneFile API se vrátí adresa URL pro nahrání SAS, kterou můžete použít k nahrání souboru. csv nebo. TIFF pomocí klienta služby Azure Blob Storage nebo knihovny.
+Volání POST rozhraní /SceneFile API vrátí adresu URL pro nahrávání SAS, kterou lze použít k nahrání souboru .csv nebo .tiff pomocí klienta úložiště objektů blob Azure nebo knihovny.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o REST API podrobností integrace na základě REST API najdete v tématu [](rest-api-in-azure-farmbeats.md).
+Další informace o podrobnostech integrace založené na rozhraní REST API naleznete v tématu [REST API](rest-api-in-azure-farmbeats.md).

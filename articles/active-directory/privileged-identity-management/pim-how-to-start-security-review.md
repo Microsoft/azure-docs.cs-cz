@@ -1,6 +1,6 @@
 ---
-title: Vytvoření kontroly přístupu rolí Azure AD v PIM – Azure AD | Microsoft Docs
-description: Naučte se vytvářet kontrolu přístupu pro role Azure AD v Azure AD Privileged Identity Management (PIM).
+title: Vytvoření kontroly přístupu rolí Azure AD v PIM – Azure AD | Dokumenty společnosti Microsoft
+description: Zjistěte, jak vytvořit kontrolu přístupu rolí Azure AD v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,15 +15,15 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2f7e9ef503a9a3469ecbc835be8d9229fbd0167f
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73847108"
 ---
-# <a name="create-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Vytvoření kontroly přístupu rolí Azure AD v Privileged Identity Management
+# <a name="create-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Vytvoření kontroly přístupu rolí Azure AD ve správě privilegovaných identit
 
-Chcete-li snížit riziko související se zastaralými přiřazeními rolí, měli byste pravidelně kontrolovat přístup. K vytváření kontrol přístupu pro privilegované role Azure AD můžete použít Azure AD Privileged Identity Management (PIM). Můžete také nakonfigurovat opakované kontroly přístupu, ke kterým dochází automaticky.
+Chcete-li snížit riziko spojené se zastaralými přiřazeními rolí, měli byste pravidelně kontrolovat přístup. Pomocí azure ad privilegované správy identit (PIM) můžete vytvořit kontroly přístupu pro privilegované role Azure AD. Můžete také nakonfigurovat opakované kontroly přístupu, ke kterým dochází automaticky.
 
 Tento článek popisuje, jak vytvořit jednu nebo více kontrol přístupu pro privilegované role Azure AD.
 
@@ -31,42 +31,42 @@ Tento článek popisuje, jak vytvořit jednu nebo více kontrol přístupu pro p
 
 [Správce privilegovaných rolí](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
 
-## <a name="open-access-reviews"></a>Otevřít recenze přístupů
+## <a name="open-access-reviews"></a>Otevřené kontroly přístupu
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/) s uživatelem, který je členem role správce privilegovaných rolí.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/) s uživatelem, který je členem role správce privilegované role.
 
-1. Otevřete **Azure AD Privileged Identity Management**.
+1. Otevřete **správu privilegovaných identit Azure AD**.
 
-1. V nabídce vlevo vyberte **role Azure AD** a pak vyberte kontroly **přístupu**.
+1. V levé nabídce vyberte **role Azure AD** a pak vyberte **Access recenze**.
 
-1. V části Spravovat vyberte **recenze přístupů**.
+1. V části Správa vyberte **možnost Access reviews**.
 
-    ![Role Azure AD – seznam kontrol přístupu zobrazuje stav všech revizí](./media/pim-how-to-start-security-review/access-reviews.png)
+    ![Role Azure AD – seznam kontrol aplikace Access zobrazující stav všech recenzí](./media/pim-how-to-start-security-review/access-reviews.png)
 
 [!INCLUDE [Privileged Identity Management access reviews](../../../includes/active-directory-privileged-identity-management-access-reviews.md)]
 
-## <a name="start-the-access-review"></a>Spustit kontrolu přístupu
+## <a name="start-the-access-review"></a>Spuštění kontroly přístupu
 
-Po zadání nastavení pro kontrolu přístupu vyberte **Spustit**. Kontrola přístupu se zobrazí v seznamu s indikátorem jeho stavu.
+Po zadání nastavení kontroly přístupu vyberte **možnost Spustit**. Kontrola přístupu se zobrazí v seznamu s indikátorem jeho stavu.
 
-![Seznam kontrol přístupu zobrazuje stav spuštěných revizí](./media/pim-how-to-start-security-review/access-reviews-list.png)
+![Seznam recenzí aplikace Access zobrazující stav zahájených recenzí](./media/pim-how-to-start-security-review/access-reviews-list.png)
 
-Ve výchozím nastavení Azure AD pošle e-mail kontrolorům krátce po zahájení kontroly. Pokud se rozhodnete Neodesílat e-maily Azure AD, nezapomeňte informovat kontrolory, které čekají na dokončení kontroly přístupu. Můžete jim Ukázat pokyny, jak [zkontrolovat přístup k rolím Azure AD](pim-how-to-perform-security-review.md).
+Ve výchozím nastavení Azure AD odešle e-mail recenzentům krátce po spuštění kontroly. Pokud se rozhodnete, že nemáte Azure AD odeslat e-mail, nezapomeňte informovat recenzenty, že kontrola přístupu čeká na jejich dokončení. Můžete jim zobrazit pokyny, jak [zkontrolovat přístup k rolím Azure AD](pim-how-to-perform-security-review.md).
 
 ## <a name="manage-the-access-review"></a>Správa kontroly přístupu
 
-Průběh můžete sledovat, když kontroloři dokončí revize na stránce **Přehled** kontroly přístupu. V adresáři se nezměnila žádná přístupová práva, dokud se [Kontrola nedokončí](pim-how-to-complete-review.md).
+Průběh můžete sledovat, jak recenzenti dokončují své recenze, na stránce **Přehled** kontroly přístupu. Dokud nebude [kontrola dokončena,](pim-how-to-complete-review.md)nebudou v adresáři změněna žádná přístupová práva .
 
-![Stránka s přehledem kontroly přístupu, která zobrazuje podrobnosti o kontrole](./media/pim-how-to-start-security-review/access-review-overview.png)
+![Stránka přehledu recenzí aplikace Access zobrazující podrobnosti recenze](./media/pim-how-to-start-security-review/access-review-overview.png)
 
-Pokud se jedná o jednorázovou revizi, potom po uplynutí doby kontroly přístupu nebo když správce zastaví kontrolu přístupu, postupujte podle kroků v části [dokončení kontroly přístupu rolí Azure AD](pim-how-to-complete-review.md) , které vám umožní zobrazit a použít výsledky.  
+Pokud se jedná o jednorázovou kontrolu, pak po uplynutí období kontroly přístupu nebo správce zastaví kontrolu přístupu, postupujte podle kroků v [provedení kontroly přístupu rolí Azure AD,](pim-how-to-complete-review.md) abyste viděli a použili výsledky.  
 
-Pokud chcete spravovat řadu kontrol přístupu, přejděte na kontrolu přístupu a v části naplánované recenze Najděte nadcházející výskyty a upravte koncové datum nebo přidejte nebo odeberte kontrolory odpovídajícím způsobem.
+Chcete-li spravovat řadu kontrol přístupu, přejděte k recenzi přístupu a nadcházející výskyty najdete v naplánovaných recenzích a upravte koncové datum nebo odpovídajícím způsobem přidejte nebo odeberte recenzenty.
 
-Na základě vašich výběrů v **nastavení po dokončení**se spustí automatické použití po koncovém datu revize nebo při ručním zastavení kontroly. Stav kontroly se změní ze **dokončených** do mezistavů, jako je **použití** a nakonec na stav **použito**. Měli byste očekávat, že v několika minutách se v případě potřeby odeberou Zakázaní uživatelé z rolí.
+Na základě vašeho výběru v **nastavení Po dokončení**bude automatické použití provedeno po datu ukončení recenze nebo při ručním zastavení kontroly. Stav revize se změní z **Dokončeno** do zprostředkujících stavů, jako je **použití** a nakonec do stavu **Použité**. Měli byste očekávat, že odepření uživatelé, pokud existuje, jsou odebrány z rolí během několika minut.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Kontrola přístupu k rolím Azure AD](pim-how-to-perform-security-review.md)
-- [Dokončení kontroly přístupu pro role Azure AD](pim-how-to-complete-review.md)
-- [Vytvoření kontroly přístupu pro role prostředků Azure](pim-resource-roles-start-access-review.md)
+- [Dokončení kontroly přístupu rolí Azure AD](pim-how-to-complete-review.md)
+- [Vytvoření kontroly přístupu rolí prostředků Azure](pim-resource-roles-start-access-review.md)

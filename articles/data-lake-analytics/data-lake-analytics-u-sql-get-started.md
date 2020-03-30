@@ -1,6 +1,6 @@
 ---
 title: Začínáme s jazykem U-SQL v Azure Data Lake Analytics
-description: Seznamte se se základy jazyka U-SQL v Azure Data Lake Analytics. Napište svůj první dotaz pomocí proměnných pro další data ze souborů, transformujte sadu řádků a agregovaná data.
+description: Naučte se základy jazyka U-SQL v Azure Data Lake Analytics. Zapište první dotaz pomocí proměnných na další data ze souborů, transformujte sadu řádků a agregujte data.
 services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
@@ -10,28 +10,28 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/23/2017
 ms.openlocfilehash: 8130679dcc519cecd25abf43902c003ad8047df3
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71672824"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Začínáme s U-SQL v Azure Data Lake Analytics
-U-SQL je jazyk, který kombinuje deklarativní SQL s imperativním C# účelem, který umožňuje zpracovávat data v libovolném měřítku. Díky škálovatelné funkci distribuovaného dotazu U-SQL můžete efektivně analyzovat data napříč relačními úložišti, jako je Azure SQL Database. Pomocí jazyka U-SQL můžete zpracovávat nestrukturovaná data, a to použitím schématu při čtení a vkládání vlastní logiky a UDF. U-SQL navíc nabízí rozšiřitelnost, která vám poskytne přesnější kontrolu nad tím, jak se dá provádět ve velkém měřítku. 
+U-SQL je jazyk, který kombinuje deklarativní SQL s imperativní C# a umožňuje zpracování dat v libovolném měřítku. Prostřednictvím škálovatelné možnosti distribuovaných dotazů u-SQL můžete efektivně analyzovat data napříč relačními obchody, jako je Azure SQL Database. S U-SQL můžete zpracovat nestrukturovaná data použitím schématu při čtení a vkládání vlastní logiky a UDFs. Navíc U-SQL obsahuje rozšiřitelnost, která poskytuje jemně odstupňovanou kontrolu nad tím, jak provést ve velkém měřítku. 
 
-## <a name="learning-resources"></a>Studijní materiály
+## <a name="learning-resources"></a>Výukové materiály
 
-* [Kurz u-SQL](https://aka.ms/usqltutorial) poskytuje podrobný návod pro většinu jazyka u-SQL. Tento dokument se doporučuje přečíst u všech vývojářů, kteří se chtějí dozvědět U-SQL.
-* Podrobné informace o **syntaxi jazyka u-SQL**najdete v tématu Referenční dokumentace [jazyka u-SQL](https://docs.microsoft.com/u-sql/).
-* Informace o **filozofie návrhu u-SQL**najdete v příspěvku na blogu sady Visual Studio [Představujeme u-SQL – jazyk, který usnadňuje zpracování velkých](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)objemů dat.
+* [Kurz U-SQL](https://aka.ms/usqltutorial) poskytuje návod s průvodcem většiny jazyka U-SQL. Tento dokument je doporučeno čtení pro všechny vývojáře, kteří se chtějí naučit U-SQL.
+* Podrobné informace o **syntaxi jazyka U-SQL**naleznete v [referenční příručce jazyka U-SQL](https://docs.microsoft.com/u-sql/).
+* Informace o **filozofii návrhu U-SQL**najdete v příspěvku blogu Visual Studio [Introducing U-SQL – jazyk, který usnadňuje zpracování velkých objemů dat](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než projdete ukázky U-SQL v tomto dokumentu, přečtěte si a dokončete [kurz: Vývoj skriptů U-SQL pomocí Data Lakech nástrojů pro Visual](data-lake-analytics-data-lake-tools-get-started.md)Studio. Tento kurz vysvětluje mechanismy použití U-SQL s Nástroje Azure Data Lake pro Visual Studio.
+Než si projdete ukázky U-SQL v tomto dokumentu, přečtěte si a [dokončete kurz: Vývoj skriptů U-SQL pomocí nástrojů Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-get-started.md). Tento kurz vysvětluje mechaniku používání U-SQL s Nástroji Azure Data Lake Tools pro Visual Studio.
 
 ## <a name="your-first-u-sql-script"></a>Váš první skript U-SQL
 
-Následující skript U-SQL je jednoduchý a umožňuje nám prozkoumat mnoho aspektů jazyka U-SQL.
+Následující U-SQL skript je jednoduchý a umožňuje nám prozkoumat mnoho aspektů u-SQL jazyka.
 
 ```
 @searchlog =
@@ -50,30 +50,30 @@ OUTPUT @searchlog
     USING Outputters.Csv();
 ```
 
-Tento skript nemá žádné kroky transformace. Načte ze zdrojového souboru s názvem `SearchLog.tsv`, schematizes ho a zapíše sadu řádků zpátky do souboru s názvem SearchLog-First-u-SQL. csv.
+Tento skript nemá žádné kroky transformace. Čte ze zdrojového `SearchLog.tsv`souboru s názvem , schematizes to, a zapíše sadu řádků zpět do souboru s názvem SearchLog-first-u-sql.csv.
 
-Všimněte si otazníku vedle datového typu v `Duration` poli. To znamená, že `Duration` pole může mít hodnotu null.
+Všimněte si otazníku vedle `Duration` datového typu v poli. To znamená, `Duration` že pole může být null.
 
 ### <a name="key-concepts"></a>Klíčové koncepty
-* **Proměnné sady řádků**: Každý výraz dotazu, který vytváří sadu řádků, lze přiřadit proměnné. U-SQL následuje vzor pojmenování proměnných T-SQL`@searchlog`(například) ve skriptu.
-* Klíčové slovo **Extract** čte data ze souboru a definuje schéma při čtení. `Extractors.Tsv`je vestavěný extraktor U-SQL pro soubory s hodnotami oddělenými tabulátorem. Můžete vyvíjet vlastní extraktory.
-* **Výstup** zapisuje data ze sady řádků do souboru. `Outputters.Csv()`je vestavěný výstup U-SQL, který umožňuje vytvořit soubor s hodnotami oddělenými čárkami. Můžete vyvíjet vlastní výstupy.
+* **Proměnné sady řádků**: Každý výraz dotazu, který vytváří sadu řádků, lze přiřadit proměnné. U-SQL následuje t-SQL proměnné pojmenování vzor (`@searchlog`, například) ve skriptu.
+* Klíčové slovo **EXTRACT** čte data ze souboru a definuje schéma při čtení. `Extractors.Tsv`je vestavěný extraktor U-SQL pro soubory s oddělenou tabulátorem. Můžete vyvinout vlastní extraktory.
+* **Výstup** zapisuje data ze sady řádků do souboru. `Outputters.Csv()`je vestavěný výstup U-SQL k vytvoření souboru s hodnotou oddělené čárkami. Můžete vyvíjet vlastní outputters.
 
 ### <a name="file-paths"></a>Cesty k souborům
 
-Příkazy EXTRACT a OUTPUT používají cesty k souborům. Cesty k souborům můžou být absolutní nebo relativní:
+Příkazy EXTRACT a OUTPUT používají cesty k souborům. Cesty k souborům mohou být absolutní nebo relativní:
 
-Následující absolutní cesta k souboru odkazuje na soubor v Data Lake Store s názvem `mystore`:
+Tato absolutní cesta k souboru odkazuje na soubor `mystore`v úložišti Data Lake S názvem :
 
     adl://mystore.azuredatalakestore.net/Samples/Data/SearchLog.tsv
 
-Následující cesta k `"/"`souboru začíná na. Odkazuje na soubor ve výchozím účtu Data Lake Store:
+Tato následující cesta `"/"`k souboru začíná písmenem . Odkazuje na soubor ve výchozím účtu Data Lake Store:
 
     /output/SearchLog-first-u-sql.csv
 
 ## <a name="use-scalar-variables"></a>Použití skalárních proměnných
 
-Pomocí skalárních proměnných také můžete usnadnit údržbu skriptu. Předchozí skript U-SQL může být také zapsán jako:
+Můžete také použít skalární proměnné, abyste usnadnili údržbu skriptu. Předchozí U-SQL skript lze také zapsat jako:
 
     DECLARE @in  string = "/Samples/Data/SearchLog.tsv";
     DECLARE @out string = "/output/SearchLog-scalar-variables.csv";
@@ -93,9 +93,9 @@ Pomocí skalárních proměnných také můžete usnadnit údržbu skriptu. Pře
         TO @out
         USING Outputters.Csv();
 
-## <a name="transform-rowsets"></a>Transformovat sady řádků
+## <a name="transform-rowsets"></a>Transformace sad řádků
 
-Použijte **možnost vybrat** k transformaci sad řádků:
+Pomocí **funkce SELECT** můžete transformovat sady řádků:
 
     @searchlog =
         EXTRACT UserId          int,
@@ -117,9 +117,9 @@ Použijte **možnost vybrat** k transformaci sad řádků:
         TO "/output/SearchLog-transform-rowsets.csv"
         USING Outputters.Csv();
 
-Klauzule WHERE používá [ C# logický výraz](/dotnet/csharp/language-reference/operators/index). Jazyk C# výrazů můžete použít k vlastním výrazům a funkcím. Složitější filtrování můžete dokonce spojit s logickými spoji (and) a disjunkci (ORs).
+Klauzule WHERE používá [logický výraz Jazyka C#](/dotnet/csharp/language-reference/operators/index). Výraz jazyka C# můžete použít k provádění vlastních výrazů a funkcí. Můžete dokonce provádět složitější filtrování jejich kombinací s logickými spojkami (AND) a disjunkcemi (ORs).
 
-Následující skript používá metodu DateTime. Parse () a kombinaci.
+Následující skript používá Metodu DateTime.Parse() a spojku.
 
     @searchlog =
         EXTRACT UserId          int,
@@ -147,14 +147,14 @@ Následující skript používá metodu DateTime. Parse () a kombinaci.
         USING Outputters.Csv();
 
  >[!NOTE]
- >Druhý dotaz pracuje na výsledku první sady řádků, která vytvoří složený ze dvou filtrů. Můžete také znovu použít název proměnné a názvy mají rozsah lexikální.
+ >Druhý dotaz pracuje na výsledku první sady řádků, která vytvoří složený ze dvou filtrů. Můžete také znovu použít název proměnné a názvy jsou vymezeny lexikálně.
 
-## <a name="aggregate-rowsets"></a>Agregovat sady řádků
-U-SQL získáte známé pořadí podle, seskupení a agregace.
+## <a name="aggregate-rowsets"></a>Agregované sady řádků
+U-SQL vám dává známé ORDER BY, GROUP BY a agregace.
 
-Následující dotaz najde celkovou dobu trvání na oblast a pak zobrazí pět hlavních dob trvání v daném pořadí.
+Následující dotaz vyhledá celkovou dobu trvání na oblast a zobrazí prvních pět dob trvání v pořadí.
 
-Sady řádků U-SQL neuchovávají pořadí pro další dotaz. Proto je nutné do příkazu OUTPUT Přidat ORDER by, aby bylo možné seřadit výstup:
+Sady řádků U-SQL nezachovávají své pořadí pro další dotaz. Chcete-li tedy objednat výstup, musíte do příkazu VÝSTUP přidat PŘÍKAZ:
 
     DECLARE @outpref string = "/output/Searchlog-aggregation";
     DECLARE @out1    string = @outpref+"_agg.csv";
@@ -194,9 +194,9 @@ Sady řádků U-SQL neuchovávají pořadí pro další dotaz. Proto je nutné d
         ORDER BY TotalDuration DESC
         USING Outputters.Csv();
 
-Klauzule ORDER BY v jazyce U-SQL vyžaduje použití klauzule FETCH ve výrazu SELECT.
+U-SQL ORDER BY klauzule vyžaduje použití FETCH klauzule ve výrazu SELECT.
 
-Pomocí klauzule U-SQL je možné omezit výstup do skupin, které odpovídají podmínkám splnění:
+U-SQL having klauzule lze omezit výstup na skupiny, které splňují podmínky HAVING:
 
     @searchlog =
         EXTRACT UserId          int,
@@ -222,8 +222,8 @@ Pomocí klauzule U-SQL je možné omezit výstup do skupin, které odpovídají 
         ORDER BY TotalDuration DESC
         USING Outputters.Csv();
 
-V případě pokročilých agregačních scénářů si přečtěte referenční dokumentaci U-SQL pro [agregační, analytické a referenční funkce](/u-sql/built-in-functions) .
+Pokročilé scénáře agregace naleznete v referenční dokumentaci U-SQL pro [agregační, analytické a referenční funkce](/u-sql/built-in-functions)
 
 ## <a name="next-steps"></a>Další kroky
 * [Přehled služby Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
-* [Vývoj skriptů U-SQL pomocí Nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
+* [Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)

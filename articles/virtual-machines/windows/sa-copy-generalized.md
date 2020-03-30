@@ -1,6 +1,6 @@
 ---
-title: Vytvoření nespravované image zobecněného virtuálního počítače v Azure
-description: Vytvořte unmanged image zobecněného virtuálního počítače s Windows, který se použije k vytvoření několika kopií virtuálního počítače v Azure.
+title: Vytvoření nespravované image generalizovaného virtuálního počítače v Azure
+description: Vytvořte nemanged image generalizovaného virtuálního počítače s Windows použít k vytvoření více kopií virtuálního počítače v Azure.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -16,44 +16,44 @@ ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.openlocfilehash: f25968fb74f0f10b1d498866c036dd04d4d5d134
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74073383"
 ---
-# <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Vytvoření image nespravovaného virtuálního počítače z virtuálního počítače Azure
+# <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Jak vytvořit nespravovanou image virtuálního počítače z virtuálního počítače Azure
 
-Tento článek se zabývá používáním účtů úložiště. Doporučujeme místo účtu úložiště používat spravované disky a spravované image. Další informace najdete v tématu [zachycení spravované image zobecněného virtuálního počítače v Azure](capture-image-resource.md).
+Tento článek popisuje použití účtů úložiště. Doporučujeme používat spravované disky a spravované bitové kopie místo účtu úložiště. Další informace najdete [v tématu Zachycení spravované bitové kopie generalizovaného virtuálního počítače v Azure](capture-image-resource.md).
 
-V tomto článku se dozvíte, jak pomocí Azure PowerShell vytvořit image zobecněného virtuálního počítače Azure pomocí účtu úložiště. Bitovou kopii pak můžete použít k vytvoření dalšího virtuálního počítače. Image obsahuje disk s operačním systémem a datové disky, které jsou připojené k virtuálnímu počítači. Obrázek neobsahuje prostředky virtuální sítě, takže při vytváření nového virtuálního počítače je potřeba tyto prostředky nastavit. 
+Tento článek ukazuje, jak pomocí Azure PowerShellu vytvořit image generalizovaného virtuálního počítače Azure pomocí účtu úložiště. Potom můžete použít image k vytvoření jiného virtuálního uživatele. Bitová kopie obsahuje disk operačního systému a datové disky, které jsou připojeny k virtuálnímu počítači. Image neobsahuje prostředky virtuální sítě, takže je potřeba nastavit tyto prostředky při vytváření nového virtuálního počítače. 
 
  
 
-## <a name="generalize-the-vm"></a>Generalizace virtuálního počítače 
-V této části se dozvíte, jak zobecnit virtuální počítač s Windows pro použití jako image. Generalizace virtuálního počítače odebere všechny informace o osobním účtu mimo jiné a připraví počítač, který se má použít jako image. Další informace o nástroji Sysprep najdete v článku věnovaném [úvodu do použití nástroje Sysprep](https://technet.microsoft.com/library/bb457073.aspx).
+## <a name="generalize-the-vm"></a>Zobecnění virtuálního virtuálního montovana 
+V této části se zobrazí, jak zobecnit virtuální počítač se systémem Windows pro použití jako bitová kopie. Generalizace virtuálního počítače odstraní mimo jiné všechny informace o vašem osobním účtu a připraví zařízení, které se má použít jako obrázek. Další informace o nástroji Sysprep najdete v článku věnovaném [úvodu do použití nástroje Sysprep](https://technet.microsoft.com/library/bb457073.aspx).
 
-Ujistěte se, že nástroj Sysprep podporuje role serveru spuštěné v počítači. Další informace najdete v tématu [Podpora nástroje Sysprep pro role serveru](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles) .
+Ujistěte se, že role serveru spuštěné v počítači jsou podporovány programem Sysprep. Další informace naleznete v [tématu Podpora sysprep pro role serveru](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
 > [!IMPORTANT]
-> Pokud virtuální pevný disk nahráváte poprvé do Azure, ujistěte se, že jste před spuštěním nástroje Sysprep [připravili virtuální počítač](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) . 
+> Pokud nahráváte virtuální pevný disk do Azure poprvé, ujistěte se, že jste před spuštěním spřípravku Sysprep [připravili virtuální počítač.](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 
 > 
 > 
 
-Virtuální počítač se systémem Linux můžete také zobecnit pomocí `sudo waagent -deprovision+user` a potom pomocí prostředí PowerShell zachytit virtuální počítač. Informace o použití rozhraní příkazového řádku k zachycení virtuálního počítače najdete v tématu [postup generalizace a zachycení virtuálního počítače se systémem Linux pomocí rozhraní příkazového řádku Azure CLI](../linux/capture-image.md).
+Můžete také zobecnit virtuální `sudo waagent -deprovision+user` počítač s Linuxem pomocí a pak použít PowerShell k zachycení virtuálního počítače. Informace o použití příkazového příkazového příkazu k zachycení virtuálního počítače najdete v [tématu Jak zobecnit a zachytit virtuální počítač Linux pomocí azure CLI](../linux/capture-image.md).
 
 
 1. Přihlaste se k virtuálnímu počítači s Windows.
-2. Otevřete okno příkazového řádku jako správce. Změňte adresář na **%WINDIR%\system32\sysprep**a potom spusťte `sysprep.exe`.
+2. Otevřete okno příkazového řádku jako správce. Změňte adresář na **%windir%\system32\sysprep** `sysprep.exe`a spusťte program .
 3. V dialogovém okně **Nástroj pro přípravu systému** vyberte **Zobrazit prostředí prvního spuštění počítače** a ujistěte se, že je zaškrtnuté políčko **Generalizovat**.
-4. V **Možnosti vypnutí**vyberte **vypnout**.
+4. V **části Možnosti vypnutí**vyberte příkaz **Vypnout**.
 5. Klikněte na tlačítko **OK**.
    
-    ![Spustit nástroj Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
+    ![Spuštění sysprepu](./media/upload-generalized-managed/sysprepgeneral.png)
 6. Po dokončení nástroj Sysprep vypne virtuální počítač. 
 
 > [!IMPORTANT]
-> Nerestartujte virtuální počítač, dokud nedokončíte odeslání virtuálního pevného disku do Azure nebo vytvoření image z virtuálního počítače. Pokud se virtuální počítač náhodně restartuje, spusťte Sysprep a znovu ho generalizujte.
+> Nerestartujte virtuální počítač, dokud neskončíte s nahráváním virtuálního pevného disku do Azure nebo vytvořením image z virtuálního počítače. Pokud virtuální ho neúmyslně restartuje, spusťte sysprep generalizovat znovu.
 > 
 > 
 
@@ -64,8 +64,8 @@ Virtuální počítač se systémem Linux můžete také zobecnit pomocí `sudo 
     Connect-AzAccount
     ```
    
-    Otevře se automaticky otevírané okno, ve kterém můžete zadat svoje přihlašovací údaje k účtu Azure.
-2. Získejte ID předplatných pro vaše dostupná předplatná.
+    Otevře se vyskakovací okno, kde můžete zadat přihlašovací údaje k účtu Azure.
+2. Získejte ID předplatného pro vaše dostupná předplatná.
    
     ```powershell
     Get-AzSubscription
@@ -76,25 +76,25 @@ Virtuální počítač se systémem Linux můžete také zobecnit pomocí `sudo 
     Select-AzSubscription -SubscriptionId "<subscriptionID>"
     ```
 
-## <a name="deallocate-the-vm-and-set-the-state-to-generalized"></a>Zrušení přidělení virtuálního počítače a nastavení stavu na generalizované
+## <a name="deallocate-the-vm-and-set-the-state-to-generalized"></a>Navrátit virtuální ho svícen a nastavit stav na generalizované
 
 > [!IMPORTANT] 
-> Až bude klíč označený jako zobecněný, nejde ho z virtuálního počítače přidat, upravit ani odebrat. Pokud chcete přidat značku k virtuálnímu počítači, nezapomeňte značky přidat předtím, než je označíte jako zobecněné.
+> Značky z virtuálního aplikace nelze přidávat, upravovat ani odebírat, jakmile je označen jako zobecněný. Pokud chcete přidat značku do virtuálního virtuálního mě, nezapomeňte je přidat, než je označíte jako zobecněné.
 > 
 
-1. Zrušení přidělení prostředků virtuálního počítače
+1. Navrátit prostředky virtuálního soudu.
    
     ```powershell
     Stop-AzVM -ResourceGroupName <resourceGroup> -Name <vmName>
     ```
    
-    *Stav* virtuálního počítače ve Azure Portal se změní ze **Zastaveno** na **Zastaveno (přidělení zrušeno)** .
-2. Nastavte stav virtuálního počítače na **zobecněno**. 
+    *Stav* virtuálního počítače na portálu Azure se změní z **Zastaveno** **zastaveno (nabyté navrácené).**
+2. Nastavte stav virtuálního počítače na **Generalized**. 
    
     ```powershell
     Set-AzVm -ResourceGroupName <resourceGroup> -Name <vmName> -Generalized
     ```
-3. Ověřte stav virtuálního počítače. Oddíl **OSState/generalize** pro virtuální počítač by měl mít zobecněnou **DisplayStatus** sadu **virtuálních počítačů**.  
+3. Zkontrolujte stav virtuálního virtuálního soudu. **Část OSState/generalizovaná** pro virtuální ho svícen by měla mít **displaystatus** nastavený na **zobecněný virtuální hod**.  
    
     ```powershell
     $vm = Get-AzVM -ResourceGroupName <resourceGroup> -Name <vmName> -Status
@@ -103,7 +103,7 @@ Virtuální počítač se systémem Linux můžete také zobecnit pomocí `sudo 
 
 ## <a name="create-the-image"></a>Vytvoření image
 
-Pomocí tohoto příkazu vytvořte image nespravovaného virtuálního počítače v cílovém kontejneru úložiště. Obrázek se vytvoří ve stejném účtu úložiště jako původní virtuální počítač. Parametr `-Path` uloží kopii šablony JSON pro zdrojový virtuální počítač do místního počítače. Parametr `-DestinationContainerName` je název kontejneru, do kterého chcete ukládat obrázky. Pokud kontejner neexistuje, vytvoří se za vás.
+Pomocí tohoto příkazu vytvořte nespravovanou bitovou kopii virtuálního počítače v cílovém kontejneru úložiště. Bitová kopie se vytvoří ve stejném účtu úložiště jako původní virtuální počítač. Parametr `-Path` uloží kopii šablony JSON pro zdrojový virtuální počítač do místního počítače. Parametr `-DestinationContainerName` je název kontejneru, který chcete držet obrázky. Pokud kontejner neexistuje, je vytvořen pro vás.
    
 ```powershell
 Save-AzVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
@@ -111,17 +111,17 @@ Save-AzVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
     -Path <C:\local\Filepath\Filename.json>
 ```
    
-Adresu URL obrázku můžete získat ze šablony souboru JSON. Pro úplnou cestu k imagi vyhledejte v části **resources** > **storageProfile** > **osDisk** > **Image** > **URI** . Adresa URL obrázku vypadá takto: `https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`.
+Adresu URL obrázku můžete získat ze šablony souboru JSON. Přejděte do úložiště > **prostředkůProfil** > **osDisk** > **obraz** > **uri** části pro úplnou cestu k obrázku. **resources** Adresa URL obrázku vypadá `https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`takto: .
    
-Identifikátor URI můžete také ověřit na portálu. Obrázek se zkopíruje do kontejneru s názvem **System** v účtu úložiště. 
+Můžete také ověřit identifikátor URI na portálu. Bitová kopie se zkopíruje do kontejneru s názvem **systému** ve vašem účtu úložiště. 
 
 ## <a name="create-a-vm-from-the-image"></a>Vytvořte z této image virtuální počítač.
 
-Nyní můžete vytvořit jeden nebo více virtuálních počítačů z nespravované image.
+Teď můžete vytvořit jeden nebo více virtuálních virtuálních hrach z nespravované image.
 
-### <a name="set-the-uri-of-the-vhd"></a>Nastavte identifikátor URI virtuálního pevného disku.
+### <a name="set-the-uri-of-the-vhd"></a>Nastavení identifikátoru URI virtuálního pevného disku
 
-Identifikátor URI pro virtuální pevný disk, který se má použít, je ve formátu: https://**mystorageaccount**. blob.core.windows.net/**myContainer**/**MyVhdName**. VHD. V tomto příkladu je virtuální pevný disk s názvem **myVHD** v účtu úložiště **mystorageaccount** v kontejneru **myContainer**.
+Identifikátor URI pro virtuální pevný disk je ve formátu: https://**mystorageaccount**.blob.core.windows.net/**mycontainer**/**MyVhdName**.vhd. V tomto příkladu je virtuální pevný disk s názvem **myVHD** v účtu úložiště **mystorageaccount** v kontejneru **mycontainer**.
 
 ```powershell
 $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vhd"
@@ -131,14 +131,14 @@ $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vh
 ### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 Vytvořte virtuální síť a podsíť [virtuální sítě](../../virtual-network/virtual-networks-overview.md).
 
-1. Vytvořte podsíť. Následující příklad vytvoří podsíť s názvem **mySubnet** ve skupině prostředků **myResourceGroup** s předponou adresy **10.0.0.0/24**.  
+1. Vytvořte podsíť. Následující ukázka vytvoří podsíť s názvem **mySubnet** ve skupině prostředků **myResourceGroup** s předponou adresy **10.0.0.0/24**.  
    
     ```powershell
     $rgName = "myResourceGroup"
     $subnetName = "mySubnet"
     $singleSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
     ```
-2. Vytvořte virtuální síť. Následující ukázka vytvoří virtuální síť s názvem **myVnet** v umístění **západní USA** s předponou adresy **10.0.0.0/16**.  
+2. Vytvořte virtuální síť. Následující ukázka vytvoří virtuální síť s názvem **myVnet** v umístění **v USA v USA v USA** s předponou adresy **10.0.0.0/16**.  
    
     ```powershell
     $location = "West US"
@@ -157,7 +157,7 @@ Pokud chcete povolit komunikaci s virtuálním počítačem ve virtuální síti
     $pip = New-AzPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
         -AllocationMethod Dynamic
     ```       
-2. Vytvořte síťovou kartu. Tento příklad vytvoří síťovou kartu s názvem **myNic**. 
+2. Vytvořte nic. Tento příklad vytvoří nic s názvem **myNic**. 
    
     ```powershell
     $nicName = "myNic"
@@ -166,9 +166,9 @@ Pokud chcete povolit komunikaci s virtuálním počítačem ve virtuální síti
     ```
 
 ### <a name="create-the-network-security-group-and-an-rdp-rule"></a>Vytvoření skupiny zabezpečení sítě a pravidla protokolu RDP
-Abyste se mohli přihlásit ke svému VIRTUÁLNÍmu počítači pomocí protokolu RDP, musíte mít bezpečnostní pravidlo, které umožňuje přístup protokolu RDP na portu 3389. 
+Chcete-li mít možnost přihlásit se k virtuálnímu počítači pomocí protokolu RDP, musíte mít pravidlo zabezpečení, které umožňuje přístup k protokolu RDP na portu 3389. 
 
-Tento příklad vytvoří NSG s názvem **myNsg** , který obsahuje pravidlo s názvem **myRdpRule** , které umožňuje provoz protokolu RDP přes port 3389. Další informace o skupin zabezpečení sítě najdete v tématu [otevření portů k virtuálnímu počítači v Azure pomocí PowerShellu](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Tento příklad vytvoří skupinu nsg s názvem **myNsg,** která obsahuje pravidlo s názvem **myRdpRule,** které umožňuje přenos RDP přes port 3389. Další informace o sítích zabezpečení zabezpečení zabezpečení najdete [v tématu otevírání portů k virtuálnímu počítači v Azure pomocí PowerShellu](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ```powershell
 $nsgName = "myNsg"
@@ -191,7 +191,7 @@ $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 ```
 
 ### <a name="create-the-vm"></a>Vytvořte virtuální počítač.
-Následující prostředí PowerShell dokončí konfigurace virtuálních počítačů a jako zdroj nové instalace používá nespravovanou bitovou kopii.
+Následující prostředí PowerShell dokončí konfigurace virtuálního počítače a použije nespravovanou bitovou kopii jako zdroj pro novou instalaci.
 
 </br>
 
@@ -248,8 +248,8 @@ Následující prostředí PowerShell dokončí konfigurace virtuálních počí
     New-AzVM -ResourceGroupName $rgName -Location $location -VM $vm
 ```
 
-### <a name="verify-that-the-vm-was-created"></a>Ověřte, že byl virtuální počítač vytvořen.
-Po dokončení by se měl nově vytvořený virtuální počítač zobrazit v [Azure Portal](https://portal.azure.com) v části **Procházet** > **virtuální počítače**nebo pomocí následujících příkazů PowerShellu:
+### <a name="verify-that-the-vm-was-created"></a>Ověření, že byl virtuální virtuální hotel vytvořen
+Po dokončení byste měli vidět nově vytvořený virtuální počítač na [webu Azure portal](https://portal.azure.com) v části **Procházet** > **virtuální počítače**nebo pomocí následujících příkazů Prostředí PowerShell:
 
 ```powershell
     $vmList = Get-AzVM -ResourceGroupName $rgName
@@ -257,6 +257,6 @@ Po dokončení by se měl nově vytvořený virtuální počítač zobrazit v [A
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Pokud chcete spravovat nový virtuální počítač pomocí Azure PowerShell, přečtěte si téma [Správa virtuálních počítačů pomocí Azure Resource Manager a PowerShellu](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Pokud chcete spravovat nový virtuální počítač pomocí Azure PowerShellu, [přečtěte si, že najdete v tématu Správa virtuálních počítačů pomocí Azure Resource Manageru a PowerShellu](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 

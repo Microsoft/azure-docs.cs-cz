@@ -9,21 +9,21 @@ ms.date: 10/07/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 02ced43f8c3fc7c83359b78362e8ad0feeab3070
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72168370"
 ---
 >[!NOTE]
->Při práci s výchozími zásadami může Azure během nastavení tunelu IPsec fungovat jako iniciátor i respondér. Azure není podporován pouze jako respondér.
+>Při práci s výchozí zásady, Azure můžete fungovat jako iniciátor a respondér během nastavení tunelového propojení IPsec. Neexistuje žádná podpora pro Azure jako pouze respondér.
 >
 
-### <a name="initiator"></a>Iniciátor
+### <a name="initiator"></a>Initiator
 
-V následujících oddílech jsou uvedeny podporované kombinace zásad, pokud je Azure iniciátorem pro tunel.
+V následujících částech jsou uvedeny podporované kombinace zásad, když je Azure iniciátorem tunelového propojení.
 
-**Fáze-1**
+**Fáze 1**
 
 * AES_256, SHA1, DH_GROUP_2
 * AES_256, SHA_256, DH_GROUP_2
@@ -37,11 +37,11 @@ V následujících oddílech jsou uvedeny podporované kombinace zásad, pokud j
 * AES_256, SHA_256, PFS_NONE
 * AES_128, SHA_1, PFS_NONE
 
-### <a name="responder"></a>Protějšk
+### <a name="responder"></a>Respondéru
 
-V následujících částech jsou uvedeny podporované kombinace zásad, pokud je Azure respondér pro tunelové propojení.
+V následujících částech jsou uvedeny podporované kombinace zásad, když Azure odpovídá pro tunelové propojení.
 
-**Fáze-1**
+**Fáze 1**
 
 * AES_256, SHA1, DH_GROUP_2
 * AES_256, SHA_256, DH_GROUP_2

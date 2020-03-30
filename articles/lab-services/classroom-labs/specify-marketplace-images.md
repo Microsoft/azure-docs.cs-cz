@@ -1,6 +1,6 @@
 ---
-title: Určení imagí Marketplace pro testovací prostředí v Azure Lab Services
-description: V tomto článku se dozvíte, jak zadat image na webu Marketplace, které může aplikace Lab Creator použít k vytvoření cvičení v účtu testovacího prostředí v Azure Lab Services.
+title: Určení image marketplace pro testovací prostředí ve službě Azure Lab Services
+description: Tento článek ukazuje, jak určit image Marketplace, které může tvůrce testovacího prostředí použít k vytvoření testovacích prostředí v testovacím účtu ve službě Azure Lab Services.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 02/14/2020
 ms.author: spelluru
 ms.openlocfilehash: ad56041f853d030e3a286610fe4872bffecaee12
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77444664"
 ---
-# <a name="specify-marketplace-images-available-to-lab-creators"></a>Určení imagí Marketplace dostupných pro tvůrci testovacího prostředí
+# <a name="specify-marketplace-images-available-to-lab-creators"></a>Určení bitových kopií Marketplace dostupných tvůrcům testovacího prostředí
 Jako vlastník účtu testovacího prostředí můžete určit image z Marketplace, které můžou autoři testovacích prostředí použít k vytváření testovacích prostředí v tomto účtu testovacího prostředí. 
 
-## <a name="select-images-available-for-labs"></a>Výběr imagí dostupných pro laboratoře
-V nabídce vlevo vyberte **Marketplace images** (Image z Marketplace). Ve výchozím nastavení se zobrazí úplný seznam imagí (povolených i zakázaných). Pomocí možnosti **Enabled only**/**Disabled only** (Jenom povolené / Jenom zakázané) v rozevíracím seznamu v horní části můžete seznam filtrovat, aby se v něm zobrazovaly jen povolené/zakázané image. 
+## <a name="select-images-available-for-labs"></a>Výběr obrázků dostupných pro laboratoře
+V nabídce vlevo vyberte **Marketplace images** (Image z Marketplace). Ve výchozím nastavení se zobrazí úplný seznam imagí (povolených i zakázaných). Seznam můžete filtrovat tak, aby zobcoviděl pouze povolené/zakázané obrázky, a to tak, že v hlavním seznamu vyberete možnost **Pouze povoleno**/**zakázáno.** 
     
 ![Stránka imagí v Marketplace](../media/tutorial-setup-lab-account/marketplace-images-page.png)
 
@@ -34,27 +34,27 @@ V tomto seznamu se zobrazí pouze image z Marketplace, které splňují následu
 - Ke zřízení virtuálních počítačů používají Azure Resource Manager.
 - Nevyžadují zakoupení dalšího licenčního plánu.
 
-## <a name="disable-images-for-a-lab"></a>Zakázání imagí pro testovací prostředí 
-Pokud chcete pro testovací prostředí zakázat jednu Image, vyberte **... (tři tečky)** v posledním sloupci a vyberte možnost **Zakázat obrázek**. 
+## <a name="disable-images-for-a-lab"></a>Zakázání bitových kopií pro testovací prostředí 
+Chcete-li zakázat jeden obrázek pro testovací prostředí, vyberte **... (tři tečky)** v posledním sloupci a vyberte **Zakázat obraz**. 
 
 ![Zakázání jedné image](../media/tutorial-setup-lab-account/disable-one-image.png) 
 
-Případně můžete zaškrtnout políčko před názvem obrázku a vybrat možnost **zakázat vybrané obrázky** na panelu nástrojů. 
+Případně zaškrtnete políčko před názvem obrázku a na panelu nástrojů vyberete **Zakázat vybrané obrazy.** 
 
-Chcete-li zakázat více imagí současně, zaškrtněte políčka před názvy obrázků a vyberte možnost **zakázat vybrané obrázky** na panelu nástrojů. 
+Chcete-li zakázat více obrazů najednou, zaškrtněte políčka před názvy obrázků a na panelu nástrojů vyberte **Zakázat vybrané obrazy.** 
 
 ![Zakázání několika imagí](../media/tutorial-setup-lab-account/disable-multiple-images.png) 
 
 
-## <a name="enable-images-for-a-lab"></a>Povolení imagí pro testovací prostředí
-Chcete-li povolit zakázanou bitovou kopii, vyberte **... (tři tečky)** v posledním sloupci a vyberte **Povolit obrázek**. Případně můžete zaškrtnout políčko před názvem obrázku a vybrat možnost **Povolit vybrané obrázky** na panelu nástrojů. 
+## <a name="enable-images-for-a-lab"></a>Povolení obrázků pro testovací prostředí
+Chcete-li povolit zakázaný obrázek, vyberte **... (tři tečky)** v posledním sloupci a vyberte **Povolit obraz**. Případně zaškrtnete políčko před názvem obrázku a na panelu nástrojů **vyberete Povolit vybrané obrazy.** 
 
-Chcete-li zakázat více imagí současně, zaškrtněte políčka před názvy obrázků a vyberte možnost **Povolit vybrané obrázky** na panelu nástrojů. 
+Chcete-li zakázat více obrazů najednou, zaškrtněte políčka před názvy obrázků a na panelu nástrojů vyberte **Povolit vybrané obrazy.** 
 
 ## <a name="next-steps"></a>Další kroky
 Viz následující články:
 
-- [Jako vlastník testovacího prostředí vytvářet a spravovat cvičení](how-to-manage-classroom-labs.md)
-- [Jako vlastník testovacího prostředí, nastavení a publikování šablon](how-to-create-manage-template.md)
+- [Jako vlastník testovacího prostředí vytvářejte a spravujte testovací prostředí](how-to-manage-classroom-labs.md)
+- [Jako vlastník testovacího prostředí nastavte a publikujte šablony](how-to-create-manage-template.md)
 - [Jako vlastník testovacího prostředí konfigurace a řízení využití testovacího prostředí](how-to-configure-student-usage.md)
-- [Jako uživatel testovacího prostředí, Access učeben Labs](how-to-use-classroom-lab.md)
+- [Jako uživatel laboratoře, přístup k učebně labs](how-to-use-classroom-lab.md)

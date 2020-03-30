@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: 1e25656b58fe675cfbe87fef75af4fcb174b7f55
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77589737"
 ---
-Použijte výstupní vazbu Event Hubs k zápisu událostí do datového proudu událostí. K zápisu událostí do centra událostí musíte mít oprávnění Odeslat.
+Pomocí výstupní vazby centra událostí zapisujte události do datového proudu událostí. Musíte mít oprávnění k odesílání do centra událostí, abyste do něj události mohli zapisovat.
 
-Před pokusem o implementaci výstupní vazby se ujistěte, že jsou na místě požadované odkazy na balíčky.
+Ujistěte se, že požadované odkazy na balíček jsou na místě před pokusem o implementaci výstupní vazby.
 
 <a id="example" name="example"></a>
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Následující příklad ukazuje [ C# funkci](../articles/azure-functions/functions-dotnet-class-library.md) , která zapisuje zprávu do centra událostí pomocí návratové hodnoty metody jako výstup:
+Následující příklad ukazuje [funkci C#,](../articles/azure-functions/functions-dotnet-class-library.md) která zapisuje zprávu do centra událostí pomocí vrácené hodnoty metody jako výstupu:
 
 ```csharp
 [FunctionName("EventHubOutput")]
@@ -31,7 +31,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 }
 ```
 
-Následující příklad ukazuje, jak použít rozhraní `IAsyncCollector` k odeslání dávky zpráv. Tento scénář je běžný při zpracování zpráv přicházejících z jednoho centra událostí a odeslání výsledku do jiného centra událostí.
+Následující příklad ukazuje, jak `IAsyncCollector` pomocí rozhraní odeslat dávku zpráv. Tento scénář je běžné, když zpracováváte zprávy přicházející z jednoho centra událostí a odesíláte výsledek do jiného centra událostí.
 
 ```csharp
 [FunctionName("EH2EH")]
@@ -51,11 +51,11 @@ public static async Task Run(
 }
 ```
 
-# <a name="c-script"></a>[C#Pravidel](#tab/csharp-script)
+# <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Následující příklad ukazuje aktivační vazbu centra událostí v souboru *Function. JSON* a [ C# funkci skriptu](../articles/azure-functions/functions-reference-csharp.md) , která používá vazbu. Funkce zapíše zprávu do centra událostí.
+Následující příklad ukazuje aktivační událost centra událostí v souboru *function.json* a [funkci skriptu Jazyka C#,](../articles/azure-functions/functions-reference-csharp.md) která používá vazbu. Funkce zapíše zprávu do centra událostí.
 
-Následující příklady ukazují Event Hubs vázání dat v souboru *Function. JSON* . První příklad je pro Functions 2. x a vyšší a druhý je pro Functions 1. x. 
+Následující příklady ukazují data vazby centra událostí v souboru *function.json.* První příklad je pro funkce 2.x a vyšší a druhý je pro funkce 1.x. 
 
 ```json
 {
@@ -77,7 +77,7 @@ Následující příklady ukazují Event Hubs vázání dat v souboru *Function.
 }
 ```
 
-Zde je C# kód skriptu, který vytváří jednu zprávu:
+Zde je c# skript kód, který vytvoří jednu zprávu:
 
 ```cs
 using System;
@@ -91,7 +91,7 @@ public static void Run(TimerInfo myTimer, out string outputEventHubMessage, ILog
 }
 ```
 
-Tady je kód jazyka C# skript, který vytváří více zpráv:
+Zde je c# skript kód, který vytváří více zpráv:
 
 ```cs
 public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessage, ILogger log)
@@ -103,11 +103,11 @@ public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessa
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Následující příklad ukazuje aktivační vazbu centra událostí v souboru *Function. JSON* a [funkci JavaScriptu](../articles/azure-functions/functions-reference-node.md) , která používá vazbu. Funkce zapíše zprávu do centra událostí.
+Následující příklad ukazuje vazby aktivační události centra událostí v souboru *function.json* a [funkci JavaScriptu,](../articles/azure-functions/functions-reference-node.md) která vazbu používá. Funkce zapíše zprávu do centra událostí.
 
-Následující příklady ukazují Event Hubs vázání dat v souboru *Function. JSON* . První příklad je pro Functions 2. x a vyšší a druhý je pro Functions 1. x. 
+Následující příklady ukazují data vazby centra událostí v souboru *function.json.* První příklad je pro funkce 2.x a vyšší a druhý je pro funkce 1.x. 
 
 ```json
 {
@@ -129,7 +129,7 @@ Následující příklady ukazují Event Hubs vázání dat v souboru *Function.
 }
 ```
 
-Tady je kód JavaScriptu, který pošle jednu zprávu:
+Zde je JavaScript kód, který odešle jednu zprávu:
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -140,7 +140,7 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-Zde je kód JavaScriptu, který odesílá více zpráv:
+Zde je JavaScript kód, který odesílá více zpráv:
 
 ```javascript
 module.exports = function(context) {
@@ -157,9 +157,9 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Následující příklad ukazuje aktivační vazbu centra událostí v souboru *Function. JSON* a [funkci Pythonu](../articles/azure-functions/functions-reference-python.md) , která používá vazbu. Funkce zapíše zprávu do centra událostí.
+Následující příklad ukazuje vazby aktivační události centra událostí v souboru *function.json* a [funkci Pythonu,](../articles/azure-functions/functions-reference-python.md) která používá vazbu. Funkce zapíše zprávu do centra událostí.
 
-Následující příklady ukazují Event Hubs vázání dat v souboru *Function. JSON* .
+Následující příklady ukazují data vazby centra událostí v souboru *function.json.*
 
 ```json
 {
@@ -171,7 +171,7 @@ Následující příklady ukazují Event Hubs vázání dat v souboru *Function.
 }
 ```
 
-Tady je kód Pythonu, který pošle jednu zprávu:
+Zde je kód Pythonu, který odešle jednu zprávu:
 
 ```python
 import datetime
@@ -187,7 +187,7 @@ def main(timer: func.TimerRequest) -> str:
 
 # <a name="java"></a>[Java](#tab/java)
 
-Následující příklad ukazuje funkci jazyka Java, která zapisuje zprávu obsahující aktuální čas do centra událostí.
+Následující příklad ukazuje funkci Java, která zapisuje zprávu obsahující aktuální čas do centra událostí.
 
 ```java
 @FunctionName("sendTime")
@@ -198,17 +198,17 @@ public String sendTime(
  }
 ```
 
-V [knihovně modulu runtime Functions jazyka Java](/java/api/overview/azure/functions/runtime)použijte `@EventHubOutput` anotaci u parametrů, jejichž hodnota by byla publikována do centra událostí.  Parametr by měl být typu `OutputBinding<T>`, kde T je POJO nebo jakýkoli nativní typ Java.
+V [knihovně runtime funkcí javy](/java/api/overview/azure/functions/runtime)použijte poznámku `@EventHubOutput` k parametrům, jejichž hodnota by byla publikována v centru událostí.  Parametr by měl `OutputBinding<T>` být typu , kde T je POJO nebo jakýkoli nativní typ Java.
 
 ---
 
 ## <a name="attributes-and-annotations"></a>Atributy a poznámky
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Pro [ C# knihovny tříd](../articles/azure-functions/functions-dotnet-class-library.md)použijte atribut [EventHubAttribute](https://github.com/Azure/azure-functions-eventhubs-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs/EventHubAttribute.cs) .
+Pro [knihovny tříd Jazyka C#](../articles/azure-functions/functions-dotnet-class-library.md)použijte atribut [EventHubAttribute.](https://github.com/Azure/azure-functions-eventhubs-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs/EventHubAttribute.cs)
 
-Konstruktor atributu přebírá název centra událostí a název nastavení aplikace, které obsahuje připojovací řetězec. Další informace o těchto nastaveních naleznete v tématu [Output-Configuration](#configuration). Tady je příklad atributu `EventHub`:
+Konstruktor atributu přebírá název centra událostí a název nastavení aplikace, která obsahuje připojovací řetězec. Další informace o těchto nastaveních naleznete v [tématu Output - configuration](#configuration). Zde je `EventHub` příklad atributu:
 
 ```csharp
 [FunctionName("EventHubOutput")]
@@ -219,87 +219,87 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 }
 ```
 
-Úplný příklad naleznete v tématu [Output- C# example](#example).
+Úplný příklad naleznete v [tématu Output - C# example](#example).
 
-# <a name="c-script"></a>[C#Pravidel](#tab/csharp-script)
+# <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-C# Skript nepodporuje atributy.
+Atributy nejsou podporovány skriptem jazyka C#.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Atributy nejsou podporovány jazykem JavaScript.
+Atributy nejsou podporovány javascriptem.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python nepodporuje atributy.
+Atributy nejsou podporovány Pythonem.
 
 # <a name="java"></a>[Java](#tab/java)
 
-V [knihovně modulu runtime Functions jazyka Java](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)použijte anotaci [EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) u parametrů, jejichž hodnota by byla publikována do centra událostí. Parametr by měl být typu `OutputBinding<T>`, kde `T` je POJO nebo jakýkoli nativní typ Java.
+V [knihovně runtime funkcí Jazyka Java](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)použijte anotaci [EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) u parametrů, jejichž hodnota by byla publikována v centru událostí. Parametr by měl `OutputBinding<T>` být `T` typu , kde je POJO nebo jakýkoli nativní typ Java.
 
 ---
 
 ## <a name="configuration"></a>Konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a atributu `EventHub`.
+Následující tabulka vysvětluje vlastnosti konfigurace vazby, které jste nastavili `EventHub` v souboru *function.json* a atributu.
 
-|Vlastnost Function.JSON | Vlastnost atributu |Popis|
+|vlastnost function.json | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type** | neuvedeno | Musí být nastavené na eventHub. |
-|**direction** | neuvedeno | Musí být nastavena na "out". Tento parametr je nastaven automaticky při vytváření vazby v Azure Portal. |
+|**Typ** | neuvedeno | Musí být nastavena na "eventHub". |
+|**direction** | neuvedeno | Musí být nastavena na "out". Tento parametr se nastaví automaticky při vytváření vazby na webu Azure Portal. |
 |**Jméno** | neuvedeno | Název proměnné použitý v kódu funkce, který představuje událost. |
-|**dílčí** |**EventHubName** | Pouze funkce 1. x. Název centra událostí Pokud je v připojovacím řetězci přítomen i název centra událostí, tato hodnota tuto vlastnost Přepisuje za běhu. |
-|**eventHubName** |**EventHubName** | Functions 2. x a vyšší. Název centra událostí Pokud je v připojovacím řetězci přítomen i název centra událostí, tato hodnota tuto vlastnost Přepisuje za běhu. |
-|**vázán** |**Vázán** | Název nastavení aplikace, které obsahuje připojovací řetězec k oboru názvů centra událostí. Zkopírujte tento připojovací řetězec kliknutím na tlačítko **informace o připojení** pro *obor názvů*, nikoli v samotném centru událostí. Tento připojovací řetězec musí mít oprávnění Odeslat pro odeslání zprávy do datového proudu událostí.|
+|**Cestu** |**Název EventHubName** | Funkce pouze 1.x. Název centra událostí. Pokud je název centra událostí také přítomen v připojovacím řetězci, tato hodnota přepíše tuto vlastnost za běhu. |
+|**eventHubName** |**Název EventHubName** | Funkce 2.x a vyšší. Název centra událostí. Pokud je název centra událostí také přítomen v připojovacím řetězci, tato hodnota přepíše tuto vlastnost za běhu. |
+|**Připojení** |**Připojení** | Název nastavení aplikace, která obsahuje připojovací řetězec k oboru názvů centra událostí. Zkopírujte tento připojovací řetězec klepnutím na tlačítko **Informace o připojení** pro obor *názvů*, nikoli na samotné centrum událostí. Tento připojovací řetězec musí mít oprávnění k odeslání zprávy do datového proudu událostí.|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Využití
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Odesílat zprávy pomocí parametru metody, jako je například `out string paramName`. Ve C# skriptu `paramName` je hodnota zadaná ve vlastnosti `name` *Function. JSON*. Chcete-li zapsat více zpráv, můžete místo `out string`použít `ICollector<string>` nebo `IAsyncCollector<string>`.
+Odesílat zprávy pomocí parametru `out string paramName`metody, například . Ve skriptu `paramName` jazyka C# je `name` hodnota zadaná ve vlastnosti *function.json*. Chcete-li napsat více `ICollector<string>` zpráv, můžete použít nebo `IAsyncCollector<string>` místo `out string`.
 
-# <a name="c-script"></a>[C#Pravidel](#tab/csharp-script)
+# <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Odesílat zprávy pomocí parametru metody, jako je například `out string paramName`. Ve C# skriptu `paramName` je hodnota zadaná ve vlastnosti `name` *Function. JSON*. Chcete-li zapsat více zpráv, můžete místo `out string`použít `ICollector<string>` nebo `IAsyncCollector<string>`.
+Odesílat zprávy pomocí parametru `out string paramName`metody, například . Ve skriptu `paramName` jazyka C# je `name` hodnota zadaná ve vlastnosti *function.json*. Chcete-li napsat více `ICollector<string>` zpráv, můžete použít nebo `IAsyncCollector<string>` místo `out string`.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Přístup k události výstupu pomocí `context.bindings.<name>`, kde `<name>` je hodnota zadaná ve vlastnosti `name` *funkce Function. JSON*.
+Přístup k výstupní `context.bindings.<name>` události `<name>` pomocí kde je `name` hodnota zadaná ve vlastnosti *function.json*.
 
 # <a name="python"></a>[Python](#tab/python)
 
-K dispozici jsou dvě možnosti pro výstup zprávy centra událostí z funkce:
+Existují dvě možnosti pro vyprosit zprávu centra událostí z funkce:
 
-- **Návratová hodnota**: nastavte vlastnost `name` v *Function. JSON* na `$return`. V této konfiguraci je návratová hodnota funkce trvalá jako zpráva centra událostí.
+- **Vrácená hodnota** `name` : Nastavte vlastnost *function.json* na `$return`. Při této konfiguraci je vrácená hodnota funkce zachována jako zpráva centra událostí.
 
-- **Imperativní**: předejte hodnotu metodě [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) parametru deklarovaného jako typ [out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) . Hodnota předaná do `set` je trvalá jako zpráva centra událostí.
+- **Imperativní**: Předají hodnotu [metodě set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) parametru deklarovaného [Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) jako out typ. Hodnota předaná je `set` trvalé jako zpráva centra událostí.
 
 # <a name="java"></a>[Java](#tab/java)
 
-K dispozici jsou dvě možnosti pro výstup zprávy centra událostí z funkce pomocí anotace [EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) :
+Existují dvě možnosti pro výstup zprávy centra událostí z funkce pomocí anotace [EventHubOutput:](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput)
 
-- **Návratová hodnota**: použitím poznámky k samotné funkci je vrácená hodnota funkce trvalá jako zpráva centra událostí.
+- **Vrácená hodnota**: Použitím poznámky na samotnou funkci je vrácená hodnota funkce zachována jako zpráva centra událostí.
 
-- **Imperativní**: Chcete-li explicitně nastavit hodnotu zprávy, použijte poznámku na konkrétní parametr typu [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding), kde `T` je Pojo nebo jakýkoli nativní typ Java. Při této konfiguraci předává hodnota metodě `setValue` hodnotu dál jako zprávu centra událostí.
+- **Imperativní**: Chcete-li explicitně nastavit hodnotu zprávy, použijte poznámku na konkrétní parametr typu [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding), kde `T` je POJO nebo jakýkoli nativní typ Java. S touto konfigurací předávání `setValue` hodnoty metody zachová hodnotu jako zpráva centra událostí.
 
 ---
 
 ## <a name="exceptions-and-return-codes"></a>Výjimky a návratové kódy
 
-| Vazba | Referenční informace |
+| Vazba | Odkaz |
 |---|---|
-| Centrum událostí | [Provozní příručka](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) |
+| Centrum událostí | [Průvodce provozem](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) |
 
 <a name="host-json"></a>  
 
-## <a name="hostjson-settings"></a>nastavení Host.JSON
+## <a name="hostjson-settings"></a>nastavení host.json
 
-Tato část popisuje globální nastavení konfigurace, která jsou k dispozici pro tuto vazbu ve verzích 2. x a vyšší. Ukázkový soubor host. JSON níže obsahuje pouze nastavení verze 2. x + pro tuto vazbu. Další informace o globálních nastaveních konfigurace ve verzích 2. x a novějších naleznete v tématu [reference Host. JSON pro Azure Functions](../articles/azure-functions/functions-host-json.md).
+Tato část popisuje globální nastavení konfigurace, která jsou k dispozici pro tuto vazbu ve verzích 2.x a vyšších. Příklad souboru host.json níže obsahuje pouze nastavení verze 2.x+ pro tuto vazbu. Další informace o nastavení globální konfigurace ve verzích 2.x a dále naleznete [v odkazu host.json pro funkce Azure](../articles/azure-functions/functions-host-json.md).
 
 > [!NOTE]
-> Odkaz na Host. JSON ve funkcích 1. x najdete v [referenčních informacích k host. JSON pro Azure Functions 1. x](../articles/azure-functions/functions-host-json-v1.md).
+> Odkaz na host.json ve funkcích 1.x najdete v [tématu reference host.json pro Funkce Azure 1.x](../articles/azure-functions/functions-host-json-v1.md).
 
 ```json
 {
@@ -318,6 +318,6 @@ Tato část popisuje globální nastavení konfigurace, která jsou k dispozici 
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------|
-|`maxBatchSize`|10|Maximální počet událostí přijatých pro jednu smyčku příjmu.|
-|`prefetchCount`|300|Výchozí počet předběžného načtení, který používá základní `EventProcessorHost`.|
-|`batchCheckpointFrequency`|1|Počet dávek události, které mají být zpracovány před vytvořením kontrolního bodu centra EventHub.|
+|`maxBatchSize`|10|Maximální počet událostí přijatých za příjem smyčky.|
+|`prefetchCount`|300|Výchozí počet předběžného načtení `EventProcessorHost`používaný podkladovým objektem .|
+|`batchCheckpointFrequency`|1|Počet dávek událostí ke zpracování před vytvořením kontrolního bodu kurzoru EventHub.|

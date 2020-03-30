@@ -1,6 +1,6 @@
 ---
-title: Vytvoření kontroly přístupu balíčku přístupu v Azure AD – Správa nároků
-description: Přečtěte si, jak vytvořit zásady kontroly přístupu pro balíčky přístupu pro správu oprávnění ve Azure Active Directory kontroly přístupu (Preview).
+title: Vytvoření kontroly přístupu balíčku přístupu ve správě nároků Azure AD
+description: Přečtěte si, jak vytvořit zásady kontroly přístupu pro balíčky přístupu ke správě nároků v recenzích přístupu k Azure Active Directory (Preview).
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,82 +17,82 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a862bbb1f574e4adab2f7d8e59a1abe8e5a5fa2a
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73608836"
 ---
-# <a name="create-an-access-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Vytvoření kontroly přístupu balíčku přístupu v Azure AD – Správa nároků
+# <a name="create-an-access-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Vytvoření kontroly přístupu balíčku přístupu ve správě nároků Azure AD
 
-Pokud chcete snížit riziko zastaralého přístupu, měli byste povolit pravidelné kontroly uživatelů, kteří mají aktivní přiřazení k balíčku přístupu ve správě nároků ve službě Azure AD. Můžete povolit recenze, když vytvoříte nový balíček pro přístup nebo upravíte existující balíček pro přístup. Tento článek popisuje, jak povolit kontroly přístupu pro balíčky přístupu.
+Chcete-li snížit riziko zastaralého přístupu, měli byste povolit pravidelné kontroly uživatelů, kteří mají aktivní přiřazení k balíčku přístupu ve správě nároků Azure AD. Recenze můžete povolit při vytváření nového balíčku přístupu nebo při úpravě existujícího balíčku pro přístup. Tento článek popisuje, jak povolit kontroly přístupu k balíčkům přístupu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete povolit recenze balíčků pro přístup, musíte splnit požadavky pro vytvoření balíčku přístupu:
+Chcete-li povolit recenze přístupových balíčků, musíte splnit požadavky pro vytvoření přístupového balíčku:
 - Azure AD Premium P2
-- Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
+- Globální správce, správce uživatele, vlastník katalogu nebo správce balíčků aplikace Access
 
-Další informace najdete v tématu [licenční požadavky](entitlement-management-overview.md#license-requirements).
+Další informace naleznete v tématu [Licenční požadavky](entitlement-management-overview.md#license-requirements).
 
 
-## <a name="create-an-access-review-of-an-access-package"></a>Vytvoření kontroly přístupu balíčku přístupu
+## <a name="create-an-access-review-of-an-access-package"></a>Vytvoření kontroly přístupu přístupového balíčku
 
-Kontroly přístupu můžete povolit při [vytváření nového přístupového balíčku](entitlement-management-access-package-create.md) nebo při [úpravách existujících zásad balíčku přístupu](entitlement-management-access-package-lifecycle-policy.md) . Pomocí těchto kroků povolíte kontroly přístupu balíčku pro přístup:
+Můžete povolit kontroly přístupu při [vytváření nového balíčku přístupu](entitlement-management-access-package-create.md) nebo úpravě existující zásady [balíčku přístupu.](entitlement-management-access-package-lifecycle-policy.md) Chcete-li povolit kontroly přístupu k přístupu k balíčku přístupu, postupujte takto:
 
-1. Otevřete kartu **životní cyklus** pro balíček přístupu a posuňte se dolů k **recenzím přístupu**.
+1. Otevřete kartu **Životní cyklus** pro přístupový balíček a přejděte dolů na **Access Reviews**.
 
-1. Přesuňte přepínač **vyžadovat revize přístupu** na **Ano**.
+1. Přesuňte přepínač **Vyžadovat kontroly přístupu** na **Ano**.
 
-    ![Přidat kontrolu přístupu](./media/entitlement-management-access-reviews/access-reviews-pane.png)
+    ![Přidání kontroly přístupu](./media/entitlement-management-access-reviews/access-reviews-pane.png)
 
-1. Zadejte datum, kdy začnou pročínat další **zahájení**.
+1. Zadejte datum, kdy budou recenze zahájeny vedle **možnosti Spuštění dne**.
 
-1. V dalším kroku nastavte **četnost přezkoumání** na **ročně**, v **rámci každoročního** **roku, čtvrtletně** nebo **měsíčně**.
-Toto nastavení určuje, jak často budou kontroly přístupu provedeny.
+1. Dále nastavte **frekvenci kontroly** **na roční**, **dvakrát ročně**, **čtvrtletně** nebo **měsíčně**.
+Toto nastavení určuje, jak často dojde k kontrolám přístupu.
 
-1. Nastavte **dobu trvání** , která definuje počet dní, po které se každá kontrola opakujících řad otevře pro vstup od revidujících. Můžete například naplánovat roční přezkum, který začíná 1. ledna a je otevřen ke kontrole po dobu 30 dnů, aby kontroloři měli až do konce měsíce.
+1. Nastavte **dobu trvání,** která definuje, kolik dní bude každá revize opakované řady otevřena pro vstup od recenzentů. Můžete například naplánovat každoroční recenzi, která začíná 1.
 
-1. U **revidujících**vyberte **vlastní kontrolu** , pokud chcete, aby uživatelé prováděli vlastní kontrolu přístupu, nebo vyberte **konkrétní kontrolory** , pokud chcete určit kontrolora.
+1. Vedle **položky Recenzenti**vyberte **možnost Vlastní kontrola,** pokud chcete, aby uživatelé provedli vlastní kontrolu přístupu, nebo vyberte **konkrétní recenzenty,** pokud chcete určit recenzenta.
 
-    ![Vyberte Přidat kontrolory.](./media/entitlement-management-access-reviews/access-reviews-add-reviewer.png)
+    ![Vyberte Přidat recenzenty.](./media/entitlement-management-access-reviews/access-reviews-add-reviewer.png)
 
-1. Pokud jste vybrali **konkrétní kontrolory**, určete, kteří uživatelé budou provádět kontrolu přístupu:
-    1. Vyberte **Přidat revidující**.
-    1. V podokně **Vybrat revidující** vyhledejte a vyberte uživatele, které chcete zobrazit jako kontrolora.
-    1. Po výběru kontrolorů klikněte na tlačítko **Vybrat** .
+1. Pokud jste vybrali **možnost Konkrétní recenzenti**, určete, kteří uživatelé budou kontrolu přístupu kontrolovat:
+    1. Vyberte **Přidat recenzenty**.
+    1. V podokně **Vybrat recenzenty** vyhledejte a vyberte uživatele, kterým chcete být recenzentem.
+    1. Po výběru recenzentů klikněte na tlačítko **Vybrat.**
 
-    ![Zadat kontrolory](./media/entitlement-management-access-reviews/access-reviews-select-reviewer.png)
+    ![Určení recenzentů](./media/entitlement-management-access-reviews/access-reviews-select-reviewer.png)
 
-1. Klikněte na tlačítko **zkontrolovat + vytvořit** , pokud vytváříte nový balíček pro přístup nebo **aktualizujete** , pokud upravujete balíček přístupu, a to v dolní části stránky.
+1. Klikněte na **Zkontrolovat + Vytvořit,** pokud vytváříte nový přístupový balíček nebo **Aktualizovat,** pokud upravujete přístupový balíček, v dolní části stránky.
 
-## <a name="view-the-status-of-the-access-review"></a>Zobrazit stav kontroly přístupu
+## <a name="view-the-status-of-the-access-review"></a>Zobrazení stavu kontroly přístupu
 
-Po počátečním datu bude v části **recenze přístupů** uvedená kontrola přístupu. Chcete-li zobrazit stav kontroly přístupu, postupujte podle těchto kroků:
+Po počátečním datu bude v části **Kontroly přístupu** uvedena kontrola přístupu. Chcete-li zobrazit stav kontroly přístupu, postupujte takto:
 
-1. V části zásady **správného řízení identity**klikněte na **přístupové balíčky** a potom vyberte balíček pro přístup se stavem kontroly přístupu, který chcete zkontrolovat.   
+1. V **části Zásady správného řízení identit**klikněte na **balíčky aplikace Access** a vyberte balíček přístupu se stavem kontroly přístupu, který chcete zkontrolovat.   
 
-1. Po dokončení přehledu přístupového balíčku klikněte v levé nabídce na **recenze přístupu** .
+1. Jakmile se dostanete do přehledu přístupového balíčku, klikněte v levé nabídce na **Recenze aplikace Access.**
     
-    ![Vybrat kontroly přístupu](./media/entitlement-management-access-reviews/access-review-status-access-package-overview.png)
+    ![Výběr kontrol přístupu](./media/entitlement-management-access-reviews/access-review-status-access-package-overview.png)
 
-1. Zobrazí se seznam obsahující všechny zásady, ke kterým jsou přidružené kontroly přístupu. Kliknutím na kontrolu zobrazíte její sestavu.
+1. Zobrazí se seznam obsahující všechny zásady, které mají k nim spojené kontroly přístupu. Kliknutím na recenzi zobrazíte její přehled.
 
-    ![Seznam revizí přístupu](./media/entitlement-management-access-reviews/access-review-status-select-access-reviews.png)
+    ![Seznam kontrol přístupu](./media/entitlement-management-access-reviews/access-review-status-select-access-reviews.png)
    
-1. Při zobrazení sestavy se zobrazí počet zkontrolovaných uživatelů a akce provedené kontrolorem.
+1. Při zobrazení sestavy se zobrazuje počet zkontrolovaných uživatelů a akce provedené recenzentem v nich.
 
-    ![Zobrazit stav kontroly](./media/entitlement-management-access-reviews/access-review-status.png)
+    ![Zobrazit stav recenze](./media/entitlement-management-access-reviews/access-review-status.png)
  
 
-## <a name="access-reviews-email-notifications"></a>E-mailová oznámení kontroly přístupu
-Můžete určit kontrolory nebo si uživatelé můžou zkontrolovat svůj přístup sami. Ve výchozím nastavení vám Azure AD pošle e-maily kontrolorům nebo samoobslužným recenzentům krátce po zahájení kontroly.
+## <a name="access-reviews-email-notifications"></a>Přístup k e-mailovým oznámením o recenzích
+Můžete určit recenzenty nebo si uživatelé mohou zkontrolovat svůj přístup sami. Ve výchozím nastavení azure ad odešle e-mail recenzentům nebo recenzentům pro sebe sama krátce po zahájení kontroly.
 
-E-mail obsahuje pokyny, jak zkontrolovat přístup k balíčkům přístupu. Pokud je kontrola přístupná pro uživatele, zobrazte si pokyny, jak provést vlastní přezkoumání balíčků pro přístup.
+E-mail bude obsahovat pokyny, jak zkontrolovat přístup k balíčkům. Pokud je kontrola na uživatelích, aby zkontrolovali jejich přístup, ukažte jim pokyny, jak provést vlastní kontrolu svých přístupových balíčků.
   
-Pokud jste uživatelům typu Host přiřazeni jako kontroloři a nepřijali svou pozvánku na hostovi služby Azure AD, nebudou dostávat e-maily z kontrol přístupu služby Azure AD. Před přijetím e-mailů musí nejdřív přijmout pozvánku a vytvořit účet ve službě Azure AD. 
+Pokud jste jako recenzenty přiřadili uživatele typu Host a nepřijali pozvánku pro hosty Azure AD, nebudou dostávat e-maily z kontrol přístupu k Azure AD. Musí nejprve přijmout pozvání a vytvořit účet s Azure AD před tím, než můžou přijímat e-maily. 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Kontrola přístupu k balíčkům přístupu](entitlement-management-access-reviews-review-access.md)
-- [Samoobslužné přezkoumání balíčků přístupu](entitlement-management-access-reviews-self-review.md)
+- [Kontrola přístupu k přístupovým balíčkům](entitlement-management-access-reviews-review-access.md)
+- [Vlastní kontrola přístupových balíčků](entitlement-management-access-reviews-self-review.md)

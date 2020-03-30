@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
 ms.openlocfilehash: a25bbd0f14d38a70624dbc58755c0e814753a181
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77604179"
 ---
 # <a name="azure-security-center-data-security"></a>Zabezpečení dat ve službě Azure Security Center
@@ -47,11 +47,11 @@ Azure Security Center analyzuje data z následujících zdrojů a poskytuje pře
 
 | Geografie virtuálního počítače                              | Geografie pracovního prostoru |
 |-------------------------------------|---------------|
-| USA, Brazílie, Jižní Afrika | Spojené státy |
+| Spojené státy, Brazílie, Jihoafrická republika | Spojené státy |
 | Kanada                              | Kanada        |
-| Evropa (s výjimkou Spojeného království)   | Evropa        |
+| Evropa (kromě Spojeného království)   | Evropa        |
 | Spojené království                      | Spojené království |
-| Asie (s výjimkou Indie, Japonska, Koreje, ČLR)   | Asie a Tichomoří  |
+| Asie (kromě Indie, Japonska, Koreje, Číny)   | Asie a Tichomoří  |
 | Jižní Korea                              | Asie a Tichomoří  |
 | Indie                               | Indie         |
 | Japonsko                               | Japonsko         |
@@ -80,8 +80,8 @@ Pokud používáte Azure Security Center úrovně Free, můžete pomocí zásad 
 
 Zákazníci můžou využívat data související se službou Security Center z různých datových proudů, jak je znázorněno níže:
 
-* **Aktivita Azure**: všechny výstrahy zabezpečení, schválené Security Center požadavky [za běhu](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) a všechny výstrahy vygenerované [adaptivními ovládacími prvky aplikace](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application).
-* **Protokoly Azure monitor**: všechny výstrahy zabezpečení.
+* **Aktivita Azure:** všechny výstrahy zabezpečení, schválené požadavky Centra zabezpečení [just-in-time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) a všechny výstrahy generované [adaptivními ovládacími prvky aplikací](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application).
+* **Protokoly azure monitorování:** všechny výstrahy zabezpečení.
 
 
 > [!NOTE]
@@ -92,6 +92,6 @@ V tomto dokumentu jste se dozvěděli informace o způsobu správy a ochrany ve 
 
 * [Průvodce plánováním a provozem služby Azure Security Center](security-center-planning-and-operations-guide.md) – Zjistěte, jak naplánovat a pochopit aspekty návrhu, abyste mohli přejít na Azure Security Center.
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se sledovat stav svých prostředků Azure
-* [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně
+* [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
 * [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
 * [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/) – Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů

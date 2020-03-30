@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s konfiguračním serverem při zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí Azure Site Recovery | Microsoft Docs
-description: Tento článek popisuje informace o řešení potíží s nasazením konfiguračního serveru pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí Azure Site Recovery.
+title: Řešení problémů s konfiguračním serverem během zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí Azure Site Recovery | Dokumenty společnosti Microsoft
+description: Tento článek obsahuje informace o řešení potíží pro nasazení konfiguračního serveru pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí Azure Site Recovery.
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
@@ -8,87 +8,87 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
 ms.openlocfilehash: 25e2b488d3b6e7e5cabd1a71d1489efaf01231b3
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73748548"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Řešení potíží s konfiguračním serverem
 
-Tento článek vám pomůže při řešení potíží při nasazení a správě konfiguračního serveru [Azure Site Recovery](site-recovery-overview.md) . Konfigurační server funguje jako management server. Konfigurační server slouží k nastavení zotavení po havárii místních virtuálních počítačů VMware a fyzických serverů do Azure pomocí Site Recovery. Následující části popisují nejběžnější chyby, se kterými se můžete setkat při přidávání nového konfiguračního serveru a při správě konfiguračního serveru.
+Tento článek vám pomůže vyřešit problémy při nasazení a správě konfiguračního serveru [Azure Site Recovery.](site-recovery-overview.md) Konfigurační server funguje jako server pro správu. Pomocí konfiguračního serveru můžete nastavit obnovení po havárii místních virtuálních počítačů VMware a fyzických serverů do Azure pomocí site recovery. Následující části popisují nejběžnější chyby, ke kterým může dojít při přidání nového konfiguračního serveru a při správě konfiguračního serveru.
 
 ## <a name="registration-failures"></a>Selhání registrace
 
-Zdrojový počítač se registruje s konfiguračním serverem při instalaci agenta mobility. V průběhu tohoto kroku můžete ladit jakékoli chyby pomocí následujících pokynů:
+Zdrojový počítač se zaregistruje u konfiguračního serveru při instalaci agenta mobility. Během tohoto kroku můžete ladit všechny chyby podle následujících pokynů:
 
-1. Otevřete soubor C:\ProgramData\ASR\home\svsystems\var\configurator_register_host_static_info.log. (Složka Složka ProgramData může být skrytá složka. Pokud nevidíte složku Složka ProgramData, klikněte v Průzkumníkovi souborů na kartě **zobrazení** v části **Zobrazit/skrýt** na zaškrtávací políčko **skryté položky** .) Selhání může být způsobeno několika problémy.
+1. Otevřete soubor C:\ProgramData\ASR\home\svsystems\var\configurator_register_host_static_info.log. (Složka ProgramData může být skrytá složka. Pokud složku ProgramData nevidíte, v Průzkumníkovi souborů na kartě **Zobrazení** zaškrtněte políčko **Zobrazit nebo skrýt** políčko **Skryté položky.)** Chyby mohou být způsobeny více problémy.
 
-2. Hledání řetězce: **nebyla nalezena žádná platná IP adresa**. Pokud se řetězec najde:
-   1. Ověřte, jestli je požadované ID hostitele stejné jako ID hostitele zdrojového počítače.
-   2. Ověřte, zda má zdrojový počítač alespoň jednu IP adresu přiřazenou fyzické síťové kartě. Aby byla registrace agenta u konfiguračního serveru úspěšná, musí mít zdrojový počítač alespoň jednu platnou IP adresu, která je přiřazená k fyzické síťové kartě.
-   3. Na zdrojovém počítači spusťte jeden z následujících příkazů, abyste získali všechny IP adresy zdrojového počítače:
-      - Pro Windows: `> ipconfig /all`
-      - Pro Linux: `# ifconfig -a`
+2. Vyhledejte řetězec **Nebyla nalezena žádná platná adresa IP**. Pokud je řetězec nalezen:
+   1. Ověřte, zda je požadované ID hostitele stejné jako ID hostitele zdrojového počítače.
+   2. Ověřte, zda má zdrojový počítač alespoň jednu adresu IP přiřazenou fyzické nic. Aby byla registrace agenta s konfiguračním serverem úspěšná, musí mít zdrojový počítač alespoň jednu platnou adresu IP v4 přiřazenou fyzické nic.
+   3. Spusťte jeden z následujících příkazů ve zdrojovém počítači, abyste získali všechny ADRESY IP zdrojového počítače:
+      - Pro Windows:`> ipconfig /all`
+      - Pro Linux:`# ifconfig -a`
 
-3. Pokud není nalezen řetězec **žádná platná IP adresa** , vyhledejte řetězec **důvod = > null**. K této chybě dochází, pokud zdrojový počítač používá k registraci na konfiguračním serveru prázdného hostitele. Pokud se řetězec najde:
-    - Po vyřešení těchto potíží postupujte podle pokynů v části [registrace zdrojového počítače s konfiguračním serverem](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server) a opakujte registraci ručně.
+3. Pokud nebyl nalezen řetězec **Žádná platná adresa IP,** vyhledejte řetězec **Reason=>NULL**. K této chybě dochází, pokud zdrojový počítač používá k registraci u konfiguračního serveru prázdného hostitele. Pokud je řetězec nalezen:
+    - Po vyřešení problémů postupujte podle pokynů v [části Registrace zdrojového počítače s konfiguračním serverem](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server) a zopakujte registraci ručně.
 
-4. Pokud se na zdrojovém počítači nenajde řetězec **důvod = > null** , otevřete soubor C:\ProgramData\ASRSetupLogs\UploadedLogs\ASRUnifiedAgentInstaller.log. (Složka Složka ProgramData může být skrytá složka. Pokud nevidíte složku Složka ProgramData, klikněte v Průzkumníkovi souborů na kartě **zobrazení** v části **Zobrazit/skrýt** na zaškrtávací políčko **skryté položky** .) Selhání může být způsobeno několika problémy. 
+4. Pokud řetězec **Reason=>NULL** není nalezen, otevřete ve zdrojovém počítači soubor C:\ProgramData\ASRSetupLogs\UploadedLogs\ASRUnifiedAgentInstaller.log. (Složka ProgramData může být skrytá složka. Pokud složku ProgramData nevidíte, v Průzkumníkovi souborů na kartě **Zobrazení** zaškrtněte políčko **Zobrazit nebo skrýt** políčko **Skryté položky.)** Chyby mohou být způsobeny více problémy. 
 
-5. Vyhledejte **žádost o odeslání řetězce: (7) – nepovedlo se připojit k serveru**. Pokud se řetězec najde:
-    1. Vyřešte problémy se sítí mezi zdrojovým počítačem a konfiguračním serverem. Ověřte, jestli je konfigurační server dosažitelný ze zdrojového počítače pomocí síťových nástrojů, jako je třeba příkaz traceroute nebo webový prohlížeč. Ujistěte se, že zdrojový počítač může získat přístup ke konfiguračnímu serveru prostřednictvím portu 443.
-    2. Ověřte, jestli některá pravidla firewallu na zdrojovém počítači blokují připojení mezi zdrojovým počítačem a konfiguračním serverem. Pokud chcete odblokovat problémy s připojením, spolupracujte se správci vaší sítě.
-    3. Zajistěte, aby se z antivirového softwaru vyloučily složky uvedené v [Site Recovery složky vyloučené z antivirových programů](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) .
-    4. Při řešení problémů se sítí zkuste registraci zopakovat podle pokynů v části [registrace zdrojového počítače s konfiguračním serverem](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server).
+5. Vyhledejte požadavek na řetězec **příspěvku: (7) - Nelze se připojit k serveru**. Pokud je řetězec nalezen:
+    1. Vyřešte problémy se sítí mezi zdrojovým počítačem a konfiguračním serverem. Ověřte, zda je konfigurační server dostupný ze zdrojového počítače pomocí síťových nástrojů, jako je ping, traceroute nebo webový prohlížeč. Ujistěte se, že zdrojový počítač může dosáhnout konfiguračního serveru prostřednictvím portu 443.
+    2. Zkontrolujte, zda všechna pravidla brány firewall ve zdrojovém počítači blokují spojení mezi zdrojovým počítačem a konfiguračním serverem. Spolupracujte se správci sítě a odblokujte případné problémy s připojením.
+    3. Ujistěte se, že složky uvedené v [seznamu Vyloučení složky Site Recovery z antivirových programů](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) jsou vyloučeny z antivirového softwaru.
+    4. Po vyřešení problémů se sítí opakujte registraci podle pokynů v [seznamu Registrovat zdrojový počítač s konfiguračním serverem](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server).
 
-6. Pokud se nedaří najít **požadavek post typu String (7) – nelze se připojit k serveru** , vyhledejte ve stejném souboru protokolu požadavek na řetězec **: (60)-partnerský certifikát nelze pomocí daných certifikátů certifikační autority ověřit**. K této chybě může dojít, protože vypršela platnost certifikátu konfiguračního serveru nebo zdrojový počítač nepodporuje protokol TLS 1,0 nebo novější protokoly SSL. K tomu může dojít také v případě, že brána firewall blokuje komunikaci SSL mezi zdrojovým a konfiguračním serverem. Pokud se řetězec najde: 
-    1. Pokud ho chcete vyřešit, připojte se k IP adrese konfiguračního serveru pomocí webového prohlížeče na zdrojovém počítači. Použijte identifikátor URI https:\/\/< IP adresa konfiguračního serveru\>: 443/. Ujistěte se, že zdrojový počítač může získat přístup ke konfiguračnímu serveru prostřednictvím portu 443.
-    2. Ověřte, jestli je potřeba přidat nebo odebrat pravidla firewallu na zdrojovém počítači, aby mohl zdrojový počítač komunikovat s konfiguračním serverem. Z důvodu nejrůznějšího softwaru brány firewall, který se může používat, nemůžeme zobrazit seznam všech požadovaných konfigurací brány firewall. Pokud chcete odblokovat problémy s připojením, spolupracujte se správci vaší sítě.
-    3. Zajistěte, aby se z antivirového softwaru vyloučily složky uvedené v [Site Recovery složky vyloučené z antivirových programů](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) .  
-    4. Po vyřešení těchto problémů zkuste registraci zopakovat podle pokynů v části [registrace zdrojového počítače s konfiguračním serverem](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server).
+6. Pokud požadavek na řetězec **příspěvku: (7) - Nelze se připojit k serveru** nebyl nalezen, vyhledejte ve stejném souboru protokolu požadavek na **řetězec: (60) - Peer certifikát nelze ověřit pomocí daných certifikátů certifikační autority**. K této chybě může dojít, protože vypršela platnost certifikátu konfiguračního serveru nebo zdrojový počítač nepodporuje protokoly SSL 1.0 nebo novější. Může také dojít, pokud brána firewall blokuje ssl komunikaci mezi zdrojovým počítačem a konfiguračním serverem. Pokud je řetězec nalezen: 
+    1. Chcete-li to vyřešit, připojte se k adrese IP konfiguračního serveru pomocí webového prohlížeče ve zdrojovém počítači. Použijte identifikátor URI\/ \/ https:<\>IP adresu konfiguračního serveru :443/. Ujistěte se, že zdrojový počítač může dosáhnout konfiguračního serveru prostřednictvím portu 443.
+    2. Zkontrolujte, zda je třeba přidat nebo odebrat všechna pravidla brány firewall ve zdrojovém počítači, aby zdrojový počítač mohl hovořit s konfiguračním serverem. Vzhledem k rozmanitosti softwaru brány firewall, který může být používán, nemůžeme uvést všechny požadované konfigurace brány firewall. Spolupracujte se správci sítě a odblokujte případné problémy s připojením.
+    3. Ujistěte se, že složky uvedené v [seznamu Vyloučení složky Site Recovery z antivirových programů](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) jsou vyloučeny z antivirového softwaru.  
+    4. Po vyřešení problémů opakujte registraci podle následujících pokynů v [seznamu Registrovat zdrojový počítač s konfiguračním serverem](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server).
 
-7. Pokud je v systému Linux hodnota platformy v < INSTALLATION_DIR\>/etc/drscout.conf poškozená, registrace se nepovede. Chcete-li tento problém identifikovat, otevřete soubor/var/log/ua_install.log. Vyhledejte **konfiguraci přerušování řetězce, protože hodnota VM_PLATFORM je buď null, nebo není VMware/Azure**. Platforma by měla být nastavená buď na **VMware** , nebo na **Azure**. Pokud je soubor drscout. conf poškozený, doporučujeme, abyste [agenta mobility odinstalovali](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) a pak znovu přeinstalovali agenta mobility. Pokud se odinstalace nezdařila, proveďte následující kroky: a. Otevřete soubor Installation_Directory/Uninstall. sh a odkomentujte volání funkce **StopServices** .
-    b. Otevřete soubor Installation_Directory/VX/bin/Uninstall. sh a zakomentujte volání funkce **stop_services** .
-    c. Otevřete soubor Installation_Directory/FX/Uninstall. sh a zakomentujte celý oddíl, který se pokouší zastavit službu FX.
-    d. [Odinstalujte](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) agenta mobility. Po úspěšné odinstalaci restartujte systém a pak zkuste agenta mobility znovu nainstalovat.
+7. Na Linuxu, pokud je hodnota\>platformy v <INSTALLATION_DIR /etc/drscout.conf poškozena, registrace se nezdaří. Chcete-li tento problém identifikovat, otevřete soubor /var/log/ua_install.log. Vyhledejte řetězec **Aborting konfigurace jako VM_PLATFORM hodnota je buď null nebo není VmWare/Azure**. Platforma by měla být nastavena na **VmWare** nebo **Azure**. Pokud je soubor drscout.conf poškozen, doporučujeme [odinstalovat agenta mobility](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) a potom agenta mobility znovu nainstalovat. Pokud se odinstalace nezdaří, proveďte následující kroky: a. Otevřete soubor Installation_Directory/uninstall.sh a zakomentujte volání funkce **StopServices.**
+    b. Otevřete soubor Installation_Directory/Vx/bin/uninstall.sh a zakomentujte volání **funkce stop_services.**
+    c. Otevřete soubor Installation_Directory/Fx/uninstall.sh a zakomentujte celou sekci, která se snaží zastavit službu Fx.
+    d. [Odinstalujte](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) agenta mobility. Po úspěšné odinstalaci restartujte systém a zkuste přeinstalovat agenta mobility.
 
-## <a name="installation-failure-failed-to-load-accounts"></a>Chyba instalace: Nepodařilo se načíst účty.
+## <a name="installation-failure-failed-to-load-accounts"></a>Selhání instalace: Načtení účtů se nezdařilo.
 
-K této chybě dojde, když služba nemůže číst data z přenosového připojení při instalaci agenta mobility a registrace na konfiguračním serveru. Pokud chcete tento problém vyřešit, ujistěte se, že na zdrojovém počítači je povolený protokol TLS 1,0.
+K této chybě dochází, když služba nemůže číst data z přenosového připojení při instalaci agenta mobility a registraci s konfiguračním serverem. Chcete-li tento problém vyřešit, ujistěte se, že tls 1.0 je povolena na zdrojovém počítači.
 
-## <a name="vcenter-discovery-failures"></a>selhání zjišťování vCenter
+## <a name="vcenter-discovery-failures"></a>Selhání zjišťování aplikace vCenter
 
-Pokud chcete vyřešit selhání zjišťování vCenter, přidejte Server vCenter do nastavení proxy serveru pro obejití seznamu. 
+Chcete-li vyřešit selhání zjišťování vCenter, přidejte server vCenter do nastavení proxy seznamu byPass. 
 
-- Stáhněte si [sem](https://aka.ms/PsExec) nástroj PsExec pro přístup k systémovému obsahu uživatele.
-- Spusťte aplikaci Internet Explorer v uživatelském obsahu systému spuštěním následujícího příkazového řádku PsExec-s-i "%programfiles%\Internet Explorer\iexplore.exe".
-- Přidejte nastavení proxy serveru v IE a restartujte službu tmanssvc.
-- Pokud chcete nakonfigurovat nastavení proxy serveru DRA, spusťte CD C:\Program Files\Microsoft Azure Site Recovery Provider.
-- Dále spusťte DRCONFIGURATOR. EXE/Configure/AddBypassUrls [Přidání IP adresy nebo plně kvalifikovaného názvu domény vCenter Server k dispozici během **Konfigurace serveru vCenter Server/vSphere ESXi** pro [nasazení konfiguračního serveru](vmware-azure-deploy-configuration-server.md#configure-settings)]
+- Stáhněte si nástroj PsExec [zde](https://aka.ms/PsExec) pro přístup k uživatelskému obsahu systému.
+- Spouštět aplikaci Internet Explorer v systémovém uživatelském obsahu spuštěním následujícího příkazového řádku psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"
+- Přidejte nastavení proxy serveru v aplikaci IE a restartujte službu tmanssvc.
+- Chcete-li konfigurovat nastavení serveru proxy DRA, spusťte cd C:\Program Files\Microsoft Azure Site Recovery Provider
+- Dále proveďte DRCONFIGURATOR. EXE /configure /AddBypassUrls [přidat IP adresu/FQDN serveru vCenter, který je k dispozici během **konfigurace serveru vCenter Server/vSphere ESXi** krok [nasazení konfiguračního serveru](vmware-azure-deploy-configuration-server.md#configure-settings)]
 
-## <a name="change-the-ip-address-of-the-configuration-server"></a>Změna IP adresy konfiguračního serveru
+## <a name="change-the-ip-address-of-the-configuration-server"></a>Změna adresy IP konfiguračního serveru
 
-Důrazně doporučujeme, abyste nezměnili IP adresu konfiguračního serveru. Zajistěte, aby všechny IP adresy, které jsou přiřazené ke konfiguračnímu serveru, byly statické IP adresy. Nepoužívejte IP adresy DHCP.
+Důrazně doporučujeme, abyste neměnili IP adresu konfiguračního serveru. Ujistěte se, že všechny adresy IP přiřazené konfiguračnímu serveru jsou statické adresy IP. Nepoužívejte ip adresy DHCP.
 
-## <a name="acs50008-saml-token-is-invalid"></a>ACS50008: token SAML je neplatný.
+## <a name="acs50008-saml-token-is-invalid"></a>ACS50008: Token SAML je neplatný
 
-Chcete-li se této chybě vyhnout, zajistěte, aby se hodiny systémového času nelišily od místního času o více než 15 minut. Znovu spusťte instalační program a dokončete registraci.
+Chcete-li se této chybě vyhnout, ujistěte se, že čas na systémových hodinách se neliší od místního času o více než 15 minut. Znovu spusťte instalační program a dokončete registraci.
 
-## <a name="failed-to-create-a-certificate"></a>Nepovedlo se vytvořit certifikát.
+## <a name="failed-to-create-a-certificate"></a>Vytvoření certifikátu se nezdařilo.
 
-Certifikát, který se vyžaduje pro ověření Site Recovery, se nedá vytvořit. Spusťte instalační program znovu, až budete mít jistotu, že jste instalační program spustili jako místní správce.
+Certifikát, který je nutný k ověření obnovení webu nelze vytvořit. Po opětovném spuštění instalace po zajištění spuštění nastavení jako místního správce.
 
-## <a name="failure-to-activate-windows-license-from-server-standard-evaluation-to-server-standard"></a>Nepovedlo se aktivovat licenci Windows ze serveru Standard EVALUATION na Server Standard.
+## <a name="failure-to-activate-windows-license-from-server-standard-evaluation-to-server-standard"></a>Neaktivace licence systému Windows ze standardního vyhodnocení serveru na server Standard
 
-1. Jako součást nasazení konfiguračního serveru prostřednictvím OVF se používá zkušební licence, která je platná po dobu 180 dnů. Tuto licenci musíte aktivovat dřív, než vyprší její platnost. V opačném případě to může vést k častému vypnutí konfiguračního serveru a tím i k tomu, že by mohlo dojít k výpadkům replikace.
-2. Pokud nemůžete aktivovat licenci Windows, vyřešte problém podle [týmu podpory pro Windows](https://aka.ms/Windows_Support) .
+1. V rámci nasazení konfiguračního serveru prostřednictvím OVF se používá zkušební licence, která je platná po dobu 180 dnů. Tuto licenci je třeba aktivovat dříve, než vyprší její platnost. Jinak to může mít za následek časté vypnutí konfiguračního serveru a tím způsobit překážku replikačních aktivit.
+2. Pokud se vám nedaří aktivovat licenci systému Windows, spojte se s [týmem podpory systému Windows,](https://aka.ms/Windows_Support) který problém vyřeší.
 
-## <a name="register-source-machine-with-configuration-server"></a>Registrovat zdrojový počítač ke konfiguračnímu serveru
+## <a name="register-source-machine-with-configuration-server"></a>Registrace zdrojového počítače s konfiguračním serverem
 
-### <a name="if-the-source-machine-runs-windows"></a>Pokud na zdrojovém počítači běží Windows
+### <a name="if-the-source-machine-runs-windows"></a>Pokud zdrojový počítač běží windows
 
-Na zdrojovém počítači spusťte následující příkaz:
+Ve zdrojovém počítači spusťte následující příkaz:
 
 ```
   cd C:\Program Files (x86)\Microsoft Azure Site Recovery\agent
@@ -97,14 +97,14 @@ Na zdrojovém počítači spusťte následující příkaz:
 
 Nastavení | Podrobnosti
 --- | ---
-Využití | UnifiedAgentConfigurator. exe/CSEndPoint < IP adresa konfiguračního serveru\>/PassphraseFilePath < cesta k souboru hesla\>
-Protokoly konfigurace agenta | Nacházející se pod%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log.
-/CSEndPoint | Povinný parametr. Určuje IP adresu konfiguračního serveru. Použijte jakoukoli platnou IP adresu.
-/PassphraseFilePath |  Povinné. Umístění přístupového hesla. Použijte jakoukoli platnou cestu UNC nebo místní cestu k souboru.
+Využití | UnifiedAgentConfigurator.exe /CSEndPoint <adresa\> IP konfiguračního serveru /PassphraseFilePath <cestu k souboru hesel\>
+Protokoly konfigurace agenta | Nachází se pod %ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log.
+/CSEndPoint | Povinný parametr. Určuje adresu IP konfiguračního serveru. Použijte libovolnou platnou adresu IP.
+/PassphraseFilePath |  Povinné. Umístění přístupové fráze. Použijte libovolnou platnou cestu UNC nebo místního souboru.
 
-### <a name="if-the-source-machine-runs-linux"></a>Pokud zdrojový počítač používá Linux
+### <a name="if-the-source-machine-runs-linux"></a>Pokud zdrojový počítač běží Linux
 
-Na zdrojovém počítači spusťte následující příkaz:
+Ve zdrojovém počítači spusťte následující příkaz:
 
 ```
   /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <configuration server IP address> -P /var/passphrase.txt
@@ -112,53 +112,53 @@ Na zdrojovém počítači spusťte následující příkaz:
 
 Nastavení | Podrobnosti
 --- | ---
-Využití | /usr/local/ASR/Vx/bin CD<br /><br /> UnifiedAgentConfigurator.sh-i < IP adresa konfiguračního serveru\>-P < cestu k souboru hesla\>
-– i | Povinný parametr. Určuje IP adresu konfiguračního serveru. Použijte jakoukoli platnou IP adresu.
--P |  Povinné. Úplná cesta k souboru, ve kterém je heslo uloženo. Použijte libovolnou platnou složku.
+Využití | cd /usr/local/ASR/Vx/bin<br /><br /> UnifiedAgentConfigurator.sh -i <adrese\> IP konfiguračního serveru -P <cesta k souboru heslem\>
+-i | Povinný parametr. Určuje adresu IP konfiguračního serveru. Použijte libovolnou platnou adresu IP.
+-P |  Povinné. Úplná cesta k souboru, do kterého je uloženo přístupové heslo. Použijte libovolnou platnou složku.
 
-## <a name="unable-to-configure-the-configuration-server"></a>Konfigurační server nelze nakonfigurovat.
+## <a name="unable-to-configure-the-configuration-server"></a>Konfigurace konfiguračního serveru nelze nakonfigurovat.
 
-Pokud na virtuálním počítači instalujete jiné aplikace než konfigurační server, možná nebudete moci nakonfigurovat hlavní cíl. 
+Pokud do virtuálního počítače nainstalujete jiné aplikace než konfigurační server, nebude pravděpodobně možné nakonfigurovat hlavní cíl. 
 
-Konfigurační server musí být jedním z účelových serverů a používat ho jako sdílený server, který není podporován. 
+Konfigurační server musí být server s jedním účelem a jeho použití jako sdíleného serveru není podporováno. 
 
-Další informace najdete v tématu Nejčastější dotazy týkající se konfigurace v [nasazení konfiguračního serveru](vmware-azure-deploy-configuration-server.md#faqs). 
+Další informace naleznete v nejčastějších dotazech ke konfiguraci v [tématu Nasazení konfiguračního serveru](vmware-azure-deploy-configuration-server.md#faqs). 
 
-## <a name="remove-the-stale-entries-for-protected-items-from-the-configuration-server-database"></a>Odebrat zastaralé položky pro chráněné položky z databáze konfiguračního serveru 
+## <a name="remove-the-stale-entries-for-protected-items-from-the-configuration-server-database"></a>Odebrání zastaralých položek chráněných položek z databáze konfiguračního serveru 
 
-K odebrání zastaralého chráněného počítače na konfiguračním serveru použijte následující postup. 
+Chcete-li odebrat zastaralý chráněný počítač na konfiguračním serveru, použijte následující kroky. 
  
-1. Určení zdrojového počítače a IP adresy zastaralého záznamu: 
+1. Určení zdrojového počítače a ADRESY IP zastaralé položky: 
 
-    1. Otevřete položku MYSQL cmdline v režimu správce. 
-    2. Spusťte následující příkazy. 
+    1. Otevřete cmdline MYSQL v režimu správce. 
+    2. Proveďte následující příkazy. 
    
         ```
         mysql> use svsdb1;
         mysql> select id as hostid, name, ipaddress, ostype as operatingsystem, from_unixtime(lasthostupdatetime) as heartbeat from hosts where name!='InMageProfiler'\G;
         ```
 
-        Tím se vrátí seznam registrovaných počítačů spolu s jejich IP adresami a poslední prezenční signál. Vyhledejte hostitele, který má zastaralé páry replikace.
+        Tím se vrátí seznam registrovaných strojů spolu s jejich IP adresami a posledním srdečním rytmem. Najděte hostitele, který má zastaralé dvojice replikace.
 
-2. Otevřete příkazový řádek se zvýšenými oprávněními a přejděte na C:\ProgramData\ASR\home\svsystems\bin. 
-4. Pokud chcete z konfiguračního serveru odebrat podrobnosti o registrovaných hostitelích a zastaralá data, spusťte následující příkaz pomocí zdrojového počítače a IP adresy zastaralého záznamu. 
+2. Otevřete příkazový řádek se zvýšenými oprávněními a přejděte na c:\ProgramData\ASR\home\svsystems\bin. 
+4. Chcete-li odebrat podrobnosti o registrovaných hostitelích a zastaralé informace o zadávání z konfiguračního serveru, spusťte následující příkaz pomocí zdrojového počítače a ip adresy zastaralé položky. 
    
     `Syntax: Unregister-ASRComponent.pl -IPAddress <IP_ADDRESS_OF_MACHINE_TO_UNREGISTER> -Component <Source/ PS / MT>`
  
-    Pokud máte položku zdrojového serveru "OnPrem-VM01" s IP adresou 10.0.0.4, použijte místo toho následující příkaz.
+    Pokud máte položku zdrojového serveru "OnPrem-VM01" s ip adresou 10.0.0.4, použijte místo toho následující příkaz.
  
     `perl Unregister-ASRComponent.pl -IPAddress 10.0.0.4 -Component Source`
  
-5. Restartujte následující služby na zdrojovém počítači pro opětovné zaregistrování na konfiguračním serveru. 
+5. Restartujte následující služby ve zdrojovém počítači a znovu se zaregistrujte pomocí konfiguračního serveru. 
  
     - InMage Scout Application Service
-    - InMage Scout VX agent – Sentinel/vystavení
+    - InMage Scout VX Agent - Sentinel/Outpost
 
-## <a name="upgrade-fails-when-the-services-fail-to-stop"></a>Upgrade se nepovede, když se služby nepodaří zastavit.
+## <a name="upgrade-fails-when-the-services-fail-to-stop"></a>Upgrade se nezdaří, když se služby nepodaří zastavit
 
-Upgrade konfiguračního serveru se nezdařil, pokud se některé služby nezastaví. 
+Upgrade konfiguračního serveru se nezdaří, pokud se některé služby nezastaví. 
 
-Chcete-li identifikovat problém, přejděte na C:\ProgramData\ASRSetupLogs\CX_TP_InstallLogFile na konfiguračním serveru. Pokud zjistíte následující chyby, vyřešte problém pomocí následujících kroků: 
+Chcete-li tento problém identifikovat, přejděte na konfiguračním serveru na položku C:\ProgramData\ASRSetupLogs\CX_TP_InstallLogFile. Pokud zjistíte následující chyby, použijte následující postup k vyřešení problému: 
 
     2018-06-28 14:28:12.943   Successfully copied php.ini to C:\Temp from C:\thirdparty\php5nts
     2018-06-28 14:28:12.943   svagents service status - SERVICE_RUNNING
@@ -171,70 +171,70 @@ Chcete-li identifikovat problém, přejděte na C:\ProgramData\ASRSetupLogs\CX_T
     2018-06-28 14:38:12.971   Rolling back the install changes.
     2018-06-28 14:38:12.971   Upgrade has failed.
 
-Problém vyřešíte takto:
+Chcete-li tento problém vyřešit:
 
 Ručně zastavte následující služby:
 
 - cxprocessserver
-- InMage Scout VX agent – Sentinel/vystavení 
-- Agent Microsoft Azure Recovery Services, 
-- Služba Microsoft Azure Site Recovery 
+- InMage Scout VX Agent – Sentinel/Outpost, 
+- Agent služby Microsoft Azure Recovery Services, 
+- Služba obnovení webu Microsoft Azure, 
 - tmansvc
   
-Chcete-li aktualizovat konfigurační server, spusťte [sjednocenou instalaci](service-updates-how-to.md#links-to-currently-supported-update-rollups) znovu.
+Chcete-li aktualizovat konfigurační server, spusťte [sjednocené nastavení](service-updates-how-to.md#links-to-currently-supported-update-rollups) znovu.
 
-## <a name="azure-active-directory-application-creation-failure"></a>Chyba při vytváření Azure Active Directory aplikace
+## <a name="azure-active-directory-application-creation-failure"></a>Selhání vytváření aplikací služby Azure Active Directory
 
-Nemáte dostatečná oprávnění k vytvoření aplikace v Azure Active Directory (AAD) pomocí šablony [Open virtualized Application (vajíčk)](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template
-) .
+Nemáte dostatečná oprávnění k vytvoření aplikace ve službě Azure Active Directory (AAD) pomocí šablony [Open Virtualization Application (OVA).](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template
+)
 
-Chcete-li tento problém vyřešit, přihlaste se k Azure Portal a proveďte jednu z následujících akcí:
+Pokud problém vyřešíte, přihlaste se na portál Azure a udělejte jednu z těchto věcí:
 
-- Vyžádejte si roli vývojáře aplikace v AAD. Další informace o roli vývojář aplikace najdete [v tématu oprávnění role správce v Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
-- Ověřte, jestli je **možnost uživatel může vytvořit příznak aplikace** nastavená na *hodnotu true* v AAD. Další informace najdete v tématu [Postupy: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
+- Vyžádejte si roli vývojáře aplikací v aad. Další informace o roli Vývojář aplikací najdete v [tématu Oprávnění rolí správce ve službě Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
+- Ověřte, zda **je příznak aplikace nastaven** na *hodnotu true* v anad. Další informace najdete v [tématu Postup: Pomocí portálu k vytvoření aplikace Azure AD a instančního objektu, který má přístup k prostředkům](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
 
-## <a name="process-servermaster-target-are-unable-to-communicate-with-the-configuration-server"></a>Procesový Server nebo hlavní cíl nemůžou komunikovat s konfiguračním serverem. 
+## <a name="process-servermaster-target-are-unable-to-communicate-with-the-configuration-server"></a>Procesní server nebo hlavní cíl nemohou komunikovat s konfiguračním serverem 
 
-Moduly procesového serveru (PS) a hlavní cíl (MT) nemůžou komunikovat s konfiguračním serverem (CS) a jejich stav se zobrazuje jako nepřipojený v Azure Portal.
+Moduly procesního serveru (PS) a Hlavní cíl (MT) nejsou schopny komunikovat s konfiguračním serverem (CS) a jejich stav se zobrazí jako nepřipojený na webu Azure Portal.
 
-Obvykle je to kvůli chybě s portem 443. Pomocí následujících kroků odblokujte port a znovu aktivujte komunikaci s CS.
+Obvykle je to způsobeno chybou s portem 443. Pomocí následujících kroků odblokujte port a znovu povolte komunikaci s cs.
 
-**Ověření, že agent MARS je vyvolán hlavním cílovým agentem**
+**Ověřte, zda je agent MARS vyvolán agentem hlavního cíle.**
 
-Chcete-li ověřit, zda může hlavní cílový agent vytvořit relaci protokolu TCP pro IP adresu konfiguračního serveru, vyhledejte v protokolech hlavního cílového agenta trasování podobné následujícímu:
+Chcete-li ověřit, zda hlavní cílový agent může vytvořit relaci TCP pro adresu IP konfiguračního serveru, vyhledejte trasování podobné následujícímu v protokolech agenta hlavního cíle:
 
-Protokol TCP \<nahradit IP adresu CS IP >: 52739 \<nahradit IP adresu CS IP >: 443 SYN_SENT 
+TCP \<Nahradit IP s CS IP zde \<>:52739 Nahradit IP cs IP zde>:443 SYN_SENT 
 
-TCP 192.168.1.40:52739 192.168.1.40:443 SYN_SENT//nahradit IP adresu CS
+TCP 192.168.1.40:52739 192.168.1.40:443 SYN_SENT // Nahradit IP s CS IP zde
 
-Pokud v protokolech MT zjistíte trasování, které je podobné následujícímu, agent MT hlásí chyby na portu 443:
+Pokud zjistíte trasování podobné následující v protokolech agenta MT, MT Agent hlásí chyby na portu 443:
 
     #~> (11-20-2018 20:31:51):   ERROR  2508 8408 313 FAILED : PostToSVServer with error [at curlwrapper.cpp:CurlWrapper::processCurlResponse:212]   failed to post request: (7) - Couldn't connect to server
     #~> (11-20-2018 20:31:54):   ERROR  2508 8408 314 FAILED : PostToSVServer with error [at curlwrapper.cpp:CurlWrapper::processCurlResponse:212]   failed to post request: (7) - Couldn't connect to server
  
-K této chybě může dojít, pokud jiné aplikace používají také port 443 nebo kvůli nastavení brány firewall blokujícího port.
+K této chybě může dojít, pokud ostatní aplikace také používají port 443 nebo z důvodu nastavení brány firewall, které blokuje port.
 
-Problém vyřešíte takto:
+Chcete-li tento problém vyřešit:
 
-- Ověřte, že brána firewall neblokuje port 443.
-- Pokud je port nedosažitelný z důvodu jiné aplikace, kterou tento port používá, zastavte a odinstalujte aplikaci.
-  - Pokud je zastavování aplikace neproveditelné, nastavte novou čistou CS.
+- Ověřte, zda brána firewall neblokuje port 443.
+- Pokud je port nedostupný kvůli jiné aplikaci, která tento port používá, zastavte a odinstalujte aplikaci.
+  - Pokud zastavení aplikace není možné, nastavte nový čistý CS.
 - Restartujte konfigurační server.
 - Restartujte službu IIS.
 
-### <a name="configuration-server-is-not-connected-due-to-incorrect-uuid-entries"></a>Konfigurační server není připojen z důvodu nesprávných záznamů UUID.
+### <a name="configuration-server-is-not-connected-due-to-incorrect-uuid-entries"></a>Konfigurační server není připojen z důvodu nesprávných položek UUID
 
-K této chybě může dojít, pokud je v databázi více položek identifikátoru UUID instance konfiguračního serveru (CS). K tomuto problému dochází často při klonování virtuálního počítače konfiguračního serveru.
+K této chybě může dojít, pokud existuje více položek instance uuid instance konfiguračního serveru (CS) v databázi. K problému často dochází při klonování virtuálního počítače konfiguračního serveru.
 
-Problém vyřešíte takto:
+Chcete-li tento problém vyřešit:
 
-1. Odeberte zastaralý virtuální počítač CS z vCenter. Další informace najdete v tématu [odebrání serverů a zakázání ochrany](site-recovery-manage-registration-and-protection.md).
-2. Přihlaste se k virtuálnímu počítači konfiguračního serveru a připojte se k databázi MySQL svsdb1. 
+1. Odebrat zastaralé/staré cs virtuální počítač z vCenter. Další informace naleznete v tématu [Odebrání serverů a zakázání ochrany](site-recovery-manage-registration-and-protection.md).
+2. Přihlaste se k virtuálnímu počítače konfiguračního serveru a připojte se k databázi MySQL svsdb1. 
 3. Spusťte následující dotaz:
 
     > [!IMPORTANT]
     >
-    > Ověřte, že zadáváte podrobnosti identifikátoru UUID naklonovaného konfiguračního serveru nebo jste zastaralou položku konfiguračního serveru, který se už nepoužívá k ochraně virtuálních počítačů. Pokud zadáte nesprávný UUID, ztratí se informace pro všechny existující chráněné položky.
+    > Ověřte, zda zadáváte podrobnosti uuid klonovaného konfiguračního serveru nebo zastaralé položky konfiguračního serveru, který se již nepoužívá k ochraně virtuálních počítačů. Zadání nesprávné uuid bude mít za následek ztrátu informací pro všechny existující chráněné položky.
    
     ```
         MySQL> use svsdb1;
@@ -243,13 +243,13 @@ Problém vyřešíte takto:
     ```
 4. Aktualizujte stránku portálu.
 
-## <a name="an-infinite-sign-in-loop-occurs-when-entering-your-credentials"></a>Při zadávání přihlašovacích údajů probíhá nekonečná smyčka přihlášení.
+## <a name="an-infinite-sign-in-loop-occurs-when-entering-your-credentials"></a>Nekonečné přihlašovací smyčka dochází při zadávání přihlašovacích údajů
 
-Po zadání správného uživatelského jména a hesla na konfiguračním serveru OVF se přihlášení Azure stále vyzve ke správnému zadání přihlašovacích údajů.
+Po zadání správné uživatelské jméno a heslo na konfiguračním serveru OVF, Přihlášení Azure nadále výzvu k zadání správné přihlašovací údaje.
 
-K tomuto problému může dojít v případě, že systémový čas není správný.
+K tomuto problému může dojít, pokud je nesprávný systémový čas.
 
-Problém vyřešíte takto:
+Chcete-li tento problém vyřešit:
 
-Nastavte na počítači správný čas a znovu se přihlaste. 
+Nastavte správný čas v počítači a opakujte přihlášení. 
  

@@ -1,6 +1,6 @@
 ---
-title: Konfigurace vlastního klíče pro šifrování Azure Service Busch dat v klidovém prostředí
-description: Tento článek poskytuje informace o tom, jak nakonfigurovat vlastní klíč pro šifrování Azure Service Bus data REST.
+title: Konfigurace vlastního klíče pro šifrování dat azure service bus v klidovém stavu
+description: Tento článek obsahuje informace o tom, jak nakonfigurovat vlastní klíč pro šifrování úložiště dat Azure Service Bus.
 services: service-bus-messaging
 ms.service: service-bus
 documentationcenter: ''
@@ -9,115 +9,115 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: aschhab
 ms.openlocfilehash: aeb9a9730ddc61793e49c9e042906457e0068d9a
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77624090"
 ---
-# <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování Azure Service Bus dat v klidovém formátu pomocí Azure Portal
-Azure Service Bus Premium poskytuje šifrování neaktivních dat pomocí šifrování služby Azure Storage (Azure SSE). Service Bus Premium spoléhá na Azure Storage uložení dat a ve výchozím nastavení se všechna data uložená pomocí Azure Storage šifrují pomocí klíčů spravovaných Microsoftem. 
+# <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Konfigurace klíčů spravovaných zákazníky pro šifrování dat Azure Service Bus v klidovém stavu pomocí portálu Azure
+Azure Service Bus Premium poskytuje šifrování dat v klidovém stavu pomocí šifrování služby Azure Storage Service (Azure SSE). Service Bus Premium spoléhá na Azure Storage pro ukládání dat a ve výchozím nastavení všechna data, která jsou uložená ve službě Azure Storage je šifrována pomocí klíčů spravovaných Microsoftem. 
 
 ## <a name="overview"></a>Přehled
-Azure Service Bus teď podporuje možnost šifrování neaktivních dat buď pomocí klíčů spravovaných Microsoftem nebo klíčů spravovaných zákazníkem (Bring Your Own Key-BYOK). Tato funkce umožňuje vytvořit, otočit, zakázat a odvolat přístup k klíčům spravovaným zákazníkem, které se používají k šifrování Azure Service Bus v klidovém umístění.
+Azure Service Bus teď podporuje možnost šifrování dat v klidovém stavu pomocí klíčů spravovaných microsoftem nebo klíčů spravovaných zákazníky (Bring Your Own Key - BYOK). Tato funkce umožňuje vytvářet, otáčet, zakázat a odvolat přístup ke klíčům spravovaným zákazníkem, které se používají k šifrování služby Azure Service Bus v klidovém stavu.
 
-Povolení funkce BYOK je jednorázovým procesem nastavení v oboru názvů.
+Povolení funkce BYOK je proces jednorázového nastavení v oboru názvů.
 
 > [!NOTE]
-> Pro šifrování na straně služby jsou k dispozici určitá upozornění ke spravovanému klíči zákazníka. 
->   * Tuto funkci podporuje Azure Service Bus úrovně [Premium](service-bus-premium-messaging.md) . Nedá se povolit pro obory názvů Service Bus úrovně Standard.
->   * Šifrování lze povolit pouze pro nové nebo prázdné obory názvů. Pokud obor názvů obsahuje data, operace šifrování selže.
+> Existují některé upozornění pro klienta spravovaného klíče pro šifrování na straně služby. 
+>   * Tato funkce je podporovaná úrovní [Azure Service Bus Premium.](service-bus-premium-messaging.md) Nelze povolit pro obory názvů service bus úrovně standard.
+>   * Šifrování lze povolit pouze pro nové nebo prázdné obory názvů. Pokud obor názvů obsahuje data, operace šifrování se nezdaří.
 
-Pomocí Azure Key Vault můžete spravovat klíče a auditovat používání klíčů. Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů, nebo můžete použít rozhraní API Azure Key Vault k vygenerování klíčů. Další informace o Azure Key Vault najdete v tématu [co je Azure Key Vault?](../key-vault/key-vault-overview.md)
+Azure Key Vault můžete použít ke správě klíčů a auditování využití klíčů. Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů, nebo můžete použít Azure Key Vault API ke generování klíčů. Další informace o Azure Key Vault najdete v tématu [Co je Azure Key Vault?](../key-vault/key-vault-overview.md)
 
-V tomto článku se dozvíte, jak nakonfigurovat Trezor klíčů pomocí klíčů spravovaných zákazníkem pomocí Azure Portal. Informace o tom, jak vytvořit Trezor klíčů pomocí Azure Portal, najdete v tématu [rychlý Start: nastavení a načtení tajného klíče z Azure Key Vault pomocí Azure Portal](../key-vault/quick-create-portal.md).
+Tento článek ukazuje, jak nakonfigurovat trezor klíčů pomocí klíčů spravovaných zákazníkem pomocí portálu Azure. Informace o tom, jak vytvořit trezor klíčů pomocí webu Azure Portal, najdete v [tématu Úvodní příručka: Nastavení a načtení tajného klíče z Azure Key Vault pomocí portálu Azure](../key-vault/quick-create-portal.md).
 
 > [!IMPORTANT]
-> Použití klíčů spravovaných zákazníkem s Azure Service Bus vyžaduje, aby měl Trezor klíčů nakonfigurované dvě požadované vlastnosti. Jsou to: **obnovitelné odstranění** a **Nemazat**. Tyto vlastnosti jsou ve výchozím nastavení povolené, když v Azure Portal vytvoříte nový trezor klíčů. Pokud ale potřebujete tyto vlastnosti v existujícím trezoru klíčů povolit, musíte použít buď PowerShell, nebo rozhraní příkazového řádku Azure CLI.
+> Použití klíčů spravovaných zákazníky s Azure Service Bus vyžaduje, aby trezor klíčů měl nakonfigurované dvě požadované vlastnosti. Jsou to: **Obnovitelné odstranění** a **Nečistit**. Tyto vlastnosti jsou ve výchozím nastavení povolené při vytváření nového trezoru klíčů na webu Azure Portal. Pokud však potřebujete povolit tyto vlastnosti v existujícím trezoru klíčů, musíte použít buď PowerShell nebo Azure CLI.
 
-## <a name="enable-customer-managed-keys"></a>Povolit klíče spravované zákazníkem
-Pokud chcete povolit klíčům spravovaným zákazníkem v Azure Portal, postupujte následovně:
+## <a name="enable-customer-managed-keys"></a>Povolení klíčů spravovaných zákazníkem
+Pokud chcete povolit klíče spravované zákazníky na webu Azure Portal, postupujte takto:
 
 1. Přejděte do oboru názvů Service Bus Premium.
-2. Na stránce **Nastavení** v oboru názvů Service Bus vyberte **šifrování**.
-3. Vyberte **šifrování klíče spravovaného zákazníkem v klidovém** formátu, jak je znázorněno na následujícím obrázku.
+2. Na stránce **Nastavení** oboru názvů služby Service Bus vyberte **Možnost Šifrování**.
+3. Vyberte **šifrování klíče spravované zákazníkem v klidovém stavu,** jak je znázorněno na následujícím obrázku.
 
-    ![Povolit spravovaný klíč zákazníka](./media/configure-customer-managed-key/enable-customer-managed-key.png)
+    ![Povolit klíč spravovaný zákazníkem](./media/configure-customer-managed-key/enable-customer-managed-key.png)
 
 
 ## <a name="set-up-a-key-vault-with-keys"></a>Nastavení trezoru klíčů s klíči
 
-Po povolení klíčů spravovaných zákazníkem je potřeba přidružit spravovaný klíč zákazníka k vašemu oboru názvů Azure Service Bus. Service Bus podporuje pouze Azure Key Vault. Pokud zapnete možnost **šifrování pomocí klíče spravovaného zákazníkem** v předchozí části, je potřeba, abyste klíč importovali do Azure Key Vault. Klíče musí také obsahovat **obnovitelné odstranění** a pro tento klíč **se** neodstraňují konfigurace. Tato nastavení se dají nakonfigurovat pomocí [PowerShellu](../key-vault/key-vault-soft-delete-powershell.md) nebo rozhraní příkazového [řádku](../key-vault/key-vault-soft-delete-cli.md#enabling-purge-protection).
+Po povolení klíčů spravovaných zákazníkem je potřeba přidružit klíč spravovaný zákazníkem k oboru názvů Azure Service Bus. Service Bus podporuje pouze Azure Key Vault. Pokud povolíte **možnost Šifrování s klíčem spravovaným zákazníkem** v předchozí části, musíte mít klíč importován do úložiště klíčů Azure. Klíče musí mít také pro klíč nakonfigurovány **funkce Obnovitelné odstranění** a **Neodstraňovat.** Tato nastavení lze nakonfigurovat pomocí [prostředí PowerShell](../key-vault/key-vault-soft-delete-powershell.md) nebo [CLI](../key-vault/key-vault-soft-delete-cli.md#enabling-purge-protection).
 
-1. Pokud chcete vytvořit nový trezor klíčů, postupujte podle pokynů pro [rychlý start](../key-vault/key-vault-overview.md)Azure Key Vault. Další informace o importu existujících klíčů najdete v tématu [informace o klíčích, tajných klíčích a certifikátech](../key-vault/about-keys-secrets-and-certificates.md).
-1. Pokud chcete při vytváření trezoru zapnout ochranu pomocí obnovitelného odstranění i vyprázdnění, použijte příkaz [AZ datatrezor Create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) .
+1. Chcete-li vytvořit nový trezor klíčů, postupujte podle [úvodního panelu Azure](../key-vault/key-vault-overview.md)Key Vault . Další informace o importu existujících klíčů naleznete [v tématu O klíčích, tajných klíčích a certifikátech](../key-vault/about-keys-secrets-and-certificates.md).
+1. Chcete-li při vytváření trezoru zapnout ochranu proti měkkému odstranění i vymazání, použijte příkaz [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) .
 
     ```azurecli-interactive
     az keyvault create --name contoso-SB-BYOK-keyvault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
     ```    
-1. Pokud chcete přidat ochranu vyprázdnit do existujícího trezoru (který už má povolené obnovitelné odstranění), použijte příkaz [AZ klíčů trezor Update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) .
+1. Chcete-li přidat ochranu proti vymazání do existujícího trezoru (který již má povoleno obnovitelné odstranění), použijte příkaz [az keyvault update.](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update)
 
     ```azurecli-interactive
     az keyvault update --name contoso-SB-BYOK-keyvault --resource-group ContosoRG --enable-purge-protection true
     ```
-1. Pomocí následujících kroků vytvořte klíče:
-    1. Pokud chcete vytvořit nový klíč, vyberte v nabídce **klíče** v části **Nastavení**možnost **Generovat/importovat** .
+1. Vytvořte klíče následujícím postupem:
+    1. Chcete-li vytvořit novou klávesu, vyberte **Generovat/importovat** z nabídky **Klávesy** v části **Nastavení**.
         
-        ![Vybrat tlačítko pro vygenerování/import](./media/configure-customer-managed-key/select-generate-import.png)
+        ![Tlačítko Vybrat generovat/importovat](./media/configure-customer-managed-key/select-generate-import.png)
 
-    1. Nastavte **Možnosti** , které se mají **vygenerovat** , a zadejte název klíče.
+    1. Nastavte **možnosti** **pro generování** a pojmenujte klíč.
 
         ![Vytvoření klíče](./media/configure-customer-managed-key/create-key.png) 
 
     1. Nyní můžete vybrat tento klíč, který chcete přidružit k oboru názvů Service Bus pro šifrování z rozevíracího seznamu. 
 
-        ![Vyberte klíč z trezoru klíčů.](./media/configure-customer-managed-key/select-key-from-key-vault.png)
+        ![Vybrat klíč z trezoru klíčů](./media/configure-customer-managed-key/select-key-from-key-vault.png)
         > [!NOTE]
-        > Pro zajištění redundance můžete přidat až 3 klíče. V případě, že jedna z klíčů vypršela, nebo k ní nelze získat přístup, budou použity jiné klíče pro šifrování.
+        > Pro redundanci můžete přidat až 3 klíče. V případě, že platnost jednoho z klíčů vypršela nebo není přístupná, budou ostatní klíče použity k šifrování.
         
-    1. Zadejte podrobnosti pro klíč a klikněte na **Vybrat**. Tím se povolí Šifrování neaktivních dat v oboru názvů pomocí klíče spravovaného zákazníkem. 
+    1. Vyplňte podrobnosti klíče a klepněte na **tlačítko Vybrat**. To umožní šifrování dat v klidovém stavu v oboru názvů pomocí klientského spravovaného klíče. 
 
 
     > [!IMPORTANT]
-    > Pokud chcete použít spravovaný klíč zákazníka spolu s geografickým zotavením po havárii, přečtěte si níže 
+    > Pokud chcete používat klíč spravovaný zákazníkem spolu s geo zotavením po havárii, přečtěte si níže uvedené 
     >
-    > Pokud chcete povolit šifrování v klidovém formátu pomocí spravovaného klíče zákazníka, nastaví se [zásada přístupu](../key-vault/key-vault-secure-your-key-vault.md) pro spravovanou identitu Service Bus v zadaném úložišti klíčů Azure. Tím se zajistí řízený přístup k trezoru klíčů Azure z oboru názvů Azure Service Bus.
+    > Chcete-li povolit šifrování v klidovém stavu s klíčem spravovaným zákazníkem, je [nastavena zásada přístupu](../key-vault/key-vault-secure-your-key-vault.md) pro spravovanou identitu service bus u zadaného Azure KeyVault. Tím je zajištěn řízený přístup k azure keyvault z oboru názvů Azure Service Bus.
     >
     > Z tohoto důvodu:
     > 
-    >   * Pokud je pro obor názvů Service Bus povolené [geografické zotavení po havárii](service-bus-geo-dr.md) a chcete povolit spravovaný klíč zákazníka, 
+    >   * Pokud je pro obor názvů Service Bus již povoleno [geografické zotavení po havárii](service-bus-geo-dr.md) a chcete povolit klíč spravovaný zákazníkem, pak 
     >     * Přerušení párování
     >     * [Nastavte zásady přístupu](../key-vault/managed-identity.md) pro spravovanou identitu pro primární i sekundární obory názvů do trezoru klíčů.
     >     * Nastavte šifrování v primárním oboru názvů.
-    >     * Přespárujte primární a sekundární obory názvů.
+    >     * Znovu spárujte primární a sekundární obory názvů.
     > 
-    >   * Pokud chcete povolit geografickou možnost DR pro obor názvů Service Bus, kde je už nastavený zákazníkem spravovaný klíč, pak –
+    >   * Pokud chcete povolit geodr v oboru názvů Service Bus, kde je již nastaven klíč spravovaný zákazníkem, pak -
     >     * [Nastavte zásady přístupu](../key-vault/managed-identity.md) pro spravovanou identitu pro sekundární obor názvů do trezoru klíčů.
-    >     * Spáruje primární a sekundární obory názvů.
+    >     * Spárujte primární a sekundární obory názvů.
 
 
 ## <a name="rotate-your-encryption-keys"></a>Otočení šifrovacích klíčů
 
-Svůj klíč můžete v trezoru klíčů otočit pomocí mechanismu rotace trezorů klíčů Azure. Další informace najdete v tématu [Nastavení rotace klíčů a auditování](../key-vault/key-vault-key-rotation-log-monitoring.md). Data o aktivaci a vypršení platnosti je také možné nastavit na automatizaci střídání klíčů. Služba Service Bus detekuje nové verze klíčů a automaticky je začne používat.
+Klíč v trezoru klíčů můžete otočit pomocí mechanismu střídání trezorů klíčů Azure. Další informace naleznete v [tématu Nastavení střídání klíčů a auditování](../key-vault/key-vault-key-rotation-log-monitoring.md). Data aktivace a vypršení platnosti lze také nastavit tak, aby automatizovala střídání klíčů. Služba Service Bus detekuje nové verze klíčů a začne je automaticky používat.
 
-## <a name="revoke-access-to-keys"></a>Odvolat přístup k klíčům
+## <a name="revoke-access-to-keys"></a>Odvolání přístupu ke klíčům
 
-Odvolání přístupu k šifrovacím klíčům neodstraní data z Service Bus. K datům ale nelze přicházet z oboru názvů Service Bus. Šifrovací klíč můžete odvolat pomocí zásad přístupu nebo odstraněním klíče. Přečtěte si další informace o zásadách přístupu a zabezpečení trezoru klíčů před [zabezpečeným přístupem k trezoru klíčů](../key-vault/key-vault-secure-your-key-vault.md).
+Zrušením přístupu k šifrovacím klíčům se data ze služby Service Bus nevymaže. Data však nelze získat přístup z oboru názvů Service Bus. Šifrovací klíč můžete odvolat prostřednictvím zásad přístupu nebo odstraněním klíče. Přečtěte si další informace o zásadách přístupu a zabezpečení trezoru klíčů z [zabezpečeného přístupu k trezoru klíčů](../key-vault/key-vault-secure-your-key-vault.md).
 
-Po odvolání šifrovacího klíče se služba Service Bus v zašifrovaném oboru názvů stane nefunkčním. Pokud je povolený přístup k klíči nebo dojde k obnovení odstraněného klíče, Service Bus služba vybere klíč, abyste mohli přistupovat k datům z šifrovaného názvového prostoru Service Bus.
+Po odvolání šifrovacího klíče se služba Service Bus v šifrovaném oboru názvů stane nefunkční. Pokud je povolen přístup ke klíči nebo je obnoven odstraněný klíč, služba Service Bus vybere klíč, abyste měli přístup k datům z oboru názvů šifrované služby Service Bus.
 
-## <a name="use-resource-manager-template-to-enable-encryption"></a>Použití šablony Správce prostředků k povolení šifrování
-V této části se dozvíte, jak provádět následující úlohy pomocí **Azure Resource Manager šablon**. 
+## <a name="use-resource-manager-template-to-enable-encryption"></a>Povolení šifrování pomocí šablony Správce prostředků
+Tato část ukazuje, jak provést následující úkoly pomocí **šablon Azure Resource Manager**. 
 
 1. Vytvořte obor názvů **premium** Service Bus s **identitou spravované služby**.
-2. Vytvořte **Trezor klíčů** a Udělte identitě služby přístup k trezoru klíčů. 
-3. Aktualizujte obor názvů Service Bus s informacemi o trezoru klíčů (klíč/hodnota). 
+2. Vytvořte **trezor klíčů** a udělte identitě služby přístup k trezoru klíčů. 
+3. Aktualizujte obor názvů Service Bus informacemi o trezoru klíčů (klíč/hodnota). 
 
 
-### <a name="create-a-premium-service-bus-namespace-with-managed-service-identity"></a>Vytvoření oboru názvů Premium Service Bus s identitou spravované služby
-V této části se dozvíte, jak vytvořit obor názvů Azure Service Bus s identitou spravované služby pomocí šablony Azure Resource Manager a PowerShellu. 
+### <a name="create-a-premium-service-bus-namespace-with-managed-service-identity"></a>Vytvoření prémiového oboru názvů service bus s identitou spravované služby
+Tato část ukazuje, jak vytvořit obor názvů Azure Service Bus s identitou spravované služby pomocí šablony Azure Resource Manager a PowerShellu. 
 
-1. Vytvořte šablonu Azure Resource Manager pro vytvoření oboru názvů Service Bus úrovně Premium s identitou spravované služby. Název souboru: **CreateServiceBusPremiumNamespace. JSON**: 
+1. Vytvořte šablonu Azure Resource Manager k vytvoření oboru názvů úrovně Service Bus premium s identitou spravované služby. Název souboru: **CreateServiceBusPremiumNamespace.json**: 
 
     ```json
     {
@@ -165,12 +165,12 @@ V této části se dozvíte, jak vytvořit obor názvů Azure Service Bus s iden
        }
     }
     ```
-2. Vytvořte soubor parametrů šablony s názvem: **CreateServiceBusPremiumNamespaceParams. JSON**. 
+2. Vytvořte soubor parametrů šablony s **názvem: CreateServiceBusPremiumNamespaceParams.json**. 
 
     > [!NOTE]
     > Nahraďte následující hodnoty: 
-    > - `<ServiceBusNamespaceName>` – název vašeho oboru názvů Service Bus
-    > - `<Location>` – umístění vašeho oboru názvů Service Bus
+    > - `<ServiceBusNamespaceName>`- Název oboru názvů Service Bus
+    > - `<Location>`- Umístění vašeho oboru názvů Service Bus
 
     ```json
     {
@@ -186,7 +186,7 @@ V této části se dozvíte, jak vytvořit obor názvů Azure Service Bus s iden
        }
     }
     ```
-3. Spuštěním následujícího příkazu PowerShellu nasaďte šablonu a vytvořte obor názvů Premium Service Bus. Pak načtěte ID Service Bus oboru názvů pro pozdější použití. Před spuštěním příkazu nahraďte `{MyRG}` názvem skupiny prostředků.  
+3. Spusťte následující příkaz Prostředí PowerShell a nasadíte šablonu a vytvořte tak prémiový obor názvů Service Bus. Potom načtěte ID oboru názvů Service Bus a použijte jej později. Před `{MyRG}` spuštěním příkazu nahraďte názvem skupiny prostředků.  
 
     ```powershell
     $outputs = New-AzResourceGroupDeployment -Name CreateServiceBusPremiumNamespace -ResourceGroupName {MyRG} -TemplateFile ./CreateServiceBusPremiumNamespace.json -TemplateParameterFile ./CreateServiceBusPremiumNamespaceParams.json
@@ -194,22 +194,22 @@ V této části se dozvíte, jak vytvořit obor názvů Azure Service Bus s iden
     $ServiceBusNamespaceId = $outputs.Outputs["serviceBusNamespaceId"].value
     ```
  
-### <a name="grant-service-bus-namespace-identity-access-to-key-vault"></a>Udělení přístupu k identitě oboru názvů Service Bus k trezoru klíčů
+### <a name="grant-service-bus-namespace-identity-access-to-key-vault"></a>Udělit přístup k identitě oboru názvů služby Service Bus do trezoru klíčů
 
-1. Spusťte následující příkaz, který vytvoří Trezor klíčů s povoleným **ochranou vyprázdnění** a **obnovitelného odstranění** . 
+1. Spuštěním následujícího příkazu vytvořte trezor klíčů s **povolenou ochranou proti vymazání** a **měkkým odstraněním.** 
 
     ```powershell
     New-AzureRmKeyVault -Name "{keyVaultName}" -ResourceGroupName {RGName}  -Location "{location}" -EnableSoftDelete -EnablePurgeProtection    
     ```
     
-    ANI
+    (NEBO)
     
-    Spuštěním následujícího příkazu aktualizujte **existující Trezor klíčů**. Před spuštěním příkazu zadejte hodnoty pro názvy skupin prostředků a trezorů klíčů. 
+    Chcete-li aktualizovat **existující trezor klíčů**, spusťte následující příkaz . Před spuštěním příkazu zadejte hodnoty pro názvy skupin prostředků a trezoru klíčů. 
     
     ```powershell
     ($updatedKeyVault = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -ResourceGroupName {RGName} -VaultName {keyVaultName}).ResourceId).Properties| Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"-Force | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true" -Force
     ``` 
-2. Nastavte zásady přístupu trezoru klíčů tak, aby spravovaná identita oboru názvů Service Bus mohla přistupovat k hodnotě klíče v trezoru klíčů. Použijte ID Service Bus oboru názvů z předchozí části. 
+2. Nastavte zásady přístupu trezoru klíčů tak, aby spravovaná identita oboru názvů Service Bus mohla přistupovat k hodnotě klíče v trezoru klíčů. Použijte ID oboru názvů Service Bus z předchozí části. 
 
     ```powershell
     $identity = (Get-AzureRmResource -ResourceId $ServiceBusNamespaceId -ExpandProperties).Identity
@@ -217,15 +217,15 @@ V této části se dozvíte, jak vytvořit obor názvů Azure Service Bus s iden
     Set-AzureRmKeyVaultAccessPolicy -VaultName {keyVaultName} -ResourceGroupName {RGName} -ObjectId $identity.PrincipalId -PermissionsToKeys get,wrapKey,unwrapKey,list
     ```
 
-### <a name="encrypt-data-in-service-bus-namespace-with-customer-managed-key-from-key-vault"></a>Šifrování dat v Service Bus obor názvů s klíčem spravovaným zákazníkem z trezoru klíčů
-V tomto případě jste provedli následující kroky: 
+### <a name="encrypt-data-in-service-bus-namespace-with-customer-managed-key-from-key-vault"></a>Šifrování dat v oboru názvů Service Bus pomocí klíče spravovaného zákazníkem z trezoru klíčů
+Zatím jste provedli následující kroky: 
 
-1. Vytvořili jste obor názvů Premium se spravovanou identitou.
-2. Vytvořte Trezor klíčů a udělený přístup ke spravovaným identitám do trezoru klíčů. 
+1. Vytvořil i prémiový obor názvů se spravovanou identitou.
+2. Vytvořte trezor klíčů a udělte spravované identitě přístup k trezoru klíčů. 
 
-V tomto kroku aktualizujete obor názvů Service Bus s použitím informací o trezoru klíčů. 
+V tomto kroku aktualizujete obor názvů Service Bus informacemi o trezoru klíčů. 
 
-1. Vytvořte soubor JSON s názvem **UpdateServiceBusNamespaceWithEncryption. JSON** s následujícím obsahem: 
+1. Vytvořte soubor JSON s názvem **UpdateServiceBusNamespaceWithEncryption.json** s následujícím obsahem: 
 
     ```json
     {
@@ -288,14 +288,14 @@ V tomto kroku aktualizujete obor názvů Service Bus s použitím informací o t
     }
     ``` 
 
-2. Vytvořte soubor parametrů šablony: **UpdateServiceBusNamespaceWithEncryptionParams. JSON**.
+2. Vytvoření souboru parametru šablony: **UpdateServiceBusNamespaceWithEncryptionParams.json**.
 
     > [!NOTE]
     > Nahraďte následující hodnoty: 
-    > - `<ServiceBusNamespaceName>` – název vašeho oboru názvů Service Bus
-    > - `<Location>` – umístění vašeho oboru názvů Service Bus
-    > - `<KeyVaultName>` – název vašeho trezoru klíčů
-    > - `<KeyName>` – název klíče v trezoru klíčů  
+    > - `<ServiceBusNamespaceName>`- Název oboru názvů Service Bus
+    > - `<Location>`- Umístění vašeho oboru názvů Service Bus
+    > - `<KeyVaultName>`- Název trezoru klíčů
+    > - `<KeyName>`- Název klíče v trezoru klíčů  
 
     ```json
     {
@@ -317,7 +317,7 @@ V tomto kroku aktualizujete obor názvů Service Bus s použitím informací o t
        }
     }
     ```             
-3. Spusťte následující příkaz prostředí PowerShell, který nasadí šablonu Správce prostředků. Před spuštěním příkazu nahraďte `{MyRG}` názvem vaší skupiny prostředků. 
+3. Spusťte následující příkaz Prostředí PowerShell a nasaďte šablonu Správce prostředků. Před `{MyRG}` spuštěním příkazu nahraďte názvem skupiny prostředků. 
 
     ```powershell
     New-AzResourceGroupDeployment -Name UpdateServiceBusNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateServiceBusNamespaceWithEncryption.json -TemplateParameterFile ./UpdateServiceBusNamespaceWithEncryptionParams.json
@@ -326,7 +326,7 @@ V tomto kroku aktualizujete obor názvů Service Bus s použitím informací o t
 
 ## <a name="next-steps"></a>Další kroky
 Viz následující články:
-- [Přehled Service Bus](service-bus-messaging-overview.md)
-- [Přehled Key Vault](../key-vault/key-vault-overview.md)
+- [Přehled sběrnice](service-bus-messaging-overview.md)
+- [Trezor klíčů – přehled](../key-vault/key-vault-overview.md)
 
 

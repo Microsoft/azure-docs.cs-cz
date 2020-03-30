@@ -1,5 +1,5 @@
 ---
-title: Konfigurace App Service pomocí prostředí PowerShell
+title: Konfigurace služby App Service pomocí PowerShellu
 titleSuffix: Azure Application Gateway
 description: Tento článek obsahuje pokyny ke konfiguraci webových aplikací jako hostitelů back-end ve stávající nebo nové službě Application Gateway.
 services: application-gateway
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: victorh
 ms.openlocfilehash: 4198c83a167ad8f2d52f4393c39625948e18e6e3
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74089515"
 ---
-# <a name="configure-app-service-with-application-gateway-using-powershell"></a>Konfigurace App Service s využitím Application Gateway pomocí PowerShellu
+# <a name="configure-app-service-with-application-gateway-using-powershell"></a>Konfigurace služby App Service s aplikační bránou pomocí PowerShellu
 
-Application Gateway umožňuje mít jako člena fondu back-end App Service aplikaci nebo jinou službu pro více tenantů. V tomto článku se naučíte konfigurovat aplikaci App Service pomocí Application Gateway. V prvním příkladu se dozvíte, jak nakonfigurovat stávající službu Application Gateway pro použití webové aplikace jako člena fondu back-end. V druhém příkladu se dozvíte, jak vytvořit novou službu Application Gateway s webovou aplikací jako členem fondu back-end.
+Aplikační brána umožňuje mít aplikaci služby App Service nebo jinou víceklientské služby jako člena fondu back-end. V tomto článku se naučíte nakonfigurovat aplikaci služby App Service s aplikační bránou. V prvním příkladu se dozvíte, jak nakonfigurovat stávající službu Application Gateway pro použití webové aplikace jako člena fondu back-end. V druhém příkladu se dozvíte, jak vytvořit novou službu Application Gateway s webovou aplikací jako členem fondu back-end.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -160,9 +160,9 @@ DnsSettings              : {
 
 ## <a name="restrict-access"></a>Omezení přístupu
 
-Webové aplikace nasazené v těchto příkladech používají veřejné IP adresy, ke kterým lze získat přímý pøístup z Internetu. Pomůže vám to při řešení potíží, když se naučíte o nové funkci a zkoušíme nové věci. Pokud ale máte v úmyslu nasadit funkci do produkčního prostředí, budete chtít přidat další omezení.
+Webové aplikace nasazené v těchto příkladech používají veřejné IP adresy, ke kterým lze přistupovat přímo z Internetu. To pomáhá při řešení potíží, když se učíte o nové funkci a zkoušíte nové věci. Ale pokud máte v úmyslu nasadit funkci do produkčního prostředí, budete chtít přidat další omezení.
 
-Jedním ze způsobů, jak omezit přístup k webovým aplikacím, je použít [Azure App Service omezení statických IP adres](../app-service/app-service-ip-restrictions.md). Můžete například omezit webovou aplikaci tak, aby přijímala pouze provoz z aplikační brány. Pomocí funkce omezení IP adres služby App Service můžete zobrazit seznam VIP adres Application Gateway jako jedinou adresu s přístupem.
+Jedním ze způsobů, jak omezit přístup k webovým aplikacím, je použití [statických omezení IP služby Azure App Service](../app-service/app-service-ip-restrictions.md). Můžete například omezit webovou aplikaci tak, aby přijínala pouze provoz z aplikační brány. Pomocí funkce omezení IP služby aplikace můžete vypsat virtuální ip adresu brány aplikace jako jedinou adresu s přístupem.
 
 ## <a name="next-steps"></a>Další kroky
 

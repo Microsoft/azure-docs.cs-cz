@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace Snowflake pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
-description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro Snowflake.
+title: 'Kurz: Konfigurace sněhové vločky pro automatické zřizování uživatelů pomocí služby Azure Active Directory | Dokumenty společnosti Microsoft'
+description: Zjistěte, jak nakonfigurovat službu Azure Active Directory tak, aby automaticky zřašovala a zřizovala uživatelské účty pro Snowflake.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,159 +16,159 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: 2c5d91894ba35233f3fbebffdff9104edcfdd27b
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063135"
 ---
-# <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>Kurz: Konfigurace Snowflake pro Automatické zřizování uživatelů
+# <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>Kurz: Konfigurace sněhové vločky pro automatické zřizování uživatelů
 
-Cílem tohoto kurzu je předvést kroky, které je třeba provést v Snowflake a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD pro Automatické zřizování a zrušení zřizování uživatelů nebo skupin pro Snowflake.
+Cílem tohoto kurzu je demonstrovat kroky, které mají být provedeny ve Snowflake a Azure Active Directory (Azure AD) nakonfigurovat Azure AD automaticky zřídit a de-zřizování uživatelů nebo skupin snowflake.
 
 > [!NOTE]
-> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
+> Tento kurz popisuje konektor postavený na nad službou zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá, jak funguje, a nejčastější dotazy, najdete [v tématu Automatizace zřizování uživatelů a zrušení zřizování aplikací SaaS pomocí služby Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
-> Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
+> Tento konektor je aktuálně ve verzi Public Preview. Další informace o obecných podmínkách použití Microsoft Azure pro funkce preview najdete v [tématu Doplňkové podmínky použití pro Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
+Scénář popsaný v tomto kurzu předpokládá, že již máte následující požadavky:
 
 * Tenanta Azure AD.
-* [Tenant Snowflake](https://www.Snowflake.com/pricing/)
-* Uživatelský účet v Snowflake s oprávněními správce.
+* [Nájemce sněhové vločky](https://www.Snowflake.com/pricing/).
+* Uživatelský účet ve sněhové vločkě s oprávněními správce.
 
-## <a name="assigning-users-to-snowflake"></a>Přiřazování uživatelů k Snowflake
+## <a name="assigning-users-to-snowflake"></a>Přiřazení uživatelů k Sněhové vločkě
 
-Azure Active Directory používá koncept nazvaný *přiřazení* k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelů se synchronizují jenom uživatelé a skupiny, které jsou přiřazené k aplikaci v Azure AD.
+Azure Active Directory používá koncept s názvem *přiřazení* k určení, kteří uživatelé by měli získat přístup k vybraným aplikacím. V kontextu automatickézřižené zřizování uživatelů jsou synchronizovány pouze uživatelé nebo skupiny, které byly přiřazeny k aplikaci ve službě Azure AD.
 
-Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé a skupiny ve službě Azure AD potřebují přístup k Snowflake. Po rozhodnutí můžete přiřadit tyto uživatele nebo skupiny k Snowflake podle pokynů uvedených tady:
+Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé nebo skupiny ve službě Azure AD potřebují přístup k Snowflake. Jakmile se rozhodnete, můžete přiřadit tyto uživatele a / nebo skupiny Snowflake podle pokynů zde:
 * [Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
 
 ## <a name="important-tips-for-assigning-users-to-snowflake"></a>Důležité tipy pro přiřazení uživatelů k Snowflake
 
-* Doporučuje se, aby se k Snowflake k testování automatické konfigurace zřizování uživatelů přiřadil jeden uživatel Azure AD. Další uživatele a skupiny můžete přiřadit později.
+* Doporučuje se, aby jeden uživatel Azure AD je přiřazen a Snowflake otestovat konfiguraci automatického zřizování uživatelů. Další uživatelé a/nebo skupiny mohou být přiřazeny později.
 
-* Při přiřazování uživatele k Snowflake musíte v dialogovém okně přiřazení vybrat jakoukoli platnou roli specifickou pro aplikaci (Pokud je dostupná). Uživatelé s **výchozí rolí přístupu** se z zřizování vylučují.
+* Při přiřazování uživatele k snowflake, musíte vybrat všechny platné role specifické pro aplikaci (pokud jsou k dispozici) v dialogovém okně přiřazení. Uživatelé s rolí **Výchozí přístup** jsou z zřizování vyloučeni.
 
-## <a name="setup-snowflake-for-provisioning"></a>Nastavení Snowflake pro zřizování
+## <a name="setup-snowflake-for-provisioning"></a>Nastavení sněhové vločky pro zřizování
 
-Před konfigurací Snowflake pro Automatické zřizování uživatelů pomocí Azure AD budete muset povolit SCIM zřizování na Snowflake.
+Před konfigurací Snowflake pro automatické zřizování uživatelů s Azure AD, budete muset povolit zřizování SCIM na Vločky.
 
-1. Přihlaste se ke konzole pro správu Snowflake. Zadejte níže uvedený dotaz na listu a klikněte na tlačítko **Spustit**.
+1. Přihlaste se do konzole Snowflake Admin Console. Do zvýrazněného listu zadejte dotaz uvedený níže a klepněte na tlačítko **Spustit**.
 
-    ![Konzola pro správu Snowflake](media/Snowflake-provisioning-tutorial/image00.png)
+    ![Snowflake Admin Console](media/Snowflake-provisioning-tutorial/image00.png)
 
-2.  Pro vašeho tenanta Snowflake se vygeneruje přístupový token SCIM. Pokud ho chcete načíst, klikněte na odkaz dole.
+2.  Pro vašeho tenanta Snowflake bude vygenerován přístupový token SCIM. Chcete-li jej načíst, klikněte na níže zvýrazněný odkaz.
 
-    ![Snowflake přidat SCIM](media/Snowflake-provisioning-tutorial/image01.png)
+    ![Sněhová vločka Přidat SCIM](media/Snowflake-provisioning-tutorial/image01.png)
 
-3. Zkopírujte hodnotu vygenerovaného tokenu a klikněte na **Hotovo**. Tato hodnota se zadá do pole **token tajného** kódu na kartě zřizování vaší aplikace Snowflake ve Azure Portal.
+3. Zkopírujte vygenerovanou hodnotu tokenu a klepněte na **tlačítko Hotovo**. Tato hodnota se zadá do pole **Tajný token** na kartě Zřizování aplikace Snowflake na portálu Azure.
 
-    ![Snowflake přidat SCIM](media/Snowflake-provisioning-tutorial/image02.png)
+    ![Sněhová vločka Přidat SCIM](media/Snowflake-provisioning-tutorial/image02.png)
 
-## <a name="add-snowflake-from-the-gallery"></a>Přidání Snowflake z Galerie
+## <a name="add-snowflake-from-the-gallery"></a>Přidat Sněhová vločka z galerie
 
-Pokud chcete nakonfigurovat Snowflake pro Automatické zřizování uživatelů pomocí Azure AD, musíte addSnowflake z Galerie aplikací Azure AD na svůj seznam spravovaných aplikací SaaS.
+Chcete-li nakonfigurovat Snowflake pro automatické zřizování uživatelů pomocí Azure AD, musíte přidat Sněhová vločka z galerie aplikací Azure AD do seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat Snowflake z Galerie aplikací Azure AD, proveďte následující kroky:**
+**Chcete-li přidat vločku z galerie aplikací Azure AD, proveďte následující kroky:**
 
-1. V **[Azure Portal](https://portal.azure.com)** v levém navigačním panelu vyberte možnost **Azure Active Directory**.
+1. Na **[webu Azure Portal](https://portal.azure.com)** vyberte na levém navigačním panelu **položku Azure Active Directory**.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Přejděte na **podnikové aplikace**a vyberte **všechny aplikace**.
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
 
 3. Chcete-li přidat novou aplikaci, vyberte tlačítko **Nová aplikace** v horní části podokna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Snowflake**, na panelu výsledků vyberte **Snowflake** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Sněhová vločka**, vpanelu výsledků vyberte **Sněhová vločka** a pak klepnutím na tlačítko **Přidat** přidejte aplikaci.
 
-    ![Snowflake v seznamu výsledků](common/search-new-app.png)
+    ![Sněhová vločka v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-snowflake"></a>Konfigurace automatického zřizování uživatelů na Snowflake 
+## <a name="configuring-automatic-user-provisioning-to-snowflake"></a>Konfigurace automatického zřizování uživatelů na Sněhová vločka 
 
-V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v Snowflake na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
+Tato část vás provede kroky konfigurace služby zřizování Azure AD k vytvoření, aktualizaci a zakázání uživatelů nebo skupin ve Snowflake na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro Snowflake podle pokynů uvedených v [kurzu Snowflake jednotného přihlašování](Snowflake-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když se tyto dvě funkce navzájem doplňují.
+> Můžete se také rozhodnout povolit jednotné přihlašování pro Snowflake založené na SAML podle pokynů uvedených v [kurzu sněhové vločky single sign-on](Snowflake-tutorial.md). Jednotné přihlašování lze nakonfigurovat nezávisle na automatické zřizování uživatelů, i když tyto dvě funkce kompliment navzájem.
 
-### <a name="to-configure-automatic-user-provisioning-for-snowflake-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Snowflake ve službě Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-snowflake-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro snowflake ve službě Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **Všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **Snowflake**.
+2. V seznamu aplikací vyberte **Sněhová vločka**.
 
-    ![Odkaz Snowflake v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Sněhová vločka v seznamu Aplikace](common/all-applications.png)
 
-3. Vyberte kartu **zřizování** .
+3. Vyberte kartu **Zřizování.**
 
-    ![Karta zřizování](common/provisioning.png)
+    ![Karta Zřizování](common/provisioning.png)
 
-4. Nastavte **režim zřizování** na **automaticky**.
+4. Nastavte **režim zřizování** na **automatické**.
 
-    ![Karta zřizování](common/provisioning-automatic.png)
+    ![Karta Zřizování](common/provisioning-automatic.png)
 
-5. V části přihlašovací údaje správce zadejte `https://<Snowflake Account URL>/scim/v2` na adrese URL tenanta. Příklad adresy URL klienta: `https://acme.snowflakecomputing.com/scim/v2`
+5. V části Přihlašovací údaje `https://<Snowflake Account URL>/scim/v2` správce zadejte adresu URL klienta. Příklad adresy URL klienta:`https://acme.snowflakecomputing.com/scim/v2`
 
-6. Zadejte hodnotu **SCIM tokenu ověřování** získanou dříve v **tajném tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k Snowflake. Pokud se připojení nepovede, ujistěte se, že má váš účet Snowflake oprávnění správce, a zkuste to znovu.
+6. Zadejte hodnotu **ověřovacího tokenu SCIM** načtenou dříve v **tokenu tajného klíče**. Klikněte na **Testovat připojení** a ujistěte se, že Azure AD můžete připojit k Snowflake. Pokud se připojení nezdaří, ujistěte se, že váš účet Snowflake má oprávnění správce a zkuste to znovu.
 
-    ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Adresa URL klienta + token](common/provisioning-testconnection-tenanturltoken.png)
 
-7. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
+7. Do pole **E-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, která by měla dostávat oznámení o chybách při zřizování, a zaškrtněte políčko – **Odeslat e-mailové oznámení, když dojde k chybě**.
 
     ![E-mail s oznámením](common/provisioning-notification-email.png)
 
 8. Klikněte na **Uložit**.
 
-9. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé Snowflake**.
+9. V části **Mapování** vyberte **Synchronizovat uživatele služby Azure Active Directory se sněhovou vločkou**.
 
-    ![Mapování uživatelů Snowflake](media/Snowflake-provisioning-tutorial/user-mapping.png)
+    ![Mapování uživatelů sněhových vloček](media/Snowflake-provisioning-tutorial/user-mapping.png)
 
-10. Zkontrolujte atributy uživatele synchronizované z Azure AD do Snowflake v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Snowflake pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
+10. Zkontrolujte atributy uživatele, které jsou synchronizovány z Azure AD na Vločky v části **Mapování atributů.** Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelským účtům v Snowflake pro operace aktualizace. Chcete-li potvrdit všechny změny, vyberte tlačítko **Uložit.**
 
-    ![Atributy uživatele Snowflake](media/Snowflake-provisioning-tutorial/user-attribute.png)
+    ![Atributy uživatele sněhové vločky](media/Snowflake-provisioning-tutorial/user-attribute.png)
 
-11. V části **mapování** vyberte **synchronizovat Azure Active Directory skupiny do Snowflake**.
+11. V části **Mapování** vyberte **Synchronizovat skupiny služby Azure Active Directory se sněhovou vločkou**.
 
-    ![Mapování skupin Snowflake](media/Snowflake-provisioning-tutorial/group-mapping.png)
+    ![Mapování skupiny sněhových vloček](media/Snowflake-provisioning-tutorial/group-mapping.png)
 
-12. Zkontrolujte atributy skupiny synchronizované z Azure AD do Snowflake v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v Snowflake pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
+12. Zkontrolujte atributy skupiny, které jsou synchronizovány z Azure AD na Snowflake v části **Mapování atributů.** Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly skupinám v Snowflake pro operace aktualizace. Chcete-li potvrdit všechny změny, vyberte tlačítko **Uložit.**
 
-    ![Snowflake – atributy skupiny](media/Snowflake-provisioning-tutorial/group-attribute.png)
+    ![Atributy skupiny sněhových vloček](media/Snowflake-provisioning-tutorial/group-attribute.png)
 
-13. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+13. Chcete-li konfigurovat filtry oborů, naleznete v následujících pokynech uvedených v [kurzu filtru oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-14. Pokud chcete povolit službu Azure AD Provisioning pro Snowflake, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
+14. Chcete-li povolit službu zřizování Azure AD pro Snowflake, změňte **stav zřizování** **na Zapnuto** v části **Nastavení.**
 
-    ![Zapnutý stav zřizování](common/provisioning-toggle-on.png)
+    ![Stav zřizování zapnutý](common/provisioning-toggle-on.png)
 
-15. Definujte uživatele nebo skupiny, které chcete zřídit pro Snowflake, výběrem požadovaných hodnot v **oboru** v části **Nastavení** . Pokud tato možnost není k dispozici, nakonfigurujte prosím požadovaná pole v části přihlašovací údaje správce, klikněte na **Uložit** a aktualizujte stránku. 
+15. Definujte uživatele nebo skupiny, které chcete zřídit Snowflake výběrem požadovaných hodnot v **scope** v části **Nastavení.** Pokud tato možnost není k dispozici, nakonfigurujte požadovaná pole v části Pověření správce, klikněte na **Uložit** a aktualizujte stránku. 
 
-    ![Rozsah zřizování](common/provisioning-scope.png)
+    ![Obor zřizování](common/provisioning-scope.png)
 
-16. Až budete připraveni zřídit, klikněte na **Uložit**.
+16. Až budete připraveni k zřízení, klikněte na **Uložit**.
 
-    ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
+    ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
 
-    Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v Snowflake.
+    Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení.** Počáteční synchronizace trvá déle než následné synchronizace, ke kterým dochází přibližně každých 40 minut tak dlouho, dokud je spuštěna služba zřizování Azure AD. Část **Podrobnosti synchronizace** můžete použít ke sledování průběhu a sledování odkazů na sestavu aktivit zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD na Snowflake.
 
-    Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md) .
+    Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v [tématu Vytváření sestav na automatické zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md)
 
 ## <a name="connector-limitations"></a>Omezení konektoru
 
-* Snowflake vygenerované tokeny SCIM vyprší za 6 měsíců. Uvědomte si, že je potřeba aktualizovat je, než vyprší platnost, aby zřizování synchronizace pokračovala v práci. 
+* Sněhové vločky generované SCIM tokeny vyprší za 6 měsíců. Uvědomte si, že tyto je třeba aktualizovat před vypršením jejich platnosti povolit synchronizace zřizování pokračovat v práci. 
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md).
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si, [Jak zkontrolovat protokoly a získat sestavy o aktivitě zřizování](../app-provisioning/check-status-user-account-provisioning.md).
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy o aktivitě zřizování](../app-provisioning/check-status-user-account-provisioning.md).

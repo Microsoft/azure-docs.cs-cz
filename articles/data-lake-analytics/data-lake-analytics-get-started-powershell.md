@@ -1,5 +1,5 @@
 ---
-title: Vytvoření Azure Data Lake Analytics dotazů & – PowerShell
+title: Vytvoření & dotazu Azure Data Lake Analytics – PowerShell
 description: Vytvořte pomocí Azure PowerShellu účet služby Azure Data Lake Analytics a odešlete úlohu U-SQL.
 ms.service: data-lake-analytics
 author: saveenr
@@ -9,17 +9,17 @@ ms.assetid: 8a4e901e-9656-4a60-90d0-d78ff2f00656
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.openlocfilehash: 8b176434ce450382cc6463e7d21d341a74581ed8
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71316614"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>Začínáme s Azure Data Lake Analytics s využitím Azure PowerShellu
 
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Naučíte se, jak pomocí Azure PowerShellu vytvořit účty Azure Data Lake Analytics a následně odeslat a spustit úlohy U-SQL. Další informace o Data Lake Analytics najdete v tématu [Přehled Azure Data Lake Analytics](data-lake-analytics-overview.md).
+Naučíte se, jak pomocí Azure PowerShellu vytvořit účty Azure Data Lake Analytics a následně odeslat a spustit úlohy U-SQL. Další informace o službě Data Lake Analytics najdete v [tématu Přehled Azure Data Lake Analytics](data-lake-analytics-overview.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -30,7 +30,7 @@ Před zahájením tohoto kurzu musíte mít následující informace:
 * **Účet služby Azure Data Lake Analytics**. Zobrazit téma [Začínáme s Data Lake Analytics](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-get-started-portal).
 * **Pracovní stanice s prostředím Azure PowerShell**. Viz téma [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
 Tento kurz předpokládá, že jste už s používáním Azure Powershellu obeznámení. Konkrétně musíte vědět, jak se k Azure přihlásit. Pokud potřebujete pomoc, přejděte na téma [Začínáme s Azure PowerShellem](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
@@ -126,8 +126,8 @@ Stáhněte výstupní soubor pomocí rutiny `Export-AdlStoreItem`.
 Export-AdlStoreItem -Account $adls -Path "/data.csv" -Destination "C:\data.csv"
 ```
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * Pokud chcete použít jiné podporované nástroje a zobrazit stejný kurz, klikněte na selektory karet v horní části stránky.
 * Pokud se chcete naučit jazyk U-SQL, informace najdete v tématu [Začínáme s jazykem U-SQL Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md).
-* Informace týkající se úloh správy najdete v tématu [Správa služby Azure Data Lake Analytics pomocí webu Azure Portal](data-lake-analytics-manage-use-portal.md).
+* Úkoly správy najdete v [tématu Správa Azure Data Lake Analytics pomocí portálu Azure](data-lake-analytics-manage-use-portal.md).

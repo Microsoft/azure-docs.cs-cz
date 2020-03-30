@@ -1,7 +1,7 @@
 ---
-title: Použití SQL Databasech balíčků DAC a úloh Stream Analytics s Azure SQL Database Edge | Microsoft Docs
-description: Informace o použití Stream Analytics úloh v SQL Database Edge
-keywords: SQL Database Edge, Stream Analytics, SqlPackage
+title: Použití balíčků DAC databáze SQL a úloh Stream Analytics s Azure SQL Database Edge | Dokumenty společnosti Microsoft
+description: Informace o používání úloh Stream Analytics v SQL Database Edge
+keywords: sql database edge, analýza datového proudu, sqlpackage
 services: sql-database-edge
 ms.service: sql-database-edge
 ms.topic: conceptual
@@ -10,19 +10,19 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
 ms.openlocfilehash: 21a8bb6953fd879b17816361f536596571678697
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74384163"
 ---
-# <a name="using-sql-database-dac-packages-and-stream-analytics-jobs-with-sql-database-edge"></a>Použití SQL Databasech balíčků DAC a úloh Stream Analytics s SQL Database Edge
+# <a name="using-sql-database-dac-packages-and-stream-analytics-jobs-with-sql-database-edge"></a>Použití balíčků DAC databáze SQL a úloh Stream Analytics s sql database edge
 
-Azure SQL Database Edge Preview je optimalizovaný relační databázový stroj pro nasazení IoT a Edge. Je postaven na nejnovějších verzích Microsoft SQL Server databázového stroje, který poskytuje špičkové možnosti pro výkon, zabezpečení a zpracování dotazů. Spolu s špičkovými možnostmi správy relačních databází SQL Server nabízí Azure SQL Database Edge vestavěnou funkci streamování pro analýzy v reálném čase a složité zpracování událostí.
+Azure SQL Database Edge Preview je optimalizovaný relační databázový stroj zaměřený na nasazení IoT a hraničních zařízení. Je postaven na nejnovějších verzích microsoft SQL Server Database Engine, který poskytuje špičkové funkce výkonu, zabezpečení a zpracování dotazů. Azure SQL Database Edge poskytuje spolu s špičkovými možnostmi správy relačních databází sql serveru vestavěnou funkci streamování pro analýzy v reálném čase a komplexní zpracování událostí.
 
-Azure SQL Database Edge taky poskytuje nativní implementaci SqlPackage. exe, která umožňuje nasadit [SQL Database DAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) Package během nasazování SQL Database Edge.
+Azure SQL Database Edge také poskytuje nativní implementaci sqlpackage.exe, která umožňuje nasadit balíček [DAC databáze SQL](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) během nasazení SQL Database Edge.
 
-Azure SQL Database Edge zpřístupňuje dva volitelné parametry pomocí možnosti `module twin's desired properties` modulu IoT Edge:
+Azure SQL Database Edge zveřejňuje dva `module twin's desired properties` volitelné parametry prostřednictvím možnosti modulu IoT Edge:
 
 ```json
 {
@@ -36,35 +36,35 @@ Azure SQL Database Edge zpřístupňuje dva volitelné parametry pomocí možnos
 
 |Pole | Popis |
 |------|-------------|
-| SqlPackage | Identifikátor URI úložiště objektů BLOB v Azure pro soubor *. zip, který obsahuje SQL Database balíček DAC.
-| ASAJobInfo | Identifikátor URI úložiště objektů BLOB v Azure pro hraniční úlohu ASA Další informace najdete v tématu [publikování hraničních úloh ASA pro SQL Database Edge](/azure/sql-database-edge/stream-analytics#using-streaming-jobs-with-sql-database-edge).
+| SqlPackage | Identifikátor URI úložiště objektů blob Azure pro soubor *.zip, který obsahuje balíček DAC databáze SQL.
+| ASAJobInfo | Identifikátor URI úložiště objektů blob Azure pro úlohu ASA Edge. Další informace naleznete [v tématu Publikování úlohy ASA Edge pro sql database edge](/azure/sql-database-edge/stream-analytics#using-streaming-jobs-with-sql-database-edge).
 
-## <a name="using-sql-database-dac-packages-with-sql-database-edge"></a>Použití SQL Databasech balíčků DAC s SQL Database Edge
+## <a name="using-sql-database-dac-packages-with-sql-database-edge"></a>Použití balíčků DAC databáze SQL s okrajem SQL Database Edge
 
-Pokud chcete použít SQL Database balíček DAC (*. DACPAC) s SQL Database Edge, proveďte tyto kroky:
+Chcete-li použít balíček DAC databáze SQL (*.dacpac) s sql database edge, postupujte takto:
 
-1. Vytvoření nebo extrakce SQL Database balíčku DAC Informace o tom, jak vygenerovat balíček DAC pro existující SQL Server databázi, najdete v tématu [extrakce DAC z databáze](/sql/relational-databases/data-tier-applications/extract-a-dac-from-a-database/) .
+1. Vytvořte nebo extrahujte balíček DAC databáze SQL. Informace o tom, jak generovat balíček DAC pro existující databázi serveru SQL Server, naleznete [v tématu Extrahování dac z databáze.](/sql/relational-databases/data-tier-applications/extract-a-dac-from-a-database/)
 
-2. Zip *. DACPAC a nahrajte ho do účtu služby Azure Blob Storage. Další informace o nahrávání souborů do úložiště objektů BLOB v Azure najdete v tématu [nahrání, stažení a výpis objektů BLOB pomocí Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
+2. Zapněte *.dacpac a nahrajte ho do účtu úložiště objektů Blob Azure. Další informace o nahrávání souborů do úložiště objektů Blob Azure najdete [v tématu Nahrávání, stahování a seznam objektů BLOB s portálem Azure](../storage/blobs/storage-quickstart-blobs-portal.md).
 
-3. Vygenerujte sdílený přístupový podpis pro soubor ZIP pomocí Azure Portal. Další informace najdete v tématu [delegování přístupu pomocí podpisů sdíleného přístupu (SAS)](../storage/common/storage-sas-overview.md).
+3. Vygenerujte sdílený přístupový podpis pro soubor ZIP pomocí portálu Azure. Další informace naleznete [v tématu Delegování přístupu se sdílenými přístupovými podpisy (SAS).](../storage/common/storage-sas-overview.md)
 
-4. Aktualizujte konfiguraci modulu SQL Database Edge tak, aby zahrnovala identifikátor URI sdíleného přístupu pro balíček DAC. Pokud chcete aktualizovat modul SQL Database Edge, proveďte tyto kroky:
+4. Aktualizujte konfiguraci modulu SQL Database Edge tak, aby zahrnovala identifikátor URI pro sdílený přístup pro balíček DAC. Chcete-li aktualizovat modul SQL Database Edge, postupujte takto:
 
-    1. V Azure Portal pokračujte na nasazení IoT Hub.
+    1. Na webu Azure Portal přejděte na nasazení služby IoT Hub.
 
     2. V levém podokně vyberte **IoT Edge**.
 
-    3. Na stránce **IoT Edge** vyhledejte a vyberte IoT Edge, kde je nasazený modul SQL Database Edge.
+    3. Na stránce **IoT Edge** najděte a vyberte okraj IoT, kde se nasazuje modul SQL Database Edge.
 
-    4. Na stránce zařízení **IoT Edge zařízení** vyberte **nastavit modul**.
+    4. Na stránce **Zařízení IoT Edge** vyberte **Nastavit modul**.
 
-    5. Na stránce **nastavit moduly** vyberte **konfigurovat** pro modul SQL Database Edge.
+    5. Na stránce **Nastavit moduly** vyberte **Konfigurovat** podle modulu SQL Database Edge.
 
-    6. V podokně **IoT Edge vlastní moduly** vyberte **nastavit požadované vlastnosti nevlákenných**modulů. Aktualizujte požadované vlastnosti tak, aby zahrnovaly identifikátor URI pro možnost `SQLPackage`, jak je znázorněno v následujícím příkladu.
+    6. V podokně **Vlastní moduly IoT Edge** vyberte **Nastavit požadované vlastnosti dvojčete modulu**. Aktualizujte požadované vlastnosti zahrnout `SQLPackage` URI pro možnost, jak je znázorněno v následujícím příkladu.
 
         > [!NOTE]
-        > Identifikátor URI SAS v následujícím formátu JSON je pouze příklad. Nahraďte identifikátor URI skutečným identifikátorem URI z vašeho nasazení.
+        > Identifikátor URI SAS v následujícím obrázku JSON je pouze příkladem. Nahraďte identifikátor URI skutečným identifikátorem URI z vašeho nasazení.
 
         ```json
             {
@@ -77,38 +77,38 @@ Pokud chcete použít SQL Database balíček DAC (*. DACPAC) s SQL Database Edge
 
     7. Vyberte **Uložit**.
 
-    8. Na stránce **nastavit moduly** vyberte **Další**.
+    8. Na stránce **Nastavit moduly** vyberte **Další**.
 
-    9. Na stránce **nastavit moduly** vyberte **Další** a pak **Odeslat**.
+    9. Na stránce **Nastavit moduly** vyberte **Další** a potom **Odeslat**.
 
-5. Po aktualizaci modulu se soubor balíčku DAC stáhne, rozbalí a nasadí do instance SQL Database Edge.
+5. Po aktualizaci modulu je soubor balíčku DAC stažen, rozbalen a nasazen proti instanci SQL Database Edge.
 
-## <a name="using-streaming-jobs-with-sql-database-edge"></a>Použití úloh streamování s SQL Database Edge
+## <a name="using-streaming-jobs-with-sql-database-edge"></a>Použití úloh streamování s sql database edge
 
-Azure SQL Database Edge má nativní implementaci modulu Stream Analytics runtime. Tato implementace umožňuje vytvořit úlohu Azure Stream Analytics Edge a nasazovat tuto úlohu jako úlohu streamování SQL Database Edge. Pokud chcete vytvořit úlohu Stream Analytics Edge, proveďte tyto kroky:
+Azure SQL Database Edge má nativní implementaci modulu runtime analýzy datového proudu. Tato implementace umožňuje vytvořit hraniční úlohu Azure Stream Analytics a nasadit tuto úlohu jako úlohu streamování SQL Database Edge. Chcete-li vytvořit hraniční úlohu Služby Stream Analytics, proveďte tyto kroky:
 
-1. Pomocí [adresy URL](https://portal.azure.com/?microsoft_azure_streamanalytics_edgeadapterspreview=true)náhledu přejdete na Azure Portal. Tato adresa URL Preview umožňuje nakonfigurovat SQL Database výstup pro úlohu Stream Analytics Edge.
+1. Přejděte na portál Azure pomocí [adresy URL](https://portal.azure.com/?microsoft_azure_streamanalytics_edgeadapterspreview=true)náhledu . Tato adresa URL náhledu umožňuje nakonfigurovat výstup databáze SQL pro hraniční úlohu Stream Analytics.
 
-2. Vytvoří novou **Azure Stream Analytics na IoT Edge** úlohu. Vyberte hostující prostředí, které cílí na **Edge**.
+2. Vytvořte novou **Azure Stream Analytics na ioT edge** úlohy. Zvolte hostitelské prostředí, které cílí **na Edge**.
 
-3. Definujte vstup a výstup pro úlohu Azure Stream Analytics. Každý výstup SQL, který tady nastavíte, je vázaný na jednu tabulku v databázi. Pokud potřebujete streamovat data do více tabulek, budete muset vytvořit několik výstupů SQL Database. Můžete nakonfigurovat výstupy SQL tak, aby odkazovaly na různé databáze.
+3. Definujte vstup a výstup pro úlohu Azure Stream Analytics. Každý výstup SQL, který zde nastavíte, je vázán na jednu tabulku v databázi. Pokud potřebujete streamovat data do více tabulek, budete muset vytvořit více výstupů databáze SQL. Výstupy SQL můžete nakonfigurovat tak, aby ukazovaly na různé databáze.
 
-    **Vstup**. Jako vstup pro úlohu Edge vyberte EdgeHub a zadejte informace o prostředku.
+    **Vstup**. Zvolte EdgeHub jako vstup pro hraniční úlohu a zadejte informace o prostředku.
 
-    **Výstup**. Jako výstup vyberte SQL Database. Vyberte **zadat SQL Database nastavení ručně**. Zadejte podrobnosti o konfiguraci databáze a tabulky.
+    **Výstup**. Vyberte databázi SQL jako výstup. Vyberte **ručně poskytněte možnost Poskytnout nastavení databáze SQL**. Zadejte podrobnosti konfigurace databáze a tabulky.
 
     |Pole      | Popis |
     |---------------|-------------|
-    |Alias pro výstup | Název aliasu výstupu.|
-    |Databáze | Název databáze SQL. Musí se jednat o platný název databáze, která existuje v instanci SQL Database Edge.|
-    |Název serveru | Název (nebo IP adresa) a podrobnosti o číslech portů pro instanci SQL. Pro nasazení SQL Database Edge můžete pro název serveru použít **protokol TCP:., 1433** .|
-    |Uživatelské jméno | Přihlašovací účet SQL, který má čtečku dat a přístup k datům zapisovače dat k databázi, kterou jste zadali dříve.|
+    |Alias pro výstup | Název výstupního aliasu.|
+    |Databáze | Název databáze SQL. Musí se jedná o platný název databáze, která existuje v instanci SQL Database Edge.|
+    |Název serveru | Název (nebo IP adresa) a podrobnosti o čísle portu pro instanci SQL. Pro nasazení SQL Database Edge můžete pro název serveru použít **tcp:.,1433.**|
+    |Uživatelské jméno | Přihlašovací účet SQL, který má čtečku dat a zápis dat přístup k databázi, kterou jste zadali dříve.|
     |Heslo | Heslo pro přihlašovací účet SQL, který jste zadali dříve.|
     |Table | Název tabulky, která bude výstupem pro úlohu streamování.|
-    |Zdědit dělení| Povoluje dědění schématu dělení předchozího kroku dotazu nebo vstupu. Když je tato možnost povolená, můžete očekávat lepší propustnost při psaní do tabulky založené na disku a mít plně paralelní topologii pro vaši úlohu.|
-    |Velikost dávky| Maximální počet záznamů, které jsou odeslány při každé transakci hromadného vložení.|
+    |Dědit dělení| Umožňuje dědění schéma dělení předchozí krok dotazu nebo vstup. Pokud je tato možnost povolena, můžete očekávat lepší propustnost při zápisu do tabulky založené na disku a mají plně paralelní topologie pro vaši úlohu.|
+    |Velikost dávky| Maximální počet záznamů odeslaných s každou transakcí hromadného vložení.|
 
-    Zde je ukázka vstupní/výstupní konfigurace:
+    Zde je ukázková konfigurace vstupu a výstupu:
 
     ```txt
         Input:
@@ -130,32 +130,32 @@ Azure SQL Database Edge má nativní implementaci modulu Stream Analytics runtim
     ```
 
     > [!NOTE]
-    > Další informace o výstupním adaptéru SQL pro Azure Stream Analytics najdete v tématu [Azure Stream Analytics výstup do Azure SQL Database](../stream-analytics/stream-analytics-sql-output-perf.md).
+    > Další informace o výstupním adaptéru SQL pro Azure Stream Analytics najdete v článku [výstup Azure Stream Analytics do Azure SQL Database](../stream-analytics/stream-analytics-sql-output-perf.md).
 
-4. Definujte dotaz na úlohu ASA pro úlohu Edge. Tento dotaz by měl používat definované aliasy vstupu a výstupu jako vstupní a výstupní názvy v dotazu. Další informace najdete v tématu [Referenční dokumentace jazyka Stream Analytics dotazů](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference).
+4. Definujte dotaz úlohy ASA pro hraniční úlohu. Tento dotaz by měl používat definované vstupní a výstupní aliasy jako vstupní a výstupní názvy v dotazu. Další informace naleznete v [tématu Odkaz na dotaz ový jazyk Služby Stream Analytics](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference).
 
-5. Nastavte nastavení účtu úložiště pro úlohu Edge. Účet úložiště se používá jako cíl publikování pro úlohu Edge.
+5. Nastavte nastavení účtu úložiště pro hraniční úlohu. Účet úložiště se používá jako cíl publikování pro hraniční úlohu.
 
-6. V části **Konfigurovat**vyberte **publikovat**a pak vyberte tlačítko **publikovat** . Uložte identifikátor URI SAS pro použití s modulem SQL Database Edge.
+6. V části **Konfigurovat**vyberte **Publikovat**a pak vyberte tlačítko **Publikovat.** Uložte identifikátor URI SAS pro použití s modulem SQL Database Edge.
 
-### <a name="deploy-the-stream-analytics-edge-job-to-sql-database-edge"></a>Nasaďte úlohu Stream Analytics Edge do SQL Database Edge.
+### <a name="deploy-the-stream-analytics-edge-job-to-sql-database-edge"></a>Nasazení hraniční úlohy Stream Analytics do sql database edge
 
-Pokud chcete nasadit úlohu streamování do modulu SQL Database Edge, aktualizujte konfiguraci modulu SQL Database Edge tak, aby zahrnovala identifikátor URI SAS pro úlohu streamování z předchozího kroku. Aktualizace modulu SQL Database Edge:
+Chcete-li nasadit úlohu streamování do modulu SQL Database Edge, aktualizujte konfiguraci modulu SQL Database Edge tak, aby zahrnovala identifikátor URI SAS pro úlohu streamování z předchozího kroku. Aktualizace modulu SQL Database Edge:
 
-1. V Azure Portal pokračujte na nasazení IoT Hub.
+1. Na webu Azure Portal přejděte na nasazení služby IoT Hub.
 
 2. V levém podokně vyberte **IoT Edge**.
 
-3. Na stránce **IoT Edge** vyhledejte a vyberte IoT Edge, kde je nasazený modul SQL Database Edge.
+3. Na stránce **IoT Edge** najděte a vyberte okraj IoT, kde se nasazuje modul SQL Database Edge.
 
-4. Na stránce zařízení **IoT Edge zařízení** vyberte **nastavit modul**.
+4. Na stránce **Zařízení IoT Edge** vyberte **Nastavit modul**.
 
-5. Na stránce **nastavit moduly** vyberte **konfigurovat** pro modul SQL Database Edge.
+5. Na stránce **Nastavit moduly** vyberte **Konfigurovat** podle modulu SQL Database Edge.
 
-6. V podokně **IoT Edge vlastní moduly** vyberte **nastavit požadované vlastnosti nevlákenných**modulů. Aktualizujte požadované vlastnosti tak, aby zahrnovaly identifikátor URI pro možnost `ASAJobInfo`, jak je znázorněno v následujícím příkladu.
+6. V podokně **Vlastní moduly IoT Edge** vyberte **Nastavit požadované vlastnosti dvojčete modulu**. Aktualizujte požadované vlastnosti zahrnout `ASAJobInfo` URI pro možnost, jak je znázorněno v následujícím příkladu.
 
     > [!NOTE]
-    > Identifikátor URI SAS v následujícím formátu JSON je pouze příklad. Nahraďte identifikátor URI skutečným identifikátorem URI z vašeho nasazení.
+    > Identifikátor URI SAS v následujícím obrázku JSON je pouze příkladem. Nahraďte identifikátor URI skutečným identifikátorem URI z vašeho nasazení.
 
     ```json
         {
@@ -168,14 +168,14 @@ Pokud chcete nasadit úlohu streamování do modulu SQL Database Edge, aktualizu
 
 7. Vyberte **Uložit**.
 
-8. Na stránce **nastavit moduly** vyberte **Další**.
+8. Na stránce **Nastavit moduly** vyberte **Další**.
 
-9. Na stránce **nastavit moduly** vyberte **Další** a pak **Odeslat**.
+9. Na stránce **Nastavit moduly** vyberte **Další** a potom **Odeslat**.
 
-10. Po aktualizaci modulu se soubor úlohy Stream Analytics stáhne, odzip a nasadí na SQL Databaseou instanci Edge.
+10. Po aktualizaci modulu je soubor úlohy analýzy datového proudu stažen, rozbalen a nasazen proti instanci SQL Database Edge.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Podrobnosti o cenách a dostupnosti najdete v tématu [Azure SQL Database Edge](https://azure.microsoft.com/services/sql-database-edge/).
-- Vyžádejte si povolení Azure SQL Database Edge pro vaše předplatné.
-- Informace o tom, jak začít, najdete v tématu [nasazení SQL Database Edge přes Azure Portal](deploy-portal.md).
+- Podrobnosti o cenách a dostupnosti najdete v [tématu Azure SQL Database Edge](https://azure.microsoft.com/services/sql-database-edge/).
+- Požádejte o povolení Azure SQL Database Edge pro vaše předplatné.
+- Další informace najdete v [tématu Nasazení sql database edge prostřednictvím portálu Azure](deploy-portal.md).

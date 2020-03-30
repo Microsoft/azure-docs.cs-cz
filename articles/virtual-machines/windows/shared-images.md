@@ -1,6 +1,6 @@
 ---
-title: Vytvoření sdílených imagí virtuálních počítačů pomocí Azure PowerShell
-description: Naučte se, jak pomocí Azure PowerShell vytvořit sdílenou image virtuálního počítače v Azure.
+title: Vytváření sdílených ibi virtuálních počítačů s Azure PowerShellem
+description: Přečtěte si, jak pomocí Azure PowerShellu vytvořit sdílenou image virtuálního počítače v Azure
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,45 +16,45 @@ ms.date: 05/06/2019
 ms.author: cynthn
 ms.custom: ''
 ms.openlocfilehash: db877c96167fc011c1a8bd52cc1d0b63260007c9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74066238"
 ---
-# <a name="create-a-shared-image-gallery-with-azure-powershell"></a>Vytvoření galerie sdílených imagí pomocí Azure PowerShell 
+# <a name="create-a-shared-image-gallery-with-azure-powershell"></a>Vytvoření sdílené galerie obrázků pomocí Azure PowerShellu 
 
-[Galerie sdílených imagí](shared-image-galleries.md) zjednodušuje sdílení vlastních imagí v rámci vaší organizace. Vlastní image jsou podobné imagím z marketplace, ale vytváříte je sami. Vlastní image se dají použít ke spuštění úloh nasazení, jako jsou předem načtené aplikace, konfigurace aplikací a další konfigurace operačního systému. 
+[Galerie sdílených obrázků](shared-image-galleries.md) zjednodušuje vlastní sdílení obrázků v celé organizaci. Vlastní image jsou podobné imagím z marketplace, ale vytváříte je sami. Vlastní image lze použít k zavádění úloh nasazení, jako je předběžné načtení aplikací, konfigurace aplikací a další konfigurace operačního systému. 
 
-Galerie sdílených imagí umožňuje sdílet vlastní image virtuálních počítačů s ostatními uživateli ve vaší organizaci v rámci oblastí nebo napříč nimi v rámci tenanta AAD. Vyberte, které Image chcete sdílet, které oblasti mají být v nástroji dostupné a které chcete sdílet s. Můžete vytvořit několik galerií, abyste mohli logicky seskupovat sdílené image. 
+Galerie sdílených obrázků umožňuje sdílet vlastní image virtuálních počítačů s ostatními uživateli ve vaší organizaci, v rámci nebo napříč oblastmi, v rámci klienta AAD. Zvolte, které obrázky chcete sdílet, ve kterých oblastech je chcete zpřístupnit a s kým je chcete sdílet. Můžete vytvořit více galerií, abyste mohli logicky seskupit sdílené obrázky. 
 
-Galerie je prostředek nejvyšší úrovně, který poskytuje úplné řízení přístupu na základě role (RBAC). Bitové kopie můžou být ve verzi a můžete se rozhodnout pro replikaci každé verze image na jinou sadu oblastí Azure. Galerie funguje pouze se spravovanými bitovými kopiemi.
+Galerie je prostředek nejvyšší úrovně, který poskytuje úplné řízení přístupu na základě rolí (RBAC). Image může být verzí a můžete se rozhodnout replikovat každou verzi bitové kopie do jiné sady oblastí Azure. Galerie pracuje pouze se spravovanými obrázky.
 
-Funkce Galerie sdílených imagí má více typů prostředků. V tomto článku budeme používat nebo sestavovat tyto:
+Funkce Galerie sdílených obrázků má více typů prostředků. Budeme používat nebo stavební tyto v tomto článku:
 
 | Prostředek | Popis|
 |----------|------------|
-| **Spravovaná image** | Toto je základní obrázek, který se dá použít samostatně nebo použít k vytvoření **verze image** v galerii imagí. Spravované image se vytvářejí z zobecněných virtuálních počítačů. Spravovaná bitová kopie je speciální typ VHD, který se dá použít k vytvoření více virtuálních počítačů a dá se teď použít k vytváření verzí sdílených imagí. |
-| **Galerie imagí** | Podobně jako u Azure Marketplace je **Galerie imagí** úložiště pro správu a sdílení imagí, ale Vy řídíte, kdo má přístup. |
-| **Definice obrázku** | Image jsou definované v rámci Galerie a obsahují informace o imagi a požadavcích na jejich interní používání. To zahrnuje, zda se jedná o obrázek Windows nebo Linux, poznámky k verzi a minimální a maximální požadavky na paměť. Je definicí typu obrázku. |
-| **Verze image** | **Verze image** je to, co použijete k vytvoření virtuálního počítače při použití galerie. V případě potřeby můžete mít v prostředí k dispozici více verzí bitové kopie. Podobně jako u spravované image při použití **verze image** k vytvoření virtuálního počítače se verze image používá k vytvoření nových disků pro virtuální počítač. Verze bitové kopie lze použít několikrát. |
+| **Spravovaná bitová kopie** | Jedná se o základní obrázek, který lze použít samostatně nebo použít k vytvoření **verze obrázku** v galerii obrázků. Spravované bitové kopie se vytvářejí z generalizovaných virtuálních měn. Spravovaná bitová kopie je speciální typ virtuálního pevného disku, který lze použít k vytvoření více virtuálních počítačů a nyní lze použít k vytvoření verzí sdílených bitových obrázků. |
+| **Galerie obrázků** | Stejně jako Azure Marketplace, **galerie obrázků** je úložiště pro správu a sdílení bitových kopií, ale máte řízení, kdo má přístup. |
+| **Definice obrázku** | Obrázky jsou definovány v galerii a nesou informace o obrázku a požadavky na jeho použití interně. To zahrnuje, zda je bitová kopie Windows nebo Linux, poznámky k verzi a minimální a maximální požadavky na paměť. Jedná se o definici typu obrazu. |
+| **Verze obrázku** | **Verze bitové kopie** je to, co používáte k vytvoření virtuálního počítačů při použití galerie. Podle potřeby pro vaše prostředí můžete mít více verzí bitové kopie. Stejně jako spravovaná **image version** bitová kopie, když k vytvoření virtuálního počítače použijete verzi image k vytvoření nových disků pro virtuální počítače. Verze obrázků lze použít vícekrát. |
 
-Pro každé 20 virtuálních počítačů, které vytvoříte souběžně, doporučujeme, abyste zachovali jednu repliku. Pokud například vytváříte virtuální počítače 120 souběžně pomocí stejné image v oblasti, doporučujeme, abyste zachovali aspoň 6 replik vaší image. Další informace najdete v tématu [škálování](/azure/virtual-machines/windows/shared-image-galleries#scaling).
+Pro každých 20 virtuálních počítače, které vytvoříte souběžně, doporučujeme zachovat jednu repliku. Pokud například vytváříte 120 virtuálních počítačů souběžně pomocí stejné bitové kopie v oblasti, doporučujeme zachovat alespoň 6 replik bitové kopie. Další informace naleznete v [tématu Škálování](/azure/virtual-machines/windows/shared-image-galleries#scaling).
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Chcete-li dokončit příklad v tomto článku, musíte mít existující spravovanou bitovou kopii. Můžete postupovat podle [kurzu: Vytvoření vlastní image virtuálního počítače Azure pomocí Azure PowerShell pro jeho](tutorial-custom-images.md) vytvoření, pokud je to potřeba. Pokud spravovaná bitová kopie obsahuje datový disk, velikost datového disku nemůže být větší než 1 TB.
+Chcete-li dokončit příklad v tomto článku, musíte mít existující spravovanou bitovou kopii. Můžete postupovat [podle kurzu: Vytvořte vlastní image virtuálního počítače Azure s Azure PowerShell](tutorial-custom-images.md) em a v případě potřeby ho vytvořte. Pokud spravovaná bitová kopie obsahuje datový disk, velikost datového disku nesmí být větší než 1 TB.
 
-Při práci s tímto článkem nahraďte názvy skupin prostředků a virtuálních počítačů tam, kde je to potřeba.
+Při práci v tomto článku nahraďte názvy skupin prostředků a virtuálních počítačů, kde je to potřeba.
 
 [!INCLUDE [virtual-machines-common-shared-images-powershell](../../../includes/virtual-machines-common-shared-images-powershell.md)]
 
  
-## <a name="create-vms-from-an-image"></a>Vytvoření virtuálních počítačů z Image
+## <a name="create-vms-from-an-image"></a>Vytvoření virtuálních obrazců z bitové kopie
 
-Po dokončení verze image můžete vytvořit jeden nebo více nových virtuálních počítačů. Pomocí rutiny [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) . 
+Po dokončení verze image můžete vytvořit jeden nebo více nových virtuálních virtuálních discích. Použití rutiny [New-AzVM.](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 
 
-Tento příklad vytvoří virtuální počítač s názvem *myVMfromImage*v *myResourceGroup* v datovém centru *střed USA – jih* .
+Tento příklad vytvoří virtuální ho s názvem *myVMfromImage*, v *myResourceGroup* v *jižním centrálním usa* datového centra.
 
 
 ```azurepowershell-interactive
@@ -97,14 +97,14 @@ New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 [!INCLUDE [virtual-machines-common-shared-images-update-delete-ps](../../../includes/virtual-machines-common-shared-images-update-delete-ps.md)]
 
 ## <a name="next-steps"></a>Další kroky
-[Azure image Builder (Preview)](image-builder-overview.md) může přispět k automatizaci vytváření verzí image, můžete ji dokonce použít k aktualizaci a [Vytvoření nové verze image z existující verze image](image-builder-gallery-update-image-version.md). 
+[Azure Image Builder (preview)](image-builder-overview.md) může pomoci automatizovat vytváření verzí bitové kopie, můžete ji dokonce použít k aktualizaci a [vytvoření nové verze image z existující verze image](image-builder-gallery-update-image-version.md). 
 
-Pomocí šablon můžete také vytvořit prostředek Galerie sdílených imagí. K dispozici je několik šablon rychlého startu Azure: 
+Prostředek Galerie sdílených obrázků můžete také vytvořit pomocí šablon. K dispozici je několik šablon Azure QuickStart: 
 
-- [Vytvoření galerie sdílených imagí](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [Vytvoření definice obrázku v galerii sdílených imagí](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
-- [Vytvoření verze image v galerii sdílených imagí](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
-- [Vytvoření virtuálního počítače z verze image](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
+- [Vytvoření galerie sdílených obrázků](https://azure.microsoft.com/resources/templates/101-sig-create/)
+- [Vytvoření definice obrazu ve sdílené galerii obrázků](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
+- [Vytvoření verze obrázku ve sdílené galerii obrázků](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
+- [Vytvoření virtuálního virtuálního virtuálního mísy z verze bitové kopie](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
-Další informace o galeriích sdílených imagí najdete v [přehledu](shared-image-galleries.md). Pokud narazíte na problémy, přečtěte si téma [řešení potíží s galeriemi sdílených imagí](troubleshooting-shared-images.md).
+Další informace o sdílených galeriích obrázků naleznete v [tématu Přehled](shared-image-galleries.md). Pokud narazíte na problémy, [přečtěte si článek Poradce při potížích s galeriemi sdílených obrázků](troubleshooting-shared-images.md).
 

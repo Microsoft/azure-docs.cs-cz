@@ -1,39 +1,39 @@
 ---
 title: Řešení běžných potíží
-description: Naučte se řešit běžné problémy při nasazení, spuštění nebo správě Azure Container Instances
+description: Zjistěte, jak řešit běžné problémy při nasazování, spouštění nebo správě instancí kontejnerů Azure
 ms.topic: article
 ms.date: 09/25/2019
 ms.custom: mvc
 ms.openlocfilehash: 07cdbfb27aaf9076e726ebda861ed24996e10135
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74533395"
 ---
-# <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Řešení běžných problémů v Azure Container Instances
+# <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Řešení běžných potíží se službou Azure Container Instances
 
-Tento článek popisuje, jak řešit běžné problémy při správě a nasazování kontejnerů do Azure Container Instances. Přečtěte si také [Nejčastější dotazy](container-instances-faq.md).
+Tento článek ukazuje, jak řešit běžné problémy se správou nebo nasazováním kontejnerů do instancí kontejnerů Azure. Viz také [Nejčastější dotazy](container-instances-faq.md).
 
-Pokud potřebujete další podporu, přečtěte si část dostupná podpora a možnosti **podpory** v [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Pokud potřebujete další podporu, podívejte se na dostupné možnosti **nápovědy + podpory** na [webu Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-## <a name="issues-during-container-group-deployment"></a>Problémy během nasazování skupiny kontejnerů
+## <a name="issues-during-container-group-deployment"></a>Problémy během nasazení skupiny kontejnerů
 ### <a name="naming-conventions"></a>Zásady vytváření názvů
 
-Při definování specifikace kontejneru vyžadují některé parametry dodržování omezení pojmenování. Níže je tabulka se specifickými požadavky na vlastnosti skupiny kontejnerů. Další informace o zásadách vytváření názvů pro Azure najdete v tématu [konvence pojmenování][azure-name-restrictions] v cetrum architektury Azure.
+Při definování specifikace kontejneru vyžadují určité parametry dodržování omezení pojmenování. Níže je tabulka se specifickými požadavky na vlastnosti skupiny kontejnerů. Další informace o konvencích pojmenování Azure najdete v [tématu Konvence pojmenování][azure-name-restrictions] v Centru architektury Azure.
 
-| Rozsah | Délka | Velikost písmen | Platné znaky | Navrhovaný vzor | Příklad: |
+| Rozsah | Délka | Velikost písmen | Platné znaky | Navrhovaný vzor | Příklad |
 | --- | --- | --- | --- | --- | --- |
-| Název skupiny kontejnerů | 1-64 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli s výjimkou prvního nebo posledního znaku |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| Název kontejneru | 1-64 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli s výjimkou prvního nebo posledního znaku |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| Porty kontejneru | Mezi 1 a 65535 |Integer |Celé číslo od 1 do 65535 |`<port-number>` |`443` |
-| Popisek názvu DNS | 5-63 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli s výjimkou prvního nebo posledního znaku |`<name>` |`frontend-site1` |
-| Proměnná prostředí | 1–63 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a podtržítka (_) kdekoli s výjimkou prvního nebo posledního znaku |`<name>` |`MY_VARIABLE` |
-| Název svazku | 5-63 |Malá a velká písmena se nerozlišují. |Malá písmena a číslice a pomlčky kdekoli kromě prvního nebo posledního znaku. Nemůže obsahovat dvě po sobě jdoucí spojovníky. |`<name>` |`batch-output-volume` |
+| Název skupiny kontejnerů | 1-64 |Malá a velká písmena se nerozlišují. |Alfanumerické a pomlčka kdekoli kromě prvního nebo posledního znaku |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| Název kontejneru | 1-64 |Malá a velká písmena se nerozlišují. |Alfanumerické a pomlčka kdekoli kromě prvního nebo posledního znaku |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| Kontejnerové porty | Mezi 1 a 65535 |Integer |Celé číslo mezi 1 a 65535 |`<port-number>` |`443` |
+| Popisek názvu DNS | 5-63 |Malá a velká písmena se nerozlišují. |Alfanumerické a pomlčka kdekoli kromě prvního nebo posledního znaku |`<name>` |`frontend-site1` |
+| Proměnná prostředí | 1–63 |Malá a velká písmena se nerozlišují. |Alfanumerické a podtržítko (_) kdekoli kromě prvního nebo posledního znaku |`<name>` |`MY_VARIABLE` |
+| Název svazku | 5-63 |Malá a velká písmena se nerozlišují. |Malá písmena a čísla a pomlčky kdekoli kromě prvního nebo posledního znaku. Nesmí obsahovat dvě po sobě jdoucí spojovníky. |`<name>` |`batch-output-volume` |
 
-### <a name="os-version-of-image-not-supported"></a>Verze operačního systému image není podporovaná.
+### <a name="os-version-of-image-not-supported"></a>Verze bitové kopie operačního systému není podporována
 
-Pokud zadáte obrázek, který Azure Container Instances nepodporuje, vrátí se `OsVersionNotSupported` chyba. Tato chyba je podobná následujícímu, kde `{0}` je název bitové kopie, kterou jste se pokusili nasadit:
+Pokud zadáte image, kterou instance kontejneru Azure `OsVersionNotSupported` nepodporuje, vrátí se chyba. Chyba je podobná následující, `{0}` kde je název bitové kopie, kterou jste se pokusili nasadit:
 
 ```json
 {
@@ -44,15 +44,15 @@ Pokud zadáte obrázek, který Azure Container Instances nepodporuje, vrátí se
 }
 ```
 
-K této chybě nejčastěji dochází při nasazování bitových kopií Windows, které jsou založené na pololetním kanálu verze 1709 nebo 1803, což není podporováno. Podporované image Windows v Azure Container Instances najdete v tématu [Nejčastější dotazy](container-instances-faq.md#what-windows-base-os-images-are-supported).
+K této chybě dochází nejčastěji při nasazování bitových kopií systému Windows, které jsou založeny na verzi 1709 nebo 1803 pololetního kanálu, které nejsou podporovány. Podporované ibi Windows v instancích kontejnerů Azure najdete [v tématu Nejčastější dotazy](container-instances-faq.md#what-windows-base-os-images-are-supported).
 
-### <a name="unable-to-pull-image"></a>Nelze načíst obrázek.
+### <a name="unable-to-pull-image"></a>Nelze stáhnout obrázek
 
-Pokud Azure Container Instances nedokáže načíst vaši image, opakuje se v časovém intervalu. Pokud se operace vyžádání obsahu obrazu stále nezdařila, ACI nakonec selže nasazení a může se zobrazit chyba `Failed to pull image`.
+Pokud instance kontejneru Azure zpočátku nelze vytáhnout image, opakuje se po určitou dobu. Pokud operace vyžádat bitovou kopii nadále nezdaří, ACI nakonec selže nasazení a může se zobrazit chyba. `Failed to pull image`
 
-Chcete-li tento problém vyřešit, odstraňte instanci kontejneru a opakujte nasazení. Ujistěte se, že bitová kopie existuje v registru a že jste správně zadali název bitové kopie.
+Chcete-li tento problém vyřešit, odstraňte instanci kontejneru a opakujte nasazení. Ujistěte se, že bitová kopie existuje v registru a že jste správně zadali název obrázku.
 
-Pokud se image nedá načíst, zobrazí se ve výstupu [AZ Container show][az-container-show]následující události, jako jsou tyto:
+Pokud obrázek nelze vytáhnout, události, jako je následující, jsou zobrazeny ve výstupu [az kontejneru show][az-container-show]:
 
 ```bash
 "events": [
@@ -82,25 +82,25 @@ Pokud se image nedá načíst, zobrazí se ve výstupu [AZ Container show][az-co
   }
 ],
 ```
-### <a name="resource-not-available-error"></a>Chyba prostředku není k dispozici
+### <a name="resource-not-available-error"></a>Chyba zdroje není k dispozici
 
-Kvůli různým místním zátěži prostředků v Azure se může při pokusu o nasazení instance kontejneru zobrazit následující chyba:
+Vzhledem k různým zatížení množin prostředků v Azure se může zobrazit následující chyba při pokusu o nasazení instance kontejneru:
 
 `The requested resource with 'x' CPU and 'y.z' GB memory is not available in the location 'example region' at this moment. Please retry with a different resource request or in another location.`
 
-Tato chyba označuje, že kvůli vysokému zatížení v oblasti, ve které se pokoušíte nasadit, nelze v daném čase přidělit prostředky zadané pro váš kontejner. K vyřešení vašeho problému použijte jeden nebo několik následujících kroků pro zmírnění rizik.
+Tato chyba označuje, že z důvodu vysoké zatížení v oblasti, ve které se pokoušíte nasadit, prostředky určené pro váš kontejner nelze přidělit v té době. K vyřešení problému použijte jeden nebo více následujících kroků ke zmírnění rizik.
 
-* Ověřte, že nastavení nasazení kontejneru spadají do parametrů definovaných v [oblasti dostupnosti pro Azure Container Instances](container-instances-region-availability.md)
-* Určete nižší nastavení procesoru a paměti pro kontejner.
+* Ověřte, že nastavení nasazení kontejneru spadá do parametrů definovaných v [dostupnosti oblasti pro instance kontejnerů Azure](container-instances-region-availability.md)
+* Určení nižšího nastavení procesoru a paměti pro kontejner
 * Nasazení do jiné oblasti Azure
 * Nasazení později
 
-## <a name="issues-during-container-group-runtime"></a>Problémy při běhu skupiny kontejnerů
-### <a name="container-continually-exits-and-restarts-no-long-running-process"></a>Kontejner se průběžně ukončuje a restartuje (bez dlouhotrvajícího procesu).
+## <a name="issues-during-container-group-runtime"></a>Problémy během běhu skupiny kontejnerů
+### <a name="container-continually-exits-and-restarts-no-long-running-process"></a>Kontejner neustále ukončuje a restartuje (žádný dlouhotrvající proces)
 
-Skupiny kontejnerů jsou standardně nastavené na [zásady restartování](container-instances-restart-policy.md) **vždy**, takže kontejnery ve skupině kontejnerů se po spuštění po dokončení vždy restartují. Je možné, že tuto změnu budete muset změnit na **neúspěšné** nebo **nikdy** , pokud máte v úmyslu spouštět kontejnery založené na úlohách. Pokud zadáte **chybu** a stále se zobrazuje nepřetržité restartování, může se jednat o problém s aplikací nebo skriptem provedeným ve vašem kontejneru.
+Kontejner skupiny výchozí [zásady restartování](container-instances-restart-policy.md) **Always**, takže kontejnery ve skupině kontejnerů vždy restartovat po spuštění do dokončení. Možná budete muset změnit na **OnFailure** nebo **Nikdy,** pokud máte v úmyslu spustit kontejnery založené na úlohách. Pokud zadáte **OnFailure** a stále vidět průběžné restartování, může být problém s aplikací nebo skript uprováděný v kontejneru.
 
-Pokud spouštíte skupiny kontejnerů bez dlouhotrvajících procesů, můžete se setkat se opakovanými ukončeními a restarty s obrázky, jako je Ubuntu nebo Alpine. Připojení přes [exec](container-instances-exec.md) nebude fungovat, protože kontejner nemá žádný proces, který ho udržuje aktivní. Chcete-li tento problém vyřešit, zahrňte do nasazení skupiny kontejnerů příkaz Start podobný tomuto:, aby byl kontejner spuštěný.
+Při spuštění skupin kontejnerů bez dlouhotrvajících procesů se mohou zobrazit opakované výstupy a restartování s obrázky, jako je Ubuntu nebo Alpine. Připojení přes [EXEC](container-instances-exec.md) nebude fungovat, protože kontejner nemá žádný proces, který by ho udržoval naživu. Chcete-li tento problém vyřešit, zahrňte příkaz start, jako je následující, s nasazením skupiny kontejnerů, aby byl kontejner spuštěn.
 
 ```azurecli-interactive
 ## Deploying a Linux container
@@ -113,7 +113,7 @@ az container create -g myResourceGroup --name mywindowsapp --os-type Windows --i
  --command-line "ping -t localhost"
 ```
 
-Rozhraní Container Instances API a Azure Portal obsahuje vlastnost `restartCount`. Pokud chcete zjistit počet restartování pro kontejner, můžete použít příkaz [AZ Container show][az-container-show] v rozhraní příkazového řádku Azure CLI. V následujícím příkladu výstupu (který byl zkrácen pro zkrácení) můžete na konci výstupu zobrazit vlastnost `restartCount`.
+Rozhraní API instancí kontejneru `restartCount` a portál Azure obsahují vlastnost. Chcete-li zkontrolovat počet restartování kontejneru, můžete použít příkaz [az kontejner show][az-container-show] v příkazovém příkazu Konto Azure. V následujícím příkladu výstupu (který byl zkrácen pro stručnost), můžete `restartCount` vidět vlastnost na konci výstupu.
 
 ```json
 ...
@@ -154,23 +154,23 @@ Rozhraní Container Instances API a Azure Portal obsahuje vlastnost `restartCoun
 ```
 
 > [!NOTE]
-> Většina imagí kontejneru pro distribuce systému Linux jako výchozí příkaz nastaví prostředí, jako je například bash. Vzhledem k tomu, že vlastní prostředí nepředstavuje dlouhotrvající službu, tyto kontejnery se okamžitě ukončí a přejdou do smyčky restartu, pokud je nakonfigurovaná s výchozí zásadou **vždy** restartovat.
+> Většina iniciál kontejnerů pro linuxové distribuce nastavila jako výchozí příkaz prostředí, například bash. Vzhledem k tomu, že prostředí samo o sobě není dlouhotrvající služba, tyto kontejnery okamžitě ukončit a spadají do smyčky restartování při konfiguraci s výchozí **vždy** restartovat zásady.
 
-### <a name="container-takes-a-long-time-to-start"></a>Spuštění kontejneru trvá dlouhou dobu.
+### <a name="container-takes-a-long-time-to-start"></a>Spuštění kontejneru trvá dlouho
 
-Tři primární faktory, které přispívají k času spuštění kontejneru v Azure Container Instances jsou:
+Tři primární faktory, které přispívají k době spuštění kontejneru v instanci kontejneru Azure jsou:
 
 * [Velikost obrázku](#image-size)
 * [Umístění obrázku](#image-location)
-* [Obrázky v mezipaměti](#cached-images)
+* [Obrázky uložené v mezipaměti](#cached-images)
 
-Bitové kopie systému Windows mají [Další požadavky](#cached-images).
+Bitové kopie systému Windows mají [další důležité informace](#cached-images).
 
 #### <a name="image-size"></a>Velikost obrázku
 
-Pokud je váš kontejner spuštěný dlouhou dobu, ale nakonec úspěch, začněte tím, že prohlížíte velikost své image kontejneru. Vzhledem k tomu, že Azure Container Instances načte image kontejneru na vyžádání, je zobrazený čas spuštění přímo v souvislosti s jeho velikostí.
+Pokud váš kontejner trvá dlouhou dobu, ale nakonec uspěje, začněte tím, že se podíváte na velikost image kontejneru. Vzhledem k tomu, že instance kontejneru Azure na vyžádání vyžádá image kontejneru, čas spuštění, který se zobrazí, přímo souvisí s jeho velikostí.
 
-Velikost Image kontejneru můžete zobrazit pomocí příkazu `docker images` v Docker CLI:
+Velikost image kontejneru můžete zobrazit pomocí `docker images` příkazu v příkazu Cli Dockeru:
 
 ```console
 $ docker images
@@ -178,45 +178,45 @@ REPOSITORY                                    TAG       IMAGE ID        CREATED 
 mcr.microsoft.com/azuredocs/aci-helloworld    latest    7367f3256b41    15 months ago    67.6MB
 ```
 
-Klíčem pro uchování velikosti obrázků je zajistit, že finální obrázek neobsahuje cokoli, co není nutné za běhu. Jedním ze způsobů, jak to udělat, je [sestavení ve více fázích][docker-multi-stage-builds]. Sestavení s více fázemi usnadňují zajištění, že finální image obsahuje jenom artefakty, které potřebujete pro vaši aplikaci, a ne žádný další obsah, který byl požadován v době sestavení.
+Klíčem k zachování velikosti obrázku malé je zajistit, že vaše konečná image neobsahuje nic, co není požadováno za běhu. Jedním ze způsobů, jak to udělat, je s [vícestupňové sestavení][docker-multi-stage-builds]. Vícestupňová sestavení usnadňují zajištění, že konečná bitová kopie obsahuje pouze artefakty, které potřebujete pro vaši aplikaci, a ne žádný další obsah, který byl vyžadován v době sestavení.
 
 #### <a name="image-location"></a>Umístění obrázku
 
-Dalším způsobem, jak snížit dopad navýšení obrázku na dobu spuštění kontejneru, je hostovat image kontejneru v [Azure Container Registry](/azure/container-registry/) ve stejné oblasti, ve které chcete nasadit instance kontejnerů. Tím se zkrátí síťová cesta, kterou bitová kopie kontejneru potřebuje cestovat, což významně zkrátí dobu stahování.
+Dalším způsobem, jak snížit dopad vyžádat image na dobu spuštění vašeho kontejneru je hostování image kontejneru v [registru kontejnerů Azure](/azure/container-registry/) ve stejné oblasti, kde máte v úmyslu nasadit instance kontejneru. Tím se zkrátí síťová cesta, kterou musí obrázek kontejneru cestovat, což výrazně zkracuje dobu stahování.
 
-#### <a name="cached-images"></a>Obrázky v mezipaměti
+#### <a name="cached-images"></a>Obrázky uložené v mezipaměti
 
-Azure Container Instances používá mechanismus ukládání do mezipaměti, který urychluje čas spuštění kontejneru pro obrázky vytvořené na běžných [obrázcích Windows Base](container-instances-faq.md#what-windows-base-os-images-are-supported), včetně `nanoserver:1809`, `servercore:ltsc2019`a `servercore:1809`. Běžně používané image Linux, například `ubuntu:1604` a `alpine:3.6`, jsou také uloženy v mezipaměti. Aktuální seznam imagí a značek uložených v mezipaměti najdete v rozhraní API pro [vypsání imagí v mezipaměti][list-cached-images] .
+Azure Container Instances používá mechanismus ukládání do mezipaměti, který pomáhá urychlit dobu `servercore:ltsc2019`spuštění `servercore:1809`kontejneru pro bitové kopie postavené na běžných [základních ibi Windows](container-instances-faq.md#what-windows-base-os-images-are-supported), včetně `nanoserver:1809`, a . Běžně používané linuxové `ubuntu:1604` obrázky, jako jsou a `alpine:3.6` jsou také uloženy v mezipaměti. Pro aktuální seznam obrázků a značek uložených v mezipaměti použijte rozhraní [API pro obrázky v mezipaměti seznamu.][list-cached-images]
 
 > [!NOTE]
-> Používání imagí založených na Windows serveru 2019 v Azure Container Instances je ve verzi Preview.
+> Použití bitových kopií založených na Windows Serveru 2019 v instanci kontejnerů Azure je ve verzi preview.
 
-#### <a name="windows-containers-slow-network-readiness"></a>Pomalá připravenost na síť kontejnery Windows
+#### <a name="windows-containers-slow-network-readiness"></a>Kontejnery windows zpomalují připravenost sítě
 
-Při počátečním vytváření nemusí kontejnery Windows mít žádná příchozí nebo odchozí připojení po dobu až 30 sekund (ve výjimečných případech nebo déle). Pokud vaše aplikace kontejneru potřebuje připojení k Internetu, přidejte zpoždění a logiku opakování, aby bylo možné navázat připojení k internetu za 30 sekund. Po počátečním nastavení by se měly sítě kontejneru správně obnovit.
+Při počátečním vytvoření kontejnery systému Windows může mít žádné příchozí nebo odchozí připojení po dobu až 30 sekund (nebo déle, ve výjimečných případech). Pokud vaše aplikace kontejneru potřebuje připojení k Internetu, přidejte zpoždění a opakujte logiku, abyste povolili 30 sekund navázání připojení k Internetu. Po počátečním nastavení kontejneru sítě by měl y pokračovat odpovídajícím způsobem.
 
-### <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>Nejde se připojit k základnímu rozhraní Docker API nebo ke spuštění privilegovaných kontejnerů.
+### <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>Nelze se připojit k podkladovému rozhraní Docker API nebo spustit privilegované kontejnery.
 
-Azure Container Instances nevystavuje přímý přístup k podkladové infrastruktuře, která je hostitelem skupin kontejnerů. To zahrnuje přístup k rozhraní API Docker běžícímu na hostiteli kontejneru a spouštění privilegovaných kontejnerů. Pokud potřebujete interakci Docker, podívejte se do [Referenční dokumentace REST](https://aka.ms/aci/rest) a podívejte se, co podporuje rozhraní ACI API. Pokud chybí nějaký objekt, odešlete žádost ve [fórech ACI Feedback](https://aka.ms/aci/feedback).
+Azure Container Instances nezveřejňuje přímý přístup k základní infrastruktuře, která hostuje skupiny kontejnerů. To zahrnuje přístup k rozhraní API Dockeru spuštěné na hostiteli kontejneru a spuštění privilegovaných kontejnerů. Pokud požadujete interakci Dockeru, podívejte se do [referenční dokumentace REST](https://aka.ms/aci/rest) a zjistěte, co rozhraní API Rozhraní ACI podporuje. Pokud něco chybí, odešlete žádost na [fórech pro zpětnou vazbu ACI](https://aka.ms/aci/feedback).
 
-### <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>IP adresa skupiny kontejnerů možná není dostupná kvůli neshodě portů.
+### <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>Ip adresa skupiny kontejnerů nemusí být přístupná z důvodu neodpovídajících portů.
 
-Azure Container Instances ještě nepodporuje mapování portů jako s normální konfigurací Docker. Pokud zjistíte, že IP adresa skupiny kontejnerů není dostupná, pokud se domníváte, že by měla být, ujistěte se, že jste nakonfigurovali image kontejneru, aby naslouchala stejným portům, které zveřejníte ve skupině kontejnerů s vlastností `ports`.
+Azure Container Instances ještě nepodporuje mapování portů, jako u běžné konfigurace dockeru. Pokud zjistíte, že IP adresa skupiny kontejnerů není přístupná, pokud se domníváte, že by měla být, `ports` ujistěte se, že jste nakonfigurovali image kontejneru tak, aby naslouchala stejným portům, které zveřejňujete ve skupině kontejnerů s vlastností.
 
-Pokud chcete potvrdit, že Azure Container Instances může naslouchat na portu, který jste nakonfigurovali v imagi kontejneru, otestujte nasazení `aci-helloworld` image, která port zveřejňuje. Spusťte také aplikaci `aci-helloworld`, aby naslouchala na portu. `aci-helloworld` akceptuje volitelnou proměnnou prostředí `PORT` k přepsání výchozího portu 80, na kterém naslouchá. Například pro otestování portu 9000 nastavte [proměnnou prostředí](container-instances-environment-variables.md) při vytváření skupiny kontejnerů:
+Pokud chcete potvrdit, že instance kontejneru Azure můžete naslouchat na portu, který `aci-helloworld` jste nakonfigurovali v image kontejneru, otestujte nasazení image, která zpřístupňuje port. Také spustit `aci-helloworld` aplikaci tak, aby naslouchá na portu. `aci-helloworld`přijme volitelnou proměnnou `PORT` prostředí, která přepíše výchozí port 80, na který naslouchá. Chcete-li například otestovat port 9000, nastavte [proměnnou prostředí](container-instances-environment-variables.md) při vytváření skupiny kontejnerů:
 
-1. Nastavte skupinu kontejnerů k vystavení portu 9000 a předejte číslo portu jako hodnotu proměnné prostředí. Příklad je naformátován pro prostředí bash shell. Pokud dáváte přednost jinému prostředí, například PowerShellu nebo příkazovému řádku, budete muset odpovídajícím způsobem upravit přiřazení proměnné.
+1. Nastavte skupinu kontejnerů tak, aby zpřístupňovala port 9000, a předajte číslo portu jako hodnotu proměnné prostředí. Příklad je formátován pro prostředí Bash. Pokud dáváte přednost jinému prostředí, například prostředí PowerShell nebo příkazovém řádku, budete muset odpovídajícím způsobem upravit přiřazení proměnných.
     ```azurecli
     az container create --resource-group myResourceGroup \
     --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld \
     --ip-address Public --ports 9000 \
     --environment-variables 'PORT'='9000'
     ```
-1. Vyhledejte IP adresu skupiny kontejnerů ve výstupu příkazu `az container create`. Vyhledejte hodnotu **IP**. 
-1. Po úspěšném zřízení kontejneru přejděte na adresu IP a port aplikace kontejneru v prohlížeči, například: `192.0.2.0:9000`. 
+1. Najděte IP adresu skupiny kontejnerů `az container create`ve výstupu příkazu . Podívejte se na hodnotu **ip**. 
+1. Po úspěšném zřízení kontejneru přejděte v prohlížeči ip adresu a port aplikace `192.0.2.0:9000`kontejneru, například: . 
 
-    Měla by se zobrazit zpráva "Vítá vás Azure Container Instances!" zpráva zobrazená webovou aplikací
-1. Až s kontejnerem skončíte, odeberte ho pomocí příkazu `az container delete`:
+    Měli byste vidět "Vítejte na Azure Container Instances!" webové aplikace.
+1. Až budete s kontejnerem hotovi, `az container delete` odeberte ho pomocí příkazu:
 
     ```azurecli
     az container delete --resource-group myResourceGroup --name mycontainer
@@ -224,7 +224,7 @@ Pokud chcete potvrdit, že Azure Container Instances může naslouchat na portu,
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte se, jak [načíst protokoly a události kontejneru](container-instances-get-logs.md) , které vám pomůžou s laděním vašich kontejnerů.
+Zjistěte, jak [načíst protokoly kontejnerů a události,](container-instances-get-logs.md) které vám pomohou ladit kontejnery.
 
 <!-- LINKS - External -->
 [azure-name-restrictions]: https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources

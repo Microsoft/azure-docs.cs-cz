@@ -1,6 +1,6 @@
 ---
-title: Vyvolat program MapReduce z Azure Data Factory
-description: Naučte se zpracovávat data spuštěním programů MapReduce v clusteru Azure HDInsight z objektu pro vytváření dat Azure.
+title: Vyvolání programu MapReduce z Azure Data Factory
+description: Zjistěte, jak zpracovat data spuštěním programů MapReduce v clusteru Azure HDInsight z továrny dat Azure.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -13,19 +13,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 598a16d25ba375b984a966cba190181edbda3d15
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74703154"
 ---
-# <a name="invoke-mapreduce-programs-from-data-factory"></a>Vyvolat programy MapReduce z Data Factory
-> [!div class="op_single_selector" title1="Aktivity transformace"]
-> * [Aktivita v podregistru](data-factory-hive-activity.md) 
-> * [Aktivita prasete](data-factory-pig-activity.md)
+# <a name="invoke-mapreduce-programs-from-data-factory"></a>Vyvolat programy MapReduce z datové továrny
+> [!div class="op_single_selector" title1="Transformační aktivity"]
+> * [Aktivita úlu](data-factory-hive-activity.md) 
+> * [Aktivita prasat](data-factory-pig-activity.md)
 > * [Aktivita MapReduce](data-factory-map-reduce.md)
-> * [Aktivita streamování Hadoop](data-factory-hadoop-streaming-activity.md)
-> * [Aktivita Sparku](data-factory-spark.md)
+> * [Aktivita streamování hadoopu](data-factory-hadoop-streaming-activity.md)
+> * [Aktivita jiskry](data-factory-spark.md)
 > * [Aktivita Provedení dávky služby Machine Learning](data-factory-azure-ml-batch-execution-activity.md)
 > * [Aktivita Aktualizace prostředků služby Machine Learning](data-factory-azure-ml-update-resource-activity.md)
 > * [Aktivita Uložená procedura](data-factory-stored-proc-activity.md)
@@ -33,27 +33,27 @@ ms.locfileid: "74703154"
 > * [Vlastní aktivita rozhraní .NET](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [transformace dat pomocí aktivity MapReduce v Data Factory](../transform-data-using-hadoop-map-reduce.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, [přečtěte si téma transformace dat pomocí aktivity MapReduce v datové továrně](../transform-data-using-hadoop-map-reduce.md).
 
 
-Aktivita MapReduce služby HDInsight v [kanálu](data-factory-create-pipelines.md) Data Factory spouští programy MapReduce na [vašem](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) clusteru HDInsight založeném na systému Windows nebo Linux na [vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) . Tento článek se sestavuje na článku [aktivity transformace dat](data-factory-data-transformation-activities.md) , který představuje obecný přehled transformace dat a podporovaných transformačních aktivit.
+Aktivita HDInsight MapReduce v [kanálu](data-factory-create-pipelines.md) Data Factory provádí programy MapReduce na [vašem vlastním](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) nebo na [vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) založeného hdinsight clusteru windows/linux. Tento článek vychází z článku [aktivit transformace dat,](data-factory-data-transformation-activities.md) který představuje obecný přehled transformace dat a podporovaných transformačních aktivit.
 
 > [!NOTE] 
-> Pokud se Azure Data Factory teprve začínáte, přečtěte si [Úvod do Azure Data Factory](data-factory-introduction.md) a udělejte si kurz: [Vytvoření prvního datového kanálu](data-factory-build-your-first-pipeline.md) před přečtením tohoto článku.  
+> Pokud jste s Azure Data Factory teprve noví, přečtěte si [úvodní článek azure data factory](data-factory-introduction.md) a proveďte kurz: [Sestavte si první datový kanál](data-factory-build-your-first-pipeline.md) před přečtením tohoto článku.  
 
-## <a name="introduction"></a>Představení
-Kanál v datové továrně Azure zpracovává data v propojených službách úložiště pomocí propojených výpočetních služeb. Obsahuje posloupnost aktivit, kde každá aktivita provádí určitou operaci zpracování. Tento článek popisuje použití aktivity HDInsight MapReduce.
+## <a name="introduction"></a>Úvod
+Kanál ve společnosti Azure pro data zpracovává data v propojených službách úložiště pomocí propojených výpočetních služeb. Obsahuje posloupnost aktivit, kde každá aktivita provádí určitou operaci zpracování. Tento článek popisuje použití HDInsight MapReduce aktivity.
 
-Podrobnosti o spouštění skriptů na bázi vepřového a podregistru v clusteru HDInsight se systémem Windows/Linux z kanálu najdete [v tématu věnovaném vepřovým](data-factory-pig-activity.md) sádl a aktivitám podregistru [služby HDInsight](data-factory-hive-activity.md) . 
+Podrobnosti o spouštění skriptů Pig/Hive v clusteru HDInsight založeném na Windows/Linuxu z kanálu pomocí aktivit HDInsight Pig a Hive najdete v tématu [Pig](data-factory-pig-activity.md) [and](data-factory-hive-activity.md) Hive. 
 
-## <a name="json-for-hdinsight-mapreduce-activity"></a>JSON pro aktivitu MapReduce služby HDInsight
-V definici JSON aktivity HDInsight: 
+## <a name="json-for-hdinsight-mapreduce-activity"></a>JSON pro HDInsight MapReduce aktivity
+V definici JSON pro aktivitu HDInsight: 
 
 1. Nastavte **typ** **aktivity** na **HDInsight**.
-2. Zadejte název třídy pro vlastnost **ClassName** .
-3. Zadejte cestu k souboru JAR včetně názvu souboru pro vlastnost **jarFilePath** .
-4. Zadejte propojenou službu, která odkazuje na Blob Storage Azure, která obsahuje soubor JAR pro vlastnost **jarLinkedService** .   
-5. V části **argumenty** zadejte argumenty pro program MapReduce. Za běhu vidíte několik dalších argumentů (například: MapReduce. job. Tags) z rozhraní MapReduce. Chcete-li odlišit argumenty pomocí argumentů MapReduce, zvažte použití možnosti i hodnoty jako argumentů, jak je znázorněno v následujícím příkladu (-s,--Input,--Output atd.) jsou možnosti, které bezprostředně následují jejich hodnoty).
+2. Zadejte název třídy pro vlastnost **className.**
+3. Zadejte cestu k souboru JAR včetně názvu souboru pro vlastnost **jarFilePath.**
+4. Zadejte propojenou službu, která odkazuje na úložiště objektů blob Azure, které obsahuje soubor JAR pro vlastnost **jarLinkedService.**   
+5. Zadejte všechny argumenty pro program MapReduce v části **argumenty.** Za běhu se zobrazí několik dalších argumentů (například mapreduce.job.tags) z rozhraní MapReduce. Chcete-li odlišit argumenty s Argumenty MapReduce, zvažte použití možnosti a hodnoty jako argumenty, jak je znázorněno v následujícím příkladu (-s, --input, --output atd., jsou možnosti bezprostředně následované jejich hodnotami).
 
     ```JSON   
     {
@@ -109,16 +109,16 @@ V definici JSON aktivity HDInsight:
         }
     }
     ```
-   Aktivitu HDInsight MapReduce můžete použít ke spuštění všech souborů JAR MapReduce v clusteru HDInsight. V následující ukázkové definici JSON kanálu je aktivita HDInsight nakonfigurovaná tak, aby spouštěla soubor Mahout JAR.
+   Aktivita HDInsight MapReduce můžete použít ke spuštění libovolného souboru dlaně MapReduce v clusteru HDInsight. V následující ukázce json definice kanálu aktivity HDInsight je nakonfigurován tak, aby spouštět soubor Mahout JAR.
 
 ## <a name="sample-on-github"></a>Ukázka na GitHubu
-Můžete si stáhnout ukázku pro použití aktivity HDInsight MapReduce z: [Data Factory ukázky na GitHubu](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON/MapReduce_Activity_Sample).  
+Ukázku pro použití aktivity HDInsight MapReduce si můžete stáhnout z: [Ukázky data továrny na GitHubu](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON/MapReduce_Activity_Sample).  
 
-## <a name="running-the-word-count-program"></a>Spuštění programu počet slov
-Kanál v tomto příkladu spustí program pro mapování/zmenšení počtu slov v clusteru Azure HDInsight.   
+## <a name="running-the-word-count-program"></a>Spuštění programu Počet slov
+Kanál v tomto příkladu spustí program Mapa/snížení počtu slov v clusteru Azure HDInsight.   
 
 ### <a name="linked-services"></a>Propojené služby
-Nejdřív vytvoříte propojenou službu, která propojí Azure Storage, kterou cluster Azure HDInsight používá pro Azure Data Factory. Pokud zkopírujete/vložíte následující kód, nezapomeňte nahradit **název účtu** a klíč **účtu** názvem a klíčem vašeho Azure Storage. 
+Nejprve vytvoříte propojenou službu pro propojení úložiště Azure, které používá cluster Azure HDInsight, s toutožnou továrně dat Azure. Pokud zkopírujete nebo vložíte následující kód, nezapomeňte nahradit **název účtu** a **klíč účtu** názvem a klíčem úložiště Azure. 
 
 #### <a name="azure-storage-linked-service"></a>Propojená služba Azure Storage
 
@@ -135,7 +135,7 @@ Nejdřív vytvoříte propojenou službu, která propojí Azure Storage, kterou 
 ```
 
 #### <a name="azure-hdinsight-linked-service"></a>Propojená služba Azure HDInsight
-V dalším kroku vytvoříte propojenou službu, která propojí cluster Azure HDInsight s objektem pro vytváření dat Azure. Pokud zkopírujete/vložíte následující kód, nahraďte **název clusteru HDInsight** názvem vašeho clusteru HDInsight a změňte hodnoty uživatelského jména a hesla.   
+Dále vytvoříte propojenou službu, která propojí váš cluster Azure HDInsight s totodatovou továrnou Azure. Pokud zkopírujete nebo vložíte následující kód, nahraďte **název clusteru HDInsight** názvem clusteru HDInsight a změňte hodnoty uživatelského jména a hesla.   
 
 ```JSON
 {
@@ -154,7 +154,7 @@ V dalším kroku vytvoříte propojenou službu, která propojí cluster Azure H
 
 ### <a name="datasets"></a>Datové sady
 #### <a name="output-dataset"></a>Výstupní datová sada
-Kanál v tomto příkladu nepřijímá žádné vstupy. Pro aktivitu MapReduce HDInsight zadáte výstupní datovou sadu. Tato datová sada je pouze fiktivní datová sada, která je požadována pro řízení plánu kanálu.  
+Kanál v tomto příkladu nepřijímá žádné vstupy. Zadáte výstupní datovou sadu pro aktivitu HDInsight MapReduce. Tato datová sada je pouze fiktivní datová sada, která je vyžadována k řízení plánu kanálu.  
 
 ```JSON
 {
@@ -179,16 +179,16 @@ Kanál v tomto příkladu nepřijímá žádné vstupy. Pro aktivitu MapReduce H
 ```
 
 ### <a name="pipeline"></a>Kanál
-Kanál v tomto příkladu má pouze jednu aktivitu typu: HDInsightMapReduce. Mezi důležité vlastnosti ve formátu JSON patří: 
+Kanál v tomto příkladu má pouze jednu aktivitu, která je typu: HDInsightMapReduce. Některé z důležitých vlastností v JSON jsou: 
 
 | Vlastnost | Poznámky |
 |:--- |:--- |
 | type |Typ musí být nastaven na **HDInsightMapReduce**. |
-| NázevTřídy |Název třídy je: **WORDCOUNT** |
-| jarFilePath |Cesta k souboru jar obsahujícímu třídu Pokud zkopírujete/vložíte následující kód, nezapomeňte změnit název clusteru. |
-| jarLinkedService |Azure Storage propojená služba, která obsahuje soubor JAR. Tato propojená služba odkazuje na úložiště, které je přidružené ke clusteru HDInsight. |
-| náhodné |Program WORDCOUNT přijímá dva argumenty, vstup a výstup. Vstupním souborem je soubor DaVinci. txt. |
-| frequency/interval |Hodnoty těchto vlastností se shodují s výstupní datovou sadou. |
+| Classname |Název třídy je: **počet slov** |
+| jarFilePath |Cesta k souboru jar obsahující třídu. Pokud zkopírujete nebo vložíte následující kód, nezapomeňte změnit název clusteru. |
+| jarLinkedService |Azure Storage propojené služby, která obsahuje soubor jar. Tato propojená služba odkazuje na úložiště, které je přidruženo ke clusteru HDInsight. |
+| Argumenty |Program počtu slov trvá dva argumenty, vstup a výstup. Vstupní soubor je soubor davinci.txt. |
+| frequency/interval |Hodnoty pro tyto vlastnosti odpovídají výstupní datové sadě. |
 | linkedServiceName |odkazuje na propojenou službu HDInsight, kterou jste vytvořili dříve. |
 
 ```JSON
@@ -232,7 +232,7 @@ Kanál v tomto příkladu má pouze jednu aktivitu typu: HDInsightMapReduce. Mez
 }
 ```
 
-## <a name="run-spark-programs"></a>Spouštění programů Spark
+## <a name="run-spark-programs"></a>Spuštění programů Spark
 Pomocí aktivity MapReduce můžete na svém clusteru HDInsight Spark spouštět programy Spark. Podrobnosti najdete v článku [Vyvolání programů Spark ze služby Azure Data Factory](data-factory-spark.md).  
 
 [developer-reference]: https://go.microsoft.com/fwlink/?LinkId=516908
@@ -246,9 +246,9 @@ Pomocí aktivity MapReduce můžete na svém clusteru HDInsight Spark spouštět
 [Azure Portal]: https://portal.azure.com
 
 ## <a name="see-also"></a>Viz také
-* [Aktivita v podregistru](data-factory-hive-activity.md)
-* [Aktivita prasete](data-factory-pig-activity.md)
-* [Aktivita streamování Hadoop](data-factory-hadoop-streaming-activity.md)
+* [Aktivita úlu](data-factory-hive-activity.md)
+* [Aktivita prasat](data-factory-pig-activity.md)
+* [Aktivita streamování hadoopu](data-factory-hadoop-streaming-activity.md)
 * [Vyvolání programů Spark](data-factory-spark.md)
 * [Vyvolání skriptů jazyka R](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
 

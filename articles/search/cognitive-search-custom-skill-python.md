@@ -1,7 +1,7 @@
 ---
 title: Příklad vlastní dovednosti (Python)
 titleSuffix: Azure Cognitive Search
-description: Pro vývojáře v Pythonu se naučíte používat nástroje a techniky pro vytváření vlastních dovedností pomocí Azure Functions a sady Visual Studio. Vlastní dovednosti obsahují uživatelsky definované modely nebo logiku, které můžete přidat do kanálu pro indexování s obohaceným AI do Azure Kognitivní hledání.
+description: Pro vývojáře Pythonu se naučte nástroje a techniky pro vytváření vlastních dovedností pomocí Azure Functions a Visual Studia. Vlastní dovednosti obsahují uživatelem definované modely nebo logiku, kterou můžete přidat do kanálu indexování obohaceného umělou ai v Azure Cognitive Search.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,55 +9,55 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.openlocfilehash: fc69761a05ea381d39d58d5ebf0046e0d9874961
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77210461"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>Příklad: Vytvoření vlastní dovednosti pomocí Pythonu
 
-V tomto příkladu Azure Kognitivní hledání dovednosti se dozvíte, jak vytvořit vlastní dovednost webového rozhraní API pomocí Pythonu a Visual Studio Code. V příkladu se používá [funkce Azure](https://azure.microsoft.com/services/functions/) , která implementuje [vlastní rozhraní dovedností](cognitive-search-custom-skill-interface.md).
+V tomto příkladu dovedností Azure Cognitive Search se dozvíte, jak vytvořit vlastní dovednost webového rozhraní API pomocí pythonu a kódu Visual Studia. Příklad používá [funkci Azure,](https://azure.microsoft.com/services/functions/) která implementuje [vlastní rozhraní dovedností](cognitive-search-custom-skill-interface.md).
 
-Vlastní dovednosti jsou jednoduché v návrhu (zřetězují dva řetězce), takže se můžete soustředit na nástroje a technologie používané pro vlastní vývoj dovedností v Pythonu. Po úspěšném použití jednoduché dovednosti můžete rozvětvit složitější scénáře.
+Vlastní dovednost je jednoduchá podle návrhu (zřetězí dva řetězce), takže se můžete soustředit na nástroje a technologie používané pro vlastní rozvoj dovedností v Pythonu. Jakmile uspějete s jednoduchou dovedností, můžete se rozdělit pomocí složitějších scénářů.
 
 ## <a name="prerequisites"></a>Požadavky
 
-+ Projděte si [vlastní dovednostní rozhraní](cognitive-search-custom-skill-interface.md) , kde se seznámíte se vstupním a výstupním rozhraním, které by měla vlastní dovednost implementovat.
++ Zkontrolujte [vlastní rozhraní dovedností](cognitive-search-custom-skill-interface.md) pro úvod do vstupní ho výstupního rozhraní, které by měly implementace vlastní dovednosti.
 
-+ Nastavte své prostředí. Provedli jsme [Tento kurz kompletním](https://docs.microsoft.com/azure/python/tutorial-vs-code-serverless-python-01) nastavením funkce Azure bez serveru pomocí rozšíření Visual Studio Code a Pythonu. Kurz vás provede instalací následujících nástrojů a součástí: 
++ Nastavte prostředí. Sledovali jsme [tento kurz end-to-end](https://docs.microsoft.com/azure/python/tutorial-vs-code-serverless-python-01) nastavit funkci Azure bez serveru pomocí Visual Studio Code a Python rozšíření. Tento kurz vás provede instalací následujících nástrojů a komponent: 
 
   + [Python 3,75](https://www.python.org/downloads/release/python-375/)
-  + [Visual Studio Code](https://code.visualstudio.com/)
-  + [Rozšíření Pythonu pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-  + [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local#v2)
+  + [Kód visual studia](https://code.visualstudio.com/)
+  + [Rozšíření Pythonu pro kód Visual Studia](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+  + [Základní nástroje Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-run-local#v2)
   + [Rozšíření Azure Functions pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
 
 ## <a name="create-an-azure-function"></a>Vytvoření funkce Azure
 
-Tento příklad používá funkci Azure k předvedení konceptu hostování webového rozhraní API, ale je možné použít i jiné přístupy. Pokud splňujete [požadavky na rozhraní pro vnímání znalostí](cognitive-search-custom-skill-interface.md), je přístup, který převezmete, nemateriálný. Azure Functions však usnadňuje vytváření vlastních dovedností.
+Tento příklad používá funkci Azure k předvedení konceptu hostování webového rozhraní API, ale jsou možné i jiné přístupy. Tak dlouho, jak budete splňovat [požadavky na rozhraní pro kognitivní dovednosti](cognitive-search-custom-skill-interface.md), přístup, který budete mít, je nepodstatné. Azure Functions však usnadňují vytvoření vlastní chod.
 
 ### <a name="create-a-function-app"></a>Vytvoření Function App
 
 Šablona projektu Azure Functions ve Visual Studio Code vytvoří projekt, který jde publikovat do aplikace funkcí v Azure. Aplikace funkcí umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků.
 
-1. V Visual Studio Code stisknutím klávesy F1 otevřete paletu příkazů. V paletě příkazů vyhledejte a vyberte `Azure Functions: Create new project...`.
+1. V kódu sady Visual Studio otevřete paletu příkazů stisknutím klávesy F1. V paletě příkazů vyhledejte `Azure Functions: Create new project...`a vyberte .
 
-1. Zvolte umístění adresáře pro váš pracovní prostor projektu a zvolte **možnost vybrat**.
+1. Zvolte umístění adresáře pro pracovní prostor projektu a zvolte **Vybrat**.
 
     > [!NOTE]
-    > Tyto kroky jsou navržené tak, aby se dokončily mimo pracovní prostor. Z tohoto důvodu nevybírejte složku projektu, která je součástí pracovního prostoru.
+    > Tyto kroky byly navrženy tak, aby byly dokončeny mimo pracovní prostor. Z tohoto důvodu nevybírejte složku projektu, která je součástí pracovního prostoru.
 
-1. Vyberte jazyk pro projekt Function App. Pro tento kurz vyberte **Python**.
-1. Vyberte verzi Pythonu (Azure Functions podporuje verze 3.7.5).
-1. Vyberte šablonu pro funkci prvního projektu. Výběrem **triggeru http** vytvořte v nové aplikaci Function App funkci AKTIVOVANou protokolem HTTP.
-1. Zadejte název funkce. V tomto případě použijeme **zřetězení** 
-1. Jako úroveň autorizace vyberte **funkce** . To znamená, že poskytneme [klíč funkce](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) , který bude volat koncový bod HTTP funkce. 
-1. Vyberte způsob, jakým chcete projekt otevřít. Pro tento krok vyberte **Přidat do pracovního prostoru** a vytvořte aplikaci Function App v aktuálním pracovním prostoru.
+1. Vyberte jazyk pro projekt aplikace funkce. V tomto kurzu vyberte **Python**.
+1. Vyberte verzi Pythonu (verze 3.7.5 je podporovaná funkcemi Azure)
+1. Vyberte šablonu pro první funkci projektu. Vyberte **aktivační událost HTTP,** chcete-li v nové aplikaci funkce vytvořit funkci spuštěnou protokolem HTTP.
+1. Zadejte název funkce. V tomto případě použijeme **Concatenator** 
+1. Jako úroveň Autorizace vyberte **Funkce.** To znamená, že poskytneme [funkční klávesu](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) pro volání koncového bodu HTTP funkce. 
+1. Vyberte, jak chcete projekt otevřít. V tomto kroku vyberte **Přidat do pracovního prostoru** a vytvořte aplikaci funkcí v aktuálním pracovním prostoru.
 
 Visual Studio Code vytvoří projekt aplikace funkcí v novém pracovním prostoru. Tento projekt obsahuje konfigurační soubory [host.json](../azure-functions/functions-host-json.md) a [local.settings.json](../azure-functions/functions-run-local.md#local-settings-file) a navíc všechny soubory projektu pro konkrétní jazyk. 
 
-Ve složce **zřetězení** projektu Function App se vytvoří také nová funkce AKTIVovaná protokolem HTTP. V takovém případě bude k dispozici soubor s názvem "\_\_init__. py" s tímto obsahem:
+Nová funkce spuštěná http je také vytvořena ve složce **Concatenator** projektu aplikace funkce. Uvnitř bude soubor s názvem\_\_"init__.py", s tímto obsahem:
 
 ```py
 import logging
@@ -87,7 +87,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 ```
 
-Teď tento kód upravíte tak, aby sledoval [vlastní dovednostní rozhraní](cognitive-search-custom-skill-interface.md). Upravte kód s následujícím obsahem:
+Nyní upravíme tento kód tak, aby se řídil [vlastním rozhraním dovedností](cognitive-search-custom-skill-interface.md)). Upravte kód s následujícím obsahem:
 
 ```py
 import logging
@@ -167,41 +167,41 @@ def transform_value(value):
             })
 ```
 
-Metoda **transform_value** provádí operaci na jednom záznamu. Metodu lze upravit tak, aby splňovala vaše specifické potřeby. Nezapomeňte provést veškerá nutná ověření vstupu a vrátit všechny chyby a upozornění, která byla vytvořena, pokud operaci pro záznam nebylo možné dokončit.
+Metoda **transform_value** provádí operaci s jedním záznamem. Můžete upravit metodu tak, aby vyhovovala vašim specifickým potřebám. Nezapomeňte provést všechny potřebné vstupní ověření a vrátit všechny chyby a upozornění vyrobené, pokud operaci nelze dokončit pro záznam.
 
-### <a name="debug-your-code-locally"></a>Místní ladění kódu
+### <a name="debug-your-code-locally"></a>Ladění kódu místně
 
-Visual Studio Code usnadňuje ladění kódu. Stiskněte klávesu F5 nebo přejděte do nabídky **ladění** a vyberte **Spustit ladění**.
+Visual Studio Kód usnadňuje ladění kódu. Stiskněte 'F5' nebo přejděte do nabídky **Ladění** a vyberte **Spustit ladění**.
 
-Můžete nastavit všechny zarážky v kódu tím, že na řádku zájmu zapnete "F9".
+Můžete nastavit všechny zarážky na kód stisknutím 'F9' na řádku zájmu.
 
-Po spuštění ladění se vaše funkce spustí místně. K vystavení žádosti hostiteli localhost můžete použít nástroj, jako je například post nebo Fiddler. Poznamenejte si umístění místního koncového bodu v okně terminálu. 
+Jakmile začnete ladění, vaše funkce se spustí místně. Můžete použít nástroj, jako je Pošťák nebo Šumař k vydání požadavku localhost. Poznamenejte si umístění místního koncového bodu v okně terminálu. 
 
 ## <a name="publish-your-function"></a>Publikování funkce
 
-Až budete s chováním funkce spokojeni, můžete ho publikovat.
+Když jste spokojeni s chováním funkce, můžete ji publikovat.
 
-1. V Visual Studio Code stisknutím klávesy F1 otevřete paletu příkazů. V paletě příkazů vyhledejte a vyberte **nasadit do Function App...** . 
+1. V kódu sady Visual Studio otevřete paletu příkazů stisknutím klávesy F1. V paletě příkazů vyhledejte a vyberte **Nasadit do funkční aplikace...**. 
 
-1. Vyberte předplatné Azure, na které chcete aplikaci nasadit.
+1. Vyberte předplatné Azure, kde chcete nasadit vaši aplikaci.
 
-1. Vybrat **+ vytvořit novou Function App v Azure**
+1. Vybrat **+ Vytvořit novou aplikaci funkcí v Azure**
 
-1. Zadejte globálně jedinečný název vaší aplikace Function App.
+1. Zadejte globálně jedinečný název aplikace pro funkci.
 
-1. Vyberte verzi Pythonu (pro tuto funkci funguje Python 3.7. x).
+1. Vyberte verzi Pythonu (Python 3.7.x funguje pro tuto funkci).
 
-1. Vyberte umístění pro nový prostředek (například Západní USA 2).
+1. Vyberte umístění nového zdroje (například Západní USA 2).
 
-V tomto okamžiku se v předplatném Azure vytvoří potřebné prostředky pro hostování nové funkce Azure v Azure. Počkejte, než se nasazení dokončí. V okně výstup se zobrazí stav procesu nasazení.
+V tomto okamžiku se v rámci předplatného Azure vytvoří potřebné prostředky pro hostování nové funkce Azure v Azure. Počkejte, než se nasazení dokončí. Ve výstupním okně se zobrazí stav procesu nasazení.
 
-1. V [Azure Portal](https://portal.azure.com)přejděte na **všechny prostředky** a vyhledejte funkci, kterou jste publikovali pomocí jejího názvu. Pokud jste pojmenovali **zřetězený**, vyberte prostředek.
+1. Na [webu Azure Portal](https://portal.azure.com)přejděte na **všechny prostředky** a vyhledejte funkci, kterou jste publikovali podle jeho názvu. Pokud jste jej **pojmenovali Concatenator**, vyberte zdroj.
 
-1. Klikněte na tlačítko **</> získat adresu URL funkce** . To vám umožní zkopírovat adresu URL pro volání funkce.
+1. Klikněte na tlačítko **URL funkce</>.** To vám umožní zkopírovat adresu URL pro volání funkce.
 
 ## <a name="test-the-function-in-azure"></a>Testování funkce v Azure
 
-Teď, když máte výchozí klíč hostitele, otestujte funkci následujícím způsobem:
+Nyní, když máte výchozí klíč hostitele, otestujte svou funkci následujícím způsobem:
 
 ```http
 POST [Function URL you copied above]
@@ -227,11 +227,11 @@ POST [Function URL you copied above]
 }
 ```
 
-Tento příklad by měl mít stejný výsledek, který jste viděli dříve při spuštění funkce v místním prostředí.
+Tento příklad by měl způsobit stejný výsledek, který jste viděli dříve při spuštění funkce v místním prostředí.
 
-## <a name="connect-to-your-pipeline"></a>Připojení k vašemu kanálu
+## <a name="connect-to-your-pipeline"></a>Připojení k potrubí
 
-Teď, když máte novou vlastní dovednost, ji můžete přidat do svého dovednostiu. Následující příklad ukazuje, jak volat dovednost pro zřetězení názvu a autora dokumentu do jednoho pole, které voláme merged_title_author. Nahraďte `[your-function-url-here]` adresou URL vaší nové funkce Azure Functions.
+Nyní, když máte novou vlastní dovednost, můžete ji přidat do své dovednosti. Následující příklad ukazuje, jak nazvat dovednost zřetězit název a autora dokumentu do jednoho pole, které nazýváme merged_title_author. Nahraďte `[your-function-url-here]` ji adresou URL nové funkce Azure.
 
 ```json
 {
@@ -264,10 +264,10 @@ Teď, když máte novou vlastní dovednost, ji můžete přidat do svého dovedn
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Blahopřejeme! Vytvořili jste svou první vlastní dovednost. Teď můžete postupovat podle stejného vzoru, abyste mohli přidat vlastní funkce. Další informace získáte kliknutím na následující odkazy.
+Blahopřejeme! Vytvořili jste si svou první vlastní dovednost. Nyní můžete postupovat podle stejného vzoru a přidat vlastní funkce. Další informace najdete na následujících odkazech.
 
-+ [Dovednosti v Power: úložiště vlastních dovedností](https://github.com/Azure-Samples/azure-search-power-skills)
-+ [Přidání vlastní dovednosti do kanálu pro obohacení AI](cognitive-search-custom-skill-interface.md)
-+ [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
-+ [Vytvořit dovednosti (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Power Skills: úložiště vlastních dovedností](https://github.com/Azure-Samples/azure-search-power-skills)
++ [Přidání vlastní chudinské dovednosti do kanálu obohacení umělou ai.](cognitive-search-custom-skill-interface.md)
++ [Jak definovat sadu dovedností](cognitive-search-defining-skillset.md)
++ [Vytvořit sadu dovedností (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [Jak mapovat obohacená pole](cognitive-search-output-field-mapping.md)

@@ -1,7 +1,7 @@
 ---
-title: Funkce ve verzi Preview v REST API
+title: Náhled funkcí v rozhraní REST API
 titleSuffix: Azure Cognitive Search
-description: Služba Azure Kognitivní hledání REST API verze 2019-05-06-Preview zahrnuje experimentální funkce, jako jsou úložiště znalostí a ukládání do mezipaměti indexerů pro přírůstkové obohacení.
+description: Azure Cognitive Search service REST API verze 2019-05-06-Preview obsahuje experimentální funkce, jako je úložiště znalostí a ukládání do mezipaměti indexeru pro přírůstkové obohacení.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -9,69 +9,69 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: db941152186127302680b5e659e43cd2d82a8908
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162272"
 ---
-# <a name="preview-features-in-azure-cognitive-search"></a>Funkce ve verzi Preview v Azure Kognitivní hledání
+# <a name="preview-features-in-azure-cognitive-search"></a>Náhled funkcí v Azure Cognitive Search
 
-Tento článek obsahuje seznam funkcí, které jsou v současnosti ve verzi Preview. Funkce, které přecházejí z verze Preview na obecnou dostupnost, se z tohoto seznamu odeberou. Můžete kontrolovat [aktualizace služby](https://azure.microsoft.com/updates/?product=search) nebo [novinky](whats-new.md) pro oznámení týkající se všeobecné dostupnosti.
+V tomto článku jsou uvedeny funkce aktuálně ve verzi Preview. Z tohoto seznamu budou odebrány funkce, které přecházejí z náhledu na obecnou dostupnost. Můžete zkontrolovat [aktualizace služeb](https://azure.microsoft.com/updates/?product=search) nebo Co je [nového](whats-new.md) pro oznámení týkající se obecné dostupnosti.
 
-I když některé funkce verze Preview můžou být dostupné na portálu a .NET SDK, má REST API vždycky funkce ve verzi Preview.
+Zatímco některé funkce náhledu mohou být k dispozici na portálu a .NET SDK, rozhraní REST API má vždy funkce náhledu.
 
-+ Pro operace vyhledávání je [ **`2019-05-06-Preview`** ](https://docs.microsoft.com/rest/api/searchservice/index-2019-05-06-preview) aktuální verzí Preview.
-+ Pro operace správy je [ **`2019-10-01-Preview`** ](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview) aktuální verzí Preview.
++ Pro operace [**`2019-05-06-Preview`**](https://docs.microsoft.com/rest/api/searchservice/index-2019-05-06-preview) vyhledávání je aktuální verze náhledu.
++ Pro operace [**`2019-10-01-Preview`**](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview) správy je aktuální verze náhledu.
 
 > [!IMPORTANT]
-> Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Funkce náhledu je k dispozici bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="ai-enrichment-features"></a>Funkce obohacení AI
+## <a name="ai-enrichment-features"></a>Funkce obohacení umělou a id
 
-Prozkoumejte nejnovější vylepšení rozšíření AI prostřednictvím [rozhraní API pro vyhledávání ve verzi Preview](https://docs.microsoft.com/rest/api/searchservice/index-2019-05-06-preview).
-
-|||
-|-|-|
-| [Dovednosti při vyhledávání vlastních entit (Preview)](cognitive-search-skill-custom-entity-lookup.md ) | Vnímání dovedností, která hledá text z vlastního uživatelsky definovaného seznamu slov a frází. Pomocí tohoto seznamu jsou všechny dokumenty označeny všemi vyhovujícími entitami. Dovednost také podporuje stupeň přibližné shody, které lze použít pro hledání shod, které jsou podobné, ale nejsou zcela přesné. | 
-| [Dovednost pro detekci PII (Preview)](cognitive-search-skill-pii-detection.md) | Vnímání odbornosti, která se používá při indexování, která extrahuje osobní údaje ze vstupního textu a poskytuje možnost jejich maskování z tohoto textu různými způsoby.| 
-| [Přírůstkové obohacení (Preview)](cognitive-search-incremental-indexing-conceptual.md) | Přidá do kanálu pro rozšíření ukládání do mezipaměti, což vám umožní znovu použít stávající výstup, pokud cílené změny, jako je například aktualizace dovednosti nebo jiného objektu, nezmění obsah. Ukládání do mezipaměti se týká pouze obohacených dokumentů vyprodukovaných dovednosti.| 
-| [Znalostní báze Knowledge Store (Preview)](knowledge-store-concept-intro.md) | Nový cíl kanálu rozšíření na bázi AI. Fyzická datová struktura existuje v úložišti objektů BLOB v Azure a v úložišti tabulek Azure a je vytvořená a naplněná při spuštění indexeru, který má připojené rozpoznávání dovednosti. Definice samotného úložiště znalostí je specifikována v rámci definice dovednosti. V rámci definice znalostní báze Knowledge Store můžete řídit fyzické struktury dat prostřednictvím prvků *projekce* , které určují způsob, jakým jsou data uložená v úložišti tabulek nebo objektů blob, a to, jestli existuje více zobrazení.| 
-
-## <a name="indexing-and-query-features"></a>Indexování a funkce dotazů
-
-Funkce ve verzi Preview indexeru jsou dostupné v rozhraní API pro vyhledávání ve verzi Preview. 
+Prozkoumejte nejnovější vylepšení obohacení umělou a iniciérou pomocí [rozhraní PREVIEW Search API](https://docs.microsoft.com/rest/api/searchservice/index-2019-05-06-preview).
 
 |||
 |-|-|
-| [Cosmos DB indexer](search-howto-index-cosmosdb.md) | Podpora rozhraní API pro MongoDB (Preview), rozhraní Gremlin API (Preview) a rozhraní API Cassandra (Preview) typů rozhraní API. | 
-|  [Azure Data Lake Storage Gen2 indexer (Preview)](search-howto-index-azure-data-lake-storage.md) | Indexuje obsah a metadata z Data Lake Storage Gen2.| 
-| [parametr dotazu moreLikeThis (Preview)](search-more-like-this.md) | Vyhledá dokumenty, které jsou relevantní pro určitý dokument. Tato funkce je ve starších verzích Preview. | 
+| [Dovednost Vyhledávání vlastních entit (náhled)](cognitive-search-skill-custom-entity-lookup.md ) | Kognitivní dovednost, která hledá text z vlastního, uživatelem definovaného seznamu slov a frází. Pomocí tohoto seznamu označí všechny dokumenty odpovídajícími entitami. Dovednost také podporuje stupeň fuzzy odpovídající, které lze použít k nalezení shody, které jsou podobné, ale ne zcela přesné. | 
+| [Dovednost detekce pii (náhled)](cognitive-search-skill-pii-detection.md) | Kognitivní dovednosti používané při indexování, které extrahuje osobně identifikovatelné informace ze vstupního textu a poskytuje možnost maskovat z tohoto textu různými způsoby.| 
+| [Přírůstkové obohacení (náhled)](cognitive-search-incremental-indexing-conceptual.md) | Přidá ukládání do mezipaměti do kanálu obohacení, což umožňuje znovu použít existující výstup, pokud cílená změna, například aktualizace sady dovedností nebo jiného objektu, nezmění obsah. Ukládání do mezipaměti se vztahuje pouze na obohacené dokumenty vytvořené skillset.| 
+| [Knowledge Store (Preview)](knowledge-store-concept-intro.md) | Nový cíl kanálu obohacení založeného na umělou tak. Fyzická datová struktura existuje v úložišti objektů Blob Azure a azure table storage a je vytvořena a naplněna, když spustíte indexer, který má připojenou kognitivní skillset. Definice samotného úložiště znalostí je specifikována v rámci definice skillset. V rámci definice úložiště znalostí řídíte fyzické struktury dat prostřednictvím *prvků projekce,* které určují, jak jsou data tvarována, zda jsou data uložena v úložišti table storage nebo blob a zda existuje více zobrazení.| 
+
+## <a name="indexing-and-query-features"></a>Funkce indexování a dotazů
+
+Funkce náhledu indexeru jsou k dispozici ve verzi Preview Search API. 
+
+|||
+|-|-|
+| [Indexer pro Cosmos DB](search-howto-index-cosmosdb.md) | Podpora pro mongoDB API (preview), Gremlin API (preview) a Cassandra API (preview) typy rozhraní API. | 
+|  [Indexer Úložiště datových jezer Azure Gen2 (preview)](search-howto-index-azure-data-lake-storage.md) | Indexujte obsah a metadata z úložiště datového jezera Gen2.| 
+| [moreLikeTento parametr dotazu (náhled)](search-more-like-this.md) | Vyhledá dokumenty, které jsou relevantní pro konkrétní dokument. Tato funkce byla v dřívějších náhledech. | 
 
 ## <a name="management-features"></a>Funkce správy
 
 |||
 |-|-|
-| [Podpora privátních koncových bodů](service-create-private-endpoint.md) | Můžete vytvořit virtuální síť se zabezpečeným klientem (například virtuálním počítačem) a pak vytvořit vyhledávací službu, která používá privátní koncový bod. |
-| Omezení přístupu IP | Pomocí [`api-version=2019-10-01-Preview`](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview) REST API správy můžete vytvořit službu, která má omezení přístupu k povoleným IP adresám. |
+| [Podpora privátního koncového bodu](service-create-private-endpoint.md) | Můžete vytvořit virtuální síť se zabezpečeným klientem (například virtuálním počítačem) a pak vytvořit vyhledávací službu, která používá privátní koncový bod. |
+| Omezení přístupu k ip adres | Pomocí [`api-version=2019-10-01-Preview`](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview) rozhraní REST API pro správu můžete vytvořit službu, která má omezení, na kterých je povolen přístup k IP adresám. |
 
-## <a name="earlier-preview-features"></a>Dřívější funkce ve verzi Preview
+## <a name="earlier-preview-features"></a>Dřívější funkce náhledu
 
-Funkce oznámené v předchozích verzích Preview, pokud nejsou převedené na obecnou dostupnost, jsou stále ve verzi Public Preview. Pokud voláte rozhraní API s dřívější verzí rozhraní API Preview, můžete tuto verzi dál používat nebo přepnout na `2019-05-06-Preview` bez jakýchkoli změn očekávaného chování.
+Funkce oznámené v dřívějších náhledech, pokud nepřešly na obecnou dostupnost, jsou stále ve verzi Public Preview. Pokud voláte rozhraní API s dřívější verzí rozhraní API preview, můžete pokračovat `2019-05-06-Preview` v používání této verze nebo přepnout na beze změn očekávaného chování.
 
-## <a name="how-to-call-a-preview-api"></a>Jak volat rozhraní API pro verzi Preview
+## <a name="how-to-call-a-preview-api"></a>Jak volat rozhraní PREVIEW API
 
-Starší verze Preview jsou pořád funkční, ale v průběhu času se stanou zastaralé. Pokud váš kód volá `api-version=2016-09-01-Preview` nebo `api-version=2017-11-11-Preview`, jsou tato volání stále platná. Jenom nejnovější verze Preview se ale aktualizuje s vylepšeními. 
+Starší náhledy jsou stále funkční, ale časem se stanou zastaralými. Pokud váš `api-version=2016-09-01-Preview` kód `api-version=2017-11-11-Preview`volá nebo , tyto hovory jsou stále platné. Vylepšení však aktualizují pouze nejnovější verze preview. 
 
-Následující příklad syntaxe znázorňuje volání rozhraní API verze Preview.
+Následující příklad syntaxe ilustruje volání verze rozhraní API preview.
 
     GET https://[service name].search.windows.net/indexes/[index name]/docs?search=*&api-version=2019-05-06-Preview
 
-Služba Azure Kognitivní hledání je dostupná ve více verzích. Další informace najdete v tématu [verze rozhraní API](search-api-versions.md).
+Služba Azure Cognitive Search je dostupná ve více verzích. Další informace naleznete v [tématu VERZE ROZHRANÍ API](search-api-versions.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Projděte si referenční dokumentaci REST API hledání. Pokud narazíte na problémy, požádejte nás o pomoc na [StackOverflow](https://stackoverflow.com/) nebo [kontaktujte podporu](https://azure.microsoft.com/support/community/?product=search).
+Projděte si referenční dokumentaci rozhraní REST API. Pokud narazíte na problémy, požádejte nás o pomoc na [StackOverflow](https://stackoverflow.com/) nebo [kontaktujte podporu](https://azure.microsoft.com/support/community/?product=search).
 
 > [!div class="nextstepaction"]
-> [Odkaz na REST API služby Search](https://docs.microsoft.com/rest/api/searchservice/)
+> [Vyhledávací služba REST API Reference](https://docs.microsoft.com/rest/api/searchservice/)

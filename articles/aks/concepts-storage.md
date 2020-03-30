@@ -1,66 +1,66 @@
 ---
-title: Koncepty – úložiště v Azure Kubernetes Services (AKS)
-description: Seznamte se s úložištěm ve službě Azure Kubernetes (AKS), včetně svazků, trvalých svazků, tříd úložišť a deklarací identity.
+title: Koncepty – úložiště ve službách Azure Kubernetes Services (AKS)
+description: Další informace o úložišti ve službě Azure Kubernetes Service (AKS), včetně svazků, trvalých svazků, tříd úložiště a deklarací identity
 services: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.openlocfilehash: 4bb19d7da971a82aef9c0e1fc092cc648ac49c4c
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77595990"
 ---
-# <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Možnosti úložiště pro aplikace ve službě Azure Kubernetes (AKS)
+# <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Možnosti úložiště pro aplikace ve službě Azure Kubernetes Service (AKS)
 
-Aplikace, které běží ve službě Azure Kubernetes Service (AKS), můžou potřebovat ukládat a načítat data. U některých aplikačních úloh může toto úložiště dat používat místní a rychlé úložiště v uzlu, který už není potřebný při odstraňování lusků. Další úlohy aplikací můžou vyžadovat úložiště, které na více běžných datových svazcích v rámci platformy Azure přetrvává. Více lusků může potřebovat sdílet stejné datové svazky nebo znovu připojit datové svazky, pokud je uzel pod přeplánování na jiném uzlu. Nakonec možná budete muset do lusků vložit citlivé informace o konfiguraci dat nebo aplikací.
+Aplikace, které běží ve službě Azure Kubernetes Service (AKS), může být nutné ukládat a načítat data. Pro některé úlohy aplikace toto úložiště dat můžete použít místní, rychlé úložiště na uzlu, který již není potřeba při odstranění podů. Jiné úlohy aplikací může vyžadovat úložiště, které přetrvává na pravidelnějších datových svazcích v rámci platformy Azure. Více podů může být nutné sdílet stejné datové svazky nebo znovu připojit datové svazky, pokud je pod přeplánována na jiném uzlu. Nakonec budete muset vložit citlivá data nebo informace o konfiguraci aplikace do podů.
 
-![Možnosti úložiště pro aplikace v clusteru Azure Kubernetes Services (AKS)](media/concepts-storage/aks-storage-options.png)
+![Možnosti úložiště pro aplikace v clusteru Služeb Azure Kubernetes (AKS)](media/concepts-storage/aks-storage-options.png)
 
-V tomto článku se seznámíte se základními koncepcemi, které poskytují úložiště vašim aplikacím v AKS:
+Tento článek představuje základní koncepty, které poskytují úložiště pro vaše aplikace v AKS:
 
-- [Svazků](#volumes)
+- [Svazky](#volumes)
 - [Trvalé svazky](#persistent-volumes)
 - [Třídy úložiště](#storage-classes)
 - [Deklarace identit trvalých svazků](#persistent-volume-claims)
 
 ## <a name="volumes"></a>Svazky
 
-Aplikace často potřebují mít schopnost ukládat a načítat data. Jelikož Kubernetes obvykle považuje jednotlivé lusky za dočasné a nepoužité prostředky, různé přístupy jsou k dispozici pro aplikace, které používají a uchovávají data podle potřeby. *Svazek* představuje způsob, jak ukládat, načítat a uchovávat data v různých luskech a v životním cyklu aplikace.
+Aplikace často potřebují být schopni ukládat a načítat data. Vzhledem k tomu, že Kubernetes obvykle zachází s jednotlivými pody jako s dočasnými, disponibilními prostředky, jsou pro aplikace k dispozici různé přístupy k použití a uchovávání dat podle potřeby. *Svazek* představuje způsob, jak ukládat, načítat a uchovávat data napříč pody a prostřednictvím životního cyklu aplikace.
 
-Tradiční svazky pro ukládání a načítání dat jsou vytvářeny jako Kubernetes prostředky, které jsou zajištěny Azure Storage. Tyto datové svazky můžete ručně vytvořit, aby je bylo možné přiřazovat do lusků přímo, nebo je nechat Kubernetes automaticky vytvořit. Tyto datové svazky můžou používat disky Azure nebo soubory Azure:
+Tradiční svazky pro ukládání a načítání dat se vytvářejí jako prostředky Kubernetes podporované službou Azure Storage. Tyto datové svazky můžete ručně vytvořit tak, aby byly přiřazeny k podům přímo, nebo je kubernetes automaticky vytvoří. Tyto datové svazky můžou používat Disky Azure nebo Soubory Azure:
 
-- *Disky Azure* můžete použít k vytvoření prostředku Kubernetes *datadisk* . Disky můžou využívat službu Azure Premium Storage, která je zajištěná vysokým výkonem SSD nebo Azure Storage úrovně Standard, zajištěná pravidelným HDD. Pro většinu produkčních a vývojových úloh použijte Premium Storage. Disky Azure jsou připojené jako *ReadWriteOnce*, takže jsou dostupné jenom pro jeden pod. Pro svazky úložiště, ke kterým se dá současně přistupovat více lusků, použijte soubory Azure.
-- *Soubory Azure* můžete použít k připojení sdílené složky SMB 3,0 s účtem Azure Storage do lusků. Soubory umožňují sdílet data napříč více uzly a lusky. Soubory můžou používat úložiště Azure Standarded založené na běžných HDD nebo Azure Premium Storage založené na vysoce výkonném SSD.
+- *Disky Azure* lze použít k vytvoření prostředku Kubernetes *DataDisk.* Disky můžou používat úložiště Azure Premium, podporované vysoce výkonnými ssd disky nebo úložištěm Azure Standard, podporované běžnými pevnými disky. Pro většinu produkčních a vývojových úloh použijte úložiště Premium. Disky Azure jsou připojené jako *ReadWriteOnce*, takže jsou k dispozici pouze pro jeden pod. Pro svazky úložiště, ke kterým má přístup více podů současně, použijte Soubory Azure.
+- *Soubory Azure* se můžou použít k připojení sdílené složky SMB 3.0 podporované účtem Azure Storage do podů. Soubory umožňují sdílet data mezi více uzly a pody. Soubory můžou používat úložiště Azure Standard podporované běžnými pevnými disky nebo úložištěm Azure Premium, které je podpořeno vysoce výkonnými disky SSD.
 > [!NOTE] 
-> Služba soubory Azure podporuje Premium Storage v clusterech AKS se systémem Kubernetes 1,13 nebo vyšším.
+> Soubory Azure podporují úložiště úrovně Premium v clusterech AKS, které běží kubernetes 1.13 nebo vyšší.
 
-V Kubernetes můžou svazky reprezentovat více než jenom tradiční disk, kde se můžou informace ukládat a načítat. Svazky Kubernetes lze také použít jako způsob, jak vložit data do podseznamu pro použití kontejnery. Mezi běžné další typy svazků v Kubernetes patří:
+V Kubernetes mohou svazky představovat více než jen tradiční disk, kde mohou být informace uloženy a načteny. Svazky Kubernetes lze také použít jako způsob, jak vložit data do podu pro použití v kontejnerech. Běžné další typy svazků v Kubernetes patří:
 
-- *emptyDir* – tento svazek se běžně používá jako dočasné místo pro objekt pod. Všechny kontejnery v rámci pod mohou přistupovat k datům na svazku. Data zapsaná do tohoto typu svazku přetrvávají jenom za životnosti pod a, svazek se odstraní. Tento svazek obvykle používá základní úložiště disku místního uzlu, i když může existovat i v paměti uzlu.
-- *tajný kód* – tento svazek se používá pro vkládání citlivých dat do lusků, jako jsou hesla. Nejdřív vytvoříte tajný klíč pomocí rozhraní Kubernetes API. Pokud definujete pod nebo nasazením, může se požadovat konkrétní tajný klíč. Tajné kódy se poskytují pouze uzlům, které mají naplánovanou hodnotu typu, která ji vyžaduje, a tajný klíč je uložený v *tmpfs*, který není zapsaný na disk. Když se poslední uzel pod uzlem, který vyžaduje tajný klíč, odstraní, tajný kód se odstraní z tmpfs uzlu. Tajné kódy jsou uloženy v daném oboru názvů a lze k nim přistupovat pouze v rámci stejného oboru názvů.
-- *configMap* – tento typ svazku slouží k vložení vlastností páru klíč-hodnota do lusků, jako jsou například informace o konfiguraci aplikace. Místo definování informací o konfiguraci aplikace v rámci image kontejneru ho můžete definovat jako prostředek Kubernetes, který se dá snadno aktualizovat a použít na nové instance lusků při jejich nasazení. Podobně jako při použití tajného kódu je třeba nejprve vytvořit ConfigMap pomocí rozhraní Kubernetes API. Tato ConfigMap se pak může vyžádat při definování pod nebo nasazováním. ConfigMaps jsou uloženy v daném oboru názvů a lze k nim přistupovat pouze v rámci stejného oboru názvů.
+- *emptyDir* - Tento svazek se běžně používá jako dočasné místo pro pod. Všechny kontejnery v rámci pod udály data na svazku. Data zapsaná do tohoto typu svazku přetrvávají pouze po dobu životnosti podu - při odstranění podu je svazek odstraněn. Tento svazek obvykle používá úložiště disků místního uzlu, i když může existovat pouze v paměti uzlu.
+- *tajný klíč* – Tento svazek se používá k vkládání citlivých dat do podů, jako jsou hesla. Nejprve vytvoříte tajný klíč pomocí rozhraní API Kubernetes. Při definování pod u. nebo nasazení, konkrétní tajný klíč lze požadovat. Tajné klíče jsou k dispozici pouze uzly, které mají naplánované pod, který to vyžaduje, a tajný klíč je uložen v *tmpfs*, není zapsán na disk. Při odstranění posledního podu v uzlu, který vyžaduje tajný klíč, je tajný klíč odstraněn z tmpfs uzlu. Tajné klíče jsou uloženy v rámci daného oboru názvů a lze přistupovat pouze pody ve stejném oboru názvů.
+- *configMap* - Tento typ svazku se používá k vložení vlastností páru klíč-hodnota do podů, jako jsou informace o konfiguraci aplikace. Místo definování informací o konfiguraci aplikace v rámci image kontejneru, můžete definovat jako prostředek Kubernetes, který lze snadno aktualizovat a použít na nové instance podů, jak jsou nasazeny. Stejně jako pomocí tajné, nejprve vytvořit ConfigMap pomocí Kubernetes API. Tento ConfigMap pak lze požadovat při definování pod nebo nasazení. ConfigMaps jsou uloženy v daném oboru názvů a lze k nim přistupovat pouze pody ve stejném oboru názvů.
 
 ## <a name="persistent-volumes"></a>Trvalé svazky
 
-Svazky, které jsou definovány a vytvořeny jako součást životního cyklu pod, existují pouze v případě, že je pole pod odstraněno. Lusky často očekávají, že jejich úložiště zůstane v případě, že je v rámci události údržby přeplánováno na jiném hostiteli, zejména v StatefulSets. *Trvalý svazek* (PV) je prostředek úložiště vytvořený a spravovaný rozhraním API Kubernetes, které může existovat po dobu života jednotlivce pod.
+Svazky, které jsou definovány a vytvořeny jako součást životního cyklu podu existují pouze do odstranění podu. Pody často očekávají, že jejich úložiště zůstane, pokud pod je přeplánována na jiného hostitele během události údržby, zejména v StatefulSets. *Trvalý svazek* (PV) je prostředek úložiště vytvořený a spravovaný rozhraním API Kubernetes, který může existovat i po dobu životnosti jednotlivých podů.
 
-K poskytnutí PersistentVolume se používají disky nebo soubory Azure. Jak je uvedeno v předchozí části na svazcích, je volba disků nebo souborů často určena nutností souběžného přístupu k datům nebo úrovni výkonu.
+Disky Azure nebo soubory se používají k poskytování PersistentVolume. Jak je uvedeno v předchozí části o svazcích, volba disků nebo souborů je často určena potřebou souběžného přístupu k datům nebo úrovni výkonu.
 
-![Trvalé svazky v clusteru Azure Kubernetes Services (AKS)](media/concepts-storage/persistent-volumes.png)
+![Trvalé svazky v clusteru Služeb Azure Kubernetes (AKS)](media/concepts-storage/persistent-volumes.png)
 
-PersistentVolume je možné *staticky* vytvořit správcem clusteru nebo *dynamicky* vytvořit pomocí serveru Kubernetes API. Pokud je v seznamu naplánovaná a požaduje úložiště, které není aktuálně dostupné, Kubernetes může vytvořit základní disk Azure nebo soubory úložiště a připojit ho k poli pod. Dynamické zřizování používá *StorageClass* k identifikaci typu úložiště Azure, který je potřeba vytvořit.
+Trvalý svazek může být *staticky* vytvořen správcem clusteru nebo *dynamicky* vytvořen serverem rozhraní API Kubernetes. Pokud pod je naplánováno a požaduje úložiště, které není aktuálně k dispozici, Kubernetes můžete vytvořit základní úložiště Azure Disk nebo soubory a připojit k podu. Dynamické zřizování používá *StorageClass* k určení, jaký typ úložiště Azure je potřeba vytvořit.
 
 ## <a name="storage-classes"></a>Třídy úložiště
 
-Pokud chcete definovat různé úrovně úložiště, jako je například Premium a Standard, můžete vytvořit *StorageClass*. StorageClass také definuje *reclaimPolicy*. Tato reclaimPolicy řídí chování základní prostředek služby Azure storage při pod se odstraní a trvalý svazek již může být nutná. Tento základní prostředek spravovat úložiště můžete odstranit nebo uchovávají pro použití s budoucí pod.
+Chcete-li definovat různé úrovně úložiště, jako je například Premium a Standard, můžete vytvořit *StorageClass*. StorageClass také definuje *reclaimPolicy*. Toto zásady rekultivace řídí chování základního prostředku úložiště Azure při odstranění podu a trvalý svazek již nemusí být vyžadován. Základní prostředek úložiště lze odstranit nebo zachovat pro použití s budoucí pod.
 
-V AKS se vytvoří dvě počáteční StorageClasses:
+V AKS jsou vytvořeny dvě počáteční StorageClasses:
 
-- *výchozí* – používá službu Azure Storage Standard k vytvoření spravovaného disku. Zásady opětovné deklarace označují, že základní disk Azure se odstraní při odstranění trvalého svazku, který ho použil.
-- *Managed Premium* – využívá Azure Premium Storage k vytvoření spravovaného disku. Zásady opětovné deklarace označují, že základní disk Azure se odstraní při odstranění trvalého svazku, který ho použil.
+- *výchozí* – používá úložiště Azure Standard k vytvoření spravovaného disku. Zásady obnovení označuje, že základní disk Azure se odstraní při odstranění trvalého svazku, který jej použil.
+- *spravované premium* – používá úložiště Azure Premium k vytvoření spravovaného disku. Zásady obnovení znovu označuje, že základní disk Azure se odstraní při odstranění trvalého svazku, který jej použil.
 
-Pokud pro trvalý svazek není zadána žádná StorageClass, použije se výchozí StorageClass. Při žádosti o trvalé svazky postupujte opatrně, aby používaly vhodné úložiště, které potřebujete. StorageClass můžete vytvořit pro další potřeby pomocí `kubectl`. Následující příklad používá prémiové Managed Disks a určuje, že základní disk Azure by měl být *zachován* při odstranění části pod.
+Pokud pro trvalý svazek není zadán žádný storageclass, použije se výchozí třída StorageClass. Při požadování trvalých svazků dbát na to, aby používaly odpovídající úložiště, které potřebujete. Můžete vytvořit StorageClass pro další `kubectl`potřeby pomocí . Následující příklad používá spravované disky Premium a určuje, že základní disk Azure by měl být *zachován* při odstranění podu:
 
 ```yaml
 kind: StorageClass
@@ -74,15 +74,15 @@ parameters:
   kind: Managed
 ```
 
-## <a name="persistent-volume-claims"></a>Trvalé deklarace svazků
+## <a name="persistent-volume-claims"></a>Deklarace identit trvalých svazků
 
-PersistentVolumeClaim vyžádá buď disk nebo úložiště souborů konkrétního StorageClass, režim přístupu a velikost. Server Kubernetes API může dynamicky zřizovat základní prostředky úložiště v Azure, pokud neexistuje žádný prostředek k splnění deklarace identity na základě definovaného StorageClass. Definice pod zahrnuje připojení svazku, jakmile je svazek připojen k poli pod.
+A PersistentVolumeClaim požaduje disk nebo soubor úložiště určité StorageClass, režim přístupu a velikost. Kubernetes API server můžete dynamicky zřídit základní prostředek úložiště v Azure, pokud neexistuje žádný existující prostředek ke splnění deklarace na základě definované StorageClass. Definice podu zahrnuje připojení svazku po připojení svazku k podu.
 
-![Trvalý svazek deklarací identity v clusteru služby Kubernetes v Azure (AKS)](media/concepts-storage/persistent-volume-claims.png)
+![Trvalé deklarace svazku v clusteru Služeb Azure Kubernetes (AKS)](media/concepts-storage/persistent-volume-claims.png)
 
-PersistentVolume je *vázán* na PersistentVolumeClaim, jakmile je dostupný prostředek úložiště přiřazený pod tím, aby na něj požadoval. Existuje 1:1 mapování trvalých svazků na deklarace identity.
+A PersistentVolume je *vázán* na PersistentVolumeClaim, jakmile byl dostupný prostředek úložiště přiřazen podu, který o něj požádal. Existuje mapování trvalých svazků 1:1 na deklarace identity.
 
-V následujícím příkladu manifestu YAML se zobrazuje deklarace identity trvalého svazku, která používá StorageClassu *Managed-Premium* a který požaduje velikost disku *5Gi* :
+Následující příklad manifestu YAML ukazuje trvalé deklarace svazku, která používá *storageclass spravované ho spravovaného premium* a požaduje velikost disku *5Gi:*
 
 ```yaml
 apiVersion: v1
@@ -98,7 +98,7 @@ spec:
       storage: 5Gi
 ```
 
-Při vytváření definice pod je určena deklarace identity trvalého svazku pro vyžádání požadovaného úložiště. Pak zadáte *volumeMount* , ve kterém budou vaše aplikace číst a zapisovat data. V následujícím příkladu manifestu YAML se dozvíte, jak se dá k připojení svazku na */mnt/Azure*použít předchozí deklarace identity trvalého svazku:
+Při vytváření definice podu je určena trvalá deklarace svazku, která požaduje požadované úložiště. Můžete také zadat *volumeMount* pro vaše aplikace ke čtení a zápisu dat. Následující příklad manifestu YAML ukazuje, jak lze použít předchozí deklaraci trvalého svazku k připojení svazku na */mnt/azure*:
 
 ```yaml
 kind: Pod
@@ -120,22 +120,22 @@ spec:
 
 ## <a name="next-steps"></a>Další kroky
 
-Související osvědčené postupy najdete [v tématu osvědčené postupy pro úložiště a zálohování v AKS][operator-best-practices-storage].
+Doporučené postupy najdete v [tématu Doporučené postupy pro ukládání a zálohování v AKS][operator-best-practices-storage].
 
-Další informace o tom, jak vytvořit dynamické a statické svazky, které používají disky Azure nebo soubory Azure, najdete v následujících článcích s postupy:
+Postup v článku najdete v následujících článcích, jak vytvářet dynamické a statické svazky, které používají disky Azure nebo soubory Azure:
 
-- [Vytvoření statického svazku pomocí disků Azure][aks-static-disks]
-- [Vytvoření statického svazku pomocí služby soubory Azure][aks-static-files]
-- [Vytvoření dynamického svazku pomocí disků Azure][aks-dynamic-disks]
-- [Vytvoření dynamického svazku pomocí služby soubory Azure][aks-dynamic-files]
+- [Vytvoření statického svazku pomocí disků Azure Disky][aks-static-disks]
+- [Vytvoření statického svazku pomocí souborů Azure][aks-static-files]
+- [Vytvoření dynamického svazku pomocí disků Azure Disky][aks-dynamic-disks]
+- [Vytvoření dynamického svazku pomocí souborů Azure][aks-dynamic-files]
 
-Další informace o základních konceptech Kubernetes a AKS najdete v následujících článcích:
+Další informace o základních konceptech Kubernetes a AKS naleznete v následujících článcích:
 
-- [Clustery a úlohy Kubernetes/AKS][aks-concepts-clusters-workloads]
-- [Identita Kubernetes/AKS][aks-concepts-identity]
-- [Zabezpečení Kubernetes/AKS][aks-concepts-security]
-- [Virtuální sítě Kubernetes/AKS][aks-concepts-network]
-- [Škálování Kubernetes/AKS][aks-concepts-scale]
+- [Kubernetes / AKS clustery a úlohy][aks-concepts-clusters-workloads]
+- [Kubernetes / AKS identita][aks-concepts-identity]
+- [Kubernetes / AKS zabezpečení][aks-concepts-security]
+- [Kubernetes / AKS virtuální sítě][aks-concepts-network]
+- [Kubernetes / AKS váha][aks-concepts-scale]
 
 <!-- EXTERNAL LINKS -->
 

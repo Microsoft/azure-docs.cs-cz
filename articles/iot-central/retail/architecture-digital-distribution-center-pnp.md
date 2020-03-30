@@ -1,6 +1,6 @@
 ---
-title: Architektura IoT Central digital Distribution Center | Microsoft Docs
-description: Architektura šablony aplikace digitálního distribučního centra pro IoT Central
+title: Architektura IoT Central Digital Distribution Center | Dokumenty společnosti Microsoft
+description: Architektura šablony aplikace Digital Distribution Center pro IoT Central
 author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
@@ -8,44 +8,44 @@ ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
 ms.openlocfilehash: 359aaf7bbde5501716f3d8c4229b2b90918fd5de
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77020977"
 ---
-# <a name="architecture-of-iot-central-digital-distribution-center-application-template"></a>Architektura šablony aplikace IoT Central digital Distribution Center
+# <a name="architecture-of-iot-central-digital-distribution-center-application-template"></a>Architektura aplikační šablony digitálního distribučního centra IoT Central
 
 
 
-Partneři a zákazníci můžou použít šablonu aplikace & následující pokyny pro vývoj kompletních řešení pro **distribuci digitálních distribučních center** .
+Partneři a zákazníci mohou pomocí šablony aplikace & následujícípokyny k vývoji řešení **digitálních distribučních center** od konce ke konci.
 
 > [!div class="mx-imgBorder"]
-> ![](./media/concept-ddc-architecture/digital-distribution-center-architecture.png) digital Distribution Center
+> ![digitální distribuční centrum](./media/concept-ddc-architecture/digital-distribution-center-architecture.png)
 
-1. Sada senzorů IoT odesílajících data telemetrie na zařízení brány
-2. Zařízení brány odesílající telemetrii a agregované přehledy pro IoT Central
-3. Data jsou směrována do požadované služby Azure pro manipulaci
-4. Služby Azure, jako je ASA nebo Azure Functions, se dají použít k přeformátování datových proudů a posílání do požadovaných účtů úložiště. 
-5. Zpracovaná data se ukládají do horkého úložiště pro akce téměř v reálném čase nebo z chladírenského úložiště pro další vylepšení Insights založená na ML nebo analýze dávek. 
-6. Logic Apps můžete použít k napájení různých podnikových pracovních postupů v podnikových aplikacích koncových uživatelů.
+1. Sada ioT senzorů odesílajících telemetrická data do zařízení brány
+2. Zařízení brány odesílající telemetrii a agregované přehledy do IoT Central
+3. Data jsou směrována na požadovanou službu Azure pro manipulaci
+4. Služby Azure, jako je ASA nebo Azure Functions, se můžou použít k přeformátování datových proudů a odesílání na požadované účty úložiště. 
+5. Zpracovaná data jsou uložena v horkém úložišti pro akce téměř v reálném čase nebo v chladírenském úložišti pro další vylepšení přehledu, která jsou založena na analýze ML nebo dávky. 
+6. Logic Apps lze použít k napájení různých obchodních pracovních postupů v obchodních aplikacích koncových uživatelů
 
 ## <a name="details"></a>Podrobnosti
-Následující část popisuje jednotlivé části koncepční architektury.
+Následující část popisuje každou část konceptuální architektury
 
 ## <a name="video-cameras"></a>Videokamery 
-Videokamery jsou primární senzory v tomto nepřipojeném ekosystému s místním škálováním na podnikové úrovni. V strojovém učení a v umělých inteligentních kurzech je možné zasílat do strukturovaných dat a před odesláním do cloudu je zpracovat na hraničních zařízeních. Pomocí fotoaparátů IP můžeme zachytit image, zkomprimovat je na kameře a pak pro kanál video Analytics poslat komprimovaná data přes Edge a pak je pomocí GigE videokamery zachytit na senzor a pak tyto image poslat přímo do Azure IoT Edge , které pak komprimuje před zpracováním v kanálu video Analytics. 
+Videokamery jsou primární senzory v tomto digitálně propojeném ekosystému v podnikovém měřítku. Pokroky ve strojovém učení a umělé inteligenci, které umožňují přeměnu videa na strukturovaná data a jeho zpracování na hraniční úrovni před odesláním do cloudu. Pomocí IP kamer můžeme zachytit obrázky, komprimovat je na kameře a pak odeslat komprimovaná data přes okraj výpočetních prostředků pro kanál analýzy videa nebo použít kamery GigE k zachycení snímků na senzoru a následné odeslání těchto obrázků přímo do Azure IoT Edge , který se pak komprimuje před zpracováním v kanálu analýzy videa. 
 
-## <a name="azure-iot-edge-gateway"></a>Brána Azure IoT Edge
-Pracovní zatížení "kamery jako senzory" a hraniční úlohy jsou spravovány místně pomocí Azure IoT Edge a datový proud kamery se zpracovává pomocí analytického kanálu. Kanál pro zpracování analýzy videí v Azure IoT Edge přináší spoustu výhod, včetně snížené doby odezvy, spotřeby s nízkou šířkou pásma, což má za následek nízkou latenci pro rychlé zpracování dat. Do cloudu se posílají jenom nejdůležitější metadata, přehledy nebo akce pro další akce nebo šetření. 
+## <a name="azure-iot-edge-gateway"></a>Hraniční brána Azure IoT
+Úlohy "kamery jako senzory" a hraniční úlohy jsou spravovány místně pomocí Azure IoT Edge a datový proud kamery se zpracovává pomocí analytického kanálu. Kanál zpracování analýzy videa v Azure IoT Edge přináší mnoho výhod, včetně snížení doby odezvy, nízké spotřeby šířky pásma, což má za následek nízkou latenci pro rychlé zpracování dat. Do cloudu se k dalšímu postupu nebo vyšetřování odešlou jenom nejdůležitější metadata, přehledy nebo akce. 
 
-## <a name="device-management-with-iot-central"></a>Správa zařízení pomocí IoT Central 
-Azure IoT Central je vývojová platforma pro řešení, která zjednodušuje & zařízení IoT Azure IoT Edge připojení, konfiguraci a správu brány. Platforma významně snižuje zatížení a náklady na správu zařízení IoT, operace a související vývoj. Zákazníci, kteří & partneři, mohou vytvořit koncová podniková řešení pro zajištění smyčky digitální zpětné vazby v distribučních centrech.
+## <a name="device-management-with-iot-central"></a>Správa zařízení s IoT Central 
+Azure IoT Central je platforma pro vývoj řešení, která zjednodušuje připojení, konfiguraci a správu brány Azure IoT Edge & zařízení IoT. Platforma výrazně snižuje zátěž a náklady na správu zařízení IoT, provoz a související vývoj. Zákazníci & partneři mohou vytvářet komplexní podniková řešení, aby dosáhli smyčky digitální zpětné vazby v distribučních centrech.
 
-## <a name="business-insights-and-actions-using-data-egress"></a>Obchodní přehledy a akce využívající výstup dat 
-Platforma IoT Central poskytuje bohatou možnost rozšiřitelnosti prostřednictvím exportu a rozhraní API pro průběžné exporty dat (CDE). Obchodní přehledy založené na zpracování dat telemetrie nebo nezpracovaná telemetrie se obvykle exportují do upřednostňované obchodní aplikace. Dá se dosáhnout pomocí Webhooku, Service Bus, centra událostí nebo úložiště objektů BLOB pro sestavování, výuku a nasazení modelů strojového učení a další obohacení přehledů.
+## <a name="business-insights-and-actions-using-data-egress"></a>Obchodní přehledy a akce využívající odchozí přenos dat 
+Platforma IoT Central poskytuje bohaté možnosti rozšiřitelnosti prostřednictvím průběžného exportu dat (CDE) a api. Obchodní přehledy, které jsou založeny na zpracování telemetrických dat nebo nezpracovaná telemetrie jsou obvykle exportovány do upřednostňované obchodní aplikace. Toho lze dosáhnout prostřednictvím webhooku, Service Bus, centra událostí nebo úložiště objektů blob k vytváření, trénování a nasazování modelů strojového učení a dalšího obohacení přehledů.
 
 ## <a name="next-steps"></a>Další kroky
-* Postup nasazení šablony nástroje [digital Distribution Center](./tutorial-iot-central-digital-distribution-center-pnp.md)
-* Další informace o [IoT Central maloobchodních šablon](./overview-iot-central-retail-pnp.md)
-* Další informace o IoT Central najdete v tématu [IoT Central Overview](../core/overview-iot-central.md) .
+* Přečtěte si, jak nasadit [šablonu digitálního distribučního centra](./tutorial-iot-central-digital-distribution-center-pnp.md)
+* Další informace o [maloobchodních šablonách IoT Central](./overview-iot-central-retail-pnp.md)
+* Další informace o IoT Central najdete v [přehledu IoT Central](../core/overview-iot-central.md)

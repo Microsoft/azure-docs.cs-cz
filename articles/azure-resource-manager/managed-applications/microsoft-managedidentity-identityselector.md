@@ -1,34 +1,34 @@
 ---
-title: IdentitySelector – element uživatelského rozhraní
-description: Popisuje prvek uživatelského rozhraní Microsoft. ManagedIdentity. IdentitySelector pro Azure Portal. Slouží k přiřazení spravovaných identit k prostředku.
+title: Prvek ui voliče identitySelector
+description: Popisuje prvek ui Microsoft.ManagedIdentity.IdentitySelector pro portál Azure. Slouží k přiřazení spravovaných identit k prostředku.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tomfitz
 ms.openlocfilehash: cb66a2684e0b83f4f0cc01a07cc724f6beab4d68
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77087541"
 ---
-# <a name="microsoftmanagedidentityidentityselector-ui-element"></a>Microsoft. ManagedIdentity. IdentitySelector – element uživatelského rozhraní
+# <a name="microsoftmanagedidentityidentityselector-ui-element"></a>Prvek ui rozhraní Microsoft.ManagedIdentity.IdentitySelector
 
 Ovládací prvek pro přiřazení [spravovaných identit](../../active-directory/managed-identities-azure-resources/overview.md) pro prostředek v nasazení.
 
-## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
+## <a name="ui-sample"></a>Ukázka ui
 
 Ovládací prvek se skládá z následujících prvků:
 
-![První krok Microsoft. ManagedIdentity. IdentitySelector](./media/managed-application-elements/microsoft.managedidentity.identityselector1.png)
+![Microsoft.ManagedIdentity.IdentitySelector první krok](./media/managed-application-elements/microsoft.managedidentity.identityselector1.png)
 
-Když uživatel vybere **Přidat**, otevře se následující formulář. Uživatel může pro prostředek vybrat jednu nebo více uživatelsky přiřazených identit.
+Když uživatel vybere **přidat**, otevře se následující formulář. Uživatel může vybrat jednu nebo více identit přiřazených uživatelem pro prostředek.
 
-![Druhý krok Microsoft. ManagedIdentity. IdentitySelector](./media/managed-application-elements/microsoft.managedidentity.identityselector2.png)
+![Microsoft.ManagedIdentity.IdentitySelector druhý krok](./media/managed-application-elements/microsoft.managedidentity.identityselector2.png)
 
-Vybrané identity se zobrazí v tabulce. Uživatel může přidat nebo odstranit položky z této tabulky.
+Vybrané identity jsou zobrazeny v tabulce. Uživatel může přidávat nebo odstraňovat položky z této tabulky.
 
-![Třetí krok Microsoft. ManagedIdentity. IdentitySelector](./media/managed-application-elements/microsoft.managedidentity.identityselector3.png)
+![Microsoft.ManagedIdentity.IdentitySelector třetí krok](./media/managed-application-elements/microsoft.managedidentity.identityselector3.png)
 
 ## <a name="schema"></a>Schéma
 
@@ -69,16 +69,16 @@ Vybrané identity se zobrazí v tabulce. Uživatel může přidat nebo odstranit
 
 ## <a name="remarks"></a>Poznámky
 
-- Pomocí **DefaultValue. systemAssignedIdentity** nastavte počáteční hodnotu pro ovládací prvek možnosti identity přiřazené systémem. Výchozí hodnota je **off**. Jsou povoleny následující hodnoty:
-  - **Zapnuto** – k prostředku je přiřazená identita přiřazená systémem.
-  - **Vypnuto** – identita přiřazená systému není přiřazená k prostředku.
-  - **Pouze** – k prostředku je přiřazená identita přiřazená systémem. Uživatelé nemůžou tuto hodnotu během nasazování upravovat.
-  - **OffOnly** – k prostředku není přiřazená identita přiřazená systémem. Uživatelé nemůžou tuto hodnotu během nasazování upravovat.
+- Pomocí **defaultValue.systemAssignedIdentity** nastavte počáteční hodnotu pro systémově přiřazený ovládací prvek možností identity. Výchozí hodnota je **Vypnuto**. Jsou povoleny následující hodnoty:
+  - **Zapnuto** – prostředku je přiřazena identita přiřazená k systému.
+  - **Vypnuto** – k prostředku není přiřazena identita přiřazená systému.
+  - **OnOnly** – prostředku je přiřazena identita přiřazená k systému. Uživatelé nemohou tuto hodnotu během nasazení upravovat.
+  - **OffOnly** – systém přiřazená identita není přiřazena k prostředku. Uživatelé nemohou tuto hodnotu během nasazení upravovat.
 
-- Pokud je **parametr options. hideSystemAssignedIdentity** nastaven na **hodnotu true**, nezobrazí se uživatelské rozhraní pro konfiguraci identity přiřazené systémem. Výchozí hodnota této možnosti je false ( **NEPRAVDA**).
-- Pokud je **parametr options. hideUserAssignedIdentity** nastaven na **hodnotu true**, nezobrazí se uživatelské rozhraní pro konfiguraci identity přiřazené uživatelem. Prostředku není přiřazená identita přiřazená uživatelem. Výchozí hodnota této možnosti je false ( **NEPRAVDA**).
+- Pokud **options.hideSystemAssignedIdentity** je nastavena na **hodnotu true**, rozhraní pro konfiguraci systému přiřazené identity se nezobrazí. Výchozí hodnota pro tuto možnost je **false**.
+- Pokud **options.hideUserAssignedIdentity** je nastavena na **hodnotu true**, uživatelské rozhraní pro konfiguraci uživatele přiřazenou identitu se nezobrazí. Prostředku není přiřazena identita přiřazená uživateli. Výchozí hodnota pro tuto možnost je **false**.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Úvod k vytváření definic uživatelského rozhraní najdete v tématu [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
-- Popis běžných vlastností v prvcích uživatelského rozhraní naleznete v tématu [CreateUiDefinition Elements](create-uidefinition-elements.md).
+- Úvod k vytváření definic ui naleznete [v tématu Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
+- Popis běžných vlastností v prvcích uživatelského rozhraní naleznete v [tématu CreateUiDefinition elements](create-uidefinition-elements.md).

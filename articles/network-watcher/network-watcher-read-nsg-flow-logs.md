@@ -1,6 +1,6 @@
 ---
-title: Čtení protokolů toku NSG | Microsoft Docs
-description: Tento článek ukazuje, jak analyzovat protokoly toku NSG
+title: Čtení protokolů toku nsg | Dokumenty společnosti Microsoft
+description: Tento článek ukazuje, jak analyzovat protokoly toku nsg
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -12,32 +12,32 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: damendo
 ms.openlocfilehash: 47d927f9f17580767526ec6683e819256fc5e994
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77619917"
 ---
 # <a name="read-nsg-flow-logs"></a>Čtení protokolů toku NSG
 
-Naučte se číst položky protokolů toku NSG pomocí PowerShellu.
+Zjistěte, jak číst položky protokolů toku nsg pomocí prostředí PowerShell.
 
-Protokoly toku NSG se ukládají v účtu úložiště v objektech [blob bloku](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs). Objekty blob bloku se skládají z menších bloků. Každý protokol je samostatný objekt blob bloku, který je vygenerován každou hodinu. Nové protokoly se vygenerují každou hodinu. protokoly se aktualizují novými položkami za pár minut a nejnovějšími daty. V tomto článku se dozvíte, jak číst části protokolů toků.
+Protokoly toku nsg jsou uloženy v účtu úložiště v [blobů bloku](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs). Objekty BLOB bloku se shodnou s menšími bloky. Každý protokol je samostatný objekt blob bloku, který je generován každou hodinu. Nové protokoly jsou generovány každou hodinu, protokoly jsou aktualizovány s novými položkami každých pár minut s nejnovějšími daty. V tomto článku se dozvíte, jak číst části protokolů toku.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="scenario"></a>Scénář
 
-V následujícím scénáři máte ukázkový protokol toku, který je uložený v účtu úložiště. Naučíte se, jak selektivně číst nejnovější události v protokolech toku NSG. V tomto článku používáte PowerShell, ale koncepty popsané v článku nejsou omezené na programovací jazyk a platí pro všechny jazyky, které rozhraní API pro Azure Storage podporuje.
+V následujícím scénáři máte ukázkový protokol toku, který je uložen v účtu úložiště. Dozvíte se, jak selektivně číst nejnovější události v protokolech toku nsg. V tomto článku však použijete prostředí PowerShell, koncepty popsané v článku se však neomezují na programovací jazyk a platí pro všechny jazyky podporované rozhraními API úložiště Azure.
 
 ## <a name="setup"></a>Nastavení
 
-Než začnete, musíte mít povolené protokolování toku skupin zabezpečení sítě v jedné nebo několika skupinách zabezpečení sítě ve vašem účtu. Pokyny k povolení protokolů toku zabezpečení sítě najdete v následujícím článku: [Úvod do protokolování toku pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md).
+Než začnete, musíte mít v účtu povoleno protokolování toku skupiny zabezpečení sítě v jedné nebo více skupinách zabezpečení sítě. Pokyny k povolení protokolů toku zabezpečení sítě naleznete v následujícím článku: [Úvod do protokolování toku pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md).
 
-## <a name="retrieve-the-block-list"></a>Načíst seznam blokovaných
+## <a name="retrieve-the-block-list"></a>Načíst seznam blokování
 
-Následující PowerShell nastaví proměnné potřebné k dotazování objektu BLOB log NSG a výpisu bloků v objektu blob bloku [CloudBlockBlob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblockblob) . Aktualizujte skript tak, aby obsahoval platné hodnoty pro vaše prostředí.
+Následující prostředí PowerShell nastaví proměnné potřebné k dotazování objektu blob protokolu toku nsg a seznam bloků v rámci objektu blob bloku [CloudBlockBlob.](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblockblob) Aktualizujte skript tak, aby obsahoval platné hodnoty pro vaše prostředí.
 
 ```powershell
 function Get-NSGFlowLogCloudBlockBlob {
@@ -96,7 +96,7 @@ $CloudBlockBlob = Get-NSGFlowLogCloudBlockBlob -subscriptionId "yourSubscription
 $blockList = Get-NSGFlowLogBlockList -CloudBlockBlob $CloudBlockBlob
 ```
 
-Proměnná `$blockList` vrátí seznam bloků v objektu BLOB. Každý objekt blob bloku obsahuje minimálně dva bloky.  První blok má délku `12` bajtů, tento blok obsahuje levou hranatou závorku protokolu JSON. Druhý blok je uzavírací závorka a má délku `2` bajtů.  Jak vidíte, následující příklad protokolu obsahuje sedm záznamů, přičemž každá z nich je jednotlivá položka. Všechny nové položky v protokolu jsou přidány do konce přímo před konečným blokem.
+Proměnná `$blockList` vrátí seznam bloků v objektu blob. Každý objekt blob bloku obsahuje alespoň dva bloky.  První blok má délku `12` bajtů, tento blok obsahuje otevírací závorky protokolu json. Druhý blok je uzavírací závorky `2` a má délku bajtů.  Jak můžete vidět v následujícím příkladu protokolu má sedm položek v něm, z nichž každá je jednotlivá položka. Všechny nové položky v protokolu jsou přidány na konec těsně před posledním blokem.
 
 ```
 Name                                         Length Committed
@@ -114,7 +114,7 @@ ZjAyZTliYWE3OTI1YWZmYjFmMWI0MjJhNzMxZTI4MDM=      2      True
 
 ## <a name="read-the-block-blob"></a>Čtení objektu blob bloku
 
-Dále potřebujete načíst proměnnou `$blocklist` pro načtení dat. V tomto příkladu procházíme seznamu blokovaných, přečetli jsme z každého bloku bajty a vyplníte je v poli. K načtení dat použijte metodu [DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadrangetobytearray) .
+Dále je třeba `$blocklist` přečíst proměnnou pro načtení dat. V tomto příkladu iterate prostřednictvím seznamu blokovaných, číst bajty z každého bloku a příběh je v poli. K načtení dat použijte metodu [DownloadRangeToByteArray.](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadrangetobytearray)
 
 ```powershell
 function Get-NSGFlowLogReadBlock  {
@@ -158,7 +158,7 @@ function Get-NSGFlowLogReadBlock  {
 $valuearray = Get-NSGFlowLogReadBlock -blockList $blockList -CloudBlockBlob $CloudBlockBlob
 ```
 
-Nyní `$valuearray` pole obsahuje hodnotu řetězce každého bloku. Chcete-li ověřit položku, Získejte druhý k poslední hodnotě z pole spuštěním `$valuearray[$valuearray.Length-2]`. Poslední hodnotu nechcete, protože se jedná o pravou závorku.
+Nyní `$valuearray` pole obsahuje hodnotu řetězce každého bloku. Chcete-li položku ověřit, získejte druhou poslední `$valuearray[$valuearray.Length-2]`hodnotu z pole spuštěním . Nechcete poslední hodnotu, protože se jedná o uzavírací závorku.
 
 Výsledky této hodnoty jsou uvedeny v následujícím příkladu:
 
@@ -182,13 +182,13 @@ A","1497646742,10.0.0.4,168.62.32.14,44942,443,T,O,A","1497646742,10.0.0.4,52.24
         }
 ```
 
-Tento scénář je příkladem čtení záznamů v protokolech toku NSG bez nutnosti analyzovat celý protokol. Můžete číst nové položky v protokolu, protože jsou zapsány pomocí ID bloku nebo sledováním délky bloků uložených v objektu blob bloku. To vám umožní číst jenom nové položky.
+Tento scénář je příkladem čtení položek v protokolech toku nsg bez nutnosti analyzovat celý protokol. Můžete číst nové položky v protokolu, jak jsou zapsány pomocí ID bloku nebo sledováním délky bloků uložených v objektu blob bloku. To umožňuje číst pouze nové položky.
 
 ## <a name="next-steps"></a>Další kroky
 
 
-Podívejte se na téma [použití elastického zásobníku](network-watcher-visualize-nsg-flow-logs-open-source-tools.md), [použití Grafana](network-watcher-nsg-grafana.md)a další informace o způsobech zobrazení protokolů toku NSG [pomocí graylogu](network-watcher-analyze-nsg-flow-logs-graylog.md) . Open Source přístup ke službě Azure Functions pro přímé využívání objektů BLOB a vydávání různých příjemců Log Analytics najdete tady: [konektor protokolů toku Azure Network WATCHER NSG](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector).
+Další informace o způsobech zobrazení protokolů toku nsg najdete na stránce [Použití elastického zásobníku](network-watcher-visualize-nsg-flow-logs-open-source-tools.md), [Použijte grafanu](network-watcher-nsg-grafana.md)a [pomocí graylogu.](network-watcher-analyze-nsg-flow-logs-graylog.md) Open Source Azure funkce přístup ke spotřebovávání objektů BLOB přímo a vyzařující různé klienty analýzy protokolů, které lze nalézt zde: [Azure Network Watcher NSG Flow Logs Connector](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector).
 
-Pomocí služby [Azure Analýza provozu](https://docs.microsoft.com/azure/network-watcher/traffic-analytics) můžete získat přehled o přenosových tocích. Analýza provozu používá [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) k zajištění Queryable toku přenosu.
+[Azure Traffic Analytics](https://docs.microsoft.com/azure/network-watcher/traffic-analytics) můžete použít k získání přehledů o svých dopravních tocích. Traffic Analytics používá [Log Analytics,](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) aby váš tok provozu dotazován.
 
-Další informace o objektech blob úložiště najdete v těchto [vazbách: Azure Functions BLOB Storage](../azure-functions/functions-bindings-storage-blob.md) .
+Další informace o objektech BLOB úložiště najdete na adrese: [Vazby úložiště Azure Functions Blob](../azure-functions/functions-bindings-storage-blob.md)

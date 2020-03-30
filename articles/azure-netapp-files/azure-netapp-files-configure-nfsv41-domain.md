@@ -1,6 +1,6 @@
 ---
-title: Nakonfigurujte výchozí doménu NFSv 4.1 pro Azure NetApp Files | Microsoft Docs
-description: V této části najdete popis postupu konfigurace klienta NFS pro použití NFSv 4.1 s Azure NetApp Files.
+title: Konfigurace výchozí domény NFSv4.1 pro soubory Azure NetApp | Dokumenty společnosti Microsoft
+description: Popisuje, jak nakonfigurovat klienta systému souborů NFS pro použití nfsv4.1 se soubory Azure NetApp.
 documentationcenter: ''
 author: b-juche
 manager: ''
@@ -14,63 +14,63 @@ ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: b-juche
 ms.openlocfilehash: 77178a23206eadae941794c92b8dd99fe2ca1e05
-ms.sourcegitcommit: f226cdd6406372b5693d46b6d04900f2f0cda4e6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73906283"
 ---
-# <a name="configure-nfsv41-default-domain-for-azure-netapp-files"></a>Nakonfigurujte výchozí doménu NFSv 4.1 pro Azure NetApp Files
+# <a name="configure-nfsv41-default-domain-for-azure-netapp-files"></a>Konfigurace výchozí domény NFSv4.1 pro Azure NetApp Files
 
-Názvů NFSv4 zavádí koncept domény ověřování. Azure NetApp Files v současné době podporuje mapování uživatele jenom na kořenové úrovni ze služby na klienta NFS. Chcete-li používat funkci NFSv 4.1 s Azure NetApp Files, je nutné aktualizovat klienta NFS.
+NFSv4 zavádí koncept domény ověřování. Soubory Azure NetApp aktuálně podporuje mapování pouze pro root ze služby do klienta systému souborů NFS. Chcete-li používat funkci NFSv4.1 se soubory Azure NetApp, je třeba aktualizovat klienta systému souborů NFS.
 
-## <a name="default-behavior-of-usergroup-mapping"></a>Výchozí chování mapování uživatele nebo skupiny
+## <a name="default-behavior-of-usergroup-mapping"></a>Výchozí chování mapování uživatele/skupiny
 
-Výchozí mapování je nastaveno na hodnotu `nobody` uživatel, protože doména názvů NFSv4 je nastavena na hodnotu `localdomain`. Když připojíte Azure NetApp Files svazek NFSv 4.1 jako kořenový adresář, zobrazí se oprávnění k souboru následujícím způsobem:  
+Kořenové mapování je `nobody` výchozí pro uživatele, protože doména `localdomain`NFSv4 je nastavena na . Když připojíte svazek NFSv4.1 azure netapp jako root, zobrazí se oprávnění k souborům následujícím způsobem:  
 
-![Výchozí chování mapování uživatele/skupiny pro NFSv 4.1](../media/azure-netapp-files/azure-netapp-files-nfsv41-default-behavior-user-group-mapping.png)
+![Výchozí chování mapování uživatele/skupiny pro nfsv4.1](../media/azure-netapp-files/azure-netapp-files-nfsv41-default-behavior-user-group-mapping.png)
 
-Jak ukazuje výše uvedený příklad, uživatel pro `file1` by měl být `root`, ale ve výchozím nastavení se mapuje na `nobody`.  V tomto článku se dozvíte, jak nastavit `file1` uživatele na `root`.  
+Jak ukazuje výše uvedený příklad, uživatel pro `file1` by měl být `root`, ale ve výchozím nastavení se mapuje. `nobody`  Tento článek ukazuje, jak `file1` nastavit `root`uživatele na .  
 
 ## <a name="steps"></a>Kroky 
 
-1. Upravte soubor `/etc/idmapd.conf` v klientovi NFS.   
-    Odkomentujte `#Domain` čáry (to znamená, odeberte `#` z řádku) a změňte hodnotu `localdomain` na `defaultv4iddomain.com`. 
+1. Upravte `/etc/idmapd.conf` soubor v klientovi systému souborů NFS.   
+    Odkomentujte `#Domain` řádek (tj. `#` odeberte z řádku) a změňte hodnotu `localdomain` na `defaultv4iddomain.com`. 
 
     Počáteční konfigurace: 
     
-    ![Počáteční konfigurace pro NFSv 4.1](../media/azure-netapp-files/azure-netapp-files-nfsv41-initial-config.png)
+    ![Počáteční konfigurace pro NFSv4.1](../media/azure-netapp-files/azure-netapp-files-nfsv41-initial-config.png)
 
     Aktualizovaná konfigurace:
     
-    ![Aktualizovaná konfigurace pro NFSv 4.1](../media/azure-netapp-files/azure-netapp-files-nfsv41-updated-config.png)
+    ![Aktualizovaná konfigurace pro nfsv4.1](../media/azure-netapp-files/azure-netapp-files-nfsv41-updated-config.png)
 
-2. Odpojte všechny aktuálně připojené svazky systému souborů NFS.
-3. Aktualizujte soubor `/etc/idmapd.conf`.
-4. Restartujte službu `rpcbind` na hostiteli (`service rpcbind restart`) nebo jednoduše restartujte hostitele.
-5. Připojte svazky NFS podle potřeby.   
+2. Odpojte všechny aktuálně připojené svazky nfs.
+3. Aktualizujte `/etc/idmapd.conf` soubor.
+4. Restartujte `rpcbind` službu na`service rpcbind restart`hostiteli ( ), nebo jednoduše restartujte hostitele.
+5. Podle potřeby připojte svazky nfs.   
 
-    Viz [připojení nebo odpojení svazku pro virtuální počítače se systémem Windows nebo Linux](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md). 
+    Viz [Připojení nebo odpojení svazku pro virtuální počítače se systémem Windows nebo Linux](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md). 
 
-Následující příklad ukazuje výslednou změnu uživatele nebo skupiny: 
+Následující příklad ukazuje výslednou změnu uživatele/skupiny: 
 
-![Výsledná konfigurace pro NFSv 4.1](../media/azure-netapp-files/azure-netapp-files-nfsv41-resulting-config.png)
+![Výsledná konfigurace pro NFSv4.1](../media/azure-netapp-files/azure-netapp-files-nfsv41-resulting-config.png)
 
-Jak ukazuje příklad, uživatel nebo skupina se teď změnila z `nobody` na `root`.
+Jak ukazuje příklad, uživatel/skupina se `nobody` nyní `root`změnila z na .
 
-## <a name="behavior-of-other-non-root-users-and-groups"></a>Chování jiných uživatelů a skupin (bez kořenového uživatele)
+## <a name="behavior-of-other-non-root-users-and-groups"></a>Chování ostatních (nekořenových) uživatelů a skupin
 
-Azure NetApp Files podporuje místní uživatele (uživatele vytvořené místně na hostiteli), kteří mají oprávnění spojená se soubory nebo složkami ve svazcích NFSv 4.1. Služba ale v současné době nepodporuje mapování uživatelů nebo skupin napříč více uzly. Proto se uživatelé, kteří vytvořili na jednom hostiteli, nebudou ve výchozím nastavení mapovat na uživatele vytvořené na jiném hostiteli. 
+Soubory Azure NetApp podporují místní uživatele (uživatele vytvořené místně na hostiteli), kteří mají oprávnění přidružená k souborům nebo složkám ve svazcích NFSv4.1. Služba však aktuálně nepodporuje mapování uživatelů nebo skupin napříč více uzly. Proto uživatelé vytvořená na jednom hostiteli nemapují ve výchozím nastavení na uživatele vytvořené na jiném hostiteli. 
 
-V následujícím příkladu má `Host1` tři existující testovací uživatelské účty (`testuser01`, `testuser02`, `testuser03`): 
+`Host1` V následujícím příkladu má tři existující`testuser01` `testuser02`testovací `testuser03`uživatelské účty ( , , ): 
 
-![Výsledná konfigurace pro NFSv 4.1](../media/azure-netapp-files/azure-netapp-files-nfsv41-host1-users.png)
+![Výsledná konfigurace pro NFSv4.1](../media/azure-netapp-files/azure-netapp-files-nfsv41-host1-users.png)
 
-Na `Host2`Pamatujte na to, že účty testovacích uživatelů nebyly vytvořeny, ale stejný svazek je připojen na oba hostitele:
+Zapnuto `Host2`, všimněte si, že testovací uživatelské účty nebyly vytvořeny, ale stejný svazek je připojen na obou hostitelích:
 
-![Výsledná konfigurace pro NFSv 4.1](../media/azure-netapp-files/azure-netapp-files-nfsv41-host2-users.png)
+![Výsledná konfigurace pro NFSv4.1](../media/azure-netapp-files/azure-netapp-files-nfsv41-host2-users.png)
 
 ## <a name="next-step"></a>Další krok 
 
-[Připojení nebo odpojení svazku pro virtuální počítače se systémem Windows nebo Linux](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
+[Připojování nebo odpojování svazku pro virtuální počítače s Windows nebo Linuxem](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 

@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: Konfigurace NPM pro okruhy'
-description: Konfigurace monitorování (NPM) pro okruhy Azure ExpressRoute sítě založené na cloudu. Toto téma zahrnuje monitorování privátního partnerského vztahu ExpressRoute a partnerský vztah Microsoftu.
+title: 'Azure ExpressRoute: Konfigurace protokolu NPM pro okruhy'
+description: Konfigurace cloudového monitorování sítě (NPM) pro okruhy Azure ExpressRoute. To zahrnuje monitorování přes ExpressRoute soukromého partnerského vztahu a partnerského vztahu Microsoftu.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,261 +8,261 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: cherylmc
 ms.openlocfilehash: 54fa3dcbfbbcb3153f81407a9bc9b52511405390
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74076592"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurace Network Performance Monitoru pro ExpressRoute
 
-Tento článek vám pomůže nakonfigurovat rozšíření Network Performance Monitor k monitorování ExpressRoute. Network Performance Monitor (NPM) je cloudové řešení pro monitorování sítě, které monitoruje připojení mezi cloudovými nasazeními Azure a místními umístěními (pobočky atd.). NPM je součástí protokolů služby Azure Monitor. NPM nabízí rozšíření pro ExpressRoute, které umožňuje monitorovat výkon sítě přes okruhy ExpressRoute nakonfigurované tak, aby používaly soukromé partnerské vztahy nebo partnerské vztahy Microsoftu. Po konfiguraci NPM pro ExpressRoute můžete detekovat problémy se sítí a následně je identifikovat a odstranit. Tato služba je také k dispozici pro Azure Government Cloud.
+Tento článek vám pomůže nakonfigurovat rozšíření sledování výkonu sítě pro sledování ExpressRoute. Network Performance Monitor (NPM) je cloudové řešení pro monitorování sítě, které monitoruje připojení mezi cloudovými nasazeními Azure a místními umístěními (pobočky atd.). NPM je součástí protokolů služby Azure Monitor. NPM nabízí rozšíření pro ExpressRoute, které umožňuje monitorovat výkon sítě přes okruhy ExpressRoute nakonfigurované tak, aby používaly soukromé partnerské vztahy nebo partnerské vztahy Microsoftu. Po konfiguraci NPM pro ExpressRoute můžete detekovat problémy se sítí a následně je identifikovat a odstranit. Tato služba je k dispozici také pro cloud Azure Government.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Můžete:
 
-* Monitorování ztrát a latence mezi různými virtuálními sítěmi a nastavení výstrah
+* Sledování ztrát a latence napříč různými virtuálními sítěmi a nastavení výstrah
 
-* Monitorování všech cest (včetně redundantní cesty) v síti
+* Sledování všech cest (včetně redundantních cest) v síti
 
-* Řešení potíží s problémy se sítí přechodné a bodu v čase, které se těžko replikují
+* Řešení potíží s přechodnou sítí a problémy se sítí v okamžiku, které je obtížné replikovat
 
-* Určení konkrétního segmentu sítě, který je důvodem sníženého výkonu
+* Pomozte určit konkrétní segment v síti, který je zodpovědný za snížený výkon
 
-* Zjištění propustnosti na virtuální síť (Pokud máte agenty instalované v každé virtuální síti)
+* Získání propustnosti na virtuální síť (Pokud máte v každé virtuální síti nainstalované agenty)
 
-* Zobrazit stav systému ExpressRoute z předchozího bodu v čase
+* Zobrazení stavu systému ExpressRoute z předchozího bodu v čase
 
-## <a name="workflow"></a>Pracovní postup
+## <a name="workflow"></a><a name="workflow"></a>Pracovního postupu
 
-Instalace agentů monitorování na více serverech, místně i v Azure. Agenti komunikovat mezi sebou, ale neodesílat data, jejich odeslat pakety pro metodu handshake protokolu TCP. Umožňuje komunikaci mezi agenty Azure k mapování síťové topologie a cestu, může trvat provoz.
+Agenti monitorování se instalují na více serverech, místně i v Azure. Agenti vzájemně komunikují, ale neodesílají data, odesílají pakety tcp handshake. Komunikace mezi agenty umožňuje Azure mapovat topologii sítě a cestu, kterou může provoz trvat.
 
-1. Vytvoření pracovního prostoru NPM. To je stejný jako pracovní prostor Log Analytics.
-2. Instalace a konfigurace softwarových agentů. (Pokud chcete monitorovat jenom přes partnerský vztah Microsoftu, nemusíte instalovat a konfigurovat softwarové agenty.): 
-    * Instalace agentů na místních serverech a virtuálních počítačů Azure (pro soukromý partnerský vztah) monitorování.
-    * Konfigurace nastavení na monitorování agent servery, které chcete povolit monitorování agenty ke komunikaci. (Otevřete porty brány firewall atd.)
-3. Konfigurace sítě pravidla skupiny zabezpečení (NSG) aby monitorovací agent nainstalovaný na virtuálních počítačích Azure ke komunikaci s místní agentů monitorování.
-4. Nastavení monitorování: automaticky zjistit a spravovat, které sítě jsou viditelné v NPM.
+1. Vytvořte pracovní prostor NPM. To je stejné jako pracovní prostor Analýzy protokolů.
+2. Nainstalujte a nakonfigurujte softwarové agenty. (Pokud chcete sledovat pouze přes Microsoft Peering, není nutné instalovat a konfigurovat softwarové agenty.): 
+    * Nainstalujte agenty monitorování na místní servery a virtuální počítače Azure (pro privátní partnerský vztah).
+    * Nakonfigurujte nastavení na serverech agenta monitorování, aby agenti monitorování mohli komunikovat. (Otevřít porty brány firewall atd.)
+3. Nakonfigurujte pravidla skupiny zabezpečení sítě (NSG), aby agent monitorování nainstalovaný na virtuálních počítačích Azure mohl komunikovat s místními agenty monitorování.
+4. Nastavení monitorování: Automatické zjišťování a správa sítí, které jsou viditelné v npm.
 
-Pokud už používáte Network Performance Monitor k monitorování jiných objektů nebo služeb a už máte pracovní prostor v jednom z podporovaných oblastí, můžete přeskočit krok 1 a 2 a začít s vaší konfigurací v kroku 3.
+Pokud již používáte nástroj Sledování výkonu sítě ke sledování jiných objektů nebo služeb a pracovní prostor již máte v jedné z podporovaných oblastí, můžete přeskočit krok 1 a krok 2 a zahájit konfiguraci krokem 3.
 
-## <a name="configure"></a>Krok 1: Vytvoření pracovního prostoru
+## <a name="step-1-create-a-workspace"></a><a name="configure"></a>Krok 1: Vytvoření pracovního prostoru
 
-Vytvořte pracovní prostor v rámci předplatného, který má propojení virtuálních sítí pro okruhy ExpressRoute.
+Vytvořte pracovní prostor v předplatném, které má propojení virtuálních sítí s okruhy ExpressRoute.
 
-1. V [webu Azure portal](https://portal.azure.com), vyberte předplatné, které má virtuální sítě v partnerském vztahu pro váš okruh ExpressRoute. Vyhledejte v seznamu služeb v **Marketplace** pro sledování výkonu sítě. V vrácení, klikněte na tlačítko Otevřít **Network Performance Monitor** stránky.
+1. Na [webu Azure Portal](https://portal.azure.com)vyberte předplatné, které má virtuální počítače peered do okruhu ExpressRoute. Potom vyhledejte v seznamu služeb na **webu Marketplace** možnost Sledování výkonu sítě. V návratu klepnutím otevřete stránku **Sledování výkonu sítě.**
 
    >[!NOTE]
-   >Můžete vytvořit nový pracovní prostor, nebo použít existující pracovní prostor. Pokud chcete použít existující pracovní prostor, musí se ujistěte, že pracovní prostor se migroval na nový dotazovací jazyk. [Další informace...](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search-upgrade)
+   >Můžete vytvořit nový pracovní prostor nebo použít existující pracovní prostor. Pokud chcete použít existující pracovní prostor, musíte se ujistit, že pracovní prostor byl migrován do nového dotazovacího jazyka. [Více informací...](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search-upgrade)
    >
 
    ![portál](./media/how-to-npm/3.png)<br><br>
-2. V dolní části hlavního **Network Performance Monitor** klikněte na **vytvořit** otevřete **Network Performance Monitor – vytvořit nové řešení** stránky. Klikněte na tlačítko **pracovní prostor Log Analytics – vyberte pracovní prostor** otevřete stránku pracovních prostorů. Klikněte na tlačítko **+ vytvořit nový pracovní prostor** otevřete stránku pracovního prostoru.
-3. Na stránce **Log Analytics pracovní prostor** vyberte **vytvořit novou**a pak nakonfigurujte následující nastavení:
+2. V dolní části hlavní stránky **Sledování výkonu sítě** sem otevřete stránku Sledování výkonu sítě – vytvořit novou stránku **řešení.** **Create** Klikněte na **Pracovní prostor Analýzy protokolů – vyberte pracovní prostor,** který otevře stránku Pracovní prostory. Kliknutím **na + Vytvořit nový pracovní prostor** otevřete stránku Pracovní prostor.
+3. Na stránce **pracovního prostoru Log Analytics** vyberte **Vytvořit nový**a nakonfigurujte následující nastavení:
 
-   * Pracovní prostor log Analytics – zadejte název pro váš pracovní prostor.
+   * Pracovní prostor Analýzy protokolů – zadejte název pracovního prostoru.
    * Předplatné – Pokud máte více předplatných, vyberte ten, který chcete přidružit k novému pracovnímu prostoru.
-   * Skupina prostředků - vytvořte skupinu prostředků nebo použijte již existující.
-   * Umístění – toto umístění slouží k určení umístění účtu úložiště, který se používá pro připojení protokoly agenta.
-   * Cenová úroveň – výběr cenové úrovně.
+   * Skupina prostředků – Vytvořte skupinu prostředků nebo použijte existující.
+   * Umístění – toto umístění se používá k určení umístění účtu úložiště, který se používá pro protokoly připojení agenta.
+   * Cenová úroveň – vyberte cenovou úroveň.
   
      >[!NOTE]
      >Okruh ExpressRoute může být kdekoli na světě. Nemusí být ve stejné oblasti jako pracovní prostor.
      >
   
-     ![pracovní prostor](./media/how-to-npm/4.png)<br><br>
-4. Klikněte na tlačítko **OK** uložení a nasazení nastavení šablony. Jakmile šablonu ověří, klikněte na tlačítko **vytvořit** nasazení pracovního prostoru.
-5. Po nasazení pracovního prostoru, přejděte **NetworkMonitoring(name)** prostředek, který jste vytvořili. Ověřte nastavení a potom klikněte na **řešení vyžaduje další konfiguraci**.
+     ![Pracovní prostor](./media/how-to-npm/4.png)<br><br>
+4. Kliknutím na **OK** uložte a nasaďte šablonu nastavení. Po ověření šablony klikněte na **Vytvořit** a nasadit pracovní prostor.
+5. Po nasazení pracovního prostoru přejděte na prostředek **NetworkMonitoring(název),** který jste vytvořili. Ověřte nastavení a klepněte na tlačítko **Řešení vyžaduje další konfiguraci**.
 
    ![další konfigurace](./media/how-to-npm/5.png)
 
-## <a name="agents"></a>Krok 2: Instalace a konfigurace agentů
+## <a name="step-2-install-and-configure-agents"></a><a name="agents"></a>Krok 2: Instalace a konfigurace agentů
 
-### <a name="download"></a>2.1: Stáhněte instalační soubor agenta
+### <a name="21-download-the-agent-setup-file"></a><a name="download"></a>2.1: Stažení instalačního souboru agenta
 
-1. Přejděte na **obecná nastavení** karty **konfigurace Network Performance monitoru** stránky pro váš prostředek. Klikněte na agenta, který odpovídá procesoru vašeho serveru ze **instalace agentů Log Analytics** části a stáhněte instalační soubor.
-2. V dalším kroku zkopírujte **ID pracovního prostoru** a **primární klíč** do poznámkového bloku.
-3. Z **konfigurace agentů Log Analytics pro monitorování prostřednictvím protokolu TCP** oddílu, stáhněte si skript prostředí Powershell. Skript prostředí PowerShell umožňuje otevřít port brány firewall pro TCP transakce.
+1. Přejděte na kartu **Společné nastavení** na stránce **Konfigurace monitoru výkonu sítě** pro váš prostředek. Klikněte na agenta, který odpovídá procesoru serveru, v části **Install Log Analytics Agents** a stáhněte si instalační soubor.
+2. Dále zkopírujte **ID pracovního prostoru** a **primární klíč** do poznámkového bloku.
+3. V části **Konfigurovat agenty analýzy protokolů pro monitorování pomocí protokolu TCP** stáhněte skript Powershell. Skript prostředí PowerShell vám pomůže otevřít příslušný port brány firewall pro transakce TCP.
 
-   ![Skript prostředí PowerShell](./media/how-to-npm/7.png)
+   ![Skript PowerShellu](./media/how-to-npm/7.png)
 
-### <a name="installagent"></a>2.2: nainstalujte agenta monitorování na každou monitorovací server (v každé virtuální síti, která chcete monitorovat)
+### <a name="22-install-a-monitoring-agent-on-each-monitoring-server-on-each-vnet-that-you-want-to-monitor"></a><a name="installagent"></a>2.2: Instalace agenta monitorování na každý monitorovací server (na každou virtuální síť, kterou chcete monitorovat)
 
-Doporučujeme nainstalovat aspoň dva agenty na každé straně připojení ExpressRoute pro zajištění redundance (například v místním virtuálním sítím Azure). Musí být agent nainstalovaný v systému Windows Server (2008 SP1 nebo novější). Monitorování pomocí OS plochy Windows a Linux OS okruhy ExpressRoute není podporováno. Použijte následující postup k instalaci agentů:
+Doporučujeme nainstalovat alespoň dva agenty na každé straně připojení ExpressRoute pro redundanci (například místní virtuální chod Azure). Agent musí být nainstalován na systému Windows Server (2008 SP1 nebo novější). Monitorování obvodů ExpressRoute pomocí operačního systému Windows Desktop A operačního systému Linux není podporováno. K instalaci agentů použijte následující kroky:
    
   >[!NOTE]
-  >Agenti vynuceně podle SCOM (zahrnuje [MMA](https://technet.microsoft.com/library/dn465154(v=sc.12).aspx)) nemusí být schopna zjistit konzistentně jejich umístění, pokud jsou hostované v Azure. Doporučujeme vám, že je velmi riskantní používat tyto agenty ve virtuálních sítích Azure k monitorování ExpressRoute.
+  >Agenti prosazovaní SCOM (včetně [MMA)](https://technet.microsoft.com/library/dn465154(v=sc.12).aspx)nemusí být schopni konzistentně zjistit jejich umístění, pokud jsou hostované v Azure. Doporučujeme nepoužívat tyto agenty v Azure VNETs ke sledování ExpressRoute.
   >
 
-1. Spustit **nastavení** Agent na každém serveru, který chcete použít pro monitorování ExpressRoute. Server, který můžete využít pro monitorování, může být buď virtuální počítač nebo na místě a musí mít přístup k Internetu. Je potřeba nainstalovat aspoň jeden místního agenta a jednoho agenta v každém segmentu sítě, kterou chcete monitorovat v Azure.
+1. Spusťte **instalační program** a nainstalujte agenta na každý server, který chcete použít pro sledování expressroute. Server, který používáte pro monitorování, může být virtuální počítač nebo místní a musí mít přístup k Internetu. Musíte nainstalovat alespoň jednoho místního agenta a jednoho agenta v každém segmentu sítě, který chcete v Azure monitorovat.
 2. Na **úvodní** stránce klikněte na **Další**.
-3. Na **licenční podmínky** stránce, prostudujte licenční a potom klikněte na tlačítko **souhlasím**.
-4. Na **cílovou složku** stránce, změňte nebo ponechte výchozí instalační složku a potom klikněte na tlačítko **Další**.
-5. Na stránce **Možnosti instalace agenta** se můžete rozhodnout připojit agenta k Azure monitor protokolů nebo Operations Manager. Nebo můžete ponechat volby prázdné Pokud chcete později konfigurovat agenta. Po provedení vybrané položky, klikněte na tlačítko **Další**.
+3. Na stránce **Licenční podmínky** si přečtěte licenci a klikněte na **souhlasím**.
+4. Na stránce **Cílová složka** změňte nebo ponechejte výchozí instalační složku a klepněte na tlačítko **Další**.
+5. Na stránce **Možnosti nastavení agenta** můžete agenta připojit k protokolům Azure Monitor nebo Operations Manageru. Nebo můžete ponechat možnosti prázdné, pokud chcete později nakonfigurovat agenta. Po provedení výběru klikněte na **Další**.
 
-   * Pokud jste zvolili pro připojení k **Azure Log Analytics**, vložte **ID pracovního prostoru** a **klíč pracovního prostoru** (primární klíč), který jste zkopírovali do poznámkového bloku v předchozí části. Pak klikněte na **Další**.
+   * Pokud jste se rozhodli připojit k **Azure Log Analytics**, vložte **ID pracovního prostoru** a klíč **pracovního prostoru** (primární klíč), který jste zkopírovali do poznámkového bloku v předchozí části. Potom klepněte na tlačítko **Další**.
 
      ![ID a klíč](./media/how-to-npm/8.png)
-   * Pokud jste zvolili pro připojení k **nástroje Operations Manager**na **konfigurace skupiny pro správu** stránky, zadejte **název skupiny pro správu**, **serveru pro správu** a **Port serveru pro správu**. Pak klikněte na **Další**.
+   * Pokud jste se rozhodli připojit k **nástroji Operations Manager**, zadejte na stránce Konfigurace **skupiny pro správu** **název skupiny pro správu**, **server pro správu**a **port serveru pro správu**. Potom klepněte na tlačítko **Další**.
 
      ![Operations Manager](./media/how-to-npm/9.png)
-   * Na **účet Agent Action Account** zvolte buď **místní systém** účtu, nebo **doménový nebo místní účet počítače**. Pak klikněte na **Další**.
+   * Na stránce **Účet akce agenta** zvolte buď **účet místního systému,** nebo **účet domény nebo místního počítače**. Potom klepněte na tlačítko **Další**.
 
      ![Účet](./media/how-to-npm/10.png)
-6. Na **připraveno k instalaci** stránky, zkontrolujte zvolené volby a pak klikněte na tlačítko **nainstalovat**.
+6. Na stránce **Připraveno k instalaci** zkontrolujte své volby a klikněte na **Nainstalovat**.
 7. Na stránce **Konfigurace byla úspěšně dokončena** klikněte na **Dokončit**.
-8. Jakmile budete hotovi, zobrazí se v Ovládacích panelech agenta Microsoft Monitoring Agent. Můžete zkontrolovat svou konfiguraci a ověřit, zda je agent připojen k Azure Monitor protokolů. Když se připojí, agent zobrazí zprávu: **agenta Microsoft Monitoring Agent úspěšně připojilo ke službě Microsoft Operations Management Suite**.
+8. Po dokončení se v Ovládacích panelech zobrazí agent microsoft monitoring. Můžete zkontrolovat konfiguraci tam a ověřte, že agent je připojen k protokolům Azure Monitor. Po připojení se zobrazí zpráva s informací: **Agent monitorování společnosti Microsoft se úspěšně připojil ke službě Microsoft Operations Management Suite**.
 
-9. Tento postup opakujte pro každou virtuální síť, které potřebujete k monitorování.
+9. Tento postup opakujte pro každou virtuální síť, kterou je třeba monitorovat.
 
-### <a name="proxy"></a>2.3: Konfigurace nastavení proxy serveru (nepovinné)
+### <a name="23-configure-proxy-settings-optional"></a><a name="proxy"></a>2.3: Konfigurace nastavení proxy serveru (volitelné)
 
-Pokud používáte webový proxy server pro přístup k Internetu, použijte následující postup ke konfiguraci nastavení proxy serveru pro Microsoft Monitoring Agent. Tyto kroky proveďte pro každý server. pokud máte mnoho serverů, které je nutné nakonfigurovat, může být jednodušší použít skript, který tento proces zautomatizuje. Pokud ano, přečtěte si téma [ke konfiguraci nastavení proxy serveru pro Microsoft Monitoring Agent pomocí skriptu](../log-analytics/log-analytics-windows-agent.md).
+Pokud používáte webový proxy server pro přístup k Internetu, použijte následující kroky ke konfiguraci nastavení proxy serveru pro agenta Microsoft Monitoring Agent. Proveďte tyto kroky pro každý server. pokud máte mnoho serverů, které je nutné nakonfigurovat, může být jednodušší použít skript, který tento proces zautomatizuje. Pokud ano, [přečtěte si informace o konfiguraci nastavení serveru proxy pro agenta sledování společnosti Microsoft pomocí skriptu](../log-analytics/log-analytics-windows-agent.md).
 
-Konfigurace nastavení proxy serveru pro Microsoft Monitoring Agent pomocí ovládacích panelů:
+Postup konfigurace nastavení proxy serveru pro agenta monitorování společnosti Microsoft pomocí Ovládacích panelů:
 
-1. Otevřít **ovládací panely**.
+1. Otevřete **Ovládací panely**.
 2. Otevřete **Microsoft Monitoring Agent**.
 3. Klikněte na kartu **Nastavení proxy serveru**.
-4. Vyberte **používat proxy server** a zadejte adresu URL a číslo portu, pokud je to zapotřebí. Pokud váš proxy server vyžaduje ověření, zadejte uživatelské jméno a heslo pro přístup k proxy serveru.
+4. Vyberte **Použít proxy server** a v případě potřeby zadejte adresu URL a číslo portu. Pokud váš proxy server vyžaduje ověření, zadejte uživatelské jméno a heslo pro přístup k proxy serveru.
 
-   ![Proxy server](./media/how-to-npm/11.png)
+   ![proxy](./media/how-to-npm/11.png)
 
-### <a name="verifyagent"></a>2.4: ověřit připojení agenta
+### <a name="24-verify-agent-connectivity"></a><a name="verifyagent"></a>2.4: Ověření připojení agenta
 
-Můžete snadno ověřit, zda jsou komunikaci agentů.
+Můžete snadno ověřit, zda vaši agenti komunikují.
 
-1. Na serveru agenta monitorování, otevřete **ovládací panely**.
-2. Otevřít **agenta Microsoft Monitoring Agent**.
-3. Klikněte na tlačítko **Azure Log Analytics** kartu.
-4. Ve sloupci **stav** byste měli vidět, že se agent úspěšně připojil k Azure monitor protokolů.
+1. Na serveru s agentem monitorování otevřete **Ovládací panely**.
+2. Otevřete **agenta Microsoft Monitoring Agent**.
+3. Klikněte na kartu **Azure Log Analytics.**
+4. Ve sloupci **Stav** byste měli vidět, že agent úspěšně připojen k protokolům Azure Monitor.
 
    ![status](./media/how-to-npm/12.png)
 
-### <a name="firewall"></a>2.5: otevřít porty brány firewall na serverech monitorování agenta
+### <a name="25-open-the-firewall-ports-on-the-monitoring-agent-servers"></a><a name="firewall"></a>2.5: Otevření portů brány firewall na serverech agenta monitorování
 
-Pokud chcete použít protokol TCP, je nutné otevřít porty brány firewall, aby mohl komunikovat agentů monitorování.
+Chcete-li použít protokol TCP, musíte otevřít porty brány firewall, abyste zajistili, že agenti monitorování mohou komunikovat.
 
-Můžete spustit skript Powershellu pro vytvoření klíče registru, které jsou vyžadované Network Performance monitoru. Tento skript vytvoří také pravidla brány Windows Firewall pro povolení monitorování agentů k vytvoření připojení TCP mezi sebou. Klíče registru, který je vytvořen skriptem určete, zda protokoly ladění a cestu k souboru protokolů protokolu. Definuje také port TCP agent používá pro komunikaci. Hodnoty pro tyto klíče se automaticky nastaví skript. Neměli ručně měnit tyto klíče.
+Můžete spustit skript prostředí PowerShell a vytvořit klíče registru, které jsou vyžadovány programem Sledování výkonu sítě. Tento skript také vytvoří pravidla brány Windows Firewall, která umožňují agentům monitorování vytvářet vzájemně připojení TCP. Klíče registru vytvořené skriptem určují, zda mají protokolovat protokoly ladění a cesta k souboru protokolu. Definuje také port TCP agenta používaný pro komunikaci. Hodnoty těchto klíčů jsou automaticky nastaveny skriptem. Tyto klíče byste neměli měnit ručně.
 
-Ve výchozím nastavení se otevře port 8084. Můžete použít vlastní port zadáním parametru 'číslo_portu"do skriptu. Ale pokud tak učiníte, musíte zadat stejný port pro všechny servery, na které jste spustili skript.
+Port 8084 je otevřen ve výchozím nastavení. Vlastní port můžete použít poskytnutím parametru "portNumber" skriptu. Pokud tak však učiníte, je nutné zadat stejný port pro všechny servery, na kterých skript spustíte.
 
 >[!NOTE]
->"EnableRules" Powershellový skript nakonfiguruje pravidla brány Windows Firewall pouze na serveru, ve kterém se skript spouští. Pokud máte síťová brána firewall, by měl Ujistěte se, umožňuje provoz určený pro port TCP, která je používána ve sledování výkonu sítě.
+>Skript PowerShell "EnableRules" konfiguruje pravidla brány Windows Firewall pouze na serveru, na kterém je skript spuštěn. Pokud máte síťovou bránu firewall, měli byste se ujistit, že umožňuje přenosy určené pro port TCP používané sledováním výkonu sítě.
 >
 >
 
-Na serverech agenta otevřete okno Powershellu s oprávněními správce. Spustit [EnableRules](https://aka.ms/npmpowershellscript) skript prostředí PowerShell (který jste si stáhli dříve). Nepoužívejte žádné parametry.
+Na serverech agenta otevřete okno prostředí PowerShell s oprávněními správce. Spusťte skript [EnableRules](https://aka.ms/npmpowershellscript) PowerShell (který jste stáhli dříve). Nepoužívejte žádné parametry.
 
 ![PowerShell_Script](./media/how-to-npm/script.png)
 
-## <a name="opennsg"></a>Krok 3: Konfigurace pravidel skupiny zabezpečení sítě
+## <a name="step-3-configure-network-security-group-rules"></a><a name="opennsg"></a>Krok 3: Konfigurace pravidel skupiny zabezpečení sítě
 
-Pokud chcete monitorovat servery agenta, které jsou v Azure, je nutné nakonfigurovat skupiny (NSG) pravidla zabezpečení sítě umožňující provoz TCP na portu, používaný NPM pro syntetické transakce. Výchozí port je 8084. To umožňuje monitorování agent nainstalovaný na Virtuálním počítači Azure ke komunikaci s místní agent monitorování.
+Chcete-li monitorovat servery agentů, které jsou v Azure, musíte nakonfigurovat pravidla skupiny zabezpečení sítě (NSG), aby byl povolen přenos Protokolu TCP na portu používaném npm pro syntetické transakce. Výchozí port je 8084. To umožňuje agentovi monitorování nainstalovanému na virtuálním počítači Azure komunikovat s místním agentem monitorování.
 
-Další informace o NSG najdete v tématu [skupiny zabezpečení sítě](../virtual-network/virtual-networks-create-nsg-arm-portal.md).
+Další informace o skupině zabezpečení sítě naleznete v [tématu Skupiny zabezpečení sítě](../virtual-network/virtual-networks-create-nsg-arm-portal.md).
 
 >[!NOTE]
->Ujistěte se, že jste nainstalovali agenty (místního serveru agenta a agenta Azure server) a jste spustili skript prostředí PowerShell než budete pokračovat s tímto krokem.
+>Ujistěte se, že jste nainstalovali agenty (místního agenta serveru i agenta serveru Azure) a než budete pokračovat v tomto kroku, spusťte skript Prostředí PowerShell.
 >
 
-## <a name="setupmonitor"></a>Krok 4: Vyhledání partnerské vztahy virtuálních sítí
+## <a name="step-4-discover-peering-connections"></a><a name="setupmonitor"></a>Krok 4: Zjištění připojení partnerských společností
 
-1. Přejděte na dlaždici s přehledem Network Performance Monitor tak, že přejdete **všechny prostředky** stránce a potom klikněte na seznam povolených adres NPM pracovního prostoru.
+1. Přejděte na dlaždici přehledu sledování výkonu sítě tak, že přejdete na stránku **Všechny prostředky** a kliknete na pracovní prostor NPM na seznamu povolených.
 
    ![pracovní prostor npm](./media/how-to-npm/npm.png)
-2. Klikněte na tlačítko **Network Performance Monitor** dlaždici s přehledem a zobrazte si řídicí panel. Řídicí panel obsahuje stránku ExpressRoute, který ukazuje, že je služba ExpressRoute v do nenakonfigurovaného stavu. Klikněte na tlačítko **nastavení funkce** otevřete stránku konfigurace Network Performance monitoru.
+2. Kliknutím na dlaždici **Přehled sledování výkonu sítě** zobrazíte řídicí panel. Řídicí panel obsahuje stránku ExpressRoute, která ukazuje, že ExpressRoute je v "nenakonfigurovaném stavu". Klepnutím na **položku Nastavení funkce** otevřete konfigurační stránku Sledování výkonu sítě.
 
    ![nastavení funkce](./media/how-to-npm/npm2.png)
-3. Na stránce konfigurace přejděte na kartu partnerské vztahy ExpressRoute, nachází na levé straně panelu. Klepnutím na tlačítko **zjistit nyní**.
+3. Na konfigurační stránce přejděte na kartu "Partnerské partnerské partnerské partnery ExpressRoute" na levém bočním panelu. Dále klepněte na tlačítko **Objevit nyní**.
 
-   ![Zjistit](./media/how-to-npm/13.png)
-4. Po dokončení zjišťování, zobrazí se seznam obsahující následující položky:
-   * Všechny partnerské vztahy Microsoftu v okruhy ExpressRoute, přidružené k tomuto předplatnému.
-   * Všechny privátní partnerské vztahy, které se připojují k virtuálním sítím spojené s tímto odběrem.
+   ![Objevte](./media/how-to-npm/13.png)
+4. Po dokončení zjišťování se zobrazí seznam obsahující následující položky:
+   * Všechna připojení partnerského vztahu Microsoftu v okruhu ExpressRoute, které jsou přidruženy k tomuto předplatnému.
+   * Všechna privátní partnerská připojení, která se připojují k virtuálním sítím přidruženým k tomuto předplatnému.
             
-## <a name="configmonitor"></a>Krok 5: Konfigurace monitorování
+## <a name="step-5-configure-monitors"></a><a name="configmonitor"></a>Krok 5: Konfigurace monitorů
 
-V této části nakonfigurujete monitorování. Postupujte podle kroků pro typ partnerského vztahu, které chcete sledovat: **soukromého partnerského vztahu**, nebo **partnerský vztah Microsoftu**.
+V této části nakonfigurujete monitory. Postupujte podle pokynů pro typ partnerského vztahu, který chcete sledovat: **soukromý partnerský vztah**nebo partnerský vztah **Microsoftu**.
 
 ### <a name="private-peering"></a>Soukromý partnerský vztah
 
-Pro soukromý partnerský vztah, když se dokončí zjišťování, zobrazí se pravidla pro jedinečný **názvu okruhu** a **název virtuální sítě**. Na začátku tato pravidla jsou zakázané.
+Pro soukromý partnerský vztah se po dokončení zjišťování zobrazí pravidla pro jedinečný **název okruhu** a **název virtuální sítě**. Zpočátku jsou tato pravidla zakázána.
 
-![rules](./media/how-to-npm/14.png)
+![pravidla](./media/how-to-npm/14.png)
 
-1. Zkontrolujte, **monitorovat tento partnerský vztah** zaškrtávací políčko.
-2. Zaškrtněte políčko **povolit monitorování stavu pro tento partnerský vztah**.
-3. Vyberte monitorování podmínky. Můžete nastavit vlastní prahové hodnoty k vygenerování události týkající se stavu tak, že zadáte prahové hodnoty. Pokaždé, když se hodnota podmínka překročí jeho zvolená prahová hodnota pro vybranou síť/podsíť dvojici, vygeneruje událost stavu.
-4. Klikněte na místní AGENTY **přidat agenty** tlačítko pro přidání na místních serverech, ze kterých chcete monitorovat privátní připojení s partnerským vztahem. Ujistěte se, že vyberte pouze agenty, které mají připojení ke koncovému bodu služby Microsoft, který jste zadali v části v kroku 2. Místní agenty musí být schopný připojit koncového bodu pomocí připojení ExpressRoute.
+1. Zaškrtněte políčko **Sledovat tento partnerský vztah.**
+2. Zaškrtněte políčko **Povolit monitorování stavu pro tento partnerský vztah**.
+3. Zvolte podmínky monitorování. Můžete nastavit vlastní prahové hodnoty pro generování událostí stavu zadáním prahových hodnot. Vždy, když hodnota podmínky překročí vybranou prahovou hodnotu pro vybraný pár sítě/podsítě, je vygenerována událost stavu.
+4. Kliknutím na tlačítko ON-PREM AGENTI **Přidat agenty** přidejte místní servery, ze kterých chcete sledovat připojení soukromého partnerského vztahu. Ujistěte se, že jste vybrali pouze agenty, kteří mají připojení ke koncovému bodu služby Společnosti Microsoft, který jste zadali v části kroku 2. Místní agenti musí být schopni dosáhnout koncového bodu pomocí připojení ExpressRoute.
 5. Uložte nastavení.
-6. Po povolení pravidla a výběrem hodnoty a agenty, které chcete monitorovat, je Počkejte přibližně 30 – 60 minut pro hodnoty zahájíte, naplnění a **monitorování ExpressRoute** dlaždice k dispozici.
+6. Po povolení pravidel a výběru hodnot a agentů, které chcete sledovat, je čekání přibližně 30-60 minut pro hodnoty začít naplnění a **ExpressRoute monitorovací** dlaždice k dispozici.
 
 ### <a name="microsoft-peering"></a>Partnerský vztah Microsoftu
 
-Pro partnerský vztah Microsoftu, klikněte na připojení partnerského vztahu Microsoftu, kterou chcete monitorovat a nakonfigurujte nastavení.
+V partnerské síti Microsoft klepněte na připojení partnerského vztahu Microsoftu, které chcete sledovat, a nakonfigurujte nastavení.
 
-1. Zkontrolujte, **monitorovat tento partnerský vztah** zaškrtávací políčko. 
-2. (Volitelné) Můžete změnit cílový koncový bod služby Microsoftu. Ve výchozím nastavení vybere NPM koncového bodu služby Microsoft jako cíl. NPM monitoruje připojení z vašich místních serverů do tohoto cílového koncového bodu prostřednictvím ExpressRoute. 
-    * Chcete-li změnit tento cílový koncový bod, klikněte na tlačítko **(Upravit)** odkaz pod **cíl:** a vyberte koncový bod cílové služby Microsoft jiný seznam adres URL.
-      ![Upravit cíl](./media/how-to-npm/edit_target.png)<br>
+1. Zaškrtněte políčko **Sledovat tento partnerský vztah.** 
+2. (Nepovinné) Cílový koncový bod služby Microsoft můžete změnit. Ve výchozím nastavení npm zvolí koncový bod služby společnosti Microsoft jako cíl. NPM monitoruje připojení z místních serverů k tomuto cílovému koncovému bodu prostřednictvím ExpressRoute. 
+    * Chcete-li tento cílový koncový bod změnit, klepněte na odkaz **(upravit)** v části **Cíl:** a ze seznamu adres URL vyberte jiný cílový koncový bod služby Microsoft.
+      ![upravit cíl](./media/how-to-npm/edit_target.png)<br>
 
-    * Můžete použít vlastní adresu URL nebo IP adresu. Tato možnost je zvláště důležitá, pokud používáte k navázání připojení ke službám Azure PaaS, jako je například Azure Storage, SQL Database a weby, které nabízíme na veřejné IP adresy partnerského vztahu Microsoftu. Chcete-li to provést, klikněte na odkaz **(použijte vlastní adresu URL nebo IP adresu)** v dolní části Seznam adres URL, zadejte veřejný koncový bod služby Azure PaaS, který je připojený prostřednictvím partnerského vztahu ExpressRoute Microsoftu.
-    ![Vlastní adresa URL](./media/how-to-npm/custom_url.png)<br>
+    * Můžete použít vlastní adresu URL nebo adresu IP. Tato možnost je zvláště důležité, pokud používáte partnerský vztah Microsoftu k navázání připojení ke službám Azure PaaS, jako je Azure Storage, databáze SQL a weby, které jsou nabízeny na veřejných IP adresách. Chcete-li to provést, klikněte na odkaz **(Použít vlastní adresu URL nebo IP adresu)** v dolní části seznamu adres URL a zadejte veřejný koncový bod služby Azure PaaS, která je připojena prostřednictvím partnerského vztahu Microsoftu ExpressRoute.
+    ![vlastní adresa URL](./media/how-to-npm/custom_url.png)<br>
 
-    * Pokud použijete nastavení jsou volitelná, ujistěte se, že se tady vyberete pouze Microsoft koncový bod služby. Koncový bod musí být připojené k ExpressRoute a je dostupný místní agenty.
-3. Zaškrtněte políčko **povolit monitorování stavu pro tento partnerský vztah**.
-4. Vyberte monitorování podmínky. Můžete nastavit vlastní prahové hodnoty k vygenerování události týkající se stavu tak, že zadáte prahové hodnoty. Pokaždé, když se hodnota podmínka překročí jeho zvolená prahová hodnota pro vybranou síť/podsíť dvojici, vygeneruje událost stavu.
-5. Klikněte na místní AGENTY **přidat agenty** tlačítko pro přidání na místních serverech, ze kterých chcete monitorovat připojení s partnerským vztahem Microsoft. Ujistěte se, že vyberte pouze agenty, které mají připojení ke koncovým bodům služby Microsoft, které jste zadali v části v kroku 2. Místní agenty musí být schopný připojit koncového bodu pomocí připojení ExpressRoute.
+    * Pokud používáte tato volitelná nastavení, ujistěte se, že je zde vybrán pouze koncový bod služby společnosti Microsoft. Koncový bod musí být připojen k ExpressRoute a dosažitelné místními agenty.
+3. Zaškrtněte políčko **Povolit monitorování stavu pro tento partnerský vztah**.
+4. Zvolte podmínky monitorování. Můžete nastavit vlastní prahové hodnoty pro generování událostí stavu zadáním prahových hodnot. Vždy, když hodnota podmínky překročí vybranou prahovou hodnotu pro vybraný pár sítě/podsítě, je vygenerována událost stavu.
+5. Kliknutím na tlačítko ON-PREM AGENTI **Přidat agenty** přidejte místní servery, ze kterých chcete sledovat připojení partnerského vztahu Microsoftu. Ujistěte se, že jste vybrali pouze agenty, kteří mají připojení k koncovým bodům služby Společnosti Microsoft, které jste zadali v části krok 2. Místní agenti musí být schopni dosáhnout koncového bodu pomocí připojení ExpressRoute.
 6. Uložte nastavení.
-7. Po povolení pravidla a výběrem hodnoty a agenty, které chcete monitorovat, je Počkejte přibližně 30 – 60 minut pro hodnoty zahájíte, naplnění a **monitorování ExpressRoute** dlaždice k dispozici.
+7. Po povolení pravidel a výběru hodnot a agentů, které chcete sledovat, je čekání přibližně 30-60 minut pro hodnoty začít naplnění a **ExpressRoute monitorovací** dlaždice k dispozici.
 
-## <a name="explore"></a>Krok 6: Zobrazení monitorování dlaždice
+## <a name="step-6-view-monitoring-tiles"></a><a name="explore"></a>Krok 6: Zobrazení dlaždic monitorování
 
-Jakmile se zobrazí dlaždice monitorování, okruhy ExpressRoute a připojení prostředky jsou monitorovány pomocí NPM. Kliknutím na dlaždici Microsoft Peering a přejít k podrobnostem na stav připojení Microsoft Peering.
+Jakmile se zobrazí dlaždice monitorování, vaše ExpressRoute obvody a prostředky připojení jsou sledovány NPM. Kliknutím na dlaždici Microsoft Peering můžete přejít k podrobnostem o stavu připojení Microsoft Peering.
 
-![dlaždice monitorování](./media/how-to-npm/15.png)
+![sledování dlaždic](./media/how-to-npm/15.png)
 
-### <a name="dashboard"></a>Stránka pro sledování výkonu sítě
+### <a name="network-performance-monitor-page"></a><a name="dashboard"></a>Stránka Sledování výkonu sítě
 
-Na stránce NPM obsahuje stránku pro ExpressRoute, který zobrazuje přehled stavu okruhů ExpressRoute a partnerské vztahy.
+Stránka NPM obsahuje stránku expressroute, která zobrazuje přehled stavu okruhů ExpressRoute a partnerských stran.
 
 ![Řídicí panel](./media/how-to-npm/dashboard.png)
 
-### <a name="circuits"></a>Seznam okruhy
+### <a name="list-of-circuits"></a><a name="circuits"></a>Seznam obvodů
 
-Chcete-li zobrazit seznam všech monitorované okruhy ExpressRoute, klikněte na tlačítko **okruhy ExpressRoute** dlaždici. Můžete vybrat okruh a zobrazit její stav, grafy trendů využití šířky pásma, latence a ztráta paketů. Grafy jsou interaktivní. Můžete vybrat vlastní časový interval pro vykreslení grafy. Tažení myší přes oblast na graf můžete přiblížit a zobrazit podrobné datových bodů.
+Chcete-li zobrazit seznam všech sledovaných okruhů ExpressRoute, klepněte na dlaždici **okruhů ExpressRoute.** Můžete vybrat okruh a zobrazit jeho stav, grafy trendů pro ztrátu paketů, využití šířky pásma a latenci. Grafy jsou interaktivní. Můžete vybrat vlastní časové okno pro vykreslení grafů. Můžete přetáhnout myší přes oblast v grafu přiblížit a zobrazit jemně odstupňované datové body.
 
 ![circuit_list](./media/how-to-npm/circuits.png)
 
-#### <a name="trend"></a>Trend ztráty, latence a propustnosti
+#### <a name="trend-of-loss-latency-and-throughput"></a><a name="trend"></a>Trend ztráty, latence a propustnosti
 
-Šířka pásma, latence a ztráta grafy jsou interaktivní. Můžete přiblížit libovolné části tyto grafy pomocí myši ovládacích prvků. Můžete také zobrazit šířku pásma, latence a ztráta dat pro další intervaly kliknutím **data a času**, který je umístěn pod tlačítko akce v levém horním rohu.
+Grafy šířky pásma, latence a ztráty jsou interaktivní. Můžete přiblížit libovolnou část těchto grafů pomocí ovládacích prvků myši. Můžete také zobrazit šířku pásma, latence a ztráty data pro jiné intervaly kliknutím **na datum a čas**, který se nachází pod tlačítko Akce v levém horním rohu.
 
-![trend](./media/how-to-npm/16.png)
+![Trend](./media/how-to-npm/16.png)
 
-### <a name="peerings"></a>Seznam partnerských vztahů
+### <a name="peerings-list"></a><a name="peerings"></a>Seznam partnerských stran
 
-Chcete zobrazit seznam všech připojení k virtuálním sítím přes privátní partnerský vztah, klikněte na tlačítko **privátní partnerské vztahy** dlaždici na řídicím panelu. Tady můžete vybrat virtuální síťové připojení a zobrazit její stav, grafy trendů využití šířky pásma, latence a ztráta paketů.
+Chcete-li zobrazit seznam všech připojení k virtuálním sítím přes privátní partnerský vztah, klikněte na dlaždici **Soukromé partnerské vztahy** na řídicím panelu. Zde můžete vybrat připojení k virtuální síti a zobrazit její stav, grafy trendů pro ztrátu paketů, využití šířky pásma a latenci.
 
-![seznam okruh](./media/how-to-npm/peerings.png)
+![seznam okruhů](./media/how-to-npm/peerings.png)
 
-### <a name="nodes"></a>Zobrazení uzlů
+### <a name="nodes-view"></a><a name="nodes"></a>Zobrazení uzlů
 
-Chcete zobrazit seznam všech propojení mezi uzly v místním a koncové body služby virtuální počítače Azure nebo Microsoft pro připojení s partnerským vztahem zvolené ExpressRoute, klikněte na tlačítko **zobrazit odkazy na uzly**. Můžete zobrazit stav každého odkazu, stejně jako trend ztrát a latence k nim má přiřazené.
+Chcete-li zobrazit seznam všech propojení mezi místními uzly a koncovými body služby Virtuální počítače Azure/Microsoft pro vybrané připojení partnerského vztahu ExpressRoute, klikněte na **zobrazit odkazy uzlů**. Můžete zobrazit stav každého odkazu, stejně jako trend ztráty a latence s nimi spojené.
 
-![Zobrazení uzlů](./media/how-to-npm/nodes.png)
+![zobrazení uzlů](./media/how-to-npm/nodes.png)
 
-### <a name="topology"></a>Topologie okruh
+### <a name="circuit-topology"></a><a name="topology"></a>Topologie obvodu
 
-Chcete-li zobrazit topologie okruhů, klikněte na tlačítko **topologie** dlaždici. Tím přejdete na zobrazení topologie zvolené okruhu nebo partnerského vztahu. Diagram topologie poskytuje latence pro každý segment v síti. Každého směrování vrstvy 3 je reprezentován uzlu diagramu. Kliknutím na hop zobrazí další podrobnosti o směrování.
+Chcete-li zobrazit topologii obvodu, klepněte na dlaždici **Topologie.** Tím přejdete do zobrazení topologie vybraného okruhu nebo partnerského vztahu. Diagram topologie poskytuje latenci pro každý segment v síti. Každý směrování vrstvy 3 je reprezentováno uzlem diagramu. Kliknutím na hop odhalí více informací o hop.
 
-Můžete zvýšit úroveň viditelnosti zahrnout segmenty směrování místní přesunutím posuvníku **filtry**. Přesunout posuvník doleva nebo doprava, zvyšuje nebo snižuje počet segmentů směrování v grafu topologie. Latence v každém segmentu je viditelné, který umožňuje rychlejší izolace segmentů vysoká latence ve vaší síti.
+Úroveň viditelnosti můžete zvýšit tak, aby zahrnovala místní směrování přesunutím posuvníku pod **filtry**. Posunutím posuvníku doleva nebo doprava se zvýší/sníží počet směrování v grafu topologie. Latence v každém segmentu je viditelná, což umožňuje rychlejší izolaci segmentů s vysokou latencí v síti.
 
-![Filtry](./media/how-to-npm/topology.png)
+![filtry](./media/how-to-npm/topology.png)
 
-#### <a name="detailed-topology-view-of-a-circuit"></a>Podrobné zobrazení topologie okruhu
+#### <a name="detailed-topology-view-of-a-circuit"></a>Detailní pohled na topologii obvodu
 
-Toto zobrazení uvádí připojení virtuální sítě.
-![Podrobné topologie](./media/how-to-npm/17.png)
+Toto zobrazení zobrazuje připojení virtuální sítě.
+![podrobná topologie](./media/how-to-npm/17.png)

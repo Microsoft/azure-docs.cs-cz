@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: cherylmc
 ms.openlocfilehash: 622a2f69c2e7b82f2df10d6120ee2dd466961915
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77211390"
 ---
 Starší (staré) skladové položky brány VPN jsou:
 
 * Výchozí (základní)
 * Standard
-* HighPerformance
+* Vysokovýkonné
 
 VPN Gateway nepoužívá SKU brány UltraPerformance. Informace o SKU UltraPerformance najdete v dokumentaci k [ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md).
 

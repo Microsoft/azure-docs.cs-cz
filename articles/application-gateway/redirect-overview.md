@@ -1,6 +1,6 @@
 ---
 title: Přehled přesměrování pro Azure Application Gateway
-description: Přečtěte si o schopnostech přesměrování v Azure Application Gateway pro přesměrování provozu přijatého na jednom naslouchací službě do jiného naslouchacího procesu nebo na externí Web.
+description: Další informace o funkci přesměrování v Azure Application Gateway přesměrovat provoz přijatý na jeden naslouchací proces na jiný naslouchací proces nebo na externí web.
 services: application-gateway
 author: amsriva
 ms.service: application-gateway
@@ -8,39 +8,39 @@ ms.topic: article
 ms.date: 11/16/2019
 ms.author: amsriva
 ms.openlocfilehash: 5943d8aad4d5dd0d981fae9b2325dd3fc75b31e8
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74129880"
 ---
-# <a name="application-gateway-redirect-overview"></a>Přehled přesměrování Application Gateway
+# <a name="application-gateway-redirect-overview"></a>Přehled přesměrování brány aplikace
 
-K přesměrování provozu můžete použít Aplikační bránu.  Obsahuje obecný mechanismus přesměrování, který umožňuje přesměrování provozu přijatého v jednom naslouchacím procesu do jiného naslouchacího procesu nebo na externí web. Tato funkce zjednodušuje konfiguraci aplikace, optimalizuje využití prostředků a podporuje nové scénáře přesměrování včetně globálního přesměrování a přesměrování na základě cest.
+K přesměrování provozu můžete použít aplikační bránu.  Obsahuje obecný mechanismus přesměrování, který umožňuje přesměrování provozu přijatého v jednom naslouchacím procesu do jiného naslouchacího procesu nebo na externí web. To zjednodušuje konfiguraci aplikace, optimalizuje využití prostředků a podporuje nové scénáře přesměrování, včetně globálního přesměrování a přesměrování založeného na cestě.
 
-Běžný scénář přesměrování pro mnoho webových aplikací je podporovat přesměrování automatického HTTP na HTTPS, aby se zajistilo, že veškerá komunikace mezi aplikací a jejími uživateli probíhá přes šifrovanou cestu. V minulosti zákazníci používali techniky, jako je vytvoření vyhrazeného fondu back-end, jehož jediným účelem je přesměrování požadavků, které přijímá v HTTP na HTTPS. Díky podpoře přesměrování v Application Gateway můžete to provést jednoduše přidáním nové konfigurace přesměrování do pravidla směrování a zadáním dalšího naslouchacího procesu s protokolem HTTPS jako cílový naslouchací proces.
+Běžným scénářem přesměrování pro mnoho webových aplikací je podpora automatického přesměrování http na https, aby byla zajištěna veškerá komunikace mezi aplikací a jejími uživateli přes šifrovanou cestu. V minulosti zákazníci používali techniky, jako je například vytvoření vyhrazeného back-endového fondu, jehož jediným účelem je přesměrovat požadavky, které obdrží v protokolu HTTP na protokol HTTPS. S podporou přesměrování v application gateway, můžete to provést jednoduše přidáním nové konfigurace přesměrování do pravidla směrování a určením jiného naslouchacího procesu s protokolem HTTPS jako cílový mstivým procesem.
 
 Podporovány jsou následující typy přesměrování:
 
 - 301 Trvalé přesměrování
 - 302 Nalezeno
-- 303 viz další
-- 307 dočasné přesměrování
+- 303 Zobrazit ostatní
+- 307 Dočasné přesměrování
 
 Podpora přesměrování Application Gateway nabízí následující možnosti:
 
 -  **Globální přesměrování**
 
-   Přesměrování z jednoho naslouchacího procesu na jiný naslouchací proces v bráně. To umožňuje přesměrování z HTTP na HTTPS na webu.
-- **Přesměrování na základě cest**
+   Přesměruje z jednoho naslouchací proces na jiný naslouchací proces v bráně. To umožňuje přesměrování z HTTP na HTTPS na webu.
+- **Přesměrování založené na cestě**
 
-   Tento typ přesměrování povoluje přesměrování protokolu HTTP na HTTPS pouze v určité oblasti lokality, například v oblasti nákupního košíku označeného/Cart/*.
+   Tento typ přesměrování umožňuje přesměrování HTTP na HTTPS pouze v určité oblasti webu, například oblast nákupního košíku označenou /cart/*.
 - **Přesměrovat na externí web**
 
-![Požadavek](./media/redirect-overview/redirect.png)
+![Přesměrování](./media/redirect-overview/redirect.png)
 
-V důsledku této změny musí zákazníci vytvořit nový objekt konfigurace přesměrování, který určuje cílový naslouchací proces nebo externí web, na který je požadováno přesměrování. Konfigurační prvek také podporuje možnosti, které umožňují připojení cesty URI a řetězce dotazu k přesměrované adrese URL. Můžete také zvolit typ přesměrování. Po vytvoření se tato konfigurace přesměrování připojí ke zdrojovému naslouchacího procesu prostřednictvím nového pravidla. Při použití základního pravidla je konfigurace přesměrování přidružená ke zdrojovému naslouchacího procesu a je globální přesměrování. Při použití pravidla založeného na cestách je konfigurace přesměrování definována v mapě cesty URL. Proto se vztahuje pouze na konkrétní oblast cesty lokality.
+Při této změně musí zákazníci vytvořit nový objekt konfigurace přesměrování, který určuje cílový naslouchací proces nebo externí web, do kterého je požadováno přesměrování. Konfigurační prvek také podporuje možnosti, které umožňují připojení cesty URI a řetězce dotazu k přesměrované adrese URL. Můžete také zvolit typ přesměrování. Po vytvoření je tato konfigurace přesměrování připojena ke zdrojovému naslouchací procesu prostřednictvím nového pravidla. Při použití základního pravidla je konfigurace přesměrování přidružena ke zdrojovému naslouchací procesu a je globálním přesměrováním. Při použití pravidla založeného na cestě je konfigurace přesměrování definována na mapě cesty URL. Takže se vztahuje pouze na konkrétní oblast cesty webu.
 
 ### <a name="next-steps"></a>Další kroky
 
-[Konfigurace přesměrování adresy URL ve aplikační bráně](tutorial-url-redirect-powershell.md)
+[Konfigurace přesměrování adresy URL v aplikační bráně](tutorial-url-redirect-powershell.md)

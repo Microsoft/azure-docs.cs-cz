@@ -1,6 +1,6 @@
 ---
-title: Monitorování mobilních aplikací pomocí Azure Monitor Application Insights
-description: Poskytuje pokyny pro rychlé nastavení mobilní aplikace pro monitorování pomocí Azure Monitor Application Insights a App Center
+title: Sledování mobilních aplikací pomocí Azure Monitor Application Insights
+description: Obsahuje pokyny k rychlému nastavení mobilní aplikace pro monitorování pomocí Azure Monitor Application Insights a App Center.
 ms.subservice: application-insights
 ms.topic: quickstart
 author: mrbullwinkle
@@ -9,10 +9,10 @@ ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
 ms.openlocfilehash: a59a6841a1db3cecfe52c54135b42f5b6a095ce3
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77660287"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Začínáme s analýzou mobilní aplikace pomocí App Center a Application Insights
@@ -26,21 +26,21 @@ K dokončení tohoto rychlého startu je potřeba:
 - Předplatné Azure.
 - Aplikace pro iOS nebo Android, aplikace Xamarin, univerzální aplikace pro Windows nebo aplikace React Native.
  
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet, než začnete.
 
-## <a name="sign-up-with-app-center"></a>Zaregistrujte se App Center
-Začněte tím, že vytvoříte účet a [Zaregistrujte se App Center](https://appcenter.ms/signup?utm_source=ApplicationInsights&utm_medium=Azure&utm_campaign=docs).
+## <a name="sign-up-with-app-center"></a>Zaregistrujte se pomocí Centra aplikací
+Chcete-li začít, vytvořte si účet a [zaregistrujte se pomocí Centra aplikací](https://appcenter.ms/signup?utm_source=ApplicationInsights&utm_medium=Azure&utm_campaign=docs).
 
 ## <a name="onboard-to-app-center"></a>Připojení k App Center
 
-Než budete ve své mobilní aplikaci moct použít Application Insights, musíte svou aplikaci připojit k [App Center](https://docs.microsoft.com/mobile-center/). Application Insights nepřijímá telemetrii z mobilní aplikace přímo. Místo toho aplikace odesílá vlastní telemetrii událostí do App Center. App Center pak s přijímáním událostí průběžně exportuje kopie těchto vlastních událostí do Application Insights. (To se nevztahuje na [sadu SDK Application Insights js](https://github.com/Microsoft/ApplicationInsights-JS) ani na [nereagují nativní modul plug-in](https://github.com/Microsoft/ApplicationInsights-JS/tree/master/vNext/extensions/applicationinsights-react-native) , kde se telemetrie odesílá přímo do Application Insights.)
+Než budete ve své mobilní aplikaci moct použít Application Insights, musíte svou aplikaci připojit k [App Center](https://docs.microsoft.com/mobile-center/). Application Insights nepřijímá telemetrii z mobilní aplikace přímo. Místo toho aplikace odesílá vlastní telemetrii událostí do App Center. App Center pak s přijímáním událostí průběžně exportuje kopie těchto vlastních událostí do Application Insights. (To se nevztahuje na [Application Insights JS SDK](https://github.com/Microsoft/ApplicationInsights-JS) nebo [React Nativní plugin,](https://github.com/Microsoft/ApplicationInsights-JS/tree/master/vNext/extensions/applicationinsights-react-native) kde telemetrie je odeslána přímo do Application Insights.)
 
 Pokud chcete připojit svou aplikaci, postupujte podle rychlého startu pro App Center, a to pro všechny platformy, které vaše aplikace podporuje. Vytvoření samostatných instancí App Center pro jednotlivé platformy:
 
-* [iOS](https://docs.microsoft.com/mobile-center/sdk/getting-started/ios)
-* [Android](https://docs.microsoft.com/mobile-center/sdk/getting-started/android)
-* [Xamarin](https://docs.microsoft.com/mobile-center/sdk/getting-started/xamarin)
-* [Univerzální platforma Windows](https://docs.microsoft.com/mobile-center/sdk/getting-started/uwp)
+* [iOS](https://docs.microsoft.com/mobile-center/sdk/getting-started/ios).
+* [Android](https://docs.microsoft.com/mobile-center/sdk/getting-started/android).
+* [Xamarin](https://docs.microsoft.com/mobile-center/sdk/getting-started/xamarin).
+* [Univerzální windows](https://docs.microsoft.com/mobile-center/sdk/getting-started/uwp).
 * [React Native](https://docs.microsoft.com/mobile-center/sdk/getting-started/react-native)
 
 ## <a name="track-events-in-your-app"></a>Sledování událostí v aplikaci
@@ -67,11 +67,11 @@ Pokud chcete ověřit přijímání vlastních událostí, přejděte v App Cent
 
 Jakmile vaše aplikace odesílá vlastní události a App Center tyto události přijímá, je potřeba na webu Azure Portal vytvořit prostředek Application Insights typu App Center:
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
-2. Vyberte **Vytvořit prostředek** > **Vývojářské nástroje** > **Application Insights**.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+2. Vyberte **Vytvořit nástroje** > **Developer tools** > pro vývojáře prostředků Application**Insights**.
 
     > [!NOTE]
-    > Pokud Application Insights prostředek vytvoříte poprvé, můžete si o tom přečíst další informace v dokumentu [vytvoření prostředku Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) .
+    > Pokud je to poprvé, co vytváříte prostředek Application Insights, můžete se dozvědět více pomocí dokumentu Vytvořit dokument [o prostředku Resource Resource.](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)
 
     Zobrazí se konfigurační pole. K vyplnění vstupních polí použijte následující tabulku.
 
@@ -81,13 +81,13 @@ Jakmile vaše aplikace odesílá vlastní události a App Center tyto události 
      | **Skupina prostředků**     | Nová skupina prostředků nebo existující skupina prostředků z nabídky | Skupina prostředků, ve které se má vytvořit nový prostředek Application Insights |
    | **Umístění** | Umístění z nabídky | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
 
-3. Klikněte na možnost **Vytvořit**.
+3. Klikněte na **Vytvořit**.
 
 Pokud vaše aplikace podporuje více platforem (iOS, Android atd.), je vhodné vytvořit pro každou platformu samostatný prostředek Application Insights.
 
 ## <a name="export-to-application-insights"></a>Export do Application Insights
 
-V novém prostředku Application Insights na stránce **Přehled** . Zkopírujte klíč instrumentace z prostředku.
+V novém prostředku Application Insights na stránce **Přehled.** Zkopírujte klíč instrumentace z prostředku.
 
 V instanci [App Center](https://appcenter.ms/) pro vaši aplikaci:
 
@@ -106,11 +106,11 @@ Abyste při prvním připojení měli k dispozici více dat, do Application Insi
 
 Nad rámec analytických nástrojů, které poskytuje App Center, může Application Insights dotazovat, segmentovat, filtrovat a analyzovat vlastní telemetrii událostí z vašich aplikací.
 
-1. **Dotazování vlastní telemetrie událostí.** Na stránce **přehled** Application Insights vyberte **protokoly (analýza)** .
+1. **Dotazování vlastní telemetrie událostí.** Na stránce **Přehled** přehledů aplikací zvolte **Protokoly (Analytics).**
 
-   Otevře se portál Application Insights protokoly (Analytics) přidružený k vašemu prostředku Application Insights. Portál protokolů (Analytics) vám umožňuje přímo dotazovat data pomocí dotazovacího jazyka Log Analytics, takže se můžete zeptat na libovolně složité otázky týkající se vaší aplikace a jejích uživatelů.
+   Otevře se portál Protokoly přehledů aplikací (Analytics) přidružený k prostředku Application Insights. Portál Protokoly (Analytics) umožňuje přímo dotazovat data pomocí dotazovacího jazyka Log Analytics, takže můžete klást libovolně složité otázky týkající se vaší aplikace a jejích uživatelů.
    
-   Otevřete na portálu protokoly (Analytics) novou kartu a vložte ji do následujícího dotazu. Dotaz vrátí počet jedinečných uživatelů, kteří z vaší aplikace odeslali jednotlivé vlastní události za posledních 24 hodin, a výpis seřadí podle tohoto počtu jedinečných uživatelů.
+   Otevřete novou kartu na portálu Protokoly (Analytics) a vložte do následujícího dotazu. Dotaz vrátí počet jedinečných uživatelů, kteří z vaší aplikace odeslali jednotlivé vlastní události za posledních 24 hodin, a výpis seřadí podle tohoto počtu jedinečných uživatelů.
 
    ```AIQL
    customEvents
@@ -119,7 +119,7 @@ Nad rámec analytických nástrojů, které poskytuje App Center, může Applica
    | order by dcount_user_Id desc 
    ```
 
-   ![Portál pro protokoly (Analytics)](./media/mobile-center-quickstart/analytics-portal-001.png)
+   ![Portál protokolů (Analytics)](./media/mobile-center-quickstart/analytics-portal-001.png)
 
    1. Vyberte dotaz kliknutím na libovolnou část dotazu v textovém editoru.
    2. Pak dotaz spusťte kliknutím na **Přejít**. 

@@ -1,49 +1,49 @@
 ---
 title: Nasazení instance kontejneru s podporou GPU
-description: Naučte se nasazovat služby Azure Container Instances pro spouštění kontejnerových aplikací náročných na výpočetní prostředky pomocí prostředků GPU.
+description: Zjistěte, jak nasadit instance kontejnerů Azure ke spouštění aplikací kontejnerů náročných na výpočetní výkon pomocí prostředků GPU.
 ms.topic: article
 ms.date: 02/19/2020
 ms.openlocfilehash: 0f1d21c62be5d7ae099faa2c6fcc440829bb451f
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77525282"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Nasazení instancí kontejnerů, které používají prostředky GPU
 
-Pokud chcete spouštět určité úlohy náročné na výpočetní výkon na Azure Container Instances, nasaďte [skupiny kontejnerů](container-instances-container-groups.md) pomocí *prostředků GPU*. Instance kontejnerů ve skupině mají přístup k jednomu nebo více GPU NVIDIA Tesla při spouštění úloh kontejneru, jako jsou CUDA a aplikace s hloubkovým učením.
+Chcete-li spustit určité úlohy náročné na výpočetní výkon v instanci kontejneru Azure, nasaďte [skupiny kontejnerů](container-instances-container-groups.md) s *prostředky GPU*. Instance kontejneru ve skupině mohou přistupovat k jedné nebo více grafickým procesorům NVIDIA Tesla při spouštění úloh kontejneru, jako je CUDA a aplikace pro hloubkové učení.
 
-Tento článek popisuje, jak přidat prostředky GPU při nasazení skupiny kontejnerů pomocí [souboru YAML](container-instances-multi-container-yaml.md) nebo [šablony Správce prostředků](container-instances-multi-container-group.md). Prostředky GPU můžete zadat také při nasazení instance kontejneru pomocí Azure Portal.
+Tento článek ukazuje, jak přidat prostředky GPU při nasazení skupiny kontejnerů pomocí [souboru YAML](container-instances-multi-container-yaml.md) nebo [šablony Správce prostředků](container-instances-multi-container-group.md). Prostředky GPU můžete také určit, když nasadíte instanci kontejneru pomocí portálu Azure.
 
 > [!IMPORTANT]
-> Tato funkce je aktuálně ve verzi Preview a [platí některá omezení](#preview-limitations). Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
+> Tato funkce je aktuálně ve verzi Preview a platí určitá [omezení](#preview-limitations). Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
 
-## <a name="preview-limitations"></a>Omezení verze Preview
+## <a name="preview-limitations"></a>Omezení náhledu
 
-V rámci verze Preview platí při používání prostředků GPU ve skupinách kontejnerů následující omezení. 
+Ve verzi Preview platí následující omezení při použití prostředků GPU ve skupinách kontejnerů. 
 
 [!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
 
-Podpora bude v průběhu času přidána pro další oblasti.
+V průběhu času bude přidána podpora pro další regiony.
 
-**Podporované typy operačních systémů**: jenom Linux
+**Podporované typy operačních systémů**: Pouze Linux
 
-**Další omezení**: prostředky GPU nelze použít při nasazování skupiny kontejnerů do [virtuální sítě](container-instances-vnet.md).
+**Další omezení**: Prostředky GPU nelze použít při nasazování skupiny kontejnerů do [virtuální sítě](container-instances-vnet.md).
 
-## <a name="about-gpu-resources"></a>O prostředcích GPU
+## <a name="about-gpu-resources"></a>O zdrojích GPU
 
 > [!IMPORTANT]
-> Prostředky GPU jsou k dispozici pouze na vyžádání. Pokud chcete požádat o přístup k prostředkům GPU, odešlete prosím [žádost o podporu Azure][azure-support].
+> Zdroje GPU jsou k dispozici pouze na vyžádání. Chcete-li požádat o přístup k prostředkům GPU, odešlete [žádost o podporu Azure][azure-support].
 
-### <a name="count-and-sku"></a>Počet a SKU
+### <a name="count-and-sku"></a>Počet a skladová položka
 
-Chcete-li použít GPU v instanci kontejneru, zadejte *prostředek GPU* s následujícími informacemi:
+Chcete-li použít grafické procesory v instanci kontejneru, zadejte *prostředek GPU* s následujícími informacemi:
 
-* **Count** – počet GPU: **1**, **2**nebo **4**.
-* **SKU** – SKU GPU: **K80**, **P100**nebo **V100**. Každá SKU se mapuje na grafický procesor NVIDIA Tesla v jedné z následujících rodin virtuálních počítačů s podporou GPU Azure:
+* **Počet** - Počet GPU: **1**, **2**nebo **4**.
+* **Skladová položka** – skladová položka GPU: **K80**, **P100**nebo **V100**. Každá skladová položka mapuje gpu NVIDIA Tesla v jedné z následujících rodin virtuálních zařízení s podporou GpU Azure:
 
-  | Skladová položka | Řada virtuálních počítačů |
+  | Skladová jednotka (SKU) | Rodina virtuálních montovek |
   | --- | --- |
   | K80 | [NC](../virtual-machines/nc-series.md) |
   | P100 | [NCv2](../virtual-machines/ncv2-series.md) |
@@ -51,25 +51,25 @@ Chcete-li použít GPU v instanci kontejneru, zadejte *prostředek GPU* s násle
 
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
 
-Při nasazování prostředků GPU nastavte prostředky procesoru a paměti, které jsou vhodné pro zatížení, až do maximálních hodnot uvedených v předchozí tabulce. Tyto hodnoty jsou aktuálně větší než prostředky procesoru a paměti dostupné ve skupinách kontejnerů bez prostředků GPU.  
+Při nasazování prostředků GPU nastavte prostředky procesoru a paměti vhodné pro úlohu až do maximálních hodnot uvedených v předchozí tabulce. Tyto hodnoty jsou aktuálně větší než prostředky procesoru a paměti, které jsou k dispozici ve skupinách kontejnerů bez prostředků GPU.  
 
-### <a name="things-to-know"></a>Co je potřeba znát
+### <a name="things-to-know"></a>Co je potřeba vědět
 
-* **Čas nasazení** – vytvoření skupiny kontejnerů obsahující prostředky GPU trvá až **8-10 minut**. Důvodem je další čas při zřizování a konfiguraci virtuálního počítače GPU v Azure. 
+* **Doba nasazení** – vytvoření skupiny kontejnerů obsahující prostředky GPU trvá až **8 až 10 minut**. To je způsobeno další čas na zřízení a konfiguraci virtuálního počítače GPU v Azure. 
 
-* **Ceny** – podobně jako u skupin kontejnerů bez prostředků GPU, Azure účtuje prostředky spotřebované po *dobu trvání* skupiny kontejnerů pomocí prostředků GPU. Doba trvání se vypočítává z doby, kdy se má načíst první obrázek kontejneru, dokud se neukončí skupina kontejnerů. Nezahrnuje čas k nasazení skupiny kontejnerů.
+* **Ceny** – Podobně jako skupiny kontejnerů bez prostředků GPU, Azure účtuje za prostředky spotřebované po *dobu trvání* skupiny kontejnerů s prostředky GPU. Doba trvání se počítá od doby, kdy chcete vytáhnout image prvního kontejneru, dokud skupina kontejnerů neskončí. Nezahrnuje čas nasazení skupiny kontejnerů.
 
-  Podívejte se na [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/container-instances/).
+  Viz [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/container-instances/).
 
-* **Ovladače CUDA** – instance kontejnerů s prostředky GPU jsou předem zřízené pomocí ovladačů NVIDIA CUDA a modulu runtime kontejnerů, takže můžete používat image kontejnerů vyvinuté pro úlohy CUDA.
+* **Ovladače CUDA** – instance kontejnerů s prostředky GPU jsou předem zřízeny pomocí ovladačů NVIDIA CUDA a runčase kontejnerů, takže můžete použít ibligrafické obrazy kontejnerů vyvinuté pro úlohy CUDA.
 
-  V této fázi podporujeme CUDA 9,0. Můžete například použít následující základní image pro soubor Docker:
-  * [NVIDIA/CUDA: 9.0 – Base-Ubuntu 16.04](https://hub.docker.com/r/nvidia/cuda/)
-  * [tensorflow/tensorflow: 1.12.0-GPU-py3](https://hub.docker.com/r/tensorflow/tensorflow)
+  Podporujeme CUDA 9.0 v této fázi. Pro soubor Dockeru můžete například použít následující základní image:
+  * [nvidia/cuda:9.0-base-ubuntu16.04](https://hub.docker.com/r/nvidia/cuda/)
+  * [tentenzorový/tenzorový průtok: 1.12.0-gpu-py3](https://hub.docker.com/r/tensorflow/tensorflow)
     
 ## <a name="yaml-example"></a>Příklad YAML
 
-Jedním ze způsobů, jak přidat prostředky GPU, je nasadit skupinu kontejnerů pomocí [souboru YAML](container-instances-multi-container-yaml.md). Zkopírujte následující YAML do nového souboru s názvem *GPU-Deploy-ACI. yaml*a pak soubor uložte. Tento YAML vytvoří skupinu kontejnerů s názvem *gpucontainergroup* , která určuje instanci kontejneru s grafickým procesorem K80. Instance spustí ukázkovou aplikaci doplňku CUDA Vector. Požadavky na prostředky jsou dostačující ke spuštění úlohy.
+Jedním ze způsobů, jak přidat prostředky GPU, je nasazení skupiny kontejnerů pomocí [souboru YAML](container-instances-multi-container-yaml.md). Zkopírujte následující yaml do nového souboru s názvem *gpu-deploy-aci.yaml*, a pak soubor uložte. Tento YAML vytvoří skupinu kontejnerů s názvem *gpucontainergroup* určující instanci kontejneru s GPU K80. Instance spustí ukázkovou aplikaci cuda vektorsčítání. Požadavky na prostředky jsou dostatečné ke spuštění úlohy.
 
 ```YAML
 additional_properties: {}
@@ -91,13 +91,13 @@ properties:
   restartPolicy: OnFailure
 ```
 
-Nasaďte skupinu kontejnerů pomocí příkazu [AZ Container Create][az-container-create] a zadáním názvu souboru YAML pro parametr `--file`. Je potřeba, abyste zadali název skupiny prostředků a umístění pro skupinu kontejnerů, jako je *eastus* , které podporují prostředky GPU.  
+Nasaďte skupinu kontejnerů pomocí příkazu [az container create][az-container-create] a `--file` zadejte název souboru YAML pro parametr. Je třeba zadat název skupiny prostředků a umístění pro skupinu kontejnerů, jako je *například eastus,* který podporuje prostředky GPU.  
 
 ```azurecli
 az container create --resource-group myResourceGroup --file gpu-deploy-aci.yaml --location eastus
 ```
 
-Dokončení nasazení trvá několik minut. Kontejner se pak spustí a spustí operaci přidání vektoru CUDA. Spuštěním příkazu [AZ Container logs][az-container-logs] zobrazíte výstup protokolu:
+Dokončení nasazení trvá několik minut. Potom kontejner spustí a spustí operaci přidání vektoru CUDA. Spuštěním příkazu [protokoly kontejneru az][az-container-logs] zobrazte výstup protokolu:
 
 ```azurecli
 az container logs --resource-group myResourceGroup --name gpucontainergroup --container-name gpucontainer
@@ -116,7 +116,7 @@ Done
 
 ## <a name="resource-manager-template-example"></a>Příklad šablony Správce prostředků
 
-Dalším způsobem, jak nasadit skupinu kontejnerů pomocí prostředků GPU, je použití [šablony Správce prostředků](container-instances-multi-container-group.md). Začněte vytvořením souboru s názvem `gpudeploy.json`a zkopírujte do něj následující kód JSON. Tento příklad nasadí instanci kontejneru s grafickým procesorem V100, který spouští školicí úlohu [TensorFlow](https://www.tensorflow.org/) s datovou sadou mnist ručně zapsaných. Požadavky na prostředky jsou dostačující ke spuštění úlohy.
+Dalším způsobem nasazení skupiny kontejnerů s prostředky GPU je použití [šablony Správce prostředků](container-instances-multi-container-group.md). Začněte vytvořením `gpudeploy.json`souboru s názvem a zkopírujte do něj následující json. Tento příklad nasazuje instanci kontejneru s grafickým procesorem V100, který spouští trénovací úlohu [Tententory ve](https://www.tensorflow.org/) formátu Proti datové sadě MNIST. Požadavky na prostředky jsou dostatečné ke spuštění úlohy.
 
 ```JSON
 {
@@ -168,13 +168,13 @@ Dalším způsobem, jak nasadit skupinu kontejnerů pomocí prostředků GPU, je
 }
 ```
 
-Šablonu nasaďte pomocí příkazu [AZ Group Deployment Create][az-group-deployment-create] . Je potřeba, abyste zadali název skupiny prostředků, která byla vytvořená v oblasti, jako je *eastus* , která podporuje prostředky GPU.
+Nasaďte šablonu pomocí příkazu [vytvořit nasazení skupiny az.][az-group-deployment-create] Je třeba zadat název skupiny prostředků, která byla vytvořena v oblasti, jako je *eastus,* který podporuje prostředky GPU.
 
 ```azurecli-interactive
 az group deployment create --resource-group myResourceGroup --template-file gpudeploy.json
 ```
 
-Dokončení nasazení trvá několik minut. Pak kontejner spustí a spustí úlohu TensorFlow. Spuštěním příkazu [AZ Container logs][az-container-logs] zobrazíte výstup protokolu:
+Dokončení nasazení trvá několik minut. Potom kontejner spustí a spustí úlohu TensorFlow. Spuštěním příkazu [protokoly kontejneru az][az-container-logs] zobrazte výstup protokolu:
 
 ```azurecli
 az container logs --resource-group myResourceGroup --name gpucontainergrouprm --container-name gpucontainer
@@ -209,13 +209,13 @@ Adding run metadata for 999
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Vzhledem k tomu, že používání prostředků GPU může být náročné, zajistěte, aby vaše kontejnery neočekávaně neběžely po dlouhou dobu. Monitorujte kontejnery v Azure Portal nebo pomocí příkazu [AZ Container show][az-container-show] ověřte stav skupiny kontejnerů. Příklad:
+Vzhledem k tomu, že použití prostředků GPU může být nákladné, ujistěte se, že vaše kontejnery nespustí neočekávaně po dlouhou dobu. Sledujte kontejnery na webu Azure Portal nebo zkontrolujte stav skupiny kontejnerů pomocí příkazu [az container show.][az-container-show] Například:
 
 ```azurecli
 az container show --resource-group myResourceGroup --name gpucontainergroup --output table
 ```
 
-Až budete pracovat s instancemi kontejnerů, které jste vytvořili, odstraňte je pomocí následujících příkazů:
+Až skončíte s prací s instancemi kontejneru, které jste vytvořili, odstraňte je pomocí následujících příkazů:
 
 ```azurecli
 az container delete --resource-group myResourceGroup --name gpucontainergroup -y
@@ -225,7 +225,7 @@ az container delete --resource-group myResourceGroup --name gpucontainergrouprm 
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si další informace o nasazení skupiny kontejnerů pomocí [souboru YAML](container-instances-multi-container-yaml.md) nebo [šablony Správce prostředků](container-instances-multi-container-group.md).
-* Přečtěte si další informace o [velikostech virtuálních počítačů optimalizovaných pro GPU](../virtual-machines/linux/sizes-gpu.md) v Azure.
+* Přečtěte si další informace o [velikostech virtuálních zařízení optimalizovaných](../virtual-machines/linux/sizes-gpu.md) pro GPU v Azure.
 
 
 <!-- IMAGES -->

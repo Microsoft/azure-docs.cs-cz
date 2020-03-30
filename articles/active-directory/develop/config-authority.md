@@ -1,7 +1,7 @@
 ---
-title: Konfigurace zprostředkovatelů identity (MSAL iOS/macOS) | Azure
+title: Konfigurace zprostředkovatelů identit (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
-description: Naučte se používat různé autority, jako jsou B2C, svrchované cloudy a uživatele typu Host, s MSAL pro iOS a macOS.
+description: Naučte se používat různé autority, jako jsou B2C, suverénní cloudy a uživatelé hosta, s MSAL pro iOS a macOS.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,32 +14,32 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: 4810de772e44be22ee5bd4a9fb6ef0ef756e62f4
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77085204"
 ---
-# <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Postupy: Konfigurace MSAL pro iOS a macOS pro používání různých zprostředkovatelů identity
+# <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Postup: Konfigurace služby MSAL pro iOS a macOS tak, aby používala různé zprostředkovatele identit
 
-V tomto článku se dozvíte, jak nakonfigurovat aplikaci knihovny Microsoft Authentication Library pro iOS a macOS (MSAL) pro různé úřady, jako je Azure Active Directory (Azure AD), Business-to-Consumer (B2C), cloudy a uživatelé typu Host.  V celém tomto článku se můžete obvykle domnívat, že se jedná o autoritu jako poskytovatel identity.
+V tomto článku se zobrazí postup konfigurace aplikace knihovny ověřování Microsoftu pro iOS a macOS (MSAL) pro různé autority, jako je Azure Active Directory (Azure AD), Business-to-Consumer (B2C), suverénní cloudy a uživatelé typu Host.  V tomto článku si obecně můžete myslet autority jako zprostředkovatele identity.
 
 ## <a name="default-authority-configuration"></a>Výchozí konfigurace autority
 
-`MSALPublicClientApplication` je nakonfigurovaná s adresou URL výchozího úřadu `https://login.microsoftonline.com/common`, která je vhodná pro většinu Azure Active Directory (AAD). Pokud neimplementujete pokročilé scénáře, jako jsou národní cloudy nebo pracujete s B2C, nebudete je muset měnit.
+`MSALPublicClientApplication`je nakonfigurován s výchozí `https://login.microsoftonline.com/common`autoritou URL aplikace , která je vhodná pro většinu scénářů služby Azure Active Directory (AAD). Pokud neimplementujete pokročilé scénáře, jako jsou národní cloudy, nebo nepracujete s B2C, nebudete je muset měnit.
 
 > [!NOTE]
-> Moderní ověřování pomocí Active Directory Federation Services (AD FS) jako zprostředkovatele identity (ADFS) není podporované (podrobnosti najdete v tématu [ADFS pro vývojáře](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios) ). Služba ADFS je podporovaná prostřednictvím federace.
+> Moderní ověřování se službou ADFS jako zprostředkovatelem identity (ADFS) není podporováno (podrobnosti naleznete v tématu [ADFS for Developers).](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios) Služba ADFS je podporována prostřednictvím federace.
 
-## <a name="change-the-default-authority"></a>Změna výchozího úřadu
+## <a name="change-the-default-authority"></a>Změna výchozího oprávnění
 
-V některých scénářích, jako je například B2C (Business-to-Consumer), může být potřeba změnit výchozí autoritu.
+V některých scénářích, jako je například business-to-consumer (B2C), může být nutné změnit výchozí autoritu.
 
 ### <a name="b2c"></a>B2C
 
-Aby bylo možné pracovat s B2C, musí [Knihovna MSAL (Microsoft Authentication Library)](reference-v2-libraries.md) vyžadovat odlišnou konfiguraci autority. MSAL rozpoznává jeden formát adresy URL autority jako B2C sám sebe. Rozpoznaný formát autority B2C je `https://<host>/tfp/<tenant>/<policy>`, například `https://login.microsoftonline.com/tfp/contoso.onmicrosoft.com/B2C_1_SignInPolicy`. Můžete ale také použít jiné podporované adresy URL autority B2C a deklarovat autoritu jako B2C autoritu explicitně.
+Pro práci s B2C vyžaduje [Knihovna ověřování Společnosti Microsoft (MSAL)](reference-v2-libraries.md) jinou konfiguraci autority. MSAL rozpozná jeden formát adresy URL autority jako B2C sám o sobě. Uznaný formát autority `https://<host>/tfp/<tenant>/<policy>`B2C je například `https://login.microsoftonline.com/tfp/contoso.onmicrosoft.com/B2C_1_SignInPolicy`. Můžete však také použít jakékoli jiné podporované adresy URL oprávnění B2C tím, že deklarujete autoritu jako autoritu B2C explicitně.
 
-Pro podporu formátu libovolných adres URL pro B2C je možné nastavit `MSALB2CAuthority` s libovolnou adresou URL, třeba takto:
+Pro podporu libovolného formátu URL pro `MSALB2CAuthority` B2C lze nastavit pomocí libovolné adresy URL, například takto:
 
 Objective-C
 ```objc
@@ -47,7 +47,7 @@ NSURL *authorityURL = [NSURL URLWithString:@"arbitrary URL"];
 MSALB2CAuthority *b2cAuthority = [[MSALB2CAuthority alloc] initWithURL:authorityURL
                                                                      error:&b2cAuthorityError];
 ```
-Kód SWIFT
+Swift
 ```swift
 guard let authorityURL = URL(string: "arbitrary URL") else {
     // Handle error
@@ -56,9 +56,9 @@ guard let authorityURL = URL(string: "arbitrary URL") else {
 let b2cAuthority = try MSALB2CAuthority(url: authorityURL)
 ```
 
-Všechny B2C autority, které nepoužívají výchozí formát B2C autority, musí být deklarovány jako známé autority.
+Všechny orgány B2C, které nepoužívají výchozí formát autority B2C, musí být deklarovány jako známé autority.
 
-Přidejte jednotlivé B2C autority do seznamu známých autorit i v případě, že se úřady liší pouze v zásadě.
+Přidejte každý jiný orgán B2C do seznamu známých orgánů, i když se orgány liší pouze v politice.
 
 Objective-C
 ```objc
@@ -68,15 +68,15 @@ MSALPublicClientApplicationConfig *b2cApplicationConfig = [[MSALPublicClientAppl
                                                                authority:b2cAuthority];
 b2cApplicationConfig.knownAuthorities = @[b2cAuthority];
 ```
-Kód SWIFT
+Swift
 ```swift
 let b2cApplicationConfig = MSALPublicClientApplicationConfig(clientId: "your-client-id", redirectUri: "your-redirect-uri", authority: b2cAuthority)
 b2cApplicationConfig.knownAuthorities = [b2cAuthority]
 ```
 
-Když vaše aplikace požaduje novou zásadu, adresa URL autority musí být změněna, protože adresa URL autority je pro každou zásadu odlišná. 
+Když vaše aplikace požaduje novou zásadu, je třeba změnit adresu URL autority, protože adresa URL autority se pro každou zásadu liší. 
 
-Chcete-li nakonfigurovat aplikaci B2C, nastavte `@property MSALAuthority *authority` s instancí `MSALB2CAuthority` v `MSALPublicClientApplicationConfig` před vytvořením `MSALPublicClientApplication`takto:
+Chcete-li nakonfigurovat aplikaci `@property MSALAuthority *authority` B2C, nastavte před vytvořením instanci `MSALB2CAuthority` instanci instanci instanci `MSALPublicClientApplicationConfig` instanci `MSALPublicClientApplication`instanci instrebule , například takto:
 
 Objective-C
 ```ObjC
@@ -107,7 +107,7 @@ Objective-C
         return;
     }
 ```
-Kód SWIFT
+Swift
 ```swift
 do{
     // Create B2C authority URL
@@ -127,9 +127,9 @@ do{
 }
 ```
 
-### <a name="sovereign-clouds"></a>Cloudy svrchovan
+### <a name="sovereign-clouds"></a>Suverénní mraky
 
-Pokud je vaše aplikace spuštěná v rámci svrchovaného cloudu, možná budete muset změnit adresu URL autority v `MSALPublicClientApplication`. Následující příklad nastaví adresu URL autority pro práci s německým cloudem AAD:
+Pokud vaše aplikace běží v suverénním cloudu, možná budete `MSALPublicClientApplication`muset změnit adresu URL autority v . Následující příklad nastaví adresu URL autority pro práci s německým cloudem AAD:
 
 Objective-C
 ```objc
@@ -157,7 +157,7 @@ Objective-C
         return;
     }
 ```
-Kód SWIFT
+Swift
 ```swift
 do{
     guard let authorityURL = URL(string: "https://login.microsoftonline.de/common") else {
@@ -174,17 +174,17 @@ do{
 }
 ```
 
-Je možné, že budete muset do každého svrchovaného cloudu předat různé obory. Které obory k odeslání závisí na prostředku, který používáte. Můžete například použít `"https://graph.microsoft.com/user.read"` v celosvětovém cloudu a `"https://graph.microsoft.de/user.read"` v německém cloudu.
+Možná budete muset předat různé obory pro každý suverénní cloud. Které obory, které chcete odeslat, závisí na prostředku, který používáte. Můžete například použít `"https://graph.microsoft.com/user.read"` v celosvětovém `"https://graph.microsoft.de/user.read"` cloudu a v německém cloudu.
 
-### <a name="signing-a-user-into-a-specific-tenant"></a>Přihlášení uživatele do konkrétního tenanta
+### <a name="signing-a-user-into-a-specific-tenant"></a>Přihlášení uživatele k určitému klientovi
 
-Když je adresa URL autority nastavená na `"login.microsoftonline.com/common"`, uživatel se přihlásí do svého domovského tenanta. Některé aplikace ale můžou potřebovat podepsat uživatele do jiného tenanta a některé aplikace fungují jenom s jedním klientem.
+Pokud je adresa URL `"login.microsoftonline.com/common"`autority nastavena na , bude uživatel přihlášen ke svému domovskému tenantovi. Některé aplikace však může být nutné přihlásit uživatele do jiného klienta a některé aplikace pracovat pouze s jedním tenantem.
 
-Pokud chcete uživatele podepsat do konkrétního tenanta, nakonfigurujte `MSALPublicClientApplication` s konkrétní autoritou. Příklad:
+Chcete-li uživatele přihlásit do `MSALPublicClientApplication` konkrétního klienta, nakonfigurujte s konkrétní autoritou. Například:
 
 `https://login.microsoftonline.com/469fdeb4-d4fd-4fde-991e-308a78e4bea4`
 
-Následující příklad ukazuje, jak podepsat uživatele do konkrétního tenanta:
+Následující ukazuje, jak přihlásit uživatele do konkrétního klienta:
 
 Objective-C
 ```objc
@@ -211,7 +211,7 @@ Objective-C
         return;
     }
 ```
-Kód SWIFT
+Swift
 ```swift
 do{
     guard let authorityURL = URL(string: "https://login.microsoftonline.com/469fdeb4-d4fd-4fde-991e-308a78e4bea4") else {
@@ -228,23 +228,23 @@ do{
 }
 ```
 
-## <a name="supported-authorities"></a>Podporované autority
+## <a name="supported-authorities"></a>Podporované orgány
 
-### <a name="msalauthority"></a>MSALAuthority
+### <a name="msalauthority"></a>Orgán MSALA
 
-Třída `MSALAuthority` je základní abstraktní třídou pro třídy autority MSAL. Nepokoušejte se vytvořit instanci této instance pomocí `alloc` nebo `new`. Místo toho buď vytvořte jednu z jejích podtříd přímo (`MSALAADAuthority`, `MSALB2CAuthority`), nebo použijte metodu Factory `authorityWithURL:error:` k vytvoření podtříd pomocí adresy URL autority.
+Třída `MSALAuthority` je základní abstraktní třída pro třídy autority MSAL. Nepokoušejte se vytvořit její `alloc` instanci pomocí nebo `new`. Místo toho buď vytvořte jednu`MSALAADAuthority` `MSALB2CAuthority`z jeho podtříd `authorityWithURL:error:` přímo ( , nebo použijte metodu výroby k vytvoření podtříd pomocí adresy URL autority.
 
-K získání normalizované adresy URL autority použijte vlastnost `url`. Další parametry a součásti cesty nebo fragmenty, které nejsou součástí autority, nebudou v vrácené normalizované adrese URL autority.
+Pomocí `url` vlastnosti získáte adresu URL normalizované autority. Další parametry a součásti cesty nebo fragmenty, které nejsou součástí autority, nebudou v adrese URL vrácené normalizované autority.
 
-Níže jsou uvedené podtřídy `MSALAuthority`, které můžete vytvořit v závislosti na tom, jakou autoritu chcete použít.
+Níže jsou uvedeny `MSALAuthority` podtřídy, které můžete vytvořit instanci v závislosti na orgánu, který chcete použít.
 
-### <a name="msalaadauthority"></a>MSALAADAuthority
+### <a name="msalaadauthority"></a>MSALAADA úřad
 
-`MSALAADAuthority` představuje autoritu AAD. Adresa URL autority by měla být v následujícím formátu, kde `<port>` volitelná: `https://<host>:<port>/<tenant>`
+`MSALAADAuthority`zastupuje orgán AAD. Adresa URL autority by měla být `<port>` v následujícím formátu, kde je nepovinná:`https://<host>:<port>/<tenant>`
 
-### <a name="msalb2cauthority"></a>MSALB2CAuthority
+### <a name="msalb2cauthority"></a>MSALB2CA úřad
 
-`MSALB2CAuthority` představuje autoritu B2C. Adresa URL autority B2C by měla být ve výchozím nastavení v následujícím formátu, kde `<port>` volitelná: `https://<host>:<port>/tfp/<tenant>/<policy>`. MSAL však podporuje i další libovolné formáty B2C autority.
+`MSALB2CAuthority`zastupuje orgán B2C. Ve výchozím nastavení by měla být adresa URL autority `<port>` B2C v následujícím formátu, kde je volitelné: `https://<host>:<port>/tfp/<tenant>/<policy>`. MSAL však také podporuje jiné libovolné formáty autority B2C.
 
 ## <a name="next-steps"></a>Další kroky
 

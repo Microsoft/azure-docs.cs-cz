@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: použití mezipaměti Azure pro Redis s Java'
-description: V tomto rychlém startu vytvoříte novou aplikaci Java, která bude používat Azure cache pro Redis.
+title: 'Úvodní příručka: Použití Azure Cache pro Redis s Javou'
+description: V tomto rychlém startu vytvoříte novou aplikaci Java, která používá Azure Cache pro Redis
 author: yegu-ms
 ms.service: cache
 ms.devlang: java
@@ -9,22 +9,22 @@ ms.date: 05/23/2018
 ms.author: yegu
 ms.custom: mvc, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: 6163392c80d40b6ea65e681aa175c21c244099b9
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74122709"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-java"></a>Rychlý Start: použití mezipaměti Azure pro Redis s Java
+# <a name="quickstart-use-azure-cache-for-redis-with-java"></a>Úvodní příručka: Použití Azure Cache pro Redis s Javou
 
-V tomto rychlém startu zabezpečíte mezipaměť Azure pro Redis do aplikace Java pomocí klienta [Jedis](https://github.com/xetorthio/jedis) Redis, abyste měli přístup k zabezpečené vyhrazené mezipaměti, která je přístupná z libovolné aplikace v Azure.
+V tomto rychlém startu můžete začlenit Azure Cache pro Redis do aplikace Java pomocí [klienta Jedis](https://github.com/xetorthio/jedis) Redis, abyste měli přístup k zabezpečené vyhrazené mezipaměti, která je přístupná z libovolné aplikace v rámci Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+- Předplatné Azure – [vytvořte si ho zdarma](https://azure.microsoft.com/free/)
 - [Apache Maven](https://maven.apache.org/download.cgi)
 
-## <a name="create-an-azure-cache-for-redis"></a>Vytvoření Azure Cache pro Redis
+## <a name="create-an-azure-cache-for-redis"></a>Vytvoření instance Azure Cache for Redis
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
@@ -113,7 +113,7 @@ public class App
 }
 ```
 
-Tento kód ukazuje, jak se připojit k instanci služby Azure cache for Redis pomocí názvu hostitele mezipaměti a proměnných prostředí klíče. Kód také ukládá a načítá hodnotu řetězce v mezipaměti. Spouští se také příkazy `PING` a `CLIENT LIST`. 
+Tento kód ukazuje, jak se připojit k instanci Azure Cache for Redis pomocí názvu hostitele mezipaměti a proměnných prostředí klíčů. Kód také ukládá a načítá hodnotu řetězce v mezipaměti. Spouští se také příkazy `PING` a `CLIENT LIST`. 
 
 Uložte *App.java*.
 
@@ -128,7 +128,7 @@ mvn exec:java -D exec.mainClass=example.demo.App
 
 V níže uvedeném příkladu můžete vidět, že klíč `Message` měl předtím hodnotu z mezipaměti, která byla nastavena pomocí konzoly Redis na webu Azure Portal. Aplikace tuto hodnotu z mezipaměti aktualizovala. Aplikace rovněž spustila příkazy `PING` a `CLIENT LIST`.
 
-![Aplikace Azure cache pro Redis se dokončila.](./media/cache-java-get-started/azure-cache-redis-complete.png)
+![Dokončena aplikace Azure Cache for Redis](./media/cache-java-get-started/azure-cache-redis-complete.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -142,17 +142,17 @@ V opačném případě, pokud jste už s ukázkovou aplikací v tomto rychlém s
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) a potom vyberte **Skupiny prostředků**.
 
-1. Do textového pole **filtrovat podle názvu** zadejte název vaší skupiny prostředků. V pokynech v tomto článku se používala skupina prostředků *TestResources*. Ve vaší skupině prostředků v seznamu výsledků vyberte **...** a pak **odstraňte skupinu prostředků**.
+1. Do textového pole **Filtr podle názvu** zadejte název skupiny prostředků. V pokynech v tomto článku se používala skupina prostředků *TestResources*. Ve skupině prostředků v seznamu výsledků vyberte **...** a **pak Odstranit skupinu prostředků**.
 
-   ![Skupina prostředků Azure se odstranila.](./media/cache-java-get-started/azure-cache-redis-delete-resource-group.png)
+   ![Odstraněná skupina prostředků Azure](./media/cache-java-get-started/azure-cache-redis-delete-resource-group.png)
 
-1. Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Zadejte název vaší skupiny prostředků a potvrďte je a vyberte **Odstranit**.
+1. Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Zadejte název skupiny prostředků, kterou chcete potvrdit, a vyberte **Odstranit**.
 
 Po chvíli bude skupina prostředků včetně všech obsažených prostředků odstraněná.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste zjistili, jak používat Azure cache pro Redis z aplikace Java. Přejděte k dalšímu rychlému startu a použijte Azure cache pro Redis s webovou aplikací ASP.NET.
+V tomto rychlém startu jste se naučili používat Azure Cache pro Redis z aplikace Java. Pokračujte k dalšímu rychlému startu a pomocí ASP.NET webové aplikace můžete používat Azure Cache for Redis.
 
 > [!div class="nextstepaction"]
-> [Vytvořte webovou aplikaci ASP.NET, která používá Azure cache pro Redis.](./cache-web-app-howto.md)
+> [Vytvořte ASP.NET webovou aplikaci, která používá Azure Cache pro Redis.](./cache-web-app-howto.md)

@@ -1,6 +1,6 @@
 ---
-title: Postup přesunutí prostředků do jiné oblasti
-description: Naučte se, jak přesunout Azure SQL Database, elastický fond Azure SQL nebo spravovanou instanci SQL Azure do jiné oblasti.
+title: Jak přesunout zdroje do jiné oblasti
+description: Zjistěte, jak přesunout azure SQL database, elastický fond Azure SQL nebo spravanou instanci Azure SQL do jiné oblasti.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -12,182 +12,182 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 06/25/2019
 ms.openlocfilehash: 851ef49a5c066f12a95baa54daf5e267cb4278c5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73821437"
 ---
-# <a name="how-to-move-azure-sql-resources-to-another-region"></a>Jak přesunout prostředky SQL Azure do jiné oblasti
+# <a name="how-to-move-azure-sql-resources-to-another-region"></a>Jak přesunout prostředky Azure SQL do jiné oblasti
 
-Tento článek vás seznámí s obecným pracovním postupem, jak přesunout jednu databázi, elastický fond a spravovanou instanci Azure SQL Database do nové oblasti. 
+Tento článek vás naučí obecný pracovní postup, jak přesunout jednu databázi Azure SQL Database, elastický fond a spravovanou instanci do nové oblasti. 
 
 ## <a name="overview"></a>Přehled
 
-Existují různé scénáře, ve kterých byste chtěli přesunout existující prostředky Azure SQL z jedné oblasti do druhé. Například rozšíříte svou firmu do nové oblasti a chcete ji optimalizovat pro novou zákaznickou základnu. Nebo je nutné operace přesunout do jiné oblasti z důvodu dodržování předpisů. Nebo Azure vydala značku – novou oblast, která poskytuje lepší blízkost a zlepšuje prostředí pro zákazníky.  
+Existují různé scénáře, ve kterých byste chtěli přesunout existující prostředky Azure SQL z jedné oblasti do druhé. Například můžete rozšířit své podnikání do nové oblasti a chcete ji optimalizovat pro novou zákaznickou základnu. Nebo je třeba přesunout operace do jiné oblasti z důvodů dodržování předpisů. Nebo Azure vydala zbrusu novou oblast, která poskytuje lepší blízkost a zlepšuje zákaznickou zkušenost.  
 
-Tento článek poskytuje obecný pracovní postup pro přesun prostředků do jiné oblasti. Pracovní postup se skládá z následujících kroků: 
+Tento článek obsahuje obecný pracovní postup pro přesun prostředků do jiné oblasti. Pracovní postup se skládá z následujících kroků: 
 
-- Ověření požadavků pro přesun 
-- Příprava na přesunutí prostředků v oboru
-- Monitorování procesu přípravy
-- Test procesu přesunutí
-- Iniciovat skutečný přesun 
-- Odebrat prostředky ze zdrojové oblasti 
+- Ověření předpokladů pro přesun 
+- Příprava na přesunutí zdrojů v rozsahu
+- Sledování procesu přípravy
+- Otestujte proces přesunu
+- Zahájit skutečný tah 
+- Odebrání prostředků ze zdrojové oblasti 
 
 
 > [!NOTE]
-> Tento článek se týká migrace ve veřejném cloudu Azure nebo v rámci stejného cloudového cloudu. 
+> Tento článek se vztahuje na migrace v rámci veřejného cloudu Azure nebo ve stejném suverénním cloudu. 
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="move-single-database"></a>Přesunout izolovanou databázi
+## <a name="move-single-database"></a>Přesunutí jedné databáze
 
 ### <a name="verify-prerequisites"></a>Ověření požadavků 
 
-1. Vytvořte cílový logický Server pro každý zdrojový server. 
-1. Nakonfigurujte bránu firewall pomocí správných výjimek pomocí [prostředí PowerShell](scripts/sql-database-create-and-configure-database-powershell.md).  
-1. Nakonfigurujte logické servery se správnými přihlašovacími údaji. Pokud nejste správcem předplatného nebo správce systému SQL Server, ve spolupráci se správcem přiřaďte potřebná oprávnění. Další informace najdete v tématu [Správa zabezpečení služby Azure SQL Database po zotavení po havárii](sql-database-geo-replication-security-config.md). 
-1. Pokud jsou vaše databáze šifrované pomocí TDE a používají vlastní šifrovací klíč v Azure Key trezoru, zajistěte, aby byl v cílových oblastech zřízen správný šifrovací materiál. Další informace najdete v tématu [Azure SQL transparentní šifrování dat s použitím klíčů spravovaných zákazníkem v Azure Key Vault](transparent-data-encryption-byok-azure-sql.md)
-1. Pokud je povolený audit na úrovni databáze, zakažte ho a místo toho povolte auditování na úrovni serveru. Po převzetí služeb při selhání bude auditování na úrovni databáze vyžadovat přenos mezi jednotlivými oblastmi, což nebude po přesunutí žádoucí ani možné. 
-1. Pro audity na úrovni serveru zajistěte, aby:
-   - Kontejner úložiště, Log Analytics nebo centrum událostí s existujícími protokoly auditu se přesunou do cílové oblasti. 
-   - Auditování je konfigurováno na cílovém serveru. Další informace najdete v tématu [Začínáme s auditováním služby SQL Database](sql-database-auditing.md). 
-1. Pokud má vaše instance dlouhodobé zásady uchovávání informací (LTR), existující zálohy LTR zůstanou spojené s aktuálním serverem. Vzhledem k tomu, že cílový server je jiný, budete mít přístup k starším zálohám LTR ve zdrojové oblasti pomocí zdrojového serveru, i když se server odstraní. 
+1. Vytvořte cílový logický server pro každý zdrojový server. 
+1. Nakonfigurujte bránu firewall s pravými výjimkami pomocí [prostředí PowerShell](scripts/sql-database-create-and-configure-database-powershell.md).  
+1. Nakonfigurujte logické servery se správnými přihlášeními. Pokud nejste správce předplatného nebo správce serveru SQL, spolupracujte se správcem a přiřaďte oprávnění, která potřebujete. Další informace najdete v tématu [Jak spravovat zabezpečení databáze Azure SQL po zotavení po havárii](sql-database-geo-replication-security-config.md). 
+1. Pokud jsou vaše databáze šifrované pomocí TDE a používají vlastní šifrovací klíč v trezoru klíčů Azure, ujistěte se, že správný šifrovací materiál je zřízen v cílových oblastech. Další informace najdete v tématu [Azure SQL Transparent Data Encryption s klíči spravovanými zákazníky v Azure Key Vault](transparent-data-encryption-byok-azure-sql.md)
+1. Pokud je povolen audit na úrovni databáze, zakažte jej a povolte auditování na úrovni serveru. Po převzetí služeb při selhání bude auditování na úrovni databáze vyžadovat přenos mezi oblastmi, který nebude žádoucí nebo možný po přesunutí. 
+1. U auditů na úrovni serveru zajistěte, aby:
+   - Kontejner úložiště, Analýza protokolů nebo centrum událostí s existujícími protokoly auditu se přesune do cílové oblasti. 
+   - Auditování je konfigurováno na cílovém serveru. Další informace naleznete [v tématu Začínáme s auditováním databáze SQL](sql-database-auditing.md). 
+1. Pokud vaše instance má dlouhodobé zásady uchovávání informací (LTR), existující zálohy LTR zůstanou přidruženy k aktuálnímu serveru. Vzhledem k tomu, že cílový server je jiný, budete mít přístup ke starším zálohám LTR ve zdrojové oblasti pomocí zdrojového serveru, a to i v případě, že je server odstraněn. 
 
   > [!NOTE]
-  > To bude pro přesun mezi svrchovaným cloudem a veřejnou oblastí nedostatečné. Tato migrace bude vyžadovat přesunutí záloh LTR na cílový server, který se v tuto chvíli nepodporuje. 
+  > To bude stačit pro přechod mezi suverénním cloudem a veřejným regionem. Taková migrace bude vyžadovat přesunutí záloh LTR na cílový server, který není aktuálně podporován. 
 
-### <a name="prepare-resources"></a>Příprava prostředků
+### <a name="prepare-resources"></a>Příprava zdrojů
 
-1. Vytvořte [skupinu převzetí služeb při selhání](sql-database-single-database-failover-group-tutorial.md#2---create-the-failover-group) mezi logickým serverem zdroje na logický Server cíle.  
+1. Vytvořte [skupinu převzetí služeb při selhání](sql-database-single-database-failover-group-tutorial.md#2---create-the-failover-group) mezi logickým serverem zdroje na logický server cíle.  
 1. Přidejte databáze, které chcete přesunout do skupiny převzetí služeb při selhání. 
-    - Replikace všech přidaných databází se iniciuje automaticky. Další informace najdete v tématu [osvědčené postupy pro používání skupin převzetí služeb při selhání s izolovanými databázemi](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools). 
+    - Replikace všech přidaných databází bude zahájena automaticky. Další informace naleznete v [tématu Doporučené postupy pro použití skupin s podporou převzetí služeb při selhání s jednotlivými databázemi](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools). 
  
-### <a name="monitor-the-preparation-process"></a>Monitorování procesu přípravy
+### <a name="monitor-the-preparation-process"></a>Sledování procesu přípravy
 
-Můžete pravidelně volat [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) a monitorovat replikaci vašich databází ze zdroje do cíle. Výstupní objekt `Get-AzSqlDatabaseFailoverGroup` obsahuje vlastnost pro **ReplicationState**: 
-   - **ReplicationState = 2** (CATCH_UP) znamená, že se databáze synchronizuje a že je možné provést její bezpečné převzetí služeb při selhání. 
-   - **ReplicationState = 0** (osazení) znamená, že databáze ještě není dosazený, a pokus o převzetí služeb při selhání se nezdaří. 
+Můžete pravidelně volat [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) sledovat replikaci databází ze zdroje do cíle. Výstupní objekt `Get-AzSqlDatabaseFailoverGroup` obsahuje vlastnost **pro ReplicationState**: 
+   - **ReplicationState = 2** (CATCH_UP) označuje, že databáze je synchronizována a může být bezpečně převzetí služby při selhání. 
+   - **ReplicationState = 0** (SEEDING) označuje, že databáze ještě není nasazena a pokus o převzetí služeb při selhání se nezdaří. 
 
-### <a name="test-synchronization"></a>Synchronizace testů
+### <a name="test-synchronization"></a>Testovací synchronizace
 
-Jakmile je **ReplicationState** `2`, připojte se ke každé databázi nebo podmnožinu databází pomocí sekundárního koncového bodu `<fog-name>.secondary.database.windows.net` a proveďte jakékoli dotazy proti databázím, abyste zajistili dostupnost připojení, správnou konfiguraci zabezpečení a replikaci dat. 
+Jakmile **ReplicationState** je `2`, připojit ke každé databázi nebo podmnožinu databází pomocí sekundární koncový bod `<fog-name>.secondary.database.windows.net` a provádět jakýkoli dotaz proti databázím k zajištění připojení, správné konfigurace zabezpečení a replikace dat. 
 
 ### <a name="initiate-the-move"></a>Zahájit přesun
 
-1. Připojte se k cílovému serveru pomocí sekundárního koncového bodu `<fog-name>.secondary.database.windows.net`.
-1. Pomocí [přepínače-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) přepněte sekundární spravovanou instanci na primární s úplnou synchronizací. Tato operace proběhne úspěšně, nebo se vrátí zpět. 
-1. Ověřte, že se příkaz úspěšně dokončil pomocí `nslook up <fog-name>.secondary.database.windows.net`, aby se ověřilo, že záznam DNS CNAME odkazuje na IP adresu cílové oblasti. Pokud příkaz switch selže, záznam CNAME se nebude aktualizovat. 
+1. Připojte se k cílovému serveru `<fog-name>.secondary.database.windows.net`pomocí sekundárního koncového bodu .
+1. Pomocí [switch-azSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) přepnete sekundární spravovanou instanci na primární s úplnou synchronizací. Tato operace bude buď úspěšná, nebo se vrátí zpět. 
+1. Ověřte, zda byl příkaz `nslook up <fog-name>.secondary.database.windows.net` úspěšně dokončen, pomocí ověření, zda položka DNS CNAME odkazuje na adresu IP cílové oblasti. Pokud se příkaz přepínače nezdaří, CNAME nebude aktualizován. 
 
-### <a name="remove-the-source-databases"></a>Odebrat zdrojové databáze
+### <a name="remove-the-source-databases"></a>Odebrání zdrojových databází
 
-Až se přesun dokončí, odeberte prostředky ve zdrojové oblasti, abyste se vyhnuli zbytečným poplatkům. 
+Po dokončení přesunu odeberte prostředky ve zdrojové oblasti, abyste se vyhnuli zbytečným poplatkům. 
 
-1. Skupinu převzetí služeb při selhání odstraňte pomocí [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup). 
-1. Odstraňte každou zdrojovou databázi pomocí [Remove-AzSqlDatabase](/powershell/module/az.sql/remove-azsqldatabase) pro každou databázi na zdrojovém serveru. Tím se automaticky ukončí odkazy geografické replikace. 
-1. Odstraňte zdrojový server pomocí [Remove-AzSqlServer](/powershell/module/az.sql/remove-azsqlserver). 
-1. Odeberte Trezor klíčů, auditujte kontejnery úložiště, centrum událostí, instanci AAD a další závislé prostředky a zastavte se jejich účtování. 
+1. Odstraňte skupinu převzetí služeb při selhání pomocí [skupiny Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup). 
+1. Odstraňte každou zdrojovou databázi pomocí [Remove-AzSqlDatabase](/powershell/module/az.sql/remove-azsqldatabase) pro každou z databází na zdrojovém serveru. Tím se automaticky ukončí propojení geografické replikace. 
+1. Odstraňte zdrojový server pomocí [remove-AzSqlServer](/powershell/module/az.sql/remove-azsqlserver). 
+1. Odeberte trezor klíčů, kontejnery úložiště auditu, centrum událostí, instanci AAD a další závislé prostředky, abyste za ně přestali účtovat. 
 
-## <a name="move-elastic-pools"></a>Přesunout elastické fondy
+## <a name="move-elastic-pools"></a>Přesunutí elastických fondů
 
 ### <a name="verify-prerequisites"></a>Ověření požadavků 
 
-1. Vytvořte cílový logický Server pro každý zdrojový server. 
-1. Nakonfigurujte bránu firewall pomocí správných výjimek pomocí [prostředí PowerShell](scripts/sql-database-create-and-configure-database-powershell.md). 
-1. Nakonfigurujte logické servery se správnými přihlašovacími údaji. Pokud nejste správcem předplatného nebo správce systému SQL Server, ve spolupráci se správcem přiřaďte potřebná oprávnění. Další informace najdete v tématu [Správa zabezpečení služby Azure SQL Database po zotavení po havárii](sql-database-geo-replication-security-config.md). 
-1. Pokud jsou vaše databáze šifrované pomocí TDE a používají vlastní šifrovací klíč ve službě Azure Key trezor, ujistěte se, že je v cílové oblasti zřízen správný šifrovací materiál.
-1. Vytvořte cílový elastický fond pro každý zdrojový elastický fond a ujistěte se, že se fond vytvoří ve stejné úrovni služby se stejným názvem a stejnou velikostí. 
-1. Pokud je povolený audit na úrovni databáze, zakažte ho a místo toho povolte auditování na úrovni serveru. Po převzetí služeb při selhání bude auditování na úrovni databáze vyžadovat provoz mezi jednotlivými oblastmi, což není po přesunu žádoucí nebo možné. 
-1. Pro audity na úrovni serveru zajistěte, aby:
-    - Kontejner úložiště, Log Analytics nebo centrum událostí s existujícími protokoly auditu se přesunou do cílové oblasti.
-    - Konfigurace auditu je nakonfigurovaná na cílovém serveru. Další informace najdete v tématu [auditování služby SQL Database](sql-database-auditing.md).
-1. Pokud má vaše instance dlouhodobé zásady uchovávání informací (LTR), existující zálohy LTR zůstanou spojené s aktuálním serverem. Vzhledem k tomu, že cílový server je jiný, budete mít přístup k starším zálohám LTR ve zdrojové oblasti pomocí zdrojového serveru, i když se server odstraní. 
+1. Vytvořte cílový logický server pro každý zdrojový server. 
+1. Nakonfigurujte bránu firewall s pravými výjimkami pomocí [prostředí PowerShell](scripts/sql-database-create-and-configure-database-powershell.md). 
+1. Nakonfigurujte logické servery se správnými přihlášeními. Pokud nejste správce předplatného nebo správce serveru SQL, spolupracujte se správcem a přiřaďte oprávnění, která potřebujete. Další informace najdete v tématu [Jak spravovat zabezpečení databáze Azure SQL po zotavení po havárii](sql-database-geo-replication-security-config.md). 
+1. Pokud jsou vaše databáze šifrované pomocí TDE a používají vlastní šifrovací klíč v trezoru klíčů Azure, ujistěte se, že je v cílové oblasti zřízen správný šifrovací materiál.
+1. Vytvořte cílový elastický fond pro každý zdrojový elastický fond a ujistěte se, že fond je vytvořen ve stejné vrstvě služby se stejným názvem a stejnou velikostí. 
+1. Pokud je povolen audit na úrovni databáze, zakažte jej a povolte auditování na úrovni serveru. Po převzetí služeb při selhání bude auditování na úrovni databáze vyžadovat přenos mezi oblastmi, což není žádoucí nebo možné po přesunutí. 
+1. U auditů na úrovni serveru zajistěte, aby:
+    - Kontejner úložiště, Analýza protokolů nebo centrum událostí s existujícími protokoly auditu se přesune do cílové oblasti.
+    - Konfigurace auditu je konfigurována na cílovém serveru. Další informace naleznete v [tématu auditování databáze SQL](sql-database-auditing.md).
+1. Pokud vaše instance má dlouhodobé zásady uchovávání informací (LTR), existující zálohy LTR zůstanou přidruženy k aktuálnímu serveru. Vzhledem k tomu, že cílový server je jiný, budete mít přístup ke starším zálohám LTR ve zdrojové oblasti pomocí zdrojového serveru, a to i v případě, že je server odstraněn. 
 
   > [!NOTE]
-  > To bude pro přesun mezi svrchovaným cloudem a veřejnou oblastí nedostatečné. Tato migrace bude vyžadovat přesunutí záloh LTR na cílový server, který se v tuto chvíli nepodporuje. 
+  > To bude stačit pro přechod mezi suverénním cloudem a veřejným regionem. Taková migrace bude vyžadovat přesunutí záloh LTR na cílový server, který není aktuálně podporován. 
 
-### <a name="prepare-to-move"></a>Příprava na přesunutí
+### <a name="prepare-to-move"></a>Připravte se na přesun
  
-1.  Vytvořte samostatnou [skupinu převzetí služeb při selhání](sql-database-elastic-pool-failover-group-tutorial.md#3---create-the-failover-group) mezi každým elastickým fondem na zdrojovém logickém serveru a elastickým fondem jeho protějšků na cílovém serveru. 
+1.  Vytvořte samostatnou [skupinu převzetí služeb při selhání](sql-database-elastic-pool-failover-group-tutorial.md#3---create-the-failover-group) mezi jednotlivými elastickými fondy na zdrojovém logickém serveru a jeho protějškem elastického fondu na cílovém serveru. 
 1.  Přidejte všechny databáze ve fondu do skupiny převzetí služeb při selhání. 
-    - Replikace přidaných databází se iniciuje automaticky. Další informace najdete v tématu [osvědčené postupy pro skupiny převzetí služeb při selhání s elastickými fondy](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools). 
+    - Replikace přidaných databází bude zahájena automaticky. Další informace naleznete v [doporučených postupech pro skupiny s podporou převzetí služeb při selhání s elastické fondy](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools). 
 
   > [!NOTE]
-  > I když je možné vytvořit skupinu převzetí služeb při selhání, která zahrnuje více elastických fondů, důrazně doporučujeme vytvořit samostatnou skupinu převzetí služeb při selhání pro každý fond. Pokud máte velký počet databází v rámci více elastických fondů, které potřebujete přesunout, můžete postup přípravy spustit paralelně a pak paralelně zahájit krok přesunutí. Tento proces bude lépe škálovatelný a bude mít méně času v porovnání s více elastickými fondy ve stejné skupině převzetí služeb při selhání. 
+  > I když je možné vytvořit skupinu převzetí služeb při selhání, která obsahuje více elastických fondů, důrazně doporučujeme vytvořit samostatnou skupinu převzetí služeb při selhání pro každý fond. Pokud máte velký počet databází napříč více elastických fondů, které je třeba přesunout, můžete spustit kroky přípravy paralelně a potom zahájit krok přesunutí paralelně. Tento proces bude škálovat lépe a bude trvat méně času ve srovnání s více elastické fondy ve stejné skupině převzetí služeb při selhání. 
 
-### <a name="monitor-the-preparation-process"></a>Monitorování procesu přípravy
+### <a name="monitor-the-preparation-process"></a>Sledování procesu přípravy
 
-Můžete pravidelně volat [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) a monitorovat replikaci vašich databází ze zdroje do cíle. Výstupní objekt `Get-AzSqlDatabaseFailoverGroup` obsahuje vlastnost pro **ReplicationState**: 
-   - **ReplicationState = 2** (CATCH_UP) znamená, že se databáze synchronizuje a že je možné provést její bezpečné převzetí služeb při selhání. 
-   - **ReplicationState = 0** (osazení) znamená, že databáze ještě není dosazený, a pokus o převzetí služeb při selhání se nezdaří. 
+Můžete pravidelně volat [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) sledovat replikaci databází ze zdroje do cíle. Výstupní objekt `Get-AzSqlDatabaseFailoverGroup` obsahuje vlastnost **pro ReplicationState**: 
+   - **ReplicationState = 2** (CATCH_UP) označuje, že databáze je synchronizována a může být bezpečně převzetí služby při selhání. 
+   - **ReplicationState = 0** (SEEDING) označuje, že databáze ještě není nasazena a pokus o převzetí služeb při selhání se nezdaří. 
 
-### <a name="test-synchronization"></a>Synchronizace testů
+### <a name="test-synchronization"></a>Testovací synchronizace
  
-Jakmile je **ReplicationState** `2`, připojte se ke každé databázi nebo podmnožinu databází pomocí sekundárního koncového bodu `<fog-name>.secondary.database.windows.net` a proveďte jakékoli dotazy proti databázím, abyste zajistili dostupnost připojení, správnou konfiguraci zabezpečení a replikaci dat. 
+Jakmile **ReplicationState** je `2`, připojit ke každé databázi nebo podmnožinu databází pomocí sekundární koncový bod `<fog-name>.secondary.database.windows.net` a provádět jakýkoli dotaz proti databázím k zajištění připojení, správné konfigurace zabezpečení a replikace dat. 
 
 ### <a name="initiate-the-move"></a>Zahájit přesun
  
-1. Připojte se k cílovému serveru pomocí sekundárního koncového bodu `<fog-name>.secondary.database.windows.net`.
-1. Pomocí [přepínače-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) přepněte sekundární spravovanou instanci na primární s úplnou synchronizací. Tato operace proběhne úspěšně, nebo se vrátí zpět. 
-1. Ověřte, že se příkaz úspěšně dokončil pomocí `nslook up <fog-name>.secondary.database.windows.net`, aby se ověřilo, že záznam DNS CNAME odkazuje na IP adresu cílové oblasti. Pokud příkaz switch selže, záznam CNAME se nebude aktualizovat. 
+1. Připojte se k cílovému serveru `<fog-name>.secondary.database.windows.net`pomocí sekundárního koncového bodu .
+1. Pomocí [switch-azSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) přepnete sekundární spravovanou instanci na primární s úplnou synchronizací. Tato operace bude buď úspěšná, nebo se vrátí zpět. 
+1. Ověřte, zda byl příkaz `nslook up <fog-name>.secondary.database.windows.net` úspěšně dokončen, pomocí ověření, zda položka DNS CNAME odkazuje na adresu IP cílové oblasti. Pokud se příkaz přepínače nezdaří, CNAME nebude aktualizován. 
 
-### <a name="remove-the-source-elastic-pools"></a>Odebrat zdrojové elastické fondy
+### <a name="remove-the-source-elastic-pools"></a>Odebrání zdrojových elastických fondů
  
-Až se přesun dokončí, odeberte prostředky ve zdrojové oblasti, abyste se vyhnuli zbytečným poplatkům. 
+Po dokončení přesunu odeberte prostředky ve zdrojové oblasti, abyste se vyhnuli zbytečným poplatkům. 
 
-1. Skupinu převzetí služeb při selhání odstraňte pomocí [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup).
-1. Odstraňte jednotlivé zdrojové elastické fondy na zdrojovém serveru pomocí [Remove-AzSqlElasticPool](/powershell/module/az.sql/remove-azsqlelasticpool). 
-1. Odstraňte zdrojový server pomocí [Remove-AzSqlServer](/powershell/module/az.sql/remove-azsqlserver). 
-1. Odeberte Trezor klíčů, auditujte kontejnery úložiště, centrum událostí, instanci AAD a další závislé prostředky a zastavte se jejich účtování. 
+1. Odstraňte skupinu převzetí služeb při selhání pomocí [skupiny Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup).
+1. Odstraňte každý zdrojový elastický fond na zdrojovém serveru pomocí [nástroje Remove-AzSqlElasticPool](/powershell/module/az.sql/remove-azsqlelasticpool). 
+1. Odstraňte zdrojový server pomocí [remove-AzSqlServer](/powershell/module/az.sql/remove-azsqlserver). 
+1. Odeberte trezor klíčů, kontejnery úložiště auditu, centrum událostí, instanci AAD a další závislé prostředky, abyste za ně přestali účtovat. 
 
-## <a name="move-managed-instance"></a>Přesunout spravovanou instanci
+## <a name="move-managed-instance"></a>Přesunutí spravované instance
 
 ### <a name="verify-prerequisites"></a>Ověření požadavků
  
 1. Pro každou zdrojovou spravovanou instanci vytvořte cílovou spravovanou instanci stejné velikosti v cílové oblasti.  
-1. Nakonfigurujte síť pro spravovanou instanci. Další informace najdete v tématu [Konfigurace sítě](sql-database-howto-managed-instance.md#network-configuration).
-1. Nakonfigurujte cílovou hlavní databázi se správnými přihlašovacími údaji. Pokud nejste správcem předplatného nebo správce systému SQL Server, ve spolupráci se správcem přiřaďte potřebná oprávnění. 
-1. Pokud jsou vaše databáze šifrované pomocí TDE a používají vlastní šifrovací klíč v trezoru klíčů Azure, zajistěte, aby integrace se stejnými šifrovacími klíči existovaly ve zdrojové i cílové oblasti. Další informace najdete v tématu [TDE s klíči spravovanými zákazníky v Azure Key Vault](transparent-data-encryption-byok-azure-sql.md).
-1. Pokud je audit pro instanci povolený, ujistěte se, že:
-    - Kontejner úložiště nebo centrum událostí s existujícími protokoly se přesune do cílové oblasti. 
-    - V cílové instanci je nakonfigurovaný audit. Další informace najdete v tématu [auditování pomocí spravované instance](sql-database-managed-instance-auditing.md).
-1. Pokud má vaše instance dlouhodobé zásady uchovávání informací (LTR), existující zálohy LTR zůstanou spojené s aktuálním serverem. Vzhledem k tomu, že cílový server je jiný, budete mít přístup k starším zálohám LTR ve zdrojové oblasti pomocí zdrojového serveru, i když se server odstraní. 
+1. Nakonfigurujte síť pro spravovanou instanci. Další informace naleznete v [tématu konfigurace sítě](sql-database-howto-managed-instance.md#network-configuration).
+1. Nakonfigurujte cílovou hlavní databázi se správnými přihlášeními. Pokud nejste správce předplatného nebo správce serveru SQL, spolupracujte se správcem a přiřaďte oprávnění, která potřebujete. 
+1. Pokud jsou vaše databáze šifrované pomocí TDE a používají vlastní šifrovací klíč v trezoru klíčů Azure, ujistěte se, že AKV s identickými šifrovacími klíči existuje ve zdrojových i cílových oblastech. Další informace naleznete [v tématu TDE s klíči spravovanými zákazníky v azure key vault](transparent-data-encryption-byok-azure-sql.md).
+1. Pokud je pro instanci povolen audit, ujistěte se, že:
+    - Kontejner úložiště nebo centrum událostí s existujícíprotokoly se přesune do cílové oblasti. 
+    - Audit je nakonfigurován pro cílovou instanci. Další informace naleznete v [tématu auditování se spravovanou instancí](sql-database-managed-instance-auditing.md).
+1. Pokud vaše instance má dlouhodobé zásady uchovávání informací (LTR), existující zálohy LTR zůstanou přidruženy k aktuálnímu serveru. Vzhledem k tomu, že cílový server je jiný, budete mít přístup ke starším zálohám LTR ve zdrojové oblasti pomocí zdrojového serveru, a to i v případě, že je server odstraněn. 
 
   > [!NOTE]
-  > To bude pro přesun mezi svrchovaným cloudem a veřejnou oblastí nedostatečné. Tato migrace bude vyžadovat přesunutí záloh LTR na cílový server, který se v tuto chvíli nepodporuje. 
+  > To bude stačit pro přechod mezi suverénním cloudem a veřejným regionem. Taková migrace bude vyžadovat přesunutí záloh LTR na cílový server, který není aktuálně podporován. 
 
-### <a name="prepare-resources"></a>Příprava prostředků
+### <a name="prepare-resources"></a>Příprava zdrojů
 
-Vytvořte skupinu převzetí služeb při selhání mezi jednotlivými zdrojovými instancemi a odpovídající cílovou instancí.
-    - Replikace všech databází na každé instanci se iniciuje automaticky. Další informace najdete v tématu [skupiny s automatickým převzetím služeb při selhání](sql-database-auto-failover-group.md) .
+Vytvořte skupinu převzetí služeb při selhání mezi každou zdrojovou instanci a odpovídající cílovou instancí.
+    - Replikace všech databází v každé instanci bude zahájena automaticky. Další informace naleznete [v tématu Skupiny automatického převzetí služeb při selhání.](sql-database-auto-failover-group.md)
 
  
-### <a name="monitor-the-preparation-process"></a>Monitorování procesu přípravy
+### <a name="monitor-the-preparation-process"></a>Sledování procesu přípravy
 
-Můžete pravidelně volat [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup?view=azps-2.3.2) a monitorovat replikaci vašich databází ze zdroje do cíle. Výstupní objekt `Get-AzSqlDatabaseFailoverGroup` obsahuje vlastnost pro **ReplicationState**: 
-   - **ReplicationState = 2** (CATCH_UP) znamená, že se databáze synchronizuje a že je možné provést její bezpečné převzetí služeb při selhání. 
-   - **ReplicationState = 0** (osazení) znamená, že databáze ještě není dosazený, a pokus o převzetí služeb při selhání se nezdaří. 
+Můžete pravidelně volat [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup?view=azps-2.3.2) sledovat replikaci databází ze zdroje do cíle. Výstupní objekt `Get-AzSqlDatabaseFailoverGroup` obsahuje vlastnost **pro ReplicationState**: 
+   - **ReplicationState = 2** (CATCH_UP) označuje, že databáze je synchronizována a může být bezpečně převzetí služby při selhání. 
+   - **ReplicationState = 0** (SEEDING) označuje, že databáze ještě není nasazena a pokus o převzetí služeb při selhání se nezdaří. 
 
-### <a name="test-synchronization"></a>Synchronizace testů
+### <a name="test-synchronization"></a>Testovací synchronizace
 
-Jakmile je **ReplicationState** `2`, připojte se ke každé databázi nebo podmnožinu databází pomocí sekundárního koncového bodu `<fog-name>.secondary.database.windows.net` a proveďte jakékoli dotazy proti databázím, abyste zajistili dostupnost připojení, správnou konfiguraci zabezpečení a replikaci dat. 
+Jakmile **ReplicationState** je `2`, připojit ke každé databázi nebo podmnožinu databází pomocí sekundární koncový bod `<fog-name>.secondary.database.windows.net` a provádět jakýkoli dotaz proti databázím k zajištění připojení, správné konfigurace zabezpečení a replikace dat. 
 
 ### <a name="initiate-the-move"></a>Zahájit přesun 
 
-1. Připojte se k cílovému serveru pomocí sekundárního koncového bodu `<fog-name>.secondary.database.windows.net`.
-1. Pomocí [přepínače-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup?view=azps-2.3.2) přepněte sekundární spravovanou instanci na primární s úplnou synchronizací. Tato operace proběhne úspěšně, nebo se vrátí zpět. 
-1. Ověřte, že se příkaz úspěšně dokončil pomocí `nslook up <fog-name>.secondary.database.windows.net`, aby se ověřilo, že záznam DNS CNAME odkazuje na IP adresu cílové oblasti. Pokud příkaz switch selže, záznam CNAME se nebude aktualizovat. 
+1. Připojte se k cílovému serveru `<fog-name>.secondary.database.windows.net`pomocí sekundárního koncového bodu .
+1. Pomocí [switch-azSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup?view=azps-2.3.2) přepnete sekundární spravovanou instanci na primární s úplnou synchronizací. Tato operace bude buď úspěšná, nebo se vrátí zpět. 
+1. Ověřte, zda byl příkaz `nslook up <fog-name>.secondary.database.windows.net` úspěšně dokončen, pomocí ověření, zda položka DNS CNAME odkazuje na adresu IP cílové oblasti. Pokud se příkaz přepínače nezdaří, CNAME nebude aktualizován. 
 
-### <a name="remove-the-source-managed-instances"></a>Odebrat zdrojové spravované instance
-Až se přesun dokončí, odeberte prostředky ve zdrojové oblasti, abyste se vyhnuli zbytečným poplatkům. 
+### <a name="remove-the-source-managed-instances"></a>Odebrání zdrojových spravovaných instancí
+Po dokončení přesunu odeberte prostředky ve zdrojové oblasti, abyste se vyhnuli zbytečným poplatkům. 
 
-1. Skupinu převzetí služeb při selhání odstraňte pomocí [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup). Tím se odeberou konfigurace skupiny převzetí služeb při selhání a ukončí se propojení geografické replikace mezi těmito dvěma instancemi. 
-1. Odstraňte zdrojovou spravovanou instanci pomocí [Remove-AzSqlInstance](/powershell/module/az.sql/remove-azsqlinstance). 
-1. Odeberte všechny další prostředky ve skupině prostředků, jako je třeba virtuální cluster, virtuální síť a skupina zabezpečení. 
+1. Odstraňte skupinu převzetí služeb při selhání pomocí [skupiny Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup). Tím dojde k přetažení konfigurace skupiny převzetí služeb při selhání a ukončit geografické replikace propojení mezi dvěma instancemi. 
+1. Odstraňte zdrojovou spravovanou instanci pomocí [aplikace Remove-AzSqlInstance](/powershell/module/az.sql/remove-azsqlinstance). 
+1. Odeberte všechny další prostředky ve skupině prostředků, jako je například virtuální cluster, virtuální síť a skupina zabezpečení. 
 
 ## <a name="next-steps"></a>Další kroky 
 
-Po migraci Azure SQL Database [Spravovat](sql-database-manage-after-migration.md) . 
+[Spravujte](sql-database-manage-after-migration.md) azure sql database po migraci. 
 

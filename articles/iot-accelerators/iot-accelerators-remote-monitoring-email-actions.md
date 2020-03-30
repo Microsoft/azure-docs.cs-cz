@@ -1,6 +1,6 @@
 ---
-title: Akce e-mailu v rámci vzdáleného monitorování – Azure | Microsoft Docs
-description: V této příručce se dozvíte, jak přidat akci e-mailu k novému nebo existujícímu pravidlu.
+title: Akce e-mailu v rámci vzdáleného monitorování – Azure | Dokumenty společnosti Microsoft
+description: Tento návod vám ukáže, jak přidat akci e-mailu do nového nebo existujícího pravidla.
 author: dominicbetts
 manager: hegate
 ms.author: dobett
@@ -9,169 +9,169 @@ services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
 ms.openlocfilehash: c192ba73da0cfaf1832b6a1e572bd71b250a976b
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74168361"
 ---
-# <a name="add-an-email-action"></a>Přidat akci e-mailu
+# <a name="add-an-email-action"></a>Přidání akce e-mailu
 
-Akce e-mailu vám pomůžou zajistit, že nikdy nebudou výstrahy. Akci e-mailu můžete přidat do existujícího pravidla nebo při vytváření nového pravidla.
+E-mailové akce pomáhají zajistit, že upozornění nikdy nezmeškáte. Akci e-mailu můžete přidat k existujícímu pravidlu nebo při vytváření nového pravidla.
 
-K dokončení kroků v tomto průvodci, potřebujete ve svém předplatném Azure nasazenou instanci akcelerátoru řešení vzdáleného monitorování.
+K dokončení kroků v tomto návodu, budete potřebovat nasazenou instanci akcelerátoru řešení vzdáleného monitorování ve vašem předplatném Azure.
 
 Chcete-li vytvořit nebo upravit pravidlo, musíte být [ **správcem**nebo mít správná oprávnění](iot-accelerators-remote-monitoring-rbac.md).
 
 ## <a name="edit-an-existing-rule"></a>Úprava existujícího pravidla
 
-Pomocí těchto kroků můžete přidat akci e-mailu do existujícího pravidla:
+Chcete-li přidat akci e-mailu k existujícímu pravidlu, postupujte takto:
 
-1. Přejděte do řešení vzdáleného monitorování.
+1. Přejděte k řešení vzdáleného monitorování.
 
-1. Z **řídicího panelu**přejděte na stránku **pravidla** :
+1. Na **řídicím panelu**přejděte na stránku **Pravidla:**
 
-    ![Stránka pravidla](./media/iot-accelerators-remote-monitoring-email-actions/rules-email.png)
+    ![Stránka Pravidla](./media/iot-accelerators-remote-monitoring-email-actions/rules-email.png)
 
-1. Klikněte na zaškrtávací políčko vedle existujícího pravidla, které chcete upravit, a potom v horní části klikněte na **Upravit** . Zobrazí se panel upravitelných **pravidel** .
+1. Klikněte na zaškrtávací políčko vedle existujícího pravidla, které chcete upravit, a nahoře klikněte na **Upravit.** Zobrazí se upravitelný panel **Pravidla.**
 
-1. V části **Akce** přepněte na **zapnuto** **e-mailem** .
+1. V části **Akce** přepněte **možnost E-mail** **na Zapnuto**.
 
-1. Když v akcelerátoru řešení poprvé povolíte akci e-mailu, musíte se [přihlásit k aplikaci Outlook](#outlook).
+1. Při prvním povolení akce e-mailu v akcelerátoru řešení je nutné [se přihlásit k aplikaci Outlook](#outlook).
 
-1. Zadejte e-mailovou adresu do pole příjemce a stiskněte klávesu **ENTER** pro každou e-mailovou adresu, kterou chcete přidat:
+1. Zadejte e-mailovou adresu do pole příjemce a stisknutím klávesy **Enter** pro každou e-mailovou adresu přidejte:
 
-    ![Položka adresy](./media/iot-accelerators-remote-monitoring-email-actions/address-email.png)
+    ![Zadání adresy](./media/iot-accelerators-remote-monitoring-email-actions/address-email.png)
 
 1. Zadejte předmět e-mailu.
 
-1. Zadejte další poznámky pro příjemce e-mailu jako prostý text. Pokud [upravíte šablonu e-mailu](#htmledit), můžete použít formátování HTML.
+1. Zadejte všechny další poznámky pro příjemce e-mailu jako prostý text. Formátování HTML můžete použít, pokud [upravujete šablonu e-mailu](#htmledit).
 
-1. Ujistěte se, že je **stav pravidla** nastavený na **povoleno**.
+1. Zkontrolujte, zda je **stav pravidla** nastaven na **povoleno**.
 
 1. Klikněte na **Použít**.
 
 ## <a name="create-a-new-rule"></a>Vytvoření nového pravidla
 
-Pomocí těchto kroků můžete přidat akci e-mailu při vytváření nového pravidla:
+Při vytváření nového pravidla přidejte akci e-mailu takto:
 
-1. Přejděte do řešení vzdáleného monitorování.
+1. Přejděte k řešení vzdáleného monitorování.
 
-1. Z **řídicího panelu**přejděte na stránku **pravidla** :
+1. Na **řídicím panelu**přejděte na stránku **Pravidla:**
 
-    ![Stránka pravidla](./media/iot-accelerators-remote-monitoring-email-actions/rules-email.png)
+    ![Stránka Pravidla](./media/iot-accelerators-remote-monitoring-email-actions/rules-email.png)
 
-1. Postupujte podle kroků v [části Vytvoření pravidla](iot-accelerators-remote-monitoring-automate.md#create-a-rule). Postupujte podle kroků uvedených v části [Vytvoření rozšířeného pravidla](iot-accelerators-remote-monitoring-automate.md#create-an-advanced-rule) do bodu, ve kterém nastavíte **úroveň závažnosti**. Neklikejte ještě na **použít** .
+1. Postupujte podle kroků v [části Vytvořit pravidlo](iot-accelerators-remote-monitoring-automate.md#create-a-rule). Postupujte podle kroků v části [vytvořit rozšířené pravidlo](iot-accelerators-remote-monitoring-automate.md#create-an-advanced-rule) až do bodu, kde nastavíte úroveň **závažnosti**. Ještě neklikněte na **Použít.**
 
-1. V části **Akce** přepněte na **zapnuto** **e-mailem** .
+1. V části **Akce** přepněte **možnost E-mail** **na Zapnuto**.
 
-1. Když v akcelerátoru řešení poprvé povolíte akci e-mailu, musíte se [přihlásit k aplikaci Outlook](#outlook).
+1. Při prvním povolení akce e-mailu v akcelerátoru řešení je nutné [se přihlásit k aplikaci Outlook](#outlook).
 
-1. Zadejte e-mailovou adresu do pole příjemce a stiskněte klávesu **ENTER** pro každou e-mailovou adresu, kterou chcete přidat:
+1. Zadejte e-mailovou adresu do pole příjemce a stisknutím klávesy **Enter** pro každou e-mailovou adresu přidejte:
 
-    ![Položka adresy](./media/iot-accelerators-remote-monitoring-email-actions/address-email.png)
+    ![Zadání adresy](./media/iot-accelerators-remote-monitoring-email-actions/address-email.png)
 
 1. Zadejte předmět e-mailu.
 
-1. Zadejte další poznámky pro příjemce e-mailu jako prostý text. Pokud [upravíte šablonu e-mailu](#htmledit), můžete použít formátování HTML.
+1. Zadejte všechny další poznámky pro příjemce e-mailu jako prostý text. Formátování HTML můžete použít, pokud [upravujete šablonu e-mailu](#htmledit).
 
-1. Ujistěte se, že je **stav pravidla** nastavený na **povoleno**.
+1. Zkontrolujte, zda je **stav pravidla** nastaven na **povoleno**.
 
 1. Klikněte na **Použít**.
 
-Pravidlo s akcí e-mail je nyní povoleno. Pokaždé, když se spustí akce, pošle se příjemci nový e-mail.
+Pravidlo s akcí e-mailu je nyní povoleno. Při každém spuštění akce je příjemcům odeslán nový e-mail.
 
-## Přihlásit se k Outlooku<a name="outlook"></a>
+## <a name="sign-in-to-outlook"></a>Přihlášení k Outlooku<a name="outlook"></a>
 
-Když v akcelerátoru řešení poprvé povolíte akci e-mailu, musíte se přihlásit k aplikaci Outlook. Tato akce nastaví e-mailový účet, který odesílá e-mailová oznámení.
+Při prvním povolení akcee e-mailu v akcelerátoru řešení se musíte přihlásit do aplikace Outlook. Tato akce nastaví e-mailový účet, který odesílá e-mailová oznámení.
 
 > [!NOTE]
-> Měli byste vytvořit konkrétní účet Outlooku jenom pro oznámení akcelerátoru řešení a použít tento účet, když povolíte svou první e-mailovou akci.
+> Měli byste vytvořit konkrétní účet aplikace Outlook pouze pro oznámení akcelerátoru řešení a použít tento účet, když povolíte první e-mailovou akci.
 
-### <a name="contributor-role-outlook-setup"></a>Nastavení role přispěvatele Outlooku
+### <a name="contributor-role-outlook-setup"></a>Nastavení role přispěvatele Outlook
 
-Pokud někdo v roli **přispěvatele** v předplatném nasadil akcelerátor řešení, aplikace nemá dostatečná oprávnění k nastavení a ověření e-mailových akcí přes webové uživatelské rozhraní.
+Pokud někdo v roli **přispěvatele** v předplatném nasadil akcelerátor řešení, aplikace nemá dostatečná oprávnění k nastavení a ověření e-mailových akcí prostřednictvím webového uživatelského rozhraní.
 
-Než začnete, vytvořte si účet Outlooku, který použijete k posílání e-mailových oznámení z akcelerátoru řešení.
+Než začnete, vytvořte si účet Outlooku, který se použije k odesílání e-mailových oznámení z akcelerátoru řešení.
 
 Následující kroky ukazují, jak ručně nastavit a ověřit akce e-mailu:
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
 
-1. Přejděte do skupiny prostředků pro akcelerátor řešení.
+1. Přejděte na skupinu prostředků pro akcelerátor řešení.
 
-1. Klikněte na **konektor Office 365**:
+1. Klikněte na **konektor office365**:
 
     ![Připojení rozhraní API](./media/iot-accelerators-remote-monitoring-email-actions/apiconnector1.png)
 
-1. Kliknutím na banner zahajte proces autorizace:
+1. Kliknutím na banner zahájíte proces autorizace:
 
-    ![autorizovat](./media/iot-accelerators-remote-monitoring-email-actions/connector1.png)
+    ![Autorizace](./media/iot-accelerators-remote-monitoring-email-actions/connector1.png)
 
-1. Klikněte na **autorizovat**. Budete vyzváni k přihlášení. Účet, pomocí kterého se přihlašujete, musí být e-mailová adresa, kterou aplikace používá k odesílání e-mailových oznámení:
+1. Klepněte na **tlačítko Autorizovat**. Budete vyzváni k přihlášení. Účet, který používáte k přihlášení, by měl být e-mailová adresa, kterou aplikace používá k odesílání e-mailových oznámení:
 
-    ![Autorizovat – tlačítko](./media/iot-accelerators-remote-monitoring-email-actions/authorize.png)
+    ![Tlačítko Autorizovat](./media/iot-accelerators-remote-monitoring-email-actions/authorize.png)
 
-1. V dolní části klikněte na **Uložit** . V případě, že dojde k úspěšnému dokončení vaší registrace, bude vaše autorizace úspěšná.
+1. V dolní části klikněte na **Uložit.** Vaše autorizace bude úspěšná, pokud bude banner pryč.
 
-1. Pokud chcete změnit e-mailovou adresu, ze které se odesílají oznámení, klikněte na **Upravit připojení rozhraní API**.
+1. Pokud chcete změnit e-mailovou adresu, ze které jsou oznámení odesílána, klikněte na **Upravit připojení rozhraní API**.
 
-    ![změnit e-mail](./media/iot-accelerators-remote-monitoring-email-actions/editemail1.png)
+    ![změna e-mailu](./media/iot-accelerators-remote-monitoring-email-actions/editemail1.png)
 
-### <a name="owner-role-outlook-setup"></a>Role vlastníka – nastavení Outlooku
+### <a name="owner-role-outlook-setup"></a>Nastavení outlooku role vlastníka
 
-Pokud někdo v **nadřazené** roli v předplatném nasadil akcelerátor řešení, aplikace může ověřit, že se e-mailové akce správně nastavily přes webové uživatelské rozhraní.
+Pokud někdo v roli **vlastníka** v předplatném nasadil akcelerátor řešení, aplikace může ověřit, že e-mailové akce byly správně nastaveny prostřednictvím webového uživatelského rozhraní.
 
-Než začnete, vytvořte si účet Outlooku, který použijete k posílání e-mailových oznámení z akcelerátoru řešení.
+Než začnete, vytvořte si účet Outlooku, který se použije k odesílání e-mailových oznámení z akcelerátoru řešení.
 
-Následující kroky vám pomůžou se přihlašovat a nastavit e-mailové akce:
+Následující kroky vám pomohou přihlásit se a nastavit e-mailové akce:
 
-1. Kliknutím se přihlásíte do Outlooku. Přejdete na Azure Portal:
+1. Klepnutím se přihlásíte do Outlooku. Přejdete na portál Azure:
 
-   ![Přihlásit se k Outlooku](./media/iot-accelerators-remote-monitoring-email-actions/owneroutlook-email.png)
+   ![Přihlášení k Outlooku](./media/iot-accelerators-remote-monitoring-email-actions/owneroutlook-email.png)
 
-1. Klikněte na **autorizovat**. Budete vyzváni k přihlášení. Účet, pomocí kterého se přihlašujete, musí být e-mailová adresa, kterou aplikace používá k odesílání e-mailových oznámení:
+1. Klepněte na **tlačítko Autorizovat**. Budete vyzváni k přihlášení. Účet, který používáte k přihlášení, by měl být e-mailová adresa, kterou aplikace používá k odesílání e-mailových oznámení:
 
-1. Klikněte na možnost **Uložit**. Vraťte se do akcelerátoru řešení a aktualizujte stránku.
+1. Klikněte na **Uložit**. Vraťte se k akcelerátoru řešení a aktualizujte stránku.
 
-1. Pokud jste úspěšně nakonfigurovali e-mailové oznámení, zobrazí se tato zpráva:
+1. Pokud jste e-mailové oznámení úspěšně nakonfigurovali, zobrazí se tato zpráva:
 
-   ![Úspěšné přihlášení do Outlooku](./media/iot-accelerators-remote-monitoring-email-actions/success-email.png)
+   ![Úspěšné přihlášení k Outlooku](./media/iot-accelerators-remote-monitoring-email-actions/success-email.png)
 
-## Přizpůsobení e-mailové zprávy HTML<a name="htmledit"></a>
+## <a name="customize-the-email-html"></a>Přizpůsobení kódu HTML e-mailu<a name="htmledit"></a>
 
-Předem připravené – akcelerátor řešení vzdáleného monitorování poskytuje základní šablonu HTML pro e-maily akcí. E-mailová šablona používá hodnoty z nastavení akce e-mailu. Tady je příklad e-mailu:
+Akcelerátor řešení vzdáleného monitorování, který je připraven po vybalení, poskytuje základní šablonu HTML pro akční e-maily. Šablona e-mailu používá hodnoty z nastavení akce e-mailu. Zde je příklad e-mailu:
 
-![Příklad e-mailu](./media/iot-accelerators-remote-monitoring-email-actions/emailtemplate1.png)
+![příklad e-mailu](./media/iot-accelerators-remote-monitoring-email-actions/emailtemplate1.png)
 
-Následující kroky ukazují, jak upravit šablonu e-mailu HTML. Můžete například zahrnout další informace nebo přidat vlastní image:
+Následující kroky ukazují, jak upravit šablonu e-mailu HTML. Můžete například zahrnout další informace nebo přidat vlastní obrázky:
 
-1. Naklonujte úložiště GitHub pro vzdálené monitorování Java nebo .NET:
+1. Klonovat úložiště GitHub v jazyce Java nebo .NET Remote Monitoring:
 
-1. Přejděte do umístění e-mailové šablony:
+1. Přejděte do umístění šablony e-mailu:
   
     `Dotnet: device-telemetry\ActionsAgent\data\EmailTemplate.html`
   
     `Java device-telemetry/app/resources/data/EmailTemplate.html`
 
-1. Můžete přidat nebo odebrat parametry v této šabloně pro přizpůsobení zprávy. V případě potřeby můžete také přidat, odebrat nebo nahradit volání:
+1. Můžete přidat nebo odebrat všechny parametry v této šabloně přizpůsobit zprávu. Podle potřeby můžete také přidat, odebrat nebo nahradit volání:
 
-    Například v kódu .NET: `emailTemplate = emailTemplate.Replace("${subject}", emailAction.GetSubject());`
+    Například v kódu .NET:`emailTemplate = emailTemplate.Replace("${subject}", emailAction.GetSubject());`
 
-    Například v kódu Java: `this.emailTemplate.replace("${subject}", emailAction.GetSubject());`
+    Například v kódu Jazyka Java:`this.emailTemplate.replace("${subject}", emailAction.GetSubject());`
 
-1. Parametry v šabloně mají podobu `${...}`. Chcete-li odstranit parametr, odstraňte požadovaný řádek. Chcete-li přidat parametr, přidejte řádek s hodnotou, která má být vložena.
+1. Parametry v šabloně mají `${...}`podobu . Chcete-li odstranit parametr, odstraňte požadovaný řádek. Chcete-li přidat parametr, přidejte řádek s hodnotou, kterou chcete vložit.
 
-1. Chcete-li přidat obrázky nebo vlastní text, aktualizujte soubor EmailTemplate. HTML přímo.
+1. Chcete-li přidat obrázky nebo vlastní text, aktualizujte přímo soubor EmailTemplate.HTML.
 
-## <a name="throttling"></a>Omezování
+## <a name="throttling"></a>Throttling
 
-Akcelerátor řešení vzdáleného monitorování používá aplikaci Outlook k posílání e-mailových oznámení. Outlook omezuje počet e-mailů odeslaných na [30 e-mailů za 1 minutu](https://docs.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#receiving-and-sending-limits). E-mailové klienty, kteří obdrží e-maily, mohou také omezit počet přijatých e-mailů za minutu. V případě omezení si Projděte konkrétního e-mailového klienta. Při nastavování e-mailových oznámení pro pravidlo by mělo pravidlo počítat průměrné hodnoty za období nejméně jedné minuty a nepoužívat okamžité hodnoty:
+Akcelerátor řešení vzdáleného monitorování používá aplikaci Outlook k odesílání e-mailových oznámení. Aplikace Outlook omezuje počet e-mailů odeslaných na [30 e-mailů za minutu](https://docs.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#receiving-and-sending-limits). E-mailové klienty, kteří dostávají e-maily, mohou také omezit počet e-mailů přijatých za minutu. Ověřte si u svého konkrétního e-mailového klienta omezení. Když nastavíte e-mailové oznámení pro pravidlo, pravidlo by mělo vypočítat průměrné hodnoty za období alespoň jedné minuty a nepoužívat okamžité hodnoty:
 
 ![Průměrný výpočet](./media/iot-accelerators-remote-monitoring-email-actions/calculation-email.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Tato příručka vám ukázala, jak přidat akci e-mailu do nového nebo existujícího pravidla v rámci řešení vzdáleného monitorování. Průvodce vám také ukázal, jak upravit kód HTML, který definuje formát zprávy.
+Tato příručka vám ukázala, jak přidat akci e-mailu k novému nebo existujícímu pravidlu v rámci řešení vzdáleného monitorování. Průvodce také ukázal, a jak upravit HTML, který definuje formát zprávy.
 
-Navržený další krok se naučíte [používat výstrahy a opravovat problémy zařízení](iot-accelerators-remote-monitoring-maintain.md).
+Dalším navrhovaným krokem je naučit se [používat výstrahy a opravovat problémy se zařízením](iot-accelerators-remote-monitoring-maintain.md).

@@ -1,6 +1,6 @@
 ---
-title: Kreslení nástrojů typy interakce a klávesové zkratky na mapě | Mapy Microsoft Azure
-description: Postup kreslení a úprav tvarů pomocí myši, dotykové obrazovky nebo klávesnice v sadě Microsoft Azure Maps Web SDK
+title: Typy interakcí nástrojů pro kreslení a klávesové zkratky na mapě | Mapy Microsoft Azure
+description: Jak kreslit a upravovat obrazce pomocí myši, dotykové obrazovky nebo klávesnice ve webové sadě Microsoft Azure Maps SDK
 author: rbrundritt
 ms.author: richbrun
 ms.date: 12/05/2019
@@ -9,144 +9,144 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: fb8a1e1a8c29086553500bdad2e4604d1e1ef471
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77198288"
 ---
-# <a name="interaction-types-and-keyboard-shortcuts-in-the-drawing-tools-module"></a>Typy interakcí a klávesové zkratky v modulu nástrojů pro kreslení
+# <a name="interaction-types-and-keyboard-shortcuts-in-the-drawing-tools-module"></a>Typy interakcí a klávesové zkratky v modulu kreslicí nástroje
 
-Tento článek popisuje různé způsoby vykreslování a úprav tvarů pomocí myši, dotykové obrazovky nebo klávesových zkratek.
+Tento článek popisuje všechny různé způsoby kreslení a úprav y pomocí myši, dotykové obrazovky nebo klávesových zkratek.
 
-Správce kreslení podporuje tři různé způsoby interakce s mapou, kreslení tvarů.
+Správce výkresů podporuje tři různé způsoby interakce s mapou, kreslení tvarů.
 
-* `click` – souřadnice se přidávají při kliknutí myší nebo dotykem.
-* Souřadnice `freehand ` jsou přidány při přetahování myši nebo dotyku na mapě.
-* `hybrid` – souřadnice se přidávají při kliknutí nebo přetahování myši nebo dotykem.
+* `click`- Souřadnice jsou přidány, když kliknete myší nebo dotykem.
+* `freehand `- Souřadnice jsou přidány, když je myš nebo dotek přetažen na mapě.
+* `hybrid`- Souřadnice jsou přidány, když myši nebo dotyku je klikli nebo přetáhli.
 
-## <a name="how-to-draw-shapes"></a>Kreslení tvarů
+## <a name="how-to-draw-shapes"></a>Jak kreslit tvary
 
- Než bude možné vykreslit libovolný tvar, nastavte možnost `drawingMode` správce kreslení na podporované nastavení kreslení. Toto nastavení lze programovat nebo vyvolat stisknutím některého z tlačítek kreslení na panelu nástrojů. Režim kreslení zůstane povolený, i když je nakreslený tvar, což usnadňuje nakreslení dalších tvarů stejného typu. Programově nastavíte režim kreslení na stav nečinnosti. Nebo přepněte na stav nečinnosti kliknutím na tlačítko aktuální režimy kreslení na panelu nástrojů.
+ Před nakreslením libovolného `drawingMode` obrazce nastavte volbu správce výkresu na podporované nastavení výkresu. Toto nastavení lze naprogramovat nebo vyvolat stisknutím jednoho z tlačítek kreslení na panelu nástrojů. Režim kreslení zůstává povolen i po nakreslení tvaru, což usnadňuje kreslení dalších tvarů stejného typu. Programově nastavte režim kreslení do stavu nečinnosti. Nebo přepněte do stavu nečinnosti klepnutím na tlačítko aktuálního režimu kreslení na panelu nástrojů.
 
-Další části obsahují přehled různých způsobů vykreslování tvarů na mapě.
+V následujících částech jsou popsány všechny různé způsoby, jak lze na mapě kreslit tvary.
 
 ### <a name="how-to-draw-a-point"></a>Jak nakreslit bod
 
-Je-li správce kreslení v `draw-point` režim kreslení, lze provést následující akce pro vykreslení bodů na mapě. Tyto metody pracují se všemi režimy interakce.
+Když je správce `draw-point` výkresu v režimu kreslení, lze provést následující akce pro kreslení bodů na mapě. Tyto metody pracují se všemi režimy interakce.
 
-**Spustit kreslení**
- - Klikněte na levé tlačítko myši nebo najeďte na mapu, abyste přidali bod na mapu. 
- - Pokud se ukazatel myši nachází na mapě, stiskněte klávesu `F` a bod se přidá na souřadnici ukazatele myši. Tato metoda poskytuje vyšší přesnost pro přidání bodu na mapu. Z důvodu stisknutí levého tlačítka myši bude na myši menší pohyb.
- - Pokud chcete přidat další body na mapu, klikněte na tlačítko `F`, doplňte je nebo stiskněte.
+**Zahájení kreslení**
+ - Kliknutím na levé tlačítko myši nebo se dotkněte mapy a přidejte do mapy bod. 
+ - Pokud je myš nad mapou, stiskněte klávesu `F` a bod bude přidán na souřadnici ukazatele myši. Tato metoda poskytuje vyšší přesnost pro přidání bodu do mapy. Tam bude menší pohyb na myši v důsledku stisknutí pohybu levého tlačítka myši.
+ - Kliknutím, dotykem nebo `F` stisknutím tlačítka přidáte do mapy další body.
  
 **Dokončit kreslení**
- - Na panelu nástrojů kreslení klikněte na libovolné tlačítko. 
- - Programově nastavíte režim kreslení. 
- - Stiskněte klávesu `C`.
+ - Klikněte na libovolné tlačítko v pruhu nástrojů výkresu. 
+ - Programově nastavte režim kreslení. 
+ - Stiskněte `C` klávesu.
 
-**Zrušit kreslení**
- - Stiskněte klávesu `Escape`.
+**Zrušit výkres**
+ - Stiskněte `Escape` klávesu.
 
-### <a name="how-to-draw-a-line"></a>Vykreslení čáry
+### <a name="how-to-draw-a-line"></a>Jak nakreslit čáru
 
-Je-li Správce výkresu v režimu `draw-line`, lze provést následující akce pro vykreslení bodů na mapě v závislosti na režimu interakce.
+Když je správce `draw-line` výkresu v režimu, lze v závislosti na režimu interakce provést následující akce pro kreslení bodů na mapě.
 
-**Spustit kreslení**
+**Zahájení kreslení**
  - Režim kliknutí
-   * Klikněte na levé tlačítko myši nebo najeďte na mapu a přidejte jednotlivé body čáry na mapě. Do řádku se přidá souřadnice pro každé kliknutí nebo dotykové ovládání. 
-   * Pokud se ukazatel myši nachází na mapě, stiskněte klávesu `F` a bod se přidá na souřadnici ukazatele myši. Tato metoda poskytuje vyšší přesnost pro přidání bodu na mapu. Z důvodu stisknutí levého tlačítka myši bude na myši menší pohyb.
-   * Pokračujte v klikání, dokud se do řádku nepřidaly všechny požadované body.
- - Režim FreeHandu
-   * Stiskněte levé tlačítko myši nebo klepněte na mapu na mapě a přetáhněte ukazatel myši nebo dotykové ovládání kolem. Souřadnice jsou přidány na řádek, když se pohyb myši nebo dotykového bodu pohybuje kolem mapy. Po aktivaci události myši nebo dotykového ovládání se kreslení dokončí. Četnost přidaných souřadnic je definována pomocí možností manažeři kreslení `freehandInterval`.
+   * Klikněte na levé tlačítko myši nebo se dotkněte mapy a přidejte každý bod čáry na mapě. Pro každé kliknutí nebo dotyk je k čáře přidána souřadnice. 
+   * Pokud je myš nad mapou, stiskněte klávesu `F` a bod bude přidán na souřadnici ukazatele myši. Tato metoda poskytuje vyšší přesnost pro přidání bodu do mapy. Tam bude menší pohyb na myši v důsledku stisknutí pohybu levého tlačítka myši.
+   * Pokračujte kliknutím, dokud nebudou do řádku přidány všechny požadované body.
+ - Režim od ruky
+   * Stiskněte levé tlačítko myši nebo dotkněte se mapy a přetáhněte myš nebo dotykový bod kolem. Souřadnice jsou přidány k čáře jako myš nebo dotykový bod se pohybuje po mapě. Jakmile je spuštěna událost myši nebo retušování, je výkres dokončen. Frekvence přidávání souřadnic je definována `freehandInterval` možností správce výkresů.
  - Hybridní režim
-   * Alternativním způsobem mezi jednotlivými metodami Click a FreeHand při sestavování jednoho řádku. Například klikněte na několik bodů, potom podržením a přetažením myši přidejte spoustu bodů a potom klikněte na několik dalších. 
+   * Při kreslení jedné čáry můžete podle potřeby střídavě a od ruky. Například klikněte na několik bodů, pak podržte a přetáhněte myší přidat spoustu bodů, pak klepněte na několik dalších. 
 
 **Dokončit kreslení**
- - Režim hybridního/kliknutí
-   * Dvakrát klikněte na mapu v posledním bodě. 
-   * Na panelu nástrojů kreslení klikněte na libovolné tlačítko. 
-   * Programově nastavíte režim kreslení. 
- - Režim FreeHandu
-   * Uvolněte tlačítko myši nebo dotykového bodu.
- - Stiskněte klávesu `C`.
+ - Hybridní/Click režim
+   * Poklepejte na mapu v posledním bodě. 
+   * Klikněte na libovolné tlačítko v pruhu nástrojů výkresu. 
+   * Programově nastavte režim kreslení. 
+ - Režim od ruky
+   * Uvolněte tlačítko myši nebo dotykový bod.
+ - Stiskněte `C` klávesu.
 
-**Zrušit kreslení**
- - Stiskněte klávesu `Escape`.
+**Zrušit výkres**
+ - Stiskněte `Escape` klávesu.
 
-### <a name="how-to-draw-a-polygon"></a>Postup kreslení mnohoúhelníku
+### <a name="how-to-draw-a-polygon"></a>Jak nakreslit polygon
 
-Je-li Správce výkresu v režimu `draw-polygon`, lze provést následující akce pro vykreslení bodů na mapě v závislosti na režimu interakce.
+Když je správce `draw-polygon` výkresu v režimu, lze v závislosti na režimu interakce provést následující akce pro kreslení bodů na mapě.
 
-**Spustit kreslení**
+**Zahájení kreslení**
  - Režim kliknutí
-   * Klikněte na levé tlačítko myši nebo najeďte na mapu, abyste přidali jednotlivé body mnohoúhelníku na mapě. Do mnohoúhelníku se přidá souřadnice pro každé kliknutí nebo dotykové ovládání. 
-   * Pokud se ukazatel myši nachází na mapě, stiskněte klávesu `F` a bod se přidá na souřadnici ukazatele myši. Tato metoda poskytuje vyšší přesnost pro přidání bodu na mapu. Z důvodu stisknutí levého tlačítka myši bude na myši menší pohyb.
-   * Až do mnohoúhelníku přidáte všechny požadované body, klikněte na pokračovat.
- - Režim FreeHandu
-   * Stiskněte levé tlačítko myši nebo klepněte na mapu na mapě a přetáhněte ukazatel myši nebo dotykové ovládání kolem. Souřadnice se přidávají do mnohoúhelníku, když se pohybuje ukazatelem myši nebo dotykového bodu kolem mapy. Po aktivaci události myši nebo dotykového ovládání se kreslení dokončí. Četnost přidaných souřadnic je definována pomocí možností manažeři kreslení `freehandInterval`.
+   * Klikněte na levé tlačítko myši nebo se dotkněte mapy a přidejte každý bod polygonu na mapě. Pro každé kliknutí nebo dotyk se do polyga se přidá souřadnice. 
+   * Pokud je myš nad mapou, stiskněte klávesu `F` a bod bude přidán na souřadnici ukazatele myši. Tato metoda poskytuje vyšší přesnost pro přidání bodu do mapy. Tam bude menší pohyb na myši v důsledku stisknutí pohybu levého tlačítka myši.
+   * Pokračujte kliknutím, dokud nebudou všechny požadované body přidány do polygonu.
+ - Režim od ruky
+   * Stiskněte levé tlačítko myši nebo dotkněte se mapy a přetáhněte myš nebo dotykový bod kolem. Souřadnice jsou přidány do polygu, když se myš nebo dotykový bod pohybuje po mapě. Jakmile je spuštěna událost myši nebo retušování, je výkres dokončen. Frekvence přidávání souřadnic je definována `freehandInterval` možností správce výkresů.
  - Hybridní režim
-   * Alternativním způsobem mezi jednotlivými metodami Click a FreeHand při vykreslování jednoho mnohoúhelníku. Například klikněte na několik bodů, potom podržením a přetažením myši přidejte spoustu bodů a potom klikněte na několik dalších. 
+   * Při kreslení jednoho polygonu se podle potřeby stříhá mezi metodami kliknutí a od ruky. Například klikněte na několik bodů, pak podržte a přetáhněte myší přidat spoustu bodů, pak klepněte na několik dalších. 
 
 **Dokončit kreslení**
- - Režim hybridního/kliknutí
-   * Dvakrát klikněte na mapu v posledním bodě. 
-   * Klikněte na první bod v mnohoúhelníku.
-   * Na panelu nástrojů kreslení klikněte na libovolné tlačítko. 
-   * Programově nastavíte režim kreslení. 
- - Režim FreeHandu
-   * Uvolněte tlačítko myši nebo dotykového bodu.
- - Stiskněte klávesu `C`.
+ - Hybridní/Click režim
+   * Poklepejte na mapu v posledním bodě. 
+   * Klikněte na první bod v polygu.
+   * Klikněte na libovolné tlačítko v pruhu nástrojů výkresu. 
+   * Programově nastavte režim kreslení. 
+ - Režim od ruky
+   * Uvolněte tlačítko myši nebo dotykový bod.
+ - Stiskněte `C` klávesu.
 
-**Zrušit kreslení**
- - Stiskněte klávesu `Escape`.
+**Zrušit výkres**
+ - Stiskněte `Escape` klávesu.
 
-### <a name="how-to-draw-a-rectangle"></a>Vykreslení obdélníku
+### <a name="how-to-draw-a-rectangle"></a>Jak nakreslit obdélník
 
-Je-li Správce výkresu v režimu `draw-rectangle`, lze provést následující akce pro vykreslení bodů na mapě v závislosti na režimu interakce. Vygenerovaný tvar bude následovat po [Rozšířené specifikaci injson pro obdélníky](extend-geojson.md#rectangle).
+Když je správce `draw-rectangle` výkresu v režimu, lze v závislosti na režimu interakce provést následující akce pro kreslení bodů na mapě. Generovaný tvar bude následovat [rozšířené geojson specifikace pro obdélníky](extend-geojson.md#rectangle).
 
-**Spustit kreslení**
- - Stisknutím levého tlačítka myši nebo klepnutím na mapu na mapě přidejte první roh obdélníku a přetažením vytvořte obdélník. 
+**Zahájení kreslení**
+ - Stisknutím levého tlačítka myši nebo stisknutím tlačítka na mapě přidejte první roh obdélníku a tažením obdélník vytvořte. 
 
 **Dokončit kreslení**
- - Uvolněte tlačítko myši nebo dotykového bodu.
- - Programově nastavíte režim kreslení. 
- - Stiskněte klávesu `C`.
+ - Uvolněte tlačítko myši nebo dotykový bod.
+ - Programově nastavte režim kreslení. 
+ - Stiskněte `C` klávesu.
 
-**Zrušit kreslení**
- - Stiskněte klávesu `Escape`.
+**Zrušit výkres**
+ - Stiskněte `Escape` klávesu.
 
 ### <a name="how-to-draw-a-circle"></a>Jak nakreslit kruh
 
-Je-li Správce výkresu v režimu `draw-circle`, lze provést následující akce pro vykreslení bodů na mapě v závislosti na režimu interakce. Vygenerovaný tvar bude následovat po [Rozšířené specifikaci injson pro kružnice](extend-geojson.md#circle).
+Když je správce `draw-circle` výkresu v režimu, lze v závislosti na režimu interakce provést následující akce pro kreslení bodů na mapě. Generovaný tvar bude následovat [podle rozšířené specifikace GeoJSON pro kružnice](extend-geojson.md#circle).
 
-**Spustit kreslení**
- - Stisknutím levého tlačítka myši nebo klepnutím na mapu na mapě přidejte střed kružnice a přetáhněte kruhy k poloměru. 
+**Zahájení kreslení**
+ - Stisknutím levého tlačítka myši nebo dotykem na mapě přidejte střed kruhu a tažením dodáte kruhům poloměr. 
 
 **Dokončit kreslení**
- - Uvolněte tlačítko myši nebo dotykového bodu.
- - Programově nastavíte režim kreslení. 
- - Stiskněte klávesu `C`.
+ - Uvolněte tlačítko myši nebo dotykový bod.
+ - Programově nastavte režim kreslení. 
+ - Stiskněte `C` klávesu.
 
-**Zrušit kreslení**
- - Stiskněte klávesu `Escape`.
+**Zrušit výkres**
+ - Stiskněte `Escape` klávesu.
 
 ## <a name="keyboard-shortcuts"></a>Klávesové zkratky
 
-Nástroje pro kreslení podporují klávesové zkratky. Tyto klávesové zkratky jsou funkční, když je mapa aktivní.
+Nástroje pro kreslení podporují klávesové zkratky. Tyto klávesové zkratky jsou funkční, když je mapa v centru pozornosti.
 
 | Klíč      | Akce                            |
 |----------|-----------------------------------|
-| `C` | Dokončí všechny probíhající kresby a nastaví režim kreslení na nečinný. Fokus se přesune na prvek mapy nejvyšší úrovně.  |
-| `Escape` | Zruší všechny probíhající kresby a nastaví režim kreslení na nečinný. Fokus se přesune na prvek mapy nejvyšší úrovně.  |
-| `F` | Přidá souřadnici k bodu, čáře nebo mnohoúhelníku, pokud se ukazatel myši nachází na mapě. Ekvivalentní akce kliknutí na mapu v případě kliknutí nebo hybridního režimu Tato klávesová zkratka umožňuje přesnější a rychlejší nákresy. Pomocí jedné ruky můžete umístit myš a jinou klávesu pro stisknutí tlačítka bez přesunu myši na gesto stisknutí klávesy CTRL. |
+| `C` | Dokončí všechny probíhající výkresy a nastaví režim kreslení na nečinný. Fokus se přesune na prvek mapy nejvyšší úrovně.  |
+| `Escape` | Zruší všechny probíhající výkresy a nastaví režim výkresu na nečinný. Fokus se přesune na prvek mapy nejvyšší úrovně.  |
+| `F` | Přidá souřadnici k bodu, úsece nebo polygu, pokud je myš nad mapou. Ekvivalentní akce kliknutí na mapu v režimu kliknutí nebo hybridního režimu. Tato zkratka umožňuje přesnější a rychlejší výkresy. Jednou rukou můžete umístit myš a druhou stisknout tlačítko bez pohybu myši z gesta stisknutí. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o třídách v modulu nástrojů pro kreslení:
+Další informace o třídách v modulu kreslicích nástrojů:
 
 > [!div class="nextstepaction"]
-> [Správce výkresu](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)
+> [Správce výkresů](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)
 
 > [!div class="nextstepaction"]
-> [Panel nástrojů kreslení](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)
+> [Panel nástrojů Kreslení](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)

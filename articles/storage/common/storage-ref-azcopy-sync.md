@@ -1,6 +1,6 @@
 ---
-title: AzCopy synchronizaci | Microsoft Docs
-description: Tento článek popisuje referenční informace o příkazu AzCopy Sync.
+title: azcopy synchronizace | Dokumenty společnosti Microsoft
+description: Tento článek obsahuje referenční informace pro příkaz azcopy sync.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -9,50 +9,50 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 1bff46c8584934ab8bcffce74763edc8363533d6
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76988239"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
 Replikuje zdrojové umístění do cílového umístění.
 
-## <a name="synopsis"></a>Stručný obsah
+## <a name="synopsis"></a>Synopse
 
-Časy poslední změny se používají pro porovnání. Soubor se přeskočí, pokud čas poslední změny v cíli je novější.
+Poslední upravené časy se používají pro porovnání. Soubor je přeskočen, pokud je poslední změněný čas v cíli novější.
 
-Podporované páry jsou:
+Podporované dvojice jsou:
 
-- místní < – > Azure Blob (dá se použít ověřování pomocí SAS nebo OAuth)
-- Azure Blob < – > Azure Blob (zdroj musí zahrnovat SAS nebo je veřejně přístupný; pro cíl se dá použít ověřování pomocí SAS nebo OAuth)
-- Soubor Azure <-> soubor Azure (zdroj musí zahrnovat SAS nebo je veřejně přístupný; Pro cíl by se mělo použít ověřování SAS.)
+- místní < > objektblob Azure (lze použít ověřování SAS nebo OAuth)
+- Azure Blob < > objektblob Azure (Zdroj musí obsahovat SAS nebo je veřejně přístupný; ověřování SAS nebo OAuth lze použít pro cíl)
+- Soubor Azure < > soubor Azure (Zdroj musí obsahovat SAS nebo je veřejně přístupný; Ověřování SAS by mělo být použito pro cíl)
 
-Příkaz synchronizovat se v několika ohledech liší od příkazu pro kopírování:
+Příkaz synchronizace se od příkazu copy liší několika způsoby:
 
-1. Ve výchozím nastavení má rekurzivní příznak hodnotu true a synchronizace kopíruje všechny podadresáře. Synchronizace pouze kopíruje soubory nejvyšší úrovně v adresáři, pokud je rekurzivní příznak false.
-2. Při synchronizaci mezi virtuálními adresáři přidejte do cesty koncové lomítko (viz příklady), pokud existuje objekt BLOB se stejným názvem jako jeden z virtuálních adresářů.
-3. Pokud je příznak ' deleteDestination ' nastaven na hodnotu true nebo se zobrazí výzva, synchronizace odstraní soubory a objekty BLOB v cílovém umístění, které nejsou přítomny ve zdroji.
+1. Ve výchozím nastavení je rekurzivní příznak pravdivý a synchronizace zkopíruje všechny podadresáře. Synchronizace zkopíruje soubory nejvyšší úrovně v adresáři pouze v případě, že je rekurzivní příznak nepravdivý.
+2. Při synchronizaci mezi virtuálními adresáři přidejte do cesty koncové lomítko (viz příklady), pokud existuje objekt blob se stejným názvem jako jeden z virtuálních adresářů.
+3. Pokud je příznak deleteDestination nastaven na hodnotu true nebo prompt, synchronizace odstraní soubory a objekty BLOB v cílovém umístění, které nejsou k dispozici ve zdroji.
 
 ## <a name="related-conceptual-articles"></a>Související koncepční články
 
-- [Začínáme s AzCopy](storage-use-azcopy-v10.md)
-- [Přenos dat pomocí AzCopy a BLOB Storage](storage-use-azcopy-blobs.md)
-- [Přenos dat pomocí AzCopy a úložiště souborů](storage-use-azcopy-files.md)
-- [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
+- [Začínáme s nástrojem AzCopy](storage-use-azcopy-v10.md)
+- [Přenos dat pomocí úložiště AzCopy a Blob](storage-use-azcopy-blobs.md)
+- [Přenos dat pomocí AzCopy a ukládání souborů](storage-use-azcopy-files.md)
+- [Konfigurace, optimalizace a řešení potíží s azcopy](storage-use-azcopy-configure.md)
 
-### <a name="advanced"></a>Rozšířený
+### <a name="advanced"></a>Upřesnit
 
-Pokud nezadáte příponu souboru, AzCopy automaticky detekuje typ obsahu souborů při nahrávání z místního disku na základě přípony souboru nebo obsahu (Pokud není zadané žádné rozšíření).
+Pokud nezadáte příponu souboru, AzCopy automaticky detekuje typ obsahu souborů při nahrávání z místního disku na základě přípony souboru nebo obsahu (pokud není zadána žádná přípona).
 
-Integrovaná vyhledávací tabulka je malá, ale v systému UNIX je rozšířena o soubory MIME. Types v místním systému, pokud jsou k dispozici v jednom nebo více těchto názvech:
+Vestavěná vyhledávací tabulka je malá, ale na Unixu je rozšířena o soubory mime.types místního systému, pokud jsou k dispozici pod jedním nebo více z těchto názvů:
 
 - /etc/mime.types
 - /etc/apache2/mime.types
 - /etc/apache/mime.types
 
-V systému Windows jsou z registru extrahovány typy MIME.
+V systému Windows jsou typy MIME extrahovány z registru.
 
 ```azcopy
 azcopy sync <source> <destination> [flags]
@@ -60,19 +60,19 @@ azcopy sync <source> <destination> [flags]
 
 ## <a name="examples"></a>Příklady
 
-Synchronizovat jeden soubor:
+Synchronizace jednoho souboru:
 
 ```azcopy
 azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
 ```
 
-Stejné jako výše, ale tentokrát také vypočítat hodnotu hash MD5 obsahu souboru a uložit ji jako vlastnost content-MD5 objektu BLOB:
+Stejné jako výše, ale tentokrát také vypočítat Hash MD5 obsahu souboru a uložit jako vlastnost content-MD5 objektu blob:
 
 ```azcopy
 azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]" --put-md5
 ```
 
-Synchronizovat celý adresář včetně jeho podsložek (Všimněte si, že ve výchozím nastavení je rekurzivní):
+Synchronizace celého adresáře včetně jeho podadresářů (všimněte si, že rekurzivní je ve výchozím nastavení zapnutá):
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]"
@@ -84,84 +84,84 @@ azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --put-md5
 ```
 
-Synchronizovat pouze ty soubory, které jsou v adresáři, ale ne jeho podadresáře:
+Synchronizujte pouze horní soubory uvnitř adresáře, ale ne jeho podadresáře:
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --recursive=false
 ```
 
-Synchronizace podmnožiny souborů v adresáři (například: pouze soubory jpg a PDF, nebo pokud je název souboru "" ""):
+Synchronizace podmnožinu souborů v adresáři (například: pouze jpg a pdf soubory, nebo pokud je název souboru "exactName"):
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --include="*.jpg;*.pdf;exactName"
 ```
 
-Synchronizuje celý adresář, ale vyloučí určité soubory z oboru (například každý soubor, který začíná foo nebo končí na panelu):
+Synchronizujte celý adresář, ale vylučte určité soubory z oboru (například: každý soubor, který začíná foo nebo končí pruhem):
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --exclude="foo*;*bar"
 ```
 
-Synchronizace jednoho objektu BLOB:
+Synchronizace jednoho objektu blob:
 
 ```azcopy
 azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
 ```
 
-Synchronizovat virtuální adresář:
+Synchronizace virtuálního adresáře:
 
 ```azcopy
 azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --recursive=true
 ```
 
-Synchronizovat virtuální adresář, který má stejný název jako objekt BLOB (přidejte koncové lomítko k cestě, aby bylo možné nejednoznačnost):
+Synchronizace virtuálního adresáře, který má stejný název jako objekt blob (přidejte do cesty koncové lomítko, aby bylo možné se rozptýlit):
 
 ```azcopy
 azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]/?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]/" --recursive=true
 ```
 
-Synchronizovat adresář souborů Azure (stejná syntaxe jako objekt BLOB):
+Synchronizace adresáře souboru Azure (stejná syntaxe jako objekt Blob):
 
 ```azcopy
 azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]" "https://[account].file.core.windows.net/[share]/[path/to/dir]" --recursive=true
 ```
 
 > [!NOTE]
-> Pokud jsou společně použity příznaky include/Exclude, budou zobrazeny pouze soubory, které odpovídají vzorům zahrnutí, ale ty, které odpovídají vzorům pro vyloučení, budou vždy ignorovány.
+> Pokud zahrnout nebo vyloučit příznaky jsou používány společně, pouze soubory odpovídající include vzory by se podíval na, ale ty odpovídající vzory vyloučit by být vždy ignorovány.
 
 ## <a name="options"></a>Možnosti
 
-**--Block-size-MB** float při nahrávání do Azure Storage nebo stahování z Azure Storage použít tuto velikost bloku (zadanou v souboru MIB). Výchozí hodnota se automaticky vypočítá na základě velikosti souboru. Jsou povoleny desetinné zlomky (například: 0,25).
+**--blok-size-mb** float Při nahrávání do Azure Storage nebo stahování z Azure Storage použijte tuto velikost bloku (zadanou v MiB). Výchozí nastavení se automaticky vypočítá na základě velikosti souboru. Desetinné zlomky jsou povoleny (například: 0,25).
 
-**--check-MD5** řetězec Určuje, jak by měly být při stahování ověřovány STRIKTNĚ hash MD5. Tato možnost je k dispozici pouze při stahování. K dispozici jsou tyto hodnoty: nezaškrtnuto, LogOned, FailIfDifferent, FailIfDifferentOrMissing. (výchozí ' FailIfDifferent '). (výchozí "FailIfDifferent")
+**--check-md5** string Určuje, jak přísně mají být hashe MD5 při stahování ověřeny. Tato možnost je k dispozici pouze při stahování. Dostupné hodnoty zahrnují: NoCheck, LogOnly, FailIfDifferent, FailIfDifferentOrMissing. (výchozí 'FailIfDifferent'). (výchozí "FailIfDifferent")
 
-**--Delete – cílový** řetězec definuje, jestli se mají odstranit nadbytečné soubory z cílového umístění, které se nenacházejí ve zdroji. Může být nastaveno na hodnotu true, false nebo prompt. Pokud se nastaví výzva, před plánováním souborů a objektů BLOB k odstranění se uživateli zobrazí dotaz. (výchozí hodnota false). (výchozí hodnota "NEPRAVDA")
+**--delete-destination** string Definuje, zda má být odstraněno další soubory z cíle, které nejsou k dispozici u zdroje. Může být nastavena na true, false, nebo prompt. Pokud je nastavena výzva, uživatel bude dotázán na otázku před plánováním souborů a objektů BLOB k odstranění. (výchozí 'false'). (výchozí "false")
 
-**--Exclude – řetězec atributů** (pouze Windows) vyloučení souborů, jejichž atributy odpovídají seznamu atributů. Příklad: A; Pracují Í
+**--exclude-attributes** string (pouze windows) Vyloučit soubory, jejichž atributy odpovídají seznamu atributů. Například: A; S; R
 
-**--Exclude vyloučení – řetězec cesty** vyloučí tyto cesty při kopírování. Tato možnost nepodporuje zástupné znaky (*). Kontroluje předponu relativní cesty (například: myFolder; myFolder/subDirName/File. PDF). Pokud se používá v kombinaci s procházením účtu, cesty neobsahují název kontejneru.
+**--exclude-path** řetězec Vyloučit tyto cesty při kopírování. Tato možnost nepodporuje zástupné znaky (*). Zkontroluje předponu relativní cesty(Například: myFolder;myFolder/subDirName/file.pdf). Při použití v kombinaci s průchodem účtu cesty neobsahují název kontejneru.
 
-**--vyloučit-vzorové** soubory vyloučení, kde název odpovídá seznamu vzorů. Například: \*. jpg;\*. PDF; Exact
+**--exclude-pattern** Vylučte soubory, kde se název shoduje se seznamem vzorů. Například: \*.jpg; \*.pdf;exactName
 
-**-h,--** Help Help pro synchronizaci
+**-h, --nápověda** pro synchronizaci
 
-**--include-** Attribute String (pouze Windows) obsahují pouze soubory, jejichž atributy odpovídají seznamu atributů. Příklad: A; Pracují Í
+**--include-attributes** string (pouze windows) Zahrnout pouze soubory, jejichž atributy odpovídají seznamu atributů. Například: A; S; R
 
-**--include – řetězec vzorů** zahrnuje pouze soubory, u kterých se název shoduje se seznamem vzorů. Například: \*. jpg;\*. PDF; Exact
+**--include-pattern** Include only files where the name matches the pattern. Například: \*.jpg; \*.pdf;exactName
 
-**--řetězec na úrovni protokolu** definuje podrobnosti protokolu pro soubor protokolu, dostupné úrovně: informace (všechny žádosti a odpovědi), upozornění (pomalé odezvy), chybu (pouze neúspěšné žádosti) a žádné (žádné protokoly výstupu). (výchozí informace). (výchozí "informace")
+**--řetězec na úrovni protokolu** Definujte podrobnost protokolu pro soubor protokolu, dostupné úrovně: INFO(všechny požadavky a odpovědi), UPOZORNĚNÍ(pomalé odpovědi), ERROR(pouze neúspěšné požadavky) a NONE(žádné výstupní protokoly). (výchozí INFO). (výchozí "INFO")
 
-**--Put-MD5**                     Vytvořte hodnotu hash MD5 každého souboru a uložte hodnotu hash jako vlastnost content-MD5 cílového objektu BLOB nebo souboru. (Ve výchozím nastavení není hodnota hash vytvořena.) K dispozici pouze při nahrávání.
+**--put-md5**                     Vytvořte hash MD5 každého souboru a uložte hash jako Content-MD5 vlastnost cílového objektu blob nebo souboru. (Ve výchozím nastavení není hodnota hash vytvořena.) K dispozici pouze při nahrávání.
 
-**--rekurzivní**                   Ve výchozím nastavení platí, že při synchronizaci mezi adresáři se rekurzivně vyhledávají podadresáře. (výchozí hodnota true). (výchozí hodnota true)
+**--rekurzivní**                   Pravda ve výchozím nastavení, podívejte se do podadresářů rekurzivně při synchronizaci mezi adresáři. (výchozí hodnota true). (výchozí hodnota true)
 
 ## <a name="options-inherited-from-parent-commands"></a>Možnosti zděděné z nadřazených příkazů
 
 |Možnost|Popis|
 |---|---|
-|--Cap – Mbps|Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.|
-|--výstupní řetězec typu|Formát výstupu příkazu Mezi možnosti patří: text, JSON. Výchozí hodnota je "text".|
+|--cap-mbps uint32|Završuje přenosovou rychlost v megabitech za sekundu. Propustnost se může mírně lišit od víčka. Pokud je tato možnost nastavena na nulu nebo je vynechána, propustnost není omezena.|
+|--řetězec výstupního typu|Formát výstupu příkazu. Volby zahrnují: text, json. Výchozí hodnota je "text".|
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
-- [AzCopy](storage-ref-azcopy.md)
+- [azkopie](storage-ref-azcopy.md)

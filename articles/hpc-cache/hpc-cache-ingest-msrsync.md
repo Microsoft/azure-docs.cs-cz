@@ -1,40 +1,40 @@
 ---
-title: Ingestování dat mezipaměti HPC Azure – msrsync
-description: Jak používat msrsync k přesunu dat do cíle úložiště objektů BLOB v mezipaměti HPC Azure
+title: Ingestování dat mezipaměti Azure HPC – msrsync
+description: Použití msrsync k přesunutí dat do cíle úložiště objektů Blob v mezipaměti Azure HPC
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
 ms.openlocfilehash: 4f8863d706d623d613ac156cf202c3b7b12f2ae0
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74168425"
 ---
-# <a name="azure-hpc-cache-data-ingest---msrsync-method"></a>Azure HPC cache data pro ingestování – metoda msrsync
+# <a name="azure-hpc-cache-data-ingest---msrsync-method"></a>Ingestování dat mezipaměti Azure HPC – metoda msrsync
 
-Tento článek obsahuje podrobné pokyny k použití nástroje ``msrsync`` ke kopírování dat do kontejneru úložiště objektů BLOB v Azure pro použití s mezipamětí Azure HPC.
+Tento článek obsahuje podrobné ``msrsync`` pokyny pro použití nástroje ke kopírování dat do kontejneru úložiště Objektů blob Azure pro použití s Azure HPC Cache.
 
-Další informace o přesouvání dat do úložiště objektů BLOB pro mezipaměť HPC Azure najdete v tématu [přesun dat do úložiště objektů BLOB v Azure](hpc-cache-ingest.md).
+Další informace o přesunu dat do úložiště objektů Blob pro azure hpc mezipaměť najdete v článek [Přesun dat do úložiště objektů blob Azure](hpc-cache-ingest.md).
 
-Nástroj ``msrsync`` lze použít k přesunu dat do cílového úložiště back-end pro mezipaměť prostředí Azure HPC. Tento nástroj je určený k optimalizaci využití šířky pásma spuštěním několika paralelních procesů ``rsync``. Je k dispozici z GitHubu na https://github.com/jbd/msrsync.
+Nástroj ``msrsync`` lze použít k přesunutí dat do cíle back-endového úložiště pro mezipaměť Azure HPC. Tento nástroj je navržen tak, aby ``rsync`` optimalizoval využití šířky pásma spuštěním více paralelních procesů. Je k dispozici na https://github.com/jbd/msrsyncGitHubu na adrese .
 
-``msrsync`` rozdělí zdrojový adresář do samostatných "intervalů" a potom spustí jednotlivé procesy ``rsync`` v každém intervalu.
+``msrsync``rozdělí zdrojový adresář na samostatné "kbelíky" ``rsync`` a pak spustí jednotlivé procesy na každém bloku.
 
-Předběžné testování pomocí virtuálního počítače se čtyřmi jádry ukázalo při použití procesů 64 nejlepší efektivitu. Pomocí možnosti ``msrsync`` ``-p`` nastavte počet procesů na 64.
+Předběžné testování pomocí čtyřjádrového virtuálního virtuálního uživatele ukázalo nejlepší efektivitu při použití 64 procesů. Pomocí ``msrsync`` této ``-p`` možnosti můžete nastavit počet procesů na 64.
 
-Všimněte si, že ``msrsync`` můžou zapisovat jenom do místních svazků a z nich. Zdroj a cíl musí být přístupný jako místní připojení na pracovní stanici, která se používá k vystavení příkazu.
+Všimněte ``msrsync`` si, že lze zapisovat pouze do a z místních svazků. Zdroj a cíl musí být přístupné jako místní připojení na pracovní stanici, která slouží k vydání příkazu.
 
-Podle těchto pokynů použijte ``msrsync`` k naplnění služby Azure Blob Storage pomocí Azure HPC cache:
+Podle těchto pokynů ``msrsync`` použijte k naplnění úložiště objektů blob Azure pomocí mezipaměti Azure HPC:
 
-1. Nainstalovat ``msrsync`` a její požadavky (``rsync`` a Python 2,6 nebo novější)
+1. Instalace ``msrsync`` a její``rsync`` předpoklady ( a Python 2.6 nebo novější)
 1. Určete celkový počet souborů a adresářů, které mají být zkopírovány.
 
-   Použijte například ``prime.py`` nástrojů s argumenty ```prime.py --directory /path/to/some/directory``` (k dispozici stažením <https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py>).
+   Použijte například nástroj ``prime.py`` s ```prime.py --directory /path/to/some/directory``` argumenty (k <https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py>dispozici stažením).
 
-   Pokud nepoužíváte ``prime.py``, můžete vypočítat počet položek pomocí nástroje ``find`` GNU následujícím způsobem:
+   Pokud nepoužíváte ``prime.py``, můžete vypočítat počet položek ``find`` pomocí nástroje GNU následujícím způsobem:
 
    ```bash
    find <path> -type f |wc -l         # (counts files)
@@ -42,14 +42,14 @@ Podle těchto pokynů použijte ``msrsync`` k naplnění služby Azure Blob Stor
    find <path> |wc -l                 # (counts both)
    ```
 
-1. Rozdělte počet položek podle 64 k určení počtu položek na proces. Toto číslo použijte s možností ``-f`` pro nastavení velikosti kontejnerů při spuštění příkazu.
+1. Vydělte počet položek číslem 64 a určete počet položek na proces. Toto číslo ``-f`` s možností můžete nastavit velikost bloků při spuštění příkazu.
 
-1. Vydejte příkaz ``msrsync`` ke kopírování souborů:
+1. Vydat ``msrsync`` příkaz pro kopírování souborů:
 
    ```bash
    msrsync -P --stats -p64 -f<ITEMS_DIV_64> --rsync "-ahv --inplace" <SOURCE_PATH> <DESTINATION_PATH>
    ```
 
-   Například tento příkaz je navržen pro přesun 11 000 souborů v 64 Process z/test/source-repository na/mnt/hpccache/Repository:
+   Tento příkaz je například navržen tak, aby přesunul 11 000 souborů v 64 procesech z /test/source-repository na /mnt/hpccache/repository:
 
    ``mrsync -P --stats -p64 -f170 --rsync "-ahv --inplace" /test/source-repository/ /mnt/hpccache/repository``

@@ -1,6 +1,6 @@
 ---
-title: Posílání a přijímání událostí z Azure Event Hubs pomocí Pythonu (staré)
-description: V tomto návodu se dozvíte, jak vytvářet a spouštět skripty Pythonu, které odesílají události do služby Azure Event Hubs nebo z nich přijímat události pomocí starého balíčku Azure-eventhub verze 1.
+title: Odesílání nebo přijímání událostí z Azure Event Hubs pomocí Pythonu (starého)
+description: Tento návod ukazuje, jak vytvořit a spustit skripty Pythonu, které odesílají události do nebo přijímají události z Azure Event Hubs pomocí starého balíčku azure-eventhub verze 1.
 services: event-hubs
 author: spelluru
 manager: femila
@@ -10,44 +10,44 @@ ms.topic: quickstart
 ms.date: 01/15/2020
 ms.author: spelluru
 ms.openlocfilehash: 22f6b2aba36e560e9bd335baa92925fe9846c670
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77162595"
 ---
-# <a name="quickstart-send-and-receive-events-with-event-hubs-using-python-azure-eventhub-version-1"></a>Rychlý Start: odesílání a příjem událostí pomocí Event Hubs pomocí Pythonu (Azure – eventhub verze 1)
-V tomto rychlém startu se dozvíte, jak odesílat události do centra událostí a přijímat z něj události pomocí balíčku **Azure-eventhub verze 1** Python. 
+# <a name="quickstart-send-and-receive-events-with-event-hubs-using-python-azure-eventhub-version-1"></a>Úvodní příručka: Odesílání a přijímání událostí pomocí centra událostí pomocí Pythonu (azure-eventhub verze 1)
+Tento rychlý start ukazuje, jak odesílat události do centra událostí a přijímat je pomocí balíčku Pythonu **azure-eventhub verze 1.** 
 
 > [!WARNING]
-> V tomto rychlém startu se používá starý balíček Azure-eventhub verze 1. Rychlý Start, který používá nejnovější **verzi 5** balíčku, najdete v tématu [posílání a přijímání událostí pomocí Azure-eventhub verze 5](get-started-python-send-v2.md). Postup přesunutí aplikace z použití starého balíčku na nový najdete v [Průvodci migrací z Azure – eventhub verze 1 na verzi 5](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md).
+> Tento rychlý start používá starý balíček azure-eventhub verze 1. Pro rychlý start, který používá nejnovější **verzi 5** balíčku, najdete v tématu odesílání a přijímání událostí [pomocí azure-eventhub verze 5](get-started-python-send-v2.md). Pokud chcete přesunout aplikaci z používání starého balíčku na nový, [přečtěte si příručku pro migraci z azure-eventhub verze 1 na verzi 5](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md).
  
 
-## <a name="prerequisites"></a>Předpoklady
-Pokud s Azure Event Hubs teprve začínáte, přečtěte si téma [přehled Event Hubs](event-hubs-about.md) před provedením tohoto rychlého startu. 
+## <a name="prerequisites"></a>Požadavky
+Pokud s Azure Event Hubs tečujete, přečtěte si [téma Přehled centra událostí,](event-hubs-about.md) než začnete tento rychlý start. 
 
-K dokončení tohoto rychlého startu potřebujete následující požadavky:
+Chcete-li tento rychlý start dokončit, potřebujete následující požadavky:
 
-- **Microsoft Azure předplatné**. Pokud chcete používat služby Azure, včetně Azure Event Hubs, potřebujete předplatné.  Pokud nemáte existující účet Azure, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/) nebo využít výhody pro předplatitele MSDN při [vytváření účtu](https://azure.microsoft.com).
-- Python 3,4 nebo novější s `pip` nainstalované a aktualizované.
-- Balíček Pythonu pro Event Hubs. Chcete-li nainstalovat balíček, spusťte tento příkaz na příkazovém řádku, který má Python v cestě: 
+- **Předplatné Microsoft Azure**. Pokud chcete používat služby Azure, včetně Azure Event Hubs, potřebujete předplatné.  Pokud nemáte existující účet Azure, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/) nebo použít výhody předplatitele MSDN při vytváření [účtu](https://azure.microsoft.com).
+- Python 3.4 nebo `pip` novější, s nainstalovaným a aktualizovaným.
+- Balíček Pythonu pro centra událostí. Chcete-li balíček nainstalovat, spusťte tento příkaz v příkazovém řádku, který má v cestě Python: 
   
   ```cmd
   pip install azure-eventhub==1.3.*
   ```
-- **Vytvoří obor názvů Event Hubs a centrum událostí**. Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v [tomto článku](event-hubs-create.md). Pak Získejte hodnotu přístupového klíče pro centrum událostí podle pokynů uvedených v článku [získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Přístupovou klávesu použijete v kódu, který napíšete později v tomto rychlém startu. Výchozí název klíče je: **RootManageSharedAccessKey**. 
+- **Vytvořte obor názvů Event Hubs a centrum událostí**. Prvním krokem je použití [portálu Azure](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Chcete-li vytvořit obor názvů a centrum událostí, postupujte podle postupu v [tomto článku](event-hubs-create.md). Potom získat hodnotu přístupového klíče pro centrum událostí podle pokynů z článku: [Získat připojovací řetězec](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Přístupový klíč v kódu, který napíšete později v tomto rychlém startu. Výchozí název klíče je: **RootManageSharedAccessKey**. 
 
 
 ## <a name="send-events"></a>Odesílání událostí
 
-Vytvoření aplikace v Pythonu, která odesílá události do centra událostí:
+Vytvoření aplikace Pythonu, která odesílá události do centra událostí:
 
 > [!NOTE]
-> Místo práce v rychlém startu si můžete stáhnout a spustit [ukázkové aplikace](https://github.com/Azure/azure-event-hubs-python/tree/master/examples) z GitHubu. Nahraďte `EventHubConnectionString` a `EventHubName` řetězce hodnotami centra událostí.
+> Místo práce přes rychlý start, můžete stáhnout a spustit [ukázkové aplikace](https://github.com/Azure/azure-event-hubs-python/tree/master/examples) z GitHubu. Nahraďte řetězce `EventHubConnectionString` a `EventHubName` hodnotami centra událostí.
 
-1. Otevřete oblíbený editor Pythonu, například [Visual Studio Code](https://code.visualstudio.com/)
-2. Vytvořte nový soubor s názvem *Send.py*. Tento skript odesílá 100 události do vašeho centra událostí.
-3. Do *Send.py*vložte následující kód a nahraďte Event Hubs obor názvů \<>, \<eventhub >, \<AccessKeyName > a \<hodnoty primárního klíče > s hodnotami: 
+1. Otevření oblíbeného editoru Pythonu, například [Visual Studio Code](https://code.visualstudio.com/)
+2. Vytvořte nový soubor s názvem *send.py*. Tento skript odešle 100 událostí do centra událostí.
+3. Do *send.py*vložte následující kód , \<který nahradí \<> oboru \<názvů Event Hubs,> eventhubu,> AccessKeyName a \<hodnoty primárního klíče> hodnotami: 
    
    ```python
    import sys
@@ -97,7 +97,7 @@ Vytvoření aplikace v Pythonu, která odesílá události do centra událostí:
    
 4. Uložte soubor. 
 
-Pokud chcete skript spustit, z adresáře, kam jste uložili *Send.py*, spusťte tento příkaz:
+Chcete-li spustit skript, spusťte z adresáře, do kterého jste *uložili send.py*, spusťte tento příkaz:
 
 ```cmd
 start python send.py
@@ -107,10 +107,10 @@ Blahopřejeme! Nyní jste odeslali zprávy do centra událostí.
 
 ## <a name="receive-events"></a>Příjem událostí
 
-Vytvoření aplikace v Pythonu, která přijímá události z centra událostí:
+Vytvoření aplikace Pythonu, která přijímá události z centra událostí:
 
 1. V editoru Pythonu vytvořte soubor s názvem *recv.py*.
-2. Do *recv.py*vložte následující kód a nahraďte Event Hubs obor názvů \<>, \<eventhub >, \<AccessKeyName > a \<hodnoty primárního klíče > s hodnotami: 
+2. Do *recv.py*vložte následující kód , \<který nahradí \<> oboru \<názvů Event Hubs,> eventhubu,> AccessKeyName a \<> hodnoty primárního klíče s hodnotami: 
    
    ```python
    import os
@@ -161,14 +161,14 @@ Vytvoření aplikace v Pythonu, která přijímá události z centra událostí:
    
 4. Uložte soubor.
 
-Pokud chcete skript spustit, z adresáře, kam jste uložili *recv.py*, spusťte tento příkaz:
+Chcete-li spustit skript, spusťte z adresáře, do kterého jste *uložili recv.py*, spusťte tento příkaz:
 
 ```cmd
 start python recv.py
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o Event Hubs najdete v následujících článcích:
+Další informace o centru událostí najdete v následujících článcích:
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)
 - [Funkce a terminologie ve službě Azure Event Hubs](event-hubs-features.md)

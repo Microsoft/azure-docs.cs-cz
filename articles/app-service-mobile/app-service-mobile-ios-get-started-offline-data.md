@@ -1,46 +1,46 @@
 ---
-title: Povolit offline synchronizaci (iOS)
-description: Naučte se používat Azure App Service Mobile Apps k ukládání a synchronizaci offline dat v aplikacích pro iOS.
+title: Povolení offline synchronizace (iOS)
+description: Přečtěte si, jak používat mobilní aplikace Azure App Service k ukládání do mezipaměti a synchronizaci offline dat v aplikacích iOS.
 ms.assetid: eb5b9520-0f39-4a09-940a-dadb6d940db8
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: d943213814b999f101a541abb0195a9fdd5a7423
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77459170"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>Povolení offline synchronizace s mobilními aplikacemi pro iOS
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 ## <a name="overview"></a>Přehled
-Tento kurz pokrývá offline synchronizaci s funkcí Mobile Apps Azure App Service pro iOS. Při offline synchronizaci koncoví uživatelé můžou komunikovat s mobilní aplikací a zobrazovat, přidávat nebo upravovat data, i když nemají žádné síťové připojení. Změny jsou uloženy v místní databázi. Až bude zařízení zase online, změny se synchronizují se vzdáleným back-endu.
+Tento kurz se zabývá offline synchronizací s funkcí Mobilní aplikace služby Azure App Service pro iOS. Díky offline synchronizaci mohou koncoví uživatelé pracovat s mobilní aplikací a zobrazovat, přidávat nebo upravovat data, i když nemají žádné síťové připojení. Změny jsou uloženy v místní databázi. Po přepychu zařízení se změny synchronizují se vzdáleným back-endem.
 
-Pokud je to vaše první prostředí s Mobile Apps, měli byste nejdřív dokončit kurz [Vytvoření aplikace pro iOS]. Pokud nepoužíváte stažený serverový projekt pro rychlý Start, musíte do svého projektu přidat balíčky rozšíření pro přístup k datům. Další informace o balíčcích rozšíření serveru najdete v tématu [práce s back-end serverem .NET SDK pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+Pokud je toto vaše první zkušenost s mobilními aplikacemi, měli byste nejprve dokončit výukový program [Vytvořit aplikaci pro iOS]. Pokud nepoužíváte stažený projekt serveru rychlého spuštění, je nutné do projektu přidat balíčky rozšíření pro přístup k datům. Další informace o balíčcích rozšíření serveru naleznete v [tématu Práce s back-endovým serverem .NET SDK pro mobilní aplikace Azure](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
-Další informace o funkci offline synchronizace najdete [Synchronizace offline dat v Mobile Apps].
+Další informace o funkci offline synchronizace najdete [v tématu Offline synchronizace dat v mobilních aplikacích].
 
-## <a name="review-sync"></a>Kontrola kódu synchronizace klienta
-Klientský projekt, který jste stáhli v kurzu [Vytvoření aplikace pro iOS] , už obsahuje kód, který podporuje offline synchronizaci s použitím místní databáze založené na datech. Tato část shrnuje, co už je součástí kódu kurzu. Koncepční přehled této funkce najdete [Synchronizace offline dat v Mobile Apps].
+## <a name="review-the-client-sync-code"></a><a name="review-sync"></a>Kontrola kódu synchronizace klienta
+Projekt klienta, který jste stáhli pro kurz [Vytvoření aplikace pro iOS,] již obsahuje kód, který podporuje offline synchronizaci pomocí místní databáze založené na základních datech. Tato část shrnuje, co je již zahrnuto v kódu kurzu. Koncepční přehled této funkce najdete v tématu [Offline synchronizace dat v mobilních aplikacích].
 
-Pomocí funkce synchronizace offline dat Mobile Apps můžou koncoví uživatelé pracovat s místní databází i v případě, že síť není dostupná. Chcete-li použít tyto funkce v aplikaci, inicializujte kontext synchronizace `MSClient` a odkázat na místní úložiště. Pak odkazujete na tabulku prostřednictvím rozhraní **MSSyncTable** .
+Pomocí funkce offline synchronizace dat mobilních aplikací mohou koncoví uživatelé pracovat s místní databází, i když je síť nepřístupná. Chcete-li tyto funkce používat v aplikaci, `MSClient` inicializujete kontext synchronizace a odkazujete na místní úložiště. Potom odkazujete na tabulku prostřednictvím rozhraní **MSSyncTable.**
 
-V **QSTodoService. m** (cíl-C) nebo **ToDoTableViewController. SWIFT** (SWIFT) si všimněte, že typ **synchronizace** členů je **MSSyncTable**. Offline synchronizace používá toto rozhraní tabulky synchronizace místo **MSTable**. Při použití synchronizační tabulky budou všechny operace přejít do místního úložiště a synchronizovat se pouze se vzdáleným back-end s explicitními operacemi push a Pull.
+V **QSTodoService.m** (Objective-C) nebo **ToDoTableViewController.swift** (Swift) všimněte si, že typ člena **syncTable** je **MSSyncTable**. Offline synchronizace používá toto rozhraní synchronizační tabulky místo **MSTable**. Při použití synchronizační tabulky všechny operace přejít do místního úložiště a jsou synchronizovány pouze se vzdáleným back-endem s explicitními operacemi nabízení a vytahování.
 
- Chcete-li získat odkaz na tabulku synchronizace, použijte metodu **syncTableWithName** na `MSClient`. Pokud chcete odebrat funkci offline synchronizace, místo toho použijte **tableWithName** .
+ Chcete-li získat odkaz na synchronizační tabulku, použijte `MSClient`metodu **syncTableWithName** na . Chcete-li odebrat funkce offline synchronizace, použijte místo toho **tableWithName.**
 
-Před provedením jakékoli operace tabulky je nutné inicializovat místní úložiště. Zde je příslušný kód:
+Před provedením všech operací tabulky musí být místní úložiště inicializováno. Zde je příslušný kód:
 
-* **Cíl – C**. V metodě **QSTodoService. init** :
+* **Cíl C**. V metodě **QSTodoService.init:**
 
    ```objc
    MSCoreDataStore *store = [[MSCoreDataStore alloc] initWithManagedObjectContext:context];
    self.client.syncContext = [[MSSyncContext alloc] initWithDelegate:nil dataSource:store callback:nil];
    ```    
-* **SWIFT**. V metodě **ToDoTableViewController. viewDidLoad** :
+* **Rychlý**. V metodě **ToDoTableViewController.viewDidLoad:**
 
    ```swift
    let client = MSClient(applicationURLString: "http:// ...") // URI of the Mobile App
@@ -48,11 +48,11 @@ Před provedením jakékoli operace tabulky je nutné inicializovat místní úl
    self.store = MSCoreDataStore(managedObjectContext: managedObjectContext)
    client.syncContext = MSSyncContext(delegate: nil, dataSource: self.store, callback: nil)
    ```
-   Tato metoda vytvoří místní úložiště pomocí rozhraní `MSCoreDataStore`, které poskytuje sada SDK pro Mobile Apps. Případně můžete zadat jiný místní obchod implementací protokolu `MSSyncContextDataSource`. Také první parametr **MSSyncContext** slouží k určení obslužné rutiny konfliktu. Vzhledem k tomu, že jsme prošli `nil`, získáme výchozí obslužnou rutinu konfliktu, která při jakémkoli konfliktu neprojde.
+   Tato metoda vytvoří místní úložiště `MSCoreDataStore` pomocí rozhraní, které poskytuje sada SDK mobilní aplikace. Alternativně můžete poskytnout jiné místní úložiště implementací `MSSyncContextDataSource` protokolu. První parametr **MSSyncContext** se také používá k určení obslužné rutiny konfliktu. Protože jsme `nil`prošli , získáme výchozí konflikt obslužnou rutinu, která selže na jakýkoli konflikt.
 
-Teď provedeme skutečnou operaci synchronizace a získáme data ze vzdáleného back-endu:
+Nyní provedeme skutečnou operaci synchronizace a získáme data ze vzdáleného back-endu:
 
-* **Cíl – C**. `syncData` nejprve vloží nové změny a potom zavolá **pullData** , aby získala data ze vzdáleného back-endu. Pak metoda **pullData** získá nová data, která odpovídají dotazu:
+* **Cíl C**. `syncData`nejprve odešle nové změny a pak volání **pullData** získat data ze vzdáleného back-endu. Metoda **pullData** zase získá nová data, která odpovídají dotazu:
 
    ```objc
    -(void)syncData:(QSCompletionBlock)completion
@@ -81,7 +81,7 @@ Teď provedeme skutečnou operaci synchronizace a získáme data ze vzdáleného
        }];
    }
    ```
-* **SWIFT**:
+* **Rychlý**:
    ```swift
    func onRefresh(sender: UIRefreshControl!) {
       UIApplication.sharedApplication().networkActivityIndicatorVisible = true
@@ -115,60 +115,60 @@ Teď provedeme skutečnou operaci synchronizace a získáme data ze vzdáleného
    }
    ```
 
-V rámci verze "cíl-C" v `syncData`nejprve voláme **pushWithCompletion** v kontextu synchronizace. Tato metoda je členem `MSSyncContext` (a nikoli tabulkou Sync), protože přenáší změny napříč všemi tabulkami. Na server jsou odesílány pouze záznamy, které byly místně upravovány (prostřednictvím operací CUD). Pak se zavolá pomocný **pullData** , který volá **MSSyncTable. pullWithQuery** , aby načetl Vzdálená data a uložil je do místní databáze.
+Ve verzi Objective-C `syncData`v aplikaci , nejprve voláme **pushWithCompletion** v kontextu synchronizace. Tato metoda je `MSSyncContext` členem (a nikoli samotné synchronizační tabulky), protože odesílá změny ve všech tabulkách. Na server jsou odesílány pouze záznamy, které byly určitým způsobem změněny (prostřednictvím operací CUD). Potom pomocník **pullData** se nazývá, který volá **MSSyncTable.pullWithQuery** načíst vzdálená data a uložit ji v místní databázi.
 
-V verzi SWIFT, protože nabízená operace nebyla striktně nutná, není volání **pushWithCompletion**. Pokud v kontextu synchronizace nečekají nějaké změny pro tabulku, která provádí operaci Push, vyžádat si před ní vždycky nabízenou oznámení. Pokud však máte více než jednu synchronizační tabulku, je vhodné explicitně volat metodu push, aby bylo zajištěno, že vše je konzistentní napříč souvisejícími tabulkami.
+Ve verzi Swift, protože operace push nebyla nezbytně nutná, neexistuje žádná výzva **pushWithCompletion**. Pokud existují nějaké změny čekající na vyřízení v kontextu synchronizace pro tabulku, která provádí operaci push, pull vždy vydá push první. Pokud však máte více než jednu tabulku synchronizace, je nejlepší explicitně volat push, abyste zajistili, že vše je konzistentní napříč souvisejícími tabulkami.
 
-V rámci verze cíle C i SWIFT můžete pomocí metody **pullWithQuery** určit dotaz pro filtrování záznamů, které chcete načíst. V tomto příkladu dotaz načte všechny záznamy ve vzdálené `TodoItem` tabulce.
+Ve verzích Objective-C a Swift můžete použít metodu **pullWithQuery** k určení dotazu pro filtrování záznamů, které chcete načíst. V tomto příkladu dotaz načte všechny `TodoItem` záznamy ve vzdálené tabulce.
 
-Druhým parametrem **pullWithQuery** je ID dotazu, které se používá pro *přírůstkovou synchronizaci*. Přírůstková synchronizace načte jenom záznamy, které se od poslední synchronizace změnily, pomocí časového razítka `UpdatedAt`ho záznamu (s názvem `updatedAt` v místním úložišti.) ID dotazu by měl být popisný řetězec, který je jedinečný pro každý logický dotaz ve vaší aplikaci. Chcete-li se odhlásit z přírůstkové synchronizace, předejte `nil` jako ID dotazu. Tento přístup může být potenciálně neefektivní, protože načte všechny záznamy na každé operaci vyžádání obsahu.
+Druhý parametr **pullWithQuery** je ID dotazu, který se používá pro *přírůstkovou synchronizaci*. Přírůstková synchronizace načte pouze záznamy, které byly změněny od poslední synchronizace, pomocí `UpdatedAt` časového razítka záznamu (volaného `updatedAt` v místním úložišti.) ID dotazu by měl být popisný řetězec, který je jedinečný pro každý logický dotaz ve vaší aplikaci. Chcete-li se odhlásit `nil` z přírůstkové synchronizace, předejte jako ID dotazu. Tento přístup může být potenciálně neefektivní, protože načte všechny záznamy na každou operaci vyžádat.
 
-Aplikace cíl-C se synchronizuje při změně nebo přidávání dat, když uživatel provede gesto aktualizace a při spuštění.
+Aplikace Objective-C se synchronizuje při úpravě nebo přidání dat, když uživatel provede gesto aktualizace a při spuštění.
 
-Aplikace SWIFT se synchronizuje, když uživatel provede gesto aktualizace a při spuštění.
+Aplikace Swift se synchronizuje, když uživatel provede gesto aktualizace a při spuštění.
 
-Vzhledem k tomu, že se aplikace synchronizuje pokaždé, když se upraví data (cíl-C) nebo když se aplikace spustí (objektivní-C a SWIFT), aplikace předpokládá, že je uživatel online. V pozdější části budete aplikaci aktualizovat tak, aby uživatelé mohli upravovat i v případě, že jsou offline.
+Vzhledem k tomu, že se aplikace synchronizuje při každé změně dat (Objective-C) nebo při každém spuštění aplikace (Objective-C a Swift), aplikace předpokládá, že uživatel je online. V pozdější části aktualizujete aplikaci tak, aby uživatelé mohli upravovat, i když jsou offline.
 
-## <a name="review-core-data"></a>Kontrola základního datového modelu
-Když použijete základní úložiště dat v režimu offline, musíte v datovém modelu definovat konkrétní tabulky a pole. Ukázková aplikace už obsahuje datový model se správným formátem. V této části projdeme tyto tabulky a ukážeme, jak se používají.
+## <a name="review-the-core-data-model"></a><a name="review-core-data"></a>Kontrola modelu základních dat
+Při použití úložiště core data offline, musíte definovat konkrétní tabulky a pole v datovém modelu. Ukázková aplikace již obsahuje datový model se správným formátem. V této části procházíme tyto tabulky, abychom ukázali, jak se používají.
 
-Otevřete **QSDataModel. xcdatamodeld**. Čtyři tabulky jsou definovány – tři, které používá sada SDK a ta, která se používá pro vlastní položky úkolů:
-  * MS_TableOperations: sleduje položky, které je třeba synchronizovat se serverem.
-  * MS_TableOperationErrors: sleduje všechny chyby, ke kterým dochází při offline synchronizaci.
-  * MS_TableConfig: sleduje čas poslední aktualizace poslední operace synchronizace pro všechny operace Pull.
-  * TodoItem: ukládá položky úkolů. Systémové sloupce **createdAt**, **updatedAt**a **Version** jsou volitelné systémové vlastnosti.
+Otevřete **soubor QSDataModel.xcmodeld**. Čtyři tabulky jsou definovány -- tři, které používá sada SDK a jedna, která se používá pro samotné položky s cílem:
+  * MS_TableOperations: Sleduje položky, které je třeba synchronizovat se serverem.
+  * MS_TableOperationErrors: Sleduje všechny chyby, ke kterým došlo během offline synchronizace.
+  * MS_TableConfig: Sleduje poslední aktualizovaný čas poslední operace synchronizace pro všechny operace vyžádat.
+  * TodoItem: Ukládá položky, které chcete provést. Systémové sloupce **createdAt**, **updatedAt**a **verze** jsou volitelné vlastnosti systému.
 
 > [!NOTE]
-> Sada SDK pro Mobile Apps rezervuje názvy sloupců, které začínají na " **``** ". Nepoužívejte tuto předponu s jinými než systémovými sloupci. Jinak se názvy sloupců při použití vzdáleného back-endu upraví.
+> Sada SDK pro mobilní aplikace si**``** vyhrazuje názvy sloupců začínající na " ". Nepoužívejte tuto předponu s ničím jiným než se sloupci systému. V opačném případě budou názvy sloupců změněny při použití vzdáleného back-endu.
 >
 >
 
-Pokud používáte funkci offline synchronizace, definujte tři systémové tabulky a tabulku dat.
+Při použití funkce offline synchronizace definujte tři systémové tabulky a tabulku dat.
 
 ### <a name="system-tables"></a>Systémové tabulky
 
 **MS_TableOperations**  
 
-![MS_TableOperations atributů tabulky][defining-core-data-tableoperations-entity]
+![MS_TableOperations atributy tabulky][defining-core-data-tableoperations-entity]
 
 | Atribut | Typ |
 | --- | --- |
 | id | Celé číslo 64 |
-| itemId | Řetězec |
-| properties | Binary Data |
+| Itemid | Řetězec |
+| properties | Binární data |
 | tabulka | Řetězec |
 | tableKind | Celé číslo 16 |
 
 
 **MS_TableOperationErrors**
 
- ![MS_TableOperationErrors atributů tabulky][defining-core-data-tableoperationerrors-entity]
+ ![MS_TableOperationErrors atributy tabulky][defining-core-data-tableoperationerrors-entity]
 
 | Atribut | Typ |
 | --- | --- |
 | id |Řetězec |
 | operationId |Celé číslo 64 |
-| properties |Binary Data |
+| properties |Binární data |
 | tableKind |Celé číslo 16 |
 
  **MS_TableConfig**
@@ -179,103 +179,103 @@ Pokud používáte funkci offline synchronizace, definujte tři systémové tabu
 | --- | --- |
 | id |Řetězec |
 | key |Řetězec |
-| keyType |Celé číslo 64 |
+| Keytype |Celé číslo 64 |
 | tabulka |Řetězec |
-| hodnota |Řetězec |
+| value |Řetězec |
 
 ### <a name="data-table"></a>Tabulka dat
 
-**TodoItem**
+**TodoPoložka**
 
 | Atribut | Typ | Poznámka |
 | --- | --- | --- |
-| id | Řetězec, označeno jako povinné |Primární klíč na vzdáleném úložišti |
-| Plňte | Logická hodnota | Pole pro položku |
-| text |Řetězec |Pole pro položku |
-| createdAt | Datum | volitelné Mapuje na **createdAt** systémovou vlastnost |
-| updatedAt | Datum | volitelné Mapuje na **updatedAt** systémovou vlastnost |
-| version | Řetězec | volitelné Používá se k detekci konfliktů, mapování na verzi. |
+| id | Řetězec, označený jako povinný |Primární klíč ve vzdáleném úložišti |
+| Kompletní | Logická hodnota | Pole položky v rozepsání |
+| text |Řetězec |Pole položky v rozepsání |
+| createdAt | Datum | (nepovinné) Mapy na **createdAt** vlastnost systému |
+| aktualizovánoAt | Datum | (nepovinné) Mapy na **vlastnost aktualizovatna** vlastnostsystému |
+| version | Řetězec | (nepovinné) Používá se ke zjišťování konfliktů, mapuje na verzi |
 
-## <a name="setup-sync"></a>Změna chování aplikace v synchronizaci
-V této části aplikaci upravíte tak, aby se nesynchronizoval při spuštění aplikace, nebo když vložíte a aktualizujete položky. Synchronizuje se pouze v případě, že je provedeno tlačítko pro obnovení gesta.
+## <a name="change-the-sync-behavior-of-the-app"></a><a name="setup-sync"></a>Změna chování synchronizace aplikace
+V této části upravíte aplikaci tak, aby se nesynchronizovala při spuštění aplikace nebo při vkládání a aktualizaci položek. Synchronizuje se pouze při provedení tlačítka refresh gesture.
 
-**Cíl-C**:
+**Cíl C**:
 
-1. V **QSTodoListViewController. m**změňte metodu **viewDidLoad** pro odebrání volání `[self refresh]` na konci metody. Data nejsou teď synchronizovaná se serverem při spuštění aplikace. Místo toho se synchronizuje s obsahem místního úložiště.
-2. V **QSTodoService. m**upravte definici `addItem` tak, aby se po vložení položky nesynchronizoval. Odeberte `self syncData` blok a nahraďte ho následujícím:
+1. V **Souboru QSTodoListViewController.m**změňte metodu **viewDidLoad** a odeberte volání na `[self refresh]` konci metody. Nyní nejsou data synchronizována se serverem při spuštění aplikace. Místo toho se synchronizuje s obsahem místního úložiště.
+2. V **QSTodoService.m**upravte `addItem` definici tak, aby se po vložení položky nesynchronizovala. Odstraňte `self syncData` blok a nahraďte jej následujícím:
 
    ```objc
    if (completion != nil) {
        dispatch_async(dispatch_get_main_queue(), completion);
    }
    ```
-3. Upravte definici `completeItem` jak bylo zmíněno dříve. Odeberte blok pro `self syncData` a nahraďte ho následujícím:
+3. Upravte definici, `completeItem` jak bylo uvedeno výše. Odstraňte blok `self syncData` a nahraďte jej následujícím:
    ```objc
    if (completion != nil) {
        dispatch_async(dispatch_get_main_queue(), completion);
    }
    ```
 
-**SWIFT**:
+**Rychlý**:
 
-V `viewDidLoad`v **ToDoTableViewController. SWIFT**přidejte komentář ke všem zobrazeným řádkům a zastavte synchronizaci při spuštění aplikace. V době psaní tohoto textu aplikace SWIFT TODO neaktualizuje službu, když někdo přidá nebo dokončí položku. Aktualizuje službu jenom při spuštění aplikace.
+V `viewDidLoad`aplikaci **ToDoTableViewController.swift**zakomentujte dva řádky, které jsou zde zobrazeny, a zastavte synchronizaci při spuštění aplikace. V době psaní tohoto článku aplikace Swift Todo neaktualizuje službu, když někdo přidá nebo dokončí položku. Aktualizuje službu pouze při spuštění aplikace.
 
    ```swift
   self.refreshControl?.beginRefreshing()
   self.onRefresh(self.refreshControl)
 ```
 
-## <a name="test-app"></a>Testování aplikace
-V této části se připojíte k neplatné adrese URL pro simulaci offline scénáře. Když přidáte datové položky, jsou uchovávány v místním úložišti dat, ale nejsou synchronizovány pomocí back-endu mobilní aplikace.
+## <a name="test-the-app"></a><a name="test-app"></a>Testování aplikace
+V této části se připojíte k neplatné adrese URL a simulujete offline scénář. Když přidáte datové položky, jsou uloženy v místním úložišti Core Data, ale nejsou synchronizovány s back-endem mobilní aplikace.
 
-1. Změňte adresu URL mobilní aplikace v **QSTodoService. m** na neplatnou adresu URL a spusťte aplikaci znovu:
+1. Změňte adresu URL mobilní aplikace v **souboru QSTodoService.m** na neplatnou adresu URL a aplikaci spusťte znovu:
 
-   **Cíl – C**. V QSTodoService. m:
+   **Cíl C**. V QSTodoService.m:
    ```objc
    self.client = [MSClient clientWithApplicationURLString:@"https://sitename.azurewebsites.net.fail"];
    ```
-   **SWIFT**. In ToDoTableViewController.swift:
+   **Rychlý**. V ToDoTableViewController.swift:
    ```swift
    let client = MSClient(applicationURLString: "https://sitename.azurewebsites.net.fail")
    ```
-2. Přidejte některé položky úkolů. Ukončete simulátor (nebo aplikaci vynuceně ukončete) a pak ji znovu spusťte. Ověřte, zda vaše změny přetrvávají.
+2. Přidejte některé položky, které chcete provést. Ukončete simulátor (nebo aplikaci násilně zavřete) a restartujte ji. Ověřte, zda změny přetrvávají.
 
-3. Zobrazení obsahu vzdálené tabulky **TodoItem** :
-   * V případě back-endu Node. js přejděte na [Azure Portal](https://portal.azure.com/) a v back-endu mobilní aplikace klikněte na **snadné tabulky** > **TodoItem**.  
-   * Pro back-end .NET použijte buď nástroj SQL, například SQL Server Management Studio, nebo klienta REST, jako je například Fiddler nebo post.  
+3. Zobrazení obsahu vzdálené tabulky **TodoItem:**
+   * Back-end Node.js najdete na [portálu Azure](https://portal.azure.com/) a v back-endu mobilní aplikace klikněte na **Položku Snadné tabulky** > **TodoItem**.  
+   * Pro back-end .NET použijte buď nástroj SQL, například SQL Server Management Studio, nebo klientREST, například Fiddler nebo Postman.  
 
-4. Ověřte, že nové *položky nebyly* synchronizovány se serverem.
+4. Ověřte, zda nové položky *nebyly* synchronizovány se serverem.
 
-5. Změňte adresu URL na správnou v **QSTodoService. m**a znovu spusťte aplikaci.
+5. Změňte adresu URL zpět na správnou v **QSTodoService.m**a znovu spusťte aplikaci.
 
-6. Spusťte gesto obnovení tak, že seznam položek odvedete.  
-Zobrazí se číselník průběhu.
+6. Proveďte gesto aktualizace stažením seznamu položek.  
+Zobrazí se indikátor průběhu.
 
-7. Znovu zobrazte data **TodoItem** . Nyní by se měly zobrazit nové a změněné položky úkolů.
+7. Znovu zobrazit data **TodoItem.** Nyní by měly být zobrazeny nové a změněné položky v části to-do.
 
 ## <a name="summary"></a>Souhrn
-Pro podporu funkce offline synchronizace používáme rozhraní `MSSyncTable` a inicializované `MSClient.syncContext` s místním úložištěm. V tomto případě je místní úložiště základní databází založenou na datech.
+Pro podporu funkce offline synchronizace `MSSyncTable` jsme použili rozhraní a inicializovali `MSClient.syncContext` s místním úložištěm. V tomto případě místní úložiště byla databáze založená na základních datech.
 
-Pokud používáte místní úložiště dat základního data, je nutné definovat několik tabulek se [správnými vlastnostmi systému](#review-core-data).
+Při použití místního úložiště jádrových dat je nutné definovat několik tabulek se [správnými vlastnostmi systému](#review-core-data).
 
-Operace normálního vytváření, čtení, aktualizace a odstranění (CRUD) pro mobilní aplikace fungují jako v případě, že je aplikace stále připojená, ale všechny operace nastávají v místním úložišti.
+Normální operace vytváření, čtení, aktualizace a odstraňování (CRUD) pro mobilní aplikace fungují, jako by aplikace byla stále připojená, ale všechny operace probíhají proti místnímu úložišti.
 
-Při synchronizaci místního úložiště se serverem jsme použili metodu **MSSyncTable. pullWithQuery** .
+Když jsme synchronizovali místní úložiště se serverem, použili jsme metodu **MSSyncTable.pullWithQuery.**
 
 ## <a name="additional-resources"></a>Další zdroje
-* [Synchronizace offline dat v Mobile Apps]
-* [Cloudové pokrytí: offline synchronizace v Azure Mobile Services] \(se video týká Mobile Services, ale Mobile Apps offline synchronizace funguje podobným způsobem.\)
+* [Synchronizace offline dat v mobilních aplikacích]
+* [Cloud Cover: Offline synchronizace v mobilních službách] \(Azure Video se týká mobilních služeb, ale offline synchronizace mobilních aplikací funguje podobným způsobem.\)
 
 <!-- URLs. -->
 
 
 [Vytvoření aplikace pro iOS]: app-service-mobile-ios-get-started.md
-[Synchronizace offline dat v Mobile Apps]: app-service-mobile-offline-data-sync.md
+[Synchronizace offline dat v mobilních aplikacích]: app-service-mobile-offline-data-sync.md
 
 [defining-core-data-tableoperationerrors-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-tableoperationerrors-entity.png
 [defining-core-data-tableoperations-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-tableoperations-entity.png
 [defining-core-data-tableconfig-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-tableconfig-entity.png
 [defining-core-data-todoitem-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-todoitem-entity.png
 
-[Cloudové pokrytí: offline synchronizace v Azure Mobile Services]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
+[Cloud Cover: Offline synchronizace v mobilních službách Azure]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday: Offline-enabled apps in Azure Mobile Services]: https://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/

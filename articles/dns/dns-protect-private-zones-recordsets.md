@@ -1,6 +1,6 @@
 ---
-title: Ochrana soukromých Zóny DNS a záznamů – Azure DNS
-description: V této cestě výukového kurzu začnete chránit soukromé zóny DNS a sady záznamů v Microsoft Azure DNS.
+title: Ochrana privátních zón a záznamů DNS – Azure DNS
+description: V tomto studijním programu můžete začít chránit privátní zóny DNS a sady záznamů v Microsoft Azure DNS.
 services: dns
 author: asudbring
 ms.service: dns
@@ -8,37 +8,37 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: allensu
 ms.openlocfilehash: da94c9aa97483ab5792e917d6a8f60f846b0722e
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77473061"
 ---
-# <a name="how-to-protect-private-dns-zones-and-records"></a>Postup ochrany privátních zón a záznamů DNS
+# <a name="how-to-protect-private-dns-zones-and-records"></a>Jak chránit soukromé zóny DNS a záznamy
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Privátní DNS zóny a záznamy jsou důležité prostředky. Odstranění zóny DNS nebo jednoho záznamu DNS může mít za následek výpadek služby. Je důležité, aby zóny a záznamy DNS byly chráněné před neoprávněnými nebo neúmyslnými změnami.
+Soukromé zóny DNS a záznamy jsou kritické prostředky. Odstranění zóny DNS nebo jednoho záznamu DNS může vést k výpadku služby. Je důležité, aby zóny a záznamy DNS byly chráněny před neoprávněnými nebo náhodnými změnami.
 
-Tento článek vysvětluje, jak Azure DNS umožňuje chránit privátní zóny DNS a záznamy s těmito změnami.  K dispozici jsou dvě výkonné funkce cenných papírů, které poskytuje Azure Resource Manager: [řízení přístupu na základě role](../role-based-access-control/overview.md) a [zámky prostředků](../azure-resource-manager/management/lock-resources.md).
+Tento článek vysvětluje, jak Azure DNS umožňuje chránit vaše soukromé zóny DNS a záznamy před těmito změnami.  Používáme dvě výkonné funkce cenných papírů poskytované správcem prostředků Azure: [řízení přístupu na základě rolí](../role-based-access-control/overview.md) a [uzamčení prostředků](../azure-resource-manager/management/lock-resources.md).
 
 ## <a name="role-based-access-control"></a>Řízení přístupu na základě role
 
-Správa na Access Control základě rolí v Azure (RBAC) umožňuje jemně odstupňovanou správu přístupu pro uživatele, skupiny a prostředky Azure. Pomocí RBAC můžete udělit úroveň přístupu, kterou uživatelé potřebují. Další informace o tom, jak RBAC pomáhá spravovat přístup, najdete v tématu [co je Access Control na základě rolí](../role-based-access-control/overview.md).
+Řízení přístupu na základě rolí Azure (RBAC) umožňuje jemně odstupňovanou správu přístupu pro uživatele, skupiny a prostředky Azure. S RBAC můžete udělit úroveň přístupu, kterou uživatelé potřebují. Další informace o tom, jak rbac pomáhá spravovat přístup, naleznete [v tématu Co je řízení přístupu na základě rolí](../role-based-access-control/overview.md).
 
-### <a name="the-private-dns-zone-contributor-role"></a>Role Přispěvatel Privátní DNS zóny
+### <a name="the-private-dns-zone-contributor-role"></a>Role přispěvatele zóny DNS soukromého DNS
 
-Role Přispěvatel Privátní DNS zóny je předdefinovaná role pro správu privátních prostředků DNS. Tato role použitá pro uživatele nebo skupinu jim umožní spravovat privátní prostředky DNS.
+Role přispěvatele zóny DNS je předdefinovaná role pro správu soukromých prostředků DNS. Tato role použitá pro uživatele nebo skupinu umožňuje spravovat soukromé prostředky DNS.
 
-Skupina prostředků *myPrivateDNS* obsahuje pět zón pro společnost Contoso Corporation. Udělení oprávnění přispěvatele zóny Privátní DNS Správce DNS pro tuto skupinu prostředků umožňuje úplné řízení těchto zón DNS. Zabraňuje udělení zbytečných oprávnění. Správce DNS nemůže vytvářet ani zastavovat virtuální počítače.
+Skupina prostředků *myPrivateDNS* obsahuje pět zón pro contoso Corporation. Udělení oprávnění správce DNS Privátní dns zóny přispěvatele pro tuto skupinu prostředků, umožňuje úplnou kontrolu nad těmito zónami DNS. Zabraňuje udělení zbytečných oprávnění. Správce DNS nemůže vytvářet nebo zastavovat virtuální počítače.
 
-Nejjednodušší způsob, jak přiřadit oprávnění RBAC [, je prostřednictvím Azure Portal](../role-based-access-control/role-assignments-portal.md).  
+Nejjednodušší způsob, jak přiřadit oprávnění RBAC je [prostřednictvím portálu Azure](../role-based-access-control/role-assignments-portal.md).  
 
-Otevřete pro skupinu prostředků položku **řízení přístupu (IAM)** , vyberte **Přidat**a potom vyberte roli **Přispěvatel privátní DNSová zóna** . Vyberte požadované uživatele nebo skupiny, kterým chcete udělit oprávnění.
+Otevřete **ovládací prvek přístupu (IAM)** pro skupinu prostředků, vyberte **Přidat**a vyberte roli **přispěvatele zóny SOUKROMÉ DNS.** Vyberte požadované uživatele nebo skupiny, kterým chcete udělit oprávnění.
 
-![Úroveň skupiny prostředků RBAC prostřednictvím Azure Portal](./media/dns-protect-private-zones-recordsets/rbac1.png)
+![RBAC na úrovni skupiny prostředků prostřednictvím portálu Azure](./media/dns-protect-private-zones-recordsets/rbac1.png)
 
-Oprávnění lze také [udělit pomocí Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
+Oprávnění lze [také udělit pomocí Azure PowerShellu](../role-based-access-control/role-assignments-powershell.md):
 
 ```azurepowershell-interactive
 # Grant 'Private DNS Zone Contributor' permissions to all zones in a resource group
@@ -50,7 +50,7 @@ $rol = "Private DNS Zone Contributor"
 New-AzRoleAssignment -SignInName $usr -RoleDefinitionName $rol -ResourceGroupName $rsg
 ```
 
-Ekvivalentní příkaz je dostupný taky [prostřednictvím Azure CLI](../role-based-access-control/role-assignments-cli.md):
+Ekvivalentní příkaz je také [k dispozici prostřednictvím rozhraní příkazového příkazu Azure](../role-based-access-control/role-assignments-cli.md):
 
 ```azurecli-interactive
 # Grant 'Private DNS Zone Contributor' permissions to all zones in a resource group
@@ -61,17 +61,17 @@ az role assignment create \
 --resource-group "<resource group name>"
 ```
 
-### <a name="private-zone-level-rbac"></a>RBAC úrovně privátní zóny
+### <a name="private-zone-level-rbac"></a>RBAC na úrovni soukromé zóny
 
-Pravidla Azure RBAC se dají použít u předplatného, skupiny prostředků nebo samostatného prostředku. Tento prostředek může být jednotlivou zónou DNS nebo individuální sada záznamů.
+Pravidla Azure RBAC lze použít pro předplatné, skupinu prostředků nebo pro jednotlivé prostředky. Tento prostředek může být jednotlivá zóna DNS nebo jednotlivá sada záznamů.
 
-Například skupina prostředků *myPrivateDNS* obsahuje zónu *Private.contoso.com* a podzónu *Customers.Private.contoso.com*. Pro každý účet zákazníka se vytvoří záznamy CNAME. Účet správce, který se používá ke správě záznamů CNAME, má přiřazená oprávnění k vytváření záznamů v zóně *Customers.Private.contoso.com* . Účet může spravovat jenom *Customers.Private.contoso.com* .
+Například skupina prostředků *myPrivateDNS* obsahuje *zónu private.contoso.com* a podzónu *customers.private.contoso.com*. Záznamy CNAME jsou vytvářeny pro každý účet odběratele. Účtu správce používanému ke správě záznamů CNAME jsou přiřazena oprávnění k vytváření záznamů v zóně *customers.private.contoso.com.* Účet může spravovat pouze *customers.private.contoso.com.*
 
-Oprávnění RBAC na úrovni zóny je možné udělit prostřednictvím Azure Portal.  Otevřete **řízení přístupu (IAM)** pro zónu, vyberte **Přidat**a potom vyberte roli **Přispěvatel privátní DNS zóna** . Vyberte požadované uživatele nebo skupiny, kterým chcete udělit oprávnění.
+Oprávnění RBAC na úrovni zóny lze udělit prostřednictvím portálu Azure.  Otevřete **ovládací prvek přístupu (IAM)** pro zónu, vyberte **Přidat**a vyberte roli **přispěvatele zóny SOUKROMÉ DNS.** Vyberte požadované uživatele nebo skupiny, kterým chcete udělit oprávnění.
 
-![RBAC úrovně zóny DNS prostřednictvím Azure Portal](./media/dns-protect-private-zones-recordsets/rbac2.png)
+![RBAC na úrovni zóny DNS prostřednictvím portálu Azure](./media/dns-protect-private-zones-recordsets/rbac2.png)
 
-Oprávnění lze také [udělit pomocí Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
+Oprávnění lze [také udělit pomocí Azure PowerShellu](../role-based-access-control/role-assignments-powershell.md):
 
 ```azurepowershell-interactive
 # Grant 'Private DNS Zone Contributor' permissions to a specific zone
@@ -85,7 +85,7 @@ $rsc = "Microsoft.Network/privateDnsZones"
 New-AzRoleAssignment -SignInName $usr -RoleDefinitionName $rol -ResourceGroupName $rsg -ResourceName $zon -ResourceType $rsc
 ```
 
-Ekvivalentní příkaz je dostupný taky [prostřednictvím Azure CLI](../role-based-access-control/role-assignments-cli.md):
+Ekvivalentní příkaz je také [k dispozici prostřednictvím rozhraní příkazového příkazu Azure](../role-based-access-control/role-assignments-cli.md):
 
 ```azurecli-interactive
 # Grant 'Private DNS Zone Contributor' permissions to a specific zone
@@ -96,17 +96,17 @@ az role assignment create \
 --scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/privateDnsZones/<zone name>/"
 ```
 
-### <a name="record-set-level-rbac"></a>Nastavení RBAC na úrovni sady záznamů
+### <a name="record-set-level-rbac"></a>Úroveň nastavení záznamu RBAC
 
-Oprávnění se aplikují na úrovni sady záznamů.  Uživateli je uděleno řízení k záznamům, které potřebují, a nelze provádět žádné další změny.
+Oprávnění jsou použita na úrovni sady záznamů.  Uživateli je udělen ovládací prvek pro položky, které potřebují, a nemůže provádět žádné další změny.
 
-Oprávnění RBAC na úrovni záznamů můžete nakonfigurovat prostřednictvím Azure Portal pomocí tlačítka **Access Control (IAM)** na stránce sada záznamů:
+Oprávnění RBAC na úrovni záznamu lze nakonfigurovat prostřednictvím portálu Azure pomocí tlačítka **Řízení přístupu (IAM)** na stránce sady záznamů:
 
-![Zaznamenání RBAC na úrovni nastavení pomocí Azure Portal](./media/dns-protect-private-zones-recordsets/rbac3.png)
+![Nastavení záznamu RBAC na úrovni prostřednictvím portálu Azure](./media/dns-protect-private-zones-recordsets/rbac3.png)
 
-![Zaznamenání RBAC na úrovni nastavení pomocí Azure Portal](./media/dns-protect-private-zones-recordsets/rbac4.png)
+![Nastavení záznamu RBAC na úrovni prostřednictvím portálu Azure](./media/dns-protect-private-zones-recordsets/rbac4.png)
 
-[Pomocí Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)lze také udělit oprávnění RBAC na úrovni záznamů a nastavení:
+Oprávnění RBAC na úrovni sady záznamů lze také [udělit pomocí prostředí Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
 
 ```azurepowershell-interactive
 # Grant permissions to a specific record set
@@ -119,7 +119,7 @@ $sco =
 New-AzRoleAssignment -SignInName $usr -RoleDefinitionName $rol -Scope $sco
 ```
 
-Ekvivalentní příkaz je dostupný taky [prostřednictvím Azure CLI](../role-based-access-control/role-assignments-cli.md):
+Ekvivalentní příkaz je také [k dispozici prostřednictvím rozhraní příkazového příkazu Azure](../role-based-access-control/role-assignments-cli.md):
 
 ```azurecli-interactive
 # Grant permissions to a specific record set
@@ -132,11 +132,11 @@ az role assignment create \
 
 ### <a name="custom-roles"></a>Vlastní role
 
-Integrovaná role přispěvatele Privátní DNS zóny umožňuje úplnou kontrolu nad prostředkem DNS. Je možné vytvořit vlastní role Azure pro zajištění jemnějšího řízení.
+Integrovaná role přispěvatele zóny DNS umožňuje plnou kontrolu nad prostředkem DNS. Je možné vytvořit vlastní role Azure poskytovat jemnější odstupňované řízení.
 
-Účtu, který se používá ke správě záznamů CNAME, je uděleno oprávnění pouze ke správě záznamů CNAME. Účet nemůže měnit záznamy jiných typů. Účet nemůže provádět operace na úrovni zóny, jako je například odstranění zóny.
+Účet, který se používá ke správě CNAMEs je uděleno oprávnění ke správě cname záznamy pouze. Účet nemůže upravovat záznamy jiných typů. Účet nemůže provést operace na úrovni zóny, jako je odstranění zóny.
 
-Následující příklad ukazuje definici vlastní role pro správu pouze záznamů CNAME:
+Následující příklad ukazuje vlastní definici role pouze pro správu záznamů CNAME:
 
 ```json
 {
@@ -162,15 +162,15 @@ Následující příklad ukazuje definici vlastní role pro správu pouze zázna
 }
 ```
 
-Vlastnost Actions definuje následující oprávnění specifická pro službu DNS:
+Vlastnost Actions definuje následující oprávnění specifická pro DNS:
 
-* `Microsoft.Network/privateDnsZones/CNAME/*` uděluje plnou kontrolu nad záznamy CNAME.
-* `Microsoft.Network/privateDNSZones/read` uděluje oprávnění ke čtení privátních zón DNS, ale ne jejich úpravách, což vám umožní zobrazit zónu, ve které se vytváří záznam CNAME.
+* `Microsoft.Network/privateDnsZones/CNAME/*`uděluje plnou kontrolu nad záznamy CNAME
+* `Microsoft.Network/privateDNSZones/read`uděluje oprávnění ke čtení soukromých zón DNS, ale nikoli k jejich úpravám, což umožňuje zobrazit zónu, ve které je cname vytvářen.
 
 > [!NOTE]
-> Použití vlastní role RBAC k zamezení odstranění sad záznamů, zatímco jejich aktualizace je neefektivním ovládacím prvkem. Zabraňuje odstranění sad záznamů, ale nebrání jejich úpravám.  Mezi povolené úpravy patří přidávání a odebírání záznamů ze sady záznamů, včetně odebrání všech záznamů, které ponechávají prázdnou sadu záznamů. To má stejný účinek jako odstranění sady záznamů z pohledu na překlad DNS.
+> Použití vlastní role RBAC zabránit odstranění sady záznamů a zároveň umožňuje jejich aktualizaci není efektivní ovládací prvek. Zabraňuje odstranění sad záznamů, ale nebrání jejich úpravám.  Povolené úpravy zahrnují přidání a odebrání záznamů ze sady záznamů, včetně odebrání všech záznamů, aby byla sada prázdných záznamů zobrazena. To má stejný účinek jako odstranění sady záznamů z hlediska rozlišení DNS.
 
-Vlastní definice rolí nejdou aktuálně definovat prostřednictvím Azure Portal. Vlastní role na základě této definice role se dá vytvořit pomocí Azure PowerShell:
+Vlastní definice rolí nelze aktuálně definovat prostřednictvím portálu Azure. Vlastní roli založenou na této definici role lze vytvořit pomocí Azure PowerShellu:
 
 ```azurepowershell-interactive
 # Create new role definition based on input file
@@ -178,7 +178,7 @@ Vlastní definice rolí nejdou aktuálně definovat prostřednictvím Azure Port
 New-AzRoleDefinition -InputFile <file path>
 ```
 
-Dá se taky vytvořit prostřednictvím Azure CLI:
+Lze jej také vytvořit prostřednictvím příkazového příkazového příkazu k dispozici azure:
 
 ```azurecli-interactive
 # Create new role definition based on input file
@@ -186,25 +186,25 @@ Dá se taky vytvořit prostřednictvím Azure CLI:
 az role create -inputfile <file path>
 ```
 
-Roli je pak možné přiřadit stejným způsobem jako předdefinované role, jak je popsáno výše v tomto článku.
+Roli pak lze přiřadit stejným způsobem jako předdefinované role, jak je popsáno výše v tomto článku.
 
-Další informace o tom, jak vytvářet, spravovat a přiřazovat vlastní role, najdete v tématu [vlastní role v Azure RBAC](../role-based-access-control/custom-roles.md).
+Další informace o tom, jak vytvářet, spravovat a přiřazovat vlastní role, najdete [v tématu Vlastní role v Azure RBAC](../role-based-access-control/custom-roles.md).
 
 ## <a name="resource-locks"></a>Zámky prostředků
 
-Azure Resource Manager podporuje jiný typ řízení zabezpečení, schopnost uzamknout prostředky. V prostředku se aplikují zámky prostředků, které jsou platné pro všechny uživatele a role. Další informace najdete v tématu [Zamknutí prostředků pomocí Azure Resource Manageru](../azure-resource-manager/management/lock-resources.md).
+Azure Resource Manager podporuje jiný typ ovládacího prvku zabezpečení, možnost uzamknout prostředky. Uzamčení prostředků jsou použity pro prostředek a jsou účinné ve všech uživatelů a rolí. Další informace najdete v tématu [Zamknutí prostředků pomocí Azure Resource Manageru](../azure-resource-manager/management/lock-resources.md).
 
-Existují dva typy uzamčení prostředků: **CanNotDelete** a **ReadOnly**. Tyto typy zámků se dají použít buď na zónu Privátní DNS, nebo na jednotlivé sady záznamů.  Následující části popisují několik běžných scénářů a jejich podporu pomocí zámků prostředků.
+Existují dva typy uzamčení prostředků: **CanNotDelete** a **ReadOnly**. Tyto typy zámků lze použít buď na soukromou zónu DNS, nebo na jednotlivé sady záznamů.  Následující části popisují několik běžných scénářů a jak je podporovat pomocí uzamčení prostředků.
 
 ### <a name="protecting-against-all-changes"></a>Ochrana před všemi změnami
 
-Aby nedocházelo k provedeným změnám, aplikujte na zónu zámek jen pro čtení. Tento zámek zabraňuje vytváření nových sad záznamů a existující sady záznamů z úprav nebo odstranění.
+Chcete-li zabránit provádění změn, použijte zámek Jen pro čtení zóny. Tento zámek zabraňuje vytváření nových sad záznamů a úpravám nebo odstraňování existujících sad záznamů.
 
-Zámky prostředků na úrovni zóny lze vytvořit prostřednictvím Azure Portal.  Na stránce zóna DNS vyberte **zámky**a pak vyberte **+ Přidat**:
+Uzamčení prostředků na úrovni zóny lze vytvořit prostřednictvím portálu Azure.  Na stránce zóny DNS vyberte **Zámky**a pak vyberte **+Přidat**:
 
-![Zámky prostředků na úrovni zóny prostřednictvím Azure Portal](./media/dns-protect-private-zones-recordsets/locks1.png)
+![Uzamčení prostředků na úrovni zóny prostřednictvím portálu Azure](./media/dns-protect-private-zones-recordsets/locks1.png)
 
-Zámky prostředků na úrovni zóny je také možné vytvořit prostřednictvím [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock?view=latest):
+Uzamčení prostředků na úrovni zóny lze také vytvořit prostřednictvím [Prostředí Azure PowerShell](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock?view=latest):
 
 ```azurepowershell-interactive
 # Lock a DNS zone
@@ -218,7 +218,7 @@ $rsg = "<resource group name>"
 New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rsc -ResourceType $rty -ResourceGroupName $rsg
 ```
 
-Ekvivalentní příkaz je dostupný taky [prostřednictvím Azure CLI](https://docs.microsoft.com/cli/azure/lock?view=azure-cli-latest#az-lock-create):
+Ekvivalentní příkaz je také [k dispozici prostřednictvím rozhraní příkazového příkazu Azure](https://docs.microsoft.com/cli/azure/lock?view=azure-cli-latest#az-lock-create):
 
 ```azurecli-interactive
 # Lock a DNS zone
@@ -233,14 +233,14 @@ az lock create \
 ```
 ### <a name="protecting-individual-records"></a>Ochrana jednotlivých záznamů
 
-Chcete-li zabránit existující sadě záznamů DNS proti úpravám, použijte k sadě záznamů zámek ReadOnly.
+Chcete-li zabránit existujícímu záznamu DNS nastaveného proti úpravám, použijte na sadu záznamů zámek Jen pro čtení.
 
 > [!NOTE]
-> Použití zámku CanNotDelete na sadu záznamů není platným ovládacím prvkem. Brání tomu, aby se sada záznamů odstranila, ale nebrání její úpravě.  Mezi povolené úpravy patří přidávání a odebírání záznamů ze sady záznamů, včetně odebrání všech záznamů, které ponechávají prázdnou sadu záznamů. To má stejný účinek jako odstranění sady záznamů z pohledu na překlad DNS.
+> Použití zámku CanNotDelete na sadu záznamů není účinnýovládací prvek. Zabrání odstranění sady záznamů, ale nezabrání jeho úpravám.  Povolené úpravy zahrnují přidání a odebrání záznamů ze sady záznamů, včetně odebrání všech záznamů, aby byla sada prázdných záznamů zobrazena. To má stejný účinek jako odstranění sady záznamů z hlediska rozlišení DNS.
 
-Zámky prostředků na úrovni sady záznamů se teď dají konfigurovat jenom pomocí Azure PowerShell.  Nejsou podporované v Azure Portal ani v rozhraní příkazového řádku Azure CLI.
+Uzamčení prostředků na úrovni sady záznamů lze aktuálně nakonfigurovat jenom pomocí Azure PowerShellu.  Nejsou podporované na webu Azure Portal nebo Azure CLI.
 
-Azure Powershell
+Azure PowerShell
 
 ```azurepowershell-interactive
 # Lock a DNS record set
@@ -253,13 +253,13 @@ $rsg = "<resource group name>"
 
 New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rnm -ResourceType $rty -ResourceGroupName $rsg
 ```
-### <a name="protecting-against-zone-deletion"></a>Ochrana před odstraněním zóny
+### <a name="protecting-against-zone-deletion"></a>Ochrana proti odstranění zóny
 
-Když se zóna v Azure DNS odstraní, odstraní se všechny sady záznamů v zóně.  Tuto operaci nelze vrátit zpět. Neúmyslné odstranění kritické zóny má za důsledek značný dopad na chod firmy.  Je důležité chránit před náhodným odstraněním zóny.
+Když se zóna odstraní ve službě Azure DNS, odstraní se všechny sady záznamů v zóně.  Tuto operaci nelze vrátit zpět. Náhodné odstranění kritické zóny může mít významný obchodní dopad.  Je důležité chránit před náhodným odstraněním zóny.
 
-Použití zámku CanNotDelete pro zónu brání odstranění zóny. Zámky jsou děděny podřízenými prostředky. Zámek zabraňuje odstranění všech sad záznamů v zóně. Jak je popsáno výše v poznámce, je neúčinná, protože záznamy je stále možné odebrat z existujících sad záznamů.
+Použití zámku CanNotDelete na zónu zabrání odstranění zóny. Zámky jsou zděděny podřízenými prostředky. Zámek zabrání odstranění všech sad záznamů v zóně. Jak je popsáno ve výše uvedené poznámce, je neefektivní, protože záznamy lze stále odebrat ze stávajících sad záznamů.
 
-Alternativně můžete použít CanNotDelete zámek pro sadu záznamů v zóně, jako je například sada záznamů SOA. Zóna se neodstraní, aniž by se zároveň odstranily sady záznamů. Tento zámek chrání před odstraněním zóny a zároveň povoluje, aby byly sady záznamů v rámci zóny volně upravovány. Pokud se pokusíte odstranit zónu, Azure Resource Manager detekuje toto odebrání. Odebrání by také odstranilo sadu záznamů SOA, Azure Resource Manager blokuje volání, protože je záznam SOA uzamčen.  Neodstranily se žádné sady záznamů.
+Jako alternativu použijte zámek CanNotDelete na záznam nastavený v zóně, jako je například sada záznamů SOA. Zóna se neodstraní, aniž by byla odstraněna také sada záznamů. Tento zámek chrání před odstraněním zóny a přitom stále umožňuje volně upravovat sady záznamů v rámci zóny. Pokud dojde k pokusu o odstranění zóny, Azure Resource Manager zjistí toto odebrání. Odebrání by také odstranit sadu záznamů SOA, Azure Resource Manager blokuje volání, protože SOA je uzamčen.  Nebudou odstraněny žádné sady záznamů.
 
 Následující příkaz prostředí PowerShell vytvoří zámek CanNotDelete proti záznamu SOA dané zóny:
 
@@ -276,16 +276,16 @@ New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rnm -ResourceTy
 ```
 Další možností, jak zabránit náhodnému odstranění zóny, je použití vlastní role. Tato role zajišťuje, že účty používané ke správě zón nemají oprávnění k odstranění zóny. 
 
-Pokud budete potřebovat odstranit zónu, můžete vyhovět dvěma kroky odstranit:
+Pokud potřebujete odstranit zónu, můžete vynutit odstranění ve dvou krocích:
 
- - Nejdřív udělte oprávnění k odstranění zóny.
- - Potom udělte oprávnění k odstranění zóny.
+ - Nejprve udělit oprávnění k odstranění zóny
+ - Za druhé udělte oprávnění k odstranění zóny.
 
-Vlastní role funguje pro všechny zóny, ke kterým přistupovaly tyto účty. Účty s oprávněními k odstranění zóny, jako je vlastník předplatného, můžou pořád omylem odstranit zónu.
+Vlastní role funguje pro všechny zóny přístupné těmito účty. Účty s oprávněními k odstranění zóny, jako je například vlastník předplatného, mohou zónu stále omylem odstranit.
 
-Současně je možné použít oba přístupy – zámky prostředků i vlastní role – ve stejnou dobu jako přístup k ochraně zóny DNS při důkladném podrobnějším přístupu.
+Je možné použít oba přístupy - uzamčení prostředků a vlastní role - současně jako obranný přístup k ochraně zóny DNS.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o práci s RBAC najdete v tématu [Začínáme se správou přístupu v Azure Portal](../role-based-access-control/overview.md).
-* Další informace o práci s zámky prostředků najdete v tématu [uzamčení prostředků pomocí Azure Resource Manager](../azure-resource-manager/management/lock-resources.md).
+* Další informace o práci s RBAC najdete [v tématu Začínáme se správou přístupu na webu Azure Portal](../role-based-access-control/overview.md).
+* Další informace o práci se zámky prostředků najdete v [tématu Uzamčení prostředků pomocí Správce prostředků Azure](../azure-resource-manager/management/lock-resources.md).

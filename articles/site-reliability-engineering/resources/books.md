@@ -1,6 +1,6 @@
 ---
-title: Seznam knih SRE | Microsoft Docs
-description: Zvyšte vaše znalosti o řízení spolehlivosti sítě pomocí těchto knih
+title: Seznam knih SRE | Dokumenty společnosti Microsoft
+description: Zvyšte své znalosti o spolehlivosti webu inženýrství s těmito knihami
 author: dnblankedelman
 manager: efreeman
 ms.service: site-reliability-engineering
@@ -8,26 +8,26 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: dnb
 ms.openlocfilehash: 4a350953a5755f24c938011ae4b98e1e35e094e8
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77599038"
 ---
-# <a name="books-about-site-reliability-engineering"></a>Knihy o analýze spolehlivosti webů
+# <a name="books-about-site-reliability-engineering"></a>Knihy o technice spolehlivosti webu
 
-Pro podrobnější informace o technikě SRE (site respolehlivost) je nejlepším zdrojem trojice knihy, které byly publikovány na předmětu.
+Pro podrobnější informace o spolehlivosti webu inženýrství (SRE), nejlepším zdrojem je trio knih, které byly zveřejněny na toto téma
 
-- Správa [_spolehlivosti webů: jak Google spouští provozní systémy_](https://shop.oreilly.com/product/0636920041528.do) (známé jako "kniha SRE")
-- [_Sešit spolehlivosti lokality: praktické způsoby implementace SRE_](https://shop.oreilly.com/product/0636920132448.do) (známé jako "sešit SRE")
-- [_Hledání SRE: konverzace o spouštění produkčních systémů ve velkém měřítku_](https://shop.oreilly.com/product/0636920063964.do)
+- [_Site Reliability Engineering: How Google Runs Production Systems_](https://shop.oreilly.com/product/0636920041528.do) (Site Reliability Engineering: Jak Google provozuje produkční systémy, známý také jako „The SRE Book“)
+- [_The Site Reliability Workbook: Practical Ways to Implement SRE_](https://shop.oreilly.com/product/0636920132448.do) (Pracovní sešit SRE: Praktické způsoby implementace SRE, známá také jako „The SRE Workbook“)
+- [_Seeking SRE: Conversations About Running Production Systems at Scale_](https://shop.oreilly.com/product/0636920063964.do) (Hledání SRE: Rozhovory o provozování produkčních systémů ve velkém)
 
-Každá z těchto knih nabízí důležitou sadu informací:
+Každá z těchto knih přináší důležitou sadu informací:
 
-- Kniha SRE – poskytuje podrobné vysvětlení způsobu, jakým Google implementuje SRE během let.
+- SRE Book podrobně vysvětluje, jak společnost Google v průběhu let implementovala SRE.
 
-- Sešit SRE – Doprovodný průvodce pro knihu SRE, který poskytuje podrobnější vysvětlení not pouze "What" SRE na webu Google a na několika dalších místech, ale "How" a "Proč".
+- SRE Workbook jako doplněk SRE Book poskytuje podrobnější odpovědi nejen na otázku „Co?“ ohledně SRE v Googlu a na několika dalších pracovištích, ale i na otázky „Jak?“ a „Proč?“.
 
-- Hledání SRE – poskytuje více obsáhlém SRE světa nad rámec jeho původu, včetně informací o tom, jak byl implementován v jiných prostředích.
+- Hledání SRE nabízí hlubší pohled do světa SRE, včetně informací o tom, jak bylo implementováno do jiných prostředí.
 
-Vzhledem k tomu, že tyto knihy popisují prostředí, prostředí a jazykovou verzi organizací, které se mohou nebo nemusí podobat tomu, na kterém jste v, je důležité si tyto knihy přečíst s kritickým okem. Při čtení se pokuste určit, které postupy by nebo neuspěly ve vaší organizaci. Určení informací, které jste si jistí, může nějakou dobu trvat. Zamyslete se nad tím, které části kultury a hodnot vaší organizace můžou podporovat SRE práci, jak je popsáno a která by mohla být náročnější. Pečlivá iterativní přechodua SRE téměř vždy dosáhne lepších výsledků než při vytváření duplicitních dat, která se v těchto knihách čtou.
+Vzhledem k tomu, že tyto knihy popisují zkušenosti, prostředí a kulturu organizací, které se mohou nebo nemusí podobat tomu, ve které se nacházíte, je důležité číst tyto knihy kritickým okem. Při čtení se pokuste určit, které postupy by ve vaší organizaci uspěly nebo nebyly úspěšné. Nějakou dobu trvá, než poznáte, které informace jsou pro vás přínosné. Zamyslete se, která část vaší firemní kultury a hodnot již v zásadě je v souladu s činnostmi SRE tak, jak jsme je popsali, a v jakých oblastech by byla implementace náročnější. Pečlivé, iterativní přijetí SRE bude téměř vždy přinést lepší výsledky, než velkoobchodní duplikace něco, co čtete v těchto knihách.
