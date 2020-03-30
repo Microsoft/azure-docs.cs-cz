@@ -1,6 +1,6 @@
 ---
-title: Přidání nebo odebrání členů skupiny – Azure Active Directory | Dokumentace Microsoftu
-description: Pokyny ohledně toho, jak přidat nebo odebrat členy ze skupiny pomocí služby Azure Active Directory.
+title: Přidání nebo odebrání členů skupiny – Služba Azure Active Directory | Dokumenty společnosti Microsoft
+description: Pokyny, jak přidat nebo odebrat členy ze skupiny pomocí služby Azure Active Directory.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -14,46 +14,46 @@ ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f1c83c57be63ae9e2a4d4113accaefe8a2c2b525
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68561972"
 ---
 # <a name="add-or-remove-group-members-using-azure-active-directory"></a>Přidání nebo odebrání členů skupiny pomocí služby Azure Active Directory
-Pomocí Azure Active Directory, můžete pokračovat k přidání a odebrání členů skupiny.
+Pomocí služby Azure Active Directory můžete pokračovat v přidávání a odebírání členů skupiny.
 
-## <a name="to-add-group-members"></a>Chcete-li přidat členy skupiny
+## <a name="to-add-group-members"></a>Přidání členů skupiny
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí účtu globálního správce daného adresáře.
 
-2. Vyberte **Azure Active Directory**a pak vyberte **skupiny**.
+2. Vyberte **Službu Azure Active Directory**a pak vyberte **Skupiny**.
 
-3. Z **skupiny – všechny skupiny** stránky, vyhledejte a vyberte skupinu, kterou chcete přidat člen, který chcete. V takovém případě použijte naše dříve vytvořenou skupinu **zásady MDM - západní**.
+3. Na stránce **Skupiny – všechny skupiny** vyhledejte a vyberte skupinu, do které chcete člena přidat. V takovém případě použijte naši dříve vytvořenou skupinu **MDM policy - West**.
 
-    ![Stránka skupiny – všechny skupiny, zvýrazněným názvem skupiny](media/active-directory-groups-members-azure-portal/group-all-groups-screen.png)
+    ![Stránka Skupiny -Všechny skupiny, zvýrazněný název skupiny](media/active-directory-groups-members-azure-portal/group-all-groups-screen.png)
 
 4. Na stránce s **přehledem skupiny MDM policy – West** vyberte **Členové** v oblasti **Spravovat**.
 
-    ![Zásady MDM – stránka s přehledem – Západ, se zvýrazněnou možností členy](media/active-directory-groups-members-azure-portal/group-overview-blade.png)
+    ![Zásady MDM – stránka Západní přehled se zvýrazněnou možností Členové](media/active-directory-groups-members-azure-portal/group-overview-blade.png)
 
-5. Vyberte **přidat členy**a pak vyhledejte a vyberte jednotlivé členy, které chcete přidat do skupiny, a klikněte na tlačítko **vyberte**.
+5. Vyberte **Přidat členy**a pak prohledejte a vyberte všechny členy, které chcete přidat do skupiny, a pak zvolte **Vybrat**.
 
-    Zobrazí se zpráva s upozorněním, že členové se úspěšně přidaly.
+    Zobrazí se zpráva, že členové byli úspěšně přidáni.
 
-    ![Přidat stránku členy s hledá člen zobrazí](media/active-directory-groups-members-azure-portal/update-members.png)
+    ![Přidat stránku členů se zobrazeným vyhledávaným členem](media/active-directory-groups-members-azure-portal/update-members.png)
 
-6. Aktualizujte obrazovku, aby se zobrazily všechny názvy členů přidán do skupiny.
+6. Aktualizujte obrazovku, aby se zotřila všechna jména členů přidaná do skupiny.
 
-## <a name="to-remove-group-members"></a>K odebrání členů skupiny
+## <a name="to-remove-group-members"></a>Odebrání členů skupiny
 
-1. Z **skupiny – všechny skupiny** stránky, vyhledejte a vyberte skupinu, kterou chcete odebrat člena ze. Znovu použijeme, **zásady MDM - západní**.
+1. Na stránce **Skupiny – všechny skupiny** vyhledejte a vyberte skupinu, ze které chcete člena odebrat. Opět budeme používat, **MDM politiky - West**.
 
-2. Vyberte **členy** z **spravovat** oblasti, vyhledejte a vyberte název členu, který chcete odebrat a pak vyberte **odebrat**.
+2. Vyberte **Členové** z oblasti **Spravovat,** vyhledejte a vyberte jméno člena, který chcete odebrat, a pak vyberte **Odebrat**.
 
-    ![Stránka informace o člena, s možností odstranit](media/active-directory-groups-members-azure-portal/remove-members-from-group.png)
+    ![Stránka Informace o členech s možností Odebrat](media/active-directory-groups-members-azure-portal/remove-members-from-group.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Zobrazení skupin a členů](active-directory-groups-view-azure-portal.md)
 
@@ -63,4 +63,4 @@ Pomocí Azure Active Directory, můžete pokračovat k přidání a odebrání �
 
 - [Správa dynamických pravidel pro uživatele ve skupině](../users-groups-roles/groups-create-rule.md)
 
-- [Přiřazení nebo přidání předplatného Azure do služby Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)
+- [Přidružení nebo přidání předplatného Azure do Služby Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)

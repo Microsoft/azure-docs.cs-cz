@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží se selháním modulu runtime pro Azure Data Lake Analytics U-SQL
-description: Přečtěte si, jak řešit potíže s modulem runtime U-SQL.
+title: Řešení potíží s chybami modulu runtime Azure Data Lake Analytics U-SQL
+description: Přečtěte si, jak řešit selhání modulu runtime U-SQL.
 services: data-lake-analytics
 author: guyhay
 ms.author: guyhay
@@ -10,60 +10,60 @@ ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/10/2019
 ms.openlocfilehash: 1e3fb218e6cda5619bfa1a0936e07d6731a9cc93
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73648451"
 ---
-# <a name="learn-how-to-troubleshoot-u-sql-runtime-failures-due-to-runtime-changes"></a>Přečtěte si, jak řešit problémy s modulem runtime U-SQL kvůli změnám za běhu
+# <a name="learn-how-to-troubleshoot-u-sql-runtime-failures-due-to-runtime-changes"></a>Zjistěte, jak řešit selhání modulu runtime U-SQL kvůli změnám modulu runtime
 
-Modul runtime Azure Data Lake U-SQL, včetně kompilátoru, Optimalizátoru a Správce úloh, je, který zpracovává váš kód U-SQL.
+Běhový modul Azure Data Lake U-SQL, včetně kompilátoru, optimalizátoru a správce úloh, je to, co zpracovává váš kód U-SQL.
 
-## <a name="choosing-your-u-sql-runtime-version"></a>Výběr verze modulu runtime U-SQL
+## <a name="choosing-your-u-sql-runtime-version"></a>Výběr runtime verze U-SQL
 
-Když odesíláte úlohy U-SQL ze sady Visual Studio, ADL SDK nebo portálu Azure Data Lake Analytics, bude vaše úloha používat aktuálně dostupný výchozí modul runtime. Nové verze modulu runtime U-SQL jsou vydávány pravidelně a zahrnují dílčí aktualizace a opravy zabezpečení.
+Při odesílání úloh U-SQL z Visual Studia, ADL SDK nebo portálu Azure Data Lake Analytics, vaše úloha bude používat aktuálně dostupné výchozí modul runtime. Nové verze modulu runtime U-SQL jsou vydávány v pravidelných intervalech a zahrnují menší aktualizace a opravy zabezpečení.
 
-Můžete také zvolit vlastní verzi modulu runtime; vzhledem k tomu, že chcete vyzkoušet novou aktualizaci, je nutné zůstat ve starší verzi modulu runtime nebo byly poskytnuty v případě nahlášeného problému s opravou hotfix, kde nelze čekat na běžnou novou aktualizaci.
+Můžete také zvolit vlastní verzi runtime; Buď proto, že chcete vyzkoušet novou aktualizaci, potřebujete zůstat ve starší verzi runtime nebo jste dostali opravu hotfix pro nahlášený problém, kde nemůžete čekat na pravidelnou novou aktualizaci.
 
 > [!CAUTION]
-> Výběr modulu runtime, který je jiný než výchozí, má potenciál rozdělit úlohy U-SQL. Použijte tyto další verze pouze pro testování.
+> Výběr modulu runtime, který se liší od výchozího má potenciál přerušit vaše u-SQL úlohy. Tyto další verze používejte pouze pro testování.
 
-Ve výjimečných případech může podpora Microsoftu připnout jinou verzi modulu runtime jako výchozí pro váš účet. Ujistěte se prosím, že jste Tento PIN kód znovu navrátili co nejdříve. Pokud zůstane připnuté k této verzi, platnost vyprší později.
+Ve výjimečných případech může podpora společnosti Microsoft připnout jako výchozí verzi runtime pro váš účet. Ujistěte se, že jste tento kolík co nejdříve vrátili. Pokud k této verzi zůstanete připnuti, vyprší její platnost později.
 
-### <a name="monitoring-your-jobs-u-sql-runtime-version"></a>Monitorování úloh verze modulu runtime U-SQL
+### <a name="monitoring-your-jobs-u-sql-runtime-version"></a>Sledování úloh U-SQL runtime verze
 
-V historii úloh v prohlížeči úloh sady Visual Studio nebo v historii úloh Azure Portal můžete zobrazit historii, které verze modulu runtime v minulých úlohách používala v historii úloh vašeho účtu.
+Historii, kterou verze za běhu vaše minulé úlohy použily v historii úloh vašeho účtu, najdete v prohlížeči úloh Visual Studia nebo v historii úloh portálu Azure.
 
-1. V Azure Portal přejít na účet Data Lake Analytics.
+1. Na webu Azure portal přejděte na svůj účet Data Lake Analytics.
 2. Vyberte **Zobrazit všechny úlohy**. Zobrazí se seznam všech aktivních a nedávno dokončených úloh v účtu.
-3. V případě potřeby můžete kliknout na tlačítko **Filtr** , což vám umožní najít úlohy podle **časového rozsahu**, **názvu úlohy**a hodnot **autora** .
-4. Můžete zobrazit modul runtime použitý v dokončených úlohách.
+3. Případně můžete klepnout na **filtr,** abyste našli úlohy podle **časového rozsahu**, **názvu úlohy**a hodnot **autora.**
+4. Můžete zobrazit za běhu použitý v dokončených úlohách.
 
-![Zobrazení běhové verze minulé úlohy](./media/runtime-troubleshoot/prior-job-usql-runtime-version-.png)
+![Zobrazení runtime verze minulé úlohy](./media/runtime-troubleshoot/prior-job-usql-runtime-version-.png)
 
-Dostupné verze modulu runtime se v průběhu času mění. Výchozí modul runtime se vždy nazývá "výchozí" a v některých případech udržujeme alespoň předchozí modul runtime, který je k dispozici pro nejrůznější účely. Explicitně pojmenované moduly runtime se obecně řídí následujícím formátem (kurzíva se používají pro proměnné části a [] označuje volitelné části):
+Dostupné verze runtime se v průběhu času mění. Výchozí doba runtime se vždy nazývá "výchozí" a po určitou dobu udržujeme alespoň předchozí runtime k dispozici a z různých důvodů zpřístupníme speciální runtime. Explicitně pojmenované runtimes obecně postupujte podle následujícího formátu (kurzíva se používají pro proměnné části a [] označuje volitelné části):
 
 release_YYYYMMDD_adl_buildno[_modifier]
 
-Například release_20190318_adl_3394512_2 znamená, že druhá verze sestavení 3394512 běhové verze z března 18 2019 a release_20190318_adl_3394512_private znamená privátní sestavení stejné verze. Poznámka: datum se vztahuje na dobu, kdy se poslední vrácení se změnami povedlo pro danou verzi, a ne nutně na oficiální datum vydání.
+Například release_20190318_adl_3394512_2 znamená druhou verzi sestavení 3394512 runtime verze z března 18 2019 a release_20190318_adl_3394512_private znamená soukromé sestavení stejné verze. Poznámka: Datum se vztahuje k datu, kdy byla provedena poslední kontrola pro toto vydání, a ne nutně oficiální datum vydání.
 
-Níže jsou uvedené aktuálně dostupné verze modulu runtime.
+Následují aktuálně dostupné verze runtime.
 
 - release_20190318_adl_3394512
-- release_20190318_adl_5832669 aktuální výchozí
+- release_20190318_adl_5832669 aktuální výchozí nastavení
 - release_20190703_adl_4713356
 
-## <a name="troubleshooting-u-sql-runtime-version-issues"></a>Řešení potíží s verzí modulu runtime U-SQL
+## <a name="troubleshooting-u-sql-runtime-version-issues"></a>Poradce při potížích s verzí modulu runtime u-SQL
 
-Existují dva možné problémy s verzí modulu runtime, se kterými se můžete setkat:
+Existují dva možné problémy s verzí runtime, se kterými se můžete setkat:
 
-1. Skript nebo některé uživatelské kódy mění chování z jedné verze na další. Tyto zásadní změny se většinou sdělují před časem a s publikací poznámky k verzi. Pokud narazíte na zásadní změnu, kontaktujte prosím podpora Microsoftu, abyste nahlásili toto porušení zásad (v případě, že ještě není dokumentováno), a odešlete úlohy do starší verze modulu runtime.
+1. Skript nebo nějaký uživatelský kód mění chování z jedné verze na další. Tyto změny jsou obvykle sdělovány předem se zveřejněním poznámek k verzi. Pokud narazíte na takovou změnu, obraťte se na podporu společnosti Microsoft a nahlaste toto chování (v případě, že ještě nebyl dokumentován) a odešlete úlohy proti starší verzi runtime.
 
-2. V případě, že jste připnuli k vašemu účtu a tento modul runtime byl po určitou dobu odstraněn, používali jste nevýchozí modul runtime buď explicitně, nebo implicitně. Pokud narazíte na chybějící moduly runtime, upgradujte prosím skripty, aby běžely s aktuálním výchozím modulem runtime. Pokud potřebujete další čas, kontaktujte prosím podpora Microsoftu
+2. Jste používali non-výchozí runtime explicitně nebo implicitně, když byl připnutý k vašemu účtu a že runtime byl odebrán po určité době. Pokud narazíte na chybějící runtime, upgradujte skripty tak, aby běžely s aktuálním výchozím runtime. Pokud potřebujete více času, obraťte se na podporu společnosti Microsoft.
 
 ## <a name="see-also"></a>Viz také
 
-- [Přehled Azure Data Lake Analytics](data-lake-analytics-overview.md)
-- [Správa Azure Data Lake Analytics pomocí webu Azure Portal](data-lake-analytics-manage-use-portal.md)
-- [Monitorování úloh v Azure Data Lake Analytics pomocí Azure Portal](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+- [Azure Data Lake Analytics – přehled](data-lake-analytics-overview.md)
+- [Správa Azure Data Lake Analytics pomocí portálu Azure](data-lake-analytics-manage-use-portal.md)
+- [Monitorování úloh v Azure Data Lake Analytics pomocí portálu Azure](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

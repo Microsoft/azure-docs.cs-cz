@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace informačního CloudSuiteu pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
-description: Naučte se, jak nakonfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro informační CloudSuite.
+title: 'Kurz: Konfigurace služby Infor CloudSuite pro automatické zřizování uživatelů pomocí služby Azure Active Directory | Dokumenty společnosti Microsoft'
+description: Zjistěte, jak nakonfigurovat službu Azure Active Directory tak, aby automaticky zřašovala a odpočatou uživatelské účty do služby Infor CloudSuite.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,169 +16,169 @@ ms.topic: article
 ms.date: 10/14/2019
 ms.author: Zhchia
 ms.openlocfilehash: 7b91b8418580717afaf8ddf176f934b3ff1d0c60
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77057535"
 ---
-# <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>Kurz: Konfigurace informačního CloudSuiteu pro Automatické zřizování uživatelů
+# <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>Kurz: Konfigurace zařízení Infor CloudSuite pro automatické zřizování uživatelů
 
-Cílem tohoto kurzu je předvést kroky, které je třeba provést v nástroji CloudSuite a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD pro Automatické zřizování a zrušení zřizování uživatelů a skupin pro informačního CloudSuite.
+Cílem tohoto kurzu je demonstrovat kroky, které mají být provedeny v Infor CloudSuite a Azure Active Directory (Azure AD) nakonfigurovat Azure AD automaticky zřídit a de-provision uživatelů a/nebo skupin infor CloudSuite.
 
 > [!NOTE]
-> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
+> Tento kurz popisuje konektor postavený na nad službou zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá, jak funguje, a nejčastější dotazy, najdete [v tématu Automatizace zřizování uživatelů a zrušení zřizování aplikací SaaS pomocí služby Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
-> Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
+> Tento konektor je aktuálně ve verzi Public Preview. Další informace o obecných podmínkách použití Microsoft Azure pro funkce preview najdete v [tématu Doplňkové podmínky použití pro Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
+Scénář popsaný v tomto kurzu předpokládá, že již máte následující požadavky:
 
-* Tenant Azure AD
-* [Tenant CloudSuite pro informačního tenanta](https://www.infor.com/products/infor-os)
-* Uživatelský účet v info CloudSuite s oprávněními správce.
+* Klient Azure AD
+* [Tenant Infor CloudSuite](https://www.infor.com/products/infor-os)
+* Uživatelský účet v Infor CloudSuite s oprávněními správce.
 
-## <a name="assigning-users-to-infor-cloudsuite"></a>Přiřazování uživatelů k informacím CloudSuite
+## <a name="assigning-users-to-infor-cloudsuite"></a>Přiřazení uživatelů k Infor CloudSuite
 
-Azure Active Directory používá koncept nazvaný *přiřazení* k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelů se synchronizují jenom uživatelé a skupiny, které jsou přiřazené k aplikaci v Azure AD.
+Azure Active Directory používá koncept s názvem *přiřazení* k určení, kteří uživatelé by měli získat přístup k vybraným aplikacím. V kontextu automatickézřižené zřizování uživatelů jsou synchronizovány pouze uživatelé nebo skupiny, které byly přiřazeny k aplikaci ve službě Azure AD.
 
-Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé a skupiny ve službě Azure AD potřebují přístup k informacím CloudSuite. Jakmile se rozhodnete, můžete tyto uživatele a skupiny přiřadit do informačního CloudSuiteu podle pokynů uvedených tady:
+Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé nebo skupiny ve službě Azure AD potřebují přístup k Infor CloudSuite. Jakmile se rozhodnete, můžete přiřadit tyto uživatele a / nebo skupiny Infor CloudSuite podle pokynů zde:
 * [Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-infor-cloudsuite"></a>Důležité tipy pro přiřazování uživatelů k informacím CloudSuite
+## <a name="important-tips-for-assigning-users-to-infor-cloudsuite"></a>Důležité tipy pro přiřazení uživatelů do Infor CloudSuite
 
-* Doporučuje se, aby k testování konfigurace automatického zřizování uživatelů byl přiřazený jeden uživatel Azure AD CloudSuite k informacím. Další uživatele a skupiny můžete přiřadit později.
+* Doporučuje se, aby jeden uživatel Azure AD je přiřazen a Infor CloudSuite k testování konfigurace automatického zřizování uživatelů. Další uživatelé a/nebo skupiny mohou být přiřazeny později.
 
-* Při přiřazování uživatele k informačnímu CloudSuite musíte v dialogovém okně přiřazení vybrat jakoukoli platnou roli specifickou pro aplikaci (Pokud je dostupná). Uživatelé s **výchozí rolí přístupu** se z zřizování vylučují.
+* Při přiřazování uživatele k infor CloudSuite, musíte vybrat všechny platné role specifické pro aplikaci (pokud je k dispozici) v dialogovém okně přiřazení. Uživatelé s rolí **Výchozí přístup** jsou z zřizování vyloučeni.
 
-## <a name="set-up-infor-cloudsuite-for-provisioning"></a>Nastavení CloudSuite pro zřizování
+## <a name="set-up-infor-cloudsuite-for-provisioning"></a>Nastavení Infor CloudSuite pro zřizování
 
-1. Přihlaste se ke [konzole Správce informací CloudSuite](https://www.infor.com/customer-center). Klikněte na ikonu uživatele a potom přejděte ke **správě uživatelů**.
+1. Přihlaste se ke [konzoli Infor CloudSuite Admin Console](https://www.infor.com/customer-center). Klikněte na ikonu uživatele a přejděte na **správu uživatelů**.
 
-    ![Konzola správce informací CloudSuite](media/infor-cloudsuite-provisioning-tutorial/admin.png)
+    ![Konzola pro správu Infor CloudSuite](media/infor-cloudsuite-provisioning-tutorial/admin.png)
 
-2.  V levém horním rohu obrazovky klikněte na ikonu nabídky. Klikněte na **Spravovat**.
+2.  Klikněte na ikonu nabídky v levém horním rohu obrazovky. Klikněte na **Spravovat**.
 
-    ![Informace CloudSuite přidání SCIM](media/infor-cloudsuite-provisioning-tutorial/manage.png)
+    ![Infor CloudSuite Přidat SCIM](media/infor-cloudsuite-provisioning-tutorial/manage.png)
 
 3.  Přejděte na **účty SCIM**.
 
-    ![Účet informačního SCIM CloudSuite](media/infor-cloudsuite-provisioning-tutorial/scim.png)
+    ![Účet Infor CloudSuite SCIM](media/infor-cloudsuite-provisioning-tutorial/scim.png)
 
-4.  Kliknutím na ikonu Plus přidejte uživatele s právy pro správu. Zadejte **heslo SCIM** a do pole **Potvrdit heslo**zadejte stejné heslo. Klikněte na ikonu složky a uložte heslo. Zobrazí se **identifikátor uživatele** generovaný pro uživatele s právy pro správu.
+4.  Přidejte správce kliknutím na ikonu plus. Zadejte **heslo SCIM** a zadejte stejné heslo v části **Potvrdit heslo**. Kliknutím na ikonu složky uložte heslo. Poté se zobrazí **identifikátor uživatele** generovaný pro uživatele správce.
 
-    ![Uživatel s oprávněními správce CloudSuite](media/infor-cloudsuite-provisioning-tutorial/newuser.png)
+    ![Uživatel správce Infor CloudSuite](media/infor-cloudsuite-provisioning-tutorial/newuser.png)
     
-    ![Heslo pro informační CloudSuite](media/infor-cloudsuite-provisioning-tutorial/password.png)
+    ![Heslo infor CloudSuite](media/infor-cloudsuite-provisioning-tutorial/password.png)
 
-    ![CloudSuite – identifikátor](media/infor-cloudsuite-provisioning-tutorial/identifier.png)
+    ![Identifikátor Infor CloudSuite](media/infor-cloudsuite-provisioning-tutorial/identifier.png)
 
-5. Pokud chcete vygenerovat nosný token, zkopírujte **identifikátor uživatele** a **heslo SCIM**. Vložte je do poznámkového bloku + + oddělené dvojtečkou. Zakódovat řetězcovou hodnotu tak, že přejdete na **moduly plug-in > nástroje MIME > Basic64 kódování**. 
+5. Chcete-li generovat token nosiče, zkopírujte **identifikátor uživatele** a **heslo SCIM**. Vložte je do poznámkového bloku++ odděleného dvojtečkou. Zakódujte hodnotu řetězce tak, že přejdete na **Pluginy > nástroje MIME > Basic64 Encode**. 
 
-    ![CloudSuite – identifikátor](media/infor-cloudsuite-provisioning-tutorial/token.png)
+    ![Identifikátor Infor CloudSuite](media/infor-cloudsuite-provisioning-tutorial/token.png)
 
-3.  Zkopírujte token nosiče. Tato hodnota se zadá do pole token tajného kódu na kartě zřizování aplikace CloudSuite, která se nachází v Azure Portal.
+3.  Zkopírujte žeton nosiče. Tato hodnota se zadá do pole Tajný token na kartě Zřizování aplikace Infor CloudSuite na webu Azure Portal.
 
-## <a name="add-infor-cloudsuite-from-the-gallery"></a>Přidání informačního CloudSuiteu z Galerie
+## <a name="add-infor-cloudsuite-from-the-gallery"></a>Přidání Infor CloudSuite z galerie
 
-Před konfigurací informačního CloudSuiteu pro Automatické zřizování uživatelů pomocí Azure AD je nutné přidat informace CloudSuite z Galerie aplikací Azure AD do svého seznamu spravovaných aplikací SaaS.
+Před konfigurací Infor CloudSuite pro automatické zřizování uživatelů pomocí Azure AD, je potřeba přidat Infor CloudSuite z galerie aplikací Azure AD do seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat informační CloudSuite z Galerie aplikací Azure AD, proveďte následující kroky:**
+**Pokud chcete přidat Infor CloudSuite z galerie aplikací Azure AD, proveďte následující kroky:**
 
-1. V **[Azure Portal](https://portal.azure.com)** v levém navigačním panelu vyberte možnost **Azure Active Directory**.
+1. Na **[webu Azure Portal](https://portal.azure.com)** vyberte na levém navigačním panelu **položku Azure Active Directory**.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Přejděte na **podnikové aplikace**a vyberte **všechny aplikace**.
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
 
 3. Chcete-li přidat novou aplikaci, vyberte tlačítko **Nová aplikace** v horní části podokna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **info CloudSuite**, vyberte **informační CloudSuite** na panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Infor CloudSuite**, vpanelu s výsledky vyberte **Infor CloudSuite** a pak klepnutím na tlačítko **Přidat** přidejte aplikaci.
 
-    ![Informace CloudSuite v seznamu výsledků](common/search-new-app.png)
+    ![Infor CloudSuite v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-infor-cloudsuite"></a>Konfigurace automatického zřizování uživatelů pro Správce informací CloudSuite 
+## <a name="configuring-automatic-user-provisioning-to-infor-cloudsuite"></a>Konfigurace automatického zřizování uživatelů do Služby Infor CloudSuite 
 
-V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v informačním CloudSuite na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
+Tato část vás provede kroky konfigurace služby zřizování Azure AD k vytvoření, aktualizaci a zakázání uživatelů nebo skupin v Infor CloudSuite na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro CloudSuite, a to podle pokynů uvedených v [kurzu pro jednotné přihlašování v informačním CloudSuite](https://docs.microsoft.com/azure/active-directory/saas-apps/infor-cloud-suite-tutorial). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když se tyto dvě funkce navzájem doplňují.
+> Můžete se také rozhodnout povolit jednotné přihlašování na bázi SAML pro Infor CloudSuite podle pokynů uvedených v [kurzu pro jednotné přihlašování Infor CloudSuite](https://docs.microsoft.com/azure/active-directory/saas-apps/infor-cloud-suite-tutorial). Jednotné přihlašování lze nakonfigurovat nezávisle na automatické zřizování uživatelů, i když tyto dvě funkce kompliment navzájem.
 
 > [!NOTE]
-> Další informace o SCIM koncového bodu [CloudSuite najdete tady.](https://docs.infor.com/mingle/12.0.x/en-us/minceolh/jho1449382121585.html#)
+> Další informace o koncovém bodě SCIM aplikace Infor CloudSuite naleznete na [tomto](https://docs.infor.com/mingle/12.0.x/en-us/minceolh/jho1449382121585.html#).
 
-### <a name="to-configure-automatic-user-provisioning-for-infor-cloudsuite-in-azure-ad"></a>Postup při konfiguraci automatického zřizování uživatelů pro Správce informací CloudSuite ve službě Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-infor-cloudsuite-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Infor CloudSuite ve službě Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **Všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **informace CloudSuite**.
+2. V seznamu aplikací vyberte **Infor CloudSuite**.
 
-    ![Odkaz na informační CloudSuite v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Infor CloudSuite v seznamu Aplikace](common/all-applications.png)
 
-3. Vyberte kartu **zřizování** .
+3. Vyberte kartu **Zřizování.**
 
-    ![Karta zřizování](common/provisioning.png)
+    ![Karta Zřizování](common/provisioning.png)
 
-4. Nastavte **režim zřizování** na **automaticky**.
+4. Nastavte **režim zřizování** na **automatické**.
 
-    ![Karta zřizování](common/provisioning-automatic.png)
+    ![Karta Zřizování](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** zadejte `https://mingle-t20b-scim.mingle.awsdev.infor.com/INFORSTS_TST/v2/scim` na **adrese URL tenanta**. Zadejte hodnotu tokenu nosiče, která byla dříve načtena v **tajném tokenu**. Klikněte na **Test připojení** a ujistěte se, že se Azure AD může připojit k informacím CloudSuite. Pokud se připojení nepovede, ujistěte se, že váš CloudSuite účet má oprávnění správce, a zkuste to znovu.
+5. V části **Pověření správce** `https://mingle-t20b-scim.mingle.awsdev.infor.com/INFORSTS_TST/v2/scim` zadejte adresu **URL klienta**. Zadejte hodnotu nosné tokenu načtenou dříve v **tajném tokenu**. Kliknutím na **Testovat připojení** zajistíte, že se Azure AD může připojit k Infor CloudSuite. Pokud se připojení nezdaří, ujistěte se, že váš účet Infor CloudSuite má oprávnění správce a zkuste to znovu.
 
-    ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Adresa URL klienta + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
+6. Do pole **E-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, která by měla dostávat oznámení o chybách při zřizování, a zaškrtněte políčko – **Odeslat e-mailové oznámení, když dojde k chybě**.
 
     ![E-mail s oznámením](common/provisioning-notification-email.png)
 
 7. Klikněte na **Uložit**.
 
-8. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory uživatele s informacemi CloudSuite**.
+8. V části **Mapování** vyberte **Synchronizovat uživatele služby Azure Active Directory s aplikací Infor CloudSuite**.
 
-    ![Mapování uživatelů CloudSuite k informacím](media/infor-cloudsuite-provisioning-tutorial/usermappings.png)
+    ![Mapování uživatelů Služby Infor CloudSuite](media/infor-cloudsuite-provisioning-tutorial/usermappings.png)
 
-9. Zkontrolujte atributy uživatele synchronizované z Azure AD s informacemi o CloudSuite v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v nástroji info CloudSuite pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
+9. Zkontrolujte atributy uživatele, které jsou synchronizovány z Azure AD do Infor CloudSuite v části **Mapování atributů.** Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelským účtům v Infor CloudSuite pro operace aktualizace. Chcete-li potvrdit všechny změny, vyberte tlačítko **Uložit.**
 
-    ![Atributy uživatele CloudSuite informace o uživatelích](media/infor-cloudsuite-provisioning-tutorial/userattributes.png)
+    ![Uživatelské atributy Infor CloudSuite](media/infor-cloudsuite-provisioning-tutorial/userattributes.png)
 
-10. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory skupiny s informacemi CloudSuite**.
+10. V části **Mapování** vyberte **Synchronizovat skupiny Služby Active Directory Azure s aplikací Infor CloudSuite**.
 
-    ![Mapování skupin CloudSuite informací](media/infor-cloudsuite-provisioning-tutorial/groupmappings.png)
+    ![Mapování skupiny Infor CloudSuite](media/infor-cloudsuite-provisioning-tutorial/groupmappings.png)
 
-11. Zkontrolujte atributy skupiny synchronizované z Azure AD s informacemi o CloudSuite v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v nástroji info CloudSuite pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
+11. Zkontrolujte atributy skupiny, které jsou synchronizovány z Azure AD do Infor CloudSuite v části **Mapování atributů.** Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly skupinám v Infor CloudSuite pro operace aktualizace. Chcete-li potvrdit všechny změny, vyberte tlačítko **Uložit.**
 
-    ![CloudSuite – atributy skupiny informací](media/infor-cloudsuite-provisioning-tutorial/groupattributes.png)
+    ![Atributy skupiny Infor CloudSuite](media/infor-cloudsuite-provisioning-tutorial/groupattributes.png)
 
-12. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+12. Chcete-li konfigurovat filtry oborů, naleznete v následujících pokynech uvedených v [kurzu filtru oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Pokud chcete povolit službu Azure AD Provisioning pro informace CloudSuite, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
+13. Chcete-li povolit službu zřizování Azure AD pro Infor CloudSuite, změňte **stav zřizování** **na Zapnuto** v části **Nastavení.**
 
-    ![Zapnutý stav zřizování](common/provisioning-toggle-on.png)
+    ![Stav zřizování zapnutý](common/provisioning-toggle-on.png)
 
-14. V části **Nastavení** definujte uživatele nebo skupiny, které chcete zřídit pro informace CloudSuite, a to tak, že vyberete požadované hodnoty v **rozsahu** .
+14. Definujte uživatele nebo skupiny, které chcete zřídit infor CloudSuite výběrem požadovaných hodnot v **oboru** v části **Nastavení.**
 
-    ![Rozsah zřizování](common/provisioning-scope.png)
+    ![Obor zřizování](common/provisioning-scope.png)
 
-15. Až budete připraveni zřídit, klikněte na **Uložit**.
+15. Až budete připraveni k zřízení, klikněte na **Uložit**.
 
-    ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
+    ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
 
-Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavu aktivit zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD na CloudSuiteu.
+Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení.** Počáteční synchronizace trvá déle než následné synchronizace, ke kterým dochází přibližně každých 40 minut tak dlouho, dokud je spuštěna služba zřizování Azure AD. Část **Podrobnosti synchronizace** můžete použít ke sledování průběhu a sledování odkazů na sestavu aktivit zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD na Infor CloudSuite.
 
-Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, naleznete [v tématu Vytváření sestav na automatické zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy o aktivitě zřizování.](../app-provisioning/check-status-user-account-provisioning.md)

@@ -1,6 +1,6 @@
 ---
-title: Odstraňte objekty blob úložiště pro protokoly toku skupin zabezpečení sítě v Azure Network Watcher | Microsoft Docs
-description: Tento článek vysvětluje, jak odstranit objekty blob úložiště protokolu toku skupin zabezpečení sítě, které jsou mimo období zásad uchovávání dat v Azure Network Watcher.
+title: Odstranění objektů BLOB úložiště pro protokoly toku skupiny zabezpečení sítě v Azure Network Watcher | Dokumenty společnosti Microsoft
+description: Tento článek vysvětluje, jak odstranit objekty BLOB úložiště protokolu toku skupiny zabezpečení sítě, které jsou mimo období zásad uchovávání informací v Azure Network Watcher.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -14,19 +14,19 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2019
 ms.author: damendo
 ms.openlocfilehash: 6d535bcc2e0831baae658796f76c8087d74c6a85
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77587205"
 ---
-# <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>Odstranit objekty blob úložiště protokolu toku skupiny zabezpečení sítě v Network Watcher
+# <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>Odstranění objektů BLOB úložiště protokolu toku skupiny zabezpečení sítě v modulu Sledování sítě
 
-V současné době dochází k potížím s [protokolem toku NSG (Network Security Group)](network-watcher-nsg-flow-logging-overview.md) pro Network Watcher se z úložiště objektů BLOB automaticky neodstraňují na základě nastavení zásad uchovávání informací. Nyní musíte spustit skript prostředí PowerShell pro ruční odstranění protokolů toku z účtu úložiště, jak je popsáno v tomto článku.
+V současné době existuje problém, kdy [protokoly toku skupiny zabezpečení sítě (NSG)](network-watcher-nsg-flow-logging-overview.md) pro sledovací proces sítě nejsou automaticky odstraněny z úložiště objektů Blob na základě nastavení zásad uchovávání informací. Nyní musíte spustit skript prostředí PowerShell ručně odstranit protokoly toku z vašeho účtu úložiště, jak je popsáno v tomto článku.
 
-## <a name="run-powershell-script-to-delete-nsg-flow-logs"></a>Spuštění skriptu prostředí PowerShell pro odstranění protokolů toku NSG
+## <a name="run-powershell-script-to-delete-nsg-flow-logs"></a>Spuštění skriptu prostředí PowerShell k odstranění protokolů toku nsg
  
-Zkopírujte a uložte následující skript do umístění, jako je například aktuální pracovní adresář. 
+Zkopírujte a uložte následující skript do umístění, například do aktuálního pracovního adresáře. 
 
 ```powershell
 # This powershell script deletes all NSG flow log blobs that should not be retained anymore as per configured retention policy.
@@ -124,17 +124,17 @@ foreach ($Psflowlog in $FlowLogsList)
 Write-Output ('Retention policy for all NSGs evaluated and completed successfully')
 ```
 
-1. Podle potřeby zadejte ve skriptu následující parametry:
-   - **SubscriptionId** [povinné]: ID předplatného, ze kterého byste chtěli odstranit objekty blob log NSG Flow.
-   - **Location** [povinné]: _řetězec umístění_ oblasti skupin zabezpečení sítě, pro kterou chcete odstranit objekty blob protokolů NSG Flow. Tyto informace můžete zobrazit na Azure Portal nebo na [GitHubu](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23).
-   - **Potvrdit** [volitelné]: předejte příznak Confirm, pokud chcete ručně potvrdit odstranění každého objektu BLOB úložiště.
+1. Podle potřeby zadejte do skriptu následující parametry:
+   - **SubscriptionId** [Povinné]: ID předplatného, ze kterého chcete odstranit objekty blobů protokolu toku NSG.
+   - **Umístění** [Povinné]: _Řetězec umístění_ oblasti nsg, pro které chcete odstranit objekty BLOB protokolu toku nsg. Tyto informace můžete zobrazit na webu Azure Portal nebo na [GitHubu](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23).
+   - **Potvrďte** [Volitelné]: Pokud chcete ručně potvrdit odstranění každého objektu blob úložiště, předaj příznak potvrzení.
 
-1. Spusťte uložený skript, jak je znázorněno v následujícím příkladu, kde soubor skriptu byl uložen jako **Delete-NsgFlowLogsBlobs. ps1**:
+1. Spusťte uložený skript, jak je znázorněno v následujícím příkladu, kde byl soubor skriptu uložen jako **Delete-NsgFlowLogsBlobs.ps1**:
    ```
    .\Delete-NsgFlowLogsBlobs.ps1 -SubscriptionId <subscriptionId> -Location  <location> -Confirm
    ```
     
 ## <a name="next-steps"></a>Další kroky
-- Zákazníci můžou pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nebo [Azure Automation](https://azure.microsoft.com/services/automation/) automatizovat spouštění skriptu.
-- Další informace o protokolování NSG najdete v tématu [protokoly pro skupiny zabezpečení sítě (skupin zabezpečení sítě) v protokolu Azure monitor](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- Zákazníci můžou automatizovat spuštění skriptu pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nebo Azure [Automation](https://azure.microsoft.com/services/automation/)
+- Další informace o protokolování skupiny zabezpečení sítě najdete v [tématu protokoly Azure Monitor pro skupiny zabezpečení sítě (NSGs)](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 

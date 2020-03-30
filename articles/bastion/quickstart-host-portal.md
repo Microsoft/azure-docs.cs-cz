@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: připojení k virtuálnímu počítači pomocí privátní IP adresy: Azure bastionu'
-description: V tomto článku se dozvíte, jak vytvořit hostitele Azure bastionu z virtuálního počítače a bezpečně se připojit pomocí privátní IP adresy.
+title: 'Úvodní příručka: Připojení k virtuálnímu počítači pomocí privátní IP adresy: Azure Bastion'
+description: V tomto článku se dozvíte, jak vytvořit hostitele Azure Bastion z virtuálního počítače a bezpečně se připojit pomocí privátní IP adresy.
 services: bastion
 author: cherylmc
 ms.service: bastion
@@ -8,90 +8,90 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: cherylmc
 ms.openlocfilehash: 0b4f0a1fa4f9cce05aa544bb24e045209a6d24ef
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79137454"
 ---
-# <a name="quickstart-connect-to-a-virtual-machine-using-a-private-ip-address-and-azure-bastion"></a>Rychlý Start: připojení k virtuálnímu počítači pomocí privátní IP adresy a Azure bastionu
+# <a name="quickstart-connect-to-a-virtual-machine-using-a-private-ip-address-and-azure-bastion"></a>Úvodní příručka: Připojení k virtuálnímu počítači pomocí privátní IP adresy a Azure Bastion
 
-Tento článek rychlý Start ukazuje, jak se připojit k virtuálnímu počítači pomocí privátní IP adresy. Když se připojujete přes bastionu, virtuální počítače nepotřebují veřejnou IP adresu. Kroky v tomto článku vám pomůžou nasadit bastionu do virtuální sítě přes virtuální počítač na portálu. Po zřízení služby je prostředí RDP/SSH dostupné všem virtuálním počítačům ve stejné virtuální síti.
+Tento článek rychlého startu ukazuje, jak se připojit k virtuálnímu počítači pomocí privátní IP adresy. Když se připojíte přes Bastion, vaše virtuální počítače nepotřebují veřejnou IP adresu. Kroky v tomto článku vám pomůžou nasadit Baštu do virtuální sítě prostřednictvím virtuálního počítače na portálu. Po zřízení služby prostředí RDP/SSH je k dispozici pro všechny virtuální počítače ve stejné virtuální síti.
 
-## <a name="prereq"></a>Požadavky
+## <a name="prerequisites"></a><a name="prereq"></a>Požadavky
 
 * Virtuální síť Azure.
 * Virtuální počítač Azure umístěný ve virtuální síti s otevřeným portem 3389.
 
 ### <a name="example-values"></a>Příklady hodnot
 
-|**Název** | **Hodnota** |
+|**Název** | **Hodnotu** |
 | --- | --- |
-| Název |  VNet1Bastion |
-| Oblast | eastus |
+| Name (Název) |  VNet1Bastion |
+| Region (Oblast) | eastus |
 | Virtuální síť |  VNet1 |
 | + Název podsítě | AzureBastionSubnet |
-| AzureBastionSubnet adresy |  10.1.254.0/27 |
-| Veřejná IP adresa |  Vytvořit novou |
+| Adresy AzureBastionSubnet |  10.1.254.0/27 |
+| Veřejná IP adresa |  Vytvořit nový |
 | Název veřejné IP adresy | VNet1BastionPIP  |
-| SKU veřejné IP adresy |  Standardní  |
-| Přiřazení  | Statické |
+| Skladová položka veřejné IP adresy |  Standard  |
+| Přiřazení  | Statická |
 
-## <a name="createvmset"></a>Vytvoření hostitele bastionu
+## <a name="create-a-bastion-host"></a><a name="createvmset"></a>Vytvoření hostitele bašty
 
-Když vytvoříte hostitele bastionu na portálu pomocí existujícího virtuálního počítače, bude automaticky standardně odpovídat různým nastavením, aby odpovídal vašemu virtuálnímu počítači nebo virtuální síti.
+Když na portálu vytvoříte hostitele bastionu pomocí existujícího virtuálního počítače, různá nastavení budou automaticky nastavena jako výchozí, aby odpovídala vašemu virtuálnímu počítači nebo virtuální síti.
 
-1. Otevřete [portál Azure](https://portal.azure.com). Přejděte na virtuální počítač a pak klikněte na **připojit**.
+1. Otevřete [portál Azure](https://portal.azure.com). Přejděte na virtuální počítač a klikněte na **Připojit**.
 
-   ![nastavení virtuálního počítače](./media/quickstart-host-portal/vm-settings.png)
-1. V rozevíracím seznamu vyberte možnost **bastionu**.
-1. Na stránce připojit vyberte **použít bastionu**.
+   ![Nastavení virtuálního počítače](./media/quickstart-host-portal/vm-settings.png)
+1. V rozevíracím souboru vyberte **možnost Bastion**.
+1. Na stránce Připojit vyberte **Použít baštu**.
 
-   ![vybrat bastionu](./media/quickstart-host-portal/select-bastion.png)
+   ![vybrat Bašta](./media/quickstart-host-portal/select-bastion.png)
 
-1. Na stránce bastionu vyplňte následující pole nastavení:
+1. Na stránce Bašta vyplňte následující pole nastavení:
 
-   * **Název**: název hostitele bastionu
-   * **Podsíť**: podsíť ve virtuální síti, do které se bude nasazovat prostředek bastionu. Podsíť musí být vytvořená s názvem **AzureBastionSubnet**. Název umožňuje službě Azure zjistit, do které podsítě má nasazovat prostředek bastionu. To se liší od podsítě brány. Použijte podsíť alespoň/27 nebo větší (/27,/26,/25 atd.).
+   * **Název**: Název hostitele bašty
+   * **Podsíť**: Podsíť uvnitř virtuální sítě, do které bude nasazen prostředek Bastion. Podsíť musí být vytvořena s názvem **AzureBastionSubnet**. Název umožňuje Azure vědět, které podsítě nasadit prostředek Bastion. Tose liší od podsítě Brány. Použijte podsíť alespoň /27 nebo větší (/27, /26, /25 a tak dále).
    
-      * Vyberte **spravovat konfiguraci podsítě**a pak vyberte **+ podsíť**.
+      * Vyberte **Spravovat konfiguraci podsítě**a pak vyberte **+ Podsíť**.
       * Na stránce Přidat podsíť zadejte **AzureBastionSubnet**.
       * Zadejte rozsah adres v zápisu CIDR. Například 10.1.254.0/27.
-      * Vyberte **OK** a vytvořte podsíť. V horní části stránky přejděte zpátky na bastionu a dokončete zbývající nastavení.
+      * Chcete-li vytvořit podsíť, vyberte **OK.** V horní části stránky přejděte zpět na Bastion a dokončete zbývající nastavení.
 
-         ![Přejít na nastavení bastionu](./media/quickstart-host-portal/navigate-bastion.png)
-   * **Veřejná IP adresa**: Jedná se o veřejnou IP adresu prostředku bastionu, ke kterému bude mít přístup RDP/SSH (přes port 443). Vytvořte novou veřejnou IP adresu nebo použijte existující. Veřejná IP adresa musí být ve stejné oblasti jako prostředek bastionu, který vytváříte.
-   * **Název veřejné IP adresy**: název prostředku veřejné IP adresy.
-1. Na obrazovce ověřování klikněte na **vytvořit**. Počkejte asi 5 minut, než se bastionu prostředek vytvoří a nasadí.
+         ![přejděte do nastavení bašty](./media/quickstart-host-portal/navigate-bastion.png)
+   * **Veřejná IP adresa**: Jedná se o veřejnou IP adresu prostředku bastionu, ke kterému bude přístup k RDP/SSH (přes port 443). Vytvořte novou veřejnou IP adresu nebo použijte existující. Veřejná IP adresa musí být ve stejné oblasti jako prostředek bastionu, který vytváříte.
+   * **Název veřejné IP adresy**: Název prostředku veřejné IP adresy.
+1. Na obrazovce ověření klikněte na **Vytvořit**. Počkejte asi 5 minut na vytvoření a nasazení prostředku bastionu.
 
-   ![vytvořit hostitele bastionu](./media/quickstart-host-portal/bastion-settings.png)
+   ![vytvořit hostitele bašty](./media/quickstart-host-portal/bastion-settings.png)
 
-## <a name="connect"></a>Síti
+## <a name="connect"></a><a name="connect"></a>Připojení
 
-Po nasazení bastionu do virtuální sítě se obrazovka změní na stránku připojit.
+Po nasazení bašty do virtuální sítě se obrazovka změní na stránku pro připojení.
 
-1. Zadejte uživatelské jméno a heslo pro virtuální počítač. Pak vyberte **připojit**.
+1. Zadejte uživatelské jméno a heslo pro váš virtuální počítač. Potom vyberte **Připojit**.
 
    ![připojit](./media/quickstart-host-portal/connect.png)
-1. Připojení RDP k tomuto virtuálnímu počítači prostřednictvím bastionu se otevře přímo v Azure Portal (přes HTML5) pomocí portu 443 a služby bastionu.
+1. Připojení RDP k tomuto virtuálnímu počítači přes Bastion se otevře přímo na portálu Azure (přes HTML5) pomocí portu 443 a služby Bastion.
 
-   ![Připojení RDP](./media/quickstart-host-portal/443-rdp.png)
+   ![Připojení k prv](./media/quickstart-host-portal/443-rdp.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Až budete s virtuální sítí a virtuálními počítači hotovi, odstraňte skupinu prostředků a všechny prostředky, které obsahuje:
+Až budete hotovi s používáním virtuální sítě a virtuálních počítačů, odstraňte skupinu prostředků a všechny prostředky, které obsahuje:
 
-1. Do **vyhledávacího** pole v horní části portálu zadejte *TestRG1* a ve výsledcích hledání vyberte **TestRG1** .
+1. Zadejte *TestRG1* do **vyhledávacího** pole v horní části portálu a z výsledků hledání vyberte **TestRG1.**
 
 2. Vyberte **Odstranit skupinu prostředků**.
 
-3. Zadejte *TestRG1* pro **typ název skupiny prostředků** a vyberte **Odstranit**.
+3. Zadejte *TestRG1* pro **typ názvu skupiny prostředků** a vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste pro virtuální síť vytvořili hostitele bastionu a pak jste zabezpečeni připojeni k virtuálnímu počítači prostřednictvím hostitele bastionu.
+V tomto rychlém startu jste pro virtuální síť vytvořili hostitele bastionu a pak jste se bezpečně připojili k virtuálnímu počítači prostřednictvím hostitele Bastion.
 
-* Pokud se chcete dozvědět víc o Azure bastionu, přečtěte si [Přehled bastionu](bastion-overview.md) a [bastionu – Nejčastější dotazy](bastion-faq.md).
-* Pokud chcete používat skupiny zabezpečení sítě s podsítí Azure bastionu, přečtěte si téma [práce s skupin zabezpečení sítě](bastion-nsg.md).
-* Pokyny, které obsahují vysvětlení nastavení hostitele Azure bastionu, najdete v tomto [kurzu](bastion-create-host-portal.md).
-* Informace o připojení k sadě škálování virtuálního počítače najdete v tématu [připojení k sadě škálování virtuálního počítače pomocí Azure bastionu](bastion-connect-vm-scale-set.md).
+* Další informace o Azure Bastion najdete v nejčastějších dotazech k [baště](bastion-overview.md) a v [nejčastějších dotazech k baště](bastion-faq.md).
+* Informace o použití skupin zabezpečení sítě s podsítí Azure Bastion najdete v [tématu Práce se skupinami zabezpečení sítě](bastion-nsg.md).
+* Pokyny, které obsahují vysvětlení nastavení hostitele Azure Bastion, naleznete v [kurzu](bastion-create-host-portal.md).
+* Pokud se chcete připojit k škálovací sadě virtuálních strojů, přečtěte si informace [o připojení k škálovací sadě virtuálních strojů pomocí Azure Bastion](bastion-connect-vm-scale-set.md).

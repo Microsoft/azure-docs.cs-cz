@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: Vytvoření aplikace Java v Azure Service Fabric'
+title: 'Úvodní příručka: Vytvoření aplikace Java na Azure Service Fabric'
 description: V tomto rychlém startu vytvoříte aplikaci v Javě pro Azure s využitím ukázkové aplikace Service Fabric Reliable Services.
 author: suhuruli
 ms.topic: quickstart
@@ -7,23 +7,23 @@ ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: fc615149b092aebfdde767fb3b716fb897bfd551
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77121503"
 ---
-# <a name="quickstart--deploy-a-java-app-to-azure-service-fabric-on-linux"></a>Rychlý Start: nasazení aplikace Java do Azure Service Fabric v systému Linux
+# <a name="quickstart--deploy-a-java-app-to-azure-service-fabric-on-linux"></a>Úvodní příručka: Nasazení aplikace Java do Azure Service Fabric na Linuxu
 
-V tomto rychlém startu nasadíte aplikaci Java do Azure Service Fabric pomocí integrovaného vývojového prostředí (IDE) v počítači pro vývojáře Linux. Až budete hotovi, budete mít hlasovací aplikaci s webovým front-endem v Javě, která ukládá výsledky hlasování do stavové back-end služby v clusteru.
+V tomto rychlém startu nasadíte java aplikaci do Azure Service Fabric pomocí Eclipse IDE na vývojářském počítači s Linuxem. Až budete hotovi, budete mít hlasovací aplikaci s webovým front-endem v Javě, která ukládá výsledky hlasování do stavové back-end služby v clusteru.
 
 Azure Service Fabric je platforma distribuovaných systémů pro nasazování a správu mikroslužeb a kontejnerů.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Prostředí Java](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development) a [Yeoman](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-yeoman-generators-for-containers-and-guest-executables)
-- [Neon zatmění (4.6) +](https://www.eclipse.org/downloads/packages/) a [modul plug-in zatmění pro Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#install-the-eclipse-plug-in-optional)
-- [Sada Service Fabric SDK a rozhraní příkazového řádku (CLI)](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
+- [Java prostředí](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development) a [Pojeoman](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-yeoman-generators-for-containers-and-guest-executables)
+- [Eclipse Neon (4.6)+](https://www.eclipse.org/downloads/packages/) a [Eclipse plug-in pro service fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#install-the-eclipse-plug-in-optional)
+- [Service Fabric SDK a rozhraní příkazového řádku (CLI)](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
 - [Git](https://git-scm.com/downloads)
 
 ## <a name="download-the-sample"></a>Stažení ukázky
@@ -41,48 +41,48 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
-    Spuštění místního clusteru nějakou dobu trvá. Pokud chcete potvrdit, že je cluster plně zapnutý, přejděte k Service Fabric Explorer v `http://localhost:19080`. Pět uzlů v pořádku značí, že je místní cluster zprovozněný.
+    Spuštění místního clusteru nějakou dobu trvá. Pokud chcete potvrdit, že je cluster plně funkční, přejděte do Service Fabric Exploreru na adrese `http://localhost:19080`. Pět uzlů v pořádku značí, že je místní cluster zprovozněný.
 
     ![Azure Service Fabric Explorer zobrazuje uzly v pořádku](./media/service-fabric-quickstart-java/service-fabric-explorer-healthy-nodes.png)
 
 2. Otevřete Eclipse.
-3. Vyberte **soubor** > **importovat** > **Gradle** > **stávající projekt Gradle** a postupujte podle pokynů průvodce.
-4. Vyberte **adresář** a zvolte **hlasovací** adresář ze složky **Service-Fabric-Java-Started** , kterou jste naklonoval z GitHubu. Vyberte **Finish** (Dokončit).
+3. Vyberte**Import** >  **souborů** > **Projekt** > **existujícígradle** a postupujte podle průvodce.
+4. Vyberte **Adresář** a zvolte adresář **Hlasování** ze složky **service-fabric-java-quickstart,** kterou jste naklonovali z GitHubu. Vyberte **Finish** (Dokončit).
 
-    ![Importovat projekt Gradle do zatmění](./media/service-fabric-quickstart-java/eclipse-import-gradle-project.png)
+    ![Import Gradle projektu do Eclipse](./media/service-fabric-quickstart-java/eclipse-import-gradle-project.png)
 
 5. V průzkumníku balíčků v Eclipse teď máte projekt `Voting`.
-6. Klikněte pravým tlačítkem na projekt a vyberte **publikovat aplikaci** pod rozevíracím seznamem **Service Fabric** . Jako cílový profil zvolte **PublishProfiles/Local. JSON** a vyberte **publikovat**.
+6. Klikněte pravým tlačítkem myši na projekt a v rozevíracím okně **Service Fabric** vyberte **Publikovat aplikaci.** Jako cílový profil zvolte **PublishProfiles/Local.json** a vyberte **Publikovat**.
 
     ![Azure Service Fabric publikovat místní JSON](./media/service-fabric-quickstart-java/service-fabric-publish-local-json.png)
 
-7. Otevřete oblíbený webový prohlížeč a získejte přístup k aplikaci, a to tak, že získáte přístup k `http://localhost:8080`.
+7. Otevřete oblíbený webový prohlížeč a přejděte do aplikace na adrese `http://localhost:8080`.
 
-    ![Místní hostitel Azure Service Fabric](./media/service-fabric-quickstart-java/service-fabric-local-host.png)
+    ![Místní ho sazí azure service fabric](./media/service-fabric-quickstart-java/service-fabric-local-host.png)
 
 Teď můžete přidat sadu možností hlasování a začít přijímat hlasy. Aplikace je spuštěná a ukládá veškerá data v clusteru Service Fabric, aniž by potřebovala samostatnou databázi.
 
-![Ukázka hlasování v Azure Service Fabric](./media/service-fabric-quickstart-java/service-fabric-voting-sample.png)
+![Ukázka hlasování azure service fabric](./media/service-fabric-quickstart-java/service-fabric-voting-sample.png)
 
 ## <a name="scale-applications-and-services-in-a-cluster"></a>Škálování aplikací a služeb v clusteru
 
-Služby je možné škálovat napříč clusterem a vyřešit tak změny v jejich zatížení. Služby se škálují změnou počtu instancí spuštěných v clusteru. Vaše služby se škálují mnoha způsoby. Můžete například použít skripty nebo příkazy z Service Fabric CLI (`sfctl`). V následujících krocích se používá Service Fabric Explorer.
+Služby je možné škálovat napříč clusterem a vyřešit tak změny v jejich zatížení. Služby se škálují změnou počtu instancí spuštěných v clusteru. Existuje mnoho způsobů škálování služeb. Můžete například použít skripty nebo příkazy z`sfctl`příkazového příkazu Service Fabric ( ). V následujících krocích se používá Service Fabric Explorer.
 
-Service Fabric Explorer běží ve všech clusterech Service Fabric a dá se k nim dostat z prohlížeče tak, že přejdete na port pro správu HTTP clusteru (19080). například `http://localhost:19080`.
+Aplikace Service Fabric Explorer je spuštěna ve všech clusterech Service Fabric a lze k němu přistupovat z prohlížeče procházením portu správy HTTP clusteru (19080). Například, `http://localhost:19080`.
 
 Pokud chcete škálovat webovou front-end službu, postupujte následovně:
 
-1. Otevřete Service Fabric Explorer v clusteru. například `https://localhost:19080`.
-2. V ovládacím prvku TreeView vyberte tři tečky ( **...** ) vedle uzlu **Fabric:/hlasovacího/VotingWeb** a vyberte **škálovat službu**.
+1. Otevřete v clusteru Průzkumníka prostředků service fabric. Například, `https://localhost:19080`.
+2. Vyberte tři tečky (**...**) vedle **uzlu fabric:/Voting/VotingWeb** v treeview a vyberte **měřítko služby**.
 
-    ![Škálování služby v Azure Service Fabric](./media/service-fabric-quickstart-java/service-fabric-scale-service.png)
+    ![Škálování služby ve službě Azure Service Fabric](./media/service-fabric-quickstart-java/service-fabric-scale-service.png)
 
     Teď můžete škálovat počet instancí webové front-end služby.
 
-3. Změňte číslo na **2** a vyberte **škálovat službu**.
-4. Ve stromovém zobrazení vyberte uzel **Fabric:/hlasovací/VotingWeb** a rozbalte uzel oddílu (REPREZENTOVANý identifikátorem GUID).
+3. Změňte číslo na **2** a vyberte **Škálovat službu**.
+4. Vyberte **prostředek infrastruktury:/Voting/VotingWeb** uzel v stromovézobrazení a rozbalte uzel oddílu (reprezentovaný identifikátorem GUID).
 
-    ![Škálování služby ve službě Azure Service Fabric](./media/service-fabric-quickstart-java/service-fabric-explorer-service-scaled.png)
+    ![Škálované služby ve službě Azure Service Fabric](./media/service-fabric-quickstart-java/service-fabric-explorer-service-scaled.png)
 
     Nyní je vidět, že služba má dvě instance, a ve stromovém zobrazení vidíte, na kterých uzlech jsou tyto instance spuštěné.
 

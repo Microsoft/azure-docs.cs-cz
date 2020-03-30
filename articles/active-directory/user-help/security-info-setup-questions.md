@@ -1,6 +1,6 @@
 ---
-title: Nastavení bezpečnostních otázek jako metody ověřování – Azure AD
-description: Jak nastavit stránku informací o zabezpečení (Preview) k ověření vaší identity pomocí předem definovaných bezpečnostních otázek jako metody ověřování.
+title: Nastavení bezpečnostních otázek jako metody ověření – Azure AD
+description: Jak nastavit stránku Bezpečnostní údaje (náhled) pro ověření vaší identity pomocí předdefinovaných bezpečnostních otázek jako metody ověření.
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,101 +12,101 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: curtand
 ms.openlocfilehash: 236f1e4e41488b926d9fc2e5e717e68090a0ed7b
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063964"
 ---
-# <a name="set-up-security-questions-as-your-verification-method"></a>Nastavení bezpečnostních otázek jako metody ověřování
+# <a name="set-up-security-questions-as-your-verification-method"></a>Nastavení bezpečnostních otázek jako metody ověření
 
-Pomocí těchto kroků můžete přidat metodu resetování hesla. Po prvním nastavení se můžete vrátit na stránku **bezpečnostní údaje** a přidat, aktualizovat nebo odstranit informace o zabezpečení.
+Pomocí těchto kroků můžete přidat metodu obnovení hesla. Po prvním nastavení se můžete vrátit na stránku **Bezpečnostní údaje** a přidat, aktualizovat nebo odstranit bezpečnostní údaje.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Note]
->Pokud nevidíte možnost bezpečnostní otázky, je možné, že vaše organizace neumožňuje použít tuto možnost pro metodu resetování hesla. V takovém případě budete muset zvolit jinou metodu, nebo se obraťte na helpdesk vaší organizace, kde najdete další nápovědu.
+>Pokud možnost bezpečnostních otázek nevidíte, je možné, že vaše organizace neumožňuje použít tuto možnost pro metodu resetování hesla. V takovém případě budete muset zvolit jinou metodu nebo se obrátit na technickou podporu vaší organizace a požádat o další pomoc.
 
-## <a name="security-verification-versus-password-reset-authentication"></a>Ověření zabezpečení oproti ověřování hesla pro resetování hesla
+## <a name="security-verification-versus-password-reset-authentication"></a>Ověření zabezpečení versus ověřování při resetování hesla
 
-Metody bezpečnostních údajů se používají pro ověřování dvou faktorů zabezpečení i pro resetování hesla. Nicméně ne všechny metody lze použít pro obojí.
+Metody bezpečnostních informací se používají jak pro dvoufaktorové ověření zabezpečení, tak pro resetování hesla. Ne všechny metody však lze použít pro obě metody.
 
 | Metoda | Použití |
 | ------ | -------- |
-| Ověřovací aplikace | Dvojúrovňové ověřování a ověřování nového hesla. |
-| Textové zprávy | Dvojúrovňové ověřování a ověřování nového hesla. |
-| Telefonní hovory | Dvojúrovňové ověřování a ověřování nového hesla. |
-| Bezpečnostní klíč | Dvojúrovňové ověřování a ověřování nového hesla. |
-| E-mailový účet | Jenom ověřování heslem. Budete muset zvolit jinou metodu pro dvojúrovňové ověřování. |
-| Bezpečnostní otázky | Jenom ověřování heslem. Budete muset zvolit jinou metodu pro dvojúrovňové ověřování. |
+| Aplikace Authenticator | Dvoufaktorové ověření a ověřování heslem. |
+| Textové zprávy | Dvoufaktorové ověření a ověřování heslem. |
+| Telefonní hovory | Dvoufaktorové ověření a ověřování heslem. |
+| Klíč zabezpečení | Dvoufaktorové ověření a ověřování heslem. |
+| E-mailový účet | Pouze ověřování pro resetování hesla. Budete muset zvolit jinou metodu pro dvoufaktorové ověření. |
+| Bezpečnostní otázky | Pouze ověřování pro resetování hesla. Budete muset zvolit jinou metodu pro dvoufaktorové ověření. |
 
-## <a name="set-up-your-security-questions-from-the-security-info-page"></a>Nastavení bezpečnostních otázek ze stránky bezpečnostní údaje
+## <a name="set-up-your-security-questions-from-the-security-info-page"></a>Nastavení bezpečnostních otázek na stránce Bezpečnostní údaje
 
-V závislosti na nastaveních vaší organizace můžete jako jednu z vašich metod zabezpečení zvolit několik bezpečnostních otázek a odpovědět na ně. Správce nastaví počet bezpečnostních otázek, které je nutné vybrat, a odpověď.
+V závislosti na nastavení vaší organizace můžete jako jednu z metod bezpečnostních údajů vybrat několik bezpečnostních otázek a zodpovědět je. Správce nastaví počet bezpečnostních otázek, které musíte zvolit a zodpovědět.
 
-Pokud používáte bezpečnostní otázky, doporučujeme je používat ve spojení s jinou metodou. Bezpečnostní otázky můžou být méně bezpečné než jiné metody, protože někteří lidé můžou znát odpovědi na vaše otázky.
+Pokud používáte bezpečnostní otázky, doporučujeme je použít ve spojení s jinou metodou. Bezpečnostní otázky mohou být méně bezpečné než jiné metody, protože někteří lidé mohou znát odpovědi na vaše otázky.
 
 > [!Note]
-> Bezpečnostní otázky se ukládají soukromě a bezpečně na objekt uživatele v adresáři a můžou na vás odpovědět jenom během registrace. Neexistuje žádný způsob, jak váš správce číst ani upravovat vaše dotazy ani odpovědi.
+> Bezpečnostní otázky jsou uloženy soukromě a bezpečně na objekt uživatele v adresáři a mohou být zodpovězeny pouze během registrace. Neexistuje žádný způsob, jak by správce mohl číst nebo upravovat vaše otázky nebo odpovědi.
 >
-> Pokud nevidíte možnost bezpečnostní otázky, je možné, že vaše organizace neumožňuje používat bezpečnostní otázky k ověření. Pokud se jedná o tento případ, budete muset zvolit jinou metodu, nebo požádejte správce o další nápovědu.
+> Pokud možnost bezpečnostních otázek nevidíte, je možné, že vaše organizace neumožňuje používat bezpečnostní otázky k ověření. V takovém případě budete muset zvolit jinou metodu nebo požádat správce o další pomoc.
 >
-> Účty správců neumožňují používat bezpečnostní otázky jako metodu resetování hesla. Pokud jste přihlášeni jako účet úrovně správce, tyto možnosti se nezobrazí.
+> Účty správce nesmějí používat bezpečnostní otázky jako metodu resetování hesla. Pokud jste přihlášeni jako účet na úrovni správce, tyto možnosti neuvidíte.
 
 ### <a name="to-set-up-your-security-questions"></a>Nastavení bezpečnostních otázek
 
-1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a pak přejít na stránku https://myprofile.microsoft.com/.
+1. Přihlaste se ke svému pracovnímu https://myprofile.microsoft.com/ nebo školnímu účtu a přejděte na stránku.
 
-    ![Stránka můj profil zobrazující odkazy na zvýrazněné informace o zabezpečení](media/security-info/securityinfo-myprofile-page.png)
+    ![Stránka Můj profil se zvýrazněnými odkazy Na informace o zabezpečení](media/security-info/securityinfo-myprofile-page.png)
 
-2. V levém navigačním podokně nebo na odkaz v bloku **informací o** zabezpečení vyberte možnost **informace o zabezpečení** a pak vyberte **Přidat metodu** ze stránky **bezpečnostní údaje** .
+2. V levém navigačním podokně nebo z odkazu v bloku **Informace o zabezpečení** vyberte Bezpečnostní **údaje** a na stránce Informace **o zabezpečení** vyberte **Přidat metodu.**
 
-    ![Stránka informace o zabezpečení se zvýrazněnou možností přidat metodu](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![Stránka S informacemi o zabezpečení se zvýrazněnou možností Přidat metodu](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. Na stránce **Přidat metodu** vyberte v rozevíracím seznamu možnost **bezpečnostní otázky** a pak vyberte **Přidat**.
+3. Na stránce **Přidat metodu** vyberte v rozevíracím seznamu **bezpečnostní otázky** a pak vyberte **Přidat**.
 
-    ![Přidat pole metody s vybranými bezpečnostními otázkami](media/security-info/securityinfo-myprofile-addquestions.png)
+    ![Pole Přidat metodu s vybranými bezpečnostními otázkami](media/security-info/securityinfo-myprofile-addquestions.png)
 
-4. Na stránce **bezpečnostní otázky** zvolte a odpovězte na své bezpečnostní otázky a pak vyberte **Uložit**.
+4. Na stránce **Bezpečnostní otázky** zvolte a odpovězte na bezpečnostní otázky a pak vyberte **Uložit**.
 
-    ![Přidat telefonní číslo a vybrat telefonní hovory](media/security-info/securityinfo-myprofile-securityquestions.png)
+    ![Přidání telefonního čísla a výběr telefonních hovorů](media/security-info/securityinfo-myprofile-securityquestions.png)
 
-    Vaše bezpečnostní údaje se aktualizují a k ověření vaší identity při použití resetování hesla můžete použít své bezpečnostní otázky.
+    Vaše bezpečnostní údaje jsou aktualizovány a bezpečnostní otázky můžete použít k ověření vaší identity při použití resetování hesla.
 
-## <a name="delete-security-questions-from-your-security-info-methods"></a>Odstranění bezpečnostních otázek z metod zabezpečení
+## <a name="delete-security-questions-from-your-security-info-methods"></a>Odstranění bezpečnostních otázek z metod bezpečnostních údajů
 
-Pokud již nechcete své bezpečnostní otázky používat jako metodu bezpečnostních údajů, můžete je odebrat ze stránky **bezpečnostní údaje** .
+Pokud již nechcete používat bezpečnostní otázky jako metodu bezpečnostních údajů, můžete je odebrat ze stránky **Informace o zabezpečení.**
 
 >[!Important]
->Pokud bezpečnostní otázky odstraníte omylem, neexistuje žádný způsob, jak to vrátit. Tuto metodu budete muset přidat znovu podle kroků v části [Nastavení bezpečnostních otázek](#set-up-your-security-questions-from-the-security-info-page) v tomto článku.
+>Pokud bezpečnostní otázky omylem smažete, neexistuje žádný způsob, jak je vrátit. Budete muset přidat metodu znovu, postupujte podle kroků v [části Nastavení bezpečnostních otázek](#set-up-your-security-questions-from-the-security-info-page) v tomto článku.
 
 ### <a name="to-delete-your-security-questions"></a>Odstranění bezpečnostních otázek
 
-1. Na stránce **informace o zabezpečení** vyberte odkaz **Odstranit** vedle možnosti **bezpečnostní otázky** .
+1. Na stránce **Informace o zabezpečení** vyberte odkaz **Odstranit** vedle možnosti **Bezpečnostní otázky.**
 
-    ![Odkaz pro odstranění metody Phone z bezpečnostních údajů](media/security-info/securityinfo-myprofile-questionsdelete.png)
+    ![Odkaz na odstranění metody telefonu z bezpečnostních informací](media/security-info/securityinfo-myprofile-questionsdelete.png)
 
-2. V potvrzovacím poli vyberte **Ano** , pokud chcete odstranit **bezpečnostní otázky**. Po odstranění bezpečnostních otázek se metoda odebere z bezpečnostních údajů a zmizí ze stránky **bezpečnostní údaje** .
+2. Chcete-li odstranit **bezpečnostní otázky**, vyberte v potvrzovacím poli možnost **Ano** . Po odstranění bezpečnostních otázek se metoda odebere z bezpečnostních údajů a zmizí ze stránky **Bezpečnostní údaje.**
 
-## <a name="additional-security-info-methods"></a>Další metody zabezpečení
+## <a name="additional-security-info-methods"></a>Další metody bezpečnostních informací
 
-Máte k dispozici další možnosti, jak vaše organizace kontaktuje vaši identitu na základě toho, co se you're snaží. Mezi možnosti patří:
+Máte další možnosti, jak vás vaše organizace kontaktuje za účelem ověření vaší identity, a to na základě toho, o co se pokoušíte. Mezi možnosti patří:
 
-- **Ověřovací aplikace** Stáhněte a použijte ověřovací aplikaci k získání oznámení o schválení nebo náhodně generovaného kódu schválení pro dvoustupňové ověřování nebo resetování hesla. Podrobné pokyny k nastavení a používání aplikace Microsoft Authenticator najdete v tématu [Nastavení bezpečnostních údajů pro použití ověřovací aplikace](security-info-setup-auth-app.md).
+- **Ověřovací aplikace.** Stáhněte si a použijte ověřovací aplikaci, abyste získali oznámení o schválení nebo náhodně generovaný kód schválení pro dvoustupňové ověření nebo resetování hesla. Podrobné pokyny k nastavení a používání aplikace Microsoft Authenticator najdete v tématu [Nastavení bezpečnostních údajů pro použití ověřovací aplikace](security-info-setup-auth-app.md).
 
-- **Text mobilního zařízení** Zadejte číslo mobilního zařízení a získejte text jako kód, který budete používat pro dvoustupňové ověřování nebo resetování hesla. Podrobné pokyny, jak ověřit identitu pomocí textové zprávy (SMS), najdete v tématu [Nastavení bezpečnostních údajů pro použití zasílání textových zpráv (SMS)](security-info-setup-text-msg.md).
+- **Text mobilního zařízení.** Zadejte číslo svého mobilního zařízení a získejte text, který použijete pro dvoustupňové ověření nebo resetování hesla. Podrobné pokyny k ověření identity pomocí textové zprávy (SMS) najdete v tématu [Nastavení bezpečnostních údajů pro používání textových zpráv (SMS).](security-info-setup-text-msg.md)
 
-- **Mobilní zařízení nebo pracovní telefonní hovor.** Zadejte číslo mobilního zařízení a získejte telefonní hovor pro dvoustupňové ověřování nebo resetování hesla. Podrobné pokyny, jak ověřit identitu pomocí telefonního čísla, najdete v tématu [Nastavení bezpečnostních údajů pro použití telefonních hovorů](security-info-setup-phone-number.md).
+- **Mobilní zařízení nebo pracovní telefonní hovor.** Zadejte číslo svého mobilního zařízení a získejte telefonní hovor pro dvoustupňové ověření nebo resetování hesla. Podrobné pokyny k ověření identity pomocí telefonního čísla najdete v tématu [Nastavení bezpečnostních údajů pro používání telefonních hovorů](security-info-setup-phone-number.md).
 
-- **Bezpečnostní klíč** Zaregistrujte svůj bezpečnostní klíč kompatibilní s Microsoftem a použijte ho spolu s kódem PIN pro dvoustupňové ověřování nebo resetování hesla. Podrobné pokyny, jak ověřit identitu pomocí bezpečnostního klíče, najdete v tématu [Nastavení bezpečnostních údajů pro použití bezpečnostního klíče](security-info-setup-security-key.md).
+- **Bezpečnostní klíč.** Zaregistrujte svůj bezpečnostní klíč kompatibilní se společností Microsoft a použijte jej spolu s kódem PIN pro dvoustupňové ověření nebo resetování hesla. Podrobné pokyny k ověření identity pomocí bezpečnostního klíče naleznete v tématu [Nastavení bezpečnostních údajů pro použití bezpečnostního klíče](security-info-setup-security-key.md).
 
-- **E-mailová adresa** Zadejte svou pracovní nebo školní e-mailovou adresu, abyste získali e-mail pro resetování hesla. Tato možnost není k dispozici pro dvoustupňové ověřování. Podrobné pokyny k nastavení e-mailu najdete v tématu [Nastavení bezpečnostních údajů pro použití e-mailu](security-info-setup-email.md).
+- **E-mailová adresa.** Zadejte svou pracovní nebo školní e-mailovou adresu a získejte e-mail s žádostí o resetování hesla. Tato možnost není k dispozici pro dvoustupňové ověření. Podrobné pokyny k nastavení e-mailu najdete v tématu [Nastavení bezpečnostních údajů pro používání e-mailu](security-info-setup-email.md).
 
     >[!Note]
-    >Pokud některé z těchto možností chybí, je to pravděpodobně proto, že vaše organizace tyto metody nepovoluje. Pokud se jedná o tento případ, budete muset zvolit dostupnou metodu nebo požádat správce o další nápovědu.
+    >Pokud některé z těchto možností chybí, je to s největší pravděpodobností proto, že vaše organizace tyto metody nepovoluje. V takovém případě budete muset zvolit dostupnou metodu nebo požádat správce o další pomoc.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Resetujte heslo, pokud jste ho ztratili nebo zapomněli z [portálu pro resetování hesla](https://passwordreset.microsoftonline.com/) , nebo postupujte podle pokynů v článku [resetování svého pracovního nebo školního hesla](active-directory-passwords-update-your-own-password.md) .
+- Pokud jste heslo ztratili nebo zapomněli, resetujte ho na [portálu pro resetování hesla](https://passwordreset.microsoftonline.com/) nebo postupujte podle pokynů v článku [Obnovit pracovní nebo školní heslo.](active-directory-passwords-update-your-own-password.md)
 
-- Získejte tipy pro řešení potíží a nápovědu k problémům s přihlášením v tématu se [nemůžete přihlásit k vašemu účet Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) .
+- V článku Nelze se [přihlásit k účtu Microsoft,](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) najdete tipy pro řešení potíží a nápovědu k problémům s přihlášením.

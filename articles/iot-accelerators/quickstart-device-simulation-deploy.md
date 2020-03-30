@@ -1,5 +1,5 @@
 ---
-title: Vyzkoušejte a spuštění řešení simulace zařízení – Azure | Dokumentace Microsoftu
+title: Vyzkoušejte a spusťte simulační řešení zařízení – Azure | Dokumenty společnosti Microsoft
 description: V tomto rychlém startu nasadíte Simulaci zařízení Azure IoT a spustíte simulaci.
 author: troyhopwood
 manager: timlt
@@ -10,19 +10,19 @@ ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: troyhop
 ms.openlocfilehash: 68e0c3c89698bafbab65ca786231e0364900213a
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "65467827"
 ---
-# <a name="quickstart-deploy-and-run-an-iot-device-simulation-in-azure"></a>Rychlý start: Nasadit a spustit simulaci zařízení IoT v Azure
+# <a name="quickstart-deploy-and-run-an-iot-device-simulation-in-azure"></a>Rychlý start: Nasazení a spuštění simulace zařízení IoT v Azure
 
 V tomto rychlém startu se dozvíte, jak nasadit Simulaci zařízení Azure IoT pro účely testování řešení IoT. Po nasazení akcelerátoru řešení začnete spuštěním ukázkové simulace.
 
 K dokončení tohoto rychlého startu potřebujete aktivní předplatné Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 ## <a name="deploy-device-simulation"></a>Nasazení Simulace zařízení
 
@@ -44,7 +44,7 @@ Vyberte **Předplatné** a **Oblast**, které chcete při nasazování akcelerá
 
 Zaškrtněte políčko pro nasazení centra IoT pro použití s řešením simulace zařízení. Centrum IoT, které simulace využívá, můžete později kdykoli změnit.
 
-Klikněte na tlačítko **vytvořit** chcete začít zřizovat vašeho řešení. Dokončení tohoto procesu trvá minimálně pět minut:
+Kliknutím na **Vytvořit** začněte zřčovat řešení. Dokončení tohoto procesu trvá minimálně pět minut:
 
 ![Podrobnosti o řešení simulace zařízení](./media/quickstart-device-simulation-deploy/createform.png)
 
@@ -54,7 +54,7 @@ Po dokončení procesu zřizování se můžete přihlásit k instanci Simulace 
 
 ![Otevření Simulace zařízení](./media/quickstart-device-simulation-deploy/choosenew.png)
 
-Kliknutím na **Přijmout** přijměte žádost o oprávnění. Ve vašem prohlížeči se zobrazí řídicí panel řešení Simulace zařízení.
+Kliknutím na **Přijmout** přijmete požadavek na oprávnění, zobrazí se řídicí panel řešení Simulace zařízení ve vašem prohlížeči.
 
 Při prvním otevření se zobrazí řídicí panel Simulace zařízení s příručkou **Začínáme**. Kliknutím na první dlaždici otevřete ukázkovou simulaci. Pokud zavřete příručku **Začínáme**, můžete **jednoduchou ukázkovou simulaci** otevřít kliknutím na příslušnou dlaždici na řídicím panelu:
 
@@ -64,7 +64,7 @@ Při prvním otevření se zobrazí řídicí panel Simulace zařízení s pří
 
 Protože se jedná o ukázkovou simulaci, není možné ji upravit. Pro simulaci jsou nakonfigurovaná následující nastavení:
 
-| Nastavení             | Value                       |
+| Nastavení             | Hodnota                       |
 | ------------------- | --------------------------- |
 | Cílová služba IoT Hub      | Použít předem zřízenou službu IoT Hub |
 | Model zařízení        | Nákladní vůz                       |
@@ -90,7 +90,7 @@ Pokud už Simulaci zařízení nepotřebujete, odstraňte ji na stránce [Zříz
 
 ![Odstranění řešení](media/quickstart-device-simulation-deploy/deletesolution.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste nasadili Simulaci zařízení a spustili jste ukázkovou simulaci zařízení IoT.
 

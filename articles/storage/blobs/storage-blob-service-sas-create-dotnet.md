@@ -1,7 +1,7 @@
 ---
-title: Vytvoření SAS služby pro kontejner nebo objekt BLOB s využitím .NET
+title: Vytvoření služby SAS pro kontejner nebo objekt blob s rozhraním .NET
 titleSuffix: Azure Storage
-description: Naučte se vytvořit sdílený přístupový podpis služby (SAS) pro kontejner nebo objekt BLOB pomocí klientské knihovny .NET.
+description: Zjistěte, jak vytvořit sdílený přístupový podpis služby (SAS) pro kontejner nebo objekt blob pomocí knihovny klienta .NET.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,23 +11,23 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
 ms.openlocfilehash: 10045a760d7e0fcb02a754bc9bb52a5ebca970f4
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79137207"
 ---
-# <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>Vytvoření SAS služby pro kontejner nebo objekt BLOB s využitím .NET
+# <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>Vytvoření služby SAS pro kontejner nebo objekt blob s rozhraním .NET
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-V tomto článku se dozvíte, jak pomocí klíče účtu úložiště vytvořit SAS služby pro kontejner nebo objekt BLOB pomocí [klientské knihovny Azure Storage pro .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).
+Tento článek ukazuje, jak pomocí klíče účtu úložiště vytvořit službu SAS pro kontejner nebo objekt blob s [klientskou knihovnou Úložiště Azure pro .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).
 
-## <a name="create-a-service-sas-for-a-blob-container"></a>Vytvoření SAS služby pro kontejner objektů BLOB
+## <a name="create-a-service-sas-for-a-blob-container"></a>Vytvoření služby SAS pro kontejner objektů blob
 
-Chcete-li vytvořit SAS služby pro kontejner, zavolejte metodu [CloudBlobContainer. GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getsharedaccesssignature) .
+Chcete-li vytvořit službu SAS pro kontejner, zavolejte metodu [CloudBlobContainer.GetSharedAccessSignature.](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getsharedaccesssignature)
 
-Následující příklad kódu vytvoří SAS na kontejneru. Pokud je zadaný název existující zásady přístupu, tato zásada je přidružená k SAS. Pokud nejsou k dispozici žádné uložené zásady přístupu, pak kód vytvoří ad hoc SAS na kontejneru.
+Následující příklad kódu vytvoří SAS v kontejneru. Pokud je k dispozici název existující zásady uloženého přístupu, tato zásada je přidružena k SAS. Pokud nejsou k dispozici žádné uložené zásady přístupu, pak kód vytvoří ad hoc SAS v kontejneru.
 
 ```csharp
 private static string GetContainerSasUri(CloudBlobContainer container, string storedPolicyName = null)
@@ -69,11 +69,11 @@ private static string GetContainerSasUri(CloudBlobContainer container, string st
 }
 ```
 
-## <a name="create-a-service-sas-for-a-blob"></a>Vytvoření SAS služby pro objekt BLOB
+## <a name="create-a-service-sas-for-a-blob"></a>Vytvoření služby SAS pro objekt blob
 
-Chcete-li vytvořit SAS služby pro objekt blob, zavolejte metodu [CloudBlob. GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getsharedaccesssignature) .
+Chcete-li vytvořit službu SAS pro objekt blob, zavolejte metodu [CloudBlob.GetSharedAccessSignature.](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getsharedaccesssignature)
 
-Následující příklad kódu vytvoří SAS pro objekt BLOB. Pokud je zadaný název existující zásady přístupu, tato zásada je přidružená k SAS. Pokud nejsou k dispozici žádné uložené zásady přístupu, vytvoří kód v objektu BLOB ad hoc SAS.
+Následující příklad kódu vytvoří SAS na objekt blob. Pokud je k dispozici název existující zásady uloženého přístupu, tato zásada je přidružena k SAS. Pokud nejsou k dispozici žádné uložené zásady přístupu, pak kód vytvoří ad hoc SAS na objektu blob.
 
 ```csharp
 private static string GetBlobSasUri(CloudBlobContainer container, string blobName, string policyName = null)
@@ -122,5 +122,5 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)](../common/storage-sas-overview.md)
+- [Udělit omezený přístup k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)](../common/storage-sas-overview.md)
 - [Vytvoření SAS služby](/rest/api/storageservices/create-service-sas)

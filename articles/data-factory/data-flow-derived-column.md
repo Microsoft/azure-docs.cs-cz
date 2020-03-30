@@ -1,6 +1,6 @@
 ---
-title: Odvozená transformace sloupce v toku mapování dat
-description: Naučte se, jak transformovat data ve velkém měřítku v Azure Data Factory pomocí transformace sloupce s odvozeným datovým tokem.
+title: Odvozená transformace sloupce v toku dat mapování
+description: Zjistěte, jak transformovat data ve velkém měřítku v Azure Data Factory pomocí mapování toku dat odvozené sloupce transformace.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
@@ -8,35 +8,35 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/15/2019
 ms.openlocfilehash: 66396de52b3709c1d9357f32a375a29a8dcdbd1d
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77048749"
 ---
-# <a name="derived-column-transformation-in-mapping-data-flow"></a>Odvozená transformace sloupce v toku mapování dat
+# <a name="derived-column-transformation-in-mapping-data-flow"></a>Odvozená transformace sloupce v toku dat mapování
 
-Pomocí transformace odvozeného sloupce můžete vygenerovat nové sloupce v toku dat nebo upravit existující pole.
+Odvozená transformace sloupce slouží ke generování nových sloupců v toku dat nebo k úpravě existujících polí.
 
-## <a name="derived-column-settings"></a>Nastavení odvozeného sloupce
+## <a name="derived-column-settings"></a>Nastavení odvozených sloupců
 
-Pokud chcete přepsat existující sloupec, vyberte ho přes rozevírací seznam sloupec. V opačném případě použijte pole výběru sloupce jako textové pole a zadejte název nového sloupce. Chcete-li vytvořit výraz odvozeného sloupce, klikněte na pole zadejte výraz pro otevření [Tvůrce výrazů toku dat](concepts-data-flow-expression-builder.md).
+Chcete-li přepsat existující sloupec, vyberte jej pomocí rozevíracího přehledu sloupců. V opačném případě použijte pole pro výběr sloupce jako textové pole a zadejte název nového sloupce. Chcete-li vytvořit výraz odvozeného sloupce, klikněte na pole Zadat výraz a otevřete [Tvůrce exprese toku dat](concepts-data-flow-expression-builder.md).
 
-![Nastavení odvozeného sloupce](media/data-flow/dc1.png "Nastavení odvozeného sloupce")
+![Nastavení odvozených sloupců](media/data-flow/dc1.png "Nastavení odvozených sloupců")
 
-Chcete-li přidat další odvozené sloupce, najeďte myší na existující odvozený sloupec a klikněte na ikonu se symbolem plus. Vyberte možnost **Přidat sloupec** nebo **Přidat vzor sloupce**. Vzorce sloupce mohou být užitečné, pokud jsou názvy sloupců z vašich zdrojů proměnné. Další informace najdete v tématu [vzory sloupců](concepts-data-flow-column-pattern.md).
+Chcete-li přidat další odvozené sloupce, najeďte na existující odvozený sloupec a klepněte na ikonu plus. Zvolte **Přidat sloupec** nebo Přidat vzorek **sloupce**. Vzory sloupců se mohou hodit, pokud jsou názvy sloupců z vašich zdrojů variabilní. Další informace naleznete [v tématu Vzorky sloupců](concepts-data-flow-column-pattern.md).
 
-![Nový odvozený výběr sloupce](media/data-flow/columnpattern.png "Nový odvozený výběr sloupce")
+![Nový výběr odvozeného sloupce](media/data-flow/columnpattern.png "Nový výběr odvozeného sloupce")
 
-## <a name="build-schemas-in-output-schema-pane"></a>Schémata sestavení v podokně výstupní schéma
+## <a name="build-schemas-in-output-schema-pane"></a>Vytváření schémat v podokně Schéma výstupu
 
-Sloupce, které upravujete a přidáváte do schématu, jsou uvedeny v podokně výstupní schéma. Tady můžete interaktivně vytvářet jednoduché a komplexní datové struktury. Chcete-li přidat další pole, vyberte možnost **Přidat sloupec**. Chcete-li vytvořit hierarchie, vyberte možnost **Přidat dílčí sloupec**.
+Sloupce, které upravujete a přidáváte do schématu, jsou uvedeny v podokně Schéma výstupu. Můžete interaktivně vytvářet jednoduché a složité datové struktury zde. Chcete-li přidat další pole, vyberte **Přidat sloupec**. Chcete-li vytvořit hierarchie, vyberte **Přidat podsloupec**.
 
-![Přidat Podsloupec](media/data-flow/addsubcolumn.png "Přidat Podsloupec")
+![Přidat podsloupec](media/data-flow/addsubcolumn.png "Přidat podsloupec")
 
-Další informace o zpracování složitých typů v toku dat naleznete v tématu [zpracování JSON při mapování toku dat](format-json.md#mapping-data-flow-properties).
+Další informace o zpracování složitých typů v toku dat naleznete [v tématu Zpracování JSON v mapování toku dat](format-json.md#mapping-data-flow-properties).
 
-![Přidat složitý sloupec](media/data-flow/complexcolumn.png "Přidat sloupce")
+![Přidání složitého sloupce](media/data-flow/complexcolumn.png "Přidání sloupců")
 
 ## <a name="data-flow-script"></a>Skript toku dat
 
@@ -57,13 +57,13 @@ Další informace o zpracování složitých typů v toku dat naleznete v témat
 
 ### <a name="example"></a>Příklad
 
-Níže uvedený příklad je odvozený sloupec s názvem `CleanData`, který přebírá příchozí datový proud `MoviesYear` a vytvoří dva odvozené sloupce. První odvozený sloupec nahrazuje sloupec `Rating` hodnotou hodnocení jako typ Integer. Druhý odvozený sloupec je vzor, který se shoduje se všemi sloupci, jejichž název začíná řetězcem "filmy". Pro každý odpovídající sloupec vytvoří sloupec `movie`, který se rovná hodnotě odpovídajícího sloupce s předponou "movie_". 
+Níže uvedený příklad je odvozený sloupec s `CleanData` `MoviesYear` názvem, který přebírá příchozí datový proud a vytvoří dva odvozené sloupce. První odvozený sloupec nahradí `Rating` sloupec hodnotou hodnocení jako celého typu. Druhý odvozený sloupec je vzorek, který odpovídá každému sloupci, jehož název začíná na "filmy". Pro každý odpovídající sloupec vytvoří `movie` sloupec, který se rovná hodnotě odpovídajícího sloupce s předponou "movie_". 
 
-V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
+V ux datové továrny tato transformace vypadá jako následující obrázek:
 
-![Odvodit příklad](media/data-flow/derive-script1.png "Odvodit příklad")
+![Odvozený příklad](media/data-flow/derive-script1.png "Odvozený příklad")
 
-Skript toku dat pro tuto transformaci je v následujícím fragmentu kódu:
+Skript toku dat pro tuto transformaci je ve fragmentu níže:
 
 ```
 MoviesYear derive(
@@ -77,4 +77,4 @@ MoviesYear derive(
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [jazyce výrazu Mapping data Flow](data-flow-expression-functions.md).
+- Přečtěte si další informace o [výrazu mapování toku dat](data-flow-expression-functions.md).

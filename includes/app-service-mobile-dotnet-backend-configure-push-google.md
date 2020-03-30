@@ -5,18 +5,18 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 3c6147cc24f285fc32dce145e594f743c9633c20
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68857355"
 ---
-Použijte postup, který odpovídá vašemu typu&mdash;back-end projektu, back-endu [.NET](#dotnet) nebo back- [Endu Node. js](#nodejs).
+Použijte postup, který odpovídá typu&mdash;projektu back-end u [.NET back-end](#dotnet) nebo [Node.js back-end](#nodejs).
 
-### <a name="dotnet"></a>Projekt back-end .NET
+### <a name="net-back-end-project"></a><a name="dotnet"></a>Back-endový projekt .NET
 
-1. V aplikaci Visual Studio klikněte pravým tlačítkem na projekt serveru a pak klikněte na **Spravovat balíčky NuGet**. Vyhledejte a klikněte na nainstalovat. `Microsoft.Azure.NotificationHubs` Tím se nainstaluje Klientská knihovna Notification Hubs.
-2. Ve složce Controllers otevřete TodoItemController.cs a přidejte následující `using` příkazy:
+1. V sadě Visual Studio klepněte pravým tlačítkem myši na projekt serveru a klepněte na příkaz **Spravovat balíčky NuGet**. Vyhledejte `Microsoft.Azure.NotificationHubs`položku a klepněte na tlačítko **Nainstalovat**. Tím nainstalujete klientskou knihovnu Centra oznámení.
+2. Ve složce Řadiče otevřete TodoItemController.cs `using` a přidejte následující příkazy:
 
     ```csharp
     using Microsoft.Azure.Mobile.Server.Config;
@@ -65,12 +65,12 @@ Použijte postup, který odpovídá vašemu typu&mdash;back-end projektu, back-e
     }
     ```
 
-4. Publikujte projekt serveru znovu.
+4. Znovu publikujte projekt serveru.
 
-### <a name="nodejs"></a>Back-end projekt Node. js
+### <a name="nodejs-back-end-project"></a><a name="nodejs"></a>Back-endový projekt Node.js
 
-1. Nastavte svůj back-end projekt.
-2. Existující kód nahraďte v souboru TodoItem. js následujícím kódem:
+1. Nastavte back-endový projekt.
+2. Nahraďte existující kód v souboru todoitem.js následujícím:
 
     ```javascript
     var azureMobileApps = require('azure-mobile-apps'),
@@ -117,6 +117,6 @@ Použijte postup, který odpovídá vašemu typu&mdash;back-end projektu, back-e
     module.exports = table;
     ```
 
-    Tím se pošle oznámení GCM, které obsahuje položku. text při vložení nové položky ToDo.
+    To odešle oznámení GCM, který obsahuje item.text při vložení nové položky todo.
 
 3. Při úpravách souboru v místním počítači znovu publikujte projekt serveru.

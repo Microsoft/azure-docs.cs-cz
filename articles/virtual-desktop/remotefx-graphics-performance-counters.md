@@ -1,6 +1,6 @@
 ---
-title: Diagnostika problémů s výkonem grafiky Vzdálená plocha – Azure
-description: Tento článek popisuje, jak pomocí čítačů grafiky RemoteFX v relacích protokolu vzdálené plochy diagnostikovat problémy s výkonem grafiky na virtuálním počítači s Windows.
+title: Diagnostika problémů s grafickým výkonem Vzdálená plocha – Azure
+description: Tento článek popisuje, jak používat čítače grafiky RemoteFX v relacích protokolu vzdálené plochy k diagnostice problémů s výkonem grafiky ve virtuální ploše systému Windows.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,99 +9,99 @@ ms.date: 05/23/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 84cee86dbddff77f6142925eec01889cf793a466
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79127549"
 ---
-# <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>Diagnostika problémů s výkonem grafiky na vzdálené ploše
+# <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>Diagnostika problémů s grafickým výkonem ve vzdálené ploše
 
-Chcete-li diagnostikovat problémy s kvalitou ve vzdálených relacích, jsou čítače uvedeny v části grafiky RemoteFX v nástroji Sledování výkonu. Tento článek vám pomůže určit a opravit problémy s výkonem související s grafikou během relací protokol RDP (Remote Desktop Protocol) (RDP), které tyto čítače využívají.
+Chcete-li diagnostikovat problémy s kvalitou prostředí se vzdálenými relacemi, byly k dispozici čítače v části RemoteFX Graphics sledování výkonu. Tento článek vám pomůže určit a opravit kritické body výkonu související s grafikou během relací protokolu RDP (RdP) pomocí těchto čítačů.
 
 ## <a name="find-your-remote-session-name"></a>Vyhledání názvu vzdálené relace
 
-K identifikaci čítačů výkonu grafiky budete potřebovat název vzdálené relace. Podle pokynů v této části Identifikujte instanci každého čítače.
+K identifikaci čítačů grafického výkonu budete potřebovat název vzdálené relace. Podle pokynů v této části určete svou instanci každého čítače.
 
-1. Z vzdálené relace otevřete příkazový řádek systému Windows.
-2. Spusťte příkaz **qwinsta** a vyhledejte název vaší relace.
-    - Pokud je vaše relace hostovaná na virtuálním počítači s více relacemi (VM): vaše instance každého čítače má příponu stejným číslem, jako přípona názvu relace, například RDP-TCP 37.
-    - Pokud je vaše relace hostovaná na VIRTUÁLNÍm počítači, který podporuje jednotky vGPU (Virtual Graphics Processing Disks): vaše instance každého čítače je uložená na serveru místo na vašem VIRTUÁLNÍm počítači. Instance čítače obsahují název virtuálního počítače místo čísla v názvu relace, například "virtuální počítač Win8 Enterprise".
+1. Otevřete příkazový řádek systému Windows ze vzdálené relace.
+2. Spusťte příkaz **qwinsta** a najděte název relace.
+    - Pokud je vaše relace hostovaná ve virtuálním počítači s více relacemi: Vaše instance každého čítače je suffixed stejným číslem, které přípony název relace, například "rdp-tcp 37."
+    - Pokud je vaše relace hostovaná ve virtuálním počítači, který podporuje virtuální grafické procesory (vGPU): Vaše instance každého čítače je uložena na serveru místo ve vašem virtuálním počítači. Instance čítačů zahrnují název virtuálního počítače namísto čísla v názvu relace, například "Win8 Enterprise VM".
 
 >[!NOTE]
-> I když čítače mají v názvech RemoteFX, zahrnují také grafiku vzdálené plochy ve scénářích vGPU.
+> Zatímco čítače mají RemoteFX v jejich názvech, obsahují grafiku vzdálené plochy ve scénářích vGPU také.
 
-## <a name="access-performance-counters"></a>Přístup k čítačům výkonu
+## <a name="access-performance-counters"></a>Čítače výkonu přístupu
 
-Po určení názvu vzdálené relace postupujte podle těchto pokynů a Shromážděte čítače výkonu grafiky RemoteFX pro vzdálenou relaci.
+Po určení názvu vzdálené relace, postupujte podle těchto pokynů shromažďovat čítače výkonu remoteFX grafiky pro vzdálené relace.
 
-1. Vyberte **Start** > **nástroje pro správu** > **sledování výkonu**.
-2. V dialogovém okně **sledování výkonu** rozbalte položku **Nástroje pro monitorování**, vyberte **sledování výkonu**a pak vyberte **Přidat**.
-3. V dialogovém okně **Přidat čítače** rozbalte v seznamu **Dostupné čítače** oddíl grafiky RemoteFX.
-4. Vyberte čítače, které chcete monitorovat.
-5. V seznamu **instance vybraného objektu** vyberte konkrétní instance, které chcete monitorovat pro vybrané čítače, a pak vyberte **Přidat**. Chcete-li vybrat všechny dostupné instance čítače, vyberte možnost **všechny instance**.
+1. Vyberte **možnost Spustit** > **nástroj pro správu** > **sledování výkonu**.
+2. V dialogovém okně **Sledování výkonu** rozbalte **položku Nástroje pro sledování**, vyberte Sledování **výkonu**a pak vyberte **Přidat**.
+3. V dialogovém okně **Přidat čítače** rozbalte v seznamu **Dostupné čítače** oddíl Pro grafiku RemoteFX.
+4. Vyberte čítače, které chcete sledovat.
+5. V seznamu **Instance vybraných objektů** vyberte konkrétní instance, které mají být sledovány pro vybrané čítače, a pak vyberte **Přidat**. Chcete-li vybrat všechny dostupné instance čítačů, vyberte **možnost Všechny instance**.
 6. Po přidání čítačů vyberte **OK**.
 
-Vybrané čítače výkonu se zobrazí na obrazovce sledování výkonu.
+Vybrané čítače výkonu se zobrazí na obrazovce Sledování výkonu.
 
 >[!NOTE]
 >Každá aktivní relace na hostiteli má svou vlastní instanci každého čítače výkonu.
 
 ## <a name="diagnose-issues"></a>Diagnostika problémů
 
-Problémy s výkonem související s grafikou obecně spadají do čtyř kategorií:
+Problémy s výkonem související s grafikou obvykle spadají do čtyř kategorií:
 
-- Nízká snímková frekvence
-- Náhodné kabiny
-- Vysoká latence vstupu
-- Špatná kvalita snímků
+- Nízká kmitočet snímků
+- Náhodné stánky
+- Vysoká vstupní latence
+- Špatná kvalita rámu
 
-### <a name="addressing-low-frame-rate-random-stalls-and-high-input-latency"></a>Řešení nízké frekvence snímků, náhodných parkovacích míst a vysoké latence vstupu
+### <a name="addressing-low-frame-rate-random-stalls-and-high-input-latency"></a>Řešení nízké kmitočetsnímků snímků, náhodných stánků a vysoké vstupní latence
 
-Nejdřív ověřte výstupní snímky/druhý čítač. Měří počet rámců, které byly klientovi k dispozici. Pokud je tato hodnota menší než vstupní rámce/druhý čítač, snímky se přeskočí. Chcete-li identifikovat kritický bod, použijte čítače vynechané/sekundové rámce.
+Nejprve zkontrolujte čítač Výstupní snímky/Druhý. Měří počet rámců zpřístupněných klientovi. Pokud je tato hodnota menší než čítač Vstupní rámce/Sekunda, rámce jsou přeskočeny. Chcete-li identifikovat kritické místo, použijte čítače Přeskoče/Druhý rámce.
 
-Existují tři typy vynechaných snímků/sekundu čítače:
+Existují tři typy čítačů Přeskoče/Sekunda:
 
-- Počet vynechaných snímků za sekundu (nedostatek prostředků serveru)
-- Počet vynechaných snímků za sekundu (nedostatek síťových prostředků)
-- Počet vynechaných snímků za sekundu (nedostatek zdrojů klienta)
+- Přesihnuté rámce za sekundu (nedostatek prostředků serveru)
+- Přesihnuté rámce za sekundu (nedostatek síťových prostředků)
+- Přesihnuté rámce/sekunda (nedostatek prostředků klienta)
 
-Vysoká hodnota pro kterýkoli z vynechaných snímků za sekundu znamená, že problém souvisí s prostředkem, který čítač sleduje. Pokud například klient nekóduje a neprezentuje snímky se stejnou sazbou, než server nabídne snímky, bude čítač vynechaných snímků za sekundu (nedostatečný počet prostředků klienta) vysoký.
+Vysoká hodnota pro některý z čítačů Přeskočených snímků/sekundznamená, že problém souvisí s prostředky, které čítač sleduje. Pokud například klient nedekóduje a neprezentuje rámce stejnou rychlostí, jakou poskytuje server, čítač Přeskočeno/druhý rámce (nedostatečné prostředky klienta) bude vysoký.
 
-Pokud čítače výstupních snímků/sekund odpovídají vstupním rámcům/druhému počítadla, přesto si stále všimnete neobvyklého zpoždění nebo zastavení, Průměrná doba kódování může být příčinou. Kódování je synchronní proces, který probíhá na serveru ve scénáři s jednou relací (vGPU) a na virtuálním počítači ve scénáři s více relacemi. Průměrná doba kódování by měla být pod 33 MS. Pokud je průměrná doba kódování pod 33 MS, ale stále dochází k problémům s výkonem, může se jednat o problém s aplikací nebo operačním systémem, který používáte.
+Pokud čítač Výstupní snímky/Druhý odpovídá čítači Vstupní snímky/Druhý, přesto si stále všimnete neobvyklého zpoždění nebo zastavení, může být viníkem průměrná doba kódování. Kódování je synchronní proces, ke kterému dochází na serveru ve scénáři jedné relace (vGPU) a na virtuálním počítači ve scénáři s více relacemi. Průměrná doba kódování by měla být pod 33 ms. Pokud průměrná doba kódování je méně než 33 ms, ale stále máte problémy s výkonem, může být problém s aplikací nebo operačním systémem, který používáte.
 
-Další informace o diagnostikování problémů souvisejících s aplikacemi najdete v tématu [čítače výkonu zpoždění vstupu uživatele](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/).
+Další informace o diagnostice problémů souvisejících s aplikací naleznete v [tématu Čítač výkonu Zpoždění vstupu uživatele](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/).
 
-Vzhledem k tomu, že protokol RDP podporuje průměrnou dobu kódování 33 MS, podporuje vstupní snímkový kmitočet až 30 snímků za sekundu. Počítejte s tím, že maximální podporovaná frekvence snímků je 33 MS. V mnoha případech bude frekvence snímků, kterou uživatel zjistil, nižší, a to v závislosti na tom, jak často je rámec k protokolu RDP od zdroje k dispozici. Například úlohy, jako je sledování videa, vyžadují snímkovou rychlost 30 snímků za sekundu, ale méně výpočetní úlohy, jako je například zřídka se upravování dokumentu, mají mnohem nižší hodnotu pro vstupní snímky/s bez snížení kvality uživatelského prostředí.
+Protože protokol RDP podporuje průměrnou dobu kódování 33 ms, podporuje vstupní kmitočet snímků až 30 snímků za sekundu. Maximální podporovaný kmitočet snímků je 33 ms. V mnoha případech bude kmitočet snímků, který uživatel udává, nižší v závislosti na tom, jak často je snímek poskytnut rdp zdrojem. Například úkoly, jako je sledování videa vyžadují úplnou vstupní kmitočet snímků 30 snímků za sekundu, ale méně výpočetní náročné úkoly, jako je zřídka úprava dokumentu, mají za následek mnohem nižší hodnotu vstupních snímků za sekundu bez snížení kvality uživatelského prostředí.
 
 ### <a name="addressing-poor-frame-quality"></a>Řešení špatné kvality snímků
 
-Pomocí čítače kvality snímků Diagnostikujte problémy s kvalitou snímků. Tento čítač vyjadřuje kvalitu výstupního rámce jako procento kvality zdrojového rámce. Ztráta kvality může být způsobena funkcí RemoteFX nebo může být podstatná zdroji grafiky. Pokud RemoteFX způsobil ztrátu kvality, může se jednat o nedostatek síťových prostředků nebo prostředků serveru pro odeslání obsahu s vyšší věrností.
+K diagnostice problémů s kvalitou snímků použijte čítač Kvalita rámce. Tento čítač vyjadřuje kvalitu výstupního rámce jako procento kvality zdrojového rámce. Ztráta kvality může být způsobeno RemoteFX nebo může být vlastní zdroj grafiky. Pokud RemoteFX způsobil ztrátu kvality, problém může být nedostatek síťových nebo serverových prostředků pro odesílání obsahu vyšší věrnosti.
 
 ## <a name="mitigation"></a>Omezení rizik
 
-Pokud jsou příčinou kritických prostředků prostředky serveru, zkuste zvýšit výkon jedním z následujících přístupů:
+Pokud jsou problémové místo příčinou prostředků serveru, vyzkoušejte jeden z následujících přístupů ke zlepšení výkonu:
 
 - Snižte počet relací na hostitele.
-- Zvětšete paměť a výpočetní prostředky na serveru.
-- Vyřaďte rozlišení připojení.
+- Zvyšte paměť a výpočetní prostředky na serveru.
+- Přetažení rozlišení připojení.
 
-Pokud síťové prostředky způsobují kritické body, zkuste k vylepšení síťové dostupnosti na relaci použít jeden z následujících přístupů:
+Pokud problémové místo způsobuje síťové prostředky, vyzkoušejte jeden z následujících přístupů ke zlepšení dostupnosti sítě na relaci:
 
 - Snižte počet relací na hostitele.
 - Použijte síť s vyšší šířkou pásma.
-- Vyřaďte rozlišení připojení.
+- Přetažení rozlišení připojení.
 
-Pokud prostředky klienta způsobují kritické body, vyzkoušejte jeden z následujících přístupů ke zvýšení výkonu:
+Pokud jsou problémové místo klienta příčinou kritického místa, vyzkoušejte jeden z následujících přístupů ke zlepšení výkonu:
 
 - Nainstalujte nejnovějšího klienta vzdálené plochy.
-- Zvyšte velikost paměťových a výpočetních prostředků na klientském počítači.
+- Zvyšte paměť a výpočetní prostředky v klientském počítači.
 
 > [!NOTE]
-> Momentálně nepodporujeme čítač zdrojové snímky/druhý. V současné době se v čítačích zdrojové rámce/sekunda vždy zobrazí 0.
+> V současné době nepodporujeme čítač Zdrojové rámce/Druhý. Pro tuto chvíli se vždy zobrazí čítač Zdrojové snímky/Sekunda 0.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o vytvoření virtuálního počítače Azure optimalizovaného grafickým PROCESORem najdete v tématu [Konfigurace akcelerace GPU (Graphics Processing Unit) pro prostředí virtuálních počítačů s Windows](configure-vm-gpu.md).
-- Přehled postupů řešení potíží a eskalace najdete v tématu [řešení potíží – přehled, názory a podpora](troubleshoot-set-up-overview.md).
-- Další informace o této službě najdete v tématu [prostředí pro stolní počítače s Windows](environment-setup.md).
+- Pokud chcete vytvořit virtuální počítač Azure optimalizovaný pro GPU, přečtěte si téma [Konfigurace akcelerace grafických procesorů (GPU) pro prostředí Virtuální desktopy Windows](configure-vm-gpu.md).
+- Přehled tras pro řešení potíží a eskalace najdete [v tématu Přehled řešení potíží, zpětná vazba a podpora](troubleshoot-set-up-overview.md).
+- Další informace o službě naleznete v tématu [Windows Desktop environment](environment-setup.md).

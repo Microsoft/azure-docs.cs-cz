@@ -14,35 +14,35 @@ ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
 ms.openlocfilehash: 3b908406c8717d2fa8834bc4dff1bcd27ec4761f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79241420"
 ---
 # <a name="what-is-azure-virtual-network"></a>Co je Azure Virtual Network?
 
-Azure Virtual Network (VNet) je základní stavební blok vaší privátní sítě v Azure. Virtuální síť umožňuje mnoha typům prostředků Azure, jako je Azure Virtual Machines (VM), bezpečně komunikovat mezi sebou, internetem a místními sítěmi. Virtuální síť je podobná tradiční síti, kterou provozujete ve svém vlastním datovém centru, ale přináší další výhody infrastruktury Azure, jako je například škálování, dostupnost a izolace.
+Virtuální síť Azure (VNet) je základní stavební blok pro vaši privátní síť v Azure. Virtuální síť umožňuje mnoho typů prostředků Azure, jako jsou virtuální počítače Azure (VM), bezpečně komunikovat mezi sebou, internet a místní sítě. Virtuální síť je podobná tradiční síti, kterou byste provozovali ve vlastním datovém centru, ale přináší s sebou další výhody infrastruktury Azure, jako je škálování, dostupnost a izolace.
 
 ## <a name="vnet-concepts"></a>Koncepty virtuální sítě
 
-- **Adresní prostor:** Při vytváření virtuální sítě musíte zadat vlastní adresní prostor privátních IP adres pomocí veřejných a privátních adres (RFC 1918). Azure přiřazuje prostředkům ve virtuální síti privátní IP adresy z přiřazeného adresního prostoru. Pokud například nasadíte virtuální počítač ve virtuální síti s adresním prostorem 10.0.0.0/16, bude virtuálnímu počítači přiřazená privátní IP adresa, jako je 10.0.0.4.
-- **Podsítě:** Podsítě umožňují segmentovat virtuální síť do jedné nebo více podsítí a přidělit část adresního prostoru virtuální sítě ke každé podsíti. Prostředky Azure pak můžete nasadit v konkrétní podsíti. Stejně jako v tradiční síti vám podsítě umožní segmentovat adresní prostor virtuální sítě do segmentů, které jsou vhodné pro interní síť organizace. Tím se také zlepšuje efektivita přidělování adres. Prostředky v rámci podsítí můžete zabezpečit pomocí skupin zabezpečení sítě. Další informace najdete v tématu [skupiny zabezpečení](security-overview.md).
-- **Oblasti**: virtuální síť je vymezená na jednu oblast nebo umístění; víc virtuálních sítí z různých oblastí ale můžete propojit společně pomocí Virtual Network partnerských vztahů.
-- **Předplatné:** Virtuální síť je vymezená pro předplatné. V každém [předplatném](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) Azure a v každé [oblasti](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region) Azure můžete implementovat několik virtuálních sítí.
+- **Adresní prostor:** Při vytváření virtuální sítě je nutné zadat vlastní privátní ip adresní prostor pomocí veřejných a privátních adres (RFC 1918). Azure přiřazuje prostředkům ve virtuální síti privátní IP adresy z přiřazeného adresního prostoru. Pokud například nasadíte virtuální ho ve virtuální síti s adresním prostorem 10.0.0.0/16, bude virtuálnímu virtuálnímu síti přiřazena privátní IP adresa jako 10.0.0.4.
+- **Podsítě:** Podsítě umožňují segmentovat virtuální síť do jedné nebo více podsítí a přidělit část adresního prostoru virtuální sítě každé podsíti. Potom můžete nasadit prostředky Azure v konkrétní podsíti. Stejně jako v tradiční síti, podsítě umožňují segmentovat adresní prostor virtuální sítě do segmentů, které jsou vhodné pro interní síť organizace. To také zlepšuje efektivitu přidělování adres. Prostředky v podsítích můžete zabezpečit pomocí skupin zabezpečení sítě. Další informace naleznete v [tématu Skupiny zabezpečení](security-overview.md).
+- **Oblasti**: Virtuální síť je vymezena na jednu oblast/umístění; více virtuálních sítí z různých oblastí však lze propojit pomocí partnerského vztahu virtuální sítě.
+- **Předplatné:** Virtuální síť je vymezena na předplatné. V každém [předplatném](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) Azure a v každé [oblasti](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region) Azure můžete implementovat několik virtuálních sítí.
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
-Při sestavování sítě v Azure je důležité mít na paměti následující principy univerzálního návrhu:
+Při vytváření sítě v Azure je důležité mít na paměti následující univerzální principy návrhu:
 
-- Ujistěte se, že adresní prostory nejsou překrývající. Ujistěte se, že se adresní prostor virtuální sítě (blok CIDR) nepřekrývá s dalšími rozsahy sítě vaší organizace.
-- Vaše podsítě by neměly zahrnovat celý adresní prostor virtuální sítě. Naplánujte si předem a vyhraďte si pro budoucnost nějaký adresní prostor.
-- Doporučuje se, abyste měli méně velkých virtuální sítě než několik malých virtuální sítě. Tím se zabrání režie správy.
-- Zabezpečte svou virtuální síť přiřazením skupin zabezpečení sítě (skupin zabezpečení sítě) k podsítím, které jsou pod nimi.
+- Zajistěte nepřekrývající se adresní prostory. Ujistěte se, že váš adresní prostor virtuální sítě (blok CIDR) se nepřekrývá s jinými síťovými rozsahy vaší organizace.
+- Vaše podsítě by neměly pokrývat celý adresní prostor virtuální sítě. Naplánujte si dopředu a vyhraďte si do budoucna nějaký adresní prostor.
+- Doporučujese mít méně velkých virtuálních sítí než více malých virtuálních sítí. Tím se zabrání režii správy.
+- Zabezpečte virtuální síť přiřazením skupin zabezpečení sítě (NSG) k podsítím pod nimi.
 
 ## <a name="communicate-with-the-internet"></a>Komunikace s internetem
 
-Všechny prostředky ve virtuální síti můžou ve výchozím nastavení komunikovat odchozí připojení k Internetu. Příchozí komunikaci s prostředkem můžete umožnit tím, že prostředku přiřadíte veřejnou IP adresu nebo veřejný Load Balancer. Veřejnou IP adresu nebo veřejný Load Balancer můžete použít také ke správě odchozích připojení.  Další informace o odchozích připojeních v Azure najdete v tématech [Odchozí připojení](../load-balancer/load-balancer-outbound-connections.md), [Veřejné IP adresy](virtual-network-public-ip-address.md) a [Load Balancer](../load-balancer/load-balancer-overview.md).
+Všechny prostředky ve virtuální síti můžete komunikovat odchozí k Internetu, ve výchozím nastavení. Příchozí komunikaci s prostředkem můžete umožnit tím, že prostředku přiřadíte veřejnou IP adresu nebo veřejný Load Balancer. Veřejnou IP adresu nebo veřejný Load Balancer můžete použít také ke správě odchozích připojení.  Další informace o odchozích připojeních v Azure najdete v tématech [Odchozí připojení](../load-balancer/load-balancer-outbound-connections.md), [Veřejné IP adresy](virtual-network-public-ip-address.md) a [Load Balancer](../load-balancer/load-balancer-overview.md).
 
 >[!NOTE]
 >Pokud používáte pouze interní [Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md), odchozí připojení nebudou dostupná, dokud neurčíte, jak mají [odchozí připojení](../load-balancer/load-balancer-outbound-connections.md) pracovat s veřejnou IP adresou nebo veřejným Load Balancerem na úrovni instance.
@@ -53,7 +53,7 @@ Prostředky Azure mezi sebou zabezpečeně komunikují jedním z následujícíc
 
 - **Prostřednictvím virtuální sítě:** Do virtuální sítě můžete nasadit virtuální počítače a několik dalších typů prostředků Azure, jako jsou služby Azure App Service Environment, Azure Kubernetes Service (AKS) a Azure Virtual Machine Scale Sets. Úplný seznam prostředků Azure, které můžete nasadit do virtuální sítě, najdete v tématu věnovaném [integraci virtuální sítě do služeb](virtual-network-for-azure-services.md).
 - **Prostřednictvím koncového bodu služby pro virtuální síť**: Privátní adresní prostor a identitu virtuální sítě můžete přes přímé připojení rozšířit na prostředky služeb Azure, jako jsou účty Azure Storage a databáze Azure SQL. Koncové body služeb umožňují svázat vaše důležité prostředky služeb Azure pouze s virtuální sítí. Další informace najdete v tématu [Přehled koncových bodů služeb virtuální sítě](virtual-network-service-endpoints-overview.md).
-- **Prostřednictvím partnerského vztahu**virtuálních sítí: můžete vzájemně propojit virtuální sítě a povolit komunikaci prostředků v obou virtuálních sítích pomocí partnerského vztahu virtuálních sítí. Propojené virtuální sítě se můžou nacházet ve stejné oblasti Azure nebo v různých oblastech. Další informace najdete v tématu [Partnerský vztah virtuálních sítí](virtual-network-peering-overview.md).
+- **Prostřednictvím partnerského vztahu virtuální sítě**: Můžete připojit virtuální sítě k sobě navzájem, povolení prostředků v obou virtuálních sítí komunikovat mezi sebou, pomocí partnerského vztahu virtuální sítě. Propojené virtuální sítě se můžou nacházet ve stejné oblasti Azure nebo v různých oblastech. Další informace najdete v tématu [Partnerský vztah virtuálních sítí](virtual-network-peering-overview.md).
 
 ## <a name="communicate-with-on-premises-resources"></a>Komunikace s místními prostředky
 
@@ -67,7 +67,7 @@ Své místní počítače a sítě můžete připojit k virtuální síti pomoc�
 
 Síťový provoz mezi podsítěmi můžete filtrovat pomocí jedné nebo obou z následujících možností:
 
-- **Skupiny zabezpečení:** Skupiny zabezpečení sítě a skupiny zabezpečení aplikací můžou obsahovat několik příchozích a odchozích pravidel zabezpečení, která umožňují filtrovat provoz do a z prostředků podle zdrojové a cílové IP adresy, portu a protokolu. Další informace najdete v tématu [skupiny zabezpečení sítě](security-overview.md#network-security-groups) nebo [skupiny zabezpečení aplikací](security-overview.md#application-security-groups).
+- **Skupiny zabezpečení:** Skupiny zabezpečení sítě a skupiny zabezpečení aplikací mohou obsahovat více příchozích a odchozích pravidel zabezpečení, která umožňují filtrovat přenosy do a z prostředků podle zdrojové a cílové adresy IP, portu a protokolu. Další informace naleznete v [tématu Skupiny zabezpečení sítě](security-overview.md#network-security-groups) nebo [Skupiny zabezpečení aplikací](security-overview.md#application-security-groups).
 - **Síťová virtuální zařízení:** Síťové virtuální zařízení je virtuální počítač, který provádí určitou síťovou funkci, jako je například brána firewall, optimalizace sítě WAN nebo jiná síťová funkce. Úplný seznam dostupných síťových virtuálních zařízení, která můžete nasadit do virtuální sítě, najdete na webu [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances).
 
 ## <a name="route-network-traffic"></a>Směrování provozu sítě
@@ -77,13 +77,13 @@ Azure ve výchozím nastavení směruje provoz mezi podsítěmi, propojenými vi
 - **Směrovací tabulky:** Pro jednotlivé podsítě můžete vytvářet vlastní směrovací tabulky s trasami, které řídí cíl směrování provozu. Další informace o [směrovacích tabulkách](virtual-networks-udr-overview.md#user-defined).
 - **Trasy protokolu Border Gateway Protocol (BGP):** Pokud připojíte virtuální síť k místní síti pomocí připojení Azure VPN Gateway nebo ExpressRoute, můžete do svých virtuálních sítí rozšířit místní trasy BGP. Další informace o použití BGP se službou [Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a [ExpressRoute](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#dynamic-route-exchange).
 
-## <a name="azure-vnet-limits"></a>Omezení virtuální sítě Azure
+## <a name="azure-vnet-limits"></a>Limity azure virtuální sítě
 
-Existují určitá omezení počtu prostředků Azure, které můžete nasadit. Většina omezení sítě Azure je na maximálních hodnotách. Můžete ale [zvýšit určitá omezení sítě](../azure-portal/supportability/networking-quota-requests.md) , jak je uvedeno na [stránce omezení virtuální](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)sítě. 
+Počet prostředků Azure, které můžete nasadit, jsou určitá omezení. Většina síťových limitů Azure má maximální hodnoty. Můžete však [zvýšit určitá omezení sítě,](../azure-portal/supportability/networking-quota-requests.md) jak je uvedeno na [stránce omezení virtuální sítě](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits). 
 
 ## <a name="pricing"></a>Ceny
 
-Za použití virtuální sítě Azure se neúčtují žádné poplatky. to je zdarma. Pro prostředky, jako jsou Virtual Machines (virtuální počítače) a další produkty, platí standardní poplatky. Další informace najdete v tématu [ceny virtuální](https://azure.microsoft.com/pricing/details/virtual-network/) sítě a [Cenová Kalkulačka](https://azure.microsoft.com/pricing/calculator/)Azure.
+Za používání Azure Virtuální sítě se neplatí, je zadarmo. Standardní poplatky se vztahují na prostředky, jako jsou virtuální počítače (VM) a další produkty. Další informace najdete v tématu [ceny virtuální sítě](https://azure.microsoft.com/pricing/details/virtual-network/) a [cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)Azure .
 
 ## <a name="next-steps"></a>Další kroky
 

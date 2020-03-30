@@ -8,13 +8,13 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: f4016349e354c84e9e096ac6d5072a4870e9ef29
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68726463"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Rychlý start: Nahrávání, stahování a výpis objektů BLOB pomocí jazyka přejít
+# <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Go
 
 V tomto rychlém startu zjistíte, jak pomocí programovacího jazyka Go nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru v úložišti objektů blob v Azure. 
 
@@ -22,22 +22,22 @@ V tomto rychlém startu zjistíte, jak pomocí programovacího jazyka Go nahráv
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-Ujistěte se, že máte nainstalované následující další požadavky:
+Ujistěte se, že máte nainstalovány následující další požadavky:
  
-* [Přejít 1,8 nebo vyšší](https://golang.org/dl/)
-* [Azure Storage BLOB SDK for přejít](https://github.com/azure/azure-storage-blob-go/), pomocí následujícího příkazu:
+* [Přejít na 1,8 nebo vyšší](https://golang.org/dl/)
+* [Azure Storage Blob SDK for Go](https://github.com/azure/azure-storage-blob-go/)pomocí následujícího příkazu:
 
     ```
     go get -u github.com/Azure/azure-storage-blob-go/azblob
     ``` 
 
     > [!NOTE]
-    > Ujistěte se, že je `Azure` v adrese URL velká písmena, aby nedocházelo k problémům s importem případu při práci se sadou SDK. Také velká `Azure` písmena v příkazech importu.
+    > Ujistěte se, že `Azure` máte v této adrese URL velká písmena, abyste se při práci se sadou SDK vyhnuli problémům s importem souvisejícím s případem. Také velká `Azure` písmena v import prohlášení.
     
 ## <a name="download-the-sample-application"></a>Stažení ukázkové aplikace
 [Ukázková aplikace](https://github.com/Azure-Samples/storage-blobs-go-quickstart.git) použitá v tomto rychlém startu je základní aplikace v jazyce Go.  
 
-Pomocí [gitu](https://git-scm.com/) stáhněte kopii aplikace do svého vývojového prostředí. 
+Pomocí [gitu](https://git-scm.com/) stáhněte kopii aplikace do vývojového prostředí. 
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-blobs-go-quickstart 
@@ -50,14 +50,14 @@ Tento příkaz naklonuje úložiště do vaší místní složky gitu. Pokud chc
 ## <a name="configure-your-storage-connection-string"></a>Konfigurace připojovacího řetězce úložiště
 Toto řešení vyžaduje, aby název a klíč vašeho účtu úložiště byly bezpečně uložené v místních proměnných prostředí počítače, na kterém je ukázka spuštěná. V závislosti na operačním systému vytvořte proměnné prostředí pomocí jednoho z následujících příkladů.
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 ```
 export AZURE_STORAGE_ACCOUNT="<youraccountname>"
 export AZURE_STORAGE_ACCESS_KEY="<youraccountkey>"
 ```
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 ```
 setx AZURE_STORAGE_ACCOUNT "<youraccountname>"
@@ -108,9 +108,9 @@ První věc, kterou je potřeba udělat, je vytvořit odkazy na objekty Containe
 Jakmile budete mít objekt ContainerURL, můžete vytvořit instanci objektu **BlobURL** odkazující na objekt blob a provádět například operace nahrávání, stahování a kopírování.
 
 > [!IMPORTANT]
-> Názvy kontejnerů musí obsahovat jen malá písmena. Další informace o pojmenování kontejnerů a objektů blob najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
+> Názvy kontejnerů musí být malými písmeny. Další informace o pojmenování kontejnerů a objektů blob najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
-V této části vytvoříte nový kontejner. Kontejner má název **quickstartblobs-[náhodný_řetězec]** . 
+V této části vytvoříte nový kontejner. Kontejner má název **quickstartblobs-[náhodný_řetězec]**. 
 
 ```go 
 // From the Azure portal, get your storage account name and key and set environment variables.
@@ -147,11 +147,11 @@ handleErrors(err)
 
 Úložiště objektů blob podporuje objekty blob bloku, doplňovací objekty blob a objekty blob stránky. Nejčastěji používané jsou objekty blob bloku, které se používají také v tomto rychlém startu.  
 
-Pokud chcete do objektu blob nahrát soubor, otevřete soubor pomocí příkazu **os.Open**. Pak můžete soubor nahrát do zadané cesty pomocí některého z rozhraní REST API: Upload (PutBlob); StageBlock/CommitBlockList (PutBlock/PutBlockList). 
+Pokud chcete do objektu blob nahrát soubor, otevřete soubor pomocí příkazu **os.Open**. Pak můžete soubor nahrát do zadané cesty pomocí některého z rozhraní REST API: Upload (PutBlob), StageBlock nebo CommitBlockList (PutBlock nebo PutBlockList). 
 
 Sada SDK případně nabízí [rozhraní API vysoké úrovně](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go) založená na rozhraních REST API nízké úrovně. Příkladem je funkce ***UploadFileToBlockBlob***, která používá operace StageBlock (PutBlock) k souběžnému nahrání souboru po částech za účelem optimalizace propustnosti. Pokud je soubor menší než 256 MB, použije místo toho operaci Upload (PutBlob) k dokončení přenosu v rámci jediné transakce.
 
-Následující příklad nahraje soubor do kontejneru **quickstartblobs-[náhodný_řetězec]** .
+Následující příklad nahraje soubor do kontejneru **quickstartblobs-[náhodný_řetězec]**.
 
 ```go
 // Create a file to test the upload and download.
@@ -207,7 +207,7 @@ for marker := (azblob.Marker{}); marker.NotDone(); {
 
 ### <a name="download-the-blob"></a>Stažení objektu blob
 
-Objekty blob můžete stáhnout pomocí funkce nízké úrovně **Download** s použitím objektu BlobURL. Tato funkce vrátí strukturu **DownloadResponse**. Spuštěním funkce **Body** pro strukturu získáte datový proud **RetryReader** pro čtení dat. Pokud při čtení dojde k chybě připojení, budou další požadavky na opětovné navázání připojení a pokračování ve čtení. Pokud zadáte RetryReaderOptions s vlastností MaxRetryRequests nastavenou na hodnotu 0 (výchozí hodnota), vrátí se původní text odpovědi bez opakování. Alternativně můžete kód zjednodušit použitím rozhraní API vysoké úrovně **DownloadBlobToBuffer** nebo **DownloadBlobToFile**.
+Objekty blob můžete stáhnout pomocí funkce nízké úrovně **Download** s použitím objektu BlobURL. Tato funkce vrátí strukturu **DownloadResponse**. Spuštěním funkce **Body** pro strukturu získáte datový proud **RetryReader** pro čtení dat. Pokud se připojení nezdaří při čtení, bude další požadavky na obnovení připojení a pokračovat ve čtení. Pokud zadáte RetryReaderOptions s vlastností MaxRetryRequests nastavenou na hodnotu 0 (výchozí hodnota), vrátí se původní text odpovědi bez opakování. Alternativně můžete kód zjednodušit použitím rozhraní API vysoké úrovně **DownloadBlobToBuffer** nebo **DownloadBlobToFile**.
 
 Následující kód stáhne objekt blob pomocí funkce **Download**. Obsah objektu blob se zapíše do vyrovnávací paměti a zobrazí se v konzole.
 
@@ -244,6 +244,6 @@ Prohlédněte si tyto další zdroje informací o vývoji v jazyce Go s využit�
 - Prohlédněte si a nainstalujte [zdrojový kód klientské knihovny pro jazyk Go](https://github.com/Azure/azure-storage-blob-go) pro službu Azure Storage na GitHubu.
 - Prozkoumejte [ukázky pro úložiště objektů blob](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#pkg-examples) napsané s využitím klientské knihovny pro jazyk Go.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
  
 V tomto rychlém startu jste zjistili, jak přenášet soubory mezi místním diskem a úložištěm objektů blob v Azure pomocí jazyka Go. Další informace o sadě Azure Storage Blob SDK najdete ve [zdrojovém kódu](https://github.com/Azure/azure-storage-blob-go/) a [referenčních materiálech k rozhraní API](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob).

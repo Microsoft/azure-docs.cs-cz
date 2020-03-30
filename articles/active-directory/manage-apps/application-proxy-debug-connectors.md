@@ -1,6 +1,6 @@
 ---
-title: Ladit konektory proxy aplikací – Azure Active Directory | Microsoft Docs
-description: Ladění problémů s konektory proxy aplikací služby Azure Active Directory (Azure AD).
+title: Ladění konektorů proxy aplikací – služba Azure Active Directory | Dokumenty společnosti Microsoft
+description: Problémy s laděním konektorů proxy aplikací služby Azure Active Directory (Azure AD).
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -12,51 +12,51 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.openlocfilehash: c041578932bd33eb0a2d3afc18a35c2c0458dc8b
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72311847"
 ---
-# <a name="debug-application-proxy-connector-issues"></a>Problémy s laděním konektoru proxy aplikací 
+# <a name="debug-application-proxy-connector-issues"></a>Ladění problémů s konektorem Proxy aplikací 
 
-Tento článek vám pomůže vyřešit problémy s konektory proxy aplikací služby Azure Active Directory (Azure AD). Pokud používáte službu proxy aplikací pro vzdálený přístup k místní webové aplikaci, ale máte potíže s připojením k aplikaci, použijte tento vývojový diagram k ladění problémů konektoru. 
+Tento článek vám pomůže vyřešit problémy s konektory proxy aplikací Azure Active Directory (Azure AD). Pokud používáte službu Proxy aplikace pro vzdálený přístup k místní webové aplikaci, ale máte potíže s připojením k aplikaci, použijte tento vývojový diagram k ladění problémů s konektorem. 
 
 ## <a name="before-you-begin"></a>Než začnete
 
-V tomto článku se předpokládá, že máte nainstalovaný konektor proxy aplikací a máte problém. Při řešení potíží s proxy aplikací doporučujeme začít s tímto tokem řešení potíží, abyste zjistili, jestli jsou konektory proxy aplikací správně nakonfigurované. Pokud stále dochází k potížím s připojením k aplikaci, postupujte podle pokynů v části řešení potíží s [aplikací proxy při ladění aplikace](application-proxy-debug-apps.md).  
+Tento článek předpokládá, že jste nainstalovali konektor proxy aplikace a máte problém. Při řešení problémů s proxy aplikací doporučujeme začít s tímto tokem řešení potíží a zjistit, zda jsou konektory proxy aplikace správně nakonfigurovány. Pokud máte stále potíže s připojením k aplikaci, postupujte podle toku řešení potíží s aplikací [Ladicí aplikace proxy](application-proxy-debug-apps.md).  
 
 
-Další informace o proxy aplikací a používání jeho konektorů najdete v těchto tématech:
+Další informace o proxy aplikaci a použití jeho konektorů naleznete v tématu:
 
-- [Vzdálený přístup k místním aplikacím prostřednictvím proxy aplikací](application-proxy.md)
+- [Vzdálený přístup k místním aplikacím prostřednictvím proxy aplikace](application-proxy.md)
 - [Konektory proxy aplikací](application-proxy-connectors.md)
 - [Instalace a registrace konektoru](application-proxy-add-on-premises-application.md)
-- [Řešení problémů s proxy aplikací a chybové zprávy](application-proxy-troubleshoot.md)
+- [Poradce při potížích s proxy aplikacemi a chybové zprávy](application-proxy-troubleshoot.md)
 
-## <a name="flowchart-for-connector-issues"></a>Vývojový diagram pro problémy s konektorem
+## <a name="flowchart-for-connector-issues"></a>Vývojový diagram pro problémy s konektory
 
-Tento vývojový diagram vás provede kroky pro ladění některých častých problémů s konektorem. Podrobnosti o jednotlivých krocích najdete v tabulce, která následuje po tomto vývojovém diagramu.
+Tento vývojový diagram vás provede kroky pro ladění některé z více běžných problémů konektoru. Podrobnosti o jednotlivých krocích naleznete v tabulce za vývojovým diagramem.
 
-![Vývojový diagram znázorňující kroky pro ladění konektoru](media/application-proxy-debug-connectors/application-proxy-connector-debugging-flowchart.png)
+![Vývojový diagram znázorňující kroky pro ladění spojnice](media/application-proxy-debug-connectors/application-proxy-connector-debugging-flowchart.png)
 
 |  | Akce | Popis | 
 |---------|---------|---------|
-|1\. místo | Najít skupinu konektorů přiřazenou k aplikaci | Máte pravděpodobně nainstalovaný konektor na více serverech. v takovém případě by se měly konektory [přiřadit ke skupinám konektorů](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups). Další informace o skupinách konektorů najdete v tématu [publikování aplikací v samostatných sítích a umístěních pomocí skupin konektorů](application-proxy-connector-groups.md). |
-|2 | Instalace konektoru a přiřazení skupiny | Pokud nemáte nainstalovaný konektor, přečtěte si téma [instalace a registrace konektoru](application-proxy-add-on-premises-application.md#install-and-register-a-connector).<br></br> Pokud máte problémy s instalací konektoru, přečtěte si téma [problém instalace konektoru](application-proxy-connector-installation-problem.md).<br></br> Pokud konektor není přiřazen ke skupině, přečtěte si téma [přiřazení konektoru ke skupině](application-proxy-connector-groups.md#create-connector-groups).<br></br>Pokud aplikace není přiřazena ke skupině konektorů, přečtěte si téma [přiřazení aplikace do skupiny konektorů](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups).|
-|3 | Spustit test portu na serveru konektoru | Na serveru konektoru spusťte test portu pomocí [protokolu Telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) nebo jiného nástroje pro testování portů, abyste zkontrolovali, jestli jsou porty 443 a 80 otevřené.|
-|4 | Konfigurace domén a portů | [Ujistěte se, že vaše domény a porty jsou správně nakonfigurovány](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) . Aby konektor správně fungoval, existují určité porty, které musí být otevřené a adresy URL, ke kterým musí mít server přístup. |
-|5 | Zkontroluje, jestli se používá back-end proxy. | Zkontrolujte, jestli konektory používají back-end proxy servery, nebo je obejít. Podrobnosti najdete v tématu [řešení problémů proxy serveru konektoru a problémů s připojením služby](application-proxy-configure-connectors-with-proxy-servers.md#troubleshoot-connector-proxy-problems-and-service-connectivity-issues). |
-|6 | Aktualizace konektoru a aktualizačního programu pro použití back-end proxy serveru | Pokud se back-end proxy používá, je vhodné se ujistit, že konektor používá stejný proxy server. Podrobnosti o řešení potíží a konfiguraci konektorů pro práci s proxy servery najdete v tématu [práce se stávajícími místními proxy servery](application-proxy-configure-connectors-with-proxy-servers.md). |
-|7 | Načíst interní adresu URL aplikace na serveru konektoru | Na serveru konektoru načtěte interní adresu URL aplikace. |
-|8 | Ověření připojení k interní síti | Ve vaší interní síti je problém s připojením, který tento tok ladění nemůže diagnostikovat. Aby bylo možné konektory fungovat, musí být aplikace přístupné interně. Protokoly událostí konektoru můžete povolit a zobrazovat, jak je popsáno v tématu [konektory proxy aplikací](application-proxy-connectors.md#under-the-hood). |
-|9 | Prodloužit hodnotu časového limitu na back-endu | V **dalších nastaveních** aplikace změňte nastavení **časový limit back-end aplikace** na **Long**. Viz [Přidání místní aplikace do služby Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad). |
-|10 | Pokud problémy přetrvávají, zaměřte se na konkrétní problémy s tokem, Projděte si toky ladění aplikací a jednotného přihlašování | Použijte k řešení potíží s [aplikací proxy aplikace ladění](application-proxy-debug-apps.md) . |
+|1 | Vyhledání skupiny konektorů přiřazené k aplikaci | Pravděpodobně máte konektor nainstalovaný na více serverech, v takovém případě by měly být konektory [přiřazeny skupinám konektorů](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups). Další informace o skupinách konektorů najdete [v tématu Publikování aplikací v samostatných sítích a umístěních pomocí skupin konektorů](application-proxy-connector-groups.md). |
+|2 | Instalace konektoru a přiřazení skupiny | Pokud nemáte nainstalovaný konektor, přečtěte si informace [o instalaci a registraci konektoru](application-proxy-add-on-premises-application.md#install-and-register-a-connector).<br></br> Pokud máte problémy s instalací konektoru, přečtěte [si informace o potížích s instalací konektoru](application-proxy-connector-installation-problem.md).<br></br> Pokud spojnice není přiřazena ke skupině, přečtěte si část [Přiřazení spojnice ke skupině](application-proxy-connector-groups.md#create-connector-groups).<br></br>Pokud aplikace není přiřazena ke skupině konektorů, přečtěte si část [Přiřazení aplikace ke skupině konektorů](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups).|
+|3 | Spuštění testu portu na konektorovém serveru | Na konektorovém serveru spusťte test portu pomocí [programu telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) nebo jiného nástroje pro testování portů a zkontrolujte, zda jsou porty 443 a 80 otevřené.|
+|4 | Konfigurace domén a portů | [Zkontrolujte, zda jsou domény a porty správně nakonfigurovány.](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) Aby konektor fungoval správně, existují určité porty, které musí být otevřené, a adresy URL, ke kterým musí mít server přístup. |
+|5 | Zkontrolujte, zda se používá back-endový proxy server | Zkontrolujte, zda konektory používají servery proxy back-end nebo je obchází. Podrobnosti naleznete [v tématu Poradce při potížích s proxy konektorem a problémy s připojením služby](application-proxy-configure-connectors-with-proxy-servers.md#troubleshoot-connector-proxy-problems-and-service-connectivity-issues). |
+|6 | Aktualizace konektoru a aktualizačního programu pro použití back-endového proxy serveru | Pokud se používá back-endproxy, budete chtít ujistěte se, že konektor používá stejný proxy server. Podrobnosti o řešení potíží a konfiguraci konektorů pro práci se servery proxy naleznete [v tématu Práce s existujícími místními proxy servery](application-proxy-configure-connectors-with-proxy-servers.md). |
+|7 | Načtení interní adresy URL aplikace na konektorový server | Na konektorovém serveru načtěte interní adresu URL aplikace. |
+|8 | Kontrola interního připojení k síti | V interní síti došlo k problému s připojením, který tento tok ladění nelze diagnostikovat. Aplikace musí být přístupná interně, aby konektory fungovaly. Můžete povolit a zobrazit protokoly událostí konektoru, jak je popsáno v [konektorech proxy aplikace](application-proxy-connectors.md#under-the-hood). |
+|9 | Prodloužení hodnoty časového omezení na zadnístraně | V **dalším nastavení** aplikace změňte nastavení **časového času aplikace back-endu** na **Dlouhé**. Viz [Přidání místní aplikace do Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad). |
+|10 | Pokud problémy přetrvávají, cílkonkrétní problémy toku, zkontrolujte aplikace a ladění přisuzovacích postupů toků | Použijte problémy s [aplikací Proxy ladících aplikací](application-proxy-debug-apps.md) při řešení potíží. |
 
 ## <a name="next-steps"></a>Další kroky
 
 
 * [Publikování aplikací v samostatných sítích a umístěních pomocí skupin konektorů](application-proxy-connector-groups.md)
-* [Práce se stávajícími místními proxy servery](application-proxy-configure-connectors-with-proxy-servers.md)
-* [Řešení chyb proxy aplikací a konektorů](application-proxy-troubleshoot.md)
-* [Postup při tiché instalaci konektoru služby Azure Proxy aplikací služby AD](application-proxy-register-connector-powershell.md)
+* [Práce s existujícími místními proxy servery](application-proxy-configure-connectors-with-proxy-servers.md)
+* [Poradce při potížích s chybami proxy aplikace a konektoru](application-proxy-troubleshoot.md)
+* [Jak tiše nainstalovat konektor proxy aplikací Azure AD](application-proxy-register-connector-powershell.md)

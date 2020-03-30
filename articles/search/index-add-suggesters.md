@@ -1,7 +1,7 @@
 ---
-title: Přidání dotazů typeahead do indexu
+title: Přidání dotazů dopředného psaní do indexu
 titleSuffix: Azure Cognitive Search
-description: Umožňuje v Azure Kognitivní hledání povolit akce dotazování typu dopředu tím, že vytvoří moduly pro návrhy a formuluje požadavky, které vyvolávají automatické dokončování nebo návrhy dotazů.
+description: Povolte akce dotazů s dopředem v Azure Cognitive Search vytvořením návrhy a formulováním požadavků, které vyvolávají automatické dokončování nebo automaticky navrhované termíny dotazů.
 manager: nitinme
 author: Brjohnstmsft
 ms.author: brjohnst
@@ -20,45 +20,45 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: a312068d5c8c574e7b069263cf37e3b855810e4b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72790106"
 ---
-# <a name="add-suggesters-to-an-index-for-typeahead-in-azure-cognitive-search"></a>Přidání návrhů k indexu pro typeahead v Azure Kognitivní hledání
+# <a name="add-suggesters-to-an-index-for-typeahead-in-azure-cognitive-search"></a>Přidání návrhovačů do indexu pro dopředné psaní v Azure Cognitive Search
 
-V Azure Kognitivní hledání jsou funkce hledání typu Search-as-Type nebo typeahead založené na konstruktu **návrhu** , který přidáte do [indexu vyhledávání](search-what-is-an-index.md). Je to seznam jednoho nebo více polí, pro které chcete povolit typeahead.
+V Azure Cognitive Search je funkce "hledání podle typu" nebo dopředného psaní založena na konstrukci **návrhu,** kterou přidáte do [indexu vyhledávání](search-what-is-an-index.md). Jedná se o seznam jednoho nebo více polí, pro které chcete dopředného textu aktivovat.
 
-Modul pro návrhy podporuje dvě typeahead varianty: *Automatické dokončování*, které dokončuje výraz nebo frázi, kterou píšete, a *návrhy* , které vracejí krátký seznam vyhovujících dokumentů.  
+Návrhovač podporuje dvě varianty dopředného psaní: *automatické dokončování*, které doplní zadávaný termín nebo frázi, a *návrhy,* které vracejí krátký seznam odpovídajících dokumentů.  
 
-Následující snímek obrazovky, z části [Vytvoření první aplikace v C# ](tutorial-csharp-type-ahead-and-suggestions.md) ukázce, ilustruje typeahead. Funkce automatického dokončování předpokládá, co uživatel může zadat do vyhledávacího pole. Skutečný vstup je "TW", který dokončí automatické dokončování s "in", přičemž se jako termín hledání potenciálního vyhledávání překládá jako "". Návrhy jsou vizuálně v rozevíracím seznamu. Pro návrhy můžete vytvořit plochu dokumentu, který nejlépe popisuje výsledek. V tomto příkladu jsou návrhy názvy hotelů. 
+Následující snímek obrazovky z [ukázky Vytvořit první aplikaci v c#](tutorial-csharp-type-ahead-and-suggestions.md) ilustruje text ahead. Automatické dokončování předvídá, co může uživatel zadat do vyhledávacího pole. Skutečný vstup je "tw", který automatické dokončování končí s "in", řešení jako "dvojče" jako budoucí hledaný výraz. Návrhy jsou vizualizovány v rozevíracím seznamu. U návrhů můžete vysušovat libovolnou část dokumentu, která nejlépe vystichne výsledek. V tomto příkladu jsou návrhy názvy hotelů. 
 
-![Vizuální porovnání automatického dokončování a navrhovaných dotazů](./media/index-add-suggesters/hotel-app-suggestions-autocomplete.png "Vizuální porovnání automatického dokončování a navrhovaných dotazů")
+![Vizuální porovnání automatických dokončování a navrhovaných dotazů](./media/index-add-suggesters/hotel-app-suggestions-autocomplete.png "Vizuální porovnání automatických dokončování a navrhovaných dotazů")
 
-K implementaci těchto chování ve službě Azure Kognitivní hledání je k dispozici komponenta index a dotaz. 
+Chcete-li implementovat tato chování v Azure Cognitive Search, je index a dotaz součást. 
 
-+ V indexu přidejte k indexu modul pro návrhy. Můžete použít portál, [REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)nebo [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet). Zbývající část tohoto článku se zaměřuje na vytvoření modulu pro návrhy. 
++ V indexu přidejte návrhového objektu do indexu. Můžete použít portál, [rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)nebo [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet). Zbývající část tohoto článku je zaměřena na vytvoření návrhu. 
 
-+ V požadavku na dotaz volejte jedno z [rozhraní API uvedených níže](#how-to-use-a-suggester).
++ V žádosti o dotaz volejte jeden z [níže uvedených api](#how-to-use-a-suggester).
 
-Podpora vyhledávání podle typu je povolena pro každé pole. Typeahead chování můžete implementovat v rámci stejného řešení hledání, pokud chcete podobné prostředí, jaké je uvedené na snímku obrazovky. Oba požadavky cílí na to, že kolekce *dokumentů* určitého indexu a odpovědí se vrátí poté, co uživatel zadá alespoň tři vstupní řetězce znaků.
+Podpora vyhledávání podle typu je povolena pro dané pole. Můžete implementovat obě chování typeahead v rámci stejného řešení vyhledávání, pokud chcete prostředí podobné tomu, které je uvedeno na snímku obrazovky. Oba požadavky cílí na *kolekci dokumentů* konkrétní ho indexu a odpovědi jsou vráceny poté, co uživatel poskytl alespoň vstupní řetězec o třech znacích.
 
 ## <a name="create-a-suggester"></a>Vytvoření navrhovatele
 
-I když má modul pro návrhy několik vlastností, je primárně kolekcí polí, pro které povolujete typeahead prostředí. Například cestovní aplikace může chtít povolit typeahead vyhledávání na cílech, městech a attractions. V takovém případě by všechna tři pole přešla do kolekce Fields.
+Přestože návrhmá několik vlastností, je především kolekce polí, pro které povolujete prostředí dopředného psaní. Cestovatelská aplikace může například chtít povolit vyhledávání typu dopředného v destinacích, městech a atrakcích. Jako takový by všechna tři pole jít do kolekce polí.
 
-Pokud chcete vytvořit návrh, přidejte ho do schématu indexu. V indexu můžete mít jeden modul pro návrh (konkrétně jeden modul pro návrhy v kolekci modul pro návrhy). 
+Chcete-li vytvořit návrh, přidejte jeden do schématu indexu. Můžete mít jeden návrhový v indexu (konkrétně jeden suggester v suggesters kolekce). 
 
-### <a name="when-to-create-a-suggester"></a>Kdy vytvořit modul pro návrhy
+### <a name="when-to-create-a-suggester"></a>Kdy vytvořit návrhovače
 
-Nejlepším časem, jak vytvořit modul pro navrhování, je, že vytváříte také vlastní definici pole.
+Nejlepší čas k vytvoření návrhu je, když také vytváříte samotnou definici pole.
 
-Pokud se pokusíte vytvořit modul pro návrh pomocí již existujících polí, rozhraní API ho zakáže. Typeahead text se vytvoří během indexování, pokud jsou částečné výrazy ve dvou nebo více kombinacích znaků spolu s celými čísly. Vzhledem k tomu, že existující pole již mají tokeny, bude nutné index znovu sestavit, pokud je chcete přidat do nástroje pro návrhy. Další informace o reindexaci najdete v tématu [Postup opětovného sestavení indexu služby Azure kognitivní hledání](search-howto-reindex.md).
+Pokud se pokusíte vytvořit návrhovačpomocí již existujících polí, rozhraní API jej zakáže. Text dopředného textu je vytvořen během indexování, když jsou částečné termíny ve dvou nebo více kombinacích znaků tokenizovány vedle celých termínů. Vzhledem k tomu, že existující pole jsou již tokenizována, budete muset znovu vytvořit index, pokud je chcete přidat do návrhu. Další informace o reindexingu najdete v [tématu Jak znovu sestavit index Azure Cognitive Search](search-howto-reindex.md).
 
-### <a name="create-using-the-rest-api"></a>Vytvoření pomocí REST API
+### <a name="create-using-the-rest-api"></a>Vytvoření pomocí rozhraní REST API
 
-V REST API přidejte moduly pro návrhy prostřednictvím [Create index](https://docs.microsoft.com/rest/api/searchservice/create-index) nebo [Update index](https://docs.microsoft.com/rest/api/searchservice/update-index). 
+V rozhraní REST API přidejte návrhy pomocí [vytvořit index](https://docs.microsoft.com/rest/api/searchservice/create-index) nebo [aktualizovat index](https://docs.microsoft.com/rest/api/searchservice/update-index). 
 
   ```json
   {
@@ -82,7 +82,7 @@ V REST API přidejte moduly pro návrhy prostřednictvím [Create index](https:/
 
 ### <a name="create-using-the-net-sdk"></a>Vytvoření pomocí sady .NET SDK
 
-V C#Definujte objekt nástroje pro [návrhy](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet). `Suggesters` je kolekce, ale může provést pouze jednu položku. 
+V c# definujte [objekt Susič](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet). `Suggesters`je kolekce, ale může trvat pouze jednu položku. 
 
 ```csharp
 private static void CreateHotelsIndex(SearchServiceClient serviceClient)
@@ -107,47 +107,47 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 
 |Vlastnost      |Popis      |
 |--------------|-----------------|
-|`name`        |Název modulu pro návrhy.|
-|`searchMode`  |Strategie použitá pro hledání kandidátských frází. Jediným aktuálně podporovaným režimem je `analyzingInfixMatching`, který provádí flexibilní spárování frází na začátku nebo uprostřed vět.|
-|`sourceFields`|Seznam jednoho nebo více polí, která jsou zdrojem obsahu pro návrhy. Pole musí být typu `Edm.String` a `Collection(Edm.String)`. Je-li v poli analyzátor určen, musí se jednat o pojmenovaný analyzátor z [tohoto seznamu](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) (nikoli vlastní analyzátor).<p/>Osvědčeným postupem je zadat pouze ta pole, která samy zapůjčuje očekávanou a odpovídající odpověď, ať už se jedná o dokončený řetězec na panelu hledání nebo v rozevíracím seznamu.<p/>Název hotelu je dobrý kandidát, protože má přesnost. Podrobná pole, jako jsou popisy a komentáře, jsou moc zhuštěná. Podobně opakující se pole, jako jsou kategorie a značky, jsou méně efektivní. V příkladech obsahuje "Category", abyste ukázali, že můžete zahrnout více polí. |
+|`name`        |Jméno návrhače.|
+|`searchMode`  |Strategie používaná k vyhledávání frází kandidátů. Jediný aktuálně podporovaný režim `analyzingInfixMatching`je , který provádí flexibilní párování frází na začátku nebo uprostřed vět.|
+|`sourceFields`|Seznam jednoho nebo více polí, která jsou zdrojem obsahu návrhů. Pole musí být `Edm.String` `Collection(Edm.String)`typu a . Pokud je v poli zadán analyzátor, musí se jednat o pojmenovaný analyzátor z [tohoto seznamu](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) (nikoli vlastní analyzátor).<p/>Jako osvědčený postup zadejte pouze pole, která se hodí k očekávané a vhodné odpovědi, ať už se jedná o dokončený řetězec v řádku hledání nebo v rozevíracím seznamu.<p/>Název hotelu je dobrým kandidátem, protože má přesnost. Podrobná pole, jako jsou popisy a komentáře, jsou příliš hustá. Podobně jsou méně účinná opakující se pole, například kategorie a značky. V příkladech uvádíme "kategorie", abychom ukázali, že můžete zahrnout více polí. |
 
-### <a name="analyzer-restrictions-for-sourcefields-in-a-suggester"></a>Omezení analyzátoru pro sourceFields v modulu pro návrh
+### <a name="analyzer-restrictions-for-sourcefields-in-a-suggester"></a>Omezení analyzátoru pro sourceFields v návrhu
 
-Azure Kognitivní hledání analyzuje obsah pole a povoluje dotazování na jednotlivé výrazy. Moduly pro návrhy vyžadují, aby byly předpony indexovány Kromě úplných podmínek, které vyžadují další analýzu nad zdrojovými poli. Vlastní konfigurace analyzátoru můžou kombinovat kterýkoli z různých tokenizátory musíte nejdřív a filtrů, často způsobem, který by vytvořil předpony vyžadované pro návrhy, které neumožňují. Z tohoto důvodu Azure Kognitivní hledání zabraňuje zahrnutí polí s vlastními analyzátory do modulu pro návrhy.
+Azure Cognitive Search analyzuje obsah pole a umožňuje dotazování podle jednotlivých termínů. Návrhy vyžadují, aby byly předpony indexovány kromě úplných termínů, což vyžaduje další analýzu zdrojových polí. Vlastní konfigurace analyzátoru můžete kombinovat libovolný z různých tokenizers a filtry, často způsoby, které by výrobu předpony potřebné pro návrhy nemožné. Z tohoto důvodu Azure Cognitive Search zabrání pole s vlastní analyzátory zahrnuty do návrhu.
 
 > [!NOTE] 
->  Pokud potřebujete obejít výše uvedené omezení, použijte pro stejný obsah dvě samostatná pole. Tím umožníte, aby jedno z polí mělo možnost navrhovat, zatímco druhá je možné nastavit pomocí vlastní konfigurace analyzátoru.
+>  Pokud potřebujete obejít výše uvedené omezení, použijte dvě samostatná pole pro stejný obsah. To umožní jedno z polí mít návrh, zatímco druhé lze nastavit s vlastní konfigurací analyzátoru.
 
 <a name="how-to-use-a-suggester"></a>
 
-## <a name="use-a-suggester-in-a-query"></a>Použití modulu pro návrhy v dotazu
+## <a name="use-a-suggester-in-a-query"></a>Použití návrhu v dotazu
 
-Po vytvoření nástroje pro vytváření návrhů zavolejte příslušné rozhraní API v logice dotazu pro vyvolání funkce. 
+Po vytvoření návrhu volání příslušné rozhraní API v logice dotazu vyvolat funkci. 
 
-+ [REST API návrhů](https://docs.microsoft.com/rest/api/searchservice/suggestions) 
-+ [REST API automatického dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete) 
++ [Návrhy rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/suggestions) 
++ [Automatické dokončování rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/autocomplete) 
 + [Metoda SuggestWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
-+ [Metoda AutocompleteWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
++ [Metoda automatického dokončováníWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
 
-Použití rozhraní API je znázorněno v následujícím volání REST API automatického dokončování. Existují dva poznatky z tohoto příkladu. Jako první se jako u všech dotazů jedná o operaci proti kolekci dokumentů indexu. Za druhé můžete přidat parametry dotazu. I když je mnoho parametrů dotazu společné pro obě rozhraní API, seznam se u každého z nich liší.
+Využití rozhraní API je znázorněno v následujícím volání rozhraní REST API automatického dokončování. Existují dva stánek s jídlem z tohoto příkladu. Za prvé, stejně jako u všech dotazů, operace je proti shromažďování dokumentů indexu. Za druhé můžete přidat parametry dotazu. Zatímco mnoho parametrů dotazu jsou společné pro obě rozhraní API, seznam se liší pro každý z nich.
 
 ```http
 GET https://[service name].search.windows.net/indexes/[index name]/docs/autocomplete?[query parameters]  
 api-key: [admin or query key]
 ```
 
-Pokud není v indexu definován modul pro návrh, volání automatického dokončování nebo návrhů se nezdaří.
+Pokud návrhnení definován v indexu, volání automatického dokončování nebo návrhy se nezdaří.
 
 ## <a name="sample-code"></a>Ukázka kódu
 
-+ [Vytvoření první aplikace v C# ](tutorial-csharp-type-ahead-and-suggestions.md) ukázce znázorňuje konstrukci návrhů, navrhované dotazy, automatické dokončování a omezující navigaci. Tato ukázka kódu běží na službě izolovaného prostoru Azure Kognitivní hledání a používá předem načtený index hotelů, takže ke spuštění aplikace stačí stisknout klávesu F5. Není nutné žádné předplatné ani přihlášení.
++ [Vytvořte si první aplikaci v c#](tutorial-csharp-type-ahead-and-suggestions.md) ukázce ukazuje návrh konstrukce, navrhované dotazy, automatické dokončování a fazetované navigace. Tato ukázka kódu běží na izolovaném prostoru Azure Cognitive Search služby a používá předem načtené Hotels index, takže vše, co musíte udělat, je stiskněte klávesu F5 ke spuštění aplikace. Není nutné žádné předplatné ani přihlášení.
 
-+ [DotNetHowToAutocomplete](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) je starší vzorek, který obsahuje C# i kód Java. Ukazuje také vytváření návrhů, navrhované dotazy, automatické dokončování a omezující navigaci. Tato ukázka kódu používá ukázková data hostovaného [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) . 
++ [DotNetHowToAutocomplete](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) je starší ukázka obsahující kód Jazyka C# i Java. Ukazuje také návrhkonstrukce, navrhované dotazy, automatické dokončování a fazetované navigace. Tato ukázka kódu používá hostovaná ukázková data [NYCJobs.](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Pro zobrazení způsobu formulace požadavků doporučujeme následující příklad.
+Doporučujeme následující příklad, abyste zjistili, jak jsou formulovány požadavky.
 
 > [!div class="nextstepaction"]
 > [Příklady návrhů a automatického dokončování](search-autocomplete-tutorial.md) 

@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: Vytvoření aplikace Unity pro iOS'
-description: V tomto rychlém startu se dozvíte, jak vytvořit aplikaci pro iOS s Unity pomocí prostorových ukotvení.
+title: 'Úvodní příručka: Vytvoření aplikace Unity pro iOS'
+description: V tomto rychlém startu se dozvíte, jak vytvořit aplikaci pro iOS s Unity pomocí prostorových kotev.
 author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
@@ -9,15 +9,15 @@ ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 37a82c4001dd42a4cfbbb9dabec29f28359afd75
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240587"
 ---
-# <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>Rychlý Start: Vytvoření aplikace Unity pro iOS pomocí prostorových kotev Azure
+# <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>Úvodní příručka: Vytvoření aplikace Unity pro iOS s prostorovými kotvami Azure
 
-Tento rychlý Start popisuje, jak vytvořit aplikaci Unity pro iOS pomocí [prostorových kotev Azure](../overview.md). Prostorové kotvy Azure je služba pro vývojáře napříč platformami, která umožňuje vytvářet hybridní prostředí realit pomocí objektů, které v průběhu času trvale uchovávají jejich umístění v rámci zařízení. Až budete hotovi, budete mít ARKit aplikaci pro iOS vytvořenou v Unity, která může ukládat a odvolat prostorovou kotvu.
+Tento rychlý start popisuje, jak vytvořit aplikaci Unity pro iOS pomocí [azure prostorových kotev](../overview.md). Azure Spatial Anchors je vývojářská služba napříč platformami, která umožňuje vytvářet prostředí smíšené reality pomocí objektů, které v průběhu času napříč zařízeními přetrvávají. Až budete hotovi, budete mít vytvořenou aplikaci ARKit pro iOS s Unity, která dokáže uložit a vyvolat prostorovou kotvu.
 
 Dozvíte se, jak provést tyto akce:
 
@@ -26,7 +26,7 @@ Dozvíte se, jak provést tyto akce:
 > * Příprava nastavení sestavení Unity
 > * Konfigurace identifikátoru účtu prostorových kotev a klíče účtu
 > * Export projektu Xcode
-> * Nasazení a spuštění na zařízení s iOS
+> * Nasazení a spuštění na iOS zařízení
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -34,13 +34,13 @@ Dozvíte se, jak provést tyto akce:
 
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
-- MacOS počítač s <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,1 nebo 2019,2</a>, nejnovější verzí <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a>a <a href="https://cocoapods.org" target="_blank">CocoaPods</a> nainstalovaného.
-- Git se nainstaloval přes HomeBrew. Do jednoho řádku terminálu zadejte následující příkaz: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Pak spusťte `brew install git` a `brew install git-lfs`.
-- Vývojářem podporujícím zařízení s iOS <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">kompatibilní s ARKit</a> .
+- MacOS stroj s <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1 nebo 2019.2</a>, nejnovější verze <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a>a <a href="https://cocoapods.org" target="_blank">KakaoPody</a> nainstalován.
+- Git nainstalován přes HomeBrew. Do jednoho řádku terminálu zadejte `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`následující příkaz: . Potom spustit `brew install git` `brew install git-lfs`a .
+- Vývojář povolil <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">zařízení iOS kompatibilní s ARKit.</a>
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
-## <a name="download-and-open-the-unity-sample-project"></a>Stáhněte a otevřete vzorový projekt Unity.
+## <a name="download-and-open-the-unity-sample-project"></a>Stažení a otevření ukázkového projektu Unity
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
@@ -48,13 +48,13 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
 
 [!INCLUDE [iOS Unity Build Settings](../../../includes/spatial-anchors-unity-ios-build-settings.md)]
 
-## <a name="configure-account-identifier-and-key"></a>Konfigurace identifikátoru a klíče účtu
+## <a name="configure-account-identifier-and-key"></a>Konfigurace identifikátoru účtu a klíče
 
-V podokně **projekt** přejděte na `Assets/AzureSpatialAnchors.Examples/Scenes` a otevřete `AzureSpatialAnchorsBasicDemo.unity` soubor scény.
+V podokně **Projektu** `Assets/AzureSpatialAnchors.Examples/Scenes` přejděte `AzureSpatialAnchorsBasicDemo.unity` na soubor scény a otevřete jej.
 
 [!INCLUDE [Configure Unity Scene](../../../includes/spatial-anchors-unity-configure-scene.md)]
 
-Scénu uložte tak, že vyberete **soubor** -> **Uložit**.
+Uložte scénu výběrem **možnosti Uložit** -> **soubor**.
 
 ## <a name="export-the-xcode-project"></a>Export projektu Xcode
 
@@ -62,19 +62,19 @@ Scénu uložte tak, že vyberete **soubor** -> **Uložit**.
 
 [!INCLUDE [Configure Xcode](../../../includes/spatial-anchors-unity-ios-xcode.md)]
 
-Podle pokynů v aplikaci založte a odvoláte kotvu.
+Podle pokynů v aplikaci umístěte a vzpomenete kotvu.
 
-Po dokončení zastavte aplikaci stisknutím tlačítka **zastavit** v Xcode.
+Po dokončení zastavte aplikaci stisknutím **klávesy Stop** v Xcode.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-### <a name="rendering-issues"></a>Problémy vykreslování
+### <a name="rendering-issues"></a>Problémy s vykres
 
-Pokud při spuštění aplikace nevidíte kameru jako pozadí (například místo toho, aby se zobrazily prázdné, modré nebo jiné textury), pravděpodobně budete muset znovu naimportovat prostředky v Unity. Zastavte aplikaci. V horní nabídce v Unity vyberte **prostředky – > znovu importovat vše**. Pak znovu spusťte aplikaci.
+Při spuštění aplikace, pokud nevidíte fotoaparát jako pozadí (například místo toho vidíte prázdné, modré nebo jiné textury), pak budete pravděpodobně muset znovu importovat datové zdroje v Unity. Zastavte aplikaci. V horní nabídce v Unity zvolte **Prostředky -> Přeimportovat vše**. Potom aplikaci spusťte znovu.
 
-### <a name="cocoapods-issues-on-macos-catalina-1015"></a>Problémy s CocoaPods na macOS Catalina (10,15)
+### <a name="cocoapods-issues-on-macos-catalina-1015"></a>CocoaPods problémy na macOS Catalina (10.15)
 
-Pokud jste nedávno aktualizovali na macOS Catalina (10,15) a původně jste CocoaPods nainstalovali, CocoaPods může být v nefunkčním stavu a nemusí správně konfigurovat soubory lusku a `.xcworkspace` projektu. Chcete-li tento problém vyřešit, budete muset přeinstalovat CocoaPods spuštěním následujících příkazů:
+Pokud jste nedávno aktualizovali na macOS Catalina (10.15) a měli cocoaPods nainstalovánpředem, CocoaPods může `.xcworkspace` být v rozbitém stavu a nepodaří správně nakonfigurovat lusky a soubory projektu. Chcete-li tento problém vyřešit, budete muset přeinstalovat CocoaPods spuštěním následujících příkazů:
 
 ```shell
 brew update
@@ -82,13 +82,13 @@ brew install cocoapods --build-from-source
 brew link --overwrite cocoapods
 ```
 
-### <a name="unity-20193"></a>Unity 2019,3
+### <a name="unity-20193"></a>Jednota 2019.3
 
-V důsledku zásadních změn se Unity 2019,3 aktuálně nepodporuje. Použijte prosím Unity 2019,1 nebo 2019,2.
+Kvůli zásadním změnám není unity 2019.3 v současné době podporována. Použijte unity 2019.1 nebo 2019.2.
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Kurz: sdílení prostorových ukotvení napříč zařízeními](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Kurz: Sdílení prostorových kotev napříč zařízeními](../tutorials/tutorial-share-anchors-across-devices.md)

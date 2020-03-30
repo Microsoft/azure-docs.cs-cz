@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: quickstart
-ms.date: 02/05/2019
+ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: ffd47d886a9d74c637f4f7ff634b3fd4c4a77574
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 1d2140ca0064e2eb6b12726bcee7bf5362de8fbe
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79240867"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79408279"
 ---
-# <a name="quickstart-set-up-a-tenant"></a>Rychlý Start: nastavení tenanta
+# <a name="quickstart-set-up-a-tenant"></a>Úvodní příručka: Nastavení klienta
 
-Microsoft Identity Platform umožňuje vývojářům vytvářet aplikace určené pro širokou škálu vlastních prostředí a identit Microsoft 365. Pokud chcete začít používat Microsoft Identity Platform, budete potřebovat přístup k prostředí, které se označuje taky jako tenant služby Azure AD, který může registrovat a spravovat aplikace, mít přístup k Microsoft 365 dat a nasazovat vlastní podmíněný přístup a omezení klientů.
+Microsoft Identity Platform umožňuje vývojářům vytvářet aplikace určené pro širokou škálu vlastních prostředí a identit Microsoft 365. Abyste mohli začít používat platformu identit Microsoftu, budete potřebovat přístup k prostředí, nazývanému také tenant azure ad, které může registrovat a spravovat aplikace, mít přístup k datům Microsoftu 365 a nasadit vlastní omezení podmíněného přístupu a tenanta.
 
 Tenant je reprezentace organizace. Jedná se o vyhrazenou instanci Azure AD, kterou organizace nebo vývojář aplikací obdrží při vytvoření partnerství s Microsoftem, například registrací do Azure, Microsoft Intune nebo Microsoft 365.
 
@@ -57,14 +57,14 @@ Pokud existujícího tenanta přidruženého k účtu nemáte, zobrazí se pod n
 
 ### <a name="create-a-new-azure-ad-tenant"></a>Vytvoření nového tenanta Azure AD
 
-Pokud ještě nemáte tenanta Azure AD nebo chcete vytvořit nový pro vývoj, Projděte si [rychlý Start](../fundamentals/active-directory-access-create-new-tenant.md) nebo jednoduše postupujte podle [možnosti vytvoření adresáře](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory). Při vytváření nového tenanta budete muset zadat následující informace:
+Pokud ještě nemáte klienta Azure AD nebo chcete vytvořit nový pro vývoj, podívejte se na [rychlý start](../fundamentals/active-directory-access-create-new-tenant.md) nebo jednoduše postupujte podle prostředí [vytváření adresářů](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory). Při vytváření nového tenanta budete muset zadat následující informace:
 
 - **Název organizace**
 - **Počáteční doména** – bude to část domény *.onmicrosoft.com. Doménu můžete dále přizpůsobit později.
 - **Země nebo oblast**
 
 > [!NOTE]
-> Při pojmenování tenanta použijte alfanumerické znaky. Speciální znaky nejsou povoleny. Název nesmí být delší než 256 znaků.
+> Při pojmenování klienta použijte alfanumerické znaky. Speciální znaky nejsou povoleny. Název nesmí přesáhnout 256 znaků.
 
 ## <a name="social-and-local-accounts"></a>Účty na sociálních sítích a místní účty
 
@@ -72,6 +72,6 @@ Pokud chcete začít vytvářet aplikace s přihlašováním účtů na sociáln
 
 ## <a name="next-steps"></a>Další kroky
 
-* Vyzkoušejte rychlý start zaměřený na psaní kódu a začněte s ověřováním uživatelů. 
-* Podrobnější vzorové kódy najdete v dokumentaci v části **Kurzy**.
-* Chcete svou aplikaci nasadit do cloudu? Přečtěte si o [nasazování kontejnerů do Azure](https://docs.microsoft.com/azure/index?pivot=products&panel=containers).
+* [Zaregistrujte aplikaci](quickstart-register-app.md) a integrujte ji s platformou microsoftu pro identity. 
+* Naučte se [základy ověřování](authentication-scenarios.md).
+* Podrobnosti o vztahu mezi předplatnými a klientem Azure AD najdete v tématu [Jak jsou předplatná Azure přidružená k Azure Active Directory.](../fundamentals/active-directory-how-subscriptions-associated-directory.md)

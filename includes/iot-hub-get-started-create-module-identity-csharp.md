@@ -9,31 +9,31 @@ ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: include file
 ms.openlocfilehash: a5c1ddd085ae65b9920d73f50f993f4646785a69
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68883724"
 ---
 ## <a name="create-a-module-identity"></a>Vytvoření identity modulu
 
-V této části vytvoříte konzolovou aplikaci .NET, která vytvoří identitu zařízení a identitu modulu v registru identit ve vašem centru. Zařízení nebo modul se nemůže připojit k rozbočovači, pokud neobsahuje záznam v registru identit. Další informace najdete v [části registr identit v příručce pro vývojáře IoT Hub](../articles/iot-hub/iot-hub-devguide-identity-registry.md).
+V této části vytvoříte aplikaci konzoly .NET, která vytvoří identitu zařízení a identitu modulu v registru identit v centru. Zařízení nebo modul se nemůže připojit k rozbočovači, pokud nemá položku v registru identit. Další informace najdete v části [Registr identit v Příručce pro vývojáře pro službu IoT Hub](../articles/iot-hub/iot-hub-devguide-identity-registry.md).
 
-Když spustíte tuto konzolovou aplikaci, vygeneruje jedinečné ID a klíč zařízení i modulu. Zařízení a modul používají tyto hodnoty k tomu, aby je identifikovali při odesílání zpráv ze zařízení do cloudu do IoT Hub. V ID se rozlišují malá a velká písmena.
+Když spustíte tuto konzolovou aplikaci, vygeneruje jedinečné ID a klíč zařízení i modulu. Vaše zařízení a modul používají tyto hodnoty k identifikaci při odesílá zprávy zařízení cloud do služby IoT Hub. V ID se rozlišují malá a velká písmena.
 
-1. Otevřete Visual Studio a vyberte **vytvořit nový projekt**.
+1. Otevřete Visual Studio a vyberte **Vytvořit nový projekt**.
 
-1. V v **vytvořit nový projekt**vyberte **Konzolová aplikace (.NET Framework)** .
+1. V **okně Vytvořit nový projekt**vyberte **konzolovou aplikaci (.NET Framework).**
 
-1. Výběrem **Další** otevřete položku **Konfigurovat nový projekt**. Projekt pojmenujte *CreateIdentities* a řešení pojmenujte *IoTHubGetStarted*. Ujistěte se, že máte .NET Framework verze 4.6.1 nebo novější.
+1. Chcete-li otevřít **možnost Konfigurovat nový projekt,** vyberte **možnost Další** . Projekt pojmenujte *CreateIdentities* a řešení pojmenujte *IoTHubGetStarted*. Ujistěte se, že máte .NET Framework verze 4.6.1 nebo novější.
 
-    ![Zadejte název a rozhraní pro řešení sady Visual Studio.](./media/iot-hub-get-started-create-module-identity-csharp/configure-createidentities-project.png)
+    ![Zadání názvu a architektury pro řešení sady Visual Studio](./media/iot-hub-get-started-create-module-identity-csharp/configure-createidentities-project.png)
 
-1. V aplikaci Visual Studio otevřete **nástroje** >  > **Správce balíčků NuGet** **Spravovat balíčky NuGet pro řešení**. Vyberte kartu **Procházet**.
+1. V sadě Visual Studio otevřete **nástroje, který** > **spravuje balíčky** > **NuGet pro řešení**. Vyberte kartu **Procházet**.
 
-1. Vyhledejte **Microsoft. Azure. Devices**. Vyberte ho a pak vyberte **nainstalovat**.
+1. Vyhledejte **microsoft.azure.devices**. Vyberte ji a pak vyberte **Instalovat**.
 
-    ![Instalace aktuální verze sady Azure IoT Hub .NET Service SDK](./media/iot-hub-get-started-create-module-identity-csharp/install-service-sdk.png)
+    ![Instalace aktuální verze sady Azure IoT Hub .NET service SDK](./media/iot-hub-get-started-create-module-identity-csharp/install-service-sdk.png)
 
 1. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
 
@@ -50,7 +50,7 @@ Když spustíte tuto konzolovou aplikaci, vygeneruje jedinečné ID a klíč za�
    const string moduleID = "myFirstModule";
    ```
 
-1. Do **Hlavní** třídy přidejte následující kód.
+1. Přidejte následující kód do **hlavní** třídy.
 
    ```csharp
    static void Main(string[] args)
@@ -102,13 +102,13 @@ Když spustíte tuto konzolovou aplikaci, vygeneruje jedinečné ID a klíč za�
     }
     ```
 
-    Metoda vytvoří identitu zařízení s ID myFirstDevice. `AddDeviceAsync` Pokud toto ID zařízení již v registru identit existuje, kód jednoduše načte informace o stávajícím zařízení. Aplikace pak zobrazí primární klíč pro danou identitu. Tento klíč použijete v aplikaci simulovaného zařízení pro připojení k vašemu centru.
+    Metoda `AddDeviceAsync` vytvoří identitu zařízení s ID **myFirstDevice**. Pokud toto ID zařízení již v registru identit existuje, kód jednoduše načte existující informace o zařízení. Aplikace pak zobrazí primární klíč pro danou identitu. Tento klíč se používá v aplikaci simulované zařízení pro připojení k rozbočovači.
 
-    Metoda vytvoří identitu modulu s ID myFirstModule v **myFirstDevice**zařízení. `AddModuleAsync` Pokud toto ID modulu již v registru identit existuje, kód jednoduše načte informace o stávajícím modulu. Aplikace pak zobrazí primární klíč pro danou identitu. Tento klíč použijete v aplikaci simulovaného modulu pro připojení k vašemu centru.
+    Metoda `AddModuleAsync` vytvoří identitu modulu s ID **myFirstModule** pod zařízením **myFirstDevice**. Pokud toto ID modulu již v registru identit existuje, kód jednoduše načte existující informace o modulu. Aplikace pak zobrazí primární klíč pro danou identitu. Tento klíč použijete v aplikaci simulovaný modul pro připojení k rozbočovači.
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
 1. Spusťte tuto aplikaci a poznamenejte si klíč zařízení a klíč modulu.
 
 > [!NOTE]
-> Registr identit IoT Hub ukládá pouze identity zařízení a modulů, aby bylo možné povolit zabezpečený přístup k rozbočovači. Registr identit ukládá ID zařízení a klíče pro použití jako bezpečnostních pověření. Registr identit také ukládá povolené a zakázané příznaky pro jednotlivá zařízení, pomocí kterých můžete zakázat přístup pro dané zařízení. Pokud vaše aplikace potřebuje Uložit jiná metadata specifická pro zařízení, měla by používat úložiště pro konkrétní aplikaci. Pro identity modulů neexistuje žádný příznak povoleno/zakázáno. Další informace najdete v tématu [IoT Hub příručka pro vývojáře](../articles/iot-hub/iot-hub-devguide-identity-registry.md).
+> Registr identit služby IoT Hub ukládá pouze identity zařízení a modulů, které umožňují zabezpečený přístup k rozbočovači. Registr identit ukládá ID zařízení a klíče pro použití jako bezpečnostních pověření. Registr identit také ukládá povolené a zakázané příznaky pro jednotlivá zařízení, pomocí kterých můžete zakázat přístup pro dané zařízení. Pokud vaše aplikace potřebuje ukládat další metadata specifická pro zařízení, měla by používat úložiště specifické pro aplikaci. Pro identity modulů neexistuje žádný příznak povoleno/zakázáno. Další informace najdete v [Příručce pro vývojáře pro službu IoT Hub](../articles/iot-hub/iot-hub-devguide-identity-registry.md).

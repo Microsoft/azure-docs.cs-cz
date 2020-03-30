@@ -1,6 +1,6 @@
 ---
-title: Testování replikace virtuálních počítačů Hyper-V do sekundární lokality pomocí nástroje VMM pomocí Azure Site Recovery
-description: Tento článek poskytuje informace o testování výkonu pro replikaci virtuálních počítačů Hyper-V v cloudech VMM do sekundární lokality pomocí Azure Site Recovery.
+title: Testování replikace virtuálních počítačů Hyper-V do sekundární lokality pomocí VMM pomocí Azure Site Recovery
+description: Tento článek obsahuje informace o testování výkonu pro replikaci virtuálních počítačích Hyper-V v cloudech v cloudech VMM do sekundární lokality pomocí Azure Site Recovery.
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
@@ -8,177 +8,177 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
 ms.openlocfilehash: 3edd182e335bc679d95d7be64f45b617a9f54c1a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73663178"
 ---
-# <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Výsledky testů pro replikaci Hyper-V do sekundární lokality
+# <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Výsledky testů pro replikaci hyper-V do sekundární lokality
 
 
-Tento článek poskytuje výsledky testování výkonu při replikaci virtuálních počítačů Hyper-V v cloudech System Center Virtual Machine Manager (VMM) do sekundárního datacentra.
+Tento článek obsahuje výsledky testování výkonu při replikaci virtuálních počítačů Hyper-V v cloudech Nástroje pro virtuální počítače (VMM) do sekundárního datového centra.
 
 ## <a name="test-goals"></a>Testovací cíle
 
-Cílem testování bylo zjistit, jak Site Recovery provádí během replikace ustáleného stavu.
+Cílem testování bylo prozkoumat, jak funguje obnovení lokality během replikace v ustáleném stavu.
 
-- K replikaci ustálených stavů dojde, když se virtuální počítače dokončily počáteční replikace a synchronizují se rozdílové změny.
-- Je důležité změřit výkon pomocí stabilního stavu, protože se jedná o stav, ve kterém většina virtuálních počítačů zůstává, pokud nedošlo k neočekávanému výpadku.
-- Testovací nasazení se skládá ze dvou místních webů se serverem VMM v každé lokalitě. Toto testovací nasazení je typické pro nasazení sídla na pracovišti, jako je primární lokalita a pobočka jako sekundární lokalita nebo lokalita pro obnovení.
+- Replikace v ustáleném stavu nastane, když virtuální ms dokončily počáteční replikaci a synchronizují rozdílové změny.
+- Je důležité měřit výkon pomocí ustáleného stavu, protože je to stav, ve kterém většina virtuálních disponiálů zůstávají, pokud nedojde k neočekávaným výpadkům.
+- Testovací nasazení se skládalo ze dvou místních lokalit se serverem VMM v každé lokalitě. Toto testovací nasazení je typické pro nasazení ústředí nebo pobočky, přičemž hlavní pobočka funguje jako primární lokalita a pobočka jako sekundární nebo obnovovací lokalita.
 
-## <a name="what-we-did"></a>Co máme
+## <a name="what-we-did"></a>Co jsme udělali
 
-V tomto příkladu jsme provedli test Pass:
+Zde je to, co jsme udělali v testovacím průchodu:
 
-1. Vytvořili jste virtuální počítače pomocí šablon VMM.
-2. Začali jste virtuální počítače a zaznamenané metriky výkonu směrného plánu za 12 hodin.
-3. Na primárních serverech VMM a obnovení se vytvořily cloudy.
-4. Nakonfigurovali se replikace v Site Recovery, včetně mapování mezi zdrojovými a obnovovacími cloudy.
-5. Povolení ochrany pro virtuální počítače a umožnění dokončení počáteční replikace.
-6. Čekání na stabilizaci systému je několik hodin.
-7. Zaznamenané metriky výkonu za 12 hodin, kdy všechny virtuální počítače zůstaly v očekávaném stavu replikace po dobu 12 hodin.
-8. Byl změřen rozdíl mezi metrikami základního výkonu a metrikami výkonu replikace.
+1. Vytvořené virtuální počítače pomocí šablon VMM.
+2. Spuštění virtuálních společností a zachycené metriky výkonu směrného plánu za 12 hodin.
+3. Vytvořené cloudy na primárních serverech VMM a pro obnovení.
+4. Nakonfigurovaná replikace v lokalitě Obnovení, včetně mapování mezi zdrojovým a obnovovacím cloudem.
+5. Povolená ochrana virtuálních aplikací a umožněná k dokončení počáteční replikace.
+6. Čekal jsem pár hodin na stabilizaci systému.
+7. Zachycené metriky výkonu přes 12 hodin, kde všechny virtuální chody zůstaly ve stavu očekávané replikace pro tyto 12 hodin.
+8. Změřila rozdíl mezi metrikami výkonu podle směrného plánu a metrikami výkonu replikace.
 
 
-## <a name="primary-server-performance"></a>Výkon primárního serveru
+## <a name="primary-server-performance"></a>Primární výkon serveru
 
-* Replika technologie Hyper-V (používaná v Site Recovery) asynchronně sleduje změny v souboru protokolu s minimálním zatížením úložiště na primárním serveru.
-* Replika technologie Hyper-V používá k minimalizaci režie za IOPS na základě samy zachované paměti mezipaměť. Ukládá zápisy do VHDX v paměti a vyprázdní je do souboru protokolu před tím, než se protokol pošle do lokality pro obnovení. K vyprázdnění disku dojde také v případě, že zápisy narazí na předem stanovený limit.
-* Následující graf zobrazuje režijní náklady na stabilní stav IOPS pro replikaci. Zjistili jsme, že režie IOPS v důsledku replikace je okolo 5%, což je poměrně nízké.
+* Replika hyper-V (používaná site recovery) asynchronně sleduje změny v souboru protokolu s minimální režií úložiště na primárním serveru.
+* Replika hyper-V využívá samoobslužnou mezipaměť k minimalizaci režie videa VOPS pro sledování. Ukládá zápisy do vhdx v paměti a vyprázdní je do souboru protokolu před čas, kdy je protokol odeslán do webu pro obnovení. Vyprázdnění disku také dojde, pokud zápisy narazí na předem stanovený limit.
+* Následující graf ukazuje režii vipos ustáleného stavu pro replikaci. Vidíme, že režie IOPS z důvodu replikace je kolem 5%, což je poměrně nízká.
 
   ![Primární výsledky](./media/hyper-v-vmm-performance-results/IC744913.png)
 
-Replika technologie Hyper-V používá paměť na primárním serveru k optimalizaci výkonu disku. Jak je znázorněno v následujícím grafu, režie paměti na všech serverech v primárním clusteru je mezní. Zobrazená režie paměti je procento paměti využívané replikací v porovnání s celkovou nainstalovanou pamětí na serveru Hyper-V.
+Replika technologie Hyper-V používá paměť na primárním serveru k optimalizaci výkonu disku. Jak je znázorněno v následujícím grafu, režie paměti na všech serverech v primárním clusteru je marginální. Zobrazená režie paměti je procento paměti používané replikací ve srovnání s celkovou nainstalovanou pamětí na serveru Hyper-V.
 
 ![Primární výsledky](./media/hyper-v-vmm-performance-results/IC744914.png)
 
-Replika technologie Hyper-V má minimální nároky na výkon procesoru. Jak je znázorněno v grafu, režie replikace je v rozsahu 2-3%.
+Replika hyper-V má minimální nároky na procesor. Jak je znázorněno v grafu, režie replikace je v rozsahu 2-3%.
 
 ![Primární výsledky](./media/hyper-v-vmm-performance-results/IC744915.png)
 
 ## <a name="secondary-server-performance"></a>Výkon sekundárního serveru
 
-Replika technologie Hyper-V používá k optimalizaci počtu operací úložiště malou velikost paměti na serveru pro obnovení. Graf shrnuje využití paměti na serveru pro obnovení. Zobrazená režie paměti je procento paměti využívané replikací v porovnání s celkovou nainstalovanou pamětí na serveru Hyper-V.
+Replika technologie Hyper-V používá malé množství paměti na serveru pro obnovení k optimalizaci počtu operací úložiště. Graf shrnuje využití paměti na serveru pro obnovení. Zobrazená režie paměti je procento paměti používané replikací ve srovnání s celkovou nainstalovanou pamětí na serveru Hyper-V.
 
-![Vedlejší výsledky](./media/hyper-v-vmm-performance-results/IC744916.png)
+![Sekundární výsledky](./media/hyper-v-vmm-performance-results/IC744916.png)
 
-Množství vstupně-výstupních operací na webu obnovení je funkce počtu operací zápisu v primární lokalitě. Pojďme se podívat na celkový počet vstupně-výstupních operací v lokalitě pro obnovení v porovnání s celkovými vstupně-výstupními operacemi a operacemi zápisu v primární lokalitě. Grafy ukazují, že celkový počet IOPS v lokalitě pro obnovení je
+Počet vstupně-vstupně-v.i. operací v lokalitě pro obnovení je funkce počtu operací zápisu v primární lokalitě. Podívejme se na celkové vstupně-va operace v lokalitě pro obnovení ve srovnání s celkovými vstupně-va operace a zápis u operací v primární lokalitě. Grafy ukazují, že celkový vipos na místě obnovení je
 
-* Přibližně 1,5 krát zápis IOPS na primárním počítači.
-* Přibližně 37% z celkového IOPS v primární lokalitě.
+* Přibližně 1,5násobek zápisu IOPS na primární.
+* Přibližně 37 % celkových iOPS v primární lokalitě.
 
-![Vedlejší výsledky](./media/hyper-v-vmm-performance-results/IC744917.png)
+![Sekundární výsledky](./media/hyper-v-vmm-performance-results/IC744917.png)
 
-![Vedlejší výsledky](./media/hyper-v-vmm-performance-results/IC744918.png)
+![Sekundární výsledky](./media/hyper-v-vmm-performance-results/IC744918.png)
 
 ## <a name="effect-on-network-utilization"></a>Vliv na využití sítě
 
-Na základě stávající šířky pásma 5 GB za sekundu se použil průměr 275 MB za sekundu šířky pásma sítě (s povolenou kompresí).
+Mezi primárními uzly a uzly pro obnovení (s povolenou kompresí) bylo použito průměrně 275 MB za sekundu oproti existující šířce pásma 5 GB za sekundu.
 
 ![Výsledky využití sítě](./media/hyper-v-vmm-performance-results/IC744919.png)
 
-## <a name="effect-on-vm-performance"></a>Vliv na výkon virtuálního počítače
+## <a name="effect-on-vm-performance"></a>Vliv na výkon virtuálních počítačů
 
-Důležitým aspektem je dopad replikace na produkční úlohy běžící na virtuálních počítačích. Pokud je primární lokalita dostatečně zřízená pro replikaci, nemělo by to mít žádný vliv na úlohy. Mechanismus zjednodušeného sledování repliky technologie Hyper-V zajišťuje, aby úlohy běžící ve virtuálních počítačích nebyly při replikaci ustáleného stavu ovlivněny. To je znázorněno v následujících grafech.
+Důležitým aspektem je dopad replikace na produkční úlohy spuštěné na virtuálních počítačích. Pokud primární lokalita je dostatečně zřízena pro replikaci, by nemělmít žádný dopad na úlohy. Zjednodušený mechanismus sledování repliky hyperv zajišťuje, že úlohy spuštěné ve virtuálních počítačích nebudou během replikace v ustáleném stavu ovlivněny. To je znázorněno v následujících grafech.
 
-Tento graf znázorňuje IOPS prováděné virtuálními počítači, které používají různé úlohy, před a po povolení replikace. Můžete si všimnout, že mezi nimi není žádný rozdíl.
+Tento graf ukazuje iOPS prováděné virtuálními počítači s různými úlohami před a po povolení replikace. Můžete pozorovat, že mezi nimi není žádný rozdíl.
 
 ![Výsledky efektu repliky](./media/hyper-v-vmm-performance-results/IC744920.png)
 
-Následující graf znázorňuje propustnost virtuálních počítačů, na kterých běží různé úlohy, před a po povolení replikace. Můžete sledovat, že replikace nemá žádný významný dopad.
+Následující graf ukazuje propustnost virtuálních počítačů s různými úlohami před a po povolení replikace. Můžete pozorovat, že replikace nemá žádný významný dopad.
 
-![Efekty repliky výsledků](./media/hyper-v-vmm-performance-results/IC744921.png)
+![Výsledky repliky efekty](./media/hyper-v-vmm-performance-results/IC744921.png)
 
 ## <a name="conclusion"></a>Závěr
 
-Výsledky jasně ukazují, že Site Recovery, společně s replikou technologie Hyper-V, se dobře škálují s minimálními nároky na velký cluster. Site Recovery poskytuje jednoduché nasazení, replikaci, správu a monitorování. Replika technologie Hyper-V poskytuje nezbytnou infrastrukturu pro úspěšné škálování replikace. 
+Výsledky jasně ukazují, že site recovery, spolu s Replika Hyper-V, škálování dobře s minimální režii pro velký cluster. Site Recovery poskytuje jednoduché nasazení, replikaci, správu a monitorování. Replika hyper-V poskytuje potřebnou infrastrukturu pro úspěšné škálování replikace. 
 
 ## <a name="test-environment-details"></a>Podrobnosti testovacího prostředí
 
 ### <a name="primary-site"></a>Primární lokalita
 
-* Primární lokalita má cluster, který obsahuje pět serverů Hyper-V s 470 virtuálními počítači.
-* Virtuální počítače spouštějí různé úlohy a všechny mají povolenou ochranu Site Recovery.
-* Úložiště pro uzel clusteru zajišťuje síť SAN iSCSI. Model – Hitachi HUS130.
-* Každý clusterový server má čtyři síťové karty (nic) s jedním GB/s.
-* Dvě síťové karty jsou připojené k privátní síti iSCSI a dvě jsou připojené k externí podnikové síti. Jedna z externích sítí je vyhrazena jenom pro komunikaci s clustery.
+* Primární lokalita má cluster obsahující pět serverů Hyper-V se systémem 470 virtuálních počítačů.
+* Virtuální servery spouštějí různé úlohy a všechny mají povolenou ochranu site recovery.
+* Úložiště pro uzel clusteru poskytuje systém iSCSI SAN. Model – Hitachi HUS130.
+* Každý clusterový server má čtyři síťové karty (NIC) po jednom Gb/s.
+* Dvě ze síťových karet jsou připojeny k privátní síti iSCSI a dvě jsou připojeny k externí podnikové síti. Jedna z externích sítí je vyhrazena pouze pro komunikaci clusteru.
 
-![Požadavky na primární hardware](./media/hyper-v-vmm-performance-results/IC744922.png)
+![Primární požadavky na hardware](./media/hyper-v-vmm-performance-results/IC744922.png)
 
-| Server | Paměť RAM | Model | Procesor | Počet procesorů | NIC | Software |
+| Server | Paměť RAM | Model | Procesor | Počet zpracovatelů | NIC | Software |
 | --- | --- | --- | --- | --- | --- | --- |
-| Servery Hyper-V v clusteru: <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128<br />ESTLAB-HOST25 má 256 |Dell™ PowerEdge™ R820 |Intel (R) Xeon (R) CPU E5-4620 0 \@ 2.20 GHz |4 |V/v mi × 4 |Windows Server Datacenter 2012 R2 (x64) + role Hyper-V |
-| Server VMM |2 | | |2 |1 Gb/s |Windows Server Database 2012 R2 (x64) + VMM 2012 R2 |
+| Servery Hyper-V v clusteru: <br />ESTLAB-HOSTITEL11<br />ESTLAB-HOSTITEL12<br />ESTLAB-HOSTITEL13<br />ESTLAB-HOSTITEL14<br />ESTLAB-HOSTITEL25 |128<br />ESTLAB-HOST25 má 256 |Dell ™ PowerEdge ™ R820 |Procesor Intel(R) Xeon(R) E5-4620 0 \@ 2,20 GHz |4 |I Gbps x 4 |Role Windows Server Datacenter 2012 R2 (x64) + Hyper-V |
+| Server VMM |2 | | |2 |1 Gb/s |Databáze Windows Server 2012 R2 (x64) + VMM 2012 R2 |
 
 ### <a name="secondary-site"></a>Sekundární lokalita
 
-* Sekundární lokalita má cluster s podporou převzetí služeb při selhání se šesti uzly.
-* Úložiště pro uzel clusteru zajišťuje síť SAN iSCSI. Model – Hitachi HUS130.
+* Sekundární lokalita má cluster s podporou převzetí služeb při selhání se šesti uzny.
+* Úložiště pro uzel clusteru poskytuje systém iSCSI SAN. Model – Hitachi HUS130.
 
-![Specifikace primárního hardwaru](./media/hyper-v-vmm-performance-results/IC744923.png)
+![Primární specifikace hardwaru](./media/hyper-v-vmm-performance-results/IC744923.png)
 
-| Server | Paměť RAM | Model | Procesor | Počet procesorů | NIC | Software |
+| Server | Paměť RAM | Model | Procesor | Počet zpracovatelů | NIC | Software |
 | --- | --- | --- | --- | --- | --- | --- |
-| Servery Hyper-V v clusteru: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Dell™ PowerEdge™ R720 |Intel (R) Xeon (R) CPU E5-2630 0 \@ 2.30 GHz |2 |V/v mi × 4 |Windows Server Datacenter 2012 R2 (x64) + role Hyper-V |
-| ESTLAB-HOST17 |128 |Dell™ PowerEdge™ R820 |Intel (R) Xeon (R) CPU E5-4620 0 \@ 2.20 GHz |4 | |Windows Server Datacenter 2012 R2 (x64) + role Hyper-V |
-| ESTLAB-HOST24 |256 |Dell™ PowerEdge™ R820 |Intel (R) Xeon (R) CPU E5-4620 0 \@ 2.20 GHz |2 | |Windows Server Datacenter 2012 R2 (x64) + role Hyper-V |
-| Server VMM |2 | | |2 |1 Gb/s |Windows Server Database 2012 R2 (x64) + VMM 2012 R2 |
+| Servery Hyper-V v clusteru: <br />ESTLAB-HOSTITEL07<br />ESTLAB-HOSTITEL08<br />ESTLAB-HOSTITEL09<br />ESTLAB-HOSTITEL10 |96 |Dell ™ PowerEdge ™ R720 |Procesor Intel(R) Xeon(R) E5-2630 0 \@ 2.30GHz |2 |I Gbps x 4 |Role Windows Server Datacenter 2012 R2 (x64) + Hyper-V |
+| ESTLAB-HOSTITEL17 |128 |Dell ™ PowerEdge ™ R820 |Procesor Intel(R) Xeon(R) E5-4620 0 \@ 2,20 GHz |4 | |Role Windows Server Datacenter 2012 R2 (x64) + Hyper-V |
+| ESTLAB-HOSTITEL24 |256 |Dell ™ PowerEdge ™ R820 |Procesor Intel(R) Xeon(R) E5-4620 0 \@ 2,20 GHz |2 | |Role Windows Server Datacenter 2012 R2 (x64) + Hyper-V |
+| Server VMM |2 | | |2 |1 Gb/s |Databáze Windows Server 2012 R2 (x64) + VMM 2012 R2 |
 
-### <a name="server-workloads"></a>Zatížení serveru
+### <a name="server-workloads"></a>Úlohy serveru
 
-* Pro testovací účely jsme vybrali úlohy, které se běžně používají ve scénářích podnikového zákazníka.
-* [IOMeter](http://www.iometer.org) používáme s charakteristikou úlohy shrnutou v tabulce pro simulaci.
-* Všechny profily IOMeter jsou nastavené na zápis náhodných bajtů, aby se simulovaly vzory zápisu s nejhoršími písmeny pro úlohy.
+* Pro testovací účely jsme vybrali úlohy běžně používané ve scénářích podnikových zákazníků.
+* [IOMeter](http://www.iometer.org) používáme s charakteristikou pracovního vytížení shrnutou v tabulce pro simulaci.
+* Všechny profily IOMeter jsou nastaveny na zápis náhodných bajtů simulovat nejhorší scénáře zápisu vzory pro úlohy.
 
-| Úloha | I/O velikost (KB) | % Přístup | % Čtení | Nezpracované vstupně-výstupních | Vzor I/O |
+| Úloha | Velikost vstupně-va (KB) | % přístupu | %Číst | Vynikající vstupně-va | Vstupně-vně vzor |
 | --- | --- | --- | --- | --- | --- |
-| Souborový server |4<br />8<br />16<br />32<br />64 |60 %<br />20 %<br />5 %<br />5 %<br />10 % |80 %<br />80 %<br />80 %<br />80 %<br />80 % |8<br />8<br />8<br />8<br />8 |Všechny 100% náhodné |
-| SQL Server (svazek 1)<br />SQL Server (svazek 2) |8<br />64 |100 %<br />100 % |70 %<br />0 % |8<br />8 |100% náhodný<br />100% sekvenční |
-| Výměna |32 |100 % |67% |8 |100% náhodný |
-| Pracovní stanice/VDI |4<br />64 |66%<br />34% |70 %<br />95% |1<br />1 |100% náhodný |
-| Webový souborový server |4<br />8<br />64 |33%<br />34%<br />33% |95%<br />95%<br />95% |8<br />8<br />8 |Všechny 75% náhodné |
+| Souborový server |4<br />8<br />16<br />32<br />64 |60 %<br />20 %<br />5 %<br />5 %<br />10 % |80 %<br />80 %<br />80 %<br />80 %<br />80 % |8<br />8<br />8<br />8<br />8 |Vše 100% náhodné |
+| SQL Server (svazek 1)<br />SQL Server (svazek 2) |8<br />64 |100 %<br />100 % |70 %<br />0% |8<br />8 |100% náhodné<br />100% sekvenční |
+| Výměna |32 |100 % |67 % |8 |100% náhodné |
+| Pracovní stanice/VDI |4<br />64 |66%<br />34% |70 %<br />95% |1<br />1 |Oba 100% náhodné |
+| Webový souborový server |4<br />8<br />64 |33%<br />34%<br />33% |95%<br />95%<br />95% |8<br />8<br />8 |Vše 75% náhodné |
 
 ### <a name="vm-configuration"></a>Konfigurace virtuálního počítače
 
-* 470 virtuálních počítačů v primárním clusteru.
+* 470 virtuálních počítačích v primárním clusteru.
 * Všechny virtuální počítače s diskem VHDX.
-* Virtuální počítače, na kterých běží úlohy, jsou shrnuté v tabulce. Všechny byly vytvořeny pomocí šablon VMM.
+* Virtuální virtuální aplikace s úlohami shrnutými v tabulce. Všechny byly vytvořeny pomocí šablon VMM.
 
-| Úloha | Počet virtuálních počítačů | Minimální velikost paměti RAM (GB) | Maximální velikost paměti RAM (GB) | Velikost logického disku (GB) na virtuální počítač | Maximální IOPS |
+| Úloha | # Virtuální měna | Minimální ram (GB) | Maximální ram (GB) | Velikost logického disku (GB) na virtuální virtuální počítače | Maximální viopy |
 | --- | --- | --- | --- | --- | --- |
 | SQL Server |51 |1 |4 |167 |10 |
 | Exchange Server |71 |1 |4 |552 |10 |
 | Souborový server |50 |1 |2 |552 |22 |
-| Place |149 |0,5 |1 |80 |6 |
-| Webový server |149 |0,5 |1 |80 |6 |
-| ČTENÍ |470 | | |96,83 TB |4108 |
+| Vdi |149 |.5 |1 |80 |6 |
+| Webový server |149 |.5 |1 |80 |6 |
+| TOTAL |470 | | |96,83 TB |4108 |
 
-### <a name="site-recovery-settings"></a>Nastavení Site Recovery
+### <a name="site-recovery-settings"></a>Nastavení obnovení webu
 
-* Site Recovery bylo nakonfigurováno pro místní ochranu místně.
-* Server VMM má nakonfigurované čtyři cloudy, které obsahují servery clusteru Hyper-V a jejich virtuální počítače.
+* Obnovení webu bylo nakonfigurováno pro místní ochranu místně.
+* Server VMM má nakonfigurované čtyři cloudy, které obsahují clusterové servery Hyper-V a jejich virtuální počítače.
 
-| Primární Cloud VMM | Chráněné virtuální počítače | Četnost replikací | Další body obnovení |
+| Primární cloud VMM | Chráněné virtuální počítače | Frekvence replikace | Další body obnovení |
 | --- | --- | --- | --- |
-| PrimaryCloudRpo15m |142 |15 minut |Žádný |
-| PrimaryCloudRpo30s |47 |30 sekund |Žádný |
-| PrimaryCloudRpo30sArp1 |47 |30 sekund |1 |
-| PrimaryCloudRpo5m |235 |5 minut |Žádný |
+| Primární CloudRpo15m |142 |15 minut |Žádný |
+| Primární CloudRpo30s |47 |30 sekund |Žádný |
+| Primární CloudRpo30sArp1 |47 |30 sekund |1 |
+| Primární CloudRpo5m |235 |5 minut |Žádný |
 
 ### <a name="performance-metrics"></a>Metriky výkonu
 
-Tabulka shrnuje metriky výkonu a čítače, které byly v nasazení měřeny.
+Tabulka shrnuje metriky výkonu a čítače, které byly měřeny v nasazení.
 
-| Metrika | Objektů |
+| Metrika | Čítač |
 | --- | --- |
 | Procesor |\Processor(_Total)\% Processor Time |
-| Dostupná paměť |\Memory\Available MB |
-| IOPS |\PhysicalDisk (_Total) \ přenosy za sekundu |
-| Operace čtení z virtuálního počítače (IOPS) za sekundu |\Hyper-V virtuální paměťové zařízení (\<VHD >) \Read operací za sekundu |
-| Operace zápisu do virtuálního počítače (IOPS) za sekundu |\Hyper-V virtuální paměťové zařízení (\<VHD >) \Write operací/S |
-| Propustnost čtení virtuálního počítače |\Hyper-V virtuálního úložného zařízení (\<VHD >) \Read bajty/s |
-| Propustnost zápisu virtuálních počítačů |\Hyper-V virtuálního úložného zařízení (\<VHD >) \Write bajty/s |
+| Dostupná paměť |\Paměť\Dostupné mbajty |
+| IOPS |\PhysicalDisk(_Total)\Přenosy disků/s |
+| Operace čtení virtuálního zařízení (IOPS)/s |\Hyper-V Virtuální paměťové zařízení(>)\Operace\<čtení/s |
+| Operace zápisu virtuálního zařízení (IOPS)/s |\Hyper-V Virtuální paměťové zařízení(>\<v pevném disku)\Operace zápisu/S |
+| Propustnost pro čtení virtuálního min. |\Hyper-V Virtuální paměťové zařízení(>\<v pevném rozlišení)\Čtení bajtů/s |
+| Propustnost zápisu virtuálního virtuálního montovna |\Hyper-V Virtuální paměťové zařízení(VHD\<>)\Zápis bajtů/s |
 
 ## <a name="next-steps"></a>Další kroky
 

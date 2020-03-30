@@ -1,6 +1,6 @@
 ---
-title: Vítá vás aplikace wingtips
-description: Přečtěte si o modelech databázové architektury a o ukázkové aplikaci wingtips SaaS pro Azure SQL Database v cloudovém prostředí.
+title: Vítejte v aplikaci Wingtips
+description: Další informace o modelech pronájmu databáze a o ukázkové aplikaci Wingtips SaaS pro Azure SQL Database v cloudovém prostředí.
 keywords: kurz k sql database
 services: sql-database
 ms.service: sql-database
@@ -13,69 +13,69 @@ ms.author: sstein
 ms.reviewer: billgib
 ms.date: 01/25/2019
 ms.openlocfilehash: 4e0b3afe51ac7c7a6b9213fcee79af57cbbd8197
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73818318"
 ---
-# <a name="the-wingtip-tickets-saas-application"></a>Aplikace SaaS lístky Wingtip
+# <a name="the-wingtip-tickets-saas-application"></a>Aplikace Wingtip Tickets SaaS
 
-V každé ze tří vzorků se *implementuje stejné aplikace* SaaS Ticket Tickets. Aplikace je jednoduchý seznam událostí a aplikace SaaS pro vytváření lístků, které cílí na malé místo – kino, klub atd. Každé místo je tenant aplikace a má vlastní data: podrobnosti místa, seznamy událostí, zákazníky, objednávky lístků atd.  Aplikace spolu se skripty a kurzy pro správu prezentují ucelený scénář SaaS. To zahrnuje zřizování klientů, monitorování a správu výkonu, správy schémat a vytváření sestav a analýz mezi klienty.
+Stejná aplikace *Wingtip Tickets* SaaS je implementována v každém ze tří ukázek. Aplikace je jednoduchá událost výpis a ticketing SaaS aplikace zaměřená na malé podniky - divadla, kluby, atd. Každé místo je nájemcem aplikace a má své vlastní údaje: podrobnosti o místě, seznamy událostí, zákazníci, objednávky vstupenek atd.  Aplikace spolu se skripty pro správu a kurzy představuje komplexní scénář SaaS. To zahrnuje zřizování klientů, monitorování a správu výkonu, správu schémat a vytváření sestav a analýz y napříč tenanty.
 
-## <a name="three-saas-application-and-tenancy-patterns"></a>Tři SaaS aplikace a vzory tenantů
+## <a name="three-saas-application-and-tenancy-patterns"></a>Tři saas aplikace a nájemní vzory
 
-K dispozici jsou tři verze aplikace. Každý z nich zkoumá jiný model architektury databáze na Azure SQL Database.  První používá samostatnou aplikaci pro každého tenanta s vlastní databází. Druhý používá víceklientské aplikace s databází pro každého tenanta. Třetí ukázka používá víceklientské aplikace s horizontálně dělené databázemi s více klienty.
+K dispozici jsou tři verze aplikace; každý zkoumá jiný vzor klienta databáze v Azure SQL Database.  První používá samostatnou aplikaci na klienta s vlastní databází. Druhý používá víceklientské aplikace s databází na klienta. Třetí ukázka používá víceklientské aplikace s databázemi s oddíly více klientů.
 
-![Tři modely architektury][image-three-tenancy-patterns]
+![Tři nájemní vzory][image-three-tenancy-patterns]
 
- Každá ukázka zahrnuje kód aplikace a také skripty pro správu a kurzy, které probírají řadu vzorů návrhu a správy.  Každá ukázka se nasadí méně než pět minut.  Všechny tři mohou být nasazeny souběžně, takže můžete porovnat rozdíly v návrhu a správě.
+ Každá ukázka obsahuje kód aplikace a skripty pro správu a kurzy, které zkoumají řadu vzorů návrhu a správy.  Každý vzorek se nasazuje za méně než pět minut.  Všechny tři lze nasadit vedle sebe, takže můžete porovnat rozdíly v návrhu a správě.
 
-## <a name="standalone-application-per-tenant-pattern"></a>Vzor samostatné aplikace na tenanta
+## <a name="standalone-application-per-tenant-pattern"></a>Samostatná aplikace podle vzoru klienta
 
-Samostatná aplikace na model tenanta používá pro každého tenanta jednu aplikaci tenanta s databází. Aplikace každého tenanta, včetně její databáze, je nasazená do samostatné skupiny prostředků Azure. Skupinu prostředků je možné nasadit v rámci předplatného poskytovatele služeb nebo předplatného tenanta a spravovat ji poskytovatelem v zastoupení tenanta. Samostatná aplikace na model tenanta poskytuje největší izolaci tenanta, ale je to ale nejdražší, protože není k dispozici možnost sdílení prostředků mezi více klienty.  Tento model je vhodný pro aplikace, které mohou být složitější a které jsou nasazené na menší počet klientů.  Díky samostatným nasazením se aplikace dá přizpůsobit pro každého tenanta snadněji než v jiných vzorcích.  
+Samostatná aplikace na vzorek klienta používá aplikaci jednoho klienta s databází pro každého klienta. Aplikace každého klienta, včetně jeho databáze, se nasadí do samostatné skupiny prostředků Azure. Skupinu prostředků lze nasadit v předplatném poskytovatele služeb nebo předplatného klienta a spravovat poskytovatele mj. Samostatná aplikace na vzor klienta poskytuje největší izolace klienta, ale je obvykle nejdražší, protože neexistuje žádná možnost sdílet prostředky mezi více klientů.  Tento vzor je vhodný pro aplikace, které mohou být složitější a které jsou nasazeny na menší počet klientů.  Se samostatnými nasazeními lze aplikaci přizpůsobit pro každého klienta snadněji než v jiných vzorcích.  
 
-Přečtěte si [kurzy][docs-tutorials-for-wingtip-sa] a kód na GitHubu [. ../Microsoft/WingtipTicketsSaaS-StandaloneApp][github-code-for-wingtip-sa].
+Podívejte se na [výukové programy][docs-tutorials-for-wingtip-sa] a kód na GitHubu [.../Microsoft/WingtipTicketsSaaS-StandaloneApp][github-code-for-wingtip-sa].
 
-## <a name="database-per-tenant-pattern"></a>Model databáze na tenanta
+## <a name="database-per-tenant-pattern"></a>Databáze na vzor klienta
 
-Model databáze na tenanta je vhodný pro poskytovatele služeb, kteří se zabývají izolací klientů a chtějí provozovat centralizovanou službu, která umožňuje nákladově efektivní využívání sdílených prostředků. Databáze se vytvoří pro každé místo nebo tenanta a všechny databáze se centrálně spravují. Databáze je možné hostovat v elastických fondech, aby poskytovaly cenově efektivní a snadnou správu výkonu, která využívá nepředvídatelné vzorce úloh klientů. Databáze katalogu obsahuje mapování mezi klienty a jejich databázemi. Toto mapování je spravováno pomocí funkcí správy mapy horizontálních oddílů v [klientské knihovně elastic Database](sql-database-elastic-database-client-library.md), která poskytuje efektivní správu připojení k aplikaci.
+Vzor databáze na tenanta je efektivní pro poskytovatele služeb, kteří se zabývají izolací klienta a chtějí spustit centralizovanou službu, která umožňuje nákladově efektivní využití sdílených prostředků. Databáze je vytvořena pro každé místo nebo tenanta a všechny databáze jsou centrálně spravované. Databáze mohou být hostovány v elastických fondech, které poskytují nákladově efektivní a snadnou správu výkonu, která využívá nepředvídatelné vzory úloh klientů. Databáze katalogu obsahuje mapování mezi klienty a jejich databázemi. Toto mapování je spravováno pomocí funkcí správy map [skrečů klientské knihovny elastické databáze](sql-database-elastic-database-client-library.md), které poskytují efektivní správu připojení k aplikaci.
 
-Přečtěte si [kurzy][docs-tutorials-for-wingtip-dpt] a kód na GitHubu [. ../Microsoft/WingtipTicketsSaaS-DbPerTenant][github-code-for-wingtip-dpt].
+Podívejte se na [výukové programy][docs-tutorials-for-wingtip-dpt] a kód na GitHubu [.../Microsoft/WingtipTicketsSaaS-DbPerTenant][github-code-for-wingtip-dpt].
 
-## <a name="sharded-multi-tenant-database-pattern"></a>Horizontálně dělené vzor databáze pro více tenantů
+## <a name="sharded-multi-tenant-database-pattern"></a>Vzor databáze s oddíly s více klienty
 
-Víceklientské databáze jsou platné pro poskytovatele služeb, kteří hledají nižší náklady na tenanta a v pořádku s omezenou izolací tenanta. Tento model umožňuje vybalit velký počet klientů do individuální databáze a řídit náklady na klienta. Téměř neomezené škálování je možné tím, že horizontálního dělení klienty napříč více databázemi. Databáze katalogu mapuje klienty do databází.  
+Víceklientské databáze jsou efektivní pro poskytovatele služeb, kteří hledají nižší náklady na klienta a v pořádku se sníženou izolací tenanta. Tento vzor umožňuje balení velkého počtu klientů do individuální databáze, řízení náklady na klienta dolů. Téměř nekonečné škálování je možné horizontálním horizontálem klienty napříč více databází. Databáze katalogu mapuje klienty na databáze.  
 
-Tento vzor také umožňuje *hybridní* model, ve kterém je možné optimalizovat pro náklady s více klienty v databázi, nebo optimalizovat pro izolaci s jedním klientem ve vlastní databázi. Možnost volby se dá udělat na základě tenanta, a to buď při zřizování tenanta, nebo později, bez dopadu na aplikaci.  Tento model se dá efektivně použít, když je potřeba, aby se skupiny tenantů nacházely jinak. Například klienti s nízkými náklady se dají přiřadit ke sdíleným databázím, zatímco klienti úrovně Premium se dají přiřadit ke svým vlastním databázím. 
+Tento vzor také umožňuje *hybridní* model, ve kterém můžete optimalizovat pro náklady s více klienty v databázi nebo optimalizovat pro izolaci s jedním tenantem ve své vlastní databázi. Volba může být provedena na základě tenant-by-tenant, buď při zřízení klienta nebo později, bez dopadu na aplikaci.  Tento model lze efektivně použít, když skupiny klientů je třeba zacházet odlišně. Například nízkonákladové klienty lze přiřadit ke sdíleným databázím, zatímco klienti premium lze přiřadit k vlastním databázím. 
 
-Přečtěte si [kurzy][docs-tutorials-for-wingtip-mt] a kód na GitHubu [. ../Microsoft/WingtipTicketsSaaS-MultiTenantDb][github-code-for-wingtip-mt].
+Podívejte se na [výukové programy][docs-tutorials-for-wingtip-mt] a kód na GitHubu [.../Microsoft/WingtipTicketsSaaS-MultiTenantDb][github-code-for-wingtip-mt].
 
 ## <a name="next-steps"></a>Další kroky
 
 #### <a name="conceptual-descriptions"></a>Koncepční popisy
 
-- Podrobnější vysvětlení vzorů aplikační architektury je k dispozici na [více vzorech tenantů pro databáze SaaS][saas-tenancy-app-design-patterns-md] .
+- Podrobnější vysvětlení vzorců nájmu aplikace je k dispozici na [víceklientské saas databáze nájemnívzory][saas-tenancy-app-design-patterns-md]
 
-#### <a name="tutorials-and-code"></a>Kurzy a kód
+#### <a name="tutorials-and-code"></a>Návody a kód
 
-- Samostatná aplikace na tenanta:
-    - [Kurzy pro samostatnou aplikaci][docs-tutorials-for-wingtip-sa]
+- Samostatná aplikace na klienta:
+    - [Návody pro samostatnou aplikaci][docs-tutorials-for-wingtip-sa].
     - [Kód pro samostatnou aplikaci na GitHubu][github-code-for-wingtip-sa].
 
-- Databáze na tenanta:
-    - [Kurzy pro databázi na tenanta][docs-tutorials-for-wingtip-dpt]
-    - [Kód databáze pro každého klienta na GitHubu][github-code-for-wingtip-dpt].
+- Databáze na klienta:
+    - [Kurzy pro databázi na klienta][docs-tutorials-for-wingtip-dpt].
+    - [Kód pro databázi na klienta na GitHubu][github-code-for-wingtip-dpt].
 
-- Horizontálně dělené více tenantů:
-    - [Kurzy pro více tenantů horizontálně dělené][docs-tutorials-for-wingtip-mt]
-    - [Kód pro více tenantů horizontálně dělené na GitHubu][github-code-for-wingtip-mt].
+- Víceklient s pevnými vrstvami:
+    - [Kurzy pro víceklientské oddíly][docs-tutorials-for-wingtip-mt].
+    - [Kód pro víceklientské oddíly na GitHubu][github-code-for-wingtip-mt].
 
 
 
 <!-- Image references. -->
 
-[image-three-tenancy-patterns]: media/saas-tenancy-welcome-wingtip-tickets-app/three-tenancy-patterns.png "Tři modely architektury."
+[image-three-tenancy-patterns]: media/saas-tenancy-welcome-wingtip-tickets-app/three-tenancy-patterns.png "Tři nájemní vzorce."
 
 <!-- Docs.ms.com references. -->
 

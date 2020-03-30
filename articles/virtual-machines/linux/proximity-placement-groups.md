@@ -1,6 +1,6 @@
 ---
-title: Použití skupin umístění blízkosti pro virtuální počítače se systémem Linux
-description: Seznamte se s vytvářením a používáním skupin umístění blízkosti pro virtuální počítače se systémem Linux v Azure.
+title: Použití skupin umístění bezkontaktní komunikace pro virtuální počítače s Linuxem
+description: Přečtěte si o vytváření a používání skupin umístění bezkontaktní komunikace pro virtuální počítače s Linuxem v Azure.
 services: virtual-machines-linux
 author: cynthn
 manager: gwallace
@@ -11,21 +11,21 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: cynthn
 ms.openlocfilehash: 353a266b647c299515c15889c302ba4409aa511b
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73171048"
 ---
-# <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>Nasazení virtuálních počítačů do skupin umístění pro Proximity pomocí Azure CLI
+# <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>Nasazení virtuálních počítačů do skupin umístění bezkontaktní komunikace pomocí azure cli
 
-Pokud chcete co nejblíže získat virtuální počítače a dosáhnout nejnižší možné latence, měli byste je nasadit v rámci [skupiny umístění blízkosti](co-location.md#proximity-placement-groups).
+Chcete-li získat virtuální chod co nejblíže a dosáhnout nejnižší možné latence, měli byste je nasadit v [rámci skupiny umístění bez kontaktní místo](co-location.md#proximity-placement-groups).
 
-Skupina umístění blízkosti je logické seskupení, které se používá k zajištění, že výpočetní prostředky Azure jsou fyzicky umístěné blízko sebe. Skupiny umístění blízkosti jsou užitečné pro úlohy, u kterých je minimální latence požadavek.
+Skupina umístění bezkontaktní komunikace je logické seskupení, které se používá k zajištění, že výpočetní prostředky Azure jsou fyzicky umístěny blízko sebe. Skupiny umístění bezkontaktní komunikace jsou užitečné pro úlohy, kde je požadavek nízké latence.
 
 
-## <a name="create-the-proximity-placement-group"></a>Vytvořit skupinu umístění blízkosti
-Vytvořte skupinu umístění blízkosti pomocí [`az ppg create`](/cli/azure/ppg#az-ppg-create). 
+## <a name="create-the-proximity-placement-group"></a>Vytvoření skupiny umístění bezkontaktní komunikace
+Vytvořte skupinu umístění [`az ppg create`](/cli/azure/ppg#az-ppg-create)bezkontaktní komunikace pomocí aplikace . 
 
 ```azurecli-interactive
 az group create --name myPPGGroup --location westus
@@ -36,9 +36,9 @@ az ppg create \
    -t standard 
 ```
 
-## <a name="list-proximity-placement-groups"></a>Seznam skupin umístění blízkosti
+## <a name="list-proximity-placement-groups"></a>Seznam skupin umístění bezkontaktní komunikace
 
-Seznam všech skupin umístění do blízkosti můžete zobrazit pomocí [AZ PPG list](/cli/azure/ppg#az-ppg-list).
+Můžete zobrazit seznam všech skupin umístění bezkontaktní komunikace pomocí [seznamu az ppg](/cli/azure/ppg#az-ppg-list).
 
 ```azurecli-interactive
 az ppg list -o table
@@ -46,7 +46,7 @@ az ppg list -o table
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
-Vytvořte virtuální počítač ve skupině umístění blízkosti pomocí [New AZ VM](/cli/azure/vm#az-vm-create).
+Vytvořte virtuální hovado v rámci skupiny umístění bezkontaktní pomocí [nového virtuálního virtuálního bodu](/cli/azure/vm#az-vm-create).
 
 ```azurecli-interactive
 az vm create \
@@ -59,19 +59,19 @@ az vm create \
    -l westus
 ```
 
-Virtuální počítač ve skupině umístění blízkosti můžete zobrazit pomocí [AZ PPG show](/cli/azure/ppg#az-ppg-show).
+Virtuální obraz můžete zobrazit ve skupině umístění bezkontaktní komunikace pomocí [az ppg show](/cli/azure/ppg#az-ppg-show).
 
 ```azurecli-interactive
 az ppg show --name myppg --resource-group myppggroup --query "virtualMachines"
 ```
 
 ## <a name="availability-sets"></a>Skupiny dostupnosti
-Ve skupině umístění blízkosti můžete také vytvořit skupinu dostupnosti. Použijte stejný parametr `--ppg` s příkazem [AZ VM Availability-set Create](/cli/azure/vm/availability-set#az-vm-availability-set-create) , aby se vytvořila skupina dostupnosti, a všechny virtuální počítače ve skupině dostupnosti se taky vytvoří ve stejné skupině umístění blízkosti.
+Můžete také vytvořit sadu dostupnosti ve skupině umístění bezkontaktní chod. Použijte stejný `--ppg` parametr s [az vm dostupnost nastavit vytvořit](/cli/azure/vm/availability-set#az-vm-availability-set-create) vytvořit sadu dostupnosti a všechny virtuální chody v sadě dostupnosti bude také vytvořen ve stejné skupině umístění bezkontaktní.
 
 ## <a name="scale-sets"></a>Škálovací sady
 
-Ve skupině umístění blízkosti můžete také vytvořit sadu škálování. Použijte stejný parametr `--ppg` s příkazem [AZ VMSS Create](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create) k vytvoření sady škálování a všechny instance se vytvoří ve stejné skupině umístění blízkosti.
+Můžete také vytvořit škálovací sadu ve skupině umístění bezkontaktní chod. Použijte stejný `--ppg` parametr s [az vmss vytvořit](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create) vytvořit škálovací sadu a všechny instance budou vytvořeny ve stejné skupině umístění bezkontaktní.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o příkazech rozhraní příkazového [řádku Azure CLI](/cli/azure/ppg) pro skupiny umístění pro Proximity.
+Další informace o příkazech [Azure CLI](/cli/azure/ppg) pro skupiny umístění bezkontaktní komunikace.

@@ -1,84 +1,84 @@
 ---
-title: Přehled verzí Durable Functions – Azure Functions
-description: Přečtěte si o Durable Functions verzích.
+title: Přehled verzí trvalých funkcí – Funkce Azure
+description: Další informace o verzích durable functions.
 author: cgillum
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4a117e7f69647af3ad82f9013bfa40556ccc0dbd
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77152886"
 ---
-# <a name="durable-functions-versions-overview"></a>Přehled verzí Durable Functions
+# <a name="durable-functions-versions-overview"></a>Přehled verzí trvalých funkcí
 
-*Durable Functions* je rozšíření [Azure Functions](../functions-overview.md) a [Azure WebJobs](../../app-service/web-sites-create-web-jobs.md) , které umožňuje psát stavové funkce v prostředí bez serveru. Toto rozšíření za vás spravuje stav, kontrolní body a restartování. Pokud ještě neznáte Durable Functions, přečtěte si [dokumentaci přehled](durable-functions-overview.md).
+*Trvalé funkce* je rozšíření [Azure Functions](../functions-overview.md) a [Azure WebJobs,](../../app-service/web-sites-create-web-jobs.md) které vám umožní psát stavové funkce v prostředí bez serveru. Toto rozšíření za vás spravuje stav, kontrolní body a restartování. Pokud ještě nejste obeznámeni s trvanlivé funkce, naleznete v [dokumentaci k přehledu](durable-functions-overview.md).
 
-## <a name="new-features-in-2x"></a>Nové funkce v 2. x
+## <a name="new-features-in-2x"></a>Nové funkce v 2.x
 
-Tato část popisuje funkce Durable Functions přidaných ve verzi 2. x.
+Tato část popisuje funkce trvalé funkce, které jsou přidány ve verzi 2.x.
 
 ### <a name="durable-entities"></a>Trvalé entity
 
-V Durable Functions 2. x jsme zavedli nový koncept [entity Functions](durable-functions-entities.md) .
+V aplikaci Durable Functions 2.x jsme představili novou [koncepci funkcí entity.](durable-functions-entities.md)
 
-Funkce entit definují operace pro čtení a aktualizaci malých částí stavu, označovaných jako *odolné entity*. Podobně jako funkce nástroje Orchestrator jsou funkce entit funkce se speciálním typem triggeru, *triggerem entity*. Na rozdíl od funkcí Orchestrator nemají entity Functions žádná konkrétní omezení kódu. Funkce entit také spravují stav explicitně namísto implicitního reprezentace stavu prostřednictvím řízení toku.
+Funkce entity definují operace pro čtení a aktualizaci malých částí stavu, označované jako *trvalé entity*. Podobně jako funkce orchestratoru jsou funkce entity funkce mise se speciálním typem aktivační události, *aktivační událostí entity*. Na rozdíl od funkcí orchestrator funkce entity nemají žádné konkrétní omezení kódu. Funkce entity také spravovat stav explicitně, nikoli implicitně představující stav prostřednictvím toku řízení.
 
-Další informace najdete v článku [odolné entity](durable-functions-entities.md) .
+Další informace najdete v článku [trvalé entity.](durable-functions-entities.md)
 
-### <a name="durable-http"></a>Trvalá HTTP
+### <a name="durable-http"></a>Odolný HTTP
 
-V Durable Functions 2. x jsme zavedli novou funkci [trvalého http](durable-functions-http-features.md#consuming-http-apis) , která vám umožní:
+V aplikaci Durable Functions 2.x jsme představili novou [odolnou](durable-functions-http-features.md#consuming-http-apis) funkci HTTP, která umožňuje:
 
-* Volání rozhraní API HTTP přímo z funkcí orchestrace (s některými dokumentovanými omezeními).
-* Implementujte Automatické dotazování na stav HTTP 202 na straně klienta.
+* Volání http api přímo z funkcí orchestrace (s některými zdokumentovanými omezeními).
+* Implementujte automatické dotazování stavu HTTP 202 na straně klienta.
 * Integrovaná podpora [spravovaných identit Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
-Další informace najdete v článku věnovaném [funkcím protokolu HTTP](durable-functions-http-features.md#consuming-http-apis) .
+Další informace najdete v článku [funkce protokolu HTTP.](durable-functions-http-features.md#consuming-http-apis)
 
-## <a name="migrate-from-1x-to-2x"></a>Migrace od 1. x do 2. x
+## <a name="migrate-from-1x-to-2x"></a>Migrace z 1.x na 2.x
 
-Tato část popisuje, jak migrovat existující verzi 1. x Durable Functions na verzi 2. x, abyste mohli využít nové funkce.
+Tato část popisuje, jak migrovat existující verzi 1.x Durable Functions na verzi 2.x, abyste využili výhod nových funkcí.
 
-### <a name="upgrade-the-extension"></a>Upgradovat rozšíření
+### <a name="upgrade-the-extension"></a>Upgrade rozšíření
 
-Nainstalujte ve svém projektu verzi 2. x [rozšíření vazby Durable Functions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) . Další informace najdete v tématu věnovaném [registraci rozšíření vazby Azure Functions](../functions-bindings-register.md) .
+Nainstalujte verzi 2.x [rozšíření vazby trvalé funkce](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) v projektu. Další informace najdete [v tématu Register Azure Functions binding extensions](../functions-bindings-register.md) for more information.
 
 ### <a name="update-your-code"></a>Aktualizace kódu
 
-Durable Functions 2. x přináší několik přerušujících změn. Aplikace Durable Functions 1. x nejsou kompatibilní s Durable Functions 2. x bez změny kódu. V této části jsou uvedené některé změny, které je třeba provést při upgradu funkcí verze 1. x na 2. x.
+Odolné funkce 2.x přináší několik průlomových změn. Odolné aplikace 1.x nejsou kompatibilní s durable functions 2.x bez změn kódu. V této části jsou uvedeny některé změny, které je třeba provést při inovaci funkcí verze 1.x na verzi 2.x.
 
-#### <a name="hostjson-schema"></a>Schéma Host. JSON
+#### <a name="hostjson-schema"></a>Schéma hostitele.json
 
-Durable Functions 2. x používá nové schéma Host. JSON. Hlavní změny od 1. x zahrnují:
+Trvalé funkce 2.x používá nové schéma host.json. Mezi hlavní změny od 1.x patří:
 
-* `"storageProvider"` (a pododdíl `"azureStorage"`) pro konfiguraci specifickou pro úložiště.
-* `"tracing"` pro trasování a konfiguraci protokolování.
-* `"notifications"` (a pododdíl `"eventGrid"`) pro konfiguraci oznámení služby Event Grid.
+* `"storageProvider"`(a `"azureStorage"` podsekce) pro konfiguraci specifickou pro úložiště.
+* `"tracing"`pro trasování a protokolování konfigurace.
+* `"notifications"`(a `"eventGrid"` podsekce) pro konfiguraci oznámení mřížky událostí.
 
-Podrobnosti najdete v [referenční dokumentaci k Durable Functions Host. JSON](durable-functions-bindings.md#durable-functions-2-0-host-json) .
+Podrobnosti naleznete v [referenční dokumentaci k tématu Durable Functions host.json.](durable-functions-bindings.md#durable-functions-2-0-host-json)
 
-#### <a name="default-taskhub-name-changes"></a>Výchozí změny názvu taskhub
+#### <a name="default-taskhub-name-changes"></a>Výchozí změny názvu taskhubu
 
-Pokud v Host. JSON není zadaný název centra úloh, ve verzi 1. x se použila výchozí hodnota "DurableFunctionsHub". Ve verzi 2. x je výchozí název centra úloh odvozený od názvu aplikace Function App. Z tohoto důvodu Pokud jste při upgradu na 2. x nezadali název centra úloh, váš kód bude pracovat s novým centrem úloh a všechny jeho orchestrace v letadle již nebudou aplikace zpracovávat. Pokud chcete tento problém obejít, můžete buď výslovně nastavit název centra úloh na hodnotu v1. x ve výchozím nastavení "DurableFunctionsHub", nebo můžete postupovat podle našeho [Průvodce nasazením s nulovými výpadky](durable-functions-zero-downtime-deployment.md) , kde najdete podrobné informace o tom, jak zpracovávat zásadní změny v rámci letů.
+Ve verzi 1.x pokud název centra úloh nebyl zadán v host.json, byl výchozí "DurableFunctionsHub". Ve verzi 2.x je nyní výchozí název centra úloh odvozen od názvu aplikace funkce. Z tohoto důvodu pokud jste nezadali název centra úloh při upgradu na 2.x, váš kód bude pracovat s novým centrem úloh a všechny in-flight orchestrations již nebude mít aplikaci jejich zpracování. Chcete-li tento problém vyřešit, můžete buď explicitně nastavit název centra úloh na výchozí v1.x "DurableFunctionsHub", nebo můžete postupovat podle našich pokynů pro [nasazení s nulovými prostoji,](durable-functions-zero-downtime-deployment.md) kde najdete podrobnosti o tom, jak zpracovat narušující změny pro orchestraci za letu.
 
-#### <a name="public-interface-changes-net-only"></a>Změny veřejného rozhraní (jenom .NET)
+#### <a name="public-interface-changes-net-only"></a>Změny veřejného rozhraní (pouze rozhraní.NET)
 
-V rozhraní verze 1. x různé objekty _kontextu_ podporované Durable Functions mají abstraktní základní třídy určené pro použití při testování částí. Jako součást Durable Functions 2. x jsou tyto abstraktní základní třídy nahrazeny rozhraními.
+Ve verzi 1.x mají různé _kontextové_ objekty podporované funkcemi Durable abstraktní základní třídy určené pro použití při testování částí. Jako součást trvanlivé funkce 2.x tyto abstraktní základní třídy jsou nahrazeny rozhraní.
 
 Následující tabulka představuje hlavní změny:
 
-| verze | 2.x |
+| 1.x | 2.x |
 |----------|----------|
 | `DurableOrchestrationClientBase` | `IDurableOrchestrationClient` nebo `IDurableClient` |
 | `DurableOrchestrationContext` nebo `DurableOrchestrationContextBase` | `IDurableOrchestrationContext` |
 | `DurableActivityContext` nebo `DurableActivityContextBase` | `IDurableActivityContext` |
 | `OrchestrationClientAttribute` | `DurableClientAttribute` |
 
-V případě, kdy abstraktní základní třída obsahovala virtuální metody, byly tyto virtuální metody nahrazeny metodami rozšíření definovanými v `DurableContextExtensions`.
+V případě, kdy abstraktní základní třída obsahovala virtuální metody, byly tyto `DurableContextExtensions`virtuální metody nahrazeny rozšiřujícími metodami definovanými v .
 
-#### <a name="functionjson-changes-javascript-and-c-script"></a>změny funkce Function. JSON (JavaScript C# a Script)
+#### <a name="functionjson-changes-javascript-and-c-script"></a>function.json changes (JavaScript a C# Script)
 
-V Durable Functions 1. x používá vazba klienta Orchestration `type` `orchestrationClient`. Verze 2. x používá místo toho `durableClient`.
+V trvalé funkce 1.x, orchestrace `type` klienta vazba používá a . `orchestrationClient` Místo toho používá `durableClient` verzi 2.x.

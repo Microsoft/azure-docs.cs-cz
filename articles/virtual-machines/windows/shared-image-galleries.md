@@ -1,6 +1,6 @@
 ---
-title: Galerie sdílených imagí Azure
-description: Naučte se používat Galerie sdílených imagí ke sdílení imagí virtuálních počítačů napříč vaší organizací.
+title: Galerie sdílených bitových obrázků Azure
+description: Přečtěte si, jak pomocí sdílených galerií obrázků sdílet obrázky virtuálních počítačí v celé organizaci.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: axayjo
@@ -17,13 +17,13 @@ ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: ''
 ms.openlocfilehash: 839ef8d32e9a84005dc47ad90b957bb780090589
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74065614"
 ---
-# <a name="shared-image-gallery-overview"></a>Přehled Galerie sdílených imagí
+# <a name="shared-image-gallery-overview"></a>Sdílená galerie obrázků – přehled
 
 
 [!INCLUDE [virtual-machines-common-shared-image-galleries](../../../includes/virtual-machines-common-shared-image-galleries.md)]
@@ -31,4 +31,4 @@ ms.locfileid: "74065614"
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte se [nasazovat sdílené Image pomocí Azure PowerShell](shared-images.md).
+Zjistěte, jak [nasadit sdílené image pomocí Azure PowerShellu](shared-images.md).

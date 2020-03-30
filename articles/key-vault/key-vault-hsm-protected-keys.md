@@ -1,6 +1,6 @@
 ---
-title: Postup generování a přenosu klíčů chráněných HSM pro Azure Key Vault-Azure Key Vault | Microsoft Docs
-description: Tento článek vám může pomáhat při plánování, generování a přenosu vlastních klíčů chráněných HSM pro použití s Azure Key Vault. Označuje se také jako BYOK nebo Přineste si vlastní klíč.
+title: Jak generovat a přenášet klíče chráněné hsm pro Azure Key Vault - Azure Key Vault | Dokumenty společnosti Microsoft
+description: Tento článek vám pomůže naplánovat, generovat a pak přenést vlastní klíče chráněné hsm pro použití s Azure Key Vault. Také známý jako BYOK nebo si přineste vlastní klíč.
 services: key-vault
 author: amitbapat
 manager: devtiw
@@ -11,31 +11,31 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
 ms.openlocfilehash: 048e5072c592cf2de32e533014c99034572a1c47
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79082893"
 ---
-# <a name="import-hsm-protected-keys-to-key-vault"></a>Import klíčů chráněných HSM do Key Vault
+# <a name="import-hsm-protected-keys-to-key-vault"></a>Import klíčů chráněných softwarem HSM do trezoru klíčů
 
-Pro zvýšení zabezpečení při použití Azure Key Vault můžete importovat nebo generovat klíče v modulech hardwarového zabezpečení (HSM), které nikdy nezanechají hranici HSM. Tento scénář se často označuje jako *Přineste si vlastní klíč*nebo BYOK. Azure Key Vault používá hardwarového nshieldou rodinu HSM (FIPS 140-2 Level 2) k ochraně vašich klíčů.
+Pro větší jistotu, při použití Trezoru klíčů Azure, můžete importovat nebo generovat klíče v modulech hardwarového zabezpečení (HSM), které nikdy opustit hranice modulu hardwarového zabezpečení. Tento scénář se často označuje jako *bring your own key * (použití vlastního klíče) nebo BYOK. Azure Key Vault používá nCipher nShield řady hsmů (FIPS 140-2 Úroveň 2 ověřeno) k ochraně vašich klíčů.
 
-Tato funkce není pro Azure Čína 21Vianet k dispozici.
+Tato funkce není k dispozici pro Azure China 21Vianet.
 
 > [!NOTE]
-> Další informace o Azure Key Vault najdete v tématu [co je Azure Key Vault?](key-vault-overview.md)  
-> Úvodní kurz, který zahrnuje vytvoření trezoru klíčů pro klíče chráněné HSM, najdete v tématu [co je Azure Key Vault?](key-vault-overview.md).
+> Další informace o Azure Key Vault najdete v tématu [Co je Azure Key Vault?](key-vault-overview.md)  
+> Kurz začínáme, který zahrnuje vytvoření trezoru klíčů pro klíče chráněné hsm, najdete v [tématu Co je Azure Key Vault?](key-vault-overview.md).
 
-## <a name="supported-hsms"></a>Podporované HSM
+## <a name="supported-hsms"></a>Podporované moduly hesmazívky nebo je v pouz
 
-Přenos klíčů chráněných modulem HSM do Key Vault se podporuje dvěma různými způsoby v závislosti na HSM, kterou používáte. Pomocí následující tabulky určete, která metoda má být použita pro HSM k vygenerování, a pak přeneste vlastní klíče chráněné HSM pro použití s Azure Key Vault. 
+Přenos klíčů chráněných moduly hesm do trezoru klíčů je podporován dvěma různými způsoby v závislosti na podporovaných modulech hesm. Pomocí následující tabulky určete, která metoda by měla být použita pro vaše hsmy ke generování a pak přenést vlastní klíče chráněné hsm pro použití s Azure Key Vault. 
 
-|Název dodavatele|Typ dodavatele|Podporované modely HSM|Podporovaná metoda přenosu klíče HSM|
+|Název dodavatele|Typ dodavatele|Podporované modely modulu hsm|Podporovaná metoda přenosu klíče modulu hesm|
 |---|---|---|---|
-|Podpůrný software nCipher|Výrobce|<ul><li>Hardwarového nShield rodina HSM</li></ul>|[Použít starší metodu BYOK](hsm-protected-keys-legacy.md)|
-|Thales|Výrobce|<ul><li>SafeNet Luna HSM 7 Family s firmwarem verze 7,3 nebo novější</li></ul>| [Použít novou metodu BYOK (Preview)](hsm-protected-keys-vendor-agnostic-byok.md)|
-|Fortanix|HSM jako služba|<ul><li>Služba správy klíčů (SDKMS) pro samoobslužné naobranu</li></ul>|[Použít novou metodu BYOK (Preview)](hsm-protected-keys-vendor-agnostic-byok.md)|
+|nCipher|Výrobce|<ul><li>nRodina stehovací sypy</li></ul>|[Použití starší metody BYOK](hsm-protected-keys-legacy.md)|
+|Thales|Výrobce|<ul><li>SafeNet Luna HSM 7 rodina s firmwarem verze 7.3 nebo novější</li></ul>| [Použít novou metodu BYOK (náhled)](hsm-protected-keys-vendor-agnostic-byok.md)|
+|Fortanix|HSM jako služba|<ul><li>Samoobslužná služba správy klíčů (SDKMS)</li></ul>|[Použít novou metodu BYOK (náhled)](hsm-protected-keys-vendor-agnostic-byok.md)|
 
 
 
@@ -48,4 +48,4 @@ Přenos klíčů chráněných modulem HSM do Key Vault se podporuje dvěma růz
 
 ## <a name="next-steps"></a>Další kroky
 
-Dodržujte [Key Vault osvědčené postupy](key-vault-best-practices.md) , abyste zajistili zabezpečení, odolnost a monitorování vašich klíčů.
+Postupujte podle [osvědčených postupů trezoru klíčů](key-vault-best-practices.md) a zajistěte zabezpečení, odolnost a monitorování klíčů.

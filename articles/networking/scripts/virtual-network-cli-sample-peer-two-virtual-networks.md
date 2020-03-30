@@ -1,6 +1,6 @@
 ---
-title: Ukázkový skript Azure CLI – partnerských dvou virtuálních sítí | Microsoft Docs
-description: Ukázkový skript Azure CLI – partnerských dvou virtuálních sítí
+title: Ukázka skriptu příkazového příkazu Azure – dvě partnerské sítě | Dokumenty společnosti Microsoft
+description: Ukázka skriptu příkazového příkazu Azure – dvě virtuální sítě druhé partnerské sítě
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -13,15 +13,15 @@ ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
 ms.openlocfilehash: 0e5aaf07b49546aca9f44dcb9a43a79127c82341
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73890247"
 ---
-# <a name="peer-two-virtual-networks"></a>Partnerské dva virtuální sítě
+# <a name="peer-two-virtual-networks"></a>Vytvoření partnerského vztahu mezi dvěma virtuálními sítěmi
 
-Tento skript vytvoří a spojí dvě virtuální sítě ve stejné oblasti prostřednictvím sítě Azure. Po spuštění skriptu vytvoříte partnerský vztah mezi dvěma virtuálními sítěmi.
+Tento skript vytvoří a propojí dvě virtuální sítě ve stejné oblasti prostřednictvím sítě Azure. Po spuštění skriptu vytvoříte partnerský vztah mezi dvěma virtuálními sítěmi.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 

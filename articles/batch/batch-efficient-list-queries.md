@@ -1,6 +1,6 @@
 ---
-title: Návrh efektivních dotazů na seznam – Azure Batch | Microsoft Docs
-description: Zvyšte výkon filtrováním dotazů při žádosti o informace o prostředcích služby Batch, jako jsou fondy, úlohy, úlohy a výpočetní uzly.
+title: Návrh efektivních dotazů na seznam – Azure Batch | Dokumenty společnosti Microsoft
+description: Zvyšte výkon filtrováním dotazů při požadování informací o dávkových prostředcích, jako jsou fondy, úlohy, úkoly a výpočetní uzly.
 services: batch
 documentationcenter: .net
 author: LauraBrenner
@@ -15,26 +15,26 @@ ms.date: 12/07/2018
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: df923ac479ce5f5a3668c18c616b11348dc6c0b3
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77022235"
 ---
-# <a name="create-queries-to-list-batch-resources-efficiently"></a>Efektivní vytváření dotazů k vypsání prostředků Batch
+# <a name="create-queries-to-list-batch-resources-efficiently"></a>Vytvoření dotazů pro efektivní seznam dávkových prostředků
 
-Tady se dozvíte, jak zvýšit výkon aplikace Azure Batch tím, že omezíte množství dat, která služba vrátí, při dotazování úloh, úloh, výpočetních uzlů a dalších prostředků pomocí knihovny [Batch .NET][api_net] .
+Zde se dozvíte, jak zvýšit výkon aplikace Azure Batch snížením množství dat, která je vrácena službou při dotazování úloh, úloh, výpočetních uzlů a dalších prostředků pomocí [knihovny Batch .NET.][api_net]
 
-Téměř všechny aplikace Batch musí provádět určitý typ monitorování nebo jiné operace, která se dotazuje na službu Batch, často v pravidelných intervalech. Například chcete-li zjistit, zda v úloze zbývá úlohy ve frontě, je nutné získat data pro každý úkol v rámci úlohy. Chcete-li zjistit stav uzlů ve fondu, je třeba získat data na každém uzlu ve fondu. Tento článek vysvětluje, jak provádět takové dotazy nejúčinnějším způsobem.
+Téměř všechny dávkové aplikace musí provádět nějaký typ monitorování nebo jiné operace, která se dotazuje služby Batch, často v pravidelných intervalech. Chcete-li například zjistit, zda v úloze zůstávají nějaké úkoly ve frontě, je nutné získat data o každém úkolu v úloze. Chcete-li zjistit stav uzlů ve fondu, musíte získat data na každém uzlu ve fondu. Tento článek vysvětluje, jak provést tyto dotazy v nejúčinnějším způsobem.
 
 > [!NOTE]
-> Služba Batch poskytuje speciální podporu rozhraní API pro běžné scénáře počítání úloh v úloze a počítání výpočetních uzlů ve fondu služby Batch. Místo použití dotazu na seznam pro tyto účely můžete zavolat operace [získat počty úloh][rest_get_task_counts] a [počet uzlů výpisu fondu][rest_get_node_counts] . Tyto operace jsou efektivnější než dotaz na seznam, ale vracejí více omezených informací. Viz [počet úloh a výpočetních uzlů podle stavu](batch-get-resource-counts.md). 
+> Služba Batch poskytuje speciální podporu rozhraní API pro běžné scénáře počítání úloh v úloze a počítání výpočetních uzlů ve fondu dávek. Místo použití dotazu seznamu pro tyto, můžete volat [získat počty úkolů][rest_get_task_counts] a seznam fondu počty [uzlů][rest_get_node_counts] operace. Tyto operace jsou efektivnější než dotaz seznamu, ale vrátit omezenější informace. Viz [Počet úloh a výpočetních uzlů podle stavu](batch-get-resource-counts.md). 
 
 
-## <a name="meet-the-detaillevel"></a>Splnění DetailLevel
-V rámci výrobní dávkové aplikace můžou entity jako úlohy, úlohy a výpočetní uzly očíslovat v tisících. Když si vyžádáte informace o těchto prostředcích, může se stát, že se z služby Batch od služby Batch do vaší aplikace na každém dotazu navzájem potenciálně velké množství dat. Omezením počtu položek a typu informací, které je vráceno dotazem, můžete zvýšit rychlost dotazů, a tedy i výkon vaší aplikace.
+## <a name="meet-the-detaillevel"></a>Seznamte se s úrovní podrobností
+Ve výrobě dávkové aplikace mohou být entity, jako jsou úlohy, úkoly a výpočetní uzly, číslovány v tisících. Při vyžádání informací o těchto prostředcích musí potenciálně velké množství dat "přejít drát" ze služby Batch do aplikace na každém dotazu. Omezením počtu položek a typu informací vrácených dotazem můžete zvýšit rychlost dotazů a tedy výkon aplikace.
 
-Tento fragment kódu pro [dávku .NET][api_net] *API obsahuje* všechny úlohy, které jsou přidružené k úloze, spolu se *všemi* vlastnostmi každé úlohy:
+Tento fragment kódu rozhraní API [dávky .NET][api_net] obsahuje seznam *všech* úloh, které jsou přidruženy k úloze, spolu se *všemi* vlastnostmi jednotlivých úloh:
 
 ```csharp
 // Get a collection of all of the tasks and all of their properties for job-001
@@ -42,7 +42,7 @@ IPagedEnumerable<CloudTask> allTasks =
     batchClient.JobOperations.ListTasks("job-001");
 ```
 
-Můžete použít mnohem efektivnější dotaz na seznam, ale použitím "úrovně podrobností" na dotaz. Provedete to tak, že zadáte objekt [ODATADetailLevel][odata] do metody [JobOperations. ListTasks][net_list_tasks] . Tento fragment kódu vrátí pouze vlastnosti informací o dokončených úkolech ID, příkazového řádku a výpočetního uzlu:
+Můžete však provést mnohem efektivnější dotaz seznamu použitím "úrovně podrobností" na dotaz. To provést zadáním ObjektU [ODATADetailLevel][odata] metodě [JobOperations.ListTasks.][net_list_tasks] Tento úryvek vrátí pouze vlastnosti informací o ID, příkazovém řádku a výpočetním uzlu dokončených úloh:
 
 ```csharp
 // Configure an ODATADetailLevel specifying a subset of tasks and
@@ -56,60 +56,60 @@ IPagedEnumerable<CloudTask> completedTasks =
     batchClient.JobOperations.ListTasks("job-001", detailLevel);
 ```
 
-V tomto ukázkovém scénáři platí, že pokud je v úloze tisíce úkolů, výsledky z druhého dotazu se většinou vrátí mnohem rychleji než první. Další informace o použití ODATADetailLevel při výpisu položek pomocí rozhraní Batch .NET API je obsaženo [níže](#efficient-querying-in-batch-net).
+V tomto příkladu scénáře pokud jsou tisíce úkolů v úloze, výsledky z druhého dotazu bude obvykle vrácena mnohem rychleji než první. Další informace o použití ODATADetailLevel při zobrazení seznamu položek s rozhraním API Batch .NET je zahrnuto [níže](#efficient-querying-in-batch-net).
 
 > [!IMPORTANT]
-> Důrazně doporučujeme, abyste *vždy* zadali objekt ODATADetailLevel do vašeho seznamu volání rozhraní .NET API, abyste zajistili maximální efektivitu a výkon vaší aplikace. Zadáním úrovně podrobností můžete pomoci snížit dobu odezvy služby Batch, zlepšit využití sítě a minimalizovat využití paměti klientskými aplikacemi.
+> Důrazně doporučujeme *vždy* zadat Objekt ODATADetailLevel do seznamu volání rozhraní .NET API k zajištění maximální efektivity a výkonu vaší aplikace. Zadáním úrovně podrobností můžete snížit dobu odezvy služby Batch, zlepšit využití sítě a minimalizovat využití paměti klientskými aplikacemi.
 > 
 > 
 
-## <a name="filter-select-and-expand"></a>Filtrovat, vybrat a rozbalit
-Rozhraní REST API služby [Batch .NET][api_net] a [Batch][api_rest] poskytují možnost omezit počet položek, které jsou vráceny v seznamu, a také množství informací, které jsou pro každý z nich vráceny. Provedete to tak, že zadáte **Filter**, **Select**a **rozbalíte řetězce** při provádění dotazů seznamu.
+## <a name="filter-select-and-expand"></a>Filtrování, výběr a rozbalení
+Rozhraní API [batch .NET][api_net] a [Batch REST][api_rest] poskytují možnost snížit počet položek, které jsou vráceny v seznamu, stejně jako množství informací, které jsou vráceny pro každou z nich. Provedete to zadáním **filtru**, **výběrem**a **rozbalením řetězců** při provádění dotazů na seznam.
 
-### <a name="filter"></a>Filtrovat
-Řetězec filtru je výraz, který snižuje počet vrácených položek. Můžete například vypsat pouze spuštěné úlohy pro úlohu nebo vypsat pouze výpočetní uzly, které jsou připraveny ke spouštění úkolů.
+### <a name="filter"></a>Filtr
+Řetězec filtru je výraz, který snižuje počet položek, které jsou vráceny. Například seznam pouze spuštěné úlohy pro úlohu nebo seznam pouze výpočetní uzly, které jsou připraveny ke spuštění úlohy.
 
-* Řetězec filtru se skládá z jednoho nebo více výrazů s výrazem, který se skládá z názvu vlastnosti, operátoru a hodnoty. Vlastnosti, které lze zadat, jsou specifické pro každý typ entity, který se dotazuje, stejně jako operátory podporované pro jednotlivé vlastnosti.
+* Řetězec filtru se skládá z jednoho nebo více výrazů s výrazem, který se skládá z názvu vlastnosti, operátoru a hodnoty. Vlastnosti, které lze zadat, jsou specifické pro každý typ entity, který dotazujete, stejně jako operátory, které jsou podporovány pro každou vlastnost.
 * Více výrazů lze kombinovat pomocí logických operátorů `and` a `or`.
-* V tomto příkladu řetězce filtru se zobrazí pouze spuštěné úlohy "vykreslení": `(state eq 'running') and startswith(id, 'renderTask')`.
+* V tomto příkladu je řetězec filtru `(state eq 'running') and startswith(id, 'renderTask')`uveden pouze spuštěné úlohy vykreslení: .
 
 ### <a name="select"></a>Vyberte
-Řetězec Select omezuje hodnoty vlastností, které jsou vráceny pro každou položku. Určíte seznam názvů vlastností a pro položky ve výsledcích dotazu budou vráceny pouze hodnoty vlastností.
+Select řetězec omezuje hodnoty vlastností, které jsou vráceny pro každou položku. Zadáte seznam názvů vlastností a pro položky ve výsledcích dotazu budou vráceny pouze tyto hodnoty vlastností.
 
-* Řetězec Select se skládá ze seznamu názvů vlastností oddělených čárkami. Můžete zadat libovolnou vlastnost pro typ entity, který se dotazuje.
-* Tento příklad výběru řetězce určuje, že pro každý úkol by měly být vráceny pouze tři hodnoty vlastností: `id, state, stateTransitionTime`.
+* Řetězec select se skládá ze seznamu názvů vlastností oddělených čárkami. Můžete zadat libovolnou vlastnost pro typ entity, na kterou se dotazujete.
+* Tento příklad vybrat řetězec určuje, že by měly `id, state, stateTransitionTime`být vráceny pouze tři hodnoty vlastností pro každý úkol: .
 
 ### <a name="expand"></a>Rozbalit
-Řetězec expand omezuje počet volání rozhraní API potřebných k získání určitých informací. Když použijete expandující řetězec, můžete získat další informace o jednotlivých položkách s jedním voláním rozhraní API. Místo toho, abyste získali seznam entit a požadovali informace pro každou položku v seznamu, můžete použít rozbalení řetězce a získat stejné informace v jednom volání rozhraní API. Méně volání rozhraní API znamená lepší výkon.
+Rozbalovací řetězec snižuje počet volání rozhraní API, které jsou nutné k získání určitých informací. Při použití rozbalovací řetězec další informace o každé položce lze získat pomocí jednoho volání rozhraní API. Místo prvního získání seznamu entit a následnévyžádáníní informací pro každou položku v seznamu použijete rozbalovací řetězec k získání stejných informací v jednom volání rozhraní API. Méně volání rozhraní API znamená lepší výkon.
 
-* Podobně jako u řetězce příkazu SELECT určuje řetězec expand, zda jsou určitá data součástí výsledků dotazu seznamu.
-* Řetězec rozbalení se podporuje jenom v případě, že se používá při výpisu úloh, plánů úloh, úloh a fondů. V současné době podporuje jenom informace o statistice.
-* Pokud jsou vyžadovány všechny vlastnosti a není zadán žádný řetězec SELECT, je *nutné* k získání informací o statistice použít řetězec pro rozbalení. Pokud se k získání podmnožiny vlastností používá řetězec SELECT, je možné v řetězci Select zadat `stats` a řetězec expand není nutné zadávat.
-* Tento příklad rozbalení řetězce určuje, že se mají pro každou položku v seznamu vrátit informace o statistice: `stats`.
+* Podobně jako u řetězce select rozbalení řetězec určuje, zda jsou určitá data zahrnuta ve výsledcích dotazu seznamu.
+* Rozbalovací řetězec je podporován pouze v případě, že se používá v seznamu úloh, plánů úloh, úkolů a fondů. V současné době podporuje pouze statistické informace.
+* Pokud jsou požadovány všechny vlastnosti a není zadán žádný řetězec pro výběr, *rozbalovací* řetězec musí být použit k získání informací o statistice. Pokud se k získání podmnožiny vlastností `stats` použije vybraný řetězec, lze jej zadat ve výběrovém řetězci a rozbalovací řetězec nemusí být určen.
+* Tento příklad rozbalovací řetězec určuje, že informace o statistice by měly být vráceny pro každou položku v seznamu: `stats`.
 
 > [!NOTE]
-> Při sestavování kteréhokoliv ze tří typů řetězce dotazu (Filter, Select a expand) je nutné zajistit, aby názvy vlastností a velikost písmen odpovídaly jejich REST APIm prvkům. Například při práci s třídou .NET [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) je nutné zadat **stav** místo **stavu**, i když vlastnost .NET je [CloudTask. State](/dotnet/api/microsoft.azure.batch.cloudtask.state#Microsoft_Azure_Batch_CloudTask_State). V následujících tabulkách najdete mapování vlastností rozhraní .NET a rozhraní REST API.
+> Při vytváření některého ze tří typů řetězce dotazu (filtr, výběr a rozbalte), musíte zajistit, aby názvy vlastností a případ odpovídaly jejich protějšky prvku rozhraní REST API. Například při práci s třídou .NET [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) je nutné zadat **stav** namísto **stavu**, i když je vlastnost .NET [CloudTask.State](/dotnet/api/microsoft.azure.batch.cloudtask.state#Microsoft_Azure_Batch_CloudTask_State). Mapování vlastností mezi rozhraními API .NET a REST naleznete v následujících tabulkách.
 > 
 > 
 
 ### <a name="rules-for-filter-select-and-expand-strings"></a>Pravidla pro filtrování, výběr a rozbalení řetězců
-* Vlastnosti ve filtru, Select a rozšířené řetězce by se měly zobrazovat stejně jako v rozhraní REST API pro [Batch][api_rest] – a to i v případě, že použijete [Batch .NET][api_net] nebo jednu z dalších sad SDK pro sadu Batch.
-* U všech názvů vlastností se rozlišují velká a malá písmena, ale v hodnotách vlastností se nerozlišují malá a velká písmena.
-* Řetězce data a času mohou být v jednom ze dvou formátů a musí předcházet `DateTime`.
+* Názvy vlastností ve filtru, výběru a rozbalení řetězců by se měly zobrazovat stejně jako v rozhraní [API části API dávky ,][api_rest] a to i v případě, že používáte [dávkovou .NET][api_net] nebo jednu z dalších sad SDK dávky.
+* Všechny názvy vlastností rozlišují malá a velká písmena, ale hodnoty vlastností jsou malá a velká písmena.
+* Řetězce data a času mohou být jedním ze dvou formátů a musí mu předcházet `DateTime`.
   
-  * Příklad formátu W3C-DTF: `creationTime gt DateTime'2011-05-08T08:49:37Z'`
-  * Příklad formátu RFC 1123: `creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
-* Logické řetězce jsou buď `true`, nebo `false`.
-* Pokud je zadána neplatná vlastnost nebo operátor, bude výsledkem `400 (Bad Request)` chyba.
+  * Příklad formátu W3C-DTF:`creationTime gt DateTime'2011-05-08T08:49:37Z'`
+  * Příklad formátu RFC 1123:`creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
+* Logické řetězce jsou `true` buď `false`nebo .
+* Pokud je zadána neplatná `400 (Bad Request)` vlastnost nebo operátor, dojde k chybě.
 
-## <a name="efficient-querying-in-batch-net"></a>Efektivní dotazování v dávce .NET
-V rozhraní [Batch .NET][api_net] API se třída [ODATADetailLevel][odata] používá k poskytnutí filtru, výběru a rozbalení řetězců k vypsání operací. Třída ODataDetailLevel má tři vlastnosti veřejných řetězců, které lze zadat v konstruktoru nebo nastavit přímo na objekt. Pak předáte objekt ODataDetailLevel jako parametr do různých operací seznamu, jako je například [ListPools][net_list_pools], [ListJobs][net_list_jobs]a [ListTasks][net_list_tasks].
+## <a name="efficient-querying-in-batch-net"></a>Efektivní dotazování v aplikaci Batch .NET
+V rámci [rozhraní Batch .NET][api_net] API se třída [ODATADetailLevel][odata] používá pro poskytování filtru, výběru a rozbalení řetězců do operací seznamu. Třída ODataDetailLevel má tři vlastnosti veřejného řetězce, které lze zadat v konstruktoru nebo nastavit přímo na objektu. Potom předáte objekt ODataDetailLevel jako parametr různým operacím seznamu, jako jsou [seznamové pooly][net_list_pools], [ListJobs][net_list_jobs]a [ListTasks][net_list_tasks].
 
-* [ODATADetailLevel][odata]. [FilterClause][odata_filter]: Omezte počet vrácených položek.
-* [ODATADetailLevel][odata]. [SelectClause][odata_select]: Určete, které hodnoty vlastností se vrátí s každou položkou.
-* [ODATADetailLevel][odata]. [ExpandClause][odata_expand]: načtěte data pro všechny položky v jednom volání rozhraní API místo samostatných volání pro každou položku.
+* [ODATADetailLevel][odata]. [FilterClause][odata_filter]: Omezit počet položek, které jsou vráceny.
+* [ODATADetailLevel][odata]. [SelectClause][odata_select]: Určete, které hodnoty vlastností jsou vráceny s každou položkou.
+* [ODATADetailLevel][odata]. [ExpandClause][odata_expand]: Načíst data pro všechny položky v jednom volání rozhraní API namísto samostatných volání pro každou položku.
 
-Následující fragment kódu používá rozhraní Batch .NET API k efektivnímu dotazování služby Batch na statistiky konkrétní sady fondů. V tomto scénáři má uživatel dávky testovací i výrobní fondy. ID fondů testů s předponou "test" a ID fondu výroby mají předponu "prod". Ve fragmentu kódu je *myBatchClient* správně inicializovaná instance třídy [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient) .
+Následující fragment kódu používá rozhraní API batch .NET k efektivnímu dotazování služby Batch na statistiky určité sady fondů. V tomto scénáři batch uživatel má testovací i produkční fondy. ID testovacího fondu jsou předponou s "test" a ID fondu výroby jsou předponou s "prod". Ve fragmentu je *myBatchClient* správně inicializovanou inicializovanou instancí třídy [BatchClient.](/dotnet/api/microsoft.azure.batch.batchclient)
 
 ```csharp
 // First we need an ODATADetailLevel instance on which to set the filter, select,
@@ -138,69 +138,69 @@ List<CloudPool> testPools =
 ```
 
 > [!TIP]
-> Instance [ODATADetailLevel][odata] , která je nakonfigurována pomocí klauzulí Select a expand, lze také předat příslušným metodám Get, jako je například [PoolOperations. getpool](/dotnet/api/microsoft.azure.batch.pooloperations.getpool#Microsoft_Azure_Batch_PoolOperations_GetPool_System_String_Microsoft_Azure_Batch_DetailLevel_System_Collections_Generic_IEnumerable_Microsoft_Azure_Batch_BatchClientBehavior__), pro omezení množství vrácených dat.
+> Instance [ODATADetailLevel,][odata] která je nakonfigurována s Select a Expand klauzule mohou být také předány příslušné Get metody, například [PoolOperations.GetPool](/dotnet/api/microsoft.azure.batch.pooloperations.getpool#Microsoft_Azure_Batch_PoolOperations_GetPool_System_String_Microsoft_Azure_Batch_DetailLevel_System_Collections_Generic_IEnumerable_Microsoft_Azure_Batch_BatchClientBehavior__), omezit množství dat, která je vrácena.
 > 
 > 
 
-## <a name="batch-rest-to-net-api-mappings"></a>Mapování dávek z dávky do rozhraní .NET API
-Názvy vlastností ve filtru, Select a rozbalte řetězce *musí* odrážet jejich REST API protějšky v názvu i v případě. Níže uvedené tabulky poskytují mapování mezi partnery .NET a REST API.
+## <a name="batch-rest-to-net-api-mappings"></a>Dávková rest na rozhraní API rozhraní .NET
+Názvy vlastností ve filtru, vyberte a rozbalte řetězce *musí* odrážet jejich protějšky rozhraní REST API, a to jak v názvu, tak v případě. Níže uvedené tabulky poskytují mapování mezi protějšky rozhraní .NET a REST API.
 
-### <a name="mappings-for-filter-strings"></a>Mapování pro řetězce filtru
-* **Metody seznamu .NET**: každá z metod rozhraní .NET API v tomto sloupci přijímá objekt [ODATADetailLevel][odata] jako parametr.
-* **Požadavky na seznam REST**: každá REST APIová stránka propojená s v tomto sloupci obsahuje tabulku, která určuje vlastnosti a operace, které jsou povoleny v řetězcích *filtrů* . Tyto názvy vlastností a operace budete používat při vytváření řetězce [ODATADetailLevel. FilterClause][odata_filter] .
+### <a name="mappings-for-filter-strings"></a>Mapování pro řetězce filtrů
+* **Metody seznamu .NET**: Každá metoda rozhraní .NET API v tomto sloupci přijímá jako parametr objekt [ODATADetailLevel.][odata]
+* **Požadavky na seznam REST**: Každá stránka rozhraní REST API propojená v tomto sloupci obsahuje tabulku, která určuje vlastnosti a operace, které jsou povoleny v řetězcích *filtrů.* Tyto názvy vlastností a operace použijete při vytváření řetězce [ODATADetailLevel.FilterClause.][odata_filter]
 
-| Metody seznamu .NET | Žádosti seznamu REST |
+| Metody seznamu .NET | Požadavky na seznam REST |
 | --- | --- |
-| [Metodu certificateoperations. ListCertificates][net_list_certs] |[Výpis certifikátů v účtu][rest_list_certs] |
-| [CloudTask. ListNodeFiles][net_list_task_files] |[Seznam souborů přidružených k úloze][rest_list_task_files] |
-| [JobOperations. ListJobPreparationAndReleaseTaskStatus][net_list_jobprep_status] |[Seznam stavů úloh přípravy úlohy a úkolů uvolnění úloh pro úlohu][rest_list_jobprep_status] |
-| [JobOperations. ListJobs][net_list_jobs] |[Výpis úloh v účtu][rest_list_jobs] |
-| [JobOperations. ListNodeFiles][net_list_nodefiles] |[Výpis souborů na uzlu][rest_list_nodefiles] |
-| [JobOperations. ListTasks][net_list_tasks] |[Seznam úloh přidružených k úloze][rest_list_tasks] |
-| [JobScheduleOperations.ListJobSchedules][net_list_job_schedules] |[Výpis plánů úloh v účtu][rest_list_job_schedules] |
-| [JobScheduleOperations.ListJobs][net_list_schedule_jobs] |[Seznam úloh přidružených k plánu úlohy][rest_list_schedule_jobs] |
-| [PoolOperations. ListComputeNodes][net_list_compute_nodes] |[Výpis výpočetních uzlů ve fondu][rest_list_compute_nodes] |
-| [PoolOperations. ListPools][net_list_pools] |[Výpis fondů v účtu][rest_list_pools] |
+| [CertificateOperations.ListCertifikáty][net_list_certs] |[Seznam certifikátů v účtu][rest_list_certs] |
+| [CloudTask.ListNodeFiles][net_list_task_files] |[Seznam souborů přidružených k úkolu][rest_list_task_files] |
+| [JobOperations.ListJobPreparationandReleaseTaskStatus][net_list_jobprep_status] |[Uveďte stav úlohy přípravy a uvolnění úlohy pro úlohu][rest_list_jobprep_status] |
+| [JobOperations.ListJobs][net_list_jobs] |[Seznam úloh v účtu][rest_list_jobs] |
+| [JobOperations.ListNodeFiles][net_list_nodefiles] |[Seznam souborů v uzlu][rest_list_nodefiles] |
+| [JobOperations.ListTasks][net_list_tasks] |[Seznam úkolů přidružených k úloze][rest_list_tasks] |
+| [JobScheduleOperations.ListJobSchedules][net_list_job_schedules] |[Seznam plánů úloh v účtu][rest_list_job_schedules] |
+| [JobScheduleOperations.ListJobs][net_list_schedule_jobs] |[Seznam úloh přidružených k plánu úloh][rest_list_schedule_jobs] |
+| [PoolOperations.ListComputeNodes][net_list_compute_nodes] |[Seznam výpočetních uzlů ve fondu][rest_list_compute_nodes] |
+| [PoolOperations.ListPools][net_list_pools] |[Seznam fondů v účtu][rest_list_pools] |
 
 ### <a name="mappings-for-select-strings"></a>Mapování pro vybrané řetězce
-* **Typy Batch .NET**: typy rozhraní API pro Batch .NET.
-* **REST API entit**: každá stránka v tomto sloupci obsahuje jednu nebo více tabulek, které obsahují seznam názvů vlastností REST API pro daný typ. Tyto názvy vlastností se používají při vytváření řetězců *Select* . Při vytváření řetězce [ODATADetailLevel. SelectClause][odata_select] budete používat stejné názvy vlastností.
+* **Dávkové typy .NET:** Dávkové typy rozhraní API .NET.
+* **Rest API entity**: Každá stránka v tomto sloupci obsahuje jednu nebo více tabulek, které seznam názvů vlastností rozhraní REST API pro daný typ. Tyto názvy vlastností se používají při vytváření *řetězců výběru.* Tyto stejné názvy vlastností použijete při vytváření řetězce [ODATADetailLevel.SelectClause.][odata_select]
 
-| Typy Batch .NET | REST API entit |
+| Dávkové typy .NET | Entity ROZHRANÍ REST API |
 | --- | --- |
 | [Certifikát][net_cert] |[Získání informací o certifikátu][rest_get_cert] |
-| [Vlastnosti cloudjob][net_job] |[Získání informací o úloze][rest_get_job] |
-| [CloudJobSchedule][net_schedule] |[Získat informace o plánu úlohy][rest_get_schedule] |
-| [Metodu computenode][net_node] |[Získání informací o uzlu][rest_get_node] |
-| [CloudPool][net_pool] |[Získat informace o fondu][rest_get_pool] |
+| [CloudJob][net_job] |[Získání informací o úloze][rest_get_job] |
+| [CloudJobSchedule][net_schedule] |[Získání informací o plánu úloh][rest_get_schedule] |
+| [ComputeNode][net_node] |[Získání informací o uzlu][rest_get_node] |
+| [Cloudpool][net_pool] |[Získání informací o fondu][rest_get_pool] |
 | [CloudTask][net_task] |[Získání informací o úkolu][rest_get_task] |
 
 ## <a name="example-construct-a-filter-string"></a>Příklad: vytvoření řetězce filtru
-Při vytváření řetězce filtru pro [ODATADetailLevel. FilterClause][odata_filter]si v tabulce výše v části "mapování pro řetězce filtru" vyhledejte stránku dokumentace REST API, která odpovídá operaci seznamu, kterou chcete provést. Vlastnosti Filtered a jejich podporované operátory najdete na této stránce v první tabulce násobení. Pokud chcete načíst všechny úlohy, jejichž ukončovací kód byl nenulový, například tento řádek v [seznamu úkolů přidružených k úloze][rest_list_tasks] určuje příslušný řetězec vlastnosti a přípustné operátory:
+Při vytváření řetězce filtru pro [ODATADetailLevel.FilterClause][odata_filter], naleznete v tabulce výše v části "Mapování pro řetězce filtrů" najít stránku dokumentace rozhraní REST API, která odpovídá operaci seznamu, který chcete provést. Filtrovatelné vlastnosti a jejich podporované operátory najdete v první tabulce více řádků na této stránce. Pokud chcete načíst všechny úkoly, jejichž ukončovací kód byl nenulový, například tento řádek na [Seznamu úkolů přidružených k úloze][rest_list_tasks] určuje příslušný řetězec vlastností a povolené operátory:
 
-| Vlastnost | Povolené operace | Typ |
+| Vlastnost | Operace povoleny | Typ |
 |:--- |:--- |:--- |
 | `executionInfo/exitCode` |`eq, ge, gt, le , lt` |`Int` |
 
-Proto řetězec filtru pro výpis všech úkolů s nenulovým ukončovacím kódem by byl:
+Proto filtrační řetězec pro výpis všech úkolů s nenulovým ukončovacím kódem by byl:
 
 `(executionInfo/exitCode lt 0) or (executionInfo/exitCode gt 0)`
 
-## <a name="example-construct-a-select-string"></a>Příklad: vytvoření řetězce výběru
-Chcete-li vytvořit [ODATADetailLevel. SelectClause][odata_select], přečtěte si výše v tabulce "mapování pro vybrané řetězce" a přejděte na stránku REST API, která odpovídá typu entity, kterou zadáváte. V první tabulce násobení na této stránce najdete vlastnosti umožňující výběr a jejich podporované operátory. Pokud chcete načíst pouze ID a příkazový řádek pro každý úkol v seznamu, najdete například tyto řádky v příslušné tabulce pro [získání informací o úkolu][rest_get_task]:
+## <a name="example-construct-a-select-string"></a>Příklad: vytvoření výběrového řetězce
+Chcete-li vytvořit [ODATADetailLevel.SelectClause][odata_select], podívejte se do výše uvedené tabulky v části "Mapování pro vybrané řetězce" a přejděte na stránku rozhraní REST API, která odpovídá typu entity, kterou uvádíte. Volitelné vlastnosti a jejich podporované operátory najdete v první tabulce více řádků na této stránce. Pokud chcete například načíst pouze ID a příkazový řádek pro každý úkol v seznamu, najdete tyto řádky v příslušné tabulce na [vzkvétat informace o úkolu][rest_get_task]:
 
 | Vlastnost | Typ | Poznámky |
 |:--- |:--- |:--- |
 | `id` |`String` |`The ID of the task.` |
 | `commandLine` |`String` |`The command line of the task.` |
 
-Řetězec SELECT pro zahrnutí pouze ID a příkazového řádku s každým uvedeným úkolem by pak byl:
+Vybraný řetězec pro zahrnutí pouze ID a příkazového řádku s každou uvedenou úlohou by pak byl:
 
 `id, commandLine`
 
-## <a name="code-samples"></a>Ukázky kódu
+## <a name="code-samples"></a>Ukázky kódů
 ### <a name="efficient-list-queries-code-sample"></a>Ukázka kódu efektivních dotazů na seznam
-Podívejte se na vzorový projekt [EfficientListQueries][efficient_query_sample] na GitHubu a zjistěte, jak efektivní dotazování na seznam může ovlivnit výkon v aplikaci. Tato C# Konzolová aplikace vytvoří a přidá do úlohy velký počet úkolů. Pak provede více volání metody [JobOperations. ListTasks][net_list_tasks] a předá objekty [ODATADetailLevel][odata] , které jsou nakonfigurovány s různými hodnotami vlastností, aby se lišilo množství dat, která mají být vrácena. Vytváří výstup podobný následujícímu:
+Podívejte se na ukázkový projekt [EfficientListQueries][efficient_query_sample] na GitHubu a zjistěte, jak efektivní dotazování seznamu může ovlivnit výkon v aplikaci. Tato konzolová aplikace jazyka C# vytvoří a přidá velký počet úloh do úlohy. Potom provede více volání [JobOperations.ListTasks][net_list_tasks] metoda a předá [Objekty ODATADetailLevel,][odata] které jsou nakonfigurovány s různými hodnotami vlastností měnit množství dat, která mají být vráceny. Vytváří výstup podobný následujícímu:
 
 ```
 Adding 5000 tasks to job jobEffQuery...
@@ -216,19 +216,19 @@ Adding 5000 tasks to job jobEffQuery...
 Sample complete, hit ENTER to continue...
 ```
 
-Jak je znázorněno v uplynulých časech, můžete výrazně snížit dobu odezvy na dotazy omezením vlastností a počtu vrácených položek. Tento a další ukázkové projekty najdete v úložišti [Azure-Batch-Samples][github_samples] na GitHubu.
+Jak je znázorněno v uplynulých časech, můžete výrazně snížit dobu odezvy na dotaz omezením vlastností a počet položek, které jsou vráceny. Můžete najít tento a další ukázkové projekty v [azure-batch ukázky][github_samples] úložiště na GitHubu.
 
-### <a name="batchmetrics-library-and-code-sample"></a>Ukázka knihovny a kódu BatchMetrics
-Kromě výše uvedeného příkladu kódu EfficientListQueries najdete projekt [BatchMetrics][batch_metrics] v úložišti GitHub [Azure-Batch-Samples][github_samples] . Vzorový projekt BatchMetrics ukazuje, jak efektivně monitorovat průběh úloh Azure Batch pomocí rozhraní API pro Batch.
+### <a name="batchmetrics-library-and-code-sample"></a>Ukázka knihovny BatchMetrics a kódu
+Kromě ukázky kódu EfficientListQueries výše najdete projekt [BatchMetrics][batch_metrics] v úložišti GitHub [s předělanými ukázkami azure.][github_samples] Ukázkový projekt BatchMetrics ukazuje, jak efektivně sledovat průběh úlohy Azure Batch pomocí dávkového rozhraní API.
 
-Ukázka [BatchMetrics][batch_metrics] zahrnuje projekt knihovny tříd .NET, který můžete začlenit do svých vlastních projektů, a jednoduchý program příkazového řádku pro cvičení a demonstraci použití knihovny.
+Ukázka [BatchMetrics][batch_metrics] obsahuje projekt knihovny tříd .NET, který můžete začlenit do vlastních projektů, a jednoduchý program příkazového řádku pro cvičení a demonstraci použití knihovny.
 
-Ukázková aplikace v rámci projektu ukazuje následující operace:
+Ukázková aplikace v rámci projektu demonstruje následující operace:
 
-1. Výběr konkrétních atributů, aby se stáhly jenom vlastnosti, které potřebujete
-2. Filtrování časů přechodu stavu za účelem stažení pouze změn od posledního dotazu
+1. Výběr konkrétních atributů, aby bylo možné stáhnout pouze vlastnosti, které potřebujete
+2. Filtrování časů přechodu stavu, aby bylo možné stáhnout pouze změny od posledního dotazu
 
-Například následující metoda se zobrazí v knihovně BatchMetrics. Vrátí ODATADetailLevel, který určuje, že se mají získat pouze vlastnosti `id` a `state` pro entity, které jsou dotazovány. Také určuje, že by měly být vráceny pouze entity, jejichž stav byl změněn od zadaného parametru `DateTime`.
+Například následující metoda se zobrazí v knihovně BatchMetrics. Vrátí ODATADetailLevel, který určuje, `id` že `state` by měly být získány pouze vlastnosti a pro entity, které jsou dotazovány. Také určuje, že by měly být vráceny pouze entity, jejichž stav se změnil od zadaného `DateTime` parametru.
 
 ```csharp
 internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
@@ -241,8 +241,8 @@ internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
 ```
 
 ## <a name="next-steps"></a>Další kroky
-### <a name="parallel-node-tasks"></a>Úkoly paralelního uzlu
-[Maximalizace využití výpočetních prostředků Azure Batch pomocí souběžných úloh uzlů](batch-parallel-node-tasks.md) je další článek týkající se výkonu aplikace Batch. Některé typy úloh můžou těžit ze spouštění paralelních úloh na větších, ale méně výpočetních uzlech. Podrobnosti o takovém scénáři najdete v [ukázkovém scénáři](batch-parallel-node-tasks.md#example-scenario) v článku.
+### <a name="parallel-node-tasks"></a>Úlohy paralelních uzlů
+[Maximalizace využití výpočetních prostředků Azure Batch pomocí souběžných úloh uzlů](batch-parallel-node-tasks.md) je další článek související s výkonem dávkové aplikace. Některé typy úloh mohou mít prospěch z provádění paralelních úloh na větších, ale méně výpočetních uzlech. Podívejte se na [příklad scénáře](batch-parallel-node-tasks.md#example-scenario) v článku podrobnosti o takovém scénáři.
 
 
 [api_net]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch

@@ -1,6 +1,6 @@
 ---
-title: Aktivita podmínky v Azure Data Factory
-description: Aktivita podmínka if umožňuje řídit tok zpracování na základě podmínky.
+title: Pokud aktivita stavu v Azure Data Factory
+description: Aktivita If Condition umožňuje řídit tok zpracování na základě podmínky.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ef63a159c132f5b565123eeb4824fb1ae5812ce1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bfa308e2cc67bd14a248f3edc7b182f9a772ed98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444152"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80238704"
 ---
-# <a name="if-condition-activity-in-azure-data-factory"></a>Aktivita podmínky v Azure Data Factory
+# <a name="if-condition-activity-in-azure-data-factory"></a>Pokud aktivita stavu v Azure Data Factory
 Aktivita podmínky If funguje stejně jako příkaz if v programovacích jazycích. Vyhodnotí sadu aktivit, když se podmínka vyhodnotí jako `true`, a jinou sadu aktivit, když se podmínka vyhodnotí jako `false`. 
 
 ## <a name="syntax"></a>Syntaxe
@@ -65,19 +65,19 @@ Aktivita podmínky If funguje stejně jako příkaz if v programovacích jazycí
 
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-jméno | Název aktivity if-Condition | Řetězec | Ano
-type | Musí být nastavené na **IfCondition** | Řetězec | Ano
-expression | Výraz, který se musí vyhodnotit na hodnotu true nebo false | Výraz s typem výsledku Boolean | Ano
-ifTrueActivities | Sada aktivit, které se spustí, když se výraz vyhodnotí jako `true`. | Pole | Ano
-ifFalseActivities | Sada aktivit, které se spustí, když se výraz vyhodnotí jako `false`. | Pole | Ano
+jméno | Název aktivity if-condition. | Řetězec | Ano
+type | Musí být nastavena na **IfCondition** | Řetězec | Ano
+výraz | Výraz, který musí být vyhodnocen jako pravdivý nebo nepravdivý | Výraz s logickým textem typu výsledku | Ano
+ifTrueActivities | Sada aktivit, které jsou provedeny při `true`vyhodnocení výrazu na . | Pole | Ano
+ifFalseActivities | Sada aktivit, které jsou provedeny při `false`vyhodnocení výrazu na . | Pole | Ano
 
-## <a name="example"></a>Příklad:
-Kanál v tomto příkladu kopíruje data ze vstupní složky do výstupní složky. Výstupní složka je určena hodnotou parametru kanálu: routeSelection. Pokud je hodnota routeSelection true, data se zkopírují do outputPath1. A pokud je hodnota routeSelection false, data se zkopírují do outputPath2. 
+## <a name="example"></a>Příklad
+Kanál v tomto příkladu zkopíruje data ze vstupní složky do výstupní složky. Výstupní složka je určena hodnotou parametru potrubí: routeSelection. Pokud je hodnota routeSelection true, data se zkopírují do outputPath1. A pokud hodnota routeSelection je false, data se zkopíruje do outputPath2. 
 
 > [!NOTE]
-> Tato část poskytuje definice JSON a ukázkové příkazy PowerShellu pro spuštění kanálu. Návod s podrobnými pokyny k vytvoření Data Factory kanálu pomocí definic Azure PowerShell a JSON najdete v tématu [kurz: vytvoření datové továrny pomocí Azure PowerShell](quickstart-create-data-factory-powershell.md).
+> Tato část obsahuje definice JSON a ukázkové příkazy prostředí PowerShell pro spuštění kanálu. Návod s podrobnými pokyny k vytvoření kanálu Datové továrny pomocí definic Azure PowerShellu a JSON najdete [v kurzu: vytvoření datové továrny pomocí Azure PowerShellu](quickstart-create-data-factory-powershell.md).
 
-### <a name="pipeline-with-if-condition-activity-adfv2quickstartpipelinejson"></a>Kanál s aktivitou IF-Condition (Adfv2QuickStartPipeline. JSON)
+### <a name="pipeline-with-if-condition-activity-adfv2quickstartpipelinejson"></a>Kanál s aktivitou stavu IF (Adfv2QuickStartPipeline.json)
 
 ```json
 {
@@ -182,13 +182,13 @@ Dalším příkladem výrazu je:
 
 ```json
 "expression":  {
-    "value":  "@pipeline().parameters.routeSelection == 1", 
+    "value":  "@equals(pipeline().parameters.routeSelection,1)", 
     "type": "Expression"
 }
 ```
 
 
-### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Propojená služba Azure Storage (AzureStorageLinkedService. JSON)
+### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Propojená služba Azure Storage (AzureStorageLinkedService.json)
 
 ```json
 {
@@ -202,8 +202,8 @@ Dalším příkladem výrazu je:
 }
 ```
 
-### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Parametrizovaná datová sada Azure Blob (BlobDataset. JSON)
-Kanál nastaví **FolderPath** na hodnotu buď **outputPath1** , nebo parametr **outputPath2** kanálu. 
+### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Parametrizovaná datová sada objektů blob Azure (BlobDataset.json)
+Kanál nastaví **folderPath** na hodnotu **parametru outputPath1** nebo **outputPath2** kanálu. 
 
 ```json
 {
@@ -229,7 +229,7 @@ Kanál nastaví **FolderPath** na hodnotu buď **outputPath1** , nebo parametr *
 }
 ```
 
-### <a name="pipeline-parameter-json-pipelineparametersjson"></a>JSON pro parametr kanálu (PipelineParameters. JSON)
+### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Parametr kanálu JSON (PipelineParameters.json)
 
 ```json
 {
@@ -244,7 +244,7 @@ Kanál nastaví **FolderPath** na hodnotu buď **outputPath1** , nebo parametr *
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-U těchto příkazů se předpokládá, že jste soubory JSON uložili do složky: C:\ADF. 
+Tyto příkazy předpokládají, že jste uložili soubory JSON do složky: C:\ADF. 
 
 ```powershell
 Connect-AzAccount
@@ -286,10 +286,10 @@ $result.Error -join "`r`n"
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Podívejte se na další aktivity toku řízení podporované Data Factory: 
+Podívejte se na další aktivity toku řízení podporované factory: 
 
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)
-- [Pro každou aktivitu](control-flow-for-each-activity.md)
-- [Aktivita GetMetadata](control-flow-get-metadata-activity.md)
+- [Aktivita For Each](control-flow-for-each-activity.md)
+- [Získat aktivitu metadat](control-flow-get-metadata-activity.md)
 - [Aktivita vyhledávání](control-flow-lookup-activity.md)
 - [Aktivita webu](control-flow-web-activity.md)

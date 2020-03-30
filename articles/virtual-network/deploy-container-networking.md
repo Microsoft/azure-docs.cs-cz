@@ -17,10 +17,10 @@ ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
 ms.openlocfilehash: 5146675b6eefd11fc1e6875ed9009ece92753ffb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "72028104"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>Nasazení modulu plug-in rozhraní CNI sítě Azure Virtual Network
@@ -95,10 +95,10 @@ Pokud chcete nainstalovat modul plug-in na všechny virtuální počítače Azur
 1. [Stáhněte a nainstalujte modul plug-in](#download-and-install-the-plug-in).
 2. Předem přidělte každému virtuálnímu počítači fond IP adres virtuální sítě, ze kterého se budou přiřazovat IP adresy jednotlivým kontejnerům Pod. Každý virtuální počítač Azure má na každém síťovém rozhraní primární privátní IP adresu virtuální sítě. IP adresy z fondu pro kontejnery Pods se přidávají jako sekundární adresy (*ipconfigs*) v síťovém rozhraní virtuálních počítačům a to pomocí jedné z následujících možností:
 
-   - **CLI**: [přiřazení více IP adres pomocí Azure CLI](virtual-network-multiple-ip-addresses-cli.md)
-   - **PowerShell**: [přiřazení více IP adres pomocí prostředí PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
-   - **Portál**: [přiřazení více IP adres pomocí Azure Portal](virtual-network-multiple-ip-addresses-portal.md)
-   - **Azure Resource Manager šablona**: [přiřazení více IP adres pomocí šablon](virtual-network-multiple-ip-addresses-template.md)
+   - **CLI:** [Přiřazení více IP adres pomocí azure CLI](virtual-network-multiple-ip-addresses-cli.md)
+   - **PowerShell**: [Přiřazení více adres IP pomocí PowerShellu](virtual-network-multiple-ip-addresses-powershell.md)
+   - **Portál:** [Přiřazení více IP adres pomocí portálu Azure](virtual-network-multiple-ip-addresses-portal.md)
+   - **Šablona Azure Resource Manager:** [Přiřazení více IP adres pomocí šablon](virtual-network-multiple-ip-addresses-template.md)
 
    Přidejte dostatek IP adres pro všechny kontejnery Pod, které chcete na virtuální počítač umístit.
 
@@ -157,10 +157,10 @@ Konfigurační soubor sítě CNI je popsán ve formátu JSON. Ve výchozím nast
 
 #### <a name="settings-explanation"></a>Vysvětlení nastavení
 
-- **cniVersion**: moduly plug-in Azure Virtual Network CNI podporují verze 0.3.0 a 0.3.1 [specifikace CNI](https://github.com/containernetworking/cni/blob/master/SPEC.md).
+- **cniVersion**: Moduly plug-in CNI virtuální sítě Azure podporují verze 0.3.0 a 0.3.1 [specifikace CNI](https://github.com/containernetworking/cni/blob/master/SPEC.md).
 - **name**: Název sítě. Tuto vlastnost lze nastavit na libovolnou jedinečnou hodnotu.
 - **type**: Název modulu plug-in sítě. Nastavte na *azure-vnet*.
-- **mode**: Provozní režim. Toto pole je nepovinné. Jediný podporovaný režim je režim síťového mostu. Další informace najdete v tématu [provozní režimy](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md).
+- **mode**: Provozní režim. Toto pole je nepovinné. Jediný podporovaný režim je režim síťového mostu. Další informace naleznete v [provozních režimech](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md).
 - **bridge**: Název mostu, který se použije k připojení kontejnerů k virtuální síti. Toto pole je nepovinné. Pokud ho nezadáte, modul plug-in automaticky zvolí jedinečný název podle indexu hlavního rozhraní.
 - **ipam type**: Name modulu plug-in správy IP adres. Vždy nastaveno na hodnotu *azure-vnet-ipam*.
 

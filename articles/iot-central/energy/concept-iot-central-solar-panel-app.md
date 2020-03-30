@@ -1,5 +1,5 @@
 ---
-title: Koncepty architektury v Azure IoT Central – energie | Microsoft Docs
+title: Architektonické koncepty v Azure IoT Central – energetika | Dokumenty společnosti Microsoft
 description: Tento článek představuje klíčové koncepty týkající se architektury Azure IoT Central
 author: op-ravi
 ms.author: omravi
@@ -9,38 +9,38 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: 44171a08e69cfa058e0a9e75e3220fb996b7789d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77018002"
 ---
-# <a name="azure-iot-central---solar-panel-app-architecture"></a>Architektura aplikace panelu Azure IoT Central-slunečního panelu
+# <a name="azure-iot-central---solar-panel-app-architecture"></a>Architektura aplikací Azure IoT Central – solární panely
 
 
 
 
-Tento článek poskytuje přehled architektury šablon aplikací pro monitorování v panelu slunečního vstupu. Následující diagram ukazuje běžně použitou architekturu pro aplikaci slunečního panelu v Azure s využitím IoT Central platformy.
+Tento článek obsahuje přehled architektury šablony aplikace pro monitorování solárních panelů. Následující diagram znázorňuje běžně používanou architekturu pro aplikaci solárních panelů v Azure pomocí platformy IoT Central.
 
 > [!div class="mx-imgBorder"]
-> ![architektury inteligentního měření](media/concept-iot-central-solar-panel/solar-panel-app-architecture.png)
+> ![architektura inteligentních měřičů](media/concept-iot-central-solar-panel/solar-panel-app-architecture.png)
 
 Tato architektura se skládá z následujících komponent. Některé aplikace nemusí vyžadovat všechny zde uvedené komponenty.
 
-## <a name="solar-panels-and-connectivity"></a>Sluneční panely a připojení 
+## <a name="solar-panels-and-connectivity"></a>Solární panely a konektivita 
 
-Sluneční panely jsou jedním z významných zdrojů obnovitelné energie. V závislosti na typu a nastavení panelu slunečního připojení se můžete připojit buď pomocí bran, nebo jiných zprostředkujících zařízení a proprietárních systémů. Možná budete muset vytvořit most IoT Central zařízení pro připojení zařízení, která se nedají připojit přímo. Most zařízení IoT Central je open source řešení a [tady](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge)můžete najít kompletní podrobnosti. 
-
-
-
-## <a name="iot-central-platform"></a>IoT Central platforma
-Azure IoT Central je platforma, která zjednodušuje vytváření řešení IoT a pomáhá snižovat zatížení a náklady na správu, provoz a vývoj IoT. Díky IoT Central se můžete snadno připojit, monitorovat a spravovat vaše prostředky Internet věcí (IoT) ve velkém měřítku. Po připojení vašich slunečních panelů k IoT Central se v šabloně aplikace používají předdefinované funkce, jako jsou například modely zařízení, příkazy a řídicí panely. Šablona aplikace také používá IoT Central úložiště pro scénáře teplé cesty, jako jsou monitorování, analýzy, pravidla a vizualizace dat měřiče v reálném čase.
+Solární panely jsou jedním z významných zdrojů obnovitelné energie. V závislosti na typu solárního panelu a nastavení jej můžete připojit buď pomocí bran, nebo pomocí jiných mezilehlých zařízení a proprietárních systémů. Možná budete muset vytvořit most zařízení IoT Central pro připojení zařízení, která nelze připojit přímo. Most zařízení IoT Central je open source řešení a kompletní podrobnosti najdete [zde](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge). 
 
 
-## <a name="extensibility-options-to-build-with-iot-central"></a>Možnosti rozšíření pro sestavení pomocí IoT Central
-Platforma IoT Central poskytuje dvě možnosti rozšíření: průběžné exporty dat (CDE) a rozhraní API. Zákazníci a partneři si můžou vybrat mezi těmito možnostmi a přizpůsobit jejich řešení konkrétním potřebám. Například jeden z našich partnerů nakonfiguroval CDE pomocí Azure Data Lake Storage (ADLS). Používají ADLS pro dlouhodobé uchovávání dat a jiné scénáře úložiště s studenými cestami, jako jsou například dávkové zpracování, auditování a vytváření sestav. 
+
+## <a name="iot-central-platform"></a>Platforma IoT Central
+Azure IoT Central je platforma, která zjednodušuje vytváření vašeho řešení IoT a pomáhá snižovat zátěž a náklady na správu, provoz a vývoj IoT. S IoT Central můžete snadno připojit, monitorovat a spravovat své prostředky internetu věcí (IoT) ve velkém měřítku. Po připojení solárních panelů k IoT Central používá šablona aplikace integrované funkce, jako jsou modely zařízení, příkazy a řídicí panely. Šablona aplikace také používá úložiště IoT Central pro scénáře teplých cest, jako je monitorování dat měřičů v reálném čase, analýzy, pravidla a vizualizace.
+
+
+## <a name="extensibility-options-to-build-with-iot-central"></a>Možnosti rozšiřitelnosti pro sestavení pomocí IoT Central
+Platforma IoT Central poskytuje dvě možnosti rozšiřitelnosti: nepřetržitý export dat (CDE) a API. Zákazníci a partneři si mohou vybrat mezi těmito možnostmi založenými na přizpůsobení svých řešení specifickým potřebám. Například jeden z našich partnerů nakonfiguroval CDE s Azure Data Lake Storage (ADLS). Používají ADLS pro dlouhodobé uchovávání dat a další scénáře úložiště studené cesty, jako je dávkové zpracování, auditování a vytváření sestav. 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Teď, když jste se seznámili s architekturou, můžete [zdarma vytvořit aplikaci slunečního panelu](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring) .
-* Další informace o IoT Central najdete v tématu [IoT Central Overview](https://docs.microsoft.com/azure/iot-central/) .
+* Nyní, když jste se dozvěděli o architektuře, [vytvořte aplikaci pro solární panely zdarma](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring)
+* Další informace o IoT Central najdete v tématu [Přehled IoT Central](https://docs.microsoft.com/azure/iot-central/)

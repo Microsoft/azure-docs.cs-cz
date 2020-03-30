@@ -1,6 +1,6 @@
 ---
-title: Funkce zabezpečení správy a monitorování – Microsoft Azure | Microsoft Docs
-description: Tento článek obsahuje přehled funkcí a služeb zabezpečení, které Azure poskytuje, aby vám pomohly při správě a monitorování cloudových služeb a virtuálních počítačů Azure.
+title: Funkce zabezpečení správy a monitorování – Microsoft Azure | Dokumenty společnosti Microsoft
+description: Tento článek obsahuje přehled funkcí zabezpečení a služeb, které Azure poskytuje pro pomoc při správě a monitorování cloudových služeb Azure a virtuálních počítačů.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,47 +16,47 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
 ms.openlocfilehash: 7ad7a29a92d25556190b4cf44f4e48158a6f0952
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73162748"
 ---
-# <a name="azure-security-management-and-monitoring-overview"></a>Přehled správy a monitorování zabezpečení Azure
-Tento článek obsahuje přehled funkcí a služeb zabezpečení, které Azure poskytuje, aby vám pomohly při správě a monitorování cloudových služeb a virtuálních počítačů Azure.
+# <a name="azure-security-management-and-monitoring-overview"></a>Přehled správy a monitorování Azure
+Tento článek obsahuje přehled funkcí zabezpečení a služeb, které Azure poskytuje pro pomoc při správě a monitorování cloudových služeb Azure a virtuálních počítačů.
 
 ## <a name="role-based-access-control"></a>Řízení přístupu na základě rolí
 
-Access Control na základě rolí (RBAC) poskytuje podrobnou správu přístupu pro prostředky Azure. Pomocí RBAC můžete uživatelům udělit jenom množství přístupu, který potřebují k provádění svých úloh. RBAC vám taky může pomáhat zajistit, že když lidé odejdou z organizace, ztratí přístup k prostředkům v cloudu.
+Řízení přístupu na základě rolí (RBAC) poskytuje podrobnou správu přístupu pro prostředky Azure. Pomocí RBAC můžete udělit lidem pouze množství přístupu, které potřebují k provádění svých úloh. RBAC vám také může pomoci zajistit, že když lidé opustí organizaci, ztratí přístup k prostředkům v cloudu.
 
 Další informace:
 
-* [Blog týmu služby Active Directory na RBAC](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
-* [Access Control na základě rolí Azure](../../role-based-access-control/role-assignments-portal.md)
+* [Blog týmu služby Active Directory o službě RBAC](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
+* [Řízení přístupu na základě role v Azure](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="antimalware"></a>Antimalware
 
-S Azure můžete použít antimalwarový software od hlavních dodavatelů zabezpečení, jako jsou Microsoft, Symantec, Trend Micro, McAfee a Kaspersky. Tento software pomáhá chránit vaše virtuální počítače před škodlivými soubory, adwarem a dalšími hrozbami.
+V Azure můžete používat antimalwarový software od hlavních dodavatelů zabezpečení, jako jsou Microsoft, Symantec, Trend Micro, McAfee a Kaspersky. Tento software pomáhá chránit vaše virtuální počítače před škodlivými soubory, adwarem a dalšími hrozbami.
 
-Microsoft Antimalware pro Azure Cloud Services a Virtual Machines nabízí možnost instalace antimalwarového agenta pro role PaaS i pro virtuální počítače. Na základě Endpoint Protection System Center tato funkce přináší ověřenou místní technologii zabezpečení do cloudu.
+Microsoft Antimalware pro Cloud Services Azure a virtuální počítače nabízí možnost nainstalovat antimalwarového agenta pro role PaaS i virtuální počítače. Tato funkce založená na ochraně koncových bodů system center přináší do cloudu osvědčenou místní technologii zabezpečení.
 
-Nabízíme [také rozsáhlou](https://www.trendmicro.com/us/enterprise/cloud-solutions/deep-security/) integraci pro [SecureCloud](https://www.trendmicro.com/us/enterprise/cloud-solutions/secure-cloud/) produkty trendu a na platformu Azure. Důkladné zabezpečení je antivirové řešení a SecureCloud je řešení šifrování. Hloubkové zabezpečení je nasazeno v rámci virtuálních počítačů prostřednictvím modelu rozšíření. Pomocí uživatelského rozhraní Azure Portal a PowerShellu se můžete rozhodnout použít hloubkové zabezpečení uvnitř nových virtuálních počítačů, které se prosazují, nebo existující virtuální počítače, které jsou už nasazené.
+Nabízíme také hlubokou integraci pro produkty [Deep Security](https://www.trendmicro.com/us/enterprise/cloud-solutions/deep-security/) a [SecureCloud](https://www.trendmicro.com/us/enterprise/cloud-solutions/secure-cloud/) společnosti Trend na platformě Azure. Deep Security je antivirové řešení a SecureCloud je šifrovací řešení. Deep Security se nasazuje uvnitř virtuálních proudů prostřednictvím modelu rozšíření. Pomocí uzulinového prostředí portálu Azure a prostředí PowerShell můžete použít deep security uvnitř nových virtuálních počítačů, které se stočejí, nebo stávajících virtuálních počítačích, které už jsou nasazené.
 
-Společnost Symantec Endpoint Protection (SEP) je také podporována v Azure. Prostřednictvím integrace portálu můžete určit, že chcete na virtuálním počítači použít SEP. SEP se dá nainstalovat na nový virtuální počítač prostřednictvím Azure Portal, nebo se dá nainstalovat na existující virtuální počítač přes PowerShell.
+Symantec Endpoint Protection (SEP) je také podporovánv Azure. Prostřednictvím integrace portálu můžete určit, že máte v úmyslu použít SEP na virtuálním počítači. Sep se dá nainstalovat na nový virtuální počítač přes portál Azure, nebo ho dá nainstalovat na existující virtuální počítač přes PowerShell.
 
 Další informace:
 
 * [Nasazování antimalwarových řešení na virtuálních počítačích Azure](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
-* [Microsoft Antimalware pro Azure Cloud Services a Virtual Machines](antimalware.md)
-* [Postup instalace a konfigurace Trend Micro hlubokého zabezpečení jako služby na virtuálním počítači s Windows](/azure/virtual-machines/windows/classic/install-trend)
-* [Jak nainstalovat a nakonfigurovat Symantec Endpoint Protection na virtuálním počítači s Windows](/azure/virtual-machines/windows/classic/install-symantec)
-* [Nové antimalwarové možnosti pro ochranu Azure Virtual Machines](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)
+* [Microsoft Antimalware pro Cloudové služby Azure a virtuální počítače](antimalware.md)
+* [Jak nainstalovat a nakonfigurovat Trend Micro Deep Security jako služba na virtuálním počítači se systémem Windows](/azure/virtual-machines/windows/classic/install-trend)
+* [Jak nainstalovat a nakonfigurovat službu Symantec Endpoint Protection na virtuálním počítači se systémem Windows](/azure/virtual-machines/windows/classic/install-symantec)
+* [Nové antimalwarové možnosti pro ochranu virtuálních počítačů Azure](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)
 
-## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+## <a name="multi-factor-authentication"></a>Multi-factor Authentication
 
-Azure Multi-Factor Authentication je metoda ověřování, která vyžaduje použití více než jedné metody ověřování. Přičítá se kritická druhá vrstva zabezpečení pro přihlášení a transakce uživatelů.
+Azure Multi-Factor Authentication je metoda ověřování, která vyžaduje použití více než jedné metody ověření. Přidá kritickou druhou vrstvu zabezpečení pro přihlášení uživatelů a transakce.
 
-Multi-Factor Authentication pomáhá chránit přístup k datům a aplikacím a současně plnit požadavky uživatelů na jednoduchý proces přihlašování. Zajišťuje silné ověřování prostřednictvím řady možností ověřování (telefonní hovor, textová zpráva nebo oznámení mobilní aplikace nebo ověřovací kód) a tokeny OATH třetích stran.
+Vícefaktorové ověřování pomáhá chránit přístup k datům a aplikacím a zároveň uspokojovat požadavky uživatelů na jednoduchý proces přihlášení. Poskytuje silné ověřování prostřednictvím řady možností ověření (telefonní hovor, textová zpráva nebo oznámení nebo ověřovací kód mobilní aplikace) a tokenů OATH třetích stran.
 
 Další informace:
 
@@ -66,13 +66,13 @@ Další informace:
 
 ## <a name="expressroute"></a>ExpressRoute
 
-Azure ExpressRoute můžete použít k rozšiřování místních sítí do Microsoft Cloud prostřednictvím vyhrazeného privátního připojení, které usnadňuje poskytovatel připojení. Pomocí ExpressRoute můžete navázat připojení ke cloudovým službám Microsoftu, jako je Azure, Office 365 a CRM Online. Připojení může být:
+Pomocí Služby Azure ExpressRoute můžete rozšířit místní sítě do Cloudu Microsoftu prostřednictvím vyhrazeného privátního připojení, které usnadňuje poskytovatel připojení. Pomocí ExpressRoute můžete navázat připojení ke cloudovým službám Microsoftu, jako jsou Azure, Office 365 a CRM Online. Konektivita může být z:
 
-* Síť typu any-to-Any (IP VPN).
-* Síť Ethernet typu Point-to-Point.
+* Síť any-to-any (IP VPN).
+* Síť Ethernet z bodu do bodu.
 * Virtuální křížové připojení prostřednictvím poskytovatele připojení v zařízení společného umístění.
 
-Připojení ExpressRoute nejdou přes veřejný Internet. Můžou nabídnout spolehlivější, rychlejší rychlost, nižší latenci a vyšší zabezpečení než typická připojení přes Internet.
+Připojení ExpressRoute neprocházejí přes veřejný internet. Mohou nabídnout vyšší spolehlivost, vyšší rychlost, nižší latenci a vyšší zabezpečení než běžná připojení přes internet.
 
 Další informace:
 
@@ -80,65 +80,65 @@ Další informace:
 
 ## <a name="virtual-network-gateways"></a>Brány virtuální sítě
 
-Brány VPN, označované taky jako brány virtuální sítě Azure, se používají k posílání síťového provozu mezi virtuálními sítěmi a místními umístěními. Používají se také k posílání provozu mezi několika virtuálními sítěmi v rámci Azure (síť do sítě). Brány VPN poskytují zabezpečené připojení mezi různými místy mezi Azure a vaší infrastrukturou.
+Brány VPN, nazývané také brány virtuální sítě Azure, se používají k odesílání síťového provozu mezi virtuálními sítěmi a místními umístěními. Používají se také k odesílání provozu mezi více virtuálními sítěmi v rámci Azure (síť do sítě). Brány VPN poskytují zabezpečené mezimístní připojení mezi Azure a vaší infrastrukturou.
 
 Další informace:
 
-* [Informace o branách VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
+* [O branách VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
 * [Přehled zabezpečení sítě Azure](network-overview.md)
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 
-Někdy uživatelé potřebují provádět privilegované operace v prostředcích Azure nebo jiných aplikacích SaaS. To často znamená, že organizace jim poskytnou trvalý privilegovaný přístup v Azure Active Directory (Azure AD).
+Někdy uživatelé potřebují provádět privilegované operace v prostředcích Azure nebo jiných aplikacích SaaS. To často znamená, že organizace jim poskytují trvalý privilegovaný přístup ve službě Azure Active Directory (Azure AD).
 
-Toto je rostoucí bezpečnostní riziko pro prostředky hostované v cloudu, protože organizace nemůžou dostatečně monitorovat, co dělají uživatelé s privilegovaným přístupem. Kromě toho platí, že pokud dojde k ohrožení bezpečnosti uživatelského účtu s privilegovaným přístupem, může toto porušení ovlivnit celkové cloudové zabezpečení organizace. Azure AD Privileged Identity Management pomáhá vyřešit toto riziko tím, že snižuje dobu expozice oprávnění a zvyšuje přehlednost využití.  
+Toto je rostoucí bezpečnostní riziko pro prostředky hostované v cloudu, protože organizace nemohou dostatečně sledovat, co tito uživatelé dělají s jejich privilegovaným přístupem. Navíc pokud dojde k ohrožení uživatelského účtu s privilegovaným přístupem, může jedno porušení ovlivnit celkové zabezpečení cloudu organizace. Azure AD Privileged Identity Management pomáhá vyřešit toto riziko snížením doby expozice oprávnění a zvýšením viditelnosti využití.  
 
-Privileged Identity Management zavádí koncept dočasného správce pro roli nebo "just in time" přístup správce. Tento druh správce je uživatel, který potřebuje k dokončení procesu aktivace pro přiřazenou roli. Proces aktivace změní přiřazení uživatele k roli v Azure AD z neaktivní na aktivní pro zadané časové období.
+Správa privilegovaných identit zavádí koncept dočasného správce pro roli nebo přístup správce "just in time". Tento druh správce je uživatel, který potřebuje dokončit proces aktivace pro tuto přiřazenou roli. Proces aktivace změní přiřazení uživatele na roli ve službě Azure AD z neaktivní na aktivní, za zadané časové období.
 
 Další informace:
 
 * [Azure AD Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)
-* [Začínáme s Azure AD Privileged Identity Management](../../active-directory/privileged-identity-management/pim-getting-started.md)
+* [Začínáme s aplikací Azure AD Privileged Identity Management](../../active-directory/privileged-identity-management/pim-getting-started.md)
 
-## <a name="identity-protection"></a>Ochrany identit
+## <a name="identity-protection"></a>Identity Protection
 
-Azure AD Identity Protection poskytuje ucelený přehled o podezřelých přihlašovacích aktivitách a potenciálních ohroženích zabezpečení, které vám pomůžou ochránit vaši firmu. Identity Protection detekuje podezřelé aktivity uživatelů a privilegovaných identit (správců) na základě signálů, jako jsou:
+Azure AD Identity Protection poskytuje konsolidované zobrazení podezřelých přihlašovacích aktivit a potenciálních chyb zabezpečení, které pomáhají chránit vaši firmu. Ochrana identity detekuje podezřelé aktivity pro uživatele a privilegované (správcské) identity na základě signálů, jako jsou:
 
 * Útoky hrubou silou.
-* Nevrácená pověření.
-* Přihlášení z neznámých umístění a nakažených zařízení.
+* Unikly přihlašovací údaje.
+* Přihlášení z neznámých míst a infikovaných zařízení.
 
-Díky poskytování oznámení a doporučené nápravy pomáhá ochrana identity zmírnit rizika v reálném čase. Počítá závažnost rizika uživatele. Můžete nakonfigurovat zásady založené na rizicích, které budou automaticky pomáhat chránit přístup k aplikacím před budoucími hrozbami.
+Poskytováním oznámení a doporučené nápravy pomáhá ochrana identity zmírnit rizika v reálném čase. Vypočítá závažnost rizika uživatele. Zásady založené na rizicích můžete nakonfigurovat tak, aby automaticky pomohly zabezpečit přístup k aplikacím před budoucími hrozbami.
 
 Další informace:
 
-* [Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection)
-* [Kanál 9: Azure AD a identity show: identita Protection Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+* [Ochrana identit služby Azure Active Directory](/azure/active-directory/active-directory-identityprotection)
+* [Kanál 9: Azure AD a identity Zobrazit: Ochrana identity Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="security-center"></a>Security Center
 
-Azure Security Center pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně. Security Center poskytuje lepší přehled o zabezpečení prostředků Azure a kontrolu nad nimi. Poskytuje integrované monitorování zabezpečení a správu zásad napříč předplatnými Azure. Pomáhá detekovat hrozby, které by jinak neinformovaly, a spolupracuje s širokou ekosystémem řešení zabezpečení.
+Azure Security Center pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně. Security Center vám poskytuje lepší přehled o zabezpečení vašich prostředků Azure a kontrolu nad tím, že nad tím máte kontrolu. Poskytuje integrované monitorování zabezpečení a správu zásad napříč vašimi předplatnými Azure. Pomáhá odhalovat hrozby, které by jinak mohly zůstat bez povšimnutí, a spolupracuje s širokým ekosystémem bezpečnostních řešení.
 
-Security Center vám pomůže optimalizovat a monitorovat zabezpečení prostředků Azure pomocí těchto akcí:
+Security Center vám pomůže optimalizovat a monitorovat zabezpečení prostředků Azure takto:
 
-* Vám umožní definovat zásady pro vaše prostředky předplatného Azure podle těchto pravidel:
-  * Požadavky na zabezpečení vaší společnosti.
-  * Typ aplikací nebo citlivosti dat v každém předplatném.
-* Monitorování stavu virtuálních počítačů, sítí a aplikací Azure.
-* Poskytuje seznam výstrah zabezpečení s určením priorit, včetně výstrah z integrovaných partnerských řešení. Poskytuje také informace, které potřebujete k rychlému prověření útoků a doporučení k tomu, jak je opravit.
+* Povolení k definování zásad pro prostředky předplatného Azure podle:
+  * Bezpečnostní potřeby vaší společnosti.
+  * Typ aplikací nebo citlivost dat v každém předplatném.
+* Sledování stavu virtuálních počítačů Azure, sítí a aplikací.
+* Poskytuje seznam prioritních výstrah zabezpečení, včetně výstrah z integrovaných partnerských řešení. Poskytuje také informace, které potřebujete k rychlému prošetření útoku, a doporučení, jak jej napravit.
 
 Další informace:
 
 * [Úvod do Azure Security Center](../../security-center/security-center-intro.md)
-* [Vylepšit vaše zabezpečené skóre v Azure Security Center](../../security-center/security-center-secure-score.md)
+* [Vylepšete své skóre zabezpečení v Azure Security Center](../../security-center/security-center-secure-score.md)
 
-## <a name="intelligent-security-graph"></a>Intelligent Security Graph
+## <a name="intelligent-security-graph"></a>Graf inteligentního zabezpečení
 
-Intelligent Security Graph poskytuje ochranu před hrozbami v reálném čase v produktech a službách Microsoftu. Používá pokročilou analýzu, která propojí obrovské množství informací o hrozbách a zabezpečení dat a poskytuje přehledy, které mohou posílit zabezpečení organizace. Microsoft používá pokročilou analýzu – zpracovává více než 450 000 000 000 ověřování za měsíc, prohledává 400 000 000 000 e-mailů pro malware a útoky phishing a aktualizuje 1 000 000 000 zařízení, aby poskytoval širší přehledy. které mohou vaší organizaci pomoci zjišťovat útoky a rychle na ně reagovat.
+Inteligentní graf zabezpečení poskytuje ochranu před hrozbami v produktech a službách společnosti Microsoft v reálném čase. Využívá pokročilé analýzy, které propojují obrovské množství informací o hrozbách a bezpečnostních dat, aby poskytovaly přehledy, které mohou posílit zabezpečení organizace. Společnost Microsoft používá pokročilou analýzu – zpracovává více než 450 miliard ověření měsíčně, skenuje 400 miliard e-mailů kvůli malwaru a phishingu a aktualizuje jednu miliardu zařízení – aby získal bohatší přehledy. Tyto přehledy mohou vaší organizaci pomoci rychle rozpoznat útoky a reagovat na ně.
 
-* [Intelligent Security Graph](https://www.microsoft.com/security/intelligence)
+* [Graf inteligentního zabezpečení](https://www.microsoft.com/security/intelligence)
 
 ## <a name="next-steps"></a>Další kroky
-Seznamte se s [modelem sdílené zodpovědnosti](shared-responsibility.md) a o tom, které úlohy zabezpečení jsou zpracovávány společností Microsoft a které úlohy jsou zpracovávány vámi.
+Seznamte se s [modelem sdílené odpovědnosti](shared-responsibility.md) a o tom, které úkoly zabezpečení zpracovává společnost Microsoft a které úkoly zpracováváte vy.
 
-Další informace o správě zabezpečení najdete v tématu [Správa zabezpečení v Azure](management.md).
+Další informace o správě zabezpečení najdete [v tématu Správa zabezpečení v Azure](management.md).

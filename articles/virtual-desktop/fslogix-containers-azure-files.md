@@ -1,6 +1,6 @@
 ---
-title: Soubory kontejnerů profilů FSLogix virtuálních počítačů s Windows – Azure
-description: Tento článek popisuje kontejnery profilů FSLogix v rámci virtuálních počítačů s Windows a souborů Azure.
+title: Windows Virtual Desktop FSLogix kontejnery profil soubory - Azure
+description: Tento článek popisuje kontejnery profilů FSLogix v rámci Windows Virtual Desktop a Azure soubory.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,98 +9,98 @@ ms.date: 08/07/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 1dc5d54fa24217c91e14a8f37e092888b2bb6474
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79127880"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>Kontejnery profilů FSLogix a soubory Azure
 
-Služba Virtual Desktop systému Windows doporučuje kontejnery profilů FSLogix jako řešení uživatelského profilu. FSLogix je navržená pro roaming profilů ve vzdálených výpočetních prostředích, jako je například virtuální počítač s Windows. Ukládá kompletní profil uživatele do jediného kontejneru. Při přihlášení se tento kontejner dynamicky připojí k výpočetnímu prostředí pomocí nativně podporovaného virtuálního pevného disku (VHD) a virtuálního pevného disku Hyper-V (VHDX). Profil uživatele je hned dostupný a zobrazí se v systému přesně jako nativní profil uživatele. Tento článek popisuje, jak se ve virtuálním počítači s Windows používají kontejnery profilu FSLogix se soubory Azure.
+Služba Windows Virtual Desktop doporučuje kontejnery profilů FSLogix jako řešení profilu uživatele. FSLogix je určen k přechytování profilů ve vzdálených výpočetních prostředích, jako je například virtuální plocha systému Windows. Ukládá úplný uživatelský profil v jednom kontejneru. Při přihlášení je tento kontejner dynamicky připojen k výpočetnímu prostředí pomocí nativně podporovaného virtuálního pevného disku (VHD) a virtuálního pevného disku Hyper-V (VHDX). Profil uživatele je okamžitě k dispozici a zobrazí se v systému přesně jako nativní profil uživatele. Tento článek popisuje, jak kontejnery profilů FSLogix používané s Azure Files fungují ve Windows Virtual Desktop.
 
 >[!NOTE]
->Pokud hledáte srovnávací materiál o různých možnostech úložiště kontejneru FSLogix v Azure, přečtěte si téma [Možnosti úložiště pro kontejnery profilů FSLogix](store-fslogix-profile.md).
+>Pokud hledáte srovnávací materiál o různých možnostech úložiště kontejneru profilů FSLogix v Azure, [přečtěte si informace o možnostech úložiště pro kontejnery profilů FSLogix](store-fslogix-profile.md).
 
 ## <a name="user-profiles"></a>Profily uživatelů
 
-Uživatelský profil obsahuje prvky dat o jednotlivých uživatelích, včetně informací o konfiguraci, jako je nastavení plochy, trvalá síťová připojení a nastavení aplikace. Ve výchozím nastavení vytvoří Windows místní profil uživatele, který je úzce integrovaný s operačním systémem.
+Profil uživatele obsahuje datové prvky o jednotlivci, včetně informací o konfiguraci, jako je nastavení plochy, trvalá síťová připojení a nastavení aplikací. Ve výchozím nastavení systém Windows vytvoří místní uživatelský profil, který je úzce integrován s operačním systémem.
 
-Profil vzdáleného uživatele poskytuje oddíl mezi uživatelskými daty a operačním systémem. Umožňuje nahradit nebo změnit operační systém, aniž by to ovlivnilo uživatelská data. V Hostitel relace vzdálené plochy (VZDÁLENÉm počítači a v infrastruktuře virtuálních klientských počítačů (VDI) může být operační systém nahrazen z následujících důvodů:
+Vzdálený profil uživatele poskytuje oddíl mezi uživatelská data a operační systém. Umožňuje výměnu nebo změnu operačního systému bez ovlivnění uživatelských dat. V hostitelích relací vzdálené plochy (RDSH) a infrastrukturách virtuálních ploch (VDI) může být operační systém nahrazen z následujících důvodů:
 
 - Upgrade operačního systému
 - Nahrazení existujícího virtuálního počítače (VM)
-- Uživatel je součástí prostředí vzdálené plochy (non-persistent) s fondem nebo VDI.
+- Uživatel, který je součástí sdruženého (netrvalého) prostředí RDSH nebo VDI
 
-Produkty Microsoftu pracují s několika technologiemi pro vzdálené profily uživatelů, včetně těchto technologií:
-- Cestovní profily uživatelů (RUP)
-- Disky uživatelských profilů (UPD)
-- Roaming podnikového stavu (ESR)
+Produkty společnosti Microsoft pracují s několika technologiemi pro vzdálené uživatelské profily, včetně těchto technologií:
+- Cestovní uživatelské profily (RUP)
+- Disky s profilem uživatele (UPD)
+- Roaming ve stavu organizace (ESR)
 
-UPD a RUP jsou nejčastěji používané technologie pro profily uživatelů v prostředích Hostitel relace vzdálené plochy (autovzdáleném vzdáleném pevném disku) a virtuálních pevných discích (VHD).
+UPD a RUP jsou nejpoužívanější technologie pro profily uživatelů v prostředích RDSH (RSH) a Virtuální pevný disk (Virtual Hard Disk).
 
-### <a name="challenges-with-previous-user-profile-technologies"></a>Problémy s předchozími technologiemi profilů uživatelů
+### <a name="challenges-with-previous-user-profile-technologies"></a>Výzvy s předchozími technologiemi uživatelských profilů
 
-Stávající a starší řešení Microsoftu pro profily uživatelů se dodává s různými problémy. Žádné předchozí řešení nezpracovalo všechny potřeby uživatelských profilů, které jsou součástí prostředí vzdálené plochy (hostitele) nebo VDI. UPD například nemůže zpracovávat velké soubory OST a RUP neuchovává moderní nastavení.
+Stávající a starší řešení společnosti Microsoft pro uživatelské profily byly řešeny s různými problémy. Žádné předchozí řešení zpracovány všechny potřeby profilu uživatele, které jsou dodávány s rdsh nebo vDi prostředí. Například UPD nemůže zpracovávat velké soubory OST a RUP neuchovává moderní nastavení.
 
 #### <a name="functionality"></a>Funkce
 
-V následující tabulce jsou uvedeny výhody a omezení pro předchozí technologie profilů uživatelů.
+V následující tabulce jsou uvedeny výhody a omezení předchozích technologií profilu uživatele.
 
-| Technologie | Moderní nastavení | Nastavení Win32 | Nastavení operačního systému | Uživatelská data | Podporováno na SKU serveru | Back-endové úložiště v Azure | Back-endové úložiště v místním prostředí | Podpora verzí | Další čas přihlášení |Poznámky:|
+| Technologie | Moderní nastavení | Nastavení win32 | Nastavení operačního ses | Uživatelská data | Podporováno na skladové jednotce serveru | Back-endové úložiště v Azure | Back-end úložiště v místním prostředí | Podpora verzí | Následný čas přihlášení |Poznámky|
 | ---------- | :-------------: | :------------: | :---------: | --------: | :---------------------: | :-----------------------: | :--------------------------: | :-------------: | :---------------------: |-----|
-| **Disky uživatelských profilů (UPD)** | Ano | Ano | Ano | Ano | Ano | Ne | Ano | Win 7 + | Ano | |
-| **Cestovní profil uživatele (RUP), režim údržby** | Ne | Ano | Ano | Ano | Ano| Ne | Ano | Win 7 + | Ne | |
-| **Enterprise State Roaming (ESR)** | Ano | Ne | Ano | Ne | Zobrazit poznámky | Ano | Ne | Win 10 | Ne | Funkce na SKU serveru, ale žádné podpůrné uživatelské rozhraní |
-| **Virtualizace uživatelského prostředí (UE-V)** | Ano | Ano | Ano | Ne | Ano | Ne | Ano | Win 7 + | Ne |  |
-| **Cloudové soubory OneDrive** | Ne | Ne | Ne | Ano | Zobrazit poznámky | Zobrazit poznámky  | Zobrazit poznámky | Win 10 RS3 | Ne | Není testováno na SKU serveru. Back-endové úložiště v Azure závisí na synchronizaci klienta. Back-endové úložiště on-Prem potřebuje synchronizačního klienta. |
+| **Disky profilu uživatele (UPD)** | Ano | Ano | Ano | Ano | Ano | Ne | Ano | Vyhrajte 7+ | Ano | |
+| **Cestovní uživatelský profil (RUP), režim údržby** | Ne | Ano | Ano | Ano | Ano| Ne | Ano | Vyhrajte 7+ | Ne | |
+| **Roaming podnikového státu (ESR)** | Ano | Ne | Ano | Ne | Zobrazit poznámky | Ano | Ne | Vyhrajte 10 | Ne | Funkce na skladové jednotce serveru, ale bez podpůrného uživatelského rozhraní |
+| **Virtualizace uživatelského prostředí (UE-V)** | Ano | Ano | Ano | Ne | Ano | Ne | Ano | Vyhrajte 7+ | Ne |  |
+| **Cloudové soubory OneDrivu** | Ne | Ne | Ne | Ano | Zobrazit poznámky | Zobrazit poznámky  | Viz Poznámky | Vyhrajte 10 RS3 | Ne | Není testováno na skladové jednotce serveru. Back-endové úložiště v Azure závisí na synchronizačním klientovi. Back-end úložiště on-prem potřebuje synchronizačního klienta. |
 
 #### <a name="performance"></a>Výkon
 
-UPD vyžaduje [prostory úložiště s přímým přístupem (S2D)](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) k řešení požadavků na výkon. UPD používá protokol SMB (Server Message Block). Zkopíruje profil do virtuálního počítače, ve kterém je uživatel zaznamenáván. UPD s S2D je řešení, které doporučujeme pro virtuální počítače s Windows.  
+UPD vyžaduje [storage spaces direct (S2D)](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) k řešení požadavků na výkon. UPD používá protokol SMB (Server Message Block). Zkopíruje profil do virtuálního virtuálního uživatele, ve kterém je uživatel protokolován. UPD s S2D je řešení, které doporučujeme pro Windows Virtual Desktop.  
 
 #### <a name="cost"></a>Náklady
 
-I když clustery S2D dosahují nezbytného výkonu, jsou pro podnikové zákazníky nákladné, ale zvláště nákladné pro zákazníky s malým a středním firmou (SMB). Pro toto řešení podniky platíte za disky úložiště společně s náklady na virtuální počítače, které používají disky pro sdílenou složku.
+Zatímco clustery S2D dosahují potřebného výkonu, náklady jsou pro podnikové zákazníky nákladné, ale obzvláště nákladné pro zákazníky malých a středních podniků (SMB). Pro toto řešení firmy platí za disky úložiště, spolu s náklady na virtuální počítače, které používají disky pro sdílenou složku.
 
-#### <a name="administrative-overhead"></a>Administrativní režijní náklady
+#### <a name="administrative-overhead"></a>Režijní náklady na správu
 
-Clustery S2D vyžadují operační systém, který se opraví, aktualizuje a udržuje v zabezpečeném stavu. Tyto procesy a složitost nastavení zotavení po havárii S2D umožňují, aby se S2D mohla uskutečnit jenom pro podniky s vyhrazeným personálem IT.
+Clustery S2D vyžadují operační systém, který je opraven, aktualizován a udržován v zabezpečeném stavu. Díky těmto procesům a složitosti nastavení zotavení po havárii S2D je S2D proveditelný pouze pro podniky se specializovaným pracovníkem IT.
 
 ## <a name="fslogix-profile-containers"></a>Kontejnery profilů FSLogix
 
-19. listopadu 2018 [Společnost Microsoft získala FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/). FSLogix řeší mnoho výzev k kontejneru profilů. Mezi ně patří klíč:
+19. listopadu 2018 [společnost Microsoft získala společnost FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/). FSLogix řeší mnoho problémů kontejneru profilu. Klíčové z nich jsou:
 
-- **Výkon:** [Kontejnery profilu FSLogix](/fslogix/configure-profile-container-tutorial/) mají vysoký výkon a řeší problémy s výkonem, které mají historicky blokovaný režim výměny do mezipaměti.
-- **OneDrive:** OneDrive pro firmy se bez kontejnerů profilů FSLogix nepodporuje v prostředích netrvalých virtuálních počítačů a virtuálních klientských počítačů (VDI). [Nejlepší postupy pro OneDrive pro firmy a FSLogix](/fslogix/overview/) popisují jejich interakci. Další informace najdete v tématu [použití synchronizačního klienta na virtuálních plochách](/deployoffice/rds-onedrive-business-vdi/).
-- **Další složky:** FSLogix poskytuje možnost rozšiřování uživatelských profilů, aby zahrnovaly další složky.
+- **Výkon:** [Kontejnery profilu FSLogix](/fslogix/configure-profile-container-tutorial/) jsou vysoce výkonné a řeší problémy s výkonem, které mají historicky blokovaný režim výměny v mezipaměti.
+- **OneDrive:** Bez kontejnerů profilů FSLogix není OneDrive pro firmy podporován v netrvalých prostředích RDSH nebo VDI. [Doporučené postupy OneDrivu pro firmy a FSLogix](/fslogix/overview/) popisují, jak interagují. Další informace naleznete [v tématu Použití klienta synchronizace na virtuálních počítačích](/deployoffice/rds-onedrive-business-vdi/).
+- **Další složky:** FSLogix poskytuje možnost rozšířit uživatelské profily tak, aby zahrnovaly další složky.
 
-Od pořízení společnost Microsoft začala nahrazovat existující řešení uživatelských profilů, jako je UPD, pomocí kontejnerů profilů FSLogix.
+Od získání společnost Microsoft začala nahrazovat stávající řešení profilů uživatelů, jako je UPD, kontejnery profilů FSLogix.
 
-## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Integrace souborů Azure s doménovou službou Azure Active Directory
+## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Integrace souborů Azure se službou Azure Active Directory Domain Service
 
-Výkon a funkce kontejnerů profilů FSLogix využívají cloud. Od 7. srpna 2019 Microsoft Azure soubory oznámily obecnou dostupnost [ověřování souborů Azure pomocí služby Azure Active Directory Domain Service (služba AD DS)](../storage/files/storage-files-active-directory-overview.md). Díky ověřování Azure se službou Azure služba AD DS ověřování je pro profily uživatelů ve službě Virtual Desktop systému Windows výhodnější řešení Azure Files.
+Výkon a funkce kontejnerů profilů FSLogix využívají cloud. 7. srpna 2019 oznámily soubory Microsoft Azure obecnou dostupnost [ověřování souborů Azure pomocí služby Azure Active Directory Domain Service (AD DS).](../storage/files/storage-files-active-directory-overview.md) Tím, že řeší náklady i administrativní režie, Soubory Azure s Azure AD DS Ověřování je prémiové řešení pro uživatelské profily ve službě Windows Virtual Desktop.
 
-## <a name="best-practices-for-windows-virtual-desktop"></a>Osvědčené postupy pro virtuální počítače s Windows
+## <a name="best-practices-for-windows-virtual-desktop"></a>Doporučené postupy pro virtuální plochu Windows
 
-Virtuální plocha Windows nabízí plnou kontrolu velikosti, typu a počtu virtuálních počítačů, které používají zákazníci. Další informace najdete v tématu [co je to virtuální počítač s Windows?](overview.md).
+Windows Virtual Desktop nabízí plnou kontrolu nad velikostí, typem a počtem virtuálních počítačů, které používají zákazníci. Další informace naleznete v tématu [What is Windows Virtual Desktop?](overview.md).
 
-Aby se zajistilo, že prostředí virtuálních počítačů s Windows dodržuje osvědčené postupy:
+Chcete-li zajistit, aby vaše prostředí Virtuální plocha systému Windows dodržovalo osvědčené postupy:
 
-- Účet úložiště Azure Files musí být ve stejné oblasti jako virtuální počítače hostitele relace.
-- Oprávnění k souborům Azure by měla odpovídat oprávněním popsaným v [kontejnerech profil požadavků](/fslogix/fslogix-storage-config-ht).
-- Každý fond hostitelů musí být sestaven se stejným typem a velikostí virtuálního počítače na základě stejné hlavní bitové kopie.
-- Každý virtuální počítač fondu hostitelů musí být ve stejné skupině prostředků, aby se mohla spravovat podpora, škálování a aktualizace.
-- Pro zajištění optimálního výkonu by se řešení úložiště a kontejner profilu FSLogix měly nacházet ve stejném umístění datového centra.
-- Účet úložiště, který obsahuje hlavní bitovou kopii, musí být ve stejné oblasti a předplatném, ve kterém jsou virtuální počítače zřízené.
+- Účet úložiště Souborů Azure musí být ve stejné oblasti jako virtuální počítače hostitele relace.
+- Oprávnění K souborům Azure by měla odpovídat oprávněním popsaným v [části Požadavky – kontejnery profilů](/fslogix/fslogix-storage-config-ht).
+- Každý fond hostitelů musí být sestaven stejného typu a velikosti virtuálního počítače na základě stejné hlavní image.
+- Každý virtuální hostitelský virtuální ms fondu musí být ve stejné skupině prostředků pro správu, škálování a aktualizaci.
+- Pro optimální výkon by řešení úložiště a kontejner profilu FSLogix měly být ve stejném umístění datového centra.
+- Účet úložiště obsahující hlavní bitovou kopii musí být ve stejné oblasti a předplatné, kde se zřizovány virtuální chod.
 
 ## <a name="next-steps"></a>Další kroky
 
-K nastavení prostředí virtuálních ploch Windows použijte následující příručky.
+Pomocí následujících pokynů nastavte prostředí Virtuální plochy systému Windows.
 
-- Pokud chcete začít sestavovat vaše řešení virtualizace plochy, přečtěte si téma [Vytvoření tenanta ve virtuální ploše Windows](tenant-setup-azure-active-directory.md).
-- Pokud chcete vytvořit fond hostitelů v rámci tenanta virtuálních klientů Windows, přečtěte si téma [Vytvoření fondu hostitelů pomocí Azure Marketplace](create-host-pools-azure-marketplace.md).
-- Pokud chcete nastavit plně spravované sdílené složky v cloudu, přečtěte si téma [Nastavení sdílené složky Azure Files](/azure/storage/files/storage-files-active-directory-enable/).
-- Pokud chcete nakonfigurovat kontejnery profilů FSLogix, přečtěte si téma [vytvoření kontejneru profilu pro fond hostitelů pomocí sdílené složky](create-host-pools-user-profile.md).
-- Pokud chcete přiřadit uživatele k fondu hostitelů, přečtěte si téma [Správa skupin aplikací pro virtuální počítač s Windows](manage-app-groups.md).
-- Informace o přístupu k prostředkům virtuálního počítače s Windows z webového prohlížeče najdete v tématu [připojení k virtuálnímu](connect-web.md)počítači s Windows.
+- Informace o tom, že můžete začít vytvářet řešení virtualizace plochy, najdete [v tématu Vytvoření klienta ve Windows Virtual Desktop](tenant-setup-azure-active-directory.md).
+- Pokud chcete vytvořit fond hostitelů v tenantovi virtuální plochy Windows, přečtěte si informace [o vytvoření fondu hostitelů na Webu Azure Marketplace](create-host-pools-azure-marketplace.md).
+- Pokud chcete nastavit plně spravované sdílené složky v cloudu, přečtěte si část [Nastavení sdílené složky Azure Files](/azure/storage/files/storage-files-active-directory-enable/).
+- Pokud chcete nakonfigurovat kontejnery profilů FSLogix, přečtěte si část [Vytvoření kontejneru profilu pro fond hostitelů pomocí sdílené složky](create-host-pools-user-profile.md).
+- Informace o přiřazení uživatelů do fondu hostitelů naleznete v [tématu Správa skupin aplikací pro windows virtual desktop](manage-app-groups.md).
+- Informace o přístupu k prostředkům virtuální plochy systému Windows z webového prohlížeče naleznete v [tématu Připojení k virtuální ploše systému Windows](connect-web.md).

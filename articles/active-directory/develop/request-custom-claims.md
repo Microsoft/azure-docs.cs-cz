@@ -1,7 +1,7 @@
 ---
-title: Žádost o vlastní deklarace identity (MSAL iOS/macOS) | Azure
+title: Vyžádání vlastních deklarací (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
-description: Přečtěte si, jak vyžádat vlastní deklarace identity.
+description: Přečtěte si, jak požádat o vlastní deklarace identity.
 services: active-directory
 documentationcenter: ''
 author: mmacy
@@ -18,27 +18,27 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 44158296faaf238fd72f2360149d3d93f68c5ba0
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77085603"
 ---
-# <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>Postupy: vyžádání vlastních deklarací pomocí MSAL pro iOS a macOS
+# <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>Postup: Vyžádání vlastních deklarací pomocí msal pro iOS a macOS
 
-OpenID Connect umožňuje volitelně požádat o vrácení individuálních deklarací identity z koncového bodu UserInfo nebo do tokenu ID. Požadavek na deklarace identity je reprezentován jako objekt JSON, který obsahuje seznam požadovaných deklarací. Další podrobnosti najdete v tématu [OpenID Connect Core 1,0](https://openid.net/specs/openid-connect-core-1_0-final.html#ClaimsParameter) .
+OpenID Connect umožňuje volitelně požadovat vrácení jednotlivých deklarací z koncového bodu UserInfo a/nebo v tokenu ID. Požadavek na deklarace identity je reprezentován jako objekt JSON, který obsahuje seznam požadovaných deklarací. Další podrobnosti najdete [v tématu OpenID Connect Core 1.0.](https://openid.net/specs/openid-connect-core-1_0-final.html#ClaimsParameter)
 
-Knihovna Microsoft Authentication Library (MSAL) pro iOS a macOS umožňuje žádat o konkrétní deklarace ve scénářích interaktivního i tichého získání tokenu. Provede to prostřednictvím parametru `claimsRequest`.
+Knihovna ověřování Microsoft (MSAL) pro iOS a macOS umožňuje vyžádání konkrétních deklarací identity ve scénářích interaktivních i tichých tokenů. Činí tak prostřednictvím parametru. `claimsRequest`
 
-Je třeba provést několik scénářů. Příklad:
+Existuje více scénářů, kde je to potřeba. Například:
 
-- Vyžádání deklarací identity mimo standardní sadu pro vaši aplikaci.
-- Požaduje se konkrétní kombinace standardních deklarací identity, které se nedají zadat pomocí oborů pro vaši aplikaci. Pokud se například přístupový token zamítl z důvodu chybějících deklarací, aplikace může vyžádat chybějící deklarace identity pomocí MSAL.
+- Vyžádání deklarací mimo standardní sadu pro vaši aplikaci.
+- Vyžádání konkrétní kombinace standardní deklarace, které nelze zadat pomocí oborů pro vaši aplikaci. Například pokud přístupový token získá odmítnutz důvodu chybějící deklarace identity, aplikace může požádat o chybějící deklarace pomocí MSAL.
 
 > [!NOTE]
-> MSAL obchází mezipaměť přístupového tokenu pokaždé, když je zadána žádost o deklarace identity. Je důležité, abyste zadali parametr `claimsRequest` jenom v případě, že se vyžadují další deklarace identity (na rozdíl od vždy, když se v každém volání rozhraní MSAL API vždycky zadávají stejné `claimsRequest` parametry).
+> MSAL obchází mezipaměti přístupových tokenů vždy, když je zadán požadavek na deklarace identity. Je důležité zadat `claimsRequest` pouze parametr, pokud jsou potřeba další deklarace `claimsRequest` identity (na rozdíl od vždy poskytuje stejný parametr v každém volání rozhraní API MSAL).
 
-`claimsRequest` lze zadat v `MSALSilentTokenParameters` a `MSALInteractiveTokenParameters`:
+`claimsRequest`lze zadat `MSALSilentTokenParameters` v `MSALInteractiveTokenParameters`písmenech a) a c):
 
 ```objc
 /*!
@@ -54,7 +54,7 @@ Je třeba provést několik scénářů. Příklad:
 
 @end
 ```
-`MSALClaimsRequest` lze sestavit z reprezentace žádosti o deklarace JSON NSString. 
+`MSALClaimsRequest`lze vytvořit z nsstring reprezentace požadavku JSON Claims. 
 
 Cíl-C:
 
@@ -73,7 +73,7 @@ let request = MSALClaimsRequest(jsonString: "{\"id_token\":{\"auth_time\":{\"ess
 
 
 
-Můžete ho také upravit vyžádáním dalších specifických deklarací identity:
+Může být také upravena vyžádáním dalších specifických deklarací:
 
 Cíl-C:
 
@@ -103,7 +103,7 @@ do {
 
 
 
-`MSALClaimsRequest` by měl být nastaven v parametrech tokenu a poskytovaly jedno z rozhraní API pro získání tokenu MSAL:
+`MSALClaimsRequest`by pak měla být nastavena v parametrech tokenu a poskytnuta jednomu z rozhraní API pro získání tokenů MSAL:
 
 Cíl-C:
 

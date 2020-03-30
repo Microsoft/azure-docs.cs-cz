@@ -1,6 +1,6 @@
 ---
 title: Použití tajných kódů služby Azure Key Vault v aktivitách kanálu
-description: Naučte se, jak načíst uložené přihlašovací údaje z trezoru klíčů Azure a použít je během spuštění kanálu služby Data Factory.
+description: Zjistěte, jak načíst uložená pověření z trezoru klíčů Azure a používat je během spuštění kanálu datové továrny.
 services: data-factory
 author: ChrisLound
 manager: anandsub
@@ -11,62 +11,62 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
 ms.openlocfilehash: 09051ad3633ddc720cb34d3d145ccf649fa9cb08
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77200108"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>Použití tajných kódů služby Azure Key Vault v aktivitách kanálu
 
-Přihlašovací údaje nebo tajné hodnoty můžete ukládat do Azure Key Vault a použít je během provádění kanálu, aby je bylo možné předat k vašim aktivitám.
+Můžete uložit přihlašovací údaje nebo tajné hodnoty v trezoru klíčů Azure a použít je během spuštění kanálu předat své aktivity.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Tato funkce závisí na spravované identitě objektu pro vytváření dat.  Zjistěte, jak funguje ze [spravované identity pro Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) a ujistěte se, že je k datové továrně přidružená jedna.
+Tato funkce závisí na identitě spravované z datové továrny.  Zjistěte, jak funguje ze [spravované identity pro Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) a ujistěte se, že vaše data factory má jeden přidružený.
 
 ## <a name="steps"></a>Kroky
 
-1. Otevřete vlastnosti datové továrny a zkopírujte hodnotu ID aplikace spravované identity.
+1. Otevřete vlastnosti vaší datové továrny a zkopírujte hodnotu ID aplikace spravované identity.
 
-    ![Spravovaná hodnota identity](media/how-to-use-azure-key-vault-secrets-pipeline-activities/managedidentity.png)
+    ![Hodnota spravované identity](media/how-to-use-azure-key-vault-secrets-pipeline-activities/managedidentity.png)
 
-2. Otevřete zásady přístupu trezoru klíčů a přidejte spravovaná oprávnění identity pro získání a výpis tajných kódů.
+2. Otevřete zásady přístupu trezoru klíčů a přidejte oprávnění spravované identity do tajných kódů Získat a Seznam.
 
-    ![Zásady přístupu Key Vault](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies.png)
+    ![Zásady přístupu trezoru klíčů](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies.png)
 
-    ![Zásady přístupu Key Vault](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies-2.png)
+    ![Zásady přístupu trezoru klíčů](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies-2.png)
 
-    Klikněte na **Přidat**a pak na **Uložit**.
+    Klepněte na tlačítko **Přidat**a potom klepněte na tlačítko **Uložit**.
 
-3. Přejděte do Key Vault tajného klíče a zkopírujte tajný identifikátor.
+3. Přejděte na tajný klíč trezoru klíčů a zkopírujte tajný identifikátor.
 
     ![Tajný identifikátor](media/how-to-use-azure-key-vault-secrets-pipeline-activities/secretidentifier.png)
 
-    Poznamenejte si identifikátor URI vašeho tajného kódu, který chcete získat během spuštění kanálu služby Data Factory.
+    Poznamenejte si tajný identifikátor URI, který chcete získat během spuštění kanálu datové továrny.
 
-4. V kanálu Data Factory přidejte novou aktivitu webu a nakonfigurujte ji následujícím způsobem.  
+4. V kanálu Data Factory přidejte novou webovou aktivitu a nakonfigurujte ji následujícím způsobem.  
 
     |Vlastnost  |Hodnota  |
     |---------|---------|
     |Zabezpečený výstup     |True         |
-    |zprostředkovatele identity     |[Vaše tajná hodnota identifikátoru URI]? API-Version = 7.0         |
+    |zprostředkovatele identity     |[Vaše tajná hodnota identifikátoru URI]?api-version=7.0         |
     |Metoda     |GET         |
     |Ověřování     |MSI         |
     |Prostředek        |https://vault.azure.net       |
 
-    ![Aktivita webu](media/how-to-use-azure-key-vault-secrets-pipeline-activities/webactivity.png)
+    ![Webová aktivita](media/how-to-use-azure-key-vault-secrets-pipeline-activities/webactivity.png)
 
     > [!IMPORTANT]
-    > Je nutné přidat **rozhraní API-Version = 7.0** na konec vašeho TAJNÉho identifikátoru URI.  
+    > Na konec tajného identifikátoru URI je nutné přidat **?api-version=7.0.**  
 
     > [!CAUTION]
-    > Nastavte možnost zabezpečený výstup na hodnotu true, pokud chcete zabránit tomu, aby se tajná hodnota přihlásila do prostého textu.  Všechny další aktivity, které tuto hodnotu využívají, by měly mít možnost zabezpečeného vstupu nastavenou na hodnotu true.
+    > Nastavte možnost Zabezpečený výstup na hodnotu true, abyste zabránili zaznamenání hodnoty tajného klíče ve formátu prostého textu.  Všechny další aktivity, které spotřebovávají tuto hodnotu by měl mít jejich zabezpečené vstupní možnost nastavena na hodnotu true.
 
-5. Chcete-li použít hodnotu v jiné aktivitě, použijte následující výraz kódu **@activity(' WEB1 '). Output. Value**.
+5. Chcete-li použít hodnotu v jiné aktivitě, použijte následující výraz ** @activitykódu ("Web1").output.value**.
 
     ![Výraz kódu](media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak používat Azure Key Vault k ukládání přihlašovacích údajů pro úložiště a výpočetní prostředky, najdete [v tématu uložení přihlašovacích údajů v Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
+Informace o tom, jak používat Azure Key Vault k ukládání přihlašovacích údajů pro úložiště dat a výpočetní prostředky, najdete [v tématu Store přihlašovacích údajů v Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)

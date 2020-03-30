@@ -1,6 +1,6 @@
 ---
-title: Protokolování webové služby – Azure Machine Learning Studio (Classic) | Microsoft Docs
-description: Naučte se, jak povolit protokolování pro webové služby Machine Learning Studio (Classic). Protokolování poskytuje další informace k řešení potíží se rozhraní API.
+title: Protokolování webové služby – Azure Machine Learning Studio (klasické) | Dokumenty společnosti Microsoft
+description: Zjistěte, jak povolit protokolování pro webové služby Machine Learning Studio (klasické). Protokolování obsahuje další informace, které vám pomohou řešit řešení potíží s řešením potíží s řešením potíží s řešením potíží s řešením potíží.
 services: machine-learning
 author: xiaoharper
 ms.custom: seodec18
@@ -12,78 +12,78 @@ ms.subservice: studio
 ms.topic: conceptual
 ms.date: 06/15/2017
 ms.openlocfilehash: 90e7692fe0e254074d8176d719d0ca9abad54a9b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79217847"
 ---
-# <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>Povolit protokolování pro webové služby Azure Machine Learning Studio (Classic)
+# <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>Povolení protokolování pro webové služby Azure Machine Learning Studio (klasické)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Tento dokument poskytuje informace o schopnostech protokolování webových služeb Machine Learning Studio (Classic). Protokolování poskytuje další informace, mimo jiné číslo chyby a zprávu, která vám může pomoct řešit vaše volání rozhraní API pro Machine Learning Studio (Classic).  
+Tento dokument obsahuje informace o možnosti protokolování machine learningových studio (klasické) webové služby. Protokolování poskytuje další informace, kromě pouze číslo chyby a zprávy, které vám pomohou vyřešit vaše volání machine learning studio (klasické) rozhraní API.  
 
-## <a name="how-to-enable-logging-for-a-web-service"></a>Jak povolit protokolování pro webové služby
+## <a name="how-to-enable-logging-for-a-web-service"></a>Povolení protokolování pro webovou službu
 
-Protokolování se povoluje na portálu [Web Services pro Azure Machine Learning Studio (Classic)](https://services.azureml.net) . 
+Povolíte protokolování z portálu [webových služeb Azure Machine Learning Studio (klasické).](https://services.azureml.net) 
 
-1. Přihlaste se k portálu Web Services Azure Machine Learning Studio (Classic) na [https://services.azureml.net](https://services.azureml.net). U klasických webových služeb se můžete na portál dostat taky tak, že kliknete na **nové prostředí webové služby** na stránce Machine Learning Studio (klasické) webové služby v nástroji Studio (Classic).
+1. Přihlaste se k portálu Azure Machine [https://services.azureml.net](https://services.azureml.net)Learning Studio (klasické) webové služby na adrese . U klasické webové služby se můžete také dostat na portál kliknutím na **nové prostředí webových služeb** na stránce Machine Learning Studio (klasické) webové služby ve studiu (klasické).
 
-   ![Nový odkaz webové služby prostředí](./media/web-services-logging/new-web-services-experience-link.png)
+   ![Odkaz Nové prostředí webových služeb](./media/web-services-logging/new-web-services-experience-link.png)
 
-2. V horním řádku nabídek klikněte na **webové služby** pro novou webovou službu nebo klikněte na **klasické webové** služby pro klasickou webovou službu.
+2. Na horním řádku nabídek klikněte na **webové služby** pro novou webovou službu nebo na **položku Klasické webové služby** pro klasickou webovou službu.
 
-   ![Vyberte nový nebo klasické webové služby](./media/web-services-logging/select-web-service.png)
+   ![Vybrat nové nebo klasické webové služby](./media/web-services-logging/select-web-service.png)
 
-3. Nové webové služby klikněte na název webové služby. Klasické webové služby klikněte na název webové služby a na další stránce klikněte na příslušný koncový bod.
+3. V případě nové webové služby klepněte na název webové služby. U klasické webové služby klikněte na název webové služby a na další stránce klikněte na příslušný koncový bod.
 
-4. V horním řádku nabídek klikněte na **Konfigurovat**.
+4. Na horním řádku nabídek klepněte na **tlačítko Konfigurovat**.
 
-5. Nastavte možnost **Povolit protokolování** na hodnotu *Chyba* (Pokud chcete protokolovat pouze chyby) nebo *vše* (pro úplné protokolování).
+5. Nastavte možnost **Povolit protokolování** na *Chyba* (chcete-li protokolovat pouze chyby) nebo *Vše* (pro úplné protokolování).
 
-   ![Vyberte úroveň protokolování](./media/web-services-logging/enable-logging.png)
+   ![Vybrat úroveň protokolování](./media/web-services-logging/enable-logging.png)
 
 6. Klikněte na **Uložit**.
 
-7. V případě klasických webových služeb vytvořte kontejner **ml-Diagnostics** .
+7. Pro klasické webové služby vytvořte kontejner **ml-diagnostics.**
 
-   Všechny protokoly webových služeb se uchovávají v kontejneru objektů BLOB s názvem **ml-Diagnostics** v účtu úložiště přidruženém k webové službě. Pro nové webové služby je tento kontejner vytvoří při prvním přístup k webové službě. U klasických webových služeb budete muset vytvořit kontejner, pokud ještě neexistuje. 
+   Všechny protokoly webové služby jsou uloženy v kontejneru objektů blob s názvem **ml diagnostiky** v účtu úložiště přidružené k webové službě. Pro nové webové služby je tento kontejner vytvořen při prvním přístupu k webové službě. Pro klasické webové služby je třeba vytvořit kontejner, pokud ještě neexistuje. 
 
-   1. V [Azure Portal](https://portal.azure.com)přejdete do účtu úložiště přidruženého k webové službě.
+   1. Na [webu Azure Portal](https://portal.azure.com)přejděte na účet úložiště přidružený k webové službě.
 
    2. V části **Blob Service** klikněte na **Kontejnery**.
 
-   3. Pokud kontejner **ml-Diagnostics** neexistuje, klikněte na **+ kontejner**, udělte kontejneru název "ml-Diagnostics" a vyberte **typ přístupu** jako "blob". Klikněte na tlačítko **OK**.
+   3. Pokud **diagnostika ml** kontejneru neexistuje, klepněte na tlačítko **+Kontejner**, přiřazujte kontejneru název "ml-diagnostics" a vyberte **typ aplikace Access** jako "Blob". Klikněte na tlačítko **OK**.
 
-      ![Vytvořit nový kontejner pro uložení diagnostických protokolů](./media/web-services-logging/create-ml-diagnostics-container.png)
+      ![Vytvoření nového kontejneru pro uložení diagnostických protokolů](./media/web-services-logging/create-ml-diagnostics-container.png)
 
 > [!TIP]
 >
-> U klasických webových služeb má řídicí panel webové služby v Machine Learning Studio (Classic) také přepínač pro povolení protokolování. Ale protože protokolování je teď spravovaná prostřednictvím portálu webových služeb, je potřeba povolit protokolování na portálu, jak je popsáno v tomto článku. Pokud jste už povolili protokolování v nástroji Studio (Classic), pak na portálu Web Services zakažte protokolování a znovu ho povolte.
+> Pro klasickou webovou službu má řídicí panel webových služeb v machine learningovém studiu (klasické) také přepínač umožňující protokolování. Protože je však protokolování nyní spravováno prostřednictvím portálu webových služeb, je třeba povolit protokolování prostřednictvím portálu, jak je popsáno v tomto článku. Pokud jste již povolili protokolování v aplikaci Studio (klasické), zakažte protokolování a znovu jej povolte.
 
 
 ## <a name="the-effects-of-enabling-logging"></a>Účinky povolení protokolování
-Když je povolené protokolování, diagnostika a chyby z koncového bodu webové služby se zaprotokolují do kontejneru objektů BLOB **ml diagnostiky** v účtu Azure Storage, který je propojený s pracovním prostorem uživatele. Tento kontejner obsahuje diagnostické informace pro všechny webové koncových bodů služby pro všechny pracovní prostory spojený s tímto účtem úložiště.
+Pokud je protokolování povoleno, diagnostika a chyby z koncového bodu webové služby jsou zaznamenány v kontejneru objektů blob **diagnostiky ml** v účtu úložiště Azure propojeného s pracovním prostorem uživatele. Tento kontejner obsahuje všechny diagnostické informace pro všechny koncové body webové služby pro všechny pracovní prostory přidružené k tomuto účtu úložiště.
 
-Protokoly můžete zobrazit některou z několika nástrojů dostupných k prozkoumání účtu služby Azure Storage. Nejjednodušší možná bude přejít na účet úložiště v Azure Portal, kliknout na **kontejnery**a pak kliknout na kontejner **ml-Diagnostika**.  
+Protokoly lze zobrazit pomocí některého z několika nástrojů, které jsou k dispozici prozkoumat účet úložiště Azure. Nejjednodušší může být přejít na účet úložiště na webu Azure Portal, kliknout na **kontejnery**a potom kliknout na **diagnostiku ml kontejneru**.  
 
-## <a name="log-blob-detail-information"></a>Podrobné informace o protokolu objektů blob
-Každý objekt blob v kontejneru obsahuje diagnostické informace pro právě jeden z následujících akcí:
+## <a name="log-blob-detail-information"></a>Podrobné informace o objektu blob protokolu
+Každý objekt blob v kontejneru obsahuje diagnostické informace přesně pro jednu z následujících akcí:
 
-* Provedení spuštění dávky – metoda  
-* Spuštění metody typu žádost-odpověď  
-* Inicializace kontejneru typu žádost-odpověď
+* Spuštění metody dávkového spuštění  
+* Spuštění metody Požadavek odpověď  
+* Inicializace kontejneru požadavku a odpovědi
 
-Název každý objekt blob má předponu v následujícím formátu: 
+Název každého objektu blob má předponu následujícího formuláře: 
 
 
 `{Workspace Id}-{Web service Id}-{Endpoint Id}/{Log type}`
 
 
-_Typ protokolu_ je jedna z následujících hodnot:  
+Kde _Log typ_ je jedna z následujících hodnot:  
 
 * dávka  
-* skóre/požadavků  
+* skóre/žádosti  
 * skóre/init  
 

@@ -1,6 +1,6 @@
 ---
-title: Řešení Azure VMware (AVS) – brány VPN
-description: Přečtěte si o konceptech sítě typu Site-to-Site VPN a VPN typu Point-to-site.
+title: Řešení Azure VMware od CloudSimple – brány VPN
+description: Další informace o konceptech VPN mezi lokalitami cloud-to-site a point-to-site VPN
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,70 +8,70 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 73171e2c46bdf6c934db5777efe36ba51153a686
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 662fa342b3a18f726b418c496ff3fda937445301
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024853"
 ---
 # <a name="vpn-gateways-overview"></a>Přehled bran VPN
 
-Služba VPN Gateway slouží k posílání šifrovaného provozu mezi sítí služby AVS v místním umístění nebo v počítači přes veřejný Internet. Každá oblast může mít jednu bránu sítě VPN, která může podporovat více připojení. Když vytvoříte několik připojení ke stejné bráně VPN, všechny tunely VPN sdílejí dostupnou šířku pásma.
+Brána VPN se používá k odesílání šifrovaného provozu mezi sítí oblasti CloudSimple v místním umístění nebo počítačem přes veřejný internet.  Každá oblast může mít jednu bránu VPN, která může podporovat více připojení. Když vytvoříte několik připojení ke stejné bráně VPN, všechny tunely VPN sdílejí dostupnou šířku pásma.
 
-Brána služby AVS nabízí dva druhy bran sítě VPN:
+CloudSimple poskytuje dva druhy bran VPN:
 
-* Brána VPN typu Site-to-site
-* Brána sítě VPN typu Point-to-site
+* Brána VPN site-to-site
+* Brána VPN point-to-site
 
-## <a name="site-to-site-vpn-gateway"></a>Brána VPN typu Site-to-site
+## <a name="site-to-site-vpn-gateway"></a>Brána VPN site-to-site
 
-Brána VPN typu Site-to-site se používá k posílání šifrovaného provozu mezi sítí služby AVS a místním datacentrem. Pomocí tohoto připojení můžete definovat podsítě/rozsah CIDR pro síťový provoz mezi místní sítí a sítí oblastí služby AVS.
+Brána VPN site-to-site se používá k odesílání šifrovaného provozu mezi sítí oblasti CloudSimple a místním datovým centrem. Toto připojení slouží k definování rozsahu podsítí/CIDR pro síťový provoz mezi místní sítí a sítí cloudových oblastí.
 
-Služba VPN Gateway umožňuje využívat služby z místního prostředí v privátním cloudu služby AVS a služby v privátním cloudu služby AVS z místní sítě. AVS poskytuje server VPN založený na zásadách pro navázání připojení z vaší místní sítě.
+Brána VPN umožňuje využívat služby z místního prostředí ve vašem privátním cloudu a služby ve vašem privátním cloudu z místní sítě.  CloudSimple poskytuje server VPN založený na zásadách pro navázání připojení z místní sítě.
 
-Případy použití pro síť Site-to-Site VPN:
+Případy použití sítě VPN mezi lokalitami:
 
-* Přístupnost vašeho privátního cloudu služby AVS z libovolné pracovní stanice ve vaší místní síti.
-* Použijte místní službu Active Directory jako zdroj identity vCenter.
-* Pohodlný přenos šablon virtuálních počítačů, soubory ISO a dalších souborů z místních prostředků do vašeho privátního cloudového vCenter služby AVS
-* Dostupnost úloh běžících na privátním cloudu služby AVS z vaší místní sítě.
+* Přístupnost vašeho privátního cloudu vCenter z libovolné pracovní stanice v místní síti.
+* Použití místní služby Active Directory jako zdroje identity vCenter.
+* Pohodlný přenos šablon virtuálních počítačů, ISO a dalších souborů z místních prostředků do vašeho privátního cloudu vCenter.
+* Dostupnost úloh spuštěných ve vašem privátním cloudu z místní sítě.
 
-![Topologie připojení VPN typu Site-to-site](media/cloudsimple-site-to-site-vpn-connection.png)
+![Topologie připojení VPN site-to-Site](media/cloudsimple-site-to-site-vpn-connection.png)
 
 ### <a name="cryptographic-parameters"></a>Kryptografické parametry
 
-Připojení VPN typu Site-to-site používá k navázání zabezpečeného připojení následující výchozí parametry šifrování. Když vytvoříte připojení z místního zařízení VPN, použijte libovolný z následujících parametrů podporovaných místní bránou sítě VPN.
+Připojení VPN mezi lokalitami používá k navázání zabezpečeného připojení následující výchozí kryptografické parametry.  Při vytváření připojení z místního zařízení VPN použijte některý z následujících parametrů, které podporuje vaše místní brána VPN.
 
-#### <a name="phase-1-proposals"></a>Návrhy 1 – fáze
+#### <a name="phase-1-proposals"></a>Návrhy fáze 1
 
 | Parametr | Návrh 1 | Návrh 2 | Návrh 3 |
 |-----------|------------|------------|------------|
 | Verze IKE | IKEv1 | IKEv1 | IKEv1 |
 | Šifrování | AES 128 | AES 256 | AES 256 |
-| Algoritmus hash| SHA 256 | SHA 256 | SHA 1 |
-| Skupina Diffie Hellman (Skupina DH) | 2 | 2 | 2 |
-| Doba života | 28 800 sekund | 28 800 sekund | 28 800 sekund |
+| Algoritmus hash| ŠA 256 | ŠA 256 | ŠA 1 |
+| Diffie Hellman Group (skupina DH) | 2 | 2 | 2 |
+| Životnost | 28 800 sekund | 28 800 sekund | 28 800 sekund |
 | Velikost dat | 4 GB | 4 GB | 4 GB |
 
-#### <a name="phase-2-proposals"></a>Návrhy 2. fáze
+#### <a name="phase-2-proposals"></a>Návrhy fáze 2
 
 | Parametr | Návrh 1 | Návrh 2 | Návrh 3 |
 |-----------|------------|------------|------------|
 | Šifrování | AES 128 | AES 256 | AES 256 |
-| Algoritmus hash| SHA 256 | SHA 256 | SHA 1 |
-| Skupina PFS (Perfect Forward Secrecy) | Žádné | Žádné | Žádné |
-| Doba života | 1 800 sekund | 1 800 sekund | 1 800 sekund |
+| Algoritmus hash| ŠA 256 | ŠA 256 | ŠA 1 |
+| Perfect Forward Secrecy Group (PFS Group) | Žádný | Žádný | Žádný |
+| Životnost | 1 800 sekund | 1 800 sekund | 1 800 sekund |
 | Velikost dat | 4 GB | 4 GB | 4 GB |
 
 
 > [!IMPORTANT]
-> Na zařízení VPN nastavte připojení TCP MSS na 1200. Nebo pokud vaše zařízení VPN nepodporují svorky MSS, můžete místo toho nastavit jednotku MTU v rozhraní tunelu na 1240 bajtů.
+> Nastavte tcp MSS upnutí na 1200 na vašem zařízení VPN. Nebo pokud vaše zařízení VPN nepodporují upínání MSS, můžete alternativně nastavit MTU na rozhraní tunelu na 1240 bajtů.
 
-## <a name="point-to-site-vpn-gateway"></a>Brána sítě VPN typu Point-to-site
+## <a name="point-to-site-vpn-gateway"></a>Brána VPN point-to-site
 
-SÍŤ VPN typu Point-to-site slouží k posílání šifrovaného provozu mezi sítí služby AVS a klientským počítačem. VPN typu Point-to-site je nejjednodušší způsob, jak získat přístup k síti privátního cloudu služby AVS, včetně vaší virtuální sítě služby AVS pro vCenter a zatížení úloh. Připojení VPN typu Point-to-site použijte v případě, že se připojujete k privátnímu cloudu služby AVS vzdáleně.
+Síť VPN point-to-site se používá k odesílání šifrovaného provozu mezi sítí cloudsimple region a klientským počítačem.  Point-to-Site VPN je nejjednodušší způsob, jak získat přístup k privátní cloudové síti, včetně virtuálních počítačích privátního cloudu a virtuálních stránek pracovního vytížení.  Připojení VPN z bodu na místo použijte, pokud se připojujete k privátnímu cloudu na dálku.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Nastavení služby VPN Gateway](vpn-gateway.md)
+* [Nastavení brány VPN](vpn-gateway.md)

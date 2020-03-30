@@ -1,6 +1,6 @@
 ---
-title: Vytvoření brány virtuální sítě redundantní v zóně v Zóny dostupnosti Azure
-description: Nasazení bran VPN Gateway a ExpressRoute v Zóny dostupnosti
+title: Vytvoření zóny redundantní virtuální síťové brány v zónách dostupnosti Azure
+description: Nasazení bran VPN a bran ExpressRoute v zónách dostupnosti
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
@@ -9,23 +9,23 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: cherylmc
 ms.openlocfilehash: d8c6b68a38d4b60cf7a3194e6a5ded8804cc416f
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77150166"
 ---
-# <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Vytvoření brány virtuální sítě redundantní v zóně v Zóny dostupnosti Azure
+# <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Vytvoření zóny redundantní virtuální síťové brány v zónách dostupnosti Azure
 
-V Zóny dostupnosti Azure můžete nasadit brány VPN a ExpressRoute. Tím se zvýší odolnost, škálovatelnost a vyšší dostupnost bran virtuální sítě. Nasazování bran v Zóny dostupnosti Azure fyzicky a logicky odděluje brány v rámci určité oblasti a zároveň chrání vaše místní síťové připojení k Azure ze selhání na úrovni zóny. Informace najdete v tématu informace [o branách virtuální sítě redundantních v zóně](about-zone-redundant-vnet-gateways.md) a [o zóny dostupnosti Azure](../availability-zones/az-overview.md).
+Brány VPN a ExpressRoute můžete nasadit v zónách dostupnosti Azure. To přináší odolnost proti chybám, škálovatelnost a vyšší dostupnost bran virtuálních sítí. Nasazování bran v rámci Zón dostupnosti Azure fyzicky a logicky odděluje brány v rámci oblasti, přičemž zároveň chrání připojení vaší místní sítě k Azure před výpadky na úrovni zóny. Další informace najdete [v tématech O zónově redundantních privátních síťových branách](about-zone-redundant-vnet-gateways.md) a [o zónách dostupnosti Azure](../availability-zones/az-overview.md).
 
 ## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-## <a name="variables"></a>1. deklarace proměnných
+## <a name="1-declare-your-variables"></a><a name="variables"></a>1. Deklarujte své proměnné
 
-Deklarujte proměnné, které chcete použít. Použijte následující příklad a dle potřeby nahraďte v něm uvedené hodnoty vlastními. Pokud během cvičení zavřete relaci PowerShell/Cloud Shell, stačí zkopírovat hodnoty a vložit je znovu, aby se proměnné znovu deklarovaly. Při zadávání umístění ověřte, zda je zadaná oblast podporovaná. Další informace najdete v [nejčastějších dotazech](#faq).
+Deklarujte proměnné, které chcete použít. Použijte následující příklad a dle potřeby nahraďte v něm uvedené hodnoty vlastními. Pokud během cvičení kdykoli zavřete relaci prostředí PowerShell/Cloud Shell, stačí znovu zkopírovat a vložit hodnoty, abyste proměnné znovu deklarovali. Při zadávání umístění ověřte, zda je podporovaná zadaná oblast. Další informace naleznete v [nejčastějších dotazech](#faq).
 
 ```azurepowershell-interactive
 $RG1         = "TestRG1"
@@ -43,7 +43,7 @@ $GwIP1       = "VNet1GWIP"
 $GwIPConf1   = "gwipconf1"
 ```
 
-## <a name="configure"></a>2. vytvoření virtuální sítě
+## <a name="2-create-the-virtual-network"></a><a name="configure"></a>2. Vytvoření virtuální sítě
 
 Vytvořte skupinu prostředků.
 
@@ -59,9 +59,9 @@ $besub1 = New-AzVirtualNetworkSubnetConfig -Name $BESubnet1 -AddressPrefix $BEPr
 $vnet = New-AzVirtualNetwork -Name $VNet1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNet1Prefix -Subnet $fesub1,$besub1
 ```
 
-## <a name="gwsub"></a>3. Přidejte podsíť brány.
+## <a name="3-add-the-gateway-subnet"></a><a name="gwsub"></a>3. Přidání podsítě brány
 
-Podsíť brány obsahuje rezervované IP adresy, které používají služby brány virtuální sítě. Pomocí následujících příkladů přidejte a nastavte podsíť brány:
+Podsíť brány obsahuje vyhrazené IP adresy, které používají služby brány virtuální sítě. Pomocí následujících příkladů můžete přidat a nastavit podsíť brány:
 
 Přidejte podsíť brány.
 
@@ -75,34 +75,34 @@ Nastavte konfiguraci podsítě brány pro virtuální síť.
 ```azurepowershell-interactive
 $getvnet | Set-AzVirtualNetwork
 ```
-## <a name="publicip"></a>4. Vyžádejte si veřejnou IP adresu.
+## <a name="4-request-a-public-ip-address"></a><a name="publicip"></a>4. Žádost o veřejnou IP adresu
  
-V tomto kroku vyberte pokyny, které se vztahují na bránu, kterou chcete vytvořit. Výběr zón pro nasazení bran závisí na zónách určených pro veřejnou IP adresu.
+V tomto kroku zvolte pokyny, které platí pro bránu, kterou chcete vytvořit. Výběr zón pro nasazení bran závisí na zónách určených pro veřejnou IP adresu.
 
-### <a name="ipzoneredundant"></a>Pro zóny redundantní brány
+### <a name="for-zone-redundant-gateways"></a><a name="ipzoneredundant"></a>Pro zóny redundantní brány
 
-Vyžádejte si veřejnou IP adresu se **standardní** PublicIpaddress SKU a nezadávejte žádnou zónu. V tomto případě bude vytvořená veřejná IP adresa redundantní zóny.   
+Vyžádejte si veřejnou IP adresu se **standardní** lokou SKU publicipaddress a nezadávejte žádnou zónu. V takovém případě bude vytvořená standardní veřejná IP adresa zónově redundantní veřejná IP adresa.   
 
 ```azurepowershell-interactive
 $pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard
 ```
 
-### <a name="ipzonalgw"></a>Pro brány s oblastmi
+### <a name="for-zonal-gateways"></a><a name="ipzonalgw"></a>Pro zonální brány
 
-Vyžádejte si veřejnou IP adresu se **standardní** PublicIpaddress SKU. Zadejte zónu (1, 2 nebo 3). Všechny instance brány budou nasazeny v této zóně.
+Požádejte o veřejnou IP adresu se **standardní** sku publicipaddress. Určete zónu (1, 2 nebo 3). V této zóně budou nasazeny všechny instance brány.
 
 ```azurepowershell-interactive
 $pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard -Zone 1
 ```
 
-### <a name="ipregionalgw"></a>Pro regionální brány
+### <a name="for-regional-gateways"></a><a name="ipregionalgw"></a>Pro regionální brány
 
-Vyžádejte si veřejnou IP adresu se **základní** PublicIpaddress SKU. V takovém případě je brána nasazená jako místní brána a nemá v bráně vestavěnou redundanci zón. Instance brány se vytvářejí v jakékoli zóně.
+Požádejte o veřejnou IP adresu se **základní** položkou SKU publicipaddress. V tomto případě je brána nasazena jako místní brána a nemá žádné redundance zóny zabudované do brány. Instance brány jsou vytvořeny v libovolné zóně, resp.
 
 ```azurepowershell-interactive
 $pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Dynamic -Sku Basic
 ```
-## <a name="gwipconfig"></a>5. vytvoření konfigurace protokolu IP
+## <a name="5-create-the-ip-configuration"></a><a name="gwipconfig"></a>5. Vytvoření konfigurace IP
 
 ```azurepowershell-interactive
 $getvnet = Get-AzVirtualNetwork -ResourceGroupName $RG1 -Name $VNet1
@@ -110,40 +110,40 @@ $subnet = Get-AzVirtualNetworkSubnetConfig -Name $GwSubnet1 -VirtualNetwork $get
 $gwipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GwIPConf1 -Subnet $subnet -PublicIpAddress $pip1
 ```
 
-## <a name="gwconfig"></a>6. Vytvoření brány
+## <a name="6-create-the-gateway"></a><a name="gwconfig"></a>6. Vytvoření brány
 
 Vytvořte bránu virtuální sítě.
 
-### <a name="for-expressroute"></a>Pro ExpressRoute
+### <a name="for-expressroute"></a>Pro expresní trasu
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType ExpressRoute -GatewaySku ErGw1AZ
 ```
 
-### <a name="for-vpn-gateway"></a>Pro VPN Gateway
+### <a name="for-vpn-gateway"></a>Pro bránu VPN
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1AZ
 ```
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a><a name="faq"></a>Nejčastější dotazy
 
-### <a name="what-will-change-when-i-deploy-these-new-skus"></a>Co se změní při nasazení těchto nových SKU?
+### <a name="what-will-change-when-i-deploy-these-new-skus"></a>Co se změní, když nasadím tyto nové souku?
 
-Z perspektivy můžete nasadit brány s využitím redundance zón. To znamená, že všechny instance bran budou nasazeny v rámci Zóny dostupnosti Azure a každá zóna dostupnosti je jinou chybou a aktualizační doménou. Díky tomu jsou brány spolehlivější, dostupné a odolné vůči selháním zón.
+Z vašeho pohledu můžete nasadit brány s redundancí zóny. To znamená, že všechny instance bran se nasadí napříč zónami dostupnosti Azure a každá zóna dostupnosti je jiná doména poruchy a aktualizace. Díky tomu jsou vaše brány spolehlivější, dostupnější a odolnější vůči selhání zóny.
 
-### <a name="can-i-use-the-azure-portal"></a>Můžu použít Azure Portal?
+### <a name="can-i-use-the-azure-portal"></a>Můžu používat portál Azure?
 
-Ano, můžete použít Azure Portal k nasazení nových SKU. Tyto nové SKU se ale zobrazí jenom v oblastech Azure, které mají Zóny dostupnosti Azure.
+Ano, na webu Azure Portal můžete nasadit nové sku- tu. Tyto nové souny však uvidíte pouze v těch oblastech Azure, které mají zóny dostupnosti Azure.
 
-### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>Jaké oblasti máte k dispozici pro použití nových SKU?
+### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>Jaké oblasti jsou k dispozici pro použití nových skutých.
 
-Nejnovější seznam oblastí, které jsou k dispozici, najdete v tématu [zóny dostupnosti](../availability-zones/az-overview.md#services-support-by-region) .
+Nejnovější seznam dostupných oblastí najdete v [tématu Zóny dostupnosti.](../availability-zones/az-overview.md#services-support-by-region)
 
-### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>Můžu změnit/migrovat nebo upgradovat stávající brány virtuální sítě na brány, které mají zóny redundantní nebo rozbrané?
+### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>Můžu změnit/migrovat/upgradovat své stávající brány virtuální sítě na zónově redundantní nebo zónové brány?
 
-Migrace stávajících bran virtuální sítě na brány, které nejsou v současné době podporované, se nepodporují. Můžete ale odstranit stávající bránu a znovu vytvořit bránu, která je nadbytečná nebo se zónou.
+Migrace existujících bran virtuální sítě do zónově redundantních nebo zónových bran není momentálně podporována. Můžete však odstranit existující bránu a znovu vytvořit zónovou nebo zónovou bránu.
 
-### <a name="can-i-deploy-both-vpn-and-express-route-gateways-in-same-virtual-network"></a>Můžu ve stejné virtuální síti nasazovat brány sítě VPN i Express?
+### <a name="can-i-deploy-both-vpn-and-express-route-gateways-in-same-virtual-network"></a>Můžu nasadit brány VPN i Express Route ve stejné virtuální síti?
 
-Podporuje se souběžná existence bran sítě VPN i Express Route ve stejné virtuální síti. Měli byste si však vyhradit rozsah IP adres a/27 pro podsíť brány.
+Koexistence bran VPN i Express Route ve stejné virtuální síti je podporována. Měli byste však rezervovat rozsah IP adres /27 pro podsíť brány.

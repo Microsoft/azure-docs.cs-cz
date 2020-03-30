@@ -1,6 +1,6 @@
 ---
-title: Automatizované opravy pro virtuální počítače s SQL Server (Správce prostředků) | Microsoft Docs
-description: Vysvětluje funkci automatizované opravy SQL Server Virtual Machines spuštěnou v Azure pomocí Správce prostředků.
+title: Automatické opravy pro virtuální servery SQL Server (Správce prostředků) | Dokumenty společnosti Microsoft
+description: Vysvětluje funkci automatické opravy pro virtuální počítače SQL Serveru spuštěné v Azure pomocí Správce prostředků.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -16,10 +16,10 @@ ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 292f3e8819f6f9f4b2989423814e02dfcfb4bfdb
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79127681"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Automatizované opravy pro SQL Server v Azure Virtual Machines (Resource Manager)
@@ -27,15 +27,15 @@ ms.locfileid: "79127681"
 > * [Resource Manager](virtual-machines-windows-sql-automated-patching.md)
 > * [Classic](../sqlclassic/virtual-machines-windows-classic-sql-automated-patching.md)
 
-Automatizované opravy vytváří okno údržby pro virtuální počítač Azure s SQL Server. Automatizované aktualizace je možné nainstalovat pouze během tohoto časového období údržby. V případě SQL Serveru toto omezení zajišťuje, že aktualizace systému a případná restartování proběhnou v době, která je pro databázi nejvhodnější. 
+Automatizované opravy vytvoří pro virtuální počítač Azure s SQL Serverem časové období údržby. Automatizované aktualizace je možné nainstalovat pouze během tohoto časového období údržby. V případě SQL Serveru toto omezení zajišťuje, že aktualizace systému a případná restartování proběhnou v době, která je pro databázi nejvhodnější. 
 
 > [!IMPORTANT]
-> Jsou nainstalovány pouze aktualizace Windows a SQL Server označené jako **důležité** nebo **kritické** . Další aktualizace SQL Server, jako jsou aktualizace Service Pack a kumulativní aktualizace, které nejsou označeny jako **důležité** nebo **kritické** , musí být nainstalovány ručně. 
+> Jsou nainstalovány pouze aktualizace systému Windows a serveru SQL Server označené jako **důležité** nebo **kritické.** Ostatní aktualizace serveru SQL Server, například aktualizace Service Pack a kumulativní aktualizace, které nejsou označeny jako **důležité** nebo **důležité,** musí být nainstalovány ručně. 
 
 Automatizované opravy závisí na [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md).
 
-## <a name="prerequisites"></a>Předpoklady
-Pokud chcete používat automatizované opravy, vezměte v úvahu následující požadavky:
+## <a name="prerequisites"></a>Požadavky
+Chcete-li používat automatické opravy, zvažte následující požadavky:
 
 **Operační systém**:
 
@@ -44,7 +44,7 @@ Pokud chcete používat automatizované opravy, vezměte v úvahu následující
 * Windows Server 2012 R2
 * Windows Server 2016
 
-**Verze SQL Server**:
+**Verze serveru SQL Server**:
 
 * SQL Server 2008 R2
 * SQL Server 2012
@@ -54,55 +54,55 @@ Pokud chcete používat automatizované opravy, vezměte v úvahu následující
 
 **Azure PowerShell**:
 
-* Pokud plánujete nakonfigurovat automatizované opravy pomocí PowerShellu, [nainstalujte nejnovější příkazy Azure PowerShell](/powershell/azure/overview) .
+* Pokud plánujete nakonfigurovat automatické opravy pomocí PowerShellu, [nainstalujte nejnovější příkazy Azure PowerShellu.](/powershell/azure/overview)
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
 > [!NOTE]
-> Automatizované opravy spoléhá na rozšíření agenta SQL Server IaaS. Aktuální Image Galerie virtuálních počítačů v systému SQL toto rozšíření ve výchozím nastavení přidat. Další informace najdete v tématu [SQL Server rozšíření agenta IaaS](virtual-machines-windows-sql-server-agent-extension.md).
+> Automatické opravy závisí na rozšíření agenta SQL Server IaaS. Aktuální sql virtuální počítač galerie obrázky přidat toto rozšíření ve výchozím nastavení. Další informace naleznete v tématu [SQL Server IaaS Agent Extension](virtual-machines-windows-sql-server-agent-extension.md).
 > 
 > 
 
 ## <a name="settings"></a>Nastavení
-Následující tabulka popisuje možnosti, které je možné nakonfigurovat pro automatizované opravy. Skutečné kroky konfigurace se liší v závislosti na tom, jestli používáte příkazy Azure Portal nebo Azure Windows PowerShellu.
+Následující tabulka popisuje možnosti, které lze nakonfigurovat pro automatické opravy. Skutečné kroky konfigurace se liší v závislosti na tom, jestli používáte portál Azure nebo příkazy Azure Windows PowerShell.
 
 | Nastavení | Možné hodnoty | Popis |
 | --- | --- | --- |
-| **Automatizované opravy** |Povolit/zakázat (zakázáno) |Povolí nebo zakáže automatizované opravy pro virtuální počítač Azure. |
-| **Plán údržby** |Každodenní, pondělí, úterý, středa, čtvrtek, pátek, sobota, neděle |Plán pro stažení a instalaci aktualizací Windows, SQL Server a Microsoft pro váš virtuální počítač. |
-| **Hodina zahájení údržby** |0-24 |Místní čas zahájení aktualizace virtuálního počítače. |
-| **Doba trvání časového období údržby** |30-180 |Počet minut, po které je povoleno dokončení stahování a instalace aktualizací. |
-| **Kategorie opravy** |Důležité | Kategorie aktualizací Windows, které se mají stáhnout a nainstalovat|
+| **Automatické opravy** |Povolit/zakázat (zakázáno) |Povolí nebo zakáže automatické opravy pro virtuální počítač Azure. |
+| **Plán údržby** |Každý den, pondělí, úterý, středa, čtvrtek, pátek, sobota, neděle |Plán stahování a instalace aktualizací systému Windows, SQL Server a Microsoft pro váš virtuální počítač. |
+| **Počáteční hodina údržby** |0-24 |Místní čas spuštění aktualizace virtuálního počítače. |
+| **Doba trvání okna údržby** |30-180 |Počet minut povolených k dokončení stahování a instalace aktualizací. |
+| **Kategorie opravy** |Důležité | Kategorie aktualizací systému Windows ke stažení a instalaci.|
 
 ## <a name="configuration-in-the-portal"></a>Konfigurace na portálu
-Pomocí Azure Portal můžete nakonfigurovat automatizované opravy během zřizování nebo pro stávající virtuální počítače.
+Portál Azure můžete použít ke konfiguraci automatické opravy během zřizování nebo pro stávající virtuální počítače.
 
-### <a name="new-vms"></a>Nové virtuální počítače
-Pomocí Azure Portal můžete nakonfigurovat automatizované opravy při vytváření nového virtuálního počítače s SQL Server v modelu nasazení Správce prostředků.
+### <a name="new-vms"></a>Nové virtuální společnosti
+Na webu Azure Portal nakonfigurujte automatické opravy při vytváření nového virtuálního počítače SQL Serveru v modelu nasazení Správce prostředků.
 
-Na kartě **nastavení SQL Server** v části **automatizovaná oprava**proveďte možnost **změnit konfiguraci** . Na následujícím Azure Portal snímku obrazovky se zobrazuje okno **automatizované opravy SQL** .
+Na kartě **Nastavení serveru SQL Server** vyberte možnost Změnit **konfiguraci** v části **Automatické opravy**. Následující snímek obrazovky portálu Azure zobrazuje okno **automatické opravy SQL.**
 
-![Automatizované opravy SQL v Azure Portal](./media/virtual-machines-windows-sql-automated-patching/azure-sql-arm-patching.png)
+![Automatické opravy SQL na webu Azure Portal](./media/virtual-machines-windows-sql-automated-patching/azure-sql-arm-patching.png)
 
-Kontext najdete v tématu úplné téma o [zřízení SQL Server virtuálního počítače v Azure](virtual-machines-windows-portal-sql-server-provision.md).
+Kontext najdete v tématu úplné téma o [zřizování virtuálního počítače SQL Server v Azure](virtual-machines-windows-portal-sql-server-provision.md).
 
-### <a name="existing-vms"></a>Existující virtuální počítače
+### <a name="existing-vms"></a>Existující virtuální chod
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-U stávajících virtuálních počítačů s SQL Server otevřete svůj [prostředek virtuálních počítačů SQL](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) a v části **Nastavení**vyberte **opravit** . 
+U existujících virtuálních počítačů SQL Serveru otevřete [prostředek virtuálních počítačů SQL](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) a v části **Nastavení**vyberte **Možnost Oprava** . 
 
-![Automatické opravy SQL pro existující virtuální počítače](./media/virtual-machines-windows-sql-automated-patching/azure-sql-rm-patching-existing-vms.png)
+![Automatické opravy SQL pro existující virtuální servery](./media/virtual-machines-windows-sql-automated-patching/azure-sql-rm-patching-existing-vms.png)
 
 
-Po dokončení klikněte na tlačítko **OK** v dolní části okna **Konfigurace SQL Server** a uložte provedené změny.
+Po dokončení můžete změny uložit klepnutím na tlačítko **OK** v dolní části **konfiguračního** okna serveru SQL Server.
 
-Pokud povolíte automatizované opravy poprvé, Azure nakonfiguruje agenta SQL Server IaaS na pozadí. Během této doby se Azure Portal nemusí ukázat, že je nakonfigurovaná automatizovaná oprava. Počkejte několik minut, než se agent nainstaluje a nakonfiguruje. Poté, co Azure Portal odráží nové nastavení.
+Pokud poprvé povolíte automatické opravy, Azure nakonfiguruje agenta SQL Server IaaS na pozadí. Během této doby portál Azure nemusí zobrazit, že automatické opravy je nakonfigurovaný. Počkejte několik minut, než bude agent nainstalován, nakonfigurován. Poté portál Azure odráží nové nastavení.
 
-## <a name="configuration-with-powershell"></a>Konfigurace pomocí PowerShellu
-Po zřízení virtuálního počítače s SQL nakonfigurujte automatizované opravy pomocí PowerShellu.
+## <a name="configuration-with-powershell"></a>Konfigurace s PowerShellem
+Po zřízení virtuálního počítače SQL nakonfigurujte automatické opravy pomocí prostředí PowerShell.
 
-V následujícím příkladu se prostředí PowerShell používá ke konfiguraci automatizované opravy na stávajícím virtuálním počítači s SQL Server. Příkaz **New-AzVMSqlServerAutoPatchingConfig** nakonfiguruje nové okno údržby pro automatické aktualizace.
+V následujícím příkladu se prostředí PowerShell používá ke konfiguraci automatickéopravy na existujícím virtuálním počítači sql serveru. Příkaz **New-AzVMSqlServerAutoPatchingConfig** konfiguruje nové okno údržby pro automatické aktualizace.
 
     $vmname = "vmname"
     $resourcegroupname = "resourcegroupname"
@@ -110,23 +110,23 @@ V následujícím příkladu se prostředí PowerShell používá ke konfiguraci
 s Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -VMName $vmname -ResourceGroupName $resourcegroupname
 
 > [!IMPORTANT]
-> Pokud rozšíření ještě není nainstalované, instalace rozšíření restartuje službu SQL Server.
+> Pokud rozšíření ještě není nainstalováno, instalace rozšíření restartuje službu SQL Server.
 
-Na základě tohoto příkladu popisuje následující tabulka praktický efekt na cílovém virtuálním počítači Azure:
+Na základě tohoto příkladu následující tabulka popisuje praktický vliv na cílový virtuální počítač Azure:
 
 | Parametr | Účinek |
 | --- | --- |
-| **DayOfWeek** |Opravy se nainstalují každý čtvrtek. |
-| **MaintenanceWindowStartingHour** |Začněte s aktualizacemi na 11:10:00. |
-| **MaintenanceWindowsDuration** |Opravy musí být nainstalované během 120 minut. V závislosti na čase spuštění musí být dokončeny pomocí 1:13:00. |
-| **PatchCategory** |Jediným možným nastavením pro tento parametr je **důležité**. Tato instalace nainstaluje službu Windows Update označenou jako důležitou; neinstaluje žádné aktualizace SQL Server, které nejsou zahrnuty v této kategorii. |
+| **Dayofweek** |Patche instalovány každý čtvrtek. |
+| **MaintenanceWindowStartingHour** |Aktualizace můžete zahájit v 11:00. |
+| **ÚdržbaWindowsDoba trvání** |Záplaty musí být nainstalovány do 120 minut. Na základě času zahájení musí být dokončeny do 13:00. |
+| **Kategorie patch** |Jediné možné nastavení pro tento parametr je **Důležité**. Tím nainstalujete aktualizaci systému Windows označenou jako Důležité; nenainstaluje žádné aktualizace serveru SQL Server, které nejsou zahrnuty v této kategorii. |
 
-Instalace a konfigurace agenta SQL Server IaaS může trvat několik minut.
+Instalace a konfigurace agenta SQL Server IaaS agenta serveru SQL Server může trvat několik minut.
 
-Chcete-li zakázat automatizované opravy, spusťte stejný skript bez parametru **-Enable** pro rutinu **New-AzVMSqlServerAutoPatchingConfig**. Pokud parametr **-Enable** nesignalizuje, příkaz tuto funkci zakáže.
+Chcete-li zakázat automatické opravy, spusťte stejný skript bez parametru **-Enable** na **příkaz New-AzVMSqlServerAutoPatchingConfig**. Absence parametru **-Enable** signalizuje příkaz k zakázání funkce.
 
 ## <a name="next-steps"></a>Další kroky
-Informace o dalších dostupných úlohách automatizace najdete v tématu [SQL Server rozšíření agenta IaaS](virtual-machines-windows-sql-server-agent-extension.md).
+Informace o dalších dostupných úlohách automatizace naleznete v tématu [SQL Server IaaS Agent Extension](virtual-machines-windows-sql-server-agent-extension.md).
 
-Další informace o spuštění SQL Server na virtuálních počítačích Azure najdete v tématu [SQL Server na azure Virtual Machines přehled](virtual-machines-windows-sql-server-iaas-overview.md).
+Další informace o spuštění SQL Serveru na virtuálních počítačích Azure najdete v tématu [SQL Server ve virtuálních počítačích Azure přehled](virtual-machines-windows-sql-server-iaas-overview.md).
 

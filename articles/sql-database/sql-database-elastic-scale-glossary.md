@@ -1,6 +1,6 @@
 ---
-title: Glosář nástrojů pro Elastic Database
-description: Vysvětlení pojmů používaných pro nástroje elastické databáze
+title: Glosář nástrojů elastické databáze
+description: Vysvětlení termínů používaných pro elastické databázové nástroje
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,76 +12,76 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: ab972db78cd213497fb96486b3e16b01f2c4c6eb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823632"
 ---
-# <a name="elastic-database-tools-glossary"></a>Glosář nástrojů pro Elastic Database
+# <a name="elastic-database-tools-glossary"></a>Glosář nástrojů elastické databáze
 
-Následující výrazy jsou definovány pro [nástroje elastic Database](sql-database-elastic-scale-introduction.md), což je funkce Azure SQL Database. Nástroje se používají ke správě [map horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md)a zahrnují [knihovnu klienta](sql-database-elastic-database-client-library.md), nástroj pro dělení na [slučování](sql-database-elastic-scale-overview-split-and-merge.md), [elastické fondy](sql-database-elastic-pool.md)a [dotazy](sql-database-elastic-query-overview.md). 
+Následující termíny jsou definovány pro [nástroje elastické databáze](sql-database-elastic-scale-introduction.md), což je funkce Azure SQL Database. Nástroje se používají ke správě [map úlomků](sql-database-elastic-scale-shard-map-management.md)a zahrnují [klientskou knihovnu](sql-database-elastic-database-client-library.md), [nástroj pro rozdělení sloučení](sql-database-elastic-scale-overview-split-and-merge.md), [elastické fondy](sql-database-elastic-pool.md)a [dotazy](sql-database-elastic-query-overview.md). 
 
-Tyto výrazy se používají při [přidávání horizontálních oddílů pomocí nástrojů elastic Database](sql-database-elastic-scale-add-a-shard.md) a [k řešení problémů s mapou horizontálních oddílů pomocí třídy RecoveryManager](sql-database-elastic-database-recovery-manager.md).
+Tyto termíny se používají při [přidání šněru pomocí nástrojů elastické databáze](sql-database-elastic-scale-add-a-shard.md) a [pomocí RecoveryManager třídy opravit problémy s mapou oddílu](sql-database-elastic-database-recovery-manager.md).
 
-![Elastické výrazy škálování][1]
+![Termíny elastické stupnice][1]
 
-**Databáze**: databáze SQL Azure. 
+**Databáze**: Databáze Azure SQL. 
 
-**Směrování závislé na datech**: funkce, která umožňuje aplikaci připojovat se k horizontálních oddílů pomocí konkrétního horizontálního dělení klíče. Viz [Směrování závislá na datech](sql-database-elastic-scale-data-dependent-routing.md). Porovnejte s **[dotazem multi-horizontálních oddílů](sql-database-elastic-scale-multishard-querying.md)** .
+**Směrování závislé na datech**: Funkce, která umožňuje aplikaci připojit se k oddílu daného konkrétního klíče pro řícení. Viz [Směrování závislé na datech](sql-database-elastic-scale-data-dependent-routing.md). Porovnejte **[s dotazem s více oddíly .](sql-database-elastic-scale-multishard-querying.md)**
 
-**Globální mapa horizontálních oddílů**: mapa mezi horizontálního dělení klíči a jejich příslušnými horizontálních oddílů v rámci **horizontálních oddílů sady**. Globální mapa horizontálních oddílů je uložena ve **Správci map horizontálních oddílů**. Porovnat s **místní mapou horizontálních oddílů**
+**Globální mapa úlomků**: Mapa mezi klíči s náloží a jejich příslušnými oddíly v **rámci sady šitrů**. Globální mapa úlomků je uložena ve **správci mapy skřípků**. Porovnejte s **místní mapou úlomku**.
 
-**List map horizontálních oddílů**: mapování horizontálních oddílů, ve kterém jsou klíče horizontálního dělení namapovány individuálně. Porovnejte s **rozsahem horizontálních oddílů map**.   
+**Seznam mapy štřepů**: Mapa šiřidla, ve kterém jsou jednotlivě mapovány klíče s náloží. Porovnejte s **mapou úlomku rozsahu**.   
 
-**Místní Mapa horizontálních oddílů**: uložená v horizontálních oddílů, místní Mapa horizontálních oddílů obsahuje mapování pro shardlety, která se nachází na horizontálních oddílů.
+**Místní mapa úlomku**: Uloženo na šiřidlo, místní mapa šikříku obsahuje mapování pro shardlety, které jsou umístěny na šiřidlo.
 
-**Dotaz s více horizontálních oddílů**: možnost vydávat dotaz na více horizontálních oddílů; sady výsledků jsou vráceny pomocí sémantiky UNION ALL (označuje se také jako "dotaz na ventilátor"). Porovnání s **směrováním závislým na datech**.
+**Dotaz s více úlomky**: Možnost vydat dotaz proti více úlomkům; sady výsledků jsou vráceny pomocí union all sémantiku (také známý jako "fan-out dotaz"). Porovnejte s **směrováním závislým na datech**.
 
-**Vícenásobný tenant** a **jeden tenant**: zobrazuje se databáze s jedním klientem a víceklientské databáze:
+**Víceklientské** a **jednoklientské:** Zobrazí databázi s jedním tenantem a databázi s více klienty:
 
-![Jedna a více tenantů databází](./media/sql-database-elastic-scale-glossary/multi-single-simple.png)
+![Databáze s jedním a více klienty](./media/sql-database-elastic-scale-glossary/multi-single-simple.png)
 
-Tady je reprezentace **horizontálně dělené** jedné a víceklientské databáze. 
+Zde je reprezentace **databáze s oddíly** jednoho a více klientů. 
 
-![Jedna a více tenantů databází](./media/sql-database-elastic-scale-glossary/shards-single-multi.png)
+![Databáze s jedním a více klienty](./media/sql-database-elastic-scale-glossary/shards-single-multi.png)
 
-**Map horizontálních oddílů rozsahu**: mapa horizontálních oddílů, ve které je strategie distribuce horizontálních oddílů založena na několika oblastech souvislých hodnot. 
+**Mapa úlomků rozsahu**: Mapa úložného období, ve které je strategie distribuce úlomků založena na více rozsahech sousedících hodnot. 
 
-**Referenční tabulky**: tabulky, které nejsou horizontálně dělené, ale jsou replikovány napříč horizontálních oddílů. Například kódy PSČ mohou být uloženy v referenční tabulce. 
+**Referenční tabulky**: Tabulky, které nejsou rozděleny do platových disponovaných, ale jsou replikovány napříč oddíly šikmy. PsČ lze například uložit do referenční tabulky. 
 
-**Horizontálních oddílů**: Azure SQL Database, která ukládá data ze sady dat horizontálně dělené. 
+**Shard:** Databáze Azure SQL, která ukládá data z řídké datové sady. 
 
-**Horizontálních oddílů**: schopnost provádět **horizontální** i **vertikální škálování**.
+**Elasticita horizontálního oddílu**: Schopnost provádět **horizontální i** **svislé měřítko**.
 
-**Tabulky horizontálně dělené**: tabulky, které jsou horizontálně dělené, tj., jejichž data jsou distribuována napříč horizontálních oddílů na základě jejich hodnot horizontálního dělení klíče. 
+**Tabulky s rozdělením**: Tabulky, které jsou rozděleny podle oddílů, tj. 
 
-**Horizontálního dělení klíč**: hodnota sloupce, která určuje, jak jsou data distribuována napříč horizontálních oddílů. Typ hodnoty může být jedna z následujících hodnot: **int**, **bigint**, **varbinary**nebo **uniqueidentifier**. 
+**Klíč rozdělení výtažků**: Hodnota sloupce, která určuje způsob distribuce dat mezi oddíly šikmu. Typ hodnoty může být jeden z následujících: **int**, **bigint**, **varbinary**nebo **uniqueidentifier**. 
 
-**Horizontálních oddílů sada**: kolekce horizontálních oddílů, která je přiřazená stejné mapě horizontálních oddílů ve Správci map horizontálních oddílů.  
+**Sada úlomků**: Kolekce úlomků, které jsou přiřazeny ke stejné mapě šikmých oddílů ve správci mapy oddílu.  
 
-**Shardletu**: všechna data přidružená k jedné hodnotě klíče horizontálního dělení na horizontálních oddílů. Shardletu je nejmenší dostupná jednotka přesunu dat při redistribuci tabulek horizontálně dělené. 
+**Shardlet**: Všechna data spojená s jedinou hodnotou klíče s návěsným nožem na šiřidlu. Shardlet je nejmenší jednotka pohybu dat možné při redistribuci rozdělení tabulky. 
 
-**Mapa horizontálních oddílů**: sada mapování mezi horizontálního dělení klíči a jejich příslušnými horizontálních oddílů.
+**Mapa šněrování**: Sada mapování mezi klíči s náložemi a jejich příslušnými oddíly.
 
-**Správce map horizontálních oddílů**: objekt správy a úložiště dat, které obsahuje mapy horizontálních oddílů, umístění horizontálních oddílů a mapování pro jednu nebo více horizontálních oddílů sad.
+**Správce mapy síní**: Úložiště objektů a dat pro správu, které obsahuje mapování úlomků, umístění šitrů a mapování pro jednu nebo více sad štřepů.
 
 ![Mapování][2]
 
 ## <a name="verbs"></a>Příkazy
-**Horizontální škálování**: Změna velikosti (nebo v) kolekce horizontálních oddílů přidáním nebo odebráním horizontálních oddílů na mapu horizontálních oddílů, jak je znázorněno níže.
+**Horizontální škálování**: Akt škálování out (nebo v) kolekce horizontálních oddílů přidáním nebo odebráním horizontálních oddílů do mapy horizontálního oddílu, jak je znázorněno níže.
 
-![Horizontální a svislé škálování][3]
+![Vodorovné a svislé měřítko][3]
 
-**Sloučení**: jednání přesunutí shardlety ze dvou horizontálních oddílů na jednu horizontálních oddílů a aktualizace mapování horizontálních oddílů, odpovídajícím způsobem.
+**Sloučení**: Akt přesunutí shardlets ze dvou úlomků do jednoho úlomku a odpovídajícím způsobem aktualizovat mapu střepů.
 
-**Shardletu Move**: jednání o přesunutí jedné shardletu na jiný horizontálních oddílů. 
+**Shardlet move**: Akt přesunutí jednoho shardletu na jiný úlomek. 
 
-**Horizontálních oddílů**: Jedná se o horizontální dělení identicky strukturovaných dat napříč více databázemi na základě horizontálního dělení klíče.
+**Horizontální oddíl**: Akt vodorovně dělení identicky strukturovaných dat mezi více databází na základě klíče horizontálního dělení.
 
-**Split**: jednání přesunu několika shardlety z jedné horizontálních oddílů do druhé (obvykle New) horizontálních oddílů. Horizontálního dělení klíč poskytuje uživatel jako rozdělený bod.
+**Rozdělení**: Akt přesunutí několika shardlets z jednoho úlomku do druhého (obvykle nové) šiřidla. Klíč rozdělení je poskytován uživatelem jako bod rozdělení.
 
-**Vertikální škálování**: Změna velikosti (nebo zmenšení) výpočetní velikosti jednotlivých horizontálních oddílů. Například změna horizontálních oddílů z úrovně Standard na Premium (což vede k dalším výpočetním prostředkům). 
+**Vertikální škálování**: Akt škálování nahoru (nebo dolů) výpočetní velikost jednotlivých horizontálního oddílu. Například změna úlomku ze standardního na prémiový (což má za následek více výpočetních prostředků). 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

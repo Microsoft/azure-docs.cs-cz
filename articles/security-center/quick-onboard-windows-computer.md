@@ -1,5 +1,5 @@
 ---
-title: Připojení počítačů s Windows k Azure Security Center
+title: Připojení počítačů s Windows ke službě Azure Security Center
 description: V tomto rychlém startu se dozvíte, jak zřídit agenta Microsoft Monitoring Agent na počítači s Windows.
 services: security-center
 documentationcenter: na
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
 ms.openlocfilehash: 417d8379d019a9ef0da41638cba4a1f9cb7b8bc2
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73686497"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Rychlý start: Připojení počítačů s Windows ke službě Azure Security Center
@@ -29,11 +29,11 @@ V tomto rychlém startu se dozvíte, jak nainstalovat agenta Microsoft Monitorin
 ## <a name="prerequisites"></a>Požadavky
 Pokud chcete začít využívat Security Center, musíte mít předplatné pro Microsoft Azure. Pokud nemáte předplatné, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
-Než začnete s tímto rychlým startem, musíte mít službu Security Center na cenové úrovni Standard. Pokyny k upgradu najdete v tématu [Připojení předplatného Azure ke službě Security Center úrovně Standard](security-center-get-started.md). Můžete vyzkoušet Standard Security Center na žádné náklady. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
+Než začnete s tímto rychlým startem, musíte mít službu Security Center na cenové úrovni Standard. Pokyny k upgradu najdete v tématu [Připojení předplatného Azure ke službě Security Center úrovně Standard](security-center-get-started.md). Standard centra zabezpečení můžete vyzkoušet zdarma. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="add-new-windows-computer"></a>Přidání nového počítače s Windows
 
-1. Přihlaste se k webu [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
+1. Přihlaste se k [portálu Azure](https://azure.microsoft.com/features/azure-portal/).
 2. V nabídce **Microsoft Azure** vyberte **Security Center**. Otevře se obrazovka **Security Center – Přehled**.
 
    ![Přehled služby Security Center][2]
@@ -63,7 +63,7 @@ Teď je potřeba stažený soubor nainstalovat na cílový počítač.
 3. Na stránce **Licenční podmínky** si přečtěte licenční podmínky a pak vyberte **Souhlasím**.
 4. Na stránce **Cílová složka** změňte nebo ponechte výchozí instalační složku a pak vyberte **Další**.
 5. Na stránce **Možnosti instalace agenta** zvolte připojení agenta k Azure Log Analytics a pak vyberte **Další**.
-6. Na stránce **Azure Log Analytics** vložte **ID pracovního prostoru** a **Klíč pracovního prostoru (Primární klíč)** , které jste zkopírovali do Poznámkového bloku v rámci předchozího postupu.
+6. Na stránce **Azure Log Analytics** vložte **ID pracovního prostoru** a **Klíč pracovního prostoru (Primární klíč)**, které jste zkopírovali do Poznámkového bloku v rámci předchozího postupu.
 7. Pokud se má počítač hlásit do pracovního prostoru služby Log Analytics v cloudu Azure Government, vyberte z rozevíracího seznamu **Cloud Azure** možnost **Azure US Government**. Pokud počítač potřebuje komunikovat se službou Log Analytics přes proxy server, vyberte **Upřesnit** a zadejte adresu URL a číslo portu proxy serveru.
 8. Jakmile dokončíte zadávání nezbytných nastavení konfigurace, vyberte **Další**.
 

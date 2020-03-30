@@ -1,7 +1,7 @@
 ---
-title: Správa aktivit
-description: Popisuje koncepty aktivit v řešení VMware pomocí funkcí AVS
-titleSuffix: Azure VMware Solutions (AVS)
+title: CloudJednoduchá správa aktivit
+titleSuffix: Azure VMware Solution by CloudSimple
+description: Popisuje koncepty aktivit y řešení VMware od CloudSimple.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/30/2019
@@ -9,33 +9,33 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ca20413b4f21ddfcf01021f8b003b30ad2195579
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 985fcc0aa99723fde5e0c11babe3777c31cbd4c3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025091"
 ---
 # <a name="activity-management-overview"></a>Přehled správy aktivit
 
-Funkce AVS sleduje veškerou aktivitu, která může ovlivnit fungování vašeho privátního cloudového prostředí služby AVS. Mezi aktivity patří výstrahy, události, úlohy a aktivity auditu. [Stránky aktivity](monitor-activity.md) shrnují všechny aktuální aktivity a umožňují vám přejít k podrobnostem, kde najdete další podrobnosti.
+CloudSimple sleduje všechny aktivity, které mohou ovlivnit fungování vašeho prostředí privátního cloudu. Aktivity zahrnují výstrahy, události, úkoly a auditní aktivity. [Stránky Aktivity](monitor-activity.md) shrnují všechny aktuální aktivity a umožňují přejít k podrobnostem.
 
-## <a name="events"></a>Akce
+## <a name="events"></a>Události
 
-Události sledují aktivitu uživatelů a systému na portálu AVS. Události zobrazují aktivitu přidruženou ke konkrétnímu prostředku a závažnost dopadu.  Události můžete zobrazit na portálu AVS.
+Události sledovat aktivitu uživatelů a systému na portálu CloudSimple. Události ukazují aktivitu přidruženou k určitému prostředku a závažnost dopadu.  Můžete zobrazit události z portálu CloudSimple.
 
 ## <a name="alerts"></a>Výstrahy
 
-Výstrahy jsou oznámením významné aktivity ve vašem prostředí služby AVS. Události, které ovlivňují fakturaci nebo přístup uživatelů, se zobrazují jako výstrahy. Výstrahy můžete potvrdit z portálu AVS.
+Výstrahy jsou oznámení o jakékoli významné aktivity ve vašem clouduSimple prostředí. Události, které mají vliv na fakturaci nebo přístup uživatelů, se zobrazují jako výstrahy.  Můžete potvrdit výstrahy z portálu CloudSimple.
 
 ## <a name="tasks"></a>Úlohy
 
-Úkoly sledují všechny uživatelské operace, které dokončí více než 30 sekund. Průběh úkolu můžete monitorovat na portálu služby AVS. Pro dokončené úkoly obsahují informace celkový čas dokončení.
+Úkoly sledovat všechny operace uživatele, která trvá déle než 30 sekund na dokončení. Průběh úlohy můžete sledovat z portálu CloudSimple.  U dokončených úkolů informace zahrnují celkovou dobu dokončení.
 
 ## <a name="audit"></a>Auditování
 
-Protokoly auditu udržují přehled o operacích uživatele. Protokoly auditu obsahují parametry, které uživatel zadal pro operaci. Protokoly auditování můžete použít k monitorování aktivity uživatelů pro všechny uživatele.
+Protokoly auditu sledují operace uživatele. Protokoly auditu obsahují parametry poskytnuté pro operaci uživatelem.  Protokoly auditu můžete použít ke sledování aktivity uživatelů pro všechny uživatele.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Zobrazení souhrnu účtu](account.md)
+* [Zobrazení přehledu účtů](account.md)

@@ -1,6 +1,6 @@
 ---
-title: Modul s dvojitou Azure Event Grid IoT Edge | Microsoft Docs
-description: Konfigurace prostřednictvím modulu je nevlákenná.
+title: Dvojče modulu – Azure Event Grid IoT Edge | Dokumenty společnosti Microsoft
+description: Konfigurace pomocí modulu Twin.
 author: HiteshMadan
 manager: rajarv
 ms.author: himad
@@ -10,24 +10,24 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 5c23b9ef280a4a4e3458d279ecf060d2e3d50295
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72992142"
 ---
-# <a name="module-twin-json-schema"></a>Nevlákenný modul – schéma JSON
+# <a name="module-twin-json-schema"></a>Dvojče modulu JSON schéma
 
-Event Grid v IoT Edge integruje s IoT Edge ekosystémem a podporuje vytváření témat a odběrů prostřednictvím nevlákenných modulů. Oznamuje také aktuální stav všech témat a odběrů událostí pro hlášené vlastnosti v modulu s dvojitou platností.
+Event Grid na IoT Edge se integruje s ekosystémem IoT Edge a podporuje vytváření témat a předplatných prostřednictvím modulu Twin. Také hlásí aktuální stav všech témat a odběry událostí na hlášené vlastnosti na Twin modulu.
 
 > [!WARNING]
-> Z důvodu omezení v IoT Edge ekosystému jsou všechny prvky pole v následujícím příkladu JSON zakódované jako řetězce JSON. Viz `EventSubscription.Filter.EventTypes` a `EventSubscription.Filter.AdvancedFilters` klíče v následujícím příkladu.
+> Z důvodu omezení v ekosystému IoT Edge byly všechny prvky pole v následujícím příkladu json kódovány jako řetězce json. Viz `EventSubscription.Filter.EventTypes` `EventSubscription.Filter.AdvancedFilters` a klíče v následujícím příkladu.
 
-## <a name="desired-properties-json"></a>Formát JSON požadovaných vlastností
+## <a name="desired-properties-json"></a>Požadované vlastnosti JSON
 
-* Hodnota každé dvojice klíč-hodnota v části témata má přesně stejné schéma JSON, které se používá pro `Topic.Properties` v rozhraní API při vytváření témat.
-* Hodnota každé dvojice klíč-hodnota v oddílu **EventSubscriptions** má přesně stejné schéma JSON, které se používá pro `EventSubscription.Properties` v rozhraní API při vytváření témat.
-* Chcete-li odstranit téma, nastavte jeho hodnotu na `null` v požadovaných vlastnostech.
+* Hodnota každého páru klíč hodnota v části témata má přesně stejné schéma JSON, `Topic.Properties` který se používá pro na rozhraní API při vytváření témat.
+* Hodnota každého páru klíč hodnota v části **EventSubscriptions** má přesně stejné schéma json, `EventSubscription.Properties` který se používá pro rozhraní API při vytváření témat.
+* Chcete-li odstranit téma, `null` nastavte jeho hodnotu v požadovaných vlastnostech.
 * Odstranění odběrů událostí prostřednictvím požadovaných vlastností není podporováno.
 
 ```json
@@ -79,13 +79,13 @@ Event Grid v IoT Edge integruje s IoT Edge ekosystémem a podporuje vytváření
 }
 ```
 
-## <a name="reported-properties-json"></a>KÓD JSON pro hlášené vlastnosti
+## <a name="reported-properties-json"></a>Hlášené vlastnosti JSON
 
-Oddíl nahlášených vlastností v modulu s dvojitou platností obsahuje následující informace:
+Část ohlášených vlastností dvojčete modulu obsahuje následující informace:
 
-* Sada témat a předplatných, která existují v obchodě s modulem
-* Jakékoli chyby, ke kterým došlo při vytváření požadovaných témat nebo odběrů událostí
-* Jakékoli chyby při spuštění (například analýza JSON požadovaných vlastností se nezdařila)
+* Sada témat a odběrů, které existují v úložišti modulu
+* Při vytváření požadovaných předplatných témat/událostí došlo k chybám
+* Všechny chyby spuštění (například požadované vlastnosti Analýza JSON se nezdařila)
 
 ```json
 {

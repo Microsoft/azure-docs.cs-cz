@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace OfficeSpace softwaru pro Automatické zřizování uživatelů s Azure Active Directory | Microsoft Docs'
-description: Naučte se nakonfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů k OfficeSpace softwaru.
+title: 'Kurz: Konfigurace softwaru OfficeSpace pro automatické zřizování uživatelů pomocí služby Azure Active Directory | Dokumenty společnosti Microsoft'
+description: Přečtěte si, jak nakonfigurovat službu Azure Active Directory tak, aby automaticky zřašovala a zřašovala uživatelské účty do softwaru OfficeSpace.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,145 +16,145 @@ ms.topic: article
 ms.date: 10/02/2019
 ms.author: Zhchia
 ms.openlocfilehash: 3d472b300400cf230773ba01f3f4362988c34e81
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063397"
 ---
-# <a name="tutorial-configure-officespace-software-for-automatic-user-provisioning"></a>Kurz: Konfigurace OfficeSpace softwaru pro Automatické zřizování uživatelů
+# <a name="tutorial-configure-officespace-software-for-automatic-user-provisioning"></a>Kurz: Konfigurace softwaru OfficeSpace pro automatické zřizování uživatelů
 
-Cílem tohoto kurzu je předvést kroky, které je třeba provést v OfficeSpace softwaru a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD pro Automatické zřizování a zrušení zřizování uživatelů a skupin pro OfficeSpace Software.
+Cílem tohoto kurzu je demonstrovat kroky, které mají být provedeny v OfficeSpace Software a Azure Active Directory (Azure AD) nakonfigurovat Azure AD automaticky zřídit a de-provision uživatelů nebo skupin officespace software.
 
 > [!NOTE]
-> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
+> Tento kurz popisuje konektor postavený na nad službou zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá, jak funguje, a nejčastější dotazy, najdete [v tématu Automatizace zřizování uživatelů a zrušení zřizování aplikací SaaS pomocí služby Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
-> Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
+> Tento konektor je aktuálně ve verzi Public Preview. Další informace o obecných podmínkách použití Microsoft Azure pro funkce preview najdete v [tématu Doplňkové podmínky použití pro Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
+Scénář popsaný v tomto kurzu předpokládá, že již máte následující požadavky:
 
-* Tenant Azure AD
-* [Tenant OfficeSpace Software](https://www.officespacesoftware.com/)
+* Klient Azure AD
+* [Tenant softwaru officespace](https://www.officespacesoftware.com/)
 * Uživatelský účet v softwaru OfficeSpace s oprávněními správce.
 
-## <a name="assigning-users-to-officespace-software"></a>Přiřazení uživatelů k OfficeSpace softwaru
+## <a name="assigning-users-to-officespace-software"></a>Přiřazení uživatelů k softwaru OfficeSpace
 
-Azure Active Directory používá koncept nazvaný *přiřazení* k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelů se synchronizují jenom uživatelé a skupiny, které jsou přiřazené k aplikaci v Azure AD.
+Azure Active Directory používá koncept s názvem *přiřazení* k určení, kteří uživatelé by měli získat přístup k vybraným aplikacím. V kontextu automatickézřižené zřizování uživatelů jsou synchronizovány pouze uživatelé nebo skupiny, které byly přiřazeny k aplikaci ve službě Azure AD.
 
-Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé a skupiny ve službě Azure AD potřebují přístup k OfficeSpace softwaru. Po rozhodnutí můžete přiřadit tyto uživatele nebo skupiny k OfficeSpace softwaru podle pokynů uvedených tady:
+Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé nebo skupiny ve službě Azure AD potřebují přístup k softwaru OfficeSpace. Jakmile se rozhodnete, můžete těmto uživatelům a/nebo skupinám přiřadit software OfficeSpace podle pokynů zde:
 * [Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-officespace-software"></a>Důležité tipy pro přiřazení uživatelů k OfficeSpace softwaru
+## <a name="important-tips-for-assigning-users-to-officespace-software"></a>Důležité tipy pro přiřazení uživatelů k softwaru OfficeSpace
 
-* Doporučuje se, aby se k OfficeSpace softwaru, který testuje automatickou konfiguraci zřizování uživatelů, přiřadil jeden uživatel Azure AD. Další uživatele a skupiny můžete přiřadit později.
+* Doporučuje se, aby jeden uživatel Azure AD je přiřazen k OfficeSpace Software k testování konfigurace automatického zřizování uživatelů. Další uživatelé a/nebo skupiny mohou být přiřazeny později.
 
-* Když přiřadíte uživatele k OfficeSpace softwaru, musíte vybrat jakoukoli platnou roli specifickou pro aplikaci (Pokud je dostupná) v dialogovém okně přiřazení. Uživatelé s **výchozí rolí přístupu** se z zřizování vylučují.
+* Při přiřazování uživatele k softwaru OfficeSpace je nutné v dialogovém okně přiřazení vybrat libovolnou platnou roli specifickou pro aplikaci (pokud je k dispozici). Uživatelé s rolí **Výchozí přístup** jsou z zřizování vyloučeni.
 
-## <a name="set-up-officespace-software-for-provisioning"></a>Nastavení OfficeSpace softwaru pro zřizování
+## <a name="set-up-officespace-software-for-provisioning"></a>Nastavení softwaru OfficeSpace pro zřizování
 
-1. Přihlaste se ke [konzole správce softwaru OfficeSpace](https://support.officespacesoftware.com/hc). Přejděte do **nastavení > konektory**.
+1. Přihlaste se do [konzoly officespace software admin console](https://support.officespacesoftware.com/hc). Přejděte do **nastavení > konektorů**.
 
-    ![Konzola správce softwaru OfficeSpace](media/officespace-software-provisioning-tutorial/settings.png)
+    ![Konzola pro správu softwaru officespace](media/officespace-software-provisioning-tutorial/settings.png)
 
-2.  Přejděte do **složky synchronizace adresářů > SCIM**.
+2.  Přejděte do **funkce Synchronizace adresářů > SCIM**.
 
-    ![OfficeSpace Software Add SCIM](media/officespace-software-provisioning-tutorial/scim.png)
+    ![OfficeSpace Software Přidat SCIM](media/officespace-software-provisioning-tutorial/scim.png)
 
-3.  Zkopírujte **token ověřování SCIM**. Tato hodnota se zadá do pole token tajného kódu na kartě zřizování OfficeSpace softwarové aplikace v Azure Portal.
+3.  Zkopírujte **ověřovací token SCIM**. Tato hodnota se zadá do pole Tajný token na kartě Zřizování aplikace OfficeSpace Software na webu Azure Portal.
 
-    ![Token pro vytváření OfficeSpace softwaru](media/officespace-software-provisioning-tutorial/token.png)
+    ![Token pro vytváření softwaru officespace](media/officespace-software-provisioning-tutorial/token.png)
 
-## <a name="add-officespace-software-from-the-gallery"></a>Přidání OfficeSpace softwaru z Galerie
+## <a name="add-officespace-software-from-the-gallery"></a>Přidání softwaru OfficeSpace z galerie
 
-Před konfigurací OfficeSpace softwaru pro Automatické zřizování uživatelů se službou Azure AD je nutné přidat OfficeSpace Software z Galerie aplikací Azure AD do svého seznamu spravovaných aplikací SaaS.
+Před konfigurací officespace software pro automatické zřizování uživatelů s Azure AD, je třeba přidat OfficeSpace Software z galerie aplikací Azure AD do seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat OfficeSpace Software z Galerie aplikací Azure AD, proveďte následující kroky:**
+**Chcete-li přidat software OfficeSpace z galerie aplikací Azure AD, proveďte následující kroky:**
 
-1. V **[Azure Portal](https://portal.azure.com)** v levém navigačním panelu vyberte možnost **Azure Active Directory**.
+1. Na **[webu Azure Portal](https://portal.azure.com)** vyberte na levém navigačním panelu **položku Azure Active Directory**.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Přejděte na **podnikové aplikace**a vyberte **všechny aplikace**.
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
 
 3. Chcete-li přidat novou aplikaci, vyberte tlačítko **Nová aplikace** v horní části podokna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **OfficeSpace Software**, na panelu výsledků vyberte **OfficeSpace Software** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **OfficeSpace Software**, vpanelu s výsledky vyberte **Software officespace** a klepnutím na tlačítko **Přidat** přidejte aplikaci.
 
-    ![OfficeSpace Software v seznamu výsledků](common/search-new-app.png)
+    ![Software OfficeSpace v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-officespace-software"></a>Konfigurace automatického zřizování uživatelů pro OfficeSpace Software 
+## <a name="configuring-automatic-user-provisioning-to-officespace-software"></a>Konfigurace automatického zřizování uživatelů k softwaru OfficeSpace 
 
-V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v OfficeSpace softwaru na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
+Tato část vás provede kroky konfigurace služby zřizování Azure AD k vytvoření, aktualizaci a zakázání uživatelů nebo skupin v softwaru OfficeSpace na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro software OfficeSpace podle pokynů uvedených v [kurzu OfficeSpace Software Single Signing](https://docs.microsoft.com/azure/active-directory/saas-apps/officespace-tutorial). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když tyto dvě funkce doplňují sebe.
+> Můžete také povolit jednotné přihlašování k softwaru OfficeSpace založené na saml podle pokynů uvedených v [kurzu jednotného přihlášení softwaru OfficeSpace](https://docs.microsoft.com/azure/active-directory/saas-apps/officespace-tutorial). Jednotné přihlašování lze konfigurovat nezávisle na automatické zřizování uživatelů, i když tyto dvě funkce se vzájemně doplňují.
 
-### <a name="to-configure-automatic-user-provisioning-for-officespace-software-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro OfficeSpace Software v Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-officespace-software-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro officespace software ve službě Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **Všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **OfficeSpace Software**.
+2. V seznamu aplikací vyberte **OfficeSpace Software**.
 
-    ![Odkaz na software OfficeSpace v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Software officespace v seznamu Aplikace](common/all-applications.png)
 
-3. Vyberte kartu **zřizování** .
+3. Vyberte kartu **Zřizování.**
 
-    ![Karta zřizování](common/provisioning.png)
+    ![Karta Zřizování](common/provisioning.png)
 
-4. Nastavte **režim zřizování** na **automaticky**.
+4. Nastavte **režim zřizování** na **automatické**.
 
-    ![Karta zřizování](common/provisioning-automatic.png)
+    ![Karta Zřizování](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** zadejte ve formátu **adresy url klienta**vstupní `https://<subdomain>.officespacesoftware.com/api/scim/v2/`. Například `https://contoso.officespacesoftware.com/api/scim/v2/`. Zadejte hodnotu **SCIM tokenu ověřování** získanou dříve v **tajném tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k OfficeSpace softwaru. Pokud se připojení nepovede, ujistěte se, že váš účet OfficeSpace softwaru má oprávnění správce, a zkuste to znovu.
+5. V části **Pověření správce** `https://<subdomain>.officespacesoftware.com/api/scim/v2/` zadejte formát adresy URL v **adrese URL klienta**. Například `https://contoso.officespacesoftware.com/api/scim/v2/`. Zadejte hodnotu **ověřovacího tokenu SCIM** načtenou dříve v **tokenu tajného klíče**. Kliknutím na **Testovat připojení** zajistíte, že se Azure AD může připojit k officespace softwaru. Pokud se připojení nezdaří, ujistěte se, že váš účet softwaru OfficeSpace má oprávnění správce a zkuste to znovu.
 
-    ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Adresa URL klienta + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování a zaškrtněte políčko **Odeslat e-mailové oznámení, když dojde k chybě** .
+6. Do pole **E-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, která by měla dostávat oznámení o chybách zřizování, a zaškrtněte políčko **Odeslat e-mailové oznámení, když dojde k chybě.**
 
     ![E-mail s oznámením](common/provisioning-notification-email.png)
 
 7. Klikněte na **Uložit**.
 
-8. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé OfficeSpace softwaru**.
+8. V části **Mapování** vyberte **Synchronizovat uživatele služby Azure Active Directory se softwarem OfficeSpace**.
 
-    ![Mapování uživatelů OfficeSpace softwaru](media/officespace-software-provisioning-tutorial/usermappings.png)
+    ![Mapování uživatelů softwaru officespace](media/officespace-software-provisioning-tutorial/usermappings.png)
 
-9. Zkontrolujte atributy uživatele synchronizované z Azure AD a OfficeSpace Software v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v OfficeSpace softwaru pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
+9. Zkontrolujte atributy uživatele, které jsou synchronizovány z Azure AD do OfficeSpace Software v části **Mapování atributů.** Atributy vybrané jako **odpovídající** vlastnosti se používají k porovnání uživatelských účtů v softwaru OfficeSpace pro operace aktualizace. Chcete-li potvrdit všechny změny, vyberte tlačítko **Uložit.**
 
-    ![Atributy uživatele OfficeSpace Software](media/officespace-software-provisioning-tutorial/userattributes.png)
+    ![Uživatelské atributy softwaru OfficeSpace](media/officespace-software-provisioning-tutorial/userattributes.png)
 
-11. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+11. Chcete-li konfigurovat filtry oborů, naleznete v následujících pokynech uvedených v [kurzu filtru oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-12. Pokud chcete povolit službu Azure AD Provisioning pro software OfficeSpace, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
+12. Chcete-li povolit službu zřizování Azure AD pro software OfficeSpace, změňte **stav zřizování** **na Zapnuto** v části **Nastavení.**
 
-    ![Zapnutý stav zřizování](common/provisioning-toggle-on.png)
+    ![Stav zřizování zapnutý](common/provisioning-toggle-on.png)
 
-13. Definujte uživatele nebo skupiny, které chcete zřídit pro OfficeSpace Software, a to tak, že v části **Nastavení** vyberete požadované hodnoty v **oboru** .
+13. Definujte uživatele nebo skupiny, které chcete zřídit softwaru OfficeSpace, výběrem **Settings** požadovaných hodnot v **části Obor.**
 
-    ![Rozsah zřizování](common/provisioning-scope.png)
+    ![Obor zřizování](common/provisioning-scope.png)
 
-14. Až budete připraveni zřídit, klikněte na **Uložit**.
+14. Až budete připraveni k zřízení, klikněte na **Uložit**.
 
-    ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
+    ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
 
-Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. Část **Podrobnosti o synchronizaci** můžete použít ke sledování průběhu a následnému odkazu na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD na OfficeSpace softwaru.
+Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení.** Počáteční synchronizace trvá déle než následné synchronizace, ke kterým dochází přibližně každých 40 minut tak dlouho, dokud je spuštěna služba zřizování Azure AD. Část **Podrobnosti synchronizace** můžete použít ke sledování průběhu a sledování odkazů na sestavu aktivit zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v officespace softwaru.
 
-Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, naleznete [v tématu Vytváření sestav na automatické zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy o aktivitě zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
 

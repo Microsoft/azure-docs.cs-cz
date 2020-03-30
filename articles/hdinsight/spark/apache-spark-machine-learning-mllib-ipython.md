@@ -1,7 +1,7 @@
 ---
-title: Příklad strojového učení s Spark MLlib ve službě HDInsight – Azure
+title: Příklad strojového učení se Sparkm MLlib na HDInsight – Azure
 description: Naučte se používat Spark MLlib k vytvoření aplikace pro strojové učení, která analyzuje datovou sadu pomocí klasifikace prostřednictvím logistické regrese.
-keywords: Ukázka strojového učení Sparku Spark
+keywords: strojové učení, příklad strojového učení
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -10,42 +10,42 @@ ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: hrasheed
 ms.openlocfilehash: c8ead7abc454df387db31b2ce65d2ba714b0067d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73494095"
 ---
-# <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Použití Apache Spark MLlib k vytvoření aplikace Machine Learning a analýze datové sady
+# <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Použití Apache Spark MLlib k vytvoření aplikace pro strojové učení a analýze datové sady
 
-Naučte se používat Apache Spark [MLlib](https://spark.apache.org/mllib/) k vytvoření aplikace pro strojové učení, která umožňuje jednoduchou prediktivní analýzu otevřené datové sady. Z vestavěných knihoven strojového učení Spark používá tento příklad *klasifikaci* prostřednictvím logistické regrese. 
+Naučte se používat Apache Spark [MLlib](https://spark.apache.org/mllib/) k vytvoření aplikace strojového učení pro jednoduchou prediktivní analýzu otevřené datové sady. Z integrovaných knihoven strojového učení Spark tento příklad používá *klasifikaci* prostřednictvím logistické regrese. 
 
-MLlib je základní knihovna Sparku, která poskytuje řadu nástrojů, které jsou užitečné pro úlohy strojového učení, včetně nástrojů, které jsou vhodné pro:
+MLlib je základní knihovna Spark, která poskytuje mnoho nástrojů užitečných pro úlohy strojového učení, včetně nástrojů, které jsou vhodné pro:
 
 * Classification
-* Nevýhody
+* Regrese
 * Clustering
-* Modelování tématu
-* Dekompozice hodnot v číslech (SVD) a analýza hlavních komponent (DPS)
-* Testování hypotéz a výpočet ukázkových statistik
+* Modelování témat
+* Rozklad singulární hodnoty (SVD) a analýza hlavních součástí (PCA)
+* Testování hypotéz a výpočet statistiky vzorků
 
-## <a name="understand-classification-and-logistic-regression"></a>Pochopení klasifikace a logistické regrese
-*Klasifikace*, oblíbená úloha strojového učení, je proces řazení vstupních dat do kategorií. Je to úloha klasifikačního algoritmu k tomu, abyste zjistili, jak přiřadit jmenovky k vstupním datům, která zadáte. Můžete si například představit algoritmus strojového učení, který přijímá skladové informace jako vstup a vydělí akcie na dvě kategorie: akcie, které byste měli prodávat, a zásoby, které byste měli zachovat.
+## <a name="understand-classification-and-logistic-regression"></a>Porozumět klasifikaci a logistické regresi
+*Klasifikace*, populární úloha strojového učení, je proces třídění vstupních dat do kategorií. Úlohou klasifikačního algoritmu je zjistit, jak přiřadit "popisky" vstupním datům, která zadáte. Můžete si například myslet algoritmus strojového učení, který přijímá informace o akciích jako vstup a rozděluje akcie do dvou kategorií: akcie, které byste měli prodat, a akcie, které byste měli zachovat.
 
-Logistická regrese je algoritmus, který používáte pro klasifikaci. Rozhraní API pro logistické regrese Spark je užitečné pro *binární klasifikaci*nebo pro klasifikaci vstupních dat do jedné ze dvou skupin. Další informace o logistických regresích najdete v tématu [Wikipedii](https://en.wikipedia.org/wiki/Logistic_regression).
+Logistická regrese je algoritmus, který používáte pro klasifikaci. Logistické regresní rozhraní API Spark je užitečné pro *binární klasifikaci*nebo klasifikaci vstupních dat do jedné ze dvou skupin. Další informace o logistických regresích naleznete na [Wikipedii](https://en.wikipedia.org/wiki/Logistic_regression).
 
-V souhrnu proces logistické regrese vytváří *logistické funkce* , které lze použít k předpovědi pravděpodobnosti, že vstupní vektor patří do jedné nebo druhé skupiny.  
+Stručně řečeno, proces logistické regrese vytváří *logistickou funkci,* kterou lze použít k předvídání pravděpodobnosti, že vstupní vektor patří do jedné nebo druhé skupiny.  
 
-## <a name="predictive-analysis-example-on-food-inspection-data"></a>Příklad prediktivní analýzy pro data kontroly potravin
-V tomto příkladu pomocí Sparku provedete určitou prediktivní analýzu dat kontroly potravin (**Food_Inspections1. csv**), který byl získán prostřednictvím [města data Portal Chicago](https://data.cityofchicago.org/). Tato datová sada obsahuje informace o inspekcích, které byly prováděny v Chicagu, včetně informací o jednotlivých závodech, zjištěných porušeních (pokud existují) a výsledcích kontroly. Datový soubor CSV je už dostupný v účtu úložiště přidruženém ke clusteru na adrese **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv**.
+## <a name="predictive-analysis-example-on-food-inspection-data"></a>Příklad prediktivní analýzy údajů o kontrole potravin
+V tomto příkladu použijete Spark k provedení prediktivní analýzy dat kontroly potravin **(Food_Inspections1.csv),** která byla získána prostřednictvím [datového portálu Město Chicago](https://data.cityofchicago.org/). Tento soubor údajů obsahuje informace o inspekcích potravinářských zařízení, které byly provedeny v Chicagu, včetně informací o každém zařízení, zjištěných porušeních (pokud existuje) a výsledcích inspekce. Datový soubor CSV je již k dispozici v účtu úložiště přidruženém ke clusteru na adrese **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv**.
 
-V následujících krocích vytvoříte model, abyste viděli, co je potřeba k předání nebo selhání kontroly potravin.
+V následujících krocích vyvinete model, abyste zjistili, co je zapotřebí k provedení nebo selhání kontroly potravin.
 
-## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>Vytvoření aplikace Machine Learning v Apache Spark MLlib
+## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>Vytvoření aplikace apache spark mllib strojového učení
 
 1. Vytvořte poznámkový blok Jupyter pomocí jádra PySpark. Pokyny najdete v tématu [Vytvoření poznámkového bloku Jupyter](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook).
 
-2. Importujte typy požadované pro tuto aplikaci. Zkopírujte a vložte následující kód do prázdné buňky a stiskněte klávesu **SHIFT + ENTER**.
+2. Importujte typy požadované pro tuto aplikaci. Zkopírujte a vložte následující kód do prázdné buňky a stiskněte **klávesu SHIFT + ENTER**.
 
     ```PySpark
     from pyspark.ml import Pipeline
@@ -55,13 +55,13 @@ V následujících krocích vytvoříte model, abyste viděli, co je potřeba k 
     from pyspark.sql.functions import UserDefinedFunction
     from pyspark.sql.types import *
     ```
-    Z důvodu jádra PySpark nemusíte vytvářet žádné kontexty explicitně. Kontexty Spark a Hive se automaticky vytvoří za vás při spuštění první buňky kódu. 
+    Z důvodu jádra PySpark není nutné explicitně vytvářet žádné kontexty. Kontexty Spark a Hive se automaticky vytvoří za vás při spuštění první buňky kódu. 
 
-## <a name="construct-the-input-dataframe"></a>Sestavit vstupní datový rámec
+## <a name="construct-the-input-dataframe"></a>Vytvoření vstupního datového rámce
 
-Vzhledem k tomu, že nezpracovaná data jsou ve formátu CSV, můžete pomocí kontextu Spark načíst soubor do paměti jako nestrukturovaný text a potom pomocí knihovny CSV Pythonu analyzovat jednotlivé řádky dat.
+Vzhledem k tomu, že nezpracovaná data jsou ve formátu CSV, můžete použít kontext Spark k natáknou soubor do paměti jako nestrukturovaný text a potom pomocí knihovny CSV v Pythonu analyzovat každý řádek dat.
 
-1. Spusťte následující řádky, abyste vytvořili odolnou distribuovanou datovou sadu (RDD) pomocí importu a analýzy vstupních dat.
+1. Spusťte následující řádky a vytvořte odolnou distribuovanou datovou sadu (RDD) importem a analýzou vstupních dat.
 
     ```PySpark
     def csvParse(s):
@@ -76,13 +76,13 @@ Vzhledem k tomu, že nezpracovaná data jsou ve formátu CSV, můžete pomocí k
                     .map(csvParse)
     ```
 
-2. Spusťte následující kód, který načte jeden řádek z RDD, abyste si mohli prohlédnout schéma dat:
+2. Spusťte následující kód pro načtení jednoho řádku z RDD, takže se můžete podívat na schéma dat:
 
     ```PySpark
     inspections.take(1)
     ```
 
-    Výstup je:
+    Výstup bude následující:
 
     ```
     [['413707',
@@ -104,9 +104,9 @@ Vzhledem k tomu, že nezpracovaná data jsou ve formátu CSV, můžete pomocí k
         '(41.97583445690982, -87.7107455232781)']]
     ```
 
-    Výstup poskytuje představu o schématu vstupního souboru. Zahrnuje název každého zařízení, typ zařízení, adresu, data inspekcí a umístění, mimo jiné. 
+    Výstup poskytuje představu o schématu vstupního souboru. Obsahuje mimo jiné název každého zařízení, typ zařízení, adresu, údaje o inspekcích a místo. 
 
-3. Spusťte následující kód, který vytvoří datový rámec (*DF*) a dočasnou tabulku (*CountResults*) s několika sloupci, které jsou užitečné pro prediktivní analýzu. `sqlContext` slouží k provádění transformací strukturovaných dat. 
+3. Spusťte následující kód a vytvořte datový rámec (*df*) a dočasnou tabulku (*CountResults*) s několika sloupci, které jsou užitečné pro prediktivní analýzu. `sqlContext`se používá k provádění transformací na strukturovaných datech. 
 
     ```PySpark
     schema = StructType([
@@ -119,7 +119,7 @@ Vzhledem k tomu, že nezpracovaná data jsou ve formátu CSV, můžete pomocí k
     df.registerTempTable('CountResults')
     ```
 
-    Čtyři sloupce zájmu v rámci datového rámce jsou **ID**, **název**, **výsledky**a **porušení**.
+    Čtyři sloupce zájmu v datovém rámci jsou **id**, **název**, **výsledky**a **porušení**.
 
 4. Spusťte následující kód, abyste získali malý vzorek dat:
 
@@ -127,7 +127,7 @@ Vzhledem k tomu, že nezpracovaná data jsou ve formátu CSV, můžete pomocí k
     df.show(5)
     ```
 
-    Výstup je:
+    Výstup bude následující:
 
     ```
     +------+--------------------+-------+--------------------+
@@ -143,15 +143,15 @@ Vzhledem k tomu, že nezpracovaná data jsou ve formátu CSV, můžete pomocí k
 
 ## <a name="understand-the-data"></a>Pochopení dat
 
-Pojďme začít získat představu o tom, co datová sada obsahuje. 
+Začněme získat představu o tom, co obsahuje datová sada. 
 
-1. Spusťte následující kód pro zobrazení jedinečných hodnot ve sloupci **výsledky** :
+1. Spusťte následující kód, který zobrazí odlišné hodnoty ve sloupci **výsledků:**
 
     ```PySpark
     df.select('results').distinct().show()
     ```
 
-    Výstup je:
+    Výstup bude následující:
 
     ```
     +--------------------+
@@ -165,21 +165,21 @@ Pojďme začít získat představu o tom, co datová sada obsahuje.
     +--------------------+
     ```
 
-2. Spusťte následující kód, který vizualizuje distribuci těchto výsledků:
+2. Chcete-li vizualizovat distribuci těchto výsledků, spusťte následující kód:
 
     ```PySpark
     %%sql -o countResultsdf
     SELECT COUNT(results) AS cnt, results FROM CountResults GROUP BY results
     ```
 
-    `%%sql` Magic následovaný `-o countResultsdf` zajišťuje, že výstup dotazu bude trvale uložen na serveru Jupyter (obvykle hlavnímu uzlu clusteru). Výstup je trvalý jako [PANDAS](https://pandas.pydata.org/) datový rámec se zadaným názvem **countResultsdf**. Další informace o `%%sql` Magic a dalších přístupnosti, které jsou k dispozici v jádru PySpark, najdete v části [jádra dostupné v poznámkových blocích Jupyter s clustery HDInsight Apache Spark](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
+    Kouzlo `%%sql` následuje `-o countResultsdf` zajišťuje, že výstup dotazu je trvalé místně na serveru Jupyter (obvykle headnode clusteru). Výstup je trvalý jako datový rámec [Pandas](https://pandas.pydata.org/) se zadaným **názvem countResultsdf**. Další informace o `%%sql` magii a dalších kouzlech dostupných v jádře PySpark najdete [v tématu Jádra dostupná na poznámkových blocích Jupyter u clusterů Apache Spark HDInsight](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
 
-    Výstup je:
+    Výstup bude následující:
 
     ![Výstup dotazu SQL](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png "Výstup dotazu SQL")
 
 
-3. Můžete také použít [matplotlib](https://en.wikipedia.org/wiki/Matplotlib), knihovnu, která slouží k vytváření vizualizace dat, k vytvoření grafu. Vzhledem k tomu, že je nutné vytvořit vykreslení z místně trvalého datového rámce **countResultsdf** , musí fragment kódu začínat `%%local` Magic. Tím se zajistí, že se kód spustí místně na serveru Jupyter.
+3. Můžete také použít [Matplotlib](https://en.wikipedia.org/wiki/Matplotlib), knihovnu používanou k vytvoření vizualizace dat, k vytvoření obrázku. Vzhledem k tomu, že vykreslení musí být vytvořeno z místně trvalého datového `%%local` rámce **countResultsdf,** musí fragment kódu začínat magicem. Tím je zajištěno, že kód je spuštěn místně na serveru Jupyter.
 
     ```PySpark
     %%local
@@ -193,24 +193,24 @@ Pojďme začít získat představu o tom, co datová sada obsahuje.
     plt.axis('equal')
     ```
 
-    Výstup je:
+    Výstup bude následující:
 
-    ![Výstup aplikace Spark Machine Learning – výsečový graf s pěti odlišnými výsledky kontroly](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-1.png "Výstup výsledků strojového učení Sparku")
+    ![Výstup aplikace pro strojové učení spark - výsečový graf s pěti odlišnými výsledky kontroly](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-1.png "Výstup výsledků strojového učení jiskry")
 
-    Aby bylo možné předpovědět výsledek kontroly potravin, je nutné vyvinout model na základě porušení. Vzhledem k tomu, že Logistická regrese je binární metoda klasifikace, má smysl seskupit výsledná data do dvou kategorií: **selhání** a **průchod**:
+    Chcete-li předpovědět výsledek kontroly potravin, musíte vytvořit model založený na porušení. Vzhledem k tomu, že logistická regrese je binární klasifikační metoda, má smysl seskupit výsledná data do dvou kategorií: **Selhání** a **Průchod**:
 
-   - Dána
-       - Dána
-       - Průchod za sekundu
-   - Proběhne
-       - Proběhne
-   - Odstraňovat
-       - Firmy se nenašlo.
-       - Mimo firmu
+   - Předat
+       - Předat
+       - Pass w/ podmínky
+   - Neúspěch
+       - Neúspěch
+   - Zahodit
+       - Firma se nenachází
+       - Z podnikání
 
-     Data s ostatními výsledky ("obchodní Neumístěná" nebo "mimo podnik") nejsou užitečná a vznikne velmi malé procento výsledků.
+     Data s ostatními výsledky ("Firma není umístěna" nebo "Out of Business") nejsou užitečné a stejně tvoří velmi malé procento výsledků.
 
-4. Spusťte následující kód, který převede existující datový rámec (`df`) na nový datový rámec, kde je každá kontrola vyjádřena jako dvojice s porušením popisku. V tomto případě návěstí `0.0` představuje chybu, popisek `1.0` představuje úspěch a popisek `-1.0` představuje některé výsledky Kromě těchto dvou. 
+4. Spusťte následující kód a převeďte existující datový rámec(`df`) na nový datový rámec, kde je každá kontrola reprezentována jako dvojice porušení popisků. V tomto případě popisek `0.0` představuje selhání, `1.0` popisek představuje úspěch a `-1.0` popisek představuje některé výsledky kromě těchto dvou. 
 
     ```PySpark
     def labelForResults(s):
@@ -224,25 +224,25 @@ Pojďme začít získat představu o tom, co datová sada obsahuje.
     labeledData = df.select(label(df.results).alias('label'), df.violations).where('label >= 0')
     ```
 
-5. Spusťte následující kód, který zobrazí jeden řádek dat s popisky:
+5. Spusťte následující kód, který zobrazí jeden řádek označených dat:
 
     ```PySpark
     labeledData.take(1)
     ```
 
-    Výstup je:
+    Výstup bude následující:
 
     ```
     [Row(label=0.0, violations=u"41. PREMISES MAINTAINED FREE OF LITTER, UNNECESSARY ARTICLES, CLEANING  EQUIPMENT PROPERLY STORED - Comments: All parts of the food establishment and all parts of the property used in connection with the operation of the establishment shall be kept neat and clean and should not produce any offensive odors.  REMOVE MATTRESS FROM SMALL DUMPSTER. | 35. WALLS, CEILINGS, ATTACHED EQUIPMENT CONSTRUCTED PER CODE: GOOD REPAIR, SURFACES CLEAN AND DUST-LESS CLEANING METHODS - Comments: The walls and ceilings shall be in good repair and easily cleaned.  REPAIR MISALIGNED DOORS AND DOOR NEAR ELEVATOR.  DETAIL CLEAN BLACK MOLD LIKE SUBSTANCE FROM WALLS BY BOTH DISH MACHINES.  REPAIR OR REMOVE BASEBOARD UNDER DISH MACHINE (LEFT REAR KITCHEN). SEAL ALL GAPS.  REPLACE MILK CRATES USED IN WALK IN COOLERS AND STORAGE AREAS WITH PROPER SHELVING AT LEAST 6' OFF THE FLOOR.  | 38. VENTILATION: ROOMS AND EQUIPMENT VENTED AS REQUIRED: PLUMBING: INSTALLED AND MAINTAINED - Comments: The flow of air discharged from kitchen fans shall always be through a duct to a point above the roofline.  REPAIR BROKEN VENTILATION IN MEN'S AND WOMEN'S WASHROOMS NEXT TO DINING AREA. | 32. FOOD AND NON-FOOD CONTACT SURFACES PROPERLY DESIGNED, CONSTRUCTED AND MAINTAINED - Comments: All food and non-food contact equipment and utensils shall be smooth, easily cleanable, and durable, and shall be in good repair.  REPAIR DAMAGED PLUG ON LEFT SIDE OF 2 COMPARTMENT SINK.  REPAIR SELF CLOSER ON BOTTOM LEFT DOOR OF 4 DOOR PREP UNIT NEXT TO OFFICE.")]
     ```
 
-## <a name="create-a-logistic-regression-model-from-the-input-dataframe"></a>Vytvořit model logistické regrese ze vstupního datového rámce
+## <a name="create-a-logistic-regression-model-from-the-input-dataframe"></a>Vytvoření logistického regresního modelu ze vstupního datového rámce
 
-Posledním úkolem je převést označené údaje do formátu, který lze analyzovat logistickou regresí. Vstupem do algoritmu logistické regrese musí být sada *vektorových dvojic popisků*, kde "Vector funkcí" je vektor čísel představujících vstupní bod. Proto je třeba převést sloupec "porušení", který je částečně strukturovaný a obsahuje mnoho komentářů v poli Free text na pole reálných čísel, která může počítač snadno pochopit.
+Konečným úkolem je převést označená data do formátu, který lze analyzovat logistickou regresí. Vstup emitačního logistického regresního algoritmu musí být sada *vektorových párů label-feature*, kde "vektor prvku" je vektor čísel představujících vstupní bod. Takže musíte převést sloupec "porušení", který je částečně strukturovaný a obsahuje mnoho komentářů ve volném textu, na řadu reálných čísel, kterým by stroj mohl snadno pochopit.
 
-Jedním ze standardních přístupů do strojového učení pro zpracování přirozeného jazyka je přiřazení jednotlivých slov "index" a následné předání vektoru algoritmu strojového učení, aby každá hodnota indexu obsahovala relativní četnost tohoto slova v textovém řetězci.
+Jeden standardní přístup strojového učení pro zpracování přirozeného jazyka je přiřadit každé odlišné slovo "index" a pak předat vektor algoritmu strojového učení tak, aby hodnota každého indexu obsahuje relativní frekvenci tohoto slova v textovém řetězci.
 
-MLlib poskytuje snadný způsob, jak tuto operaci provést. Nejprve "tokenizovat" každé porušení řetězce získá jednotlivá slova v každém řetězci. Pak použijte `HashingTF` k převedení každé sady tokenů na vektor funkce, který lze následně předat algoritmu logistické regrese za účelem vytvoření modelu. Všechny tyto kroky provádíte v posloupnosti pomocí "kanálu".
+MLlib poskytuje snadný způsob, jak tuto operaci provést. Za prvé, "tokenize" každý řetězec porušení získat jednotlivá slova v každém řetězci. Potom použijte `HashingTF` k převodu každé sady tokenů na vektor prvku, který pak může být předán algoritmu logistické regrese k vytvoření modelu. Všechny tyto kroky provádíte v pořadí pomocí "kanálu".
 
 ```PySpark
 tokenizer = Tokenizer(inputCol="violations", outputCol="words")
@@ -255,9 +255,9 @@ model = pipeline.fit(labeledData)
 
 ## <a name="evaluate-the-model-using-another-dataset"></a>Vyhodnocení modelu pomocí jiné datové sady
 
-Model, který jste vytvořili dříve, můžete použít k *předpovídání* výsledků nových kontrol na základě zjištěných porušení. Tento model jste vyškolei na datové sadě **Food_Inspections1. csv**. K *vyhodnocení* síly tohoto modelu u nových dat můžete použít druhou datovou sadu **Food_Inspections2. csv**. Tato druhá sada dat (**Food_Inspections2. csv**) je ve výchozím kontejneru úložiště přidruženém ke clusteru.
+Model, který jste vytvořili dříve, můžete použít k *předvídání* výsledků nových kontrol na základě zjištěných porušení. Tento model jste vycvičili v datové sadě **Food_Inspections1.csv**. Můžete použít druhou datovou **sadu, Food_Inspections2.csv**, k *vyhodnocení* síly tohoto modelu na nová data. Tato druhá sada dat **(Food_Inspections2.csv**) je ve výchozím kontejneru úložiště přidruženém ke clusteru.
 
-1. Spusťte následující kód, který vytvoří nový datový rámec **predictionsDf** , který obsahuje předpověď vygenerovanou modelem. Fragment kódu také vytvoří dočasnou tabulku s názvem **předpovědi** založenou na dataframe.
+1. Spusťte následující kód k vytvoření nového datového rámce, **predictionsDf,** který obsahuje předpověď generované modelem. Výstřižek také vytvoří dočasnou tabulku s názvem **Předpovědi** na základě datového rámce.
 
     ```PySpark
     testData = sc.textFile('wasbs:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections2.csv')\
@@ -283,14 +283,14 @@ Model, který jste vytvořili dříve, můžete použít k *předpovídání* v�
         'prediction']
     ```
 
-1. Podívejte se na některý z předpovědi. Spustit tento fragment kódu:
+1. Podívejte se na jednu z předpovědí. Spusťte tento úryvek:
 
     ```PySpark
     predictionsDf.take(1)
     ```
 
-   Pro první záznam v sadě dat testu existuje předpověď.
-1. Metoda `model.transform()` aplikuje stejnou transformaci na všechna nová data se stejným schématem a dorazí na předpověď způsobu klasifikace dat. Můžete provést několik jednoduchých statistik, abyste získali představu o tom, jak přesnost předpovědi:
+   Existuje předpověď pro první položku v sadě testovacích dat.
+1. Metoda `model.transform()` použije stejnou transformaci na všechna nová data se stejným schématem a dorazí k předpovědi, jak klasifikovat data. Můžete udělat několik jednoduchých statistik získat představu o tom, jak přesné předpovědi byly:
 
     ```PySpark
     numSuccesses = predictionsDf.where("""(prediction = 0 AND results = 'Fail') OR
@@ -302,19 +302,19 @@ Model, který jste vytvořili dříve, můžete použít k *předpovídání* v�
     print "This is a", str((float(numSuccesses) / float(numInspections)) * 100) + "%", "success rate"
     ```
 
-    Výstup bude vypadat nějak takto:
+    Výstup vypadá takto:
 
     ```
     There were 9315 inspections and there were 8087 successful predictions
     This is a 86.8169618894% success rate
     ```
 
-    Pomocí logistické regrese pomocí Sparku získáte přesný model vztahu mezi popsanými popisy v angličtině a to, jestli by daný podnik mohl projít nebo podařit kontrolu potravin.
+    Použití logistické regrese se Sparkem vám dává přesný model vztahu mezi popisy porušení v angličtině a tím, zda by daný podnik prošel nebo neprošel kontrolou potravin.
 
 ## <a name="create-a-visual-representation-of-the-prediction"></a>Vytvoření vizuální reprezentace předpovědi
-Nyní můžete vytvořit konečnou vizualizaci, která vám pomůžete v důsledku výsledků tohoto testu.
+Nyní můžete vytvořit konečnou vizualizaci, která vám pomůže důvod o výsledcích tohoto testu.
 
-1. Začnete extrahováním různých předpovědi a výsledků z dočasné tabulky **předpovědi** vytvořené dříve. Následující dotazy oddělují výstup jako *true_positive*, *false_positive*, *true_negative*a *false_negative*. V následujících dotazech vypnete vizualizaci pomocí `-q` a také uložíte výstup (pomocí `-o`) jako datový rámec, který lze následně použít s `%%local` Magic.
+1. Můžete začít extrahování různé předpovědi a výsledky z **předpovědi** dočasné tabulky vytvořené dříve. Následující dotazy oddělují výstup jako *true_positive*, *false_positive*, *true_negative*a *false_negative*. V níže uvedených dotazech vypnete `-q` vizualizaci pomocí a také `-o`uložíte výstup (pomocí) jako `%%local` datové rámce, které lze pak použít s magicem.
 
     ```PySpark
     %%sql -q -o true_positive
@@ -336,7 +336,7 @@ Nyní můžete vytvořit konečnou vizualizaci, která vám pomůžete v důsled
     SELECT count(*) AS cnt FROM Predictions WHERE prediction = 1 AND (results = 'Pass' OR results = 'Pass w/ Conditions')
     ```
 
-1. Nakonec pomocí následujícího fragmentu kódu vygenerujte vykreslení pomocí **matplotlib**.
+1. Nakonec použijte následující úryvek ke generování obrázku pomocí **Matplotlib**.
 
     ```PySpark
     %%local
@@ -352,33 +352,33 @@ Nyní můžete vytvořit konečnou vizualizaci, která vám pomůžete v důsled
 
     Měl by se zobrazit následující výstup:
 
-    ![Výstup aplikace Spark Machine Learning – Procento neúspěšných inspekcí v potravinách v grafu](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png "Výstup výsledků strojového učení Sparku")
+    ![Spark strojové učení výstup aplikace - koláč graf procenta neúspěšných kontrol potravin.](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png "Výstup výsledků strojového učení jiskry")
 
-    Výsledkem "pozitivního" v tomto grafu je neúspěšná kontrola jídla, zatímco záporný výsledek odkazuje na úspěšnou kontrolu.
+    V tomto grafu se "pozitivní" výsledek týká neúspěšné kontroly potravin, zatímco negativní výsledek se týká schválené inspekce.
 
 ## <a name="shut-down-the-notebook"></a>Vypnutí poznámkového bloku
-Po dokončení spuštění aplikace byste měli Poznámkový blok vypnout a uvolnit tak prostředky. Provedete to tak, že v nabídce **Soubor** poznámkového bloku vyberete **Zavřít a zastavit**. Tím se vypne a zavře Poznámkový blok.
+Po dokončení spuštění aplikace byste měli poznámkový blok vypnout, abyste uvolnili prostředky. Provedete to tak, že v nabídce **Soubor** poznámkového bloku vyberete **Zavřít a zastavit**. Tím se vypne a zavře notebook.
 
-## <a name="seealso"></a>Viz také
+## <a name="see-also"></a><a name="seealso"></a>Viz také
 * [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scénáře
-* [Apache Spark s BI: provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI.](apache-spark-use-bi-tools.md)
-* [Apache Spark s Machine Learning: pomocí Sparku v HDInsight můžete analyzovat teplotu budovy pomocí dat TVK.](apache-spark-ipython-notebook-machine-learning.md)
-* [Analýza webového protokolu pomocí Apache Spark ve službě HDInsight](apache-spark-custom-library-website-log-analysis.md)
+* [Apache Spark s BI: Provádění interaktivní analýzy dat pomocí Spark v HDInsightu pomocí nástrojů BI](apache-spark-use-bi-tools.md)
+* [Apache Spark se strojovým učením: Použijte Spark v HDInsightu pro analýzu teploty budovy pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
+* [Analýza protokolu webových stránek pomocí Apache Spark v HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Vytvoření a spouštění aplikací
 * [Vytvoření samostatné aplikace pomocí Scala](apache-spark-create-standalone-application.md)
-* [Vzdálené spouštění úloh na clusteru Apache Spark s využitím Apache Livy](apache-spark-livy-rest-interface.md)
+* [Spouštění úloh na dálku v clusteru Apache Spark pomocí Apache Livy](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Nástroje a rozšíření
 * [Modul plug-in nástroje HDInsight pro IntelliJ IDEA pro vytvoření a odesílání aplikací Spark Scala](apache-spark-intellij-tool-plugin.md)
-* [Použití modulu plug-in nástrojů HDInsight pro IntelliJ NÁPADu při vzdáleném ladění aplikací Apache Spark](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v HDInsight](apache-spark-zeppelin-notebook.md)
-* [Jádra dostupná pro Poznámkový blok Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
-* [Použití externích balíčků s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
-* [Instalace Jupyteru do počítače a připojení ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)
+* [Použití HDInsight Tools Plugin pro IntelliJ IDEA k ladění aplikací Apache Spark na dálku](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Používejte notebooky Apache Zeppelin s clusterem Apache Spark na HDInsightu](apache-spark-zeppelin-notebook.md)
+* [Jádra dostupná pro notebook Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Použijte externí balíčky s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
+* [Nainstalujte do počítače Jupyter a připojte ho ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Správa prostředků
 * [Správa prostředků v clusteru Apache Spark v Azure HDInsight](apache-spark-resource-manager.md)
-* [Sledování a ladění úloh spuštěných v clusteru Apache Spark v HDInsight](apache-spark-job-debugging.md)
+* [Sledování a ladění úloh spuštěných v clusteru serveru Apache Spark v HDInsight](apache-spark-job-debugging.md)

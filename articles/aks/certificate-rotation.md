@@ -1,45 +1,45 @@
 ---
-title: Otočení certifikátů ve službě Azure Kubernetes (AKS)
-description: Naučte se, jak tyto certifikáty otočit v clusteru Azure Kubernetes Service (AKS).
+title: Otočení certifikátů ve službě Azure Kubernetes Service (AKS)
+description: Zjistěte, jak otáčet certifikáty v clusteru Služby Azure Kubernetes (AKS).
 services: container-service
 author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
 ms.openlocfilehash: f299b13baf5811b92bdc2e40b027868617d7574c
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79368515"
 ---
-# <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Otočení certifikátů ve službě Azure Kubernetes (AKS)
+# <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Otočení certifikátů ve službě Azure Kubernetes Service (AKS)
 
-Služba Azure Kubernetes Service (AKS) používá certifikáty pro ověřování s mnoha jeho součástmi. V pravidelných intervalech může být nutné tyto certifikáty otočit z důvodů zabezpečení nebo zásad. Můžete mít například zásadu pro otočení všech certifikátů každých 90 dní.
+Azure Kubernetes Service (AKS) používá certifikáty pro ověřování s mnoha jeho součástmi. Pravidelně může být nutné tyto certifikáty z bezpečnostních důvodů nebo z důvodů zásad otáčet. Můžete mít například zásadu pro střídání všech certifikátů každých 90 dní.
 
-V tomto článku se dozvíte, jak otočit certifikáty v clusteru AKS.
+Tento článek ukazuje, jak otočit certifikáty v clusteru AKS.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
-Tento článek vyžaduje, abyste spustili Azure CLI verze 2.0.77 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+Tento článek vyžaduje, abyste spouštěli Azure CLI verze 2.0.77 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
-## <a name="aks-certificates-certificate-authorities-and-service-accounts"></a>AKS certifikáty, certifikační autority a účty služeb
+## <a name="aks-certificates-certificate-authorities-and-service-accounts"></a>Certifikáty AKS, certifikační autority a účty služeb
 
-AKS generuje a používá následující certifikáty, certifikační autority a účty služeb:
+Služba AKS generuje a používá následující certifikáty, certifikační autority a účty služeb:
 
-* Server AKS API vytvoří certifikační autoritu (CA), která se nazývá certifikační autorita clusteru.
-* Server API má Clusterovou certifikační autoritu, která podepisuje certifikáty pro jednosměrnou komunikaci ze serveru rozhraní API do kubelets.
-* Každý kubelet také vytvoří žádost o podepsání certifikátu (CSR), která je podepsána certifikační autoritou clusteru, pro komunikaci z kubelet na server rozhraní API.
-* Úložiště hodnot klíčů etcd má certifikát podepsaný certifikační autoritou clusteru za účelem komunikace z etcd k serveru rozhraní API.
+* Server rozhraní API AKS vytvoří certifikační autoritu (CA) nazvanou Certifikační autorita clusteru.
+* Server API má certifikační autoritu clusteru, která podepisuje certifikáty pro jednosměrnou komunikaci ze serveru API na kubelety.
+* Každý kubelet také vytvoří žádost o podpis certifikátu (CSR), který je podepsán certifikační autoritou clusteru, pro komunikaci z kubelet na server API.
+* Úložiště hodnot klíčů etcd má certifikát podepsaný certifikační autoritou clusteru pro komunikaci z etcd na server rozhraní API.
 * Úložiště hodnot klíčů etcd vytvoří certifikační autoritu, která podepisuje certifikáty k ověřování a autorizaci replikace dat mezi replikami etcd v clusteru AKS.
-* Agregátor rozhraní API používá certifikační autoritu clusteru k vydávání certifikátů pro komunikaci s jinými rozhraními API, jako je například Open Service Broker pro Azure. Agregátor rozhraní API může mít také vlastní certifikační autoritu pro vydávání certifikátů, ale aktuálně používá certifikační autoritu clusteru.
-* Každý uzel používá token účtu služby (SA), který je podepsaný certifikační autoritou clusteru.
+* Agregátor rozhraní API používá certifikační autoritu clusteru k vydávání certifikátů pro komunikaci s jinými rozhraními API, jako je například Open Service Broker pro Azure. Agregátor rozhraní API může mít také vlastní certifikační autoritu pro vydávání těchto certifikátů, ale v současné době používá certifikační autoritu clusteru.
+* Každý uzel používá token účtu služby (SA), který je podepsán certifikační autoritou clusteru.
 * Klient `kubectl` má certifikát pro komunikaci s clusterem AKS.
 
 > [!NOTE]
-> Clustery AKS vytvořené před vydáním března 2019 obsahují certifikáty, jejichž platnost vyprší po dvou letech. Každý cluster vytvořený po březnu 2019 nebo jakémkoli clusteru, který má jeho certifikáty otočený, má certifikáty certifikační autority clusteru, jejichž platnost vyprší po 30 letech. Platnost všech ostatních certifikátů vyprší po dvou letech. Pokud chcete ověřit, kdy byl cluster vytvořen, použijte `kubectl get nodes` k zobrazení *stáří* fondů uzlů.
+> Clustery AKS vytvořené před březnem 2019 mají certifikáty, jejichž platnost vyprší po dvou letech. Jakýkoli cluster vytvořený po březnu 2019 nebo jakýkoli cluster, ve kterých jsou otočeny certifikáty, mají certifikáty certifikační autority clusteru, jejichž platnost vyprší po 30 letech. Platnost všech ostatních certifikátů vyprší po dvou letech. Chcete-li ověřit, kdy `kubectl get nodes` byl vytvořen cluster, použijte k zobrazení *stáří* fondů uzlů.
 > 
-> Navíc můžete kontrolovat datum vypršení platnosti certifikátu vašeho clusteru. Například následující příkaz zobrazí podrobnosti o certifikátu pro cluster *myAKSCluster* .
+> Kromě toho můžete zkontrolovat datum vypršení platnosti certifikátu clusteru. Například následující příkaz zobrazí podrobnosti o certifikátu pro cluster *myAKSCluster.*
 > ```console
 > kubectl config view --raw -o jsonpath="{.clusters[?(@.name == 'myAKSCluster')].cluster.certificate-authority-data}" | base64 -d > my-cert.crt
 > openssl x509 -in my-cert.crt -text
@@ -48,48 +48,48 @@ AKS generuje a používá následující certifikáty, certifikační autority a
 ## <a name="rotate-your-cluster-certificates"></a>Otočení certifikátů clusteru
 
 > [!WARNING]
-> Střídání certifikátů pomocí `az aks rotate-certs` může pro cluster AKS způsobit až 30 minut výpadků.
+> Otáčení certifikátů pomocí `az aks rotate-certs` může způsobit až 30 minut prostojů pro cluster AKS.
 
-Přihlaste se ke svému clusteru AKS pomocí [AZ AKS Get-Credentials][az-aks-get-credentials] . Tento příkaz také stáhne a nakonfiguruje `kubectl` klientský certifikát na místním počítači.
+Pomocí [az aks získat přihlašovací údaje][az-aks-get-credentials] pro přihlášení do clusteru AKS. Tento příkaz také stáhne `kubectl` a nakonfiguruje klientský certifikát v místním počítači.
 
 ```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
-K otočení všech certifikátů, certifikačních autorit a SAs v clusteru použijte `az aks rotate-certs`.
+Slouží `az aks rotate-certs` k otočení všech certifikátů, certifikačních autorit a sa ve vašem clusteru.
 
 ```azurecli
 az aks rotate-certs -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
 > [!IMPORTANT]
-> Dokončení `az aks rotate-certs` může trvat až 30 minut. Pokud se příkaz před dokončením nepovede, ověřte pomocí `az aks show`, jestli je stav clusteru *rotující*. Pokud je cluster ve stavu selhání, znovu znovu spusťte `az aks rotate-certs` pro otočení certifikátů.
+> Dokončení může trvat až `az aks rotate-certs` 30 minut. Pokud se příkaz před `az aks show` dokončením nezdaří, použijte k ověření stavu clusteru *Otáčení certifikátu*. Pokud je cluster ve stavu selhání, znovu spusťte `az aks rotate-certs` otočení certifikátů znovu.
 
-Spuštěním `kubectl` příkazu ověřte, že staré certifikáty již nejsou platné. Vzhledem k tomu, že jste neaktualizovali certifikáty používané v `kubectl`, zobrazí se chyba.  Příklad:
+Spuštěním příkazu `kubectl` ověřte, zda staré certifikáty již nejsou platné. Vzhledem k tomu, že `kubectl`jste neaktualizovali certifikáty používané , zobrazí se chyba.  Například:
 
 ```console
 $ kubectl get no
 Unable to connect to the server: x509: certificate signed by unknown authority (possibly because of "crypto/rsa: verification error" while trying to verify candidate authority certificate "ca")
 ```
 
-Aktualizujte certifikát, který používá `kubectl` spuštěním `az aks get-credentials`.
+Aktualizujte certifikát `kubectl` používaný `az aks get-credentials`spuštěním programu .
 
 ```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME --overwrite-existing
 ```
 
-Ověřte, že se certifikáty aktualizovaly spuštěním příkazu `kubectl`, který teď bude úspěšný. Příklad:
+Ověřte, zda byly certifikáty aktualizovány spuštěním příkazu, `kubectl` který bude nyní úspěšný. Například:
 
 ```console
 kubectl get no
 ```
 
 > [!NOTE]
-> Pokud máte nějaké služby, které běží na AKS, například [Azure dev Spaces][dev-spaces], možná budete muset [aktualizovat i certifikáty související s těmito službami][dev-spaces-rotate] .
+> Pokud máte nějaké služby, které běží nad AKS, jako je [azure dev spaces][dev-spaces], budete muset [aktualizovat certifikáty související s těmito službami][dev-spaces-rotate] také.
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento článek ukazuje, jak automaticky střídat certifikáty, certifikační autority a SAs v clusteru. [Osvědčené postupy pro zabezpečení a upgrady clusterů najdete v tématu Azure Kubernetes Service (AKS)][aks-best-practices-security-upgrades] , kde najdete další informace o osvědčených postupech zabezpečení AKS.
+V tomto článku se ukazuje, jak automaticky otáčet certifikáty clusteru, certifikační autority a sa. Další informace o doporučených postupech zabezpečení AKS najdete [v doporučených postupech pro][aks-best-practices-security-upgrades] zabezpečení AKS.
 
 
 [azure-cli-install]: /cli/azure/install-azure-cli

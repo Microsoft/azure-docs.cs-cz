@@ -1,6 +1,6 @@
 ---
-title: Upgrade řadiče pro příchozí přenos dat pomocí Helm
-description: Tento článek poskytuje informace o tom, jak upgradovat Application Gateway příchozího přenosu dat pomocí Helm.
+title: Upgrade řadiče příchozího přenosu dat pomocí helmy
+description: Tento článek obsahuje informace o tom, jak upgradovat příchozí přenos dat aplikační brány pomocí helmu.
 services: application-gateway
 author: caya
 ms.service: application-gateway
@@ -8,25 +8,25 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 3903ccd1c15765d06cd1794a40567e2c70062538
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73795902"
 ---
-# <a name="how-to-upgrade-application-gateway-ingress-controller-using-helm"></a>Postup upgradu Application Gatewayho kontroleru příchozího přenosu dat pomocí Helm 
+# <a name="how-to-upgrade-application-gateway-ingress-controller-using-helm"></a>Postup upgradu kontroleru příchozího přenosu dat služby Application Gateway s využitím Helmu 
 
-Kontroler služby Azure Application Gateway příchozího přenosu pro Kubernetes (AGIC) se dá upgradovat pomocí úložiště Helm hostovaného v Azure Storage.
+Řadič příchozího přenosu dat aplikační brány Azure pro Kubernetes (AGIC) lze upgradovat pomocí úložiště Helm hostovaného ve službě Azure Storage.
 
-Než zahájíte postup upgradu, ujistěte se, že jste přidali požadované úložiště:
+Než zahájíme postup upgradu, ujistěte se, že jste přidali požadované úložiště:
 
-- Zobrazení aktuálně přidaných úložišť Helm pomocí:
+- Zobrazte si aktuálně přidané repozitáře Helm u:
 
     ```bash
     helm repo list
     ```
 
-- Přidejte úložiště AGIC pomocí:
+- Přidejte repo AGIC s:
 
     ```bash
     helm repo add \
@@ -36,19 +36,19 @@ Než zahájíte postup upgradu, ujistěte se, že jste přidali požadované úl
 
 ## <a name="upgrade"></a>Upgrade
 
-1. Pokud chcete získat nejnovější verzi, aktualizujte úložiště AGIC Helm:
+1. Aktualizujte úložiště AGIC Helm a získejte nejnovější verzi:
 
     ```bash
     helm repo update
     ```
 
-1. Zobrazit dostupné verze grafu `application-gateway-kubernetes-ingress`:
+1. Zobrazení dostupných verzí `application-gateway-kubernetes-ingress` grafu:
 
     ``` bash
     helm search -l application-gateway-kubernetes-ingress
     ```
 
-    Ukázková odpověď:
+    Odpověď vzorku:
 
     ```bash
     NAME                                                    CHART VERSION   APP VERSION     DESCRIPTION
@@ -56,24 +56,24 @@ Než zahájíte postup upgradu, ujistěte se, že jste přidali požadované úl
     application-gateway-kubernetes-ingress/ingress-azure    0.6.0           0.6.0           Use Azure Application Gateway as the ingress for an Azure...
     ```
 
-    Nejnovější dostupná verze ze seznamu výše je: `0.7.0-rc1`
+    Nejnovější dostupná verze z výše uvedeného seznamu je:`0.7.0-rc1`
 
-1. Zobrazení aktuálně nainstalovaných grafů Helm:
+1. Zobrazení aktuálně nainstalovaných grafů helmu:
 
     ```bash
     helm list
     ```
 
-    Ukázková odpověď:
+    Odpověď vzorku:
 
     ```bash
     NAME            REVISION        UPDATED                         STATUS  CHART                   APP VERSION     NAMESPACE
     odd-billygoat   22              Fri Jun 21 15:56:06 2019        FAILED  ingress-azure-0.7.0-rc1 0.7.0-rc1       default
     ```
 
-    Instalace grafu Helm z výše uvedené odpovědi má název `odd-billygoat`. Tento název použijeme pro zbytek příkazů. Váš skutečný název nasazení se pravděpodobně bude lišit.
+    Instalace grafu Helm z ukázkové `odd-billygoat`odpovědi výše je pojmenována . Tento název použijeme pro zbytek příkazů. Název skutečného nasazení se bude s největší pravděpodobností lišit.
 
-1. Upgradujte nasazení Helm na novou verzi:
+1. Upgradujte nasazení helmu na novou verzi:
 
     ```bash
     helm upgrade \
@@ -82,9 +82,9 @@ Než zahájíte postup upgradu, ujistěte se, že jste přidali požadované úl
         --version 0.9.0-rc2
     ```
 
-## <a name="rollback"></a>Návrat
+## <a name="rollback"></a>Vrácení zpět
 
-Pokud by nasazení Helm nebylo úspěšné, můžete vrátit zpět na předchozí verzi.
+Pokud nasazení helmu nezdaří, můžete vrátit zpět na předchozí verzi.
 
 1. Získejte poslední známé číslo verze v pořádku:
 
@@ -100,9 +100,9 @@ Pokud by nasazení Helm nebylo úspěšné, můžete vrátit zpět na předchoz�
     2               Fri Jun 21 15:56:06 2019        FAILED          ingress-azure-xx        xxxx
     ```
 
-    Z ukázkového výstupu příkazu `helm history` vypadá jako poslední úspěšné nasazení našeho `odd-billygoat` revize `1`
+    Ze ukázkového výstupu `helm history` příkazu to vypadá, že `odd-billygoat` poslední úspěšné nasazení našeho bylo revize`1`
 
-1. Vrátit zpět poslední úspěšnou revizi:
+1. Návrat k poslední úspěšné revizi:
 
     ```bash
     helm rollback odd-billygoat 1

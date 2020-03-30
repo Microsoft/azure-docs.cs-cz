@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Řešení potíží s připojením SQL | Microsoft Docs'
-description: Vysvětluje, jak řešit potíže s připojením SQL, ke kterým dochází v Azure AD Connect.
+title: 'Azure AD Connect: Řešení problémů s připojením SQL | Dokumenty společnosti Microsoft'
+description: Vysvětluje, jak řešit problémy s připojením SQL, ke kterým dochází s Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -15,40 +15,40 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cde94dce13eeb7536f72fb0dcd937265960c7314
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70842690"
 ---
-# <a name="troubleshoot-sql-connectivity-issues-with-azure-ad-connect"></a>Řešení potíží s připojením SQL pomocí Azure AD Connect
-Tento článek vysvětluje, jak řešit potíže s připojením mezi Azure AD Connect a SQL Server. 
+# <a name="troubleshoot-sql-connectivity-issues-with-azure-ad-connect"></a>Řešení potíží s připojením SQL u služby Azure AD Connect
+Tento článek vysvětluje, jak řešit problémy s připojením mezi Azure AD Connect a SQL Server. 
 
-Pokud se SQL Server nenajde, zobrazí se na následujícím snímku obrazovky Typická chyba.
+Následující snímek obrazovky ukazuje typickou chybu, pokud sql server nelze najít.
 
 ![Chyba SQL](./media/tshoot-connect-tshoot-sql-connectivity/sql1.png)
 
 ## <a name="troubleshooting-steps"></a>Postup při řešení potíží
-Otevřete okno PowerShellu a naimportujte modul prostředí PowerShell pro ADSyncTools.
+Otevření okna powershellu a import modulu ADSyncTools Powershell
 
 ``` powershell
 Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\Tools\AdSyncTools.psm1" 
 ```
 
 >[!NOTE]
->Install-Module vyžaduje aktualizaci [powershellu 5,0 (WMF 5,0)](https://www.microsoft.com/download/details.aspx?id=50395) nebo novější.  
-Nebo nainstalujte [Preview moduly PackageManagement PowerShellu – březen 2016 pro PowerShell 3.0/4.0](/powershell/module/PackageManagement) . 
+>Instalační modul vyžaduje aktualizaci na [Prostředí PowerShell 5.0 (WMF 5.0)](https://www.microsoft.com/download/details.aspx?id=50395) nebo novější;  
+Nebo nainstalujte [Náhled modulů PowerShellu Pro správu balíčků – březen 2016 pro PowerShell 3.0/4.0](/powershell/module/PackageManagement) 
 
 - **Zobrazit všechny příkazy**:`Get-Command -Module AdSyncTools` 
-- **Spustit funkci PowerShellu**: `Connect-ADSyncDatabase` s následujícími parametry
-    - WebServer. Název SQL Server
-    - Případě. Volitelné Název instance SQL Server a volitelně číslo portu, který chcete použít. Nezadávejte tento parametr pro použití výchozí instance.
-    - Jmen. Volitelné Uživatelský účet, se kterým se má připojit. Pokud necháte pole prázdné, použije se aktuálně přihlášený uživatel. Pokud se připojujete ke vzdálenému SQL Server mělo by se jednat o vlastní účet služby, který jste vytvořili pro připojení Azure ADConnect SQL. Azure AD Connect používá účet služby Azure AD Connect Sync jako k ověření na vzdáleném SQL serveru.
-    - Zadáno. Volitelné Heslo pro zadané uživatelské jméno.
+- **Provedení funkce powershellu**: `Connect-ADSyncDatabase` s následujícími parametry
+    - Server. Název serveru SQL Server.
+    - Instance. (Nepovinné) Název instance serveru SQL Server a volitelně číslo portu, které chcete použít. Nezadávejte tento parametr pro použití výchozí instance.
+    - Username. (Nepovinné) Uživatelský účet, se kterým se chcete připojit. Pokud zůstane prázdný, bude použit aktuálně přihlášený uživatel. Pokud se připojujete ke vzdálenému serveru SQL Server, měl by to být vlastní účet služby, který jste vytvořili pro připojení Azure ADConnect SQL Connectivity. Azure AD Connect používá účet synchronizační služby Azure AD Connect k ověření na vzdáleném serveru SQL.
+    - Heslo. (Nepovinné) Heslo pro uživatelské jméno zapředpokladu.
 
-Tato funkce PowerShellu se pokusí připojit k určenému SQL Server a instanci pomocí předaných přihlašovacích údajů nebo použijte přihlašovací údaje aktuálního uživatele. Pokud SQL Server nejde najít, skript se pokusí připojit ke službě SQL Browser a určit povolené protokoly a porty.
+Tato funkce prostředí powershell se pokusí vytvořit vazbu na zadaný sql server a instanci pomocí pověření předaných v nebo použít pověření aktuálního uživatele. Pokud sql server nelze nalézt skript se pokusí připojit ke službě prohlížeče SQL k určení povolené protokoly a porty.
 
-Příklad použití jenom názvu serveru:
+Příklad použití pouze názvu serveru:
 ```
 PS C:\Program Files\Microsoft Azure Active Directory Connect\Tools> import-module .\AdSyncTools.psm1
 
@@ -85,7 +85,7 @@ Container                        :
 PS C:\Program Files\Microsoft Azure Active Directory Connect\Tools> 
 ```
 
-Příklad použití instance a čísla portu, které neexistují:
+Příklad použití čísla instance a portu, které neexistují:
 
 ```
 PS C:\Program Files\Microsoft Azure Active Directory Connect\tools> Connect-AdSyncDatabase -Server SQL1 -Instance "INSTANCE1"

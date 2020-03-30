@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: jak používat Service Bus témata (Ruby)'
-description: 'Rychlý Start: Naučte se používat Service Bus témata a předplatná v Azure. Ukázky kódu jsou napsané pro aplikace Ruby.'
+title: 'Úvodní příručka: Jak používat témata služby Service Bus (Ruby)'
+description: 'Úvodní příručka: Naučte se používat témata a předplatná service busu v Azure. Ukázky kódu jsou napsány pro aplikace Ruby.'
 services: service-bus-messaging
 documentationcenter: ruby
 author: axisc
@@ -15,36 +15,36 @@ ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: aschhab
 ms.openlocfilehash: b5401eae844ed2113a9fbc07c8b3ad8601709d43
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73718932"
 ---
-# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>Rychlý Start: jak používat Service Bus témata a předplatná s Ruby
+# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>Úvodní příručka: Jak používat témata a předplatná služby Service Bus s ruby
  
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-Tento článek popisuje, jak používat Service Bus témata a odběry z aplikací Ruby. Mezi zahrnuté scénáře patří:
+Tento článek popisuje, jak používat témata service bus a předplatná z aplikací Ruby. Zahrnuté scénáře zahrnují:
 
 - Vytváření témat a předplatných 
 - Vytváření filtrů předplatného 
-- Odesílání zpráv do tématu 
+- Odesílání zpráv k tématu 
 - Příjem zpráv z předplatného
-- Odstraňování témat a předplatných
+- Odstranění témat a předplatných
 
 
 ## <a name="prerequisites"></a>Požadavky
-1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Postupujte podle kroků v [rychlém startu: použijte Azure Portal k vytvoření Service Bus tématu a odběry tématu](service-bus-quickstart-topics-subscriptions-portal.md) k vytvoření **oboru názvů** Service Bus a získání **připojovacího řetězce**. 
+1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat [výhody pro předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo se zaregistrovat k [bezplatnému účtu](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Postupujte podle kroků na [úvodním panelu: Pomocí portálu Azure vytvořte téma služby Service Bus a odběry tématu](service-bus-quickstart-topics-subscriptions-portal.md) k vytvoření **oboru názvů** Service Bus a získání **připojovacího řetězce**. 
 
     > [!NOTE]
-    > V tomto rychlém startu vytvoříte **téma** a **předplatné** k tématu pomocí **Ruby** . 
+    > V tomto rychlém startu vytvoříte **téma** a **předplatné** tohoto tématu pomocí **ruby.** 
 
 [!INCLUDE [service-bus-ruby-setup](../../includes/service-bus-ruby-setup.md)]
 
 ## <a name="create-a-topic"></a>Vytvoření tématu
-Objekt **Azure:: ServiceBusService** vám umožní pracovat s tématy. Následující kód vytvoří objekt **Azure:: ServiceBusService** . Chcete-li vytvořit téma, použijte metodu `create_topic()`. Následující příklad vytvoří téma nebo vytiskne všechny chyby.
+Objekt **Azure::ServiceBusService** umožňuje pracovat s tématy. Následující kód vytvoří objekt **Azure::ServiceBusService.** Chcete-li vytvořit téma, použijte metodu. `create_topic()` Následující příklad vytvoří téma nebo vytiskne všechny chyby.
 
 ```ruby
 azure_service_bus_service = Azure::ServiceBus::ServiceBusService.new(sb_host, { signer: signer})
@@ -55,7 +55,7 @@ rescue
 end
 ```
 
-Můžete také předat objekt **Azure:: ServiceBus:: téma** s dalšími možnostmi, které vám umožní přepsat výchozí nastavení tématu, jako je například doba zprávy na hodnotu Live nebo maximální velikost fronty. Následující příklad ukazuje nastavení maximální velikosti fronty na 5 GB a dobu do živého na 1 minutu:
+Můžete také předat **Objekt Azure::ServiceBus::Topic** s dalšími možnostmi, které umožňují přepsat výchozí nastavení tématu, jako je například čas zprávy na aktivní nebo maximální velikost fronty. Následující příklad ukazuje nastavení maximální velikosti fronty na 5 GB a dobu života na 1 minutu:
 
 ```ruby
 topic = Azure::ServiceBus::Topic.new("test-topic")
@@ -66,29 +66,29 @@ topic = azure_service_bus_service.create_topic(topic)
 ```
 
 ## <a name="create-subscriptions"></a>Vytvoření předplatných
-Odběry témat se také vytvářejí pomocí objektu **Azure:: ServiceBusService** . Odběry jsou pojmenovány a mohou mít volitelný filtr, který omezuje sadu zpráv dodaných do virtuální fronty odběru.
+Předplatná tématu se také vytvářejí pomocí objektu **Azure::ServiceBusService.** Odběry jsou pojmenovány a může mít volitelný filtr, který omezuje sadu zpráv doručované do virtuální fronty předplatného.
 
-Ve výchozím nastavení jsou předplatná trvalá. Budou i nadále existovat, dokud je neodstraní ani v tématu, ke kterému jsou přidruženy. Pokud vaše aplikace obsahuje logiku pro vytvoření předplatného, měli byste nejdřív ověřit, jestli předplatné už existuje, pomocí metody getsubscription.
+Ve výchozím nastavení jsou odběry trvalé. Nadále existují, dokud nebudou odstraněny buď oni, nebo téma, které jsou spojeny s. Pokud vaše aplikace obsahuje logiku pro vytvoření předplatného, měla by nejprve zkontrolovat, zda předplatné již existuje pomocí metody getSubscription.
 
-Odběry můžete nechat automaticky odstranit nastavením [vlastnosti AutoDeleteOnIdle](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle).
+Odběry můžete automaticky odstranit nastavením [vlastnosti AutoDeleteOnIdle](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle).
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Vytvoření odběru s výchozím filtrem (MatchAll).
-Pokud při vytvoření nového předplatného není zadaný žádný filtr, použije se filtr **MatchAll** (výchozí). Když se použije filtr **MatchAll** , všechny zprávy publikované v tématu se umístí do virtuální fronty odběru. Následující příklad vytvoří odběr s názvem All-Messages a použije výchozí filtr **MatchAll** .
+Pokud není při vytvoření nového předplatného zadán žádný filtr, použije se filtr **MatchAll** (výchozí). Při použití filtru **MatchAll** jsou všechny zprávy publikované do tématu umístěny do virtuální fronty předplatného. Následující příklad vytvoří odběr s názvem "všechny zprávy" a používá výchozí **MatchAll** filtr.
 
 ```ruby
 subscription = azure_service_bus_service.create_subscription("test-topic", "all-messages")
 ```
 
 ### <a name="create-subscriptions-with-filters"></a>Vytvoření odběru s filtry
-Můžete také definovat filtry, které vám umožní určit, které zprávy odeslané do tématu se mají zobrazit v rámci konkrétního předplatného.
+Můžete také definovat filtry, které umožňují určit, které zprávy odeslané na téma by se měly zobrazit v rámci konkrétního předplatného.
 
-Nejpružnější typ filtru podporovaný předplatnými je **Azure:: ServiceBus:: SqlFilter**, který implementuje podmnožinu SQL92. Filtry SQL pracují s vlastnostmi zpráv publikované do tématu. Další podrobnosti o výrazech, které lze použít s filtrem SQL, najdete v syntaxi [SqlFilter](service-bus-messaging-sql-filter.md) .
+Nejflexibilnější typ filtru podporované odběry je **Azure::ServiceBus::SqlFilter**, který implementuje podmnožinu SQL92. Filtry SQL pracují s vlastnostmi zpráv publikované do tématu. Další podrobnosti o výrazech, které lze použít s filtrem SQL, zkontrolujte syntaxi [SqlFilter.](service-bus-messaging-sql-filter.md)
 
-Do předplatného můžete přidat filtry pomocí metody `create_rule()` objektu **Azure:: ServiceBusService** . Tato metoda umožňuje přidat nové filtry do stávajícího předplatného.
+Filtry můžete přidat k předplatnému pomocí `create_rule()` metody **objektu Azure::ServiceBusService.** Tato metoda umožňuje přidat nové filtry do existujícího předplatného.
 
-Vzhledem k tomu, že výchozí filtr je automaticky použit pro všechna nová předplatná, musíte nejprve odebrat výchozí filtr, jinak **MatchAll** přepíše všechny další filtry, které můžete zadat. Výchozí pravidlo můžete odebrat pomocí metody `delete_rule()` v objektu **Azure:: ServiceBusService** .
+Vzhledem k tomu, že výchozí filtr je použit automaticky pro všechny nové odběry, musíte nejprve odebrat výchozí filtr nebo **MatchAll** přepíše všechny ostatní filtry, které zadáte. Výchozí pravidlo můžete odebrat `delete_rule()` pomocí metody na objektu **Azure::ServiceBusService.**
 
-Následující příklad vytvoří předplatné s názvem "vysoké zprávy" pomocí příkazu **Azure:: ServiceBus:: SqlFilter** , který vybere pouze zprávy, které mají vlastní vlastnost `message_number` větší než 3:
+Následující příklad vytvoří předplatné s názvem "high-messages" s **Azure::ServiceBus::SqlFilter,** který `message_number` vybere pouze zprávy, které mají vlastní vlastnost větší než 3:
 
 ```ruby
 subscription = azure_service_bus_service.create_subscription("test-topic", "high-messages")
@@ -102,7 +102,7 @@ rule.filter = Azure::ServiceBus::SqlFilter.new({
 rule = azure_service_bus_service.create_rule(rule)
 ```
 
-Podobně následující příklad vytvoří odběr s názvem `low-messages` pomocí **Azure:: ServiceBus:: SqlFilter** , který vybere pouze zprávy, které mají vlastnost `message_number` menší než nebo rovna 3:
+Podobně následující příklad vytvoří předplatné `low-messages` s názvem **Azure::ServiceBus::SqlFilter,** který vybere `message_number` pouze zprávy, které mají vlastnost menší nebo rovnou 3:
 
 ```ruby
 subscription = azure_service_bus_service.create_subscription("test-topic", "low-messages")
@@ -116,12 +116,12 @@ rule.filter = Azure::ServiceBus::SqlFilter.new({
 rule = azure_service_bus_service.create_rule(rule)
 ```
 
-Když se zpráva pošle `test-topic`, je vždycky Doručená příjemcům, kteří se přihlásili k předplatnému `all-messages` tématu, a selektivně doručovat příjemcům, kteří se přihlásili k odběru `high-messages` a `low-messages` předplatným tématu (v závislosti na zprávě obsah).
+Když je zpráva nyní `test-topic`odeslána , je vždy doručena `all-messages` příjemcům, kteří se přihlásili k odběru `high-messages` `low-messages` tématu, a selektivně doručena příjemcům, kteří se přihlásili k odběru a téma (v závislosti na obsahu zprávy).
 
 ## <a name="send-messages-to-a-topic"></a>Odeslání zprávy do tématu
-Chcete-li odeslat zprávu do Service Bus téma, musí vaše aplikace používat metodu `send_topic_message()` v objektu **Azure:: ServiceBusService** . Zprávy odeslané do Service Bus témata jsou instancemi objektů **Azure:: ServiceBus:: BrokeredMessage** . Objekty **Azure:: ServiceBus:: BrokeredMessage** mají sadu standardních vlastností (například `label` a `time_to_live`), slovník, který slouží k uložení vlastních vlastností specifických pro aplikaci, a tělo řetězcových dat. Aplikace může nastavit tělo zprávy předáním řetězcové hodnoty metodě `send_topic_message()` a všechny požadované standardní vlastnosti jsou vyplněny výchozími hodnotami.
+Chcete-li odeslat zprávu do tématu service `send_topic_message()` bus, vaše aplikace musí použít metodu na **Azure::ServiceBusService** objektu. Zprávy odeslané do témat service bus jsou instance **Azure::ServiceBus::BrokeredMessage** objekty. **Azure::ServiceBus::BrokeredMessage** objekty mají sadu standardních `label` `time_to_live`vlastností (například a ), slovník, který se používá k uložení vlastní vlastnosti specifické pro aplikaci a tělo dat řetězce. Aplikace může nastavit text zprávy předáním hodnoty řetězce `send_topic_message()` metodě a všechny požadované standardní vlastnosti jsou naplněny výchozími hodnotami.
 
-Následující příklad ukazuje, jak odeslat pět testovacích zpráv do `test-topic`. Hodnota `message_number` vlastní vlastnosti každé zprávy se liší v iteraci smyčky (to určuje, které předplatné obdrží):
+Následující příklad ukazuje, jak odeslat `test-topic`pět testovacích zpráv do aplikace . Hodnota `message_number` vlastní vlastnosti každé zprávy se liší podle iterace smyčky (určuje, které předplatné ji obdrží):
 
 ```ruby
 5.times do |i|
@@ -133,14 +133,14 @@ end
 
 Témata Service Bus podporují maximální velikost zprávy 256 KB [na úrovni Standard](service-bus-premium-messaging.md) a 1 MB [na úrovni Premium](service-bus-premium-messaging.md). Hlavička, která obsahuje standardní a vlastní vlastnosti aplikace, může mít velikost až 64 KB. Počet zpráv držených v tématu není omezený, ale celková velikost zpráv držených v tématu omezená je. Velikost tématu se definuje při vytvoření, maximální limit je 5 GB.
 
-## <a name="receive-messages-from-a-subscription"></a>Přijímání zpráv z předplatného
-Zprávy jsou přijímány z předplatného pomocí metody `receive_subscription_message()` v objektu **Azure:: ServiceBusService** . Ve výchozím nastavení se zprávy čtou (ve špičce) a zamčené bez jejich odstranění z předplatného. Zprávu z předplatného můžete číst a odstranit nastavením možnosti `peek_lock` na **hodnotu NEPRAVDA**.
+## <a name="receive-messages-from-a-subscription"></a>Příjem zpráv z předplatného
+Zprávy jsou přijímány z `receive_subscription_message()` předplatného pomocí metody na **Azure::ServiceBusService** objektu. Ve výchozím nastavení jsou zprávy read(peak) a uzamčeny bez odstranění z předplatného. Zprávu z odběru můžete přečíst a `peek_lock` odstranit nastavením možnosti **false**.
 
-Výchozí chování usnadňuje čtení a odstranění dvou fází operace, což také umožňuje podporovat aplikace, které nemůžou tolerovat chybějící zprávy. Když Service Bus přijme požadavek, najde zprávu, která je na řadě ke spotřebování, uzamkne ji proti spotřebování jinými spotřebiteli a vrátí ji do aplikace. Poté, co aplikace dokončí zpracování zprávy (nebo je uloží spolehlivě pro budoucí zpracování), dokončí druhou fázi procesu Receive voláním metody `delete_subscription_message()` a zadáním zprávy, která se má odstranit jako parametr. Metoda `delete_subscription_message()` označí zprávu jako spotřebou a odebere ji z předplatného.
+Výchozí chování umožňuje čtení a odstranění dvoustupňové operace, což také umožňuje podporovat aplikace, které nemohou tolerovat chybějící zprávy. Když Service Bus přijme požadavek, najde zprávu, která je na řadě ke spotřebování, uzamkne ji proti spotřebování jinými spotřebiteli a vrátí ji do aplikace. Po dokončení aplikace zpracování zprávy (nebo ukládá spolehlivě pro budoucí zpracování), dokončí druhou fázi `delete_subscription_message()` procesu příjmu voláním metody a poskytnutím zprávy, která má být odstraněna jako parametr. Metoda `delete_subscription_message()` označí zprávu jako spotřebované a odebrat z předplatného.
 
-Pokud je parametr `:peek_lock` nastaven na **hodnotu false**, bude čtení a odstranění zprávy nejjednodušší model a funguje nejlépe ve scénářích, ve kterých může aplikace tolerovat nezpracovávání zprávy, když dojde k selhání. Vezměte v úvahu scénář, ve kterém příjemce vydá žádost o přijetí, a poté dojde k chybě před jejím zpracováním. Vzhledem k tomu, že Service Bus označila zprávu jako spotřebovaná, pak když se aplikace znovu spustí a začne znovu přijímat zprávy, vynechala zprávu, která byla spotřebována před selháním.
+Pokud `:peek_lock` je parametr nastaven na **hodnotu false**, čtení a odstranění zprávy se stane nejjednodušším modelem a funguje nejlépe pro scénáře, ve kterých aplikace může tolerovat nezpracování zprávy, když dojde k chybě. Zvažte scénář, ve kterém spotřebitel vydá požadavek na přijetí a pak dojde k chybě před jeho zpracováním. Vzhledem k tomu, že service bus označil zprávu jako spotřebované, pak při restartování aplikace a začne spotřebovávat zprávy znovu, má zmeškané zprávy, která byla spotřebována před selhání.
 
-Následující příklad ukazuje, jak lze přijímat a zpracovávat zprávy pomocí `receive_subscription_message()`. Příklad nejprve přijme a odstraní zprávu z předplatného `low-messages` pomocí `:peek_lock` nastavenou na **hodnotu false**, potom dostane další zprávu od `high-messages` a pak ji odstraní pomocí `delete_subscription_message()`:
+Následující příklad ukazuje, jak mohou být zprávy `receive_subscription_message()`přijímány a zpracovávány pomocí . Příklad nejprve obdrží a odstraní zprávu `low-messages` z `:peek_lock` odběru pomocí nastavena na **hodnotu** `high-messages` false , pak obdrží `delete_subscription_message()`další zprávu z a potom odstraní zprávu pomocí :
 
 ```ruby
 message = azure_service_bus_service.receive_subscription_message(
@@ -151,33 +151,33 @@ azure_service_bus_service.delete_subscription_message(message)
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Zpracování pádů aplikace a nečitelných zpráv
-Service Bus poskytuje funkce, které vám pomůžou se elegantně zotavit z chyb v aplikaci nebo vyřešit potíže se zpracováním zprávy. Pokud aplikace příjemce z nějakého důvodu nemůže zprávu zpracovat, může volat metodu `unlock_subscription_message()` v objektu **Azure:: ServiceBusService** . Způsobuje Service Bus odemčení zprávy v rámci předplatného a její zpřístupnění pro opětovné přijetí, a to buď pomocí stejné aplikace, nebo jiné náročné aplikace.
+Service Bus poskytuje funkce, které vám pomůžou se elegantně zotavit z chyb v aplikaci nebo vyřešit potíže se zpracováním zprávy. Pokud aplikace příjemce není z nějakého důvodu schopna zprávu `unlock_subscription_message()` zpracovat, může volat metodu na objektu **Azure::ServiceBusService.** Způsobí, že Service Bus odemknout zprávu v rámci předplatného a zpřístupnit ji k přijetí znovu, a to buď stejnou náročnou aplikací nebo jinou spotřebitelská aplikace.
 
-Je také časový limit přidružený ke zprávě uzamčený v rámci předplatného a pokud aplikace nedokáže zpracovat zprávu před vypršením časového limitu zámku (například pokud aplikace selže), Service Bus automaticky odemkne zprávu. zpřístupněte ji pro opětovné přijetí.
+K dispozici je také časový limit přidružený ke zprávě zamčené v rámci předplatného a pokud aplikace nezpracuje zprávu před vypršením časového limitu uzamčení (například pokud dojde k chybě aplikace), pak Service Bus automaticky odemkne zprávu a k dispozici k jeho přijetí.
 
-V případě, že dojde k chybě aplikace po zpracování zprávy, ale před zavoláním metody `delete_subscription_message()`, je zpráva doručena do aplikace při restartu. Často se nazývá *alespoň po zpracování*; To znamená, že každá zpráva se zpracuje alespoň jednou, ale v některých situacích může být stejná zpráva doručena znovu. Pokud daný scénář nemůže tolerovat zpracování víc než jednou, vývojáři aplikace by měli přidat další logiku navíc pro zpracování víckrát doručené zprávy. Tato logika se často dosahuje pomocí vlastnosti `message_id` zprávy, která zůstává při pokusůch o doručení konstantní.
+V případě, že aplikace dojde k chybě `delete_subscription_message()` po zpracování zprávy, ale před je volána metoda, pak zpráva je znovu doručena do aplikace při restartování. To je často nazýváno *alespoň jednou zpracování*; to znamená, že každá zpráva je zpracována alespoň jednou, ale v určitých situacích může být stejná zpráva znovu doručena. Pokud daný scénář nemůže tolerovat zpracování víc než jednou, vývojáři aplikace by měli přidat další logiku navíc pro zpracování víckrát doručené zprávy. Tato logika je `message_id` často dosaženo pomocí vlastnost zprávy, která zůstává konstantní napříč pokusy o doručení.
 
 ## <a name="delete-topics-and-subscriptions"></a>Odstranění témat a odběrů
-Témata a odběry jsou trvalé, pokud není nastavena [vlastnost AutoDeleteOnIdle](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle) . Je možné je odstranit pomocí [Azure Portal][Azure portal] nebo programově. Následující příklad ukazuje, jak odstranit téma s názvem `test-topic`.
+Témata a odběry jsou trvalé, pokud [je nastavena vlastnost AutoDeleteOnIdle.](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle) Mohou být odstraněny buď prostřednictvím [portálu Azure][Azure portal] nebo programově. Následující příklad ukazuje, jak odstranit `test-topic`téma s názvem .
 
 ```ruby
 azure_service_bus_service.delete_topic("test-topic")
 ```
 
-Pokud se odstraní téma, odstraní se i všechny odběry registrované k tomuto tématu. Odběry se taky dají odstranit samostatně. Následující kód ukazuje, jak odstranit předplatné s názvem `high-messages` z `test-topic`ho tématu:
+Pokud se odstraní téma, odstraní se i všechny odběry registrované k tomuto tématu. Odběry se taky dají odstranit samostatně. Následující kód ukazuje, jak odstranit `high-messages` odběr `test-topic` pojmenovaný z tématu:
 
 ```ruby
 azure_service_bus_service.delete_subscription("test-topic", "high-messages")
 ```
 
 > [!NOTE]
-> Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer umožňuje uživatelům připojit se k oboru názvů Service Bus a snadno spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, nebo možnost testovat témata, fronty, odběry, služby Relay, centra oznámení a centra událostí. 
+> Prostředky služby Service Bus můžete spravovat pomocí [aplikace Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Průzkumník služby Service Bus umožňuje uživatelům připojit se k oboru názvů service bus a snadno spravovat entity zasílání zpráv. Nástroj poskytuje pokročilé funkce, jako je funkce importu a exportu nebo možnost testovat téma, fronty, předplatná, přenosové služby, centra oznámení a centra událostí. 
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste se seznámili se základy Service Bus témata, získáte další informace na následujících odkazech.
+Nyní, když jste se naučili základy témat service bus, postupujte podle těchto odkazů se dozvíte více.
 
-* Viz [fronty, témata a odběry](service-bus-queues-topics-subscriptions.md).
+* Viz [Fronty, témata a odběry](service-bus-queues-topics-subscriptions.md).
 * Reference pro API pro [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter).
-* Navštivte úložiště [Azure SDK for Ruby](https://github.com/Azure/azure-sdk-for-ruby) na GitHubu.
+* Navštivte [azure sdk pro ruby](https://github.com/Azure/azure-sdk-for-ruby) úložiště na GitHubu.
 
 [Azure portal]: https://portal.azure.com

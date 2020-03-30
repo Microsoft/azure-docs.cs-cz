@@ -1,6 +1,6 @@
 ---
-title: Funkce pro rozpoznávání jazyka U-SQL v Azure Data Lake Analytics
-description: Naučte se používat inteligentní funkce rozpoznávání v U-SQL. Tyto ukázky kódu vám pomůžou začít.
+title: Kognitivní funkce U-SQL v Azure Data Lake Analytics
+description: Naučte se používat inteligenci kognitivních funkcí v U-SQL. Tento kód ukázky vám pomohou začít.
 services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
@@ -10,28 +10,28 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.openlocfilehash: 406eb1c9153e1ddbdc196cd64378c17cfa986dac
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71672713"
 ---
-# <a name="get-started-with-the-cognitive-capabilities-of-u-sql"></a>Začínáme se schopností rozpoznávání U-SQL
+# <a name="get-started-with-the-cognitive-capabilities-of-u-sql"></a>Začínáme s kognitivními funkcemi U-SQL
 
 ## <a name="overview"></a>Přehled
-Schopnosti vnímání u-SQL umožňují vývojářům používat do svých programů pro velké objemy dat funkce Put Intelligence. 
+Kognitivní funkce pro U-SQL umožňují vývojářům používat inteligenci ve svých programech pro velké objemy dat. 
 
-K dispozici jsou následující ukázky, které používají funkce rozpoznávání:
-* Vytváření [Detekovat plošky](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
-* Vytváření [Detekce emoce](https://github.com/Azure-Samples/usql-cognitive-imaging-emotion-detection-hello-world)
-* Vytváření [Detekovat objekty (označování)](https://github.com/Azure-Samples/usql-cognitive-imaging-object-tagging-hello-world)
-* Vytváření [OCR (optické rozpoznávání znaků)](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
-* Text: [Extrakce klíčových frází & Analýza mínění](https://github.com/Azure-Samples/usql-cognitive-text-hello-world)
+K dispozici jsou následující ukázky pomocí kognitivních funkcí:
+* Zobrazování: [Detekce tváří](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
+* Zobrazování: [Detekce emocí](https://github.com/Azure-Samples/usql-cognitive-imaging-emotion-detection-hello-world)
+* Zobrazování: [Detekce objektů (tagování)](https://github.com/Azure-Samples/usql-cognitive-imaging-object-tagging-hello-world)
+* Zobrazování: [OCR (optické rozpoznávání znaků)](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
+* Text: [Extrakce klíčových frází & sentimentová analýza](https://github.com/Azure-Samples/usql-cognitive-text-hello-world)
 
-## <a name="registering-cognitive-extensions-in-u-sql"></a>Registrování rozšíření rozpoznávání v U-SQL
-Než začnete, zaregistrujte rozšíření rozpoznávání v U-SQL podle kroků v tomto článku: [Registrace příhlasových rozšíření v U-SQL](/u-sql/objects-and-extensions/cognitive-capabilities-in#registeringExtensions).
+## <a name="registering-cognitive-extensions-in-u-sql"></a>Registrace kognitivních rozšíření v U-SQL
+Než začnete, postupujte podle kroků v tomto článku a zaregistrujte kognitivní rozšíření v U-SQL: [Registrace kognitivních rozšíření v U-SQL](/u-sql/objects-and-extensions/cognitive-capabilities-in#registeringExtensions).
 
 ## <a name="next-steps"></a>Další kroky
-* [Ukázky U-SQL/vnímání](https://github.com/Azure-Samples?utf8=✓&q=usql%20cognitive)
+* [Ukázky U-SQL/Cognitive](https://github.com/Azure-Samples?utf8=✓&q=usql%20cognitive)
 * [Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
 * [Použití funkcí okna U-SQL pro úlohy Azure Data Lake Analytics](data-lake-analytics-use-window-functions.md)

@@ -1,6 +1,6 @@
 ---
-title: Vytváření distribuovaných tabulek – Citus (-Scale) – Azure Database for PostgreSQL
-description: Rychlý Start pro vytváření a dotazování distribuovaných tabulek v Azure Database for PostgreSQL Citus ().
+title: Vytváření distribuovaných tabulek – Hyperscale (Citus) – databáze Azure pro PostgreSQL
+description: Rychlý start k vytvoření a dotazování distribuovaných tabulek v Azure Database for PostgreSQL Hyperscale (Citus).
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -9,33 +9,33 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/14/2019
 ms.openlocfilehash: 02e009e6fff2e717693d1579d409199ab179d941
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79241511"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-in-the-azure-portal"></a>Rychlý Start: vytvoření Azure Database for PostgreSQL – Citus (škálování) v Azure Portal
+# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-in-the-azure-portal"></a>Úvodní příručka: Vytvoření databáze Azure pro PostgreSQL – hyperškálování (Citus) na webu Azure Portal
 
-Azure Database for PostgreSQL je spravovaná služba, pomocí které spouštíte, spravujete a škálujete vysoce dostupné databáze PostgreSQL v cloudu. V tomto rychlém startu se dozvíte, jak pomocí Azure Portal vytvořit skupinu serverů Azure Database for PostgreSQL-Citus (škálovatelný škálování). Budete zkoumat distribuovaná data: horizontálního dělení tabulky napříč uzly, ingestování ukázkových dat a spouštění dotazů, které se spouštějí na více uzlech.
+Azure Database for PostgreSQL je spravovaná služba, pomocí které spouštíte, spravujete a škálujete vysoce dostupné databáze PostgreSQL v cloudu. Tento úvodní příručka ukazuje, jak vytvořit skupinu serverů Azure Database for PostgreSQL – Hyperscale (Citus) pomocí portálu Azure. Budete zkoumat distribuovaná data: rozdělení tabulek mezi uzly, ingestování ukázkových dat a spouštění dotazů, které se spouštějí na více uzlech.
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
 ## <a name="create-and-distribute-tables"></a>Vytváření a distribuce tabulek
 
-Po připojení k uzlu koordinátora s jednoduchým škálováním pomocí psql můžete provést některé základní úlohy.
+Po připojení k uzlu hyperškálování koordinátora pomocí psql, můžete dokončit některé základní úkoly.
 
-Na serverech s škálovatelným škálováním existují tři typy tabulek:
+V rámci serverů Hyperscale existují tři typy tabulek:
 
-- Distribuované nebo horizontálně dělené tabulky (rozprostření za účelem zvýšení kapacity pro výkon a paralelní zpracování)
-- Referenční tabulky (zachované více kopií)
+- Distribuované nebo horizontální rozdělení tabulek (rozprostřené pro změnu měřítka pro výkon a paralelizaci)
+- Referenční tabulky (více uchovávaných kopií)
 - Místní tabulky (často používané pro interní tabulky správců)
 
-V tomto rychlém startu se primárně zaměřujeme na distribuované tabulky a seznámíte se s nimi.
+V tomto rychlém startu se primárně zaměříme na distribuované tabulky a seznámení se s nimi.
 
-Datový model, se kterým budeme pracovat, je jednoduchý: data o uživatelích a událostech z GitHubu. Události zahrnují vytváření větví, potvrzení Git souvisejících s organizací a další.
+Datový model, se kterým budeme pracovat, je jednoduchý: uživatelská data a data událostí z GitHubu. Události zahrnují vytvoření rozvinec, git commits vztahující se k organizaci a další.
 
-Jakmile se připojíte přes psql, pojďme vytvořit tabulky. V konzole psql spusťte:
+Jakmile se připojíte přes psql, pojďme vytvořit naše tabulky. V psql konzole spustit:
 
 ```sql
 CREATE TABLE github_events
@@ -62,30 +62,30 @@ CREATE TABLE github_users
 );
 ```
 
-Pole `payload` `github_events` má datový typ JSONB. JSONB je datový typ JSON v binárním formátu v Postgres. Datový typ usnadňuje ukládání flexibilního schématu do jednoho sloupce.
+Pole `payload` `github_events` má datový typ JSONB. JSONB je datový typ JSON v binární podobě v Postgres. Datový typ usnadňuje ukládání flexibilníschéma v jednom sloupci.
 
-Postgres může pro tento typ vytvořit index `GIN`, který bude indexovat každý klíč a hodnotu v něm. S indexem se dá rychle a snadno dotazovat datovou část s různými podmínkami. Pojďme dopředu a vytvořit několik indexů, než načteme naše data. V psql:
+Postgres můžete `GIN` vytvořit index na tento typ, který bude indexovat každý klíč a hodnotu v něm. S indexem se stává rychlé a snadné dotaz datové části s různými podmínkami. Pojďme do toho a vytvořit několik indexů, než načteme naše data. V psql:
 
 ```sql
 CREATE INDEX event_type_index ON github_events (event_type);
 CREATE INDEX payload_index ON github_events USING GIN (payload jsonb_path_ops);
 ```
 
-V dalším kroku převezmeme tyto tabulky Postgres v uzlu koordinátora a oznámíme tak, aby se horizontálních oddílů napříč zaměstnanci. Uděláte to tak, že spustíte dotaz pro každou tabulku, která určuje klíč, na který se má horizontálních oddílů. V aktuálním příkladu horizontálních oddílů události a uživatele v tabulce `user_id`:
+Dále vezmeme ty tabulky Postgres na uzlu koordinátora a řekneme Hyperscale, aby je proměňovali mezi pracovníky. Chcete-li tak učinit, spustíme dotaz pro každou tabulku určující klíč pro jeho horizontál. V aktuálním příkladu budeme střep události `user_id`a uživatelé tabulka na :
 
 ```sql
 SELECT create_distributed_table('github_events', 'user_id');
 SELECT create_distributed_table('github_users', 'user_id');
 ```
 
-Teď jsme připraveni načíst data. V psql pořád pro stažení souborů prostředí.
+Jsme připraveni načíst data. V psql stále, shell se stáhnout soubory:
 
 ```sql
 \! curl -O https://examples.citusdata.com/users.csv
 \! curl -O https://examples.citusdata.com/events.csv
 ```
 
-Pak načtěte data ze souborů do distribuovaných tabulek:
+Dále načtěte data ze souborů do distribuovaných tabulek:
 
 ```sql
 SET CLIENT_ENCODING TO 'utf8';
@@ -96,13 +96,13 @@ SET CLIENT_ENCODING TO 'utf8';
 
 ## <a name="run-queries"></a>Spouštění dotazů
 
-Teď je čas na zábavu, ve kterém jsou ve skutečnosti spuštěné nějaké dotazy. Pojďme začít jednoduchým `count (*)`, abyste zjistili, kolik dat jsme načetli:
+Nyní je čas na zábavnou část, která skutečně běží některé dotazy. Začněme s jednoduchým `count (*)` vidět, kolik dat jsme načetli:
 
 ```sql
 SELECT count(*) from github_events;
 ```
 
-Ty, které byly k dispracovanému. Vrátíme se k tomuto uspořádání agregace, ale teď se podíváme na několik dalších dotazů. Ve sloupci JSONB `payload` je dobrým bitem dat, ale liší se v závislosti na typu události. `PushEvent` události obsahují velikost, která zahrnuje počet jedinečných potvrzení pro vložení. Dá se použít k vyhledání celkového počtu potvrzení za hodinu:
+To fungovalo dobře. Vrátíme se k tomuto druhu agregace v trochu, ale teď se podívejme na několik dalších dotazů. Ve sloupci JSONB `payload` je dobrý kousek dat, ale liší se v závislosti na typu události. `PushEvent`události obsahují velikost, která obsahuje počet odlišných potvrzení pro nabízenou položku. Můžeme ji použít k nalezení celkového počtu potvrzení za hodinu:
 
 ```sql
 SELECT date_trunc('hour', created_at) AS hour,
@@ -113,9 +113,9 @@ GROUP BY hour
 ORDER BY hour;
 ```
 
-Doposud dotazy zahrnovaly jenom\_události GitHubu, ale tyto informace můžeme kombinovat s uživateli GitHub\_. Vzhledem k tomu, že jsme horizontálně dělené uživatele i události na stejný identifikátor (`user_id`), řádky obou tabulek s ID odpovídajícího uživatele budou společně [umístěny](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) na stejných uzlech databáze a lze je snadno připojit.
+Zatím dotazy zahrnovaly výhradně události\_githubu, ale můžeme tyto informace\_kombinovat s uživateli githubu. Vzhledem k tomu, že jsme rozděleni`user_id`mezi uživatele a události na stejný identifikátor ( ), řádky obou tabulek s odpovídajícími ID uživatele budou [společně umístěny](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) na stejných uzlech databáze a lze snadno připojit.
 
-Pokud se připojíme k `user_id`, může se při spuštění připojení do horizontálních oddílů spustit souběžně na pracovních uzlech. Pojďme například najít uživatele, kteří vytvořili největší počet úložišť:
+Pokud se `user_id`připojíme na , Hyperscale můžete tlačit spuštění spojení dolů do horizontálních oddílů pro provádění paralelně na pracovní uzly. Například pojďme najít uživatele, kteří vytvořili největší počet úložišť:
 
 ```sql
 SELECT gu.login, count(*)
@@ -130,12 +130,12 @@ SELECT gu.login, count(*)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-V předchozích krocích jste vytvořili prostředky Azure ve skupině serverů. Pokud neočekáváte, že tyto prostředky budete potřebovat v budoucnu, odstraňte skupinu serverů. Stiskněte tlačítko **Odstranit** na stránce **Přehled** pro skupinu serverů. Po zobrazení výzvy na místní stránce potvrďte název skupiny serverů a klikněte na tlačítko poslední **Odstranit** .
+V předchozích krocích jste vytvořili prostředky Azure ve skupině serverů. Pokud neočekáváte, že budete tyto prostředky v budoucnu potřebovat, odstraňte skupinu serverů. Stiskněte tlačítko **Odstranit** na stránce **Přehled** pro skupinu serverů. Po zobrazení výzvy na vyskakovací stránce potvrďte název skupiny serverů a klepněte na tlačítko **Konečné odstranění.**
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se dozvěděli, jak zřídit skupinu serverů (Citus). K němu jste se připojili pomocí psql, vytvořili schéma a distribuovaná data.
+V tomto rychlém startu jste se dozvěděli, jak zřídit skupinu serverů Hyperscale (Citus). Připojili jste k němu psql, vytvořili schéma a distribuovaná data.
 
-Dále postupujte podle kurzu a sestavte škálovatelné víceklientské aplikace.
+Dále postupujte podle kurzu k vytvoření škálovatelných víceklientských aplikací.
 > [!div class="nextstepaction"]
-> [Návrh databáze s více klienty](https://aka.ms/hyperscale-tutorial-multi-tenant)
+> [Návrh víceklientské databáze](https://aka.ms/hyperscale-tutorial-multi-tenant)

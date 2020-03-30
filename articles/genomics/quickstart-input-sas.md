@@ -1,7 +1,7 @@
 ---
-title: Pracovní postup využívající signatury sdíleného přístupu
+title: Pracovní postup pomocí sdílených přístupových podpisů
 titleSuffix: Microsoft Genomics
-description: Tento článek ukazuje, jak odeslat pracovní postup do služby Microsoft Genomics pomocí sdílených přístupových podpisů (SAS) místo klíčů účtu úložiště.
+description: Tento článek ukazuje, jak odeslat pracovní postup do služby Microsoft Genomics pomocí sdílených přístupových podpisů (SAS) namísto klíčů účtu úložiště.
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -10,17 +10,17 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
 ms.openlocfilehash: d6228762b9a1299d8e9229f7a0f73dc7d0bca2b2
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72248585"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>Odeslání pracovního postupu do služby Microsoft Genomics pomocí SAS místo klíče účtu úložiště 
 
-Tento článek popisuje, jak odeslat pracovní postup do služby Microsoft Genomics pomocí souboru config. txt, který obsahuje [sdílené přístupové podpisy (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) místo klíčů účtu úložiště. Tato funkce může být užitečná v případě, že existují obavy ohledně zabezpečení kvůli viditelnému klíči účtu úložiště v souboru config.txt. 
+Tento článek ukazuje, jak odeslat pracovní postup do služby Microsoft Genomics pomocí souboru config.txt, který obsahuje [sdílené přístupové podpisy (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) namísto klíčů účtu úložiště. Tato funkce může být užitečná v případě, že existují obavy ohledně zabezpečení kvůli viditelnému klíči účtu úložiště v souboru config.txt. 
 
-Tento článek předpokládá, že jste už nainstalovali a spustili klienta `msgen` a že víte, jak používat službu Azure Storage. Pokud jste úspěšně odeslali pracovní postup pomocí poskytnutých ukázkových dat, budete připraveni pokračovat v tomto článku. 
+Tento článek předpokládá, že jste už nainstalovali a spustili klienta `msgen` a že víte, jak používat službu Azure Storage. Pokud jste úspěšně odeslali pracovní postup pomocí zadaných ukázkových dat, jste připraveni pokračovat v tomto článku. 
 
 ## <a name="what-is-a-sas"></a>Co je SAS?
 [Sdílený přístupový podpis (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) poskytuje delegovaný přístup k prostředkům ve vašem účtu úložiště. Pomocí SAS můžete udělit přístup k prostředkům ve vašem účtu úložiště, aniž byste sdíleli své klíče účtu. Toto je zásadní aspekt používání sdílených přístupových podpisů v aplikacích – SAS představuje bezpečný způsob sdílení prostředků úložiště, aniž byste ohrozili své klíče účtu.
@@ -53,10 +53,10 @@ Existují dva způsoby, jak vytvořit token SAS – pomocí Průzkumníka služb
 
 Rozsah SAS pro vstupní soubory musí být omezený na konkrétní vstupní soubor (objekt blob). Pokud chcete vytvořit token SAS, postupujte podle [těchto pokynů](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer). Po vytvoření SAS se na obrazovce zobrazí úplná adresa URL s řetězcem dotazu i samotný řetězec dotazu, které je možné zkopírovat.
 
- ![SAS pro službu Genomics v Průzkumníku služby Storage](./media/quickstart-input-sas/genomics-sas-storageexplorer.png "SAS pro službu Genomics v Průzkumníku služby Storage")
+ ![Průzkumník úložiště Genomics SAS](./media/quickstart-input-sas/genomics-sas-storageexplorer.png "Průzkumník úložiště Genomics SAS")
 
 
-### <a name="set-up-create-a-sas-programmatically"></a>Nastavení: vytvoření SAS prostřednictvím kódu programu
+### <a name="set-up-create-a-sas-programmatically"></a>Nastavení: Programově vytvořte SAS
 
 Informace o vytvoření SAS pomocí sady SDK služby Azure Storage najdete ve stávající dokumentaci v různých jazycích, včetně [.NET](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1), [Pythonu](https://docs.microsoft.com/azure/storage/blobs/storage-python-how-to-use-blob-storage) a [Node.js](https://docs.microsoft.com/azure/storage/blobs/storage-nodejs-how-to-use-blob-storage). 
 
@@ -66,7 +66,7 @@ Pokud chcete vytvořit SAS bez sady SDK, můžete řetězec dotazu SAS včetně 
 ## <a name="add-the-sas-to-the-configtxt-file"></a>Přidání SAS do souboru config.txt
 Pokud chcete spustit pracovní postup prostřednictvím služby Microsoft Genomics pomocí řetězce dotazu SAS, upravte soubor config.txt a odeberte z něj klíče. Pak připojte řetězec dotazu SAS (který začíná na `?`) k názvu výstupního kontejneru, jak je vidět níže. 
 
-![Konfigurace SAS pro službu Genomics](./media/quickstart-input-sas/genomics-sas-config.png "Konfigurace SAS pro službu Genomics")
+![Genomika SAS config](./media/quickstart-input-sas/genomics-sas-config.png "Genomika SAS config")
 
 Pomocí pythonového klienta Microsoft Genomics odešlete svůj pracovní postup následujícím příkazem, ve kterém k názvům všech vstupních objektů blob připojíte odpovídající řetězec dotazu SAS:
 
@@ -77,7 +77,7 @@ msgen submit -f [full path to your config file] -b1 [name of your first paired e
 ### <a name="if-adding-the-input-file-names-to-the-configtxt-file"></a>Přidávání názvů vstupních souborů do souboru config.txt
 Alternativně je možné názvy souborů sekvencí paired-end s připojenými tokeny dotazů SAS přidat přímo do souboru config.txt, jak je vidět níže:
 
-![Názvy objektů blob v konfiguraci SAS pro službu Genomics](./media/quickstart-input-sas/genomics-sas-config-blobnames.png "Názvy objektů blob v konfiguraci SAS pro službu Genomics")
+![Názvy objektů blobs konfigurace Genomics SAS](./media/quickstart-input-sas/genomics-sas-config-blobnames.png "Názvy objektů blobs konfigurace Genomics SAS")
 
 V tomto případě pomocí pythonového klienta Microsoft Genomics odešlete svůj pracovní postup následujícím příkazem, ve kterém vynecháte příkazy `-b1` a `-b2`:
 

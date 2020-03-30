@@ -1,6 +1,6 @@
 ---
 title: Přehled skupin dostupnosti
-description: Tento článek představuje SQL Server skupiny dostupnosti na virtuálních počítačích Azure.
+description: Tento článek představuje skupiny dostupnosti serveru SQL Server na virtuálních počítačích Azure.
 services: virtual-machines
 documentationCenter: na
 author: MikeRayMSFT
@@ -16,62 +16,62 @@ ms.date: 01/13/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 8119990ab4ab4a918e325976092100086a547aa4
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74037501"
 ---
-# <a name="introducing-sql-server-availability-groups-on-azure-virtual-machines"></a>Představujeme SQL Server skupiny dostupnosti na virtuálních počítačích Azure
+# <a name="introducing-sql-server-availability-groups-on-azure-virtual-machines"></a>Představujeme skupiny dostupnosti SQL Serveru na virtuálních počítačích Azure
 
-Tento článek představuje SQL Server skupiny dostupnosti v Azure Virtual Machines. 
+Tento článek představuje skupiny dostupnosti SQL Server na virtuálních počítačích Azure. 
 
-Skupiny dostupnosti Always On v Azure Virtual Machines jsou podobné skupinám dostupnosti Always On místně. Další informace najdete v tématu [skupiny dostupnosti Always On (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx). 
+Vždy na dostupnost skupiny na virtuálních počítačích Azure jsou podobné vždy na dostupnost skupiny v místním prostředí. Další informace naleznete [v tématu Vždy na skupiny dostupnosti (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx). 
 
-Diagram znázorňuje části úplné SQL Server skupiny dostupnosti ve službě Azure Virtual Machines.
+Diagram znázorňuje části kompletní skupiny dostupnosti serveru SQL Server ve virtuálních počítačích Azure.
 
 ![Skupina dostupnosti](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/00-EndstateSampleNoELB.png)
 
-Klíčový rozdíl pro skupinu dostupnosti ve službě Azure Virtual Machines je, že virtuální počítače Azure vyžadují [Nástroj pro vyrovnávání zatížení](../../../load-balancer/load-balancer-overview.md). Nástroj pro vyrovnávání zatížení uchovává IP adresy pro naslouchací proces skupiny dostupnosti. Pokud máte více než jednu skupinu dostupnosti, každá skupina vyžaduje naslouchací proces. Jeden nástroj pro vyrovnávání zatížení může podporovat více posluchačů.
+Klíčovým rozdílem pro skupinu dostupnosti ve virtuálních počítačích Azure je, že virtuální počítače Azure vyžadují [nástroj pro vyrovnávání zatížení](../../../load-balancer/load-balancer-overview.md). Vykladač zatížení obsahuje ip adresy pro naslouchací proces skupiny dostupnosti. Pokud máte více než jednu skupinu dostupnosti, každá skupina vyžaduje naslouchací proces. Jeden vyrovnávání zatížení může podporovat více naslouchacích procesy.
 
-V clusteru s podporou převzetí služeb při selhání hosta virtuálního počítače Azure IaaS doporučujeme jednu síťovou kartu na server (uzel clusteru) a jednu podsíť. Sítě Azure má fyzickou redundanci, díky níž je zbytečné používat další síťové adaptéry a podsítě na hostovaném clusteru ve virtuálním počítači Azure IaaS. I když ověřovací zpráva clusteru vydá varování, že uzly jsou dosažitelné pouze v jedné síti, můžete toto varování bezpečně ignorovat ve všech hostovaných clusterech ve virtuálních počítačích Azure IaaS. 
+Navíc v clusteru azure IaaS virtuálního počítače s podporou převzetí služeb při selhání doporučujeme jednu síťovou konto na server (uzel clusteru) a jednu podsíť. Sítě Azure má fyzickou redundanci, díky níž je zbytečné používat další síťové adaptéry a podsítě na hostovaném clusteru ve virtuálním počítači Azure IaaS. I když ověřovací zpráva clusteru vydá varování, že uzly jsou dosažitelné pouze v jedné síti, můžete toto varování bezpečně ignorovat ve všech hostovaných clusterech ve virtuálních počítačích Azure IaaS. 
 
-Aby bylo možné zvýšit redundanci a vysokou dostupnost, musí být virtuální počítače s SQL Server buď ve stejné [skupině dostupnosti](virtual-machines-windows-portal-sql-availability-group-prereq.md#create-availability-sets), nebo v různých [zónách dostupnosti](/azure/availability-zones/az-overview). 
+Chcete-li zvýšit redundanci a vysokou dostupnost, virtuální chody serveru SQL Server by měly být buď ve stejné [skupině dostupnosti](virtual-machines-windows-portal-sql-availability-group-prereq.md#create-availability-sets), nebo v různých [zónách dostupnosti](/azure/availability-zones/az-overview). 
 
-|  | Verze Windows serveru | Verze SQL Server | SQL Server Edition | Konfigurace kvora služby WSFC | DR s více oblastmi | Podpora více podsítí | Podpora pro existující službu AD | DR se stejnou oblastí ve více zónách | Podpora balíčku DIST-AG bez domény AD | Podpora balíčku DIST-AG bez clusteru |  
+|  | Verze systému Windows Server | Verze serveru SQL Server | Edice SERVERU SQL Server | Konfigurace kvora wsfc | Zotavení po havárii s více oblastmi | Podpora více podsítí | Podpora stávajícího ad | Zotavení po havárii se stejnou oblastí s více zónami | Podpora Dist-AG bez domény AD | Podpora Dist-AG bez clusteru |  
 | :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|
-| [SQL VM CLI](virtual-machines-windows-sql-availability-group-cli.md) | 2016 | 2017 </br>2016   | Rozlehlé | Disk s kopií cloudu | Ne | Ano | Ano | Ano | Ne | Ne |
-| [Šablony pro rychlý Start](virtual-machines-windows-sql-availability-group-quickstart-template.md) | 2016 | 2017</br>2016  | Rozlehlé | Disk s kopií cloudu | Ne | Ano | Ano | Ano | Ne | Ne |
-| [Šablona portálu](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) | 2016 </br>2012 R2 | 2016</br>2014 | Rozlehlé | Sdílená složka | Ne | Ne | Ne | Ne | Ne | Ne |
-| [Zásah](virtual-machines-windows-portal-sql-availability-group-prereq.md) | Vše | Vše | Vše | Vše | Ano | Ano | Ano | Ano | Ano | Ano |
+| [Cli virtuálního virtuálního serveru SQL](virtual-machines-windows-sql-availability-group-cli.md) | 2016 | 2017 </br>2016   | Orl | Disk s kopií cloudu | Ne | Ano | Ano | Ano | Ne | Ne |
+| [Šablony rychlého startu](virtual-machines-windows-sql-availability-group-quickstart-template.md) | 2016 | 2017</br>2016  | Orl | Disk s kopií cloudu | Ne | Ano | Ano | Ano | Ne | Ne |
+| [Šablona portálu](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) | 2016 </br>2012 R2 | 2016</br>2014 | Orl | Sdílená složka | Ne | Ne | Ne | Ne | Ne | Ne |
+| [Ruční](virtual-machines-windows-portal-sql-availability-group-prereq.md) | Všechny | Všechny | Všechny | Všechny | Ano | Ano | Ano | Ano | Ano | Ano |
 | &nbsp; | &nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |
 
-Až budete připraveni vytvořit skupinu dostupnosti SQL Server v Azure Virtual Machines, přečtěte si tyto kurzy.
+Až budete připraveni k vytvoření skupiny dostupnosti SQL Server na virtuálních počítačích Azure, naleznete v těchto kurzech.
 
-## <a name="manually-with-azure-cli"></a>Ruční pomocí Azure CLI
-Doporučená možnost je použití Azure CLI ke konfiguraci a nasazení skupiny dostupnosti, protože to je nejlepší z hlediska jednoduchosti a rychlosti nasazení. Pomocí Azure CLI se při vytváření clusteru s podporou převzetí služeb při selhání systému Windows, připojení SQL Server virtuálních počítačů do clusteru a vytváření naslouchacího procesu a interních Load Balancer dají dosáhnout za méně než 30 minut. Tato možnost stále vyžaduje ruční vytvoření skupiny dostupnosti, ale automatizuje všechny ostatní nezbytné kroky konfigurace. 
+## <a name="manually-with-azure-cli"></a>Ručně pomocí azure cli
+Pomocí Azure CLI ke konfiguraci a nasazení skupiny dostupnosti je doporučená možnost, protože je to nejlepší z hlediska jednoduchosti a rychlosti nasazení. Pomocí azure cli, vytvoření clusteru Windows převzetí služeb při selhání, připojení SQL Server virtuálních počítačů s clusterem, stejně jako vytvoření naslouchací proces a vnitřní vyrovnávání zatížení lze dosáhnout za méně než 30 minut. Tato možnost stále vyžaduje ruční vytvoření skupiny dostupnosti, ale automatizuje všechny ostatní nezbytné kroky konfigurace. 
 
-Další informace najdete v tématu věnovaném [použití Azure SQL VM CLI ke konfiguraci skupiny dostupnosti Always On pro SQL Server na virtuálním počítači Azure](virtual-machines-windows-sql-availability-group-cli.md). 
+Další informace najdete [v tématu Použití rozhraní příkazu CLI virtuálního počítače Azure SQL ke konfiguraci skupiny dostupnosti Always On pro SQL Server na virtuálním počítači Azure](virtual-machines-windows-sql-availability-group-cli.md). 
 
-## <a name="automatically-with-azure-quickstart-templates"></a>Automatické zprovoznění šablon Azure pro rychlý Start
-Šablony pro rychlý Start Azure využívají poskytovatele prostředků virtuálního počítače SQL k nasazení clusteru s podporou převzetí služeb při selhání s Windows, připojte SQL Server k tomuto virtuálnímu počítači, vytvořte naslouchací proces a nakonfigurujte interní Load Balancer. Tato možnost stále vyžaduje ruční vytvoření skupiny dostupnosti a interní Load Balancer (interního nástroje), ale automatizuje a zjednodušuje všechny další nezbytné kroky konfigurace (včetně konfigurace interního nástroje). 
+## <a name="automatically-with-azure-quickstart-templates"></a>Automaticky pomocí šablon Azure QuickStart
+Šablony Rychlého spuštění Azure využívají poskytovatele prostředků virtuálního počítače SQL k nasazení clusteru windows failover, připojení virtuálních počítačů SQL Server, vytvoření naslouchací proces a konfiguraci nástroje pro interní vyrovnávání zatížení. Tato možnost stále vyžaduje ruční vytvoření skupiny dostupnosti a interní nástroj pro vyrovnávání zatížení (ILB), ale automatizuje a zjednodušuje všechny ostatní nezbytné kroky konfigurace (včetně konfigurace ILB). 
 
-Další informace najdete v tématu [použití šablony pro rychlý Start Azure ke konfiguraci skupiny dostupnosti Always On pro SQL Server na virtuálním počítači Azure](virtual-machines-windows-sql-availability-group-quickstart-template.md).
-
-
-## <a name="automatically-with-an-azure-portal-template"></a>Automatické s Azure Portal šablonou
-
-[Automatická konfigurace skupiny dostupnosti Always On na virtuálním počítači Azure Správce prostředků](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
+Další informace najdete [v tématu Použití šablony Rychlého spuštění Azure ke konfiguraci skupiny dostupnosti Always On pro SQL Server na virtuálním počítači Azure](virtual-machines-windows-sql-availability-group-quickstart-template.md).
 
 
-## <a name="manually-in-azure-portal"></a>Ručně v Azure Portal
+## <a name="automatically-with-an-azure-portal-template"></a>Automaticky pomocí šablony portálu Azure
 
-Virtuální počítače můžete také vytvořit sami bez šablony. Nejdřív dokončete požadované součásti a pak vytvořte skupinu dostupnosti. Přečtěte si následující témata: 
+[Konfigurace skupiny dostupnosti always on v azure virtuálním počítači automaticky – Správce prostředků](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
 
-- [Konfigurace požadavků pro skupiny dostupnosti Always On SQL Server v Azure Virtual Machines](virtual-machines-windows-portal-sql-availability-group-prereq.md)
 
-- [Vytvoření skupiny dostupnosti Always On pro zlepšení dostupnosti a zotavení po havárii](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
+## <a name="manually-in-azure-portal"></a>Ručně na webu Azure Portal
+
+Virtuální počítače můžete také vytvořit sami bez šablony. Nejprve vyplňte požadavky a vytvořte skupinu dostupnosti. Podívejte se na následující témata: 
+
+- [Konfigurace požadavků pro skupiny dostupnosti SQL Server always on ve virtuálních počítačích Azure](virtual-machines-windows-portal-sql-availability-group-prereq.md)
+
+- [Vytvořit skupinu dostupnosti always on pro zlepšení dostupnosti a zotavení po havárii](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-[Konfigurace skupiny dostupnosti Always On SQL Server v Azure Virtual Machines v různých oblastech](virtual-machines-windows-portal-sql-availability-group-dr.md)
+[Konfigurace skupiny dostupnosti sql serveru always on na virtuálních počítačích Azure v různých oblastech](virtual-machines-windows-portal-sql-availability-group-dr.md)

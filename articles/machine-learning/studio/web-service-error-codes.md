@@ -1,6 +1,6 @@
 ---
-title: Kódy chyb REST API – Azure Machine Learning Studio (Classic) | Microsoft Docs
-description: Tyto kódy mohou být vráceny operace webové služby Azure Machine Learning.
+title: Chybové kódy rozhraní REST API – Azure Machine Learning Studio (klasické) | Dokumenty společnosti Microsoft
+description: Tyto kódy chyb může být vrácena operace na azure machine learning webové služby.
 keywords: ''
 services: machine-learning
 author: xiaoharper
@@ -13,243 +13,243 @@ ms.subservice: studio
 ms.topic: reference
 ms.date: 11/16/2016
 ms.openlocfilehash: 9e25f2fbc10eb07cc71f2a7bd34247c0191f61b9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79217763"
 ---
-# <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Kódy chyb REST API Azure Machine Learning Studio (Classic)
+# <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Azure Machine Learning Studio (klasické) kódy chyb rozhraní REST API
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
  
-Následující chybové kódy by mohly být vráceny operací na webové službě Azure Machine Learning Studio (Classic).
+Následující kódy chyb může být vrácena operace na Azure Machine Learning Studio (klasické) webové služby.
  
 ## <a name="badargument-http-status-code-400"></a>BadArgument (stavový kód HTTP 400)
  
-Neplatný argument uvedený.
+Byl poskytnut neplatný argument.
  
-Tato třída chyby znamená, že poskytuje někde argument byl neplatný. To může být přihlašovací údaje nebo umístění služby Azure storage na něco předaný k webové službě. Pokud chcete diagnostikovat, který konkrétní argument byl neplatný, podívejte se prosím do pole kód chyby v části Podrobnosti.
+Tato třída chyb znamená, že argument, který byl někde poskytnut, byl neplatný. Může se jedná o pověření nebo umístění úložiště Azure na něco, co bylo předáno webové službě. Zkontrolujte, prosím, na chybu "kód" pole v části "podrobnosti" diagnostikovat, který konkrétní argument byl neplatný.
  
-| Kód chyby | Zpráva uživatele |
+| Kód chyby | Uživatelská zpráva |
 | ---------- |--------------|
-| BadParameterValue | Zadaná hodnota parametru nesplňuje podmínky pravidla parametru u parametru |
-| BadSubscriptionId | Id, které slouží ke stanovení skóre pro předplatné není ta, která je k dispozici v prostředku |
-| BadVersionCall | Během volání rozhraní API se předal neplatný parametr verze: {0}. Zaškrtněte na stránce nápovědy rozhraní API pro předávání správnou verzi a zkuste to znovu. |
-| BatchJobInputsNotSpecified | Následující požadované vstupy nebyly zadány s požadavkem: {0}. Zkontrolujte, zda je zadán veškerá vstupní data a zkuste to znovu. |
-| BatchJobInputsTooManySpecified | Žádost zadat více vstupů, než je definováno ve službě. Seznam přijatého vstupu (ů): {0}. Zkontrolujte, zda je správně zadána veškerá vstupní data a zkuste to znovu. |
-| BlobNameTooLong | Cesta k úložišti objektů BLOB v Azure, která se poskytuje pro výstup diagnostiky, je moc dlouhá: {0}. Zkraťte cestu a zkuste to znovu. |
-| BlobNotFound | Nelze získat přístup k poskytnutému objektu blob Azure {0}.  Chybová zpráva Azure: {1}. |
-| ContainerIsEmpty | Nebyl poskytnut žádný název kontejneru úložiště Azure. Zadejte platný kontejner název a zkuste to znovu. |
-| ContainerSegmentInvalid | Neplatný název kontejneru. Zadejte platný kontejner název a zkuste to znovu. |
-| ContainerValidationFailed | Ověření kontejneru objektu BLOB se nezdařilo s touto chybou: {0}. |
-| DataTypeNotSupported | Nepodporovaný datový typ, k dispozici. Zadejte platné datové typy a zkuste to znovu. |
-| DuplicateInputInBatchCall | Dávkový požadavek je neplatný. Nelze zadat jednu i více vstup ve stejnou dobu. Odeberte jeden z těchto položek z požadavku a zkuste to znovu. |
-| ExpiryTimeInThePast | Čas vypršení platnosti je uvedený v minulosti: {0}. Zadejte budoucí platnosti ve standardu UTC a zkuste to znovu. Bez vypršení platnosti, nastavte čas vypršení platnosti na hodnotu NULL. |
-| IncompleteSettings | Nastavení diagnostiky nejsou úplné. |
-| InputBlobRelativeLocationInvalid | K dispozici žádný název objektu blob úložiště Azure. Zadejte platný objekt blob název a zkuste to znovu. |
-| InvalidBlob | Neplatná specifikace objektu BLOB pro objekt BLOB: {0}. Ověřte, že připojovací řetězec nebo relativní cestu nebo specifikace token SAS je správný a zkuste to znovu. |
-| InvalidBlobConnectionString | Připojovací řetězec zadaný pro jeden z vstupních/výstupních objektů BLOB není platný: {0}. Opravit to a zkuste to znovu. |
-| InvalidBlobExtension | Odkaz na objekt BLOB: {0} má neplatnou nebo chybějící příponu souboru. Podporované přípony souborů pro tento typ výstupu jsou: "{1}". |
-| InvalidInputNames | V požadavku byly zadány neplatné názvy vstupu služby: {0}. Namapovat vstupní data do správné služby vstupů a zkuste to znovu. |
-| InvalidOutputOverrideName | Neplatný název přepisu výstupu: {0}. Služba nemá uzlu výstup s tímto názvem. Předejte prosím správný název uzlu přepsat (platí rozlišování velikosti písmen). |
-| InvalidQueryParameter | Neplatný parametr dotazu{0}. {1} |
-| MissingInputBlobInformation | Chybí informace o objektu blob úložiště Azure. Zadejte platný připojovací řetězec a relativní cestu nebo identifikátor URI a zkuste to znovu. |
-| MissingJobId | Zadané Id žádná úloha. Úlohy Id je vrácena, pokud úloha byla odeslána poprvé. Ověřte správnost Id úlohy a zkuste to znovu. |
-| MissingKeys | K dispozici žádné klíče nebo jeden z primární nebo sekundární klíč není k dispozici. |
-| MissingModelPackage | Žádné Id modelu balíčku nebo modelu balíček k dispozici. Zadejte platný model balíček Id nebo model balíček a zkuste to znovu. |
-| MissingOutputOverrideSpecification | V požadavku chybí specifikace objektu BLOB pro přepsání výstupu {0}. Zadejte platný objekt blob umístění k požadavku, nebo odeberte výstup, pokud přepsání není umístění. |
-| MissingRequestInput | Webová služba očekává vstup, ale nebyl poskytnut žádný vstup. Ujistěte se, že jsou k dispozici platné vstupy závislosti na publikovaných vstupní porty v modelu a zkuste to znovu. |
-| MissingRequiredGlobalParameters | Všechny požadované parametry webové služby k dispozici. Ověřte správnost parametrů očekává u modulů a zkuste to znovu. |
-| MissingRequiredOutputOverrides | Při volání koncového bodu šifrované služby je povinná a zajistěte tak předání výstup přepsání pro všechny služby výstupy. V tuto chvíli pro tyto výstupy chybí přepsání: {0} |
-| MissingWebServiceGroupId | Zadané Id skupiny bez webových služeb. Zadejte Id platnou webovou službu skupiny a zkuste to znovu. |
-| MissingWebServiceId | Zadané Id žádná webová služba. Zadejte platnou webovou službu Id a zkuste to znovu. |
-| MissingWebServicePackage | Žádné webového balíčku služby k dispozici. Zadejte balíček nástroje platnou webovou službu a zkuste to znovu. |
-| MissingWorkspaceId | Zadané Id žádný pracovní prostor. Zadejte platné Id pracovního prostoru a zkuste to znovu. |
-| ModelConfigurationInvalid | Neplatný model konfigurace v balíčku modelu. Zkontrolujte konfiguraci modelu obsahuje definici koncových bodů výstupu, std chyba koncového bodu, a std výstupní koncový bod a zkuste to znovu. |
-| ModelPackageIdInvalid | Neplatné ID balíčku modelu. Zkontrolujte, jestli je ID balíčku modelu správné, a zkuste to znovu. |
-| RequestBodyInvalid | Žádný text žádosti k dispozici nebo Chyba při deserializaci textu požadavku. |
-| RequestIsEmpty | Není k dispozici žádný požadavek. Zadejte platnou žádost a zkuste to znovu. |
-| UnexpectedParameter | Neočekávané parametry zadané. Ověřte všechny názvy parametrů jsou zadány správně, pouze očekávané parametry jsou předány a zkuste to znovu. |
-| Neznámé chyby | Neznámá chyba |
-| UserParameterInvalid | {0} |
-| WebServiceConcurrentRequestRequirementInvalid | Nelze změnit požadavky souběžných požadavků pro {0} webovou službu. |
-| WebServiceIdInvalid | Zadané id neplatný webové služby. Id webové služby musí být platný identifikátor guid. |
-| WebServiceTooManyConcurrentRequestRequirement | U souběžných požadavků na požadavek nelze nastavit více než {0}. |
-| WebServiceTypeInvalid | Zadaný typ neplatný webové služby. Ověřte že správnost tohoto typu platnou webovou službu a zkuste to znovu. Platné typy webové služby: {0}. |
+| Hodnota chybného parametru | Zadaná hodnota parametru nesplňuje pravidlo parametru pro parametr. |
+| Chybně id předplatného | Id předplatného, který se používá ke skóre není ten, který je přítomen v prostředku |
+| Volání BadVersion | Během volání rozhraní API byl {0}předán neplatný parametr verze: . Zkontrolujte stránku nápovědy rozhraní API pro předání správné verze a zkuste to znovu. |
+| BatchJobInputsNotSpecified | Následující požadované vstupy nebyly v požadavku zadány: {0}. Zkontrolujte, zda jsou zadána všechna vstupní data, a akci opakujte. |
+| BatchJobInputsTooManySpecified | Požadavek zadal více vstupů, než bylo definováno ve službě. Seznam přijatých vstupů: {0}. Zkontrolujte, zda jsou všechna vstupní data zadána správně, a akci opakujte. |
+| Název objektu BlobTooLong | Cesta úložiště objektů blob Azure k dispozici {0}pro diagnostický výstup je příliš dlouhá: . Zkraťte cestu a akci opakujte. |
+| Objekt Blob nebyl nalezen. | Nelze získat přístup k zadaný {0}objekt blob Azure - .  Chybová zpráva {1}Azure: . |
+| KontejnerIsPrázdný | Nebyl k dispozici žádný název kontejneru úložiště Azure. Zadejte platný název kontejneru a akci opakujte. |
+| ContainerSegmentNeplatný | Neplatný název kontejneru. Zadejte platný název kontejneru a akci opakujte. |
+| Ověření kontejneru se nezdařilo. | Ověření kontejneru objektů blob {0}se nezdařilo s touto chybou: . |
+| DataTypeNotSupported | Nepodporovaný datový typ k dispozici. Zadejte platné typy dat a akci opakujte. |
+| DuplicateInputInBatchCall | Dávkový požadavek je neplatný. Současně nelze zadat jeden i více vstupů. Odeberte jednu z těchto položek z požadavku a akci opakujte. |
+| ExpiryTimeInThePast | Doba použitelnosti je v minulosti: {0}. Zadejte budoucí čas vypršení platnosti v utc a zkuste to znovu. Chcete-li nikdy nevyprší, nastavte čas vypršení platnosti na hodnotu NULL. |
+| NeúplnéNastavení | Nastavení diagnostiky je neúplné. |
+| InputBlobRelativní UmístěníNeplatné | Není k dispozici žádný název objektu blob úložiště Azure. Zadejte platný název objektu blob a akci opakujte. |
+| Neplatné blob | Neplatná specifikace objektu {0}blob pro objekt blob: . Ověřte, zda je připojovací řetězec / relativní cesta nebo specifikace tokenu SAS správná, a akci opakujte. |
+| InvalidBlobConnectionString | Připojovací řetězec určený pro jeden ze vstupních {0}a výstupních objektů BLOB v neplatném: . Opravte to a akci opakujte. |
+| Rozšíření InvalidBlobExtension | Odkaz na objekt {0} blob: má neplatnou nebo chybějící příponu souboru. Podporované přípony souborů pro tento{1}typ výstupu jsou: " ". |
+| Neplatné Názvy Input | V požadavku jsou zadány neplatné {0}vstupní názvy služby: . Namapujte vstupní data na správné vstupy služby a akci opakujte. |
+| InvalidOutputOverrideName | Neplatný název přepsání výstupu: {0}. Služba nemá výstupní uzel s tímto názvem. Předejte správný název výstupního uzlu k přepsání (platí rozlišování malých a velkých písmen). |
+| Parametr InvalidQueryParameter | Neplatný parametr{0}dotazu ' '. {1} |
+| ChybějícíInputBlobInformace | Chybí informace o objektu blob úložiště Azure. Zadejte platný připojovací řetězec a relativní cestu nebo identifikátor URI a akci opakujte. |
+| MissingJobId | Žádná pracovní id za předpokladu. Id úlohy je vrácena při odeslání úlohy poprvé. Ověřte, zda je Id úlohy správné, a akci opakujte. |
+| Chybějící klávesy | Nejsou k dispozici žádné klíče nebo není k dispozici jeden z primárního nebo sekundárního klíče. |
+| Chybějícíbalíček | Není k dispozici žádné Id balíčku modelu nebo balíček modelu. Zadejte platné ID balíčku modelu nebo balíček modelu a akci opakujte. |
+| Chybějícíspecifikace Převyšovací hodu výstupu | V požadavku chybí specifikace objektu blob pro přepsání {0}výstupu . Zadejte platné umístění objektu blob s požadavkem nebo odeberte výstupní specifikaci, pokud není požadováno žádné přepsání umístění. |
+| ChybějícíRequestInput | Webová služba očekává vstup, ale nebyl zadán žádný vstup. Ujistěte se, že platné vstupy jsou k dispozici na základě publikovaných vstupních portů v modelu a zkuste to znovu. |
+| ChybějícíParametry Hodnotitík globálních parametrů | Ne všechny požadované parametry webové služby jsou k dispozici. Ověřte, zda jsou parametry očekávané pro modul (moduly) správné, a akci opakujte. |
+| ChybějícíPřetečy výstupů | Při volání koncový bod šifrované služby je povinné předat přepsání výstupu pro všechny výstupy služby. Chybějící přepsání v tomto okamžiku pro tyto výstupy:{0} |
+| Chybějící WebServiceGroupId | Není k dispozici žádné ID skupiny webových služeb. Zadejte platné ID skupiny webových služeb a akci opakujte. |
+| MissingWebServiceId | Není k dispozici žádné Id webové služby. Zadejte platné ID webové služby a akci opakujte. |
+| Chybějící balíček WebServicePackage | Není k dispozici žádný balíček webové služby. Zadejte platný balíček webové služby a akci opakujte. |
+| Chybějící WorkspaceId | Není k dispozici žádné Id pracovního prostoru. Zadejte platné ID pracovního prostoru a akci opakujte. |
+| Konfigurace modelu je neplatná. | Neplatná konfigurace modelu v balíčku modelu. Ujistěte se, že konfigurace modelu obsahuje definici výstupního koncového bodu, koncový bod chyby std a koncový bod std a zkuste to znovu. |
+| Neplatný soubor PackagePackageId modelu | Neplatné ID balíčku modelu. Ověřte, zda je ID balíčku modelu správné, a akci opakujte. |
+| RequestBodyNeNeplatné | Při rekonstrukci těla požadavku nebylo poskytnuto žádné tělo požadavku ani chyba. |
+| Požadavekje prázdný | Nebyl anebyl/a žádný požadavek. Zadejte platný požadavek a akci opakujte. |
+| Parametr UnexpectedParameter | Neočekávané parametry k dispozici. Ověřte, zda jsou všechny názvy parametrů zadány správně, jsou předány pouze očekávané parametry a akci opakujte. |
+| Neznámýchyba | Neznámou chybu. |
+| Parametr UživateleJeneplatný | {0} |
+| WebServiceConcurrentRequestRequirementNe | Nelze změnit požadavky na {0} souběžné požadavky na webové služby. |
+| WebServiceIdNeplatný | Bylo k dispozici neplatné id webové služby. Id webové služby by měl být platný identifikátor GUID. |
+| WebServiceTooManyConcurrentRequestRequirement | Nelze nastavit požadavek na {0}souběžný požadavek na více než . |
+| Typ_ _webová službaje neplatná. | Byl zadán neplatný typ webové služby. Ověřte, zda je platný typ webové služby správný, a akci opakujte. Platné typy webových služeb: {0}. |
  
 ## <a name="baduserargument-http-status-code-400"></a>BadUserArgument (stavový kód HTTP 400)
  
-Zadaný argument neplatný uživatel.
+Byl k dispozici neplatný uživatelský argument.
  
-| Kód chyby | Zpráva uživatele |
+| Kód chyby | Uživatelská zpráva |
 | ---------- |--------------|
-| InputMismatchError | Vstupní data neodpovídá schématu vstupního portu. |
-| InputParseError | Analýza vstupu vektoru se nezdařilo.  Ověřte, že vstupní Vektor nemá správný počet sloupců a datové typy.  Další podrobnosti: {0}. |
-| MissingRequiredGlobalParameters | Webová služba očekává parametry nebyly nalezeny. Ověřte, že všechny požadované parametry očekává webové služby jsou správné a zkuste to znovu. |
-| UnexpectedParameter | Ověřte očekávání webová služba pouze požadované parametry jsou předány a zkuste to znovu. |
-| UserParameterInvalid | {0} |
+| Chyba InputSsmatchError | Vstupní data neodpovídají schématu vstupního portu. |
+| Chyba InputParseError | Analýza vstupního vektoru se nezdařila.  Ověřte, zda vstupní vektor má správný počet sloupců a datových typů.  Další podrobnosti: {0}. |
+| ChybějícíParametry Hodnotitík globálních parametrů | Parametry očekávané webovou službou chybí. Ověřte, zda jsou všechny požadované parametry očekávané webovou službou správné, a akci opakujte. |
+| Parametr UnexpectedParameter | Ověřte, zda jsou předány pouze požadované parametry očekávané webovou službou a opakujte akci. |
+| Parametr UživateleJeneplatný | {0} |
  
 ## <a name="invalidoperation-http-status-code-400"></a>InvalidOperation (stavový kód HTTP 400)
  
-Požadavek je neplatný v aktuálním kontextu.
+Požadavek je v aktuálním kontextu neplatný.
  
-| Kód chyby | Zpráva uživatele |
+| Kód chyby | Uživatelská zpráva |
 | ---------- |--------------|
-| CannotStartJob | Úlohu nelze spustit, protože je ve stavu {0}. |
-| IncompatibleModel | Model je kompatibilní s verzí požadavku. Žádost o verze podporuje pouze modely výstup jednoho objektu datatable. |
-| MultipleInputsNotAllowed | Model není povoleno více vstupů. |
+| Nelze spustit úlohu | Úlohu nelze spustit, protože {0} je ve stavu. |
+| NekompatibilníModel | Model není kompatibilní s verzí požadavku. Verze požadavku podporuje pouze jeden datatable výstupní modely. |
+| MultipleInputsNotAllowed | Model neumožňuje více vstupů. |
  
 ## <a name="libraryexecutionerror-http-status-code-400"></a>LibraryExecutionError (stavový kód HTTP 400)
  
-Spouštění modulu došlo k chybě interní knihovny.
+Spuštění modulu došlo k chybě vnitřní knihovny.
  
  
 ## <a name="moduleexecutionerror-http-status-code-400"></a>ModuleExecutionError (stavový kód HTTP 400)
  
-Spouštění modulu došlo k chybě.
+Při spuštění modulu došlo k chybě.
  
  
 ## <a name="webservicepackageerror-http-status-code-400"></a>WebServicePackageError (stavový kód HTTP 400)
  
-Neplatný webový balíček služby. Zkontrolujte správnost balíčku webové služby k dispozici a zkuste to znovu.
+Neplatný balíček webové služby. Ověřte, zda je poskytnutý balíček webové služby správný, a akci opakujte.
  
-| Kód chyby | Zpráva uživatele |
+| Kód chyby | Uživatelská zpráva |
 | ---------- |--------------|
-| FormatError | Balíček webové služby je poškozený. Podrobnosti: {0} |
-| RuntimesError | Graf balíček webové služby je neplatný. Podrobnosti: {0} |
-| ValidationError | Graf balíček webové služby je neplatný. Podrobnosti: {0} |
+| FormatError | Balíček webové služby je poškozen. Podrobnosti:{0} |
+| Chyba runtimeserror | Graf balíčku webových služeb je neplatný. Podrobnosti:{0} |
+| Validationerror | Graf balíčku webových služeb je neplatný. Podrobnosti:{0} |
  
-## <a name="unauthorized-http-status-code-401"></a>Neoprávněné (stavový kód HTTP 401)
+## <a name="unauthorized-http-status-code-401"></a>Neautorizovaný (stavový kód HTTP 401)
  
-Požadavek není autorizovaný k přístupu k prostředku.
+Požadavek není oprávněný pro přístup k prostředku.
  
-| Kód chyby | Zpráva uživatele |
+| Kód chyby | Uživatelská zpráva |
 | ---------- |--------------|
-| AdminRequestUnauthorized | Neautorizováno |
-| ManagementRequestUnauthorized | Neautorizováno |
-| ScoreRequestUnauthorized | Zadané neplatné přihlašovací údaje. |
+| AdminRequestNeauthorized | Neautorizováno |
+| Požadavek na správu Neautorizován | Neautorizováno |
+| ScoreRequestNeauthorized | Byla poskytnuta neplatná pověření. |
  
 ## <a name="notfound-http-status-code-404"></a>NotFound (stavový kód HTTP 404)
  
-Prostředek se nenašel.
+Zdroj nebyl nalezen.
  
-| Kód chyby | Zpráva uživatele |
+| Kód chyby | Uživatelská zpráva |
 | ---------- |--------------|
-| ModelPackageNotFound | Model balíček se nenašel. Ověřte správnost Id balíčku modelu a zkuste to znovu. |
-| WebServiceIdNotFoundInWorkspace | Webové služby v tomto pracovním prostoru nenašla. Došlo k neshodě mezi webServiceId a ID pracovního prostoru. Ověřte, že webová služba k dispozici je součástí pracovního prostoru a zkuste to znovu. |
-| WebServiceNotFound | Webová služba nebyla nalezena. Ověřte správnost Id webové služby a zkuste to znovu. |
-| WorkspaceNotFound | Pracovní prostor nebyl nalezen. Ověřte správnost Id pracovního prostoru a zkuste to znovu. |
+| ModelPackageNotFound. | Balíček modelu nebyl nalezen. Ověřte, zda je ID balíčku modelu správné, a akci opakujte. |
+| WebServiceIdNotFoundInWorkspace | Webová služba v tomto pracovním prostoru nebyla nalezena. Existuje neshoda mezi webServiceId a workspaceId. Ověřte, zda je zakalená webová služba součástí pracovního prostoru, a akci opakujte. |
+| WebserviceNotFound | Webová služba nebyla nalezena. Ověřte, zda je ID webové služby správné, a akci opakujte. |
+| Pracovní prostor nebyl nalezen | Pracovní prostor nebyl nalezen. Ověřte, zda je Id pracovního prostoru správné, a akci opakujte. |
  
 ## <a name="requesttimeout-http-status-code-408"></a>RequestTimeout (stavový kód HTTP 408)
  
-Operaci nešlo dokončit v povoleném čase.
+Operaci nelze dokončit v povoleném čase.
  
-| Kód chyby | Zpráva uživatele |
+| Kód chyby | Uživatelská zpráva |
 | ---------- |--------------|
-| RequestCanceled | Požadavek byl zrušen klientem. |
-| ScoreRequestTimeout | Žádost o spuštění, vypršení časového limitu. |
+| Požadavek byl zrušen. | Požadavek byl klientem zrušen. |
+| ScoreRequestTimeout | Časový čas požadavku na spuštění byl vyhotoven. |
  
-## <a name="conflict-http-status-code-409"></a>Konflikt (kód stavu protokolu HTTP 409)
+## <a name="conflict-http-status-code-409"></a>Konflikt (stavový kód HTTP 409)
  
-Prostředek už existuje.
+Prostředek již existuje.
  
-| Kód chyby | Zpráva uživatele |
+| Kód chyby | Uživatelská zpráva |
 | ---------- |--------------|
-| ModelOutputMetadataMismatch | Název parametru neplatný výstup. Zkuste použít editor modulu metadat přejmenování sloupců a zkuste to znovu. |
+| ModelOutputMetadataMismatch | Neplatný název výstupního parametru. Zkuste pomocí modulu editoru metadat přejmenovat sloupce a zkuste to znovu. |
  
 ## <a name="memoryquotaviolation-http-status-code-413"></a>MemoryQuotaViolation (stavový kód HTTP 413)
  
-Model překročil kvótu paměti přiřazené.
+Model překročil kvótu paměti, která mu byla přiřazena.
  
-| Kód chyby | Zpráva uživatele |
+| Kód chyby | Uživatelská zpráva |
 | ---------- |--------------|
-| OutOfMemoryLimit | Model spotřebovávat více paměti, než byla přidělena pro něj. Maximální povolená paměť pro model je {0} MB. Zkontrolujte prosím váš model pro problémy. |
+| Limit mimo paměť | Model spotřeboval více paměti, než bylo přivlastněno. Maximální povolená paměť {0} modelu je MB. Zkontrolujte, zda váš model pro problémy. |
  
-## <a name="internalerror-http-status-code-500"></a>Vnitřní chyba (kód stavu HTTP 500)
+## <a name="internalerror-http-status-code-500"></a>InternalError (stavový kód HTTP 500)
  
-Provádění došlo k vnitřní chybě.
+Spuštění došlo k vnitřní chybě.
  
-| Kód chyby | Zpráva uživatele |
+| Kód chyby | Uživatelská zpráva |
 | ---------- |--------------|
-| AdminAuthenticationFailed |  |
-| BackendArgumentError |  |
-| BackendBadRequest |  |
-| ClusterConfigBlobMisconfigured |  |
-| ContainerProcessTerminatedWithSystemError | Kontejnerový proces selhal s chybou systému |
-| ContainerProcessTerminatedWithUnknownError | Kontejnerový proces, došlo k chybě kvůli neznámé chybě |
-| ContainerValidationFailed | Ověření kontejneru objektu BLOB se nezdařilo s touto chybou: {0}. |
-| DeleteWebServiceResourceFailed |  |
+| Ověření správce se nezdařilo. |  |
+| Chyba backendargumentu |  |
+| BackendBadPožadavek |  |
+| ClusterConfigBlobMiskonfigurován |  |
+| ContainerProcessTerminatedWithSystemError | Proces kontejneru havaroval s chybou systému |
+| ContainerProcessTerminatedWithUnknownError | Proces kontejneru havaroval s neznámou chybou |
+| Ověření kontejneru se nezdařilo. | Ověření kontejneru objektů blob {0}se nezdařilo s touto chybou: . |
+| Odstranění prostředku webservice se nezdařilo. |  |
 | ExceptionDeserializationError |  |
 | FailedGettingApiDocument |  |
-| FailedStoringWebService |  |
-| InvalidMemoryConfiguration | InvalidMemoryConfiguration, ConfigValue: {0} |
-| InvalidResourceCacheConfiguration |  |
-| InvalidResourceDownloadConfiguration |  |
-| InvalidWebServiceResources |  |
-| MissingTaskInstance | Nebyly zadány žádné argumenty. Ověřte, že platné argumenty jsou předány a zkuste to znovu. |
+| Služba FailedStoringWebService |  |
+| Neplatná konfigurace paměti | Neplatná konfigurace paměti, hodnota konfigurace:{0} |
+| Neplatná konfigurace mezipaměti prostředků |  |
+| Neplatná konfigurace skupiny ResourceDownloadConfiguration |  |
+| Neplatnéwebservicezdroje |  |
+| Instance chybějící úlohy | Nejsou k dispozici žádné argumenty. Ověřte, zda jsou předané platné argumenty, a akci opakujte. |
 | ModelPackageInvalid |  |
-| ModuleExecutionFailed |  |
-| ModuleLoadFailed |  |
-| ModuleObjectCloneFailed |  |
-| OutputConversionFailed |  |
-| PortDataTypeNotSupported | Port ID ={0} obsahuje nepodporovaný datový typ: {1}. |
+| ModulProvedení se nezdařilo. |  |
+| ModulLoadFailed |  |
+| ModulObjectCloneFailed |  |
+| VýstupConversionFailed |  |
+| PortDataTypeNotSupported | Port id{0} = má nepodporovaný {1}datový typ: . |
 | ResourceDownload |  |
-| ResourceLoadFailed |  |
-| ServiceUrisNotFound |  |
-| SwaggerGeneration | Nepovedlo se vygenerovat Swagger, podrobnosti: {0} |
-| UnexpectedScoreStatus |  |
-| UnknownBackendErrorResponse |  |
-| Neznámé chyby |  |
-| UnknownJobStatusCode | Neznámý kód stavu úlohy {0}. |
-| UnknownModuleError |  |
-| UpdateWebServiceResourceFailed |  |
+| Nepodařilo se načíst prostředky |  |
+| ServiceUrisNotfound |  |
+| SwaggerGenerace | Swagger generace selhala, Podrobnosti:{0} |
+| NeočekávanéskóreStatus |  |
+| NeznámýBackendErrorResponse |  |
+| Neznámýchyba |  |
+| NeznámýjobStatusCode | Neznámý kód {0}stavu úlohy . |
+| Chyba neznámého modulu |  |
+| UpdateWebServiceResourceResourceFailed |  |
 | WebServiceGroupNotFound |  |
-| WebServicePackageInvalid | InvalidWebServicePackage, podrobnosti: {0} |
-| WorkerAuthorizationFailed |  |
-| WorkerUnreachable |  |
+| Balíček webové služby neplatný | InvalidWebServicePackage, podrobnosti:{0} |
+| Autorizace pracovníka Se nezdařila. |  |
+| Pracovníknedostupný |  |
  
 ## <a name="internalerrorsystemlowonmemory-http-status-code-500"></a>InternalErrorSystemLowOnMemory (stavový kód HTTP 500)
  
-Provádění došlo k vnitřní chybě. Nedostatek paměti systému. Zkuste to prosím znovu.
+Spuštění došlo k vnitřní chybě. Systém má málo paměti. Zkuste to prosím znovu.
  
  
 ## <a name="modelpackageformaterror-http-status-code-500"></a>ModelPackageFormatError (stavový kód HTTP 500)
  
-Balíček modelu je neplatný. Zkontrolujte správnost balíčku modelu k dispozici a zkuste to znovu.
+Neplatný balíček modelu. Ověřte, zda je poskytnutý balíček modelu správný, a akci opakujte.
  
  
 ## <a name="webservicepackageinternalerror-http-status-code-500"></a>WebServicePackageInternalError (stavový kód HTTP 500)
  
-Neplatný webový balíček služby. Ověřte správnost webový balíček, který je k dispozici a zkuste to znovu.
+Neplatný balíček webové služby. Ověřte, zda je poskytnutý webový balíček správný, a akci opakujte.
  
-| Kód chyby | Zpráva uživatele |
+| Kód chyby | Uživatelská zpráva |
 | ---------- |--------------|
-| ModuleError | Graf balíček webové služby je neplatný. Podrobnosti: {0} |
+| ModulChyba | Graf balíčku webových služeb je neplatný. Podrobnosti:{0} |
  
-## <a name="initializingcontainers-http-status-code-503"></a>InitializingContainers (stavový kód HTTP 503)
+## <a name="initializingcontainers-http-status-code-503"></a>Inicializace kontejnerů (stavový kód HTTP 503)
  
-Požadavek nelze provést jako kontejnery jsou během inicializace.
+Požadavek nelze spustit, protože kontejnery jsou inicializovány.
  
  
 ## <a name="serviceunavailable-http-status-code-503"></a>ServiceUnavailable (stavový kód HTTP 503)
  
 Služba je dočasně nedostupná.
  
-| Kód chyby | Zpráva uživatele |
+| Kód chyby | Uživatelská zpráva |
 | ---------- |--------------|
-| NoMoreResources | Žádné prostředky k dispozici pro požadavek. |
-| RequestThrottled | Požadavek byl pro {0} koncový bod omezen. Maximální souběžnost pro koncový bod je {1}. |
-| TooManyConcurrentRequests | Poslalo příliš mnoho souběžných požadavků. |
-| TooManyHostsBeingInitialized | Příliš mnoho hostitelů během inicializace ve stejnou dobu. Vezměte v úvahu omezení využití sítě / opakování. |
-| TooManyHostsBeingInitializedPerModel | Příliš mnoho hostitelů během inicializace ve stejnou dobu. Vezměte v úvahu omezení využití sítě / opakování. |
+| NoMoreZdroje | Pro vyžádání nejsou k dispozici žádné prostředky. |
+| RequestThrottled | Požadavek byl {0} omezen pro koncový bod. Maximální souběžnost pro koncový {1}bod je . |
+| TooManyConcurrentRequests | Bylo odesláno příliš mnoho souběžných požadavků. |
+| TooManyHostsInitialized | Příliš mnoho hostitelů je inicializováno současně. Zvažte škrcení / opakování. |
+| TooManyHostsBeingInitializedPerModel TooManyHostsBeingInitializedPerModel TooMany | Příliš mnoho hostitelů je inicializováno současně. Zvažte škrcení / opakování. |
  
 ## <a name="gatewaytimeout-http-status-code-504"></a>GatewayTimeout (stavový kód HTTP 504)
  
-Operaci nešlo dokončit v povoleném čase.
+Operaci nelze dokončit v povoleném čase.
  
-| Kód chyby | Zpráva uživatele |
+| Kód chyby | Uživatelská zpráva |
 | ---------- |--------------|
-| BackendInitializationTimeout | Inicializace webové služby nelze dokončit v povoleném čase. |
-| BackendScoreTimeout | Spuštění webové služby požadavek nešlo dokončit v povoleném čase. |
+| Back-endInitializationTimeout | Inicializaci webové služby nelze dokončit v povoleném čase. |
+| BackendScoreTimeout | Spuštění požadavku webové služby nelze dokončit v povoleném čase. |
  

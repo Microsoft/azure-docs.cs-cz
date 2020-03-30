@@ -1,6 +1,6 @@
 ---
-title: Konfigurace topologie propojené továrny – Azure | Microsoft Docs
-description: Tento článek popisuje, jak nakonfigurovat akcelerátor řešení propojené továrny, včetně jeho topologie.
+title: Konfigurace topologie připojené továrny – Azure | Dokumenty společnosti Microsoft
+description: Tento článek popisuje, jak nakonfigurovat akcelerátor řešení připojené továrny včetně jeho topologie.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,63 +9,63 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: 5fa3d4d4fdfa0dd81cd8ab8772ffb3903dda289f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73820116"
 ---
-# <a name="configure-the-connected-factory-solution-accelerator"></a>Konfigurace akcelerátoru řešení propojené továrny
+# <a name="configure-the-connected-factory-solution-accelerator"></a>Konfigurace akcelerátoru řešení připojené továrny
 
-Akcelerátor řešení propojené továrny zobrazuje simulovaný řídicí panel pro fiktivní společnost Contoso. V této společnosti jsou globální továrny v mnoha globálních umístěních.
+Akcelerátor řešení Connected Factory zobrazuje simulovaný řídicí panel fiktivní společnosti Contoso. Tato společnost má továrny v mnoha globálních lokalitách po celém světě.
 
-V tomto článku se jako příklad používá contoso, který popisuje konfiguraci topologie řešení propojené továrny.
+Tento článek používá Contoso jako příklad k popisu, jak nakonfigurovat topologii řešení připojené továrny.
 
 ## <a name="simulated-factories-configuration"></a>Konfigurace simulovaných továren
 
-Každý továrna Contoso má výrobní linky, které se skládají ze tří stanic. Každá stanice je skutečným serverem OPC UA s konkrétní rolí:
+Každá továrna Contoso má výrobní linky, které se skládají ze tří stanic. Každá stanice je skutečný OPC UA server se specifickou rolí:
 
 * Montážní stanice
-* Testovací stanice
-* Balírna
+* Zkušební stanice
+* Balicí stanice
 
-Tyto servery OPC UA mají uzly OPC UA a [Vydavatel OPC](overview-opc-publisher.md) odesílá hodnoty těchto uzlů do propojené továrny. To zahrnuje:
+Tyto Servery OPC UA mají uzly OPC UA a [Vydavatel OPC](overview-opc-publisher.md) odesílá hodnoty těchto uzlů do připojené továrny. To zahrnuje:
 
-* Aktuální provozní stav, jako je aktuální spotřeba energie.
-* Produkční informace, jako je počet vyrobených produktů.
+* Aktuální provozní stav, například aktuální spotřeba energie.
+* Informace o výrobě, jako je počet vyrobených výrobků.
 
-Řídicí panel můžete použít k přechodu do topologie továrny contoso z globálního zobrazení na zobrazení na úrovni stanice. Řídicí panel propojené továrny umožňuje:
+Řídicí panel můžete použít k přechodu do topologie továrny Contoso z globálního pohledu dolů do zobrazení na úrovni stanice. Řídicí panel Connected Factory umožňuje:
 
-* Vizualizace hodnot celkové efektivity zařízení a klíčových ukazatelů výkonu pro každou vrstvu v topologii.
-* Vizualizace aktuálních hodnot uzlů OPC UA ve stanicích.
-* Agregace hodnot celkové efektivity zařízení a klíčového ukazatele výkonu z úrovně stanice na globální úroveň.
-* Vizualizace výstrah a akcí, které se mají provést, pokud hodnoty dosáhnou specifických prahových hodnot.
+* Vizualizace hodnot OEE a Klíčových ukazatelů výkonu pro každou vrstvu v topologii.
+* Vizualizace aktuálních hodnot UA uzlů OPC ve stanicích.
+* Agregace údajů o OEE a klíčových ukazatelích výkonnosti od úrovně stanice ke globální úrovni.
+* Vizualizace výstrah a akcí, které mají být v případě, že hodnoty dosáhnou určitých prahových hodnot, jsou stanoveny.
 
-## <a name="connected-factory-topology"></a>Topologie propojené továrny
+## <a name="connected-factory-topology"></a>Připojená tologie továrny
 
 Topologie továren, výrobních linek a stanic je hierarchická:
 
-* Globální úroveň má uzly továrny jako podřízené objekty.
-* Továrny mají jako podřízené uzly výrobní linky.
-* Výrobní linky mají uzly stanice jako podřízené položky.
-* Stanice (servery OPC UA) mají uzly OPC UA jako podřízené objekty.
+* Globální úroveň má tovární uzly jako podřízené.
+* Továrny mají uzly výrobní linky jako podřízené položky.
+* Výrobní linky mají jako podřízené uzly stanice.
+* Stanice (servery OPC UA) mají uzly OPC UA jako děti.
 
 Každý uzel v topologii má společnou sadu vlastností, které definují:
 
-* Jedinečný identifikátor uzlu topologie.
-* Název.
+* Jedinečný identifikátor pro uzel topologie.
+* Jméno.
 * Popis.
 * Obrázek.
-* Podřízené položky uzlu topologie.
-* Minimální, cílové a maximální hodnoty pro celkové efektivity zařízení a hodnoty klíčových ukazatelů výkonu a akce výstrah, které mají být provedeny.
+* Podřízené topologie uzlu.
+* Minimální, cílové a maximální hodnoty pro údaje OEE a klíčových ukazatelů výkonu a výstražné akce, které mají být provedeny.
 
 ## <a name="topology-configuration-file"></a>Konfigurační soubor topologie
 
-K nakonfigurování vlastností uvedených v předchozí části používá řešení připojené továrny konfigurační soubor s názvem [ContosoTopologyDescription. JSON](https://github.com/Azure/azure-iot-connected-factory/blob/master/WebApp/Contoso/Topology/ContosoTopologyDescription.json).
+Chcete-li nakonfigurovat vlastnosti uvedené v předchozí části, používá řešení Connected Factory konfigurační soubor s názvem [ContosoTopologyDescription.json](https://github.com/Azure/azure-iot-connected-factory/blob/master/WebApp/Contoso/Topology/ContosoTopologyDescription.json).
 
-Tento soubor najdete ve zdrojovém kódu řešení ve složce `WebApp/Contoso/Topology`.
+Tento soubor najdete ve zdrojovém `WebApp/Contoso/Topology` kódu řešení ve složce.
 
-Následující fragment kódu ukazuje osnovu konfiguračního souboru `ContosoTopologyDescription.json`:
+Následující úryvek zobrazuje obrys `ContosoTopologyDescription.json` konfiguračního souboru:
 
 ```json
 {
@@ -85,237 +85,237 @@ Následující fragment kódu ukazuje osnovu konfiguračního souboru `ContosoTo
 }
 ```
 
-Mezi běžné vlastnosti `<global_configuration>`, `<factory_configuration>`, `<production_line_configuration>`a `<station_configuration>` patří:
+Společné vlastnosti `<global_configuration>` `<factory_configuration>`rozhraní `<production_line_configuration>`, `<station_configuration>` , , a jsou:
 
-* **Název** (typ řetězce)
+* **Název** (typový řetězec)
 
-  Definuje popisný název, který by měl být pro uzel topologie na řídicím panelu zobrazen pouze jedním slovem.
+  Definuje popisný název, který by měl být pouze jedno slovo pro topologie uzlu zobrazit na řídicím panelu.
 
-* **Popis** (typ řetězce)
+* **Popis** (typový řetězec)
 
   Popisuje uzel topologie podrobněji.
 
-* **Image** (typ řetězce)
+* **Obrázek** (typový řetězec)
 
-  Cesta k obrázku v řešení WebApp, která se zobrazí, když se na řídicím panelu zobrazí informace o uzlu topologie.
+  Cesta k obrázku v řešení WebApp zobrazí, když jsou na řídicím panelu zobrazeny informace o uzlu topologie.
 
-* **OeeOverall**, **OeePerformance**, **OeeAvailability**, **OeeQuality**, **Kpi1**, **Kpi2** (typ `<performance_definition>`)
+* **OeeOverall**, **OeePerformance**, **OeeAvailability**, **OeeQuality**, **Kpi1**, **Kpi2** (typ) `<performance_definition>`
 
-  Tyto vlastnosti definují minimální, cílové a maximální hodnoty provozního obrázku používaného ke generování výstrah. Tyto vlastnosti také definují akce, které se mají provést, pokud je zjištěna výstraha.
+  Tyto vlastnosti definují minimální, cílové a maximální hodnoty provozního čísla použitého ke generování výstrah. Tyto vlastnosti také definují akce, které mají být provedeny, pokud je zjištěna výstraha.
 
-Položky `<factory_configuration>` a `<production_line_configuration>` mají vlastnost:
+A `<factory_configuration>` `<production_line_configuration>` položky mají vlastnost:
 
-* **GUID** (typ řetězce)
+* **Guid** (typový řetězec)
 
   Jednoznačně identifikuje uzel topologie.
 
-`<factory_configuration>` má vlastnost:
+`<factory_configuration>`má vlastnost:
 
-* **Umístění** (typ `<location_definition>`)
+* **Umístění** (typ) `<location_definition>`
 
-  Určuje, kde se nachází objekt pro vytváření.
+  Určuje, kde se nachází továrna.
 
-`<station_configuration>` má vlastnosti:
+`<station_configuration>`má vlastnosti:
 
-* **OpcUri** (typ řetězce)
+* **OpcUri** (typový řetězec)
 
-  Tato vlastnost musí být nastavená na identifikátor URI aplikace OPC UA serveru OPC UA.
-  Vzhledem k tomu, že musí být globálně jedinečný pomocí specifikace OPC UA, tato vlastnost slouží k identifikaci uzlu topologie stanice.
+  Tato vlastnost musí být nastavena na identifikátor URI aplikace OPC UA serveru OPC UA.
+  Vzhledem k tomu, že musí být globálně jedinečný specifikací OPC UA, tato vlastnost se používá k identifikaci uzlu topologie stanice.
 
-* **OpcNodes**, což jsou pole uzlů OPC UA (typ `<opc_node_description>`)
+* **OpcNodes**, které jsou polem uzlů OPC `<opc_node_description>`UA (typ)
 
-`<location_definition>` má vlastnosti:
+`<location_definition>`má vlastnosti:
 
-* **City** (typ řetězce)
+* **Město** (typový řetězec)
 
-  Název města nejblíže k umístění
+  Název města nejblíže k lokalitě
 
-* **Country** (typ řetězce)
+* **Země** (řetězec typu)
 
-  Země umístění
+  Země lokality
 
-* **Zeměpisná šířka** (typ Double)
+* **Zeměpisná šířka** (typ double)
 
   Zeměpisná šířka místa
 
-* **Zeměpisná délka** (typ Double)
+* **Zeměpisná a diatova** (typ dvojitá)
 
-  Zeměpisná délka místa
+  Zeměpisná poloha
 
-`<performance_definition>` má vlastnosti:
+`<performance_definition>`má vlastnosti:
 
-* **Minimum** (typ Double)
+* **Minimální** (typ double)
 
-  Dolní prahová hodnota, na kterou může tato hodnota dorazit. Pokud je aktuální hodnota pod touto prahovou hodnotou, vygeneruje se výstraha.
+  Nižší prahová hodnota může dosáhnout. Pokud je aktuální hodnota pod touto prahovou hodnotou, vygeneruje se výstraha.
 
-* **Cíl** (typ Double)
+* **Cíl** (typ double)
 
   Ideální cílová hodnota.
 
-* **Maximum** (typ Double)
+* **Maximum** (typ double)
 
-  Horní prahová hodnota, kterou může tato hodnota dosáhnout. Pokud je aktuální hodnota nad rámec této prahové hodnoty, vygeneruje se výstraha.
+  Horní prahová hodnota může dosáhnout. Pokud je aktuální hodnota vyšší než tato prahová hodnota, vygeneruje se výstraha.
 
-* **MinimumAlertActions** (typ `<alert_action>`)
+* **MinimumAlertActions** (typ) `<alert_action>`
 
-  Definuje sadu akcí, které lze provést jako odpověď na minimální výstrahu.
+  Definuje sadu akcí, které lze přijmout jako odpověď na minimální výstrahu.
 
-* **MaximumAlertActions** (typ `<alert_action>`)
+* **MaximumAlertActions** (typ) `<alert_action>`
 
-  Definuje sadu akcí, které lze provést jako reakci na maximální výstrahu.
+  Definuje sadu akcí, které lze přijmout jako odpověď na maximální výstrahu.
 
-`<alert_action`> obsahuje vlastnosti:
+`<alert_action`> má vlastnosti:
 
-* **Typ** (typ řetězce)
+* **Typ** (řetězec typu)
 
-  Typ akce výstrahy Jsou známy následující typy:
+  Typ výstražné akce. Následující typy jsou známy:
 
-  * **AcknowledgeAlert**: stav výstrahy by se měl změnit na potvrzeno.
-  * **CloseAlert**: na řídicím panelu se už nesmí zobrazovat všechny starší výstrahy stejného typu.
-  * **CallOpcMethod**: je třeba volat metodu OPC UA.
-  * **OpenWebPage**: mělo by se otevřít okno prohlížeče zobrazující další kontextové informace.
+  * **AcknowledgeAlert**: stav výstrahy by se měl změnit na potvrzenou.
+  * **CloseAlert**: všechny starší výstrahy stejného typu by již neměly být zobrazeny na řídicím panelu.
+  * **CallOpcMethod**: metoda OPC UA by měla být volána.
+  * **OpenWebPage**: okno prohlížeče by mělo být otevřeno s dalšími kontextové informace.
 
-* **Popis** (typ řetězce)
+* **Popis** (typový řetězec)
 
-  Popis akce zobrazené na řídicím panelu
+  Popis akce zobrazené na řídicím panelu.
 
-* **Parametr** (typ String)
+* **Parametr** (typový řetězec)
 
-  Parametry vyžadované pro provedení akce Hodnota závisí na typu akce.
+  Parametry potřebné k provedení akce. Hodnota závisí na typu akce.
 
-  * **AcknowledgeAlert**: není vyžadován žádný parametr.
-  * **CloseAlert**: není vyžadován žádný parametr.
-  * **CallOpcMethod**: informace o uzlu a parametry metody OPC UA pro volání ve formátu "NodeId nadřazených uzlů", NodeId metody volání, identifikátor URI serveru OPC UA. "
-  * **OpenWebPage**: adresa URL, která se má zobrazit v okně prohlížeče.
+  * **AcknowledgeAlert**: není nutný žádný parametr.
+  * **CloseAlert**: není nutný žádný parametr.
+  * **CallOpcMethod**: informace o uzlu a parametry metody OPC UA pro volání ve formátu "NodeId nadřazeného uzlu, NodeId metody pro volání, URI serveru OPC UA."
+  * **OpenWebPage**: ADRESA URL, která se zobrazí v okně prohlížeče.
 
-`<opc_node_description>` obsahuje informace o uzlech UA OPC ve stanici (OPC UA Server). Uzly, které nepředstavují žádné existující uzly OPC UA, ale používají se jako úložiště v logice výpočtu propojené továrny, jsou také platné. Má následující vlastnosti:
+`<opc_node_description>`obsahuje informace o uzlech OPC UA ve stanici (OPC UA server). Uzly, které nepředstavují žádné existující uzly OPC UA, ale používají se jako úložiště ve výpočetní logice připojené továrny, jsou také platné. Má následující vlastnosti:
 
-* **NodeId** (typ řetězce)
+* **NodeId** (řetězec typu)
 
-  Adresa uzlu OPC UA v adresním prostoru stanice (OPC UA Server). Syntaxe musí být zadaná ve specifikaci OPC UA pro NodeId.
+  Adresa uzlu OPC UA v adresním prostoru stanice (OPC UA server). Syntaxe musí být tak, jak je uvedeno ve specifikaci OPC UA pro NodeId.
 
-* **Symbolického** řetězce (typ řetězce)
+* **Symbolický název** (řetězec typu)
 
-  Název, který se má zobrazit na řídicím panelu, když se zobrazí hodnota tohoto uzlu OPC UA
+  Název, který se zobrazí na řídicím panelu, když je zobrazena hodnota tohoto uzlu OPC UA.
 
-* **Relevance** (pole typu String)
+* **Relevance** (pole typu řetězce)
 
-  Určuje, pro který výpočet celkové efektivity zařízení nebo klíčový ukazatel výkonu je relevantní hodnota uzlu OPC UA. Každý prvek pole může být jedna z následujících hodnot:
+  Označuje, pro který výpočt OEE nebo Klíčový ukazatel výkonu hodnota uzlu OPC UA je relevantní. Každý prvek pole může být jedna z následujících hodnot:
 
-  * **OeeAvailability_Running**: hodnota je relevantní pro výpočet dostupnosti celkové efektivity zařízení.
-  * **OeeAvailability_Fault**: hodnota je relevantní pro výpočet dostupnosti celkové efektivity zařízení.
-  * **OeePerformance_Ideal**: hodnota je relevantní pro výpočet výkonu celkové efektivity zařízení a obvykle se jedná o konstantní hodnotu.
-  * **OeePerformance_Actual**: hodnota je relevantní pro výpočet výkonu celkové efektivity zařízení.
-  * **OeeQuality_Good**: hodnota je relevantní pro výpočet kvality celkové efektivity zařízení.
-  * **OeeQuality_Bad**: hodnota je relevantní pro výpočet kvality celkové efektivity zařízení.
-  * **Kpi1**: hodnota je relevantní pro výpočet Kpi1.
-  * **Kpi2**: hodnota je relevantní pro výpočet Kpi2.
+  * **OeeAvailability_Running**: hodnota je relevantní pro výpočet dostupnosti OEE.
+  * **OeeAvailability_Fault**: hodnota je relevantní pro výpočet dostupnosti OEE.
+  * **OeePerformance_Ideal**: hodnota je relevantní pro výpočet výkonu OEE a je obvykle konstantní hodnota.
+  * **OeePerformance_Actual**: hodnota je relevantní pro výpočet výkonnosti OEE.
+  * **OeeQuality_Good**: hodnota je relevantní pro výpočet kvality OEE.
+  * **OeeQuality_Bad**: hodnota je relevantní pro výpočet kvality OEE.
+  * **Kpi1**: hodnota je relevantní pro výpočet klíčového ukazatele výkonu1.
+  * **Kpi2**: hodnota je relevantní pro výpočet klíčového ukazatele výkonu2.
 
-* **Opcode** (typ řetězce)
+* **OpCode** (typový řetězec)
 
-  Určuje, jak je hodnota uzlu OPC UA zpracována v rámci dotazů Time Series Insight a výpočtů celkové efektivity zařízení/KPI. Každý dotaz Time Series Insight se zaměřuje na konkrétní časové rozpětí, což je parametr dotazu a poskytuje výsledek. Operační kód řídí, jak je výsledek vypočítán, a může být jedna z následujících hodnot:
+  Označuje, jak je hodnota uzlu OPC UA zpracována v dotazech Time Series Insight a výpočtech OEE/KPI. Každý časový rozsah Insight dotaz cíle konkrétní časový rozsah, což je parametr dotazu a poskytuje výsledek. OpCode určuje, jak je vypočítán výsledek a může být jedna z následujících hodnot:
 
-  * **Diff**: rozdíl mezi poslední a první hodnotou v časovém intervalu.
-  * **AVG**: průměr všech hodnot v poli TimeSpan.
-  * **Sum**: součet všech hodnot v poli TimeSpan.
-  * **Poslední**: aktuálně se nepoužívá.
-  * **Count**(počet): počet hodnot v časovém rozmezí.
-  * **Max**: maximální hodnota v časovém rozmezí.
-  * **Min**: minimální hodnota v časovém rozmezí.
-  * **Const**: Výsledkem je hodnota zadaná vlastností ConstValue.
+  * **Rozdíl**: rozdíl mezi poslední a první hodnotou v období času.
+  * **Průměr**všech hodnot v čase.
+  * **Součet**: součet všech hodnot v období času.
+  * **Poslední**: aktuálně nepoužívá.
+  * **Počet**: počet hodnot v období času.
+  * **Max**: maximální hodnota v čase.
+  * **Min**: minimální hodnota v časovým rozpětí.
+  * **Const**: Výsledkem je hodnota určená vlastností ConstValue.
   * **SubMaxMin**: rozdíl mezi maximální a minimální hodnotou.
-  * **TimeSpan**: TimeSpan.
+  * **Časový rozsah**: časový rozsah.
 
-* **Jednotky** (typ řetězce)
+* **Jednotky** (typový řetězec)
 
-  Definuje jednotku hodnoty, která se má zobrazit na řídicím panelu.
+  Definuje jednotku hodnoty pro zobrazení na řídicím panelu.
 
-* **Viditelné** (typ Boolean)
+* **Viditelné** (typ logické)
 
   Určuje, zda má být hodnota zobrazena na řídicím panelu.
 
-* **ConstValue** (typ Double)
+* **ConstValue** (typ double)
 
-  Pokud je **operační kód** **const**, pak tato vlastnost je hodnotou uzlu.
+  Pokud **OpCode** je **Const**, pak tato vlastnost je hodnota uzlu.
 
-* **Minimum** (typ Double)
+* **Minimální** (typ double)
 
-  Pokud aktuální hodnota klesne pod tuto hodnotu, bude vygenerována minimální výstraha.
+  Pokud aktuální hodnota klesne pod tuto hodnotu, vygeneruje se minimální výstraha.
 
-* **Maximum** (typ Double)
+* **Maximum** (typ double)
 
-  Pokud aktuální hodnota vyvolá tuto hodnotu, bude vygenerována maximální výstraha.
+  Pokud aktuální hodnota zvýší nad tuto hodnotu, vygeneruje se maximální výstraha.
 
-* **MinimumAlertActions** (typ `<alert_action>`)
+* **MinimumAlertActions** (typ) `<alert_action>`
 
-  Definuje sadu akcí, které lze provést jako odpověď na minimální výstrahu.
+  Definuje sadu akcí, které lze přijmout jako odpověď na minimální výstrahu.
 
-* **MaximumAlertActions** (typ `<alert_action>`)
+* **MaximumAlertActions** (typ) `<alert_action>`
 
-  Definuje sadu akcí, které lze provést jako reakci na maximální výstrahu.
+  Definuje sadu akcí, které lze přijmout jako odpověď na maximální výstrahu.
 
-Na úrovni stanice vidíte také objekty **simulace** . Tyto objekty slouží pouze ke konfiguraci simulace připojené továrny a neměly by se používat ke konfiguraci reálné topologie.
+Na úrovni stanice se zobrazí také **objekty simulace.** Tyto objekty se používají pouze ke konfiguraci simulace připojené továrny a neměly by být použity ke konfiguraci skutečné topologie.
 
-## <a name="how-the-configuration-data-is-used-at-runtime"></a>Jak se používají konfigurační data za běhu
+## <a name="how-the-configuration-data-is-used-at-runtime"></a>Jak se konfigurační data používají za běhu
 
-Všechny vlastnosti použité v konfiguračním souboru lze seskupit do různých kategorií v závislosti na tom, jak jsou použity. Tyto kategorie jsou:
+Všechny vlastnosti použité v konfiguračním souboru lze seskupit do různých kategorií v závislosti na tom, jak jsou používány. Jedná se o tyto kategorie:
 
-### <a name="visual-appearance"></a>Vzhled vizuálu
+### <a name="visual-appearance"></a>Vizuální vzhled
 
-Vlastnosti v této kategorii definují vizuální vzhled řídicího panelu propojené továrny. Příklady obsahují:
+Vlastnosti v této kategorii definují vizuální vzhled řídicího panelu Připojené továrny. Příklady obsahují:
 
 * Name (Název)
 * Popis
 * Image
 * Umístění
 * Jednotky
-* Zobrazeny
+* Viditelné
 
-### <a name="internal-topology-tree-addressing"></a>Adresování stromu interní topologie
+### <a name="internal-topology-tree-addressing"></a>Interní adresování stromu topologie
 
-WebApp udržuje interní datový slovník, který obsahuje informace o všech uzlech topologie. Vlastnosti **GUID** a **OpcUri** se používají jako klíče pro přístup k tomuto slovníku a musí být jedinečné.
+WebApp udržuje interní datový slovník obsahující informace o všech uzlech topologie. Vlastnosti **Guid** a **OpcUri** se používají jako klíče pro přístup k tomuto slovníku a musí být jedinečné.
 
-### <a name="oeekpi-computation"></a>Výpočet celkové efektivity zařízení/KPI
+### <a name="oeekpi-computation"></a>Výpočty OEE/KPI
 
-Hodnoty celkové efektivity zařízení/KPI pro simulaci propojené továrny jsou parametrizované pomocí:
+Hodnoty OEE/KPI pro simulaci připojené továrny jsou parametrizovány:
 
 * Hodnoty uzlu OPC UA, které mají být zahrnuty do výpočtu.
-* Jak je vypočítána hodnota z hodnot telemetrie.
+* Jak se počítá obrázek z telemetrických hodnot.
 
-Propojená továrna používá vzorce celkové efektivity zařízení jako publikované [http://www.oeefoundation.org](http://www.oeefoundation.org).
+Připojená továrna používá vzorce OEE [http://www.oeefoundation.org](http://www.oeefoundation.org)publikované v .
 
-Objekty uzlu UA OPC ve stanicích umožňují tagování pro použití při výpočtu celkové efektivity zařízení/KPI. Vlastnost **relevance** určuje, pro který celkové efektivity zařízení/klíčový ukazatel výkonu má být použita hodnota uzlu OPC UA. Vlastnost **opcode** definuje, jak je hodnota obsažena v výpočtu.
+Objekty uzlů OPC UA ve stanicích umožňují označování pro použití ve výpočtu OEE/KPI. **Relevance** Vlastnost označuje, pro které OEE/KPI obrázek Hodnota uzlu OPC UA by měla být použita. **Vlastnost OpCode** definuje, jak je hodnota zahrnuta do výpočtu.
 
 ### <a name="alert-handling"></a>Zpracování výstrah
 
-Propojená továrna podporuje jednoduchý mechanismus generování výstrah na základě prahové hodnoty minima a maxima. V reakci na tyto výstrahy můžete nakonfigurovat řadu předdefinovaných akcí. Tento mechanismus řídí následující vlastnosti:
+Connected Factory podporuje jednoduchý mechanismus generování výstrah na základě minimální/maximální prahové hodnoty. Existuje celá řada předdefinovaných akcí, které můžete nakonfigurovat v reakci na tyto výstrahy. Tento mechanismus řídí následující vlastnosti:
 
 * Maximum
 * Minimální
-* MaximumAlertActions
-* MinimumAlertActions
+* Maximální akce výstrah
+* Minimální akce výstrah
 
-## <a name="correlating-to-telemetry-data"></a>Korelace s daty telemetrie
+## <a name="correlating-to-telemetry-data"></a>Koreláce s telemetrickými daty
 
-Pro určité operace, jako je například vizualizace poslední hodnoty nebo vytváření dotazů služby Time Series Insight, vyžaduje WebApp schéma adresování pro ingestovaná data telemetrie. Telemetrii odesílaná do propojené továrny musí být také uložená ve vnitřních datových strukturách. Dvě vlastnosti, které umožňují tyto operace, jsou na úrovni stanice (Server OPC UA) a na úrovni uzlu OPC UA:
+Pro určité operace, jako je vizualizace poslední hodnoty nebo vytváření dotazů Time Series Insight, WebApp potřebuje adresování schéma pro ingestovaná data telemetrie. Telemetrie odeslaná do připojené továrny také musí být uložena v interních datových strukturách. Dvě vlastnosti, které umožňují tyto operace, jsou na úrovni stanice (Server OPC UA) a OPC UA:
 
 * **OpcUri**
 
-  Identifikuje (globálně jedinečný) Server OPC UA, ze kterého přichází telemetrie. V ingestných zprávách se tato vlastnost pošle jako **ApplicationUri**.
+  Identifikuje (globálně jedinečný) server OPC UA, ze kterých telemetrie pochází. V přijatých zprávách je tato vlastnost odeslána jako **ApplicationUri**.
 
 * **NodeId**
 
-  Určuje hodnotu uzlu na serveru OPC UA. Formát vlastnosti musí být zadaný ve specifikaci OPC UA. V ingestných zprávách se tato vlastnost pošle jako **NodeId**.
+  Identifikuje hodnotu uzlu na serveru OPC UA. Formát vlastnosti musí být uveden ve specifikaci OPC UA. V přijatých zprávách je tato vlastnost odeslána jako **NodeId**.
 
-Další informace o tom, jak se data telemetrie ingestují do propojené továrny, najdete v tématu [co je OPC Publisher](overview-opc-publisher.md) .
+Další informace o tom, jak se telemetrická data ingestují do připojené továrny, najdete v tématu [Co je vydavatel OPC.](overview-opc-publisher.md)
 
-## <a name="example-how-kpi1-is-calculated"></a>Příklad: jak se počítá KPI1
+## <a name="example-how-kpi1-is-calculated"></a>Příklad: Způsob výpočtu klíčového ukazatele výkonu1
 
-Konfigurace v souboru `ContosoTopologyDescription.json` řídí, jak se počítají hodnoty celkové efektivity zařízení/klíčový ukazatel výkonu. Následující příklad ukazuje, jak vlastnosti v tomto souboru řídí výpočet KPI1.
+Konfigurace v `ContosoTopologyDescription.json` souboru určuje způsob výpočtu údajů o ukazatelích výkonu OEE/Klíčových ukazatelů výkonu. Následující příklad ukazuje, jak vlastnosti v tomto souboru řídí výpočtu klíčového ukazatele výkonu1.
 
-V části propojená továrna KPI1 se používá k měření počtu úspěšně vyráběných produktů za poslední hodinu. Každá stanice (Server OPC UA) v simulaci propojené továrny poskytuje uzel OPC UA (`NodeId: "ns=2;i=385"`), který poskytuje telemetrii k výpočtu tohoto klíčového ukazatele výkonu.
+V připojené továrně KPI1 se používá k měření počtu úspěšně vyrobených výrobků za poslední hodinu. Každá stanice (Server OPC UA) v simulaci Připojené továrny`NodeId: "ns=2;i=385"`poskytuje uzel OPC UA ( ), který poskytuje telemetrii pro výpočet tohoto klíčového ukazatele výkonu.
 
-Konfigurace pro tento uzel OPC UA vypadá jako následující fragment kódu:
+Konfigurace tohoto uzlu OPC UA vypadá jako následující úryvek:
 
 ```json
 {
@@ -326,18 +326,18 @@ Konfigurace pro tento uzel OPC UA vypadá jako následující fragment kódu:
 },
 ```
 
-Tato konfigurace umožňuje dotazování na hodnoty telemetrie tohoto uzlu pomocí Time Series Insights. Dotaz Time Series Insights načte:
+Tato konfigurace umožňuje dotazování telemetrie hodnoty tohoto uzlu pomocí Časové řady Insights. Dotaz Time Series Insights načítá:
 
 * Počet hodnot.
 * Minimální hodnota.
 * Maximální hodnota.
 * Průměr všech hodnot.
-* Součet všech hodnot pro všechny jedinečné páry **OpcUri** (**ApplicationUri**), **NodeId** v daném časovém rozpětí.
+* Součet všech hodnot pro všechny jedinečné **OpcUri** (**ApplicationUri**), **NodeId** dvojice v daném časovým rozpětí.
 
-Jedna z vlastností **NumberOfManufactureredProducts** uzlu znamená, že se zvyšuje jenom. K výpočtu počtu produktů vyrobených v rámci TimeSpan používá propojená továrna SubMaxMin **operačního**systému. Výpočet načte minimální hodnotu na začátku TimeSpan a maximální hodnotu na konci časového rozpětí.
+Jednou z charakteristik **numberOfManufactureredProducts** hodnota uzlu je, že pouze zvyšuje. Chcete-li vypočítat počet produktů vyrobených v období časů, připojená továrna používá **OpCode** **SubMaxMin**. Výpočet načte minimální hodnotu na začátku časový rozsah a maximální hodnotu na konci časový rozsah.
 
-**Operační kód** v konfiguraci konfiguruje logiku výpočtu pro výpočet výsledku rozdílu mezi maximální a minimální hodnotou. Tyto výsledky se pak sčítají až do kořenové (globální) úrovně a zobrazují se na řídicím panelu.
+**OpCode** v konfiguraci konfiguruje výpočetní logiku pro výpočet výsledku rozdílu maximální a minimální hodnoty. Tyto výsledky jsou pak akumulovány zdola nahoru na kořenovou (globální) úroveň a zobrazeny na řídicím panelu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Navržený další krok se naučíte, jak [přizpůsobit řešení propojené továrny](iot-accelerators-connected-factory-customize.md).
+Dalším krokem je naučit se [přizpůsobit řešení připojené továrny](iot-accelerators-connected-factory-customize.md).

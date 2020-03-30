@@ -1,6 +1,6 @@
 ---
-title: Spuštění Plánovač nasazení pro zotavení po havárii VMware pomocí Azure Site Recovery
-description: Tento článek popisuje, jak spustit Plánovač nasazení služby Azure Site Recovery pro zotavení po havárii VMware do Azure.
+title: Spuštění Plánovače nasazení pro zotavení po havárii společnosti VMware pomocí azure site recovery
+description: Tento článek popisuje, jak spustit Plánovač nasazení webu Azure pro zotavení po havárii v systému VMware do Azure.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: mayg
 ms.openlocfilehash: 044e5c5df8e0af67e4717b864de1e31fc2520408
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73953280"
 ---
-# <a name="run-the-deployment-planner-for-vmware-disaster-recovery"></a>Spuštění Plánovač nasazení pro zotavení po havárii VMware
+# <a name="run-the-deployment-planner-for-vmware-disaster-recovery"></a>Spuštění Plánovače nasazení pro zotavení po havárii společnosti VMware
 Tento článek představuje uživatelskou příručku k nástroji Azure Site Recovery Deployment Planner pro produkční nasazení VMware do Azure.
 
 
@@ -42,7 +42,7 @@ Nejprve potřebujete seznam virtuálních počítačů určených k profilaci. V
 
             Set-ExecutionPolicy –ExecutionPolicy AllSigned
 
-4. Pokud příkaz Connect-VIServer není rozpoznán jako název rutiny, může být volitelně nutné spustit následující příkaz.
+4. Volitelně může být nutné spustit následující příkaz, pokud Connect-VIServer není rozpoznán jako název rutiny.
 
             Add-PSSnapin VMware.VimAutomation.Core
 
@@ -80,8 +80,8 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Port|(Volitelné) Číslo portu pro připojení k hostiteli vCenter/ESXi. Výchozí port je 443.|
 |-Protocol| (Volitelné) Určuje protokol (http nebo https) pro připojení k serveru vCenter. Výchozím protokolem je https.|
 | -StorageAccountName | (Volitelné) Název účtu úložiště, který se použije k zjištění dosažitelné propustnost pro replikaci místních dat do Azure. Nástroj vypočítává propustnost tak, že do tohoto účtu úložiště nahrává testovací data. Účet úložiště musí být typu Univerzální v1 (GPv1). |
-| -StorageAccountKey | (Volitelné) Klíč účtu úložiště, který se použije pro přístup k účtu úložiště. Přejděte na Azure Portal > Účty úložiště > <*název účtu služby Storage*> > Nastavení > Přístupové klíče > Klíč1. |
-| -Environment | (Volitelné) Toto je vaše cílové prostředí účtu Azure Storage. Může to být jedna ze tří hodnot – AzureCloud, AzureUSGovernment a AzureChinaCloud. Výchozí hodnota je AzureCloud. Tento parametr použijte, pokud vaše cílová oblast Azure je buď Azure USA (státní správa), nebo Azure Čína 21Vianet. |
+| -StorageAccountKey | (Volitelné) Klíč účtu úložiště, který se použije pro přístup k účtu úložiště. Přejděte na web Azure Portal > Účty úložiště > <*název účtu služby Storage*> > Nastavení > Přístupové klíče > Klíč1. |
+| -Environment | (Volitelné) Toto je vaše cílové prostředí účtu Azure Storage. Může to být jedna ze tří hodnot – AzureCloud, AzureUSGovernment a AzureChinaCloud. Výchozí hodnota je AzureCloud. Parametr použijte v případě, že vaše cílová oblast Azure je Azure US Government nebo Azure China 21Vianet. |
 
 
 Doporučujeme profilovat virtuální počítače po dobu delší než 7 dní. Pokud se vzor četnosti změn v měsíci mění, doporučujeme profilaci v týdnu, kdy je četnost změn maximální. Nejlepší způsob, jak získat lepší doporučení, je provádět profilaci 31 dní. Během období profilace je ASRDeploymentPlanner.exe stále spuštěný. Nástroj na vstupu přijímá zadání času profilace ve dnech. Pokud chcete rychle nástroj otestovat nebo potvrdit koncept, můžete provádět profilaci po několik hodin nebo minut. Minimální povolený čas profilace je 30 minut.
@@ -90,12 +90,12 @@ Během profilace můžete volitelně předat název a klíč účtu úložiště
 
 Můžete spouštět více instancí nástroje pro různé sady virtuálních počítačů. Zkontrolujte, že se názvy virtuálních počítačů v sadách profilace neopakují. Pokud například profilujete deset virtuálních počítačů (VM1–VM10) a po několika dnech chcete profilovat dalších pět virtuálních počítačů (VM11–VM15), můžete nástroj spustit z jiné konzoly příkazového řádku pro druhou sadu virtuálních počítačů (VM11–VM15). Zajistěte, aby druhá sada virtuálních počítačů neobsahovala žádné názvy virtuálních počítačů z první instance profilace, nebo pro druhé spuštění použijte jiný výstupní adresář. Pokud se k profilování stejných virtuálních počítačů používají dvě instance nástroje a stejný výstupní adresář, vygenerovaná sestava bude nepřesná.
 
-Ve výchozím nastavení je tento nástroj nakonfigurovaný tak, aby profiloval a generoval sestavy až 1000 virtuálních počítačů. Tento limit můžete změnit nastavením hodnoty klíče MaxVMsSupported v souboru *ASRDeploymentPlanner.exe.config*.
+Ve výchozím nastavení je nástroj nakonfigurován tak, aby profiloval a generoval sestavu až 1000 virtuálních počítače. Tento limit můžete změnit nastavením hodnoty klíče MaxVMsSupported v souboru *ASRDeploymentPlanner.exe.config*.
 ```
 <!-- Maximum number of vms supported-->
 <add key="MaxVmsSupported" value="1000"/>
 ```
-Pokud chcete s výchozím nastavením profilovat řekněme 1 500 virtuálních počítačů, vytvořte dva soubory VMList.txt. Jeden s 1000 virtuálních počítačů a druhý se seznamem 500 virtuálních počítačů. Spusťte dvě instance Plánovač nasazení služby Azure Site Recovery, jednu s VMList1. txt a další s VMList2. txt. K uložení profilovaných dat virtuálních počítačů z obou seznamů VMList můžete použít stejnou adresářovou cestu.
+Pokud chcete s výchozím nastavením profilovat řekněme 1 500 virtuálních počítačů, vytvořte dva soubory VMList.txt. Jeden s 1000 virtuálních počítačů a druhý se seznamem 500 virtuálních počítačů. Spusťte dvě instance Plánovače nasazení obnovení webu Azure, jednu s souborem VMList1.txt a druhou s souborem VMList2.txt. K uložení profilovaných dat virtuálních počítačů z obou seznamů VMList můžete použít stejnou adresářovou cestu.
 
 Viděli jsme, že na základě konfigurace hardwaru, zejména velikosti RAM na serveru, ze kterého se spouští nástroj pro vygenerování sestavy, může operace selhat z důvodu nedostatku paměti. Pokud máte kvalitní hardware, můžete změnit MaxVMsSupported na libovolnou vyšší hodnotu.  
 
@@ -136,10 +136,10 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Direc
 
 
 ## <a name="generate-report"></a>Generování sestav
-Nástroj jako výstup sestavy generuje soubor aplikace Microsoft Excel s podporou maker (soubor XLSM), který shrnuje veškerá doporučení pro nasazení. Sestava je pojmenována `DeploymentPlannerReport_<unique numeric identifier>.xlsm` a umístěna do zadaného adresáře.
+Nástroj jako výstup sestavy generuje soubor aplikace Microsoft Excel s podporou maker (soubor XLSM), který shrnuje veškerá doporučení pro nasazení. Sestava je `DeploymentPlannerReport_<unique numeric identifier>.xlsm` pojmenována a umístěna do zadaného adresáře.
 
 >[!NOTE]
->Generování sestav vyžaduje počítač s Windows nebo Windows Server s Excelem 2013 nebo novějším. Symbol desetinné čárky na tomto počítači by měl být nakonfigurovaný jako ".", aby se vytvářely odhadované náklady. V případě, že máte nastavení "," jako desítkový symbol, přejděte na ovládací panel změnit formát data, čas nebo číslo a přejděte na "Další nastavení", abyste změnili symbol desetinné čárky na ".".
+>Generování sestavy vyžaduje počítač s Windows nebo Windows Server s Excelem 2013 nebo novějším. Desetinný symbol v tomto počítači by měl být nakonfigurován jako "." k vytvoření odhadů nákladů. V případě, že máte nastavení "", jako desetinný symbol, přejděte na "Změnit formáty data, času nebo čísla" v Ovládacích panelech a přejděte na "Další nastavení" pro změnu desetinného symbolu na ".".
 
 Po dokončení profilace můžete nástroj spustit v režimu generování sestav. Následující tabulka obsahuje seznam povinných a volitelných parametrů nástroje pro spuštění v režimu generování sestav.
 
@@ -159,16 +159,16 @@ Po dokončení profilace můžete nástroj spustit v režimu generování sestav
 |-Protocol|(Volitelné) Určuje protokol (http nebo https) pro připojení k serveru vCenter. Výchozím protokolem je https.|
 | -DesiredRPO | (Volitelné) Požadovaný cíl bodu obnovení v minutách. Výchozí hodnota je 15 minut.|
 | -Bandwidth | Šířka pásma v Mb/s. Tento parametr se použije k výpočtu cíle bodu obnovení, kterého lze pro zadanou šířku pásma dosáhnout. |
-| -StartDate | (Volitelné) Počáteční datum a čas ve formátu MM-DD-YYYY:HH:MM (ve 24hodinovém formátu). Parametr *StartDate* je nutné zadat společně s parametrem *EndDate*. Pokud zadáte parametr StartDate, sestava se vygeneruje pro profilovaná data shromážděná mezi StartDate a EndDate. |
-| -EndDate | (Volitelné) Koncové datum a čas ve formátu MM-DD-YYYY:HH:MM (ve 24hodinovém formátu). Parametr *EndDate* je nutné zadat společně s parametrem *StartDate*. Pokud zadáte parametr EndDate, sestava se vygeneruje pro profilovaná data shromážděná mezi StartDate a EndDate. |
+| -StartDate | (Volitelné) Počáteční datum a čas ve formátu MM-DD-YYYY:HH:MM (ve 24hodinovém formátu). *Datum StartDate* musí být zadáno společně s *datem enddate*. Pokud zadáte parametr StartDate, sestava se vygeneruje pro profilovaná data shromážděná mezi StartDate a EndDate. |
+| -EndDate | (Volitelné) Koncové datum a čas ve formátu MM-DD-YYYY:HH:MM (ve 24hodinovém formátu). *EndDate* musí být zadán spolu s *StartDate*. Pokud zadáte parametr EndDate, sestava se vygeneruje pro profilovaná data shromážděná mezi StartDate a EndDate. |
 | -GrowthFactor | (Volitelné) Faktor růstu vyjádřený v procentech. Výchozí hodnota je 30 procent. |
 | -UseManagedDisks | (Volitelné) UseManagedDisks – Yes/No (Ano/Ne). Výchozí hodnota je Yes (Ano). Počet virtuálních počítačů, které lze umístit do jednoho účtu úložiště, se vypočítá s ohledem na to, že převzetí služeb při selhání nebo testovací převzetí služeb při selhání virtuálních počítačů se provádí na spravovaný disk namísto nespravovaného disku. |
-|-SubscriptionId |(Volitelné) GUID předplatného. Všimněte si, že tento parametr je povinný, pokud potřebujete vygenerovat sestavu odhadu nákladů s nejnovější cenou na základě vašeho předplatného, nabídky, která je přidružená k vašemu předplatnému, a pro konkrétní cílovou oblast Azure v **zadané měně.** .|
+|-SubscriptionId |(Volitelné) GUID předplatného. Všimněte si, že tento parametr je vyžadován, když potřebujete vygenerovat sestavu odhadu nákladů s nejnovější cenou na základě vašeho předplatného, nabídky, která je přidružena k vašemu předplatnému a pro konkrétní cílovou oblast Azure v **zadané měně**.|
 |-TargetRegion|(Volitelné) Oblast Azure, která je cílem replikace. Vzhledem k tomu, že Azure má různé náklady pro jednotlivé oblasti, pro generování sestavy s konkrétní cílovou oblastí Azure použijte tento parametr.<br>Výchozí hodnota je WestUS2 nebo poslední použitá cílová oblast.<br>K dispozici je seznam [podporovaných cílových oblastí](site-recovery-vmware-deployment-planner-cost-estimation.md#supported-target-regions).|
 |-OfferId|(Volitelné) Nabídka přidružená k danému předplatnému. Výchozí hodnota je MS-AZR-0003P (průběžné platby).|
 |-Currency|(Volitelné) Měna, ve které se ve vygenerované sestavě zobrazí náklady. Výchozí hodnota je americký dolar ($) nebo poslední použitá měna.<br>K dispozici je seznam [podporovaných měn](site-recovery-vmware-deployment-planner-cost-estimation.md#supported-currencies).|
 
-Ve výchozím nastavení je tento nástroj nakonfigurovaný tak, aby profiloval a generoval sestavy až 1000 virtuálních počítačů. Tento limit můžete změnit nastavením hodnoty klíče MaxVMsSupported v souboru *ASRDeploymentPlanner.exe.config*.
+Ve výchozím nastavení je nástroj nakonfigurován tak, aby profiloval a generoval sestavu až 1000 virtuálních počítače. Tento limit můžete změnit nastavením hodnoty klíče MaxVMsSupported v souboru *ASRDeploymentPlanner.exe.config*.
 ```xml
 <!-- Maximum number of vms supported-->
 <add key="MaxVmsSupported" value="1000"/>
@@ -206,9 +206,9 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Serve
 ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -DesiredRPO 5
 ```
 
-#### <a name="example-7-generate-a-report-for-south-india-azure-region-with-indian-rupee-and-specific-offer-id"></a>Příklad 7: Generování sestavy pro oblast Azure Indie – jih s indickými rupiemi a konkrétním ID nabídky
+#### <a name="example-7-generate-a-report-for-south-india-azure-region-with-indian-rupee-and-specific-offer-id"></a>Příklad 7: Vygenerování sestavy pro oblast Azure Indie – jih s indickými rupiemi a konkrétním ID nabídky
 
-Všimněte si, že ID předplatného se vyžaduje k vygenerování sestavy nákladů v konkrétní měně.
+Všimněte si, že ID předplatného je nutné generovat sestavu nákladů v určité měně.
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -SubscriptionID 4d19f16b-3e00-4b89-a2ba-8645edf42fe5 -OfferID MS-AZR-0148P -TargetRegion southindia -Currency INR
 ```
@@ -240,12 +240,12 @@ Důrazně doporučujeme, abyste při plánování nasazení počítali s růstem
 
 Vygenerovaná sestava aplikace Microsoft Excel obsahuje následující informace:
 
-* [On-premises summary](site-recovery-vmware-deployment-planner-analyze-report.md#on-premises-summary) (Přehled místního prostředí)
+* [Místní souhrn](site-recovery-vmware-deployment-planner-analyze-report.md#on-premises-summary)
 * [Recommendations](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations) (Doporučení)
-* [VM&lt;-&gt;Storage Placement](site-recovery-vmware-deployment-planner-analyze-report.md#vm-storage-placement) (Umístění virtuálních počítačů ve službě Storage)
-* [Compatible VMs](site-recovery-vmware-deployment-planner-analyze-report.md#compatible-vms) (Kompatibilní virtuální počítače)
-* [Incompatible VMs](site-recovery-vmware-deployment-planner-analyze-report.md#incompatible-vms) (Nekompatibilní virtuální počítače)
-* [Cost Estimation](site-recovery-vmware-deployment-planner-cost-estimation.md) (Odhad nákladů)
+* [Umístění< úložiště virtuálních >](site-recovery-vmware-deployment-planner-analyze-report.md#vm-storage-placement)
+* [Kompatibilní virtuální počítače](site-recovery-vmware-deployment-planner-analyze-report.md#compatible-vms)
+* [Nekompatibilní virtuální počítače](site-recovery-vmware-deployment-planner-analyze-report.md#incompatible-vms)
+* [Odhad nákladů](site-recovery-vmware-deployment-planner-cost-estimation.md)
 
 ![Deployment Planner](media/site-recovery-vmware-deployment-planner-analyze-report/Recommendations-v2a.png)
 
@@ -265,7 +265,7 @@ Otevřete konzolu příkazového řádku a přejděte do složky nástroje pro p
 | -StorageAccountName | Název účtu úložiště, který se použije k zjištění využité šířky pásma pro replikaci místních dat do Azure. Nástroj zjistí využitou šířku pásma tak, že do tohoto účtu úložiště nahrává testovací data. Účet úložiště musí být typu Univerzální v1 (GPv1).|
 | -StorageAccountKey | Klíč účtu úložiště, který se použije pro přístup k účtu úložiště. Přejděte na web Azure Portal > Účty úložiště > <*název účtu služby Storage*> > Nastavení > Přístupové klíče > Klíč1 (nebo primární přístupový klíč v případě klasického účtu úložiště). |
 | -VMListFile | Soubor se seznamem virtuálních počítačů určených k profilaci pro výpočet využité šířky pásma. Cesta k souboru může být absolutní nebo relativní. Soubor musí na každém řádku obsahovat jeden název nebo IP adresu virtuálního počítače. Názvy virtuálních počítačů zadané v souboru se musí shodovat s názvy virtuálních počítačů na serveru vCenter nebo hostiteli vSphere ESXi.<br>Například soubor VMList.txt obsahuje následující virtuální počítače:<ul><li>VM_A</li><li>10.150.29.110</li><li>VM_B</li></ul>|
-| -Environment | (Volitelné) Toto je vaše cílové prostředí účtu Azure Storage. Může to být jedna ze tří hodnot – AzureCloud, AzureUSGovernment a AzureChinaCloud. Výchozí hodnota je AzureCloud. Tento parametr použijte, pokud vaše cílová oblast Azure je buď Azure USA (státní správa), nebo Azure Čína 21Vianet. |
+| -Environment | (Volitelné) Toto je vaše cílové prostředí účtu Azure Storage. Může to být jedna ze tří hodnot – AzureCloud, AzureUSGovernment a AzureChinaCloud. Výchozí hodnota je AzureCloud. Parametr použijte v případě, že vaše cílová oblast Azure je Azure US Government nebo Azure China 21Vianet. |
 
 Nástroj vytvoří v zadaném adresáři několik souborů „asrvhdfile<#>.vhd“ (kde # je počet souborů) o velikosti 64 MB. Nástroj tyto soubory nahraje do účtu úložiště a tak zjistí propustnost. Po změření propustnosti nástroj všechny tyto soubory odstraní z účtu úložiště i z místního serveru. Pokud se nástroj z nějakého důvodu během výpočtu propustnosti ukončí, z úložiště ani z místního serveru tyto soubory neodstraní. Budete je muset odstranit ručně.
 

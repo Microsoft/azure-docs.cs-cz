@@ -9,10 +9,10 @@ ms.date: 09/24/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 5a734963ced9daefda2b7b6f4a52fd9ef437eddc
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71269267"
 ---
 Brána virtuální sítě používá konkrétní podsíť nazývanou podsíť brány. Podsíť brány je součástí rozsahu IP adres virtuální sítě, který zadáváte při konfiguraci virtuální sítě. Obsahuje IP adresy, které používají prostředky a služby brány virtuální sítě. Podsíť musí mít název GatewaySubnet, aby služba Azure mohla nasadit prostředky brány. Pro nasazení prostředků brány není možné zadat jinou podsíť. Pokud nemáte podsíť GatewaySubnet, vytváření brány VPN selže.

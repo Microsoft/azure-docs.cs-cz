@@ -9,44 +9,44 @@ ms.date: 12/12/2019
 ms.author: rogara
 ms.custom: include file
 ms.openlocfilehash: 23550c83e76631e44d5036e0a038f01b61a79f1b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79208234"
 ---
 ## <a name="assign-access-permissions-to-an-identity"></a>Přiřazení přístupových oprávnění k identitě
 
-Aby bylo možné získat přístup k prostředkům Azure Files s ověřováním na základě identity, musí mít identita (uživatel, skupina nebo instanční objekt) potřebná oprávnění na úrovni sdílené složky. Tento postup je podobný určení oprávnění pro sdílenou složku systému Windows, kde zadáte typ přístupu, který má určitý uživatel ke sdílené složce. Návod v této části ukazuje, jak přiřadit oprávnění ke čtení, zápisu a odstranění sdílené složky k identitě.
+Chcete-li získat přístup k prostředkům Souborů Azure pomocí ověřování na základě identity, musí mít identita (uživatel, skupina nebo instanční objekt) potřebná oprávnění na úrovni sdílené složky. Tento proces je podobný určení oprávnění ke sdílení systému Windows, kde zadáte typ přístupu, který má konkrétní uživatel ke sdílené složce. Pokyny v této části ukazují, jak přiřadit oprávnění pro čtení, zápis nebo odstranění sdílené složky identitě.
 
-Zavedli jsme tři předdefinované role Azure pro udělení oprávnění na úrovni sdílení pro uživatele:
+Zavedli jsme tři předdefinované role Azure pro udělování oprávnění na úrovni sdílení uživatelům:
 
-- **Čtečka sdílené složky SMB souborů úložiště** umožňuje přístup pro čtení v Azure Storage sdílené složky přes protokol SMB.
-- **Přispěvatel sdílené složky SMB soubor úložiště** umožňuje přístup ke čtení, zápisu a odstraňování v Azure Storage sdílených složkách přes SMB.
-- **Soubor úložiště data sdílené složky SMB se zvýšenými oprávněními** umožňuje oprávnění ke čtení, zápisu, odstraňování a úpravám souborů NTFS v Azure Storage sdílených složkách přes SMB.
+- **Data úložiště Dat SMB Share Reader** umožňuje přístup pro čtení ve sdílených složek úložiště Azure přes SMB.
+- **Data úložiště SMB Share Contributor** umožňuje čtení, zápis a odstranění přístupu ve sdílených složek úložiště Azure přes SMB.
+- **Data úložiště dat SMB Share Elevated Contributor** umožňuje čtení, zápis, odstranění a úpravu oprávnění NTFS ve sdílených složkách úložiště Azure přes SMB.
 
 > [!IMPORTANT]
-> Úplná Správa sdílené složky, včetně možnosti převzít vlastnictví souboru, vyžaduje použití klíče účtu úložiště. Pro přihlašovací údaje Azure AD se nepodporuje administrativní řízení.
+> Úplná administrativní kontrola sdílené složky, včetně možnosti převzít vlastnictví souboru, vyžaduje použití klíče účtu úložiště. Správa není podporována s přihlašovacími údaji Azure AD.
 
-Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure můžete přiřadit předdefinované role k identitě uživatele Azure AD pro udělení oprávnění na úrovni sdílené složky.
+Pomocí portálu Azure, PowerShellu nebo rozhraní api Azure můžete přiřadit předdefinované role k identitě Azure AD uživatele pro udělování oprávnění na úrovni sdílení.
 
 > [!NOTE]
-> Nezapomeňte synchronizovat přihlašovací údaje služby AD ve službě Azure AD, pokud plánujete používat službu AD pro ověřování. Synchronizace hodnot hash hesel ze služby AD do služby Azure AD je volitelná. Identitě ve službě Azure AD, která je synchronizovaná se službou AD, se udělí oprávnění na úrovni sdílené složky.
+> Nezapomeňte synchronizovat přihlašovací údaje služby AD do služby Azure AD, pokud chcete službu AD používat k ověřování. Synchronizace hash hesla ze služby AD do služby Azure AD je volitelná. Oprávnění na úrovni sdílení bude uděleno identitě Azure AD, která se synchronizuje ze služby AD.
 
-#### <a name="azure-portal"></a>Azure Portal
-K přiřazení role RBAC k identitě Azure AD použijte [Azure Portal](https://portal.azure.com)použijte následující postup:
+#### <a name="azure-portal"></a>portál Azure
+Pokud chcete přiřadit roli RBAC k identitě Azure AD pomocí [portálu Azure](https://portal.azure.com), postupujte takto:
 
-1. V Azure Portal přejdete do sdílené složky nebo [vytvoříte sdílenou složku](../articles/storage/files/storage-how-to-create-file-share.md).
-2. Vyberte **Access Control (IAM)** .
-3. Vyberte **Přidat přiřazení role** .
-4. V okně **Přidat přiřazení role** vyberte příslušnou integrovanou roli (soubor úložiště, sdílenou složku SMB pro sdílení souborů úložiště, přispěvatel sdílené složky SMB) ze seznamu **rolí** . Nechte **přiřadit přístup k** výchozímu nastavení: **uživatel, skupina nebo instanční objekt služby Azure AD**. Vyberte cílovou identitu Azure AD podle jména nebo e-mailové adresy.
-5. Výběrem **Uložit** dokončete operaci přiřazení role.
+1. Na webu Azure Portal přejděte do sdílené složky nebo [vytvořte sdílenou složku](../articles/storage/files/storage-how-to-create-file-share.md).
+2. Vyberte **řízení přístupu (IAM).**
+3. Vyberte **Přidat přiřazení role.**
+4. V okně **Přidat přiřazení role** vyberte příslušnou předdefinovanou roli (čtečka dat souboru úložiště SMB, přispěvatel sdílené složky souboru úložiště SMB) ze seznamu **rolí.** Ponechat **Přiřadit přístup na** výchozí nastavení: **Uživatel, skupina nebo instanční objekt Služby Azure AD**. Vyberte cílovou identitu Azure AD podle názvu nebo e-mailové adresy.
+5. Chcete-li dokončit operaci přiřazení role, vyberte **uložit.**
 
 #### <a name="powershell"></a>PowerShell
 
-Následující ukázka prostředí PowerShell ukazuje, jak přiřadit roli RBAC k identitě Azure AD na základě přihlašovacího jména. Další informace o přiřazování rolí RBAC pomocí PowerShellu najdete v tématu [Správa přístupu pomocí RBAC a Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md).
+Následující ukázka prostředí PowerShell ukazuje, jak přiřadit roli RBAC k identitě Azure AD na základě přihlašovacího jména. Další informace o přiřazování rolí RBAC pomocí PowerShellu najdete v [tématu Správa přístupu pomocí RBAC a Azure PowerShellu](../articles/role-based-access-control/role-assignments-powershell.md).
 
-Před spuštěním následujícího ukázkového skriptu Nezapomeňte nahradit hodnoty zástupných symbolů, včetně závorek, vlastními hodnotami.
+Před spuštěním následujícíukázkový skript, nezapomeňte nahradit zástupné hodnoty, včetně závorek, s vlastními hodnotami.
 
 ```powershell
 #Get the name of the custom role
@@ -57,71 +57,71 @@ $scope = "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/provi
 New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $FileShareContributorRole.Name -Scope $scope
 ```
 
-#### <a name="cli"></a>CLI
+#### <a name="cli"></a>Rozhraní příkazového řádku
   
-Následující příkaz CLI 2,0 ukazuje, jak přiřadit roli RBAC k identitě Azure AD na základě přihlašovacího jména. Další informace o přiřazování rolí RBAC pomocí rozhraní příkazového řádku Azure najdete v tématu [Správa přístupu pomocí RBAC a Azure CLI](../articles/role-based-access-control/role-assignments-cli.md). 
+Následující příkaz CLI 2.0 ukazuje, jak přiřadit roli RBAC k identitě Azure AD na základě přihlašovacího jména. Další informace o přiřazování rolí RBAC pomocí rozhraní příkazového příkazu k řešení Azure najdete [v tématu Správa přístupu pomocí RBAC a Azure CLI](../articles/role-based-access-control/role-assignments-cli.md). 
 
-Před spuštěním následujícího ukázkového skriptu Nezapomeňte nahradit hodnoty zástupných symbolů, včetně závorek, vlastními hodnotami.
+Před spuštěním následujícíukázkový skript, nezapomeňte nahradit zástupné hodnoty, včetně závorek, s vlastními hodnotami.
 
 ```azurecli-interactive
 #Assign the built-in role to the target identity: Storage File Data SMB Share Reader, Storage File Data SMB Share Contributor, Storage File Data SMB Share Elevated Contributor
 az role assignment create --role "<role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshares/<share-name>"
 ```
 
-## <a name="configure-ntfs-permissions-over-smb"></a>Konfigurace oprávnění NTFS přes protokol SMB 
-Po přiřazení oprávnění na úrovni sdílení s RBAC musíte přiřadit správná oprávnění NTFS na úrovni kořenového adresáře, adresáře nebo souboru. Oprávnění na úrovni sdílené složky si můžete představit jako gatekeeper vysoké úrovně, které určuje, jestli uživatel může ke sdílené složce přistupovat. Vzhledem k tomu, že oprávnění NTFS fungují na podrobnější úrovni, aby bylo možné určit, které operace může uživatel provádět na úrovni adresáře nebo souboru.
+## <a name="configure-ntfs-permissions-over-smb"></a>Konfigurace oprávnění ntfs přes SMB 
+Po přiřazení oprávnění na úrovni sdílené složky pomocí nástroje RBAC je nutné přiřadit správná oprávnění systému souborů NTFS na úrovni kořenového adresáře, adresáře nebo souboru. Představte si oprávnění na úrovni sdílené složky jako správce brány na vysoké úrovni, který určuje, zda má uživatel přístup ke sdílené položce. Zatímco oprávnění systému souborů NTFS jednají na podrobnější úrovni, aby určila, jaké operace může uživatel provést na úrovni adresáře nebo souboru.
 
-Soubory Azure podporují úplnou sadu základních a rozšířených oprávnění systému souborů NTFS. Oprávnění NTFS můžete zobrazit a nakonfigurovat u adresářů a souborů ve sdílené složce Azure připojením sdílené složky a pak pomocí Průzkumníka souborů Windows nebo spuštěním příkazu Windows [Icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) nebo [set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl) . 
+Soubory Azure podporuje úplnou sadu základních a pokročilých oprávnění ntfs. Oprávnění systému souborů NTFS pro adresáře a soubory ve sdílené složce Azure můžete zobrazit a nakonfigurovat tak, že se sdílenou složku a potom pomocí Průzkumníka souborů Windows nebo spusťte příkaz Windows [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) nebo [Set-ACL.](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl) 
 
-Pokud chcete nakonfigurovat systém souborů NTFS pomocí uživatelských oprávnění, musíte sdílenou složku připojit pomocí klíče účtu úložiště na VIRTUÁLNÍm počítači připojeném k doméně. Podle pokynů v následující části připojte sdílenou složku Azure z příkazového řádku a patřičně nakonfigurujte oprávnění NTFS.
+Chcete-li nakonfigurovat systém souborů NTFS s oprávněními superuživatele, je nutné připojit sdílenou složku pomocí klíče účtu úložiště z virtuálního počítače připojovaného k doméně. Podle pokynů v další části připojte sdílenou složku Azure z příkazového řádku a odpovídajícím způsobem nakonfigurujte oprávnění ntfs.
 
 V kořenovém adresáři sdílené složky jsou podporovány následující sady oprávnění:
 
-- BUILTIN\Administrators: (OI) (CI) (F)
-- NT AUTHORITY\SYSTEM: (OI) (CI) (F)
-- BUILTIN\Users: (RX)
-- BUILTIN\Users: (OI) (CI) (v/v) (GR, GE)
-- Uživatelé NT Authority\authenticated Users: (OI) – CI (M)
-- NT AUTHORITY\SYSTEM: (F)
-- CREATOR OWNER: (OI) (CI) (V/V) (F)
+- BUILTIN\Správci:(OI)(CI)(F)
+- NT AUTHORITY\SYSTEM:(OI)(CI)(F)
+- BUILTIN\Uživatelé:(RX)
+- BUILTIN\Uživatelé:(OI)(CI)(IO)(GR,GE)
+- NT AUTHORITY\Authenticated Users:(OI)(CI)(M)
+- NT Autorita\SYSTÉM:(F)
+- TVŮRCE VLASTNÍK:(OI)(CI)(IO)(F)
 
-### <a name="configure-ntfs-permissions-with-icacls"></a>Konfigurace oprávnění systému souborů NTFS pomocí icacls
-K udělení úplných oprávnění všem adresářům a souborům ve sdílené složce, včetně kořenového adresáře, použijte následující příkaz Windows. Nezapomeňte nahradit hodnoty zástupných symbolů v příkladu vlastními hodnotami.
+### <a name="configure-ntfs-permissions-with-icacls"></a>Konfigurace oprávnění ntfs pomocí icacls
+Pomocí následujícího příkazu systému Windows udělte úplná oprávnění všem adresářům a souborům ve sdílené složce, včetně kořenového adresáře. Nezapomeňte nahradit zástupné hodnoty v příkladu vlastními hodnotami.
 
 ```
 icacls <mounted-drive-letter>: /grant <user-email>:(f)
 ```
 
-Další informace o tom, jak pomocí icacls nastavit oprávnění NTFS a v různých typech podporovaných oprávnění, najdete v tématu [Reference k příkazovému řádku pro icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls).
+Další informace o použití icacls k nastavení oprávnění NTFS a o různých typech podporovaných oprávnění naleznete [v odkazu na příkazový řádek pro icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls).
 
-### <a name="mount-a-file-share-from-the-command-prompt"></a>Připojení sdílení souborů z příkazového řádku
+### <a name="mount-a-file-share-from-the-command-prompt"></a>Připojení sdílené složky z příkazového řádku
 
-Sdílenou složku Azure připojíte pomocí příkazu Windows **net use** . Nezapomeňte nahradit zástupné hodnoty v následujícím příkladu vlastními hodnotami. Další informace o připojení sdílených složek najdete v tématu [použití sdílené složky Azure v systému Windows](../articles/storage/files/storage-how-to-use-files-windows.md).
+Pomocí příkazu **Windows net use** můžete připojit sdílenou složku Azure. Nezapomeňte nahradit zástupné hodnoty v následujícím příkladu vlastními hodnotami. Další informace o připojujících se sdílených složek najdete [v tématu Použití sdílené složky Azure se systémem Windows](../articles/storage/files/storage-how-to-use-files-windows.md).
 
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
 ```
-### <a name="configure-ntfs-permissions-with-windows-file-explorer"></a>Konfigurace oprávnění NTFS pomocí Průzkumníka souborů Windows
-Pomocí Průzkumníka souborů Windows udělte úplným oprávněním všem adresářům a souborům ve sdílené složce, včetně kořenového adresáře.
+### <a name="configure-ntfs-permissions-with-windows-file-explorer"></a>Konfigurace oprávnění ntfs pomocí Průzkumníka souborů systému Windows
+Pomocí Průzkumníka souborů systému Windows udělte úplná oprávnění všem adresářům a souborům ve sdílené složce, včetně kořenového adresáře.
 
-1. Otevřete Průzkumníka souborů Windows, klikněte pravým tlačítkem na soubor nebo adresář a vyberte **vlastnosti** .
-2. Klikněte na kartu **zabezpečení** .
-3. Klikněte na **Upravit..** . tlačítko pro změnu oprávnění
-4. Můžete změnit oprávnění stávajících uživatelů nebo kliknout na **Přidat...** a udělit jim oprávnění novým uživatelům.
-5. V okně příkazového řádku pro přidání nových uživatelů zadejte cílové uživatelské jméno, kterému chcete udělit oprávnění, do pole **Zadejte názvy objektů k výběru** a kliknutím na **zaškrtávací políčko kontrolovat jména** vyhledejte úplný název UPN cílového uživatele.
-7.  Klikněte na **OK** .
-8.  Na kartě zabezpečení vyberte všechna oprávnění, která chcete nově přidaným uživatelům udělit.
-9.  Klikněte na **použít** .
+1. Otevřete Průzkumníka souborů systému Windows a klikněte pravým tlačítkem myši na soubor/adresář a vyberte **vlastnosti**
+2. Klikněte na kartu **Zabezpečení.**
+3. Klikněte na **Edit..**. tlačítko pro změnu oprávnění
+4. Můžete změnit oprávnění stávajících uživatelů nebo kliknout na **přidat...** a udělit oprávnění novým uživatelům.
+5. V okně s výzvou pro přidání nových uživatelů zadejte cílové uživatelské jméno, ke kterým chcete udělit oprávnění, do pole **Zadejte názvy objektů, které chcete vybrat,** a kliknutím na **Zkontrolovat jména** vyhledejte úplný název hlavního názvu cílového uživatele.
+7.  Klikněte na **OK**
+8.  Na kartě Zabezpečení vyberte všechna oprávnění, která chcete nově přidanému uživateli udělit.
+9.  Klikněte na **Použít**
 
-## <a name="mount-a-file-share-from-a-domain-joined-vm"></a>Připojení sdílené složky z virtuálního počítače připojeného k doméně
+## <a name="mount-a-file-share-from-a-domain-joined-vm"></a>Připojení sdílené složky z virtuálního zařízení přilehlého k doméně
 
-Následující proces ověří, že se správně nastavila vaše sdílená složka a přístupová oprávnění a že máte přístup ke sdílené složce Azure z virtuálního počítače připojeného k doméně:
+Následující proces ověří, že vaše sdílená složka a přístupová oprávnění byla nastavena správně a že máte přístup ke sdílené složce Azure ze virtuálního počítače přilehlého k doméně:
 
-Přihlaste se k virtuálnímu počítači pomocí identity Azure AD, ke které jste udělili oprávnění, jak je znázorněno na následujícím obrázku. Pokud jste povolili ověřování AD pro soubory Azure, použijte přihlašovací údaje služby AD. Pro ověřování Azure služba AD DS Přihlaste se pomocí přihlašovacích údajů Azure AD.
+Přihlaste se k virtuálnímu počítači pomocí identity Azure AD, které jste udělili oprávnění, jak je znázorněno na následujícím obrázku. Pokud jste povolili ověřování služby AD pro soubory Azure, použijte pověření služby AD. Pro ověřování Azure AD DS se přihlaste pomocí přihlašovacích údajů Služby Azure AD.
 
-![Snímek obrazovky zobrazující přihlašovací obrazovku Azure AD pro ověřování uživatelů](media/storage-files-aad-permissions-and-mounting/azure-active-directory-authentication-dialog.png)
+![Snímek obrazovky s přihlašovací obrazovkou Azure AD pro ověřování uživatelů](media/storage-files-aad-permissions-and-mounting/azure-active-directory-authentication-dialog.png)
 
-Sdílenou složku Azure připojíte pomocí následujícího příkazu. Nezapomeňte nahradit hodnoty zástupných symbolů vlastními hodnotami. Vzhledem k tomu, že jste ověření, nemusíte zadávat klíč účtu úložiště, přihlašovací údaje služby AD ani přihlašovací údaje Azure AD. Ověřování pomocí služby AD nebo Azure služba AD DS podporuje jednotné přihlašování.
+Pomocí následujícího příkazu připojte sdílenou složku Azure. Nezapomeňte nahradit zástupné hodnoty vlastními hodnotami. Vzhledem k tomu, že jste byli ověřeni, nemusíte zadejte klíč účtu úložiště, přihlašovací údaje služby AD nebo přihlašovací údaje Azure AD. Jednotné přihlašování je podporováno pro ověřování pomocí služby AD nebo Azure AD DS.
 
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name>

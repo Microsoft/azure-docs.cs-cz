@@ -1,6 +1,6 @@
 ---
-title: Připojit aktivitu proměnné v Azure Data Factory
-description: Naučte se nastavit aktivitu připojit proměnnou pro přidání hodnoty do existující proměnné pole definované v kanálu Data Factory.
+title: Připojit proměnnou aktivitu v Azure Data Factory
+description: Zjistěte, jak nastavit aktivitu Připojit proměnnou pro přidání hodnoty k existující proměnné pole definované v kanálu Datové továrny.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,15 +12,15 @@ manager: jroth
 ms.reviewer: maghan
 ms.date: 10/09/2018
 ms.openlocfilehash: bcecd3411b6e6e751032f33862a671d8adbca046
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73679979"
 ---
-# <a name="append-variable-activity-in-azure-data-factory"></a>Připojit aktivitu proměnné v Azure Data Factory
+# <a name="append-variable-activity-in-azure-data-factory"></a>Připojit proměnnou aktivitu v Azure Data Factory
 
-Aktivitu připojit proměnnou použijte k přidání hodnoty do existující proměnné pole definované v kanálu Data Factory.
+Pomocí aktivity Připojit proměnnou můžete přidat hodnotu k existující proměnné pole definované v kanálu datové továrny.
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
@@ -29,10 +29,10 @@ Vlastnost | Popis | Požaduje se
 jméno | Název aktivity v kanálu | Ano
 description | Text popisující, co aktivita dělá | ne
 type | Typ aktivity je AppendVariable | ano
-hodnota | Hodnota řetězcového literálu nebo objektu výrazu, která se používá pro připojení k zadané proměnné | ano
-variableName | Název proměnné, která bude upravena aktivitou, musí být proměnná typu Array. | ano
+value | Hodnota objektu literálu řetězce nebo výrazu použitá k připojení k zadané proměnné | ano
+variableName | Název proměnné, která bude změněna podle aktivity, musí být proměnná typu Array | ano
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si o související aktivitě toku ovládacích prvků, kterou podporuje Data Factory: 
+Informace o související aktivitě toku řízení podporované aplikací Data Factory: 
 
 - [Aktivita nastavení proměnné](control-flow-set-variable-activity.md)

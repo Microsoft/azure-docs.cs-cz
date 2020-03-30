@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: zřizování uživatelů pro LinkedIn úrovně LinkedIn – Azure AD'
-description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro zvýšení oprávnění LinkedInu.
+title: 'Kurz: Zřizování uživatelů pro LinkedIn Elevate – Azure AD'
+description: Zjistěte, jak nakonfigurovat službu Azure Active Directory tak, aby automaticky zřašovala a zřašovala uživatelské účty na LinkedIn Elevate.
 services: active-directory
 documentationcenter: ''
 author: ArvindHarinder1
@@ -16,111 +16,111 @@ ms.date: 03/28/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa0a26eaeac431ed2c78c5bd938bbbe7dff14e0e
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77057409"
 ---
-# <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>Kurz: Konfigurace zvýšení oprávnění LinkedInu pro Automatické zřizování uživatelů
+# <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>Kurz: Konfigurace linkedinu Elevate pro automatické zřizování uživatelů
 
-Cílem tohoto kurzu je Ukázat postup, který je potřeba provést v povýšení a Azure AD a automaticky zřídit a zrušit zřízení uživatelských účtů z Azure AD až po zvýšení úrovně LinkedInu.
+Cílem tohoto kurzu je ukázat kroky, které je potřeba provést v LinkedIn Elevate a Azure AD automaticky zřídit a de-zřizování uživatelských účtů z Azure AD na LinkedIn Elevate.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
+Scénář popsaný v tomto kurzu předpokládá, že již máte následující položky:
 
 * Tenanta Azure Active Directory.
-* Tenant zvýšení oprávnění LinkedInu
-* Přístup účtu správce ve LinkedInu se zvyšuje s přístupem k centru účtů LinkedIn.
+* Tenant LinkedIn Elevate
+* Účet správce na LinkedIn Elevate s přístupem k Centru účtů LinkedIn
 
 > [!NOTE]
-> Azure Active Directory se integruje se zvýšením úrovně LinkedInu pomocí protokolu [SCIM](http://www.simplecloud.info/) .
+> Azure Active Directory se integruje s LinkedIn Elevate pomocí protokolu [SCIM.](http://www.simplecloud.info/)
 
-## <a name="assigning-users-to-linkedin-elevate"></a>Přiřazení uživatelů ke zvýšení oprávnění LinkedInu
+## <a name="assigning-users-to-linkedin-elevate"></a>Přiřazení uživatelů ke zvýšení oprávnění LinkedIn
 
-Azure Active Directory používá koncept nazvaný "přiřazení" k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelských účtů budou synchronizováni pouze uživatelé a skupiny, které byly přiřazeny do aplikace ve službě Azure AD.
+Azure Active Directory používá koncept s názvem "přiřazení" k určení, kteří uživatelé by měli získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelských účtů budou synchronizováni pouze uživatelé a skupiny, které byly "přiřazeny" k aplikaci ve službě Azure AD.
 
-Než nakonfigurujete a povolíte službu zřizování, budete se muset rozhodnout, co uživatelé a skupiny ve službě Azure AD reprezentují uživatelé, kteří potřebují přístup ke zvýšení oprávnění LinkedInu. Po rozhodnutí můžete těmto uživatelům přiřadit zvýšení oprávnění LinkedInu podle pokynů uvedených tady:
+Před konfigurací a povolením zřizovací služby se budete muset rozhodnout, kteří uživatelé nebo skupiny ve službě Azure AD představují uživatele, kteří potřebují přístup ke službě LinkedIn Elevate. Jakmile se rozhodnete, můžete přiřadit tyto uživatele k LinkedIn Elevate podle pokynů zde:
 
 [Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-linkedin-elevate"></a>Důležité tipy pro přiřazení uživatelů ke zvýšení oprávnění LinkedInu
+### <a name="important-tips-for-assigning-users-to-linkedin-elevate"></a>Důležité tipy pro přiřazení uživatelů na LinkedIn Elevate
 
-* Doporučujeme, aby se k otestování konfigurace zřizování přiřadil jeden uživatel Azure AD ke zvýšení oprávnění LinkedInu. Další uživatele a skupiny můžete přiřadit později.
+* Doporučuje se, aby jeden uživatel Azure AD přiřazena LinkedIn Elevate k testování konfigurace zřizování. Další uživatelé a/nebo skupiny mohou být přiřazeny později.
 
-* Když přiřadíte uživatele k zvýšení oprávnění LinkedInu, musíte v dialogovém okně přiřazení vybrat roli **uživatele** . Role výchozí přístup nefunguje pro zřizování.
+* Při přiřazování uživatele ke zvýšení oprávnění LinkedIn je nutné vybrat roli **uživatele** v dialogovém okně přiřazení. Role "Výchozí přístup" nefunguje pro zřizování.
 
-## <a name="configuring-user-provisioning-to-linkedin-elevate"></a>Konfigurace zřizování uživatelů na zvýšení úrovně LinkedInu
+## <a name="configuring-user-provisioning-to-linkedin-elevate"></a>Konfigurace zřizování uživatelů na LinkedIn Elevate
 
-V této části se seznámíte s připojením k rozhraní API pro zřizování SCIM uživatelského účtu v Azure AD a konfigurací zřizovací služby k vytváření, aktualizaci a zablokování přiřazených uživatelských účtů na základě přiřazení uživatelů a skupin na LinkedInu. ve službě Azure AD.
+Tato část vás provede připojením azure ad k rozhraní API pro zřizování uživatelských účtů SCIM společnosti LinkedIn Elevate a konfigurací zřizovací služby pro vytváření, aktualizaci a zakázání přiřazených uživatelských účtů na LinkedIn Elevate na základě přiřazení uživatelů a skupin na základě přiřazení uživatelů a skupin ve službě Azure AD.
 
-**Tip:** Můžete se také rozhodnout, že povolíte jednotné přihlašování založené na SAML pro zvýšení oprávnění LinkedInu, a to podle pokynů uvedených v [Azure Portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování, i když tyto dvě funkce doplňují sebe.
+**Tip:** Můžete se také rozhodnout, že chcete povolit jednotné přihlašování na základě SAML pro LinkedIn Elevate podle pokynů uvedených na [webu Azure Portal](https://portal.azure.com). Jednotné přihlašování lze nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce se vzájemně doplňují.
 
-### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-elevate-in-azure-ad"></a>Konfigurace automatického zřizování uživatelských účtů ve službě Azure AD zvýšení úrovně oprávnění LinkedIn:
+### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-elevate-in-azure-ad"></a>Konfigurace automatického zřizování uživatelských účtů na LinkedIn Elevate ve službě Azure AD:
 
-Prvním krokem je načtení přístupového tokenu LinkedIn. Pokud jste podnikovým správcem, můžete přístupový token zřídit sami. V centru účtů, přejít na **nastavení &gt; globální nastavení** a otevřete panel **Nastavení SCIM** .
+Prvním krokem je načtení přístupového tokenu LinkedIn. Pokud jste správce rozlehlé sítě, můžete zřídit přístupový token sami. V centru účtů přejděte do **globálního nastavení nastavení &gt; ** a otevřete panel Nastavení **SCIM.**
 
 > [!NOTE]
-> Pokud k centru účtů přistupujete přímo přes odkaz, můžete k němu přistupovat pomocí následujících kroků.
+> Pokud přistupujete k centru účtů přímo, nikoli prostřednictvím odkazu, můžete se k němu dostat pomocí následujících kroků.
 
-1. Přihlaste se do centra účtů.
+1. Přihlaste se do Centra účtů.
 
-2. Vyberte **správce &gt; nastavení správce** .
+2. Vyberte **Nastavení &gt; správce** .
 
-3. Klikněte na **rozšířené integrace** na levém bočním panelu. Jste přesměrováni na centrum účtů.
+3. Na levém postranním panelu klikněte na **Rozšířené integrace.** Budete přesměrováni do centra účtů.
 
-4. Klikněte na **+ Přidat novou konfiguraci SCIM** a postupujte podle pokynů vyplněním jednotlivých polí.
-
-    > [!NOTE]
-    > Pokud není povoleno automatické přiřazování licencí, znamená to, že budou synchronizována pouze uživatelská data.
-
-    ![Zřizování zvýšení úrovně LinkedInu](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate1.PNG)
+4. Klikněte na **+ Přidat novou konfiguraci SCIM** a postupujte podle postupu vyplněním každého pole.
 
     > [!NOTE]
-    > Pokud je povoleno přiřazení autolicense, je nutné poznamenat instanci aplikace a typ licence. Licence se přiřazují k prvnímu, prvnímu a zajišťují, aby se všechny licence vycházely.
+    > Pokud není povoleno automatické přiřazování licencí, znamená to, že jsou synchronizována pouze uživatelská data.
 
-    ![Zřizování zvýšení úrovně LinkedInu](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate2.PNG)
+    ![LinkedIn zvýšit zřizování](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate1.PNG)
 
-5. Klikněte na **vygenerovat token**. V poli **přístupový token** byste měli vidět zobrazení přístupového tokenu.
+    > [!NOTE]
+    > Pokud je povoleno přiřazení automatických licencí, je třeba poznamenat instanci aplikace a typ licence. Licence jsou přiřazovány podle toho, kdo dřív přijde, je dřív na řadě, dokud nebudou všechny licence odebrány.
 
-6. Před zavřením stránky uložte váš přístupový token do schránky nebo počítače.
+    ![LinkedIn zvýšit zřizování](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate2.PNG)
 
-7. Potom se přihlaste k [Azure Portal](https://portal.azure.com)a přejděte do části **Azure Active Directory > podnikové aplikace > všechny aplikace** .
+5. Klepněte na **tlačítko Generovat token**. V poli **tokenu přístupu** by se měl zobrazit váš přístupový token.
 
-8. Pokud jste již nakonfigurovali zvýšení oprávnění LinkedInu pro jednotné přihlašování, vyhledejte vaši instanci LinkedInu pomocí vyhledávacího pole. V opačném případě vyberte možnost **Přidat** a vyhledat **zvýšení oprávnění LinkedInu** v galerii aplikací. Ve výsledcích hledání vyberte možnost LinkedIn úrovně LinkedIn a přidejte ji do seznamu aplikací.
+6. Před opuštěním stránky uložte přístupový token do schránky nebo počítače.
 
-9. Vyberte svou instanci zvýšení oprávnění LinkedInu a pak vyberte kartu **zřizování** .
+7. Dále se přihlaste k [portálu Azure](https://portal.azure.com)a přejděte do části **Azure Active Directory > Enterprise Apps > Všechny aplikace.**
 
-10. Nastavte **režim zřizování** na **automaticky**.
+8. Pokud jste již nakonfigurovali LinkedIn Elevate pro jednotné přihlašování, vyhledejte svou instanci LinkedIn Elevate pomocí vyhledávacího pole. V opačném případě vgalerii aplikací vyberte **Přidat** a vyhledejte **LinkedIn Elevate.** Ve výsledcích hledání vyberte LinkedIn Elevate a přidejte je do seznamu aplikací.
 
-    ![Zřizování zvýšení úrovně LinkedInu](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate3.PNG)
+9. Vyberte svou instanci LinkedIn Elevate a pak vyberte kartu **Zřizování.**
 
-11. Do následujících polí zadejte v části **přihlašovací údaje správce** :
+10. Nastavte **režim zřizování** na **automatické**.
 
-    * Do pole **Adresa URL tenanta** zadejte `https://api.linkedin.com`.
+    ![LinkedIn zvýšit zřizování](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate3.PNG)
 
-    * V poli **token tajného klíče** zadejte přístupový token, který jste vygenerovali v kroku 1, a klikněte na **Test připojení** .
+11. Vyplňte následující pole v části **Přihlašovací údaje správce** :
 
-    * Na straně upperright na portálu by se mělo zobrazit oznámení o úspěchu.
+    * Do pole Adresa URL `https://api.linkedin.com` **klienta** zadejte .
 
-12. Zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování v poli **e-mail s oznámením** , a zaškrtněte políčko níže.
+    * Do pole **Tajný token** zadejte přístupový token, který jste vygenerovali v kroku 1, a klepněte na tlačítko **Testovat připojení** .
+
+    * Oznámení o úspěchu byste měli vidět na pravé horní straně portálu.
+
+12. Do pole **E-mail** s oznámením zadejte e-mailovou adresu osoby nebo skupiny, která by měla dostávat oznámení o chybách zřizování, a zaškrtněte políčko níže.
 
 13. Klikněte na **Uložit**.
 
-14. V části **mapování atributů** zkontrolujte atributy uživatelů a skupin, které se budou synchronizovat z Azure AD až po zvýšení úrovně LinkedInu. Všimněte si, že atributy vybrané jako **odpovídající** vlastnosti budou použity ke spárování uživatelských účtů a skupin ve službě LinkedIn se zvýšením oprávnění pro operace aktualizace. Vyberte tlačítko Uložit potvrďte změny.
+14. V části **Mapování atributů** zkontrolujte atributy uživatele a skupiny, které budou synchronizovány z Azure AD na LinkedIn Elevate. Všimněte si, že atributy vybrané jako **odpovídající** vlastnosti budou použity tak, aby odpovídaly uživatelským účtům a skupinám v LinkedIn Elevate pro operace aktualizace. Chcete-li potvrdit všechny změny, vyberte tlačítko Uložit.
 
-    ![Zřizování zvýšení úrovně LinkedInu](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate4.PNG)
+    ![LinkedIn zvýšit zřizování](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate4.PNG)
 
-15. Pokud chcete povolit službu zřizování Azure AD pro zvýšení oprávnění LinkedInu, změňte **stav zřizování** na **zapnuto** v oddílu **Nastavení** .
+15. Chcete-li povolit službu zřizování Azure AD pro LinkedIn Elevate, změňte **stav zřizování** **na Zapnuto** v části **Nastavení**
 
 16. Klikněte na **Uložit**.
 
-Tím se spustí počáteční synchronizace všech uživatelů nebo skupin přiřazených ke zvýšení oprávnění LinkedInu v části Uživatelé a skupiny. Všimněte si, že počáteční synchronizace bude trvat déle než další synchronizace, ke kterým dojde přibližně každých 40 minut, pokud je služba spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na zřizování protokolů aktivit, které popisují všechny akce prováděné službou zřizování v aplikaci pro zvýšení oprávnění LinkedInu.
+Tím se spustí počáteční synchronizace všech uživatelů a/nebo skupin přiřazených linkedinu Elevate v části Uživatelé a skupiny. Všimněte si, že počáteční synchronizace bude trvat déle než následné synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba spuštěna. Část **Podrobnosti synchronizace** můžete použít ke sledování průběhu a sledování odkazů na protokoly zřizování aktivit, které popisují všechny akce prováděné službou zřizování v aplikaci LinkedIn Elevate.
 
-Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, naleznete [v tématu Vytváření sestav na automatické zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

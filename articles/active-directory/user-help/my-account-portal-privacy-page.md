@@ -1,6 +1,6 @@
 ---
-title: Zobrazení informací týkajících se ochrany osobních údajů na portálu Můj účet – Azure AD
-description: Přečtěte si, jak vaše organizace používá informace týkající se ochrany osobních údajů na stránce soukromí na portálu Můj účet.
+title: Zobrazení informací o ochraně osobních údajů z portálu Můj účet – Azure AD
+description: Informace o tom, jak vaše organizace používá vaše informace týkající se ochrany osobních údajů, najdete na stránce Ochrana osobních údajů na portálu Můj účet.
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,40 +12,40 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
 ms.openlocfilehash: 94187cc7c0c3500a86d47a5f244457ee020581a3
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77062434"
 ---
-# <a name="view-how-your-organization-uses-your-privacy-related-data"></a>Podívejte se, jak vaše organizace používá data týkající se ochrany osobních údajů.
+# <a name="view-how-your-organization-uses-your-privacy-related-data"></a>Zobrazení způsobu, jakým vaše organizace používá vaše data týkající se ochrany osobních údajů
 
-To, jak vaše organizace používá vaše data, můžete zobrazit na stránce **soukromí** na portálu **můj účet** .
+Jak vaše organizace používá vaše data, můžete zobrazit na stránce **Ochrana osobních údajů** na portálu **Můj účet.**
 
 ## <a name="view-your-privacy-related-info"></a>Zobrazení informací souvisejících s ochranou osobních údajů
 
-1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a pak přejít na stránku https://myprofile.microsoft.com/.
+1. Přihlaste se ke svému pracovnímu https://myprofile.microsoft.com/ nebo školnímu účtu a přejděte na stránku.
 
-2. V levém navigačním podokně vyberte **Ochrana osobních** údajů nebo vyberte odkaz **zkontrolovat soukromí** z bloku **osobních údajů** .
+2. V levém navigačním podokně vyberte **Možnost Soukromí** nebo vyberte odkaz **Zkontrolovat ochranu osobních údajů** z bloku Ochrana **osobních údajů.**
 
-    ![Stránka můj účet zobrazující zvýrazněné odkazy na ochranu osobních údajů](media/my-account-portal/my-account-portal-privacy.png)
+    ![Stránka Můj účet se zvýrazněnými odkazy na ochranu osobních údajů](media/my-account-portal/my-account-portal-privacy.png)
 
-3. Projděte si informace, včetně:
+3. Zkontrolujte informace, včetně:
 
-    - **Orgány.** Seznam online služby, ke kterým jste se připojili pomocí svého pracovního nebo školního účtu.
+    - **Služby.** Seznam online služeb, ke které jste připojeni pomocí pracovního nebo školního účtu.
 
-    - **Podmínky použití**. Podmínek použití vaší organizace.
+    - **Podmínky použití**. Podmínky použití vaší organizace.
 
 ## <a name="next-steps"></a>Další kroky
 
 Po zobrazení, jak vaše organizace používá vaše data, můžete:
 
-- Umožňuje zobrazit nebo spravovat vaše [bezpečnostní údaje](user-help-security-info-overview.md).
+- Zobrazení nebo správa [bezpečnostních údajů](user-help-security-info-overview.md).
 
-- Umožňuje zobrazit nebo spravovat připojená [zařízení](my-account-portal-devices-page.md).
+- Zobrazení nebo správa [připojených zařízení](my-account-portal-devices-page.md).
 
-- Umožňuje zobrazit nebo spravovat vaše [organizace](my-account-portal-organizations-page.md).
+- Zobrazení nebo správa [organizací](my-account-portal-organizations-page.md).
 
-- Zobrazit [přihlašovací aktivitu](my-account-portal-sign-ins-page.md)
+- Zobrazení [přihlašovací aktivity](my-account-portal-sign-ins-page.md).
 
-- Na [portálu Office a na stránce ochrana osobních údajů & zabezpečení](https://portal.office.com/account/#security)můžete zobrazit také informace o vašich systém Microsoft Officech kontaktech souvisejících s vaším.
+- Předvolby kontaktů související ch microsoft office a informace o ochraně osobních údajů můžete také zobrazit na [portálu Office, stránce Zabezpečení & ochrany osobních údajů](https://portal.office.com/account/#security).

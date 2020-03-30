@@ -1,6 +1,6 @@
 ---
-title: Správa prostředků Azure Cosmos DB pomocí Průzkumník služby Azure Storage
-description: Naučte se, jak se připojit k Azure Cosmos DB a spravovat jeho prostředky pomocí Průzkumník služby Azure Storage.
+title: Správa prostředků Azure Cosmos DB pomocí Průzkumníka úložiště Azure
+description: Zjistěte, jak se připojit k Azure Cosmos DB a spravovat jeho prostředky pomocí Azure Storage Explorer.
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,20 +8,20 @@ ms.date: 10/23/2019
 ms.author: dech
 ms.custom: seodec18
 ms.openlocfilehash: fd044d4f32aefc00e1b04f7060e0fc0dc74fd6c7
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72882352"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Práce s daty s využitím Průzkumníka služby Azure Storage
 
-Použití služby Azure Cosmos DB v Průzkumníku služby Azure Storage umožňuje uživatelům spravovat entity Azure Cosmos DB, manipulovat s daty, aktualizovat uložené procedury a triggery, stejně jako další entity Azure, jako jsou objekty blob a fronty služby Storage. Nyní můžete pomocí jednoho nástroje spravovat různé entity Azure na jednom místě. V tuto chvíli Průzkumník služby Azure Storage podporuje účty Cosmos nakonfigurované pro rozhraní API SQL, MongoDB, Graph a Table.
+Použití služby Azure Cosmos DB v Průzkumníku služby Azure Storage umožňuje uživatelům spravovat entity Azure Cosmos DB, manipulovat s daty, aktualizovat uložené procedury a triggery, stejně jako další entity Azure, jako jsou objekty blob a fronty služby Storage. Nyní můžete pomocí jednoho nástroje spravovat různé entity Azure na jednom místě. V tuto chvíli Azure Storage Explorer podporuje účty Cosmos nakonfigurované pro SQL, MongoDB, Graph a table API.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Účet Cosmos s rozhraním SQL API nebo rozhraním API Azure Cosmos DB pro MongoDB. Pokud účet nemáte, můžete si ho vytvořit na webu Azure Portal, jak je popsáno v tématu [Azure Cosmos DB: Vytvoření webové aplikace SQL API s využitím .NET a webu Azure Portal](create-sql-api-dotnet.md).
+Účet Cosmos s rozhraním SQL API nebo rozhraní API Azure Cosmos DB pro MongoDB. Pokud účet nemáte, můžete si ho vytvořit na webu Azure Portal, jak je popsáno v tématu [Azure Cosmos DB: Vytvoření webové aplikace SQL API s využitím .NET a webu Azure Portal](create-sql-api-dotnet.md).
 
 ## <a name="installation"></a>Instalace
 
@@ -29,7 +29,7 @@ Nainstalujte nejnovější části Průzkumníka služby Azure Storage: [Průzku
 
 ## <a name="connect-to-an-azure-subscription"></a>Připojení k předplatnému Azure
 
-1. Po instalaci **Průzkumníka služby Azure Storage** klikněte na ikonu modulu **plug-in** na levé straně, jak je znázorněno na následujícím obrázku:
+1. Po instalaci **Průzkumníka úložiště Azure**klikněte na ikonu **modulu plug-in** vlevo, jak je znázorněno na následujícím obrázku:
        
    ![Ikona modulu plug-in](./media/storage-explorer/plug-in-icon.png)
  
@@ -39,7 +39,7 @@ Nainstalujte nejnovější části Průzkumníka služby Azure Storage: [Průzku
 
 2. V dialogovém okně **Přihlášení k Azure** vyberte **Přihlásit** a zadejte své přihlašovací údaje Azure.
 
-    ![Přihlásit se](./media/storage-explorer/sign-in.png)
+    ![Přihlášení](./media/storage-explorer/sign-in.png)
 
 3. Vyberte ze seznamu své předplatné a klikněte na **Použít**.
 
@@ -59,7 +59,7 @@ Alternativním způsobem, jak se připojit ke službě Azure Cosmos DB, je použ
 
     ![Připojení ke službě Cosmos DB pomocí připojovacího řetězce](./media/storage-explorer/connect-to-db-by-connection-string.png)
 
-2. Aktuálně se podporují pouze rozhraní SQL a Table API. Zvolte rozhraní API, vložte **Připojovací řetězec**, zadejte **Popisek účtu**, klikněte na **Další** a zkontrolujte souhrn a pak se kliknutím na **Připojit** připojte k účtu služby Azure Cosmos DB. Informace o načtení primárního připojovacího řetězce najdete v tématu [získání připojovacího řetězce](manage-with-powershell.md#list-keys).
+2. Aktuálně se podporují pouze rozhraní SQL a Table API. Zvolte rozhraní API, vložte **Připojovací řetězec**, zadejte **Popisek účtu**, klikněte na **Další** a zkontrolujte souhrn a pak se kliknutím na **Připojit** připojte k účtu služby Azure Cosmos DB. Informace o načtení primárního připojovacího řetězce naleznete [v tématu Získání připojovacího řetězce](manage-with-powershell.md#list-keys).
 
     ![Připojovací řetězec](./media/storage-explorer/connection-string.png)
 
@@ -73,7 +73,7 @@ Pomocí následujících kroků se připojte ke službě Azure Cosmos DB pomocí
 
     ![Připojení ke službě Cosmos DB pomocí emulátoru](./media/storage-explorer/emulator-entry.png)
 
-3. Aktuálně se podporuje pouze rozhraní SQL API. Vložte **Připojovací řetězec**, zadejte **Popisek účtu**, klikněte na **Další** a zkontrolujte souhrn a pak se kliknutím na **Připojit** připojte k účtu služby Azure Cosmos DB. Informace o načtení primárního připojovacího řetězce najdete v tématu [získání připojovacího řetězce](manage-with-powershell.md#list-keys).
+3. Aktuálně se podporuje pouze rozhraní SQL API. Vložte **Připojovací řetězec**, zadejte **Popisek účtu**, klikněte na **Další** a zkontrolujte souhrn a pak se kliknutím na **Připojit** připojte k účtu služby Azure Cosmos DB. Informace o načtení primárního připojovacího řetězce naleznete [v tématu Získání připojovacího řetězce](manage-with-powershell.md#list-keys).
 
     ![Dialogové okno Připojení ke službě Cosmos DB pomocí emulátoru](./media/storage-explorer/emulator-dialog.png)
 
@@ -116,7 +116,7 @@ Po kliknutí pravým tlačítkem na předplatné v podokně Průzkumníka může
     ![Odstranění databáze 2](./media/storage-explorer/delete-database2.png) 
 
 #### <a name="create-a-collection"></a>Vytvoření kolekce
-1. Klikněte pravým tlačítkem na databázi, zvolte možnost **vytvořit kolekci**a zadejte následující informace, jako je **ID kolekce**, **kapacita úložiště**atd. Dokončete kliknutím na **OK** . 
+1. Klikněte pravým tlačítkem myši na databázi, zvolte **Vytvořit kolekci**a zadejte následující informace, jako je **ID kolekce**, **Kapacita úložiště**atd. Chcete-li to dokončit, klepněte na tlačítko **OK.** 
 
     ![Vytvoření kolekce 1](./media/storage-explorer/create-collection.png)
 
@@ -140,7 +140,7 @@ Po kliknutí pravým tlačítkem na předplatné v podokně Průzkumníka může
 #### <a name="create-and-modify-documents"></a>Vytváření a úpravy dokumentů
 - Pokud chcete vytvořit nový dokument, otevřete v levém okně **Dokumenty**, klikněte na **Nový dokument**, v pravém podokně upravte obsah a pak klikněte na **Uložit**. Můžete také aktualizovat existující dokument a pak kliknout na **Uložit**. Změny můžete zahodit kliknutím na **Zahodit**.
 
-    ![Databáze dokumentů](./media/storage-explorer/document.png)
+    ![Dokument](./media/storage-explorer/document.png)
 
 #### <a name="delete-a-document"></a>Odstranění dokumentu
 - Kliknutím na tlačítko **Odstranit** odstraňte vybraný dokument.
@@ -158,7 +158,7 @@ Po kliknutí pravým tlačítkem na předplatné v podokně Průzkumníka může
 1. Pokud chcete vytvořit nový vrchol, v levém okně otevřete **Graph**, klikněte na **Nový vrchol**, upravte obsah a pak klikněte na **OK**.    
 2. Pokud chcete upravit existující vrchol, klikněte na ikonu pera v pravém podokně.   
 
-    ![Graf](./media/storage-explorer/vertex.png)
+    ![Graph](./media/storage-explorer/vertex.png)
 
 #### <a name="delete-a-graph"></a>Odstranění grafu
 - Pokud chcete odstranit vrchol, klikněte na ikonu koše vedle názvu vrcholu.
@@ -174,7 +174,7 @@ Po kliknutí pravým tlačítkem na předplatné v podokně Průzkumníka může
 1. Pokud chcete vytvořit novou tabulku, v levém okně otevřete **Entity**, klikněte na **Přidat**, upravte obsah dialogového okna **Přidat entitu**, přidejte vlastnost kliknutím na tlačítko **Přidat vlastnost** a pak klikněte na **Vložit**.
 2. Pokud chcete upravit tabulku, klikněte na **Upravit**, upravte obsah a pak klikněte na **Aktualizovat**.
 
-    ![Tabulka](./media/storage-explorer/table.png)
+    ![Table](./media/storage-explorer/table.png)
 
 #### <a name="import-and-export-table"></a>Import a export tabulky
 1. Pokud chcete importovat tabulku, klikněte na tlačítko **Importovat** a zvolte existující tabulku.
@@ -213,7 +213,7 @@ Než budete pokračovat, zkuste svou aplikaci restartovat a podívejte se, jestl
 
 Tato chyba se může zobrazit z několika důvodů, z nichž dva nejčastější jsou tyto:
 
-+ Jste za *transparentní proxy*, což znamená, že někdo (například vaše IT oddělení) zachycuje provoz https, dešifruje ho a pak ho šifruje pomocí certifikátu podepsaného svým držitelem.
++ Jste za *transparentním proxy serverem*, což znamená, že někdo (například vaše IT oddělení) zachycuje provoz HTTPS, dešifruje ho a pak ho šifruje pomocí certifikátu podepsaného svým držitelem.
 
 + Používáte software, jako je například antivirový software, který do přijímaných zpráv protokolu HTTPS vkládá certifikát SSL podepsaný svým držitelem.
 
@@ -228,7 +228,7 @@ Pokud Průzkumník služby Storage narazí na některý z těchto certifikátů 
 3. Spusťte příkaz `s_client -showcerts -connect microsoft.com:443`.
 4. Vyhledejte certifikáty podepsané svým držitelem. Pokud si nejste jisti, které certifikáty jsou podepsané svým držitelem, hledejte certifikáty, jejichž předmět (s:) je stejný jako vystavitel (i:).
 5.  Jakmile najdete nějaké certifikáty podepsané svým držitelem, zkopírujte u jednotlivých certifikátů veškerý text začínající na **-----BEGIN CERTIFICATE-----** a končící na **-----END CERTIFICATE-----** (včetně) a zkopírujte ho do nového souboru .cer.
-6.  Otevřete Průzkumníka služby Storage a přejděte do části **Úpravy** > **Certifikáty SSL** > **Importovat certifikáty**. Pomocí nástroje pro výběr souborů vyhledejte, vyberte a otevřete soubory .cer, které jste vytvořili.
+6.  Otevřete Průzkumníka úložišť a přejděte na **upravit** > **certifikáty Import certifikátů****SSL** > . Pomocí nástroje pro výběr souborů vyhledejte, vyberte a otevřete soubory .cer, které jste vytvořili.
 
 Pokud se vám podle výše uvedeného postupu nepodaří najít žádné certifikáty podepsané svým držitelem, můžete získat další nápovědu odesláním zpětné vazby.
 
@@ -266,7 +266,7 @@ Pokud nemůžete odebrat účet nebo pokud odkaz na opětovné ověření nic ne
   - .extaccounts
 - Pokud chcete odebrat prostředky služby Storage připojené sdíleným přístupovým podpisem, odstraňte:
   - Složku %AppData%/StorageExplorer ve Windows.
-  - /Users/< your_name >/Library/Application Support SUpport/StorageExplorer for Mac
+  - /Users/<your_name>/Library/Application SUpport/StorageExplorer for Mac
   - Složku ~/.config/StorageExplorer v Linuxu.
   - Pokud tyto soubory odstraníte, **budete muset zadat všechny své přihlašovací údaje znovu**.
 
@@ -300,7 +300,7 @@ Vyzkoušejte následující návrhy:
 
 ## <a name="contact-us"></a>Kontaktujte nás
 
-Pokud vám žádné z předchozích řešení nepomohlo, požádejte o pomoc s řešením problému odesláním e-mailu s podrobnostmi o problému týmu vývojářských nástrojů pro službu Azure Cosmos DB ([cosmosdbtooling@microsoft.com](mailto:cosmosdbtooling@microsoft.com)).
+Pokud žádné z řešení nefunguje pro vás, pošlete e-mail[cosmosdbtooling@microsoft.com](mailto:cosmosdbtooling@microsoft.com)na Azure Cosmos DB Dev Tooling Team ( ) s podrobnostmi o problému, pro řešení problémů.
 
 ## <a name="next-steps"></a>Další kroky
 

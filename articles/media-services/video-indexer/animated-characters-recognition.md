@@ -1,7 +1,7 @@
 ---
-title: Animovaná detekce znaků pomocí Video Indexer
+title: Detekce animovaných postav pomocí videoindexeru
 titleSuffix: Azure Media Services
-description: Toto téma ukazuje, jak použít animovanou detekci znaků pomocí Video Indexer.
+description: Toto téma ukazuje, jak používat detekci animovaných znaků s Video Indexer.
 services: media-services
 author: Juliako
 manager: femila
@@ -11,171 +11,171 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
 ms.openlocfilehash: af608dcfbb5d98cf3116de4e14dc12bf6facb97b
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76989905"
 ---
-# <a name="animated-character-detection-preview"></a>Animovaná detekce znaků (Preview)
+# <a name="animated-character-detection-preview"></a>Detekce animovaných postav (náhled)
 
-Azure Media Services Video Indexer podporuje detekci, seskupení a rozpoznávání znaků v animovaném obsahu prostřednictvím integrace s [Cognitive Services vlastní vize](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/). Tato funkce je k dispozici prostřednictvím portálu i přes rozhraní API.
+Azure Media Services Video Indexer podporuje detekci, seskupování a rozpoznávání postav v animovaném obsahu prostřednictvím integrace s [vlastní vizí služeb Cognitive Services](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/). Tato funkce je k dispozici prostřednictvím portálu i prostřednictvím rozhraní API.
 
-Po nahrání animovaného videa s konkrétním modelem animace Video Indexer extrahuje klíčové snímky, detekuje animované znaky v těchto rámečcích, seskupí podobný znak a zvolí nejlepší vzorek. Pak pošle seskupené znaky Custom Vision, které identifikují znaky na základě modelů, na kterých byla vyškolená. 
+Po nahrání animovaného videa s konkrétním modelem animace video indexer extrahuje klíčové snímky, detekuje animované postavy v těchto snímcích, seskupuje podobný znak a vybírá nejlepší vzorek. Potom odešle seskupené znaky do vlastní vize, která identifikuje znaky na základě modelů, na kterých byl trénován. 
 
-Než začnete s školením modelu, zjistí se namelessly znaky. Při přidávání názvů a výukovém modelu Video Indexer rozpozná tyto znaky a odpovídajícím způsobem je pojmenujte.
+Než začnete trénovat model, znaky jsou detekovány bezejmenně. Při přidávání jmen a trénování modelu video indexer rozpozná znaky a odpovídajícím způsobem je pojmenuje.
 
-## <a name="flow-diagram"></a>Diagram toku
+## <a name="flow-diagram"></a>Vývojový diagram
 
-Následující diagram znázorňuje tok animovaného procesu detekce znaků.
+Následující diagram znázorňuje tok procesu detekce animovaných znaků.
 
-![Diagram toku](./media/animated-characters-recognition/flow.png)
+![Vývojový diagram](./media/animated-characters-recognition/flow.png)
 
 ## <a name="accounts"></a>Účty
 
-V závislosti na typu Video Indexer účtu jsou k dispozici různé sady funkcí. Informace o tom, jak připojit účet k Azure, najdete v tématu [Vytvoření účtu video indexer připojeného k Azure](connect-to-azure.md).
+V závislosti na typu účtu video indexeru jsou k dispozici různé sady funkcí. Informace o tom, jak propojit svůj účet s Azure, najdete [v tématu Vytvoření účtu Video Indexer připojeného k Azure](connect-to-azure.md).
 
-* Zkušební účet: Video Indexer používá k vytvoření modelu interní účet Custom Vision a připojuje ho ke svému účtu Video Indexer. 
-* Placený účet: připojíte účet Custom Vision k účtu Video Indexer (pokud ho ještě nemáte, musíte nejdřív vytvořit účet).
+* Zkušební účet: Video Indexer používá interní účet Custom Vision k vytvoření modelu a jeho připojení k účtu Video Indexer. 
+* Placený účet: svůj účet Custom Vision připojíte ke svému účtu Video Indexer (pokud ho ještě nemáte, musíte si účet nejprve vytvořit).
 
-### <a name="trial-vs-paid"></a>Zkušební verze vs. placená
+### <a name="trial-vs-paid"></a>Zkušební vs. placené
 
-|Funkce|Zkušební verze|Placené|
+|Funkce|Zkušební verze|Zaplaceno|
 |---|---|---|
-|Účet Custom Vision|Spravováno na pozadí Video Indexer. |Váš účet Custom Vision je připojen k Video Indexer.|
-|Počet modelů animace|Hodinu|Až 100 modelů na účet (omezení Custom Vision).|
-|Školení modelu|Video Indexer navlacích model pro nové znaky další příklady stávajících znaků.|Vlastník účtu naplní model, jakmile budou připraveni provést změny.|
-|Rozšířené možnosti v Custom Vision|K portálu Custom Vision nemáte přístup.|Modely můžete upravit sami na portálu Custom Vision.|
+|Vlastní účet Vision|Spravuje v zákulisí Video Indexer. |Váš vlastní účet Vision je připojen k video indexeru.|
+|Počet animačních modelů|Jeden|Až 100 modelů na účet (omezení vlastní vize).|
+|Trénování modelu|Video Indexer trénuje model pro nové znaky další příklady existujících znaků.|Vlastník účtu trénuje model, když jsou připraveni provést změny.|
+|Pokročilé možnosti ve vlastním vidění|Žádný přístup k portálu Vlastní vize.|Modely můžete upravit sami na portálu Custom Vision.|
 
-## <a name="use-the-animated-character-detection-with-portal"></a>Použití animovaného rozpoznávání znaků s portálem 
+## <a name="use-the-animated-character-detection-with-portal"></a>Použití detekce animovaných znaků s portálem 
 
-Tato část popisuje kroky, které musíte provést, abyste mohli začít používat animovaný model detekce znaků. 
+Tato část popisuje kroky, které je třeba provést, abyste začali používat model detekce animovaných znaků. 
 
-Vzhledem k tomu, že ve zkušebních účtech je Custom Vision integrace spravována pomocí Video Indexer, můžete začít vytvářet a používat animovaný znakový model a přeskočit následující část ("připojit účet Custom Vision").
+Vzhledem k tomu, že ve zkušebních účtech je integrace Custom Vision spravována video indexerem, můžete začít vytvářet a používat model animovaných postav a přeskočit následující část ("Připojte svůj vlastní účet Vision").
 
-### <a name="connect-your-custom-vision-account-paid-accounts-only"></a>Připojit účet Custom Vision (jenom placené účty)
+### <a name="connect-your-custom-vision-account-paid-accounts-only"></a>Připojení vlastního účtu Vision (pouze placené účty)
 
-Pokud vlastníte Video Indexer placený účet, musíte nejdřív připojit účet Custom Vision. Pokud účet Custom Vision ještě nemáte, vytvořte ho prosím. Další informace najdete v tématu [Custom Vision](../../cognitive-services/custom-vision-service/home.md).
+Pokud vlastníte placený účet Video Indexer, musíte nejprve připojit účet Custom Vision. Pokud ještě nemáte účet Vlastní vize, vytvořte si ho. Další informace naleznete [v tématu Custom Vision](../../cognitive-services/custom-vision-service/home.md).
 
 > [!NOTE]
-> Oba účty musí být ve stejné oblasti. Integrace Custom Vision v současnosti není v oblasti Japonsko podporována.
+> Oba účty musí být ve stejné oblasti. Integrace custom vision není aktuálně podporována v oblasti Japonska.
 
-#### <a name="connect-a-custom-vision-account-with-api"></a>Připojení účtu Custom Vision k rozhraní API 
+#### <a name="connect-a-custom-vision-account-with-api"></a>Připojení vlastního účtu Vize s rozhraním API 
 
-Pomocí těchto kroků se připojíte Custom Vision účtu k Video Indexer nebo změníte účet Custom Vision, který je aktuálně připojený k Video Indexer:
+Chcete-li propojit vlastní účet Vision s indexerem videa, nebo změnit účet Custom Vision, který je aktuálně připojený k videoindexeru, postupujte takto:
 
-1. Přejděte na [www.customvision.AI](https://www.customvision.ai) a přihlaste se.
-1. Zkopírujte následující klíče: 
+1. Přejděte na [www.customvision.ai](https://www.customvision.ai) a přihlaste se.
+1. Zkopírujte následující klávesy: 
 
-    * Školicí klíč (pro školicí prostředek)
-    * Klíč předpovědi (pro prostředek předpovědi)
+    * Tréninkový klíč (pro školicí zdroj)
+    * Predikční klíč (pro prostředek předpověď)
     * Koncový bod 
     * ID prostředku předpovědi
     
     > [!NOTE]
-    > K poskytnutí všech klíčů, které potřebujete k získání dvou samostatných prostředků v Custom Vision, jeden pro školení a jeden pro předpověď.
-1. Přejděte na [video indexer](https://vi.microsoft.com/)a přihlaste se.
-1. Klikněte na otazník v pravém horním rohu stránky a vyberte **Reference k rozhraní API**.
-1. Ujistěte se, že jste se přihlásili k odběru API Management kliknutím na kartu **produkty** . Pokud máte připojené rozhraní API, můžete pokračovat k dalšímu kroku, jinak se přihlaste k odběru. 
-1. Na portálu pro vývojáře klikněte na **úplný odkaz rozhraní API** a přejděte na **operace**.  
-1. Vyberte **připojit Custom Vision účet (Preview)** a klikněte na **vyzkoušet**.
-1. Vyplňte požadovaná pole i přístupového tokenu a klikněte na **Odeslat**. 
+    > Chcete-li poskytnout všechny klíče, musíte mít dva samostatné prostředky v custom vision, jeden pro školení a jeden pro předpověď.
+1. Procházejte a přihlaste se k [video indexeru](https://vi.microsoft.com/).
+1. Klikněte na otazník v pravém horním rohu stránky a zvolte **ODKAZ NA ROZHRANÍ API**.
+1. Kliknutím na kartu **Produkty** se ujistěte, že jste přihlášeni ke správě rozhraní API. Pokud máte připojené rozhraní API, můžete pokračovat k dalšímu kroku, jinak se přihlásit. 
+1. Na portálu pro vývojáře klikněte na **odkaz na úplné rozhraní API** a přejděte na **Operations**.  
+1. Vyberte **Připojit vlastní účet Vision (PREVIEW)** a klepněte na **Vyzkoušet**.
+1. Vyplňte požadovaná pole a přístupový token a klepněte na tlačítko **Odeslat**. 
 
-    Další informace o tom, jak získat přístupový token Video Indexer přejděte na portál pro [vývojáře](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token?)a podívejte se na [příslušnou dokumentaci](video-indexer-use-apis.md#obtain-access-token-using-the-authorization-api).  
-1. Jakmile volání vrátí odpověď 200 OK, váš účet je připojený.
-1. Připojení můžete ověřit tak, že přejdete na portál [video indexer](https://vi.microsoft.com/)):
+    Další informace o tom, jak získat token přístupu video indexeru, přejděte na [portál pro vývojáře](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token?)a naleznete [v příslušné dokumentaci](video-indexer-use-apis.md#obtain-access-token-using-the-authorization-api).  
+1. Jakmile hovor vrátí odpověď 200 OK, váš účet je připojen.
+1. Chcete-li ověřit připojení pomocí portálu [Video Indexer](https://vi.microsoft.com/)) :
 1. Klikněte na tlačítko **Přizpůsobení modelu obsahu** v pravém horním rohu.
-1. Přejít na kartu **animované znaky** .
-1. Po kliknutí na spravovat modely v Custom Vision "* * se přenesete na účet Custom Vision, který jste právě připojili.
+1. Přejděte na kartu **Animované postavy.**
+1. Jakmile kliknete na Spravovat modely ve vlastní vizi"**, budete převedeni na účet Custom Vision, který jste právě připojili.
 
 > [!NOTE]
-> V současné době jsou podporovány pouze modely vytvořené prostřednictvím Video Indexer. Modely vytvořené prostřednictvím Custom Vision nebudou k dispozici. Kromě toho osvědčeným postupem je upravit modely vytvořené prostřednictvím Video Indexer jenom prostřednictvím Video Indexer platformy, protože změny provedené prostřednictvím Custom Vision můžou způsobit neočekávané výsledky.
+> V současné době jsou podporovány pouze modely, které byly vytvořeny prostřednictvím Video Indexer. Modely, které jsou vytvořeny prostřednictvím vlastní vize nebude k dispozici. Kromě toho je osvědčeným postupem upravit modely, které byly vytvořeny prostřednictvím video indexeru pouze prostřednictvím platformy Video Indexer, protože změny provedené prostřednictvím vlastní vize může způsobit nezamýšlené výsledky.
 
-### <a name="create-an-animated-characters-model"></a>Vytvořit animovaný znakový model
+### <a name="create-an-animated-characters-model"></a>Vytvoření modelu animovaných postav
 
 1. Přejděte na web [Video Indexer](https://vi.microsoft.com/) a přihlaste se.
-1. Klikněte na tlačítko Přizpůsobení modelu obsahu v pravém horním rohu stránky.
+1. Klikněte na tlačítko přizpůsobení modelu obsahu v pravém horním rohu stránky.
 
     ![Přizpůsobení modelu obsahu](./media/animated-characters-recognition/content-model-customization.png)
-1. V části Přizpůsobení modelu přejdete na kartu **animované znaky** .
-1. Klikněte na **přidat model**.
-1. Název, který zadáte, a kliknutím na ENTER uložte název.
+1. Přejděte na kartu **Animované postavy** v části přizpůsobení modelu.
+1. Klikněte na **Přidat model**.
+1. Název modelu a klepnutím na zadat název uložte.
 
 > [!NOTE]
-> Osvědčeným postupem je mít pro každou animovanou řadu jeden model vlastní vize. 
+> Osvědčeným postupem je mít jeden vlastní model vize pro každý animovaný seriál. 
 
-### <a name="index-a-video-with-an-animated-model"></a>Indexování videa pomocí animovaného modelu
+### <a name="index-a-video-with-an-animated-model"></a>Indexování videa animovaným modelem
 
-1. V horní nabídce klikněte na tlačítko **nahrát** .
+1. Klikněte na tlačítko **Nahrát** v horní nabídce.
 1. Vyberte video, které chcete nahrát (ze souboru nebo adresy URL).
 1. Klikněte na **Upřesnit možnosti**.
-1. V části **lidé/animované znaky** vyberte **modely animace**.
-1. Pokud máte jeden model, vybere se automaticky a pokud máte více modelů, můžete si z rozevírací nabídky vybrat příslušnou z nich.
-1. Klikněte na nahrát.
-1. Po indexování videa se v podokně **přehledy** zobrazí zjištěné znaky v části **animované znaky** .
+1. V části **Lidé / Animované postavy** zvolte **Animační modely**.
+1. Pokud máte jeden model, bude vybrán automaticky, a pokud máte více modelů, můžete si vybrat příslušný z rozbalovací nabídky.
+1. Klikněte na upload.
+1. Po indexování videa se zjištěné znaky zobrazí v části **Animované postavy** v podokně **Přehledy.**
 
 > [!NOTE] 
-> Před označením a školením modelu budou všechny animované znaky pojmenovány "unknown #X". Po proškolování modelu budou také rozpoznány.
+> Před označením a trénováním modelu budou všechny animované postavy pojmenovány "Neznámý #X". Po tréninku modelu budou také rozpoznány.
 
-### <a name="customize-the-animated-characters-models"></a>Přizpůsobení animovaných modelů znaků
+### <a name="customize-the-animated-characters-models"></a>Přizpůsobení modelů animovaných postav
 
-1. Označte a prohlaste model.
+1. Tag a vlak modelu.
 
-    1. Označte zjištěný znak úpravou jeho názvu. Jakmile je určitý znak vyškolen do modelu, bude rozpoznán jako další video indexované pomocí tohoto modelu. 
-    1. Chcete-li označit animovaný znak ve videu, přejděte na kartu **přehledy** a klikněte na tlačítko **Upravit** v pravém horním rohu okna.
-    1. V podokně **přehledy** klikněte na kterýkoli z nalezených animovaných znaků a změňte jejich názvy z "Neznámý #X" (nebo název, který byl dříve přiřazen ke znaku).
-    1. Po zadání nového názvu klikněte na ikonu zaškrtnutí vedle nového názvu. Tím se nový název uloží do modelu ve Video Indexer.
-    1. Po dokončení úprav všech požadovaných názvů budete muset vyškolit model.
+    1. Označte zjištěný znak úpravou jeho názvu. Jakmile znak je trénovaný do modelu, bude rozpoznán, že další video indexovány s tímto modelem. 
+    1. Pokud chcete ve videu označit animovanou postavu, přejděte na kartu **Přehledy** a klikněte na tlačítko **Upravit** v pravém horním rohu okna.
+    1. V podokně **Přehledy** klikněte na některou z detekovaných animovaných postav a změňte jejich názvy z "Neznámý #X" (nebo název, který byl dříve přiřazen znaku).
+    1. Po zadání nového názvu klikněte na ikonu šeku vedle nového názvu. Tím uložíte nový název v modelu v video indexeru.
+    1. Po dokončení úprav všech jmen, které chcete, je třeba trénovat model.
 
-        Otevřete stránku přizpůsobení a klikněte na kartu **animované znaky** a potom klikněte na tlačítko **výuka** a prohlaste svůj model.
+        Otevřete stránku přizpůsobení a klikněte na kartu **Animované postavy** a poté klikněte na tlačítko **Vlak** pro trénování modelu.
          
-        Pokud máte placený účet, můžete kliknout na odkaz **Správa modelů v zákaznických vizi** (viz níže). Pak budete přesměrováni na stránku modelu v **Custom Vision**.
+        Pokud máte placený účet, můžete kliknout na odkaz Spravovat modely v části **Vize zákazníka** (jak je znázorněno níže). Poté budete přeposíláni na stránku modelu v **části Vlastní vize**.
  
         ![Přizpůsobení modelu obsahu](./media/animated-characters-recognition/content-model-customization-tab.png)
 
-     1. Po vyškolení budou všechny videozáznamy, které budou indexovány nebo přeindexovány pomocí tohoto modelu, rozpoznány jako vyškolené znaky. 
-    Placené účty, které mají přístup ke svému účtu Custom Vision, můžou v něm vidět modely a označené obrázky. Přečtěte si další informace o [vylepšení klasifikátoru v Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier).
+     1. Po trénování, jakékoli video, které bude indexováno nebo reindexovány s tímto modelem rozpozná trénované znaky. 
+    Placené účty, které mají přístup ke svému účtu Custom Vision, tam mohou vidět modely a označené obrázky. Další informace o [vylepšení klasifikátoru v aplikaci Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier).
 
-1. Odstraní animovaný znak.
+1. Odstraňte animovaný znak.
 
-    1. Pokud chcete odstranit animovaný znak v video Insights, přejděte na kartu **přehledy** a klikněte na tlačítko **Upravit** v pravém horním rohu okna.
-    1. Zvolte animovaný znak a pak klikněte na tlačítko **Odstranit** pod jeho názvem.
+    1. Pokud chcete v přehledech videa odstranit animovanou postavu, přejděte na kartu **Přehledy** a klikněte na tlačítko **Upravit** v pravém horním rohu okna.
+    1. Vyberte animovaný znak a klikněte na tlačítko **Odstranit** pod jejich jménem.
 
     > [!NOTE]
-    > Tato akce odstraní vhled z tohoto videa, ale nebude mít vliv na model.
+    > Tím odstraníte přehled z tohoto videa, ale nebude mít vliv na model.
 
-1. Odstraní model.
+1. Odstraňte model.
 
-    1. V horní nabídce klikněte na tlačítko **Přizpůsobení modelu obsahu** a přejděte na kartu **animované znaky** .
-    1. Klikněte na ikonu se třemi tečkami napravo od modelu, který chcete odstranit, a pak na tlačítku odstranit.
+    1. Klikněte na tlačítko **Přizpůsobení modelu obsahu** v horní nabídce a přejděte na kartu Animované **postavy.**
+    1. Klikněte na ikonu tři tečky napravo od modelu, který chcete odstranit, a pak na tlačítko odstranit.
     
-    * Placený účet: model se odpojí od Video Indexer a nebudete ho moct znovu připojit.
-    * Zkušební účet: model se odstraní i z celního výhledu. 
+    * Placený účet: model bude odpojen od Video Indexer a nebudete jej moci znovu připojit.
+    * Zkušební účet: model bude také odstraněn z vize celního úřadu. 
     
         > [!NOTE]
-        > Ve zkušebním účtu máte jenom jeden model, který můžete použít. Po odstranění nemůžete proškolit jiné modely.
+        > Ve zkušebním účtu máte pouze jeden model, který můžete použít. Po odstranění nelze trénovat jiné modely.
 
-## <a name="use-the-animated-character-detection-with-api"></a>Použití animovaného rozpoznávání znaků s rozhraním API 
+## <a name="use-the-animated-character-detection-with-api"></a>Použití detekce animovaných znaků s rozhraním API 
 
-1. Připojte účet Custom Vision.
+1. Připojte si vlastní účet Vision.
 
-    Pokud vlastníte Video Indexer placený účet, musíte nejdřív připojit účet Custom Vision. <br/>
-    Pokud účet Custom Vision ještě nemáte, vytvořte ho prosím. Další informace najdete v tématu [Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/home).
+    Pokud vlastníte placený účet Video Indexer, musíte nejprve připojit účet Custom Vision. <br/>
+    Pokud ještě nemáte účet Vlastní vize, vytvořte si ho. Další informace naleznete [v tématu Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/home).
 
-    [Připojte účet Custom Vision pomocí rozhraní API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Connect-Custom-Vision-Account?tags=&pattern=&groupBy=tag).
-1. Vytvořte animovaný znakový model.
+    [Připojte svůj vlastní účet Vision pomocí rozhraní API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Connect-Custom-Vision-Account?tags=&pattern=&groupBy=tag).
+1. Vytvořte model animovaných postav.
 
-    Použijte rozhraní API pro [Vytvoření modelu animace](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Animation-Model?&groupBy=tag) .
-1. Indexuje nebo znovu indexuje video.
+    Použijte rozhraní API [modelu animace.](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Animation-Model?&groupBy=tag)
+1. Indexujte nebo přeindexujte video.
 
-    Použijte rozhraní API pro [opakované indexování](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) . 
-1. Přizpůsobení animovaných modelů znaků.
+    Použijte [rozhraní API pro přeindexování.](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) 
+1. Přizpůsobte si modely animovaných postav.
 
-    Použijte rozhraní API pro [model animace vlaku](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Train-Animation-Model?&groupBy=tag) .
+    Použijte rozhraní API [modelu animace vlaku.](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Train-Animation-Model?&groupBy=tag)
 
 ### <a name="view-the-output"></a>Zobrazit výstup
 
-Podívejte se na animované znaky ve vygenerovaném souboru JSON.
+Podívejte se na animované postavy v generovaném souboru JSON.
 
 ```json
 "animatedCharacters": [
@@ -208,9 +208,9 @@ Podívejte se na animované znaky ve vygenerovaném souboru JSON.
 
 ## <a name="limitations"></a>Omezení
 
-* V současné době není schopnost "Identifikace animace" v oblasti východní Asie podporovaná.
-* Znaky, které se zdají být malé nebo daleko ve videu, nemusí být správně identifikovány, pokud kvalita videa není nízká.
-* Doporučení je použití modelu na sadu animovaných znaků (například na animovanou řadu).
+* V současné době není v oblasti východní Asie podporována funkce identifikace animace.
+* Znaky, které se ve videu zdají být malé nebo vzdálené, nemusí být správně identifikovány, pokud je kvalita videa špatná.
+* Doporučujeme použít model pro sadu animovaných postav (například na jeden animovaný seriál).
 
 ## <a name="next-steps"></a>Další kroky
 

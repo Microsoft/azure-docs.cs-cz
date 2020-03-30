@@ -1,6 +1,6 @@
 ---
 title: Zlepšení zabezpečení vzdálené správy v Azure | Dokumentace Microsoftu
-description: Tento článek popisuje kroky pro zlepšení zabezpečení vzdálené správy při správě Microsoft Azure prostředí, včetně cloudových služeb, virtuálních počítačů a vlastních aplikací.
+description: Tento článek popisuje kroky pro zvýšení zabezpečení vzdálené správy při správě prostředí Microsoft Azure, včetně cloudových služeb, virtuálních počítačů a vlastních aplikací.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/31/2019
 ms.author: terrylan
 ms.openlocfilehash: 45efaadf7d15fff290165fe831c45c0bc063db53
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73643799"
 ---
 # <a name="security-management-in-azure"></a>Správa zabezpečení v Azure

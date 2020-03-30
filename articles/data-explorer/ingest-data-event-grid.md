@@ -1,6 +1,6 @@
 ---
-title: Ingestování objektů blob Azure do Azure Průzkumník dat
-description: V tomto článku se dozvíte, jak odesílat data účtu úložiště do Azure Průzkumník dat pomocí Event Grid předplatného.
+title: Ingestování objektů BLOB Azure do Průzkumníka dat Azure
+description: V tomto článku se dozvíte, jak odesílat data účtu úložiště do Průzkumníka dat Azure pomocí předplatného Event Grid.
 author: orspod
 ms.author: orspodek
 ms.reviewer: tzgitlin
@@ -8,23 +8,23 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: ec218b1638183db463ff09488c988cad64d78c6d
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79370436"
 ---
-# <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Ingestování objektů blob do Azure Průzkumník dat díky přihlášení k odběru oznámení Event Grid
+# <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Ingestování objektů BLOB do Průzkumníka dat Azure přihlášením k odběru oznámení gridu událostí
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](ingest-data-event-grid.md)
-> * [C#](data-connection-event-grid-csharp.md)
+> * [Portál](ingest-data-event-grid.md)
+> * [C #](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
 > * [Šablona Azure Resource Manageru](data-connection-event-grid-resource-manager.md)
 
-Azure Průzkumník dat je rychlá a škálovatelná služba pro zkoumání dat pro data protokolů a telemetrie. Nabízí průběžnou příjem (načítání dat) z objektů BLOB zapsaných do kontejnerů objektů BLOB. 
+Azure Data Explorer je rychlá a škálovatelná služba pro zkoumání dat pro data protokolu a telemetrie. Nabízí nepřetržité ingestování (načítání dat) z objektů BLOB zapsané do kontejnerů objektů blob. 
 
-V tomto článku se naučíte, jak nastavit předplatné [Azure Event Grid](/azure/event-grid/overview) a směrovat události do Azure Průzkumník dat prostřednictvím centra událostí. Chcete-li začít, měli byste mít účet úložiště s odběrem služby Event Grid, který odesílá oznámení do služby Azure Event Hubs. Pak vytvoříte datové připojení Event Grid a uvidíte tok dat v celém systému.
+V tomto článku se dozvíte, jak nastavit předplatné [Azure Event Grid](/azure/event-grid/overview) a směrovat události do Azure Data Exploreru prostřednictvím centra událostí. Chcete-li začít, měli byste mít účet úložiště s odběrem mřížky událostí, který odesílá oznámení do Centra událostí Azure. Pak vytvoříte datové připojení Event Grid a uvidíte tok dat v celém systému.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -33,41 +33,41 @@ V tomto článku se naučíte, jak nastavit předplatné [Azure Event Grid](/azu
 * [Účet úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
 * [Centrum událostí](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
 
-## <a name="create-an-event-grid-subscription-in-your-storage-account"></a>Vytvoření předplatného Event Grid v účtu úložiště
+## <a name="create-an-event-grid-subscription-in-your-storage-account"></a>Vytvoření předplatného event gridu v účtu úložiště
 
-1. V Azure Portal Najděte svůj účet úložiště.
-1. Vyberte **události** > **odběr události**.
+1. Na webu Azure Portal najděte svůj účet úložiště.
+1. Vyberte**odběr událostí**událostí . **Events** > 
 
     ![Dotaz – odkaz aplikace](media/ingest-data-event-grid/create-event-grid-subscription.png)
 
-1. V okně **vytvořit odběr událostí** na kartě **Basic** zadejte následující hodnoty:
+1. V okně **Vytvořit odběr události** na kartě **Základní** zadejte následující hodnoty:
 
     **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
-    | Název | *test-Grid – připojení* | Název gridu událostí, který chcete vytvořit.|
-    | Schéma událostí | *Event Grid schéma* | Schéma, které má být použito pro Event Grid. |
-    | Typ tématu | *Účet úložiště* | Typ tématu Event gridu |
-    | Prostředek tématu | *gridteststorage* | Název vašeho účtu úložiště. |
-    | Přihlásit se k odběru všech typů událostí | *jejich* | Nedostávat oznámení o všech událostech. |
-    | Typy definovaných událostí | *Objekt BLOB se vytvořil.* | Konkrétní události, pro které se má zobrazit oznámení |
-    | Typ koncového bodu | *Centrum událostí* | Typ koncového bodu, na který odesíláte události. |
+    | Name (Název) | *připojení testovací mřížky* | Název mřížky událostí, kterou chcete vytvořit.|
+    | Schéma událostí | *Schéma služby Event Grid* | Schéma, které by měly být použity pro mřížku událostí. |
+    | Typ tématu | *Účet úložiště* | Typ tématu mřížky událostí. |
+    | Zdroj tématu | *gridteststorage* | Název vašeho účtu úložiště. |
+    | Přihlásit se ke všem typům událostí | *Jasné* | Nenechte se upozorňují na všechny události. |
+    | Definované typy událostí | *Vytvoření objektu blob* | Které konkrétní události, na které chcete být upozorněni. |
+    | Typ koncového bodu | *Centrum událostí* | Typ koncového bodu, do kterého odesíláte události. |
     | Koncový bod | *test-hub* | Centrum událostí, které jste vytvořili |
     | | |
 
-1. Vyberte kartu **filtry** , pokud chcete sledovat soubory z konkrétního kontejneru. Filtry pro oznámení můžete nastavit následujícím způsobem:
-    * **Subjekt začínající** v poli je předpona *literálu* kontejneru objektů BLOB. Vzhledem k tomu, že je vzor použit jako *StartsWith*, může zahrnovat více kontejnerů. Nejsou povoleny žádné zástupné znaky.
-     *Musí* být nastavená takto: *`/blobServices/default/containers/`* [Předpona kontejneru]
-    * **Subjekt končí s** polem je přípona *literálu* objektu BLOB. Nejsou povoleny žádné zástupné znaky.
+1. Pokud chcete sledovat soubory z určitého kontejneru, vyberte kartu **Filtry.** Filtry pro oznámení nastavte takto:
+    * **Předmět začíná** pole je *literál* předpona kontejneru objektů blob. Jako vzor použít je *začínás*, může span více kontejnerů. Nejsou povoleny žádné zástupné znaky.
+     *Musí* být nastavena takto: *`/blobServices/default/containers/`*[předpona kontejneru]
+    * **Pole Zakončení objektu** je *literálová* přípona objektu blob. Nejsou povoleny žádné zástupné znaky.
 
 ## <a name="create-a-target-table-in-azure-data-explorer"></a>Vytvoření cílové tabulky v Azure Data Exploreru
 
-Vytvoří tabulku v Azure Průzkumník dat, kam Event Hubs odešle data. Vytvořte tabulku v clusteru a databázi připravenou v požadavcích.
+Vytvořte tabulku v Průzkumníku dat Azure, kam budou centra událostí odesílat data. Vytvořte tabulku v clusteru a databázi připravené v požadavcích.
 
 1. Na portálu Azure Portal vyberte v rámci svého clusteru možnost **Dotaz**.
 
     ![Dotaz – odkaz aplikace](media/ingest-data-event-grid/query-explorer-link.png)
 
-1. Zkopírujte následující příkaz do okna a výběrem příkazu **Spustit** vytvořte tabulku (test), která přijme ingestovaná data.
+1. Zkopírujte následující příkaz do okna a vyberte **Spustit,** chcete-li vytvořit tabulku (TestTable), která obdrží příjem dat.
 
     ```kusto
     .create table TestTable (TimeStamp: datetime, Value: string, Source:string)
@@ -75,29 +75,29 @@ Vytvoří tabulku v Azure Průzkumník dat, kam Event Hubs odešle data. Vytvoř
 
     ![Spuštění vytvářecího dotazu](media/ingest-data-event-grid/run-create-table.png)
 
-1. Zkopírujte do okna následující příkaz a vyberte možnost **Spustit** pro mapování příchozích dat JSON na názvy sloupců a datové typy tabulky (tabulka).
+1. Zkopírujte následující příkaz do okna a vyberte **Spustit,** chcete-li namapovat příchozí data JSON na názvy sloupců a datové typy tabulky (TestTable).
 
     ```kusto
     .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.TimeStamp"},{"column":"Value","path":"$.Value"},{"column":"Source","path":"$.Source"}]'
     ```
 
-## <a name="create-an-event-grid-data-connection-in-azure-data-explorer"></a>Vytvoření datového připojení Event Grid v Azure Průzkumník dat
+## <a name="create-an-event-grid-data-connection-in-azure-data-explorer"></a>Vytvoření datového připojení Grid událostí v Průzkumníku dat Azure
 
-Nyní se můžete připojit k Event Grid z Azure Průzkumník dat, aby se data přenášená do kontejneru objektů BLOB streamal do testovací tabulky. 
+Teď se připojte k Event Grid z Azure Data Explorer, takže data toku do kontejneru objektů blob se streamuje do testovací tabulky. 
 
 1. Výběrem možnosti **Oznámení** na panelu nástrojů ověřte úspěšné nasazení centra událostí.
 
-1. V clusteru, který jste vytvořili, vyberte **databáze** > **TestDatabase**.
+1. V rámci vytvořeného clusteru vyberte **možnost Databáze** > **testdatabáze**.
 
     ![Výběr testovací databáze](media/ingest-data-event-grid/select-test-database.png)
 
-1. Vyberte **přijímání dat** > **přidat datové připojení**.
+1. Vyberte **položku** > Přidání**datového připojení**k datům .
 
     ![Přijímání dat](media/ingest-data-event-grid/data-ingestion-create.png)
 
-1.  Vyberte typ připojení: **BLOB Storage**.
+1.  Vyberte typ připojení: **Úložiště objektů blob**.
 
-1. Vyplňte formulář pomocí následujících informací a vyberte **vytvořit**.
+1. Vyplňte formulář následujícími informacemi a vyberte **Vytvořit**.
 
     ![Připojení centra událostí](media/ingest-data-event-grid/create-event-grid-data-connection.png)
 
@@ -105,12 +105,12 @@ Nyní se můžete připojit k Event Grid z Azure Průzkumník dat, aby se data p
 
     **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
-    | Název datového připojení | *test-hub-connection* | Název připojení, které chcete vytvořit v Azure Průzkumník dat.|
-    | Předplatné účtu úložiště | ID vašeho předplatného | ID předplatného, ve kterém se nachází váš účet úložiště.|
+    | Název datového připojení | *test-hub-connection* | Název připojení, které chcete vytvořit v Průzkumníku dat Azure.|
+    | Předplatné účtu úložiště | ID předplatného | ID předplatného, ve kterém se nachází váš účet úložiště.|
     | Účet úložiště | *gridteststorage* | Název účtu úložiště, který jste vytvořili dříve.|
-    | Event Grid | *test-Grid – připojení* | Název, který jste vytvořili pro událost Event Grid. |
-    | Název centra událostí | *test-hub* | Centrum událostí, které jste vytvořili. Toto pole se vyplní automaticky při výběru služby Event Grid. |
-    | Skupina uživatelů | *test-group* | Skupina uživatelů definovaná v centru událostí, které jste vytvořili. |
+    | Event Grid | *připojení testovací mřížky* | Název mřížky událostí, kterou jste vytvořili. |
+    | Název centra událostí | *test-hub* | Centrum událostí, které jste vytvořili. Toto pole se automaticky vyplní, když vyberete mřížku událostí. |
+    | Skupina uživatelů | *test-group* | Skupina spotřebitelů definovaná v centru událostí, které jste vytvořili. |
     | | |
 
     Cílová tabulka:
@@ -118,17 +118,17 @@ Nyní se můžete připojit k Event Grid z Azure Průzkumník dat, aby se data p
      **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
     | Table | *TestTable* | Tabulka, kterou jste vytvořili v databázi **TestDatabase** |
-    | Formát dat | *JSON* | Podporované formáty jsou Avro, CSV, JSON, VÍCEŘÁDKOVé JSON, PSV, SOH, SCSV, TSV, RAW a TXT. Podporované možnosti komprese: zip a GZip |
+    | Formát dat | *JSON* | Podporované formáty jsou Avro, CSV, JSON, MULTILINE JSON, PSV, SOH, SCSV, TSV, RAW a TXT. Podporované možnosti komprese: Zip a GZip |
     | Mapování sloupců | *TestMapping* | Mapování, které jste vytvořili v databázi **TestDatabase** a které mapuje příchozí data JSON na názvy sloupců a datové typy tabulky **TestTable**.|
     | | |
     
 ## <a name="generate-sample-data"></a>Generování ukázkových dat
 
-Teď, když je služba Azure Průzkumník dat a účet úložiště připojené, můžete vytvořit ukázková data a nahrát je do úložiště objektů BLOB.
+Teď, když jsou Azure Data Explorer a účet úložiště připojené, můžete vytvořit ukázková data a nahrát je do úložiště objektů blob.
 
-Budeme pracovat se skriptem malého prostředí, který vydává několik základních příkazů rozhraní příkazového řádku Azure pro interakci s Azure Storagemi prostředky. Tento skript vytvoří nový kontejner v účtu úložiště, nahraje do tohoto kontejneru existující soubor (jako objekt BLOB) a pak zobrazí seznam objektů BLOB v kontejneru. Pomocí [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) můžete skript spustit přímo na portálu.
+Budeme pracovat s malým shellovým skriptem, který vydává několik základních příkazů Azure CLI pro interakci s prostředky Azure Storage. Tento skript vytvoří nový kontejner ve vašem účtu úložiště, nahraje existující soubor (jako objekt blob) do tohoto kontejneru a pak zobrazí seznam objektů BLOB v kontejneru. [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) můžete použít ke spuštění skriptu přímo na portálu.
 
-Uložte data do souboru a nahrajte ho pomocí tohoto skriptu:
+Uložte data do souboru a nahrajte je pomocí tohoto skriptu:
 
 ```json
 {"TimeStamp": "1987-11-16 12:00","Value": "Hello World","Source": "TestSource"}
@@ -159,39 +159,39 @@ Uložte data do souboru a nahrajte ho pomocí tohoto skriptu:
 ```
 
 > [!NOTE]
-> Aby se dosáhlo nejlepšího výkonu ingestování, musí být předávána *nekomprimovaná* velikost komprimovaných objektů BLOB odeslaných pro přijímání. Vzhledem k tomu, že Event Grid oznámení obsahují pouze základní údaje, musí být informace o velikosti explicitně sdělovány. Informace o nekomprimované velikosti lze poskytnout nastavením vlastnosti `rawSizeBytes` u metadat objektu BLOB s *nekomprimovanými* velikostmi dat v bajtech.
+> Chcete-li dosáhnout nejlepšího výkonu při požití, musí být *sdělena nekomprimovaná* velikost komprimovaných objektů BLOB odeslaných k požití. Vzhledem k tomu, že oznámení mřížky událostí obsahují pouze základní podrobnosti, musí být informace o velikosti explicitně sděleny. Informace o nekomprimované velikosti lze `rawSizeBytes` poskytnout nastavením vlastnosti metadat objektu blob s *nekomprimovanou* velikostí dat v bajtech.
 
-### <a name="ingestion-properties"></a>Vlastnosti ingestování
+### <a name="ingestion-properties"></a>Vlastnosti požití
 
-[Vlastnosti](https://docs.microsoft.com/azure/kusto/management/data-ingestion/#ingestion-properties) příjmu objektu blob můžete určit prostřednictvím metadat objektu BLOB.
+Můžete určit [vlastnosti ingestování](https://docs.microsoft.com/azure/kusto/management/data-ingestion/#ingestion-properties) objektu blob ingestování prostřednictvím metadat objektu blob.
 
 Tyto vlastnosti lze nastavit:
 
 |**Vlastnost** | **Popis vlastnosti**|
 |---|---|
-| `rawSizeBytes` | Velikost nezpracovaných (nekomprimovaných) dat Pro Avro/ORC/Parquet se jedná o velikost před použitím komprese specifické pro formát.|
-| `kustoTable` |  Název existující cílové tabulky Přepíše `Table` sadu v okně `Data Connection`. |
-| `kustoDataFormat` |  Formát dat. Přepíše `Data format` sadu v okně `Data Connection`. |
-| `kustoIngestionMappingReference` |  Název existujícího mapování ingestování, které se má použít. Přepíše `Column mapping` sadu v okně `Data Connection`.|
-| `kustoIgnoreFirstRecord` | Pokud je nastavená na `true`, Kusto ignoruje první řádek objektu BLOB. Použijte v tabulkovém formátu data (CSV, TSV nebo podobné) k ignorování hlaviček. |
-| `kustoExtentTags` | Řetězec představující [značky](/azure/kusto/management/extents-overview#extent-tagging) , které budou připojeny k výslednému rozsahu. |
-| `kustoCreationTime` |  Přepíše [$IngestionTime](/azure/kusto/query/ingestiontimefunction?pivots=azuredataexplorer) pro objekt blob, formátovaný jako řetězec ISO 8601. Použijte k naplnění. |
+| `rawSizeBytes` | Velikost nezpracovaných (nekomprimovaných) dat. Pro Avro/ORC/Parquet se jedná o velikost před použitím komprese specifické pro formát.|
+| `kustoTable` |  Název existující cílové tabulky. Přepíše `Table` sadu na `Data Connection` noži. |
+| `kustoDataFormat` |  Formát dat. Přepíše `Data format` sadu na `Data Connection` noži. |
+| `kustoIngestionMappingReference` |  Název existujícímapování ingestování, které má být použito. Přepíše `Column mapping` sadu na `Data Connection` noži.|
+| `kustoIgnoreFirstRecord` | Pokud je `true`nastavena na , Kusto ignoruje první řádek objektu blob. Pomocí dat v tabulkovém formátu (CSV, TSV nebo podobných) můžete záhlaví ignorovat. |
+| `kustoExtentTags` | Řetězec představující [značky,](/azure/kusto/management/extents-overview#extent-tagging) které budou připojeny do výsledného rozsahu. |
+| `kustoCreationTime` |  Přepíše [$IngestionTime](/azure/kusto/query/ingestiontimefunction?pivots=azuredataexplorer) pro objekt blob formátovaný jako řetězec ISO 8601. Používá se pro zasypávání. |
 
 > [!NOTE]
-> Azure Průzkumník dat neodstraní objekty blob po ingestování.
-> Uložte objekty blob pro thrre do pěti dnů.
-> Použijte [životní cyklus úložiště objektů BLOB v Azure](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) ke správě odstranění objektu BLOB. 
+> Azure Data Explorer neodstraní objekty BLOB po požití.
+> Ponechte kuličky po dobu pěti dnů.
+> Ke správě odstranění objektů blob použijte [životní cyklus úložiště objektů Blob Azure.](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) 
 
 ## <a name="review-the-data-flow"></a>Kontrola toku dat
 
 > [!NOTE]
-> Azure Průzkumník dat má agregační (Batch) zásadu pro ingestování dat navrženou pro optimalizaci procesu ingestování.
-Ve výchozím nastavení je zásada nakonfigurovaná na 5 minut.
-V případě potřeby budete moct zásady později změnit. V tomto článku můžete očekávat latenci během několika minut.
+> Azure Data Explorer má zásady agregace (dávkování) pro ingestování dat určené k optimalizaci procesu ingestování.
+Ve výchozím nastavení je zásada nakonfigurována na 5 minut.
+V případě potřeby budete moci zásady později změnit. V tomto článku můžete očekávat latenci několik minut.
 
-1. V Azure Portal se v rámci služby Event Grid zobrazuje špička aktivity v době, kdy je aplikace spuštěná.
+1. Na webu Azure Portal se v mřížce událostí zobrazí špička aktivity, když je aplikace spuštěná.
 
-    ![Graf Event Grid](media/ingest-data-event-grid/event-grid-graph.png)
+    ![Graf mřížky událostí](media/ingest-data-event-grid/event-grid-graph.png)
 
 1. Pokud chcete zkontrolovat, kolik zpráv se zatím dostalo do databáze, spusťte v testovací databázi následující dotaz.
 
@@ -212,7 +212,7 @@ V případě potřeby budete moct zásady později změnit. V tomto článku mů
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud neplánujete znovu použít službu Event Grid, vyčistěte **test-hub-RG**, abyste se vyhnuli nákladům.
+Pokud neplánujete znovu použít mřížku událostí, vyčistěte **test-hub-rg**, abyste se vyhnuli nákladům.
 
 1. Úplně nalevo na webu Azure Portal vyberte **Skupiny prostředků** a pak vyberte skupinu prostředků, kterou jste vytvořili.  
 
@@ -222,8 +222,8 @@ Pokud neplánujete znovu použít službu Event Grid, vyčistěte **test-hub-RG*
 
 1. Ve skupině prostředků **test-resource-group** vyberte **Odstranit skupinu prostředků**.
 
-1. V novém okně zadejte název skupiny prostředků, kterou chcete odstranit (*test-hub-RG*), a pak vyberte **Odstranit**.
+1. V novém okně zadejte název skupiny prostředků, kterou chcete odstranit *(test-hub-rg),* a pak vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Dotazování na data v Azure Průzkumník dat](web-query-data.md)
+* [Dotazovat se na data v Průzkumníku dat Azure](web-query-data.md)

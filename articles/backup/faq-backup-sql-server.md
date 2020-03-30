@@ -1,107 +1,107 @@
 ---
-title: Nejčastější dotazy k zálohování SQL Server databází na virtuálních počítačích Azure
-description: Získejte odpovědi na běžné dotazy týkající se zálohování SQL Server databází na virtuálních počítačích Azure pomocí Azure Backup.
+title: Nejčastější dotazy – zálohování databází SQL Serveru na virtuálních počítačích Azure
+description: Najděte odpovědi na běžné otázky týkající se zálohování databází SQL Serveru na virtuálních počítačích Azure pomocí Azure Backup.
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.openlocfilehash: a973761bf16e2d271d718e4a8b29e08624276987
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79247706"
 ---
-# <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Nejčastější dotazy týkající se SQL Server databází, které běží na zálohování virtuálních počítačů Azure
+# <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Nejčastější dotazy k databázím SQL Serveru spuštěným na zálohě virtuálního počítače Azure
 
-Tento článek obsahuje odpovědi na běžné dotazy týkající se zálohování SQL Server databází, které běží na virtuálních počítačích Azure a používají službu [Azure Backup](backup-overview.md) .
+Tento článek odpovídá na běžné otázky týkající se zálohování databází SQL Serveru, které běží na virtuálních počítačích Azure a používají službu [Azure Backup.](backup-overview.md)
 
-## <a name="can-i-use-azure-backup-for-iaas-vm-as-well-as-sql-server-on-the-same-machine"></a>Můžu použít Azure Backup pro virtuální počítač s IaaS a SQL Server ve stejném počítači?
+## <a name="can-i-use-azure-backup-for-iaas-vm-as-well-as-sql-server-on-the-same-machine"></a>Můžu použít zálohu Azure pro virtuální počítač IaaS i SQL Server na stejném počítači?
 
-Ano, na jednom virtuálním počítači můžete mít zálohování virtuálních počítačů i zálohování SQL. V tomto případě interně na virtuálním počítači spustíme úplnou zálohu jenom pro kopírování, aby se protokoly nezkrátily.
+Ano, můžete mít zálohování virtuálních počítačových a SQL zálohování na stejném virtuálním počítači. V takovém případě interně aktivujeme úplnou zálohu pouze pro kopírování na virtuálním počítači, abychom nezkrátižovali protokoly.
 
-## <a name="does-the-solution-retry-or-auto-heal-the-backups"></a>Opakuje řešení opakování nebo automaticky zaretušuje zálohy?
+## <a name="does-the-solution-retry-or-auto-heal-the-backups"></a>Má řešení opakovat nebo auto-léčit zálohy?
 
-Za určitých okolností služba Azure Backup spustí znovu média zálohování. Automatické vyretušování může nastat pro některé ze šesti podmínek uvedených níže:
+Za určitých okolností služba Azure Backup aktivuje nápravné zálohy. Auto-léčit se může stát pro některou ze šesti podmínek uvedených níže:
 
-- Pokud se protokol nebo rozdílová záloha nezdařila z důvodu chyby ověření LSN, je místo toho převeden další protokol nebo rozdílové zálohování na úplnou zálohu.
-- Pokud před zálohováním protokolu nebo rozdílového zálohování neproběhla žádná úplná záloha, protokol nebo rozdílové zálohování se místo toho převede na úplnou zálohu.
-- Pokud je nejnovější úplné zálohování v čase starší než 15 dní, převede se další protokol nebo rozdílové zálohování na úplnou zálohu.
-- Všechny úlohy zálohování, které se zruší kvůli upgradu rozšíření, se po dokončení upgradu znovu aktivují a spustí se rozšíření.
-- Pokud se rozhodnete přepsat databázi během obnovení, další zálohování protokolu nebo rozdílové zálohy se nezdařila a místo toho se spustí úplné zálohování.
-- V případech, kdy je potřeba k resetování řetězů protokolů z důvodu změny v modelu obnovení databáze, se úplná aktivace automaticky aktivuje v dalším plánu.
+- Pokud protokol nebo rozdílové zálohování selže z důvodu chyby ověření LSN, další protokol nebo rozdílové zálohy je místo toho převedena na úplnou zálohu.
+- Pokud před protokolem nebo rozdílovou zálohou nedošlo k žádné úplné záloze, bude tato záloha protokolu nebo rozdílové zálohy převedena na úplnou zálohu.
+- Pokud je poslední úplné zálohy point-in-time je starší než 15 dní, další protokol nebo rozdílové zálohy je místo toho převedena na úplnou zálohu.
+- Všechny úlohy zálohování, které se zruší z důvodu upgradu rozšíření, se po dokončení upgradu a spuštění rozšíření znovu aktivují.
+- Pokud se rozhodnete přepsat databázi během obnovení, další protokol/rozdílové zálohování se nezdaří a místo toho se aktivuje úplná záloha.
+- V případech, kdy je vyžadována úplná záloha k obnovení řetězů protokolů z důvodu změny v modelu obnovení databáze, se automaticky spustí úplné v dalším plánu.
 
-Automatické zaretušování je ve výchozím nastavení povolené pro všechny uživatele. Pokud se ale rozhodnete, že se odhlásíte, postupujte takto:
+Auto-heal jako schopnost je povolena pro všechny uživatele ve výchozím nastavení; Nicméně v případě, že se rozhodnete odhlásit se z něj, proveďte následující:
 
-- V instanci SQL Server v adresáři *C:\Program Files\Azure úlohy Backup\bin* vytvořte nebo upravte soubor **ExtensionSettingsOverrides. JSON** .
-- V souboru **ExtensionSettingsOverrides. JSON**nastavte *{"EnableAutoHealer": false}* .
+- V instanci serveru SQL Server ve složce *C:\Program Files\Azure Workload Backup\bin* vytvořte nebo upravte soubor **ExtensionSettingsOverrides.json.**
+- V **souboru ExtensionSettingsOverrides.json**nastavte *{"EnableAutoHealer": false}*.
 - Uložte změny a zavřete soubor.
-- V SQL Server instanci otevřete **úlohu spravovat** a restartujte službu **AzureWLBackupCoordinatorSvc** .
+- V instanci serveru SQL Server otevřete **službu Správa úloh** a restartujte službu **AzureWLBackupCoordinatorSvc.**
 
-## <a name="can-i-control-how-many-concurrent-backups-run-on-the-sql-server"></a>Můžu řídit, kolik souběžných záloh běží na SQL serveru?
+## <a name="can-i-control-how-many-concurrent-backups-run-on-the-sql-server"></a>Lze určit, kolik souběžných záloh běží na serveru SQL?
 
-Ano. Rychlost, s jakou se zásady zálohování spouštějí, můžete omezit tak, aby se minimalizoval dopad na instanci SQL Server. Postup změny nastavení:
+Ano. Můžete omezit rychlost, jakou se spustí zásady zálohování, abyste minimalizovali dopad na instanci serveru SQL Server. Změna nastavení:
 
-1. V instanci SQL Server v adresáři *C:\Program Files\Azure úlohy Backup\bin* vytvořte soubor *ExtensionSettingsOverrides. JSON* .
-2. V souboru *ExtensionSettingsOverrides. JSON* změňte nastavení **DefaultBackupTasksThreshold** na nižší hodnotu (například 5). <br>
+1. V instanci serveru SQL Server vytvořte ve složce *C:\Program Files\Azure Workload Backup\bin* soubor *ExtensionSettingsOverrides.json.*
+2. V souboru *ExtensionSettingsOverrides.json* změňte nastavení **DefaultBackupTasksThreshold** na nižší hodnotu (například 5). <br>
   `{"DefaultBackupTasksThreshold": 5}`
 <br>
 Výchozí hodnota DefaultBackupTasksThreshold je **20**.
 
 3. Uložte změny a zavřete soubor.
-4. V SQL Server instance otevřete **Správce úloh**. Restartujte službu **AzureWLBackupCoordinatorSvc** .<br/> <br/>
- I když tato metoda pomáhá, pokud zálohovací aplikace spotřebovává velké množství prostředků, je SQL Server [Správce zdrojů](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor?view=sql-server-2017) obecnější způsob, jak určit omezení pro procesor, fyzickou/v/a paměť, které mohou používat příchozí žádosti o aplikace.
+4. V instanci serveru SQL Server otevřete **Správce úloh**. Restartujte službu **AzureWLBackupCoordinatorSvc.**<br/> <br/>
+ Zatímco tato metoda pomáhá, pokud zálohovací aplikace spotřebovává velké množství prostředků, SQL Server [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor?view=sql-server-2017) je obecnější způsob, jak určit omezení na množství procesoru, fyzické vi a paměti, které příchozí požadavky aplikací lze použít.
 
 > [!NOTE]
-> V uživatelském prostředí můžete stále pokračovat a naplánovat tolik záloh v daném čase, ale budou zpracovány v posuvných intervalech, 5, podle výše uvedeného příkladu.
+> V UX můžete stále pokračovat a naplánovat tolik záloh v daném okamžiku, nicméně budou zpracovány v posuvném okně řekněme 5, podle výše uvedeného příkladu.
 
-## <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>Můžu spustit úplnou zálohu ze sekundární repliky?
+## <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>Mohu spustit úplnou zálohu ze sekundární repliky?
 
-Podle omezení SQL můžete spustit příkaz Kopírovat pouze úplné zálohování na sekundární replice; Úplné zálohování se ale nepovoluje.
+Podle omezení SQL můžete spustit možnost Kopírovat pouze úplné zálohování na sekundární replice; Úplné zálohování však není povoleno.
 
-## <a name="can-i-protect-availability-groups-on-premises"></a>Můžu chránit skupiny dostupnosti místně?
+## <a name="can-i-protect-availability-groups-on-premises"></a>Mohu chránit místní skupiny dostupnosti?
 
-Ne. Azure Backup chrání SQL Server databáze běžící v Azure. Pokud je skupina dostupnosti (AG) rozložená mezi Azure a místními počítači, může být AG chráněná jenom v případě, že je primární replika spuštěná v Azure. Azure Backup také chrání pouze uzly, které jsou spuštěny ve stejné oblasti Azure jako trezor Recovery Services.
+Ne. Azure Backup chrání databáze SQL Serveru spuštěné v Azure. Pokud je skupina dostupnosti (AG) rozprostřená mezi Azure a místními počítači, AG může být chráněna jenom v případě, že primární replika běží v Azure. Azure Backup také chrání pouze uzly, které běží ve stejné oblasti Azure jako trezor služby Recovery Services.
 
-## <a name="can-i-protect-availability-groups-across-regions"></a>Můžu chránit skupiny dostupnosti napříč různými oblastmi?
+## <a name="can-i-protect-availability-groups-across-regions"></a>Můžu chránit skupiny dostupnosti napříč oblastmi?
 
-Trezor Recovery Services Azure Backup může detekovat a chránit všechny uzly, které jsou ve stejné oblasti jako trezor. Pokud vaše skupina dostupnosti Always On SQL Server zahrnuje více oblastí Azure, nastavte zálohu z oblasti, která má primární uzel. Azure Backup může zjistit a chránit všechny databáze ve skupině dostupnosti podle předvolby zálohování. Pokud vaše předvolba zálohování není splněná, zálohování se nezdaří a zobrazí se výstraha o selhání.
+Trezor služby Azure Backup Recovery Services dokáže rozpoznat a chránit všechny uzly, které jsou ve stejné oblasti jako trezor. Pokud vaše SQL Server always on dostupnost skupiny zahrnuje více oblastí Azure, nastavte zálohu z oblasti, která má primární uzel. Azure Backup může rozpoznat a chránit všechny databáze ve skupině dostupnosti podle předvoleb zálohování. Pokud není splněna vaše předvolba zálohování, zálohy se nezdaří a zobrazí se upozornění na selhání.
 
-## <a name="do-successful-backup-jobs-create-alerts"></a>Vytvářejí úspěšné úlohy zálohování výstrahy?
+## <a name="do-successful-backup-jobs-create-alerts"></a>Vytvářejí úspěšné úlohy zálohování upozornění?
 
-Ne. Úspěšné úlohy zálohování negenerují výstrahy. Výstrahy se odesílají jenom pro úlohy zálohování, které selžou. Podrobné chování výstrah na portálu [najdete tady](backup-azure-monitoring-built-in-monitor.md). V případě, že máte zájem o výstrahy i pro úspěšné úlohy, můžete použít [monitorování pomocí Azure monitor](backup-azure-monitoring-use-azuremonitor.md).
+Ne. Úspěšné úlohy zálohování negenerují výstrahy. Výstrahy jsou odesílány pouze pro úlohy zálohování, které se nezdaří. Podrobné chování pro portálové výstrahy je dokumentováno [zde](backup-azure-monitoring-built-in-monitor.md). V případě, že máte zájem, máte upozornění i pro úspěšné úlohy, můžete použít [monitorování pomocí Azure Monitor](backup-azure-monitoring-use-azuremonitor.md).
 
-## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Můžu v nabídce úlohy zálohování Zobrazit naplánované úlohy zálohování?
+## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Lze zobrazit naplánované úlohy zálohování v nabídce Úlohy zálohování?
 
-V nabídce **úloha zálohování** se zobrazí pouze úlohy zálohování na vyžádání. Pro naplánovaná úloha použijte [monitorování pomocí Azure monitor](backup-azure-monitoring-use-azuremonitor.md).
+V nabídce **Úloha zálohování** se zobrazí pouze úlohy zálohování na vyžádání. Pro naplánované monitorování úloh [pomocí Nástroje pro sledování Azure](backup-azure-monitoring-use-azuremonitor.md).
 
-## <a name="are-future-databases-automatically-added-for-backup"></a>Jsou budoucí databáze automaticky přidány pro zálohování?
+## <a name="are-future-databases-automatically-added-for-backup"></a>Budou se automaticky zálohovat i budoucí databáze?
 
-Ano, tuto možnost můžete dosáhnout [automatickou ochranou](backup-sql-server-database-azure-vms.md#enable-auto-protection).  
+Ano, této funkce můžete dosáhnout pomocí [automatické ochrany](backup-sql-server-database-azure-vms.md#enable-auto-protection).  
 
-## <a name="if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups"></a>Když odstraním databázi z autoprotected instance, co se stane se zálohami?
+## <a name="if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups"></a>Pokud odstraním databázi z automaticky chráněné instance, co se stane se zálohami?
 
-Pokud je databáze vyřazena z autoprotected instance, zálohování databáze se stále pokouší. To znamená, že Odstraněná databáze začne v rámci **zálohované položky** zobrazovat stav není v pořádku a je pořád chráněná.
+Pokud je databáze vynechána z autochráněné instance, jsou stále pokusy o zálohování databáze. To znamená, že odstraněná databáze se začne zobrazovat jako není v pořádku v části **Položky zálohování** a je stále chráněna.
 
-Správným způsobem zastavení ochrany této databáze je **zastavení zálohování** s **odstraňováním dat** v této databázi.  
+Správný způsob, jak zastavit ochranu této databáze je provést **zastavit zálohování** s **odstranit data** v této databázi.  
 
-## <a name="if-i-do-stop-backup-operation-of-an-autoprotected-database-what-will-be-its-behavior"></a>Když zabráním operaci zálohování funkce autoprotected Database, která bude její chování?
+## <a name="if-i-do-stop-backup-operation-of-an-autoprotected-database-what-will-be-its-behavior"></a>Pokud zastavím operaci zálohování automaticky chráněné databáze, jaké bude její chování?
 
-Pokud **zastavíte zálohování s uchováním dat**, nebudou probíhat žádná budoucí zálohování a stávající body obnovení zůstanou beze změny. Databáze bude i nadále považována za chráněnou a zobrazí se v části **zálohované položky**.
+Pokud **zálohování zastavíte s uchováním dat**, nebudou probíhat žádné budoucí zálohy a existující body obnovení zůstanou beze změny. Databáze bude stále považována za chráněnou a bude zobrazena v části **Položky zálohování**.
 
-Pokud **zálohování ukončíte pomocí odstranit data**, nebudou probíhat žádná budoucí zálohování a existující body obnovení budou také odstraněny. Databáze bude považována za nechráněnou a zobrazí se v rámci instance v části Konfigurace zálohování. Na rozdíl od jiných chráněných databází, které je možné vybrat ručně nebo které můžou získat autoochranu, se ale tato databáze zobrazuje šedě a nedá se vybrat. Jediným způsobem, jak tuto databázi znovu chránit, je vypnout automatickou ochranu instance. Nyní můžete vybrat tuto databázi a nakonfigurovat na ni ochranu nebo znovu zapnout automatickou ochranu instance.
+Pokud **zálohování zastavíte odstraněním dat**, nebudou probíhat žádné budoucí zálohy a budou odstraněny také stávající body obnovení. Databáze bude považována za nechráněnou a zobrazí se pod instancí v části Konfigurovat zálohování. Na rozdíl od jiných databází chráněných předem, které lze vybrat ručně nebo které mohou být automaticky chráněny, se však tato databáze zobrazí šedě a nelze ji vybrat. Jediný způsob, jak znovu chránit tuto databázi je zakázat automatickou ochranu na instanci. Nyní můžete vybrat tuto databázi a nakonfigurovat ochranu na ní nebo znovu povolit automatickou ochranu instance znovu.
 
-## <a name="if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior"></a>Když změním název databáze poté, co byla chráněna, jaký bude chování?
+## <a name="if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior"></a>Pokud změním název databáze poté, co byla chráněna, jaké bude chování?
 
-Přejmenovaná databáze je považována za novou databázi. Proto se služba bude považovat za tuto situaci, jako kdyby nebyla nalezena databáze a selhala zálohování.
+Přejmenovaná databáze je považována za novou databázi. Proto služba bude považovat tuto situaci, jako by databáze nebyla nalezena a selhání zálohy.
 
-Můžete vybrat databázi, která je teď přejmenovaná, a nakonfigurovat na ni ochranu. V případě, že je v instanci povolena Automatická ochrana, přejmenovaná databáze bude automaticky rozpoznána a chráněna.
+Můžete vybrat databázi, která je nyní přejmenována, a nakonfigurovat ochranu. V případě, že je v instanci povolena automatická ochrana, přejmenovaná databáze bude automaticky rozpoznána a chráněna.
 
-## <a name="why-cant-i-see-an-added-database-for-an-autoprotected-instance"></a>Proč se mi nezobrazuje přidaná databáze pro autoprotected instance?
+## <a name="why-cant-i-see-an-added-database-for-an-autoprotected-instance"></a>Proč nevidím přidanou databázi pro autochráněnou instanci?
 
-Databáze, kterou [přidáte do autoprotected instance](backup-sql-server-database-azure-vms.md#enable-auto-protection) , se nemusí hned zobrazit v části chráněné položky. Důvodem je to, že zjišťování se obvykle spouští každých 8 hodin. Můžete však okamžitě vyhledat a chránit nové databáze, pokud ručně spustíte zjišťování výběrem možnosti znovu **zjistit databáze**, jak je znázorněno na následujícím obrázku:
+Databáze, kterou [přidáte do autochráněné instance,](backup-sql-server-database-azure-vms.md#enable-auto-protection) se nemusí okamžitě zobrazit pod chráněnými položkami. Důvodem je, že zjišťování obvykle běží každých 8 hodin. Nové databáze však můžete okamžitě zjistit a chránit, pokud zjišťování spustíte ručně tak, že vyberete **znovu objevit centrální deb ,** jak je znázorněno na následujícím obrázku:
 
   ![Ruční zjištění nově přidané databáze](./media/backup-azure-sql-database/view-newly-added-database.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte se, jak [zálohovat databázi SQL Server](backup-azure-sql-database.md) , která běží na virtuálním počítači Azure.
+Zjistěte, jak [zálohovat databázi SQL Serveru,](backup-azure-sql-database.md) která běží na virtuálním počítači Azure.

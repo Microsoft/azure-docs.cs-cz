@@ -1,39 +1,39 @@
 ---
-title: Vytvoření a šifrování sady škálování virtuálních počítačů pomocí Azure Resource Manager šablon
-description: V tomto rychlém startu se dozvíte, jak pomocí šablon Azure Resource Manager vytvořit a zašifrovat sadu škálování virtuálního počítače.
+title: Vytvoření a šifrování škálovací sady virtuálních strojů pomocí šablon Azure Resource Manager
+description: V tomto rychlém startu se dozvíte, jak pomocí šablon Azure Resource Manager vytvořit a zašifrovat škálovací sadu virtuálních strojů.
 author: msmbaldwin
 ms.author: mbaldwin
 ms.service: virtual-machine-scale-sets
 ms.topic: quickstart
 ms.date: 10/10/2019
 ms.openlocfilehash: aeba9aee8dd10b1245fb0a1e1cc98a1951382c72
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "72529997"
 ---
-# <a name="encrypt-virtual-machine-scale-sets-with-azure-resource-manager"></a>Zašifrujte Virtual Machine Scale Sets pomocí Azure Resource Manager
+# <a name="encrypt-virtual-machine-scale-sets-with-azure-resource-manager"></a>Šifrování škálovacích sad virtuálních strojů pomocí Azure Resource Manageru
 
-Pomocí šablon Azure Resource Manager můžete šifrovat nebo dešifrovat virtuální počítače se systémem Linux Virtual Machine Scale Sets.
+Škálovací sady virtuálních strojů Linuxu můžete šifrovat nebo dešifrovat pomocí šablon Azure Resource Manager.
 
 ## <a name="deploying-templates"></a>Nasazení šablon
 
 Nejprve vyberte šablonu, která odpovídá vašemu scénáři.
 
-- [Povolit šifrování disku na běžící sadě virtuálních počítačů se systémem Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
+- [Povolení šifrování disku ve spuštěné škálovací sadě virtuálních počítačů s Linuxem](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
 
-- [Povolení šifrování disku ve spuštěné sadě škálování virtuálních počítačů s Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
+- [Povolení šifrování disku ve spuštěné škálovací sadě virtuálních počítačů s Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
 
-  - [Nasazení sady virtuálních počítačů se systémem Linux s využitím škálování virtuálního počítače s JumpBox a povolení šifrování v systémech Linux Virtual Machine Scale Sets](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
+  - [Nasazení škálovací sady virtuálních strojů virtuálních virtuálních počítačů se jumpboxem a umožňuje šifrování na škálovacích sadách virtuálních strojů pro Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
 
-  - [Nasazení sady virtuálních počítačů s virtuálním počítačem s JumpBox a povolením šifrování ve virtuálních počítačích s Windows VM Scale Sets](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
+  - [Nasazení škálovací sady virtuálních počítačů virtuálních počítačů se systémem Windows pomocí funkce jumpbox a umožňuje šifrování ve škálovacích sadách virtuálních strojů s Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
 
-- [Zakázat šifrování disku na běžící sadě virtuálních počítačů se systémem Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
+- [Zakázání šifrování disku ve spuštěné škálovací sadě virtuálních počítačů s Linuxem](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
 
-- [Zakázat šifrování disku ve spuštěné sadě škálování virtuálních počítačů s Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)
+- [Zakázání šifrování disku ve spuštěné škálovací sadě virtuálních počítačů s Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)
 
-Pak postupujte podle těchto kroků:
+Potom postupujte podle těchto kroků:
 
      1. Click **Deploy to Azure**.
      2. Fill in the required fields then agree to the terms and conditions.
@@ -41,8 +41,8 @@ Pak postupujte podle těchto kroků:
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Azure Disk Encryption pro Virtual Machine Scale Sets](disk-encryption-overview.md)
-- [Šifrování sady škálování virtuálních počítačů pomocí Azure CLI](disk-encryption-cli.md)
-- [Šifrování virtuálních počítačů pomocí Azure PowerShell](disk-encryption-powershell.md)
-- [Vytvoření a konfigurace trezoru klíčů pro Azure Disk Encryption](disk-encryption-key-vault.md)
-- [Použití Azure Disk Encryption s pořadím rozšíření pro škálování sady virtuálních počítačů](disk-encryption-extension-sequencing.md)
+- [Šifrování disku Azure pro škálovací sady virtuálních počítačů](disk-encryption-overview.md)
+- [Šifrování škálovacích sad virtuálních strojů pomocí příkazového příkazového příkazu Azure](disk-encryption-cli.md)
+- [Šifrování škálovacích sad virtuálních strojů pomocí Azure PowerShellu](disk-encryption-powershell.md)
+- [Vytvoření a konfigurace trezoru klíčů pro šifrování disku Azure](disk-encryption-key-vault.md)
+- [Použití Azure Disk Encryption s řazením rozšíření škálovací sady virtuálních počítačů](disk-encryption-extension-sequencing.md)

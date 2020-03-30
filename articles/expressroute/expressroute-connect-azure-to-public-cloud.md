@@ -1,6 +1,6 @@
 ---
-title: Připojení Azure k veřejným cloudům | Microsoft Docs
-description: Popisuje různé způsoby, jak připojit Azure k ostatním veřejným cloudům.
+title: Připojení Azure k veřejným cloudům | Dokumenty společnosti Microsoft
+description: Popis různých způsobů připojení Azure k jiným veřejným cloudům
 services: expressroute
 author: osamazia
 ms.service: expressroute
@@ -8,60 +8,60 @@ ms.topic: article
 ms.date: 07/24/2019
 ms.author: osamaz
 ms.openlocfilehash: b8a454c2a104dfe8545cf734bf0b020b8f749bb1
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73889630"
 ---
 # <a name="connecting-azure-with-public-clouds"></a>Propojení Azure s veřejnými cloudy
 
-Řada podniků provádí strategii pro více cloudů z důvodu obchodních a technických cílů. Mezi ně patří náklady, flexibilita, dostupnost funkcí, redundance, suverenita dat atd. Tato strategie pomáhá využít nejlepší z obou cloudů. 
+Mnoho podniků sleduje strategii s více cloudy kvůli obchodním a technickým cílům. Patří mezi ně náklady, flexibilita, dostupnost funkcí, redundance, suverenita dat atd. Tato strategie jim pomáhá využít to nejlepší z obou cloudů. 
 
-Tento přístup také představuje problémy pro podnik z pohledu architektury sítě a aplikace. Některé z těchto problémů jsou latencí a propustnost dat. Pro vyřešení těchto výzev se zákazníci chtějí připojit k několika cloudům přímo. Někteří poskytovatelé služeb poskytují řešení pro připojení více poskytovatelů cloudu pro zákazníky. V jiných případech může zákazník nasadit svůj vlastní směrovač pro připojení více veřejných cloudů.
-## <a name="connectivity-via-expressroute"></a>Připojení prostřednictvím ExpressRoute
-ExpressRoute umožňuje zákazníkům, aby své místní sítě rozšířili do cloudu Microsoftu přes soukromé připojení, které usnadňuje poskytovatel připojení. S ExpressRoute můžou zákazníci navázat připojení ke cloudovým službám Microsoftu.
+Tento přístup také představuje výzvy pro podnik, pokud jde o síťovou architekturu a architekturu aplikací. Některé z těchto problémů jsou latence a propustnost dat. K řešení těchto problémů se zákazníci chtějí připojit přímo k více cloudům. Někteří poskytovatelé služeb poskytují řešení pro připojení více poskytovatelů cloudu pro zákazníky. V ostatních případech může zákazník nasadit vlastní směrovač pro připojení více veřejných cloudů.
+## <a name="connectivity-via-expressroute"></a>Připojení přes ExpressRoute
+ExpressRoute umožňuje zákazníkům rozšířit své místní sítě do cloudu Microsoftu prostřednictvím privátního připojení, které usnadňuje poskytovatel připojení. Pomocí expressroute mohou zákazníci navázat připojení ke cloudovým službám Microsoftu.
 
 Existují tři způsoby, jak se připojit přes ExpressRoute.
 
-1. Poskytovatel Layer3
-2. Poskytovatel layer2
+1. Zprostředkovatel vrstvy3
+2. Zprostředkovatel vrstvy2
 3. Přímé připojení
 
-### <a name="layer3-provider"></a>Poskytovatel Layer3
+### <a name="layer3-provider"></a>Zprostředkovatel vrstvy3
 
-Poskytovatelé Layer3 se běžně označují jako poskytovatelé IP adres VPN nebo MPLS VPN. Zákazníci využívají tyto poskytovatele pro připojení k systému MultiPoint mezi datovými centry, pobočkami a cloudem. Zákazníci se připojují k poskytovateli L3 prostřednictvím protokolu BGP nebo prostřednictvím statické výchozí trasy. Poskytovatel služeb inzeruje trasy mezi zákaznickými weby, datacentry a veřejným cloudem. 
+Poskytovatelé Layer3 jsou běžně známí jako ip VPN nebo MPLS VPN zprostředkovatelé. Zákazníci využívají tyto poskytovatele pro vícebodové připojení mezi svými datovými centry, pobočkami a cloudem. Zákazníci se připojují k poskytovateli L3 prostřednictvím protokolu BGP nebo prostřednictvím statické výchozí trasy. Poskytovatel služeb inzeruje trasy mezi zákaznickými weby, datovými centry a veřejným cloudem. 
  
-Při připojování prostřednictvím poskytovatele Layer3 společnost Microsoft prostřednictvím protokolu BGP inzeruje trasy virtuální sítě zákazníka poskytovateli služeb. Poskytovatel může mít dvě různé implementace.
+Při připojování prostřednictvím zprostředkovatele Layer3 bude společnost Microsoft inzerovat trasy virtuální sítě zákazníků poskytovateli služeb přes protokol BGP. Zprostředkovatel může mít dvě různé implementace.
 
 ![](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l3.png)
 
-Poskytovatel může vyčlenit každého poskytovatele cloudu v samostatném VRF, pokud přenosy ze všech poskytovatelů cloudu budou dostupné ve směrovači zákazníka. Pokud zákazník používá protokol BGP s poskytovatelem služeb, pak se tyto trasy ve výchozím nastavení znovu inzerují jiným poskytovatelům cloudu. 
+Poskytovatel může být přistání každého poskytovatele cloudu v samostatném VRF, pokud provoz ze všech poskytovatelů cloudu dosáhne na směrovačzákazníka. Pokud zákazník používá protokol BGP s poskytovatelem služeb, budou tyto trasy ve výchozím nastavení znovu inzerovány jiným poskytovatelům cloudu. 
 
-Pokud poskytovatel služeb vychází ze všech poskytovatelů cloudu ve stejném VRF, trasy budou od poskytovatele služeb inzerovány přímo poskytovatelům cloudu. To se předpokládá jako standardní operace protokolu BGP, kde jsou trasy eBGP inzerovány jiným sousedním sousedům eBGP ve výchozím nastavení.
+Pokud poskytovatel služeb přistane se všemi poskytovateli cloudu ve stejném VRF, budou trasy inzerovány přímo jiným poskytovatelům cloudu od poskytovatele služeb. To předpokládá standardní operaci Protokolu BGP, kde jsou ve výchozím nastavení inzerovány trasy eBGP ostatním sousedům eBGP.
 
-V každém veřejném cloudu je limit prefixu jiný, takže při distribuci tras by měl dohlížet i poskytovatel služeb směrování.
+Každý veřejný cloud má jiný limit předpony, takže při distribuci tras by měl poskytovatel služeb při distribuci tras opatrnosti.
 
-### <a name="layer2-provider-and-direct-connection"></a>Poskytovatel layer2 a přímé připojení
+### <a name="layer2-provider-and-direct-connection"></a>Zprostředkovatel vrstvy2 a přímé připojení
 
-I když se fyzické připojení v obou modelech liší, ale v Layer3 BGP se naváže přímo mezi MSEE a směrovačem zákazníka. Pro přímé zákazníky ExpressRoute se připojuje přímo k MSEE. V případě layer2 poskytovatel služeb rozšiřuje síť VLAN od zákaznických objektů do cloudu. Zákazníci spouštějí protokol BGP na layer2 síti pro připojení svých řadičů domény ke cloudu.
+Přestože fyzické připojení v obou modelech se liší, ale na vrstvě3 BGP je stanovena přímo mezi MSEE a směrovač zákazníka. Pro ExpressRoute Direct se zákazník připojuje přímo k MSEE. Zatímco v případě Layer2, poskytovatel služeb rozšiřuje VLAN z prostor zákazníka do cloudu. Zákazníci spouštějí protokol BGP v horní části sítě layer2 a připojují své řadiče domény ke cloudu.
 ![](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l2.png)
-V obou případech bude mít zákazník připojení typu Point-to-Point ke každému veřejnému cloudu. Zákazník vytvoří samostatné připojení protokolu BGP ke každému veřejnému cloudu. Trasy přijaté jedním poskytovatelem cloudu budou ve výchozím nastavení inzerovány jinému poskytovateli cloudu. Každý poskytovatel cloudu má jiný limit předpon, takže během inzerce by zákazník měli tyto limity postarat. Zákazník může při inzerci tras z jiných veřejných cloudů použít obvyklé ovladače protokolu BGP u Microsoftu.
+V obou případech bude mít zákazník připojení bod k bodu ke každému z veřejných cloudů. Zákazník vytvoří samostatné připojení Protokolu BGP ke každému veřejnému cloudu. Trasy přijaté jedním poskytovatelem cloudu budou ve výchozím nastavení inzerovány jinému poskytovateli cloudu. Každý poskytovatel cloudu má jiný limit předpony, takže při inzerci tras by se zákazník měl o tyto limity postarat. Zákazník může používat obvyklé knoflíky BGP se společností Microsoft při inzerci tras z jiných veřejných cloudů.
 
-## <a name="direct-connection-with-expressroute"></a>Přímé připojení pomocí ExpressRoute
+## <a name="direct-connection-with-expressroute"></a>Přímé spojení s ExpressRoute
 
-Zákazníci se můžou rozhodnout připojit ExpressRoute přímo k nabídce přímého připojení poskytovatele cloudu. Dva poskytovatelé cloudu budou připojeni zpátky a protokol BGP se naváže přímo mezi svými směrovači. Tento typ připojení je k dispozici pro Oracle ještě dnes.
+Zákazníci se mohou rozhodnout připojit ExpressRoute přímo k nabídce přímého připojení poskytovatele cloudu. Dva poskytovatelé cloudu budou připojeni zády k závaru a BGP bude zřízenpřímo mezi jejich směrovači. Tento typ připojení je dnes k dispozici u společnosti Oracle.
 
-## <a name="site-to-site-vpn"></a>Síť VPN typu Site-to-site
+## <a name="site-to-site-vpn"></a>Site-to-site VPN
 
-Zákazníci můžou využít Internet k připojení svých instancí v Azure k ostatním veřejným cloudům. Téměř všichni poskytovatelé cloudu nabízejí možnosti sítě VPN typu Site-to-site. Z důvodu nedostatku určitých variant ale může dojít k nekompatibilitě. Například někteří poskytovatelé cloudu podporují jenom IKEv1, takže v tomto cloudu je vyžadován koncový bod ukončení sítě VPN. Pro cloudové poskytovatele podporující IKEv2 se dá vytvořit přímé tunelové propojení mezi bránami VPN v obou poskytovatelích cloudu.
+Zákazníci můžou využít internet k propojení svých instancí v Azure s jinými veřejnými cloudy. Téměř všichni poskytovatelé cloudu nabízejí možnosti VPN site-to-site. Nicméně, tam by mohlo být nekompatibility kvůli nedostatku některých variant. Například někteří poskytovatelé cloudu podporují pouze IKEv1, takže je v tomto cloudu vyžadován koncový bod ukončení SÍTĚ VPN. Pro ty poskytovatele cloudu podporující IKEv2 lze vytvořit přímý tunel mezi bránami VPN u obou poskytovatelů cloudu.
 
-Síť Site-to-Site VPN není považována za vysoce propustnost a řešení s nízkou latencí. Dá se ale použít jako záložní pro fyzické připojení.
+Síť VPN site-to-site se nepovažuje za řešení s vysokou propustností a nízkou latencí. Lze jej však použít jako zálohu fyzického připojení.
 
 ## <a name="next-steps"></a>Další kroky
-Další otázky k připojení ExpressRoute a virtuální sítě najdete v tématu [ExpressRoute – nejčastější][ER-FAQ] dotazy.
+Další otázky týkající se ExpressRoute a připojení k virtuální síti najdete v nejčastějších dotazech k [ExpressRoute.][ER-FAQ]
 
-Další informace najdete v tématu [Nastavení přímého připojení mezi Azure a Oracle cloudem][ER-OCI] pro připojení mezi Azure a Oracle.
+Připojení mezi Azure a Oracle Cloud emitonuje [přímé připojení mezi Azure][ER-OCI] a Oracle.
 
 <!--Link References-->
 [ER-FAQ]: https://docs.microsoft.com/azure/expressroute/expressroute-faqs

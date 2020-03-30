@@ -1,7 +1,7 @@
 ---
-title: C# Příklad synonym
+title: Synonyma C# příklad
 titleSuffix: Azure Cognitive Search
-description: V tomto C# příkladu se dozvíte, jak přidat funkci synonym do indexu v Azure kognitivní hledání. Mapa synonym je seznam ekvivalentních termínů. Pole, která podporují synonymum, rozšiřují dotazy tak, aby zahrnovaly uživatelsky zadaný termín a všechna související synonyma.
+description: V tomto příkladu Jazyka C# se dozvíte, jak přidat funkci synonym do indexu v Azure Cognitive Search. Mapa synonym je seznam ekvivalentních termínů. Pole se synonymem podporují rozšíření dotazů tak, aby zahrnovaly termín poskytnutý uživatelem a všechna související synonyma.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,41 +9,41 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 8cc085fd27004928babd7df305a4452d1b068f6e
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72794239"
 ---
-# <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>Příklad: Přidání synonym pro Azure Kognitivní hledání vC#
+# <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>Příklad: Přidání synonym pro Azure Cognitive Search v C #
 
 Synonyma rozšiřují dotazy hledáním shody s termíny, které jsou považované za sémantické ekvivalenty vstupního výrazu. Chcete třeba, aby položce auto odpovídaly i dokumenty obsahující termíny automobil a vozidlo. 
 
-V Azure Kognitivní hledání jsou synonyma definována v *mapě synonym*prostřednictvím *pravidel mapování* , která přidružuje ekvivalentní podmínky. Tento příklad popisuje základní kroky pro přidání a používání synonym s existujícím indexem. Získáte informace o těchto tématech:
+V Azure Cognitive Search synonyma jsou definovány v *mapě synonyma*, prostřednictvím *mapování pravidel,* která přidruží ekvivalentní termíny. Tento příklad popisuje základní kroky pro přidávání a používání synonym s existující index. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Vytvořte mapu synonym pomocí třídy [SynonymMap](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) . 
-> * Nastavte vlastnost [SynonymMaps](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet) pro pole, která by měla podporovat rozbalování dotazů prostřednictvím synonym.
+> * Vytvořte mapu synonym pomocí třídy [SynonymMap.](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) 
+> * Nastavte [vlastnost SynonymMaps](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet) na pole, která by měla podporovat rozšíření dotazu prostřednictvím synonym.
 
-Můžete zadat dotaz na pole s povoleným synonymem, stejně jako normálně. Pro přístup k synonymům není nutná žádná další syntaxe dotazů.
+Můžete zadat dotaz na pole s podporou synonym a za normálních okolností. Pro přístup ke synonymům není vyžadována žádná další syntaxe dotazu.
 
-Můžete vytvořit několik map synonym, zveřejnit je jako prostředky na úrovni služby dostupné pro všechny indexy a potom určit, který se má použít na úrovni pole. V době dotazu se kromě hledání indexu v Azure Kognitivní hledání provádí vyhledávání v mapě synonym, pokud je jedna zadaná u polí použitých v dotazu.
+Můžete vytvořit několik map synonym, zveřejnit je jako prostředky na úrovni služby dostupné pro všechny indexy a potom určit, který se má použít na úrovni pole. V době dotazu, kromě vyhledávání indexu Azure Cognitive Search provádí vyhledávání v mapě synonym, pokud je zadán na pole použitá v dotazu.
 
 > [!NOTE]
 > Synonyma lze vytvořit programově, ale ne na portálu. Pokud byste uvítali podporu synonym na portálu Azure Portal, sdělte nám svůj názor na webu [UserVoice](https://feedback.azure.com/forums/263029-azure-search)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Požadavky kurzu zahrnují tyto položky:
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
-* [Služba Azure Kognitivní hledání](search-create-service-portal.md)
+* [Služba azure kognitivního vyhledávání](search-create-service-portal.md)
 * [Knihovna Microsoft.Azure.Search .NET](https://aka.ms/search-sdk)
-* [Jak používat Azure Kognitivní hledání z aplikace .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
+* [Jak používat Azure Cognitive Search z aplikace .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
 ## <a name="overview"></a>Přehled
 
-Dotazy před a po ukazují význam použití synonym. V tomto příkladu použijte ukázkovou aplikaci, která spustí dotazy a vrátí výsledky v ukázkovém indexu. Ukázková aplikace vytvoří malý index s názvem hotels naplněný dvěma dokumenty. Aplikace spustí vyhledávací dotazy s využitím termínů a frází, které nejsou v indexu uvedené, povolí funkci synonym a potom znovu provede stejné hledání. Uvedený kód ukazuje celkový tok.
+Dotazy před a po ukazují význam použití synonym. V tomto příkladu použijte ukázkovou aplikaci, která provádí dotazy a vrací výsledky na ukázkový index. Ukázková aplikace vytvoří malý index s názvem hotels naplněný dvěma dokumenty. Aplikace spustí vyhledávací dotazy s využitím termínů a frází, které nejsou v indexu uvedené, povolí funkci synonym a potom znovu provede stejné hledání. Uvedený kód ukazuje celkový tok.
 
 ```csharp
   static void Main(string[] args)
@@ -77,7 +77,7 @@ Dotazy před a po ukazují význam použití synonym. V tomto příkladu použij
       Console.ReadKey();
   }
 ```
-Postup vytvoření a naplnění ukázkového indexu je vysvětlen v tématu [Jak používat Azure kognitivní hledání z aplikace .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).
+Kroky k vytvoření a naplnění ukázkového indexu jsou vysvětleny v [části Použití azure kognitivního vyhledávání z aplikace .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).
 
 ## <a name="before-queries"></a>Dotazy „před“
 
@@ -128,7 +128,7 @@ Povolení synonyma je dvoustupňový proces. Nejdřív nadefinujeme a nahrajeme 
 
     serviceClient.SynonymMaps.CreateOrUpdate(synonymMap);
    ```
-   Mapa synonym musí odpovídat opensourcovému standardnímu formátu `solr`. Formát je vysvětlen v tématu věnovaném [synonymům v Azure kognitivní hledání](search-synonyms.md) v části `Apache Solr synonym format`.
+   Mapa synonym musí odpovídat opensourcovému standardnímu formátu `solr`. Formát je vysvětleno v [synonyma v](search-synonyms.md) `Apache Solr synonym format`Azure Cognitive Search v části .
 
 2. Nakonfigurujte prohledávatelná pole tak, aby používala mapu synonym v definici indexu. V `EnableSynonymsInHotelsIndex` povolíme synonyma u dvou polí `category` a `tags` nastavením vlastnosti `synonymMaps` na název nově nahrané mapy synonym.
    ```csharp
@@ -162,18 +162,18 @@ Name: Roach Motel       Category: Budget        Tags: [motel, budget]
 ~~~
 První dotaz najde dokument z pravidla `five star=>luxury`. Druhý dotaz rozšíří vyhledávání pomocí `internet,wifi` a třetí použije k vyhledání shody v dokumentech `hotel, motel` i `economy,inexpensive=>budget`.
 
-Přidání synonym úplně mění možnosti vyhledávání. V tomto příkladu se v původních dotazech nevrátily smysluplné výsledky, i když by dokumenty v našem rejstříku byly relevantní. Povolením synonym můžeme rozšířit index tak, aby zahrnoval běžně používané termíny, a nemusíme přitom nijak upravovat podkladová data v indexu.
+Přidání synonym úplně mění možnosti vyhledávání. V tomto příkladu původní dotazy se nepodařilo vrátit smysluplné výsledky, i když dokumenty v našem indexu byly relevantní. Povolením synonym můžeme rozšířit index tak, aby zahrnoval běžně používané termíny, a nemusíme přitom nijak upravovat podkladová data v indexu.
 
 ## <a name="sample-application-source-code"></a>Zdrojový kód ukázkové aplikace
 Úplný zdrojový kód ukázkové aplikace použité v tomto názorném postupu najdete na [Githubu](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Nejrychlejší způsob, jak vyčistit po příkladech, odstraněním skupiny prostředků obsahující službu Azure Kognitivní hledání. Odstraněním skupiny prostředků teď můžete trvale odstranit všechno, co se v ní nachází. Na portálu je název skupiny prostředků na stránce Přehled služby Azure Kognitivní hledání.
+Nejrychlejší způsob, jak vyčistit po příkladu je odstraněním skupiny prostředků obsahující službu Azure Cognitive Search. Odstraněním skupiny prostředků teď můžete trvale odstranit všechno, co se v ní nachází. Na portálu je název skupiny prostředků na stránce Přehled služby Azure Cognitive Search.
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento příklad ukázal funkci synonym v C# kódu pro vytvoření a odeslání pravidel mapování a volání mapy synonym na dotaz. Další informace najdete v referenční dokumentaci [sady .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) a [rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/).
+Tento příklad demonstroval synonyma funkce v kódu Jazyka C# vytvořit a zaúčtovat pravidla mapování a potom volat mapu synonym a dotazu. Další informace najdete v referenční dokumentaci [sady .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) a [rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/).
 
 > [!div class="nextstepaction"]
-> [Jak používat synonyma v Azure Kognitivní hledání](search-synonyms.md)
+> [Jak používat synonyma v Azure Cognitive Search](search-synonyms.md)

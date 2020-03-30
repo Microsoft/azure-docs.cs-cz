@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat z Azure Data Factory do Azure Průzkumník dat
-description: V tomto článku se dozvíte, jak pomocí nástroje pro kopírování Azure Data Factory ingestovat (načítat) data do Azure Průzkumník dat.
+title: Kopírování dat z Azure Data Factory do Průzkumníka dat Azure
+description: V tomto článku se dozvíte, jak ingestovat (načíst) data do Průzkumníka dat Azure pomocí nástroje pro kopírování Azure Data Factory.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,27 +9,27 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.openlocfilehash: 860b1a579d9c8cee6c6e80ae4c4e7fdd7949d5c7
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71300600"
 ---
-# <a name="copy-data-to-azure-data-explorer-by-using-azure-data-factory"></a>Kopírování dat do Azure Průzkumník dat pomocí Azure Data Factory 
+# <a name="copy-data-to-azure-data-explorer-by-using-azure-data-factory"></a>Kopírování dat do Azure Data Exploreru pomocí Azure Data Factory 
 
-Azure Průzkumník dat je rychlá, plně spravovaná služba pro analýzu dat. Nabízí analýzu v reálném čase u velkých objemů dat, která se streamují z mnoha zdrojů, jako jsou aplikace, weby a zařízení IoT. Pomocí Azure Průzkumník dat můžete iterativní zkoumání dat a identifikovat vzory a anomálie při vylepšování produktů, vylepšit prostředí zákazníků, monitorovat zařízení a zvyšovat operace. Pomůže vám prozkoumat nové otázky a získat odpovědi v řádu minut. 
+Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat. Nabízí analýzu v reálném čase na velkých objemech dat, která streamují z mnoha zdrojů, jako jsou aplikace, weby a zařízení IoT. S Azure Data Explorer můžete iterativně zkoumat data a identifikovat vzory a anomálie za účelem zlepšení produktů, zlepšení zkušeností zákazníků, monitorování zařízení a zvýšení provozu. Pomáhá vám prozkoumat nové otázky a získat odpovědi během několika minut. 
 
-Azure Data Factory je plně spravovaná cloudová služba pro integraci dat. Můžete ji použít k naplnění databáze služby Azure Průzkumník dat daty ze stávajícího systému. Může vám ušetřit čas při vytváření analytických řešení.
+Azure Data Factory je plně spravovaná cloudová služba pro integraci dat. Můžete ji použít k naplnění databáze Průzkumníka dat Azure dat y daty z vašeho stávajícího systému. Může vám pomoci ušetřit čas při vytváření analytických řešení.
 
-Při načítání dat do služby Azure Průzkumník dat Data Factory nabízí následující výhody:
+Při načítání dat do Průzkumníka dat Azure, Data Factory poskytuje následující výhody:
 
-* **Snadné nastavení**: Získejte intuitivního a pátého průvodce bez nutnosti skriptování.
-* **Podpora úložiště s bohatými daty**: Získejte integrovanou podporu pro bohatou sadu místních a cloudových úložišť dat. Podrobný seznam najdete v tabulce [podporovaných úložišť dat](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats).
-* **Zabezpečení a dodržování předpisů**: Data se přenáší přes protokol HTTPS nebo Azure ExpressRoute. Přítomnost globální služby zajišťuje, že vaše data nikdy neopustí zeměpisnou hranici.
-* **Vysoký výkon**: Rychlost načítání dat je až 1 gigabajt za sekundu (GB/s) do Azure Průzkumník dat. Další informace najdete v tématu [výkon aktivity kopírování](/azure/data-factory/copy-activity-performance).
+* **Snadné nastavení:** Získejte intuitivního pětistupňového průvodce bez nutnosti skriptování.
+* **Bohatá podpora úložiště dat:** Získejte integrovanou podporu pro bohatou sadu místních a cloudových úložišť dat. Podrobný seznam naleznete v tabulce [Podporovaná úložiště dat](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats).
+* **Zabezpečené a kompatibilní**: Data se přenášejí přes PROTOKOL HTTPS nebo Azure ExpressRoute. Globální přítomnost služby zajišťuje, že vaše data nikdy neopustí geografickou hranici.
+* **Vysoký výkon**: Rychlost načítání dat je až 1 gigabajt za sekundu (BPS) do Průzkumníka dat Azure. Další informace naleznete v [tématu Kopírování výkonu aktivity](/azure/data-factory/copy-activity-performance).
 
-V tomto článku pomocí nástroje Data Factory Kopírování dat načtete data ze služby Amazon Simple Storage Service (S3) do Azure Průzkumník dat. Můžete postupovat podle stejného procesu ke kopírování dat z jiných úložišť dat, jako například:
-* [Azure Blob Storage](/azure/data-factory/connector-azure-blob-storage)
+V tomto článku použijete nástroj Data Factory Copy Data k načtení dat ze služby Amazon Simple Storage Service (S3) do Průzkumníka dat Azure. Můžete sledovat podobný proces kopírovat data z jiných úložišť dat, například:
+* [Úložiště objektů blob Azure](/azure/data-factory/connector-azure-blob-storage)
 * [Azure SQL Database](/azure/data-factory/connector-azure-sql-database)
 * [Azure SQL Data Warehouse](/azure/data-factory/connector-azure-sql-data-warehouse)
 * [Google BigQuery](/azure/data-factory/connector-google-bigquery)
@@ -39,207 +39,207 @@ V tomto článku pomocí nástroje Data Factory Kopírování dat načtete data 
 ## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
-* [Cluster a databáze Azure Průzkumník dat](create-cluster-database-portal.md).
+* [Cluster a databáze Průzkumníka dat Azure](create-cluster-database-portal.md).
 * Zdroj dat.
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. Přihlaste se k webu [Azure Portal](https://ms.portal.azure.com).
+1. Přihlaste se k [portálu Azure](https://ms.portal.azure.com).
 
-1. V levém podokně vyberte vytvořit**Data Factory** **analýzy** >  **prostředků** > .
+1. V levém podokně vyberte Vytvořit**datovou továrnu****analytics** >  **zdrojů** > .
 
-   ![Vytvoření datové továrny v Azure Portal](media/data-factory-load-data/create-adf.png)
+   ![Vytvoření datové továrny na webu Azure Portal](media/data-factory-load-data/create-adf.png)
 
-1. V podokně **Nová datová továrna** zadejte hodnoty pro pole v následující tabulce:
+1. V podokně **Nová továrna dat** zadejte hodnoty pro pole v následující tabulce:
 
-   ![Podokno nová Datová továrna](media/data-factory-load-data/my-new-data-factory.png)  
+   ![Podokno Nová továrna na data](media/data-factory-load-data/my-new-data-factory.png)  
 
-   | Nastavení  | Hodnota, která se má zadat  |
+   | Nastavení  | Hodnota, která má být zadávána  |
    |---|---|
-   | **Název** | Do pole zadejte globálně jedinečný název pro datovou továrnu. Pokud se zobrazí chyba, *název \"objektu pro vytváření dat\" LoadADXDemo není k dispozici*, zadejte jiný název pro objekt pro vytváření dat. Pravidla týkající se pojmenování artefaktů Data Factory naleznete v tématu [Data Factory pravidla pro pojmenování](/azure/data-factory/naming-rules).|
-   | **Předplatné** | V rozevíracím seznamu vyberte předplatné Azure, ve kterém chcete vytvořit datovou továrnu. |
-   | **Skupina prostředků** | Vyberte **vytvořit novou**a potom zadejte název nové skupiny prostředků. Pokud již máte skupinu prostředků, vyberte **použít existující**. |
-   | **Verze** | V rozevíracím seznamu vyberte **v2**. |  
-   | **Location** | V rozevíracím seznamu vyberte umístění pro datovou továrnu. V seznamu se zobrazí pouze podporovaná umístění. Úložiště dat používaná datovou továrnou mohou existovat v jiných umístěních nebo oblastech. |
+   | **Název** | Do pole zadejte globálně jedinečný název datové továrny. Pokud se zobrazí chyba, *název \"datové továrny LoadADXDemo\" není k dispozici*, zadejte jiný název pro datové továrny. Pravidla týkající se pojmenování artefaktů datové továrny naleznete v tématu [Pravidla pojmenování datové továrny](/azure/data-factory/naming-rules).|
+   | **Předplatné** | V rozevíracím seznamu vyberte předplatné Azure, ve kterém chcete vytvořit datové továrny. |
+   | **Skupina prostředků** | Vyberte **Vytvořit nový**a zadejte název nové skupiny prostředků. Pokud již skupinu prostředků máte, vyberte **Použít existující**. |
+   | **Verze** | V rozevíracím seznamu vyberte **V2**. |  
+   | **Umístění** | V rozevíracím seznamu vyberte umístění pro datovou továrnu. V seznamu jsou zobrazena pouze podporovaná umístění. Úložiště dat, která používá továrna na data, mohou existovat v jiných umístěních nebo oblastech. |
 
 1. Vyberte **Vytvořit**.
 
-1. Chcete-li monitorovat proces vytváření, vyberte **oznámení** na panelu nástrojů. Po vytvoření datové továrny ji vyberte.
+1. Chcete-li sledovat proces vytváření, vyberte na panelu nástrojů **možnost Oznámení.** Po vytvoření datové továrny ji vyberte.
    
-   Otevře se podokno **Data Factory** .
+   Otevře se podokno **Data Factory.**
 
    ![Podokno Data Factory](media/data-factory-load-data/data-factory-home-page.png)
 
-1. Pokud chcete aplikaci otevřít v samostatném podokně, vyberte dlaždici **Author & monitor** .
+1. Chcete-li aplikaci otevřít v samostatném podokně, vyberte dlaždici **Author & Monitor.**
 
-## <a name="load-data-into-azure-data-explorer"></a>Načtení dat do Azure Průzkumník dat
+## <a name="load-data-into-azure-data-explorer"></a>Načítání dat do Průzkumníka dat Azure
 
-Data z mnoha typů [úložišť dat](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) můžete načíst do Azure Průzkumník dat. Tento článek popisuje, jak načíst data z Amazon S3.
+Do Průzkumníka dat Azure můžete načíst data z mnoha typů [úložišť dat.](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) Tento článek popisuje, jak načíst data z Amazon S3.
 
 Data můžete načíst jedním z následujících způsobů:
 
-* V uživatelském rozhraní Azure Data Factory v levém podokně vyberte ikonu **Autor** , jak je znázorněno v části Vytvoření datové továrny v tématu [Vytvoření datové továrny pomocí uživatelského rozhraní Azure Data Factory](/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory).
-* V nástroji Azure Data Factory Kopírování dat, jak je popsáno v části [použití nástroje kopírování dat ke kopírování dat](/azure/data-factory/quickstart-create-data-factory-copy-data-tool).
+* V uživatelském rozhraní Azure Data Factory v levém podokně vyberte ikonu **Autor,** jak je znázorněno v části Vytvořit datovou továrnu v části [Vytvořit datovou továrnu pomocí uživatelského rozhraní Azure Data Factory](/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory).
+* V nástroji Azure Data Factory Copy Data, jak je znázorněno v [nástroji Kopírovat data pomocí nástroje Kopírovat data ke kopírování dat](/azure/data-factory/quickstart-create-data-factory-copy-data-tool).
 
-### <a name="copy-data-from-amazon-s3-source"></a>Kopírovat data z Amazon S3 (zdroj)
+### <a name="copy-data-from-amazon-s3-source"></a>Kopírování dat z Amazon S3 (zdroj)
 
-1. V podokně **Začínáme** otevřete nástroj kopírování dat tak, že vyberete možnost **kopírování dat**.
+1. V podokně **Začínáme** otevřete nástroj Kopírovat data výběrem **možnosti Kopírovat data**.
 
-   ![Tlačítko nástroje Kopírování dat](media/data-factory-load-data/copy-data-tool-tile.png)
+   ![Tlačítko Kopírovat data](media/data-factory-load-data/copy-data-tool-tile.png)
 
-1. V podokně **vlastnosti** zadejte do pole **název úlohy** název a pak vyberte **Další**.
+1. V podokně **Vlastnosti** zadejte do pole **Název úkolu** název a pak vyberte **Další**.
 
-    ![Podokno vlastností Kopírování dat](media/data-factory-load-data/copy-from-source.png)
+    ![Podokno Kopírovat vlastnosti dat](media/data-factory-load-data/copy-from-source.png)
 
-1. V podokně **zdrojové úložiště dat** vyberte **vytvořit nové připojení**.
+1. V podokně **Úložiště zdrojových dat** vyberte **Vytvořit nové připojení**.
 
-    ![Podokno Kopírování dat zdrojové úložiště dat](media/data-factory-load-data/source-create-connection.png)
+    ![Podokno Kopírovat data "Úložiště zdrojových dat"](media/data-factory-load-data/source-create-connection.png)
 
-1. Vyberte **Amazon S3**a pak vyberte **pokračovat**.
+1. Vyberte **Amazon S3**a pak vyberte **Pokračovat**.
 
     ![Podokno Nová propojená služba](media/data-factory-load-data/amazons3-select-new-linked-service.png)
 
-1. V podokně **Nová propojená služba (Amazon S3)** udělejte toto:
+1. V podokně **Nová propojená služba (Amazon S3)** postupujte takto:
 
-    ![Zadat propojenou službu Amazon S3](media/data-factory-load-data/amazons3-new-linked-service-properties.png)
+    ![Zadejte amazons3 propojené služby](media/data-factory-load-data/amazons3-new-linked-service-properties.png)
 
-    a. Do pole **název** zadejte název nové propojené služby.
+    a. Do pole **Název** zadejte název nové propojené služby.
 
-    b. V rozevíracím seznamu **připojit přes prostředí Integration runtime** vyberte hodnotu.
+    b. V rozevíracím seznamu **Připojit pomocí integračního běhu** vyberte hodnotu.
 
     c. Do pole **ID přístupového klíče** zadejte hodnotu.
     
     > [!NOTE]
-    > V části Amazon S3 Najděte přístupový klíč, na navigačním panelu vyberte své uživatelské jméno Amazon a pak vyberte **Moje přihlašovací údaje zabezpečení**.
+    > Chcete-li v aplikaci Amazon S3 vyhledat přístupový klíč, vyberte uživatelské jméno uživatele amazonky na navigačním panelu a pak vyberte **moje bezpečnostní pověření**.
     
-    d. Do pole **tajný přístupový klíč** zadejte hodnotu.
+    d. Do pole **Tajný přístupový klíč** zadejte hodnotu.
 
-    e. Chcete-li otestovat připojení propojené služby, které jste vytvořili, vyberte možnost **Test připojení**.
+    e. Chcete-li otestovat připojení propojené služby, které jste vytvořili, vyberte **možnost Testovat připojení**.
 
     f. Vyberte **Finish** (Dokončit).
     
-      V podokně **zdrojové úložiště dat** se zobrazí vaše nové připojení AmazonS31. 
+      Podokno **úložiště zdrojových dat** zobrazuje nové připojení AmazonS31. 
 
-1. Vyberte **Další**.
+1. Vyberte **další**.
 
-   ![Zdrojové úložiště dat vytvořené připojení](media/data-factory-load-data/source-data-store-created-connection.png)
+   ![Vytvořeno připojení úložiště zdrojových dat](media/data-factory-load-data/source-data-store-created-connection.png)
 
-1. V podokně **zvolit vstupní soubor nebo složku** proveďte následující kroky:
+1. V **podokně Vybrat vstupní soubor nebo složku** postupujte takto:
 
-    a. Vyhledejte soubor nebo složku, které chcete zkopírovat, a pak ji vyberte.
+    a. Přejděte k souboru nebo složce, kterou chcete zkopírovat, a vyberte ji.
 
-    b. Vyberte chování kopírování, které chcete. Ujistěte se, že není zaškrtnuto políčko **binární kopírování** .
+    b. Vyberte požadované chování kopírování. Ujistěte se, že binární **kopie** zaškrtnutí políčka není zaškrtnuto.
 
-    c. Vyberte **Další**.
+    c. Vyberte **další**.
 
     ![Zvolte vstupní soubor nebo složku](media/data-factory-load-data/source-choose-input-file.png)
 
-1. V podokně **Nastavení formátu souboru** vyberte odpovídající nastavení souboru. a pak vyberte **Další**.
+1. V podokně **Nastavení formátu souboru** vyberte příslušná nastavení souboru. a pak vyberte **Další**.
 
-   ![Podokno "nastavení formátu souboru"](media/data-factory-load-data/source-file-format-settings.png)
+   ![Podokno Nastavení formátu souboru](media/data-factory-load-data/source-file-format-settings.png)
 
-### <a name="copy-data-into-azure-data-explorer-destination"></a>Kopírování dat do Azure Průzkumník dat (cíl)
+### <a name="copy-data-into-azure-data-explorer-destination"></a>Kopírování dat do Průzkumníka dat Azure (cíl)
 
-Vytvoří se nová propojená služba Azure Průzkumník dat pro kopírování dat do cílové tabulky Azure Průzkumník dat (jímka), která je uvedená v této části.
+Nová propojená služba Azure Data Explorer se vytvoří pro kopírování dat do cílové tabulky (jímky) aplikace Azure Data Explorer, která je určena v této části.
 
-#### <a name="create-the-azure-data-explorer-linked-service"></a>Vytvoření propojené služby Azure Průzkumník dat
+#### <a name="create-the-azure-data-explorer-linked-service"></a>Vytvoření propojené služby Azure Data Explorer
 
-Pokud chcete vytvořit propojenou službu Azure Průzkumník dat, udělejte toto:
+Chcete-li vytvořit propojenou službu Azure Data Explorer, postupujte takto.
 
-1. Chcete-li použít existující připojení úložiště dat nebo zadat nové úložiště dat, vyberte v podokně **cílové úložiště dat** možnost **vytvořit nové připojení**.
+1. Chcete-li použít existující připojení k úložišti dat nebo zadat nové úložiště dat, vyberte v podokně **Cílové úložiště dat** možnost Vytvořit nové **připojení**.
 
-    ![Podokno cílové úložiště dat](media/data-factory-load-data/destination-create-connection.png)
+    ![Podokno úložiště cílových dat](media/data-factory-load-data/destination-create-connection.png)
 
-1. V podokně **Nová propojená služba** vyberte **Azure Průzkumník dat**a pak vyberte **pokračovat**.
+1. V podokně **Nová propojená služba** vyberte **Průzkumník dat Azure**a pak vyberte **Pokračovat**.
 
-    ![Podokno Nová propojená služba](media/data-factory-load-data/adx-select-new-linked-service.png)
+    ![Podokno Nové propojené služby](media/data-factory-load-data/adx-select-new-linked-service.png)
 
-1. V podokně **Nová propojená služba (Azure Průzkumník dat)** udělejte toto:
+1. V podokně **Nová propojená služba (Průzkumník dat Azure)** postupujte takto:
 
-    ![Podokno nové propojené služby Azure Průzkumník dat](media/data-factory-load-data/adx-new-linked-service.png)
+    ![Podokno Nové propojené služby Průzkumníka dat Azure](media/data-factory-load-data/adx-new-linked-service.png)
 
-   a. Do pole **název** zadejte název propojené služby Azure Průzkumník dat.
+   a. Do pole **Název** zadejte název propojené služby Azure Data Explorer.
 
-   b. V části **metoda výběru účtu**proveďte jednu z následujících akcí: 
+   b. V části **Metoda výběru účtu**proveďte jednu z následujících akcí: 
 
-    * Vyberte **z předplatného Azure** a potom v rozevíracích seznamech vyberte **předplatné Azure** a váš **cluster**. 
+    * Vyberte **Z předplatného Azure** a pak v rozevíracích seznamech vyberte předplatné **Azure** a **cluster**. 
 
         > [!NOTE]
-        > Rozevírací ovládací prvek **clusteru** obsahuje jenom clustery, které jsou přidružené k vašemu předplatnému.
+        > Ovládací **prvek clusteru** obsahuje pouze clustery, které jsou přidruženy k vašemu předplatnému.
 
-    * Vyberte **zadat ručně**a potom zadejte svůj **koncový bod**.
+    * Vyberte **Zadat ručně**a zadejte **koncový bod**.
 
-   c. Do pole **tenant (tenant** ) zadejte název tenanta.
+   c. Do pole **Tenant** zadejte název klienta.
 
    d. Do pole **ID instančního objektu** zadejte ID instančního objektu.
 
-   e. Vyberte **klíč instančního objektu** a potom do pole **klíč instančního objektu** zadejte hodnotu pro klíč.
+   e. Vyberte **hlavní povinný klíč servisu** a pak do pole **klíč instanční ho** zadejte hodnotu klíče.
 
-   f. V rozevíracím seznamu **databáze** vyberte název databáze. Případně zaškrtněte políčko **Upravit** a zadejte název databáze.
+   f. V rozevíracím seznamu **Databáze** vyberte název databáze. Případně zaškrtněte políčko **Upravit** a zadejte název databáze.
 
-   g. Chcete-li otestovat připojení propojené služby, které jste vytvořili, vyberte možnost **Test připojení**. Pokud se můžete připojit k propojené službě, v podokně se zobrazí zelená značka zaškrtnutí a zpráva o **úspěšném připojení** .
+   g. Chcete-li otestovat připojení propojené služby, které jste vytvořili, vyberte **možnost Testovat připojení**. Pokud se můžete připojit k propojené službě, zobrazí se v podokně zelená značka zaškrtnutí a zpráva **O připojení byla úspěšná.**
 
-   h. Kliknutím na **Dokončit** dokončete vytvoření propojené služby.
+   h. Vyberte **Dokončit,** chcete-li dokončit vytvoření propojené služby.
 
     > [!NOTE]
-    > Objekt služby se používá Azure Data Factory pro přístup ke službě Azure Průzkumník dat. Instanční objekt vytvoříte tak, že přejdete na [vytvořit objekt služby Azure Active Directory (Azure AD)](/azure-stack/operator/azure-stack-create-service-principals#manage-an-azure-ad-service-principal). Nepoužívejte metodu Azure Key Vault.
+    > Instanční objekt služby používá Azure Data Factory pro přístup ke službě Azure Data Explorer. Pokud chcete vytvořit instanční objekt, přejděte k [vytvoření instančního objektu služby Azure Active Directory (Azure AD).](/azure-stack/operator/azure-stack-create-service-principals#manage-an-azure-ad-service-principal) Nepoužívejte metodu Azure Key Vault.
 
-#### <a name="configure-the-azure-data-explorer-data-connection"></a>Konfigurace datového připojení Azure Průzkumník dat
+#### <a name="configure-the-azure-data-explorer-data-connection"></a>Konfigurace datového připojení Azure Data Explorer
 
-Po vytvoření připojení propojené služby se otevře podokno **cílové úložiště dat** a připojení, které jste vytvořili, je k dispozici k použití. Chcete-li konfigurovat připojení, udělejte toto:
+Po vytvoření připojeného připojení služby se otevře podokno **Cílové úložiště dat** a vytvořené připojení bude k dispozici pro použití. Chcete-li připojení nakonfigurovat, postupujte takto:
 
-1. Vyberte **Další**.
+1. Vyberte **další**.
 
-    ![Podokno "cílové úložiště dat" Azure Průzkumník dat](media/data-factory-load-data/destination-data-store.png)
+    ![Podokno "Cílové úložiště dat" v Průzkumníku dat Azure](media/data-factory-load-data/destination-data-store.png)
 
 1. V podokně **mapování tabulky** nastavte název cílové tabulky a pak vyberte **Další**.
 
-    ![Podokno cílová datová sada "mapování tabulky"](media/data-factory-load-data/destination-dataset-table-mapping.png)
+    ![Cílové podokno mapování dat](media/data-factory-load-data/destination-dataset-table-mapping.png)
 
-1. V podokně **mapování sloupců** proběhne následující mapování:
+1. V podokně **mapování sloupců** probíhá následující mapování:
 
     a. První mapování provádí Azure Data Factory podle [mapování schématu Azure Data Factory](/azure/data-factory/copy-activity-schema-and-type-mapping). Udělejte toto:
 
     * Nastavte **mapování sloupců** pro cílovou tabulku Azure Data Factory. Výchozí mapování se zobrazí ze zdroje do cílové tabulky Azure Data Factory.
 
-    * Zruší výběr sloupců, které nemusíte definovat mapování sloupce.
+    * Zrušte výběr sloupců, které není nutné definovat mapování sloupců.
 
-    b. Druhé mapování nastane, když se tato tabulková data ingestují do služby Azure Průzkumník dat. Mapování se provádí podle [pravidel mapování sdílených svazků clusteru](/azure/kusto/management/mappings#csv-mapping). I když zdrojová data nejsou ve formátu CSV, Azure Data Factory převádí data do tabulkového formátu. Proto je v této fázi pouze mapování sdílených svazků clusteru pouze relevantní. Udělejte toto:
+    b. Druhé mapování nastane, když se tato tabulková data ingestuje do Průzkumníka dat Azure. Mapování se provádí podle [pravidel mapování CSV](/azure/kusto/management/mappings#csv-mapping). I v případě, že zdrojová data nejsou ve formátu CSV, Azure Data Factory převede data do tabulkového formátu. Mapování CSV je proto pouze relevantní mapování v této fázi. Udělejte toto:
 
-    * Volitelné V části **vlastnosti jímky služby Azure Průzkumník dat (Kusto)** přidejte odpovídající **název mapování pro přijímání** , aby bylo možné použít mapování sloupce.
+    * (Nepovinné) V části **Vlastnosti jímky Průzkumníka dat Azure (Kusto)** přidejte příslušný **název mapování ingestování,** aby bylo možné použít mapování sloupců.
 
-    * Pokud není zadán **název mapování** ingestování, použije se pořadí mapování *podle názvu* definované v oddílu **mapování sloupců** . Pokud mapování *podle názvu* selhává, Azure Průzkumník dat se pokusí ingestovat data v pořadí *podle sloupce* (to znamená, že se mapuje podle pozice jako výchozí).
+    * Pokud není zadán **název mapování ingestování,** bude použito pořadí mapování *podle názvu,* které je definováno v části **Mapování sloupců.** Pokud se mapování *názvů* nezdaří, Azure Data Explorer se pokusí ingestovat data v pořadí pozice *podle sloupce* (to znamená, že mapuje podle pozice jako výchozí).
 
-    * Vyberte **Další**.
+    * Vyberte **další**.
 
-    ![Podokno "mapování sloupce cílové datové sady"](media/data-factory-load-data/destination-dataset-column-mapping.png)
+    ![Cílové podokno mapování sloupců](media/data-factory-load-data/destination-dataset-column-mapping.png)
 
-1. V podokně **Nastavení** proveďte následující akce:
+1. V podokně **Nastavení** postupujte takto:
 
-    a. V části **Nastavení odolnosti proti chybám**zadejte relevantní nastavení.
+    a. V části **Nastavení odolnosti proti chybám**zadejte příslušná nastavení.
 
-    b. V části **Nastavení výkonu**se **možnost Povolit** neuplatní fázování a **Rozšířené nastavení** zahrnuje i náklady. Pokud nemáte žádné konkrétní požadavky, ponechte tato nastavení tak, jak je.
+    b. V části **Nastavení výkonu**se nepoužije **možnost Povolit pracovní** nastavení a **Upřesnit nastavení** zahrnuje aspekty nákladů. Pokud nemáte žádné konkrétní požadavky, ponechte tato nastavení tak, jak jsou.
 
-    c. Vyberte **Další**.
+    c. Vyberte **další**.
 
-    ![Podokno nastavení kopírování dat](media/data-factory-load-data/copy-data-settings.png)
+    ![Podokno Kopírovat data "Nastavení"](media/data-factory-load-data/copy-data-settings.png)
 
 1. V podokně **Souhrn** zkontrolujte nastavení a pak vyberte **Další**.
 
-    ![Podokno Souhrn dat kopírování](media/data-factory-load-data/copy-data-summary.png)
+    ![Podokno Kopírovat data "Souhrn"](media/data-factory-load-data/copy-data-summary.png)
 
-1. V podokně **dokončení nasazení** proveďte následující:
+1. V podokně **Dokončení nasazení** postupujte takto:
 
-    a. Chcete-li přepnout na kartu **monitorování** a zobrazit stav kanálu (tj. průběh, chyby a tok dat), vyberte možnost **monitor**.
+    a. Pokud chcete přepnout na kartu **Monitor** a zobrazit stav kanálu (tj. průběh, chyby a tok dat), vyberte **Sledovat**.
 
     b. Pokud chcete upravit propojené služby, datové sady a kanály, vyberte **Upravit kanál**.
 
-    c. Kliknutím na **Dokončit** dokončete úlohu kopírování dat.
+    c. Chcete-li dokončit úlohu kopírování dat, vyberte **Dokončit.**
 
-    ![Podokno nasazení je dokončené.](media/data-factory-load-data/deployment.png)
+    ![Podokno Nasazení dokončeno](media/data-factory-load-data/deployment.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si informace o [konektoru Azure Průzkumník dat](/azure/data-factory/connector-azure-data-explorer) v Azure Data Factory.
-* Přečtěte si další informace o úpravách propojených služeb, datových sad a kanálů v [uživatelském rozhraní Data Factory](/azure/data-factory/quickstart-create-data-factory-portal).
-* Přečtěte si o dotazech na [Azure Průzkumník dat](/azure/data-explorer/web-query-data) pro dotazování na data.
+* Přečtěte si o [konektoru Azure Data Explorer](/azure/data-factory/connector-azure-data-explorer) v Azure Data Factory.
+* Další informace o úpravách propojených služeb, datových sad a kanálů najdete v [ui. datové továrně](/azure/data-factory/quickstart-create-data-factory-portal).
+* Přečtěte si o [dotazech Azure Data Explorer](/azure/data-explorer/web-query-data) pro dotazování dat.

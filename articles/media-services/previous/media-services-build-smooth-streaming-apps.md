@@ -1,6 +1,6 @@
 ---
-title: Smooth Streaming kurzu pro aplikace pro Windows Store | Microsoft Docs
-description: Naučte se používat Azure Media Services k vytvoření aplikace C# pro Windows Store s ovládacím prvkem XML MediaElement pro přehrávání hladkého obsahu streamu.
+title: Výuka aplikace pro Windows Store pro hladké streamování | Dokumenty společnosti Microsoft
+description: Přečtěte si, jak pomocí Služby Azure Media Services vytvořit aplikaci Pro Windows Store v Jazyce C# s ovládacím prvkem XML MediaElement pro přehrávání obsahu Smooth Stream.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,86 +15,86 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: 9ff961638aa170948d51793a21e86d18dd7e1d80
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69016791"
 ---
-# <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Postup sestavení Smooth Streaming aplikace pro Windows Store  
+# <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Jak vytvořit aplikaci pro Windows Store s plynulým streamováním  
 
-Sada SDK Smooth Streaming klienta pro systém Windows 8 umožňuje vývojářům vytvářet aplikace pro Windows Store, které mohou hrát a živě Smooth Streaming obsah. Kromě základního přehrávání obsahu Smooth Streaming poskytuje sada SDK také bohatou funkci, jako je Microsoft PlayReady Protection, omezení na úrovni kvality, Live DVR, přepínání zvukových streamů, naslouchání aktualizacím stavu (například změny úrovně kvality) a chybové události atd. Další informace o podporovaných funkcích najdete v poznámkách k [verzi](https://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes). Další informace najdete v tématu [rozhraní přehrávače pro systém Windows 8](https://playerframework.codeplex.com/). 
+Sada SDK klienta plynulého streamování pro Windows 8 umožňuje vývojářům vytvářet aplikace pro Windows Store, které mohou přehrávat obsah plynulého streamování na vyžádání a živě vysílat plynulé streamování. Kromě základního přehrávání obsahu Plynulého streamování poskytuje sada SDK také bohaté funkce, jako je ochrana Microsoft PlayReady, omezení úrovně kvality, živé přepínání DVR, přepínání zvukových proudů, naslouchání aktualizacím stavu (jako jsou změny úrovně kvality) a chybové události a tak dále. Další informace o podporovaných funkcích naleznete v [poznámkách k verzi](https://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes). Další informace naleznete v [tématu Player Framework pro Windows 8](https://playerframework.codeplex.com/). 
 
-Tento kurz obsahuje čtyři lekce:
+Tento výukový program obsahuje čtyři lekce:
 
-1. Vytvoření základní aplikace Smooth Streaming Storu
-2. Přidání posuvníku pro řízení průběhu multimédií
-3. Vybrat Smooth Streaming datové proudy
-4. Výběr Smooth Streamingch stop
+1. Vytvoření základní aplikace úložiště hladkých datových proudů
+2. Přidání posuvníku k ovládání průběhu médií
+3. Vybrat plynulé streamovací streamy
+4. Vybrat plynulé streamovací skladby
 
 ## <a name="prerequisites"></a>Požadavky
 > [!NOTE]
-> Projekty Windows Store verze 8,1 a starší nejsou podporovány v aplikaci Visual Studio 2017.  Další informace najdete v tématu [Cílení na platformy a kompatibilita v sadě Visual Studio 2017](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs).
+> Projekty Windows Storu verze 8.1 a starší nejsou ve Visual Studiu 2017 podporované.  Další informace najdete v tématu [Cílení na platformy a kompatibilita v sadě Visual Studio 2017](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs).
 
-* Systém Windows 8 32-bit nebo 64-bit.
-* Verze sady Visual Studio 2012 až 2015.
-* [Sada Microsoft Smooth Streaming Client SDK pro systém Windows 8](https://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home).
+* Windows 8 32bitový nebo 64bitový.
+* Visual Studio verze 2012 až 2015.
+* [Sada Microsoft Smooth Streaming Client SDK pro Windows 8](https://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home).
 
-Dokončené řešení pro každou lekci si můžete stáhnout z ukázek kódu pro vývojáře MSDN (Galerie kódu): 
+Dokončené řešení pro každou lekci lze stáhnout z ukázky kódu vývojáře MSDN (Galerie kódu): 
 
-* [Lekce 1](https://code.msdn.microsoft.com/Smooth-Streaming-Client-0bb1471f) – jednoduchá Smooth Streaming Windows 8 Media Player 
-* [Lekce 2](https://code.msdn.microsoft.com/A-simple-Windows-8-Smooth-ee98f63a) – jednoduchá Smooth Streaming systému Windows 8 Media Player s ovládacím prvkem posuvníku, 
-* [Lekce 3](https://code.msdn.microsoft.com/A-Windows-8-Smooth-883c3b44) – Smooth Streaming Media Player Windows 8 s výběrem streamu,  
-* [Lekce 4](https://code.msdn.microsoft.com/A-Windows-8-Smooth-aa9e4907) – Smooth Streaming Windows 8 Media Player se sledováním výběru.
+* [Lekce 1](https://code.msdn.microsoft.com/Smooth-Streaming-Client-0bb1471f) - Jednoduchý Windows 8 Hladké Streaming Media Player, 
+* [Lekce 2](https://code.msdn.microsoft.com/A-simple-Windows-8-Smooth-ee98f63a) - Jednoduchý Windows 8 Smooth Streaming Media Player s jezdcem Bar Ovládání, 
+* [Lekce 3](https://code.msdn.microsoft.com/A-Windows-8-Smooth-883c3b44) - Windows 8 Smooth Streaming Media Player s výběrem streamu,  
+* [Lekce 4](https://code.msdn.microsoft.com/A-Windows-8-Smooth-aa9e4907) - Windows 8 Smooth Streaming Media Player s výběrem stop.
 
-## <a name="lesson-1-create-a-basic-smooth-streaming-store-application"></a>Lekce 1: Vytvoření základní aplikace Smooth Streaming Storu
+## <a name="lesson-1-create-a-basic-smooth-streaming-store-application"></a>Lekce 1: Vytvoření základní aplikace úložiště hladkých datových proudů
 
-V této lekci vytvoříte aplikaci pro Windows Store s ovládacím prvkem MediaElement, abyste mohli přehrávat plynulé streamování obsahu.  Běžící aplikace vypadá takto:
+V této lekci vytvoříte aplikaci pro Windows Store s ovládacím prvkem MediaElement pro přehrávání obsahu Smooth Stream.  Spuštěná aplikace vypadá takto:
 
-![Příklad Smooth Streaming aplikace pro Windows Store][PlayerApplication]
+![Příklad aplikace pro windows store hladké streamování][PlayerApplication]
 
-Další informace o vývoji aplikací pro Windows Store najdete v tématu [vývoj skvělých aplikací pro Windows 8](https://msdn.microsoft.com/windows/apps/br229512.aspx). Tato lekce obsahuje následující postupy:
+Další informace o vývoji aplikací pro Windows Store najdete v [tématu Vývoj skvělých aplikací pro Windows 8](https://msdn.microsoft.com/windows/apps/br229512.aspx). Tato lekce obsahuje následující postupy:
 
-1. Vytvořit projekt pro Windows Store
+1. Vytvoření projektu pro Windows Store
 2. Návrh uživatelského rozhraní (XAML)
-3. Upravit soubor kódu na pozadí
+3. Změna kódu za souborem
 4. Kompilace a testování aplikace
 
-### <a name="to-create-a-windows-store-project"></a>Vytvoření projektu Windows Store
+### <a name="to-create-a-windows-store-project"></a>Vytvoření projektu pro Windows Store
 
-1. Spustit Visual Studio; jsou podporovány verze 2012 až 2015.
-1. V nabídce **Soubor** klikněte na tlačítko **Nový** a pak klikněte na tlačítko **Projekt**.
+1. Spuštění sady Visual Studio; 2012 až 2015.
+1. V nabídce **SOUBOR** klepněte na tlačítko **Nový**a potom klepněte na **položku Project**.
 1. V dialogovém okně Nový projekt zadejte nebo vyberte následující hodnoty:
 
-    | Name | Value |
+    | Name (Název) | Hodnota |
     | --- | --- |
-    | Skupina šablon |Nainstalované/šablony/Visual C#/Windows Store |
+    | Skupina šablon |Nainstalované/Šablony/Visual C#/Windows Store |
     | Šablona |Prázdná aplikace (XAML) |
-    | Name |SSPlayer |
-    | Location |C:\SSTutorials |
+    | Name (Název) |SSPlayer |
+    | Umístění |C:\SSTutorials |
     | Název řešení |SSPlayer |
-    | Vytvořit adresář pro řešení |Vyberte |
+    | Vytvořit adresář pro řešení |(vybráno) |
 
-1. Klikněte na **OK**.
+1. Klikněte na tlačítko **OK**.
 
-### <a name="to-add-a-reference-to-the-smooth-streaming-client-sdk"></a>Přidání odkazu na sadu SDK pro Smooth Streaming klienta
+### <a name="to-add-a-reference-to-the-smooth-streaming-client-sdk"></a>Přidání odkazu na sadu SDK klienta pro hladké streamování
 
-1. Z Průzkumník řešení klikněte pravým tlačítkem na **SSPlayer**a pak klikněte na **Přidat odkaz**.
+1. V Průzkumníku řešení klepněte pravým tlačítkem myši na **položku SSPlayer**a potom klepněte na příkaz **Přidat odkaz**.
 1. Zadejte nebo vyberte tyto hodnoty:
 
-    | Name | Value |
+    | Name (Název) | Hodnota |
     | --- | --- |
-    | Referenční skupina |Windows/rozšíření |
-    | Reference |Vyberte Microsoft Smooth Streaming Client SDK pro Windows 8 a balíček Microsoft C++ Visual runtime. |
+    | Referenční skupina |Windows/Rozšíření |
+    | Odkaz |Vyberte sadu Microsoft Smooth Streaming Client SDK pro Windows 8 a balíček runtime Microsoft Visual C++ |
 
-1. Klikněte na **OK**. 
+1. Klikněte na tlačítko **OK**. 
 
-Po přidání odkazů musíte vybrat cílovou platformu (x64 nebo x86). Přidání odkazů nebude fungovat pro žádnou konfiguraci platformy CPU.  V Průzkumníku řešení uvidíte u těchto přidaných odkazů žlutou výstražnou značku.
+Po přidání odkazů je nutné vybrat cílovou platformu (x64 nebo x86), přidání odkazů nebude fungovat pro konfiguraci platformy procesoru.  V průzkumníku řešení uvidíte žlutou varovnou značku pro tyto přidané odkazy.
 
-### <a name="to-design-the-player-user-interface"></a>Postup při návrhu uživatelského rozhraní přehrávače
+### <a name="to-design-the-player-user-interface"></a>Návrh uživatelského rozhraní přehrávače
 
-1. V Průzkumník řešení poklikejte na **MainPage. XAML** a otevře se v zobrazení Návrh.
-2. Vyhledejte **mřížku&gt; a/Grid označí soubor XAML a vložte následující kód mezi dvě značky: &lt;** **&gt; &lt;**
+1. V Průzkumníku řešení poklepejte na **soubor MainPage.xaml** a otevřete jej v návrhovém zobrazení.
+2. Vyhledejte ** &lt;&gt; značku Mřížka** a ** &lt;/Grid&gt; ** soubor XAML a mezi tyto dvě značky vložte následující kód:
 
    ```xml
          <Grid.RowDefinitions>
@@ -140,23 +140,23 @@ Po přidání odkazů musíte vybrat cílovou platformu (x64 nebo x86). Přidán
             <TextBox x:Name="txtStatus" FontSize="10" Width="700" VerticalAlignment="Center"/>
          </StackPanel>
    ```
-   Ovládací prvek MediaElement se používá k přehrání média. Ovládací prvek posuvník s názvem sliderProgress bude použit v další lekci k řízení průběhu multimédií.
-3. Uložte soubor stisknutím kláves **CTRL + S** .
+   Ovládací prvek MediaElement se používá k přehrávání médií. Ovládací prvek posuvníku s názvem posuvníkPrůběh bude použit v další lekci k řízení průběhu média.
+3. Soubor uložte stisknutím **kláves CTRL+S.**
 
-Ovládací prvek MediaElement nepodporuje dopředný obsah Smooth Streaming. Chcete-li povolit podporu Smooth Streaming, je nutné zaregistrovat obslužnou rutinu Smooth Streaming bajtového datového proudu podle přípony názvu souboru a typu MIME.  Chcete-li se zaregistrovat, použijte metodu MediaExtensionManager. RegisterByteStreamHandler oboru názvů Windows. Media.
+Ovládací prvek MediaElement nepodporuje obsah plynulého streamování out-of-box. Chcete-li povolit podporu plynulého streamování, musíte zaregistrovat obslužnou rutinu datových proudů datových proudů plynulého streamování podle přípony názvu souboru a typu MIME.  Chcete-li se zaregistrovat, použijte metodu MediaExtensionManager.RegisterByteStreamHandler oboru názvů Windows.Media.
 
-V tomto souboru XAML jsou k ovládacím prvkům přidruženy některé obslužné rutiny událostí.  Je nutné definovat tyto obslužné rutiny událostí.
+V tomto souboru XAML jsou některé obslužné rutiny událostí přidruženy k ovládacím prvkům.  Tyto obslužné rutiny událostí je nutné definovat.
 
-### <a name="to-modify-the-code-behind-file"></a>Úprava souboru kódu na pozadí
+### <a name="to-modify-the-code-behind-file"></a>Změna kódu za souborem
 
-1. Z Průzkumník řešení klikněte pravým tlačítkem na **MainPage. XAML**a pak klikněte na **Zobrazit kód**.
+1. V Průzkumníku řešení klepněte pravým tlačítkem myši na **soubor MainPage.xaml**a potom klepněte na příkaz **Zobrazit kód**.
 2. V horní části souboru přidejte následující příkaz using:
    
         using Windows.Media;
-3. Na začátku třídy **MainPage** přidejte následující datový člen:
+3. Na začátku **mainpage** třídy přidejte následující datový člen:
    
          private MediaExtensionManager extensions = new MediaExtensionManager();
-4. Na konci konstruktoru **MainPage** přidejte následující dva řádky:
+4. Na konec konstruktoru **MainPage** přidejte následující dva řádky:
    
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "text/xml");
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "application/vnd.ms-sstr+xml");
@@ -204,44 +204,44 @@ V tomto souboru XAML jsou k ovládacím prvkům přidruženy některé obslužn�
          }
          # endregion
    ```
-   Zde je definována obslužná rutina události sliderProgress_PointerPressed.  K dispozici je více práce, kterou je možné využít k tomu, aby fungovalo v další lekci tohoto kurzu.
-6. Uložte soubor stisknutím kláves **CTRL + S** .
+   Zde je definována obslužná rutina události sliderProgress_PointerPressed.  Existuje více prací, které je třeba udělat, aby to fungovalo, což bude zahrnuto v další lekci tohoto kurzu.
+6. Soubor uložte stisknutím **kláves CTRL+S.**
 
-Hotový soubor kódu na pozadí bude vypadat takto:
+Dokončený kód za souborem musí vypadat takto:
 
-![CodeView v aplikaci Visual Studio Smooth Streaming aplikace pro Windows Store][CodeViewPic]
+![Codeview v visual studiu aplikace pro Windows Store pro plynulé streamování][CodeViewPic]
 
 ### <a name="to-compile-and-test-the-application"></a>Kompilace a testování aplikace
 
-1. V nabídce **sestavení** klikněte na příkaz **Configuration Manager**.
-2. Změňte **platformu aktivního řešení** tak, aby odpovídala vaší vývojové platformě.
-3. Pro zkompilování projektu stiskněte klávesu **F6** . 
-4. Stisknutím klávesy **F5** spusťte aplikaci.
-5. V horní části aplikace můžete buď použít výchozí adresu URL Smooth Streaming, nebo zadat jinou adresu. 
-6. Klikněte na **nastavit zdroj**. Vzhledem k tomu, že je ve výchozím nastavení povoleno **Automatické přehrávání** , médium se automaticky hraje.  Média můžete ovládat pomocí tlačítek **Přehrát**, **pozastavit** a **zastavit** .  Hlasitost média lze ovládat pomocí svislého posuvníku.  Vodorovný posuvník pro řízení průběhu multimédií ale ještě není úplně implementovaný. 
+1. V nabídce **BUILD** klepněte na **položku Configuration Manager**.
+2. Změňte **aktivní platformu řešení** tak, aby odpovídala vaší vývojové platformě.
+3. Stisknutím **klávesy F6** zkompilujte projekt. 
+4. Stisknutím **klávesy F5** spusťte aplikaci.
+5. V horní části aplikace můžete buď použít výchozí adresu URL hladkého streamování, nebo zadat jinou. 
+6. Klepněte na **tlačítko Nastavit zdroj**. Protože je ve výchozím nastavení povoleno **automatické přehrávání,** média se automaticky přehrávají.  Média můžete ovládat pomocí tlačítek **Přehrát**, **Pozastavit** a **Zastavit.**  Hlasitost média můžete ovládat pomocí svislého posuvníku.  Horizontální jezdec pro kontrolu průběhu médií však ještě není plně implementován. 
 
-Dokončili jste lesson1.  V této lekci použijete ovládací prvek MediaElement k přehrávání Smooth Streaming obsahu.  V další lekci přidáte posuvník pro řízení průběhu Smooth Streaming obsahu.
+Dokončili jste lekci1.  V této lekci použijete ovládací prvek MediaElement k přehrávání obsahu plynulého streamování.  V další lekci přidáte posuvník pro řízení průběhu obsahu plynulého streamování.
 
-## <a name="lesson-2-add-a-slider-bar-to-control-the-media-progress"></a>Lekce 2: Přidání posuvníku pro řízení průběhu multimédií
+## <a name="lesson-2-add-a-slider-bar-to-control-the-media-progress"></a>Lekce 2: Přidání posuvníku pro řízení průběhu médií
 
-V lekci 1 jste vytvořili aplikaci pro Windows Store s ovládacím prvkem MediaElement XAML pro přehrávání Smooth Streaming mediálního obsahu.  Obsahuje některé základní funkce multimédií, jako je spuštění, zastavení a pozastavení.  V této lekci přidáte ovládací prvek posuvníku do aplikace.
+V lekci 1 jste vytvořili aplikaci pro Windows Store s ovládacím prvkem MediaElement XAML pro přehrávání plynulého mediálního obsahu streamování.  Přichází některé základní mediální funkce, jako je start, stop a pauza.  V této lekci přidáte do aplikace ovládací prvek posuvníku.
 
-V tomto kurzu použijeme časovač k aktualizaci polohy posuvníku na základě aktuální pozice ovládacího prvku MediaElement.  V případě živého obsahu je potřeba také aktualizovat posuvník čas zahájení a ukončení.  To se dá lépe zpracovat v události Adaptivní aktualizace zdroje.
+V tomto kurzu použijeme časovač k aktualizaci polohy posuvníku na základě aktuální pozice ovládacího prvku MediaElement.  V případě živého obsahu je také třeba aktualizovat čas zahájení a ukončení posuvníku.  To lze lépe zpracovat v události adaptivní aktualizace zdrojové aktualizace.
 
-Zdroje médií jsou objekty, které generují data médií.  Překladač zdroje přebírá adresu URL nebo bajtový proud a vytvoří příslušný zdroj média pro daný obsah.  Překladač zdroje je standardní způsob, jak aplikace vytvářet zdroje médií. 
+Zdroje médií jsou objekty, které generují mediální data.  Zdrojový překladač převezme datový proud ADRESY URL nebo bajtů a vytvoří pro daný obsah příslušný zdroj médií.  Zdrojový překladač je standardní způsob, jak aplikace vytvářet zdroje médií. 
 
 Tato lekce obsahuje následující postupy:
 
-1. Registrace obslužné rutiny Smooth Streaming 
-2. Přidat obslužné rutiny událostí úrovně správce adaptivního zdroje
-3. Přidat obslužné rutiny událostí adaptivní zdrojové úrovně
-4. Přidat obslužné rutiny událostí MediaElement
-5. Přidat kód související s posuvníkem
+1. Registrace obslužné rutiny hladkého streamování 
+2. Přidání obslužných rutin událostí na úrovni adaptivního správce zdrojů
+3. Přidání obslužných rutin událostí adaptivní zdrojové úrovně
+4. Přidání obslužných rutin událostí MediaElement
+5. Přidání kódu souvisejícího s posuvníkem
 6. Kompilace a testování aplikace
 
-### <a name="to-register-the-smooth-streaming-byte-stream-handler-and-pass-the-propertyset"></a>Registrace obslužné rutiny bajtového datového proudu Smooth Streaming a předání PropertySet –u
+### <a name="to-register-the-smooth-streaming-byte-stream-handler-and-pass-the-propertyset"></a>Chcete-li zaregistrovat obslužnou rutinu datového proudu plynulého streamování a předat sadu vlastností
 
-1. V Průzkumník řešení klikněte pravým tlačítkem na **MainPage. XAML**a pak klikněte na **Zobrazit kód**.
+1. V Průzkumníku řešení klikněte pravým tlačítkem myši na **soubor MainPage.xaml**a potom klikněte na **příkaz Zobrazit kód**.
 2. Na začátku souboru přidejte následující příkaz using:
 
    ```csharp
@@ -253,7 +253,7 @@ Tato lekce obsahuje následující postupy:
          private Windows.Foundation.Collections.PropertySet propertySet = new Windows.Foundation.Collections.PropertySet();             
          private IAdaptiveSourceManager adaptiveSourceManager;
    ```
-4. Uvnitř konstruktoru **MainPage** přidejte za to následující kód **. Inicializovat součásti ();** řádek a řádky registračního kódu napsané v předchozí lekci:
+4. Uvnitř **konstruktoru MainPage,** přidejte následující kód za **toto. Inicializovat components();** řádku a řádky registračního kódu napsané v předchozí lekci:
 
    ```csharp
         // Gets the default instance of AdaptiveSourceManager which manages Smooth 
@@ -263,7 +263,7 @@ Tato lekce obsahuje následující postupy:
         // {A5CE1DE8-1D00-427B-ACEF-FB9A3C93DE2D}" must be hardcoded.
         propertySet["{A5CE1DE8-1D00-427B-ACEF-FB9A3C93DE2D}"] = adaptiveSourceManager;
    ```
-5. V konstruktoru **MainPage** upravte dvě metody RegisterByteStreamHandler, abyste přidali parametry z:
+5. Uvnitř konstruktoru **MainPage** upravte dvě metody RegisterByteStreamHandler a přidejte parametry forth:
 
    ```csharp
          // Registers Smooth Streaming byte-stream handler for ".ism" extension and, 
@@ -282,11 +282,11 @@ Tato lekce obsahuje následující postupy:
             "application/vnd.ms-sstr+xml", 
          propertySet);
    ```
-6. Uložte soubor stisknutím kláves **CTRL + S** .
+6. Soubor uložte stisknutím **kláves CTRL+S.**
 
-### <a name="to-add-the-adaptive-source-manager-level-event-handler"></a>Přidání obslužné rutiny události úrovně správce adaptivního zdroje
+### <a name="to-add-the-adaptive-source-manager-level-event-handler"></a>Přidání obslužné rutiny události adaptivního správce zdrojů
 
-1. V Průzkumník řešení klikněte pravým tlačítkem na **MainPage. XAML**a pak klikněte na **Zobrazit kód**.
+1. V Průzkumníku řešení klikněte pravým tlačítkem myši na **soubor MainPage.xaml**a potom klikněte na **příkaz Zobrazit kód**.
 2. Uvnitř třídy **MainPage** přidejte následující datový člen:
 
    ```csharp
@@ -304,17 +304,17 @@ Tato lekce obsahuje následující postupy:
 
          # endregion Adaptive Source Manager Level Events
    ```
-4. Na konci konstruktoru **MainPage** přidejte následující řádek, kterým se přihlásíte k odběru adaptivní události Open Source:
+4. Na konci konstruktoru **MainPage** přidejte následující řádek, abyste se přihlásili k odběru adaptivní source open event:
 
    ```csharp
          adaptiveSourceManager.AdaptiveSourceOpenedEvent += 
            new AdaptiveSourceOpenedEventHandler(mediaElement_AdaptiveSourceOpened);
    ```
-5. Uložte soubor stisknutím kláves **CTRL + S** .
+5. Soubor uložte stisknutím **kláves CTRL+S.**
 
-### <a name="to-add-adaptive-source-level-event-handlers"></a>Přidání obslužných rutin událostí adaptivní zdrojové úrovně
+### <a name="to-add-adaptive-source-level-event-handlers"></a>Přidání obslužných rutin událostí adaptivní úrovně zdrojového zdroje
 
-1. V Průzkumník řešení klikněte pravým tlačítkem na **MainPage. XAML**a pak klikněte na **Zobrazit kód**.
+1. V Průzkumníku řešení klikněte pravým tlačítkem myši na **soubor MainPage.xaml**a potom klikněte na **příkaz Zobrazit kód**.
 2. Uvnitř třídy **MainPage** přidejte následující datový člen:
 
    ```csharp
@@ -346,7 +346,7 @@ Tato lekce obsahuje následující postupy:
 
          # endregion Adaptive Source Level Events
    ```
-4. Na konci metody **AdaptiveSourceOpened mediaElement** přidejte následující kód pro přihlášení k odběru událostí:
+4. Na konci **metody mediaElement AdaptiveSourceOpened** přidejte následující kód pro přihlášení k odběru událostí:
 
    ```csharp
          adaptiveSource.ManifestReadyEvent +=
@@ -359,13 +359,13 @@ Tato lekce obsahuje následující postupy:
 
             mediaElement_AdaptiveSourceFailed;
    ```
-5. Uložte soubor stisknutím kláves **CTRL + S** .
+5. Soubor uložte stisknutím **kláves CTRL+S.**
 
-Stejné události jsou také k dispozici na úrovni adaptivního zdrojového správce, které lze použít pro zpracování funkcí společných pro všechny prvky média v aplikaci. Každý AdaptiveSource zahrnuje vlastní události a všechny události AdaptiveSource budou v oblasti AdaptiveSourceManager do sebe.
+Stejné události jsou k dispozici také na úrovni adaptivního zdrojového jeslí, které lze použít pro zpracování funkcí společných pro všechny mediální prvky v aplikaci. Každý AdaptiveSource obsahuje své vlastní události a všechny AdaptiveSource události budou kaskádovitě v rámci AdaptiveSourceManager.
 
-### <a name="to-add-media-element-event-handlers"></a>Přidání obslužných rutin událostí mediálního prvku
+### <a name="to-add-media-element-event-handlers"></a>Přidání obslužných rutin událostí Media Element
 
-1. V Průzkumník řešení klikněte pravým tlačítkem na **MainPage. XAML**a pak klikněte na **Zobrazit kód**.
+1. V Průzkumníku řešení klikněte pravým tlačítkem myši na **soubor MainPage.xaml**a potom klikněte na **příkaz Zobrazit kód**.
 2. Na konci třídy **MainPage** přidejte následující obslužné rutiny událostí:
 
    ```csharp
@@ -390,18 +390,18 @@ Stejné události jsou také k dispozici na úrovni adaptivního zdrojového spr
 
          # endregion Media Element Event Handlers
    ```
-3. Na konci konstruktoru **MainPage** přidejte do událostí do dolního indexu následující kód:
+3. Na konci konstruktoru **MainPage** přidejte k událostem do dolního indexu následující kód:
 
    ```csharp
          mediaElement.MediaOpened += MediaOpened;
          mediaElement.MediaEnded += MediaEnded;
          mediaElement.MediaFailed += MediaFailed;
    ```
-4. Uložte soubor stisknutím kláves **CTRL + S** .
+4. Soubor uložte stisknutím **kláves CTRL+S.**
 
 ### <a name="to-add-slider-bar-related-code"></a>Přidání kódu souvisejícího s posuvníkem
 
-1. V Průzkumník řešení klikněte pravým tlačítkem na **MainPage. XAML**a pak klikněte na **Zobrazit kód**.
+1. V Průzkumníku řešení klikněte pravým tlačítkem myši na **soubor MainPage.xaml**a potom klikněte na **příkaz Zobrazit kód**.
 2. Na začátku souboru přidejte následující příkaz using:
 
    ```csharp
@@ -420,7 +420,7 @@ Stejné události jsou také k dispozici na úrovni adaptivního zdrojového spr
          PointerEventHandler pointerpressedhandler = new PointerEventHandler(sliderProgress_PointerPressed);
          sliderProgress.AddHandler(Control.PointerPressedEvent, pointerpressedhandler, true);    
    ```
-5. Na konci třídy **MainPage** přidejte následující kód:
+5. Na konci **mainpage** třídy přidejte následující kód:
 
    ```csharp
          # region sliderMediaPlayer
@@ -507,7 +507,7 @@ Stejné události jsou také k dispozici na úrovni adaptivního zdrojového spr
    ```
 
    > [!NOTE]
-   > CoreDispatcher se používá k provádění změn vlákna uživatelského rozhraní z vlákna, které není v uživatelském rozhraní. V případě kritických míst ve vlákně dispečera může vývojář zvolit, že se má použít dispečer poskytovaný prvky uživatelského rozhraní, které mají v úmyslu aktualizovat.  Příklad:
+   > CoreDispatcher se používá k provádění změn vlákna uživatelského rozhraní z vlákna mimo uživatelské rozhraní. V případě problémového místa ve vlákně dispečera může vývojář použít dispečera poskytovaného prvkem uživatelského rozhraní, který hodlají aktualizovat.  Například:
 
    ```csharp
          await sliderProgress.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { TimeSpan 
@@ -517,42 +517,42 @@ Stejné události jsou také k dispozici na úrovni adaptivního zdrojového spr
 
          sliderProgress.Maximum = absvalue; }); 
    ```
-6. Na konci metody **mediaElement_AdaptiveSourceStatusUpdated** přidejte následující kód:
+6. Na konci **mediaElement_AdaptiveSourceStatusUpdated** metody přidejte následující kód:
 
    ```csharp
          setSliderStartTime(args.StartTime);
          setSliderEndTime(args.EndTime);
    ```
-7. Na konci metody **MediaOpened** přidejte následující kód:
+7. Na konci **MediaOpened** metoda, přidejte následující kód:
 
    ```csharp
          sliderProgress.StepFrequency = SliderFrequency(mediaElement.NaturalDuration.TimeSpan);
          sliderProgress.Width = mediaElement.Width;
          setupTimer();
    ```
-8. Uložte soubor stisknutím kláves **CTRL + S** .
+8. Soubor uložte stisknutím **kláves CTRL+S.**
 
 ### <a name="to-compile-and-test-the-application"></a>Kompilace a testování aplikace
 
-1. Pro zkompilování projektu stiskněte klávesu **F6** . 
-2. Stisknutím klávesy **F5** spusťte aplikaci.
-3. V horní části aplikace můžete buď použít výchozí adresu URL Smooth Streaming, nebo zadat jinou adresu. 
-4. Klikněte na **nastavit zdroj**. 
+1. Stisknutím **klávesy F6** zkompilujte projekt. 
+2. Stisknutím **klávesy F5** spusťte aplikaci.
+3. V horní části aplikace můžete buď použít výchozí adresu URL hladkého streamování, nebo zadat jinou. 
+4. Klepněte na **tlačítko Nastavit zdroj**. 
 5. Otestujte posuvník.
 
-Dokončili jste lekci v lekci 2.  V této lekci jste přidali posuvník do aplikace. 
+Dokončili jste lekci 2.  V této lekci jste do aplikace přidali posuvník. 
 
-## <a name="lesson-3-select-smooth-streaming-streams"></a>Lekce 3: Vybrat Smooth Streaming datové proudy
-Smooth Streaming může streamovat obsah pomocí zvukového zvuku s více jazyky, které mohou čtenáři vybrat.  V této lekci umožníte uživatelům vybrat streamy. Tato lekce obsahuje následující postupy:
+## <a name="lesson-3-select-smooth-streaming-streams"></a>Lekce 3: Vyberte plynulé streamovací proudy
+Plynulé streamování je schopno streamovat obsah pomocí vícejazykových zvukových stop, které jsou volitelné diváky.  V této lekci umožníte divákům vybrat datové proudy. Tato lekce obsahuje následující postupy:
 
 1. Úprava souboru XAML
-2. Upravit soubor kódu na pozadí
+2. Změna kódu za souborem
 3. Kompilace a testování aplikace
 
 ### <a name="to-modify-the-xaml-file"></a>Úprava souboru XAML
 
-1. Z Průzkumník řešení klikněte pravým tlačítkem myši na **MainPage. XAML**a potom klikněte na tlačítko **Návrhář zobrazení**.
-2. Vyhledejte &lt;Grid. RowDefinitions&gt;a upravte RowDefinitions tak, aby vypadaly takto:
+1. V Průzkumníku řešení klepněte pravým tlačítkem myši na **soubor MainPage.xaml**a potom klepněte na příkaz **Zobrazit Návrháře**.
+2. Vyhledejte &lt;soubor Grid.RowDefinitions&gt;a upravte definice řádků tak, aby vypadaly takto:
 
    ```xml
          <Grid.RowDefinitions>            
@@ -563,7 +563,7 @@ Smooth Streaming může streamovat obsah pomocí zvukového zvuku s více jazyky
             <RowDefinition Height="50"/>
          </Grid.RowDefinitions>
    ```
-3. Uvnitř značek/Grid&gt;mřížkypřidejtenásledujícíkód pro definování ovládacího prvku ListBox, aby uživatelé viděli seznam dostupných datových proudů a vybrali streamy:&lt; &lt;&gt;
+3. Uvnitř &lt;značek&gt;&lt;Grid&gt; /Grid přidejte následující kód, který definuje ovládací prvek seznamu, aby uživatelé mohli zobrazit seznam dostupných datových proudů a vybrat datové proudy:
 
    ```xml
          <Grid Name="gridStreamAndBitrateSelection" Grid.Row="3">
@@ -590,12 +590,12 @@ Smooth Streaming může streamovat obsah pomocí zvukového zvuku s více jazyky
             </StackPanel>
          </Grid>
    ```
-4. Změny uložte stisknutím **kombinace kláves CTRL + S** .
+4. Stisknutím **kláves CTRL+S** uložte změny.
 
-### <a name="to-modify-the-code-behind-file"></a>Úprava souboru kódu na pozadí
+### <a name="to-modify-the-code-behind-file"></a>Změna kódu za souborem
 
-1. Z Průzkumník řešení klikněte pravým tlačítkem na **MainPage. XAML**a pak klikněte na **Zobrazit kód**.
-2. V oboru názvů SSPlayer přidejte novou třídu:
+1. V Průzkumníku řešení klepněte pravým tlačítkem myši na **soubor MainPage.xaml**a potom klepněte na příkaz **Zobrazit kód**.
+2. Uvnitř oboru názvů SSPlayer přidejte novou třídu:
 
    ```csharp
         #region class Stream
@@ -789,13 +789,13 @@ Smooth Streaming může streamovat obsah pomocí zvukového zvuku s více jazyky
         }
         #endregion stream selection
    ```
-5. Vyhledejte metodu mediaElement_ManifestReady a na konci funkce přidejte následující kód:
+5. Vyhledejte metodu mediaElement_ManifestReady a na konec funkce připotážte následující kód:
    ```csharp
         getStreams(manifestObject);
         refreshAvailableStreamsListBoxItemSource();
    ```
-    Takže když je manifest MediaElement připravený, kód získá seznam dostupných datových proudů a naplní seznam uživatelského rozhraní seznamem.
-6. Uvnitř třídy MainPage Najděte tlačítka uživatelského rozhraní a klikněte na oblast události a přidejte následující definici funkce:
+    Takže když MediaElement manifest je připraven, kód získá seznam dostupných datových proudů a naplní seznam ui se seznamem.
+6. Uvnitř třídy MainPage vyhledejte oblast událostí s tlačítky ui a přidejte následující definici funkce:
    ```csharp
         private void btnChangeStream_Click(object sender, RoutedEventArgs e)
         {
@@ -811,26 +811,26 @@ Smooth Streaming může streamovat obsah pomocí zvukového zvuku s více jazyky
 
 ### <a name="to-compile-and-test-the-application"></a>Kompilace a testování aplikace
 
-1. Pro zkompilování projektu stiskněte klávesu **F6** . 
-2. Stisknutím klávesy **F5** spusťte aplikaci.
-3. V horní části aplikace můžete buď použít výchozí adresu URL Smooth Streaming, nebo zadat jinou adresu. 
-4. Klikněte na **nastavit zdroj**. 
-5. Výchozí jazyk je audio_eng. Zkuste přepnout mezi audio_eng a audio_es. Pokaždé, když vyberete nový datový proud, musíte kliknout na tlačítko Odeslat.
+1. Stisknutím **klávesy F6** zkompilujte projekt. 
+2. Stisknutím **klávesy F5** spusťte aplikaci.
+3. V horní části aplikace můžete buď použít výchozí adresu URL hladkého streamování, nebo zadat jinou. 
+4. Klepněte na **tlačítko Nastavit zdroj**. 
+5. Výchozí jazyk je audio_eng. Zkuste přepínat mezi audio_eng a audio_es. Pokaždé, když vyberete nový datový proud, musíte kliknout na tlačítko Odeslat.
 
-Dokončili jste lekci 3.  V této lekci přidáte funkci pro výběr datových proudů.
+Dokončili jste lekci 3.  V této lekci přidáte funkce pro výběr datových proudů.
 
-## <a name="lesson-4-select-smooth-streaming-tracks"></a>Lekce 4: Výběr Smooth Streamingch stop
+## <a name="lesson-4-select-smooth-streaming-tracks"></a>Lekce 4: Vyberte skladby plynulého streamování
 
-Smooth Streaming prezentace může obsahovat více videosouborů zakódovaných s různými úrovněmi kvality (přenosové rychlosti) a rozlišení. V této lekci umožníte uživatelům vybrat sledovat. Tato lekce obsahuje následující postupy:
+Prezentace Plynulého streamování může obsahovat více video souborů kódovaných s různými úrovněmi kvality (přenosové rychlosti) a rozlišeními. V této lekci umožníte uživatelům vybrat skladby. Tato lekce obsahuje následující postupy:
 
 1. Úprava souboru XAML
-2. Upravit soubor kódu na pozadí
+2. Změna kódu za souborem
 3. Kompilace a testování aplikace
 
 ### <a name="to-modify-the-xaml-file"></a>Úprava souboru XAML
 
-1. Z Průzkumník řešení klikněte pravým tlačítkem myši na **MainPage. XAML**a potom klikněte na tlačítko **Návrhář zobrazení**.
-2. Vyhledejte značku&gt; Grid s názvem gridStreamAndBitrateSelection, na konci značky přidejte následující kód: &lt;
+1. V Průzkumníku řešení klepněte pravým tlačítkem myši na **soubor MainPage.xaml**a potom klepněte na příkaz **Zobrazit Návrháře**.
+2. Vyhledejte &lt;&gt; značku Grid s názvem **gridStreamAndBitrateSelection**, připojujte na konec značky následující kód:
    ```xml
          <StackPanel Name="spBitRateSelection" Grid.Row="1" Grid.Column="1">
          <StackPanel Orientation="Horizontal">
@@ -847,12 +847,12 @@ Smooth Streaming prezentace může obsahovat více videosouborů zakódovaných 
          </ListBox>
          </StackPanel>
    ```
-3. Změny uložíte stisknutím **kombinace kláves CTRL + S** .
+3. Stisknutím **kláves CTRL+S** uložte změny.
 
-### <a name="to-modify-the-code-behind-file"></a>Úprava souboru kódu na pozadí
+### <a name="to-modify-the-code-behind-file"></a>Změna kódu za souborem
 
-1. Z Průzkumník řešení klikněte pravým tlačítkem na **MainPage. XAML**a pak klikněte na **Zobrazit kód**.
-2. V oboru názvů SSPlayer přidejte novou třídu:
+1. V Průzkumníku řešení klepněte pravým tlačítkem myši na **soubor MainPage.xaml**a potom klepněte na příkaz **Zobrazit kód**.
+2. Uvnitř oboru názvů SSPlayer přidejte novou třídu:
    ```csharp
         #region class Track
         public class Track
@@ -994,12 +994,12 @@ Smooth Streaming prezentace může obsahovat více videosouborů zakódovaných 
         }
         #endregion track selection
    ```
-5. Vyhledejte metodu mediaElement_ManifestReady a na konci funkce přidejte následující kód:
+5. Vyhledejte metodu mediaElement_ManifestReady a na konec funkce připotážte následující kód:
    ```csharp
          getTracks(manifestObject);
          refreshAvailableTracksListBoxItemSource();
    ```
-6. Uvnitř třídy MainPage Najděte tlačítka uživatelského rozhraní a klikněte na oblast události a přidejte následující definici funkce:
+6. Uvnitř třídy MainPage vyhledejte oblast událostí s tlačítky ui a přidejte následující definici funkce:
    ```csharp
          private void btnChangeStream_Click(object sender, RoutedEventArgs e)
          {
@@ -1015,24 +1015,24 @@ Smooth Streaming prezentace může obsahovat více videosouborů zakódovaných 
    
 ### <a name="to-compile-and-test-the-application"></a>Kompilace a testování aplikace
 
-1. Pro zkompilování projektu stiskněte klávesu **F6** . 
-2. Stisknutím klávesy **F5** spusťte aplikaci.
-3. V horní části aplikace můžete buď použít výchozí adresu URL Smooth Streaming, nebo zadat jinou adresu. 
-4. Klikněte na **nastavit zdroj**. 
-5. Ve výchozím nastavení jsou vybrané všechny stopy streamu videa. Pokud chcete experimentovat změny přenosové rychlosti, můžete vybrat nejnižší dostupnou přenosovou rychlost a pak vybrat nejvyšší dostupnou přenosovou rychlost. Po každé změně musíte kliknout na Odeslat.  Můžete vidět změny kvality videa.
+1. Stisknutím **klávesy F6** zkompilujte projekt. 
+2. Stisknutím **klávesy F5** spusťte aplikaci.
+3. V horní části aplikace můžete buď použít výchozí adresu URL hladkého streamování, nebo zadat jinou. 
+4. Klepněte na **tlačítko Nastavit zdroj**. 
+5. Ve výchozím nastavení jsou vybrány všechny stopy datového proudu videa. Chcete-li experimentovat se změnami přenosové rychlosti, můžete vybrat nejnižší dostupnou přenosovou rychlost a pak vybrat nejvyšší dostupnou přenosovou rychlost. Po každé změně musíte klepnout na tlačítko Odeslat.  Můžete vidět změny kvality videa.
 
-Dokončili jste lekci 4.  V této lekci přidáte funkci pro výběr možnosti sledovat.
+Dokončili jste lekci 4.  V této lekci přidáte funkce pro výběr stop.
 
-## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
+## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="other-resources"></a>Další zdroje informací:
-* [Postup vytvoření Smooth Streaming aplikace s Windows 8 JavaScript s pokročilými funkcemi](https://blogs.iis.net/cenkd/archive/2012/08/10/how-to-build-a-smooth-streaming-windows-8-javascript-application-with-advanced-features.aspx)
-* [Technický přehled Smooth Streaming](https://www.iis.net/learn/media/on-demand-smooth-streaming/smooth-streaming-technical-overview)
+## <a name="other-resources"></a>Další zdroje:
+* [Jak vytvořit smooth streaming Windows 8 JavaScript aplikace s pokročilými funkcemi](https://blogs.iis.net/cenkd/archive/2012/08/10/how-to-build-a-smooth-streaming-windows-8-javascript-application-with-advanced-features.aspx)
+* [Technický přehled pro plynulé streamování](https://www.iis.net/learn/media/on-demand-smooth-streaming/smooth-streaming-technical-overview)
 
 [PlayerApplication]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-1.png
 [CodeViewPic]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png

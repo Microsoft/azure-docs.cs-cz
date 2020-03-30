@@ -1,6 +1,6 @@
 ---
-title: Začínáme se službou Azure AD v projektech .NET MVC | Azure
-description: Jak začít používat Azure Active Directory v projektech .NET MVC po připojení k nebo vytvoření Azure AD pomocí připojených služeb sady Visual Studio
+title: Začínáme s Azure AD v projektech .NET MVC | Azure
+description: Jak začít používat Azure Active Directory v projektech .NET MVC po připojení nebo vytvoření Azure AD pomocí připojených služeb Visual Studio
 author: ghogen
 manager: jillfra
 ms.assetid: 1c8b6a58-5144-4965-a905-625b9ee7b22b
@@ -12,29 +12,29 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.openlocfilehash: eae649a4de88373ee79e49ecb7d5f14564a3054b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77159484"
 ---
-# <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Začínáme s Azure Active Directory (projekty ASP.NET MVC)
+# <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Začínáme s Azure Active Directory (ASP.NET Projekty MVC)
 
 > [!div class="op_single_selector"]
 > - [Začínáme](vs-active-directory-dotnet-getting-started.md)
 > - [Co se přihodilo](vs-active-directory-dotnet-what-happened.md)
 
-Tento článek poskytuje další doprovodné materiály po přidání služby Active Directory do projektu ASP.NET MVC prostřednictvím příkazu **project > Connected Services** sady Visual Studio. Pokud jste ještě nepřidali službu do projektu, můžete to udělat kdykoli.
+Tento článek obsahuje další pokyny po přidání služby Active Directory do projektu mvc ASP.NET prostřednictvím příkazu **Project > Connected Services** sady Visual Studio. Pokud jste službu ještě do projektu nepřidali, můžete tak učinit kdykoli.
 
-Podívejte se, [co se stalo s mým projektem MVC?](vs-active-directory-dotnet-what-happened.md) pro změny provedené v projektu při přidávání připojené služby.
+Podívejte [se, co se stalo s mým projektem MVC?](vs-active-directory-dotnet-what-happened.md)
 
 ## <a name="requiring-authentication-to-access-controllers"></a>Vyžadování ověřování pro přístup k řadičům
 
-Všechny řadiče v projektu byly navýšené pomocí atributu `[Authorize]`. Tento atribut vyžaduje, aby byl uživatel ověřen před přístupem k těmto řadičům. K povolení anonymního přístup k řadiči odeberte tento atribut z kontroleru. Chcete-li nastavit oprávnění na podrobnější úrovni, použijte atribut pro každou metodu, která vyžaduje autorizaci namísto použití pro třídu kontroleru.
+Všechny řadiče v projektu byly `[Authorize]` ozdobeny atributem. Tento atribut vyžaduje, aby byl uživatel ověřen před přístupem k těmto řadičům. Chcete-li povolit přístup k řadiči anonymně, odeberte tento atribut z řadiče. Pokud chcete nastavit oprávnění na podrobnější úrovni, použijte atribut pro každou metodu, která vyžaduje autorizaci namísto jeho použití na třídu kontroleru.
 
-## <a name="adding-signin--signout-controls"></a>Přidávání ovládacích prvků pro přihlášení a odhlášení
+## <a name="adding-signin--signout-controls"></a>Přidání ovládacích prvků signin / signout
 
-Chcete-li do zobrazení přidat ovládací prvky pro přihlášení a odhlášení, můžete použít částečné zobrazení `_LoginPartial.cshtml` k přidání funkce do jednoho z vašich zobrazení. Tady je příklad funkcí přidaných do standardního zobrazení `_Layout.cshtml`. (Poznamenejte si poslední prvek ve třídě div s navigačním panelem třídy – sbalení):
+Chcete-li do zobrazení přidat ovládací prvky Přihlášení/odhlášení, můžete pomocí částečného `_LoginPartial.cshtml` zobrazení přidat funkce do jednoho ze zobrazení. Zde je příklad funkcí přidaných do `_Layout.cshtml` standardního zobrazení. (Všimněte si posledního prvku v div s navbar-collapse třídy):
 
 ```html
 <!DOCTYPE html>
@@ -83,5 +83,5 @@ Chcete-li do zobrazení přidat ovládací prvky pro přihlášení a odhlášen
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Scénáře ověřování pro Azure Active Directory](authentication-scenarios.md)
-- [Přidání přihlašování do webové aplikace ASP.NET pomocí Microsoftu](quickstart-v2-aspnet-webapp.md)
+- [Scénáře ověřování pro Službu Azure Active Directory](authentication-scenarios.md)
+- [Přidání přihlášení s Microsoftem do ASP.NET webové aplikace](quickstart-v2-aspnet-webapp.md)

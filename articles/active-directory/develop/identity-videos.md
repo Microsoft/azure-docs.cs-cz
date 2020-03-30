@@ -1,6 +1,6 @@
 ---
-title: Videa Microsoft Identity Platform | Azure
-description: Seznam videí o platformě Microsoft identity
+title: Videa platformy identit microsoftu | Azure
+description: Seznam videí o platformě microsoft identity
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,23 +13,23 @@ ms.author: marsma
 ms.custom: aaddev
 ms.reviewer: celested
 ms.openlocfilehash: 22149ccfa258852b36da61ffbabde5e1856df9de
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77085198"
 ---
 # <a name="microsoft-identity-platform-videos"></a>Videa k platformě Microsoft Identity Platform
 
-Seznamte se s Microsoft Identity platformou a knihovnami ověřování MSAL (Microsoft Authentication Library). Obvykle jsou 1-2 minut dlouhé.
+Další informace o platformě identit microsoftu a knihovnách Microsoft Authentication (MSAL). Jsou obvykle 1-2 minuty dlouhé.
 
-## <a name="microsoft-identity-platform-basics"></a>Základy Microsoft Identity Platform
+## <a name="microsoft-identity-platform-basics"></a>Základy platformy identit Microsoftu
 
-**Přečtěte si základní koncepty Microsoft Identity Platform**
+**Naučte se základní koncepty platformy identit Microsoftu**
 
 :::row:::
     :::column:::
-        Přehled platformy Microsoft identity
+        Přehled platformy identit Microsoftu
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/bNlcFuIo3r8]
@@ -55,13 +55,13 @@ Seznamte se s Microsoft Identity platformou a knihovnami ověřování MSAL (Mic
 :::row-end:::
 :::row:::
     :::column:::
-        Vysvětlení oborů
+        Obory vysvětleny
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/eiPHOoLmGJs]
     :::column-end:::
     :::column:::
-        Co jsou zprostředkovatelé
+        Co jsou makléři
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/Zd_Uubnu0U0]
@@ -69,13 +69,13 @@ Seznamte se s Microsoft Identity platformou a knihovnami ověřování MSAL (Mic
 :::row-end:::
 :::row:::
     :::column:::
-        Co dělají identifikátory URI pro přesměrování
+        K čemu rozhraní URI přesměrování
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/znSN_3JAuoU]
     :::column-end:::
     :::column:::
-        Vysvětlení tenantů
+        Nájemníci vysvětlil
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/mDhT4Zv1fZU]
@@ -83,13 +83,13 @@ Seznamte se s Microsoft Identity platformou a knihovnami ověřování MSAL (Mic
 :::row-end:::
 :::row:::
     :::column:::
-        Role Azure AD
+        Role of Azure AD
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/zDEC7A5ZS2Q]
     :::column-end:::
     :::column:::
-        Role objektů aplikací Azure AD
+        Role objektů aplikace Azure AD
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/HEpq_YSmuWw]
@@ -97,32 +97,32 @@ Seznamte se s Microsoft Identity platformou a knihovnami ověřování MSAL (Mic
 :::row-end:::
 :::row:::
     :::column:::
-        Rozdíly v organizačních a osobních účet Microsoft
+        Rozdíly mezi organizačními a osobními účtemi Microsoft
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/E2OUluQQKSk]
     :::column-end:::
     :::column:::
-        ZABEZPEČENÉ webové aplikace a rozdíly mezi webovými aplikacemi
+        Spa a rozdíly ve webových aplikacích
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/ZJirt7eTVw8?t=5]
     :::column-end:::
 :::row-end:::
 
-## <a name="migrate-from-v10-to-v20"></a>Migrace z verze 1.0 do verze 2.0
+## <a name="migrate-from-v10-to-v20"></a>Migrace z v1.0 na v2.0
 
-**Informace o migraci na nejnovější verzi platformy Microsoft Identity Platform**
+**Informace o migraci na nejnovější verzi platformy Microsoft identit**
 
 :::row:::
     :::column:::
-        Koncové body a výhody přechodu na verzi v 2.0
+        Koncové body a výhody přechodu na v2.0
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/qpdC45tZYDg]
     :::column-end:::
      :::column:::
-        Migrace základu ADAL na MSAL
+        Migrace základny kódů ADAL na msal
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/xgL_z9yCnrE]
@@ -130,13 +130,13 @@ Seznamte se s Microsoft Identity platformou a knihovnami ověřování MSAL (Mic
 :::row-end:::
 :::row:::
     :::column:::
-        Proč migrovat z ADAL na MSAL
+        Proč migrovat z ADAL do MSAL
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/qpdC45tZYDg]
     :::column-end:::
     :::column:::
-        Výhody MSAL přes ADAL
+        Výhody MSAL nad ADAL
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/q-TDszj2O-4]
