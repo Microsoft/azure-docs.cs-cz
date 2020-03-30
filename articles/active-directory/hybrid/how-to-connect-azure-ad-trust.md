@@ -1,7 +1,7 @@
 ---
-title: Azure AD Connect – Správa důvěryhodnosti služby AD FS s Azure AD pomocí služby Azure AD Connect | Dokumentace Microsoftu
-description: Provozní údaje o zpracování službou Azure AD vztah důvěryhodnosti Azure AD connect.
-keywords: Služba AD FS, AD FS, správy služby AD FS, AAD Connect, připojit, Azure AD, důvěryhodnost mezi doménami, AAD, deklarace identity, deklarace identity, deklarace identity, pravidla, vystavení, transformaci, pravidla, zálohování, obnovení
+title: Azure AD Connect – správa vztahu důvěryhodnosti služby AD FS pomocí služby Azure AD Pomocí Azure AD Connect | Dokumenty společnosti Microsoft
+description: Provozní podrobnosti zpracování důvěryhodnosti Azure AD pomocí Azure AD připojení.
+keywords: Služba AD FS, Služba ADFS, správa služby AD FS, služba AAD Connect, Connect, Azure AD, důvěryhodnost, AAD, deklarace, nárok, pravidla deklarací, vydání, transformace, pravidla, zálohování, obnovení
 services: active-directory
 documentationcenter: ''
 ms.reviewer: anandyadavmsft
@@ -18,106 +18,106 @@ ms.author: billmath
 author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bd46bb820c7127c4fa6105fcc0be73bb66024c6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0f3e521fb7668305ce511aaddd63ed2cce8dfed0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60245725"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331727"
 ---
-# <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Správa vztah důvěryhodnosti služby AD FS pomocí Azure AD pomocí služby Azure AD Connect
+# <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Správa vztahu důvěryhodnosti AD FS s Azure AD s využitím Azure AD Connectu
 
 ## <a name="overview"></a>Přehled
 
-Azure AD Connect můžete spravovat federace mezi službami v místním Active Directory Federation Services (AD FS) a Azure AD. Tento článek obsahuje přehled:
+Azure AD Connect můžete spravovat federaci mezi místní službou AD FS (AD FS) a Azure AD. Tento článek obsahuje přehled:
 
-* Různá nastavení nakonfigurované na vztah důvěryhodnosti Azure AD Connect
-* Nastavte pravidla transformace vystavení (pravidla deklarace identity) pomocí služby Azure AD Connect
-* Postup zálohování a obnovení vašeho nároku mezi upgrady a konfigurace pravidla aktualizace. 
+* Různá nastavení nakonfigurovaná na základě vztahu důvěryhodnosti službou Azure AD Connect
+* Pravidla transformace vystavování (pravidla deklarací) nastavená službou Azure AD Connect
+* Jak zálohovat a obnovit pravidla deklarací mezi upgrady a aktualizacemi konfigurace. 
 
-## <a name="settings-controlled-by-azure-ad-connect"></a>Nastavení Azure AD Connect
+## <a name="settings-controlled-by-azure-ad-connect"></a>Nastavení řízená službou Azure AD Connect
 
-Azure AD Connect spravuje **pouze** související nastavení se vztah důvěryhodnosti Azure AD. Azure AD Connect neprovede žádné změny nastavení na jiné vztahy důvěryhodnosti předávající strany ve službě AD FS. Následující tabulka uvádí nastavení, které jsou řízeny pomocí služby Azure AD Connect.
+Azure AD Connect spravuje **jenom** nastavení související s důvěryhodností Azure AD. Azure AD Connect nezmění žádné nastavení na jiné důvěryhodné strany ve službě AD FS. Následující tabulka označuje nastavení, která jsou řízena službou Azure AD Connect.
 
 | Nastavení | Popis |
 | :--- | :--- |
-| Podpisový certifikát tokenu | Azure AD Connect je možné obnovit a znovu vytvořit vztah důvěryhodnosti s Azure AD. Azure AD Connect provede jednorázovou okamžité výměny podpisové certifikáty tokenů pro službu AD FS a aktualizuje nastavení federace domény Azure AD.|
-| Token podpisový algoritmus | Microsoft doporučuje používat jako token podpisový algoritmus SHA-256. Azure AD Connect může zjistit, pokud token podpisový algoritmus je nastavený na hodnotu méně bezpečné než algoritmus SHA-256. V další operaci možné konfigurace ji bude aktualizujte nastavení na SHA-256. Použít nový podpisový certifikát tokenu musí aktualizovat ostatní vztah důvěryhodnosti předávající strany. |
-| Identifikátor vztahu důvěryhodnosti Azure AD | Azure AD Connect nastaví hodnotu správný identifikátor pro vztah důvěryhodnosti Azure AD. Služba AD FS jednoznačně identifikuje vztah důvěryhodnosti Azure AD pomocí hodnota identifikátoru. |
-| Koncové body Azure AD | Azure AD Connect zajišťuje, že koncové body konfigurované pro vztah důvěryhodnosti Azure AD jsou vždy podle doporučené hodnoty pro výkon a odolnost proti chybám. |
-| Pravidla transformace vystavení | Počet pravidel deklarací identity, které jsou potřeba pro zajištění optimálního výkonu funkce služby Azure AD ve federované nastavení nejsou k dispozici. Azure AD Connect zajišťuje, že vztah důvěryhodnosti Azure AD je vždy nakonfigurovanou správnou sadu pravidel deklarací identity doporučené. |
-| Alternativní id | Pokud se synchronizace je nakonfigurován pro použití alternativní id, Azure AD Connect konfiguraci služby AD FS provádět ověření pomocí alternativní id. |
-| Automatické metadata update | Vztah důvěryhodnosti s Azure AD je nakonfigurovaný pro automatické metadata aktualizací. Služba AD FS pravidelně kontroluje metadata vztahu důvěryhodnosti Azure AD a udržuje je aktuální v případě, že se změní na straně služby Azure AD. |
-| Ověření integrované Windows (IWA) | Během operace připojení k hybridní službě Azure AD je povoleno IWA pro registraci zařízení pro usnadnění připojení k hybridní službě Azure AD pro zařízení s nižší úrovně |
+| Podpisový certifikát tokenu | Azure AD Connect se dá použít k resetování a znovu vytvoření vztahu důvěryhodnosti pomocí Azure AD. Azure AD Connect provádí jednorázové okamžité převrácení podpisových certifikátů tokenů pro službu AD FS a aktualizuje nastavení federace domény Azure AD.|
+| Algoritmus podepisování tokenů | Společnost Microsoft doporučuje používat SHA-256 jako algoritmus podepisování tokenů. Azure AD Connect můžete zjistit, pokud algoritmus podpisu tokenu je nastavena na hodnotu méně zabezpečené než SHA-256. V další možné operaci konfigurace aktualizuje nastavení na SHA-256. Chcete-li použít nový podpisový certifikát tokenu, musí být aktualizován jiný důvěryhodný certifikát předávající strany. |
+| Identifikátor důvěryhodnosti Azure AD | Azure AD Connect nastaví správnou hodnotu identifikátoru pro vztah důvěryhodnosti Azure AD. Služba AD FS jednoznačně identifikuje vztah důvěryhodnosti Azure AD pomocí hodnoty identifikátoru. |
+| Koncové body Azure AD | Azure AD Connect zajišťuje, že koncové body nakonfigurované pro vztah důvěryhodnosti Azure AD jsou vždy podle nejnovějších doporučených hodnot odolnosti proti chybám a výkonu. |
+| Pravidla transformace vystavování | Existuje několik pravidel deklarace, které jsou potřebné pro optimální výkon funkcí Azure AD ve federované nastavení. Azure AD Connect zajišťuje, že vztah důvěryhodnosti Azure AD je vždy nakonfigurovaný se správnou sadou doporučených pravidel deklarací. |
+| Alternativní id | Pokud je synchronizace nakonfigurovaná tak, aby používala alternativní ID, Azure AD Connect nakonfiguruje službu AD FS k provádění ověřování pomocí alternativního ID. |
+| Automatická aktualizace metadat | Vztah důvěryhodnosti se službou Azure AD je nakonfigurovaný pro automatickou aktualizaci metadat. Služba AD FS pravidelně kontroluje metadata vztahu důvěryhodnosti Azure AD a udržuje je aktuální pro případ, že se změní na straně Azure AD. |
+| Integrované ověřování systému Windows (IWA) | Během operace připojení hybridního Azure AD je IWA povolená pro registraci zařízení, která usnadňuje hybridní připojení Azure AD pro zařízení nižší úrovně |
 
-## <a name="execution-flows-and-federation-settings-configured-by-azure-ad-connect"></a>Spuštění toků a nastavení federace Azure AD Connect
+## <a name="execution-flows-and-federation-settings-configured-by-azure-ad-connect"></a>Spuštění toků a nastavení federace nakonfigurovaných službou Azure AD Connect
 
-Služby Azure AD connect neprovede aktualizaci všech nastavení pro vztah důvěryhodnosti Azure AD během konfigurace toků. Změněné nastavení závisí na jaké úlohy nebo spuštění toku se zpracovává. Následující tabulka uvádí nastavení vliv v různých pracovních toků.
+Azure AD connect neaktualizuje všechna nastavení pro vztah důvěryhodnosti Azure AD během toků konfigurace. Upravená nastavení závisí na tom, který úloha nebo tok spuštění se provádí. V následující tabulce jsou uvedeny nastavení ovlivněné v různých tocích provádění.
 
-| Spuštění toku | Nastavení vliv |
+| Tok spuštění | Ovlivněné nastavení |
 | :--- | :--- |
-| Nejdříve projít instalace (rychlé) | Žádný |
-| Nejdříve projít instalace (novou farmu služby AD FS) | Vytvořit novou farmu služby AD FS a vztah důvěryhodnosti s Azure AD je vytvořený z nuly. |
-| Nejdříve projít instalace (existující farmu služby AD FS, existující vztah důvěryhodnosti Azure AD) | Identifikátor vztahu důvěryhodnosti Azure AD, pravidla transformace vystavení, koncové body služby Azure AD, alternativní id (v případě potřeby), automatické metadata update |
-| Resetovat vztah důvěryhodnosti Azure AD | Token podpisový certifikát, podpisový algoritmus, identifikátor vztahu důvěryhodnosti Azure AD, transformace vystavení tokenu pravidla, koncové body služby Azure AD, alternativní id (v případě potřeby), automatické metadata update |
-| Přidat federační server | Žádný |
-| Přidání serveru WAP | Žádný |
-| Možnosti zařízení | Pravidla transformace vystavení, IWA pro registraci zařízení |
-| Přidání federované domény | Pokud přidáte doméně poprvé, to znamená, nastavení se mění z jedné domény federace do více domény federace – Azure AD Connect vytvoří znovu od začátku vztah důvěryhodnosti. Pokud už je nakonfigurovaný vztah důvěryhodnosti s Azure AD pro více domén, jsou změněny pouze pravidla transformace vystavení |
-| Update SSL | Žádný |
+| Instalace prvního průchodu (expresní) | Žádný |
+| Instalace prvního průchodu (nová farma AD FS) | Vytvoří se nová farma služby AD FS a vytvoří se vztah důvěryhodnosti se službou Azure AD od začátku. |
+| Instalace prvního průchodu (existující farma služby AD FS, existující vztah důvěryhodnosti Azure AD) | Identifikátor důvěryhodnosti Azure AD, pravidla transformace vystavování, koncové body Azure AD, alternativní id (v případě potřeby), automatická aktualizace metadat |
+| Obnovení vztahu důvěryhodnosti Azure AD | Podpisový certifikát tokenu, algoritmus podpisu tokenu, identifikátor důvěryhodnosti Azure AD, pravidla transformace vystavování, koncové body Azure AD, alternativní id (v případě potřeby), automatická aktualizace metadat |
+| Přidání federačního serveru | Žádný |
+| Přidat server WAP | Žádný |
+| Možnosti zařízení | Pravidla transformace vystavování, IWA pro registraci zařízení |
+| Přidání federované domény | Pokud se doména přidává poprvé, to znamená, že se nastavení mění z federace jedné domény na federaci s více doménami – Azure AD Connect znovu vytvoří vztah důvěryhodnosti od začátku. Pokud je vztah důvěryhodnosti s Azure AD už nakonfigurovaný pro více domén, změní se jenom pravidla transformace vystavování. |
+| Aktualizovat TLS | Žádný |
 
-Během všechny operace, ve kterém, všechna nastavení je upravený, Azure AD Connect vytvoří zálohu aktuální nastavení vztahu důvěryhodnosti v **%ProgramData%\AADConnect\ADFS**
+Během všech operací, ve kterých je změněno jakékoli nastavení, azure ad connect provede zálohu aktuálního nastavení důvěryhodnosti na **%ProgramData%\AADConnect\ADFS**
 
-![Azure AD Connect stránka zobrazující zprávu o existující zálohy vztah důvěryhodnosti Azure AD](./media/how-to-connect-azure-ad-trust/backup2.png)
+![Stránka Azure AD Connect zobrazující zprávu o existujícím zálohování důvěryhodnosti Azure AD](./media/how-to-connect-azure-ad-trust/backup2.png)
 
 > [!NOTE]
-> Starší než verze 1.1.873.0 zálohování se skládal z pouze pravidla transformace vystavení a byly zálohovány v souboru protokolu trasování průvodce.
+> Před verzí 1.1.873.0 se záloha skládala pouze z pravidel transformace vystavování a byla zálohována v souboru protokolu trasování průvodce.
 
-## <a name="issuance-transform-rules-set-by-azure-ad-connect"></a>Pravidla transformace vystavení nastavením Azure AD Connect
+## <a name="issuance-transform-rules-set-by-azure-ad-connect"></a>Pravidla transformace vystavování nastavená službou Azure AD Connect
 
-Azure AD Connect zajišťuje, že vztah důvěryhodnosti Azure AD je vždy nakonfigurovanou správnou sadu pravidel deklarací identity doporučené. Společnost Microsoft doporučuje použití služby Azure AD connect pro správu vašich vztah důvěryhodnosti Azure AD. Tato část obsahuje sada pravidel transformace pro vystavování a jejich popis.
+Azure AD Connect zajišťuje, že vztah důvěryhodnosti Azure AD je vždy nakonfigurovaný se správnou sadou doporučených pravidel deklarací. Microsoft doporučuje používat Azure AD connect pro správu vašeho vztahu důvěryhodnosti Azure AD. V této části jsou uvedena pravidla transformace vystavování a jejich popis.
 
 | Název pravidla | Popis |
 | --- | --- |
-| Problém (UPN) | Toto pravidlo vyhledá hodnota userprincipalname jako z atributu nakonfigurovaného v nastavení synchronizace pro atribut userprincipalname.|
-| Dotaz objectguid a msdsconsistencyguid pro vlastní deklarace identity ImmutableId | Toto pravidlo přidá dočasná hodnota v kanálu pro objectguid a msdsconsistencyguid hodnotu, pokud existuje |
-| Kontrola existence msdsconsistencyguid | Podle toho, zda existuje hodnota msdsconsistencyguid nebo Ne, nastavíme dočasné příznak pro použití jako ImmutableId přesměrování |
-| Pokud existuje vydat msdsconsistencyguid jako neměnné ID | Pokud tato hodnota existuje vydat msdsconsistencyguid jako ImmutableId |
-| Pokud neexistuje pravidlo msdsConsistencyGuid vydat objectGuidRule | Pokud hodnota msdsconsistencyguid neexistuje, hodnota objectguid budou vystavené jako ImmutableId |
-| Problém nameidentifier | Toto pravidlo vyvolá hodnotu deklarace identity nameidentifier.|
-| Problém accounttype pro počítače připojené k doméně | Pokud entita ověřuje je zařízení připojené k doméně, toto pravidlo vydá typ účtu jako DJ značící zařízení připojené k doméně |
-| AccountType problém s hodnotou uživatele, pokud není účet počítače | Pokud je entita ověřovaného uživatele, toto pravidlo vydá typ účtu jako uživatel |
-| Vydat issuerid, když není účet počítače | Toto pravidlo vydá hodnota issuerId při ověřování entita není zařízení. Hodnota je vytvořen pomocí regulárního výrazu, který je nakonfigurovaný pomocí služby Azure AD Connect. Regulární výraz je vytvořen po vezměte v úvahu všechny domény Federovaná pomocí služby Azure AD Connect. |
-| Issuerid problém pro ověření počítače DJ | Toto pravidlo vydá hodnota issuerId zařízení při ověřování entity |
-| Problém onpremobjectguid pro počítače připojené k doméně | Pokud entita ověřuje je zařízení připojené k doméně, toto pravidlo vydá objectguid místní zařízení |
-| Primární identifikátor SID předávání | Toto pravidlo vydá primární identifikátor SID ověřovací entity |
-| Předávání deklarace identity – insideCorporateNetwork | Problémy tato pravidla deklarace identity, která pomáhá Azure AD vědět, pokud ověření pochází z uvnitř podnikové sítě nebo externě |
-| Předávání deklarace identity – Psso |   |
-| Vydávání deklarací vypršení platnosti hesla | Toto pravidlo problémy tři deklarace pro čas vypršení platnosti hesla, kolik dní hesla vyprší entity ověřuje a adresu URL umístění pro směrování pro změnu hesla.|
-| Předávání deklarace identity – authnmethodsreferences | Hodnota v vydané podle tohoto pravidla deklarace identity označuje bylo pro entitu provést, jaký typ ověřování |
-| Předávání deklarace identity – multifactorauthenticationinstant | Hodnota této deklarace Určuje dobu, ve standardu UTC, kdy provedl uživatel naposledy více Multi-Factor authentication. |
-| Předávání deklarace identity – AlternateLoginID | Toto pravidlo vydá deklaraci identity AlternateLoginID v případě, že ověřování se provádí pomocí alternativního přihlašovacího ID |
+| Problém UPN | Toto pravidlo dotazuje hodnotu userprincipalname jako z atributu nakonfigurovaného v nastavení synchronizace pro userprincipalname.|
+| Dotaz objectguid a msdsconsistencyguid pro vlastní deklaraci ImmutableId | Toto pravidlo přidá do kanálu do kanálu hodnotu objectguid a msdsconsistencyguid, pokud existuje. |
+| Zkontrolujte existenci msdsconsistencyguid | Na základě toho, zda hodnota msdsconsistencyguid existuje nebo ne, jsme nastavili dočasnou vlajku na přímé, co použít jako ImmutableId |
+| Problém msdsconsistencyguid jako ID neměnné, pokud existuje | Problém msdsconsistencyguid jako ImmutableId, pokud hodnota existuje |
+| Problém objectGuidRule, pokud pravidlo msdsConsistencyGuid neexistuje | Pokud hodnota pro msdsconsistencyguid neexistuje, hodnota objectguid bude vydána jako ImmutableId |
+| Identifikátor názvu problému | Toto pravidlo vydává hodnotu deklarace názvu.|
+| Typ účtu problému pro počítače spojené s doménou | Pokud je ověřovaná entita zařízení mandatážní, toto pravidlo vydá typ účtu jako DJ označující zařízení spojené s doménou |
+| Problém AccountType s hodnotou USER, pokud se nejedná o účet počítače | Pokud je ověřovaná entita uživatelem, toto pravidlo vydá typ účtu jako uživatel |
+| Problém issueridu, pokud se nejedná o účet počítače | Toto pravidlo vydává hodnotu issuerId, pokud ověřovací entita není zařízení. Hodnota se vytvoří prostřednictvím regulárního výrazu, který je nakonfigurován pomocí Azure AD Connect. Regulární výraz se vytvoří po zohlednění všech domén federovaných pomocí azure ad connect. |
+| Vydání issuerid pro dj počítač auth | Toto pravidlo vydává hodnotu issuerId, pokud je ověřovací entita zařízením. |
+| Problém onpremobjectguid pro počítače spojené s doménou | Pokud je ověřovaná entita zařízení montovna, toto pravidlo vydá místní objektguid pro zařízení |
+| Průchod primárním SID | Toto pravidlo vydává primární SID ověřovací entity. |
+| Předat deklaraci - insideCorporateNetwork | Toto pravidlo vydává deklaraci, která pomáhá Azure AD zjistit, jestli ověřování pochází z podnikové sítě nebo externě |
+| Předat reklamaci – Psso |   |
+| Deklarace vypršení platnosti hesla vydání | Toto pravidlo vydává tři deklarace pro čas vypršení platnosti hesla, počet dní, po které vyprší platnost hesla ověřované entity, a adresu URL, kam se má směrovat pro změnu hesla.|
+| Předat deklaraci – authnmethodsreferences | Hodnota v deklaraci vydané podle tohoto pravidla označuje, jaký typ ověřování byl proveden pro entitu. |
+| Projít deklarací – multifaktorauthenticationinstant | Hodnota této deklarace určuje čas v utc, kdy uživatel naposledy provedl vícefaktorové ověřování. |
+| Projít deklarací - AlternateLoginID | Toto pravidlo vydává deklaraci AlternateLoginID, pokud bylo ověření provedeno pomocí alternativního ID přihlášení. |
 
 > [!NOTE]
-> Pravidla deklarací identity pro hlavní název uživatele problém a ImmutableId se bude lišit, pokud používáte jiné než výchozí volbou při konfiguraci služby Azure AD Connect
+> Pravidla deklarací pro hlavní název uživatele vydání a immutableid se budou lišit, pokud použijete nevýchozí volbu během konfigurace Azure AD Connect
 
-## <a name="restore-issuance-transform-rules"></a>Obnovení pravidla transformace vystavení
+## <a name="restore-issuance-transform-rules"></a>Obnovit pravidla transformace vystavování
 
-Verze služby Azure AD Connect 1.1.873.0 nebo novější Díky zálohování služby Azure AD s důvěrou nastavení pokaždé, když se aktualizace provedené v nastavení vztahu důvěryhodnosti Azure AD. Nastavení vztahu důvěryhodnosti Azure AD jsou zálohované zde **%ProgramData%\AADConnect\ADFS**. Název souboru je v následujícím formátu AadTrust -&lt;datum&gt;-&lt;čas&gt;.txt, například - AadTrust-20180710-150216.txt
+Azure AD Connect verze 1.1.873.0 nebo novější vytvoří zálohu nastavení důvěryhodnosti Azure AD při každé aktualizaci nastavení důvěryhodnosti Azure AD. Nastavení důvěryhodnosti služby Azure AD jsou zálohována na **%ProgramData%\AADConnect\ADFS**. Název souboru je v následujícím formátu&lt;AadTrust- datum&gt;-&lt;času&gt;.txt, například - AadTrust-20180710-150216.txt
 
-![Snímek obrazovky příklad zálohování vztah důvěryhodnosti Azure AD](./media/how-to-connect-azure-ad-trust/backup.png)
+![Snímek obrazovky s příkladem zálohování vztahu důvěryhodnosti Azure AD](./media/how-to-connect-azure-ad-trust/backup.png)
 
-Můžete obnovit pomocí následujícího postupu navrhované pravidla transformace při vystavení
+Pravidla transformace vystavování můžete obnovit pomocí níže uvedených doporučených kroků.
 
-1. Ve Správci serveru otevřete uživatelské rozhraní pro správu služby AD FS
-2. Otevřete vlastnosti vztahu důvěryhodnosti Azure AD tak, že přejdete **služby AD FS &gt; důvěryhodnosti předávající strany &gt; platforma identit Microsoft Office 365 &gt; upravit zásady vystavování deklarací identity**
-3. Klikněte na **přidat pravidlo**
-4. V šablony pravidla deklarace identity vyberte možnost odeslat nároky pomocí vlastního pravidla a klikněte na tlačítko **další**
-5. Název pravidla deklarace identity z záložní soubor zkopírujte a vložte ho do pole **název pravidla deklarace identity**
-6. Kopírovat pravidlo deklarace identity ze záložního souboru do textového pole pro **vlastního pravidla** a klikněte na tlačítko **dokončit**
+1. Otevření nového uhlavního nastavení služby AD FS ve Správci serveru
+2. Otevření vlastností vztahu důvěryhodnosti Azure AD tím, že půjdete se vztahy důvěryhodnosti důvěryhodné **strany &gt; služby &gt; AD FS microsoft office 365 identity platformy &gt; upravit zásady vystavování deklarací identity**
+3. Klikněte na **Přidat pravidlo**
+4. V šabloně pravidla deklarace vyberte Odeslat deklarace pomocí vlastního pravidla a klikněte na **Další.**
+5. Zkopírujte název pravidla deklarace pohledávky ze záložního souboru a vložte jej do pole **Název pravidla deklarace**
+6. Zkopírujte pravidlo deklarace z záložního souboru do textového pole **pro vlastní pravidlo** a klikněte na **Dokončit**
 
 > [!NOTE]
-> Ujistěte se, že další pravidla nejsou v konfliktu s pravidly nakonfigurovaný službou Azure AD Connect.
+> Ujistěte se, že vaše další pravidla nejsou v konfliktu s pravidly nakonfigurovanými službou Azure AD Connect.
 
-## <a name="next-steps"></a>Další postup
-* [Správa a přizpůsobení Active Directory Federation Services přes Azure AD Connect](how-to-connect-fed-management.md)
+## <a name="next-steps"></a>Další kroky
+* [Správa a přizpůsobení služby AD FS pomocí služby Azure AD Connect](how-to-connect-fed-management.md)

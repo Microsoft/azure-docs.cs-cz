@@ -1,29 +1,29 @@
 ---
 title: Pokrytí provozu | Mapy Microsoft Azure
-description: V tomto článku se dozvíte o pokrytí provozu ve službě Microsoft Azure Maps.
-author: farah-alyasari
-ms.author: v-faalya
+description: V tomto článku se dozvíte o pokrytí provozu v Mapách Microsoft Azure.
+author: philmea
+ms.author: philmea
 ms.date: 09/22/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 02d57f39f2a911864ebe16d05456409d0119b495
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 836a924bb371aaf2879e951501c6febbe51e182e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209524"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80333943"
 ---
-# <a name="azure-maps-traffic-coverage"></a>Azure Maps pokrytí provozu
+# <a name="azure-maps-traffic-coverage"></a>Pokrytí provozu v Azure Maps
 
-Azure Maps poskytuje podrobné informace o provozu ve formě **toku** a **incidentů**provozu. Tato data je možné vyhodnotit na mapách nebo použít ke generování inteligentnějších tras, které měří v reálném podmínkách řízení.
+Azure Maps poskytuje bohaté dopravní informace ve formě **dopravního toku** a **incidentů**. Tato data lze vizualizovat na mapách nebo použít ke generování chytřejších tras, které zpožadují skutečné jízdní podmínky.
 
-Mapy ale nemají stejnou úroveň informací a přesnosti pro všechny země nebo oblasti. V následující tabulce najdete informace o tom, jaké informace o přenosech si můžete vyžádat od jednotlivých zemí nebo oblastí: 
+Mapy však nemají stejnou úroveň informací a přesnosti pro všechny země nebo oblasti. V následující tabulce jsou uvedeny informace o tom, jaký druh dopravních informací můžete požadovat od jednotlivých zemí nebo oblastí: 
 
 ## <a name="americas"></a>Amerika
 
-|Země nebo oblast  |Incidenty  |Tok  |
+|Země/region  |Incidenty  |Tok  |
 |---------|:---------:|:---------:|
 |Argentina      |✓         |✓         |
 |Brazílie     |✓         |✓         |
@@ -33,21 +33,21 @@ Mapy ale nemají stejnou úroveň informací a přesnosti pro všechny země neb
 |Mexiko     |✓         |✓         |
 |Peru       |✓         |✓         | 
 |Spojené státy     |✓         |✓        |
-|\+ Portoriko     |✓         |✓         |
+|+Portoriko     |✓         |✓         |
 |Uruguay |✓         |✓         |
 
 
 ## <a name="asia-pacific"></a>Asie a Tichomoří
 
-|Země nebo oblast   |Incidenty  |Tok  |
+|Země/region   |Incidenty  |Tok  |
 |---------|:---------:|:---------:|
 |Austrálie     |✓         |✓        |
-|Sultanát   |✓         |✓        |
+|Brunej   |✓         |✓        |
 |Hongkong – zvláštní správní oblast     |✓         |✓         |
 |Indie   |✓         |✓         |
 |Indonésie     |✓         |✓         |
 |Kazachstán    |✓         |✓         |
-|Macao – zvláštní správní oblast     |✓         |✓         |
+|Macao – zvláštní administrativní oblast     |✓         |✓         |
 |Malajsie     |✓         |✓         |
 |Nový Zéland     |✓         |✓         |
 |Filipíny  |✓         |✓         |
@@ -59,7 +59,7 @@ Mapy ale nemají stejnou úroveň informací a přesnosti pro všechny země neb
 
 ## <a name="europe"></a>Evropa
 
-|Země nebo oblast   |Incidenty  |Tok  |
+|Země/region   |Incidenty  |Tok  |
 |---------|:---------:|:---------:|
 |Andorra   |✓         |✓         |
 |Rakousko     |✓         |✓         |
@@ -72,7 +72,7 @@ Mapy ale nemají stejnou úroveň informací a přesnosti pro všechny země neb
 |Dánsko     |✓         |✓         |
 |Estonsko     |         | ✓        |
 |Finsko     |✓         |✓         |
-|\+ Alan ostrovy      |✓         |✓         |
+|+Ålandské ostrovy      |✓         |✓         |
 |Francie     |✓         |✓         |
 |Monako     |✓         |✓         |
 |Německo     |✓         |✓         |
@@ -93,7 +93,7 @@ Mapy ale nemají stejnou úroveň informací a přesnosti pro všechny země neb
 |Norsko     |✓         |✓         |
 |Polsko     |✓         |✓         |
 |Portugalsko     |✓         |✓         |
-|\+ Azory a Madeira     |✓         |✓         |
+|+Azory a Madeira     |✓         |✓         |
 |Rumunsko     |✓         |✓         |
 |Ruská federace     |✓         |✓         |
 |San Marino    |✓         |✓         |
@@ -102,22 +102,22 @@ Mapy ale nemají stejnou úroveň informací a přesnosti pro všechny země neb
 |Slovinsko     |✓         |✓         |
 |Španělsko     |✓         |✓         |
 |+Andorra     |✓         |✓         |
-|\+ Balearic ostrovy     |✓         |✓         |
-|\+ Kanárské ostrovy     |✓         |✓         |
+|+Baleárské ostrovy     |✓         |✓         |
+|+Kanárské ostrovy     |✓         |✓         |
 |Švédsko     |✓         |✓         |
 |Švýcarsko     |✓         |✓        |
 |Turecko     |✓         |✓         |
 |Ukrajina     |✓         |✓         |
 |Spojené království     |✓         |✓         |
-|\+ Gibraltar     |✓         |✓         |
-|\+ Guernsey & Jersey     |✓         |✓         |
-|Ostrov Man     |✓         |✓         |
-|Vatikán   |✓         |✓         |
+|+Gibraltar     |✓         |✓         |
+|+Guernsey & Dres     |✓         |✓         |
+|+Ostrov Man     |✓         |✓         |
+|Vatikánu   |✓         |✓         |
 
 
 ## <a name="middle-east-and-africa"></a>Střední východ a Afrika
 
-|Země nebo oblast |Incidenty  |Tok  |
+|Země/region |Incidenty  |Tok  |
 |---------|:---------:|:---------:|
 |Bahrajn     |✓         |✓         |
 |Egypt     |✓         |✓         |
@@ -135,4 +135,4 @@ Mapy ale nemají stejnou úroveň informací a přesnosti pro všechny země neb
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure Maps dat provozu najdete na referenčních stránkách [provozu](https://docs.microsoft.com/rest/api/maps/traffic) .
+Další informace o provozních datech Azure Maps najdete na stránkách s odkazy na [provoz.](https://docs.microsoft.com/rest/api/maps/traffic)

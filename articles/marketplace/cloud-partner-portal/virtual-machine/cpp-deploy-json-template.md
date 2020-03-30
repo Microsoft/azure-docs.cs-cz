@@ -1,23 +1,22 @@
 ---
-title: Šablona nasazení VHD Azure | Azure Marketplace
-description: Vypíše šablonu Azure Resource Manager potřebnou k nasazení nového virtuálního počítače Azure z virtuálního pevného disku uživatele.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Šablona nasazení Azure VHD | Azure Marketplace
+description: Uvádí šablonu Azure Resource Manager, která je nutná k nasazení nového virtuálního počítače Azure z virtuálního pevného disku uživatele.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/29/2018
-ms.author: pabutler
-ms.openlocfilehash: ddaf9213980e666ea69c700ad26b9db52886c9cb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 2db8c05d086c7b4e8537a1c17b1ca84eedb19857
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821409"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277867"
 ---
 # <a name="virtual-hard-disk-deployment-template"></a>Šablona nasazení virtuálního pevného disku 
 
-Následující šablona Azure Resource Manager definuje novou instanci virtuálních počítačů Azure vytvořenou z místního virtuálního pevného disku (VHD).  Tato šablona se používá v článku [nasazení virtuálního počítače Azure z virtuálního pevného disku (VHD) uživatele](./cpp-deploy-vm-user-image.md). 
+Následující šablona Azure Resource Manager definuje novou instanci virtuálního počítače Azure (VM), vytvořenou z místního virtuálního pevného disku (VHD).  Tato šablona se používá v článku [Nasazení virtuálního počítače Azure z uživatelského virtuálního pevného disku](./cpp-deploy-vm-user-image.md). 
 
 ```json
 {

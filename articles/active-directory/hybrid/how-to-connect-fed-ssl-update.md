@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect – aktualizace certifikátu SSL pro farmu služby AD FS | Dokumentace Microsoftu
-description: Tento dokument podrobně popisuje kroky a aktualizujete certifikát SSL farmy služby AD FS pomocí služby Azure AD Connect.
+title: Azure AD Connect – aktualizace certifikátu TLS/SSL pro farmu služby AD FS | Dokumenty společnosti Microsoft
+description: Tento dokument podrobně popisuje kroky k aktualizaci certifikátu TLS/SSL farmy služby AD FS pomocí služby Azure AD Connect.
 services: active-directory
 manager: daveba
 editor: billmath
@@ -16,97 +16,97 @@ author: billmath
 ms.custom: seohack1
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fcdf75586de9621bd0e42cba6fa9c80e5d30817
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 8cc768162d98402fe52b52b2826a9dbf2840a581
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595218"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331737"
 ---
-# <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Aktualizace certifikátu SSL pro farmu služby Active Directory Federation Services (AD FS)
+# <a name="update-the-tlsssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Aktualizace certifikátu TLS/SSL pro farmu služby AD FS (Active Directory Federation Services)
 
 ## <a name="overview"></a>Přehled
-Tento článek popisuje, jak můžete pomocí služby Azure AD Connect k aktualizaci certifikátu SSL pro farmu služby Active Directory Federation Services (AD FS). Nástroj Azure AD Connect můžete snadno aktualizovat certifikát SSL pro farmu služby AD FS, i když není uživatel přihlašovací metoda vybrané služby AD FS.
+Tento článek popisuje, jak můžete pomocí služby Azure AD Connect aktualizovat certifikát TLS/SSL pro farmu služby AD FS (Active Directory Federation Services). Pomocí nástroje Azure AD Connect můžete snadno aktualizovat certifikát TLS/SSL pro farmu služby AD FS, i když vybraná metoda přihlášení uživatele není služba AD FS.
 
-Můžete provést i celou operaci aktualizace certifikátu SSL pro farmu služby AD FS na všech federačních a servery Proxy webových aplikací (WAP) ve třech jednoduchých krocích:
+Celou operaci aktualizace certifikátu TLS/SSL pro farmu služby AD FS můžete provést na všech federačních serverech a serverech WAP (Federation Application Proxy) ve třech jednoduchých krocích:
 
 ![Tři kroky](./media/how-to-connect-fed-ssl-update/threesteps.png)
 
 
 >[!NOTE]
->Další informace o certifikátech, které používají službu AD FS najdete v tématu [Principy certifikátů používaných službou AD FS](https://technet.microsoft.com/library/cc730660.aspx).
+>Další informace o certifikátech používaných službou AD FS naleznete v [tématu Principy certifikátů používaných službou AD FS](https://technet.microsoft.com/library/cc730660.aspx).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **AD FS Farm**: Ujistěte se, že vaše farma služby AD FS je založená na Windows Server 2012 R2 nebo novější.
-* **Azure AD Connect**: Ujistěte se, že verze služby Azure AD Connect 1.1.553.0 nebo vyšší. Budete používat úlohy **aktualizace AD certifikát SSL služby FS**.
+* **Farma služby AD FS**: Ujistěte se, že vaše farma služby AD FS je založená na systému Windows Server 2012 R2 nebo novější.
+* **Azure AD Connect**: Ujistěte se, že verze Azure AD Connect je 1.1.553.0 nebo vyšší. Budete používat úkol **Aktualizovat certifikát SSL**služby AD FS .
 
-![Úloha aktualizace SSL](./media/how-to-connect-fed-ssl-update/updatessltask.png)
+![Aktualizovat úlohu TLS](./media/how-to-connect-fed-ssl-update/updatessltask.png)
 
-## <a name="step-1-provide-ad-fs-farm-information"></a>Krok 1: Zadejte informace o farmě AD FS
+## <a name="step-1-provide-ad-fs-farm-information"></a>Krok 1: Poskytnutí informací o farmě ad FS
 
 Azure AD Connect se pokusí získat informace o farmě služby AD FS automaticky:
-1. Dotaz na informace o farmě ze služby AD FS (Windows Server 2016 nebo novější).
-2. Odkazování na informace z předchozích spuštění, která se uloží místně pomocí služby Azure AD Connect.
+1. Dotazování na informace o farmě ze služby AD FS (Windows Server 2016 nebo novější).
+2. Odkazování na informace z předchozích spuštění, které jsou uloženy místně s Azure AD Connect.
 
-Můžete upravit seznam serverů, které jsou zobrazeny přidáním nebo odebráním servery tak, aby odrážel aktuální konfiguraci farmy služby AD FS. Jakmile je k dispozici informace o serveru, Azure AD Connect zobrazí připojení a aktuální stav certifikátu SSL.
+Seznam serverů, které jsou zobrazeny přidáním nebo odebráním serverů, můžete upravit tak, aby odrážel y aktuální konfiguraci farmy služby AD FS. Jakmile jsou k dispozici informace o serveru, Azure AD Connect zobrazí připojení a aktuální stav certifikátu TLS/SSL.
 
-![Informace o serveru AD FS](./media/how-to-connect-fed-ssl-update/adfsserverinfo.png)
+![Informace o serveru služby AD FS](./media/how-to-connect-fed-ssl-update/adfsserverinfo.png)
 
-Pokud seznam obsahuje server, který už není součástí farmy služby AD FS, klikněte na tlačítko **odebrat** odstranit server ze seznamu serverů ve farmě služby AD FS.
+Pokud seznam obsahuje server, který již není součástí farmy služby AD FS, klepněte na **tlačítko Odebrat** a odstraňte server ze seznamu serverů ve farmě služby AD FS.
 
-![Offline server v seznamu](./media/how-to-connect-fed-ssl-update/offlineserverlist.png)
+![Server offline v seznamu](./media/how-to-connect-fed-ssl-update/offlineserverlist.png)
 
 >[!NOTE]
-> Odebrání serveru ze seznamu serverů pro farmu služby AD FS v Azure AD Connect je místní operace a aktualizuje informace pro farmu služby AD FS, který Azure AD Connect udržuje místně. Azure AD Connect nezmění konfigurace ve službě AD FS tak, aby odrážely změny.    
+> Odebrání serveru ze seznamu serverů pro farmu služby AD FS ve službě Azure AD Connect je místní operace a aktualizuje informace pro farmu služby AD FS, kterou Azure AD Connect udržuje místně. Azure AD Connect nezmění konfiguraci ve službě AD FS tak, aby odrážela změnu.    
 
-## <a name="step-2-provide-a-new-ssl-certificate"></a>Krok 2: Zadejte nový certifikát protokolu SSL
+## <a name="step-2-provide-a-new-tlsssl-certificate"></a>Krok 2: Poskytnutí nového certifikátu TLS/SSL
 
-Po ověření, že informace o servery ve farmě služby AD FS, Azure AD Connect požádá o nový certifikát protokolu SSL. Zadejte certifikát PFX chráněný heslem pokračujte v instalaci.
+Po potvrzení informací o serverech farmy Služby AD FS požádá Služba Azure AD Connect o nový certifikát TLS/SSL. Poskytněte certifikát PFX chráněný heslem a pokračujte v instalaci.
 
-![Certifikát SSL](./media/how-to-connect-fed-ssl-update/certificate.png)
+![Certifikát TLS/SSL](./media/how-to-connect-fed-ssl-update/certificate.png)
 
-Po zadání certifikátu služby Azure AD Connect prochází řadu požadavky. Ověřte certifikát k ověření, že certifikát je správná pro farmu služby AD FS:
+Po zadání certifikátu Azure AD Connect prochází řadu předpokladů. Ověřte certifikát, abyste se ujistili, že certifikát je správný pro farmu služby AD FS:
 
--   Předmět název nebo alternativní název subjektu certifikátu je buď stejná jako název služby FS, nebo je certifikát se zástupným znakem.
--   Certifikát je platný po dobu více než 30 dnů.
--   Řetěz certifikátů je platný.
+-   Název subjektu/alternativní předmět certifikátu je buď stejný jako název federační služby, nebo se jedná o zástupný certifikát.
+-   Certifikát je platný déle než 30 dní.
+-   Řetěz důvěryhodnosti certifikátu je platný.
 -   Certifikát je chráněn heslem.
 
-## <a name="step-3-select-servers-for-the-update"></a>Krok 3: Vyberte servery pro aktualizaci
+## <a name="step-3-select-servers-for-the-update"></a>Krok 3: Výběr serverů pro aktualizaci
 
-V dalším kroku vyberte servery, které musí mít certifikát SSL aktualizovat. Pro aktualizaci nelze vybrat servery, které jsou offline.
+V dalším kroku vyberte servery, které potřebují aktualizovat certifikát TLS/SSL. Servery, které jsou offline, nelze pro aktualizaci vybrat.
 
-![Vyberte servery pro aktualizaci](./media/how-to-connect-fed-ssl-update/selectservers.png)
+![Výběr serverů, které chcete aktualizovat.](./media/how-to-connect-fed-ssl-update/selectservers.png)
 
-Po dokončení konfigurace služby Azure AD Connect se zobrazí zpráva, která označuje stav aktualizace a nabízí možnost ověření přihlášení služby AD FS.
+Po dokončení konfigurace Azure AD Connect zobrazí zprávu, která označuje stav aktualizace a poskytuje možnost ověřit přihlášení služby AD FS.
 
 ![Dokončení konfigurace](./media/how-to-connect-fed-ssl-update/configurecomplete.png)   
 
 ## <a name="faqs"></a>Nejčastější dotazy
 
-* **Co by měl být název subjektu certifikátu pro nový certifikát SSL služby AD FS?**
+* **Jaký by měl být název subjektu certifikátu pro nový certifikát AD FS TLS/SSL?**
 
-    Azure AD Connect zkontroluje, jestli subjektu název nebo alternativní název subjektu certifikátu obsahuje název federační služby. Například pokud je název vaší služby federačního serveru fs.contoso.com, předmět název nebo alternativní název subjektu musí být fs.contoso.com.  Přijímat zástupné certifikáty jsou také.
+    Azure AD Connect zkontroluje, jestli název subjektu nebo alternativní název předmětu certifikátu obsahuje název federační služby. Pokud je například název služby Federation Service fs.contoso.com, musí být fs.contoso.com název předmětu/alternativního předmětu.  Certifikáty se zástupnými symboly jsou také přijímány.
 
-* **Proč se zobrazuje výzva k zadání pověření znovu na stránce server WAP?**
+* **Proč jsem znovu požádán/a o pověření na stránce serveru WAP?**
 
-    Pokud přihlašovací údaje, které zadáte pro připojování k serverům AD FS také nemají oprávnění ke správě serverů WAP, pak vyzve k zadání přihlašovacích údajů, které mají oprávnění správce na serverech WAP Azure AD Connect.
+    Pokud přihlašovací údaje, které zadáte pro připojení k serverům služby AD FS, nemají také oprávnění ke správě serverů WAP, požádá Azure AD Connect o pověření, která mají oprávnění správce na serverech WAP.
 
-* **Na serveru se zobrazí jako offline. Co bych měl/a dělat?**
+* **Server je zobrazen jako offline. Co mám dělat?**
 
-    Azure AD Connect jakékoli operaci nelze provést, pokud je server offline. Pokud server je součástí farmy služby AD FS, zkontrolujte připojení k serveru. Po vyřešení problému stiskněte ikonu aktualizace pro aktualizaci stavu v průvodci. Pokud byl server součástí farmy dříve, ale nyní již neexistuje, klikněte na tlačítko **odebrat** udržuje ho odstranit ze seznamu serverů této služby Azure AD Connect. Odebrat server ze seznamu ve službě Azure AD Connect není změnit konfiguraci služby AD FS, samotného. Pokud používáte službu AD FS ve Windows serveru 2016 nebo novější, zůstane serveru v nastavení konfigurace a zobrazí se při příštím spuštění úlohy.
+    Azure AD Connect nemůže provádět žádné operace, pokud je server offline. Pokud je server součástí farmy služby AD FS, zkontrolujte připojení k serveru. Po vyřešení problému aktualizujte stav v průvodci stisknutím ikony aktualizace. Pokud byl server součástí farmy dříve, ale teď už neexistuje, klikněte na **Odebrat** a odstraňte ho ze seznamu serverů, které udržuje Azure AD Connect. Odebráním serveru ze seznamu ve službě Azure AD Connect nezměníte samotnou konfiguraci služby AD FS. Pokud používáte službu AD FS v systému Windows Server 2016 nebo novějším, server zůstane v nastavení konfigurace a znovu se zobrazí při příštím spuštění úlohy.
 
-* **Můžete aktualizovat podmnožinu serverů své farmy pomocí nového certifikátu protokolu SSL?**
+* **Mohu aktualizovat podmnožinu serverů farmy novým certifikátem TLS/SSL?**
 
-    Ano. Můžete kdykoli spustit úlohu **aktualizovat certifikát SSL** aktualizovat zbývající servery. Na **aktualizaci certifikátu vyberte servery pro protokol SSL** stránky, můžete seřadit seznam serverů na **datum vypršení platnosti protokolu SSL** pro snadný přístup k servery, které ještě nejsou aktualizovány.
+    Ano. Chcete-li aktualizovat zbývající servery, můžete vždy znovu spustit **úlohu Aktualizovat certifikát SSL.** Na stránce **Vybrat servery pro aktualizaci certifikátu SSL** můžete seřadit seznam serverů v **datu vypršení platnosti ssl** a snadno přistupovat k serverům, které ještě nejsou aktualizovány.
 
-* **Po odebrání serveru v předchozím spuštění, ale je stále se zobrazuje jako offline a jsou uvedeny na stránce servery služby AD FS. Proč po offline server stále existuje i po odebrání?**
+* **Server byl odebrán v předchozím spuštění, ale server je stále zobrazen jako offline a uveden na stránce Servery služby AD FS. Proč je offline server stále tam i poté, co jsem ho odstranil?**
 
-    Odebrat server ze seznamu ve službě Azure AD Connect, neodebere se v konfiguraci služby AD FS. Azure AD Connect odkazuje na službu AD FS (Windows Server 2016 nebo novější) pro všechny informace o farmě. Pokud je server stále k dispozici v konfiguraci služby AD FS, zobrazí se zpět v seznamu.  
+    Odebráním serveru ze seznamu ve službě Azure AD Connect jej v konfiguraci služby AD FS neodeberete. Azure AD Connect odkazuje na službu AD FS (Windows Server 2016 nebo vyšší) pro jakékoli informace o farmě. Pokud je server stále přítomen v konfiguraci služby AD FS, bude uveden zpět v seznamu.  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Azure AD Connect a federace](how-to-connect-fed-whatis.md)
-- [Active Directory Federation Services management a přizpůsobení službou Azure AD Connect](how-to-connect-fed-management.md)
+- [Správa a přizpůsobení služby AD Federování služby AD pomocí služby Azure AD Connect](how-to-connect-fed-management.md)
 

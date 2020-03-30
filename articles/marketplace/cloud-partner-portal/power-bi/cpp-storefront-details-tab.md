@@ -1,127 +1,126 @@
 ---
-title: Prezentace podrobnosti o nabídce aplikace Power BI | Azure Marketplace
-description: Nakonfigurujte pole prezentace Details pro nabídku aplikace Power BI pro Microsoft AppSource Marketplace.
-services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-author: v-miclar
+title: Podrobnosti o nabídce aplikace Power BI | Azure Marketplace
+description: Konfigurace polí Podrobnosti ve výloze pro nabídku aplikace Power BI pro tržiště Microsoft AppSource Marketplace
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: 309b2eb33c594b5233c547e3bf45a49aa3a25678
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: b69ef8aa57393c5be8d23aaf4af1821697295235
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817667"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281676"
 ---
-# <a name="power-bi-app-storefront-details-tab"></a>Karta podrobností prezentace aplikace Power BI
+# <a name="power-bi-app-storefront-details-tab"></a>Karta Podrobnosti o aplikaci Power BI
 
-Na stránce **Nová nabídka** použijte kartu **Podrobnosti prezentace** a poskytněte zákazníkům marketingové, prodejní a právní informace pro potenciální zákazníky. Na této kartě můžete také nastavit správu pro potenciální zákazníky, které Azure Marketplace generuje. Tato dlouhá forma je rozdělená na šest částí: **Podrobnosti nabídky**, **informace o seznamu**, **artefakty marketingu**, **právní**, **zákaznická podpora**a **Správa potenciálních**zákazníků.  Hvězdička (*) na konci popisku pole znamená, že pole je povinné.
+Na stránce **Nová nabídka** můžete potenciálním zákazníkům poskytnout marketingové, prodejní a právní informace na kartě **Podrobnosti ve výloze.** Na této kartě můžete také nastavit správu zájemců, které Azure Marketplace generuje. Tato dlouhá forma je rozdělena do šesti částí: **Podrobnosti nabídky**, **Podrobnosti výpisu**, **Marketingové artefakty**, **Právní**, **Zákaznická podpora**a **Správa zájemců**.  Hvězdička (*) na konci popisku pole znamená, že pole je povinné.
 
 
-## <a name="offer-details-section"></a>Oddíl podrobností nabídky
+## <a name="offer-details-section"></a>Sekce Podrobnosti o nabídce
 
-V části **Podrobnosti nabídky** zadejte obecné informace o vaší nabídce AppSource.
+V části **Podrobnosti nabídky** zadejte obecné informace o nabídce AppSource.
 
-![Část podrobností nabídky na kartě Podrobnosti prezentace](./media/offer-details-section.png)
+![Část Podrobnosti o nabídce na kartě Podrobnosti ve výloze](./media/offer-details-section.png)
 
-Následující tabulka uvádí další informace o těchto polích. Požadovaná pole jsou indicted hvězdičkou (*).  
+Následující tabulka obsahuje další informace o těchto polích. Povinná pole jsou obžalována hvězdičkou (*).  
 
 |   Pole               |   Popis                                                                           |
 |-----------------------|-----------------------------------------------------------------------------------------|
-| **Souhrn nabídky\***     | Stručný účel aplikace, který používá až 100 znaků.                             |
-| **Popis nabídky\*** | Popis aplikace s využitím až 3 000 znaků. Toto pole podporuje jednoduché formátování HTML. |
+| **Souhrn nabídky\***     | Stručný účel aplikace s až 100 znaky.                             |
+| **Popis nabídky\*** | Popis aplikace s až 3 000 znaky. Toto pole podporuje jednoduché formátování HTML. |
 |   |    |
 
 
-## <a name="listing-details-section"></a>Výpis podrobností oddílu
+## <a name="listing-details-section"></a>Sekce Podrobnosti o výpisu
 
-Oddíl **Podrobnosti výpisu** shromažďuje informace o kontextu vaší aplikace: v odvětvích, kde se obvykle používá, kategorie aplikací, kompatibilní produkty a přidružené hledané výrazy.
+Část **Podrobnosti výpisu** shromažďuje informace o kontextu vaší aplikace: odvětví, kde se obvykle používá, kategorii aplikace, kompatibilních produktech a přidružených vyhledávacích dotazech.
 
-![Část podrobností seznamu karty Podrobnosti prezentace](./media/listing-details-section.png)
+![Část Podrobnosti o výpisu na kartě Podrobnosti na výloze](./media/listing-details-section.png)
 
-Chcete-li vyplnit pole v této části, použijte následující tabulku.  Požadovaná pole jsou indicted hvězdičkou (*).
+Chcete-li vyplnit pole v této části, použijte následující tabulku.  Povinná pole jsou obžalována hvězdičkou (*).
  
 |   Pole                                  |   Popis                                                        |
 | --------------                           | ---------------------                                                |
-| **Odvětví**                           | Vyberte odvětví, ve kterém se vaše aplikace nejlépe hodí. Pokud má aplikace vztah k více oborům, ponechte toto pole prázdné.      |
+| **Odvětví**                           | Vyberte odvětví, ve kterém vaše aplikace nejlépe vyhovuje. Pokud se vaše aplikace týká více odvětví, ponechte toto pole prázdné.      |
 | **Kategorie\***                           | Vyberte až tři kategorie, které se vztahují k vaší aplikaci.     |
-| **Odkaz na nápovědu pro vaši aplikaci\***               | Zadejte adresu URL stránky, která nabízí online nápovědu pro vaši aplikaci.           |
-| **Produkty, se kterými pracuje vaše aplikace (max. 3)** | Vyberte **Nový** znaménko plus pro vytvoření textového pole. Do pole zadejte název produktu, se kterým vaše aplikace pracuje. Seznamte se se třemi produkty.       |
-| **Hledaná klíčová slova (max 3)**              | Zadejte až tři klíčová slova, která uživatelé budou nejspíš používat k hledání vaší aplikace v AppSource. Například pokud se aplikace nazývá "Moje e-mailová aplikace", vaše klíčová slova můžou být **e-** maily, **poštovní**a **e-mailová aplikace**. |
+| **Odkaz na nápovědu pro vaši aplikaci\***               | Zadejte adresu URL stránky, která nabízí online nápovědu k vaší aplikaci.           |
+| **Produkty, se kterými vaše aplikace pracuje (Max 3)** | Vyberte **nové** znaménko plus, chcete-li vytvořit textové pole. Do pole zadejte název produktu, se kterým vaše aplikace pracuje. Seznam až tří produktů.       |
+| **Klíčová slova pro vyhledávání (Max 3)**              | Zadejte až tři klíčová slova, která uživatelé pravděpodobně použijí k vyhledání vaší aplikace v AppSource. Pokud se například aplikace nazývá "Aplikace Moje odeslání e-mailů", mohou být klíčovými slovy **e-maily**, **poštovní**a **e-mailová aplikace**. |
 |  |  |
 
 
-## <a name="marketing-artifacts-section"></a>Oddíl marketingových artefaktů
+## <a name="marketing-artifacts-section"></a>Sekce Marketingové artefakty
 
-V části **artefakty marketingu** nahrajte branding a marketingové materiály, které se zobrazí na AppSource.  Tato část je rozdělená na čtyři pododdíly: **loga**, **videa**, **dokumenty**a **snímky obrazovky**. Pouze loga a snímky obrazovky jsou jedinými požadovanými artefakty marketingu. Pro nejlepší opravení od zákazníka doporučujeme také přidávat videa a dokumenty.
+V části **Marketingové artefakty** nahrajte branding a marketingové materiály, které se zobrazí na AppSource.  Tato část je rozdělena do čtyř podsekcí: **Loga**, **Videa**, **Dokumenty**a **Snímky obrazovky**. Loga a snímky obrazovky jsou jedinými povinnými marketingovými artefakty. Ale pro nejlepší odvolání zákazníků doporučujeme přidat také videa a dokumenty.
 
-![Část marketing artefaktů na kartě Podrobnosti prezentace](./media/marketing-artifacts-section.png)
+![Sekce Marketingové artefakty na kartě Podrobnosti obchodu](./media/marketing-artifacts-section.png)
 
-Chcete-li vyplnit pole v této části, použijte následující tabulku. Požadovaná pole jsou indicted hvězdičkou (*).
+Chcete-li vyplnit pole v této části, použijte následující tabulku. Povinná pole jsou obžalována hvězdičkou (*).
  
 |    Pole                             |    Popis                                                    |
 |   -----------                        |    -------------                                                  |
-| *Značk*                              |                                                                   |
-| **Logo nabídky (formát PNG, 48x48)\***   | Nahrajte logo, které se zobrazí v přehledu aplikace nebo ve výsledcích vyhledávání aplikací. AppSource podporuje pouze formát PNG s rozlišením 48 x 48 px.  |
-| **Logo nabídky (formát PNG, 216x216)\*** | Nahrajte logo, které se zobrazí na stránce podrobností vaší aplikace.  AppSource podporuje pouze formát PNG s rozlišením 216 x 216 px.  |
+| *Loga*                              |                                                                   |
+| **Logo nabídky (formát png, 48x48)\***   | Nahrajte logo, které se zobrazí v přehledu aplikace nebo ve výsledcích vyhledávání aplikací. AppSource podporuje pouze formát PNG s rozlišením 48 x 48 px.  |
+| **Logo nabídky (formát png, 216x216)\*** | Nahrajte logo, které se zobrazí na stránce s podrobnostmi aplikace.  AppSource podporuje pouze formát PNG s rozlišením 216 x 216 px.  |
 | *Videa*                             |                                                                   |
-| **Název**                             | Zadejte název nebo název vaší aplikace.                                          |
+| **Název**                             | Zadejte název nebo název aplikace.                                          |
 | **Adresa URL**                              | Zadejte adresu URL videa hostovaného na YouTube nebo Vimeo.                              |
-| **Miniatuře**                        | Přidejte miniaturní obrázek aplikace.  AppSource podporuje pouze formát PNG s rozlišením 1280 x 720 px.   |
-| *Document*                          | Přidejte až tři dokumenty, které se zobrazí v AppSource v nadpisu další **informace** .  |
-| **Název**                             | Zadejte název nebo název podpůrného dokumentu.                              |
-| **File**                             | Nahrajte soubor PDF.                             |
-| *Snímky obrazovky\**                      | Přidejte až pět snímků obrazovky.                        |
+| **Miniaturu**                        | Přidejte miniaturu aplikace.  AppSource podporuje pouze formát PNG s rozlišením 1280 x 720 px.   |
+| *Dokumenty*                          | Přidejte až tři dokumenty, které se zobrazí na AppSource, v nadpisu **Další informace.**  |
+| **Název**                             | Zadejte název nebo název podpůrného dokladu.                              |
+| **Soubor**                             | Nahrajte soubor PDF.                             |
+| *Snímky obrazovek\**                      | Přidejte až pět snímků obrazovky.                        |
 | **Název**                             | Zadejte název nebo název snímku obrazovky.                                       |
-| **Image**                            | Nahrajte snímek obrazovky PNG. Jeho rozlišení musí být 1280 × 720 px.  | 
+| **Obrázek**                            | Nahrajte snímek obrazovky PNG. Jeho rozlišení musí být 1280 x 720 px.  | 
 |   |   |
 
-Loga, která nahráváte do [portál partnerů cloudu](https://cloudpartner.azure.com) *nesmí:*
+Loga, která nahrajete na [portál partnerů cloudu,](https://cloudpartner.azure.com) *by neměla:*
 
-- Použijte přechod. Vzhled a chování loga by mělo být ploché.
-- Zahrňte název vaší společnosti, název značky nebo jiný text. 
-- Hledání roztaženého.
+- Použijte přechod. Vzhled a dojem z vašeho loga by měl být plochý.
+- Uveďte název společnosti, značku nebo jiný text. 
+- Vypadá to napnutě.
 
-## <a name="legal-section"></a>Právní část
+## <a name="legal-section"></a>Právní sekce
 
-V části **právní** informace uveďte dva právní dokumenty vyžadované pro jednotlivé nabídky: vaše zásady ochrany osobních údajů a vaše podmínky použití.
+V části **Právní** zadejte dva právní dokumenty potřebné pro každou nabídku: zásady ochrany osobních údajů a podmínky použití.
 
-![Právní část karty Podrobnosti prezentace](./media/legal-section.png)
+![Právní část záložky Podrobnosti ve výloze](./media/legal-section.png)
 
 Chcete-li vyplnit pole v této části, použijte následující tabulku:
 
 |   Pole                |   Popis                           |
 |------------------------|--------------------------------------   |
-| **Adresa URL zásad ochrany osobních údajů\*** | Adresa URL vašich publikovaných zásad ochrany osobních údajů       |
-| **Podmínky použití\***       | Vaše zásady použití, formátování prostého textu nebo jednoduchého HTML     |
+| **Adresa URL zásad ochrany osobních údajů\*** | Adresa URL pro vaše zveřejněné zásady ochrany osobních údajů       |
+| **Podmínky použití\***       | Zásady použití formátované jako prostý text nebo jednoduché HTML     |
 |  |  |
 
 
-## <a name="customer-support-section"></a>Oddíl zákaznická podpora
+## <a name="customer-support-section"></a>Sekce podpory zákazníků
 
-V části **zákaznická podpora** zadejte **adresu URL podpory** pro online stránku podpory zákazníků.  Tato stránka by měla obsahovat více možností kontaktů, jako je telefon, e-mail a živé konverzace. 
+V části **Zákaznická podpora** zadejte **adresu URL podpory** pro stránku online zákaznické podpory.  Tato stránka by měla poskytovat více možností kontaktu, například telefon, e-mail a živý chat. 
 
 
-## <a name="lead-management-section"></a>Část Správa potenciálních zákazníků
+## <a name="lead-management-section"></a>Oddíl Správa potenciálních zákazníků
 
-V části **Správa zájemců** nastavte systém tak, aby shromáždil potenciální zákazníky, které AppSource nabízí. Pro výběr možností úložiště pro zájemce použijte následující tabulku:
+V části **Správa potenciálních zákazníků** nastavte systém tak, aby shromažďoval zákazníky, které generuje váš AppSource. Chcete-li vybrat možnosti úložiště pro zájemce, použijte následující tabulku:
 
 |    Pole               |   Cíl zájemce                               |
 |------------------------|--------------------------------------            |
-|  **NTato**              | Neshromažďovat žádné zájemce. Toto je výchozí možnost.  |
-| **Azure Blob (zastaralé)** | Zadejte službu [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) pomocí názvu kontejneru a připojovacího řetězce.  Tato volba je zastaralá. Místo toho použijte **tabulku Azure** .  |
-| **Tabulka Azure**        | Zadejte službu [Azure Table Storage](https://docs.microsoft.com/azure/cosmos-db/table-storage-overview) pomocí připojovacího řetězce.  |
-| **Dynamics CRM Online** | Zadejte [Dynamics 365](https://dynamics.microsoft.com/) pomocí adresy URL a přihlašovacích údajů pro ověřování. |
+|  **Žádné**              | Nesbírejte žádné stopy. Toto je výchozí možnost.  |
+| **Objekt blob Azure (zastaralé)** | Zadejte [úložiště objektů blob Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) pomocí názvu kontejneru a připojovacího řetězce.  Tato volba je zastaralá. Místo toho použijte **Azure Table.**  |
+| **Tabulka Azure**        | Zadejte [úložiště tabulky Azure](https://docs.microsoft.com/azure/cosmos-db/table-storage-overview) pomocí připojovacího řetězce.  |
+| **Dynamics CRM Online** | Zadejte [Dynamics 365](https://dynamics.microsoft.com/) pomocí adresy URL a ověřovacích pověření. |
 | **Koncový bod HTTPS**     | Zadejte koncový bod HTTPS pomocí datové části JSON.   |
-| **Marketo**            | Zadejte instanci [Marketo](https://www.marketo.com/) pomocí ID serveru, ID Munchkin a ID formuláře.   |
-| **Salesforce**         | Určete [Salesforce](https://www.salesforce.com/) pomocí identifikátoru objektu. |
+| **Marketo**            | Zadejte instanci [Marketo](https://www.marketo.com/) pomocí ID serveru, ID munchkin a ID formuláře.   |
+| **Salesforce**         | Zadejte [Salesforce](https://www.salesforce.com/) pomocí identifikátoru objektu. |
 |  |  |
 
-Po publikování vaší nabídky se ověří připojení zájemce a vedoucí testu se automaticky pošle do zadaného cíle. Průběžně spravujte informace o potenciálních zákaznících a rychle aktualizujte nastavení tak, aby odráželo aktuální architekturu správy zákazníků.
+Po publikování nabídky je připojení zájemce ověřeno a testovací zájemce je automaticky odeslán do zadaného cíle. Průběžně spravujte informace o potenciálních zákaznících a okamžitě aktualizujte nastavení tak, aby odrážela aktuální architekturu správy zákazníků.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Na kartě [Kontakty](./cpp-contacts-tab.md) poskytněte prostředky technické podpory a podporu uživatelů pro vaši nabídku.
+Na kartě [Kontakty](./cpp-contacts-tab.md) poskytněte technické a uživatelské zdroje podpory pro vaši nabídku.

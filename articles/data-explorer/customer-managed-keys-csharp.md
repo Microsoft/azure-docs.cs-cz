@@ -1,50 +1,53 @@
 ---
-title: Konfigurace klíčů spravovaných zákazníkem pomocíC#
-description: Tento článek popisuje, jak nakonfigurovat šifrování klíčů spravovaných zákazníkem pro vaše data v Azure Průzkumník dat.
+title: 'Konfigurace klíčů spravovaných zákazníkem pomocí c #'
+description: Tento článek popisuje, jak nakonfigurovat šifrování klíčů spravovaných zákazníkem na vašich datech v Průzkumníku dat Azure.
 author: saguiitay
 ms.author: itsagui
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 16c108790dd696e98a1264691254c9e99dac6cd3
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: a00b0876c4a188b932032129ed5a394e94198930
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280594"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297951"
 ---
-# <a name="configure-customer-managed-keys-using-c"></a>Konfigurace klíčů spravovaných zákazníkem pomocíC#
+# <a name="configure-customer-managed-keys-using-c"></a>Konfigurace klíčů spravovaných zákazníkem pomocí c #
 
 > [!div class="op_single_selector"]
-> * [C#](customer-managed-keys-csharp.md)
+> * [Portál](customer-managed-keys-portal.md)
+> * [C #](customer-managed-keys-csharp.md)
 > * [Šablona Azure Resource Manageru](customer-managed-keys-resource-manager.md)
 
 [!INCLUDE [data-explorer-configure-customer-managed-keys](../../includes/data-explorer-configure-customer-managed-keys.md)]
 
+[!INCLUDE [data-explorer-configure-customer-managed-keys part 2](../../includes/data-explorer-configure-customer-managed-keys-b.md)]
+
 ## <a name="configure-encryption-with-customer-managed-keys"></a>Konfigurace šifrování pomocí klíčů spravovaných zákazníkem
 
-V této části se dozvíte, jak nakonfigurovat šifrování klíčů spravovaných zákazníkem pomocí C# klienta Azure Průzkumník dat. 
+Tato část ukazuje, jak nakonfigurovat šifrování klíčů spravovaných zákazníkem pomocí klienta Azure Data Explorer C#. 
 
 ### <a name="prerequisites"></a>Požadavky
 
-* Pokud nemáte nainstalovanou aplikaci Visual Studio 2019, můžete si stáhnout a použít **bezplatnou** [edici Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
+* Pokud nemáte nainstalovaný Visual Studio 2019, můžete si stáhnout a použít **bezplatnou** [visual studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
-### <a name="install-c-nuget"></a>Nainstalovat C# NuGet
+### <a name="install-c-nuget"></a>Instalace jazyka C# NuGet
 
-* Nainstalujte [balíček NuGet pro Azure Průzkumník dat (Kusto)](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
+* Nainstalujte [balíček NuGet aplikace Azure Data Explorer (Kusto).](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)
 
-* Nainstalujte [balíček NuGet Microsoft. IdentityModel. clients. Active](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) pro ověřování.
+* Nainstalujte [balíček Microsoft.IdentityModel.Clients.ActiveDirectory NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) pro ověřování.
 
-### <a name="authentication"></a>Ověření
+### <a name="authentication"></a>Ověřování
 
-Chcete-li spustit příklady v tomto článku, vytvořte aplikaci a instanční objekt služby [Azure AD](/azure/active-directory/develop/howto-create-service-principal-portal) , který má přístup k prostředkům. Můžete přidat přiřazení role v oboru předplatného a získat požadované `Directory (tenant) ID`, `Application ID`a `Client Secret`.
+Chcete-li spustit příklady v tomto článku, [vytvořte instanční objekt azure a](/azure/active-directory/develop/howto-create-service-principal-portal) služby, které mají přístup k prostředkům. Přiřazení role můžete přidat v oboru předplatného `Directory (tenant) ID` `Application ID`a `Client Secret`získat požadované , a .
 
 ### <a name="configure-cluster"></a>Konfigurace clusteru
 
-Ve výchozím nastavení používá šifrování Azure Průzkumník dat klíče spravované společností Microsoft. Nakonfigurujte cluster Azure Průzkumník dat tak, aby používal klíče spravované zákazníkem, a zadejte klíč, který se má přidružit ke clusteru.
+Ve výchozím nastavení používá šifrování Azure Data Explorer u klíčů spravovaných společností Microsoft. Nakonfigurujte cluster Průzkumníka dat Azure tak, aby používal klíče spravované zákazníky, a zadejte klíč, který chcete k clusteru přidružit.
 
 1. Aktualizujte cluster pomocí následujícího kódu:
 
@@ -74,23 +77,23 @@ Ve výchozím nastavení používá šifrování Azure Průzkumník dat klíče 
     await kustoManagementClient.Clusters.UpdateAsync(resourceGroupName, clusterName, clusterUpdate);
     ```
 
-1. Spusťte následující příkaz a ověřte, jestli se cluster úspěšně aktualizoval:
+1. Spuštěním následujícího příkazu zkontrolujte, zda byl cluster úspěšně aktualizován:
 
     ```csharp
     kustoManagementClient.Clusters.Get(resourceGroupName, clusterName);
     ```
 
-    Pokud výsledek obsahuje `ProvisioningState` s hodnotou `Succeeded`, cluster se úspěšně aktualizoval.
+    Pokud výsledek `ProvisioningState` obsahuje `Succeeded` s hodnotou, byl cluster úspěšně aktualizován.
 
 ## <a name="update-the-key-version"></a>Aktualizace verze klíče
 
-Když vytváříte novou verzi klíče, budete muset cluster aktualizovat, aby používal novou verzi. Nejdřív zavolejte `Get-AzKeyVaultKey`, abyste získali nejnovější verzi klíče. Pak aktualizujte vlastnosti trezoru klíčů clusteru tak, aby používaly novou verzi klíče, jak je znázorněno v části [Konfigurace clusteru](#configure-cluster).
+Když vytvoříte novou verzi klíče, budete muset aktualizovat cluster, aby se používala nová verze. Nejprve `Get-AzKeyVaultKey` zavolejte a získejte nejnovější verzi klíče. Potom aktualizujte vlastnosti trezoru klíčů clusteru tak, aby používaly novou verzi klíče, jak je znázorněno v [části Konfigurovat cluster](#configure-cluster).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Zabezpečení clusterů Azure Průzkumník dat v Azure](security.md)
-* [Konfigurace spravovaných identit pro cluster Azure Průzkumník dat](managed-identities.md)
-* [Zabezpečte svůj cluster v Azure Průzkumník dat-Azure Portal](manage-cluster-security.md) tím, že povolíte šifrování v klidovém prostředí.
+* [Zabezpečené clustery Azure Data Explorer v Azure](security.md)
+* [Konfigurace spravovaných identit pro cluster Azure Data Explorer](managed-identities.md)
+* [Zabezpečte svůj cluster v Azure Data Explorer – Portál Azure](manage-cluster-security.md) povolením šifrování v klidovém stavu.
 * [Konfigurace klíčů spravovaných zákazníkem pomocí šablony Azure Resource Manager](customer-managed-keys-resource-manager.md)
 
 

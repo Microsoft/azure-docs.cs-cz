@@ -1,36 +1,34 @@
 ---
 title: Příprava řešení Dynamics 365
-description: Rozhraní pro balení, instalace a odinstalace součástí
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
-manager: Ricarod.Villalobos
+description: Rámec pro balení, instalaci a odinstalování komponent
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: bcb3bb63f305aeb98efda3baf0f6661bd7f67a7c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: ac1e4fa541e945f20904ced114a36b58d14585ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824230"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278582"
 ---
 # <a name="dynamics-365-solution-preparation"></a>Příprava řešení Dynamics 365
 
-Systém řešení Dynamics 365 je rozhraní pro balení, instalaci a odinstalaci součástí, které poskytují konkrétní obchodní funkce. Řešení používají nezávislé výrobce softwaru a další partnery Microsoft Dynamics 365 k distribuci rozšíření, která vytvoří.
+Systém řešení Dynamics 365 je rámec pro balení, instalaci a odinstalaci součástí, které poskytují specifické obchodní funkce. Řešení používají nemožní výrobci a nechybí ani k tomu, aby poskytovatelé služeb Microsoft Dynamics 365 distribuovali rozšíření, která vytvářejí.
 
-Pokud jste existující ISV 365 (xRM), pravděpodobně už jste vytvořili spravované řešení a máte soubor řešení. zip. V řešení se ujistěte, že pole zobrazované jméno a popis obsahují informace o tom, co chcete, aby zákazníci viděli. Ty se zobrazí v centru pro správu CRM Online.
+Pokud jste existujícím neřízeným diskem Dynamics 365 (xRM), pravděpodobně jste již vytvořili spravované řešení a máte soubor solution.zip. Ve svém řešení se ujistěte, že pole "Zobrazovaný název" a "Popis" odrážejí to, co mají zákazníci vidět. Ty jsou zobrazeny v Centru pro správu online aplikace CRM.
 
-![CRMScreenShot1](media/CRMScreenShot1.png)
+![CrmScreenShot1](media/CRMScreenShot1.png)
 
-_**Poznámka:** V následujícím příkladu balíčku budeme předpokládat, že název řešení je "SampleSolution. zip"._
+_**Poznámka:** V příkladu balíčku, který následuje budeme předpokládat, že název řešení je "SampleSolution.zip"_
 
-Pokud jste novým nezávislým výrobcem softwaru, můžete získat další informace o vytváření řešení tady: [https://msdn.microsoft.com/library/gg334530.aspx](https://msdn.microsoft.com/library/gg334530.aspx)
+Pokud jste nový isv, můžete získat další podrobnosti o vytvoření řešení zde:[https://msdn.microsoft.com/library/gg334530.aspx](https://msdn.microsoft.com/library/gg334530.aspx)
 
-Pokud vaše řešení vyžaduje podpůrná data:
+Pokud vaše řešení vyžaduje podporu dat:
 
 * Vytvoření ukázkových dat v testovacím prostředí
-* Pomocí nástroje pro migraci konfigurace vytvořte schéma s pravidly porovnání pro vaše data.
-* Uložte konfigurační schéma se soubory projektu. To budete potřebovat později, když aktualizujete konfigurační data.
-* Exportujte konfigurační data. Nezapomeňte zadat název souboru pro export, který je smysluplný pro export.
+* Pomocí nástroje pro migraci konfigurace vytvořte schéma s pravidly porovnání dat.
+* Uložte schéma konfigurace se soubory projektu. Budete to potřebovat později, pokud aktualizujete konfigurační data.
+* Exportujte konfigurační data. Nezapomeňte dát souboru exportu název, který má smysl pro váš export.

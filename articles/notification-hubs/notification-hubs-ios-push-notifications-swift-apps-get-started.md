@@ -1,6 +1,6 @@
 ---
-title: Nabízená oznámení v aplikacích SWIFT pro iOS, které používají Azure Notification Hubs | Microsoft Docs
-description: Přečtěte si, jak nabízet oznámení aplikacím SWIFT iOS, které používají Azure Notification Hubs.
+title: Odesílání nabízených oznámení do aplikací Swift pro iOS, které používají Azure Notification Hubs | Dokumenty společnosti Microsoft
+description: Přečtěte si, jak odesílat oznámení do aplikací Swift pro iOS, které používají Azure Notification Hubs.
 services: notification-hubs
 documentationcenter: ios
 author: mikeparker104
@@ -16,52 +16,54 @@ ms.date: 05/21/2019
 ms.author: miparker
 ms.reviewer: jowargo
 ms.lastreviewed: 05/21/2019
-ms.openlocfilehash: 8dae5bcc082ba5dd0953e3e97f609e4031547a35
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: a721c519c7a836e20455c6f1887bcfa7b52951f3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030656"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336636"
 ---
-# <a name="tutorial-push-notifications-to-swift-ios-apps-that-use-the-notification-hubs-rest-api"></a>Kurz: nabízená oznámení v aplikacích SWIFT pro iOS, které používají Notification Hubs REST API
+# <a name="tutorial-send-push-notifications-to-swift-ios-apps-using-notification-hubs-rest-api"></a>Kurz: Odesílání nabízených oznámení do aplikací Swift pro iOS pomocí rozhraní REST API centra oznámení
 
 > [!div class="op_single_selector"]
 > * [Objective-C](notification-hubs-ios-apple-push-notification-apns-get-started.md)
 > * [Swift](notification-hubs-ios-push-notifications-swift-apps-get-started.md)
 
-V tomto kurzu použijete Azure Notification Hubs k odesílání oznámení do aplikace iOS založené na SWIFT pomocí [REST API](/rest/api/notificationhubs/). Také vytvoříte prázdnou aplikaci pro iOS, která přijímá nabízená oznámení pomocí [služby APNs (Apple Push Notification Service)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1).
+V tomto kurzu pomocí Centra oznámení Azure nabízená oznámení na aplikaci iOS založené swift pomocí [rozhraní REST API](/rest/api/notificationhubs/). Můžete také vytvořit prázdnou aplikaci pro iOS, která přijímá nabízená oznámení pomocí [služby Nabízených oznámení Apple (APNs).](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1)
 
 Tento kurz vás provede následujícími kroky:
 
 > [!div class="checklist"]
-> * Vygenerujte soubor žádosti o podepsání certifikátu.
-> * Vyžádejte si aplikaci pro nabízená oznámení.
-> * Vytvořte zřizovací profil pro aplikaci.
+> * Vygenerujte soubor žádosti o podpis certifikátu.
+> * Požádejte svou aplikaci o nabízená oznámení.
+> * Vytvořte profil zřizování pro aplikaci.
 > * Vytvoříte centrum oznámení.
-> * Nakonfigurujte centrum oznámení s informacemi o službě APN.
-> * Připojte svoji aplikaci pro iOS k centru oznámení.
-> * Otestujte řešení.
+> * Nakonfigurujte centrum oznámení s informacemi apns.
+> * Připojte aplikaci pro iOS k centru oznámení.
+> * Otestujte roztok.
+
+Kompletní kód pro tento kurz lze nalézt [na GitHubu](https://github.com/xamcat/mobcat-samples/tree/master/notification_hub_rest).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete postup sledovat, potřebujete:
+Chcete-li sledovat, musíte:
 
-- Pokud nejste obeznámeni se službou, Projděte si [Přehled služby Azure Notification Hubs](notification-hubs-push-notification-overview.md) .
-- Další informace o [registracích a instalaci](notification-hubs-push-notification-registration-management.md).
+- Chcete-li projít [přehled Centra oznámení Azure,](notification-hubs-push-notification-overview.md) pokud nejste obeznámeni se službou.
+- Chcete-li se dozvědět o [registracích a instalaci](notification-hubs-push-notification-registration-management.md).
 - Aktivní [vývojářský účet Apple](https://developer.apple.com).
-- Počítač Mac se systémem Xcode spolu s platným certifikátem pro vývojáře nainstalovaným v řetězci klíčů.
-- Fyzické zařízení iPhone, se kterým můžete spustit a ladit, protože nemůžete testovat nabízená oznámení s simulátorem.
-- Vaše fyzické zařízení pro iPhone registrované na [portálu Apple](https://developer.apple.com) a přidružené k vašemu certifikátu.
-- [Předplatné Azure](https://portal.azure.com) , kde můžete vytvářet a spravovat prostředky.
+- Mac se systémem Xcode spolu s platným vývojářským certifikátem nainstalovaným do řetězce klíčů.
+- Fyzické zařízení iPhone, se kterým můžete spouštět a ladit, protože nemůžete testovat nabízená oznámení se simulátorem.
+- Vaše fyzické zařízení iPhone registrované na [portálu Apple](https://developer.apple.com) a přidružené k vašemu certifikátu.
+- [Předplatné Azure,](https://portal.azure.com) kde můžete vytvářet a spravovat prostředky.
 
-I v případě, že nemáte žádné předchozí zkušenosti s vývojem pro iOS, měli byste být schopni postupovat podle kroků pro vytvoření tohoto příkladu první zásady. Je ale výhodné se seznámit s následujícími koncepty:
+I v případě, že nemáte žádné předchozí zkušenosti s vývojem iOS, měli byste být schopni postupovat podle kroků pro vytvoření tohoto příkladu první principy. Budete však mít prospěch ze znalosti následujících konceptů:
 
-- Sestavování aplikací pro iOS pomocí Xcode a SWIFT
-- Konfiguruje se [Centrum oznámení Azure](notification-hubs-ios-apple-push-notification-apns-get-started.md) pro iOS.
-- [Portál pro vývojáře Apple](https://developer.apple.com) a [Azure Portal](https://portal.azure.com).
+- Vytváření aplikací pro iOS s Xcode a Swiftem.
+- Konfigurace [centra oznámení Azure](notification-hubs-ios-apple-push-notification-apns-get-started.md) pro iOS.
+- [Portál pro vývojáře Apple](https://developer.apple.com) a portál [Azure](https://portal.azure.com).
 
 > [!NOTE]
-> Centrum oznámení se nakonfiguruje jenom na použití režimu ověřování **izolovaného prostoru (sandbox)** . Tento režim ověřování byste neměli používat pro produkční úlohy.
+> Centrum oznámení bude nakonfigurováno tak, aby používalo pouze režim ověřování **izolovaného prostoru.** Tento režim ověřování byste neměli používat pro produkční úlohy.
 
 [!INCLUDE [Notification Hubs Enable Apple Push Notifications](../../includes/notification-hubs-enable-apple-push-notifications.md)]
 
@@ -69,38 +71,38 @@ I v případě, že nemáte žádné předchozí zkušenosti s vývojem pro iOS,
 
 V této části vytvoříte aplikaci pro iOS, která se připojí k centru oznámení.  
 
-### <a name="create-an-ios-project"></a>Vytvoření projektu pro iOS
+### <a name="create-an-ios-project"></a>Vytvoření projektu iOS
 
 1. V Xcode vytvořte nový projekt iOS a vyberte šablonu **Jediné zobrazení aplikace**.
 
 1. Při nastavování možností pro nový projekt:
 
-   1. Zadejte **název produktu** (PushDemo) a **identifikátor organizace** (`com.<organization>`), který jste použili při nastavování **identifikátoru sady prostředků** na portálu pro vývojáře Apple.
+   1. Zadejte **název produktu** (PushDemo) a identifikátor **organizace** (`com.<organization>`), který jste použili při nastavení **identifikátoru sady na** portálu pro vývojáře Apple.
 
-   1. Vyberte **tým** , pro který bylo nastaveno **ID aplikace** .
+   1. Vyberte **tým,** pro který bylo **ID aplikace** nastaveno.
 
-   1. Nastavte **jazyk** na **SWIFT**.
+   1. Nastavte **jazyk** na **Swift**.
 
-   1. Vyberte **Next** (Další).
+   1. Vyberte **další**.
 
 1. Vytvořte novou složku s názvem **SupportingFiles**.
 
-1. Vytvořte nový soubor v seznamu s názvem **devsettings. plist** ve složce **SupportingFiles** . Nezapomeňte tuto složku přidat do souboru **gitignore** , aby se při práci s úložištěm Git netvrdila. V produkční aplikaci pravděpodobně budete tyto tajné klíče podmíněně nastavovat jako součást procesu automatizovaného sestavení. Tato nastavení se nevztahují v tomto návodu.
+1. Vytvořte nový soubor p-list s názvem **devsettings.plist** ve složce **SupportingFiles.** Nezapomeňte přidat tuto složku do souboru **gitignore,** aby nebyla potvrzena při práci s úložištěm git. V produkční aplikaci by pravděpodobně podmíněně nastavení těchto tajných kódů jako součást automatizovaného procesu sestavení. Tato nastavení nejsou zahrnuty v tomto návodu.
 
-1. Aktualizujte **devsettings. plist** tak, aby zahrnovaly následující položky konfigurace pomocí vlastních hodnot z centra oznámení, které jste zřídili:
+1. Aktualizujte **soubor devsettings.plist** tak, aby zahrnoval následující položky konfigurace pomocí vlastních hodnot z centra oznámení, které jste zříditi:
 
    | Klíč                            | Typ                     | Hodnota                     |
    |--------------------------------| -------------------------| --------------------------|
-   | notificationHubKey             | Řetězec                   | \<hubKey>                  |
-   | notificationHubKeyName         | Řetězec                   | \<hubKeyName>              |
-   | notificationHubName            | Řetězec                   | \<hubName>                 |
-   | notificationHubNamespace       | Řetězec                   | \<hubNamespace>            |
+   | oznámeníHubKey             | Řetězec                   | \<> hubkey                  |
+   | oznámeníHubKeyName         | Řetězec                   | \<> název_hubKeyName              |
+   | oznámeníHubName            | Řetězec                   | \<hubName>                 |
+   | oznámeníHubNamespace       | Řetězec                   | \<> hubNamespace            |
 
-   Požadované hodnoty můžete najít tak, že přejdete na prostředek centra oznámení v Azure Portal. Zejména hodnoty **notificationHubName** a **notificationHubNamespace** jsou v pravém horním rohu souhrnu **Essentials** na stránce **Přehled** .
+   Požadované hodnoty najdete tak, že přejdete k prostředku centra oznámení na webu Azure Portal. Zejména hodnoty **notificationHubName** a **notificationHubNamespace** jsou v pravém horním rohu souhrnu **Essentials** na stránce **Přehled.**
 
-   ![Shrnutí Notification Hubs Essentials](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-essentials.png)
+   ![Shrnutí Centra pro oznámení Essentials](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-essentials.png)
 
-   Hodnoty **notificationHubKeyName** a **notificationHubKey** můžete najít také tak, že přejdete na **zásady přístupu** a vyberete příslušné **zásady přístupu**, například `DefaultFullSharedAccessSignature`. Potom zkopírujte z **primárního připojovacího řetězce** hodnotu s hodnotou `SharedAccessKeyName=` pro `notificationHubKeyName` a hodnotu s předponou `SharedAccessKey=` pro `notificationHubKey`.
+   Můžete také najít **hodnoty notificationHubKeyName** a **notificationHubKey** tak, že přejdete na **zásady přístupu** a vyberete příslušné **zásady přístupu**, například `DefaultFullSharedAccessSignature`. Poté zkopírujte z **primárního připojovacího řetězce** hodnotu předponou `SharedAccessKeyName=` pro `notificationHubKeyName` a hodnotu předponou `SharedAccessKey=` pro . `notificationHubKey`
 
    Připojovací řetězec by měl být v následujícím formátu:
 
@@ -108,24 +110,24 @@ V této části vytvoříte aplikaci pro iOS, která se připojí k centru ozná
    Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<notificationHubKeyName>;SharedAccessKey=<notificationHubKey>
    ```
 
-   Pokud ho chcete zachovat, zadejte `DefaultFullSharedAccessSignature`, abyste mohli použít token k odesílání oznámení. V praxi je `DefaultListenSharedAccessSignature` lepší volbou pro situace, kdy chcete dostávat jenom oznámení.
+   Chcete-li, aby `DefaultFullSharedAccessSignature` to bylo jednoduché, zadejte, abyste mohli použít token k odesílání oznámení. V praxi `DefaultListenSharedAccessSignature` by bylo lepší volbou pro situace, kdy chcete dostávat pouze oznámení.
 
-1. V části **Navigátor projektu**vyberte **název projektu** a pak vyberte kartu **Obecné** .
+1. V **části Project Navigator**vyberte **název projektu** a pak vyberte kartu **Obecné.**
 
-1. Najděte **identitu** a pak nastavte hodnotu **identifikátoru sady** , aby odpovídala `com.<organization>.PushDemo`, což je hodnota, která se používá pro **ID aplikace** z předchozího kroku.
+1. Najděte **identitu** a nastavte hodnotu **identifikátoru svazku** tak, aby odpovídala `com.<organization>.PushDemo`, což je hodnota použitá pro **ID aplikace** z předchozího kroku.
 
-1. Vyhledejte **podepisování**a potom vyberte příslušný **tým** pro svůj **účet Apple Developer**. Hodnota **týmu** by měla odpovídat tomu, ve kterém jste vytvořili certifikáty a profily.
+1. Najděte **možnosti & podepisování**a vyberte příslušný **tým** pro svůj **vývojářský účet Apple**. Hodnota **Team** by se měla shodovat s hodnotou, pod kterou jste vytvořili certifikáty a profily.
 
-1. Xcode by měl automaticky stáhnout příslušnou hodnotu **zřizovacího profilu** na základě **identifikátoru sady prostředků**. Pokud nevidíte novou hodnotu **zřizovacího profilu** , zkuste aktualizovat profily pro **podpisovou identitu** tak, že vyberete **Xcode** > **Předvolby** > **účtu** > **Zobrazit podrobnosti**. Vyberte **podpisovou identitu**a pak kliknutím na tlačítko **aktualizovat** v pravém dolním rohu Stáhněte profily.
+1. Xcode by měl automaticky stáhnout příslušnou hodnotu **profilu zřizování** na základě **identifikátoru sady**. Pokud nevidíte novou hodnotu **profilu zřizování,** zkuste aktualizovat profily **pro podpisovou identitu** tak, že vyberete**účet** **předvoleb** >  **Xcode** > a pak vyberte tlačítko **Stáhnout ruční profily** a stáhněte si profily.
 
-1. Vyberte kartu **Možnosti** a zajistěte, aby byla povolená **nabízená oznámení** .
+1. Stále na kartě **Možnosti podepisování &** klikněte na tlačítko **+ Schopnosti** a dvakrát klepněte na **nabízená oznámení** ze seznamu, abyste zajistili, že jsou **povolena nabízená oznámení.**
 
-1. Otevřete soubor **AppDelegate. SWIFT** pro implementaci protokolu **UNUserNotificationCenterDelegate** a přidejte následující kód do horní části třídy:
+1. Otevřete soubor **AppDelegate.swift** k implementaci protokolu **UNUserNotificationCenterDelegate** a přidejte následující kód na začátek třídy:
 
     ```swift
     @UIApplicationMain
     class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
-
+        
         ...
 
         var configValues: NSDictionary?
@@ -134,15 +136,14 @@ V této části vytvoříte aplikaci pro iOS, která se připojí k centru ozná
         var notificationHubKeyName : String?
         var notificationHubKey : String?
         let tags = ["12345"]
-        let genericTemplate = PushTemplate(withBody: "{\"aps\":{\"alert\":\"$(message)\"}}")
-
+        
         ...
     }
     ```
 
-    Tyto členy budete používat později. Konkrétně použijete **značky** a členy **genericTemplate** jako součást registrace. Další informace o značkách naleznete v tématu [značky pro registrace](notification-hubs-tags-segment-push-message.md) a [Registrace šablon](notification-hubs-templates-cross-platform-push-messages.md).
+    Tyto členy použijete později. Konkrétně budete používat **tagy** člen jako součást registrace pomocí **vlastní šablony**. Další informace o značkách naleznete v [tématu Značky pro registrace](notification-hubs-tags-segment-push-message.md) a [registrace šablon](notification-hubs-templates-cross-platform-push-messages.md).
 
-1. Do stejného souboru přidejte následující kód do funkce **didFinishLaunchingWithOptions** :
+1. Ve stejném souboru přidejte do funkce **didFinishLaunchingWithOptions** následující kód:
 
     ```swift
     if let path = Bundle.main.path(forResource: "devsettings", ofType: "plist") {
@@ -171,9 +172,9 @@ V této části vytvoříte aplikaci pro iOS, která se připojí k centru ozná
     return true
     ```
 
-    Tento kód načte hodnoty nastavení z **devsettings. plist**, nastaví třídu **AppDelegate** jako delegáta **UNUserNotificationCenter** , vyžádá autorizaci pro nabízená oznámení a potom zavolá **registerForRemoteNotifications**.
+    Tento kód načte hodnoty nastavení z **souboru devsettings.plist**, nastaví třídu **AppDelegate** jako **delegáta UNUserNotificationCenter,** požádá o autorizaci nabízených oznámení a pak zavolá **registerForRemoteNotifications**.
 
-    Pro zachování jednoduchého kódu podporuje *pouze iOS 10 a novější*. Podporu pro předchozí verze operačních systémů můžete přidat podmíněně pomocí příslušných rozhraní API a přístupů, jako byste to normálně provedete.
+    Aby to bylo jednoduché, kód podporuje *pouze iOS 10 a novější*. Můžete přidat podporu pro předchozí verze operačního systému podmíněně pomocí příslušných api a přístupy jako obvykle.
 
 1. Do stejného souboru přidejte následující funkce:
 
@@ -186,13 +187,14 @@ V této části vytvoříte aplikaci pro iOS, která se připojí k centru ozná
     func showAlert(withText text : String) {
         let alertController = UIAlertController(title: "PushDemo", message: text, preferredStyle: UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
-        self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+        let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
     }
     ```
 
-    Kód používá hodnoty **installationId** a **pushChannel** k registraci v centru oznámení. V tomto případě používáte **UIDevice. Current. identifierForVendor** k poskytnutí jedinečné hodnoty k identifikaci zařízení a pak formátování **deviceToken** pro poskytnutí požadované hodnoty **pushChannel** . Funkce **showAlert** existuje jednoduše k zobrazení textu zprávy pro demonstrační účely.
+    Kód používá **installationId** a **pushChannel** hodnoty zaregistrovat s centrem oznámení. V tomto případě používáte **UIDevice.current.identifierForVendor** poskytnout jedinečnou hodnotu k identifikaci zařízení a potom formátování **deviceToken** poskytnout požadovanou hodnotu **pushChannel.** Funkce **showAlert** existuje jednoduše pro zobrazení textu zprávy pro demonstrační účely.
 
-1. Stále v souboru **AppDelegate. SWIFT** přidejte funkce **willPresent** a **didReceive** do **UNUserNotificationCenterDelegate**. Tyto funkce zobrazí výstrahu, když jsou informováni o tom, že aplikace běží buď v popředí, nebo na pozadí.
+1. Stále v souboru **AppDelegate.swift,** přidejte **funkce willPresent** a **didReceive** do **unUserNotificationCenterDelegate**. Tyto funkce zobrazí výstrahu, když jsou upozorněni, že aplikace běží v popředí nebo na pozadí.
 
     ```swift
     @available(iOS 10.0, *)
@@ -210,17 +212,22 @@ V této části vytvoříte aplikaci pro iOS, která se připojí k centru ozná
     }
     ```
 
-1. Přidáním příkazů Print do dolní části funkce **didRegisterForRemoteNotificationsWithDeviceToken** ověřte, zda jsou přiřazovány hodnoty **installationId** a **pushChannel** .
+1. Přidejte příkazy tisku na konec funkce **didRegisterForRemoteNotificationsWithDeviceToken,** abyste **ověřili,** že jsou přiřazeny hodnoty id a **pushChannel.**
 
-1. Vytvořte si **modely**, **služby**a složky **nástrojů** pro základní komponenty, které do projektu přidáte později.
+    ```swift
+    print(installationId)
+    print(pushChannel)
+    ```
 
-1. Ověřte, že se projekt sestaví a spouští na fyzickém zařízení. Nabízená oznámení nelze testovat pomocí simulátoru.
+1. Vytvořte složky **Modely**, **Služby**a **Nástroje** pro základní součásti, které budete přidávat do projektu později.
+
+1. Zkontrolujte, zda projekt sestaví a běží na fyzickézařízení. Nabízená oznámení nelze testovat pomocí simulátoru.
 
 ### <a name="create-models"></a>Vytváření modelů
 
-V tomto kroku vytvoříte sadu modelů reprezentujících datové části [Notification Hubs REST API](/rest/api/notificationhubs/) a uložíte požadovaná data tokenu sdíleného přístupového podpisu (SAS).
+V tomto kroku vytvoříte sadu modelů, které představují datové části [rozhraní REST API pro oznámení](/rest/api/notificationhubs/) a ukládají data tokenu požadovaného sdíleného přístupového podpisu (SAS).
 
-1. Do složky **modely** přidejte nový soubor SWIFT s názvem **PushTemplate. SWIFT** . Tento model poskytuje strukturu reprezentující **tělo** jednotlivé šablony jako součást datové části **DeviceInstallation** .
+1. Přidejte do složky **Modely** nový soubor Swift s názvem **PushTemplate.swift.** Tento model poskytuje strukturu představující **tělo** jednotlivé šablony jako součást datové části **DeviceInstallation.**
 
     ```swift
     import Foundation
@@ -234,7 +241,7 @@ V tomto kroku vytvoříte sadu modelů reprezentujících datové části [Notif
     }
     ```
 
-1. Do složky **modely** přidejte nový soubor SWIFT s názvem **DeviceInstallation. SWIFT** . Tento soubor definuje strukturu reprezentující datovou část pro vytvoření nebo aktualizaci **instalace zařízení**. Do souboru přidejte následující kód:
+1. Přidejte do složky **Modely** nový soubor Swift s názvem **DeviceInstallation.swift.** Tento soubor definuje strukturu představující datovou část pro vytvoření nebo **aktualizaci instalace zařízení**. Do souboru přidejte následující kód:
 
     ```swift
     import Foundation
@@ -255,7 +262,7 @@ V tomto kroku vytvoříte sadu modelů reprezentujících datové části [Notif
     }
     ```
 
-1. Do složky **modely** přidejte nový soubor SWIFT s názvem **TokenData. SWIFT** . Tento model se použije k uložení tokenu SAS spolu s jeho vypršením platnosti.
+1. Přidejte do složky **Models** nový soubor Swift s názvem **TokenData.swift.** Tento model se použije k uložení tokenu SAS spolu s jeho vypršením platnosti.
 
     ```swift
     import Foundation
@@ -272,9 +279,9 @@ V tomto kroku vytvoříte sadu modelů reprezentujících datové části [Notif
     }
     ```
 
-### <a name="generate-a-sas-token"></a>Vygenerovat token SAS
+### <a name="generate-a-sas-token"></a>Generovat token SAS
 
-Notification Hubs používat stejnou infrastrukturu zabezpečení jako Azure Service Bus. Chcete-li volat REST API, budete muset [programově vygenerovat token SAS](/rest/api/eventhub/generate-sas-token) , který lze použít v **autorizační** hlavičce žádosti.  
+Centra oznámení používají stejnou infrastrukturu zabezpečení jako Azure Service Bus. Chcete-li volat rozhraní REST API, budete muset [programově generovat token SAS,](/rest/api/eventhub/generate-sas-token) který lze použít v záhlaví **autorizace** požadavku.  
 
 Výsledný token bude v následujícím formátu:
 
@@ -282,24 +289,24 @@ Výsledný token bude v následujícím formátu:
 SharedAccessSignature sig=<UrlEncodedSignature>&se=<ExpiryEpoch>&skn=<KeyName>&sr=<UrlEncodedResourceUri>
 ```
 
-Samotný proces zahrnuje stejný šest klíčových kroků:  
+Samotný proces zahrnuje stejných šest klíčových kroků:  
 
-1. Výpočet doby platnosti ve formátu [epocha času v systému UNIX](https://en.wikipedia.org/wiki/Unix_time) , což znamená, že počet sekund uplynulý od půlnoci koordinovaného světového času, od 1. ledna 1970.
-1. Formátování **ResourceUrl** , které představuje prostředek, ke kterému se pokoušíte získat přístup, je v procentech zakódovaných a malými písmeny. **ResourceUrl** má `'https://<namespace>.servicebus.windows.net/<hubName>'`formuláře.
-1. Připravuje se **StringToSign**, který se naformátuje jako `'<UrlEncodedResourceUrl>\n<ExpiryEpoch>'`.
-1. Výpočet a kódování Base64 – **Signatura** pomocí algoritmu hash HMAC-SHA256 hodnoty **StringToSign** . Hodnota hash se používá spolu s **klíčovou** částí **připojovacího řetězce** pro příslušné **autorizační pravidlo**.
-1. Formátování kódovaného formátu **Base64 tak, aby bylo** zakódováno v procentech.
-1. Vytvoření tokenu v očekávaném formátu pomocí hodnot **UrlEncodedSignature**, **ExpiryEpoch**, **KeyName**a **UrlEncodedResourceUrl** .
+1. Výpočet vypršení platnosti ve formátu [času UNIX Epoch,](https://en.wikipedia.org/wiki/Unix_time) což znamená počet sekund, které uplynuly od půlnoci Koordinovaný světový čas, leden 1, 1970.
+1. Formátování **ResourceUrl,** který představuje prostředek, ke kterému se pokoušíte získat přístup, takže je kódovaný procentuální a malá písmena. **Adresa ResourceUrl** má `'https://<namespace>.servicebus.windows.net/<hubName>'`formulář .
+1. Příprava **StringToSign**, který je `'<UrlEncodedResourceUrl>\n<ExpiryEpoch>'`formátován jako .
+1. Výpočetní a Base64 kódování **podpis** pomocí HMAC-SHA256 hash **stringToSign** hodnoty. Hodnota hash se používá s **klíčovou** částí **připojovacího řetězce** pro příslušné **autorizační pravidlo**.
+1. Formátování kódu Base64 **Signature** tak, aby byl zakódován procentuální.
+1. Vytvoření tokenu v očekávaném formátu pomocí hodnot **UrlEncodedSignature**, **ExpiryEpoch**, **KeyName**a **UrlEncodedResourceUrl.**
 
-Podrobné informace o sdíleném přístupovém podpisu a o tom, jak se Azure Service Bus a Notification Hubs používají, najdete v [dokumentaci k Azure Service Bus](../service-bus-messaging/service-bus-sas.md) .
+Podrobnější přehled sdíleného přístupového podpisu a způsobu, jakým ho používají Azure Service Bus a Notification Hubs, najdete v dokumentaci k [Azure Service Bus.](../service-bus-messaging/service-bus-sas.md)
 
-Pro účely tohoto příkladu SWIFT budete pomocí knihovny **CommonCrypto** Open Source společnosti Apple pomáhat s hashací signatury. V případě knihovny jazyka C není v rychlém přístupu k dispozici v poli SWIFT. Knihovnu je možné zpřístupnit pomocí přemostění hlavičky.
+Pro účely tohoto příkladu Swift, budete používat Apple open-source **CommonCrypto** knihovny pomoci s hash podpisu. Vzhledem k tomu, že se jedná o knihovnu C, není přístupná v Swiftu po vybalení z krabice. Knihovnu můžete zpřístupnit pomocí přemosťující hlavičky.
 
-Postup přidání a konfigurace přemostění hlavičky:
+Přidání a konfigurace přemosťovacího záhlaví:
 
-1. V Xcode vyberte **soubor** > **Nový** ** > soubor** **hlaviček** > . Pojmenujte hlavičkový soubor **BridgingHeader. h**.
+1. V xcode vyberte **Soubor** > **Složky** > s**hlavičkou souboru** > **Header File**. Pojmenujte soubor záhlaví **BridgingHeader.h**.
 
-1. Upravte soubor tak, aby importoval **CommonHMAC. h**:
+1. Upravit soubor pro import **CommonHMAC.h**:
 
     ```swift
     #import <CommonCrypto/CommonHMAC.h>
@@ -311,19 +318,19 @@ Postup přidání a konfigurace přemostění hlavičky:
     #endif /* BridgingHeader_h */
     ```
 
-1. Aktualizujte **nastavení sestavení** cíle tak, aby odkazovalo na hlavičku přemostění:
+1. Aktualizujte nastavení **sestavení** cíle tak, aby odkazovalo na přemosťující záhlaví:
 
-   1. Otevřete kartu **Nastavení budovy** a přejděte dolů k části **kompilátor SWIFT** .
+   1. Klepněte na projekt **PushDemo** a přejděte dolů do sekce **Swift Compiler.**
 
-   1. Zajistěte, aby byla možnost **Hlavička kompatibility cíl-C** nastavená na **hodnotu Ano**.
+   1. Ujistěte se, že je možnost **Instalovat hlavičku kompatibility cíle C** nastavena na **ano**.
 
-   1. Zadejte cestu k souboru `'<ProjectName>/BridgingHeader.h'` do možnosti **hlavičkového mostu cíl-C** . Toto je cesta k souboru v naší hlavičce přemostění.
+   1. Zadejte cestu `'<ProjectName>/BridgingHeader.h'` k souboru do možnosti **Přemostění záhlaví Objective-C.** Toto je cesta k našemu přemostění záhlaví.
 
-   Pokud tyto možnosti nemůžete najít, **Ujistěte se,** že máte vybrané zobrazení místo **základní** nebo **přizpůsobené**.
+   Pokud tyto možnosti nemůžete najít, ujistěte se, že máte vybrané zobrazení **Vše,** nikoli **Základní** nebo **Přizpůsobené**.
 
-   K dispozici je spousta Open Source knihoven, které mohou využívat **CommonCrypto** a mnohem jednodušší. Diskuse takových knihoven je ale nad rámec tohoto článku.
+   Existuje mnoho knihoven obálky s otevřeným zdrojovým kódem třetích stran, které mohou usnadnit použití **CommonCrypto.** Diskuse o těchto knihoven je však nad rámec tohoto článku.
 
-1. Do složky **nástrojů** přidejte nový soubor SWIFT s názvem **TokenUtility. SWIFT** a přidejte následující kód:
+1. Přidejte nový soubor Swift s názvem **TokenUtility.swift** do složky **Nástroje** a přidejte následující kód:
 
    ```swift
    import Foundation
@@ -384,39 +391,53 @@ Postup přidání a konfigurace přemostění hlavičky:
     }
    ```
 
-   Tento nástroj zapouzdřuje logiku odpovědnou za generování tokenu SAS.
+   Tento nástroj zapouzdřuje logiku zodpovědnou za generování tokenu SAS.
 
-   Jak bylo uvedeno dříve, funkce **getSasToken** orchestruje kroky vysoké úrovně vyžadované pro přípravu tokenu. Funkce bude volána instalační službou dále v tomto kurzu.
+   Jak je uvedeno dříve, funkce **getSasToken** orchestruje kroky vysoké úrovně potřebné k přípravě tokenu. Funkce bude volána instalační službou dále v tomto kurzu.
 
-   Další dvě funkce jsou volány funkcí **getSasToken** : **sha256HMac** pro výpočet podpisu a **urlEncodedString** pro kódování přidruženého řetězce adresy URL. Funkce **urlEncodedString** je povinná, protože není možné dosáhnout požadovaného výstupu pomocí integrované funkce **addingPercentEncoding** .
+   Další dvě funkce jsou volány funkcí **getSasToken:** **sha256HMac** pro výpočet podpisu a **urlEncodedString** pro kódování přidruženého řetězce URL. Funkce **urlEncodedString** je vyžadována, protože není možné dosáhnout požadovaného výstupu pomocí vestavěné funkce **addingPercentEncoding.**
 
-   [Sada Azure Storage iOS SDK](https://github.com/Azure/azure-storage-ios/blob/master/Lib/Azure%20Storage%20Client%20Library/Azure%20Storage%20Client%20Library/AZSUtil.m) je skvělým příkladem, jak přistupovat k těmto operacím v cíli – C. Další informace o Azure Service Bus tokeny SAS najdete v dokumentaci k [Azure Service Bus](../service-bus-messaging/service-bus-sas.md).
+   [Sada Azure Storage iOS SDK](https://github.com/Azure/azure-storage-ios/blob/master/Lib/Azure%20Storage%20Client%20Library/Azure%20Storage%20Client%20Library/AZSUtil.m) je vynikajícím příkladem toho, jak přistupovat k těmto operacím v objective-C. Další informace o tokenech Azure Service Bus SAS najdete v [dokumentaci k Azure Service Bus](../service-bus-messaging/service-bus-sas.md).
+
+1. V **souboru AppDelegate.swift**přidejte do funkce *didRegisterForRemoteNotificationsWithDeviceToken* následující kód, který ověří, že **tokenToken.getSasToken** generuje platný token.
+    
+    ```swift
+    let baseAddress = "https://<notificaitonHubNamespace>.servicebus.windows.net/<notifiationHubName>"
+
+    let tokenData = TokenUtility.getSasToken(forResourceUrl: baseAddress,
+                                                withKeyName: self.notificationHubKeyName!,
+                                                andKey: self.notificationHubKey!)
+    
+    print(tokenData.token)
+    ```
+
+    Nezapomeňte nahradit zástupné hodnoty v **řetězci baseAddress** vlastním řetězcem
 
 ### <a name="verify-the-sas-token"></a>Ověření tokenu SAS
 
-Před implementací instalační služby v klientovi ověřte, že je v naší aplikaci správně vygenerován token SAS pomocí vašeho vlastního nástroje HTTP. Pro účely tohoto kurzu bude náš nástroj na výběr **dodatečně**.
+Před implementací instalační služby v klientovi zkontrolujte, zda naše aplikace správně generuje token SAS pomocí vašeho http nástroje podle výběru. Pro účely tohoto výukového programu bude naším nástrojem výběru **Pošťák**.
 
-Použijte vhodně umístěný příkaz Print nebo zarážku, abyste si poznamenali **installationId** a hodnoty **tokenu** , které aplikace generuje.
+Poznamenejte si **hodnoty id instalace** a **tokenu** generované aplikací.
 
-Postupujte podle těchto kroků a zavolejte rozhraní API **instalace** :
+Chcete-li volat rozhraní API **pro instalace,** postupujte takto:
 
-1. V **příspěvku**otevřete novou kartu.
+1. V **pošťáku**otevřete novou kartu.
 
-1. Nastavte požadavek na **získání** a zadání následující adresy:
+1. Nastavte požadavek na **GET** a zadejte následující adresu:
 
     ```xml
     https://<namespace>.servicebus.windows.net/<hubName>/installations/<installationId>?api-version=2015-01
     ```
 
-1. Hlavičky požadavku nakonfigurujte takto:
+1. Nakonfigurujte záhlaví požadavků následujícím způsobem:
 
    | Klíč           | Hodnota            |
    | ------------- | ---------------- |
    | Typ obsahu  | application/json |
-   | Autorizace | \<sasToken >       |
-   | x-ms-version  | 2015-01          |
+   | Autorizace | \<sasToken>       |
+   | x-ms-verze  | 2015-01          |
 
-1. Vyberte tlačítko **Code (kód** ), které se zobrazí v pravém horním rohu pod tlačítkem **Uložit** . Požadavek by měl vypadat podobně jako v následujícím příkladu:
+1. Vyberte tlačítko **Kód,** které se zobrazí v pravém horním pod tlačítkem **Uložit.** Požadavek by měl vypadat podobně jako v následujícím příkladu:
 
     ```html
     GET /<hubName>/installations/<installationId>?api-version=2015-01 HTTP/1.1
@@ -428,15 +449,15 @@ Postupujte podle těchto kroků a zavolejte rozhraní API **instalace** :
     Postman-Token: <postmanToken>
     ```
 
-1. Vyberte **odeslat** tlačítko.
+1. Vyberte tlačítko **Odeslat.**
 
-V tuto chvíli neexistují žádné registrace pro zadaný **installationId** . Ověřování by mělo mít za následek odpověď "404 nebylo nalezeno", nikoli odpověď "401 neautorizovaného". Tento výsledek by měl potvrdit, že se token SAS přijal.
+Pro zadané **id instalace** v tomto okamžiku neexistuje žádná registrace. Výsledkem ověření by měla být odpověď "404 nebyla nalezena" spíše než odpověď "401 Neautorizovaná". Tento výsledek by měl potvrdit, že token SAS byl přijat.
 
-### <a name="implement-the-installation-service-class"></a>Implementace třídy instalační služby
+### <a name="implement-the-installation-service-class"></a>Implementace třídy instalačního servisu
 
-V dalším kroku implementujete naši základní obálku pro [REST API instalací](/rest/api/notificationhubs/create-overwrite-installation).  
+Dále budete implementovat naše základní obálku kolem [instalace REST API](/rest/api/notificationhubs/create-overwrite-installation).  
 
-Do složky **Services** přidejte nový soubor SWIFT s názvem **NotificationRegistrationService. SWIFT** a potom do tohoto souboru přidejte následující kód:
+Přidejte nový soubor Swift s názvem **NotificationRegistrationService.swift** do složky **Služby** a přidejte do tohoto souboru následující kód:
 
 ```swift
 import Foundation
@@ -455,7 +476,8 @@ class NotificationRegistrationService {
     private let keyName : String
     private let key : String
     private var tokenData : TokenData? = nil
-
+    private var tokenExpiryDate : Date? = nil
+    
     init(withInstallationId installationId : String,
             andPushChannel pushChannel : String,
             andHubNamespace hubNamespace : String,
@@ -470,58 +492,67 @@ class NotificationRegistrationService {
         self.key = key
         self.defaultHeaders = ["Content-Type": "application/json", "x-ms-version": apiVersion]
     }
-
+    
     func register(
         withTags tags : [String]? = nil,
         andTemplates templates : Dictionary<String, PushTemplate>? = nil,
         completeWith completion: ((_ result: Bool) -> ())? = nil) {
-
+        
         var deviceInstallation = DeviceInstallation(withInstallationId: installationId, andPushChannel: pushChannel)
-
+        
         if let tags = tags {
             deviceInstallation.tags = tags
         }
-
+        
         if let templates = templates {
             deviceInstallation.templates = templates
         }
-
+        
         if let deviceInstallationJson = encodeToJson(deviceInstallation) {
             let sasToken = getSasToken()
             let requestUrl = String.init(format: tokenizedCreateOrUpdateInstallationRequest, installationId, apiVersion)
             let apiEndpoint = "\(getBaseAddress())\(requestUrl)"
-
+            
             var request = URLRequest(url: URL(string: apiEndpoint)!)
             request.httpMethod = "PUT"
-
+            
             for (key,value) in self.defaultHeaders {
                 request.addValue(value, forHTTPHeaderField: key)
             }
-
+            
             request.addValue(sasToken, forHTTPHeaderField: "Authorization")
             request.httpBody = Data(deviceInstallationJson.utf8)
-
+            
             (self.session.dataTask(with: request) { dat, res, err in
                 if let completion = completion {
-                        completion(err == nil && (res as! HTTPURLResponse).statusCode == 200)
+                        completion(err == nil && 
+                        (res as! HTTPURLResponse).statusCode == 200)
                 }
             }).resume()
         }
     }
-
+    
     private func getBaseAddress() -> String {
         return String.init(format: tokenizedBaseAddress, hubNamespace, hubName)
     }
-
+    
     private func getSasToken() -> String {
         if (tokenData == nil ||
-            Date(timeIntervalSince1970: Double((tokenData?.expiration)!)) < Date(timeIntervalSinceNow: -(5 * 60))) {
-            self.tokenData = TokenUtility.getSasToken(forResourceUrl: getBaseAddress(), withKeyName: self.keyName, andKey: self.key)
+            tokenExpiryDate == nil ||
+            Date() >= tokenExpiryDate!) {
+            
+            self.tokenData = TokenUtility.getSasToken(
+                forResourceUrl: getBaseAddress(),
+                withKeyName: self.keyName,
+                andKey: self.key)
+            
+            self.tokenExpiryDate = Date(timeIntervalSinceNow: -(5 * 60))
+                .addingTimeInterval(TimeInterval(tokenData!.expiration))
         }
 
         return (tokenData?.token)!
     }
-
+    
     private func encodeToJson<T : Encodable>(_ object: T) -> String? {
         do {
             let jsonData = try jsonEncoder.encode(object)
@@ -538,27 +569,28 @@ class NotificationRegistrationService {
 }
 ```
 
-Podrobnosti o požadavcích jsou k dispozici jako součást inicializace. Značky a šablony jsou volitelně předány do funkce **Register** , aby bylo možné vytvořit součást datové části JSON pro **instalaci zařízení** .  
+Požadované podrobnosti jsou uvedeny jako součást inicializace. Značky a šablony jsou volitelně předány do funkce **registru,** aby byly součástí datové části **JSON pro instalaci zařízení.**  
 
-Funkce **Register** volá další soukromé funkce pro přípravu žádosti. Po přijetí odpovědi se zavolá dokončování a indikuje, jestli se registrace úspěšně dokončila.  
+Funkce **register** volá další soukromé funkce pro přípravu požadavku. Po přijetí odpovědi je voláno dokončení a označuje, zda byla registrace úspěšná.  
 
-Koncový bod žádosti je vytvořen funkcí **getbaseaddress –** . Konstrukce používá *obor názvů* parametrů centra oznámení a *název* , které byly zadány během inicializace.  
+Koncový bod požadavku je vytvořen funkcí **getBaseAddress.** Konstrukce používá parametry centra oznámení *obor názvů* a *název,* které byly poskytnuty během inicializace.  
 
-Funkce **getSasToken** zkontroluje, jestli je aktuálně uložený token platný. Pokud token není platný, funkce volá **TokenUtility** k vygenerování nového tokenu a pak ho uloží před vrácením hodnoty.
+Funkce **getSasToken** zkontroluje, zda je aktuálně uložený token platný. Pokud token není platný, funkce volá **TokenUtility** generovat nový token a pak ukládá před vrácením hodnoty.
 
-Nakonec **encodeToJson** převede příslušné objekty modelu na JSON, aby je bylo možno použít jako součást textu žádosti.
+Nakonec **encodeToJson** převede příslušné objekty modelu do JSON pro použití jako součást těla požadavku.
 
-### <a name="invoke-the-notification-hubs-rest-api"></a>Vyvolat Notification Hubs REST API
+### <a name="invoke-the-notification-hubs-rest-api"></a>Vyvolání rozhraní REST ROZHRANÍ REST CENTER o znacích
 
-Poslední krok aktualizuje **AppDelegate** na použití **NotificationRegistrationService** k registraci v našem **NotificationHub**.
+Posledním krokem je aktualizace **AppDelegate** použít **NotificationRegistrationService** zaregistrovat s naší **NotificationHub**.
 
-1. Otevřete **AppDelegate. SWIFT** a přidejte proměnnou na úrovni třídy pro uložení odkazu na **NotificationRegistrationService**:
+1. Otevřete **soubor AppDelegate.swift** a přidejte proměnné na úrovni třídy pro uložení odkazu na **noficiationRegistrationService** a obecnou **pushtemplate**:
 
     ```swift
     var registrationService : NotificationRegistrationService?
+    let genericTemplate = PushTemplate(withBody: "{\"aps\":{\"alert\":\"$(message)\"}}")
     ```
 
-1. Ve stejném souboru aktualizujte funkci **didRegisterForRemoteNotificationsWithDeviceToken** pro inicializaci **NotificationRegistrationService** s parametry požadavků a pak zavolejte funkci **Register** .
+1. Ve stejném souboru aktualizujte funkci **didRegisterForRemoteNotificationsWithDeviceToken,** abyste inicializovali **službu NotificationRegistrationService** s parametry požadované a potom volejte funkci **registru.**
 
     ```swift
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -585,17 +617,17 @@ Poslední krok aktualizuje **AppDelegate** na použití **NotificationRegistrati
     }
     ```
 
-    Aby se zachovala jednoduchá, použijete několik příkazů Print k aktualizaci okna výstup s výsledkem operace **registrace** .
+    Chcete-li zachovat jednoduché, budete používat několik tiskových příkazů k aktualizaci výstupního okna s výsledkem operace **registru.**
 
-1. Nyní Sestavte a spusťte aplikaci na fyzickém zařízení. V okně výstup by se měla zobrazit položka registrováno.
+1. Teď sestavte a spusťte aplikaci na fyzickém zařízení. Ve výstupním okně byste měli vidět "Registrováno".
 
-## <a name="test-the-solution"></a>Testování řešení
+## <a name="test-the-solution"></a>Otestujte roztok
 
-Naše aplikace v této fázi je zaregistrovaná ve službě **NotificationHub** a může dostávat nabízená oznámení. V Xcode ukončete ladicí program a zavřete aplikaci, pokud je aktuálně spuštěná. Pak ověřte, že podrobnosti o **instalaci zařízení** jsou očekávané, a že naše aplikace teď může dostávat nabízená oznámení.  
+Naše aplikace v této fázi je registrována u **NotificationHub** a může přijímat nabízená oznámení. V Xcode zastavte ladicí program a zavřete aplikaci, pokud je aktuálně spuštěná. Dále zkontrolujte, zda jsou podrobnosti **o instalaci zařízení** podle očekávání a že naše aplikace teď může přijímat nabízená oznámení.  
 
 ### <a name="verify-the-device-installation"></a>Ověření instalace zařízení
 
-Nyní můžete vytvořit stejný požadavek, jako jste předtím používali **metodu post** pro [ověření tokenu SAS](#verify-the-sas-token). Za předpokladu, že platnost tokenu SAS nevypršela, měla by nyní odpověď obsahovat podrobnosti o instalaci, které jste zadali, například šablony a značky.
+Nyní můžete provést stejný požadavek jako dříve pomocí **Postman** pro [ověření tokenu SAS](#verify-the-sas-token). Za předpokladu, že platnost tokenu SAS nevypršela, odpověď by nyní měla obsahovat podrobnosti o instalaci, které jste zadali, jako jsou šablony a značky.
 
 ```json
 {
@@ -618,54 +650,56 @@ Nyní můžete vytvořit stejný požadavek, jako jste předtím používali **m
 }
 ```
 
-### <a name="send-a-test-notification-azure-portal"></a>Odeslat zkušební oznámení (Azure Portal)
+Pokud platnost předchozího **tokenu SAS** vypršela, můžete přidat **zarážku** na **řádek 24** třídy **TokenUtility,** abyste získali nový **token SAS** a **aktualizovali** hlavičku Autorizace s tou novou hodnotou.
 
-Nejrychlejší způsob, jak otestovat, že teď můžete dostávat oznámení, je přejít do centra oznámení v Azure Portal:
+### <a name="send-a-test-notification-azure-portal"></a>Odeslání testovacího oznámení (portál Azure)
 
-1. V Azure Portal přejděte na kartu **Přehled** v centru oznámení.
+Nejrychlejší způsob, jak otestovat, že teď můžete dostávat oznámení je přejít do centra oznámení na webu Azure Portal:
 
-1. V levém horním rohu okna portálu vyberte **Odeslat test**, který je nad souhrnem **základních** údajů:
+1. Na webu Azure Portal přejděte na kartu **Přehled** v centru oznámení.
 
-    ![Tlačítko pro odeslání souhrnného testu Notification Hubs Essentials](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-essentials-test-send.png)
+1. Vyberte **možnost Testovat odeslání**, která je nad souhrnem **Essentials** v levém horním rohu okna portálu:
 
-1. V seznamu **platformy** vyberte možnost **vlastní šablona** .
+    ![Tlačítko odeslat souhrnný test Centra oznámení Essentials](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-essentials-test-send.png)
 
-1. Jako **výraz odeslat do značky**zadejte **12345** . Tuto značku jste předtím zadali v naší instalaci.
+1. Ze seznamu Platformy zvolte **Vlastní** **šablona.**
 
-1. Volitelně můžete upravit **zprávu** v datové části JSON:
+1. Zadejte **hodnotu 12345** pro **výraz Odeslat značku**. Tuto značku jste již dříve zadali v naší instalaci.
 
-    ![Odeslat Notification Hubs testu](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-test-send.png)
+1. Volitelně upravit **zprávu** v datové části JSON:
+
+    ![Odeslání testu center oznámení](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-test-send.png)
 
 1. Vyberte **Poslat**. Portál by měl uvádět, zda bylo oznámení úspěšně odesláno do zařízení:
 
-    ![Výsledky odeslání Notification Hubs testu](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-test-send-result.png)
+    ![Výsledky odesílání testů center oznámení](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-test-send-result.png)
 
-    Za předpokladu, že aplikace není spuštěná v popředí, by se v **centru oznámení** na vašem zařízení mělo zobrazit také oznámení. Klepnutím na oznámení by se měla aplikace otevřít a zobrazit výstrahu.
+    Za předpokladu, že aplikace není spuštěná v popředí, měli byste se na vašem zařízení zobrazit také oznámení v **Oznamovacím centru.** Klepnutím na oznámení otevřete aplikaci a zobrazíte upozornění.
 
-    ![Příklad přijetí oznámení](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/test-send-notification-received.png)
+    ![Příklad přijatého oznámení](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/test-send-notification-received.png)
 
-### <a name="send-a-test-notification-mail-carrier"></a>Odeslat zkušební oznámení (poštovní operátor)
+### <a name="send-a-test-notification-mail-carrier"></a>Odeslat oznámení o testu (Mail Carrier)
 
-Oznámení můžete odesílat prostřednictvím [REST API](/rest/api/notificationhubs/) pomocí **post**, což může být pohodlnější způsob testování.
+Můžete posílat oznámení prostřednictvím [rozhraní REST API](/rest/api/notificationhubs/) pomocí **Postman**, což může být pohodlnější způsob testování.
 
-1. Otevře novou kartu v **příspěvku**.
+1. Otevřete novou kartu v **Pošťákovi**.
 
-1. Nastavte požadavek na **post**a zadejte následující adresu:
+1. Nastavte požadavek na **POST**a zadejte následující adresu:
 
     ```xml
     https://<namespace>.servicebus.windows.net/<hubName>/messages/?api-version=2015-01
     ```
 
-1. Hlavičky požadavku nakonfigurujte takto:
+1. Nakonfigurujte záhlaví požadavků následujícím způsobem:
 
    | Klíč                            | Hodnota                          |
    | ------------------------------ | ------------------------------ |
-   | Typ obsahu                   | application/json;charset=utf-8 |
-   | Autorizace                  | \<sasToken >                     |
-   | ServiceBusNotification-Format  | Šablony                       |
+   | Typ obsahu                   | aplikace/json;charset=utf-8 |
+   | Autorizace                  | \<sasToken>                     |
+   | ServiceBusNotification-Format  | šablona                       |
    | Značky                           | "12345"                        |
 
-1. Nakonfigurujte **text** žádosti na použití **surového-JSON (Application. JSON)** s následující datovou částí JSON:
+1. Nakonfigurujte **tělo** požadavku tak, aby **používalo RAW - JSON (application.json)** s následující datovou částí JSON:
 
     ```json
     {
@@ -673,7 +707,7 @@ Oznámení můžete odesílat prostřednictvím [REST API](/rest/api/notificatio
     }
     ```
 
-1. Vyberte tlačítko **kód** , které je pod tlačítkem **Uložit** v pravém horním rohu okna. Požadavek by měl vypadat podobně jako v následujícím příkladu:
+1. Vyberte tlačítko **Kód,** které je pod tlačítkem **Uložit** v pravém horním okně. Požadavek by měl vypadat podobně jako v následujícím příkladu:
 
     ```html
     POST /<hubName>/messages/?api-version=2015-01 HTTP/1.1
@@ -690,23 +724,23 @@ Oznámení můžete odesílat prostřednictvím [REST API](/rest/api/notificatio
     }
     ```
 
-1. Vyberte **odeslat** tlačítko.
+1. Vyberte tlačítko **Odeslat.**
 
-Měli byste získat stavový kód úspěchu a obdržet oznámení v klientském zařízení.
+Měli byste získat **201 Vytvořený** kód stavu úspěchu a přijímat oznámení na klientském zařízení..
 
 ## <a name="next-steps"></a>Další kroky
-Teď máte základní aplikaci iOS SWIFT připojenou k centru oznámení prostřednictvím [REST API](/rest/api/notificationhubs/) a můžete odesílat a přijímat oznámení. Další informace najdete v následujících článcích:
+Teď máte základní aplikaci pro iOS Swift připojenou k centru oznámení prostřednictvím [rozhraní REST API](/rest/api/notificationhubs/) a můžete odesílat a přijímat oznámení. Další informace najdete v těchto článcích:
 
-- [Přehled služby Azure Notification Hubs](notification-hubs-push-notification-overview.md)
-- [Rozhraní REST API pro Notification Hubs](/rest/api/notificationhubs/)
-- [Sada SDK Notification Hubs pro back-endové operace](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)
-- [Notification Hubs SDK na GitHubu](https://github.com/Azure/azure-notificationhubs)
-- [Registrovat do back-endu aplikace](notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md)
-- [Správa registrací](notification-hubs-push-notification-registration-management.md)
-- [Práce s značkami](notification-hubs-tags-segment-push-message.md) 
+- [Přehled center Azure Notification Hubs](notification-hubs-push-notification-overview.md)
+- [Rest API centra oznámení](/rest/api/notificationhubs/)
+- [Sada SDK centra oznámení pro operace back-end](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)
+- [Centra oznámení SDK na GitHubu](https://github.com/Azure/azure-notificationhubs)
+- [Registrace s back-endem aplikace](notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md)
+- [Správa registrace](notification-hubs-push-notification-registration-management.md)
+- [Práce se značkami](notification-hubs-tags-segment-push-message.md) 
 - [Práce s vlastními šablonami](notification-hubs-templates-cross-platform-push-messages.md)
-- [Řízení přístupu Service Bus pomocí sdílených přístupových podpisů](../service-bus-messaging/service-bus-sas.md)
-- [Generování tokenů SAS prostřednictvím kódu programu](/rest/api/eventhub/generate-sas-token)
-- [Apple Security: běžné šifrování](https://developer.apple.com/security/)
-- [Čas v epocha systému UNIX](https://en.wikipedia.org/wiki/Unix_time)
-- [HMAC](https://en.wikipedia.org/wiki/HMAC)
+- [Řízení přístupu služby Service Bus se sdílenými přístupovými podpisy](../service-bus-messaging/service-bus-sas.md)
+- [Programově generovat tokeny SAS](/rest/api/eventhub/generate-sas-token)
+- [Zabezpečení Apple: běžné kryptografické](https://developer.apple.com/security/)
+- [Čas epochy unixového systému](https://en.wikipedia.org/wiki/Unix_time)
+- [Hmac](https://en.wikipedia.org/wiki/HMAC)

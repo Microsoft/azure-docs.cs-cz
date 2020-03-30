@@ -5,20 +5,20 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 10/16/2019
+ms.date: 03/25/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b667745094ccb6952a6b17f5b7ef0cabae4220c5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 40f8f5b234a6aecb1b44e4c565873b3badbd139a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476955"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334821"
 ---
-| Prostředek | Výchozí omezení |
+| Prostředek | Omezení |
 | --- | --- |
-| Souběžná připojení RDP |0,25 |
-| Souběžná připojení SSH |Více než 50 × * |
+| Souběžná připojení RDP |25* |
+| Souběžná připojení SSH |50** |
 
-\* Se může lišit v závislosti na dalších relacích protokolu RDP nebo jiných provedených relacích SSH.<br>
-\* * Se může lišit, pokud existují existující připojení RDP nebo využití z jiných relací SSH.
+* Může lišit v závislosti na jiných on-děje RDP zasedání nebo jiné on-děje SSH zasedání.<br>
+**Může se lišit, pokud existují existující připojení RDP nebo využití z jiných on-going SSH relací.

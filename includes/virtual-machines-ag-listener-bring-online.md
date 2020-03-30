@@ -5,36 +5,36 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 760bb5b62e9bba9b7a83f99760f7fe5d8c399dfb
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67174958"
 ---
-1. V modulu Správce clusteru převzetí služeb při selhání rozbalte **role**a pak zvýrazněte vaší skupiny dostupnosti.  
+1. Ve Správci clusterů s podporou převzetí služeb při selhání rozbalte **položku Role**a zvýrazněte skupinu dostupnosti.  
 
-2. Na **prostředky** kartu, klikněte pravým tlačítkem na název naslouchacího procesu a potom klikněte na tlačítko **vlastnosti**.
+2. Na kartě **Zdroje** klikněte pravým tlačítkem myši na název posluchače a potom klikněte na **příkaz Vlastnosti**.
 
-3. Klikněte na tlačítko **závislosti** kartu. Pokud nejsou uvedeny různé prostředky, ověřte, že IP adresy mají OR, not a závislosti.  
+3. Klikněte na kartu **Závislosti.** Pokud je uvedeno více prostředků, ověřte, zda adresy IP mají závislosti NEBO, nikoli AND.  
 
-4. Klikněte na **OK**.
+4. Klikněte na tlačítko **OK**.
 
-5. Klikněte pravým tlačítkem na název naslouchacího procesu a potom klikněte na tlačítko **přepnout do režimu Online**.
+5. Klikněte pravým tlačítkem myši na název posluchače a potom klikněte na **příkaz Převést do režimu online**.
 
-6. Po online na naslouchací proces **prostředky** kartu, klikněte pravým tlačítkem na skupinu dostupnosti a pak klikněte na tlačítko **vlastnosti**.
+6. Po naslouchací proces je online, na **kartě Zdroje** klikněte pravým tlačítkem myši na skupinu dostupnosti a potom klepněte na příkaz **Vlastnosti**.
    
-    ![Konfigurovat prostředek skupiny dostupnosti](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678772.gif)
+    ![Konfigurace prostředku skupiny dostupnosti](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678772.gif)
 
-7. Vytvoření závislosti na prostředku názvu naslouchací proces (není IP adresa zdroje název) a potom klikněte na tlačítko **OK**.
+7. Vytvořte závislost na prostředku názvu naslouchací procesu (nikoli na název prostředků adresy IP) a klepněte na tlačítko **OK**.
    
-    ![Přidat závislost na název naslouchacího procesu](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678773.gif)
+    ![Přidání závislosti na názvu posluchače](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678773.gif)
 
-8. Spusťte SQL Server Management Studio a připojte se k primární replice.
+8. Spusťte sql server management studio a potom se připojte k primární replice.
 
-9. Přejděte na **AlwaysOn vysokou dostupnost** > **skupin dostupnosti** >  **\<AvailabilityGroupName\>**   >  **Naslouchacích procesů skupin dostupnosti**.  
-    Naslouchací proces s názvem, který jste vytvořili v modulu Správce clusteru převzetí služeb při selhání má být zobrazena.
+9. Přejít **na AlwaysOn dostupnost** > **skupiny** > **\<DostupnostSkupinaSkupina\>** > Dostupnost Skupina**naslouchací procesy**.  
+    Měl by být zobrazen název posluchače, který jste vytvořili ve Správci clusterů s podporou převzetí služeb při selhání.
 
-10. Klikněte pravým tlačítkem na název naslouchacího procesu a potom klikněte na tlačítko **vlastnosti**.
+10. Klepněte pravým tlačítkem myši na název posluchače a potom klepněte na příkaz **Vlastnosti**.
 
-11. V **Port** pole, zadejte číslo portu pro naslouchací proces skupiny dostupnosti s využitím $EndpointPort, který jste použili dříve (v tomto kurzu, 1433 se výchozí hodnota) a potom klikněte na tlačítko **OK**.
+11. V poli **Port** zadejte číslo portu pro naslouchací proces skupiny dostupnosti pomocí $EndpointPort, který jste použili dříve (v tomto kurzu 1433 byl výchozí) a klepněte na tlačítko **OK**.
 

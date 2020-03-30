@@ -1,32 +1,35 @@
 ---
-title: Konfigurace klíčů spravovaných zákazníkem v Azure Průzkumník dat pomocí šablony Azure Resource Manager
-description: Tento článek popisuje, jak nakonfigurovat šifrování klíčů spravovaných zákazníkem pro vaše data v Azure Průzkumník dat pomocí Azure Resource Manager šablony.
+title: Konfigurace klíčů spravovaných zákazníky v Azure Data Exploreru pomocí šablony Azure Resource Manager
+description: Tento článek popisuje, jak nakonfigurovat šifrování klíčů spravovaných zákazníky na vašich datech v Průzkumníku dat Azure pomocí šablony Azure Resource Manager.
 author: saguiitay
 ms.author: itsagui
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: d0f7085342f972f227fc549c423672296697d7de
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 454a80089b5f74d4a70015ffcd03d0212e8c08a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281253"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297915"
 ---
 # <a name="configure-customer-managed-keys-using-the-azure-resource-manager-template"></a>Konfigurace klíčů spravovaných zákazníkem pomocí šablony Azure Resource Manager
 
 > [!div class="op_single_selector"]
-> * [C#](customer-managed-keys-csharp.md)
+> * [Portál](customer-managed-keys-portal.md)
+> * [C #](customer-managed-keys-csharp.md)
 > * [Šablona Azure Resource Manageru](customer-managed-keys-resource-manager.md)
 
 [!INCLUDE [data-explorer-configure-customer-managed-keys](../../includes/data-explorer-configure-customer-managed-keys.md)]
 
+[!INCLUDE [data-explorer-configure-customer-managed-keys part 2](../../includes/data-explorer-configure-customer-managed-keys-b.md)]
+
 ## <a name="configure-encryption-with-customer-managed-keys"></a>Konfigurace šifrování pomocí klíčů spravovaných zákazníkem
 
-V této části nakonfigurujete klíče spravované zákazníky pomocí šablon Azure Resource Manager. Ve výchozím nastavení používá šifrování Azure Průzkumník dat klíče spravované společností Microsoft. V tomto kroku Nakonfigurujte cluster Azure Průzkumník dat tak, aby používal klíče spravované zákazníkem, a zadejte klíč, který se má přidružit ke clusteru.
+V této části nakonfigurujete klíče spravované zákazníky pomocí šablon Azure Resource Manager. Ve výchozím nastavení používá šifrování Azure Data Explorer u klíčů spravovaných společností Microsoft. V tomto kroku nakonfigurujte cluster Průzkumníka dat Azure tak, aby používal klíče spravované zákazníky, a zadejte klíč, který chcete k clusteru přidružit.
 
-Šablonu Azure Resource Manager můžete nasadit pomocí Azure Portal nebo pomocí PowerShellu.
+Šablonu Azure Resource Manageru můžete nasadit pomocí portálu Azure nebo pomocí PowerShellu.
 
 ```json
 {
@@ -74,12 +77,12 @@ V této části nakonfigurujete klíče spravované zákazníky pomocí šablon 
 
 ## <a name="update-the-key-version"></a>Aktualizace verze klíče
 
-Když vytváříte novou verzi klíče, budete muset cluster aktualizovat, aby používal novou verzi. Nejdřív zavolejte `Get-AzKeyVaultKey`, abyste získali nejnovější verzi klíče. Pak aktualizujte vlastnosti trezoru klíčů clusteru tak, aby používaly novou verzi klíče, jak je znázorněno v části [Konfigurace šifrování pomocí klíčů spravovaných zákazníkem](#configure-encryption-with-customer-managed-keys).
+Když vytvoříte novou verzi klíče, budete muset aktualizovat cluster, aby se používala nová verze. Nejprve `Get-AzKeyVaultKey` zavolejte a získejte nejnovější verzi klíče. Potom aktualizujte vlastnosti trezoru klíčů clusteru tak, aby používaly novou verzi klíče, jak je znázorněno v [části Konfigurace šifrování pomocí klíčů spravovaných zákazníkem](#configure-encryption-with-customer-managed-keys).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Zabezpečení clusterů Azure Průzkumník dat v Azure](security.md)
-* [Konfigurace spravovaných identit pro cluster Azure Průzkumník dat](managed-identities.md)
-* [Zabezpečte svůj cluster v Azure Průzkumník dat-Azure Portal](manage-cluster-security.md) tím, že povolíte šifrování v klidovém prostředí.
-* [Konfigurace klíčů spravovaných zákazníkem pomocíC#](customer-managed-keys-csharp.md)
+* [Zabezpečené clustery Azure Data Explorer v Azure](security.md)
+* [Konfigurace spravovaných identit pro cluster Azure Data Explorer](managed-identities.md)
+* [Zabezpečte svůj cluster v Azure Data Explorer – Portál Azure](manage-cluster-security.md) povolením šifrování v klidovém stavu.
+* [Konfigurace klíčů spravovaných zákazníkem pomocí c #](customer-managed-keys-csharp.md)
 

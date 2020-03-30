@@ -1,75 +1,74 @@
 ---
-title: Testovací jednotka nabídky aplikace Azure | Azure Marketplace
-description: Postup konfigurace testovací jednotky pro nabídku aplikací Azure na Azure Marketplace.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+title: Testovací jízda nabídky aplikací Azure | Azure Marketplace
+description: Jak nakonfigurovat testovací disk pro nabídku aplikací Azure na Azure Marketplace.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: pabutler
-ms.openlocfilehash: 3855c600fe35c37ac15783995551a769e00532be
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 2f35dd69c1f29350049ed8f62dd9cbb0e60a7718
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826123"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80289001"
 ---
-# <a name="azure-applications-test-drive-tab"></a>Karta Azure Application test disk
+# <a name="azure-applications-test-drive-tab"></a>Karta Testovací jednotka aplikací Azure
 
-Karta testovací jednotka vám poskytne zkušební prostředí pro vaše zákazníky.
+Karta Testovací jednotka slouží k poskytování zkušebního prostředí pro zákazníky.
 
-## <a name="test-drive-benefits"></a>Výhody testovacích jednotek
+## <a name="test-drive-benefits"></a>Výhody testovací jízdy
 
-Vytváření zkušebního prostředí pro vaše zákazníky je osvědčeným postupem, jak zajistit, aby si mohli koupit s jistotou. Z dostupných možností zkušební verze je testovací jednotka nejúčinnější při generování vysoce kvalitních potenciálních zákazníků a zvýšené konverze těchto zájemců.
+Vytvoření zkušebního prostředí pro vaše zákazníky je osvědčeným postupem, jak zajistit, že mohou nakupovat s důvěrou. Z dostupných zkušebních možností je Test Drive nejúčinnější při generování vysoce kvalitních potenciálních zákazníků a zvýšené konverzi těchto potenciálních zákazníků.
 
-Zákazníkům nabízí praktickou zkušební verzi klíčových funkcí a výhod vašeho produktu, které jsou uvedené ve scénáři implementace ve skutečném nasazení.
+Poskytuje zákazníkům praktickou zkušební verzi klíčových funkcí a výhod vašeho produktu, která je demonstrována v reálném scénáři implementace.
 
-## <a name="how-a-test-drive-works"></a>Jak funguje testovací jednotka
+## <a name="how-a-test-drive-works"></a>Jak testovací jízda funguje
 
-Potenciální zákazník vyhledá a zjistí vaši aplikaci na webu Marketplace. Zákazník se přihlásí a bude souhlasit s podmínkami použití. V tomto okamžiku zákazník obdrží předem nakonfigurovaná prostředí, aby se mohl pokusit o určitý počet hodin, zatímco obdržíte vysoce kvalifikovaný zájemce, se kterým budete pokračovat. Další informace najdete v tématu [co je Test Drive?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive) .
+Potenciální zákazník vyhledá vaši aplikaci na Marketplace a zjišťuje ji. Zákazník se přihlásí a souhlasí s podmínkami použití. V tomto okamžiku zákazník obdrží předem nakonfigurované prostředí, aby se pokusil o pevný počet hodin, zatímco obdržíte vysoce kvalifikovaného zájemce, se kterým chcete sledovat. Další informace naleznete v tématu [Co je testdrive?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
 
-## <a name="setting-up-a-test-drive"></a>Nastavení testovací jednotky
+## <a name="setting-up-a-test-drive"></a>Nastavení zkušební jízdy
 
-Pomocí následujícího postupu povolte a nakonfigurujte testovací jednotku.
+Pomocí následujících kroků povolte a nakonfigurujte testovací jednotku.
 
-### <a name="to-enable-a-test-drive"></a>Povolení testovací jednotky:
+### <a name="to-enable-a-test-drive"></a>Povolení zkušební jízdy:
 
-1. V části **Nová nabídka**vyberte kartu **testovací jednotka** .
-2. V části **testovací jednotka**vyberte možnost **Ano** pro **Povolení testovací jednotky**.
+1. V části **Nová nabídka**vyberte kartu **Testovací jednotka.**
+2. V části **Test Drive**vyberte **možnost Ano** pro povolení **testovací jednotky**.
 
-   ![Povolit testovací jednotku](./media/managed-app-enable-testdrive.png)
+   ![Povolení zkušební jízdy](./media/managed-app-enable-testdrive.png)
 
 ### <a name="to-configure-a-test-drive"></a>Konfigurace testovací jednotky:
 
-Po povolení testovací jednotky vyplníte následující formuláře k nastavení testovací jednotky:
+Po povolení testovací jízdy vyplníte následující formuláře pro nastavení testovací jednotky:
   
  - Podrobnosti
  - Technická konfigurace
- - Podrobnosti o předplatném nasazení testovacích jednotek
+ - Podrobnosti o předplatném nasazení testovací jednotky
 
-Další snímek obrazovky zobrazuje všechny formuláře testovacích jednotek. Hvězdička (*), která je připojena k názvu pole, označuje, že je požadováno. 
+Při dalším zachycení obrazovky se zobrazí všechny formuláře testovací jednotky. Hvězdička (*) připojená k názvu pole označuje, že je požadováno. 
 
 ![Konfigurace testovací jednotky](./media/managed-app-configure-testdrive.png)
 
-Následující tabulka popisuje pole, která jsou nutná k nastavení testovacích jednotek pro spravovanou aplikaci.  Pole připojená pomocí hvězdičky jsou povinná.
+Následující tabulka popisuje pole potřebná k nastavení testovací jednotky pro spravovanou aplikaci.  Jsou povinná pole připojená hvězdičkou.
 
 |      Pole         |  Popis      |
 |  ---------------   |  ---------------  |
-| **Popis\***  |  Popište, co se dá udělat na testovací jednotce. Tento popis můžete naformátovat pomocí základních značek HTML. Například &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;ol&gt;a nadpisy.                |
-| **Ruční\* uživatele**  |  Nahrajte uživatelskou příručku, kterou můžou vaši zákazníci použít k procházení zkušeností testovacích jednotek. Tento dokument musí být soubor. PDF.    |
-| **Ukázkové video testovacího disku** |  Volitelný návod k videu testovacího disku. Zákazník může toto video přehrát předtím, než si vyzkouší testovací jednotku. Zadejte adresu URL videa na YouTube nebo Vimeo. Pokud vyberete **+ přidat video**, zobrazí se výzva, abyste zadali následující informace:<ul><li>Name (Název)</li><li>zprostředkovatele identity</li><li>Miniatura (ve formátu PNG, 533 x 324 pixelů)</li></ul>  |
-| **Instance\***      | Nakonfigurujte, kolik instancí chcete, v jaké oblasti a jak rychle můžou zákazníci získat testovací verzi. Další informace najdete v tématu [Postup publikování testovací jednotky](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive#how-to-publish-a-test-drive).           |
-| **Doba trvání testovacích jednotek (hodiny)\*** | Zadejte celé číslo v hodinách. Povolený rozsah je od 1 do 999. |
-| **\* šablonou ARM testovacích jednotek**     | Nahrajte komprimovaný soubor (ZIP), který obsahuje šablony Azure Resource Manager pro vaši aplikaci. Další informace najdete v tématu [Azure Resource Manager testovacích jednotek](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive). |
-| **Přístup k informacím\***          | Poskytněte informace o přístupu poté, co zákazník získá testovací jednotku. Například adresa URL pro přístup k testovací jednotce a informace o podpisu. . Tento popis můžete naformátovat pomocí základních značek HTML. Například &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;ol&gt;a nadpisy. |
-| **ID předplatného Azure\***       | Tím se udělí přístup ke službám Azure a Azure Portal. Předplatné je místo, kde se oznamuje využití prostředků, a účtují se služby. Pokud ještě nemáte samostatné předplatné Azure jenom pro testovací jednotky, vytvořte předplatné.  |
-| **ID tenanta Azure AD\***          | Poskytněte stávajícího klienta v Azure Active Directory nebo vytvořte tenanta pro tuto testovací jednotku.  |
-| **ID Aplikace Azure AD\***             | Vytvořte a zaregistrujte novou aplikaci. Společnost Microsoft používá tuto aplikaci k provádění operací s instancí testovacích jednotek.  |
-| **Aplikace Azure AD Key\***            | Vytvořte pro aplikaci ověřovací klíč a vložte ho do tohoto pole.   |
+| **Popis\***  |  Popište, co lze provést na testovací jízdě. K formátování tohoto popisu můžete použít základní značky HTML. Například &lt;p&gt; &lt;,&gt; &lt;em&gt; &lt;,&gt; &lt;ul&gt;, li , ol a nadpisy.                |
+| **Uživatelská příručka\***  |  Nahrajte uživatelskou příručku, kterou mohou zákazníci použít k procházení prostředí Testovací jízdy. Tento dokument musí být soubor pdf.    |
+| **Ukázkové video testovací jednotky** |  Volitelný video návod testovací jízdy. Zákazník může toto video sledovat ještě před zkušební jízdou. Zadejte adresu URL videa na YouTube nebo Vimeo. Pokud vyberete **+ Přidat video**, budete vyzváni k zadání následujících informací:<ul><li>Name (Název)</li><li>zprostředkovatele identity</li><li>Miniatura (ve formátu PNG, 533 x 324 pixelů)</li></ul>  |
+| **Instance\***      | Nakonfigurujte, kolik instancí chcete, v jakých oblastech a jak rychle mohou vaši zákazníci získat testovací jednotku. Další informace naleznete [v tématu Jak publikovat testovací disku](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive#how-to-publish-a-test-drive).           |
+| **Doba trvání zkušební jízdy (hodiny)\*** | Zadejte celé číslo pro počet hodin. Povolený rozsah je od 1 do 999. |
+| **Šablona ARM testovací jednotky\***     | Nahrajte komprimovaný (.zip) soubor, který má vaše šablony Azure Resource Manager pro vaši aplikaci. Další informace najdete v [tématu Azure Resource Manager Test Drive](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive). |
+| **Přístup k informacím\***          | Po zadání informací o testovací jízdě zákazníkem zadejte přístupové informace. Například adresa URL pro přístup k testovací jednotce a informace o podpisu. . K formátování tohoto popisu můžete použít základní značky HTML. Například &lt;p&gt; &lt;,&gt; &lt;em&gt; &lt;,&gt; &lt;ul&gt;, li , ol a nadpisy. |
+| **Id předplatného Azure\***       | To uděluje přístup ke službám Azure a portálu Azure. Předplatné je místo, kde je hlášeno využití prostředků a služby se účtují. Pokud ještě nemáte samostatné předplatné Azure pro testovací jednotky jenom, vytvořte předplatné.  |
+| **Id klienta Azure AD\***          | Zadejte existujícího klienta ve službě Azure Active Directory nebo vytvořte klienta pro tuto testovací jednotku.  |
+| **ID aplikace Azure AD\***             | Vytvořte a zaregistrujte novou aplikaci. Společnost Microsoft používá tuto aplikaci k provádění operací s instancí testovací jednotky.  |
+| **Klíč aplikace Azure AD\***            | Vytvořte ověřovací klíč pro aplikaci a vložte jej do tohoto pole.   |
 |  |  |
 
-Až zadáte všechny požadované informace, vyberte **Uložit** a dokončete nastavování testovacích jednotek.
+Po zadání všech požadovaných informací dokončete nastavení testovací jednotky výběrem **možnosti Uložit.**
 
 
 ## <a name="next-steps"></a>Další kroky
