@@ -1,6 +1,6 @@
 ---
-title: Dotaz přes cloudové databáze s různými schématy
-description: jak nastavit databázové dotazy přes vertikální oddíly
+title: Dotazování napříč cloudovými databázemi s různým schématem
+description: jak nastavit dotazy mezi databázemi přes svislé oddíly
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,37 +12,37 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: d5983d25685242a696300f293231bbf987e8442d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823732"
 ---
-# <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Dotazování napříč cloudovou databází s různými schématy (Preview)
+# <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Dotaz napříč cloudovými databázemi s různými schématy (náhled)
 
-![Dotaz napříč tabulkami v různých databázích][1]
+![Dotazování napříč tabulkami v různých databázích][1]
 
-Vertikálně dělené databáze používají různé sady tabulek v různých databázích. To znamená, že schéma se liší v různých databázích. Například všechny tabulky pro inventář jsou v jedné databázi, zatímco všechny tabulky související s monitorováním účtů jsou v druhé databázi. 
+Databáze s vztyčně rozdělenými oddíly používají různé sady tabulek v různých databázích. To znamená, že schéma se liší v různých databázích. Například všechny tabulky pro zásoby jsou v jedné databázi, zatímco všechny tabulky související s účtováním jsou na druhé databázi. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Uživatel musí mít oprávnění změnit všechna externí zdrojová DATA. Toto oprávnění je součástí oprávnění ALTER DATABASE.
-* Aby bylo možné odkazovat na podkladový zdroj dat, je třeba změnit všechna oprávnění ke zdroji externích dat.
+* Uživatel musí mít oprávnění ALTER any external data source. Toto oprávnění je součástí oprávnění ALTER DATABASE.
+* ZMĚNIT všechna oprávnění externího zdroje dat jsou potřebné k odkazování na základní zdroj dat.
 
 ## <a name="overview"></a>Přehled
 
 > [!NOTE]
-> Na rozdíl od horizontálního dělení nejsou tyto příkazy DDL závislé na definování datové vrstvy s mapou horizontálních oddílů prostřednictvím klientské knihovny elastické databáze.
+> Na rozdíl od horizontální dělení tyto příkazy DDL nezávisí na definování datové vrstvy s mapou horizontálního oddílu prostřednictvím knihovny klienta elastické databáze.
 >
 
 1. [VYTVOŘIT HLAVNÍ KLÍČ](https://msdn.microsoft.com/library/ms174382.aspx)
-2. [VYTVOŘIT DATABÁZI S ROZSAHEM POVĚŘENÍ](https://msdn.microsoft.com/library/mt270260.aspx)
-3. [VYTVOŘIT EXTERNÍ ZDROJ DAT](https://msdn.microsoft.com/library/dn935022.aspx)
+2. [Vytvořit pověření s rozsahem databáze](https://msdn.microsoft.com/library/mt270260.aspx)
+3. [VYTVOŘENÍ EXTERNÍHO ZDROJE DAT](https://msdn.microsoft.com/library/dn935022.aspx)
 4. [VYTVOŘIT EXTERNÍ TABULKU](https://msdn.microsoft.com/library/dn935021.aspx) 
 
-## <a name="create-database-scoped-master-key-and-credentials"></a>Vytvoření hlavního klíče a přihlašovacích údajů s rozsahem databáze
+## <a name="create-database-scoped-master-key-and-credentials"></a>Vytvoření hlavního klíče a pověření s oborem databáze
 
-Pověření je používáno elastickým dotazem pro připojení ke vzdáleným databázím.  
+Pověření se používá elastické dotaz pro připojení ke vzdáleným databázím.  
 
     CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'master_key_password';
     CREATE DATABASE SCOPED CREDENTIAL <credential_name>  WITH IDENTITY = '<username>',  
@@ -50,12 +50,12 @@ Pověření je používáno elastickým dotazem pro připojení ke vzdáleným d
     [;]
 
 > [!NOTE]
-> Zajistěte, aby `<username>` neobsahovaly žádnou příponu **"\@ServerName"** . 
+> Ujistěte `<username>` se, že neobsahuje žádnou příponu **\@"název_serveru".** 
 >
 
 ## <a name="create-external-data-sources"></a>Vytvoření externích zdrojů dat
 
-Syntaktick
+Syntaxe:
 
     <External_Data_Source> ::=
     CREATE EXTERNAL DATA SOURCE <data_source_name> WITH 
@@ -66,7 +66,7 @@ Syntaktick
                 ) [;] 
 
 > [!IMPORTANT]
-> Parametr typu musí být nastaven na **RDBMS**. 
+> Parametr TYPE musí být nastaven na **RDBMS**. 
 >
 
 ### <a name="example"></a>Příklad
@@ -82,13 +82,13 @@ Následující příklad ilustruje použití příkazu CREATE pro externí zdroj
         CREDENTIAL= SqlUser 
     ); 
 
-Načtení seznamu aktuálních externích zdrojů dat: 
+Chcete-li načíst seznam aktuálních externích zdrojů dat: 
 
     select * from sys.external_data_sources; 
 
 ### <a name="external-tables"></a>Externí tabulky
 
-Syntaktick
+Syntaxe:
 
     CREATE EXTERNAL TABLE [ database_name . [ schema_name ] . | schema_name . ] table_name  
     ( { <column_definition> } [ ,...n ])     
@@ -124,30 +124,30 @@ Následující příklad ukazuje, jak načíst seznam externích tabulek z aktu�
 
 ### <a name="remarks"></a>Poznámky
 
-Elastický dotaz rozšiřuje existující syntax externí tabulky a definuje externí tabulky, které používají externí zdroje dat typu RDBMS. Definice externí tabulky pro vertikální dělení zahrnuje následující aspekty: 
+Elastický dotaz rozšiřuje existující syntaxi externí tabulky a definuje externí tabulky, které používají externí zdroje dat typu RDBMS. Externí definice tabulky pro vertikální dělení zahrnuje následující aspekty: 
 
-* **Schéma**: DDL externí tabulky definuje schéma, které mohou vaše dotazy použít. Schéma zadané v definici externí tabulky musí odpovídat schématu tabulek ve vzdálené databázi, kde jsou uložena skutečná data. 
-* **Odkaz na vzdálenou databázi**: instance DDL externí tabulky odkazuje na externí zdroj dat. Externí zdroj dat určuje název serveru SQL Database a databázi vzdálené databáze, ve které jsou uložena skutečná data tabulky. 
+* **Schéma**: Externí tabulka DDL definuje schéma, které mohou použít vaše dotazy. Schéma poskytované v definici externí tabulky musí odpovídat schématu tabulek ve vzdálené databázi, kde jsou uložena skutečná data. 
+* **Odkaz na vzdálenou databázi**: Externí tabulka DDL odkazuje na externí zdroj dat. Externí zdroj dat určuje název serveru SQL Database a název databáze vzdálené databáze, ve které jsou uložena skutečná data tabulky. 
 
-Pomocí externího zdroje dat, jak je uvedeno v předchozí části, syntaxe pro vytvoření externích tabulek je následující: 
+Syntaxe pro vytvoření externích tabulek při použití externího zdroje dat, jak je uvedeno v předchozí části, je následující: 
 
 Klauzule DATA_SOURCE definuje externí zdroj dat (tj. vzdálenou databázi v případě vertikálního dělení), který se používá pro externí tabulku.  
 
-Klauzule SCHEMA_NAME a OBJECT_NAME poskytují možnost mapovat definici externí tabulky na tabulku v jiném schématu na vzdálené databázi nebo na tabulku s jiným názvem, v uvedeném pořadí. To je užitečné, pokud chcete definovat externí tabulku do zobrazení katalogu nebo DMV ve vzdálené databázi nebo v jakékoli jiné situaci, kdy je název vzdálené tabulky již v místním prostředí.  
+Klauzule SCHEMA_NAME a OBJECT_NAME poskytují možnost mapovat definici externí tabulky na tabulku v jiném schématu ve vzdálené databázi nebo na tabulku s jiným názvem. To je užitečné, pokud chcete definovat externí tabulku zobrazení katalogu nebo DMV ve vzdálené databázi - nebo jakékoli jiné situace, kdy je název vzdálené tabulky již místně.  
 
-Následující příkaz DDL přenechá existující definici externí tabulky z místního katalogu. Nemá vliv na vzdálenou databázi. 
+Následující příkaz DDL klesne existující definici externí tabulky z místního katalogu. Nemá vliv na vzdálenou databázi. 
 
     DROP EXTERNAL TABLE [ [ schema_name ] . | schema_name. ] table_name[;]  
 
-**Oprávnění pro možnost vytvořit/vyřadit externí tabulku**: Změňte všechna oprávnění externích zdrojů dat, která jsou zapotřebí pro externí tabulku DDL, což je také nutné pro odkazování na podkladový zdroj dat.  
+**Oprávnění pro vytvořit/drop externí tabulka:** ZMĚNIT všechna oprávnění externí zdroj dat jsou potřebné pro externí tabulky DDL, který je také potřeba odkazovat na základní zdroj dat.  
 
-## <a name="security-considerations"></a>Aspekty zabezpečení
+## <a name="security-considerations"></a>Důležité informace o zabezpečení
 
-Uživatelé s přístupem k externí tabulce automaticky získají přístup k podkladovým vzdáleným tabulkám v rámci přihlašovacích údajů uvedených v definici externího zdroje dat. Měli byste pečlivě spravovat přístup k externí tabulce, abyste se vyhnuli nežádoucímu zvýšení oprávnění prostřednictvím přihlašovacích údajů externího zdroje dat. Pravidelná oprávnění SQL je možné použít k udělení nebo odvolání přístupu k externí tabulce stejným způsobem, jako by šlo o běžnou tabulku.  
+Uživatelé s přístupem k externí tabulce automaticky získají přístup k podkladovým vzdáleným tabulkám pod pověřením uvedeným v definici externího zdroje dat. Měli byste pečlivě spravovat přístup k externí tabulce, aby se zabránilo nežádoucímu zvýšení oprávnění prostřednictvím pověření externího zdroje dat. Běžná oprávnění SQL lze použít k udělení nebo odvolání přístupu k externí tabulce, stejně jako by se jednalo o běžnou tabulku.  
 
-## <a name="example-querying-vertically-partitioned-databases"></a>Příklad: dotazování na vertikálně dělené databáze
+## <a name="example-querying-vertically-partitioned-databases"></a>Příklad: dotazování vertikálně rozdělených databází
 
-Následující dotaz provádí obousměrné spojení mezi dvěma místními tabulkami pro objednávky a řádky objednávky a pro zákazníky ve vzdálené tabulce. Toto je příklad případu použití referenčních dat pro elastický dotaz: 
+Následující dotaz provádí třícestné spojení mezi dvěma místními tabulkami pro objednávky a řádky objednávky a vzdálenou tabulkou pro zákazníky. Toto je příklad případu použití referenčních dat pro elastický dotaz: 
 
 ```sql
     SELECT      
@@ -165,16 +165,16 @@ Následující dotaz provádí obousměrné spojení mezi dvěma místními tabu
     WHERE c_id = 100
 ```
 
-## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>Uložená procedura pro vzdálené spuštění T-SQL: SP\_execute_remote
+## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>Uložená procedura pro vzdálené\_spuštění T-SQL: sp execute_remote
 
-Elastický dotaz také zavádí uloženou proceduru, která poskytuje přímý přístup ke vzdálené databázi. Uložená procedura se nazývá [sp\_execute \_Remote](https://msdn.microsoft.com/library/mt703714) a dá se použít ke spouštění vzdálených uložených procedur nebo kódu t-SQL na vzdálené databázi. Má následující parametry: 
+Elastický dotaz také zavádí uloženou proceduru, která poskytuje přímý přístup ke vzdálené databázi. Uložená procedura se nazývá [sp\_spustit \_vzdálené](https://msdn.microsoft.com/library/mt703714) a lze jej použít ke spuštění vzdálené uložené procedury nebo T-SQL kód ve vzdálené databázi. To trvá následující parametry: 
 
-* Název zdroje dat (nvarchar): název externího zdroje dat typu RDBMS. 
-* Dotaz (nvarchar): dotaz T-SQL, který má být spuštěn ve vzdálené databázi. 
-* Deklarace parametru (nvarchar) – volitelné: řetězec s definicemi datových typů pro parametry používané v parametru dotazu (například sp_executesql). 
-* Seznam hodnot parametrů – volitelné: čárkami oddělený seznam hodnot parametrů (například sp_executesql).
+* Název zdroje dat (nvarchar): Název externího zdroje dat typu RDBMS. 
+* Dotaz (nvarchar): Dotaz T-SQL, který má být proveden ve vzdálené databázi. 
+* Deklarace parametru (nvarchar) - volitelné: Řetězec s definicemi datového typu pro parametry použité v parametru Dotaz (například sp_executesql). 
+* Seznam hodnot parametrů - volitelné: Seznam hodnot parametrů oddělených čárkami (například sp_executesql).
 
-Nástroj SP\_Execute\_Remote využívá externí zdroj dat, který je k dispozici v parametrech vyvolání, ke spuštění daného příkazu T-SQL ve vzdálené databázi. Pro připojení ke vzdálené databázi používá přihlašovací údaje k externímu zdroji dat.  
+Vzdálené\_spuštění\_sp používá externí zdroj dat uvedený v parametrech vyvolání k provedení daného příkazu T-SQL ve vzdálené databázi. Používá pověření externího zdroje dat pro připojení ke vzdálené databázi.  
 
 Příklad: 
 
@@ -184,22 +184,22 @@ Příklad:
         N'select count(w_id) as foo from warehouse' 
 ```
 
-## <a name="connectivity-for-tools"></a>Možnosti připojení pro nástroje
+## <a name="connectivity-for-tools"></a>Konektivita pro nástroje
 
-Pomocí běžných připojovacích řetězců SQL Server můžete propojit nástroje pro integraci s BI a daty s databázemi na serveru SQL DB, který má povolený elastický dotaz a externí tabulky definované. Ujistěte se, že je pro nástroj SQL Server podporována jako zdroj dat. Pak se podívejte na elastické databáze dotazů a jejich externí tabulky stejně jako na jinou SQL Server databázi, ke které se připojíte pomocí nástroje. 
+Běžné připojovací řetězce serveru SQL Server můžete použít k připojení nástrojů pro integraci BI a dat k databázím na serveru SQL DB, který má povolený elastický dotaz a jsou definovány externí tabulky. Ujistěte se, že SQL Server je podporován jako zdroj dat pro váš nástroj. Potom odkazovat na databázi elastických dotazů a jeho externí tabulky, stejně jako všechny ostatní sql server databáze, které by se připojit pomocí nástroje. 
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
-* Zajistěte, aby byla databáze koncových bodů elastického dotazu udělena přístup ke vzdálené databázi povolením přístupu ke službám Azure ve své konfiguraci brány firewall SQL DB. Také zajistěte, aby se přihlašovací údaje zadané v definici externího zdroje dat úspěšně přihlásily do vzdálené databáze a aby měla oprávnění pro přístup ke vzdálené tabulce.  
-* Elastický dotaz funguje nejlépe pro dotazy, kde je možné provést většinu výpočtů ve vzdálených databázích. Obvykle získáte nejlepší výkon dotazu pomocí predikátů selektivního filtru, které lze vyhodnotit na vzdálených databázích nebo v rámci spojení, která lze na vzdálené databázi provést úplně. Jiné vzorce dotazů můžou potřebovat načíst velké objemy dat ze vzdálené databáze a může to mít špatně. 
+* Ujistěte se, že databáze koncového bodu elastického dotazu získala přístup ke vzdálené databázi povolením přístupu pro služby Azure services v konfiguraci brány firewall SQL DB. Také se ujistěte, že pověření uvedená v definici externího zdroje dat se mohou úspěšně přihlásit do vzdálené databáze a mají oprávnění pro přístup ke vzdálené tabulce.  
+* Elastický dotaz funguje nejlépe pro dotazy, kde většinu výpočtu lze provést ve vzdálených databázích. Obvykle získáte nejlepší výkon dotazu s predikáty selektivnífiltr, které mohou být vyhodnoceny na vzdálené databáze nebo spojení, které lze provést zcela na vzdálené databázi. Jiné vzorky dotazu může být nutné načíst velké množství dat ze vzdálené databáze a může pracovat špatně. 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přehled elastického dotazu najdete v tématu [Přehled elastického dotazu](sql-database-elastic-query-overview.md).
-* Kurz pro vertikální dělení najdete v tématu [Začínáme s mezidatabázovým dotazem (vertikální dělení)](sql-database-elastic-query-getting-started-vertical.md).
-* Kurz horizontálního dělení na oddíly (horizontálního dělení) najdete v tématu [Začínáme s elastickým dotazem pro horizontální dělení na oddíly (horizontálního dělení)](sql-database-elastic-query-getting-started.md).
-* Syntaxe a ukázkové dotazy pro horizontálně rozdělená data najdete v tématu [dotazování na horizontálně dělená data](sql-database-elastic-query-horizontal-partitioning.md) .
-* V tématu [sp\_execute \_Remote](https://msdn.microsoft.com/library/mt703714) pro uloženou proceduru, která provádí příkaz Transact-SQL na jednom vzdáleném Azure SQL Database nebo sadě databází, která slouží jako horizontálních oddílů ve vodorovném schématu dělení.
+* Přehled elastického dotazu najdete v [tématu Přehled elastického dotazu](sql-database-elastic-query-overview.md).
+* Kurz vertikálního dělení naleznete v [tématu Začínáme s dotazem mezi databázemi (vertikální dělení)](sql-database-elastic-query-getting-started-vertical.md).
+* Kurz horizontálního dělení (horizontálního dělení) naleznete [v tématu Začínáme s elastickým dotazem pro horizontální dělení (horizontální dělení)](sql-database-elastic-query-getting-started.md).
+* Syntaxe a ukázkové dotazy pro horizontálně dělená data naleznete v [tématu Dotazování horizontálně dělených dat)](sql-database-elastic-query-horizontal-partitioning.md)
+* Viz [\_sp \_spustit vzdálené](https://msdn.microsoft.com/library/mt703714) pro uloženou proceduru, která provede příkaz Transact-SQL na jednom vzdáleném Azure SQL Database nebo sadu databází, které slouží jako horizontální oddíly v horizontálním dělení schéma.
 
 
 <!--Image references-->

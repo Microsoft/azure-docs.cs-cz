@@ -1,6 +1,6 @@
 ---
-title: Vytváření kolekcí pro portály moje aplikace v Azure Active Directory | Microsoft Docs
-description: Pomocí kolekcí moje aplikace můžete přizpůsobit stránky Moje aplikace, aby vaši koncoví uživatelé zjednodušili své prostředí aplikace. Uspořádejte aplikace do skupin pomocí samostatných karet.
+title: Vytváření kolekcí pro portály Moje aplikace ve službě Azure Active Directory | Dokumenty společnosti Microsoft
+description: Pomocí kolekcí Moje aplikace můžete přizpůsobit stránky Moje aplikace pro jednodušší práci s aplikacemi moje aplikace pro koncové uživatele. Uspořádejte aplikace do skupin se samostatnými kartami.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,85 +17,85 @@ ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c91b9ffc9e3487e492c91cb0f5825d0b725f9410
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77120098"
 ---
-# <a name="create-collections-on-the-my-apps-portal"></a>Vytváření kolekcí na portálu moje aplikace
+# <a name="create-collections-on-the-my-apps-portal"></a>Vytváření kolekcí na portálu Moje aplikace
 
-Uživatelé můžou pomocí portálu moje aplikace zobrazit a spustit cloudové aplikace, ke kterým mají přístup. Ve výchozím nastavení jsou všechny aplikace, ke kterým má uživatel přístup, uvedené na jedné stránce. Pro lepší uspořádání této stránky pro uživatele, pokud máte licenci Azure AD Premium P1 nebo P2, můžete nastavit kolekce. Pomocí kolekce můžete seskupovat aplikace, které souvisejí (například podle role úlohy, úkolu nebo projektu) a zobrazit je na samostatné kartě. Kolekce v podstatě používá filtr pro aplikace, které uživatel už může mít přístup, takže uživatel uvidí jenom aplikace v kolekci, které jim byly přiřazeny.
-
-> [!NOTE]
-> Tento článek popisuje, jak může správce povolit a vytvořit kolekce. Informace o tom, jak používat portál a kolekce moje aplikace, najdete v tématu věnovaném [přístupu a používání kolekcí](https://docs.microsoft.com/azure/active-directory/user-help/my-applications-portal-workspaces).
-
-## <a name="enable-the-latest-my-apps-features"></a>Povolit funkce nejnovější moje aplikace
-
-1. Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako správce uživatele nebo globální správce.
-
-2. Přejít na **Azure Active Directory** > **nastavení uživatele**.
-
-3. V části **náhledy uživatelských funkcí**vyberte **Spravovat nastavení uživatelské funkce Náhled**.
-
-4. V části **Uživatelé můžou používat funkce verze Preview pro moje aplikace**, vyberte jednu z následujících možností:
-   * **Vybráno** – povolí funkce pro určitou skupinu. Pomocí možnosti **Vybrat skupinu** vyberte skupinu, pro kterou chcete povolit funkce.  
-   * **All** – povolí funkce pro všechny uživatele.
+Uživatelé mohou pomocí portálu Moje aplikace zobrazit a spustit cloudové aplikace, ke kterým mají přístup. Ve výchozím nastavení jsou všechny aplikace, ke kterým má uživatel přístup, uvedeny společně na jedné stránce. Pokud máte licenci Azure AD Premium P1 nebo P2, můžete lépe uspořádat tuto stránku pro uživatele. Pomocí kolekce můžete seskupit aplikace, které spolu souvisejí (například podle role úlohy, úkolu nebo projektu) a zobrazit je na samostatné kartě. Kolekce v podstatě použije filtr pro aplikace, ke kterým má uživatel přístup, takže uživatel vidí pouze ty aplikace v kolekci, které jim byly přiřazeny.
 
 > [!NOTE]
-> K otevření portálu moje aplikace můžou uživatelé použít odkaz `https://myapps.microsoft.com` nebo vlastní odkaz pro vaši organizaci, jako je například `https://myapps.microsoft.com/contoso.com`. Po povolení prostředí nové moje aplikace se v horní části stránky Moje aplikace zobrazí nápis **aktualizované moje prostředí moje aplikace** a uživatelé si **můžou vybrat, že si budou** moct zobrazit nové prostředí. Pokud chcete přestat používat nové prostředí, uživatelé můžou v horní části stránky vybrat **Ano** v nápisu **opustit nové prostředí** .
+> Tento článek popisuje, jak správce může povolit a vytvářet kolekce. Informace pro koncového uživatele o tom, jak používat portál a kolekce Moje aplikace, najdete v [tématu Přístup a kolekce](https://docs.microsoft.com/azure/active-directory/user-help/my-applications-portal-workspaces).
+
+## <a name="enable-the-latest-my-apps-features"></a>Povolení nejnovějších funkcí moje aplikace
+
+1. Otevřete [**portál Azure**](https://portal.azure.com/) a přihlaste se jako správce uživatelů nebo globální správce.
+
+2. Přejděte na**nastavení uživatele** **služby Azure Active Directory** > .
+
+3. V části **Náhledy uživatelských funkcí**vyberte **Spravovat nastavení náhledu uživatelských funkcí**.
+
+4. V části **Uživatelé mohou používat funkce náhledu pro moje aplikace**zvolte jednu z následujících možností:
+   * **Vybráno** - Povolí funkce pro určitou skupinu. Pomocí možnosti **Vybrat skupinu** vyberte skupinu, pro kterou chcete funkce povolit.  
+   * **Vše** - Umožňuje funkce pro všechny uživatele.
+
+> [!NOTE]
+> Chcete-li otevřít portál Moje aplikace, `https://myapps.microsoft.com` mohou uživatelé použít odkaz nebo `https://myapps.microsoft.com/contoso.com`přizpůsobený odkaz pro vaši organizaci, například . Po povolení nového prostředí Moje aplikace se v horní části stránky Moje aplikace zobrazí aktualizovaný nápis **Moje aplikace** a uživatelé mohou vybrat **Vyzkoušet,** chcete-li zobrazit nové prostředí. Chcete-li přestat používat nové prostředí, mohou uživatelé vybrat **ano** z vytvořit **nový zážitek** banner v horní části stránky.
 
 ## <a name="create-a-collection"></a>Vytvoření kolekce
 
 Chcete-li vytvořit kolekci, musíte mít licenci Azure AD Premium P1 nebo P2.
 
-1. Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako správce s licencí Azure AD Premium P1 nebo P2.
+1. Otevřete [**portál Azure a**](https://portal.azure.com/) přihlaste se jako správce s licencí Azure AD Premium P1 nebo P2.
 
-2. Přejít na **Azure Active Directory** > **podnikových aplikací**.
+2. Přejděte na **Azure Active Directory** > **Enterprise Applications**.
 
-3. V části **Spravovat**vyberte **kolekce**.
+3. V části **Manage**vyberte **Kolekce**.
 
-4. Vyberte **Nová kolekce**. Na stránce **Nová kolekce** zadejte **název** kolekce (v názvu nedoporučujeme používat "kolekci". Pak zadejte **Popis**.
+4. Vyberte **novou kolekci**. Na stránce **Nová kolekce** zadejte **název** kolekce (doporučujeme nepoužívat "kolekce" v názvu. Potom zadejte **popis**.
 
-   ![Stránka nové kolekce](media/acces-panel-collections/new-collection.png)
+   ![Nová stránka kolekce](media/acces-panel-collections/new-collection.png)
 
-5. Vyberte kartu **aplikace** . Vyberte **+ Přidat aplikaci**a pak na stránce **Přidat aplikace** vyberte všechny aplikace, které chcete přidat do kolekce, nebo pomocí **vyhledávacího** pole vyhledejte aplikace.
+5. Vyberte kartu **Aplikace.** Vyberte **+ Přidat aplikaci**a potom na stránce **Přidat aplikace** vyberte všechny aplikace, které chcete přidat do kolekce, nebo použijte pole **Hledat** k vyhledání aplikací.
 
    ![Přidání aplikace do kolekce](media/acces-panel-collections/add-applications.png)
 
-6. Až skončíte s přidáváním aplikací, vyberte **Přidat**. Zobrazí se seznam vybraných aplikací. Pořadí aplikací v seznamu můžete změnit pomocí šipek nahoru. Pokud chcete aplikaci přesunout dolů nebo ji odstranit z kolekce, vyberte **Další** nabídku ( **...** ).
+6. Po přidání aplikací vyberte **Přidat**. Zobrazí se seznam vybraných aplikací. Pomocí šipek nahoru můžete změnit pořadí aplikací v seznamu. Chcete-li aplikaci přesunout dolů nebo ji odstranit z kolekce, vyberte nabídku **Další** (**...**).
 
-7. Vyberte kartu **vlastníci** . Vyberte **+ Přidat uživatele a skupiny**a pak na stránce **Přidat uživatele a skupiny** vyberte uživatele nebo skupiny, kterým chcete přiřadit vlastnictví. Až budete hotovi s výběrem možnosti uživatelé a skupiny, zvolte **Vybrat**.
+7. Vyberte kartu **Vlastníci.** Vyberte **+ Přidat uživatele a skupiny**a potom na stránce Přidat uživatele a **skupiny** vyberte uživatele nebo skupiny, kterým chcete přiřadit vlastnictví. Po dokončení výběru uživatelů a skupin zvolte **Vybrat**.
 
-9. Vyberte kartu **Uživatelé a skupiny** . Vyberte **+ Přidat uživatele a skupiny**a pak na stránce **Přidat uživatele a skupiny** vyberte uživatele nebo skupiny, kterým chcete kolekci přiřadit. Případně můžete vyhledat uživatele nebo skupiny pomocí **vyhledávacího** pole. Až budete hotovi s výběrem možnosti uživatelé a skupiny, zvolte **Vybrat**.
+9. Vyberte kartu **+ Add users and groups** **Uživatelé a skupiny.** **Add users and groups** Nebo použijte **vyhledávací** pole k vyhledání uživatelů nebo skupin. Po dokončení výběru uživatelů a skupin zvolte **Vybrat**.
 
-   ![Přidat uživatele a skupiny](media/acces-panel-collections/add-users-and-groups.png)
+   ![Přidání uživatelů a skupin](media/acces-panel-collections/add-users-and-groups.png)
 
 11. Vyberte **zkontrolovat + vytvořit**. Zobrazí se vlastnosti nové kolekce.
 
 
 ## <a name="view-audit-logs"></a>Zobrazení protokolů auditu
 
-Protokoly auditu zaznamenávají operace kolekcí moje aplikace, včetně akcí vytváření kolekcí koncových uživatelů. Z mých aplikací se generují tyto události:
+Protokoly auditu zaznamenávají operace kolekcí Moje aplikace, včetně akcí vytváření kolekce koncových uživatelů. Z aplikací Moje aplikace jsou generovány následující události:
 
 * Vytvořit kolekci
 * Upravit kolekci
 * Odstranění kolekce
 * Spuštění aplikace (koncový uživatel)
-* Samoobslužné přidávání aplikací (koncový uživatel)
-* Samoobslužné odstraňování aplikací (koncový uživatel)
+* Přidání samoobslužné aplikace (koncový uživatel)
+* Odstranění samoobslužné aplikace (koncový uživatel)
 
-Protokoly auditu můžete získat v [Azure Portal](https://portal.azure.com) tak, že vyberete **Azure Active Directory** > **podnikové aplikace** > **protokoly auditu** v části aktivita. V případě **služby**vyberte **Moje aplikace**.
+K protokolům auditování na [webu Azure Portal](https://portal.azure.com) můžete přistupovat tak, že v části Aktivita vyberete**protokoly auditu** **podnikových aplikací** >  **Azure Active Directory.** >  V **možnosti Služba**vyberte **možnost Moje aplikace**.
 
-## <a name="get-support-for-my-account-pages"></a>Získat podporu pro stránky Můj účet
+## <a name="get-support-for-my-account-pages"></a>Získání podpory pro stránky Můj účet
 
-Na stránce Moje aplikace může uživatel vybrat **můj účet** > **Zobrazit můj účet** a otevřít jeho nastavení účtu. Na stránce **můj účet** Azure AD můžou uživatelé spravovat svoje bezpečnostní údaje, zařízení, hesla a další. Můžou také přistupovat ke svým nastavením účtu Office.
+Na stránce Moje aplikace může uživatel vybrat **možnost Zobrazit** > **můj účet** a otevřít si nastavení účtu. Na stránce **Můj účet** Azure AD můžou uživatelé spravovat svoje bezpečnostní údaje, zařízení, hesla a další. Mají také přístup k nastavení svého účtu Office.
 
-V případě, že potřebujete odeslat žádost o podporu k problému na stránce účtu Azure AD nebo na stránce účtu Office, postupujte podle těchto kroků, aby se vaše žádost správně směrovala: 
+V případě, že potřebujete odeslat žádost o podporu pro problém se stránkou účtu Azure AD nebo na stránce účtu Office, postupujte takto, aby byl váš požadavek správně směrován: 
 
-* Pokud máte problémy se stránkou **můj účet služby Azure AD** , otevřete žádost o podporu v rámci Azure Portal. Přejít na **Azure Portal** > **Azure Active Directory** > **nové žádosti o podporu**.
+* V případě problémů se stránkou **"Můj účet" azure a dlaním** otevřete žádost o podporu z portálu Azure. Přejděte na **Azure Portal** > **Azure Active Directory** > **Nová žádost o podporu**.
 
-* Pokud máte problémy se stránkou **Office můj účet** , otevřete žádost o podporu v centru pro správu Microsoft 365. Přejít na **Centrum pro správu Microsoft 365** > **podporu**. 
+* V případě problémů se stránkou **Můj účet** s Office otevřete žádost o podporu z Centra pro správu Microsoftu 365. Přejděte na web **Microsoft 365** > **Centrum pro správu Podpory**. 
 
 ## <a name="next-steps"></a>Další kroky
-[Prostředí koncových uživatelů pro aplikace v Azure Active Directory](end-user-experiences.md)
+[Prostředí koncových uživatelů pro aplikace ve službě Azure Active Directory](end-user-experiences.md)

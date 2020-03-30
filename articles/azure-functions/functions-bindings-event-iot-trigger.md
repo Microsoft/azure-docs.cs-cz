@@ -1,25 +1,25 @@
 ---
-title: Vazby Azure IoT Hub pro Azure Functions
-description: Naučte se reagovat na události odeslané do datového proudu událostí služby IoT Hub v Azure Functions.
+title: Vazby Azure IoT Hub pro funkce Azure
+description: Naučte se reagovat na události odeslané do datového proudu událostí služby IoT hub ve službě Azure Functions.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: f63fe965b3f37add8ddf9d262f1ef1dae9fff966
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77589724"
 ---
-# <a name="azure-iot-hub-trigger-for-azure-functions"></a>Aktivační událost služby Azure IoT Hub pro Azure Functions
+# <a name="azure-iot-hub-trigger-for-azure-functions"></a>Aktivační událost Azure IoT Hub pro funkce Azure
 
-Tento článek vysvětluje, jak pracovat s Azure Functions vazeb pro IoT Hub. Podpora IoT Hub je založená na [vazbě Azure Event Hubs](functions-bindings-event-hubs.md).
+Tento článek vysvětluje, jak pracovat s vazby Funkce Azure pro Službu IoT Hub. Podpora služby IoT Hub je založená na [vazbě Centra událostí Azure](functions-bindings-event-hubs.md).
 
-Informace o nastavení a podrobnostech o konfiguraci najdete v tématu [Přehled](functions-bindings-event-iot.md).
+Informace o nastavení a konfiguraci naleznete v [přehledu](functions-bindings-event-iot.md).
 
 > [!IMPORTANT]
-> I když následující ukázky kódu používají rozhraní API centra událostí, je daná syntaxe platná pro funkce IoT Hub.
+> Zatímco následující ukázky kódu používají rozhraní API centra událostí, uvedená syntaxe je použitelná pro funkce služby IoT Hub.
 
 [!INCLUDE [functions-bindings-event-hubs](../../includes/functions-bindings-event-hubs-trigger.md)]
 

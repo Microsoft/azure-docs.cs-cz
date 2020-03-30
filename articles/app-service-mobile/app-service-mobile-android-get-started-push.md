@@ -1,16 +1,16 @@
 ---
 title: Přidání nabízených oznámení do aplikace pro Android
-description: Naučte se používat Mobile Apps k odesílání nabízených oznámení do vaší aplikace pro Android.
+description: Přečtěte si, jak pomocí mobilních aplikací odesílat nabízená oznámení do aplikace pro Android.
 ms.assetid: 9058ed6d-e871-4179-86af-0092d0ca09d3
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 6fec85c028e992c15fb9503ffb599023e668c58f
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77459935"
 ---
 # <a name="add-push-notifications-to-your-android-app"></a>Přidání nabízených oznámení do aplikace pro Android
@@ -19,20 +19,20 @@ ms.locfileid: "77459935"
 
 ## <a name="overview"></a>Přehled
 
-V tomto kurzu přidáte nabízená oznámení do projektu s [Rychlý Start pro Android] , takže nabízené oznámení se pošle do zařízení pokaždé, když se záznam vloží.
+V tomto kurzu přidáte nabízená oznámení do projektu [rychlého startu Android] tak, aby nabízené oznámení je odeslána do zařízení při každém vložení záznamu.
 
-Pokud nepoužíváte stažený projekt serveru pro rychlý Start, budete potřebovat balíček rozšíření nabízených oznámení. Další informace najdete v tématu [práce s back-end serverem .NET SDK pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+Pokud nepoužíváte stažený projekt serveru rychlého startu, potřebujete balíček rozšíření nabízených oznámení. Další informace naleznete [v tématu Práce s back-endovým serverem .NET SDK pro mobilní aplikace Azure](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Potřebujete následující:
 
-* Integrované vývojové prostředí (IDE) v závislosti na back-endu vašeho projektu:
+* IDE, v závislosti na back-endu projektu:
 
-  * [Android Studio](https://developer.android.com/sdk/index.html) , jestli má tato aplikace back-end Node. js.
+  * [Android Studio,](https://developer.android.com/sdk/index.html) pokud tato aplikace má Back-end Node.js.
   * [Visual Studio Community 2013](https://go.microsoft.com/fwLink/p/?LinkID=391934) nebo novější, pokud má tato aplikace back-end Microsoft .NET.
-* Android 2,3 nebo novější, Revize úložiště Google 27 nebo novější a Služby Google Play 9.0.2 nebo novější pro zasílání zpráv Firebase do cloudu.
-* Dokončete [Rychlý Start pro Android].
+* Android 2.3 nebo novější, revize úložiště Google 27 nebo novější a služby Google Play 9.0.2 nebo novější pro Služby Firebase Cloud Messaging.
+* Dokončete [rychlý start androida].
 
 ## <a name="create-a-project-that-supports-firebase-cloud-messaging"></a>Vytvoření projektu, který podporuje službu Firebase Cloud Messaging
 
@@ -46,7 +46,7 @@ Potřebujete následující:
 
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push-for-firebase.md)]
 
-## <a name="enable-push-notifications-for-the-server-project"></a>Povolit nabízená oznámení pro serverový projekt
+## <a name="enable-push-notifications-for-the-server-project"></a>Povolení nabízených oznámení pro projekt serveru
 
 [!INCLUDE [app-service-mobile-dotnet-backend-configure-push-google](../../includes/app-service-mobile-dotnet-backend-configure-push-google.md)]
 
@@ -54,15 +54,15 @@ Potřebujete následující:
 
 V této části aktualizujete klientskou aplikaci pro Android tak, aby zpracovávala nabízená oznámení.
 
-### <a name="verify-android-sdk-version"></a>Ověřit verzi Android SDK
+### <a name="verify-android-sdk-version"></a>Ověření verze sady Android SDK
 
 [!INCLUDE [app-service-mobile-verify-android-sdk-version](../../includes/app-service-mobile-verify-android-sdk-version.md)]
 
-Dalším krokem je instalace služby Google Play Services. Firebase Cloud Messaging má některé minimální požadavky na úroveň rozhraní API pro vývoj a testování, které musí splňovat vlastnost **hodnotu minsdkversion** v manifestu.
+Dalším krokem je instalace služeb Google Play. Firebase Cloud Messaging má některé minimální požadavky na úrovni rozhraní API pro vývoj a testování, které **minSdkVersion** vlastnost v manifestu musí odpovídat.
 
-Pokud testujete pomocí staršího zařízení, přečtěte si článek [Přidání Firebase do projektu pro Android] , kde zjistíte, jak nízká hodnota se dá nastavit, a nastavte ji odpovídajícím způsobem.
+Pokud testujete se starším zařízením, podívejte se do aplikace Android Project na přidání Firebase a [zjistěte,] jak nízkou můžete tuto hodnotu nastavit, a nastavte ji odpovídajícím způsobem.
 
-### <a name="add-firebase-cloud-messaging-to-the-project"></a>Přidání Firebase cloudového zasílání zpráv do projektu
+### <a name="add-firebase-cloud-messaging-to-the-project"></a>Přidání cloudového zasílání zpráv Firebase do projektu
 
 [!INCLUDE [Add Firebase Cloud Messaging](../../includes/app-service-mobile-add-firebase-cloud-messaging.md)]
 
@@ -72,17 +72,17 @@ Pokud testujete pomocí staršího zařízení, přečtěte si článek [Přidá
 
 ## <a name="test-the-app-against-the-published-mobile-service"></a>Testování aplikace proti publikované mobilní službě
 
-Aplikaci můžete otestovat tak, že přímo připojíte telefon s Androidem pomocí kabelu USB, nebo pomocí virtuálního zařízení v emulátoru.
+Aplikaci můžete otestovat přímým připojením telefonu Android pomocí kabelu USB nebo pomocí virtuálního zařízení v emulátoru.
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní, když jste dokončili tento kurz, zvažte pokračování v jednom z následujících kurzů:
+Nyní, když jste dokončili tento kurz, zvažte pokračování na jednom z následujících kurzů:
 
-* [Přidejte do svojí aplikace pro Android ověřování](app-service-mobile-android-get-started-users.md).
-  Naučte se, jak přidat ověřování do projektu rychlého startu ToDoList v Androidu s použitím podporovaného zprostředkovatele identity.
-* [Povolte offline synchronizaci vaší aplikace pro Android](app-service-mobile-android-get-started-offline-data.md).
-  Naučte se přidat do aplikace podporu offline pomocí Mobile Apps back-endu. Při offline synchronizaci můžou uživatelé komunikovat s mobilní aplikací&mdash;zobrazení, přidání nebo úprava dat&mdash;i v případě, že není k dispozici žádné síťové připojení.
+* [Přidejte ověřování do aplikace pro Android](app-service-mobile-android-get-started-users.md).
+  Přečtěte si, jak přidat ověřování do projektu rychlého startu todoseznamu v systému Android pomocí podporovaného poskytovatele identity.
+* [Povolte offline synchronizaci pro aplikaci pro Android](app-service-mobile-android-get-started-offline-data.md).
+  Přečtěte si, jak do aplikace přidat podporu offline pomocí back-endu mobilních aplikací. Při offline synchronizaci mohou uživatelé&mdash;pracovat se zobrazením,&mdash;přidáváním nebo úpravou dat v mobilní aplikaci, i když neexistuje žádné síťové připojení.
 
 <!-- URLs -->
-[Rychlý Start pro Android]: app-service-mobile-android-get-started.md
-[Přidání Firebase do projektu pro Android]: https://firebase.google.com/docs/android/setup
+[Android rychlý start]: app-service-mobile-android-get-started.md
+[Přidání Firebase do projektu Android]:https://firebase.google.com/docs/android/setup

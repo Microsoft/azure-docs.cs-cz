@@ -1,7 +1,7 @@
 ---
-title: 'Interaktivní ladění: VS Code & ML výpočetních instancí'
+title: 'Interaktivní ladění: Výpočetní instance VS Code & ML'
 titleSuffix: Azure Machine Learning
-description: Nastavte VS Code vzdálené na interaktivní ladění kódu pomocí Azure Machine Learning.
+description: Nastavte vzdálené vs kód interaktivně ladit kód s Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,49 +10,49 @@ ms.author: jmartens
 author: j-martens
 ms.date: 12/09/2019
 ms.openlocfilehash: 1999d29db21f820fbcdbca08f2258b657673be3e
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77169758"
 ---
-# <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>Interaktivně se ladit na Azure Machine Learning výpočetní instanci s VS Code Vzdálená
+# <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>Interaktivní ladění na výpočetní instanci Azure Machine Learning Compute s dálkovým ovládáním kódu VS
 
-V tomto článku se dozvíte, jak nastavit Visual Studio Code vzdáleně na instanci služby Azure Machine Learning COMPUTE, abyste mohli **interaktivně ladit kód** z vs Code. 
+V tomto článku se dozvíte, jak nastavit Visual Studio Code Remote na Azure Machine Learning Compute Instance, takže můžete **interaktivně ladit kód** z VS Code. 
 
-+ [Instance služby Azure Machine Learning COMPUTE](concept-compute-instance.md) je plně spravovaná cloudová pracovní stanice pro odborníky přes data a poskytuje funkce pro správu a připravenost v podniku pro správce IT. 
++ [Azure Machine Learning Compute Instance](concept-compute-instance.md) je plně spravovaná cloudová pracovní stanice pro datové vědce a poskytuje možnosti správy a připravenosti podniku pro správce IT. 
 
 
-+ [Visual Studio Code vzdálené](https://code.visualstudio.com/docs/remote/remote-overview) Vývoj umožňuje používat kontejner, vzdálený počítač nebo podsystém Windows pro Linux (WSL) jako plnohodnotné vývojové prostředí. 
++ [Vzdálený kód visual studia](https://code.visualstudio.com/docs/remote/remote-overview) Vývoj umožňuje používat kontejner, vzdálený počítač nebo podsystém Windows pro Linux (WSL) jako plnohodnotné vývojové prostředí. 
 
 ## <a name="prerequisite"></a>Požadavek  
 
-Na platformách systému Windows je nutné [nainstalovat klienta ssh kompatibilního s OpenSSH](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client) , pokud ještě není přítomen. 
+Na platformách Windows je nutné [nainstalovat klienta SSH kompatibilního s OpenSSH,](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client) pokud ještě není k dispozici. 
 
 > [!Note]
-> Výstup do systému Windows není podporován, protože příkaz SSH musí být v cestě. 
+> PuTTY není podporována v systému Windows, protože příkaz ssh musí být v cestě. 
 
-## <a name="get-ip-and-ssh-port"></a>Získat port IP a SSH 
+## <a name="get-ip-and-ssh-port"></a>Získání portu IP a SSH 
 
-1. V https://ml.azure.com/Azure Machine Learning studia.
+1. Přejděte do studia Azure https://ml.azure.com/Machine Learning studio na .
 
-2. Vyberte svůj [pracovní prostor](concept-workspace.md).
-1. Klikněte na kartu **výpočetní instance** .
-1. Ve sloupci **identifikátor URI aplikace** klikněte na odkaz **SSH** výpočetní instance, kterou chcete použít jako vzdálené výpočty. 
-1. V dialogu si poznamenejte IP adresu a port SSH. 
-1. Uložte privátní klíč do adresáře ~/.SSH/na místním počítači. Otevřete například editor nového souboru a vložte klíč do: 
+2. Vyberte [pracovní prostor](concept-workspace.md).
+1. Klikněte na kartu **Výpočetní instance.**
+1. Ve sloupci **Identifikátor URI aplikace** klikněte na odkaz **SSH** výpočetní instance, kterou chcete použít jako vzdálený výpočetní výkon. 
+1. V dialogovém okně si poznamenejte IP adresu a port SSH. 
+1. Uložte svůj soukromý klíč do adresáře ~/.ssh/ v místním počítači; otevřete například editor pro nový soubor a vložte klíč do: 
 
-   **Linux:** 
+   **Linux**: 
    ```sh
    vi ~/.ssh/id_azmlcitest_rsa  
    ```
 
-   **Windows:** 
+   **Windows**: 
    ```
    notepad C:\Users\<username>\.ssh\id_azmlcitest_rsa 
    ```
 
-   Privátní klíč bude vypadat trochu takto:
+   Soukromý klíč bude vypadat poněkud takto:
    ```
    -----BEGIN RSA PRIVATE KEY----- 
 
@@ -63,14 +63,14 @@ Na platformách systému Windows je nutné [nainstalovat klienta ssh kompatibiln
    -----END RSA PRIVATE KEY----- 
    ```
 
-1. Změňte oprávnění na soubor, abyste se ujistili, že soubor můžete číst jenom vy.  
+1. Změňte oprávnění k souboru, abyste měli jistotu, že soubor můžete přečíst pouze vy.  
    ```sh
    chmod 600 ~/.ssh/id_azmlcitest_rsa   
    ```
 
-## <a name="add-instance-as-a-host"></a>Přidat instanci jako hostitele 
+## <a name="add-instance-as-a-host"></a>Přidání instance jako hostitele 
 
-V editoru otevřete soubor `~/.ssh/config` (Linux) nebo `C:\Users<username>.ssh\config` (Windows) a přidejte novou položku podobnou této:
+Otevřete `~/.ssh/config` soubor (Linux) nebo `C:\Users<username>.ssh\config` (Windows) v editoru a přidejte novou položku podobnou této:
 
 ```
 Host azmlci1 
@@ -84,34 +84,34 @@ Host azmlci1
     IdentityFile ~/.ssh/id_azmlcitest_rsa   
 ```
 
-Zde jsou některé podrobnosti o polích: 
+Zde některé podrobnosti o polích: 
 
 |Pole|Popis|
 |----|---------|
-|Hostitel|Použijte libovolné zkratky, které chcete použít pro instanci služby Compute. |
-|název hostitele|Toto je IP adresa instance Compute. |
-|Port|Toto je port zobrazený v dialogovém okně SSH výše. |
-|Uživatel|Tento postup musí být `azureuser` |
-|IdentityFile|Měl by odkazovat na soubor, kam jste uložili soukromý klíč. |
+|Hostitel|Použijte pro výpočetní instanci jakoukoli těsnopis, který se vám líbí |
+|HostName|Toto je IP adresa instance výpočetních prostředků. |
+|Port|Toto je port zobrazený na ssh dialogu výše |
+|Uživatel|To je třeba `azureuser` |
+|Soubor identity|Má ukazovat na soubor, do kterého jste uložili soukromý klíč. |
 
-Nyní byste měli být schopni se k vaší výpočetní instanci považovat přes SSH pomocí zkratky, kterou jste použili výše, `ssh azmlci1`. 
+Nyní byste měli být schopni ssh na vaše výpočetní instance `ssh azmlci1`pomocí těsnopisu, který jste použili výše, . 
 
-## <a name="connect-vs-code-to-the-instance"></a>Připojit VS Code k instanci 
+## <a name="connect-vs-code-to-the-instance"></a>Připojení kódu VS k instanci 
 
-1. [Nainstalujte Visual Studio Code](https://code.visualstudio.com/).
+1. [Nainstalujte kód sady Visual Studio](https://code.visualstudio.com/).
 
 1. [Nainstalujte vzdálené rozšíření SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh). 
 
-1. Kliknutím na ikonu Remote-SSH na levé straně zobrazíte konfigurace SSH.
+1. Kliknutím na ikonu Remote-SSH vlevo zobrazíte konfigurace SSH.
 
-1. Klikněte pravým tlačítkem na konfiguraci hostitele SSH, kterou jste právě vytvořili.
+1. Klikněte pravým tlačítkem myši na konfiguraci hostitele SSH, kterou jste právě vytvořili.
 
-1. **V aktuálním okně vyberte připojit k hostiteli**. 
+1. V **aktuálním okně vyberte Možnost Připojit k hostiteli**. 
 
-Odtud jste na této službě naprosto pracovali na výpočetní instanci a teď můžete upravovat, ladit, používat Git, používat rozšíření atd. – stejně jako u místních Visual Studio Code. 
+Od této chvíle zcela pracujete na výpočetní instanci a teď můžete upravovat, ladit, používat git, používat rozšíření atd. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste nastavili Visual Studio Code vzdálené, můžete použít výpočetní instanci jako vzdálenou výpočetní prostředky z Visual Studio Code k interaktivnímu ladění kódu. 
+Teď, když jste nastavili Visual Studio Code Remote, můžete použít výpočetní instance jako vzdálené výpočetní prostředky z kódu Sady Visual Studio interaktivně ladit kód. 
 
-[Kurz: analýza prvního modelu ml](tutorial-1st-experiment-sdk-train.md) ukazuje, jak používat výpočetní instanci s integrovaným poznámkovým blokem.
+[Kurz: Trénování prvního modelu ML](tutorial-1st-experiment-sdk-train.md) ukazuje, jak používat výpočetní instanci s integrovaným poznámkovým blokem.

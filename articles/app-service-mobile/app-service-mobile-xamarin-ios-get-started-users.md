@@ -1,57 +1,57 @@
 ---
 title: Začínáme s ověřováním v Xamarin iOS
-description: Naučte se používat Mobile Apps k ověřování uživatelů vaší aplikace Xamarin iOS pomocí zprostředkovatelů identity, jako jsou AAD, Google, Facebook, Twitter a Microsoft.
+description: Přečtěte si, jak pomocí mobilních aplikací ověřovat uživatele aplikace Xamarin pro iOS s poskytovateli identit, jako jsou AAD, Google, Facebook, Twitter a Microsoft.
 ms.assetid: 180cc61b-19c5-48bf-a16c-7181aef3eacc
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 05e936accbcd5c6fa2760c4f8682d907557f23b5
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461313"
 ---
-# <a name="add-authentication-to-your-xamarinios-app"></a>Přidání ověřování do aplikace Xamarin. iOS
+# <a name="add-authentication-to-your-xamarinios-app"></a>Přidání ověřování do aplikace Xamarin.iOS
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
 ## <a name="overview"></a>Přehled
 
-V tomto tématu se dozvíte, jak ověřit uživatele App Service mobilní aplikace z klientské aplikace. V tomto kurzu přidáte do projektu pro rychlé zprovoznění Xamarin. iOS ověřování pomocí zprostředkovatele identity, který podporuje App Service. Po úspěšném ověření a autorizaci vaší mobilní aplikace se zobrazí hodnota ID uživatele a budete mít přístup k omezeným datům tabulky.
+Toto téma ukazuje, jak ověřit uživatele mobilní aplikace App Service z klientské aplikace. V tomto kurzu přidáte ověřování do projektu rychlého startu Xamarin.iOS pomocí zprostředkovatele identity, který je podporován službou App Service. Po úspěšném ověření a autorizaci mobilní aplikací se zobrazí hodnota ID uživatele a budete mít přístup k datům tabulky s omezeným přístupem.
 
-Nejdřív musíte dokončit kurz [Vytvoření aplikace Xamarin. iOS]. Pokud nepoužíváte stažený projekt serveru pro rychlé zahájení, je nutné přidat balíček rozšíření ověřování do projektu. Další informace o balíčcích rozšíření serveru najdete v tématu [práce s back-end serverem .NET SDK pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+Musíte nejprve dokončit kurz [Vytvořit aplikaci Xamarin.iOS]. Pokud nepoužíváte stažený projekt serveru rychlého startu, je nutné do projektu přidat balíček rozšíření ověřování. Další informace o balíčcích rozšíření serveru naleznete v [tématu Práce s back-endovým serverem .NET SDK pro mobilní aplikace Azure](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
-## <a name="register-your-app-for-authentication-and-configure-app-services"></a>Zaregistrovat aplikaci pro ověřování a nakonfigurovat App Services
+## <a name="register-your-app-for-authentication-and-configure-app-services"></a>Registrace aplikace pro ověřování a konfigurace služeb app services
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="add-your-app-to-the-allowed-external-redirect-urls"></a>Přidání aplikace do povolených externích adres URL pro přesměrování
+## <a name="add-your-app-to-the-allowed-external-redirect-urls"></a>Přidání aplikace do adres URL allowed externího přesměrování
 
-Zabezpečené ověřování vyžaduje, abyste pro svou aplikaci nadefinovali nové schéma URL. To umožňuje, aby systém ověřování po dokončení procesu ověřování přesměroval zpátky do vaší aplikace. V tomto kurzu používáme _celé rozhraní_ příkazového schématu URL. Můžete ale použít jakékoli schéma URL, které si zvolíte. Měl by být jedinečný pro vaši mobilní aplikaci. Zapnutí přesměrování na straně serveru:
+Zabezpečené ověřování vyžaduje, abyste pro aplikaci definovali nové schéma adres URL. To umožňuje ověřovacímu systému přesměrovat zpět do aplikace po dokončení procesu ověřování. V tomto kurzu používáme _název aplikace_ schématu ADRES URL v celém textu. Můžete však použít libovolné schéma adres URL, které zvolíte. To by mělo být jedinečné pro vaši mobilní aplikaci. Povolení přesměrování na straně serveru:
 
-1. V [Azure Portal](https://portal.azure.com/)vyberte App Service.
+1. Na [webu Azure Portal](https://portal.azure.com/)vyberte službu App Service.
 
-2. Klikněte na možnost nabídka **ověřování/autorizace** .
+2. Klepněte na možnost nabídky **Ověřování / Autorizace.**
 
-3. Do pole **povolené externí adresy URL pro přesměrování**zadejte `url_scheme_of_your_app://easyauth.callback`.  **Url_scheme_of_your_app** v tomto řetězci je schéma adresy URL vaší mobilní aplikace.  Měla by následovat po běžné specifikaci adresy URL protokolu (použijte pouze písmena a čísla a začněte písmenem).  Měli byste si poznamenat řetězec, který si zvolíte, protože budete muset upravit kód mobilní aplikace pomocí schématu adresy URL na několika místech.
+3. V **adresách URL allowed external redirect zadejte** `url_scheme_of_your_app://easyauth.callback`.  **Url_scheme_of_your_app** v tomto řetězci je schéma adresy URL pro mobilní aplikaci.  Měl by se řídit běžnou specifikací adresy URL protokolu (používejte pouze písmena a čísla a začněte písmenem).  Měli byste si poznamenat řetězec, který zvolíte, protože budete muset upravit kód mobilní aplikace pomocí schématu adres URL na několika místech.
 
 4. Klikněte na tlačítko **OK**.
 
-5. Klikněte na možnost **Uložit**.
+5. Klikněte na **Uložit**.
 
 ## <a name="restrict-permissions-to-authenticated-users"></a>Omezení oprávnění pro ověřené uživatele
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-* V aplikaci Visual Studio nebo Xamarin Studio spusťte klientský projekt na zařízení nebo emulátoru. Ověřte, zda je po spuštění aplikace vyvolána neošetřená výjimka se stavovým kódem 401 (Neautorizováno). Selhání je zaznamenáno do konzoly ladicího programu. Takže v aplikaci Visual Studio by se chyba měla zobrazit v okně výstup.
+* V sadě Visual Studio nebo Xamarin Studio spusťte klientský projekt na zařízení nebo emulátoru. Ověřte, že po spuštění aplikace je vyvolána neošetřená výjimka se stavovým kódem 401 (Neautorizovaný). Selhání je zaznamenána do konzoly ladicího programu. Takže v sadě Visual Studio, měli byste vidět selhání ve výstupním okně.
 
-    K této neautorizované chybě dochází, protože se aplikace pokusí získat přístup k back-endu mobilní aplikace jako neověřeného uživatele. Tabulka *TodoItem* nyní vyžaduje ověření.
+    K tomuto neoprávněnému selhání dochází, protože se aplikace pokusí o přístup k back-endu mobilní aplikace jako neověřený uživatel. Tabulka *TodoItem* nyní vyžaduje ověření.
 
-V dalším kroku aktualizujete klientskou aplikaci tak, aby požadovala prostředky z back-endu mobilní aplikace pomocí ověřeného uživatele.
+Dále aktualizujete klientskou aplikaci tak, aby požadovala prostředky z back-endu mobilní aplikace s ověřeným uživatelem.
 
 ## <a name="add-authentication-to-the-app"></a>Přidání ověřování do aplikace
-V této části upravíte aplikaci tak, aby před zobrazením dat zobrazovala přihlašovací obrazovku. Po spuštění aplikace se nepřipojí k vašemu App Service a nezobrazí se žádná data. Po prvním spuštění gesta obnovení uživatelem se zobrazí přihlašovací obrazovka. Po úspěšném přihlášení se zobrazí seznam položek todo.
+V této části upravíte aplikaci tak, aby před zobrazením dat zobrazila přihlašovací obrazovku. Když se aplikace spustí, nepřipojí se k vaší službě App Service a nezobrazí žádná data. Po prvním provedení gesta aktualizace uživatelese zobrazí přihlašovací obrazovka; po úspěšném přihlášení se zobrazí seznam todo položek.
 
-1. V projektu klienta otevřete soubor **QSTodoService.cs** a přidejte následující příkaz using a `MobileServiceUser` s přistupujícím objektem do třídy QSTodoService:
+1. V klientském projektu otevřete soubor **QSTodoService.cs** a `MobileServiceUser` přidejte následující příkaz using a přistupujícího do třídy QSTodoService:
 
     ```csharp
     using UIKit;
@@ -61,7 +61,7 @@ V této části upravíte aplikaci tak, aby před zobrazením dat zobrazovala p�
     public MobileServiceUser User { get { return user; } }
     ```
 
-2. Přidejte novou metodu s názvem **Authenticate** do **QSTodoService** s následující definicí:
+2. Přidejte novou metodu s názvem **Ověření** do **služby QSTodoService** s následující definicí:
 
     ```csharp
     public async Task Authenticate(UIViewController view)
@@ -81,7 +81,7 @@ V této části upravíte aplikaci tak, aby před zobrazením dat zobrazovala p�
     > [!NOTE]
     > Pokud používáte jiného poskytovatele identity než Facebook, změňte hodnotu předanou na **LoginAsync** výše na jednu z následujících hodnot: _MicrosoftAccount_, _Twitter_, _Google_nebo _WindowsAzureActiveDirectory_.
 
-3. Otevřete **QSTodoListViewController.cs**. Upravte definici metody **ViewDidLoad** odebrání volání **RefreshAsync ()** poblíž konce:
+3. Otevřít **QSTodoListViewController.cs**. Upravte definici metody **ViewDidLoad** odebrání volání **RefreshAsync()** ke konci:
 
     ```csharp
     public override async void ViewDidLoad ()
@@ -100,7 +100,7 @@ V této části upravíte aplikaci tak, aby před zobrazením dat zobrazovala p�
     }
     ```
 
-4. Upravte metodu **RefreshAsync** na ověřování, pokud má vlastnost **User** hodnotu null. Do horní části definice metody přidejte následující kód:
+4. Upravte metodu **RefreshAsync** k ověření, pokud je vlastnost **User** null. V horní části definice metody přidejte následující kód:
 
     ```csharp
     // start of RefreshAsync method
@@ -114,7 +114,7 @@ V této části upravíte aplikaci tak, aby před zobrazením dat zobrazovala p�
     // rest of RefreshAsync method
     ```
 
-5. Otevřete **AppDelegate.cs**a přidejte následující metodu:
+5. Otevřete **AppDelegate.cs**, přidejte následující metodu:
 
     ```csharp
     public static Func<NSUrl, bool> ResumeWithURL;
@@ -125,12 +125,12 @@ V této části upravíte aplikaci tak, aby před zobrazením dat zobrazovala p�
     }
     ```
 
-6. Otevřete soubor **info. plist** , v části **Upřesnit** přejděte na **typy adres URL** . Nyní nakonfigurujte **identifikátor** a **schémata adres** URL typu adresy URL a klikněte na tlačítko **Přidat typ adresy URL**. **Schémata URL** by měla být stejná jako vaše {url_scheme_of_your_app}.
-7. V aplikaci Visual Studio připojené k hostiteli Mac nebo Visual Studio pro Mac spusťte projekt klienta cílící na zařízení nebo emulátor. Ověřte, že aplikace nezobrazuje žádná data.
+6. Otevřete soubor **Info.plist,** přejděte na **Typy adres URL** v části **Upřesnit.** Nyní nakonfigurujte **identifikátor** a **schémata adres URL** typu adresy URL a klepněte na tlačítko Přidat typ **adresy URL**. **Schémata adres URL** by měla být stejná jako vaše {url_scheme_of_your_app}.
+7. V Sadě Visual Studio, připojené k Mac Host nebo Visual Studio pro Mac, spusťte klientský projekt zaměřený na zařízení nebo emulátor. Ověřte, zda aplikace nezobrazuje žádná data.
 
-    Pomocí gesta aktualizace můžete zobrazit seznam položek, což způsobí zobrazení přihlašovací obrazovky. Po úspěšném zadání platných přihlašovacích údajů se v aplikaci zobrazí seznam položek TODO a aktualizace dat můžete provést.
+    Proveďte gesto aktualizace stažením seznamu položek, což způsobí, že se přihlašovací obrazovka zobrazí. Po úspěšném zadání platných pověření aplikace zobrazí seznam položek úkolů a můžete data aktualizovat.
 
 <!-- URLs. -->
 [Submit an app page]: https://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
-[Vytvoření aplikace Xamarin. iOS]: app-service-mobile-xamarin-ios-get-started.md
+[Vytvoření aplikace Xamarin.iOS]: app-service-mobile-xamarin-ios-get-started.md

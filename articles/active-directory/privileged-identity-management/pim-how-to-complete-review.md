@@ -1,6 +1,6 @@
 ---
-title: Dokončení kontroly přístupu rolí Azure AD v PIM – Azure AD | Microsoft Docs
-description: Naučte se, jak dokončit kontrolu přístupu pro role Azure AD v Azure AD Privileged Identity Management (PIM) a zobrazit výsledky.
+title: Dokončení kontroly přístupu rolí Azure AD v PIM – Azure AD | Dokumenty společnosti Microsoft
+description: Zjistěte, jak dokončit kontrolu přístupu rolí Azure AD v azure ad privilegované správy identit (PIM) a zobrazit výsledky
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,52 +15,52 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe2d85d605b9ee418a5709ddcdb448c56be1d918
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74022281"
 ---
-# <a name="complete-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Dokončení kontroly přístupu rolí Azure AD v Privileged Identity Management
+# <a name="complete-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Dokončení kontroly přístupu rolí Azure AD ve správě privilegovaných identit
 
-Správci privilegovaných rolí můžou po [spuštění kontroly přístupu](pim-how-to-start-security-review.md)zkontrolovat privilegovaný přístup.  Privileged Identity Management (PIM) automaticky pošle uživatelům v organizaci Azure Active Directory (Azure AD) e-mail s výzvou, aby zkontroloval svůj přístup. Pokud uživatel neobdržel e-mail, můžete jim poslat pokyny, [Jak provést kontrolu přístupu](pim-how-to-perform-security-review.md).
+Správci privilegovaných rolí mohou po [spuštění kontroly přístupu](pim-how-to-start-security-review.md)zkontrolovat privilegovaný přístup .  Správa privilegovaných identit (PIM) automaticky odešle e-mail uživatelům ve vaší organizaci Azure Active Directory (Azure AD), ve které je vyzve ke kontrole jejich přístupu. Pokud uživatel neobdržel e-mail, můžete mu poslat [pokyny, jak provést kontrolu přístupu](pim-how-to-perform-security-review.md).
 
-Po uplynutí doby kontroly přístupu nebo všech uživatelích, kteří si dokončili vlastní kontrolu, postupujte podle kroků v tomto článku ke správě kontroly a zobrazení výsledků.
+Po uplynutí období kontroly přístupu nebo po dokončení vlastní kontroly všichni uživatelé postupujte podle pokynů v tomto článku, abyste mohli recenzi spravovat a zobrazit výsledky.
 
 ## <a name="manage-access-reviews"></a>Správa kontrol přístupu
 
-1. Přejít na [Azure Portal](https://portal.azure.com/) a na řídicím panelu vyberte službu **Azure AD Privileged Identity Management** .
-1. Vyberte část kontroly **přístupu** na řídicím panelu.
+1. Přejděte na [portál Azure a](https://portal.azure.com/) vyberte službu Azure **AD Privileged Identity Management** na řídicím panelu.
+1. Vyberte část **Kontroly aplikace Access** na řídicím panelu.
 1. Vyberte kontrolu přístupu, kterou chcete spravovat.
 
-V okně podrobností kontroly přístupu je k dispozici několik možností pro správu této recenze.
+Na podrobném okně kontroly přístupu existuje řada možností pro správu této recenze.
 
-![Tlačítka pro kontrolu přístupu Privileged Identity Management – snímek obrazovky](./media/pim-how-to-complete-review/review-buttons.png)
+![Tlačítka pro kontrolu přístupu k privilegované správě identit – snímek obrazovky](./media/pim-how-to-complete-review/review-buttons.png)
 
-### <a name="remind"></a>Abyste
+### <a name="remind"></a>Připomenout
 
-Pokud je kontrola přístupu nastavená tak, aby se uživatelé zkontrolovali, tlačítko **připomenout** pošle oznámení.
+Pokud je kontrola přístupu nastavena tak, aby se uživatelé sami zkontrolovali, tlačítko **Připomenout** odešle oznámení.
 
 ### <a name="stop"></a>Zastavit
 
-Všechny kontroly přístupu mají koncové datum, ale k jeho dokončení můžete použít tlačítko **zastavit** . Pokud nějaký uživatel nebyl tímto časem zkontrolován, nebude po zastavení revize možné. Po zastavení nemůžete kontrolu restartovat.
+Všechny kontroly přístupu mají datum ukončení, ale můžete ho dokončit dříve pomocí tlačítka **Zastavit.** Pokud do této doby nebyli některá uživatelé zkontrolováni, po zastavení recenze nebudou moci. Po zastavení recenze nelze recenzi restartovat.
 
 ### <a name="apply"></a>Použít
 
-Po dokončení kontroly přístupu buď protože jste dosáhli koncového data nebo ho zastavili ručně, tlačítko **použít** provede implementaci výsledku revize. Pokud se k přístupu uživatele v recenzi zamítl přístup, jedná se o krok, který odebere přiřazení role.  
+Po dokončení kontroly přístupu, protože jste dosáhli koncového data nebo ji ručně zastavili, tlačítko **Použít** implementuje výsledek kontroly. Pokud byl v recenzi odepřen přístup uživatele, jedná se o krok, který odebere přiřazení jejich role.  
 
 ### <a name="export"></a>Export
 
-Pokud chcete výsledky kontroly přístupu použít ručně, můžete tuto kontrolu exportovat. Tlačítko **exportovat** spustí stahování souboru CSV. Výsledky můžete spravovat v Excelu nebo v jiných programech, které otevřou soubory CSV.
+Pokud chcete použít výsledky kontroly přístupu ručně, můžete recenzi exportovat. Tlačítko **Export** začne stahovat soubor CSV. Výsledky můžete spravovat v aplikaci Excel nebo v jiných aplikacích, které svírají soubory CSV.
 
-### <a name="delete"></a>Odstranit
+### <a name="delete"></a>Odstranění
 
-Pokud si to ještě zajímáte, odstraňte ho. Tlačítko **Odstranit** odebere kontrolu z Privileged Identity Management služby.
+Pokud nemáte zájem o recenzi žádné další, odstraňte ji. Tlačítko **Odstranit** odebere recenzi ze služby Správa privilegovaných identit.
 
 > [!IMPORTANT]
-> Nebudete se muset ujistit, že se tato destruktivní změna bude vyžadovat, a pak ověřte, že chcete tuto recenzi odstranit.
+> Nebudete muset tuto destruktivní změnu potvrdit, proto ověřte, zda chcete tuto recenzi odstranit.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Spuštění kontroly přístupu pro role Azure AD v Privileged Identity Management](pim-how-to-start-security-review.md)
-- [Provedení kontroly přístupu mých rolí Azure AD v Privileged Identity Management](pim-how-to-perform-security-review.md)
+- [Spuštění kontroly přístupu pro role Azure AD ve správě privilegovaných identit](pim-how-to-start-security-review.md)
+- [Provedení kontroly přístupu mých rolí Azure AD ve správě privilegovaných identit](pim-how-to-perform-security-review.md)

@@ -1,7 +1,7 @@
 ---
-title: Plánování Azure Machine Learningch kanálů
+title: Plánování kanálů Azure Machine Learning
 titleSuffix: Azure Machine Learning
-description: Naplánování Azure Machine Learning kanálů pomocí sady Azure Machine Learning SDK pro Python. Naplánované kanály umožňují automatizovat rutiny, časově náročné úlohy, jako je zpracování dat, školení a monitorování.
+description: Naplánujte kanály Azure Machine Learning pomocí sady Azure Machine Learning SDK pro Python. Naplánované kanály umožňují automatizovat rutinní, časově náročné úlohy, jako je zpracování dat, školení a monitorování.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,27 +10,27 @@ ms.author: laobri
 author: lobrien
 ms.date: 11/12/2019
 ms.openlocfilehash: fed411ea171274513308ec3efa68da80e4d25f8a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77116761"
 ---
-# <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Plánování kanálů strojového učení pomocí sady Azure Machine Learning SDK pro Python
+# <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Plánování kanálů strojového učení pomocí Azure Machine Learning SDK pro Python
 
-V tomto článku se dozvíte, jak programově naplánovat spuštění kanálu v Azure. Můžete zvolit vytvoření plánu na základě uplynulého času nebo změny systému souborů. Plány založené na čase se dají využít k zajištění běžné úlohy, jako je monitorování pro posun dat. Plány založené na změnách lze použít k reakci na nepředvídatelné nebo nepředvídatelné změny, například na nahrávání nových dat nebo při úpravách starých dat. Po získání informací o tom, jak vytvořit plány, se dozvíte, jak je načíst a deaktivovat.
+V tomto článku se dozvíte, jak programově naplánovat kanál pro spuštění v Azure. Můžete vytvořit plán na základě uplynulého času nebo změn systému souborů. Časové plány lze použít k péči o rutinní úkoly, jako je například monitorování posunu dat. Plány založené na změnách lze použít k reakci na nepravidelné nebo nepředvídatelné změny, jako jsou například nová data, která se nahrávají, nebo úpravy starých dat. Poté, co se naučíte vytvářet plány, dozvíte se, jak je načíst a deaktivovat.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree).
 
-* Prostředí Pythonu, ve kterém je nainstalovaná sada Azure Machine Learning SDK pro Python. Další informace najdete v tématu [vytváření a Správa opakovaně použitelných prostředí pro školení a nasazení pomocí Azure Machine Learning.](how-to-use-environments.md)
+* Prostředí Pythonu, ve kterém je nainstalována sada Azure Machine Learning SDK pro Python. Další informace najdete v [tématu Vytvoření a správa opakovaně použitelných prostředí pro školení a nasazení s Azure Machine Learning.](how-to-use-environments.md)
 
-* Machine Learning pracovní prostor s publikovaným kanálem. V sadě Azure Machine Learning SDK můžete použít jeden z vestavěných [kanálů pro vytváření a spouštění strojového učení](how-to-create-your-first-pipeline.md).
+* Pracovní prostor Machine Learning s publikovaným kanálem. Ten integrovaný v kanálu Vytváření a strojové učení můžete použít [pomocí azure machine learnings SDK](how-to-create-your-first-pipeline.md).
 
-## <a name="initialize-the-workspace--get-data"></a>Inicializujte pracovní prostor & získat data
+## <a name="initialize-the-workspace--get-data"></a>Inicializovat pracovní prostor & získat data
 
-K naplánování kanálu budete potřebovat odkaz na svůj pracovní prostor, identifikátor publikovaného kanálu a název experimentu, ve kterém chcete plán vytvořit. Tyto hodnoty můžete získat pomocí následujícího kódu:
+Chcete-li naplánovat kanál, budete potřebovat odkaz na pracovní prostor, identifikátor publikovaného kanálu a název experimentu, ve kterém chcete plán vytvořit. Tyto hodnoty můžete získat pomocí následujícího kódu:
 
 ```Python
 import azureml.core
@@ -54,9 +54,9 @@ pipeline_id = "aaaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
 
 ## <a name="create-a-schedule"></a>Vytvoření plánu
 
-Pro opakované spuštění kanálu vytvoříte plán. `Schedule` přidruží kanál, experiment a Trigger. Trigger může být buď`ScheduleRecurrence`, který popisuje čekání mezi běhy nebo cestou úložiště dat, která určuje adresář, ve kterém se mají sledovat změny. V obou případech budete potřebovat identifikátor kanálu a název experimentu, ve kterém chcete plán vytvořit.
+Chcete-li spustit kanál opakovaně, vytvoříte plán. Přidružený `Schedule` kanál, experiment a aktivační událost. Aktivační událost může`ScheduleRecurrence` být buď, který popisuje čekání mezi spuštění nebo datastore cestu, která určuje adresář sledovat změny. V obou případech budete potřebovat identifikátor kanálu a název experimentu, ve kterém chcete vytvořit plán.
 
-V horní části souboru Pythonu importujte `Schedule` a `ScheduleRecurrence` třídy:
+V horní části souboru pythonu importujte `Schedule` třídy a: `ScheduleRecurrence`
 
 ```python
 
@@ -65,9 +65,9 @@ from azureml.pipeline.core.schedule import ScheduleRecurrence, Schedule
 
 ### <a name="create-a-time-based-schedule"></a>Vytvoření plánu založeného na čase
 
-Konstruktor `ScheduleRecurrence` má povinný `frequency` argument, který musí být jeden z následujících řetězců: "Minute", "hour", "Day", "Week" nebo "Month". Také vyžaduje celočíselný `interval` Argument určující, kolik `frequency`ch jednotek by měl uplynout mezi začátkem plánu. Volitelné argumenty vám umožní podrobnější informace o počátečních časech, jak je popsáno v [dokumentaci k sadě SDK pro ScheduleRecurrence](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?view=azure-ml-py).
+Konstruktor `ScheduleRecurrence` má požadovaný `frequency` argument, který musí být jeden z následujících řetězců: "Minute", "Hour", "Day", "Week" nebo "Month". Vyžaduje také celé číslo `interval` argument určující, kolik `frequency` jednotek by měla uplynout mezi spuštění plánu. Volitelné argumenty umožňují být konkrétnější o počáteční časy, jak je podrobně popsáno v [ScheduleRecurrence SDK dokumenty](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?view=azure-ml-py).
 
-Vytvořte `Schedule`, který začíná běžet každých 15 minut:
+Vytvořte, `Schedule` který začíná spustit každých 15 minut:
 
 ```python
 recurrence = ScheduleRecurrence(frequency="Minute", interval=15)
@@ -78,15 +78,15 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
                             recurrence=recurrence)
 ```
 
-### <a name="create-a-change-based-schedule"></a>Vytvořit plán na základě změny
+### <a name="create-a-change-based-schedule"></a>Vytvoření plánu založeného na změnách
 
-Kanály aktivované změnami souborů můžou být efektivnější než plány založené na čase. Například můžete chtít provést krok předzpracování při změně souboru nebo při přidání nového souboru do datového adresáře. Můžete sledovat všechny změny v úložišti dat nebo změny v rámci určitého adresáře v úložišti dat. Pokud monitorete konkrétní adresář, změny v podadresářích tohoto adresáře nebudou _aktivovat běh_ .
+Kanály, které jsou spuštěny změnami souborů, mohou být efektivnější než plány založené na čase. Můžete například provést krok předběžného zpracování při změně souboru nebo při přidání nového souboru do datového adresáře. Můžete sledovat všechny změny úložiště dat nebo změny v rámci určitého adresáře v rámci úložiště dat. Pokud sledujete určitý adresář, změny v podadresářích tohoto adresáře _nespustí_ spuštění.
 
-Chcete-li vytvořit soubor – reaktivní `Schedule`, je nutné nastavit parametr `datastore` ve volání metody [Schedule. Create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#create-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-). Chcete-li monitorovat složku, nastavte argument `path_on_datastore`.
+Chcete-li vytvořit reaktivní `Schedule`soubor , `datastore` musíte nastavit parametr ve volání [Schedule.create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#create-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-). Chcete-li sledovat složku, nastavte `path_on_datastore` argument.
 
-Argument `polling_interval` umožňuje zadat v minutách četnost změn, ve kterých je úložiště dat kontrolováno.
+Argument `polling_interval` umožňuje zadat v minutách frekvenci, s jakou je úložiště dat kontrolováno změny.
 
-Pokud byl kanál vytvořen pomocí [DataPath](https://docs.microsoft.com/python/api/azureml-core/azureml.data.datapath.datapath?view=azure-ml-py) [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py), můžete tuto proměnnou nastavit na název změněného souboru nastavením argumentu `data_path_parameter_name`.
+Pokud byl kanál vytvořen s [parametrem DataPath](https://docs.microsoft.com/python/api/azureml-core/azureml.data.datapath.datapath?view=azure-ml-py) [PipelineParameter ,](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py)můžete nastavit tuto proměnnou na název změněného souboru nastavením argumentu. `data_path_parameter_name`
 
 ```python
 datastore = Datastore(workspace=ws, name="workspaceblobstore")
@@ -95,28 +95,28 @@ reactive_schedule = Schedule.create(ws, name="MyReactiveSchedule", description="
                             pipeline_id=pipeline_id, experiment_name=experiment_name, datastore=datastore, data_path_parameter_name="input_data")
 ```
 
-### <a name="optional-arguments-when-creating-a-schedule"></a>Nepovinné argumenty při vytváření plánu
+### <a name="optional-arguments-when-creating-a-schedule"></a>Volitelné argumenty při vytváření plánu
 
-Kromě výše popsaných argumentů můžete nastavit argument `status`, aby `"Disabled"` vytvoření neaktivního plánu. Nakonec `continue_on_step_failure` umožňuje předat logickou hodnotu, která přepíše chování výchozího selhání kanálu.
+Kromě argumentů popsaných dříve můžete nastavit `status` argument `"Disabled"` pro vytvoření neaktivního plánu. Nakonec `continue_on_step_failure` umožňuje předat logickou hodnotu, která přepíše výchozí chování selhání kanálu.
 
-## <a name="view-your-scheduled-pipelines"></a>Zobrazit naplánované kanály
+## <a name="view-your-scheduled-pipelines"></a>Zobrazení naplánovaných kanálů
 
-Ve webovém prohlížeči přejděte na Azure Machine Learning. V části **koncové body** v navigačním panelu vyberte možnost **koncové body kanálu**. Tím přejdete na seznam kanálů publikovaných v pracovním prostoru.
+Ve webovém prohlížeči přejděte na Azure Machine Learning. V části **Koncové body** na navigačním panelu zvolte Koncové **body kanálu**. Tím přejdete na seznam kanálů publikovaných v pracovním prostoru.
 
-![Stránka kanálů v AML](./media/how-to-schedule-pipelines/scheduled-pipelines.png)
+![Stránka kanálů AML](./media/how-to-schedule-pipelines/scheduled-pipelines.png)
 
-Na této stránce si můžete prohlédnout souhrnné informace o všech kanálech v pracovním prostoru: názvy, popisy, stav a tak dále. Kliknutím na svůj kanál přejděte k podrobnostem. Na výsledné stránce jsou k dispozici další podrobnosti o vašem kanálu a můžete přejít k podrobnostem o jednotlivých spuštěních.
+Na této stránce můžete zobrazit souhrnné informace o všech kanálech v pracovním prostoru: názvy, popisy, stav a tak dále. Přejděte k podrobnostem kliknutím na kanál. Na výsledné stránce jsou další podrobnosti o kanálu a můžete přejít k podrobnostem do jednotlivých spuštění.
 
-## <a name="deactivate-the-pipeline"></a>Deaktivace kanálu
+## <a name="deactivate-the-pipeline"></a>Deaktivace potrubí
 
-Pokud máte `Pipeline`, která je publikována, ale není naplánována, můžete ji zakázat pomocí:
+Pokud máte, `Pipeline` který je publikován, ale není naplánováno, můžete zakázat pomocí:
 
 ```python
 pipeline = PublishedPipeline.get(ws, id=pipeline_id)
 pipeline.disable()
 ```
 
-Pokud je tento kanál naplánovaný, musíte nejdřív zrušit plán. Načtěte identifikátor plánu z portálu nebo spuštěním:
+Pokud je kanál naplánován, musíte nejprve zrušit plán. Načtení identifikátoru plánu z portálu nebo spuštěním:
 
 ```python
 ss = Schedule.list(ws)
@@ -124,7 +124,7 @@ for s in ss:
     print(s)
 ```
 
-Jakmile budete mít `schedule_id` chcete zakázat, spusťte příkaz:
+Jakmile budete `schedule_id` mít chcete zakázat, spusťte:
 
 ```python
 def stop_by_schedule_id(ws, schedule_id):
@@ -135,17 +135,17 @@ def stop_by_schedule_id(ws, schedule_id):
 stop_by_schedule_id(ws, schedule_id)
 ```
 
-Pokud pak znovu spustíte `Schedule.list(ws)`, měli byste získat prázdný seznam.
+Pokud pak `Schedule.list(ws)` spustit znovu, měli byste získat prázdný seznam.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste použili sadu SDK Azure Machine Learning pro Python k naplánování kanálu dvěma různými způsoby. Jeden plán se opakuje na základě uplynulých časových taktů. Druhý plán se spustí, pokud je soubor změněn v zadaném `Datastore` nebo v adresáři v tomto úložišti. Zjistili jste, jak použít portál k prohlédnutí kanálu a jednotlivých spuštění. Nakonec jste zjistili, jak zakázat plán, aby kanál přestal běžet.
+V tomto článku jste použili Azure Machine Learning SDK pro Python naplánovat kanál dvěma různými způsoby. Jeden plán se opakuje na základě uplynulého času hodin. Druhý plán se spustí, pokud je `Datastore` soubor změněn v zadaném adresáři nebo v adresáři v tomto úložišti. Viděli jste, jak pomocí portálu prozkoumat kanálu a jednotlivé spuštění. Nakonec jste se naučili zakázat plán tak, aby kanál přestal běžet.
 
 Další informace naleznete v tématu:
 
 > [!div class="nextstepaction"]
-> [Použití Azure Machine Learningch kanálů pro dávkové vyhodnocování](tutorial-pipeline-batch-scoring-classification.md)
+> [Použití azure machine learningpotrubí pro dávkové vyhodnocování](tutorial-pipeline-batch-scoring-classification.md)
 
 * Další informace o [kanálech](concept-ml-pipelines.md)
-* Další informace o [prozkoumání Azure Machine Learning pomocí Jupyter](samples-notebooks.md)
+* Další informace o [zkoumání Azure Machine Learning s Jupyter](samples-notebooks.md)
 

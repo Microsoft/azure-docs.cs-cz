@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: Vytvoření aplikace Pružiné spuštění v Azure Service Fabric'
+title: 'Úvodní příručka: Vytvoření aplikace pro jarní spuštění v Azure Service Fabric'
 description: V tomto rychlém startu nasadíte aplikaci Spring Boot pro Azure Service Fabric s využitím ukázkové aplikace Spring Boot.
 author: suhuruli
 ms.topic: quickstart
@@ -7,55 +7,55 @@ ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: eb96989b4a2731e78471b848d690b48352408d1c
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77121482"
 ---
-# <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>Rychlý Start: nasazení aplikace v jazyce Java pružiny do Azure Service Fabric
+# <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>Úvodní příručka: Nasazení aplikace Java Spring Boot na Azure Service Fabric
 
-V tomto rychlém startu nasadíte do Azure Service Fabric aplikaci Java pružiny, která využívá známé nástroje příkazového řádku v systému Linux nebo MacOS. Azure Service Fabric je platforma distribuovaných systémů pro nasazování a správu mikroslužeb a kontejnerů. 
+V tomto rychlém startu nasadíte java jarní spuštění aplikace azure service fabric pomocí známých nástrojů příkazového řádku na Linuxu nebo MacOS. Azure Service Fabric je platforma distribuovaných systémů pro nasazování a správu mikroslužeb a kontejnerů. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-#### <a name="linuxtablinux"></a>[Linux](#tab/linux)
+#### <a name="linux"></a>[Linux](#tab/linux)
 
-- [Prostředí Java](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development) a [Yeoman](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-yeoman-generators-for-containers-and-guest-executables)
-- [Service Fabric & SDK Service Fabric rozhraní příkazového řádku (CLI)](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
+- [Java prostředí](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development) a [Pojeoman](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-yeoman-generators-for-containers-and-guest-executables)
+- [Service Fabric SDK & rozhraní příkazového řádku service fabric (CLI)](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
 - [Git](https://git-scm.com/downloads)
 
-#### <a name="macostabmacos"></a>[MacOS](#tab/macos)
+#### <a name="macos"></a>[Macos](#tab/macos)
 
-- [Prostředí Java a Yeoman](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
-- [Service Fabric & SDK Service Fabric rozhraní příkazového řádku (CLI)](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli#cli-mac)
+- [Java prostředí a Pojeoman](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
+- [Service Fabric SDK & rozhraní příkazového řádku service fabric (CLI)](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli#cli-mac)
 - [Git](https://git-scm.com/downloads)
 
 --- 
 
 ## <a name="download-the-sample"></a>Stažení ukázky
 
-V okně terminálu pomocí následujícího příkazu naklonujte ukázkovou aplikaci pro pružinové spouštění [Začínáme](https://github.com/spring-guides/gs-spring-boot) do místního počítače.
+V okně terminálu spusťte následující příkaz a naklonujte ukázkovou aplikaci [Začínáme](https://github.com/spring-guides/gs-spring-boot) na jaře do místního počítače.
 
 ```bash
 git clone https://github.com/spring-guides/gs-spring-boot.git
 ```
 
 ## <a name="build-the-spring-boot-application"></a>Sestavení aplikace Spring Boot 
-V adresáři *GS-jaře-Boot/Complete* spusťte následující příkaz, který sestaví aplikaci. 
+Uvnitř *adresáře gs-spring-boot/complete* spusťte níže uvedený příkaz pro sestavení aplikace 
 
 ```bash
 ./gradlew build
 ``` 
 
 ## <a name="package-the-spring-boot-application"></a>Zabalení aplikace Spring Boot 
-1. Ve svém klonu v adresáři *GS-pružina Boot* spusťte příkaz `yo azuresfguest`. 
+1. Uvnitř *adresáře gs-spring-boot* ve vašem `yo azuresfguest` klonu spusťte příkaz. 
 
 1. Pro jednotlivé výzvy zadejte následující informace.
 
-    ![Yeoman položky spouštěcího spouštění](./media/service-fabric-quickstart-java-spring-boot/yeoman-entries-spring-boot.png)
+    ![Jarní Boot Yeoman položky](./media/service-fabric-quickstart-java-spring-boot/yeoman-entries-spring-boot.png)
 
-1. Ve složce *SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/Code* vytvořte soubor s názvem *EntryPoint.sh*. Do souboru *EntryPoint.sh* přidejte následující kód. 
+1. Ve složce *SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/code* vytvořte soubor s názvem *entryPoint.sh*. Do souboru *entryPoint.sh* přidejte následující kód. 
 
     ```bash
     #!/bin/bash
@@ -64,7 +64,7 @@ V adresáři *GS-jaře-Boot/Complete* spusťte následující příkaz, který s
     java -jar gs-spring-boot-0.1.0.jar
     ```
 
-1. Přidat prostředek **koncových bodů** do souboru *GS-Spring-Boot/SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/ServiceManifest. XML*
+1. Přidání prostředku **koncových bodů** do souboru *gs-spring-boot/SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/ServiceManifest.xml*
 
     ```xml 
         <Resources>
@@ -119,29 +119,29 @@ V této fázi jste vytvořili aplikaci Service Fabric pro ukázku Spring Boot Ge
     docker run --name sftestcluster -d -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 -p 8080:8080 mysfcluster
     ```
 
-    Spuštění místního clusteru nějakou dobu trvá. Pokud chcete potvrdit, že je cluster plně zapnutý, přejděte k Service Fabric Explorer v `http://localhost:19080`. Pět uzlů v pořádku značí, že je místní cluster zprovozněný. 
+    Spuštění místního clusteru nějakou dobu trvá. Pokud chcete potvrdit, že je cluster plně funkční, přejděte do Service Fabric Exploreru na adrese `http://localhost:19080`. Pět uzlů v pořádku značí, že je místní cluster zprovozněný. 
     
-    ![Service Fabric Explorer zobrazuje uzly v pořádku](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-healthy-nodes.png)
+    ![Průzkumník service fabric zobrazuje uzly v pořádku](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-healthy-nodes.png)
 
-1. Otevřete složku *GS-pružina Boot/SpringServiceFabric* .
+1. Otevřete složku *gs-spring-boot/SpringServiceFabric.*
 1. Spusťte následující příkaz pro připojení k místnímu clusteru.
 
     ```bash
     sfctl cluster select --endpoint http://localhost:19080
     ```
-1. Spusťte skript *install.sh* .
+1. Spusťte *skript install.sh.*
 
     ```bash
     ./install.sh
     ```
 
-1. Otevřete oblíbený webový prohlížeč a získejte přístup k aplikaci, a to tak, že získáte přístup k `http://localhost:8080`.
+1. Otevřete oblíbený webový prohlížeč a přejděte do aplikace na adrese `http://localhost:8080`.
 
-    ![Ukázka jarního spuštění Service Fabric](./media/service-fabric-quickstart-java-spring-boot/spring-boot-service-fabric-sample.png)
+    ![Ukázka struktury jarní spouštění](./media/service-fabric-quickstart-java-spring-boot/spring-boot-service-fabric-sample.png)
 
 Teď máte přístup k aplikaci Spring Boot, která je nasazená do clusteru Service Fabric.
 
-Další informace najdete na stránce s ukázkami jarního spuštění [Začínáme](https://spring.io/guides/gs/spring-boot/) na jaře.
+Další informace naleznete v [ukázce Začínáme](https://spring.io/guides/gs/spring-boot/) na jarním webu.
 
 ## <a name="scale-applications-and-services-in-a-cluster"></a>Škálování aplikací a služeb v clusteru
 
@@ -152,13 +152,13 @@ Service Fabric Explorer běží na všech clusterech Service Fabric a je příst
 Pokud chcete škálovat webovou front-end službu, postupujte následovně:
 
 1. Otevřete ve vašem clusteru Service Fabric Explorer – například `http://localhost:19080`.
-1. V ovládacím prvku TreeView vyberte tři tečky ( **...** ) vedle uzlu **Fabric:/SpringServiceFabric/SpringGettingStarted** a vyberte **škálovat službu**.
+1. Vyberte tři tečky (**...**) vedle **uzlu fabric:/SpringServiceFabric/SpringGettingStarted** v treeview a vyberte **měřítko služby**.
 
-    ![Ukázka služby Service Fabric Explorer Scale](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-scale-sample.png)
+    ![Ukázka škálovací služby Service Fabric Explorer](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-scale-sample.png)
 
     Nyní můžete škálovat počet instancí služby.
 
-1. Změňte číslo na **3** a vyberte **škálovat službu**.
+1. Změňte číslo na **3** a vyberte **Škálovat službu**.
 
     Jako alternativu ke škálování služby pomocí příkazového řádku můžete použít následující postup.
 
@@ -170,9 +170,9 @@ Pokud chcete škálovat webovou front-end službu, postupujte následovně:
     sfctl service update --service-id 'SpringServiceFabric~SpringGettingStarted' --instance-count 3 --stateless 
     ``` 
 
-1. Ve stromovém zobrazení vyberte uzel **Fabric:/SpringServiceFabric/SpringGettingStarted** a rozbalte uzel oddílu (REPREZENTOVANý identifikátorem GUID).
+1. Vyberte **prostředek infrastruktury:/SpringServiceFabric/SpringGettingStarted** uzlu v zobrazení stromu a rozbalte uzel oddílu (reprezentovaný identifikátorem GUID).
 
-    ![Služba škálování Service Fabric Explorer dokončena](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-partition-node.png)
+    ![Služba škálování Service Fabric Explorer byla dokončena](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-partition-node.png)
 
     Služba má tři instance a stromové zobrazení ukazuje, na kterých uzlech jsou tyto instance spuštěné.
 
@@ -183,19 +183,19 @@ Touto jednoduchou úlohou správy jste zdvojnásobili prostředky, které má fr
 Jako ukázku převzetí služeb při selhání simulujeme restartování uzlu pomocí Service Fabric Exploreru. Zkontrolujte, že je spuštěná jenom jedna instance vaší služby.
 
 1. Otevřete ve vašem clusteru Service Fabric Explorer – například `http://localhost:19080`.
-1. Vyberte tři tečky ( **...** ) vedle uzlu, na kterém je spuštěná instance služby, a restartujte uzel.
+1. Vyberte tři tečky (**...**) vedle uzlu, ve které je spuštěna instance služby, a restartujte uzel.
 
-    ![Service Fabric Explorer restartovat uzel](./media/service-fabric-quickstart-java-spring-boot/service=fabric-explorer-restart=node.png)
+    ![Uzel restartování aplikace Service Fabric Explorer](./media/service-fabric-quickstart-java-spring-boot/service=fabric-explorer-restart=node.png)
 1. Instance vaší služby se přesune na jiný uzel a vaše aplikace nebude mít žádný výpadek.
 
-    ![Service Fabric Explorer restartování uzlu bylo úspěšné.](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-service-moved.png)
+    ![Aplikace Service Fabric Explorer restartovala uzel úspěšného restartování](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-service-moved.png)
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste se naučili:
 
 * Nasazení aplikace Spring Boot do služby Service Fabric
-* Nasadit aplikaci do místního clusteru.
+* Nasazení aplikace do místního clusteru
 * Škálování aplikace na více instancí napříč několika uzly
 * Převzetí služeb při selhání vaší služby bez omezení dostupnosti
 

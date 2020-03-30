@@ -1,6 +1,6 @@
 ---
-title: Uživatelské prostředí s Azure AD Identity Protection
-description: Činnost koncového uživatele Azure AD Identity Protection
+title: Uživatelské prostředí se službou Azure AD Identity Protection
+description: Uživatelské prostředí azure ad identity ochrany
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -12,76 +12,76 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cc10fb4f9894a355c9eed024ae9f87747214999b
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72886997"
 ---
-# <a name="user-experiences-with-azure-ad-identity-protection"></a>Uživatelské prostředí s Azure AD Identity Protection
+# <a name="user-experiences-with-azure-ad-identity-protection"></a>Uživatelské prostředí se službou Azure AD Identity Protection
 
-Pomocí Azure Active Directory Identity Protection můžete:
+Pomocí ochrany identity služby Azure Active Directory můžete:
 
-* Vyžadovat, aby se uživatelé zaregistrovali pro Azure Multi-Factor Authentication (MFA)
-* Automatizovaná náprava rizikových přihlášení a ohrožených uživatelů
+* Vyžadovat, aby se uživatelé registrovali pro vícefaktorové ověřování Azure (MFA)
+* Automatizace nápravy rizikových přihlášení a ohrožených uživatelů
 
-Všechny zásady ochrany identity mají dopad na přihlašovací prostředí pro uživatele. Umožnění, aby se uživatelé zaregistrovali a používali nástroje jako Azure MFA a Samoobslužné resetování hesla, můžou dopad snížit. Tyto nástroje spolu s příslušnými volbami zásad poskytují uživatelům možnost automatického nápravy, když ji potřebují.
+Všechny zásady ochrany identity mají vliv na přihlašovací prostředí pro uživatele. Povolení uživatelům zaregistrovat a používat nástroje, jako je Azure MFA a samoobslužné resetování hesla může zmírnit dopad. Tyto nástroje spolu s příslušnými volbami zásad poskytují uživatelům možnost samonápravy, když ji potřebují.
 
-## <a name="multi-factor-authentication-registration"></a>Registrace Multi-Factor Authentication
+## <a name="multi-factor-authentication-registration"></a>Registrace vícefaktorového ověřování
 
-Když zapnete zásadu ochrany identit, která vyžaduje registraci Multi-Factor Authentication a cílíte na všechny vaše uživatele, bude mít možnost využít Azure MFA k samoobslužné nápravě v budoucnu. Po nakonfigurování této zásady budou mít uživatelé po dobu 14 dní, kdy se můžou rozhodnout zaregistrovat a na konci, se budou muset zaregistrovat. Níže jsou uvedené možnosti pro uživatele. Další informace najdete v dokumentaci pro koncové uživatele v článku [Přehled dvou faktorů ověřování a pracovního nebo školního účtu](../user-help/user-help-two-step-verification-overview.md).
+Povolení zásad ochrany identity, které vyžadují registraci vícefaktorového ověřování a cílení na všechny uživatele, zajistí, že budou mít možnost používat Azure MFA k vlastní nápravě v budoucnu. Konfigurace této zásady poskytuje uživatelům 14denní období, kdy se mohou zaregistrovat a na konci jsou nuceni se zaregistrovat. Prostředí pro uživatele je uvedeno níže. Více informací naleznete v dokumentaci ke koncovým uživatelům v článku [Přehled dvoufaktorového ověření a vašemu pracovnímu nebo školnímu účtu](../user-help/user-help-two-step-verification-overview.md).
 
 ### <a name="registration-interrupt"></a>Přerušení registrace
 
-1. Při přihlášení k libovolné aplikaci integrované v Azure AD získá uživatel oznámení o požadavku na nastavení účtu pro službu Multi-Factor Authentication. Tato zásada se taky aktivuje v prostředí Windows 10 pro nové uživatele s novým zařízením.
+1. Při přihlášení k jakékoli aplikaci integrované azure ad, uživatel dostane oznámení o požadavku na nastavení účtu pro vícefaktorové ověřování. Tato zásada se aktivuje také ve Windows 10 Out of Box Experience pro nové uživatele s novým zařízením.
    
-    ![Jsou požadovány další informace](./media/concept-identity-protection-user-experience/identity-protection-experience-more-info-mfa.png)
+    ![Další informace jsou požadovány](./media/concept-identity-protection-user-experience/identity-protection-experience-more-info-mfa.png)
 
-1. Dokončete kroky průvodce pro registraci k Azure Multi-Factor Authentication a dokončete přihlášení.
+1. Dokončete kroky s asistencí, abyste se zaregistrovali pro azure multifaktorové ověřování a dokončete přihlášení.
 
-## <a name="risky-sign-in-remediation"></a>Riziková náprava při přihlašování
+## <a name="risky-sign-in-remediation"></a>Riskantní náprava přihlášení
 
-Když správce nakonfiguroval zásadu pro rizika přihlašování, budou mít postižení uživatelé oznámení, že se pokusí přihlásit a aktivovat úroveň rizika zásad. 
+Pokud správce nakonfiguroval zásadu pro rizika přihlášení, jsou ovlivnění uživatelé upozorněni, když se pokusí přihlásit a aktivovat úroveň rizika zásad. 
 
-### <a name="risky-sign-in-self-remediation"></a>Rizikové přihlašování při automatické nápravě
+### <a name="risky-sign-in-self-remediation"></a>Riskantní samonáprava přihlášení
 
-1. Uživatel je informován o tom, že při přihlašování byl zjištěn nějaký neobvyklý, například přihlašování z nového umístění, zařízení nebo aplikace.
+1. Uživatel je informován, že o jeho přihlášení bylo zjištěno něco neobvyklého, například přihlášení z nového umístění, zařízení nebo aplikace.
    
-    ![Něco neobvyklého dotazu](./media/concept-identity-protection-user-experience/120.png)
+    ![Něco neobvyklého rychlého](./media/concept-identity-protection-user-experience/120.png)
 
-1. Uživatel musí prokázat svoji identitu tím, že dokončí Azure MFA s jednou z dříve registrovaných metod. 
+1. Uživatel je povinen prokázat svou identitu dokončením Azure MFA s jedním z jejich dříve registrovaných metod. 
 
-### <a name="risky-sign-in-administrator-unblock"></a>Odblokování rizik správce přihlášení
+### <a name="risky-sign-in-administrator-unblock"></a>Rizikový přihlašovací správce odblokování
 
-Správci se můžou rozhodnout blokování uživatelů při přihlášení v závislosti na jejich úrovni rizika. Chcete-li se odblokovat, musí se koncoví uživatelé obrátit na pracovníky IT, jinak se můžou pokusit přihlásit ze známého umístění nebo zařízení. V tomto případě není možnost samoobslužné nápravy prováděná službou Multi-Factor Authentication.
+Správci se mohou rozhodnout blokovat uživatele při přihlášení v závislosti na jejich úrovni rizika. Chcete-li se odblokovat, musí koncoví uživatelé kontaktovat své pracovníky IT nebo se mohou pokusit přihlásit ze známého umístění nebo zařízení. Vlastní náprava provedením vícefaktorového ověřování není v tomto případě možností.
 
-![Blokováno zásadami rizik přihlašování](./media/concept-identity-protection-user-experience/200.png)
+![Blokováno zásadami rizika přihlášení](./media/concept-identity-protection-user-experience/200.png)
 
-Pracovníci IT můžou postupovat podle pokynů v části zrušení [blokování uživatelů](howto-identity-protection-remediate-unblock.md#unblocking-based-on-sign-in-risk) , aby se uživatelé mohli znovu přihlašovat.
+Pracovníci IT mohou postupovat podle pokynů v části [Odblokování uživatelů,](howto-identity-protection-remediate-unblock.md#unblocking-based-on-sign-in-risk) aby se uživatelé mohli přihlásit zpět.
 
-## <a name="risky-user-remediation"></a>Riziková náprava uživatelů
+## <a name="risky-user-remediation"></a>Riskantní náprava uživatelů
 
-Když se nakonfigurovaly zásady rizik uživatelů, musí si uživatelé, kteří splňují riziko ohrožení zabezpečení uživatele, projít tok obnovení před tím, než se budou moct přihlásit. 
+Pokud byla nakonfigurována zásada rizika uživatele, uživatelé, kteří splňují pravděpodobnost ohrožení ohrožení ohrožení úrovně rizika uživatele, musí před přihlášením projít tokem obnovení ohrožení uživatele. 
 
-### <a name="risky-user-self-remediation"></a>Riziková náprava uživatele
+### <a name="risky-user-self-remediation"></a>Riziková samonáprava uživatelů
 
-1. Uživatel je informován o ohrožení zabezpečení jejich účtu z důvodu podezřelé aktivity nebo nevrácených přihlašovacích údajů.
+1. Uživatel je informován, že zabezpečení účtu je ohroženo z důvodu podezřelé aktivity nebo uniklých přihlašovacích údajů.
    
-    ![Nápravy](./media/concept-identity-protection-user-experience/101.png)
+    ![Odstranění rizika](./media/concept-identity-protection-user-experience/101.png)
 
-1. Uživatel musí prokázat svoji identitu tím, že dokončí Azure MFA s jednou z dříve registrovaných metod. 
-1. Nakonec uživatel bude muset změnit heslo pomocí samoobslužného resetování hesla, protože někdo jiný mohl mít přístup ke svému účtu.
+1. Uživatel je povinen prokázat svou identitu dokončením Azure MFA s jedním z jejich dříve registrovaných metod. 
+1. Nakonec je uživatel nucen změnit své heslo pomocí samoobslužného resetování hesla, protože někdo jiný mohl mít přístup ke svému účtu.
 
-## <a name="risky-sign-in-administrator-unblock"></a>Odblokování rizik správce přihlášení
+## <a name="risky-sign-in-administrator-unblock"></a>Rizikový přihlašovací správce odblokování
 
-Správci se můžou rozhodnout blokování uživatelů při přihlášení v závislosti na jejich úrovni rizika. Chcete-li se odblokovat, musí se koncoví uživatelé obrátit na pracovníky IT. Automatické opravy pomocí služby Multi-Factor Authentication a samoobslužného resetování hesla není v tomto případě možnost.
+Správci se mohou rozhodnout blokovat uživatele při přihlášení v závislosti na jejich úrovni rizika. Chcete-li získat odblokování, koncoví uživatelé musí kontaktovat své IT pracovníky. Samonáprava provedením vícefaktorového ověřování a samoobslužným resetováním hesla není v tomto případě možné.
 
 ![Blokováno zásadami rizika uživatele](./media/concept-identity-protection-user-experience/104.png)
 
-Pracovníci IT můžou postupovat podle pokynů v části zrušení [blokování uživatelů](howto-identity-protection-remediate-unblock.md#unblocking-based-on-user-risk) , aby se uživatelé mohli znovu přihlašovat.
+Pracovníci IT mohou postupovat podle pokynů v části [Odblokování uživatelů,](howto-identity-protection-remediate-unblock.md#unblocking-based-on-user-risk) aby se uživatelé mohli přihlásit zpět.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
-- [Oprava rizik a odblokování uživatelů](howto-identity-protection-remediate-unblock.md)
+- [Náprava rizik a odblokování uživatelů](howto-identity-protection-remediate-unblock.md)
 
-- [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) 
+- [Ochrana identit služby Azure Active Directory](../active-directory-identityprotection.md) 

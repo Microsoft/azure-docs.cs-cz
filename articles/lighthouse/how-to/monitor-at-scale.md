@@ -1,43 +1,43 @@
 ---
-title: Monitorování delegovaných prostředků ve velkém měřítku
-description: Naučte se efektivně používat Azure Monitor protokoly škálovatelným způsobem napříč klienty zákazníka, které spravujete.
+title: Sledování delegovaných prostředků ve velkém měřítku
+description: Zjistěte, jak efektivně využívat protokoly azure monitoru škálovatelným způsobem napříč klienty zákazníků, které spravujete.
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.openlocfilehash: 217df3c55ab54b6569bae8cacb338764ecb7125d
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77122893"
 ---
-# <a name="monitor-delegated-resources-at-scale"></a>Monitorování delegovaných prostředků ve velkém měřítku
+# <a name="monitor-delegated-resources-at-scale"></a>Sledování delegovaných prostředků ve velkém měřítku
 
-Jako poskytovatel služeb můžete mít k dispozici více zákazníků pro správu delegovaných prostředků Azure. [Azure Lighthouse](../overview.md) umožňuje poskytovatelům služeb provádět operace ve velkém měřítku napříč několika klienty najednou, což usnadňuje úlohy správy.
+Jako poskytovatel služeb můžete mít na palubě více klienty zákazníků pro správu delegovaných prostředků Azure. [Azure Lighthouse](../overview.md) umožňuje poskytovatelům služeb provádět operace ve velkém měřítku napříč několika tenanty najednou, což zefektivňuje úlohy správy.
 
-V tomto tématu se dozvíte, jak používat [Azure monitor protokoly](../../azure-monitor/platform/data-platform-logs.md) škálovatelným způsobem napříč klienty zákazníka, které spravujete.
+Toto téma ukazuje, jak používat [protokoly monitorování Azure](../../azure-monitor/platform/data-platform-logs.md) škálovatelným způsobem napříč klienty zákazníků, které spravujete.
 
-## <a name="create-log-analytics-workspaces"></a>Vytváření Log Analyticsch pracovních prostorů
+## <a name="create-log-analytics-workspaces"></a>Vytvoření pracovních prostorů analýzy protokolů
 
-Aby bylo možné shromažďovat data, budete muset vytvořit Log Analytics pracovní prostory. Tyto pracovní prostory Log Analytics jsou jedinečná prostředí pro data shromažďovaná pomocí Azure Monitor. Každý pracovní prostor má své vlastní úložiště a konfiguraci dat a zdroje dat a řešení jsou nakonfigurovány tak, aby ukládaly data do konkrétního pracovního prostoru.
+Chcete-li shromažďovat data, budete muset vytvořit pracovní prostory Log Analytics. Tyto pracovní prostory Log Analytics jsou jedinečná prostředí pro data shromážděná službou Azure Monitor. Každý pracovní prostor má své vlastní úložiště dat a konfiguraci a zdroje dat a řešení jsou nakonfigurovány tak, aby ukládali data v určitém pracovním prostoru.
 
-Tyto pracovní prostory doporučujeme vytvořit přímo v klientech zákazníka. Tímto způsobem jejich data zůstanou ve svých klientech a nebudete je exportovat do vašich představ. Díky tomu je možné centralizované monitorování všech prostředků nebo služeb, které Log Analytics podporuje, a poskytuje větší flexibilitu v tom, jaké typy dat sledujete.
+Doporučujeme vytvořit tyto pracovní prostory přímo v klientech zákazníků. Tímto způsobem jejich data zůstanou v jejich tenantech, spíše než exportovat do vás. To také umožňuje centralizované monitorování všech prostředků nebo služeb podporovaných log analytics, což vám dává větší flexibilitu na jaké typy dat, které sledujete.
 
-Pracovní prostor Log Analytics můžete vytvořit pomocí [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md), pomocí rozhraní příkazového [řádku Azure](../../azure-monitor/learn/quick-create-workspace-cli.md)nebo pomocí [Azure PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md).
+Pracovní prostor Analýzy protokolů můžete vytvořit pomocí [portálu Azure](../../azure-monitor/learn/quick-create-workspace.md), pomocí [azure cli](../../azure-monitor/learn/quick-create-workspace-cli.md)nebo pomocí [Azure PowerShellu](../../azure-monitor/learn/quick-create-workspace-posh.md).
 
 ## <a name="deploy-policies-that-log-data"></a>Nasazení zásad, které protokolují data
 
-Po vytvoření pracovního prostoru Log Analytics můžete nasadit [Azure Policy](../../governance/policy/index.yml) v rámci hierarchií zákazníků, aby se diagnostická data odesílala do příslušného pracovního prostoru v každém tenantovi. Přesné zásady, které nasadíte, se můžou lišit v závislosti na typech prostředků, které chcete monitorovat.
+Po vytvoření pracovních prostorů Analýzy protokolů můžete nasadit [zásady Azure](../../governance/policy/index.yml) napříč hierarchiemi zákazníků, aby se diagnostická data odesílala do příslušného pracovního prostoru v každém tenantovi. Přesné zásady, které nasadíte, se mohou lišit v závislosti na typech prostředků, které chcete sledovat.
 
-Další informace o vytváření zásad najdete v tématu [kurz: vytvoření a Správa zásad pro vymáhání dodržování předpisů](../../governance/policy/tutorials/create-and-manage.md). Tento [Nástroj Community](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/tools/azure-diagnostics-policy-generator) poskytuje skript, který vám pomůže vytvořit zásady pro monitorování konkrétních typů prostředků, které zvolíte.
+Další informace o vytváření zásad najdete [v tématu Výuka: Vytvoření a správa zásad pro vynucení dodržování předpisů](../../governance/policy/tutorials/create-and-manage.md). Tento [komunitní nástroj](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/tools/azure-diagnostics-policy-generator) poskytuje skript, který vám pomůže vytvořit zásady pro sledování konkrétních typů prostředků, které zvolíte.
 
-Když určíte, které zásady se mají nasadit, můžete [je nasadit na škálovatelné své delegované předplatné](policy-at-scale.md).
+Až určíte, které zásady se mají nasadit, můžete [je nasadit do delegovaných předplatných ve velkém měřítku](policy-at-scale.md).
 
-## <a name="analyze-the-gathered-data"></a>Analyzovat shromážděná data
+## <a name="analyze-the-gathered-data"></a>Analýza shromážděných dat
 
-Po nasazení zásad se data přihlásí do Log Analytics pracovních prostorů, které jste vytvořili v každém tenantovi zákazníka. Pokud chcete získat přehledy pro všechny spravované zákazníky, můžete pomocí nástrojů, jako jsou [Azure monitor sešity](../../azure-monitor/platform/workbooks-overview.md) , shromažďovat a analyzovat informace z více zdrojů dat.
+Po nasazení zásad se data zaznamená do pracovních prostorů Analýzy protokolů, které jste vytvořili v každém klientovi zákazníka. Chcete-li získat přehledy mezi všemi spravovanými zákazníky, můžete pomocí nástrojů, jako jsou [sešity Azure Monitor,](../../azure-monitor/platform/workbooks-overview.md) shromažďovat a analyzovat informace z více zdrojů dat.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si o [Azure monitor](../../azure-monitor/index.yml).
-- Přečtěte si o [Azure Monitorch protokolech](../../azure-monitor/platform/data-platform-logs.md).
-- Přečtěte si o [prostředích pro správu mezi klienty](../concepts/cross-tenant-management-experience.md).
+- Další informace o [Azure Monitor](../../azure-monitor/index.yml).
+- Další informace o [protokolech monitorování Azure](../../azure-monitor/platform/data-platform-logs.md).
+- Další informace o [prostředích správy mezi tenanty](../concepts/cross-tenant-management-experience.md).

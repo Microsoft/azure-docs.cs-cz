@@ -1,6 +1,6 @@
 ---
-title: Správa správy inteligentních zásob v architektuře IoT | Microsoft Docs
-description: Architektura šablony správy inteligentního inventáře IoT pro IoT Central
+title: Architektura IoT Smart Inventory Management | Dokumenty společnosti Microsoft
+description: Architektura šablony IoT Smart Inventory Management pro IoT Central
 author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
@@ -8,50 +8,50 @@ ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
 ms.openlocfilehash: 756f15f6cb0d797d2a7db5fbe5c6157b2913b40b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77020858"
 ---
-# <a name="architecture-of-iot-central-smart-inventory-management-application-template"></a>Architektura šablony aplikace IoT Central správy inteligentního inventáře
+# <a name="architecture-of-iot-central-smart-inventory-management-application-template"></a>Architektura šablony aplikace pro inteligentní řízení inventáře IoT Central
 
-Partneři a zákazníci můžou použít šablonu aplikace a následující pokyny k vývoji kompletních řešení pro **správu inteligentních inventářů** .
+Partneři a zákazníci mohou pomocí šablony aplikace a následujících pokynů vyvinout řešení **pro správu inteligentních zásob** od konce.
 
 > [!div class="mx-imgBorder"]
-> ](./media/concept-smart-inventory-mgmt-architecture/smart-inventory-management-architecture.png) ![správy inteligentních inventářů
+> ![inteligentní řízení zásob](./media/concept-smart-inventory-mgmt-architecture/smart-inventory-management-architecture.png)
 
-1. Sada senzorů IoT odesílajících data telemetrie na zařízení brány
-2. Zařízení brány odesílající telemetrii a agregované přehledy pro IoT Central
-3. Data jsou směrována do požadované služby Azure pro manipulaci
-4. Služby Azure, jako je ASA nebo Azure Functions, se dají použít k přeformátování datových proudů a posílání do požadovaných účtů úložiště. 
-5. Zpracovaná data se ukládají do horkého úložiště pro akce téměř v reálném čase nebo z chladírenského úložiště pro další vylepšení Insights založená na ML nebo analýze dávek. 
-6. Logic Apps můžete použít k napájení různých podnikových pracovních postupů v podnikových aplikacích koncových uživatelů.
+1. Sada ioT senzorů odesílajících telemetrická data do zařízení brány
+2. Zařízení brány odesílající telemetrii a agregované přehledy do IoT Central
+3. Data jsou směrována na požadovanou službu Azure pro manipulaci
+4. Služby Azure, jako je ASA nebo Azure Functions, se můžou použít k přeformátování datových proudů a odesílání na požadované účty úložiště. 
+5. Zpracovaná data jsou uložena v horkém úložišti pro akce téměř v reálném čase nebo v chladírenském úložišti pro další vylepšení přehledu, která jsou založena na analýze ML nebo dávky. 
+6. Logic Apps lze použít k napájení různých obchodních pracovních postupů v obchodních aplikacích koncových uživatelů
 
 ## <a name="details"></a>Podrobnosti
-Následující část popisuje jednotlivé části ingestování telemetrie architektury konceptuální architektury ze služby radiofrekvenční identifikace (RFID), značky s nízkými energií (v/v).
+Následující část popisuje každou část konceptuální architektury Telemetrie požití z radiofrekvenční identifikace (RFID), Bluetooth nízkoenergetické (BLE) tagy
 
-## <a name="rfid-tags"></a>Štítky RFID
-Štítky RFID odesílají data o položce prostřednictvím rádiových vln. Pokud není zadaný, značky RFID obvykle nemají baterii. Značky získají energii od rádiových vln vygenerovaných čtecím modulem a odesílají signál zpátky ke čtečce RFID.
+## <a name="rfid-tags"></a>RFID tagy
+RFID tagy přenášejí data o položce rádiovými vlnami. RFID tagy obvykle nemají baterii, pokud není zadána. Tagy přijímají energii z rádiových vln generovaných čtečkou a přenášejí signál zpět k rfid čtečce.
 
-## <a name="ble-tags"></a>Tagy pro tabulku
-Energetická signalizace vysílá pakety dat v pravidelných intervalech. Data o majáku zjišťují čtenáři nebo nainstalují služby na smartphonech a pak je přenáší do cloudu.
+## <a name="ble-tags"></a>Značky BLE
+Energetický maják vysílá pakety dat v pravidelných intervalech. Beacon data jsou detekovány BLE čtenáři nebo nainstalovanými službami na smartphonech a pak je přenášejí do cloudu.
 
-## <a name="rfid--ble-readers"></a>& Čtenáři v nástroji pro čtení obsahu RFID
-Čtečka RFID převede rádiové vlny na užitečnější formu dat. Informace shromažďované ze značek se pak ukládají na místní hraniční Server nebo se odesílají do cloudu pomocí JSON-RPC 2,0 přes MQTT.
-Čtečka v aplikaci návštěvník se také označuje jako přístupový bod (přístupový bod), která je podobná čtečce RFID. Slouží k detekci okolních signálů Bluetooth a k přenosu své zprávy do místní Azure IoT Edge nebo cloudu s využitím JSON – RPC 2,0 přes MQTT.
-Mnoho čtenářů dokáže číst signály RFID a majáku a poskytovat další senzory související s teplotou, vlhkostí, akcelerometrem a vybavený gyroskopem.
+## <a name="rfid--ble-readers"></a>RFID & BLE čtečky
+RFID čtečka převádí rádiové vlny na použitelnější formu dat. Informace shromážděné ze značek jsou pak uloženy na místním hraničním serveru nebo odeslány do cloudu pomocí JSON-RPC 2.0 přes MQTT.
+Ble čtečka také známá jako přístupové body (AP) jsou podobné rfid čtečce. Používá se k detekci blízkých signálů Bluetooth a přenosu jeho zprávy do místní Azure IoT Edge nebo cloud pomocí JSON-RPC 2.0 přes MQTT.
+Mnoho čtenářů je schopno číst Signály RFID a majáku a poskytovat další schopnosti senzoru související s teplotou, vlhkostí, akcelerometrem a gyroskopem.
 
 ## <a name="azure-iot-edge-gateway"></a>Brána Azure IoT Edge
-Azure IoT Edge Server poskytuje místo pro místní zpracování těchto dat před jejich odesláním do cloudu. Můžete také nasadit cloudové úlohy umělal Intelligence, Azure a služeb třetích stran s obchodní logikou pomocí standardních kontejnerů.
+Server Azure IoT Edge poskytuje místo pro předběžné zpracování dat místně před jejich odesláním do cloudu. Můžeme také nasadit cloudové úlohy umělá inteligence, Azure a služby třetích stran, obchodní logiku pomocí standardních kontejnerů.
 
-## <a name="device-management-with-iot-central"></a>Správa zařízení pomocí IoT Central 
-Azure IoT Central je vývojová platforma pro řešení, která zjednodušuje připojení zařízení IoT, konfiguraci a správu. Platforma významně snižuje zatížení a náklady na správu zařízení IoT, operace a související vývoj. Zákazníci, kteří & partneři, mohou vytvořit koncová podniková řešení pro zajištění smyčky digitální zpětné vazby v rámci správy inventáře.
+## <a name="device-management-with-iot-central"></a>Správa zařízení s IoT Central 
+Azure IoT Central je platforma pro vývoj řešení, která zjednodušuje připojení, konfiguraci a správu zařízení IoT. Platforma výrazně snižuje zátěž a náklady na správu zařízení IoT, provoz a související vývoj. Zákazníci & partneři mohou vytvořit komplexní podniková řešení, aby dosáhli smyčky digitální zpětné vazby ve správě zásob.
 
-## <a name="business-insights--actions-using-data-egress"></a>& Akcí pro Business Insights s využitím odchozího přenosu dat 
-Platforma IoT Central poskytuje bohatou možnost rozšiřitelnosti prostřednictvím exportu a rozhraní API pro průběžné exporty dat (CDE). Obchodní přehledy založené na zpracování dat telemetrie nebo nezpracovaná telemetrie se obvykle exportují do upřednostňované obchodní aplikace. Dá se dosáhnout pomocí Webhooku, Service Bus, centra událostí nebo úložiště objektů BLOB k sestavování, výuce a nasazení modelů strojového učení & dalších obohacení přehledů.
+## <a name="business-insights--actions-using-data-egress"></a>Obchodní přehledy & akce pomocí odchozího přenosu dat 
+Platforma IoT Central poskytuje bohaté možnosti rozšiřitelnosti prostřednictvím průběžného exportu dat (CDE) a api. Obchodní přehledy založené na zpracování telemetrických dat nebo nezpracovaná telemetrie se obvykle exportují do upřednostňované obchodní aplikace. Toho lze dosáhnout pomocí webhooku, service bus, centra událostí nebo úložiště objektů blob k vytváření, trénování a nasazování modelů strojového učení & další informace obohatit.
 
 ## <a name="next-steps"></a>Další kroky
-* Naučte se nasadit [šablonu správy inteligentních inventářů](./tutorial-iot-central-smart-inventory-management-pnp.md) .
-* Další informace o [IoT Central maloobchodních šablon](./overview-iot-central-retail-pnp.md)
-* Další informace o IoT Central najdete v tématu [IoT Central Overview](../core/overview-iot-central.md) .
+* Přečtěte si, jak nasadit [šablonu pro inteligentní správu inventáře](./tutorial-iot-central-smart-inventory-management-pnp.md)
+* Další informace o [maloobchodních šablonách IoT Central](./overview-iot-central-retail-pnp.md)
+* Další informace o IoT Central najdete v [přehledu IoT Central](../core/overview-iot-central.md)

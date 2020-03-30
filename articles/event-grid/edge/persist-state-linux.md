@@ -1,6 +1,6 @@
 ---
-title: Trvalý stav v systému Linux-Azure Event Grid IoT Edge | Microsoft Docs
-description: Zachovat metadata v systému Linux
+title: Trvalý stav v Linuxu – Azure Event Grid IoT Edge | Dokumenty společnosti Microsoft
+description: Zachovat metadata v Linuxu
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,26 +10,26 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 12655d2ceb4a1124376d9bddf82194472c98ebb9
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77086649"
 ---
-# <a name="persist-state-in-linux"></a>Trvalý stav v systému Linux
+# <a name="persist-state-in-linux"></a>Trvalý stav v Linuxu
 
-Témata a odběry vytvořené v modulu Event Grid jsou ve výchozím nastavení uloženy v systému souborů kontejnerů. Bez trvalosti se při opětovném nasazení modulu všechna vytvořená metadata ztratí. Chcete-li zachovat data napříč nasazeními a restarty, je nutné zachovat data mimo systém souborů kontejnerů.
+Témata a odběry vytvořené v modulu Event Grid jsou ve výchozím nastavení uloženy v systému souborů kontejneru. Bez trvalost, pokud je modul znovu nasazen, všechna vytvořená metadata by byla ztracena. Chcete-li zachovat data v rámci nasazení a restartování, je třeba zachovat data mimo systém souborů kontejneru.
 
-Ve výchozím nastavení jsou uložena pouze metadata a události jsou stále uloženy v paměti pro zvýšení výkonu. Dodržujte oddíl trvalé události a povolte taky trvalost událostí.
+Ve výchozím nastavení jsou zachována pouze metadata a události jsou stále uloženy v paměti pro lepší výkon. Postupujte podle části trvalé události povolit trvalost událostí také.
 
-Tento článek popisuje postup nasazení modulu Event Grid s trvalým nasazením do systému Linux.
+Tento článek obsahuje postup nasazení modulu Event Grid s trvalostí v nasazení linuxu.
 
 > [!NOTE]
->Modul Event Grid se spouští jako uživatel s nízkými oprávněními s `2000` UID a názvem `eventgriduser`.
+>Modul Event Grid běží jako uživatel s nízkými `2000` oprávněními s UID a názvem `eventgriduser`.
 
-## <a name="persistence-via-volume-mount"></a>Stálost prostřednictvím připojení svazku
+## <a name="persistence-via-volume-mount"></a>Trvalost pomocí připojení hlasitosti
 
- K zachování dat napříč nasazeními se používají [dokovací svazky](https://docs.docker.com/storage/volumes/) . Docker můžete nechat automaticky vytvořit pojmenovaný svazek jako součást nasazení modulu Event Grid. Tato možnost je nejjednodušší. Název svazku, který se má vytvořit, můžete zadat v oddílu **Binds** následujícím způsobem:
+ [Svazky Dockeru](https://docs.docker.com/storage/volumes/) se používají k zachování dat napříč nasazeními. Docker můžete automaticky vytvořit pojmenovaný svazek jako součást nasazení modulu Event Grid. Tato možnost je nejjednodušší volbou. Název svazku, který má být vytvořen, můžete zadat v části **Vazby** následujícím způsobem:
 
 ```json
   {
@@ -42,9 +42,9 @@ Tento článek popisuje postup nasazení modulu Event Grid s trvalým nasazením
 ```
 
 >[!IMPORTANT]
->Neměňte druhou část hodnoty vazby. Odkazuje na konkrétní umístění v rámci modulu. Pro modul Event Grid v systému Linux musí být **/App/metadataDb**.
+>Neměňte druhou část hodnoty vazby. Ukazuje na konkrétní umístění v modulu. Pro modul Event Grid na Linuxu musí být **/app/metadataDb**.
 
-Například následující konfigurace bude mít za následek vytvoření svazku **egmetadataDbVol** , ve kterém budou metadata trvalá.
+Například následující konfigurace bude mít za následek vytvoření svazku **egmetadataDbVol,** kde budou metadata trvalé.
 
 ```json
  {
@@ -77,40 +77,40 @@ Například následující konfigurace bude mít za následek vytvoření svazku
 }
 ```
 
-Místo připojení svazku můžete vytvořit adresář v hostitelském systému a připojit tento adresář.
+Namísto připojení svazku můžete vytvořit adresář v hostitelském systému a připojit tento adresář.
 
-## <a name="persistence-via-host-directory-mount"></a>Stálost prostřednictvím hostitelského adresářového připojení
+## <a name="persistence-via-host-directory-mount"></a>Trvalost prostřednictvím připojení adresáře hostitele
 
-Místo svazku Docker máte také možnost připojit složku hostitele.
+Namísto svazku dockeru máte také možnost připojit složky hostitele.
 
-1. Nejdřív na hostitelském počítači vytvořte uživatele s názvem **eventgriduser** a ID **2000** , a to spuštěním následujícího příkazu:
+1. Nejprve vytvořte uživatele s názvem **eventgriduser** a ID **2000** na hostitelském počítači spuštěním následujícího příkazu:
 
     ```sh
     sudo useradd -u 2000 eventgriduser
     ```
-1. Spuštěním následujícího příkazu vytvořte adresář v systému souborů hostitele.
+1. Pomocí následujícího příkazu vytvořte v hostitelském systému souborů adresář.
 
    ```sh
    md <your-directory-name-here>
    ```
 
-    Například spuštění následujícího příkazu vytvoří adresář s názvem **myhostdir**.
+    Například spuštěnínásledujícího příkazu vytvoří adresář s názvem **myhostdir**.
 
     ```sh
     md /myhostdir
     ```
-1. Dále vytvořte **eventgriduser** vlastníka této složky spuštěním následujícího příkazu.
+1. Dále vytvořte **vlastníka eventgriduser** této složky spuštěním následujícího příkazu.
 
    ```sh
    sudo chown eventgriduser:eventgriduser -hR <your-directory-name-here>
    ```
 
-    Například
+    Například:
 
     ```sh
     sudo chown eventgriduser:eventgriduser -hR /myhostdir
     ```
-1. Pomocí **vazeb** připojte adresář a znovu nasaďte modul Event Grid z Azure Portal.
+1. Pomocí **vazeb** připojte adresář a znovu nasaďte modul Event Grid z webu Azure Portal.
 
     ```json
     {
@@ -123,7 +123,7 @@ Místo svazku Docker máte také možnost připojit složku hostitele.
     }
     ```
 
-    Například
+    Například:
 
     ```json
     {
@@ -157,20 +157,20 @@ Místo svazku Docker máte také možnost připojit složku hostitele.
     ```
 
     >[!IMPORTANT]
-    >Neměňte druhou část hodnoty vazby. Odkazuje na konkrétní umístění v rámci modulu. Pro modul Event Grid v systému Linux musí být **/App/metadataDb** a **/App/eventsDb** .
+    >Neměňte druhou část hodnoty vazby. Ukazuje na konkrétní umístění v modulu. Pro modul Event Grid na Linuxu musí být **/app/metadataDb** a **/app/eventsDb**
 
 
 ## <a name="persist-events"></a>Zachovat události
 
-Chcete-li povolit trvalosti událostí, je nutné nejprve povolit trvalá metadata buď prostřednictvím připojení svazku, nebo připojení ke službě Host Directory pomocí výše uvedených částí.
+Chcete-li povolit trvalost událostí, musíte nejprve povolit trvalost metadat buď prostřednictvím připojení svazku nebo připojení adresáře hostitele pomocí výše uvedených oddílů.
 
 Důležité informace o trvalých událostech:
 
-* Trvalé události jsou povolené pro jednotlivé odběry událostí a po připojení svazku nebo adresáře se odhlásí.
-* Trvalá událost je nakonfigurovaná pro odběr události během vytváření a nedá se změnit po vytvoření odběru události. Chcete-li přepnout trvalost událostí, je nutné odstranit a znovu vytvořit odběr události.
-* Trvalé události jsou téměř vždy pomalejší než při operacích paměti, ale rozdíl rychlosti je vysoce závislý na charakteristikách jednotky. Kompromisy mezi rychlostí a spolehlivostí jsou podstatou pro všechny systémy zasílání zpráv, ale obecně se ve velkém měřítku stávají pouze znatelné.
+* Trvalé události je povolena na základě předplatného na událost a je opt-in po připojení svazku nebo adresáře.
+* Trvalost událostí je nakonfigurována v odběr událostí v době vytvoření a nelze ji změnit po vytvoření odběru událostí. Chcete-li přepnout trvalost událostí, je nutné odstranit a znovu vytvořit odběr událostí.
+* Trvalé události je téměř vždy pomalejší než v operacích paměti, ale rozdíl rychlosti je vysoce závislá na vlastnostech jednotky. Kompromis mezi rychlostí a spolehlivostí je vlastní všem systémům zasílání zpráv, ale obecně se stává znatelným pouze ve velkém měřítku.
 
-Pro povolení trvalosti událostí v odběru události nastavte `persistencePolicy` na `true`:
+Chcete-li povolit trvalost událostí `persistencePolicy` `true`u odběru událostí, nastavte na :
 
  ```json
         {
