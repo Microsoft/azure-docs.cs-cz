@@ -1,24 +1,24 @@
 ---
-title: Běžné definice schématu výstrah pro Azure Monitor
-description: Principy běžných definic schémat výstrah pro Azure Monitor
+title: Definice schématu běžných výstrah pro Azure Monitor
+description: Principy běžných definic schématu výstrah pro Azure Monitor
 author: ofirmanor
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
 ms.openlocfilehash: b0b398be919364b5a146e86ca1a1790674bb7d01
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79275019"
 ---
 # <a name="common-alert-schema-definitions"></a>Definice běžných schémat upozornění
 
-Tento článek popisuje [běžné definice schématu výstrah](https://aka.ms/commonAlertSchemaDocs) pro Azure monitor, včetně těch pro Webhooky, Azure Logic Apps, Azure Functions a Azure Automation Runbooky. 
+Tento článek popisuje [definice schématu běžných výstrah](https://aka.ms/commonAlertSchemaDocs) pro Azure Monitor, včetně těch pro webhooky, Azure Logic Apps, Azure Functions a Azure Automation runbooky. 
 
-Jakákoli instance výstrahy popisuje prostředek, který byl ovlivněn, a příčinu výstrahy. Tyto instance jsou popsané ve společném schématu v následujících částech:
-* **Essentials**: sada standardizovaných polí společných pro všechny typy výstrah, které popisují, k jakým prostředkům se výstraha používá, spolu s dalšími běžnými metadaty výstrah (například závažnost nebo popis). 
-* **Kontext výstrahy**: sada polí, která popisují příčinu výstrahy, s poli, která se liší v závislosti na typu výstrahy. Například výstraha metriky obsahuje pole jako název metriky a hodnotu metriky v kontextu výstrahy, zatímco výstraha protokolu aktivit obsahuje informace o události, která vygenerovala výstrahu. 
+Každá instance výstrahy popisuje prostředek, který byl ovlivněn a příčinu výstrahy. Tyto instance jsou popsány ve společném schématu v následujících částech:
+* **Essentials**: Sada standardizovaných polí, která jsou společná ve všech typech výstrah, která popisují, na jakém prostředku se výstraha nachází, spolu s dalšími společnými metadaty výstrah (například závažnost nebo popis). 
+* **Kontext výstrahy**: Sada polí, která popisuje příčinu výstrahy, s poli, která se liší v závislosti na typu výstrahy. Například upozornění metriky zahrnuje pole, jako je název metriky a hodnota metriky v kontextu výstrahy, zatímco výstraha protokolu aktivit obsahuje informace o události, která výstrahu vygenerovala. 
 
 **Ukázková datová část výstrahy**
 ```json
@@ -73,19 +73,19 @@ Jakákoli instance výstrahy popisuje prostředek, který byl ovlivněn, a pří
 
 | Pole | Popis|
 |:---|:---|
-| alertId | Identifikátor GUID jednoznačně identifikující instanci výstrahy. |
-| alertRule | Název pravidla výstrahy, které vytvořilo instanci výstrahy. |
+| alertId | Identifikátor GUID jednoznačně identifikuje instanci výstrahy. |
+| alertRule | Název pravidla výstrahy, které vygenerovalo instanci výstrahy. |
 | Severity | Závažnost výstrahy. Možné hodnoty: Sev0, Sev1, Sev2, Sev3 nebo Sev4. |
-| signalType | Určuje signál, na kterém bylo pravidlo výstrahy definováno. Možné hodnoty: metrika, protokol nebo protokol aktivit. |
-| monitorCondition | Když se výstraha aktivuje, stav monitorování výstrahy se nastaví na **aktivováno**. Pokud je podkladová podmínka, která způsobila výstrahu, **vyhodnocena**jako nejasná, je stav monitorování nastaven na hodnotu Vyřešeno.   |
-| monitoringService | Služba monitorování nebo řešení, které výstrahu vygenerovalo. Pole pro kontext výstrahy určuje služba monitorování. |
-| alertTargetIds | Seznam ID Azure Resource Manager, které jsou ovlivněny cíli výstrahy. Pro výstrahu protokolu definovanou v Log Analytics pracovním prostoru nebo v Application Insights instance se jedná o příslušný pracovní prostor nebo aplikaci. |
-| originAlertId | ID instance výstrahy vygenerované službou monitorování. |
-| firedDateTime | Datum a čas, kdy byla instance výstrahy vyvolána v koordinovaném univerzálním čase (UTC). |
-| resolvedDateTime | Datum a čas, kdy je podmínka monitorování instance výstrahy nastavena na hodnotu **Vyřešeno** ve formátu UTC. V současné době platí jenom pro výstrahy metriky.|
-| description | Popis definovaný v pravidle výstrahy. |
-|essentialsVersion| Číslo verze oddílu základy.|
-|alertContextVersion | Číslo verze oddílu `alertContext`. |
+| signalType | Identifikuje signál, na kterém bylo definováno pravidlo výstrahy. Možné hodnoty: Metrika, Protokol nebo Protokol aktivit. |
+| monitorCondition | Když se aktivuje výstraha, je nastavena podmínka monitorování výstrahy na **vypáleno**. Pokud základní stav, který způsobil výstrahu k požáru vymazány, je podmínka monitorování nastavena na **vyřešeno**.   |
+| monitorovací služba | Monitorovací služba nebo řešení, které vygenerovaly výstrahu. Pole pro kontext výstrahy jsou diktovány monitorovací službou. |
+| alertTargetIds | Seznam ID Správce prostředků Azure, které jsou ovlivněny cíle výstrahy. Pro výstrahu protokolu definovanou v pracovním prostoru Analýzy protokolů nebo v instanci Application Insights se jedná o příslušný pracovní prostor nebo aplikaci. |
+| originAlertId | ID instance výstrahy, jak je generováno monitorovací službou, která ji generuje. |
+| firedDateTime | Datum a čas, kdy byla instance výstrahy aktivována v koordinovaném čase (UTC). |
+| vyřešený čas | Datum a čas, kdy je podmínka monitorování pro instanci výstrahy nastavena na **vyřešenou** v čase UTC. V současné době platí pouze pro upozornění na metriky.|
+| description | Popis, jak je definován v pravidle výstrahy. |
+|essentialsVersion| Číslo verze části Essentials.|
+|alertContextVersion | Číslo verze oddílu. `alertContext` |
 
 **Ukázkové hodnoty**
 ```json
@@ -149,7 +149,7 @@ Jakákoli instance výstrahy popisuje prostředek, který byl ovlivněn, a pří
 ### <a name="log-alerts"></a>Výstrahy protokolu
 
 > [!NOTE]
-> Pro výstrahy protokolu, které mají definované vlastní předmět e-mailu nebo datovou část JSON, umožňují společné schéma vrátit předmět e-mailu nebo schéma datové části na ten, který je popsaný takto. Výstrahy s povoleným společným schématem mají omezení horní velikosti 256 KB na jednu výstrahu. Výsledky hledání nejsou vložené v datové části výstrah protokolu, pokud velikost výstrahy způsobí překročení této prahové hodnoty. To můžete zjistit zaškrtnutím `IncludeSearchResults`příznak. Pokud výsledky hledání nejsou zahrnuté, měli byste použít vyhledávací dotaz ve spojení s [rozhraním Log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/query/get). 
+> Pro výstrahy protokolu, které mají vlastní předmět e-mailu a/nebo datové části JSON definované, povolení společné schéma vrátí předmět e-mailu a/nebo datové části schématu na jeden popsaný následujícím způsobem. Výstrahy s povoleným běžným schématem mají horní limit velikosti 256 kB na výstrahu. Výsledky hledání nejsou vloženy do datové části výstrah protokolu, pokud způsobí, že velikost výstrahy překročí tuto prahovou hodnotu. Můžete to určit kontrolou příznaku `IncludeSearchResults`. Pokud nejsou zahrnuty výsledky hledání, měli byste použít vyhledávací dotaz ve spojení s [rozhraním API Analýzy protokolů](https://docs.microsoft.com/rest/api/loganalytics/query/get). 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
@@ -481,6 +481,6 @@ Jakákoli instance výstrahy popisuje prostředek, který byl ovlivněn, a pří
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [běžném schématu výstrah](https://aka.ms/commonAlertSchemaDocs).
-- Naučte se [, jak vytvořit aplikaci logiky, která používá společné schéma výstrah pro zpracování všech výstrah](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations). 
+- Další informace o [společném schématu výstrah](https://aka.ms/commonAlertSchemaDocs).
+- [Zjistěte, jak vytvořit aplikaci logiky, která používá společné schéma výstrah ke zpracování všech vašich výstrah](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations). 
 

@@ -1,48 +1,48 @@
 ---
-title: Referenční C# informace pro vývojáře Azure Functions
-description: Naučte se vyvíjet Azure Functions pomocí C#.
+title: Odkaz na vývojáře Azure Functions C#
+description: Zjistěte, jak vyvíjet funkce Azure pomocí jazyka C#.
 ms.topic: reference
 ms.date: 09/12/2018
 ms.openlocfilehash: cfa53fe2defca768196af595c1d088d41bc60f71
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277060"
 ---
-# <a name="azure-functions-c-developer-reference"></a>Referenční C# informace pro vývojáře Azure Functions
+# <a name="azure-functions-c-developer-reference"></a>Odkaz na vývojáře Azure Functions C#
 
 <!-- When updating this article, make corresponding changes to any duplicate content in functions-reference-csharp.md -->
 
-Tento článek představuje úvod k vývoji Azure Functions pomocí C# knihovny tříd .NET.
+Tento článek je úvod do vývoje funkcí Azure pomocí Jazyka C# v knihovnách tříd .NET.
 
-Azure Functions podporuje C# a C# skriptovací programovací jazyky. Pokud hledáte pokyny k [používání C# v Azure Portal](functions-create-function-app-portal.md), přečtěte si téma [ C# referenční informace pro vývojáře skriptu (. csx)](functions-reference-csharp.md).
+Funkce Azure podporuje programovací jazyky skriptů C# a C#. Pokud hledáte pokyny k [používání C# na webu Azure Portal](functions-create-function-app-portal.md), podívejte se na odkaz pro [vývojáře skriptu C# (.csx).](functions-reference-csharp.md)
 
-V tomto článku se předpokládá, že už jste si přečetli následující články:
+Tento článek předpokládá, že jste si již přečetli následující články:
 
-* [Příručka pro vývojáře Azure Functions](functions-reference.md)
-* [Azure Functions nástroje sady Visual Studio 2019](functions-develop-vs.md)
+* [Průvodce vývojáři funkcí Azure](functions-reference.md)
+* [Nástroje Visual Studia 2019 azure funkce](functions-develop-vs.md)
 
 ## <a name="supported-versions"></a>Podporované verze
 
-Verze běhových funkcí fungují s konkrétními verzemi .NET. Následující tabulka ukazuje nejvyšší úroveň rozhraní .NET Core a .NET Framework a .NET Core, které lze použít s určitou verzí funkcí v projektu. 
+Verze funkce za běhu pracují s konkrétními verzemi rozhraní .NET. V následující tabulce je uvedena nejvyšší úroveň rozhraní .NET Core a .NET Framework a .NET Core, kterou lze použít s konkrétní verzí funkcí v projektu. 
 
-| Verze modulu runtime Functions | Maximální verze .NET |
+| Funkční verze runtime | Max .NET verze |
 | ---- | ---- |
-| Funkce 3. x | .NET Core 3,1 |
+| Funkce 3.x | .NET Jádro 3.1 |
 | Functions 2.x | .NET Core 2.2 |
 | Functions 1.x | .NET Framework 4.6 |
 
-Další informace najdete v tématu [Přehled verzí Azure Functions runtime](functions-versions.md) .
+Další informace najdete v tématu [Přehled verzí runtime Azure Functions](functions-versions.md)
 
 ## <a name="functions-class-library-project"></a>Projekt knihovny tříd Functions
 
-V aplikaci Visual Studio šablona projektu **Azure Functions** vytvoří projekt knihovny C# tříd, který obsahuje následující soubory:
+V sadě Visual Studio vytvoří šablona projektu **Azure Functions** projekt c# projekt knihovny třídy, který obsahuje následující soubory:
 
-* [Host. JSON](functions-host-json.md) – ukládá nastavení konfigurace, která mají vliv na všechny funkce v projektu při spuštění místně nebo v Azure.
-* [Local. Settings. JSON](functions-run-local.md#local-settings-file) – uloží nastavení aplikace a připojovací řetězce, které se používají při místním spuštění. Tento soubor obsahuje tajné klíče a není publikovaný do aplikace Function App v Azure. Místo toho [do aplikace Function App přidejte nastavení aplikace](functions-develop-vs.md#function-app-settings).
+* [host.json](functions-host-json.md) – ukládá nastavení konfigurace, které ovlivňují všechny funkce v projektu při spuštění místně nebo v Azure.
+* [local.settings.json](functions-run-local.md#local-settings-file) - ukládá nastavení aplikací a připojovací řetězce, které se používají při místním spuštění. Tento soubor obsahuje tajné klíče a není publikován do aplikace funkce v Azure. Místo toho [přidejte nastavení aplikace do aplikace funkce](functions-develop-vs.md#function-app-settings).
 
-Při sestavování projektu se ve výstupním adresáři sestavení vygeneruje struktura složek, která vypadá jako v následujícím příkladu:
+Při vytváření projektu je ve výstupním adresáři sestavení generována struktura složek, která vypadá jako následující příklad:
 
 ```
 <framework.version>
@@ -54,15 +54,15 @@ Při sestavování projektu se ve výstupním adresáři sestavení vygeneruje s
  | - host.json
 ```
 
-Tento adresář se nasadí do vaší aplikace Function App v Azure. Rozšíření vazby požadovaná ve [verzi 2. x](functions-versions.md) modulu runtime Functions jsou [přidána do projektu jako balíčky NuGet](./functions-bindings-register.md#vs).
+Tento adresář je to, co se nasadí do vaší aplikace funkce v Azure. Rozšíření vazby požadované ve [verzi 2.x](functions-versions.md) functions runtime jsou [přidány do projektu jako balíčky NuGet](./functions-bindings-register.md#vs).
 
 > [!IMPORTANT]
-> Proces sestavení vytvoří soubor *Function. JSON* pro každou funkci. Tento soubor *Function. JSON* není určen k přímému upravování. Konfiguraci vazby nemůžete změnit ani tuto funkci můžete zakázat úpravou tohoto souboru. Informace o tom, jak funkci zakázat, najdete v tématu [Jak zakázat funkce](disable-function.md).
+> Proces sestavení vytvoří soubor *function.json* pro každou funkci. Tento soubor *function.json* není určen k přímé úpravě. Úpravou tohoto souboru nelze změnit konfiguraci vazby nebo zakázat funkci. Informace o zakázání funkce naleznete v tématu [Jak zakázat funkce](disable-function.md).
 
 
 ## <a name="methods-recognized-as-functions"></a>Metody rozpoznané jako funkce
 
-V knihovně tříd je funkce statická metoda s `FunctionName` a atribut Trigger, jak je znázorněno v následujícím příkladu:
+V knihovně tříd je funkce statickou `FunctionName` metodou s atributem a a a trigger, jak je znázorněno v následujícím příkladu:
 
 ```csharp
 public static class SimpleExample
@@ -77,24 +77,24 @@ public static class SimpleExample
 } 
 ```
 
-Atribut `FunctionName` označuje metodu jako vstupní bod funkce. Název musí být v rámci projektu jedinečný, musí začínat písmenem a obsahovat pouze písmena, číslice, `_`a `-`a musí být dlouhé až 127 znaků. Šablony projektu často vytvářejí metodu s názvem `Run`, ale název metody může být libovolný platný C# název metody.
+Atribut `FunctionName` označí metodu jako vstupní bod funkce. Název musí být jedinečný v rámci projektu, musí začínat `_`písmenem a obsahovat pouze písmena, čísla a `-`písma o délce až 127 znaků. Šablony projektu často vytvářejí `Run`metodu s názvem , ale název metody může být libovolný platný název metody Jazyka C#.
 
-Atribut Trigger určuje typ triggeru a váže vstupní data k parametru metody. Ukázková funkce je aktivována zprávou fronty a zpráva fronty je předána metodě v parametru `myQueueItem`.
+Atribut aktivační události určuje typ aktivační události a váže vstupní data na parametr metody. Ukázková funkce je spuštěna zprávou fronty a zpráva fronty `myQueueItem` je předána metodě v parametru.
 
-## <a name="method-signature-parameters"></a>Parametry signatury metody
+## <a name="method-signature-parameters"></a>Parametry podpisu metody
 
-Signatura metody může obsahovat parametry jiné než ta, která se používá s atributem triggeru. Tady je několik dalších parametrů, které můžete zahrnout:
+Podpis metody může obsahovat jiné parametry než ty, které byly použity s atributem aktivační události. Zde jsou některé z dalších parametrů, které můžete zahrnout:
 
-* [Vstupní a výstupní vazby](functions-triggers-bindings.md) označeny jako upravení s atributy.  
-* Parametr `ILogger` nebo `TraceWriter` ([pouze verze 1. x](functions-versions.md#creating-1x-apps)) pro [protokolování](#logging).
+* [Vstupní a výstupní vazby](functions-triggers-bindings.md) označené jako takové zdobení je s atributy.  
+* Parametr `ILogger` `TraceWriter` nebo ([verze 1.x pouze](functions-versions.md#creating-1x-apps)) pro [protokolování](#logging).
 * Parametr `CancellationToken` pro [řádné vypnutí](#cancellation-tokens).
-* Parametry [výrazů vazby](./functions-bindings-expressions-patterns.md) pro získání metadat triggeru.
+* [Parametry výrazů vazby](./functions-bindings-expressions-patterns.md) pro získání metadat aktivační události.
 
-Pořadí parametrů v signatuře funkce nezáleží. Můžete například vložit parametry triggeru před nebo za jiné vazby a parametr protokolovacího nástroje můžete vložit před nebo po Trigger nebo parametry vazby.
+Nezáleží na pořadí parametrů v podpisu funkce. Můžete například umístit parametry aktivační události před nebo za jiné vazby a můžete umístit parametr protokolování před nebo za parametry aktivační události nebo vazby.
 
-### <a name="output-binding-example"></a>Příklad výstupní vazby
+### <a name="output-binding-example"></a>Příklad vazby výstupu
 
-Následující příklad upravuje předchozí rozhraní přidáním vazby výstupní fronty. Tato funkce zapíše zprávu fronty, která aktivuje funkci do nové zprávy fronty v jiné frontě.
+Následující příklad upraví předchozí přidáním vazby výstupní fronty. Funkce zapíše zprávu fronty, která spustí funkci na novou zprávu fronty v jiné frontě.
 
 ```csharp
 public static class SimpleExampleWithOutput
@@ -111,11 +111,11 @@ public static class SimpleExampleWithOutput
 }
 ```
 
-Články s odkazy na vazby (například[fronty úložiště](functions-bindings-storage-queue.md)) vysvětlují typy parametrů, které můžete použít s atributy triggeru, vstupu a výstupu.
+Odkazy na vazby (například[fronty úložiště)](functions-bindings-storage-queue.md)vysvětlují, které typy parametrů můžete použít s atributy aktivační události, vstupu nebo výstupní vazby.
 
-### <a name="binding-expressions-example"></a>Příklad výrazů vazby
+### <a name="binding-expressions-example"></a>Příklad vazebné výrazy
 
-Následující kód Získá název fronty, která se má monitorovat, z nastavení aplikace a získá čas vytvoření zprávy fronty v parametru `insertionTime`.
+Následující kód získá název fronty ke sledování z nastavení aplikace a získá čas `insertionTime` vytvoření zprávy fronty v parametru.
 
 ```csharp
 public static class BindingExpressionsExample
@@ -132,13 +132,13 @@ public static class BindingExpressionsExample
 }
 ```
 
-## <a name="autogenerated-functionjson"></a>Automaticky vygenerované funkce Function. JSON
+## <a name="autogenerated-functionjson"></a>Automaticky generovaná funkce.json
 
-Proces sestavení vytvoří soubor *Function. JSON* ve složce Functions ve složce Build. Jak bylo uvedeno dříve, tento soubor není určen k úpravám přímo. Konfiguraci vazby nemůžete změnit ani tuto funkci můžete zakázat úpravou tohoto souboru. 
+Proces sestavení vytvoří soubor *function.json* ve složce funkcí ve složce sestavení. Jak již bylo uvedeno dříve, tento soubor není určen k přímé úpravě. Úpravou tohoto souboru nelze změnit konfiguraci vazby nebo zakázat funkci. 
 
-Účelem tohoto souboru je poskytnout informace pro kontroler škálování pro použití při [rozhodování o škálování podle plánu spotřeby](functions-scale.md#how-the-consumption-and-premium-plans-work). Z tohoto důvodu má soubor pouze aktivační událost, nikoli vstupní nebo výstupní vazby.
+Účelem tohoto souboru je poskytnout informace řadiči váhy, který se použije pro [změnu měřítka rozhodnutí o plánu spotřeby](functions-scale.md#how-the-consumption-and-premium-plans-work). Z tohoto důvodu soubor má pouze informace o aktivační události, nikoli vstupní nebo výstupní vazby.
 
-Vygenerovaný soubor *Function. JSON* obsahuje vlastnost `configurationSource`, která instruuje modul runtime, aby místo konfigurace *Function. JSON* používal atributy .NET pro vazby. Tady je příklad:
+Generovaný soubor *function.json* obsahuje `configurationSource` vlastnost, která říká, že má být runtime používán atributy .NET pro vazby, nikoli konfigurace *function.json.* Tady je příklad:
 
 ```json
 {
@@ -157,13 +157,13 @@ Vygenerovaný soubor *Function. JSON* obsahuje vlastnost `configurationSource`, 
 }
 ```
 
-## <a name="microsoftnetsdkfunctions"></a>Microsoft.NET.Sdk.Functions
+## <a name="microsoftnetsdkfunctions"></a>Funkce sady Microsoft.NET.Sdk
 
-Generování souboru *Function. JSON* provádí balíček NuGet [Microsoft\.NET\.SDK\.funkce](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). 
+Generování souboru *function.json* provádí balíček NuGet [Microsoft\.NET\.\.Sdk Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). 
 
-Stejný balíček se používá pro obě verze 1. x a 2. x modulu runtime Functions. Cílová architektura je tím, že rozlišuje projekt 1. x z projektu 2. x. Tady jsou relevantní části souborů *. csproj* , které zobrazují různá cílová rozhraní a stejný `Sdk` balíček:
+Stejný balíček se používá pro verzi 1.x a 2.x funkce runtime. Cílová architektura je to, co odlišuje projekt 1.x od projektu 2.x. Zde jsou příslušné části *souborů .csproj,* které zobrazují `Sdk` různé cílové architektury a stejný balíček:
 
-**Funkce 1. x**
+**Functions 1.x**
 
 ```xml
 <PropertyGroup>
@@ -174,7 +174,7 @@ Stejný balíček se používá pro obě verze 1. x a 2. x modulu runtime Functi
 </ItemGroup>
 ```
 
-**Functions 2. x**
+**Functions 2.x**
 
 ```xml
 <PropertyGroup>
@@ -186,17 +186,17 @@ Stejný balíček se používá pro obě verze 1. x a 2. x modulu runtime Functi
 </ItemGroup>
 ```
 
-Mezi závislosti balíčku `Sdk` jsou triggery a vazby. Projekt 1. x odkazuje na události triggerů a vazeb 1. x, protože tyto triggery a vazby cílí na .NET Framework, zatímco 2. x Triggers a Bindings Target .NET Core.
+Mezi `Sdk` závislosti balíčku jsou aktivační události a vazby. Projekt 1.x odkazuje na aktivační události a vazby 1.x, protože tyto aktivační události a vazby cílí na rozhraní .NET Framework, zatímco 2.x aktivační události a vazby cíl .NET Core.
 
-Balíček `Sdk` také závisí na [Newtonsoft. JSON](https://www.nuget.org/packages/Newtonsoft.Json)a nepřímo na [windowsazure. Storage](https://www.nuget.org/packages/WindowsAzure.Storage). Tyto závislosti zajistí, že projekt používá verze těchto balíčků, které pracují s verzí modulu runtime Functions, který je cílem projektu. Například `Newtonsoft.Json` má verzi 11 pro .NET Framework 4.6.1, ale modul runtime Functions, který cílí na .NET Framework 4.6.1, je kompatibilní pouze s `Newtonsoft.Json` 9.0.1. Takže váš kód funkce v tomto projektu musí také používat `Newtonsoft.Json` 9.0.1.
+Balíček `Sdk` také závisí na [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json)a nepřímo na [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage). Tyto závislosti ujistěte se, že váš projekt používá verze těchto balíčků, které pracují s functions runtime verze, která cíle projektu. Například `Newtonsoft.Json` má verzi 11 pro rozhraní .NET Framework 4.6.1, ale za běhu Functions, který `Newtonsoft.Json` se zaměřuje na rozhraní .NET Framework 4.6.1, je kompatibilní pouze s rozhraním 9.0.1. Takže váš funkční kód v tomto `Newtonsoft.Json` projektu musí také použít 9.0.1.
 
-Zdrojový kód pro `Microsoft.NET.Sdk.Functions` je k dispozici v úložišti GitHub [azure\-functions\-vs\-build\-SDK](https://github.com/Azure/azure-functions-vs-build-sdk).
+Zdrojový kód `Microsoft.NET.Sdk.Functions` pro je k dispozici v GitHub repo [azure\-funkce\-vs\-sestavení\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk).
 
-## <a name="runtime-version"></a>Verze modulu runtime
+## <a name="runtime-version"></a>Runtime verze
 
-Visual Studio používá [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) ke spouštění projektů funkcí. Základní nástroje jsou rozhraní příkazového řádku pro modul runtime Functions.
+Visual Studio používá [základní nástroje Azure functions](functions-run-local.md#install-the-azure-functions-core-tools) ke spuštění projektů Functions. Základní nástroje je rozhraní příkazového řádku pro modul runtime Functions.
 
-Pokud nainstalujete základní nástroje pomocí NPM, neovlivní to základní verze nástrojů používané v rámci sady Visual Studio. Pro modul runtime Functions verze 1. x aplikace Visual Studio ukládá verze základních nástrojů v *%USERPROFILE%\AppData\Local\Azure.Functions.CLI* a používá nejnovější uloženou verzi. V případě funkcí 2. x jsou základní nástroje součástí rozšíření **Azure functions a nástroje webové úlohy** . Pro 1. x a 2. x uvidíte, jaká verze se používá v výstupu konzoly při spuštění projektu Functions:
+Pokud nainstalujete základní nástroje pomocí npm, to nemá vliv na verzi nástroje Core používané visual studio. Pro funkci Runtime functions verze 1.x ukládá Visual Studio verze základních nástrojů do *%USERPROFILE%\AppData\Local\Azure.Functions.Cli* a používá nejnovější verzi, která je v něm uložena. Pro funkce 2.x základní nástroje jsou zahrnuty v rozšíření **Azure Functions and Web Jobs Tools.** Pro oba 1.x a 2.x, můžete vidět, jaká verze se používá ve výstupu konzoly při spuštění projektu Funkce:
 
 ```terminal
 [3/1/2018 9:59:53 AM] Starting Host (HostId=contoso2-1518597420, Version=2.0.11353.0, ProcessId=22020, Debug=False, Attempt=0, FunctionsExtensionVersion=)
@@ -204,21 +204,21 @@ Pokud nainstalujete základní nástroje pomocí NPM, neovlivní to základní v
 
 ## <a name="supported-types-for-bindings"></a>Podporované typy pro vazby
 
-Každá vazba má své vlastní podporované typy; atribut triggeru objektu BLOB lze například použít pro parametr typu řetězec, parametr POCO, parametr `CloudBlockBlob` nebo některý z několika jiných podporovaných typů. [Článek odkazu vazby pro vazby objektů BLOB](functions-bindings-storage-blob-trigger.md#usage) obsahuje seznam všech podporovaných typů parametrů. Další informace najdete v tématech [triggery a vazby](functions-triggers-bindings.md) a [Referenční dokumentace k vazbě pro každý typ vazby](functions-triggers-bindings.md#next-steps).
+Každá vazba má své vlastní podporované typy; například atribut aktivační události objektu blob lze použít na parametr `CloudBlockBlob` řetězce, parametr POCO, parametr nebo některý z několika dalších podporovaných typů. Odkaz [na vazbu pro vazby objektů blob](functions-bindings-storage-blob-trigger.md#usage) uvádí všechny podporované typy parametrů. Další informace naleznete v [tématu Aktivační události a vazby](functions-triggers-bindings.md) a [vazby referenční dokumenty pro každý typ vazby](functions-triggers-bindings.md#next-steps).
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
-## <a name="binding-to-method-return-value"></a>Vazba na návratovou hodnotu metody
+## <a name="binding-to-method-return-value"></a>Vazba na vrácenou hodnotu metody
 
-Můžete použít návratovou hodnotu metody pro výstupní vazbu použitím atributu na návratovou hodnotu metody. Příklady najdete v tématu [triggery a vazby](./functions-bindings-return-value.md). 
+Můžete použít vrácenou hodnotu metody pro výstupní vazbu použitím atributu na vrácenou hodnotu metody. Příklady naleznete v tématu [Aktivační události a vazby](./functions-bindings-return-value.md). 
 
-Návratovou hodnotu použijte pouze v případě, že úspěšné spuštění funkce vždy způsobí návratovou hodnotu, která bude předána výstupní vazbě. V opačném případě použijte `ICollector` nebo `IAsyncCollector`, jak je znázorněno v následující části.
+Vrácenou hodnotu použijte pouze v případě, že úspěšné spuštění funkce vždy vede k návratové hodnotě, která má být předávána výstupní vazbě. V opačném `ICollector` `IAsyncCollector`případě použijte nebo , jak je znázorněno v následující části.
 
 ## <a name="writing-multiple-output-values"></a>Zápis více výstupních hodnot
 
-Chcete-li zapsat více hodnot do výstupní vazby nebo pokud úspěšné vyvolání úspěšné funkce nemusí být výsledkem cokoli k předání výstupní vazby, použijte typy [`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) nebo [`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) . Tyto typy jsou kolekce pouze pro zápis, které jsou zapsány do výstupní vazby po dokončení metody.
+Chcete-li zapsat více hodnot do výstupní vazby nebo pokud úspěšné vyvolání funkce nemusí [`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) [`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) mít za následek nic předat výstupní vazbě, použijte typy nebo. Tyto typy jsou kolekce pouze pro zápis, které jsou zapsány do výstupní vazby po dokončení metody.
 
-Tento příklad zapisuje do stejné fronty více zpráv Queue pomocí `ICollector`:
+Tento příklad zapisuje více `ICollector`zpráv fronty do stejné fronty pomocí :
 
 ```csharp
 public static class ICollectorExample
@@ -236,9 +236,9 @@ public static class ICollectorExample
 }
 ```
 
-## <a name="logging"></a>Protokolování
+## <a name="logging"></a>protokolování
 
-Pokud chcete protokolovat výstup do protokolů streamování v C#, zahrňte argument typu [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger). Doporučujeme pojmenovat `log`, jako v následujícím příkladu:  
+Chcete-li protokolovat výstup do protokolů datových proudů v c#, zahrňte argument typu [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger). Doporučujeme jej pojmenovat `log`, jako v následujícím příkladu:  
 
 ```csharp
 public static class SimpleExample
@@ -253,11 +253,11 @@ public static class SimpleExample
 } 
 ```
 
-Vyhněte se použití `Console.Write` v Azure Functions. Další informace najdete v článku o [zápisu protokolů C# ve funkcích](functions-monitoring.md#write-logs-in-c-functions) v článku **monitorování Azure Functions** .
+Nepoužívejte `Console.Write` v Azure Functions. Další informace najdete [v tématu Zápis protokolů ve funkcích jazyka C#](functions-monitoring.md#write-logs-in-c-functions) v článku **Monitorování funkcí Azure.**
 
 ## <a name="async"></a>Async
 
-Chcete-li provést [asynchronní](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)funkci, použijte klíčové slovo `async` a vraťte objekt `Task`.
+Chcete-li funkci [asynchronní](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/), `async` použijte klíčové `Task` slovo a vraťte objekt.
 
 ```csharp
 public static class AsyncExample
@@ -275,13 +275,13 @@ public static class AsyncExample
 }
 ```
 
-V asynchronních funkcích nelze použít parametry `out`. Pro výstupní vazby použijte místo toho [vrácenou hodnotu funkce](#binding-to-method-return-value) nebo [objekt sběrače](#writing-multiple-output-values) .
+Parametry nelze `out` použít v asynchronních funkcích. Pro výstupní vazby použijte [vrácenou hodnotu funkce](#binding-to-method-return-value) nebo [objekt kolektoru.](#writing-multiple-output-values)
 
 ## <a name="cancellation-tokens"></a>Tokeny zrušení
 
-Funkce může přijmout parametr [CancellationToken](/dotnet/api/system.threading.cancellationtoken) , který umožňuje operačnímu systému upozornit váš kód, když bude funkce ukončena. Toto oznámení můžete použít k tomu, abyste se ujistili, že funkce nekončí nečekaně způsobem, který opustí data v nekonzistentním stavu.
+Funkce může přijmout [CancellationToken](/dotnet/api/system.threading.cancellationtoken) parametr, který umožňuje operačnímu systému upozornit váš kód, když se má funkce ukončit. Toto oznámení můžete použít k ujistěte se, že funkce neukončí neočekávaně způsobem, který ponechává data v nekonzistentním stavu.
 
-Následující příklad ukazuje, jak kontrolovat blížící se ukončení funkce.
+Následující příklad ukazuje, jak zkontrolovat blížící se ukončení funkce.
 
 ```csharp
 public static class CancellationTokenExample
@@ -307,7 +307,7 @@ public static class CancellationTokenExample
 
 ## <a name="environment-variables"></a>Proměnné prostředí
 
-Chcete-li získat proměnnou prostředí nebo hodnotu nastavení aplikace, použijte `System.Environment.GetEnvironmentVariable`, jak je znázorněno v následujícím příkladu kódu:
+Chcete-li získat proměnnou prostředí nebo `System.Environment.GetEnvironmentVariable`hodnotu nastavení aplikace, použijte , jak je znázorněno v následujícím příkladu kódu:
 
 ```csharp
 public static class EnvironmentVariablesExample
@@ -328,19 +328,19 @@ public static class EnvironmentVariablesExample
 }
 ```
 
-Nastavení aplikace je možné číst z proměnných prostředí při vývoji místně a při spuštění v Azure. Při místním vývoji nastavení aplikace pochází z kolekce `Values` v souboru *Local. Settings. JSON* . V obou prostředích aplikace `GetEnvironmentVariable("<app setting name>")` načítá hodnotu nastavení pojmenované aplikace v místním prostředí i v Azure. Například když pracujete místně, vrátí se název "můj web", pokud soubor *Local. Settings. JSON* obsahuje `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }`.
+Nastavení aplikací lze číst z proměnných prostředí při vývoji místně i při spuštění v Azure. Při vývoji místně, nastavení `Values` aplikace pocházejí z kolekce v *souboru local.settings.json.* V obou prostředích, místní `GetEnvironmentVariable("<app setting name>")` a Azure, načte hodnotu nastavení pojmenované aplikace. Pokud například používáte místní, bude vráceno "Můj název webu", pokud soubor *local.settings.json* obsahuje `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }`.
 
-Vlastnost [System. Configuration. ConfigurationManager. appSettings](https://docs.microsoft.com/dotnet/api/system.configuration.configurationmanager.appsettings) je alternativní rozhraní API pro získání hodnot nastavení aplikace, ale doporučujeme použít `GetEnvironmentVariable`, jak je znázorněno zde.
+Vlastnost [System.Configuration.ConfigurationManager.AppSettings](https://docs.microsoft.com/dotnet/api/system.configuration.configurationmanager.appsettings) je alternativní rozhraní API pro získání hodnot nastavení `GetEnvironmentVariable` aplikace, ale doporučujeme použít, jak je znázorněno zde.
 
 ## <a name="binding-at-runtime"></a>Vazba za běhu
 
-V C# a dalších jazycích .NET můžete použít [imperativní](https://en.wikipedia.org/wiki/Imperative_programming) vzor vazby, a to na rozdíl od [*deklarativních*](https://en.wikipedia.org/wiki/Declarative_programming) vazeb v atributech. Imperativní vazba je užitečná v případě, že parametry vazby je třeba vypočítat za běhu, nikoli jako dobu návrhu. S tímto modelem můžete vytvořit vazbu na podporované vstupní a výstupní vazby průběžně v kódu funkce.
+V jazycích C# a dalších jazycích .NET můžete použít [imperativní](https://en.wikipedia.org/wiki/Imperative_programming) vzor vazby, na rozdíl od [*deklarativnívazby*](https://en.wikipedia.org/wiki/Declarative_programming) v atributech. Imperativní vazba je užitečná, když je třeba vypočítat parametry vazby za běhu, nikoli za čas návrhu. Pomocí tohoto vzoru můžete vázat na podporované vstupní a výstupní vazby průběžně v kódu funkce.
 
-Definujte imperativní vazbu následujícím způsobem:
+Definujte imperativní vazbu takto:
 
-- **Nezahrnujte atribut** do signatury funkce pro požadované imperativní vazby.
-- Předejte vstupní parametr [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) nebo [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs).
-- K provedení datové C# vazby použijte následující vzor.
+- **Do not** Nezahrnujte atribut v podpisu funkce pro požadované imperativní vazby.
+- Předat vstupní parametr [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs)nebo .
+- K provedení datové vazby použijte následující vzor jazyka C#.
 
   ```cs
   using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
@@ -349,11 +349,11 @@ Definujte imperativní vazbu následujícím způsobem:
   }
   ```
 
-  `BindingTypeAttribute` je atribut rozhraní .NET, který definuje vaši vazbu, a `T` je vstupní nebo výstupní typ, který je podporován typem vazby. `T` nemůže být typ parametru `out` (například `out JObject`). Například výstupní vazba Mobile Apps tabulky podporuje [šest výstupních typů](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), ale můžete použít pouze [ICollector\<t >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) nebo [IAsyncCollector\<t >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) s imperativní vazbou.
+  `BindingTypeAttribute`je atribut .NET, který definuje `T` vazby a je vstupní nebo výstupní typ, který je podporován tímto typem vazby. `T`nemůže být `out` typ parametru `out JObject`(například ). Například vazby výstupu tabulky mobilních aplikací podporuje [šest typů výstupu](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), ale můžete použít pouze [ICollector\<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) nebo [IAsyncCollector\<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) s imperativní vazbou.
 
-### <a name="single-attribute-example"></a>Příklad jednoduchého atributu
+### <a name="single-attribute-example"></a>Příklad jednoho atributu
 
-Následující příklad kódu vytvoří [výstupní vazbu objektu BLOB úložiště](functions-bindings-storage-blob-output.md) s cestou objektu blob, která je definovaná v době běhu, a pak zapíše řetězec do objektu BLOB.
+Následující ukázkový kód vytvoří [výstupní vazbu objektu blob úložiště](functions-bindings-storage-blob-output.md) s cestou objektu blob, která je definována za běhu, a pak zapíše řetězec do objektu blob.
 
 ```cs
 public static class IBinderExample
@@ -374,11 +374,11 @@ public static class IBinderExample
 }
 ```
 
-[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs) definuje vstupní nebo výstupní vazbu [objektu BLOB úložiště](functions-bindings-storage-blob.md) a [TextWriter](/dotnet/api/system.io.textwriter) je podporovaný výstupní typ vazby.
+[Objekt BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs) definuje vstupní nebo výstupní vazbu [objektu blob úložiště](functions-bindings-storage-blob.md) a [TextWriter](/dotnet/api/system.io.textwriter) je podporovaný typ vazby výstupu.
 
 ### <a name="multiple-attribute-example"></a>Příklad více atributů
 
-Předchozí příklad získá nastavení aplikace pro připojovací řetězec hlavního účtu úložiště aplikace Function App (což je `AzureWebJobsStorage`). Můžete zadat vlastní nastavení aplikace, které se má použít pro účet úložiště, a to přidáním [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) a předáním pole atributu do `BindAsync<T>()`. Použijte parametr `Binder`, nikoli `IBinder`.  Příklad:
+V předchozím příkladu získá nastavení aplikace pro hlavní aplikace pro připojení `AzureWebJobsStorage`účtu úložiště řetězce funkce (což je). Můžete zadat vlastní nastavení aplikace, které se má použít pro účet úložiště `BindAsync<T>()`přidáním [atributu StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) a předáním pole atributů do aplikace . Použijte `Binder` parametr, `IBinder`nikoli .  Například:
 
 ```cs
 public static class IBinderExampleMultipleAttributes
@@ -413,4 +413,4 @@ public static class IBinderExampleMultipleAttributes
 > [Další informace o aktivačních událostech a vazbách](functions-triggers-bindings.md)
 
 > [!div class="nextstepaction"]
-> [Další informace o osvědčených postupech pro Azure Functions](functions-best-practices.md)
+> [Další informace o doporučených postupech pro funkce Azure](functions-best-practices.md)

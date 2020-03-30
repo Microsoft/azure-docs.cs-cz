@@ -9,14 +9,14 @@ ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 8e4c1c05b133f85b7473c3ce97c9f509ac8f7d37
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79299150"
 ---
-- Přírůstkové snímky se aktuálně nedají přesunout mezi předplatnými.
-- V současné době můžete v daném okamžiku generovat pouze identifikátory URI SAS až na pět snímků konkrétní rodiny snímků.
-- Pro určitý disk nemůžete vytvořit přírůstkový snímek mimo předplatné tohoto disku.
-- Až sedm přírůstkových snímků na disk lze vytvořit každých pět minut.
+- Přírůstkové snímky aktuálně nelze přesunout mezi odběry.
+- V současné době můžete generovat pouze identifikátory URI SAS až pět snímků konkrétní rodiny snímků v daném okamžiku.
+- Nelze vytvořit přírůstkový snímek pro konkrétní disk mimo odběr tohoto disku.
+- Každých pět minut lze vytvořit až sedm přírůstkových snímků na disk.
 - Pro jeden disk lze vytvořit celkem 200 přírůstkových snímků.
