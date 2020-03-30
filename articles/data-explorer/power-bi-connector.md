@@ -1,6 +1,6 @@
 ---
-title: Vizualizace dat pomocí konektoru služby Azure Průzkumník dat pro Power BI
-description: 'V tomto článku se dozvíte, jak použít jednu ze tří možností pro vizualizaci dat v Power BI: konektor Power BI pro Azure Průzkumník dat.'
+title: Vizualizace dat pomocí konektoru Azure Data Explorer pro Power BI
+description: 'V tomto článku se dozvíte, jak použít jednu ze tří možností vizualizace dat v Power BI: konektor U Power BI pro Azure Data Explorer.'
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
@@ -8,80 +8,80 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.openlocfilehash: a95d45481bed17e46429e3a22dff4b8cc62354a9
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77560486"
 ---
-# <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Vizualizace dat pomocí konektoru služby Azure Průzkumník dat pro Power BI
+# <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Vizualizace dat pomocí konektoru Azure Data Explorer pro Power BI
 
-Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Power BI je řešení obchodní analýzy, které umožňuje vizualizovat data a sdílet výsledky v rámci organizace. Azure Průzkumník dat poskytuje tři možnosti pro připojení k datům v Power BI: použijte integrovaný konektor, importujte dotaz z Azure Průzkumník dat nebo použijte dotaz SQL. V tomto článku se dozvíte, jak pomocí integrovaného konektoru získat data a vizualizovat je v sestavě Power BI. Použití Azure Průzkumník dat Native Connector pro vytváření Power BIch řídicích panelů je jednoduché. Konektor Power BI podporuje [režimy importu a přímých připojení dotazů](https://docs.microsoft.com/power-bi/desktop-directquery-about). Řídicí panely můžete sestavit pomocí režimu **importu** nebo **DirectQuery** v závislosti na scénářích, škálování a požadavcích na výkon. 
+Průzkumník dat Azure je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Power BI je řešení obchodní analýzy, které umožňuje vizualizovat data a sdílet výsledky v rámci organizace. Azure Data Explorer nabízí tři možnosti pro připojení k datům v Power BI: použít integrovaný konektor, importovat dotaz z Azure Data Exploreru nebo použít dotaz SQL. V tomto článku se ukazuje, jak pomocí integrovaného konektoru získat data a vizualizovat je v sestavě Power BI. Použití nativního konektoru Azure Data Explorer pro vytváření řídicích panelů Power BI je jednoduché. Konektor Power BI podporuje [režimy připojení importu a přímého dotazu](https://docs.microsoft.com/power-bi/desktop-directquery-about). Řídicí panely můžete vytvářet pomocí **režimu importu** nebo **directquery** v závislosti na scénáři, škálování a požadavcích na výkon. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto článku potřebujete následující:
+K dokončení tohoto článku je třeba provést následující:
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
-* E-mailový účet organizace, který je členem Azure Active Directory, abyste se mohli připojit ke [clusteru azure Průzkumník dat Help](https://dataexplorer.azure.com/clusters/help/databases/samples).
-* [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (vyberte **Stáhnout zdarma**)
+* E-mailový účet organizace, který je členem adresáře Azure Active Directory, takže se můžete připojit k [clusteru nápovědy Azure Data Explorer](https://dataexplorer.azure.com/clusters/help/databases/samples).
+* [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (zvolte **STÁHNOUT ZDARMA)**
 
-## <a name="get-data-from-azure-data-explorer"></a>Získat data z Azure Průzkumník dat
+## <a name="get-data-from-azure-data-explorer"></a>Získání dat z Průzkumníka dat Azure
 
-Nejprve se připojíte ke clusteru Azure Průzkumník dat Help a pak přenesete podmnožinu dat z tabulky *StormEvents* . [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
+Nejprve se připojíte ke clusteru nápovědy Azure Data Explorer, pak přenést podmnožinu dat z tabulky *StormEvents.* [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
-1. V Power BI Desktop na kartě **Domů** vyberte **získat data** a pak **Další**.
+1. V Power BI Desktopu na kartě **Domů** vyberte **Získat data** a pak **Další**.
 
     ![Získání dat](media/power-bi-connector/get-data-more.png)
 
-1. Vyhledejte *azure Průzkumník dat*, vyberte **Azure Průzkumník dat** pak se **Připojte**.
+1. Vyhledejte *Azure Data Explorer*, vyberte Azure Data **Explorer** a pak **Connect**.
 
     ![Vyhledání a získání dat](media/power-bi-connector/search-get-data.png)
 
-1. Na obrazovce **Azure Průzkumník dat (Kusto)** vyplňte formulář následujícími informacemi.
+1. Na obrazovce **Průzkumníka dat Azure (Kusto)** vyplňte formulář s následujícími informacemi.
 
     ![Možnosti clusteru, databáze a tabulky](media/power-bi-connector/cluster-database-table.png)
 
-    **Nastavení** | **Hodnota** | **Popis pole**
+    **Nastavení** | **Hodnotu** | **Popis pole**
     |---|---|---|
-    | Cluster | *https://help.kusto.windows.net* | Adresa URL pro cluster s nápovědu Pro jiné clustery je adresa URL ve tvaru *https://\<\>název_clusteru.\<oblasti\>. kusto.Windows.NET*. |
+    | Cluster | *https://help.kusto.windows.net* | Adresa URL clusteru nápovědy. U jiných clusterů je adresa URL ve formuláři *https://\<Název_clusteru\>.\< Oblast\>.kusto.windows.net*. |
     | Databáze | Ponechte prázdné | Databáze, která je hostována v clusteru, ke kterému se připojujete. Tuto možnost vybereme v pozdějším kroku. |
-    | Název tabulky | Ponechte prázdné | Jedna z tabulek v databázi nebo dotaz, jako je například <code>StormEvents \| take 1000</code>. Tuto možnost vybereme v pozdějším kroku. |
-    | Upřesnit možnosti | Ponechte prázdné | Možnosti pro vaše dotazy, jako je například velikost sady výsledků. |
-    | Režim připojení dat | *DirectQuery* | Určuje, zda Power BI importuje data nebo se připojí přímo ke zdroji dat. V této spojnici můžete použít jednu z možností. |
+    | Název tabulky | Ponechte prázdné | Jedna z tabulek v databázi <code>StormEvents \| take 1000</code>nebo dotaz jako . Tuto možnost vybereme v pozdějším kroku. |
+    | Upřesnit možnosti | Ponechte prázdné | Možnosti pro vaše dotazy, například velikost sady výsledků. |
+    | Režim datového připojení | *DirectQuery* | Určuje, jestli Power BI importuje data nebo se připojí přímo ke zdroji dat. S tímto konektorem můžete použít obě možnosti. |
     | | | |
     
     > [!NOTE]
-    > V režimu **importu** se data přesunou do Power BI. V režimu **DirectQuery** se data dotazují přímo z vašeho clusteru Azure Průzkumník dat.
+    > V režimu **importu** se data přesunou do Power BI. V režimu **DirectQuery** se data dotazují přímo z clusteru Průzkumníka dat Azure.
     >
-    > Režim **importu** použijte v těchto případech:
+    > Režim **importu** použijte v:
     > * Vaše datová sada je malá.
-    > * Nepotřebujete data téměř v reálném čase. 
-    > * Vaše data jsou už agregovaná nebo se [v Kusto provádí agregace](/azure/kusto/query/summarizeoperator#list-of-aggregation-functions) .    
+    > * Nepotřebujete téměř data v reálném čase. 
+    > * Vaše data jsou již agregována nebo provádíte [agregaci v Kustu](/azure/kusto/query/summarizeoperator#list-of-aggregation-functions)    
     >
-    > Režim **DirectQuery** použijte v těchto případech:
+    > Režim **DirectQuery** použijte v:
     > * Vaše datová sada je velmi velká. 
     > * Potřebujete data téměř v reálném čase.   
 
-1. Pokud ještě nemáte připojení ke clusteru podpory, přihlaste se. Přihlaste se pomocí účtu organizace a pak vyberte **připojit**.
+1. Pokud ještě nemáte připojení ke clusteru nápovědy, přihlaste se. Přihlaste se pomocí účtu organizace a pak vyberte **Připojit**.
 
-    ![Přihlásit](media/power-bi-connector/sign-in.png)
+    ![Přihlášení](media/power-bi-connector/sign-in.png)
 
-1. Na obrazovce **navigátor** rozbalte databázi **Samples** , vyberte **StormEvents** a pak **Upravit**.
+1. Na obrazovce **Navigátor** rozbalte databázi **Ukázky** a vyberte **StormEvents** a pak **Upravit**.
 
     ![Vybrat tabulku](media/power-bi-connector/select-table.png)
 
     Tabulka se otevře v editoru Power Query, kde můžete před importem dat upravit řádky a sloupce.
 
-1. V editoru Power Query vyberte šipku vedle sloupce **DamageCrops** a pak **seřaďte sestupné řazení**.
+1. V Editoru Power Query vyberte šipku vedle sloupce **DamageCrops** a **seřadit**.
 
     ![Seřadit DamageCrops sestupně](media/power-bi-connector/sort-descending.png)
 
-1. Na kartě **Domů** vyberte možnost **ponechat řádky** a potom **zachovejte horní řádky**. Zadejte hodnotu *1000* , která se má přenést do prvních 1000 řádků seřazené tabulky.
+1. Na kartě **Domů** vyberte **Zachovat řádky** a pak Zachovat **horní řádky**. Zadejte hodnotu *1000,* aby se do horních 1000 řádků seřazené tabulky.
 
     ![Zachovat horní řádky](media/power-bi-connector/keep-top-rows.png)
 
-1. Na kartě **Domů** vyberte **Zavřít & použít**.
+1. Na kartě **Domů** vyberte **Zavřít & Použít**.
 
     ![Zavřít a použít](media/power-bi-connector/close-apply.png)
 
@@ -91,8 +91,8 @@ Nejprve se připojíte ke clusteru Azure Průzkumník dat Help a pak přenesete 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nepotřebujete sestavu, kterou jste vytvořili pro tento článek, odstraňte soubor Power BI Desktop (. pbix).
+Pokud už nepotřebujete sestavu, kterou jste pro tento článek vytvořili, odstraňte soubor Power BI Desktop (.pbix).
 
 ## <a name="next-steps"></a>Další kroky
 
-[Tipy pro použití konektoru služby Azure Průzkumník dat pro Power BI k dotazování na data](power-bi-best-practices.md#tips-for-using-the-azure-data-explorer-connector-for-power-bi-to-query-data)
+[Tipy pro použití konektoru Azure Data Explorer pro Power BI k dotazování dat](power-bi-best-practices.md#tips-for-using-the-azure-data-explorer-connector-for-power-bi-to-query-data)

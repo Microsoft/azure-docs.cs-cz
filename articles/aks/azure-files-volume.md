@@ -1,31 +1,31 @@
 ---
-title: Vytvoření statického svazku pro více lusků ve službě Azure Kubernetes (AKS)
-description: Zjistěte, jak ručně vytvořit svazek se soubory Azure pro použití s několika souběžnými lusky ve službě Azure Kubernetes Service (AKS).
+title: Vytvoření statického svazku pro více podů ve službě Azure Kubernetes Service (AKS)
+description: Zjistěte, jak ručně vytvořit svazek pomocí souborů Azure pro použití s více souběžnými pody ve službě Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.openlocfilehash: 084ab5cd6736c9148bcab1faf048d3d9081855d4
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77596398"
 ---
-# <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Ruční vytvoření a použití svazku se sdílenou složkou Azure ve službě Azure Kubernetes Service (AKS)
+# <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Ruční vytvoření a použití svazku se službou Azure Files ve službě Azure Kubernetes Service (AKS)
 
-Aplikace založené na kontejnerech často potřebují přístup k datům v externím datovém svazku a jejich uchovávání. Pokud více lusků potřebuje souběžný přístup ke stejnému svazku úložiště, můžete použít soubory Azure pro připojení pomocí [protokolu SMB (Server Message Block)][smb-overview]. V tomto článku se dozvíte, jak ručně vytvořit sdílenou složku služby soubory Azure a připojit ji k objektu pod v AKS.
+Aplikace založené na kontejnerech často potřebují přístup k datům a jejich uchovávání v externím datovém svazku. Pokud více podů potřebují souběžný přístup ke stejnému svazku úložiště, můžete použít soubory Azure pro připojení pomocí [protokolu Server Message Block (SMB).][smb-overview] Tento článek ukazuje, jak ručně vytvořit sdílené složky Azure Files a připojit ji k podu v AKS.
 
-Další informace o Kubernetes svazcích najdete v tématu [Možnosti úložiště pro aplikace v AKS][concepts-storage].
+Další informace o svazcích Kubernetes najdete [v tématu Možnosti úložiště pro aplikace v AKS][concepts-storage].
 
 ## <a name="before-you-begin"></a>Než začnete
 
-V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
+Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, podívejte se na aks rychlý start [pomocí Azure CLI][aks-quickstart-cli] nebo [pomocí portálu Azure][aks-quickstart-portal].
 
-Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější. Pro nalezení verze spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované verze Azure CLI verze 2.0.59 nebo novější. Spuštěním `az --version` najděte verzi. Pokud potřebujete nainstalovat nebo upgradovat, přečtěte si informace [o instalaci příkazového příkazového příkazu k webu Azure][install-azure-cli].
 
 ## <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
 
-Než budete moct používat soubory Azure jako Kubernetes svazek, musíte vytvořit účet Azure Storage a sdílenou složku. Následující příkazy vytvoří skupinu prostředků s názvem *myAKSShare*, účet úložiště a sdílenou složku s názvem *aksshare*:
+Než budete moci použít Soubory Azure jako svazek Kubernetes, musíte vytvořit účet Azure Storage a sdílenou složku. Následující příkazy vytvoří skupinu prostředků s názvem *myAKSShare*, účet úložiště a sdílenou složku Soubory s názvem *aksshare*:
 
 ```azurecli-interactive
 # Change these four parameters as needed for your own environment
@@ -54,21 +54,21 @@ echo Storage account name: $AKS_PERS_STORAGE_ACCOUNT_NAME
 echo Storage account key: $STORAGE_KEY
 ```
 
-Poznamenejte si název a klíč účtu úložiště zobrazené na konci výstupu skriptu. Tyto hodnoty jsou potřeba při vytváření svazku Kubernetes v jednom z následujících kroků.
+Poznamenejte si název účtu úložiště a klíč zobrazený na konci výstupu skriptu. Tyto hodnoty jsou potřeba při vytváření svazku Kubernetes v jednom z následujících kroků.
 
 ## <a name="create-a-kubernetes-secret"></a>Vytvoření tajného klíče Kubernetes
 
-Kubernetes potřebuje přihlašovací údaje pro přístup ke sdílené složce vytvořené v předchozím kroku. Tyto přihlašovací údaje jsou uložené v [tajném klíči Kubernetes][kubernetes-secret], na který se odkazuje při vytváření Kubernetes pod.
+Kubernetes potřebuje přihlašovací údaje pro přístup ke sdílené složce vytvořené v předchozím kroku. Tato pověření jsou uložena v [tajném klíči Kubernetes][kubernetes-secret], na který se odkazuje při vytváření podu Kubernetes.
 
-Pro vytvoření tajného kódu použijte příkaz `kubectl create secret`. Následující příklad vytvoří sdílenou službu s názvem *Azure-Secret* a naplní *azurestorageaccountname* a *azurestorageaccountkey* z předchozího kroku. Pokud chcete použít existující účet úložiště Azure, zadejte název účtu a klíč.
+Pomocí `kubectl create secret` příkazu vytvořte tajný klíč. Následující příklad vytvoří sdílený pojmenovaný *azure-secret* a naplní *azurestorageaccountname* a *azurestorageaccountkey* z předchozího kroku. Pokud chcete použít existující účet úložiště Azure, zadejte název účtu a klíč.
 
 ```console
 kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=$AKS_PERS_STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=$STORAGE_KEY
 ```
 
-## <a name="mount-the-file-share-as-a-volume"></a>Připojit sdílenou složku jako svazek
+## <a name="mount-the-file-share-as-a-volume"></a>Připojení sdílené složky jako svazku
 
-Pokud chcete sdílenou složku služby soubory Azure připojit k vašemu zařízení pod, nakonfigurujte svazek ve specifikaci kontejneru. Vytvořte nový soubor s názvem `azure-files-pod.yaml` s následujícím obsahem. Pokud jste změnili název sdílené složky nebo tajného názvu, aktualizujte název souboru *název_sdílené_položky* a název *tajného*klíče. V případě potřeby aktualizujte `mountPath`, což je cesta, ke které je sdílená složka souborů připojená v poli pod. Pro kontejnery Windows serveru (aktuálně ve verzi Preview v AKS) zadejte *mountPath* pomocí konvence cesty Windows, třeba *:* .
+Chcete-li připojit sdílené složky Azure Files do podu, nakonfigurujte svazek ve specifikaci kontejneru. `azure-files-pod.yaml` Pokud jste změnili název sdílené složky nebo tajného názvu souborů, aktualizujte *název sharename* a *secretName*. V případě potřeby `mountPath`aktualizujte , což je cesta, kde je sdílená složka Soubory připojena v podu. Pro kontejnery Windows Serveru (aktuálně ve verzi preview v AKS) zadejte *mountPath* pomocí konvence cesty systému Windows, například *"D:"*.
 
 ```yaml
 apiVersion: v1
@@ -97,13 +97,13 @@ spec:
       readOnly: false
 ```
 
-Pomocí příkazu `kubectl` vytvořte pod.
+Pomocí `kubectl` příkazu vytvořte pod.
 
 ```console
 kubectl apply -f azure-files-pod.yaml
 ```
 
-Teď máte spuštěný pod s sdílenou složkou Azure, která je připojená na */mnt/Azure*. K ověření, zda je sdílená složka úspěšně připojena, můžete použít `kubectl describe pod mypod`. Následující zhuštěný příklad výstupu ukazuje svazek připojený do kontejneru:
+Teď máte spuštěný pod se sdílenou spores Azure Files připojenou na */mnt/azure*. Můžete použít `kubectl describe pod mypod` k ověření sdílené složky je úspěšně připojen. Následující kondenzovaný příklad výstupu ukazuje objem namontovaný v kontejneru:
 
 ```
 Containers:
@@ -132,7 +132,7 @@ Volumes:
 
 ## <a name="mount-options"></a>Možnosti připojení
 
-Výchozí hodnota pro *FileMode* a *dirMode* je *0755* pro Kubernetes verze 1.9.1 a vyšší. Pokud používáte cluster s Kuberetes verze 1.8.5 nebo vyšší a staticky vytváříte objekt trvalého svazku, musí být v objektu *PersistentVolume* zadány možnosti připojení. Následující příklad nastaví *0777*:
+Výchozí hodnota pro *fileMode* a *dirMode* je *0755* pro Kubernetes verze 1.9.1 a vyšší. Pokud používáte cluster s Kuberetes verze 1.8.5 nebo vyšší a staticky vytváří trvalý objekt svazku, je třeba zadat možnosti připojení na *objektpersistentVolume.* Následující příklad nastaví *0777*:
 
 ```yaml
 apiVersion: v1
@@ -158,9 +158,9 @@ spec:
   - nobrl
 ```
 
-Pokud používáte cluster verze 1.8.0-1.8.4, je možné určit kontext zabezpečení s hodnotou *runAsUser* nastavenou na *0*. Další informace o kontextu zabezpečení najdete v tématu [Konfigurace kontextu zabezpečení][kubernetes-security-context].
+Pokud používáte cluster verze 1.8.0 - 1.8.4, lze zadat kontext zabezpečení s hodnotou *runAsUser* nastavenou na *hodnotu 0*. Další informace o kontextu zabezpečení podu naleznete [v tématu Konfigurace kontextu zabezpečení][kubernetes-security-context].
 
-Pokud chcete aktualizovat možnosti připojení, vytvořte soubor *azurefile-Mount-Options-PV. yaml* s *PersistentVolume*. Příklad:
+Chcete-li aktualizovat možnosti připojení, vytvořte soubor *azurefile-mount-options-pv.yaml* s *persistentvolume*. Například:
 
 ```yaml
 apiVersion: v1
@@ -186,7 +186,7 @@ spec:
   - nobrl
 ```
 
-Vytvořte soubor *azurefile-Mount-Options-PVC. yaml* s *PersistentVolumeClaim* , který používá *PersistentVolume*. Příklad:
+Vytvořte soubor *azurefile-mount-options-pvc.yaml* s *persistentVolumeclaim,* který používá *PersistentVolume*. Například:
 
 ```yaml
 apiVersion: v1
@@ -202,14 +202,14 @@ spec:
       storage: 5Gi
 ```
 
-K vytvoření *PersistentVolume* a *PersistentVolumeClaim*použijte příkazy `kubectl`.
+Pomocí `kubectl` příkazů vytvořte *příkazy PersistentVolume* a *PersistentVolumeClaim*.
 
 ```console
 kubectl apply -f azurefile-mount-options-pv.yaml
 kubectl apply -f azurefile-mount-options-pvc.yaml
 ```
 
-Ověřte, že je váš *PersistentVolumeClaim* vytvořený a vázaný na *PersistentVolume*.
+Ověřte, zda je *deklarace persistentVolumeClaim* vytvořena a vázána na *trvalý svazek*.
 
 ```console
 $ kubectl get pvc azurefile
@@ -218,7 +218,7 @@ NAME        STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
 ```
 
-Aktualizujte své specifikace kontejneru, aby odkazovaly na *PersistentVolumeClaim* a aktualizovali pod. Příklad:
+Aktualizujte specifikace kontejneru tak, aby odkazoval na *váš PersistentVolumeClaim* a aktualizoval pod. Například:
 
 ```yaml
 ...
@@ -230,9 +230,9 @@ Aktualizujte své specifikace kontejneru, aby odkazovaly na *PersistentVolumeCla
 
 ## <a name="next-steps"></a>Další kroky
 
-Související osvědčené postupy najdete [v tématu osvědčené postupy pro úložiště a zálohování v AKS][operator-best-practices-storage].
+Doporučené postupy najdete v [tématu Doporučené postupy pro ukládání a zálohování v AKS][operator-best-practices-storage].
 
-Další informace o spolupráci AKS clusterů se soubory Azure najdete v tématu [modul plug-in Kubernetes pro soubory Azure][kubernetes-files].
+Další informace o clusterech AKS, které interagují se soubory Azure, najdete v [tématu Plugin Kubernetes pro Soubory Azure][kubernetes-files].
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#create

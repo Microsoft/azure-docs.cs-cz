@@ -1,6 +1,6 @@
 ---
-title: Připojení dat Fortinet ke službě Azure Sentinel | Microsoft Docs
-description: Naučte se připojit data Fortinet ke službě Azure Sentinel.
+title: Připojení dat společnosti Fortinet k Azure Sentinelu| Dokumenty společnosti Microsoft
+description: Přečtěte si, jak připojit data Fortinet k Azure Sentinelu.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,25 +16,25 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: aabc95fcb8d3b32b89bb83f4f6892c3d40b03417
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588191"
 ---
-# <a name="connect-fortinet-to-azure-sentinel"></a>Připojení Fortinet ke službě Azure Sentinel
+# <a name="connect-fortinet-to-azure-sentinel"></a>Připojení fortinetu k Azure Sentinelu
 
 
 
-Tento článek vysvětluje, jak připojit zařízení Fortinet ke službě Azure Sentinel. Fortinet data Connector vám umožní snadno připojit protokoly Fortinet ke službě Azure Sentinel, zobrazit řídicí panely, vytvořit vlastní výstrahy a vylepšit šetření. Použití Fortinet v Azure Sentinel vám poskytne více informací o používání internetu vaší organizace a zlepší možnosti jejich provozu. 
+Tento článek vysvětluje, jak připojit zařízení Fortinet k Azure Sentinelu. Datový konektor Fortinet umožňuje snadno připojit protokoly Fortinet s Azure Sentinel, zobrazit řídicí panely, vytvořit vlastní výstrahy a zlepšit vyšetřování. Použití fortinet na Azure Sentinel vám poskytne další přehled o využití internetu vaší organizace a zlepší možnosti operací zabezpečení. 
 
 
  
-## <a name="forward-fortinet-logs-to-the-syslog-agent"></a>Přeposílání protokolů Fortinet do agenta syslog
+## <a name="forward-fortinet-logs-to-the-syslog-agent"></a>Předávání protokolů fortinet agentovi Syslog
 
-Nakonfigurujte Fortinet pro přeposílání zpráv syslog ve formátu CEF do pracovního prostoru Azure prostřednictvím agenta syslog.
+Nakonfigurujte fortinet pro předávání zpráv Syslog ve formátu CEF do pracovního prostoru Azure prostřednictvím agenta Syslog.
 
-1. Otevřete rozhraní příkazového řádku na zařízení Fortinet a spusťte následující příkazy:
+1. Otevřete rozhraní příkazového příkazu k zaruce na zařízení Fortinet a spusťte následující příkazy:
 
         config log syslogd setting
         set format cef
@@ -43,22 +43,22 @@ Nakonfigurujte Fortinet pro přeposílání zpráv syslog ve formátu CEF do pra
         set status enable
         end
 
-    - Nahraďte **IP adresu** serveru IP adresou agenta.
-    - Nastavte **port SYSLOG** na **514** nebo na port nastavený na agentovi.
-    - Pokud chcete povolit formát CEF ve verzích rané FortiOS, možná budete muset spustit sadu příkazů **CSV Disable**.
+    - Nahraďte **adresu IP** serveru adresou IP agenta.
+    - Nastavte **port syslogu** na **514** nebo port nastavený na agenta.
+    - Chcete-li povolit formát CEF v raných verzích FortiOS, možná budete muset spustit sadu příkazů **csv zakázat**.
  
    > [!NOTE] 
-   > Další informace najdete v [knihovně dokumentů Fortinet](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary). Vyberte svou verzi a použijte **odkaz na zprávu** **příručky** a protokolu.
+   > Další informace naleznete v [knihovně dokumentů Fortinet](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary). Vyberte svou verzi a použijte **příručku** a **odkaz na zprávu protokolu**.
 
-1. Pokud chcete pro události Fortinet použít příslušné schéma v Log Analytics Azure Monitor, vyhledejte `CommonSecurityLog`.
+1. Chcete-li použít příslušné schéma v Azure Monitor Log Analytics pro `CommonSecurityLog`události Fortinet, vyhledejte .
 
-1. Pokračujte [krokem 3: ověření připojení](connect-cef-verify.md).
+1. Pokračovat krokem [3: Ověřit připojení](connect-cef-verify.md).
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto článku jste zjistili, jak připojit zařízení Fortinet ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
-- Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
-- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).
-- [Pomocí sešitů](tutorial-monitor-your-data.md) můžete monitorovat data.
+V tomto článku jste se dozvěděli, jak připojit zařízení Fortinet k Azure Sentinelu. Další informace o Azure Sentinelu najdete v následujících článcích:
+- Přečtěte [si, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
+- Začínáme [s detekcí hrozeb pomocí Azure Sentinelu](tutorial-detect-threats-built-in.md).
+- Ke sledování dat [použijte sešity.](tutorial-monitor-your-data.md)
 
 
