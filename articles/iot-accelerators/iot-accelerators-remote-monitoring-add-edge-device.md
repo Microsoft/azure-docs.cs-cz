@@ -1,6 +1,6 @@
 ---
-title: Řešení vzdáleného monitorování přidání hraničního zařízení – Azure | Microsoft Docs
-description: Tento článek popisuje, jak přidat zařízení IoT Edge do akcelerátoru řešení vzdáleného monitorování.
+title: Řešení vzdáleného monitorování přidejte zařízení Edge – Azure | Dokumenty společnosti Microsoft
+description: Tento článek popisuje, jak přidat zařízení IoT Edge do akcelerátoru řešení vzdáleného monitorování
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,47 +9,47 @@ services: iot-accelerators
 ms.date: 10/09/2018
 ms.topic: conceptual
 ms.openlocfilehash: 0a42763ff47cccfa506acbbbd95d20d41eb0827f
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72965375"
 ---
 # <a name="add-an-iot-edge-device-to-your-remote-monitoring-solution-accelerator"></a>Přidání zařízení IoT Edge do akcelerátoru řešení vzdáleného monitorování
 
-Pokud chcete přidat zařízení [IoT Edge](../iot-edge/about-iot-edge.md) do akcelerátoru řešení, proveďte následující dva kroky:
+Chcete-li přidat zařízení [IoT Edge](../iot-edge/about-iot-edge.md) do akcelerátoru řešení, proveďte následující dva kroky:
 
-1. Přidejte hraniční zařízení na stránce **Device Explorer** ve webovém uživatelském rozhraní akcelerátoru řešení vzdáleného monitorování.
-1. Nainstalujte modul runtime IoT Edge do hraničního zařízení.
+1. Přidejte zařízení Edge na stránku **Průzkumník zařízení** ve webovém uživatelském rozhraní akcelerátoru řešení vzdáleného monitorování.
+1. Nainstalujte runtime IoT Edge na zařízení Edge.
 
 ## <a name="add-the-iot-edge-device"></a>Přidání zařízení IoT Edge
 
-Pokud chcete přidat zařízení IoT Edge do akcelerátoru řešení vzdáleného monitorování, přejděte na stránku **Device Explorer** ve webovém uživatelském rozhraní a klikněte na **+ nové zařízení**.
+Chcete-li přidat zařízení IoT Edge do akcelerátoru řešení vzdáleného monitorování, přejděte na stránku **Průzkumníkzařízení** ve webovém uživatelském rozhraní a klepněte na tlačítko **+ Nové zařízení**.
 
-Na panelu **nové zařízení** vyberte **IoT Edge zařízení**. Můžete ponechat výchozí hodnoty pro ostatní nastavení. Pak klikněte na **Použít**:
+V panelu **Nové zařízení** zvolte **zařízení IoT Edge**. Výchozí hodnoty pro ostatní nastavení můžete ponechat. Pak klikněte na **Použít**:
 
-![Přidat IoT Edge zařízení](media/iot-accelerators-remote-monitoring-add-edge-device/addedgedevice.png)
+![Přidání zařízení IoT Edge](media/iot-accelerators-remote-monitoring-add-edge-device/addedgedevice.png)
 
-### <a name="alternative-ways-to-add-an-iot-edge-device"></a>Alternativní způsoby, jak přidat zařízení IoT Edge
+### <a name="alternative-ways-to-add-an-iot-edge-device"></a>Alternativní způsoby přidání zařízení IoT Edge
 
-Je také možné zaregistrovat IoT Edge zařízení přímo s instancí IoT Hub v akcelerátoru řešení. Než začnete s některým z těchto pokynů, musíte znát název služby IoT Hub v akcelerátoru řešení:
+Je také možné zaregistrovat zařízení IoT Edge přímo s instancí Služby IoT Hub v akcelerátoru řešení. Před sledováním některého z těchto návodů na postupy musíte znát název centra IoT hub v akcelerátoru řešení:
 
-- [Registrovat nové zařízení Azure IoT Edge z Azure Portal](../iot-edge/how-to-register-device.md#register-in-the-azure-portal)
-- [Registrace nového zařízení Azure IoT Edge pomocí Azure CLI](../iot-edge/how-to-register-device.md#register-with-the-azure-cli)
-- [Registrovat nové zařízení Azure IoT Edge z Visual Studio Code](../iot-edge/how-to-register-device.md#register-with-visual-studio-code)
+- [Registrace nového zařízení Azure IoT Edge z webu Azure Portal](../iot-edge/how-to-register-device.md#register-in-the-azure-portal)
+- [Registrace nového zařízení Azure IoT Edge pomocí rozhraní příkazového příkazového příkazu Azure](../iot-edge/how-to-register-device.md#register-with-the-azure-cli)
+- [Registrace nového zařízení Azure IoT Edge z kódu Visual Studia](../iot-edge/how-to-register-device.md#register-with-visual-studio-code)
 
-Když zaregistrujete zařízení přímo do centra IoT v akcelerátoru řešení vzdáleného monitorování, zobrazí se na stránce **Device Explorer** ve webovém uživatelském rozhraní.
+Když zaregistrujete zařízení přímo s centrem IoT v akcelerátoru řešení vzdáleného monitorování, je uvedeno na stránce **Průzkumníkzařízení** ve webovém uživatelském rozhraní.
 
-## <a name="install-the-iot-edge-runtime"></a>Instalace modulu runtime IoT Edge
+## <a name="install-the-iot-edge-runtime"></a>Instalace runtime IoT Edge
 
-Předtím, než budete moci nasadit moduly do hraničního zařízení, je nutné na reálné zařízení nainstalovat modul runtime IoT Edge. Následující příručky s postupy vám ukážou, jak nainstalovat modul runtime na běžných platformách zařízení:
+Než budete moct nasadit moduly do zařízení Edge, musíte nainstalovat runtime IoT Edge na skutečné zařízení. Následující návody ukazují, jak nainstalovat runtime na běžné platformy zařízení:
 
-- [Instalace modulu runtime Azure IoT Edge v systému Linux (x64)](../iot-edge/how-to-install-iot-edge-linux.md)
-- [Instalace modulu runtime Azure IoT Edge v systému Linux (ARM32v7/armhf)](../iot-edge/how-to-install-iot-edge-linux-arm.md)
-- [Instalace modulu runtime Azure IoT Edge ve Windows pro použití s kontejnery Windows](../iot-edge/how-to-install-iot-edge-windows-with-windows.md)
-- [Instalace modulu runtime Azure IoT Edge ve Windows pro použití s kontejnery pro Linux](../iot-edge/how-to-install-iot-edge-windows-with-linux.md)
-- [Instalace modulu runtime IoT Edge v systému Windows IoT Core](../iot-edge/how-to-install-iot-core.md)
+- [Instalace runtime Azure IoT Edge na Linux (x64)](../iot-edge/how-to-install-iot-edge-linux.md)
+- [Instalace runtime Azure IoT Edge na Linux (ARM32v7/armhf)](../iot-edge/how-to-install-iot-edge-linux-arm.md)
+- [Instalace runtime Azure IoT Edge do Windows pro použití s kontejnery windows](../iot-edge/how-to-install-iot-edge-windows-with-windows.md)
+- [Instalace runtime Azure IoT Edge do Windows pro použití s linuxovými kontejnery](../iot-edge/how-to-install-iot-edge-windows-with-linux.md)
+- [Instalace runtime IoT Edge do windows iot core](../iot-edge/how-to-install-iot-core.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste připravili zařízení IoT Edge, je dalším krokem nasazení modulů do tohoto zařízení. Viz [Import balíčku IoT Edge do akcelerátoru řešení vzdáleného monitorování](iot-accelerators-remote-monitoring-import-edge-package.md) .
+Teď, když jste připravili zařízení IoT Edge, dalším krokem je nasazení modulů do něj. Viz [Import balíčku IoT Edge do akcelerátoru řešení vzdáleného monitorování](iot-accelerators-remote-monitoring-import-edge-package.md)

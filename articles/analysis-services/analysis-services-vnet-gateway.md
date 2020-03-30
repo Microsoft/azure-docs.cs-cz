@@ -1,6 +1,6 @@
 ---
-title: Konfigurace Azure Analysis Services pro zdroje dat virtuální sítě | Microsoft Docs
-description: Naučte se, jak nakonfigurovat server Azure Analysis Services, aby používal bránu pro zdroje dat v Azure Virtual Network (VNet).
+title: Konfigurace služby Azure Analysis Services pro zdroje dat virtuální sítě | Dokumenty společnosti Microsoft
+description: Zjistěte, jak nakonfigurovat server Služby Azure Analysis Services tak, aby používal bránu pro zdroje dat ve virtuální síti Azure (VNet).
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,29 +8,29 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 384f4c2ee3021678c530aa5c98eaf4dbfd661e95
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73572263"
 ---
-# <a name="use-gateway-for-data-sources-on-an-azure-virtual-network-vnet"></a>Použití brány pro zdroje dat v Azure Virtual Network (VNet)
+# <a name="use-gateway-for-data-sources-on-an-azure-virtual-network-vnet"></a>Použití brány pro zdroje dat ve virtuální síti Azure (Virtuální síť)
 
-Tento článek popisuje vlastnost serveru Azure Analysis Services **AlwaysUseGateway** , která se má použít, když se zdroje dat nacházejí v [Virtual Network Azure (VNET)](../virtual-network/virtual-networks-overview.md).
+Tento článek popisuje vlastnost serveru **AlwaysUseGateway** služby Azure Analysis Services pro použití, když jsou zdroje dat ve [virtuální síti Azure (VNet).](../virtual-network/virtual-networks-overview.md)
 
-## <a name="server-access-to-vnet-data-sources"></a>Přístup serveru k datovým zdrojům virtuální sítě
+## <a name="server-access-to-vnet-data-sources"></a>Přístup serveru ke zdrojům dat virtuální sítě
 
-Pokud jsou k vašim zdrojům dat přístup prostřednictvím virtuální sítě, váš Azure Analysis Services Server se musí připojit k těmto zdrojům dat, jako kdyby byly místní, ve vašem vlastním prostředí. Vlastnost serveru **AlwaysUseGateway** můžete nakonfigurovat tak, aby určovala Server pro přístup ke všem zdrojům dat prostřednictvím [místní brány](analysis-services-gateway.md). 
+Pokud jsou vaše zdroje dat přístupné prostřednictvím virtuální sítě, musí se server Služby Azure Analysis Services k těmto zdrojům dat připojit, jako by byly místní, ve vašem vlastním prostředí. Vlastnost server **AlwaysUseGateway** můžete nakonfigurovat tak, aby určila server pro přístup ke všem zdrojům dat prostřednictvím [místní brány](analysis-services-gateway.md). 
 
-Azure SQL Database zdroje dat spravované instance se spouštějí v rámci virtuální sítě Azure pomocí privátní IP adresy. Pokud je u instance povolený veřejný koncový bod, brána se nevyžaduje. Pokud není veřejný koncový bod povolený, vyžaduje se místní brána dat a vlastnost AlwaysUseGateway musí být nastavená na hodnotu true.
+Zdroje dat spravované instance Azure SQL Database se spouštějí v rámci virtuální sítě Azure s privátní IP adresou. Pokud je veřejný koncový bod povolen v instanci, brána není vyžadována. Pokud veřejný koncový bod není povolena, je vyžadována místní brána dat a vlastnost AlwaysUseGateway musí být nastavena na hodnotu true.
 
 > [!NOTE]
-> Tato vlastnost je platná jenom v případě, že je nainstalovaná a nakonfigurovaná [místní brána dat](analysis-services-gateway.md) . Brána může být ve virtuální síti.
+> Tato vlastnost je účinná pouze v případě, že je nainstalována a [nakonfigurována místní brána dat.](analysis-services-gateway.md) Brána může být ve virtuální síti.
 
-## <a name="configure-alwaysusegateway-property"></a>Konfigurace vlastnosti AlwaysUseGateway
+## <a name="configure-alwaysusegateway-property"></a>Konfigurovat vlastnost AlwaysUseGateway
 
-1. V SSMS > > **vlastnosti** serveru > **Obecné**vyberte možnost **Zobrazit rozšířené (všechny) vlastnosti**.
-2. V **ASPaaS\AlwaysUseGateway**vyberte true ( **pravda**).
+1. V ssms > server > **vlastnosti** > **obecné**, vyberte Zobrazit **rozšířené (všechny) vlastnosti**.
+2. V poli **ASPaaS\AlwaysUseGateway**vyberte **hodnotu true**.
 
     ![Vždy používat vlastnost brány](media/analysis-services-vnet-gateway/aas-ssms-always-property.png)
 
@@ -38,5 +38,5 @@ Azure SQL Database zdroje dat spravované instance se spouštějí v rámci virt
 ## <a name="see-also"></a>Viz také
 [Připojení k místním zdrojům dat](analysis-services-gateway.md)   
 [Instalace a konfigurace místní brány dat](analysis-services-gateway-install.md)   
-[Azure Virtual Network (VNET)](../virtual-network/virtual-networks-overview.md)   
+[Virtuální síť Azure (Virtuální síť)](../virtual-network/virtual-networks-overview.md)   
 

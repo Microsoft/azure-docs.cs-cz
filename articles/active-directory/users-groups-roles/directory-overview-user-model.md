@@ -1,5 +1,5 @@
 ---
-title: Přehled uživatelů, skupin, licencí a rolí – Azure AD | Microsoft Docs
+title: Přehled uživatelů, skupin, licencí a rolí – Azure AD | Dokumenty společnosti Microsoft
 description: Vztah mezi uživateli a přiřazenými licencemi, role správců a členství ve skupinách v Azure Active Directory
 keywords: ''
 author: curtand
@@ -15,10 +15,10 @@ services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a3cc2de5a2f297e8133011905ff2961b44476d6b
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77046326"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>Uživatelé, skupiny, licencování a role pro velké organizace
@@ -31,7 +31,7 @@ Tento článek představuje správce Azure Active Directory ve vztahu k hlavním
 
 ## <a name="assign-users-to-groups"></a>Přiřazení uživatelů ke skupinám
 
-Skupiny v Azure Active Directory můžete použít k přiřazení licencí k velkému počtu uživatelů nebo k přiřazení uživatelského přístup k nasazeným podnikovým aplikacím. Skupiny můžete použít k přiřazení všech rolí správce kromě globálního správce ve službě Azure AD nebo můžete udělit přístup k prostředkům, které jsou externí, jako jsou například aplikace SaaS nebo weby služby SharePoint.
+Skupiny v Azure Active Directory můžete použít k přiřazení licencí k velkému počtu uživatelů nebo k přiřazení uživatelského přístup k nasazeným podnikovým aplikacím. Skupiny můžete použít k přiřazení všech rolí správce s výjimkou globálního správce ve službě Azure AD nebo můžete udělit přístup k prostředkům, které jsou externí, jako jsou aplikace SaaS nebo weby Služby SharePoint.
 
 Pokud chcete zvýšit flexibilitu a omezit práci spojenou se správou členství ve skupině, můžete v Azure Active Directory použít [dynamické skupiny](groups-create-rule.md), které budou členství ve skupině rozšiřovat a zmenšovat automaticky. Pro každého jedinečného uživatele, který je členem jedné nebo více dynamických skupin, budete potřebovat licenci Azure AD Premium P1.
 
@@ -52,7 +52,7 @@ Mnoho velkých organizací chce takové možnosti pro své uživatele, aby mohli
 
  Název role | Souhrn oprávnění
  --------- | -------------------
- **Správce aplikace** | Může přidávat a spravovat podnikové aplikace a registrace aplikací a může konfigurovat nastavení aplikačního proxy serveru. Správci aplikací můžou zobrazovat zásady podmíněného přístupu a zařízení, ale nemůžou je spravovat.
+ **Správce aplikace** | Může přidávat a spravovat podnikové aplikace a registrace aplikací a může konfigurovat nastavení aplikačního proxy serveru. Správci aplikací mohou zobrazit zásady a zařízení podmíněného přístupu, ale ne spravovat je.
  **Správce cloudové aplikace** | Může přidávat, spravovat a registrovat podnikové aplikace. Tato role má všechna oprávnění správce aplikace, nemůže však spravovat nastavení aplikačního proxy serveru.
 **Vývojář aplikace** | Může přidávat a aktualizovat registrace aplikací, ale nemůže spravovat podnikové aplikace ani konfigurovat nastavení aplikačního proxy serveru.
 

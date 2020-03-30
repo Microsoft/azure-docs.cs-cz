@@ -1,6 +1,6 @@
 ---
-title: azcopyový lavic | Microsoft Docs
-description: Tento článek popisuje referenční informace o příkazu AzCopy.
+title: azcopy bench | Dokumenty společnosti Microsoft
+description: Tento článek obsahuje referenční informace pro příkaz azcopy bench.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -9,31 +9,31 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 8570bce87aeea5473b4aadf9bd30bc0a648a6f0f
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72518301"
 ---
-# <a name="azcopy-bench"></a>AzCopy
+# <a name="azcopy-bench"></a>azcopy bench
 
-Spustí srovnávací test výkonu odesláním testovacích dat do zadaného cíle. Testovací data se generují automaticky.
+Spustí srovnávací test výkonu nahráním testovacích dat do zadaného cíle. Testovací data jsou generována automaticky.
 
-Příkaz srovnávacího testu spouští stejný proces nahrávání jako "Copy" s tím rozdílem, že:
+Příkaz benchmark spustí stejný proces nahrávání jako "copy", s tím rozdílem, že:
 
-  - Neexistuje parametr zdroje.  Příkaz vyžaduje pouze cílovou adresu URL. V aktuální verzi musí tato cílová adresa URL odkazovat na kontejner objektů BLOB.
+  - Neexistuje žádný zdrojový parametr.  Příkaz vyžaduje pouze cílovou adresu URL. V aktuální verzi musí tato cílová adresa URL odkazovat na kontejner objektů blob.
   
-  - Datová část je popsána v parametrech příkazového řádku, který určuje, kolik souborů se automaticky generuje a jak velká jsou. Proces generování probíhá zcela v paměti. Disk se nepoužívá.
+  - Datová část je popsána parametry příkazového řádku, které řídí, kolik souborů je automaticky generováno a jak velké jsou. Proces generování probíhá výhradně v paměti. Disk není použit.
   
-  - Jsou podporovány pouze některé volitelné parametry, které jsou k dispozici pro příkaz Kopírovat.
+  - Podporováno je pouze několik volitelných parametrů, které jsou k dispozici pro příkaz kopírování.
   
-  - Další diagnostika se měří a nahlásí.
+  - Další diagnostika se měří a vykazuje.
   
-  - Ve výchozím nastavení se přenesená data na konci testovacího běhu odstraní.
+  - Ve výchozím nastavení jsou přenesená data odstraněna na konci testovacího běhu.
 
-Režim srovnávacích testů automaticky provede ladění na počet paralelních připojení TCP, která poskytují maximální propustnost. Zobrazí se toto číslo na konci. Pokud chcete zabránit automatickému ladění, nastavte proměnnou prostředí AZCOPY_CONCURRENCY_VALUE na určitý počet připojení.
+Režim benchmarku se automaticky vyladí na počet paralelních připojení TCP, který poskytuje maximální propustnost. Zobrazí se toto číslo na konci. Chcete-li zabránit automatickému ladění, nastavte proměnnou prostředí AZCOPY_CONCURRENCY_VALUE na určitý počet připojení.
 
-Podporují se všechny běžné typy ověřování. Nejpohodlnější přístup k srovnávacím testům je ale obvykle vytvoření prázdného kontejneru s tokenem SAS a ověřování pomocí SAS.
+Podporovány jsou všechny obvyklé typy ověřování. Nejpohodlnější mandatář pro benchmarking je však obvykle vytvořit prázdný kontejner s tokenem SAS a použít ověřování SAS.
 
 ## <a name="examples"></a>Příklady
 
@@ -41,42 +41,42 @@ Podporují se všechny běžné typy ověřování. Nejpohodlnější přístup 
 azcopy bench [destination] [flags]
 ```
 
-Spustit test srovnávacího testu s výchozími parametry (vhodný pro sítě srovnávacích testů až do 1 GB/s):
+Spusťte srovnávací test s výchozími parametry (vhodné pro srovnávací sítě do 1 Gb/s):"
 
-- AzCopy je "https://[účet]. blob. Core. Windows. NET/[kontejner]? <SAS> "
+- azcopy bench "https://[account].blob.core.windows.net/[container]? <SAS>"
 
-Spusťte test srovnávacího testu, který nahrává soubory 100, každý 2 GiB velikost: (vhodné pro srovnávací testy v rychlé síti, např. 10 GB/s):
+Spusťte srovnávací test, který nahraje 100 souborů, z nichž každý má velikost 2 Gb: (vhodné pro benchmarking v rychlé síti, např.
 
-- AzCopy je "https://[účet]. blob. Core. Windows. NET/[kontejner]? <SAS> " --počet souborů: 100--Size-pro soubor 2G
+- azcopy bench "https://[account].blob.core.windows.net/[container]? <SAS>" --počet souborů 100 --velikost na soubor 2G
 
-Stejné jako výše, ale použijte soubory 50 000, velikost 8 souborů MiB a jejich výpočetních hodnot hash MD5 (stejným způsobem jako příznak--Put-MD5 to dělá v příkazu copy). Účelem--Put-MD5 při srovnávacích testech je testovat, zda výpočet MD5 ovlivňuje propustnost pro vybraný počet a velikost souborů:
+Stejné jako výše, ale použijte 50 000 souborů, každý 8 MiB ve velikosti a vypočítat jejich MD5 hash (stejným způsobem, že --put-md5 příznak to v příkazu copy). Účelem --put-md5 při benchmarkingu je otestovat, zda výpočty MD5 ovlivňují propustnost pro vybraný počet a velikost souboru:
 
-- AzCopy je "https://[účet]. blob. Core. Windows. NET/[kontejner]? <SAS> " --počet souborů: 50000--Size-podle souboru 8 min--Put-MD5
+- azcopy bench "https://[account].blob.core.windows.net/[container]? <SAS>" --počet souborů 50000 --velikost na soubor 8M --put-md5
 
 ## <a name="options"></a>Možnosti
 
-**--typ BLOB-** String definuje typ objektu BLOB v cíli. Slouží k povolení srovnávacích testů různých typů objektů BLOB. Totožný s parametrem s názvem, který je v příkazu copy (výchozí "Detect").
+**--řetězec typu objektu blob** Definuje typ objektu blob v cílovém umístění. Používá se k povolení srovnávání různých typů objektů blob. Shodné s parametrem se stejným názvem v příkazu copy (výchozí "Rozpoznat").
 
-**--Block-size-MB** float používá tuto velikost bloku (zadanou v souboru MIB). Výchozí hodnota se automaticky vypočítá na základě velikosti souboru. Jsou povoleny desetinné zlomky – např. 0,25. Stejné jako parametr s názvem v příkazu Copy.
+**--blok-size-mb** float Použijte tuto velikost bloku (zadaná v MiB). Výchozí nastavení se automaticky vypočítá na základě velikosti souboru. Desetinné frakce jsou povoleny - např. Shodné s parametrem se stejným názvem v příkazu copy.
 
-**--Delete-test-data**  Pokud má hodnotu true, data srovnávacího testu se odstraní na konci srovnávacího testu.  Nastavte na hodnotu false, pokud chcete zachovat data v cílovém umístění, např. Pokud je chcete použít pro manuální testy mimo režim srovnávacích testů (výchozí hodnota true).
+**--delete-test-data --delete-test-data --delete-test-data --delete**  Pokud je hodnota true, budou údaje o referenčníhodnotě na konci spuštění srovnávacího testu odstraněny.  Nastavte ji na hodnotu false, pokud chcete data uchovávat v cílovém umístění – například je použít pro ruční testy mimo režim srovnávacího testu (výchozí hodnota true).
 
-**--počet souborů** uint: počet automaticky generovaných datových souborů, které se mají použít (výchozí 100).
+**--počet souborů** uint Počet automaticky generovaných datových souborů k použití (výchozí 100).
 
-**-h,--help**  Nápovědu pro stolní
+**-h, --pomoc**  Pomoc pro lavičku
 
-**--řetězec na úrovni protokolu** definuje podrobnosti protokolu pro soubor protokolu, dostupné úrovně: informace (všechny požadavky a odpovědi), upozornění (pomalé odezvy), chyby (pouze neúspěšné žádosti) a žádné (žádné protokoly výstupu). (výchozí "informace")
+**--řetězec na úrovni protokolu** Definujte podrobnost protokolu pro soubor protokolu, dostupné úrovně: INFO(všechny požadavky/odpovědi), UPOZORNĚNÍ(pomalé odpovědi), ERROR(pouze neúspěšné požadavky) a NONE(žádné výstupní protokoly). (výchozí "INFO")
 
-**--Put-MD5**  Vytvořte hodnotu hash MD5 každého souboru a uložte hodnotu hash jako vlastnost content-MD5 cílového objektu BLOB nebo souboru. (Ve výchozím nastavení není hodnota hash vytvořena.) Stejné jako parametr s názvem v příkazu Copy.
+**--put-md5**  Vytvořte hash MD5 každého souboru a uložte hash jako Content-MD5 vlastnost cílového objektu blob/souboru. (Ve výchozím nastavení není hodnota hash vytvořena.) Shodné s parametrem se stejným názvem v příkazu copy.
 
-**--Size –** velikost řetězce pro každý soubor automaticky generovaného datového souboru. Musí se jednat o číslo ihned následované K, M nebo G. např. 12K nebo 200G (výchozí "250M").
+**--velikost na řetězec souboru** Velikost každého automaticky generovaného datového souboru. Musí být číslo bezprostředně následované K, M nebo G. E.G. 12k nebo 200G (výchozí "250M").
 
 ## <a name="options-inherited-from-parent-commands"></a>Možnosti zděděné z nadřazených příkazů
 
-**--Cap – Mbps**  Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.
+**--cap-mbps uint32**  Završuje přenosovou rychlost v megabitech za sekundu. Propustnost se může mírně lišit od víčka. Pokud je tato možnost nastavena na nulu nebo je vynechána, propustnost není omezena.
 
-**--výstupní** formát řetězce výstupu příkazu. Mezi možnosti patří: text, JSON. Výchozí hodnota je "text". (výchozí "text").
+**--řetězec typu výstupu** Formát výstupu příkazu. Volby zahrnují: text, json. Výchozí hodnota je text. (výchozí "text").
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
-- [AzCopy](storage-ref-azcopy.md)
+- [azkopie](storage-ref-azcopy.md)

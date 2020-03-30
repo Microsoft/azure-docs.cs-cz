@@ -1,6 +1,6 @@
 ---
 title: Co se stalo s mým projektem ASP.NET?
-description: Popisuje, co se stane po přidání Azure Storage do projektu ASP.NET pomocí připojených služeb sady Visual Studio.
+description: Popisuje, co se stane po přidání Služby Azure Storage do projektu ASP.NET pomocí připojených služeb Visual Studia.
 services: storage
 author: ghogen
 manager: jillfra
@@ -14,28 +14,28 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 4374955d6d51c1ae44c211aaa93d0b5e8930fe5b
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72300039"
 ---
-# <a name="what-happened-to-my-aspnet-project-visual-studio-azure-storage-connected-service"></a>Co se stalo s mým projektem ASP.NET (připojená služba sady Visual Studio Azure Storage)?
+# <a name="what-happened-to-my-aspnet-project-visual-studio-azure-storage-connected-service"></a>Co se stalo s mým projektem ASP.NET (služba připojení Visual Studio Azure Storage)?
 ## <a name="references-added"></a>Přidané odkazy
-Do projektu Visual studia se přidal balíček NuGet Azure Storage.  
+Balíček Azure Storage NuGet byl přidán do projektu Sady Visual Studio.  
 Tento balíček přidává následující odkazy .NET:
 
-* **Microsoft. data. Edm**
-* **Microsoft. data. OData**
-* **Microsoft. data. Services. Client**
-* **Microsoft. WindowsAzure. Configuration**
-* **Microsoft. WindowsAzure. Storage**
-* **Newtonsoft. JSON**
-* **System. data**
-* **System. prostor**
+* **Microsoft.Data.Edm**
+* **Microsoft.Data.OData**
+* **Microsoft.data.Services.client**
+* **Microsoft.WindowsAzure.Configuration**
+* **Microsoft.WindowsAzure.Storage**
+* **Newtonsoft.Json**
+* **System.Data**
+* **System.Spatial**
 
 ## <a name="connection-string-for-azure-storage-added"></a>Připojovací řetězec pro Azure Storage přidán
-V souboru Web. config vašeho projektu byl vytvořen element s připojovacím řetězcem a klíčem vybraného účtu úložiště.
+V souboru web.config vašeho projektu byl vytvořen prvek s připojovacím řetězcem a klíčem vybraného účtu úložiště.
 
-Další informace najdete v tématu [ASP.NET](https://www.asp.net).
+Další informace naleznete [v tématu ASP.NET](https://www.asp.net).
 

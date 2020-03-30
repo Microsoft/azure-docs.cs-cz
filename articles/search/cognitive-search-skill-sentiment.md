@@ -1,7 +1,7 @@
 ---
-title: Mínění vnímání znalostí
+title: Sentiment kognitivní dovednosti
 titleSuffix: Azure Cognitive Search
-description: Extrahuje kladné záporné skóre mínění z textu v kanálu rozšíření AI v Azure Kognitivní hledání.
+description: Extrahujte skóre mínění s kladným negativním výsledkem z textu v kanálu obohacení umělou aicí v Azure Cognitive Search.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,49 +9,49 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: cc3aab703b9c5ffcb5f3280060417ce32fcec2fc
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72791901"
 ---
-# <a name="sentiment-cognitive-skill"></a>Mínění vnímání znalostí
+# <a name="sentiment-cognitive-skill"></a>Sentiment kognitivní dovednosti
 
-Dovednost **mínění** vyhodnocuje nestrukturovaný text podél pozitivních hodnot Continuum a pro každý záznam vrací číselné skóre mezi 0 a 1. Hodnocení blížící se 1 značí pozitivní zabarvení a hodnocení blížící se 0 značí negativní zabarvení. Tato dovednost používá v Cognitive Services modely strojového učení, které poskytuje [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) .
+**Dovednost Mínění** vyhodnotí nestrukturovaný text podél kladně negativního kontinua a pro každý záznam vrátí číselné skóre mezi 0 a 1. Skóre blížící se 1 označují pozitivní sentiment a skóre téměř 0 označují negativní sentiment. Tato dovednost používá modely strojového učení poskytované [textovou analýzou](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) ve službách Cognitive Services.
 
 > [!NOTE]
-> Když rozbalíte rozsah zvýšením četnosti zpracování, přidáním dalších dokumentů nebo přidáním dalších algoritmů AI, budete muset [připojit fakturovatelné Cognitive Services prostředku](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API v Cognitive Services a pro extrakci obrázků jako součást fáze pro vystavování dokumentů ve službě Azure Kognitivní hledání. Pro extrakci textu z dokumentů se neúčtují žádné poplatky.
+> Při rozšiřování oboru zvýšením četnosti zpracování, přidáním dalších dokumentů nebo přidáním dalších algoritmů AI budete muset [připojit fakturovatelný prostředek služeb Cognitive Services](cognitive-search-attach-cognitive-services.md). Poplatky narůstají při volání API ve službách Cognitive Services a pro extrakci image jako součást fáze prolomení dokumentů v Azure Cognitive Search. Za extrakci textu z dokumentů se neúčtují žádné poplatky.
 >
-> Při provádění integrovaných dovedností se účtují poplatky za stávající [Cognitive Services průběžných plateb](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakci imagí jsou popsané na [stránce s cenami za Azure kognitivní hledání](https://go.microsoft.com/fwlink/?linkid=2042400).
+> Provádění vestavěných dovedností se účtuje za stávající [cenu průběžných plateb služeb Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakci obrázků jsou popsané na [stránce s cenami Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft. dovednosti. text. SentimentSkill
+Microsoft.Skills.Text.SentimentSkill
 
 ## <a name="data-limits"></a>Omezení dat
-Maximální velikost záznamu musí být 5000 znaků měřenou [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Pokud potřebujete data před odesláním do nástroje mínění Analyzer rozdělit, použijte [dovednost rozdělení textu](cognitive-search-skill-textsplit.md).
+Maximální velikost záznamu by měla být 5000 [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)znaků měřeno . Pokud potřebujete rozdělit data před odesláním do analyzátoru mínění, použijte [dovednost Rozdělení textu](cognitive-search-skill-textsplit.md).
 
 
 ## <a name="skill-parameters"></a>Parametry dovednosti
 
-V parametrech jsou rozlišována malá a velká písmena.
+U parametrů se rozlišují malá a velká písmena.
 
 | Název parametru |                      |
 |----------------|----------------------|
-| defaultLanguageCode | volitelné Kód jazyka, který se má použít pro dokumenty, které nespecifikují jazyk explicitně. <br/> Zobrazit [úplný seznam podporovaných jazyků](../cognitive-services/text-analytics/text-analytics-supported-languages.md) |
+| defaultLanguageCode | (nepovinné) Kód jazyka, který se má použít pro dokumenty, které explicitně neurčují jazyk. <br/> Zobrazit [úplný seznam podporovaných jazyků](../cognitive-services/text-analytics/text-analytics-supported-languages.md) |
 
 ## <a name="skill-inputs"></a>Vstupy dovedností 
 
-| Název vstupu | Popis |
+| Vstupní název | Popis |
 |--------------------|-------------|
 | text | Text, který má být analyzován.|
-| languageCode  |  Volitelné Řetězec, který označuje jazyk záznamů. Není-li tento parametr zadán, je použita výchozí hodnota "en". <br/>[Úplný seznam podporovaných jazyků](../cognitive-services/text-analytics/text-analytics-supported-languages.md)najdete v části.|
+| languageCode  |  (Nepovinné) Řetězec označující jazyk záznamů. Pokud tento parametr není zadán, výchozí hodnota je "en". <br/>Viz [Úplný seznam podporovaných jazyků](../cognitive-services/text-analytics/text-analytics-supported-languages.md).|
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
 | Název výstupu | Popis |
 |--------------------|-------------|
-| podtržítk | Hodnota mezi 0 a 1, která představuje mínění analyzovaného textu. Hodnoty blížící se 0 mají negativní mínění, blízko až 0,5 mají neutrální mínění a hodnoty blízko 1 mají pozitivní mínění.|
+| skóre | Hodnota mezi 0 a 1, která představuje mínění analyzovaného textu. Hodnoty blízké 0 mají negativní sentiment, téměř 0,5 mají neutrální sentiment a hodnoty blízké 1 mají pozitivní sentiment.|
 
 
 ##  <a name="sample-definition"></a>Definice vzorku
@@ -78,7 +78,7 @@ V parametrech jsou rozlišována malá a velká písmena.
 }
 ```
 
-##  <a name="sample-input"></a>Vzorový vstup
+##  <a name="sample-input"></a>Vstup vzorku
 
 ```json
 {
@@ -111,12 +111,12 @@ V parametrech jsou rozlišována malá a velká písmena.
 ```
 
 ## <a name="notes"></a>Poznámky
-Pokud je toto nastavení prázdné, nevrátí se pro tyto záznamy mínění skóre.
+Pokud je prázdný, není pro tyto záznamy vráceno skóre mínění.
 
 ## <a name="error-cases"></a>Chybové případy
-Pokud jazyk není podporován, je vygenerována chyba a nebude vráceno žádné mínění skóre.
+Pokud jazyk není podporován, je generována chyba a není vráceno žádné skóre mínění.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 + [Integrované dovednosti](cognitive-search-predefined-skills.md)
-+ [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
++ [Jak definovat sadu dovedností](cognitive-search-defining-skillset.md)

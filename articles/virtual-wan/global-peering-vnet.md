@@ -1,6 +1,6 @@
 ---
-title: Konfigurace globálního partnerského vztahu VNet pro Azure Virtual WAN | Microsoft Docs
-description: Připojte virtuální síť v jiné oblasti k virtuálnímu rozbočovači sítě WAN.
+title: Konfigurace globálního partnerského vztahu virtuální sítě pro virtuální síť Azure | Dokumenty společnosti Microsoft
+description: Připojte virtuální síť v jiné oblasti k rozbočovači Virtuální WAN.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,41 +8,41 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.openlocfilehash: 340472f84d2dd2c4f46d180992745a57e8ad1884
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73588223"
 ---
-# <a name="configure-global-vnet-peering-cross-region-vnet-for-virtual-wan"></a>Konfigurace globálního partnerského vztahu virtuálních sítí (VNet mezi oblastmi) pro virtuální síť WAN
+# <a name="configure-global-vnet-peering-cross-region-vnet-for-virtual-wan"></a>Konfigurace globálního partnerského vztahu virtuální sítě (virtuální síť mezi oblastmi) pro virtuální síť WAN
 
-Virtuální síť můžete připojit v jiné oblasti k virtuálnímu rozbočovači WAN.
+Virtuální síť v jiné oblasti můžete připojit k rozbočovači Virtuální WAN.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Ověřte, že splňujete následující kritéria:
+Ověřte, zda jste splnili následující kritéria:
 
-* Virtuální síť (paprsk) mezi oblastmi není připojená k jinému virtuálnímu centru WAN. Paprsky je možné připojit pouze k jednomu virtuálnímu rozbočovači.
-* Virtuální síť (paprsek) neobsahuje bránu virtuální sítě (třeba bránu virtuální sítě Azure VPN Gateway nebo ExpressRoute). Pokud virtuální síť obsahuje bránu virtuální sítě, musíte bránu odebrat předtím, než propojíte virtuální síť rozbočovače s centrem.
+* Virtuální síť (paprsková) mezi oblastmi není připojená k jinému virtuálnímu rozbočovači WAN. Paprsek lze připojit pouze k jednomu virtuálnímu rozbočovači.
+* Virtuální síť (spoke) neobsahuje bránu virtuální sítě (například bránu Azure VPN gateway nebo bránu virtuální sítě ExpressRoute). Pokud virtuální síť obsahuje bránu virtuální sítě, musíte bránu před připojením virtuální sítě s paprskem k rozbočovači odebrat.
 
-## <a name="register"></a>Registrace této funkce
+## <a name="register-this-feature"></a><a name="register"></a>Registrace této funkce
 
-Pro tuto funkci se můžete zaregistrovat pomocí PowerShellu. Pokud v následujícím příkladu vyberete "vyzkoušet si", cloudové prostředí Azure se otevře a nebudete muset místně nainstalovat rutiny PowerShellu do vašeho počítače. V případě potřeby můžete změnit odběry pomocí rutiny Select-AzSubscription-SubscriptionId <subid>.
+Pro tuto funkci se můžete zaregistrovat pomocí prostředí PowerShell. Pokud vyberete "Try It" z níže uvedeného příkladu, Azure Cloud-Shell se otevře a nebudete muset instalovat rutiny Prostředí PowerShell místně do počítače. V případě potřeby můžete změnit odběry pomocí rutiny "Select-AzSubscription -SubscriptionId <subid>".
 
 ```azurepowershell-interactive
 Register-AzProviderFeature -FeatureName AllowCortexGlobalVnetPeering -ProviderNamespace Microsoft.Network
 Register-AzResourceProvider -ProviderNamespace 'Microsoft.Network'
 ```
 
-## <a name="verify"></a>Ověřit registraci
+## <a name="verify-registration"></a><a name="verify"></a>Ověření registrace
 
 ```azurepowershell-interactive
 Get-AzProviderFeature -FeatureName AllowCortexGlobalVnetPeering -ProviderNamespace Microsoft.Network
 ```
 
-## <a name="hub"></a>Připojení virtuální sítě k centru
+## <a name="connect-a-vnet-to-the-hub"></a><a name="hub"></a>Připojení virtuální sítě k rozbočovači
 
-V tomto kroku vytvoříte připojení partnerského vztahu mezi centrem a virtuální sítí mezi oblastmi. Uvedený postup zopakujte pro všechny virtuální sítě, které chcete připojit.
+V tomto kroku vytvoříte připojení partnerského vztahu mezi rozbočovačem a virtuální sítí mezi oblastmi. Uvedený postup zopakujte pro všechny virtuální sítě, které chcete připojit.
 
 1. Na stránce vaší virtuální sítě WAN klikněte na **Připojení k virtuální síti**.
 2. Na stránce připojení k virtuální síti klikněte na **+Add connection** (Přidat připojení).
@@ -56,4 +56,4 @@ V tomto kroku vytvoříte připojení partnerského vztahu mezi centrem a virtu�
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o virtuální síti WAN najdete v tématu [Přehled virtuálních sítí WAN](virtual-wan-about.md).
+Další informace o virtuální paměti WAN najdete v [tématu Přehled virtuální sítě WAN](virtual-wan-about.md).

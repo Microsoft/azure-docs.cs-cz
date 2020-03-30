@@ -1,5 +1,5 @@
 ---
-title: Zprovoznění počítačů se systémem Linux do Azure Security Center | Microsoft Docs
+title: Palubní počítače s Linuxem do Azure Security Center | Dokumenty společnosti Microsoft
 description: V tomto rychlém startu se dozvíte, jak připojit počítače s Linuxem ke službě Security Center.
 services: security-center
 documentationcenter: na
@@ -15,31 +15,31 @@ ms.workload: na
 ms.date: 12/02/2018
 ms.author: memildin
 ms.openlocfilehash: 9f49b858a23d0a1f58505d9f9971a31e8c9167e9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73664499"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Rychlý start: Připojení počítačů s Linuxem ke službě Azure Security Center
-Po připojení předplatných Azure můžete povolit Security Center pro prostředky Linux spuštěné mimo Azure, například místně nebo v jiných cloudech, zřízením agenta. Agent se nazývá Microsoft Monitoring Agent (MMA), ale je také označován jako agent OMS.
+Po napalubí předplatného Azure můžete povolit security center pro linuxové prostředky spuštěné mimo Azure, například místně nebo v jiných cloudech, zřízením agenta. Agent se nazývá Microsoft Monitoring Agent (MMA), ale je také známý jako agent OMS.
 
-V tomto rychlém startu se dozvíte, jak nainstalovat agenta na počítač se systémem Linux.
+Tento rychlý start ukazuje, jak nainstalovat agenta do počítače s Linuxem.
 
 ## <a name="prerequisites"></a>Požadavky
 Pokud chcete začít využívat Security Center, musíte mít předplatné pro Microsoft Azure. Pokud nemáte předplatné, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
-Než začnete s tímto rychlým startem, musíte mít službu Security Center na cenové úrovni Standard. Pokyny k upgradu najdete v tématu [Připojení předplatného Azure ke službě Security Center úrovně Standard](security-center-get-started.md). Můžete vyzkoušet Standard Security Center na žádné náklady. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
+Než začnete s tímto rychlým startem, musíte mít službu Security Center na cenové úrovni Standard. Pokyny k upgradu najdete v tématu [Připojení předplatného Azure ke službě Security Center úrovně Standard](security-center-get-started.md). Standard centra zabezpečení můžete vyzkoušet zdarma. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="add-new-linux-computer"></a>Přidání nového počítače s Linuxem
 
-1. Přihlaste se k webu [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
+1. Přihlaste se k [portálu Azure](https://azure.microsoft.com/features/azure-portal/).
 2. V nabídce **Microsoft Azure** vyberte **Security Center**. Otevře se obrazovka **Security Center – Přehled**.
 
    ![Přehled služby Security Center][2]
 
 3. V hlavní nabídce služby Security Center vyberte **Začínáme**.
-4. Vyberte kartu **Začínáme** . ![Začínáme][3]
+4. Vyberte kartu **Začínáme.** Začínáme. ![][3]
 
 5. V části **Přidat počítače umístěné mimo Azure** klikněte na **Konfigurovat**. Zobrazí se seznam vašich pracovních prostorů Log Analytics. Seznam obsahuje i výchozí pracovní prostor, který pro vás vytvořila služba Security Center při povolení automatického zřizování, pokud existuje. Vyberte tento nebo jiný pracovní prostor, který chcete použít.
 
@@ -56,7 +56,7 @@ Než začnete s tímto rychlým startem, musíte mít službu Security Center na
 
    ![Instalace agenta][5]
 
-Protokoly pro agenta najdete na adrese: */var/opt/microsoft/omsagent/\<pracovní prostor id >/log/*
+Protokoly pro agenta naleznete na adrese: */var/opt/microsoft/omsagent/\<id pracovního prostoru>/log/*
 
   ![Protokoly agenta][6]
 
@@ -81,7 +81,7 @@ Odebrání agenta:
     `sudo sh ./omsagent-<version>.universal.x64.sh --purge`
 
 ## <a name="next-steps"></a>Další kroky
-V tomto rychlém startu jste zřídili agenta v počítači se systémem Linux. Další informace o tom, jak používat Security Center, najdete v následném kurzu o konfiguraci zásad zabezpečení a o vyhodnocení zabezpečení vašich prostředků.
+V tomto rychlém startu jste zřídit agenta na počítači s Linuxem. Další informace o tom, jak používat Security Center, najdete v následném kurzu o konfiguraci zásad zabezpečení a o vyhodnocení zabezpečení vašich prostředků.
 
 > [!div class="nextstepaction"]
 > [Kurz: Definování a vyhodnocení zásad zabezpečení](tutorial-security-policy.md)

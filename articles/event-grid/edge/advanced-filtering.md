@@ -1,6 +1,6 @@
 ---
-title: Rozšířené filtrování – Azure Event Grid IoT Edge | Microsoft Docs
-description: Rozšířené filtrování v Event Grid IoT Edge
+title: Pokročilé filtrování – Azure Event Grid IoT Edge | Dokumenty společnosti Microsoft
+description: Pokročilé filtrování v mřížce událostí na okraji IoT.
 author: HiteshMadan
 manager: rajarv
 ms.author: himad
@@ -10,22 +10,22 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: d7fdc5074f3c92eea4f236a9b1f7c823b930f391
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72992558"
 ---
 # <a name="advanced-filtering"></a>Rozšířené filtrování
-Event Grid umožňuje zadat filtry pro libovolnou vlastnost v datové části JSON. Tyto filtry jsou modelovány jako `AND` podmínky a každá vnější podmínka má volitelné vnitřní `OR` podmínky. Pro každou podmínku `AND` zadejte následující hodnoty:
+Event Grid umožňuje zadat filtry na libovolnou vlastnost v datové části json. Tyto filtry jsou modelovány jako sada `AND` podmínek, `OR` přičemž každá vnější podmínka má volitelné vnitřní podmínky. Pro `AND` každou podmínku zadáte následující hodnoty:
 
-* `OperatorType` – typ porovnání.
-* `Key` – cesta JSON k vlastnosti, na které se má filtr použít.
-* `Value` – referenční hodnota, na kterou se filtr spouští (nebo) `Values`-sada referenčních hodnot, na které se filtr spouští.
+* `OperatorType`- Typ srovnání.
+* `Key`- Cesta json k vlastnosti, na kterou chcete použít filtr.
+* `Value`- Referenční hodnota, proti které je `Values` filtr spuštěn (nebo) - Sada referenčních hodnot, proti které je filtr spuštěn.
 
 ## <a name="json-syntax"></a>Syntaxe JSON
 
-Syntaxe JSON rozšířeného filtru je následující:
+Syntaxe JSON pro rozšířený filtr je následující:
 
 ```json
 {
@@ -44,56 +44,56 @@ Syntaxe JSON rozšířeného filtru je následující:
 }
 ```
 
-## <a name="filtering-on-array-values"></a>Filtrování hodnot polí
+## <a name="filtering-on-array-values"></a>Filtrování hodnot pole
 
-Event Grid nepodporuje filtrování u pole hodnot dnes. Pokud má příchozí událost hodnotu pole pro klíč rozšířeného filtru, operace porovnání se nezdařila. Příchozí událost skončila tím, že se neshoduje s odběrem události.
+Event Grid dnes nepodporuje filtrování na poli hodnot. Pokud příchozí událost má hodnotu pole pro klíč rozšířeného filtru, odpovídající operace se nezdaří. Příchozí událost skončí neodpovídá předplatné události.
 
-## <a name="and-or-not-semantics"></a>Sémantika AND – NOT
+## <a name="and-or-not-semantics"></a>Sémantiku a nebo ne
 
-Všimněte si, že ve výše uvedeném příkladu JSON `AdvancedFilters` je pole. Každý prvek `AdvancedFilter` pole si popřemýšlejte jako podmínku `AND`.
+Všimněte si, že v příkladu json uvedené dříve, `AdvancedFilters` je pole. Každý prvek `AdvancedFilter` pole si `AND` můžete zamyslet jako podmínku.
 
-Pro operátory, které podporují více hodnot (například `NumberIn`, `NumberNotIn`, `StringIn`atd.), je každá hodnota považována za `OR`ou podmínku. Takže `StringBeginsWith("a", "b", "c")` bude odpovídat jakékoli hodnotě řetězce, která začíná buď `a` nebo `b` nebo `c`.
+Pro operátory, které podporují `NumberIn`více `NumberNotIn` `StringIn`hodnot (například , , , `OR` atd.), každá hodnota je považována za podmínku. `StringBeginsWith("a", "b", "c")` Takže bude odpovídat jakékoli řetězci `a` hodnotu, která začíná buď nebo nebo `b` `c`.
 
 > [!CAUTION]
-> Operátory NOT `NumberNotIn` a `StringNotIn` se chovají jako podmínky v každé hodnotě zadané v poli `Values`.
+> Not operátory `NumberNotIn` `StringNotIn` - a chovat se jako and `Values` podmínky pro každou hodnotu uvedenou v poli.
 >
-> Pokud to neprovedete, filtr přijme filtr přijmout – vše a předá účel filtrování.
+> Pokud tak neučiníte, bude filtr přijmout vše filtr a porazit účel filtrování.
 
-## <a name="floating-point-rounding-behavior"></a>Chování zaokrouhlení plovoucí desetinné čárky
+## <a name="floating-point-rounding-behavior"></a>Chování zaokrouhlení s plovoucí desetinnou táhou
 
-Event Grid používá typ `decimal` .NET ke zpracování všech číselných hodnot. Číselné hodnoty zadané v JSON pro odběr událostí nepodléhají chování při zaokrouhlování plovoucí desetinné čárky.
+Event Grid `decimal` používá typ .NET ke zpracování všech číselných hodnot. Číselné hodnoty zadané v odběru událostí JSON nepodléhají chování zaokrouhlení s plovoucí desetinnou táhou.
 
-## <a name="case-sensitivity-of-string-filters"></a>Rozlišování velkých a malých písmen u filtrů řetězců
+## <a name="case-sensitivity-of-string-filters"></a>Rozlišování staňových písmen filtrů řetězců
 
-U všech porovnávání řetězců se nerozlišují malá a velká písmena. Neexistuje žádný způsob, jak toto chování změnit ještě dnes.
+Všechna porovnání řetězců nerozlišují malá a velká písmena. Neexistuje žádný způsob, jak změnit toto chování dnes.
 
-## <a name="allowed-advanced-filter-keys"></a>Povolené klíče rozšířeného filtru
+## <a name="allowed-advanced-filter-keys"></a>Povolené rozšířené klíče filtru
 
-Vlastnost `Key` může být dobře známá vlastnost nejvyšší úrovně, nebo může být cesta JSON s více tečkami, kde každá tečka označuje krokování vnořeného objektu JSON.
+Vlastnost `Key` může být známá vlastnost nejvyšší úrovně nebo json cesta s více tečkami, kde každá tečka znamená krokování do vnořeného objektu json.
 
-Event Grid nemá žádný zvláštní význam pro `$` znak v klíči, na rozdíl od specifikace JSONPath.
+Event Grid nemá žádný zvláštní význam `$` pro znak v klíči, na rozdíl od specifikace JSONPath.
 
-### <a name="event-grid-schema"></a>Schéma Event gridu
+### <a name="event-grid-schema"></a>Schéma mřížky událostí
 
-Pro události ve schématu Event Grid:
+Pro události ve schématu Mřížka událostí:
 
 * ID
 * Téma
-* Předmět
-* Typ
-* dataverze
-* Data. Prop1
-* Data. Prop * Prop2. Prop3. Prop4. Prop5
+* Subjekt
+* Typ události
+* Datová verze
+* Data.Prop1
+* Data.Prop*Prop2.Prop3.Prop4.Prop5
 
-### <a name="custom-event-schema"></a>Vlastní schéma událostí
+### <a name="custom-event-schema"></a>Vlastní schéma události
 
-Neexistuje žádné omezení `Key` ve vlastním schématu událostí, protože Event Grid nevynutilo v datové části žádné schéma obálky.
+Neexistuje žádné omezení na `Key` in vlastní události schématu, protože Event Grid nevynucuje žádné schéma obálky na datové části.
 
-## <a name="numeric-single-value-filter-examples"></a>Příklady číselného filtru s jednou hodnotou
+## <a name="numeric-single-value-filter-examples"></a>Příklady numerických filtrů s jednou hodnotou
 
 * NumberGreaterThan
 * NumberGreaterThanOrEquals
-* NumberLessThan
+* Bezpočet než
 * NumberLessThanOrEquals
 
 ```json
@@ -125,10 +125,10 @@ Neexistuje žádné omezení `Key` ve vlastním schématu událostí, protože E
 }
 ```
 
-## <a name="numeric-range-value-filter-examples"></a>Příklady filtru číselného rozsahu a hodnot
+## <a name="numeric-range-value-filter-examples"></a>Příklady filtru číselných hodnot rozsahu
 
-* NumberIn
-* NumberNotIn
+* Číslov
+* NumberNotin
 
 ```json
 {
@@ -149,11 +149,11 @@ Neexistuje žádné omezení `Key` ve vlastním schématu událostí, protože E
 }
 ```
 
-## <a name="string-range-value-filter-examples"></a>Příklady filtru hodnot rozsahu řetězce
+## <a name="string-range-value-filter-examples"></a>Příklady filtru rozsahu řetězců
 
-* StringContains
+* Obsahuje řetězec
 * StringBeginsWith
-* StringEndsWith
+* Řetězec endswith
 * StringIn
 * StringNotIn
 
@@ -191,7 +191,7 @@ Neexistuje žádné omezení `Key` ve vlastním schématu událostí, protože E
 }
 ```
 
-## <a name="boolean-single-value-filter-examples"></a>Příklady logických filtrů s jednou hodnotou
+## <a name="boolean-single-value-filter-examples"></a>Příklady filtrů s logickou hodnotou
 
 * BoolEquals
 

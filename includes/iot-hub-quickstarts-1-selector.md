@@ -9,14 +9,14 @@ ms.date: 04/13/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 654b905088d8623ad49a066cec572ee35fd64131
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73846660"
 ---
 > [!div class="op_single_selector"]
-> * [Rozhraní příkazového řádku](../articles/iot-hub/quickstart-send-telemetry-cli.md)
+> * [Cli](../articles/iot-hub/quickstart-send-telemetry-cli.md)
 > * [C](../articles/iot-hub/quickstart-send-telemetry-c.md)
 > * [.NET](../articles/iot-hub/quickstart-send-telemetry-dotnet.md)
 > * [Java](../articles/iot-hub/quickstart-send-telemetry-java.md)

@@ -1,6 +1,6 @@
 ---
-title: Použití Twilio pro hlasové zprávy, VoIP a SMS v Azure
-description: Naučte se, jak uskutečnit telefonní hovor a poslat zprávu SMS pomocí služby Twilio API v Azure. Ukázky kódu napsané v Node. js
+title: Používání Twilio pro hlasové, VoIP a SMS zprávy v Azure
+description: Přečtěte si, jak telefonovat a odesílat SMS zprávy pomocí služby Twilio API v Azure. Ukázky kódu napsané v souboru Node.js.
 services: ''
 documentationcenter: nodejs
 author: georgewallace
@@ -13,61 +13,61 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: 164bedffcf9a1aca9f1fa46dea254fb928abcf04
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69637271"
 ---
-# <a name="using-twilio-for-voice-voip-and-sms-messaging-in-azure"></a>Použití Twilio pro hlasové zprávy, VoIP a SMS v Azure
-Tato příručka ukazuje, jak vytvářet aplikace, které komunikují s Twilio a Node. js v Azure.
+# <a name="using-twilio-for-voice-voip-and-sms-messaging-in-azure"></a>Používání Twilio pro hlasové, VoIP a SMS zprávy v Azure
+Tato příručka ukazuje, jak vytvářet aplikace, které komunikují s Twilio a node.js v Azure.
 
 <a id="whatis"/>
 
 ## <a name="what-is-twilio"></a>Co je Twilio?
-Twilio je platforma rozhraní API usnadňující vývojářům vytvářet a přijímat telefonní hovory, odesílat a přijímat textové zprávy a vkládat volání VoIP do aplikací založených na prohlížeči a nativních mobilních aplikacích. Podíváme se, jak to funguje před začnete v.
+Twilio je platforma API, která vývojářům usnadňuje telefonování, odesílání a přijímání textových zpráv a vkládá volání VoIP do mobilních aplikací založených na prohlížeči a nativních mobilních aplikacích. Pojďme krátce procházet, jak to funguje, než se ponoříme.
 
-### <a name="receiving-calls-and-text-messages"></a>Přijímání volání a textových zpráv
-Twilio umožňuje vývojářům [koupit programovatelné telefonní číslo][purchase_phone] , které se dá použít k odesílání i přijímání hovorů a textových zpráv. Když číslo Twilio přijme příchozí volání nebo text, Twilio odešle webovou aplikaci požadavek HTTP POST nebo GET, který vás vyzve k zadání pokynů pro zpracování volání nebo textu. Váš server odpoví na požadavek HTTP Twilio s [TwiML][twiml], jednoduchou sadou značek XML, která obsahuje pokyny, jak zpracovat volání nebo text. V jednom okamžiku se zobrazí příklady TwiML.
+### <a name="receiving-calls-and-text-messages"></a>Přijímání hovorů a textových zpráv
+Twilio umožňuje [vývojářům zakoupit programovatelná telefonní čísla,][purchase_phone] která lze použít jak k odesílání, tak k přijímání hovorů a textových zpráv. Když číslo Twilio obdrží příchozí hovor nebo textovou zprávu, Twilio odešle webové aplikaci požadavek HTTP POST nebo GET a požádá vás o pokyny, jak zpracovat volání nebo textovou zprávu. Server bude reagovat na požadavek HTTP twilio s [TwiML][twiml], jednoduchou sadu XML značek, které obsahují pokyny, jak zpracovat volání nebo text. Uvidíme příklady TwiML za okamžik.
 
-### <a name="making-calls-and-sending-text-messages"></a>Volání a posílání textových zpráv
-Díky odeslání požadavků HTTP na rozhraní API webové služby Twilio můžou vývojáři posílat textové zprávy nebo iniciovat odchozí telefonní hovory. Pro odchozí volání musí vývojář zadat také adresu URL, která vrátí TwiML pokyny pro zpracování odchozího volání, jakmile je připojen.
+### <a name="making-calls-and-sending-text-messages"></a>Volání a odesílání textových zpráv
+Vytvářením požadavků HTTP do rozhraní API webové služby Twilio mohou vývojáři odesílat textové zprávy nebo iniciovat odchozí telefonní hovory. Pro odchozí volání musí vývojář také zadat adresu URL, která vrací pokyny TwiML pro zpracování odchozího volání po připojení.
 
-### <a name="embedding-voip-capabilities-in-ui-code-javascript-ios-or-android"></a>Vkládání možností VoIP do kódu uživatelského rozhraní (JavaScript, iOS nebo Android)
-Twilio poskytuje sadu SDK na straně klienta, která umožňuje v telefonu VoIP zapnout libovolný desktopový webový prohlížeč, aplikaci pro iOS nebo aplikaci pro Android. V tomto článku se zaměříme na použití volání VoIP v prohlížeči. Kromě *Twilio JavaScript SDK* spuštěné v prohlížeči je nutné použít aplikaci na straně serveru (naši aplikaci Node. js) k vydání "tokenu schopností" klientovi jazyka JavaScript. Další informace o používání VoIP s Node. js najdete [na blogu vývoj Twilio][voipnode].
+### <a name="embedding-voip-capabilities-in-ui-code-javascript-ios-or-android"></a>Vkládání funkcí VoIP do kódu ui (JavaScript, iOS nebo Android)
+Twilio poskytuje sdk na straně klienta, který dokáže přeměnit jakýkoli webový prohlížeč pro stolní počítače, aplikaci pro iOS nebo aplikaci pro Android na telefon VoIP. V tomto článku se zaměříme na to, jak používat VoIP volání v prohlížeči. Kromě sady *Twilio JavaScript SDK* spuštěné v prohlížeči musí být k vydání "tokenu schopností" klientovi JavaScriptu použita aplikace na straně serveru (naše aplikace node.js). Můžete si přečíst více o používání VoIP s node.js [na blogu Twilio dev][voipnode].
 
 <a id="signup"/>
 
-## <a name="sign-up-for-twilio-microsoft-discount"></a>Zaregistrujte se do Twilio (sleva Microsoftu)
-Než začnete používat služby Twilio Services, musíte se nejdřív [zaregistrovat k účtu][signup]. Zákazníci, kteří Microsoft Azure obdrží speciální slevu, [si][signup]zaregistrují.
+## <a name="sign-up-for-twilio-microsoft-discount"></a>Zaregistrujte se na Twilio (Microsoft Sleva)
+Před použitím služeb Twilio se musíte [nejprve zaregistrovat][signup]k účtu . Zákazníci Microsoft Azure obdrží speciální slevu – [nezapomeňte se zaregistrovat zde!][signup]
 
 <a id="azuresite"/>
 
-## <a name="create-and-deploy-a-nodejs-azure-website"></a>Vytvoření a nasazení webu Node. js Azure
-V dalším kroku budete muset vytvořit web Node. js běžící v Azure. [Oficiální dokumentaci k tomuto umístění najdete tady][azure_new_site]. Na nejvyšší úrovni budete provádět následující akce:
+## <a name="create-and-deploy-a-nodejs-azure-website"></a>Vytvoření a nasazení webu Azure node.js
+Dále budete muset vytvořit web node.js spuštěný v Azure. [Oficiální dokumentace k tomu je umístěna zde][azure_new_site]. Na vysoké úrovni budete dělat následující:
 
 * Registrace účtu Azure, pokud ho ještě nemáte
 * Vytvoření nového webu pomocí konzoly pro správu Azure
-* Přidává se podpora správy zdrojového kódu (předpokládáme, že jste použili Git).
-* Vytvoření souboru `server.js` pomocí jednoduché webové aplikace Node. js
+* Přidání podpory správy zdrojového kódu (budeme předpokládat, že jste použili git)
+* Vytvoření souboru `server.js` pomocí jednoduché webové aplikace node.js
 * Nasazení této jednoduché aplikace do Azure
 
 <a id="twiliomodule"/>
 
 ## <a name="configure-the-twilio-module"></a>Konfigurace modulu Twilio
-V dalším kroku začneme psát jednoduchou aplikaci Node. js, která využívá rozhraní Twilio API. Než začneme, musíme nakonfigurovat přihlašovací údaje k účtu Twilio.
+Dále začneme psát jednoduchou aplikaci node.js, která využívá rozhraní Twilio API. Než začneme, musíme nakonfigurovat pověření účtu Twilio.
 
-### <a name="configuring-twilio-credentials-in-system-environment-variables"></a>Konfigurace přihlašovacích údajů Twilio v proměnných prostředí systému
-Abychom mohli provádět ověřené požadavky na back-end Twilio, potřebujeme naše SID účtu a ověřovací token, které fungují jako uživatelské jméno a heslo nastavené pro náš účet Twilio. Nejbezpečnější způsob, jak je nakonfigurovat pro použití s modulem Node v Azure, je přes proměnné prostředí systému, které můžete nastavit přímo v konzole pro správu Azure.
+### <a name="configuring-twilio-credentials-in-system-environment-variables"></a>Konfigurace pověření Twilio v proměnných systémového prostředí
+Aby bylo možné ověřit požadavky proti Back-end Twilio, potřebujeme náš účet SID a auth token, které fungují jako uživatelské jméno a heslo nastavené pro náš účet Twilio. Nejbezpečnější způsob, jak je nakonfigurovat pro použití s modulem uzlů v Azure, je prostřednictvím proměnných prostředí systému, které můžete nastavit přímo v konzole pro správu Azure.
 
-Vyberte web Node. js a klikněte na odkaz konfigurovat.  Pokud se posunete o bit, zobrazí se oblast, kde můžete nastavit vlastnosti konfigurace aplikace.  Zadejte přihlašovací údaje účtu Twilio ([najdete v konzole Twilio][twilio_console]), jak je znázorněné – nezapomeňte je `TWILIO_ACCOUNT_SID` pojmenovat a `TWILIO_AUTH_TOKEN`v uvedeném pořadí:
+Vyberte web node.js a klikněte na odkaz KONFIGUROVAT.  Pokud se posunete dolů trochu, uvidíte oblast, kde můžete nastavit vlastnosti konfigurace pro vaši aplikaci.  Zadejte pověření svého účtu Twilio[(najdete na konzoli Twilio),][twilio_console]jak je znázorněno na obrázku - nezapomeňte je pojmenovat `TWILIO_ACCOUNT_SID` a `TWILIO_AUTH_TOKEN`, v uvedeném pořadí:
 
 ![Konzola pro správu Azure][azure-admin-console]
 
-Po nakonfigurování těchto proměnných restartujte aplikaci v konzole Azure.
+Po konfiguraci těchto proměnných restartujte aplikaci v konzole Azure.
 
-### <a name="declaring-the-twilio-module-in-packagejson"></a>Deklarace modulu Twilio v Package. JSON
-Dále je potřeba vytvořit soubor Package. JSON pro správu závislostí modulu uzlu prostřednictvím [npm]. Na stejné úrovni jako `server.js` soubor, který jste vytvořili v kurzu *Azure/Node. js* , vytvořte soubor s názvem. `package.json`  V tomto souboru umístěte následující:
+### <a name="declaring-the-twilio-module-in-packagejson"></a>Deklarování modulu Twilio v souboru package.json
+Dále musíme vytvořit package.json pro správu našich závislostí modulu uzlu přes [npm]. Na stejné úrovni `server.js` jako soubor, který jste vytvořili v kurzu *Azure/node.js,* vytvořte soubor s názvem `package.json`.  Uvnitř tohoto souboru umístěte následující:
 
 ```json
 {
@@ -88,12 +88,12 @@ Dále je potřeba vytvořit soubor Package. JSON pro správu závislostí modulu
 }
 ```
 
-Tato deklarace deklaruje modul Twilio jako závislost a také oblíbené rozhraní [Express Web Framework][express] a modul šablon EJS.  V pořádku, teď máme všechno nastavené – Pojďme napsat nějaký kód!
+To deklaruje modul twilio jako závislost, stejně jako populární [webový rámec Express][express] a modul šablony EJS.  Dobře, teď jsme všichni připraveni - napíšeme nějaký kód!
 
 <a id="makecall"/>
 
-## <a name="make-an-outbound-call"></a>Uskutečnit odchozí volání
-Pojďme vytvořit jednoduchou formu, která umístí volání na číslo, které si vybereme. `server.js`Otevřete a zadejte následující kód. Všimněte si, že "CHANGE_ME" – uveďte název vašeho webu Azure:
+## <a name="make-an-outbound-call"></a>Volání do odchozího hovoru
+Vytvořme jednoduchý formulář, který zavolá na číslo, které si vybereme. Otevřete `server.js`a zadejte následující kód. Všimněte si, kde se píše "CHANGE_ME" - tam uveďte název webu Azure:
 
 ```javascript
 // Module dependencies
@@ -165,7 +165,7 @@ app.listen(app.get('port'), function(){
 });
 ```
 
-Dále vytvořte adresář nazvaný `views` v tomto adresáři a vytvořte soubor s názvem `index.ejs` s následujícím obsahem:
+Dále vytvořte adresář `views` s názvem - uvnitř `index.ejs` tohoto adresáře vytvořte soubor pojmenovaný s následujícím obsahem:
 
 ```html
 <!DOCTYPE html>
@@ -187,12 +187,12 @@ Dále vytvořte adresář nazvaný `views` v tomto adresáři a vytvořte soubor
 </html>
 ```
 
-Teď Nasaďte svůj web do Azure a otevřete domovskou stránku. Měli byste být schopni zadat do textového pole své telefonní číslo a získat hovor od čísla Twilio!
+Teď nasaďte svůj web do Azure a otevřete svůj domov. Měli byste být schopni zadat své telefonní číslo do textového pole a přijmout hovor z vašeho čísla Twilio!
 
 <a id="sendmessage"/>
 
-## <a name="send-an-sms-message"></a>Odeslat zprávu SMS
-Nyní nastavili jsme pro odeslání textové zprávy logiku zpracování uživatelského rozhraní a formuláře. Otevřete a přidejte následující kód po posledním `app.post`volání: `server.js`
+## <a name="send-an-sms-message"></a>Odeslání SMS zprávy
+Nyní nastavíme uživatelské rozhraní a logiku zpracování formulářů pro odeslání textové zprávy. Otevřete `server.js`a po posledním volání přidejte `app.post`následující kód do :
 
 ```javascript
 app.post('/sms', (request, response) => {
@@ -216,7 +216,7 @@ app.post('/sms', (request, response) => {
 });
 ```
 
-V `views/index.ejs`portálu přidejte do prvního pole další formulář, abyste odeslali číslo a textovou zprávu:
+V `views/index.ejs`souboru přidejte pod první formulář další formulář, který odešle číslo a textovou zprávu:
 
 ```html
 <form action="/sms" method="POST">
@@ -228,26 +228,26 @@ V `views/index.ejs`portálu přidejte do prvního pole další formulář, abyst
 </form>
 ```
 
-Znovu nasaďte aplikaci do Azure a teď byste měli být schopni odeslat tento formulář a poslat sami sobě (nebo libovolnému z vašich nejbližších přátel) textovou zprávu!
+Znovu nasadit aplikaci do Azure a nyní byste měli být schopni odeslat tento formulář a odeslat sami (nebo některý z vašich nejbližších přátel) textovou zprávu!
 
 <a id="nextsteps"/>
 
 ## <a name="next-steps"></a>Další kroky
-Nyní jste se naučili základy použití Node. js a Twilio k vytváření aplikací, které komunikují. Tyto příklady ale zlomeki, co je možné s Twilio a Node. js. Další informace o použití Twilio s Node. js najdete v následujících zdrojích informací:
+Nyní jste se naučili základy použití node.js a Twilio k vytváření aplikací, které komunikují. Ale tyto příklady sotva poškrábat povrch toho, co je možné s Twilio a node.js. Další informace pomocí twilio s node.js, podívejte se na následující zdroje:
 
-* [Oficiální dokumentace modulu][docs]
-* [Kurz pro VoIP s aplikacemi Node. js][voipnode]
-* [Votr – hlasovací aplikace SMS v reálném čase s Node. js a CouchDB (tři části)][votr]
-* [Párování programování v prohlížeči pomocí Node. js][pair]
+* [Oficiální modulové dokumenty][docs]
+* [Výuka v oVIP s aplikacemi node.js][voipnode]
+* [Votr - aplikace pro hlasování sms v reálném čase s node.js a CouchDB (tři části)][votr]
+* [Párování programování v prohlížeči s node.js][pair]
 
-Doufáme, že budete mít k disTwilio uzel. js a v Azure.
+Doufáme, že máte rádi hacking node.js a Twilio v Azure!
 
 [purchase_phone]: https://www.twilio.com/console/phone-numbers/search
 [twiml]: https://www.twilio.com/docs/api/twiml
 [signup]: https://ahoy.twilio.com/azure
 [azure_new_site]: app-service/app-service-web-get-started-nodejs.md
 [twilio_console]: https://www.twilio.com/console
-[NPM]: https://npmjs.org
+[npm]: https://npmjs.org
 [express]: https://expressjs.com
 [voipnode]: https://www.twilio.com/blog/2013/04/introduction-to-twilio-client-with-node-js.html
 [docs]: https://www.twilio.com/docs/libraries/reference/twilio-node/

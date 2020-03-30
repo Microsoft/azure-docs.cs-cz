@@ -1,64 +1,60 @@
 ---
-title: NDv2-Series – Azure Virtual Machines
-description: Specifikace pro virtuální počítače řady NDv2-Series.
+title: Řada NDv2 – virtuální počítače Azure
+description: Specifikace pro virtuální chod řady NDv2.
 services: virtual-machines
 author: vikancha
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 1aa2a6402a58ba69a7b5999803bb10d48169a035
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 8a2d275501816dd504130b255b73a752c5615f0d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78267440"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80247278"
 ---
-# <a name="updated-ndv2-series-preview"></a>Aktualizace NDv2-Series (Preview)
+# <a name="updated-ndv2-series"></a>Byla aktualizována řada NDv2
 
-Virtuální počítač řady NDv2-Series je novým doplňkem k rodině GPU navržené pro potřeby nejnáročnějších úloh AI, strojového učení, simulace a prostředí HPC s podporou GPU.
+Virtuální počítač řady NDv2 je novým přírůstkem do řady GPU navržených pro potřeby nejnáročnějších úloh AI s akcelerací GPU, strojového učení, simulace a HPC úloh.
 
-NDv2 je napájený pomocí 8 NVIDIA Tesla V100 NVLINK – připojené GPU s 32 GB paměti GPU. Každý virtuální počítač s NDv2 má taky 40 jader Intel Xeon Platinum 8168 (Skylake) 672, které neobsahují GiB systémové paměti.
+NDv2 je poháněn 8 NVIDIA Tesla V100 NVLINK připojených GPU, každý s 32 GB paměti GPU. Každý virtuální počítač NDv2 má také 40 jader Intel Xeon Platinum 8168 (Skylake) bez hyperthreadedu a 672 GiB systémové paměti.
 
-Instance NDv2 poskytují vynikající výkon pro úlohy HPC a AI s využitím CUDA výpočetních jader optimalizovaných pro GPU a mnoha nástrojů AI, ML a Analytics, které podporují akceleraci GPU, jako je například TensorFlow, Pytorch, Caffe, RAPIDS a další. rozhraní.
+Instance NDv2 poskytují vynikající výkon pro úlohy HPC a AI využívající výpočetní jádra optimalizovaná pro CUDA GPU a mnoho nástrojů pro umělou hmotnost, ML a analýzu, které podporují akceleraci GPU "out-of-box", jako jsou TensorFlow, Pytorch, Caffe, RAPIDS a další Rámců.
 
-Kriticky je NDv2 sestavena jak pro výpočetně náročné škálování (což znamená 8 GPU na virtuální počítač), tak na škálování (více vzájemně pracujících více virtuálních počítačů) úloh. NDv2 Series teď podporuje 100 gigabitové sítě InfiniBand EDR, které jsou k dispozici na začátku série virtuálních počítačů HPC, a umožňují tak vysoce výkonné clustering pro paralelní scénáře, včetně distribuovaného školení pro AI a ML. Tato síť back-end podporuje všechny hlavní protokoly InfiniBand, včetně těch, které pracují s knihovnami NCCL2 společnosti NVIDIA, což umožňuje bezproblémové clusteringu GPU.
+Kriticky ndv2 je vybudován pro výpočetní intenzivní škálování (využití 8 GPU na virtuální počítač) a horizontální navýšení kapacity (využití více virtuálních počítačů pracujících společně) úlohy. Řada NDv2 nyní podporuje 100gigabitové back-endové sítě InfiniBand EDR, podobné té, která je k dispozici na řadě HB virtuálního počítače HPC, aby umožnila vysoce výkonné clustering pro paralelní scénáře včetně distribuovaného školení pro AI a ML. Tato back-endová síť podporuje všechny hlavní protokoly InfiniBand, včetně těch, které používají knihovny NCCL2 společnosti NVIDIA, což umožňuje bezproblémové shlukování GPU.
 
-
-> [!NOTE]
-> Při [povolování InfiniBand](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband) na virtuálním počítači s ND40rs_v2 použijte prosím ovladač OFED 4.7-1.0.0.1 Mellanox.
+> Při [povolení infinibandu](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband) na ND40rs_v2 virtuálním počítači použijte ovladač 4.7-1.0.0.1 Mellanox OFED.
 >
-> V důsledku zvýšené paměti GPU vyžaduje nový virtuální počítač ND40rs_v2 použití [virtuálních počítačů generace 2](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) a imagí z Marketplace. 
+> Vzhledem ke zvýšené paměti GPU vyžaduje nový ND40rs_v2 virtuální ms použití [virtuálních zařízení generace 2](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) a image marketplace. 
 >
-> [Přihlaste se, abyste si vyžádali předběžný přístup k virtuálnímu počítači NDv2 ve verzi Preview.](https://aka.ms/AzureNDrv2Preview)
->
-> Poznámka: ND40s_v2 o velikosti 16 GB na paměť GPU již není k dispozici pro verzi Preview a byla nahrazena aktualizovaným ND40rs_v2.
+> Poznámka: ND40s_v2 s 16 GB paměti na GPU již není k dispozici pro náhled a byl nahrazen aktualizovaným ND40rs_v2.
 
 <br>
 
-Premium Storage: podporováno
+Úložiště Premium: Podporováno
 
-Ukládání Premium Storage do mezipaměti: podporováno
+Ukládání do mezipaměti úložiště Premium: Podporováno
 
-Migrace za provozu: nepodporováno
+Migrace za provozu: Není podporována
 
-Aktualizace pro zachování paměti: nepodporováno
+Aktualizace pro zachování paměti: Není podporováno
 
-InfiniBand: podporované
+InfiniBand: Podporováno
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Paměť GPU: GiB | Max. datových disků | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální šířka pásma sítě | Maximální počet síťových karet |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GIB | GPU | Paměť GPU: GIB | Max. datových disků | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální šířka pásma sítě | Maximální počet síťových karet |
 |---|---|---|---|---|---|---|---|---|---|
-| Standard_ND40rs_v2 | 40 | 672 | 2948 | 8 V100 32 GB (NVLink) | 16 | 32 | 80000 / 800 | 24000 MB/s | 8 |
+| Standard_ND40rs_v2 | 40 | 672 | 2948 | 8 V100 32 GB (NVLink) | 32 | 32 | 80000 / 800 | 24000 Mb/s | 8 |
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 ## <a name="supported-operating-systems-and-drivers"></a>Podporované operační systémy a ovladače
 
-Aby bylo možné využít možnosti GPU pro virtuální počítače řady Azure N-Series, je nutné nainstalovat ovladače GPU NVIDIA.
+Chcete-li využít funkce GPU virtuálních počítačů řady Azure N, musí být nainstalovány ovladače GPU NVIDIA.
 
-[Rozšíření ovladače NVIDIA GPU](./extensions/hpccompute-gpu-windows.md) nainstaluje vhodné ovladače NVIDIA CUDA nebo Grid na virtuální počítač řady N-Series. Nainstalujte nebo spravujte rozšíření pomocí Azure Portal nebo nástrojů, jako jsou šablony Azure PowerShell nebo Azure Resource Manager. Podporované operační systémy a kroky nasazení najdete v [dokumentaci k rozšíření ovladače GPU NVIDIA](./extensions/hpccompute-gpu-windows.md) . Obecné informace o rozšířeních virtuálních počítačů najdete v tématu [rozšíření a funkce virtuálních počítačů Azure](./extensions/overview.md).
+[Rozšíření ovladače GPU NVIDIA](./extensions/hpccompute-gpu-linux.md) nainstaluje příslušné ovladače NVIDIA CUDA nebo GRID na virtuální počítač řady N. Nainstalujte nebo spravujte rozšíření pomocí portálu Azure nebo nástrojů, jako jsou šablony Azure PowerShellnebo Azure Resource Manager. Obecné informace o rozšířeních virtuálních virtuálních zařízení najdete v tématu [Rozšíření a funkce virtuálních strojů Azure](./extensions/overview.md).
 
-Pokud se rozhodnete nainstalovat ovladače GPU NVIDIA ručně, přečtěte si téma Instalace ovladače GPU [řady n-Series pro Windows](./windows/n-series-driver-setup.md) nebo [n-Series Setup Driver Setup pro Linux](./linux/n-series-driver-setup.md) pro podporované operační systémy, ovladače, instalace a postupy ověření.
+Pokud se rozhodnete nainstalovat ovladače NVIDIA GPU ručně, přečtěte si informace [o nastavení ovladače GPU řady N pro Linux](./linux/n-series-driver-setup.md).
 
 ## <a name="other-sizes"></a>Jiné velikosti
 
@@ -71,4 +67,4 @@ Pokud se rozhodnete nainstalovat ovladače GPU NVIDIA ručně, přečtěte si t�
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.
+Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám můžou pomoct porovnat výpočetní výkon napříč virtuálními jednotkami Azure.

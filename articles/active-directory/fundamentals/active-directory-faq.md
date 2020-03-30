@@ -1,5 +1,5 @@
 ---
-title: Nejčastější dotazy (FAQ) – Azure Active Directory | Dokumentace Microsoftu
+title: Nejčastější dotazy (nejčastější dotazy) – Azure Active Directory | Dokumenty společnosti Microsoft
 description: Běžné otázky a odpovědi týkající se Azure a Azure Active Directory, správy hesel a přístupu k aplikacím.
 services: active-directory
 author: msaburnley
@@ -14,13 +14,13 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6eb0b5e37843413667e51112f52e6a69534e3425
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063624"
 ---
-# <a name="frequently-asked-questions-about-azure-active-directory"></a>Nejčastější dotazy k Azure Active Directory
+# <a name="frequently-asked-questions-about-azure-active-directory"></a>Nejčastější dotazy týkající se služby Azure Active Directory
 Azure Active Directory (Azure AD) je komplexní řešení Identity jako služby (IDaaS), které pokrývá všechny prvky identity, řízení přístupu a zabezpečení.
 
 Další informace najdete v tématu [Co je Azure Active Directory?](active-directory-whatis.md).
@@ -29,7 +29,7 @@ Další informace najdete v tématu [Co je Azure Active Directory?](active-direc
 ## <a name="access-azure-and-azure-active-directory"></a>Přístup ke službě Azure a Azure Active Directory
 **Otázka: Proč se při pokusu o přístup ke službě Azure AD na webu Azure Portal zobrazí zpráva „Žádné předplatné nenalezeno“?**
 
-**Odpověď:** Pro přístup k webu Azure Portal potřebuje každý uživatel oprávnění s předplatným Azure. Pokud máte placené předplatné Azure AD nebo Office 365, přejděte na [https://aka.ms/accessAAD](https://aka.ms/accessAAD), kde najdete jednorázovou aktivaci. Jinak si budete muset vytvořit bezplatný [účet Azure](https://azure.microsoft.com/pricing/free-trial/) nebo placené předplatné.
+**Odpověď:** Pro přístup k webu Azure Portal potřebuje každý uživatel oprávnění s předplatným Azure. Pokud máte placené předplatné Office 365 nebo Azure [https://aka.ms/accessAAD](https://aka.ms/accessAAD) AD, přejděte na jednorázový krok aktivace. Jinak si budete muset vytvořit bezplatný [účet Azure](https://azure.microsoft.com/pricing/free-trial/) nebo placené předplatné.
 
 Další informace naleznete v tématu:
 
@@ -48,11 +48,11 @@ Placené služby AD Azure, jako je Enterprise Mobility + Security, doplňují os
 
 **Otázka: Jaké jsou rozdíly mezi vlastníkem a globálním správcem?**
 
-**A:** Ve výchozím nastavení má osoba, která se zaregistruje k předplatnému Azure, přiřazenou roli vlastníka pro prostředky Azure. Jako vlastníka můžete použít účet Microsoft nebo pracovní či školní účty z adresáře, který je přidružený k předplatnému Azure.  Tato role je oprávnění ke správě služeb na webu Azure Portal.
+**A:** Ve výchozím nastavení je osobě, která se zaregistruje k předplatnému Azure, přiřazena role vlastníka pro prostředky Azure. Vlastník může použít účet Microsoft nebo pracovní nebo školní účet z adresáře, ke kterému je předplatné Azure přidruženo.  Tato role je oprávnění ke správě služeb na webu Azure Portal.
 
-Pokud se ostatní potřebují přihlašovat a přistupovat ke službám pomocí stejného předplatného, můžete jim přiřadit příslušnou [integrovanou roli](../../role-based-access-control/built-in-roles.md). Další informace najdete v tématu [Správa přístupu pomocí RBAC a Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+Pokud ostatní potřebují přihlásit a přistupovat ke službám pomocí stejného předplatného, můžete jim přiřadit příslušnou [předdefinovanou roli](../../role-based-access-control/built-in-roles.md). Další informace najdete [v tématu Správa přístupu pomocí RBAC a portálu Azure](../../role-based-access-control/role-assignments-portal.md).
 
-Ve výchozím nastavení je osoba, která uživatel zaregistruje do služby pro předplatné Azure přiřadit roli globálního správce adresáře. Globální správce má přístup ke všem funkcím pro adresář Azure AD. Azure AD má jinou sadu rolí správce ke správě adresáře a funkcím souvisejícím s identitou. Tito správci budou mít přístup k různým funkcím na webu Azure Portal. Role správce určuje, co mohou provádět, jako je vytvoření nebo úprava uživatele, přiřazovat role správců jiným uživatelům, resetovat hesla uživatelů, spravovat uživatelské licence nebo spravovat domény.  Další informace o správcích adresáře služby Azure AD a jejich rolích najdete v tématu [přiřazení uživatele k rolím správců v Azure Active Directory](active-directory-users-assign-role-azure-portal.md) a [přiřazování rolí správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
+Ve výchozím nastavení je osobě, která se zaregistruje k předplatnému Azure, přiřazena role globálního správce pro adresář. Globální správce má přístup ke všem funkcím adresáře Azure AD. Azure AD má jinou sadu rolí správce pro správu adresáře a funkce související s identitou. Tito správci budou mít přístup k různým funkcím na webu Azure Portal. Role správce určuje, co může dělat, například vytvářet nebo upravovat uživatele, přiřazovat role pro správu ostatním uživatelům, resetovat uživatelská hesla, spravovat uživatelské licence nebo spravovat domény.  Další informace o správcích adresářů Azure AD a jejich rolích najdete [v tématu Přiřazení uživatele k rolím správce ve službě Azure Active Directory](active-directory-users-assign-role-azure-portal.md) a přiřazení rolí správce ve službě Azure Active [Directory](../users-groups-roles/directory-assign-admin-roles.md).
 
 Kromě toho placené služby AD Azure, jako je Enterprise Mobility + Security, doplňují ostatní webové služby, např. Office 365 nebo Microsoft Azure o komplexní řešení správy a zabezpečení celého podniku.
 
@@ -82,14 +82,14 @@ Další informace najdete v článku [Integrování místních identit do služb
 
 **Odpověď:** Jednotné přihlašování (SSO) je třeba nastavit pouze mezi místním adresářem a službou Azure AD. Pokud cloudové aplikace používáte prostřednictvím služby Azure AD, služba automaticky povede uživatele, aby provedli správné ověření pomocí místních přihlašovacích údajů.
 
-Implementaci jednotného přihlašování z místního prostředí lze snadno dosáhnout pomocí federačních řešení, jako je Active Directory Federation Services (AD FS) (AD FS), nebo konfigurací synchronizace hodnot hash hesel. Obě možnosti můžete snadno nasadit pomocí Průvodce konfigurací Azure AD Connect.
+Implementace automatického přibližování z místního prostředí lze snadno dosáhnout pomocí federačních řešení, jako je služba AD FS (Active Directory Federation Services), nebo konfigurací synchronizace hash hesel. Obě možnosti můžete snadno nasadit pomocí Průvodce konfigurací služby Azure AD Connect.
 
 Další informace najdete v článku [Integrování místních identit do služby Azure Active Directory](../hybrid/whatis-hybrid-identity.md).
 
 ---
 **Otázka: Poskytuje Azure AD samoobslužný portál pro uživatele v naší organizaci?**
 
-**Odpověď:** Ano, Azure AD poskytuje pro uživatelskou samoobsluhu a přístup k aplikacím [Přístupový panel Azure AD](https://myapps.microsoft.com). Pokud jste zákazníkem sady Office 365, můžete najít mnoho stejných možností na [portálu office 365](https://portal.office.com).
+**Odpověď:** Ano, Azure AD poskytuje pro uživatelskou samoobsluhu a přístup k aplikacím [Přístupový panel Azure AD](https://myapps.microsoft.com). Pokud jste zákazníkem Office 365, najdete mnoho stejných funkcí na [portálu Office 365](https://portal.office.com).
 
 Další informace najdete v tématu [Úvod do přístupového panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
@@ -102,7 +102,7 @@ Další informace najdete v tématu [Sledování infrastruktury místních ident
 
 ---
 ## <a name="password-management"></a>Správa hesel
-**Otázka: je možné použít zpětný zápis hesla služby Azure AD bez synchronizace hesla? (V tomto scénáři je možné použít Samoobslužné resetování hesla (SSPR) služby Azure AD se zpětným zápisem hesla a Neukládat hesla v cloudu?)**
+**Otázka: Můžu použít zpětný zápis hesla Azure AD bez synchronizace hesel? (V tomto scénáři je možné použít samoobslužné resetování hesla Azure AD (SSPR) s zpětným zápisem hesla a neukládat hesla v cloudu?)**
 
 **Odpověď:** Pokud chcete aktivovat zpětný zápis, není třeba synchronizovat hesla služby Active Directory do služby Azure AD. Ve federovaném prostředí se jednotné přihlašování služby Azure AD spoléhá při ověřování uživatele na místní adresář. Tento scénář nevyžaduje, aby se ve službě Azure AD sledovalo místní heslo.
 
@@ -118,7 +118,7 @@ Další informace najdete v tématu [Začínáme se správou hesel](../authentic
 
 **Odpověď:** Ano, pokud máte aktivní zpětný zápis hesel, zapíšou se operace s heslem provedené správcem zpět do místního prostředí.  
 
-<a name="for-more-answers-to-password-related-questions-see-password-management-frequently-asked-questionsauthenticationactive-directory-passwords-faqmd"></a>Další odpovědi na dotazy související s hesly najdete v části [Správa hesel – nejčastější dotazy](../authentication/active-directory-passwords-faq.md).
+<a name="for-more-answers-to-password-related-questions-see-password-management-frequently-asked-questions"></a>Další odpovědi na dotazy související s hesly najdete v části [Správa hesel – nejčastější dotazy](../authentication/active-directory-passwords-faq.md).
 ---
 **Otázka: Co mám dělat, když si při pokusu o změnu hesla nepamatuji stávající heslo Office 365 nebo Azure AD?**
 
@@ -148,21 +148,21 @@ Máme bránu, která filtruje požadavky a nabízí určitou ochranu před botne
 
 ## <a name="application-access"></a>Přístup k aplikaci
 
-**Otázka: Kde najdu seznam aplikací, které jsou předem integrovány se službou Azure AD a jejími funkcemi?**
+**Otázka: Kde můžu najít seznam aplikací, které jsou předem integrované se službou Azure AD a jejími funkcemi?**
 
 **Odpověď:** Azure AD má více než 2 600 předem integrovaných aplikací od společnosti Microsoft, poskytovatelů služeb aplikací a partnerů. Všechny předem integrované aplikace podporují jednotné přihlašování. Jednotné přihlašování umožňuje používat k přístupu do aplikací firemní přihlašovací údaje. Některé aplikace také podporují automatické zřizování a jeho rušení.
 
 Úplný seznam předem integrovaných aplikací najdete v části [Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/).
 
 ---
-**Otázka: Co mám dělat, když se požadovaná aplikace nenachází na webu Azure AD Marketplace?**
+**Otázka: Co mám dělat, když se aplikace, kterou potřebuji, nenachází na webu Azure AD Marketplace?**
 
 **Odpověď:** Se službou Azure AD Premium můžete přidávat a konfigurovat libovolné aplikace. V závislosti na funkcích aplikace a předvolbách můžete nakonfigurovat jednotné přihlašování a automatické zřizování.  
 
 Další informace naleznete v tématu:
 
 * [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
-* [Zapnutí automatického zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md)
+* [Pomocí SCIM zapněte automatické zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 
 ---
 **Otázka: Jak se uživatelé můžou přihlašovat do aplikací pomocí služby Azure AD?**
@@ -174,17 +174,17 @@ Další informace naleznete v tématu:
 * Přímé přihlášení k federovaným aplikacím
 * Přímé odkazy na federované nebo existující aplikace či aplikace založené na hesle
 
-Další informace najdete v tématu [prostředí koncových uživatelů pro aplikace](../manage-apps/end-user-experiences.md).
+Další informace naleznete [v tématu End user experiences for applications](../manage-apps/end-user-experiences.md).
 
 ---
 **Otázka: Jakými způsoby služba Azure AD umožňuje ověřování a jednotné přihlašování k aplikacím?**
 
-**Odpověď:** Azure AD podporuje mnoho standardizovaných protokolů pro ověřování a autorizaci, například SAML 2.0, OpenID Connect, OAuth 2.0 a WS-Federation. Azure AD podporuje funkce ukládání hesel do trezoru a automatického přihlašování pro aplikace, které podporují pouze ověření na základě formuláře.  
+**Odpověď:** Azure AD podporuje mnoho standardizovaných protokolů pro ověřování a autorizaci, například SAML 2.0, OpenID Connect, OAuth 2.0 a WS-Federation. Azure AD podporuje funkce ukládání hesel do trezoru a automatického přihlašování pro aplikace, které podporují pouze ověření na základě formuláře.   
 
 Další informace naleznete v tématu:
 
 * [Scénáře ověřování pro Azure AD](../develop/authentication-scenarios.md)
-* [Protokoly ověřování pro Active Directory](https://msdn.microsoft.com/library/azure/dn151124.aspx)
+* [Ověřovací protokoly služby Active Directory](https://msdn.microsoft.com/library/azure/dn151124.aspx)
 * [Jednotné přihlašování pro aplikace ve službě Azure AD](../manage-apps/what-is-single-sign-on.md)
 
 ---
@@ -197,7 +197,7 @@ Další informace najdete v tématu [Jak poskytnout zabezpečený vzdálený př
 ---
 **Otázka: Jak můžu vyžadovat vícefaktorové ověřování pro uživatele, kteří používají určitou aplikaci?**
 
-**A:** Pomocí podmíněného přístupu Azure AD můžete přiřadit jedinečné zásady přístupu pro každou aplikaci. V zásadách můžete požadovat vícefaktorové ověřování pokaždé, nebo když uživatelé nejsou připojeni k místní síti.  
+**A:** S Podmíněný přístup Azure AD můžete přiřadit jedinečné zásady přístupu pro každou aplikaci. V zásadách můžete požadovat vícefaktorové ověřování pokaždé, nebo když uživatelé nejsou připojeni k místní síti.  
 
 Další informace najdete v tématu [Zabezpečení přístupu k Office 365 a jiným aplikacím připojeným ke službě Azure Active Directory](../active-directory-conditional-access-azure-portal.md).
 
@@ -211,4 +211,4 @@ Další informace najdete v tématu [Automatizace zřizování uživatelů a jeh
 ---
 **Otázka: Je možné vytvořit zabezpečené připojení LDAP se službou Azure Active Directory?**
 
-**Odpověď:** Ne. Azure AD nepodporuje protokol LDAP (Lightweight Directory Access Protocol) ani protokol Secure LDAP přímo. Je ale možné povolit instanci služby Azure AD Domain Services (Azure služba AD DS) ve vašem tenantovi Azure AD s správně nakonfigurovanými skupinami zabezpečení sítě přes síť Azure, aby bylo možné připojení LDAP. Další informace naleznete v tématu https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.
+**A:**  Ne. Azure AD nepodporuje protokol LDAP (LDAP) protokolu LDAP (LDAP) nebo secure LDAP přímo. Je však možné povolit instanci služby Azure AD Domain Services (Azure AD DS) v tenantovi Azure AD se správně nakonfigurovanými skupinami zabezpečení sítě prostřednictvím azure networkingu, aby bylo dosaženo připojení LDAP. Další informace naleznete v tématu https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.

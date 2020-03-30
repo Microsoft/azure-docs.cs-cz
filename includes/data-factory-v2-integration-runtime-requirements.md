@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 08/12/2019
 ms.author: jingwang
 ms.openlocfilehash: 2e90d218aa6dc90746ba0e928fb3393f0bdb5e5a
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68966350"
 ---
 <!--
     Separate the generic requirement on Self-hosted Integration Runtime set-up from connector articles.
 -->
-Pokud je úložiště dat nakonfigurované jedním z následujících způsobů, je nutné nastavit [Integration runtime](../articles/data-factory/create-self-hosted-integration-runtime.md) v místním prostředí, aby se mohl připojit k tomuto úložišti dat:
+Pokud je úložiště dat nakonfigurováno jedním z následujících způsobů, musíte nastavit prostředí Integrace s [vlastním hostitelem,](../articles/data-factory/create-self-hosted-integration-runtime.md) abyste se mohli připojit k tomuto úložišti dat:
 
-- Úložiště dat se nachází v místní síti, v rámci Azure Virtual Network nebo v rámci virtuálního privátního cloudu Amazon.
-- Úložiště dat je spravovaná cloudová datová služba, ve které je přístup omezený na IP adresy povolené v pravidlech brány firewall.
+- Úložiště dat se nachází uvnitř místní sítě, uvnitř virtuální sítě Azure nebo uvnitř amazonského virtuálního privátního cloudu.
+- Úložiště dat je spravovaná cloudová datová služba, kde je přístup omezen na ip adresy na seznamu povolených v pravidlech brány firewall.

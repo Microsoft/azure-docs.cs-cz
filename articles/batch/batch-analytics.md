@@ -1,6 +1,6 @@
 ---
-title: Analýzy Azure Batch
-description: Témata v dávkové analýze obsahují referenční informace o událostech a výstrahách, které jsou k dispozici pro prostředky služby Batch.
+title: Azure Batch Analytics
+description: Témata v Batch Analytics obsahují referenční informace pro události a výstrahy dostupné pro prostředky dávkové služby.
 services: batch
 author: LauraBrenner
 manager: evansma
@@ -12,27 +12,27 @@ ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: labrenne
 ms.openlocfilehash: d9538461dfa48a961f9325566b2adaf265e8daeb
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025958"
 ---
 # <a name="batch-analytics"></a>Dávková analýza
-Témata v dávkové analýze obsahují referenční informace o událostech a výstrahách, které jsou k dispozici pro prostředky služby Batch.
+Témata v Batch Analytics obsahují referenční informace pro události a výstrahy dostupné pro prostředky dávkové služby.
 
-Další informace o povolení a využívání protokolů diagnostiky služby Batch najdete v tématu [protokolování diagnostiky Azure Batch](https://azure.microsoft.com/documentation/articles/batch-diagnostics/) .
+Další informace o povolení a využívání protokolů diagnostiky batch najdete v [tématu Protokolování diagnostiky Azure Batch.](https://azure.microsoft.com/documentation/articles/batch-diagnostics/)
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
 
-Služba Azure Batch emituje během doby platnosti určitých prostředků služby Batch následující události protokolu diagnostiky.
+Služba Azure Batch vydává následující události diagnostického protokolu během doby životnosti určitých prostředků Batch.
 
-**Služba Protokol událostí**
+**Události protokolu služeb**
 * [Vytvoření fondu](batch-pool-create-event.md)
-* [Zahájení odstranění fondu](batch-pool-delete-start-event.md)
-* [Dokončení odstranění fondu](batch-pool-delete-complete-event.md)
-* [Zahájení změny velikosti fondu](batch-pool-resize-start-event.md)
-* [Dokončení změny velikosti fondu](batch-pool-resize-complete-event.md)
-* [Zahájení úlohy](batch-task-start-event.md)
-* [Úloha je dokončená](batch-task-complete-event.md)
-* [Selhání úlohy](batch-task-fail-event.md)
+* [Začátek odstranění fondu](batch-pool-delete-start-event.md)
+* [Odstranění fondu dokončeno](batch-pool-delete-complete-event.md)
+* [Začátek změny velikosti fondu](batch-pool-resize-start-event.md)
+* [Změna velikosti fondu dokončena](batch-pool-resize-complete-event.md)
+* [Zahájení úkolu](batch-task-start-event.md)
+* [Úkol byl dokončen.](batch-task-complete-event.md)
+* [Úloha se nezdaří](batch-task-fail-event.md)

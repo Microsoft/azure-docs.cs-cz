@@ -1,7 +1,7 @@
 ---
-title: Registrovat mobilní aplikace, které volají webová rozhraní API | Azure
+title: Registrace mobilních aplikací, které volají webová api | Azure
 titleSuffix: Microsoft identity platform
-description: Zjistěte, jak vytvořit mobilní aplikaci, která volá webová rozhraní API (konfigurace kódu aplikace).
+description: Přečtěte si, jak vytvořit mobilní aplikaci, která volá webová API (konfigurace kódu aplikace)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -18,80 +18,80 @@ ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 75cfd304869bfb63131dfd2afed9f925c86d32fb
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77132442"
 ---
-# <a name="register-mobile-apps-that-call-web-apis"></a>Registrovat mobilní aplikace, které volají webová rozhraní API
+# <a name="register-mobile-apps-that-call-web-apis"></a>Registrace mobilních aplikací, které volají webová api
 
-Tento článek obsahuje pokyny, které vám pomůžou při registraci mobilní aplikace, kterou vytváříte.
+Tento článek obsahuje pokyny, které vám pomohou zaregistrovat mobilní aplikaci, kterou vytváříte.
 
 ## <a name="supported-account-types"></a>Podporované typy účtu
 
-Typy účtů, které vaše mobilní aplikace podporují, závisí na prostředí, které chcete povolit, a na tokůch, které chcete použít.
+Typy účtů, které podporují vaše mobilní aplikace, závisí na prostředí, které chcete povolit, a na tocích, které chcete použít.
 
-### <a name="audience-for-interactive-token-acquisition"></a>Cílová skupina pro získání interaktivního tokenu
+### <a name="audience-for-interactive-token-acquisition"></a>Cílová skupina pro interaktivní pořízení tokenu
 
-Většina mobilních aplikací používá interaktivní ověřování. Pokud vaše aplikace používá tuto formu ověřování, můžete se přihlásit z libovolného [typu účtu](quickstart-register-app.md#register-a-new-application-using-the-azure-portal).
+Většina mobilních aplikací používá interaktivní ověřování. Pokud vaše aplikace používá tento formulář ověřování, můžete se přihlásit k uživatelům z libovolného [typu účtu](quickstart-register-app.md#register-a-new-application-using-the-azure-portal).
 
-### <a name="audience-for-integrated-windows-authentication-username-password-and-b2c"></a>Cílová skupina pro integrované ověřování systému Windows, uživatelské jméno a heslo a B2C
+### <a name="audience-for-integrated-windows-authentication-username-password-and-b2c"></a>Cílová skupina pro integrované ověřování systému Windows, uživatelské heslo a B2C
 
-Pokud máte aplikaci Univerzální platforma Windows (UWP), můžete se přihlásit k uživatelům pomocí integrovaného ověřování systému Windows. Chcete-li použít integrované ověřování systému Windows nebo ověřování pomocí hesla uživatele, musí vaše aplikace přihlašovat uživatele ve vlastním obchodním tenantovi (LOB). Ve scénáři nezávislého výrobce softwaru (ISV) se vaše aplikace může přihlašovat uživatelům v Azure Active Directorych organizacích. Tyto toky ověřování nejsou podporované pro osobní účty Microsoft.
+Pokud máte aplikaci univerzální platformy Windows (UPW), můžete k přihlášení uživatelů použít integrované ověřování systému Windows. Chcete-li používat integrované ověřování systému Windows nebo ověřování pomocí uživatelského jména a hesla, musí vaše aplikace přihlásit uživatele do vlastního vývojářského tenanta obchodního podniku (LOB). Ve scénáři nezávislého dodavatele softwaru (ISV) může vaše aplikace přihlašovat uživatele v organizacích Azure Active Directory. Tyto toky ověřování nejsou podporovány pro osobní účty Microsoft.
 
-Uživatele můžete také přihlašovat pomocí sociálních identit, které procházejí B2C autoritou a zásadami. Chcete-li použít tuto metodu, můžete použít pouze interaktivní ověřování a ověřování pomocí hesla uživatele. Ověřování uživatelského jména a hesla se v současné době podporuje jenom v Xamarin. iOS, Xamarin. Androidu a UWP.
+Můžete také přihlásit uživatele pomocí sociálníidentity, které projdou autority B2C a zásady. Chcete-li použít tuto metodu, můžete použít pouze interaktivní ověřování a ověřování uživatelského jména a hesla. Ověřování pomocí uživatelského jména a hesla je aktuálně podporováno pouze v systémech Xamarin.iOS, Xamarin.Android a UPW.
 
-Další informace najdete v tématu [scénáře a podporované toky](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows) a scénáře ověřování a [podporované platformy a jazyky](authentication-flows-app-scenarios.md#scenarios-and-supported-platforms-and-languages).
+Další informace naleznete v [tématu Scénáře a podporované toky ověřování](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows) a [Scénáře a podporované platformy a jazyky](authentication-flows-app-scenarios.md#scenarios-and-supported-platforms-and-languages).
 
-## <a name="platform-configuration-and-redirect-uris"></a>Konfigurace platformy a identifikátory URI pro přesměrování  
+## <a name="platform-configuration-and-redirect-uris"></a>Konfigurace platformy a přesměrování identifikátorů URI  
 
 ### <a name="interactive-authentication"></a>Interaktivní ověřování
 
-Když vytváříte mobilní aplikaci, která používá interaktivní ověřování, je nejnejdůležitějším krokem registrace identifikátor URI přesměrování. Interaktivní ověřování můžete nastavit prostřednictvím [konfigurace platformy v okně **ověřování** ](https://aka.ms/MobileAppReg).
+Při vytváření mobilní aplikace, která používá interaktivní ověřování, je nejdůležitějším krokem registrace identifikátor URI přesměrování. Interaktivní ověřování můžete nastavit prostřednictvím [konfigurace platformy v okně **Ověřování** ](https://aka.ms/MobileAppReg).
 
-Tato činnost umožní vaší aplikaci získat jednotné přihlašování (SSO) prostřednictvím Microsoft Authenticator (a Portál společnosti Intune na Androidu). Bude taky podporovat zásady správy zařízení.
+Toto prostředí umožní vaší aplikaci získat jednotné přihlašování (SSO) prostřednictvím Microsoft Authenticator (a Portál společnosti Intune v systému Android). Bude také podporovat zásady správy zařízení.
 
-Portál pro registraci aplikací nabízí prostředí Preview, které vám umožní vypočítat identifikátor URI zprostředkované odpovědi pro aplikace pro iOS a Android:
+Portál registrace aplikací poskytuje prostředí náhledu, které vám pomůže vypočítat zprostředkované uri odpovědi pro aplikace pro iOS a Android:
 
-1. Na portálu pro registraci aplikací vyberte **ověřování** > **Vyzkoušejte nové prostředí**.
+1. Na portálu pro registraci aplikací vyberte **Ověřování** > **Vyzkoušejte nové prostředí**.
 
-   ![Okno ověřování, kde si zvolíte nové prostředí](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
+   ![Okno Ověřování, ve kterém si vyberete nové prostředí](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
 
 2. Vyberte **Přidat platformu**.
 
-   ![Přidat platformu](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
+   ![Přidání platformy](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
 
-3. Až se seznam platforem podporuje, vyberte **iOS**.
+3. Když je seznam platforem podporován, vyberte **iOS**.
 
-   ![Zvolit mobilní aplikaci](https://user-images.githubusercontent.com/13203188/60799411-60de4080-a173-11e9-9dcc-d39a45826d42.png)
+   ![Výběr mobilní aplikace](https://user-images.githubusercontent.com/13203188/60799411-60de4080-a173-11e9-9dcc-d39a45826d42.png)
 
-4. Zadejte ID sady prostředků a pak vyberte **Registrovat**.
+4. Zadejte ID sady a pak vyberte **Registrovat**.
 
-   ![Zadejte ID sady prostředků.](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
+   ![Zadejte ID svého balíčku](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
 
-Po dokončení tohoto postupu se identifikátor URI pro přesměrování vypočítává za vás, jak je znázorněno na následujícím obrázku.
+Po dokončení kroků se vypočítá identifikátor URI přesměrování za vás, stejně jako na následujícím obrázku.
 
-![Výsledný identifikátor URI pro přesměrování](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
+![Výsledný identifikátor URI přesměrování](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
 
-Pokud upřednostňujete ruční konfiguraci identifikátoru URI přesměrování, můžete to provést prostřednictvím manifestu aplikace. Tady je doporučený formát pro manifest:
+Pokud dáváte přednost ruční konfiguraci identifikátoru URI přesměrování, můžete tak učinit prostřednictvím manifestu aplikace. Zde je doporučený formát manifestu:
 
-- **iOS**: `msauth.<BUNDLE_ID>://auth` 
-  - Zadejte například `msauth.com.yourcompany.appName://auth`
-- **Android**: `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
-  - Hodnotu hash podpisu pro Android můžete vygenerovat pomocí klíče verze nebo klíče pro ladění pomocí příkazu nástroje.
+- **iOS**:`msauth.<BUNDLE_ID>://auth` 
+  - Zadejte například`msauth.com.yourcompany.appName://auth`
+- **Android**:`msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
+  - Algoritmus hash podpisu Android umíte pomocí klíče verze nebo ladicího klíče pomocí příkazu KeyTool.
 
-### <a name="username-password-authentication"></a>Uživatelské jméno – ověřování hesla
+### <a name="username-password-authentication"></a>Ověřování pomocí uživatelského jména a hesla
 
-Pokud vaše aplikace používá pouze ověřování pomocí uživatelského jména a hesla, nemusíte registrovat identifikátor URI přesměrování pro aplikaci. Tento tok provede zpáteční cestu ke koncovému bodu Microsoft Identity Platform verze 2,0. Vaše aplikace se nebude volat zpátky na žádný konkrétní identifikátor URI. 
+Pokud vaše aplikace používá jenom ověřování pomocí uživatelského hesla, nemusíte registrovat identifikátor URI přesměrování pro vaši aplikaci. Tento tok provádí odezvu na koncový bod platformy identit microsoftu verze 2.0. Vaše aplikace nebude volána zpět na žádné konkrétní identifikátor URI. 
 
-Je však nutné identifikovat aplikaci jako veřejnou klientskou aplikaci. Provedete to tak, že začnete v části **ověřování** vaší aplikace. V podčásti **Upřesnit nastavení** v části **výchozí typ klienta zadejte** pro otázku **považovat aplikaci jako veřejný klient**možnost **Ano**.
+Je však nutné identifikovat aplikaci jako veřejnou klientskou aplikaci. Chcete-li tak učinit, začněte v části **Ověřování** aplikace. V podčásti **Upřesnit nastavení** v odstavci **Výchozí typ klienta** pro **otázku Považovat aplikaci za veřejného klienta**vyberte **Ano**.
 
-## <a name="api-permissions"></a>Oprávnění API
+## <a name="api-permissions"></a>Oprávnění rozhraní API
 
-Mobilní aplikace volají rozhraní API jménem přihlášeného uživatele. Vaše aplikace potřebuje požádat o delegovaná oprávnění. Tato oprávnění se také nazývají obory. V závislosti na prostředí, které chcete, můžete požadovat delegovaná oprávnění staticky prostřednictvím Azure Portal. Nebo je můžete vyžádat dynamicky za běhu. 
+Mobilní aplikace volají rozhraní API jménem přihlášeného uživatele. Vaše aplikace musí požádat o delegovaná oprávnění. Tato oprávnění se také nazývají obory. V závislosti na požadované mantinelně můžete požádat o delegovaná oprávnění staticky prostřednictvím portálu Azure. Nebo je můžete požádat dynamicky za běhu. 
 
-Staticky registrací oprávnění umožňuje správcům snadno schválit vaši aplikaci. Doporučuje se statická registrace.
+Statickou registrací oprávnění umožníte správcům snadno schválit vaši aplikaci. Doporučuje se statická registrace.
 
 ## <a name="next-steps"></a>Další kroky
 

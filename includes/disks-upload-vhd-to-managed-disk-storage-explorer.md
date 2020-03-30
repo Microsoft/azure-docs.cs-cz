@@ -9,44 +9,44 @@ ms.date: 09/25/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 5104c3b4446a8d3747ce7cc1648ef05dd117eb3d
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74013776"
 ---
-Průzkumník služby Storage 1.10.0 umožňuje uživatelům nahrávat, stahovat a kopírovat spravované disky a také vytvářet snímky. Z důvodu těchto dalších možností můžete pomocí Průzkumník služby Storage migrovat data z místního prostředí do Azure a migrovat data mezi oblastmi Azure.
+Průzkumník úložiště 1.10.0 umožňuje uživatelům nahrávat, stahovat a kopírovat spravované disky a vytvářet snímky. Díky těmto dalším možnostem můžete pomocí Průzkumníka úložiště migrovat data z místního do Azure a migrovat data napříč oblastmi Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku budete potřebovat následující:
 - Předplatné Azure
-- Jeden nebo více Azure Managed disks
-- Nejnovější verze [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/)
+- Jeden nebo více spravovaných disků Azure
+- Nejnovější verze [Průzkumníka azure storage exploreru](https://azure.microsoft.com/features/storage-explorer/)
 
 ## <a name="connect-to-an-azure-subscription"></a>Připojení k předplatnému Azure
 
-Pokud váš Průzkumník služby Storage není připojený k Azure, nebudete ho moct používat ke správě prostředků. Tato část se přehraje na účet Azure, abyste mohli spravovat prostředky pomocí Průzkumník služby Storage.
+Pokud průzkumník úložiště není připojený k Azure, nebudete ho moct použít ke správě prostředků. Tato část přejde k jeho připojení k účtu Azure, takže můžete spravovat prostředky pomocí Průzkumníka úložiště.
 
-1. Spusťte Průzkumník služby Azure Storage a klikněte na ikonu **modulu plug-in** na levé straně.
+1. Spusťte Průzkumníka úložiště Azure a klikněte na ikonu **modulu plug-in** vlevo.
 
     ![Klikněte na ikonu modulu plug-in.](media/disks-upload-vhd-to-managed-disk-storage-explorer/plug-in-icon.png)
 
-1. Vyberte **Přidat účet Azure**a pak klikněte na **Další**.
+1. Vyberte **Přidat účet Azure**a klikněte na **Další**.
 
     ![Přidání účtu Azure](media/disks-upload-vhd-to-managed-disk-storage-explorer/connect-to-azure.png)
 
-1. V dialogovém okně **přihlášení do Azure** zadejte svoje přihlašovací údaje Azure.
+1. V dialogovém okně **Přihlášení do Azure** zadejte svoje přihlašovací údaje Azure.
 
-    ![Přihlašovací dialogové okno Azure](media/disks-upload-vhd-to-managed-disk-storage-explorer/sign-in.png)
+    ![Dialogové okno Přihlášení do Azure](media/disks-upload-vhd-to-managed-disk-storage-explorer/sign-in.png)
 
 1. Vyberte ze seznamu své předplatné a klikněte na **Použít**.
 
     ![Vyberte své předplatné.](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-subscription.png)
 
-## <a name="upload-a-managed-disk-from-an-on-prem-vhd"></a>Nahrání spravovaného disku z virtuálního pevného disku s Prem
+## <a name="upload-a-managed-disk-from-an-on-prem-vhd"></a>Nahrání spravovaného disku z virtuálního pevného disku prem
 
-1. V levém podokně rozbalte položku **disky** a vyberte skupinu prostředků, do které chcete disk odeslat.
+1. V levém podokně rozbalte **položku Disky** a vyberte skupinu prostředků, do které chcete disk nahrát.
 
     ![Vybrat skupinu prostředků 1](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1.png)
 
@@ -54,22 +54,22 @@ Pokud váš Průzkumník služby Storage není připojený k Azure, nebudete ho 
 
     ![Výběr nahrání](media/disks-upload-vhd-to-managed-disk-storage-explorer/upload-button.png)
 
-1. V části **nahrát virtuální pevný** disk zadejte zdrojový virtuální pevný disk, název disku, typ operačního systému, oblast, do které chcete disk odeslat, a také typ účtu. V některých oblastech jsou podporovány zóny dostupnosti, a to pro tyto oblasti můžete vybrat zónu podle vašeho výběru.
-1. Vyberte **vytvořit** a začněte nahrávat disk.
+1. V **uploadu virtuálního pevného disku** zadejte zdrojový virtuální pevný disk, název disku, typ operačního systému, oblast, do které chcete disk nahrát, a také typ účtu. V některých oblastech jsou podporovány zóny dostupnosti, pro tyto oblasti můžete vybrat zónu podle vašeho výběru.
+1. Chcete-li začít nahrávat disk, vyberte **Vytvořit.**
 
-    ![Dialogové okno nahrát virtuální pevný disk](media/disks-upload-vhd-to-managed-disk-storage-explorer/upload-vhd-dialog.png)
+    ![Dialogové okno Nahrát vhd](media/disks-upload-vhd-to-managed-disk-storage-explorer/upload-vhd-dialog.png)
 
-1. Stav nahrávání se nyní zobrazí v **aktivitách**.
+1. Stav nahrávání se nyní zobrazí v **části Aktivity**.
 
-    ![Stav odeslání](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-uploading.png)
+    ![Stav nahrávání](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-uploading.png)
 
-1. Pokud se nahrávání dokončilo a v pravém podokně se disk nezobrazuje, vyberte **aktualizovat**.
+1. Pokud nahrávání skončilo a disk se nezobrazí v pravém podokně, vyberte **Aktualizovat**.
 
 ## <a name="download-a-managed-disk"></a>Stažení spravovaného disku
 
-Následující postup vysvětluje, jak stáhnout spravovaný disk na virtuální pevný disk Prem. Stav disku musí být **nepřipojen** , aby jej bylo možné stáhnout, nelze stáhnout **připojený** disk.
+Následující kroky vysvětlují, jak stáhnout spravovaný disk do virtuálního pevného disku v premu. Aby bylo možné stáhnout, musí být stav disku **Odpojen,** nelze **Attached** jej stáhnout.
 
-1. V levém podokně, pokud ještě není rozbalený, rozbalte položku **disky** a vyberte skupinu prostředků, ze které chcete disk stáhnout.
+1. V levém podokně rozbalte v levém podokně **položku Disky** a vyberte skupinu prostředků, ze které chcete disk stáhnout.
 
     ![Vybrat skupinu prostředků 1](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1.png)
 
@@ -78,15 +78,15 @@ Následující postup vysvětluje, jak stáhnout spravovaný disk na virtuální
 
     ![Stažení spravovaného disku](media/disks-upload-vhd-to-managed-disk-storage-explorer/download-button.png)
 
-1. Vyberte **Uložit** a disk se začne stahovat. Stav stahování se zobrazí v části **aktivity**.
+1. Vyberte **Uložit** a disk se začne stahovat. Stav stahování se zobrazí v **části Aktivity**.
 
-    ![Stav stahování](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-downloading.png)
+    ![Stav stažení](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-downloading.png)
 
 ## <a name="copy-a-managed-disk"></a>Kopírování spravovaného disku
 
-Pomocí Průzkumník služby Storage můžete kopírovat spravovaných disk v rámci nebo napříč oblastmi. Zkopírování disku:
+Pomocí Průzkumníka úložiště můžete zkopírovat manged disk v rámci nebo mezi oblastmi. Kopírování disku:
 
-1. V rozevíracím seznamu **disky** vlevo vyberte skupinu prostředků, která obsahuje disk, který chcete zkopírovat.
+1. V rozevíracím seznamu **Disky** vlevo vyberte skupinu prostředků obsahující disk, který chcete zkopírovat.
 
     ![Vybrat skupinu prostředků 1](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1.png)
 
@@ -98,33 +98,33 @@ Pomocí Průzkumník služby Storage můžete kopírovat spravovaných disk v r�
 
     ![Vybrat skupinu prostředků 2](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg2.png)
 
-1. V pravém podokně vyberte **Vložit** .
+1. V pravém podokně vyberte **Vložit.**
 
     ![Vložení spravovaného disku](media/disks-upload-vhd-to-managed-disk-storage-explorer/paste-button.png)
 
-1. V dialogovém okně **vložit disk** vyplňte hodnoty. Můžete také zadat zónu dostupnosti v podporovaných oblastech.
+1. V dialogovém okně **Vložit disk** vyplňte hodnoty. Můžete také určit zónu dostupnosti v podporovaných oblastech.
 
-    ![Dialog vložit disk](media/disks-upload-vhd-to-managed-disk-storage-explorer/paste-disk-dialog.png)
+    ![Dialogové okno Vložit disk](media/disks-upload-vhd-to-managed-disk-storage-explorer/paste-disk-dialog.png)
 
-1. Vyberte **Vložit** a disk se začne kopírovat. stav se zobrazí v **aktivitách**.
+1. Vyberte **Vložit** a disk se začne kopírovat, stav se zobrazí v **části Aktivity**.
 
     ![Kopírovat stav vložení](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-copying.png)
 
 ## <a name="create-a-snapshot"></a>Vytvoření snímku
 
-1. V rozevíracím seznamu **disky** vlevo vyberte skupinu prostředků, která obsahuje disk, který chcete snímek.
+1. V rozevíracím seznamu **Disky** vlevo vyberte skupinu prostředků obsahující disk, který chcete snímek.
 
     ![Vybrat skupinu prostředků 1](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1.png)
 
-1. Na pravé straně vyberte disk, na který chcete vytvořit snímek, a vyberte **vytvořit snímek**.
+1. Vpravo vyberte disk, který chcete snímek, a vyberte **Vytvořit snímek**.
 
     ![Vytvoření snímku](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-button.png)
 
-1. V části **vytvořit snímek**zadejte název snímku a skupinu prostředků, ve které chcete vytvořit. Potom vyberte **Vytvořit**.
+1. V **poli Vytvořit snímek**zadejte název snímku a také skupinu prostředků, ve které ji chcete vytvořit. Pak vyberte **Vytvořit**.
 
-    ![Dialog vytvořit snímek](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-dialog.png)
+    ![Dialogové okno Vytvořit snímek](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-dialog.png)
 
-1. Po vytvoření snímku můžete vybrat **otevřít v portálu** v části **aktivity** a zobrazit snímek v Azure Portal.
+1. Po vytvoření snímku můžete vybrat **Otevřít na portálu** v **aktivitách** a zobrazit snímek na webu Azure Portal.
 
     ![Otevřít snímek na portálu](media/disks-upload-vhd-to-managed-disk-storage-explorer/open-in-portal.png)
 

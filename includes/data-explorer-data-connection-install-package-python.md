@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/07/2019
 ms.author: orspodek
 ms.openlocfilehash: d2619ac21fd8c99dfad5799cd0eb9c1c11c96b00
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72031510"
 ---
-## <a name="install-python-package"></a>Nainstalovat balíček Pythonu
+## <a name="install-python-package"></a>Instalace balíčku Pythonu
 
-Pro instalaci balíčku Pythonu pro Azure Průzkumník dat (Kusto) otevřete příkazový řádek, který má v cestě Python. Spusťte následující příkaz:
+Chcete-li nainstalovat balíček Pythonu pro Průzkumníka dat Azure (Kusto), otevřete příkazový řádek, který má Python v cestě. Spusťte následující příkaz:
 
 ```python
 pip install azure-common

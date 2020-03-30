@@ -1,6 +1,6 @@
 ---
-title: Řešení problémů s nasazením cloudové služby | Microsoft Docs
-description: Při nasazení cloudové služby do Azure je možné, že narazíte na několik běžných problémů. Tento článek poskytuje řešení pro některé z nich.
+title: Poradce při potížích s nasazením cloudové služby | Dokumenty společnosti Microsoft
+description: Existuje několik běžných problémů, které můžete narazit při nasazování cloudové služby do Azure. Tento článek obsahuje řešení pro některé z nich.
 services: cloud-services
 documentationcenter: ''
 author: simonxjx
@@ -15,73 +15,73 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: ccb08f853ae0f941dd5f9c0eca8c77f0f650905a
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71122752"
 ---
-# <a name="troubleshoot-cloud-service-deployment-problems"></a>Řešení problémů s nasazením cloudové služby
-Když nasadíte balíček aplikace cloudové služby do Azure, můžete získat informace o nasazení z podokna **vlastnosti** v Azure Portal. Pomocí podrobností v tomto podokně můžete vyřešit problémy s cloudovou službou a při otevření nové žádosti o podporu můžete tyto informace poskytnout podpoře Azure.
+# <a name="troubleshoot-cloud-service-deployment-problems"></a>Poradce při potížích s nasazením cloudové služby
+Když nasadíte balíček aplikací cloudové služby do Azure, můžete získat informace o nasazení z **podokna Vlastnosti** na webu Azure Portal. Podrobnosti v tomto podokně můžete použít k řešení problémů s cloudovou službou a tyto informace můžete poskytnout podpoře Azure při otevírání nové žádosti o podporu.
 
-Podokno **vlastnosti** můžete najít takto:
+Podokno **Vlastnosti** najdete takto:
 
-* V Azure Portal klikněte na nasazení cloudové služby, klikněte na **všechna nastavení**a potom klikněte na **vlastnosti**.
+* Na webu Azure Portal klikněte na nasazení cloudové služby, klikněte na **Všechna nastavení**a potom klikněte na **Vlastnosti**.
 
 > [!NOTE]
-> Obsah podokna **vlastnosti** můžete zkopírovat do schránky kliknutím na ikonu v pravém horním rohu podokna.
+> Obsah podokna **Vlastnosti** můžete zkopírovat do schránky klepnutím na ikonu v pravém horním rohu podokna.
 >
 >
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="problem-i-cannot-access-my-website-but-my-deployment-is-started-and-all-role-instances-are-ready"></a>Řešení Nemám přístup k webu, ale moje nasazení je spuštěné a všechny instance rolí jsou připravené.
-Odkaz na adresu URL webu zobrazený na portálu nezahrnuje port. Výchozí port pro weby je 80. Pokud je vaše aplikace nakonfigurovaná tak, aby běžela na jiném portu, musíte při přístupu k webu přidat správné číslo portu k adrese URL.
+## <a name="problem-i-cannot-access-my-website-but-my-deployment-is-started-and-all-role-instances-are-ready"></a>Problém: Nemám přístup k webu, ale moje nasazení je spuštěno a všechny instance rolí jsou připraveny
+Odkaz URL webu zobrazený na portálu neobsahuje port. Výchozí port pro weby je 80. Pokud je aplikace nakonfigurována tak, aby se spouštěla v jiném portu, je nutné při přístupu na web přidat správné číslo portu k adrese URL.
 
-1. V Azure Portal klikněte na nasazení cloudové služby.
-2. V podokně **vlastnosti** Azure Portal ověřte porty pro instance rolí (v části **vstupní koncové body**).
-3. Pokud port není 80, přidejte do adresy URL správnou hodnotu portu při přístupu k aplikaci. Pokud chcete zadat jiný než výchozí port, zadejte adresu URL následovaný dvojtečkou (:) následovaný číslem portu bez mezer.
+1. Na webu Azure Portal klikněte na nasazení cloudové služby.
+2. V podokně **Vlastnosti** na portálu Azure zkontrolujte porty pro instance rolí (v části **Vstupní koncové body).**
+3. Pokud port není 80, přidejte správnou hodnotu portu do adresy URL při přístupu k aplikaci. Chcete-li zadat nevýchozí port, zadejte adresu URL následovanou dvojtečkou (:), následovanou číslem portu bez mezer.
 
-## <a name="problem-my-role-instances-recycled-without-me-doing-anything"></a>Řešení Moje instance rolí se recykluje bez jakýchkoli změn
-K automatickému výskytu služby dochází, když Azure detekuje uzly problémů, a proto přesune instance rolí na nové uzly. Pokud k tomu dojde, může se vaše instance role automaticky zobrazovat. Zjištění, zda došlo ke službě Service retušovací:
+## <a name="problem-my-role-instances-recycled-without-me-doing-anything"></a>Problém: Moje role instance recyklovány, aniž bych něco dělat
+Service retušování dochází automaticky, když Azure zjistí problém uzly a proto přesune instance role do nových uzlů. V takovém případě se může zobrazit vaše role instance recyklace automaticky. Chcete-li zjistit, zda došlo k ozdravení služby:
 
-1. V Azure Portal klikněte na nasazení cloudové služby.
-2. V podokně **vlastnosti** Azure Portal zkontrolujte informace a určete, zda během doby recyklace rolí došlo k této službě.
+1. Na webu Azure Portal klikněte na nasazení cloudové služby.
+2. V podokně **Vlastnosti** na webu Azure Portal zkontrolujte informace a zjistěte, zda došlo k ozdravení služeb během doby, kdy jste sledovali recyklaci rolí.
 
-Role se v průběhu aktualizací pro operační systémy a hostované operační systémy recyklují také přibližně jednou za měsíc.  
-Další informace najdete v tématu [restart instance role blogového příspěvku z důvodu upgradů operačního systému](https://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx) .
+Role budou také recyklovat zhruba jednou za měsíc během aktualizace host-OS a host-OS.  
+Další informace naleznete v příspěvku [blogu, že se instance role restartuje kvůli upgradům operačního systému.](https://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx)
 
-## <a name="problem-i-cannot-do-a-vip-swap-and-receive-an-error"></a>Řešení Nejde provést prohození VIP a získat chybu
-Swap VIP není povolený, pokud probíhá aktualizace nasazení. K aktualizacím nasazení může dojít automaticky v těchto případech:
+## <a name="problem-i-cannot-do-a-vip-swap-and-receive-an-error"></a>Problém: Nemohu udělat VIP swap a obdrží chybu
+Probíhá výměna virtuálních ip informací, pokud probíhá aktualizace nasazení. K aktualizacím nasazení může dojít automaticky, když:
 
-* K dispozici je nový hostovaný operační systém, který jste nakonfigurovali pro automatické aktualizace.
-* Dojde k chybě služby.
+* K dispozici je nový hostovaný operační systém, který je konfigurován pro automatické aktualizace.
+* Dojde k hojení služby.
 
-Zjistit, jestli vám automatické aktualizace znemožňuje provést prohození VIP:
+Chcete-li zjistit, zda vám automatická aktualizace brání v provedení výměny VIP:
 
-1. V Azure Portal klikněte na nasazení cloudové služby.
-2. V podokně **vlastnosti** Azure Portal se podívejte na hodnotu **stav**. Pokud je **připravená**, zkontrolujte **poslední operaci** , abyste viděli, jestli se nedávno nastalo, která by mohla zabránit prohození VIP.
+1. Na webu Azure Portal klikněte na nasazení cloudové služby.
+2. V podokně **Vlastnosti** na portálu Azure se podívejte na hodnotu **Stav**. Pokud je **připraven**, zkontrolujte **poslední operaci,** zda došlo k jedné nedávno, která by mohla zabránit výměně VIP.
 3. Opakujte kroky 1 a 2 pro produkční nasazení.
-4. Pokud probíhá automatická aktualizace, počkejte, než se dokončí, než se pokusíte provést prohození VIP.
+4. Pokud probíhá automatická aktualizace, počkejte na její dokončení, než se pokusíte provést výměnu programu VIP.
 
-## <a name="problem-a-role-instance-is-looping-between-started-initializing-busy-and-stopped"></a>Řešení Instance role se cykluje mezi spuštěním, inicializací, zaneprázdněnou a zastavenou.
-Tato podmínka by mohla indikovat potíže s kódem aplikace, balíčkem nebo konfiguračním souborem. V takovém případě byste si měli být schopni zobrazit změny stavu každých několik minut a Azure Portal může například dojít k recyklaci, **zaneprázdnění**nebo **inicializaci**. To znamená, že u aplikace, která udržuje instanci role v běhu, dochází k nějakému problému.
+## <a name="problem-a-role-instance-is-looping-between-started-initializing-busy-and-stopped"></a>Problém: Instance role je opakování mezi Spuštěno, Inicializace, Zaneprázdněn a Zastaveno
+Tato podmínka by mohla indikovat potíže s kódem aplikace, balíčkem nebo konfiguračním souborem. V takovém případě byste měli být schopni vidět stav mění každých několik minut a portál Azure může říct něco jako **recyklace**, **Zaneprázdněn**nebo **Inicializace**. To znamená, že je něco v nepořádku s aplikací, která brání spuštění instance role.
 
-Další informace o tom, jak tento problém vyřešit, najdete v blogovém příspěvku [Data diagnostiky Azure PaaS COMPUTE](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx) a [běžné problémy, které způsobují recyklaci rolí](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
+Další informace o tom, jak tento problém vyřešit, najdete v příspěvku blogu [Azure PaaS Compute Diagnostics Data](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx) a [běžné problémy, které způsobují recyklovací role](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
 
-## <a name="problem-my-application-stopped-working"></a>Řešení Moje aplikace přestal fungovat
-1. V Azure Portal klikněte na instanci role.
-2. V podokně **vlastnosti** Azure Portal zvažte následující podmínky pro vyřešení vašeho problému:
-   * Pokud se instance role v nedávné době zastavila (můžete zaškrtnout hodnotu **počet přerušení**), nasazení se může aktualizovat. Počkejte na zjištění, zda instance role pokračuje ve svém vlastním fungování.
-   * Pokud je instance role **zaneprázdněná**, zkontrolujte kód aplikace a podívejte se, jestli se zpracovává událost [StatusCheck](/previous-versions/azure/reference/ee758135(v=azure.100)) . Možná budete muset přidat nebo opravit nějaký kód, který zpracovává tuto událost.
-   * Projděte si scénáře diagnostiky dat a řešení potíží v blogu post [Data diagnostiky Azure PaaS COMPUTE](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
+## <a name="problem-my-application-stopped-working"></a>Problém: Aplikace přestala fungovat
+1. Na webu Azure Portal klikněte na instanci role.
+2. V podokně **Vlastnosti** na webu Azure Portal zvažte následující podmínky, jak problém vyřešit:
+   * Pokud byla instance role nedávno zastavena (můžete zkontrolovat hodnotu **počtu přerušení),** může být nasazení aktualizováno. Počkejte, pokud instance role pokračuje v práci samostatně.
+   * Pokud je instance role **Zaneprázdněná**, zkontrolujte kód aplikace a zjistěte, zda je zpracována událost [StatusCheck.](/previous-versions/azure/reference/ee758135(v=azure.100)) Možná budete muset přidat nebo opravit nějaký kód, který zpracovává tuto událost.
+   * Projděte si diagnostická data a scénáře řešení potíží v příspěvku blogu [Azure PaaS Compute Diagnostics Data](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
 
 > [!WARNING]
-> Pokud recykluje svou cloudovou službu, resetujete vlastnosti nasazení a efektivně smazáni informace o původním problému.
+> Pokud recyklujete cloudovou službu, resetujete vlastnosti pro nasazení a efektivně vymažete informace o původním problému.
 >
 >
 
 ## <a name="next-steps"></a>Další kroky
-Podívejte se na další články týkající se [řešení potíží](https://docs.microsoft.com/azure/cloud-services/cloud-services-allocation-failures) pro Cloud Services.
+Zobrazit další [články o řešení potíží](https://docs.microsoft.com/azure/cloud-services/cloud-services-allocation-failures) pro cloudové služby.
 
-Informace o řešení potíží s rolemi cloudové služby pomocí dat diagnostiky počítačů Azure PaaS najdete v tématu [série blogů v Kevin Williamson](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
+Informace o řešení problémů s rolí cloudové služby pomocí dat diagnostiky počítače Azure PaaS najdete v [tématu Kevin Williamson blog series](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).

@@ -1,46 +1,46 @@
 ---
-title: Povolení firewallu webových aplikací – Azure CLI
-description: Přečtěte si, jak omezit webový provoz pomocí brány firewall webových aplikací na aplikační bránu pomocí Azure CLI.
+title: Povolení brány firewall webových aplikací – Azure CLI
+description: Zjistěte, jak omezit webový provoz pomocí brány firewall webové aplikace na aplikační bráně pomocí azure cli.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 78a8eaa75ec5eea33e27217f07439aae16ec4742
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4882ac51af271625b8e61d862890beb6d5f63213
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502272"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80240083"
 ---
-# <a name="enable-web-application-firewall-using-the-azure-cli"></a>Povolení firewallu webových aplikací pomocí rozhraní příkazového řádku Azure
+# <a name="enable-web-application-firewall-using-the-azure-cli"></a>Povolení brány firewall webových aplikací pomocí příkazového příkazového příkazu Azure
 
-Můžete omezit provoz brány Application Gateway pomocí [brány firewall webových aplikací](ag-overview.md) (WAF). WAF používá k ochraně aplikace pravidla [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project). Tato pravidla zahrnují ochranu před útoky, jako je injektáž SQL, skriptování mezi weby a krádeže relací.
+Provoz na aplikační bráně můžete omezit pomocí [brány WAF (Web Application Firewall).](ag-overview.md) WAF používá k ochraně aplikace pravidla [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project). Tato pravidla zahrnují ochranu před útoky, jako je injektáž SQL, skriptování mezi weby a krádeže relací.
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Nastavení sítě
+> * Nastavit síť
 > * Vytvořit aplikační bránu se zapnutým Firewallem webových aplikací
 > * Vytvoření škálovací sady virtuálních počítačů
-> * Vytvořit účet úložiště a nakonfigurovat diagnostiku
+> * Vytvoření účtu úložiště a konfigurace diagnostiky
 
-![Příklad brány firewall webových aplikací](../media/tutorial-restrict-web-traffic-cli/scenario-waf.png)
+![Firewall webové aplikace, příklad](../media/tutorial-restrict-web-traffic-cli/scenario-waf.png)
 
-Pokud budete chtít, můžete tento postup dokončit pomocí [Azure PowerShell](tutorial-restrict-web-traffic-powershell.md).
+Pokud chcete, můžete tento postup dokončit pomocí [Azure PowerShellu](tutorial-restrict-web-traffic-powershell.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte spustit Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat příkaz cli místně, tento článek vyžaduje spuštění Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. K vytvoření skupiny prostředků Azure pojmenované *myResourceGroupAG* použijte příkaz [az group create](/cli/azure/group#az-group-create).
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroupAG --location eastus
 ```
 
@@ -72,7 +72,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway-with-a-waf"></a>Vytvoření aplikační brány s Firewallem webových aplikací
 
-K vytvoření aplikační brány s názvem *myAppGateway* použijte příkaz [az network application-gateway create](/cli/azure/network/application-gateway). Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. Aplikační brána je přiřazena k *myAGSubnet* a *myAGPublicIPAddress*.
+K vytvoření aplikační brány s názvem *myAppGateway* použijte příkaz [az network application-gateway create](/cli/azure/network/application-gateway). Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. Aplikační brána je *přiřazena myAGSubnet* a *myAGPublicIPAddress*.
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -137,9 +137,9 @@ az vmss extension set \
   --settings '{ "fileUris": ["https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/install_nginx.sh"],"commandToExecute": "./install_nginx.sh" }'
 ```
 
-## <a name="create-a-storage-account-and-configure-diagnostics"></a>Vytvořit účet úložiště a nakonfigurovat diagnostiku
+## <a name="create-a-storage-account-and-configure-diagnostics"></a>Vytvoření účtu úložiště a konfigurace diagnostiky
 
-V tomto článku používá Aplikační brána účet úložiště k ukládání dat pro účely detekce a prevence. K zaznamenávání dat můžete použít také protokoly Azure Monitor nebo centra událostí. 
+V tomto článku používá aplikační brána účet úložiště k ukládání dat pro účely zjišťování a prevence. K záznamu dat můžete taky použít protokoly Azure Monitoru nebo Centrum událostí. 
 
 ### <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
@@ -156,7 +156,7 @@ az storage account create \
 
 ### <a name="configure-diagnostics"></a>Konfigurace diagnostiky
 
-Nakonfigurujte diagnostiku, aby se data zaznamenávala do protokolů ApplicationGatewayAccessLog, ApplicationGatewayPerformanceLog a ApplicationGatewayFirewallLog. Nahraďte `<subscriptionId>` identifikátorem předplatného a pak nakonfigurujte diagnostiku pomocí [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create).
+Nakonfigurujte diagnostiku, aby se data zaznamenávala do protokolů ApplicationGatewayAccessLog, ApplicationGatewayPerformanceLog a ApplicationGatewayFirewallLog. Nahraďte `<subscriptionId>` identifikátorem předplatného a potom nakonfigurujte diagnostiku pomocí [nastavení diagnostiky az monitoru .](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create)
 
 ```azurecli-interactive
 appgwid=$(az network application-gateway show --name myAppGateway --resource-group myResourceGroupAG --query id -o tsv)
@@ -172,7 +172,7 @@ az monitor diagnostic-settings create --name appgwdiag --resource $appgwid \
 
 K získání veřejné IP adresy aplikační brány použijte příkaz [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show). Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.
 
-```azurepowershell-interactive
+```azurecli-interactive
 az network public-ip show \
   --resource-group myResourceGroupAG \
   --name myAGPublicIPAddress \
@@ -180,7 +180,7 @@ az network public-ip show \
   --output tsv
 ```
 
-![Testování základní adresy URL v bráně Application Gateway](../media/tutorial-restrict-web-traffic-cli/application-gateway-nginxtest.png)
+![Testování základní adresy URL v aplikační bráně](../media/tutorial-restrict-web-traffic-cli/application-gateway-nginxtest.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

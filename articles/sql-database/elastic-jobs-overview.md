@@ -1,6 +1,6 @@
 ---
-title: Úlohy Elastic Database (Preview)
-description: Konfigurace úloh Elastic Database (Preview) pro spouštění skriptů jazyka Transact-SQL (T-SQL) v rámci jedné nebo více databází SQL Azure
+title: Úlohy elastické databáze (náhled)
+description: Konfigurace úloh elastické databáze (preview) pro spouštění skriptů Transact-SQL (T-SQL) v sadě jedné nebo více databází Azure SQL
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,34 +12,34 @@ ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: e5b07ac0e9421cbca034b17c573cab16641f49f7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79214481"
 ---
-# <a name="create-configure-and-manage-elastic-jobs"></a>Vytváření, konfigurace a Správa elastických úloh
+# <a name="create-configure-and-manage-elastic-jobs"></a>Vytváření, konfigurace a správa elastických úloh
 
-V tomto článku se dozvíte, jak vytvářet, konfigurovat a spravovat elastické úlohy.
+V tomto článku se dozvíte, jak vytvořit, nakonfigurovat a spravovat elastické úlohy.
 
-Pokud jste elastické úlohy nepoužívali, [Přečtěte si další informace o konceptech automatizace úloh v Azure SQL Database](sql-database-job-automation-overview.md).
+Pokud jste nepoužili elastické [úlohy, další informace o konceptech automatizace úloh v Azure SQL Database](sql-database-job-automation-overview.md).
 
 ## <a name="create-and-configure-the-agent"></a>Vytvoření a konfigurace agenta
 
-1. Vytvořte nebo určete prázdnou databázi SQL S0 nebo vyšší. Tato databáze bude použita jako *databáze úlohy* během vytváření agenta elastické úlohy.
-2. Vytvořte agenta elastické úlohy na [portálu](https://portal.azure.com/#create/Microsoft.SQLElasticJobAgent) nebo pomocí [PowerShellu](elastic-jobs-powershell.md#create-the-elastic-job-agent).
+1. Vytvořte nebo určete prázdnou databázi SQL S0 nebo vyšší. Tato databáze bude použita jako *databáze úloh* během vytváření agenta elastické úlohy.
+2. Vytvořte agenta elastické úlohy na [portálu](https://portal.azure.com/#create/Microsoft.SQLElasticJobAgent) nebo pomocí [prostředí PowerShell](elastic-jobs-powershell.md#create-the-elastic-job-agent).
 
-   ![Vytváří se agent elastické úlohy.](media/elastic-jobs-overview/create-elastic-job-agent.png)
+   ![Vytváření agenta elastické úlohy](media/elastic-jobs-overview/create-elastic-job-agent.png)
 
 ## <a name="create-run-and-manage-jobs"></a>Vytváření, spouštění a správa úloh
 
-1. Vytvořte přihlašovací údaje pro spuštění úlohy v *databázi úloh* pomocí [PowerShellu](elastic-jobs-powershell.md) nebo [T-SQL](elastic-jobs-tsql.md#create-a-credential-for-job-execution).
-2. Definujte cílovou skupinu (databáze, u kterých chcete úlohu spustit) pomocí [PowerShellu](elastic-jobs-powershell.md) nebo [T-SQL](elastic-jobs-tsql.md#create-a-target-group-servers).
+1. Vytvořte pověření pro spuštění úlohy v *databázi úloh* pomocí [prostředí PowerShell](elastic-jobs-powershell.md) nebo [T-SQL](elastic-jobs-tsql.md#create-a-credential-for-job-execution).
+2. Definujte cílovou skupinu (databáze, proti kterým chcete úlohu spustit) pomocí [prostředí PowerShell](elastic-jobs-powershell.md) nebo [T-SQL](elastic-jobs-tsql.md#create-a-target-group-servers).
 3. V každé databázi, ve které se bude úloha spouštět, vytvořte přihlašovací údaje agenta úloh [(do každé databáze ve skupině přidejte příslušného uživatele nebo roli)](sql-database-manage-logins.md). Příklad najdete v [kurzu pro PowerShell](elastic-jobs-powershell.md).
-4. Vytvořte úlohu pomocí [PowerShellu](elastic-jobs-powershell.md) nebo [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases).
+4. Vytvořte úlohu pomocí [Prostředí PowerShell](elastic-jobs-powershell.md) nebo [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases).
 5. Pomocí [PowerShellu](elastic-jobs-powershell.md) nebo [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) přidejte kroky úlohy.
-6. Spusťte úlohu pomocí [PowerShellu](elastic-jobs-powershell.md#run-the-job) nebo [T-SQL](elastic-jobs-tsql.md#begin-ad-hoc-execution-of-a-job).
-7. Monitorujte stav spuštění úlohy pomocí portálu, [PowerShellu](elastic-jobs-powershell.md#monitor-status-of-job-executions) nebo [T-SQL](elastic-jobs-tsql.md#monitor-job-execution-status).
+6. Spusťte úlohu pomocí [prostředí PowerShell](elastic-jobs-powershell.md#run-the-job) nebo [T-SQL](elastic-jobs-tsql.md#begin-ad-hoc-execution-of-a-job).
+7. Sledování stavu spuštění úlohy pomocí portálu, [prostředí PowerShell](elastic-jobs-powershell.md#monitor-status-of-job-executions) nebo [T-SQL](elastic-jobs-tsql.md#monitor-job-execution-status).
 
    ![Portál](media/elastic-jobs-overview/elastic-job-executions-overview.png)
 
@@ -49,9 +49,9 @@ Pokud jste elastické úlohy nepoužívali, [Přečtěte si další informace o 
 
 Nastavení správných přihlašovacích údajů pro spuštění úlohy může být trochu matoucí, proto mějte na paměti následující body:
 
-- Přihlašovací údaje v oboru databáze se musí vytvořit v *databázi úloh*.
-- **Všechny cílové databáze musí mít přihlašovací údaje s [dostatečným oprávněním](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) , aby se úloha úspěšně dokončila** (`jobuser` v diagramu níže).
-- Přihlašovací údaje je možné opakovaně používat napříč úlohami a hesla přihlašovacích údajů jsou šifrovaná a zabezpečená uživatelům, kteří mají k objektům úlohy přístup jen pro čtení.
+- Pověření s rozsahem databáze musí být vytvořena v *databázi úloh*.
+- **Všechny cílové databáze musí mít přihlášení s [dostatečnými oprávněními](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) pro úspěšné dokončení úlohy** (v`jobuser` diagramu níže).
+- Pověření lze znovu použít napříč úlohami a hesla pověření jsou šifrována a zabezpečena od uživatelů, kteří mají přístup jen pro čtení k objektům úloh.
 
 Následující obrázek by vám měl pomoct porozumět přihlašovacím údajům úloh a správně je nastavit. **Nezapomeňte vytvořit příslušného uživatele v každé databázi (ve všech *cílových uživatelských databázích*), ve které se má úloha spouštět**.
 
@@ -62,8 +62,8 @@ Následující obrázek by vám měl pomoct porozumět přihlašovacím údajům
 Tady je několik osvědčených postupů, které byste při práci s elastickými úlohami měli brát v úvahu:
 
 - Omezte možnost používat rozhraní API na důvěryhodné osoby.
-- Přihlašovací údaje by měly mít nejnižší úroveň oprávnění nezbytnou k provedení daného kroku úlohy. Další informace najdete v tématu [autorizace a oprávnění SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server).
-- Při použití členu cílové skupiny serveru nebo fondu je důrazně navrženo vytvoření samostatného pověření s právy k hlavní databázi k zobrazení nebo zobrazení seznamu databází, které se používají k rozšíření seznamů databáze serverů a/nebo fondů před provedením úlohy.
+- Přihlašovací údaje by měly mít nejnižší úroveň oprávnění nezbytnou k provedení daného kroku úlohy. Další informace naleznete v [tématu Autorizace a oprávnění SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server).
+- Při použití člena cílové skupiny serveru nebo fondu se důrazně doporučuje vytvořit samostatné pověření s právy v hlavní databázi k zobrazení nebo seznamu databází, které se používají k rozšíření databázových seznamů serverů nebo fondu před spuštěním úlohy.
 
 ## <a name="agent-performance-capacity-and-limitations"></a>Výkon, kapacita a omezení agenta
 
@@ -77,7 +77,7 @@ V současné době je verze Preview omezená na 100 souběžných úloh.
 
 Pokud chcete zajistit, aby při spouštění úloh pro databáze v elastickém fondu SQL nedocházelo k přetížení prostředků, můžete pro úlohy nakonfigurovat omezení počtu databází, pro které se můžou najednou spouštět.
 
-Nastavte počet souběžných databází, na kterých je úloha spuštěna, nastavením parametru `@max_parallelism` `sp_add_jobstep` uložené procedury v T-SQL nebo `Add-AzSqlElasticJobStep -MaxParallelism` v prostředí PowerShell.
+Nastavte počet souběžných databází, na kterých `sp_add_jobstep` úloha běží, nastavením parametru uložené procedury `@max_parallelism` v T-SQL nebo `Add-AzSqlElasticJobStep -MaxParallelism` v prostředí PowerShell.
 
 ## <a name="best-practices-for-creating-jobs"></a>Osvědčené postupy pro vytváření úloh
 

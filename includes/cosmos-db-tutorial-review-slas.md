@@ -6,21 +6,21 @@ ms.date: 03/22/2019
 ms.author: sngun
 ms.custom: seo-java-september2019
 ms.openlocfilehash: a8162afadb5a7d327804d7202b29ca0dccf275c4
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71210188"
 ---
-Azure Portal sleduje propustnost účtu Cosmos DB, úložiště, dostupnost, latenci a konzistenci. Grafy pro metriky přidružené k [Azure Cosmos DB smlouva SLA (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db/) ukazují hodnotu SLA v porovnání s skutečným výkonem. Tato sada metrik umožňuje monitorovat SLA transparentním způsobem.
+Portál Azure monitoruje propustnost, úložiště, dostupnost, latenci a konzistenci vašeho účtu Cosmos DB. Grafy pro metriky přidružené ke [smlouvě o úrovni služeb Azure Cosmos DB (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db/) zobrazují hodnotu Smlouvy o sla ve srovnání se skutečným výkonem. Tato sada metrik umožňuje sledování vašich služeb SLA transparentní.
 
-Postup kontroly metrik a SLA: 
+Kontrola metrik a sla: 
 
-1. V navigační nabídce účtu Cosmos DB vyberte metriky.
+1. V navigační nabídce účtu Cosmos DB vyberte **Metriky.**
    
-2. Vyberte kartu, jako je **latence**, a vyberte časový rámec na pravé straně. Porovnejte **skutečné** řádky a řádky **SLA** v grafech.
+2. Vyberte kartu, například **Latence**, a vyberte časový rámec vpravo. Porovnejte řádky **Skutečné** a **SLA** v grafech.
    
    ![Sada metrik Azure Cosmos DB](./media/cosmos-db-tutorial-review-slas/azure-cosmosdb-metrics-suite.png)
    
-3. Projděte si metriky na dalších kartách. 
+3. Zkontrolujte metriky na ostatních kartách. 
 

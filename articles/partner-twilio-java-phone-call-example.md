@@ -1,6 +1,6 @@
 ---
-title: Jak uskutečnit telefonní hovor z Twilio (Java) | Microsoft Docs
-description: Naučte se, jak uskutečnit telefonní hovor z webové stránky pomocí Twilio v aplikaci Java v Azure.
+title: Jak telefonovat z Twilio (Java) | Dokumenty společnosti Microsoft
+description: Přečtěte si, jak volat z webové stránky pomocí Twilio v aplikaci Java v Azure.
 services: ''
 documentationcenter: java
 author: georgewallace
@@ -13,30 +13,30 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: 168ec65cfd0ff4e87c33324daa353b554111c8aa
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73838559"
 ---
-# <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>Jak uskutečnit telefonní hovor pomocí Twilio v aplikaci Java v Azure
-Následující příklad ukazuje, jak můžete pomocí Twilio uskutečnit volání z webové stránky hostované v Azure. Výsledná aplikace zobrazí uživateli výzvu k zadání hodnot telefonních hovorů, jak je znázorněno na následujícím snímku obrazovky.
+# <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>Jak provést telefonní hovor pomocí Twilio v aplikaci Java v Azure
+Následující příklad ukazuje, jak můžete použít Twilio k volání z webové stránky hostované v Azure. Výsledná aplikace vyzve uživatele k zadání hodnot telefonního hovoru, jak je znázorněno na následujícím snímku obrazovky.
 
 ![Formulář volání Azure pomocí Twilio a Java][twilio_java]
 
-Chcete-li použít kód v tomto tématu, musíte provést následující:
+Chcete-li použít kód v tomto tématu, budete muset provést následující kroky:
 
-1. Získejte účet Twilio a ověřovací token. Pokud chcete začít s Twilio, vyhodnoťte ceny na [https://www.twilio.com/pricing][twilio_pricing]. Můžete se zaregistrovat na [https://www.twilio.com/try-twilio][try_twilio]. Informace o rozhraní API, které poskytuje Twilio, najdete v tématu [https://www.twilio.com/api][twilio_api].
-2. Získejte JAR Twilio. Na [https://github.com/twilio/twilio-java][twilio_java_github]můžete stáhnout zdroje GitHubu a vytvořit vlastní sklenici nebo si stáhnout předem připravený jar (s závislostmi nebo bez nich).
-   Kód v tomto tématu byl vytvořen pomocí předem vytvořeného JAR TwilioJava-3.3.8-with-závislosti.
-3. Přidejte JAR do cesty k sestavení Java.
-4. Pokud k vytvoření této aplikace v jazyce Java používáte zatmění, zahrňte Twilio JAR do souboru nasazení aplikace (WAR) pomocí funkce sestavení nasazení v zatmění. Pokud k vytvoření této aplikace v jazyce Java nepoužíváte zatmění, zajistěte, aby byl JAR Twilio součástí stejné role Azure jako aplikace Java a přidal se do cesty třídy vaší aplikace.
-5. Ujistěte se, že úložiště klíčů cacerts obsahuje certifikát úřadu zabezpečených certifikátů Equifax s otiskem MD5 otiskem dat 67::% 9D: C0:13:24:8A:. 9B: B2:17:1E: D1:1B: ES: D4 (sériové číslo je 35: DE: F4: CF a otisk SHA1 je D2:32:09: AD: 23: D 3:14:23:74:74: E4:0D: 7F: 9D: 62:13:97:86:63:3A). Toto je certifikát certifikační autority pro službu [https://api.twilio.com][twilio_api_service] , který se volá při použití rozhraní API Twilio. Informace o přidání certifikátu této certifikační autority do úložiště CAcert v JDK najdete v tématu [Přidání certifikátu do úložiště certifikátů certifikační autority Java][add_ca_cert].
+1. Získejte účet Twilio a ověřovací token. Chcete-li začít s Twilio, vyhodnoťte ceny na [https://www.twilio.com/pricing][twilio_pricing]. Můžete se zaregistrovat na adrese [https://www.twilio.com/try-twilio][try_twilio]. Informace o rozhraní API poskytované Twilio [https://www.twilio.com/api][twilio_api]naleznete v tématu .
+2. Získejte Twilio JAR. Na [https://github.com/twilio/twilio-java][twilio_java_github], můžete stáhnout zdroje GitHub a vytvořit si vlastní JAR, nebo stáhnout předem sestavené JAR (s nebo bez závislostí).
+   Kód v tomto tématu byl napsán pomocí pre-postavený TwilioJava-3.3.8-s-závislosti JAR.
+3. Přidejte jar do cesty sestavení Java.
+4. Pokud používáte Eclipse k vytvoření této aplikace Java, zahrňte Twilio JAR do souboru nasazení aplikace (WAR) pomocí funkce sestavení nasazení Eclipse. Pokud nepoužíváte Eclipse k vytvoření této aplikace Java, ujistěte se, že Twilio JAR je součástí stejné role Azure jako vaše aplikace Java a přidán do cesty třídy vaší aplikace.
+5. Ujistěte se, že vaše cacerts keystore obsahuje certifikát Equifax Secure Certificate Authority s otiskem MD5 67:CB:9D:C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4 (sériové číslo je 35:DE:F4:CF a otisk prstu SHA1 je D2:32:09:AD:23:D 3:14:23:21:74:E4:0D:7F:9D:62:13:97:86:63:3A). Jedná se o certifikát certifikační autority [https://api.twilio.com][twilio_api_service] (CA) pro službu, který se nazývá při použití twilio api. Informace o přidání tohoto certifikátu certifikační autority do úložiště cacert sady JDK naleznete [v tématu Přidání certifikátu do úložiště certifikátů java ca][add_ca_cert].
 
-Je také známo, že informace týkající se [vytváření Hello World aplikace pomocí Azure Toolkit for Eclipse][azure_java_eclipse_hello_world]nebo jiné techniky pro hostování aplikací Java v Azure, pokud nepoužíváte zatmění, se důrazně doporučuje.
+Kromě toho znalost informací o [vytvoření aplikace Hello World pomocí Azure Toolkit pro Eclipse][azure_java_eclipse_hello_world]nebo s jinými technikami pro hostování java aplikací v Azure, pokud nepoužíváte Eclipse, je vysoce doporučeno.
 
 ## <a name="create-a-web-form-for-making-a-call"></a>Vytvoření webového formuláře pro volání
-Následující kód ukazuje, jak vytvořit webový formulář pro načtení uživatelských dat pro volání. Pro účely tohoto příkladu byl vytvořen nový dynamický webový projekt s názvem **TwilioCloud**a **callform. jsp** byl přidán jako soubor JSP.
+Následující kód ukazuje, jak vytvořit webový formulář pro načtení uživatelských dat pro volání. Pro účely tohoto příkladu byl vytvořen nový dynamický webový projekt s názvem **TwilioCloud**a **soubor callform.jsp** byl přidán jako soubor JSP.
 
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
         pageEncoding="ISO-8859-1" %>
@@ -77,7 +77,7 @@ Následující kód ukazuje, jak vytvořit webový formulář pro načtení uži
     </html>
 
 ## <a name="create-the-code-to-make-the-call"></a>Vytvoření kódu pro volání
-Následující kód, který je volána, když uživatel dokončí formulář zobrazený pomocí callform. jsp, vytvoří zprávu volání a vygeneruje volání. Pro účely tohoto příkladu se soubor JSP jmenuje **MakeCall. jsp** a přidal se do projektu **TwilioCloud** . (Použijte svůj účet Twilio a ověřovací token místo zástupných hodnot přiřazených ke **accountSID** a **authToken** v následujícím kódu.)
+Následující kód, který je volán po dokončení formuláře zobrazeného pomocí callform.jsp, vytvoří zprávu o volání a vygeneruje volání. Pro účely tohoto příkladu je soubor JSP pojmenován **makecall.jsp** a byl přidán do projektu **TwilioCloud.** (Použijte svůj účet Twilio a ověřovací token namísto zástupných hodnot přiřazených **accountSID** a **authToken** v kódu níže.)
 
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     import="java.util.*"
@@ -160,35 +160,35 @@ Následující kód, který je volána, když uživatel dokončí formulář zob
     </body>
     </html>
 
-Kromě volání MakeCall. jsp zobrazí koncový bod Twilio, verzi rozhraní API a stav volání. Příkladem je následující snímek obrazovky:
+Kromě volání makecall.jsp zobrazí koncový bod Twilio, verzi rozhraní API a stav volání. Příkladem je následující snímek obrazovky:
 
-![Odpověď volání Azure pomocí Twilio a Java][twilio_java_response]
+![Odpověď na volání Azure pomocí Twilio a Java][twilio_java_response]
 
 ## <a name="run-the-application"></a>Spuštění aplikace
-Níže jsou uvedené kroky vysoké úrovně pro spuštění vaší aplikace. Podrobnosti o těchto krocích najdete v [části vytvoření Hello World aplikace pomocí Azure Toolkit for Eclipse][azure_java_eclipse_hello_world].
+Následují kroky vysoké úrovně pro spuštění aplikace; Podrobnosti o těchto krocích najdete na [webu Vytvoření aplikace Hello World pomocí sady nástrojů Azure Toolkit for Eclipse][azure_java_eclipse_hello_world].
 
-1. Exportujte TwilioCloud WAR do složky Azure **AppRoot** . 
-2. Úpravou **Startup. cmd** rozbalte TwilioCloud War.
-3. Zkompilujte aplikaci pro emulátor služby Compute.
-4. Spusťte nasazení v emulátoru služby Compute.
-5. Otevřete prohlížeč a spusťte `http://localhost:8080/TwilioCloud/callform.jsp`.
-6. Zadejte hodnoty do formuláře, klikněte na tlačítko **vytvořit toto volání**a potom se podívejte na výsledky v MakeCall. jsp.
+1. Exportujte twilioCloud WAR do složky **Azure approot.** 
+2. Upravte **startup.cmd** rozbalit TwilioCloud WAR.
+3. Zkompilujte aplikaci pro emulátor výpočetních prostředků.
+4. Spusťte nasazení v emulátoru výpočetního prostředí.
+5. Otevřete prohlížeč a `http://localhost:8080/TwilioCloud/callform.jsp`spusťte .
+6. Zadejte hodnoty ve formuláři, klepněte na **tlačítko Provést toto volání**a pak zobcejte výsledky v souboru makecall.jsp.
 
-Až budete připraveni na nasazení do Azure, rekompilovat pro nasazení do cloudu, nasadit do Azure a spustit http://*your_hosted_name*. cloudapp.NET/TwilioCloud/callform.jsp v prohlížeči (nahraďte hodnotu *your_hosted_name*).
+Až budete připraveni k nasazení do Azure, překompilovat pro nasazení do cloudu, nasadit se do Azure a spustit http://*your_hosted_name*.cloudapp.net/TwilioCloud/callform.jsp v prohlížeči (nahraďte svou hodnotu *za your_hosted_name).*
 
 ## <a name="next-steps"></a>Další kroky
-Tento kód je k dispozici pro zobrazení základních funkcí pomocí Twilio v jazyce Java v systému Azure. Před nasazením do Azure v produkčním prostředí budete možná chtít přidat další zpracování chyb nebo jiné funkce. Příklad:
+Tento kód byl k dispozici ukázat základní funkce pomocí Twilio v Jazyce Java v Azure. Před nasazením do Azure v produkčním prostředí můžete přidat další zpracování chyb nebo jiné funkce. Například:
 
-* Místo používání webového formuláře můžete použít objekty blob služby Azure Storage nebo SQL Database k ukládání telefonních čísel a volání textu. Informace o použití objektů BLOB služby Azure Storage v jazyce Java najdete v tématu [How to use the BLOB Storage Service from Java][howto_blob_storage_java]. 
-* Pomocí **RoleEnvironment. getConfigurationSettings** můžete načíst ID účtu Twilio a ověřovací token z nastavení konfigurace nasazení, místo hardwarového kódování hodnot v MakeCall. jsp. Informace o třídě **RoleEnvironment** najdete [v tématu použití knihovny modulu runtime Azure Service v JSP][azure_runtime_jsp].
-* Kód MakeCall. jsp přiřadí adresu URL poskytnutou adresou URL, [https://twimlets.com/message][twimlet_message_url]na proměnnou **URL** . Tato adresa URL poskytuje odpověď TwiML (Twilio Markup Language), která informuje Twilio, jak pokračovat v volání. Například vrácený TwiML může obsahovat **&lt;řekněme** , že&gt;příkaz, který je výsledkem mluveného textu pro příjemce volání. Místo použití adresy URL poskytnuté v Twilio můžete vytvořit vlastní službu, která bude reagovat na žádost Twilio. Další informace najdete v tématu [použití Twilio pro hlasové funkce a možnosti SMS v jazyce Java][howto_twilio_voice_sms_java]. Další informace o TwiML najdete na adrese [https://www.twilio.com/docs/api/twiml][twiml]a další informace o **&lt;vyslovení&gt;** a dalších operacích Twilio najdete na [https://www.twilio.com/docs/api/twiml/say][twilio_say].
-* Přečtěte si pokyny pro zabezpečení Twilio na adrese [https://www.twilio.com/docs/security][twilio_docs_security].
+* Místo použití webového formuláře můžete k ukládání telefonních čísel a textu volání použít objekty BLOB úložiště Azure nebo databázi SQL. Informace o používání objektů BLOB úložiště Azure v jazyce Java najdete v [tématu Jak používat službu úložiště objektů blob z javy][howto_blob_storage_java]. 
+* Pomocí **role Environment.getConfigurationSettings** můžete načíst ID účtu Twilio a ověřovací token z nastavení konfigurace nasazení namísto pevného kódování hodnot v souboru makecall.jsp. Informace o třídě **RoleEnvironment** najdete [v tématu Použití knihovny Runtime služby Azure v JSP][azure_runtime_jsp].
+* Kód makecall.jsp přiřadí adrese URL zapředpokladu [https://twimlets.com/message][twimlet_message_url]Twilio , proměnné **URL.** Tato adresa URL poskytuje odpověď jazyka Twilio Markup Language (TwiML), která informuje Twilio, jak pokračovat ve volání. Například TwiML, který je vrácena může obsahovat ** &lt;Say&gt; ** sloveso, které má za následek text vyslovený příjemci volání. Namísto použití adresy URL poskytované twilio, můžete vytvořit vlastní službu reagovat na žádost Twilio; Další informace naleznete v [tématu Jak používat Twilio pro hlasové a SMS funkce v Javě][howto_twilio_voice_sms_java]. Více informací o TwiML [https://www.twilio.com/docs/api/twiml][twiml]naleznete na na ** &lt;&gt; ** . [https://www.twilio.com/docs/api/twiml/say][twilio_say]
+* Přečtěte si bezpečnostní pokyny [https://www.twilio.com/docs/security][twilio_docs_security]Twilio na adrese .
 
-Další informace o Twilio najdete v tématu [https://www.twilio.com/docs][twilio_docs].
+Další informace o Twilio [https://www.twilio.com/docs][twilio_docs]naleznete v tématu .
 
 ## <a name="see-also"></a>Viz také
-* [Použití Twilio pro hlasové funkce a možnosti SMS v Java][howto_twilio_voice_sms_java]
-* [Přidání certifikátu do úložiště certifikátů certifikační autority Java][add_ca_cert]
+* [Jak používat Twilio pro hlasové a SMS schopnosti v Javě][howto_twilio_voice_sms_java]
+* [Přidání certifikátu do úložiště certifikátů java ca][add_ca_cert]
 
 [twilio_pricing]: https://www.twilio.com/pricing
 [try_twilio]: https://www.twilio.com/try-twilio

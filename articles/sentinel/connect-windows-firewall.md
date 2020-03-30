@@ -1,6 +1,6 @@
 ---
-title: Připojit data brány Windows Firewall ke službě Azure Sentinel | Microsoft Docs
-description: Naučte se připojit data brány Windows Firewall ke službě Azure Sentinel.
+title: Připojení dat brány firewall systému Windows k Azure Sentinelu| Dokumenty společnosti Microsoft
+description: Přečtěte si, jak připojit data brány firewall systému Windows k Azure Sentinelu.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,49 +16,49 @@ ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
 ms.openlocfilehash: 5d2f68261143c3fc5bbcda0b739af17251eeee63
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588055"
 ---
 # <a name="connect-windows-firewall"></a>Připojení brány Windows Firewall
 
 
 
-Konektor brány Windows Firewall umožňuje snadno připojit protokoly brány Windows Firewall, pokud jsou připojené k pracovnímu prostoru Sentinel Azure. Toto připojení umožňuje zobrazit řídicí panely, vytvořit vlastní výstrahy a vylepšit šetření. Získáte tak lepší přehled o síti vaší organizace a zlepšíte možnosti vaší operace zabezpečení. Řešení shromažďuje události brány Windows Firewall z počítačů se systémem Windows, na kterých je nainstalován agent Log Analytics. 
+Konektor brány firewall systému Windows umožňuje snadno připojit protokoly brány firewall systému Windows, pokud jsou připojeny k pracovnímu prostoru Azure Sentinel. Toto připojení umožňuje zobrazit řídicí panely, vytvořit vlastní výstrahy a zlepšit šetření. Získáte tak lepší přehled o síti vaší organizace a zlepšíte možnosti operací zabezpečení. Řešení shromažďuje události brány firewall systému Windows z počítačů se systémem Windows, na kterých je nainstalován agent Log Analytics. 
 
 
 > [!NOTE]
-> - Data budou uložená v geografickém umístění pracovního prostoru, na kterém běží Azure Sentinel.
-> - Pokud se do stejného pracovního prostoru shromažďují služby Azure Sentinel a Azure Security Center, není nutné povolit řešení brány Windows Firewall prostřednictvím tohoto konektoru. Pokud tuto možnost povolíte, nezpůsobí duplikovaná data. 
+> - Data se budou ukládat v geografickém umístění pracovního prostoru, ve kterém používáte Azure Sentinel.
+> - Pokud azure sentinel a Azure Security Center jsou shromažďovány do stejného pracovního prostoru, není nutné povolit řešení Windows Firewall prostřednictvím tohoto konektoru. Pokud jste ji přesto povolili, nezpůsobí duplicitní data. 
 
 ## <a name="enable-the-connector"></a>Povolení konektoru 
 
-1. Na portálu Sentinel Azure vyberte **datové konektory** a pak klikněte na dlaždici **Windows Firewall** . 
-1.  Pokud jsou počítače s Windows v Azure:
-    1. Klikněte na **nainstalovat agenta na virtuální počítač Azure s Windows**.
-    1. V seznamu **virtuální počítače** vyberte počítač s Windows, který chcete streamovat do Azure Sentinel. Ujistěte se, že se jedná o virtuální počítač s Windows.
-    1. V okně, které se otevře pro daný virtuální počítač, klikněte na **připojit**.  
-    1. V okně **konektor brány Windows Firewall** klikněte na **Povolit** . 
+1. Na portálu Azure Sentinel vyberte **Datové konektory** a klikněte na dlaždici **brány firewall Windows.** 
+1.  Pokud jsou vaše počítače s Windows v Azure:
+    1. Klikněte **na Nainstalovat agenta na virtuálním počítači Azure Windows**.
+    1. V seznamu **Virtuální počítače** vyberte počítač s Windows, který chcete streamovat do Azure Sentinelu. Ujistěte se, že se jedná o virtuální hod windows.
+    1. V okně, které se otevře pro tento virtuální virtuální ms, klikněte na **Připojit**.  
+    1. V okně **konektoru brány firewall systému Windows** klepněte na **tlačítko Povolit.** 
 
-2. Pokud Váš počítač s Windows není virtuální počítač Azure:
-    1. Klikněte na **instalovat agenta na počítačích mimo Azure**.
-    1. V okně **přímý agent** vyberte buď možnost **Stáhnout agenta pro Windows (64 bitů)** , nebo **stáhnout agenta pro Windows (32 bitů)** .
-    1. Nainstalujte agenta na počítač s Windows. Zkopírujte **ID pracovního prostoru**, **primární klíč**a **sekundární klíč** a použijte je při zobrazení výzvy během instalace.
+2. Pokud váš počítač s Windows není virtuální počítač Azure:
+    1. Klikněte **na nainstalovat agenta na počítačích jiného než Azure**.
+    1. V okně **Přímého agenta** vyberte **buď stáhnout agenta systému Windows (64 bit)** nebo **stáhnout agenta systému Windows (32 bit)**.
+    1. Nainstalujte agenta do počítače se systémem Windows. Zkopírujte **ID pracovního prostoru**, **primární klíč**a sekundární **klíč** a použijte je po zobrazení výzvy během instalace.
 
-4. Vyberte datové typy, které chcete streamovat.
-5. Klikněte na **instalovat řešení**.
-6. Pokud chcete použít příslušné schéma v Log Analytics pro bránu Windows Firewall, vyhledejte **SecurityEvent**.
+4. Vyberte, které datové typy chcete streamovat.
+5. Klepněte na tlačítko **Nainstalovat řešení**.
+6. Chcete-li použít příslušné schéma v log analytics pro bránu firewall systému Windows, vyhledejte **SecurityEvent**.
 
 ## <a name="validate-connectivity"></a>Ověřit připojení
 
-Může trvat až 20 minut, než se vaše protokoly začnou zobrazovat v Log Analytics. 
+Může trvat více než 20 minut, než se vaše protokoly začnou zobrazovat v Log Analytics. 
 
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto dokumentu jste zjistili, jak připojit bránu Windows Firewall ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
-- Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
-- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).
+V tomto dokumentu jste se naučili, jak připojit bránu firewall systému Windows k Azure Sentinelu. Další informace o Azure Sentinelu najdete v následujících článcích:
+- Přečtěte [si, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
+- Začínáme [s detekcí hrozeb pomocí Azure Sentinelu](tutorial-detect-threats-built-in.md).
 

@@ -1,6 +1,6 @@
 ---
 title: Správa závislostí JAR – Azure HDInsight
-description: Tento článek popisuje osvědčené postupy pro správu závislostí archivu Java (JAR) pro aplikace HDInsight.
+description: Tento článek popisuje osvědčené postupy pro správu závislostí Java Archive (JAR) pro aplikace HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,32 +9,32 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.openlocfilehash: da3387dd9846847f7643ded43c8cbff8ed8b166e
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77135730"
 ---
-# <a name="jar-dependency-management-best-practices"></a>Osvědčené postupy pro správu závislostí JAR
+# <a name="jar-dependency-management-best-practices"></a>Osvědčené postupy správy závislostí JAR
 
-Komponenty nainstalované v clusterech HDInsight mají závislosti na knihovnách třetích stran. V rámci těchto integrovaných komponent jsou obvykle odkazovány konkrétní verze běžných modulů, jako je guava. Když odešlete aplikaci s jejími závislostmi, může dojít ke konfliktu mezi různými verzemi stejného modulu. Pokud verze komponenty, na kterou odkazujete v rámci třídy CLASSPATH, mohou předdefinované komponenty vyvolat výjimky z důvodu nekompatibility verzí. Pokud však předdefinované komponenty vloží své závislosti do cesty k cestě, může vaše aplikace vyvolat chyby, jako `NoSuchMethod`.
+Součásti nainstalované v clusterech HDInsight mají závislosti na knihovnách třetích stran. Obvykle je specifická verze běžných modulů, jako je Guava odkazuje na tyto vestavěné komponenty. Při odeslání aplikace s jeho závislosti, může způsobit konflikt mezi různými verzemi stejného modulu. Pokud verze komponenty, na kterou odkazujete v cestě pro třídy jako první, předdefinované součásti mohou vyvolat výjimky z důvodu nekompatibility verze. Pokud však integrované součásti nejprve vloží své závislosti do cesty pro `NoSuchMethod`třídy, může aplikace vyvolat chyby jako .
 
-Chcete-li se vyhnout konfliktu verzí, zvažte vystínování závislostí aplikace.
+Chcete-li se vyhnout konfliktu verzí, zvažte stínování závislostí aplikací.
 
-## <a name="what-does-package-shading-mean"></a>Co znamená stínování balíčku?
-Stínování nabízí způsob, jak zahrnout a přejmenovat závislosti. Přemístí třídy a přepíše ovlivněné bytové prostředí a prostředky, aby vytvořil soukromou kopii vašich závislostí.
+## <a name="what-does-package-shading-mean"></a>Co znamená stínování balíčků?
+Stínování poskytuje způsob, jak zahrnout a přejmenovat závislosti. Přemístí třídy a přepíše ovlivněný bytecode a prostředky k vytvoření soukromé kopie vašich závislostí.
 
-## <a name="how-to-shade-a-package"></a>Jak vystínovat balíček?
+## <a name="how-to-shade-a-package"></a>Jak zastínit balíček?
 
-### <a name="use-uber-jar"></a>Použít Uber – jar
-Uber-JAR je jeden soubor JAR, který obsahuje jar aplikace i jeho závislosti. Závislosti v Uber-jar nejsou ve výchozím nastavení stínové. V některých případech to může způsobit konflikt verze, pokud jiné součásti nebo aplikace odkazují na jinou verzi těchto knihoven. Pokud tomu chcete předejít, můžete vytvořit Uber soubor s některými (nebo všemi) závislostmi, které jsou ve stínovém formátu.
+### <a name="use-uber-jar"></a>Použijte uber-jar
+Uber-jar je jeden jar soubor, který obsahuje jak aplikaci jar a jeho závislosti. Závislosti v Uber-jar nejsou ve výchozím nastavení stínované. V některých případech to může způsobit konflikt verze, pokud jiné součásti nebo aplikace odkazují na jinou verzi těchto knihoven. Chcete-li tomu zabránit, můžete vytvořit soubor Uber-Jar s některými (nebo všemi) závislostmi ve stínovaných.
 
-### <a name="shade-package-using-maven"></a>Stínovat balíček pomocí Maven
-Maven může sestavovat aplikace napsané v jazyce Java i v Scala. Maven-odstín – modul plug-in vám umožní snadno vytvořit stínovaný Uber.
+### <a name="shade-package-using-maven"></a>Shade balíček pomocí Maven
+Maven může vytvářet aplikace napsané jak v Javě, tak v Scale. Maven-shade-plugin vám pomůže snadno vytvořit stínovaný uber-jar.
 
-Následující příklad ukazuje soubor `pom.xml`, který se aktualizoval pro barevný nádech balíčku pomocí Maven-stínového modulu plug-in.  Oddíl XML `<relocation>…</relocation>` přesouvá třídy z balíčku `com.google.guava` do balíčku `com.google.shaded.guava` přesunutím odpovídajících položek souborů JAR a přepsáním ovlivněného bajtového kódu.
+Následující příklad ukazuje `pom.xml` soubor, který byl aktualizován na stín balíček pomocí maven-shade-plugin.  Oddíl `<relocation>…</relocation>` XML přesune třídy z balíčku `com.google.guava` do balíčku `com.google.shaded.guava` přesunutím odpovídajících položek souboru JAR a přepsáním ovlivněného bytekódu.
 
-Po změně `pom.xml`můžete spustit `mvn package` a vytvořit tak stínový uberový jar.
+Po `pom.xml`změně můžete `mvn package` provést sestavení stínované uber-jar.
 
 ```xml
   <build>
@@ -64,10 +64,10 @@ Po změně `pom.xml`můžete spustit `mvn package` a vytvořit tak stínový ube
   </build>
 ```
 
-### <a name="shade-package-using-sbt"></a>Stínovat balíček pomocí SBT
-SBT je také nástroj sestavení pro Scala a Java. SBT nemá modul plug-in pro stín, jako je Maven-stínový modul plug-in. Můžete upravit soubor `build.sbt` pro barevný nádech balíčků. 
+### <a name="shade-package-using-sbt"></a>Stínovací balíček pomocí SBT
+SBT je také nástroj pro sestavení Scala a Java. SBT nemá odstín plugin jako maven-shade-plugin. Soubor můžete `build.sbt` upravit tak, aby stínily balíčky. 
 
-Chcete-li například stínovat `com.google.guava`, můžete do souboru `build.sbt` přidat následující příkaz:
+Chcete-li například zastínit `com.google.guava`, můžete `build.sbt` do souboru přidat příkaz níže:
 
 ```scala
 assemblyShadeRules in assembly := Seq(
@@ -75,10 +75,10 @@ assemblyShadeRules in assembly := Seq(
 )
 ```
 
-Potom můžete spustit `sbt clean` a `sbt assembly` vytvořit stínovaný soubor JAR. 
+Pak můžete `sbt clean` spustit `sbt assembly` a vytvořit stínovaný jar soubor. 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Použití nástrojů HDInsight IntelliJ](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox)
+* [Použití nástrojů INtelliJ HDInsight](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox)
 
 * [Vytvoření aplikace Scala Maven pro Spark v IntelliJ](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-create-standalone-application)

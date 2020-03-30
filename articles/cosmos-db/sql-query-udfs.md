@@ -1,25 +1,25 @@
 ---
-title: Uživatelsky definované funkce (UDF) v Azure Cosmos DB
-description: Přečtěte si o uživatelsky definovaných funkcích v Azure Cosmos DB.
+title: Uživatelem definované funkce (UDF) v Azure Cosmos DB
+description: Další informace o uživatelem definovaných funkcích v Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: mjbrown
 ms.openlocfilehash: b67202da7293ef55cfe3390ca676f7944da80fba
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69614329"
 ---
-# <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Uživatelsky definované funkce (UDF) v Azure Cosmos DB
+# <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Uživatelem definované funkce (UDF) v Azure Cosmos DB
 
-Rozhraní SQL API poskytuje podporu pro uživatelsky definované funkce (UDF). Pomocí skalárního UDF můžete předat nula nebo mnoho argumentů a vrátit výsledek jednoho argumentu. Rozhraní API kontroluje každý argument pro platné hodnoty JSON.  
+Rozhraní SQL API poskytuje podporu pro uživatelem definované funkce (UD). Pomocí skalárních udfs můžete předat v nula nebo mnoho argumentů a vrátit jeden výsledek argumentu. Rozhraní API kontroluje každý argument pro bytí právní hodnoty JSON.  
 
-Rozhraní API rozšiřuje syntaxi SQL pro podporu vlastní logiky aplikace pomocí UDF. UDF můžete zaregistrovat pomocí rozhraní SQL API a odkazovat na ně v dotazech SQL. Ve skutečnosti UDF jsou exquisitely navržené k volání z dotazů. UDF jako Corollary nemají přístup k objektu kontextu, jako jsou jiné typy JavaScriptu, jako jsou například uložené procedury a triggery. Dotazy jsou jen pro čtení a můžou běžet buď na primárních, nebo sekundárních replikách. UDF na rozdíl od jiných typů JavaScriptu je navržena pro spouštění na sekundárních replikách.
+Rozhraní API rozšiřuje syntaxi SQL tak, aby podporovala vlastní aplikační logiku pomocí ufls. Udfs můžete zaregistrovat pomocí rozhraní SQL API a odkazovat na ně v dotazech SQL. Ve skutečnosti jsou UDjsou nádherně navrženy tak, aby volaly z dotazů. Jako důsledek, UDnemají přístup k objektu kontextu, jako jsou jiné typy JavaScriptu, jako jsou uložené procedury a aktivační události. Dotazy jsou jen pro čtení a lze je spustit na primární nebo sekundární repliky. UD, na rozdíl od jiných typů JavaScriptu, jsou navrženy tak, aby spouštět na sekundární repliky.
 
-Následující příklad registruje UDF v rámci kontejneru položek v databázi Cosmos. Příklad vytvoří příponu UDF, jejíž název je `REGEX_MATCH`. Přijímá dvě hodnoty `input` řetězce JSON a `pattern`a kontroluje, zda první odpovídá vzoru zadanému ve druhém pomocí `string.match()` funkce JavaScriptu.
+Následující příklad registruje UDF pod kontejnerem položek v databázi Cosmos. Příklad vytvoří udf, jehož název je `REGEX_MATCH`. Přijímá dvě hodnoty řetězce JSON `pattern`a a kontroluje, `string.match()` `input` zda první odpovídá vzoru zadanému v druhém pomocí funkce JavaScriptu.
 
 ## <a name="examples"></a>Příklady
 
@@ -37,14 +37,14 @@ Následující příklad registruje UDF v rámci kontejneru položek v databázi
            regexMatchUdf).Result;  
 ```
 
-Teď tuto UDF použijte v projekci dotazu. Při volání v rámci dotazů musíte kvalifikovat UDF s předponou `udf.` pro velká a malá písmena.
+Nyní použijte tento UDF v projekci dotazu. Je nutné kvalifikovat UDFs s `udf.` předponou rozlišování velkých a malých písmen při jejich volání z v rámci dotazů.
 
 ```sql
     SELECT udf.REGEX_MATCH(Families.address.city, ".*eattle")
     FROM Families
 ```
 
-Výsledky jsou:
+Výsledky jsou následující:
 
 ```json
     [
@@ -57,7 +57,7 @@ Výsledky jsou:
     ]
 ```
 
-V rámci filtru můžete použít úplný formát UDF `udf.` s předponou, jak je uvedeno v následujícím příkladu:
+Můžete použít udf kvalifikované `udf.` s předponou uvnitř filtru, jako v následujícím příkladu:
 
 ```sql
     SELECT Families.id, Families.address.city
@@ -65,7 +65,7 @@ V rámci filtru můžete použít úplný formát UDF `udf.` s předponou, jak j
     WHERE udf.REGEX_MATCH(Families.address.city, ".*eattle")
 ```
 
-Výsledky jsou:
+Výsledky jsou následující:
 
 ```json
     [{
@@ -74,9 +74,9 @@ Výsledky jsou:
     }]
 ```
 
-V podstatě jsou UDF platné skalární výrazy, které lze použít v projekcích a filtrech.
+V podstatě UD jsou platné skalární výrazy, které můžete použít v projekcích i filtrech.
 
-Pokud chcete rozšířit výkon UDF, podívejte se na jiný příklad s využitím podmíněné logiky:
+Chcete-li rozšířit mocninu uofs, podívejte se na jiný příklad s podmíněnou logikou:
 
 ```javascript
        UserDefinedFunction seaLevelUdf = new UserDefinedFunction()
@@ -100,14 +100,14 @@ Pokud chcete rozšířit výkon UDF, podívejte se na jiný příklad s využit�
                 seaLevelUdf);
 ```
 
-V následujícím příkladu se systém souborů UDF uplatňuje:
+Následující příklad používá UDF:
 
 ```sql
     SELECT f.address.city, udf.SEALEVEL(f.address.city) AS seaLevel
     FROM Families f
 ```
 
-Výsledky jsou:
+Výsledky jsou následující:
 
 ```json
      [
@@ -122,11 +122,11 @@ Výsledky jsou:
     ]
 ```
 
-Pokud vlastnosti, na které odkazuje parametr UDF, nejsou v hodnotě JSON dostupné, parametr se považuje za nedefinovaný a volání UDF se přeskočí. Podobně platí, že pokud je výsledek UDF nedefinovaný, není zahrnutý ve výsledku.
+Pokud vlastnosti uvedené parametry UDF nejsou k dispozici v hodnotě JSON, parametr je považován za nedefinovaný a vyvolání UDF je přeskočeno. Podobně pokud výsledek UDF není definován, není zahrnut a ve výsledku.
 
-Jak ukazují předchozí příklady, UDF integruje sílu jazyka JavaScript s rozhraním SQL API. UDF poskytují bohatě programovatelné rozhraní, které umožňuje komplexní procesní a podmíněné logiky s využitím integrovaných funkcí běhového prostředí jazyka JavaScript. Rozhraní SQL API poskytuje argumenty pro UDF pro každou zdrojovou položku v aktuální fázi zpracování nebo výběru klauzule. Výsledkem je bezproblémové začlenění v celkovém spouštěcím kanálu. V souhrnu jsou UDF skvělé nástroje pro komplexní obchodní logiku jako součást dotazů.
+Jak ukazují předchozí příklady, UDfs integrovat sílu jazyka JavaScript s SQL API. UOF poskytují bohaté programovatelné rozhraní pro komplexní procedurální podmíněnou logiku pomocí vestavěných funkcí javascriptového běhu. Rozhraní SQL API poskytuje argumenty UDpro každou zdrojovou položku v aktuální fázi zpracování klauzule WHERE nebo SELECT. Výsledek je bezproblémově začleněndo celkového kanálu provádění. Stručně řečeno, UD jsou skvělé nástroje pro komplexní obchodní logiku jako součást dotazů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Úvod do Azure Cosmos DB](introduction.md)
 - [Systémové funkce](sql-query-system-functions.md)

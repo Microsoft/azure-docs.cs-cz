@@ -1,6 +1,6 @@
 ---
-title: Instalace TmaxSoft OpenFrame na Azure Virtual Machines
-description: Znovu hostovat úlohy sálového počítače IBM z/OS pomocí prostředí TmaxSoft OpenFrame na Azure Virtual Machines (virtuálních počítačů).
+title: Instalace TmaxSoft OpenFrame na virtuálních počítačích Azure
+description: Znovu hostujte úlohy sálových počítačů IBM z/OS pomocí prostředí TmaxSoft OpenFrame na virtuálních počítačích Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: njray
@@ -9,57 +9,57 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.openlocfilehash: 1ad6e52c421d9cfec4640d3a330b5507d6ed3e9b
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72436045"
 ---
-# <a name="install-tmaxsoft-openframe-on-azure"></a>Instalace TmaxSoft OpenFrame v Azure
+# <a name="install-tmaxsoft-openframe-on-azure"></a>Instalace TmaxSoft OpenFrame do Azure
 
-Naučte se, jak nastavit prostředí OpenFrame v Azure, které je vhodné pro vývoj, ukázky, testování nebo produkční úlohy. Tento kurz vás provede jednotlivými kroky.
+Zjistěte, jak nastavit prostředí OpenFrame v Azure vhodné pro vývoj, ukázky, testování nebo produkční úlohy. Tento kurz vás provede každým krokem.
 
-OpenFrame zahrnuje několik komponent, které vytvářejí prostředí emulace sálového počítače v Azure. Například OpenFrame online služby nahradit middleware sálového počítače, jako je třeba CICS (Customer Information Control System) a OpenFrame Batch, se svou komponentou TJES nahrazuje podsystém položek úloh v sálovém počítači IBM (JES).
+OpenFrame obsahuje více součástí, které vytvářejí prostředí emulace sálových počítačů v Azure. Online služby OpenFrame například nahrazují middleware sálových počítačů, jako je IBM Customer Information Control System (CICS) a OpenFrame Batch, svou komponentou TJES, nahrazuje subsystém Dílčí hodu úlohy (JES) sálového počítače IBM.
 
-OpenFrame funguje se všemi relačními databázemi, včetně Oracle Database, Microsoft SQL Server, IBM Db2 a MySQL. Tato instalace OpenFrame používá relační databázi TmaxSoft Tibero. OpenFrame i Tibero se spouštějí v operačním systému Linux. Tento kurz nainstaluje CentOS 7,3, i když můžete použít jiné podporované distribuce systému Linux. Aplikační server OpenFrame a databáze Tibero jsou nainstalované na jednom virtuálním počítači (VM).
+OpenFrame pracuje s jakoukoli relační databází, včetně Databáze Oracle, Microsoft SQL Serveru, IBM Db2 a MySQL. Tato instalace OpenFrame využívá relační databázi TmaxSoft Tibero. Oba OpenFrame a Tibero běží na operačním systému Linux. Tento výukový program nainstaluje CentOS 7.3, i když můžete použít jiné podporované distribuce Linuxu. Aplikační server OpenFrame a databáze Tibero jsou nainstalované na jednom virtuálním počítači (VM).
 
-Tento kurz vás provede instalací součástí sady OpenFrame Suite. Některé se musí instalovat samostatně.
+Kurz vás provede instalací součástí sady OpenFrame. Některé musí být nainstalovány samostatně.
 
-Hlavní komponenty OpenFrame:
+Součásti Hlavní ho disponovatek OpenFrame:
 
 - Požadované instalační balíčky.
-- Databáze Tibero
-- Rozhraní ODBC (Open Database Connectivity) používá aplikace v OpenFrame ke komunikaci s databází Tibero.
+- Databáze Tibero.
+- Open Database Connectivity (ODBC) používají aplikace v OpenFrame ke komunikaci s databází Tibero.
 - OpenFrame Base, middleware, který spravuje celý systém.
-- OpenFrame Batch, řešení, které nahrazuje systémy dávek tohoto sálového počítače.
-- TACF, modul služby, který řídí přístup uživatelů k systémům a prostředkům.
-- Prořazení, nástroj pro řazení pro transakce Batch.
-- OFCOBOL, kompilátor, který interpretuje programy COBOL sálového počítače.
-- OFASM, kompilátor, který interpretuje programy assembleru sálového počítače.
-- OpenFrame Server Type C (OSC), řešení, které nahrazuje middleware sálového počítače a IBM CICS.
-- Java Enterprise User Solution (JEUS), server webové aplikace, který je certifikovaný pro Java Enterprise Edition 6.
+- OpenFrame Batch, řešení, které nahrazuje dávkové systémy sálového počítače.
+- TACF, servisní modul, který řídí přístup uživatelů k systémům a prostředkům.
+- ProSort, nástroj pro řazení pro dávkové transakce.
+- OFCOBOL, kompilátor, který interpretuje mainframové programy COBOL.
+- OFASM, kompilátor, který interpretuje mainframe assembler programy.
+- OpenFrame Server typu C (OSC), řešení, které nahrazuje middleware sálového počítače a IBM CICS.
+- Java Enterprise User Solution (JEUS), webový aplikační server, který je certifikován pro Java Enterprise Edition 6.
 - OFGW, komponenta brány OpenFrame, která poskytuje naslouchací proces 3270.
-- OFManager řešení, které poskytuje funkce pro operace a správu OpenFrame ve webovém prostředí.
+- OFManager, řešení, které poskytuje funkci provozu a správy OpenFrame ve webovém prostředí.
 
-Další požadované součásti OpenFrame:
+Další požadované komponenty OpenFrame:
 
-- OSI, řešení, které nahrazuje middleware sálového počítače a řadiče pro IMS.
-- TJES řešení, které poskytuje prostředí JES sálového počítače.
-- OFTSAM řešení, které umožňuje používat soubory SAM (V) v otevřeném systému.
-- OFHiDB, řešení, které nahrazuje databázi IMS v rámci sálového počítače.
-- OFPLI, kompilátor, který interpretuje programy PL/I v rámci sálového počítače.
-- PROTRIEVE, řešení, které spouští certifikační autoritu pro sálový jazyk – Easytrieve.
+- OSI, řešení, které nahrazuje middleware sálových počítačů a IMS DC.
+- TJES, řešení, které poskytuje prostředí JES sálového počítače.
+- OFTSAM, řešení, které umožňuje (V)SAM soubory, které mají být použity v otevřeném systému.
+- OFHiDB, řešení, které nahrazuje ims DB sálového počítače.
+- OFPLI, kompilátor, který interpretuje mainframe pl/ i programy.
+- PROTRIEVE, řešení, které provádí sálový jazyk CA-Easytrieve.
 - OFMiner, řešení, které analyzuje prostředky sálových počítačů a pak je migruje do Azure.
 
 ## <a name="architecture"></a>Architektura
 
-Následující obrázek poskytuje přehled součástí architektury OpenFrame 7,0 instalovaných v tomto kurzu:
+Následující obrázek obsahuje přehled architektonických komponent OpenFrame 7.0 nainstalovaných v tomto kurzu:
 
-![Součásti OpenFrame](media/openframe-02.png)
+![Komponenty OpenFrame](media/openframe-02.png)
 
 ## <a name="azure-system-requirements"></a>Požadavky na systém Azure
 
-V následující tabulce jsou uvedené požadavky na instalaci v Azure.
+V následující tabulce jsou uvedeny požadavky na instalaci v Azure.
 <!-- markdownlint-disable MD033 -->
 
 <table>
@@ -67,28 +67,28 @@ V následující tabulce jsou uvedené požadavky na instalaci v Azure.
     <tr><th>Požadavek</th><th>Popis</th></tr>
 </thead>
 <tbody>
-<tr><td>Podporovaná distribuce systému Linux v Azure
+<tr><td>Podporované distribuce Linuxu v Azure
 </td>
 <td>
-Linux x86 2,6 (32 bitů, 64-bit)<br/>
-Red Hat 7. x<br/>
-CentOS 7.x<br/>
+Linux x86 2.6 (32bitový, 64bitový)<br/>
+Červený klobouk 7.x<br/>
+CentOS 7,x<br/>
 </td>
 </tr>
 <tr><td>Hardware
 </td>
-<td>Jádra: 2 (minimální)<br/>
-Paměť: 4 GB (minimální)<br/>
-Odkládací místo: 1 GB (minimální)<br/>
-Pevný disk: 100 GB (minimální)<br/>
+<td>Jádra: 2 (minimálně)<br/>
+Paměť: 4 GB (minimálně)<br/>
+Odkládací prostor: 1 GB (minimálně)<br/>
+Pevný disk: 100 GB (minimálně)<br/>
 </td>
 </tr>
-<tr><td>Volitelný software pro uživatele systému Windows
+<tr><td>Volitelný software pro uživatele Windows
 </td>
-<td>Výstup: používá se v této příručce ke konfiguraci funkcí virtuálních počítačů.<br/>
-WinSCP: oblíbený klient SFTP a klient FTP, který můžete použít<br/>
-Zatmění pro Windows: vývojová platforma podporovaná nástrojem TmaxSoft<br/>
-(Microsoft Visual Studio se v tuto chvíli nepodporuje.)
+<td>PuTTY: Používá se v této příručce ke konfiguraci funkcí virtuálního počítače<br/>
+WinSCP: Populární SFTP klient a FTP klient, který můžete použít<br/>
+Eclipse pro Windows: Vývojová platforma podporovaná TmaxSoft<br/>
+(Microsoft Visual Studio není v tuto chvíli podporována)
 </td>
 </tr>
 </tbody>
@@ -98,116 +98,116 @@ Zatmění pro Windows: vývojová platforma podporovaná nástrojem TmaxSoft<br/
 
 ## <a name="prerequisites"></a>Požadavky
 
-Naplánujte si útratu několika dní a sestavte veškerý požadovaný software a dokončete všechny ruční procesy.
+Naplánujte si několik dní na sestavení veškerého potřebného softwaru a dokončení všech manuálních procesů.
 
-Než začnete, udělejte toto:
+Než začnete, postupujte takto:
 
-- Získejte instalační médium OpenFrame z TmaxSoft. Pokud jste stávající zákazník TmaxSoft, obraťte se na zástupce TmaxSoft, kde najdete licencovanou kopii. Jinak si vyžádejte zkušební verzi z [TmaxSoft](https://www.tmaxsoft.com/contact/).
+- Získejte instalační médium OpenFrame od společnosti TmaxSoft. Pokud jste stávajícím zákazníkem TmaxSoft, obraťte se na svého zástupce tmaxSoft pro licencovanou kopii. V opačném případě požádejte o zkušební verzi od [společnosti TmaxSoft](https://www.tmaxsoft.com/contact/).
 
-- Odeslání e-mailu na <support@tmaxsoft.com>požádejte o dokumentaci k OpenFrame.
+- Vyžádejte si dokumentaci OpenFrame odesláním e-mailu na adresu <support@tmaxsoft.com>.
 
-- Získejte předplatné Azure, pokud ho ještě nemáte. Můžete si také vytvořit [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+- Získejte předplatné Azure, pokud ho ještě nemáte. Můžete si také vytvořit [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
-- Volitelné. Nastavte tunel VPN typu Site-to-site nebo JumpBox, který omezí přístup k virtuálnímu počítači Azure na povolené uživatele ve vaší organizaci. Tento krok není povinný, ale je to doporučený postup.
+- Nepovinný parametr. Nastavte tunel VPN mezi lokalitami nebo jumpbox, který omezuje přístup k virtuálnímu počítači Azure povoleným uživatelům ve vaší organizaci. Tento krok není vyžadován, ale je to osvědčený postup.
 
 ## <a name="set-up-a-vm-on-azure-for-openframe-and-tibero"></a>Nastavení virtuálního počítače v Azure pro OpenFrame a Tibero
 
-Prostředí OpenFrame můžete nastavit pomocí různých vzorů nasazení, ale následující postup ukazuje, jak nasadit aplikační server OpenFrame a databázi Tibero na jednom virtuálním počítači. V větších prostředích a pro úlohy výraznou je osvědčeným postupem, jak nasadit databázi samostatně na vlastním virtuálním počítači, aby se zajistil vyšší výkon.
+Prostředí OpenFrame můžete nastavit pomocí různých vzorů nasazení, ale následující postup ukazuje, jak nasadit aplikační server OpenFrame a databázi Tibero na jednom virtuálním počítači. Ve větších prostředích a pro značné úlohy je osvědčeným postupem nasadit databázi samostatně na vlastní virtuální počítač pro lepší výkon.
 
-**Vytvoření virtuálního počítače**
+**Vytvoření virtuálního virtuálního mísa**
 
-1. Do Azure Portal <https://portal.azure.com> a přihlaste se ke svému účtu.
+1. Přejděte na portál <https://portal.azure.com> Azure a přihlaste se ke svému účtu.
 
-2. Klikněte na **virtuální počítače**.
+2. Klikněte na **Virtuální počítače**.
 
-    ![Seznam prostředků v Azure Portal](media/vm-01.png)
+    ![Seznam zdrojů na webu Azure Portal](media/vm-01.png)
 
 3. Klikněte na **Přidat**.
 
-    ![Přidat možnost v Azure Portal](media/vm-02.png)
+    ![Přidat možnost na webu Azure Portal](media/vm-02.png)
 
-4. Napravo od **operačních systémů**klikněte na **Další**.
+4. Vpravo od **položky Operační systémy**klepněte na tlačítko **Další**.
 
-     ![Další možnost v Azure Portal](media/vm-03.png)
+     ![Další možnost na Azure Portal](media/vm-03.png)
 
-5. Pokud chcete postupovat přesně podle tohoto návodu, klikněte na **CentOS 7,3** , nebo můžete zvolit jinou podporovanou distribuci systému Linux.
+5. Klikněte na **CentOS-založené 7.3** sledovat tento walk-through přesně, nebo si můžete vybrat jinou podporovanou distribuci Linuxu.
 
-     ![Možnosti operačního systému v Azure Portal](media/vm-04.png)
+     ![Možnosti operačního systému na webu Azure Portal](media/vm-04.png)
 
-6. V nastavení **základní informace** zadejte **název**, **uživatelské jméno**, **typ ověřování**, **předplatné** (průběžné platby je AWS styl platby) a **skupinu prostředků** (použijte existující skupinu TmaxSoft).
+6. V nastavení Základy zadejte **jméno**, **Uživatelské jméno**, **Typ ověřování**, **Předplatné** (Průběžně zdatný platba je způsob **platby** AWS) a **skupinu Prostředků** (použijte existující jméno nebo vytvořte skupinu TmaxSoft).
 
-7. Po dokončení (včetně páru veřejného a privátního klíče pro **typ ověřování**) klikněte na **Odeslat**.
+7. Po dokončení (včetně dvojice veřejného a soukromého klíče pro **typ ověřování**) klepněte na **tlačítko Odeslat**.
 
 > [!NOTE]
-> Pokud používáte veřejný klíč SSH pro **typ ověřování**, přečtěte si postup v části Další informace, jak vygenerovat pár veřejného a privátního klíče, a pak pokračujte v tomto postupu.
+> Pokud používáte veřejný klíč SSH pro **typ ověřování**, podívejte se na kroky v další části pro generování dvojice veřejného a soukromého klíče a pokračujte kroky zde.
 
-### <a name="generate-a-publicprivate-key-pair"></a>Vygenerovat pár veřejného a privátního klíče
+### <a name="generate-a-publicprivate-key-pair"></a>Generovat dvojici veřejného a soukromého klíče
 
-Pokud používáte operační systém Windows, potřebujete PuTTYgen vygenerovat pár veřejného a privátního klíče.
+Pokud používáte operační systém Windows, potřebujete PuTTYgen generovat pár veřejného a soukromého klíče.
 
-Veřejný klíč může být volně sdílený, ale privátní klíč by měl být uložený bez tajných kódů a neměl by být nikdy sdílen s jinou stranou. Po vygenerování klíčů je nutné vložit **veřejný klíč SSH** do konfigurace – v důsledku toho se nahraje do virtuálního počítače se systémem Linux. Je uložený v rámci autorizovaných\_klíčů v adresáři \~/.ssh domovského adresáře uživatelského účtu. Virtuální počítač se systémem Linux pak dokáže rozpoznat a ověřit připojení, jakmile v klientovi SSH poskytnete přidružený **privátní klíč SSH** (v našem případě do výstupu).
+Veřejný klíč lze volně sdílet, ale soukromý klíč by měl být zcela tajný a nikdy by neměl být sdílen s jinou stranou. Po generování klíčů, musíte vložit **ssh veřejný klíč** do konfigurace – ve skutečnosti, jeho nahrání do virtuálního počítače s Linuxem. Je uložen uvnitř\_autorizovaných \~klíčů v adresáři /.ssh domovského adresáře uživatelského účtu. Virtuální počítač s Linuxem pak je schopen rozpoznat a ověřit připojení, jakmile zadáte přidružený **soukromý klíč SSH** v klientovi SSH (v našem případě PuTTY).
 
-Když těmto VIRTUÁLNÍm počítačům udělíte přístup novým jednotlivcůům: 
+Když poskytujete novým jednotlivcům přístup k virtuálnímu virtuálnímu virtuálnímu montovně: 
 
-- Každý nový jednotlivec generuje vlastní veřejný a privátní klíč pomocí PuTTYgen.
-- Jednotliví uživatelé ukládají vlastní privátní klíče samostatně a odesílají informace o veřejném klíči správci virtuálního počítače.
-- Správce vloží obsah veřejného klíče do souboru\_klíčů \~/.ssh/Authorized.
-- Nová osoba se připojí prostřednictvím výstupu.
+- Každý nový jednotlivec generuje své vlastní veřejné/soukromé klíče pomocí PuTTYgen.
+- Jednotlivci ukládají své vlastní soukromé klíče samostatně a odesílají informace o veřejném klíči správci virtuálního účtu.
+- Správce vloží obsah veřejného klíče do \~souboru /.ssh/authorized\_keys.
+- Nový jedinec se připojuje přes PuTTY.
 
-**Vytvoření páru veřejného a privátního klíče**
+**Generování dvojice veřejných a soukromých klíčů**
 
-1.  Stáhněte si PuTTYgen z <https://www.putty.org/> a nainstalujte ho pomocí všech výchozích nastavení.
+1.  Stáhněte si PuTTYgen a <https://www.putty.org/> nainstalujte jej pomocí všech výchozích nastavení.
 
-2.  Chcete-li otevřít PuTTYgen, vyhledejte instalační adresář pro výstup do C:\\Program Files\\.
+2.  Chcete-li otevřít PuTTYgen, vyhledejte instalační\\adresář\\PuTTY v jazyce C: Program Files PuTTY.
 
-    ![Rozhraní výstupu](media/puttygen-01.png)
+    ![Rozhraní PuTTY](media/puttygen-01.png)
 
-3.  Klikněte na **Generovat**.
+3.  Klepněte na **tlačítko Generovat**.
 
-    ![Dialogové okno generátoru klíčů pro výstupy](media/puttygen-02.png)
+    ![Dialogové okno Generátor klíčů PuTTY](media/puttygen-02.png)
 
-4.  Po generaci uložte veřejný klíč i privátní klíč. Vložte obsah veřejného klíče do části **veřejný klíč SSH** v podokně **základy vytváření virtuálních počítačů \>** (viz kroky 6 a 7 v předchozí části).
+4.  Po generování uložte veřejný klíč i soukromý klíč. Vložte obsah veřejného klíče do části **s veřejným klíčem SSH** v podokně **Vytvořit základy \> virtuálního počítače** (viz kroky 6 a 7 v předchozí části).
 
-    ![Dialogové okno generátoru klíčů pro výstupy](media/puttygen-03.png)
+    ![Dialogové okno Generátor klíčů PuTTY](media/puttygen-03.png)
 
-### <a name="configure-vm-features"></a>Konfigurace funkcí virtuálních počítačů
+### <a name="configure-vm-features"></a>Konfigurace funkcí virtuálního počítače
 
-1. V Azure Portal v okně **zvolit velikost** vyberte požadovaná nastavení hardwaru pro Linux. *Minimální* požadavky pro instalaci Tibero a OpenFrame jsou 2 procesory a 4 GB paměti RAM, jak je znázorněno v tomto příkladu instalace:
+1. Na webu Azure Portal v yberte okno **Zvolte velikost,** zvolte nastavení hardwaru počítače linux, který chcete. *Minimální* požadavky na instalaci tibero a OpenFrame jsou 2 procesory a 4 GB paměti RAM, jak je znázorněno v tomto příkladu instalace:
 
-    ![Vytvoření základních informací o virtuálním počítači](media/create-vm-01.png)
+    ![Vytvoření virtuálního počítače – základy](media/create-vm-01.png)
 
-2. Klikněte na **3 nastavení** a použijte výchozí nastavení a nakonfigurujte volitelné funkce.
-3. Podívejte se na podrobnosti o platbě.
+2. Klikněte na **3 Nastavení** a pomocí výchozího nastavení nakonfigurujte volitelné funkce.
+3. Zkontrolujte platební údaje.
 
-    ![Vytvořit virtuální počítač – koupit](media/create-vm-02.png)
+    ![Vytvořit virtuální počítač – nákup](media/create-vm-02.png)
 
-4. Odešlete své výběry. Azure začne nasadit virtuální počítač. Tento proces obvykle trvá několik minut.
+4. Odešlete svůj výběr. Azure začne nasazovat virtuální počítač. Tento proces obvykle trvá několik minut.
 
-5. Po nasazení virtuálního počítače se zobrazí jeho řídicí panel zobrazující všechna nastavení, která byla vybrána během konfigurace. Poznamenejte si **veřejnou IP adresu**.
+5. Při nasazení virtuálního počítače se zobrazí jeho řídicí panel, který zobrazuje všechna nastavení, která byla vybrána během konfigurace. Poznamenejte si **veřejnou IP adresu**.
 
-    ![Tmax na řídicím panelu Azure](media/create-vm-03.png)
+    ![tmax na řídicím panelu Azure](media/create-vm-03.png)
 
 6. Otevřete PuTTY.
 
-7. Jako **název hostitele**zadejte svoje uživatelské jméno a veřejnou IP adresu, kterou jste zkopírovali. Například **username\@publicip**.
+7. Do **pole Název hostitele**zadejte své uživatelské jméno a veřejnou IP adresu, kterou jste zkopírovali. Například **uživatelské\@jméno publicip**.
 
-    ![Dialogové okno Konfigurace výstupu](media/putty-01.png)
+    ![Dialogové okno Konfigurace PuTTY](media/putty-01.png)
 
-8. V poli **kategorie** klikněte na **připojení \> SSH \> auth**. Zadejte cestu k souboru **privátního klíče** .
+8. V poli **Kategorie** klepněte na **položku Připojení \> SSH \> Auth**. Zadejte cestu k souboru **soukromého klíče.**
 
-    ![Dialogové okno Konfigurace výstupu](media/putty-02.png)
+    ![Dialogové okno Konfigurace PuTTY](media/putty-02.png)
 
-9. Kliknutím na **Otevřít otevřete** okno výstupu. V případě úspěchu budete připojeni k novému VIRTUÁLNÍmu počítači s CentOS běžícímu v Azure.
+9. Kliknutím na **Otevřít** spusťte okno PuTTY. Pokud je úspěšná, jste připojeni k novému virtuálnímu počítači CentOS spuštěného v Azure.
 
-10. Pokud se chcete přihlásit jako uživatel root, zadejte **sudo bash**.
+10. Chcete-li se přihlásit jako root uživatel, zadejte **sudo bash**.
 
-    ![Přihlášení uživatele root user v příkazovém okně](media/putty-03.png)
+    ![Přihlášení kořenového uživatele v příkazovém okně](media/putty-03.png)
 
 ## <a name="set-up-the-environment-and-packages"></a>Nastavení prostředí a balíčků
 
-Teď, když je virtuální počítač vytvořený a jste přihlášeni, musíte provést několik kroků instalace a nainstalovat požadované předinstalační balíčky.
+Teď, když je virtuální počítač vytvořen a jste přihlášeni, musíte provést několik kroků instalace a nainstalovat požadované balíčky předinstalace.
 
-1. Namapujte název **ofdemo** na místní IP adresu pomocí VI pro úpravu souboru hostitelů (`vi /etc/hosts`). Za předpokladu, že naše IP adresa je 192.168.96.148 ofdemo, je to před změnou:
+1. Namapujte název **demo** na místní IP adresu pomocí vi`vi /etc/hosts`pro úpravu souboru hosts ( ). Za předpokladu, že naše IP je 192.168.96.148 ofdemo, je to před změnou:
 
     ```vi
     127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 
@@ -215,7 +215,7 @@ Teď, když je virtuální počítač vytvořený a jste přihlášeni, musíte 
     <IP Address>    <your hostname>
     ```
 
-     Tato změna je po provedení změny:
+     To je po změně:
 
     ```vi
     127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 
@@ -230,7 +230,7 @@ Teď, když je virtuální počítač vytvořený a jste přihlášeni, musíte 
     [root@ofdemo ~]# passwd oframe7
     ```
 
-3. Změňte heslo pro uživatele oframe7:
+3. Změna hesla pro uživatele oframe7:
 
     ```vi
     New password: 
@@ -238,7 +238,7 @@ Teď, když je virtuální počítač vytvořený a jste přihlášeni, musíte 
     passwd: all authentication tokens updated successfully.
     ```
 
-4. Aktualizujte parametry jádra v/etc/sysctl.conf:
+4. Aktualizujte parametry jádra v /etc/sysctl.conf:
 
     ```vi
     [root@ofdemo ~]# vi /etc/sysctl.conf
@@ -246,19 +246,19 @@ Teď, když je virtuální počítač vytvořený a jste přihlášeni, musíte 
     kernel.sem = 10000 32000 10000 10000
     ```
 
-5. Aktualizovat parametry jádra dynamicky bez restartování:
+5. Dynamicky aktualizujte parametry jádra bez restartu:
 
     ```vi
     [root@ofdemo ~]# /sbin/sysctl -p
     ```
 
-6. Získat požadované balíčky: Ujistěte se, že je server připojený k Internetu, Stáhněte si následující balíčky a nainstalujte je:
+6. Získat požadované balíčky: Ujistěte se, že je server připojený k Internetu, stáhněte si následující balíčky a nainstalujte je:
 
      - dos2unix
      - glibc
-     - glibc. i686 glibc. x86\_64
+     - glibc.i686 glibc.x86\_64
      - libaio
-     - ncurses
+     - Ncurses
 
           > [!NOTE]
           > Po instalaci balíčku ncurses vytvořte následující symbolické odkazy:
@@ -267,14 +267,14 @@ Teď, když je virtuální počítač vytvořený a jste přihlášeni, musíte 
          ln -s /usr/lib64/libncurses.so.5.9 /usr/lib/libtermcap.so.2
          ```
 
-     - gcc
+     - Gcc
      - gcc-c++
      - libaio-devel.x86\_64
-     - strace
+     - stopa
      - ltrace
-     - gdb
+     - Gdb
 
-7. V případě instalace Java ot./min. proveďte tyto kroky:
+7. V případě instalace Java RPM postupujte takto:
 
 ```
 root@ofdemo ~]# rpm -ivh jdk-7u79-linux-x64.rpm
@@ -297,25 +297,25 @@ Java HotSpot(TM) 64-Bit Server VM (build 24.79-b02, mixed mode)
 
 ## <a name="install-the-tibero-database"></a>Instalace databáze Tibero
 
-Tibero nabízí několik klíčových funkcí v prostředí OpenFrame v Azure:
+Tibero poskytuje několik klíčových funkcí v prostředí OpenFrame v Azure:
 
-- Tibero se používá jako interní úložiště dat OpenFrame pro různé systémové funkce.
-- Soubory VSAM, včetně KSDS, RRDS a ESDS, používejte interně databázi Tibero pro ukládání dat.
+- Tibero se používá jako úložiště interních dat OpenFrame pro různé systémové funkce.
+- Soubory VSAM, včetně KSDS, RRDS a ESDS, používají databázi Tibero interně pro ukládání dat.
 - Úložiště dat TACF je uloženo v Tibero.
-- Informace o katalogu OpenFrame jsou uložené v Tibero.
-- Databázi Tibero je možné použít jako náhradu pro IBM Db2 k ukládání dat aplikací.
+- Informace o katalogu OpenFrame jsou uloženy v Tibero.
+- Databázi Tibero lze použít jako náhradu za IBM Db2 pro ukládání dat aplikací.
 
-**Instalace Tibero**
+**Instalace tibero**
 
-1. Ověřte, zda je k dispozici soubor binární instalace Tibero, a zkontrolujte číslo verze.
-2. Zkopírujte software Tibero do uživatelského účtu Tibero (oframe). Příklad:
+1. Ověřte, zda je k dispozici binární instalační soubor Tibero, a zkontrolujte číslo verze.
+2. Zkopírujte software Tibero do uživatelského účtu Tibero (oframe). Například:
 
     ```
     [oframe7@ofdemo ~]$ tar -xzvf tibero6-bin-6_rel_FS04-linux64-121793-opt-tested.tar.gz 
     [oframe7@ofdemo ~]$ mv license.xml /opt/tmaxdb/tibero6/license/
     ```
 
-3. Otevřete. bash\_profil v VI (`vi .bash_profile`) a vložte do něj následující:
+3. Otevřete\_profil .bash`vi .bash_profile`ve vi ( ) a vložte do něj následující:
 
     ```
     # Tibero6 ENV
@@ -325,20 +325,20 @@ Tibero nabízí několik klíčových funkcí v prostředí OpenFrame v Azure:
     export PATH=$TB_HOME/bin:$TB_HOME/client/bin:$PATH
     ```
 
-4. Pokud chcete spustit profil bash, zadejte na příkazovém řádku tento příkaz:
+4. Chcete-li spustit profil bash, na příkazovém řádku zadejte:
 
     ```
     source .bash_profile
     ```
 
-5. Vygenerujte soubor s tipem (konfigurační soubor pro Tibero) a pak ho otevřete v VI. Příklad:
+5. Vygenerujte soubor s tipem (konfigurační soubor pro Tibero), pak jej otevřete ve vi. Například:
 
     ```
     [oframe7@ofdemo ~]$ sh $TB_HOME/config/gen_tip.sh
     [oframe7@ofdemo ~]$ vi $TB_HOME/config/$TB_SID.tip
     ```
 
-6. Upravte \$TB\_HOME/Client/config/tbdsn. TBR a vložte adresu 127.0.0.1 místo toho oflocalhost, jak je znázorněno níže:
+6. Změnit \$\_TB HOME/client/config/tbdsn.tbr a dát 127.0.0.1 místolocalhost, jak je znázorněno:
 
     ```
     TVSAM=( 
@@ -349,7 +349,7 @@ Tibero nabízí několik klíčových funkcí v prostředí OpenFrame v Azure:
      )
     ```
 
-7. Vytvořte databázi. Zobrazí se následující výstup:
+7. Vytvořte databázi. Zobrazí se výstup:
 
     ```
     Change core dump dir to /opt/tmaxdb/tibero6/bin/prof.
@@ -386,14 +386,14 @@ Tibero nabízí několik klíčových funkcí v prostředí OpenFrame v Azure:
      ******************************************************************************
     ```
 
-8. Pokud chcete recyklovat Tibero, nejdřív ho vypněte pomocí příkazu `tbdown`. Příklad:
+8. Chcete-li recyklovat Tibero, nejprve jej vypněte pomocí příkazu. `tbdown` Například:
 
     ```
     [oframe7@ofdemo ~]$$ tbdown 
     Tibero instance terminated (NORMAL mode).
     ```
 
-9. Teď se spouští Tibero pomocí `tbboot`. Příklad:
+9. Nyní bota Tibero pomocí `tbboot`. Například:
 
     ```
     [oframe7@ofdemo ~]$ tbboot
@@ -404,7 +404,7 @@ Tibero nabízí několik klíčových funkcí v prostředí OpenFrame v Azure:
     Tibero instance started up (NORMAL mode).
     ```
 
-10. Pokud chcete vytvořit tabulkový prostor, přejděte k databázi pomocí SYS User (sys/Tmax) a pak vytvořte potřebný tabulkový prostor pro výchozí svazek a TACF:
+10. Chcete-li vytvořit tabulkový prostor, přistupte k databázi pomocí uživatele SYS (sys/tmax) a potom vytvořte potřebný tabulkový prostor pro výchozí svazek a TACF:
 
     ```
     [oframe7@ofdemo ~]$ tbsql tibero/tmax
@@ -423,7 +423,7 @@ Tibero nabízí několik klíčových funkcí v prostředí OpenFrame v Azure:
     SQL> SQL> Disconnected.
     ```
 
-12. Spusťte Tibero a ověřte, zda jsou spuštěny procesy Tibero:
+12. Zavádět Tibero a ověřit, že procesy Tibero jsou spuštěny:
 
     ```
     [oframe7@ofdemo ~]$ tbboot 
@@ -432,43 +432,43 @@ Tibero nabízí několik klíčových funkcí v prostředí OpenFrame v Azure:
 
 Výstup:
 
-![Výstup Tibero](media/tibero-01.png)
+![Tibero výstup](media/tibero-01.png)
 
 ## <a name="install-odbc"></a>Instalace rozhraní ODBC
 
-Aplikace v OpenFrame komunikují s databází Tibero pomocí rozhraní ODBC API, které poskytuje projekt Open-Source unixODBC.
+Aplikace v OpenFrame komunikují s databází Tibero pomocí ROZHRANÍ ODBC API poskytovaného open-source projektem unixODBC.
 
 Instalace rozhraní ODBC:
 
-1. Ověřte, zda je k dispozici instalační soubor unixODBC-2.3.4. tar. gz, nebo použijte příkaz `wget unixODBC-2.3.4.tar.gz`. Příklad:
+1. Ověřte, zda je k dispozici instalační soubor unixODBC-2.3.4.tar.gz, nebo použijte `wget unixODBC-2.3.4.tar.gz` příkaz. Například:
 
      ```
      [oframe7@ofdemo ~]$ wget ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-2.3.4.tar.gz
      ```
 
-2. Rozbalte binární soubor. Příklad:
+2. Rozbalte binární soubor. Například:
 
      ```
      [oframe7@ofdemo ~]$ tar -zxvf unixODBC-2.3.4.tar.gz
      ```
 
-3. Přejděte do adresáře unixODBC-2.3.4 a vygenerujte soubor pravidel pomocí kontroly informací o počítači. Příklad:
+3. Přejděte do adresáře unixODBC-2.3.4 a vygenerujte Makefile pomocí informací o kontrolním počítači. Například:
 
      ```
      [oframe7@ofdemo unixODBC-2.3.4]$ ./configure --prefix=/opt/tmaxapp/unixODBC/ --sysconfdir=/opt/tmaxapp/unixODBC/etc
      ```
 
-     Ve výchozím nastavení je unixODBC nainstalován v/usr/local, takže `--prefix` předává hodnotu pro změnu umístění. Podobně ve výchozím nastavení jsou konfigurační soubory nainstalovány ve/etc, takže `--sysconfdir` předá hodnotu požadovaného umístění.
+     Ve výchozím nastavení je unixODBC nainstalován v `--prefix` /usr /local, takže předá hodnotu pro změnu umístění. Podobně konfigurační soubory jsou nainstalovány `--sysconfdir` v /etc ve výchozím nastavení, takže předá hodnotu požadovaného umístění.
 
-4. Spustit soubor pravidel: `[oframe7@ofdemo unixODBC-2.3.4]$ make`
+4. Spustit makefile:`[oframe7@ofdemo unixODBC-2.3.4]$ make`
 
-5. Po zkompilování zkopírujte spustitelný soubor do adresáře programu. Příklad:
+5. Po kompilaci zkopírujte spustitelný soubor do adresáře programu. Například:
 
      ```
      [oframe7@ofdemo unixODBC-2.3.4]$ make install
      ```
 
-6. Pomocí VI upravte profil bash (`vi ~/.bash_profile`) a přidejte následující:
+6. Pomocí vi upravte profil`vi ~/.bash_profile`bash ( ) a přidejte následující:
 
      ```
      # UNIX ODBC ENV 
@@ -479,7 +479,7 @@ Instalace rozhraní ODBC:
      export ODBCSYSINI=$HOME
      ```
 
-7. Použijte rozhraní ODBC. Upravte následující soubory odpovídajícím způsobem. Příklad:
+7. Použijte rozhraní ODBC. Odpovídajícím způsobem upravte následující soubory. Například:
 
      ```
      [oframe7@ofdemo unixODBC-2.3.4]$ source ~/.bash_profile
@@ -524,7 +524,7 @@ Instalace rozhraní ODBC:
      password = tmax
      ```
 
-8. Vytvořte symbolický odkaz a ověřte připojení k databázi Tibero:
+8. Vytvořte symbolický odkaz a ověřte připojení databáze Tibero:
 
      ```
      [oframe7@ofdemo ~]$ ln $ODBC_HOME/lib/libodbc.so $ODBC_HOME/lib/libodbc.so.1 [oframe7@ofdemo ~]$ ln $ODBC_HOME/lib/libodbcinst.so 
@@ -535,17 +535,17 @@ Instalace rozhraní ODBC:
 
 Zobrazí se následující výstup:
 
-![Výstup ODBC ukazující připojení k SQL](media/odbc-01.png)
+![Výstup ROZHRANÍ ODBC znázorňující připojení k SQL](media/odbc-01.png)
 
-## <a name="install-openframe-base"></a>Nainstalovat OpenFrame Base
+## <a name="install-openframe-base"></a>Instalace základny OpenFrame
 
-Základní aplikační server je nainstalován před jednotlivými službami, které OpenFrame používá ke správě systému v Azure, včetně procesů serveru pro zpracování transakcí.
+Aplikační server Base je nainstalován před jednotlivými službami, které OpenFrame používá ke správě systému v Azure, včetně procesů serveru zpracování transakcí.
 
-**Instalace OpenFrame Base**
+**Instalace základny OpenFrame**
 
-1. Zajistěte, aby byla instalace Tibero úspěšná, a pak ověřte, že následující OpenFrame\_Base7\_0\_Linux\_x86\_64. bin soubor instalačního programu a Base. Properties konfigurační soubor je k dispozici.
+1. Ujistěte se, že instalace Tibero proběhla\_úspěšně,\_\_a\_pak\_ověřte, zda je k dispozici následující instalační soubor OpenFrame Base7 0 Linux x86 64.bin a konfigurační soubor base.properties.
 
-2. Aktualizujte profil bash pomocí následujících informací týkajících se Tibero:
+2. Aktualizujte profil bash následujícími informacemi specifickými pro Tibero:
 
      ```bash
      alias ofhome='cd $OPENFRAME_HOME'
@@ -559,25 +559,25 @@ Základní aplikační server je nainstalován před jednotlivými službami, kt
      ```
 
 3. Spusťte profil bash:`[oframe7@ofdemo ~]$ . .bash_profile`
-4. Ujistěte se, že jsou spuštěné procesy Tibero. Příklad:
+4. Ujistěte se, že jsou spuštěny procesy Tibero. Například:
 
      ```linux
      [oframe7@ofdemo ~]$ ps -ef|grep tbsvr
      ```
 
-    ![Základní](media/base-01.png)
+    ![Základ](media/base-01.png)
 
      > [!IMPORTANT]
-     > Před instalací se ujistěte, že jste spustili Tibero.
+     > Před instalací se ujistěte, že spustíte Tibero.
 
-5. Vygenerujte licenci na adrese [TechNet.tmaxsoft.com](https://technet.tmaxsoft.com/en/front/main/main.do) a do příslušné složky umístěte licence OpenFrame Base, Batch, TACF a osc:
+5. Vygenerujte licenci na [technet.tmaxsoft.com](https://technet.tmaxsoft.com/en/front/main/main.do) a vložte licence OpenFrame Base, Batch, TACF, OSC do příslušné složky:
 
      ```
      [oframe7@ofdemo ~]$ cp license.dat /opt/tmaxapp/OpenFrame/core/license/
      [oframe7@ofdemo ~]$ cp lictjes.dat lictacf.dat licosc.dat $OPENFRAME_HOME/license/
      ```
 
-6. Stáhněte si základní binární soubor OpenFrame a základní soubory. Properties:
+6. Stáhněte si binární soubory OpenFrame Base a base.properties:
 
      ```
      [oframe7@ofdemo ~]$ vi base.properties
@@ -602,16 +602,16 @@ Základní aplikační server je nainstalován před jednotlivými službami, kt
      OPENFRAME_LICENSE_PATH=/opt/tmaxapp/license/OPENFRAME TMAX_LICENSE_PATH=/opt/tmaxapp/license/TMAX
      ```
 
-7. Spusťte instalační program pomocí souboru Base. Properties. Příklad:
+7. Spusťte instalační program pomocí souboru base.properties. Například:
 
     ```
     [oframe7@ofdemo ~]$ chmod a+x OpenFrame_Base7_0_Linux_x86_64.bin 
     [oframe7@ofdemo ~]$ ./OpenFrame_Base7_0_Linux_x86_64.bin -f base.properties
     ```
 
-    Po dokončení bude zpráva o dokončení instalace dokončena.
+    Po dokončení se zpráva Dokončení instalace přehraje.
 
-8. Pomocí příkazu `ls -ltr` Ověřte základní strukturu adresáře OpenFrame. Příklad:
+8. Pomocí příkazu ověřte `ls -ltr` strukturu adresářů OpenFrame Base. Například:
 
      ```
      [oframe7@ofdemo OpenFrame]$ ls -ltr
@@ -635,7 +635,7 @@ Základní aplikační server je nainstalován před jednotlivými službami, kt
      drwxrwxr-x. 2 oframe7 oframe7 25 Nov 30 16:58 volume_default
      ```
 
-9. Začátek OpenFrame Base:
+9. Spustit základnu OpenFrame:
 
      ```
      [oframe7@ofdemo ~]$ cp /usr/lib/libtermcap.so.2 $TMAXDIR/lib
@@ -645,11 +645,11 @@ Základní aplikační server je nainstalován před jednotlivými službami, kt
 
      ![výstup příkazu tmboot](media/base-02.png)
 
-10. Ověřte, jestli je stav procesu připravený, pomocí příkazu tmadmin v si. RDY se zobrazí ve sloupci **stav** u každého procesu:
+10. Ověřte, zda je stav procesu připraven pomocí příkazu tmadmin v si. RDY se zobrazí ve sloupci **stavu** pro každý z procesů:
 
      ![výstup příkazu tmadmin](media/base-03.png)
 
-11. Vypnout OpenFrame Base:
+11. Vypnout základnu OpenFrame:
 
      ```
      [oframe7@ofdemo ~]$ tmdown 
@@ -671,17 +671,17 @@ Základní aplikační server je nainstalován před jednotlivými službami, kt
      TMDOWN: TMAX is down
      ```
 
-## <a name="install-openframe-batch"></a>Nainstalovat dávku OpenFrame
+## <a name="install-openframe-batch"></a>Instalace dávky OpenFrame
 
-OpenFrame Batch se skládá z několika komponent, které simulují prostředí Batch z sálového počítače a slouží ke spouštění dávkových úloh v Azure.
+OpenFrame Batch se skládá z několika součástí, které simulují dávková prostředí sálových počítačů a používají se ke spuštění dávkových úloh v Azure.
 
 **Instalace dávky**
 
-1. Zajistěte, aby základní instalace proběhla úspěšně, a pak ověřte, že OpenFrame\_Batch7\_0\_Fix2\_MVS\_Linux\_x86\_64. bin soubor instalačního programu a batch. Properties:
+1. Zkontrolujte, zda je základní instalace úspěšná, a\_pak\_ověřte, zda je k dispozici instalační soubor OpenFrame\_\_Batch7 0 Fix2 MVS\_Linux\_x86\_64.bin a konfigurační soubor batch.properties:
 
-2. Do příkazového řádku zadejte `vi batch.properties` pro úpravu souboru Batch. Properties pomocí VI.
+2. Na příkazovém `vi batch.properties` řádku zadejte úpravu souboru batch.properties pomocí příkazu vi.
 
-3. Upravte parametry následujícím způsobem:
+3. Následující úpravy upravte takto:
 
      ```
      OPENFRAME_HOME = /opt/tmaxapp/OpenFrame
@@ -700,28 +700,28 @@ OpenFrame Batch se skládá z několika komponent, které simulují prostředí 
      BATCH_TABLE_CREATE=YES
      ```
 
-4. Pokud chcete spustit instalační program služby Batch, zadejte na příkazovém řádku tento příkaz:
+4. Chcete-li spustit dávkový instalační program, na příkazovém řádku zadejte:
 
      ```
      ./OpenFrame_Batch7_0_Fix2_MVS_Linux_x86_64.bin -f batch.properties
      ```
 
-5. Po dokončení instalace spusťte nainstalovaná OpenFrame sady zadáním `tmboot` na příkazovém řádku.
+5. Po dokončení instalace spusťte nainstalované sady OpenFrame zadáním `tmboot` na příkazovém řádku.
 
-    ![výstup tmboot](media/tmboot-01.png)
+    ![tmboot výstup](media/tmboot-01.png)
 
-6. Do příkazového řádku zadejte `tmadmin` pro kontrolu procesu OpenFrame.
+6. Chcete-li zkontrolovat proces OpenFrame, zadejte `tmadmin` na příkazovém řádku.
 
-    ![Obrazovka správce Tmax](media/tmadmin-01.png)
+    ![Obrazovka Správce Tmax](media/tmadmin-01.png)
 
-7. Spusťte následující příkazy:
+7. Proveďte následující příkazy:
 
      ```
      $$2 NODE1 (tmadm): quit 
      ADM quit for node (NODE1)
      ```
 
-8. Pro spuštění a vypnutí dávky použijte příkaz `tmdown`:
+8. Pomocí `tmdown` příkazu spusťte a vypněte batch:
 
      ```
      [oframe7@ofdemo ~]$tmdown
@@ -759,15 +759,15 @@ OpenFrame Batch se skládá z několika komponent, které simulují prostředí 
      TMDOWN: TMAX is down
      ```
 
-## <a name="install-tacf"></a>Nainstalovat TACF
+## <a name="install-tacf"></a>Instalace TACF
 
-TACF Manager je modul služby OpenFrame, který řídí přístup uživatelů k systémům a prostředkům prostřednictvím zabezpečení RACF.
+TACF Manager je servisní modul OpenFrame, který řídí přístup uživatelů k systémům a prostředkům prostřednictvím zabezpečení RACF.
 
-**Instalace TACF**
+**Instalace tacf**
 
-1. Ověřte, že OpenFrame\_Tacf7\_0\_Fix2\_Linux\_x86\_64. bin instalační soubor a TACF. Properties Configuration File.
-2. Zajistěte, aby byla instalace dávky úspěšná, a pak pomocí VI otevřete soubor TACF. Properties (`vi tacf.properties`).
-3. Upravte parametry TACF:
+1. Ověřte,\_zda je\_\_k\_dispozici\_instalační\_soubor OpenFrame Tacf7 0 Fix2 Linux x86 64.bin a konfigurační soubor tacf.properties.
+2. Zkontrolujte, zda byla instalace batch úspěšná, a potom pomocí`vi tacf.properties`vi otevřete soubor tacf.properties ( ).
+3. Úprava parametrů TACF:
 
      ```
      OPENFRAME_HOME=/opt/tmaxapp/OpenFrame 
@@ -791,7 +791,7 @@ TACF Manager je modul služby OpenFrame, který řídí přístup uživatelů k 
      ./OpenFrame_Tacf7_0_Fix2_Linux_x86_64.bin -f tacf.properties
      ```
 
-     Výstup bude vypadat přibližně takto:
+     Výstup vypadá asi takto:
 
      ```
      Wed Dec 07 17:36:42 EDT 2016
@@ -812,7 +812,7 @@ TACF Manager je modul služby OpenFrame, který řídí přístup uživatelů k 
      /tmp/install.dir.41422/Linux/resource/jre/lib/resources.jar /tmp/install.dir.41422/Linux/resource/jre/lib/rt.jar /tmp/install.dir.41422/Linux/resource/jre/lib/sunrsasign.jar /tmp/install.dir.41422/Linux/resource/jre/lib/jsse.jar /tmp/install.dir.41422/Linux/resource/jre/lib/jce.jar /tmp/install.dir.41422/Linux/resource/jre/lib/charsets.jar /tmp/install.dir.41422/Linux/resource/jre/lib/jfr.jar /tmp/install.dir.41422/Linux/resource/jre/classes
      ```
 
-6. Na příkazovém řádku zadejte `tmboot` a restartujte OpenFrame. Výstup bude vypadat přibližně takto:
+6. Na příkazovém `tmboot` řádku zadejte restartování openframe. Výstup vypadá asi takto:
 
      ```
      TMBOOT for node(NODE1) is starting: 
@@ -849,17 +849,17 @@ TACF Manager je modul služby OpenFrame, který řídí přístup uživatelů k 
      TMBOOT: SVR(tmsvr) is starting: Wed Sep  7 17:48:53 2016
      ```
 
-7. Ověřte, že je stav procesu připravený pomocí `tmadmin` v příkazu `si`. Příklad:
+7. Ověřte, zda je `tmadmin` stav `si` procesu připraven pomocí příkazu. Například:
 
      ```
      [oframe7\@ofdemo \~]\$ tmadmin
      ```
 
-     Ve sloupci **stav** se zobrazí RDY:
+     Ve sloupci **stavu** se zobrazí RDY:
 
-    ![RDY ve sloupci Stav](media/tmboot-02.png)
+    ![RDY ve sloupci stavu](media/tmboot-02.png)
 
-8. Spusťte následující příkazy:
+8. Proveďte následující příkazy:
 
      ```
      $$2 NODE1 (tmadm): quit 
@@ -875,7 +875,7 @@ TACF Manager je modul služby OpenFrame, který řídí přístup uživatelů k 
      [oframe7@ofdemo ~]$ tmdow
      ```
 
-9. Vypněte server pomocí příkazu `tmdown`. Výstup bude vypadat přibližně takto:
+9. Vypněte server pomocí `tmdown` příkazu. Výstup vypadá asi takto:
 
      ```
      [oframe7@ofdemo ~]$ tmdown 
@@ -903,13 +903,13 @@ TACF Manager je modul služby OpenFrame, který řídí přístup uživatelů k 
      TMDOWN: TMAX is down
      ```
 
-## <a name="install-prosort"></a>Nainstalovat prořazení
+## <a name="install-prosort"></a>Instalace prosortu
 
-Prořazení je nástroj používaný v transakcích služby Batch pro řazení dat.
+ProSort je nástroj používaný v dávkových transakcích pro řazení dat.
 
-**Instalace prořazení**
+**Instalace aplikace ProSort**
 
-1. Zajistěte, aby byla instalace dávky úspěšná, a pak ověřte, že je k dispozici soubor **2sp3-linux64-2123-opt. tar. gz s instalačním programem prořazení –\_bin** .
+1. Ujistěte se, že instalace batch byla úspěšná, a pak ověřte, zda je k dispozici instalační soubor **prosort-bin-prosort\_2sp3-linux64-2123-opt.tar.gz.**
 
 2. Spusťte instalační program pomocí souboru vlastností. Na příkazovém řádku zadejte:
 
@@ -917,13 +917,13 @@ Prořazení je nástroj používaný v transakcích služby Batch pro řazení d
      tar -zxvf prosort-bin-prosort\_2sp3-linux64-2123-opt.tar.gz
      ```
 
-3. Přesuňte adresář prořazení do domovského umístění. Na příkazovém řádku zadejte:
+3. Přesuňte adresář obchvatu do domovského umístění. Na příkazovém řádku zadejte:
 
      ```
      mv prosort /opt/tmaxapp/prosort
      ```
 
-4. Vytvořte podadresář licence a zkopírujte do něj soubor s licencí. Příklad:
+4. Vytvořte podadresář licence a zkopírujte tam licenční soubor. Například:
 
      ```
      cd /opt/tmaxapp/prosort 
@@ -931,7 +931,7 @@ Prořazení je nástroj používaný v transakcích služby Batch pro řazení d
      cp /opt/tmaxsw/oflicense/prosort/license.xml /opt/tmaxapp/prosort/license
      ```
 
-5. Otevřete bash. profil v VI (`vi .bash_profile`) a aktualizujte ho následujícím způsobem:
+5. Otevřete bash.profile v`vi .bash_profile`vi ( ) a aktualizujte jej takto:
 
      ```bash
      #       PROSORT
@@ -945,9 +945,9 @@ Prořazení je nástroj používaný v transakcích služby Batch pro řazení d
      export PATH
      ```
 
-6. Profil bash spustíte tak, že na příkazovém řádku zadáte: `. .bash_profile`
+6. Chcete-li spustit profil bash, zadejte na příkazovém řádku:`. .bash_profile`
 
-7. Vytvořte konfigurační soubor. Příklad:
+7. Vytvořte konfigurační soubor. Například:
 
      ```
      oframe@oframe7: cd /opt/tmaxapp/prosort/config 
@@ -956,14 +956,14 @@ Prořazení je nástroj používaný v transakcích služby Batch pro řazení d
       /home/oframe7/prosort/config/gbg.tip generated
      ```
 
-8. Vytvořte symbolický odkaz. Příklad:
+8. Vytvořte symbolický odkaz. Například:
 
      ```
      oframe@oframe7: cd /opt/tmaxapp/OpenFrame/util/ 
      oframe@oframe7home/oframe7/OpenFrame/util :  ln -s DFSORT SORT
      ```
 
-9. Ověřte instalaci prořazením spuštěním příkazu `prosort -h`. Příklad:
+9. Ověřte instalaci ProSort `prosort -h` provedením příkazu. Například:
 
      ```
      oframe@oframe7: prosort -h
@@ -977,21 +977,21 @@ Prořazení je nástroj používaný v transakcích služby Batch pro řazení d
      -x             Use SyncSort compatible mode
      ```
 
-## <a name="install-ofcobol"></a>Nainstalovat OFCOBOL
+## <a name="install-ofcobol"></a>Instalace OFCOBOL
 
-OFCOBOL je OpenFrame kompilátor, který interpretuje programy COBOL sálového počítače. 
+OFCOBOL je kompilátor OpenFrame, který interpretuje programy COBOL sálového počítače. 
 
 **Instalace OFCOBOL**
 
-1. Zajistěte, aby byla instalace dávky nebo online úspěšná, a pak ověřte, že je k dispozici OpenFrame\_COBOL3\_0\_40\_Linux\_x86\_64. soubor instalačního programu bin.
+1. Ujistěte se, že instalace Batch/Online byla úspěšná,\_a\_pak ověřte, zda je k dispozici instalační soubor OpenFrame\_COBOL3 0 40\_Linux\_x86\_64.bin.
 
-2. Instalační program OFCOBOL spustíte tak, že na příkazovém řádku zadáte:
+2. Chcete-li provést instalátor OFCOBOL, zadejte na příkazovém řádku:
 
      ```
       ./OpenFrame\_COBOL3\_0\_40\_Linux\_x86\_64.bin
      ```
 
-3. Přečtěte si licenční smlouvu a pokračujte stisknutím klávesy ENTER.
+3. Přečtěte si licenční smlouvu a pokračujte stisknutím klávesy Enter.
 
 4. Přijměte licenční smlouvu. Po dokončení instalace se zobrazí následující:
 
@@ -1017,33 +1017,33 @@ OFCOBOL je OpenFrame kompilátor, který interpretuje programy COBOL sálového 
      PRESS <ENTER> TO EXIT THE INSTALLER
      ```
 
-5. Otevřete profil bash v VI (`vi .bash_profile`) a ověřte, jestli je aktualizovaný pomocí proměnných OFCOBOL.
+5. Otevřete profil bash v`vi .bash_profile`vi ( ) a ověřte, že je aktualizován s ofcobol proměnných.
 6. Spusťte profil bash. Na příkazovém řádku zadejte:
 
      ```
       source ~/.bash_profile
      ```
 
-7. Zkopírujte licenci OFCOBOL do nainstalované složky. Příklad:
+7. Zkopírujte licenci OFCOBOL do nainstalované složky. Například:
      ```
      mv licofcob.dat $OFCOB_HOME/license
      ```
-8. Přejít do konfiguračního souboru OpenFrame tjclrun. conf a otevřete ho v VI. Příklad:
+8. Přejděte na konfigurační soubor OpenFrame tjclrun.conf a otevřete jej ve vi. Například:
      ```
      [oframe7@ofdemo ~]$ cd $OPENFRAME_HOME/config 
      [oframe7@ofdemo ~]$ vi tjclrun.conf
      ```
 
-   Toto je část SYSLIB před změnou:
+   Zde je sekce SYSLIB před změnou:
      ```
      [SYSLIB] BIN_PATH=${OPENFRAME_HOME}/bin:${OPENFRAME_HOME}/util:${COBDIR}/bin:/usr/local/bin:/bin LIB_PATH=${OPENFRAME_HOME}/lib:${OPENFRAME_HOME}/core/lib:${TB_HOME}/client/lib:${COBDIR}/lib:/ usr/lib:/lib:/lib/i686:/usr/local/lib:${PROSORT_HOME}/lib:/opt/FSUNbsort/lib
      ```
-   Tady je část SYSLIB po změně:
+   Zde je sekce SYSLIB po změně:
      ```
      [SYSLIB] BIN_PATH=${OPENFRAME_HOME}/bin:${OPENFRAME_HOME}/util:${COBDIR}/bin:/usr/local/bin:/bin LIB_PATH=${OPENFRAME_HOME}/lib:${OPENFRAME_HOME}/core/lib:${TB_HOME}/client/lib:${COBDIR}/lib:/ usr/lib:/lib:/lib/i686:/usr/local/lib:${PROSORT_HOME}/lib:/opt/FSUNbsort/lib :${ODBC_HOME}/lib 
      :${OFCOB_HOME}/lib
      ```
-9. Zkontrolujte soubor OpenFrame\_COBOL\_InstallLog. log v VI a ověřte, zda nejsou k dispozici žádné chyby. Příklad:
+9. Zkontrolujte soubor\_OpenFrame COBOL\_InstallLog.log ve vi a ověřte, zda nedošlo k chybám. Například:
      ```
      [oframe7@ofdemo ~]$ vi $OFCOB_HOME/UninstallerData/log/OpenFrame_COBOL_InstallLog.log 
      …….. 
@@ -1055,7 +1055,7 @@ OFCOBOL je OpenFrame kompilátor, který interpretuje programy COBOL sálového 
      0 NonFatalErrors 
      0 FatalError
      ```
-10. Pomocí příkazu `ofcob --version` a zkontrolujte číslo verze a ověřte instalaci. Příklad:
+10. Pomocí `ofcob --version` příkazu a zkontrolujte číslo verze k ověření instalace. Například:
 
      ```
      [oframe7@ofdemo ~]$ ofcob --version 
@@ -1063,25 +1063,25 @@ OFCOBOL je OpenFrame kompilátor, který interpretuje programy COBOL sálového 
      CommitTag:: 645f3f6bf7fbe1c366a6557c55b96c48454f4bf
      ```
 
-11. Restartujte OpenFrame pomocí příkazu `tmdown/tmboot`.
+11. Restartujte OpenFrame `tmdown/tmboot` pomocí příkazu.
 
-## <a name="install-ofasm"></a>Nainstalovat OFASM
+## <a name="install-ofasm"></a>Instalace OFASM
 
 OFASM je kompilátor OpenFrame, který interpretuje programy assembleru sálového počítače.
 
 **Instalace OFASM**
 
-1. Zajistěte, aby byla instalace dávky nebo online úspěšná, a pak ověřte, že je k dispozici instalační soubor OpenFrame\_ASM3\_0\_Linux\_x86\_64. bin.
+1. Ujistěte se, že instalace Batch/Online byla úspěšná, a\_\_pak ověřte, zda je k dispozici instalační soubor OpenFrame\_ASM3\_0 Linux x86\_64.bin.
 
-2. Spusťte instalační program. Příklad:
+2. Spusťte instalační program. Například:
 
      ```
      [oframe7@ofdemo ~]$ ./OpenFrame_ASM3_0_Linux_x86_64.bin
      ```
 
-3. Přečtěte si licenční smlouvu a pokračujte stisknutím klávesy ENTER.
+3. Přečtěte si licenční smlouvu a pokračujte stisknutím klávesy Enter.
 4. Přijměte licenční smlouvu.
-5. Ověřte, že se profil bash aktualizuje pomocí proměnných OFASM. Příklad:
+5. Ověřte, zda je profil bash aktualizován proměnnými OFASM. Například:
 
      ```
      [oframe7@ofdemo ~]$ source .bash_profile
@@ -1098,26 +1098,26 @@ OFASM je kompilátor OpenFrame, který interpretuje programy assembleru sálové
      export LD_LIBRARY_PATH="./:$OFASM_HOME/lib:$LD_LIBRARY_PATH"
      ```
 
-6. Otevřete konfigurační soubor OpenFrame tjclrun. conf v VI a upravte ho následujícím způsobem:
+6. Otevřete konfigurační soubor OpenFrame tjclrun.conf ve vi a upravte jej následujícím způsobem:
 
      ```
      [oframe7@ofdemo ~]$ cd $OPENFRAME_HOME/config 
      [oframe7@ofdemo ~]$ vi tjclrun.conf
      ```
 
-     Toto je část [SYSLIB] *před* změnou:
+     Zde je sekce [SYSLIB] *před* změnou:
 
      ```
      [SYSLIB] BIN_PATH=${OPENFRAME_HOME}/bin:${OPENFRAME_HOME}/util:${COBDIR}/bin:/usr/local/bin:/bi n:${OPENFRAME_HOME}/volume_default/SYS1.LOADLIB LIB_PATH=${OPENFRAME_HOME}/lib:${OPENFRAME_HOME}/core/lib:${TB_HOME}/client/lib:${CO BDIR}/lib:/usr/lib:/lib:/lib/i686:/usr/local/lib:${PROSORT_HOME}/lib:/opt/FSUNbsort/lib:${OFCOB_HOM E}/lib:${ODBC_HOME}/lib:${OFPLI_HOME}/lib
      ```
 
-     Toto je část [SYSLIB] *po* změně:
+     Zde je sekce [SYSLIB] *po* změně:
 
      ```
      [SYSLIB] BIN_PATH=${OPENFRAME_HOME}/bin:${OPENFRAME_HOME}/util:${COBDIR}/bin:/usr/local/bin:/bi n:${OPENFRAME_HOME}/volume_default/SYS1.LOADLIB LIB_PATH=${OPENFRAME_HOME}/lib:${OPENFRAME_HOME}/core/lib:${TB_HOME}/client/lib:${CO BDIR}/lib:/usr/lib:/lib:/lib/i686:/usr/local/lib:${PROSORT_HOME}/lib:/opt/FSUNbsort/lib:${OFCOB_HOM E}/lib:${ODBC_HOME}/lib:${OFPLI_HOME}/lib:${OFASM_HOME}/lib
      ```
 
-7. Otevřete soubor OpenFrame\_ASM\_InstallLog. log v VI a ověřte, zda nejsou k dispozici žádné chyby. Příklad:
+7. Otevřete soubor\_OpenFrame ASM\_InstallLog.log ve vi a ověřte, zda nedošlo k chybám. Například:
 
      ```
      [oframe7@ofdemo ~]$ vi 
@@ -1134,40 +1134,40 @@ OFASM je kompilátor OpenFrame, který interpretuje programy assembleru sálové
      0 FatalErrors
      ```
 
-8. Restartujte OpenFrame tím, že vydáváte jeden z následujících příkazů:
+8. Restartujte OpenFrame vydáním jednoho z následujících příkazů:
 
      ```
      tmdown / tmboot
      ```
 
-     ani
+     —nebo—
 
      ```
      oscdown / oscboot
      ```
 
-## <a name="install-osc"></a>Instalace OSC
+## <a name="install-osc"></a>Instalace osc
 
-OSC je prostředí OpenFrame podobné IBM CICS, které podporuje vysokorychlostní transakce OLTP a další funkce správy.
+OSC je prostředí OpenFrame podobné IBM CICS, které podporuje vysokorychlostní OLTP transakce a další funkce správy.
 
 **Instalace OSC**
 
-1. Zajistěte, aby byla základní instalace úspěšná, a pak ověřte, že OpenFrame\_OSC7\_0\_Fix2\_Linux\_x86\_64. instalační program bin a soubor osc. Properties Configuration.
-2. V souboru osc. Properties upravte následující parametry:
+1. Ujistěte se, že základní instalace proběhla\_úspěšně,\_a\_pak\_\_ověřte, zda je k dispozici instalační soubor OpenFrame OSC7 0 Fix2 Linux x86\_64.bin a konfigurační soubor osc.properties.
+2. Upravte následující parametry v souboru osc.properties:
      ```
      OPENFRAME_HOME=/opt/tmaxapp/OpenFrame OSC_SYS_OSC_NCS_PATH=/opt/tmaxapp/OpenFrame/temp/OSC_NCS OSC_APP_OSC_TC_PATH=/opt/tmaxapp/OpenFrame/temp/OSC_TC
      ```
 
-3. Spusťte instalační program pomocí souboru vlastností, jak je znázorněno níže:
+3. Spusťte instalační program pomocí souboru vlastností, jak je znázorněno:
 
      ```
      [oframe7@ofdemo ~]$ chmod a+x OpenFrame_OSC7_0_Fix2_Linux_x86_64.bin [oframe7@ofdemo ~]$ ./OpenFrame_OSC7_0_Fix2_Linux_x86_64.bin -f osc.properties
      ```
 
-     Po dokončení se zobrazí zpráva "instalace byla dokončena".
+     Po dokončení se zobrazí zpráva "Instalace dokončena".
 
-4. Ověřte, že se profil bash aktualizoval pomocí proměnných OSC.
-5. Zkontrolujte soubor OpenFrame\_OSC7\_0\_Fix2\_souboru InstallLog. log. Výsledek by měl vypadat přibližně takto:
+4. Ověřte, zda je profil bash aktualizován proměnnými OSC.
+5. Projděte si\_soubor InstallLog.log OpenFrame OSC7\_0\_Fix2.\_ Výsledek by měl vypadat přibližně takto:
 
      ```
      Summary 
@@ -1180,13 +1180,13 @@ OSC je prostředí OpenFrame podobné IBM CICS, které podporuje vysokorychlostn
      0 FatalError
      ```
 
-6. K otevření konfiguračního souboru ofsys. SEQ použijte VI. Příklad:
+6. Pomocí vi otevřete konfigurační soubor ofsys.seq. Například:
 
      ```
      vi $OPENFRAME_HOME/config/ofsys.seq
      ```
 
-7. V sekcích ZÁKLADu \#a \#BATCH Upravte parametry tak, jak jsou uvedené.
+7. V \#oddílech \#BASE a BATCH upravte parametry podle obrázku.
 
      ```
      Before changes
@@ -1224,7 +1224,7 @@ OSC je prostředí OpenFrame podobné IBM CICS, které podporuje vysokorychlostn
      TPFMAGENT      tmsvr
     ```
 
-8. Zkopírujte soubor s licencí. Příklad:
+8. Zkopírujte licenční soubor. Například:
 
      ```
      [oframe7@ofdemo ~]$ cp /home/oframe7/oflicense/ofonline/licosc.dat 
@@ -1238,9 +1238,9 @@ OSC je prostředí OpenFrame podobné IBM CICS, které podporuje vysokorychlostn
      -rwxrwxr-x. 1 oframe mqm 80 Sep  3 11:54 lictjes.da
      ```
 
-9. Chcete-li spustit a vypnout příkaz OSC, inicializujte sdílenou paměť oblasti CICS zadáním `osctdlinit OSCOIVP1` na příkazovém řádku.
+9. Chcete-li spustit a vypnout OSC, inicializovat oblast `osctdlinit OSCOIVP1` CICS sdílené paměti zadáním na příkazovém řádku.
 
-10. Spusťte `oscboot` pro spuštění souboru OSC. Výstup bude vypadat přibližně takto:
+10. Spuštění `oscboot` mačkáte OSC. Výstup vypadá asi takto:
 
      ```
      OSCBOOT : pre-processing       [ OK ]
@@ -1254,39 +1254,39 @@ OSC je prostředí OpenFrame podobné IBM CICS, které podporuje vysokorychlostn
           TMBOOT: TLM(tlm) is starting: Mon Sep 12 01:40:25 2016 
      ```
 
-11. Chcete-li ověřit, zda je stav procesu připraven, použijte příkaz `tmadmin` v poli si. Všechny procesy by měly zobrazit RDY ve sloupci **stav** .
+11. Chcete-li ověřit, zda je `tmadmin` stav procesu připraven, použijte příkaz v si. Všechny procesy by měly ve **sloupci stavu** zobrazit RDY.
 
     ![Procesy zobrazující RDY](media/tmadmin-02.png)
 
-12. Vypněte příkaz OSC pomocí příkazu `oscdown`.
+12. Vypněte OSC pomocí `oscdown` příkazu.
 
-## <a name="install-jeus"></a>Nainstalovat JEUS
+## <a name="install-jeus"></a>Instalace JEUS
 
-JEUS (uživatelské řešení Java Enterprise) poskytuje prezentační vrstvu serveru webové aplikace OpenFrame.
+JEUS (Java Enterprise User Solution) poskytuje prezentační vrstvu webového aplikačního serveru OpenFrame.
 
-Před instalací JEUS nainstalujte balíček Apache Ant, který poskytuje knihovny a nástroje příkazového řádku potřebné k instalaci JEUS.
+Před instalací JEUS, nainstalujte balíček Apache Ant, který poskytuje knihovny a nástroje příkazového řádku potřebné k instalaci JEUS.
 
 **Instalace Apache Ant**
 
-1. Stáhněte si binární soubor ANT pomocí příkazu `wget`. Příklad:
+1. Stáhnout Ant binární `wget` pomocí příkazu. Například:
 
      ```
      wget http://apache.mirror.cdnetworks.com/ant/binaries/apacheant-1.9.7-bin.tar.gz
      ```
 
-2. Použijte nástroj `tar` k extrakci binárního souboru a jeho přesunutí do vhodného umístění. Příklad:
+2. Pomocí `tar` nástroje extrahujte binární soubor a přesuňte jej do příslušného umístění. Například:
 
      ```
      tar -xvzf apache-ant-1.9.7-bin.tar.gz
      ```
 
-3. V případě efektivity vytvořte symbolický odkaz:
+3. Pro efektivitu vytvořte symbolický odkaz:
 
      ```
      ln -s apache-ant-1.9.7 ant
      ```
 
-4. Otevřete profil bash v VI (`vi .bash_profile`) a aktualizujte ho pomocí následujících proměnných:
+4. Otevřete profil bash ve`vi .bash_profile`vi ( )a aktualizujte jej následujícími proměnnými:
 
      ```
      # Ant ENV
@@ -1294,28 +1294,28 @@ Před instalací JEUS nainstalujte balíček Apache Ant, který poskytuje knihov
      export PATH=$HOME/ant/bin:$PATH
      ```
 
-5.  Použijte upravenou proměnnou prostředí. Příklad:
+5.  Použijte proměnnou upraveného prostředí. Například:
 
      ```
      [oframe7\@ofdemo \~]\$ source \~/.bash\_profile
      ```
 
-**Instalace JEUS**
+**Instalace jeusu**
 
-1. Pomocí nástroje `tar` rozbalte instalační program. Příklad:
+1. Rozšiřte instalační program `tar` pomocí nástroje. Například:
 
      ```
      [oframe7@ofdemo ~]$ tar -zxvf jeus704.tar.gz
      ```
 
-2. Vytvořit složku **jeus** (`mkdir jeus7`) a rozbalit binární soubor.
-3. Přejděte do **instalačního** adresáře (nebo použijte parametr JEUS pro vlastní prostředí). Příklad:
+2. Vytvořte složku **jeus** (`mkdir jeus7`) a rozbalte binární soubor.
+3. Přecházejte do **instalačního** adresáře (nebo použijte parametr JEUS pro vlastní prostředí). Například:
 
      ```
      [oframe7@ofdemo ~]$ cd jeus7/setup/
      ```
 
-4. Před provedením sestavení provést `ant clean-all`. Výstup bude vypadat přibližně takto:
+4. Spusťte `ant clean-all` před provedením sestavení. Výstup vypadá asi takto:
 
      ```
      Buildfile: /home/oframe7jeus7/setup/build.xml
@@ -1330,22 +1330,22 @@ Před instalací JEUS nainstalujte balíček Apache Ant, který poskytuje knihov
      Total time: 0 seconds
      ```
 
-5.  Vytvořte zálohu souboru Domain-config-Template. Properties. Příklad:
+5.  Vytvořte zálohu souboru domain-config-template.properties. Například:
 
      ```
      [oframe7@ofdemo ~]$ cp domain-config-template.properties domain-configtemplate.properties.bkp
      ```
 
-6. Otevřete soubor doména-config-Template. Properties v VI:
+6. Otevřete soubor domain-config-template.properties ve vi:
 
      ```
      [oframe7\@ofdemo setup]\$ vi domain-config-template.properties
      ```
 
-7. Změna `jeus.password=jeusadmin nodename=Tmaxsoft` do `jeus.password=tmax1234 nodename=ofdemo`
+7. Změnit `jeus.password=jeusadmin nodename=Tmaxsoft` na`jeus.password=tmax1234 nodename=ofdemo`
 
-8. Spusťte příkaz `ant install` pro sestavení JEUS.
-9.  Aktualizujte soubor profilu\_. bash pomocí proměnných JEUS, jak je znázorněno níže:
+8. Spusťte `ant install` příkaz k sestavení JEUS.
+9.  Aktualizujte soubor\_profilu .bash proměnnými JEUS, jak je znázorněno na obrázku:
 
      ```
      # JEUS ENV 
@@ -1353,13 +1353,13 @@ Před instalací JEUS nainstalujte balíček Apache Ant, který poskytuje knihov
      export PATH
      ```
 
-10. Spusťte profil bash. Příklad:
+10. Spusťte profil bash. Například:
 
      ```
      [oframe7@ofdemo setup]$ . .bash_profile
      ```
 
-11. *Volitelné*. Vytvoření aliasu pro snadné vypnutí a spouštění součástí JEUS:
+11. *Nepovinné*. Vytvořte alias pro snadné vypnutí a spuštění komponent JEUS:
 
      ```     
      # JEUS alias
@@ -1370,51 +1370,51 @@ Před instalací JEUS nainstalujte balíček Apache Ant, který poskytuje knihov
      alias dsdown=‘jeusadmin -domain jeus_domain -u administrator -p tmax1234 "local-shutdown“’
      ```
 
-12. Chcete-li ověřit instalaci, spusťte server pro správu domény, jak je znázorněno níže:
+12. Chcete-li ověřit instalaci, spusťte server pro správu domény, jak je znázorněno:
 
      ```
      [oframe7@ofdemo ~]$ startDomainAdminServer -domain jeus_domain -u administrator -p jeusadmin
      ```
 
-13. Ověřit podle přihlášení k webu pomocí syntaxe:
+13. Ověřte pomocí webového přihlášení pomocí syntaxe:
 
      ```
      http://<IP>:<port>/webadmin/login
      ```
 
-     Například <http://192.168.92.133:9736/webadmin/login.> zobrazí se přihlašovací obrazovka:
+     Zobrazí se <http://192.168.92.133:9736/webadmin/login.> například přihlašovací obrazovka:
     
-     ![Přihlašovací obrazovka webadmin JEUS](media/jeus-01.png)
+     ![Přihlašovací obrazovka jeus WebAdmin](media/jeus-01.png)
 
      > [!NOTE]
-     > Pokud dojde k problémům se zabezpečením portů, otevřete port 9736 nebo bránu firewall zakažte (`systemctl stop firewall`).
+     > Pokud narazíte na nějaké problémy se zabezpečením portu,`systemctl stop firewall`otevřete port 9736 nebo vypněte bránu firewall ( ).
 
-14. Chcete-li změnit název hostitele pro Server1, klikněte na tlačítko **uzamknout & upravit**a potom klikněte na možnost **Server1**. V okně Server změňte název hostitele následujícím způsobem:
+14. Chcete-li změnit název hostitele pro server1, klepněte na tlačítko **Zamknout & upravit**a potom klepněte na příkaz **Server1**. V okně Server změňte název hostitele takto:
 
-    1.  Změňte **Node** na **ofdemo**.
-    2.  Klikněte na tlačítko **OK** na pravé straně okna.
-    3.  Klikněte na **použít změny** v levé dolní části okna a pro Popis zadejte *název hostitele*.
+    1.  Změnit **název názvu** na **ofdemo**.
+    2.  Na pravé straně okna klikněte na **OK.**
+    3.  Klepněte na **tlačítko Použít změny** na levé dolní straně okna a pro popis zadejte Změnit název *hostitele*.
 
-    ![Obrazovka webadmin JEUS](media/jeus-02.png)
+    ![Obrazovka JEUS WebAdmin](media/jeus-02.png)
 
-15. Ověřte, zda je konfigurace na potvrzovací obrazovce úspěšná.
+15. Na potvrzovací obrazovce ověřte, zda je konfigurace úspěšná.
 
-    ![obrazovka serveru jeus_domain](media/jeus-03.png)
+    ![jeus_domain server](media/jeus-03.png)
 
-16. Spusťte proces spravovaného serveru "Server1" pomocí následujícího příkazu:
+16. Spusťte proces spravovaného serveru "server1" pomocí následujícího příkazu:
 
      ```
      [oframe7@ofdemo ~]$ startManagedServer -domain jeus_domain -server server1 -u administrator -p jeusadmin
      ```
 
-## <a name="install-ofgw"></a>Nainstalovat OFGW
+## <a name="install-ofgw"></a>Instalace OFGW
 
-OFGW je OpenFrame brána, která podporuje komunikaci mezi emulátorem terminálu 3270 a základem OSI a spravuje relace mezi emulátorem terminálu a OSI.
+OFGW je brána OpenFrame, která podporuje komunikaci mezi emulátorem terminálu 3270 a základnou OSI a spravuje relace mezi emulátorem terminálu a OSI.
 
 **Instalace OFGW**
 
-1. Ujistěte se, že JEUS byl úspěšně nainstalován, a pak ověřte, zda je k dispozici soubor instalačního programu OFGW7\_0\_1\_Obecné.
-2. Spusťte instalační program. Příklad:
+1. Ujistěte se, že jeus byl úspěšně nainstalován,\_\_pak\_ověřte, že ofGW7 0 1 Generic.bin instalační soubor je k dispozici.
+2. Spusťte instalační program. Například:
 
      ```
      [oframe7@ofdemo ~]$ ./OFGW7_0_1_Generic.bin
@@ -1424,12 +1424,12 @@ OFGW je OpenFrame brána, která podporuje komunikaci mezi emulátorem terminál
      -   Domovský adresář JEUS
      -   Název domény JEUS
      -   Název serveru JEUS
-     -   Ovladač Tibero
+     -   Tibero řidič
      -   ID uzlu Tmax ofdemo
 
-4. Přijměte zbývající výchozí hodnoty a stisknutím klávesy ENTER ukončete instalační program.
+4. Přijměte zbývající výchozí hodnoty a stisknutím klávesy Enter ukončete instalační program.
 
-5. Ověřte, že adresa URL pro OFGW funguje podle očekávání:
+5. Ověřte, zda adresa URL pro OFGW funguje podle očekávání:
 
      ```
      Type URL 
@@ -1439,43 +1439,43 @@ OFGW je OpenFrame brána, která podporuje komunikaci mezi emulátorem terminál
 
      Zobrazí se následující obrazovka:
 
-    ![WebTerminal OpenFrame](media/ofgw-01.png)
+    ![Webový terminál OpenFrame](media/ofgw-01.png)
 
-## <a name="install-ofmanager"></a>Nainstalovat OFManager
+## <a name="install-ofmanager"></a>Instalace ofmanageru
 
-OFManager poskytuje operace a funkce správy pro OpenFrame ve webovém prostředí.
+OFManager poskytuje funkce provozu a správy pro OpenFrame ve webovém prostředí.
 
-**Instalace OFManager**
+**Instalace ofmanageru**
 
-1. Ověřte, zda je k dispozici soubor instalačního programu Generic. bin OFManager7\_.
-2. Spusťte instalační program. Příklad:
+1. Ověřte, zda\_je k dispozici instalační soubor SOUBORU SOUBORU OBECNÁ.BIN OFManager7.
+2. Spusťte instalační program. Například:
 
      ```
      OFManager7_Generic.bin
      ```
 
-3.  Pokračujte stisknutím klávesy ENTER a pak přijměte licenční smlouvu.
-4.  Vyberte složku pro instalaci.
+3.  Pokračujte stisknutím klávesy Enter a pak přijměte licenční smlouvu.
+4.  Zvolte instalační složku.
 5.  Přijměte výchozí hodnoty.
-6.  Jako databázi vyberte Tibero.
-7.  Stisknutím klávesy ENTER ukončíte instalační program.
-8.  Ověřte, že adresa URL pro OFManager funguje podle očekávání:
+6.  Zvolte Tibero jako databázi.
+7.  Stisknutím klávesy Enter ukončete instalační program.
+8.  Ověřte, zda adresa URL pro ofmanager funguje podle očekávání:
 
      ```
      Type URL http://192.168.92.133:8088/ofmanager and press enter <  IP >  : < PORT >  ofmanager Enter ID:   ROOT 
      Password: SYS1
      ```
 
-Zobrazí se obrazovka Start:
+Zobrazí se úvodní obrazovka:
 
-![Přihlašovací obrazovka Tmax OpenFrame Manageru](media/ofmanager-01.png)
+![Přihlašovací obrazovka Tmax OpenFrame Manager](media/ofmanager-01.png)
 
-Tím se dokončí instalace součástí OpenFrame.
+Tím se dokončí instalace komponent OpenFrame.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud zvažujete migraci v rámci sálového počítače, máte k dispozici náš rozšiřující partnerský ekosystém, který vám může pomáhat. Podrobné pokyny k výběru partnerského řešení najdete v tématu věnovaném nástroji pro [modernizaci platforem](https://datamigration.microsoft.com/).
+Pokud uvažujete o migraci sálových počítačů, náš rozšiřující se partnerský ekosystém je vám k dispozici. Podrobné pokyny k výběru partnerského řešení naleznete v [platformě Modernization Alliance](https://datamigration.microsoft.com/).
 
 -   [Začínáme s Azure](https://docs.microsoft.com/azure/)
--   [Dokumentace k Host Integration Server (její)](https://docs.microsoft.com/host-integration-server/)
--   [Průvodce načtením a posunutím virtuálního datového centra Azure](https://blogs.msdn.microsoft.com/azurecat/2018/03/12/new-whitepaper-azure-virtual-datacenter-lift-and-shift-guide/)
+-   [Dokumentace k hostitelským integračním serveru (HIS)](https://docs.microsoft.com/host-integration-server/)
+-   [Průvodce výtahem a směnami virtuálního datového centra Azure](https://blogs.msdn.microsoft.com/azurecat/2018/03/12/new-whitepaper-azure-virtual-datacenter-lift-and-shift-guide/)

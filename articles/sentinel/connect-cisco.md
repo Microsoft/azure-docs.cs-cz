@@ -1,6 +1,6 @@
 ---
-title: Připojení dat Cisco k Azure Sentinel | Microsoft Docs
-description: Naučte se připojit data Cisco k Azure Sentinel.
+title: Připojení dat Cisco k Azure Sentinelu| Dokumenty společnosti Microsoft
+description: Přečtěte si, jak připojit data Cisco k Azure Sentinelu.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,39 +16,39 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 264dab4fabc890ffe03d911f8ee3c08ef51375d8
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588395"
 ---
-# <a name="connect-cisco-asa-to-azure-sentinel"></a>Připojit Cisco ASA k Azure Sentinel
+# <a name="connect-cisco-asa-to-azure-sentinel"></a>Připojení asa společnosti Cisco k Azure Sentinelu
 
 
 
-Tento článek vysvětluje, jak připojit zařízení Cisco ASA ke službě Azure Sentinel. Datový konektor Cisco ASA vám umožní snadno připojit protokoly Cisco ASA k Azure Sentinel, zobrazit řídicí panely, vytvořit vlastní výstrahy a vylepšit šetření. Použití Cisco ASA v Azure Sentinel vám poskytne více informací o používání internetu vaší organizace a zlepší možnosti jejich provozu. 
+Tento článek vysvětluje, jak připojit zařízení Cisco ASA k Azure Sentinelu. Datový konektor Cisco ASA umožňuje snadno propojit protokoly Cisco ASA s Azure Sentinelem, zobrazit řídicí panely, vytvořit vlastní výstrahy a zlepšit vyšetřování. Použití cisco ASA v Azure Sentinelu vám poskytne další přehled o využití internetu vaší organizace a zlepší možnosti operací zabezpečení. 
 
 
 
-## <a name="forward-cisco-asa-logs-to-the-syslog-agent"></a>Předejte protokoly Cisco ASA do agenta syslog.
+## <a name="forward-cisco-asa-logs-to-the-syslog-agent"></a>Předat protokoly Cisco ASA agentovi Syslog
 
-Cisco ASA nepodporuje CEF, takže protokoly se odesílají jako syslog a Agent Azure Sentinel ví, jak je analyzovat, jako by to byly protokoly CEF. Nakonfigurujte Cisco ASA pro přeposílání zpráv syslog do pracovního prostoru Azure prostřednictvím agenta syslog:
+Cisco ASA nepodporuje nástroj ProCeF, takže protokoly jsou odesílány jako Syslog a agent Azure Sentinel ví, jak je analyzovat, jako by se jedná o protokoly cef. Nakonfigurujte cisco ASA pro předávání zpráv Syslog do pracovního prostoru Azure prostřednictvím agenta Syslog:
 
-1. Přejděte na [Odeslat zprávy syslog na externí server SYSLOG](https://aka.ms/asi-syslog-cisco-forwarding)a postupujte podle pokynů pro nastavení připojení. Po zobrazení výzvy použijte tyto parametry:
-    - Nastavte **port** na 514 nebo na port, který jste nastavili v agentovi.
+1. Přejděte na [odeslat zprávy Syslog na externí server Syslog](https://aka.ms/asi-syslog-cisco-forwarding)a podle pokynů nastavte připojení. Po zobrazení výzvy použijte tyto parametry:
+    - Nastavte **port** na 514 nebo port, který jste nastavili v agentovi.
     - Nastavte **syslog_ip** na IP adresu agenta.
 
-1. Pokud chcete použít příslušné schéma v Log Analytics pro události Cisco, vyhledejte `CommonSecurityLog`.
+1. Chcete-li použít příslušné schéma v Log Analytics pro `CommonSecurityLog`události Cisco, vyhledejte .
 
-1. Pokračujte [krokem 3: ověření připojení](connect-cef-verify.md).
+1. Pokračovat krokem [3: Ověřit připojení](connect-cef-verify.md).
 
 
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto dokumentu jste zjistili, jak připojit zařízení Cisco ASA ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
-- Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
-- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).
-- [Pomocí sešitů](tutorial-monitor-your-data.md) můžete monitorovat data.
+V tomto dokumentu jste se naučili, jak připojit zařízení Cisco ASA k Azure Sentinelu. Další informace o Azure Sentinelu najdete v následujících článcích:
+- Přečtěte [si, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
+- Začínáme [s detekcí hrozeb pomocí Azure Sentinelu](tutorial-detect-threats-built-in.md).
+- Ke sledování dat [použijte sešity.](tutorial-monitor-your-data.md)
 
 

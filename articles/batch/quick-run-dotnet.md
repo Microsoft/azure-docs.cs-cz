@@ -1,6 +1,6 @@
 ---
 title: Rychlý start Azure – spuštění úlohy služby Batch – .NET
-description: Rychle spusťte ukázkovou úlohu Azure Batch a úlohy z C# aplikace pomocí klientské knihovny Batch .NET.
+description: Rychle spusťte ukázkovou úlohu Azure Batch a úlohy z aplikace C# s klientskou knihovnou Batch .NET.
 services: batch
 author: LauraBrenner
 manager: evansma
@@ -11,10 +11,10 @@ ms.date: 11/29/2018
 ms.author: labrenne
 ms.custom: mvc
 ms.openlocfilehash: 809ca9d9aafa813e05dea81eb05616eefcc65472
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77017203"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Rychlý start: Spuštění první úlohy služby Azure Batch pomocí rozhraní API .NET
@@ -27,13 +27,13 @@ V rámci tohoto rychlého startu spustíte úlohu služby Azure Batch z aplikace
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Visual Studio 2017 nebo novější](https://www.visualstudio.com/vs)nebo [.NET Core 2,1](https://www.microsoft.com/net/download/dotnet-core/2.1) pro Linux, MacOS nebo Windows. 
+* [Visual Studio 2017 nebo novější](https://www.visualstudio.com/vs)nebo [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) pro Linux, macOS nebo Windows. 
 
 * Účet Batch a propojený účet Azure Storage. Informace o vytvoření těchto účtů prostřednictvím [webu Azure Portal](quick-create-portal.md) nebo [rozhraní Azure CLI](quick-create-cli.md) najdete v rychlém startu služby Batch. 
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
+Přihlaste se k [https://portal.azure.com](https://portal.azure.com)portálu Azure na adrese .
 
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)]
 
@@ -47,7 +47,7 @@ git clone https://github.com/Azure-Samples/batch-dotnet-quickstart.git
 
 Přejděte do adresáře, který obsahuje soubor řešení sady Visual Studio `BatchDotNetQuickstart.sln`.
 
-Otevřete soubor řešení v sadě Visual Studio a aktualizujte řetězce přihlašovacích údajů v souboru `Program.cs` pomocí hodnot, které jste získali pro své účty. Příklad:
+Otevřete soubor řešení v sadě Visual Studio a aktualizujte řetězce přihlašovacích údajů v souboru `Program.cs` pomocí hodnot, které jste získali pro své účty. Například:
 
 ```csharp
 // Batch account credentials
@@ -70,7 +70,7 @@ Pokud chcete vidět pracovní postup služby Batch v praxi, sestavte a spusťte 
 
 * Pokud se zobrazí výzva, potvrďte obnovení všech balíčků NuGet. Pokud potřebujete stáhnout chybějící balíčky, ujistěte se, že máte nainstalovaného [Správce balíčků NuGet](https://docs.nuget.org/consume/installing-nuget).
 
-Potom aplikaci spusťte. Po spuštění ukázkové aplikace vypadá výstup konzoly zhruba následovně. Během provádění dojde k pozastavení na řádku `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` a mezitím se spustí výpočetní uzly fondu. Jakmile se spustí první výpočetní uzel, úkoly se zařadí do fronty ke spuštění. Fond, výpočetní uzly, úlohy a úkoly můžete sledovat ve svém účtu služby Batch na [webu Azure Portal](https://portal.azure.com).
+Potom aplikaci spusťte. Po spuštění ukázkové aplikace vypadá výstup konzoly zhruba následovně. Během provádění dojde k pozastavení na řádku `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` a mezitím se spustí výpočetní uzly fondu. Jakmile se spustí první výpočetní uzel, úkoly se zařadí do fronty ke spuštění. Přejděte na svůj dávkový účet na [webu Azure Portal](https://portal.azure.com) a sledujte fond, výpočetní uzly, úlohy a úkoly.
 
 ```
 Sample start: 11/16/2018 4:02:54 PM

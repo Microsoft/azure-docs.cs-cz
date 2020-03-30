@@ -1,6 +1,6 @@
 ---
-title: Odstranění privátního cloudu řešení Azure VMware (AVS)
-description: Popisuje postup odstranění privátního cloudu služby AVS.
+title: Odstranění řešení Azure VMware pomocí privátního cloudu CloudSimple
+description: Popisuje, jak odstranit CloudSimple privátní cloud.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/06/2019
@@ -8,54 +8,54 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 77cbfb19c3861bac517142f7491e6b1a5fb4ca27
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 6bc3e7030c500ea2d6072a1cce0f0b3d9fc62801
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024751"
 ---
-# <a name="delete-an-avs-private-cloud"></a>Odstranění privátního cloudu služby AVS
+# <a name="delete-a-cloudsimple-private-cloud"></a>Odstranění cloudového jednoduchého privátního cloudu
 
-AVS nabízí flexibilitu při odstraňování privátního cloudu služby AVS. Privátní cloud služby AVS se skládá z jednoho nebo více clusterů vSphere. Každý cluster může mít 3 až 16 uzlů. Při odstranění privátního cloudu služby AVS dojde k odstranění všech clusterů.
+CloudSimple poskytuje flexibilitu k odstranění privátního cloudu.  Privátní cloud se skládá z jednoho nebo více clusterů vSphere. Každý cluster může mít 3 až 16 uzlů. Když odstraníte privátní cloud, budou odstraněny všechny clustery.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Odstranění privátního cloudu služby AVS odstraní celý privátní cloud služby AVS. Odstraní se všechny součásti privátního cloudu AVS. Pokud chcete zachovat všechna data, ujistěte se, že jste data zálohovali do místního úložiště nebo do úložiště Azure.
+Odstranění majevku privátního cloudu odstraní celý privátní cloud.  Všechny součásti privátního cloudu budou odstraněny.  Pokud chcete zachovat některá data, ujistěte se, že jste zálohovali data do místního úložiště nebo úložiště Azure.
 
-Mezi komponenty privátního cloudu služby AVS patří:
+Mezi součásti privátního cloudu patří:
 
-* Uzly pro funkci AVS
-* Virtuální počítače
-* SÍTĚ VLAN/podsítě
-* Všechna uživatelská data uložená v privátním cloudu pro funkci AVS
-* Všechna příloha pravidla brány firewall k síti VLAN nebo podsíti
+* CloudJednoduché uzly
+* Virtual Machines
+* Sítě VLAN a podsítě
+* Všechna uživatelská data uložená v privátním cloudu
+* Všechny přílohy pravidel brány firewall k síti VLAN/podsíti
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
+Přihlaste se k [https://portal.azure.com](https://portal.azure.com)portálu Azure na adrese .
 
-## <a name="delete-an-avs-private-cloud"></a>Odstranění privátního cloudu služby AVS
+## <a name="delete-a-private-cloud"></a>Odstranění privátního cloudu
 
-1. [Přístup k portálu AVS](access-cloudsimple-portal.md).
+1. [Přístup k portálu CloudSimple](access-cloudsimple-portal.md).
 
-2. Otevřete stránku **prostředky** .
+2. Otevřete stránku **Zdroje.**
 
-3. Klikněte na privátní cloud AVS, který chcete odstranit.
+3. Klikněte na privátní cloud, který chcete odstranit
 
-4. Na stránce Souhrn klikněte na **Odstranit**.
+4. Na stránce souhrnu klepněte na **tlačítko Odstranit**.
 
-    ![Odstranit privátní cloud AVS](media/delete-private-cloud.png)
+    ![Odstranění privátního cloudu](media/delete-private-cloud.png)
 
-5. Na stránce potvrzení zadejte název privátního cloudu AVS a klikněte na **Odstranit**. 
+5. Na stránce s potvrzením zadejte název privátního cloudu a klepněte na **tlačítko Odstranit**. 
 
-    ![Odstranění privátního cloudu AVS – potvrzení](media/delete-private-cloud-confirm.png)
+    ![Odstranit privátní cloud - potvrdit](media/delete-private-cloud-confirm.png)
 
-Privátní cloud služby AVS je označený k odstranění. Proces odstranění začíná tři hodiny a odstraní privátní cloud AVS.
+Privátní cloud je označen k odstranění.  Proces odstranění začíná po třech hodinách a odstraní privátní cloud.
 
 > [!CAUTION]
-> Po odstranění privátního cloudu pro funkci AVS se musí odstranit uzly. Měření uzlů bude pokračovat, dokud se uzly z vašeho předplatného neodstraní.
+> Uzly musí být odstraněny po odstranění privátního cloudu.  Měření uzlů bude pokračovat, dokud se uzly neodstraní z vašeho předplatného.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Odstranit uzly](delete-nodes.md)
+* [Odstranění uzlů](delete-nodes.md)

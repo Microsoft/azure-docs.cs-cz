@@ -5,16 +5,16 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 346f63109e673692d425ede6bdbcb6f633af80bb
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68857354"
 ---
-**Back-endC#.NET ()** :
+**Back-end .NET (C#)**:
   
-1. V aplikaci Visual Studio klikněte pravým tlačítkem myši na serverový projekt a pak klikněte na **Spravovat balíčky NuGet**, vyhledejte `Microsoft.Azure.NotificationHubs`a pak klikněte na **nainstalovat**. Tím se nainstaluje knihovna Notification Hubs pro odesílání oznámení z back-endu.
-2. V projektu sady Visual Studio back-endu otevřete **řadiče** > **TodoItemController.cs**. V horní části souboru přidejte následující `using` příkaz:
+1. V sadě Visual Studio klepněte pravým tlačítkem myši na `Microsoft.Azure.NotificationHubs`projekt serveru a klepněte na příkaz Spravovat **balíčky NuGet**, vyhledejte položku a potom klepněte na příkaz **Nainstalovat**. Tím nainstalujete knihovnu Centra oznámení pro odesílání oznámení z back-endu.
+2. V projektu back-endu Visual Studio otevřete **řadiče** > **TodoItemController.cs**. V horní části souboru přidejte následující `using` příkaz:
 
     ```csharp
     using Microsoft.Azure.Mobile.Server.Config;
@@ -63,13 +63,13 @@ ms.locfileid: "68857354"
     }
     ```
 
-4. Publikujte projekt serveru znovu.
+4. Znovu publikujte projekt serveru.
 
 **Back-end Node.js**:
 
-1. Nastavte svůj back-end projekt.    
+1. Nastavte back-endový projekt.    
 
-2. Nahraďte skript tabulky TodoItem. js následujícím kódem:
+2. Nahraďte skript tabulky todoitem.js následujícím kódem:
 
     ```javascript
     var azureMobileApps = require('azure-mobile-apps'),
@@ -110,4 +110,4 @@ ms.locfileid: "68857354"
     module.exports = table;
     ```
 
-3. Při úpravách souboru na místním počítači znovu publikujte projekt serveru.
+3. Při úpravách souboru v místním počítači znovu publikujte projekt serveru.

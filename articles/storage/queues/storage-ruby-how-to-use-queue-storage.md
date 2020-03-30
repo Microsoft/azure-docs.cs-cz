@@ -1,6 +1,6 @@
 ---
-title: Používání úložiště Queue z Ruby-Azure Storage
-description: Naučte se používat Služba front Azure k vytváření a odstraňování front a vkládání, získávání a odstraňování zpráv. Ukázky napsané v Ruby.
+title: Jak používat úložiště front z Ruby – Azure Storage
+description: Zjistěte, jak pomocí služby Azure Queue vytvářet a odstraňovat fronty a vkládat, získat a odstraňovat zprávy. Vzorky napsané v Ruby.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 12/08/2016
@@ -9,10 +9,10 @@ ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
 ms.openlocfilehash: c7211bc805f4ed1d026faedbfdc9d53d3c1dfd93
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68721295"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Používání úložiště Queue z Ruby
@@ -21,32 +21,32 @@ ms.locfileid: "68721295"
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Přehled
-V této příručce se dozvíte, jak provádět běžné scénáře pomocí služby Microsoft Azure Queue Storage. Ukázky se napíší pomocí rozhraní API Ruby Azure.
-Mezi zahrnuté scénáře patří **vkládání**, **prohlížení**, **získávání**a **odstraňování** zpráv fronty a **vytváření a odstraňování front**.
+Tato příručka ukazuje, jak provádět běžné scénáře pomocí služby Microsoft Azure Queue Storage. Ukázky jsou zapsány pomocí rozhraní Ruby Azure API.
+Zahrnuté scénáře zahrnují **vkládání**, **prohlížení**, **získávání**a **odstranění** zpráv fronty, stejně jako vytváření a **mazání front**.
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
-## <a name="create-a-ruby-application"></a>Vytvoření aplikace v Ruby
-Vytvořte aplikaci v Ruby. Pokyny najdete v tématu [Vytvoření aplikace v Ruby v App Service v systému Linux](https://docs.microsoft.com/azure/app-service/containers/quickstart-ruby).
+## <a name="create-a-ruby-application"></a>Vytvoření aplikace Ruby
+Vytvořte aplikaci Ruby. Pokyny najdete [v tématu Vytvoření aplikace Ruby ve službě App Service na Linuxu](https://docs.microsoft.com/azure/app-service/containers/quickstart-ruby).
 
 ## <a name="configure-your-application-to-access-storage"></a>Konfigurace aplikace pro přístup k úložišti
-Pokud chcete používat službu Azure Storage, musíte si stáhnout a použít balíček Ruby Azure, který zahrnuje sadu praktických knihoven, které komunikují se službou REST (Storage).
+Chcete-li používat úložiště Azure, musíte stáhnout a použít balíček Ruby azure, který obsahuje sadu knihoven pohodlí, které komunikují se službami REST úložiště.
 
 ### <a name="use-rubygems-to-obtain-the-package"></a>Získání balíčku pomocí RubyGems
 1. Použijte rozhraní příkazového řádku, jako je **PowerShell** (Windows), **Terminál** (Mac) nebo **Bash** (Unix).
-2. Zadáním příkazu "gem Install Azure" v příkazovém okně nainstalujte Gem a závislosti.
+2. Zadejte "gem install azure" v okně příkazu pro instalaci drahokamu a závislostí.
 
 ### <a name="import-the-package"></a>Import balíčku
-Použijte svůj oblíbený textový editor, do horní části souboru Ruby přidejte následující, kde chcete úložiště použít:
+Použijte svůj oblíbený textový editor, přidejte následující do horní části souboru Ruby, kde máte v úmyslu použít úložiště:
 
 ```ruby
 require "azure"
 ```
 
-## <a name="setup-an-azure-storage-connection"></a>Nastavení Azure Storageho připojení
-Modul Azure Přečtěte si informace o prostředí **účtu\_úložiště\_Azure** a **Azure\_Storage\_ACCESS_KEY** , kde se dozvíte, jak se připojit k vašemu účtu úložiště Azure. Nejsou-li tyto proměnné prostředí nastaveny, je nutné zadat informace o účtu před použitím **Azure:: QueueService** s následujícím kódem:
+## <a name="setup-an-azure-storage-connection"></a>Nastavení připojení úložiště Azure
+Modul Azure bude číst proměnné prostředí **AZURE\_STORAGE\_ACCOUNT** a AZURE **\_STORAGE\_ACCESS_KEY** pro informace potřebné pro připojení k účtu úložiště Azure. Pokud tyto proměnné prostředí nejsou nastaveny, je nutné zadat informace o účtu před použitím **Azure::QueueService** s následujícím kódem:
 
 ```ruby
 Azure.config.storage_account_name = "<your azure storage account>"
@@ -55,20 +55,20 @@ Azure.config.storage_access_key = "<your Azure storage access key>"
 
 Získání těchto hodnot z klasického účtu úložiště nebo účtu úložiště Resource Manageru na webu Azure Portal:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Přejděte k účtu úložiště, který chcete použít.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+2. Přejděte na účet úložiště, který chcete použít.
 3. V okně Nastavení na pravé straně klikněte na **Přístupové klíče**.
 4. V okně Přístupové klíče, které se zobrazí, uvidíte přístupový klíč 1 a přístupový klíč 2. Můžete použít libovolný z nich. 
 5. Kliknutím na ikonu kopírování zkopírujte klíč do schránky. 
 
-## <a name="how-to-create-a-queue"></a>Jak: Vytvoření fronty
-Následující kód vytvoří objekt **Azure:: QueueService** , který vám umožní pracovat s frontami.
+## <a name="how-to-create-a-queue"></a>Postup: Vytvoření fronty
+Následující kód vytvoří objekt **Azure::QueueService,** který umožňuje pracovat s frontami.
 
 ```ruby
 azure_queue_service = Azure::QueueService.new
 ```
 
-Pomocí metody **create_queue ()** vytvořte frontu se zadaným názvem.
+Pomocí metody **create_queue()** vytvořte frontu se zadaným názvem.
 
 ```ruby
 begin
@@ -78,28 +78,28 @@ rescue
 end
 ```
 
-## <a name="how-to-insert-a-message-into-a-queue"></a>Jak: Vložení zprávy do fronty
-Chcete-li vložit zprávu do fronty, použijte metodu **create_message ()** a vytvořte novou zprávu a přidejte ji do fronty.
+## <a name="how-to-insert-a-message-into-a-queue"></a>Postup: Vložení zprávy do fronty
+Chcete-li vložit zprávu do fronty, použijte metodu **create_message()** k vytvoření nové zprávy a její přidání do fronty.
 
 ```ruby
 azure_queue_service.create_message("test-queue", "test message")
 ```
 
-## <a name="how-to-peek-at-the-next-message"></a>Jak: Prohlížet další zprávu
-Můžete prohlížet zprávy před frontou, aniž byste je museli odebírat z fronty voláním metody **prohlížet\_zprávy ()** . Ve výchozím nastavení **je\_prohlížení zpráv ()** prohlížení v rámci jedné zprávy. Můžete také zadat, kolik zpráv chcete prohlížet.
+## <a name="how-to-peek-at-the-next-message"></a>Postup: Náhled na další zprávu
+Můžete nahlédnout na zprávu v přední části fronty bez odebrání z fronty voláním **peek\_messages()** metoda. Ve výchozím nastavení **náhled\_zprávy()** prohlížet na jednu zprávu. Můžete také určit, kolik zpráv chcete prohlížet.
 
 ```ruby
 result = azure_queue_service.peek_messages("test-queue",
   {:number_of_messages => 10})
 ```
 
-## <a name="how-to-dequeue-the-next-message"></a>Jak: Vyřazení další zprávy z fronty
-Můžete odebrat zprávu z fronty ve dvou krocích.
+## <a name="how-to-dequeue-the-next-message"></a>Postup: Vyřazení další zprávy ze zařazení do fronty
+Zprávu můžete z fronty odebrat ve dvou krocích.
 
-1. Když zavoláte **zprávy seznamu\_()** , ve výchozím nastavení se ve frontě zobrazí další zpráva. Můžete také zadat, kolik zpráv chcete získat. Zprávy vrácené ze **seznamu zpráv\_()** se budou zobrazovat neviditelnému jinému kódu, který čte zprávy z této fronty. Jako parametr předáte časový limit viditelnosti v sekundách.
-2. Chcete-li dokončit odebrání zprávy z fronty, je nutné také volat **delete_message ()** .
+1. Při volání **\_seznam messages()**, zobrazí se další zpráva ve frontě ve výchozím nastavení. Můžete také určit, kolik zpráv chcete získat. Zprávy vrácené ze **seznamu\_messages()** stane neviditelné pro všechny ostatní kód čtení zpráv z této fronty. Předáte časový limit viditelnosti v sekundách jako parametr.
+2. Chcete-li dokončit odebrání zprávy z fronty, musíte také volat **delete_message()**.
 
-Tento dvoustupňový proces odebrání zprávy zaručuje, že pokud váš kód nedokáže zpracovat zprávu z důvodu selhání hardwaru nebo softwaru, může jiná instance kódu získat stejnou zprávu a zkusit to znovu. Kód volá **Odstranit\_zprávu ()** hned po zpracování zprávy.
+Tento dvoustupňový proces odebrání zprávy zajišťuje, že když váš kód nezpracuje zprávu z důvodu selhání hardwaru nebo softwaru, může jiná instance kódu získat stejnou zprávu a zkusit to znovu. Volání kódu **\_odstraní zprávu()** ihned po zpracování zprávy.
 
 ```ruby
 messages = azure_queue_service.list_messages("test-queue", 30)
@@ -107,8 +107,8 @@ azure_queue_service.delete_message("test-queue",
   messages[0].id, messages[0].pop_receipt)
 ```
 
-## <a name="how-to-change-the-contents-of-a-queued-message"></a>Jak: Změna obsahu zprávy ve frontě
-Podle potřeby můžete změnit obsah zprávy přímo ve frontě. Následující kód používá metodu **update_message ()** k aktualizaci zprávy. Metoda vrátí řazenou kolekci členů, která obsahuje přijetí pop zprávy ve frontě, a hodnotu data a času UTC, která představuje, kdy bude zpráva ve frontě viditelná.
+## <a name="how-to-change-the-contents-of-a-queued-message"></a>Postup: Změna obsahu zprávy ve frontě
+Podle potřeby můžete změnit obsah zprávy přímo ve frontě. Níže uvedený kód používá **metodu update_message()** k aktualizaci zprávy. Metoda vrátí řazenou kolekce členů, která obsahuje pop příjem zprávy fronty a uTC datum čas, který představuje, kdy zpráva bude viditelná ve frontě.
 
 ```ruby
 message = azure_queue_service.list_messages("test-queue", 30)
@@ -117,13 +117,13 @@ pop_receipt, time_next_visible = azure_queue_service.update_message(
   30)
 ```
 
-## <a name="how-to-additional-options-for-dequeuing-messages"></a>Jak: Další možnosti pro vyřazování zpráv do fronty
+## <a name="how-to-additional-options-for-dequeuing-messages"></a>Postup: Další možnosti pro dequeuing zpráv
 Načítání zpráv z fronty si můžete přizpůsobit dvěma způsoby.
 
 1. Můžete získat dávku zprávy.
-2. Můžete nastavit delší nebo kratší časový limit neviditelnosti, což umožňuje, aby váš kód měl více nebo méně času na úplné zpracování každé zprávy.
+2. Můžete nastavit delší nebo kratší časový limit neviditelnosti, což umožňuje kódu více či méně času na úplné zpracování každé zprávy.
 
-Následující příklad kódu používá metodu **List\_Messages ()** k získání 15 zpráv v jednom volání. Pak vytiskne a odstraní každou zprávu. Také se pro každou zprávu nastaví časový limit neviditelnosti 5 minut.
+Následující příklad kódu používá metodu **list\_messages()** k získání 15 zpráv v jednom volání. Pak vytiskne a odstraní každou zprávu. Také se pro každou zprávu nastaví časový limit neviditelnosti 5 minut.
 
 ```ruby
 azure_queue_service.list_messages("test-queue", 300
@@ -133,25 +133,25 @@ azure_queue_service.list_messages("test-queue", 300
 end
 ```
 
-## <a name="how-to-get-the-queue-length"></a>Jak: Získat délku fronty
-Můžete získat odhad počtu zpráv ve frontě. Metoda **Get\_Queue\_metadata ()** požádá službu front o vrácení přibližného počtu zpráv a metadat o frontě.
+## <a name="how-to-get-the-queue-length"></a>Postup: Získání délky fronty
+Můžete získat odhad počtu zpráv ve frontě. Metoda **\_get\_queue ()** požádá službu fronty, aby vrátila přibližný počet zpráv a metadata o frontě.
 
 ```ruby
 message_count, metadata = azure_queue_service.get_queue_metadata(
   "test-queue")
 ```
 
-## <a name="how-to-delete-a-queue"></a>Jak: Odstranění fronty
-Pokud chcete odstranit frontu a všechny zprávy, které jsou v ní obsažené, zavolejte metodu **Delete\_Queue ()** objektu Queue.
+## <a name="how-to-delete-a-queue"></a>Postup: Odstranění fronty
+Chcete-li odstranit frontu a všechny zprávy v ní obsažené, zavolejte metodu **delete\_queue()** na objektu fronty.
 
 ```ruby
 azure_queue_service.delete_queue("test-queue")
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste se naučili základní informace o službě Queue Storage, získáte další informace o složitějších úlohách úložiště pomocí těchto odkazů.
+Teď, když jste se naučili základy úložiště front, postupujte podle těchto odkazů a získejte další informace o složitějších úlohách úložiště.
 
-* Navštívit [Blog týmu Azure Storage](https://blogs.msdn.com/b/windowsazurestorage/)
-* Navštivte úložiště [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) na GitHubu.
+* Navštivte [blog týmu úložišť Azure](https://blogs.msdn.com/b/windowsazurestorage/)
+* Navštivte azure [sdk pro ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) úložiště na GitHubu
 
-Srovnání služby front Azure popsané v tomto článku a Azure Service Bus frontách popsaných v článku [použití Service Busch front](https://azure.microsoft.com/develop/ruby/how-to-guides/service-bus-queues/) najdete v tématu [fronty Azure a Service Bus fronty – porovnání a kontrast](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md) .
+Porovnání mezi službou fronty Azure popsané v tomto článku a frontami služby Azure Service Bus popsanými v článku [Jak používat fronty služby Service Bus](https://azure.microsoft.com/develop/ruby/how-to-guides/service-bus-queues/) najdete v [tématu Fronty Azure a fronty sběrnice – porovnání a kontrastní](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)

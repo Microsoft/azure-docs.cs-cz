@@ -1,6 +1,6 @@
 ---
-title: Ověřování-Microsoft Threat Modeling Tool – Azure | Microsoft Docs
-description: zmírnění rizik pro ohrožené hrozby v Threat Modeling Tool
+title: Ověřování – Nástroj pro modelování hrozeb společnosti Microsoft – Azure | Dokumenty společnosti Microsoft
+description: zmírnění hrozeb vystavených v nástroji pro modelování hrozeb
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,263 +16,263 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 1bef73e6be4bdbe8828e1d20ea6e684759984627
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72244635"
 ---
-# <a name="security-frame-authentication--mitigations"></a>Rámec zabezpečení: ověřování | Hrozeb 
+# <a name="security-frame-authentication--mitigations"></a>Rámec zabezpečení: Ověřování | Skutečnosti snižující závažnost rizika 
 
-| Produkt/služba | Předmětu |
+| Produkt/služba | Článek |
 | --------------- | ------- |
-| **Webová aplikace**    | <ul><li>[Zvažte použití mechanismu standardního ověřování pro ověření u webové aplikace](#standard-authn-web-app)</li><li>[Aplikace musí bezpečně zpracovávat scénáře neúspěšného ověření.](#handle-failed-authn)</li><li>[Povolit krokování nebo adaptivní ověřování](#step-up-adaptive-authn)</li><li>[Zajistěte, aby byla rozhraní pro správu náležitě uzamčena.](#admin-interface-lockdown)</li><li>[Zabezpečená implementace funkcí zapomenutého hesla](#forgot-pword-fxn)</li><li>[Ujistěte se, že jsou implementované zásady hesel a účtů.](#pword-account-policy)</li><li>[Implementace ovládacích prvků, aby se zabránilo výčtu uživatelského jména](#controls-username-enum)</li></ul> |
-| **Databáze** | <ul><li>[Pokud je to možné, použijte ověřování systému Windows pro připojení k SQL Server](#win-authn-sql)</li><li>[Pokud je to možné, použijte Azure Active Directory ověřování pro připojení k SQL Database](#aad-authn-sql)</li><li>[Při použití režimu ověřování SQL se ujistěte, že je na SQL serveru vynutila zásada účtu a hesla.](#authn-account-pword)</li><li>[Nepoužívat ověřování SQL v obsažených databázích](#autn-contained-db)</li></ul> |
-| **Centrum událostí Azure** | <ul><li>[Použití přihlašovacích údajů pro ověřování zařízení pomocí tokenů SaS](#authn-sas-tokens)</li></ul> |
-| **Hranice důvěry Azure** | <ul><li>[Povolení služby Azure Multi-Factor Authentication pro správce Azure](#multi-factor-azure-admin)</li></ul> |
-| **Service Fabric hranice důvěryhodnosti** | <ul><li>[Omezení anonymního přístupu na cluster Service Fabric](#anon-access-cluster)</li><li>[Ujistěte se, že Service Fabric certifikát klienta na uzel se liší od certifikátu Node-to-Node.](#fabric-cn-nn)</li><li>[Použití AAD k ověřování klientů v clusterech Service Fabric](#aad-client-fabric)</li><li>[Zajistěte, aby se certifikáty Service Fabric získaly od schválené certifikační autority (CA).](#fabric-cert-ca)</li></ul> |
+| **Webová aplikace**    | <ul><li>[Zvažte použití standardního ověřovacího mechanismu k ověření webové aplikace.](#standard-authn-web-app)</li><li>[Aplikace musí bezpečně zpracovávat neúspěšné scénáře ověřování.](#handle-failed-authn)</li><li>[Povolení stupňovacího nebo adaptivního ověřování](#step-up-adaptive-authn)</li><li>[Ujistěte se, že jsou administrativní rozhraní vhodně uzamčena](#admin-interface-lockdown)</li><li>[Bezpečně implementovat funkce zapomenutých hesel](#forgot-pword-fxn)</li><li>[Zajištění implementace zásad hesel a účtů](#pword-account-policy)</li><li>[Implementovat ovládací prvky, které zabrání výčtu uživatelského jména](#controls-username-enum)</li></ul> |
+| **Databáze** | <ul><li>[Pokud je to možné, použijte pro připojení k serveru SQL Server ověřování systému Windows.](#win-authn-sql)</li><li>[Pokud je to možné, použijte azure advitace pro připojení k databázi SQL](#aad-authn-sql)</li><li>[Při použití režimu ověřování SQL se ujistěte, že jsou na serveru SQL vynuceny zásady účtu a hesla.](#authn-account-pword)</li><li>[Nepoužívejte ověřování SQL v obsažených databázích](#autn-contained-db)</li></ul> |
+| **Azure Event Hub** | <ul><li>[Použití ověřovacích pověření pro zařízení pomocí tokenů SaS](#authn-sas-tokens)</li></ul> |
+| **Hranice důvěryhodnosti Azure** | <ul><li>[Povolení vícefaktorového ověřování Azure pro správce Azure](#multi-factor-azure-admin)</li></ul> |
+| **Hranice vztahu důvěryhodnosti služby Fabric** | <ul><li>[Omezení anonymního přístupu ke clusteru Service Fabric](#anon-access-cluster)</li><li>[Ujistěte se, že certifikát Service Fabric mezi klientem a uzly se liší od certifikátu mezi mezi mezi zem.](#fabric-cn-nn)</li><li>[Použití aad k ověření klientů pro služby clusterů prostředků infrastruktury](#aad-client-fabric)</li><li>[Ujistěte se, že certifikáty service fabric jsou získávány od schválené certifikační autority (CA)](#fabric-cert-ca)</li></ul> |
 | **Server identit** | <ul><li>[Použití standardních scénářů ověřování podporovaných serverem identity](#standard-authn-id)</li><li>[Přepsat výchozí mezipaměť tokenů serveru identity pomocí škálovatelné alternativy](#override-token)</li></ul> |
-| **Hranice důvěryhodnosti počítače** | <ul><li>[Zajistěte, aby byly binární soubory nasazené aplikace digitálně podepsané.](#binaries-signed)</li></ul> |
-| **SLUŽBÁM** | <ul><li>[Povolit ověřování při připojování k frontám MSMQ ve službě WCF](#msmq-queues)</li><li>[WCF – nenastavit zprávu clientCredentialType na None](#message-none)</li><li>[WCF – nenastavit Transport clientCredentialType na None](#transport-none)</li></ul> |
-| **Webové rozhraní API** | <ul><li>[Zajistěte, aby se pro zabezpečení webových rozhraní API používaly standardní techniky ověřování.](#authn-secure-api)</li></ul> |
-| **Azure AD** | <ul><li>[Použití standardních scénářů ověřování podporovaných nástrojem Azure Active Directory](#authn-aad)</li><li>[Přepsat výchozí mezipaměť tokenů ADAL s škálovatelnou alternativou](#adal-scalable)</li><li>[Ujistěte se, že se používá TokenReplayCache k zabránění opakovanému přehrání ověřovacích tokenů ADAL.](#tokenreplaycache-adal)</li><li>[Použití knihoven ADAL ke správě žádostí o tokeny od klientů OAuth2 do AAD (nebo místního AD)](#adal-oauth2)</li></ul> |
-| **Brána pole IoT** | <ul><li>[Ověřování zařízení připojujících se k bráně pole](#authn-devices-field)</li></ul> |
-| **Cloudová brána IoT** | <ul><li>[Ujistěte se, že jsou ověřená zařízení připojující se ke cloudové bráně.](#authn-devices-cloud)</li><li>[Použití přihlašovacích údajů pro ověřování podle zařízení](#authn-cred)</li></ul> |
-| **Azure Storage** | <ul><li>[Zajistěte, aby byl anonymní přístup pro čtení zadán pouze požadovaným kontejnerům a objektům blob.](#req-containers-anon)</li><li>[Udělení omezeného přístupu k objektům ve službě Azure Storage pomocí SAS nebo SAP](#limited-access-sas)</li></ul> |
+| **Hranice důvěryhodnosti počítače** | <ul><li>[Ujistěte se, že jsou binární soubory nasazených aplikací digitálně podepsané](#binaries-signed)</li></ul> |
+| **WCF** | <ul><li>[Povolení ověřování při připojování k frontám služby MSMQ v wcf](#msmq-queues)</li><li>[WCF-Nenastavovat typ klienta messageCredentialType na žádný](#message-none)</li><li>[WCF-Nenastavovat typ klienta přenosu typu credentialtype na žádný](#transport-none)</li></ul> |
+| **Web API** | <ul><li>[Ujistěte se, že se k zabezpečení webových api používají standardní techniky ověřování.](#authn-secure-api)</li></ul> |
+| **Azure AD** | <ul><li>[Použití standardních scénářů ověřování podporovaných službou Azure Active Directory](#authn-aad)</li><li>[Přepsat výchozí mezipaměť tokenů ADAL škálovatelnou alternativou](#adal-scalable)</li><li>[Ujistěte se, že tokenReplayCache se používá k zabránění přehrání ověřovacích tokenů ADAL](#tokenreplaycache-adal)</li><li>[Použití knihoven ADAL ke správě požadavků na tokeny od klientů OAuth2 do služby AAD (nebo místní služby AD)](#adal-oauth2)</li></ul> |
+| **Brána ioT pole** | <ul><li>[Ověření zařízení připojujících se k bráně pole](#authn-devices-field)</li></ul> |
+| **Cloudová brána IoT** | <ul><li>[Zajištění ověření zařízení připojujících se ke cloudové bráně](#authn-devices-cloud)</li><li>[Použití přihlašovacích údajů pro jedno zařízení](#authn-cred)</li></ul> |
+| **Azure Storage** | <ul><li>[Ujistěte se, že anonymní přístup pro čtení mají pouze požadované kontejnery a objekty BLOB.](#req-containers-anon)</li><li>[Udělit omezený přístup k objektům v úložišti Azure pomocí SAS nebo SAP](#limited-access-sas)</li></ul> |
 
-## <a id="standard-authn-web-app"></a>Zvažte použití mechanismu standardního ověřování pro ověření u webové aplikace
+## <a name="consider-using-a-standard-authentication-mechanism-to-authenticate-to-web-application"></a><a id="standard-authn-web-app"></a>Zvažte použití standardního ověřovacího mechanismu k ověření webové aplikace.
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | Webová aplikace | 
-| **Fáze SDL**               | Budování |  
-| **Použitelné technologie** | Obecná |
-| **Atribut**              | Neužívá se.  |
-| **Odkazy**              | Neužívá se.  |
-| Details | <p>Ověřování je proces, při kterém entita prokáže svou identitu, obvykle prostřednictvím přihlašovacích údajů, jako je uživatelské jméno a heslo. K dispozici je několik ověřovacích protokolů, které je možné zvážit. Některé z nich jsou uvedeny níže:</p><ul><li>Klientské certifikáty</li><li>Založené na systému Windows</li><li>Založené na formulářích</li><li>Federace – ADFS</li><li>Federace – Azure AD</li><li>Federační server identity</li></ul><p>Zvažte použití mechanismu standardního ověřování k identifikaci zdrojového procesu.</p>|
+| **Komponenta**               | Webová aplikace | 
+| **Fáze SDL**               | Sestavení |  
+| **Použitelné technologie** | Obecné |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| Podrobnosti | <p>Ověřování je proces, při kterém entita prokáže svou identitu, obvykle prostřednictvím pověření, jako je například uživatelské jméno a heslo. K dispozici je více ověřovacích protokolů, které mohou být považovány za. Některé z nich jsou uvedeny níže:</p><ul><li>Klientské certifikáty</li><li>Na základě systému Windows</li><li>Na základě formulářů</li><li>Federace - ADFS</li><li>Federace – azure ad</li><li>Federace – server identit</li></ul><p>Zvažte použití standardního ověřovacího mechanismu k identifikaci procesu zdroje</p>|
 
-## <a id="handle-failed-authn"></a>Aplikace musí bezpečně zpracovávat scénáře neúspěšného ověření.
+## <a name="applications-must-handle-failed-authentication-scenarios-securely"></a><a id="handle-failed-authn"></a>Aplikace musí bezpečně zpracovávat neúspěšné scénáře ověřování.
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | Webová aplikace | 
-| **Fáze SDL**               | Budování |  
-| **Použitelné technologie** | Obecná |
-| **Atribut**              | Neužívá se.  |
-| **Odkazy**              | Neužívá se.  |
-| Details | <p>Aplikace, které explicitně ověřují uživatele, musí správně zpracovat scénáře neúspěšného ověření. Mechanismus ověřování musí:</p><ul><li>Odepřít přístup k privilegovaným prostředkům v případě neúspěšného ověření</li><li>Po neúspěšném ověření zobrazit obecnou chybovou zprávu a dojde k odepření přístupu</li></ul><p>Test pro:</p><ul><li>Ochrana privilegovaných prostředků po neúspěšných přihlášeních</li><li>V případě neúspěšného ověření se zobrazí obecná chybová zpráva a přístup k odepřeným událostem:</li><li>Účty jsou po nadměrném počtu neúspěšných pokusů zakázané.</li><ul>|
+| **Komponenta**               | Webová aplikace | 
+| **Fáze SDL**               | Sestavení |  
+| **Použitelné technologie** | Obecné |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| Podrobnosti | <p>Aplikace, které explicitně ověřují uživatele, musí bezpečně zpracovávat neúspěšné scénáře ověřování. Mechanismus ověřování musí:</p><ul><li>Odepřít přístup privilegovaným prostředkům při selhání ověřování</li><li>Zobrazení obecné chybové zprávy po neúspěšném ověření a odepření přístupu</li></ul><p>Zkouška pro:</p><ul><li>Ochrana privilegovaných prostředků po neúspěšných přihlášeních</li><li>Při neúspěšných událostech ověřování a odepření přístupu se zobrazí obecná chybová zpráva.</li><li>Účty jsou zakázány po nadměrném počtu neúspěšných pokusů</li><ul>|
 
-## <a id="step-up-adaptive-authn"></a>Povolit krokování nebo adaptivní ověřování
+## <a name="enable-step-up-or-adaptive-authentication"></a><a id="step-up-adaptive-authn"></a>Povolení stupňovacího nebo adaptivního ověřování
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | Webová aplikace | 
-| **Fáze SDL**               | Budování |  
-| **Použitelné technologie** | Obecná |
-| **Atribut**              | Neužívá se.  |
-| **Odkazy**              | Neužívá se.  |
-| Details | <p>Ověřte, že aplikace má další autorizaci (například krok nahoru nebo adaptivní ověřování, prostřednictvím služby Multi-Factor Authentication, jako je zasílání jednorázového hesla, e-mailu atd. nebo dotazování na opětovné ověření), aby byl uživatel před udělením přístupu k citlivé informace. Toto pravidlo platí také pro provádění kritických změn účtu nebo akce.</p><p>To také znamená, že přizpůsobení ověřování musí být implementováno takovým způsobem, že aplikace správně vynutila ověřování s kontextem, aby nepovolovala neoprávněné manipulace prostřednictvím, například manipulace s parametry.</p>|
+| **Komponenta**               | Webová aplikace | 
+| **Fáze SDL**               | Sestavení |  
+| **Použitelné technologie** | Obecné |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| Podrobnosti | <p>Ověřte, zda má aplikace další autorizaci (například zvýšení nebo adaptivní ověřování, prostřednictvím vícefaktorového ověřování, jako je odesílání OTP v SMS, e-mailu atd. nebo výzva k opětovnému ověření), aby byl uživatel před udělením přístupu k aplikaci citlivých informací. Toto pravidlo platí také pro provádění kritických změn účtu nebo akce</p><p>To také znamená, že úprava autentizace musí být provedena takovým způsobem, aby aplikace správně vynucovala kontextově citlivé oprávnění tak, aby neumožňovala neautorizovanou manipulaci například pomocí manipulace s parametry</p>|
 
-## <a id="admin-interface-lockdown"></a>Zajistěte, aby byla rozhraní pro správu náležitě uzamčena.
+## <a name="ensure-that-administrative-interfaces-are-appropriately-locked-down"></a><a id="admin-interface-lockdown"></a>Ujistěte se, že jsou administrativní rozhraní vhodně uzamčena
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | Webová aplikace | 
-| **Fáze SDL**               | Budování |  
-| **Použitelné technologie** | Obecná |
-| **Atribut**              | Neužívá se.  |
-| **Odkazy**              | Neužívá se.  |
-| Details | Prvním řešením je udělit přístup jenom z určitého zdrojového rozsahu IP adres k rozhraní pro správu. Pokud by toto řešení nebylo možné, doporučujeme, abyste pro přihlášení k rozhraní pro správu vždy vynutili krokování nebo adaptivní ověřování. |
+| **Komponenta**               | Webová aplikace | 
+| **Fáze SDL**               | Sestavení |  
+| **Použitelné technologie** | Obecné |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| Podrobnosti | Prvním řešením je udělit přístup pouze z určitého rozsahu ip zdrojové adresy do rozhraní pro správu. Pokud by toto řešení nebylo možné, než se vždy doporučuje vynutit postupné nebo adaptivní ověřování pro přihlášení do rozhraní pro správu |
 
-## <a id="forgot-pword-fxn"></a>Zabezpečená implementace funkcí zapomenutého hesla
+## <a name="implement-forgot-password-functionalities-securely"></a><a id="forgot-pword-fxn"></a>Bezpečně implementovat funkce zapomenutých hesel
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | Webová aplikace | 
-| **Fáze SDL**               | Budování |  
-| **Použitelné technologie** | Obecná |
-| **Atribut**              | Neužívá se.  |
-| **Odkazy**              | Neužívá se.  |
-| Details | <p>První věc je ověřit, že zapomenuté heslo a další cesty pro obnovení odesílají odkaz, včetně aktivačního tokenu s časovým limitem, a ne samotného hesla. Další ověřování na základě provizorních tokenů (např. token SMS, nativní mobilní aplikace atd.) se může vyžadovat i před odesláním odkazu. Za druhé, neměli byste zamknout účet uživatele, zatímco probíhá proces získávání nového hesla.</p><p>To může vést k útokům na útok DOS pokaždé, když se útočník rozhodne úmyslně uzamknout uživatele pomocí automatizovaného útoku. Třetí, pokaždé, když byla nastavena nová žádost o heslo, by se měla zobecnit zpráva, kterou zobrazíte, aby se zabránilo vyčíslení uživatelského jména. Čtvrtý, vždycky zakažte použití starých hesel a Implementujte zásady silného hesla.</p> |
+| **Komponenta**               | Webová aplikace | 
+| **Fáze SDL**               | Sestavení |  
+| **Použitelné technologie** | Obecné |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| Podrobnosti | <p>První věc je ověřit, že zapomenuté heslo a další cesty pro obnovení odeslat odkaz včetně časově omezené aktivační token spíše než samotné heslo. Před odesláním odkazu lze také vyžadovat další autentizaci založenou na softwarových tokenech (např. SMS token, nativní mobilní aplikace atd.). Za druhé, neměli byste zamknout uživatelský účet, zatímco proces získávání nového hesla probíhá.</p><p>To by mohlo vést k útoku odmítnutí služby vždy, když se útočník rozhodne úmyslně uzamknout uživatele pomocí automatického útoku. Za třetí, vždy, když byl nastaven nový požadavek na heslo v průběhu, zpráva, kterou zobrazíte by měla být zobecněna, aby se zabránilo výčtu uživatelského jména. Za čtvrté, vždy zakázat používání starých hesel a implementovat silné zásady hesel.</p> |
 
-## <a id="pword-account-policy"></a>Ujistěte se, že jsou implementované zásady hesel a účtů.
+## <a name="ensure-that-password-and-account-policy-are-implemented"></a><a id="pword-account-policy"></a>Zajištění implementace zásad hesel a účtů
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | Webová aplikace | 
-| **Fáze SDL**               | Budování |  
-| **Použitelné technologie** | Obecná |
-| **Atribut**              | Neužívá se.  |
-| **Odkazy**              | Neužívá se.  |
-| Details | <p>Měli byste implementovat zásady hesel a účtů v souladu se zásadami organizace a osvědčenými postupy.</p><p>Pro obranu před odhadem na základě slovníku nenáročného na slovník: je nutné implementovat zásady silného hesla, aby uživatelé mohli vytvářet složitá hesla (například 12 znaků minimální délka, alfanumerické a speciální znaky).</p><p>Zásady uzamčení účtů mohou být implementovány následujícím způsobem:</p><ul><li>**Částečný zámek:** Tato možnost může být vhodná pro ochranu uživatelů před útoky hrubou silou. Například pokaždé, když uživatel zadá špatné heslo třikrát, může aplikace Uzamknout účet za minutu, aby bylo možné zpomalit proces hrubosti vynuceného používání hesla, což by mohlo útočník snížit, aby bylo méně ziskové. Pokud jste v tomto příkladu implementovali protiopatření pevně na zamykací úrovni, měli byste pomocí možnosti "DoS" trvale zamykat účty. Aplikace může také vygenerovat jednorázové heslo (jednorázové heslo) a odeslat ho mimo IP síť (prostřednictvím e-mailu, SMS atd.) uživateli. Dalším přístupem může být implementace CAPTCHA po dosažení prahového počtu neúspěšných pokusů.</li><li>**Pevné uzamčení:** Tento typ uzamčení by měl být použit vždy, když zjistíte, že uživatel nastavil útok na svou aplikaci, a vyhodnotit je pomocí trvalého uzamknutí účtu, dokud by tým odpovědí neměl čas na jejich forenzní. Po tomto procesu se můžete rozhodnout dát uživateli zpátky svůj účet nebo provést další zákonné akce proti nim. Tento typ přístupu brání útočníkovi v dalším průniku vaší aplikace a infrastruktury.</li></ul><p>Aby bylo možné chránit před útoky ve výchozích a předvídatelných účtech, ověřte, zda jsou všechny klíče a hesla nahraditelný a zda jsou vygenerovány nebo nahrazeny po čase instalace.</p><p>Pokud aplikace musí automaticky generovat hesla, ujistěte se, že vygenerovaná hesla jsou náhodná a mají vysokou entropii.</p>|
+| **Komponenta**               | Webová aplikace | 
+| **Fáze SDL**               | Sestavení |  
+| **Použitelné technologie** | Obecné |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| Podrobnosti | <p>Zásady hesel a účtů v souladu s organizačními zásadami a osvědčenými postupy by měly být implementovány.</p><p>Chcete-li se bránit proti hádání hrubou silou a slovníkem: Musí být implementovány zásady silného hesla, aby bylo zajištěno, že uživatelé vytvoří složité heslo (např. minimální délka 12 znaků, alfanumerické a speciální znaky).</p><p>Zásady uzamčení účtu mohou být implementovány následujícím způsobem:</p><ul><li>**Měkké uzamčení:** To může být dobrou volbou pro ochranu uživatelů před útoky hrubou silou. Například vždy, když uživatel zadá nesprávné heslo třikrát aplikace může uzamknout účet na minutu, aby se zpomalil proces hrubosti vynucení jejich heslo dělat to méně výhodné pro útočníka pokračovat. Pokud byste měli implementovat tvrdé uzamčení protiopatření pro tento příklad byste dosáhnout "DoS" trvale uzamčení účtů. Alternativně může aplikace vygenerovat OTP (One Time Password) a odeslat jej mimo pásmo (prostřednictvím e-mailu, SMS atd.) uživateli. Dalším přístupem může být implementace CAPTCHA po dosažení prahového počtu neúspěšných pokusů.</li><li>**Tvrdé uzamčení:** Tento typ uzamčení by měla být použita vždy, když zjistíte, že uživatel útočí na vaši aplikaci a čelit jim pomocí trvale uzamčení jejich účet, dokud tým odpovědi měl čas udělat jejich forenzní. Po tomto procesu se můžete rozhodnout vrátit uživateli jeho účet nebo podniknout další právní kroky proti němu. Tento typ přístupu zabraňuje útočníkovi v dalším proniknutí do aplikace a infrastruktury.</li></ul><p>Chcete-li se bránit proti útokům na výchozí a předvídatelné účty, ověřte, zda jsou všechny klíče a hesla nahraditelné a zda jsou generovány nebo nahrazeny po instalaci.</p><p>Pokud aplikace má automaticky generovat hesla, ujistěte se, že vygenerovaná hesla jsou náhodné a mají vysokou entropie.</p>|
 
-## <a id="controls-username-enum"></a>Implementace ovládacích prvků, aby se zabránilo výčtu uživatelského jména
+## <a name="implement-controls-to-prevent-username-enumeration"></a><a id="controls-username-enum"></a>Implementovat ovládací prvky, které zabrání výčtu uživatelského jména
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | Webová aplikace | 
-| **Fáze SDL**               | Budování |  
-| **Použitelné technologie** | Obecná |
-| **Atribut**              | Neužívá se.  |
-| **Odkazy**              | Neužívá se.  |
-| **Uvedené** | Všechny chybové zprávy by se měly zobecnit, aby se zabránilo vyčíslení uživatelského jména. V některých případech se někdy nemůžete vyhnout úniku informací, jako je třeba registrační stránka. Tady je potřeba použít metody omezování četnosti, jako je CAPTCHA, aby se zabránilo automatickému útoku útočníka. |
+| **Komponenta**               | Webová aplikace | 
+| **Fáze SDL**               | Sestavení |  
+| **Použitelné technologie** | Obecné |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky** | Všechny chybové zprávy by měly být zobecněny, aby se zabránilo výčtu uživatelského jména. Někdy se také nemůžete vyhnout úniku informací ve funkcích, jako je registrační stránka. Zde musíte použít metody omezení rychlosti, jako je CAPTCHA, abyste zabránili automatizovanému útoku útočníka. |
 
-## <a id="win-authn-sql"></a>Pokud je to možné, použijte ověřování systému Windows pro připojení k SQL Server
+## <a name="when-possible-use-windows-authentication-for-connecting-to-sql-server"></a><a id="win-authn-sql"></a>Pokud je to možné, použijte pro připojení k serveru SQL Server ověřování systému Windows.
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | Databáze | 
-| **Fáze SDL**               | Budování |  
+| **Komponenta**               | Databáze | 
+| **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | OnPrem |
-| **Atribut**              | SQL verze – vše |
-| **Odkazy**              | [SQL Server – výběr režimu ověřování](https://msdn.microsoft.com/library/ms144284.aspx) |
-| **Uvedené** | Ověřování systému Windows používá protokol zabezpečení Kerberos, zajišťuje vynucování zásad hesel s ohledem na ověřování složitosti pro silná hesla, poskytuje podporu pro uzamknutí účtu a podporuje vypršení platnosti hesla.|
+| **Atributy**              | VERZE SQL - vše |
+| **Odkazy**              | [SQL Server – volba režimu ověřování](https://msdn.microsoft.com/library/ms144284.aspx) |
+| **Kroky** | Ověřování systému Windows používá protokol zabezpečení Kerberos, poskytuje vynucení zásad hesel s ohledem na ověření složitosti silných hesel, poskytuje podporu pro uzamčení účtu a podporuje vypršení platnosti hesla.|
 
-## <a id="aad-authn-sql"></a>Pokud je to možné, použijte Azure Active Directory ověřování pro připojení k SQL Database
+## <a name="when-possible-use-azure-active-directory-authentication-for-connecting-to-sql-database"></a><a id="aad-authn-sql"></a>Pokud je to možné, použijte azure advitace pro připojení k databázi SQL
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | Databáze | 
-| **Fáze SDL**               | Budování |  
+| **Komponenta**               | Databáze | 
+| **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | SQL Azure |
-| **Atribut**              | SQL verze – V12 |
-| **Odkazy**              | [Připojení k SQL Database pomocí ověřování Azure Active Directory](https://azure.microsoft.com/documentation/articles/sql-database-aad-authentication/) |
-| **Uvedené** | **Minimální verze:** Azure SQL Database V12 je nutné, aby Azure SQL Database mohl používat ověřování AAD proti adresáři Microsoftu. |
+| **Atributy**              | Verze SQL - V12 |
+| **Odkazy**              | [Připojení k databázi SQL pomocí ověřování služby Azure Active Directory](https://azure.microsoft.com/documentation/articles/sql-database-aad-authentication/) |
+| **Kroky** | **Minimální verze:** Azure SQL Database V12 vyžaduje povolit Azure SQL Database používat ověřování AAD proti Adresáři Microsoft |
 
-## <a id="authn-account-pword"></a>Při použití režimu ověřování SQL se ujistěte, že je na SQL serveru vynutila zásada účtu a hesla.
+## <a name="when-sql-authentication-mode-is-used-ensure-that-account-and-password-policy-are-enforced-on-sql-server"></a><a id="authn-account-pword"></a>Při použití režimu ověřování SQL se ujistěte, že jsou na serveru SQL vynuceny zásady účtu a hesla.
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | Databáze | 
-| **Fáze SDL**               | Budování |  
-| **Použitelné technologie** | Obecná |
-| **Atribut**              | Neužívá se.  |
-| **Odkazy**              | [Zásady hesla SQL Server](https://technet.microsoft.com/library/ms161959(v=sql.110).aspx) |
-| **Uvedené** | Při použití ověřování SQL Server se přihlašovací jména vytvářejí v SQL Server, která nejsou založená na uživatelských účtech Windows. Uživatelské jméno i heslo se vytvoří pomocí SQL Server a ukládají se v SQL Server. SQL Server můžou používat mechanismy zásad hesel Windows. Může použít stejné zásady složitosti a vypršení platnosti používané v systému Windows k heslům použitým v SQL Server. |
+| **Komponenta**               | Databáze | 
+| **Fáze SDL**               | Sestavení |  
+| **Použitelné technologie** | Obecné |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | [Zásady hesel serveru SQL Server](https://technet.microsoft.com/library/ms161959(v=sql.110).aspx) |
+| **Kroky** | Při použití ověřování serveru SQL Server jsou přihlášení vytvořena na serveru SQL Server, která nejsou založena na uživatelských účtech systému Windows. Uživatelské jméno i heslo jsou vytvořeny pomocí serveru SQL Server a uloženy v serveru SQL Server. SQL Server může používat mechanismy zásad hesel systému Windows. Může použít stejné zásady složitosti a vypršení platnosti používané v systému Windows pro hesla používaná uvnitř serveru SQL Server. |
 
-## <a id="autn-contained-db"></a>Nepoužívat ověřování SQL v obsažených databázích
+## <a name="do-not-use-sql-authentication-in-contained-databases"></a><a id="autn-contained-db"></a>Nepoužívejte ověřování SQL v obsažených databázích
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | Databáze | 
-| **Fáze SDL**               | Budování |  
+| **Komponenta**               | Databáze | 
+| **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | OnPrem, SQL Azure |
-| **Atribut**              | SQL verze – MSSQL2012, verze SQL – V12 |
-| **Odkazy**              | [Osvědčené postupy zabezpečení s databázemi s omezením](https://msdn.microsoft.com/library/ff929055.aspx) |
-| **Uvedené** | Nepřítomnost zásad vynutilosti hesla může zvýšit pravděpodobnost, že se v databázi s omezením naváže slabé přihlašovací údaje. Využijte ověřování systému Windows. |
+| **Atributy**              | VERZE SQL - MSSQL2012, VERZE SQL - V12 |
+| **Odkazy**              | [Doporučené postupy zabezpečení s obsaženými databázemi](https://msdn.microsoft.com/library/ff929055.aspx) |
+| **Kroky** | Absence vynucených zásad hesel může zvýšit pravděpodobnost vytvoření slabého pověření v uzavřené databázi. Využijte ověřování systému Windows. |
 
-## <a id="authn-sas-tokens"></a>Použití přihlašovacích údajů pro ověřování zařízení pomocí tokenů SaS
+## <a name="use-per-device-authentication-credentials-using-sas-tokens"></a><a id="authn-sas-tokens"></a>Použití ověřovacích pověření pro zařízení pomocí tokenů SaS
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | Centrum událostí Azure | 
-| **Fáze SDL**               | Budování |  
-| **Použitelné technologie** | Obecná |
-| **Atribut**              | Neužívá se.  |
-| **Odkazy**              | [Přehled ověřování a modelu zabezpečení Event Hubs](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
-| **Uvedené** | <p>Model zabezpečení Event Hubs je založen na kombinaci tokenů sdíleného přístupového podpisu (SAS) a vydavatelů událostí. Název vydavatele představuje DeviceID, který obdrží token. To by pomohlo přidružit tokeny vygenerované příslušnému zařízení.</p><p>Všechny zprávy jsou označeny pomocí původce na straně služby, což umožňuje detekci pokusů o falšování zdroje v datové části. Při ověřování zařízení vygenerujte token SaS vázaný na zařízení, které je v oboru jedinečného vydavatele.</p>|
+| **Komponenta**               | Azure Event Hub | 
+| **Fáze SDL**               | Sestavení |  
+| **Použitelné technologie** | Obecné |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | [Přehled modelu ověřování a zabezpečení centra událostí](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
+| **Kroky** | <p>Model zabezpečení Centra událostí je založen na kombinaci tokenů sdílených přístupových podpisů (SAS) a vydavatelů událostí. Název vydavatele představuje DeviceID, který přijímá token. To by pomohlo přidružit tokeny generované s příslušnými zařízeními.</p><p>Všechny zprávy jsou označeny původcem na straně služby, což umožňuje detekci pokusů o falšování falšování stavu v datové části. Při ověřování zařízení vygenerujte token SaS pro zařízení s rozsahem pro jedinečného vydavatele.</p>|
 
-## <a id="multi-factor-azure-admin"></a>Povolení služby Azure Multi-Factor Authentication pro správce Azure
+## <a name="enable-azure-multi-factor-authentication-for-azure-administrators"></a><a id="multi-factor-azure-admin"></a>Povolení vícefaktorového ověřování Azure pro správce Azure
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | Hranice důvěry Azure | 
-| **Fáze SDL**               | nasazení |  
-| **Použitelné technologie** | Obecná |
-| **Atribut**              | Neužívá se.  |
+| **Komponenta**               | Hranice důvěryhodnosti Azure | 
+| **Fáze SDL**               | Nasazení |  
+| **Použitelné technologie** | Obecné |
+| **Atributy**              | Není dostupné.  |
 | **Odkazy**              | [Co je Azure Multi-Factor Authentication?](https://azure.microsoft.com/documentation/articles/multi-factor-authentication/) |
-| **Uvedené** | <p>Multi-Factor Authentication (MFA) je metoda ověřování, která vyžaduje více než jednu metodu ověřování a přidává kritickou druhou vrstvu zabezpečení pro přihlášení a transakce uživatele. Funguje tak, že vyžaduje některou ze dvou nebo více následujících metod ověřování:</p><ul><li>Něco, co znáte (obvykle heslo)</li><li>Něco, co máte (důvěryhodné zařízení, které není jednoduše duplikováno, jako je telefon)</li><li>Něco, co používáte (biometrika)</li><ul>|
+| **Kroky** | <p>Vícefaktorové ověřování (MFA) je metoda ověřování, která vyžaduje více než jednu metodu ověření a přidává kritickou druhou vrstvu zabezpečení pro přihlášení uživatelů a transakce. Funguje tak, že vyžaduje jakékoli dvě nebo více z následujících metod ověřování:</p><ul><li>Něco, co znáte (obvykle heslo)</li><li>Něco, co máte (důvěryhodné zařízení, které není snadno duplikovat, jako je telefon)</li><li>Něco, co jste (biometrie)</li><ul>|
 
-## <a id="anon-access-cluster"></a>Omezení anonymního přístupu na cluster Service Fabric
+## <a name="restrict-anonymous-access-to-service-fabric-cluster"></a><a id="anon-access-cluster"></a>Omezení anonymního přístupu ke clusteru Service Fabric
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | Service Fabric hranice důvěryhodnosti | 
-| **Fáze SDL**               | nasazení |  
-| **Použitelné technologie** | Obecná |
-| **Atribut**              | Prostředí – Azure  |
-| **Odkazy**              | [Service Fabric scénáře zabezpečení clusteru](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security) |
-| **Uvedené** | <p>Clustery by měly být vždy zabezpečené, aby se zabránilo neautorizovaným uživatelům v připojení ke clusteru, zejména pokud má spuštěné provozní úlohy.</p><p>Při vytváření clusteru Service Fabric se ujistěte, že je režim zabezpečení nastavený na zabezpečení a že je nakonfigurovaný požadovaný certifikát serveru X. 509. Když se vytvoří "nezabezpečený" cluster, umožní se k němu připojit anonymní uživatel, pokud zveřejňuje koncové body správy pro veřejný Internet.</p>|
+| **Komponenta**               | Hranice vztahu důvěryhodnosti služby Fabric | 
+| **Fáze SDL**               | Nasazení |  
+| **Použitelné technologie** | Obecné |
+| **Atributy**              | Prostředí – Azure  |
+| **Odkazy**              | [Scénáře zabezpečení clusteru Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security) |
+| **Kroky** | <p>Clustery by měly být vždy zabezpečené, aby se zabránilo neoprávněným uživatelům v připojení ke clusteru, zejména v případě, že má produkční úlohy spuštěné na něm.</p><p>Při vytváření clusteru prostředků infrastruktury služeb se ujistěte, že je režim zabezpečení nastaven na "zabezpečený", a nakonfigurujte požadovaný certifikát serveru X.509. Vytvoření "nezabezpečeného" clusteru umožní anonymnímu uživateli připojit se k němu, pokud zpřístupní koncové body správy veřejnému Internetu.</p>|
 
-## <a id="fabric-cn-nn"></a>Ujistěte se, že Service Fabric certifikát klienta na uzel se liší od certifikátu Node-to-Node.
+## <a name="ensure-that-service-fabric-client-to-node-certificate-is-different-from-node-to-node-certificate"></a><a id="fabric-cn-nn"></a>Ujistěte se, že certifikát Service Fabric mezi klientem a uzly se liší od certifikátu mezi mezi mezi zem.
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | Service Fabric hranice důvěryhodnosti | 
-| **Fáze SDL**               | nasazení |  
-| **Použitelné technologie** | Obecná |
-| **Atribut**              | Prostředí – Azure, prostředí – samostatné |
-| **Odkazy**              | [Service Fabric zabezpečení certifikátu klienta na uzel](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#_client-to-node-certificate-security), [Připojte se k zabezpečenému clusteru pomocí klientského certifikátu](https://azure.microsoft.com/documentation/articles/service-fabric-connect-to-secure-cluster/) . |
-| **Uvedené** | <p>Zabezpečení certifikátů klienta na uzlu se konfiguruje při vytváření clusteru buď prostřednictvím Azure Portal, Správce prostředků šablon nebo samostatné šablony JSON zadáním certifikátu klienta správce nebo klientského certifikátu uživatele.</p><p>Zadané certifikáty klienta a klienta pro správu by se měly lišit od primárních a sekundárních certifikátů, které zadáte pro zabezpečení mezi uzly.</p>|
+| **Komponenta**               | Hranice vztahu důvěryhodnosti služby Fabric | 
+| **Fáze SDL**               | Nasazení |  
+| **Použitelné technologie** | Obecné |
+| **Atributy**              | Prostředí – Azure, prostředí – samostatné |
+| **Odkazy**              | [Service Fabric Zabezpečení certifikátu klient-uzel](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#_client-to-node-certificate-security), [Připojení k zabezpečenému clusteru pomocí klientského certifikátu](https://azure.microsoft.com/documentation/articles/service-fabric-connect-to-secure-cluster/) |
+| **Kroky** | <p>Zabezpečení certifikátu klient-node je nakonfigurované při vytváření clusteru buď prostřednictvím portálu Azure, šablon Správce prostředků nebo samostatné šablony JSON zadáním klientského certifikátu správce nebo klientského certifikátu uživatele.</p><p>Zadané certifikáty klienta správce a uživatele, které zadáte, by se měly lišit od primárních a sekundárních certifikátů, které zadáte pro zabezpečení uzlu k uzlu.</p>|
 
-## <a id="aad-client-fabric"></a>Použití AAD k ověřování klientů v clusterech Service Fabric
+## <a name="use-aad-to-authenticate-clients-to-service-fabric-clusters"></a><a id="aad-client-fabric"></a>Použití aad k ověření klientů pro služby clusterů prostředků infrastruktury
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | Service Fabric hranice důvěryhodnosti | 
-| **Fáze SDL**               | nasazení |  
-| **Použitelné technologie** | Obecná |
-| **Atribut**              | Prostředí – Azure |
-| **Odkazy**              | [Scénáře zabezpečení clusteru – doporučení pro zabezpečení](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#security-recommendations) |
-| **Uvedené** | Clustery běžící v Azure můžou také zabezpečit přístup k koncovým bodům správy pomocí Azure Active Directory (AAD) Kromě klientských certifikátů. U clusterů Azure se doporučuje použít zabezpečení AAD k ověřování klientů a certifikátů pro zabezpečení mezi uzly.|
+| **Komponenta**               | Hranice vztahu důvěryhodnosti služby Fabric | 
+| **Fáze SDL**               | Nasazení |  
+| **Použitelné technologie** | Obecné |
+| **Atributy**              | Prostředí – Azure |
+| **Odkazy**              | [Scénáře zabezpečení clusteru – doporučení zabezpečení](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#security-recommendations) |
+| **Kroky** | Clustery spuštěné v Azure můžou taky zabezpečit přístup ke koncovým bodům správy pomocí Azure Active Directory (AAD), kromě klientských certifikátů. Pro clustery Azure se doporučuje použít zabezpečení AAD k ověřování klientů a certifikátů pro zabezpečení mezi uzlinami.|
 
-## <a id="fabric-cert-ca"></a>Zajistěte, aby se certifikáty Service Fabric získaly od schválené certifikační autority (CA).
+## <a name="ensure-that-service-fabric-certificates-are-obtained-from-an-approved-certificate-authority-ca"></a><a id="fabric-cert-ca"></a>Ujistěte se, že certifikáty service fabric jsou získávány od schválené certifikační autority (CA)
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | Service Fabric hranice důvěryhodnosti | 
-| **Fáze SDL**               | nasazení |  
-| **Použitelné technologie** | Obecná |
-| **Atribut**              | Prostředí – Azure |
-| **Odkazy**              | [Certifikáty X. 509 a Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#x509-certificates-and-service-fabric) |
-| **Uvedené** | <p>Service Fabric k ověřování uzlů a klientů používá certifikáty serveru X. 509.</p><p>Mezi důležité věci, které je potřeba vzít v úvahu při používání certifikátů v Service fabricu:</p><ul><li>Certifikáty používané v clusterech s provozními úlohami by se měly vytvořit pomocí správně nakonfigurované služby Certificate Service systému Windows Server nebo získat od schválené certifikační autority (CA). Certifikační autorita může být schválená externí certifikační autoritou nebo správně spravovaná interní infrastruktura veřejných klíčů (PKI).</li><li>Nikdy nepoužívejte v produkčním prostředí žádné dočasné ani testovací certifikáty, které se vytvářejí pomocí nástrojů jako MakeCert. exe.</li><li>Můžete použít certifikát podepsaný svým držitelem, ale proveďte ho pouze pro testovací clustery, nikoli pro produkční prostředí.</li></ul>|
+| **Komponenta**               | Hranice vztahu důvěryhodnosti služby Fabric | 
+| **Fáze SDL**               | Nasazení |  
+| **Použitelné technologie** | Obecné |
+| **Atributy**              | Prostředí – Azure |
+| **Odkazy**              | [Certifikáty X.509 a servisní tkanina](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#x509-certificates-and-service-fabric) |
+| **Kroky** | <p>Service Fabric používá serverové certifikáty X.509 pro ověřování uzlů a klientů.</p><p>Některé důležité věci, které je třeba zvážit při používání certifikátů v servisních tkaninách:</p><ul><li>Certifikáty používané v clusterech s produkčními úlohami by měly být vytvořeny pomocí správně nakonfigurované certifikační služby systému Windows Server nebo získané od schválené certifikační autority (CA). Certifikační autorita může být schválená externí certifikační autorita nebo správně spravovaná interní infrastruktura veřejných klíčů (PKI)</li><li>Nikdy nepoužívejte žádné dočasné nebo zkušební certifikáty v produkčním prostředí, které jsou vytvořeny pomocí nástrojů, jako je MakeCert.exe</li><li>Můžete použít certifikát podepsaný svým držitelem, ale měli byste tak učinit pouze pro testovací clustery a nikoli v produkčním prostředí.</li></ul>|
 
-## <a id="standard-authn-id"></a>Použití standardních scénářů ověřování podporovaných serverem identity
+## <a name="use-standard-authentication-scenarios-supported-by-identity-server"></a><a id="standard-authn-id"></a>Použití standardních scénářů ověřování podporovaných serverem identity
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | Server identit | 
-| **Fáze SDL**               | Budování |  
-| **Použitelné technologie** | Obecná |
-| **Atribut**              | Neužívá se.  |
-| **Odkazy**              | [IdentityServer3 – velký obrázek](https://identityserver.github.io/Documentation/docsv2/overview/bigPicture.html) |
-| **Uvedené** | <p>Níže jsou uvedené typické interakce podporované serverem identity:</p><ul><li>Prohlížeče komunikují s webovými aplikacemi</li><li>Webové aplikace komunikují s webovými rozhraními API (někdy v zastoupení uživatele).</li><li>Aplikace založené na prohlížeči, které komunikují s webovými rozhraními API</li><li>Nativní aplikace komunikující s webovými rozhraními API</li><li>Serverové aplikace komunikující s webovými rozhraními API</li><li>Webová rozhraní API komunikují s webovými rozhraními API (někdy v zastoupení uživatele).</li></ul>|
+| **Komponenta**               | Server identit | 
+| **Fáze SDL**               | Sestavení |  
+| **Použitelné technologie** | Obecné |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | [IdentityServer3 - Velký obraz](https://identityserver.github.io/Documentation/docsv2/overview/bigPicture.html) |
+| **Kroky** | <p>Níže jsou uvedeny typické interakce podporované identitním serverem:</p><ul><li>Prohlížeče komunikují s webovými aplikacemi</li><li>Webové aplikace komunikují s webovými rozhraními API (někdy samostatně, někdy jménem uživatele)</li><li>Aplikace založené na prohlížeči komunikují s webovými api</li><li>Nativní aplikace komunikují s webovými api</li><li>Serverové aplikace komunikují s webovými api</li><li>Webová rozhraní API komunikují s webovými rozhraními API (někdy samostatně, někdy jménem uživatele)</li></ul>|
 
-## <a id="override-token"></a>Přepsat výchozí mezipaměť tokenů serveru identity pomocí škálovatelné alternativy
+## <a name="override-the-default-identity-server-token-cache-with-a-scalable-alternative"></a><a id="override-token"></a>Přepsat výchozí mezipaměť tokenů serveru identity pomocí škálovatelné alternativy
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | Server identit | 
-| **Fáze SDL**               | nasazení |  
-| **Použitelné technologie** | Obecná |
-| **Atribut**              | Neužívá se.  |
+| **Komponenta**               | Server identit | 
+| **Fáze SDL**               | Nasazení |  
+| **Použitelné technologie** | Obecné |
+| **Atributy**              | Není dostupné.  |
 | **Odkazy**              | [Nasazení serveru identity – ukládání do mezipaměti](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) |
-| **Uvedené** | <p>IdentityServer má jednoduchou vestavěnou mezipaměť v paměti. I když je to pro nativní aplikace v malém měřítku dobré, není škálované pro aplikace střední vrstvy a back-endu z následujících důvodů:</p><ul><li>K těmto aplikacím má přistup mnoho uživatelů najednou. Uložení všech přístupových tokenů ve stejném úložišti vytvoří problémy s izolací a prezentuje problémy při současném škálování: mnoho uživatelů, každý s tolika tokeny jako prostředky, ke kterým má aplikace přístup, může znamenat obrovský počet a velmi nákladné operace vyhledávání.</li><li>Tyto aplikace jsou obvykle nasazeny v distribuovaných topologiích, kde více uzlů musí mít přístup ke stejné mezipaměti.</li><li>Tokeny uložené v mezipaměti musí zacházet s recyklací procesu a deaktivace.</li><li>U všech výše uvedených důvodů doporučujeme při implementaci webových aplikací přepsat výchozí mezipaměť tokenů serveru identit pomocí škálovatelné alternativy, jako je například Azure cache pro Redis.</li></ul>|
+| **Kroky** | <p>IdentityServer má jednoduchou vestavěnou mezipaměť v paměti. I když je to dobré pro malé nativní aplikace, neškáluje pro aplikace střední vrstvy a back-endz následujících důvodů:</p><ul><li>K těmto aplikacím přistupuje mnoho uživatelů najednou. Uložení všech přístupových tokenů ve stejném úložišti vytváří problémy s izolací a představuje problémy při provozu ve velkém měřítku: mnoho uživatelů, z nichž každý má tolik tokenů jako prostředky, které aplikace přistupuje jejich jménem, může znamenat obrovské množství a velmi nákladné operace vyhledávání</li><li>Tyto aplikace se obvykle nasazují na distribuované topologie, kde více uzlů musí mít přístup ke stejné mezipaměti</li><li>Tokeny uložené v mezipaměti musí přežít recyklace a deaktivace procesu.</li><li>Ze všech výše uvedených důvodů se při implementaci webových aplikací doporučuje přepsat výchozí mezipaměť tokenů serveru Identity Server škálovatelnou alternativou, jako je například Azure Cache for Redis.</li></ul>|
 
-## <a id="binaries-signed"></a>Zajistěte, aby byly binární soubory nasazené aplikace digitálně podepsané.
+## <a name="ensure-that-deployed-applications-binaries-are-digitally-signed"></a><a id="binaries-signed"></a>Ujistěte se, že jsou binární soubory nasazených aplikací digitálně podepsané
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | Hranice důvěryhodnosti počítače | 
-| **Fáze SDL**               | nasazení |  
-| **Použitelné technologie** | Obecná |
-| **Atribut**              | Neužívá se.  |
-| **Odkazy**              | Neužívá se.  |
-| **Uvedené** | Zajistěte, aby byly binární soubory nasazené aplikace digitálně podepsané, aby bylo možné ověřit integritu binárních souborů.|
+| **Komponenta**               | Hranice důvěryhodnosti počítače | 
+| **Fáze SDL**               | Nasazení |  
+| **Použitelné technologie** | Obecné |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky** | Ujistěte se, že binární soubory nasazených aplikací jsou digitálně podepsány, aby bylo možné ověřit integritu binárních souborů.|
 
-## <a id="msmq-queues"></a>Povolit ověřování při připojování k frontám MSMQ ve službě WCF
+## <a name="enable-authentication-when-connecting-to-msmq-queues-in-wcf"></a><a id="msmq-queues"></a>Povolení ověřování při připojování k frontám služby MSMQ v wcf
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | SLUŽBÁM | 
-| **Fáze SDL**               | Budování |  
-| **Použitelné technologie** | Obecné, NET Framework 3 |
-| **Atribut**              | Neužívá se. |
+| **Komponenta**               | WCF | 
+| **Fáze SDL**               | Sestavení |  
+| **Použitelné technologie** | Obecný, NET Framework 3 |
+| **Atributy**              | Není dostupné. |
 | **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx) |
-| **Uvedené** | Programu se nepodařilo povolit ověřování při připojování k frontám MSMQ, útočník může anonymně odeslat zprávy do fronty ke zpracování. Pokud se ověřování nepoužívá pro připojení k frontě MSMQ použité k doručení zprávy jinému programu, útočník by mohl odeslat anonymní zprávu, která je škodlivá.|
+| **Kroky** | Program nepovolí ověřování při připojování k frontám služby MSMQ, útočník může anonymně odesílat zprávy do fronty ke zpracování. Pokud se ověřování nepoužívá k připojení k frontě služby MSMQ používané k doručení zprávy jinému programu, mohl by útočník odeslat anonymní zprávu, která je škodlivá.|
 
 ### <a name="example"></a>Příklad
-Element `<netMsmqBinding/>` konfiguračního souboru služby WCF níže instruuje službu WCF, aby při připojení k frontě MSMQ pro doručování zpráv nezakázala ověřování.
+Prvek `<netMsmqBinding/>` konfiguračního souboru WCF níže pokyn WCF zakázat ověřování při připojování k frontě služby MSMQ pro doručování zpráv.
 ```
 <bindings>
     <netMsmqBinding>
@@ -284,10 +284,10 @@ Element `<netMsmqBinding/>` konfiguračního souboru služby WCF níže instruuj
     </netMsmqBinding>
 </bindings>
 ```
-Nakonfigurujte službu MSMQ tak, aby pro každou příchozí nebo odchozí zprávu vyžadovala všechny ověřování domény a certifikátů systému Windows.
+Nakonfigurujte službu MSMQ tak, aby pro příchozí nebo odchozí zprávy vždy vyžadovala ověření domény nebo certifikátu systému Windows.
 
 ### <a name="example"></a>Příklad
-Element `<netMsmqBinding/>` konfiguračního souboru WCF vydává pokyn, aby služba WCF povolila ověřování certifikátů při připojování ke frontě MSMQ. Klient se ověřuje pomocí certifikátů X. 509. Certifikát klienta se musí nacházet v úložišti certifikátů serveru.
+Prvek `<netMsmqBinding/>` konfiguračního souboru WCF níže dává wcf pokyn povolit ověřování certifikátů při připojování k frontě služby MSMQ. Klient je ověřen pomocí certifikátů X.509. Klientský certifikát musí být k dispozici v úložišti certifikátů serveru.
 ```
 <bindings>
     <netMsmqBinding>
@@ -300,81 +300,81 @@ Element `<netMsmqBinding/>` konfiguračního souboru WCF vydává pokyn, aby slu
 </bindings>
 ```
 
-## <a id="message-none"></a>WCF – nenastavit zprávu clientCredentialType na None
+## <a name="wcf-do-not-set-message-clientcredentialtype-to-none"></a><a id="message-none"></a>WCF-Nenastavovat typ klienta messageCredentialType na žádný
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | SLUŽBÁM | 
-| **Fáze SDL**               | Budování |  
-| **Použitelné technologie** | .NET Framework 3 |
-| **Atribut**              | Typ přihlašovacích údajů klienta – žádné |
-| **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení](https://community.microfocus.com/t5/UFT-Discussions/UFT-API-Test-with-WCF-wsHttpBinding/m-p/600927) |
-| **Uvedené** | Absence ověřování znamená, že všichni uživatelé budou mít přístup k této službě. Služba, která neověřuje své klienty, umožňuje přístup všem uživatelům. Nakonfigurujte aplikaci pro ověřování pomocí přihlašovacích údajů klienta. Můžete to udělat nastavením clientCredentialType zprávy na Windows nebo certifikát. |
+| **Komponenta**               | WCF | 
+| **Fáze SDL**               | Sestavení |  
+| **Použitelné technologie** | Rozhraní .NET Framework 3 |
+| **Atributy**              | Typ pověření klienta – žádný |
+| **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Opevnit](https://community.microfocus.com/t5/UFT-Discussions/UFT-API-Test-with-WCF-wsHttpBinding/m-p/600927) |
+| **Kroky** | Absence ověřování znamená, že k této službě má přístup každý. Služba, která neověřuje své klienty, umožňuje přístup všem uživatelům. Nakonfigurujte aplikaci tak, aby se ověřovala podle pověření klienta. To lze provést nastavením clientCredentialType zprávy na systém Windows nebo certifikát. |
 
 ### <a name="example"></a>Příklad
 ```
 <message clientCredentialType=""Certificate""/>
 ```
 
-## <a id="transport-none"></a>WCF – nenastavit Transport clientCredentialType na None
+## <a name="wcf-do-not-set-transport-clientcredentialtype-to-none"></a><a id="transport-none"></a>WCF-Nenastavovat typ klienta přenosu typu credentialtype na žádný
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | SLUŽBÁM | 
-| **Fáze SDL**               | Budování |  
-| **Použitelné technologie** | Obecné, .NET Framework 3 |
-| **Atribut**              | Typ přihlašovacích údajů klienta – žádné |
-| **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení](https://community.microfocus.com/t5/UFT-Discussions/UFT-API-Test-with-WCF-wsHttpBinding/m-p/600927) |
-| **Uvedené** | Absence ověřování znamená, že všichni uživatelé budou mít přístup k této službě. Služba, která neověřuje klienty, umožňuje všem uživatelům přístup k jejím funkcím. Nakonfigurujte aplikaci pro ověřování pomocí přihlašovacích údajů klienta. To se dá udělat nastavením přenosového clientCredentialTypeu na Windows nebo certifikát. |
+| **Komponenta**               | WCF | 
+| **Fáze SDL**               | Sestavení |  
+| **Použitelné technologie** | Obecný, rozhraní .NET Framework 3 |
+| **Atributy**              | Typ pověření klienta – žádný |
+| **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Opevnit](https://community.microfocus.com/t5/UFT-Discussions/UFT-API-Test-with-WCF-wsHttpBinding/m-p/600927) |
+| **Kroky** | Absence ověřování znamená, že k této službě má přístup každý. Služba, která neověřuje své klienty, umožňuje všem uživatelům přístup k jejím funkcím. Nakonfigurujte aplikaci tak, aby se ověřovala podle pověření klienta. To lze provést nastavením přenosu clientCredentialType na systém Windows nebo certifikát. |
 
 ### <a name="example"></a>Příklad
 ```
 <transport clientCredentialType=""Certificate""/>
 ```
 
-## <a id="authn-secure-api"></a>Zajistěte, aby se pro zabezpečení webových rozhraní API používaly standardní techniky ověřování.
+## <a name="ensure-that-standard-authentication-techniques-are-used-to-secure-web-apis"></a><a id="authn-secure-api"></a>Ujistěte se, že se k zabezpečení webových api používají standardní techniky ověřování.
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | Webové rozhraní API | 
-| **Fáze SDL**               | Budování |  
-| **Použitelné technologie** | Obecná |
-| **Atribut**              | Neužívá se.  |
-| **Odkazy**              | [Ověřování a autorizace ve webovém rozhraní api ASP.NET](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api), [služby externích ověřování s webovým rozhraním API ASP.NET (C#)](https://www.asp.net/web-api/overview/security/external-authentication-services) |
-| **Uvedené** | <p>Ověřování je proces, při kterém entita prokáže svou identitu, obvykle prostřednictvím přihlašovacích údajů, jako je uživatelské jméno a heslo. K dispozici je několik ověřovacích protokolů, které je možné zvážit. Některé z nich jsou uvedeny níže:</p><ul><li>Klientské certifikáty</li><li>Založené na systému Windows</li><li>Založené na formulářích</li><li>Federace – ADFS</li><li>Federace – Azure AD</li><li>Federační server identity</li></ul><p>Odkazy v části odkazy poskytují podrobné informace o tom, jak je možné implementovat každé z schémat ověřování k zabezpečení webového rozhraní API.</p>|
+| **Komponenta**               | Web API | 
+| **Fáze SDL**               | Sestavení |  
+| **Použitelné technologie** | Obecné |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | [Ověřování a autorizace v rozhraní ASP.NET web API](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api), externí ověřovací [služby s ASP.NET webovým rozhraním API (C#)](https://www.asp.net/web-api/overview/security/external-authentication-services) |
+| **Kroky** | <p>Ověřování je proces, při kterém entita prokáže svou identitu, obvykle prostřednictvím pověření, jako je například uživatelské jméno a heslo. K dispozici je více ověřovacích protokolů, které mohou být považovány za. Některé z nich jsou uvedeny níže:</p><ul><li>Klientské certifikáty</li><li>Na základě systému Windows</li><li>Na základě formulářů</li><li>Federace - ADFS</li><li>Federace – azure ad</li><li>Federace – server identit</li></ul><p>Odkazy v části odkazy poskytují podrobnosti nižší úrovně o tom, jak lze implementovat každé schéma ověřování k zabezpečení webového rozhraní API.</p>|
 
-## <a id="authn-aad"></a>Použití standardních scénářů ověřování podporovaných nástrojem Azure Active Directory
+## <a name="use-standard-authentication-scenarios-supported-by-azure-active-directory"></a><a id="authn-aad"></a>Použití standardních scénářů ověřování podporovaných službou Azure Active Directory
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | Azure AD | 
-| **Fáze SDL**               | Budování |  
-| **Použitelné technologie** | Obecná |
-| **Atribut**              | Neužívá se.  |
-| **Odkazy**              | [Scénáře ověřování pro Azure AD](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/), [Azure Active Directory ukázky kódu](https://azure.microsoft.com/documentation/articles/active-directory-code-samples/) [Azure Active Directory příručka pro vývojáře](https://azure.microsoft.com/documentation/articles/active-directory-developers-guide/) |
-| **Uvedené** | <p>Azure Active Directory (Azure AD) zjednodušuje ověřování pro vývojáře tím, že poskytuje identitu jako službu a podporuje standardní protokoly, jako je OAuth 2,0 a OpenID Connect. Níže jsou uvedené pět scénářů primárních aplikací podporovaných službou Azure AD:</p><ul><li>Webový prohlížeč do webové aplikace: uživatel se musí přihlásit k webové aplikaci, která je zabezpečená službou Azure AD.</li><li>Jednostránkové aplikace (SPA): uživatel se musí přihlásit k jednostránkové aplikaci, která je zabezpečená službou Azure AD.</li><li>Nativní aplikace do webového rozhraní API: nativní aplikace, která běží na telefonu, tabletu nebo počítači, musí ověřit uživatele a získat prostředky z webového rozhraní API zabezpečeného službou Azure AD.</li><li>Webová aplikace do webového rozhraní API: webová aplikace potřebuje získat prostředky z webového rozhraní API zabezpečeného službou Azure AD.</li><li>Démon nebo serverová aplikace do webového rozhraní API: aplikace démona nebo serverová aplikace bez webového uživatelského rozhraní musí získat prostředky z webového rozhraní API zabezpečeného službou Azure AD.</li></ul><p>Podrobnosti o implementaci nižší úrovně najdete v odkazech v části odkazy.</p>|
+| **Komponenta**               | Azure AD | 
+| **Fáze SDL**               | Sestavení |  
+| **Použitelné technologie** | Obecné |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | [Scénáře ověřování pro Azure AD](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/), [ukázky kódu Služby Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-code-samples/), [Průvodce vývojářem služby Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-developers-guide/) |
+| **Kroky** | <p>Azure Active Directory (Azure AD) zjednodušuje ověřování pro vývojáře tím, že poskytuje identitu jako službu, s podporou standardních protokolů, jako je OAuth 2.0 a OpenID Connect. Níže je pět scénářů primární aplikace podporovaných službou Azure AD:</p><ul><li>Webový prohlížeč na webovou aplikaci: Uživatel se musí přihlásit k webové aplikaci, která je zabezpečená službou Azure AD</li><li>Jednostránková aplikace (SPA): Uživatel se musí přihlásit k jednostránkové aplikaci, která je zabezpečená službou Azure AD</li><li>Nativní aplikace pro webové rozhraní API: Nativní aplikace, která běží na telefonu, tabletu nebo počítači, potřebuje ověřit uživatele, aby získala prostředky z webového rozhraní API zabezpečeného službou Azure AD</li><li>Webová aplikace do webového rozhraní API: Webová aplikace potřebuje získat prostředky z webového rozhraní API zabezpečeného službou Azure AD</li><li>Daemon nebo Server Aplikace na web API: Daemon aplikace nebo serverové aplikace bez webového uživatelského rozhraní potřebuje získat prostředky z webového rozhraní API zabezpečené službou Azure AD</li></ul><p>Podrobnosti o provádění na nízké úrovni naleznete v odkazech v části reference.</p>|
 
-## <a id="adal-scalable"></a>Přepsat výchozí mezipaměť tokenů ADAL s škálovatelnou alternativou
+## <a name="override-the-default-adal-token-cache-with-a-scalable-alternative"></a><a id="adal-scalable"></a>Přepsat výchozí mezipaměť tokenů ADAL škálovatelnou alternativou
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | Azure AD | 
-| **Fáze SDL**               | Budování |  
-| **Použitelné technologie** | Obecná |
-| **Atribut**              | Neužívá se.  |
-| **Odkazy**              | [Moderní ověřování pomocí Azure Active Directory pro webové aplikace s](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/) [využitím Redis jako mezipaměti tokenů ADAL](https://blogs.msdn.microsoft.com/mrochon/2016/09/19/using-redis-as-adal-token-cache/)  |
-| **Uvedené** | <p>Výchozí mezipaměť, kterou používá ADAL (Active Directory Authentication Library), je mezipaměť uložená v paměti, která spoléhá na statický obchod, který je dostupný v rámci procesu. I když to funguje u nativních aplikací, neškáluje se pro aplikace na úrovni střední úrovně a back-end z následujících důvodů:</p><ul><li>K těmto aplikacím má přistup mnoho uživatelů najednou. Uložení všech přístupových tokenů ve stejném úložišti vytvoří problémy s izolací a prezentuje problémy při současném škálování: mnoho uživatelů, každý s tolika tokeny jako prostředky, ke kterým má aplikace přístup, může znamenat obrovský počet a velmi nákladné operace vyhledávání.</li><li>Tyto aplikace jsou obvykle nasazeny v distribuovaných topologiích, kde více uzlů musí mít přístup ke stejné mezipaměti.</li><li>Tokeny uložené v mezipaměti musí zacházet s recyklací procesu a deaktivace.</li></ul><p>U všech výše uvedených důvodů doporučujeme při implementaci webových aplikací přepsat výchozí mezipaměť tokenů ADAL s škálovatelnou alternativou, jako je například Azure cache pro Redis.</p>|
+| **Komponenta**               | Azure AD | 
+| **Fáze SDL**               | Sestavení |  
+| **Použitelné technologie** | Obecné |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | [Moderní ověřování pomocí služby Azure Active Directory pro webové aplikace](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/), použití [redisu jako mezipaměti tokenů ADAL](https://blogs.msdn.microsoft.com/mrochon/2016/09/19/using-redis-as-adal-token-cache/)  |
+| **Kroky** | <p>Výchozí mezipaměť, kterou adal (Knihovna ověřování služby Active Directory) používá, je mezipaměť v paměti, která závisí na statickém úložišti, které je k dispozici pro celý proces. I když to funguje pro nativní aplikace, neškáluje pro střední vrstvy a back-endové aplikace z následujících důvodů:</p><ul><li>K těmto aplikacím přistupuje mnoho uživatelů najednou. Uložení všech přístupových tokenů ve stejném úložišti vytváří problémy s izolací a představuje problémy při provozu ve velkém měřítku: mnoho uživatelů, z nichž každý má tolik tokenů jako prostředky, které aplikace přistupuje jejich jménem, může znamenat obrovské množství a velmi nákladné operace vyhledávání</li><li>Tyto aplikace se obvykle nasazují na distribuované topologie, kde více uzlů musí mít přístup ke stejné mezipaměti</li><li>Tokeny uložené v mezipaměti musí přežít recyklace a deaktivace procesu.</li></ul><p>Ze všech výše uvedených důvodů se při implementaci webových aplikací doporučuje přepsat výchozí mezipaměť tokenů ADAL škálovatelnou alternativou, jako je například Azure Cache for Redis.</p>|
 
-## <a id="tokenreplaycache-adal"></a>Ujistěte se, že se používá TokenReplayCache k zabránění opakovanému přehrání ověřovacích tokenů ADAL.
+## <a name="ensure-that-tokenreplaycache-is-used-to-prevent-the-replay-of-adal-authentication-tokens"></a><a id="tokenreplaycache-adal"></a>Ujistěte se, že tokenReplayCache se používá k zabránění přehrání ověřovacích tokenů ADAL
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | Azure AD | 
-| **Fáze SDL**               | Budování |  
-| **Použitelné technologie** | Obecná |
-| **Atribut**              | Neužívá se.  |
-| **Odkazy**              | [Moderní ověřování pomocí Azure Active Directory pro webové aplikace](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/) |
-| **Uvedené** | <p>Vlastnost TokenReplayCache umožňuje vývojářům definovat mezipaměť pro opětovné přehrání tokenu, úložiště, které lze použít k ukládání tokenů za účelem ověření, že žádný token nelze použít více než jednou.</p><p>Jedná se o míru proti běžnému útoku, aptly se nazývá útok na opětovné přehrání tokenu: útočník, který zachytává token, který se poslal při přihlášení, se může pokusit znovu odeslat aplikaci ("přehrát") a vytvořit novou relaci. Například v toku pro udělení kódu OIDC po úspěšném ověření uživatele se vytvoří požadavek na koncový bod "/SignIn-oidc" předávající strany s parametry "id_token", "Code" a "State".</p><p>Předávající strana ověří tento požadavek a vytvoří novou relaci. Pokud nežádoucí osoba tento požadavek zachytí a znovu ho přehraje, může vytvořit úspěšnou relaci a uživatele s falešnou identitou. Přítomnost hodnoty nonce v OpenID Connect se může omezit, ale ne zcela eliminovat okolnosti, za kterých se dá útok úspěšně přijmout. Pro ochranu svých aplikací můžou vývojáři poskytnout implementaci ITokenReplayCache a přiřadit instanci k TokenReplayCache.</p>|
+| **Komponenta**               | Azure AD | 
+| **Fáze SDL**               | Sestavení |  
+| **Použitelné technologie** | Obecné |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | [Moderní ověřování pomocí služby Azure Active Directory pro webové aplikace](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/) |
+| **Kroky** | <p>Vlastnost TokenReplayCache umožňuje vývojářům definovat mezipaměť pro opětovné přehrání tokenu, úložiště, které lze použít pro ukládání tokenů za účelem ověření, že žádný token nelze použít více než jednou.</p><p>Jedná se o opatření proti běžnému útoku, vhodně nazývanému útoku na přehrání tokenu: útočník, který zachycuje token odeslaný při přihlášení, se může pokusit odeslat jej do aplikace znovu ("přehrát") pro vytvoření nové relace. Například v OIDC kód-grant toku, po úspěšném ověření uživatele, požadavek na "/signin-oidc" koncový bod předávající strany se provádí s parametry "id_token", "kód" a "stav".</p><p>Předávající strana tento požadavek ověří a vytvoří novou relaci. Pokud protivník zachytí tento požadavek a přehraje jej, může vytvořit úspěšnou relaci a zfalšovat uživatele. Přítomnost nonce v OpenID Connect může omezit, ale ne zcela eliminovat okolnosti, za kterých může být útok úspěšně přijat. Chcete-li chránit své aplikace, vývojáři mohou poskytnout implementaci ITokenReplayCache a přiřadit instanci TokenReplayCache.</p>|
 
 ### <a name="example"></a>Příklad
 ```csharp
@@ -387,7 +387,7 @@ bool TryFind(string securityToken);
 ```
 
 ### <a name="example"></a>Příklad
-Zde je ukázková implementace rozhraní ITokenReplayCache. (Přizpůsobení a implementace rozhraní pro ukládání do mezipaměti specifického pro projekt)
+Zde je ukázková implementace rozhraní ITokenReplayCache. (Přizpůsobte a implementujte rámec ukládání do mezipaměti pro konkrétní projekt)
 ```csharp
 public class TokenReplayCache : ITokenReplayCache
 {
@@ -411,7 +411,7 @@ public class TokenReplayCache : ITokenReplayCache
     }
 }
 ```
-Implementovaná mezipaměť musí být odkazována v možnostech OIDC prostřednictvím vlastnosti TokenValidationParameters, jak je znázorněno níže.
+Implementovaná mezipaměť musí být odkazována v možnostech OIDC prostřednictvím vlastnosti "TokenValidationParameters" následujícím způsobem.
 ```csharp
 OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 {
@@ -424,40 +424,40 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 }
 ```
 
-Počítejte s tím, že pokud chcete otestovat účinnost této konfigurace, přihlaste se do místní aplikace chráněné v OIDC a zachyťte požadavek do `"/signin-oidc"` koncového bodu v Fiddler. Pokud ochrana není na svém místě, bude přehrání této žádosti v Fiddler nastavit nový soubor cookie relace. Po přidání žádosti po přidání ochrany TokenReplayCache aplikace vyvolá výjimku následujícím způsobem: `SecurityTokenReplayDetectedException: IDX10228: The securityToken has previously been validated, securityToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ1......`
+Vezměte prosím na vědomí, že chcete-li otestovat účinnost této konfigurace, přihlaste se do místní aplikace chráněné OIDC a zachytit požadavek na `"/signin-oidc"` koncový bod v houslista. Pokud ochrana není na místě, přehrání tohoto požadavku v houslista nastaví novou relaci cookie. Při přehrání požadavku po přidání ochrany TokenReplayCache aplikace vyvolá výjimku následujícím způsobem:`SecurityTokenReplayDetectedException: IDX10228: The securityToken has previously been validated, securityToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ1......`
 
-## <a id="adal-oauth2"></a>Použití knihoven ADAL ke správě žádostí o tokeny od klientů OAuth2 do AAD (nebo místního AD)
+## <a name="use-adal-libraries-to-manage-token-requests-from-oauth2-clients-to-aad-or-on-premises-ad"></a><a id="adal-oauth2"></a>Použití knihoven ADAL ke správě požadavků na tokeny od klientů OAuth2 do služby AAD (nebo místní služby AD)
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | Azure AD | 
-| **Fáze SDL**               | Budování |  
-| **Použitelné technologie** | Obecná |
-| **Atribut**              | Neužívá se.  |
-| **Odkazy**              | [MODULU](https://azure.microsoft.com/documentation/articles/active-directory-authentication-libraries/) |
-| **Uvedené** | <p>Knihovna Azure AD Authentication Library (ADAL) umožňuje vývojářům klientských aplikací snadno ověřovat uživatele v cloudu nebo místní službě Active Directory (AD) a pak získat přístupové tokeny pro zabezpečení volání rozhraní API.</p><p>ADAL má mnoho funkcí, které usnadňují ověřování pro vývojáře, jako je například asynchronní podpora, konfigurovatelný mezipaměť tokenu, která ukládá přístupové tokeny a aktualizuje tokeny, automatickou aktualizaci tokenu, když vyprší platnost přístupového tokenu a je k dispozici aktualizační token. aktuálnější.</p><p>S využitím většiny složitosti může ADAL pomáhat vývojářům ve své aplikaci soustředit se na obchodní logiku a snadno zabezpečit prostředky, aniž by byl odborník na zabezpečení. K dispozici jsou samostatné knihovny pro .NET, JavaScript (klient a Node. js), Python, iOS, Android a Java.</p>|
+| **Komponenta**               | Azure AD | 
+| **Fáze SDL**               | Sestavení |  
+| **Použitelné technologie** | Obecné |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | [ADAL](https://azure.microsoft.com/documentation/articles/active-directory-authentication-libraries/) |
+| **Kroky** | <p>Knihovna ověřování Azure AD (ADAL) umožňuje vývojářům klientských aplikací snadno ověřovat uživatele do cloudu nebo místní služby Active Directory (AD) a pak získat přístupové tokeny pro zabezpečení volání rozhraní API.</p><p>ADAL má mnoho funkcí, které usnadňují ověřování pro vývojáře, jako je například asynchronní podpora, konfigurovatelná mezipaměť tokenů, která ukládá přístupové tokeny a obnovovací tokeny, automatická aktualizace tokenů při vypršení platnosti přístupového tokenu a je k dispozici obnovovací token a Více.</p><p>Zpracováním většiny složitosti může ADAL pomoci vývojáři zaměřit se na obchodní logiku v jejich aplikaci a snadno zabezpečit prostředky, aniž by byl odborníkem na zabezpečení. Samostatné knihovny jsou k dispozici pro .NET, JavaScript (klient a Node.js), Python, iOS, Android a Java.</p>|
 
-## <a id="authn-devices-field"></a>Ověřování zařízení připojujících se k bráně pole
+## <a name="authenticate-devices-connecting-to-the-field-gateway"></a><a id="authn-devices-field"></a>Ověření zařízení připojujících se k bráně pole
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | Brána pole IoT | 
-| **Fáze SDL**               | Budování |  
-| **Použitelné technologie** | Obecná |
-| **Atribut**              | Neužívá se.  |
-| **Odkazy**              | Neužívá se.  |
-| **Uvedené** | Ujistěte se, že je každé zařízení ověřené bránou pole před přijetím dat z nich a před tím, než usnadníte komunikaci s cloudovou bránou. Ujistěte se také, že se zařízení připojují k přihlašovacím údajům na zařízení, aby bylo možné jednotlivá zařízení jednoznačně identifikovat.|
+| **Komponenta**               | Brána ioT pole | 
+| **Fáze SDL**               | Sestavení |  
+| **Použitelné technologie** | Obecné |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky** | Ujistěte se, že každé zařízení je ověřeno bránou pole před přijetím dat z nich a před usnadněním upstream komunikace s cloudovou bránou. Také se ujistěte, že zařízení připojit s pověření pro jednotlivá zařízení tak, aby jednotlivá zařízení lze jednoznačně identifikovat.|
 
-## <a id="authn-devices-cloud"></a>Ujistěte se, že jsou ověřená zařízení připojující se ke cloudové bráně.
+## <a name="ensure-that-devices-connecting-to-cloud-gateway-are-authenticated"></a><a id="authn-devices-cloud"></a>Zajištění ověření zařízení připojujících se ke cloudové bráně
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | Cloudová brána IoT | 
-| **Fáze SDL**               | Budování |  
-| **Použitelné technologie** | Generic, C#, Node. js,  |
-| **Atribut**              | Není k dispozici, volba brány – Azure IoT Hub |
-| **Odkazy**              | Není k dispozici, [Azure IoT Hub s .NET](https://azure.microsoft.com/documentation/articles/iot-hub-csharp-csharp-getstarted/), [Začínáme se službou IoT Hub a Node js](https://azure.microsoft.com/documentation/articles/iot-hub-node-node-getstarted), [zabezpečení IoT pomocí SAS a certifikátů](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/), [úložiště Git](https://github.com/Azure/azure-iot-sdks/tree/master/node) |
-| **Uvedené** | <ul><li>**Obecné:** Ověřte zařízení pomocí protokolu TLS (Transport Layer Security) nebo IPSec. Infrastruktura by měla podporovat použití předsdíleného klíče (PSK) na zařízeních, která nemůžou zpracovávat úplný asymetrický kryptografii. Využijte Azure AD, OAuth.</li><li>**C#:** Při vytváření instance DeviceClient ve výchozím nastavení vytvoří metoda Create instanci DeviceClient, která k komunikaci s IoT Hub používá protokol AMQP. Chcete-li použít protokol HTTPS, použijte přepis metody Create, který umožňuje určit protokol. Pokud používáte protokol HTTPS, měli byste do svého projektu přidat také balíček NuGet `Microsoft.AspNet.WebApi.Client`, aby zahrnoval obor názvů `System.Net.Http.Formatting`.</li></ul>|
+| **Komponenta**               | Cloudová brána IoT | 
+| **Fáze SDL**               | Sestavení |  
+| **Použitelné technologie** | Obecný, C#, Node.JS,  |
+| **Atributy**              | Není k tomu a d, brána – Azure IoT Hub |
+| **Odkazy**              | Není k mna, [Azure IoT hub s rozhraním .NET](https://azure.microsoft.com/documentation/articles/iot-hub-csharp-csharp-getstarted/), [Začínáme s centrem IoT a JS uzlu](https://azure.microsoft.com/documentation/articles/iot-hub-node-node-getstarted), [Zabezpečení IoT s SAS a certifikáty](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/), [úložiště Git](https://github.com/Azure/azure-iot-sdks/tree/master/node) |
+| **Kroky** | <ul><li>**Obecné:** Ověřte zařízení pomocí zabezpečení transportní vrstvy (TLS) nebo protokolu IPSec. Infrastruktura by měla podporovat použití předsdíleného klíče (PSK) na zařízeních, která nezvládnou úplnou asymetrickou kryptografii. Využijte Azure AD, Oauth.</li><li>**C#:** Při vytváření instance DeviceClient ve výchozím nastavení vytvoří metoda Create instanci DeviceClient, která ke komunikaci s službou IoT Hub používá protokol AMQP. Pokud chcete používat protokol HTTPS, použijte přepis metody Create, který umožňuje určit protokol. Pokud používáte protokol HTTPS, měli `Microsoft.AspNet.WebApi.Client` byste také přidat balíček `System.Net.Http.Formatting` NuGet do projektu zahrnout obor názvů.</li></ul>|
 
 ### <a name="example"></a>Příklad
 ```csharp
@@ -475,9 +475,9 @@ await deviceClient.SendEventAsync(message);
 ```
 
 ### <a name="example"></a>Příklad
-**Node. JS: ověřování**
+**Node.JS: Ověřování**
 #### <a name="symmetric-key"></a>Symetrický klíč
-* Vytvoření služby IoT Hub v Azure
+* Vytvoření centra IoT hub v azure
 * Vytvoření položky v registru identit zařízení
     ```javascript
     var device = new iothub.Device(null);
@@ -491,10 +491,10 @@ await deviceClient.SendEventAsync(message);
     var connectionString = 'HostName=<HostName>DeviceId=<DeviceId>SharedAccessKey=<SharedAccessKey>';
     var client = clientFromConnectionString(connectionString);
     ```
-  #### <a name="sas-token"></a>Token SAS
-* Se interně generuje při použití symetrického klíče, ale můžeme ho vygenerovat a použít explicitně.
-* Definovat protokol: `var Http = require('azure-iot-device-http').Http;`
-* Vytvořit token SAS:
+  #### <a name="sas-token"></a>SAS Token
+* Získá interně generované při použití symetrického klíče, ale můžeme generovat a používat explicitně stejně
+* Definovat protokol :`var Http = require('azure-iot-device-http').Http;`
+* Vytvořit token sas :
     ```javascript
     resourceUri = encodeURIComponent(resourceUri.toLowerCase()).toLowerCase();
     var deviceName = "<deviceName >";
@@ -512,12 +512,12 @@ await deviceClient.SendEventAsync(message);
     if (policyName) token += "&skn="+policyName;
     return token;
     ```
-* Připojit pomocí tokenu SAS: 
+* Připojte se pomocí tokenu sas: 
     ```javascript
     Client.fromSharedAccessSignature(sas, Http); 
     ```
   #### <a name="certificates"></a>Certifikáty
-* Vygenerujte certifikát podepsaný svým vlastníkem pomocí libovolného nástroje, jako je třeba OpenSSL, a vygenerujte soubory. CERT a. Key pro uložení certifikátu a klíč v uvedeném pořadí.
+* Generovat vlastní podepsaný certifikát X509 pomocí libovolného nástroje, jako je OpenSSL, pro generování souborů CERT a .key pro uložení certifikátu a klíče
 * Zřízení zařízení, které přijímá zabezpečené připojení pomocí certifikátů.
     ```javascript
     var connectionString = '<connectionString>';
@@ -548,35 +548,35 @@ await deviceClient.SendEventAsync(message);
     client.open(fn);
     ```
 
-## <a id="authn-cred"></a>Použití přihlašovacích údajů pro ověřování podle zařízení
+## <a name="use-per-device-authentication-credentials"></a><a id="authn-cred"></a>Použití přihlašovacích údajů pro jedno zařízení
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | Cloudová brána IoT  | 
-| **Fáze SDL**               | Budování |  
-| **Použitelné technologie** | Obecná |
-| **Atribut**              | Volba brány – Azure IoT Hub |
-| **Odkazy**              | [Tokeny zabezpečení Azure IoT Hub](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/) |
-| **Uvedené** | Použijte přihlašovací údaje pro ověřování zařízení pomocí tokenů SaS na základě klíče zařízení nebo klientského certifikátu místo zásad sdíleného přístupu na úrovni IoT Hub. Tím zabráníte opakovanému použití ověřovacích tokenů pro jednu zařízení nebo bránu pole jiným. |
+| **Komponenta**               | Cloudová brána IoT  | 
+| **Fáze SDL**               | Sestavení |  
+| **Použitelné technologie** | Obecné |
+| **Atributy**              | Volba brány – Azure IoT Hub |
+| **Odkazy**              | [Tokeny zabezpečení centra Azure IoT Hub](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/) |
+| **Kroky** | Místo zásad sdíleného přístupu na úrovni služby IoT Hub používejte ověřovací pověření pro zařízení pomocí tokenů SaS založených na klíči zařízení nebo klientském certifikátu. Tím se zabrání opakovanému použití ověřovacích tokenů jednoho zařízení nebo brány pole jiným |
 
-## <a id="req-containers-anon"></a>Zajistěte, aby byl anonymní přístup pro čtení zadán pouze požadovaným kontejnerům a objektům blob.
+## <a name="ensure-that-only-the-required-containers-and-blobs-are-given-anonymous-read-access"></a><a id="req-containers-anon"></a>Ujistěte se, že anonymní přístup pro čtení mají pouze požadované kontejnery a objekty BLOB.
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | Azure Storage | 
-| **Fáze SDL**               | Budování |  
-| **Použitelné technologie** | Obecná |
-| **Atribut**              | StorageType – objekt BLOB |
-| **Odkazy**              | [Správa anonymního přístupu pro čtení kontejnerů a objektů BLOB](https://azure.microsoft.com/documentation/articles/storage-manage-access-to-resources/), [podpisů sdíleného přístupu, část 1: Principy modelu SAS](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/) |
-| **Uvedené** | <p>Ve výchozím nastavení může být kontejner a všechny objekty BLOB v něm k dispozici pouze vlastníkem účtu úložiště. Pokud chcete anonymním uživatelům udělit oprávnění ke čtení kontejneru a jeho objektů blob, může jeden nastavit oprávnění kontejneru a povolit tak veřejný přístup. Anonymní uživatelé mohou číst objekty BLOB v rámci veřejně přístupného kontejneru bez ověření žádosti.</p><p>Kontejnery poskytují následující možnosti pro správu přístupu k kontejneru:</p><ul><li>Úplný veřejný přístup pro čtení: data kontejneru a objektu BLOB je možné číst prostřednictvím anonymního požadavku. Klienti mohou vytvořit výčet objektů BLOB v kontejneru prostřednictvím anonymního požadavku, ale nemohou vytvořit výčet kontejnerů v rámci účtu úložiště.</li><li>Veřejný přístup pro čtení jenom pro objekty BLOB: data objektu BLOB v tomto kontejneru je možné číst prostřednictvím anonymního požadavku, ale data kontejneru nejsou k dispozici. Klienti nemohou pomocí anonymní žádosti vytvořit výčet objektů BLOB v kontejneru.</li><li>Bez veřejného přístupu pro čtení: data kontejneru a objektu BLOB můžou číst jenom vlastník účtu.</li></ul><p>Anonymní přístup je nejvhodnější pro scénáře, kdy by měly být pro anonymní přístup pro čtení vždy k dispozici určité objekty blob. V případě jemnějšího řízení může jeden vytvořit sdílený přístupový podpis, který umožňuje delegovat omezený přístup pomocí různých oprávnění a v zadaném časovém intervalu. Zajistěte, aby kontejnery a objekty blob, které by mohly obsahovat citlivá data, nechtěně udělily anonymní přístup.</p>|
+| **Komponenta**               | Azure Storage | 
+| **Fáze SDL**               | Sestavení |  
+| **Použitelné technologie** | Obecné |
+| **Atributy**              | StorageType – objekt blob |
+| **Odkazy**              | [Správa anonymního přístupu pro čtení ke kontejnerům a objektům BLOB](https://azure.microsoft.com/documentation/articles/storage-manage-access-to-resources/), [sdíleným přístupovým podpisům, část 1: Principy modelu SAS](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/) |
+| **Kroky** | <p>Ve výchozím nastavení kontejner a všechny objekty BLOB v něm může přistupovat pouze vlastník účtu úložiště. Chcete-li anonymním uživatelům udělit oprávnění ke čtení kontejneru a jeho objektů BLOB, můžete nastavit oprávnění kontejneru tak, aby umožňovala veřejný přístup. Anonymní uživatelé mohou číst objekty BLOB v rámci veřejně přístupného kontejneru bez ověření požadavku.</p><p>Kontejnery poskytují následující možnosti pro správu přístupu kontejneru:</p><ul><li>Úplný veřejný přístup pro čtení: Data kontejneru a objektu blob lze číst prostřednictvím anonymního požadavku. Klienti můžete vytvořit výčet objektů BLOB v rámci kontejneru prostřednictvím anonymní požadavek, ale nelze vytvořit výčet kontejnerů v rámci účtu úložiště.</li><li>Veřejný přístup pro čtení pouze pro objekty BLOB: Data objektů blob v rámci tohoto kontejneru lze číst prostřednictvím anonymní ho požadavku, ale data kontejneru není k dispozici. Klienti nemohou vytvořit výčet objektů BLOB v kontejneru prostřednictvím anonymního požadavku.</li><li>Žádný veřejný přístup pro čtení: Data kontejneru a objektu blob může číst jenom vlastník účtu.</li></ul><p>Anonymní přístup je nejvhodnější pro scénáře, kde by určité objekty BLOB měly být vždy k dispozici pro anonymní přístup pro čtení. Pro podrobnější odstupňovanou kontrolu lze vytvořit sdílený přístupový podpis, který umožňuje delegovat omezený přístup pomocí různých oprávnění a v zadaném časovém intervalu. Ujistěte se, že kontejnery a objekty BLOB, které mohou potenciálně obsahovat citlivá data, nejsou náhodně anonymní přístup</p>|
 
-## <a id="limited-access-sas"></a>Udělení omezeného přístupu k objektům ve službě Azure Storage pomocí SAS nebo SAP
+## <a name="grant-limited-access-to-objects-in-azure-storage-using-sas-or-sap"></a><a id="limited-access-sas"></a>Udělit omezený přístup k objektům v úložišti Azure pomocí SAS nebo SAP
 
-| Title                   | Details      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Část**               | Azure Storage | 
-| **Fáze SDL**               | Budování |  
-| **Použitelné technologie** | Obecná |
-| **Atribut**              | Neužívá se. |
-| **Odkazy**              | [Signatury sdíleného přístupu, část 1: Princip modelu SAS](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/), [podpisů sdíleného přístupu, část 2: vytvoření a použití SAS s úložištěm BLOB](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-2/), [Postup delegování přístupu k objektům ve vašem účtu pomocí sdílených přístupových podpisů a uloženého přístupu Zásady](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_how-to-delegate-access-to-objects-in-your-account-using-shared-access-signatures-and-stored-access-policies) |
-| **Uvedené** | <p>Použití sdíleného přístupového podpisu (SAS) představuje účinný způsob, jak udělit omezený přístup k objektům v účtu úložiště jiným klientům, a to bez nutnosti vystavit přístupový klíč účtu. SAS je identifikátor URI, který v parametrech dotazu zahrnuje všechny informace potřebné pro ověřený přístup k prostředku úložiště. Chcete-li získat přístup k prostředkům úložiště pomocí SAS, klient musí předat SAS pouze příslušnému konstruktoru nebo metodě.</p><p>Můžete použít SAS, pokud chcete poskytnout přístup k prostředkům v účtu úložiště klientovi, který nemůže být důvěryhodný pomocí klíče účtu. Klíče účtu úložiště zahrnují primární i sekundární klíč, z nichž oba udělují přístup pro správu k vašemu účtu a všem prostředkům v něm. Vystavení některého z vašich klíčů účtu otevře váš účet s možností škodlivého nebo nedbalostho použití. Sdílené přístupové podpisy poskytují bezpečnou alternativu, která umožňuje ostatním klientům číst, zapisovat a odstraňovat data v účtu úložiště na základě oprávnění, která jste udělili, a nemusíte přitom klíč účtu.</p><p>Pokud máte logickou sadu parametrů, které jsou pokaždé podobné, je lepší nápad pomocí zásad uložených v přístupu (SAP). Vzhledem k tomu, že použití SAS odvozeného z uložených zásad přístupu umožňuje okamžitě odvolat toto SAS, je doporučený osvědčený postup, pokud je to možné, vždy používejte uložené zásady přístupu.</p>|
+| **Komponenta**               | Azure Storage | 
+| **Fáze SDL**               | Sestavení |  
+| **Použitelné technologie** | Obecné |
+| **Atributy**              | Není dostupné. |
+| **Odkazy**              | [Sdílené přístupové podpisy, část 1: Principy modelu SAS](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/), [Sdílené přístupové podpisy, část 2: Vytvoření a použití SAS s úložištěm objektů Blob](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-2/), [Jak delegovat přístup k objektům ve vašem účtu pomocí sdílených přístupových podpisů a uložených přístupových zásad](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_how-to-delegate-access-to-objects-in-your-account-using-shared-access-signatures-and-stored-access-policies) |
+| **Kroky** | <p>Použití sdíleného přístupového podpisu (SAS) je účinný způsob, jak udělit omezený přístup k objektům v účtu úložiště ostatním klientům, aniž byste museli vystavit přístupový klíč účtu. SAS je identifikátor URI, který ve svých parametrech dotazu zahrnuje všechny informace potřebné pro ověřený přístup k prostředku úložiště. Pro přístup k prostředkům úložiště s SAS, klient potřebuje pouze předat v SAS příslušného konstruktoru nebo metody.</p><p>SAS můžete použít, pokud chcete poskytnout přístup k prostředkům v účtu úložiště klientovi, kterému nelze důvěřovat s klíčem účtu. Klíče účtu úložiště obsahují primární i sekundární klíč, který udělí přístup správce k vašemu účtu a všem prostředkům v něm. Vystavením některého z klíčů vašeho účtu se váš účet otevře možnosti škodlivého nebo nedbalého použití. Sdílené přístupové podpisy poskytují bezpečnou alternativu, která umožňuje ostatním klientům číst, zapisovat a odstraňovat data v účtu úložiště podle oprávnění, která jste udělili, a bez nutnosti klíče účtu.</p><p>Pokud máte logickou sadu parametrů, které jsou podobné pokaždé, pomocí zásady uloženého přístupu (SAP) je lepší nápad. Vzhledem k tomu, že použití SAS odvozené z zásad y uloženého přístupu umožňuje odvolat, že SAS okamžitě, je doporučeným osvědčeným postupem vždy používat uložené zásady přístupu, pokud je to možné.</p>|

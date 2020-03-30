@@ -1,6 +1,6 @@
 ---
-title: Správa oprávnění aplikace z portálu moje aplikace – Azure Active Directory | Microsoft Docs
-description: Naučte se spravovat oprávnění aplikací pro cloudové aplikace vaší organizace na portálu moje aplikace.
+title: Správa oprávnění aplikací z portálu Moje aplikace – Azure Active Directory | Dokumenty společnosti Microsoft
+description: Zjistěte, jak spravovat oprávnění aplikací pro cloudové aplikace vaší organizace z portálu Moje aplikace.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,45 +13,45 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.custom: user-help
 ms.openlocfilehash: bac33386371b13950163727497cabd0f262df135
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77022405"
 ---
-# <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>Upravit nebo odvolat oprávnění aplikace na portálu moje aplikace
+# <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>Úprava nebo odvolání oprávnění aplikací na portálu Moje aplikace
 
-Pokud používáte aplikace organizace na portálu **Moje aplikace** , často udělíte oprávnění a ukládáte informace o účtu. Aby vaše data byla zabezpečená, možná budete chtít zkontrolovat a odvolat oprávnění nebo zrušit přihlašovací údaje uloženého účtu. Odebrání oprávnění nebo účtů může poškodit některé funkce aplikace. Pokud máte po odebrání oprávnění nebo účtů problémy, požádejte o další pomoc Helpdesk vaší organizace.
+Při použití organizačních aplikací na portálu **Moje aplikace** často udělujete oprávnění a ukládáte informace o účtu. Chcete-li zajistit zabezpečení dat, můžete zkontrolovat a odvolat oprávnění nebo vymazat uložená pověření účtu. Odebrání oprávnění nebo účtů může přerušit některé funkce aplikace. Pokud máte po odebrání oprávnění nebo účtů problémy, požádejte o další pomoc oddělení technické podpory vaší organizace.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
 >[!Important]
->Tento obsah je určený pro uživatele. Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat cloudové aplikace v [dokumentaci pro správu aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-workspaces).
+>Tento obsah je určený pro uživatele. Pokud jste správce, další informace o nastavení a správě cloudových aplikací najdete v [dokumentaci ke správě aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-workspaces).
 
 ## <a name="manage-app-permissions"></a>Správa oprávnění aplikací
 
-Pokud si chcete zobrazit oprávnění, která jste poslali vy nebo váš správce, vyberte **...** při najetí myší na aplikaci na portálu **Moje aplikace** vyberte **Spravovat aplikaci**:
+Chcete-li zobrazit oprávnění, na která jste nebo váš správce souhlasili, vyberte **...** když najedete na aplikaci na portálu **Moje aplikace,** a pak vyberte **Spravovat aplikaci**:
 
-![Správa aplikace na portálu moje aplikace](media/my-applications-portal-permissions-saved-accounts/manage-your-application.png)
+![Správa aplikace na portálu Moje aplikace](media/my-applications-portal-permissions-saved-accounts/manage-your-application.png)
 
-V horní části okna oprávnění se zobrazí informace o tom, na co jste osobně poslali. K příkladům oprávnění aplikací patří možnost přístupu k vašemu kalendáři, kontaktům nebo kameře.
+V horní části okna oprávnění se zobrazuje, s čím jste osobně souhlasili. Mezi oprávnění aplikací patří například možnost přístupu ke kalendáři, kontaktům nebo kameře.
 
-Můžete odvolat všechna oprávnění, která jste jim poslali, výběrem **oprávnění odvolat**, ale odebrání oprávnění může poškodit některé funkce aplikace. Pokud máte po odebrání oprávnění nebo účtů problémy, požádejte o další pomoc Helpdesk vaší organizace.
+Všechna oprávnění, se kterými jste souhlasili, můžete odvolat výběrem **možnosti Odvolat oprávnění**, ale odebrání oprávnění může některé funkce aplikací přerušit. Pokud máte po odebrání oprávnění nebo účtů problémy, požádejte o další pomoc oddělení technické podpory vaší organizace.
 
-![Odvolat oprávnění pro aplikaci na portálu moje aplikace](media/my-applications-portal-permissions-saved-accounts/revoke-permissions.png)
+![Odvolání oprávnění pro aplikaci na portálu Moje aplikace](media/my-applications-portal-permissions-saved-accounts/revoke-permissions.png)
 
-V dolní části okna oprávnění se zobrazuje informace o tom, co váš správce vaším jménem souhlasí. Tato část se nezobrazí, pokud nejsou k dispozici žádná oprávnění správce. Tato oprávnění nemůžete odvolat, protože jim správce souhlasí a jsou často vyžadovány pro zásady vaší organizace.
+V dolní části okna oprávnění se zobrazuje, s čím správce vaším jménem souhlasil. Tato část se nezobrazí, pokud neexistují žádná oprávnění s souhlasem správce. Tato oprávnění nelze odvolat, protože s nimi správce souhlasil a jsou často vyžadována pro zásady vaší organizace.
 
 ## <a name="next-steps"></a>Další kroky
 
-Po správě oprávnění aplikace a uložených účtů na portálu **Moje aplikace** můžete:
+Po správě oprávnění aplikací a uložených účtů na portálu **Moje aplikace** můžete:
 
-- Uspořádejte své aplikace do různých kategorií vytvořených a poskytovaných vaší organizací. Další informace najdete v tématu věnovaném [přístupu a používání kolekcí na portálu moje aplikace](my-applications-portal-workspaces.md).
+- Uspořádejte své aplikace do různých kategorií vytvořených a poskytovaných vaší organizací. Další informace najdete [v tématu Přístup a používání kolekcí na portálu Moje aplikace](my-applications-portal-workspaces.md).
 
 ## <a name="related-articles"></a>Související články
 
-- [Aktualizujte informace o profilu a účtu](my-account-portal-overview.md). Pokyny, jak aktualizovat osobní údaje, které se zobrazí na portálu **můj profil**
+- [Aktualizujte svůj profil a informace o účtu](my-account-portal-overview.md). Pokyny, jak aktualizovat osobní údaje, které se zobrazí na portálu **Můj profil.**
 
-- [Spravujte své organizace](my-account-portal-organizations-page.md). Pokyny, jak zobrazit a spravovat informace týkající se vaší organizace, najdete na stránce **organizace** na portálu **můj profil** .
+- [Správa organizací](my-account-portal-organizations-page.md). Pokyny k zobrazení a správě informací týkajících se organizace na stránce **Organizace** na portálu **Můj profil.**
 
-- [Spravujte připojená zařízení](my-account-portal-devices-page.md). Pokyny, jak spravovat zařízení, ke kterým jste se připojili pomocí svého pracovního nebo školního účtu, najdete na stránce **zařízení** na portálu **můj profil** .
+- [Spravujte připojená zařízení](my-account-portal-devices-page.md). Pokyny, jak spravovat zařízení, ke kterým jste připojeni pomocí pracovního nebo školního účtu, jsou na stránce **Zařízení** na portálu **Můj profil.**

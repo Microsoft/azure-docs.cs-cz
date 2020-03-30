@@ -1,6 +1,6 @@
 ---
-title: Hledání sestav aktivit uživatelů v Azure Portal | Microsoft Docs
-description: Zjistěte, kde jsou sestavy aktivity Azure Active Directory uživatele v Azure Portal.
+title: Vyhledání přehledů aktivit uživatelů na webu Azure Portal | Dokumenty společnosti Microsoft
+description: Zjistěte, kde jsou sestavy aktivit uživatelů služby Azure Active Directory na webu Azure Portal.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,68 +15,68 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d356f8c10ae3770d9f4ade100ab0496ee58d772f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74008216"
 ---
-# <a name="find-activity-reports-in-the-azure-portal"></a>Hledání sestav aktivit v Azure Portal
+# <a name="find-activity-reports-in-the-azure-portal"></a>Vyhledání sestav aktivit na webu Azure Portal
 
-V tomto článku se dozvíte, jak v Azure Portal najít sestavy aktivit uživatelů Azure Active Directory (Azure AD).
+V tomto článku se dozvíte, jak najít sestavy aktivit uživatelů Služby Azure Active Directory (Azure AD) na webu Azure Portal.
 
 ## <a name="audit-logs-report"></a>Sestava protokolů auditu
 
-Sestava protokoly auditu kombinuje několik sestav kolem aplikačních aktivit do jediného zobrazení pro vytváření sestav na základě kontextu. Přístup k sestavě protokolů auditu:
+Sestava protokolů auditu kombinuje několik sestav týkajících se aktivit aplikací do jednoho zobrazení pro kontextové vykazování. Přístup k sestavě protokolů auditu:
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
-2. V pravém horním rohu vyberte svůj adresář a pak v levém navigačním podokně vyberte okno **Azure Active Directory** .
-3. V části **aktivita** v okně Azure Active Directory vyberte **protokoly auditu** . 
+2. Vyberte svůj adresář v pravém horním rohu a v levém navigačním podokně vyberte okno **Služby Azure Active Directory.**
+3. V yberte **Protokoly auditování** z části **Aktivita** v okně Služby Azure Active Directory. 
 
     ![Protokoly auditu](./media/howto-find-activity-reports/482.png "Protokoly auditu")
 
-Sestava protokoly auditu slučuje následující sestavy:
+Sestava protokolů auditu konsoliduje následující sestavy:
 
 * Sestava auditování
 * Aktivity resetování hesla
 * Aktivita registrace resetování hesla
 * Aktivita samoobslužných skupin
-* Změny názvu skupiny Office 365
-* Aktivita zřizování účtů
-* Stav přecházení hesla
+* Změny názvu skupiny Office365
+* Aktivita zřizování účtu
+* Stav přechodu hesla
 * Chyby zřizování účtů
 
 ### <a name="filtering-on-audit-logs"></a>Filtrování protokolů auditu
 
-Pomocí pokročilého filtrování v sestavě audit můžete získat přístup ke konkrétní kategorii dat auditu zadáním do filtru **kategorií** . Chcete-li například zobrazit všechny aktivity související s uživateli, vyberte kategorii **UserManagement** . 
+Rozšířené filtrování v sestavě auditu můžete použít pro přístup k určité kategorii dat auditu zadáním ve filtru **Kategorie.** Chcete-li například zobrazit všechny aktivity související s uživateli, vyberte kategorii **UserManagement.** 
 
-Mezi kategorie patří:
+Kategorie zahrnují:
 
-- Vše
+- Všechny
 - AdministrativeUnit
-- ApplicationManagement
+- Správa aplikací
 - Ověřování
 - Autorizace
-- Kontaktovat
+- Kontakt
 - Zařízení
 - DeviceConfiguration
-- DirectoryManagement
-- EntitlementManagement
-- GroupManagement
+- Správa adresářů
+- Správa nároků
+- Správa skupiny
 - Ostatní
 - Zásada
-- ResourceManagement
-- RoleManagement
-- UserManagement
+- Správa zdrojů
+- Správa rolí
+- Správa uživatelů
 
-Pomocí filtru rozevíracího seznamu **služby** můžete také filtrovat konkrétní službu. Pokud například chcete získat všechny události auditu, které souvisejí se správou hesel samoobslužných služeb, vyberte filtr **samoobslužné správy hesel** .
+Můžete také filtrovat na konkrétní služby pomocí **služby** rozbalovací filtr. Chcete-li například získat všechny události auditu související se samoobslužnou správou hesel, vyberte filtr **Samoobslužná správa hesel.**
 
 Služby zahrnují:
 
-- Vše
+- Všechny
 - Kontroly přístupu
 - Zřizování účtů 
-- Jednotné přihlašování aplikace
+- Přihlašuje se aplikace
 - Metody ověřování
 - B2C
 - Podmíněný přístup
@@ -91,42 +91,42 @@ Služby zahrnují:
 
 ## <a name="sign-ins-report"></a>Sestava přihlášení 
 
-Zobrazení **přihlášení** zahrnuje všechna přihlášení uživatelů a sestavu **využití aplikace** . Informace o použití aplikace můžete zobrazit také v části **Správa** v tématu Přehled **podnikových aplikací** .
+Zobrazení **Přihlášení** zahrnuje všechna přihlášení uživatelů a také sestavu **Využití aplikace.** Informace o využití aplikací můžete také zobrazit v části **Spravovat** v přehledu **podnikových aplikací.**
 
 Přístup k sestavě přihlášení:
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
-2. V pravém horním rohu vyberte svůj adresář a pak v levém navigačním podokně vyberte okno **Azure Active Directory** .
-3. V okně Azure Active Directory v části **aktivita** vyberte **nenašla** . 
+2. Vyberte svůj adresář v pravém horním rohu a v levém navigačním podokně vyberte okno **Služby Azure Active Directory.**
+3. V části **Aktivita** v okně Služby Azure Active Directory vyberte **Přihlášení.** 
 
     ![Zobrazení přihlášení](./media/howto-find-activity-reports/483.png "Zobrazení přihlášení")
 
 
 ### <a name="filtering-on-application-name"></a>Filtrování názvu aplikace
 
-Pomocí sestavy přihlášení můžete zobrazit podrobnosti o využití aplikace, a to filtrováním podle uživatelského jména nebo názvu aplikace.
+Pomocí sestavy přihlášení můžete zobrazit podrobnosti o využití aplikace filtrováním uživatelského jména nebo názvu aplikace.
 
-![Stránka filtrovat události přihlášení](./media/howto-find-activity-reports/07.png "Stránka filtrovat události přihlášení")
+![Stránka Události přihlášení filtru](./media/howto-find-activity-reports/07.png "Stránka Události přihlášení filtru")
 
 ## <a name="security-reports"></a>Sestavy zabezpečení
 
-### <a name="anomalous-activity-reports"></a>Sestavy aktivit neobvyklé
+### <a name="anomalous-activity-reports"></a>Sestavy anomálních aktivit
 
-Sestavy aktivit neobvyklé poskytují informace o detekcích rizik souvisejících se zabezpečením, které může služba Azure AD detekovat a sestavovat.
+Sestavy anomálních aktivit poskytují informace o zjišťování rizik souvisejících se zabezpečením, které azure ad můžete zjistit a sestavy na.
 
-V následující tabulce jsou uvedené sestavy zabezpečení aktivity Azure AD neobvyklé a odpovídající typy detekce rizik v Azure Portal. Další informace najdete v tématu [Azure Active Directory detekci rizik](concept-risk-events.md).  
+V následující tabulce jsou uvedeny sestavy zabezpečení anomální aktivity Azure AD a odpovídající typy detekce rizik na webu Azure Portal. Další informace naleznete v [tématu Azure Active Directory risk detections](concept-risk-events.md).  
 
 
-| Sestava aktivity Azure AD neobvyklé |  Typ detekce rizika ochrany identity|
+| Sestava anomálních aktivit azure ad |  Typ detekce rizika ochrany identity|
 | :--- | :--- |
-| Uživatelé s uniklými přihlašovacími údaji | Nevrácená pověření |
+| Uživatelé s uniklými přihlašovacími údaji | Uniklá pověření |
 | Nestandardní přihlašovací aktivita | Nemožná cesta do netypických míst |
 | Přihlášení z možných nakažených zařízení | Přihlášení z nakažených zařízení|
 | Přihlášení z neznámých zdrojů | Přihlášení z anonymních IP adres |
 | Přihlášení z IP adres s podezřelou aktivitou | Přihlášení z IP adres s podezřelou aktivitou |
 | - | Přihlášení z neznámých míst |
 
-Následující sestavy zabezpečení aktivity Azure AD neobvyklé nejsou zahrnuté do zjišťování rizik v Azure Portal:
+Následující sestavy monitorování anomální aktivity Azure AD nejsou zahrnuty jako detekce rizik na webu Azure Portal:
 
 * Přihlášení po několika neúspěších
 * Přihlášení z více geografických poloh
@@ -134,14 +134,14 @@ Následující sestavy zabezpečení aktivity Azure AD neobvyklé nejsou zahrnut
 
 ### <a name="detected-risk-detections"></a>Zjištěné detekce rizik
 
-K sestavám zjištěných detekcí rizik můžete získat přístup v části **zabezpečení** okna **Azure Active Directory** v [Azure Portal](https://portal.azure.com). Zjištěná zjištění rizik jsou sledována v následujících sestavách:   
+K sestavám zjištěných detekcí rizik se dostanete v části **Zabezpečení** v okně **Azure Active Directory** na webu Azure [Portal](https://portal.azure.com). Zjištěné detekce rizik jsou sledovány v následujících sestavách:   
 
 - [Ohrožení uživatelé](concept-user-at-risk.md)
 - [Riziková přihlášení](concept-risky-sign-ins.md)
 
     ![Sestavy zabezpečení](./media/howto-find-activity-reports/04.png "Sestavy zabezpečení")
 
-## <a name="troubleshoot-issues-with-activity-reports"></a>Řešení potíží se sestavami aktivit
+## <a name="troubleshoot-issues-with-activity-reports"></a>Poradce při potížích se sestavami aktivit
 
 ### <a name="missing-data-in-the-downloaded-activity-logs"></a>Chybějící data ve stažených protokolech aktivit
 
@@ -153,13 +153,13 @@ Ve stažených protokolech aktivity (auditu nebo přihlášení) se nezobrazují
  
 #### <a name="cause"></a>Příčina
 
-Když si stáhnete protokoly aktivit v Azure Portal, omezíme měřítko na 250000 záznamů seřazených podle nejnovějšího prvního. 
+Když si stáhnete protokoly aktivit na webu Azure Portal, omezíme škálování na 250000 záznamů seřazených podle nejnovějších záznamů. 
 
 #### <a name="resolution"></a>Řešení
 
 Můžete využít [rozhraní API pro vytváření sestav Azure AD](concept-reporting-api.md), abyste načetli až milion záznamů v libovolném časovém okamžiku.
 
-### <a name="missing-audit-data-for-recent-actions-in-the-azure-portal"></a>Chybějící data auditu pro nedávné akce v Azure Portal
+### <a name="missing-audit-data-for-recent-actions-in-the-azure-portal"></a>Chybějící data auditu pro nedávné akce na webu Azure Portal
 
 #### <a name="symptoms"></a>Příznaky
 
@@ -171,7 +171,7 @@ Provedl jsem nějaké akce na webu Azure Portal a očekával jsem pro tyto akce 
 
 Akce se v protokolech aktivit nezobrazí okamžitě. V následující tabulce jsou uvedené naše latence u protokolů aktivit. 
 
-| Zpráva | &nbsp; | Latence (P95) | Latence (P99) |
+| Sestava | &nbsp; | Latence (P95) | Latence (P99) |
 |--------|--------|---------------|---------------|
 | Audit adresáře | &nbsp; | 2 minuty | 5 minut |
 | Aktivita přihlášení | &nbsp; | 2 minuty | 5 minut | 
@@ -180,7 +180,7 @@ Akce se v protokolech aktivit nezobrazí okamžitě. V následující tabulce js
 
 Počkejte 15 minut až dvě hodiny a pak se podívejte, jestli se akce v protokolu zobrazily. Pokud se protokoly ani po dvou hodinách nezobrazí, [vytvořte lístek podpory](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) a my se na to podíváme.
 
-### <a name="missing-logs-for-recent-user-sign-ins-in-the-azure-ad-sign-ins-activity-log"></a>Chybějící protokoly pro přihlášení k poslednímu uživateli v protokolu aktivit přihlášení k Azure AD
+### <a name="missing-logs-for-recent-user-sign-ins-in-the-azure-ad-sign-ins-activity-log"></a>Chybějící protokoly pro poslední přihlášení uživatelů v protokolu aktivit přihlášení Služby Azure AD
 
 #### <a name="symptoms"></a>Příznaky
 
@@ -192,7 +192,7 @@ Nedávno jsem se přihlásil/a k webu Azure Portal a očekával/a jsem, že se p
 
 Akce se v protokolech aktivit nezobrazí okamžitě. V následující tabulce jsou uvedené naše latence u protokolů aktivit. 
 
-| Zpráva | &nbsp; | Latence (P95) | Latence (P99) |
+| Sestava | &nbsp; | Latence (P95) | Latence (P99) |
 |--------|--------|---------------|---------------|
 | Audit adresáře | &nbsp; | 2 minuty | 5 minut |
 | Aktivita přihlášení | &nbsp; | 2 minuty | 5 minut | 
@@ -213,7 +213,7 @@ Na webu Azure Portal nemůžu zobrazit data přihlášení a auditu za více ne�
 
 V závislosti na vaší licenci akce služby Azure Active Directory ukládají sestavy aktivit na tyto počty dní:
 
-| Zpráva           | &nbsp; |  Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| Sestava           | &nbsp; |  Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | ---              | ----   |  ---           | ---                 | ---                 |
 | Audit adresáře  | &nbsp; |   7 dní     | 30 dní             | 30 dní             |
 | Přihlašovací aktivita | &nbsp; | Není k dispozici. K vlastním přihlášením máte přístup po dobu 7 dnů v okně profilu uživatele. | 30 dní | 30 dní             |

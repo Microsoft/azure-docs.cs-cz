@@ -12,54 +12,54 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 36898e75680771a9cb084fa142bb635ddbf51c70
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77192126"
 ---
-# <a name="conditional-access-users-and-groups"></a>Podmíněný přístup: uživatelé a skupiny
+# <a name="conditional-access-users-and-groups"></a>Podmíněný přístup: Uživatelé a skupiny
 
-Zásady podmíněného přístupu musí zahrnovat přiřazení uživatele jako jeden ze signálů v rámci procesu rozhodování. Uživatele můžete zahrnout nebo vyloučit ze zásad podmíněného přístupu. 
+Zásady podmíněného přístupu musí zahrnovat přiřazení uživatele jako jeden ze signálů v rozhodovacím procesu. Uživatelé mohou být zahrnuti nebo vyloučeni ze zásad podmíněného přístupu. 
 
 ![Uživatel jako signál v rozhodnutích učiněných podmíněným přístupem](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups.png)
 
-## <a name="include-users"></a>Zahrnutí uživatelů
+## <a name="include-users"></a>Zahrnout uživatele
 
-Tento seznam uživatelů obvykle zahrnuje všechny uživatele, kterým organizace cílí v zásadách podmíněného přístupu. 
+Tento seznam uživatelů obvykle zahrnuje všechny uživatele, na které organizace cílí v zásadách podmíněného přístupu. 
 
-Při vytváření zásad podmíněného přístupu jsou k dispozici následující možnosti:
+Následující možnosti jsou k dispozici zahrnout při vytváření zásad podmíněného přístupu.
 
-- Žádná
-   - Nejsou vybráni žádní uživatelé.
+- Žádný
+   - Nebyl vybrán žádný uživatel.
 - Všichni uživatelé
-   - Všichni uživatelé, kteří existují v adresáři včetně hostů v B2B.
-- Vybrat uživatele a skupiny
-   - Všichni uživatelé typu Host a externí uživatelé (Preview)
-      - Tato volba zahrnuje všechny hosty a externí uživatele B2B včetně všech uživatelů s atributem `user type` nastaveným na `guest`. Tento výběr platí také pro všechny přihlášené externí uživatele z jiné organizace, jako je například poskytovatel Cloud Solution Provider (CSP). 
-   - Role adresáře (Preview)
-      - Umožňuje správcům vybrat konkrétní role adresáře Azure AD, které se používají k určení přiřazení. Organizace můžou například vytvořit přísnější zásadu pro uživatele, kteří mají přiřazenou roli globálního správce.
+   - Všichni uživatelé, kteří existují v adresáři, včetně hostů B2B.
+- Výběr uživatelů a skupin
+   - Všichni hostující a externí uživatelé (náhled)
+      - Tento výběr zahrnuje všechny hosty B2B a `user type` externí uživatele, včetně všech uživatelů s atributem nastaveným na `guest`. Tento výběr platí také pro všechny externí uživatele přihlášené z jiné organizace, jako je poskytovatel cloudových řešení (CSP). 
+   - Role adresáře (náhled)
+      - Umožňuje správcům vybrat konkrétní role adresáře Azure AD, které se používají k určení přiřazení. Organizace mohou například vytvořit přísnější zásady pro uživatele, kterým byla přiřazena role globálního správce.
    - Uživatelé a skupiny
-      - Umožňuje zaměřit se na konkrétní skupiny uživatelů. Organizace můžou například vybrat skupinu, která obsahuje všechny členy oddělení lidských zdrojů, když je jako cloudová aplikace vybraná aplikace pro HR. Skupina může být libovolný typ skupiny v Azure AD, včetně dynamických nebo přiřazených skupin zabezpečení a distribuce.
+      - Umožňuje cílení na konkrétní sady uživatelů. Organizace mohou například vybrat skupinu, která obsahuje všechny členy oddělení lidských zdrojů, když je jako cloudová aplikace vybrána aplikace HR. Skupinou může být libovolný typ skupiny ve službě Azure AD, včetně dynamických nebo přiřazených skupin zabezpečení a distribuce.
 
-## <a name="exclude-users"></a>Vyloučení uživatelů
+## <a name="exclude-users"></a>Vyloučit uživatele
 
-Vyloučení se běžně používají pro nouzový přístup nebo pro účty pro rozbití. Další informace o účtech pro nouzový přístup a o tom, proč jsou důležité, najdete v následujících článcích: 
+Výjimky se běžně používají pro nouzové přístupové nebo break-glass účty. Další informace o účtech pro nouzový přístup a o tom, proč jsou důležité, naleznete v následujících článcích: 
 
-* [Správa účtů pro nouzový přístup v Azure AD](../users-groups-roles/directory-emergency-access.md)
-* [Vytvoření odolné strategie správy řízení přístupu pomocí Azure Active Directory](../authentication/concept-resilient-controls.md)
+* [Správa účtů pro nouzový přístup ve službě Azure AD](../users-groups-roles/directory-emergency-access.md)
+* [Vytvoření odolné strategie správy řízení přístupu pomocí Služby Azure Active Directory](../authentication/concept-resilient-controls.md)
 
-Při vytváření zásad podmíněného přístupu je k dispozici možnost vyloučit následující možnosti.
+Následující možnosti jsou k dispozici vyloučit při vytváření zásad podmíněného přístupu.
 
-- Všichni uživatelé typu Host a externí uživatelé (Preview)
-   - Tato volba zahrnuje všechny hosty a externí uživatele B2B včetně všech uživatelů s atributem `user type` nastaveným na `guest`. Tento výběr platí také pro všechny přihlášené externí uživatele z jiné organizace, jako je například poskytovatel Cloud Solution Provider (CSP). 
-- Role adresáře (Preview)
-   - Umožňuje správcům vybrat konkrétní role adresáře Azure AD, které se používají k určení přiřazení. Organizace můžou například vytvořit přísnější zásadu pro uživatele, kteří mají přiřazenou roli globálního správce.
+- Všichni hostující a externí uživatelé (náhled)
+   - Tento výběr zahrnuje všechny hosty B2B a `user type` externí uživatele, včetně všech uživatelů s atributem nastaveným na `guest`. Tento výběr platí také pro všechny externí uživatele přihlášené z jiné organizace, jako je poskytovatel cloudových řešení (CSP). 
+- Role adresáře (náhled)
+   - Umožňuje správcům vybrat konkrétní role adresáře Azure AD, které se používají k určení přiřazení. Organizace mohou například vytvořit přísnější zásady pro uživatele, kterým byla přiřazena role globálního správce.
 - Uživatelé a skupiny
-   - Umožňuje zaměřit se na konkrétní skupiny uživatelů. Organizace můžou například vybrat skupinu, která obsahuje všechny členy oddělení lidských zdrojů, když je jako cloudová aplikace vybraná aplikace pro HR. Skupina může být libovolný typ skupiny v Azure AD, včetně dynamických nebo přiřazených skupin zabezpečení a distribuce.
+   - Umožňuje cílení na konkrétní sady uživatelů. Organizace mohou například vybrat skupinu, která obsahuje všechny členy oddělení lidských zdrojů, když je jako cloudová aplikace vybrána aplikace HR. Skupinou může být libovolný typ skupiny ve službě Azure AD, včetně dynamických nebo přiřazených skupin zabezpečení a distribuce.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Podmíněný přístup: cloudové aplikace nebo akce](concept-conditional-access-cloud-apps.md)
+- [Podmíněný přístup: Cloudové aplikace nebo akce](concept-conditional-access-cloud-apps.md)
 
-- [Společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)
+- [Podmíněné přístupové běžné zásady](concept-conditional-access-policy-common.md)

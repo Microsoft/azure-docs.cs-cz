@@ -1,9 +1,9 @@
 ---
-title: Co je monitorování Azure Active Directory? | Dokumenty Microsoft
+title: Co je monitorování Azure Active Directory? | Dokumentace Microsoftu
 description: Poskytuje obecný přehled monitorování Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: e2b3d8ce-708a-46e4-b474-123792f35526
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21102a52c6aa7ae97f3b1c2d671a341f19615a8e
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d63f8440ca527a746f73574bc156037d85fc3599
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68988210"
 ---
 # <a name="what-is-azure-active-directory-monitoring"></a>Co je monitorování Azure Active Directory?
@@ -48,7 +48,7 @@ Pokud chcete spravovat nastavení monitorování pro protokoly aktivit služby A
     
 * Vyberte **Protokoly auditu** nebo **Protokoly přihlášení** a pak vyberte **Exportovat nastavení**. 
 
-    ![Exportovat nastavení](./media/overview-monitoring/export-settings.png)
+    ![Export nastavení](./media/overview-monitoring/export-settings.png)
 
 
 ## <a name="route-logs-to-storage-account"></a>Směrování protokolů do účtu úložiště
@@ -57,16 +57,16 @@ Směrováním protokolů do účtu úložiště Azure můžete zajistit jejich u
 
 ## <a name="stream-logs-to-event-hub"></a>Streamování protokolů do centra událostí
 
-Směrování protokolů do centra událostí Azure vám umožní provést integraci s nástroji SIEM třetích stran, jako je SumoLogic a Splunk. Tato integrace umožňuje kombinovat data protokolu aktivit Azure AD s jinými daty spravovanými vaším SIEM a poskytnout tak lepší přehled o vašem prostředí. Informace o [streamování protokolů do centra událostí](tutorial-azure-monitor-stream-logs-to-event-hub.md).
+Směrování protokolů do centra událostí Azure vám umožní provést integraci s nástroji SIEM třetích stran, jako je SumoLogic a Splunk. Tato integrace umožňuje kombinovat data protokolu aktivit Azure AD s dalšími daty spravovanými vaším SIEM, abyste poskytli bohatší přehled o vašem prostředí. Informace o [streamování protokolů do centra událostí](tutorial-azure-monitor-stream-logs-to-event-hub.md).
 
-## <a name="send-logs-to-azure-monitor-logs"></a>Odeslat protokoly do protokolů Azure Monitor
+## <a name="send-logs-to-azure-monitor-logs"></a>Odesílání protokolů do protokolů Azure Monitoru
 
-[Protokoly Azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) jsou řešení, které konsoliduje data monitorování z různých zdrojů a poskytuje dotazovací jazyk a analytické moduly, které vám poskytnou přehled o provozu aplikací a prostředků. Odesláním protokolů aktivit Azure AD do Azure Monitor protokolů můžete rychle načíst, monitorovat a upozornit shromážděná data. Naučte se [odesílat data do protokolů Azure monitor](howto-integrate-activity-logs-with-log-analytics.md).
+[Protokoly Azure Monitor je](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) řešení, které konsoliduje data monitorování z různých zdrojů a poskytuje dotazovací jazyk a analytický modul, který vám poskytne přehled o provozu vašich aplikací a prostředků. Odesláním protokolů aktivit Azure AD do protokolů Azure Monitoru můžete rychle načítat, monitorovat a upozorňovat na shromážděná data. Přečtěte si, jak [odesílat data do protokolů Azure Monitoru](howto-integrate-activity-logs-with-log-analytics.md).
 
-Můžete také nainstalovat předem připravená zobrazení, aby protokoly aktivit služby Azure AD monitorovaly běžné scénáře včetně událostí přihlášení a auditu. Naučte se [instalovat a používat zobrazení Log Analytics pro protokoly aktivit Azure AD](howto-install-use-log-analytics-views.md).
+Můžete také nainstalovat předem připravená zobrazení, aby protokoly aktivit služby Azure AD monitorovaly běžné scénáře včetně událostí přihlášení a auditu. Zjistěte, jak [nainstalovat a používat zobrazení analýzy protokolů pro protokoly aktivit Azure AD](howto-install-use-log-analytics-views.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Protokoly aktivit ve službě Azure Monitor](concept-activity-logs-azure-monitor.md)
 * [Streamování protokolů do centra událostí](tutorial-azure-monitor-stream-logs-to-event-hub.md)
-* [Odeslat protokoly do protokolů Azure Monitor](howto-integrate-activity-logs-with-log-analytics.md)
+* [Odesílání protokolů do protokolů Azure Monitoru](howto-integrate-activity-logs-with-log-analytics.md)

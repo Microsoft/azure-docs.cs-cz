@@ -1,6 +1,6 @@
 ---
-title: Osvědčené postupy pro výběr ID časových řad – Azure Time Series Insights | Microsoft Docs
-description: Seznamte se s osvědčenými postupy při volbě ID časové řady v Azure Time Series Insights Preview.
+title: Doporučené postupy pro výběr ID časové řady – Přehledy Azure Time Series | Dokumenty společnosti Microsoft
+description: Přečtěte si o doporučených postupech při výběru ID časové řady ve verzi Azure Time Series Insights Preview.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -11,55 +11,55 @@ ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: seodec18
 ms.openlocfilehash: a62c2460698408f6a2bfa51c6638bdeaf88bb31f
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77083523"
 ---
-# <a name="best-practices-for-choosing-a-time-series-id"></a>Osvědčené postupy pro výběr ID řady času
+# <a name="best-practices-for-choosing-a-time-series-id"></a>Doporučené postupy pro výběr ID časové řady
 
-Tento článek shrnuje důležitost ID časových řad pro prostředí Azure Time Series Insights Preview a osvědčené postupy pro jejich výběr.
+Tento článek shrnuje důležitost ID časové řady pro prostředí Azure Time Series Insights Preview a osvědčené postupy pro výběr jednoho.
 
 ## <a name="choose-a-time-series-id"></a>Volba ID služby Time Series
 
-Výběr vhodného ID časové řady je kritický. Volba ID řady času je třeba zvolit klíč oddílu pro databázi. Vyžaduje se při vytváření prostředí Time Series Insights Preview. 
+Výběr vhodného ID časové řady je velmi důležitý. Výběr ID časové řady je jako výběr klíče oddílu pro databázi. Je vyžadována při vytváření prostředí Náhled přehledů časové řady. 
 
 > [!IMPORTANT]
-> ID časových řad:
-> * Vlastnost rozlišuje *velká a malá* písmena: písmena a znaky jsou používány v hledání, porovnávání, aktualizacích a při dělení.
-> * *Neproměnlivá* vlastnost: po vytvoření ji nelze změnit.
+> ID časových řad jsou:
+> * Vlastnost *rozlišující malá a* velká písmena: písmena a znaky se používají při hledání, porovnání, aktualizace a při dělení.
+> * *Neměnná* vlastnost: po vytvoření ji nelze změnit.
 
 > [!TIP]
-> Pokud je zdrojem událostí centrum IoT, ID vaší časové řady bude pravděpodobně ***iothub-ID zařízení-připojení***.
+> Pokud je zdrojem událostí centrum IoT, bude vaše ID časové řady pravděpodobně ***iothub-connection-device-id***.
 
-Klíčové osvědčené postupy, které je potřeba provést, zahrnují:
+Mezi klíčové osvědčené postupy, které je třeba dodržovat, patří:
 
-* Vyberte klíč oddílu s velkým počtem jedinečných hodnot (například stovky nebo tisíce). V mnoha případech to může být ID zařízení, ID senzoru nebo ID značky ve formátu JSON.
-* ID časové řady by mělo být jedinečné na úrovni uzlu na úrovni listu [modelu časové řady](./time-series-insights-update-tsm.md).
-* Omezení počtu znaků pro řetězec názvu vlastnosti časové řady je 128. Pro hodnotu vlastnosti ID časové řady je limit znaků 1 024.
-* Pokud hodnota jedinečné vlastnosti pro ID časové řady chybí, bude zpracována jako hodnota null a bude se jednat o stejné pravidlo omezení jedinečnosti.
-* Jako ID časové řady můžete také vybrat až *tři* vlastnosti klíče. Jejich kombinace bude složený klíč, který představuje ID časové řady.  
+* Vyberte klíč oddílu s mnoha odlišnými hodnotami (například stovky nebo tisíce). V mnoha případech se může jedná o ID zařízení, ID senzoru nebo ID značky v jsonu.
+* ID časové řady by mělo být jedinečné na úrovni listu vašeho [modelu časové řady](./time-series-insights-update-tsm.md).
+* Limit znaků pro řetězec názvu vlastnosti ID časové řady je 128. Pro hodnotu vlastnosti ID časové řady je limit znaků 1 024.
+* Pokud chybí jedinečná hodnota vlastnosti pro ID časové řady, je považována za hodnotu null a řídí se stejným pravidlem omezení jedinečnosti.
+* Jako ID časové řady můžete také vybrat až *tři* klíčové vlastnosti. Jejich kombinace bude složený klíč, který představuje ID časové řady.  
   > [!NOTE]
-  > Vaše tři klíčové vlastnosti musí být řetězce.
-  > Museli byste dotazovat na tento složený klíč místo na jednu vlastnost současně.
+  > Tři klíčové vlastnosti musí být řetězce.
+  > Budete muset dotaz proti tento složený klíč namísto jedné vlastnosti najednou.
 
-## <a name="select-more-than-one-key-property"></a>Vybrat více než jednu vlastnost klíče
+## <a name="select-more-than-one-key-property"></a>Výběr více než jedné klíčové vlastnosti
 
-Následující scénáře popisují výběr více než jedné vlastnosti klíče jako ID časové řady.  
+Následující scénáře popisují výběr více než jedné klíčové vlastnosti jako ID časové řady.  
 
 ### <a name="example-1-time-series-id-with-a-unique-key"></a>Příklad 1: ID časové řady s jedinečným klíčem
 
-* Máte starší verze loďstva prostředků. Každá z nich má jedinečný klíč.
-* Jeden vozový park je jednoznačně identifikovaný vlastností **deviceId**. V případě jiného loďstva je jedinečná vlastnost **objectID**. Žádná z těchto vlastností nezahrnuje jedinečné vlastnosti jiného loďstva. V tomto příkladu byste vybrali dva klíče, **deviceId** a **objectID**jako jedinečné klíče.
-* Hodnoty null přijímáme a chybějící přítomnost vlastnosti v datové části události se počítá jako hodnota null. To je také vhodný způsob, jak zpracovávat odesílající data do dvou zdrojů událostí, kde data v každém zdroji událostí mají jedinečné ID časové řady.
+* Máte starší flotily aktiv. Každý z nich má jedinečný klíč.
+* Jeden vozový park je jednoznačně identifikován vlastností **deviceId**. Pro jiný vozový park, jedinečná vlastnost je **objectId**. Ani jeden z flotily neobsahuje jedinečný majetek druhé flotily. V tomto příkladu byste vybrali dvě klávesy, **deviceId** a **objectId**, jako jedinečné klíče.
+* Přijímáme hodnoty null a nedostatek přítomnosti vlastnosti v datové části události se počítá jako hodnota null. Toto je také vhodný způsob zpracování odesílání dat do dvou zdrojů událostí, kde data v každém zdroji událostí má jedinečné ID časové řady.
 
-### <a name="example-2-time-series-id-with-a-composite-key"></a>Příklad 2: ID časové řady se složeným klíčem
+### <a name="example-2-time-series-id-with-a-composite-key"></a>Příklad 2: ID časové řady s složeným klíčem
 
-* Budete potřebovat více vlastností být jedinečný v rámci stejného počtu prostředků. 
-* Jste výrobcem inteligentních budov a nasadili snímače v každé místnosti. V každé místnosti jsou obvykle stejné hodnoty pro **sensorId**. Příklady jsou **sensor1**, **sensor2**a **sensor3**.
-* Vaše budova má překrývající se čísla podlah a místností napříč lokalitami ve vlastnosti **flrRm**. Tato čísla mají hodnoty jako **1a**, **2b**a **3a**.
-* Máte vlastnost, **umístění**, která obsahuje hodnoty, jako je například **Redmond**, **Barceloně**a **Tokio**. Chcete-li vytvořit jedinečnost, určete následující tři vlastnosti jako klíče ID časové řady: **sensorId**, **flrRm**a **Location**.
+* Chcete-li mít v rámci stejné flotily prostředků jedinečné více vlastností. 
+* Jste výrobce chytrých budov a nasazujete senzory do každé místnosti. V každé místnosti obvykle máte stejné hodnoty pro **sensorId**. Příklady jsou **sensor1**, **sensor2**a **sensor3**.
+* Vaše budova má překrývající se čísla podlaží a místností napříč místy v objektu **flrRm**. Tato čísla mají hodnoty jako **1a**, **2b**a **3a**.
+* Máte vlastnost, **umístění**, která obsahuje hodnoty, jako je **Například Redmond**, **Barcelona**a **Tokio**. Chcete-li vytvořit jedinečnost, označte následující tři vlastnosti jako id tlačítka časové řady: **sensorId**, **flrRm**a **umístění**.
 
 Příklad nezpracované události:
 
@@ -72,7 +72,7 @@ Příklad nezpracované události:
 }
 ```
 
-V Azure Portal pak můžete složený klíč zadat následujícím způsobem: 
+Na webu Azure Portal pak můžete zadat složený klíč takto: 
 
 ```JSON
 [{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]
@@ -82,4 +82,4 @@ V Azure Portal pak můžete složený klíč zadat následujícím způsobem:
 
 * Přečtěte si další informace o [modelování dat](./time-series-insights-update-tsm.md).
 
-* Naplánujte si [prostředí pro Azure Time Series Insights Preview](./time-series-insights-update-plan.md).
+* Naplánujte si [prostředí Azure Time Series Insights Preview](./time-series-insights-update-plan.md).
