@@ -1,6 +1,6 @@
 ---
-title: AzCopy odebrat | Microsoft Docs
-description: Tento článek poskytuje referenční informace pro příkaz AzCopy Remove.
+title: azkopie odstranit | Dokumenty společnosti Microsoft
+description: Tento článek obsahuje referenční informace pro příkaz azcopy remove.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -9,17 +9,17 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: abce1acb88e920c0de7bbb6447ec9d838f10486c
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74033987"
 ---
 # <a name="azcopy-remove"></a>azcopy remove
 
-Odstraňte objekty blob nebo soubory z účtu služby Azure Storage.
+Odstraňte objekty BLOB nebo soubory z účtu úložiště Azure.
 
-## <a name="synopsis"></a>Stručný obsah
+## <a name="synopsis"></a>Synopse
 
 ```azcopy
 azcopy remove [resourceURL] [flags]
@@ -27,44 +27,44 @@ azcopy remove [resourceURL] [flags]
 
 ## <a name="related-conceptual-articles"></a>Související koncepční články
 
-- [Začínáme s AzCopy](storage-use-azcopy-v10.md)
-- [Přenos dat pomocí AzCopy a BLOB Storage](storage-use-azcopy-blobs.md)
-- [Přenos dat pomocí AzCopy a úložiště souborů](storage-use-azcopy-files.md)
-- [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
+- [Začínáme s nástrojem AzCopy](storage-use-azcopy-v10.md)
+- [Přenos dat pomocí úložiště AzCopy a Blob](storage-use-azcopy-blobs.md)
+- [Přenos dat pomocí AzCopy a ukládání souborů](storage-use-azcopy-files.md)
+- [Konfigurace, optimalizace a řešení potíží s azcopy](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Příklady
 
-Odeberte jeden objekt BLOB s SAS:
+Odebrání jednoho objektu blob pomocí SAS:
 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
 ```
 
-Odebrat celý virtuální adresář s SAS:
+Odebrání celého virtuálního adresáře pomocí sas:
 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true
 ```
 
-Odeberte jenom hlavní objekty blob ve virtuálním adresáři, ale ne jejich podadresáře:
+Odeberte pouze horní objekty BLOB uvnitř virtuálního adresáře, ale ne jeho podadresáře:
 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --recursive=false
 ```
 
-Odeberte podmnožinu objektů BLOB ve virtuálním adresáři (například pouze soubory s příponou jpg a PDF nebo pokud je název objektu BLOB "" ""):
+Odeberte podmnožinu objektů BLOB ve virtuálním adresáři (například: jenom soubory jpg a pdf nebo pokud je název objektu blob "exactName"):
 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true --include="*.jpg;*.pdf;exactName"
 ```
 
-Odeberte celý virtuální adresář, ale vylučte z oboru určité objekty BLOB (například: každý objekt blob, který začíná foo nebo končí na panelu):
+Odeberte celý virtuální adresář, ale vylučte určité objekty BLOB z oboru (například: každý objekt blob začínající na foo nebo končí pruhem):
 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true --exclude="foo*;*bar"
 ```
 
-Odeberte konkrétní objekty BLOB a virtuální adresáře tak, že do souboru zadáte jejich relativní cesty (ne kódování URL):
+Odstraňte konkrétní objekty BLOB a virtuální adresáře umístěním jejich relativních cest (NOT URL-kódovaných) do souboru:
 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/parent/dir]" --recursive=true --list-of-files=/usr/bar/list.txt
@@ -75,13 +75,13 @@ file content:
 
 ```
 
-Odebere jeden soubor z Blob Storage účtu, který má hierarchický obor názvů (include/Exclude není podporovaný).
+Odeberte jeden soubor z účtu úložiště objektů Blob, který má hierarchický obor názvů (zahrnutí/vyloučení není podporováno).
 
 ```azcopy
 azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/file]?[SAS]"
 ```
 
-Odebrání jednoho adresáře Blob Storage účet, který má hierarchický obor názvů (include/Exclude není podporovaný):
+Odeberte jeden adresář, účet úložiště objektů Blob, který má hierarchický obor názvů (include/exclude není podporováno):
 
 ```azcopy
 azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory]?[SAS]"
@@ -89,29 +89,29 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 ## <a name="options"></a>Možnosti
 
-**--Exclude-řetězec cesty**      Vyloučit tyto cesty při odebrání. Tato možnost nepodporuje zástupné znaky (*). Kontroluje předponu relativní cesty. Příklad: myFolder; myFolder/subDirName/File. PDF.
+**--exclude-path řetězec**      Při odebírání vylučte tyto cesty. Tato možnost nepodporuje zástupné znaky (*). Zkontroluje předponu relativní cesty. Příklad: myFolder;myFolder/subDirName/file.pdf.
 
-**--vyloučit-vzorové** soubory vyloučení, kde název odpovídá seznamu vzorů. Například: *. jpg;* . PDF; přesný
+**--exclude-pattern** Vylučte soubory, kde se název shoduje se seznamem vzorů. Například: *.jpg;*. pdf;exactName
 
-**-h,--** nápovědu pro odebrání
+**-h, --pomoc** při odstraňování
 
-**--include-Path** řetězec zahrnuje pouze tyto cesty při odebrání. Tato možnost nepodporuje zástupné znaky (*). Kontroluje předponu relativní cesty. Příklad: myFolder; myFolder/subDirName/File. PDF
+**--include-path** string Zahrnout pouze tyto cesty při odebírání. Tato možnost nepodporuje zástupné znaky (*). Zkontroluje předponu relativní cesty. Příklad: myFolder;myFolder/subDirName/file.pdf
 
-**--include – řetězec vzorů** zahrnuje pouze soubory, u kterých se název shoduje se seznamem vzorů. Například: *. jpg;* . PDF; přesný
+**--include-pattern** Include only files where the name matches the pattern. Například: *.jpg;*. pdf;exactName
 
-**--list** -File řetězec definuje umístění souboru, který obsahuje seznam souborů a adresářů, které mají být odstraněny. Relativní cesty by měly být odděleny zalomením řádků a cesty by neměly být zakódované pomocí adresy URL.
+**--list-of-files** string Definuje umístění souboru, který obsahuje seznam souborů a adresářů, které mají být odstraněny. Relativní cesty by měly být odděleny konce řádků a cesty by neměly být kódovány adresou URL.
 
-**--řetězec na úrovni protokolu** definuje podrobnosti protokolu pro soubor protokolu. Dostupné úrovně zahrnují: informace (všechny žádosti a odpovědi), upozornění (pomalé odezvy), chyba (pouze neúspěšné žádosti) a žádné (žádné výstupní protokoly). (výchozí informace ') (výchozí "informace")
+**--řetězec na úrovni protokolu** Definujte podrobnost protokolu pro soubor protokolu. Dostupné úrovně zahrnují: INFO (všechny požadavky/odpovědi), UPOZORNĚNÍ (pomalé odpovědi), ERROR (pouze neúspěšné požadavky) a NONE (žádné výstupní protokoly). (výchozí 'INFO') (výchozí "INFO")
 
-**--rekurzivní**                Při synchronizaci mezi adresáři se rekurzivně vyhledávají podadresáře.
+**--rekurzivní**                Při synchronizaci mezi adresáři se rekurzivně podívejte do podadresářů.
 
 ## <a name="options-inherited-from-parent-commands"></a>Možnosti zděděné z nadřazených příkazů
 
 |Možnost|Popis|
 |---|---|
-|--Cap – Mbps|Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.|
-|--výstupní řetězec typu|Formát výstupu příkazu Mezi možnosti patří: text, JSON. Výchozí hodnota je "text".|
+|--cap-mbps uint32|Završuje přenosovou rychlost v megabitech za sekundu. Propustnost se může mírně lišit od víčka. Pokud je tato možnost nastavena na nulu nebo je vynechána, propustnost není omezena.|
+|--řetězec výstupního typu|Formát výstupu příkazu. Volby zahrnují: text, json. Výchozí hodnota je "text".|
 
 ## <a name="see-also"></a>Viz také
 
-- [AzCopy](storage-ref-azcopy.md)
+- [azkopie](storage-ref-azcopy.md)

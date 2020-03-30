@@ -1,5 +1,5 @@
 ---
-title: Rychlý Start pro zásady pojmenování skupin – Azure Active Directory | Microsoft Docs
+title: Rychlý start zásad pojmenování skupin – Služba Azure Active Directory | Dokumenty společnosti Microsoft
 description: Tento článek vysvětluje, jak ve službě Azure Active Directory přidat nové uživatele nebo odstranit existující uživatele.
 services: active-directory
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 84e419ac5c3d292b7e630d1ebb3d3b9f59ef7b8a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74026938"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>Rychlý start: Zásady pojmenování pro skupiny v Azure Active Directory
@@ -29,45 +29,45 @@ V tomto rychlém startu nastavíte ve svém tenantovi Azure Active Directory (Az
 * Pomoc s uspořádáním skupin do kategorií v adresáři.
 * Blokování použití určitých slov v názvech a aliasech skupin.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
-## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-portal"></a>Konfigurace zásady pojmenování skupin pro tenanta pomocí Azure Portal
+## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-portal"></a>Konfigurace zásad pojmenování skupin pro klienta pomocí portálu Azure Portal
 
-1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu správce uživatele.
-1. Vyberte **skupiny**a pak výběrem **zásady pojmenování** otevřete stránku zásady pojmenování.
+1. Přihlaste se k [Centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu správce uživatele.
+1. Vyberte **Skupiny**, pak vyberte **Zásady pojmenování** a otevřete stránku Zásady pojmenování.
 
-    ![Otevřete stránku zásady pojmenování v centru pro správu.](./media/groups-naming-policy/policy.png)
+    ![Otevřete stránku Zásady pojmenování v Centru pro správu](./media/groups-naming-policy/policy.png)
 
-### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>Zobrazit nebo upravit zásady pojmenování přípon předpon
+### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>Zobrazení nebo úprava zásady pojmenování předpony
 
-1. Na stránce **zásady pojmenování** vyberte **zásady pojmenování skupin**.
-1. Aktuální předponu nebo zásady pojmenování přípon můžete zobrazit nebo upravit jednotlivě tak, že vyberete atributy nebo řetězce, které chcete vykonat jako součást zásad pojmenování.
-1. Pokud chcete ze seznamu odebrat předponu nebo příponu, vyberte předponu nebo příponu a pak vyberte **Odstranit**. Současně lze odstranit více položek.
-1. Vyberte **Uložit** pro změny zásady, aby se projevily.
+1. Na stránce **Zásady pojmenování** vyberte **zásady pojmenování skupin**.
+1. Aktuální zásady pojmenování předpony nebo přípony můžete zobrazit nebo upravit jednotlivě výběrem atributů nebo řetězců, které chcete vynutit jako součást zásad pojmenování.
+1. Pokud chcete odebrat předponu nebo příponu ze seznamu, vyberte předponu nebo příponu a pak vyberte **Odstranit**. Současně lze odstranit více položek.
+1. Vyberte **Uložit,** aby změny zásad y vstoupily v platnost.
 
-### <a name="view-or-edit-the-custom-blocked-words"></a>Zobrazit nebo upravit vlastní blokovaná slova
+### <a name="view-or-edit-the-custom-blocked-words"></a>Zobrazení nebo úprava vlastních blokovaných slov
 
-1. Na stránce **zásady pojmenování** vyberte **blokovaná slova**.
+1. Na stránce **Zásady pojmenování** vyberte **Blokovaná slova**.
 
-    ![seznam blokovaných slov pro úpravy a nahrání pro zásady pojmenování](./media/groups-naming-policy/blockedwords.png)
+    ![upravit a odeslat seznam blokovaných slov pro zásady pojmenování](./media/groups-naming-policy/blockedwords.png)
 
-1. Výběrem položky **Stáhnout**zobrazíte nebo upravíte aktuální seznam vlastních blokovaných slov.
-1. Kliknutím na ikonu souboru Nahrajte nový seznam vlastních blokovaných slov.
-1. Vyberte **Uložit** pro změny zásady, aby se projevily.
+1. Zobrazení nebo úprava aktuálního seznamu vlastních blokovaných slov výběrem **možnosti Stáhnout**.
+1. Nahrajte nový seznam vlastních blokovaných slov výběrem ikony souboru.
+1. Vyberte **Uložit,** aby změny zásad y vstoupily v platnost.
 
 A to je vše. Nastavili jste zásady pojmenování a přidali jste vlastní blokovaná slova.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-### <a name="remove-the-naming-policy-using-azure-portal"></a>Odeberte zásady pojmenování pomocí Azure Portal
+### <a name="remove-the-naming-policy-using-azure-portal"></a>Odebrání zásad pojmenování pomocí portálu Azure Portal
 
-1. Na stránce **zásady pojmenování** vyberte **Odstranit zásadu**.
-1. Po potvrzení odstranění se odeberou zásady pojmenování, včetně všech zásad pojmenování přípon předpon a všech blokovaných slov.
+1. Na stránce **Zásady pojmenování** vyberte **Odstranit zásady**.
+1. Po potvrzení odstranění je zásada pojmenování odebrána, včetně všech zásad pojmenování předpony a všech vlastních blokovaných slov.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se naučili, jak nastavit zásady pojmenování pro vaši organizaci Azure AD prostřednictvím Azure Portal.
+V tomto rychlém startu jste se naučili, jak nastavit zásady pojmenování pro vaši organizaci Azure AD prostřednictvím portálu Azure.
 
-Přejděte k dalšímu článku, kde najdete další informace, včetně rutin PowerShellu pro zásady pojmenování, technických omezení, přidání seznamu vlastních blokovaných slov a koncových uživatelů v aplikacích Office 365.
+Přejde k dalšímu článku další informace, včetně rutin prostředí PowerShell pro zásady pojmenování, technická omezení, přidání seznamu vlastních blokovaných slov a prostředí koncových uživatelů v aplikacích Office 365.
 > [!div class="nextstepaction"]
-> [Prostředí PowerShell pro zásady pojmenování](groups-naming-policy.md)
+> [Zásady pojmenování Prostředí PowerShell](groups-naming-policy.md)

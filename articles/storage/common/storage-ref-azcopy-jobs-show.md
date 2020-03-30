@@ -1,6 +1,6 @@
 ---
-title: zobrazení úloh AzCopy | Microsoft Docs
-description: Tento článek obsahuje referenční informace o příkazu zobrazení úloh AzCopy.
+title: azcopy pracovních míst show | Dokumenty společnosti Microsoft
+description: Tento článek obsahuje referenční informace pro příkaz azcopy jobs show.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -9,23 +9,23 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 7b5f566757dd77a61f252b123d0c9c1b74303fbe
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74034125"
 ---
 # <a name="azcopy-jobs-show"></a>azcopy jobs show
 
-Zobrazí podrobné informace o daném ID úlohy.
+Zobrazuje podrobné informace o ID dané úlohy.
 
-## <a name="synopsis"></a>Stručný obsah
+## <a name="synopsis"></a>Synopse
 
-Pokud je k dispozici pouze ID úlohy bez příznaku, bude vrácena souhrn průběhu úlohy.
+Pokud je zadáno pouze ID úlohy bez příznaku, je vrácen souhrn průběhu úlohy.
 
-Počty bajtů a procento dokončení, které se zobrazí po spuštění tohoto příkazu, odrážejí pouze soubory, které jsou dokončeny v rámci úlohy. Nereflektují částečně dokončené soubory.
+Počet bajtů a procento dokončení, které se zobrazí při spuštění tohoto příkazu, odráží pouze soubory, které jsou dokončeny v úloze. Neodrážejí částečně dokončené soubory.
 
-Pokud je nastaven příznak `with-status`, zobrazí se seznam přenosů v úloze s danou hodnotou.
+Pokud `with-status` je příznak nastaven, zobrazí se seznam převodů v úloze s danou hodnotou.
 
 ```azcopy
 azcopy jobs show [jobID] [flags]
@@ -33,25 +33,25 @@ azcopy jobs show [jobID] [flags]
 
 ## <a name="related-conceptual-articles"></a>Související koncepční články
 
-- [Začínáme s AzCopy](storage-use-azcopy-v10.md)
-- [Přenos dat pomocí AzCopy a BLOB Storage](storage-use-azcopy-blobs.md)
-- [Přenos dat pomocí AzCopy a úložiště souborů](storage-use-azcopy-files.md)
-- [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
+- [Začínáme s nástrojem AzCopy](storage-use-azcopy-v10.md)
+- [Přenos dat pomocí úložiště AzCopy a Blob](storage-use-azcopy-blobs.md)
+- [Přenos dat pomocí AzCopy a ukládání souborů](storage-use-azcopy-files.md)
+- [Konfigurace, optimalizace a řešení potíží s azcopy](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>Možnosti
 
 |Možnost|Popis|
 |--|--|
-|-h,--help|Zobrazí obsah nápovědu pro příkaz Zobrazit.|
-|--with-stavový řetězec|Jenom zobrazit seznam přenosů úlohy s tímto stavem, dostupné hodnoty: spuštěno, úspěch, neúspěšné|
+|-h, --pomoc|Zobrazí obsah nápovědy pro příkaz show.|
+|--s-stavový řetězec|Vypsat pouze převody úlohy s tímto stavem, dostupnými hodnotami: Spuštěno, Úspěch, Nepodařilo se|
 
 ## <a name="options-inherited-from-parent-commands"></a>Možnosti zděděné z nadřazených příkazů
 
 |Možnost|Popis|
 |---|---|
-|--Cap – Mbps|Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.|
-|--výstupní řetězec typu|Formát výstupu příkazu Mezi možnosti patří: text, JSON. Výchozí hodnota je "text".|
+|--cap-mbps uint32|Završuje přenosovou rychlost v megabitech za sekundu. Propustnost se může mírně lišit od víčka. Pokud je tato možnost nastavena na nulu nebo je vynechána, propustnost není omezena.|
+|--řetězec výstupního typu|Formát výstupu příkazu. Volby zahrnují: text, json. Výchozí hodnota je "text".|
 
 ## <a name="see-also"></a>Viz také
 
-- [AzCopy úlohy](storage-ref-azcopy-jobs.md)
+- [azcopy jobs](storage-ref-azcopy-jobs.md)

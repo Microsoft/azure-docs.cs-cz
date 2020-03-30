@@ -1,6 +1,6 @@
 ---
-title: Řešení chyb při spuštění v Azure Linux Virtual Machines | Microsoft Docs
-description: Tento článek vám pomůže s odkazy na články, které vám pomůžou vyřešit chyby při spuštění v Azure Linux Virtual Machines.
+title: Poradce při potížích s chybami při spuštění ve virtuálních počítačích Azure Linux | Dokumenty společnosti Microsoft
+description: Tento článek pomáhá propojit s články k řešení chyb při spuštění ve virtuálních počítačích Azure Linux.
 services: virtual-machines-linux
 documentationCenter: ''
 author: vilibert
@@ -13,40 +13,40 @@ ms.workload: infrastructure
 ms.date: 11/20/2019
 ms.author: vilibert
 ms.openlocfilehash: 37cb201751f72918838efe5837aa0e357d483f24
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74408739"
 ---
-# <a name="troubleshoot-azure-linux-virtual-machines-boot-errors"></a>Řešení potíží s chybami při spuštění Azure Linux Virtual Machines
+# <a name="troubleshoot-azure-linux-virtual-machines-boot-errors"></a>Poradce při potížích s chybami při zavádění virtuálních počítačů Azure Linux
 
-V tomto článku jsou uvedené běžné chyby při spuštění, které se mohou zobrazit při spuštění virtuálního počítače se systémem Linux v nástroji Microsoft Azure. Další informace o chybách najdete v článcích v části **chyby spuštění a řešení** .
+Tento článek uvádí běžné chyby při spuštění systému Linux virtuální počítač (VM) v Microsoft Azure. Další informace o chybách naleznete v článcích v části **Chyby a řešení spouštění.**
 
-## <a name="boot-errors-and-solutions"></a>Chyby a řešení spouštění
+## <a name="boot-errors-and-solutions"></a>Chyby a řešení zaváděcích systémů
 
-* [GRUB zachránit](troubleshoot-vm-boot-error.md)
+* [Záchrana GRUB](troubleshoot-vm-boot-error.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Sériová konzola virtuálních počítačů](serial-console-linux.md)
+- [Konzola sériového portu virtuálního zařízení](serial-console-linux.md)
 
-Řešení potíží s virtuálním počítačem se systémem Linux připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure:
+Poradce při potížích s virtuálním počítačem s Linuxem připojením disku operačního systému k virtuálnímu počítači pro obnovení pomocí Azure:
 
-- [Oprava virtuálního počítače Azure](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)
+- [Oprava virtuálních počítačů Azure](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)
 
- Prohození disku – tuto možnost lze automatizovat pomocí těchto akcí:
-- [Skripty pro obnovení Power Shell](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager)
-- [Skripty pro obnovení bash](https://github.com/sribs/azure-support-scripts)
+ Disk Swap – to lze automatizovat pomocí buď:
+- [Skripty pro obnovení prostředí Power Shell](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager)
+- [bash Zotavení Skripty](https://github.com/sribs/azure-support-scripts)
 
-- [Rozhraní příkazového řádku](troubleshoot-recovery-disks-linux.md)
-- [Azure Portal](troubleshoot-recovery-disks-portal-linux.md)
+- [Cli](troubleshoot-recovery-disks-linux.md)
+- [Portál Azure](troubleshoot-recovery-disks-portal-linux.md)
 
 
-## <a name="disk-swap-video"></a>Video o prohození disku:
+## <a name="disk-swap-video"></a>Video pro výměnu disku:
 
-Pokud nemáte přístup k GRUB, podívejte se na [Toto](https://youtu.be/m5t0GZ5oGAc) video a podívejte se, jak můžete snadno automatizovat postup odkládacího disku pro obnovení virtuálního počítače.
+Pokud nemáte přístup k GRUB podívejte se na [toto](https://youtu.be/m5t0GZ5oGAc) video a uvidíte, jak můžete snadno automatizovat postup odkládání disků obnovit virtuální počítač
 
 ## <a name="unofficial-solution"></a>Neoficiální řešení
 
-Pokus o obnovení virtuálního počítače se taky dá provést s nepodporovaným skriptem BETA [ALAR](https://github.com/malachma/azure-auto-recover)
+Obnovení virtuálního virtuálního míse se může také pokusit pomocí nepodporovaného beta [skriptu ALAR](https://github.com/malachma/azure-auto-recover)
