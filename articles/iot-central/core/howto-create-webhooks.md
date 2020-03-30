@@ -1,47 +1,47 @@
 ---
-title: Vytvořit Webhooky na pravidlech v Azure IoT Central | Microsoft Docs
-description: Vytvoření webhooků ve službě Azure IoT Central pro automatické upozorňování dalších aplikací, když se pravidla aktivují.
+title: Vytváření webhooků pravidel v Azure IoT Central | Dokumenty společnosti Microsoft
+description: Vytvořte webhooky v Azure IoT Central, abyste automaticky upozorňovali ostatní aplikace při spálení pravidel.
 author: viv-liu
 ms.author: viviali
 ms.date: 12/02/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: db4e48a7bff9127810b051a9ab63bbe9d78cf6da
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: d97bd7a3c6de92f22a9880040f407960d5257f6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79271613"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80158091"
 ---
-# <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Vytváření akcí Webhooku u pravidel v Azure IoT Central
+# <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Vytváření akcí webhooku pro pravidla v Azure IoT Central
 
 *Toto téma se týká tvůrců a správců.*
 
-Webhooky umožňují připojit vaši aplikaci IoT Central k ostatním aplikacím a službám pro vzdálené monitorování a oznámení. Webhooky automaticky upozorňují na další aplikace a služby, které připojíte při každém spuštění pravidla ve vaší aplikaci IoT Central. Při aktivaci pravidla pošle vaše aplikace IoT Central požadavek POST koncovému bodu HTTP jiné aplikace. Datová část obsahuje podrobnosti o zařízení a podrobnosti triggeru pravidla.
+Webhooky umožňují připojit aplikaci IoT Central k jiným aplikacím a službám pro vzdálené monitorování a oznámení. Webhooky automaticky upozorňují ostatní aplikace a služby, které se připojí, kdykoli se ve vaší aplikaci IoT Central aktivuje pravidlo. Vaše aplikace IoT Central odešle požadavek POST do koncového bodu HTTP druhé aplikace při každém aktivaci pravidla. Datová část obsahuje podrobnosti o zařízení a podrobnosti o aktivační události pravidla.
 
-## <a name="set-up-the-webhook"></a>Nastavení Webhooku
+## <a name="set-up-the-webhook"></a>Nastavení webového háčku
 
-V tomto příkladu se připojíte k RequestBin a dostanete upozornění, když se pravidla aktivují pomocí webhooků.
+V tomto příkladu se připojíte k RequestBin získat upozornění při požáru pravidel pomocí webhooky.
 
-1. Otevřete [RequestBin](https://requestbin.net/).
+1. Otevřete [requestbin](https://requestbin.net/).
 
-1. Vytvořte novou RequestBin a zkopírujte **adresu URL přihrádky**.
+1. Vytvořte nový RequestBin a zkopírujte **adresu URL přihrádky**.
 
 1. Vytvořte [pravidlo telemetrie](tutorial-create-telemetry-rules.md). Uložte pravidlo a přidejte novou akci.
 
-    ![Obrazovka pro vytvoření Webhooku](media/howto-create-webhooks/webhookcreate.png)
+    ![Webhook vytvoření obrazovky](media/howto-create-webhooks/webhookcreate.png)
 
-1. Vyberte akci Webhooku a zadejte zobrazovaný název a vložte adresu URL přihrádky jako adresu URL zpětného volání.
+1. Zvolte akci webhooku a zadejte zobrazovaný název a vložte adresu URL přihrádky jako adresu URL zpětného volání.
 
 1. Uložte pravidlo.
 
-Když se teď pravidlo aktivuje, zobrazí se v RequestBin nový požadavek.
+Nyní, když se aktivuje pravidlo, zobrazí se nový požadavek v RequestBin.
 
-## <a name="payload"></a>Délka
+## <a name="payload"></a>Datová část
 
-Když se aktivuje pravidlo, požadavek HTTP POST se provede na adresu URL zpětného volání obsahující datovou část JSON s podrobnostmi telemetrie, zařízení, pravidla a aplikace. Datová část by mohla vypadat takto:
+Při aktivaci pravidla je požadavek HTTP POST na adresu URL zpětného volání obsahující datovou část json s podrobnostmi telemetrie, zařízení, pravidla a aplikace. Datová část může vypadat takto:
 
 ```json
 {
@@ -80,10 +80,10 @@ Když se aktivuje pravidlo, požadavek HTTP POST se provede na adresu URL zpětn
 
 ## <a name="known-limitations"></a>Známá omezení
 
-V současné době neexistuje žádný programový způsob odběru nebo odhlášení odběru těchto webhooků prostřednictvím rozhraní API.
+V současné době neexistuje žádný programový způsob přihlášení k odběru / odhlášení z těchto webhooků prostřednictvím rozhraní API.
 
-Pokud máte nějaké nápady, jak tuto funkci vylepšit, pošlete své návrhy na našem [fóru hlasového uživatele](https://feedback.azure.com/forums/911455-azure-iot-central).
+Pokud máte nápady, jak tuto funkci vylepšit, pořiďte své návrhy na našem [uživatelském hlasovém fóru](https://feedback.azure.com/forums/911455-azure-iot-central).
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili, jak nastavit a používat Webhooky, je doporučeným dalším krokem zkoumání [konfigurace Azure Monitorch skupin akcí](howto-use-action-groups.md).
+Teď, když jste se naučili, jak nastavit a používat webhooky, je dalším krokem prozkoumat [konfiguraci skupin akcí Azure Monitor](howto-use-action-groups.md).

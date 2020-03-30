@@ -1,244 +1,244 @@
 ---
-title: Azure Monitor metriky pro Application Gateway
-description: Naučte se používat metriky k monitorování výkonu služby Application Gateway.
+title: Metriky Azure Monitoru pro aplikační bránu
+description: Přečtěte si, jak pomocí metrik sledovat výkon aplikační brány
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: 8b63233aa2b20862e4654c89f1a6dd5d00c78940
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: abff2f16d9559f015417711820a993badd636f7c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096069"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80133079"
 ---
-# <a name="metrics-for-application-gateway"></a>Metriky pro Application Gateway
+# <a name="metrics-for-application-gateway"></a>Metriky pro aplikační bránu
 
-Application Gateway zveřejňuje datové body označované jako metriky, aby se [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) pro výkon instancí Application Gateway a back-endu. Tyto metriky jsou číselné hodnoty v seřazené sadě dat časových řad, které popisují nějaký aspekt aplikační brány v určitou dobu. Pokud jsou požadavky odesílány prostřednictvím Application Gateway, měří a odesílá své metriky v intervalech 60 – sekund. Pokud neexistují žádné požadavky na Application Gateway ani žádná data pro metriku, metrika není hlášena. Další informace najdete v tématu [Azure monitor metriky](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics).
+Aplikační brána publikuje datové body, nazývané metriky, do [Azure Monitoru](https://docs.microsoft.com/azure/azure-monitor/overview) pro výkon vaší aplikační brány a back-endových instancí. Tyto metriky jsou číselné hodnoty v uspořádané sadě dat časových řad, které popisují některé aspekty brány aplikace v určitém čase. Pokud existují požadavky protékající aplikační bránou, měří a odesílá své metriky v 60sekundových intervalech. Pokud nejsou žádné požadavky protékající aplikační bránou nebo žádná data pro metriku, metrika se nehlásí. Další informace najdete v tématu [metriky Azure Monitor .](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics)
 
-## <a name="metrics-supported-by-application-gateway-v2-sku"></a>Metriky podporované Application Gatewaymi SKU verze 2
+## <a name="metrics-supported-by-application-gateway-v2-sku"></a>Metriky podporované soupoložkou soupoložkou brány aplikace V2
 
-### <a name="timing-metrics"></a>Metriky časování
+### <a name="timing-metrics"></a>Časové metriky
 
-Application Gateway poskytuje několik vestavěných metrik časování vztahujících se k žádosti a odpovědi, které se měří v milisekundách. 
+Aplikační brána poskytuje několik předdefinovaných časování metriky související s požadavek a odpověď, které jsou všechny měřeny v milisekundách. 
 
 ![](./media/application-gateway-metrics/application-gateway-metrics.png)
 
 > [!NOTE]
 >
-> Pokud je v Application Gateway více než jeden naslouchací proces, vždy filtrovat podle dimenze *naslouchacího procesu* při porovnávání různých metrik latence, aby bylo možné získat smysluplnější odvození.
+> Pokud existuje více než jeden naslouchací proces v bráně aplikace, pak vždy filtrovat podle dimenze *listener* při porovnávání různých metrik latence s cílem získat smysluplné odvození.
 
 - **Čas připojení back-endu**
 
-  Čas strávený navázáním spojení s back-end aplikací. 
+  Čas strávený navazováním spojení s back-endovou aplikací. 
 
-  To zahrnuje latenci sítě a dobu, kterou zabere zásobník protokolu TCP back-end serveru k navázání nových připojení. V případě protokolu SSL zahrnuje i čas strávený na handshaki. 
+  To zahrnuje latenci sítě, stejně jako čas, který back-endový server zásobníku TCP vytvořit nová připojení. V případě TLS zahrnuje také čas strávený na podání ruky. 
 
-- **Doba odezvy prvního bajtu back-endu**
+- **Doba odezvy back-endu na první bajt**
 
-  Časový interval mezi začátky navázání připojení k back-endu serveru a příjem prvního bajtu hlavičky odpovědi 
+  Časový interval mezi zahájením navazování připojení k back-endovému serveru a přijetím prvního bajtu hlavičky odpovědi. 
 
-  To bude odpovídat součtu *času připojení back-endu*, času, který požadavek přijal pro přístup k back-endu z Application Gateway, což je čas, který aplikace back-end zavedla k tomu, aby reagovala na Application Gateway z back-endu.
+  To se blíží součtu *doby připojení back-endu*, času, který požadavek na dosažení back-endu z aplikační brány, času, který back-endová aplikace odebere k odpovědi (čas, který server využil ke generování obsahu, potenciálně načítat databázové dotazy) a čas, který první bajt odpovědi využil k dosažení aplikační brány z back-endu.
 
-- **Doba odezvy posledního bajtu back-endu**
+- **Doba odezvy back-endu posledního bajtu**
 
-  Časový interval mezi začátky navázání připojení k back-endu serveru a příjem posledního bajtu těla odpovědi 
+  Časový interval mezi zahájením navazování připojení k back-endovému serveru a přijetím posledního bajtu těla odezvy. 
 
-  Tím se blíží součet *doby odezvy back-endu prvního bajtu* a doby přenosu dat (Toto číslo se může značně lišit v závislosti na velikosti požadovaných objektů a latenci serverové sítě).
+  To se blíží součtu *doby odezvy back-endu prvního bajtu* a doby přenosu dat (toto číslo se může značně lišit v závislosti na velikosti požadovaných objektů a latenci sítě serveru).
 
-- **Celková doba aplikační brány**
+- **Celkový čas brány aplikace**
 
-  Průměrná doba, kterou trvá, než se požadavek přijme, zpracuje a pošle odpověď. 
+  Průměrná doba, kterou trvá pro požadavek, který má být přijat, zpracován a jeho odpověď má být odeslána. 
 
-  Toto je interval od času, kdy Application Gateway obdrží první bajt požadavku HTTP na čas, kdy byl klientovi odeslán poslední bajt odpovědi. To zahrnuje dobu zpracování trvání Application Gateway, *čas odezvy back-endu posledního bajtu*, čas potřebný Application Gateway k odeslání všech odpovědí a času *odezvy klienta*.
+  Toto je interval od okamžiku, kdy aplikace gateway obdrží první bajt požadavku HTTP do doby, kdy byl odeslán poslední bajt odpovědi klientovi. To zahrnuje dobu zpracování přijatou application gateway, *back-endposlední bajt doba odezvy*, čas přijatý Application Gateway odeslat všechny odpovědi a *RTT klienta*.
 
-- **Čas odezvy klienta**
+- **RTT klienta**
 
-  Průměrná doba odezvy mezi klienty a Application Gateway.
+  Průměrná doba odezvy mezi klienty a aplikační bránou.
 
 
 
-Tyto metriky se dají použít k určení, jestli je pozorovaná zpomalení z důvodu klientské sítě, Application Gateway výkonu, back-end sítě a back-endu TCP zásobníku, výkonu aplikace back-endu nebo velikosti velkých souborů.
+Tyto metriky lze použít k určení, zda pozorované zpomalení je způsobeno klientské sítě, výkon aplikační brány, back-endové sítě a back-endového serveru TCP sytost zásobníku, výkon back-endové aplikace nebo velké velikosti souboru.
 
-Například pokud dojde k špičkám ve trendu *prvního bajtu doby odezvy back-endu* , ale trend *času připojení back-* endu je stabilní, pak je možné odvodit, že brána Application Gateway na latenci back-endu a čas potřebný k navázání připojení je stabilní, a špička je způsobena nárůstem doby odezvy back-end aplikace. Na druhé straně platí, že pokud je špička v *back-endu doba odezvy prvního bajtu* přidružená k odpovídajícímu špičku v *době připojení back-endu*, je možné odvodit, že síť mezi Application Gateway a back-end serverem nebo zásobníkem protokolu TCP back-end serveru byla sytost. 
+Například Pokud je špička v *back-endu první bajt čas odezvy* trend, ale časový trend *připojení back-endu* je stabilní, pak lze odvodit, že aplikační brána pro latenci back-endu a čas navázání připojení je stabilní a špička je způsobena zvýšením doby odezvy back-endové aplikace. Na druhou stranu pokud špička v *back-endu první bajt doba odezvy* je spojena s odpovídající špičkou v *době připojení back-endu*, pak lze odvodit, že buď síť mezi aplikační bránou a back-endový server nebo back-endový server TCP zásobníku má nasycené. 
 
-Pokud si všimnete špičky v *době, kdy uplynula doba odezvy back-endu* , ale *Doba odezvy prvního bajtu* je stabilní, je možné ji odvodit, protože se požaduje větší požadovaný soubor.
+Pokud zjistíte špičku v *back-endu poslední bajt doba odezvy,* ale *back-end u první hod doba odezvy* je stabilní, pak lze odvodit, že špička je z důvodu větší soubor je požadováno.
 
-Podobně platí, že pokud má služba *Application Gateway celkový čas* špičky, ale *čas posledního bajtu back-endu* je stabilní, může to být buď znaménko kritického bodu výkonu na Application Gateway nebo kritické místo v síti mezi klientem a Application Gateway. Pokud navíc *klient RTT* má také odpovídající špičku, znamená to, že je degradace z důvodu sítě mezi klientem a Application Gateway.
+Podobně pokud *celkový čas aplikační brány* má špičku, ale doba *odezvy back-endu poslední bajt* je stabilní, pak může být buď příznakem kritického místa výkonu v aplikační bráně nebo kritickým bodem v síti mezi klientem a aplikační bránou. Navíc pokud *má rtt klienttaké* odpovídající špičku, pak znamená, že degradace je z důvodu sítě mezi klientem a aplikační bránou.
 
-### <a name="application-gateway-metrics"></a>Application Gateway metriky
+### <a name="application-gateway-metrics"></a>Metriky aplikační brány
 
-Pro Application Gateway jsou k dispozici následující metriky:
+Pro aplikační bránu jsou k dispozici následující metriky:
 
 - **Přijaté bajty**
 
-   Počet bajtů přijatých Application Gateway od klientů
+   Počet bajtů přijatých aplikační bránou od klientů
 
 - **Odeslané bajty**
 
-   Počet bajtů odeslaných Application Gateway klientům
+   Počet bajtů odeslaných aplikační bránou klientům
 
 - **Protokol TLS klienta**
 
-   Počet požadavků TLS a non-TLS iniciované klientem, který vytvořil připojení k Application Gateway. Chcete-li zobrazit distribuci protokolu TLS, filtrujte podle protokolu TLS (Dimension TLS).
+   Počet požadavků TLS a požadavků netls iniciovaných klientem, který navázal spojení s aplikační bránou. Chcete-li zobrazit distribuci protokolu TLS, filtrujte podle protokolu TLS dimenze.
 
-- **Aktuální jednotky kapacity**
+- **Jednotky aktuální kapacity**
 
-   Počet jednotek kapacity spotřebovaných k vyrovnávání zatížení provozu. Existují tři determinanty jednotky kapacity a výpočetní jednotky, trvalá připojení a propustnost. Každá jednotka kapacity se skládá z maximálně: 1 výpočetní jednotka nebo 2500 trvalých připojení nebo propustnosti 2,22 MB/s.
+   Počet jednotek kapacity spotřebovaných k vyrovnávání zatížení provozu. Existují tři determinanty jednotky kapacity - výpočetní jednotka, trvalá připojení a propustnost. Každá jednotka kapacity se skládá maximálně z: 1 výpočetní jednotky nebo 2500 trvalých připojení nebo propustnosti 2,22 Mb/s.
 
 - **Aktuální výpočetní jednotky**
 
-   Počet spotřebovaných kapacit procesoru. Faktory ovlivňující výpočetní jednotku jsou připojení TLS/s, výpočty přepisu adresy URL a zpracování pravidel WAF. 
+   Počet spotřebované kapacity procesoru. Faktory ovlivňující výpočetní jednotku jsou připojení TLS/s, výpočty přepisování adres URL a zpracování pravidel WAF. 
 
 - **Aktuální připojení**
 
-   Celkový počet souběžných připojení aktivních od klientů k Application Gateway
+   Celkový počet souběžných připojení aktivních z klientů do aplikační brány
    
-- **Odhadované jednotky s rozpisem kapacity**
+- **Jednotky odhadované fakturované kapacity**
 
-  V případě SKU verze v2 je cenový model založený na spotřebě. Jednotky kapacity měří náklady založené na spotřebě, které se účtují i s pevnými náklady. *Odhadované jednotky s rozpisem kapacity* označují počet jednotek kapacity, pomocí kterých je fakturace odhadovaná. Počítá se jako větší hodnota mezi *aktuálními jednotkami kapacity* (jednotky kapacity vyžadované k vyrovnávání zatížení provozu) a *pevnými fakturovatelnými jednotkami kapacity* (minimální zřízené kapacity).
+  S skladovou položkou v2 je cenový model řízen spotřebou. Jednotky kapacity měří náklady založené na spotřebě, které jsou účtovány navíc k pevným nákladům. *Jednotky odhadované fakturované kapacity* udávají počet jednotek kapacity, pomocí kterých se fakturace odhaduje. Vypočítá se jako vyšší hodnota mezi *jednotkami aktuální kapacity* (jednotky kapacity potřebné k vyrovnávání zatížení provozu) a *jednotky s pevnou fakturovatelnou kapacitou* (jednotky minimální kapacity jsou zřízeny).
 
-- **Neúspěšné žádosti**
+- **Neúspěšné požadavky**
 
-  Počet neúspěšných žádostí, které Application Gateway obsluhovány Počet požadavků může být dále filtrován tak, aby zobrazoval počet pro každý nebo konkrétní back-end fond – kombinace nastavení http.
+  Počet neúspěšných požadavků, které aplikace gateway obsluhovala. Počet požadavků lze dále filtrovat tak, aby zobrazoval počet za každou/konkrétní kombinaci nastavení back-endového fondu-http.
    
-- **Pevně Fakturovatelné jednotky kapacity**
+- **Jednotky s pevnou fakturovatelnou kapacitou**
 
-  Minimální počet jednotek kapacity uchovávaných v rámci nastavení *minimálních jednotek škálování* (jedna instance překládá na 10 kapacitních jednotek) v konfiguraci Application Gateway.
+  Minimální počet jednotek kapacity udržovaných zřízených podle nastavení *Minimální jednotky škálování* (jedna instance se překládá na 10 jednotek kapacity) v konfiguraci Aplikační brána.
    
  - **Nová připojení za sekundu**
 
-   Průměrný počet nových připojení TCP za sekundu zavedených z klientů na Application Gateway a od Application Gateway ke členům back-endu.
+   Průměrný počet nových připojení TCP za sekundu vytvořených z klientů do aplikační brány a z aplikační brány do back-endových členů.
 
 
 - **Stav odpovědi**
 
-   Application Gateway vrátil stav odpovědi HTTP. Distribuci stavového kódu odpovědi lze dále kategorizovat, aby zobrazovala odpovědi v kategoriích 2xx, 3xx, 4xx a 5xx.
+   Stav odpovědi HTTP vrácený aplikací brány. Rozdělení kódu stavu odpovědi lze dále kategorizovat tak, aby zobrazovala odpovědi v kategoriích 2xx, 3xx, 4xx a 5xx.
 
 - **Propustnost**
 
-   Počet bajtů za sekundu, které Application Gateway zasloužily
+   Počet bajtů za sekundu, které aplikační brána obsluhovala
 
 - **Celkový počet požadavků**
 
-   Počet úspěšných požadavků, které Application Gateway obsluhovány. Počet požadavků může být dále filtrován tak, aby zobrazoval počet pro každý nebo konkrétní back-end fond – kombinace nastavení http.
+   Počet úspěšných požadavků, které aplikace gateway obsluhovala. Počet požadavků lze dále filtrovat tak, aby zobrazoval počet za každou/konkrétní kombinaci nastavení back-endového fondu-http.
 
-### <a name="backend-metrics"></a>Metriky back-endu
+### <a name="backend-metrics"></a>Back-endové metriky
 
-Pro Application Gateway jsou k dispozici následující metriky:
+Pro aplikační bránu jsou k dispozici následující metriky:
 
-- **Stav odpovědi back-endu**
+- **Stav back-endové odpovědi**
 
-  Počet stavových kódů odpovědí HTTP vrácených back-endy. Nezahrnuje žádné kódy odpovědí vygenerované Application Gateway. Distribuci stavového kódu odpovědi lze dále kategorizovat, aby zobrazovala odpovědi v kategoriích 2xx, 3xx, 4xx a 5xx.
+  Počet stavových kódů odpovědí HTTP vrácených back-endy. To nezahrnuje žádné kódy odpovědí generované aplikační bránou. Rozdělení kódu stavu odpovědi lze dále kategorizovat tak, aby zobrazovala odpovědi v kategoriích 2xx, 3xx, 4xx a 5xx.
 
-- **Počet hostitelů v pořádku**
+- **Počet hostitelů v dobrém stavu**
 
-  Počet back-endy, které jsou v pořádku zjištěny sondou stavu. Můžete filtrovat podle fondu back-endu a zobrazit tak počet nefunkčních hostitelů v konkrétním back-end fondu.
+  Počet backendů, které jsou určeny v pořádku sondou stavu. Můžete filtrovat na základě fondu back-end uzobrazit počet hostitelů v pořádku v určitém back-endfondu.
 
-- **Počet hostitelů není v pořádku**
+- **Počet hostitelů ve špatném stavu**
 
-  Počet back-endy, které jsou zjištěny v nesprávném stavu sondou stavu. Můžete filtrovat podle fondu back-endu a zobrazit tak počet nezdravých hostitelů v konkrétním back-end fondu.
+  Počet backendů, které jsou určeny není v pořádku sondou stavu. Můžete filtrovat na základě fondu back-end uzobrazit počet hostitelů není v pořádku v určitém back-endfondu.
   
-- **Počet požadavků za minutu na hostitele v pořádku**
+- **Požadavky za minutu na zdravého hostitele**
 
-  Průměrný počet žádostí přijatých každým zdravým členem v back-endu fondu za minutu. Je nutné zadat fond back-endu pomocí dimenze *problémových bezproblémových* .  
+  Průměrný počet požadavků přijatých každý člen v pořádku v back-endovém fondu za minutu. Je nutné zadat back-endový fond pomocí dimenze *BackendPool HttpSettings.*  
   
 
-## <a name="metrics-supported-by-application-gateway-v1-sku"></a>Metriky podporované Application Gateway v1 SKU
+## <a name="metrics-supported-by-application-gateway-v1-sku"></a>Metriky podporované soupoložkou SKU brány aplikace V1
 
-### <a name="application-gateway-metrics"></a>Application Gateway metriky
+### <a name="application-gateway-metrics"></a>Metriky aplikační brány
 
-Pro Application Gateway jsou k dispozici následující metriky:
+Pro aplikační bránu jsou k dispozici následující metriky:
 
 - **Využití procesoru**
 
-  Zobrazuje využití procesorů přidělených Application Gateway.  Za normálních podmínek by využití CPU nemělo pravidelně překročit 90%, protože to může způsobit latenci na webech hostovaných za Application Gateway a přerušení prostředí klienta. Můžete nepřímo řídit nebo zdokonalovat využití procesoru změnou konfigurace Application Gateway zvýšením počtu instancí nebo přesunutím na větší velikost SKU nebo obojím.
+  Zobrazí využití procesorů přidělených aplikační bráně.  Za normálních podmínek by využití procesoru nemělo pravidelně přesáhnout 90 %, protože to může způsobit latenci na webech hostovaných za aplikační bránou a narušit prostředí klienta. Můžete nepřímo řídit nebo zlepšit využití procesoru úpravou konfigurace aplikační brány zvýšením počtu instancí nebo přesunutím na větší velikost skladové položky nebo provedením obojího.
 
 - **Aktuální připojení**
 
-  Počet aktuálních připojení vytvořených pomocí Application Gateway
+  Počet aktuálních připojení navazujících pomocí aplikační brány
 
-- **Neúspěšné žádosti**
+- **Neúspěšné požadavky**
 
-  Počet neúspěšných žádostí, které Application Gateway obsluhovány Počet požadavků může být dále filtrován tak, aby zobrazoval počet pro každý nebo konkrétní back-end fond – kombinace nastavení http.
+  Počet neúspěšných požadavků, které aplikace gateway obsluhovala. Počet požadavků lze dále filtrovat tak, aby zobrazoval počet za každou/konkrétní kombinaci nastavení back-endového fondu-http.
 
 - **Stav odpovědi**
 
-  Application Gateway vrátil stav odpovědi HTTP. Distribuci stavového kódu odpovědi lze dále kategorizovat, aby zobrazovala odpovědi v kategoriích 2xx, 3xx, 4xx a 5xx.
+  Stav odpovědi HTTP vrácený aplikací brány. Rozdělení kódu stavu odpovědi lze dále kategorizovat tak, aby zobrazovala odpovědi v kategoriích 2xx, 3xx, 4xx a 5xx.
 
 - **Propustnost**
 
-  Počet bajtů za sekundu, které Application Gateway zasloužily
+  Počet bajtů za sekundu, které aplikační brána obsluhovala
 
 - **Celkový počet požadavků**
 
-  Počet úspěšných požadavků, které Application Gateway obsluhovány. Počet požadavků může být dále filtrován tak, aby zobrazoval počet pro každý nebo konkrétní back-end fond – kombinace nastavení http.
+  Počet úspěšných požadavků, které aplikace gateway obsluhovala. Počet požadavků lze dále filtrovat tak, aby zobrazoval počet za každou/konkrétní kombinaci nastavení back-endového fondu-http.
 
-- **Počet blokovaných požadavků firewallu webových aplikací**
-- **Distribuce blokovaných požadavků firewallu webových aplikací**
-- **Distribuce všech pravidel v firewallu webových aplikací**
+- **Počet blokovaných požadavků brány firewall webové aplikace**
+- **Distribuce blokovaných požadavků brány firewall webových aplikací**
+- **Distribuce celkového pravidla brány firewall webových aplikací**
 
-### <a name="backend-metrics"></a>Metriky back-endu
+### <a name="backend-metrics"></a>Back-endové metriky
 
-Pro Application Gateway jsou k dispozici následující metriky:
+Pro aplikační bránu jsou k dispozici následující metriky:
 
-- **Počet hostitelů v pořádku**
+- **Počet hostitelů v dobrém stavu**
 
-  Počet back-endy, které jsou v pořádku zjištěny sondou stavu. Můžete filtrovat podle fondu back-endu a zobrazit tak počet nefunkčních hostitelů v konkrétním back-end fondu.
+  Počet backendů, které jsou určeny v pořádku sondou stavu. Můžete filtrovat na základě fondu back-end uzobrazit počet hostitelů v pořádku v určitém back-endfondu.
 
-- **Počet hostitelů není v pořádku**
+- **Počet hostitelů ve špatném stavu**
 
-  Počet back-endy, které jsou zjištěny v nesprávném stavu sondou stavu. Můžete filtrovat podle fondu back-endu a zobrazit tak počet nezdravých hostitelů v konkrétním back-end fondu.
+  Počet backendů, které jsou určeny není v pořádku sondou stavu. Můžete filtrovat na základě fondu back-end uzobrazit počet hostitelů není v pořádku v určitém back-endfondu.
 
 ## <a name="metrics-visualization"></a>Vizualizace metrik
 
-Přejděte na aplikační bránu a v části **monitorování** vyberte **metriky**. Chcete-li zobrazit dostupné hodnoty, vyberte rozevírací seznam **METRIKA**.
+Přejděte k aplikační bráně v části **Sledování vyberte** **Metriky**. Chcete-li zobrazit dostupné hodnoty, vyberte rozevírací seznam **METRIKA**.
 
-Na následujícím obrázku vidíte příklad se třemi metrikami zobrazenými za posledních 30 minut:
+Na následujícím obrázku se zobrazí příklad se třemi metrikami zobrazenými za posledních 30 minut:
 
 [![](media/application-gateway-diagnostics/figure5.png "Metric view")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
 
-Pokud chcete zobrazit aktuální seznam metrik, přečtěte si téma [podporované metriky s Azure monitor](../azure-monitor/platform/metrics-supported.md).
+Pokud chcete zobrazit aktuální seznam metrik, přečtěte si [téma Podporované metriky s Azure Monitorem](../azure-monitor/platform/metrics-supported.md).
 
-### <a name="alert-rules-on-metrics"></a>Pravidla výstrah pro metriky
+### <a name="alert-rules-on-metrics"></a>Pravidla upozornění na metriky
 
-Můžete spustit pravidla upozornění založená na metrikách prostředku. Například výstraha může zavolat Webhook nebo poslat e-mailem správce, pokud je propustnost služby Application Gateway nad, níže nebo za stanovenou dobu.
+Můžete spustit pravidla výstrah na základě metrik pro prostředek. Výstraha může například volat webhooku nebo e-mailem správce, pokud je propustnost aplikační brány nad, pod nebo na prahové hodnotě pro zadané období.
 
-Následující příklad vás provede vytvořením pravidla upozornění, které pošle e-mailem správci po porušení propustnosti prahovou hodnotu:
+Následující příklad vás provede vytvořením pravidla výstrahy, které odešle e-mail správci poté, co propustnost překročí prahovou hodnotu:
 
-1. Vyberte **Přidat výstrahu metriky** a otevřete stránku **Přidat pravidlo** . Tuto stránku můžete také kontaktovat ze stránky metriky.
+1. vyberte **Přidat upozornění na metriku,** chcete-li otevřít stránku **Přidat pravidlo.** Na tuto stránku se můžete dostat také ze stránky metrik.
 
    ![Tlačítko Přidat upozornění na metriku][6]
 
-2. Na stránce **Přidat pravidlo** vyplňte oddíly název, podmínka a Notify a vyberte **OK**.
+2. Na stránce **Přidat pravidlo** vyplňte oddíly název, podmínka a upozornění a vyberte **OK**.
 
-   * V selektoru **podmínky** vyberte jednu ze čtyř hodnot: **větší než**, **větší než nebo rovno**, **menší**nebo **rovno nebo menší než**.
+   * Ve voliči **podmínky** vyberte jednu ze čtyř hodnot: **Větší než**, Větší **nebo rovno**, **Menší než**nebo Menší **nebo rovno**.
 
-   * V selektoru **období** vyberte období od pěti minut po 6 hodin.
+   * Ve voliči **období** vyberte období od pěti minut do šesti hodin.
 
-   * Pokud vyberete možnost **vlastníci, přispěvatelé a čtenáři e-mailu**, může být e-mail dynamický v závislosti na uživatelích, kteří k tomuto prostředku mají přístup. Jinak můžete v poli **Další e-mailové zprávy správce** zadat čárkami oddělený seznam uživatelů.
+   * Pokud vyberete **vlastníky e-mailů, přispěvatele a čtenáře ,** může být e-mail dynamický na základě uživatelů, kteří mají k tomuto prostředku přístup. V opačném případě můžete do pole **Další e-maily správce** poskytnout seznam uživatelů oddělený chod čárek.
 
-   ![Přidat stránku pravidla][7]
+   ![Stránka Přidat pravidlo][7]
 
-Pokud dojde k porušení prahové hodnoty, přijde e-mail podobný tomu na následujícím obrázku.
+Pokud je prahová hodnota překročena, přijde e-mail, který je podobný e-mailu na následujícím obrázku:
 
-![E-mail pro porušení prahové hodnoty][8]
+![E-mail pro překročení prahové hodnoty][8]
 
-Po vytvoření výstrahy metriky se zobrazí seznam výstrah. Poskytuje přehled o všech pravidlech výstrah.
+Seznam výstrah se zobrazí po vytvoření upozornění metriky. Poskytuje přehled všech pravidel výstrah.
 
-![Seznam výstrah a pravidel][9]
+![Seznam záznamů a pravidel][9]
 
-Další informace o oznámeních výstrah najdete v tématu [přijímání oznámení](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)o výstrahách.
+Další informace o oznámeních s výstrahami najdete v [tématu Příjem oznámení o výstražných upozorněních](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
 
-Další informace o webhookech a o tom, jak je můžete používat s výstrahami, najdete [v tématu Konfigurace Webhooku na upozornění metriky Azure](../azure-monitor/platform/alerts-webhooks.md).
+Další informace o webhooky a jak je můžete používat s výstrahami, navštivte [stránku Konfigurace webhooku v upozornění na metriku Azure](../azure-monitor/platform/alerts-webhooks.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-* Vizualizujte protokoly čítačů a událostí pomocí [Azure monitor protokolů](../azure-monitor/insights/azure-networking-analytics.md).
-* [Vizualizujte si protokol aktivit Azure pomocí Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) Blogový příspěvek.
-* Umožňuje [Zobrazit a analyzovat protokoly aktivit Azure v Power BI a další](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) Blogový příspěvek.
+* Vizualizujte čítač a protokoly událostí pomocí [protokolů Azure Monitor](../azure-monitor/insights/azure-networking-analytics.md).
+* [Vizualizujte svůj protokol aktivit Azure pomocí](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) příspěvku blogu Power BI.
+* [Zobrazte a analyzujte protokoly aktivit Azure v Power BI a další](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) blogové matné příspěvky.
 
 [1]: ./media/application-gateway-diagnostics/figure1.png
 [2]: ./media/application-gateway-diagnostics/figure2.png

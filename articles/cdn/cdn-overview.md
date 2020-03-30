@@ -16,10 +16,10 @@ ms.date: 05/09/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 4158df06b4eea175a4225e478325f8f151795850
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75660626"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Co je síť pro doručování obsahu v Azure?
@@ -38,7 +38,7 @@ Aktuální seznam umístění uzlů CDN najdete v tématu [Lokality POP v Azure 
 ## <a name="how-it-works"></a>Jak to funguje
 ![Přehled CDN](./media/cdn-overview/cdn-overview.png)
 
-1. Uživatel (Alice) požaduje soubor (také označovaný jako prostředek) pomocí adresy URL se speciálním názvem domény, například _&lt;název_koncového_bodu&gt;_ .azureedge.net. Tímto názvem může být název hostitele koncového bodu nebo vlastní doména. DNS přesměruje požadavek do nejvýkonnější lokality POP, což je obvykle lokalita POP, která je geograficky nejblíže uživateli.
+1. Uživatel (Alice) požaduje soubor (nazývaný také datový zdroj) pomocí adresy URL se _ &lt;&gt;_ speciálním názvem domény, jako je například název koncového bodu .azureedge.net. Tímto názvem může být název hostitele koncového bodu nebo vlastní doména. DNS přesměruje požadavek do nejvýkonnější lokality POP, což je obvykle lokalita POP, která je geograficky nejblíže uživateli.
     
 2. Pokud žádné hraniční servery v lokalitě POP nemají soubor v mezipaměti, lokalita POP si soubor vyžádá ze zdrojového serveru. Zdrojovým serverem může být webová aplikace Azure, cloudová služba Azure, účet Azure Storage nebo jakýkoli veřejně přístupný webový server.
    
@@ -64,12 +64,12 @@ Další informace o omezeních předplatného CDN najdete v tématu věnovaném 
 ## <a name="azure-cdn-features"></a>Funkce Azure CDN
 Azure CDN nabízí následující klíčové funkce:
 
-- [Akcelerace dynamického webu](cdn-dynamic-site-acceleration.md)
+- [Dynamická akcelerace webu](cdn-dynamic-site-acceleration.md)
 - [Pravidla ukládání do mezipaměti CDN](cdn-caching-rules.md)
 - [Podpora vlastní domény HTTPS](cdn-custom-ssl.md)
 - [Protokoly diagnostiky Azure](cdn-azure-diagnostic-logs.md)
 - [Komprese](cdn-improve-performance.md)
-- [Geografická filtrování](cdn-restrict-access-by-country.md)
+- [Geografické filtrování](cdn-restrict-access-by-country.md)
 
 Úplný seznam funkcí, které jednotlivé produkty Azure CDN podporují, najdete v [porovnání funkcí produktů Azure CDN](cdn-features.md).
 

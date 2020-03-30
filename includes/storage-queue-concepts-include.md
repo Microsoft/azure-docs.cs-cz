@@ -5,30 +5,30 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 317e47144a716bd1bea5549aed1db0a02250d353
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 23b93f507ef6abe19a0202b28afa31d28490b2b3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77466028"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80151149"
 ---
-## <a name="what-is-queue-storage"></a>Co je Queue Storage?
+## <a name="what-is-queue-storage"></a>Co je úložiště fronty?
 
-Azure Queue Storage je služba pro ukládání velkého počtu zpráv, ke které můžete získat přístup z jakéhokoli místa na světě prostřednictvím ověřených volání s využitím protokolu HTTP nebo HTTPS. Zpráva s jednou frontou může mít velikost až 64 kB a jedna fronta můžete obsahovat miliony zpráv, až do dosažení celkové kapacity účtu úložiště. Fronta úložiště se často používá k vytvoření nevyřízených položek pro asynchronní zpracování.
+Azure Queue Storage je služba pro ukládání velkého počtu zpráv, ke které můžete získat přístup z jakéhokoli místa na světě prostřednictvím ověřených volání s využitím protokolu HTTP nebo HTTPS. Zpráva s jednou frontou může mít velikost až 64 kB a jedna fronta můžete obsahovat miliony zpráv, až do dosažení celkové kapacity účtu úložiště. Úložiště front se často používá k vytvoření nevyřízených položek práce pro zpracování asynchronně.
 
-## <a name="queue-service-concepts"></a>Služba front koncepty
+## <a name="queue-service-concepts"></a>Koncepty služby fronty
 
-Služba front Azure obsahuje následující komponenty:
+Služba Azure Queue obsahuje následující součásti:
 
-![Součásti Azure Služba front](./media/storage-queue-concepts-include/azure-queue-service-components.png)
+![Součásti služby Azure Queue](./media/storage-queue-concepts-include/azure-queue-service-components.png)
 
-* **Formát adresy URL:** Fronty jsou adresovatelné v následujícím formátu adresy URL: http://`<storage account>`. queue.core.windows.net/`<queue>`
+* **Formát adresy URL:** Fronty lze adresovat pomocí následujícího`<storage account>`formátu adresy URL: http:// .queue.core.windows.net/`<queue>`
   
     Následující adresa URL odkazuje na frontu v diagramu:  
   
     `http://myaccount.queue.core.windows.net/incoming-orders`
 
-* **Účet úložiště:** Veškerý přístup k úložišti Azure se provádí prostřednictvím účtu úložiště. Další informace o účtech úložiště najdete v tématu [přehled účtu úložiště] [.. /articles/storage/common/storage-account-overview.md].
+* **Účet úložiště:** Veškerý přístup ke službě Azure Storage se provádí prostřednictvím účtu úložiště. Další informace o účtech úložiště najdete v [tématu Přehled účtu úložiště](../articles/storage/common/storage-account-overview.md).
 * **Fronta:** Fronta obsahuje sadu zpráv. Všechny zprávy musí být ve frontě. Upozorňujeme, že název fronty musí být psaný malými písmeny. Informace o pojmenování front najdete v tématu [Pojmenování front a metadata](https://msdn.microsoft.com/library/azure/dd179349.aspx).
-* **Zpráva:** Zprávu v libovolném formátu o velikosti až 64 kB. Maximální doba, po kterou může zpráva zůstat ve frontě, je 7 dní. V případě verze 2017-07-29 nebo novější může být maximální doba do živého kladného čísla nebo-1, což znamená, že platnost zprávy nevyprší. Pokud je tento parametr vynechán, výchozí hodnota TTL (Time to Live) je sedm dní.
+* **Zpráva:** Zprávu v libovolném formátu o velikosti až 64 kB. Maximální doba, po kterou může zpráva zůstat ve frontě, je 7 dní. Pro verzi 2017-07-29 nebo novější maximální doba aktivní může být libovolné kladné číslo nebo -1 označující, že platnost zprávy nevyprší. Pokud je tento parametr vynechán, výchozí doba aktivní je sedm dní.
 

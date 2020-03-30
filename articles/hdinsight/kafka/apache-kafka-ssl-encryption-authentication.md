@@ -1,6 +1,6 @@
 ---
-title: Apache Kafka ověřování & šifrování SSL – Azure HDInsight
-description: Nastavte šifrování SSL pro komunikaci mezi klienty Kafka a Kafka brokery i mezi zprostředkovateli Kafka. Nastavte ověřování SSL klientů.
+title: Šifrování Apache Kafka SSL & ověřování - Azure HDInsight
+description: Nastavte šifrování SSL pro komunikaci mezi klienty Kafka a makléři Kafka, stejně jako mezi makléři Kafka. Nastavte ověřování SSL klientů.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,50 +8,52 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9b07d16ed97a93b5b5b9422673cfc38ada8e8116
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 4a363caf61046cf39c31ae2d5f35622b7b9109f4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76764370"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80130003"
 ---
-# <a name="set-up-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Nastavení šifrování SSL (Secure Sockets Layer) (SSL) a ověřování pro Apache Kafka ve službě Azure HDInsight
+# <a name="set-up-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Nastavení šifrování a ověřování s vrstvou ssecurenoštých soketů (SSL) pro Apache Kafka v Azure HDInsight
 
-V tomto článku se dozvíte, jak nastavit šifrování SSL mezi Apache Kafka klienty a Apache Kafka brokery. Také se dozvíte, jak nastavit ověřování klientů (někdy označovaného jako obousměrný protokol SSL).
+Tento článek ukazuje, jak nastavit šifrování SSL mezi klienty Apache Kafka a zprostředkovateli Apache Kafka. Také ukazuje, jak nastavit ověřování klientů (někdy označované jako obousměrný SSL).
 
 > [!Important]
-> Existují dva klienty, které lze použít pro aplikace Kafka: klienta Java a klienta konzoly nástroje. Protokol SSL může používat pouze klientský `ProducerConsumer.java` Java pro vytváření i využívání. Klientská `console-producer.sh` výrobce konzoly nepracuje s protokolem SSL.
-
-## <a name="apache-kafka-broker-setup"></a>Nastavení služby Apache Kafka Broker
-
-Instalace zprostředkovatele SSL Kafka bude používat čtyři virtuální počítače clusteru HDInsight následujícím způsobem:
-
-* hlavnímu uzlu 0 – certifikační autorita (CA)
-* pracovní uzel 0, 1 a 2 – zprostředkovatelé
+> Existují dva klienti, které můžete použít pro aplikace Kafka: Java klient a konzolový klient. Pouze klient `ProducerConsumer.java` Java může použít SSL pro výrobu i spotřebu. Klient `console-producer.sh` výrobce konzoly nepracuje s ssl.
 
 > [!Note] 
-> Tato příručka bude používat certifikáty podepsané svým držitelem, ale nejbezpečnější řešení používá certifikáty vydané důvěryhodnými certifikačními autoritami.
+> Výrobce konzoly HDInsight Kafka s verzí 1.1 nepodporuje SSL.
+## <a name="apache-kafka-broker-setup"></a>Apache Kafka broker nastavení
 
-Souhrn procesu instalace zprostředkovatele je následující:
+Nastavení zprostředkovatele Kafka SSL použije čtyři virtuální počítače clusteru HDInsight následujícím způsobem:
 
-1. Následující kroky se opakují na všech třech pracovních uzlech:
+* headnode 0 - Certifikační autorita (CA)
+* uzel pracovníka 0, 1 a 2 - zprostředkovatelé
+
+> [!Note] 
+> Tato příručka bude používat certifikáty podepsané svým držitelem, ale nejbezpečnějším řešením je použití certifikátů vydaných důvěryhodnými certifikačními autoritami.
+
+Souhrn procesu nastavení brokera je následující:
+
+1. Následující kroky se opakují na každém ze tří uzlů pracovníka:
 
     1. Vygenerujte certifikát.
     1. Vytvořte žádost o podepsání certifikátu.
     1. Odešlete žádost o podepsání certifikátu certifikační autoritě (CA).
-    1. Přihlaste se k certifikační autoritě a podepište žádost.
-    1. Odhlásí podepsaný certifikát zpátky do pracovního uzlu.
-    1. BOD připojení služby (SCP) veřejný certifikát certifikační autority do pracovního uzlu.
+    1. Přihlaste se k certifikační autoritě a přihlaste požadavek.
+    1. SCP podepsaný certifikát zpět do pracovního uzlu.
+    1. SCP veřejný certifikát certifikační autority k pracovnímu uzlu.
 
-1. Až budete mít všechny certifikáty, uveďte certifikáty do úložiště certifikátů.
-1. Přejděte na Ambari a změňte konfiguraci.
+1. Jakmile budete mít všechny certifikáty, vložte certifikáty do obchodu s certifikáty.
+1. Přejděte na Ambari a změňte konfigurace.
 
-Pomocí následujících podrobných pokynů dokončete instalaci zprostředkovatele:
+K dokončení nastavení zprostředkovatele použijte následující podrobné pokyny:
 
 > [!Important]
-> V následujících fragmentech kódu wnX je zkratka jednoho ze tří pracovních uzlů a měla by být nahrazena `wn0`, `wn1` nebo `wn2` podle potřeby. `WorkerNode0_Name` a `HeadNode0_Name` by měly být nahrazeny názvy příslušných počítačů.
+> V následujícím kódu výstřižky wnX je zkratka pro jeden ze tří pracovních uzlů `wn0` `wn1` a `wn2` by měla být nahrazena , nebo podle potřeby. `WorkerNode0_Name`a `HeadNode0_Name` měly by být nahrazeny názvy příslušných strojů.
 
-1. Proveďte počáteční nastavení hlavního uzlu 0, který bude pro HDInsight plnit roli certifikační autority (CA).
+1. Proveďte počáteční nastavení na hlavním uzlu 0, který pro HDInsight bude plnit roli certifikační autority (CA).
 
     ```bash
     # Create a new directory 'ssl' and change into it
@@ -67,10 +69,10 @@ Pomocí následujících podrobných pokynů dokončete instalaci zprostředkova
     cd ssl
     ```
 
-1. Na všech pracovních uzlech proveďte následující kroky pomocí níže uvedeného fragmentu kódu.
-    1. Vytvořte úložiště klíčů a naplňte ho pomocí nového privátního certifikátu.
+1. Na každém z pracovních uzlů proveďte následující kroky pomocí fragmentu kódu níže.
+    1. Vytvořte úložiště klíčů a naplňte ho novým privátním certifikátem.
     1. Vytvořte žádost o podepsání certifikátu.
-    1. Spojovací bod služby žádost o podepsání certifikátu certifikační autoritě (headnode0)
+    1. SCP žádost o podpis certifikátu do certifikační autority (headnode0)
 
     ```bash
     keytool -genkey -keystore kafka.server.keystore.jks -validity 365 -storepass "MyServerPassword123" -keypass "MyServerPassword123" -dname "CN=FQDN_WORKER_NODE" -storetype pkcs12
@@ -78,13 +80,13 @@ Pomocí následujících podrobných pokynů dokončete instalaci zprostředkova
     scp cert-file sshuser@HeadNode0_Name:~/ssl/wnX-cert-sign-request
     ```
 
-1. Na počítači certifikační autority spusťte následující příkaz, který vytvoří soubory ca-cert a klíč certifikační autority:
+1. V počítači certifikační autority spusťte následující příkaz k vytvoření souborů ca-cert a ca-key:
 
     ```bash
     openssl req -new -newkey rsa:4096 -days 365 -x509 -subj "/CN=Kafka-Security-CA" -keyout ca-key -out ca-cert -nodes
     ```
 
-1. Přejděte na počítač certifikační autority a podepište všechny přijaté žádosti o podepsání certifikátu:
+1. Změňte na počítač certifikační autority a podepište všechny přijaté žádosti o podepsání certifikátu:
 
     ```bash
     openssl x509 -req -CA ca-cert -CAkey ca-key -in wn0-cert-sign-request -out wn0-cert-signed -days 365 -CAcreateserial -passin pass:"MyServerPassword123"
@@ -92,7 +94,7 @@ Pomocí následujících podrobných pokynů dokončete instalaci zprostředkova
     openssl x509 -req -CA ca-cert -CAkey ca-key -in wn2-cert-sign-request -out wn2-cert-signed -days 365 -CAcreateserial -passin pass:"MyServerPassword123"
     ```
 
-1. Podepsané certifikáty můžete odeslat zpět do pracovních uzlů z certifikační autority (headnode0).
+1. Odeslat podepsané certifikáty zpět do pracovních uzlů z certifikační autority (headnode0).
 
     ```bash
     scp wn0-cert-signed sshuser@WorkerNode0_Name:~/ssl/cert-signed
@@ -100,7 +102,7 @@ Pomocí následujících podrobných pokynů dokončete instalaci zprostředkova
     scp wn2-cert-signed sshuser@WorkerNode2_Name:~/ssl/cert-signed
     ```
 
-1. Odešlete veřejný certifikát certifikační autority do každého pracovního uzlu.
+1. Odešlete veřejný certifikát certifikační autority každému pracovnímu uzlu.
 
     ```bash
     scp ca-cert sshuser@WorkerNode0_Name:~/ssl/ca-cert
@@ -108,7 +110,7 @@ Pomocí následujících podrobných pokynů dokončete instalaci zprostředkova
     scp ca-cert sshuser@WorkerNode2_Name:~/ssl/ca-cert
     ```
 
-1. Do každého pracovního uzlu přidejte veřejný certifikát CAs do úložiště truststore a klíčů. Pak přidejte vlastní podepsaný certifikát pracovního uzlu do úložiště klíčů.
+1. Na každém pracovním uzlu přidejte veřejný certifikát certifikačních autorit do úložiště důvěryhodnosti a úložiště klíčů. Potom přidejte vlastní podepsaný certifikát pracovního uzlu do úložiště klíčů
 
     ```bash
     keytool -keystore kafka.server.truststore.jks -alias CARoot -import -file ca-cert -storepass "MyServerPassword123" -keypass "MyServerPassword123" -noprompt
@@ -117,24 +119,24 @@ Pomocí následujících podrobných pokynů dokončete instalaci zprostředkova
 
     ```
 
-## <a name="update-kafka-configuration-to-use-ssl-and-restart-brokers"></a>Aktualizace konfigurace Kafka pro použití SSL a restartování zprostředkovatelů
+## <a name="update-kafka-configuration-to-use-ssl-and-restart-brokers"></a>Aktualizace konfigurace Kafka pro použití protokolu SSL a restartování zprostředkovatelů
 
-Nyní jste nastavili jednotlivé zprostředkovatele Kafka s úložištěm klíčů a truststore a importovali jste správné certifikáty. Dále upravte související vlastnosti konfigurace Kafka pomocí Ambari a pak restartujte zprostředkovatele Kafka.
+Nyní jste nastavili každý zprostředkovatel Kafka s keystore a truststore a importované správné certifikáty. Dále upravte související vlastnosti konfigurace Kafka pomocí Ambari a restartujte zprostředkovatele Kafka.
 
-Chcete-li dokončit úpravu konfigurace, proveďte následující kroky:
+Chcete-li dokončit změnu konfigurace, postupujte takto:
 
-1. Přihlaste se k Azure Portal a vyberte svůj cluster Azure HDInsight Apache Kafka.
-1. Kliknutím na **Ambari domů** v části **řídicí panely clusteru**přejdete na uživatelské rozhraní Ambari.
-1. V části **zprostředkovatel Kafka** nastavte vlastnost **listeners** na `PLAINTEXT://localhost:9092,SSL://localhost:9093`
-1. V části **Advanced Kafka-Broker** nastavte vlastnost **Security. Inter. Broker. Protocol** na `SSL`
+1. Přihlaste se k portálu Azure a vyberte cluster Azure HDInsight Apache Kafka.
+1. Přejděte na ui Ambari kliknutím na **Domovskou položku Ambari** v **řídicích panelech clusteru**.
+1. V části **Kafka Broker** nastavte vlastnost **posluchačů** na`PLAINTEXT://localhost:9092,SSL://localhost:9093`
+1. V části **Advanced kafka-broker** nastavte vlastnost **security.inter.broker.protocol** na`SSL`
 
-    ![Úprava vlastností konfigurace SSL Kafka v Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari.png)
+    ![Úprava vlastností konfigurace Kafka ssl v Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari.png)
 
-1. V části **Custom Kafka-Broker** nastavte vlastnost **SSL. Client. auth** na `required`. Tento krok se vyžaduje jenom v případě, že nastavujete ověřování a šifrování.
+1. V části **Vlastní kafka-broker** nastavte vlastnost **ssl.client.auth** na `required`. Tento krok je vyžadován pouze v případě, že nastavujete ověřování a šifrování.
 
-    ![Úprava vlastností konfigurace SSL Kafka v Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
+    ![Úprava vlastností konfigurace kafka ssl v Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
 
-1. Přidejte nové vlastnosti konfigurace do souboru Server. Properties.
+1. Přidejte do souboru server.properties nové vlastnosti konfigurace.
 
     ```bash
     # Configure Kafka to advertise IP addresses instead of FQDN
@@ -149,24 +151,30 @@ Chcete-li dokončit úpravu konfigurace, proveďte následující kroky:
     echo "ssl.truststore.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-1. Přejít na uživatelské rozhraní konfigurace Ambari a ověřte, že se nové vlastnosti zobrazují v části **Pokročilá Kafka-ENV** a vlastnost **šablony Kafka-ENV** .
+1. Přejděte na uživatelské rozhraní konfigurace Ambari a ověřte, zda se nové vlastnosti zobrazují v části **Rozšířené kafka-env** a vlastnost **šablony kafka-env.**
 
-    ![Úprava vlastnosti šablony Kafka-ENV v Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env.png)
+    Pro HDI verze 3.6:
 
-1. Restartujte všechny zprostředkovatele Kafka.
-1. Spusťte klienta správce s možnostmi producent a příjemce a ověřte, zda pracují výrobci i spotřebitelé na portu 9093.
+    ![Úprava vlastnosti šablony kafka-env v Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env.png)
 
-## <a name="client-setup-without-authentication"></a>Instalace klienta (bez ověřování)
+    Pro HDI verze 4.0:
 
-Pokud nepotřebujete ověřování, souhrn kroků pro nastavení šifrování SSL:
+     ![Úprava vlastnosti šablony kafka-env ve čtyřech Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env-four.png)   
 
-1. Přihlaste se k certifikační autoritě (aktivnímu hlavnímu uzlu).
-1. Zkopírujte certifikát CA do klientského počítače z počítače certifikační autority (wn0).
-1. Přihlaste se ke klientskému počítači (HN1) a přejděte do složky `~/ssl`.
-1. Importujte certifikát CA do truststore.
+1. Restartujte všechny makléře Kafka.
+1. Spusťte admin klienta s výrobci a spotřebiteli možnosti ověřit, že výrobci i spotřebitelé pracují na portu 9093.
+
+## <a name="client-setup-without-authentication"></a>Nastavení klienta (bez ověřování)
+
+Pokud ověřování nepotřebujete, souhrn kroků k nastavení pouze šifrování SSL je následující:
+
+1. Přihlaste se k certifikační autoritě (aktivní hlavní uzel).
+1. Zkopírujte certifikát certifikační autority do klientského počítače z počítače certifikační autority (wn0).
+1. Přihlaste se ke klientském počítači `~/ssl` (hn1) a přejděte do složky.
+1. Importujte certifikát certifikační autority do úložiště důvěryhodných certifikátů.
 1. Importujte certifikát certifikační autority do úložiště klíčů.
 
-Tyto kroky jsou podrobně popsané v následujících fragmentech kódu.
+Tyto kroky jsou podrobně popsány v následujících fragmentech kódu.
 
 1. Přihlaste se k uzlu certifikační autority.
 
@@ -175,32 +183,32 @@ Tyto kroky jsou podrobně popsané v následujících fragmentech kódu.
     cd ssl
     ```
 
-1. Zkopírujte certifikát CA-CERT do klientského počítače.
+1. Zkopírování ca-certu do klientského počítače
 
     ```bash
     scp ca-cert sshuser@HeadNode1_Name:~/ssl/ca-cert
     ```
 
-1. Přihlaste se ke klientskému počítači (pohotovostní hlavní uzel).
+1. Přihlaste se ke klientském počítači (uzel hlavy v pohotovostním režimu).
 
     ```bash
     ssh sshuser@HeadNode1_Name
     cd ssl
     ```
 
-1. Importujte certifikát CA do truststore.
+1. Importujte certifikát certifikační autority do úložiště důvěryhodných certifikátů.
 
     ```bash
     keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
     ```
 
-1. Importujte certifikát CA do úložiště klíčů.
+1. Importujte certifikát certifikační autority do úložiště klíčů.
     
     ```bash
     keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
     ```
 
-1. Vytvořte soubor `client-ssl-auth.properties`. Měl by mít následující řádky:
+1. Vytvořte `client-ssl-auth.properties`soubor . Měl by mít následující řádky:
 
     ```config
     security.protocol=SSL
@@ -208,27 +216,27 @@ Tyto kroky jsou podrobně popsané v následujících fragmentech kódu.
     ssl.truststore.password=MyClientPassword123
     ```
 
-## <a name="client-setup-with-authentication"></a>Instalace klienta (s ověřováním)
+## <a name="client-setup-with-authentication"></a>Nastavení klienta (s ověřováním)
 
 > [!Note]
-> Následující kroky se vyžadují jenom v případě, že nastavujete šifrování SSL **i** ověřování. Pokud nastavujete jenom šifrování, přečtěte si téma [instalace klienta bez ověření](apache-kafka-ssl-encryption-authentication.md#client-setup-without-authentication).
+> Následující kroky jsou vyžadovány pouze v případě, že nastavujete šifrování **a** ověřování SSL. Pokud pouze nastavujete šifrování, přečtěte si informace [o nastavení klienta bez ověřování](apache-kafka-ssl-encryption-authentication.md#client-setup-without-authentication).
 
-Následující čtyři kroky shrnují úlohy potřebné k dokončení instalace klienta:
+Následující čtyři kroky shrnují úkoly potřebné k dokončení instalace klienta:
 
-1. Přihlaste se ke klientskému počítači (pohotovostní hlavní uzel).
-1. Vytvořte úložiště klíčů Java a získejte podepsaný certifikát pro zprostředkovatele. Pak zkopírujte certifikát do virtuálního počítače, ve kterém je certifikační autorita spuštěná.
-1. Pro podepsání klientského certifikátu přepněte na počítač certifikační autority (aktivní hlavní uzel).
-1. Přejděte do klientského počítače (pohotovostní hlavní uzel) a přejděte do složky `~/ssl`. Zkopírujte podepsaný certifikát do klientského počítače.
+1. Přihlaste se ke klientském počítači (uzel hlavy v pohotovostním režimu).
+1. Vytvořte java keystore a získejte podepsaný certifikát pro makléře. Pak zkopírujte certifikát do virtuálního provozu, kde je spuštěncertifikační autorita.
+1. Přepněte do počítače CERTIFIKAČNÍ autority (aktivní hlavní uzel) a podepište klientský certifikát.
+1. Přejděte do klientského počítače (uzel hlavy v `~/ssl` pohotovostním režimu) a přejděte do složky. Zkopírujte podepsaný certifikát do klientského počítače.
 
-Podrobnosti o jednotlivých krocích jsou uvedeny níže.
+Podrobnosti o každém kroku jsou uvedeny níže.
 
-1. Přihlaste se ke klientskému počítači (pohotovostní hlavní uzel).
+1. Přihlaste se ke klientském počítači (uzel hlavy v pohotovostním režimu).
 
     ```bash
     ssh sshuser@HeadNode1_Name
     ```
 
-1. Odeberte všechny existující adresáře SSL.
+1. Odeberte všechny existující adresáře ssl.
 
     ```bash
     rm -R ~/ssl
@@ -236,7 +244,7 @@ Podrobnosti o jednotlivých krocích jsou uvedeny níže.
     cd ssl
     ```
 
-1. Vytvořte úložiště klíčů Java a vytvořte žádost o podepsání certifikátu. 
+1. Vytvořte úložiště klíčů java a vytvořte žádost o podpis certifikátu. 
 
     ```bash
     keytool -genkey -keystore kafka.client.keystore.jks -validity 365 -storepass "MyClientPassword123" -keypass "MyClientPassword123" -dname "CN=HEADNODE1_FQDN" -storetype pkcs12
@@ -244,13 +252,13 @@ Podrobnosti o jednotlivých krocích jsou uvedeny níže.
     keytool -keystore kafka.client.keystore.jks -certreq -file client-cert-sign-request -storepass "MyClientPassword123" -keypass "MyClientPassword123"
     ```
 
-1. Zkopírování žádosti o podepsání certifikátu certifikační autoritě
+1. Kopírování žádosti o podpis certifikátu do certifikačníautority
 
     ```bash
     scp client-cert-sign-request sshuser@HeadNode0_Name:~/ssl/client-cert-sign-request
     ```
 
-1. Přepněte na počítač certifikační autority (aktivní hlavní uzel) a podepište certifikát klienta.
+1. Přepněte do počítače CA (aktivní hlavní uzel) a podepište klientský certifikát.
 
     ```bash
     ssh sshuser@HeadNode0_Name
@@ -258,19 +266,19 @@ Podrobnosti o jednotlivých krocích jsou uvedeny níže.
     openssl x509 -req -CA ca-cert -CAkey ca-key -in ~/ssl/client-cert-sign-request -out ~/ssl/client-cert-signed -days 365 -CAcreateserial -passin pass:MyClientPassword123
     ```
 
-1. Zkopíruje podepsaný certifikát klienta z certifikační autority (aktivní hlavní uzel) do klientského počítače.
+1. Zkopírujte podepsaný certifikát klienta z certifikační autority (aktivní hlavní uzel) do klientského počítače.
 
     ```bash
     scp client-cert-signed sshuser@HeadNode1_Name:~/ssl/client-signed-cert
     ```
 
-1. Zkopírujte certifikát CA-CERT do klientského počítače.
+1. Zkopírování ca-certu do klientského počítače
 
     ```bash
     scp ca-cert sshuser@HeadNode1_Name:~/ssl/ca-cert
     ```
 
-1. Vytvořte úložiště klientů s podepsaným certifikátem a importujte certifikát CA do úložiště klíčů a truststore:
+1. Vytvořte úložiště klientů s podepsaným certifikátem a importujte certifikát ca do úložiště klíčů a úložiště důvěryhodnosti:
 
     ```bash
     keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -storepass MyClientPassword123 -keypass MyClientPassword123 -noprompt
@@ -280,7 +288,7 @@ Podrobnosti o jednotlivých krocích jsou uvedeny níže.
     keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass MyClientPassword123 -keypass MyClientPassword123 -noprompt
     ```
 
-1. Vytvořte soubor `client-ssl-auth.properties`. Měl by mít následující řádky:
+1. Vytvořte `client-ssl-auth.properties`soubor . Měl by mít následující řádky:
 
     ```bash
     security.protocol=SSL
@@ -294,23 +302,23 @@ Podrobnosti o jednotlivých krocích jsou uvedeny níže.
 ## <a name="verification"></a>Ověření
 
 > [!Note]
-> Pokud je nainstalováno rozhraní HDInsight 4,0 a Kafka 2,1, můžete k ověření instalace použít konzolu výrobce/spotřebitelé. Pokud ne, spusťte producenta Kafka na portu 9092 a odešlete zprávy do tématu a pak použijte příjemce Kafka na portu 9093, který používá protokol SSL.
+> Pokud je nainstalován hdinsight 4.0 a Kafka 2.1, můžete použít výrobce konzole/spotřebitele k ověření nastavení. Pokud ne, spusťte výrobce Kafka na portu 9092 a odesílejte zprávy na téma a potom použijte spotřebitele Kafka na portu 9093, který používá SSL.
 
-### <a name="kafka-21-or-above"></a>Kafka 2,1 nebo vyšší
+### <a name="kafka-21-or-above"></a>Kafka 2.1 nebo vyšší
 
-1. Vytvořte téma, pokud již neexistuje.
+1. Vytvořte téma, pokud ještě neexistuje.
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --zookeeper <ZOOKEEPER_NODE>:2181 --create --topic topic1 --partitions 2 --replication-factor 2
     ```
 
-1.  Spusťte výrobce konzole a zadejte cestu k `client-ssl-auth.properties` jako konfigurační soubor pro producenta.
+1.  Spusťte výrobce konzoly `client-ssl-auth.properties` a zadejte cestu ke konfiguračnímu souboru pro producenta.
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list <FQDN_WORKER_NODE>:9093 --topic topic1 --producer.config ~/ssl/client-ssl-auth.properties
     ```
 
-1.  Spusťte jiné připojení SSH ke klientskému počítači a spusťte klienta konzoly a zadejte cestu k `client-ssl-auth.properties` jako konfigurační soubor pro příjemce.
+1.  Otevřete další připojení ssh ke klientským počítačům `client-ssl-auth.properties` a spusťte konzolu příjemce a poskytněte cestu ke konfiguračnímu souboru pro spotřebitele.
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server <FQDN_WORKER_NODE>:9093 --topic topic1 --consumer.config ~/ssl/client-ssl-auth.properties --from-beginning
@@ -318,19 +326,19 @@ Podrobnosti o jednotlivých krocích jsou uvedeny níže.
 
 ### <a name="kafka-11"></a>Kafka 1,1
 
-1. Vytvořte téma, pokud již neexistuje.
+1. Vytvořte téma, pokud ještě neexistuje.
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --zookeeper <ZOOKEEPER_NODE_0>:2181 --create --topic topic1 --partitions 2 --replication-factor 2
     ```
 
-1.  Spusťte výrobce konzole a poskytněte cestu k souboru Client-SSL-auth. Properties jako konfigurační soubor pro producenta.
+1.  Spusťte výrobce konzoly a zadejte cestu ke vlastnostem client-ssl-auth.properties jako konfiguračnímu souboru pro výrobce.
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list <FQDN_WORKER_NODE>:9092 --topic topic1 
     ```
 
-3.  Spusťte jiné připojení SSH ke klientskému počítači a spusťte klienta konzoly a zadejte cestu k `client-ssl-auth.properties` jako konfigurační soubor pro příjemce.
+3.  Otevřete další připojení ssh ke klientským počítačům `client-ssl-auth.properties` a spusťte konzolu příjemce a poskytněte cestu ke konfiguračnímu souboru pro spotřebitele.
 
     ```bash
     $ /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server <FQDN_WORKER_NODE>:9093 --topic topic1 --consumer.config ~/ssl/client-ssl-auth.properties --from-beginning

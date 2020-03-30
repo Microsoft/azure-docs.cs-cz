@@ -1,53 +1,53 @@
 ---
-title: Připojte funkci jazyka Java k Azure Storage
-description: Naučte se připojit funkci Java aktivovanou protokolem HTTP, která se Azure Storage pomocí výstupní vazby úložiště fronty.
+title: Připojení funkce Java k Azure Storage
+description: Zjistěte, jak připojit funkci Java spouštěnou http k Úložišti Azure pomocí vazby výstupu úložiště fronty.
 author: KarlErickson
 ms.author: karler
 ms.date: 10/14/2019
 ms.topic: quickstart
 zone_pivot_groups: java-build-tools-set
 ms.openlocfilehash: 8ae69bfa7ed00e310205332e05c071158c5fc9a3
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78272809"
 ---
-# <a name="connect-your-java-function-to-azure-storage"></a>Připojte funkci jazyka Java k Azure Storage
+# <a name="connect-your-java-function-to-azure-storage"></a>Připojení funkce Java k Azure Storage
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
-V tomto článku se dozvíte, jak integrovat funkci, kterou jste vytvořili v [předchozím článku rychlý Start](functions-create-first-java-maven.md) s frontou Azure Storage. Výstupní vazba, kterou přidáte do této funkce, zapisuje data z požadavku HTTP do zprávy ve frontě.
+Tento článek ukazuje, jak integrovat funkci, kterou jste vytvořili v [předchozím článku rychlého startu](functions-create-first-java-maven.md) s frontou služby Azure Storage. Výstupní vazba, kterou přidáte do této funkce, zapisuje data z požadavku HTTP do zprávy ve frontě.
 
-Většina vazeb vyžaduje uložený připojovací řetězec, který funkce používá pro přístup k vázané službě. Aby bylo toto připojení snazší, použijte účet úložiště, který jste vytvořili v aplikaci Function App. Připojení k tomuto účtu je již Uloženo v nastavení aplikace s názvem `AzureWebJobsStorage`.  
+Většina vazeb vyžaduje uložený připojovací řetězec, který funkce používá pro přístup k vázané službě. Chcete-li toto připojení usnadnit, použijte účet úložiště, který jste vytvořili pomocí aplikace funkce. Připojení k tomuto účtu je již `AzureWebJobsStorage`uloženo v nastavení aplikace s názvem .  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Než začnete s tímto článkem, proveďte kroky v [části 1 rychlého startu Java](functions-create-first-java-maven.md).
+Před zahájením tohoto článku proveďte kroky v [části 1 rychlého startu jazyka Java](functions-create-first-java-maven.md).
 
-## <a name="download-the-function-app-settings"></a>Stažení nastavení Function App
+## <a name="download-the-function-app-settings"></a>Stažení nastavení aplikace pro funkce
 
 [!INCLUDE [functions-app-settings-download-cli](../../includes/functions-app-settings-download-local-cli.md)]
 
-## <a name="enable-extension-bundles"></a>Povolit sady rozšíření
+## <a name="enable-extension-bundles"></a>Povolení rozšiřujících balíčků
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
-Nyní můžete přidat výstupní vazbu úložiště do projektu.
+Nyní můžete přidat úložiště výstupní vazby do projektu.
 
 ## <a name="add-an-output-binding"></a>Přidání výstupní vazby
 
-V projektu Java jsou vazby definovány jako anotace vazby v metodě Function. Soubor *Function. JSON* pak automaticky generuje na základě těchto poznámek.
+V projektu Java jsou vazby definovány jako vazby poznámky na metodu funkce. Soubor *function.json* je pak automaticky generován na základě těchto anotací.
 
-Přejděte do umístění kódu funkce v části _Src/Main/Java_, otevřete soubor projektu *Function. Java* a do definice `run` metody přidejte následující parametr:
+Přejděte do umístění kódu funkce pod _src/main/java_, otevřete soubor projektu *Function.java* a přidejte do definice `run` metody následující parametr:
 
 ```java
 @QueueOutput(name = "msg", queueName = "outqueue", connection = "AzureWebJobsStorage") OutputBinding<String> msg
 ```
 
-Parametr `msg` je [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) typ, který představuje kolekci řetězců, které jsou zapsány jako zprávy do výstupní vazby po dokončení funkce. V tomto případě je výstupem fronta úložiště s názvem `outqueue`. Připojovací řetězec pro účet úložiště je nastaven metodou `connection`. Místo samotného připojovacího řetězce předáte nastavení aplikace, které obsahuje připojovací řetězec účtu úložiště.
+Parametr `msg` je [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) typ, který představuje kolekci řetězců, které jsou zapsány jako zprávy do výstupní vazby po dokončení funkce. V tomto případě je výstupem `outqueue`fronta úložiště s názvem . Připojovací řetězec pro účet `connection` úložiště je nastaven metodou. Spíše než samotný připojovací řetězec, předáte nastavení aplikace, která obsahuje připojovací řetězec účtu úložiště.
 
-Definice metody `run` by teď měla vypadat jako v následujícím příkladu:  
+Definice `run` metody by nyní měla vypadat jako následující příklad:  
 
 ```java
 @FunctionName("HttpTrigger-Java")
@@ -62,15 +62,15 @@ public HttpResponseMessage run(
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Přidání kódu, který používá výstupní vazbu
 
-Nyní můžete použít nový parametr `msg` k zápisu do výstupní vazby z kódu funkce. Přidejte následující řádek kódu před odpověď na úspěch pro přidání hodnoty `name` do výstupní vazby `msg`.
+Nyní můžete použít nový `msg` parametr k zápisu do výstupní vazby z kódu funkce. Přidejte následující řádek kódu před odpověď úspěch `name` přidat `msg` hodnotu výstupní vazby.
 
 ```java
 msg.setValue(name);
 ```
 
-Když použijete výstupní vazbu, nemusíte používat Azure Storage kód SDK pro ověřování, získání odkazu na frontu nebo zápis dat. Úlohy za běhu functions a Queue výstupní vazby jsou za vás.
+Při použití výstupní vazby, není potřeba použít kód Azure Storage SDK pro ověřování, získání odkazu na frontu nebo zápis dat. Funkce runtime a fronty výstupní vazba provést tyto úkoly za vás.
 
-Vaše metoda `run` by teď měla vypadat jako v následujícím příkladu:
+Vaše `run` metoda by nyní měla vypadat jako následující příklad:
 
 ```java
 @FunctionName("HttpTrigger-Java")
@@ -97,9 +97,9 @@ public HttpResponseMessage run(
 
 ## <a name="update-the-tests"></a>Aktualizace testů
 
-Vzhledem k tomu, že Archetype také vytvoří sadu testů, je nutné aktualizovat tyto testy pro zpracování nového parametru `msg` v signatuře `run` metody.  
+Vzhledem k tomu, že archetyp také vytvoří sadu testů, `msg` je `run` třeba aktualizovat tyto testy zpracovat nový parametr v podpisu metody.  
 
-Přejděte do umístění testovacího kódu v části _Src/test/Java_, otevřete soubor projektu *Function. Java* a v části `//Invoke` nahraďte řádek kódu následujícím kódem.
+Přejděte do umístění testovacího kódu pod _src/test/java_, otevřete soubor projektu *Function.java* a nahraďte řádek kódu pod `//Invoke` následujícím kódem.
 
 ```java
 @SuppressWarnings("unchecked")
@@ -109,11 +109,11 @@ final OutputBinding<String> msg = (OutputBinding<String>)mock(OutputBinding.clas
 final HttpResponseMessage ret = new Function().run(req, msg, context);
 ``` 
 
-Nyní jste připraveni vyzkoušet novou výstupní vazbu místně.
+Nyní jste připraveni vyzkoušet novou vazbu výstupu místně.
 
 ## <a name="run-the-function-locally"></a>Místní spuštění funkce
 
-Stejně jako dřív použijte následující příkaz pro sestavení projektu a místní spuštění Functions Runtime:
+Stejně jako dříve použijte následující příkaz k sestavení projektu a spuštění prostředí Functions místně:
 
 ::: zone pivot="java-build-tools-maven"  
 ```bash
@@ -130,25 +130,25 @@ gradle azureFunctionsRun
 ::: zone-end
 
 > [!NOTE]  
-> Vzhledem k tomu, že jste povolili sady rozšíření v Host. JSON, [rozšíření pro vytváření vazeb úložiště](functions-bindings-storage-blob.md#add-to-your-functions-app) se během spouštění stáhlo a nainstalovalo společně s dalšími rozšířeními vazby Microsoftu.
+> Vzhledem k tomu, že jste povolili balíčky rozšíření v host.json, [rozšíření vazby úložiště](functions-bindings-storage-blob.md#add-to-your-functions-app) byla stažena a nainstalována pro vás při spuštění, spolu s dalšími rozšířeními vazby Společnosti Microsoft.
 
-Stejně jako dřív aktivujte funkci z příkazového řádku pomocí funkce kudrlinkou v novém okně terminálu:
+Stejně jako dříve aktivujete funkci z příkazového řádku pomocí cURL v novém okně terminálu:
 
 ```CMD
 curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
 ```
 
-Tentokrát výstupní vazba také vytvoří ve svém účtu úložiště frontu s názvem `outqueue` a přidá zprávu se stejným řetězcem.
+Tentokrát výstupní vazba také vytvoří `outqueue` frontu pojmenovanou ve vašem účtu úložiště a přidá zprávu se stejným řetězcem.
 
-Dále pomocí Azure CLI zobrazíte novou frontu a ověříte, že se přidala zpráva. Frontu můžete také zobrazit pomocí [Průzkumník služby Microsoft Azure Storage][Azure Storage Explorer] nebo v [Azure Portal](https://portal.azure.com).
+Dále použijete rozhraní příkazového příkazu K zobrazení nové fronty a ověříte, že byla přidána zpráva. Frontu můžete zobrazit taky pomocí [Průzkumníka úložiště Microsoft Azure][Azure Storage Explorer] nebo na [webu Azure Portal](https://portal.azure.com).
 
 [!INCLUDE [functions-storage-account-set-cli](../../includes/functions-storage-account-set-cli.md)]
 
 [!INCLUDE [functions-query-storage-cli](../../includes/functions-query-storage-cli.md)]
 
-### <a name="redeploy-the-project"></a>Znovu nasadit projekt 
+### <a name="redeploy-the-project"></a>Přesadit projekt 
 
-Pokud chcete aktualizovat publikovanou aplikaci, spusťte následující příkaz znovu:  
+Chcete-li publikovanou aplikaci aktualizovat, spusťte znovu následující příkaz:  
 
 ::: zone pivot="java-build-tools-maven"  
 ```bash
@@ -162,21 +162,21 @@ gradle azureFunctionsDeploy
 ```
 ::: zone-end
 
-Znovu můžete použít oblé k otestování nasazené funkce. Stejně jako dřív předejte hodnotu `AzureFunctions` v těle požadavku POST na adresu URL, jako v tomto příkladu:
+Znovu můžete použít cURL k testování nasazené funkce. Stejně jako dříve `AzureFunctions` předavěte hodnotu v textu požadavku POST na adresu URL, jako v tomto příkladu:
 
 ```bash
 curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpTrigger-Java?code=zYRohsTwBlZ68YF.... --data AzureFunctions
 ```
 
-Opětovným [zkontrolováním zprávy fronty úložiště](#query-the-storage-queue) můžete ověřit, zda výstupní vazba vygeneruje novou zprávu ve frontě, podle očekávání.
+Můžete [znovu zkontrolovat zprávu fronty úložiště](#query-the-storage-queue) a ověřit, zda výstupní vazba generuje novou zprávu ve frontě, podle očekávání.
 
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-Aktualizovali jste funkci aktivovanou protokolem HTTP, která zapisuje data do fronty úložiště. Další informace o vývoji Azure Functions pomocí jazyka Java najdete v tématu [Příručka pro vývojáře v Azure Functions Java](functions-reference-java.md) a [Azure Functions triggery a vazby](functions-triggers-bindings.md). Příklady kompletních projektů funkcí v jazyce Java naleznete v tématu [ukázky funkcí jazyka Java](/samples/browse/?products=azure-functions&languages=Java). 
+Aktualizovali jste funkci aktivovanou protokolem HTTP tak, aby zapisovali data do fronty úložiště. Další informace o vývoji funkcí Azure pomocí Jazyka Java najdete v [průvodci vývojářem Azure Functions Java](functions-reference-java.md) a [v Azure Functions triggery a vazby](functions-triggers-bindings.md). Příklady kompletních projektů funkcí v javě naleznete v [ukázkách funkcí jazyka Java](/samples/browse/?products=azure-functions&languages=Java). 
 
-Dále byste měli povolit Application Insights monitorování aplikace Function App:
+Dále byste měli povolit monitorování Application Insights pro vaši aplikaci funkcí:
 
 > [!div class="nextstepaction"]
 > [Povolení integrace Application Insights](functions-monitoring.md#manually-connect-an-app-insights-resource)

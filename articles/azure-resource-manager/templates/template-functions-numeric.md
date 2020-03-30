@@ -1,29 +1,29 @@
 ---
-title: Funkce šablon – numerický
-description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager pro práci s čísly.
+title: Funkce šablony - číselné
+description: Popisuje funkce, které se mají použít v šabloně Azure Resource Manager pro práci s čísly.
 ms.topic: conceptual
 ms.date: 11/08/2017
-ms.openlocfilehash: 91aa637701acb278e81b7eb86aa3ae2db15acc28
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 2ca5c539036d002b83b8141132a0ebf2530dc6af
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79273654"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156340"
 ---
-# <a name="numeric-functions-for-azure-resource-manager-templates"></a>Číselné funkce pro šablony Azure Resource Manager
+# <a name="numeric-functions-for-arm-templates"></a>Číselné funkce pro šablony ARM
 
-Správce prostředků poskytuje následující funkce pro práci s celými čísly:
+Správce prostředků poskytuje následující funkce pro práci s celáčísla v šabloně Správce prostředků Azure (ARM):
 
-* [přidávání](#add)
+* [add](#add)
 * [copyIndex](#copyindex)
-* [značek](#div)
-* [Plovák](#float)
-* [hmot](#int)
-* [počet](#max)
-* [dlouhé](#min)
-* [střední](#mod)
+* [div](#div)
+* [float](#float)
+* [int](#int)
+* [Max](#max)
+* [Min](#min)
+* [Mod](#mod)
 * [mul](#mul)
-* [jednotk](#sub)
+* [Dílčí](#sub)
 
 <a id="add" />
 
@@ -32,14 +32,14 @@ Správce prostředků poskytuje následující funkce pro práci s celými čís
 ## <a name="add"></a>add
 `add(operand1, operand2)`
 
-Vrátí součet dvou zadaných nezáporných celých čísel.
+Vrátí součet dvou poskytnutých celá čísla.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požadováno | Typ | Popis |
-|:--- |:--- |:--- |:--- | 
-|operand1 |Ano |int |První číslo, které se má přidat |
-|Operand2 |Ano |int |Druhé číslo, které se má přidat |
+| Parametr | Požaduje se | Typ | Popis |
+|:--- |:--- |:--- |:--- |
+|operand1 |Ano |int |První číslo přidat. |
+|operand2 |Ano |int |Druhé číslo přidat. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -47,7 +47,7 @@ Celé číslo, které obsahuje součet parametrů.
 
 ### <a name="example"></a>Příklad
 
-Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/add.json) přidává dva parametry.
+Následující [ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/add.json) přidá dva parametry.
 
 ```json
 {
@@ -82,20 +82,20 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
 | addResult | Int | 8 |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
+Chcete-li nasadit tuto ukázkovou šablonu pomocí příkazového příkazového příkazu k řešení Azure, použijte:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json
 ```
 
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
+Chcete-li nasadit tuto ukázkovou šablonu pomocí PowerShellu, použijte:
 
 ```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json 
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json
 ```
 
 <a id="copyindex" />
@@ -103,38 +103,38 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="copyindex"></a>copyIndex
 `copyIndex(loopName, offset)`
 
-Vrátí index iterační smyčky. 
+Vrátí index iterace smyčky.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požadováno | Typ | Popis |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| opakovat | Ne | string | Název smyčky pro získání iterace. |
-| offset |Ne |int |Číslo, které se má přidat do hodnoty iterace založené na nule |
+| název smyčky | Ne | řetězec | Název smyčky pro získání iterace. |
+| posun |Ne |int |Číslo, které chcete přidat k hodnotě iterace založené na nule. |
 
 ### <a name="remarks"></a>Poznámky
 
-Tato funkce se vždycky používá s objektem **copy** . Pokud není k dispozici žádná hodnota pro **posun**, vrátí se aktuální hodnota iterace. Hodnota iterace začíná nulou. Iterace smyčky můžete použít při definování prostředků nebo proměnných.
+Tato funkce se vždy používá s **objektem kopírování.** Pokud není zadána žádná hodnota pro **posun**, je vrácena aktuální hodnota iterace. Hodnota iterace začíná na nule. Iterace smyčky můžete použít při definování buď prostředky nebo proměnné.
 
-Vlastnost **Loop** umožňuje určit, zda copyIndex odkazuje na iteraci prostředku nebo iteraci vlastnosti. Pokud není k dispozici žádná hodnota pro **Loop**, použije se aktuální typ prostředku iterace. Zadejte hodnotu pro **Loop** při iteraci u vlastnosti. 
- 
-Úplný popis způsobu použití **copyIndex**najdete v tématu [vytvoření více instancí prostředků v Azure Resource Manager](copy-resources.md).
+Vlastnost **loopName** umožňuje určit, zda copyIndex odkazuje na iteraci prostředku nebo iteraci vlastností. Pokud pro **název loopName**není zadána žádná hodnota , použije se aktuální iterace typu prostředku. Zadejte hodnotu pro **loopName** při iterace na vlastnost.
 
-Příklad použití **copyIndex** při definování proměnné naleznete v tématu [Variables](template-syntax.md#variables).
+Úplný popis použití **copyIndex**najdete v tématu [Vytvoření více instancí prostředků ve Správci prostředků Azure](copy-resources.md).
+
+Příklad použití **copyIndex** při definování proměnné naleznete v tématu [Proměnné](template-syntax.md#variables).
 
 ### <a name="example"></a>Příklad
 
-Následující příklad ukazuje smyčku kopírování a hodnotu indexu, která je obsažena v názvu. 
+Následující příklad ukazuje smyčku kopírování a hodnotu indexu zahrnutou v názvu.
 
 ```json
-"resources": [ 
-  { 
-    "name": "[concat('examplecopy-', copyIndex())]", 
-    "type": "Microsoft.Web/sites", 
-    "copy": { 
-      "name": "websitescopy", 
-      "count": "[parameters('count')]" 
-    }, 
+"resources": [
+  {
+    "name": "[concat('examplecopy-', copyIndex())]",
+    "type": "Microsoft.Web/sites",
+    "copy": {
+      "name": "websitescopy",
+      "count": "[parameters('count')]"
+    },
     ...
   }
 ]
@@ -149,22 +149,22 @@ Celé číslo představující aktuální index iterace.
 ## <a name="div"></a>div
 `div(operand1, operand2)`
 
-Vrátí celočíselnou část dvou poskytnutých celých čísel.
+Vrátí celé číslo dělení dvou zadaných celá čísla.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požadováno | Typ | Popis |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| operand1 |Ano |int |Číslo, které se má rozdělit. |
-| Operand2 |Ano |int |Číslo, které se používá k rozdělení. Nemůže být 0. |
+| operand1 |Ano |int |Číslo, které se dělí. |
+| operand2 |Ano |int |Číslo, které se používá k dělení. Nemůže být 0. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Celé číslo představující dělení.
+Celé číslo představující rozdělení.
 
 ### <a name="example"></a>Příklad
 
-Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/div.json) vydělí jeden parametr jiným parametrem.
+Následující [ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/div.json) rozdělí jeden parametr jiným parametrem.
 
 ```json
 {
@@ -199,20 +199,20 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
-| divResult | Int | 2 |
+| divVýsledek | Int | 2 |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
+Chcete-li nasadit tuto ukázkovou šablonu pomocí příkazového příkazového příkazu k řešení Azure, použijte:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json
 ```
 
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
+Chcete-li nasadit tuto ukázkovou šablonu pomocí PowerShellu, použijte:
 
 ```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json 
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json
 ```
 
 <a id="float" />
@@ -220,20 +220,20 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="float"></a>float
 `float(arg1)`
 
-Převede hodnotu na číslo s plovoucí desetinnou čárkou. Tuto funkci použijete jenom při předávání vlastních parametrů do aplikace, jako je například aplikace logiky.
+Převede hodnotu na číslo s plovoucí desetinnou tácem. Tuto funkci používáte pouze při předávání vlastníparametry do aplikace, jako je například aplikace logiky.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požadováno | Typ | Popis |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |řetězec nebo int |Hodnota, která má být převedena na číslo s plovoucí desetinnou čárkou. |
+| arg1 |Ano |řetězec nebo int |Hodnota převést na číslo s plovoucí desetinnou tácek. |
 
 ### <a name="return-value"></a>Návratová hodnota
-Číslo s plovoucí desetinnou čárkou.
+Číslo s plovoucí desetinnou tísní.
 
 ### <a name="example"></a>Příklad
 
-Následující příklad ukazuje, jak použít float k předání parametrů do aplikace logiky:
+Následující příklad ukazuje, jak použít float předat parametry do aplikace logiky:
 
 ```json
 {
@@ -258,9 +258,9 @@ Převede zadanou hodnotu na celé číslo.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požadováno | Typ | Popis |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Ano |řetězec nebo int |Hodnota, která má být převedena na celé číslo. |
+| valueToConvert |Ano |řetězec nebo int |Hodnota převést na celé číslo. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -268,14 +268,14 @@ Celé číslo převedené hodnoty.
 
 ### <a name="example"></a>Příklad
 
-Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/int.json) převede uživatelem zadanou hodnotu parametru na Integer.
+Následující [ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/int.json) převede hodnotu parametru zajišťované uživatelem na celé číslo.
 
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "stringToConvert": { 
+        "stringToConvert": {
             "type": "string",
             "defaultValue": "4"
         }
@@ -293,17 +293,17 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
 | intResult | Int | 4 |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
+Chcete-li nasadit tuto ukázkovou šablonu pomocí příkazového příkazového příkazu k řešení Azure, použijte:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
 ```
 
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
+Chcete-li nasadit tuto ukázkovou šablonu pomocí PowerShellu, použijte:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
@@ -314,13 +314,13 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="max"></a>max
 `max (arg1)`
 
-Vrátí maximální hodnotu z pole celých čísel nebo seznam celých čísel oddělených čárkami.
+Vrátí maximální hodnotu z pole celá čísla nebo čárka odděleného seznamu celá čísla.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požadováno | Typ | Popis |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |pole celých čísel nebo seznam celých čísel oddělených čárkami |Kolekce, která získá maximální hodnotu |
+| arg1 |Ano |pole celá čísla nebo seznam celočísel oddělených čárkami |Kolekce získat maximální hodnotu. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -328,7 +328,7 @@ Celé číslo představující maximální hodnotu z kolekce.
 
 ### <a name="example"></a>Příklad
 
-Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/max.json) ukazuje, jak použít Max s polem a seznam celých čísel:
+Následující [ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/max.json) ukazuje, jak používat max s polem a seznamem celá čísla:
 
 ```json
 {
@@ -356,18 +356,18 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
-| arrayOutput | Int | 5 |
+| poleOutput | Int | 5 |
 | intOutput | Int | 5 |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
+Chcete-li nasadit tuto ukázkovou šablonu pomocí příkazového příkazového příkazu k řešení Azure, použijte:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
 ```
 
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
+Chcete-li nasadit tuto ukázkovou šablonu pomocí PowerShellu, použijte:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
@@ -378,13 +378,13 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="min"></a>min
 `min (arg1)`
 
-Vrátí minimální hodnotu z pole celých čísel nebo seznam celých čísel oddělených čárkami.
+Vrátí minimální hodnotu z pole celá čísla nebo čárka odděleného seznamu celá čísla.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požadováno | Typ | Popis |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |pole celých čísel nebo seznam celých čísel oddělených čárkami |Kolekce, která získá minimální hodnotu. |
+| arg1 |Ano |pole celá čísla nebo seznam celočísel oddělených čárkami |Kolekce získat minimální hodnotu. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -392,7 +392,7 @@ Celé číslo představující minimální hodnotu z kolekce.
 
 ### <a name="example"></a>Příklad
 
-Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/min.json) ukazuje, jak použít minimum s polem a seznam celých čísel:
+Následující [ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/min.json) ukazuje, jak používat min s polem a seznamem celá čísla:
 
 ```json
 {
@@ -420,18 +420,18 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
-| arrayOutput | Int | 0 |
+| poleOutput | Int | 0 |
 | intOutput | Int | 0 |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
+Chcete-li nasadit tuto ukázkovou šablonu pomocí příkazového příkazového příkazu k řešení Azure, použijte:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
 ```
 
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
+Chcete-li nasadit tuto ukázkovou šablonu pomocí PowerShellu, použijte:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
@@ -439,24 +439,24 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="mod" />
 
-## <a name="mod"></a>střední
+## <a name="mod"></a>Mod
 `mod(operand1, operand2)`
 
-Vrátí zbytek celočíselného dělení pomocí dvou poskytnutých celých čísel.
+Vrátí zbytek dělení celé číslo pomocí dvou poskytnutých celá čísla.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požadováno | Typ | Popis |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| operand1 |Ano |int |Číslo, které se má rozdělit. |
-| Operand2 |Ano |int |Číslo, které se používá k rozdělení, nemůže být 0. |
+| operand1 |Ano |int |Číslo, které se dělí. |
+| operand2 |Ano |int |Číslo, které se používá k dělení, nelze být 0. |
 
 ### <a name="return-value"></a>Návratová hodnota
 Celé číslo představující zbytek.
 
 ### <a name="example"></a>Příklad
 
-Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mod.json) vrátí zbytek dělení jednoho parametru jiným parametrem.
+Následující [ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mod.json) vrátí zbytek dělení jednoho parametru jiným parametrem.
 
 ```json
 {
@@ -491,17 +491,17 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
-| modResult | Int | 1 |
+| modVýsledek | Int | 1 |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
+Chcete-li nasadit tuto ukázkovou šablonu pomocí příkazového příkazového příkazu k řešení Azure, použijte:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
 ```
 
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
+Chcete-li nasadit tuto ukázkovou šablonu pomocí PowerShellu, použijte:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
@@ -512,14 +512,14 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="mul"></a>mul
 `mul(operand1, operand2)`
 
-Vrací násobení dvou poskytnutých celých čísel.
+Vrátí násobení dvou zadaných celá čísla.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požadováno | Typ | Popis |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| operand1 |Ano |int |První číslo, které se má vynásobit |
-| Operand2 |Ano |int |Druhé číslo, které se má vynásobit |
+| operand1 |Ano |int |První číslo k násobení. |
+| operand2 |Ano |int |Druhé číslo k násobení. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -527,7 +527,7 @@ Celé číslo představující násobení.
 
 ### <a name="example"></a>Příklad
 
-Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mul.json) vynásobí jeden parametr jiným parametrem.
+Následující [ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mul.json) vynásobí jeden parametr jiným parametrem.
 
 ```json
 {
@@ -562,17 +562,17 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
-| mulResult | Int | 15 |
+| mulVýsledek | Int | 15 |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
+Chcete-li nasadit tuto ukázkovou šablonu pomocí příkazového příkazového příkazu k řešení Azure, použijte:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
 ```
 
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
+Chcete-li nasadit tuto ukázkovou šablonu pomocí PowerShellu, použijte:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
@@ -580,24 +580,24 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="sub" />
 
-## <a name="sub"></a>sub
+## <a name="sub"></a>Dílčí
 `sub(operand1, operand2)`
 
-Vrátí odčítání dvou poskytnutých celých čísel.
+Vrátí odečtení dvou zadaných celá čísla.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požadováno | Typ | Popis |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | operand1 |Ano |int |Číslo, které je odečteno od. |
-| Operand2 |Ano |int |Číslo, které se odečte. |
+| operand2 |Ano |int |Číslo, které je odečteno. |
 
 ### <a name="return-value"></a>Návratová hodnota
 Celé číslo představující odčítání.
 
 ### <a name="example"></a>Příklad
 
-Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/sub.json) odečte jeden parametr od jiného parametru.
+Následující [ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/sub.json) odečte jeden parametr od jiného parametru.
 
 ```json
 {
@@ -632,25 +632,25 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
-| podvýsledek | Int | 4 |
+| dílčí výsledek | Int | 4 |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
+Chcete-li nasadit tuto ukázkovou šablonu pomocí příkazového příkazového příkazu k řešení Azure, použijte:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
 ```
 
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
+Chcete-li nasadit tuto ukázkovou šablonu pomocí PowerShellu, použijte:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
 ```
 
 ## <a name="next-steps"></a>Další kroky
-* Popis sekcí v šabloně Azure Resource Manager najdete v tématu [vytváření šablon Azure Resource Manager](template-syntax.md).
-* Chcete-li sloučit více šablon, přečtěte si téma [použití propojených šablon s Azure Resource Manager](linked-templates.md).
-* Informace o iteraci zadaného počtu výskytů při vytváření typu prostředku najdete v tématu [vytvoření více instancí prostředků v Azure Resource Manager](copy-resources.md).
-* Pokud chcete zjistit, jak nasadit šablonu, kterou jste vytvořili, přečtěte si téma [nasazení aplikace pomocí šablony Azure Resource Manager](deploy-powershell.md).
+* Popis oddílů v šabloně Azure Resource Manager u najdete v tématu [Vytváření šablon Azure Resource Manageru](template-syntax.md).
+* Pokud chcete sloučit víc šablon, přečtěte si informace [o použití propojených šablon ve Správci prostředků Azure](linked-templates.md).
+* Chcete-li itrerate zadaný počet časů při vytváření typu prostředku, najdete v [tématu vytvoření více instancí prostředků ve Správci prostředků Azure](copy-resources.md).
+* Informace o tom, jak nasadit vytvořenou šablonu, najdete [v tématu Nasazení aplikace pomocí šablony Azure Resource Manageru](deploy-powershell.md).
 

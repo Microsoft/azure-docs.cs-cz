@@ -1,52 +1,52 @@
 ---
-title: Azure IoT Central Zobrazit/skrýt chat | Microsoft Docs
-description: Tento článek popisuje, jak zobrazit a skrýt chat v aplikaci IoT Central. Pomocí živého chatu můžete získat přístup k technické podpoře.
+title: Azure IoT Central zobrazit/skrýt chat | Dokumenty společnosti Microsoft
+description: Tento článek popisuje, jak zobrazit a skrýt chat ve vaší aplikaci IoT Central. Pomocí živého chatu získáte přístup k technické podpoře.
 author: v-krghan
 ms.author: v-krghan
 ms.date: 08/23/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: bd1c3d27ebedfb8479b9f30ac08d8132b2a44a04
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a8e93ea12f176a4b28f14f5878cc580873d3c7c4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023459"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80157700"
 ---
 # <a name="toggle-live-chat"></a>Přepnutí živého chatu
 
-V tomto článku se dozvíte, jak v aplikaci IoT Central přepnout živý chat. Pomocí živého chatu můžete získat přístup k technické podpoře.
+Tento článek s návody vám ukáže, jak přepnout živý chat ve vaší aplikaci IoT Central. Pomocí živého chatu získáte přístup k technické podpoře.
 
 > [!NOTE]
-> Možnost Chat je dostupná jenom pro aplikace vytvořené pomocí cenového plánu zdarma.
+> Možnost chatu je k dispozici pouze pro aplikace vytvořené pomocí bezplatného cenového plánu.
 
-## <a name="chat-with-us"></a>Spojte se s námi přes chat
+## <a name="chat-with-us"></a>Chatujte s námi
 
-Pokud chcete získat technickou podporu, otevřete aplikaci IoT Central a **v nás vyberte chat**.
+Chcete-li získat technickou podporu, otevřete aplikaci IoT Central a vyberte **možnost Chatovat s námi**.
 
-![Spojte se s námi přes chat](media/howto-show-hide-chat/chat-with-us.png)
+![Chatujte s námi](media/howto-show-hide-chat/chat-with-us.png)
 
 Můžete zadat otázku, jak je znázorněno na následujícím snímku obrazovky:
 
-![Formulář konfigurace podrobností o zařízení s podrobnostmi o nastavení a vlastnostech](media/howto-show-hide-chat/sample-chat.png)
+![Formulář Konfigurovat podrobnosti o zařízení s podrobnostmi o nastavení a vlastnostech](media/howto-show-hide-chat/sample-chat.png)
 
 ## <a name="hide-chat"></a>Skrýt chat
 
-Chcete-li skrýt chat, klikněte na tlačítko **Skrýt chat** na panelu pro **usnadnění** :
+Chcete-li chat skrýt, zvolte **Skrýt chat** v panelu **Nápověda:**
 
  ![Skrýt chat](media/howto-show-hide-chat/hide-chat.png)
 
-## <a name="enable-chat"></a>Povolit chat
+## <a name="enable-chat"></a>Povolení chatu
 
-Chcete-li zobrazit chat, na panelu **help** vyberte možnost **Zobrazit chat** :
+Chcete-li chat zobrazit, zvolte **Zobrazit chat** v panelu **Nápověda:**
 
  ![Zobrazit chat](media/howto-show-hide-chat/show-chat.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili, jak přepnout živý chat v Azure IoT Central, je tady doporučený další krok:
+Teď, když jste se naučili přepínat živý chat ve Službě Azure IoT Central, tady je další doporučený krok:
 
 > [!div class="nextstepaction"]
-> [Přidání dlaždic do řídicího panelu](howto-add-tiles-to-your-dashboard.md)
+> [Přidání dlaždic na řídicí panel](howto-add-tiles-to-your-dashboard.md)

@@ -1,5 +1,5 @@
 ---
-title: ZASTARALÉ Hostování kontejnerů Docker v cloudu Azure
+title: (ZASTARALÉ) Hostování kontejnerů dockeru v Azure cloudu
 description: Služba Azure Container Service umožňuje zjednodušení vytváření, konfigurace a správy clusteru virtuálních počítačů, které jsou předem nakonfigurovány pro spouštění kontejnerizovaných aplikací.
 author: rgardler
 ms.service: container-service
@@ -8,13 +8,13 @@ ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017, mvc
 ms.openlocfilehash: f13e3b8c861d963c2e9e0b827ba00ee6fa70d31e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76277824"
 ---
-# <a name="deprecated-introduction-to-docker-container-hosting-solutions-with-azure-container-service"></a>ZASTARALÉ Úvod k řešením hostování kontejnerů Docker pomocí Azure Container Service 
+# <a name="deprecated-introduction-to-docker-container-hosting-solutions-with-azure-container-service"></a>(ZASTARALÉ) Úvod k řešením pro hostování kontejnerů v Dockeru pomocí služby Azure Container Service 
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -27,7 +27,7 @@ Služba Azure Container Service využívá k zajištění plné přenositelnosti
 Díky používání služby Azure Container Service můžete využívat výhody funkcí Azure na podnikové úrovni, a přitom zachovávat přenositelnost aplikací – včetně přenositelnosti v orchestračních vrstvách.
 
 ## <a name="using-azure-container-service"></a>Používání služby Azure Container Service
-Naším cílem s Azure Container Service je poskytnout hostitelské prostředí kontejneru s využitím open-source nástrojů a technologií, které jsou v současnosti populární mezi uživateli. Za tímto účelem zveřejňujeme standardní koncové body rozhraní API pro zvolený orchestrátor (systém DC/OS, Docker Swarm nebo Kubernetes). S použitím těchto koncových bodů můžete využívat veškerý software, který s nimi dokáže komunikovat. V případě koncového bodu Docker Swarm můžete například zvolit použití rozhraní příkazového řádku (CLI) Dockeru. V případě systému DC/OS můžete zvolit rozhraní příkazového řádku systému DC/OS. V případě systému Kubernetes můžete zvolit použití `kubectl`.
+Naším cílem služby Azure Container Service je poskytovat prostředí pro hostování kontejnerů pomocí nástrojů a technologií s otevřeným zdrojovým kódem, které jsou dnes mezi uživateli oblíbené. Za tímto účelem zveřejňujeme standardní koncové body rozhraní API pro zvolený orchestrátor (systém DC/OS, Docker Swarm nebo Kubernetes). S použitím těchto koncových bodů můžete využívat veškerý software, který s nimi dokáže komunikovat. V případě koncového bodu Docker Swarm můžete například zvolit použití rozhraní příkazového řádku (CLI) Dockeru. V případě systému DC/OS můžete zvolit rozhraní příkazového řádku systému DC/OS. V případě systému Kubernetes můžete zvolit použití `kubectl`.
 
 ## <a name="creating-a-docker-cluster-by-using-azure-container-service"></a>Vytvoření clusteru Dockeru s použitím služby Azure Container Service
 Pokud chcete začít používat službu Azure Container Service, nasaďte cluster Azure Container Service prostřednictvím portálu (vyhledejte na Marketplace řetězec **Azure Container Service**) s použitím šablony Azure Resource Manageru ([Docker Swarm](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm), [DC/OS](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos) nebo [Kubernetes](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)) nebo [Azure CLI](container-service-create-acs-cluster-cli.md). Poskytované šablony pro rychlý začátek lze upravit tak, aby obsahovaly další nebo rozšířenou konfiguraci Azure. Další informace najdete v části [Nasazení clusteru Azure Container Service](container-service-deployment.md).
@@ -43,7 +43,7 @@ DC/OS je distribuovaný operační systém založený na jádru distribuovaných
 Systém DC/OS a Apache Mesos zahrnují rozsáhlou nabídku funkcí:
 
 * Ověřená škálovatelnost
-* Replikovaná primární a sekundární replika odolná proti chybám pomocí Apache ZooKeeper
+* Replikované primární a sekundární aplikace odolné proti chybám pomocí Apache ZooKeeper
 * Podpora kontejnerů ve formátu Dockeru
 * Nativní izolace mezi úkoly s kontejnery Linuxu
 * Plánování s více prostředky (paměť, procesor, disk a porty)
@@ -60,7 +60,7 @@ Proměnné DNS\_PREFIX a REGION se definují v době nasazení. Můžete také z
 
 ![Seznam aplikací systému Marathon](media/dcos/marathon-applications-list.png)
 
-Pro komunikaci se systémem Marathon můžete používat i rozhraní API REST. Existuje mnoho klientských knihoven, které jsou k dispozici pro jednotlivé nástroje. Pokrývají různé jazyky – a můžete použít protokol HTTP v jakémkoli jazyce. Podporu pro systém Marathon navíc poskytuje mnoho oblíbených nástrojů DevOps. Díky tomu má váš provozní tým při práci s clusterem Azure Container Service k dispozici maximální flexibilitu. Další informace o spouštění kontejneru prostřednictvím rozhraní API REST systému Marathon najdete v části [Správa kontejnerů systému DC/OS prostřednictvím rozhraní API REST systému Marathon](container-service-mesos-marathon-rest.md).
+Pro komunikaci se systémem Marathon můžete používat i rozhraní API REST. Existuje mnoho klientských knihoven, které jsou k dispozici pro jednotlivé nástroje. Pokrývají různé jazyky – a protokol HTTP můžete používat v libovolném jazyce. Podporu pro systém Marathon navíc poskytuje mnoho oblíbených nástrojů DevOps. Díky tomu má váš provozní tým při práci s clusterem Azure Container Service k dispozici maximální flexibilitu. Další informace o spouštění kontejneru prostřednictvím rozhraní API REST systému Marathon najdete v části [Správa kontejnerů systému DC/OS prostřednictvím rozhraní API REST systému Marathon](container-service-mesos-marathon-rest.md).
 
 ### <a name="using-docker-swarm"></a>S použitím Docker Swarmu
 Docker Swarm poskytuje nativní clustering pro Docker. Protože Docker Swarm obsluhuje standardní rozhraní API Dockeru, může kterýkoli nástroj, který už s démonem Dockeru komunikuje, používat Swarm pro transparentní škálování na více hostitelů ve službě Azure Container Service.

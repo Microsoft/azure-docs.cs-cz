@@ -3,12 +3,12 @@ title: Odpovědi na časté dotazy
 description: 'Odpovědi na běžné dotazy týkající se funkcí služby Azure Backup, včetně trezorů služby Recovery Services, co může zálohovat, jak to funguje, šifrování a omezení. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: db09a31154b680097b6b46e8f9e2cce2ad09d108
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 039666c4b54da6ac5444f5aa5acda5f1bb438782
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255027"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156051"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Nejčastější dotazy
 
@@ -22,7 +22,7 @@ Ano. Na jedno předplatné můžete vytvořit až 500 trezorů služby Recovery 
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>Je nějak omezený počet serverů nebo počítačů, které lze zaregistrovat k trezoru?
 
-K jednomu trezoru můžete zaregistrovat až 1000 počítačů. Pokud používáte agenta služby Microsoft Azure Backup, můžete zaregistrovat až 50 agentů MAB na jeden trezor. A k jednomu trezoru můžete také zaregistrovat 50 serverů MAB/DPM.
+K jednomu trezoru můžete zaregistrovat až 1000 počítačů. Pokud používáte Microsoft Azure Backup Agent, můžete zaregistrovat až 50 agentů MARS na trezor. A můžete zaregistrovat 50 Serverů MABS / DPM serverů do trezoru.
 
 ### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>Kolik zdrojů dat nebo položek je možné chránit v jednom trezoru?
 
@@ -75,7 +75,7 @@ Ano.
 
 Azure Backup podporuje pro zálohování souborů a složek a aplikací chráněných pomocí Azure Backup Serveru a DPM následující operační systémy.
 
-**OS** | **SKU** | **Podrobnosti**
+**OS** | **Sku** | **Podrobnosti**
 --- | --- | ---
 Pracovní stanice | |
 Windows 10, 64bitová verze | Enterprise, Pro, Home | Na počítačích by měly být spuštěné nejnovější aktualizace Service Pack a aktualizace služeb.
@@ -104,7 +104,7 @@ Platí tato omezení velikosti:
 OS/počítač | Omezení velikosti zdroje dat
 --- | ---
 Windows 8 nebo novější | 54 400 GB
-Windows 7 |1700 GB
+Windows 7 |1700 GB
 Windows Server 2012 nebo novější | 54 400 GB
 Windows Server 2008, Windows Server 2008 R2 | 1700 GB
 Virtuální počítač Azure | 16 datových disků<br/> Pokud se chcete zaregistrovat k privátní verzi Preview virtuálních počítačů s víc než 16 disky (až 32 disků), napište nám na AskAzureBackupTeam@microsoft.com. <br><br> Datový disk až 32 TB
@@ -113,17 +113,17 @@ Virtuální počítač Azure | 16 datových disků<br/> Pokud se chcete zaregist
 
 Následující tabulka vysvětluje, jak je určená velikost jednotlivých zdrojů dat.
 
-**Zdroj dat** | **Podrobnosti**
+**Nastavení** | **Podrobnosti**
 --- | ---
 Svazek |Množství dat zálohovaných z jednoho svazku virtuálního počítače
 Databáze SQL Serveru |Velikost jedné zálohované databáze SQL
 SharePoint | Součet databází obsahu a konfiguračních databází v rámci zálohované farmy služby SharePoint
-Exchange |Součet všech databází systému Exchange na zálohovaném serveru Exchange
+Výměna |Součet všech databází systému Exchange na zálohovaném serveru Exchange
 BMR a stav systému |Každá jednotlivá kopie BMR nebo stavu systému zálohovaného počítače
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>Existuje nějaké omezení množství dat zálohovaných s využitím trezoru služby Recovery Services?
 
-Celkové množství dat, které můžete zálohovat pomocí trezoru Recovery Services, není nijak omezené. Jednotlivé zdroje dat (kromě virtuálních počítačů Azure) můžou mít velikost maximálně 54 400 GB. Další informace o omezeních najdete [v části omezení trezoru v matici podpory](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support).
+Celkové množství dat, která lze zálohovat pomocí trezoru služby Recovery Services, není nijak omezeno. Jednotlivé zdroje dat (jiné než virtuální počítače Azure) mohou mít maximálně velikost 54 400 GB. Další informace o limitech naleznete [v části Omezení úložiště v matici podpory](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support).
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>Proč je velikost dat přenášených do trezoru služby Recovery Services menší než velikost dat vybraných k zálohování?
 
@@ -165,7 +165,7 @@ Ne. Obnovení nejstaršího i nejnovějšího bodu trvá stejně dlouho. Každý
 
 ### <a name="if-each-recovery-point-is-like-a-full-point-does-it-impact-the-total-billable-backup-storage"></a>Jestliže se každý bod obnovení chová jako úplný bod, ovlivní to celkové fakturovatelné úložiště zálohování?
 
-Typické produkty s dlouhodobými body uchování ukládají zálohovaná data jako úplné body.
+Typické produkty s dlouhodobými body uchování ukládají zálohovaná data jako úplné body. 
 
 - Úplné body jsou *neefektivní* z hlediska úložiště, ale jejich obnovení je snadnější a rychlejší.
 - Přírůstkové kopie jsou *efektivní* z hlediska úložiště, ale vyžadují obnovení řetězu dat, což ovlivňuje dobu obnovení.
