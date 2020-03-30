@@ -1,6 +1,6 @@
 ---
-title: Zřizování protokolů na portálu Azure Active Directory (Preview) | Microsoft Docs
-description: Úvod do sestav aktivit zřizování na portálu Azure Active Directory
+title: Zřizování protokolů na portálu Azure Active Directory (preview) | Dokumenty společnosti Microsoft
+description: Úvod do zřizování sestav aktivit na portálu Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,52 +18,52 @@ ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c6e0c697f9ab9796feade9b4d5c2a64794f3980b
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73612801"
 ---
-# <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Sestavy zřizování na portálu Azure Active Directory (Preview)
+# <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Zřizování sestav na portálu Azure Active Directory (preview)
 
-Architektura vytváření sestav ve službě Azure Active Directory (Azure AD) se skládá z následujících součástí:
+Architektura sestav ve službě Azure Active Directory (Azure AD) se skládá z následujících součástí:
 
-- **Aktivita** 
-    - **Přihlášení** – informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů.
-    - **Protokoly auditu** - [protokoly auditu](concept-audit-logs.md) poskytují informace o činnosti systému týkající se správy uživatelů a skupin, spravovaných aplikací a aktivit adresáře.
-    - **Zřizování protokolů** – poskytněte systémové aktivity o uživatelích, skupinách a rolích, které zřídí služba zřizování Azure AD. 
+- **Činnosti** 
+    - **Přihlášení** – informace o využití spravovaných aplikací a aktivity přihlášení uživatelů.
+    - **Protokoly auditu** - [Protokoly auditu](concept-audit-logs.md) poskytují informace o aktivitách systému uživatelů a správy skupin, spravovaných aplikací a aktivit adresářů.
+    - **Protokoly zřizování** – poskytují systémové aktivity o uživatele, skupiny a role, které jsou zřizované služby zřizování Azure AD. 
 
 - **Zabezpečení** 
-    - **Riziková přihlášení** – [rizikové přihlášení](concept-risky-sign-ins.md) je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu.
-    - **Uživatelé označení příznakem rizika** – [rizikové uživatel](concept-user-at-risk.md) je indikátorem uživatelského účtu, který mohl být ohrožen.
+    - **Riskantní přihlášení** – riskantní [přihlášení](concept-risky-sign-ins.md) je indikátorem pro pokus o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu.
+    - **Uživatelé označeni jako riziko** – [rizikový uživatel](concept-user-at-risk.md) je indikátorem uživatelského účtu, který mohl být ohrožen.
 
-Toto téma vám poskytne přehled o zřizovacích sestavách.
+Toto téma poskytuje přehled sestavy zřizování.
 
 ## <a name="prerequisites"></a>Požadavky
 
 ### <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
-* Uživatelé v rolích správce zabezpečení, čtenář zabezpečení, čtenář sestav, Správce aplikací a role správce cloudové aplikace
+* Uživatelé v rolích Správce zabezpečení, Čtečka zabezpečení, Čtečka sestav, Správce aplikací a Správce cloudových aplikací
 * Globální správci
 
 
-### <a name="what-azure-ad-license-do-you-need-to-access-provisioning-activities"></a>Jaká licence Azure AD potřebujete pro přístup k aktivitám zřizování?
+### <a name="what-azure-ad-license-do-you-need-to-access-provisioning-activities"></a>Jakou licenci Azure AD potřebujete pro přístup k aktivitám zřizování?
 
-Aby se váš tenant mohl podívat na veškerou sestavu aktivity zřizování, musí mít přidruženou licenci Azure AD Premium. Pokud chcete upgradovat edici Azure Active Directory, přečtěte si téma [Začínáme se Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) . 
+Váš tenant musí mít licenci Azure AD Premium k němu spojené zobrazit všechny sestavy zřizování aktivit. Podívejte [se na téma Začínáme s Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) a upgradujte edici Azure Active Directory. 
 
 ## <a name="provisioning-logs"></a>Protokoly zřizování
 
 Protokoly zřizování poskytují odpovědi na následující otázky:
 
-* Které skupiny byly úspěšně vytvořeny v ServiceNow?
-* Jak se role naimportovaly z Amazon Web Services?
-* Kteří uživatelé nebyli úspěšně vytvořeni v DropBoxu?
+* Jaké skupiny byly úspěšně vytvořeny v ServiceNow?
+* Jak byly role importovány z Amazon Web Services?
+* Co uživatelé byli neúspěšně vytvořeni v DropBoxu?
 
-Přístup k protokolům zřizování můžete získat tak, že v části **monitorování** v okně **Azure Active Directory** v [Azure Portal](https://portal.azure.com)vyberete **protokoly zřizování** . Může trvat až dvě hodiny, než se některé záznamy zřizování zobrazí na portálu.
+K protokolům zřizování se dostanete výběrem **protokolů zřizování** v části **Monitorování** v okně **Azure Active Directory** na webu Azure [Portal](https://portal.azure.com). Může trvat až dvě hodiny, než se některé záznamy zřizování zobrazí na portálu.
 
-![Zřizování protokolů](./media/concept-provisioning-logs/access-provisioning-logs.png "Protokoly zřizování")
+![Protokoly zřizování](./media/concept-provisioning-logs/access-provisioning-logs.png "Protokoly zřizování")
 
 
-Protokol zřizování má výchozí zobrazení seznamu, které obsahuje:
+Protokol zřizování má výchozí zobrazení seznamu, které zobrazuje:
 
 - Identita
 - Akce
@@ -83,14 +83,14 @@ To umožňuje zobrazit další pole, nebo odebrat pole, která jsou už zobrazen
 
 ![Dostupné sloupce](./media/concept-provisioning-logs/available-columns.png "Dostupné sloupce")
 
-Chcete-li získat podrobnější informace, vyberte položku v zobrazení seznamu.
+Vyberte položku v zobrazení seznamu, abyste získali podrobnější informace.
 
 ![Podrobné informace](./media/concept-provisioning-logs/steps.png "Filtr")
 
 
-## <a name="filter-provisioning-activities"></a>Filtrovat aktivity zřizování
+## <a name="filter-provisioning-activities"></a>Filtrování zřizovacích aktivit
 
-Chcete-li zúžit uvedená data na úroveň, která vám vyhovuje, můžete data zřizování filtrovat pomocí následujících výchozích polí. Všimněte si, že hodnoty v filtrech se dynamicky naplní na základě vašeho tenanta. Pokud například ve vašem tenantovi nemáte žádné události vytvoření, nebude pro vytvoření k dispozici možnost filtrování.
+Chcete-li zúžit nahlášené údaje na úroveň, která vám vyhovuje, můžete filtrovat data zřizování pomocí následujících výchozích polí. Všimněte si, že hodnoty ve filtrech jsou dynamicky naplněny na základě vašeho tenanta. Pokud například nemáte žádné vytvořit události ve vašem tenantovi, nebude filtr možnost pro vytvoření.
 
 - Identita
 - Akce
@@ -100,24 +100,24 @@ Chcete-li zúžit uvedená data na úroveň, která vám vyhovuje, můžete data
 - Datum
 
 
-![Filtrovací](./media/concept-provisioning-logs/filter.png "Filtr")
+![Filtr](./media/concept-provisioning-logs/filter.png "Filtr")
 
-Filtr **identit** umožňuje zadat název nebo identitu, o které se zajímáte. Tato identita by mohla být uživatel, skupina, role nebo jiný objekt. Můžete hledat podle názvu nebo ID objektu. ID se liší podle scénáře. Například při zřizování objektu ze služby Azure AD do SalesForce je ID zdroje ID objektu uživatele ve službě Azure AD, zatímco TargetID je ID uživatele v Salesforce. Při zřizování z Workday do služby Active Directory je zdrojem ID ID zaměstnance pracovního procesu Workday. Všimněte si, že jméno uživatele nemusí být vždy k dispozici ve sloupci identita. Vždy bude existovat jedno ID. 
+Filtr **Identita** umožňuje zadat název nebo identitu, která vás zajímá. Tato identita může být uživatel, skupina, role nebo jiný objekt. Můžete hledat podle názvu nebo ID objektu. ID se liší podle scénáře. Například při zřizování objektu z Azure AD na SalesForce, ID zdroje je ID objektu uživatele ve službě Azure AD, zatímco TargetID je ID uživatele v Salesforce. Při zřizování z Pracovního dne do služby Active Directory je ID zdroje ID ID pracovníka pracovního dne. Všimněte si, že jméno uživatele nemusí být vždy k dispozici ve sloupci Identita. Vždy bude existovat jeden ID. 
 
-Filtr **zdrojového systému** vám umožní určit, odkud se identita získává. Například při zřizování objektu ze služby Azure AD do ServiceNow je zdrojový systém Azure AD. 
+**Filtr zdrojového systému** umožňuje určit, odkud se identita zmiňuje. Například při zřizování objektu z Azure AD do ServiceNow, zdrojový systém je Azure AD. 
 
-Filtr **cílový systém** vám umožní určit, kam se identita získává. Například při zřizování objektu ze služby Azure AD do ServiceNow je cílový systém ServiceNow. 
+Filtr **Cílový systém** umožňuje určit, kam se identita zřává. Například při zřizování objektu z Azure AD do ServiceNow, cílový systém je ServiceNow. 
 
-Filtr **stavu** umožňuje vybrat:
+**Stavový** filtr umožňuje vybrat:
 
-- Vše
+- Všechny
 - Úspěch
 - Selhání
-- Přeskočeno
+- Přeskočen
 
-Filtr **akcí** umožňuje filtrovat:
+Filtr **Akce** umožňuje filtrovat:
 
-- Vytvoření 
+- Vytvořit 
 - Aktualizace
 - Odstranění
 - Zakázat
@@ -135,13 +135,13 @@ Možné hodnoty:
 Když vyberete vlastní časový rámec, můžete nakonfigurovat počáteční a koncové datum.
 
 
-Kromě výchozích polí můžete při výběru do filtru zahrnout taky následující pole:
+Kromě výchozích polí můžete při výběru zahrnout do filtru také následující pole:
 
-- **ID úlohy** – jedinečné ID úlohy je přidruženo ke každé aplikaci, pro kterou jste povolili zřizování.   
+- **ID úlohy** – ke každé aplikaci, pro kterou jste povolili zřizování, je přidruženo jedinečné ID úlohy.   
 
-- **ID cyklu** – jedinečně identifikuje cyklus zřizování. Toto ID můžete sdílet tak, aby podporovalo hledání cyklu, ve kterém k této události došlo.
+- **ID cyklu** – jednoznačně identifikuje cyklus zřizování. Toto ID můžete sdílet pro podporu pro vyhledat cyklus, ve kterém k této události došlo.
 
-- **ID změny** – jedinečný identifikátor pro událost zřizování. Toto ID můžete sdílet tak, aby podporovalo vyhledávání události zřizování.   
+- **ID změny** – jedinečný identifikátor události zřizování. Toto ID můžete sdílet pro podporu pro vyvyhledávání události zřizování.   
 
 
 
@@ -150,88 +150,88 @@ Kromě výchozích polí můžete při výběru do filtru zahrnout taky následu
 ## <a name="provisioning-details"></a>Podrobnosti zřizování 
 
 Když vyberete položku v zobrazení seznamu zřizování, získáte další podrobnosti o této položce.
-Podrobnosti jsou seskupené podle následujících kategorií:
+Podrobnosti jsou seskupeny podle následujících kategorií:
 
 - Kroky
 
-- Řešení potíží a doporučení
+- Poradce při potížích a doporučení
 
-- Upravené vlastnosti
+- Změněné vlastnosti
 
 - Souhrn
 
 
-![Filtrovací](./media/concept-provisioning-logs/provisioning-tabs.png "Listy")
+![Filtr](./media/concept-provisioning-logs/provisioning-tabs.png "Karty")
 
 
 
 ### <a name="steps"></a>Kroky
 
-Karta **kroky** popisuje kroky podniknuté při zřizování objektu. Zřizování objektu se může skládat ze čtyř kroků: 
+Karta **Kroky** popisuje kroky, které byly podniknuty při zřizování objektu. Zřizování objektu se může skládat ze čtyř kroků: 
 
 - Importovat objekt
-- Zjistit, jestli je objekt v oboru
-- Porovnat objekt mezi zdrojem a cílem
-- Zřídit objekt (provést akci – může to být vytvoření, aktualizace, odstranění nebo zakázání)
+- Zjištění, zda je objekt v oboru
+- Shoda objektu mezi zdrojem a cílem
+- Zřizovací objekt (provést akci – může se jednat o vytvoření, aktualizaci, odstranění nebo zakázání)
 
 
 
-![Filtrovací](./media/concept-provisioning-logs/steps.png "Filtr")
+![Filtr](./media/concept-provisioning-logs/steps.png "Filtr")
 
 
-### <a name="troubleshoot-and-recommendations"></a>Řešení potíží a doporučení
+### <a name="troubleshoot-and-recommendations"></a>Poradce při potížích a doporučení
 
 
-Karta **Poradce při potížích a doporučeních** poskytuje kód chyby a důvod. Informace o chybě jsou k dispozici pouze v případě selhání. 
+Karta **Poradce při potížích a doporučení** obsahuje kód chyby a důvod. Informace o chybě jsou k dispozici pouze v případě selhání. 
 
 
-### <a name="modified-properties"></a>Upravené vlastnosti
+### <a name="modified-properties"></a>Změněné vlastnosti
 
-**Změněné vlastnosti** zobrazují starou hodnotu a novou hodnotu. V případech, kdy není k dispozici stará hodnota sloupce stará hodnota je prázdná. 
+**Upravené vlastnosti** zobrazí starou hodnotu a novou hodnotu. V případech, kdy neexistuje žádná stará hodnota, je starý sloupec hodnoty prázdný. 
 
 
 ### <a name="summary"></a>Souhrn
 
-Karta **Souhrn** poskytuje přehled o tom, co se stalo, a identifikátory pro objekt ve zdrojovém a cílovém systému. 
+Karta **Souhrn** poskytuje přehled o tom, co se stalo, a identifikátory objektu ve zdrojovém a cílovém systému. 
 
 ## <a name="what-you-should-know"></a>Co byste měli vědět
 
-- Azure Portal ukládá nahlášená data zřizování po dobu 30 dnů, pokud máte edici Premium a 7 dní, pokud máte bezplatnou edici.
+- Azure portal ukládá hlášeny zřizování dat po dobu 30 dnů, pokud máte prémiovou edici a 7 dní, pokud máte bezplatnou edici..
 
-- Atribut Change ID můžete použít jako jedinečný identifikátor. To je například užitečné při interakci s produktovou podporou.
+- Atribut Změnit ID můžete použít jako jedinečný identifikátor. To je například užitečné při interakci s podporou produktu.
 
-- V tuto chvíli není k dispozici možnost stahovat data zřizování.
+- V současné době neexistuje žádná možnost stáhnout zřizovací data.
 
-- Služba Log Analytics momentálně není podporovaná.
+- V současné době neexistuje žádná podpora pro analýzu protokolu.
 
-- Když přistupujete k protokolům zřizování z kontextu aplikace, nefiltrují automaticky události na konkrétní aplikaci podle způsobu, jakým protokoly auditují.
+- Když přistupujete k protokolům zřizování z kontextu aplikace, automaticky nefiltruje události do konkrétní aplikace způsobem, jakým to dělají protokoly auditování.
 
 ## <a name="error-codes"></a>Kódy chyb
 
-Pomocí následující tabulky můžete lépe pochopit, jak vyřešit chyby, které můžete najít v protokolech zřizování. U všech chybových kódů, které chybí, poskytněte zpětnou vazbu pomocí odkazu v dolní části této stránky. 
+Pomocí následující tabulky lépe pochopit, jak vyřešit chyby, které můžete najít v protokolech zřizování. Pro všechny chybové kódy, které chybí, zadejte zpětnou vazbu pomocí odkazu v dolní části této stránky. 
 
 |Kód chyby|Popis|
 |---|---|
-|Konflikt, EntryConflict|Opravte konfliktní hodnoty atributů buď v rámci služby Azure AD, nebo v aplikaci, nebo zkontrolujte shodnou konfiguraci atributu, pokud by byl konfliktní uživatelský účet shodný a převzatý z něj. Další informace o konfiguraci atributů odpovídajícího atributu najdete v následující [dokumentaci](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) .|
-|TooManyRequests|Cílová aplikace odmítla tento pokus o aktualizaci uživatele, protože je přetížena a přijímá příliš mnoho požadavků. Žádná akce není k dispozici. Tento pokus bude automaticky vyřazen. Společnost Microsoft si také oznámila tento problém.|
-|Nenalezeno |Cílová aplikace vrátila neočekávanou chybu. Může se jednat o problém se službou cílové aplikace, který brání v práci. Tento pokus bude automaticky vyřazen za 40 minut.|
-|InsufficientRights, MethodNotAllowed, NotPermitted, Neautorizováno| Služba Azure AD se dokázala ověřit u cílové aplikace, ale nemá autorizaci k provedení této aktualizace. Projděte si pokyny, které poskytuje cílová aplikace, a také [kurz](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)příslušné aplikace.|
-|UnprocessableEntity|Cílová aplikace vrátila neočekávanou odpověď. Konfigurace cílové aplikace nemusí být správná nebo může dojít k potížím se službou cílové aplikace, která brání jejímu fungování.|
-|WebExceptionProtocolError |Při připojování k cílové aplikaci došlo k chybě protokolu HTTP. Žádná akce není k dispozici. Tento pokus bude automaticky vyřazen za 40 minut.|
-|InvalidAnchor|Uživatel, který byl dříve vytvořen nebo spárován službou zřizování, již neexistuje. Zkontrolujte, jestli uživatel existuje. Pokud chcete vynutit přesouhlasení všech uživatelů, použijte k [restartování úlohy](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)MS Graph API. Všimněte si, že restartování zřizování spustí počáteční cyklus, který může nějakou dobu trvat. Odstraní také mezipaměť, kterou služba zřizování používá k provozu, což znamená, že všechny uživatele a skupiny v tenantovi budou muset být vyhodnoceny znovu a určité události zřizování by mohly být vyhozeny.|
-|NotImplemented | Cílová aplikace vrátila neočekávanou odpověď. Konfigurace aplikace nemusí být správná nebo může být problém služby s cílovou aplikací, což brání v práci. Projděte si pokyny, které poskytuje cílová aplikace, a také [kurz](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)příslušné aplikace. |
-|MandatoryFieldsMissing, MissingValues |Uživatele nelze vytvořit, protože chybí požadované hodnoty. Opravte chybějící hodnoty atributů ve zdrojovém záznamu, nebo zkontrolujte shodnou konfiguraci atributu, abyste zajistili, že požadovaná pole nebudou vynechána. [Přečtěte si další informace](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) o konfiguraci atributů, které se shodují.|
-|SchemaAttributeNotFound |Operaci nelze provést, protože byl zadán atribut, který v cílové aplikaci neexistuje. Přečtěte si [dokumentaci](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) k přizpůsobení atributů a ujistěte se, že je konfigurace správná.|
-|InternalError |Došlo k vnitřní chybě služby ve službě Azure AD Provisioning. Žádná akce není k dispozici. Tento pokus se automaticky zopakuje za 40 minut.|
-|InvalidDomain |Operaci nelze provést, protože hodnota atributu obsahuje neplatný název domény. Aktualizujte název domény na uživateli nebo ho přidejte do seznamu povolených aplikací v cílové aplikaci. |
-|prodlev |Operaci nelze dokončit, protože odpověď trvala příliš dlouho. Žádná akce není k dispozici. Tento pokus se automaticky zopakuje za 40 minut.|
-|LicenseLimitExceeded|V cílové aplikaci nelze vytvořit uživatele, protože pro tohoto uživatele nejsou k dispozici žádné licence. Buď si zajistěte další licence pro cílovou aplikaci, nebo zkontrolujte přiřazení uživatelů a konfiguraci mapování atributů, abyste se ujistili, že správným uživatelům jsou přiřazeny správné atributy.|
-|DuplicateTargetEntries  |Operaci nelze dokončit, protože v cílové aplikaci bylo nalezeno více než jeden uživatel s nakonfigurovanými shodnými atributy. Buď odeberte duplicitního uživatele z cílové aplikace, nebo znovu nakonfigurujte mapování atributů, jak je popsáno [zde](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).|
-|DuplicateSourceEntries | Operaci nelze dokončit, protože byl nalezen více než jeden uživatel s nakonfigurovanými shodnými atributy. Odeberte duplicitního uživatele nebo znovu nakonfigurujte mapování atributů, jak je popsáno [zde](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).|
+|Konflikt, EntryConflict|Opravte konfliktní hodnoty atributů v Azure AD nebo v aplikaci nebo zkontrolujte konfiguraci odpovídajícího atributu, pokud měl být konfliktní uživatelský účet spárován a převzat. Další informace o konfiguraci odpovídajících atributů naleznete v následující [dokumentaci.](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)|
+|TooManyRequests|Cílová aplikace odmítla tento pokus o aktualizaci uživatele, protože je přetížený a přijímá příliš mnoho požadavků. Nedá se nic dělat. Tento pokus bude automaticky vyřazen. Společnost Microsoft byla na tento problém také upozorněna.|
+|InternalServerError |Cílová aplikace vrátila neočekávanou chybu. Může být problém služby s cílovou aplikací, která brání tomu, aby to fungovalo. Tento pokus bude automaticky vyřazen za 40 minut.|
+|InsufficientRights, MethodNotAllowed, NotAllowed, NotAllowed, Unauthorized Insufficient Rights, MethodNotAllowed, NotAllowed, Unauthorized InsufficientRights, MethodNotAllowed, NotAllowed, Unauthorized Insufficient Rights| Azure AD bylo možné ověřit pomocí cílové aplikace, ale nebyl oprávněn k provedení aktualizace. Přečtěte si prosím všechny pokyny poskytnuté cílovou aplikací, stejně jako příslušné [aplikace tutorial](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list).|
+|Nezpracovatelná entita|Cílová aplikace vrátila neočekávanou odpověď. Konfigurace cílové aplikace nemusí být správná nebo může být problém služby s cílovou aplikací, která brání tomu z práce.|
+|Chyba protokolu WebExceptionProtocolError |Při připojování k cílové aplikaci došlo k chybě protokolu HTTP. Nedá se nic dělat. Tento pokus bude automaticky vyřazen za 40 minut.|
+|Neplatná kotva|Uživatel, který byl dříve vytvořen nebo spárován službou zřizování již neexistuje. Zkontrolujte, zda uživatel existuje. Chcete-li vynutit opětovné shodě všech uživatelů, použijte k [restartování úlohy](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)rozhraní MS Graph API . Všimněte si, že restartování zřizování aktivuje počáteční cyklus, jehož dokončení může nějakou dobu trvat. Také odstraní mezipaměti zřizovací služba používá k provozu, což znamená, že všichni uživatelé a skupiny v tenantovi bude muset být vyhodnocena znovu a některé zřizování události by mohly být vynechány.|
+|Není implementováno | Cílová aplikace vrátila neočekávanou odpověď. Konfigurace aplikace nemusí být správná nebo může být problém se službou s cílovou aplikací, která tomu brání v práci. Přečtěte si prosím všechny pokyny poskytnuté cílovou aplikací, stejně jako příslušné [aplikace tutorial](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list). |
+|MandatoryFieldsMissing, MissingValues |Uživatele nelze vytvořit, protože chybí požadované hodnoty. Opravte chybějící hodnoty atributů ve zdrojovém záznamu nebo zkontrolujte konfiguraci odpovídajícího atributu, abyste zajistili, že požadovaná pole nebudou vynechána. [Přečtěte si další informace](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) o konfiguraci odpovídajících atributů.|
+|Atribut schématu nebyl nalezen. |Operaci nelze provést, protože byl zadán atribut, který v cílové aplikaci neexistuje. Podívejte se do [dokumentace](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) o přizpůsobení atributů a ujistěte se, že vaše konfigurace je správná.|
+|InternalError |V rámci zřizovací služby Azure AD došlo k vnitřní chybě služby. Nedá se nic dělat. Tento pokus bude automaticky opakován za 40 minut.|
+|Neplatná doména |Operaci nelze provést z důvodu hodnoty atributu obsahující neplatný název domény. Aktualizujte název domény uživatele nebo jej přidejte do povoleného seznamu v cílové aplikaci. |
+|Časový limit |Operaci nelze dokončit, protože odpověď na cílovou aplikaci trvala příliš dlouho. Nedá se nic dělat. Tento pokus bude automaticky opakován za 40 minut.|
+|Překročil limit licence.|Uživatele nelze vytvořit v cílové aplikaci, protože pro tohoto uživatele nejsou k dispozici žádné licence. Buď obkupte další licence pro cílovou aplikaci, nebo zkontrolujte přiřazení uživatelů a konfiguraci mapování atributů, abyste zajistili, že budou správným uživatelům přiřazeni správné atributy.|
+|Duplicitní cílové položky  |Operaci nelze dokončit, protože bylo nalezeno více uživatelů v cílové aplikaci s nakonfigurovanými odpovídajícími atributy. Odeberte duplicitního uživatele z cílové aplikace nebo změňte konfiguraci mapování atributů, jak je popsáno [zde](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).|
+|DuplikátSourceEntries | Operaci nelze dokončit, protože bylo nalezeno více uživatelů s nakonfigurovanými odpovídajícími atributy. Odeberte duplicitního uživatele nebo změňte konfiguraci mapování atributů, jak je popsáno [zde](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).|
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Ověřit stav zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)
-* [Problém s konfigurací zřizování uživatelů pro aplikaci Galerie Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem)
+* [Kontrola stavu zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)
+* [Problém s konfigurací zřizování uživatelů do aplikace Azure AD Gallery](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem)
 
 

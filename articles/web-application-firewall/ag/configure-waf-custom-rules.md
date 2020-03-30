@@ -1,7 +1,7 @@
 ---
 title: Konfigurace vlastních pravidel v2 pomocí PowerShellu
 titleSuffix: Azure Web Application Firewall
-description: Naučte se konfigurovat vlastní pravidla WAF v2 pomocí Azure PowerShell. Můžete vytvořit vlastní pravidla vyhodnocená pro každý požadavek, který projde přes bránu firewall.
+description: Přečtěte si, jak nakonfigurovat vlastní pravidla WAF v2 pomocí Azure PowerShellu. Můžete vytvořit vlastní pravidla vyhodnocená pro každý požadavek, který prochází bránou firewall.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -9,32 +9,32 @@ ms.topic: article
 ms.date: 11/16/2019
 ms.author: victorh
 ms.openlocfilehash: 4c50c4ce344a51a70f6849beb7c5d9d18a2b401d
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77471631"
 ---
-# <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>Konfigurace firewallu webových aplikací v2 na Application Gateway s vlastním pravidlem pomocí Azure PowerShell
+# <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>Konfigurace brány firewall webových aplikací v2 v bráně aplikace pomocí vlastního pravidla pomocí Azure PowerShellu
 
 <!--- If you make any changes to the PowerShell in this article, also make the change in the corresponding Sample file: azure-docs-powershell-samples/application-gateway/waf-rules/waf-custom-rules.ps1 --->
 
-Vlastní pravidla umožňují vytvořit vlastní pravidla vyhodnocená pro každý požadavek, který projde Firewall webových aplikací (WAF) v2. Tato pravidla mají vyšší prioritu než zbývající pravidla ve spravovaných sadách pravidel. Vlastní pravidla mají akci (pro povolení nebo blokování), podmínku shody a operátor pro povolení úplného přizpůsobení.
+Vlastní pravidla umožňují vytvořit vlastní pravidla vyhodnocená pro každý požadavek, který prochází bránou firewall webové aplikace (WAF) v2. Tato pravidla mají vyšší prioritu než ostatní pravidla ve spravovaných sadách pravidel. Vlastní pravidla mají akci (povolit nebo blokovat), podmínku shody a operátor, který umožňuje úplné přizpůsobení.
 
-V tomto článku se vytvoří Application Gateway WAF v2, který používá vlastní pravidlo. Vlastní pravidlo blokuje provoz, pokud Hlavička požadavku obsahuje User-Agent *evilbot*.
+Tento článek vytvoří waf v2 aplikační brány, který používá vlastní pravidlo. Vlastní pravidlo blokuje provoz, pokud hlavička požadavku obsahuje user-agent *evilbot*.
 
-Další příklady vlastních pravidel najdete v tématu [Vytvoření a použití vlastních pravidel firewallu webových aplikací](create-custom-waf-rules.md) .
+Další příklady vlastních pravidel najdete v tématu [Vytvoření a použití vlastních pravidel brány firewall webové aplikace.](create-custom-waf-rules.md)
 
-Pokud chcete spustit Azure PowerShell v tomto článku v jednom souvislém skriptu, který můžete kopírovat, vkládat a spouštět, přečtěte si téma [ukázky Azure Application Gateway PowerShellu](powershell-samples.md).
+Pokud chcete spustit Azure PowerShell v tomto článku v jednom souvislém skriptu, který můžete zkopírovat, vložit a spustit, najdete v článku [ukázky PowerShellu pro Azure Application Gateway](powershell-samples.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="azure-powershell-module"></a>Modul Azure PowerShellu
 
-Pokud se rozhodnete nainstalovat a používat Azure PowerShell místně, vyžaduje tento skript verzi modulu Azure PowerShell 2.1.0 nebo novější.
+Pokud se rozhodnete nainstalovat a používat Azure PowerShell místně, tento skript vyžaduje modul Azure PowerShell verze 2.1.0 nebo novější.
 
 1. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
-2. Pokud chcete vytvořit připojení k Azure, spusťte `Connect-AzAccount`.
+2. Chcete-li vytvořit připojení `Connect-AzAccount`k Azure, spusťte .
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -67,14 +67,14 @@ $vnet = New-AzvirtualNetwork -Name "Vnet1" -ResourceGroupName $rgname -Location 
   -AddressPrefix "10.0.0.0/16" -Subnet @($sub1, $sub2)
 ```
 
-### <a name="create-a-static-public-vip"></a>Vytvoření statické veřejné virtuální IP adresy
+### <a name="create-a-static-public-vip"></a>Vytvoření statické veřejné VIP
 
 ```azurepowershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name "AppGwIP" `
   -location $location -AllocationMethod Static -Sku Standard
 ```
 
-### <a name="create-pool-and-frontend-port"></a>Vytvořit fond a front-end port
+### <a name="create-pool-and-frontend-port"></a>Vytvoření fondu a portu front-endu
 
 ```azurepowershell
 $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "appgwSubnet" -VirtualNetwork $vnet
@@ -89,7 +89,7 @@ $pool = New-AzApplicationGatewayBackendAddressPool -Name "pool1" `
 $fp01 = New-AzApplicationGatewayFrontendPort -Name "port1" -Port 80
 ```
 
-### <a name="create-a-listener-http-setting-rule-and-autoscale"></a>Vytvoření naslouchacího procesu, nastavení HTTP, pravidla a automatického škálování
+### <a name="create-a-listener-http-setting-rule-and-autoscale"></a>Vytvoření naslouchací proces, nastavení http, pravidlo a automatické škálování
 
 ```azurepowershell
 $listener01 = New-AzApplicationGatewayHttpListener -Name "listener1" -Protocol Http `
@@ -106,7 +106,7 @@ $autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 3
 $sku = New-AzApplicationGatewaySku -Name WAF_v2 -Tier WAF_v2
 ```
 
-### <a name="create-two-custom-rules-and-apply-it-to-waf-policy"></a>Vytvoření dvou vlastních pravidel a jejich použití na zásady WAF
+### <a name="create-two-custom-rules-and-apply-it-to-waf-policy"></a>Vytvoření dvou vlastních pravidel a jejich použití v zásadách WAF
 
 ```azurepowershell
 # Create WAF config
@@ -125,7 +125,7 @@ $rule2 = New-AzApplicationGatewayFirewallCustomRule -Name allowUS -Priority 14 -
 $wafPolicy = New-AzApplicationGatewayFirewallPolicy -Name wafpolicyNew -ResourceGroup $rgname -Location $location -CustomRule $rule,$rule2
 ```
 
-### <a name="create-the-application-gateway"></a>Vytvoření Application Gateway
+### <a name="create-the-application-gateway"></a>Vytvoření aplikační brány
 
 ```azurepowershell
 $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname `
@@ -140,4 +140,4 @@ $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname `
 
 ## <a name="next-steps"></a>Další kroky
 
-[Další informace o firewallu webových aplikací v Application Gateway](ag-overview.md)
+[Další informace o bráně firewall webových aplikací v bráně aplikace](ag-overview.md)

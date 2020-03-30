@@ -1,6 +1,6 @@
 ---
-title: Vytvoření image virtuálního počítače a použití spravované identity přiřazené uživatelem pro přístup k souborům v Azure Storage (Preview)
-description: Pomocí nástroje Azure image Builder můžete vytvořit image virtuálního počítače, která bude mít přístup k souborům uloženým v Azure Storage pomocí uživatelsky přiřazené spravované identity.
+title: Vytvoření image virtuálního počítače a použití spravované identity přiřazené uživateli pro přístup k souborům ve Službě Azure Storage (preview)
+description: Vytvořte image virtuálního počítače pomocí Azure Image Builder, který může přistupovat k souborům uloženým v Azure Storage pomocí uživatelem přiřazené spravované identity.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
@@ -8,40 +8,40 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 manager: gwallace
-ms.openlocfilehash: f3990037d75f9f77eaedc7ec4049f14814216d9c
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 27f4073efc8647d331faa14afbda0e15f92b8d50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944966"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060749"
 ---
-# <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>Vytvoření image a použití spravované identity přiřazené uživatelem pro přístup k souborům v Azure Storage 
+# <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>Vytvoření bitové kopie a použití spravované identity přiřazené uživateli pro přístup k souborům ve službě Azure Storage 
 
-Azure image Builder podporuje používání skriptů nebo kopírování souborů z několika umístění, jako je GitHub a Azure Storage atd. Aby je bylo možné použít, musí být externě přístupné pro Azure image Builder, ale můžete chránit Azure Storage objekty BLOB pomocí tokenů SAS.
+Azure Image Builder podporuje používání skriptů nebo kopírování souborů z více umístění, jako je GitHub a úložiště Azure atd. Chcete-li je použít, musí být externě přístupné pro Azure Image Builder, ale můžete chránit objekty BLOB služby Azure Storage pomocí tokenů SAS.
 
-V tomto článku se dozvíte, jak vytvořit přizpůsobenou Image pomocí Tvůrce imagí virtuálních počítačů Azure, kde služba pro přizpůsobení image používá [spravovanou identitu přiřazenou uživatelem](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) pro přístup k souborům ve službě Azure Storage, a to bez toho, aby bylo možné soubory zpřístupnit, nebo nastavit tokeny SAS.
+Tento článek ukazuje, jak vytvořit přizpůsobenou image pomocí Azure VM Image Builder, kde služba bude používat [uživatelem přiřazenou spravovanou identitu](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) pro přístup k souborům v úložišti Azure pro přizpůsobení image, aniž byste museli soubory veřejně přístupné nebo nastavení tokenů SAS.
 
-V následujícím příkladu vytvoříte dvě skupiny prostředků, jednu se použije pro vlastní image a druhá bude hostovat účet Azure Storage, který obsahuje soubor skriptu. To simuluje scénář reálného života, kde můžete mít artefakty sestavení nebo soubory obrázků v různých účtech úložiště mimo tvůrce imagí. Vytvoříte identitu přiřazenou uživatelem a potom udělíte oprávnění ke čtení souboru skriptu, ale nenastavíte žádný veřejný přístup k tomuto souboru. Pak použijete modul úprav prostředí ke stažení a spuštění tohoto skriptu z účtu úložiště.
+V níže uvedeném příkladu vytvoříte dvě skupiny prostředků, jedna se použije pro vlastní bitovou kopii a druhá bude hostovat účet úložiště Azure, který obsahuje soubor skriptu. To simuluje scénář reálného života, kde můžete mít artefakty sestavení nebo obrazové soubory v různých účtech úložiště mimo Image Builder. Vytvoříte identitu přiřazenou uživateli a poté udělíte oprávnění ke čtení souboru skriptu, ale nenastavíte žádný veřejný přístup k tomuto souboru. Potom použijete úpravce prostředí ke stažení a spuštění tohoto skriptu z účtu úložiště.
 
 
 > [!IMPORTANT]
-> Azure image Builder je momentálně ve verzi Public Preview.
+> Azure Image Builder je momentálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="register-the-features"></a>Registrace funkcí
-Chcete-li používat Azure image Builder v rámci verze Preview, je nutné zaregistrovat novou funkci.
+Chcete-li během náhledu používat Azure Image Builder, musíte zaregistrovat novou funkci.
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
 ```
 
-Ověřte stav registrace funkce.
+Zkontrolujte stav registrace funkce.
 
 ```azurecli-interactive
 az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
 ```
 
-Ověřte vaši registraci.
+Zkontrolujte svou registraci.
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
@@ -49,7 +49,7 @@ az provider show -n Microsoft.VirtualMachineImages | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
-Pokud nevyžadují registraci, spusťte tento příkaz:
+Pokud neříkají registrované, spusťte následující:
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
@@ -60,10 +60,10 @@ az provider register -n Microsoft.Storage
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Některé informace budeme používat opakovaně, takže vytvoříme některé proměnné, které tyto informace uloží.
+Budeme používat některé informace opakovaně, takže vytvoříme některé proměnné pro ukládání těchto informací.
 
 
-```azurecli-interactive
+```console
 # Image resource group name 
 imageResourceGroup=aibmdimsi
 # storage resource group
@@ -76,15 +76,15 @@ imageName=aibCustLinuxImgMsi01
 runOutputName=u1804ManImgMsiro
 ```
 
-Vytvořte proměnnou pro ID předplatného. Můžete to získat pomocí `az account show | grep id`.
+Vytvořte proměnnou pro ID předplatného. Můžete si to `az account show | grep id`pomocí .
 
-```azurecli-interactive
+```console
 subscriptionID=<Your subscription ID>
 ```
 
-Vytvořte skupiny prostředků pro image i pro úložiště skriptů.
+Vytvořte skupiny prostředků pro obraz i úložiště skriptů.
 
-```azurecli-interactive
+```console
 # create resource group for image template
 az group create -n $imageResourceGroup -l $location
 # create resource group for the script storage
@@ -92,7 +92,7 @@ az group create -n $strResourceGroup -l $location
 ```
 
 
-Vytvořte úložiště a zkopírujte do něho ukázkový skript z GitHubu.
+Vytvořte úložiště a zkopírujte do něj ukázkový skript z GitHubu.
 
 ```azurecli-interactive
 # script storage account
@@ -119,7 +119,7 @@ az storage blob copy start \
 
 
 
-Udělte tvůrci imagí oprávnění k vytváření prostředků ve skupině prostředků image. Hodnota `--assignee` je ID registrace aplikace pro službu Tvůrce imagí. 
+Udělit Tvůrce obrázků oprávnění k vytváření prostředků ve skupině prostředků image. Hodnota `--assignee` je ID registrace aplikace pro službu Image Builder. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -129,9 +129,9 @@ az role assignment create \
 ```
 
 
-## <a name="create-user-assigned-managed-identity"></a>Vytvoření spravované identity přiřazené uživatelem
+## <a name="create-user-assigned-managed-identity"></a>Vytvořit spravovanou identitu přiřazenou uživateli
 
-Vytvořte identitu a přiřaďte oprávnění k účtu úložiště skriptů. Další informace najdete v tématu [spravovaná identita přiřazená uživatelem](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity).
+Vytvořte identitu a přiřaďte oprávnění pro účet úložiště skriptů. Další informace naleznete [v tématu Spravovaná identita přiřazená uživatelem](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity).
 
 ```azurecli-interactive
 # Create the user assigned identity 
@@ -148,11 +148,11 @@ imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/p
 ```
 
 
-## <a name="modify-the-example"></a>Úprava příkladu
+## <a name="modify-the-example"></a>Změna příkladu
 
-Stáhněte soubor example. JSON a nakonfigurujte ho pomocí proměnných, které jste vytvořili.
+Stáhněte si ukázkový soubor JSON a nakonfigurujte jej pomocí proměnných, které jste vytvořili.
 
-```azurecli-interactive
+```console
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage/helloImageTemplateMsi.json -o helloImageTemplateMsi.json
 sed -i -e "s/<subscriptionID>/$subscriptionID/g" helloImageTemplateMsi.json
 sed -i -e "s/<rgName>/$imageResourceGroup/g" helloImageTemplateMsi.json
@@ -165,7 +165,7 @@ sed -i -e "s%<runOutputName>%$runOutputName%g" helloImageTemplateMsi.json
 
 ## <a name="create-the-image"></a>Vytvoření image
 
-Odešlete konfiguraci image do služby Azure image Builder.
+Odešlete konfiguraci image do služby Azure Image Builder.
 
 ```azurecli-interactive
 az resource create \
@@ -176,7 +176,7 @@ az resource create \
     -n helloImageTemplateMsi01
 ```
 
-Spusťte sestavení image.
+Spusťte sestavení bitové kopie.
 
 ```azurecli-interactive
 az resource invoke-action \
@@ -186,13 +186,13 @@ az resource invoke-action \
      --action Run 
 ```
 
-Počkejte na dokončení sestavení. Tato možnost může trvat přibližně 15 minut.
+Počkejte na dokončení sestavení. To může trvat asi 15 minut.
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
-Z image vytvořte virtuální počítač. 
+Vytvořte virtuální ho svitek z obrázku. 
 
-```bash
+```azurecli
 az vm create \
   --resource-group $imageResourceGroup \
   --name aibImgVm00 \
@@ -202,15 +202,15 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Po vytvoření virtuálního počítače spusťte relaci SSH s virtuálním počítačem.
+Po vytvoření virtuálního virtuálního montu spusťte relaci SSH s virtuálním virtuálním ms.
 
-```azurecli-interactive
+```console
 ssh aibuser@<publicIp>
 ```
 
-Měli byste vidět, že obrázek byl přizpůsoben se zprávou dne, jakmile se naváže připojení SSH.
+Měli byste vidět, že obraz byl přizpůsoben zprávou dne, jakmile je vaše připojení SSH navázáno!
 
-```console
+```output
 
 *******************************************************
 **            This VM was built from the:            **
@@ -221,7 +221,7 @@ Měli byste vidět, že obrázek byl přizpůsoben se zprávou dne, jakmile se n
 
 ## <a name="clean-up"></a>Vyčištění
 
-Až budete hotovi, můžete prostředky odstranit, pokud už je nepotřebujete.
+Po dokončení můžete odstranit prostředky, pokud již nejsou potřeba.
 
 ```azurecli-interactive
 az identity delete --ids $imgBuilderId
@@ -235,4 +235,4 @@ az group delete -n $strResourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud máte při práci s nástrojem Azure image Builder problémy, přečtěte si téma [řešení potíží](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md?toc=%2fazure%2fvirtual-machines%context%2ftoc.json).
+Pokud máte nějaké problémy s prací s Azure Image Builder, najdete [v tématu Řešení potíží](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md?toc=%2fazure%2fvirtual-machines%context%2ftoc.json).

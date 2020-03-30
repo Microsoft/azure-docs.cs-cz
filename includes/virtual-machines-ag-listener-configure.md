@@ -5,92 +5,92 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 73ba78eca710f0b98b2a209494519cb8003e554b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75468352"
 ---
-Naslouchací proces skupiny dostupnosti je IP adresa a název sítě, na kterých SQL Server Skupina dostupnosti naslouchá. Chcete-li vytvořit naslouchací proces skupiny dostupnosti, postupujte následovně:
+Naslouchací proces skupiny dostupnosti je adresa IP a název sítě, na kterých naslouchá skupina dostupnosti serveru SQL Server. Chcete-li vytvořit naslouchací proces skupiny dostupnosti, postupujte takto:
 
-1. <a name="getnet"></a>Získejte název prostředku sítě s clustery.
+1. <a name="getnet"></a>Získejte název síťového prostředku clusteru.
 
-    a. Pomocí protokolu RDP se připojte k virtuálnímu počítači Azure, který je hostitelem primární repliky. 
+    a. Pomocí rdp se můžete připojit k virtuálnímu počítači Azure, který je hostitelem primární repliky. 
 
     b. Otevřete Správce clusteru s podporou převzetí služeb při selhání.
 
-    c. Vyberte uzel **sítě** a poznamenejte si název sítě s clustery. Použijte tento název v proměnné `$ClusterNetworkName` ve skriptu PowerShellu. V následujícím obrázku je název sítě clusteru **Síťová síť 1**:
+    c. Vyberte uzel **Sítě** a poznamenejte si název sítě clusteru. Tento název použijte `$ClusterNetworkName` v proměnné ve skriptu Prostředí PowerShell. Na následujícím obrázku je síťový název **clusteru Cluster Network 1**:
 
-   ![Název sítě s clustery](./media/virtual-machines-ag-listener-configure/90-clusternetworkname.png)
+   ![Název sítě clusteru](./media/virtual-machines-ag-listener-configure/90-clusternetworkname.png)
 
-1. <a name="addcap"></a>Přidejte Klientský přístupový bod.  
-    Klientský přístupový bod je síťový název, který aplikace používá pro připojení k databázím ve skupině dostupnosti. Vytvoření klientského přístupového bodu v Správce clusteru s podporou převzetí služeb při selhání.
+1. <a name="addcap"></a>Přidejte přístupový bod klienta.  
+    Klientský přístupový bod je síťový název, který aplikace používají k připojení k databázím ve skupině dostupnosti. Vytvořte klientský přístupový bod ve Správci clusterů s podporou převzetí služeb při selhání.
 
-    a. Rozbalte název clusteru a klikněte na **role**.
+    a. Rozbalte název clusteru a klikněte na **Role**.
 
-    b. V podokně **role** klikněte pravým tlačítkem na název skupiny dostupnosti a pak vyberte **Přidat prostředek** > **Klientský přístupový bod**.
+    b. V podokně **Role** klikněte pravým tlačítkem myši na název skupiny dostupnosti a potom vyberte přidat**klientský přístupový bod** **prostředků** > .
 
-   ![Klientský přístupový bod](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)
+   ![Přístupový bod klienta](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)
 
-    c. V poli **název** vytvořte název pro tento nový naslouchací proces. 
-   Název nového naslouchacího procesu je síťový název, který aplikace používá pro připojení k databázím ve skupině dostupnosti SQL Server.
+    c. V poli **Název** vytvořte název pro tento nový naslouchací proces. 
+   Název nového naslouchací proces u měl název sítě, který aplikace používají k připojení k databázím ve skupině dostupnosti serveru SQL Server.
 
-    d. Chcete-li dokončit vytváření naslouchacího procesu, klikněte dvakrát na tlačítko **Další** a potom klikněte na tlačítko **Dokončit**. V tuto chvíli nepřineste naslouchací proces nebo prostředek online.
+    d. Pokud chcete dokončit vytváření naslouchací proces, klepněte na **tlačítko Další** dvakrát a potom klepněte na tlačítko **Dokončit**. Nepřenesete naslouchací proces nebo prostředek do režimu online v tomto okamžiku.
 
-1. Převeďte roli clusteru skupiny dostupnosti do režimu offline. V **Správce clusteru s podporou převzetí služeb při selhání** v části **role**klikněte pravým tlačítkem na roli a vyberte **zastavit roli**.
+1. Převeďte roli clusteru skupiny dostupnosti do úřádku. Ve **Správci clusteru s podporou převzetí služeb při selhání** v části **Role**klepněte pravým tlačítkem myši na roli a vyberte příkaz **Zastavit roli**.
 
 1. <a name="congroup"></a>Nakonfigurujte prostředek IP pro skupinu dostupnosti.
 
-    a. Klikněte na kartu **prostředky** a potom rozbalte Klientský přístupový bod, který jste vytvořili.  
+    a. Klikněte na kartu **Prostředky** a rozbalte klientský přístupový bod, který jste vytvořili.  
     Klientský přístupový bod je offline.
 
-   ![Klientský přístupový bod](./media/virtual-machines-ag-listener-configure/94-newclientaccesspoint.png) 
+   ![Přístupový bod klienta](./media/virtual-machines-ag-listener-configure/94-newclientaccesspoint.png) 
 
-    b. Klikněte pravým tlačítkem na prostředek IP a pak klikněte na vlastnosti. Poznamenejte si název IP adresy a použijte ji ve `$IPResourceName` proměnné ve skriptu PowerShellu.
+    b. Klikněte pravým tlačítkem myši na prostředek IP a potom klikněte na vlastnosti. Poznamenejte si název adresy IP `$IPResourceName` a použijte ji v proměnné ve skriptu Prostředí PowerShell.
 
-    c. V části **IP adresa**klikněte na **statická IP adresa**. Nastavte IP adresu jako stejnou adresu, kterou jste použili při nastavování adresy nástroje pro vyrovnávání zatížení na Azure Portal.
+    c. V části **ADRESA IP**klepněte na **položku Statická adresa IP**. Nastavte IP adresu jako stejnou adresu, kterou jste použili při nastavovací masce na webu Azure Portal.
 
-   ![Prostředek IP](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
+   ![Zdroj IP](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
 
     <!-----------------------I don't see this option on server 2016
     1. Disable NetBIOS for this address and click **OK**. Repeat this step for each IP resource if your solution spans multiple Azure VNets. 
     ------------------------->
 
-1. <a name = "dependencyGroup"></a>Zajistěte, aby byl prostředek skupiny dostupnosti SQL Server závislý na klientském přístupovém bodu.
+1. <a name = "dependencyGroup"></a>Uvažte prostředek skupiny dostupnosti serveru SQL Server závislý na přístupovém bodu klienta.
 
-    a. V Správce clusteru s podporou převzetí služeb při selhání klikněte na **role**a potom klikněte na svou skupinu dostupnosti.
+    a. Ve Správci clusterů s podporou převzetí služeb při selhání klikněte na **Role**a potom klikněte na skupinu dostupnosti.
 
-    b. Na kartě **prostředky** v části **jiné prostředky**klikněte pravým tlačítkem na skupinu prostředků dostupnosti a potom klikněte na **vlastnosti**. 
+    b. Na kartě **Zdroje** klikněte v části **Jiné zdroje**pravým tlačítkem myši na skupinu prostředků dostupnosti a potom klikněte na **příkaz Vlastnosti**. 
 
-    c. Na kartě závislosti přidejte název prostředku klientského přístupového bodu (naslouchacího procesu).
+    c. Na kartě závislosti přidejte název prostředku klientského přístupového bodu (naslouchací proces).
 
-   ![Prostředek IP](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png) 
+   ![Zdroj IP](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png) 
 
-    d. Klikněte na **OK**.
+    d. Klikněte na tlačítko **OK**.
 
-1. <a name="listname"></a>Nastavte prostředek klientského přístupového bodu na základě IP adresy.
+1. <a name="listname"></a>V závislosti na ip adrese je prostředek klientského přístupového bodu závislý.
 
-    a. V Správce clusteru s podporou převzetí služeb při selhání klikněte na **role**a potom klikněte na svou skupinu dostupnosti. 
+    a. Ve Správci clusterů s podporou převzetí služeb při selhání klikněte na **Role**a potom klikněte na skupinu dostupnosti. 
 
-    b. Na kartě **prostředky** klikněte pravým tlačítkem na prostředek klientského přístupového bodu v části **název serveru**a pak klikněte na **vlastnosti**. 
+    b. Na kartě **Prostředky** klepněte pravým tlačítkem myši na prostředek klientského přístupového bodu v části **Název serveru**a potom klepněte na příkaz **Vlastnosti**. 
 
-   ![Prostředek IP](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
+   ![Zdroj IP](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
 
-    c. Klikněte na kartu **závislosti** . Ověřte, zda je IP adresa závislá. Pokud tomu tak není, nastavte závislost na IP adrese. Pokud je v seznamu uvedeno více prostředků, ověřte, zda IP adresa obsahuje nebo, nikoli a, závislosti. Klikněte na **OK**. 
+    c. Klikněte na kartu **Závislosti.** Ověřte, zda je adresa IP závislost. Pokud tomu tak není, nastavte závislost na adrese IP. Pokud je v seznamu uvedeno více prostředků, ověřte, zda adresy IP mají závislosti NEBO, nikoli AND. Klikněte na tlačítko **OK**. 
 
-   ![Prostředek IP](./media/virtual-machines-ag-listener-configure/98-propertiesdependencies.png) 
+   ![Zdroj IP](./media/virtual-machines-ag-listener-configure/98-propertiesdependencies.png) 
 
     >[!TIP]
-    >Můžete ověřit, zda jsou závislosti správně nakonfigurovány. V Správce clusteru s podporou převzetí služeb při selhání přejděte na role, klikněte pravým tlačítkem na skupinu dostupnosti, klikněte na **Další akce**a pak klikněte na **Zobrazit sestavu závislostí**. Pokud jsou závislosti správně nakonfigurovány, je skupina dostupnosti závislá na názvu sítě a název sítě závisí na IP adrese. 
+    >Můžete ověřit, zda jsou závislosti správně nakonfigurovány. Ve Správci clusterů s podporou převzetí služeb při selhání přejděte na Role, klikněte pravým tlačítkem myši na skupinu dostupnosti, klikněte na **Další akce**a potom klikněte na **Zobrazit sestavu závislostí**. Pokud jsou závislosti správně nakonfigurovány, je skupina dostupnosti závislá na názvu sítě a název sítě je závislý na adrese IP. 
 
 
-1. <a name="setparam"></a>Nastavte parametry clusteru v prostředí PowerShell.
+1. <a name="setparam"></a>Nastavte parametry clusteru v PowerShellu.
 
-   a. Zkopírujte následující skript prostředí PowerShell do jedné z vašich SQL Serverch instancí. Aktualizujte proměnné pro vaše prostředí.
+   a. Zkopírujte následující skript prostředí PowerShell do jedné z instancí serveru SQL Server. Aktualizujte proměnné pro vaše prostředí.
 
-   - `$ListenerILBIP` je IP adresa, kterou jste vytvořili v nástroji pro vyrovnávání zatížení Azure pro naslouchací proces skupiny dostupnosti.
+   - `$ListenerILBIP`je IP adresa, kterou jste vytvořili v centru vyrovnávání zatížení Azure pro naslouchací proces skupiny dostupnosti.
     
-   - `$ListenerProbePort` je port, který jste nakonfigurovali v nástroji pro vyrovnávání zatížení Azure pro naslouchací proces skupiny dostupnosti.
+   - `$ListenerProbePort`je port, který jste nakonfigurovali v zařízení Pro vyrovnávání zatížení Azure pro naslouchací proces skupiny dostupnosti.
 
    ```powershell
    $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
@@ -103,28 +103,28 @@ Naslouchací proces skupiny dostupnosti je IP adresa a název sítě, na kterýc
    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ListenerILBIP";"ProbePort"=$ListenerProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
    ```
 
-   b. Nastavte parametry clusteru spuštěním skriptu PowerShellu na jednom z uzlů clusteru.  
+   b. Nastavte parametry clusteru spuštěním skriptu PowerShell u jednoho z uzlů clusteru.  
 
    > [!NOTE]
-   > Pokud jsou vaše SQL Server instance v samostatných oblastech, je potřeba PowerShellový skript spustit dvakrát. Při prvním použití `$ListenerILBIP` a `$ListenerProbePort` z první oblasti. Podruhé použijte `$ListenerILBIP` a `$ListenerProbePort` z druhé oblasti. Název sítě clusteru a název prostředku IP adresy clusteru se také liší pro každou oblast.
+   > Pokud jsou instance serveru SQL Server v samostatných oblastech, je třeba spustit skript prostředí PowerShell dvakrát. Při prvním použití `$ListenerILBIP` a `$ListenerProbePort` z první oblasti. Podruhé použijte `$ListenerILBIP` a `$ListenerProbePort` z druhé oblasti. Název sítě clusteru a název prostředku IP clusteru se také liší pro každou oblast.
 
-1. Přepněte roli clusteru skupiny dostupnosti do online režimu. V **Správce clusteru s podporou převzetí služeb při selhání** v části **role**klikněte pravým tlačítkem na roli a vyberte **Spustit roli**.
+1. Přenesete roli clusteru skupiny dostupnosti do režimu online. Ve **Správci clusteru s podporou převzetí služeb při selhání** v části **Role**klikněte pravým tlačítkem myši na roli a vyberte příkaz **Spustit roli**.
 
-V případě potřeby opakujte výše uvedené kroky a nastavte parametry clusteru pro IP adresu clusteru služby WSFC.
+V případě potřeby opakujte výše uvedené kroky a nastavte parametry clusteru pro adresu IP clusteru WSFC.
 
-1. Získejte název IP adresy pro IP adresu clusteru služby WSFC. V **Správce clusteru s podporou převzetí služeb při selhání** pod položkou **základní prostředky clusteru**Najděte **název serveru**.
+1. Získejte název IP adresy adresy IP adresy clusteru WSFC. Ve **Správci clusteru s podporou převzetí služeb při selhání** v části Základní prostředky **clusteru**vyhledejte **název serveru**.
 
-1. Klikněte pravým tlačítkem na **IP adresu**a vyberte **vlastnosti**.
+1. Klepněte pravým tlačítkem myši na **adresu IP**a vyberte příkaz **Vlastnosti**.
 
-1. Zkopírujte **název** IP adresy. Může být `Cluster IP Address`. 
+1. Zkopírujte **název** adresy IP. To může `Cluster IP Address`být . 
 
-1. <a name="setwsfcparam"></a>Nastavte parametry clusteru v prostředí PowerShell.
+1. <a name="setwsfcparam"></a>Nastavte parametry clusteru v PowerShellu.
   
-   a. Zkopírujte následující skript prostředí PowerShell do jedné z vašich SQL Serverch instancí. Aktualizujte proměnné pro vaše prostředí.
+   a. Zkopírujte následující skript prostředí PowerShell do jedné z instancí serveru SQL Server. Aktualizujte proměnné pro vaše prostředí.
 
-   - `$ClusterCoreIP` je IP adresa, kterou jste vytvořili v nástroji pro vyrovnávání zatížení Azure pro prostředek clusteru jádra služby WSFC. Liší se od IP adresy pro naslouchací proces skupiny dostupnosti.
+   - `$ClusterCoreIP`je IP adresa, kterou jste vytvořili v centru vyrovnávání zatížení Azure pro prostředek základního clusteru WSFC. Liší se od adresy IP pro naslouchací proces skupiny dostupnosti.
 
-   - `$ClusterProbePort` je port, který jste nakonfigurovali v nástroji pro vyrovnávání zatížení Azure pro sondu stavu služby WSFC. Liší se od sondy pro naslouchací proces skupiny dostupnosti.
+   - `$ClusterProbePort`je port, který jste nakonfigurovali v zařízení Pro vyrovnávání zatížení Azure pro sondu stavu WSFC. Liší se od sondy pro naslouchací proces skupiny dostupnosti.
 
    ```powershell
    $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
@@ -137,7 +137,7 @@ V případě potřeby opakujte výše uvedené kroky a nastavte parametry cluste
    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ClusterCoreIP";"ProbePort"=$ClusterProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
    ```
 
-   b. Nastavte parametry clusteru spuštěním skriptu PowerShellu na jednom z uzlů clusteru.  
+   b. Nastavte parametry clusteru spuštěním skriptu PowerShell u jednoho z uzlů clusteru.  
 
 >[!WARNING]
->Port testu stavu naslouchacího procesu skupiny dostupnosti musí být jiný než port testu stavu základní IP adresy clusteru. V těchto příkladech je port naslouchacího procesu 59999 a port testu stavu IP adresy jádra clusteru je 58888. Oba porty vyžadují pravidlo brány firewall povolit příchozí připojení.
+>Port sondy stavu naslouchací proces skupiny dostupnosti se musí lišit od portu sondy stavu základní IP adresy clusteru. V těchto příkladech je port naslouchací proces 59999 a port sondy stavu adresy IP jádra clusteru je 58888. Oba porty vyžadují pravidlo povolit příchozí bránu firewall.

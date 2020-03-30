@@ -1,7 +1,7 @@
 ---
 title: Přístupy k migraci uživatelů
 titleSuffix: Azure AD B2C
-description: Migrace uživatelských účtů od jiného zprostředkovatele identity do Azure AD B2C pomocí metod hromadného importu nebo bezproblémové migrace.
+description: Migrace uživatelských účtů z jiného poskytovatele identity do Azure AD B2C pomocí metod hromadného importu nebo bezproblémové migrace.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,96 +11,96 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 90ef9402e0891915be4ed6bb89573eced546c59a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: b3ee069985fd39288a562d3caafc50b12290c060
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78183138"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80332333"
 ---
-# <a name="migrate-users-to-azure-ad-b2c"></a>Migrace uživatelů na Azure AD B2C
+# <a name="migrate-users-to-azure-ad-b2c"></a>Migrace uživatelů do Azure AD B2C
 
-Migrace od jiného zprostředkovatele identity na Azure Active Directory B2C (Azure AD B2C) může také vyžadovat migraci stávajících uživatelských účtů. Zde jsou popsané dvě metody migrace, *hromadné importy* a *bezproblémové migrace*. V obou případech je potřeba napsat aplikaci nebo skript, které používají [rozhraní Microsoft Graph API](manage-user-accounts-graph-api.md) k vytváření uživatelských účtů v Azure AD B2C.
+Migrace z jiného poskytovatele identity do služby Azure Active Directory B2C (Azure AD B2C) může také vyžadovat migraci existujících uživatelských účtů. Zde jsou popsány dvě metody migrace, *hromadný import* a *bezproblémová migrace*. S oběma přístupy, budete muset napsat aplikaci nebo skript, který používá [rozhraní MICROSOFT Graph API](manage-user-accounts-graph-api.md) k vytvoření uživatelských účtů v Azure AD B2C.
 
 ## <a name="bulk-import"></a>Hromadný import
 
-V toku hromadného importu provede aplikace pro migraci tyto kroky pro každý uživatelský účet:
+V toku hromadného importu provede aplikace migrace pro každý uživatelský účet tyto kroky:
 
-1. Přečtěte si uživatelský účet od starého zprostředkovatele identity, včetně jeho aktuálních přihlašovacích údajů (uživatelské jméno a heslo).
-1. V adresáři Azure AD B2C vytvořte odpovídající účet s aktuálními přihlašovacími údaji.
+1. Přečtěte si uživatelský účet od starého zprostředkovatele identity, včetně jeho aktuálních pověření (uživatelské jméno a heslo).
+1. Vytvořte odpovídající účet v adresáři Azure AD B2C s aktuálními přihlašovacími údaji.
 
-Postup hromadného importu použijte v obou těchto dvou situacích:
+Použijte tok hromadného importu v jedné z těchto dvou situací:
 
-- Máte přístup k přihlašovacím údajům uživatele ve formátu prostého textu (uživatelské jméno a heslo).
-- Přihlašovací údaje jsou šifrované, ale můžete je dešifrovat.
+- Máte přístup k pověření uživatele ve formátu prostého textu (jeho uživatelské jméno a heslo).
+- Přihlašovací údaje jsou zašifrovány, ale můžete je dešifrovat.
 
-Informace o programovém vytváření uživatelských účtů najdete v tématu [správa Azure AD B2C uživatelských účtů pomocí Microsoft Graph](manage-user-accounts-graph-api.md).
+Informace o programovém vytváření uživatelských účtů najdete v [tématu Správa uživatelských účtů Azure AD B2C pomocí Microsoft Graphu](manage-user-accounts-graph-api.md).
 
-## <a name="seamless-migration"></a>Bezproblémové migrace
+## <a name="seamless-migration"></a>Bezproblémová migrace
 
-Postup bezproblémové migrace použijte v případě, že nešifrovaná hesla ve starém zprostředkovateli identity nejsou dostupná. Například když:
+Bezproblémový tok migrace použijte, pokud hesla ve formátu prostého textu ve starém zprostředkovateli identity nejsou přístupná. Například když:
 
-- Heslo je uloženo v jednosměrovém šifrovaném formátu, například pomocí funkce hash.
-- Heslo ukládá starší zprostředkovatel identity způsobem, ke kterému nemůžete získat přístup. Například když zprostředkovatel identity ověřuje přihlašovací údaje voláním webové služby.
+- Heslo je uloženo v jednosměrném šifrovaném formátu, například pomocí funkce hash.
+- Heslo je uloženo starším poskytovatelem identity způsobem, ke kterému nemáte přístup. Například když poskytovatel identity ověří pověření voláním webové služby.
 
-Plynulý tok migrace ještě vyžaduje hromadnou migraci uživatelských účtů, ale pak používá [vlastní zásadu](restful-technical-profile.md) pro dotazování [REST API](rest-api-claims-exchange-dotnet.md) (kterou vytvoříte) k nastavení hesla jednotlivých uživatelů při prvním přihlášení.
+Bezproblémový tok migrace stále vyžaduje hromadnou migraci uživatelských účtů, ale pak používá [vlastní zásady](custom-policy-get-started.md) k dotazování [rozhraní REST API](custom-policy-rest-api-intro.md) (které vytvoříte) k nastavení hesla jednotlivých uživatelů při prvním přihlášení.
 
-Plynulý tok migrace má tedy dvě fáze: *hromadné importy* a *Nastavení přihlašovacích údajů*.
+Bezproblémový migrační tok má tedy dvě fáze: *hromadný import* a *nastavení přihlašovacích údajů*.
 
-### <a name="phase-1-bulk-import"></a>Fáze 1: hromadný import
+### <a name="phase-1-bulk-import"></a>Fáze 1: Hromadný import
 
-1. Vaše aplikace pro migraci přečte uživatelské účty od starého zprostředkovatele identity.
-1. Aplikace pro migraci vytváří v adresáři Azure AD B2C příslušné uživatelské účty, ale *nenastavuje hesla*.
+1. Aplikace migrace čte uživatelské účty od starého zprostředkovatele identity.
+1. Aplikace pro migraci vytvoří odpovídající uživatelské účty v adresáři Azure AD B2C, ale *nenastaví hesla*.
 
 ### <a name="phase-2-set-credentials"></a>Fáze 2: Nastavení přihlašovacích údajů
 
-Po dokončení hromadné migrace účtů budou vaše vlastní zásady a REST API při přihlášení uživatele provádět tyto akce:
+Po dokončení hromadné migrace účtů proveďte vlastní zásady a rozhraní REST API následující, když se uživatel přihlásí:
 
-1. Přečtěte si Azure AD B2C uživatelský účet odpovídající zadané e-mailové adrese.
-1. Vyhodnocením logického atributu rozšíření ověřte, zda je účet označen pro migraci.
-    - Pokud atribut Extension vrátí `True`, zavolejte REST API a ověřte heslo proti staršímu zprostředkovateli identity.
-      - Pokud REST API zjistí, že heslo není správné, uživateli se zobrazí zpráva s popisem chyby.
-      - Pokud REST API určuje správné heslo, zapište heslo k účtu Azure AD B2C a změňte hodnotu atributu Boolean Extension na `False`.
-    - Pokud logický atribut rozšíření vrátí `False`, pokračujte v procesu přihlášení jako normální.
+1. Přečtěte si uživatelský účet Azure AD B2C odpovídající zadané e-mailové adrese.
+1. Vyhodnocením atributu logického rozšíření zkontrolujte, zda je účet označen příznakem pro migraci.
+    - Pokud se atribut `True`rozšíření vrátí , zavolejte rozhraní REST API k ověření hesla proti staršímu poskytovateli identity.
+      - Pokud rozhraní REST API zjistí, že heslo je nesprávné, vraťte uživateli popisnou chybu.
+      - Pokud rozhraní REST API zjistí, že heslo je správné, zapište heslo do účtu Azure `False`AD B2C a změňte atribut logického rozšíření na .
+    - Pokud atribut logického `False`rozšíření vrátí , pokračujte v procesu přihlášení jako obvykle.
 
-Příklad vlastní zásady a REST API najdete v [ukázce bezproblémové migrace uživatelů](https://aka.ms/b2c-account-seamless-migration) na GitHubu.
+Chcete-li zobrazit příklad vlastní zásady a rozhraní REST API, podívejte se na [ukázku bezproblémové migrace uživatelů](https://aka.ms/b2c-account-seamless-migration) na GitHubu.
 
-![diagram vývojového diagramu bezproblémové migrace do migrace uživatelů](./media/user-migration/diagram-01-seamless-migration.png)<br />*Diagram: plynulý tok migrace*
+![Diagram vývojového diagramu bezproblémového přístupu k migraci uživatelů](./media/user-migration/diagram-01-seamless-migration.png)<br />*Diagram: Bezproblémový tok migrace*
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
 ### <a name="security"></a>Zabezpečení
 
-Postup bezproblémové migrace používá vlastní REST API k ověření přihlašovacích údajů uživatele vůči staršímu zprostředkovateli identity.
+Bezproblémový přístup migrace používá vlastní rozhraní REST API k ověření pověření uživatele proti staršímu poskytovateli identity.
 
-**REST API musíte chránit před útoky hrubou silou.** Útočník může poslat několik hesel na začátku a nakonec uhodnout přihlašovací údaje uživatele. Aby bylo možné tyto útoky předejít, ukončete požadavky na REST API, když počet pokusů o přihlášení přesáhne určitou prahovou hodnotu. Také Zabezpečte komunikaci mezi Azure AD B2C a REST API pomocí [klientského certifikátu](secure-rest-api-dotnet-certificate-auth.md).
+**Je nutné chránit rozhraní REST API před útoky hrubou silou.** Útočník může odeslat několik hesel v naději, že nakonec uhádne pověření uživatele. Chcete-li pomoci porazit takové útoky, přestat zobrazovat požadavky na rozhraní REST API, když počet pokusů o přihlášení překročí určitou prahovou hodnotu. Zabezpečte také komunikaci mezi Azure AD B2C a rozhraní REST API. Informace o tom, jak zabezpečit rozhraní API RESTful pro produkční prostředí, naleznete [v tématu Secure RESTful API](secure-rest-api.md).
 
-### <a name="user-attributes"></a>Atributy uživatele
+### <a name="user-attributes"></a>Uživatelské atributy
 
-Ne všechny informace ze staršího zprostředkovatele identity by měly být migrovány do adresáře Azure AD B2C. Identifikujte odpovídající sadu atributů uživatele pro uložení v Azure AD B2C před migrací.
+Ne všechny informace ve starším zprostředkovateli identity by měly být migrovány do adresáře Azure AD B2C. Identifikujte příslušnou sadu uživatelských atributů, které chcete uložit v Azure AD B2C před migrací.
 
-- **Uložit do** Azure AD B2C
-  - Uživatelské jméno, heslo, e-mailové adresy, telefonní čísla, čísla nebo identifikátory členství.
-  - Značky souhlasu pro zásady ochrany osobních údajů a licenční smlouvy pro koncové uživatele.
-- **Neukládat v** Azure AD B2C
-  - Citlivá data, jako jsou čísla kreditních karet, rodné údaje (SSN), lékařské záznamy nebo jiná data, která jsou regulována orgány pro dodržování předpisů pro státní správu nebo obory.
-  - Marketingové nebo komunikační preference, chování uživatelů a přehledy.
+- **Do** store v Azure AD B2C
+  - Uživatelské jméno, heslo, e-mailové adresy, telefonní čísla, členské čísla / identifikátory.
+  - Značky souhlasu pro zásady ochrany osobních údajů a licenční smlouvy s koncovým uživatelem.
+- **NEUkládat** v Azure AD B2C
+  - Citlivá data, jako jsou čísla kreditních karet, čísla sociálního pojištění (SSN), lékařské záznamy nebo jiné údaje regulované vládními nebo průmyslovými orgány pro dodržování předpisů.
+  - Předvolby marketingu nebo komunikace, chování uživatelů a přehledy.
 
 ### <a name="directory-clean-up"></a>Vyčištění adresáře
 
-Než zahájíte proces migrace, využijte možnost vyčištění adresáře.
+Před zahájením procesu migrace využijte příležitosti k vyčištění adresáře.
 
-- Identifikujte sadu uživatelských atributů, které mají být uloženy v Azure AD B2C, a migrujte pouze to, co potřebujete. V případě potřeby můžete vytvořit [vlastní atributy](custom-policy-custom-attributes.md) , které budou ukládat více dat o uživateli.
-- Pokud migrujete z prostředí s více zdroji ověřování (například každá aplikace má vlastní adresář uživatele), migrujte na jednotný účet v Azure AD B2C.
-- Pokud má více aplikací různá uživatelská jména, můžete je Uložit do Azure AD B2C uživatelského účtu pomocí kolekce identity. S ohledem na heslo nechte uživatele zvolit jednu a nastavit v adresáři. V případě bezproblémové migrace by například mělo být v účtu Azure AD B2C uloženo pouze zvolené heslo.
-- Před migrací odeberte nepoužívané uživatelské účty nebo Nemigrujte zastaralé účty.
+- Identifikujte sadu uživatelských atributů, které mají být uloženy v Azure AD B2C a migrovat jenom to, co potřebujete. V případě potřeby můžete vytvořit [vlastní atributy](custom-policy-custom-attributes.md) pro uložení více dat o uživateli.
+- Pokud migrujete z prostředí s více zdroji ověřování (například každá aplikace má svůj vlastní uživatelský adresář), migrujte do jednotného účtu v Azure AD B2C.
+- Pokud více aplikací mají různá uživatelská jména, můžete uložit všechny z nich v uživatelském účtu Azure AD B2C pomocí kolekce identit. Pokud jde o heslo, nechte uživatele vybrat jeden a nastavte jej v adresáři. Například s bezproblémovou migrací by mělo být v účtu Azure AD B2C uloženo pouze zvolené heslo.
+- Před migrací odeberte nepoužívané uživatelské účty nebo nemigrujte zastaralé účty.
 
 ### <a name="password-policy"></a>Zásady hesel
 
-Pokud mají účty, které migrujete, slabší sílu hesla, než je [bezpečná síla hesla](../active-directory/authentication/concept-sspr-policy.md) vynutilá Azure AD B2C, můžete zakázat požadavek na silný heslo. Další informace najdete v tématu [vlastnost zásady hesel](manage-user-accounts-graph-api.md#password-policy-property).
+Pokud účty, které migrujete mají slabší sílu hesla než [silná síla hesla](../active-directory/authentication/concept-sspr-policy.md) vynucená Azure AD B2C, můžete zakázat požadavek na silné heslo. Další informace naleznete v tématu [Password policy property](manage-user-accounts-graph-api.md#password-policy-property).
 
 ## <a name="next-steps"></a>Další kroky
 
-Úložiště [Azure-AD-B2C/User-Migration](https://github.com/azure-ad-b2c/user-migration) na GitHubu obsahuje příklad bezproblémové migrace vlastní zásady a REST API ukázka kódu:
+[Azure-ad-b2c/user-migration](https://github.com/azure-ad-b2c/user-migration) repository na GitHubu obsahuje ukázku vlastních zásad migrace a ukázku kódu rozhraní REST API:
 
-[Plynulá vlastní zásada migrace uživatelů & REST API Code Sample](https://aka.ms/b2c-account-seamless-migration)
+[Bezproblémová migrace uživatelů vlastní zásady & ukázkový kód rozhraní REST API](https://aka.ms/b2c-account-seamless-migration)

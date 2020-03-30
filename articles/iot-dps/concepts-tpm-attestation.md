@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub Device Provisioning Service – ověření identity čipem TPM
-description: Tento článek obsahuje koncepční přehled toku ověření čipem TPM pomocí služby IoT Device Provisioning (DPS).
+title: Služba zřizování zařízení služby Azure IoT Hub – atestace čipu TPM
+description: Tento článek obsahuje koncepční přehled toku osvědčení Čipu TPM pomocí služby DPS (IoT Device Provisioning Service).
 author: nberdy
 ms.author: nberdy
 ms.date: 04/04/2019
@@ -9,63 +9,63 @@ ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: 624171ffc10a06ac3089b6dceb1683c63c88dbda
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74975274"
 ---
 # <a name="tpm-attestation"></a>Osvědčení TPM
 
-IoT Hub Device Provisioning Service je pomocná služba pro IoT Hub, která slouží ke konfiguraci zařízení s nulovým dotykem pro zadané centrum IoT. Služba Device Provisioning Service umožňuje bezpečným způsobem zřizovat miliony zařízení.
+Služba zřizování zařízení služby IoT Hub je pomocná služba pro službu IoT Hub, kterou používáte ke konfiguraci zřizování zařízení bez dotykového ovládání do určeného centra IoT Hub. Se službou Zřizování zařízení můžete zřídit miliony zařízení bezpečným způsobem.
 
-Tento článek popisuje proces ověření identity při použití [čipu TPM](./concepts-device.md). ČIP TPM představuje modul důvěryhodné platformy a je typu modulu hardwarového zabezpečení (HSM). V tomto článku se předpokládá, že používáte diskrétní, firmware nebo integrovaný čip TPM. Software emulující čipy TPM je vhodný pro vytváření prototypů nebo testování, ale neposkytuje stejnou úroveň zabezpečení jako diskrétní, firmware nebo integrované čipy TPM. Nedoporučujeme používat software čipy TPM v produkčním prostředí. Další informace o typech čipy TPM najdete v tématu [stručný úvod do čipu TPM](https://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf).
+Tento článek popisuje proces ověření identity při použití [čipu TPM](./concepts-device.md). TPM je zkratka pro Trusted Platform Module a je typem modulu hardwarového zabezpečení (HSM). Tento článek předpokládá, že používáte diskrétní, firmware nebo integrovaný čip TPM. Softwarově emulované tpms jsou vhodné pro prototypování nebo testování, ale neposkytují stejnou úroveň zabezpečení jako diskrétní, firmware nebo integrované TPM. Nedoporučujeme používat software TPM ve výrobě. Další informace o typech tpms naleznete [v tématu Stručný úvod do čipu TPM](https://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf).
 
-Tento článek se týká jenom zařízení, která používají TPM 2,0 s podporou klíčů HMAC a jejich ověřovacími klíči. Nejedná se o zařízení, která používají certifikáty X. 509 pro ověřování. TPM je podniková, standardně založená na standardech ISO od skupiny důvěryhodných Computingů a další informace o TPM najdete na [kompletní specifikaci tpm 2,0](https://trustedcomputinggroup.org/tpm-library-specification/) nebo [specifikaci ISO/IEC 11889](https://www.iso.org/standard/66510.html). Tento článek také předpokládá, že jste obeznámeni s dvojicemi veřejného a privátního klíče a jak se používají pro šifrování.
+Tento článek je relevantní pouze pro zařízení používající čip TPM 2.0 s podporou klíče HMAC a jejich klíči pro potvrzení. Není určen pro zařízení používající certifikáty X.509 pro ověřování. Čip TPM je průmyslový standard ISO od skupiny Trusted Computing Group a o čipu TPM si můžete přečíst více na [kompletní specifikaci TPM 2.0](https://trustedcomputinggroup.org/tpm-library-specification/) nebo [specifikaci ISO/IEC 11889](https://www.iso.org/standard/66510.html). Tento článek také předpokládá, že jste obeznámeni s páry veřejného a soukromého klíče a jak se používají pro šifrování.
 
-Sady SDK zařízení služby Device Provisioning zpracovávají všechno popsané v tomto článku. Pokud používáte sady SDK na svých zařízeních, není potřeba nic dalšího implementovat. Tento článek vám pomůže pochopit, co se v čipu TPM zabezpečení nachází v případě, že vaše zařízení splňuje požadavky a proč je tak zabezpečené.
+Sady SDK zařízení device Provisioning Service zpracovávají vše, co je popsáno v tomto článku. Pokud na svých zařízeních používáte sady SDK, není nutné implementovat nic dalšího. Tento článek vám pomůže koncepčně pochopit, co se děje s bezpečnostním čipem Čip tpm, když vaše zařízení obsahuje a proč je tak bezpečné.
 
 ## <a name="overview"></a>Přehled
 
-Čipy TPM jako zabezpečený kořen důvěry použijte něco jako ověřovací klíč (EK). Klíč EK je jedinečný pro čip TPM a změna v podstatě změní zařízení na nový.
+Tpms použít něco, co nazývá ověřovací klíč (EK) jako zabezpečený kořen důvěryhodnosti. EK je jedinečný pro Čip TPM a jeho změna v podstatě změní zařízení na nové.
 
-Existuje jiný typ klíče, který čipy TPM má, označovaný jako kořenový klíč úložiště (SRK). Modul SRK může být vytvořen vlastníkem čipu TPM poté, co převezme vlastnictví čipu TPM. Převzetí vlastnictví čipu TPM je způsobem, který je specifický pro čip TPM. "někdo nastaví heslo v modulu HSM". Pokud se zařízení TPM prodává novému vlastníkovi, může nový vlastník převzít vlastnictví čipu TPM, aby vygeneroval nový modul SRK. Nová generace SRK zajišťuje, že předchozí vlastník nemůže čip TPM použít. Vzhledem k tomu, že je modul SRK jedinečný pro vlastníka čipu TPM, lze použít modul SRK k zapečetění dat do samotného čipu TPM pro daného vlastníka. Modul SRK poskytuje izolovaný prostor pro ukládání klíčů a poskytuje přístup revocability, pokud se zařízení nebo TPM prodává. Vypadá to jako při přesunu do nové domu: převzetí vlastnictví mění zámky na dveřích a zničí veškerý nábytek vlevo předchozími vlastníky (SRK), ale nemůžete změnit adresu House (EK).
+Existuje jiný typ klíče, který mají TPMs, volal klíč kořenového úložiště (SRK). SRK může být generovánvlastníkem čipu TPM poté, co převezme vlastnictví čipu TPM. Převzetí vlastnictví čipu TPM je specifický způsob čipu TPM, který říká "někdo nastaví heslo k přístupu k speciálnímu zabezpečení". Pokud je zařízení TPM prodáno novému vlastníkovi, může nový vlastník převzít vlastnictví čipu TPM a vygenerovat novou srk. Nová generace SRK zajišťuje, že předchozí vlastník nemůže čip TPM používat. Vzhledem k tomu, že srk je jedinečný pro vlastníka čipu TPM, lze ji použít k zapečetění dat do samotného čipu TPM pro tohoto vlastníka. SRK poskytuje izolovanému prostoru pro vlastníka uložit své klíče a poskytuje přístup odvolatelnost, pokud je zařízení nebo TPM prodává. Je to jako přestěhovat se do nového domu: převzetí vlastnictví mění zámky na dveřích a ničí veškerý nábytek, který zanechali předchozí majitelé (SRK), ale nemůžete změnit adresu domu (EK).
 
-Jakmile je zařízení nastavené a připravené k použití, bude mít k dispozici jak EK, tak i SRK.
+Jakmile je zařízení nastaveno a připraveno k použití, bude mít k dispozici ek i SRK.
 
 ![Převzetí vlastnictví čipu TPM](./media/concepts-tpm-attestation/tpm-ownership.png)
 
-Jedna Poznámka k převzetí vlastnictví čipu TPM: přebírání vlastnictví čipu TPM závisí na mnoha věcí, včetně výrobce čipu TPM, používané sady nástrojů TPM a operačního systému zařízení. Pokud chcete převzít vlastnictví, postupujte podle pokynů, které jsou důležité pro váš systém.
+Jedna poznámka o převzetí vlastnictví čipu TPM: Převzetí vlastnictví čipu TPM závisí na mnoha věcech, včetně výrobce čipu TPM, sady používaných nástrojů Čipu TPM a operačního serveru zařízení. Postupujte podle pokynů týkajících se vašeho systému převzít vlastnictví.
 
-Služba Device Provisioning používá veřejnou část EK (EK_pub) k identifikaci a registraci zařízení. Dodavatel zařízení může EK_pub během výroby nebo finálního testování a nahrajte EK_pub do služby zřizování, aby se zařízení rozpoznalo při připojení ke zřízení. Služba Device Provisioning nekontroluje modul pro vytváření dat nebo vlastníka, takže když "maže", čip TPM vymaže zákaznická data, ale v případě, že se připojí ke zřízení, zařízení bude i nadále rozpoznáno službou Device Provisioning.
+Služba zřizování zařízení používá veřejnou část EK (EK_pub) k identifikaci a registraci zařízení. Dodavatel zařízení může číst EK_pub během výroby nebo závěrečné zkoušky a nahrát EK_pub do zřizovací služby tak, aby zařízení bude rozpoznáno, když se připojí k zřizování. Služba zřizování zařízení nekontroluje srk nebo vlastníka, takže "vymazání" čipu TPM vymaže zákaznická data, ale EK (a další data dodavatele) je zachována a zařízení bude stále rozpoznáno službou Device Provisioning Service, když se připojí k poskytování.
 
-## <a name="detailed-attestation-process"></a>Podrobný proces ověření identity
+## <a name="detailed-attestation-process"></a>Podrobný proces atestace
 
-Když se zařízení s čipem TPM poprvé připojí ke službě Device Provisioning, služba nejdřív zkontroluje zadaný EK_pub proti EK_pub uloženému v seznamu registrací. Pokud se EK_pubs neshodují, zařízení se nepovoluje zřídit. Pokud EK_pubs souhlasí, služba pak vyžaduje, aby zařízení prokázalo vlastnictví soukromé části EK prostřednictvím výzvy pomocí hodnoty nonce, což je zabezpečená výzva, která se používá k prokázání identity. Služba Device Provisioning vygeneruje hodnotu nonce a pak ji zašifruje s modulem SRK a potom EK_pub, které jsou v zařízení během počátečního volání registrace k dispozici. ČIP TPM vždycky udržuje soukromou část zabezpečení EK. Tím zabráníte padělání a zajistíte, aby se tokeny SAS bezpečně zřídily autorizovaným zařízením.
+Když se zařízení s čipem TPM poprvé připojí ke službě Zřizování zařízení, služba nejprve zkontroluje poskytovanou EK_pub proti EK_pub uloženým v seznamu registrací. Pokud se EK_pubs neshodují, zařízení není povoleno zřídit. Pokud EK_pubs se shodují, služba pak vyžaduje, aby zařízení prokázalo vlastnictví soukromé části EK prostřednictvím výzvy nonce, což je bezpečná výzva používaná k prokázání identity. Služba zřizování zařízení generuje nonce a pak šifruje s SRK a pak EK_pub, které jsou poskytovány zařízením během počáteční registrace volání. Čip TPM vždy udržuje soukromou část EK zabezpečenou. Tím zabráníte padělání a zajistíte, že tokeny SAS jsou bezpečně zřizovány pro autorizovaná zařízení.
 
-Pojďme si podrobně projít proces ověření identity.
+Pojďme si podrobně projít procesem atestace.
 
-### <a name="device-requests-an-iot-hub-assignment"></a>Zařízení požádá o přiřazení IoT Hub.
+### <a name="device-requests-an-iot-hub-assignment"></a>Zařízení požaduje přiřazení služby IoT Hub
 
-Nejdřív se zařízení připojí ke službě Device Provisioning a žádostem o zřízení. V takovém případě zařízení poskytuje službu s ID registrace, rozsahem ID a EK_pub a SRK_pub z čipu TPM. Služba předá zašifrovanou hodnotu NONCE zpátky do zařízení a požádá zařízení, aby dešifroval hodnotu nonce a použila ho k podepsání tokenu SAS pro opětovné připojení a dokončení zřizování.
+Nejprve se zařízení připojí ke službě Zřizování zařízení a požádá o zřízení. Přitom zařízení poskytuje službě své ID registrace, rozsah ID a EK_pub a SRK_pub z čipu TPM. Služba předá šifrované nonce zpět do zařízení a požádá zařízení k dešifrování nonce a použít k podepsání tokenu SAS pro opětovné připojení a dokončení zřizování.
 
 ![Zřizování požadavků na zařízení](./media/concepts-tpm-attestation/step-one-request-provisioning.png)
 
-### <a name="nonce-challenge"></a>Hodnota nonce – výzva
+### <a name="nonce-challenge"></a>Nonce výzva
 
-Zařízení přebírá hodnoty nonce a používá privátní části EK a SRK k dešifrování hodnoty nonce do čipu TPM. pořadí šifrování hodnoty nonce deleguje vztah důvěryhodnosti od typu EK, který je neproměnlivý, na modul SRK, který se může změnit, pokud nový vlastník převezme vlastnictví čipu TPM.
+Zařízení převezme nonce a použije soukromé části EK a SRK k dešifrování nonce do čipu TPM; pořadí nonce šifrování deleguje vztah důvěryhodnosti z EK, což je neměnné, na SRK, které se může změnit, pokud nový vlastník převezme vlastnictví čipu TPM.
 
-![Dešifrování hodnoty nonce](./media/concepts-tpm-attestation/step-two-nonce.png)
+![Dešifrování nonce](./media/concepts-tpm-attestation/step-two-nonce.png)
 
-### <a name="validate-the-nonce-and-receive-credentials"></a>Ověření hodnoty nonce a přijetí přihlašovacích údajů
+### <a name="validate-the-nonce-and-receive-credentials"></a>Ověření nonce a přijetí přihlašovacích údajů
 
-Zařízení pak může podepsat token SAS pomocí dešifrované hodnoty nonce a znovu navázat spojení se službou Device Provisioning pomocí podepsaného tokenu SAS. Po dokončení výzvy k vystavení hodnoty nonce služba umožní zařízení zřídit.
+Zařízení pak může podepsat token SAS pomocí dešifrovaného nonce a obnovit připojení ke službě device provisioning service pomocí podepsaného tokenu SAS. Po dokončení výzvy Nonce umožňuje služba zařízení zřídit.
 
-![Zařízení znovu naváže připojení ke službě Device Provisioning a ověří vlastnictví EK.](./media/concepts-tpm-attestation/step-three-validation.png)
+![Zařízení obnoví připojení ke službě Device Provisioning Service za účelem ověření vlastnictví EK.](./media/concepts-tpm-attestation/step-three-validation.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní se zařízení připojí k IoT Hub a zůstane v bezpečí, že jsou klíče zařízení bezpečně uložené. Když teď víte, jak služba Device Provisioning bezpečně ověřuje identitu zařízení pomocí čipu TPM, Projděte si následující články, kde najdete další informace:
+Teď se zařízení připojí k IoT Hubu a budete mít s vědomím, že klíče vašich zařízení jsou bezpečně uložené. Teď, když víte, jak služba zřizování zařízení bezpečně ověřuje identitu zařízení pomocí čipu TPM, podívejte se na následující články, kde se dozvíte další:
 
-* [Přečtěte si o všech konceptech při automatickém zřizování](./concepts-auto-provisioning.md)
-* Začněte [používat Automatické zřizování](./quick-setup-auto-provision.md) pomocí sad SDK, aby se tento tok mohl postarat.
+* [Informace o všech konceptech v automatickém zřizování](./concepts-auto-provisioning.md)
+* [Můžete začít používat automatické zřizování](./quick-setup-auto-provision.md) pomocí sad SDK se postaráte o tok.

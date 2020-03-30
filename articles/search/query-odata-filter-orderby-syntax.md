@@ -1,7 +1,7 @@
 ---
 title: Přehled jazyka OData
 titleSuffix: Azure Cognitive Search
-description: Přehled jazyka OData pro filtry, výběr a pořadí dotazů pro Azure Kognitivní hledání.
+description: Přehled jazyka OData pro dotazy filtrů, výběru a pořadí podle pro Azure Cognitive Search.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -20,33 +20,33 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: f3a1be435e297ab4a9ba7f8bfbd5f3ce3451d8a8
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77153872"
 ---
-# <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Přehled jazyka OData pro `$filter`, `$orderby`a `$select` v Azure Kognitivní hledání
+# <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Přehled jazyka OData `$orderby`pro `$select` `$filter`, a v Azure Cognitive Search
 
-Azure Kognitivní hledání podporuje podmnožinu Syntaxe výrazů OData pro výrazy **$Filter**, **$OrderBy**a **$Select** . Výrazy filtru jsou vyhodnocovány během analýzy dotazů, omezení vyhledávání na konkrétní pole nebo přidání kritérií shody používaných při prohledávání indexů. Výrazy ORDER by se používají jako krok po zpracování v rámci sady výsledků dotazu pro řazení vrácených dokumentů. Výrazy pro výběr určují, která pole dokumentu jsou zahrnutá v sadě výsledků. Syntaxe těchto výrazů je odlišná od syntaxe [jednoduchého](query-simple-syntax.md) nebo [úplného](query-lucene-syntax.md) dotazu, která se používá v parametru **vyhledávání** , i když je v syntaxi pro odkazování polí nějaký překryv.
+Azure Cognitive Search podporuje podmnožinu syntaxe výrazu OData pro výrazy **$filter**, **$orderby**a **$select.** Výrazy filtrů jsou vyhodnocovány během analýzy dotazu, omezení vyhledávání na konkrétní pole nebo přidání kritérií shody používaných při prohledávání indexu. Vyjádření podle pořadí jsou použita jako krok po zpracování nad sadou výsledků k řazení vrácených dokumentů. Výběr výrazů určuje, která pole dokumentu jsou zahrnuta do sady výsledků. Syntaxe těchto výrazů se liší od [jednoduché](query-simple-syntax.md) nebo [úplné](query-lucene-syntax.md) syntaxe dotazu, která se používá v parametru **vyhledávání,** i když je v syntaxi pro odkazování na pole určité překrytí.
 
-Tento článek poskytuje přehled jazyka OData Expression používaného ve filtrech, výrazech ORDER by a SELECT. Jazyk se zobrazí jako "zdola nahoru", počínaje základními prvky a sestavování na nich. Syntaxe nejvyšší úrovně pro každý parametr je popsána v samostatném článku:
+Tento článek obsahuje přehled jazyka OData používaného ve filtrech, pořadí a vybraných výrazech. Jazyk je prezentován "zdola nahoru", počínaje nejzákladnějšími prvky a jejich stavbou. Syntaxe nejvyšší úrovně pro každý parametr je popsána v samostatném článku:
 
 - [$filter syntaxe](search-query-odata-filter.md)
 - [$orderby syntaxe](search-query-odata-orderby.md)
 - [$select syntaxe](search-query-odata-select.md)
 
-Výrazy OData jsou od jednoduchých až vysoce složité, ale všechny sdílejí společné prvky. Nejzákladnější části výrazu OData v Azure Kognitivní hledání jsou:
+OData výrazy se pohybují od jednoduchých až po velmi složité, ale všechny sdílejí společné prvky. Nejzákladnější části výrazu OData v Azure Cognitive Search jsou:
 
-- **Cesty k poli**, které odkazují na konkrétní pole indexu.
+- **Cesty polí**, které odkazují na určitá pole indexu.
 - **Konstanty**, které jsou literálové hodnoty určitého datového typu.
 
 > [!NOTE]
-> Terminologie v Azure Kognitivní hledání se od [standardu OData](https://www.odata.org/documentation/) liší několika způsoby. K volání **pole** v Azure kognitivní hledání se říká **vlastnost** v OData a podobně jako **cesta k poli** a cesta k **vlastnosti**. **Index** obsahující **dokumenty** v Azure kognitivní hledání se v OData označuje obecněji jako **sada entit** obsahující **entity**. V rámci tohoto odkazu se používá terminologie Azure Kognitivní hledání.
+> Terminologie v Azure Cognitive Search se liší od [standardu OData](https://www.odata.org/documentation/) několika způsoby. To, co nazýváme **pole** v Azure Cognitive Search se nazývá **vlastnost** v OData a podobně pro **cestu pole** versus **cestu vlastnosti**. **Index** obsahující **dokumenty** v Azure Cognitive Search se v OData označuje obecněji jako **sada entit** obsahující **entity**. Terminologie Azure Cognitive Search se používá v celém tomto odkazu.
 
-## <a name="field-paths"></a>Cesty k poli
+## <a name="field-paths"></a>Cesty polí
 
-Následující EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku cest polí.
+Následující formulář EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku cest polí.
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -56,84 +56,84 @@ field_path ::= identifier('/'identifier)*
 identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 ```
 
-K dispozici je také diagram interaktivní syntaxe:
+K dispozici je také interaktivní syntaktický diagram:
 
 > [!div class="nextstepaction"]
-> [Diagram syntaxe OData pro Azure Kognitivní hledání](https://azuresearch.github.io/odata-syntax-diagram/#field_path)
+> [Syntaxový diagram OData pro Azure Cognitive Search](https://azuresearch.github.io/odata-syntax-diagram/#field_path)
 
 > [!NOTE]
-> Kompletní EBNF najdete v článku [referenční informace k syntaxi výrazu OData pro Azure kognitivní hledání](search-query-odata-syntax-reference.md) .
+> Viz [odkaz na syntaxi výrazu OData pro Azure Cognitive Search](search-query-odata-syntax-reference.md) pro kompletní EBNF.
 
-Cesta pole se skládá z jednoho nebo více **identifikátorů** oddělených lomítky. Každý identifikátor je posloupnost znaků, které musí začínat písmenem nebo podtržítkem, a obsahovat pouze písmena ASCII, číslice nebo podtržítka. Písmena můžou být velká nebo malá.
+Cesta pole se skládá z jednoho nebo více **identifikátorů oddělených** lomítky. Každý identifikátor je posloupnost znaků, které musí začínat písmenem ASCII nebo podtržítkem a obsahují pouze písmena, číslice nebo podtržítka ASCII. Písmena mohou být velká nebo malá písmena.
 
-Identifikátor může odkazovat buď na název pole, nebo na **proměnnou rozsahu** v kontextu [výrazu kolekce](search-query-odata-collection-operators.md) (`any` nebo `all`) ve filtru. Proměnná rozsahu je jako proměnná smyčky, která představuje aktuální prvek kolekce. U komplexních kolekcí Tato proměnná představuje objekt, což je důvod, proč můžete použít cesty polí pro odkazování na dílčí pole proměnné. To je obdobou zápisu teček v mnoha programovacích jazycích.
+Identifikátor může odkazovat buď na název pole, nebo na **proměnnou rozsahu** `any` v `all`kontextu [výrazu kolekce](search-query-odata-collection-operators.md) ( nebo ) ve filtru. Proměnná rozsahu je jako proměnná smyčky, která představuje aktuální prvek kolekce. Pro komplexní kolekce představuje tato proměnná objekt, což je důvod, proč můžete použít cesty polí odkazovat na dílčí pole proměnné. To je analogické dot notace v mnoha programovacích jazycích.
 
-Příklady cest polí jsou uvedené v následující tabulce:
+Příklady cest polí jsou uvedeny v následující tabulce:
 
-| Cesta k poli | Popis |
+| Cesta pole | Popis |
 | --- | --- |
 | `HotelName` | Odkazuje na pole nejvyšší úrovně indexu. |
-| `Address/City` | Odkazuje na `City` dílčí pole komplexního pole v indexu. v tomto příkladu je `Address` typu `Edm.ComplexType` |
-| `Rooms/Type` | Odkazuje na `Type` dílčí pole komplexní kolekce pole v indexu. v tomto příkladu je `Rooms` typu `Collection(Edm.ComplexType)` |
-| `Stores/Address/Country` | Odkazuje na `Country` dílčí pole `Address` dílčího pole komplexní kolekce v indexu. `Stores` je typu `Collection(Edm.ComplexType)` a `Address` je typu `Edm.ComplexType` v tomto příkladu. |
-| `room/Type` | Odkazuje na `Type` dílčí pole proměnné rozsahu `room`, například ve výrazu filtru `Rooms/any(room: room/Type eq 'deluxe')` |
-| `store/Address/Country` | Odkazuje na `Country` dílčí pole `Address` dílčího pole proměnné rozsahu `store`, například ve výrazu filtru `Stores/any(store: store/Address/Country eq 'Canada')` |
+| `Address/City` | Odkazuje na `City` dílčí pole komplexního pole v indexu; `Address` je typu `Edm.ComplexType` v tomto příkladu |
+| `Rooms/Type` | Odkazuje na `Type` dílčí pole komplexníkolekce pole v indexu; `Rooms` je typu `Collection(Edm.ComplexType)` v tomto příkladu |
+| `Stores/Address/Country` | Odkazuje na `Country` dílčí pole dílčího `Address` pole komplexního sběrného pole v indexu; `Stores` je typu `Collection(Edm.ComplexType)` `Address` a je `Edm.ComplexType` typu v tomto příkladu |
+| `room/Type` | Odkazuje na `Type` dílčí pole proměnné `room` rozsahu, například ve výrazu filtru.`Rooms/any(room: room/Type eq 'deluxe')` |
+| `store/Address/Country` | Odkazuje na `Country` dílčí pole `Address` dílčího pole proměnné `store` rozsahu, například ve výrazu filtru.`Stores/any(store: store/Address/Country eq 'Canada')` |
 
-Význam cesty k poli se liší v závislosti na kontextu. Ve filtrech odkazuje cesta pole na hodnotu *jedné instance* pole v aktuálním dokumentu. V jiných kontextech, jako je například **$OrderBy**, **$Select**nebo v [poli hledání v úplné syntaxi Lucene](query-lucene-syntax.md#bkmk_fields), odkazuje cesta pole na pole samotné. Tento rozdíl má některé důsledky pro použití cest polí ve filtrech.
+Význam cesty pole se liší v závislosti na kontextu. Ve filtrech označuje cesta pole hodnotu *jedné instance* pole v aktuálním dokladu. V jiných kontextech, například **$orderby**, **$select**nebo při [hledání v poli v úplné syntaxi Lucene](query-lucene-syntax.md#bkmk_fields), označuje cesta pole samotné pole. Tento rozdíl má některé důsledky pro použití cesty polí ve filtrech.
 
-Vezměte v úvahu `Address/City`cestu k poli. Ve filtru to odkazuje na jedno město pro aktuální dokument, jako je například "San Francisco". Naproti tomu `Rooms/Type` odkazuje na dílčí pole `Type` pro mnoho místností (například "Standard" pro první místnost, "Deluxe" pro druhou místnost atd.). Vzhledem k tomu, že `Rooms/Type` neodkazuje na *jednu instanci* `Type`dílčího pole, nelze ji použít přímo ve filtru. Místo toho byste měli použít [výraz lambda](search-query-odata-collection-operators.md) s proměnnou rozsahu, jako je například:
+Zvažte cestu `Address/City`pole . Ve filtru se jedná o jedno město pro aktuální dokument, například "San Francisco". V kontrastu, `Rooms/Type` odkazuje `Type` na sub-pole pro mnoho místností (jako "standard" pro první pokoj, "deluxe" pro druhou místnost, a tak dále). Vzhledem k tomu, `Rooms/Type` že neodkazuje na *jednu instanci* dílčího pole `Type`, nelze ji použít přímo ve filtru. Místo toho chcete-li filtrovat typ místnosti, použijte [výraz lambda](search-query-odata-collection-operators.md) s proměnnou rozsahu, například takto:
 
     Rooms/any(room: room/Type eq 'deluxe')
 
-V tomto příkladu se proměnná rozsahu `room` zobrazí v cestě k poli `room/Type`. Tímto způsobem `room/Type` odkazuje na typ aktuální místnosti v aktuálním dokumentu. Toto je jediná instance `Type` dílčího pole, takže ji můžete použít přímo ve filtru.
+V tomto příkladu `room` se v `room/Type` cestě pole zobrazí proměnná rozsahu. Tímto `room/Type` způsobem odkazuje na typ aktuální místnosti v aktuálním dokumentu. Jedná se o jednu instanci dílčího `Type` pole, takže ji lze použít přímo ve filtru.
 
 ### <a name="using-field-paths"></a>Použití cest polí
 
-Cesty polí se používají v mnoha parametrech [rozhraní REST API služby Azure kognitivní hledání](https://docs.microsoft.com/rest/api/searchservice/). V následující tabulce jsou uvedena všechna místa, kde je lze použít, a veškerá omezení jejich používání:
+Cesty polí se používají v mnoha parametrech [rozhraní REST Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/). V následující tabulce jsou uvedena všechna místa, kde je lze použít, a všechna omezení jejich použití:
 
-| Rozhraní API | Název parametru | Omezení |
+| rozhraní API | Název parametru | Omezení |
 | --- | --- | --- |
-| [Vytvořit](https://docs.microsoft.com/rest/api/searchservice/create-index) nebo [aktualizovat](https://docs.microsoft.com/rest/api/searchservice/update-index) index | `suggesters/sourceFields` | Žádná |
-| [Vytvořit](https://docs.microsoft.com/rest/api/searchservice/create-index) nebo [aktualizovat](https://docs.microsoft.com/rest/api/searchservice/update-index) index | `scoringProfiles/text/weights` | Lze odkazovat pouze na pole s **možností prohledávání** . |
-| [Vytvořit](https://docs.microsoft.com/rest/api/searchservice/create-index) nebo [aktualizovat](https://docs.microsoft.com/rest/api/searchservice/update-index) index | `scoringProfiles/functions/fieldName` | Lze odkazovat pouze na pole, která lze **filtrovat** . |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `search`, pokud je `queryType` `full` | Lze odkazovat pouze na pole s **možností prohledávání** . |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `facet` | Lze odkazovat pouze na pole **obličeje** . |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `highlight` | Lze odkazovat pouze na pole s **možností prohledávání** . |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `searchFields` | Lze odkazovat pouze na pole s **možností prohledávání** . |
-| [Navrhnout](https://docs.microsoft.com/rest/api/searchservice/suggestions) a automaticky [dokončovat](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `searchFields` | Může odkazovat jenom na pole, která jsou součástí modulu pro [návrhy](index-add-suggesters.md) . |
-| [Hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents), [Návrh](https://docs.microsoft.com/rest/api/searchservice/suggestions)a [Automatické dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `$filter` | Lze odkazovat pouze na pole, která lze **filtrovat** . |
-| [Hledat](https://docs.microsoft.com/rest/api/searchservice/search-documents) a [navrhnout](https://docs.microsoft.com/rest/api/searchservice/suggestions) | `$orderby` | Lze odkazovat pouze na pole, která lze **Seřadit** . |
-| [Hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents), [Návrh](https://docs.microsoft.com/rest/api/searchservice/suggestions)a [vyhledávání](https://docs.microsoft.com/rest/api/searchservice/lookup-document) | `$select` | Může odkazovat **jenom na pole, která lze načíst** . |
+| [Vytvořit](https://docs.microsoft.com/rest/api/searchservice/create-index) nebo [aktualizovat](https://docs.microsoft.com/rest/api/searchservice/update-index) index | `suggesters/sourceFields` | Žádný |
+| [Vytvořit](https://docs.microsoft.com/rest/api/searchservice/create-index) nebo [aktualizovat](https://docs.microsoft.com/rest/api/searchservice/update-index) index | `scoringProfiles/text/weights` | Může odkazovat pouze na **prohledávatelná** pole |
+| [Vytvořit](https://docs.microsoft.com/rest/api/searchservice/create-index) nebo [aktualizovat](https://docs.microsoft.com/rest/api/searchservice/update-index) index | `scoringProfiles/functions/fieldName` | Může odkazovat pouze na **filtrovatelná** pole |
+| [Hledat](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `search`kdy `queryType` je`full` | Může odkazovat pouze na **prohledávatelná** pole |
+| [Hledat](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `facet` | Může odkazovat pouze na **pole s lícovou stůl.** |
+| [Hledat](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `highlight` | Může odkazovat pouze na **prohledávatelná** pole |
+| [Hledat](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `searchFields` | Může odkazovat pouze na **prohledávatelná** pole |
+| [Návrh](https://docs.microsoft.com/rest/api/searchservice/suggestions) a [automatické dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `searchFields` | Může odkazovat pouze na pole, která jsou součástí [návrhu.](index-add-suggesters.md) |
+| [Hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents), [návrh](https://docs.microsoft.com/rest/api/searchservice/suggestions)a [automatické dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `$filter` | Může odkazovat pouze na **filtrovatelná** pole |
+| [Hledat](https://docs.microsoft.com/rest/api/searchservice/search-documents) a [navrhnout](https://docs.microsoft.com/rest/api/searchservice/suggestions) | `$orderby` | Může odkazovat pouze na **seřaditelná** pole. |
+| [Hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents), [návrh](https://docs.microsoft.com/rest/api/searchservice/suggestions)a [vyhledávání](https://docs.microsoft.com/rest/api/searchservice/lookup-document) | `$select` | Může odkazovat pouze na **navypronatelná** pole. |
 
 ## <a name="constants"></a>Konstanty
 
-Konstanty v OData jsou literálové hodnoty daného typu [model EDM (Entity Data Model)](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) (EDM). Seznam podporovaných typů v Azure Kognitivní hledání najdete v tématu [podporované datové typy](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) . Konstanty typů kolekcí nejsou podporovány.
+Konstanty v OData jsou literály daného typu [datového modelu entity](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) (EDM). Seznam podporovaných typů v Azure Cognitive Search najdete v [tématu Podporované datové typy.](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) Konstanty typů kolekcí nejsou podporovány.
 
-V následující tabulce jsou uvedeny příklady konstant pro každý datový typ podporovaný službou Azure Kognitivní hledání:
+V následující tabulce jsou uvedeny příklady konstant pro každý z datových typů podporovaných Azure Cognitive Search:
 
-| Typ dat | Příklady konstant |
+| Datový typ | Příkladkonstanty |
 | --- | --- |
 | `Edm.Boolean` | `true`, `false` |
 | `Edm.DateTimeOffset` | `2019-05-06T12:30:05.451Z` |
-| `Edm.Double` | `3.14159`, `-1.2e7`, `NaN`, `INF``-INF` |
+| `Edm.Double` | `3.14159`, `-1.2e7`, `NaN`, `INF`, `-INF` |
 | `Edm.GeographyPoint` | `geography'POINT(-122.131577 47.678581)'` |
 | `Edm.GeographyPolygon` | `geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'` |
 | `Edm.Int32` | `123`, `-456` |
 | `Edm.Int64` | `283032927235` |
 | `Edm.String` | `'hello'` |
 
-### <a name="escaping-special-characters-in-string-constants"></a>Uvozovací znaky speciálních znaků v řetězcových konstantách
+### <a name="escaping-special-characters-in-string-constants"></a>Unikající speciální znaky v řetězcových konstantách
 
-Řetězcové konstanty v OData jsou oddělené jednoduchými uvozovkami. Pokud potřebujete sestavit dotaz s řetězcovou konstantou, která by mohla obsahovat jednoduché uvozovky, můžete vložit vložené uvozovky pomocí zdvojnásobení.
+Řetězcové konstanty v OData jsou odděleny jednoduchými uvozovkami. Pokud potřebujete vytvořit dotaz s řetězcovou konstantou, která může sama obsahovat jednoduché uvozovky, můžete uniknout vložené uvozovky jejich zdvojnásobením.
 
-Například fráze s neformátovaným apostrofem, jako je Alice auto, by byla vyjádřena v OData jako řetězcová konstanta `'Alice''s car'`.
+Například fráze s neformátovanou apostrof jako "Alice auto" by být zastoupeny `'Alice''s car'`v OData jako řetězec konstanta .
 
 > [!IMPORTANT]
-> Při sestavování filtrů programově je důležité pamatovat na řídicí konstanty řetězce, které pocházejí ze vstupu uživatele. Účelem je zmírnit možnost [útoků prostřednictvím injektáže](https://wikipedia.org/wiki/SQL_injection), zejména při použití filtrů k implementaci [oříznutí zabezpečení](search-security-trimming-for-azure-search.md).
+> Při vytváření filtrů programově, je důležité mít na paměti, aby uniknout řetězec konstanty, které pocházejí ze vstupu uživatele. To má zmírnit možnost [vstřikovacích útoků](https://wikipedia.org/wiki/SQL_injection), zejména při použití filtrů k implementaci [bezpečnostního oříznutí](search-security-trimming-for-azure-search.md).
 
 ### <a name="constants-syntax"></a>Syntaxe konstant
 
-Následující EBNF ([Rozšířený Backus – formulář Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku pro většinu konstant zobrazených ve výše uvedené tabulce. Gramatika pro geografické typy se dá najít v [geograficky funkčních funkcích OData v Azure kognitivní hledání](search-query-odata-geo-spatial-functions.md).
+Následující formulář EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku pro většinu konstant uvedených ve výše uvedené tabulce. Gramatiku pro geograficky prostorové typy najdete v [geoprostorových funkcích OData v Azure Cognitive Search](search-query-odata-geo-spatial-functions.md).
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -195,21 +195,21 @@ exponent ::= 'e' sign? integer_literal
 boolean_literal ::= 'true' | 'false'
 ```
 
-K dispozici je také diagram interaktivní syntaxe:
+K dispozici je také interaktivní syntaktický diagram:
 
 > [!div class="nextstepaction"]
-> [Diagram syntaxe OData pro Azure Kognitivní hledání](https://azuresearch.github.io/odata-syntax-diagram/#constant)
+> [Syntaxový diagram OData pro Azure Cognitive Search](https://azuresearch.github.io/odata-syntax-diagram/#constant)
 
 > [!NOTE]
-> Kompletní EBNF najdete v článku [referenční informace k syntaxi výrazu OData pro Azure kognitivní hledání](search-query-odata-syntax-reference.md) .
+> Viz [odkaz na syntaxi výrazu OData pro Azure Cognitive Search](search-query-odata-syntax-reference.md) pro kompletní EBNF.
 
 ## <a name="building-expressions-from-field-paths-and-constants"></a>Vytváření výrazů z cest polí a konstant
 
-Cesty polí a konstanty jsou nejzákladnější částí výrazu OData, ale jsou již plnými výrazy samotné. Ve skutečnosti je parametr **$Select** v Azure kognitivní hledání Nothing, ale čárkami oddělený seznam cest polí a **$OrderBy** není mnohem složitější než **$Select**. Pokud budete mít pole typu `Edm.Boolean` v indexu, můžete dokonce napsat filtr, který není Nothing, ale cesta k tomuto poli. Konstanty `true` a `false` jsou podobně platnými filtry.
+Cesty polí a konstanty jsou nejzákladnější částí výrazu OData, ale samy o sobě jsou úplnými výrazy. Ve skutečnosti **$select** parametr v Azure Cognitive Search není nic jiného než čárka oddělený seznam cest polí a **$orderby** není mnohem složitější než **$select**. Pokud máte v indexu pole `Edm.Boolean` typu, můžete dokonce napsat filtr, který není nic jiného než cesta tohoto pole. Konstanty `true` a `false` jsou také platné filtry.
 
-Ve většině případů ale budete potřebovat složitější výrazy, které odkazují na více než jedno pole a konstantu. Tyto výrazy jsou sestaveny různými způsoby v závislosti na parametru.
+Většinu času však budete potřebovat složitější výrazy, které odkazují na více než jedno pole a konstantu. Tyto výrazy jsou vytvořeny různými způsoby v závislosti na parametru.
 
-Následující EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku pro parametry **$Filter**, **$OrderBy**a **$Select** . Ty jsou sestavené z jednodušších výrazů, které odkazují na cesty polí a konstanty:
+Následující eBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku pro **parametry $filter**, **$orderby**a **$select.** Ty jsou vytvořeny z jednodušších výrazů, které odkazují na cesty polí a konstanty:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -221,26 +221,26 @@ order_by_expression ::= order_by_clause(',' order_by_clause)*
 select_expression ::= '*' | field_path(',' field_path)*
 ```
 
-K dispozici je také diagram interaktivní syntaxe:
+K dispozici je také interaktivní syntaktický diagram:
 
 > [!div class="nextstepaction"]
-> [Diagram syntaxe OData pro Azure Kognitivní hledání](https://azuresearch.github.io/odata-syntax-diagram/#filter_expression)
+> [Syntaxový diagram OData pro Azure Cognitive Search](https://azuresearch.github.io/odata-syntax-diagram/#filter_expression)
 
 > [!NOTE]
-> Kompletní EBNF najdete v článku [referenční informace k syntaxi výrazu OData pro Azure kognitivní hledání](search-query-odata-syntax-reference.md) .
+> Viz [odkaz na syntaxi výrazu OData pro Azure Cognitive Search](search-query-odata-syntax-reference.md) pro kompletní EBNF.
 
-Parametry **$OrderBy** a **$Select** jsou čárkami oddělený seznam jednodušších výrazů. Parametr **$Filter** je logický výraz, který se skládá z jednodušších dílčích výrazů. Tyto dílčí výrazy jsou kombinovány pomocí logických operátorů, jako jsou [`and`, `or`a `not`](search-query-odata-logical-operators.md), operátory porovnání, jako jsou [`eq`, `lt`, `gt`a tak dále](search-query-odata-comparison-operators.md), a operátory shromažďování, jako je například [`any` a `all`](search-query-odata-collection-operators.md).
+**Parametry $orderby** a **$select** jsou seznamy jednodušších výrazů oddělené čárkami. Parametr **$filter** je logický výraz, který se skládá z jednodušších dílčích výrazů. Tyto dílčí výrazy jsou kombinovány pomocí logických [ `and`operátorů, `or` `not` ](search-query-odata-logical-operators.md)jako jsou , a , porovnávací operátory, jako [ `eq`jsou , `lt`, `gt`a tak](search-query-odata-comparison-operators.md)dále , a inkasní operátory, jako [ `any` `all` ](search-query-odata-collection-operators.md)jsou a .
 
-Parametry **$Filter**, **$OrderBy**a **$Select** jsou podrobněji prozkoumání v následujících článcích:
+Parametry **$filter**, **$orderby**a **$select** jsou podrobněji popsány v následujících článcích:
 
-- [Syntaxe $filter OData v Azure Kognitivní hledání](search-query-odata-filter.md)
-- [Syntaxe $orderby OData v Azure Kognitivní hledání](search-query-odata-orderby.md)
-- [Syntaxe $select OData v Azure Kognitivní hledání](search-query-odata-select.md)
+- [Syntaxe $filter OData v Azure Cognitive Search](search-query-odata-filter.md)
+- [Syntaxe $orderby OData v Azure Cognitive Search](search-query-odata-orderby.md)
+- [Syntaxe $select OData v Azure Cognitive Search](search-query-odata-select.md)
 
 ## <a name="see-also"></a>Viz také  
 
-- [Omezující navigace v Azure Kognitivní hledání](search-faceted-navigation.md)
-- [Filtry v Azure Kognitivní hledání](search-filters.md)
-- [Hledání dokumentů &#40;Azure kognitivní hledání REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Famitová navigace v Azure Cognitive Search](search-faceted-navigation.md)
+- [Filtry v Azure Cognitive Search](search-filters.md)
+- [Hledání dokumentů &#40;azure kognitivní vyhledávání rozhraní API rozhraní&#41;API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 - [Syntaxe dotazů Lucene](query-lucene-syntax.md)
-- [Jednoduchá syntaxe dotazů v Azure Kognitivní hledání](query-simple-syntax.md)
+- [Jednoduchá syntaxe dotazu v Azure Cognitive Search](query-simple-syntax.md)

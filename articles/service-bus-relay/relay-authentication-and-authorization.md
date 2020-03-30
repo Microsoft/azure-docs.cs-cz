@@ -1,6 +1,6 @@
 ---
-title: Ověřování a autorizace Azure Relay | Microsoft Docs
-description: Tento článek poskytuje přehled ověřování pomocí protokolu SAS (Shared Access Signature) ve službě Azure Relay.
+title: Ověřování a autorizace azure relay | Dokumenty společnosti Microsoft
+description: Tento článek obsahuje přehled ověřování sdíleného přístupového podpisu (SAS) se službou Azure Relay.
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -15,41 +15,41 @@ ms.workload: na
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: aac5c973a99b13d5918a0162feb7f1ede443463b
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76514574"
 ---
-# <a name="azure-relay-authentication-and-authorization"></a>Azure Relay ověřování a autorizace
+# <a name="azure-relay-authentication-and-authorization"></a>Ověřování a autorizace Azure Relay
 
-Aplikace se můžou ověřit, aby Azure Relay používali ověřování pomocí sdíleného přístupového podpisu (SAS). Ověřování SAS umožňuje aplikacím ověřování ve službě Azure Relay pomocí přístupového klíče nakonfigurovaného v oboru názvů Relay. Potom můžete tento klíč použít k vygenerování tokenu sdíleného přístupového podpisu, který můžou klienti použít k ověřování ve službě Relay.
+Aplikace se můžou ověřovat ve službě Azure Relay pomocí ověřování pomocí sdíleného přístupového podpisu (SAS). Ověřování SAS umožňuje aplikacím ověřit službu Azure Relay pomocí přístupového klíče nakonfigurovaného v oboru názvů Relay. Tento klíč pak můžete použít ke generování tokenu sdíleného přístupového podpisu, který mohou klienti použít k ověření služby přenosu.
 
-## <a name="shared-access-signature-authentication"></a>Ověřování sdíleného přístupového podpisu
+## <a name="shared-access-signature-authentication"></a>Ověřování pomocí sdíleného přístupového podpisu
 
-[Ověřování SAS](../service-bus-messaging/service-bus-sas.md) umožňuje uživateli udělit přístup k prostředkům Azure Relay s konkrétními právy. Ověřování SAS zahrnuje konfiguraci kryptografického klíče s přidruženými právy k prostředku. Klienti pak mohou získat přístup k tomuto prostředku předložením tokenu SAS, který se skládá z přistupového identifikátoru URI prostředku a jeho vypršení platnosti podepsaného pomocí konfigurovaného klíče.
+[Ověřování SAS](../service-bus-messaging/service-bus-sas.md) umožňuje udělit uživateli přístup k prostředkům Azure Relay s konkrétními právy. Ověřování SAS zahrnuje konfiguraci kryptografického klíče s přidruženými právy k prostředku. Klienti pak mohou získat přístup k tomuto prostředku předložením tokenu SAS, který se skládá z přístupu identifikátoru URI prostředku a vypršení platnosti podepsané nakonfigurovaným klíčem.
 
-Klíče pro SAS můžete nakonfigurovat v oboru názvů přenosu. Na rozdíl od Service Bus zasílání zpráv [přenosová Hybrid Connections](relay-hybrid-connections-protocol.md) podporuje neautorizované nebo anonymní odesílatele. Anonymní přístup pro entitu můžete povolit při jejím vytváření, jak je znázorněno na následujícím snímku obrazovky na portálu:
+Klíče pro sas můžete nakonfigurovat v oboru názvů přenosu. Na rozdíl od zasílání zpráv service bus, [přenoshybridní připojení](relay-hybrid-connections-protocol.md) podporuje neoprávněné nebo anonymní odesílatele. Anonymní přístup entity můžete povolit při jeho vytváření, jak je znázorněno na následujícím snímku obrazovky z portálu:
 
 ![][0]
 
 Chcete-li použít SAS, můžete nakonfigurovat objekt [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) v oboru názvů Relay, který se skládá z následujících:
 
-* *KeyName* , který identifikuje pravidlo.
-* *PrimaryKey* je kryptografický klíč, který slouží k podepsání a ověření tokenů SAS.
-* *SecondaryKey* je kryptografický klíč, který slouží k podepisování nebo ověřování tokenů SAS.
-* *Práva* představující shromažďování udělených, odesílaných nebo spravovaných práv.
+* *KeyName,* který identifikuje pravidlo.
+* *PrimaryKey* je kryptografický klíč používaný k podepisování/ověřování tokenů SAS.
+* *SecondaryKey* je kryptografický klíč používaný k podepisování/ověřování tokenů SAS.
+* *Práva* představující kolekci práv naslouchání, odesílání nebo správu udělených.
 
-Autorizační pravidla konfigurovaná na úrovni oboru názvů můžou udělit přístup ke všem připojením přenosu v oboru názvů pro klienty s tokeny podepsanými pomocí odpovídajícího klíče. V oboru názvů Relay lze nakonfigurovat až 12 takových autorizačních pravidel. Ve výchozím nastavení se [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) se všemi právy nakonfigurují pro každý obor názvů při prvním zřízení.
+Autorizační pravidla nakonfigurovaná na úrovni oboru názvů mohou udělit přístup ke všem přenosovým připojením v oboru názvů klientům s tokeny podepsanými pomocí odpovídajícího klíče. Až 12 takových autorizačních pravidel lze nakonfigurovat v oboru názvů přenosu. Ve výchozím nastavení [sharedaccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) se všemi právy je nakonfigurován pro každý obor názvů při prvním zřízení.
 
-Pro přístup k entitě vyžaduje klient token SAS generovaný pomocí konkrétní [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule). Token SAS se vygeneruje pomocí HMAC-SHA256 řetězce prostředku, který se skládá z identifikátoru URI prostředku, ke kterému se přistupuje, a vypršení platnosti kryptografického klíče přidruženého k autorizačnímu pravidlu.
+Pro přístup k entitě klient vyžaduje token SAS generovaný pomocí konkrétního [sharedaccessauthorizationrule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule). Token SAS je generován pomocí HMAC-SHA256 řetězce prostředků, který se skládá z identifikátoru URI prostředku, ke kterému je nárokován přístup, a vypršení platnosti s kryptografickým klíčem přidruženým k autorizačnímu pravidlu.
 
-Podpora ověřování SAS pro Azure Relay je obsažená v sadě Azure .NET SDK verze 2,0 a novější. SAS zahrnuje podporu pro [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule). Všechna rozhraní API, která přijímají připojovací řetězec jako parametr, zahrnují podporu připojovacích řetězců SAS.
+Podpora ověřování SAS pro Azure Relay je součástí sady Azure .NET SDK verze 2.0 a novější. SAS zahrnuje podporu pro [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule). Všechna rozhraní API, která přijímají připojovací řetězec jako parametr, zahrnují podporu připojovacích řetězců SAS.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další podrobnosti o SAS najdete dál v tématu čtení [Service Bus ověřování pomocí podpisů sdíleného přístupu](../service-bus-messaging/service-bus-sas.md) .
-- Podrobné informace o funkci Hybrid Connections najdete v [Průvodci protokolem Hybrid Connections Azure Relay](relay-hybrid-connections-protocol.md) .
-- Příslušné informace o ověřování a autorizaci zpráv Service Bus najdete v tématu [Service Bus ověřování a autorizaci](../service-bus-messaging/service-bus-authentication-and-authorization.md). 
+- Další podrobnosti o službě SAS [načtete pomocí sdílených přístupových podpisů.](../service-bus-messaging/service-bus-sas.md)
+- Podrobné informace o funkci Hybridní připojení [azure relay](relay-hybrid-connections-protocol.md) představují podrobné informace o funkci hybridní připojení.
+- Odpovídající informace o ověřování a autorizaci zasílání zpráv služby Service Bus naleznete v tématu [Ověřování a autorizace služby Service Bus](../service-bus-messaging/service-bus-authentication-and-authorization.md). 
 
 [0]: ./media/relay-authentication-and-authorization/hcanon.png

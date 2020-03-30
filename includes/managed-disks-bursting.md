@@ -5,49 +5,49 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/28/2020
+ms.date: 03/29/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a04df7ed283a17ddad6af87cf8215ff8d39a5079
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 871a3edf70690a09d3747703e8bc999dfcce967c
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78202539"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80385176"
 ---
-Pro prémiové SSD je aktuálně funkce pro vystavování disku ve verzi Preview. Shluking se podporuje u všech velikostí disků SSD úrovně Premium < = 512 GiB (P20 nebo níže). Tyto velikosti disků podporují rozpínání na nejlepší úsilí a využívají systém kreditů ke správě shlukování. Kredity se sčítají v rámci shlukového přenosu vždy, když je přenos disku pod zřízeným cílem výkonu pro velikost disku, a využití kreditů při nárůstu provozu nad rámec cíle. Provoz na disku se sleduje proti vstupně-výstupních operací i šířce pásma v zřízeném cíli. Při shlukování disku nebude při vstupně-výstupních operacích a propustnosti obcházet omezení velikosti virtuálních počítačů.
+Pro prémiové Disky SSD je podporováno prasknutí disku. Roztržení je podporováno na všech prémiových ssd diskech velikosti <= 512 GiB (P20 nebo nižší). Tyto velikosti disků podporují prasknutí na základě nejlepšíúsilí a využít kreditní systém pro správu prasknutí. Kredity se hromadí v intervalu shluků vždy, když je provoz na disku nižší než zřízený cíl výkonu pro jejich velikost disku, a spotřebovávají kredity, když provoz přejde za cíl. Provoz disku je sledován proti iOPS a šířku pásma v zřízeném cíli. Roztržení disku neobejde omezení velikosti virtuálního počítače (VM) na viops nebo propustnost.
 
-Při nových nasazení velikosti disků, která ho podporují, je rozšíření disku ve výchozím nastavení povolené. Stávající velikosti disků, pokud podporují shlukování disku, mohou umožňovat roztržení pomocí jedné z následujících metod:
+Shlukování disku je ve výchozím nastavení povoleno u nových nasazení velikostí disků, které jej podporují. Existující velikosti disků, pokud podporují stržení disku, mohou povolit prasknutí některou z následujících metod:
 
-- Odpojte disk a znovu ho připojte.
-- Zastavte a spusťte virtuální počítač.
+- Odpojte a znovu připojte disk.
+- Zastavte a spusťte virtuální hod.
 
-## <a name="burst-states"></a>Stavy shlukování
+## <a name="burst-states"></a>Zaskakné stavy
 
-Pokud je disk připojený k virtuálnímu počítači, zahájí se všechny velikosti virtuálních počítačů, které jsou k dispozici, s plným kreditem shlukového přenosu. Maximální doba navýšení se určuje podle velikosti intervalu shlukového kreditu. Můžete nashromáždit jenom nevyužité kredity až do velikosti tohoto platebního intervalu. V jakémkoli okamžiku může být v jednom z následujících tří stavů kredit shlukování disku: 
+Všechny velikosti burst příslušné disk začne s plnou shluk kreditní kbelík, když je disk připojen k virtuálnímu počítači. Maximální doba roztržení je určena velikostí lopaty kreditu burst. Nevyužité kredity můžete hromadit pouze do velikosti kreditu. V libovolném okamžiku může být váš disk praskla kreditní kbelík v jednom z následujících tří stavů: 
 
-- Časově rozlišené, když přenos disku používá méně než zřízený cíl výkonu. Kredit můžete navýšit, pokud je přenos disku nad rámec vstupně-výstupních operací nebo cílů šířky pásma nebo obojího. Kredity v/v můžete i nadále nahromadění, když spotřebováváte celou šířku pásma, naopak.  
+- Nabíhání, když provoz disku používá méně než zřízený cíl výkonu. Můžete akumulovat kredit, pokud je provoz na disku mimo cíle viops nebo šířky pásma nebo obojí. Stále můžete hromadit kredity IO, když spotřebováváte plnou šířku pásma disku, naopak.  
 
-- Odmítnutí, pokud provoz disku využívá více než zřízený cíl výkonu. Shlukový přenos nezávisle spotřebovává kredity z IOPS nebo šířky pásma. 
+- Klesající, když provoz disku používá více než zřízený cíl výkonu. Provoz s hlukem bude nezávisle využívat kredity z viporu nebo šířky pásma. 
 
-- Zbývající konstanta, pokud je přenos disku přesně v zajištěném cíli výkonnosti. 
+- Zbývající konstantní, když provoz disku je přesně na zřízené cíle výkonu. 
 
-Velikosti disků, které poskytují podporu pro shlukování spolu s specifikacemi shluku, jsou shrnuty v následující tabulce.
+Velikosti disků, které poskytují podporu shlukování spolu se specifikacemi shluků, jsou shrnuty v následující tabulce.
 
 ## <a name="regional-availability"></a>Regionální dostupnost
 
-V současné době je shlukování disků dostupné pouze v Středozápadní USA oblasti.
+Roztržení disku je k dispozici ve všech oblastech veřejného cloudu.
 
 ## <a name="disk-sizes"></a>Velikosti disků
 
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
-## <a name="example-scenarios"></a>Příklady scénářů
+## <a name="example-scenarios"></a>Ukázkové scénáře
 
-Pokud chcete získat lepší představu o tom, jak to funguje, tady je několik příkladů scénářů:
+Chcete-li získat lepší představu o tom, jak to funguje, zde je několik příkladů scénářů:
 
-- Jedním z běžných scénářů, které můžou těžit z rozšíření disku, je rychlejší spouštění virtuálních počítačů a spouštění aplikací na discích s operačním systémem. Jako příklad si povezměte virtuální počítač se systémem Linux s 8 GiB image OS. Pokud jako disk s operačním systémem používáme disk P2, zřízený cíl je 120 IOPS a 25 MB/s. Když se virtuální počítač spustí, načte se na disk s operačním systémem načítání spouštěcích souborů špička. Díky zavedení shlukování můžete číst s maximální rychlostí shluku 3500 IOPS a 170 MB/s, což urychluje dobu načítání nejméně 6x. Po spuštění virtuálního počítače je úroveň provozu na disku s operačním systémem obvykle nízká, protože většina datových operací aplikace bude odpovídat připojeným datovým diskům. Pokud je přenos pod zřízeným cílem, shromáždí se kredity.
+- Jeden běžný scénář, který může těžit z roztržení disku je rychlejší spuštění virtuálního počítače a spuštění aplikace na discích operačního systému. Vezměte virtuální počítač s Linuxem s 8 GiB OS image jako příklad. Pokud používáme disk P2 jako disk operačního systému, zřízený cíl je 120 VOPS a 25 MB/s. Při spuštění virtuálního počítače bude na disku s osovým systémem načítat spouštěcí soubory špička pro čtení. Se zavedením prasknutí můžete číst při maximální rychlosti roztržení 3500 IOPS a 170 MB/s, což urychluje dobu načítání nejméně o 6x. Po spuštění virtuálního počítače je úroveň provozu na disku operačního systému obvykle nízká, protože většina datových operací aplikace bude proti připojeným datovým diskům. Pokud je provoz pod zřízeným cílem, budete hromadit kredity.
 
-- Pokud jste hostitelem vzdáleného prostředí virtuálních ploch, kdykoli aktivní uživatel spustí aplikaci, jako je AutoCAD, dojde k výraznému nárůstu provozu na disk s operačním systémem. V takovém případě bude provoz za provozu využívat nahromaděné kredity, což vám umožní přejít nad rámec zřízeného cíle a spustit aplikaci mnohem rychleji.
+- Pokud hostujete prostředí vzdálené virtuální plochy, kdykoli aktivní uživatel spustí aplikaci, jako je AutoCAD, výrazně se zvýší provoz na disk operačního systému. V takovém případě bude shlukový provoz spotřebovávat nahromaděné kredity, což vám umožní jít nad rámec zřízeného cíle a spuštění aplikace mnohem rychleji.
 
-- Disk P1 má zřízenou cílovou verzi 120 IOPS a 25 MB/s. Pokud by skutečný provoz na disku byl 100 vstupně-výstupních operací a 20 MB/s za uplynulý interval 1 sekund, pak se nevyužité 20 IOs a 5 MB připisují do shlukového intervalu disku. Kredity v intervalu shlukování lze později použít, pokud přenos přesáhne zřízený cíl až do maximálního limitu shlukování. Maximální limit shluku definuje strop provozu na disku, a to i v případě, že máte kredity nárůstu využití. V takovém případě, a to i v případě, že máte v rámci platebního intervalu 10 000 IOs, nemůže disk P1 vydávat více než maximální počet jednotek 3 500 v/v za sekundu.  
+- Disk P1 má zřízený cíl 120 VOPS a 25 MB/s. Pokud skutečný provoz na disku byl 100 IOPS a 20 MB v posledních 1 sekundový interval, pak nevyužité 20 IOs a 5 MB jsou připsány na burst kbelík disku. Kredity v bloku roztržení lze později použít, když provoz překročí zřízený cíl, a to až do maximálního limitu roztržení. Maximální limit shluků definuje strop provozu na disku, i když máte praskla kredity konzumovat z. V tomto případě i v případě, že máte 10 000 iOs v kontejneru kreditu, disk P1 nemůže vydat více než maximální shluk 3 500 IO za sekundu.  

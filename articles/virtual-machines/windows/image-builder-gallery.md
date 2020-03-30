@@ -1,6 +1,6 @@
 ---
-title: Použití Azure image Builder s galerií imagí pro virtuální počítače s Windows (Preview)
-description: Vytvářejte verze imagí sdílené Galerie Azure pomocí nástroje Azure image Builder a Azure PowerShell.
+title: Použití Azure Image Builder s galerií obrázků pro virtuální počítače s Windows (preview)
+description: Vytvářejte verze image Azure Shared Gallery pomocí Azure Image Builder a Azure PowerShellu.
 author: cynthn
 ms.author: cynthn
 ms.date: 01/14/2020
@@ -8,44 +8,44 @@ ms.topic: article
 ms.service: virtual-machines-windows
 manager: gwallace
 ms.openlocfilehash: d5856780d0d9f1a1943bca1c2f076bb3ec914e1d
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76263349"
 ---
-# <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Verze Preview: vytvoření bitové kopie systému Windows a její distribuce do galerie sdílených imagí 
+# <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Náhled: Vytvoření bitové kopie systému Windows a její distribuce do galerie sdílených obrázků 
 
-V tomto článku se dozvíte, jak můžete použít nástroj Azure image Builder a Azure PowerShell k vytvoření verze image v [galerii sdílených imagí](shared-image-galleries.md), a pak můžete bitovou kopii distribuovat globálně. Můžete to udělat taky pomocí [Azure CLI](../linux/image-builder-gallery.md).
+Tento článek vám ukáže, jak můžete pomocí Azure Image Builder a Azure PowerShell uvytvořit verzi image v [galerii sdílených bitových obrázků](shared-image-galleries.md)a pak distribuovat image globálně. Můžete to provést také pomocí [příkazového příkazu k příkazu Azure](../linux/image-builder-gallery.md).
 
-K nakonfigurování image budeme používat šablonu. JSON. Soubor. JSON, který používáme, je tady: [armTemplateWinSIG. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json). Budeme stahovat a upravovat místní verzi šablony, takže tento článek je napsaný pomocí místní relace PowerShellu.
+Ke konfiguraci bitové kopie použijeme šablonu json. Soubor .json, který používáme, je zde: [armTemplateWinSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json). Budeme stahovat a upravovat místní verzi šablony, takže tento článek je napsán pomocí místní relace prostředí PowerShell.
 
-Chcete-li distribuovat bitovou kopii do galerie sdílených imagí, šablona používá [sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) jako hodnotu oddílu `distribute` šablony.
+Chcete-li distribuovat obraz do galerie sdílených obrázků, šablona `distribute` používá [sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) jako hodnotu pro část šablony.
 
-Azure image Builder automaticky spustí nástroj Sysprep a provede generalizaci bitové kopie, jedná se o obecný příkaz nástroje Sysprep, který můžete v případě potřeby [přepsat](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#vms-created-from-aib-images-do-not-create-successfully) . 
+Azure Image Builder automaticky spustí sysprep pro generalizaci bitové kopie, jedná se o obecný příkaz sysprep, který můžete v případě potřeby [přepsat.](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#vms-created-from-aib-images-do-not-create-successfully) 
 
-Počítejte s tím, kolikrát vlastní nastavení vrstev. Příkaz Sysprep můžete spustit až 8 krát na jedné imagi Windows. Po spuštění nástroje Sysprep 8 je nutné znovu vytvořit bitovou kopii systému Windows. Další informace najdete v tématu [omezení počtu, kolikrát můžete nástroj Sysprep spustit](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep). 
+Uvědomte si, kolikrát vrstvy přizpůsobení. Příkaz Sysprep můžete spustit až 8krát v jedné bitové kopii systému Windows. Po 8násobném spuštění programu Sysprep je nutné znovu vytvořit bitové kopii systému Windows. Další informace naleznete [v tématu Omezení počtu spuštění sysprepu](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep). 
 
 > [!IMPORTANT]
-> Azure image Builder je momentálně ve verzi Public Preview.
+> Azure Image Builder je momentálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="register-the-features"></a>Registrace funkcí
-Chcete-li používat Azure image Builder v rámci verze Preview, je nutné zaregistrovat novou funkci.
+Chcete-li během náhledu používat Azure Image Builder, musíte zaregistrovat novou funkci.
 
 ```powershell
 Register-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
 ```
 
-Ověřte stav registrace funkce.
+Zkontrolujte stav registrace funkce.
 
 ```powershell
 Get-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
 ```
 
-Než přejdete k dalšímu kroku, počkejte, než se `RegistrationState` `Registered`.
+Počkejte, až `RegistrationState` je `Registered` před přechodem k dalšímu kroku.
 
-Ověřte registrace poskytovatele. Ujistěte se, že každý vrátí `Registered`.
+Zkontrolujte registrace poskytovatele. Ujistěte se, že každý vrátí `Registered`.
 
 ```powershell
 Get-AzResourceProvider -ProviderNamespace Microsoft.VirtualMachineImages | Format-table -Property ResourceTypes,RegistrationState
@@ -54,7 +54,7 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.Compute | Format-table -Prop
 Get-AzResourceProvider -ProviderNamespace Microsoft.KeyVault | Format-table -Property ResourceTypes,RegistrationState
 ```
 
-Pokud se nevrátí `Registered`, zaregistrujte zprostředkovatele pomocí následujících kroků:
+Pokud se `Registered`nevrátí , použijte následující zaregistrovat zprostředkovatele:
 
 ```powershell
 Register-AzResourceProvider -ProviderNamespace Microsoft.VirtualMachineImages
@@ -65,7 +65,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.KeyVault
 
 ## <a name="create-variables"></a>Vytvoření proměnných
 
-Některé informace budeme používat opakovaně, takže vytvoříme některé proměnné, které tyto informace uloží. Nahraďte hodnoty proměnných, například `username` a `vmpassword`, vlastními informacemi.
+Budeme používat některé informace opakovaně, takže vytvoříme některé proměnné pro ukládání těchto informací. Nahraďte hodnoty proměnných, `username` `vmpassword`jako a , vlastními informacemi.
 
 ```powershell
 # Get existing context
@@ -95,7 +95,7 @@ $runOutputName="winclientR01"
 
 ## <a name="create-the-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků a udělte jí oprávnění tvůrce imagí Azure k vytváření prostředků v této skupině prostředků.
+Vytvořte skupinu prostředků a udělit Azure Image Builder oprávnění k vytváření prostředků v této skupině prostředků.
 
 ```powershell
 New-AzResourceGroup `
@@ -109,11 +109,11 @@ New-AzRoleAssignment `
 
 
 
-## <a name="create-the-shared-image-gallery"></a>Vytvoření galerie sdílených imagí
+## <a name="create-the-shared-image-gallery"></a>Vytvoření galerie sdílených obrázků
 
-Chcete-li použít Tvůrce imagí s galerií sdílených imagí, je nutné mít existující definici obrázku a obrázku. Tvůrce imagí nevytvoří pro vás definici image a image.
+Chcete-li používat Tvůrce obrázků se sdílenou galerií obrázků, musíte mít existující galerii obrázků a definici obrázků. Image Builder nebude vytvářet galerii obrázků a definici obrazu pro vás.
 
-Pokud ještě nemáte definici galerie a image k použití, začněte jejich vytvořením. Nejdřív vytvořte galerii imagí.
+Pokud ještě nemáte galerii a definici obrázku, začněte jejich vytvořením. Nejprve vytvořte galerii obrázků.
 
 ```powershell
 # Image gallery name
@@ -148,7 +148,7 @@ New-AzGalleryImageDefinition `
 
 ## <a name="download-and-configure-the-template"></a>Stažení a konfigurace šablony
 
-Stáhněte šablonu. JSON a nakonfigurujte ji pomocí proměnných.
+Stáhněte si šablonu json a nakonfigurujte ji pomocí proměnných.
 
 ```powershell
 
@@ -177,9 +177,9 @@ Invoke-WebRequest `
 ```
 
 
-## <a name="create-the-image-version"></a>Vytvoření verze image
+## <a name="create-the-image-version"></a>Vytvoření verze obrázku
 
-Šablonu je třeba odeslat do služby, stáhne všechny závislé artefakty, jako jsou skripty, a uloží je do pracovní skupiny prostředků s předponou *IT_* .
+Šablona musí být odeslána do služby, bude to stahovat všechny závislé artefakty, jako jsou skripty, a uložit je do pracovní skupiny prostředků, s předponou *IT_*.
 
 ```powershell
 New-AzResourceGroupDeployment `
@@ -190,7 +190,7 @@ New-AzResourceGroupDeployment `
    -svclocation $location
 ```
 
-Chcete-li vytvořit bitovou kopii, je třeba vyvolat ' Run ' v šabloně.
+Chcete-li vytvořit obrázek, musíte vyvolat 'Spustit' na šabloně.
 
 ```powershell
 Invoke-AzResourceAction `
@@ -201,16 +201,16 @@ Invoke-AzResourceAction `
    -Action Run
 ```
 
-Vytvoření image a její replikace do obou oblastí může chvíli trvat. Před přechodem k vytvoření virtuálního počítače počkejte na dokončení této části.
+Vytvoření bitové kopie a její replikace do obou oblastí může chvíli trvat. Počkejte, až se tato část dokončí, než přejdeme k vytvoření virtuálního počítače.
 
-Informace o možnostech automatizace získání stavu sestavení image najdete v [souboru Readme](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/readme.md#get-status-of-the-image-build-and-query) pro tuto šablonu na GitHubu.
+Informace o možnostech automatizace získání stavu sestavení image najdete v tématu [Readme](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/readme.md#get-status-of-the-image-build-and-query) pro tuto šablonu na GitHubu.
 
 
 ## <a name="create-the-vm"></a>Vytvořte virtuální počítač.
 
-Vytvořte virtuální počítač z verze image, kterou vytvořila služba Azure image Builder.
+Vytvořte virtuální počítač z verze image, kterou vytvořil Azure Image Builder.
 
-Získejte verzi image, kterou jste vytvořili.
+Získejte verzi obrázku, kterou jste vytvořili.
 ```powershell
 $imageVersion = Get-AzGalleryImageVersion `
    -ResourceGroupName $imageResourceGroup `
@@ -218,7 +218,7 @@ $imageVersion = Get-AzGalleryImageVersion `
    -GalleryImageDefinitionName $imageDefName
 ```
 
-Vytvořte virtuální počítač ve druhé oblasti, na kterou byla image replikována.
+Vytvořte virtuální ho v druhé oblasti, které byly image byla replikována.
 
 ```powershell
 $vmResourceGroup = "myResourceGroup"
@@ -254,37 +254,37 @@ Add-AzVMNetworkInterface -Id $nic.Id
 New-AzVM -ResourceGroupName $vmResourceGroup -Location $replRegion2 -VM $vmConfig
 ```
 
-## <a name="verify-the-customization"></a>Ověření přizpůsobení
-Vytvořte připojení ke vzdálené ploše virtuálního počítače pomocí uživatelského jména a hesla, které jste nastavili při vytváření virtuálního počítače. Uvnitř virtuálního počítače otevřete příkazový řádek a zadejte příkaz:
+## <a name="verify-the-customization"></a>Ověření vlastního nastavení
+Vytvořte připojení ke vzdálené ploše k virtuálnímu počítači pomocí uživatelského jména a hesla, které jste nastavili při vytváření virtuálního počítače. Uvnitř virtuálního provozu otevřete výzvu cmd a zadejte:
 
 ```console
 dir c:\
 ```
 
-Měl by se zobrazit adresář s názvem `buildActions`, který byl vytvořen během přizpůsobení obrázku.
+Měli byste vidět `buildActions` adresář s názvem, který byl vytvořen během přizpůsobení bitové kopie.
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud se teď chcete pokusit znovu přizpůsobit verzi image, aby se vytvořila nová verze stejné image, **přeskočte tento krok** a přejděte k části [použití Azure image Builder k vytvoření další verze image](image-builder-gallery-update-image-version.md).
+Pokud chcete nyní zkusit znovu přizpůsobit verzi bitové kopie a vytvořit novou verzi stejné bitové kopie, **přeskočte tento krok** a [pokračujte v použití Azure Image Builder k vytvoření jiné verze bitové kopie](image-builder-gallery-update-image-version.md).
 
 
-Tato akce odstraní vytvořenou bitovou kopii spolu se všemi ostatními soubory prostředků. Před odstraněním prostředků se ujistěte, že jste hotovi s tímto nasazením.
+Tím odstraníte obrázek, který byl vytvořen, spolu se všemi ostatními soubory prostředků. Před odstraněním prostředků se ujistěte, že jste s tímto nasazením hotová.
 
-Nejdřív odstraňte šablonu skupiny prostředků, jinak se nevyčistí pracovní skupina prostředků (*IT_* ), kterou používá AIB.
+Nejprve odstraňte šablonu skupiny prostředků, jinak nebude pracovní skupina prostředků (*IT_*) používaná AIB vyčištěna.
 
-Získat ResourceID pro šablonu obrázku 
+Získejte ResourceID šablony obrázku. 
 
 ```powerShell
 $resTemplateId = Get-AzResource -ResourceName $imageTemplateName -ResourceGroupName $imageResourceGroup -ResourceType Microsoft.VirtualMachineImages/imageTemplates -ApiVersion "2019-05-01-preview"
 ```
 
-Odstranit šablonu obrázku
+Odstranit šablonu obrázku.
 
 ```powerShell
 Remove-AzResource -ResourceId $resTemplateId.ResourceId -Force
 ```
 
-Odstraňte skupinu prostředků.
+odstraňte skupinu prostředků.
 
 ```powerShell
 Remove-AzResourceGroup $imageResourceGroup -Force
@@ -292,4 +292,4 @@ Remove-AzResourceGroup $imageResourceGroup -Force
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak aktualizovat vytvořenou verzi image, najdete v tématu [použití nástroje Azure image Builder k vytvoření další verze image](image-builder-gallery-update-image-version.md).
+Informace o tom, jak aktualizovat vytvořenou verzi bitové kopie, najdete [v tématu Vytvoření image Azure k vytvoření jiné verze bitové kopie](image-builder-gallery-update-image-version.md).

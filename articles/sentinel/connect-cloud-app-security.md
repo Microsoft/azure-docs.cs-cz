@@ -1,6 +1,6 @@
 ---
-title: Připojit Cloud App Security dat ke službě Azure Sentinel | Microsoft Docs
-description: Přečtěte si, jak připojit Cloud App Security dat ke službě Azure Sentinel.
+title: Připojení dat zabezpečení cloudových aplikací k Azure Sentinelu| Dokumenty společnosti Microsoft
+description: Přečtěte si, jak propojit data cloudového zabezpečení aplikací s Azure Sentinelem.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,46 +15,46 @@ ms.workload: na
 ms.date: 10/23/2019
 ms.author: yelevin
 ms.openlocfilehash: 348576fbbdd1037f9e2e792218b96bbbecf36668
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588361"
 ---
-# <a name="connect-data-from-microsoft-cloud-app-security"></a>Připojení dat z Microsoft Cloud App Security 
+# <a name="connect-data-from-microsoft-cloud-app-security"></a>Připojení dat ze zabezpečení aplikací Microsoft Cloud App Security 
 
 
 
-Pomocí jediného kliknutí můžete streamovat protokoly z [Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) do Azure Sentinel. Toto připojení umožňuje streamovat výstrahy z Cloud App Security do Azure Sentinel. 
+Můžete datové proudy protokolů z [Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) do Azure Sentinelu s jedním kliknutím. Toto připojení umožňuje streamovat výstrahy z Cloud App Security do Azure Sentinelu. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Uživatel s oprávněními globálního správce nebo správce zabezpečení
-- Pokud chcete streamovat Cloud Discovery protokoly do Azure Sentinel, [Povolte jako Siem v Microsoft Cloud App Security možnost Sentinel Azure](https://aka.ms/AzureSentinelMCAS).
+- Pokud chcete streamovat protokoly Cloud Discovery do Azure Sentinelu, [povolte Azure Sentinel jako SIEM v Microsoft Cloud App Security](https://aka.ms/AzureSentinelMCAS).
 
 > [!IMPORTANT]
-> Přijímání protokolů Cloud Discovery je v současnosti ve verzi Public Preview.
-> Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy.
+> Ingestování protokolů Zjišťování cloudu je aktuálně ve verzi Public Preview.
+> Tato funkce je k dispozici bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
  
-## <a name="connect-to-cloud-app-security"></a>Připojení k Cloud App Security
+## <a name="connect-to-cloud-app-security"></a>Připojení k zabezpečení cloudových aplikací
 
-Pokud už máte Cloud App Security, ujistěte se, že je [ve vaší síti povolená](https://docs.microsoft.com/cloud-app-security/getting-started-with-cloud-app-security).
-Pokud je Cloud App Security nasazená a ingestují vaše data, můžou se data výstrah do Azure Sentinel snadno streamovat.
+Pokud už cloudové zabezpečení aplikací máte, zkontrolujte, zda je [v síti povolená](https://docs.microsoft.com/cloud-app-security/getting-started-with-cloud-app-security).
+Pokud cloudové zabezpečení aplikací se nasadí a ingestuje vaše data, data výstrah lze snadno streamovat do Azure Sentinelu.
 
 
-1. V Azure Sentinel vyberte **datové konektory**, klikněte na dlaždici **Cloud App Security** a vyberte **otevřít konektor**.
+1. V Azure Sentinelu vyberte **Datové konektory**, klikněte na dlaždici **Cloud App Security** a vyberte Otevřít **stránku konektoru**.
 
-1. Vyberte protokoly, které chcete streamovat do Azure Sentinel, a můžete zvolit **výstrahy** a **protokoly Cloud Discovery** (Preview). 
+1. Vyberte, které protokoly chcete streamovat do Azure Sentinelu, můžete zvolit **výstrahy** a **protokoly cloudového zjišťování** (náhled). 
 
 1. Klikněte na **Připojit**.
 
-1. Pokud chcete pro Cloud App Security výstrahy použít příslušné schéma v Log Analytics, vyhledejte **SecurityAlert**.
+1. Chcete-li použít příslušné schéma v Log Analytics pro výstrahy zabezpečení cloudových aplikací, vyhledejte **SecurityAlert**.
 
 
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto dokumentu jste zjistili, jak připojit Microsoft Cloud App Security ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
-- Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
-- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats.md).
+V tomto dokumentu jste se dozvěděli, jak připojit Microsoft Cloud App Security k Azure Sentinelu. Další informace o Azure Sentinelu najdete v následujících článcích:
+- Přečtěte [si, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
+- Začínáme [s detekcí hrozeb pomocí Azure Sentinelu](tutorial-detect-threats.md).

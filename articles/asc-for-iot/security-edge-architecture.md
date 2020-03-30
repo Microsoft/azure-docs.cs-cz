@@ -1,6 +1,6 @@
 ---
-title: Principy Azure Security Center pro modul zabezpečení IoT pro IoT Edge | Microsoft Docs
-description: Seznamte se s architekturou a funkcemi Azure Security Center pro modul zabezpečení IoT pro IoT Edge.
+title: Principy modulu zabezpečení Azure Security Center pro IoT pro IoT Edge| Dokumenty společnosti Microsoft
+description: Seznamte se s architekturou a možnostmi modulu zabezpečení Azure Security Center pro IoT pro IoT Edge.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,52 +16,52 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 148c68234a937efde554ef00a6014cdc1a350f34
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71315892"
 ---
 # <a name="azure-iot-edge-security-module"></a>Modul zabezpečení Azure IoT Edge
 
 [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) poskytuje výkonné funkce pro správu a provádění obchodních pracovních postupů na hraničních zařízeních.
-Klíčovou součástí, kterou IoT Edge hraje v prostředí IoT, je pro škodlivé objekty actor obzvláště atraktivní.
+Klíčovou část, kterou ioT Edge hraje v prostředí IoT, je obzvláště atraktivní pro škodlivé herce.
 
-Azure Security Center for IoT Security Module poskytuje komplexní řešení zabezpečení pro vaše IoT Edgeá zařízení.
-Azure Security Center pro modul IoT shromažďuje, agreguje a analyzuje hrubá data zabezpečení z operačního systému a systému kontejnerů do užitečných doporučení zabezpečení a výstrah.
+Modul zabezpečení Azure Security Center for IoT poskytuje komplexní řešení zabezpečení pro vaše zařízení IoT Edge.
+Azure Security Center pro ioT modul shromažďuje, agreguje a analyzuje nezpracovaná data zabezpečení z vašeho operačního systému a kontejnerového systému na užitečné doporučení zabezpečení a výstrahy.
 
-Podobně jako u Azure Security Center pro agenty zabezpečení IoT pro zařízení IoT je modul Azure Security Center pro IoT Edge vysoce přizpůsobitelný díky jeho nevlastnímu modulu.
-Další informace najdete v tématu [Konfigurace agenta](how-to-agent-configuration.md) .
+Podobně jako Azure Security Center pro agenty zabezpečení IoT pro zařízení IoT, Azure Security Center pro IoT Edge modul je vysoce přizpůsobitelné prostřednictvím svého dvojčete modulu.
+Další informace [najdete v tématu Konfigurace agenta.](how-to-agent-configuration.md)
 
-Azure Security Center pro modul zabezpečení IoT pro IoT Edge nabízí tyto funkce:
+Modul zabezpečení Azure Security Center for IoT pro IoT Edge nabízí následující funkce:
 
-- Shromažďuje nezpracované události zabezpečení ze základního operačního systému (Linux) a systémů IoT Edge kontejnerů.
+- Shromažďuje nezpracované události zabezpečení ze základního operačního systému (Linux) a systémů IoT Edge Container.
   
-  Další informace o dostupných kolekcích dat zabezpečení najdete v tématu [Azure Security Center pro konfiguraci agenta IoT](how-to-agent-configuration.md) .
+  Další informace o dostupných kolekcích dat zabezpečení najdete v [tématu Azure Security Center for IoT agent configuration.](how-to-agent-configuration.md)
 
 - Analýza manifestů nasazení IoT Edge.
 
-- Agreguje nezpracované události zabezpečení do zpráv odesílaných pomocí [centra IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).
+- Agreguje nezpracované události zabezpečení do zpráv odeslaných prostřednictvím [centra IoT Edge Hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).
 
-- Odeberte konfiguraci pomocí modulu zabezpečení s dvojitou platností.
+- Odeberte konfiguraci pomocí dvojčete modulu zabezpečení.
 
-  Další informace najdete v tématu [konfigurace Azure Security Center pro agenta IoT](how-to-agent-configuration.md) .
+  Další informace [najdete v tématu Konfigurace azure security center pro agenta IoT.](how-to-agent-configuration.md)
 
-Azure Security Center pro modul zabezpečení IoT pro IoT Edge běží v privilegovaném režimu pod IoT Edge.
-Aby modul mohl monitorovat operační systém a další IoT Edge moduly, je potřeba privilegovaný režim.
+Azure Security Center pro zabezpečení IoT modul pro IoT Edge běží v privilegovaném režimu v rámci IoT Edge.
+Privilegovaný režim je vyžadován, aby modul mohl monitorovat operační systém a další moduly IoT Edge.
 
-## <a name="module-supported-platforms"></a>Platformy podporované modulem
+## <a name="module-supported-platforms"></a>Platformy podporované moduly
 
-Azure Security Center pro modul zabezpečení IoT pro IoT Edge je aktuálně dostupná jenom pro Linux. 
+Azure Security Center pro zabezpečení IoT modul pro IoT Edge je momentálně k dispozici jenom pro Linux. 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se seznámili s architekturou a funkcemi Azure Security Center pro modul zabezpečení IoT pro IoT Edge.
+V tomto článku jste se dozvěděli o architektuře a možnostech modulu zabezpečení Azure Security Center pro IoT pro IoT Edge.
 
-Pokud chcete pokračovat v seznámení s Azure Security Center pro nasazení IoT, postupujte podle následujících článků:
+Pokud chcete pokračovat v začínáme s Azure Security Center pro nasazení IoT, použijte následující články:
 
 - Nasazení [modulu zabezpečení pro IoT Edge](how-to-deploy-edge.md)
-- Informace o tom, jak [nakonfigurovat modul zabezpečení](how-to-agent-configuration.md)
-- Přečtěte si téma Azure Security Center pro [požadavky služby](service-prerequisites.md) IoT
-- Naučte se, jak [povolit Azure Security Center pro službu IoT v IoT Hub](quickstart-onboard-iot-hub.md)
-- Další informace o službě najdete v tématu [Nejčastější dotazy k Azure Security Center pro IoT](resources-frequently-asked-questions.md)
+- Přečtěte si, jak [nakonfigurovat modul zabezpečení](how-to-agent-configuration.md)
+- Kontrola požadavků Centra zabezpečení Azure pro [Službu](service-prerequisites.md) IoT
+- Přečtěte si, jak [povolit službu Azure Security Center for IoT ve vašem Centru IoT Hub](quickstart-onboard-iot-hub.md)
+- Další informace o službě v [centru zabezpečení Azure pro ioT nejčastější dotazy](resources-frequently-asked-questions.md)

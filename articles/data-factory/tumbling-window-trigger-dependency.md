@@ -1,6 +1,6 @@
 ---
-title: Vytvořit závislosti aktivačních signálů pro bubnový interval
-description: Naučte se vytvořit závislost na triggeru bubnového okna v Azure Data Factory.
+title: Vytvořit závislosti aktivační události omílání okna
+description: Zjistěte, jak vytvořit závislost na aktivační události omílání okna v Azure Data Factory.
 services: data-factory
 ms.author: daperlov
 author: djpmsft
@@ -11,28 +11,28 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/29/2019
-ms.openlocfilehash: 3a4d31cb6986f8fc841a6afe20388e40e9f28c9b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0557c9b9eb65654c4a11c1389ace4776ab60a61d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926681"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79532566"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Vytvoření závislosti aktivační události pro přeskakující okno
 
-Tento článek popisuje kroky pro vytvoření závislosti pro aktivační událost bubnového okna. Obecné informace o aktivačních událostech pro bubny v okně najdete v tématu [Vytvoření aktivační události pro bubnové okno](how-to-create-tumbling-window-trigger.md).
+Tento článek obsahuje kroky k vytvoření závislosti na aktivační události omílání okna. Obecné informace o aktivačních událostech omílání okna naleznete v tématu [Jak vytvořit aktivační událost omílání okna](how-to-create-tumbling-window-trigger.md).
 
-Pokud chcete vytvořit řetěz závislostí a ujistit se, že se Trigger spustí až po úspěšném provedení jiného triggeru v datové továrně, použijte tuto pokročilou funkci a vytvořte si bubnovou závislost okna.
+Chcete-li vytvořit řetěz závislostí a ujistěte se, že aktivační událost je spuštěna pouze po úspěšném spuštění jiné aktivační události v datové továrně, použijte tuto pokročilou funkci k vytvoření závislosti okna omílání.
 
-## <a name="create-a-dependency-in-the-data-factory-ui"></a>Vytvoření závislosti v uživatelském rozhraní Data Factory
+## <a name="create-a-dependency-in-the-data-factory-ui"></a>Vytvoření závislosti v unovém nastavení datové továrny
 
-Pokud chcete vytvořit závislost na triggeru, vyberte **trigger > upřesnit > nový**a potom zvolte Trigger, který bude záviset na odpovídajícím posunu a velikosti. Vyberte **Dokončit** a publikujte změny objektu pro vytváření dat, aby se závislosti projevily.
+Chcete-li vytvořit závislost na aktivační události, vyberte **možnost Aktivační > Upřesnit > Nová**a pak zvolte aktivační událost, na které se bude záviset s příslušným posunem a velikostí. Vyberte **Dokončit** a publikujte změny datové továrny, aby se závislosti projevily.
 
-![Vytvoření závislosti](media/tumbling-window-trigger-dependency/tumbling-window-dependency01.png "Vytvoření závislosti")
+![Vytvoření závislostí](media/tumbling-window-trigger-dependency/tumbling-window-dependency01.png "Vytvoření závislostí")
 
-## <a name="tumbling-window-dependency-properties"></a>Vlastnosti závislosti bubnového okna
+## <a name="tumbling-window-dependency-properties"></a>Vlastnosti závislostí okna omílání
 
-Aktivační událost bubnového okna se závislostí má následující vlastnosti:
+Aktivační událost omílání okna se závislostí má následující vlastnosti:
 
 ```json
 {
@@ -72,20 +72,20 @@ Aktivační událost bubnového okna se závislostí má následující vlastnos
 }
 ```
 
-Následující tabulka uvádí seznam atributů potřebných k definování závislosti bubnu okna.
+V následující tabulce je uveden seznam atributů potřebných k definování závislosti okna omílání.
 
-| **Název vlastnosti** | **Popis**  | **Typ** | **Vyžaduje** |
+| **Název vlastnosti** | **Popis**  | **Typ** | **Požadováno** |
 |---|---|---|---|
-| type  | V tomto rozevíracím seznamu se zobrazí všechny existující triggery bubnového okna. Vyberte aktivační událost, u které se má provést závislost.  | TumblingWindowTriggerDependencyReference nebo SelfDependencyTumblingWindowTriggerReference | Ano |
-| offset | Posun triggeru závislosti. Zadejte hodnotu ve formátu časového rozsahu a jsou povoleny záporné i kladné posuny. Tato vlastnost je povinná, pokud je Trigger závislý sám na sobě a ve všech ostatních případech je nepovinný. Samostatná závislost by měla být vždy záporný posun. Pokud není zadána žádná hodnota, bude okno stejné jako Trigger sám. | Časový interval<br/>(hh: mm: SS) | Samostatná závislost: Ano<br/>Jiné: ne |
-| size | Velikost bubnového okna závislosti Zadejte kladnou hodnotu TimeSpan. Tato vlastnost je nepovinná. | Časový interval<br/>(hh: mm: SS) | Ne  |
+| type  | V této rozevírací části se zobrazí všechny existující aktivační události omílání oken. Zvolte aktivační událost, na které chcete převzít závislost.  | TumblingWindowTriggerDependencyReference reference nebo selfdependencyTumblingWindowTriggerReference Reference | Ano |
+| posun | Posun aktivační události závislosti. Zadejte hodnotu ve formátu časového rozpětí a jsou povoleny záporné i kladné posuny. Tato vlastnost je povinná, pokud aktivační událost závisí na sobě a ve všech ostatních případech je volitelná. Sebezávislost by měla být vždy záporný posun. Pokud není zadána žádná hodnota, okno je stejné jako samotná aktivační událost. | Časový interval<br/>(hh:mm:ss) | Sebezávislost: Ano<br/>Ostatní: Ne |
+| velikost | Velikost okna omílání závislostí. Zadejte kladnou hodnotu timespan. Tato vlastnost je nepovinná. | Časový interval<br/>(hh:mm:ss) | Ne  |
 
 > [!NOTE]
-> Aktivační událost bubnového okna může záviset na maximálním počtu dvou dalších triggerů.
+> Aktivační událost omílání okna může záviset na maximálně dvou dalších aktivačních událostech.
 
-## <a name="tumbling-window-self-dependency-properties"></a>Vlastnosti samoobslužné závislosti bubnového okna
+## <a name="tumbling-window-self-dependency-properties"></a>Vlastnosti sebezávislosti v okně
 
-Ve scénářích, kdy by aktivační událost neměla pokračovat k dalšímu oknu, dokud se předchozí okno úspěšně nedokončí, sestavte samostatnou závislost. Trigger samoobslužné závislosti, který je závislý na úspěšnosti předchozích spuštění v rámci předchozího HR, bude mít následující vlastnosti:
+Ve scénářích, kde aktivační událost by neměla pokračovat do dalšího okna, dokud není úspěšně dokončeno předchozí okno, vytvořte závislost na sebe. Aktivační událost vlastní závislosti, která je závislá na úspěchu dřívějších spuštění v rámci předchozího hr, bude mít níže uvedené vlastnosti:
 
 ```json
 {
@@ -121,46 +121,50 @@ Ve scénářích, kdy by aktivační událost neměla pokračovat k dalšímu ok
 ```
 ## <a name="usage-scenarios-and-examples"></a>Scénáře použití a příklady
 
-Níže najdete ilustrace scénářů a využití vlastností závislosti bubnu okna.
+Níže jsou uvedeny ilustrace scénářů a použití vlastností závislostí omílání okna.
 
-### <a name="dependency-offset"></a>Posun závislosti
+### <a name="dependency-offset"></a>Posun závislostí
 
-![Příklad posunutí](media/tumbling-window-trigger-dependency/tumbling-window-dependency02.png "Příklad posunutí")
+![Příklad odsazení](media/tumbling-window-trigger-dependency/tumbling-window-dependency02.png "Příklad odsazení")
 
 ### <a name="dependency-size"></a>Velikost závislosti
 
 ![Příklad velikosti](media/tumbling-window-trigger-dependency/tumbling-window-dependency03.png "Příklad velikosti")
 
-### <a name="self-dependency"></a>Samostatná závislost
+### <a name="self-dependency"></a>Sebezávislost
 
-![Samostatná závislost](media/tumbling-window-trigger-dependency/tumbling-window-dependency04.png "Samostatná závislost")
+![Sebezávislost](media/tumbling-window-trigger-dependency/tumbling-window-dependency04.png "Sebezávislost")
 
-### <a name="dependency-on-another-tumbling-window-trigger"></a>Závislost na jiném triggeru bubnového okna
+### <a name="dependency-on-another-tumbling-window-trigger"></a>Závislost na jiné aktivační události omílání okna
 
-Každodenní úloha zpracování telemetrie v závislosti na dalších denních úlohách, které agreguje výstup posledních sedmi dnů a vygeneruje sedm dní postupných datových proudů oken:
+Denní úloha zpracování telemetrie v závislosti na jiné denní úloze agregující výstup za posledních sedm dní a generuje sedmidenní datové proudy svislých oken:
 
 ![Příklad závislosti](media/tumbling-window-trigger-dependency/tumbling-window-dependency05.png "Příklad závislosti")
 
-### <a name="dependency-on-itself"></a>Závislá na sobě
+### <a name="dependency-on-itself"></a>Závislost na sobě
 
-Denní úloha bez mezer ve výstupních streamech úlohy:
+Denní práce bez mezer ve výstupních tocích úlohy:
 
-![Příklad samostatné závislosti](media/tumbling-window-trigger-dependency/tumbling-window-dependency06.png "Příklad samostatné závislosti")
+![Příklad vlastní závislosti](media/tumbling-window-trigger-dependency/tumbling-window-dependency06.png "Příklad vlastní závislosti")
 
-## <a name="monitor-dependencies"></a>Monitorování závislostí
+Ukázku toho, jak vytvořit závislé kanály ve vaší Azure Data Factory pomocí aktivační události omílání okna, podívejte se na následující video:
 
-Řetěz závislostí a odpovídající okna můžete monitorovat na stránce monitorování spuštění aktivační události. Přejděte na **monitorování > spuštění aktivační události**. Ve sloupci akce můžete Trigger spustit znovu nebo zobrazit jeho závislosti.
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Create-dependent-pipelines-in-your-Azure-Data-Factory/player]
+
+## <a name="monitor-dependencies"></a>Sledování závislostí
+
+Můžete sledovat řetěz závislostí a odpovídající okna ze stránky monitorování spuštění aktivační události. Přejděte na **> spuštění aktivační události .** Ve sloupci akce můžete znovu spustit aktivační událost nebo zobrazit její závislosti.
 
 ![Monitorování spuštění aktivační události](media/tumbling-window-trigger-dependency/tumbling-window-dependency07.png "Monitorování spuštění aktivační události")
 
-Pokud kliknete na možnost zobrazit závislosti triggeru, uvidíte stav závislostí. Pokud se jedna z triggerů závislosti nezdaří, je nutné ji úspěšně znovu spustit, aby se spustila závislá aktivační událost. Aktivační událost bubnového okna počká na závislosti po dobu sedmi dnů, než se dokončí časový limit.
+Pokud kliknete na "Zobrazit závislosti aktivačních událostí", uvidíte stav závislostí. Pokud se jeden z aktivačních událostí závislostí nezdaří, je nutné jej úspěšně znovu spustit, aby byla spuštěna závislá aktivační událost. Aktivační událost omílání okna bude čekat na závislosti sedm dní před vypršením časového limitu.
 
-![Monitorování závislostí](media/tumbling-window-trigger-dependency/tumbling-window-dependency08.png "Monitorování závislostí")
+![Sledování závislostí](media/tumbling-window-trigger-dependency/tumbling-window-dependency08.png "Sledování závislostí")
 
-Pokud chcete zobrazit více vizuálů pro zobrazení plánu závislosti triggeru, vyberte zobrazení Ganttova diagramu.
+Chcete-li zobrazit plán závislostí aktivační události, vyberte zobrazení Ganttova diagramu.
 
-![Monitorování závislostí](media/tumbling-window-trigger-dependency/tumbling-window-dependency09.png "Monitorování závislostí")
+![Sledování závislostí](media/tumbling-window-trigger-dependency/tumbling-window-dependency09.png "Sledování závislostí")
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si [, jak vytvořit aktivační událost bubnového okna](how-to-create-tumbling-window-trigger.md) .
+* Recenze [Jak vytvořit aktivační událost omílání okna](how-to-create-tumbling-window-trigger.md)

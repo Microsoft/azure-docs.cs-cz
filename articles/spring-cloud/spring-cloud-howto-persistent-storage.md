@@ -1,64 +1,64 @@
 ---
-title: Jak používat trvalé úložiště v Azure jaře cloudu | Microsoft Docs
-description: Jak používat trvalé úložiště v Azure jaře cloudu
+title: Jak používat trvalé úložiště v Azure Spring Cloud | Dokumenty společnosti Microsoft
+description: Jak používat trvalé úložiště v Azure Spring Cloudu
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
 ms.openlocfilehash: 0e49d59386b19aa8da46b8c8e6acfe50e2124541
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76278538"
 ---
 # <a name="use-persistent-storage-in-azure-spring-cloud"></a>Použití trvalého úložiště v Azure Spring Cloudu
 
-Azure jaře Cloud nabízí pro vaši aplikaci dva typy úložiště: trvalé a dočasné.
+Azure Spring Cloud poskytuje dva typy úložiště pro vaši aplikaci: trvalé a dočasné.
 
-Ve výchozím nastavení poskytuje Azure jaře Cloud dočasné úložiště pro každou instanci aplikace. Dočasné úložiště je omezeno na 5 GB na instanci s výchozí cestou připojení/TMP.
-
-> [!WARNING]
-> Pokud restartujete instanci aplikace, přidružené dočasné úložiště se trvale odstraní.
-
-Trvalé úložiště je kontejner sdílení souborů, který spravuje Azure a který je přidělený pro jednotlivé aplikace. Data uložená v trvalém úložišti sdílí všechny instance aplikace. Instance jarního cloudu Azure může mít maximálně 10 aplikací s povoleným trvalým úložištěm. Každé aplikaci je přiděleno 50 GB trvalého úložiště. Výchozí cesta pro připojení k trvalému úložišti je/persistent.
+Ve výchozím nastavení Poskytuje Azure Spring Cloud dočasné úložiště pro každou instanci aplikace. Dočasné úložiště je omezeno na 5 GB na instanci s výchozí cestou připojení /tmp.
 
 > [!WARNING]
-> Pokud zakážete trvalé úložiště aplikací, všechna tato úložiště se oddělí a veškerá uložená data budou ztracena.
+> Pokud restartujete instanci aplikace, přidružené dočasné úložiště bude trvale odstraněno.
 
-## <a name="use-the-azure-portal-to-enable-persistent-storage"></a>Použití Azure Portal k povolení trvalého úložiště
+Trvalé úložiště je kontejner sdílení souborů spravovaný Azure a přidělený pro aplikaci. Data uložená v trvalém úložišti jsou sdílena všemi instancemi aplikace. Instance Azure Spring Cloud může mít maximálně 10 aplikací s povoleným trvalým úložištěm. Každé aplikaci je přiděleno 50 GB trvalého úložiště. Výchozí cesta k připojení pro trvalé úložiště je /persistent.
 
-1. Z **domovské** stránky Azure Portal vyberte **všechny prostředky**.
+> [!WARNING]
+> Pokud zakážete trvalé úložiště aplikace, všechny toto úložiště je přiděleno a všechna uložená data dojde ke ztrátě.
 
-    >![Najít ikonu všechny prostředky](media/portal-all-resources.jpg)
+## <a name="use-the-azure-portal-to-enable-persistent-storage"></a>Povolení trvalého úložiště pomocí portálu Azure
 
-1. Vyberte prostředek Azure pro jarní Cloud, který potřebuje trvalé úložiště. V tomto příkladu se vybraná aplikace nazývá " **propružiná**".
+1. Na **domovské** stránce portálu Azure vyberte **Všechny prostředky**.
 
-    > ![Výběr aplikace](media/select-service.jpg)
+    >![Vyhledání ikony Všechny zdroje](media/portal-all-resources.jpg)
 
-1. V záhlaví **Nastavení** vyberte **aplikace**.
+1. Vyberte prostředek Azure Spring Cloud, který potřebuje trvalé úložiště. V tomto příkladu se vybraná aplikace nazývá **upspring**.
 
-1. V tabulce se zobrazí vaše jarní cloudové služby Azure.  Vyberte službu, do které chcete přidat trvalé úložiště. V tomto příkladu je vybraná služba **brány** .
+    > ![Vyberte aplikaci](media/select-service.jpg)
 
-    > ![Výběr služby](media/select-gateway.jpg)
+1. V záhlaví **Nastavení** vyberte **Aplikace**.
 
-1. Na stránce konfigurace služby vyberte **Konfigurace** .
+1. Vaše služby Azure Spring Cloud se zobrazí v tabulce.  Vyberte službu, do které chcete přidat trvalé úložiště. V tomto příkladu je vybrána služba **brány.**
 
-1. Vyberte kartu **trvalé úložiště** a vyberte **Povolit**.
+    > ![Vyberte si službu](media/select-gateway.jpg)
 
-    > ![Povolit trvalé úložiště](media/enable-persistent-storage.jpg)
+1. Na konfigurační stránce služby vyberte **Konfigurace**
 
-Po povolení trvalého úložiště se jeho velikost a cesta zobrazí na stránce konfigurace.
+1. Vyberte kartu **Trvalé úložiště** a vyberte **Povolit**.
 
-## <a name="use-the-azure-cli-to-modify-persistent-storage"></a>Použití rozhraní příkazového řádku Azure pro úpravu trvalého úložiště
+    > ![Povolení trvalého úložiště](media/enable-persistent-storage.jpg)
 
-V případě potřeby nainstalujte pro rozhraní příkazového řádku Azure CLI rozšíření jarního cloudu:
+Po povolení trvalého úložiště se jeho velikost a cesta zobrazí na konfigurační stránce.
+
+## <a name="use-the-azure-cli-to-modify-persistent-storage"></a>Použití nastavení příkazového příkazu Azure k úpravě trvalého úložiště
+
+V případě potřeby nainstalujte rozšíření Spring Cloud pro azure cli:
 
 ```azurecli
 az extension add --name spring-cloud
 ```
-Jiné operace:
+Ostatní operace:
 
 * Vytvoření aplikace s povoleným trvalým úložištěm:
 
@@ -79,9 +79,9 @@ Jiné operace:
     ```
 
     > [!WARNING]
-    > Pokud zakážete trvalé úložiště aplikací, všechna tato úložiště se oddělí a veškerá uložená data se trvale ztratí.
+    > Pokud zakážete trvalé úložiště aplikace, všechny toto úložiště je přiděleno a všechna uložená data se trvale ztratí.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si o [kvótách aplikací a služeb](spring-cloud-quotas.md).
-* Naučte se, jak [ručně škálovat aplikaci](spring-cloud-tutorial-scale-manual.md).
+* Informace o [kvótách aplikací a služeb](spring-cloud-quotas.md).
+* Přečtěte si, jak [ručně škálovat aplikaci](spring-cloud-tutorial-scale-manual.md).

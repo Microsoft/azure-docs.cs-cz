@@ -1,7 +1,7 @@
 ---
 title: Nasazení modelu pro odvození pomocí GPU
 titleSuffix: Azure Machine Learning
-description: V tomto článku se naučíte, jak pomocí Azure Machine Learning nasadit model hloubkového učení s povoleným GPU jako webovou službu. požadavky na odvození služby a skóre.
+description: Tento článek vás naučí, jak pomocí Azure Machine Learning nasadit model hloubkového učení tentrážního toku s podporou GPU jako požadavky na odvození webové služby a skóre.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,48 +11,48 @@ author: csteegz
 ms.reviewer: larryfr
 ms.date: 03/05/2020
 ms.openlocfilehash: b0fd537d1930e7c9d5f7a33f56ec5d00b1556562
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78398344"
 ---
-# <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Nasazení modelu hloubkového učení pro odvození pomocí GPU
+# <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Nasazení modelu hlubokého učení pro odvození pomocí GPU
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto článku se naučíte, jak použít Azure Machine Learning k nasazení modelu s povoleným grafickým procesorem jako webové služby. Informace v tomto článku jsou založené na nasazení modelu ve službě Azure Kubernetes Service (AKS). Cluster AKS poskytuje prostředek GPU, který používá model pro odvození.
+Tento článek vás naučí, jak pomocí Azure Machine Learning nasadit model s podporou GPU jako webovou službu. Informace v tomto článku je založen na nasazení modelu na Azure Kubernetes Service (AKS). Cluster AKS poskytuje prostředek GPU, který model používá pro odvození.
 
-Odvození modelu nebo Bodové hodnocení je fáze, ve které je nasazený model použit k provedení předpovědi. Použití GPU místo CPU nabízí výhody výkonu při vysoce paralelizovat výpočtu.
+Odvození nebo vyhodnocování modelu je fáze, kde se nasazený model používá k předpovědi. Použití gpu místo procesorů nabízí výhody výkonu na vysoce paralelizovatelné výpočtu.
 
 > [!IMPORTANT]
-> Pro nasazení webových služeb je odvození GPU podporováno pouze ve službě Azure Kubernetes. Pro odvození pomocí __kanálu strojového učení__se GPU podporují jenom v Azure Machine Learning Compute. Další informace o použití kanálů ML najdete v tématu [spuštění dávkového předpovědi](how-to-use-parallel-run-step.md). 
+> Pro nasazení webových služeb je odvození GPU podporované jenom ve službě Azure Kubernetes. Pro odvození pomocí __kanálu strojového učení__jsou gpu podporované jenom v Azure Machine Learning Compute. Další informace o použití kanálů ML naleznete v [tématu Spuštění predikcí dávek](how-to-use-parallel-run-step.md). 
 
 > [!TIP]
-> I když fragmenty kódu v tomto článku používají model TensorFlow, můžete tyto informace použít pro jakékoli rozhraní Machine Learning, které podporuje GPU.
+> Přestože fragmenty kódu v tomto článku používají model TensorFlow, můžete použít informace pro všechny rámce strojového učení, který podporuje gpu.
 
 > [!NOTE]
-> Informace v tomto článku jsou založeny na informacích v článku [Jak nasadit do služby Azure Kubernetes](how-to-deploy-azure-kubernetes-service.md) . V tomto článku se obecně zabývá nasazením na AKS. Tento článek popisuje nasazení specifické pro grafické procesory.
+> Informace v tomto článku vychází z informací v článku [Jak nasadit do služby Azure Kubernetes](how-to-deploy-azure-kubernetes-service.md) Service. Kde tento článek obecně popisuje nasazení do AKS, tento článek se týká nasazení specifické pro GPU.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
+* Pracovní prostor služby Azure Machine Learning. Další informace najdete [v tématu Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
-* Prostředí pro vývoj v Pythonu s nainstalovanou sadou Azure Machine Learning SDK. Další informace najdete v tématu [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).  
+* Vývojové prostředí Pythonu s nainstalovanou sadou Azure Machine Learning SDK. Další informace najdete v [tématu Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).  
 
 * Registrovaný model, který používá GPU.
 
-    * Informace o tom, jak zaregistrovat modely, najdete v tématu [nasazení modelů](how-to-deploy-and-where.md#registermodel).
+    * Informace o registraci modelů naleznete v [tématu Nasazení modelů](how-to-deploy-and-where.md#registermodel).
 
-    * Chcete-li vytvořit a zaregistrovat model Tensorflow, který jste použili k vytvoření tohoto dokumentu, přečtěte si téma [Postup výuky modelu Tensorflow](how-to-train-tensorflow.md).
+    * Chcete-li vytvořit a zaregistrovat model Tensorflow použitý k vytvoření tohoto dokumentu, přečtěte si téma [Jak trénovat model Tentenzorflow](how-to-train-tensorflow.md).
 
-* Obecné informace o [tom, jak a kde nasadit modely](how-to-deploy-and-where.md).
+* Obecné znalosti o [tom, jak a kde nasadit modely](how-to-deploy-and-where.md).
 
-## <a name="connect-to-your-workspace"></a>Připojení k vašemu pracovnímu prostoru
+## <a name="connect-to-your-workspace"></a>Připojení k pracovnímu prostoru
 
-Pokud se chcete připojit k existujícímu pracovnímu prostoru, použijte následující kód:
+Chcete-li se připojit k existujícímu pracovnímu prostoru, použijte následující kód:
 
 > [!IMPORTANT]
-> Tento fragment kódu očekává uložení konfigurace pracovního prostoru do aktuálního adresáře nebo jeho nadřazeného objektu. Další informace o vytváření pracovního prostoru najdete v tématu [Vytvoření a Správa pracovních prostorů Azure Machine Learning](how-to-manage-workspace.md).   Další informace o ukládání konfigurace do souboru najdete v tématu [vytvoření konfiguračního souboru pracovního prostoru](how-to-configure-environment.md#workspace).
+> Tento fragment kódu očekává, že konfigurace pracovního prostoru bude uložena v aktuálním adresáři nebo jeho nadřazeném adresáři. Další informace o vytváření pracovního prostoru najdete v tématu [Vytvoření a správa pracovních prostorů Azure Machine Learning](how-to-manage-workspace.md).   Další informace o uložení konfigurace do souboru naleznete v [tématu Vytvoření konfiguračního souboru pracovního prostoru](how-to-configure-environment.md#workspace).
 
 ```python
 from azureml.core import Workspace
@@ -61,9 +61,9 @@ from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
-## <a name="create-a-kubernetes-cluster-with-gpus"></a>Vytvoření clusteru s Kubernetes pomocí GPU
+## <a name="create-a-kubernetes-cluster-with-gpus"></a>Vytvoření clusteru Kubernetes s grafickými procesory
 
-Služba Azure Kubernetes poskytuje mnoho různých možností GPU. Pro odvození modelu můžete použít kterýkoli z nich. Úplný rozpis možností a nákladů najdete v [seznamu virtuálních počítačů řady N-Series](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#n-series) .
+Služba Azure Kubernetes service poskytuje mnoho různých možností GPU. Můžete použít některý z nich pro odvození modelu. Úplný rozpis možností a nákladů najdete [v seznamu virtuálních zařízení řady N.](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#n-series)
 
 Následující kód ukazuje, jak vytvořit nový cluster AKS pro váš pracovní prostor:
 
@@ -92,16 +92,16 @@ except ComputeTargetException:
 ```
 
 > [!IMPORTANT]
-> Azure vám bude účtovat, dokud cluster AKS existuje. Až s tím budete hotovi, nezapomeňte cluster AKS odstranit.
+> Azure vám bude účtovat, dokud existuje cluster AKS. Ujistěte se, že odstranit cluster AKS, když jste hotovi s ním.
 
-Další informace o použití AKS s Azure Machine Learning najdete v tématu [nasazení do služby Azure Kubernetes](how-to-deploy-azure-kubernetes-service.md).
+Další informace o používání AKS s Azure Machine Learning najdete v [tématu Jak nasadit do služby Azure Kubernetes](how-to-deploy-azure-kubernetes-service.md).
 
-## <a name="write-the-entry-script"></a>Zápis vstupního skriptu
+## <a name="write-the-entry-script"></a>Napsat vstupní skript
 
-Skript vstupu přijme data odeslaná webové službě, předává je do modelu a vrátí výsledky bodování. Následující skript načte model Tensorflow při spuštění a pak použije model k určení skóre dat.
+Vstupní skript obdrží data odeslaná webové službě, předá je modelu a vrátí výsledky hodnocení. Následující skript načte model Tensorflow při spuštění a potom použije model k skóre dat.
 
 > [!TIP]
-> Vstupní skript je specifický pro váš model. Například skript musí znát rozhraní pro použití s modelem, datovými formáty atd.
+> Vstupní skript je specifický pro váš model. Skript musí například znát rámec pro použití s modelem, datovými formáty atd.
 
 ```python
 import json
@@ -135,11 +135,11 @@ def run(raw_data):
     return y_hat.tolist()
 ```
 
-Tento soubor má název `score.py`. Další informace o vstupních skriptech najdete v tématu [jak a kde nasadit](how-to-deploy-and-where.md).
+Tento soubor `score.py`je pojmenován . Další informace o vstupních skriptech naleznete v tématu [Jak a kde se nasadit](how-to-deploy-and-where.md).
 
-## <a name="define-the-conda-environment"></a>Definice prostředí conda
+## <a name="define-the-conda-environment"></a>Definování prostředí conda
 
-Soubor prostředí conda určuje závislosti služby. Obsahuje závislosti vyžadované modelem i vstupním skriptem. Všimněte si, že je třeba zadat hodnotu AzureML-Defaults s verze > = 1.0.45 jako závislostí PIP, protože obsahuje funkce potřebné pro hostování modelu jako webové služby. Následující YAML definuje prostředí pro model Tensorflow. Určuje `tensorflow-gpu`, který použije GPU používané v tomto nasazení:
+Soubor prostředí conda určuje závislosti pro službu. Obsahuje závislosti vyžadované modelem i vstupním skriptem. Vezměte prosím na vědomí, že je nutné označit azureml-defaults s verion >= 1.0.45 jako pip závislost, protože obsahuje funkce potřebné k hostování modelu jako webové služby. Následující YAML definuje prostředí pro model Tentenzorflow. Určuje `tensorflow-gpu`, který bude využívat grafický procesor použitý v tomto nasazení:
 
 ```yaml
 name: project_environment
@@ -157,7 +157,7 @@ channels:
 - conda-forge
 ```
 
-V tomto příkladu je soubor uložený jako `myenv.yml`.
+V tomto příkladu je `myenv.yml`soubor uložen jako .
 
 ## <a name="define-the-deployment-configuration"></a>Definování konfigurace nasazení
 
@@ -172,11 +172,11 @@ gpu_aks_config = AksWebservice.deploy_configuration(autoscale_enabled=False,
                                                     memory_gb=4)
 ```
 
-Další informace najdete v referenční dokumentaci k [AksService. deploy_configuration](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-).
+Další informace naleznete v referenční dokumentaci pro [AksService.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-).
 
-## <a name="define-the-inference-configuration"></a>Definovat odvozenou konfiguraci
+## <a name="define-the-inference-configuration"></a>Definování konfigurace odvození
 
-Odvozená konfigurace odkazuje na skript vstupu a objekt prostředí, který používá Image Docker s podporou GPU. Upozorňujeme, že soubor YAML, který se používá pro definici prostředí, musí obsahovat hodnotu AzureML-Defaults s Version > = 1.0.45 jako závislost PIP, protože obsahuje funkce potřebné k hostování modelu jako webové služby.
+Odvození konfigurace odkazuje na vstupní skript a objekt prostředí, který používá image dockeru s podporou GPU. Vezměte prosím na vědomí, že soubor YAML používaný pro definici prostředí musí obsahovat azureml-defaults s verzí >= 1.0.45 jako závislost pipu, protože obsahuje funkce potřebné k hostování modelu jako webové služby.
 
 ```python
 from azureml.core.model import InferenceConfig
@@ -187,12 +187,12 @@ myenv.docker.base_image = DEFAULT_GPU_IMAGE
 inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
 ```
 
-Další informace o prostředích najdete v tématu [vytváření a Správa prostředí pro školení a nasazení](how-to-use-environments.md).
-Další informace najdete v referenční dokumentaci k [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py).
+Další informace o prostředích naleznete v [tématu Vytváření a správa prostředí pro školení a nasazení](how-to-use-environments.md).
+Další informace naleznete v referenční dokumentaci pro [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py).
 
 ## <a name="deploy-the-model"></a>Nasazení modelu
 
-Nasaďte model do clusteru AKS a počkejte, než se vytvoří vaše služba.
+Nasaďte model do clusteru AKS a počkejte, až vytvoří vaši službu.
 
 ```python
 from azureml.core.model import Model
@@ -214,13 +214,13 @@ print(aks_service.state)
 ```
 
 > [!NOTE]
-> Pokud má objekt `InferenceConfig` `enable_gpu=True`, musí parametr `deployment_target` odkazovat na cluster, který poskytuje GPU. V opačném případě se nasazení nezdaří.
+> Pokud `InferenceConfig` objekt `enable_gpu=True`má , `deployment_target` pak parametr musí odkazovat na cluster, který poskytuje GPU. V opačném případě se nasazení nezdaří.
 
-Další informace najdete v referenční dokumentaci k [modelu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py).
+Další informace naleznete v referenční dokumentaci pro [Model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py).
 
-## <a name="issue-a-sample-query-to-your-service"></a>Vydat vzorový dotaz do vaší služby
+## <a name="issue-a-sample-query-to-your-service"></a>Vydání ukázkového dotazu vaší službě
 
-Odešlete testovací dotaz do nasazeného modelu. Při odeslání obrázku JPEG do modelu se vyhodnotí obrázek. Následující ukázka kódu stáhne testovací data a pak vybere náhodný test obrazu, který se odešle službě.
+Odešlete testovací dotaz nasazenému modelu. Když do modelu odešlete obrázek jpeg, získá snímek. Následující ukázka kódu stáhne testovací data a potom vybere náhodný testovací obrázek, který se má odeslat službě.
 
 ```python
 # Used to test your webservice
@@ -273,14 +273,14 @@ print("label:", y_test[random_index])
 print("prediction:", resp.text)
 ```
 
-Další informace o vytvoření klientské aplikace najdete v tématu [Vytvoření klienta pro využívání nasazené webové služby](how-to-consume-web-service.md).
+Další informace o vytvoření klientské aplikace naleznete v [tématu Vytvoření klienta, který využívá nasazenou webovou službu](how-to-consume-web-service.md).
 
 ## <a name="clean-up-the-resources"></a>Vyčištění prostředků
 
-Pokud jste cluster AKS vytvořili konkrétně pro tento příklad, po dokončení odstraňte prostředky.
+Pokud jste vytvořili cluster AKS speciálně pro tento příklad, odstraňte prostředky po dokončení.
 
 > [!IMPORTANT]
-> Azure účtuje na základě toho, jak dlouho je cluster AKS nasazený. Nezapomeňte ho vyčistit až po jeho dokončení.
+> Azure účtuje na základě toho, jak dlouho se nasadí cluster AKS. Ujistěte se, že vyčistit poté, co jste udělal s ním.
 
 ```python
 aks_service.delete()
@@ -290,5 +290,5 @@ aks_target.delete()
 ## <a name="next-steps"></a>Další kroky
 
 * [Nasazení modelu na FPGA](how-to-deploy-fpga-web-service.md)
-* [Nasazení modelu pomocí ONNX](concept-onnx.md#deploy-onnx-models-in-azure)
-* [Výukové modely Tensorflow DNN](how-to-train-tensorflow.md)
+* [Nasazení modelu s ONNX](concept-onnx.md#deploy-onnx-models-in-azure)
+* [Vlak Tensorflow DNN modely](how-to-train-tensorflow.md)

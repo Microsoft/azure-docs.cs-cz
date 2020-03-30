@@ -1,72 +1,80 @@
 ---
 title: Nejčastější dotazy – zálohování databází SAP HANA na virtuálních počítačích Azure
-description: V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování SAP HANA databází pomocí služby Azure Backup.
+description: V tomto článku se dozvíte odpovědi na běžné otázky týkající se zálohování databází SAP HANA pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: d9d10e38885ba814045d8476b83671153feb7b8c
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: a46c4d6cccc00452a56567880400ef5779e6aed4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919681"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80155388"
 ---
-# <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Nejčastější dotazy – zálohování SAP HANA databází na virtuálních počítačích Azure
+# <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Nejčastější dotazy – Zálohování databází SAP HANA na virtuálních počítačích Azure
 
-Tento článek obsahuje odpovědi na běžné dotazy týkající se zálohování SAP HANA databází pomocí služby Azure Backup.
+Tento článek odpovídá na běžné otázky týkající se zálohování databází SAP HANA pomocí služby Azure Backup.
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Zálohování
 
-### <a name="how-many-full-backups-are-supported-per-day"></a>Kolik úplných záloh se podporuje za den?
+### <a name="how-many-full-backups-are-supported-per-day"></a>Kolik úplných záloh je podporováno za den?
 
-Podporujeme jenom jednu úplnou zálohu za den. Nemůžete mít ke stejnému dni spuštěno rozdílové zálohování a úplné zálohování.
+Podporujeme pouze jednu plnou zálohu denně. Nelze mít rozdílové zálohování a úplné zálohování spuštěno ve stejný den.
 
-### <a name="do-successful-backup-jobs-create-alerts"></a>Vytvářejí úspěšné úlohy zálohování výstrahy?
+### <a name="do-successful-backup-jobs-create-alerts"></a>Vytvářejí úspěšné úlohy zálohování upozornění?
 
-Ne. Úspěšné úlohy zálohování negenerují výstrahy. Výstrahy se odesílají jenom pro úlohy zálohování, které selžou. Podrobné chování výstrah na portálu [najdete tady](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor). Pokud ale máte zájem o výstrahy i pro úspěšné úlohy, můžete použít [Azure monitor](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor).
+Ne. Úspěšné úlohy zálohování negenerují výstrahy. Výstrahy jsou odesílány pouze pro úlohy zálohování, které se nezdaří. Podrobné chování pro portálové výstrahy je dokumentováno [zde](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor). Pokud však máte zájem o výstrahy i pro úspěšné úlohy, můžete použít [Azure Monitor](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor).
 
-### <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Můžu v nabídce úlohy zálohování Zobrazit naplánované úlohy zálohování?
+### <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Lze zobrazit naplánované úlohy zálohování v nabídce Úlohy zálohování?
 
-V nabídce Úloha zálohování se zobrazí pouze úlohy zálohování ad-hoc. V případě naplánovaných úloh použijte [Azure monitor](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor).
+V nabídce Úloha zálohování se zobrazí pouze úlohy zálohování ad hoc. Pro naplánované úlohy použijte [Azure Monitor](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor).
 
-### <a name="are-future-databases-automatically-added-for-backup"></a>Jsou budoucí databáze automaticky přidány pro zálohování?
+### <a name="are-future-databases-automatically-added-for-backup"></a>Budou se automaticky zálohovat i budoucí databáze?
 
 Ne, toto není aktuálně podporováno.
 
-### <a name="if-i-delete-a-database-from-an-instance-what-will-happen-to-the-backups"></a>Když odstraním databázi z instance, co se stane s zálohami?
+### <a name="if-i-delete-a-database-from-an-instance-what-will-happen-to-the-backups"></a>Pokud odstraním databázi z instance, co se stane se zálohami?
 
-Pokud je databáze vyřazena z instance SAP HANA, zálohování databáze se stále pokouší. To znamená, že Odstraněná databáze začne v rámci **zálohované položky** zobrazovat stav není v pořádku a je pořád chráněná.
-Správný způsob, jak zastavit ochranu této databáze, je provést **zastavení zálohování s odstraňováním dat** v této databázi.
+Pokud je databáze vynechána z instance SAP HANA, jsou stále pokusy o zálohování databáze. To znamená, že odstraněná databáze se začne zobrazovat jako není v pořádku v části **Položky zálohování** a je stále chráněna.
+Správný způsob, jak zastavit ochranu této databáze je provést **stop zálohování s odstranit data** v této databázi.
 
-### <a name="if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-the-behavior-be"></a>Když změním název databáze po jejím ochraně, jaká chování budou?
+### <a name="if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-the-behavior-be"></a>Pokud změním název databáze poté, co byla chráněna, jaké bude chování?
 
-Přejmenovaná databáze je považována za novou databázi. Proto se služba bude považovat za tuto situaci, jako kdyby nebyla nalezena databáze a selhala zálohování. Přejmenovaná databáze se zobrazí jako nová databáze a je nutné ji nakonfigurovat pro ochranu.
+Přejmenovaná databáze je považována za novou databázi. Proto služba bude považovat tuto situaci, jako kdyby databáze nebyla nalezena a selhání zálohy. Přejmenovaná databáze se zobrazí jako nová databáze a musí být nakonfigurována pro ochranu.
 
-### <a name="what-are-the-prerequisites-to-back-up-sap-hana-databases-on-an-azure-vm"></a>Jaké jsou požadavky pro zálohování SAP HANA databází na virtuálním počítači Azure?
+### <a name="what-are-the-prerequisites-to-back-up-sap-hana-databases-on-an-azure-vm"></a>Jaké jsou předpoklady pro zálohování databází SAP HANA na virtuálním počítači Azure?
 
-Přečtěte si o [požadavcích](tutorial-backup-sap-hana-db.md#prerequisites) a o [tom, co skript předregistrací zahrnuje](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) oddíly.
+Podívejte se na [požadavky](tutorial-backup-sap-hana-db.md#prerequisites) a [co dělá skript předběžné registrace.](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)
 
-### <a name="what-permissions-should-be-set-for-azure-to-be-able-to-back-up-sap-hana-databases"></a>Jaká oprávnění by měla být nastavená pro Azure, aby bylo možné zálohovat SAP HANA databáze?
+### <a name="what-permissions-should-be-set-for-azure-to-be-able-to-back-up-sap-hana-databases"></a>Jaká oprávnění by měla být nastavena pro Azure, aby bylo možné zálohovat databáze SAP HANA?
 
-Spuštění předregistračního skriptu nastaví požadovaná oprávnění, která umožní službě Azure zálohovat SAP HANA databáze. Další informace o tom, co skript před registrací dělá, najdete [tady](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does).
+Spuštěním skriptu předběžné registrace nastavíte požadovaná oprávnění, která azure umožní zálohovat databáze SAP HANA. Více toho, co dělá skript pro předběžnou [registraci, naleznete zde](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does).
 
-### <a name="will-backups-work-after-migrating-sap-hana-from-10-to-20"></a>Budou zálohy fungovat po migraci SAP HANA od 1,0 do 2,0?
+### <a name="will-backups-work-after-migrating-sap-hana-from-10-to-20"></a>Budou zálohy fungovat po migraci SAP HANA z 1.0 na 2.0?
 
-Informace najdete v [této části](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#upgrading-from-sap-hana-10-to-20) Průvodce odstraňováním potíží.
+V [této části](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#upgrading-from-sap-hana-10-to-20) příručky pro řešení potíží naleznete.
+
+### <a name="can-azure-hana-backup-be-set-up-against-a-virtual-ip-load-balancer-and-not-a-virtual-machine"></a>Může být azure hana backup nastavena proti virtuální IP (nástroj pro vyrovnávání zatížení) a ne virtuální stroj?
+
+V současné době nemáme možnost nastavit řešení proti virtuální IP sám. Potřebujeme virtuální stroj pro spuštění řešení.
+
+### <a name="i-have-a-sap-hana-system-replication-hsr-how-should-i-configure-backup-for-this-setup"></a>Mám SAP HANA systémová replikace (HSR), jak mám nakonfigurovat zálohování pro toto nastavení?
+
+Primární a sekundární uzly HSR budou považovány za dva samostatné virtuální chody, které nejsou příbuzné. Je třeba nakonfigurovat zálohování na primárním uzlu a když dojde k převzetí služeb při selhání, je třeba nakonfigurovat zálohování na sekundárním uzlu (který se nyní stane primárním uzem). Neexistuje žádný automatický 'převzetí služeb při selhání' zálohování do druhého uzlu.
 
 ## <a name="restore"></a>Obnovení
 
-### <a name="why-cant-i-see-the-hana-system-i-want-my-database-to-be-restored-to"></a>Proč se mi nedá zobrazit systém HANA, na který chci obnovit moji databázi?
+### <a name="why-cant-i-see-the-hana-system-i-want-my-database-to-be-restored-to"></a>Proč nevidím systém HANA, do kterého chcete databázi obnovit?
 
-Ověřte, zda jsou splněny všechny požadavky pro cíl obnovení na instanci SAP HANA. Další informace najdete v tématu [požadavky – obnovení SAP HANA databází ve virtuálním počítači Azure](https://docs.microsoft.com/azure/backup/sap-hana-db-restore#prerequisites).
+Zkontrolujte, zda jsou splněny všechny předpoklady pro obnovení cílové instance SAP HANA. Další informace najdete [v tématu Požadavky – obnovení databází SAP HANA ve virtuálním počítači Azure](https://docs.microsoft.com/azure/backup/sap-hana-db-restore#prerequisites).
 
-### <a name="why-is-the-overwrite-db-restore-failing-for-my-database"></a>Proč se pro moji databázi nezdaří obnovení přepsání databáze?
+### <a name="why-is-the-overwrite-db-restore-failing-for-my-database"></a>Proč se obnovení přepsání db nedaří pro databázi?
 
-Zajistěte, aby při obnovení byla vybrána možnost **Vynutit přepsání** .
+Ujistěte se, že je při obnovení vybraná možnost **Vynutit přepsání.**
 
-### <a name="why-do-i-see-the-source-and-target-systems-for-restore-are-incompatible-error"></a>Proč se zobrazuje chyba "zdrojový a cílový systém pro obnovení jsou nekompatibilní"?
+### <a name="why-do-i-see-the-source-and-target-systems-for-restore-are-incompatible-error"></a>Proč se zobrazuje chyba "Zdrojové a cílové systémy pro obnovení jsou nekompatibilní"?
 
-Informace o tom, jaké typy obnovení se aktuálně podporují, najdete v SAP HANA Note [1642148](https://launchpad.support.sap.com/#/notes/1642148) .
+Informace o tom, jaké typy obnovení jsou aktuálně podporovány, naleznete v poznámce SAP HANA [1642148.](https://launchpad.support.sap.com/#/notes/1642148)
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte se, jak [zálohovat SAP HANA databáze](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database) běžící na virtuálních počítačích Azure.
+Zjistěte, jak [zálohovat databáze SAP HANA spuštěné](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database) na virtuálních počítačích Azure.
