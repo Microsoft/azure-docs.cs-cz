@@ -4,21 +4,21 @@ description: Popisuje, jak definovat parametry v šabloně Azure Resource Manage
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.openlocfilehash: 89c6984c587e8dae59c1825a99d4f8da1c06dafb
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76122419"
 ---
-# <a name="parameters-in-azure-resource-manager-templates"></a>Parametry v šablonách Azure Resource Manager
+# <a name="parameters-in-azure-resource-manager-templates"></a>Parametry v šablonách Azure Resource Manageru
 
 Tento článek popisuje, jak definovat a používat parametry v šabloně Azure Resource Manager. Zadáním různých hodnot pro parametry můžete znovu použít šablonu pro různá prostředí.
 
-Správce prostředků řeší hodnoty parametrů před spuštěním operací nasazení. Všude, kde je parametr použit v šabloně, Správce prostředků ho nahradí vyřešenou hodnotou.
+Správce prostředků řeší hodnoty parametrů před zahájením operací nasazení. Všude tam, kde je parametr použit v šabloně, Správce prostředků jej nahradí vyřešenou hodnotou.
 
 ## <a name="define-parameter"></a>Definovat parametr
 
-V následujícím příkladu je uvedena definice jednoduchého parametru. Definuje parametr s názvem **storageSKU**. Parametr je hodnota řetězce a přijímá pouze hodnoty, které jsou platné pro zamýšlené použití. Parametr používá výchozí hodnotu, pokud není k dispozici žádná hodnota během nasazování.
+Následující příklad ukazuje jednoduchou definici parametru. Definuje parametr s názvem **storageSKU**. Parametr je řetězcová hodnota a přijímá pouze hodnoty, které jsou platné pro jeho zamýšlené použití. Parametr používá výchozí hodnotu, pokud během nasazení není k dispozici žádná hodnota.
 
 ```json
 "parameters": {
@@ -41,7 +41,7 @@ V následujícím příkladu je uvedena definice jednoduchého parametru. Definu
 
 ## <a name="use-parameter"></a>Použít parametr
 
-V šabloně odkazujete na hodnotu parametru pomocí funkce [Parameters](template-functions-deployment.md#parameters) . V následujícím příkladu se hodnota parametru používá k nastavení SKU pro účet úložiště.
+V šabloně odkazujete na hodnotu parametru pomocí funkce [parameters.](template-functions-deployment.md#parameters) V následujícím příkladu se hodnota parametru používá k nastavení skladové položky pro účet úložiště.
 
 ```json
 "resources": [
@@ -57,7 +57,7 @@ V šabloně odkazujete na hodnotu parametru pomocí funkce [Parameters](template
 
 ## <a name="template-functions"></a>Funkce šablon
 
-Když zadáte výchozí hodnotu pro parametr, můžete použít většinu funkcí šablon. K vytvoření výchozí hodnoty můžete použít jinou hodnotu parametru. Následující šablona ukazuje použití funkcí ve výchozí hodnotě. Není-li pro web k dispozici žádný název, vytvoří jedinečnou řetězcovou hodnotu a připojí ji k **webu**. Pokud není pro plán hostitele k dispozici žádný název, převezme se hodnota lokality a připojí se **plán**.
+Při zadávání výchozí hodnoty parametru můžete použít většinu funkcí šablony. K vytvoření výchozí hodnoty můžete použít jinou hodnotu parametru. Následující šablona ukazuje použití funkcí ve výchozí hodnotě. Pokud není pro web k dispozici žádný název, vytvoří jedinečnou hodnotu řetězce a připojí ji k **webu**. Pokud není k dispozici žádný název pro plán hostitele, přebírá hodnotu webu a připojí **-plan**.
 
 ```json
 "parameters": {
@@ -78,11 +78,11 @@ Když zadáte výchozí hodnotu pro parametr, můžete použít většinu funkc�
 }
 ```
 
-V části Parameters (parametry) nemůžete použít [odkazovou](template-functions-resource.md#reference) funkci ani žádnou z funkcí [seznamu](template-functions-resource.md#list) . Tyto funkce získávají běhový stav prostředku a nelze jej provést před nasazením, když jsou parametry vyřešeny.
+Nelze použít [referenční](template-functions-resource.md#reference) funkci nebo žádnou z funkcí [seznamu](template-functions-resource.md#list) v části parametry. Tyto funkce získat runtime stav prostředku a nelze spustit před nasazením při parametry jsou vyřešeny.
 
 ## <a name="objects-as-parameters"></a>Objekty jako parametry
 
-Můžete snadněji organizovat související hodnoty jejich předáním v podobě objektu. Tento přístup také snižuje počet parametrů v šabloně.
+Může být jednodušší uspořádat související hodnoty jejich předáním jako objekt. Tento přístup také snižuje počet parametrů v šabloně.
 
 Následující příklad ukazuje parametr, který je objektem. Výchozí hodnota zobrazuje očekávané vlastnosti objektu.
 
@@ -114,7 +114,7 @@ Následující příklad ukazuje parametr, který je objektem. Výchozí hodnota
 },
 ```
 
-Odkazujete na vlastnosti objektu pomocí operátoru tečka.
+Vlastnosti objektu můžete odkazovat pomocí operátoru tečka.
 
 ```json
 "resources": [
@@ -148,18 +148,18 @@ Odkazujete na vlastnosti objektu pomocí operátoru tečka.
 ]
 ```
 
-## <a name="example-templates"></a>Příklad šablony
+## <a name="example-templates"></a>Ukázkové šablony
 
-Následující příklady ukazují scénáře použití parametrů.
+Následující příklady ukazují scénáře pro použití parametrů.
 
 |Šablona  |Popis  |
 |---------|---------|
-|[parametry s funkcemi pro výchozí hodnoty](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | Ukazuje, jak používat funkce šablon při definování výchozích hodnot pro parametry. Šablona neimplementuje žádné prostředky. Vytvoří hodnoty parametrů a vrátí tyto hodnoty. |
-|[objekt parametru](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | Ukazuje použití objektu pro parametr. Šablona neimplementuje žádné prostředky. Vytvoří hodnoty parametrů a vrátí tyto hodnoty. |
+|[parametry s funkcemi pro výchozí hodnoty](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | Ukazuje, jak používat funkce šablony při definování výchozích hodnot pro parametry. Šablona nenasazuje žádné prostředky. Vytvoří hodnoty parametrů a vrátí tyto hodnoty. |
+|[objekt parametru](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | Ukazuje použití objektu pro parametr. Šablona nenasazuje žádné prostředky. Vytvoří hodnoty parametrů a vrátí tyto hodnoty. |
 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o dostupných vlastnostech parametrů naleznete v tématu [pochopení struktury a syntaxe šablon Azure Resource Manager](template-syntax.md).
-* Další informace o předávání hodnot parametrů jako souboru naleznete v tématu [Create správce prostředků Parameter File](parameter-files.md).
-* Doporučení k vytváření parametrů najdete v tématu [osvědčené postupy – parametry](template-best-practices.md#parameters).
+* Informace o dostupných vlastnostech parametrů najdete [v tématu Principy struktury a syntaxe šablon Azure Resource Manageru](template-syntax.md).
+* Informace o předávání hodnot parametrů jako souboru naleznete v tématu [Vytvoření souboru parametrů Správce prostředků](parameter-files.md).
+* Doporučení týkající se vytváření parametrů naleznete v tématu [Doporučené postupy – parametry](template-best-practices.md#parameters).

@@ -1,6 +1,6 @@
 ---
-title: Napravit nekompatibilní servery konfigurace stavu Azure Automation
-description: Postup opakovaného aplikování konfigurace na vyžádání na servery, na kterých se změnil stav konfigurace
+title: Navádění nekompatibilních konfiguračních serverů stavu azure automatizace
+description: Jak znovu použít konfigurace na vyžádání na servery, kde byl stav konfigurace posunut
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -10,41 +10,41 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
 ms.openlocfilehash: a6c7639cb4988eb13dfaa1c151085cda6e53b5d3
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68614495"
 ---
 # <a name="remediate-non-compliant-dsc-servers"></a>Oprava serverů DSC, které nevyhovují předpisům
 
-Pokud jsou servery registrovány s konfigurací stavu Azure Automation, je režim konfigurace nastaven na hodnotu ApplyOnly, ApplyandMonitor nebo ApplyAndAutoCorrect.
-Pokud režim není nastavený na automatických opravách, servery, které se od stavu v pořádku z nějakého důvodu, zůstanou nekompatibilní, dokud je ručně neopravíte.
+Když jsou servery registrovány pomocí konfigurace stavu automatizace Azure, "Režim konfigurace" je nastavena na ApplyOnly, ApplyandMonitor nebo ApplyAndAutoCorrect.
+Pokud režim není nastaven na automatické opravy, servery, které se z jakéhokoli důvodu odkloní od kompatibilního stavu, zůstanou nekompatibilní, dokud nebudou ručně opraveny.
 
-Azure COMPUTE nabízí funkci s názvem Run Command, která umožňuje zákazníkům spouštět skripty v rámci virtuálních počítačů.
-Tento dokument popisuje příklady skriptů pro tuto funkci při ruční opravě posunu konfigurace.
+Azure compute nabízí funkci s názvem Spustit příkaz, která zákazníkům umožňuje spouštět skripty uvnitř virtuálních počítačů.
+Tento dokument obsahuje ukázkové skripty pro tuto funkci při ruční opravě posunu konfigurace.
 
 ## <a name="correct-drift-of-windows-virtual-machines-using-powershell"></a>Správný posun virtuálních počítačů s Windows pomocí PowerShellu
 
-Podrobné pokyny k použití funkce příkazu spustit na virtuálních počítačích s Windows najdete na stránce dokumentace [spuštění skriptů PowerShellu na virtuálním počítači s Windows pomocí příkazu Spustit](/azure/virtual-machines/windows/run-command).
+Podrobné pokyny pomocí funkce Spustit příkaz na virtuálních počítačích s Windows najdete na stránce dokumentace [Spuštění skriptů prostředí PowerShell v virtuálním počítači se systémem Windows pomocí příkazu Spustit](/azure/virtual-machines/windows/run-command).
 
-Pokud chcete vynutit, aby uzel Konfigurace stavu Azure Automation stáhnout nejnovější konfiguraci a použít ho, použijte `Update-DscConfiguration` rutinu.
-Podrobnosti najdete v dokumentaci k rutině [Update-DscConfiguration](/powershell/module/psdesiredstateconfiguration/update-dscconfiguration).
+Chcete-li vynutit uzel konfigurace stavu azure automatizace stáhnout `Update-DscConfiguration` nejnovější konfiguraci a použít ji, použijte rutinu.
+Podrobnosti naleznete v dokumentaci k rutině [Update-DscConfiguration](/powershell/module/psdesiredstateconfiguration/update-dscconfiguration).
 
 ```powershell
 Update-DscConfiguration -Wait -Verbose
 ```
 
-## <a name="correct-drift-of-linux-virtual-machines"></a>Správný posun virtuálních počítačů se systémem Linux
+## <a name="correct-drift-of-linux-virtual-machines"></a>Správný posun virtuálních počítačů Linuxu
 
-Podobné funkce nejsou aktuálně k dispozici pro servery se systémem Linux.
+Podobná funkce není v současné době k dispozici pro servery Linux.
 Jedinou možností je zopakovat proces registrace.
-V případě uzlů Azure je možné na portálu provést změnu oproti chybám pomocí rutin AZ Automation.
-Podrobnosti o tomto procesu jsou popsány v části [počítače připojování počítačů pro správu podle konfigurace stavu Azure Automation](/azure/automation/automation-dsc-onboarding#azure-portal).
-U hybridních uzlů se dá pomocí zahrnutých skriptů Pythonu udělat korekci.
-Podívejte se na dokumentaci v [úložišti POWERSHELL DSC pro Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux#performing-dsc-operations-from-the-linux-computer).
+U uzlů Azure lze opravu driftu provést z portálu nebo pomocí rutin Az Automation.
+Podrobnosti o tomto procesu jsou popsány na stránce [Onboarding machines pro správu pomocí konfigurace stavu automatizace Azure](/azure/automation/automation-dsc-onboarding#azure-portal).
+U hybridních uzlů lze korekci driftu provést pomocí zahrnutých skriptů Pythonu.
+Podívejte se na dokumentaci v [prostředí PowerShell DSC pro linuxové repo](https://github.com/Microsoft/PowerShell-DSC-for-Linux#performing-dsc-operations-from-the-linux-computer).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Referenční informace k rutinám PowerShellu najdete v tématu [rutiny konfigurace stavu Azure Automation](/powershell/module/azurerm.automation/#automation) .
-- Příklad použití konfigurace stavu Azure Automation v kanálu průběžného nasazování najdete v tématu průběžné [nasazování pomocí Azure Automation konfigurace stavu a čokolády](automation-dsc-cd-chocolatey.md) .
+- Informace o odkazu na rutinu prostředí PowerShell najdete v tématu [Rutiny konfigurace stavu automatizace Azure](/powershell/module/azurerm.automation/#automation)
+- Příklad použití konfigurace stavu azure automatizace v kanálu průběžného nasazení najdete v [tématu Průběžné nasazení pomocí konfigurace stavu automatizace Azure a Chocolatey](automation-dsc-cd-chocolatey.md)

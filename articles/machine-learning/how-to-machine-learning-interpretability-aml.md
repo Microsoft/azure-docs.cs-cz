@@ -1,7 +1,7 @@
 ---
-title: Interpretace modelu pro místní a vzdálené spuštění
+title: Interpretovatelnost modelu pro místní a vzdálené spuštění
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak získat vysvětlení způsobu, jakým váš model strojového učení určuje důležitost funkcí a který je předpovědi při použití sady SDK Azure Machine Learning.
+description: Zjistěte, jak získat vysvětlení, jak váš model strojového učení určuje důležitost funkce a dělá předpovědi při použití sady Azure Machine Learning SDK.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,33 +10,33 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: trbye
 ms.date: 10/25/2019
-ms.openlocfilehash: 19b7fbe5541bda5e6e2c265681e292f452cd57c0
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: a479982eeac325c9774e3858ec51643e8ba699c3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044265"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064046"
 ---
-# <a name="model-interpretability-for-local-and-remote-runs"></a>Interpretace modelu pro místní a vzdálené spuštění
+# <a name="model-interpretability-for-local-and-remote-runs"></a>Interpretovatelnost modelu pro místní a vzdálené spuštění
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto článku se naučíte, jak pomocí balíčku interpretace v sadě Azure Machine Learning Python SDK zjistit, proč váš model provedl své předpovědi. Získáte informace o těchto tématech:
+V tomto článku se naučíte používat balíček interpretovatelnost i Azure Machine Learning Python SDK pochopit, proč váš model dělal jeho předpovědi. Získáte informace o těchto tématech:
 
-* Interpretujte modely strojového učení, které jsou vyškolené místně i na vzdálených výpočetních prostředcích.
-* Ukládejte si místní a globální vysvětlení na historii spuštění Azure.
-* Zobrazit vizualizace interpretace v [Azure Machine Learning Studiu](https://ml.azure.com).
-* Nasaďte vysvětlující hodnocení s modelem.
+* Interpretujte modely strojového učení trénované místně i na vzdálených výpočetních prostředcích.
+* Uklápěte místní a globální vysvětlení historie spuštění Azure.
+* Zobrazení vizualizací interpretace ve [studiu Azure Machine Learning .](https://ml.azure.com)
+* Nasazení vysvětlivky s vysvětlivkou hodnocení s modelem.
 
-Další informace najdete v tématu věnovaném [interpretaci modelu v Azure Machine Learning](how-to-machine-learning-interpretability.md).
+Další informace najdete [v tématu Model interpretability v Azure Machine Learning](how-to-machine-learning-interpretability.md).
 
-## <a name="local-interpretability"></a>Místní výklad
+## <a name="local-interpretability"></a>Místní interpretace
 
-Následující příklad ukazuje, jak místně použít balíček pro interpretaci bez kontaktování služeb Azure.
+Následující příklad ukazuje, jak používat balíček interpretability místně bez kontaktování služeb Azure.
 
-1. V případě potřeby použijte `pip install azureml-interpret` k získání balíčku pro výklad.
+1. V případě `pip install azureml-interpret` potřeby použijte k získání balíčku interpretability.
 
-1. Výuku ukázkového modelu v místním poznámkovém bloku Jupyter
+1. Trénování ukázkového modelu v místním notebooku Jupyter.
 
     ```python
     # load breast cancer dataset, a well-known small dataset that comes with scikit-learn
@@ -56,13 +56,13 @@ Následující příklad ukazuje, jak místně použít balíček pro interpreta
     model = clf.fit(x_train, y_train)
     ```
 
-1. Zavolejte na místní vysvětlení.
-   * Chcete-li inicializovat objekt vysvětlujícího objektu, předejte svůj model a určitou výukovou data konstruktoru vysvětlujícího.
-   * Chcete-li, aby vaše vysvětlení a vizualizace byly více informativní, můžete při provádění klasifikace předávat názvy funkcí a názvy výstupních tříd.
+1. Zavolejte vysvětlivku místně.
+   * Chcete-li inicializovat vysvětlující objekt, předejte model a některá trénovací data konstruktoru vysvětlujícího.
+   * Chcete-li, aby vaše vysvětlení a vizualizace byly informativnější, můžete při klasifikaci předat názvy funkcí a výstupní třídy.
 
-   Následující bloky kódu ukazují, jak vytvořit instanci objektu vysvětlení pomocí `TabularExplainer`, `MimicExplainer`a `PFIExplainer` lokálně.
-   * `TabularExplainer` volá jedno ze tří SHAP vysvětlení pod (`TreeExplainer`, `DeepExplainer`nebo `KernelExplainer`).
-   * `TabularExplainer` automaticky vybere nejvhodnější pro váš případ použití, ale můžete zavolat každé ze svých tří základních vysvětlení přímo.
+   Následující bloky kódu ukazují, jak vytvořit konkretizovat vysvětlující objekt pomocí `TabularExplainer`aplikace , `MimicExplainer`a `PFIExplainer` místně.
+   * `TabularExplainer`volá jeden ze tří shap`TreeExplainer`explainers pod ( , `DeepExplainer`, , nebo `KernelExplainer`).
+   * `TabularExplainer`automaticky vybere nejvhodnější pro váš případ použití, ale můžete volat každý z jeho tří podkladových explainers přímo.
 
     ```python
     from interpret.ext.blackbox import TabularExplainer
@@ -111,9 +111,9 @@ Následující příklad ukazuje, jak místně použít balíček pro interpreta
                              classes=classes)
     ```
 
-### <a name="overall-global-feature-importance-values"></a>Celkové hodnoty důležité pro globální funkce
+### <a name="overall-global-feature-importance-values"></a>Celkově lze říci, že hodnoty globálního významu
 
-V následujícím příkladu se dozvíte, jak získat hodnoty důležité pro globální funkce.
+Naleznete v následujícím příkladu, který vám pomůže získat hodnoty důležitosti globálních funkcí.
 
 ```python
 
@@ -134,9 +134,9 @@ global_explanation.get_feature_importance_dict()
 
 ### <a name="instance-level-local-feature-importance-values"></a>Hodnoty důležitosti na úrovni instance, místní funkce
 
-Získejte hodnoty důležitosti místních funkcí voláním vysvětlení pro jednotlivé instance nebo skupiny instancí.
+Získejte hodnoty důležitosti místnífunkce voláním vysvětlení pro jednotlivé instance nebo skupinu instancí.
 > [!NOTE]
-> `PFIExplainer` nepodporuje místní vysvětlení.
+> `PFIExplainer`nepodporuje místní vysvětlení.
 
 ```python
 # get explanation for the first data point in the test set
@@ -147,16 +147,16 @@ sorted_local_importance_names = local_explanation.get_ranked_local_names()
 sorted_local_importance_values = local_explanation.get_ranked_local_values()
 ```
 
-## <a name="interpretability-for-remote-runs"></a>Interpretace pro vzdálené běhy
+## <a name="interpretability-for-remote-runs"></a>Interpretovatelnost pro vzdálené spuštění
 
-Následující příklad ukazuje, jak lze použít třídu `ExplanationClient` pro povolení interpretace modelu pro vzdálené běhy. Je koncepčně podobný místnímu procesu, s výjimkou:
+Následující příklad ukazuje, jak `ExplanationClient` můžete použít třídu k povolení interpretability modelu pro vzdálené spuštění. Je koncepčně podobný místnímu procesu, kromě vás:
 
-* Pomocí `ExplanationClient` ve vzdáleném spuštění nahrajte kontext interpretace.
-* Stáhněte kontext později v místním prostředí.
+* Použijte `ExplanationClient` ve vzdáleném spuštění k nahrání kontextu interpretability.
+* Stáhněte si kontext později v místním prostředí.
 
-1. V případě potřeby použijte `pip install azureml-contrib-interpret` k získání potřebného balíčku.
+1. V případě `pip install azureml-contrib-interpret` potřeby použijte k získání potřebného balíčku.
 
-1. Vytvoření trénovací skript v místní aplikace Jupyter notebook. Například, `train_explain.py`.
+1. Vytvořte školicí skript v místním poznámkovém bloku Jupyter. Například, `train_explain.py`.
 
     ```python
     from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
@@ -187,9 +187,9 @@ Následující příklad ukazuje, jak lze použít třídu `ExplanationClient` p
     #client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
     ```
 
-1. Nastavte Azure Machine Learning COMPUTE jako cíl výpočtů a odešlete školicí běh. Pokyny najdete v tématu [Nastavení výpočetních cílů pro školení modelů](how-to-set-up-training-targets.md#amlcompute) . Můžete také najít užitečné [ukázkové poznámkové bloky](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation) .
+1. Nastavte azure machine learning výpočetní jako váš výpočetní cíl a odešlete tréninkovou run. Pokyny najdete [v tématu nastavení výpočetních cílů pro trénování modelu.](how-to-set-up-training-targets.md#amlcompute) Ukázkové [poznámkové bloky](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation) vám také mohou být užitečné.
 
-1. Stáhněte si vysvětlení do svého místního poznámkového bloku Jupyter.
+1. Stáhněte si vysvětlení v místním notebooku Jupyter.
 
     ```python
     from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
@@ -207,13 +207,13 @@ Následující příklad ukazuje, jak lze použít třídu `ExplanationClient` p
     print('global importance names: {}'.format(global_importance_names))
     ```
 
-## <a name="raw-feature-transformations"></a>Nezpracované transformace funkcí
+## <a name="raw-feature-transformations"></a>Transformace nezpracovaných prvků
 
-Místo navržených funkcí se můžete rozhodnout, že získáte vysvětlení z nezpracovaných a netransformovaných funkcí. Pro tuto možnost předáte do vysvětlujícího `train_explain.py`kanál transformace vaší funkce. V opačném případě vysvětluje vysvětlení v souvislosti s funkcemi pro inženýry.
+Můžete se rozhodnout získat vysvětlení, pokud jde o nezpracované, netransformované funkce, spíše než konstrukční funkce. Pro tuto možnost předáte kanál transformace funkce `train_explain.py`vysvětlivakvaplikaci v aplikaci . V opačném případě vysvětluje vysvětlení, pokud jde o inženýrské funkce.
 
-Formát podporovaných transformací je stejný, jak je popsáno v [skriptu sklearn-PANDAS](https://github.com/scikit-learn-contrib/sklearn-pandas). Obecně platí, že všechny transformace jsou podporovány, pokud pracují v jednom sloupci, aby byly jasné, že jsou 1: n.
+Formát podporovaných transformací je stejný, jak je popsáno v [sklearn-pandas](https://github.com/scikit-learn-contrib/sklearn-pandas). Obecně platí, že všechny transformace jsou podporovány tak dlouho, dokud pracují na jeden sloupec tak, aby bylo jasné, že jsou 1:N.
 
-Získejte vysvětlení pro nezpracované funkce pomocí `sklearn.compose.ColumnTransformer` nebo se seznamem namontovaných řazených kolekcí členů Transformer. Následující příklad používá `sklearn.compose.ColumnTransformer`.
+Získejte vysvětlení pro nezpracované `sklearn.compose.ColumnTransformer` funkce pomocí nebo se seznamem namontované transformer řazené kolekce členů. Následující příklad `sklearn.compose.ColumnTransformer`používá .
 
 ```python
 from sklearn.compose import ColumnTransformer
@@ -247,7 +247,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
                                      transformations=preprocessor)
 ```
 
-V případě, že chcete spustit příklad se seznamem namontovaných řazených kolekcí členů Transformer, použijte následující kód:
+V případě, že chcete spustit příklad se seznamem namontovaných transformer řazené kolekce členů, použijte následující kód:
 
 ```python
 from sklearn.pipeline import Pipeline
@@ -283,41 +283,41 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 ## <a name="visualizations"></a>Vizualizace
 
-Po stažení vysvětlení v místním poznámkovém bloku Jupyter můžete model pochopit a interpretovat pomocí řídicího panelu vizualizace.
+Po stažení vysvětlení v místním poznámkovém bloku Jupyter, můžete použít řídicí panel vizualizace pochopit a interpretovat váš model.
 
 ### <a name="global-visualizations"></a>Globální vizualizace
 
-Následující vykreslení poskytují globální pohled na trained model spolu s jeho předpovědi a vysvětleními.
+Následující obrázky poskytují globální pohled na trénovaný model spolu s jeho předpovědi a vysvětlení.
 
-|Vykreslit|Popis|
+|Plot|Popis|
 |----|-----------|
-|Zkoumání dat| Zobrazí přehled datové sady spolu s hodnotami předpovědi.|
-|Globální důležitost|Zobrazuje globálně K (konfigurovatelné K) důležité funkce globálně. Pomáhá pochopit globální chování základního modelu.|
-|Zkoumání vysvětlení|Ukazuje, jak funkce ovlivňuje změnu v hodnotách předpovědi modelu nebo pravděpodobnost hodnot předpovědi. Zobrazuje dopad interakce funkcí.|
-|Souhrnná důležitost|Používá hodnoty důležitosti funkcí v rámci všech datových bodů k zobrazení distribuce vlivu každé funkce na hodnotu předpovědi.|
+|Průzkum dat| Zobrazí přehled datové sady spolu s hodnotami předpověď.|
+|Globální význam|Zobrazuje nejdůležitější funkce top K (konfigurovatelné K) globálně. Pomáhá pochopit globální chování základního modelu.|
+|Vysvětlení průzkumu|Ukazuje, jak funkce ovlivňuje změnu hodnot předpovědi modelu nebo pravděpodobnost hodnot předpověď. Zobrazuje dopad interakce funkcí.|
+|Souhrnná důležitost|Používá místní hodnoty důležitosti funkcí ve všech datových bodech k zobrazení rozložení dopadu jednotlivých funkcí na hodnotu předpověď.|
 
-[Globální řídicí panel vizualizace ![](./media/how-to-machine-learning-interpretability-aml/global-charts.png)](./media/how-to-machine-learning-interpretability-aml/global-charts.png#lightbox)
+[![Globální vizualizační řídicí panel](./media/how-to-machine-learning-interpretability-aml/global-charts.png)](./media/how-to-machine-learning-interpretability-aml/global-charts.png#lightbox)
 
 ### <a name="local-visualizations"></a>Místní vizualizace
 
-Můžete načíst místní vykreslení funkce pro libovolný datový bod výběrem jednotlivého datového bodu v grafu.
+Můžete načíst místní, funkce význam plot pro všechny datové hody výběrem jednotlivých datovýbod v grafu.
 
-|Vykreslit|Popis|
+|Plot|Popis|
 |----|-----------|
-|Místní důležitost|Zobrazuje globálně K (konfigurovatelné K) důležitým funkcím globálně. Pomáhá ilustrovat místní chování základního modelu v konkrétním datovém bodě.|
-|Průzkum Perturbation|Umožňuje změnit hodnoty funkcí vybraného datového bodu a sledovat výsledné změny hodnoty předpovědi.|
-|Očekávání individuálního podmíněného (ICE)| Povolí změnu hodnoty funkcí z minimální hodnoty na maximální hodnotu. Pomáhá ilustrovat způsob, jakým se předpověď datových bodů mění při změně funkce.|
+|Místní význam|Zobrazuje nejdůležitější funkce k (konfigurovatelné K) globálně. Pomáhá ilustrovat místní chování podkladového modelu v určitém datovém bodu.|
+|Průzkum perturbation|Umožňuje změny hodnot prvku vybraného datového bodu a sledování výsledných změn hodnoty předpovědi.|
+|Individuální podmíněné očekávání (ICE)| Umožňuje změny hodnoty prvku z minimální hodnoty na maximální hodnotu. Pomáhá ilustrovat, jak se mění předpověď datového bodu při změně funkce.|
 
-[Důležitost místní funkce řídicího panelu vizualizace ![](./media/how-to-machine-learning-interpretability-aml/local-charts.png)](./media/how-to-machine-learning-interpretability-aml/local-charts.png#lightbox)
-
-
-[Perturbation funkce řídicího panelu vizualizace ![](./media/how-to-machine-learning-interpretability-aml/perturbation.gif)](./media/how-to-machine-learning-interpretability-aml/perturbation.gif#lightbox)
+[![Důležitost místního prvku vizualizačního řídicího panelu](./media/how-to-machine-learning-interpretability-aml/local-charts.png)](./media/how-to-machine-learning-interpretability-aml/local-charts.png#lightbox)
 
 
-[Řídicí panel vizualizace ![ICE](./media/how-to-machine-learning-interpretability-aml/ice-plot.png)](./media/how-to-machine-learning-interpretability-aml/ice-plot.png#lightbox)
+[![Optimalizace funkce ovládacího panelu vizualizace](./media/how-to-machine-learning-interpretability-aml/perturbation.gif)](./media/how-to-machine-learning-interpretability-aml/perturbation.gif#lightbox)
+
+
+[![Vizualizace Dashboard ICE Obrázky](./media/how-to-machine-learning-interpretability-aml/ice-plot.png)](./media/how-to-machine-learning-interpretability-aml/ice-plot.png#lightbox)
 
 > [!NOTE]
-> Před spuštěním jádra Jupyter se ujistěte, že jste povolili rozšíření widgetů pro řídicí panel vizualizace.
+> Před spuštěním jádra Jupyter se ujistěte, že jste povolili rozšíření widgetů pro vizualizační řídicí panel.
 
 * Poznámkové bloky Jupyter
 
@@ -341,33 +341,33 @@ from interpret_community.widget import ExplanationDashboard
 ExplanationDashboard(global_explanation, model, x_test)
 ```
 
-### <a name="visualization-in-azure-machine-learning-studio"></a>Vizualizace v Azure Machine Learning Studiu
+### <a name="visualization-in-azure-machine-learning-studio"></a>Vizualizace ve studiu Azure Machine Learning
 
-Pokud dokončíte kroky [vzdáleného výkladu](#interpretability-for-remote-runs) , můžete zobrazit řídicí panel vizualizace v [Azure Machine Learning Studiu](https://ml.azure.com). Tento řídicí panel je jednodušší verze řídicího panelu vizualizace, která je vysvětlena výše. Podporuje pouze dvě karty:
+Pokud dokončíte kroky [vzdálené interpretace,](#interpretability-for-remote-runs) můžete zobrazit řídicí panel vizualizace ve [studiu Azure Machine Learning](https://ml.azure.com). Tento řídicí panel je jednodušší verze vizualizačního řídicího panelu vysvětleného výše. Podporuje pouze dvě karty:
 
-|Vykreslit|Popis|
+|Plot|Popis|
 |----|-----------|
-|Globální důležitost|Zobrazuje globálně K (konfigurovatelné K) důležité funkce globálně. Pomáhá pochopit globální chování základního modelu.|
-|Souhrnná důležitost|Používá hodnoty důležitosti funkcí v rámci všech datových bodů k zobrazení distribuce vlivu každé funkce na hodnotu předpovědi.|
+|Globální význam|Zobrazuje nejdůležitější funkce top K (konfigurovatelné K) globálně. Pomáhá pochopit globální chování základního modelu.|
+|Souhrnná důležitost|Používá místní hodnoty důležitosti funkcí ve všech datových bodech k zobrazení rozložení dopadu jednotlivých funkcí na hodnotu předpověď.|
 
-Pokud jsou k dispozici globální i místní vysvětlení, data naplní obě karty. Pokud je k dispozici pouze globální vysvětlení, karta pro Shrnutí důležitosti je zakázána.
+Pokud jsou k dispozici globální i místní vysvětlení, data naplní obě karty. Pokud je k dispozici pouze globální vysvětlení, karta Důležitost souhrnu je zakázána.
 
-Použijte jednu z těchto cest pro přístup k řídicímu panelu vizualizace v Azure Machine Learning Studiu:
+Postupujte podle jedné z těchto cest pro přístup k řídicímu panelu vizualizace ve studiu Azure Machine Learning:
 
-* Podokno **experimentů** (Preview)
-  1. V levém podokně vyberte **experimenty** a zobrazí se seznam experimentů, které jste spustili v Azure Machine Learning.
-  1. Vyberte konkrétní experiment pro zobrazení všech běhů v tomto experimentu.
-  1. Vyberte běh a pak kartu **vysvětlení** na řídicím panelu vizualizace.
+* **Podokno Experimenty** (náhled)
+  1. Výběrem **možnosti Experimenty** v levém podokně zobrazíte seznam experimentů, které jste spouštěli v Azure Machine Learning.
+  1. Vyberte konkrétní experiment, chcete-li zobrazit všechny spuštění v tomto experimentu.
+  1. Vyberte spustit a potom na kartu **Vysvětlení** na řídicí panel vizualizace vysvětlení.
 
-   [Důležitost místní funkce řídicího panelu vizualizace ![](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
+   [![Důležitost místního prvku vizualizačního řídicího panelu](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
 
-* Podokno **modely**
-  1. Pokud jste svůj původní model zaregistrovali pomocí postupu v části [nasazení modelů pomocí Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where), můžete v levém podokně vybrat **modely** a zobrazit je.
-  1. Vyberte model a pak kartu **vysvětlení** pro zobrazení řídicího panelu vizualizace.
+* **Podokno Modely**
+  1. Pokud jste zaregistrovali původní model podle kroků v [nasazení modelů pomocí Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where), můžete vybrat **modely** v levém podokně a zobrazit ho.
+  1. Vyberte model a potom na kartě **Vysvětlení** zobrazte řídicí panel vizualizace vysvětlení.
 
-## <a name="interpretability-at-inference-time"></a>Výklad v době odvození
+## <a name="interpretability-at-inference-time"></a>Interpretovatelnost v době odvození
 
-Můžete nasadit vysvětlení spolu s původním modelem a použít ho v době odvození k poskytnutí místních informací o vysvětlení. Nabízíme také zapalovače s důrazem na zjednodušené hodnocení, které zlepšují výkon interpretace v době odvození. Proces nasazování vysvětlujícího bodování je podobný jako nasazení modelu a obsahuje následující kroky:
+Můžete nasadit vysvětlující spolu s původním modelem a použít jej v době odvození poskytnout informace o místním vysvětlení. Nabízíme také vysvětlení s nižší hmotností pro zlepšení interpretability výkonu v době odvození. Proces nasazení vysvětlení s nižší hmotností je podobný nasazení modelu a zahrnuje následující kroky:
 
 1. Vytvořte objekt vysvětlení. Můžete například použít `TabularExplainer`:
 
@@ -382,7 +382,7 @@ Můžete nasadit vysvětlení spolu s původním modelem a použít ho v době o
                                 transformations=transformations)
    ```
 
-1. Vytvořte vysvětlující bodování pomocí objektu vysvětlení.
+1. Vytvořte vysvětlivku hodnocení s objektem vysvětlení.
 
    ```python
    from azureml.contrib.interpret.scoring.scoring_explainer import KernelScoringExplainer, save
@@ -396,7 +396,7 @@ Můžete nasadit vysvětlení spolu s původním modelem a použít ho v době o
    save(scoring_explainer, directory=OUTPUT_DIR, exist_ok=True)
    ```
 
-1. Nakonfigurujte a zaregistrujte image, která používá model vysvětlujícího bodování.
+1. Konfigurace a registrace bitové kopie, která používá model vysvětlivky bodování.
 
    ```python
    # register explainer model using the path from ScoringExplainer.save - could be done on remote compute
@@ -408,7 +408,7 @@ Můžete nasadit vysvětlení spolu s původním modelem a použít ho v době o
    print(scoring_explainer_model.name, scoring_explainer_model.id, scoring_explainer_model.version, sep = '\t')
    ```
 
-1. Jako volitelný krok můžete načíst vysvětlující bodování z cloudu a otestovat vysvětlení.
+1. Jako volitelný krok můžete načíst vysvětlivku vysvětlivky z cloudu a otestovat vysvětlení.
 
    ```python
    from azureml.contrib.interpret.scoring.scoring_explainer import load
@@ -425,9 +425,9 @@ Můžete nasadit vysvětlení spolu s původním modelem a použít ho v době o
    print(preds)
    ```
 
-1. Nasaďte bitovou kopii na cíl výpočtů pomocí následujících kroků:
+1. Nasazení image na výpočetní cíl, podle následujících kroků:
 
-   1. V případě potřeby Zaregistrujte původní model předpovědi pomocí postupu v části [nasazení modelů pomocí Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where).
+   1. V případě potřeby zaregistrujte původní model předpovědi podle kroků v [části Nasazení modelů pomocí Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where).
 
    1. Vytvořte soubor bodování.
 
@@ -467,7 +467,7 @@ Můžete nasadit vysvětlení spolu s původním modelem a použít ho v době o
          ```
    1. Definujte konfiguraci nasazení.
 
-         Tato konfigurace závisí na požadavcích vašeho modelu. Následující příklad definuje konfiguraci, která používá jeden procesor jádro a jednu GB paměti.
+         Tato konfigurace závisí na požadavcích modelu. Následující příklad definuje konfiguraci, která používá jedno jádro procesoru a jeden GB paměti.
 
          ```python
          from azureml.core.webservice import AciWebservice
@@ -502,7 +502,7 @@ Můžete nasadit vysvětlení spolu s původním modelem a použít ho v době o
             print(f.read())
          ```
 
-   1. Vytvořte vlastní souboru Dockerfile s nainstalovaným g + +.
+   1. Vytvořte vlastní dockerfile s g++ nainstalován.
 
          ```python
          %%writefile dockerfile
@@ -552,10 +552,10 @@ Můžete nasadit vysvětlení spolu s původním modelem a použít ho v době o
     print("prediction:", resp.text)
     ```
 
-1. Vyčištění.
+1. Ukliďte to.
 
-   Chcete-li odstranit nasazenou webovou službu, použijte `service.delete()`.
+   Chcete-li odstranit nasazenou `service.delete()`webovou službu, použijte .
 
 ## <a name="next-steps"></a>Další kroky
 
-[Další informace o interpretaci modelu](how-to-machine-learning-interpretability.md)
+[Další informace o interpretace modelu](how-to-machine-learning-interpretability.md)

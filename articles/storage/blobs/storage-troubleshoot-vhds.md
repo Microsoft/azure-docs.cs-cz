@@ -1,34 +1,35 @@
 ---
-title: Řešení potíží s disky připojené k virtuálním počítačům Azure | Dokumentace Microsoftu
-description: Obsahuje odkazy na materiály pro virtuální počítač Azure virtuálních pevných disků (VHD) pro řešení potíží.
+title: Poradce při potížích s disky připojenými k virtuálním počítačům Azure | Dokumenty společnosti Microsoft
+description: Obsahuje odkazy na řešení potíží s prostředky virtuálních pevných disků virtuálních počítačů (VD).
 services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.subservice: blobs
+ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: rogarana
 ms.reviewer: wmgries
-ms.openlocfilehash: c00fdf3ad02edc1faf0d3257d3836a1c2f44d682
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b81c0947327dc8e84c5d3fbbecde3aa31313cc70
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65150767"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80061188"
 ---
-# <a name="troubleshoot-disks-attached-to-azure-vms"></a>Řešení potíží s disky připojené k virtuálním počítačům Azure 
+# <a name="troubleshoot-disks-attached-to-azure-vms"></a>Poradce při potížích s disky připojenými k virtuálním počítačům Azure 
 
-Azure Virtual Machines (VM) využívají virtuální pevné disky (VHD) pro disk s operačním systémem a všechny připojené datové disky. Virtuální pevné disky jsou uložené jako objekty BLOB stránky v jedné nebo více účtů úložiště Azure. Tento článek odkazuje na obsah pro běžné problémy, které mohou vzniknout s virtuálními pevnými disky pro řešení potíží. 
+Virtuální počítače Azure (VM) spoléhají na virtuální pevné disky (VND) pro disk operačního systému a všechny připojené datové disky. Virtuální počítače se ukládají jako objekty BLOB stránky v jednom nebo více účtech Azure Storage. Tento článek odkazuje na řešení potíží s obsahem běžných problémů, které mohou nastat s virtuálními edy. 
 
-## <a name="troubleshoot-storage-deletion-errors-for-a-vm"></a>Řešení chyb při odstraňování úložiště pro virtuální počítač
+## <a name="troubleshoot-storage-deletion-errors-for-a-vm"></a>Poradce při potížích s chybami odstranění úložiště pro virtuální hosti
 
-V některých případech může dojít k chybě při odstraňování prostředků úložiště, když virtuální počítač v nasazení Resource Manager obsahuje připojené virtuální pevné disky. Pro pomoc při řešení tohoto problému naleznete v následujících článcích: 
+V některých případech může dojít k chybě při odstraňování prostředku úložiště, když virtuální počítače v nasazení Správce prostředků obsahuje připojené virtuální počítače. Nápovědu k řešení tohoto problému naleznete v jednom z následujících článků: 
 
-  * Na virtuální počítače s Linuxem: [Chyb při odstraňování úložišť v nasazení podle modelu Resource Manager](../../virtual-machines/linux/storage-resource-deletion-errors.md)  
-  * Na virtuálních počítačích s Windows: [Chyb při odstraňování úložišť v nasazení podle modelu Resource Manager](../../virtual-machines/windows/storage-resource-deletion-errors.md)  
+  * Na virtuálních počítačích SIP: [Chyby odstranění úložiště v nasazení Správce prostředků](../../virtual-machines/linux/storage-resource-deletion-errors.md)  
+  * Na virtuálních počítačích s Windows: [Chyby odstranění úložiště v nasazení Správce prostředků](../../virtual-machines/windows/storage-resource-deletion-errors.md)  
 
-## <a name="troubleshoot-unexpected-reboots-of-vms-with-attached-vhds"></a>Řešení potíží s neočekávaná restartování virtuálních počítačů s připojenými virtuálními pevnými disky
+## <a name="troubleshoot-unexpected-reboots-of-vms-with-attached-vhds"></a>Poradce při potížích s neočekávanými restartováními virtuálních počítačů s připojenými virtuálními počítači
 
-Pokud dojde k neočekávaným restartováním virtuálního počítače s velkým počtem připojenými virtuálními pevnými disky, najdete v následujících článcích:
+Pokud narazíte na neočekávané restartování virtuálního počítače s velkým počtem připojených virtuálních discích, podívejte se na jeden z následujících článků:
 
-  * Na virtuální počítače s Linuxem: [Neočekávaná restartování virtuálních počítačů s připojenými virtuálními pevnými disky](../../virtual-machines/linux/unexpected-reboots-attached-vhds.md)
-  * Na virtuálních počítačích s Windows: [Neočekávaná restartování virtuálních počítačů s připojenými virtuálními pevnými disky](../../virtual-machines/linux/unexpected-reboots-attached-vhds.md)
+  * Na virtuálních počítačích s Linuxem: [Neočekávané restartování virtuálních počítačí s připojenými virtuálními počítači](../../virtual-machines/linux/unexpected-reboots-attached-vhds.md)
+  * Na virtuálních počítačích se systémem Windows: [Neočekávané restartování virtuálních počítačí s připojenými virtuálními počítači](../../virtual-machines/linux/unexpected-reboots-attached-vhds.md)

@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 08/21/2019
 ms.author: alkohli
 ms.openlocfilehash: eb55d993ad8960f821c2b72f0a53602166b7cc7e
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69900620"
 ---
-Pro neaktivní neaktivní data:
+Pro data v klidovém stavu:
 
-- Přístup k datům uloženým ve sdílených složkách je omezený.
+- Přístup k datům uloženým ve sdílených složek je omezen.
 
-    - Klienti SMB, kteří mají přístup ke sdíleným datům, potřebují přihlašovací údaje uživatele přidružené ke sdílené složce. Tyto přihlašovací údaje se definují při vytvoření sdílené složky.
-    - Po vytvoření sdílené složky je třeba přidat IP adresy klientů NFS, kteří přistupují ke sdílené složce.
+    - Klienti SMB, kteří přistupují k datům sdílené složky, potřebují pověření uživatele přidružená ke sdílené položce. Tato pověření jsou definovány při vytvoření sdílené složky.
+    - Ip adresy klientů služby NFS, kteří přistupují ke sdílené položce, je třeba při vytvoření sdílené složky přidat.

@@ -9,263 +9,263 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: a2eafd6bb34b897f3492ddcffd6841f0fabc4ca7
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73034542"
 ---
-Při navrhování systému je důležité pochopit potenciální hrozby pro daný systém a odpovídajícím způsobem přidat patřičnou ochranu, protože systém je navržený a navržený. Je důležité navrhnout produkt od začátku s ohledem na zabezpečení, protože porozumět tomu, jak útočník může ohrozit zabezpečení systému, pomáhá zajistit, aby byla na začátku vhodná omezení.
+Při navrhování systému je důležité pochopit potenciální hrozby pro tento systém a odpovídajícím způsobem přidat vhodnou obranu, protože systém je navržen a navržen. Je důležité navrhnout produkt od začátku s ohledem na zabezpečení, protože pochopení toho, jak by útočník mohl ohrozit systém, pomáhá zajistit, aby byly od začátku zavedeny vhodné skutečnosti snižující závažnost rizika.
 
 ## <a name="security-starts-with-a-threat-model"></a>Zabezpečení začíná modelem hrozeb
 
-Společnost Microsoft pro své produkty používala dlouhodobé modely hrozeb a v rámci veřejně dostupného procesu modelování hrozeb společnosti. Zkušenost ze společnosti ukazuje, že modelování má neočekávané výhody nad rámec okamžitého porozumění, které hrozby jsou v souvislosti s nimi. Například také vytvoří způsob pro otevřenou diskuzi s ostatními mimo vývojový tým, což může vést k novým nápadům a vylepšením v produktu.
+Společnost Microsoft již dlouho používá modely hrozeb pro své produkty a veřejně zpřístupnila proces modelování hrozeb společnosti. Zkušenosti společnosti ukazují, že modelování má nečekané výhody nad rámec okamžitého pochopení toho, jaké hrozby jsou nejvíce znepokojující. Například také vytváří cestu pro otevřenou diskusi s ostatními mimo vývojový tým, což může vést k novým nápadům a vylepšením produktu.
 
-Cílem modelování hrozeb je pochopit, jak může útočník ohrozit systém a pak zajistit, aby byla zajištěna vhodná omezení. Modelování hrozeb vynutí, aby tým návrhu zvážil omezení rizik, protože systém je navržený spíše než po nasazení systému. Tato skutečnost je kriticky důležitá, protože retrofitting zabezpečení ochrany nesčetných zařízení v poli je neproveditelné, náchylné k chybám a ponechávají zákazníky v ohrožení.
+Cílem modelování hrozeb je pochopit, jak útočník může být schopen ohrozit systém a ujistěte se, že jsou na místě vhodná opatření ke zmírnění rizik. Modelování hrozeb nutí návrhářský tým zvážit skutečnosti snižující závažnost rizika, protože systém je navržen, nikoli po nasazení systému. Tato skutečnost je kriticky důležitá, protože dovybavení bezpečnostní obrany na nesčetné množství zařízení v terénu je neproveditelné, náchylné k chybám a ohrožuje zákazníky.
 
-Řada vývojových týmů má vynikající úlohu, která zachytí funkční požadavky pro systém, který má výhody pro zákazníky. Ale identifikace nezjevných způsobů, které může někdo zneužít, je ale náročnější. Modelování hrozeb může vývojářům pomáhat s tím, co může útočník dělat a proč. Modelování hrozeb je strukturovaný proces, který vytváří diskuzi o rozhodnutích o návrhu zabezpečení v systému, a také o změnách návrhu, které se provedou způsobem, který má vliv na zabezpečení. I když je model hrozby prostě dokumentem, tato dokumentace také představuje ideální způsob, jak zajistit kontinuitu znalostí, podobu uchování zkušeností a rychlé zprovoznění nového týmu. Nakonec je výsledkem modelování hrozeb, že vám umožní vzít v úvahu další aspekty zabezpečení, jako třeba jaké závazky zabezpečení, které chcete zákazníkům poskytnout. Tyto závazky ve spojení se zaměřením na modelování hrozeb a testování řešení Internet věcí (IoT).
+Mnoho vývojových týmů odvádějí vynikající práci při zachycení funkčních požadavků pro systém, které jsou přínosem pro zákazníky. Identifikace nezřejmých způsobů, jak by někdo mohl systém zneužít, je však náročnější. Modelování hrozeb může pomoci vývojovým týmům pochopit, co by útočník mohl udělat a proč. Modelování hrozeb je strukturovaný proces, který vytváří diskusi o rozhodnutích návrhu zabezpečení v systému, jakož i o změnách návrhu, které jsou prováděny na cestě, která má vliv na zabezpečení. Zatímco model hrozeb je prostě dokument, tato dokumentace také představuje ideální způsob, jak zajistit kontinuitu znalostí, uchovávání získaných zkušeností a pomoci novému týmu na palubě rychle. A konečně, výsledkem modelování hrozeb je umožnit vám zvážit další aspekty zabezpečení, například jaké závazky zabezpečení chcete poskytnout svým zákazníkům. Tyto závazky ve spojení s modelováním hrozeb informují a řídí testování vašeho řešení Internetu věcí (IoT).
 
-### <a name="when-to-do-threat-modeling"></a>Kdy provést modelování hrozeb
+### <a name="when-to-do-threat-modeling"></a>Kdy udělat modelování hrozeb
 
-[Modelování hrozeb](https://www.microsoft.com/en-us/sdl/adopt/threatmodeling.aspx) nabízí největší hodnotu, když ji zachováte do fáze návrhu. Při navrhování máte největší flexibilitu v provádění změn, které eliminují hrozby. Odstranění hrozeb podle návrhu je požadovaný výsledek. Je mnohem snazší než přidávání rizik, jejich testování a zajištění jejich aktuálnosti a navíc, takové vyloučení není vždy možné. Je obtížnější eliminovat hrozby, když se produkt stane vyšším, a nakonec vyžaduje více práce a mnohem těžší kompromisy než modelování hrozeb ve vývoji.
+[Modelování hrozeb](https://www.microsoft.com/en-us/sdl/adopt/threatmodeling.aspx) nabízí největší hodnotu, když jej začleníte do fáze návrhu. Při navrhování máte největší flexibilitu při provádění změn k odstranění hrozeb. Odstranění hrozeb podle návrhu je požadovaný výsledek. Je to mnohem jednodušší než přidávání zmírnění, testování je, a zajistit, aby zůstaly aktuální a navíc, takové odstranění není vždy možné. Je stále těžší eliminovat hrozby, protože produkt se stává zralejší, a na oplátku nakonec vyžaduje více práce a mnohem těžší kompromisy než modelování hrozeb brzy ve vývoji.
 
-### <a name="what-to-consider-for-threat-modeling"></a>Co je potřeba vzít v úvahu pro modelování hrozeb
+### <a name="what-to-consider-for-threat-modeling"></a>Co je třeba zvážit pro modelování hrozeb
 
 Měli byste se podívat na řešení jako celek a také se zaměřit na následující oblasti:
 
 * Funkce zabezpečení a ochrany osobních údajů
-* Funkce, jejichž chyby jsou relevantní zabezpečení
-* Funkce, které se dotkne hranice vztahu důvěryhodnosti
+* Funkce, jejichž selhání jsou důležité pro zabezpečení
+* Funkce, které se dotýkají hranice důvěryhodnosti
 
 ### <a name="who-performs-threat-modeling"></a>Kdo provádí modelování hrozeb
 
-Modelování hrozeb je proces podobný jinému. Je vhodné považovat dokument modelu hrozeb jako jakoukoli jinou komponentu řešení a ověřit ho. Řada vývojových týmů má vynikající úlohu, která zachytí funkční požadavky pro systém, který má výhody pro zákazníky. Ale identifikace nezjevných způsobů, které může někdo zneužít, je ale náročnější. Modelování hrozeb může vývojářům pomáhat s tím, co může útočník dělat a proč.
+Modelování hrozeb je proces jako každý jiný. Je vhodné zacházet s dokumentem modelu hrozeb jako s jakoukoli jinou součástí řešení a ověřit jej. Mnoho vývojových týmů odvádějí vynikající práci při zachycení funkčních požadavků pro systém, které jsou přínosem pro zákazníky. Identifikace nezřejmých způsobů, jak by někdo mohl systém zneužít, je však náročnější. Modelování hrozeb může pomoci vývojovým týmům pochopit, co by útočník mohl udělat a proč.
 
 ### <a name="how-to-perform-threat-modeling"></a>Jak provádět modelování hrozeb
 
-Proces modelování hrozeb se skládá ze čtyř kroků; postup je následující:
+Proces modelování hrozeb se skládá ze čtyř kroků; tyto kroky jsou:
 
-* Modelování aplikace
-* Zobrazení výčtu hrozeb
+* Modelujte aplikaci
+* Výčet hrozeb
 * Zmírnění hrozeb
-* Ověření rizik
+* Ověřit skutečnosti snižující závažnost rizika
 
 #### <a name="the-process-steps"></a>Kroky procesu
 
-Při sestavování modelu hrozeb Pamatujte na tři pravidla, která vám pomůžeme:
+Při vytváření modelu hrozeb je třeba mít na paměti tři pravidla:
 
 1. Vytvořte diagram z referenční architektury.
 
-2. Začátek šířky – první. Získejte přehled a pochopte systém jako celek před úplným začnete. Tento přístup vám pomůže zajistit, že na správných místech máte hlubokou podrobně.
+2. Začněte šíři-první. Získejte přehled a pochopte systém jako celek před hlubokým potápěním. Tento přístup pomáhá zajistit, že se ponoříte do hloubky na správných místech.
 
-3. Zařídit proces, nepovolujte vám procesovou jednotku. Pokud ve fázi modelování zjistíte problém a chcete ho prozkoumat, navštivte! Nebojte se, že budete muset postupovat podle těchto kroků slavishly.
+3. Řídit proces, nenechte se řídit proces. Pokud najdete problém ve fázi modelování a chcete ho prozkoumat, jděte na to! Nemějte pocit, že je třeba sledovat tyto kroky otrocky.
 
 #### <a name="threats"></a>Hrozby
 
-Mezi čtyři základní prvky modelu hrozeb patří:
+Čtyři základní prvky modelu hrozeb jsou:
 
-* Procesy, jako jsou webové služby, služby Win32 a NIX procesy démon. Některé komplexní entity (například brány polí a senzory) je možné v případě, že není možné technické procházení k podrobnostem v těchto oblastech, abstrakce jako proces.
+* Procesy, jako jsou webové služby, služby Win32 a *nix daemons. Některé složité entity (například brány v terénu a senzory) mohou být abstrahovány jako proces, pokud není možné technické přejít k podrobnostem v těchto oblastech.
 
-* Úložiště dat (uložená data jsou uložená, například konfigurační soubor nebo databáze)
+* Úložiště dat (všude jsou uložena data, například konfigurační soubor nebo databáze)
 
-* Tok dat (kde se data pohybují mezi ostatními elementy v aplikaci)
+* Tok dat (kde se data přesouvají mezi ostatními prvky v aplikaci)
 
-* Externí entity (cokoli, co komunikuje se systémem, ale nejsou pod kontrolou aplikace, příklady zahrnují uživatele a satelitní kanály)
+* Externí entity (vše, co interaguje se systémem, ale není pod kontrolou aplikace, příklady zahrnují uživatele a satelitní kanály)
 
-Všechny prvky v diagramu architektury podléhají různým hrozbám; v tomto článku najdete klávesové zkratky pro rozteč. Přečtěte si [znovu modelování hrozeb a](https://blogs.msdn.microsoft.com/larryosterman/2007/09/04/threat-modeling-again-stride/) Projděte si další informace o elementech pro rozteč.
+Všechny prvky v architektonickém diagramu jsou vystaveny různým hrozbám; tento článek stride mnemotechnické pomůcky. Přečtěte si [modelování hrozeb znovu, KROK](https://blogs.msdn.microsoft.com/larryosterman/2007/09/04/threat-modeling-again-stride/) se dozvíte více o prvky STRIDE.
 
-Na různé prvky diagramu aplikace se vztahují určité hrozby pro rozteč:
+Různé prvky diagramu aplikace podléhají určitým hrozbám STRIDE:
 
-* Na procesy se vztahuje rozteč
-* Toky dat podléhají TID.
-* Úložiště dat podléhají TID a někdy R, pokud jsou úložiště dat soubory protokolu.
-* Externí entity podléhají SRD
+* Procesy podléhají STRIDE
+* Toky dat podléhají TID
+* Úložiště dat podléhají TID a někdy R, když úložiště dat jsou soubory protokolu.
+* Externí subjekty podléhají SRD
 
 ## <a name="security-in-iot"></a>Zabezpečení v IoT
 
-Připojená zařízení pro zvláštní účely mají významný počet potenciálních oblastí a způsobů interakce interakce, které je potřeba vzít v úvahu, aby poskytovaly rozhraní pro zabezpečení digitálního přístupu k těmto zařízením. Pojem "Digitální přístup" se tady používá k rozlišení všech operací, které se provedou prostřednictvím přímých interakcí zařízení, kde je zajištěné zabezpečení přístupu prostřednictvím fyzického řízení přístupu. Například umístění zařízení do místnosti s zámkem na dveřích. I když se fyzický přístup nedá odepřít pomocí softwaru a hardwaru, můžou být podniknuty míry, aby se zabránilo fyzickému přístupu od vedoucího k rušení systému.
+Připojená zařízení pro zvláštní účely mají značný počet potenciálních povrchových ploch a vzorců interakce, které musí být považovány za rámec pro zabezpečení digitálního přístupu k těmto zařízením. Termín "digitální přístup" se zde používá k odlišení od všech operací, které jsou prováděny prostřednictvím přímé interakce zařízení, kde je zabezpečení přístupu poskytováno prostřednictvím fyzického řízení přístupu. Například uvedení zařízení do místnosti se zámkem na dveřích. Zatímco fyzický přístup nelze odepřít pomocí softwaru a hardwaru, mohou být přijata opatření, která zabrání fyzickému přístupu vést k rušení systému.
 
-Při zkoumání vzorců interakce si prohlédněte "řízení zařízení" a "data zařízení" se stejnou úrovní pozornosti. "Ovládací prvek zařízení" může být klasifikován jako jakákoli informace, která je poskytnuta každé ze smluvních stran, s cílem změnit nebo ovlivnit jeho chování směrem ke stavu nebo stavu jeho prostředí. "Data zařízení" je možné klasifikovat jako všechny informace, které zařízení vysílá do jakékoli jiné strany o jeho stavu a pozorovaném stavu jeho prostředí.
+Při zkoumání vzorců interakce se podívejte na "ovládání zařízení" a "data zařízení" se stejnou úrovní pozornosti. "Ovládání zařízení" může být klasifikováno jako jakákoli informace, která je poskytována zařízení jakoukoli stranou s cílem změnit nebo ovlivnit jeho chování vůči jeho stavu nebo stavu jeho prostředí. "Údaje o zařízení" lze klasifikovat jako jakékoli informace, které zařízení vydává jakékoli jiné straně o jeho stavu a pozorovaném stavu jeho prostředí.
 
-Aby bylo možné optimalizovat osvědčené postupy zabezpečení, doporučujeme, aby byla typická architektura IoT v rámci cvičení modelování hrozeb rozdělena do několika součástí nebo zón. Tyto zóny jsou plně popsané v této části a zahrnují:
+Za účelem optimalizace osvědčených postupů zabezpečení se doporučuje, aby byla typická architektura IoT rozdělena do několika komponent nebo zón jako součást cvičení modelování hrozeb. Tyto zóny jsou podrobně popsány v této části a zahrnují:
 
 * Zařízení
-* Pole Brána,
+* Brána v terénu,
 * Cloudové brány a
-* orgány.
+* Služby.
 
-Zóny představují širší způsob segmentace řešení; Každá zóna má často vlastní data a požadavky na ověřování a autorizaci. Zóny je také možné použít k izolaci škod a omezení dopadu zóny s nízkým vztahem důvěryhodnosti ve vyšších zónách důvěryhodnosti.
+Zóny jsou široký způsob, jak segmentovat řešení; každá zóna má často své vlastní požadavky na data a ověřování a autorizaci. Zóny lze také použít k izolaci poškození a omezit dopad zón s nízkou důvěryhodností na zóny s vyšší důvěryhodností.
 
-Každá zóna je oddělena hranicí vztahu důvěryhodnosti, která je zaznamenána jako tečkovaná červená čára v následujícím diagramu. Představuje přechod dat/informací z jednoho zdroje do druhého. Během tohoto přechodu mohou být data/informace předmětem falšování identity, manipulace, odmítnutí, zpřístupnění informací, odepření služby a zvýšení úrovně oprávnění (Rozteč).
+Každá zóna je oddělena hranicí vztahu důvěryhodnosti, která je v následujícím diagramu označena jako tečkovaná červená čára. Představuje přechod dat/informací z jednoho zdroje do druhého. Během tohoto přechodu mohou být data/informace předmětem falšování, falšování, odmítnutí, zveřejňování informací, odmítnutí služby a zvýšení oprávnění (STRIDE).
 
 ![Zóny zabezpečení IoT](media/iot-security-architecture/iot-security-architecture-fig1.png) 
 
-Komponenty, které jsou znázorněné v rámci každé hranice, se také vztahují k tomu, aby bylo možné celé řešení 360 zobrazit. Následující části jsou podrobnější na jednotlivých součástech a konkrétních tématech týkajících se zabezpečení a řešeních, která by měla být zavedena.
+Součásti zobrazené v rámci každé hranice jsou také podrobeny STRIDE, což umožňuje úplné 360 zobrazení modelování hrozeb řešení. Následující oddíly se týkají jednotlivých součástí a zvláštních bezpečnostních obav a řešení, která by měla být zavedena.
 
-Následující části popisují standardní komponenty, které se obvykle nacházejí v těchto zónách.
+Následující části popisují standardní součásti, které se obvykle nacházejí v těchto zónách.
 
 ### <a name="the-device-zone"></a>Zóna zařízení
 
-Prostředí zařízení je bezprostřední fyzické místo kolem zařízení, kde je možné použít fyzický přístup nebo místní síť peer-to-peer Digital Access k zařízení. Předpokládá se, že "místní síť" je síť, která je odlišná a izolovaná od sítě, ale je potenciálně připojená k veřejnému Internetu, a zahrnuje libovolné technologie bezdrátového přijímače s krátkým rozsahem, která umožňuje komunikaci zařízení peer-to-peer. *Neobsahuje žádnou* technologii virtualizace sítě, která vytváří dojem takové místní sítě, a také nezahrnuje sítě veřejných operátorů, které vyžadují, aby všechna dvě zařízení komunikovala přes veřejné síťové místo, pokud by museli zadat vztah komunikace peer-to-peer.
+Prostředí zařízení je bezprostřední fyzický prostor kolem zařízení, kde je možný fyzický přístup a/nebo digitální přístup mezi dvěma účastníky. Předpokládá se, že "lokální síť" je síť, která je odlišná a izolovaná od veřejného internetu, ale potenciálně přepnutá, a zahrnuje jakoukoli bezdrátovou rádiovou technologii krátkého dosahu, která umožňuje komunikaci zařízení peer-to-peer. Nezahrnuje *not* žádnou technologii virtualizace sítě, která vytváří iluzi takové místní sítě, a také nezahrnuje sítě veřejných operátorů, které vyžadují komunikaci mezi veřejným i síťovým prostorem, pokud by vstoupily do komunikačního vztahu mezi dvěma účastníky.
 
 ### <a name="the-field-gateway-zone"></a>Zóna brány pole
 
-Pole Brána je zařízení nebo zařízení nebo nějaký počítačový software pro obecné účely, který funguje jako komunikační aktivátor a případně jako systém řízení zařízení a centrum zpracování dat zařízení. Zóna brány pole zahrnuje samotnou bránu pole a všechna zařízení, která jsou k němu připojená. V takovém případě jsou brány polí závislé mimo vyhrazená zařízení pro zpracování dat, obvykle se jedná o umístění, které může podléhat fyzickému vniknutí a má omezenou provozní redundanci. To vše znamená, že brána pole je obvykle jedna z nich se může dotýkat a napadení zařízení při vědomí, co je jeho funkce.
+Brána v terénu je zařízení/zařízení nebo nějaký univerzální serverový počítačový software, který funguje jako komunikační zařízení a potenciálně jako systém řízení zařízení a centrum pro zpracování dat zařízení. Zóna brány pole zahrnuje samotnou bránu pole a všechna zařízení, která jsou k ní připojena. Jak už název napovídá, brány v terénu působí mimo vyhrazená zařízení pro zpracování dat, jsou obvykle vázány na umístění, jsou potenciálně předmětem fyzického vniknutí a mají omezenou provozní redundanci. Vše říci, že pole brána je běžně věc, kterou lze dotknout a sabotáž, zatímco věděl, co je jeho funkce.
 
-Brána pole se liší od pouhého směrovače provozu v tom, že má aktivní roli při správě přístupu a informačního toku, což znamená, že se jedná o aplikační entitu a připojení k síti nebo terminálu relace. Zařízení nebo brána firewall pro překlad adres (NAT) naopak nezpůsobuje, že se jedná o brány pole, protože nejsou explicitním připojením nebo terminály relace, ale také s připojením k trasám (nebo blokem) nebo relacím. Brána pole má dvě samostatné oblasti Surface. Jedna ploška zařízení, která jsou k němu připojená a která představují uvnitř zóny, a druhá se všemi externími stranami a je hraniční oblastí.
+Brána pole se liší od pouhého směrovače přenosu v tom, že má aktivní roli při správě přístupu a toku informací, což znamená, že se jedná o entitu adresovskou aplikací a terminál připojení k síti nebo terminál relace. Zařízení nebo brána firewall nanasytých firewall se naopak nepovažuje za brány v terénu, protože se nejedná o explicitní terminály připojení nebo relace, ale spíše o připojení nebo relace pro které byly prováděny prostřednictvím trasy (nebo blokování). Brána pole má dvě odlišné plochy. Jeden čelí zařízení, která jsou k němu připojena a představuje vnitřek zóny a druhý čelí všechny vnější strany a je okraj zóny.
 
 ### <a name="the-cloud-gateway-zone"></a>Zóna cloudové brány
 
-Cloudová brána je systém, který umožňuje vzdálenou komunikaci z a do zařízení nebo bran polí z několika různých lokalit ve veřejném síťovém prostoru, a to obvykle do cloudového ovládacího prvku a analytického systému dat, což je federace takových systémů. V některých případech může cloudová brána okamžitě usnadnit přístup k zařízením se speciálním účelem z terminálů, jako jsou tablety nebo telefony. V kontextu, který je zde popsán, se jedná o "Cloud", který odkazuje na vyhrazený systém zpracování dat, který není vázán na stejnou lokalitu jako připojená zařízení nebo brány polí. V zóně cloudu navíc provozní míry brání cílenému fyzickému přístupu a nemusí být nutně vystavené infrastruktuře "veřejného cloudu".  
+Cloudová brána je systém, který umožňuje vzdálenou komunikaci ze zařízení a do zařízení nebo polních bran z několika různých míst ve veřejném síťovém prostoru, obvykle směrem k cloudovému řídicímu systému a systému analýzy dat, což je federace takových systémů. V některých případech může cloudová brána okamžitě usnadnit přístup k zařízením pro speciální účely z terminálů, jako jsou tablety nebo telefony. V kontextu zde popsaném "cloud" je určen k označení vyhrazeného systému zpracování dat, který není vázán na stejnou síť jako připojená zařízení nebo brány v terénu. Provozní opatření také v cloudové zóně brání cílenému fyzickému přístupu a nemusí být nutně vystavena infrastruktuře "veřejného cloudu".  
 
-Cloudová brána může být namapována na překrytí virtualizace sítě, která umožňuje izolaci cloudové brány a všech připojených zařízení nebo bran polí z jakéhokoli jiného síťového provozu. Samotná cloudová brána není systémem pro řízení zařízení nebo se zařízením pro zpracování nebo úložiště pro data zařízení. rozhraní těchto zařízení s cloudovou bránou. Zóna cloudové brány zahrnuje samotnou cloudovou bránu spolu se všemi branami a zařízeními, která jsou k ní přímo nebo nepřímo připojená. Okraj zóny je odlišná oblast povrchu, ve které všechny externí strany komunikují.
+Cloudová brána může být potenciálně mapována do překrytí virtualizace sítě, aby izolovala cloudovou bránu a všechna její připojená zařízení nebo brány v terénu od jakéhokoli jiného síťového provozu. Samotná cloudová brána není řídicí systém zařízení nebo zařízení pro zpracování nebo ukládání dat zařízení; rozhraní s cloudovou bránou. Zóna cloudových bran zahrnuje samotnou cloudovou bránu spolu se všemi bránami a zařízeními v terénu, které jsou k ní přímo nebo nepřímo připojeny. Okraj zóny je zřetelná plocha, přes kterou komunikují všechny externí strany.
 
-### <a name="the-services-zone"></a>Zóna služby
+### <a name="the-services-zone"></a>Zóna služeb
 
-Pro tento kontext je definována "služba" jako jakákoli softwarová součást nebo modul, který se zařízením prochází pomocí pole nebo cloudové brány pro účely shromažďování a analýzy dat a také pro příkazy a řízení. Služby jsou zprostředkovatelé. Jednají v rámci své identity týkající se bran a dalších subsystémů, ukládání a analyzování dat, autonomního vydávání příkazů do zařízení založených na datech Insights nebo v plánech a zpřístupnění informací a možností řízení autorizovaným koncovým uživatelům.
+"Služba" je definována pro tento kontext jako jakákoli softwarová součást nebo modul, který se propojí se zařízeními prostřednictvím brány pole nebo cloudu pro sběr a analýzu dat, stejně jako pro příkaz y a řízení. Služby jsou mediátory. Jednají pod svou identitou vůči bránám a dalším subsystémům, ukládají a analyzují data, autonomně vydávají příkazy zařízením na základě přehledů dat nebo plánů a vystavují informace a kontrolní schopnosti oprávněným koncovým uživatelům.
 
-### <a name="information-devices-versus-special-purpose-devices"></a>Informace – zařízení versus zařízení pro zvláštní účely
+### <a name="information-devices-versus-special-purpose-devices"></a>Informační zařízení versus zařízení pro zvláštní účely
 
-Počítače, telefony a tablety jsou primárně interaktivní informační zařízení. Telefony a tablety jsou explicitně optimalizované pro maximalizaci životnosti baterie. Jsou přednostně vypnuté, když bezprostředně nepracují s osobou, nebo když neposkytují služby, jako je přehrávání hudby nebo jejich vlastník na konkrétní umístění. V rámci perspektivy systémů fungují tato zařízení s těmito informacemi hlavně jako proxy servery k lidem. Jedná se o "poháněcí zařízení", které navrhují akce a shromažďují vstupy "senzory lidí".
+Počítače, telefony a tablety jsou především interaktivní informační zařízení. Telefony a tablety jsou explicitně optimalizovány kolem maximalizace životnosti baterie. Pokud možno se částečně vypnou, když okamžitě nekomunikují s osobou nebo když neposkytují služby, jako je přehrávání hudby nebo vedení svého majitele na určité místo. Z hlediska systémů, tyto informační technologie zařízení působí především jako proxy vůči lidem. Jsou to "lidé aktuátory" naznačuje akce a "lidé senzory" shromažďování vstupů.
 
-Zařízení pro zvláštní účely, od jednoduchých senzorů teploty po komplexní výrobní linky výroby s tisíci komponentami, se liší. Tato zařízení jsou mnohem více vymezená v účelech a i když poskytují nějaké uživatelské rozhraní, jsou v podstatě vymezená pro propojení s nebo integrací do prostředků ve fyzickém světě. Měří a sestavuje podmínky prostředí, přepínají ventily, řídí servosy, zvukové alarmy, indikátory přepnutí a dělají mnoho dalších úloh. Usnadňují práci, pro kterou je informační zařízení buď příliš obecné, příliš nákladné, moc velké nebo příliš poměrně křehký. Konkrétní účel okamžitě stanoví svůj technický návrh, jakož i dostupný peněžní rozpočet pro svou provozní a plánovanou životnost. Kombinace těchto dvou klíčových faktorů omezuje dostupné provozní rozpočty energie, fyzické nároky a tudíž dostupné úložiště, výpočetní prostředky a možnosti zabezpečení.
+Speciální zařízení, od jednoduchých teplotních senzorů až po složité výrobní linky s tisíci komponenty uvnitř, jsou odlišná. Tato zařízení jsou mnohem více disponován v účelu, a to i v případě, že poskytují některé uživatelské rozhraní, jsou do značné míry s cílem propojit s nebo být integrovány do aktiv ve fyzickém světě. Měří a hlásí okolnosti životního prostředí, otáčejí ventily, řídí serva, zvukové alarmy, vypínají světla a dělají mnoho dalších úkolů. Pomáhají dělat práci, pro kterou informační zařízení je buď příliš obecný, příliš drahé, příliš velké, nebo příliš křehké. Konkrétní účel okamžitě určuje jejich technický design, stejně jako dostupný peněžní rozpočet pro jejich výrobu a plánovaný celoživotní provoz. Kombinace těchto dvou klíčových faktorů omezuje dostupný provozní rozpočet energie, fyzickou stopu a tím i dostupné možnosti ukládání, výpočetních prostředků a zabezpečení.
 
-Pokud něco "se nepovedlo" s automatizovanými nebo vzdáleně přidanými zařízeními, například fyzické vady nebo chyby logiky řízení, které willful neoprávněné vniknutí a manipulaci. Produkční šarže mohou být zničeny, budovy mohou být Looted nebo vypáleny a osoby mohou být poškozeny nebo dokonce i Die. Jedná se o celou jinou třídu poškození, než někdo maxing na limit odcizené platební karty. Panel zabezpečení pro zařízení, která usnadňují pohyb, a také pro data senzorů, která nakonec mají za následek přesunutí příkazů, které způsobují pohyb, musí být vyšší než v jakémkoli scénáři elektronického obchodování nebo v bankovnictví.
+Pokud se něco "pokazí" s automatizovanými nebo dálkově ovladatelnými zařízeními, například fyzickými závadami nebo řízením logických vad k úmyslnému neoprávněnému vniknutí a manipulaci. Výrobní pozemky mohou být zničeny, budovy mohou být vypleněny nebo vypáleny a lidé mohou být zraněni nebo dokonce zemřít. Tohle je úplně jiná třída poškození, než když někdo vyčerpá v limitu ukradené kreditní karty. Panel zabezpečení pro zařízení, která věci přesouvají, a také pro data ze senzorů, která nakonec vyústí v příkazy, které způsobují pohyb věcí, musí být vyšší než v jakémkoli scénáři elektronického obchodování nebo bankovnictví.
 
-### <a name="device-control-and-device-data-interactions"></a>Interakce s daty ovládacího prvku zařízení a zařízení
+### <a name="device-control-and-device-data-interactions"></a>Ovládání zařízení a interakce s daty zařízení
 
-Připojená zařízení pro zvláštní účely mají významný počet potenciálních oblastí a způsobů interakce interakce, které je potřeba vzít v úvahu, aby poskytovaly rozhraní pro zabezpečení digitálního přístupu k těmto zařízením. Pojem "Digitální přístup" se tady používá k rozlišení všech operací, které se provedou prostřednictvím přímých interakcí zařízení, kde je zajištěné zabezpečení přístupu prostřednictvím fyzického řízení přístupu. Například umístění zařízení do místnosti s zámkem na dveřích. I když se fyzický přístup nedá odepřít pomocí softwaru a hardwaru, můžou být podniknuty míry, aby se zabránilo fyzickému přístupu od vedoucího k rušení systému.
+Připojená zařízení pro zvláštní účely mají značný počet potenciálních povrchových ploch a vzorců interakce, které musí být považovány za rámec pro zabezpečení digitálního přístupu k těmto zařízením. Termín "digitální přístup" se zde používá k odlišení od všech operací, které jsou prováděny prostřednictvím přímé interakce zařízení, kde je zabezpečení přístupu poskytováno prostřednictvím fyzického řízení přístupu. Například uvedení zařízení do místnosti se zámkem na dveřích. Zatímco fyzický přístup nelze odepřít pomocí softwaru a hardwaru, mohou být přijata opatření, která zabrání fyzickému přístupu vést k rušení systému.
 
-Při prozkoumávání vzorů interakce si prohlédněte "řízení zařízení" a "data zařízení" se stejnou úrovní pozornosti při modelování hrozeb. "Ovládací prvek zařízení" může být klasifikován jako jakákoli informace, která je poskytnuta každé ze smluvních stran, s cílem změnit nebo ovlivnit jeho chování směrem ke stavu nebo stavu jeho prostředí. "Data zařízení" je možné klasifikovat jako všechny informace, které zařízení vysílá do jakékoli jiné strany o jeho stavu a pozorovaném stavu jeho prostředí.
+Při zkoumání vzorců interakce se podívejte na "ovládání zařízení" a "data zařízení" se stejnou úrovní pozornosti při modelování hrozeb. "Ovládání zařízení" může být klasifikováno jako jakákoli informace, která je poskytována zařízení jakoukoli stranou s cílem změnit nebo ovlivnit jeho chování vůči jeho stavu nebo stavu jeho prostředí. "Údaje o zařízení" lze klasifikovat jako jakékoli informace, které zařízení vydává jakékoli jiné straně o jeho stavu a pozorovaném stavu jeho prostředí.
 
 ## <a name="performing-threat-modeling-for-the-azure-iot-reference-architecture"></a>Provádění modelování hrozeb pro referenční architekturu Azure IoT
 
-Microsoft používá rozhraní, které bylo dříve popsáno pro modelování hrozeb pro Azure IoT. V následující části se používá konkrétní příklad referenční architektury Azure IoT a ukazuje, jak se zamyslet na modelování hrozeb pro IoT a jak řešit identifikované hrozby. Tento příklad identifikuje čtyři hlavní oblasti soustředění:
+Microsoft používá rámec popsaný dříve k modelování hrozeb pro Azure IoT. Následující část používá konkrétní příklad referenční architektury Azure IoT k předvedení, jak přemýšlet o modelování hrozeb pro IoT a jak řešit zjištěné hrozby. Tento příklad identifikuje čtyři hlavní oblasti zaměření:
 
 * Zařízení a zdroje dat,
 * Přenos dat,
 * Zpracování zařízení a událostí a
-* Vyjádření
+* Zobrazení
 
 ![Modelování hrozeb pro Azure IoT](media/iot-security-architecture/iot-security-architecture-fig2.png)
 
-Následující diagram nabízí zjednodušený pohled na architekturu IoT od Microsoftu pomocí modelu toku dat, který používá Microsoft Threat Modeling Tool:
+Následující diagram poskytuje zjednodušené zobrazení architektury IoT společnosti Microsoft pomocí modelu diagramu toku dat, který používá nástroj Microsoft Threat Modeling Tool:
 
-![Modelování hrozeb pro Azure IoT pomocí MS Threat Modeling Tool](media/iot-security-architecture/iot-security-architecture-fig3.png)
+![Modelování hrozeb pro Azure IoT pomocí nástroje MS Threat Modeling Tool](media/iot-security-architecture/iot-security-architecture-fig3.png)
 
-Je důležité si uvědomit, že architektura odděluje možnosti zařízení a brány. Tento přístup umožňuje uživateli využívat zařízení brány, která jsou bezpečnější: jsou schopná komunikovat s cloudovou bránou pomocí zabezpečených protokolů, což obvykle vyžaduje větší režii na zpracování, které nativní zařízení, například termostat – může. Zadejte vlastní. V zóně služeb Azure Předpokládejme, že služba Azure IoT Hub je představována cloudovou bránou.
+Je důležité si uvědomit, že architektura odděluje zařízení a brány schopnosti. Tento přístup umožňuje uživateli využívat zařízení brány, která jsou bezpečnější: jsou schopni komunikovat s cloudovou bránou pomocí zabezpečených protokolů, což obvykle vyžaduje větší režii zpracování, kterou by mohlo nativní zařízení – například termostat – poskytnout samostatně. V zóně služeb Azure předpokládejme, že cloudová brána je reprezentována službou Azure IoT Hub.
 
-### <a name="device-and-data-sourcesdata-transport"></a>Zařízení a zdroje dat/přenos dat
+### <a name="device-and-data-sourcesdata-transport"></a>Zdroje zařízení a dat/přenos dat
 
-V této části se seznámíte s architekturou, která je předem popsána v rámci modelování hrozeb, a poskytuje přehled o tom, jak řešit některé z podstatných otázek. Tento příklad se zaměřuje na základní prvky modelu hrozeb:
+Tato část se zabývá architekturou nastíněnou dříve prostřednictvím objektivu modelování hrozeb a poskytuje přehled o tom, jak řešit některé inherentní problémy. Tento příklad se zaměřuje na základní prvky modelu hrozeb:
 
-* Procesy (pod kontrolou a externími položkami)
-* Komunikace (označované také jako toky dat)
-* Úložiště (označuje se také jako úložiště dat)
+* Procesy (jak pod vaší kontrolou, tak i externí položky)
+* Komunikace (také tzv. datové toky)
+* Úložiště (nazývané také úložiště dat)
 
 #### <a name="processes"></a>Procesy
 
-V každé z kategorií uvedených v architektuře Azure IoT se tento příklad snaží zmírnit mnoho různých hrozeb v různých fázích, v nichž existují data a informace o procesu, komunikaci a úložišti. Následuje přehled nejběžnějších funkcí pro kategorii "Process" následovaný přehledem toho, jak by mohly být tyto hrozby nejlépe zmírňované:
+V každé z kategorií popsaných v architektuře Azure IoT se tento příklad pokusí zmírnit řadu různých hrozeb v různých fázích, ve kterých data/informace existují: proces, komunikace a úložiště. Následuje přehled nejběžnějších pro kategorii "proces", následovaný přehledem toho, jak by tyto hrozby mohly být nejlépe zmírněny:
 
-**Falšování identity**: útočník může extrahovat materiál kryptografického klíče ze zařízení, buď na úrovni softwaru nebo hardwaru, a následně přistupovat k systému s jiným fyzickým nebo virtuálním zařízením v rámci identity zařízení, který má klíčový materiál. bylo získáno z. Dobrá ilustrace je vzdálené ovládací prvky, které umožňují změnit libovolné televizní pořady a oblíbené nástroje Prankster.
+**Falšování identity (S):** Útočník může extrahovat materiál kryptografického klíče ze zařízení, a to buď na úrovni softwaru nebo hardwaru, a následně přistupovat k systému s jiným fyzickým nebo virtuálním zařízením pod identitou zařízení, ze které byl materiál klíče odebrán. Dobrou ilustrací jsou dálkové ovladače, které mohou otáčet jakoukoli televizi a které jsou populární mizérnástroje.
 
-**Odepření služby (D)** : zařízení se dá vykreslit neschopnými fungovat nebo komunikovat, pokud se nebudete moct zasahovat do rádiových frekvencí nebo z vyjmutí vodičů. Například bezpečnostní kamera, u které někdo záměrně odpojil napájení nebo síťové připojení, nemůže předávat žádná data.
+**Odmítnutí služby (D):** Zařízení může být vystavováno neschopným funkce nebo komunikace zasahováním do rádiových frekvencí nebo řezáním drátů. Například sledovací kamera, která měla své napájení nebo síťové připojení záměrně vyřazeno, nemůže vykazovat data vůbec.
 
-**Manipulace (T)** : útočník může částečně nebo zcela nahradit software, který je v zařízení spuštěný, a potenciálně umožnit nahrazenému softwaru využít originální identitu zařízení, pokud se jedná o klíč klíče nebo klíč, který je držitelem kryptografického zařízení. materiály byly k dispozici pro nedovolený program. Útočník může například využít extrahovaný materiál klíče k zachycení a potlačení dat ze zařízení na komunikační cestě a nahradit je falešnými daty, která jsou ověřena pomocí odcizeného materiálu klíče.
+**Neoprávněných manipulací (T)**: Útočník může částečně nebo zcela nahradit software spuštěný na zařízení, což potenciálně umožňuje vyměněnému softwaru využít skutečnou identitu zařízení, pokud byl k dispozici klíčový materiál nebo kryptografická zařízení, která jsou v držení klíčových materiálů pro nezákonný program. Útočník může například využít extrahovaný materiál klíče k zachycení a potlačení dat ze zařízení na komunikační cestě a nahradit je falešnými daty, která jsou ověřena ukradeným materiálem klíče.
 
-**Zpřístupnění informací (I)** : Pokud zařízení používá běžící software, může takový software potenciálně způsobit nevracení dat na neoprávněné strany. Útočník může například využít extrahovaný klíčový materiál pro vložení do komunikační cesty mezi zařízením a řadičem nebo bránou pole nebo cloudovou bránou k odsávání informací.
+**Zpřístupnění informací (I)**: Pokud je v zařízení spuštěn software s manipulovaným softwarem, mohl by takový zmanipulovaný software potenciálně unikat data neoprávněným stranám. Útočník může například využít extrahovaný materiál klíče k tomu, aby se sám vstříkl do komunikační cesty mezi zařízením a řadičem nebo bránou v poli nebo cloudovou bránou k odsávání informací.
 
-**Zvýšení oprávnění (E)** : zařízení, které má konkrétní funkci, může být vynucené dělat něco jiného. Například ventil, který je naprogramován na otevřený poloviční způsob, může být obtížné otevřít, aby se otevřel celý způsob.
+**Zvýšení oprávnění (E):** Zařízení, které provádí určitou funkci, může být nuceno dělat něco jiného. Například ventil, který je naprogramován tak, aby se otevřel na půl cesty, může být oklamán, aby se otevřel celou cestu.
 
-| **Komponenta** | **Nebezpečí** | **Zmírnění** | **Hrozí** | **Provádění** |
+| **Komponenta** | **Hrozba** | **Omezení rizik** | **Riziko** | **Implementace** |
 | --- | --- | --- | --- | --- |
-| Zařízení |S |Přiřazení identity k zařízení a ověřování zařízení |Zařízení nebo část zařízení se nahrazuje jiným zařízením. Jak víte, že mluvíte se správným zařízením? |Ověřování zařízení pomocí protokolu TLS (Transport Layer Security) nebo IPSec. Infrastruktura by měla podporovat použití předsdíleného klíče (PSK) na zařízeních, která nemůžou zpracovávat úplný asymetrický kryptografii. Využijte Azure AD, [OAuth](https://www.rfc-editor.org/pdfrfc/rfc6755.txt.pdf) |
-|| TRID |Aplikujte na zařízení mechanismy tamperproof, například tím, že nebudete moct z zařízení extrahovat klíče a další kryptografické materiály. |Riziko je v případě, že někdo zaznamená manipulaci se zařízením (při fyzickém rušení). V takovém případě jste si jisti, že zařízení nebylo manipulováno. |Nejúčinnější zmírnění je funkce čipu TPM (Trusted Platform Module), která umožňuje ukládat klíče ve zvláštních mezičipuch, ze kterých klíče nelze číst, ale lze je použít pouze pro kryptografické operace, které používají klíč, ale nikdy nezavřou klíč. Šifrování paměti zařízení. Správa klíčů pro zařízení. Podpis kódu. |
-|| Cerebrální |Řízení přístupu zařízení. Autorizační schéma. |Pokud zařízení umožňuje provádět jednotlivé akce na základě příkazů z vnějšího zdroje nebo dokonce napadených senzorů, umožňuje útoku provádět operace, které nejsou jinak dostupné. |Má schéma autorizace pro zařízení |
-| Brána pole |S |Ověřování brány pole ke cloudové bráně (například na základě certifikátu, PSK nebo založeného na deklaracích identity) |Pokud někdo může falešně vyvažovat bránu pole, může se zobrazit jako jakékoli zařízení. |TLS RSA/PSK, IPSec, [RFC 4279](https://tools.ietf.org/html/rfc4279). Každé stejné důležité aspekty úložiště klíčů a ověření identity zařízení jsou obecně vhodné k používání TPM. rozšíření 6LowPAN pro protokol IPSec pro podporu sítí bezdrátového senzoru (WSN). |
-|| TRID |Chránit bránu pole proti manipulaci (TPM?) |Útoky s falešnou identitou, které pronikají cloudovou bránu, se kterými se dá mluvit, by mohly vést k odhalení informací a manipulaci s daty |Šifrování paměti, TPM, ověřování. |
-|| Cerebrální |Mechanismus řízení přístupu pro bránu pole | | |
+| Zařízení |S |Přiřazení identity k zařízení a ověření zařízení |Výměna zařízení nebo jeho části za jiné zařízení. Jak víte, že mluvíte se správným zařízením? |Ověření zařízení pomocí zabezpečení transportní vrstvy (TLS) nebo protokolu IPSec. Infrastruktura by měla podporovat použití předsdíleného klíče (PSK) na zařízeních, která nezvládnou úplnou asymetrickou kryptografii. Využití Azure AD, [OAuth](https://www.rfc-editor.org/pdfrfc/rfc6755.txt.pdf) |
+|| TRID |Aplikujte na zařízení mechanismy odolné proti neoprávněné manipulaci, například tím, že znemožníte extrahování klíčů a jiného kryptografického materiálu ze zařízení. |Riziko spoje v případě, že někdo manipuluje se zařízením (fyzické rušení). Jak jste si jistý, že s tím zařízením nebylo manipulováno. |Nejúčinnější zmírnění je funkce modulu důvěryhodné platformy (TPM), která umožňuje ukládání klíčů ve speciálních obvodech na čipu, ze kterých nelze číst klíče, ale lze je použít pouze pro kryptografické operace, které používají klíč, ale nikdy klíč nezveřejňují. Šifrování paměti zařízení. Správa klíčů pro zařízení. Podepisování kódu. |
+|| E |S řízením přístupu k zařízení. Autorizační schéma. |Pokud zařízení umožňuje provádět jednotlivé akce na základě příkazů z vnějšího zdroje nebo dokonce narušených senzorů, umožňuje útoku provádět operace, které nejsou jinak přístupné. |S povolovacím schématem pro zařízení |
+| Brána v terénu |S |Ověřování brány pole do cloudové brány (například na základě certifikátu, PSK nebo Deklarace.) |Pokud někdo může zfalšovat Field Gateway, může se prezentovat jako jakékoli zařízení. |TLS RSA/PSK, IPSEC, [RFC 4279](https://tools.ietf.org/html/rfc4279). Všechny stejné klíče skladování a atestace obavy zařízení obecně – nejlepší je použít TPM. 6Rozšíření LowPAN pro protokol IPSec pro podporu bezdrátových senzorových sítí (WSN). |
+|| TRID |Ochrana brány pole před neoprávněným zásahem (TPM?) |Falšování útoků, které oklamou cloudovou bránu a myslí si, že mluví s bránou v terénu, by mohlo vést ke zpřístupnění informací a manipulaci s daty |Šifrování paměti, čip TPM, ověřování. |
+|| E |Mechanismus řízení přístupu pro bránu v terénu | | |
 
-Tady jsou některé příklady hrozeb v této kategorii:
+Zde je několik příkladů hrozeb v této kategorii:
 
-**Falšování identity**: útočník může extrahovat materiál kryptografického klíče ze zařízení, na úrovni softwaru nebo hardwaru a následně získat přístup k systému s jiným fyzickým nebo virtuálním zařízením v rámci identity zařízení. klíč klíče byl pořízení z.
+**Falšování identity**: Útočník může extrahovat materiál kryptografického klíče ze zařízení, a to buď na úrovni softwaru nebo hardwaru, a následně přistupovat k systému s jiným fyzickým nebo virtuálním zařízením pod identitou zařízení, ze které byl materiál klíče odebrán.
 
-**Odepření služby**: zařízení se dá vykreslit neschopným pracovat nebo komunikovat, a to rušením rádiových frekvencí nebo vyjmutím vodičů. Například bezpečnostní kamera, u které někdo záměrně odpojil napájení nebo síťové připojení, nemůže předávat žádná data.
+**Odmítnutí služby**: Zařízení může být vystavováno neschopným fungovat nebo komunikovat zasahováním do rádiových frekvencí nebo řezáním drátů. Například sledovací kamera, která měla své napájení nebo síťové připojení záměrně vyřazeno, nemůže vykazovat data vůbec.
 
-**Manipulace**: útočník může částečně nebo zcela nahradit software, který je v zařízení spuštěný, a potenciálně umožnit nahrazenému softwaru využít originální identitu zařízení, pokud se jedná o klíč klíče nebo klíč, který je držitelem kryptografického zařízení. materiály byly k dispozici pro nedovolený program.
+**Manipulace**: Útočník může částečně nebo zcela nahradit software spuštěný v zařízení, což potenciálně umožňuje vyměněnému softwaru využít skutečnou identitu zařízení, pokud byl k dispozici materiál klíče nebo kryptografická zařízení, která mají klíčové materiály pro nezákonný program.
 
-**Manipulace**: pracovní kamera, která zobrazuje viditelný obrázek o prázdných někde, by mohla směřovat na fotografii takového někde. Kouř nebo senzor požárů může v rámci IT nahlásit někoho jiného. V obou případech může být zařízení technicky plně důvěryhodné k systému, ale zaznamenává i manipulace s informacemi.
+**Manipulace**: Bezpečnostní kamera, která ukazuje viditelný obraz prázdné chodby, by mohla být zaměřena na fotografii takové chodby. Kouřový nebo požární senzor může hlásit někoho, kdo pod ním drží zapalovač. V obou případech může být zařízení technicky plně důvěryhodné vůči systému, ale hlásí manipulované informace.
 
-**Manipulace**: útočník může využít extrahovaný materiál klíče k zachycení a potlačení dat ze zařízení na komunikační cestě a jeho nahrazení daty, která jsou ověřena pomocí odcizeného materiálu klíče.
+**Manipulace**: Útočník může využít extrahovaný materiál klíče k zachycení a potlačení dat ze zařízení na komunikační cestě a nahradit je falešnými daty, která jsou ověřena ukradeným materiálem klíče.
 
-**Manipulace**: útočník může částečně nebo zcela nahradit software, který je v zařízení spuštěný, a potenciálně umožnit nahrazenému softwaru využít originální identitu zařízení, pokud se jedná o klíč klíče nebo klíč, který je držitelem kryptografického zařízení. materiály byly k dispozici pro nedovolený program.
+**Manipulace**: Útočník může částečně nebo úplně nahradit software spuštěný v zařízení, což potenciálně umožňuje vyměněnému softwaru využít skutečnou identitu zařízení, pokud byl k dispozici klíčový materiál nebo kryptografická zařízení, která mají klíčové materiály pro nezákonný program.
 
-**Zpřístupnění informací**: Pokud zařízení používá manipulováný software, může takový software potenciálně způsobit nevracení dat na neoprávněné strany.
+**Zpřístupnění informací**: Pokud je v zařízení spuštěn software s manipulovaným softwarem, mohl by takový manipulovaný software potenciálně unikat data neoprávněným stranám.
 
-**Zpřístupnění informací**: útočník může využít extrahovaný klíčový materiál pro vložení do komunikačních cest mezi zařízením a řadičem nebo bránou pole nebo cloudovou bránou k odsávání informací.
+**Zpřístupnění informací**: Útočník může využít extrahovaný materiál klíče k tomu, aby se sám vstříkl do komunikační cesty mezi zařízením a řadičem nebo bránou v poli nebo cloudovou bránou k odsávání informací.
 
-**Odepření služby**: zařízení je možné vypnout nebo zapnout v režimu, ve kterém není komunikace možná (což je úmyslné v mnoha průmyslových strojích).
+**Odmítnutí služby**: Zařízení lze vypnout nebo převést do režimu, kdy komunikace není možná (což je záměrné v mnoha průmyslových strojích).
 
-**Manipulace**: zařízení se dá překonfigurovat tak, aby fungovalo ve stavu, který není známý pro kontrolní systém (mimo známé parametry kalibrace), a tak poskytuje data, která je možné interpretovat.
+**Manipulace**: Zařízení může být překonfigurováno tak, aby fungovalo ve stavu neznámém řídicímu systému (mimo známé kalibrační parametry) a poskytnout tak data, která mohou být nesprávně interpretována
 
-**Zvýšení oprávnění**: zařízení, které má konkrétní funkci, může být nuceně dělat něco jiného. Například ventil, který je naprogramován na otevřený poloviční způsob, může být obtížné otevřít, aby se otevřel celý způsob.
+**Zvýšení oprávnění**: Zařízení, které provádí určitou funkci, může být nuceno dělat něco jiného. Například ventil, který je naprogramován tak, aby se otevřel na půl cesty, může být oklamán, aby se otevřel celou cestu.
 
-**Odepření služby**: zařízení se může přepínat do stavu, ve kterém není komunikace možná.
+**Odmítnutí služby**: Zařízení může být přeměněno na stav, ve kterém komunikace není možná.
 
-**Manipulace**: zařízení je možné překonfigurovat tak, aby fungovalo ve stavu, který není známý pro kontrolní systém (mimo známé parametry kalibrace), a poskytuje tak data, která je možné interpretovat.
+**Manipulace**: Zařízení může být překonfigurováno tak, aby fungovalo ve stavu neznámém řídicímu systému (mimo známé kalibrační parametry) a poskytovalo tak data, která mohou být nesprávně interpretována.
 
-**Falšování/zneužití/odmítnutí**: není-li zabezpečeno (což se u spotřebitele používá jenom zřídka), může útočník manipulovat se stavem zařízení anonymně. Dobrá ilustrace je vzdálené ovládací prvky, které umožňují změnit libovolné televizní pořady a oblíbené nástroje Prankster.
+**Falšování/manipulace/odmítnutí**: Pokud není zabezpečena (což je zřídka případ spotřebitelských dálkových ovladačů), útočník může manipulovat se stavem zařízení anonymně. Dobrou ilustrací jsou dálkové ovladače, které mohou otáčet jakoukoli televizi a které jsou populární mizérnástroje.
 
-#### <a name="communication"></a>Komunikace
+#### <a name="communication"></a>Communication
 
-Hrozby kolem komunikačních cest mezi zařízeními, zařízeními a branami polí a zařízeními a cloudovou bránou. Následující tabulka obsahuje pokyny k otevřeným soketům na zařízení/síti VPN:
+Hrozby kolem komunikační cesty mezi zařízeními, zařízeními a branami v terénu a bránou zařízení a cloudu. Následující tabulka obsahuje některé pokyny týkající se otevřených soketů na zařízení/VPN:
 
-| **Komponenta** | **Nebezpečí** | **Zmírnění** | **Hrozí** | **Provádění** |
+| **Komponenta** | **Hrozba** | **Omezení rizik** | **Riziko** | **Implementace** |
 | --- | --- | --- | --- | --- |
-| IoT Hub zařízení |IDENTIFIKÁTORY |Trojrozměrné TLS (PSK/RSA) pro šifrování provozu |Odposlouchávání a narušování komunikace mezi zařízením a bránou |Zabezpečení na úrovni protokolu. S vlastními protokoly potřebujete zjistit, jak je chránit. Ve většině případů je komunikace provedena ze zařízení do IoT Hub (zařízení iniciuje připojení). |
-| Zařízení do zařízení |IDENTIFIKÁTORY |Trojrozměrné TLS (PSK/RSA) pro šifrování provozu. |Čtení dat při přenosu mezi zařízeními. Manipulace s daty. Přetížení zařízení s novými připojeními |Zabezpečení na úrovni protokolu (MQTT/AMQP/HTTP/CoAP. S vlastními protokoly potřebujete zjistit, jak je chránit. Zmírnění hrozby DoS je rovnocenným zařízením přes bránu cloudu nebo poli a má je fungovat jenom jako klienti směrem k síti. Partnerský vztah může mít za následek přímé připojení mezi partnerskými uzly poté, co je brána zprostředkovaná bránou. |
-| Zařízení externí entity |IDENTIFIKÁTORY |Silné párování externí entity se zařízením |Odposlouchávání připojení k zařízení. Narušování komunikace se zařízením |Bezpečně spáruje externí entitu se zařízením NFC/Bluetooth LE. Řízení provozního panelu zařízení (fyzický) |
-| Cloudová brána pro pole brány |IDENTIFIKÁTORY |TLS (PSK/RSA) pro šifrování provozu. |Odposlouchávání a narušování komunikace mezi zařízením a bránou |Zabezpečení na úrovni protokolu (MQTT/AMQP/HTTP/CoAP). S vlastními protokoly potřebujete zjistit, jak je chránit. |
-| Cloudová brána zařízení |IDENTIFIKÁTORY |TLS (PSK/RSA) pro šifrování provozu. |Odposlouchávání a narušování komunikace mezi zařízením a bránou |Zabezpečení na úrovni protokolu (MQTT/AMQP/HTTP/CoAP). S vlastními protokoly potřebujete zjistit, jak je chránit. |
+| Centrum IoT pro zařízení |Tid |(D) TLS (PSK/RSA) pro šifrování provozu |Odposlouchávání nebo rušení komunikace mezi zařízením a bránou |Bezpečnost na úrovni protokolu. S vlastními protokoly musíte zjistit, jak je chránit. Ve většině případů probíhá komunikace ze zařízení do služby IoT Hub (zařízení inicializuje připojení). |
+| Zařízení k zařízení |Tid |(D) TLS (PSK/RSA) pro šifrování provozu. |Čtení dat při přenosu mezi zařízeními. Manipulování s daty. Přetížení zařízení novými připojeními |Zabezpečení na úrovni protokolu (MQTT/AMQP/HTTP/CoAP. S vlastními protokoly musíte zjistit, jak je chránit. Zmírnění hrozby DoS je peer zařízení prostřednictvím cloudu nebo brány pole a mít je pouze fungovat jako klienti směrem k síti. Partnerský vztah může vést k přímému spojení mezi partnery poté, co byl zprostředkován bránou |
+| Zařízení externí entity |Tid |Silné párování externí entity se zařízením |Odposlouchávání připojení k zařízení. Zasahování do komunikace se zařízením |Bezpečné spárování externí entity se zařízením NFC/Bluetooth LE. Ovládání provozního panelu zařízení (Fyzikální) |
+| Cloudová brána field gateway |Tid |TLS (PSK/RSA) pro šifrování provozu. |Odposlouchávání nebo rušení komunikace mezi zařízením a bránou |Zabezpečení na úrovni protokolu (MQTT/AMQP/HTTP/CoAP). S vlastními protokoly musíte zjistit, jak je chránit. |
+| Cloudová brána zařízení |Tid |TLS (PSK/RSA) pro šifrování provozu. |Odposlouchávání nebo rušení komunikace mezi zařízením a bránou |Zabezpečení na úrovni protokolu (MQTT/AMQP/HTTP/CoAP). S vlastními protokoly musíte zjistit, jak je chránit. |
 
-Tady jsou některé příklady hrozeb v této kategorii:
+Zde je několik příkladů hrozeb v této kategorii:
 
-**Odepření služby**: omezená zařízení se obecně nacházejí v rámci hrozby DOS, když aktivně naslouchají příchozím připojením nebo nevyžádaným datagramům v síti, protože útočník může otevřít mnoho propojení paralelně a nemusí je obsluhovat. pomalu nebo zařízení je možné přeplavit pomocí nevyžádaných přenosů. V obou případech se zařízení může efektivně vykreslovat v síti.
+**Odmítnutí služby**: Omezená zařízení jsou obecně pod hrozbou DoS, když aktivně poslouchají příchozí připojení nebo nevyžádané datagramy v síti, protože útočník může otevřít mnoho připojení paralelně a neobsluhovat je nebo je obsluhovat pomalu nebo zařízení může být zaplaveno nevyžádaným provozem. V obou případech může být zařízení efektivně v síti nefunkční.
 
-**Falšování identity, zpřístupnění informací**: omezená zařízení a zařízení pro zvláštní účely mají často jedno pro všechna bezpečnostní zařízení, jako je například heslo nebo ochrana PIN, nebo zcela spoléhají na důvěřování síti, což znamená, že udělí přístup k informacím, když zařízení je ve stejné síti a tato síť je často chráněná jenom sdíleným klíčem. To znamená, že když je sdílený tajný klíč k zařízení nebo síti zavřený, je možné řídit zařízení nebo sledovat data, která jsou vygenerována ze zařízení.  
+**Falšování, zveřejňování informací**: Omezená zařízení a zařízení pro zvláštní účely mají často jedno-pro-všechny bezpečnostní zařízení, jako je ochrana heslem nebo PIN, nebo se plně spoléhají na důvěřování síti, což znamená, že udělují přístup k informacím, když je zařízení ve stejné síti a tato síť je často chráněna pouze sdíleným klíčem. To znamená, že při zveřejnění sdíleného tajného klíče k zařízení nebo síti je možné ovládat zařízení nebo sledovat data vysílaná ze zařízení.  
 
-**Falšování identity**: útočník může zachytit nebo částečně potlačit všesměrové vysílání a falešný původce (muž uprostřed).
+**Falšování :** útočník může zachytit nebo částečně přepsat vysílání a zfalšovat původce (muž uprostřed)
 
-**Manipulace**: útočník může zachytit nebo částečně přepsat všesměrové vysílání a odeslat falešné informace. 
+**Neoprávněných zásahů**: útočník může zachytit nebo částečně přepsat vysílání a odeslat nepravdivé informace 
 
-**Zpřístupnění informací:** útočník se může eavesdrop při vysílání a získat informace bez **odepření autorizace služby:** útočník může zaútočit na signál všesměrového vysílání a zamítnout distribuci informací.
+**Zpřístupnění informací:** Útočník může odposlouchávat vysílání a získávat informace bez autorizace **odmítnutí služby:** útočník může rušit vysílací signál a odepřít distribuci informací.
 
 #### <a name="storage"></a>Úložiště
 
-Každé zařízení a brána pole mají určitou formu úložiště (dočasné pro řazení dat do fronty, úložiště imagí operačního systému (OS)).
+Každé zařízení a brána pole má nějakou formu úložiště (dočasné pro řazení dat do fronty, úložiště bitových obrázků operačního systému (OS).
 
-| **Komponenta** | **Nebezpečí** | **Zmírnění** | **Hrozí** | **Provádění** |
+| **Komponenta** | **Hrozba** | **Omezení rizik** | **Riziko** | **Implementace** |
 | --- | --- | --- | --- | --- |
-| Úložiště zařízení |TRID |Šifrování úložiště, podepisování protokolů |Čtení dat z úložiště (dat PII), manipulace s daty telemetrie. Manipulace s daty řízení příkazů ve frontě nebo v mezipaměti Manipulace s balíčky aktualizací konfigurace nebo firmware při ukládání do mezipaměti nebo v místním prostředí mohou vést k ohrožení zabezpečení operačního systému nebo systémových komponent. |Šifrování, ověřovací kód zprávy (MAC) nebo digitální podpis. Pokud je to možné, silné řízení přístupu prostřednictvím seznamů řízení přístupu (ACL) prostředků nebo oprávnění. |
-| Bitová kopie operačního systému zařízení |TRID | |Manipulace s operačním systémem/Replacing součástem operačního systému |Oddíl s operačním systémem jen pro čtení, podepsaná bitová kopie operačního systému, šifrování |
-| Úložiště brány pole (řazení dat do fronty) |TRID |Šifrování úložiště, podepisování protokolů |Čtení dat ze služby Storage (data PII), manipulace s daty telemetrie, manipulace s daty řízení příkazů ve frontě nebo v mezipaměti Manipulace s balíčky aktualizací konfigurace nebo firmwaru (určené pro zařízení nebo pro bránu pole) při ukládání do mezipaměti nebo místně zařazené do fronty mohou způsobit ohrožení bezpečnosti operačního systému nebo systémových komponent. |BitLocker |
-| Obrázek operačního systému pro pole brány |TRID | |Manipulace s operačním systémem/Replacing součástem operačního systému |Oddíl s operačním systémem jen pro čtení, podepsaná bitová kopie operačního systému, šifrování |
+| Úložiště zařízení |TRID |Šifrování úložiště, podepisování protokolů |Čtení dat z úložiště (DATA PII), manipulace s telemetrickými daty. Manipulace s daty řízení příkazů ve frontě nebo v mezipaměti. Manipulace s balíčky konfigurace nebo aktualizace firmwaru v mezipaměti nebo ve frontě místně může vést k ohrožení operačního systému a /nebo systémových součástí. |Šifrování, ověřovací kód zprávy (MAC) nebo digitální podpis. Pokud je to možné, silné řízení přístupu prostřednictvím seznamů řízení přístupu k prostředkům (ACLs) nebo oprávnění. |
+| Obrázek operačního systému zařízení |TRID | |Manipulace s OS /výměna součástí operačního systému |Oddíl operačního systému jen pro čtení, podepsaný obrázek operačního systému, šifrování |
+| Úložiště field gateway (zařazování dat do fronty) |TRID |Šifrování úložiště, podepisování protokolů |Čtení dat z úložiště (DATA PII), manipulace s telemetrickými daty, manipulace s daty řízení příkazů ve frontě nebo v mezipaměti. Manipulace s balíčky konfigurace nebo aktualizace firmwaru (určené pro zařízení nebo bránu pole) při lokálním ukládání do mezipaměti nebo ve frontě může vést k ohrožení operačního systému a/nebo systémových součástí. |BitLocker |
+| Obrázek operačního systému Field Gateway |TRID | |Manipulace s OS /výměna součástí operačního systému |Oddíl operačního systému jen pro čtení, podepsaný obrázek operačního systému, šifrování |
 
-### <a name="device-and-event-processingcloud-gateway-zone"></a>Zařízení a zpracování událostí/zóna cloudové brány
+### <a name="device-and-event-processingcloud-gateway-zone"></a>Zóna služby Zpracování zařízení a událostí/cloudové brány
 
-Cloudová brána je systém, který umožňuje vzdálenou komunikaci z a do zařízení nebo bran polí z několika různých lokalit ve veřejném síťovém prostoru, a to obvykle do cloudového ovládacího prvku a analytického systému dat, což je federace takových systémů. V některých případech může cloudová brána okamžitě usnadnit přístup k zařízením se speciálním účelem z terminálů, jako jsou tablety nebo telefony. V kontextu, který je zde popsán, se jedná o pojem "Cloud", který odkazuje na vyhrazený systém zpracování dat, který není vázán na stejnou lokalitu jako připojená zařízení nebo brány polí a kde provozní míry brání cílenému fyzickému přístupu, ale nemusí nutně být " veřejné cloudové infrastruktury. Cloudová brána může být namapována na překrytí virtualizace sítě, která umožňuje izolaci cloudové brány a všech připojených zařízení nebo bran polí z jakéhokoli jiného síťového provozu. Samotná cloudová brána není systémem pro řízení zařízení nebo se zařízením pro zpracování nebo úložiště pro data zařízení. rozhraní těchto zařízení s cloudovou bránou. Zóna cloudové brány zahrnuje samotnou cloudovou bránu spolu se všemi branami a zařízeními, která jsou k ní přímo nebo nepřímo připojená.
+Cloudová brána je systém, který umožňuje vzdálenou komunikaci ze zařízení a do zařízení nebo polních bran z několika různých míst ve veřejném síťovém prostoru, obvykle směrem k cloudovému řídicímu systému a systému analýzy dat, což je federace takových systémů. V některých případech může cloudová brána okamžitě usnadnit přístup k zařízením pro speciální účely z terminálů, jako jsou tablety nebo telefony. V kontextu zde popsaném je "cloud" určen k označení vyhrazeného systému zpracování dat, který není vázán na stejnou lokalitu jako připojená zařízení nebo brány v terénu a kde provozní opatření brání cílenému fyzickému přístupu, ale nemusí být nutně " infrastruktury veřejného cloudu". Cloudová brána může být potenciálně mapována do překrytí virtualizace sítě, aby izolovala cloudovou bránu a všechna její připojená zařízení nebo brány v terénu od jakéhokoli jiného síťového provozu. Samotná cloudová brána není řídicí systém zařízení nebo zařízení pro zpracování nebo ukládání dat zařízení; rozhraní s cloudovou bránou. Zóna cloudových bran zahrnuje samotnou cloudovou bránu spolu se všemi bránami a zařízeními v terénu, které jsou k ní přímo nebo nepřímo připojeny.
 
-Cloud Gateway je většinou vlastní sestavený software, který je spuštěný jako služba s vystavenými koncovými body, ke kterým se připojí brána pole a zařízení. V takovém případě musí být navržený s ohledem na zabezpečení. Pro návrh a sestavování této služby Sledujte proces [SDL](https://www.microsoft.com/sdl) .
+Cloudová brána je většinou vlastní software běžící jako služba s odhalenými koncovými body, ke kterým se brána pole a zařízení připojují. Jako takový musí být navržen s ohledem na bezpečnost. Postupujte podle procesu [SDL](https://www.microsoft.com/sdl) pro navrhování a vytváření této služby.
 
 #### <a name="services-zone"></a>Zóna služeb
 
-Řídicí systém (nebo kontroler) je softwarové řešení, které se používá pro zařízení nebo bránu pole nebo cloudovou bránu pro účely řízení jednoho nebo více zařízení nebo ke shromáždění nebo analýze dat zařízení pro prezentaci nebo následné kontrolní účely. Systémy řízení jsou jediné entity v rozsahu této diskuze, které mohou okamžitě usnadnit interakci s lidmi. Výjimky jsou mezilehlé fyzické ovládací prvky na zařízeních, jako je přepínač, který uživateli umožňuje zařízení vypnout nebo změnit jiné vlastnosti a pro které neexistuje funkční ekvivalent, ke kterému se dá dostat na digitálně funkční.
+Řídicí systém (nebo řadič) je softwarové řešení, které je propojeno se zařízením, bránou v terénu nebo cloudovou bránou za účelem řízení jednoho nebo více zařízení a/nebo shromažďování a/nebo ukládání a/nebo analýzy dat zařízení pro účely prezentace nebo následného řízení. Kontrolní systémy jsou jedinými subjekty v rámci této diskuse, které mohou okamžitě usnadnit interakci s lidmi. Výjimky jsou mezilehlé fyzické ovládací plochy na zařízeních, jako je přepínač, který umožňuje osobě vypnout zařízení nebo změnit jiné vlastnosti a pro které neexistuje žádný funkční ekvivalent, který lze přistupovat digitálně.
 
-Mezilehlé fyzické povrchy řízení jsou ty, kde řízení logiky omezuje funkci fyzické kontrolní plochy, aby se mohla spustit ekvivalentní funkce, nebo když je vstup v konfliktu se vzdáleným vstupem, je možné se vyhnout. řídicí plochy jsou koncepčně připojené k místnímu řídicímu systému, který využívá stejné základní funkce jako jakýkoli jiný systém vzdáleného řízení, ke kterému se může zařízení připojit paralelně. Hlavní hrozby cloud computingu se dají přečíst na stránce [Cloud Security Alliance (CSA)](https://cloudsecurityalliance.org/articles/csa-releases-top-threats-to-cloud-computing-deep-dive/) .
+Mezilehlé fyzické ovládací plochy jsou ty, kde řídící logika omezuje funkci povrchu fyzického řízení tak, že ekvivalentní funkce může být spuštěna na dálku nebo lze vyhnout konfliktům vstupů se vzdáleným vstupem – takové zprostředkované ovládací plochy jsou koncepčně připojeny k místnímu řídicímu systému, který využívá stejné základní funkce jako jakýkoli jiný systém dálkového ovládání, ke kterému může být zařízení připojeno paralelně. Hlavní hrozby pro cloud computing si můžete přečíst na stránce [Cloud Security Alliance (CSA).](https://cloudsecurityalliance.org/articles/csa-releases-top-threats-to-cloud-computing-deep-dive/)
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
-Další informace najdete v následujících článcích:
+Další informace najdete v těchto článcích:
 
-* [Threat Modeling Tool SDL](https://www.microsoft.com/sdl/adopt/threatmodeling.aspx)
-* [Referenční architektura IoT Microsoft Azure](https://azure.microsoft.com/updates/microsoft-azure-iot-reference-architecture-available/)
+* [Nástroj pro modelování hrozeb SDL](https://www.microsoft.com/sdl/adopt/threatmodeling.aspx)
+* [Referenční architektura Microsoft Azure IoT](https://azure.microsoft.com/updates/microsoft-azure-iot-reference-architecture-available/)

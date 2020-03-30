@@ -1,6 +1,6 @@
 ---
-title: Příručka k podpoře a vyřazení zásad pro hostovaný operační systém Azure | Microsoft Docs
-description: Poskytuje informace o tom, co Microsoft bude podporovat s operačním systémem hosta Azure, který používá Cloud Services.
+title: Supportability a retirement policy guide for Azure Guest OS | Dokumenty společnosti Microsoft
+description: Obsahuje informace o tom, co bude Microsoft podporovat, pokud jde o hostovaný operační systém Azure používaný cloudovými službami.
 services: cloud-services
 documentationcenter: na
 author: raiye
@@ -14,68 +14,68 @@ ms.workload: tbd
 ms.date: 9/20/2017
 ms.author: raiye
 ms.openlocfilehash: fbe9b3379799fe3cf0a56d921ab257bc87606ca9
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68945457"
 ---
-# <a name="azure-guest-os-supportability-and-retirement-policy"></a>Zásady podpory a vyřazení hostovaného operačního systému Azure
-Informace na této stránce se vztahují k hostovanému operačnímu systému Azure ([hostovaný](cloud-services-guestos-update-matrix.md)operační systém) pro Cloud Services pracovní procesy a webové role (PaaS). Nevztahuje se na Virtual Machines (IaaS).
+# <a name="azure-guest-os-supportability-and-retirement-policy"></a>Zásady podpory a zásady vyřazení hostovaného operačního systému Azure
+Informace na této stránce se týkají operačního systému Azure Guest[(Guest OS](cloud-services-guestos-update-matrix.md)) pro pracovníky cloudových služeb a webové role (PaaS). Nevztahuje se na virtuální počítače (IaaS).
 
-Společnost Microsoft zveřejnila [zásady podpory pro hostovaný operační systém](https://support.microsoft.com/gp/azure-cloud-lifecycle-faq). Stránka, kterou právě čtete, popisuje, jak je zásada implementovaná.
+Společnost Microsoft má publikované [zásady podpory pro hostovaného operačního systému](https://support.microsoft.com/gp/azure-cloud-lifecycle-faq). Stránka, kterou čtete, nyní popisuje, jak je zásada implementována.
 
-Zásada je
+Tato politika je
 
-1. Microsoft bude podporovat **aspoň nejnovější dvě rodiny hostovaných operačních systémů**. Po vyřazení rodiny mají zákazníci 12 měsíců od oficiálního data vyřazení za účelem aktualizace na novější podporovanou rodinu hostovaných operačních systémů.
-2. Microsoft bude podporovat **aspoň nejnovější dvě verze podporovaných rodin operačních systémů**.
-3. Microsoft bude podporovat **aspoň nejnovější dvě verze sady Azure SDK**. Po vyřazení verze sady SDK budou mít zákazníci 12 měsíců od oficiálního data vyřazení za účelem aktualizace na novější verzi.
+1. Společnost Microsoft bude podporovat **alespoň nejnovější dvě rodiny hostovaného operačního systému**. Když je rodina v důchodu, mají zákazníci 12 měsíců od oficiálního data odchodu do důchodu, aby se aktualizovali na novější podporovanou rodinu hostovaného operačního systému.
+2. Společnost Microsoft bude podporovat **alespoň nejnovější dvě verze podporovaných rodin hostovaného operačního systému**.
+3. Microsoft bude podporovat **alespoň nejnovější dvě verze sady Azure SDK**. Když je verze sady SDK vyřazena, zákazníci budou mít 12 měsíců od oficiálního data odchodu do důchodu, aby se aktualizovali na novější verzi.
 
-V některých případech může být podporováno více než dvě rodiny nebo vydání. Oficiální informace o podpoře hostovaného operačního systému se zobrazí ve [verzích hostovaného operačního systému Azure a v matici kompatibility SDK](cloud-services-guestos-update-matrix.md).
+Někdy může být podporováno více než dvě rodiny nebo verze. Oficiální informace o podpoře hostovaného operačního systému se zobrazí ve [verzích Azure Guest OS Releases a SDK Compatibility Matrix](cloud-services-guestos-update-matrix.md).
 
-## <a name="when-a-guest-os-version-is-retired"></a>Když je vyřazená verze operačního systému hosta
-Nové **verze** operačního systému hosta se zavádějí každý měsíc, aby zahrnovaly nejnovější aktualizace MSRC. Kvůli pravidelným měsíčním aktualizacím se verze operačního systému hosta obvykle zakázala asi 60 dní po jejím vydání. Tato aktivita udržuje alespoň dvě verze hostovaného operačního systému pro každou rodinu, která je k dispozici pro použití.
+## <a name="when-a-guest-os-version-is-retired"></a>Když je verze hostovaného operačního systému vyřazena
+Nové verze hostovaného operačního systému jsou zavedeny přibližně každý měsíc, aby byly **začleněny** nejnovější aktualizace MSRC. Z důvodu pravidelných měsíčních aktualizací je verze hostovaného operačního systému obvykle zakázána přibližně 60 dní po jeho vydání. Tato aktivita udržuje alespoň dvě verze hostovaného operačního systému pro každou rodinu k dispozici pro použití.
 
-### <a name="process-during-a-guest-os-family-retirement"></a>Zpracovat během vyřazení řady hostovaného operačního systému
-Po ohlášení vyřazení je zákazníkem po dobu 12 měsíců "přechod", než se starší rodina ze služby oficiálně odebere. Tato doba přechodu se dá prodloužit na uvážení Microsoftu. Aktualizace se budou publikovat v rámci vydaných [verzí operačního systému Azure hosta a kompatibility SDK](cloud-services-guestos-update-matrix.md).
+### <a name="process-during-a-guest-os-family-retirement"></a>Proces během odchodu rodiny hostovaného operačního systému do důchodu
+Jakmile je odchod do důchodu oznámil, zákazníci mají 12 měsíců "přechod" období před starší rodina je oficiálně odstraněn z provozu. Tato doba přechodu může být prodloužena podle uvážení společnosti Microsoft. Aktualizace budou zveřejněny na [vydáních hostovaného operačního systému Azure a matici kompatibility sad SDK](cloud-services-guestos-update-matrix.md).
 
-Proces postupného vyřazení bude začínat šest (6) měsíců do přechodného období. Během této doby:
+Postupný proces odchodu do důchodu začne šest (6) měsíců do přechodného období. Během této doby:
 
-1. Společnost Microsoft bude informovat zákazníky o vyřazení.
-2. Novější verze sady Azure SDK nebude podporovat vyřazení hostované řady operačních systémů.
-3. V vyřazené rodině se nepovolují nová nasazení a nová nasazení Cloud Services.
+1. Společnost Microsoft informuje zákazníky o odchodu do důchodu.
+2. Novější verze sady Azure SDK nebude podporovat vyřazené řady hostovaného operačního systému.
+3. Nová nasazení a přesuny cloudových služeb nebudou v rodině důchodců povoleny.
 
-Společnost Microsoft bude i nadále zavádět novou verzi operačního systému hosta, která zahrnuje nejnovější aktualizace služby MSRC, a to až do posledního dne přechodného období, které se označuje jako "datum vypršení platnosti". V době vypršení platnosti nebude Cloud Services stále běžet v rámci smlouvy SLA pro Azure. Společnost Microsoft má oprávnění k vynucení upgradu, odstranění nebo zastavení těchto služeb po tomto datu.
+Společnost Microsoft bude i nadále zavádět novou verzi hostovaného operačního systému zahrnující nejnovější aktualizace MSRC až do posledního dne přechodného období, známého jako "datum vypršení platnosti". K datu vypršení platnosti cloudové služby, které jsou stále spuštěné, nebudou v rámci azure sla podporovány. Společnost Microsoft má možnost vynutit upgrade, odstranění nebo zastavení těchto služeb po tomto datu.
 
-### <a name="process-during-a-guest-os-version-retirement"></a>Zpracovat během vyřazení verze operačního systému hosta
-Pokud si zákazníci nastavují hostovaný operační systém tak, aby se automaticky aktualizovali, nikdy si nemusí dělat starosti se zabývat s verzemi operačního systému hosta. Vždycky budou používat nejnovější verzi hostovaného operačního systému.
+### <a name="process-during-a-guest-os-version-retirement"></a>Proces během vyřazení verze hostovaného operačního systému
+Pokud zákazníci nastavili svůj hostovaný operační systém tak, aby se automaticky aktualizoval, nikdy se nebudou muset starat o práci s verzemi hostovaného operačního systému. Budou vždy používat nejnovější verzi hostovaného operačního systému.
 
-Verze operačního systému hosta jsou vydávány každý měsíc. Z důvodu sazby za běžné verze má každá verze pevnou životnost.
+Verze hostovaného operačního systému jsou vydávány každý měsíc. Vzhledem k rychlosti pravidelných verzí má každá verze pevnou životnost.
 
-Ve 60 dnech do životnosti je verze "Disabled". "Zakázáno" znamená, že je verze z portálu odebrána. Verzi již nelze nastavovat z konfiguračního souboru CSCFG. Existující nasazení zůstanou spuštěná. Ale nová nasazení a aktualizace kódu a konfigurace pro existující nasazení nebudou povoleny.
+Po 60 dnech životnosti je verze "*zakázána*". "Zakázáno" znamená, že verze je odebrána z portálu. Verzi již nelze nastavit z konfiguračního souboru CSCFG. Existující nasazení jsou ponechána spuštěná. Ale nová nasazení a kód a aktualizace konfigurace pro stávající nasazení nebudou povoleny.
 
-Po deaktivaci se u hostovaného operačního systému verze vyprší a při všech instalacích, jejichž verze s vypršenou platností, se zveřejňují problémy zabezpečení a ohrožení zabezpečení. Obvykle se vypršení platnosti provádí v dávkách, takže období od zakázání do vypršení platnosti se může lišit.
+Někdy poté, co se stal "zakázán", hostovaného operačního systému verze "vyprší" a všechny instalace stále běží, že vypršela verze jsou vystaveny problémům se zabezpečením a zranitelnosti. Obecně platí, že vypršení platnosti se provádí v dávkách, takže období od vypnutí do vypršení platnosti se může lišit.
 
-Zákazníci, kteří konfigurují své služby pro ruční aktualizaci hostovaného operačního systému, by měli zajistit, aby jejich služby běžely v podporovaném operačním systému. Pokud je služba nakonfigurovaná tak, aby automaticky aktualizovala hostovaný operační systém, zaručí základní platforma dodržování předpisů a provede upgrade na nejnovější hostovaný operační systém.
+Zákazníci, kteří nakonfigurují své služby tak, aby aktualizovali hostovaný operační systém ručně, by měli zajistit, aby jejich služby byly spuštěny v podporovaném hostovaném os. Pokud je služba nakonfigurována k automatické aktualizaci hostovaného operačního systému, základní platforma zajistí dodržování předpisů a upgraduje na nejnovější hostovaný operační systém.
 
-Tato období se můžou prodloužit na základě rozhodnutí Microsoftu, aby se usnadnily přechody zákazníků. Veškeré změny budou sděleny v rámci [Azure hosta Release OS a kompatibility SDK](cloud-services-guestos-update-matrix.md).
+Tato období mohou být podle uvážení společnosti Microsoft delší, aby se usnadnilpřechod zákazníků. Všechny změny budou sděleny na [azure guest os verze a SDK kompatibility matice](cloud-services-guestos-update-matrix.md).
 
-### <a name="notifications-during-retirement"></a>Oznámení během vyřazení
-* **Vyřazení rodiny** <br>Microsoft bude používat blogové příspěvky a oznámení na portálu. Zákazníci, kteří stále používají vyřazenou rodinu hostovaného operačního systému, budou upozorněni prostřednictvím přímé komunikace (e-mail, zprávy portálu, telefonní hovor) k přiřazeným správcům služby. Všechny změny se budou publikovat do vydaných [verzí operačního systému hostovaného v Azure a v tabulce kompatibility SDK](cloud-services-guestos-update-matrix.md).
-* **Vyřazení verze** <br>Všechny změny a data, která se objeví, se budou publikovat do vydaných [verzí operačního systému Azure hosta a sady SDK kompatibility](cloud-services-guestos-update-matrix.md), včetně vydání, zakázání a vypršení platnosti. Správci služeb obdrží e-maily, pokud mají nasazení spuštěná na zakázané verzi operačního systému hosta nebo rodina. Časování těchto e-mailů se může lišit. Obvykle jsou alespoň v měsíci před zakazováním, i když toto časování není oficiální smlouvou SLA.
+### <a name="notifications-during-retirement"></a>Oznámení během odchodu do důchodu
+* **Rodinný odchod do důchodu** <br>Společnost Microsoft bude používat blogové příspěvky a oznámení portálu. Zákazníci, kteří stále používají vyřazenou rodinu hostovaného operačního systému, budou prostřednictvím přímé komunikace (e-mail, portálové zprávy, telefonní hovor) upozorněni na přiřazené správce služeb. Všechny změny budou zaúčtovány do [verzí azure guest os a matice kompatibility sady SDK](cloud-services-guestos-update-matrix.md).
+* **Verze odchodu do důchodu** <br>Všechny změny a data, ke kterým dojde, budou zaúčtovány do [verzí azure guest os a matice kompatibility sady SDK](cloud-services-guestos-update-matrix.md), včetně vydání, zakázáno a vypršení platnosti. Správci služeb budou dostávat e-maily, pokud mají nasazení spuštěná v zakázané verzi nebo rodině hostovaného operačního systému. Načasování těchto e-mailů se může lišit. Obecně jsou nejméně měsíc před invaliditou, i když toto načasování není oficiální SLA.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
-**Jak můžu zmírnit dopady migrace?**
+**Jak mohu zmírnit dopady migrace?**
 
-Pro návrh Cloud Services doporučujeme použít nejnovější rodinu hostovaného operačního systému.
+Pro návrh cloudových služeb doporučujeme používat nejnovější rodinu hostovaného operačního.
 
-1. Začněte plánovat migraci do novější rodiny.
-2. Nastavte dočasná testovací nasazení, abyste otestovali cloudovou službu běžící na nové rodině.
-3. Nastavte svou verzi hostovaného operačního systému na **automatickou** (osVersion = * v souboru [. cscfg](cloud-services-model-and-package.md#cscfg) ), aby migrace na nové verze operačního systému hosta automaticky probíhat.
+1. Začněte plánovat migraci do novější rodiny brzy.
+2. Nastavte dočasná testovací nasazení pro testování cloudové služby spuštěné v nové rodině.
+3. Nastavte verzi hostovaného operačního systému na **automatickou** (osVersion=* v souboru [.cscfg),](cloud-services-model-and-package.md#cscfg) aby k migraci na nové verze hostovaného operačního systému došlo automaticky.
 
-**Co když moje webová aplikace vyžaduje hlubší integraci s operačním systémem?**
+**Co když moje webová aplikace vyžaduje hlubší integraci s osem?**
 
-Pokud vaše architektura webové aplikace závisí na základních funkcích operačního systému, použijte funkce podporované platformou, jako jsou [úlohy po spuštění](cloud-services-startup-tasks.md) nebo jiné mechanismy rozšíření. Alternativně můžete také použít [Azure Virtual Machines](https://azure.microsoft.com/documentation/scenarios/virtual-machines/) (IaaS – infrastruktura jako služba), kde zodpovídáte za údržbu základního operačního systému.
+Pokud architektura webových aplikací závisí na základních funkcích operačního systému, použijte funkce podporované platformou, jako jsou [úlohy při spuštění](cloud-services-startup-tasks.md) nebo jiné mechanismy rozšiřitelnosti. Případně můžete také použít [virtuální počítače Azure](https://azure.microsoft.com/documentation/scenarios/virtual-machines/) (IaaS – infrastruktura jako služba), kde jste zodpovědní za údržbu základního operačního systému.
 
-## <a name="next-steps"></a>Další postup
-Přečtěte si nejnovější [verze hostovaného operačního systému](cloud-services-guestos-update-matrix.md).
+## <a name="next-steps"></a>Další kroky
+Projděte si nejnovější [verze hostovaného operačního systému](cloud-services-guestos-update-matrix.md).

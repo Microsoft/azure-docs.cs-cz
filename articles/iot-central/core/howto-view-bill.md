@@ -1,73 +1,73 @@
 ---
-title: Spravujte svůj účet a převeďte ho z bezplatného cenového plánu v Azure IoT Central aplikaci | Microsoft Docs
-description: Jako správce se dozvíte, jak spravovat fakturu a přejít od bezplatného cenového plánu ke standardnímu cenovému plánu ve vaší aplikaci Azure IoT Central.
+title: Správa faktury a převod z bezplatného cenového plánu v aplikaci Azure IoT Central | Dokumenty společnosti Microsoft
+description: Jako správce se dozvíte, jak spravovat fakturu a přejít od bezplatného cenového plánu ke standardnímu cenovému plánu v aplikaci Azure IoT Central.
 author: v-krghan
 ms.author: v-krghan
 ms.date: 12/09/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 58503784f28a3ba0a6290a2209ce9fdccc14b4e4
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 888b9f31b8082ac124a773cc489293b335d7d255
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023765"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80157491"
 ---
-# <a name="manage-your-bill-in-an-iot-central-application"></a>Správa vyúčtování v aplikaci IoT Central
+# <a name="manage-your-bill-in-an-iot-central-application"></a>Správa faktury v aplikaci IoT Central
 
-Tento článek popisuje, jak jako správce můžete spravovat vyúčtování v aplikaci Azure IoT Central v části Správa. Naučíte se, jak můžete přesunout svoji aplikaci od bezplatného cenového plánu do standardního cenového plánu a také jak upgradovat nebo downgradovat Cenový tarif.
+Tento článek popisuje, jak jako správce můžete spravovat účet v aplikaci Azure IoT Central v části správa. Dozvíte se, jak můžete přesunout aplikaci z bezplatného cenového plánu do standardního cenového plánu a také jak upgradovat nebo snížit úroveň cenového plánu.
 
-Pokud chcete získat přístup k části pro **správu** a používat ji, musíte být v roli *správce* nebo mít *vlastní roli uživatele* , která vám umožní zobrazit fakturaci pro aplikaci IoT Central Azure. Pokud vytvoříte aplikaci IoT Central pro Azure, automaticky se přiřadíte k roli **správce** této aplikace.
+Chcete-li získat přístup a používat část **Správa,** musíte být v roli *správce* nebo mít *vlastní roli uživatele,* která umožňuje zobrazit fakturaci pro aplikaci Azure IoT Central. Pokud vytvoříte aplikaci Azure IoT Central, automaticky se přiřadíte k roli **správce** pro tuto aplikaci.
 
-## <a name="move-from-free-to-standard-pricing-plan"></a>Přejít od bezplatného cenového plánu na standardní
+## <a name="move-from-free-to-standard-pricing-plan"></a>Přechod z bezplatného na standardní cenový plán
 
-- Aplikace, které používají bezplatný cenový plán, jsou po dobu sedmi dnů zdarma. Aby nedošlo ke ztrátě dat, můžete je kdykoli přesunout do standardního cenového plánu.
-- Aplikace, které používají standardní cenový plán, se účtují podle zařízení, přičemž první dvě zařízení jsou zdarma na jednu aplikaci.
+- Aplikace, které používají bezplatný cenový plán, jsou zdarma po dobu sedmi dnů před vypršením jejich platnosti. Abyste se vyhnuli ztrátě dat, můžete je kdykoli před vypršením jejich platnosti přesunout do standardního cenového plánu.
+- Aplikace, které používají standardní cenový plán, se účtují na jedno zařízení, přičemž první dvě zařízení jsou zdarma.
 
 Další informace o cenách najdete na [stránce s cenami za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
 
-V části s cenami můžete svou aplikaci přesunout od bezplatného ke standardnímu cenovému plánu.
+V cenové části můžete aplikaci přesunout z bezplatného tarifu do standardního cenového plánu.
 
-K dokončení tohoto samoobslužného procesu použijte následující postup:
+Chcete-li dokončit tento samoobslužný proces, postupujte takto:
 
-1. V části **Správa** přejdete na stránku s **cenami** .
+1. Přejděte na stránku **Ceny** v části **Správa.**
 
-    ![Stav zkušební verze](media/howto-view-bill/freetrialbilling.png)
+    ![Zkušební stav](media/howto-view-bill/freetrialbilling.png)
 
-1. Vyberte **převést na placený plán**.
+1. Vyberte **Převést na placený plán**.
 
     ![Převést zkušební verzi](media/howto-view-bill/convert.png)
 
-1. Vyberte odpovídající Azure Active Directory a pak předplatné Azure, které chcete použít pro vaši aplikaci, která používá placený plán.
+1. Vyberte příslušnou službu Azure Active Directory a pak předplatné Azure, které se má použít pro vaši aplikaci, která používá placený plán.
 
-1. Po výběru **převést**vaše aplikace teď používá placený plán a vy začnete s fakturací.
+1. Po výběru **možnosti Převést**aplikace nyní používá placený plán a začne se vám účtovat.
 
 > [!Note]
-> Ve výchozím nastavení budete převedeni na cenový tarif *Standard 2* .
+> Ve výchozím nastavení jste převedeni na *tarif standard 2.*
 
-## <a name="how-to-change-your-application-pricing-plan"></a>Postup změny cenového plánu aplikace
+## <a name="how-to-change-your-application-pricing-plan"></a>Jak změnit cenový plán aplikace
 
-Aplikace, které používají standardní cenový plán, se účtují podle zařízení, přičemž první dvě zařízení jsou zdarma na jednu aplikaci.
+Aplikace, které používají standardní cenový plán, se účtují na jedno zařízení, přičemž první dvě zařízení jsou zdarma.
 
-V části s cenami můžete kdykoli upgradovat nebo downgradovat cenové tarify Azure IoT.
+V cenové části můžete kdykoli upgradovat nebo snížit úroveň cenový plán Azure IoT.
 
-1. V části **Správa** přejdete na stránku s **cenami** .
+1. Přejděte na stránku **Ceny** v části **Správa.**
 
-    ![Stav zkušební verze](media/howto-view-bill/pricing.png)
+    ![Zkušební stav](media/howto-view-bill/pricing.png)
 
-1. Vyberte **plán** a kliknutím na **Uložit** proveďte upgrade nebo downgrade.
+1. Vyberte **plán** a kliknutím na **Uložit** upgradujte nebo downgrade.
 
 ## <a name="view-your-bill"></a>Zobrazení vašeho vyúčtování
 
-1. Vyberte odpovídající Azure Active Directory a pak předplatné Azure, které chcete použít pro vaši aplikaci, která používá placený plán.
+1. Vyberte příslušnou službu Azure Active Directory a pak předplatné Azure, které se má použít pro vaši aplikaci, která používá placený plán.
 
-1. Po výběru **převést**vaše aplikace teď používá placený plán a vy začnete s fakturací.
+1. Po výběru **možnosti Převést**aplikace nyní používá placený plán a začne se vám účtovat.
 
 > [!Note]
-> Ve výchozím nastavení budete převedeni na cenový tarif *Standard 2* .
+> Ve výchozím nastavení jste převedeni na *tarif standard 2.*
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili, jak spravovat vaše vyúčtování v aplikaci Azure IoT Central, je doporučeným dalším krokem informace o [přizpůsobení uživatelského rozhraní aplikace](howto-customize-ui.md) ve službě Azure IoT Central.
+Teď, když jste se dozvěděli o tom, jak spravovat účet v aplikaci Azure IoT Central, je dalším doporučeným krokem informace o [vlastním unovém uzlu aplikace](howto-customize-ui.md) v Azure IoT Central.

@@ -10,72 +10,72 @@ ms.topic: overview
 ms.date: 08/28/2019
 ms.author: alkohli
 ms.openlocfilehash: 362b7457538a16d389c3cc40fc44da19b073c0b0
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "70142919"
 ---
 # <a name="what-is-azure-data-box-heavy"></a>Co je Azure Data Box Heavy?
 
-Azure Data Box Heavy vám umožní rychle a bezplatným a spolehlivým způsobem posílat stovky terabajtů dat do Azure. Data se přenesou do Azure tím, že vám Data Box Heavy zařízení s kapacitou úložiště 1 – PB, kterou vyplníte daty a pošlete zpátky do Microsoftu. Zařízení má robustní velká a malá písmena, která chrání a zabezpečují vaše data během přenosu.
+Azure Data Box Heavy umožňuje posílat stovky terabajtů dat do Azure rychlým, levným a spolehlivým způsobem. Data se přenášejí do Azure tak, že vám pošlete zařízení Data Box Heavy s úložnou kapacitou 1-PB, které vyplníte svými daty a odešlete zpět společnosti Microsoft. Zařízení má robustní pouzdro, které chrání a zabezpečuje vaše data během přepravy.
 
-Po přijetí zařízení v datovém centru ho nastavte pomocí místního webového uživatelského rozhraní. Zkopírujte data ze serverů do zařízení a pak ho pošlete zpět do Azure. V datovém centru Azure se vaše data odešlou do vašich Azure Storagech účtů. Celý proces můžete sledovat v Azure Portal.
+Jakmile je zařízení přijato ve vašem datovém centru, nastavte ho pomocí místního webového uživatelského rozhraní. Zkopírujte data ze serverů do zařízení a pošlete ho zpět do Azure. V datovém centru Azure se vaše data nahrají do vašich účtů Azure Storage. Celý proces od konce na webu Azure Portal můžete sledovat.
 
 
 > [!IMPORTANT]
-> - Pokud chcete požádat o zařízení, zaregistrujte se do [Azure Portal](https://portal.azure.com).
+> - Pokud chcete požádat o zařízení, zaregistrujte se na [webu Azure Portal](https://portal.azure.com).
 
 
 ## <a name="use-cases"></a>Případy použití
 
-Data Box Heavy se nejlépe hodí pro velikosti dat ve stovkách terabajtů, kde připojení k síti není dostatečné pro nahrávání dat do Azure. Data můžete přesunout jednorázově, přesunovat je pravidelně nebo provést počáteční hromadný přesun a posléze data přenášet pravidelně. Zde je několik různých scénářů, ve kterých je vhodné k přenosu dat použít Data Box Heavy.
+Data Box Heavy se nejlépe hodí pro velikosti dat ve stovkách terabajtů, kde připojení k síti nestačí k nahrání dat do Azure. Data můžete přesunout jednorázově, přesunovat je pravidelně nebo provést počáteční hromadný přesun a posléze data přenášet pravidelně. Zde je několik různých scénářů, ve kterých je vhodné k přenosu dat použít Data Box Heavy.
 
  - **Jednorázová migrace** – při tomto typu migrace se do Azure přesune velký objem místních dat.
      - Přesuňte knihovnu médií z offline pásek do Azure a vytvořte online knihovnu médií.
-     - Migrujte farmu virtuálních počítačů, SQL Server a aplikace do Azure.
-     - Přesuňte historická data do Azure pro podrobnou analýzu a sestavu pomocí HDInsight.
+     - Migrujte farmu virtuálních počítačových společností, SQL server a aplikace do Azure.
+     - Přesuňte historická data do Azure pro hloubkovou analýzu a sestavu pomocí HDInsight.
 
  - **Počáteční hromadný přesun** – při tomto typu migrace provedete počáteční hromadný přesun pomocí služby Data Box Heavy (kompletní) a přírůstkové přenosy potom provádíte po síti.
-     - Například Data Box Heavy a partnerská řešení pro zálohování slouží k přesunu prvotní rozsáhlé historické zálohy do Azure. Poté se už přírůstková data přenáší prostřednictvím sítě do Azure Storage.
+     - Například Data Box Heavy a partner řešení zálohování se používají k přesunutí počáteční velké historické zálohy do Azure. Poté se už přírůstková data přenáší prostřednictvím sítě do Azure Storage.
 
  - **Pravidelné nahrávání** – provádí se v případech, kdy pravidelně dochází ke generování velkých objemů dat, která je nutná přesunout do Azure. Příkladem může být výzkum energie, kdy se u vrtných plošin a soustavy větrných generátorů generuje videoobsah.
 
 ## <a name="benefits"></a>Výhody
 
-Data Box Heavy je navržená tak, aby se do Azure přesunula obrovský objem dat bez jakéhokoli dopadu na vaši síť. Toto řešení má následující výhody:
+Data Box Heavy je navržený tak, aby přesouvá obrovské množství dat do Azure s malým nebo žádným dopadem na vaši síť. Toto řešení má následující výhody:
 
-- **Speed** data box Heavy využívá vysoce výkonná síťová rozhraní 40 GB/s.
+- **Rychlost** - Data Box Heavy používá vysoce výkonná síťová rozhraní 40 Gb/s.
 
-- Data Box Heavy **zabezpečení** má vestavěnou ochranu zabezpečení pro zařízení, data a službu.
+- **Zabezpečení** – Data Box Heavy má integrovanou bezpečnostní ochranu pro zařízení, data a službu.
     - Zařízení má robustní obal, který zabezpečují šroubky odolné vůči neoprávněné manipulaci a nálepky odhalující manipulaci.
-    - Data na zařízení jsou neustále chráněna pomocí 256bitového šifrování AES.
+    - Data na zařízení nepřetržitě chrání 256bitové šifrování AES.
     - Zařízení je možné odemknout pouze heslem, které najdete na webu Azure Portal.
     - Služba samotná je chráněna funkcemi zabezpečení Azure.
-    - Po nahrání dat do Azure se disky v zařízení vymažou vyčistit, v souladu se standardy Standard a NIST (National Institute of Standards and Technology) 800-88r1.
+    - Po nahrání dat do Azure se disky na zařízení vymažou v souladu se standardy 800-88r1 národního institutu pro standardy a technologie (NIST).
 
 
 ## <a name="features-and-specifications"></a>Funkce a specifikace
 
-V této verzi Data Box Heavy zařízení obsahuje následující funkce.
+Zařízení Data Box Heavy má v této verzi následující funkce.
 
 | Specifikace                                          | Popis              |
 |---------------------------------------------------------|--------------------------|
-| Hmotnost                                                  | ~ 500 kg. <br>Zařízení pro uzamykání kol pro přenos|
-| Dimenze                                              | Délk Výška 26 palců: Délka 28 palců: 48 palců |
-| Místo v racku                                              | Nejde připojit k racku.|
-| Potřebné kabely                                         | 4 mleté 120 V/10 napájecí šňůra (NEMA 5-15) je součástí <br> Zařízení podporuje až 240 V napájení a má zásobníky napájení v jazyce C-13. <br> Používání síťových kabelů kompatibilních s [Mellanox MCX314A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html)  |
-| Vypněte                                                    | 4 předdefinované jednotky napájení (PSUs) sdílené v obou uzlech zařízení <br> vykreslování typických mocnin 1 200 w|
-| Kapacita úložiště                                        | ~ 1 – PB RAW, 70 disků o 14 TB <br> 770 až TB použitelné kapacity|
-| Počet uzlů                                          | 2 nezávislé uzly na zařízení (každý 500 TB) |
-| Síťová rozhraní na uzel                             | 4 síťová rozhraní na uzel <br><br> SPRÁVA, DATA3 <ul><li> rozhraní 2 X 1 – GbE </li><li> Správa je určena pro správu a počáteční nastavení, není uživatelsky konfigurovatelné. </li><li> DATA3 je ve výchozím nastavení uživatelsky konfigurovatelné a protokol DHCP (Dynamic Host Configuration Protocol).</li></ul>Datová rozhraní DATA1, DATA2 <ul><li>rozhraní 2 X 40-GbE </li><li> Uživatelsky konfigurovatelné pro DHCP (výchozí) nebo static</li></ul>|
+| Hmotnost                                                  | ~ 500 liber. <br>Zařízení na zajišťovacích kolech pro přepravu|
+| Dimenze                                              | Šířka: 26 palců Výška: 28 palců Délka: 48 palců |
+| Místo v racku                                              | Nelze montovat do racku|
+| Potřebné kabely                                         | 4 uzemněné napájecí kabely 120 V / 10 A (NEMA 5-15) v ceně <br> Zařízení podporuje výkon až 240 V a má napájecí nádoby C-13 <br> Používejte síťové kabely kompatibilní s [Mellanox MCX314A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html)  |
+| Napájení                                                    | 4 vestavěné napájecí zdroje (PSU) sdílené mezi oběma uzly zařízení <br> Typický příkon 1 200 wattů|
+| Kapacita úložiště                                        | ~ 1-PB raw, 70 disků po 14 TB <br> Využitelná kapacita 770 TB|
+| Počet uzlů                                          | 2 nezávislé uzly na zařízení (500 TB každý) |
+| Síťová rozhraní na uzel                             | 4 síťová rozhraní na uzel <br><br> MGMT, DATA3 <ul><li> 2 rozhraní X 1 GbE </li><li> MGMT je pro správu a počáteční nastavení, nikoli uživatelsky konfigurovatelné </li><li> DATA3 je uživatelsky konfigurovatelný a dynamický hostitelský konfigurační protokol (DHCP) ve výchozím nastavení</li></ul>DATA1, DATA2 <ul><li>2 rozhraní X 40 GbE </li><li> Uživatelsky konfigurovatelné pro DHCP (výchozí) nebo statické</li></ul>|
 
 
 ## <a name="components"></a>Komponenty
 
 Součástí služby Data Box Heavy jsou následující komponenty:
 
-* **Zařízení Data Box Heavy** – fyzické zařízení s robustním obalem, které udrží data v bezpečí. Toto zařízení má použitelnou kapacitu úložiště 770 TB.
+* **Zařízení Data Box Heavy** – fyzické zařízení s robustním obalem, které udrží data v bezpečí. Toto zařízení má využitelnou úložnou kapacitu 770 TB.
     
 * **Služba Data Box** – rozšíření webu Azure Portal, které vám umožní spravovat zařízení Data Box Heavy z webového rozhraní, ke kterému můžete získat přístup z různých geografických umístění. Ke správě zařízení Data Box Heavy použijte službu Data Box. Mezi úlohy služby patří postup vytvoření a správy objednávek, zobrazení a správa výstrah a správa sdílených složek.  
 
@@ -88,7 +88,7 @@ Typický postup zahrnuje tyto kroky:
 
 1. **Objednávka** – na portálu Azure Portal vytvoříte objednávku, zadáte doručovací údaje a cílový účet úložiště Azure pro svoje data. Pokud je zařízení k dispozici, připraví se v Azure a odešle se s identifikačním číslem pro sledování zásilky.
 
-2. **Přijetí** – jakmile zařízení obdržíte, připojte ho pomocí přiložených kabelů k síti a napájení. Zařízení zapněte a připojte se k němu. Nakonfigurujte síť zařízení a připojte sdílené složky hostitelského počítače, ze kterého chcete data kopírovat.
+2. **Přijetí** – jakmile zařízení obdržíte, připojte ho pomocí přiložených kabelů k síti a napájení. Zařízení zapněte a připojte se k němu. Nakonfigurujte síť zařízení a připojte sdílené složky hostitelského počítače, ze kterého chcete kopírovat data.
 
 3. **Kopírování dat** – zkopírujte data do sdílených složek služby Data Box Heavy.
 
@@ -96,32 +96,32 @@ Typický postup zahrnuje tyto kroky:
 
 5. **Nahrání** – data ze zařízení se automaticky zkopírují do Azure. Disky zařízení se bezpečně vymažou podle pokynů organizace NIST (National Institute of Standards and Technology).
 
-V průběhu tohoto procesu budete upozorněni e-mailem na všechny změny stavu.
+Během tohoto procesu budete e-mailem upozorněni na všechny změny stavu.
 
 ## <a name="region-availability"></a>Dostupnost v oblastech
 
-Data Box Heavy může přenášet data na základě oblasti, ve které je služba nasazená, země/oblasti, do které se zařízení dodává, a cílového účtu Azure Storage, kam data přenášíte.
+Data Box Heavy může přenášet data na základě oblasti, ve které je služba nasazena, země nebo oblasti, do které je zařízení dodáváno, a cílového účtu úložiště Azure, kde přenášíte data.
 
 - **Dostupnost služby** – u této vydané verze je služba Data Box Heavy dostupná v následujících oblastech:
-    - Všechny oblasti veřejného cloudu ve Spojených státech amerických – USA – středozápad, Západní USA 2, Západní USA, USA (střed) – jih, USA – střed, USA (střed) – sever, USA – východ a USA – východ 2
-    - Evropská unie – západní a severní Evropa
+    - Všechny oblasti veřejného cloudu ve Spojených státech amerických – USA – středozápad, USA – západ 2, USA – západ, USA – středojih, USA – střed, USA – středosever, USA – východ a USA – východ 2
+    - Evropská unie: západní a severní Evropa
     - Spojené království: Velká Británie – jih a Velká Británie – západ
     - Francie: Francie – střed a Francie – jih
 
 - **Cílové účty úložiště** – účty úložiště, do kterých se ukládají data, jsou dostupné ve všech oblastech Azure, ve kterých je tato služba k dispozici.
 
-Nejaktuálnější informace o dostupnosti oblastí pro Data Box Heavy najdete v části [produkty Azure podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all).
+Nejaktuálnější informace o dostupnosti oblasti pro data box heavy najdete v [části Produkty Azure podle oblastí](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all).
 
 ## <a name="sign-up"></a>Registrace
 
-Pokud se chcete zaregistrovat Data Box Heavy, proveďte následující kroky:
+Při registraci do data boxu Heavy postupujte takto:
 
 1. Přihlaste se k webu Azure Portal na adrese: https://portal.azure.com.
-2. Kliknutím na **+ vytvořit prostředek** vytvořte nový prostředek. Vyhledejte **Azure Data Box**. Službu **Azure Data Box** vyberte.
-3. Klikněte na možnost **Vytvořit**.
-4. Vyberte předplatné, které chcete použít pro Data Box Heavy. Vyberte oblast, ve které chcete prostředek Data Box Heavy nasadit. U možnosti **Data Box Heavy** klikněte na **Zaregistrovat se**.
-5. Odpovězte na otázky týkající se země/oblasti pobytu dat, časového rámce, cílové služby Azure pro přenos dat, šířku pásma sítě a četnosti přenosu dat. Projděte si ochranu osobních údajů a podmínky a zaškrtněte políčko, že Microsoft může použít vaši e-mailovou adresu, aby vás kontaktoval.
+2. Chcete-li vytvořit nový zdroj, klepněte na tlačítko **+ Vytvořit zdroj.** Vyhledejte **Azure Data Box**. Službu **Azure Data Box** vyberte.
+3. Klikněte na **Vytvořit**.
+4. Vyberte předplatné, které chcete použít pro data box heavy. Vyberte oblast, ve které chcete prostředek Data Box Heavy nasadit. U možnosti **Data Box Heavy** klikněte na **Zaregistrovat se**.
+5. Odpovězte na otázky týkající se země nebo oblasti rezidence dat, časového rámce, cílové služby Azure pro přenos dat, šířky pásma sítě a frekvence přenosu dat. Projděte si ochranu osobních údajů a podmínky a zaškrtněte políčko, že Microsoft může použít vaši e-mailovou adresu, aby vás kontaktoval.
 
-Po registraci můžete objednat Data Box Heavy.
+Jakmile se zaregistrujete, můžete si objednat datovou schránku Heavy.
 
     

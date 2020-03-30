@@ -1,6 +1,6 @@
 ---
-title: Vývoj platformy Microsoft Identity Platform – Azure
-description: Přečtěte si o platformě Microsoft Identity Platform a vývoji služby identity Azure Active Directory (Azure AD) a vývojářské platformy.
+title: Vývoj platformy microsoftových identit – Azure
+description: Přečtěte si o platformě microsoftových identit, což je vývoj služby Identity Azure Active Directory (Azure AD) a vývojářské platformy.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,29 +13,29 @@ ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.openlocfilehash: 8714b7a96197cb4a59b29bada31b5559961bf8e3
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78300209"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Rozvoj platformy Microsoft Identity Platform
 
-Platforma identit Microsoftu vznikla z platformy pro vývojáře Azure Active Directory (Azure AD). Umožňuje vývojářům sestavovat aplikace, které přihlásí uživatele, získat tokeny pro volání rozhraní API, například Microsoft Graph nebo rozhraní API, které vývojáři sestavili. Skládá se ze služby ověřování, open source knihoven, registrace aplikací a konfigurace (prostřednictvím portálu pro vývojáře a rozhraní API aplikace), úplné dokumentace pro vývojáře, ukázek pro rychlý Start, ukázek kódu, kurzů a návody a Další obsah pro vývojáře. Microsoft Identity Platform podporuje standardní oborové protokoly, jako jsou OAuth 2.0 a OpenID Connect.
+Platforma identit Microsoftu vznikla z platformy pro vývojáře Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které přihlašují uživatele, získat tokeny pro volání rozhraní API, jako je microsoft graph nebo rozhraní API, která vývojáři vytvořili. Skládá se ze služby ověřování, knihoven s otevřeným zdrojovým kódem, registrace a konfigurace aplikací (prostřednictvím vývojářského portálu a rozhraní API aplikace), úplné dokumentace pro vývojáře, ukázek rychlého startu, ukázek kódu, výukových programů, návodů a další obsah pro vývojáře. Microsoft Identity Platform podporuje standardní oborové protokoly, jako jsou OAuth 2.0 a OpenID Connect.
 
-Až do té doby se většina vývojářů pracovala s platformou Azure AD v 1.0, aby ověřovala pracovní a školní účty (zřízené službou Azure AD) tím, že požaduje tokeny z koncového bodu Azure AD v 1.0 pomocí knihovny ADAL (Azure AD Authentication Library), Azure Portal pro registrace a konfigurace aplikace a rozhraní Microsoft Graph API pro konfiguraci programových aplikací.
+Až dosud většina vývojářů spolupracovala s platformou Azure AD v1.0 na ověřování pracovních a školních účtů (zřízených službou Azure AD) vyžádáním tokenů z koncového bodu Azure AD v1.0 pomocí Azure AD Authentication Library (ADAL), portálu Azure pro registrace a konfigurace aplikace a rozhraní Microsoft Graph API pro konfiguraci programových aplikací.
 
-Díky jednotné platformě Microsoft identity (v 2.0) můžete napsat kód jednou a ověřit jakoukoli identitu Microsoftu do své aplikace. Pro několik platforem se pro použití s koncovými body platformy identity doporučuje plně podporovaná knihovna MSAL (Open Source Microsoft Authentication Library). MSAL se snadno používá, nabízí uživatelům Skvělé prostředí jednotného přihlašování (SSO) pro vaše uživatele, pomáhá dosahovat vysoké spolehlivosti a výkonu a vyvíjí se pomocí SDL (Microsoft Secure Development Lifecycle). Při volání rozhraní API můžete svou aplikaci nakonfigurovat tak, aby využívala výhod přírůstkového souhlasu, která umožňuje zpozdit žádost o souhlas s více invazivními rozsahy, dokud použití aplikace neopravňuje k tomu za běhu.  MSAL také podporuje Azure Active Directory B2C, takže vaši zákazníci používají své preferované sociální, podnikové nebo místní identity účtu k získání přístupu k aplikacím a rozhraním API pomocí jednotného přihlašování.
+Pomocí sjednocené platformy identit microsoftu (v2.0) můžete napsat kód jednou a ověřit libovolnou identitu Microsoftu do vaší aplikace. Pro několik platforem je doporučeno plně podporované open source Knihovna ověřování Microsoft (MSAL) pro použití proti koncovým bodům platformy identity. MSAL je jednoduchý na používání, poskytuje skvělé jednotné přihlašování (SSO) prostředí pro vaše uživatele, pomáhá dosáhnout vysoké spolehlivosti a výkonu a je vyvinut pomocí Microsoft Secure Development Lifecycle (SDL). Při volání rozhraní API můžete nakonfigurovat aplikaci tak, aby využívala výhod přírůstkového souhlasu, což umožňuje odložit žádost o souhlas pro více invazivní obory, dokud to použití aplikace neodůvodní za běhu.  MSAL také podporuje Azure Active Directory B2C, takže vaši zákazníci používají své upřednostňované sociální, podnikové nebo místní identity účtů k získání jednotného přihlášení k vašim aplikacím a rozhraním API.
 
-S platformou Microsoft Identity můžete rozšířit svůj přístup k těmto typům uživatelů:
+S platformou microsoftových identit rozšiřte svůj dosah na tyto typy uživatelů:
 
-- Pracovní a školní účty (účty zřízené Azure AD)
+- Pracovní a školní účty (zřízené účty Azure AD)
 - Osobní účty (například Outlook.com nebo Hotmail.com)
-- Vaši zákazníci, kteří přinášejí vlastní e-mail nebo sociální identitu (například LinkedIn, Facebook, Google) prostřednictvím MSAL a Azure AD B2C
+- Vaši zákazníci, kteří si prostřednictvím Služby MSAL a Azure AD B2C přinesou vlastní e-mail nebo sociální identitu (například LinkedIn, Facebook, Google)
 
-Azure Portal můžete použít k registraci a konfiguraci aplikace a k použití rozhraní Microsoft Graph API pro konfiguraci programových aplikací.
+Portál Azure můžete použít k registraci a konfiguraci aplikace a použití rozhraní Microsoft Graph API pro konfiguraci programových aplikací.
 
-Aktualizujte svou aplikaci vlastním tempem. Aplikace vytvořené pomocí knihoven ADAL budou nadále podporovány. Podporují se i smíšené portfolia aplikací, které se skládají z aplikací vytvořených pomocí ADAL a aplikací vytvořených pomocí knihoven MSAL. To znamená, že aplikace používající nejnovější ADAL a nejnovější MSAL budou v rámci portfolia poskytovat jednotné přihlašování, které poskytuje mezipaměť sdíleného tokenu mezi těmito knihovnami. Aplikace aktualizované z ADAL na MSAL budou při upgradu udržovat stav přihlášení uživatele.
+Aktualizujte svou aplikaci svým vlastním tempem. Aplikace vytvořené pomocí knihoven ADAL jsou i nadále podporovány. Podporována jsou také portfolia smíšených aplikací, která se skládají z aplikací vytvořených pomocí ADAL a aplikací vytvořených pomocí knihoven MSAL. To znamená, že aplikace využívající nejnovější ADAL a nejnovější MSAL bude poskytovat jednotné přihlašování v celém portfoliu, poskytované sdílené token mezipaměti mezi těmito knihovnami. Aplikace aktualizované z ADAL na MSAL bude udržovat stav přihlášení uživatele při upgradu.
 
 ## <a name="microsoft-identity-platform-experience"></a>Používání platformy Microsoft Identity Platform
 
@@ -43,29 +43,29 @@ Na následujícím schématu vidíte používání identit Microsoftu na vysoké
 
 ![Platforma Microsoft Identity Platform dnes](./media/about-microsoft-identity-platform/about-microsoft-identity-platform.svg)
 
-### <a name="app-registration-experience"></a>Prostředí pro registraci aplikací
+### <a name="app-registration-experience"></a>Prostředí registrace aplikací
 
-Prostředí Azure Portal **[Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908)** je prostředí s jedním portálem pro správu všech aplikací, které jste integrací s platformou Microsoft identity. Pokud jste používali portál pro registraci aplikací, začněte místo toho používat prostředí pro registraci aplikací Azure Portal.
+Prostředí **[registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908)** na portálu Azure je jedno prostředí portálu pro správu všech aplikací, které jste integrovali s platformou identit Microsoftu. Pokud používáte portál registrace aplikací, začněte místo toho používat prostředí registrace aplikace Portálu Azure.
 
-Pro integraci s Azure AD B2C (při ověřování sociálních nebo místních identit) budete muset aplikaci zaregistrovat v tenantovi Azure AD B2C. Toto prostředí je také součástí Azure Portal.
+Pro integraci s Azure AD B2C (při ověřování sociálních nebo místních identit), budete muset zaregistrovat aplikaci v tenantovi Azure AD B2C. Toto prostředí je také součástí portálu Azure.
 
-Pomocí [rozhraní API pro aplikace](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0) můžete programově nakonfigurovat aplikace integrované s platformou Microsoft identity pro ověřování jakékoli identity Microsoftu.
+Pomocí [rozhraní API aplikace](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0) můžete programově konfigurovat aplikace integrované s platformou identit microsoftu pro ověřování jakékoli identity společnosti Microsoft.
 
 ### <a name="msal-libraries"></a>Knihovny MSAL
 
-Pomocí knihovny MSAL můžete sestavovat aplikace, které ověřují všechny identity Microsoftu. Knihovny MSAL v rozhraní .NET a JavaScriptu jsou všeobecně dostupné. Knihovny MSAL pro iOS a Android jsou ve verzi Preview a jsou vhodné pro použití v produkčním prostředí. Poskytujeme stejnou podporu na úrovni výroby pro knihovny MSAL ve verzi Preview, a to pro verze MSAL a ADAL, které jsou všeobecně dostupné.
+Knihovnu MSAL můžete použít k vytváření aplikací, které ověřují všechny identity microsoftu. Knihovny MSAL v rozhraní .NET a JavaScript jsou obecně dostupné. Knihovny MSAL pro iOS a Android jsou ve verzi preview a vhodné pro použití v produkčním prostředí. Poskytujeme stejnou podporu na úrovni výroby pro knihovny MSAL ve verzi preview jako pro verze MSAL a ADAL, které jsou obecně dostupné.
 
-Pomocí knihoven MSAL můžete také integrovat aplikaci s Azure AD B2C.
+Knihovny MSAL můžete také použít k integraci aplikace s Azure AD B2C.
 
-Jsou všeobecně dostupné knihovny na straně serveru pro vytváření webových aplikací a webových rozhraní API: [ASP.NET](https://docs.microsoft.com/aspnet/overview) a [ASP.NET Core](https://docs.microsoft.com/aspnet/core/?view=aspnetcore-2.2)
+Knihovny na straně serveru pro vytváření webových aplikací a webových rozhraní API jsou obecně dostupné: [ASP.NET](https://docs.microsoft.com/aspnet/overview) a [ASP.NET Core](https://docs.microsoft.com/aspnet/core/?view=aspnetcore-2.2)
 
-### <a name="microsoft-identity-platform-endpoint"></a>Koncový bod platformy Microsoft identity
+### <a name="microsoft-identity-platform-endpoint"></a>Koncový bod platformy identit y Microsoft
 
-Koncový bod Microsoft Identity Platform (v 2.0) je teď OIDC certifikovaný. Funguje s knihovnami Microsoft Authentication Library (MSAL) nebo jinými knihovnami kompatibilními s normami. V souladu s oborovým standardem implementuje lidské čitelné rozsahy.
+Koncový bod platformy identit y Microsoft (v2.0) je nyní certifikován OIDC. Pracuje s knihovnami Microsoft Authentication Libraries (MSAL) nebo s jakoukoli jinou knihovnou kompatibilní se standardy. Implementuje lidské čitelné obory v souladu s průmyslovými standardy.
 
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další informace o verzích v1.0 a v2.0.
 
-* [Microsoft Identity Platform (v 2.0) – přehled](v2-overview.md)
-* [Přehled Azure Active Directory pro vývojáře (v 1.0)](../azuread-dev/v1-overview.md)
+* [Microsoft identity platformy (v2.0) přehled](v2-overview.md)
+* [Přehled služby Azure Active Directory pro vývojáře (v1.0)](../azuread-dev/v1-overview.md)

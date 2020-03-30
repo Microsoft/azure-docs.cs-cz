@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace NetSuite OneWorld pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a NetSuite OneWorld.
+title: 'Kurz: Konfigurace služby Netsuite OneWorld pro automatické zřizování uživatelů pomocí služby Azure Active Directory | Dokumenty společnosti Microsoft'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a Netsuite OneWorld.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,84 +16,84 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4c9a823e6515c2bfe09e1ab7bcef471eb8169e75
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063291"
 ---
-# <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Kurz: Konfigurace NetSuite pro Automatické zřizování uživatelů
+# <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Kurz: Konfigurace sady Netsuite pro automatické zřizování uživatelů
 
-Cílem tohoto kurzu je Ukázat kroky, které musíte provést v NetSuite OneWorld a Azure AD a automaticky zřizovat a zrušit zřizování uživatelských účtů z Azure AD až po NetSuite.
+Cílem tohoto kurzu je ukázat kroky, které je potřeba provést v Netsuite OneWorld a Azure AD automaticky zřídit a de-provision uživatelské účty z Azure AD do Netsuite.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
+Scénář popsaný v tomto kurzu předpokládá, že již máte následující položky:
 
-*   Tenant Azure Active Directory.
-*   Předplatné NetSuite OneWorld. Všimněte si, že Automatické zřizování uživatelů je v současné době podporováno pouze pomocí NetSuite OneWorld.
-*   Uživatelský účet v NetSuite s oprávněními správce.
+*   Tenant advitus azure active directory.
+*   Předplatné Netsuite OneWorld. Všimněte si, že automatické zřizování uživatelů je v současné době podporována pouze s NetSuite OneWorld.
+*   Uživatelský účet v netsuite s oprávněními správce.
 
-## <a name="assigning-users-to-netsuite-oneworld"></a>Přiřazení uživatelů k NetSuite OneWorld
+## <a name="assigning-users-to-netsuite-oneworld"></a>Přiřazení uživatelů k Netsuite OneWorld
 
-Azure Active Directory používá koncept nazvaný "přiřazení" k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelských účtů se synchronizují jenom uživatelé a skupiny přiřazené k aplikaci v Azure AD.
+Azure Active Directory používá koncept s názvem "přiřazení" k určení, kteří uživatelé by měli získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelských účtů jsou synchronizováni pouze uživatelé a skupiny, které byly "přiřazeny" k aplikaci ve službě Azure AD.
 
-Než nakonfigurujete a povolíte službu zřizování, musíte se rozhodnout, co uživatelé a skupiny ve službě Azure AD reprezentují uživatelé, kteří potřebují přístup k aplikaci NetSuite. Po rozhodnutí můžete tyto uživatele přiřadit do aplikace NetSuite podle pokynů uvedených tady:
+Před konfigurací a povolením zřizovací služby se musíte rozhodnout, kteří uživatelé nebo skupiny ve službě Azure AD představují uživatele, kteří potřebují přístup k vaší aplikaci Netsuite. Jakmile se rozhodnete, můžete tyto uživatele přiřadit k aplikaci Netsuite podle pokynů zde:
 
 [Přiřazení uživatele nebo skupiny k podnikové aplikaci](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-netsuite-oneworld"></a>Důležité tipy pro přiřazení uživatelů k NetSuite OneWorld
+### <a name="important-tips-for-assigning-users-to-netsuite-oneworld"></a>Důležité tipy pro přiřazení uživatelů k Netsuite OneWorld
 
-*   Doporučuje se, abyste k testování konfigurace zřizování přiřadili jednoho uživatele Azure AD NetSuite. Další uživatele a skupiny můžete přiřadit později.
+*   Doporučuje se, aby jeden uživatel Azure AD je přiřazen k Netsuite k testování konfigurace zřizování. Další uživatelé a/nebo skupiny mohou být přiřazeny později.
 
-*   Při přiřazování uživatele k NetSuite je nutné vybrat platnou roli uživatele. Role výchozí přístup nefunguje pro zřizování.
+*   Při přiřazování uživatele k sadě Netsuite je nutné vybrat platnou roli uživatele. Role "Výchozí přístup" nefunguje pro zřizování.
 
 ## <a name="enable-user-provisioning"></a>Povolit zřizování uživatelů
 
-V této části se seznámíte s připojením k rozhraní API pro zřizování uživatelských účtů ve službě Azure AD a konfigurací služby zřizování k vytváření, aktualizaci a zakázání přiřazených uživatelských účtů v NetSuite na základě přiřazení uživatelů a skupin ve službě Azure AD.
+Tato část vás provede připojením azure ad k rozhraní API pro zřizování uživatelských účtů Netsuite a konfigurací zřizovací služby pro vytváření, aktualizaci a zakázání přiřazených uživatelských účtů v Netsuite na základě přiřazení uživatelů a skupin ve službě Azure AD.
 
 > [!TIP] 
-> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro Netsuite, a to podle pokynů uvedených v tématu [Azure Portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování, i když se tyto dvě funkce navzájem doplňují.
+> Můžete se také rozhodnout povolit jednotné přihlašování na saml pro Netsuite podle pokynů uvedených na [webu Azure Portal](https://portal.azure.com). Jednotné přihlašování lze nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce kompliment navzájem.
 
 ### <a name="to-configure-user-account-provisioning"></a>Konfigurace zřizování uživatelských účtů:
 
-Cílem této části je vysvětlit, jak povolit uživatelům zřizování uživatelských účtů služby Active Directory pro Netsuite.
+Cílem této části je nastínit, jak povolit zřizování uživatelských účtů služby Active Directory do sady Netsuite.
 
-1. V [Azure Portal](https://portal.azure.com)přejděte do části **Azure Active Directory > Enterprise Apps > všechny aplikace** .
+1. Na [webu Azure Portal](https://portal.azure.com)přejděte do části **Azure Active Directory > Podnikové aplikace > všechny aplikace.**
 
-1. Pokud jste už nakonfigurovali NetSuite pro jednotné přihlašování, vyhledejte vaši instanci NetSuite pomocí vyhledávacího pole. V opačném případě vyberte **Přidat** a vyhledejte **NetSuite** v galerii aplikací. Ve výsledcích hledání vyberte NetSuite a přidejte je do seznamu aplikací.
+1. Pokud jste již nakonfigurovali Netsuite pro jednotné přihlašování, vyhledejte svou instanci Netsuite pomocí vyhledávacího pole. V opačném případě vyberte **Přidat** a vyhledejte **Netsuite** v galerii aplikací. Ve výsledcích hledání vyberte Netsuite a přidejte ho do seznamu aplikací.
 
-1. Vyberte svou instanci NetSuite a pak vyberte kartu **zřizování** .
+1. Vyberte svou instanci Netsuite a pak vyberte kartu **Zřizování.**
 
-1. Nastavte **režim zřizování** na **automaticky**. 
+1. Nastavte **režim zřizování** na **automatické**. 
 
-    ![zřizování](./media/netsuite-provisioning-tutorial/provisioning.png)
+    ![Zajišťování](./media/netsuite-provisioning-tutorial/provisioning.png)
 
-1. V části **přihlašovací údaje správce** zadejte následující nastavení konfigurace:
+1. V části **Pověření správce** zadejte následující nastavení konfigurace:
    
-    a. Do textového pole **správce uživatelské jméno** zadejte název účtu NetSuite, který má přiřazený profil **správce systému** v NetSuite.com.
+    a. Do textového pole **Uživatelské jméno správce** zadejte název účtu Netsuite, který má v Netsuite.com přiřazen profil správce **systému.**
    
-    b. Do textového pole **heslo správce** zadejte heslo pro tento účet.
+    b. Do textového pole **Heslo správce** zadejte heslo pro tento účet.
       
-1. V Azure Portal klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k vaší aplikaci NetSuite.
+1. Na webu Azure Portal klikněte na **Test Connection** a ujistěte se, že se Azure AD může připojit k vaší aplikaci Netsuite.
 
-1. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko.
-
-1. Klikněte na **Uložit.**
-
-1. V části mapování vyberte **synchronizovat Azure Active Directory uživatelé NetSuite.**
-
-1. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do NetSuite. Všimněte si, že atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v NetSuite pro operace aktualizace. Vyberte tlačítko Uložit potvrďte změny.
-
-1. Pokud chcete povolit službu Azure AD Provisioning pro Netsuite, změňte **stav zřizování** na **zapnuto** v části nastavení.
+1. Do pole **E-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, která by měla dostávat oznámení o chybách zřizování, a zaškrtněte políčko.
 
 1. Klikněte na **Uložit.**
 
-Spustí počáteční synchronizaci všech uživatelů nebo skupin přiřazených NetSuite v části Uživatelé a skupiny. Všimněte si, že počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba spuštěná. Pomocí části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na zřizování protokolů aktivit, které popisují všechny akce prováděné službou zřizování ve vaší aplikaci NetSuite.
+1. V části Mapování vyberte **Synchronizovat uživatele služby Azure Active Directory s netsuite.**
 
-Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
+1. V části **Mapování atributů** zkontrolujte atributy uživatele, které jsou synchronizovány z Azure AD do Netsuite. Všimněte si, že atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelským účtům v netsuite pro operace aktualizace. Chcete-li potvrdit všechny změny, vyberte tlačítko Uložit.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+1. Chcete-li povolit službu zřizování Azure AD pro Netsuite, změňte **stav zřizování** **na Zapnuto** v části Nastavení
+
+1. Klikněte na **Uložit.**
+
+Spustí počáteční synchronizaci všech uživatelů a/nebo skupin přiřazených k Netsuite v sekci Uživatelé a skupiny. Všimněte si, že počáteční synchronizace trvá déle než následné synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba spuštěna. Část **Podrobnosti synchronizace** můžete použít ke sledování průběhu a sledování odkazů na protokoly zřizování aktivit, které popisují všechny akce prováděné službou zřizování v aplikaci Netsuite.
+
+Další informace o tom, jak číst protokoly zřizování Azure AD, naleznete [v tématu Vytváření sestav na automatické zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
+
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

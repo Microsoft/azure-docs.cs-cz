@@ -3,49 +3,49 @@ title: Úvod do Azure Dev Spaces
 services: azure-dev-spaces
 ms.date: 05/07/2019
 ms.topic: overview
-description: Přečtěte si, jak Azure Dev Spaces poskytuje rychlé a iterativní vývojové prostředí Kubernetes pro týmy ve clusterech služby Azure Kubernetes.
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, kubectl, k8s
+description: Zjistěte, jak Azure Dev Spaces poskytuje rychlé a iterativní prostředí pro vývoj Kubernetes pro týmy v clusterech služby Azure Kubernetes
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery, kubectl, k8s
 manager: gwallace
 ms.openlocfilehash: 586b19070ec36517add21f7aac86ddf15121be2d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240699"
 ---
 # <a name="introduction-to-azure-dev-spaces"></a>Úvod do Azure Dev Spaces
 
-Azure Dev Spaces poskytuje rychlé a iterativní vývojové prostředí Kubernetes pro týmy v clusterech Azure Kubernetes Service (AKS). Azure Dev Spaces také umožňuje ladit a testovat všechny součásti aplikace v AKS s minimálním nastavením vývojového počítače, aniž by se musely replikovat nebo napodobovat závislosti.
+Azure Dev Spaces poskytuje rychlé a iterativní prostředí pro vývoj Kubernetes pro týmy v clusterech služby Azure Kubernetes Service (AKS). Azure Dev Spaces také umožňuje ladit a testovat všechny součásti vaší aplikace v AKS s minimálnínastavení vývojového počítače, bez replikace nebo zesměšňování závislostí.
 
 ![](media/azure-dev-spaces/collaborate-graphic.gif)
 
 ## <a name="how-azure-dev-spaces-simplifies-kubernetes-development"></a>Jak Azure Dev Spaces zjednodušuje vývoj na platformě Kubernetes
 
-Azure Dev Spaces pomáhá týmům soustředit se na vývoj a rychlou iteraci své aplikace mikroslužeb tím, že týmům umožní pracovat přímo s celou architekturou mikroslužeb nebo aplikací spuštěnou v AKS. Azure Dev Spaces taky poskytuje způsob, jak nezávisle aktualizovat části architektury mikroslužeb v izolaci, aniž by to ovlivnilo zbytek clusteru AKS nebo jiných vývojářů. Azure Dev Spaces slouží pro vývoj a testování ve vývojových a testovacích prostředích nižší úrovně a není určené ke spouštění v produkčních clusterech AKS.
+Azure Dev Spaces pomáhá týmům zaměřit se na vývoj a rychlou iteraci jejich aplikace mikroslužeb tím, že umožňuje týmům pracovat přímo s celou architekturou mikroslužeb nebo aplikací spuštěnou v AKS. Azure Dev Spaces také poskytuje způsob, jak nezávisle aktualizovat části architektury mikroslužeb izolovaně bez ovlivnění zbytku clusteru AKS nebo jiných vývojářů. Azure Dev Spaces je pro vývoj a testování v prostředích vývoje a testování nižší úrovně a není určen ke spuštění v produkčních clusterech AKS.
 
 Vzhledem k tomu, že týmy můžou pracovat s celou aplikací a spolupracovat přímo v AKS, Azure Dev Spaces:
 
-* Minimalizuje nastavení místního počítače.
-* Snižuje čas nastavení pro nové vývojáře v týmu.
-* Zvyšuje rychlost týmu prostřednictvím rychlejší iterace.
-* Snižuje počet redundantních prostředí pro vývoj a integraci, protože členové týmu můžou sdílet cluster.
-* Odstraní nutnost replikace nebo napodobování závislostí.
-* Vylepšuje spolupráci mezi vývojovými týmy a týmy, se kterými pracují, například DevOps týmy.
+* Minimalizuje nastavení místního počítače
+* Zkracovat čas nastavení pro nové vývojáře v týmu
+* Zvyšuje rychlost týmu díky rychlejší iteraci
+* Snižuje počet redundantních vývojových a integračních prostředí, protože členové týmu mohou sdílet cluster
+* Odstraňuje potřebu replikovat nebo napodobovat závislosti.
+* Zlepšuje spolupráci napříč vývojovými týmy i týmy, se kterými pracují, jako jsou týmy DevOps.
 
-Azure Dev Spaces poskytuje nástroje pro generování Docker a Kubernetes prostředků pro vaše projekty. Pomocí tohoto nástroje můžete snadno přidávat nové a existující aplikace do vývojového prostoru i dalších clusterů AKS.
+Azure Dev Spaces poskytuje nástroje pro generování prostředků Dockeru a Kubernetes pro vaše projekty. Tento nástroj umožňuje snadno přidat nové i stávající aplikace do prostoru pro vývoj a do jiných clusterů AKS.
 
-Další informace o tom, jak Azure Dev Spaces funguje, najdete v tématu [Jak funguje Azure dev Spaces a která je nakonfigurovaná][how-dev-spaces-works].
+Další informace o tom, jak Azure Dev Spaces funguje, najdete v [tématu Jak Azure Dev Spaces funguje a je nakonfigurovaný][how-dev-spaces-works].
 
 ## <a name="supported-regions-and-configurations"></a>Podporované oblasti a konfigurace
 
-Azure Dev Spaces podporuje jenom clustery AKS v [některých oblastech][supported-regions]. Azure Dev Spaces podporuje použití [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) nebo editoru [Visual Studio Code](https://code.visualstudio.com/download) s [rozšířením Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) nainstalovaným v systému Linux, MacOS nebo Windows 8 nebo novějším pro sestavování a provoz vašich aplikací v AKS. Podporuje také používání sady [Visual Studio](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) nainstalované ve Windows 8 nebo novějším. V případě sady Visual Studio 2019 budete potřebovat úlohu vývoj pro Azure. V případě sady Visual Studio 2017 budete potřebovat úlohu vývoje webu a [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools).
+Azure Dev Spaces je podporována jenom clustery AKS v [některých oblastech][supported-regions]. Azure Dev Spaces podporuje použití [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) nebo editoru [Visual Studio Code](https://code.visualstudio.com/download) s [rozšířením Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) nainstalovaným v systému Linux, MacOS nebo Windows 8 nebo novějším pro sestavování a provoz vašich aplikací v AKS. Podporuje také použití [Visual Studia](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) nainstalovaného ve Windows 8 nebo vyšším. Pro Visual Studio 2019 budete potřebovat úlohy vývoje Azure. Pro Visual Studio 2017 budete potřebovat úlohy pro vývoj webu a [nástroje sady Visual Studio pro Kubernetes](https://aka.ms/get-vsk8stools).
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o rychlém a iterativním vývoji týmů s Azure Dev Spaces s rychlým startem pro vývoj týmu.
+Další informace o rychlém a iterativním vývoji pro týmy s Azure Dev Spaces s rychlým startem pro vývoj týmu.
 
 > [!div class="nextstepaction"]
-> [Rychlý Start pro vývoj týmu](quickstart-team-development.md)
+> [Rychlý start pro vývoj týmu](quickstart-team-development.md)
 
 
 [how-dev-spaces-works]: how-dev-spaces-works.md

@@ -1,6 +1,6 @@
 ---
-title: Co je řízení přístupu na základě role (RBAC) pro prostředky Azure? | Dokumenty Microsoft
-description: Získejte přehled řízení přístupu na základě role (RBAC) pro prostředky Azure. K řízení přístupu k prostředkům Azure použijte přiřazení rolí.
+title: Co je řízení přístupu na základě role (RBAC) u prostředků Azure? | Dokumentace Microsoftu
+description: Získejte přehled o řízení přístupu na základě rolí (RBAC) pro prostředky Azure. Přiřazení rolí slouží k řízení přístupu k prostředkům Azure.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,21 +11,21 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/11/2019
+ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2ef528438591006be6e4cdec508dd15a7fb0a143
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 6e3313e3ae201d0b730d8582fed9659d89f0d0c1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79240104"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80063063"
 ---
-# <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Co je řízení přístupu na základě role (RBAC) pro prostředky Azure?
+# <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Co je řízení přístupu na základě role (RBAC) u prostředků Azure?
 
 Správa přístupu ke cloudovým prostředkům je velmi důležitou funkcí pro jakoukoli organizaci, která používá cloud. Řízení přístupu na základě role (RBAC) pomáhá spravovat, kdo má přístup k prostředkům Azure, co může s těmito prostředky dělat a k jakým oblastem má přístup.
 
-RBAC je autorizační systém založený na [Azure Resource Manager](../azure-resource-manager/management/overview.md) , který poskytuje jemně odstupňovanou správu přístupu k prostředkům Azure.
+RBAC je autorizační systém založený na [Azure Resource Manager,](../azure-resource-manager/management/overview.md) který poskytuje jemně odstupňovanou správu přístupu k prostředkům Azure.
 
 ## <a name="what-can-i-do-with-rbac"></a>Co mi RBAC umožňuje?
 
@@ -46,45 +46,45 @@ Osvědčeným postupem při plánování strategie řízení přístupu je uděl
 
 ## <a name="how-rbac-works"></a>Jak RBAC funguje
 
-Způsob řízení přístupu k prostředkům pomocí RBAC spočívá ve vytvoření přiřazení rolí. To je klíčový koncept, který je třeba pochopit, protože udává, jak se oprávnění vynucují. Přiřazení role se skládá ze tří prvků: objekt zabezpečení, definice role a obor.
+Způsob řízení přístupu k prostředkům pomocí RBAC spočívá ve vytvoření přiřazení rolí. To je klíčový koncept pochopit - je to, jak jsou vynucena oprávnění. Přiřazení role se skládá ze tří prvků: objekt zabezpečení, definice role a obor.
 
 ### <a name="security-principal"></a>Objekt zabezpečení
 
-Objekt *zabezpečení* je objekt, který představuje uživatele, skupinu, instanční objekt nebo spravovanou identitu, která žádá o přístup k prostředkům Azure.
+*Zaregistrovaný objekt zabezpečení* je objekt, který představuje uživatele, skupinu, instanční objekt nebo spravovanou identitu, která požaduje přístup k prostředkům Azure.
 
 ![Objekt zabezpečení pro přiřazení role](./media/overview/rbac-security-principal.png)
 
 - Uživatel – jednotlivec, který má profil ve službě Azure Active Directory. Můžete také přiřadit role uživatelům v jiných tenantech. Informace o uživatelích v jiných organizacích najdete v článku o [B2B ve službě Azure Active Directory](../active-directory/b2b/what-is-b2b.md).
 - Skupina – skupina uživatelů vytvořená ve službě Azure Active Directory. Když přiřadíte roli skupině, budou mít danou roli všichni její uživatelé. 
 - Instanční objekt – identita zabezpečení, kterou používají aplikace nebo služby pro přístup ke konkrétním prostředkům Azure. Můžete si ji představit jako *identitu uživatele* (uživatelské jméno a heslo nebo certifikát) pro aplikaci.
-- Spravovaná identita – identita v Azure Active Directory, kterou automaticky spravuje Azure. [Spravované identity](../active-directory/managed-identities-azure-resources/overview.md) obvykle používáte při vývoji cloudových aplikací pro správu přihlašovacích údajů pro ověřování ve službách Azure.
+- Spravovaná identita – identita ve službě Azure Active Directory, která se automaticky spravuje azure. Spravované [identity](../active-directory/managed-identities-azure-resources/overview.md) se obvykle používají při vývoji cloudových aplikací ke správě přihlašovacích údajů pro ověřování služeb Azure.
 
-### <a name="role-definition"></a>Definice rolí
+### <a name="role-definition"></a>Definice role
 
-*Definice role* je kolekce oprávnění. Obvykle se nazývá jenom *role*. Definice role poskytuje seznam operací, které je možné provádět, například čtení, zápis a odstranění. Role mohou být souhrnné, například vlastník, nebo konkrétní, například čtenář virtuálních počítačů.
+*Definice role* je kolekce oprávnění. Obvykle se tomu říká *jen role*. Definice role poskytuje seznam operací, které je možné provádět, například čtení, zápis a odstranění. Role mohou být souhrnné, například vlastník, nebo konkrétní, například čtenář virtuálních počítačů.
 
 ![Definice role pro přiřazení role](./media/overview/rbac-role-definition.png)
 
 Azure obsahuje několik [předdefinovaných rolí](built-in-roles.md), které můžete využít. V následujícím seznamu najdete čtyři základní předdefinované role. První tři se vztahují ke všem typům prostředků.
 
 - [Vlastník](built-in-roles.md#owner) – má úplný přístup ke všem prostředkům, včetně práva delegovat přístup na ostatní.
-- [Přispěvatel](built-in-roles.md#contributor) – může vytvářet a spravovat všechny typy prostředků Azure, ale nemůže udělovat přístup ostatním.
+- [Přispěvatel](built-in-roles.md#contributor) – můžete vytvářet a spravovat všechny typy prostředků Azure, ale nemůže udělit přístup ostatním.
 - [Čtenář](built-in-roles.md#reader) – může zobrazit existující prostředky Azure.
 - [Správce uživatelských přístupů](built-in-roles.md#user-access-administrator) – může spravovat uživatelský přístup k prostředkům Azure.
 
-Zbývající předdefinované role umožňují správu konkrétních prostředků Azure. Role [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) například uživateli umožňuje vytvářet a spravovat virtuální počítače. Pokud předdefinované role nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní [role pro prostředky Azure](custom-roles.md).
+Zbývající předdefinované role umožňují správu konkrétních prostředků Azure. Role [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) například uživateli umožňuje vytvářet a spravovat virtuální počítače. Pokud předdefinované role nesplňují specifické potřeby vaší organizace, můžete vytvořit vlastní [role pro prostředky Azure](custom-roles.md).
 
-Azure obsahuje operace s daty, které umožňují udělit přístup k datům v rámci objektu. Pokud má uživatel například přístup ke čtení dat u účtu úložiště, bude moci číst objekty blob nebo zprávy v rámci daného účtu úložiště. Další informace najdete v tématu [vysvětlení definic rolí pro prostředky Azure](role-definitions.md).
+Azure má datové operace, které umožňují udělit přístup k datům v rámci objektu. Pokud má uživatel například přístup ke čtení dat u účtu úložiště, bude moci číst objekty blob nebo zprávy v rámci daného účtu úložiště. Další informace najdete [v tématu Principy definic rolí pro prostředky Azure](role-definitions.md).
 
-### <a name="scope"></a>Obor
+### <a name="scope"></a>Rozsah
 
-*Obor* je sada prostředků, na které se vztahuje přístup. Když přiřadíte roli, můžete definováním oboru dále omezit akce, které jsou povoleny. To je užitečné v případě, kdy někomu chcete udělit roli [Přispěvatel webů](built-in-roles.md#website-contributor), ale pouze pro jednu skupinu prostředků.
+*Obor* je sada prostředků, které přístup platí pro. Když přiřadíte roli, můžete definováním oboru dále omezit akce, které jsou povoleny. To je užitečné v případě, kdy někomu chcete udělit roli [Přispěvatel webů](built-in-roles.md#website-contributor), ale pouze pro jednu skupinu prostředků.
 
 V Azure můžete zadat obor na více úrovních: na úrovni [skupiny pro správu](../governance/management-groups/overview.md), předplatného, skupiny prostředků nebo prostředku. Obory jsou strukturovány ve vztahu nadřazený-podřízený obor.
 
 ![Obor přiřazení role](./media/overview/rbac-scope.png)
 
-Když udělíte přístup na úrovni nadřízeného oboru, podřízené obory zdědí příslušná oprávnění. Příklad:
+Když udělíte přístup na úrovni nadřízeného oboru, podřízené obory zdědí příslušná oprávnění. Například:
 
 - Pokud uživateli přiřadíte roli [Vlastník](built-in-roles.md#owner) na úrovni oboru skupiny pro správu, může tento uživatel spravovat vše ve všech předplatných v příslušné skupině pro správu.
 - Pokud přiřadíte roli [Čtenář](built-in-roles.md#reader) skupině v oboru předplatného, členové takové skupiny mohou zobrazit všechny skupiny prostředků a prostředky v daném předplatném.
@@ -92,23 +92,23 @@ Když udělíte přístup na úrovni nadřízeného oboru, podřízené obory zd
 
 ### <a name="role-assignments"></a>Přiřazení rolí
 
-*Přiřazení role* je proces připojení definice role k uživateli, skupině, objektu služby nebo spravované identitě v konkrétním oboru pro účely udělení přístupu. Přístup se uděluje vytvořením přiřazení role a odvolává se odebráním přiřazení role.
+Přiřazení *role* je proces připojení definice role k uživateli, skupině, instančnímu objektu nebo spravované identitě v určitém oboru za účelem udělení přístupu. Přístup se uděluje vytvořením přiřazení role a odvolává se odebráním přiřazení role.
 
 Následující diagram znázorňuje příklad přiřazení role. V tomto příkladu byla marketingové skupině přiřazena role [Přispěvatel](built-in-roles.md#contributor) pro skupinu prostředků prodeje farmaceutických výrobků. To znamená, že uživatelé marketingové skupiny mohou vytvářet a spravovat prostředky Azure ve skupině prostředků prodeje farmaceutických výrobků. Uživatelé marketingové skupiny nemají přístup k prostředkům mimo skupinu prostředků prodeje farmaceutických výrobků, pokud nejsou součástí přiřazení jiné role.
 
 ![Přiřazení role za účelem řízení přístupu](./media/overview/rbac-overview.png)
 
-Přiřazení rolí můžete vytvořit pomocí portálu Azure Portal, Azure CLI, Azure PowerShellu, sad Azure SDK nebo rozhraní REST API. V každé skupině pro správu můžete mít až **2000** přiřazení rolí v každém předplatném a v **500** přiřazení rolí. K vytváření a odebírání přiřazení rolí musíte mít oprávnění `Microsoft.Authorization/roleAssignments/*`. Toto oprávnění se uděluje prostřednictvím role [Vlastník](built-in-roles.md#owner) nebo [Správce uživatelských přístupů](built-in-roles.md#user-access-administrator).
+Přiřazení rolí můžete vytvořit pomocí portálu Azure Portal, Azure CLI, Azure PowerShellu, sad Azure SDK nebo rozhraní REST API. V každém předplatném můžete mít až **2000** přiřazení rolí a v každé skupině pro správu **500** přiřazení rolí. K vytváření a odebírání přiřazení rolí musíte mít oprávnění `Microsoft.Authorization/roleAssignments/*`. Toto oprávnění se uděluje prostřednictvím role [Vlastník](built-in-roles.md#owner) nebo [Správce uživatelských přístupů](built-in-roles.md#user-access-administrator).
 
-## <a name="multiple-role-assignments"></a>Přiřazení více rolí
+## <a name="multiple-role-assignments"></a>Více přiřazení rolí
 
-Co se stane, když máte více překrývajících se přiřazení rolí? RBAC je aditivní model, takže vaše efektivní oprávnění jsou přidáním přiřazení rolí. Vezměte v úvahu následující příklad, kdy je uživateli udělena role Přispěvatel v oboru předplatného a role čtenář ve skupině prostředků. Přidání oprávnění přispěvatele a oprávnění čtenářů je efektivně rolí přispěvatele pro skupinu prostředků. Proto v takovém případě přiřazení role čtenáře nemá žádný vliv.
+Co se tedy stane, pokud máte více překrývajících se přiřazení rolí? RBAC je aditivní model, takže vaše účinná oprávnění jsou součtem přiřazení rolí. Zvažte následující příklad, kde je uživateli udělena role přispěvatele v oboru předplatného a role čtenáře ve skupině prostředků. Součet oprávnění přispěvatele a oprávnění čtenáře je efektivně role přispěvatele pro skupinu prostředků. Proto v tomto případě přiřazení role Čtenáře nemá žádný vliv.
 
-![Přiřazení více rolí](./media/overview/rbac-multiple-roles.png)
+![Více přiřazení rolí](./media/overview/rbac-multiple-roles.png)
 
 ## <a name="deny-assignments"></a>Přiřazení zamítnutí
 
-Model RBAC původně umožňoval jen povolení, ne zamítnutí, teď ale omezeně podporuje také přiřazení zamítnutí. Podobně jako u přiřazení role *přiřazení zamítnutí* připojuje sadu akcí Odepřít pro uživatele, skupinu, instanční objekt nebo spravovanou identitu v konkrétním oboru pro účely odepření přístupu. Přiřazení role definuje sadu akcí, které jsou *povoleny*, zatímco přiřazení zamítnutí definuje sadu akcí, které nejsou *povoleny*. Jinými slovy, přiřazení zamítnutí blokuje uživatelům možnost provádět určité akce i v případě, že přiřazení role jim přístup uděluje. Přiřazení zamítnutí mají přednost před přiřazením rolí. Další informace najdete v tématu [Vysvětlení přiřazení zamítnutí pro prostředky Azure](deny-assignments.md).
+Model RBAC původně umožňoval jen povolení, ne zamítnutí, teď ale omezeně podporuje také přiřazení zamítnutí. Podobně jako přiřazení role, *odepřít přiřazení* připojí sadu odepřít akce pro uživatele, skupinu, instanční objekt nebo spravované identity v určitém oboru za účelem odepření přístupu. Přiřazení role definuje sadu akcí, které jsou *povoleny*, zatímco odepřít přiřazení definuje sadu akcí, které *nejsou povoleny*. Jinými slovy, přiřazení zamítnutí blokuje uživatelům možnost provádět určité akce i v případě, že přiřazení role jim přístup uděluje. Přiřazení zamítnutí mají přednost před přiřazením rolí. Další informace najdete [v tématu Principy odepřít přiřazení pro prostředky Azure](deny-assignments.md).
 
 ## <a name="how-rbac-determines-if-a-user-has-access-to-a-resource"></a>Jak se v modelu RBAC určí, jestli má uživatel přístup k prostředku
 
@@ -126,7 +126,7 @@ V následující části popisujeme obecné kroky, které se v modelu RBAC použ
 
 1. Azure Resource Manager určí, zda je akce ve volání rozhraní API je zahrnuta v rolích, které uživatel pro tento prostředek má.
 
-1. Pokud uživatel nemá roli s akcí v požadovaném oboru, není přístup povolen. V opačném případě Azure Resource Manager ověří, zda platí přiřazení zamítnutí.
+1. Pokud uživatel nemá roli s akcí v požadovaném oboru, přístup není udělen. V opačném případě Azure Resource Manager ověří, zda platí přiřazení zamítnutí.
 
 1. Pokud ano, přístup se zablokuje. Pokud ne, přístup je udělen.
 
@@ -136,7 +136,7 @@ V následující části popisujeme obecné kroky, které se v modelu RBAC použ
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Rychlý Start: zobrazení přístupu uživatele k prostředkům Azure pomocí Azure Portal](check-access.md)
+- [Úvodní příručka: Zobrazení přístupu, který má uživatel k prostředkům Azure pomocí portálu Azure](check-access.md)
 - [Správa přístupu k prostředkům Azure pomocí RBAC a webu Azure Portal](role-assignments-portal.md)
 - [Vysvětlení různých rolí v Azure](rbac-and-directory-admin-roles.md)
 - [Přechod na podnikový cloud: Správa přístupu k prostředkům v Azure](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

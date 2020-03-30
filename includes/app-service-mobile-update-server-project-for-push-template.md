@@ -5,20 +5,20 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 675ad278cb8bdc0ced4eff3bd77572f44c9808fc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68857353"
 ---
-V této části aktualizujete kód v existujícím projektu Mobile Apps back-end pro odeslání nabízeného oznámení pokaždé, když se přidá nová položka. Tento proces využívá funkci [šablony](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) Azure Notification Hubs, která umožňuje nabízená oznámení mezi platformami. Různí klienti jsou registrováni pro nabízená oznámení pomocí šablon a jedinou univerzální nabízenou instalací lze získat na všechny klientské platformy.
+V této části aktualizujete kód v existujícím projektu back-end u mobilních aplikací a odešlete nabízené oznámení pokaždé, když je přidána nová položka. Tento proces je založen na funkci [šablony](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) Azure Notification Hubs, která umožňuje nabízená oznámení napříč platformami. Různí klienti jsou registrováni pro nabízená oznámení pomocí šablon a jeden univerzální nabízený tisk se může dostat na všechny klientské platformy.
 
-Vyberte jeden z následujících postupů, který odpovídá vašemu typu&mdash;back-end projektu buď back-end [.NET](#dotnet) , nebo back- [End Node. js](#nodejs).
+Zvolte jeden z následujících postupů, které&mdash;odpovídají typu back-endového projektu, buď [back-endu .NET,](#dotnet) nebo [back-endu Node.js](#nodejs).
 
-### <a name="dotnet"></a>Projekt back-end .NET
+### <a name="net-back-end-project"></a><a name="dotnet"></a>Back-endový projekt .NET
 
-1. V aplikaci Visual Studio klikněte pravým tlačítkem myši na serverový projekt. Pak vyberte **Spravovat balíčky NuGet**. Vyhledejte a pak vyberte nainstalovat. `Microsoft.Azure.NotificationHubs` Tento proces nainstaluje knihovnu Notification Hubs pro odesílání oznámení z back-endu.
-2. V projektu serveru otevřete Controllers > **TodoItemController.cs**. Pak přidejte následující příkazy using:
+1. V sadě Visual Studio klikněte pravým tlačítkem myši na projekt serveru. Pak vyberte **Spravovat nugetové balíčky**. Vyhledejte `Microsoft.Azure.NotificationHubs`položku a vyberte **možnost Instalovat**. Tento proces nainstaluje knihovnu Centra oznámení pro odesílání oznámení ze back-endu.
+2. V projektu serveru otevřete**TodoItemController.cs** **řadiče** > . Pak přidejte následující pomocí příkazů:
 
     ```csharp
     using System.Collections.Generic;
@@ -26,7 +26,7 @@ Vyberte jeden z následujících postupů, který odpovídá vašemu typu&mdash;
     using Microsoft.Azure.Mobile.Server.Config;
     ```
 
-3. Do metody **PostTodoItem** přidejte po volání **InsertAsync**následující kód:  
+3. V **postTodoItem** metoda, přidejte následující kód po volání **InsertAsync**:  
 
     ```csharp
     // Get the settings for the server project.
@@ -64,14 +64,14 @@ Vyberte jeden z následujících postupů, který odpovídá vašemu typu&mdash;
     }
     ```
 
-    Tento proces pošle oznámení šablony obsahující položku. Text při vložení nové položky
+    Tento proces odešle oznámení šablony, která obsahuje položku. Text při vložení nové položky.
 
-4. Publikujte projekt serveru znovu.
+4. Znovu publikujte projekt serveru.
 
-### <a name="nodejs"></a>Back-end projekt Node. js
+### <a name="nodejs-back-end-project"></a><a name="nodejs"></a>Back-endový projekt Node.js
 
-1. Nastavte svůj back-end projekt.
-2. Nahraďte existující kód v TodoItem. js následujícím kódem:
+1. Nastavte back-endový projekt.
+2. Nahraďte existující kód v souboru todoitem.js následujícím kódem:
 
     ```javascript
     var azureMobileApps = require('azure-mobile-apps'),
@@ -114,6 +114,6 @@ Vyberte jeden z následujících postupů, který odpovídá vašemu typu&mdash;
     module.exports = table;  
     ```
 
-    Tento proces pošle oznámení šablony, které obsahuje položku. text při vložení nové položky.
+    Tento proces odešle oznámení šablony, které obsahuje item.text při vložení nové položky.
 
-3. Při úpravách souboru na místním počítači znovu publikujte projekt serveru.
+3. Při úpravách souboru v místním počítači znovu publikujte projekt serveru.

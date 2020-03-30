@@ -1,24 +1,24 @@
 ---
-title: Připojení pomocí aplikace MySQL Workbench – Azure Database for MySQL
+title: Připojení pomocí mysql workbench - Azure Database for MySQL
 description: V tomto rychlém startu najdete postup pro použití aplikace MySQL Workbench k připojení a dotazování dat ze služby Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 12/02/2019
-ms.openlocfilehash: 16218dcac2f0a4301b52b0efc54fc04ae39d5e22
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 9b6b4143ea2eeefcf0d0afbe281f7e27ca7794a1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770675"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067846"
 ---
 # <a name="azure-database-for-mysql-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MySQL: Připojení a dotazování dat pomocí aplikace MySQL Workbench
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL pomocí aplikace MySQL Workbench. 
 
-## <a name="prerequisites"></a>Předpoklady
-Tento rychlý start využívá jako výchozí bod prostředky vytvořené v některém z těchto průvodců:
+## <a name="prerequisites"></a>Požadavky
+Tento rychlý start jako výchozí bod využívá prostředky vytvořené v některém z těchto průvodců:
 - [Vytvoření serveru Azure Database for MySQL pomocí webu Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Vytvoření serveru Azure Database for MySQL pomocí Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
@@ -28,7 +28,7 @@ Stáhněte aplikaci MySQL Workbench z [webu MySQL](https://dev.mysql.com/downloa
 ## <a name="get-connection-information"></a>Získání informací o připojení
 Získejte informace o připojení potřebné pro připojení ke službě Azure Database for MySQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
 
 2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server (například **mydemoserver**).
 
@@ -40,24 +40,24 @@ Získejte informace o připojení potřebné pro připojení ke službě Azure D
 ## <a name="connect-to-the-server-by-using-mysql-workbench"></a>Připojení k serveru pomocí aplikace MySQL Workbench 
 Připojení k serveru Azure MySQL pomocí nástroje s grafickým uživatelským rozhraním MySQL Workbench:
 
-1.  Spusťte na svém počítači aplikaci MySQL Workbench. 
+1.    Spusťte na svém počítači aplikaci MySQL Workbench. 
 
-2.  V dialogovém okně pro **nastavení nového připojení** zadejte na kartě **Parametry** následující informace:
+2.    V dialogovém okně pro **nastavení nového připojení** zadejte na kartě **Parametry** následující informace:
 
     ![nastavení nového připojení](./media/connect-workbench/2-setup-new-connection.png)
 
     | **Nastavení** | **Navrhovaná hodnota** | **Popis pole** |
     |---|---|---|
-    |   Název připojení | Ukázkové připojení | Zadejte popisek pro toto připojení. |
+    |    Název připojení | Ukázkové připojení | Zadejte popisek pro toto připojení. |
     | Způsob připojení | Standard (TCP/IP) | Standard (TCP/IP) je dostačující. |
     | Název hostitele | *název serveru* | Zadejte hodnotu názvu serveru, kterou jste použili dříve při vytváření služby Azure Database for MySQL. Ukázkový server v příkladu je mydemoserver.mysql.database.azure.com. Použijte plně kvalifikovaný název domény (\*.mysql.database.azure.com), jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části.  |
     | Port | 3306 | Při připojování ke službě Azure Database for MySQL vždy používejte port 3306. |
-    | Uživatelské jméno |  *přihlašovací jméno správce serveru* | Zadejte přihlašovací uživatelské jméno správce serveru, které jste zadali dříve při vytváření služby Azure Database for MySQL. Uživatelské jméno v našem příkladu je myadmin@mydemoserver. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *username\@servername*.
-    | Heslo | vaše heslo | Kliknutím na tlačítko **Uložit v trezoru...** heslo uložte. |
+    | Uživatelské jméno |  *přihlašovací jméno správce serveru* | Zadejte přihlašovací uživatelské jméno správce serveru, které jste zadali dříve při vytváření služby Azure Database for MySQL. Uživatelské jméno v našem příkladu je myadmin@mydemoserver. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *uživatelské\@jméno název_serveru*.
+    | Heslo | vaše heslo | Kliknutím na **tlačítko Uložit v aplikaci Vault...** heslo uložíte. |
 
 3.   Pokud chcete otestovat, jestli jsou všechny parametry správně nakonfigurované, klikněte na **Test připojení**. 
 
-4.   Kliknutím na **OK** uložte připojení. 
+4.   Chcete-li připojení uložit, klepněte na tlačítko **OK.** 
 
 5.   Ve výpisu **připojení k MySQL** klikněte na dlaždici odpovídající vašemu serveru a počkejte na navázání připojení.
 

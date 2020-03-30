@@ -1,7 +1,7 @@
 ---
 title: Příprava modelu pro nasazení
 titleSuffix: ML Studio (classic) - Azure
-description: Jak připravit vyškolený model pro nasazení jako webovou službu převodem výukového experimentu Machine Learning Studio (Classic) na prediktivní experiment.
+description: Jak připravit trénovaný model pro nasazení jako webovou službu převedením vašeho machine learningového studia (klasického) trénovacího experimentu na prediktivní experiment.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,112 +10,112 @@ author: likebupt
 ms.author: keli19
 ms.date: 03/28/2017
 ms.openlocfilehash: 061c340f8c4952d5a0f2a3873f7475e4f733c290
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79204507"
 ---
-# <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio-classic"></a>Postup přípravy modelu pro nasazení v Azure Machine Learning Studio (Classic)
+# <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio-classic"></a>Jak připravit model pro nasazení v Azure Machine Learning Studio (klasické)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Azure Machine Learning Studio (Classic) poskytuje nástroje, které potřebujete k vývoji prediktivních analytických modelů, a pak je zprovoznění nasadit jako webovou službu Azure.
+Azure Machine Learning Studio (classic) vám poskytuje nástroje, které potřebujete k vývoji prediktivního analytického modelu a jeho následnému zprovoznění jeho nasazením jako webové služby Azure.
 
-Chcete-li to provést, použijte Studio (Classic) k vytvoření experimentu, který se nazývá *zkušební experiment* – při výuce, hodnocení a úpravách modelu. Jakmile budete spokojeni, získáte model připravený k nasazení, a to tak, že převedete svůj školicí experiment na *prediktivní experiment* , který je nakonfigurovaný tak, aby vyhledal data uživatelů.
+Chcete-li to provést, použijte Studio (klasické) k vytvoření experimentu - nazývaného *tréninkový experiment* - kde trénujete, skóre a upravujete model. Jakmile budete spokojeni, připravíte model k nasazení převedením trénovacího experimentu na *prediktivní experiment,* který je nakonfigurovaný tak, aby získával uživatelská data.
 
-Příklad tohoto procesu můžete zobrazit v [kurzu 1: předpověď úvěrového rizika](tutorial-part1-credit-risk.md).
+Příklad tohoto procesu můžete vidět v [kurzu 1: Předvídání úvěrového rizika](tutorial-part1-credit-risk.md).
 
-Tento článek používá podrobné informace o způsobu získá převést školicího experimentu na prediktivní experiment a jak se tento prediktivní experiment nasadit. Pochopením tyto podrobnosti se dozvíte, jak nakonfigurovat nasazeného modelu k němu efektivnější.
+Tento článek se podrobně zabývá podrobnostmi o tom, jak se tréninkový experiment převede na prediktivní experiment a jak se tento prediktivní experiment nasadí. Pochopením těchto podrobností se dozvíte, jak nakonfigurovat nasazený model tak, aby byl efektivnější.
 
 
 
 ## <a name="overview"></a>Přehled 
 
-Proces převedení školicího experimentu na prediktivní experiment zahrnuje tři kroky:
+Proces převodu trénovacího experimentu na prediktivní experiment zahrnuje tři kroky:
 
-1. Nahraďte strojového učení algoritmu moduly trénovaného modelu.
-2. Trim experiment pouze moduly, které jsou potřeba pro vyhodnocení. Výukový experiment obsahuje několik modulů, které jsou nezbytné pro školení, ale nejsou potřebné, jakmile model se trénuje.
-3. Definujte, jak váš model přijímá data od uživatele webové služby a jaká data bude vrácen.
+1. Nahraďte moduly algoritmů strojového učení trénovaným modelem.
+2. Ořízněte experiment pouze na moduly, které jsou potřebné pro vyhodnocování. Trénovací experiment obsahuje řadu modulů, které jsou nezbytné pro školení, ale nejsou potřeba po trénování modelu.
+3. Definujte, jak bude model přijímat data od uživatele webové služby a jaká data budou vrácena.
 
 > [!TIP]
-> Výukový experiment jste obeznámeni s trénování a vyhodnocování modelu pomocí svoje vlastní data. Ale po nasazení uživatele pošle nová data do modelu a vrátí výsledky předpovědí. Tak jak převést výukového experimentu na prediktivní experiment připravit na nasazení, mějte na paměti použití modelu jinými uživateli.
+> V tréninkovém experimentu jste se zabývali trénovaním a hodnocením modelu pomocí vlastních dat. Ale po nasazení, uživatelé odešlou nová data do modelu a vrátí výsledky předpovědi. Takže při převodu tréninkového experimentu na prediktivní experiment, abyste jej připravili k nasazení, mějte na paměti, jak bude model používán ostatními uživateli.
 > 
 > 
 
-## <a name="set-up-web-service-button"></a>Tlačítko Nastavení webové služby
-Po spuštění experimentu (klikněte na **Run (spustit** ) v dolní části plátna experimentu), klikněte na tlačítko **nastavit webovou službu** (vyberte možnost **prediktivní webová služba** ). **Nastavení webové služby** provede za vás tři kroky převodu školicího experimentu na prediktivní experiment:
+## <a name="set-up-web-service-button"></a>Tlačítko Nastavit webovou službu
+Po spuštění experimentu **(v** dolní části plátna experimentu klepněte na tlačítko Nastavit webovou službu ) klepněte na tlačítko **Nastavit webovou službu** (vyberte možnost **Prediktivní webová služba).** **Služba Set Up Web Service** provádí tři kroky převodu trénovacího experimentu na prediktivní experiment:
 
-1. Tento model se uloží do části **Proučené modely** v paletě modulu (nalevo od plátna experimentu). Pak nahrazuje algoritmus strojového učení a moduly [modelu vlaků][train-model] s uloženým školicím modelem.
-2. Analyzuje experimentu a odebere modulů, které byly použity jasně pouze pro školení a už nejsou potřeba.
-3. Vloží vstupní a _výstupní_ moduly _webové služby_ do výchozích umístění v experimentu (tyto moduly přijímají a vrátí data uživatelů).
+1. Uloží trénovaný model v části **Trénované modely** palety modulů (vlevo od plátna experimentu). Potom nahradí algoritmus strojového učení a [moduly modelu train][train-model] uloženým trénovaným modelem.
+2. Analyzuje váš experiment a odstraňuje moduly, které byly jasně použity pouze pro školení a již nejsou potřeba.
+3. Vloží vstupní a _výstupní_ moduly _webové služby_ do výchozích umístění v experimentu (tyto moduly přijímají a vracejí uživatelská data).
 
-Například následující experiment trénovat dvěma třídami Posílený rozhodovací strom model s použitím ukázkových dat sčítání:
+Například následující experiment trénuje dvoutřídový model rozhodovacího stromu pomocí dat ukázkového sčítání:
 
-![Výukového experimentu](./media/convert-training-experiment-to-scoring-experiment/figure1.png)
+![Tréninkový experiment](./media/convert-training-experiment-to-scoring-experiment/figure1.png)
 
-Moduly v tento experiment provádět v podstatě čtyři různé funkce:
+Moduly v tomto experimentu vykonávají v podstatě čtyři různé funkce:
 
-![Modul funkce](./media/convert-training-experiment-to-scoring-experiment/figure2.png)
+![Funkce modulu](./media/convert-training-experiment-to-scoring-experiment/figure2.png)
 
-Pokud převedete tento výukový experiment prediktivní experiment, některé z těchto modulů již nejsou potřebné nebo teď slouží k jinému účelu:
+Když převedete tento tréninkový experiment na prediktivní experiment, některé z těchto modulů již nejsou potřeba nebo nyní slouží jinému účelu:
 
-* **Data** – data v této ukázkové datové sadě se při vyhodnocování nepoužijí – uživatel webové služby dodá data, která se mají určit skóre. Metadata z této datové sady, jako jsou datové typy, ale používá trénovaného modelu. Proto je potřeba nechat datovou sadu v prediktivní experiment tak, aby mohl poskytnout tato metadata.
+* **Data** – data v této ukázkové datové sadě se nepoužívají během vyhodnocování – uživatel webové služby poskytne data, která mají být hodnocena. Metadata z této datové sady, jako jsou například datové typy, je však používán trénovaný model. Takže je třeba zachovat datovou sadu v prediktivní experiment, aby mohla poskytnout tato metadata.
 
-* **Příprava** – v závislosti na uživatelských datech, která budou odeslána pro vyhodnocování, mohou být tyto moduly nebo nemusí být nezbytné ke zpracování příchozích dat. Tlačítko **nastavit webovou službu** je nedotykové – musíte se rozhodnout, jak je chcete zpracovat.
+* **Příprava** – v závislosti na uživatelských datech, která budou odeslána ke vyhodnocování, mohou být tyto moduly nezbytné pro zpracování příchozích dat. Tlačítko **Nastavit webovou službu** se jich nedotýká – musíte se rozhodnout, jak s nimi chcete zacházet.
   
-    Například v tomto příkladu může mít ukázková datová sada chybějící hodnoty, takže modul [Vyčištění chybějících dat][clean-missing-data] byl zahrnut k tomu, aby se s nimi mohla pracovat. Ukázkovou datovou sadou navíc obsahuje sloupce, které nejsou potřebné pro trénování modelu. Proto byl zahrnutý modul [Výběr sloupců v datové sadě][select-columns] , aby vyloučil tyto nadbytečné sloupce z toku dat. Pokud víte, že data, která budou odeslána pro bodování prostřednictvím webové služby, nebudou obsahovat hodnoty, můžete odebrat modul [Vyčištění chybějících dat][clean-missing-data] . Vzhledem k tomu, že modul [Výběr sloupců v datové sadě][select-columns] pomáhá definovat sloupce dat, které vyškolený model očekává, musí tento modul zůstat.
+    Například v tomto příkladu ukázkové datové sady může mít chybějící hodnoty, takže [clean missing data][clean-missing-data] modul byl zahrnut k jejich řešení. Ukázková datová sada také obsahuje sloupce, které nejsou potřebné k trénování modelu. Takže [select columns in Dataset][select-columns] modul byl zahrnut vyloučit tyto další sloupce z toku dat. Pokud víte, že data, která budou odeslána pro vyhodnocování prostřednictvím webové služby nebude mít chybějící hodnoty, pak můžete odebrat modul [Vyčistit chybějící data.][clean-missing-data] Však vzhledem k tomu, [že vybrat sloupce v datové sadě][select-columns] modulu pomáhá definovat sloupce dat, které trénovaný model očekává, že modul musí zůstat.
 
-* **Výuka** – tyto moduly se používají ke školení modelu. Když kliknete na **nastavit webovou službu**, tyto moduly se nahradí jedním modulem, který obsahuje model, který jste vyškole. Tento nový modul je uložený v části s **výukou modelů** v paletě modulu.
+* **Vlak** - Tyto moduly se používají k trénování modelu. Po klepnutí na tlačítko **Nastavit webovou službu**budou tyto moduly nahrazeny jedním modulem obsahujícím trénovaný model. Tento nový modul je uložen v části **Trénované modely** palety modulů.
 
-* **Skóre** – v tomto příkladu se modul [rozdělení dat][split] používá k rozdělení datového proudu do testovacích dat a dat školení. Ve prediktivním experimentu už nebudeme školením moct odebrat [rozdělená data][split] . Podobně modul s druhým [modelem skóre][score-model] a modul [vyhodnocení modelu][evaluate-model] slouží k porovnání výsledků z testovacích dat, takže tyto moduly nejsou v prediktivním experimentu potřeba. Modul zbývajícího [modelu skóre][score-model] je však potřeba k vrácení výsledku skóre prostřednictvím webové služby.
+* **Skóre** – V tomto příkladu se modul [Split Data][split] používá k rozdělení datového proudu na testovací data a trénovací data. V prediktivním experimentu už netrénujeme, takže [split data][split] mohou být odebrána. Podobně druhý modul [modelu skóre][score-model] a modul [Vyhodnotit model][evaluate-model] se používají k porovnání výsledků z testovacích dat, takže tyto moduly nejsou potřebné v prediktivníexperiment. Zbývající [modul modelu skóre][score-model] je však potřeba k vrácení výsledku skóre prostřednictvím webové služby.
 
-Tady je postup, jak náš příklad vypadá po kliknutí na **nastavit webovou službu**:
+Zde je, jak náš příklad vypadá po kliknutí **nastavit webovou službu**:
 
-![Převést prediktivní experiment](./media/convert-training-experiment-to-scoring-experiment/figure3.png)
+![Převedený prediktivní experiment](./media/convert-training-experiment-to-scoring-experiment/figure3.png)
 
-Práce, kterou provedete pomocí **nastavení webové služby** , může být dostačující k přípravě experimentu, který chcete nasadit jako webovou službu. Však můžete chtít provést další úkony konkrétní do experimentu.
+Práce **vykonaná službou Set Up Web Service** může být dostatečná k přípravě experimentu k nasazení jako webové služby. Můžete však chtít provést další práci specifickou pro váš experiment.
 
-### <a name="adjust-input-and-output-modules"></a>Upravit vstupní a výstupní moduly
-V výukového experimentu používá sadu trénovacích dat a pak jste nějaké zpracování pro získání dat ve formě potřeby algoritmu strojového učení. Pokud data, která očekáváte pro příjem prostřednictvím webové služby, nebude potřeba zpracovat, můžete ji obejít: připojit výstup **vstupního modulu webové služby** k jinému modulu v experimentu. Data uživatele se teď dorazí v modelu v tomto umístění.
+### <a name="adjust-input-and-output-modules"></a>Nastavení vstupních a výstupních modulů
+V trénovacím experimentu jste použili sadu trénovacích dat a potom jste provedli určité zpracování, abyste získali data ve formě, kterou algoritmus strojového učení potřeboval. Pokud data, která očekáváte, že obdržíte prostřednictvím webové služby, nebudou toto zpracování vyžadovat, můžete je obejít: připojit výstup **vstupního modulu webové služby** k jinému modulu v experimentu. Data uživatele nyní dorazí v modelu v tomto umístění.
 
-Například ve výchozím nastavení umístí **Webová služba** **Vstupní modul webové služby** v horní části toku dat, jak je znázorněno na obrázku výše. Ale můžeme ručně umístit **vstup webové služby** za moduly zpracování dat:
+Ve výchozím nastavení například umístí **vstupní** modul webové **služby** na začátek toku dat, jak je znázorněno na obrázku výše. Ale můžeme ručně umístit **vstup webové služby** kolem modulů zpracování dat:
 
-![Přesunutí vstup webové služby](./media/convert-training-experiment-to-scoring-experiment/figure4.png)
+![Přesunutí vstupu webové služby](./media/convert-training-experiment-to-scoring-experiment/figure4.png)
 
-Vstupní data poskytovaná prostřednictvím webové služby předá nyní přímo do modulu určení skóre modelu bez jakékoli předběžného zpracování.
+Vstupní data poskytnutá prostřednictvím webové služby budou nyní přecházet přímo do modulu Score Model bez jakéhokoli předběžného zpracování.
 
-Podobně výchozí nastavení **webové služby** umístí modul výstupu webové služby do dolní části toku dat. V tomto příkladu se webová služba vrátí uživateli výstup modulu určení [skóre modelu][score-model] , který zahrnuje kompletní vstupní datový vektor a výsledky bodování.
-Pokud ale dáváte přednost vrácení jiné položky, můžete přidat další moduly před **výstupní modul webové služby** . 
+Podobně ve výchozím nastavení **nastavit webovou službu** umístí výstupní modul webové služby v dolní části toku dat. V tomto příkladu vrátí webová služba uživateli výstup modulu [Score Model,][score-model] který obsahuje vektor úplných vstupních dat a výsledky hodnocení.
+Pokud však chcete vrátit něco jiného, můžete před výstupní modul **webové služby** přidat další moduly. 
 
-Například chcete-li vrátit pouze výsledky bodování a ne celý vektor vstupních dat, přidejte modul [Výběr sloupců v datové sadě][select-columns] , který vyloučí všechny sloupce kromě výsledků bodování. Pak přesuňte modul **výstupu webové služby** na výstup modulu [Výběr sloupců v datové sadě][select-columns] . Experiment vypadá takto:
+Chcete-li například vrátit pouze výsledky hodnocení a nikoli celý vektor vstupních dat, přidejte modul [Vybrat sloupce v datové sadě,][select-columns] který vyloučí všechny sloupce kromě výsledků hodnocení. Potom přesuňte výstupní modul **webové služby** na výstup modulu [Vybrat sloupce v datové sadě.][select-columns] Experiment vypadá takto:
 
-![Přesunutí výstup webové služby](./media/convert-training-experiment-to-scoring-experiment/figure5.png)
+![Přesunutí výstupu webové služby](./media/convert-training-experiment-to-scoring-experiment/figure5.png)
 
-### <a name="add-or-remove-additional-data-processing-modules"></a>Přidat nebo odebrat moduly další zpracování dat
-Pokud existují další moduly do experimentu, o kterém víte, že nebude potřeba během vyhodnocování, ty lze odebrat. Protože jsme například přesunuli modul **vstupu webové služby** do bodu za moduly zpracování dat, můžeme z prediktivního experimentu odebrat modul [Vyčištění chybějících dat][clean-missing-data] .
+### <a name="add-or-remove-additional-data-processing-modules"></a>Přidání nebo odebrání dalších modulů pro zpracování dat
+Pokud existuje více modulů v experimentu, který víte, že nebude potřeba během bodování, tyto mohou být odstraněny. Například protože jsme přesunuli vstupní modul **webové služby** do bodu po modulech zpracování dat, můžeme odebrat modul [Vyčistit chybějící data][clean-missing-data] z prediktivního experimentu.
 
-Naše prediktivní experiment teď vypadá takto:
+Náš prediktivní experiment nyní vypadá takto:
 
-![Odebrání dalších modulů](./media/convert-training-experiment-to-scoring-experiment/figure6.png)
+![Odebrání dalšího modulu](./media/convert-training-experiment-to-scoring-experiment/figure6.png)
 
 
 ### <a name="add-optional-web-service-parameters"></a>Přidání volitelných parametrů webové služby
-V některých případech můžete chtít umožnit uživateli webovou službu můžete změnit chování modulů při přístupu k službě. Tato možnost umožňuje použít *parametry webové služby* .
+V některých případech můžete povolit uživateli webové služby změnit chování modulů při přístupu ke službě. *Parametry webové služby* umožňují provést.
 
-Běžným příkladem je nastavení modulu [Import dat][import-data] , aby uživatel nasazené webové služby mohl při použití webové služby zadat jiný zdroj dat. Nebo nakonfigurujte modul [exportu dat][export-data] tak, aby bylo možné zadat jiný cíl.
+Běžným příkladem je nastavení modulu [importu dat,][import-data] aby uživatel nasazené webové služby mohl při přístupu k webové službě zadat jiný zdroj dat. Nebo konfigurace modulu [Export dat][export-data] tak, aby bylo možné zadat jiný cíl.
 
-Můžete definovat parametry webové služby a přidružit jeden nebo více parametrů modulu, a můžete určit, jestli jsou povinné nebo volitelné. Když služba přistupuje, a modul akce, které jsou odpovídajícím způsobem změněny uživatelské web service poskytuje hodnoty pro tyto parametry.
+Můžete definovat parametry webové služby a přidružit je k jednomu nebo více parametrům modulu a můžete určit, zda jsou povinné nebo volitelné. Uživatel webové služby poskytuje hodnoty pro tyto parametry při přístupu ke službě a akce modulu jsou odpovídajícím způsobem upraveny.
 
-Další informace o tom, jaké parametry webové služby jsou a jak je používat, najdete v tématu [použití Azure Machine Learningch parametrů webové služby][webserviceparameters].
+Další informace o parametrech webové služby a jejich použití najdete v tématu [Using Azure Machine Learning Web Service Parameters][webserviceparameters].
 
 [webserviceparameters]: web-service-parameters.md
 
 
-## <a name="deploy-the-predictive-experiment-as-a-web-service"></a>Prediktivní experiment nasadit jako webovou službu
-Teď, když prediktivní experiment dostatečně připravený, můžete ho nasadit jako webová služba Azure. Pomocí webové služby, uživatelé můžou posílat data do modelu a vrátí jeho předpovědi modelu.
+## <a name="deploy-the-predictive-experiment-as-a-web-service"></a>Nasazení prediktivního experimentu jako webové služby
+Teď, když prediktivní experiment byl dostatečně připraven, můžete jej nasadit jako webovou službu Azure. Pomocí webové služby mohou uživatelé odesílat data do modelu a model vrátí své předpovědi.
 
-Další informace o dokončeném procesu nasazení najdete v tématu [nasazení webové služby Azure Machine Learning][deploy] .
+Další informace o procesu úplného nasazení najdete v [tématu Nasazení webové služby Azure Machine Learning.][deploy]
 
 [deploy]: deploy-a-machine-learning-web-service.md
 

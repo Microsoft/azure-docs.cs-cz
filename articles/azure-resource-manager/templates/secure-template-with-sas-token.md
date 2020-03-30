@@ -1,22 +1,22 @@
 ---
-title: Bezpečné nasazení šablony s tokenem SAS
-description: K nasazení prostředků do Azure můžete použít šablonu Azure Resource Manager chráněnou tokenem SAS. Zobrazuje Azure PowerShell a Azure CLI.
+title: Bezpečné nasazení šablony pomocí tokenu SAS
+description: Nasazení prostředků do Azure pomocí šablony Azure Resource Manageru, která je chráněná tokenem SAS. Zobrazuje Azure PowerShell a Azure CLI.
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: d30e685c35f33b6fc5d3872b9287e45190ad5713
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 42eaae316d4fd0575102323933f849a3058228a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79273706"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156391"
 ---
-# <a name="deploy-private-resource-manager-template-with-sas-token"></a>Nasazení privátní šablony Resource Manageru s tokenem SAS
+# <a name="deploy-private-arm-template-with-sas-token"></a>Nasazení soukromé šablony ARM pomocí tokenu SAS
 
-Když se vaše šablona nachází v účtu úložiště, můžete omezit přístup k šabloně, abyste ji neveřejně vyhnuli. Přístup k zabezpečené šabloně získáte tak, že pro šablonu vytvoříte token sdíleného přístupového podpisu (SAS) a tento token během nasazování zadáte. Tento článek vysvětluje, jak pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure nasadit šablonu s tokenem SAS.
+Když je vaše šablona Správce prostředků Azure (ARM) umístěna v účtu úložiště, můžete omezit přístup k šabloně, abyste se vyhnuli jeho veřejnému vystavení. Přístup k zabezpečené šabloně vytvořením tokenu sdíleného přístupového podpisu (SAS) pro šablonu a poskytnutím tohoto tokenu během nasazení. Tento článek vysvětluje, jak použít Azure PowerShell nebo Azure CLI k nasazení šablony s tokenem SAS.
 
-## <a name="create-storage-account-with-secured-container"></a>Vytvořit účet úložiště s zabezpečeným kontejnerem
+## <a name="create-storage-account-with-secured-container"></a>Vytvoření účtu úložiště se zabezpečeným kontejnerem
 
-Následující skript vytvoří účet úložiště a kontejner s povoleným veřejným přístupem.
+Následující skript vytvoří účet úložiště a kontejner s vypnutým veřejným přístupem.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -61,9 +61,9 @@ az storage container create \
 
 ---
 
-## <a name="upload-template-to-storage-account"></a>Odeslat šablonu do účtu úložiště
+## <a name="upload-template-to-storage-account"></a>Nahrát šablonu do účtu úložiště
 
-Nyní jste připraveni odeslat šablonu do účtu úložiště. Zadejte cestu k šabloně, kterou chcete použít.
+Nyní jste připraveni nahrát šablonu do účtu úložiště. Zadejte cestu k šabloně, kterou chcete použít.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -87,10 +87,10 @@ az storage blob upload \
 
 ## <a name="provide-sas-token-during-deployment"></a>Poskytnout token SAS během nasazení
 
-Pokud chcete v účtu úložiště nasadit soukromou šablonu, vygenerujte token SAS a zahrňte ho do identifikátoru URI pro šablonu. Nastavte čas vypršení platnosti, abyste měli dostatek času na dokončení nasazení.
+Chcete-li nasadit soukromou šablonu v účtu úložiště, vygenerujte token SAS a zahrňte jej do identifikátoru URI pro šablonu. Nastavte dobu vypršení platnosti, aby byl dostatek času na dokončení nasazení.
 
 > [!IMPORTANT]
-> Objekt BLOB obsahující šablonu je přístupný pouze pro vlastníka účtu. Pokud však vytvoříte token SAS pro objekt blob, je objekt BLOB přístupný komukoli s tímto identifikátorem URI. Pokud identifikátor URI zachytí jiný uživatel, bude mít tento uživatel k šabloně přístup. Token SAS je dobrým způsobem, jak omezit přístup k vašim šablonám, neměli byste ale obsahovat citlivá data, jako jsou hesla přímo v šabloně.
+> Objekt blob obsahující šablonu je přístupný pouze vlastníkovi účtu. Však při vytvoření tokenu SAS pro objekt blob, objekt blob je přístupný všem uživatelům s tímto URI. Pokud jiný uživatel zachytí identifikátor URI, bude mít k šabloně přístup. Token SAS je dobrý způsob, jak omezit přístup k šablonám, ale neměli byste zahrnout citlivá data, jako jsou hesla přímo do šablony.
 >
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -129,16 +129,16 @@ url=$(az storage blob url \
     --name azuredeploy.json \
     --output tsv \
     --connection-string $connection)
-az group deployment create \
+az deployment group create \
   --resource-group ExampleGroup \
   --template-uri $url?$token
 ```
 
 ---
 
-Příklad použití tokenu SAS s propojenými šablonami najdete v tématu [použití propojených šablon s Azure Resource Manager](linked-templates.md).
+Příklad použití tokenu SAS s propojenými šablonami najdete v tématu [Použití propojených šablon ve Správci prostředků Azure](linked-templates.md).
 
 
 ## <a name="next-steps"></a>Další kroky
-* Úvod k nasazení šablon najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure PowerShell](deploy-powershell.md).
-* Informace o definování parametrů v šabloně najdete v tématu [vytváření šablon](template-syntax.md#parameters).
+* Úvod k nasazení šablon najdete v tématu [Nasazení prostředků pomocí šablon ARM a Azure PowerShellu](deploy-powershell.md).
+* Chcete-li definovat parametry v šabloně, [přečtěte si](template-syntax.md#parameters)informace o vytváření šablon .

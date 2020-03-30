@@ -1,6 +1,6 @@
 ---
-title: Co je vyhrazené HSM? – Vyhrazené modulu hardwarového zabezpečení azure | Dokumentace Microsoftu
-description: Přehled vyhrazených modulu hardwarového zabezpečení Azure poskytuje možnosti úložiště klíčů v Azure, která splňují standard FIPS 140-2 Level 3 certifikační
+title: Co je Dedicated HSM? - Azure Vyhrazené HSM | Dokumenty společnosti Microsoft
+description: Přehled vyhrazeného modulu hardwarového zabezpečení Azure poskytuje funkce úložiště klíčů v rámci Azure, které splňují certifikaci FIPS 140-2 Level 3
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -14,81 +14,81 @@ ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
 ms.openlocfilehash: dd5ce117645ef2b368bbf8f0e441770d6e746b5b
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "70881071"
 ---
-# <a name="what-is-azure-dedicated-hsm"></a>Co je služba Rezervované HSM Azure?
+# <a name="what-is-azure-dedicated-hsm"></a>Co je Azure Dedicated HSM?
 
-Azure vyhrazené modul hardwarového zabezpečení je služba Azure, která poskytuje úložiště kryptografických klíčů v Azure. Vyhrazené HSM splňuje nejpřísnějšími požadavky na zabezpečení. Je to ideální řešení pro zákazníky, kteří vyžadují zařízení se standardem FIPS 140-2 úrovně 3 a kompletní a exkluzivní kontrolu nad zařízením HSM. 
+Azure Dedicated HSM je služba Azure, která poskytuje úložiště kryptografických klíčů v Azure. Vyhrazený modul hardwarového zabezpečení splňuje nejpřísnější požadavky na zabezpečení. Je to ideální řešení pro zákazníky, kteří vyžadují zařízení fips 140-2 level 3 ověřená a kompletní a výhradní ovládání zařízení HSM. 
 
- Zařízení HSM se nasazují globálně napříč několika oblastmi Azure. Dají se snadno zřídit jako pár zařízení a mají nakonfigurovanou vysokou dostupnost. Zařízení HSM je taky možné zřídit v různých oblastech, abyste se ujistili o převzetí služeb při selhání na místní úrovni. Společnost Microsoft poskytuje vyhrazenou službu HSM pomocí zařízení [Safenet Luna Network HSM 7 (model A790)](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/) od identita Gemalto. Toto zařízení přináší nejvyšší úroveň výkonu a možností kryptografických integrace. 
+ Zařízení hsm se nasazují globálně v několika oblastech Azure. Lze je snadno zřídit jako dvojici zařízení a nakonfigurovat pro vysokou dostupnost. Zařízení hsm lze také zřídit napříč oblastmi, aby bylo zajištěno proti převzetí služeb při selhání na regionální úrovni. Společnost Microsoft poskytuje vyhrazenou službu hardwarového zabezpečení pomocí zařízení [SafeNet Luna Network HSM 7 (Model A790)](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/) od společnosti Gemalto. Toto zařízení nabízí nejvyšší úrovně výkonu a možnosti kryptografické integrace. 
 
-Po zřízení se zařízení HSM připojí přímo k virtuální síti zákazníka. K nim mají taky při konfiguraci připojení typu Point-to-site nebo VPN typu Site-to-site k dispozici místní nástroje pro správu aplikací a aplikací. Zákazníci získají software a dokumentaci pro konfiguraci a správu zařízení HSM z portálu podpory identita Gemalto.
+Po jejich zřízení jsou zařízení s ním, připojení k připojení přímo k virtuální síti zákazníka. K nim lze přistupovat také pomocí místních aplikací a nástrojů pro správu při konfiguraci připojení VPN z bodu k webu nebo k webu. Zákazníci získají software a dokumentaci pro konfiguraci a správu zařízení hsm z portálu podpory společnosti Gemalto.
 
-## <a name="why-use-azure-dedicated-hsm"></a>Proč používat vyhrazený modul HSM Azure?
+## <a name="why-use-azure-dedicated-hsm"></a>Proč používat azure dedicated hsm?
 
-### <a name="fips-140-2-level-3-compliance"></a>Dodržování předpisů FIPS 140-2 úrovně 3
+### <a name="fips-140-2-level-3-compliance"></a>Shody fips 140-2 Level-3
 
-Mnoho organizací má přísné oborové předpisy, které určují, že úložiště kryptografických klíčů splňuje požadavky [standardu FIPS 140-2 úrovně 3](https://csrc.nist.gov/publications/detail/fips/140/2/final) . Služba víceklientské Azure Key Vault Microsoftu v současnosti poskytuje jenom certifikaci FIPS 140-2 Level-2. Vyhrazený modul HARDWAROVÉho zabezpečení Azure splňuje skutečnou potřebu odvětví finančních služeb, státních úřadů a dalších uživatelů, kteří musí splňovat požadavky standardu FIPS 140-2 úrovně 3.
+Mnoho organizací má přísné oborové předpisy, které určují, že úložiště kryptografických klíčů splňuje požadavky [FIPS 140-2 Level-3.](https://csrc.nist.gov/publications/detail/fips/140/2/final) Služba Azure Key Vault od Microsoftu pro více klientů v současné době poskytuje pouze certifikaci FIPS 140-2 Level-2. Azure Dedicated HSM splňuje skutečnou potřebu pro odvětví finančních služeb, vládní agentury a další, kteří musí splňovat požadavky FIPS 140-2 Level-3.
 
 ### <a name="single-tenant-devices"></a>Zařízení s jedním klientem
 
-Řada našich zákazníků má požadavek pro jeden tenantů kryptografických úložné zařízení. Vyhrazená služba HSM v Azure jim umožňuje zřídit fyzické zařízení z některého z globálně distribuovaných datových center od Microsoftu. Po zřízení pro zákazníka může k zařízení přistupovat jenom tento zákazník.
+Mnoho našich zákazníků má požadavek na jedno nájemné kryptografického paměťového zařízení. Služba Azure Dedicated HSM jim umožňuje zřídit fyzické zařízení z jednoho z globálně distribuovaných datových center Microsoftu. Po jeho zřízení zákazníkovi k zařízení má přístup pouze tento zákazník.
 
-### <a name="full-administrative-control"></a>Úplný ovládací prvek pro správu
+### <a name="full-administrative-control"></a>Úplná administrativní kontrola
 
-Mnoho zákazníků vyžaduje pro účely správy úplnou administrativní kontrolu a výhradní přístup k jejich zařízení. Po zřízení zařízení má k zařízení přístup na úrovni správce nebo na úrovni aplikace.
+Mnoho zákazníků vyžaduje plnou kontrolu správy a výhradní přístup ke svému zařízení pro administrativní účely. Po zřízení zařízení má k zařízení přístup na úrovni správy nebo aplikace pouze zákazník.
 
- Společnost Microsoft nemá žádný administrativní řídicí prvek, když ho zákazník poprvé přistupuje k zařízení, kdy zákazník změní heslo. Od tohoto okamžiku je zákazník skutečným jedním klientem s úplným řízením správy a možností správy aplikací. Microsoft udržuje přístup na úrovni monitoru (ne roli správce) pro telemetrii prostřednictvím připojení sériového portu. Tento přístup pokrývá monitorování hardwaru, jako je teplota, stav napájení a stav ventilátoru. 
+ Společnost Microsoft nemá žádnou kontrolu nad správu poté, co zákazník přistupuje k zařízení poprvé, v tomto okamžiku zákazník změní heslo. Od tohoto okamžiku je zákazník skutečný jeden tenant s plnou správu řízení a správu aplikací schopnosti. Společnost Microsoft udržuje přístup na úrovni monitorování (nikoli roli správce) pro telemetrii prostřednictvím připojení sériového portu. Tento přístup zahrnuje hardwarové monitory, jako je teplota, stav napájení a zdraví ventilátoru. 
  
- Zákazník je zdarma, aby bylo toto monitorování potřeba zakázat. Pokud je však zakáže, nebudou dostávat aktivní výstrahy týkající se stavu od společnosti Microsoft.
+ Zákazník může toto monitorování zakázat. Pokud ji však zakáží, nebudou od společnosti Microsoft dostávat proaktivní výstrahy stavu.
 
 ### <a name="high-performance"></a>Vysoký výkon
 
-Zařízení identita Gemalto se pro tuto službu vybralo z nejrůznějších důvodů. Nabízí širokou škálu podpory kryptografických algoritmů, řadu podporovaných operačních systémů a širokou podporu rozhraní API. Konkrétní model, který je nasazený, nabízí špičkový výkon s 10 000 operacemi za sekundu pro šifrování RSA-2048. Podporuje 10 oddíly, které lze použít pro instance jedinečných aplikací. Toto zařízení má nízkou latenci, vysokou kapacitu a vysokou propustnost zařízení.
+Zařízení Gemalto bylo vybráno pro tuto službu z různých důvodů. Nabízí širokou škálu podpory kryptografických algoritmů, řadu podporovaných operačních systémů a širokou podporu rozhraní API. Konkrétní nasazený model nabízí vynikající výkon s 10 000 operacemi za sekundu pro RSA-2048. Podporuje 10 oddílů, které lze použít pro jedinečné instance aplikace. Toto zařízení je zařízení s nízkou latencí, vysokou kapacitou a vysokou propustností.
 
 ### <a name="unique-cloud-based-offering"></a>Jedinečná cloudová nabídka
 
-Společnost Microsoft uznala specifickou potřebu jedinečné sady zákazníků. Je to jediný poskytovatel cloudu, který nabízí novým zákazníkům vyhrazenou službu HSM, která je ověřená na úrovni FIPS 140-2 úrovně 3, a nabízí tento rozsah integrace cloudových a místních aplikací.
+Společnost Microsoft rozpoznala konkrétní potřebu jedinečné skupiny zákazníků. Je to jediný poskytovatel cloudu, který nabízí novým zákazníkům vyhrazenou službu modulu hardwarového zabezpečení, která je ověřena fips 140-2 Level 3 a nabízí takový rozsah integrace cloudových a místních aplikací.
 
-## <a name="is-azure-dedicated-hsm-right-for-you"></a>Vyhrazené modulu hardwarového zabezpečení Azure je pro vás nejvhodnější?
+## <a name="is-azure-dedicated-hsm-right-for-you"></a>Je vyhrazený modul hardwarového zabezpečení Azure pro vás to pravé?
 
-Vyhrazený modul HARDWAROVÉho zabezpečení Azure je specializovaná služba, která řeší jedinečné požadavky na konkrétní typ rozsáhlé organizace. V důsledku toho se očekává, že hromadné zákazníky Azure nebudou odpovídat profilu použití této služby. Mnohé z nich vyhledají, aby služba Azure Key Vault byla lépe vhodná a nákladově efektivní. Abychom vám pomohli rozhodnout, jestli vyhovuje vašim požadavkům, zjistili jsme následující kritéria.
+Azure Dedicated HSM je specializovaná služba, která řeší jedinečné požadavky pro konkrétní typ rozsáhlé organizace. V důsledku toho se očekává, že převážná část zákazníků Azure nebude odpovídat profilu použití pro tuto službu. Mnoho z nich zjistí, že služba Azure Key Vault je vhodnější a nákladově efektivnější. Abychom vám pomohli rozhodnout, zda vyhovuje vašim požadavkům, jsme určili následující kritéria.
 
-### <a name="best-fit"></a>Nejlépe přizpůsobit
+### <a name="best-fit"></a>Nejvhodnější
 
-Vyhrazený modul HARDWAROVÉho zabezpečení Azure je nejvhodnější pro scénáře "zvednutí a posunutí", které vyžadují přímý a výhradní přístup k zařízením HSM. Příklady obsahují:
+Azure Dedicated HSM je nejvhodnější pro scénáře "lift-and-shift", které vyžadují přímý a výhradní přístup k zařízením hardwarového zabezpečení. Příklady obsahují:
 
-- Migrace aplikací z místního Azure Virtual Machines
-- Migrace aplikací z Amazon AWS EC2 na virtuální počítače, které používají službu AWS Cloud HSM Classic (Amazon nenabízí tuto službu novým zákazníkům)
-- Spuštění softwaru se zúženým zabalením, jako je třeba Apache/ngnix SSL Offload, Oracle TDE a ASSD v Azure Virtual Machines 
+- Migrace aplikací z místního do virtuálních počítačů Azure
+- Migrace aplikací z Amazon AWS EC2 na virtuální počítače, které používají službu AWS Cloud HSM Classic (Amazon tuto službu novým zákazníkům nenabízí)
+- Spuštění softwaru zabaleného v režimu Smrštitelné, jako je snížení zátěže Apache/Ngnix SSL, Oracle TDE a ADCS ve virtuálních počítačích Azure 
 
-### <a name="not-a-fit"></a>Nevejde se
+### <a name="not-a-fit"></a>Není fit
 
-Vyhrazený modul HARDWAROVÉho zabezpečení Azure není vhodný pro následující typy scénářů: Cloudové služby Microsoftu, které podporují šifrování pomocí klíčů spravovaných zákazníkem (například Azure Information Protection, Azure Disk Encryption, Azure Data Lake Store, Azure Storage, Azure SQL Database a klíč zákazníka pro Office 365), které nejsou integrované s Vyhrazený modul HSM Azure.
+Vyhrazený modul hardwarového zabezpečení Azure se nehodí pro následující typ scénáře: Cloudové služby Microsoftu, které podporují šifrování pomocí klíčů spravovaných zákazníky (jako je Azure Information Protection, Azure Disk Encryption, Azure Data Lake Store, Azure Storage, Azure SQL Databáze a klíč zákazníka pro Office 365), které nejsou integrované s azure dedicated hsm.
 
-### <a name="it-depends"></a>Závisí
+### <a name="it-depends"></a>To záleží...
 
-To, jestli bude vyhrazený modul HSM pro Azure fungovat, závisí na potenciálně složité kombinaci požadavků a ohrožení zabezpečení, které můžete nebo nemůžete dělat. Příkladem je požadavek FIPS 140-2 úrovně 3. Tento požadavek je běžný a vyhrazený modul hardwarového zabezpečení (HSM) je aktuálně jedinou možností pro jejich splnění. Pokud tyto požadavky nejsou relevantní, je často to volba mezi Azure Key Vault a vyhrazeným modulem HSM. Před provedením rozhodnutí vyhodnoťte vaše požadavky.
+To, jestli pro vás bude fungovat vyhrazený modul hardwarového zabezpečení Azure, závisí na potenciálně složité kombinaci požadavků a kompromisů, které můžete nebo nemůžete provést. Příkladem je požadavek FIPS 140-2 level 3. Tento požadavek je běžný a vyhrazený modul hardwarového zabezpečení je aktuálně jedinou možností pro jeho splnění. Pokud tyto nařízené požadavky nejsou relevantní, pak je často volba mezi Azure Key Vault a vyhrazené modul hardwarového zabezpečení. Před rozhodnutím vyhodnoťte své požadavky.
 
-Mezi situace, ve kterých budete muset zvážit tyto možnosti, patří: 
+Situace, ve kterých budete muset zvážit své možnosti patří: 
 
 - Nový kód spuštěný ve virtuálním počítači Azure zákazníka
-- SQL Server TDE na virtuálním počítači Azure
-- Šifrování na straně klienta služby Azure Storage
-- SQL Server a Azure SQL Database s funkcí Always Encrypted
+- SQL Server TDE ve virtuálním počítači Azure
+- Šifrování na straně klienta azure storage
+- SQL Server a Azure SQL DB vždy šifrované
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Toto je vysoce specializovaná služba. Proto doporučujeme plně porozumět klíčovým koncepcím v této sadě dokumentace, včetně cen, podpory a smluv o úrovni služeb. 
+Jedná se o vysoce specializovanou službu. Proto doporučujeme plně pochopit klíčové koncepty v této sadě dokumentace, včetně cen, podpory a smluv o úrovni služeb. 
 
-[Příručky identita Gemalto Integration](https://safenet.gemalto.com/partners/microsoft/) vám pomůžou usnadnit zřizování HSM do stávajícího virtuálního síťového prostředí. K dispozici jsou také postupy, které vám pomůžou určit, jak se má architektura nasazení nastavit.
+[Průvodce integrací Gemalto](https://safenet.gemalto.com/partners/microsoft/) vám pomůže usnadnit zřizování objektových síťových zařízení do existujícího prostředí virtuální sítě. K dispozici jsou také návody, které vám pomohou určit, jak nastavit architekturu nasazení.
 
 * [Vysoká dostupnost](high-availability.md)
 * [Fyzické zabezpečení](physical-security.md)
-* [Sítě](networking.md)
+* [Síťové služby](networking.md)
 * [Možnosti podpory](supportability.md)
-* [Monitorování](monitoring.md)
+* [Sledování](monitoring.md)

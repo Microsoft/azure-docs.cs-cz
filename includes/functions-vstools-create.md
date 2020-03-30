@@ -5,39 +5,37 @@ services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 03/05/2019
+ms.date: 03/06/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 3d93d3aa3e4e646f8e054f96f17bbe4a011d422d
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 034e966d259f1ca5f22eec5935013de32c883b59
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77211415"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80056558"
 ---
-Šablona projektu Azure Functions v sadě Visual Studio vytvoří projekt, který jde publikovat do aplikace funkcí v Azure. Pomocí aplikace Function App můžete seskupit funkce jako logickou jednotku pro snadnější správu, nasazování, škálování a sdílení prostředků.
+Šablona projektu Azure Functions v Sadě Visual Studio vytvoří projekt, který můžete publikovat do aplikace funkce v Azure. Pomocí aplikace funkce můžete seskupit funkce jako logickou jednotku pro snadnější správu, nasazení, škálování a sdílení prostředků.
 
-1. V aplikaci Visual Studio v nabídce **soubor** vyberte **Nový** > **projekt**.
+1. V sadě Visual Studio vyberte v nabídce **Soubor** **položku Nový** > **projekt**.
 
-1. V dialogovém okně **vytvořit nový projekt** vyhledejte `functions`, zvolte šablonu **Azure Functions** a vyberte **Další**.
+1. V **části Vytvoření nového projektu**zadejte *funkce* do vyhledávacího pole a pak zvolte šablonu **Azure Functions.**
 
-1. Zadejte název projektu a vyberte **vytvořit**. Název aplikace funkcí musí být platný jako obor názvů C#, takže nepoužívejte podtržítka, pomlčky nebo jiné nealfanumerické znaky.
+1. V **okně Konfigurace nového projektu**zadejte název **projektu** a vyberte **vytvořit**. Název aplikace funkcí musí být platný jako obor názvů C#, takže nepoužívejte podtržítka, pomlčky nebo jiné nealfanumerické znaky.
 
-1. V části **Vytvoření nové aplikace Azure Functions**použijte následující možnosti:
+1. Pro **nový projekt &lt;-&gt; ** nastavení názvu projektu použijte hodnoty v následující tabulce:
 
-    + **Azure Functions v2 (.NET Core)**
-    + **Aktivační událost HTTP**
-    + **Účet úložiště**: **emulátor úložiště**
-    + **Úroveň autorizace**: **anonymní** 
-
-    | Možnost      | Navrhovaná hodnota  | Popis                      |
+    | Nastavení      | Hodnota  | Popis                      |
     | ------------ |  ------- |----------------------------------------- |
-    | **Modul runtime Functions** | **Azure Functions 2. x <br />(.NET Core)** | Toto nastavení vytvoří projekt funkce, který používá modul runtime verze 2. x Azure Functions, který podporuje .NET Core. Azure Functions 1.x podporuje rozhraní .NET Framework. Další informace najdete v tématu [cílová verze modulu runtime Azure Functions](../articles/azure-functions/functions-versions.md).   |
-    | **Šablona funkce** | **Aktivační událost HTTP** | Toto nastavení vytvoří funkci spuštěnou požadavkem HTTP. |
-    | **Účet úložiště**  | **Emulátor úložiště** | Aktivační událost protokolu HTTP nepoužívá připojení účtu Azure Storage. Všechny ostatní typy triggerů vyžadují platný připojovací řetězec účtu úložiště. Vzhledem k tomu, že funkce vyžadují účet úložiště, je jeden přiřazen nebo vytvořen při publikování projektu do Azure. |
-    | **Úroveň autorizace** | **Anonymous** | Vytvořenou funkci může aktivovat libovolný klient bez zadání klíče. Toto nastavení autorizace usnadňuje testování nových funkcí. Další informace o klíčích a autorizace najdete v části věnovaném [klíčům autorizace](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) v tématu [HTTP a webhookové vazby](../articles/azure-functions/functions-bindings-http-webhook.md). |
+    | **Za běhu funkcí** | **Funkce Azure <br />v2 (.NET Core)** | Tato hodnota vytvoří projekt funkce, který používá runtime verze 2.x Azure Functions, který podporuje .NET Core. Azure Functions 1.x podporuje rozhraní .NET Framework. Další informace najdete v [tématu Azure Functions runtime verze přehled](../articles/azure-functions/functions-versions.md).   |
+    | **Šablona funkce** | **Aktivační událost PROTOKOLU HTTP** | Tato hodnota vytvoří funkci aktivovanou požadavkem HTTP. |
+    | **Účet úložiště**  | **Emulátor úložiště** | Vzhledem k tomu, že funkce Azure vyžaduje účet úložiště, jeden se přidá nebo vytvoří při publikování projektu do Azure. Aktivační událost HTTP nepoužívá připojovací řetězec účtu Azure Storage. všechny ostatní typy aktivačních událostí vyžadují platný připojovací řetězec účtu Azure Storage.  |
+    | **Přístupová práva** | **Anonymní** | Vytvořenou funkci může aktivovat libovolný klient bez zadání klíče. Toto nastavení autorizace usnadňuje testování nových funkcí. Další informace o klíčích a autorizaci naleznete v [tématu Autorizace klíčů](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) a [vazby HTTP a webhooku](../articles/azure-functions/functions-bindings-http-webhook.md). |
     
-    > [!NOTE]
-    > Ujistěte se, že jste nastavili **úroveň autorizace** na `Anonymous`. Pokud zvolíte výchozí úroveň `Function`, je nutné prezentovat [klíč funkce](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) v žádosti o přístup ke koncovému bodu funkce.
+
     
-4. Vyberte **vytvořit** k vytvoření projektu funkce a funkce aktivované protokolem HTTP.
+    ![Nastavení projektu Azure Functions](./media/functions-vs-tools-create/functions-project-settings.png)
+
+    Ujistěte se, že jste nastavili **přístupová práva** na **anonymní**. Pokud zvolíte výchozí úroveň **funkce**, budete muset prezentovat [funkční klíč](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) v požadavcích na přístup ke koncovému bodu funkce.
+
+1. Výběrem **možnosti OK** vytvořte projekt funkce a funkci spouštěnou protokolem HTTP.

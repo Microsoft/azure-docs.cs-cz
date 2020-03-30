@@ -1,6 +1,6 @@
 ---
-title: Vyřešit data – zkosit – Nástroje Azure Data Lake pro Visual Studio
-description: Řešení problémů s případnými řešeními pro problémy s pozkosením dat pomocí Nástroje Azure Data Lake pro Visual Studio.
+title: Řešení zkosení dat – Nástroje datového jezera Azure pro Visual Studio
+description: Řešení potíží s potenciálními řešeními problémů se zkosením dat pomocí nástrojů Azure Data Lake Tools pro Visual Studio.
 services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
@@ -9,61 +9,61 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/16/2016
 ms.openlocfilehash: 9ff7ba5f04a8c1862f8ef136f8f3f6900f00a431
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71802555"
 ---
-# <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>Řešení problémů s pozkosením dat pomocí Nástroje Azure Data Lake pro Visual Studio
+# <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>Řešení potíží s nerovnoměrnou distribucí dat pomocí Nástrojů Azure Data Lake pro Visual Studio
 
 ## <a name="what-is-data-skew"></a>Co je zkosení dat?
 
-Krátce řečeno, zkosení dat je nadlimitní hodnota. Představte si, že jste přiřadili kontrolní průzkumy 50 pro audit vrácených daňových vratek, jeden kontroler pro každý stav USA. Wyoming prozkoumávání, protože populace má malý výskyt, má málo. V Kalifornii se však zkoušející udržuje velmi zaneprázdněný kvůli velkému naplnění populace stavu.
-    Příklad problému s ![mi daty – zkosený](./media/data-lake-analytics-data-lake-tools-data-skew-solutions/data-skew-problem.png)
+Stručně uvedeno, zkosení dat je přereprezentovaná hodnota. Představte si, že jste přiřadili 50 daňových kontrolérů k auditu daňových přiznání, jeden zkoušející pro každý stát USA. Wyomingský zkoušející, protože tamní populace je malá, má málo co dělat. V Kalifornii, nicméně, zkoušející je stále velmi zaneprázdněn, protože stát je velká populace.
+    ![Příklad problému se zkosením dat](./media/data-lake-analytics-data-lake-tools-data-skew-solutions/data-skew-problem.png)
 
-V našem scénáři jsou data rovnoměrně distribuována napříč všemi daňovými průzkumy, což znamená, že některé průzkumy musí fungovat více než jiné. Ve vaší vlastní úloze často dochází k situaci, jako je příklad daňového přezkoumání. V rámci více technických podmínek jeden vrchol získá mnohem více dat než jejich partneři, což je situace, kdy vrchol funguje více než ostatní a kdy nakonec zpomaluje celou úlohu. Čím je horší, úloha může selhat, protože vrcholy můžou mít například omezení za běhu a velikost 6 GB paměti.
+V našem scénáři jsou data nerovnoměrně rozložena mezi všechny daňové kontroloře, což znamená, že někteří průzkumoví referenti musí pracovat více než jiní. Ve své vlastní práci často dochází k situacím, jako je například daňový zkoušející. Z technického hlediska jeden vrchol získá mnohem více dat než jeho vrstevníci, což je situace, která činí vrchol pracovat více než ostatní a který nakonec zpomaluje celou práci. Co je horší, úloha může selhat, protože vrcholy mohou mít například 5hodinové omezení běhu a omezení paměti 6 GB.
 
-## <a name="resolving-data-skew-problems"></a>Řešení problémů s pozkosením dat
+## <a name="resolving-data-skew-problems"></a>Řešení problémů se zkosením dat
 
-Nástroje Azure Data Lake pro Visual Studio může pomáhat zjistit, jestli má vaše úloha problém s časovým posunem dat. Pokud problém existuje, můžete ho vyřešit vyzkoušením řešení v této části.
+Nástroje datového jezera Azure pro Visual Studio můžou pomoct zjistit, jestli má vaše úloha problém se zkosením dat. Pokud problém existuje, můžete jej vyřešit pomocí řešení v této části.
 
-## <a name="solution-1-improve-table-partitioning"></a>Řešení 1: vylepšení dělení tabulek
+## <a name="solution-1-improve-table-partitioning"></a>Řešení 1: Zlepšení dělení tabulek
 
-### <a name="option-1-filter-the-skewed-key-value-in-advance"></a>Možnost 1: vyfiltrování hodnoty zkresleného klíče předem
+### <a name="option-1-filter-the-skewed-key-value-in-advance"></a>Možnost 1: Předem filtrovat zkosenou hodnotu klíče
 
-Pokud to nemá vliv na obchodní logiku, můžete hodnoty vyšších frekvencí filtrovat předem. Pokud je například identifikátor GUID sloupce hodně 000-000-000, možná nebudete chtít tuto hodnotu agregovat. Před agregací můžete napsat "WHERE GUID! =" 000-000-000 "" k filtrování hodnoty s vysokou frekvencí.
+Pokud to nemá vliv na obchodní logiku, můžete předem filtrovat hodnoty s vyšší frekvencí. Například pokud existuje velké množství 000-000-000 ve sloupci GUID, pravděpodobně nebudete chtít agregovat tuto hodnotu. Před agregací můžete napsat "WHERE GUID != "000-000-000", abyste filtrovali vysokofrekvenční hodnotu.
 
-### <a name="option-2-pick-a-different-partition-or-distribution-key"></a>Možnost 2: vyberte jiný oddíl nebo distribuční klíč.
+### <a name="option-2-pick-a-different-partition-or-distribution-key"></a>Možnost 2: Vyberte jiný oddíl nebo distribuční klíč
 
-Pokud chcete, aby se v předchozím příkladu kontrolovaly jenom úlohy pro audit DPH přes zemi nebo oblast, můžete zlepšit distribuci dat tak, že jako svůj klíč vyberete číslo ID. Výběr jiného oddílu nebo distribučního klíče může někdy data distribuovat vícekrát, ale je nutné se ujistit, že tato volba nemá vliv na obchodní logiku. Chcete-li například vypočítat daňový součet pro každý stav, je vhodné určit _stav_ jako klíč oddílu. Pokud se tento problém bude opakovat, zkuste použít možnost 3.
+V předchozím příkladu, pokud chcete pouze zkontrolovat zatížení daňového auditu v celé zemi nebo oblasti, můžete zlepšit distribuci dat výběrem id číslo jako klíč. Výběr jiného oddílu nebo distribučního klíče může někdy distribuovat data rovnoměrněji, ale je třeba se ujistit, že tato volba nemá vliv na obchodní logiku. Například pro výpočet součet daně pro každý stát, můžete chtít určit _stát_ jako klíč oddílu. Pokud se nadále setkáte s tímto problémem, zkuste použít možnost 3.
 
-### <a name="option-3-add-more-partition-or-distribution-keys"></a>Možnost 3: Přidání dalších oddílů nebo distribučních klíčů
+### <a name="option-3-add-more-partition-or-distribution-keys"></a>Možnost 3: Přidání dalších oddílových nebo distribučních klíčů
 
-Místo použití pouze _stavu_ jako klíče oddílu můžete pro dělení použít více než jeden klíč. Zvažte například přidání _PSČ_ jako dalšího klíče oddílu pro snížení velikosti oddílů dat a rovnoměrné distribuci dat.
+Namísto použití pouze _state_ jako klíč oddílu, můžete použít více než jeden klíč pro dělení. Zvažte například přidání _PSČ_ jako dalšího klíče oddílu, abyste zmenšili velikost oddílů dat a rovnoměrněji distribuovali data.
 
-### <a name="option-4-use-round-robin-distribution"></a>Možnost 4: použití distribuce s kruhovým dotazováním
+### <a name="option-4-use-round-robin-distribution"></a>Možnost 4: Použití distribuce kruhového dotazování
 
-Pokud pro oddíl a distribuci nemůžete najít vhodný klíč, můžete se pokusit použít distribuci kruhového dotazování. Distribuce kruhového dotazování zpracovává všechny řádky rovnoměrně a náhodně je umísťuje do odpovídajících sad. Data budou rovnoměrně distribuována, ale ztratí informace o velikosti, což je nevýhoda, která může také snížit výkon úlohy pro některé operace. Kromě toho, pokud provádíte agregaci pro zkosený klíč, bude problém s povýšení dat zachován. Další informace o distribuci s kruhovým dotazováním najdete v části distribuce tabulek U-SQL v [Create Table (U-SQL): vytvoření tabulky se schématem](/u-sql/ddl/tables/create/managed/create-table-u-sql-creating-a-table-with-schema#dis_sch).
+Pokud nemůžete najít vhodný klíč pro oddíl a distribuci, můžete zkusit použít distribuci kruhového dotazování. Distribuce kruhového dotazování zachází se všemi řádky stejně a náhodně je vloží do odpovídajících bloků. Data se rovnoměrně distribuují, ale ztratí informace o lokalitě, což je nevýhoda, která může také snížit výkon úlohy u některých operací. Navíc pokud provádíte agregaci pro zkosený klíč stejně, bude problém zkosení dat přetrvávat. Další informace o distribuci kruhového dotazování naleznete v části Distribuce tabulek U-SQL v [tématu CREATE TABLE (U-SQL): Vytvoření tabulky se schématem](/u-sql/ddl/tables/create/managed/create-table-u-sql-creating-a-table-with-schema#dis_sch).
 
-## <a name="solution-2-improve-the-query-plan"></a>Řešení 2: vylepšení plánu dotazů
+## <a name="solution-2-improve-the-query-plan"></a>Řešení 2: Vylepšete plán dotazů
 
-### <a name="option-1-use-the-create-statistics-statement"></a>Možnost 1: použití příkazu vytvořit STATISTIKu
+### <a name="option-1-use-the-create-statistics-statement"></a>Možnost 1: Použití příkazu VYTVOŘIT STATISTIKU
 
-U-SQL poskytuje příkaz CREATE STATISTICs pro tabulky. Tento příkaz poskytuje pro optimalizaci dotazů více informací o vlastnostech dat, jako je například rozdělení hodnoty, které jsou uloženy v tabulce. Pro většinu dotazů už Optimalizátor dotazů vygeneroval nezbytné statistiky pro vysoce kvalitní plán dotazů. V některých případech může být nutné zvýšit výkon dotazů vytvořením dalších statistik pomocí příkazu vytvořit STATISTIKu nebo úpravou návrhu dotazu. Další informace najdete na stránce [vytvoření statistiky (U-SQL)](/u-sql/ddl/statistics/create-statistics) .
+U-SQL poskytuje příkaz VYTVOŘIT STATISTIKU v tabulkách. Tento příkaz poskytuje další informace o optimalizaci dotazu o charakteristiky dat, jako je například rozdělení hodnoty, které jsou uloženy v tabulce. U většiny dotazů optimalizátor dotazů již generuje potřebné statistiky pro plán dotazů s vysokou kvalitou. V některých případě může být nutné zlepšit výkon dotazu vytvořením další statistiky pomocí create statistiky nebo úpravou návrhu dotazu. Další informace naleznete na stránce [VYTVOŘIT STATISTIKU (U-SQL).](/u-sql/ddl/statistics/create-statistics)
 
 Příklad kódu:
 
     CREATE STATISTICS IF NOT EXISTS stats_SampleTable_date ON SampleDB.dbo.SampleTable(date) WITH FULLSCAN;
 
 >[!NOTE]
->Informace o statistice se automaticky neaktualizují. Pokud aktualizujete data v tabulce bez opětovného vytváření statistik, může výkon dotazů odmítnout.
+>Statistické informace nejsou automaticky aktualizovány. Pokud aktualizujete data v tabulce bez opětovného vytvoření statistiky, může dojít ke snížení výkonu dotazu.
 
-### <a name="option-2-use-skewfactor"></a>Možnost 2: použití SKEWFACTOR
+### <a name="option-2-use-skewfactor"></a>Možnost 2: Použití SKEWFACTOR
 
-Pokud chcete Vypočítat daň pro každý stav, musíte použít příkaz Seskupit podle stavu, přístup, který se vyhne problému s pozkosením dat. V dotazu však můžete zadat nápovědu k datům pro identifikaci zkosení dat v klíčích, aby Optimalizátor mohl připravit plán spouštění za vás.
+Pokud chcete sečíst daň pro každý stát, musíte použít GROUP BY stav, přístup, který se nevyhýbá problém zkosení dat. Můžete však poskytnout nápovědu k datům v dotazu k identifikaci zkosení dat v klíčích tak, aby optimalizátor můžete připravit plán spuštění pro vás.
 
-Obvykle můžete nastavit parametr jako 0,5 a 1, přičemž 0,5 znamená, že není mnohem zkosený a 1 velké zešikmení. Vzhledem k tomu, že pomocný parametr má vliv na optimalizaci prováděcího plánu pro aktuální příkaz a všechny příkazy pro příjem dat, nezapomeňte přidat pomocný parametr před potenciálním zkoseným agregací klíče.
+Obvykle můžete nastavit parametr jako 0,5 a 1, s 0,5 znamená, že není moc zkosení a 1 znamená těžké zkosení. Vzhledem k tomu, že nápověda ovlivňuje optimalizaci plánu spuštění pro aktuální příkaz a všechny příkazy navazující, nezapomeňte přidat nápovědu před potenciální zkosené agregace po dobu po zkosený klíč.
 
     SKEWFACTOR (columns) = x
 
@@ -97,8 +97,8 @@ Příklad kódu:
                 ON @Sessions.Query == @Campaigns.Query
         ;   
 
-### <a name="option-3-use-rowcount"></a>Možnost 3: použití ROWCOUNT  
-Pokud víte, že je ostatní propojená sada řádků malá, můžete pro určité případy spojené s kočárkami v kombinaci s SKEWFACTOR před připojením sdělit Optimalizátor přidáním parametru ROWCOUNT v příkazu U-SQL. Tímto způsobem může Optimalizátor vybrat strategii spojování všesměrového vysílání, která pomáhá zvýšit výkon. Počítejte s tím, že ROWCOUNT nedokáže vyřešit problém s časovým posunem dat, ale může nabízet další nápovědu.
+### <a name="option-3-use-rowcount"></a>Možnost 3: Použití rowcount  
+Kromě SKEWFACTOR, pro konkrétní případy spojení se zkosený klíč, pokud víte, že další spojené řádek sada je malá, můžete říct optimalizátor přidáním rowcount nápovědy v příkazu U-SQL před JOIN. Tímto způsobem může optimalizátor zvolit strategii spojení vysílání, která pomůže zlepšit výkon. Uvědomte si, že ROWCOUNT nevyřeší problém zkosení dat, ale může nabídnout některé další pomoc.
 
     OPTION(ROWCOUNT = n)
 
@@ -122,19 +122,19 @@ Příklad kódu:
                 INNER JOIN @Small ON Sessions.Client == @Small.Client
                 ;
 
-## <a name="solution-3-improve-the-user-defined-reducer-and-combiner"></a>Řešení 3: vylepšení uživatelsky definovaného zpomalení a kombinování
+## <a name="solution-3-improve-the-user-defined-reducer-and-combiner"></a>Řešení 3: Zlepšete uživatelsky definovaný reduktor a kombinátor
 
-Někdy můžete napsat uživatelem definovaný operátor, který bude zabývat se složitou procesní logikou, a v některých případech může zmírnit problémy s pozkosením dat.
+Někdy můžete napsat uživatelem definovaný operátor pro řešení složité logiky procesu a dobře napsaný reduktor a kombinátor může v některých případech zmírnit problém s překřivěním dat.
 
-### <a name="option-1-use-a-recursive-reducer-if-possible"></a>Možnost 1: použijte rekurzivní redukci, pokud je to možné
+### <a name="option-1-use-a-recursive-reducer-if-possible"></a>Možnost 1: Pokud je to možné, použijte rekurzivní reduktor
 
-Ve výchozím nastavení se uživatelsky definované zpomalení spouští v nerekurzivním režimu, což znamená, že omezení práce pro klíč je distribuováno do jednoho vrcholu. Pokud jsou ale vaše data nakloněná, můžou se velké sady dat zpracovat v jednom vrcholu a spouštět po dlouhou dobu.
+Ve výchozím nastavení je indosaktovace definovaná uživatelem spuštěna v nerekurzivním režimu, což znamená, že snížení práce pro klíč je distribuováno do jednoho vrcholu. Ale pokud jsou vaše data zkosená, obrovské sady dat mohou být zpracovány v jednom vrcholu a běžet po dlouhou dobu.
 
-Chcete-li zvýšit výkon, můžete do kódu přidat atribut pro definování zpomalení pro spuštění v rekurzivním režimu. Velkou datovou sadu pak můžete distribuovat do několika vrcholů a spouštět paralelně, což zrychluje vaši úlohu.
+Chcete-li zvýšit výkon, můžete přidat atribut v kódu definovat reduktor spustit v rekurzivním režimu. Poté mohou být obrovské datové sady distribuovány do více vrcholů a spuštěny paralelně, což urychluje vaši úlohu.
 
-Chcete-li změnit nerekurzivní redukci na rekurzivní, je nutné zajistit, aby byl algoritmus asociativní. Například suma je asociativní a medián není. Musíte také zajistit, aby vstup a výstup pro redukci zůstaly stejné schéma.
+Chcete-li změnit nerekurzivní reduktor na rekurzivní, musíte se ujistit, že váš algoritmus je asociativní. Součet je například asociativní a medián není. Také je třeba se ujistit, že vstup a výstup pro reduktor zachovat stejné schéma.
 
-Atribut rekurzivního zúžení:
+Atribut rekurzivního reduktoru:
 
     [SqlUserDefinedReducer(IsRecursive = true)]
 
@@ -150,28 +150,28 @@ Příklad kódu:
         }
     }
 
-### <a name="option-2-use-row-level-combiner-mode-if-possible"></a>Možnost 2: Pokud je to možné, použijte režim kombinovaného režimu na úrovni řádků
+### <a name="option-2-use-row-level-combiner-mode-if-possible"></a>Možnost 2: Pokud je to možné, použijte režim slučovače na úrovni řádků
 
-Podobně jako pomocný parametr počtu řádků pro určité případy spojeného s zkoseným připojením se režim kombinovaného režimu pokusí distribuovat velmi hodnoty zkosených hodnot s klíčem na více vrcholů, aby bylo možné práci spustit současně. Režim kombinovaného spojení nemůže vyřešit problémy s časovým posunem dat, ale může nabízet další nápovědu pro velké hodnoty zkosených hodnot klíčů.
+Podobně jako nápověda ROWCOUNT pro konkrétní případy spojení se zkosením klíče se režim slučovače pokusí distribuovat obrovské sady hodnot zkoseného klíče na více vrcholů, aby bylo možné pracovat souběžně. Režim combiner nemůže vyřešit problémy se zkosením dat, ale může nabídnout další nápovědu pro sady hodnot obrovských zkosených klíčů.
 
-Režim kombinovaného režimu je ve výchozím nastavení plný, což znamená, že nelze oddělit levou sadu řádků a pravé sady řádků. Nastavení režimu jako levé/pravé/vnitřní umožňuje připojení na úrovni řádků. Systém odděluje odpovídající sady řádků a distribuuje je do několika vrcholů, které běží paralelně. Před konfigurací režimu kombinovaného přizpůsobování ale buďte opatrní, abyste se ujistili, že je možné odpovídající sady řádků oddělit.
+Ve výchozím nastavení je režim slučování plný, což znamená, že sadu levého řádku a sadu pravých řádků nelze oddělit. Nastavení režimu jako vlevo/vpravo/vnitřní umožňuje spojení na úrovni řádku. Systém odděluje odpovídající sady řádků a distribuuje je do více vrcholů, které běží paralelně. Před konfigurací režimu slučovače však buďte opatrní, abyste zajistili, že odpovídající sady řádků lze oddělit.
 
-Následující příklad ukazuje sadu odděleného levého řádku. Každý výstupní řádek závisí na jednom vstupním řádku zleva a potenciálně závisí na všech řádcích vpravo se stejnou hodnotou klíče. Pokud nastavíte režim kombinovaného režimu vlevo, systém oddělí velký levý řádek nastavený na malý a přiřadí ho k více vrcholům.
+Následující příklad ukazuje samostatnou sadu levých řádků. Každý výstupní řádek závisí na jednom vstupním řádku zleva a potenciálně závisí na všech řádcích zprava se stejnou hodnotou klíče. Pokud nastavíte režim slučovače jako levý, systém rozdělí obrovskou levou řadu nastavenou na malé a přiřadí je k více vrcholům.
 
-![Obrázek režimu kombinovaného spojení](./media/data-lake-analytics-data-lake-tools-data-skew-solutions/combiner-mode-illustration.png)
+![Ilustrace režimu combiner](./media/data-lake-analytics-data-lake-tools-data-skew-solutions/combiner-mode-illustration.png)
 
 >[!NOTE]
->Pokud nastavíte špatný režim kombinující, kombinace je méně efektivní a výsledky můžou být chybné.
+>Pokud nastavíte nesprávný režim slomy, kombinace je méně efektivní a výsledky mohou být nesprávné.
 
-Atributy režimu kombinovaného spojení:
+Atributy režimu součů:
 
-- SqlUserDefinedCombiner (režim = CombinerMode. Full): každý výstupní řádek potenciálně závisí na všech vstupních řádcích zleva a vpravo se stejnou hodnotou klíče.
+- SqlUserDefinedCombiner(Mode=CombinerMode.Full): Každý výstupní řádek potenciálně závisí na všech vstupních řádcích zleva a vpravo se stejnou hodnotou klíče.
 
-- SqlUserDefinedCombiner (režim = CombinerMode. Left): každý výstupní řádek závisí na jednom vstupním řádku zleva (a potenciálně všechny řádky napravo se stejnou hodnotou klíče).
+- SqlUserDefinedCombiner(Mode=CombinerMode.Left): Každý výstupní řádek závisí na jednom vstupním řádku zleva (a potenciálně na všech řádcích zprava se stejnou hodnotou klíče).
 
-- qlUserDefinedCombiner (režim = CombinerMode. Right): každý výstupní řádek závisí na jednom vstupním řádku zprava (a potenciálně všechny řádky vlevo se stejnou klíčovou hodnotou).
+- qlUserDefinedCombiner(Mode=CombinerMode.Right): Každý výstupní řádek závisí na jednom vstupním řádku zprava (a potenciálně na všech řádcích zleva se stejnou hodnotou klíče).
 
-- SqlUserDefinedCombiner (režim = CombinerMode. Inner): každý výstupní řádek závisí na jednom vstupním řádku zleva a na pravé straně se stejnou hodnotou.
+- SqlUserDefinedCombiner(Mode=CombinerMode.Inner): Každý výstupní řádek závisí na jednom vstupním řádku zleva a vpravo se stejnou hodnotou.
 
 Příklad kódu:
 

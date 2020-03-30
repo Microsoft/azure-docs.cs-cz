@@ -1,6 +1,6 @@
 ---
-title: Zabezpečení aplikací PaaS pomocí Azure Storage | Microsoft Docs
-description: Přečtěte si o Azure Storage osvědčených postupech zabezpečení pro zabezpečení webových a mobilních aplikací PaaS.
+title: Zabezpečení aplikací PaaS pomocí Služby Azure Storage | Dokumenty společnosti Microsoft
+description: Přečtěte si o doporučených postupech zabezpečení Azure Storage pro zabezpečení webových a mobilních aplikací PaaS.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -16,72 +16,72 @@ ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
 ms.openlocfilehash: 675e10101d01d831aad7652c70cbfcf320085a3c
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70999165"
 ---
-# <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Osvědčené postupy pro zabezpečení webových a mobilních aplikací PaaS pomocí Azure Storage
-V tomto článku se zabýváme kolekcí Azure Storage osvědčených postupů zabezpečení pro zabezpečení vašich webových a mobilních aplikací PaaS (Platform as a Service). Tyto osvědčené postupy se odvozují z našich zkušeností s Azure a zkušeností zákazníků, jako je sami.
+# <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Doporučené postupy pro zabezpečení webových a mobilních aplikací PaaS pomocí Služby Azure Storage
+V tomto článku se zabýváme kolekcí doporučených postupů zabezpečení Azure Storage pro zabezpečení webových a mobilních aplikací paas (platformy jako služby). Tyto osvědčené postupy jsou odvozeny z našich zkušeností s Azure a zkušeností zákazníků, jako jste vy.
 
-Azure umožňuje nasazení a používání úložiště způsobem, který není možné snadno dosáhnout místně. S Azure Storage můžete dosáhnout vysoké úrovně škálovatelnosti a dostupnosti s poměrně malým úsilím. Pouze Azure Storage Foundation pro Windows a Linux Azure Virtual Machines, může také podporovat velké distribuované aplikace.
+Azure umožňuje nasazovat a používat úložiště způsoby, které nejsou snadno dosažitelné místně. Díky úložišti Azure můžete dosáhnout vysoké úrovně škálovatelnosti a dostupnosti s relativně malým úsilím. Azure Storage je nejen základem pro virtuální počítače s Windows a LinuxAzure, ale taky může podporovat velké distribuované aplikace.
 
-Azure Storage poskytuje tyto čtyři služby: Úložiště objektů blob, úložiště tabulek, úložiště fronty a úložiště souborů. Další informace najdete v tématu [Úvod do Microsoft Azure Storage](/azure/storage/common/storage-introduction).
+Azure Storage poskytuje následující čtyři služby: úložiště objektů blob, úložiště tabulek, úložiště front a úložiště souborů. Další informace najdete [v tématu Úvod do úložiště Microsoft Azure](/azure/storage/common/storage-introduction).
 
-[Azure Storage Příručka zabezpečení](/azure/storage/common/storage-security-guide) je skvělým zdrojem pro podrobné informace o Azure Storage a zabezpečení. Tento článek s osvědčenými postupy řeší na nejvyšší úrovni některé koncepty, které najdete v příručce zabezpečení, a odkazy na příručku zabezpečení a také na další zdroje, kde najdete další informace.
+[Průvodce zabezpečením azure storage](/azure/storage/common/storage-security-guide) je skvělý zdroj informací o Azure Storage a zabezpečení. Tento článek osvědčených postupů se zabývá na vysoké úrovni některé koncepty nalezené v příručce zabezpečení a odkazy na průvodce zabezpečením, stejně jako jiné zdroje, pro další informace.
 
-Tento článek popisuje následující osvědčené postupy:
+Tento článek se zabývá následujícími doporučenými postupy:
 
 - Sdílené přístupové podpisy (SAS)
 - Řízení přístupu na základě role (RBAC)
 - Šifrování na straně klienta pro data s vysokou hodnotou
-- Storage Service Encryption
+- Šifrování služby Storage
 
 
 ## <a name="use-a-shared-access-signature-instead-of-a-storage-account-key"></a>Použití sdíleného přístupového podpisu místo klíče účtu úložiště
-Řízení přístupu je důležité. Při vytváření účtu úložiště vám Azure vygeneruje 2 512 klíčů účtu úložiště (SAKs), které vám pomůžou řídit přístup k Azure Storage. Úroveň redundance klíčů umožňuje vyhnout se přerušením služeb během pravidelného střídání klíčů. 
+Řízení přístupu je důležité. Abychom vám pomohli řídit přístup k Azure Storage, Azure generuje dva klíče účtu 512bitového úložiště (SAKs) při vytváření účtu úložiště. Úroveň redundance klíče umožňuje vyhnout se přerušení služby během rutinního střídání klíčů. 
 
-Přístupové klíče k úložišti mají tajné klíče s vysokou prioritou a měly by být dostupné jenom pro ty, kteří zodpovídají za řízení přístupu k úložišti. Pokud k těmto klíčům získají přístup špatné osoby, budou mít úplnou kontrolu nad úložištěm a můžou nahradit, odstranit nebo přidat soubory do úložiště. To zahrnuje malware a další typy obsahu, které mohou potenciálně ohrozit vaši organizaci nebo vaše zákazníky.
+Přístupové klíče úložiště jsou tajné klíče s vysokou prioritou a měly by být přístupné pouze osobám odpovědným za řízení přístupu k úložišti. Pokud k těmto klíčům získají přístup nezvladatní lidé, budou mít úplnou kontrolu nad úložištěm a mohou do úložiště nahradit, odstranit nebo přidat soubory. To zahrnuje malware a další typy obsahu, které mohou potenciálně ohrozit vaši organizaci nebo vaše zákazníky.
 
-Stále potřebujete způsob, jak poskytnout přístup k objektům v úložišti. Pro zajištění přesnější přístupu můžete využít výhod sdíleného přístupového podpisu (SAS). SAS umožňuje sdílet konkrétní objekty v úložišti pro předem definovaný časový interval a s konkrétními oprávněními. Sdílený přístupový podpis umožňuje definovat:
+Stále potřebujete způsob, jak poskytnout přístup k objektům v úložišti. Chcete-li poskytnout podrobnější přístup, můžete využít výhod sdíleného přístupového podpisu (SAS). SAS umožňuje sdílet určité objekty v úložišti pro předdefinovaný časový interval a s určitými oprávněními. Sdílený přístupový podpis umožňuje definovat:
 
-- Interval, po který je SAS platný, včetně času zahájení a času vypršení platnosti.
-- Oprávnění udělená SAS. Například SAS na objektu BLOB může udělit uživateli oprávnění ke čtení a zápisu pro daný objekt blob, ale ne oprávnění k odstranění.
-- Volitelná IP adresa nebo rozsah IP adres, ze kterých Azure Storage akceptuje SAS. Můžete například zadat rozsah IP adres, které patří vaší organizaci. Tím se zajistí další míra zabezpečení SAS.
-- Protokol, přes který Azure Storage akceptuje SAS. Pomocí tohoto volitelného parametru můžete omezit přístup k klientům pomocí protokolu HTTPS.
+- Interval, ve kterém je platný SAS, včetně počáteční čas a čas vypršení platnosti.
+- Oprávnění udělená SAS. Například SAS na objekt blob může udělit uživateli oprávnění ke čtení a zápisu do tohoto objektu blob, ale ne odstranit oprávnění.
+- Volitelná IP adresa nebo rozsah IP adres, ze kterých Azure Storage přijímá SAS. Můžete například zadat rozsah adres IP, které patří vaší organizaci. To poskytuje další míru zabezpečení pro vaše SAS.
+- Protokol, přes který Azure Storage přijímá SAS. Tento volitelný parametr můžete použít k omezení přístupu ke klientům pomocí protokolu HTTPS.
 
-Pomocí SAS můžete sdílet obsah tak, jak ho chcete sdílet, aniž byste museli své klíče účtu úložiště dál vydávat. Používání SAS ve vaší aplikaci je vždy zabezpečený způsob, jak sdílet prostředky úložiště bez narušení klíčů účtu úložiště.
+SAS umožňuje sdílet obsah tak, jak chcete sdílet, aniž byste rozdávali klíče účtu úložiště. Vždy pomocí SAS ve vaší aplikaci je bezpečný způsob, jak sdílet prostředky úložiště bez ohrožení klíčů účtu úložiště.
 
-Další informace o sdíleném přístupovém podpisu najdete v tématu [použití sdílených přístupových](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)podpisů. 
+Další informace o sdíleném přístupovém podpisu najdete [v tématu Používání sdílených přístupových podpisů](/azure/storage/common/storage-dotnet-shared-access-signature-part-1). 
 
 ## <a name="use-role-based-access-control"></a>Použití řízení přístupu na základě rolí
-Dalším způsobem, jak spravovat přístup, je použití [řízení přístupu na základě role](/azure/role-based-access-control/overview) (RBAC). Pomocí RBAC se zaměříte na to, aby zaměstnanci měli přesně potřebná oprávnění, a to na základě nutnosti znát a nejnižší principy zabezpečení oprávnění. Příliš mnoho oprávnění může zpřístupnit účet pro útočníky. Příliš málo oprávnění znamená, že zaměstnanci nemůžou svou práci efektivně dělat. RBAC pomáhá vyřešit tento problém tím, že nabízí jemně odstupňovanou správu přístupu pro Azure. To je nezbytné pro organizace, které chtějí vyhovět zásadám zabezpečení pro přístup k datům.
+Dalším způsobem, jak spravovat přístup, je použití [řízení přístupu na základě rolí](/azure/role-based-access-control/overview) (RBAC). S RBAC se zaměřujete na to, abyste zaměstnancům poskytli přesná oprávnění, která potřebují, na základě potřeby znát a nejméně oprávnění zabezpečení. Příliš mnoho oprávnění může vystavit účet útočníkům. Příliš málo oprávnění znamená, že zaměstnanci nemohou pracovat efektivně. RBAC pomáhá řešit tento problém tím, že nabízí jemně odstupňovanou správu přístupu pro Azure. To je nezbytné pro organizace, které chtějí vynutit zásady zabezpečení pro přístup k datům.
 
-K přiřazení oprávnění uživatelům můžete použít předdefinované role RBAC v Azure. Například použijte Přispěvatel účtu úložiště pro operátory cloudu, kteří potřebují spravovat účty úložiště a roli Přispěvatel klasických účtů úložiště pro správu klasických účtů úložiště. Pro operátory cloudu, které potřebují spravovat virtuální počítače, ale ne virtuální síť nebo účet úložiště, ke kterým jsou připojené, je můžete přidat do role Přispěvatel virtuálních počítačů.
+Integrované role RBAC v Azure můžete použít k přiřazení oprávnění uživatelům. Můžete například použít přispěvatele účtu úložiště pro cloudové operátory, kteří potřebují spravovat účty úložiště a roli klasického přispěvatele účtu úložiště ke správě klasických účtů úložiště. Pro cloudové operátory, kteří potřebují spravovat virtuální počítače, ale ne účet virtuální sítě nebo úložiště, ke kterému jsou připojeni, je můžete přidat do role přispěvatele virtuálního počítače.
 
-Organizace, které vynutily řízení přístupu k datům pomocí možností, jako je RBAC, můžou udělit větší oprávnění, než je potřeba pro své uživatele. To může vést k ohrožení dat tím, že některým uživatelům umožní přístup k datům, která by neměla mít na prvním místě.
+Organizace, které nevynucují řízení přístupu k datům pomocí funkcí, jako je Například RBAC, mohou udělovat více oprávnění, než je nezbytné pro jejich uživatele. To může vést k ohrožení zabezpečení dat tím, že někteří uživatelé přístup k datům, které by neměli mít na prvním místě.
 
-Další informace o RBAC najdete v těchto tématech:
+Další informace o RBAC naleznete na adrese:
 
-- [Správa přístupu pomocí RBAC a portálu Azure Portal](/azure/role-based-access-control/role-assignments-portal)
+- [Správa přístupu pomocí RBAC a portálu Azure](/azure/role-based-access-control/role-assignments-portal)
 - [Předdefinované role pro prostředky Azure](/azure/role-based-access-control/built-in-roles)
-- [Příručka zabezpečení Azure Storage](/azure/storage/common/storage-security-guide) 
+- [Průvodce zabezpečením azure úložiště](/azure/storage/common/storage-security-guide) 
 
 ## <a name="use-client-side-encryption-for-high-value-data"></a>Použití šifrování na straně klienta pro data s vysokou hodnotou
-Šifrování na straně klienta umožňuje programově šifrovat data při přenosu před odesláním do Azure Storage a programově dešifrovat data při jejich načítání. Díky tomu je zajištěno šifrování přenášených dat, ale zároveň je zajištěno šifrování v klidovém režimu. Šifrování na straně klienta představuje nejbezpečnější metodu šifrování dat, ale vyžaduje, abyste v rámci aplikace napravili programové změny a zavedli procesy správy klíčů na místo.
+Šifrování na straně klienta umožňuje programově šifrovat data při přenosu před odesláním do Služby Azure Storage a programově dešifrovat data při jejich načítání. To poskytuje šifrování dat při přenosu, ale také šifrování dat v klidovém stavu. Šifrování na straně klienta je nejbezpečnější způsob šifrování dat, ale vyžaduje, abyste v aplikaci provázli programové změny a zavedli procesy správy klíčů.
 
-Šifrování na straně klienta také umožňuje mít jedinou kontrolu nad šifrovacími klíči. Můžete generovat a spravovat vlastní šifrovací klíče. Používá techniku obálky, kde Klientská knihovna služby Azure Storage generuje šifrovací klíč obsahu (CEK), který je pak zabalené (šifrovaný) pomocí klíče šifrování klíčů (KEK). KEK je identifikován identifikátorem klíče a může se jednat o asymetrický klíč nebo symetrický klíč a lze ho spravovat místně nebo uložit v [Azure Key Vault](/azure/key-vault/key-vault-overview).
+Šifrování na straně klienta také umožňuje mít výhradní kontrolu nad šifrovacími klíči. Můžete generovat a spravovat vlastní šifrovací klíče. Používá obálkovou techniku, kde knihovna klienta úložiště Azure generuje šifrovací klíč obsahu (CEK), který je pak zabalen (šifrovaný) pomocí šifrovacího klíče klíče (KEK). KEK je identifikován identifikátor klíče a může být asymetrický pár klíčů nebo symetrický klíč a lze spravovat místně nebo uloženy v [trezoru klíčů Azure](/azure/key-vault/key-vault-overview).
 
-Šifrování na straně klienta je integrováno do klientských knihoven Java a .NET Storage. Další informace o šifrování dat v klientských aplikacích a vytváření a správě vlastních šifrovacích klíčů najdete v tématu [šifrování na straně klienta a Azure Key Vault pro Microsoft Azure Storage](/azure/storage/common/storage-client-side-encryption) .
+Šifrování na straně klienta je integrováno do knihoven klienta Java a .NET storage. Informace o šifrování v [klientských aplikacích a trezoru klíčů Azure pro Microsoft Azure Storage](/azure/storage/common/storage-client-side-encryption) najdete v tématu informace o šifrování dat v klientských aplikacích a generování a správě vlastních šifrovacích klíčů.
 
-## <a name="enable-storage-service-encryption-for-data-at-rest"></a>Povolit Šifrování služby Storage pro neaktivní neaktivní data
-Když je povolená [šifrování služby Storage](/azure/storage/common/storage-service-encryption) pro úložiště souborů, data se šifrují automaticky pomocí šifrování AES-256. Microsoft zpracovává veškerá šifrování, dešifrování a správu klíčů. Tato funkce je k dispozici pro typy redundance LRS a GRS.
+## <a name="enable-storage-service-encryption-for-data-at-rest"></a>Povolení šifrování služby Úložiště pro data v klidovém stavu
+Pokud je povoleno [šifrování služby úložiště](/azure/storage/common/storage-service-encryption) pro ukládání souborů, data jsou šifrována automaticky pomocí šifrování AES-256. Společnost Microsoft zpracovává veškeré šifrování, dešifrování a správu klíčů. Tato funkce je k dispozici pro typy redundance LRS a GRS.
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento článek vás zavedl do kolekce Azure Storage osvědčené postupy zabezpečení pro zabezpečení webových a mobilních aplikací PaaS. Další informace o zabezpečení nasazení PaaS najdete v těchto tématech:
+Tento článek vás seznámil s kolekcí doporučených postupů zabezpečení Azure Storage pro zabezpečení webových a mobilních aplikací PaaS. Další informace o zabezpečení nasazení PaaS najdete v tématu:
 
 - [Zabezpečení nasazení PaaS](paas-deployments.md)
-- [Zabezpečení webových a mobilních aplikací PaaS pomocí Azure App Services](paas-applications-using-app-services.md)
+- [Zabezpečení webových a mobilních aplikací PaaS pomocí služby Azure App Services](paas-applications-using-app-services.md)
 - [Zabezpečení databází PaaS v Azure](paas-applications-using-sql.md)

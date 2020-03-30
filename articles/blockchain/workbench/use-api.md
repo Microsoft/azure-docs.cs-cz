@@ -1,54 +1,54 @@
 ---
-title: Použití rozhraní REST API služby Azure blockchain Workbench
-description: Scénáře použití REST API Azure blockchain Workbench Preview
+title: Použití api azure blockchain workbench rest
+description: Scénáře použití rozhraní REST API Azure Blockchain Workbench Preview
 ms.date: 03/05/2020
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: 3084fcf343bc42fe01bf352b6791916d62f63540
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78672736"
 ---
-# <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>Používání Azure blockchain Workbench Preview REST API
+# <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>Použití rozhraní REST Preview azure blockchainworkbench
 
-Azure blockchain Workbench Preview REST API poskytuje vývojářům a informačním pracovníkům způsob, jak vytvářet bohatou integraci aplikací blockchain. Tento článek popisuje několik scénářů použití REST API Workbench. Předpokládejme například, že chcete vytvořit vlastního klienta blockchain, který umožňuje přihlášeným uživatelům zobrazení a interakci s přiřazenými aplikacemi blockchain. Klient může použít rozhraní API blockchain Workbench k zobrazení instancí kontraktů a provedení akcí v rámci inteligentních smluv.
+Rozhraní REST API Azure Blockchain Workbench Preview poskytuje vývojářům a informačním pracovníkům způsob, jak vytvářet bohaté integrace do blockchainových aplikací. Tento článek upozorňuje na několik scénářů, jak používat rozhraní WORKBENCH REST API. Předpokládejme například, že chcete vytvořit vlastní klienta blockchainu, který umožňuje přihlášeným uživatelům zobrazit a pracovat s přiřazenými blockchainovými aplikacemi. Klient může pomocí rozhraní Blockchain Workbench API zobrazit instance smluv a provést akce na inteligentní smlouvy.
 
-## <a name="blockchain-workbench-api-endpoint"></a>Koncový bod rozhraní API pro blockchain Workbench
+## <a name="blockchain-workbench-api-endpoint"></a>Koncový bod rozhraní API blockchainworkbench
 
-K rozhraním API aplikace blockchain Workbench se dostanete prostřednictvím koncového bodu pro vaše nasazení. Pro získání adresy URL koncového bodu rozhraní API pro vaše nasazení:
+Blockchain Workbench API jsou přístupné prostřednictvím koncového bodu pro vaše nasazení. Jak získat adresu URL koncového bodu rozhraní API pro vaše nasazení:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. V levém navigačním podokně vyberte **skupiny prostředků**.
-1. Vyberte název skupiny prostředků, kterou jste nasadili blockchain Workbench.
-1. Vyberte záhlaví sloupce **typ** k seřazení seznamu abecedně podle typu.
-1. Existují dva prostředky s typem **App Service**. Vyberte prostředek typu **App Service** *s* příponou "-API".
-1. V **přehledu**App Service Zkopírujte hodnotu **URL** , která představuje adresu URL koncového bodu rozhraní API pro nasazenou aplikaci blockchain Workbench.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. V levém navigačním podokně vyberte **položku Skupiny prostředků**.
+1. Zvolte název skupiny prostředků, který jste nasadili blockchain workbench.
+1. Vyberte záhlaví sloupce **TYP,** chcete-li seznam seřadit abecedně podle typu.
+1. Existují dva prostředky s typem **App Service**. Vyberte zdroj typu **App Service** *s* příponou "-api".
+1. V **přehledu**služby App Service zkopírujte hodnotu **URL,** která představuje adresu URL koncového bodu rozhraní API, do nasazeného blockchainworkbench.
 
-    ![Adresa URL koncového bodu rozhraní API služby App Service](media/use-api/app-service-api.png)
+    ![Adresa URL koncového bodu rozhraní API služby Aplikace](media/use-api/app-service-api.png)
 
 ## <a name="authentication"></a>Ověřování
 
-Požadavky na REST API Workbench blockchain jsou chráněné pomocí Azure Active Directory (Azure AD).
+Požadavky na rozhraní REST blockchain workbench jsou chráněné pomocí Služby Azure Active Directory (Azure AD).
 
-Aby bylo možné provést ověřený požadavek na rozhraní REST API, kód klienta vyžaduje ověření pomocí platných přihlašovacích údajů před voláním rozhraní API. Ověřování je sladěné mezi různými aktéry Azure AD a poskytuje vašemu klientovi [přístupový token](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#access-token) jako ověření platnosti. Token se pak pošle v hlavičce autorizace HTTP REST API požadavků. Další informace o ověřování Azure AD najdete v tématu [Azure Active Directory pro vývojáře](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
+Chcete-li provést ověřený požadavek na rozhraní REST API, kód klienta vyžaduje před voláním rozhraní API ověření s platnými přihlašovacími údaji. Ověřování je koordinováno mezi různými aktéry podle Azure AD a poskytuje klientovi [přístupový token](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#access-token) jako důkaz ověřování. Token je pak odeslán v hlavičce autorizace HTTP požadavků rozhraní REST API. Další informace o ověřování Azure AD najdete v [tématu Azure Active Directory pro vývojáře](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
 
-Příklady ověřování najdete v tématu [ukázky REST API](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/rest-api-samples) .
+Viz [REST API ukázky](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/rest-api-samples) příklady, jak ověřit.
 
 ## <a name="using-postman"></a>S využitím Postmana
 
-Pokud chcete testovat nebo experimentovat s rozhraními API aplikace Workbench, můžete použít [metodu post](https://www.postman.com) k zajištění volání rozhraní API pro vaše nasazení. [Stáhněte si ukázku post z kolekce požadavky rozhraní API Workbench](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/rest-api-samples/postman) z GitHubu. Podrobnosti o ověřování a používání ukázkových požadavků rozhraní API najdete v souboru READme.
+Pokud chcete otestovat nebo experimentovat s rozhraními WORKBENCH API, můžete použít [Postman](https://www.postman.com) k volání rozhraní API pro vaše nasazení. [Stáhněte si ukázkovou kolekci Postman požadavků rozhraní Workbench API](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/rest-api-samples/postman) z GitHubu. Podrobnosti o ověřování a použití ukázkových požadavků rozhraní API najdete v souboru README.
 
 ## <a name="create-an-application"></a>Vytvoření aplikace
 
-K vytvoření aplikace blockchain Workbench použijete dvě volání rozhraní API. Tuto metodu můžou provádět jenom uživatelé, kteří jsou správci aplikace Workbench.
+Dvě volání rozhraní API slouží k vytvoření aplikace Blockchain Workbench. Tuto metodu mohou provádět pouze uživatelé, kteří jsou správci workbenchu.
 
-Pro nahrání souboru JSON aplikace a získání ID aplikace použijte [rozhraní API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationspost) pro odeslání aplikace.
+Pomocí [rozhraní API APLIKACE POST](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationspost) nahrajte soubor JSON aplikace a získejte ID aplikace.
 
-### <a name="applications-post-request"></a>Žádosti po odeslání
+### <a name="applications-post-request"></a>Žádost post aplikace
 
-Pomocí parametru **appFile** můžete konfigurační soubor odeslat jako součást textu žádosti.
+Pomocí parametru **appFile** odešlete konfigurační soubor jako součást těla požadavku.
 
 ``` http
 POST /api/v1/applications
@@ -58,9 +58,9 @@ Content-Disposition: form-data; name="appFile"; filename="/C:/smart-contract-sam
 Content-Type: application/json
 ```
 
-### <a name="applications-post-response"></a>Aplikace po odpovědi
+### <a name="applications-post-response"></a>Aplikace POST odpověď
 
-V odpovědi se vrátí vytvořené ID aplikace. K přidružení konfiguračního souboru k souboru s kódem při volání dalšího rozhraní API potřebujete ID aplikace.
+ID vytvořené aplikace je vráceno v odpovědi. ID aplikace potřebujete k přidružení konfiguračního souboru k souboru kódu při volání dalšího rozhraní API.
 
 ``` http
 HTTP/1.1 200 OK
@@ -68,16 +68,16 @@ Content-Type: "application/json"
 1
 ```
 
-### <a name="contract-code-post-request"></a>Požadavek POST kódu kontraktu
+### <a name="contract-code-post-request"></a>Požadavek na kód smlouvy POST
 
-Použijte [rozhraní API pro kód kontraktu](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/contractcodepost) , a to předáním ID aplikace a nahráním souboru kódu pro záhustotu aplikace. Datovou částí může být jeden soubor s pevnou hustotou nebo soubor. zip obsahující soubory.
+Pomocí [rozhraní POST KÓD smlouvy aplikace](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/contractcodepost) předáním ID aplikace k nahrání souboru kódu Solidity aplikace. Datovou část může být jeden soubor Solidity nebo zip soubor obsahující solidity soubory.
 
 Nahraďte následující hodnoty:
 
 | Parametr | Hodnota |
 |-----------|-------|
-| ApplicationId | Návratová hodnota z rozhraní API pro odeslání aplikace |
-| {ledgerId} | Index hlavní knihy Hodnota je obvykle 1. Můžete také v [tabulce hlavní knihy](data-sql-management-studio.md) vyhledat hodnotu. |
+| {applicationId} | Vrácená hodnota z aplikací POST API. |
+| {ledgerId} | Index hlavní knihy. Hodnota je obvykle 1. Můžete také zkontrolovat hodnotu v [tabulce Hlavní kniha.](data-sql-management-studio.md) |
 
 ``` http
 POST /api/v1/applications/{applicationId}/contractCode?ledgerId={ledgerId}
@@ -86,9 +86,9 @@ Authorization : Bearer {access token}
 Content-Disposition: form-data; name="contractFile"; filename="/C:/smart-contract-samples/HelloWorld.sol"
 ```
 
-### <a name="contract-code-post-response"></a>Odpověď po odeslání kódu kontraktu
+### <a name="contract-code-post-response"></a>Odpověď POST kódu smlouvy
 
-V případě úspěchu odpověď obsahuje ID vytvořeného kódu kontraktu z [tabulky ContractCode](data-sql-management-studio.md).
+Pokud je úspěšná, odpověď zahrnuje id kódu smlouvy vytvořené z [tabulky ContractCode](data-sql-management-studio.md).
 
 ``` http
 HTTP/1.1 200 OK
@@ -98,17 +98,17 @@ Content-Type: "application/json"
 
 ## <a name="assign-roles-to-users"></a>Přiřazení rolí uživatelům
 
-Pomocí [přiřazení rolí aplikace předejte rozhraní API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/roleassignmentspost) předáním ID aplikace, ID uživatele a ID aplikační role a vytvořte tak mapování uživatele na role v zadané aplikaci blockchain. Tuto metodu můžou provádět jenom uživatelé, kteří jsou správci aplikace Workbench.
+Pomocí [přiřazení rolí Aplikace post api](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/roleassignmentspost) předáním ID aplikace, ID uživatele a ID role aplikace k vytvoření mapování uživatele role v zadané aplikaci blockchain. Tuto metodu mohou provádět pouze uživatelé, kteří jsou správci workbenchu.
 
-### <a name="role-assignments-post-request"></a>Přiřazení rolí – požadavek po odeslání
+### <a name="role-assignments-post-request"></a>Požadavek NA Přiřazení rolí POST
 
 Nahraďte následující hodnoty:
 
 | Parametr | Hodnota |
 |-----------|-------|
-| ApplicationId | Návratová hodnota z rozhraní API pro odeslání aplikace |
-| UserID | Hodnota ID uživatele z [tabulky uživatelů](data-sql-management-studio.md) |
-| {applicationRoleId} | Hodnota ID aplikační role přidružená k ID aplikace z [tabulky ApplicationRole](data-sql-management-studio.md) |
+| {applicationId} | Vrácená hodnota z rozhraní API APLIKACE POST. |
+| {userId} | Hodnota ID uživatele z [tabulky Uživatel](data-sql-management-studio.md). |
+| {applicationRoleId} | Hodnota ID role aplikace přidružená k ID aplikace z [tabulky ApplicationRole](data-sql-management-studio.md). |
 
 ``` http
 POST /api/v1/applications/{applicationId}/roleAssignments
@@ -121,9 +121,9 @@ Authorization : Bearer {access token}
 }
 ```
 
-### <a name="role-assignments-post-response"></a>Přiřazení rolí po odpovědi
+### <a name="role-assignments-post-response"></a>Odpověď POST přiřazení rolí
 
-V případě úspěchu bude odpověď zahrnovat ID vytvořeného přiřazení role z [tabulky RoleAssignment](data-sql-management-studio.md).
+Pokud je úspěšná, odpověď obsahuje ID přiřazení vytvořené role z [tabulky RoleAssignment](data-sql-management-studio.md).
 
 ``` http
 HTTP/1.1 200
@@ -132,21 +132,21 @@ HTTP/1.1 200
 
 ## <a name="list-applications"></a>Výpis aplikací
 
-K načtení všech aplikací blockchain Workbench pro uživatele použijte [aplikace získat rozhraní API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationsget) . V tomto příkladu má přihlášený uživatel přístup ke dvěma aplikacím:
+Pomocí [rozhraní API APLIKACE GET](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationsget) načtěte všechny aplikace Blockchain Workbench pro uživatele. V tomto příkladu má přihlášený uživatel přístup ke dvěma aplikacím:
 
-- [Přenos prostředků](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md)
-- [Chladicí přeprava](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md)
+- [Převod majetku](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md)
+- [Chladírenská doprava](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md)
 
-### <a name="applications-get-request"></a>Žádosti o získání
+### <a name="applications-get-request"></a>Aplikace GET požadavek
 
 ``` http
 GET /api/v1/applications
 Authorization : Bearer {access token}
 ```
 
-### <a name="applications-get-response"></a>Aplikace obdrží odpověď.
+### <a name="applications-get-response"></a>Aplikace GET odpověď
 
-V odpovědi se zobrazí všechny aplikace blockchain, ke kterým má uživatel přístup v blockchain Workbench. Správci blockchain Workbench získají každou aplikaci blockchain. Správci mimo aplikaci Workbench získají všechny aplikace blockchain, pro které mají alespoň jednu přidruženou aplikační roli nebo přidruženou roli instance inteligentního kontraktu.
+Odpověď uvádí všechny blockchainové aplikace, ke kterým má uživatel přístup v Blockchain Workbench. Správci Blockchain Workbench dostanou každou blockchainovou aplikaci. Správci bez workbenchu získají všechny blockchainové aplikace, pro které mají alespoň jednu přidruženou roli aplikace nebo přidruženou roli instance inteligentní smlouvy.
 
 ``` http
 HTTP/1.1 200 OK
@@ -180,9 +180,9 @@ Content-type: application/json
 
 ## <a name="list-workflows-for-an-application"></a>Výpis pracovních postupů pro aplikaci
 
-Použijte [pracovní postupy aplikací získat rozhraní API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/workflowsget) k vypsání všech pracovních postupů zadané aplikace blockchain, ke kterým má uživatel přístup v blockchain Workbench. Každá blockchainová aplikace má jeden nebo více pracovních postupů a každý pracovní postup má nula nebo více instancí chytrých kontraktů. Pro klientskou aplikaci blockchain, která má jenom jeden pracovní postup, doporučujeme přeskočit tok uživatelského prostředí, který uživatelům umožní vybrat příslušný pracovní postup.
+Pomocí [rozhraní API GET APLIKACE](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/workflowsget) můžete vypsat všechny pracovní postupy zadané blockchainové aplikace, ke které má uživatel přístup v Blockchain Workbench. Každá blockchainová aplikace má jeden nebo více pracovních postupů a každý pracovní postup má nula nebo více instancí chytrých kontraktů. Pro klientskou aplikaci blockchain, která má pouze jeden pracovní postup, doporučujeme vynechat tok uživatelského prostředí, který uživatelům umožňuje vybrat příslušný pracovní postup.
 
-### <a name="application-workflows-request"></a>Žádost o pracovní postupy aplikace
+### <a name="application-workflows-request"></a>Požadavek na pracovní postupy aplikace
 
 ``` http
 GET /api/v1/applications/{applicationId}/workflows
@@ -191,7 +191,7 @@ Authorization: Bearer {access token}
 
 ### <a name="application-workflows-response"></a>Odpověď pracovních postupů aplikace
 
-Správci blockchain Workbench získají každý pracovní postup blockchain. Správci mimo aplikaci Workbench získají všechny pracovní postupy, pro které mají alespoň jednu přidruženou roli aplikace nebo která je přidružena k roli instance inteligentního kontraktu.
+Správci Blockchain Workbench získají každý pracovní postup blockchainu. Správci mimo workbench získat všechny pracovní postupy, pro které mají alespoň jednu roli přidružené aplikace nebo je spojena s rolí instance inteligentní smlouvy.
 
 ``` http
 HTTP/1.1 200 OK
@@ -212,29 +212,29 @@ Content-type: application/json
 }
 ```
 
-## <a name="create-a-contract-instance"></a>Vytvoření instance kontraktu
+## <a name="create-a-contract-instance"></a>Vytvoření instance smlouvy
 
-K vytvoření nové instance inteligentních kontraktů pro pracovní postup použijte [kontrakty verze V2 post API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/contractsv2/contractpost) . Pokud je uživatel přidružený k roli aplikace, může vytvořit pouze novou instanci inteligentního kontraktu, pokud je uživatel přidružen k aplikační roli, která může iniciovat instanci inteligentního kontraktu pro pracovní postup.
+Pomocí [rozhraní Contracts V2 POST API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/contractsv2/contractpost) vytvořte novou instanci inteligentní smlouvy pro pracovní postup. Uživatelé mohou vytvořit novou instanci inteligentní smlouvy pouze v případě, že je uživatel přidružen k roli aplikace, která může iniciovat instanci inteligentní smlouvy pro pracovní postup.
 
 > [!NOTE]
-> V tomto příkladu se používá verze 2 rozhraní API. Rozhraní API kontraktu verze 2 poskytují pro přidružená pole ProvisioningStatus větší členitost.
+> V tomto příkladu se používá verze 2 rozhraní API. Kontraktová úložiště kontraktu verze 2 poskytují podrobnější informace pro přidružená pole ProvisioningStatus.
 
-### <a name="contracts-post-request"></a>Kontrakt po požadavku
+### <a name="contracts-post-request"></a>Požadavek NA SMLOUVY POST
 
 Nahraďte následující hodnoty:
 
 | Parametr | Hodnota |
 |-----------|-------|
-| WorkflowId | Hodnota ID pracovního postupu je ConstructorID kontraktu z [tabulky pracovního postupu](data-sql-management-studio.md). |
-| {contractCodeId} | Hodnota ID kódu kontraktu z [tabulky ContractCode](data-sql-management-studio.md) Proveďte korelaci ID aplikace a ID hlavní knihy pro instanci kontraktu, kterou chcete vytvořit. |
-| ConnectionID | Hodnota ID připojení z [tabulky připojení](data-sql-management-studio.md). |
+| {workflowId} | Hodnota ID pracovního postupu je ConstructorID smlouvy z [tabulky Pracovní postup](data-sql-management-studio.md). |
+| {contractCodeId} | Hodnota ID kódu smlouvy z [tabulky ContractCode](data-sql-management-studio.md). Korelujte ID aplikace a ID hlavní knihy pro instanci smlouvy, kterou chcete vytvořit. |
+| {connectionId} | Hodnota ID připojení z [tabulky Připojení](data-sql-management-studio.md). |
 
-U textu žádosti nastavte hodnoty pomocí následujících informací:
+Pro tělo požadavku nastavte hodnoty pomocí následujících informací:
 
 | Parametr | Hodnota |
 |-----------|-------|
-| workflowFunctionID | ID z [tabulky WorkflowFunction](data-sql-management-studio.md) |
-| workflowActionParameters | Páry název hodnoty dvojic parametrů předaných konstruktoru. Pro každý parametr použijte hodnotu workflowFunctionParameterID z tabulky [WorkflowFunctionParameter](data-sql-management-studio.md) . |
+| workflowFunctionID | ID z [tabulky WorkflowFunction](data-sql-management-studio.md). |
+| workflowActionParameters | Dvojice hodnot název parametrů předaných konstruktoru. Pro každý parametr použijte hodnotu workflowFunctionParameterID z tabulky [WorkflowFunctionParameter.](data-sql-management-studio.md) |
 
 ``` http
 POST /api/v2/contracts?workflowId={workflowId}&contractCodeId={contractCodeId}&connectionId={connectionId}
@@ -253,9 +253,9 @@ Authorization : Bearer {access token}
 }
 ```
 
-### <a name="contracts-post-response"></a>Kontrakt po odpovědi
+### <a name="contracts-post-response"></a>Reakce smlouvy POST
 
-V případě úspěchu vrátí rozhraní API přiřazení rolí ContractActionID z [tabulky ContractActionParameter](data-sql-management-studio.md).
+Pokud je úspěšná, vrátí rozhraní API přiřazení rolí hodnotu ContractActionID z [tabulky ContractActionParameter](data-sql-management-studio.md).
 
 ``` http
 HTTP/1.1 200 OK
@@ -264,7 +264,7 @@ HTTP/1.1 200 OK
 
 ## <a name="list-smart-contract-instances-for-a-workflow"></a>Výpis instancí chytrých kontraktů pro pracovní postup
 
-Pomocí [kontraktů získat rozhraní API](/rest/api/azure-blockchain-workbench/contractsv2/contractsget) můžete zobrazit všechny instance inteligentních kontraktů pro pracovní postup. Nebo můžete uživatelům dovolit hluboko podrobně do kterékoli ze zobrazených instancí inteligentních kontraktů.
+Pomocí [rozhraní CONTRACTS GET API](/rest/api/azure-blockchain-workbench/contractsv2/contractsget) zobrazte všechny instance inteligentních kontraktů pro pracovní postup. Nebo můžete uživatelům umožnit, aby se hlouběji ponořili do některé z zobrazených inteligentních smluvních instancí.
 
 ### <a name="contracts-request"></a>Žádost o smlouvy
 
@@ -275,9 +275,9 @@ GET api/v1/contracts?workflowId={workflowId}
 Authorization: Bearer {access token}
 ```
 
-### <a name="contracts-response"></a>Odpověď smluv
+### <a name="contracts-response"></a>Odpověď na smlouvy
 
-Odpověď obsahuje seznam všech instancí inteligentních kontraktů určeného pracovního postupu. Správci aplikace Workbench získají všechny instance inteligentních kontraktů. Správci mimo Workbench získají každou instanci inteligentních kontraktů, pro kterou mají alespoň jednu přidruženou aplikační roli nebo přidruženou k roli instance inteligentního kontraktu.
+Odpověď obsahuje seznam všech inteligentních instancí kontraktu zadaného pracovního postupu. Správci pracovního stolu získají všechny instance inteligentních smluv. Správci mimo workbench získat každou instanci inteligentní smlouvy, pro které mají alespoň jednu roli přidružené aplikace nebo je spojena s rolí instance inteligentní smlouvy.
 
 ``` http
 HTTP/1.1 200 OK
@@ -367,23 +367,23 @@ Content-type: application/json
 
 ## <a name="list-available-actions-for-a-contract"></a>Výpis dostupných akcí pro kontrakt
 
-Pomocí [akce získat rozhraní API](/rest/api/azure-blockchain-workbench/contractsv2/contractactionget) pro zobrazení dostupných uživatelských akcí podle stavu smlouvy. 
+Pomocí [rozhraní API GET akce smlouvy](/rest/api/azure-blockchain-workbench/contractsv2/contractactionget) zobrazte dostupné akce uživatele vzhledem ke stavu smlouvy. 
 
 ### <a name="contract-action-request"></a>Žádost o akci smlouvy
 
-V tomto příkladu si uživatel prohlíží všechny dostupné akce pro novou vytvářenou vydanou smlouvu.
+V tomto příkladu se uživatel dívá na všechny dostupné akce pro novou inteligentní smlouvu, kterou vytvořili.
 
 ``` http
 GET /api/v1/contracts/{contractId}/actions
 Authorization: Bearer {access token}
 ```
 
-### <a name="contract-action-response"></a>Odezva akce kontraktu
+### <a name="contract-action-response"></a>Odpověď na akci smlouvy
 
 Vrátí seznam všech akcí, které může uživatel provést za aktuálního stavu zadané instance chytrého kontraktu.
 
 * Modify: Umožňuje uživateli upravit popis a cenu majetku.
-* Ukončit: umožňuje uživateli ukončit kontrakt assetu.
+* Ukončit: Umožňuje uživateli ukončit smlouvu datového zdroje.
 
 Uživatelé získají všechny použitelné akce, pokud má uživatel přidruženou roli aplikace nebo má přidruženou roli instance chytrého kontraktu pro aktuální stav zadané instance chytrého kontraktu.
 
@@ -440,11 +440,11 @@ Content-type: application/json
 
 ## <a name="execute-an-action-for-a-contract"></a>Provedení akce pro kontrakt
 
-K provedení akce pro zadanou instanci inteligentního kontraktu použijte [akci post API pro akci kontraktu](/rest/api/azure-blockchain-workbench/contractsv2/contractactionpost) .
+Pomocí [rozhraní API akce smlouvy POST](/rest/api/azure-blockchain-workbench/contractsv2/contractactionpost) můžete provést akci pro zadanou instanci inteligentní smlouvy.
 
-### <a name="contract-action-post-request"></a>Požadavek POST akce smlouvy
+### <a name="contract-action-post-request"></a>Požadavek na akci smlouvy POST
 
-V takovém případě Zvažte situaci, kdy uživatel chce změnit popis a cenu assetu.
+V takovém případě zvažte scénář, kdy by uživatel chtěl změnit popis a cenu majetku.
 
 ``` http
 POST /api/v1/contracts/{contractId}/actions
@@ -466,7 +466,7 @@ actionInformation: {
 
 Uživatelé mohou provést pouze akci dostupnou pro aktuální stav zadané instance chytrého kontraktu a pro jim přidruženou roli aplikace nebo přidruženou roli instance chytrého kontraktu.
 
-### <a name="contract-action-post-response"></a>Odpověď po odeslání akce smlouvy
+### <a name="contract-action-post-response"></a>Odpověď AKCE Smlouvy POST
 
 Pokud je požadavek úspěšný, vrátí se odpověď HTTP 200 OK bez dalších informací.
 
@@ -477,4 +477,4 @@ Content-type: application/json
 
 ## <a name="next-steps"></a>Další kroky
 
-Referenční informace o rozhraních API blockchain Workbench najdete v [referenčních informacích k Azure blockchain workbench REST API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench).
+Referenční informace o rozhraních API blockchainworkbench najdete v [tématu Azure Blockchain Workbench REST REFERENCE](https://docs.microsoft.com/rest/api/azure-blockchain-workbench).

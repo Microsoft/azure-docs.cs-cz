@@ -1,6 +1,6 @@
 ---
-title: Vytvoření vlastní image Azure DevTest Labs ze souboru virtuálního pevného disku | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit vlastní image ve službě Azure DevTest Labs ze souboru VHD pomocí webu Azure portal
+title: Vytvoření vlastní image Azure DevTest Labs ze souboru VHD | Dokumenty společnosti Microsoft
+description: Zjistěte, jak vytvořit vlastní image v Azure DevTest Labs ze souboru Virtuálního pevného disku pomocí portálu Azure
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 853c138c8cf73b41b0cebb6c1d349865e18eab6a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61295950"
 ---
-# <a name="create-a-custom-image-from-a-vhd-file"></a>Vytvoření vlastní image ze souboru virtuálního pevného disku
+# <a name="create-a-custom-image-from-a-vhd-file"></a>Vytvoření vlastního obrázku ze souboru VHD
 
 [!INCLUDE [devtest-lab-create-custom-image-from-vhd-selector](../../includes/devtest-lab-create-custom-image-from-vhd-selector.md)]
 
@@ -31,58 +31,58 @@ ms.locfileid: "61295950"
 
 ## <a name="step-by-step-instructions"></a>Podrobné pokyny
 
-Následující kroky vás provedou procesem vytvoření vlastní image ze souboru VHD pomocí webu Azure portal:
+Následující kroky vás provedou vytvořením vlastní image ze souboru Virtuálního pevného disku pomocí portálu Azure:
 
-1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k [portálu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Vyberte **všechny služby**a pak vyberte **DevTest Labs** ze seznamu.
+1. Vyberte **Všechny služby**a ze seznamu vyberte **DevTest Labs.**
 
-1. V seznamu testovacích prostředí vyberte požadované prostředí.  
+1. Ze seznamu testovacích prostředí vyberte požadovanou testovací prostředí.  
 
-1. V hlavním podokně testovacího prostředí, vyberte **konfigurace a zásad**. 
+1. V hlavním podokně testovacího prostředí vyberte **Možnost Konfigurace a zásady**. 
 
-1. Na **konfigurace a zásad** vyberte **vlastních imagí**.
+1. V podokně **Konfigurace a zásady** vyberte **Vlastní obrázky**.
 
-1. Na **vlastních imagí** vyberte **+ přidat**.
+1. V podokně **Vlastní obrázky** vyberte **+Přidat**.
 
-    ![Přidání vlastní image](./media/devtest-lab-create-template/add-custom-image.png)
+    ![Přidat vlastní obrázek](./media/devtest-lab-create-template/add-custom-image.png)
 
-1. Zadejte název vlastní image. Tento název se zobrazí v seznamu základní Image při vytváření virtuálního počítače.
+1. Zadejte název vlastního obrázku. Tento název se zobrazí v seznamu základních bitových kopií při vytváření virtuálního virtuálního soudu.
 
-1. Zadejte popis vlastní image. Tento popis se zobrazí v seznamu základních imagí při vytváření virtuálního počítače.
+1. Zadejte popis vlastního obrázku. Tento popis se zobrazí v seznamu základních bitových kopií při vytváření virtuálního virtuálního soudu.
 
-1. Pro **typ operačního systému**, vyberte buď **Windows** nebo **Linux**.
+1. Pro **typ operačního systému**vyberte **buď Windows** nebo **Linux**.
 
-    - Pokud vyberete **Windows**, prostřednictvím zaškrtávacího políčka určete, zda *sysprep* byl spuštěn v počítači. 
-    - Pokud vyberete **Linux**, prostřednictvím zaškrtávacího políčka určete, zda *zrušení zřízení* byl spuštěn v počítači. 
+    - Pokud vyberete **systém Windows**, zadejte prostřednictvím zaškrtávacího políčka, zda byl v počítači spuštěn *program sysprep.* 
+    - Pokud vyberete **Linux**, zadejte prostřednictvím zaškrtávacího políčka, zda bylo v počítači spuštěno *zrušení zřízení.* 
 
-1. Vyberte **virtuálního pevného disku** z rozevírací nabídky. Toto je virtuální pevný disk, který se použije k vytvoření nové vlastní image. V případě potřeby vyberte možnost **nahrát VHD pomocí Powershellu**.
+1. V rozevírací nabídce vyberte **virtuální disk.** Jedná se o virtuální pevný disk, který bude použit k vytvoření nové vlastní image. V případě potřeby vyberte **nahrát virtuální pevný disk pomocí prostředí PowerShell**.
 
-1. Pokud image použitá k vytvoření vlastní image není licencované image (vydáno nakladatelstvím Microsoft), můžete zadat také název plánu, plán nabídky a vydavatel plánu.
+1. Můžete také zadat název plánu, nabídku plánu a vydavatele plánu, pokud bitová kopie použitá k vytvoření vlastní bitové kopie není licencovanou bitovou kopií (publikovanou společností Microsoft).
 
-   - **Název plánu:** Zadejte název image Marketplace (SKU) z vlastní image se vytvoří 
-   - **Nabídka plánu:** Zadejte produkt (nabídku) Image Marketplace, ze kterého se vytvoří vlastní image 
-   - **Vydavatel plánu:** Zadejte vydavatele image Marketplace, ze kterého se vytvoří vlastní image
+   - **Název plánu:** Zadejte název image Marketplace (SKU), ze kterého je tato vlastní bitová kopie vytvořena. 
+   - **Nabídka plánu:** Zadejte produkt (nabídku) image Marketplace, ze kterého je tento vlastní obrázek vytvořen. 
+   - **Vydavatel plánu:** Zadejte vydavatele image Marketplace, ze kterého je tato vlastní bitová kopie vytvořena.
 
    > [!NOTE]
-   > Pokud je obrázek, který používáte k vytvoření vlastní image **není** licencované image a pak tato pole jsou prázdné a může být vyplněna, pokud se rozhodnete. Pokud image **je** licencované image a pak pole jsou automaticky vyplněna informacemi o plánu. Pokud se pokusíte v tomto případě je změnit, zobrazí se zpráva s upozorněním.
+   > Pokud obrázek, který používáte k vytvoření vlastního obrázku, **není** licencovaným obrázkem, jsou tato pole prázdná a lze je vyplnit, pokud se rozhodnete. Pokud **se jedná** o licencovanou bitovou kopii, pole jsou automaticky vyplněna informacemi o plánu. Pokud se je pokusíte v tomto případě změnit, zobrazí se varovná zpráva.
    >
    >
 
-1. Vyberte **OK** k vytvoření vlastní image.
+1. Chcete-li vytvořit vlastní obrázek, vyberte **OK.**
 
-Po několika minutách se vlastní image se vytvoří a je uložený v účtu úložiště testovacího prostředí. Když chce uživatel testovacího prostředí vytvořit nový virtuální počítač, na obrázku je k dispozici v seznamu základní Image.
+Po několika minutách se vytvoří vlastní image a je uložena v účtu úložiště testovacího prostředí. Když uživatel testovacího prostředí chce vytvořit nový virtuální virtuální ms, image je k dispozici v seznamu základních bitových kopií.
 
-![Vlastní image k dispozici v seznamu základních imagí](./media/devtest-lab-create-template/custom-image-available-as-base.png)
+![Vlastní obrázek dostupný v seznamu základních obrázků](./media/devtest-lab-create-template/custom-image-available-as-base.png)
 
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="related-blog-posts"></a>Související blogové příspěvky
+## <a name="related-blog-posts"></a>Související příspěvky blogu
 
-- [Vlastní Image nebo vzorce?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
-- [Kopírování vlastních Imagí mezi Azure DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
+- [Vlastní obrázky nebo vzorce?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
+- [Kopírování vlastních ibi mezi azure devtest labs](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Přidání virtuálního počítače do testovacího prostředí](./devtest-lab-add-vm.md)

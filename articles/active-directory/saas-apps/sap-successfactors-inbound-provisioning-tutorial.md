@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace SuccessFactors příchozího zřizování v Azure Active Directory | Microsoft Docs'
-description: Informace o tom, jak nakonfigurovat příchozí zřizování z SuccessFactors
+title: 'Kurz: Konfigurace příchozího zřizování faktorů úspěchu ve službě Azure Active Directory | Dokumenty společnosti Microsoft'
+description: Zjistěte, jak nakonfigurovat příchozí zřizování z SuccessFactors
 services: active-directory
 author: cmmdesai
 documentationcenter: na
@@ -15,353 +15,353 @@ ms.workload: identity
 ms.date: 12/05/2019
 ms.author: chmutali
 ms.openlocfilehash: d9317a68c8967fbe0728e8c47e59dd33367c6163
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79249682"
 ---
-# <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>Kurz: Konfigurace zřizování SAP SuccessFactors pro uživatele služby Active Directory (Preview)
-Cílem tohoto kurzu je Ukázat kroky, které potřebujete k tomu, abyste uživatelům zřídili SuccessFactors zaměstnanci v rámci služby Active Directory (AD) a Azure AD s volitelným zpětným zápisem e-mailové adresy na SuccessFactors. Tato integrace je ve verzi Public Preview a podporuje načítání více než [70 a uživatelských atributů](../app-provisioning/sap-successfactors-attribute-reference.md) od SuccessFactors zaměstnanců od středníku.
+# <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>Kurz: Konfigurace sap successfactors pro zřizování uživatelů služby Active Directory (Preview)
+Cílem tohoto kurzu je zobrazit kroky, které je třeba provést k zajištění uživatelů z SuccessFactors Employee Central do služby Active Directory (AD) a Azure AD, s volitelným zpětným zápisem e-mailové adresy successfactors. Tato integrace je ve verzi Public Preview a podporuje načítání více než [70+ uživatelských atributů](../app-provisioning/sap-successfactors-attribute-reference.md) z SuccessFactors Employee Central.
 
 >[!NOTE]
->Tento kurz použijte v případě, že uživatelé, které chcete zřídit z SuccessFactors, potřebují místní účet služby AD a volitelně účet Azure AD. Pokud uživatelé z SuccessFactors potřebují jenom účet Azure AD (jenom pro cloudové uživatele), přečtěte si prosím kurz [konfigurace SAP SuccessFactors na zřizování uživatelů Azure AD](sap-successfactors-inbound-provisioning-cloud-only-tutorial.md) . 
+>Tento kurz použijte, pokud uživatelé, které chcete zřídit z SuccessFactors potřebují místní účet služby AD a volitelně účet Azure AD. Pokud uživatelé z SuccessFactors potřebují jenom účet Azure AD (uživatelé pouze pro cloud), přečtěte si prosím kurz o [konfiguraci SAP SuccessFactors pro](sap-successfactors-inbound-provisioning-cloud-only-tutorial.md) zřizování uživatelů Azure AD. 
 
 
 ## <a name="overview"></a>Přehled
 
-[Služba zřizování uživatelů Azure Active Directory](../app-provisioning/user-provisioning.md) se integruje s [SuccessFactors zaměstnanci](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html) , aby mohla spravovat životní cyklus identity uživatelů. 
+[Služba zřizování uživatelů služby Azure Active Directory](../app-provisioning/user-provisioning.md) se integruje s [centrálou zaměstnanců SuccessFactors Za](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html) účelem správy životního cyklu identity uživatelů. 
 
-Pracovní postupy zřizování uživatelů SuccessFactors, které podporuje služba zřizování uživatelů Azure AD, umožňují automatizaci následujících scénářů lidských zdrojů a životního cyklu identit:
+Pracovní postupy zřizování uživatelů SuccessFactors podporované službou zřizování uživatelů Azure AD umožňují automatizaci následujících lidských prostředků a scénářů správy životního cyklu identit:
 
-* **Najímání nových zaměstnanců** – když se do SuccessFactors přidá nový zaměstnanec, automaticky se vytvoří uživatelský účet ve službě Active Directory, Azure Active Directory a volitelně Office 365 a [Další SaaS aplikace, které Azure AD podporuje](../app-provisioning/user-provisioning.md), a to s zpětným zápisem e-mailové adresy na SuccessFactors.
+* **Nábor nových zaměstnanců** – když je do SuccessFactors přidán nový zaměstnanec, automaticky se vytvoří uživatelský účet ve službě Active Directory, azure active directory a volitelně office 365 a [dalších aplikacích SaaS podporovaných službou Azure AD](../app-provisioning/user-provisioning.md)s zpětným zápisem e-mailové adresy na SuccessFactors.
 
-* **Aktualizace atributů a profilů zaměstnanců** – když se v SuccessFactors aktualizuje záznam zaměstnance (například jeho jméno, název nebo manažer), automaticky se aktualizuje jeho uživatelský účet ve službě Active Directory, Azure Active Directory a volitelně v Office 365 a [dalších SaaS aplikacích, které Azure AD podporuje](../app-provisioning/user-provisioning.md).
+* **Aktualizace atributů a profilů zaměstnance** – když se záznam zaměstnance aktualizuje v faktorech úspěchu (například jejich jméno, titul nebo správce), jejich uživatelský účet se automaticky aktualizuje ve službě Active Directory, službě Azure Active Directory a volitelně v Office 365 a [dalších aplikacích SaaS podporovaných službou Azure AD](../app-provisioning/user-provisioning.md).
 
-* **Ukončení zaměstnanců** – když se zaměstnanec v SuccessFactors ukončí, je jeho uživatelský účet automaticky zakázaný ve službě Active Directory, Azure Active Directory a volitelně Office 365 a [Další SaaS aplikace podporované službou Azure AD](../app-provisioning/user-provisioning.md).
+* **Ukončení zaměstnanců** – když je zaměstnanec ukončen v SuccessFactors, jeho uživatelský účet se automaticky deaktivuje ve službě Active Directory, Azure Active Directory a volitelně Office 365 a [dalších aplikacích SaaS podporovaných službou Azure AD](../app-provisioning/user-provisioning.md).
 
-* **Pracovní zařazení zaměstnanců** – Pokud se zaměstnanec znovu přiřadí v SuccessFactors, jeho starý účet se dá automaticky znovu aktivovat nebo znovu zřídit (v závislosti na vaší preferenci) se službou Active Directory, Azure Active Directory a volitelně Office 365 a [dalšími SaaS aplikacemi, které Azure AD podporuje](../app-provisioning/user-provisioning.md).
+* Opětovné přijetí zaměstnanců – když je zaměstnanec znovu přijat v SuccessFactors, jeho starý účet může být automaticky znovu aktivován nebo znovu zřízen (v závislosti na vašich preferencích) do **služby** Active Directory, Služby Azure Active Directory a volitelně Office 365 a [dalších aplikací SaaS podporovaných službou Azure AD](../app-provisioning/user-provisioning.md).
 
-### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Na koho se toto řešení pro zřizování uživatelů nejlépe hodí?
+### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Pro koho je toto zřizovací řešení uživatele nejvhodnější?
 
-Toto SuccessFactors řešení pro zřizování uživatelů Active Directory je ideální pro:
+Toto řešení zřizování uživatelů služby Active Directory je ideální pro:
 
-* Organizace, které chtějí předem připravené cloudové řešení pro zřizování uživatelů SuccessFactors
+* Organizace, které si přejí předem vytvořené cloudové řešení pro zřizování uživatelů SuccessFactors
 
-* Organizace, které vyžadují přímé zřizování uživatelů z SuccessFactors do Active Directory
+* Organizace, které vyžadují přímé zřizování uživatelů z SuccessFactors do služby Active Directory
 
-* Organizace, které vyžadují zřízení uživatelů pomocí dat získaných od [SuccessFactors zaměstnanců (ES)](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html)
+* Organizace, které vyžadují, aby uživatelé byli zřízeni pomocí dat získaných z [SuccessFactors Employee Central (EC)](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html)
 
-* Organizace, které vyžadují, aby se do jedné nebo více doménových struktur služby Active Directory, domén a organizačních jednotek připojovaly k synchronizaci s jednou nebo více doménovými strukturami, a to na základě informací o změně zjištěných v [SuccessFactors zaměstnanci (ES)](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html)
+* Organizace, které vyžadují připojení, přesunutí a ponechání uživatelů synchronizovat s jednou nebo více doménovými strukturami, doménami a organizačními uživateli služby Active Directory pouze na základě informací o změnách zjištěných v centru [zaměstnanců SuccessFactors (ES)](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html)
 
-* Organizace, které používají Office 365 k e-mailu
+* Organizace používající Office 365 pro e-mail
 
 ## <a name="solution-architecture"></a>Architektura řešení
 
-Tato část popisuje kompletní architekturu řešení zřizování uživatelů pro běžná hybridní prostředí. Existují dva související toky:
+Tato část popisuje architekturu řešení zřizování koncových uživatelů pro běžná hybridní prostředí. Existují dva související toky:
 
-* **Autoritativní tok dat o lidských přenosech – od SuccessFactors k místní službě Active Directory:** V těchto událostech pracovního procesu toku (například nových náborů, přenosů, ukončení) se nejdříve narazí v cloudu SuccessFactors zaměstnanci a data událostí se budou nacházet do místní služby Active Directory prostřednictvím služby Azure AD a zřizovacího agenta. V závislosti na události to může vést k vytváření, aktualizaci, povolování a zakazování operací ve službě AD.
-* **Tok zpětného zápisu e-mailu – z místní služby Active Directory do SuccessFactors:** Jakmile se účet vytvoří ve službě Active Directory, synchronizuje se s Azure AD prostřednictvím Azure AD Connect synchronizace a atribut e-mailu se dá zapsat zpátky do SuccessFactors.
+* **Autoritativní tok dat lidských zdrojů – od SuccessFactors až po místní službu Active Directory:** V tomto události toku pracovního procesu (například nové najímá, převody, ukončení) nejprve dojít v cloudu SuccessFactors Employee Central a potom data událostí toky do místní hospo- active directory prostřednictvím Azure AD a zřizování agenta. V závislosti na události může vést k vytvoření/aktualizaci/povolení/zakázání operací ve službě AD.
+* **Tok zpětného zápisu e-mailu – z místního adresáře Active Directory do successuFaktory:** Po dokončení vytvoření účtu ve službě Active Directory se synchronizuje s Azure AD prostřednictvím synchronizace Azure AD Connect a atribut e-mailu lze zapsat zpět na SuccessFactors.
 
   ![Přehled](./media/sap-successfactors-inbound-provisioning/sf2ad-overview.png)
 
-### <a name="end-to-end-user-data-flow"></a>Koncový tok dat uživatele
+### <a name="end-to-end-user-data-flow"></a>Tok dat koncových uživatelů
 
-1. Tým HR provádí pracovní transakce (Spojovacíky/stěhovací společnosti/Leaversy nebo noví zaměstnanci, přenosy a ukončení) v SuccessFactors zaměstnanci – střed
-2. Služba zřizování Azure AD spouští naplánované synchronizace identit z SuccessFactors ES a identifikuje změny, které je potřeba zpracovat pro synchronizaci s místní službou Active Directory.
-3. Služba zřizování Azure AD vyvolá místního agenta pro zřizování Azure AD Connect s datovou částí požadavku obsahující účet služby AD, který obsahuje operace vytvořit/aktualizovat/povolit/zakázat.
-4. Agent zřizování Azure AD Connect používá účet služby k přidání nebo aktualizaci dat účtu AD.
-5. Modul Azure AD Connect Sync spouští rozdílovou synchronizaci pro vyžádání aktualizací ve službě AD.
-6. Aktualizace služby Active Directory se synchronizují s Azure Active Directory.
-7. Pokud je [aplikace pro zpětný zápis SuccessFactors](sap-successfactors-writeback-tutorial.md) nakonfigurovaná, zapisuje zpátky atribut e-mailu na SuccessFactors na základě používaného odpovídajícího atributu.
+1. Hr tým provádí pracovní transakce (Truhláři/Stěhováci/Opouštějící nebo Nové najímá/převádí/ukončení) v SuccessFactors Employee Central
+2. Služba zřizování Azure AD spouští naplánované synchronizace identit z SuccessFactors EC a identifikuje změny, které je třeba zpracovat pro synchronizaci s místní službou Active Directory.
+3. Služba zřizování Azure AD vyvolá místního agenta azure ad connect provisioning agenta s datovou částí požadavku obsahující operace vytvoření/aktualizace/povolení/zakázání účtu Služby AD.
+4. Agent zřizování Připojení Azure AD používá účet služby k přidání nebo aktualizaci dat účtu služby AD.
+5. Modul Synchronizace připojení Azure AD spustí synchronizaci delta pro vyžádat aktualizace ve službě AD.
+6. Aktualizace služby Active Directory se synchronizují se službou Azure Active Directory.
+7. Pokud [successfactors writeback aplikace](sap-successfactors-writeback-tutorial.md) je nakonfigurován, zapíše zpět e-mail atribut SuccessFactors, na základě odpovídající atribut použít.
 
 ## <a name="planning-your-deployment"></a>Plánování nasazení
 
-Konfigurace zřizování uživatelů cloudového prostředí s využitím cloudu z SuccessFactors do AD vyžaduje výrazné plánování zahrnující různé aspekty, jako je například:
+Konfigurace zřizování uživatelů řízených cloudovým hr z SuccessFactors do AD vyžaduje značné plánování zahrnující různé aspekty, jako jsou:
 * Nastavení agenta zřizování Azure AD Connect 
-* Počet SuccessFactors aplikací pro zřizování uživatelů služby AD pro nasazení
-* Porovnání ID, mapování atributů, transformace a rozsah filtru
+* Počet successů faktorů pro zřizování aplikací uživatelů služby AD k nasazení
+* Odpovídající ID, mapování atributů, transformace a oborové filtry
 
-Podrobné pokyny k těmto tématům najdete v [plánu nasazení cloudového HR](../app-provisioning/plan-cloud-hr-provision.md) . 
+Komplexní pokyny k těmto tématům najdete v [plánu nasazení cloudových hr.](../app-provisioning/plan-cloud-hr-provision.md) 
 
-## <a name="configuring-successfactors-for-the-integration"></a>Konfigurace SuccessFactors pro integraci
+## <a name="configuring-successfactors-for-the-integration"></a>Konfigurace faktorů úspěchu pro integraci
 
-Běžným požadavkem na všechny SuccessFactors zřizovacích konektorů je to, že vyžadují přihlašovací údaje účtu SuccessFactors se správnými oprávněními k vyvolání rozhraní API OData SuccessFactors. Tato část popisuje kroky pro vytvoření účtu služby v SuccessFactors a udělení příslušných oprávnění. 
+Běžným požadavkem všech konektorů zřizování SuccessFactors je, že vyžadují pověření účtu SuccessFactors se správnými oprávněními k vyvolání rozhraní API OData SuccessFactors. Tato část popisuje kroky k vytvoření účtu služby v SuccessFactors a udělit příslušná oprávnění. 
 
-* [Vytvoření nebo identifikace uživatelského účtu rozhraní API v SuccessFactors](#createidentify-api-user-account-in-successfactors)
-* [Vytvoření role oprávnění API](#create-an-api-permissions-role)
+* [Vytvoření/identifikace uživatelského účtu rozhraní API v faktorech úspěchu](#createidentify-api-user-account-in-successfactors)
+* [Vytvoření role oprávnění rozhraní API](#create-an-api-permissions-role)
 * [Vytvoření skupiny oprávnění pro uživatele rozhraní API](#create-a-permission-group-for-the-api-user)
-* [Udělení role oprávnění skupině oprávnění](#grant-permission-role-to-the-permission-group)
+* [Udělit roli oprávnění skupině oprávnění](#grant-permission-role-to-the-permission-group)
 
-### <a name="createidentify-api-user-account-in-successfactors"></a>Vytvoření nebo identifikace uživatelského účtu rozhraní API v SuccessFactors
-Spolupracujte s týmem správce SuccessFactors nebo partnerem pro implementaci a vytvořte nebo identifikujte uživatelský účet v SuccessFactors, který se použije k vyvolání rozhraní OData API. Přihlašovací údaje uživatelského jména a hesla tohoto účtu se budou vyžadovat při konfiguraci zřizovacích aplikací ve službě Azure AD. 
+### <a name="createidentify-api-user-account-in-successfactors"></a>Vytvoření/identifikace uživatelského účtu rozhraní API v faktorech úspěchu
+Spolupracujte se svým týmem správce SuccessFactors nebo implementačním partnerem a vytvořte nebo identifikujte uživatelský účet v faktorech Úspěchu, který se použije k vyvolání rozhraní API OData. Přihlašovací údaje uživatelského jména a hesla tohoto účtu budou vyžadovány při konfiguraci zřizovacích aplikací ve službě Azure AD. 
 
-### <a name="create-an-api-permissions-role"></a>Vytvoření role oprávnění API
+### <a name="create-an-api-permissions-role"></a>Vytvoření role oprávnění rozhraní API
 
-* Přihlaste se k SAP SuccessFactors pomocí uživatelského účtu, který má přístup k centru pro správu.
-* Vyhledejte *možnosti spravovat role oprávnění*a pak ve výsledcích hledání vyberte **Spravovat role oprávnění** .
-  ![spravovat role oprávnění](./media/sap-successfactors-inbound-provisioning/manage-permission-roles.png)
-* V seznamu role oprávnění klikněte na **vytvořit nový**.
+* Přihlaste se do SAP SuccessFactors pomocí uživatelského účtu, který má přístup do Centra pro správu.
+* Vyhledejte *položku Spravovat role oprávnění*a ve výsledcích hledání vyberte Spravovat role **oprávnění.**
+  ![Správa rolí oprávnění](./media/sap-successfactors-inbound-provisioning/manage-permission-roles.png)
+* V seznamu rolí oprávnění klepněte na **tlačítko Vytvořit nový**.
   > [!div class="mx-imgBorder"]
-  > ![vytvořit novou roli oprávnění](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
-* Přidejte název a **Popis** **role** nové role oprávnění. Název a popis by měl označovat, že role je určena pro oprávnění k použití rozhraní API.
+  > ![Vytvořit novou roli oprávnění](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
+* Přidejte **název role** a **popis** nové role oprávnění. Název a popis by měl y označovat, že role je pro oprávnění k použití rozhraní API.
   > [!div class="mx-imgBorder"]
-  > Podrobnosti role ![oprávnění](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
-* V části nastavení oprávnění klikněte na **oprávnění...** , přejděte dolů na seznam oprávnění a klikněte na **spravovat nástroje pro integraci**. Zaškrtněte políčko, pokud **chcete, aby správce mohl přistupovat k rozhraní OData API prostřednictvím základního ověřování**.
+  > ![Podrobnosti role oprávnění](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
+* V části Nastavení oprávnění klikněte na **Oprávnění...**, potom posuňte seznam oprávnění dolů a klepněte na **příkaz Spravovat nástroje pro integraci**. Zaškrtněte políčko **Povolit správci přístup k rozhraní OData API prostřednictvím základního ověřování**.
   > [!div class="mx-imgBorder"]
   > ![Správa integračních nástrojů](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
-* Posuňte se dolů ve stejném poli a vyberte **centrální rozhraní API pro zaměstnance**. Přidáním oprávnění, jak je vidět níže, můžete číst pomocí rozhraní ODATA API a upravit pomocí rozhraní ODATA API. Vyberte možnost upravit, pokud chcete použít stejný účet ke zpětnému zápisu do SuccessFactors scénáře. 
+* Posuňte se dolů ve stejném poli a vyberte **rozhraní API Employee Central .** Přidejte oprávnění, jak je znázorněno níže číst pomocí Rozhraní ODATA API a upravovat pomocí Rozhraní ODATA API. Pokud chcete použít stejný účet pro scénář Writeback to SuccessFactors, vyberte možnost úprav. 
   > [!div class="mx-imgBorder"]
-  > ![oprávnění ke čtení zápisu](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
+  > ![Oprávnění ke čtení zápisu](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
 
   >[!NOTE]
-  >Úplný seznam atributů načtených touto zřizovací aplikací najdete v [referenčních informacích k atributům SuccessFactors](../app-provisioning/sap-successfactors-attribute-reference.md) .
+  >Úplný seznam atributů načtených touto zřizovací aplikací naleznete v [referenční příručce atributu SuccessFactors](../app-provisioning/sap-successfactors-attribute-reference.md)
 
-* Klikněte na **Hotovo**. Klikněte na **Uložit změny**.
+* Klikněte na **Hotovo**. Klikněte na **Save Changes** (Uložit změny).
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>Vytvoření skupiny oprávnění pro uživatele rozhraní API
 
-* V centru pro správu SuccessFactors vyhledejte *možnosti spravovat skupiny oprávnění*a pak ve výsledcích hledání vyberte **Spravovat skupiny oprávnění** .
+* V Centru pro správu SuccessFactors vyhledejte *položku Správa skupin oprávnění*a ve výsledcích hledání vyberte **Spravovat skupiny oprávnění.**
   > [!div class="mx-imgBorder"]
-  > ![spravovat skupiny oprávnění](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
-* V okně Spravovat skupiny oprávnění klikněte na **vytvořit nový**.
+  > ![Správa skupin oprávnění](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
+* V okně Spravovat skupiny oprávnění klepněte na **tlačítko Vytvořit nový**.
   > [!div class="mx-imgBorder"]
-  > ![přidat novou](./media/sap-successfactors-inbound-provisioning/create-new-group.png) skupiny
-* Přidejte název skupiny pro novou skupinu. Název skupiny by měl označovat, že skupina je určena pro uživatele rozhraní API.
+  > ![Přidat novou skupinu](./media/sap-successfactors-inbound-provisioning/create-new-group.png)
+* Přidejte název skupiny pro novou skupinu. Název skupiny by měl označovat, že skupina je pro uživatele rozhraní API.
   > [!div class="mx-imgBorder"]
-  > název skupiny oprávnění ![](./media/sap-successfactors-inbound-provisioning/permission-group-name.png)
-* Přidejte členy do skupiny. Můžete například vybrat **uživatelské jméno** z rozevírací nabídky fond osob a pak zadat uživatelské jméno účtu rozhraní API, které se bude používat pro integraci. 
+  > ![Název skupiny oprávnění](./media/sap-successfactors-inbound-provisioning/permission-group-name.png)
+* Přidejte členy do skupiny. Můžete například vybrat **uživatelské jméno** z rozbalovací nabídky Fond osob a potom zadat uživatelské jméno účtu rozhraní API, který bude použit pro integraci. 
   > [!div class="mx-imgBorder"]
   > ![Přidání členů skupiny](./media/sap-successfactors-inbound-provisioning/add-group-members.png)
-* Kliknutím na **Hotovo** dokončíte vytváření skupiny oprávnění.
+* Chcete-li dokončit vytváření skupiny oprávnění, klepněte na **tlačítko Hotovo.**
 
-### <a name="grant-permission-role-to-the-permission-group"></a>Udělení role oprávnění skupině oprávnění
+### <a name="grant-permission-role-to-the-permission-group"></a>Udělit roli oprávnění skupině oprávnění
 
-* V centru pro správu SuccessFactors vyhledejte *možnosti spravovat role oprávnění*a pak ve výsledcích hledání vyberte **Spravovat role oprávnění** .
-* V **seznamu role oprávnění**vyberte roli, kterou jste vytvořili pro oprávnění používání rozhraní API.
-* V části **udělení této role na...** , klikněte na tlačítko **Přidat..** ..
-* V rozevírací nabídce vyberte **skupinu oprávnění** a pak kliknutím na **Vybrat...** otevřete okno skupiny, kde můžete hledat a vybrat skupinu vytvořenou výše. 
+* V Centru pro správu SuccessFactors vyhledejte položku *Správa rolí oprávnění*a ve výsledcích hledání vyberte Spravovat role **oprávnění.**
+* V **seznamu rolí oprávnění**vyberte roli, kterou jste vytvořili pro oprávnění k využití rozhraní API.
+* V části **Udělit tuto roli...** klikněte na tlačítko **Přidat...**
+* V rozevírací nabídce vyberte **Skupina oprávnění** a kliknutím na **Vybrat...** otevřete okno Skupiny a vyhledejte a vyberte skupinu vytvořenou výše. 
   > [!div class="mx-imgBorder"]
-  > ![přidat skupinu oprávnění](./media/sap-successfactors-inbound-provisioning/add-permission-group.png)
-* Zkontrolujte roli oprávnění udělení skupiny oprávnění. 
+  > ![Přidat skupinu oprávnění](./media/sap-successfactors-inbound-provisioning/add-permission-group.png)
+* Zkontrolujte udělení role oprávnění skupině oprávnění. 
   > [!div class="mx-imgBorder"]
-  > ![role oprávnění a podrobností skupiny](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
-* Klikněte na **Uložit změny**.
+  > ![Podrobnosti role oprávnění a skupiny](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
+* Klikněte na **Save Changes** (Uložit změny).
 
-## <a name="configuring-user-provisioning-from-successfactors-to-active-directory"></a>Konfigurace zřizování uživatelů z SuccessFactors na službu Active Directory
+## <a name="configuring-user-provisioning-from-successfactors-to-active-directory"></a>Konfigurace zřizování uživatelů z SuccessFactors do služby Active Directory
 
-Tato část popisuje kroky pro zřizování uživatelských účtů z SuccessFactors do jednotlivých domén služby Active Directory v rámci rozsahu integrace.
+Tato část obsahuje postup pro zřizování uživatelských účtů z SuccessFactors do každé domény služby Active Directory v rámci vaší integrace.
 
-* [Přidání aplikace zřizovacího konektoru a stažení agenta zřizování](#part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent)
-* [Instalace a konfigurace místních agentů zřizování](#part-2-install-and-configure-on-premises-provisioning-agents)
-* [Konfigurace připojení k SuccessFactors a službě Active Directory](#part-3-in-the-provisioning-app-configure-connectivity-to-successfactors-and-active-directory)
+* [Přidejte aplikaci konektor uzdu a stáhněte si agenta zřizování](#part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent)
+* [Instalace a konfigurace místního agenta zřizování](#part-2-install-and-configure-on-premises-provisioning-agents)
+* [Konfigurace připojení k successfactors a službě Active Directory](#part-3-in-the-provisioning-app-configure-connectivity-to-successfactors-and-active-directory)
 * [Konfigurace mapování atributů](#part-4-configure-attribute-mappings)
 * [Povolení a spuštění zřizování uživatelů](#enable-and-launch-user-provisioning)
 
-### <a name="part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent"></a>Část 1: Přidání aplikace konektoru pro zřizování a stažení agenta zřizování
+### <a name="part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent"></a>Část 1: Přidání aplikace konektoru zřizování a stažení agenta zřizování
 
-**Konfigurace SuccessFactors na zřizování služby Active Directory:**
+**Postup konfigurace faktorů úspěchu pro zřizování služby Active Directory:**
 
 1. Přejděte na <https://portal.azure.com>.
 
-2. V levém navigačním panelu vyberte **Azure Active Directory**
+2. Na levém navigačním panelu vyberte **Azure Active Directory.**
 
-3. Vyberte **podnikové aplikace**a pak **všechny aplikace**.
+3. Vyberte **podnikové aplikace**, potom **všechny aplikace**.
 
-4. Vyberte **Přidat aplikaci**a vyberte kategorii **vše** .
+4. Vyberte **Přidat aplikaci**a vyberte kategorii **Vše.**
 
-5. Vyhledejte **SuccessFactors do zřizování uživatelů služby Active Directory**a přidejte tuto aplikaci z galerie.
+5. Vyhledejte **successfactors na Zřizování uživatelů služby Active Directory**a přidejte tuto aplikaci z galerie.
 
-6. Až se aplikace přidá a zobrazí se obrazovka s podrobnostmi aplikace, vyberte **zřizování** .
+6. Po přidání aplikace a zobrazení obrazovky s podrobnostmi o aplikaci vyberte **Zřídit**
 
-7. Změnit režim **zřizování** na **automaticky**
+7. Změna **režimu** **zřizování** na **automatický**
 
-8. Pokud chcete stáhnout agenta pro zřizování, klikněte na zobrazený informační banner. 
+8. Kliknutím na informační banner, který se zobrazí, stáhněte si zprostředkovatele zřizování. 
    > [!div class="mx-imgBorder"]
-   > ![Stáhnout agenta](./media/sap-successfactors-inbound-provisioning/download-pa-agent.png "Stáhnout agenta – obrazovka")
+   > ![Stáhnout agenta](./media/sap-successfactors-inbound-provisioning/download-pa-agent.png "Stáhnout obrazovku agenta")
 
 
-### <a name="part-2-install-and-configure-on-premises-provisioning-agents"></a>Část 2: instalace a konfigurace místních agentů zřizování
+### <a name="part-2-install-and-configure-on-premises-provisioning-agents"></a>Část 2: Instalace a konfigurace místního agenta zřizování
 
-Aby bylo možné zřídit místní službu Active Directory, musí být agent zřizování nainstalován na serveru, který má .NET 4.7.1 + Framework a síťový přístup k požadovaným doménám služby Active Directory.
+Chcete-li zřídit službu Active Directory místně, musí být zřizovací agent nainstalován na serveru, který má rozhraní .NET 4.7.1+ Framework a síťový přístup k požadovaným doménám služby Active Directory.
 
 > [!TIP]
-> Verzi rozhraní .NET Framework na serveru můžete ověřit podle [zde](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)uvedených pokynů.
-> Pokud server nemá nainstalované rozhraní .NET 4.7.1 nebo vyšší, můžete si ho stáhnout [odsud.](https://support.microsoft.com/help/4033342/the-net-framework-4-7-1-offline-installer-for-windows)  
+> Verzi rozhraní .NET framework na serveru můžete zkontrolovat podle pokynů [uvedených zde](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed).
+> Pokud server nemá nainstalovanou rozhraní .NET 4.7.1 nebo vyšší, můžete si ji stáhnout [zde](https://support.microsoft.com/help/4033342/the-net-framework-4-7-1-offline-installer-for-windows).  
 
-Přeneste stažený instalační program agenta na hostitele serveru a podle níže uvedených kroků dokončete konfiguraci agenta.
+Přeneste instalátor staženého agenta na hostitele serveru a dokončete konfiguraci agenta podle následujících kroků.
 
-1. Přihlaste se k systému Windows Server, na který chcete nainstalovat nového agenta.
+1. Přihlaste se k systému Windows Server, kde chcete nainstalovat nového agenta.
 
-1. Spusťte instalační program agenta zřizování, vyjádřete podmínky a klikněte na tlačítko **nainstalovat** .
+1. Spusťte instalační program zprostředkovatele zřizování, odsouhlaste podmínky a klikněte na tlačítko **Instalovat.**
 
-   ![Instalační obrazovka](./media/workday-inbound-tutorial/pa_install_screen_1.png "Instalační obrazovka")
+   ![Obrazovka Instalace](./media/workday-inbound-tutorial/pa_install_screen_1.png "Obrazovka Instalace")
    
-1. Po dokončení instalace se Průvodce spustí a zobrazí se obrazovka **připojit Azure AD** . Kliknutím na tlačítko **ověřit** se připojte k instanci Azure AD.
+1. Po dokončení instalace se průvodce spustí a zobrazí se obrazovka **Connect Azure AD.** Kliknutím na tlačítko **Ověřit** se připojíte k instanci Azure AD.
 
-   ![Připojit Azure AD](./media/workday-inbound-tutorial/pa_install_screen_2.png "Připojení Azure AD")
+   ![Připojení Azure AD](./media/workday-inbound-tutorial/pa_install_screen_2.png "Připojení Azure AD")
    
-1. Ověřte se u vaší instance Azure AD pomocí přihlašovacích údajů globálního správce.
+1. Ověřte se do instance Azure AD pomocí přihlašovacích údajů globálního správce.
 
-   ![Ověřování správce](./media/workday-inbound-tutorial/pa_install_screen_3.png "Ověřování správce")
+   ![Admin Auth](./media/workday-inbound-tutorial/pa_install_screen_3.png "Admin Auth")
 
    > [!NOTE]
-   > Přihlašovací údaje správce Azure AD se používají jenom pro připojení k vašemu tenantovi Azure AD. Agent neukládá pověření místně na serveru.
+   > Přihlašovací údaje správce Azure AD se používají jenom pro připojení k tenantovi Azure AD. Agent neukládá pověření místně na serveru.
 
-1. Po úspěšném ověření pomocí služby Azure AD se zobrazí obrazovka **připojit ke službě Active Directory** . V tomto kroku zadejte název domény služby Active Directory a klikněte na tlačítko **Přidat adresář** .
+1. Po úspěšném ověření pomocí služby Azure AD se zobrazí obrazovka **Připojit službu Active Directory.** V tomto kroku zadejte název domény služby AD a klikněte na tlačítko **Přidat adresář.**
 
    ![Přidat adresář](./media/workday-inbound-tutorial/pa_install_screen_4.png "Přidat adresář")
   
-1. Nyní budete vyzváni k zadání přihlašovacích údajů požadovaných pro připojení k doméně služby AD. Na stejné obrazovce můžete použít **prioritu vybrat řadič domény** a zadat řadiče domény, které by měl agent použít pro odesílání žádostí o zřízení.
+1. Nyní budete vyzváni k zadání pověření potřebných pro připojení k doméně služby AD. Na stejné obrazovce můžete použít **prioritu select řadiče domény** k určení řadičů domény, které by měl agent používat pro odesílání požadavků na zřízení.
 
-   ![Přihlašovací údaje domény](./media/workday-inbound-tutorial/pa_install_screen_5.png)
+   ![Pověření domény](./media/workday-inbound-tutorial/pa_install_screen_5.png)
    
-1. Po nakonfigurování domény instalační program zobrazí seznam nakonfigurovaných domén. Na této obrazovce můžete opakovat krok #5 a #6 přidat další domény, kliknutím na tlačítko **Další** pokračujte v registraci agenta.
+1. Po konfiguraci domény instalační program zobrazí seznam nakonfigurovaných domén. Na této obrazovce můžete opakovat krok #5 a #6 přidat další domény nebo kliknout na **další** a přejít k registraci agenta.
 
    ![Nakonfigurované domény](./media/workday-inbound-tutorial/pa_install_screen_6.png "Nakonfigurované domény")
 
    > [!NOTE]
-   > Pokud máte více domén služby AD (například na.contoso.com, emea.contoso.com), přidejte každou doménu do seznamu jednotlivě.
-   > Pouze přidání nadřazené domény (např. contoso.com) není dostačující. Musíte zaregistrovat každou podřízenou doménu s agentem.
+   > Pokud máte více domén AD (např. na.contoso.com, emea.contoso.com), přidejte každou doménu jednotlivě do seznamu.
+   > Přidání nadřazené domény (např. contoso.com) není dostatečné. Každou podřízenou doménu je nutné zaregistrovat u agenta.
    
-1. Zkontrolujte podrobnosti o konfiguraci a kliknutím na **Potvrdit** agenta zaregistrujte.
+1. Zkontrolujte podrobnosti konfigurace a kliknutím na **Potvrdit** zaregistrujte agenta.
   
-   ![Potvrdit obrazovku](./media/workday-inbound-tutorial/pa_install_screen_7.png "Potvrdit obrazovku")
+   ![Obrazovka Potvrdit](./media/workday-inbound-tutorial/pa_install_screen_7.png "Obrazovka Potvrdit")
    
-1. Průvodce konfigurací zobrazí průběh registrace agenta.
+1. Průvodce konfigurací zobrazuje průběh registrace agenta.
   
    ![Registrace agenta](./media/workday-inbound-tutorial/pa_install_screen_8.png "Registrace agenta")
    
-1. Po úspěšné registraci agenta můžete kliknutím na tlačítko **ukončit** průvodce ukončit.
+1. Jakmile je registrace agenta úspěšná, můžete kliknutím na **ukončit** průvodce ukončit.
   
-   ![Ukončit obrazovku](./media/workday-inbound-tutorial/pa_install_screen_9.png "Ukončit obrazovku")
+   ![Výstupní obrazovka](./media/workday-inbound-tutorial/pa_install_screen_9.png "Výstupní obrazovka")
    
-1. Ověřte instalaci agenta a ujistěte se, že je spuštěný, a to tak, že otevřete modul snap-in služby a vyhledáte službu s názvem "Microsoft Azure AD připojit zřizování agent".
+1. Ověřte instalaci agenta a ujistěte se, že je spuštěn otevřením modulu snap-in Služby a vyhledejte službu s názvem "Microsoft Azure AD Connect Provisioning Agent"
   
    ![Služby](./media/workday-inbound-tutorial/services.png)
 
-### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-successfactors-and-active-directory"></a>Část 3: v aplikaci zřizování nakonfigurujte možnosti připojení k SuccessFactors a Active Directory.
-V tomto kroku navážeme připojení k SuccessFactors a službě Active Directory v Azure Portal. 
+### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-successfactors-and-active-directory"></a>Část 3: V aplikaci zřizování nakonfigurujte připojení k SuccessFactors a Active Directory
+V tomto kroku navážeme na webu Azure Portal připojení s SuccessFactors a Active Directory. 
 
-1. V Azure Portal se vraťte do aplikace SuccessFactors do služby Active Directory pro zřizování uživatelů vytvořenou v [části 1](#part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent) .
+1. Na webu Azure Portal se vraťte k aplikaci SuccessFactors to Active Directory User Provisioning App vytvořené v [části 1](#part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent)
 
-1. Dokončete část **přihlašovací údaje správce** následujícím způsobem:
+1. Dokončete oddíl **Pověření správce** takto:
 
-   * **Uživatelské jméno správce** – zadejte uživatelské jméno uživatelského účtu rozhraní SuccessFactors API s připojením ID společnosti. Má formát: **username\@companyID**
+   * **Admin Uživatelské jméno** – Zadejte uživatelské jméno SuccessFactors API uživatelského účtu, s ID společnosti připojen. Má formát: **uživatelské\@jméno companyID**
 
-   * **Heslo správce –** Zadejte heslo uživatelského účtu rozhraní SuccessFactors API. 
+   * **Admin heslo -** Zadejte heslo uživatelského účtu rozhraní API SuccessFactors. 
 
-   * **Adresa URL tenanta –** Zadejte název koncového bodu SuccessFactors OData API Services. Zadejte pouze název hostitele serveru bez protokolu HTTP nebo HTTPS. Tato hodnota by měla vypadat takto: **< API-server-name >. SuccessFactors. com**.
+   * **Adresa URL klienta –** Zadejte název koncového bodu služby SuccessFactors OData API. Zadejte pouze název hostitele serveru bez http nebo https. Tato hodnota by měla vypadat **takto:<api-server-name>.successfactors.com**.
 
-   * **Doménová struktura služby Active Directory –** Název domény služby Active Directory, jak je zaregistrován u agenta. Pomocí rozevírací nabídky vyberte cílovou doménu pro zřizování. Tato hodnota je obvykle řetězec jako: *contoso.com*
+   * **Doménová struktura služby Active Directory -** "Název" domény služby Active Directory, jak je registrovánu u agenta. Pomocí rozevíracího souboru vyberte cílovou doménu pro zřizování. Tato hodnota je obvykle řetězec jako: *contoso.com*
 
-   * **Kontejner služby Active Directory –** Zadejte rozlišující název kontejneru, kde by měl agent ve výchozím nastavení vytvářet uživatelské účty.
-        Příklad: *ou = Users, DC = contoso, DC = com*
+   * **Kontejner služby Active Directory -** Zadejte dn kontejneru, kde by měl agent ve výchozím nastavení vytvářet uživatelské účty.
+        Příklad: *OU=Uživatelé,DC=contoso,DC=com*
         > [!NOTE]
-        > Toto nastavení se dá přehrát jenom pro vytváření uživatelských účtů, pokud není atribut *parentDistinguishedName* nakonfigurovaný v mapování atributů. Toto nastavení se nepoužívá pro operace vyhledávání a aktualizace uživatelů. Celý podstrom domény spadá do rozsahu operace hledání.
+        > Toto nastavení se používá pouze pro vytváření uživatelských účtů, pokud atribut *parentDistinguishedName* není v mapování atributů nakonfigurován. Toto nastavení se nepoužívá pro operace vyhledávání uživatelů nebo aktualizace. Celý podstrom domény spadá do rozsahu operace vyhledávání.
 
-   * **E-mail s oznámením –** Zadejte svou e-mailovou adresu a zaškrtněte políčko Odeslat e-mail, pokud dojde k chybě.
+   * **E-mail s oznámením –** Zadejte svou e-mailovou adresu a zaškrtněte políčko Odeslat e-mail, pokud dojde k selhání.
     > [!NOTE]
-    > Služba zřizování Azure AD pošle e-mailové oznámení, pokud úloha zřizování přejde do stavu [karantény](/azure/active-directory/manage-apps/application-provisioning-quarantine-status) .
+    > Služba zřizování Azure AD odešle e-mailové oznámení, pokud úloha zřizování přejde do [stavu karantény.](/azure/active-directory/manage-apps/application-provisioning-quarantine-status)
 
-   * Klikněte na tlačítko **Testovat připojení** . Pokud je test připojení úspěšný, klikněte na tlačítko **Uložit** v horní části. Pokud se to nepovede, poklikejte na to, jestli jsou přihlašovací údaje SuccessFactors a přihlašovací údaje služby AD nakonfigurované na instalaci agenta platné.
+   * Klepněte na tlačítko **Testovat připojení.** Pokud je test připojení úspěšný, klepněte na tlačítko **Uložit** nahoře. Pokud se nezdaří, zkontrolujte, zda jsou platná pověření SuccessFactors a pověření služby AD nakonfigurovaná v nastavení agenta.
     >[!div class="mx-imgBorder"]
     >![Azure Portal](./media/sap-successfactors-inbound-provisioning/sf2ad-provisioning-creds.png)
 
-   * Po úspěšném uložení přihlašovacích údajů se v oddílu **mapování** zobrazí výchozí mapování **synchronizovat uživatele SuccessFactors do místní služby Active Directory** .
+   * Po úspěšném uložení pověření se v části **Mapování** zobrazí výchozí mapování **Synchronizovat uživatele SuccessFactors users do místní služby Active Directory.**
 
-### <a name="part-4-configure-attribute-mappings"></a>4\. část: Konfigurace mapování atributů
+### <a name="part-4-configure-attribute-mappings"></a>Část 4: Konfigurace mapování atributů
 
-V této části nakonfigurujete, jak budou data uživatelů z SuccessFactors do služby Active Directory přetékat.
+V této části nakonfigurujete způsob toku uživatelských dat z faktorů Úspěchdo služby Active Directory.
 
-1. Na kartě zřizování v části **mapování**klikněte na **synchronizovat uživatele SuccessFactors do místní služby Active Directory**.
+1. Na kartě Zřizování v části **Mapování**klepněte na **tlačítko Synchronizovat uživatele SuccessFactors users do místní služby Active Directory**.
 
-1. V poli **obor zdrojového objektu** můžete vybrat, které sady uživatelů v SuccessFactors mají být v oboru pro zřizování služby AD, definováním sady filtrů založených na atributech. Výchozí obor je "Všichni uživatelé v SuccessFactors". Příklady filtrů:
+1. V poli **Obor zdrojového objektu** můžete výběrem sad uživatelů v SuccessFactors, které by měly být v oboru pro zřizování do služby AD, definováním sady filtrů založených na atributech. Výchozí obor je "všichni uživatelé v SuccessFactors". Příklady filtrů:
 
-   * Příklad: určení oboru pro uživatele s personIdExternal mezi 1000000 a 2000000 (s výjimkou 2000000)
+   * Příklad: Rozsah pro uživatele s personIdExternal mezi 1000000 a 2000000 (kromě 2000000)
 
       * Atribut: personIdExternal
 
-      * Operátor: shoda regulárního výrazu
+      * Operátor: REGEX Shoda
 
-      * Hodnota: (1 [0-9] [0-9] [0-9] [0-9] [0-9] [0-9])
+      * Hodnota: (1[0-9][0-9][0-9][0-9][0-9][0-9])
 
-   * Příklad: pouze zaměstnanci a ne saminí pracovníci
+   * Příklad: Pouze zaměstnanci a nepodmínění pracovníci
 
-      * Atribut: ČísloZaměstnance
+      * Atribut: ID zaměstnance
 
-      * Operátor: není NULL
+      * Operátor: NENÍ NULL
 
    > [!TIP]
-   > Při první konfiguraci zřizovací aplikace budete muset otestovat a ověřit mapování atributů a výrazy, abyste se ujistili, že vám poskytne požadovaný výsledek. Microsoft doporučuje pomocí filtrů oborů v **oboru zdrojového objektu** testovat mapování s několika testovacími uživateli z SuccessFactors. Jakmile ověříte, že mapování funguje, můžete buď odebrat filtr, nebo ho postupně rozšířit, aby zahrnoval více uživatelů.
+   > Při konfiguraci zřizovací aplikace poprvé, budete muset otestovat a ověřit mapování atributů a výrazy a ujistěte se, že je vám požadovaný výsledek. Společnost Microsoft doporučuje používat filtry oborů v části **obor zdrojového objektu** k testování mapování s několika testovacími uživateli z SuccessFactors. Jakmile ověříte, že mapování funguje, můžete filtr odebrat nebo jej postupně rozbalit tak, aby zahrnoval více uživatelů.
 
    > [!CAUTION] 
-   > Výchozím chováním modulu zřizování je zakázat nebo odstranit uživatele, kteří se přestanou přidělovat z oboru. To nemusí být žádoucí v SuccessFactors integrace se službou AD. Pokud chcete přepsat toto výchozí chování, přečtěte si článek [přeskočení odstranění uživatelských účtů, které se nacházejí mimo rozsah](../app-provisioning/skip-out-of-scope-deletions.md) .
+   > Výchozí chování zřizovacího modulu je zakázat nebo odstranit uživatele, kteří přejdou mimo rozsah. To nemusí být žádoucí ve vaší SuccessFactors do integrace ad. Chcete-li přepsat toto výchozí chování, přečtěte si článek [Přeskočit odstranění uživatelských účtů, které jsou mimo rozsah.](../app-provisioning/skip-out-of-scope-deletions.md)
   
-1. V poli **Akce cílového objektu** můžete globálně filtrovat akce prováděné ve službě Active Directory. **Vytváření** a **aktualizace** jsou nejběžnější.
+1. V poli **Akce cílového objektu** můžete globálně filtrovat, jaké akce se provádějí ve službě Active Directory. **Vytvořit** a **aktualizovat** jsou nejběžnější.
 
-1. V části **mapování atributů** můžete definovat, jak se jednotlivé atributy SuccessFactors mapují na atributy služby Active Directory.
+1. V části **Mapování atributů** můžete definovat, jak se jednotlivé atributy SuccessFactors mapují na atributy služby Active Directory.
 
   >[!NOTE]
-  >Úplný seznam atributu SuccessFactors podporovaného aplikací najdete v [referenčních informacích k atributům SuccessFactors](../app-provisioning/sap-successfactors-attribute-reference.md) .
+  >Úplný seznam atributu SuccessFactors podporovaný aplikací naleznete v [části SuccessFactors Attribute Reference](../app-provisioning/sap-successfactors-attribute-reference.md)
 
 
-1. Kliknutím na existující mapování atributů ho aktualizujte nebo kliknutím na **Přidat nové mapování** v dolní části obrazovky přidejte nová mapování. Jednotlivé mapování atributů podporují tyto vlastnosti:
+1. Kliknutím na existující mapování atributů jej aktualizujte nebo kliknutím na **Přidat nové mapování** v dolní části obrazovky přidejte nová mapování. Mapování jednotlivých atributů podporuje tyto vlastnosti:
 
       * **Typ mapování**
 
-         * **Direct** – zapíše hodnotu atributu SuccessFactors do atributu AD bez jakýchkoli změn.
+         * **Direct** – zapíše hodnotu atributu SuccessFactors do atributu AD bez eserech.
 
-         * **Konstanta** – zapsat statickou konstantní hodnotu řetězce na atribut AD
+         * **Konstanta** – do atributu AD napíše statickou hodnotu konstantního řetězce
 
-         * **Výraz** – umožňuje napsat vlastní hodnotu atributu AD na základě jednoho nebo více atributů SuccessFactors. [Další informace najdete v tomto článku o výrazech](../app-provisioning/functions-for-customizing-application-data.md).
+         * **Výraz** – umožňuje zapsat vlastní hodnotu do atributu AD na základě jednoho nebo více atributů SuccessFactors. [Další informace naleznete v tomto článku o výrazech](../app-provisioning/functions-for-customizing-application-data.md).
 
-      * **Zdrojový atribut** – atribut uživatele z SuccessFactors
+      * **Atribut zdroj** – atribut uživatele z SuccessFactors
 
-      * **Výchozí hodnota** – volitelné. Pokud zdrojový atribut má prázdnou hodnotu, mapování místo toho zapíše tuto hodnotu.
-            Nejběžnější konfigurací je ponecháno toto prázdné.
+      * **Výchozí hodnota** – volitelné. Pokud má zdrojový atribut prázdnou hodnotu, mapování místo toho zapíše tuto hodnotu.
+            Nejběžnější konfigurace je ponechat toto prázdné.
 
       * **Cílový atribut** – atribut uživatele ve službě Active Directory.
 
-      * **Porovnává objekty pomocí tohoto atributu** – bez ohledu na to, jestli se má toto mapování použít k jednoznačné identifikaci uživatelů mezi SuccessFactors a Active Directory. Tato hodnota je obvykle nastavena v poli ID pracovního procesu pro SuccessFactors, což je obvykle namapováno na jeden z atributů ID zaměstnance ve službě Active Directory.
+      * **Shoda objektů pomocí tohoto atributu** – Zda toto mapování by měly být použity k jednoznačné identifikaci uživatelů mezi SuccessFactors a Active Directory. Tato hodnota je obvykle nastavena v poli ID pracovníka pro Faktory úspěchu, které je obvykle mapováno na jeden z atributů ID zaměstnance ve službě Active Directory.
 
-      * **Priorita porovnání** – lze nastavit více vyhovujících atributů. Pokud existuje více, vyhodnotí se v pořadí definovaném tímto polem. Jakmile se najde shoda, nevyhodnocují se žádné další odpovídající atributy.
+      * **Odpovídající priorita** – lze nastavit více odpovídajících atributů. Pokud existuje více, jsou vyhodnoceny v pořadí definovaném tímto polem. Jakmile je nalezena shoda, nejsou vyhodnoceny žádné další odpovídající atributy.
 
       * **Použít toto mapování**
 
-         * **Vždycky** – použít toto mapování na akce vytvoření a aktualizace uživatele
+         * **Vždy** – použít toto mapování na vytváření uživatelů a aktualizovat akce
 
-         * **Pouze během vytváření** – použít toto mapování pouze při akcích vytvoření uživatele
+         * **Pouze při vytváření** – toto mapování použít pouze u akcí vytvoření uživatele
 
-1. Pokud chcete uložit mapování, klikněte na **Uložit** v horní části oddílu mapování atributů.
+1. Mapování můžete uložit kliknutím na **Uložit** v horní části oddílu Mapování atributů.
 
-Po dokončení konfigurace mapování atributů teď můžete [Povolit a spustit službu zřizování uživatelů](#enable-and-launch-user-provisioning).
+Po dokončení konfigurace mapování atributů můžete nyní [povolit a spustit službu zřizování uživatelů](#enable-and-launch-user-provisioning).
 
 ## <a name="enable-and-launch-user-provisioning"></a>Povolení a spuštění zřizování uživatelů
 
-Po dokončení konfigurace aplikace SuccessFactors Provisioning můžete službu zřizování zapnout v Azure Portal.
+Po dokončení SuccessFactors zřizování konfigurace aplikací, můžete zapnout zřizování služby na webu Azure Portal.
 
 > [!TIP]
-> Ve výchozím nastavení se při zapnutí služby zřizování spustí operace zřizování pro všechny uživatele v oboru. Pokud dojde k chybám při mapování nebo potížích s daty SuccessFactors, úloha zřizování může selhat a přejít do stavu karantény. Aby k tomu nedocházelo, doporučujeme nakonfigurovat filtr **oboru zdrojového objektu** a otestovat mapování atributů s několika testovacími uživateli před spuštěním úplné synchronizace pro všechny uživatele. Jakmile ověříte, že mapování funguje a poskytuje požadované výsledky, můžete buď odebrat filtr, nebo ho postupně rozšířit, aby zahrnoval více uživatelů.
+> Ve výchozím nastavení při zapnutí zřizovací služby zahájí operace zřizování pro všechny uživatele v oboru. Pokud jsou chyby v mapování nebo SuccessFactors problémy s daty, pak úloha zřizování může selhat a přejít do stavu karantény. Chcete-li tomu zabránit, doporučujeme jako osvědčený postup konfiguraci filtru **oboru zdrojového objektu** a testování mapování atributů s několika testovacími uživateli před spuštěním úplné synchronizace pro všechny uživatele. Jakmile ověříte, že mapování funguje a dáváte vám požadované výsledky, můžete filtr odebrat nebo jej postupně rozšířit tak, aby zahrnoval více uživatelů.
 
-1. Na kartě **zřizování** nastavte **stav zřizování** na **zapnuto**.
+1. Na kartě **Zřizování** nastavte **stav zřizování** **na Zapnuto**.
 
 2. Klikněte na **Uložit**.
 
-3. Tato operace spustí počáteční synchronizaci, což může trvat proměnlivý počet hodin v závislosti na tom, kolik uživatelů je v tenantovi SuccessFactors. V indikátoru průběhu můžete sledovat průběh cyklu synchronizace. 
+3. Tato operace spustí počáteční synchronizaci, která může trvat proměnný počet hodin v závislosti na tom, kolik uživatelů je v tenantovi SuccessFactors. Můžete zkontrolovat indikátor průběhu ke sledování průběhu cyklu synchronizace. 
 
-4. Na kartě **protokoly auditu** v Azure Portal můžete kdykoli zjistit, jaké akce služba zřizování provedla. Protokoly auditu vypíše všechny jednotlivé události synchronizace prováděné službou zřizování, například které uživatele čtou z SuccessFactors a následně se přidají nebo aktualizují ve službě Active Directory. 
+4. Kdykoli zkontrolujte kartu **Protokoly auditu** na webu Azure Portal a zjistěte, jaké akce služba zřizování provedla. Protokoly auditu uvádí všechny jednotlivé události synchronizace prováděné zřizovací službou, například které uživatelé jsou čteny z SuccessFactors a následně přidány nebo aktualizovány do služby Active Directory. 
 
-5. Po dokončení počáteční synchronizace bude na kartě **zřizování** napsána Sestava souhrnu auditu, jak je znázorněno níže.
+5. Po dokončení počáteční synchronizace sepíše souhrnnou zprávu auditu na kartu **Zřizování,** jak je znázorněno níže.
 
    > [!div class="mx-imgBorder"]
-   > indikátor průběhu zřizování ![](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
+   > ![Panel průběhu zřizování](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Další informace o podporovaných atributech SuccessFactors pro příchozí zřizování](../app-provisioning/sap-successfactors-attribute-reference.md)
-* [Informace o tom, jak nakonfigurovat zpětný zápis e-mailu na SuccessFactors](sap-successfactors-writeback-tutorial.md)
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Naučte se, jak nakonfigurovat zpětný zápis e-mailu na SuccessFactors](sap-successfactors-writeback-tutorial.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy o aktivitě zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
 * [Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi SuccessFactors a Azure Active Directory](successfactors-tutorial.md)
-* [Naučte se integrovat další aplikace SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Naučte se exportovat a importovat vaše konfigurace zřizování.](../app-provisioning/export-import-provisioning-configuration.md)
+* [Zjistěte, jak integrovat další aplikace SaaS s Azure Active Directory](tutorial-list.md)
+* [Přečtěte si, jak exportovat a importovat konfigurace zřizování](../app-provisioning/export-import-provisioning-configuration.md)

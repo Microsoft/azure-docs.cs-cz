@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace Zscaler Private Access (ZPA) pro Automatické zřizování uživatelů s Azure Active Directory | Microsoft Docs'
-description: Naučte se, jak nakonfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro Zscaler privátního přístupu (ZPA).
+title: 'Kurz: Konfigurace privátního přístupu Zscaler (ZPA) pro automatické zřizování uživatelů pomocí služby Azure Active Directory | Dokumenty společnosti Microsoft'
+description: Zjistěte, jak nakonfigurovat službu Azure Active Directory tak, aby automaticky zřašovala a odpočatou uživatelské účty do soukromého přístupu Zscaler (ZPA).
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,181 +16,181 @@ ms.topic: article
 ms.date: 10/07/2019
 ms.author: Zhchia
 ms.openlocfilehash: 609d2726eaaaeb49210e19f000bcc2faef1de5d7
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77064139"
 ---
-# <a name="tutorial-configure-zscaler-private-access-zpa-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zscaler Private Access (ZPA) pro Automatické zřizování uživatelů
+# <a name="tutorial-configure-zscaler-private-access-zpa-for-automatic-user-provisioning"></a>Kurz: Konfigurace soukromého přístupu Zscaler (ZPA) pro automatické zřizování uživatelů
 
-Cílem tohoto kurzu je předvést kroky, které je třeba provést v Zscaler Private Access (ZPA) a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD tak, aby automaticky zřídily a zrušily zřizování uživatelů a/nebo skupin pro Zscaler privátní přístup (ZPA).
+Cílem tohoto kurzu je demonstrovat kroky, které mají být provedeny v Zscaler Private Access (ZPA) a Azure Active Directory (Azure AD) nakonfigurovat Azure AD automaticky zřídit a de-zřizování uživatelů a/nebo skupin z zzívaného privátního přístupu (ZPA).
 
 > [!NOTE]
-> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
+> Tento kurz popisuje konektor postavený na nad službou zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá, jak funguje, a nejčastější dotazy, najdete [v tématu Automatizace zřizování uživatelů a zrušení zřizování aplikací SaaS pomocí služby Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
-> Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
+> Tento konektor je aktuálně ve verzi Public Preview. Další informace o obecných podmínkách použití Microsoft Azure pro funkce preview najdete v [tématu Doplňkové podmínky použití pro Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
+Scénář popsaný v tomto kurzu předpokládá, že již máte následující požadavky:
 
-* Tenant Azure AD
-* [Tenant Zscaler Private Access (ZPA)](https://www.zscaler.com/pricing-and-plans#contact-us)
-* Uživatelský účet v Zscaler Private Access (ZPA) s oprávněními správce.
+* Klient Azure AD
+* [Tenant zscaler soukromého přístupu (ZPA)](https://www.zscaler.com/pricing-and-plans#contact-us)
+* Uživatelský účet v zscaler soukromépřístup (ZPA) s oprávněními správce.
 
-## <a name="assigning-users-to-zscaler-private-access-zpa"></a>Přiřazení uživatelů k privátnímu přístupu Zscaler (ZPA)
+## <a name="assigning-users-to-zscaler-private-access-zpa"></a>Přiřazení uživatelů k soukromému přístupu Zscaler (ZPA)
 
-Azure Active Directory používá koncept nazvaný *přiřazení* k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelů se synchronizují jenom uživatelé a skupiny, které jsou přiřazené k aplikaci v Azure AD.
+Azure Active Directory používá koncept s názvem *přiřazení* k určení, kteří uživatelé by měli získat přístup k vybraným aplikacím. V kontextu automatickézřižené zřizování uživatelů jsou synchronizovány pouze uživatelé nebo skupiny, které byly přiřazeny k aplikaci ve službě Azure AD.
 
-Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé a skupiny ve službě Azure AD potřebují přístup k privátnímu přístupu Zscaler (ZPA). Po rozhodnutí můžete přiřadit tyto uživatele nebo skupiny k Zscaler privátního přístupu (ZPA) podle pokynů uvedených tady:
+Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé nebo skupiny ve službě Azure AD potřebují přístup k zscalerovému privátnímu přístupu (ZPA). Jakmile se rozhodnete, můžete přiřadit tyto uživatele a / nebo skupiny Zscaler Private Access (ZPA) podle pokynů zde:
 * [Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-zscaler-private-access-zpa"></a>Důležité tipy pro přiřazení uživatelů k privátnímu přístupu Zscaler (ZPA)
+## <a name="important-tips-for-assigning-users-to-zscaler-private-access-zpa"></a>Důležité tipy pro přiřazení uživatelů k soukromému přístupu Zscaler (ZPA)
 
-* Doporučuje se, aby jeden uživatel Azure AD byl přiřazený k Zscaler privátnímu přístupu (ZPA), aby otestoval automatickou konfiguraci zřizování uživatelů. Další uživatele a skupiny můžete přiřadit později.
+* Doporučuje se, aby jeden uživatel Azure AD je přiřazen k Zscaler private access (ZPA) k testování konfigurace automatického zřizování uživatelů. Další uživatelé a/nebo skupiny mohou být přiřazeny později.
 
-* Když přiřadíte uživatele k Zscaler privátního přístupu (ZPA), musíte v dialogovém okně přiřazení vybrat jakoukoli platnou roli specifickou pro aplikaci (Pokud je dostupná). Uživatelé s **výchozí rolí přístupu** se z zřizování vylučují.
+* Při přiřazování uživatele k soukromému přístupu Zscaler (ZPA) musíte v dialogovém okně přiřazení vybrat libovolnou platnou roli specifickou pro aplikaci (pokud je k dispozici). Uživatelé s rolí **Výchozí přístup** jsou z zřizování vyloučeni.
 
-## <a name="set-up-zscaler-private-access-zpa-for-provisioning"></a>Nastavení Zscaler Private Access (ZPA) pro zřizování
+## <a name="set-up-zscaler-private-access-zpa-for-provisioning"></a>Nastavení soukromého přístupu Zscaler (ZPA) pro zřizování
 
-1. Přihlaste se ke [konzole pro správu Zscaler Private Access (ZPA)](https://admin.private.zscaler.com/). Přejděte na **správa > konfigurace IDP**.
+1. Přihlaste se ke své [Konzole pro správu Soukromého přístupu Zscaler (ZPA).](https://admin.private.zscaler.com/) Přejděte na **nástroj Správa > konfiguraci protokolu IdP**.
 
-    ![Konzola pro správu Zscaler Private Access (ZPA)](media/zscaler-private-access-provisioning-tutorial/idpconfig.png)
+    ![Konzola pro správu soukromého přístupu Zscaler (ZPA)](media/zscaler-private-access-provisioning-tutorial/idpconfig.png)
 
-2.  Ověřte, jestli je nakonfigurované IdP pro **jednotné přihlašování** . Pokud není nastavené žádné IdP, pak ho přidejte kliknutím na ikonu Plus v pravém horním rohu obrazovky.
+2.  Ověřte, zda je nakonfigurován idp pro **jednotné přihlašování.** Pokud není nastaven žádný idp, přidejte ho kliknutím na ikonu plus v pravém horním rohu obrazovky.
 
-    ![Zscaler Private Access (ZPA) přidat SCIM](media/zscaler-private-access-provisioning-tutorial/plusicon.png)
+    ![Zscaler soukromý přístup (ZPA) Přidat SCIM](media/zscaler-private-access-provisioning-tutorial/plusicon.png)
 
-3. Pomocí průvodce **přidáním konfigurace IDP** přidejte IDP. Ponechejte pole **jednotného přihlašování** nastaveno na hodnotu **uživatel**. Zadejte **název** a vyberte **domény** z rozevíracího seznamu. Kliknutím na tlačítko **Další** přejdete k dalšímu oknu.
+3. Chcete-li přidat idp, postupujte podle průvodce **přidáním konfigurace protokolu IdP.** Ponechte pole **jednotné přihlašování** nastavené na **uživatel .** Zadejte **název** a vrozené seznamu **vyberte domény.** Kliknutím na **Tlačítko Další** přejdete do dalšího okna.
 
-    ![Zscaler Private Access (ZPA) přidat IdP](media/zscaler-private-access-provisioning-tutorial/addidp.png)
+    ![Zscaler soukromý přístup (ZPA) Přidat IdP](media/zscaler-private-access-provisioning-tutorial/addidp.png)
 
-4. Stáhněte **certifikát poskytovatele služeb**. Kliknutím na tlačítko **Další** přejdete k dalšímu oknu.
+4. Stáhněte si **certifikát poskytovatele služeb**. Kliknutím na **Tlačítko Další** přejdete do dalšího okna.
 
-    ![Certifikát Zscaler Private Access (ZPA) SP](media/zscaler-private-access-provisioning-tutorial/spcertificate.png)
+    ![Certifikát SP pro soukromý přístup Zscaler (ZPA)](media/zscaler-private-access-provisioning-tutorial/spcertificate.png)
 
-5. V dalším okně nahrajte **certifikát poskytovatele služeb** , který jste předtím stáhli.
+5. V dalším okně nahrajte dříve stažený **certifikát poskytovatele služeb.**
 
-    ![Certifikát pro nahrávání Zscaler Private Access (ZPA)](media/zscaler-private-access-provisioning-tutorial/uploadfile.png)
+    ![Zscaler Private Access (ZPA) upload certifikát](media/zscaler-private-access-provisioning-tutorial/uploadfile.png)
 
-6.  Posuňte se dolů a zadejte **adresu URL jednotného přihlašování** a **ID entity IDP**.
+6.  Posunutím dolů zadejte **adresu URL jednotného přihlašování** a **ID entity idp**.
 
-    ![ID IdP Zscaler Private Access (ZPA)](media/zscaler-private-access-provisioning-tutorial/idpid.png)
+    ![Zscaler soukromé přístup (ZPA) IdP ID](media/zscaler-private-access-provisioning-tutorial/idpid.png)
 
-7.  Posuňte se dolů a **Povolte SCIM synchronizaci**. Klikněte na tlačítko **vygenerovat nový token** . Zkopírujte **token nosiče**. Tato hodnota se zadá do pole token tajného klíče na kartě zřizování aplikace Zscaler Private Access (ZPA) v Azure Portal.
+7.  Posuňte se dolů **a povolte synchronizaci SCIM**. Klikněte na **tlačítko Generovat nový token.** Zkopírujte **žeton nosiče**. Tato hodnota se zadá do pole Tajný token na kartě Zanář aplikace Zscaler Private Access (ZPA) na webu Azure Portal.
 
-    ![Vytvoření tokenu Zscaler Private Access (ZPA)](media/zscaler-private-access-provisioning-tutorial/token.png)
+    ![Zscaler soukromý přístup (ZPA) vytvořit token](media/zscaler-private-access-provisioning-tutorial/token.png)
 
-8.  Pokud chcete najít **adresu URL tenanta** , přejděte do části **Správa > Konfigurace IDP**. Klikněte na název nově přidané konfigurace IdP uvedené na stránce.
+8.  Chcete-li vyhledat **adresu URL klienta** , přejděte **na položku Konfigurace protokolu IdP pro > správu**. Klikněte na název nově přidané konfigurace Protokolu IdP uvedené na stránce.
 
-    ![Název IDP Zscaler Private Access (ZPA)](media/zscaler-private-access-provisioning-tutorial/idpname.png)
+    ![Zscaler soukromý přístup (ZPA) Idp Název](media/zscaler-private-access-provisioning-tutorial/idpname.png)
 
-9.  Posuňte se dolů a zobrazte **koncový bod poskytovatele služby SCIM** na konci stránky. Zkopírujte **koncový bod poskytovatele služby SCIM**. Tato hodnota se zadá do pole Adresa URL tenanta na kartě zřizování aplikace Zscaler Private Access (ZPA) v Azure Portal.
+9.  Posunutím dolů zobrazíte **koncový bod poskytovatele služeb SCIM** na konci stránky. Zkopírujte **koncový bod poskytovatele služeb SCIM**. Tato hodnota se zadá do pole ADRESA URL klienta na kartě Zanáč vaší aplikace Zscaler Private Access (ZPA) na webu Azure Portal.
 
-    ![Adresa URL SCIM Zscaler Private Access (ZPA)](media/zscaler-private-access-provisioning-tutorial/tenanturl.png)
+    ![Zscaler soukromý přístup (ZPA) SCIM URL](media/zscaler-private-access-provisioning-tutorial/tenanturl.png)
 
 
-## <a name="add-zscaler-private-access-zpa-from-the-gallery"></a>Přidání Zscaler Private Access (ZPA) z Galerie
+## <a name="add-zscaler-private-access-zpa-from-the-gallery"></a>Přidání soukromého přístupu Zscaler (ZPA) z galerie
 
-Než nakonfigurujete Zscaler Private Access (ZPA) pro Automatické zřizování uživatelů pomocí Azure AD, musíte přidat Zscaler Private Access (ZPA) z Galerie aplikací Azure AD do svého seznamu spravovaných aplikací SaaS.
+Před konfigurací Zscaler Private Access (ZPA) pro automatické zřizování uživatelů pomocí Azure AD, je třeba přidat Zscaler Private Access (ZPA) z galerie aplikací Azure AD do seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat Zscaler Private Access (ZPA) z Galerie aplikací Azure AD, proveďte následující kroky:**
+**Chcete-li přidat Zscaler Private Access (ZPA) z galerie aplikací Azure AD, proveďte následující kroky:**
 
-1. V **[Azure Portal](https://portal.azure.com)** v levém navigačním panelu vyberte možnost **Azure Active Directory**.
+1. Na **[webu Azure Portal](https://portal.azure.com)** vyberte na levém navigačním panelu **položku Azure Active Directory**.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Přejděte na **podnikové aplikace**a vyberte **všechny aplikace**.
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
 
 3. Chcete-li přidat novou aplikaci, vyberte tlačítko **Nová aplikace** v horní části podokna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Zscaler Private Access (ZPA)** , vyberte **Zscaler Private Access (ZPA)** na panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Zscaler Private Access (ZPA),** vyberte v panelu výsledků **možnost Zscaler Private Access (ZPA)** a klepnutím na tlačítko **Přidat** aplikaci přidejte.
 
-    ![Zscaler Private Access (ZPA) v seznamu výsledků](common/search-new-app.png)
+    ![Soukromý přístup Zscaler (ZPA) v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-zscaler-private-access-zpa"></a>Konfigurace automatického zřizování uživatelů pro Zscaler Private Access (ZPA) 
+## <a name="configuring-automatic-user-provisioning-to-zscaler-private-access-zpa"></a>Konfigurace automatického zřizování uživatelů pro soukromý přístup Zscaler (ZPA) 
 
-V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v Zscaler Private Access (ZPA) na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
+Tato část vás provede kroky konfigurace služby zřizování Azure AD k vytvoření, aktualizaci a zakázání uživatelů nebo skupin v Zscaler Private Access (ZPA) na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro Zscaler Private Access (ZPA) podle pokynů uvedených v [kurzu pro jednotné přihlašování Zscaler Private Access (ZPA)](https://docs.microsoft.com/azure/active-directory/saas-apps/zscalerprivateaccess-tutorial). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když tyto dvě funkce doplňují sebe.
+> Můžete také povolit jednotné přihlašování založené na SAML pro Zscaler Private Access (ZPA) podle pokynů uvedených v [kurzu jednotného přihlášení Zscaler Private Access (ZPA)](https://docs.microsoft.com/azure/active-directory/saas-apps/zscalerprivateaccess-tutorial). Jednotné přihlašování lze konfigurovat nezávisle na automatické zřizování uživatelů, i když tyto dvě funkce se vzájemně doplňují.
 
 > [!NOTE]
-> Další informace o koncovém bodu SCIM privátního přístupu Zscaler najdete v [tomto](https://www.zscaler.com/partners/microsoft)tématu.
+> Další informace o koncovém bodu SCIM aplikace Zscaler Private Access naleznete na [tomto](https://www.zscaler.com/partners/microsoft).
 
-### <a name="to-configure-automatic-user-provisioning-for-zscaler-private-access-zpa-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Zscaler Private Access (ZPA) ve službě Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-zscaler-private-access-zpa-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro soukromý přístup Zscaler (ZPA) ve službě Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **Všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **Zscaler Private Access (ZPA)** .
+2. V seznamu aplikací vyberte **Možnost Zscaler Private Access (ZPA).**
 
-    ![Odkaz Zscaler Private Access (ZPA) v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Zscaler Private Access (ZPA) v seznamu Aplikace](common/all-applications.png)
 
-3. Vyberte kartu **zřizování** .
+3. Vyberte kartu **Zřizování.**
 
-    ![Karta zřizování](common/provisioning.png)
+    ![Karta Zřizování](common/provisioning.png)
 
-4. Nastavte **režim zřizování** na **automaticky**.
+4. Nastavte **režim zřizování** na **automatické**.
 
-    ![Karta zřizování](common/provisioning-automatic.png)
+    ![Karta Zřizování](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** zadejte hodnotu **koncového bodu poskytovatele služby SCIM** dříve získanou v **adrese URL tenanta**. Zadejte hodnotu **tokenu nosiče** , která byla dříve načtena v **tajném tokenu**. Klikněte na **Test připojení** a ujistěte se, že se Azure AD může připojit k Zscaler privátnímu přístupu (ZPA). Pokud se připojení nepovede, zajistěte, aby měl účet Zscaler Private Access (ZPA) oprávnění správce, a zkuste to znovu.
+5. V části **Pověření správce** zadejte hodnotu **koncového bodu poskytovatele služeb SCIM** načtenou dříve v **adrese URL klienta**. Zadejte hodnotu **nosné tokenu** načtenou dříve v **tajném tokenu**. Klikněte na **test připojení** a ujistěte se, že Azure AD můžete připojit k Zscaler privátní přístup (ZPA). Pokud se připojení nezdaří, ujistěte se, že váš účet Zscaler Private Access (ZPA) má oprávnění správce a zkuste to znovu.
 
-    ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Adresa URL klienta + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
+6. Do pole **E-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, která by měla dostávat oznámení o chybách při zřizování, a zaškrtněte políčko – **Odeslat e-mailové oznámení, když dojde k chybě**.
 
     ![E-mail s oznámením](common/provisioning-notification-email.png)
 
 7. Klikněte na **Uložit**.
 
-8. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory uživatele, aby se Zscaler soukromý přístup (ZPA)** .
+8. V části **Mapování** vyberte **synchronizovat uživatele služby Azure Active Directory s privátním přístupem Zscaler (ZPA).**
 
-    ![Mapování uživatelů Zscaler Private Access (ZPA)](media/zscaler-private-access-provisioning-tutorial/usermappings.png)
+    ![Mapování uživatelů soukromého přístupu Zscaler (ZPA)](media/zscaler-private-access-provisioning-tutorial/usermappings.png)
 
-9. Zkontrolujte atributy uživatele synchronizované z Azure AD a Zscaler Private Access (ZPA) v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Zscaler Private Access (ZPA) pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
+9. Zkontrolujte atributy uživatele, které jsou synchronizovány z Azure AD do Zscaler Private Access (ZPA) v části **Mapování atributů.** Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelským účtům v Zscaler Private Access (ZPA) pro operace aktualizace. Chcete-li potvrdit všechny změny, vyberte tlačítko **Uložit.**
 
-    ![Uživatelské atributy Zscaler Private Access (ZPA)](media/zscaler-private-access-provisioning-tutorial/userattributes.png)
+    ![Uživatelské atributy soukromého přístupu Zscaler (ZPA)](media/zscaler-private-access-provisioning-tutorial/userattributes.png)
 
-10. V části **mapování** vyberte **synchronizovat Azure Active Directory skupiny do Zscaler Private Access (ZPA)** .
+10. V části **Mapování** vyberte **Synchronizovat skupiny Služby Active Directory Azure s privátním přístupem Zscaler (ZPA).**
 
-    ![Mapování skupin Zscaler Private Access (ZPA)](media/zscaler-private-access-provisioning-tutorial/groupmappings.png)
+    ![Mapování skupiny soukromého přístupu Zscaler (ZPA)](media/zscaler-private-access-provisioning-tutorial/groupmappings.png)
 
-11. Zkontrolujte atributy skupiny synchronizované z Azure AD a Zscaler Private Access (ZPA) v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v Zscaler Private Access (ZPA) pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
+11. Zkontrolujte atributy skupiny, které jsou synchronizovány z Azure AD do Zscaler Private Access (ZPA) v části **Mapování atributů.** Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly skupinám v Zscaler Private Access (ZPA) pro operace aktualizace. Chcete-li potvrdit všechny změny, vyberte tlačítko **Uložit.**
 
-    ![Atributy skupiny Zscaler Private Access (ZPA)](media/zscaler-private-access-provisioning-tutorial/groupattributes.png)
+    ![Atributy skupiny soukromého přístupu Zscaler (ZPA)](media/zscaler-private-access-provisioning-tutorial/groupattributes.png)
 
-12. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+12. Chcete-li konfigurovat filtry oborů, naleznete v následujících pokynech uvedených v [kurzu filtru oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Pokud chcete povolit službu Azure AD Provisioning pro Zscaler Private Access (ZPA), změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
+13. Chcete-li povolit službu zřizování Azure AD pro zišterový privátní přístup (ZPA), změňte **stav zřizování** **na Zapnuto** v části **Nastavení.**
 
-    ![Zapnutý stav zřizování](common/provisioning-toggle-on.png)
+    ![Stav zřizování zapnutý](common/provisioning-toggle-on.png)
 
-14. Definujte uživatele nebo skupiny, které byste chtěli zřídit pro Zscaler Private Access (ZPA), a to tak, že v části **Nastavení** vyberete požadované hodnoty v **oboru** .
+14. Definujte uživatele nebo skupiny, které chcete zřídit zscaler private access (ZPA) výběrem požadovaných hodnot v **oboru** v části **Nastavení.**
 
-    ![Rozsah zřizování](common/provisioning-scope.png)
+    ![Obor zřizování](common/provisioning-scope.png)
 
-15. Až budete připraveni zřídit, klikněte na **Uložit**.
+15. Až budete připraveni k zřízení, klikněte na **Uložit**.
 
-    ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
+    ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
 
-Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD na Zscaler Private Access (ZPA).
+Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení.** Počáteční synchronizace trvá déle než následné synchronizace, ke kterým dochází přibližně každých 40 minut tak dlouho, dokud je spuštěna služba zřizování Azure AD. Část **Podrobnosti synchronizace** můžete použít ke sledování průběhu a sledování odkazů na sestavu aktivit zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v soukromém přístupu Zscaler (ZPA).
 
-Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, naleznete [v tématu Vytváření sestav na automatické zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy o aktivitě zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
 

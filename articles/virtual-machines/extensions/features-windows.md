@@ -1,6 +1,6 @@
 ---
 title: Rozšíření a funkce virtuálních počítačů Azure pro Windows
-description: Zjistěte, jaká rozšíření jsou k dispozici pro virtuální počítače Azure seskupená podle toho, co poskytují nebo zlepšují.
+description: Zjistěte, jaká rozšíření jsou dostupná pro virtuální počítače Azure seskupená podle toho, co poskytují nebo vylepšují.
 services: virtual-machines-windows
 documentationcenter: ''
 author: axayjo
@@ -15,68 +15,68 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4eb212cb6122803f78b13e6c17a55bac5bc48286
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: cd6439bf1b1f52b8e63819e8e519fc4971d1bc2a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79250722"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066842"
 ---
-# <a name="virtual-machine-extensions-and-features-for-windows"></a>Rozšíření a funkce virtuálních počítačů pro Windows
+# <a name="virtual-machine-extensions-and-features-for-windows"></a>Rozšíření a funkce virtuálních strojů pro Windows
 
-Rozšíření virtuálních počítačů Azure jsou malé aplikace, které poskytují konfiguraci po nasazení a úlohy automatizace na virtuálních počítačích Azure. Pokud třeba virtuální počítač vyžaduje instalaci softwaru, antivirovou ochranu nebo spuštění skriptu uvnitř něj, můžete použít rozšíření virtuálního počítače. Rozšíření virtuálních počítačů Azure je možné spustit pomocí Azure CLI, PowerShellu, Azure Resource Manager šablon a Azure Portal. Rozšíření lze seskupit pomocí nového nasazení virtuálního počítače nebo spustit s jakýmkoli existujícím systémem.
+Rozšíření virtuálních počítačů Azure jsou malé aplikace, které na virtuálních počítačích Azure umožňují provádět úlohy konfigurace a automatizace po nasazení. Pokud virtuální počítač vyžaduje například instalaci softwaru, antivirovou ochranu nebo spuštění interního skriptu, je možné pro tento účel použít rozšíření virtuálního počítače. Rozšíření virtuálních počítačů Azure je možné spustit přes Azure CLI, PowerShell, šablony Azure Resource Manageru a Azure Portal. Rozšíření lze spojit s novým nasazením virtuálního počítače, případně spustit v jakémkoli existujícím systému.
 
-Tento článek poskytuje přehled rozšíření virtuálních počítačů, předpoklady pro používání rozšíření virtuálních počítačů Azure a pokyny k tomu, jak detekovat, spravovat a odebírat rozšíření virtuálních počítačů. Tento článek poskytuje generalizované informace, protože je k dispozici mnoho rozšíření virtuálních počítačů, z nichž každá má potenciálně jedinečnou konfiguraci. Podrobnosti o rozšíření se dají najít v každém dokumentu specifickém pro jednotlivé rozšíření.
+Tento článek obsahuje přehled rozšíření virtuálních počítačů, předpoklady pro použití rozšíření virtuálních zařízení Azure a pokyny, jak zjistit, spravovat a odebírat rozšíření virtuálních počítačových společností. Tento článek poskytuje zobecněné informace, protože mnoho rozšíření virtuálních počítačů jsou k dispozici, každý s potenciálně jedinečnou konfiguraci. Podrobnosti specifické pro rozšíření lze nalézt v každém dokumentu specifické pro jednotlivé rozšíření.
 
  
 
-## <a name="use-cases-and-samples"></a>Případy použití a ukázky
+## <a name="use-cases-and-samples"></a>Případy použití a vzorky
 
-K dispozici je několik různých rozšíření virtuálních počítačů Azure, z nichž každý má konkrétní případ použití. Možné příklady:
+K dispozici je několik různých rozšíření virtuálních počítačů Azure, z nichž každé má konkrétní případ použití. Možné příklady:
 
-- Použijte konfiguraci požadovaného stavu PowerShellu na virtuální počítač s rozšířením DSC pro Windows. Další informace najdete v tématu [rozšíření konfigurace požadovaného stavu Azure](dsc-overview.md).
-- Nakonfigurujte monitorování virtuálního počítače pomocí rozšíření virtuálního počítače agenta Log Analytics. Další informace najdete v tématu [připojení virtuálních počítačů Azure k Azure monitor protokolů](../../log-analytics/log-analytics-azure-vm-extension.md).
-- Nakonfigurujte virtuální počítač Azure pomocí systému pro použití. Další informace najdete v tématu [Automatizace nasazení virtuálních počítačů Azure pomocí nástroje pro instalaci](../../chef/chef-automation.md).
-- Nakonfigurujte monitorování infrastruktury Azure pomocí rozšíření služby Datadog. Další informace najdete na [blogu služby Datadog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
+- Použijte konfigurace požadovaného stavu prostředí PowerShell u virtuálního počítače s rozšířením DSC pro Windows. Další informace naleznete v [tématu Rozšíření konfigurace Požadované ho stavu Azure](dsc-overview.md).
+- Konfigurace monitorování virtuálního počítače s rozšířením virtuálního počítače agenta analýzy protokolů. Další informace najdete [v tématu Připojení virtuálních počítačích Azure k protokolům Azure Monitor .](../../log-analytics/log-analytics-azure-vm-extension.md)
+- Nakonfigurujte virtuální počítač Azure pomocí chef. Další informace najdete [v tématu Automatizace nasazení virtuálních počítačích Azure s chef](../../chef/chef-automation.md).
+- Nakonfigurujte monitorování infrastruktury Azure pomocí rozšíření Datadog. Další informace naleznete v [blogu Datadog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 
 
-Kromě rozšíření specifických pro procesy je k dispozici rozšíření vlastních skriptů pro virtuální počítače s Windows i Linux. Rozšíření vlastních skriptů pro Windows umožňuje spuštění libovolného skriptu PowerShellu na virtuálním počítači. Vlastní skripty jsou užitečné pro navrhování nasazení Azure, která vyžadují konfiguraci, a to nad rámec toho, co můžou využít nativní nástroje Azure. Další informace najdete v tématu [rozšíření vlastních skriptů pro virtuální počítače s Windows](custom-script-windows.md).
+Kromě rozšíření specifických pro proces je k dispozici rozšíření Custom Script pro virtuální počítače s Windows i Linuxem. Rozšíření Vlastní skript pro Windows umožňuje spuštění libovolného skriptu prostředí PowerShell na virtuálním počítači. Vlastní skripty jsou užitečné pro navrhování nasazení Azure, které vyžadují konfiguraci nad rámec toho, co mohou poskytovat nativní nástroje Azure. Další informace naleznete v [tématu rozšíření Vlastní skript virtuálního aplikace windows](custom-script-windows.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro zpracování rozšíření na virtuálním počítači potřebujete nainstalovaného agenta Azure Windows. Některá jednotlivá rozšíření mají požadavky, jako je například přístup k prostředkům nebo závislostem.
+Chcete-li zpracovat rozšíření na virtuálním počítači, budete potřebovat nainstalovaný Azure Windows Agent. Některá jednotlivá rozšíření mají požadavky, například přístup k prostředkům nebo závislostem.
 
 ### <a name="azure-vm-agent"></a>Agent virtuálního počítače Azure
 
-Agent virtuálního počítače Azure spravuje interakce mezi virtuálním počítačem Azure a řadičem prostředků infrastruktury Azure. Agent virtuálního počítače zodpovídá za mnoho funkčních aspektů nasazení a správy virtuálních počítačů Azure, včetně spuštění rozšíření virtuálních počítačů. Agent virtuálního počítače Azure je předinstalovaný na Azure Marketplace imagí a dá se nainstalovat ručně v podporovaných operačních systémech. Agent virtuálního počítače Azure pro Windows je známý jako Agent hosta systému Windows.
+Agent virtuálního počítače Azure spravuje interakce mezi virtuálním počítačem Azure a řadičem infrastruktury Azure. Agent virtuálního počítače je zodpovědný za mnoho funkčních aspektů nasazení a správy virtuálních počítačích Azure, včetně spuštění rozšíření virtuálních počítačů. Agent virtuálního počítače Azure je předinstalovaný na ibi Azure Marketplace a dá se nainstalovat ručně do podporovaných operačních systémů. Agent virtuálního počítače Azure pro Windows se označuje jako agent hosta Windows.
 
-Informace o podporovaných operačních systémech a pokyny k instalaci najdete v tématu [Agent virtuálního počítače Azure](agent-windows.md).
+Informace o podporovaných operačních systémech a pokynech k instalaci najdete v [tématu Azure virtual machine agent](agent-windows.md).
 
 #### <a name="supported-agent-versions"></a>Podporované verze agentů
 
-Aby se zajistilo nejlepší možné prostředí, existují minimální verze agenta. Další informace najdete v [tomto článku](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
+Chcete-li poskytnout nejlepší možné zkušenosti, existují minimální verze agenta. Další informace najdete v [tomto článku](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
 
-#### <a name="supported-oses"></a>Podporované operačních systémech
+#### <a name="supported-oses"></a>Podporované operační systémy
 
-Agent hosta systému Windows běží na více operačních systémech, ale rozhraní rozšíření má omezení pro operačních systémech rozšíření. Další informace najdete v [tomto článku](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems
+Agent hosta systému Windows běží na více operačních systémech, ale rozšíření rozhraní má limit pro operační systémy, které rozšíření. Další informace najdete v [tomto článku](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems
 ).
 
-Některá rozšíření nejsou v rámci všech operačních systémech podporovaná a můžou generovat *kód chyby 51, nepodporovaný operační systém*. Projděte si dokumentaci k jednotlivým příponám, abyste mohli podporu.
+Některá rozšíření nejsou podporována ve všech operačních systémech a mohou vyzařovat *kód chyby 51, "Nepodporovaný operační systém"*. Zkontrolujte, zda je v dokumentaci k jednotlivým rozšířením k podpoře.
 
 #### <a name="network-access"></a>Síťový přístup
 
-Balíčky rozšíření se stáhnou z úložiště rozšíření Azure Storage a nahrávání stavu rozšíření se publikují do Azure Storage. Pokud používáte [podporovanou](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) verzi agentů, nemusíte v oblasti virtuálního počítače povolit přístup k Azure Storage, protože agent může pomocí agenta přesměrovat komunikaci do řadiče Azure Fabric pro komunikaci s agenty (funkce HostGAPlugin prostřednictvím privilegovaného kanálu na privátní IP [168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)). Pokud jste v nepodporované verzi agenta, musíte z virtuálního počítače v této oblasti povolený odchozí přístup ke službě Azure Storage.
+Balíčky rozšíření se stáhnou z úložiště rozšíření Azure Storage a odeslání stavu rozšíření se zaúčtují do Služby Azure Storage. Pokud používáte [podporovanou](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) verzi agentů, nemusíte povolit přístup k Azure Storage v oblasti virtuálních počítačů, stejně jako agent k přesměrování komunikace do řadiče infrastruktury Azure pro komunikaci agenta (HostGAPlugin funkce prostřednictvím privilegovaného kanálu na privátní IP [168.63.129.16).](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16) Pokud jste na nepodporovanou verzi agenta, musíte povolit odchozí přístup k úložišti Azure v této oblasti z virtuálního počítače.
 
 > [!IMPORTANT]
-> Pokud jste zablokovali přístup k *168.63.129.16* pomocí brány firewall hosta nebo proxy serveru, rozšíření selžou bez ohledu na výše uvedené. Vyžadují se porty 80, 443 a 32526.
+> Pokud jste zablokovali přístup k *168.63.129.16* pomocí brány firewall hosta nebo s proxy serverem, rozšíření se nezdaří bez ohledu na výše uvedené. Porty 80, 443 a 32526 jsou povinné.
 
-Agenty lze použít pouze ke stažení balíčků rozšíření a stavu hlášení. Pokud třeba instalace rozšíření potřebuje stáhnout skript z GitHubu (vlastní skript) nebo potřebuje přístup k Azure Storage (Azure Backup), musí se otevřít další porty skupiny zabezpečení brány firewall/sítě. Různá rozšíření mají různé požadavky, protože se jedná o aplikace v pravém. Pro rozšíření, která vyžadují přístup k Azure Storage nebo Azure Active Directory, můžete přístup pomocí [značek služby Azure NSG](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) zpřístupnit pro úložiště nebo azureactivedirectory selhala.
+Agenti lze použít pouze ke stažení balíčků rozšíření a stavu vykazování. Pokud například instalace rozšíření potřebuje stáhnout skript z GitHubu (vlastní skript) nebo potřebuje přístup k Úložišti Azure Storage (Azure Backup), je třeba otevřít další porty firewallu/skupiny zabezpečení sítě. Různá rozšíření mají různé požadavky, protože se jedná o aplikace samy o sobě. U rozšíření, která vyžadují přístup k Azure Storage nebo Azure Active Directory, můžete povolit přístup pomocí [značek služby Azure NSG](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) do úložiště nebo AzureActiveDirectory.
 
-Agent hosta systému Windows nemá proxy server podporu pro přesměrování požadavků na přenos agenta prostřednictvím, což znamená, že Agent hosta systému Windows bude spoléhat na váš vlastní proxy server (Pokud máte jeden) k přístupu k prostředkům na internetu nebo na hostiteli prostřednictvím IP adresy. 168.63.129.16.
+Agent hosta systému Windows nemá podporu proxy serveru pro přesměrování požadavků na přenos agentů prostřednictvím, což znamená, že agent hosta systému Windows bude spoléhat na váš vlastní proxy server (pokud ho máte) pro přístup k prostředkům na internetu nebo na hostiteli prostřednictvím protokolu IP 168.63.129.16.
 
-## <a name="discover-vm-extensions"></a>Zjistit rozšíření virtuálních počítačů
+## <a name="discover-vm-extensions"></a>Objevte rozšíření virtuálních míchačů
 
-Pro použití s virtuálními počítači Azure je k dispozici řada různých rozšíření virtuálních počítačů. Chcete-li zobrazit úplný seznam, použijte [příkaz Get-AzVMExtensionImage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmextensionimage). V následujícím příkladu jsou uvedena všechna dostupná rozšíření v umístění *WestUS* :
+Pro použití s virtuálními počítači Azure je k dispozici řada různých rozšíření virtuálních počítačů. Chcete-li zobrazit úplný seznam, použijte [Get-AzVMExtensionImage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmextensionimage). V následujícím příkladu jsou uvedena všechna dostupná rozšíření v umístění *WestUS:*
 
 ```powershell
 Get-AzVmImagePublisher -Location "WestUS" | `
@@ -84,15 +84,15 @@ Get-AzVMExtensionImageType | `
 Get-AzVMExtensionImage | Select Type, Version
 ```
 
-## <a name="run-vm-extensions"></a>Spustit rozšíření virtuálních počítačů
+## <a name="run-vm-extensions"></a>Spuštění rozšíření virtuálních míchačů
 
-Rozšíření virtuálních počítačů Azure běží na stávajících virtuálních počítačích, což je užitečné v případě, že potřebujete udělat změny konfigurace nebo obnovit připojení na už nasazeném virtuálním počítači. Rozšíření virtuálních počítačů je také možné seskupit pomocí Azure Resource Managerch nasazení šablon. Pomocí rozšíření se šablonami Správce prostředků můžou být virtuální počítače Azure nasazené a nakonfigurované bez zásahu po nasazení.
+Rozšíření virtuálních počítačů Azure běží na stávajících virtuálních počítačích, což je užitečné, když potřebujete provést změny konfigurace nebo obnovit připojení na již nasazený virtuální počítač. Rozšíření virtuálních aplikací můžou být taky svázaná s nasazeními šablon Azure Resource Manageru. Pomocí rozšíření se šablonami Správce prostředků lze virtuální počítače Azure nasadit a nakonfigurovat bez zásahu po nasazení.
 
-Pomocí následujících metod lze spustit rozšíření pro existující virtuální počítač.
+Následující metody lze použít ke spuštění rozšíření proti existující virtuální hod.
 
 ### <a name="powershell"></a>PowerShell
 
-Pro spuštění jednotlivých rozšíření existuje několik příkazů PowerShellu. Chcete-li zobrazit seznam, použijte [příkaz Get-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/get-command) a filtrujte podle *rozšíření*:
+Pro spouštění jednotlivých rozšíření existuje několik příkazů prostředí PowerShell. Chcete-li zobrazit seznam, použijte [příkaz Get-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/get-command) a filtr v *rozšíření*:
 
 ```powershell
 Get-Command Set-Az*Extension* -Module Az.Compute
@@ -118,7 +118,7 @@ Cmdlet          Set-AzVMSqlServerExtension                    4.5.0      Az.Comp
 Cmdlet          Set-AzVmssDiskEncryptionExtension             4.5.0      Az.Compute
 ```
 
-Následující příklad používá rozšíření vlastních skriptů ke stažení skriptu z úložiště GitHub na cílový virtuální počítač a následné spuštění skriptu. Další informace o rozšíření vlastních skriptů najdete v tématu [Přehled rozšíření vlastních skriptů](custom-script-windows.md).
+Následující příklad používá rozšíření Vlastní skript ke stažení skriptu z úložiště GitHub do cílového virtuálního počítače a pak skript spustit. Další informace o rozšíření Vlastní skript naleznete v [tématu Přehled rozšíření Vlastní skript](custom-script-windows.md).
 
 ```powershell
 Set-AzVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
@@ -127,7 +127,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
     -Run "Create-File.ps1" -Location "West US"
 ```
 
-V následujícím příkladu se rozšíření přístupu virtuálních počítačů používá k resetování hesla pro správu virtuálního počítače s Windows na dočasné heslo. Další informace o rozšíření přístupu virtuálních počítačů najdete v tématu [resetování služby Vzdálená plocha na virtuálním počítači s Windows](../windows/reset-rdp.md). Po spuštění tohoto nastavení byste měli resetovat heslo při prvním přihlášení:
+V následujícím příkladu se rozšíření Přístup k virtuálnímu počítače používá k resetování hesla pro správu virtuálního počítače se systémem Windows na dočasné heslo. Další informace o rozšíření přístupu k virtuálním počítačům najdete v tématu [Obnovení služby Vzdálená plocha ve virtuálním počítači se systémem Windows](../windows/reset-rdp.md). Po spuštění byste měli heslo resetovat při prvním přihlášení:
 
 ```powershell
 $cred=Get-Credential
@@ -137,22 +137,22 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
     -Password $cred.GetNetworkCredential().Password -typeHandlerVersion "2.0"
 ```
 
-Pomocí příkazu `Set-AzVMExtension` lze spustit libovolné rozšíření virtuálního počítače. Další informace najdete v referenčních informacích k [set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension).
+Příkaz `Set-AzVMExtension` lze použít ke spuštění libovolnérozšíření virtuálního mísy. Další informace naleznete [v odkazu Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension).
 
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
-Rozšíření virtuálních počítačů je možné použít pro existující virtuální počítač prostřednictvím Azure Portal. Vyberte virtuální počítač na portálu, klikněte na **rozšíření**a pak vyberte **Přidat**. V seznamu dostupných rozšíření vyberte požadované rozšíření a postupujte podle pokynů v průvodci.
+Rozšíření virtuálních počítače se dá použít na existující virtuální počítač prostřednictvím portálu Azure. Vyberte virtuální virtuální ms na portálu, zvolte **Rozšíření**a pak vyberte **Přidat**. Ze seznamu dostupných rozšíření vyberte požadované rozšíření a postupujte podle pokynů průvodce.
 
-Následující příklad ukazuje instalaci rozšíření Microsoft Antimalware z Azure Portal:
+Následující příklad ukazuje instalaci rozšíření Microsoft Antimalware z webu Azure Portal:
 
 ![Instalace antimalwarového rozšíření](./media/features-windows/installantimalwareextension.png)
 
 ### <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
 
-Rozšíření virtuálních počítačů lze přidat do šablony Azure Resource Manager a spustit s nasazením šablony. Když nasadíte rozšíření s šablonou, můžete vytvořit plně nakonfigurovaná nasazení Azure. Například následující kód JSON je pořízený z Správce prostředků šablona nasadí sadu virtuálních počítačů s vyrovnáváním zatížení a Azure SQL Database a potom do každého virtuálního počítače nainstaluje aplikaci .NET Core. Rozšíření virtuálního počítače má za starosti instalaci softwaru.
+Rozšíření virtuálních počítače lze přidat do šablony Azure Resource Manager a spustit s nasazením šablony. Když nasadíte rozšíření se šablonou, můžete vytvořit plně nakonfigurovaná nasazení Azure. Například následující JSON se odebírá ze šablony Správce prostředků nasadí sadu virtuálních počítačích s vyrovnáváním zatížení a databázi Azure SQL a pak nainstaluje aplikaci .NET Core na každý virtuální počítač. Rozšíření virtuálního počítače se postará o instalaci softwaru.
 
-Další informace najdete v tématu [úplná správce prostředků šablona](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows).
+Další informace naleznete v [úplné šabloně Správce prostředků](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows).
 
 ```json
 {
@@ -184,13 +184,13 @@ Další informace najdete v tématu [úplná správce prostředků šablona](htt
 }
 ```
 
-Další informace o vytváření šablon Správce prostředků najdete v tématu věnovaném [tvorbě Azure Resource Manager šablon s rozšířeními virtuálních počítačů s Windows](../windows/template-description.md#extensions).
+Další informace o vytváření šablon Správce prostředků najdete v [tématu Vytváření šablon Azure Resource Manageru s rozšířeními virtuálních aplikací pro Windows](../windows/template-description.md#extensions).
 
-## <a name="secure-vm-extension-data"></a>Data rozšíření zabezpečeného virtuálního počítače
+## <a name="secure-vm-extension-data"></a>Zabezpečená data rozšíření virtuálního aplikace
 
-Když spustíte rozšíření virtuálního počítače, může být nutné zahrnout citlivé informace, jako jsou přihlašovací údaje, názvy účtů úložiště a přístupové klíče účtu úložiště. Mnoho rozšíření virtuálních počítačů zahrnuje chráněnou konfiguraci, která šifruje data a jenom dešifruje v cílovém virtuálním počítači. Každé rozšíření má specifické schéma chráněné konfigurace a každá je podrobně popsána v dokumentaci ke konkrétnímu rozšíření.
+Při spuštění rozšíření virtuálního počítačů může být nutné zahrnout citlivé informace, jako jsou přihlašovací údaje, názvy účtů úložiště a přístupové klíče účtu úložiště. Mnoho rozšíření virtuálních počítačů obsahuje chráněnou konfiguraci, která šifruje data a dešifruje je pouze uvnitř cílového virtuálního počítače. Každé rozšíření má specifické chráněné schéma konfigurace a každý je podrobně popsán v dokumentaci specifické pro rozšíření.
 
-Následující příklad ukazuje instanci rozšíření vlastních skriptů pro Windows. Příkaz, který se má provést, zahrnuje sadu přihlašovacích údajů. V tomto příkladu není příkaz ke spuštění zašifrovaný:
+Následující příklad ukazuje instanci rozšíření Vlastní skript pro Windows. Příkaz, který má být proveden, obsahuje sadu pověření. V tomto příkladu není příkaz, který má být proveden, šifrován:
 
 ```json
 {
@@ -220,7 +220,7 @@ Následující příklad ukazuje instanci rozšíření vlastních skriptů pro 
 }
 ```
 
-Přesunutí **příkazu k provedení** vlastnosti do **chráněné** konfigurace zabezpečuje řetězec spuštění, jak je znázorněno v následujícím příkladu:
+Přesunutím **příkazu ke spuštění** vlastnosti do **chráněné** konfigurace je zabezpečen řetězec spuštění, jak je znázorněno v následujícím příkladu:
 
 ```json
 {
@@ -252,26 +252,26 @@ Přesunutí **příkazu k provedení** vlastnosti do **chráněné** konfigurace
 }
 ```
 
-Na virtuálním počítači Azure s IaaS, který používá rozšíření, se můžou v konzole certifikáty zobrazovat certifikáty, které mají předmět **_generátoru certifikátů Windows Azure CRP_** . Na klasickém virtuálním počítači RDFE mají tyto certifikáty **_pro rozšíření název subjektu Windows Azure Service Management_** .
+Na virtuálním počítači Azure IaaS, který používá rozšíření, se v konzole certifikátů mohou zobrazit certifikáty, které mají předmět **_Windows Azure CRP Certificate Generator_**. Na klasickém virtuálním počítači RDFE mají tyto certifikáty název předmětu **_Windows Azure Service Management for Extensions_**.
 
-Tyto certifikáty zabezpečují komunikaci mezi virtuálním počítačem a jeho hostitelem během přenosu chráněných nastavení (hesla, jiných přihlašovacích údajů) používaných rozšířeními. Certifikáty jsou sestaveny řadičem infrastruktury Azure a předány agentovi virtuálního počítače. Pokud každý den zastavíte a spustíte virtuální počítač, může řadič prostředků infrastruktury vytvořit nový certifikát. Certifikát je uložen v úložišti osobních certifikátů počítače. Tyto certifikáty je možné odstranit. Agent virtuálního počítače znovu vytvoří certifikáty v případě potřeby.
+Tyto certifikáty zabezpečují komunikaci mezi virtuálním počítačem a jeho hostitelem během přenosu chráněných nastavení (heslo, další pověření) používané rozšířeními. Certifikáty jsou vytvořené řadičem infrastruktury Azure a předány agentovi virtuálního počítače. Pokud zastavíte a spustíte virtuální ho svitek každý den, může být nový certifikát vytvořen řadičem infrastruktury. Certifikát je uložen v úložišti osobních certifikátů počítače. Tyto certifikáty lze odstranit. Agent virtuálního mísa v případě potřeby znovu vytvoří certifikáty.
 
-### <a name="how-do-agents-and-extensions-get-updated"></a>Jak se aktualizují agenti a rozšíření?
+### <a name="how-do-agents-and-extensions-get-updated"></a>Jak se agenti a rozšíření aktualizují?
 
-Agenti a rozšíření mají stejný mechanismus aktualizace. Některé aktualizace nevyžadují další pravidla brány firewall.
+Agenti a rozšíření sdílejí stejný mechanismus aktualizace. Některé aktualizace nevyžadují další pravidla brány firewall.
 
-Pokud je k dispozici aktualizace, nainstaluje se jenom na virtuální počítač, pokud dojde ke změně rozšíření a dalším změnám modelu virtuálního počítače, jako třeba:
+Když je k dispozici aktualizace, je nainstalovaný na virtuálním počítači, když dojde ke změně rozšíření a další změny modelu virtuálního počítače, jako jsou:
 
 - Datové disky
 - Rozšíření
 - Kontejner diagnostiky spouštění
-- Tajné kódy operačního systému hosta
+- Tajné kódy hostovaného operačního es
 - Velikost virtuálního počítače
 - Profil sítě
 
-Vydavatelé zpřístupňují aktualizace oblastí v různých časech, takže je možné mít virtuální počítače v různých oblastech v různých verzích.
+Vydavatelé zpřístupňují aktualizace do oblastí v různých časech, takže je možné, že virtuální počítači můžete mít v různých oblastech v různých verzích.
 
-#### <a name="listing-extensions-deployed-to-a-vm"></a>Rozšíření pro výpisy nasazené do virtuálního počítače
+#### <a name="listing-extensions-deployed-to-a-vm"></a>Výpis rozšíření nasazených k virtuálnímu virtuálnímu ms
 
 ```powershell
 $vm = Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM"
@@ -284,17 +284,17 @@ Publisher             VirtualMachineExtensionType          TypeHandlerVersion
 Microsoft.Compute     CustomScriptExtension                1.9
 ```
 
-#### <a name="agent-updates"></a>Aktualizace agenta
+#### <a name="agent-updates"></a>Aktualizace agentů
 
-Agent hosta systému Windows obsahuje *kód pro zpracování přípony*, *kód zřizování systému Windows* je oddělený. Můžete odinstalovat agenta hosta systému Windows. Nelze zakázat automatickou aktualizaci agenta hosta okna.
+Agent hosta systému Windows obsahuje pouze *kód zpracování rozšíření*, kód *zřizování systému Windows* je samostatný. Agenta hosta systému Windows můžete odinstalovat. Automatickou aktualizaci agenta hosta okna nelze zakázat.
 
-*Kód pro manipulaci s rozšířeními* zodpovídá za komunikaci s prostředky infrastruktury Azure a zpracovává operace rozšíření virtuálních počítačů, jako jsou instalace, stav generování sestav, aktualizace jednotlivých rozšíření a jejich odebrání. Aktualizace obsahují opravy zabezpečení, opravy chyb a vylepšení *kódu pro zpracování rozšíření*.
+*Kód zpracování rozšíření* je zodpovědný za komunikaci s prostředků infrastruktury Azure a zpracování operací rozšíření virtuálních počítače, jako jsou instalace, stav vykazování, aktualizace jednotlivých rozšíření a jejich odebrání. Aktualizace obsahují opravy zabezpečení, opravy chyb a vylepšení *kódu zpracování rozšíření*.
 
-Pokud chcete zjistit verzi, kterou používáte, přečtěte si téma [Zjištění nainstalovaného agenta hosta systému Windows](agent-windows.md#detect-the-vm-agent).
+Informace o tom, jakou verzi používáte, naleznete [v tématu Zjištění nainstalovaného agenta hosta systému Windows](agent-windows.md#detect-the-vm-agent).
 
 #### <a name="extension-updates"></a>Aktualizace rozšíření
 
-Pokud je k dispozici aktualizace rozšíření, Agent hosta systému Windows stáhne a upgraduje rozšíření. Automatické aktualizace rozšíření jsou buď *drobné* , nebo *hotfix*. Při zřizování rozšíření můžete povolit nebo odhlásit rozšíření *dílčí* aktualizace. Následující příklad ukazuje, jak automaticky upgradovat dílčí verze v Správce prostředků šabloně pomocí *autoUpgradeMinorVersion ": true,"* :
+Pokud je k dispozici aktualizace rozšíření, agent hosta systému Windows stáhne a inovuje rozšíření. Automatické aktualizace rozšíření jsou *menší* nebo *oprava hotfix*. Při zřizování rozšíření se můžete odhlásit nebo odhlásit z *rozšíření.* Následující příklad ukazuje, jak automaticky upgradovat dílčí verze v šabloně Správce prostředků s *autoUpgradeMinorVersion": true,'*:
 
 ```json
     "properties": {
@@ -309,20 +309,20 @@ Pokud je k dispozici aktualizace rozšíření, Agent hosta systému Windows st�
     },
 ```
 
-Chcete-li získat nejnovější drobné opravy chyb vydaných verzí, důrazně doporučujeme, abyste vždy vybrali možnost automaticky aktualizovat v nasazeních rozšíření. Aktualizace oprav hotfix, které obsahují opravy zabezpečení nebo chyby klíčů, nelze odhlásit.
+Chcete-li získat nejnovější drobné opravy chyb vydání, důrazně doporučujeme vždy vybrat automatickou aktualizaci v nasazení rozšíření. Aktualizace opravy hotfix, které provádějí opravy zabezpečení nebo opravy chyb klíčů, nelze odhlášení.
 
 ### <a name="how-to-identify-extension-updates"></a>Jak identifikovat aktualizace rozšíření
 
-#### <a name="identifying-if-the-extension-is-set-with-autoupgrademinorversion-on-a-vm"></a>Určení, jestli se rozšíření nastavilo pomocí autoUpgradeMinorVersion na virtuálním počítači
+#### <a name="identifying-if-the-extension-is-set-with-autoupgrademinorversion-on-a-vm"></a>Identifikace, pokud je rozšíření nastaveno pomocí automatického upgraduMinorVersion na virtuálním počítači
 
-V případě, že se rozšíření zřídilo pomocí ' autoUpgradeMinorVersion ', můžete vidět z modelu virtuálního počítače. K ověření použijte [Get-AzVm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) a zadejte skupinu prostředků a název virtuálního počítače následujícím způsobem:
+Můžete vidět z modelu virtuálního soudu, pokud rozšíření bylo zřízeno s "autoUpgradeMinorVersion". Chcete-li zkontrolovat, použijte [Get-AzVm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) a zadejte název skupiny prostředků a virtuálního soudu takto:
 
 ```powerShell
  $vm = Get-AzVm -ResourceGroupName "myResourceGroup" -VMName "myVM"
  $vm.Extensions
 ```
 
-Následující příklad výstupu ukazuje, že *autoUpgradeMinorVersion* je nastavená na *hodnotu true*:
+Následující příklad výstupu ukazuje, že *autoUpgradeMinorVersion* je nastavena na *hodnotu true*:
 
 ```powershell
 ForceUpdateTag              :
@@ -332,11 +332,11 @@ TypeHandlerVersion          : 1.9
 AutoUpgradeMinorVersion     : True
 ```
 
-#### <a name="identifying-when-an-autoupgrademinorversion-occurred"></a>Identifikace, kdy došlo k autoUpgradeMinorVersion
+#### <a name="identifying-when-an-autoupgrademinorversion-occurred"></a>Identifikace, kdy došlo k automatickému upgraduMinorVersion
 
-Pokud chcete zjistit, kdy došlo k aktualizaci rozšíření, zkontrolujte protokoly agenta na virtuálním počítači na adrese *C:\WindowsAzure\Logs\WaAppAgent.log* .
+Chcete-li zjistit, kdy došlo k aktualizaci rozšíření, zkontrolujte protokoly agenta na virtuálním počítači na adrese *C:\WindowsAzure\Logs\WaAppAgent.log*
 
-V následujícím příkladu měl virtuální počítač nainstalovaný *Microsoft. Compute. CustomScriptExtension 1,8* . Pro verzi *1,9*byla k dispozici oprava hotfix:
+V následujícím příkladu měl virtuální počítač nainstalovanou *aplikaci Microsoft.Compute.CustomScriptExtension 1.8.* Oprava hotfix byla k dispozici pro verzi *1.9*:
 
 ```powershell
 [INFO]  Getting plugin locations for plugin 'Microsoft.Compute.CustomScriptExtension'. Current Version: '1.8', Requested Version: '1.9'
@@ -345,39 +345,39 @@ V následujícím příkladu měl virtuální počítač nainstalovaný *Microso
 
 ## <a name="agent-permissions"></a>Oprávnění agenta
 
-Aby bylo možné provádět jeho úkoly, musí být agent spuštěn jako *místní systém*.
+Chcete-li provádět své úkoly, musí být agent spuštěn jako *místní systém*.
 
-## <a name="troubleshoot-vm-extensions"></a>Řešení potíží s rozšířeními virtuálních počítačů
+## <a name="troubleshoot-vm-extensions"></a>Poradce při potížích s rozšířeními virtuálních míchačů
 
-Každé rozšíření virtuálního počítače může mít postup řešení potíží specifický pro toto rozšíření. Pokud například použijete rozšíření vlastních skriptů, podrobnosti spuštění skriptu můžete najít místně na virtuálním počítači, kde bylo rozšíření spuštěno. Jakékoli kroky při odstraňování potíží specifických pro rozšíření jsou podrobně popsané v dokumentaci ke konkrétnímu rozšíření.
+Každé rozšíření virtuálního virtuálního virtuálního montovny může mít kroky řešení potíží specifické pro rozšíření. Například při použití rozšíření vlastní skript, podrobnosti spuštění skriptu lze nalézt místně na virtuálním počítači, kde byla spuštěna rozšíření. Všechny kroky řešení potíží specifické pro rozšíření jsou podrobně popsány v dokumentaci specifické pro rozšíření.
 
-Následující kroky pro řešení potíží se vztahují na všechna rozšíření virtuálních počítačů.
+Následující kroky řešení potíží platí pro všechna rozšíření virtuálních mit.
 
-1. Pokud chcete zkontrolovat protokol agenta hosta systému Windows, podívejte se na aktivitu při zřizování rozšíření v *C:\WindowsAzure\Logs\WaAppAgent.txt* .
+1. Chcete-li zkontrolovat protokol agenta hosta systému Windows, podívejte se na aktivitu při zřizování rozšíření v *c:\WindowsAzure\Logs\WaAppAgent.log*
 
-2. Další podrobnosti najdete v protokolech *C:\WindowsAzure\Logs\Plugins\<rozšíření >*
+2. Další podrobnosti naleznete v protokolech skutečného rozšíření v *aplikaci\<C:\WindowsAzure\Logs\Plugins extensionName>*
 
-3. Podívejte se na oddíly řešení potíží v dokumentaci ke konkrétnímu rozšíření pro kódy chyb, známé problémy atd.
+3. Zkontrolujte, zda se v částech s podrobnostmi o chybách, známých problémech atd.
 
-4. Podívejte se na systémové protokoly. Vyhledejte další operace, které mohly být v konfliktu s rozšířením, například dlouhodobě běžící instalace jiné aplikace, která vyžadovala výhradní přístup správce balíčků.
+4. Podívejte se na systémové protokoly. Zkontrolujte další operace, které mohly narušit rozšíření, jako je například dlouhotrvající instalace jiné aplikace, která vyžadovala výhradní přístup správce balíčků.
 
 ### <a name="common-reasons-for-extension-failures"></a>Běžné důvody selhání rozšíření
 
-1. Spuštění rozšíření má 20 minut (výjimky jsou rozšířeními CustomScript, a DSC a DSC, která mají 90 minut). Pokud nasazení překročí tuto dobu, bude označeno jako časový limit. Příčinou může být to, že virtuální počítače s nízkou spotřebou, další konfigurace virtuálních počítačů nebo úlohy spouštějí úlohy s vysokými objemy prostředků, zatímco se rozšíření pokouší zřídit.
+1. Rozšíření mají 20 minut ke spuštění (výjimkou jsou rozšíření CustomScript, Chef a DSC, které mají 90 minut). Pokud vaše nasazení překročí tuto dobu, je označen jako časový limit. Příčinou může být nedostatek prostředků virtuálních počítačů, jiné konfigurace virtuálních počítačů/spuštění úlohy spotřebovávají vysoké množství prostředků, zatímco rozšíření se pokouší zřídit.
 
-2. Minimální požadavky nejsou splněné. Některá rozšíření mají závislosti na SKU virtuálních počítačů, jako jsou například Image HPC. Rozšíření můžou vyžadovat určité požadavky na přístup k síti, jako je například komunikace s Azure Storage nebo veřejnými službami. Dalším příkladem může být přístup k úložištím balíčků, nedostatek místa na disku nebo omezení zabezpečení.
+2. Minimální předpoklady nejsou splněny. Některá rozšíření mají závislosti na virtuálních aplikacích SKU, jako jsou například image HPC. Rozšíření mohou vyžadovat určité požadavky na přístup k síti, jako je například komunikace s Azure Storage nebo veřejnými službami. Dalšími příklady mohou být přístup k úložištím balíčků, nedostatek místa na disku nebo omezení zabezpečení.
 
-3. Výhradní přístup správce balíčků. V některých případech se může vyskytnout dlouho běžící konfigurace virtuálního počítače a instalace rozšíření, kde obě potřebují exkluzivní přístup ke Správci balíčků.
+3. Exkluzivní přístup správce balíčků. V některých případech může dojít k dlouho běžící konfiguraci virtuálního počítače a rozšíření instalace konfliktní, kde oba potřebují výhradní přístup ke správci balíčků.
 
 ### <a name="view-extension-status"></a>Zobrazit stav rozšíření
 
-Po spuštění rozšíření virtuálního počítače na virtuálním počítači můžete vrátit stav rozšíření pomocí rutiny [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) . *Dílčí stavy [0]* ukazují, že zřizování rozšíření bylo úspěšné, což znamená, že se úspěšně nasadilo na virtuální počítač, ale spuštění rozšíření uvnitř virtuálního počítače selhalo, *dílčí stavy [1]* .
+Po spuštění rozšíření virtuálního virtuálního provozu proti virtuálnímu virtuálnímu virtuálnímu provozu, použijte [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) vrátit stav rozšíření. *Substatuses[0]* ukazuje, že rozšíření zřizování proběhlo úspěšně, což znamená, že bylo úspěšné nasazení na virtuální ms, ale spuštění rozšíření uvnitř virtuálního virtuálního byl neúspěšný, *Substatuses[1]*.
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM" -Status
 ```
 
-Výstup se podobá následujícímu příkladu výstupu:
+Výstup je podobný následujícímu příkladu výstupu:
 
 ```powershell
 Extensions[0]           :
@@ -403,31 +403,31 @@ Extensions[0]           :
     Message             : Finished executing command
 ```
 
-Stav spuštění rozšíření lze také najít v Azure Portal. Pokud chcete zobrazit stav rozšíření, vyberte virtuální počítač, zvolte **rozšíření**a pak vyberte požadované rozšíření.
+Stav spuštění rozšíření se také nachází na webu Azure Portal. Pokud chcete zobrazit stav rozšíření, vyberte virtuální honový virtuální ms, zvolte **Rozšíření**, pak vyberte požadované rozšíření.
 
-### <a name="rerun-vm-extensions"></a>Znovu spustit rozšíření virtuálních počítačů
+### <a name="rerun-vm-extensions"></a>Opětovné spuštění rozšíření virtuálních virtuálních míchačů
 
-Můžou nastat případy, kdy je potřeba znovu spustit rozšíření virtuálního počítače. Rozšíření můžete znovu spustit tak, že ho odeberete a pak znovu spustíte rozšíření s vámi zvolenou metodou spuštění. Chcete-li odebrat rozšíření, použijte [příkaz Remove-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/Remove-AzVMExtension) následujícím způsobem:
+Mohou existovat případy, ve kterých je třeba znovu spustit rozšíření virtuálního provozu. Rozšíření můžete znovu spustit odebráním a opětovným spuštěním rozšíření s metodou spuštění podle vašeho výběru. Chcete-li rozšíření odebrat, použijte [funkci Remove-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/Remove-AzVMExtension) následujícím způsobem:
 
 ```powershell
 Remove-AzVMExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "myExtensionName"
 ```
 
-Můžete také odebrat rozšíření v Azure Portal následujícím způsobem:
+Rozšíření na webu Azure Portal můžete taky odebrat takto:
 
-1. Vyberte virtuální počítač.
-2. Vyberte **rozšíření**.
+1. Vyberte virtuální hod.
+2. Zvolte **Rozšíření**.
 3. Vyberte požadované rozšíření.
-4. Vyberte možnost **odinstalovat**.
+4. Zvolte **Odinstalovat**.
 
-## <a name="common-vm-extensions-reference"></a>Referenční informace o běžných rozšířeních virtuálních počítačů
+## <a name="common-vm-extensions-reference"></a>Odkaz na rozšíření běžných virtuálních mís
 | Název rozšíření | Popis | Další informace |
 | --- | --- | --- |
-| Rozšíření vlastních skriptů pro virtuální počítače |Spouštění skriptů na virtuálním počítači Azure |[Rozšíření vlastních skriptů pro Windows](custom-script-windows.md) |
-| Rozšíření DSC pro Windows |Rozšíření PowerShell DSC (Konfigurace požadovaného stavu) |[Rozšíření DSC pro Windows](dsc-overview.md) |
-| Rozšíření Azure Diagnostics |Správa Azure Diagnostics |[Rozšíření diagnostiky Azure](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
-| Rozšíření přístupu k virtuálnímu počítači Azure |Správa uživatelů a přihlašovacích údajů |[Rozšíření přístupu virtuálních počítačů pro Linux](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
+| Rozšíření vlastních skriptů pro virtuální počítače |Spouštění skriptů proti virtuálnímu počítači Azure |[Rozšíření vlastních skriptů pro virtuální počítače](custom-script-windows.md) |
+| Rozšíření DSC pro Windows |Rozšíření PowerShell DSC (požadovaná konfigurace stavu) |[Rozšíření DSC pro Windows](dsc-overview.md) |
+| Rozšíření Azure Diagnostics |Správa diagnostiky Azure |[Rozšíření diagnostiky Azure](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
+| Rozšíření přístupu k virtuálním montovně Azure |Správa uživatelů a přihlašovacích údajů |[Rozšíření přístupu k virtuálním montovně pro Linux](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o rozšíření virtuálních počítačů najdete v tématu [Přehled rozšíření a funkcí virtuálních počítačů Azure](overview.md).
+Další informace o rozšířeních virtuálních virtuálních zařízení najdete v [tématu Rozšíření virtuálních zařízení Azure a přehled funkcí](overview.md).

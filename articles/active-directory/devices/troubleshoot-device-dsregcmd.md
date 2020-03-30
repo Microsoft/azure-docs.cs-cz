@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží pomocí příkazu dsregcmd-Azure Active Directory
-description: Pochopení stavu zařízení ve službě Azure AD pomocí výstupu z dsregcmd
+title: Poradce při potížích s použitím příkazu dsregcmd – Azure Active Directory
+description: Použití výstupu z dsregcmd k pochopení stavu zařízení ve službě Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,37 +11,37 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 676a1dd2435d17db2151bdf21f1989e7f182701b
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.openlocfilehash: 2cd782cdab625934fe60617142e5ac0baf756398
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79136479"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128764"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Řešení potíží se zařízeními pomocí příkazu dsregcmd
 
-Nástroj dsregcmd/status musí být spuštěn jako uživatelský účet domény.
+Nástroj dsregcmd /status musí být spuštěn jako uživatelský účet domény.
 
 ## <a name="device-state"></a>Stav zařízení
 
-V této části jsou uvedené parametry stavu připojení zařízení. V následující tabulce jsou uvedená kritéria pro zařízení v různých stavech spojení.
+V této části jsou uvedeny parametry stavu připojení zařízení. V následující tabulce jsou uvedena kritéria pro zařízení, které má být v různých stavech spojení.
 
-| AzureAdJoined | EnterpriseJoined | DomainJoined | Stav zařízení |
+| AzureAdJoined | EnterpriseJoined | K doméně připojeno | Stav zařízení |
 | ---   | ---   | ---   | ---   |
-| Ano | NO | NO | Připojeno k Azure AD |
-| NO | NO | Ano | Připojeno k doméně |
-| Ano | NO | Ano | Připojeno k hybridní službě AD |
-| NO | Ano | Ano | Připojené k místnímu DRS |
+| ANO | NO | NO | Připojeno pro Azure AD |
+| NO | NO | ANO | Připojená doména |
+| ANO | NO | ANO | Hybridní a dlativní aplikace |
+| NO | ANO | ANO | Místní drs spojené |
 
 > [!NOTE]
-> V části "stav uživatele" se zobrazí stav Workplace Join (registrovaný Azure AD).
+> Stav Připojení k pracovnímu prostředí (registrovaný v Azure AD) se zobrazí v části Stav uživatele.
 
-- **AzureAdJoined:** -Pokud je zařízení připojené ke službě Azure AD, nastavte na hodnotu Ano. "Ne" jinak.
-- **EnterpriseJoined:** -Pokud je zařízení připojené k místnímu DRS, nastavte hodnotu Ano. Zařízení nemůže být současně EnterpriseJoined i AzureAdJoined.
-- **DomainJoined:** -Pokud je zařízení připojené k doméně (AD), nastavte na hodnotu Ano.
-- **DomainName:** – nastavte název domény, pokud je zařízení připojené k doméně.
+- **AzureAdJoined:** - Nastavte na "ANO", pokud je zařízení připojeno k Azure AD. "NE" jinak.
+- **EnterpriseJoined:** - Nastavte na "ANO", pokud je zařízení připojeno k místnímu DRS. Zařízení nemůže být enterprisejoined a AzureAdJoined.
+- **DomainJoinedJoined:** - Nastavte na "ANO", pokud je zařízení připojeno k doméně (AD).
+- **DomainName:** - Nastavte název domény, pokud je zařízení připojeno k doméně.
 
-### <a name="sample-device-state-output"></a>Ukázka výstupu stavu zařízení
+### <a name="sample-device-state-output"></a>Ukázkový výstup stavu zařízení
 
 ```
 +----------------------------------------------------------------------+
@@ -54,18 +54,18 @@ V této části jsou uvedené parametry stavu připojení zařízení. V násled
 +----------------------------------------------------------------------+
 ```
 
-## <a name="device-details"></a>Podrobnosti zařízení
+## <a name="device-details"></a>Podrobnosti o zařízení
 
-Zobrazuje se jenom v případě, že je zařízení připojené k Azure AD nebo je připojené k hybridní službě Azure AD (není zaregistrované Azure AD). V této části jsou uvedené informace o identifikaci zařízení, které jsou uložené v cloudu.
+Zobrazí se jenom v případě, že je zařízení Azure AD připojen nebo hybridní Azure AD připojil (není Azure AD registrované). V této části jsou uvedeny údaje identifikující zařízení uložené v cloudu.
 
-- **DeviceID:** – jedinečné ID zařízení v TENANTOVI Azure AD
-- **Kryptografický otisk:** – kryptografický otisk certifikátu zařízení 
-- **DeviceCertificateValidity:** -platnost certifikátu zařízení
-- **KeyContainerId:** -ContainerId privátní klíč zařízení přidružený k certifikátu zařízení
-- Klíč **:** -poskytuje (hardware/software), který se používá k uložení privátního klíče zařízení.
-- **TpmProtected:** -"Ano", pokud je privátní klíč zařízení uložený v HARDWAROVÉM čipu TPM.
+- **DeviceId:** - jedinečné ID zařízení v tenantovi Azure AD
+- **Otisk palce:** - Otisk palce certifikátu zařízení 
+- **DeviceCertificateValidity:** - Platnost certifikátu zařízení
+- **KeyContainerId:** - ContainerId soukromého klíče zařízení přidruženého k certifikátu zařízení
+- **KeyProvider:** - KeyProvider (Hardware/Software) slouží k uložení soukromého klíče zařízení.
+- **TpmProtected:** - "ANO", pokud je soukromý klíč zařízení uložen v hardwarovém čipu TPM.
 
-### <a name="sample-device-details-output"></a>Ukázka výstupu podrobností o zařízení
+### <a name="sample-device-details-output"></a>Ukázkový výstup podrobností o zařízení
 
 ```
 +----------------------------------------------------------------------+
@@ -83,15 +83,15 @@ Zobrazuje se jenom v případě, že je zařízení připojené k Azure AD nebo 
 
 ## <a name="tenant-details"></a>Podrobnosti o tenantovi
 
-Zobrazuje se jenom v případě, že je zařízení připojené k Azure AD nebo je připojené k hybridní službě Azure AD (není zaregistrované Azure AD). Tato část obsahuje informace o běžných klientech, když je zařízení připojené ke službě Azure AD.
+Zobrazí se jenom v případě, že je zařízení Azure AD připojen nebo hybridní Azure AD připojil (není Azure AD registrované). V této části jsou uvedeny běžné podrobnosti o tenantovi, když se zařízení připojí k Azure AD.
 
 > [!NOTE]
-> Pokud jsou adresy URL MDM v této části prázdné, znamená to, že MDM buď není nakonfigurovaný, nebo aktuální uživatel není v oboru registrace MDM. Zkontrolujte nastavení mobility ve službě Azure AD a zkontrolujte konfiguraci MDM.
+> Pokud jsou adresy URL MDM v této části prázdné, znamená to, že MDM nebyl nakonfigurován nebo aktuální uživatel není v rozsahu registrace MDM. Zkontrolujte nastavení mobility ve službě Azure AD a zkontrolujte konfiguraci MDM.
 
 > [!NOTE]
-> I když se zobrazují adresy URL MDM, neznamená to, že zařízení spravuje MDM. Tyto informace se zobrazí, pokud má tenant konfiguraci MDM pro automatický zápis i v případě, že samotné zařízení není spravované. 
+> I když vidíte adresy URL MDM to neznamená, že zařízení je spravováno MDM. Informace se zobrazí, pokud má klient konfiguraci MDM pro automatický zápis i v případě, že samotné zařízení není spravováno. 
 
-### <a name="sample-tenant-details-output"></a>Výstup podrobností o ukázkovém tenantovi
+### <a name="sample-tenant-details-output"></a>Ukázkový výstup podrobností o tenantovi
 
 ```
 +----------------------------------------------------------------------+
@@ -124,20 +124,20 @@ Zobrazuje se jenom v případě, že je zařízení připojené k Azure AD nebo 
 
 ## <a name="user-state"></a>Stav uživatele
 
-V této části je uveden seznam stavů různých atributů pro uživatele, který je aktuálně přihlášený k zařízení.
+V této části je uveden stav různých atributů uživatele aktuálně přihlášeného k zařízení.
 
 > [!NOTE]
-> Příkaz se musí spustit v uživatelském kontextu, aby se načetl platný stav.
+> Příkaz musí být spuštěn v kontextu uživatele, aby bylo možné načíst platný stav.
 
-- **NgcSet:** -nastavte na hodnotu Ano, pokud je pro aktuálně přihlášený uživatel nastaven klíč Windows Hello.
-- **NgcKeyId:** -ID klíče Windows Hello, pokud je nastaven pro aktuálně přihlášeného uživatele.
-- **CanReset:** -označuje, jestli uživatel může resetovat klíč Windows Hello. 
-- **Možné hodnoty:** -DestructiveOnly, NonDestructiveOnly, DestructiveAndNonDestructive nebo Unknown, pokud se jedná o chybu. 
-- **WorkplaceJoined:** -nastavte na hodnotu Ano, pokud se do zařízení v aktuálním kontextu Ntuser přidaly účty registrované službou Azure AD.
-- **WamDefaultSet:** -nastavte na hodnotu Ano, pokud je pro přihlášeného uživatele vytvořen výchozí účet WAM. Toto pole může zobrazit chybu, pokud dsreg/status běží v kontextu správce. 
-- **WamDefaultAuthority:** -pro Azure AD nastavte na "organizace".
-- **WamDefaultId:** Always "https://login.microsoft.com" pro Azure AD.
-- **WamDefaultGUID:** – GUID poskytovatele WAM (Azure AD/účet Microsoft) pro výchozí webaccount WAM. 
+- **NgcSet:** - Pokud je pro aktuálního přihlášeného uživatele nastaven klíč Windows Hello, nastavte na "ANO".
+- **NgcKeyId:** - ID klávesy Windows Hello, pokud je nastavena pro aktuálního přihlášeného uživatele.
+- **CanReset:** - Označuje, pokud může být klávesa Windows Hello resetována uživatelem. 
+- **Možné hodnoty:** - DestructiveOnly, NonDestructiveOnly, DestructiveAndNonDestructive, nebo Unknown if error. 
+- **WorkplaceJoined:** - Nastavte na "ANO", pokud registrované účty Azure AD byly přidány do zařízení v aktuálním kontextu NTUSER.
+- **WamDefaultSet:** - Pokud je pro přihlášeného uživatele vytvořen výchozí webový účet WAM, nastavte na hodnotu "ANO". Toto pole může zobrazit chybu, pokud je dsreg /status spuštěn z příkazového řádku se zvýšenými oprávněními. 
+- **WamDefaultAuthority:** - Nastavte na "organizace" pro Azure AD.
+- **WamDefaultId:** -https://login.microsoft.comVždy " pro Azure AD.
+- **WamDefaultGUID:** - IDENTIFIKÁTOR GUID poskytovatele WAM (Azure AD/Microsoft account) pro výchozí wam webúčet. 
 
 ### <a name="sample-user-state-output"></a>Ukázkový výstup stavu uživatele
 
@@ -158,23 +158,23 @@ V této části je uveden seznam stavů různých atributů pro uživatele, kter
 +----------------------------------------------------------------------+
 ```
 
-## <a name="sso-state"></a>Stav jednotného přihlašování
+## <a name="sso-state"></a>Stav stesa nebo sondy
 
-Tato část se dá pro zařízení registrovaná v Azure AD ignorovat.
+Tato část může být ignorována pro zařízení registrovaná azure ad.
 
 > [!NOTE]
-> Příkaz se musí spustit v uživatelském kontextu, aby se načetl platný stav pro tohoto uživatele.
+> Příkaz musí být spuštěn v kontextu uživatele, aby bylo možné načíst platný stav pro tohoto uživatele.
 
-- **AzureAdPrt:** -Pokud je v zařízení pro přihlášeného uživatele k DISpozici PRT, nastavte na hodnotu Ano.
-- **AzureAdPrtUpdateTime:** -nastaví se na čas ve standardu UTC, kdy se poslední aktualizace PRT.
-- **AzureAdPrtExpiryTime:** -nastavte na čas ve standardu UTC, kdy platnost PRT vyprší, pokud není obnovena.
+- **AzureAdPrt:** - Nastavte na "ANO", pokud PRT je k dispozici na zařízení pro přihlášeného uživatele.
+- **AzureAdPrtUpdateTime:** - Nastavte čas v utc, kdy byla naposledy aktualizována PRT.
+- **AzureAdPrtExpiryTime:** - Nastavte čas v utc, kdy prt vyprší, pokud není obnovena.
 - **AzureAdPrtAuthority:** – adresa URL autority Azure AD
-- **EnterprisePrt:** -Pokud má zařízení PRT z místní služby AD FS, nastavte na hodnotu Ano. Zařízení připojená k hybridní službě Azure AD by mohla mít PRT z Azure AD i z místní služby AD současně. Místní připojená zařízení budou mít jenom PRT Enterprise.
-- **EnterprisePrtUpdateTime:** -nastavte čas ve standardu UTC, kdy se naposledy aktualizoval podniková PRT.
-- **EnterprisePrtExpiryTime:** -nastavte na čas ve standardu UTC, kdy platnost PRT vyprší, pokud není obnovena.
-- **EnterprisePrtAuthority:** – adresa URL pro autoritu ADFS
+- **EnterprisePrt:** - Pokud má zařízení PRT z místního serveru ADFS, nastavte na "ANO". Pro hybridní zařízení Azure AD připojenzařízení zařízení může mít PRT z Azure AD a místní AD současně. Místní připojená zařízení budou mít jenom enterprise PRT.
+- **EnterprisePrtUpdateTime:** - Nastavte čas v utc, kdy byla naposledy aktualizována enterprise PRT.
+- **EnterprisePrtExpiryTime:** - Nastavte čas v UTC, kdy prt vyprší, pokud není obnovena.
+- **EnterprisePrtAuthority:** - Adresa URL autority ADFS
 
-### <a name="sample-sso-state-output"></a>Ukázka výstupu stavu jednotného přihlašování
+### <a name="sample-sso-state-output"></a>Ukázkový výstup stavu spřimisování sdílčího sdílčího
 
 ```
 +----------------------------------------------------------------------+
@@ -195,23 +195,23 @@ Tato část se dá pro zařízení registrovaná v Azure AD ignorovat.
 
 ## <a name="diagnostic-data"></a>Diagnostická data
 
-### <a name="pre-join-diagnostics"></a>Diagnostika před spojením
+### <a name="pre-join-diagnostics"></a>Diagnostika před připojením
 
-Tato část se zobrazí jenom v případě, že je zařízení připojené k doméně a nemůže se připojit k hybridní službě Azure AD.
+Tato část se zobrazí pouze v případě, že zařízení je připojen k doméně a nelze hybridní připojení Azure AD.
 
-Tato část provádí různé testy, které vám pomůžou diagnostikovat selhání připojení. Tato část obsahuje také podrobnosti o předchozí (?). Tyto informace zahrnují chybovou fázi, kód chyby, ID žádosti serveru, stav HTTP odpovědi serveru, chybová zpráva odpovědi serveru.
+Tato část provádí různé testy, které pomáhají diagnostikovat selhání spojení. Tato část také obsahuje podrobnosti o předchozí (?). Tyto informace zahrnují chybovou fázi, kód chyby, ID požadavku serveru, stav odpovědi serveru http, chybovou zprávu s odpovědí serveru.
 
-- **Kontext uživatele:** – kontext, ve kterém se Diagnostika spouští. Možné hodnoty: SYSTEM, unzvýšeného uživatele, ZVÝŠENý uživatel. 
+- **Kontext uživatele:** - kontext, ve kterém jsou spuštěny diagnostiky. Možné hodnoty: SYSTEM, UN-ELEVATED User, ELEVATED User. 
 
    > [!NOTE]
-   > Vzhledem k tomu, že se skutečné spojení provádí v kontextu systému, je spuštění diagnostiky v kontextu systému nejblíže vašemu skutečnému scénáři spojení. Chcete-li spustit diagnostiku v kontextu systému, je třeba spustit příkaz dsregcmd/status z příkazového řádku se zvýšenými oprávněními.
+   > Vzhledem k tomu, že skutečné spojení se provádí v kontextu SYSTEM, spuštění diagnostiky v kontextu SYSTEM je nejblíže k scénáři skutečné spojení. Chcete-li spustit diagnostiku v kontextu SYSTÉMU, musí být příkaz dsregcmd /status spuštěn z příkazového řádku se zvýšenými oprávněními.
 
-- **Čas klienta:** – systémový čas ve standardu UTC.
-- **Test připojení AD:** -test provede test připojení k řadiči domény. Chyba v tomto testu bude nejspíš způsobit chyby spojení v předběžné kontrolní fázi.
-- **Test konfigurace služby AD:** -test načte a ověří, jestli je objekt SCP správně nakonfigurovaný v místní doménové struktuře AD. Chyby v tomto testu by mohly vést k chybám spojení ve fázi zjišťování s kódem chyby 0x801c001d.
-- **Test zjišťování DRS:** -test Získá koncové body DRS z koncového bodu metadat zjišťování a provede požadavek na sféru uživatele. Chyby v tomto testu by mohly vést k chybám spojení ve fázi zjišťování.
-- **Test připojení DRS:** -test provede základní test připojení ke koncovému bodu DRS.
-- **Test získání tokenu:** -test se pokusí získat ověřovací token Azure AD, pokud je tenant uživatele federované. Chyby v tomto testu by mohly vést k chybám spojení ve fázi ověřování. Pokud se v případě, že není výslovně zakázaná záloha pomocí níže uvedených nastavení klíče registru, pokusí se pokusit se připojit k synchronizaci synchronizace se nezdaří.
+- **Čas klienta:** - Systémový čas v UTC.
+- **Test připojení služby AD:** - Test provede test připojení k řadiči domény. Chyba v tomto testu pravděpodobně způsobí chyby spojení ve fázi předběžné kontroly.
+- **Test konfigurace služby AD:** - Test přečte a ověří, zda je objekt SCP správně nakonfigurován v místní doménové struktuře služby AD. Chyby v tomto testu by pravděpodobně vést k join chyby ve fázi zjišťování s kódem chyby 0x801c001d.
+- **Test zjišťování DRS:** - Test získá koncové body DRS z koncového bodu metadat zjišťování a provede požadavek na sféru uživatele. Chyby v tomto testu by pravděpodobně vést k join chyby ve fázi zjišťování.
+- **Test připojení DRS:** - Test provádí základní test připojení ke koncovému bodu DRS.
+- **Test pořízení tokenu:** – test se pokusí získat ověřovací token Azure AD, pokud je klient uživatele federovaný. Chyby v tomto testu by pravděpodobně vést k join chyby ve fázi auth. Pokud se nezdaří auth synchronizační spojení se pokusí jako záložní, pokud záložní je explicitně zakázána s níže nastavení klíče registru.
 ```
     Keyname: Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ
     Value: FallbackToSyncJoin
@@ -220,18 +220,18 @@ Tato část provádí různé testy, které vám pomůžou diagnostikovat selhá
     Value: 0x1 -> Enabled
     Default (No Key): Enabled
  ```
-- **Záloha na synchronizaci – připojení:** -nastavit na povoleno, pokud se výše uvedený klíč registru nestane, aby se záloha synchronizoval s chybami ověřování, není k dispozici. Tato možnost je k dispozici v systému Windows 10 1803 a novějším.
-- **Předchozí registrace:** čas, kdy došlo k předchozímu pokusu o spojení. Protokolují se jenom neúspěšné pokusy o připojení.
-- **Chybová fáze:** – fáze spojení, ve které byla přerušena. Možné hodnoty jsou předběžné kontroly, zjišťování, ověřování, spojení.
-- **Klient ErrorCode:** -vrácený kód chyby klienta (HRESULT).
-- **Server ErrorCode:** -kód chyby serveru, pokud byl požadavek odeslán na server a Server vrátil zpět chybový kód. 
-- **Zpráva serveru:** -zpráva serveru vrácená spolu s kódem chyby.
-- **Stav protokolu https:** -stav HTTP vrácený serverem.
-- **ID žádosti:** – požadavek klienta byl odeslán na server. To je užitečné pro korelaci s protokoly na straně serveru.
+- **Záložní sync-join:** - Nastavte na "Povoleno", pokud výše uvedený klíč registru, aby se zabránilo záložní synchronizovat spojení s selhání matný, není k dispozici. Tato možnost je dostupná v systému Windows 10 1803 a novějším.
+- **Předchozí registrace:** - Čas předchozího pokusu o připojení došlo. Jsou zaznamenány pouze neúspěšné pokusy o připojení.
+- **Chyba fáze:** - fáze spojení, ve kterém byla přerušena. Možné hodnoty jsou pre-check, discover, auth, join.
+- **Chyba klientaKód:** - Vrácen kód chyby klienta (HRESULT).
+- **Chybový kód serveru:** - Kód chyby serveru, pokud byl požadavek odeslán na server a server odpověděl zpět s kódem chyby. 
+- **Zpráva serveru:** - Zpráva serveru vrácena spolu s kódem chyby.
+- **Stav https:** - Stav http vrácený serverem.
+- **ID požadavku:** - Id požadavku klienta odeslané na server. Užitečné korelovat s protokoly na straně serveru.
 
-### <a name="sample-pre-join-diagnostics-output"></a>Ukázka předběžného připojení výstup diagnostiky
+### <a name="sample-pre-join-diagnostics-output"></a>Ukázkový výstup diagnostiky před připojením
 
-Následující příklad ukazuje selhání testu diagnostiky s chybou zjišťování.
+Následující příklad ukazuje selhání diagnostického testu s chybou zjišťování.
 
 ```
 +----------------------------------------------------------------------+
@@ -255,7 +255,7 @@ Následující příklad ukazuje selhání testu diagnostiky s chybou zjišťov�
 +----------------------------------------------------------------------+
 ```
 
-Následující příklad ukazuje testy diagnostiky, ale pokus o registraci se nezdařil s chybou adresáře, která se očekává pro připojení synchronizace. Jakmile se úloha synchronizace Azure AD Connect dokončí, zařízení se bude moci připojit.
+Následující příklad ukazuje, že diagnostické testy jsou předávání, ale pokus o registraci se nezdařil o chybu adresáře, která se očekává pro synchronizaci spojení. Po dokončení úlohy synchronizace Azure AD Connect se zařízení bude moct připojit.
 
 ```
 +----------------------------------------------------------------------+
@@ -286,10 +286,10 @@ Následující příklad ukazuje testy diagnostiky, ale pokus o registraci se ne
 
 ### <a name="post-join-diagnostics"></a>Diagnostika po připojení
 
-Tato část zobrazuje výstup kontrol správnosti provedených v zařízení připojeném ke cloudu.
+Tato část zobrazuje výstup kontrol y příčetnosti prováděných na zařízení připojovat se ke cloudu.
 
-- **AadRecoveryEnabled:** -Pokud ano, klíče uložené v zařízení nejsou použitelné a zařízení je označené pro obnovení. Při příštím přihlášení se spustí tok obnovení a zařízení se znovu zaregistruje.
-- **KeySignTest:** -if "Pass" klíče zařízení jsou v dobrém stavu. Pokud KeySignTest selže, zařízení se obvykle označí pro obnovení. Při příštím přihlášení se spustí tok obnovení a zařízení se znovu zaregistruje. Pro zařízení připojená k hybridní službě Azure AD je obnovení tiché. Když jste připojeni k Azure AD nebo zaregistrovali Azure AD, zařízení zobrazí výzvu k ověření uživatele, aby v případě potřeby obnovila a znovu zaregistrovala zařízení. **KeySignTest vyžaduje zvýšená oprávnění.**
+- **AadRecoveryEnabled:** - Pokud "ANO", klíče uložené v zařízení nejsou použitelné a zařízení je označeno pro obnovení. Další přihlášení spustí tok obnovení a znovu zaregistruje zařízení.
+- **KeySignTest:** - Pokud "PROŠEL" klíče zařízení jsou v dobrém zdravotním stavu. Pokud KeySignTest selže, zařízení bude obvykle označenpro obnovení. Další přihlášení spustí tok obnovení a znovu zaregistruje zařízení. Pro hybridní zařízení azure ad připojena obnovení je tichý. Zatímco Azure AD připojen nebo Azure AD registrované, zařízení vyzve k ověření uživatele obnovit a znovu zaregistrovat zařízení v případě potřeby. **KeySignTest vyžaduje zvýšená oprávnění.**
 
 #### <a name="sample-post-join-diagnostics-output"></a>Ukázkový výstup diagnostiky po připojení
 
@@ -303,26 +303,26 @@ Tato část zobrazuje výstup kontrol správnosti provedených v zařízení př
 +----------------------------------------------------------------------+
 ```
 
-## <a name="ngc-prerequisite-check"></a>Kontrola požadavků služby NGC
+## <a name="ngc-prerequisite-check"></a>Kontrola předpokladů ngc
 
-Tato část provádí předpokladech kontroly pro zřizování Windows Hello pro firmy (WHFB). 
+Tato část provádí perquisite kontroly pro zřizování Windows Hello pro firmy (WHFB). 
 
 > [!NOTE]
-> Pokud už uživatel úspěšně nakonfiguroval WHFB, v dsregcmd/status se nemusí zobrazit podrobnosti o kontrole požadavků na NGC.
+> Pokud uživatel již úspěšně nakonfiguroval WHFB, nemusí se zobrazit podrobnosti o předběžné kontrole společnosti NGC v dsregcmd /status.
 
-- **IsDeviceJoined:** -Pokud je zařízení připojené ke službě Azure AD, nastavte na hodnotu Ano.
-- **IsUserAzureAD:** -Pokud se přihlášený uživatel nachází v Azure AD, nastavte na hodnotu Ano.
-- **PolicyEnabled:** -Pokud je na zařízení povolená zásada WHFB, nastavte na hodnotu Ano.
-- **PostLogonEnabled:** -nastavte na hodnotu Ano, pokud se registrace WHFB spustí nativně platformou. Pokud je nastavená na ne, znamená to, že registrace Windows Hello pro firmy se aktivuje vlastním mechanismem.
-- **DeviceEligible:** -nastavte na hodnotu Ano, pokud zařízení splňuje požadavky na hardware pro registraci v WHFB.
-- **SessionIsNotRemote:** -nastavte na hodnotu Ano, pokud je aktuální uživatel přihlášen přímo k zařízení, nikoli vzdáleně.
-- **CertEnrollment:** specifické pro WHFB nasazení důvěryhodných certifikátů, které označuje autoritu pro zápis certifikátu pro WHFB. Nastavte na "autorita pro registraci", pokud je zdroj zásad WHFB Zásady skupiny, "Správa mobilních zařízení", pokud je zdrojem MDM. None (žádné) jinak
-- **AdfsRefreshToken:** specifické pro WHFB nasazení důvěryhodných certifikátů. K dispozici pouze v případě, že CertEnrollment je "autorita pro registraci". Určuje, jestli má zařízení PRT Enterprise pro uživatele.
-- **AdfsRaIsReady:** specifické pro WHFB nasazení důvěryhodných certifikátů.  K dispozici pouze v případě, že CertEnrollment je "autorita pro registraci". Nastavte na hodnotu Ano, pokud se služba AD v metadatech zjišťování označila jako WHFB *a* je dostupná šablona přihlašovacího certifikátu.
-- **LogonCertTemplateReady:** specifické pro WHFB nasazení důvěryhodných certifikátů. K dispozici pouze v případě, že CertEnrollment je "autorita pro registraci". Nastavte na Ano, pokud je šablona přihlašovacího certifikátu platná a pomáhá řešit problémy s RA v AD FS.
-- **PreReqResult:** – poskytuje výsledek pro všechna vyhodnocení požadavků WHFB. Pokud se uživatel poprvé přihlásí, bude se tato možnost zřídit, pokud se registrace WHFB spustí jako úloha po přihlášení.
+- **IsDeviceJoined:** - Nastavte na "ANO", pokud je zařízení připojeno k Azure AD.
+- **IsUserAzureAD:** - Nastavte na "ANO", pokud je přihlášený uživatel přítomen ve službě Azure AD .
+- **PolicyEnabled:** - Nastavte na "ANO", pokud je v zařízení povolena zásada WHFB.
+- **PostLogonEnabled:** - Nastavte na "ANO", pokud je zápis WHFB spuštěn nativně platformou. Pokud je nastavena na "NE", znamená to, že registrace Windows Hello pro firmy je spuštěna vlastním mechanismem
+- **DeviceEligible:** - Nastavte na "ANO", pokud zařízení splňuje hardwarový požadavek pro registraci s WHFB.
+- **SessionIsNotRemote:** - Nastavte na "ANO", pokud je aktuální uživatel přihlášen přímo k zařízení a ne vzdáleně.
+- **CertEnrollment:** - Specifické pro nasazení certifikátu WHFB, označující autoritu pro zápis certifikátu pro WHFB. Nastavte na "oprávnění pro zápis", pokud je zdrojem zásad WHFB zásady skupiny, "správa mobilních zařízení", pokud je zdrojem MDM. "žádný" jinak
+- **AdfsRefreshToken:** - Specifické pro nasazení důvěryhodnosti certifikátu WHFB. K dispozici pouze v případě, že CertEnrollment je "oprávnění pro zápis". Označuje, zda má zařízení pro uživatele podnikový PRT.
+- **AdfsRaIsReady:** - Specifické pro nasazení certifikátu WHFB.  K dispozici pouze v případě, že CertEnrollment je "oprávnění pro zápis". Nastavte na "ANO", pokud služba ADFS v metadatech zjišťování uvedla, že podporuje WHFB *a* zda je k dispozici šablona přihlašovacího certifikátu.
+- **LogonCertTemplateReady:** - Specifické pro nasazení důvěryhodnosti certifikátu WHFB. K dispozici pouze v případě, že CertEnrollment je "oprávnění pro zápis". Pokud je stav přihlašovacího certifikátu platný a pomáhá řešit potíže s protokolem ADFS RA, nastavte na "ANO".
+- **PreReqResult:** - Poskytuje výsledek všech WHFB předpoklad hodnocení. Nastavte na "Bude zřízení", pokud WHFB zápis by být spuštěn jako post-přihlášení úkol, když uživatel přihlásí příště.
 
-### <a name="sample-ngc-prerequisite-check-output"></a>Ukázka výstupu kontroly požadavků služby NGC
+### <a name="sample-ngc-prerequisite-check-output"></a>Ukázkový výstup předpokladu NGC
 
 ```
 +----------------------------------------------------------------------+
@@ -345,4 +345,4 @@ Tato část provádí předpokladech kontroly pro zřizování Windows Hello pro
 
 ## <a name="next-steps"></a>Další kroky
 
-Otázky najdete v tématu [Nejčastější dotazy ke správě zařízení](faq.md) .
+Dotazy najdete v [nejčastějších dotazech ke správě zařízení.](faq.md)

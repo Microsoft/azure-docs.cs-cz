@@ -1,6 +1,6 @@
 ---
-title: Azure Key Vault funkce zákaznických dat – Azure Key Vault | Microsoft Docs
-description: Informace o zákaznických datech v Key Vault
+title: Funkce zákaznických dat azure key vaultu – Azure Key Vault | Dokumenty společnosti Microsoft
+description: Informace o zákaznických datech v trezoru klíčů
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,56 +10,56 @@ ms.topic: reference
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 67e1aeab4211249075b51bd0138d7875756a3483
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70883320"
 ---
-# <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault funkce zákaznických dat
+# <a name="azure-key-vault-customer-data-features"></a>Funkce zákaznických dat Azure Key Vault
 
-Azure Key Vault přijímá zákaznická data během vytváření nebo aktualizaci trezorů, klíčů, tajných klíčů, certifikátů a spravovaných účtů úložiště. Tato zákaznická data jsou přímo viditelná v Azure Portal a prostřednictvím REST API. Zákaznická data se dají upravovat nebo odstraňovat pomocí aktualizace nebo odstranění objektu, který obsahuje data.
+Azure Key Vault přijímá zákaznická data během vytváření nebo aktualizace trezorů, klíčů, tajných kódů, certifikátů a účtů spravovaného úložiště. Tato zákaznická data jsou přímo viditelná na webu Azure Portal a prostřednictvím rozhraní REST API. Zákaznická data lze upravit nebo odstranit aktualizací nebo odstraněním objektu, který obsahuje data.
 
-Protokoly přístupu k systému jsou generovány, když uživatel nebo aplikace přistupuje Key Vault. Podrobné protokoly přístupu jsou k dispozici pro zákazníky, kteří používají Azure Insights.
+Protokoly přístupu k systému jsou generovány při přístupu uživatele nebo aplikace k trezoru klíčů. Podrobné protokoly přístupu jsou k dispozici zákazníkům pomocí Azure Insights.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="identifying-customer-data"></a>Identifikace zákaznických dat
+## <a name="identifying-customer-data"></a>Identifikace údajů o zákaznících
 
-Následující informace identifikují zákaznická data v rámci Azure Key Vault:
+Následující informace identifikují zákaznická data v rámci služby Azure Key Vault:
 
-- Zásady přístupu pro Azure Key Vault obsahují ID objektů, které představují uživatele, skupiny nebo aplikace.
-- Subjekt certifikátu může zahrnovat e-mailové adresy nebo jiné identifikátory uživatelů a organizací.
-- Kontakty certifikátu můžou obsahovat e-mailové adresy nebo jména uživatelů nebo telefonní čísla.
-- Vystavitelé certifikátů můžou obsahovat e-mailové adresy, jména, telefonní čísla, přihlašovací údaje k účtu a organizační podrobnosti.
-- U objektů v Azure Key Vault lze použít libovolné značky. Mezi tyto objekty patří trezory, klíče, tajné klíče, certifikáty a účty úložiště. Použité značky mohou obsahovat osobní údaje
-- Protokoly Azure Key Vault Accessu obsahují identifikátory objektu, [UPN](../active-directory/hybrid/plan-connect-userprincipalname.md)a IP adresy pro každé volání REST API
-- Protokoly diagnostiky Azure Key Vault můžou obsahovat identifikátory objektů a IP adresy pro REST API volání.
+- Zásady přístupu pro Azure Key Vault obsahují ID objektů představující uživatele, skupiny nebo aplikace
+- Subjekty certifikátu mohou zahrnovat e-mailové adresy nebo jiné uživatelské či organizační identifikátory.
+- Kontakty certifikátů mohou obsahovat e-mailové adresy, jména nebo telefonní čísla uživatelů.
+- Vystavitelé certifikátů mohou obsahovat e-mailové adresy, jména, telefonní čísla, přihlašovací údaje účtu a podrobnosti o organizaci.
+- Libovolné značky lze použít na objekty v trezoru klíčů Azure. Mezi tyto objekty patří trezory, klíče, tajné klíče, certifikáty a účty úložiště. Použité značky mohou obsahovat osobní údaje
+- Protokoly přístupu k úložišti Klíčů Azure obsahují ID objektů, [hlavní název služby](../active-directory/hybrid/plan-connect-userprincipalname.md)a ADRESY IP pro každé volání rozhraní REST API.
+- Diagnostické protokoly služby Azure Key Vault mohou obsahovat ID objektů a IP adresy pro volání rozhraní REST API.
 
-## <a name="deleting-customer-data"></a>Odstraňuje se zákaznická data
+## <a name="deleting-customer-data"></a>Odstranění dat zákazníků
 
-Stejné rozhraní REST API, možnosti portálu a sady SDK použité k vytváření trezorů, klíčů, tajných klíčů, certifikátů a spravovaných účtů úložiště jsou také schopné aktualizovat a odstranit tyto objekty.
+Stejná úložiště REST API, prostředí portálu a sady SDK, která se používají k vytváření trezorů, klíčů, tajných klíčů, certifikátů a účtů spravovaného úložiště, mohou tyto objekty také aktualizovat a odstranit.
 
-Obnovitelné odstranění umožňuje obnovit Odstraněná data po dobu 90 dnů po odstranění. Při použití obnovitelného odstranění můžou být data trvale smazána před uplynutím 90 dnů doba uchování, a to provedením operace vyprázdnění. Pokud je trezor nebo předplatné nakonfigurovaný tak, aby blokovala operace vyprázdnění, není možné trvale odstranit data, dokud neuplyne plánovaná doba uchování.
+Obnovitelné odstranění umožňuje obnovit smazané údaje po dobu 90 dnů po odstranění. Při použití obnovitelného odstranění mohou být data trvale odstraněna před uplynutím 90denní doby uchovávání provedením operace vymazání. Pokud byl trezor nebo odběr nakonfigurován tak, aby blokoval operace vymazání, není možné trvale odstranit data, dokud neuplyne naplánovaná doba uchovávání.
 
-## <a name="exporting-customer-data"></a>Export zákaznických dat
+## <a name="exporting-customer-data"></a>Export dat zákazníků
 
-Stejné rozhraní REST API, možnosti portálu a sady SDK, které slouží k vytváření trezorů, klíčů, tajných kódů, certifikátů a spravovaných účtů úložiště, vám také umožní zobrazit a exportovat tyto objekty.
+Stejná úložiště REST API, prostředí portálu a sady SDK, které se používají k vytváření trezorů, klíčů, tajných klíčů, certifikátů a účtů spravovaného úložiště, také umožňují zobrazit a exportovat tyto objekty.
 
-Protokolování přístupu Azure Key Vault je volitelná funkce, kterou lze zapnout pro vygenerování protokolů pro každé REST API volání. Tyto protokoly se přenesou do účtu úložiště ve vašem předplatném, kde aplikujete zásady uchovávání informací, které splňují požadavky vaší organizace.
+Protokolování přístupu k úložišti klíčů Azure Vault je volitelná funkce, kterou lze zapnout pro generování protokolů pro každé volání rozhraní REST API. Tyto protokoly budou převedeny na účet úložiště ve vašem předplatném, kde použijete zásady uchovávání informací, které splňují požadavky vaší organizace.
 
-Azure Key Vault diagnostické protokoly, které obsahují osobní údaje, lze načíst vytvořením žádosti o export na portálu ochrany osobních údajů uživatele. Tuto žádost musí udělat správce klienta.
+Diagnostické protokoly služby Azure Key Vault, které obsahují osobní data, lze načíst tak, že na portálu ochrany osobních údajů uživatelů najdete požadavek na export. Tento požadavek musí provést správce klienta.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Protokolování v Azure Key Vault](key-vault-logging.md)
+- [Protokolování trezoru klíčů Azure](key-vault-logging.md)
 
-- [Přehled Azure Key Vaultho obnovitelného odstranění](key-vault-soft-delete-cli.md)
+- [Přehled obnovitelného odstranění ve službě Azure Key Vault](key-vault-soft-delete-cli.md)
 
-- [Azure Key Vault operací klíčů](https://docs.microsoft.com/rest/api/keyvault/key-operations)
+- [Operace s klíči Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/key-operations)
 
-- [Azure Key Vault operace tajného klíče](https://docs.microsoft.com/rest/api/keyvault/secret-operations)
+- [Tajné operace azure trezoru klíčů](https://docs.microsoft.com/rest/api/keyvault/secret-operations)
 
-- [Azure Key Vault certifikátů a zásad](https://docs.microsoft.com/rest/api/keyvault/certificates-and-policies)
+- [Certifikáty a zásady azure key vaultu](https://docs.microsoft.com/rest/api/keyvault/certificates-and-policies)
 
-- [Azure Key Vault operací účtu úložiště](https://docs.microsoft.com/rest/api/keyvault/storage-account-key-operations)
+- [Operace úložiště Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/storage-account-key-operations)

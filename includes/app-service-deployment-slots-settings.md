@@ -5,41 +5,41 @@ ms.topic: include
 ms.date: 09/18/2019
 ms.author: cephalin
 ms.openlocfilehash: e00db06346b19ef85eb77626eb2ed169d2224b6c
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71129694"
 ---
-Při klonování konfigurace z jiného slotu nasazení je naklonovaná konfigurace upravitelná. Některé prvky konfigurace následují po prohození obsahu (ne pro konkrétní sloty), zatímco jiné konfigurační prvky zůstávají na stejném slotu po prohození (specifické pro slot). Následující seznamy obsahují nastavení, která se mění při prohození slotů.
+Při klonování konfigurace z jiného slotu nasazení klonované konfigurace je upravitelná. Některé konfigurační prvky sledovat obsah přes swap (není slot specifické), vzhledem k tomu, že ostatní prvky konfigurace zůstávají ve stejném slotu po prohození (slot specifické). Následující seznamy zobrazují nastavení, která se mění při výměně slotů.
 
-**Nastavení, která jsou prohozena**:
+**Nastavení, která jsou proměněna**:
 
-* Obecná nastavení, například verze architektury, 32 nebo 64 bitů, webové sokety
-* Nastavení aplikace (může být nakonfigurováno na slot)
-* Připojovací řetězce (můžou být nakonfigurované tak, aby se nastavily na slot)
-* Mapování obslužných rutin
+* Obecná nastavení, například verze frameworku, 32/64bitové, webové sokety
+* Nastavení aplikace (lze nakonfigurovat tak, aby se drželo slotu)
+* Připojovací řetězce (lze nakonfigurovat tak, aby se držely slotu)
+* Mapování obslužné rutiny
 * Veřejné certifikáty
-* Obsah webových úloh
+* WebJobs obsah
 * Hybridní připojení *
 * Integrace virtuální sítě *
 * Koncové body služby *
-* Content Delivery Network Azure *
+* Síť pro doručování obsahu Azure *
 
-Funkce označené hvězdičkou (*) jsou plánovány jako neswapé. 
+Funkce označené hvězdičkou (*) jsou plánovány jako nezvěsné. 
 
-**Neswapá nastavení**:
+**Nastavení, která nejsou proměněna**:
 
 * Publikování koncových bodů
 * Vlastní názvy domén
 * Neveřejné certifikáty a nastavení TLS/SSL
-* Nastavení škálování
-* Plánovače WebJobs
+* Nastavení měřítka
+* Plánovače webových úloh
 * Omezení IP adresy
-* Stálé připojení
+* Vždy zapnuto
 * Nastavení diagnostického protokolu
-* Sdílení prostředků mezi zdroji (CORS)
+* Sdílení zdrojů mezi zdroji (CORS)
 
 > [!NOTE]
-> Některá nastavení aplikace, která platí pro nezaměnitelné nastavení, se také nemění. Například vzhledem k tomu, že nastavení diagnostického protokolu není zaměněno, související nastavení aplikace, jako je `WEBSITE_HTTPLOGGING_RETENTION_DAYS` a `DIAGNOSTICS_AZUREBLOBRETENTIONDAYS`, se také nemění, i když se nezobrazují jako nastavení slotu.
+> Některá nastavení aplikací, která se vztahují na nezvěsněná nastavení, také nejsou zaměněna. Například vzhledem k tomu, že nastavení diagnostického protokolu nejsou prohozeny, související nastavení aplikace se líbí `WEBSITE_HTTPLOGGING_RETENTION_DAYS` a `DIAGNOSTICS_AZUREBLOBRETENTIONDAYS` také nejsou proměněna, i když se nezobrazují jako nastavení slotu.
 >

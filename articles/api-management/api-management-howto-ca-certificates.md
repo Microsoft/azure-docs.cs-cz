@@ -1,6 +1,6 @@
 ---
-title: Přidání vlastního certifikátu certifikační autority – Azure API Management | Microsoft Docs
-description: Přečtěte si, jak přidat vlastní certifikát certifikační autority do Azure API Management.
+title: Přidání vlastního certifikátu certifikační autority – Správa rozhraní Azure API | Dokumenty společnosti Microsoft
+description: Přečtěte si, jak přidat vlastní certifikát certifikační autority ve správě rozhraní Azure API.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -13,37 +13,37 @@ ms.topic: article
 ms.date: 08/20/2018
 ms.author: apimpm
 ms.openlocfilehash: 21d5869f2bcdfb6383b6ef89869d8098135ea7ee
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70073609"
 ---
-# <a name="how-to-add-a-custom-ca-certificate-in-azure-api-management"></a>Postup přidání vlastního certifikátu certifikační autority do Azure API Management
+# <a name="how-to-add-a-custom-ca-certificate-in-azure-api-management"></a>Jak přidat vlastní certifikát certifikační autority ve správě rozhraní Azure API
 
-Azure API Management umožňuje instalovat certifikáty certifikační autority v počítači do úložiště důvěryhodných kořenových certifikátů a zprostředkujících certifikátů. Tato funkce by měla být použita, pokud vaše služby vyžadují vlastní certifikát certifikační autority.
+Azure API Management umožňuje instalaci certifikátů certifikační autority do počítače v rámci důvěryhodných kořenových a zprostředkujících úložišť certifikátů. Tato funkce by měla být použita, pokud vaše služby vyžadují vlastní certifikát certifikační autority.
 
-V tomto článku se dozvíte, jak spravovat certifikáty certifikační autority instance služby Azure API Management v Azure Portal.
+Článek ukazuje, jak spravovat certifikáty certifikační autority instance služby Azure API Management na webu Azure Portal.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="step1"> </a>Nahrání certifikátu certifikační autority
+## <a name="upload-a-ca-certificate"></a><a name="step1"> </a>Nahrání certifikátu certifikační autority
 
 ![Přidání certifikátů certifikační autority](media/api-management-howto-ca-certificates/00.png)
 
-Pomocí následujícího postupu Nahrajte nový certifikát certifikační autority. Pokud jste instanci služby API Management ještě nevytvořili, přečtěte si kurz [vytvoření instance služby API Management](get-started-create-service-instance.md).
+Chcete-li nahrát nový certifikát certifikační autority, postupujte podle následujících kroků. Pokud jste ještě nevytvořili instanci služby Správa rozhraní API, přečtěte si kurz [Vytvoření instance služby Správa rozhraní API](get-started-create-service-instance.md).
 
-1. V Azure Portal přejděte do své instance služby Azure API Management.
+1. Přejděte na instanci služby Azure API Management na webu Azure Portal.
 
-2. Z nabídky vyberte **certifikáty certifikační autority** .
+2. V nabídce **vyberte certifikáty certifikační** autority.
 
-3. Klikněte na tlačítko **+ Přidat** .  
+3. Klikněte na tlačítko **+Přidat**.  
 
     ![Přidání certifikátů certifikační autority](media/api-management-howto-ca-certificates/01.png)  
 
-4. Vyhledejte certifikát a rozhodněte se v úložišti certifikátů. Je potřeba jenom veřejný klíč, takže se heslo nepožaduje.
+4. Vyhledejte certifikát a rozhodněte o úložišti certifikátů. Je potřeba pouze veřejný klíč, takže heslo není vyžadováno.
 
     ![Přidání certifikátů certifikační autority](media/api-management-howto-ca-certificates/02.png)  
 
@@ -52,13 +52,13 @@ Pomocí následujícího postupu Nahrajte nový certifikát certifikační autor
     ![Přidání certifikátů certifikační autority](media/api-management-howto-ca-certificates/03.png)  
 
 > [!NOTE]
-> Certifikát certifikační autority můžete nahrát pomocí `New-AzApiManagementSystemCertificate` příkazu PowerShellu.
+> Certifikát certifikační autority můžete `New-AzApiManagementSystemCertificate` nahrát pomocí příkazu Powershell.
 
-## <a name="step1a"> </a>Odstranění klientského certifikátu
+## <a name="delete-a-client-certificate"></a><a name="step1a"> </a>Odstranění klientského certifikátu
 
-Pokud chcete certifikát odstranit, klikněte na místní nabídka **...** a vyberte **Odstranit** vedle certifikátu.
+Chcete-li certifikát odstranit, klepněte na kontextovou nabídku **...** a vedle certifikátu vyberte **Odstranit.**
 
-![Odstranění certifikátů certifikační autority](media/api-management-howto-ca-certificates/04.png)  
+![Odstranit certifikáty certifikační autority](media/api-management-howto-ca-certificates/04.png)  
 
 [Upload a CA certificate]: #step1
 [Delete a CA certificate]: #step1a

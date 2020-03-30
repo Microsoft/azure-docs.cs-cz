@@ -5,26 +5,26 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
 ms.openlocfilehash: 21c19027d21a87e199d74644cfc5c8f3cd52ba4c
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
-ms.translationtype: HT
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79128615"
 ---
-Pokud chcete resetovat zařízení, musíte bezpečně vymazat všechna data na datovém a spouštěcím disku zařízení. 
+Chcete-li zařízení resetovat, musíte bezpečně vymazat všechna data na datovém disku a spouštěcím disku zařízení. 
 
-Pomocí rutiny `Reset-HcsAppliance` můžete vymazat datové disky i spouštěcí disk nebo pouze datové disky. Přepínače `ClearData` umožňuje vymazat datové disky a přepínač `BootDisk` umožňuje vymazat spouštěcí disk.
+Pomocí `Reset-HcsAppliance` rutiny vymažte datové disky i spouštěcí disk nebo pouze datové disky. `ClearData` Přepínače `BootDisk` a přepínače umožňují vymazat datové disky a spouštěcí disk.
 
-Přepínač `BootDisk` vymaže spouštěcí disk a zařízení bude nepoužitelné. Měl by se použít pouze v případě, že je potřeba vrátit zařízení do Microsoftu. Další informace najdete v tématu [Vrácení zařízení do Microsoftu](https://docs.microsoft.com/azure/databox-online/data-box-edge-return-device).
+Přepínač `BootDisk` vymaže spouštěcí disk a způsobí, že zařízení bude nepoužitelné. Měl by být používán pouze v případě, že zařízení musí být vráceno společnosti Microsoft. Další informace naleznete [v tématu Return the device to Microsoft](https://docs.microsoft.com/azure/databox-online/data-box-edge-return-device).
 
-Pokud využijete možnost resetování zařízení v místním webovém uživatelském rozhraní, bezpečně se vymažou pouze datové disky a spouštěcí disk zůstane nedotčený. Spouštěcí disk obsahuje konfiguraci zařízení.
+Pokud používáte resetování zařízení v místním webovém uživatelském rozhraní, budou bezpečně vymazány pouze datové disky, ale spouštěcí disk je zachován beze změny. Spouštěcí disk obsahuje konfiguraci zařízení.
 
-1. [Připojte se k rozhraní PowerShellu](#connect-to-the-powershell-interface).
+1. [Připojte se k rozhraní prostředí PowerShell](#connect-to-the-powershell-interface).
 2. Na příkazovém řádku zadejte:
 
     `Reset-HcsAppliance -ClearData -BootDisk`
 
-    Příklad použití této rutiny najdete v následujícím příkladu:
+    Následující příklad ukazuje, jak používat tuto rutinu:
 
     ```powershell
     [10.128.24.33]: PS>Reset-HcsAppliance -ClearData -BootDisk

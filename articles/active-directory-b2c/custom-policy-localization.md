@@ -1,6 +1,6 @@
 ---
-title: Lokalizace uživatelského rozhraní vaší aplikace pomocí vlastní zásady
-description: Přečtěte si o lokalizaci uživatelského rozhraní pomocí vlastní zásady v Azure Active Directory B2C.
+title: Lokalizovat uživatelské rozhraní aplikace pomocí vlastních zásad
+description: Přečtěte si o lokalizaci uživatelského rozhraní pomocí vlastních zásad ve službě Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,26 +11,26 @@ ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 1401cbe1920c7c6df804aadbba1751612ba9cf06
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79126788"
 ---
-# <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Lokalizace uživatelského rozhraní vaší aplikace pomocí vlastní zásady v Azure Active Directory B2C
+# <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Lokalizovat uživatelské rozhraní aplikace pomocí vlastních zásad ve službě Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Přizpůsobení jazyka v Azure Active Directory B2C (Azure AD B2C) umožňuje přizpůsobit různé jazyky podle potřeb vašich zákazníků. Společnost Microsoft poskytuje překlady pro jazyky 36, ale můžete také zadat vlastní překlady pro libovolný jazyk. I v případě, že je vaše prostředí k dispozici pouze pro jeden jazyk, můžete přizpůsobit libovolný text na stránkách. 
+Přizpůsobení jazyka ve službě Azure Active Directory B2C (Azure AD B2C) umožňuje přizpůsobit různé jazyky tak, aby vyhovovaly potřebám vašich zákazníků. Společnost Microsoft poskytuje překlady pro 36 jazyků, ale můžete také poskytnout vlastní překlady pro libovolný jazyk. I když je vaše prostředí poskytováno pouze pro jeden jazyk, můžete přizpůsobit libovolný text na stránkách. 
 
-V tomto článku se dozvíte, jak v zásadách pro cesty uživatelů podporovat několik národních prostředí nebo jazyků. Lokalizace vyžaduje tři kroky: nastavte explicitní seznam podporovaných jazyků, zadejte řetězce a kolekce specifické pro jazyk a upravte [definici obsahu](contentdefinitions.md) pro stránku. 
+Tento článek ukazuje, jak podporovat více národních prostředí nebo jazyků v zásadách pro cesty uživatelů. Lokalizace vyžaduje tři kroky: nastavení explicitního seznamu podporovaných jazyků, poskytnutí řetězců a kolekcí specifických pro jazyk a úprava [definice obsahu](contentdefinitions.md) stránky. 
 
 ## <a name="set-up-the-list-of-supported-languages"></a>Nastavení seznamu podporovaných jazyků
 
-Otevřete soubor rozšíření vaší zásady. Například <em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>.
+Otevřete soubor přípon zásad. Například <em> `SocialAndLocalAccounts/` </em>.
 
-1. Vyhledejte element [BuildingBlocks](buildingblocks.md) . Pokud element neexistuje, přidejte jej.
-1. Přidejte prvek `Localization` s podporovanými jazyky: Angličtina (výchozí) a španělština.  
+1. Vyhledejte element [BuildingBlocks.](buildingblocks.md) Pokud prvek neexistuje, přidejte jej.
+1. Přidejte `Localization` prvek s podporovanými jazyky: angličtina (výchozí) a španělština.  
 
 
 ```XML
@@ -42,14 +42,14 @@ Otevřete soubor rozšíření vaší zásady. Například <em>`SocialAndLocalAc
 </Localization>
 ```
 
-## <a name="provide-language-specific-labels"></a>Zadání popisků specifických pro jazyk
+## <a name="provide-language-specific-labels"></a>Poskytnutí popisků specifických pro jazyk
 
-[LocalizedResources](localization.md#localizedresources) prvku `Localization` obsahuje seznam lokalizovaných řetězců. Lokalizovaný prvek Resources má identifikátor, který slouží k jednoznačné identifikaci lokalizovaných prostředků. Tento identifikátorem se používá později v prvku [definice obsahu](contentdefinitions.md) .
+[LocalizedResources](localization.md#localizedresources) `Localization` prvku obsahuje seznam lokalizovaných řetězců. Lokalizovaný prvek prostředků má identifikátor, který se používá k jedinečné identifikaci lokalizovaných prostředků. Tento identifer se používá později v elementu [definice obsahu.](contentdefinitions.md)
 
-Nakonfigurujete lokalizované prvky prostředků pro definici obsahu a jakýkoli jazyk, který chcete podporovat. Chcete-li přizpůsobit jednotné registrační nebo přihlašovací stránky pro angličtinu a španělštinu, přidejte následující prvky `LocalizedResources` za konec `</SupportedLanguages>` elementu.
+Nakonfigurujete lokalizované prvky prostředků pro definici obsahu a libovolný jazyk, který chcete podporovat. Chcete-li přizpůsobit jednotné přihlašovací nebo přihlašovací stránky pro angličtinu `LocalizedResources` a španělštinu, `</SupportedLanguages>` přidejte následující prvky po zavření prvku.
 
 > [!NOTE]
-> V následující ukázce jsme přidali symbol křížového `#`u na BEGGING každého řádku, takže můžete easly najít lokalizované popisky na obrazovce.
+> V následujícím vzorku jsme `#` přidali symbol libry na žebrání každého řádku, takže můžete easly najít lokalizované štítky na obrazovce.
 
 ```XML
 <!--Local account sign-up or sign-in page English-->
@@ -212,11 +212,11 @@ Nakonfigurujete lokalizované prvky prostředků pro definici obsahu a jakýkoli
 </LocalizedResources>
 ```
 
-## <a name="edit-the-content-definition-with-the-localization"></a>Upravte definici obsahu pomocí lokalizace.
+## <a name="edit-the-content-definition-with-the-localization"></a>Úprava definice obsahu pomocí lokalizace
 
-Vložte celý obsah elementu ContentDefinitions, který jste zkopírovali jako podřízený prvek BuildingBlocks elementu.
+Vložte celý obsah ContentDefinitions element, který jste zkopírovali jako podřízený BuildingBlocks element.
 
-V následujícím příkladu jsou vlastní řetězce anglické (EN) a španělština (ES) přidány na přihlašovací stránku nebo přihlašovací stránku a na stránku pro registraci místního účtu. **LocalizedResourcesReferenceId** pro každý **LocalizedResourcesReference** je stejný jako národní prostředí, ale můžete použít libovolný řetězec jako identifikátor. Pro každou kombinaci jazyka a stránky odkazujete na odpovídající **LocalizedResources** , které jste vytvořili dříve.
+V následujícím příkladu angličtina (en) a španělština (es) vlastní řetězce jsou přidány do registrace nebo přihlášení stránky a na stránku registrace místního účtu. **LocalizedResourcesReferenceId** pro každý **LocalizedResourcesReference** je stejný jako jejich národní prostředí, ale můžete použít libovolný řetězec jako identifikátor. Pro každou kombinaci jazyka a stránky přejděte na odpovídající **localizované prostředky, které** jste dříve vytvořili.
 
 ```XML
 <ContentDefinitions>
@@ -236,30 +236,30 @@ V následujícím příkladu jsou vlastní řetězce anglické (EN) a španělš
 </ContentDefinitions>
 ```
 
-##  <a name="upload-and-test-your-updated-custom-policy"></a>Nahrávání a testování aktualizovaných vlastních zásad
+##  <a name="upload-and-test-your-updated-custom-policy"></a>Nahrání a testování aktualizovaných vlastních zásad
 
-### <a name="upload-the-custom-policy"></a>Nahrajte vlastní zásadu.
+### <a name="upload-the-custom-policy"></a>Nahrání vlastních zásad
 
-1. Uložte soubor rozšíření.
-1. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
+1. Uložte soubor přípon.
+1. Ujistěte se, že používáte adresář, který obsahuje vašeho klienta Azure AD B2C výběrem directory **+ předplatné** filtr v horní nabídce a výběrem adresáře, který obsahuje vašeho klienta.
 1. Vyhledejte a vyberte **Azure AD B2C**.
-1. V části **zásady**vyberte **Architektura prostředí identity**.
-1. Vyberte **Odeslat vlastní zásadu**.
-1. Nahrajte soubor rozšíření, který jste předtím změnili.
+1. V části **Zásady**vyberte **rozhraní Identity Experience Framework**.
+1. Vyberte **Nahrát vlastní zásady**.
+1. Nahrajte soubor přípon, který jste dříve změnili.
 
-### <a name="test-the-custom-policy-by-using-run-now"></a>Otestujte vlastní zásady pomocí rutiny **spustit hned**
+### <a name="test-the-custom-policy-by-using-run-now"></a>Testování vlastních zásad pomocí **funkce Spustit nyní**
 
-1. Vyberte zásady, které jste nahráli, a pak vyberte **Spustit nyní**.
-1. Měli byste vidět lokalizovanou stránku pro registraci nebo přihlášení.
-1. Klikněte na odkaz pro registraci a měli byste vidět lokalizovanou stránku pro registraci.
-1. Přepněte výchozí jazyk prohlížeče na španělštinu. Případně můžete přidat parametr řetězce dotazu `ui_locales` k žádosti o autorizaci. Příklad: 
+1. Vyberte zásadu, kterou jste nahráli, a pak vyberte **Spustit nyní**.
+1. Měli byste vidět lokalizovanou registrační nebo přihlašovací stránku.
+1. Klikněte na registrační odkaz a měli byste vidět lokalizovanou registrační stránku.
+1. Přepněte výchozí jazyk prohlížeče na španělštinu. Nebo můžete přidat parametr řetězce `ui_locales` dotazu do žádosti o autorizaci. Například: 
 
 ```http
 https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1A_signup_signin&client_id=0239a9cc-309c-4d41-12f1-31299feb2e82&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login&ui_locales=es
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o elementu [lokalizace](localization.md) najdete v referenčních informacích k IEF.
-- Podívejte se na seznam [ID lokalizačních řetězců](localization-string-ids.md) dostupných v Azure AD B2C.
+- Další informace o [lokalizačním](localization.md) prvku naleznete v odkazu ief.
+- Podívejte se na seznam [ID lokalizačního řetězce, která](localization-string-ids.md) jsou dostupná v Azure AD B2C.
 

@@ -1,6 +1,6 @@
 ---
-title: Vývoj pro mobilní zařízení pomocí sad Azure IoT SDK | Microsoft Docs
-description: Příručka pro vývojáře – Přečtěte si, jak vyvíjet mobilní zařízení pomocí sad Azure IoT Hub SDK.
+title: Vývoj pro mobilní zařízení pomocí sad Azure IoT SDK | Dokumenty společnosti Microsoft
+description: Průvodce pro vývojáře – Přečtěte si, jak vyvíjet pro mobilní zařízení pomocí sad Azure IoT Hub SDK.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,49 +8,49 @@ ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: robinsh
 ms.openlocfilehash: 945b02003a443c04e692fdc06ca5714de362d074
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68883085"
 ---
 # <a name="develop-for-mobile-devices-using-azure-iot-sdks"></a>Vývoj pro mobilní zařízení pomocí sad Azure IoT SDK
 
-Věci v Internet věcí se můžou týkat široké škály zařízení s různou schopností: senzory, mikrořadiče, inteligentní zařízení, průmyslové brány a dokonce mobilní zařízení.  Mobilním zařízením může být zařízení IoT, kde odesílá telemetrii ze zařízení do cloudu a spravuje je Cloud.  Může se také jednat o zařízení, na kterém běží aplikace služby back-end, která spravuje jiná zařízení IoT.  V obou případech můžete použít sady [Azure IoT Hub SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) pro vývoj aplikací, které fungují pro mobilní zařízení.  
+Věci na internetu věcí mohou odkazovat na širokou škálu zařízení s různou schopností: senzory, mikrokontroléry, inteligentní zařízení, průmyslové brány a dokonce i mobilní zařízení.  Mobilní zařízení může být zařízení IoT, kde odesílá telemetrii zařízení do cloudu a spravuje cloud.  Může to být také zařízení se spuštěnou aplikací back-end služby, která spravuje další zařízení IoT.  V obou případech lze sady [Azure IoT Hub SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) použít k vývoji aplikací, které fungují pro mobilní zařízení.  
 
 ## <a name="develop-for-native-ios-platform"></a>Vývoj pro nativní platformu iOS
 
-Sady SDK pro Azure IoT Hub poskytují nativní podporu platformy iOS prostřednictvím Azure IoT Hub C SDK.  Můžete si ho představit jako sadu SDK pro iOS, kterou můžete začlenit do svého projektu SWIFT nebo objektivu C XCode.  Existují dva způsoby, jak použít sadu C SDK v systému iOS:
+Sady Azure IoT Hub SDK poskytují nativní podporu platformy iOS prostřednictvím sady Azure IoT Hub C SDK.  Můžete si to myslet jako iOS SDK, který můžete začlenit do projektu Swift nebo objective C XCode.  Sada C SDK v iOS lze používat dvěma způsoby:
 
-* Použijte přímo knihovny CocoaPod v projektu XCode.  
-* Stáhněte si zdrojový kód pro C SDK a sestavte pro platformu iOS podle [pokynů pro sestavení](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) pro MacOS.  
+* Knihovny CocoaPod můžete používat přímo v projektu XCode.  
+* Stáhněte si zdrojový kód pro C SDK a sestavení pro platformu iOS podle [pokynů sestavení](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) pro MacOS.  
 
-Sada Azure IoT Hub C SDK je napsaná v C99 pro maximální přenositelnost na různé platformy.  Proces přenosu zahrnuje zápis vrstvy tenkého přijetí pro součásti specifické pro platformu, které najdete tady pro [iOS](https://github.com/Azure/azure-c-shared-utility/tree/master/pal/ios-osx).  Funkce v sadě C SDK je možné využít na platformě iOS, včetně podporovaných primitiv IoT Hub Azure a funkcí specifických pro sadu SDK, jako jsou zásady opakování pro spolehlivost sítě.  Rozhraní pro sadu iOS SDK je podobné rozhraní pro Azure IoT Hub C SDK.  
+Azure IoT Hub C SDK je napsaný v C99 pro maximální přenositelnost na různé platformy.  Proces přenosu zahrnuje psaní tenké vrstvy přijetí pro komponenty specifické pro platformu, které lze nalézt zde pro [iOS](https://github.com/Azure/azure-c-shared-utility/tree/master/pal/ios-osx).  Funkce v c SDK lze využít na platformě iOS, včetně podporovaných primitivních hubů Azure IoT Hub a funkcí specifických pro SDK, jako jsou zásady opakování pro spolehlivost sítě.  Rozhraní pro iOS SDK je také podobné rozhraní pro Azure IoT Hub C SDK.  
 
-Tato dokumentace vás seznámí s postupem vývoje aplikace zařízení nebo aplikace služby na zařízení s iOS:
+Tyto dokumentace vás provedou vývojem aplikace nebo služby zařízení na zařízení se systémem iOS:
 
-* [Rychlé zprovoznění: Odeslání telemetrie ze zařízení do služby IoT Hub](quickstart-send-telemetry-ios.md)  
-* [Posílání zpráv z cloudu do zařízení ve službě IoT Hub](iot-hub-ios-swift-c2d.md) 
+* [Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT](quickstart-send-telemetry-ios.md)  
+* [Odesílání zpráv z cloudu do zařízení pomocí služby IoT hub](iot-hub-ios-swift-c2d.md) 
 
-### <a name="develop-with-azure-iot-hub-cocoapod-libraries"></a>Vývoj s využitím CocoaPod knihoven Azure IoT Hub
+### <a name="develop-with-azure-iot-hub-cocoapod-libraries"></a>Vývoj s knihovnami Azure IoT Hub CocoaPod
 
-Azure IoT Hub SDK uvolňují sadu účelových knihoven C CocoaPod pro vývoj pro iOS.  Nejnovější seznam knihoven CocoaPod najdete v tématu [CocoaPods for Microsoft Azure IoT](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/samples/ios/CocoaPods.md).  Jakmile jsou relevantní knihovny začleněny do projektu XCode, existují dva způsoby, jak napsat kód související s IoT Hub:
+Sady Azure IoT Hub SDK vydávají sadu knihoven CocoaPod Objective-C pro vývoj iOS.  Nejnovější seznam knihoven CocoaPod najdete v tématu [CocoaPods for Microsoft Azure IoT](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/samples/ios/CocoaPods.md).  Jakmile jsou příslušné knihovny začleněny do projektu XCode, existují dva způsoby, jak napsat kód související s IoT Hub:
 
-* Objektiv – funkce jazyka C: Pokud je projekt napsán v cíli-C, můžete volat rozhraní API přímo z Azure IoT Hub C SDK.  Pokud je projekt napsán v SWIFT, můžete volat `@objc func` před vytvořením funkce a pokračovat v psaní všech logics souvisejících se službou Azure IoT Hub pomocí jazyka c nebo objektivního kódu jazyka c.  V [ukázkovém úložišti](https://github.com/Azure-Samples/azure-iot-samples-ios)se dají najít sady ukázek, které demonstrují obojí.  
+* Funkce cíle C: Pokud je váš projekt napsaný v objective-C, můžete volat api z Azure IoT Hub C SDK přímo.  Pokud váš projekt je napsán v `@objc func` Swift, můžete volat před vytvořením funkce a pokračovat v psaní všech logik souvisejících s Azure IoT Hub pomocí kódu C nebo Objective-C.  Sada vzorků demonstrujících obojí lze nalézt v [ukázkovém úložišti](https://github.com/Azure-Samples/azure-iot-samples-ios).  
 
-* Zahrnutí ukázek jazyka C: Pokud jste napsali aplikaci zařízení v jazyce C, můžete na ni odkazovat přímo v projektu XCode:
-    * Do projektu XCode přidejte soubor Sample. c z XCode.  
-    * Přidejte soubor hlaviček do závislosti.  Hlavičkový soubor je v ukázkovém [úložišti](https://github.com/Azure-Samples/azure-iot-samples-ios) obsažen jako příklad. Další informace najdete na stránce dokumentace společnosti Apple pro [cíl-C](https://developer.apple.com/documentation/objectivec).
+* Začlenit ukázky C: Pokud jste napsali aplikaci zařízení C, můžete na něj odkazovat přímo v projektu XCode:
+    * Přidejte soubor sample.c do projektu XCode z XCode.  
+    * Přidejte soubor záhlaví do závislosti.  Jako příklad je součástí [ukázkového úložiště](https://github.com/Azure-Samples/azure-iot-samples-ios) soubor záhlaví. Další informace naleznete na stránce dokumentace společnosti Apple pro [objective-C](https://developer.apple.com/documentation/objectivec).
 
 ## <a name="develop-for-android-platform"></a>Vývoj pro platformu Android
-Sada SDK pro Azure IoT Hub Java podporuje platformu Android.  U konkrétní testované verze rozhraní API navštivte prosím nejnovější aktualizaci na naší [stránce podpory platformy](iot-hub-device-sdk-platform-support.md) .
+Azure IoT Hub Java SDK podporuje platformu Android.  Pro konkrétní verzi rozhraní API testovány, navštivte naši [stránku podpory platformy](iot-hub-device-sdk-platform-support.md) pro nejnovější aktualizace.
 
-Tato dokumentace vás seznámí s postupem vývoje aplikace zařízení nebo aplikace služby na zařízení s Androidem pomocí Gradle a Android Studio:
+Tyto dokumentace procházet, jak vytvořit aplikaci zařízení nebo servisní aplikace na zařízení se systémem Android pomocí Gradle a Android Studio:
 
-* [Rychlé zprovoznění: Odeslání telemetrie ze zařízení do služby IoT Hub](quickstart-send-telemetry-android.md)  
-* [Rychlé zprovoznění: Řízení zařízení](quickstart-control-device-android.md) 
+* [Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT](quickstart-send-telemetry-android.md)  
+* [Úvodní příručka: Ovládání zařízení](quickstart-control-device-android.md) 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Odkaz na IoT Hub REST API](https://docs.microsoft.com/rest/api/iothub/)
-* [Zdrojový kód sady SDK Azure IoT C](https://github.com/Azure/azure-iot-sdk-c)
+* [Odkaz na rozhraní REST centra IoT](https://docs.microsoft.com/rest/api/iothub/)
+* [Zdrojový kód Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)

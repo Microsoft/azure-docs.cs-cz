@@ -1,6 +1,6 @@
 ---
-title: Správa Azure Data Lake Analytics pomocí sady Azure Java SDK
-description: Tento článek popisuje, jak pomocí sady Azure Java SDK psát aplikace, které spravují Data Lake Analytics úlohy, zdroje dat, & uživatelé.
+title: Správa Azure Data Lake Analytics pomocí Azure Java SDK
+description: Tento článek popisuje, jak používat Azure Java SDK k psaní aplikací, které spravují úlohy Data Lake Analytics, zdroje dat, & uživatele.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -10,28 +10,28 @@ ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: b8c7d2ba1c782c3b6ae3034d6a9aab5eb19be954
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70813637"
 ---
 # <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Správa Azure Data Lake Analytics pomocí aplikace Java
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-Tento článek popisuje, jak spravovat účty Azure Data Lake Analytics, zdroje dat, uživatele a úlohy pomocí aplikace napsané pomocí Azure Java SDK. 
+Tento článek popisuje, jak spravovat účty Azure Data Lake Analytics, zdroje dat, uživatele a úlohy pomocí aplikace napsané pomocí sady Azure Java SDK. 
 
 ## <a name="prerequisites"></a>Požadavky
-* **Java Development Kit (JDK) 8** (pomocí Java verze 1,8).
-* **IntelliJ** nebo jiný vhodný Java Development Environment. Pokyny v tomto dokumentu používají IntelliJ.
-* Vytvoření aplikace Azure Active Directory (AAD) a načtení **ID klienta**, **ID tenanta**, a **Klíče**. Další informace o aplikacích AAD a pokyny k získání ID klienta naleznete v tématu [Vytvoření aplikace Active Directory a objektu služby pomocí portálu](../active-directory/develop/howto-create-service-principal-portal.md). Identifikátor URI a klíč odpovědi jsou k dispozici na portálu, jakmile máte vytvořenou aplikaci a vygenerujete klíč.
+* **Java Development Kit (JDK) 8** (pomocí Java verze 1.8).
+* **IntelliJ** nebo jiné vhodné vývojové prostředí Java. Pokyny v tomto dokumentu používají IntelliJ.
+* Vytvoření aplikace Azure Active Directory (AAD) a načtení **ID klienta**, **ID tenanta**, a **Klíče**. Další informace o aplikacích AAD a pokyny k získání ID klienta naleznete v tématu [Vytvoření aplikace Active Directory a objektu služby pomocí portálu](../active-directory/develop/howto-create-service-principal-portal.md). Identifikátor URI a klíč odpovědi jsou k dispozici na portálu, jakmile je aplikace vytvořena a generován klíč.
 
-## <a name="authenticating-using-azure-active-directory"></a>Ověřování pomocí Azure Active Directory
+## <a name="authenticating-using-azure-active-directory"></a>Ověřování pomocí služby Azure Active Directory
 
-Kód v následujícím fragmentu kódu poskytuje kód pro **neinteraktivní** ověřování, kde aplikace poskytuje vlastní přihlašovací údaje.
+Následující kód výstřižek poskytuje kód pro **neinteraktivní** ověřování, kde aplikace poskytuje vlastní pověření.
 
 ## <a name="create-a-java-application"></a>Vytvoření aplikace Java
-1. Otevřete IntelliJ a vytvořte projekt Java pomocí šablony **aplikace z příkazového řádku** .
+1. Otevřete IntelliJ a vytvořte projekt Java pomocí šablony **aplikace příkazového řádku.**
 2. Klikněte pravým tlačítkem na projekt na levé straně obrazovky a klikněte na možnost **Přidat podporu architektury**. Vyberte možnost **Maven** a klikněte na tlačítko **OK**.
 3. Otevřete nově vytvořený soubor **pom.xml** a mezi značky **\</version>** a **\</project>** přidejte následující fragment textu:
 
@@ -76,7 +76,7 @@ Kód v následujícím fragmentu kódu poskytuje kód pro **neinteraktivní** ov
 </dependencies>
 ```
 
-Přejít na **soubor > nastavení > sestavení > spouštění > nasazení**. Vyberte **Nástroje sestavení > Maven > import**. Potom zaškrtněte **automaticky importovat projekty Maven**.
+Přejděte na **soubor > nastavení > spuštění > spuštění > nasazení**. Vyberte **nástroje pro sestavení > Maven > import .** Potom **automaticky zkontrolujte import projektů Maven**.
 
 Otevřete `Main.java` a nahraďte existující blok kódu následujícím kódem:
 
@@ -307,7 +307,7 @@ public class Main {
 }
 ```
 
-Zadejte hodnoty pro parametry, které jsou vyvolány ve fragmentu kódu:
+Zadejte hodnoty parametrů vyvolaných ve fragmentu kódu:
 * `localFolderPath`
 * `_adlaAccountName`
 * `_adlsAccountName`
@@ -317,8 +317,8 @@ Zadejte hodnoty pro parametry, které jsou vyvolány ve fragmentu kódu:
 * `_clientId`
 * `_clientSecret`
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Pokud se chcete naučit jazyk U-SQL, informace najdete v tématu [Začínáme s jazykem U-SQL Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md) a [Referenční informace pro jazyk U-SQL](https://docs.microsoft.com/u-sql/).
-* Informace týkající se úloh správy najdete v tématu [Správa služby Azure Data Lake Analytics pomocí webu Azure Portal](data-lake-analytics-manage-use-portal.md).
+* Úkoly správy najdete v [tématu Správa Azure Data Lake Analytics pomocí portálu Azure](data-lake-analytics-manage-use-portal.md).
 * Přehled Data Lake Analytics najdete v tématu [Přehled Azure Data Lake Analytics](data-lake-analytics-overview.md).

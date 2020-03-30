@@ -9,24 +9,24 @@ ms.date: 08/07/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 3386cb51a8a728576f6615002d6154d89ca662c1
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68883790"
 ---
 <!-- This tells how to get the connection string for the registryReadWrite shared access policy of your IoT hub -->
 
-Pokud chcete získat připojovací řetězec IoT Hub pro zásady **registryReadWrite** , postupujte podle těchto kroků:
+Chcete-li získat připojovací řetězec služby IoT Hub pro zásadu **registryReadWrite,** postupujte takto:
 
-1. V [Azure Portal](https://portal.azure.com)vyberte **skupiny prostředků**. Vyberte skupinu prostředků, ve které se nachází vaše centrum, a potom v seznamu prostředků vyberte své centrum.
+1. Na [webu Azure Portal](https://portal.azure.com)vyberte **skupiny prostředků**. Vyberte skupinu prostředků, kde se nachází vaše centrum, a pak vyberte rozbočovač ze seznamu prostředků.
 
-2. V levém podokně centra vyberte **zásady sdíleného přístupu**.
+2. V levém podokně centra vyberte **Zásady sdíleného přístupu**.
 
-3. V seznamu zásad vyberte zásady **registryReadWrite** .
+3. Ze seznamu zásad vyberte zásadu **registryReadWrite.**
 
-4. V části **sdílené přístupové klíče**vyberte ikonu kopírování pro **připojovací řetězec – primární klíč** a uložte hodnotu.
+4. V části **Sdílené přístupové klávesy**vyberte ikonu kopírování **pro připojovací řetězec – primární klíč** a uložte hodnotu.
 
-    ![Zobrazit způsob načtení připojovacího řetězce](./media/iot-hub-include-find-registryrw-connection-string/iot-hub-get-connection-vs2019.png)
+    ![Zobrazit, jak načíst připojovací řetězec](./media/iot-hub-include-find-registryrw-connection-string/iot-hub-get-connection-vs2019.png)
 
-Další informace o zásadách a oprávněních sdíleného přístupu IoT Hub najdete v tématu [řízení přístupu a oprávnění](../articles/iot-hub/iot-hub-devguide-security.md#access-control-and-permissions).
+Další informace o zásadách a oprávněních sdíleného přístupu centra IoT Hub najdete [v tématu Řízení přístupu a oprávnění](../articles/iot-hub/iot-hub-devguide-security.md#access-control-and-permissions).

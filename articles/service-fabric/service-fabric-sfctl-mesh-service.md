@@ -1,15 +1,15 @@
 ---
-title: Azure Service Fabric CLI – služba sítě sfctl
-description: Přečtěte si o sfctl rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro získání podrobností o službě prostředku aplikace.
+title: Služba azure service fabric CLI- sfctl mesh service
+description: Další informace o sfctl, rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro získání podrobností o službě pro prostředek aplikace.
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 2b9f16062b02d7a1a3403d396643a7989b8976b7
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76905921"
 ---
 # <a name="sfctl-mesh-service"></a>sfctl mesh service
@@ -20,52 +20,52 @@ Získejte podrobnosti o službě a seznam služeb prostředku aplikace.
 |Příkaz|Popis|
 | --- | --- |
 | list | Zobrazí seznam všech prostředků služby. |
-| zobrazit | Získá prostředek služby se zadaným názvem. |
+| show | Získá prostředek služby s daným názvem. |
 
-## <a name="sfctl-mesh-service-list"></a>seznam služeb sítě sfctl
+## <a name="sfctl-mesh-service-list"></a>seznam síťových služeb sfctl
 Zobrazí seznam všech prostředků služby.
 
-Získá informace o všech službách prostředku aplikace. Tyto informace zahrnují popis a další vlastnosti služby.
+Získá informace o všech službách prostředku aplikace. Informace zahrnují popis a další vlastnosti služby.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --App-Name--název aplikace [povinné] | Název aplikace |
+| --název aplikace --název aplikace [Povinné] | Název aplikace |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
-| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
-| --výstup-o | Výstupní formát.  Povolené hodnoty\: JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
-| --dotaz | Řetězec dotazu JMESPath Další informace a příklady najdete v tématu http\://jmespath.org/. |
-| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
+| --ladění | Zvyšte podrobnost protokolování, chcete-li zobrazit všechny protokoly ladění. |
+| --pomoc -h | Zobrazit tuto zprávu nápovědy a ukončete ji. |
+| --výstup -o | Výstupní formát.  Povolené\: hodnoty json, jsonc, tabulka, tsv.  Výchozí\: json. |
+| --dotaz | Řetězec dotazu JMESPath. Další\:informace a příklady naleznete na adrese http //jmespath.org/. |
+| --verbose | Zvyšte podrobnost protokolování. Použijte --debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-mesh-service-show"></a>sfctl síť – zobrazení služby
-Získá prostředek služby se zadaným názvem.
+## <a name="sfctl-mesh-service-show"></a>sfctl mesh servisní show
+Získá prostředek služby s daným názvem.
 
-Načte informace o prostředku služby s daným názvem. Tyto informace zahrnují popis a další vlastnosti služby.
+Získá informace o prostředku služby s daným názvem. Informace zahrnují popis a další vlastnosti služby.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --App-Name--název aplikace [povinné] | Název aplikace |
-| --Name-n [povinné] | Název služby |
+| --název aplikace --název aplikace [Povinné] | Název aplikace |
+| --name -n [Povinné] | Název služby |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
-| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
-| --výstup-o | Výstupní formát.  Povolené hodnoty\: JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
-| --dotaz | Řetězec dotazu JMESPath Další informace a příklady najdete v tématu http\://jmespath.org/. |
-| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
+| --ladění | Zvyšte podrobnost protokolování, chcete-li zobrazit všechny protokoly ladění. |
+| --pomoc -h | Zobrazit tuto zprávu nápovědy a ukončete ji. |
+| --výstup -o | Výstupní formát.  Povolené\: hodnoty json, jsonc, tabulka, tsv.  Výchozí\: json. |
+| --dotaz | Řetězec dotazu JMESPath. Další\:informace a příklady naleznete na adrese http //jmespath.org/. |
+| --verbose | Zvyšte podrobnost protokolování. Použijte --debug pro úplné protokoly ladění. |
 
 
 ## <a name="next-steps"></a>Další kroky
-- [Nastavte](service-fabric-cli.md) Service Fabric CLI.
-- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Nastavte](service-fabric-cli.md) cli service fabric.
+- Naučte se používat funkce CLI service fabric pomocí [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).

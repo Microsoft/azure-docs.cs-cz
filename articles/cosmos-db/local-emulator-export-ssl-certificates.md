@@ -2,16 +2,16 @@
 title: Export certifikátů emulátoru služby Azure Cosmos DB
 description: Při vývoji v jazycích a modulech runtime, které nevyužívají úložiště certifikátů systému Windows, budete muset exportovat a spravovat certifikáty SSL. Tento příspěvek obsahuje podrobné pokyny.
 ms.service: cosmos-db
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 05/23/2019
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: a398c10511fdd3891a2c429f0ef46869dcc48922
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 623837b30038ef8524aef1e87aeb5933204925a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244454"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156017"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Export certifikátů emulátoru služby Azure Cosmos DB pro použití s Javou, Pythonem a Node.js
 
@@ -48,7 +48,7 @@ Oba certifikáty je možné znovu vygenerovat kliknutím na **Resetovat data** v
 
     ![Místní emulátor služby Azure Cosmos DB – export, krok 3](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png)
 
-4. Klikněte na **Další**.
+4. Klikněte na **Další**.
 
     ![Místní emulátor služby Azure Cosmos DB – export, krok 4](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png)
 
@@ -64,13 +64,13 @@ Oba certifikáty je možné znovu vygenerovat kliknutím na **Resetovat data** v
 
     ![Místní emulátor služby Azure Cosmos DB – export, krok 7](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png)
 
-8. Klikněte na **Dokončit**.
+8. Klikněte na **Finish** (Dokončit).
 
     ![Místní emulátor služby Azure Cosmos DB – export, krok 8](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-8.png)
 
 ## <a name="how-to-use-the-certificate-in-java"></a>Použití certifikátu v Javě
 
-Při spuštění aplikace v Javě nebo aplikace MongoDB, které používají klientskou sadou Java je snazší nainstalujte certifikát do úložiště certifikátů výchozí Java než předávání `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` příznaky. Například zahrnutá [ukázková aplikace Java](https://localhost:8081/_explorer/index.html) závisí na výchozím úložišti certifikátů.
+Při spouštění aplikací java nebo aplikací MongoDB, které používají klienta Java, je `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` jednodušší nainstalovat certifikát do výchozího úložiště certifikátů Java než předávání příznaků. Například zahrnutá [ukázková aplikace Java](https://localhost:8081/_explorer/index.html) závisí na výchozím úložišti certifikátů.
 
 Podle pokynů v tématu o [přidání certifikátu do úložiště certifikátů certifikační autority Javy](https://docs.microsoft.com/azure/java-add-certificate-ca-store) importujte certifikát X.509 do výchozího úložiště certifikátů Javy. Mějte na paměti, že při používání nástroje keytool budete pracovat v adresáři %JAVA_HOME%.
 

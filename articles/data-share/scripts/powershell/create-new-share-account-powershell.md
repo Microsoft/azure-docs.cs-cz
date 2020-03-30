@@ -1,6 +1,6 @@
 ---
-title: 'Skript prostředí PowerShell: Vytvořit nový účet Azure Data Share | Microsoft Docs'
-description: Tento skript PowerShellu vytvoří nový účet pro sdílení dat.
+title: 'Skript PowerShellu: Vytvoření nového účtu Azure Data Share | Dokumenty společnosti Microsoft'
+description: Tento skript prostředí PowerShell vytvoří nový účet Sdílení dat.
 services: data-share
 author: joannapea
 ms.service: data-share
@@ -10,15 +10,15 @@ ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
 ms.openlocfilehash: c3852dd5f1d3d3df8a982716ce5dab9426782869
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70307274"
 ---
-# <a name="use-powershell-to-create-a-data-share-account-in-azure"></a>Použití PowerShellu k vytvoření účtu pro sdílení dat v Azure
+# <a name="use-powershell-to-create-a-data-share-account-in-azure"></a>Vytvoření účtu sdílení dat v Azure pomocí PowerShellu
 
-Tento skript PowerShellu vytvoří nový účet pro sdílení dat. 
+Tento skript prostředí PowerShell vytvoří nový účet Sdílení dat. 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -38,11 +38,11 @@ Tento skript používá následující příkazy:
 
 | Příkaz | Poznámky |
 |---|---|
-| [New-AzDataShareAccount](/powershell/module/az.datashare/new-azdatashareaccount?view=azps-2.6.0) | Vytvoří účet pro sdílení dat. |
+| [Nový účet AzDataShare](/powershell/module/az.datashare/new-azdatashareaccount?view=azps-2.6.0) | Vytvoří účet sdílení dat. |
 |||
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 
-Další ukázkové skripty PowerShellu pro sdílení dat Azure najdete v [ukázkách Azure Data Share PowerShell](../../samples-powershell.md).
+Další ukázky skriptu Azure Data Share PowerShellu najdete ve [ukázkách Prostředí PowerShell Azure Data Share](../../samples-powershell.md).

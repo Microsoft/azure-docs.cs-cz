@@ -1,6 +1,6 @@
 ---
-title: Řešení chyb při odstraňování prostředků úložiště u virtuálních počítačů se systémem Linux v Azure | Microsoft Docs
-description: Jak řešit problémy při odstraňování prostředků úložiště obsahujících připojené virtuální pevné disky.
+title: Poradce při potížích s chybami odstranění prostředků úložiště na virtuálních počítačích SIP v Azure | Dokumenty společnosti Microsoft
+description: Jak řešit problémy při odstraňování prostředků úložiště obsahujících připojené virtuální počítače.
 keywords: ''
 services: virtual-machines
 author: genlin
@@ -12,92 +12,92 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 50ab4b0f1e676ffcba0ce69ab6aa957e4c77ab88
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71058159"
 ---
-# <a name="troubleshoot-storage-resource-deletion-errors"></a>Řešení chyb při odstraňování prostředků úložiště
+# <a name="troubleshoot-storage-resource-deletion-errors"></a>Poradce při potížích s chybami odstranění prostředků úložiště
 
-V některých scénářích se může při pokusu o odstranění účtu, kontejneru nebo objektu BLOB služby Azure Storage v nasazení Azure Resource Manager narazit k jedné z následujících chyb:
+V některých případech může dojít k jedné z následujících chyb při pokusu o odstranění účtu úložiště Azure, kontejneru nebo objektu blob v nasazení Azure Resource Manager:
 
-> **Nepovedlo se odstranit účet úložiště ' StorageAccountName '. Chyba: Účet úložiště nejde odstranit, protože se používají jeho artefakty.**
+> **Odstranění účtu úložiště "StorageAccountName" se nezdařilo. Chyba: Účet úložiště nelze odstranit z důvodu jeho artefakty jsou používány.**
 > 
-> **Nepovedlo se odstranit počet kontejnerů # mimo #:<br>VHD: V současné době je zapůjčení kontejneru a v požadavku se nezadalo žádné ID zapůjčení.**
+> **Nepodařilo se odstranit # out<br>of # kontejner (y): vhds: Aktuálně je zapůjčení na kontejneru a žádné ID zapůjčení bylo zadáno v požadavku.**
 > 
-> **Nepovedlo se odstranit # z # objektů<br>BLOB: BLOB. VHD: V tuto chvíli není zapůjčení pro objekt BLOB a v požadavku není zadané žádné ID zapůjčení.**
+> **Nepodařilo se odstranit # out<br>of # objekty BLOB: BlobName.vhd: Aktuálně existuje zapůjčení objektu blob a v požadavku nebylo zadáno žádné ID zapůjčení.**
 
-Virtuální pevné disky používané ve virtuálních počítačích Azure jsou soubory. VHD uložené jako objekty blob stránky v účtu úložiště Standard nebo Premium v Azure. Další informace o discích Azure najdete v našem [úvodu ke spravovaným diskům](../linux/managed-disks-overview.md).
+Virtuální pevné disky používané ve virtuálních počítačích Azure jsou .vhd soubory uložené jako objekty BLOB stránky ve standardním nebo prémiovém účtu úložiště v Azure. Další informace o discích Azure najdete v našem [úvodu ke spravovaným diskům](../linux/managed-disks-overview.md).
 
-Azure zabraňuje odstranění disku připojeného k virtuálnímu počítači, aby nedocházelo k poškození. Zabrání taky odstranění kontejnerů a účtů úložiště, které mají objekt blob stránky, který je připojený k virtuálnímu počítači. 
+Azure zabraňuje odstranění disku, který je připojen k virtuálnímu počítači, aby se zabránilo poškození. Také zabraňuje odstranění kontejnerů a účtů úložiště, které mají objekt blob stránky, který je připojený k virtuálnímu virtuálnímu počítačům. 
 
-Proces odstranění účtu úložiště, kontejneru nebo objektu BLOB při příjmu jedné z těchto chyb: 
-1. Identifikace objektů BLOB připojených k virtuálnímu počítači
-2. [Odstranění virtuálních počítačů s připojeným **diskem s operačním systémem**](#step-2-delete-vm-to-detach-os-disk)
-3. [Odpojit všechny **datové disky** od zbývajících virtuálních počítačů](#step-3-detach-data-disk-from-the-vm)
+Proces odstranění účtu úložiště, kontejneru nebo objektu blob při příjmu jedné z těchto chyb je: 
+1. Identifikace objektů BLOB připojených k virtuálnímu virtuálnímu mísu
+2. [Odstranění virtuálních počítačů s připojeným **diskem operačního systému**](#step-2-delete-vm-to-detach-os-disk)
+3. [Odpojení všech **datových disků** od zbývajících virtuálních počítačů](#step-3-detach-data-disk-from-the-vm)
 
-Po dokončení těchto kroků zkuste znovu odstranit účet úložiště, kontejner nebo objekt BLOB.
+Opakujte odstranění účtu úložiště, kontejneru nebo objektu blob po dokončení těchto kroků.
 
-## <a name="step-1-identify-blob-attached-to-a-vm"></a>Krok 1: Identifikace objektu BLOB připojeného k virtuálnímu počítači
+## <a name="step-1-identify-blob-attached-to-a-vm"></a>Krok 1: Identifikace objektu blob připojeného k virtuálnímu virtuálnímu mísu
 
-### <a name="scenario-1-deleting-a-blob--identify-attached-vm"></a>Scénář 1: Odstranění objektu BLOB – identifikace připojeného virtuálního počítače
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. V nabídce centra vyberte **Všechny prostředky**. Přejděte do účtu úložiště, v části **BLOB Service** vyberte **kontejnery**a přejděte k objektu blob, který chcete odstranit.
-3. Pokud je **stav zapůjčení** objektu BLOB **zapůjčení**, klikněte pravým tlačítkem a vyberte **Upravit metadata** a otevřete tak podokno metadata objektu BLOB. 
+### <a name="scenario-1-deleting-a-blob--identify-attached-vm"></a>Scénář 1: Odstranění objektu blob – identifikace připojeného virtuálního počítače
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+2. V nabídce centra vyberte **Všechny prostředky**. Přejděte na účet úložiště, v části **Služba objektů blob vyberte** **kontejnery**a přejděte na objekt blob, který chcete odstranit.
+3. Pokud **je** **stav zapůjčení objektu** blob , klepněte pravým tlačítkem myši a vyberte **upravit metadata** a otevřete podokno metadat objektů Blob. 
 
-    ![Snímek obrazovky portálu s objekty blob účtu úložiště a pravým tlačítkem myši > zvýrazněná možnost Upravit metadata](./media/troubleshoot-vhds/utd-edit-metadata-sm.png)
+    ![Snímek obrazovky portálu se zvýrazněnými objekty BLOB účtu úložiště a pravým tlačítkem myši > "Upravit metadata"](./media/troubleshoot-vhds/utd-edit-metadata-sm.png)
 
-4. V podokně metadata objektu BLOB vyhledejte a zaznamenejte hodnotu pro **MicrosoftAzureCompute_VMName**. Tato hodnota je název virtuálního počítače, ke kterému je připojený virtuální pevný disk. (Viz **důležité** , pokud toto pole neexistuje)
-5. V podokně metadata objektu BLOB vyhledejte a zaznamenejte hodnotu **MicrosoftAzureCompute_DiskType**. Tato hodnota označuje, zda se jedná o disk s operačním systémem nebo datovým diskem (viz **důležité** , pokud toto pole neexistuje). 
+4. V podokně metadat objektů Blob zkontrolujte a zaznamenejte hodnotu **MicrosoftAzureCompute_VMName**. Tato hodnota je název virtuálního virtuálního serveru, ke kterému je virtuální pevný disk připojen. (Viz **důležité,** pokud toto pole neexistuje)
+5. V podokně metadat objektů Blob zkontrolujte a zaznamenejte hodnotu **MicrosoftAzureCompute_DiskType**. Tato hodnota určuje, zda je připojený disk os nebo datový disk (Viz **důležité,** pokud toto pole neexistuje). 
 
-     ![Snímek obrazovky portálu s otevřeným panelem metadata úložiště objektů BLOB](./media/troubleshoot-vhds/utd-blob-metadata-sm.png)
+     ![Snímek obrazovky portálu s otevřeným podoknem Úložiště metadat objektů blob](./media/troubleshoot-vhds/utd-blob-metadata-sm.png)
 
-6. Pokud se typ disku objektu BLOB **OSDisk** , [postupujte podle kroku 2: Odstraněním virtuálního počítače odpojíte disk](#step-2-delete-vm-to-detach-os-disk)s operačním systémem. Jinak, pokud je typ disku objektu BLOB **datadisk** , postupujte podle kroků [v části Krok 3: Odpojte datový disk od virtuálního](#step-3-detach-data-disk-from-the-vm)počítače. 
+6. Pokud je typ disku objektu blob **OSDisk,** postupujte [podle kroku 2: Odstranění virtuálního počítače a odpojení disku operačního systému](#step-2-delete-vm-to-detach-os-disk). V opačném případě pokud je typ disku objektu blob **DataDisk** postupujte podle kroků v [kroku 3: Odpojit datový disk od virtuálního počítače](#step-3-detach-data-disk-from-the-vm). 
 
 > [!IMPORTANT]
-> Pokud se **MicrosoftAzureCompute_VMName** a **MicrosoftAzureCompute_DiskType** nezobrazí v metadatech objektů blob, znamená to, že je objekt BLOB explicitně zapůjčení a není připojený k virtuálnímu počítači. Pronajaté objekty BLOB se nedají odstranit, aniž byste nejdřív přerušili zapůjčení. Pokud chcete přerušit zapůjčení, klikněte pravým tlačítkem na objekt BLOB a vyberte **Zrušit zapůjčení**. Pronajaté objekty blob, které nejsou připojené k virtuálnímu počítači, zabraňují odstranění objektu blob, ale nebrání odstranění kontejneru nebo účtu úložiště.
+> Pokud **MicrosoftAzureCompute_VMName** a **MicrosoftAzureCompute_DiskType** nezobrazí v metadatech objektu blob, znamená to, že objekt blob je explicitně zapůjčena a není připojen k virtuálnímu virtuálnímu soudu. Zapůjčené objekty BLOB nelze odstranit, aniž by byla nejprve rozdělena zapůjčení. Chcete-li přerušit zapůjčení, klikněte pravým tlačítkem myši na objekt blob a vyberte **možnost Přerušit zapůjčení**. Pronajaté objekty BLOB, které nejsou připojeny k virtuálnímu virtuálnímu připojení zabránit odstranění objektu blob, ale nebrání odstranění kontejneru nebo účtu úložiště.
 
-### <a name="scenario-2-deleting-a-container---identify-all-blobs-within-container-that-are-attached-to-vms"></a>Scénář 2: Odstranění kontejneru – identifikace všech objektů BLOB v kontejneru, které jsou připojené k virtuálním počítačům
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. V nabídce centra vyberte **Všechny prostředky**. Do účtu úložiště vyberte v části **BLOB Service** možnost **kontejnery**a najděte kontejner, který chcete odstranit.
-3. Kliknutím otevřete kontejner a zobrazí se seznam objektů blob, které se v něm nacházejí. Identifikujte všechny objekty BLOB s typem objektu BLOB = **objekt blob stránky** a stav zapůjčení = **zapůjčené** z tohoto seznamu. Použijte scénář 1 a Identifikujte virtuální počítač spojený s každým z těchto objektů BLOB.
+### <a name="scenario-2-deleting-a-container---identify-all-blobs-within-container-that-are-attached-to-vms"></a>Scénář 2: Odstranění kontejneru – identifikujte všechny objekty blob v kontejneru, které jsou připojené k virtuálním počítačem
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+2. V nabídce centra vyberte **Všechny prostředky**. Přejděte na účet úložiště v části **Služba objektů blob vyberte** **kontejnery**a najděte kontejner, který má být odstraněn.
+3. Klepnutím otevřete kontejner a zobrazí se seznam objektů BLOB uvnitř. Identifikujte všechny objekty BLOB s objektem BLOB Type = **Objekt blob stránky** a Stav zapůjčení **z** tohoto seznamu. Postupujte podle scénáře 1 k identifikaci virtuálního počítače přidruženého ke každému z těchto objektů BLOB.
 
-    ![Snímek obrazovky portálu s objekty blob účtu úložiště a "stav zapůjčení" se zvýrazněným "zapůjčeným"](./media/troubleshoot-vhds/utd-disks-sm.png)
+    ![Snímek obrazovky portálu s objekty BLOB účtu úložiště a "Stav zapůjčení" se zvýrazněným "Pronajaté"](./media/troubleshoot-vhds/utd-disks-sm.png)
 
-4. Postupujte podle [kroků 2](#step-2-delete-vm-to-detach-os-disk) a [3](#step-3-detach-data-disk-from-the-vm) pro odstranění virtuálních počítačů pomocí **OSDisk** a odpojení **datadisk**. 
+4. Odstranění virtuálních počítačů pomocí **nástroje OSDisk** a odpojení **datadisku**pomocí kroku 2 a 3 postupujte podle [kroků 2](#step-2-delete-vm-to-detach-os-disk) a [3.](#step-3-detach-data-disk-from-the-vm) 
 
-### <a name="scenario-3-deleting-storage-account---identify-all-blobs-within-storage-account-that-are-attached-to-vms"></a>Scénář 3: Odstraňuje se účet úložiště – identifikujte všechny objekty BLOB v účtu úložiště, které jsou připojené k virtuálním počítačům.
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. V nabídce centra vyberte **Všechny prostředky**. Do účtu úložiště vyberte v části **BLOB Service** možnost **objekty blob**.
-3. V podokně **kontejnery** identifikujte všechny kontejnery, ve kterých je zapůjčený **stav** **zapůjčení** , a v případě každého **pronajatého** kontejneru použijte [scénář 2](#scenario-2-deleting-a-container---identify-all-blobs-within-container-that-are-attached-to-vms) .
-4. Postupujte podle [kroků 2](#step-2-delete-vm-to-detach-os-disk) a [3](#step-3-detach-data-disk-from-the-vm) pro odstranění virtuálních počítačů pomocí **OSDisk** a odpojení **datadisk**. 
+### <a name="scenario-3-deleting-storage-account---identify-all-blobs-within-storage-account-that-are-attached-to-vms"></a>Scénář 3: Odstranění účtu úložiště – identifikujte všechny objekty blob v rámci účtu úložiště, které jsou připojené k virtuálním počítačem
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+2. V nabídce centra vyberte **Všechny prostředky**. Přejděte na účet úložiště v části **Služba objektů blob** vyberte **Objekty blob**.
+3. V **podokně Kontejnery** identifikujte všechny kontejnery, kde je **pronajatý stav zapůjčený,** a postupujte podle [scénáře 2](#scenario-2-deleting-a-container---identify-all-blobs-within-container-that-are-attached-to-vms) pro každý **zapůjčený** kontejner. **Lease State**
+4. Odstranění virtuálních počítačů pomocí **nástroje OSDisk** a odpojení **datadisku**pomocí kroku 2 a 3 postupujte podle [kroků 2](#step-2-delete-vm-to-detach-os-disk) a [3.](#step-3-detach-data-disk-from-the-vm) 
 
-## <a name="step-2-delete-vm-to-detach-os-disk"></a>Krok 2: Odstranit virtuální počítač pro odpojení disku s operačním systémem
-Pokud se jedná o disk s operačním systémem, musíte virtuální počítač odstranit, aby se mohl odstranit připojený virtuální pevný disk (VHD). Po dokončení těchto kroků nebude potřeba žádná další akce pro datové disky připojené ke stejnému virtuálnímu počítači:
+## <a name="step-2-delete-vm-to-detach-os-disk"></a>Krok 2: Odstranění virtuálního počítače k odpojení disku operačního systému
+Pokud je virtuální pevný disk disk operačního systému, musíte virtuální ho odstranit, aby bylo možné odstranit připojený virtuální pevný disk. Žádná další akce bude vyžadována pro datové disky připojené ke stejnému virtuálnímu počítače po dokončení těchto kroků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. V nabídce centra vyberte **Virtual Machines**.
-3. Vyberte virtuální počítač, ke kterému je připojený virtuální pevný disk.
-4. Ujistěte se, že virtuální počítač aktivně nepoužíváte a že ho už nepotřebujete.
-5. V horní části podokna **podrobností o virtuálním počítači** vyberte **Odstranit**a potvrďte to kliknutím na **Ano** .
-6. Virtuální počítač by se měl odstranit, ale virtuální pevný disk se dá zachovat. Virtuální pevný disk se ale už nesmí připojit k virtuálnímu počítači nebo mít zapůjčení. Vydání zapůjčení může trvat několik minut. Chcete-li ověřit, zda je zapůjčení uvolněno, přejděte do umístění objektu BLOB a v podokně **vlastnosti objektu BLOB** , měl by být **dostupný** **stav zapůjčení** .
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+2. V nabídce Hub vyberte **Virtuální počítače**.
+3. Vyberte virtuální ms, ke kterému je virtuální pevný disk připojený.
+4. Ujistěte se, že nic není aktivně používat virtuální počítač a že už nepotřebujete virtuální počítač.
+5. V horní části podokna **podrobností virtuálního počítače** vyberte **Odstranit**a potvrďte to klepnutím na **tlačítko Ano.**
+6. Virtuální ho virtuálního mísu by měl být odstraněn, ale virtuální pevný disk lze zachovat. Virtuální pevný disk by však již neměl být připojen k virtuálnímu počítači nebo na něm mít zapůjčení. Uvolnění zapůjčení může trvat několik minut. Chcete-li ověřit, zda je zapůjčení uvolněno, přejděte do umístění objektu blob a v podokně **vlastností objektu Blob,** **stav zapůjčení** by měl být **k dispozici**.
 
 ## <a name="step-3-detach-data-disk-from-the-vm"></a>Krok 3: Odpojení datového disku od virtuálního počítače
-Pokud je virtuální pevný disk datového disku, odpojte virtuální pevný disk od virtuálního počítače a odeberte zapůjčení:
+Pokud je virtuální pevný disk datový disk, odpojte virtuální disk od virtuálního počítače a odeberte zapůjčení:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. V nabídce centra vyberte **Virtual Machines**.
-3. Vyberte virtuální počítač, ke kterému je připojený virtuální pevný disk.
-4. V podokně **podrobností virtuálního počítače** vyberte **disky** .
-5. Vyberte datový disk, ke kterému se má odstranit virtuální pevný disk, ke kterému se má připojit. To, který objekt BLOB je připojený na disku, můžete zjistit kontrolou adresy URL virtuálního pevného disku.
-6. Umístění objektu blob můžete ověřit tak, že kliknete na disk a zkontrolujete cestu v poli **identifikátor URI virtuálního pevného disku** .
-7. V podokně horní části **disku** vyberte **Upravit** .
-8. Klikněte na **Odpojit ikona** datového disku, který se má odstranit.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+2. V nabídce Hub vyberte **Virtuální počítače**.
+3. Vyberte virtuální ms, ke kterému je virtuální pevný disk připojený.
+4. V podokně **podrobností virtuálního počítače** vyberte **Disky.**
+5. Vyberte datový disk, ke kterému má být virtuální pevný disk připojen. Objekt blob, který je připojen k disku, můžete určit kontrolou adresy URL virtuálního pevného disku.
+6. Umístění objektu blob můžete ověřit kliknutím na disk a zkontrolovat cestu v poli **IDENTIFIKÁTOR URI virtuálního pevného disku.**
+7. V horní části podokna **Disky** vyberte **Upravit.**
+8. Klepněte na **ikonu odpojení** datového disku, který má být odstraněn.
 
-     ![Snímek obrazovky portálu s otevřeným panelem metadata úložiště objektů BLOB](./media/troubleshoot-vhds/utd-vm-disks-edit.png)
+     ![Snímek obrazovky portálu s otevřeným podoknem Úložiště metadat objektů blob](./media/troubleshoot-vhds/utd-vm-disks-edit.png)
 
-9. Vyberte **Uložit**. Disk je teď odpojený od virtuálního počítače a virtuální pevný disk už není zapůjčení. Vydání zapůjčení může trvat několik minut. Chcete-li ověřit, zda byla zapůjčení uvolněna, přejděte do umístění objektu BLOB a v podokně **vlastností objektu BLOB** , hodnota **stavu zapůjčení** by měla být **odemčena** nebo **k dispozici**.
+9. Vyberte **Uložit**. Disk je teď odpojen od virtuálního počítače a virtuální pevný disk už není pronajatý. Uvolnění zapůjčení může trvat několik minut. Chcete-li ověřit, zda byla zapůjčení uvolněna, přejděte do umístění objektu blob a v podokně **vlastností objektu Blob,** hodnota **Stav zapůjčení** by měla být **odemčena** nebo **k dispozici**.
 
 [Storage deletion errors in Resource Manager deployment]: #storage-delete-errors-in-rm
 

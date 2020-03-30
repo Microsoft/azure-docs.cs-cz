@@ -1,6 +1,6 @@
 ---
-title: Přehled rozhraní API služby Azure Event Hubs .NET Framework | Microsoft Docs
-description: Tento článek poskytuje souhrn některých klíčových Event Hubs .NET Framework klientských rozhraní API (Správa a modul runtime).
+title: Přehled rozhraní API rozhraní API rozhraní Azure Event Hubs .NET Framework | Dokumenty společnosti Microsoft
+description: Tento článek obsahuje souhrn některých klíčových rozhraní API klienta rozhraní API rozhraní API rozhraní API rozhraní .NET Framework rozhraní .NET Framework (správa a doba runtime).
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
@@ -10,21 +10,21 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: shvija
 ms.openlocfilehash: b14759ed39037bfa172366a2ed8f8ca089786ec6
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79137607"
 ---
-# <a name="event-hubs-net-framework-api-overview"></a>Přehled rozhraní API pro Event Hubs .NET Framework
+# <a name="event-hubs-net-framework-api-overview"></a>Přehled rozhraní API rozhraní API rozhraní Event Hubs .NET Framework
 
-Tento článek shrnuje některá klíčová [rozhraní API](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)pro Azure Event Hubs .NET Framework. Existují dvě kategorie: rozhraní API pro správu a dobu běhu. Běhové rozhraní API sestávají ze všech operací potřebných k odeslání a přijetí zprávy. Operace správy umožňují spravovat Event Hubs stav entity vytvořením, aktualizací a odstraněním entit.
+Tento článek shrnuje některé klíčové [rozhraní API klienta](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)Azure Event Hubs .NET Framework . Existují dvě kategorie: správa a běhových api. Úložiště API za běhu se skládají ze všech operací potřebných k odeslání a přijetí zprávy. Operace správy umožňují spravovat stav entity Centra událostí vytvořením, aktualizací a odstraněním entit.
 
-[Scénáře monitorování](event-hubs-metrics-azure-monitor.md) zahrnují správu i dobu běhu. Podrobné referenční dokumentaci k rozhraním API .NET najdete v odkazech na [rozhraní api](/dotnet/api/microsoft.azure.eventhubs.processor) [.NET Framework](/dotnet/api/microsoft.servicebus.messaging.eventhubclient), [.NET Standard](/dotnet/api/microsoft.azure.eventhubs)a EventProcessorHost.
+[Scénáře monitorování](event-hubs-metrics-azure-monitor.md) se rozprostírají jak ve správě, tak za běhu. Podrobnou referenční dokumentaci k rozhraní MAVAleS .NET naleznete v odkazech rozhraní API [rozhraní .NET Framework](/dotnet/api/microsoft.servicebus.messaging.eventhubclient), [.NET Standard](/dotnet/api/microsoft.azure.eventhubs)a [EventProcessorHost.](/dotnet/api/microsoft.azure.eventhubs.processor)
 
 ## <a name="management-apis"></a>Rozhraní API pro správu
 
-Chcete-li provést následující operace správy, musíte mít oprávnění ke **správě** Event Hubs oboru názvů:
+Chcete-li provádět následující operace správy, musíte mít oprávnění **ke správě** v oboru názvů Centra událostí:
 
 ### <a name="create"></a>Vytvořit
 
@@ -35,7 +35,7 @@ ehd.PartitionCount = SampleManager.numPartitions;
 await namespaceManager.CreateEventHubAsync(ehd);
 ```
 
-### <a name="update"></a>Aktualizovat
+### <a name="update"></a>Aktualizace
 
 ```csharp
 var ehd = await namespaceManager.GetEventHubAsync(eventHubName);
@@ -48,13 +48,13 @@ ehd.Authorization.Add(new SharedAccessAuthorizationRule(ruleName, ruleKey, new A
 await namespaceManager.UpdateEventHubAsync(ehd);
 ```
 
-### <a name="delete"></a>Odstranit
+### <a name="delete"></a>Odstranění
 
 ```csharp
 await namespaceManager.DeleteEventHubAsync("event hub name");
 ```
 
-## <a name="run-time-apis"></a>Rozhraní API runtime
+## <a name="run-time-apis"></a>Api s run-time
 ### <a name="create-publisher"></a>Vytvořit vydavatele
 
 ```csharp
@@ -81,7 +81,7 @@ data.Properties.Add("Type", "Telemetry_" + DateTime.Now.ToLongTimeString());
 await client.SendAsync(data);
 ```
 
-### <a name="create-consumer"></a>Vytvořit příjemce
+### <a name="create-consumer"></a>Vytvořit spotřebitele
 
 ```csharp
 // Create the Event Hubs client
@@ -100,7 +100,7 @@ var consumer = await defaultConsumerGroup.CreateReceiverAsync(partitionId: index
 var consumer = await defaultConsumerGroup.CreateReceiverAsync(partitionId: index,startingOffset:-1); 
 ```
 
-### <a name="consume-message"></a>Spotřebovat zprávu
+### <a name="consume-message"></a>Spotřebovávat zprávu
 
 ```csharp
 var message = await consumer.ReceiveAsync();
@@ -113,9 +113,9 @@ var info = message.GetBytes();
 msg = UnicodeEncoding.UTF8.GetString(info);
 ```
 
-## <a name="event-processor-host-apis"></a>Rozhraní API pro hostování procesoru událostí
+## <a name="event-processor-host-apis"></a>Hostitelská api hostitele procesoru událostí
 
-Tato rozhraní API poskytují odolnost pro pracovní procesy, které mohou být nedostupné, distribucí oddílů mezi dostupné pracovní procesy.
+Tato rozhraní API poskytují odolnost proti chybám pracovních procesů, které mohou být nedostupné, distribucí oddílů mezi dostupné pracovníky.
 
 ```csharp
 // Checkpointing is done within the SimpleEventProcessor and on a per-consumerGroup per-partition basis, workers resume from where they last left off.
@@ -132,7 +132,7 @@ await host.RegisterEventProcessorAsync<SimpleEventProcessor>();
 await host.UnregisterEventProcessorAsync();
 ```
 
-Rozhraní [IEventProcessor](/dotnet/api/microsoft.servicebus.messaging.ieventprocessor) je definováno následujícím způsobem:
+Rozhraní [IEventProcessor](/dotnet/api/microsoft.servicebus.messaging.ieventprocessor) je definováno takto:
 
 ```csharp
 public class SimpleEventProcessor : IEventProcessor
@@ -181,7 +181,7 @@ Další informace o scénářích služby Event Hubs naleznete pod těmito odkaz
 * [Co je služba Azure Event Hubs?](event-hubs-what-is-event-hubs.md)
 * [Průvodce programováním pro službu Event Hubs](event-hubs-programming-guide.md)
 
-Reference k rozhraní .NET API najdete tady:
+Odkazy na rozhraní .NET API jsou zde:
 
 * [Microsoft.ServiceBus.Messaging](/dotnet/api/microsoft.servicebus.messaging)
-* [Microsoft. Azure. EventHubs. EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)
+* [Microsoft.Azure.EventHubs.EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)

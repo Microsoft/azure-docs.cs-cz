@@ -1,6 +1,6 @@
 ---
-title: Delegovaný přístup na virtuálním počítači s Windows – Azure
-description: Jak delegovat možnosti správy pro nasazení virtuálních klientů s Windows, včetně příkladů.
+title: Delegovaný přístup ve Virtuální desktopové ploše Windows – Azure
+description: Jak delegovat možnosti správy na nasazení virtuální plochy systému Windows, včetně příkladů.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,17 +9,17 @@ ms.date: 03/21/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 3e27550ecc5b42c2bf0d947690da09e13d88ea4f
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79128030"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop"></a>Delegovaný přístup ve Windows Virtual Desktop
 
-Virtuální klient Windows má delegovaný přístupový model, který umožňuje definovat množství přístupu, které může určitý uživatel přiřadit roli. Přiřazení role má tři součásti: objekt zabezpečení, definice role a obor. Model delegovaného přístupu k virtuálním plochám Windows je založený na modelu Azure RBAC. Další informace o konkrétních přiřazeních rolí a jejich součástech najdete v tématu [Přehled řízení přístupu na základě role v Azure](../role-based-access-control/built-in-roles.md).
+Windows Virtual Desktop má delegovaný přístup ový model, který umožňuje definovat množství přístupu konkrétní ho uživatel může mít přiřazením role. Přiřazení role má tři součásti: objekt zabezpečení, definici role a obor. Model delegovaného přístupu virtuální plochy Windows je založený na modelu Azure RBAC. Další informace o přiřazeních konkrétních rolí choda a jejich součástech najdete [v tématu Přehled řízení přístupu na základě rolí Azure](../role-based-access-control/built-in-roles.md).
 
-Delegovaný přístup k virtuálním plochám Windows podporuje následující hodnoty pro každý prvek přiřazení role:
+Delegovaný přístup k virtuální ploše systému Windows podporuje následující hodnoty pro každý prvek přiřazení role:
 
 * Objekt zabezpečení
     * Uživatelé
@@ -27,23 +27,23 @@ Delegovaný přístup k virtuálním plochám Windows podporuje následující h
 * Definice role
     * Vestavěné role
 * Rozsah
-    * Skupiny tenantů
-    * Klienti
-    * Fondy hostitelů
+    * Skupiny klientů
+    * Tenanti
+    * Hostitelské fondy
     * Skupiny aplikací
 
 ## <a name="built-in-roles"></a>Vestavěné role
 
-Delegovaný přístup na virtuálním počítači s Windows má několik předdefinovaných definic rolí, které můžete přiřadit uživatelům a instančním objektům.
+Delegovaný přístup ve virtuální ploše systému Windows má několik předdefinovaných definic rolí, které můžete přiřadit uživatelům a instančním objektům.
 
-* Vlastník vzdálené plochy může spravovat všechno, včetně přístupu k prostředkům.
-* Přispěvatel RDS může spravovat všechno, ale přístup k prostředkům.
-* Čtenář služby Vzdálená plocha může zobrazit vše, ale nemůže provádět žádné změny.
-* Operátor vzdálené plochy může zobrazit diagnostické aktivity.
+* Vlastník RDS může spravovat vše, včetně přístupu k prostředkům.
+* Přispěvatel RDS může spravovat vše kromě přístupu k prostředkům.
+* Rds Reader může zobrazit vše, ale nemůže provádět žádné změny.
+* Operátor RDS může zobrazit diagnostické aktivity.
 
-## <a name="powershell-cmdlets-for-role-assignments"></a>Rutiny PowerShellu pro přiřazení rolí
+## <a name="powershell-cmdlets-for-role-assignments"></a>Rutiny prostředí PowerShell pro přiřazení rolí
 
-Chcete-li vytvořit, zobrazit a odebrat přiřazení rolí, můžete spustit následující rutiny:
+Můžete spustit následující rutiny pro vytvoření, zobrazení a odebrání přiřazení rolí:
 
 * **Get-RdsRoleAssignment** zobrazí seznam přiřazení rolí.
 * **New-RdsRoleAssignment** vytvoří nové přiřazení role.
@@ -51,20 +51,20 @@ Chcete-li vytvořit, zobrazit a odebrat přiřazení rolí, můžete spustit ná
 
 ### <a name="accepted-parameters"></a>Přijaté parametry
 
-Základní tři rutiny můžete upravit následujícími parametry:
+Můžete upravit základní tři rutiny s následujícími parametry:
 
-* **AadTenantId**: Určuje ID tenanta Azure Active Directory, ze kterého je objekt služby členem.
-* **AppGroupName**: název skupiny aplikací vzdálené plochy.
-* **Diagnostika**: Určuje obor diagnostiky. (Musí být párována s parametry **infrastruktura** nebo **tenanta** .)
+* **AadTenantId**: určuje ID klienta služby Azure Active Directory, ze kterého je instanční objekt členem.
+* **AppGroupName**: název skupiny aplikací Vzdálená plocha.
+* **Diagnostika**: označuje rozsah diagnostiky. (Musí být spárován s parametry **Infrastruktura** nebo **Tenant.)**
 * **HostPoolName**: název fondu hostitelů vzdálené plochy.
 * **Infrastruktura**: označuje rozsah infrastruktury.
-* **RoleDefinitionName**: název role řízení přístupu na základě role služby Vzdálená plocha přiřazená uživateli, skupině nebo aplikaci. (Například vlastník služby Vzdálená plocha, čtenář vzdálené plochy atd.)
+* **RoleDefinitionName**: název role řízení přístupu na základě role služby Vzdálená plocha přiřazená uživateli, skupině nebo aplikaci. (Například vlastník služby Vzdálená plocha, Čtečka služby Vzdálená plocha a tak dále.)
 * **ServerPrincipleName**: název aplikace Azure Active Directory.
-* **SignInName**: e-mailová adresa uživatele nebo hlavní název uživatele.
-* **Tenant**: název tenanta vzdálené plochy.
+* **SignInName**: e-mailová adresa uživatele nebo hlavní jméno uživatele.
+* **TenantName**: název klienta vzdálené plochy.
 
 ## <a name="next-steps"></a>Další kroky
 
-Podrobnější seznam rutin PowerShellu, které můžou jednotlivé role použít, najdete v [referenčních informacích k PowerShellu](/powershell/windows-virtual-desktop/overview).
+Podrobnější seznam rutin prostředí PowerShell, které může každá role použít, najdete v [tématu odkaz na prostředí PowerShell](/powershell/windows-virtual-desktop/overview).
 
-Pokyny, jak nastavit prostředí virtuálních počítačů s Windows, najdete v tématu [prostředí virtuálních počítačů s Windows](environment-setup.md).
+Pokyny k nastavení prostředí Virtuální plochy systému Windows naleznete v [tématu Windows Virtual Desktop environment](environment-setup.md).

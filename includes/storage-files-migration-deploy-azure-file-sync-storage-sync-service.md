@@ -1,27 +1,27 @@
 ---
 title: Nasazení služby synchronizace úložiště
-description: Nasazení cloudového prostředku Azure File Sync. Služba synchronizace úložiště. Společný textový blok, který je sdílen mezi dokumenty migrace.
+description: Nasazení cloudového prostředku Azure File Sync. Služba synchronizace úložiště. Běžný textový blok sdílený mezi dokumenty migrace.
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 4468d8c6b57b38bdbaaa01208cfc4915f734f6bb
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: fe74bae95784dcb63a80ee7e280c02de2eadeb5d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78209451"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80124720"
 ---
-V tomto kroku budete potřebovat přihlašovací údaje předplatného Azure. Předplatné Azure, které použijete, může být jiné než ten, který používáte pro StorSimple.
+V tomto kroku potřebujete přihlašovací údaje předplatného Azure.
 
-Základní prostředek, který se má nakonfigurovat Azure File Sync, se nazývá služba synchronizace úložiště.
-Doporučujeme pro všechny servery ve společnosti nasadit jenom jeden, který teď synchronizuje stejnou sadu souborů, nebo v budoucnu. Pokud máte více než jedno zařízení StorSimple, můžete zvážit vytvoření prostředku služby synchronizace úložiště pro každou z nich. Měli byste ale vytvořit jenom více služeb synchronizace úložiště, pokud máte různé sady serverů, které musí data nikdy vyměňovat. V opačném případě je osvědčeným postupem jediná služba synchronizace úložiště.
+Základní prostředek pro konfiguraci Azure File Sync se nazývá "Služba synchronizace úložiště".
+Doporučujeme nasadit pouze jeden pro všechny servery ve společnosti, které synchronizují stejnou sadu souborů nyní nebo v budoucnu. Synchronizační služby úložiště vytvořte pouze v případě, že máte odlišné sady serverů, které si nikdy nesmí vyměňovat data. (například: synchronizace stejné sdílené složky Azure). V opačném případě je nejvhodnější jedna služba synchronizace úložiště.
 
-Vyberte oblast Azure pro službu synchronizace úložiště, která se blíží umístění vaší kanceláře. Všechny ostatní cloudové prostředky musí být nasazené ve stejné oblasti.
-Osvědčeným postupem je vytvořit novou skupinu prostředků ve vašem předplatném, abyste mohli spravovat prostředky pro synchronizaci a úložiště pro snadnější správu.
+Vyberte oblast Azure pro službu synchronizace úložiště, která se nachází v blízkosti vašeho umístění v kanceláři. Všechny ostatní prostředky cloudu musí být nasazeny ve stejné oblasti.
+Chcete-li zjednodušit správu, vytvořte ve svém předplatném novou skupinu prostředků, ve které jsou umístěny prostředky synchronizace a úložiště.
 
-Následující článek popisuje, jak nasadit službu synchronizace úložiště. Postupujte pouze v této části dokumentu. V pozdějších krocích budou odkazy na další pododdíly tohoto dokumentu.
+Následující článek popisuje, jak nasadit službu synchronizace úložiště. Následujte jen tuhle část doktora. V pozdějších krocích budou odkazy na další podsekce tohoto dokumentu.
 
 [Přečtěte si, jak nasadit službu synchronizace úložiště.](../articles/storage/files/storage-sync-files-deployment-guide.md#deploy-the-storage-sync-service)
