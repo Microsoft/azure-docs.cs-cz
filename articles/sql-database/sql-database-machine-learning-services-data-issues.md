@@ -1,7 +1,7 @@
 ---
 title: Práce s datovými typy a objekty R a SQL
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Naučte se pracovat s datovými typy a datovými objekty v R s Azure SQL Database pomocí Machine Learning Services (Preview), včetně běžných problémů, se kterými se můžete setkat.
+description: Zjistěte, jak pracovat s datovými typy a datovými objekty v R s Azure SQL Database pomocí Machine Learning Services (preview), včetně běžných problémů, se kterými se můžete setkat.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -13,41 +13,41 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 7dfd12729c5697d1935d098cbd4ed863a4551acd
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 0bb3abc7b7102da55c9ededcadd7a301f74065ab
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719870"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80349326"
 ---
-# <a name="work-with-r-and-sql-data-in-azure-sql-database-machine-learning-services-preview"></a>Práce s daty R a SQL v Azure SQL Database Machine Learning Services (Preview)
+# <a name="work-with-r-and-sql-data-in-azure-sql-database-machine-learning-services-preview"></a>Práce s daty R a SQL ve službě Azure SQL Database Machine Learning Services (preview)
 
-Tento článek popisuje některé běžné problémy, se kterými se můžete setkat při přesouvání dat mezi R a SQL Database v [Machine Learning Services (s r) v Azure SQL Database](sql-database-machine-learning-services-overview.md). Prostředí, které získáte prostřednictvím tohoto cvičení, poskytuje základní pozadí při práci s daty ve vlastním skriptu.
-
-Mezi běžné problémy, se kterými se můžete setkat, patří:
-
-- Datové typy se někdy neshodují.
-- Mohou probíhat implicitní převody
-- Operace přetypování a převodu se někdy vyžadují.
-- R a SQL používají různé datové objekty
+Tento článek popisuje některé běžné problémy, se kterými se můžete setkat při přesouvání dat mezi R a SQL Database ve [službě Machine Learning Services (s R) v Azure SQL Database](sql-database-machine-learning-services-overview.md). Zkušenosti, které získáte prostřednictvím tohoto cvičení poskytuje základní pozadí při práci s daty ve vlastním skriptu.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+Mezi běžné problémy, se kterými se můžete setkat, patří:
 
-- Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/) před tím, než začnete.
+- Datové typy se někdy neshodují
+- K implicitním konverzím může dojít.
+- Někdy jsou vyžadovány operace přetypování a převodu.
+- R a SQL používají různé datové objekty
 
-- Chcete-li spustit vzorový kód v těchto cvičeních, musíte nejprve mít službu Azure SQL Database s povoleným Machine Learning Services (s R). V rámci verze Public Preview vám Microsoft zaregistruje a povolí Machine Learning pro vaši stávající nebo novou databázi. Postupujte podle kroků v [části registrace ve verzi Preview](sql-database-machine-learning-services-overview.md#signup).
+## <a name="prerequisites"></a>Požadavky
 
-- Ujistěte se, že jste nainstalovali nejnovější [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS). Můžete spouštět skripty R pomocí jiných nástrojů pro správu databáze nebo dotazů, ale v tomto rychlém startu použijete SSMS.
+- Pokud nemáte předplatné Azure, [vytvořte si účet,](https://azure.microsoft.com/free/) než začnete.
+
+- Chcete-li spustit ukázkový kód v těchto cvičeních, musíte mít nejprve databázi Azure SQL se službami Machine Learning Services (s R) povolenou. Během veřejné verze Preview vás Microsoft připojí k vaší službě a umožní strojové učení pro vaši stávající nebo novou databázi. Postupujte podle kroků v [části Zaregistrujte se pro náhled](sql-database-machine-learning-services-overview.md#signup).
+
+- Ujistěte se, že jste nainstalovali nejnovější [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS). Skripty R můžete spustit pomocí jiných nástrojů pro správu databáze nebo dotazů, ale v tomto rychlém startu budete používat SSMS.
 
 ## <a name="working-with-a-data-frame"></a>Práce s datovým rámcem
 
-Když skript vrátí výsledky z R do SQL, musí vrátit data jako **data. Frame**. Jakýkoli jiný typ objektu, který ve skriptu vygenerujete – ať už se jedná o seznam, faktor, vektor nebo binární data – musí být převedeno na datový rámec, pokud ho chcete vypsat jako součást výsledků uložených procedur. Naštěstí existuje více funkcí jazyka R, které podporují změnu jiných objektů na datový rámec. Můžete dokonce serializovat binární model a vrátit ho do datového rámce, který budete potřebovat později v tomto článku.
+Když skript vrátí výsledky z R na SQL, musí vrátit data jako **data.frame**. Jakýkoli jiný typ objektu, který generujete ve skriptu – ať už se jedná o seznam, faktor, vektor nebo binární data – musí být převeden na datový rámec, pokud jej chcete vypronecit jako součást výsledků uložené procedury. Naštěstí existuje více funkcí R pro podporu změny jiných objektů do datového rámce. Můžete dokonce serializovat binární model a vrátit jej v datovém rámci, což uděláte později v tomto článku.
 
-Nejprve Experimentujte s některými základními objekty jazyka R – vektory, maticemi a seznamy – a podívejte se, jak převod na datový rámec mění výstup předaný do SQL.
+Nejprve pojďme experimentovat s některými základními objekty R - vektory, matice a seznamy - a uvidíte, jak převod na datový rámec změní výstup předaný SQL.
 
-Porovnejte tyto dvě skripty "Hello World" v jazyce R. Skripty vypadají téměř stejně, ale první vrátí jeden sloupec tří hodnot, zatímco druhý vrátí tři sloupce s jednou hodnotou.
+Porovnejte tyto dva skripty "Hello World" v R. Skripty vypadají téměř identické, ale první vrátí jeden sloupec tří hodnot, zatímco druhý vrátí tři sloupce s jednou hodnotou každý.
 
 **Příklad 1**
 
@@ -67,13 +67,13 @@ EXECUTE sp_execute_external_script @language = N'R'
     , @input_data_1 = N'';
 ```
 
-Proč se výsledky liší?
+Proč jsou výsledky tak odlišné?
 
-Odpověď se obvykle dá najít pomocí příkazu R `str()`. Přidejte funkci `str(object_name)` kdekoli ve skriptu jazyka R, aby bylo schéma dat zadaného objektu R vráceno jako informační zpráva. Zprávy můžete zobrazit na kartě **zprávy** v SSMS.
+Odpověď lze obvykle nalézt pomocí `str()` příkazu R. Přidejte `str(object_name)` funkci kdekoli ve skriptu R, aby bylo datové schéma zadaného objektu R vráceno jako informační zpráva. Zprávy můžete zobrazit na kartě **Zprávy** v ssms.
 
-Chcete-li zjistit, proč příklad 1 a příklad 2 obsahují takové různé výsledky, vložte řádek `str(OutputDataSet)` na konci definice `@script` proměnné v každém příkazu, například takto:
+Chcete-li zjistit, proč příklad 1 a příklad `str(OutputDataSet)` 2 mají tak `@script` odlišné výsledky, vložte řádek na konci definice proměnné v každém příkazu, například takto:
 
-**Příklad 1 s přidanými funkcemi str**
+**Příklad 1 s přidanou funkcí str**
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -85,7 +85,7 @@ str(OutputDataSet);
     , @input_data_1 = N'  ';
 ```
 
-**Příklad 2 s přidanými funkcemi str**
+**Příklad 2 s přidanou funkcí str**
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -96,38 +96,38 @@ str(OutputDataSet);
     , @input_data_1 = N'  ';
 ```
 
-Teď zkontrolujte text ve **zprávách** a podívejte se, proč se výstup liší.
+Nyní zkontrolujte text ve **zprávách,** abyste zjistili, proč je výstup jiný.
 
-**Výsledky – příklad 1**
+**Výsledky - Příklad 1**
 
 ```text
 STDOUT message(s) from external script:
-'data.frame':   3 obs. of  1 variable:
+'data.frame':    3 obs. of  1 variable:
 $ mytextvariable: Factor w/ 3 levels " ","hello","world": 2 1 3
 ```
 
-**Výsledky – příklad 2**
+**Výsledky - Příklad 2**
 
 ```text
 STDOUT message(s) from external script:
-'data.frame':   1 obs. of  3 variables:
+'data.frame':    1 obs. of  3 variables:
 $ c..hello..: Factor w/ 1 level "hello": 1
 $ X...      : Factor w/ 1 level " ": 1
 $ c..world..: Factor w/ 1 level "world": 1
 ```
 
-Jak vidíte, lehká změna syntaxe jazyka R má velký vliv na schéma výsledků. Pro všechny podrobnosti jsou rozdíly v datových typech R vysvětleny v části "rozšířené informace" v části *datové struktury* v [tématu "Advanced R" by Hadley Wickham](http://adv-r.had.co.nz).
+Jak můžete vidět, nepatrná změna syntaxe R měla velký vliv na schéma výsledků. Pro všechny podrobnosti jsou rozdíly v datových typech R vysvětleny v podrobnostech v části *Datové struktury* v [části "Advanced R" od Hadley Wickham](http://adv-r.had.co.nz).
 
-Prozatím stačí vědět, že je potřeba zkontrolovat očekávané výsledky při vynucený objektů R do datových rámců.
+Prozatím si uvědomte, že je třeba zkontrolovat očekávané výsledky při vynucení objektů R do datových rámců.
 
 > [!TIP]
-> Můžete také použít funkce R identity, například `is.matrix`, `is.vector`a vracet informace o vnitřních datových strukturách.
+> Můžete také použít funkce identity `is.matrix`R, například , `is.vector`, vrátit informace o vnitřní datové struktuře.
 
 ## <a name="implicit-conversion-of-data-objects"></a>Implicitní převod datových objektů
 
-Každý datový objekt R má vlastní pravidla pro způsob zpracování hodnot v kombinaci s jinými datovými objekty, pokud mají dva datové objekty stejný počet rozměrů, nebo pokud libovolný datový objekt obsahuje heterogenní datové typy.
+Každý datový objekt R má vlastní pravidla pro způsob zpracování hodnot v kombinaci s jinými datovými objekty, pokud mají dva datové objekty stejný počet dimenzí nebo pokud libovolný datový objekt obsahuje heterogenní datové typy.
 
-Předpokládejme například, že chcete provést násobení matice pomocí jazyka R. Chcete vynásobit matici s jedním sloupcem a třemi hodnotami polem se čtyřmi hodnotami a očekávat 4x3 matici.
+Předpokládejme například, že chcete provést násobení matice pomocí R. Chcete vynásobit matici s jedním sloupcem třemi hodnotami polem se čtyřmi hodnotami a v důsledku toho očekávat matici 4x3.
 
 Nejprve vytvořte malou tabulku testovacích dat.
 
@@ -163,17 +163,17 @@ WITH RESULT SETS((
             ));
 ```
 
-V rámci pokrývání se sloupec tří hodnot převede na matici s jedním sloupcem. Vzhledem k tomu, že matice je pouze zvláštní případ pole v jazyce R, pole `y` je implicitně převedeno na matici s jedním sloupcem, aby byly tyto dva argumenty shodné.
+Pod obálkami je sloupec tří hodnot převeden na matici s jedním sloupcem. Vzhledem k tomu, že matice je pouze `y` zvláštní případ pole v R, pole je implicitně přinutí k matici s jedním sloupcem, aby se oba argumenty v souladu.
 
 **Results**
 
-|Sloupe|Col2|Col3|Col4|
+|Sloupec 1|Sloupec 2|Kol3|Kol4|
 |---|---|---|---|
 |12|13|14|15|
 |120|130|140|150|
 |1200|1300|1400|1 500|
 
-Všimněte si však, co se stane, když změníte velikost pole `y`.
+Všimněte si však, co se `y`stane, když změníte velikost pole .
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -190,17 +190,17 @@ Nyní R vrátí jednu hodnotu jako výsledek.
 
 **Results**
     
-|Sloupe|
+|Sloupec 1|
 |---|
 |1542|
 
-Proč? V takovém případě, protože dva argumenty lze zpracovat jako vektory stejné délky, R vrátí vnitřní produkt jako matici.  Toto je očekávané chování podle pravidel lineární algebraický. Může ale způsobit problémy, pokud vaše aplikace pro příjem dat očekává, že se výstupní schéma nikdy nemění.
+Proč? V tomto případě, protože dva argumenty mohou být zpracovány jako vektory stejné délky, R vrátí vnitřní produkt jako matice.  Jedná se o očekávané chování podle pravidel lineární algebry. Může však způsobit problémy, pokud vaše aplikace pro příjem dat očekává, že se výstupní schéma nikdy nezmění!
 
-## <a name="merge-or-multiply-columns-of-different-length"></a>Sloučení nebo vynásobení sloupců s různou délkou
+## <a name="merge-or-multiply-columns-of-different-length"></a>Sloučení nebo násobení sloupců různé délky
 
-Jazyk R poskytuje skvělou flexibilitu pro práci s vektory různých velikostí a pro kombinování těchto struktur podobných sloupců do datových rámců. Seznamy vektorů můžou vypadat jako tabulka, ale nedodržují všechna pravidla, která řídí databázové tabulky.
+R poskytuje velkou flexibilitu pro práci s vektory různých velikostí a pro kombinování těchto sloupcovitých struktur do datových rámců. Seznamy vektorů mohou vypadat jako tabulka, ale nedodržují všechna pravidla, kterými se řídí databázové tabulky.
 
-Například následující skript definuje číselné pole o délce 6 a ukládá ho do proměnné R `df1`. Číselné pole se pak sloučí s celými čísly tabulky RTestData (vytvořené výše), která obsahuje tři (3) hodnoty, chcete-li vytvořit nový datový rámec `df2`.
+Například následující skript definuje číselné pole délky 6 a `df1`ukládá jej do proměnné R . Číselné pole je pak zkombinováno s celámi tabulky RTestData (vytvořené výše), která obsahuje tři (3) hodnoty, aby se vytvořil nový datový rámec . `df2`
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -216,11 +216,11 @@ WITH RESULT SETS((
             ));
 ```
 
-Aby bylo možné vyplnit datový rámec, R opakuje prvky načtené z RTestData tolikrát, kolikrát to bude nutné, aby odpovídaly počtu prvků v poli `df1`.
+Chcete-li vyplnit datový rámec, R opakuje prvky načtené z RTestData tolikrát, kolikrát je potřeba, aby odpovídaly počtu prvků v poli `df1`.
 
 **Results**
     
-|*Col2*|*Col3*|
+|*Sloupec 2*|*Kol3*|
 |----|----|
 |1|1|
 |10|2|
@@ -229,18 +229,18 @@ Aby bylo možné vyplnit datový rámec, R opakuje prvky načtené z RTestData t
 |10|5|
 |100|6|
 
-Mějte na paměti, že datový rámec vypadá jenom jako tabulka, ale ve skutečnosti se jedná o seznam vektorů.
+Nezapomeňte, že datový rámec vypadá pouze jako tabulka, ale ve skutečnosti je seznam vektorů.
 
-## <a name="cast-or-convert-sql-data"></a>Přetypování nebo převod dat SQL
+## <a name="cast-or-convert-sql-data"></a>Přetypovat nebo převést data SQL
 
-R a SQL nepoužívají stejné datové typy, takže když spustíte dotaz v SQL, který získá data a pak je předáte do modulu runtime jazyka R, obvykle se provede nějaký typ implicitního převodu. Další sada převodů probíhá při vracení dat z R do SQL.
+R a SQL nepoužívají stejné datové typy, takže při spuštění dotazu v SQL získat data a pak předat do modulu runtime R, některé typy implicitní převod obvykle probíhá. Další sada převodů probíhá při vrácení dat z R do SQL.
 
-- SQL přenáší data z dotazu do procesu R a převede je na interní reprezentace pro vyšší efektivitu.
-- Běhový modul R načte data do proměnné data. Frame a provede jejich vlastní operace s daty.
-- Databázový stroj vrátí data do SQL pomocí zabezpečeného interního připojení a prezentuje data z datových typů SQL.
-- Data získáte připojením k SQL pomocí klienta nebo síťové knihovny, která může vydávat dotazy SQL a zpracovávat tabulkové datové sady. Tato klientská aplikace může potenciálně ovlivnit data jiným způsobem.
+- SQL odešle data z dotazu do procesu R a převede je na vnitřní reprezentaci pro větší efektivitu.
+- Runtime R načte data do proměnné data.frame a provede vlastní operace s daty.
+- Databázový stroj vrátí data sql pomocí zabezpečené interní připojení a představuje data z hlediska datových typů SQL.
+- Data získáte připojením k SQL pomocí klientské nebo síťové knihovny, která může vydávat dotazy SQL a zpracovávat tabulkové datové sady. Tato klientská aplikace může potenciálně ovlivnit data jinými způsoby.
 
-Pokud se chcete podívat, jak to funguje, spusťte v [AdventureWorksDW](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks) datovém skladu dotaz, jako je tento. Toto zobrazení vrátí prodejní data použitá při vytváření prognóz.
+Chcete-li zjistit, jak to funguje, spusťte dotaz, jako je tento v datovém skladu [AdventureWorksDW.](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks) Toto zobrazení vrátí data o prodeji použitá při vytváření prognóz.
 
 ```sql
 USE AdventureWorksDW
@@ -255,9 +255,9 @@ ORDER BY ReportingDate ASC
 ```
 
 > [!NOTE]
-> Můžete použít libovolnou verzi AdventureWorks nebo vytvořit jiný dotaz s vlastní databází. V tomto bodě se snažíte zpracovat některá data, která obsahují text, data a data a číselné hodnoty.
+> Můžete použít libovolnou verzi AdventureWorks nebo vytvořit jiný dotaz pomocí vlastní databáze. Jde o pokus o zpracování některých dat, která obsahují text, datetime a číselné hodnoty.
 
-Teď tento dotaz zkuste použít jako vstup do uložené procedury.
+Nyní zkuste použít tento dotaz jako vstup do uložené procedury.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -275,9 +275,9 @@ OutputDataSet <- InputDataSet;
 WITH RESULT SETS undefined;
 ```
 
-Pokud se zobrazí chyba, budete pravděpodobně muset udělat nějaké úpravy textu dotazu. Například predikát řetězce v klauzuli WHERE musí být uzavřen dvěma sadami jednoduchých uvozovek.
+Pokud se zobrazí chyba, budete pravděpodobně muset provést některé úpravy textu dotazu. Například predikát řetězce v klauzuli WHERE musí být uzavřen dvěma sadami jednoduchých uvozovek.
 
-Až se dotaz dostanou, zkontrolujte výsledky funkce `str` a podívejte se, jak R zpracovává vstupní data.
+Po získání dotazu pracovní, zkontrolujte `str` výsledky funkce zobrazíte, jak R zachází se vstupními daty.
 
 **Results**
 
@@ -288,16 +288,16 @@ STDOUT message(s) from external script: $ ProductSeries: Factor w/ 1 levels "M20
 STDOUT message(s) from external script: $ Amount       : num  3400 16925 20350 16950 16950
 ```
 
-- Sloupec DateTime byl zpracován pomocí datového typu R, **POSIXct**.
-- Textový sloupec "ProductSeries" byl identifikován jako **faktor**, což znamená kategorií proměnnou. Hodnoty řetězce se ve výchozím nastavení zpracovávají jako faktory. Pokud předáte řetězec do jazyka R, je převeden na celé číslo pro interní použití a následně mapován zpět na řetězec ve výstupu.
+- Sloupec datetime byl zpracován pomocí datového typu R **POSIXct**.
+- Textový sloupec "ProductSeries" byl identifikován jako **faktor**, což znamená kategorickou proměnnou. Řetězcové hodnoty jsou ve výchozím nastavení zpracovány jako faktory. Pokud předáte řetězec R, je převeden na celé číslo pro interní použití a pak mapován zpět na řetězec na výstupu.
 
 ## <a name="summary"></a>Souhrn
 
-V těchto krátkých příkladech vidíte nutnost kontrolovat účinky převodu dat při předávání dotazů SQL jako vstupu. Vzhledem k tomu, že jazyk R nepodporuje některé datové typy SQL, zvažte tyto způsoby, jak se vyhnout chybám:
+Z těchto krátkých příkladů můžete vidět, že je třeba zkontrolovat účinky převodu dat při předávání dotazů SQL jako vstup. Vzhledem k tomu, že některé datové typy SQL nejsou podporovány R, zvažte tyto způsoby, jak se vyhnout chybám:
 
-- Otestujte data předem a ověřte sloupce nebo hodnoty ve schématu, které by mohly být problémem při předání do kódu jazyka R.
-- Místo použití `SELECT *`Určete sloupce ve vstupním zdroji dat jednotlivě, a zjistěte, jak se budou zpracovávat jednotlivé sloupce.
-- Při přípravě vstupních dat proveďte explicitní přetypování, abyste se vyhnuli překvapením.
-- Vyhněte se předávání sloupců dat (například identifikátorů GUID nebo ROWGUIDS), které způsobují chyby a nejsou užitečné pro modelování.
+- Otestujte data předem a ověřte sloupce nebo hodnoty ve schématu, které by mohly být problémem při předání kódu R.
+- Zadejte sloupce ve zdroji vstupních dat `SELECT *`jednotlivě, nikoli pomocí a zjistěte, jak bude každý sloupec zpracován.
+- Proveďte explicitní přetypovádá podle potřeby při přípravě vstupních dat, aby se zabránilo překvapení.
+- Vyhněte se předávání sloupců dat (například GUIDS nebo rowguids), které způsobují chyby a nejsou užitečné pro modelování.
 
-Další informace o podporovaných a nepodporovaných datových typech R najdete v tématu [knihovny a datové typy jazyka r](/sql/advanced-analytics/r/r-libraries-and-data-types).
+Další informace o podporovaných a nepodporovaných datových typech R naleznete v [knihovnách R a datových typech](/sql/advanced-analytics/r/r-libraries-and-data-types).

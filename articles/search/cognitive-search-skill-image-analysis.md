@@ -1,28 +1,28 @@
 ---
-title: Vnímání znalostí analýzy obrázků
+title: Kognitivní dovednosti analýzy obrázků
 titleSuffix: Azure Cognitive Search
-description: Extrahujte sémantický text pomocí analýzy obrázků s využitím vnímání analýzy obrázků v kanálu rozšíření AI v Azure Kognitivní hledání.
+description: Extrahujte sémantický text pomocí analýzy obrázků pomocí kognitivních dovedností analýzy obrázků v kanálu obohacení umělou aicí v Azure Cognitive Search.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f2703994d3fe8765662e6a0205d63cef9327e17a
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 4ff6972e2f7ea219a1c8c8dbabbf9fe12a8fa59e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79080192"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369478"
 ---
-# <a name="image-analysis-cognitive-skill"></a>Vnímání znalostí analýzy obrázků
+# <a name="image-analysis-cognitive-skill"></a>Kognitivní dovednosti analýzy obrázků
 
-Dovednost **analýzy obrázků** extrahuje bohatou sadu vizuálních funkcí založenou na obsahu obrázku. Můžete například vygenerovat titulek z obrázku, generovat značky nebo identifikovat celebrit a orientačních bodů. Tato dovednost používá v Cognitive Services modely strojového učení, které poskytuje [počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) . 
+Dovednost **Analýza obrazu** extrahuje bohatou sadu vizuálních funkcí založených na obsahu obrazu. Můžete například vygenerovat titulek z obrázku, generovat značky nebo identifikovat celebrity a orientační body. Tato dovednost používá modely strojového učení poskytované [počítačové vidění](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) v cognitive services. 
 
 > [!NOTE]
-> Malé objemy (pod 20 transakcí) se dají v Azure Kognitivní hledání zdarma spustit, ale větší úlohy vyžadují [připojení fakturovatelné Cognitive Services prostředků](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API v Cognitive Services a pro extrakci obrázků jako součást fáze pro vystavování dokumentů ve službě Azure Kognitivní hledání. Pro extrakci textu z dokumentů se neúčtují žádné poplatky.
+> Malé svazky (pod 20 transakcí) lze provést zdarma v Azure Cognitive Search, ale větší úlohy vyžadují [připojení fakturovatelné hodnoslužeb.](cognitive-search-attach-cognitive-services.md) Poplatky narůstají při volání API ve službách Cognitive Services a pro extrakci image jako součást fáze prolomení dokumentů v Azure Cognitive Search. Za extrakci textu z dokumentů se neúčtují žádné poplatky.
 >
-> Při provádění integrovaných dovedností se účtují poplatky za stávající [Cognitive Services průběžných plateb](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakci imagí jsou popsané na [stránce s cenami za Azure kognitivní hledání](https://go.microsoft.com/fwlink/?linkid=2042400).
+> Provádění vestavěných dovedností se účtuje za stávající [cenu průběžných plateb služeb Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakci obrázků jsou popsané na [stránce s cenami Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -30,23 +30,23 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 ## <a name="skill-parameters"></a>Parametry dovednosti
 
-V parametrech jsou rozlišována malá a velká písmena.
+U parametrů se rozlišují malá a velká písmena.
 
 | Název parametru     | Popis |
 |--------------------|-------------|
-| defaultLanguageCode   |  Řetězec označující jazyk, který se má vrátit. Služba vrátí výsledky rozpoznávání v zadaném jazyce. Není-li tento parametr zadán, je použita výchozí hodnota "en". <br/><br/>Podporované jazyky: <br/>*EN* -angličtina (výchozí) <br/> *ES* – španělština <br/> Japonsko – japonština <br/> *PT* – portugalština <br/> *zh* – zjednodušená čínština|
-| visualFeatures |  Pole řetězců udávající typy vizuálních funkcí, které mají být vráceny. Mezi platné typy vizuálních funkcí patří:  <ul><li>*dospělý* – zjistí, jestli je obrázek pornografickýý (znázorňuje nahotu nebo sex), nebo je gorie (znázorňuje extrémní násilí nebo krev). Zjistil se také zřejmý sugestivní obsah (neboli obsah pikantní).</li><li>*značky* – detekuje různé značky v rámci obrázku, včetně přibližného umístění. Funkce vizuálních *značek* je k dispozici pouze v angličtině.</li><li> *Categories* – roztřídí obsah obrázků podle taxonomie definované v [dokumentaci Cognitive Services počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy). </li><li>*Popis* – popisuje obsah obrázku s úplnou větou v podporovaných jazycích.</li><li>*obličeje* – zjišťuje, zda jsou k dispozici plošky. Pokud je k dispozici, vygeneruje souřadnice, pohlaví a stáří.</li><li> *objekty* – detekuje různé objekty v rámci obrázku, včetně přibližného umístění. Funkce vizuálů *objektů* je k dispozici pouze v angličtině.</li><li> *Tags* – Taguje obrázek pomocí podrobného seznamu slov souvisejících s obsahem obrázku.</li></ul> Názvy vizuálních funkcí rozlišují velká a malá písmena. Všimněte si, že vizuální funkce *Color* a *ImageType* se už nepoužívají, ale k této funkci můžete přistupovat prostřednictvím [vlastní dovednosti](https://go.microsoft.com/fwlink/?linkid=2121117).|
-| details   | Pole řetězců udávající, které podrobnosti specifické pro doménu se mají vrátit. Mezi platné typy vizuálních funkcí patří: <ul><li>*celebrit* – identifikuje celebrit, pokud se v imagi zjistí.</li><li>*orientačních bodů* – identifikuje orientační části, pokud jsou v imagi zjištěné. </li></ul> |
+| defaultLanguageCode   |  Řetězec označující jazyk, který se má vrátit. Služba vrátí výsledky rozpoznávání v zadaném jazyce. Pokud tento parametr není zadán, výchozí hodnota je "en". <br/><br/>Podporované jazyky jsou: <br/>*en* - Angličtina (výchozí) <br/> *es* - španělština <br/> *ja* - japonština <br/> *pt* - portugalština <br/> *zh* - Zjednodušená čínština|
+| visualFeatures |  Pole řetězců označující typy vizuálních prvků, které mají být vráceny. Mezi platné typy vizuálních funkcí patří:  <ul><li>*dospělý* - detekuje, zda je obraz pornografický (zobrazuje nahotu nebo sexuální akt), nebo je krvavý (zobrazuje extrémní násilí nebo krev). Sexuálně sugestivní obsah (aka pikantní obsah) je také detekován.</li><li>*značky* - detekuje různé značky v rámci obrázku, včetně přibližné polohy. Vizuální *funkce značky* je k dispozici pouze v angličtině.</li><li> *kategorie* - kategorizuje obsah obrazu podle taxonomie definované v [dokumentaci počítačového vidění](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)cognitive services . </li><li>*description* - popisuje obsah obrázku s celou větou v podporovaných jazycích.</li><li>*tváře* - detekuje, zda jsou přítomny plochy. Pokud je přítomen, generuje souřadnice, pohlaví a věk.</li><li> *objekty* - detekuje různé objekty v obraze, včetně přibližné polohy. Vizuální funkce *objektů* je k dispozici pouze v angličtině.</li><li> *tagy* - tagy obraz s podrobným seznamem slov souvisejících s obsahem obrázku.</li></ul> Názvy vizuálních funkcí rozlišují malá a velká písmena. Všimněte si, že *barva* a *imageType* vizuální funkce byly zastaralé, ale tato funkce může být stále přístupné prostřednictvím [vlastní dovednosti](https://go.microsoft.com/fwlink/?linkid=2121117).|
+| Podrobnosti   | Pole řetězců označující, které podrobnosti specifické pro doménu vrátit. Mezi platné typy vizuálních funkcí patří: <ul><li>*celebrity* - identifikuje celebrity, pokud jsou detekovány na obrázku.</li><li>*orientační body* - identifikuje orientační body, pokud jsou detekovány na obrázku. </li></ul> |
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
-| Název vstupu      | Popis                                          |
+| Vstupní název      | Popis                                          |
 |---------------|------------------------------------------------------|
-| image         | Komplexní typ. V současné době funguje pouze s polem "/Document/normalized_images" vytvořeným indexerem objektů BLOB v Azure, pokud je ```imageAction``` nastaveno na jinou hodnotu než ```none```. Další informace najdete v [ukázce](#sample-output) .|
+| image         | Komplexní typ. V současné době funguje pouze s "/document/normalized_images" pole, ```imageAction``` vyrobené indexerem objektů ```none```blob Azure, pokud je nastavena na jinou hodnotu než . Další informace naleznete v [ukázce.](#sample-output)|
 
 
 
-##  <a name="sample-skill-definition"></a>Ukázka definice dovednosti
+##  <a name="sample-skill-definition"></a>Ukázková definice dovedností
 
 ```json
         {
@@ -55,10 +55,11 @@ V parametrech jsou rozlišována malá a velká písmena.
             "context": "/document/normalized_images/*",
             "defaultLanguageCode": "en",
             "visualFeatures": [
-                "Tags",
-                "Categories",
-                "Description",
-                "Faces"
+                "tags",
+                "categories",
+                "description",
+                "faces",
+                "brands"
             ],
             "inputs": [
                 {
@@ -78,11 +79,14 @@ V parametrech jsou rozlišována malá a velká písmena.
                 },
                 {
                     "name": "faces"
+                },
+                {
+                    "name": "brands"
                 }
             ]
         }
 ```
-### <a name="sample-index-for-only-the-categories-description-faces-and-tags-fields"></a>Vzorový index (jenom pro pole kategorie, popis, obličeje a značky)
+### <a name="sample-index-for-only-the-categories-description-faces-and-tags-fields"></a>Ukázkový index (pouze pro pole kategorií, popisu, ploch a tagů)
 ```json
 {
     "fields": [
@@ -294,7 +298,7 @@ V parametrech jsou rozlišována malá a velká písmena.
 }
 
 ```
-### <a name="sample-output-field-mapping-for-the-above-index"></a>Ukázka mapování polí výstupu (pro výše uvedený index)
+### <a name="sample-output-field-mapping-for-the-above-index"></a>Ukázkové mapování výstupního pole (pro výše uvedený index)
 ```json
     "outputFieldMappings": [
         {
@@ -312,11 +316,15 @@ V parametrech jsou rozlišována malá a velká písmena.
         {
             "sourceFieldName": "/document/normalized_images/*/faces/*",
             "targetFieldName": "faces"
+        },
+        {
+            "sourceFieldName": "/document/normalized_images/*/brands/*/name",
+            "targetFieldName": "brands"
         }
 ```
-### <a name="variation-on-output-field-mappings-nested-properties"></a>Variace při mapování polí výstupu (vnořené vlastnosti)
+### <a name="variation-on-output-field-mappings-nested-properties"></a>Variace mapování výstupních polí (vnořené vlastnosti)
 
-Můžete definovat mapování polí pro výstup na vlastnosti nižší úrovně, jako jsou pouze orientačních bodů nebo celebrit. V takovém případě se ujistěte, že schéma indexu obsahuje pole, které konkrétně obsahuje orientační.
+Mapování výstupních polí můžete definovat na vlastnosti nižší úrovně, například pouze orientační body nebo celebrity. V takovém případě se ujistěte, že schéma indexu obsahuje pole obsahující konkrétně orientační body.
 
 ```json
     "outputFieldMappings": [
@@ -325,7 +333,7 @@ Můžete definovat mapování polí pro výstup na vlastnosti nižší úrovně,
             "targetFieldName": "celebrities"
         }
 ```
-##  <a name="sample-input"></a>Vzorový vstup
+##  <a name="sample-input"></a>Vstup vzorku
 
 ```json
 {
@@ -485,6 +493,7 @@ Můžete definovat mapování polí pro výstup na vlastnosti nižší úrovně,
         "brands":[  
            {  
               "name":"Microsoft",
+              "confidence": 0.903,
               "rectangle":{  
                  "x":20,
                  "y":97,
@@ -501,19 +510,19 @@ Můžete definovat mapování polí pro výstup na vlastnosti nižší úrovně,
 
 
 ## <a name="error-cases"></a>Chybové případy
-V následujících chybových případech nejsou extrahovány žádné prvky.
+V následujících chybových případech jsou extrahovány žádné prvky.
 
 | Kód chyby | Popis |
 |------------|-------------|
-| NotSupportedLanguage | Zadaný jazyk není podporován. |
-| InvalidImageUrl | Adresa URL obrázku je chybně naformátovaná nebo není přístupná.|
-| InvalidImageFormat | Vstupní data nejsou platným obrázkem. |
-| InvalidImageSize | Vstupní obrázek je příliš velký. |
-| NotSupportedVisualFeature  | Zadaný typ funkce není platný. |
-| NotSupportedImage | Nepodporovaná image, například podřízená pornografie. |
-| InvalidDetails | Nepodporovaný model specifický pro doménu. |
+| Nepodporovaný jazyk | Zadaný jazyk není podporován. |
+| Neplatnáadresa ImageUrl | Adresa URL obrázku je špatně formátovaná nebo není přístupná.|
+| Neplatný formát image | Vstupní data nejsou platný obrázek. |
+| Neplatná velikost image | Vstupní obraz je příliš velký. |
+| Funkce NotSupportedVisualFeature  | Zadaný typ prvku není platný. |
+| Nepodporovaný obrázek | Nepodporovaný obraz, například dětská pornografie. |
+| Neplatnépodrobnosti | Nepodporovaný model specifický pro doménu. |
 
-Pokud se zobrazí chybová zpráva podobná `"One or more skills are invalid. Details: Error in skill #<num>: Outputs are not supported by skill: Landmarks"`, ověřte cestu. Celebrit i orientačních bodů jsou vlastnosti v rámci `detail`.
+Pokud se zobrazí chyba `"One or more skills are invalid. Details: Error in skill #<num>: Outputs are not supported by skill: Landmarks"`podobná , zkontrolujte cestu. Celebrity a památky jsou `detail`vlastnosti pod .
 
 ```json
 "categories":[  
@@ -532,5 +541,5 @@ Pokud se zobrazí chybová zpráva podobná `"One or more skills are invalid. De
 ## <a name="see-also"></a>Viz také
 
 + [Integrované dovednosti](cognitive-search-predefined-skills.md)
-+ [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
-+ [Vytvořit indexer (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Jak definovat sadu dovedností](cognitive-search-defining-skillset.md)
++ [Vytvoření indexeru (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

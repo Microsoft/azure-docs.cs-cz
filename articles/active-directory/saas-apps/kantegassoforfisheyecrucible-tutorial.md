@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s jednotným Přihlašováním Kantega pro FishEye/Crucible | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a jednotné přihlašování Kantega pro FishEye/Crucible.
+title: 'Kurz: Integrace služby Azure Active Directory s přihlašováním k jednotnému přihlašování kantega pro fisheye/crucible | Dokumenty společnosti Microsoft'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a jednotném přihlašováním Kantega pro FishEye/Crucible.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,139 +17,139 @@ ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f262f94c451d5dcffd933bdebb1374b8733b9fd8
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67595173"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-fisheyecrucible"></a>Kurz: Integrace Azure Active Directory s jednotným Přihlašováním Kantega pro FishEye/Crucible
+# <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-fisheyecrucible"></a>Kurz: Integrace služby Azure Active Directory s přihlašováním k jednotnému přihlašování Kantega pro fisheye/crucible
 
-V tomto kurzu se dozvíte, jak integrovat Kantega jednotné přihlašování pro FishEye/Crucible s Azure Active Directory (Azure AD).
-Integrace Kantega jednotné přihlašování pro FishEye/Crucible s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat zabezpečení přihlašování Kantega pro FishEye/Crucible s Azure Active Directory (Azure AD).
+Integrace jednotného přihlašování Kantega pro FishEye/Crucible s Azure AD vám poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k Kantega jednotného přihlašování pro FishEye/Crucible.
-* Můžete povolit uživatelům, aby se automaticky přihlášeni k Kantega jednotné přihlašování pro FishEye/Crucible (Single Sign-On) pomocí jejich účtů služby Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit ve službě Azure AD, který má přístup k zabezpečení jednotného přihlašování Kantega pro FishEye/Crucible.
+* Můžete povolit uživatelům, aby se automaticky přihlásili k jednotnému přihlašování Kantega pro FishEye/Crucible (jednotné přihlašování) s jejich účty Azure AD.
+* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s jednotným Přihlašováním Kantega pro FishEye/Crucible, potřebujete následující položky:
+Chcete-li nakonfigurovat integraci Azure AD s kantega jednotného přihlašování pro FishEye/Crucible, budete potřebovat následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
-* Kantega jednotné přihlašování pro FishEye/Crucible jednotného přihlašování povolená předplatného
+* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
+* Kantega Jednotné přihlašování pro předplatné s povoleným jedním přihlášením FishEye/Crucible
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Podporuje jednotné přihlašování Kantega pro FishEye/Crucible **SP a zprostředkovatele identity** jednotné přihlašování zahájené pomocí
+* Kantega SSO pro FishEye/Crucible podporuje **SP a IDP** inicioval Jednotné přihlašování
 
-## <a name="adding-kantega-sso-for-fisheyecrucible-from-the-gallery"></a>Přidání Kantega jednotné přihlašování pro FishEye/Crucible z Galerie
+## <a name="adding-kantega-sso-for-fisheyecrucible-from-the-gallery"></a>Přidání Kantega SSO pro FishEye /Crucible z galerie
 
-Konfigurace integrace Kantega jednotné přihlašování pro FishEye/Crucible do služby Azure AD, budete muset přidat Kantega jednotné přihlašování pro FishEye/Crucible z Galerie na váš seznam spravovaných aplikací SaaS.
+Chcete-li nakonfigurovat integraci jednotného přihlašování Kantega pro FishEye/Crucible do Azure AD, musíte přidat kantega jednotného přihlašování pro FishEye/Crucible z galerie do seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat Kantega jednotné přihlašování pro FishEye/Crucible z galerie, postupujte následovně:**
+**Chcete-li přidat Kantega SSO pro FishEye/Crucible z galerie, proveďte následující kroky:**
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Kantega jednotné přihlašování pro FishEye/Crucible**vyberte **Kantega jednotné přihlašování pro FishEye/Crucible** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **Kantega SSO pro FishEye/Crucible**, zvolte **Kantega SSO pro FishEye/Crucible** z panelu výsledků a pak kliknutím na **tlačítko Přidat** přidejte aplikaci.
 
-    ![Kantega jednotné přihlašování pro FishEye/Crucible v seznamu výsledků](common/search-new-app.png)
+    ![Kantega SSO pro FishEye/Crucible v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestovat Azure AD jednotné přihlašování s jednotným Přihlašováním Kantega FishEye/Crucible podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Kantega jednotné přihlašování pro FishEye/Crucible.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí jednotného přihlašování Kantega pro FishEye/Crucible na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí být vytvořen vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem v přihlašování k upisování služby Kantega pro FishEye/Crucible.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s jednotným Přihlašováním Kantega pro FishEye/Crucible, které potřebujete k dokončení následujících stavebních bloků:
+Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí jednotného přihlašování Kantega pro FishEye/Crucible, musíte dokončit následující stavební bloky:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace jednotného přihlašování Kantega pro FishEye/Crucible Single Sign-On](#configure-kantega-sso-for-fisheyecrucible-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvoření Kantega jednotného přihlašování pro FishEye/Crucible testovacího uživatele](#create-kantega-sso-for-fisheyecrucible-test-user)**  – Pokud chcete mít protějšek Britta Simon Kantega jednotné přihlašování pro FishEye/Crucible, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
+2. **[Konfigurace jednotného přihlašování Kantega pro jedno přihlášení FishEye/Crucible](#configure-kantega-sso-for-fisheyecrucible-single-sign-on)** – pro konfiguraci nastavení jednotného přihlášení na straně aplikace.
+3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
+4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
+5. **[Vytvořte Kantega jednotného přihlašování pro uživatele fisheye/crucible test](#create-kantega-sso-for-fisheyecrucible-test-user)** – mít protějšek Britta Simon v Kantega jednotného přihlašování pro FishEye/Crucible, který je propojen s reprezentací Azure AD uživatele.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s jednotným Přihlašováním Kantega pro FishEye/Crucible, proveďte následující kroky:
+Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí jednotného přihlašování Kantega pro FishEye/Crucible, proveďte následující kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **Kantega jednotné přihlašování pro FishEye/Crucible** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. Na [portálu Azure](https://portal.azure.com/)na stránce integrace aplikací **Kantega Pro FishEye/Crucible** vyberte **Jedno přihlášení**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
+4. V části **Základní konfigurace SAML,** pokud chcete nakonfigurovat aplikaci v režimu iniciovaného **protokolem IDP,** proveďte následující kroky:
 
-    ![Jednotné přihlašování Kantega FishEye/Crucible domény a adresy URL jednotné přihlašování – informace](common/idp-intiated.png)
+    ![Kantega Jednotné přihlašování pro FishEye/Crucible Domain a URL jednotné přihlašovací informace](common/idp-intiated.png)
 
-    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    a. Do textového pole **Identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
-    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    b. Do textového pole **Odpovědět na adresu URL** zadejte adresu URL pomocí následujícího vzoru:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
-5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+5. Klepněte na tlačítko **Nastavit další adresy URL** a proveďte následující krok, pokud chcete aplikaci nakonfigurovat v režimu iniciovaném **službou SP:**
 
-    ![Jednotné přihlašování Kantega FishEye/Crucible domény a adresy URL jednotné přihlašování – informace](common/metadata-upload-additional-signon.png)
+    ![Kantega Jednotné přihlašování pro FishEye/Crucible Domain a URL jednotné přihlašovací informace](common/metadata-upload-additional-signon.png)
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    Do textového pole **Přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL. Tyto hodnoty jsou přijímány během konfigurace modulu plug-in FishEye/Crucible, který je vysvětlen později v tomto kurzu.
+    > Tyto hodnoty nejsou skutečné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL pro odpověď a adresou URL pro přihlášení. Tyto hodnoty jsou přijímány během konfigurace pluginu FishEye/Crucible, který je vysvětlen dále v tutoriálu.
 
-6. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+6. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si xml **metadat federace** z daných možností podle vašeho požadavku a uložte ho do počítače.
 
     ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-7. Na **nastavit jednotné přihlašování Kantega pro FishEye/Crucible** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+7. V části **Nastavit jednotné přihlašování Kantega pro FishEye/Crucible** zkopírujte příslušnou adresu URL podle vašeho požadavku.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor Azure AD
+    b. Identifikátor azure reklamy
 
-    c. Adresa URL – odhlášení
+    c. Adresa URL odhlášení
 
-### <a name="configure-kantega-sso-for-fisheyecrucible-single-sign-on"></a>Nakonfigurovat jednotné přihlašování Kantega pro širokoúhlého/Crucible jednotného přihlašování
+### <a name="configure-kantega-sso-for-fisheyecrucible-single-sign-on"></a>Konfigurace jednotného přihlašování Kantega pro jednotné přihlašování FishEye/Crucible
 
-1. V okně jiné webové prohlížeče Přihlaste se na váš místní server FishEye/Crucible jako správce.
+1. V jiném okně webového prohlížeče se přihlaste k místnímu serveru FishEye/Crucible jako správce.
 
-1. Najeďte myší na ikonu a klikněte na tlačítko **doplňky**.
+1. Najeďte přes kolečko a klikněte **na doplňky**.
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/addon1.png)
 
-1. V části Nastavení systému, klikněte na tlačítko **najít nové doplňky**. 
+1. V části Nastavení systému klikněte na **Najít nové doplňky**. 
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/add-on2.png)
 
-1. Hledání **Kantega jednotné přihlašování pro Crucible** a klikněte na tlačítko **nainstalovat** tlačítko k instalaci nové zásuvný modul SAML.
+1. Vyhledejte nového pluginu SAML klepnutím na tlačítko Nainstalovat pro **službu Kantega SSO pro crucible** a klepnutím na tlačítko **Nainstalovat.**
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/addon2.png)
 
-1. Spustí se instalace modulu plug-in. 
+1. Spustí se instalace pluginu. 
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/addon33.png)
 
@@ -161,11 +161,11 @@ Ke konfiguraci Azure AD jednotné přihlašování s jednotným Přihlašování
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/addon35.png)
 
-1. Klikněte na tlačítko **konfigurovat** konfigurace nového modulu plug-in. 
+1. Chcete-li nakonfigurovat nový plugin, klepněte na **tlačítko Konfigurovat.** 
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/addon3.png)
 
-1. V **SAML** oddílu. Vyberte **Azure Active Directory (Azure AD)** z **přidat zprostředkovatele identity** rozevíracího seznamu.
+1. V sekci **SAML.** V rozevíracím seznamu **Přidat zprostředkovatele identity** vyberte **Azure Active Directory (Azure AD).**
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/addon4.png)
 
@@ -173,148 +173,148 @@ Ke konfiguraci Azure AD jednotné přihlašování s jednotným Přihlašování
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/addon5.png)
 
-1. Na **vlastnosti aplikace** části, proveďte následující kroky:
+1. V části **Vlastnosti aplikace** proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/addon6.png)
 
-    a. Kopírovat **identifikátor ID URI aplikace** hodnoty a použít ho jako **identifikátor, adresa URL odpovědi a přihlašovací adresa URL** na **základní konfiguraci SAML** části webu Azure Portal.
+    a. Zkopírujte hodnotu **IDENTIFIKÁTOR URI id aplikace** a použijte ji jako **identifikátor, adresu URL pro odpověď a adresu URL přihlášení** v části Základní konfigurace **SAML** na webu Azure Portal.
 
-    b. Klikněte na **Další**.
+    b. Klikněte na **Další**.
 
-1. Na **import metadat** části, proveďte následující kroky:
+1. V části **Import metadat** proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/addon7.png)
 
-    a. Vyberte **soubor metadat v mém počítači**a nahrát soubor metadat, který jste si stáhli z webu Azure portal.
+    a. Vpočítači vyberte **soubor metadat**a nahrajte soubor metadat, který jste stáhli z webu Azure Portal.
 
-    b. Klikněte na **Další**.
+    b. Klikněte na **Další**.
 
-1. Na **název a jednotného přihlašování k umístění** části, proveďte následující kroky:
+1. V části **Název a umístění přistaň s tezací služby** proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/addon8.png)
 
-    a. Přidání názvu zprostředkovatele Identity v **název zprostředkovatele identit** textového pole (např. Azure AD).
+    a. Přidejte název zprostředkovatele identity v textovém poli **názvu zprostředkovatele identity** (například Azure AD).
 
-    b. Klikněte na **Další**.
+    b. Klikněte na **Další**.
 
-1. Ověřte podpisového certifikátu a klikněte na tlačítko **Další**.   
+1. Ověřte podpisový certifikát a klepněte na tlačítko **Další**.   
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/addon9.png)
 
-1. Na **širokoúhlého uživatelské účty** části, proveďte následující kroky:
+1. V části **Uživatelské účty FishEye** proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/addon10.png)
 
-    a. Vyberte **v případě potřeby vytvořte uživatele v adresáři společnosti FishEye interní** a zadejte odpovídající název skupiny pro uživatele (může být více č. ze skupiny, oddělené čárkami).
+    a. V případě potřeby vyberte **vytvořit uživatele v interním adresáři fisheye** a zadejte příslušný název skupiny pro uživatele (může být vícenásobné ne. skupin oddělených čárkou).
 
-    b. Klikněte na **Další**.
+    b. Klikněte na **Další**.
 
-1. Klikněte na **Dokončit**.
+1. Klikněte na **Finish** (Dokončit).
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/addon11.png)
 
-1. Na **známé domény pro službu Azure AD** části, proveďte následující kroky:  
+1. V části **Známé domény pro Azure AD** proveďte následující kroky:  
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/addon12.png)
 
-    a. Vyberte **známé domén** na levém panelu na stránce.
+    a. V levém panelu stránky **vyberte Známé domény.**
 
-    b. Zadejte název domény **známé domén** textového pole.
+    b. Zadejte název domény do textového pole **Známé domény.**
 
     c. Klikněte na **Uložit**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+2. V horní části obrazovky vyberte **Nový uživatel.**
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![Tlačítko nového uživatele](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. Ve vlastnostech User proveďte následující kroky.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![Dialogové okno Uživatel](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    a. Do pole **Název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole `brittasimon@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
+    b. V poli **Uživatelské** `brittasimon@yourcompanydomain.extension`jméno typ pole . Například BrittaSimon@contoso.com.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k Kantega jednotné přihlašování pro FishEye/Crucible.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu k Kantega jednotného přihlašování pro FishEye/Crucible.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Kantega jednotné přihlašování pro FishEye/Crucible**.
+1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **Kantega Jednotné přihlašování pro FishEye/Crucible**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **Kantega jednotné přihlašování pro FishEye/Crucible**.
+2. V seznamu aplikací vyberte **možnost Kantega SSO pro FishEye/Crucible**.
 
-    ![Kantega jednotné přihlašování pro FishEye/Crucible odkaz v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Kantega SSO pro FishEye/Crucible v seznamu Aplikace](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
 
     ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
 
-### <a name="create-kantega-sso-for-fisheyecrucible-test-user"></a>Vytvoření Kantega jednotného přihlašování pro FishEye/Crucible testovacího uživatele
+### <a name="create-kantega-sso-for-fisheyecrucible-test-user"></a>Vytvořit Kantega SSO pro uživatele testu FishEye/Crucible
 
-Pokud chcete povolit Azure AD uživatelům umožní přihlásit k FishEye/Crucible, musí být poskytnuty do FishEye/Crucible. Zřizování v Kantega jednotného přihlašování pro FishEye/Crucible, je ruční úlohy.
+Chcete-li povolit uživatelům Azure AD přihlásit se k FishEye/Crucible, musí být zřízena do FishEye/Crucible. V Kantega Jednotné ho disponiálu pro FishEye/Crucible zřizování je ruční úloha.
 
-**K poskytnutí uživatelského účtu, postupujte následovně:**
+**Chcete-li zřídit uživatelský účet, proveďte následující kroky:**
 
-1. Přihlaste se na váš místní server Crucible jako správce.
+1. Přihlaste se k místnímu serveru Crucible jako správce.
 
-1. Najeďte myší na ikonu a klikněte na tlačítko **uživatelé**.
+1. Najeďte přes kolečko a klikněte na **tlačítko Uživatelé**.
 
     ![Přidat zaměstnance](./media/kantegassoforfisheyecrucible-tutorial/user1.png)
 
-1. V části **uživatelé** kartě oddíl, klikněte na tlačítko **přidat uživatele**.
+1. V části **Uživatelé** klikněte na **Přidat uživatele**.
 
     ![Přidat zaměstnance](./media/kantegassoforfisheyecrucible-tutorial/user2.png)
 
-1. Na **Add New User** dialogového okna stránky, proveďte následující kroky:
+1. Na stránce dialogového okna **Přidat nového uživatele** proveďte následující kroky:
 
     ![Přidat zaměstnance](./media/kantegassoforfisheyecrucible-tutorial/user3.png)
 
-    a. V **uživatelské jméno** , jako je textové pole, typ e-mailu uživatele Brittasimon@contoso.com.
+    a. Do textového pole **Uživatelské jméno** zadejte Brittasimon@contoso.come-mail uživatele jako .
 
-    b. V **zobrazovaného názvu** textového pole zadejte zobrazované jméno uživatele, jako je Britta Simon.
+    b. Do textového pole **Zobrazované jméno** zadejte zobrazované jméno uživatele, jako je Britta Simon.
 
-    c. V **e-mailová adresa** , jako je textové pole, typ e-mailovou adresu uživatele Brittasimon@contoso.com.
+    c. Do textového pole **E-mailová adresa** Brittasimon@contoso.comzadejte e-mailovou adresu uživatele jako .
 
-    d. V **heslo** textového pole zadejte heslo uživatele.
+    d. Do textového pole **Heslo** zadejte heslo uživatele.
 
-    e. V **potvrzení hesla** textového pole zadejte znovu heslo uživatele.
+    e. Do textového pole **Potvrdit heslo** zadejte znovu heslo uživatele.
 
-    f. Klikněte na tlačítko **Add** (Přidat).
+    f. Klikněte na **Přidat**.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
 
-Po kliknutí na Kantega jednotné přihlašování pro FishEye/Crucible dlaždici na přístupovém panelu, můžete by měl být automaticky přihlášeni k Kantega jednotné přihlašování pro FishEye/Crucible, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici Kantega Jednotné přihlašování pro FishEye/Crucible na přístupovém panelu, měli byste být automaticky přihlášeni k kantega jednotného přihlašování pro FishEye/Crucible, pro které nastavíte jednotné přihlašování. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

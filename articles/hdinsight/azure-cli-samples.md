@@ -1,6 +1,6 @@
 ---
-title: 'Azure HDInsight: ukázky Azure CLI'
-description: Příklady Azure CLI pro běžné úlohy ve službě Azure HDInsight.
+title: 'Azure HDInsight: Ukázky rozhraní příkazového systému Azure'
+description: Příklady rozhraní příkazového příkazového odpokyně Azure pro běžné úlohy v Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,30 +8,30 @@ ms.service: hdinsight
 ms.topic: sample
 ms.date: 09/23/2019
 ms.openlocfilehash: cbbb38c645e56b2e7b8c70b437b1e5158b09a50b
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78207094"
 ---
-# <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight: ukázky Azure CLI
+# <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight: Ukázky rozhraní příkazového systému Azure
 
 > [!div class="op_single_selector"]
-> Příklady [.NET](hdinsight-sdk-dotnet-samples.md) – příklady
-> [Pythonu](hdinsight-sdk-python-samples.md)
-> [Příklady jazyka Java](hdinsight-sdk-java-samples.md)
+> [.NET Příklady](hdinsight-sdk-dotnet-samples.md)
+> [Python příklady](hdinsight-sdk-python-samples.md)
+> [Java Příklady](hdinsight-sdk-java-samples.md)
 
-Tento článek poskytuje ukázkové skripty pro běžné úlohy. Pro každý příklad aktualizujte proměnné odpovídajícími hodnotami a potom spusťte příkaz.
+Tento článek obsahuje ukázkové skripty pro běžné úkoly. Pro každý příklad aktualizujte proměnné s příslušnými hodnotami a pak proveďte příkaz.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Azure CLI. Postup najdete v tématu věnovaném [instalaci rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) .
+* Azure CLI. Postup najdete [v tématu Instalace příkazového příkazového příkazu k Azure.](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
-* Volitelné: bash. V příkladech v tomto článku se používá prostředí bash ve Windows 10. Pokyny k instalaci najdete v tématu [Instalační příručka k systému Windows pro Linux pro systém Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) .  Příklady budou fungovat z příkazového řádku systému Windows s některými drobnými úpravami.
+* Volitelné: Bash. Příklady v tomto článku používají prostředí Bash ve Windows 10. Postup instalace najdete v [příručce k instalaci podsystému Windows pro Linux pro Windows 10.](https://docs.microsoft.com/windows/wsl/install-win10)  Příklady budou fungovat z příkazového řádku systému Windows s některými drobnými úpravami.
 
-## <a name="az-login"></a>AZ Login
+## <a name="az-login"></a>az login
 
-[Přihlaste se k Azure](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login).
+[Přihlaste se do Azure](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login).
 
 ```azurecli
 az login
@@ -40,7 +40,7 @@ az login
 # az account set --subscription "SUBSCRIPTIONID"
 ```
 
-## <a name="az-hdinsight-create"></a>AZ HDInsight Create
+## <a name="az-hdinsight-create"></a>az hdinsight vytvořit
 
 [Vytvoří nový cluster](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create).
 
@@ -62,7 +62,7 @@ az hdinsight create \
     --storage-account $AZURE_STORAGE_ACCOUNT
 ```
 
-### <a name="create-a-cluster-with-the-enterprise-security-package-esp"></a>Vytvoření clusteru pomocí Balíček zabezpečení podniku (ESP)
+### <a name="create-a-cluster-with-the-enterprise-security-package-esp"></a>Vytvoření clusteru pomocí balíčku zabezpečení rozlehlé sítě (ESP)
 
 ```azurecli
 export clusterName=CLUSTERNAME
@@ -90,7 +90,7 @@ az hdinsight create \
     --cluster-users-group-dns $groupDNS
 ```
 
-### <a name="create-a-kafka-cluster-with-disk-encryption"></a>Vytvoření clusteru Kafka se [šifrováním disku](./disk-encryption.md)
+### <a name="create-a-kafka-cluster-with-disk-encryption"></a>Vytvoření clusteru Kafka s [šifrováním disku](./disk-encryption.md)
 
 ```azurecli
 export clusterName=CLUSTERNAME
@@ -173,11 +173,11 @@ az hdinsight create \
     --cluster-configuration $clusterConfiguration
 ```
 
-## <a name="az-hdinsight-application-create"></a>AZ HDInsight Application Create
+## <a name="az-hdinsight-application-create"></a>az hdinsight aplikace vytvořit
 
 [Vytvořte aplikaci pro cluster HDInsight](https://docs.microsoft.com/cli/azure/hdinsight/application?view=azure-cli-latest#az-hdinsight-application-create).
 
-### <a name="create-an-application-with-a-script-uri"></a>Vytvoření aplikace s identifikátorem URI skriptu
+### <a name="create-an-application-with-a-script-uri"></a>Vytvoření aplikace pomocí identifikátoru URI skriptu
 
 ```azurecli
 export resourceGroupName=RESOURCEGROUPNAME
@@ -240,11 +240,11 @@ az hdinsight application create \
     --sub-domain-suffix $subDomainSuffix
 ```
 
-## <a name="az-hdinsight-script-action-execute"></a>AZ HDInsight Script-Action Execute
+## <a name="az-hdinsight-script-action-execute"></a>az hdinsight skript-akce spustit
 
-[Spustí akce skriptu v zadaném clusteru HDInsight](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-execute).
+[Spouštět akce skriptů v zadaném clusteru HDInsight](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-execute).
 
-### <a name="execute-a-script-action-and-persist-on-success"></a>Provést akci skriptu a zachovat při úspěchu
+### <a name="execute-a-script-action-and-persist-on-success"></a>Provedení akce skriptu a zachování úspěchu
 
 ```azurecli
 export resourceGroupName=RESOURCEGROUPNAME

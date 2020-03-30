@@ -8,16 +8,16 @@ ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: fef3daf6e9e535736002e309e3d27491364dc553
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "71260292"
 ---
-# <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>Rychlý start: Vytvoření a Správa sdílených složek Azure pomocí Azure Portal 
+# <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>Rychlý start: Vytváření a správa sdílených složek Azure pomocí webu Azure Portal 
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v systémech Windows, Linux a macOS. Tato příručka vás provede základy práce se sdílenými složkami Azure pomocí webu [Azure Portal](https://portal.azure.com/).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 [!INCLUDE [storage-files-create-storage-account-portal](../../../includes/storage-files-create-storage-account-portal.md)]
@@ -29,7 +29,7 @@ Vytvoření sdílené složky Azure:
 2. Na stránce účtu úložiště v části **Služby** vyberte **Soubory**.
     ![Snímek obrazovky účtu úložiště s částí Služby; výběr služby Soubory](media/storage-how-to-use-files-portal/create-file-share-1.png)
 
-3. V nabídce v horní části stránky **souborové služby** klikněte na **sdílení souborů**. Rozbalí se stránka **Nová sdílená složka**.
+3. V nabídce v horní části stránky **Služby souboru** klikněte na **Sdílená položka soubor**. Rozbalí se stránka **Nová sdílená složka**.
 4. Do pole **Název** zadejte *myshare*.
 5. Kliknutím na **OK** vytvořte sdílenou složku Azure.
 
@@ -41,12 +41,12 @@ Služba Soubory Azure nabízí dva způsoby práce se soubory a složkami ve sd�
 Informace o připojení sdílené složky s využitím protokolu SMB najdete v následujících dokumentech v závislosti na vašem operačním systému:
 - [Windows](storage-how-to-use-files-windows.md)
 - [Linux](storage-how-to-use-files-linux.md)
-- [macOS](storage-how-to-use-files-mac.md)
+- [Macos](storage-how-to-use-files-mac.md)
 
 ### <a name="using-an-azure-file-share-from-the-azure-portal"></a>Použití sdílené složky Azure z webu Azure Portal
-Všechny požadavky provedené přes Azure Portal se provedou pomocí souborového rozhraní REST API, které umožňuje vytvářet, upravovat a odstraňovat soubory a adresáře na klientech bez přístupu k protokolu SMB. Je možné pracovat přímo s protokolem REST (handcrafting REST HTTP), ale nejběžnějším způsobem (mimo použití Azure Portal) k použití protokolu REST je použít [modul Azure PowerShell](storage-how-to-use-files-powershell.md), rozhraní příkazového [řádku Azure](storage-how-to-use-files-cli.md). nebo sadu Azure Storage SDK, z nichž všechny poskytují skvělé obálky týkající se protokolu REST ve skriptovacím nebo programovacím jazyce podle vašeho výběru. 
+Všechny požadavky provedené přes Azure Portal se provedou pomocí souborového rozhraní REST API, které umožňuje vytvářet, upravovat a odstraňovat soubory a adresáře na klientech bez přístupu k protokolu SMB. Je možné pracovat přímo s protokolem File REST (to znamená ruční volání REST HTTP sami), ale nejběžnější způsob (kromě použití portálu Azure) k použití protokolu File REST je použití [modulu Azure PowerShell](storage-how-to-use-files-powershell.md), [Azure CLI](storage-how-to-use-files-cli.md)nebo Azure Storage SDK, které poskytují pěkný obal kolem protokolu FILE REST v programování skriptování/jazyka podle vašeho výběru. 
 
-Očekáváme, že většina uživatelů souborů Azure bude chtít pracovat se sdílenými složkami Azure přes protokol SMB, protože jim umožní používat stávající aplikace a nástroje, které očekávají, aby je bylo možné používat, ale existuje několik důvodů, proč je výhodné použít soubor REST AP. Místo protokolu SMB, například:
+Očekáváme, že většina uživatelů souborů Azure bude chtít pracovat se svým sdílením souborů Azure přes protokol SMB, protože jim to umožňuje používat stávající aplikace a nástroje, které očekávají, že budou moci používat, ale existuje několik důvodů, proč je výhodné používat rozhraní API FILE REST API spíše než SMB, jako například:
 
 - Potřebujete provést rychlou změnu sdílené složky Azure, když jste na cestách, například z přenosného počítače bez přístupu k protokolu SMB, tabletu nebo mobilního zařízení.
 - Potřebujete spustit skript nebo aplikaci z klienta, který nedokáže připojit sdílenou složku SMB, jako jsou například místní klienti s blokovaným portem 445.
@@ -63,7 +63,7 @@ Vytvoření nového adresáře *myDirectory* v kořenovém adresáři sdílené 
 2. V nabídce v horní části stránky vyberte **+ Přidat adresář**. Rozbalí se stránka **Nový adresář**.
 3. Zadejte *myDirectory* a pak klikněte na **OK**.
 
-#### <a name="upload-a-file"></a>Nahrát soubor 
+#### <a name="upload-a-file"></a>Nahrání souboru 
 Abychom si předvedli nahrání souboru, nejprve musíte vytvořit nebo vybrat soubor k nahrání. Můžete to provést jakýmkoli způsobem, který vám vyhovuje. Po výběru souboru, který chcete nahrát:
 
 1. Klikněte na adresář **myDirectory**. Otevře se panel **myDirectory**.
@@ -75,7 +75,7 @@ Abychom si předvedli nahrání souboru, nejprve musíte vytvořit nebo vybrat s
 5. Na stránce **Nahrání souborů** ověřte název souboru a pak klikněte na **Nahrát**.
 6. Po dokončení by se soubor měl zobrazit v seznamu na stránce **myDirectory**.
 
-#### <a name="download-a-file"></a>Stáhnout soubor
+#### <a name="download-a-file"></a>Stažení souboru
 Kliknutím pravým tlačítkem na soubor, který jste nahráli, můžete stáhnout jeho kopii. Po kliknutí na tlačítko pro stažení bude konkrétní prostředí záviset na operačním systému a prohlížeči, které používáte.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

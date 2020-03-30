@@ -1,144 +1,144 @@
 ---
-title: Povolení pro zotavení po havárii virtuálních počítačů VMware pomocí Azure Site Recovery
-description: Tento článek popisuje, jak povolit replikaci virtuálních počítačů VMware pro zotavení po havárii pomocí služby Azure Site Recovery.
+title: Povolení virtuálních počítačů VMware pro zotavení po havárii pomocí Azure Site Recovery
+description: Tento článek popisuje, jak povolit replikaci virtuálních počítačů VMware pro zotavení po havárii pomocí služby Azure Site Recovery
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.date: 06/28/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 10b3e572ec61d1eff342f24a6a5a7bcba6276983
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79257313"
 ---
-# <a name="enable-replication-to-azure-for-vmware-vms"></a>Povolení replikace do Azure pro virtuální počítače VMware
+# <a name="enable-replication-to-azure-for-vmware-vms"></a>Povolení replikace do virtuálních počítačů Azure pro Virtuální Měše
 
-Tento článek popisuje, jak povolit replikaci místních virtuálních počítačů VMware do Azure.
+Tento článek popisuje, jak povolit replikaci místních virtuálních počítačích VMware do Azure.
 
 ## <a name="resolve-common-issues"></a>Řešení běžných problémů
 
 * Každý disk by měl být menší než 4 TB.
-* Disk s operačním systémem by měl být základní disk, nikoli dynamický disk.
-* V případě generace 2/virtuálních počítačů s podporou rozhraní UEFI by měla být řada operačních systémů Windows a spouštěcí disk by měl být menší než 300 GB.
+* Disk operačního systému by měl být běžný disk, nikoli dynamický disk.
+* Pro virtuální počítače s podporou generace 2/UEFI by měla být rodina operačního systému Windows a spouštěcí disk by měl být menší než 300 GB.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Tento článek předpokládá, že máte:
 
-- [Nastavte své místní zdrojové prostředí](vmware-azure-set-up-source.md).
-- [Nastavte své cílové prostředí v Azure](vmware-azure-set-up-target.md).
-- Než začnete, [ověřte požadavky a předpoklady](vmware-physical-azure-support-matrix.md) . Důležité informace, které je potřeba vzít v paměti:
+- [Nastavte místní zdrojové prostředí](vmware-azure-set-up-source.md).
+- [Nastavte si cílové prostředí v Azure](vmware-azure-set-up-target.md).
+- Před zahájením [ověřte požadavky a požadavky.](vmware-physical-azure-support-matrix.md) Důležité věci, které je třeba poznamenat, zahrnují:
     - [Podporované operační systémy](vmware-physical-azure-support-matrix.md#replicated-machines) pro replikované počítače.
-    - Podpora [úložiště/disku](vmware-physical-azure-support-matrix.md#storage) .
-    - [Požadavky na Azure](vmware-physical-azure-support-matrix.md#azure-vm-requirements) , které by měly splňovat místní počítače.
+    - [Podpora úložiště/disku.](vmware-physical-azure-support-matrix.md#storage)
+    - [Požadavky Azure,](vmware-physical-azure-support-matrix.md#azure-vm-requirements) které by měly splňovat místní počítače.
 
 
 ## <a name="before-you-start"></a>Než začnete
 Při replikaci virtuálních počítačů VMware mějte na paměti tyto informace:
 
-* Váš uživatelský účet Azure musí mít určitá [oprávnění](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) , aby bylo možné povolit replikaci nového virtuálního počítače do Azure.
-* Virtuální počítače VMware se objevují každých 15 minut. Může trvat 15 minut nebo déle, než se virtuální počítače objeví v Azure Portal po zjištění. Podobně zjišťování může trvat 15 minut nebo déle, když přidáte nový Server vCenter nebo hostitele vSphere.
-* Může trvat 15 minut nebo i déle, než se změny prostředí na virtuálním počítači (například instalace nástrojů VMware) aktualizují na portálu.
-* Můžete kontrolovat čas posledního zjištění pro virtuální počítače VMware: v poli **Poslední kontakt** na stránce **konfigurační servery** pro hostitele vCenter Server/vSphere.
-* Pokud chcete přidat virtuální počítače pro replikaci bez čekání na naplánované zjišťování, zvýrazněte konfigurační server (ale neklikejte na něj) a vyberte **aktualizovat**.
-* Pokud povolíte replikaci, pak pokud je virtuální počítač připravený, nainstaluje procesový Server na něj automaticky službu Azure Site Recovery mobility.
+* Váš uživatelský účet Azure musí mít určitá [oprávnění,](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) která umožní replikaci nového virtuálního počítače do Azure.
+* Virtuální mamy VMware jsou zjištěny každých 15 minut. Může trvat 15 minut nebo déle pro virtuální počítače se zobrazí na webu Azure portal po zjišťování. Podobně zjišťování může trvat 15 minut nebo déle, když přidáte nový server vCenter nebo hostitele vSphere.
+* Aktualizace změn prostředí ve virtuálním počítači (například instalace nástrojů VMware) na portálu může trvat 15 minut nebo déle.
+* Můžete zkontrolovat naposledy zjištěný čas virtuálních počítačů VMware: Podívejte se na pole **Poslední kontakt na** stránce **Konfigurační servery** pro hostitele serveru vCenter/vSphere.
+* Pokud chcete přidat virtuální počítače pro replikaci bez čekání na naplánované zjišťování, zvýrazněte konfigurační server (ale neklikejte na něj) a vyberte **Aktualizovat**.
+* Když povolíte replikaci, pokud je připravený virtuální počítač, procesní server na něj automaticky nainstaluje službu Mobility azure site recovery.
 
 ## <a name="enable-replication"></a>Povolení replikace
 
-Než budete postupovat podle kroků v této části, poznamenejte si následující informace:
-* Azure Site Recovery se teď replikuje přímo na spravované disky pro všechny nové replikace. Procesový Server zapisuje protokoly replikace do účtu úložiště mezipaměti v cílové oblasti. Tyto protokoly slouží k vytváření bodů obnovení na spravovaných discích repliky, které mají konvence pojmenování asrseeddisk.
-* Podpora PowerShellu pro replikaci na spravované disky je k dispozici v [modulu AZ. RecoveryServices verze 2.0.0 a vyšší](https://www.powershellgallery.com/packages/Az.RecoveryServices/2.0.0-preview) . 
-* V době převzetí služeb při selhání se k vytvoření cíle spravovaného disku použije vybraný bod obnovení.
-* Virtuální počítače, které byly dřív nakonfigurované pro replikaci na cílové účty úložiště, to neovlivní.
-* Replikace do účtů úložiště pro nový virtuální počítač je k dispozici jenom prostřednictvím rozhraní REST API pro reprezentaci přenosů stavu (REST) a PowerShellu. Pro replikaci do účtů úložiště použijte Azure REST API verze 2016-08-10 nebo 2018-01-10.
+Než začnete postupovat podle kroků v této části, poznamenejte si následující informace:
+* Azure Site Recovery se teď replikuje přímo na spravované disky pro všechny nové replikace. Procesní server zapisuje protokoly replikace do účtu úložiště mezipaměti v cílové oblasti. Tyto protokoly se používají k vytvoření bodů obnovení v replikách spravovaných disků, které mají konvence pojmenování asrseeddisk.
+* Podpora prostředí Powershell pro replikaci na spravované disky je k dispozici od [modulu Az.RecoveryServices verze 2.0.0 a dále](https://www.powershellgallery.com/packages/Az.RecoveryServices/2.0.0-preview) 
+* V době převzetí služeb při selhání se vybraný bod obnovení použije k vytvoření cílového spravovaného disku.
+* Virtuální počítače, které byly dříve nakonfigurované pro replikaci na cílové účty úložiště, nejsou ovlivněny.
+* Replikace na účty úložiště pro nový virtuální počítač je k dispozici pouze prostřednictvím rozhraní API reprezentace přenosu stavu (REST) a Powershellu. Pro replikaci do účtů úložiště použijte rozhraní AZURE REST API verze 2016-08-10 nebo 2018-01-10.
 
-Pokud chcete povolit replikaci, postupujte prosím podle následujících kroků:
-1. Přejít ke **kroku 2: replikace** > ho **zdroje**aplikace. Po prvním povolení replikace vyberte **+ replikovat** v trezoru, abyste povolili replikaci pro další virtuální počítače.
-2. **Na zdrojové stránce >** **zdroj**vyberte konfigurační server.
-3. Jako **typ počítače**vyberte **Virtual Machines** nebo **fyzické počítače**.
-4. V části **vCenter/vSphere Hypervisor** vyberte vCenter Server, který spravuje hostitele vSphere, nebo vyberte samotného hostitele. Toto nastavení není relevantní, pokud provádíte replikaci fyzických počítačů.
-5. Vyberte procesový Server. Pokud nevytvoříte žádné další procesní servery, bude v rozevíracím seznamu k dispozici sestavený procesový Server konfiguračního serveru. Stav každého procesového serveru je uvedený podle doporučených omezení a dalších parametrů. Vyberte procesový Server v pořádku. Nelze zvolit [kritický](vmware-physical-azure-monitor-process-server.md#process-server-alerts) procesový Server. Můžete buď vyřešit chyby [, vyřešit](vmware-physical-azure-troubleshoot-process-server.md) je, **nebo** nastavit [procesový Server se škálováním na více](vmware-azure-set-up-process-server-scale.md)instancí.
-    ![povolení okna zdroje replikace](media/vmware-azure-enable-replication/ps-selection.png)
+Chcete-li povolit replikaci, postupujte podle následujících kroků:
+1. Přejděte na **krok 2: Replikace** > **zdroje**aplikace . Po prvním povolení replikace vyberte možnost **+Replikovat** v úschovně, chcete-li povolit replikaci pro další virtuální počítače.
+2. Na **zdrojové** stránce > **zdroj**vyberte konfigurační server.
+3. V **případě typu Počítač**vyberte možnost Virtuální **počítače** nebo Fyzické **počítače**.
+4. V části **vCenter/vSphere Hypervisor** vyberte vCenter Server, který spravuje hostitele vSphere, nebo vyberte samotného hostitele. Toto nastavení není relevantní, pokud replikujete fyzické počítače.
+5. Vyberte procesní server. Pokud nejsou vytvořeny žádné další procesní servery, bude v rozevíracím seznamu k dispozici vestavěný procesní server konfiguračního serveru. Stav každého procesního serveru je uveden podle doporučených limitů a dalších parametrů. Zvolte server pro zpracování v pořádku. Nelze vybrat [kritický](vmware-physical-azure-monitor-process-server.md#process-server-alerts) procesový server. Můžete buď [vyřešit a vyřešit](vmware-physical-azure-troubleshoot-process-server.md) chyby **nebo** nastavit [horizontální navýšení kapacity procesu serveru](vmware-azure-set-up-process-server-scale.md).
+    ![Povolení zdrojového okna replikace](media/vmware-azure-enable-replication/ps-selection.png)
 
 > [!NOTE]
-> Od [verze 9,24](service-updates-how-to.md#links-to-currently-supported-update-rollups)jsou zavedeny další výstrahy, které zvyšují výstrahy týkající se stavu procesového serveru. Aby se vygenerovaly všechny výstrahy, upgradujte Site Recovery součásti na verzi 9,24 nebo vyšší.
+> Od [verze 9.24](service-updates-how-to.md#links-to-currently-supported-update-rollups)jsou zavedeny další výstrahy pro vylepšení výstrah stavu procesního serveru. Upgradujte součásti site recovery na verze 9.24 nebo vyšší pro všechny výstrahy, které mají být generovány.
 
-6. V části **cíl**vyberte předplatné a skupinu prostředků, ve které chcete vytvořit virtuální počítače s podporou převzetí služeb při selhání. Vyberte model nasazení, který chcete v Azure použít pro virtuální počítače s podporou převzetí služeb při selhání.
-2. Vyberte síť Azure a podsíť, ke kterým se budou virtuální počítače Azure připojovat po převzetí služeb při selhání. Síť musí být ve stejné oblasti jako trezor služby Site Recovery.
+6. V **části Cíl**vyberte skupinu předplatného a prostředků, ve které chcete vytvořit virtuální počítače s připojením se k selhání. Vyberte model nasazení, který chcete použít v Azure pro virtuální počítače s převzetím počítače s klientem.
+2. Vyberte síť Azure a podsíť, ke které se virtuální počítače Azure připojí po převzetí služeb při selhání. Síť musí být ve stejné oblasti jako trezor služby Obnovení webu.
 
-   Vyberte **Konfigurovat pro vybrané počítače** a použijte nastavení sítě na všechny virtuální počítače, které jste vybrali pro ochranu. Pokud chcete vybrat síť Azure na virtuální počítač, vyberte **Konfigurovat později** . Pokud nemáte síť, musíte ji vytvořit. Pokud chcete vytvořit síť pomocí Azure Resource Manager, vyberte **vytvořit novou**. Vyberte podsíť, pokud je k dispozici, a pak vyberte **OK**.
+   Vyberte **Konfigurovat nyní pro vybrané počítače** použít nastavení sítě na všechny virtuální počítače, které vyberete pro ochranu. Vyberte **Konfigurovat později** a vyberte síť Azure pro každý virtuální počítač. Pokud síť nemáte, musíte ji vytvořit. Pokud chcete vytvořit síť pomocí Správce prostředků Azure, vyberte **Vytvořit nový**. Vpřípadě potřeby vyberte podsíť a pak vyberte **OK**.
    
-   ![Povolit cílové okno replikace](./media/vmware-azure-enable-replication/enable-rep3.png)
+   ![Povolení cílového okna replikace](./media/vmware-azure-enable-replication/enable-rep3.png)
 
-1. Pro **virtuální počítače** > **vyberte virtuální**počítače, vyberte všechny virtuální počítače, které chcete replikovat. Můžete vybrat jenom virtuální počítače, pro které je možné povolit replikaci. Pak vyberte **OK**. Pokud nemůžete zobrazit nebo vybrat žádný konkrétní virtuální počítač, přečtěte si téma [zdrojový počítač není uveden v Azure Portal](https://aka.ms/doc-plugin-VM-not-showing) k vyřešení problému.
+1. U **virtuálních počítačů** > **Vyberte virtuální počítače**vyberte každý virtuální počítač, který chcete replikovat. Můžete vybrat pouze virtuální počítače, pro které lze povolit replikaci. Pak vyberte **OK**. Pokud nevidíte nebo nevybíráte žádný konkrétní virtuální počítač, přečtěte si téma [Zdrojový počítač není uvedený na webu Azure Portal,](https://aka.ms/doc-plugin-VM-not-showing) kde problém vyřešíte.
 
-    ![Povolit okno Vybrat virtuální počítače pro replikaci](./media/vmware-azure-enable-replication/enable-replication5.png)
+    ![Povolení replikace Okno Vybrat virtuální počítače](./media/vmware-azure-enable-replication/enable-replication5.png)
 
-1. U **vlastnosti** > **Konfigurovat vlastnosti**vyberte účet, který procesový Server používá k automatické instalaci služby Site Recovery mobility na virtuálním počítači. Také vyberte typ cílového spravovaného disku, který se má replikovat na základě vzorů četnosti změn dat.
-10. Ve výchozím nastavení se replikují všechny disky zdrojového virtuálního počítače. Pokud chcete vyloučit disky z replikace, zrušte zaškrtnutí políčka **Zahrnout** pro všechny disky, které nechcete replikovat. Pak vyberte **OK**. Později můžete nastavit další vlastnosti. Přečtěte si další informace o [vyloučení disků](vmware-azure-exclude-disk.md).
+1. V **části Vlastnosti** > **Konfigurovat vlastnosti**vyberte účet, který procesový server používá k automatické instalaci služby Mobility obnovení lokality do virtuálního počítače. Také zvolte typ cílového spravovaného disku, na který chcete replikovat na základě vzorů změn dat.
+10. Ve výchozím nastavení jsou replikovány všechny disky zdrojového virtuálního počítače. Chcete-li vyloučit disky z replikace, zrušte zaškrtnutí políčka **Zahrnout** u všech disků, které nechcete replikovat. Pak vyberte **OK**. Později můžete nastavit další vlastnosti. Další informace o [vyloučení disků](vmware-azure-exclude-disk.md).
 
-    ![Povolit okno pro konfiguraci replikace – vlastnosti](./media/vmware-azure-enable-replication/enable-replication6.png)
+    ![Povolit okno konfigurovat vlastnosti replikace](./media/vmware-azure-enable-replication/enable-replication6.png)
 
-1. V **nastavení replikace** > **nakonfigurovat nastavení replikace**, ověřte, jestli je vybraná správná zásada replikace. Nastavení zásad replikace můžete změnit v **nastavení** > **Zásady replikace** > ***název zásad*** > **Upravit nastavení**. Změny, které použijete u zásad, platí i pro replikaci a nové virtuální počítače.
-1. Pokud chcete shromáždit virtuální počítače do replikační skupiny, povolte **konzistenci pro víc virtuálních počítačů** . Zadejte název skupiny a pak vyberte **OK**.
+1. V >  **nastavení replikace****Nakonfigurujte nastavení replikace**ověřte, zda je vybrána správná zásada replikace. Nastavení zásad replikace můžete upravit na adrese **Nastavení** > ***policy name*** > zásad > **replikace****Název zásad Upravit nastavení**. Změny, které použijete pro zásady platí také pro replikaci a nové virtuální počítače.
+1. Pokud chcete shromáždit virtuální počítače do replikační skupiny, povolte **konzistenci více** virtuálních počítačů. Zadejte název skupiny a pak vyberte **OK**.
 
     > [!NOTE]
-    >    * Virtuální počítače v replikační skupině se replikují společně a mají při převzetí služeb při selhání sdílené body obnovení konzistentní s havárií a konzistentní vzhledem k aplikacím.
-    >    * Shromážděte virtuální počítače a fyzické servery tak, aby zrcadlí vaše úlohy. Povolení konzistence s více virtuálními počítači může mít vliv na výkon úloh. To udělejte jenom v případě, že virtuální počítače používají stejnou úlohu a potřebujete konzistenci.
+    >    * Virtuální počítače v replikační skupině replikují společně a při převzetí služeb při selhání mají sdílené body obnovení konzistentní s havárií a konzistentní s aplikací.
+    >    * Shromážděte virtuální počítače a fyzické servery dohromady, aby odrážely vaše úlohy. Povolení konzistence více virtuálních montovny může ovlivnit výkon pracovního vytížení. To provést pouze v případě, že virtuální počítače běží stejné úlohy a potřebujete konzistenci.
 
     ![Povolit okno replikace](./media/vmware-azure-enable-replication/enable-replication7.png)
     
-1. Vyberte **Povolit replikaci**. Průběh úlohy **Povolení ochrany** můžete sledovat v **nastavení** > **úlohy** > **Site Recovery úloh**. Po spuštění úlohy **Dokončit ochranu** je virtuální počítač připravený na převzetí služeb při selhání.
+1. Vyberte **Povolit replikaci**. Průběh úlohy **Povolit ochranu** můžete sledovat v části**Úlohy** > obnovení webu úloh **y nastavení** > **úloh**. Po spuštění **úlohy Finalize Protection** je virtuální počítač připraven k převzetí služeb při selhání.
 
 ## <a name="view-and-manage-vm-properties"></a>Zobrazení a správa vlastností virtuálního počítače
 
-Pak ověřte vlastnosti zdrojového virtuálního počítače. Pamatujte, že název virtuálního počítače Azure musí splňovat [požadavky na virtuální počítače Azure](vmware-physical-azure-support-matrix.md#replicated-machines).
+Dále ověřte vlastnosti zdrojového virtuálního počítače. Nezapomeňte, že název virtuálního počítače Azure musí splňovat [požadavky na virtuální počítač Azure](vmware-physical-azure-support-matrix.md#replicated-machines).
 
-1. V části **nastavení** > **replikované položky**a vyberte virtuální počítač. Na stránce **základy** se zobrazí informace o nastavení a stavu virtuálního počítače.
-1. V části **Vlastnosti** můžete zobrazit informace o replikaci a převzetí služeb při selhání pro virtuální počítač.
-1. V **výpočetních a síťových** > **výpočetních vlastnostech**můžete změnit více vlastností virtuálního počítače. 
+1. Přejděte na **Nastavení** > **replikovaných položek**a vyberte virtuální počítač. Stránka **Essentials** zobrazuje informace o nastavení a stavu virtuálního počítače.
+1. Ve **vlastnostech**můžete zobrazit informace o replikaci a převzetí služeb při selhání pro virtuální hod.
+1. Ve **vlastnostech Výpočetní výkon a Síťový** > **výpočetní výkon**můžete změnit více vlastností virtuálního počítače. 
 
-    ![Okno Vlastnosti výpočtů a sítě](./media/vmware-azure-enable-replication/vmproperties.png)
+    ![Okno Výpočetní a síťové vlastnosti](./media/vmware-azure-enable-replication/vmproperties.png)
 
-    * Název virtuálního počítače Azure: v případě potřeby upravte název tak, aby splňoval požadavky Azure.
-    * Velikost cílového virtuálního počítače nebo typ virtuálního počítače: výchozí velikost virtuálního počítače se volí na základě několika parametrů, které zahrnují počet disků, počet síťových adaptérů, počet jader procesoru, paměť a dostupné velikosti rolí virtuálních počítačů v cílové oblasti Azure. Azure Site Recovery vybírá první dostupnou velikost virtuálního počítače, která splňuje všechna kritéria. V závislosti na vašich potřebách můžete kdykoli vybrat jinou velikost virtuálního počítače před převzetím služeb při selhání. Všimněte si, že velikost disku virtuálního počítače je taky založená na velikosti zdrojového disku a dá se změnit jenom po převzetí služeb při selhání. Přečtěte si další informace o velikostech disků a frekvenci IOPS při [škálovatelnosti a cílech výkonu pro disky virtuálních počítačů ve Windows](../virtual-machines/windows/disk-scalability-targets.md).
+    * Název virtuálního počítače Azure: V případě potřeby upravte název tak, aby splňoval požadavky Azure.
+    * Velikost cílového virtuálního počítače nebo typ virtuálního počítače: Výchozí velikost virtuálního počítače se volí na základě několika parametrů, které zahrnují počet disků, počet nic, počet jader procesoru, paměť a dostupné velikosti rolí virtuálních počítačů v cílové oblasti Azure. Azure Site Recovery vybere první dostupnou velikost virtuálního počítače, která splňuje všechna kritéria. Před převzetím služeb při selhání můžete kdykoli vybrat jinou velikost virtuálního počítače podle vašich potřeb. Všimněte si, že velikost disku virtuálního počítače je také založen na velikosti zdrojového disku a lze ji změnit pouze po převzetí služeb při selhání. Další informace o velikosti disků a rychlosti videa VOPS na [škálovatelnost a cíle výkonu pro disky virtuálních počítačů v systému Windows](../virtual-machines/windows/disk-scalability-targets.md).
 
-    *  Skupina prostředků: můžete vybrat [skupinu prostředků](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines), ze které se virtuální počítač stal součástí po převzetí služeb při selhání. Toto nastavení můžete kdykoli změnit v průběhu převzetí služeb při selhání. Pokud po převzetí služeb při selhání migrujete virtuální počítač do jiné skupiny prostředků, nastavení ochrany této přerušení virtuálního počítače.
-    * Skupina dostupnosti: Pokud váš virtuální počítač musí být součástí po převzetí služeb při selhání, můžete vybrat [skupinu dostupnosti](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) . Když vyberete skupinu dostupnosti, mějte na paměti následující informace:
+    *  Skupina prostředků: Můžete vybrat [skupinu prostředků](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines), ze které se virtuální počítač stane součástí převzetí služeb při selhání. Toto nastavení můžete kdykoli před převzetím služeb při selhání změnit. Po převzetí služeb při selhání, pokud migrujete virtuální počítač do jiné skupiny prostředků, nastavení ochrany pro tento konec virtuálního počítače.
+    * Sada dostupnosti: Sadu [dostupnosti](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) můžete vybrat, pokud váš virtuální počítač musí být součástí převzetí služeb při selhání příspěvku. Když vyberete sadu dostupnosti, mějte na paměti následující informace:
 
-        * V seznamu se zobrazí jenom skupiny dostupnosti, které patří do zadané skupiny prostředků.  
-        * Virtuální počítače, které jsou v různých virtuálních sítích, nemůžou být součástí stejné skupiny dostupnosti.
-        * Pouze virtuální počítače se stejnou velikostí můžou být součástí skupiny dostupnosti.
-1. Můžete taky přidat informace o cílové síti, podsíti a IP adrese, která je přiřazená k virtuálnímu počítači Azure.
-2. V části **disky**můžete zobrazit operační systém a datové disky na virtuálním počítači, který se bude replikovat.
+        * Jsou uvedeny pouze skupiny dostupnosti, které patří do zadané skupiny prostředků.  
+        * Virtuální počítače, které jsou v různých virtuálních sítích, nemohou být součástí stejné skupiny dostupnosti.
+        * Součástí sady dostupnosti mohou být pouze virtuální počítače stejné velikosti.
+1. Můžete také přidat informace o cílové síti, podsíti a IP adrese, která je přiřazená k virtuálnímu počítači Azure.
+2. V **disky**, můžete vidět operační systém a datové disky na virtuálním počítači, který bude replikován.
 
-### <a name="configure-networks-and-ip-addresses"></a>Konfigurace sítí a IP adres
+### <a name="configure-networks-and-ip-addresses"></a>Konfigurace sítí a adres IP
 
-Můžete nastavit cílovou IP adresu. Pokud adresu nezadáte, používá virtuální počítač s podporou převzetí služeb při selhání službu DHCP. Pokud nastavíte adresu, která není dostupná při převzetí služeb při selhání, převzetí služeb při selhání nefunguje. Pokud je adresa dostupná v síti testovacího převzetí služeb při selhání, můžete pro testovací převzetí služeb při selhání použít stejnou cílovou IP adresu.
+Můžete nastavit cílovou IP adresu. Pokud adresu nezadáte, virtuální počítač s převzetím služby při selhání použije službu DHCP. Pokud nastavíte adresu, která není k dispozici při převzetí služeb při selhání, převzetí služeb při selhání nefunguje. Pokud je adresa k dispozici v testovací síti s podporou převzetí služeb při selhání, můžete pro převzetí služeb při selhání testu použít stejnou cílovou adresu IP.
 
-Počet síťových adaptérů se určuje podle velikosti, kterou zadáte pro cílový virtuální počítač, a to následujícím způsobem:
+Počet síťových adaptérů je dán velikostí, kterou zadáte pro cílový virtuální počítač, a to následovně:
 
-- Pokud je počet síťových adaptérů ve zdrojovém virtuálním počítači menší nebo roven počtu adaptérů, které jsou povoleny pro velikost cílového virtuálního počítače, má cíl stejný počet adaptérů jako zdroj.
-- Pokud počet adaptérů pro zdrojový virtuální počítač překračuje počet povolený pro velikost cílového virtuálního počítače, použije se maximální velikost cíle. Pokud má zdrojový virtuální počítač například dva síťové adaptéry a velikost cílového virtuálního počítače podporuje čtyři, má cílový virtuální počítač dva adaptéry. Pokud má zdrojový virtuální počítač dva adaptéry, ale cílová velikost podporuje pouze jeden, cílový virtuální počítač má pouze jeden adaptér.
-- Pokud má virtuální počítač několik síťových adaptérů, připojí se ke stejné síti. První adaptér, který je zobrazený v seznamu, se také stal *výchozím* síťovým adaptérem na virtuálním počítači Azure. 
+- Pokud je počet síťových adaptérů ve zdrojovém virtuálním počítači menší nebo roven počtu adaptérů, které jsou povoleny pro velikost cílového virtuálního počítače, cíl má stejný počet adaptérů jako zdroj.
+- Pokud počet adaptérů pro zdrojový virtuální počítač překročí počet, který je povolen pro velikost cílového virtuálního počítače, použije se maximální velikost cílové velikosti. Například pokud zdrojový virtuální počítač má dva síťové adaptéry a velikost cílového virtuálního počítače podporuje čtyři, cílový virtuální počítač má dva adaptéry. Pokud zdrojový virtuální počítače má dva adaptéry, ale cílová velikost podporuje pouze jeden, cílový virtuální počítače má jenom jeden adaptér.
+- Pokud má virtuální počítač více síťových adaptérů, všechny se připojují ke stejné síti. První adaptér, který se zobrazí v seznamu, se také stane *výchozím* síťovým adaptérem ve virtuálním počítači Azure. 
 
 ### <a name="azure-hybrid-benefit"></a>Zvýhodněné hybridní využití Azure
 
-Zákazníci se službou Software Assurance společnosti Microsoft mohou pomocí Zvýhodněné hybridní využití Azure ušetřit náklady na licencování pro počítače se systémem Windows Server, které jsou migrovány do Azure. Výhoda se vztahuje také na zotavení po havárii Azure. Pokud máte nárok, můžete přidělit výhod virtuálnímu počítači, který Site Recovery vytvoří, pokud dojde k převzetí služeb při selhání. Provedete to podle těchto kroků:
-1. Přejít do **vlastností počítače a sítě** replikovaného virtuálního počítače.
-2. Odpovězte, když máte licenci Windows serveru, která vám poskytne nárok na Zvýhodněné hybridní využití Azure.
-3. Potvrďte, že máte způsobilou licenci na Windows Server se Software Assurance, kterou můžete použít pro použití výhody pro virtuální počítač, který se vytvoří při převzetí služeb při selhání.
-4. Uložte nastavení pro replikovaný virtuální počítač.
+Zákazníci microsoft software assurance mohou pomocí hybridnívýhody Azure ušetřit na licenčních nákladech pro počítače se systémem Windows Server, které jsou migrovány do Azure. Výhoda platí také pro zotavení po havárii Azure. Pokud máte nárok, můžete přiřadit výhodu virtuálnímu počítači, který site recovery vytvoří, pokud dojde k převzetí služeb při selhání. Provedete to podle těchto kroků:
+1. Přejděte na **vlastnosti počítače a sítě** replikovaného virtuálního počítače.
+2. Odpovězte na otázku, zda máte licenci windows serveru, která vám dává nárok na hybridní výhody Azure.
+3. Zkontrolujte, zda máte oprávněnou licenci windows serveru s programem Software Assurance, kterou můžete použít k použití výhody pro virtuální hod, který bude vytvořen při převzetí služeb při selhání.
+4. Uložte nastavení replikovaného virtuálního počítače.
 
-Přečtěte si další informace o [zvýhodněné hybridní využití Azure](https://aka.ms/azure-hybrid-benefit-pricing).
+Další informace o [hybridních výhodach Azure](https://aka.ms/azure-hybrid-benefit-pricing).
 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Až virtuální počítač dosáhne chráněného stavu, zkuste [převzetí služeb při selhání](site-recovery-failover.md) , abyste zkontrolovali, jestli se vaše aplikace zobrazuje v Azure.
+Jakmile virtuální počítač dosáhne chráněného stavu, zkuste [převzetí služeb při selhání](site-recovery-failover.md) zkontrolovat, jestli se vaše aplikace zobrazí v Azure.
 
-* Naučte se [vyčistit nastavení registrace a ochrany](site-recovery-manage-registration-and-protection.md) a zakázat replikaci.
-* Naučte se [automatizovat replikaci pro virtuální počítače pomocí PowerShellu](vmware-azure-disaster-recovery-powershell.md).
+* Přečtěte si, jak [vyčistit nastavení registrace a ochrany a](site-recovery-manage-registration-and-protection.md) zakázat replikaci.
+* Zjistěte, jak [automatizovat replikaci virtuálních počítačů pomocí Powershellu](vmware-azure-disaster-recovery-powershell.md).

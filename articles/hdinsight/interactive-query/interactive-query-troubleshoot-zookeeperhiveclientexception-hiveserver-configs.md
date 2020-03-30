@@ -1,6 +1,6 @@
 ---
-title: Chyba interpretace Apache Hive Zeppelin – Azure HDInsight
-description: Překladač JDBC pro podregistr Apache Zeppelin odkazuje na nesprávnou adresu URL ve službě Azure HDInsight.
+title: Chyba interpreta Apache Hive Zeppelin – Azure HDInsight
+description: Překladač JDBC Apache Zeppelin Hive ukazuje na nesprávnou adresu URL v Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,19 +8,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/30/2019
 ms.openlocfilehash: 20309babb9ece0ae20e7442543b0d378f9a51060
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75895061"
 ---
-# <a name="scenario-apache-hive-zeppelin-interpreter-gives-a-zookeeper-error-in-azure-hdinsight"></a>Scénář: Apache Hive překladač Zeppelin poskytuje chybu Zookeeper ve službě Azure HDInsight
+# <a name="scenario-apache-hive-zeppelin-interpreter-gives-a-zookeeper-error-in-azure-hdinsight"></a>Scénář: Apache Hive Zeppelin Interpret udá zookeeper chybu v Azure HDInsight
 
-Tento článek popisuje postup řešení potíží a možná řešení potíží při používání interaktivních komponent dotazů v clusterech Azure HDInsight.
+Tento článek popisuje kroky řešení potíží a možná řešení problémů při použití komponent interaktivního dotazu v clusterech Azure HDInsight.
 
 ## <a name="issue"></a>Problém
 
-V clusteru Apache Hive LLAP vyvolá překladač Zeppelin při pokusu o spuštění dotazu následující chybovou zprávu:
+V clusteru Apache Hive LLAP interpret Zeppelin zobrazí při pokusu o spuštění dotazu následující chybovou zprávu:
 
 ```
 java.sql.SQLException: org.apache.hive.jdbc.ZooKeeperHiveClientException: Unable to read HiveServer2 configs from ZooKeeper
@@ -28,24 +28,24 @@ java.sql.SQLException: org.apache.hive.jdbc.ZooKeeperHiveClientException: Unable
 
 ## <a name="cause"></a>Příčina
 
-Překladač JDBC podregistru Zeppelin odkazuje na nesprávnou adresu URL.
+Zeppelin Hive JDBC Interpret ukazuje na nesprávnou adresu URL.
 
-## <a name="resolution"></a>Rozlišení
+## <a name="resolution"></a>Řešení
 
-1. Přejděte do části Souhrn komponenty podregistr a zkopírujte do schránky "JDBC URL registru".
+1. Přejděte do souhrnu komponenty Hive a zkopírujte adresu URL Hive JDBC do schránky.
 
-1. Přejděte na `https://clustername.azurehdinsight.net/zeppelin/#/interpreter`
+1. Přejít na`https://clustername.azurehdinsight.net/zeppelin/#/interpreter`
 
-1. Upravte nastavení JDBC: Aktualizujte hodnotu podregistru. URL na JDBC adresu URL registru zkopírovanou v kroku 1.
+1. Úprava nastavení JDBC: aktualizace hodnoty hive.url na adresu URL Hive JDBC zkopírovanou v kroku 1
 
-1. Uložte a pak dotaz opakujte.
+1. Uložit a potom opakovat dotaz
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
+Pokud jste problém nezjistili nebo se vám nedaří problém vyřešit, navštivte jeden z následujících kanálů, kde najdete další podporu:
 
-* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
+* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory Azure Community Support](https://azure.microsoft.com/support/community/).
 
-* Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) – oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
+* Spojte [@AzureSupport](https://twitter.com/azuresupport) se s oficiálním účtem Microsoft Azure, který zlepšuje zákaznickou zkušenost tím, že propojuje komunitu Azure se správnými prostředky: odpověďmi, podporou a odborníky.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [webu Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na řádku nabídek vyberte **Podpora** nebo otevřete centrum **Nápověda + podpora.** Podrobnější informace najdete v části [Jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatného a fakturační podpoře je součástí vašeho předplatného Microsoft Azure a technická podpora se poskytuje prostřednictvím jednoho z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

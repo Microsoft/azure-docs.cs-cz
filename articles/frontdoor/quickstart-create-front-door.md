@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: vytvoření profilu front-dveří pro vysokou dostupnost aplikací'
+title: 'Úvodní příručka: Vytvoření profilu předních dveří pro vysokou dostupnost aplikací'
 description: Tento článek Rychlý start popisuje, jak vytvořit Front Door pro vaši vysoce dostupnou a výkonnou globální webovou aplikaci.
 services: front-door
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/31/2018
 ms.author: sharadag
-ms.openlocfilehash: 67a4f9eb3290ba09a2c19325464cf7ad224856e7
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: a98a933113322509f6fda8678350e9415d0b4058
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184515"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79471417"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Rychlý start: Vytvoření Front Dooru pro vysoce dostupnou globální webovou aplikaci
 
@@ -26,7 +26,7 @@ Tento rychlý start popisuje, jak vytvořit profil služby Front Door zajišťuj
 
 Scénář popsaný v tomto rychlém startu zahrnuje dvě instance webové aplikace spuštěné v různých oblastech Azure. Na základě rovnoměrně [vyvážených back-endů a back-endů se stejnými prioritami](front-door-routing-methods.md) vytvoříme konfiguraci Front Dooru, která umožní směrovat uživatelský provoz na nejbližší sadu webových back-endů, na kterých běží vaše aplikace. Front Door průběžně monitoruje webovou aplikaci a zajišťuje automatické převzetí služeb při selhání dalším dostupným back-endem v případě, že je nejbližší web nedostupný.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
@@ -34,15 +34,15 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 ## <a name="prerequisites"></a>Požadavky
 Tento rychlý start vyžaduje dvě instance webové aplikace nasazené a běžící v různých oblastech Azure (*USA – východ* a *Západní Evropa*). Obě instance webové aplikace běží v režimu Aktivní/Aktivní. To znamená, že každá z nich může kdykoli převzít provoz – na rozdíl od konfigurace Aktivní/Pohotovostní, při které je jedna instance určená pro případ převzetí služeb při selhání.
 
-1. V levém horním rohu obrazovky vyberte **Vytvořit prostředek** > **Web** > **Webová aplikace** > **Vytvořit**.
+1. V levém horním rohu obrazovky vyberte **Vytvořit prostředek** > **webwebovou** > **aplikaci** > **Create**.
 2. V části **Webová aplikace** zadejte nebo vyberte následující informace a v případě, že není uvedeno jinak, použijte výchozí nastavení:
 
      | Nastavení         | Hodnota     |
      | ---              | ---  |
-     | Název           | Zadejte jedinečný název vaší webové aplikace.  |
+     | Name (Název)           | Zadejte jedinečný název vaší webové aplikace.  |
      | Skupina prostředků          | Vyberte **Nová** a zadejte *myResourceGroupFD1*. |
-     | Plán služby App Service / umístění         | Vyberte **Nový**.  Jako plán služby App Service zadejte *myAppServicePlanEastUS* a pak vyberte **OK**. 
-     |      Umístění  |   East US        |
+     | Plán služby App Service / umístění         | Vyberte **nový**.  Jako plán služby App Service zadejte *myAppServicePlanEastUS* a pak vyberte **OK**. 
+     |      Umístění  |   USA – východ        |
     |||
 
 3. Vyberte **Vytvořit**.
@@ -51,9 +51,9 @@ Tento rychlý start vyžaduje dvě instance webové aplikace nasazené a běží
 
      | Nastavení         | Hodnota     |
      | ---              | ---  |
-     | Název           | Zadejte jedinečný název vaší webové aplikace.  |
+     | Name (Název)           | Zadejte jedinečný název vaší webové aplikace.  |
      | Skupina prostředků          | Vyberte **Nová** a zadejte *myResourceGroupFD2*. |
-     | Plán služby App Service / umístění         | Vyberte **Nový**.  Jako plán služby App Service zadejte *myAppServicePlanWestEurope* a pak vyberte **OK**. 
+     | Plán služby App Service / umístění         | Vyberte **nový**.  Jako plán služby App Service zadejte *myAppServicePlanWestEurope* a pak vyberte **OK**. 
      |      Umístění  |   Západní Evropa      |
     |||
 
@@ -62,7 +62,7 @@ Tento rychlý start vyžaduje dvě instance webové aplikace nasazené a běží
 ### <a name="a-add-a-frontend-host-for-front-door"></a>A. Přidání front-endového hostitele pro Front Door
 Vytvořte konfiguraci Front Dooru, která bude směrovat uživatelský provoz na základě nejnižší latence mezi dvěma back-endy.
 
-1. V levém horním rohu obrazovky vyberte **Vytvořit prostředek** > **Sítě** > **Front Door** > **Vytvořit**.
+1. V levém horním rohu obrazovky vyberte **Vytvořit zdroj** > **Networking** > **Front Door** > **Create**.
 2. V rozhraní **Vytvořit Front Door** začnete tím, že přidáte základní informace a uvedete předplatné, pro které chcete Front Door nakonfigurovat. Podobně jako u jakéhokoli jiného nově vytvářeného prostředku Azure musíte také zadat skupinu prostředků a oblast skupiny prostředků. A nakonec musíte zadat název pro váš Front Door.
 3. Po vyplnění základních informací je potřeba pro konfiguraci definovat **front-endového hostitele**. Výsledkem by měl být platný název domény, například `myappfrontend.azurefd.net`. Tento název hostitele musí být globálně jedinečný – Front Door to ověří. 
 
@@ -75,7 +75,7 @@ Dále je potřeba nakonfigurovat back-end(y) aplikace v back-endovém fondu, aby
 3. Jako **Typ cílového hostitele** vyberte App Service, vyberte předplatné, ve kterém jste web vytvořili, a pak v poli **Název cílového hostitele** zvolte první web, to znamená *myAppServicePlanEastUS.azurewebsites.net*.
 4. Zbývající pole ponechejte v tuto chvíli tak, jak jsou, a klikněte na **Přidat**.
 5. Opakováním kroků 2 až 4 přidejte druhý web, to znamená *myAppServicePlanWestEurope.azurewebsites.net*.
-6. Pro back-endový fond můžete volitelně změnit nastavení Sondy stavu a Vyrovnávání zatížení, ale výchozí hodnoty by také měly fungovat. Klikněte na **Přidat**.
+6. Volitelně můžete aktualizovat sondy stavu a vyrovnávání zatížení nastavení pro back-endového fondu, ale výchozí hodnoty by měly také fungovat. Klikněte na **Přidat**.
 
 
 ### <a name="c-add-a-routing-rule"></a>C. Přidání pravidla směrování

@@ -9,10 +9,10 @@ ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 6911f769b95967aac933dd9762263e7506aef4b5
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77192620"
 ---
 ## <a name="create-the-webapi-project"></a>Vytvoření projektu WebAPI
@@ -33,14 +33,14 @@ Vytvořte nový back-end ASP.NET WebAPI provedením následujících akcí:
 ![][B4]
 
 > [!NOTE]
-> Ujistěte se, že máte nainstalovanou sadu [Azure SDK](https://azure.microsoft.com/downloads/) pro vývoj pro web.
+> Ujistěte se, že jste nainstalovali visual studio [Azure SDK](https://azure.microsoft.com/downloads/) pro nasazení webu.
 
 1. Spusťte sadu Visual Studio nebo Visual Studio Express.
 
 2. Vyberte **Průzkumník serveru** a přihlaste se ke svému účtu Azure. Abyste mohli vytvářet prostředky webu, musíte být přihlášení.
 
 3. V sadě Visual Studio klikněte pravým tlačítkem na řešení sady Visual Studio, přejděte na **Přidat** a klikněte na **Nový projekt**.
-4. Rozbalte položku **Visual C#** , vyberte **Web** a klikněte na **Webová aplikace ASP.NET**.
+4. Rozbalte položku **Visual C#**, vyberte **Web** a klikněte na **Webová aplikace ASP.NET**.
 
 5. Do pole **Název** zadejte **AppBackend** a pak vyberte **OK**.
 
@@ -59,7 +59,7 @@ Vytvořte nový back-end ASP.NET WebAPI provedením následujících akcí:
 
     ![Okno Konfigurovat webovou aplikaci Microsoft Azure][B5]
 
-    Pokud nevidíte tuto stránku pro konfiguraci plánu služby App Service, pokračujte v tomto kurzu. Můžete ji nakonfigurovat při pozdějším publikování aplikace. 
+    Pokud tuto stránku pro konfiguraci plánu služby App Service nevidíte, pokračujte v kurzu. Můžete ji nakonfigurovat při publikování aplikace později. 
 
 ## <a name="authenticate-clients-to-the-webapi-backend"></a>Ověřování klientů v back-endu WebAPI
 
@@ -148,7 +148,7 @@ V této části vytvoříte pro nový back-end novou třídu popisovače zprávy
     ```
 6. Uložte provedené změny.
 
-## <a name="register-for-notifications-by-using-the-webapi-backend"></a>Registrace oznámení pomocí back-endu WebAPI
+## <a name="register-for-notifications-by-using-the-webapi-backend"></a>Registrace k oznámením pomocí back-endu WebAPI
 
 V této části přidáte do back-endu WebAPI nový kontroler, který bude zpracovávat požadavky na registraci uživatele a zařízení k oznámením pomocí klientské knihovny pro centra oznámení. Kontroler přidá značku uživatele pro uživatele, který byl ověřen a připojen k objektu HttpContext třídou `AuthenticationTestHandler`. Značka bude mít formát řetězce `"username:<actual username>"`.
 
@@ -186,7 +186,7 @@ V této části přidáte do back-endu WebAPI nový kontroler, který bude zprac
     }
     ```
     > [!IMPORTANT]
-    > Než budete pokračovat, zadejte **název** a **DefaultFullSharedAccessSignature** svého rozbočovače. 
+    > Před pokračováním zadejte **název** a výchozí hodnotu **DefaultFullSharedAccessSignature** centra. 
     
 7. Dále vytvořte nový kontroler **RegisterController**. V Průzkumníku řešení klikněte pravým tlačítkem na složku **Kontrolery**, vyberte **Přidat** a pak vyberte **Kontroler**.
 
@@ -390,9 +390,9 @@ Dále tuto aplikaci nasadíte na web Azure, aby byla přístupná ze všech zař
 
     ![Dlaždice Microsoft Azure App Service][B15]
 
-3. V okně **Vytvořit plán App Service** vyberte váš účet Azure. Vyberte **Změnit typ** > **Webová aplikace**. Ponechejte výchozí **Název webové aplikace** a vyberte **Předplatné**, **Skupinu prostředků** a **Plán služby App Service**.
+3. V okně **Vytvořit plán App Service** vyberte váš účet Azure. Vyberte **Změnit typ** > **webové aplikace**. Ponechejte výchozí **Název webové aplikace** a vyberte **Předplatné**, **Skupinu prostředků** a **Plán služby App Service**.
 
-4. Vyberte **Create** (Vytvořit).
+4. Vyberte **Vytvořit**.
 
 5. Poznamenejte si vlastnost **Adresa URL webu** v části **Souhrn**. Tato adresa URL je váš *koncový bod back-endu*, který použijete později v tomto kurzu.
 

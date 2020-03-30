@@ -1,58 +1,58 @@
 ---
 title: Řešení potíží s FarmBeats
-description: Tento článek popisuje, jak řešit potíže s Azure FarmBeats.
+description: Tento článek popisuje, jak řešit potíže Azure FarmBeats.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 20d07be99aa2f9881218f8d581ac8d429a1fe4d0
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.openlocfilehash: a429a1e454e73a1a9d544e308e5b2d60052d91a9
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79298797"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80349779"
 ---
 # <a name="troubleshoot"></a>Řešení potíží
 
-Tento článek popisuje řešení běžných problémů s FarmBeats Azure.
+Tento článek obsahuje řešení běžných problémů Azure FarmBeats.
 
-Pokud chcete získat další nápovědu, kontaktujte nás na adrese farmbeatssupport@microsoft.com. Zajistěte, aby do vašeho e-mailu zahrnovali soubor **Deployer. log** .
+Pro další pomoc nás farmbeatssupport@microsoft.comkontaktujte na adrese . Ujistěte se, že do e-mailu zahrnete soubor **deployer.log.**
 
-Pokud chcete stáhnout soubor **Deployer. log** , udělejte toto:
+Chcete-li stáhnout soubor **deployer.log,** postupujte takto:
 
-1. Přihlaste se **Azure Portal** a vyberte své předplatné a TENANTA Azure AD.
+1. Přihlaste se k **portálu Azure portal** a vyberte předplatné a tenanta Azure AD.
 2. Spusťte Cloud Shell z horního navigačního panelu na webu Azure Portal.
-3. Jako preferovaný Cloud Shell vyberte **bash** .
-4. Vyberte zvýrazněnou ikonu a potom v rozevíracím seznamu vyberte **Stáhnout**.
+3. Jako preferované prostředí Cloud Shell vyberte **Bash.**
+4. Vyberte zvýrazněnou ikonu a pak v rozevíracím seznamu vyberte **Stáhnout**.
 
-    ![FarmBeats projektu](./media/troubleshoot-azure-farmbeats/download-deployer-log-1.png)
+    ![Projekt FarmBeats](./media/troubleshoot-azure-farmbeats/download-deployer-log-1.png)
 
-5. V dalším podokně zadejte cestu k souboru **Deployer. log** . Zadejte například **farmbeats-Deployer. log**.
+5. V dalším podokně zadejte cestu k souboru **deployer.log.** Zadejte například **farmbeats-deployer.log**.
 
-## <a name="sensor-telemetry"></a>Telemetrie senzorů
+## <a name="sensor-telemetry"></a>Telemetrie senzoru
 
-### <a name="cant-view-telemetry-data"></a>Nejde zobrazit data telemetrie.
+### <a name="cant-view-telemetry-data"></a>Nelze zobrazit telemetrická data
 
-**Příznak**: zařízení nebo senzory se nasazují a propojení FarmBeats s partnerem zařízení, ale data telemetrie nemůžete získat nebo zobrazit na FarmBeats.
+**Příznak**: Zařízení nebo senzory jsou nasazeny a jste propojili FarmBeats s partnerem zařízení, ale nemůžete získat nebo zobrazit telemetrická data na FarmBeats.
 
 **Nápravná opatření**:
 
-1. Přejít do skupiny prostředků FarmBeats DataHub.   
-2. Vyberte **centrum událostí** (DatafeedEventHubNamespace) a potom zkontrolujte počet příchozích zpráv.
+1. Přejděte do skupiny prostředků FarmBeats Datahub.   
+2. Vyberte **centrum událostí** (DatafeedEventHubNamespace) a zkontrolujte počet příchozích zpráv.
 3. Proveďte jednu z následujících akcí:   
-   - Pokud neexistují *žádné příchozí zprávy*, obraťte se na partnera zařízení.  
-   - Pokud existují *příchozí zprávy*, obraťte se na farmbeatssupport@microsoft.com. Připojte svoje protokoly DataHub a akcelerátory a zachycenou telemetrii.
+   - Pokud nejsou *k dispozici žádné příchozí zprávy*, obraťte se na partnera zařízení.  
+   - Pokud se jedná o farmbeatssupport@microsoft.compříchozí *zprávy*, kontaktujte . Připojte protokoly Datahub a Akcelerátor a zachycenou telemetrii.
 
-Pokud chcete pochopit, jak stahovat protokoly, přečtěte si část [shromáždění protokolů ručně](#collect-logs-manually) .  
+Chcete-li pochopit, jak stahovat protokoly, přejděte do části [Shromáždit protokoly ručně.](#collect-logs-manually)  
 
-### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>Po ingestování historických/streamových dat ze senzorů nejde zobrazit data telemetrie.
+### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>Nelze zobrazit telemetrická data po požití historických/streamovaných dat ze senzorů
 
-**Příznak**: zařízení nebo senzory se nasazují a vytvořili jste zařízení/senzory na FarmBeats a ingestovaná telemetrie na EventHub, ale data telemetrie nemůžete získat nebo zobrazit na FarmBeats.
+**Příznak**: Zařízení nebo senzory jsou nasazeny a vytvořili jste zařízení / senzory na FarmBeats a pozůstalé telemetrii na EventHub, ale nemůžete získat nebo zobrazit telemetrická data na FarmBeats.
 
 **Nápravná opatření**:
 
-1. Ujistěte se, že jste správně dokončili registraci partnera – můžete to zkontrolovat tak, že přejdete na DataHub Swagger, přejdete na rozhraní/partner API, načtěte a zkontrolujete, jestli je partner zaregistrovaný. Pokud ne, přidejte partnera pomocí následujících [kroků](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) .
-2. Ujistěte se, že jste používali správný formát zprávy telemetrie:
+1. Ujistěte se, že jste provedli registraci partnera správně - můžete to zkontrolovat tak, že přejdete na vaše datahub swagger, přejděte na /Partner API, Do get a zkontrolujte, zda je partner registrován. Pokud ne, postupujte [podle pokynů zde](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) přidat partnera.
+2. Ujistěte se, že jste použili správný formát zprávy telemetrie:
 
 ```json
 {
@@ -65,7 +65,7 @@ Pokud chcete pochopit, jak stahovat protokoly, přečtěte si část [shromážd
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>":"<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
@@ -77,266 +77,275 @@ Pokud chcete pochopit, jak stahovat protokoly, přečtěte si část [shromážd
 }
 ```
 
-### <a name="dont-have-the-azure-event-hubs-connection-string"></a>Nemáte připojovací řetězec služby Azure Event Hubs.
+### <a name="dont-have-the-azure-event-hubs-connection-string"></a>Nemáte připojovací řetězec Azure Event Hubs
 
 **Nápravná opatření**:
 
-1. V DataHub Swagger navštivte rozhraní API partnera.
-2. Vyberte **získat** > **vyzkoušet** > **provést**.
-3. Poznamenejte si ID partnera, kterého vás zajímá.
-4. Vraťte se do partnerského rozhraní API a vyberte **Get/\<ID >** .
-5. Zadejte ID partnera z kroku 3 a pak vyberte **provést**.
+1. V Datahub Swagger přejděte do rozhraní API pro partnery.
+2. Vyberte **Možnost Získat** > **Vyzkoušet** > **spustit**.
+3. Poznamenejte si ID partnera senzoru, který vás zajímá.
+4. Vraťte se do rozhraní API partnera a vyberte **získat/\<id>**.
+5. Zadejte ID partnera z kroku 3 a pak vyberte **Spustit**.
 
-   Odpověď rozhraní API by měla mít Event Hubs připojovací řetězec.
+   Odpověď rozhraní API by měla mít připojovací řetězec Centra událostí.
 
-### <a name="device-appears-offline"></a>Zařízení se zobrazuje v režimu offline.
+### <a name="device-appears-offline"></a>Zařízení se zobrazí offline
 
-**Příznaky**: zařízení jsou nainstalována a propojení FarmBeats s partnerem zařízení. Zařízení jsou online a odesílají data telemetrie, ale jsou v režimu offline.
+**Příznaky**: Zařízení jsou nainstalována a propojili jste farmbeaty s partnerem vašeho zařízení. Zařízení jsou online a odesílají telemetrická data, ale zobrazují se offline.
 
-**Nápravné opatření**: interval vytváření sestav není pro toto zařízení nakonfigurovaný. Chcete-li nastavit interval vytváření sestav, obraťte se na výrobce zařízení. 
+**Nápravná akce**: Interval vykazování není pro toto zařízení nakonfigurován. Chcete-li nastavit interval vytváření sestav, obraťte se na výrobce zařízení. 
 
-### <a name="error-deleting-a-device"></a>Chyba při odstraňování zařízení
+### <a name="error-deleting-a-device"></a>Při odstraňování zařízení došlo k chybě.
 
-Při odstraňování zařízení se může zobrazit jeden z následujících běžných scénářů chyb:  
+Při odstraňování zařízení se může vyskytnat jeden z následujících běžných chybových scénářů:  
 
-**Zpráva**: na zařízení se odkazuje v senzorech: k zařízení je přidružen jeden nebo více senzorů. Odstraňte senzory a pak zařízení odstraňte. "  
+**Zpráva**: "Zařízení je v senzorech odkazováno: K zařízení je přidružen jeden nebo více senzorů. Odstraňte senzory a poté smažte zařízení."  
 
-**Význam**: zařízení je přidruženo k několika senzorům, které jsou nasazeny ve farmě.   
+**Význam:** Zařízení je spojeno s více senzory, které jsou nasazeny ve farmě.   
 
 **Nápravná opatření**:  
 
-1. Odstraňte senzory, které jsou přidružené k zařízení prostřednictvím akcelerátoru.  
-2. Pokud chcete senzory přidružit k jinému zařízení, požádejte partnera zařízení, aby to provede.  
-3. Odstraňte zařízení pomocí `DELETE API` volání a nastavte parametr Force na *hodnotu true*.  
+1. Odstraňte senzory, které jsou přidruženy k zařízení prostřednictvím akcelerátoru.  
+2. Chcete-li senzory přidružit k jinému zařízení, požádejte partnera zařízení, aby učinil totéž.  
+3. Odstraňte zařízení pomocí `DELETE API` volání a nastavte parametr force jako *true*.  
 
-**Zpráva**: na zařízení je odkazováno v zařízeních jako ParentDeviceId: k tomuto zařízení jsou přidružená aspoň jedno zařízení jako podřízená zařízení. Odstraňte je a pak toto zařízení odstraňte. "  
+**Zpráva**: "Zařízení je odkazováno v zařízeních jako ParentDeviceId: Existuje jedno nebo více zařízení, které jsou přidruženy k tomuto zařízení jako podřízená zařízení. Odstraňte je a pak odstraňte toto zařízení."  
 
-To **znamená**, že k zařízení jsou přidružená jiná zařízení.  
+**Význam:** Vaše zařízení má další zařízení s ním spojené.  
 
 **Nápravná opatření**
 
-1. Odstraňte zařízení, která jsou přidružená k tomuto konkrétnímu zařízení.  
+1. Odstraňte zařízení, která jsou přidružena k tomuto konkrétnímu zařízení.  
 2. Odstraňte konkrétní zařízení.  
 
     > [!NOTE]
-    > Zařízení nemůžete odstranit, pokud jsou k němu přidružené senzory. Další informace o tom, jak odstranit přidružené senzory, najdete v části **odstranění senzoru** v tématu [získání dat ze senzorů od partnerů snímačů](get-sensor-data-from-sensor-partner.md).
+    > Zařízení nelze odstranit, pokud jsou k němu přidruženy senzory. Další informace o odstranění přidružených senzorů naleznete v části **Odstranit senzor** v části [Získání dat senzoru od partnerů senzorů](get-sensor-data-from-sensor-partner.md).
+
+    > Partneři nemají přístup k odstranění zařízení nebo senzoru. Pouze správci mají přístup k tomu, aby učinili totéž.
 
 
-## <a name="issues-with-jobs"></a>Problémy s úlohami
+## <a name="issues-with-jobs"></a>Problémy s pracovními místy
 
 ### <a name="farmbeats-internal-error"></a>Vnitřní chyba FarmBeats
 
-**Zpráva**: "vnitřní chyba FarmBeats, další podrobnosti najdete v Průvodci odstraňováním potíží.
+**Zpráva**: "Vnitřní chyba FarmBeats, další podrobnosti naleznete v průvodci odstraňováním potíží."
 
-**Nápravná opatření**: Tento problém může být způsoben dočasným selháním v datovém kanálu. Vytvořte úlohu znovu. Pokud chyba přetrvává, přidejte chybovou zprávu do příspěvku na fóru FarmBeats nebo kontaktujte FarmBeatsSupport@microsoft.com.
+**Nápravná opatření**: Tento problém může vyplývat z dočasné selhání v datovém kanálu. Vytvořte úlohu znovu. Pokud chyba přetrvává, přidejte chybovou zprávu v příspěvku na FarmBeatsSupport@microsoft.comfóru FarmBeats nebo kontakt .
 
-## <a name="accelerator-troubleshooting"></a>Řešení potíží s akcelerátory
+## <a name="accelerator-troubleshooting"></a>Poradce při potížích s akcelerátorem
 
 ### <a name="access-control"></a>Řízení přístupu
 
-**Problém**: při přidávání přiřazení role se zobrazí chyba.
+**Problém**: Při přidávání přiřazení role se zobrazí chyba.
 
-**Zpráva**: nebyla nalezena žádná vyhovující uživatelé.
+**Zpráva**: "Nebyl nalezen žádný odpovídající uživatel."
 
-**Nápravná opatření**: Ověřte ID e-mailu, ke kterému se pokoušíte přidat přiřazení role. ID e-mailu musí být přesná shoda ID, která je zaregistrovaná pro daného uživatele ve službě Active Directory. Pokud chyba přetrvává, přidejte chybovou zprávu do příspěvku na fóru FarmBeats nebo kontaktujte FarmBeatsSupport@microsoft.com.
+**Nápravná akce**: Zkontrolujte ID e-mailu, pro který se pokoušíte přidat přiřazení role. ID e-mailu musí být přesná shoda ID, které je pro tohoto uživatele registrováno ve službě Active Directory. Pokud chyba přetrvává, přidejte chybovou zprávu v příspěvku na FarmBeatsSupport@microsoft.comfóru FarmBeats nebo kontakt .
 
-### <a name="unable-to-log-in-to-accelerator"></a>Nepovedlo se přihlásit k akcelerátoru.
+### <a name="unable-to-log-in-to-accelerator"></a>Nelze se přihlásit k akcelerátoru.
 
-**Zpráva**: "Chyba: nemáte oprávnění k volání služby. Požádejte správce o autorizaci. "
+**Zpráva**: "Chyba: Nemáte oprávnění k volání služby. Obraťte se na správce pro autorizaci."
 
-**Nápravná opatření**: požádejte správce, aby vám povolil přístup k nasazení FarmBeats. To se dá udělat tak, že provedete příspěvek rozhraní RoleAssignment API nebo prostřednictvím Access Control v podokně **Nastavení** v akcelerátoru.  
+**Nápravná opatření**: Požádejte správce, aby vás autorizoval k přístupu k nasazení FarmBeats. To lze provést provedením post roleassignment API nebo prostřednictvím řízení přístupu v podokně **Nastavení** v akcelerátoru.  
 
-Pokud jste už udělili přístup a tato chyba se týká této chyby, zkuste to znovu tak, že aktualizujete stránku. Pokud chyba přetrvává, přidejte chybovou zprávu do příspěvku na fóru FarmBeats nebo kontaktujte FarmBeatsSupport@microsoft.com.
+Pokud vám již byl udělen přístup a čelíte této chybě, zkuste to znovu aktualizací stránky. Pokud chyba přetrvává, přidejte chybovou zprávu v příspěvku na FarmBeatsSupport@microsoft.comfóru FarmBeats nebo kontakt .
 
-![FarmBeats projektu](./media/troubleshoot-azure-farmbeats/accelerator-troubleshooting-1.png)
+![Projekt FarmBeats](./media/troubleshoot-azure-farmbeats/accelerator-troubleshooting-1.png)
 
-### <a name="accelerator-issues"></a>Problémy akcelerátoru  
+### <a name="accelerator-issues"></a>Problémy s akcelerátorem  
 
-**Problém**: zobrazila se chyba akcelerátoru neurčité příčiny.
+**Problém**: Došlo k chybě akcelerátoru z neurčené příčiny.
 
-**Zpráva**: "Chyba: došlo k neznámé chybě."
+**Zpráva**: "Chyba: Došlo k neznámé chybě."
 
-**Nápravná opatření**: k této chybě dochází, pokud ponecháte stránku nečinné příliš dlouho. Aktualizujte stránku.  
+**Nápravná akce**: K této chybě dochází, pokud ponecháte stránku nečinnou příliš dlouho. Aktualizujte stránku.  
 
-Pokud chyba přetrvává, přidejte chybovou zprávu do příspěvku na fóru FarmBeats nebo kontaktujte FarmBeatsSupport@microsoft.com.
+Pokud chyba přetrvává, přidejte chybovou zprávu v příspěvku na FarmBeatsSupport@microsoft.comfóru FarmBeats nebo kontakt .
 
-**Problém**: akcelerátor FarmBeats nezobrazuje nejnovější verzi, i když jste provedli upgrade FarmBeatsDeployment.
+**Problém**: FarmBeats Accelerator nezobrazuje nejnovější verzi, a to i poté, co jste upgradovali FarmBeatsDeployment.
 
-**Nápravná opatření**: k této chybě dochází z důvodu trvalosti pracovního procesu služby v prohlížeči. Postupujte takto:
+**Nápravná akce**: K této chybě dochází z důvodu trvalosti servisního pracovníka v prohlížeči. Udělejte toto:
 
-1. Zavřete všechny karty prohlížeče, které mají otevřený akcelerátor, a zavřete okno prohlížeče.
+1. Zavřete všechny karty prohlížeče s otevřeným akcelerátorem a zavřete okno prohlížeče.
 2. Spusťte novou instanci prohlížeče a znovu načtěte identifikátor URI akcelerátoru. Tato akce načte novou verzi akcelerátoru.
 
-## <a name="sentinel-imagery-related-issues"></a>Sentinel: problémy související s snímkům
+## <a name="sentinel-imagery-related-issues"></a>Sentinel: Problémy související se snímky
 
 ### <a name="wrong-username-or-password"></a>Nesprávné uživatelské jméno nebo heslo
 
-**Zpráva o selhání úlohy**: pro přístup k tomuto prostředku je vyžadováno úplné ověření.
+**Zpráva o selhání úlohy**: "Pro přístup k tomuto prostředku je vyžadováno úplné ověření."
 
 **Nápravná opatření**:
 
 Proveďte jednu z těchto akcí:
 
-- Spusťte znovu instalační program pro upgrade DataHub se správným uživatelským jménem a heslem.
-- Znovu spusťte neúspěšnou úlohu nebo spusťte úlohu satelitních indexů pro rozsah dat 5 až 7 dní a potom zkontrolujte, jestli je úloha úspěšná.
+- Znovu spusťte instalační program pro upgrade Datahub se správným uživatelským jménem a heslem.
+- Znovu spusťte neúspěšnou úlohu nebo spusťte úlohu satelitních indexů pro rozsah dat 5 až 7 dní a zkontrolujte, zda je úloha úspěšná.
 
-### <a name="sentinel-hub-wrongurlor-site-not-accessible"></a>Ověřovací centrum: nesprávná adresa URL nebo web není přístupný 
+### <a name="sentinel-hub-wrongurlor-site-not-accessible"></a>Centrum Sentinel: Nesprávná adresa URL nebo web není přístupný 
 
-**Zpráva o selhání úlohy**: "bohužel došlo k nějakému problému. Stránka, ke které jste se pokusili získat přístup, je (dočasně) nedostupná. 
-
-**Nápravná opatření**:
-1. Otevřete v prohlížeči [Sentinel](https://scihub.copernicus.eu/dhus/) a zjistěte, jestli je web přístupný. 
-2. Pokud web není přístupný, zkontrolujte, jestli brána firewall, podniková síť nebo jiný blokující software nebrání přístupu k webu, a pak proveďte potřebné kroky, aby se povolila adresa URL ověřovacího připojení. 
-3. Znovu spusťte neúspěšnou úlohu nebo spusťte úlohu satelitních indexů pro rozsah dat 5 až 7 dní a potom zkontrolujte, jestli je úloha úspěšná.  
-
-### <a name="sentinel-server-down-for-maintenance"></a>Server Sentinel: vypnutí z důvodu údržby
-
-**Zpráva o selhání úlohy**: "centrum přístupu Copernicus otevřené bude brzy! Omlouváme se za nepříjemnosti. v tuto chvíli provádíme údržbu. Brzy se vrátíme do online režimu! " 
+**Zpráva o selhání práce**: "Jejda, něco se pokazilo. Stránka, ke které jste se pokoušeli získat přístup, je (dočasně) nedostupná." 
 
 **Nápravná opatření**:
+1. Otevřete [sentinel](https://scihub.copernicus.eu/dhus/) ve svém prohlížeči, abyste zjistili, zda je web přístupný. 
+2. Pokud web není přístupný, zkontrolujte, zda přístup k webu nebrání nějaký bránový firewall, firemní síť nebo jiný blokovací software, a proveďte nezbytné kroky k povolení adresy URL sentinelu. 
+3. Znovu spusťte neúspěšnou úlohu nebo spusťte úlohu satelitních indexů pro rozsah dat 5 až 7 dní a zkontrolujte, zda je úloha úspěšná.  
 
-K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějaké aktivity údržby.
+### <a name="sentinel-server-down-for-maintenance"></a>Sentinel server: Dolů pro údržbu
 
-1. Pokud dojde k chybě nějaké úlohy nebo kanálu, protože probíhá údržba, odešlete úlohu znovu po nějaké době. 
+**Zpráva o selhání úlohy**: "Centrum s otevřeným přístupem Copernicus se brzy vrátí! Omlouváme se za nepříjemnosti, provádíme nějakou údržbu v tuto chvíli. Brzy se vrátíme na internet!" 
 
-   Informace o všech plánovaných a neplánovaných aktivitách údržby ověřovacích zpráv najdete na webu [Copernicus otevřít centrum Access Hub](https://scihub.copernicus.eu/news/) .  
+**Nápravná opatření**:
 
-2. Znovu spusťte neúspěšnou úlohu nebo spusťte úlohu satelitních indexů pro rozsah dat 5 až 7 dní a potom zkontrolujte, jestli je úloha úspěšná.
+K tomuto problému může dojít, pokud jsou na serveru Sentinel prováděny všechny aktivity údržby.
 
-### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel: dosáhlo se maximálního počtu připojení.
+1. Pokud se některá úloha nebo kanál nezdaří, protože se provádí údržba, znovu odešlete úlohu po určité době. 
 
-**Zpráva o selhání úlohy**: "maximální počet dvou souběžných toků dosažených uživatelem"\<username > ".
+   Informace o plánovaných nebo neplánovaných aktivitách údržby sentinelu najdete na webu [Copernicus Open Access Hub News.](https://scihub.copernicus.eu/news/)  
 
-**Význam**: Pokud se úloha nezdařila, protože bylo dosaženo maximálního počtu připojení, je stejný účet Sentinel používán v jiném nasazení softwaru.
+2. Znovu spusťte neúspěšnou úlohu nebo spusťte úlohu satelitních indexů pro rozsah dat 5 až 7 dní a zkontrolujte, zda je úloha úspěšná.
 
-**Nápravná opatření**: zkuste jednu z těchto možností:
+### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel: Maximální počet připojení dosažených
 
-* Vytvořte nový účet Sentinel a pak znovu spusťte instalační program a upgradujte DataHub pomocí nového uživatelského jména a hesla Sentinel.  
-* Znovu spusťte neúspěšnou úlohu nebo spusťte úlohu satelitních indexů pro datum v rozsahu 5 až 7 dní a potom zkontrolujte, jestli je úloha úspěšná.
+**Zpráva o selhání úlohy**: "Maximální počet dvou\<souběžných toků dosažených uživatelským jménem>"."
 
-### <a name="sentinel-server-refused-connection"></a>Ověřovací server: odmítnuté připojení 
+**Význam:** Pokud úloha selže, protože bylo dosaženo maximálního počtu připojení, stejný účet Sentinel se používá v jiném nasazení softwaru.
 
-**Zpráva o chybě úlohy**: Server odmítl připojení na: http://172.30.175.69:8983/solr/dhus. 
+**Nápravná opatření**: Vyzkoušejte některou z následujících možností:
 
-**Nápravná opatření**: k tomuto problému může dojít, pokud se na serveru Sentinel provádí nějaké aktivity údržby. 
-1. Pokud dojde k chybě nějaké úlohy nebo kanálu, protože probíhá údržba, odešlete úlohu znovu po nějaké době. 
+* Vytvořte nový účet Sentinel a potom znovu spusťte instalační program pro upgrade Datahubu pomocí nového uživatelského jména a hesla Sentinelu.  
+* Znovu spusťte neúspěšnou úlohu nebo spusťte úlohu satelitních indexů pro rozsah dat 5 až 7 dní a zkontrolujte, zda je úloha úspěšná.
 
-   Informace o všech plánovaných a neplánovaných aktivitách údržby ověřovacích zpráv najdete na webu [Copernicus otevřít centrum Access Hub](https://scihub.copernicus.eu/news/) .  
+### <a name="sentinel-server-refused-connection"></a>Server Sentinel: Odmítnuté připojení 
 
-2. Znovu spusťte neúspěšnou úlohu nebo spusťte úlohu satelitních indexů pro rozsah dat 5 až 7 dní a potom zkontrolujte, jestli je úloha úspěšná.
+**Zpráva o selhání úlohy**: http://172.30.175.69:8983/solr/dhus"Server odmítl připojení na adrese: ." 
 
-## <a name="collect-logs-manually"></a>Shromažďovat protokoly ručně
+**Nápravná opatření**: K tomuto problému může dojít, pokud jsou na serveru Sentinel prováděny všechny aktivity údržby. 
+1. Pokud se některá úloha nebo kanál nezdaří, protože se provádí údržba, znovu odešlete úlohu po určité době. 
 
-[Nainstalujte a nasaďte Průzkumník služby Azure Storage]( https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows).
+   Informace o plánovaných nebo neplánovaných aktivitách údržby sentinelu najdete na webu [Copernicus Open Access Hub News.](https://scihub.copernicus.eu/news/)  
 
-### <a name="collect-azure-data-factory-job-logs-in-datahub"></a>Shromažďování protokolů úloh Azure Data Factory v DataHub
+2. Znovu spusťte neúspěšnou úlohu nebo spusťte úlohu satelitních indexů pro rozsah dat 5 až 7 dní a zkontrolujte, zda je úloha úspěšná.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Do **vyhledávacího** pole vyhledejte skupinu prostředků FarmBeats DataHub.
+### <a name="soil-moisture-map-has-white-areas"></a>Půdní vlhkost mapa má bílé plochy 
+
+**Problém**: Mapa Půdní vlhkost byla vygenerována, ale mapa má většinou bílé plochy.
+
+**Nápravná opatření**: K tomuto problému může dojít, pokud satelitní indexy generované pro čas, pro který byla požadována mapa má ndvi hodnoty, které je menší než 0,3. Další informace naleznete na [stránce Technického průvodce od společnosti Sentinel](https://earth.esa.int/web/sentinel/technical-guides/sentinel-2-msi/level-2a/algorithm).
+1. Znovu spusťte úlohu pro jiné časové období a zkontrolujte, zda hodnoty NDVI v satelitních indexech jsou větší než 0,3
+
+## <a name="collect-logs-manually"></a>Ruční sběr protokolů
+
+[Nainstalujte a nasaďte Azure Storage Explorer]( https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows).
+
+### <a name="collect-azure-data-factory-job-logs-in-datahub"></a>Shromažďování protokolů úloh Azure Data Factory v Datahubu
+
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+2. V poli **Hledat** vyhledejte skupinu prostředků FarmBeats Datahub.
 
     > [!NOTE]
-    > Vyberte skupinu prostředků DataHub, kterou jste zadali během instalace FarmBeats.
+    > Vyberte skupinu prostředků Datahub, kterou jste zadali během instalace FarmBeats.
 
-3. Na řídicím panelu **skupiny prostředků** vyhledejte *datahublogs\** účet úložiště. Vyhledejte například **datahublogsmvxmq**.  
-4. Ve sloupci **název** vyberte účet úložiště pro zobrazení řídicího panelu **účtu úložiště** .
-5. V podokně **\*datahubblogs** vyberte **otevřít v Průzkumníkovi** pro zobrazení **otevřené aplikace Průzkumník služby Azure Storage** .
-6. V levém podokně vyberte **kontejnery objektů BLOB**a pak vyberte **protokoly úloh**.
-7. V podokně **úlohy – protokoly** vyberte **Stáhnout**.
-8. Stáhněte protokoly do místní složky na vašem počítači.
-9. Odešlete stažený soubor. zip do farmbeatssupport@microsoft.com.
+3. Na řídicím panelu **Skupiny prostředků** vyhledejte účet úložiště *\* datahublogs.* Například vyhledejte **datahublogsmvxmq**.  
+4. Ve sloupci **Název** vyberte účet úložiště, který chcete zobrazit řídicí panel **Účtu úložiště.**
+5. V podokně **datahubblogs\* ** vyberte **Otevřít v Průzkumníkovi** a zobrazte aplikaci Open Azure Storage **Explorer.**
+6. V levém podokně vyberte **kontejnery objektů blob**a pak vyberte **protokoly úloh**.
+7. V podokně **protokolů úloh** vyberte **stáhnout**.
+8. Stáhněte protokoly do místní složky v počítači.
+9. Odeslat stažený soubor farmbeatssupport@microsoft.comZIP e-mailem na adresu .
 
-    ![FarmBeats projektu](./media/troubleshoot-azure-farmbeats/collecting-logs-manually-1.png)
+    ![Projekt FarmBeats](./media/troubleshoot-azure-farmbeats/collecting-logs-manually-1.png)
 
-### <a name="collect-azure-data-factory-job-logs-in-accelerator"></a>Shromažďovat protokoly úloh Azure Data Factory v akcelerátoru
+### <a name="collect-azure-data-factory-job-logs-in-accelerator"></a>Shromažďování protokolů úloh Azure Data Factory v akcelerátoru
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Do **vyhledávacího** pole vyhledejte skupinu prostředků akcelerátoru FarmBeats.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+2. V poli **Hledat** vyhledejte skupinu zdrojů Akcelerátoru FarmBeats.
 
     > [!NOTE]
     > Vyberte skupinu prostředků akcelerátoru, kterou jste zadali během instalace FarmBeats.
 
-3. Na řídicím panelu **skupiny prostředků** vyhledejte *úložiště\** účet úložiště. Vyhledejte například **storagedop4k\*** .
-4. Vyberte účet úložiště ve sloupci **název** pro zobrazení řídicího panelu **účtu úložiště** .
-5. V podokně **\*úložiště** vyberte **otevřít v průzkumníkovi** a otevřete Průzkumník služby Azure Storage aplikaci.
-6. V levém podokně vyberte **kontejnery objektů BLOB**a pak vyberte **protokoly úloh**.
-7. V podokně **úlohy – protokoly** vyberte **Stáhnout**.
-8. Stáhněte protokoly do místní složky na vašem počítači.
-9. Odešlete stažený soubor. zip do farmbeatssupport@microsoft.com.
+3. Na řídicím panelu **Skupiny prostředků** *vyhledejte\* * účet úložiště. Například vyhledejte **storagedop4k\***.
+4. Vyberte účet úložiště ve sloupci **Název** a zobrazte řídicí panel **Účtu úložiště.**
+5. V podokně **úložiště\* ** vyberte **Otevřít v Průzkumníkovi** a otevřete aplikaci Průzkumníka úložiště Azure.
+6. V levém podokně vyberte **kontejnery objektů blob**a pak vyberte **protokoly úloh**.
+7. V podokně **protokolů úloh** vyberte **stáhnout**.
+8. Stáhněte protokoly do místní složky v počítači.
+9. Odeslat stažený soubor farmbeatssupport@microsoft.comZIP e-mailem na adresu .
 
 
-### <a name="collect-datahub-app-service-logs"></a>Shromažďovat protokoly služby App Service DataHub
+### <a name="collect-datahub-app-service-logs"></a>Shromažďování protokolů služeb aplikace Datahub
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Do **vyhledávacího** pole vyhledejte skupinu prostředků FarmBeats DataHub.
-
-    > [!NOTE]
-    > Vyberte skupinu prostředků DataHub, kterou jste zadali během instalace FarmBeats.
-
-3. Ve skupině prostředků vyhledejte *datahublogs\** účet úložiště. Vyhledejte například **fordatahublogsmvxmq\*** .
-4. Vyberte účet úložiště ve sloupci **název** pro zobrazení řídicího panelu **účtu úložiště** .
-5. V podokně **\*datahubblogs** vyberte **otevřít v průzkumníkovi** a otevřete Průzkumník služby Azure Storage aplikace.
-6. V levém podokně vyberte **kontejnery objektů BLOB**a pak vyberte **appinsights-logs**.
-7. V podokně **appinsights-logs** vyberte **Stáhnout**.
-8. Stáhněte protokoly do místní složky na vašem počítači.
-9. Odešlete stažený soubor. zip do farmbeatssupport@microsoft.com.
-
-### <a name="collect-accelerator-app-service-logs"></a>Shromáždit protokoly služby akcelerátor App Service
-
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Do **vyhledávacího** pole vyhledejte skupinu prostředků akcelerátoru FarmBeats.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+2. V poli **Hledat** vyhledejte skupinu prostředků FarmBeats Datahub.
 
     > [!NOTE]
-    > Vyberte skupinu prostředků akcelerátoru FarmBeats, která byla k dispozici během instalace FarmBeats.
+    > Vyberte skupinu prostředků Datahub, kterou jste zadali během instalace FarmBeats.
 
-3. Ve skupině prostředků vyhledejte *\*úložiště* účtu úložiště. Vyhledejte například **storagedop4k\*** .
-4. Vyberte účet úložiště ve sloupci **název** pro zobrazení řídicího panelu **účtu úložiště** .
-5. V podokně **\*úložiště** vyberte **otevřít v průzkumníkovi** a otevřete Průzkumník služby Azure Storage aplikaci.
-6. V levém podokně vyberte **kontejnery objektů BLOB**a pak vyberte **appinsights-logs**.
-7. V podokně **appinsights-logs** vyberte **Stáhnout**.
-8. Stáhněte protokoly do místní složky na vašem počítači.
-9. Odešle staženou složku do farmbeatssupport@microsoft.com.
+3. Ve skupině prostředků vyhledejte účet úložiště *datahublogs.\* * Například vyhledejte **prodatahublogsmvxmq\***.
+4. Vyberte účet úložiště ve sloupci **Název** a zobrazte řídicí panel **Účtu úložiště.**
+5. V podokně **datahubblogs\* ** vyberte **Otevřít v Průzkumníkovi** a otevřete aplikaci Azure Storage Explorer.
+6. V levém podokně vyberte **Kontejnery objektů blob**a pak vyberte **protokoly appinsights .**
+7. V podokně **protokolů appinsights** vyberte **Stáhnout**.
+8. Stáhněte protokoly do místní složky v počítači.
+9. Odeslat stažený soubor farmbeatssupport@microsoft.comZIP e-mailem na adresu .
+
+### <a name="collect-accelerator-app-service-logs"></a>Shromažďovat protokoly služby aplikace akcelerátoru
+
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+2. V poli **Hledat** vyhledejte skupinu zdrojů Akcelerátoru FarmBeats.
+
+    > [!NOTE]
+    > Vyberte skupinu zdrojů FarmBeats Accelerator, která byla poskytnuta během instalace FarmBeats.
+
+3. Ve skupině prostředků *vyhledejte\* * účet úložiště. Například vyhledejte **storagedop4k\***.
+4. Vyberte účet úložiště ve sloupci **Název** a zobrazte řídicí panel **Účtu úložiště.**
+5. V podokně **úložiště\* ** vyberte **Otevřít v Průzkumníkovi** a otevřete aplikaci Průzkumníka úložiště Azure.
+6. V levém podokně vyberte **Kontejnery objektů blob**a pak vyberte **protokoly appinsights .**
+7. V podokně **protokolů appinsights** vyberte **Stáhnout**.
+8. Stáhněte protokoly do místní složky v počítači.
+9. Pošlete stažené farmbeatssupport@microsoft.comsložce e-mail na adresu .
 
 ## <a name="known-issues"></a>Známé problémy
 
-## <a name="batch-related-issues"></a>Problémy související se službou Batch
+## <a name="batch-related-issues"></a>Problémy související s dávkou
 
-**Chybová zpráva**: dosáhla se kvóta pro místní účet účtů Batch pro zadané předplatné.
+**Chybová zpráva**: "Byla dosažena kvóta regionálního účtu dávkových účtů pro zadané předplatné."
 
-**Nápravná opatření**: Zvyšte kvótu nebo odstraňte nepoužívané účty Batch a spusťte nasazení znovu.
+**Nápravná opatření**: Zvyšte kvótu nebo odstraňte nepoužívané dávkové účty a znovu spusťte nasazení.
 
 ### <a name="azure-active-directory-azure-ad-related-issues"></a>Problémy související s Azure Active Directory (Azure AD)
 
-**Chybová zpráva**: "nepovedlo se aktualizovat požadovaná nastavení na aplikace Azure AD d41axx40-xx21-4fbd-8xxf-97xxx9e2xxc0: nedostatečná oprávnění k dokončení operace. Ujistěte se, že výše uvedená nastavení jsou správně nakonfigurovaná pro Aplikace Azure AD. "
+**Chybová zpráva**: "Nelze aktualizovat požadované nastavení aplikace Azure AD D41axx40-xx21-4fbd-8xxf-97xxx9e2xxc0: Nedostatečná oprávnění k dokončení operace. Ujistěte se, že výše uvedená nastavení jsou správně nakonfigurovaná pro aplikaci Azure AD."
 
-**Význam**: Konfigurace registrace aplikace Azure AD se nedokončila správně.  
+**Význam:** Konfigurace registrace aplikace Azure AD nebyla správně dokončena.  
 
-**Nápravná opatření**: požádejte správce IT (osoba s oprávněním pro čtení), aby používala náš [skript](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts) pro vytvoření registrace aplikace Azure AD. Tento skript automaticky postará o kroky konfigurace i.
+**Nápravná opatření**: Požádejte správce IT (osobu s přístupem klienta pro čtení) o použití našeho [skriptu](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts) pro vytvoření registrace aplikace Azure AD. Tento skript se automaticky postará také o kroky konfigurace.
 
-**Chybová zpráva**: v tomto tenantovi se nepovedlo vytvořit novou aplikaci Active Directory\<název aplikace\>v tomto tenantovi: už existuje jiný objekt se stejnou hodnotou identifikátorů URI identifikátorů vlastností.
+**Chybová zpráva**: V tomto tenantovi\>nelze vytvořit nový název\<aplikace služby Active Directory : Jiný objekt se stejnou hodnotou identifikátoru IDENTIFIKÁTOR URIs již existuje.
 
-**Význam**: registrace aplikace služby Azure AD se stejným názvem již existuje.
+**Význam**: Registrace aplikace Azure AD se stejným názvem již existuje.
 
-**Nápravná opatření**: odstraňte existující registraci aplikace Azure AD nebo ji znovu použijte k instalaci. Pokud znovu používáte stávající registraci aplikace služby Azure AD, předejte ID aplikace a tajný kód klienta instalačnímu programu a znovu nasaďte.
+**Nápravná opatření**: Odstraňte existující registraci aplikace Azure AD nebo ji znovu použijte pro instalaci. Pokud znovu používáte existující registraci aplikace Azure AD, předaj id aplikace a tajný klíč klienta instalačnímu programu a znovu nasadit.
 
-## <a name="issues-with-the-inputjson-file"></a>Problémy se souborem Input. JSON
+## <a name="issues-with-the-inputjson-file"></a>Problémy se souborem input.json
 
-**Chyba**: při čtení vstupu ze souboru *input. JSON* došlo k chybě.
+**Chyba**: Došlo k chybě při čtení vstupu ze souboru *input.json.*
 
-**Nápravná opatření**: k tomuto problému obvykle dochází z důvodu chyby při zadání správné cesty k souboru *input. JSON* nebo názvu instalačnímu programu. Proveďte příslušné opravy a opakujte nasazení.
+**Nápravná opatření**: Tento problém obvykle vzniká z důvodu chyby při zadávání správné cesty nebo názvu souboru *input.json* instalačnímu programu. Proveďte příslušné opravy a opakujte nasazení.
 
-**Chyba**: došlo k chybě při analýze hodnot ve *vstupním souboru. JSON* .
+**Chyba**: V souboru *input.json* došlo k chybě.
 
-**Nápravná opatření**: k tomuto problému většinou dochází v důsledku nesprávných hodnot v souboru *input. JSON* . Proveďte příslušné opravy a opakujte nasazení.
+**Nápravná opatření**: Tento problém vzniká většinou z důvodu nesprávné hodnoty v rámci *input.json* souboru. Proveďte příslušné opravy a opakujte nasazení.
 
 ## <a name="high-cpu-usage"></a>Vysoké využití procesoru
 
-**Chyba**: obdržíte e-mailové upozornění, které odkazuje na **vysokou výstrahu o využití procesoru**. 
+**Chyba**: Zobrazí se e-mailové upozornění, které odkazuje na **upozornění na vysoké využití procesoru**. 
 
 **Nápravná opatření**: 
-1. Přejít do skupiny prostředků FarmBeats DataHub.
-2. Vyberte **službu App Service**.  
-3. Přejít na [stránku s cenami](https://azure.microsoft.com/pricing/details/app-service/windows/)horizontálního navýšení kapacity App Service a pak vyberte příslušnou cenovou úroveň.
+1. Přejděte do skupiny prostředků FarmBeats Datahub.
+2. Vyberte **službu App .**  
+3. Přejděte na [stránku s cenami služby App Service](https://azure.microsoft.com/pricing/details/app-service/windows/)a vyberte příslušnou cenovou úroveň.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud pořád FarmBeats problémy, obraťte se na [fórum podpory](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats).
+Pokud stále čelíte problémům s FarmBeats, obraťte se na naše [fórum podpory](https://aka.ms/farmbeatssupport).

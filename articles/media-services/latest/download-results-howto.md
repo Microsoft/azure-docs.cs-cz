@@ -1,5 +1,5 @@
 ---
-title: Stažení výsledků úlohy – Azure Media Services
+title: Stáhněte si výsledky úlohy – Mediální služby Azure
 description: Tento článek ukazuje, jak stáhnout výsledky úlohy.
 services: media-services
 documentationcenter: ''
@@ -11,18 +11,22 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
-ms.openlocfilehash: 0c81523d43fd316c3dc65cc2a5b34557f24014b5
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: bae7104eaded8c2ed153bc141faf7eba0bb86bae
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303405"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80346299"
 ---
-# <a name="download-the-results-of-a-job"></a>Stažení výsledků úlohy
+# <a name="download-the-results-of-a-job"></a>Stáhněte si výsledky úlohy
 
-V Azure Media Services při zpracování videí (například kódování nebo analýzy) potřebujete vytvořit výstupní [Asset](assets-concept.md) pro uložení výsledku vaší [úlohy](transforms-jobs-concept.md). Tyto výsledky pak můžete stáhnout do místní složky pomocí služby Media Service a rozhraní API pro úložiště. 
+Ve službě Azure Media Services je při zpracování videí (například kódování nebo analýzy) potřeba vytvořit výstupní [datový zdroj](assets-concept.md) pro uložení výsledku vaší [úlohy](transforms-jobs-concept.md). Tyto výsledky pak můžete stáhnout do místní složky pomocí rozhraní API služby Media Service a úložiště. 
 
-Tento článek ukazuje, jak stáhnout výsledky pomocí sad Java a .NET SDK.
+Tento článek ukazuje, jak stáhnout výsledky pomocí java a .NET SDKs.
+
+## <a name="prerequisites"></a>Požadavky 
+
+Zkontrolujte [správu majetku](manage-asset-concept.md).
 
 ## <a name="java"></a>Java
 
@@ -67,7 +71,7 @@ private static void downloadResults(MediaManager manager, String resourceGroup, 
 }
 ```
 
-Viz kompletní ukázka kódu: [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-java/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/src/main/java/sample/EncodingWithMESPredefinedPreset.java)
+Podívejte se na celou ukázku kódu: [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-java/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/src/main/java/sample/EncodingWithMESPredefinedPreset.java)
 
 ## <a name="net"></a>.NET
 
@@ -116,8 +120,8 @@ private async static Task DownloadResults(IAzureMediaServicesClient client, stri
 }
 ```
 
-Viz kompletní ukázka kódu: [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/Program.cs)
+Podívejte se na celou ukázku kódu: [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/Program.cs)
 
 ## <a name="next-steps"></a>Další kroky
 
-[Vytvoří vstup úlohy z adresy URL protokolu HTTPS](job-input-from-http-how-to.md).
+[Vytvořte vstup úlohy z adresy URL https](job-input-from-http-how-to.md).

@@ -9,12 +9,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: c18e1b1a1feba5c528a692b7d63287b3751b62cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c1260bb1fab23ede2d1a96725c3086dc128fffc
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77506228"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387644"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>Playbook pro řešení běžných požadavků na zabezpečení pomocí Azure SQL Database
 
@@ -657,7 +657,7 @@ Sledování událostí databáze vám pomůže pochopit databázovou aktivitu. M
 **Osvědčené postupy**:
 
 - Konfigurací [auditování databáze SQL](sql-database-auditing.md) na databázovém serveru pro auditování událostí budou auditovány všechny existující a nově vytvořené databáze na tomto serveru.
-- Ve výchozím nastavení zásady auditování zahrnuje všechny akce (dotazy, uložené procedury a úspěšné a neúspěšné přihlášení) proti databázím, což může mít za následek velký objem protokolů auditu. Zákazníkům se doporučuje [konfigurovat auditování pro různé typy akcí a skupin akcí pomocí prostředí PowerShell](sql-database-auditing.md#subheading-7). Konfigurace to pomůže řídit počet auditovaných akcí a minimalizovat riziko ztráty událostí. Vlastní konfigurace auditu umožňuje zákazníkům zachytit pouze potřebná data auditu.
+- Ve výchozím nastavení zásady auditování zahrnuje všechny akce (dotazy, uložené procedury a úspěšné a neúspěšné přihlášení) proti databázím, což může mít za následek velký objem protokolů auditu. Zákazníkům se doporučuje [konfigurovat auditování pro různé typy akcí a skupin akcí pomocí prostředí PowerShell](sql-database-auditing.md#manage-auditing). Konfigurace to pomůže řídit počet auditovaných akcí a minimalizovat riziko ztráty událostí. Vlastní konfigurace auditu umožňuje zákazníkům zachytit pouze potřebná data auditu.
 - Protokoly auditu lze spotřebovat přímo na [webu Azure Portal](https://portal.azure.com/)nebo z umístění úložiště, které bylo nakonfigurované. 
 
 

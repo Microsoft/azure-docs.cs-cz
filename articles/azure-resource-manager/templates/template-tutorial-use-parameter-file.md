@@ -2,62 +2,62 @@
 title: Kurz – použití souboru parametrů k nasazení šablony
 description: Použijte soubory parametrů, které obsahují hodnoty, které se mají použít k nasazení šablony Azure Resource Manager.
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 4e3f4f1c829436415880e66f0cf0170107732bda
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 0f7b966d4241716d71779e966de5d408711e4543
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79368838"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371778"
 ---
-# <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>Kurz: použití souborů parametrů k nasazení šablony Správce prostředků
+# <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>Kurz: Nasazení šablony ARM pomocí souborů parametrů
 
-V tomto kurzu se naučíte používat [soubory parametrů](parameter-files.md) k uložení hodnot, které předáte během nasazování. V předchozích kurzech jste v příkazu nasazení použili vložené parametry. Tento přístup pracoval při testování šablony, ale když je automatizace nasazení snazší, předejte sadu hodnot pro vaše prostředí. Soubory parametrů usnadňují zabalení hodnot parametrů pro konkrétní prostředí. V tomto kurzu vytvoříte soubory parametrů pro vývojová a produkční prostředí. Dokončení trvá přibližně **12 minut** .
+V tomto kurzu se dozvíte, jak pomocí [souborů parametrů](parameter-files.md) ukládat hodnoty, které předáte během nasazení. V předchozích kurzech jste použili vposlední části parametry s příkazem nasazení. Tento přístup fungoval při testování šablony Správce prostředků Azure (ARM), ale při automatizaci nasazení může být jednodušší předat sadu hodnot pro vaše prostředí. Soubory parametrů usnadňují balíček hodnot parametrů pro konkrétní prostředí. V tomto kurzu vytvoříte soubory parametrů pro vývojová a produkční prostředí. To trvá asi **12 minut** na dokončení.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Doporučujeme, abyste dokončili [kurz týkající se značek](template-tutorial-add-tags.md), ale není to nutné.
+Doporučujeme dokončit [kurz o značky](template-tutorial-add-tags.md), ale to není nutné.
 
-Musíte mít Visual Studio Code s rozšířením Správce prostředků Tools a buď Azure PowerShell, nebo v rozhraní příkazového řádku Azure. Další informace najdete v tématu [nástroje šablon](template-tutorial-create-first-template.md#get-tools).
+Musíte mít kód Visual Studio s rozšířením Nástroje správce prostředků a buď Azure PowerShell nebo Azure CLI. Další informace naleznete v [tématu nástroje šablony](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Zkontrolovat šablonu
+## <a name="review-template"></a>Šablona revize
 
-Vaše šablona má mnoho parametrů, které můžete během nasazení zadat. Na konci předchozího kurzu vaše šablona vypadala takto:
+Šablona má mnoho parametrů, které můžete poskytnout během nasazení. Na konci předchozího kurzu vaše šablona vypadala takto:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json":::
 
-Tato šablona funguje dobře, ale nyní chcete snadno spravovat parametry, které předáváte pro šablonu.
+Tato šablona funguje dobře, ale nyní chcete snadno spravovat parametry, které předáte pro šablonu.
 
-## <a name="add-parameter-files"></a>Přidat soubory parametrů
+## <a name="add-parameter-files"></a>Přidání souborů parametrů
 
-Soubory parametrů jsou soubory JSON se strukturou, která je podobná vaší šabloně. V souboru zadejte hodnoty parametrů, které chcete předat během nasazování.
+Parametr soubory jsou JSON soubory se strukturou, která je podobná vaší šablony. V souboru zadáte hodnoty parametrů, které chcete předat během nasazení.
 
-V VS Code vytvořte nový soubor s následujícím obsahem. Uložte soubor s názvem **azuredeploy. Parameters. dev. JSON**.
+V kódu VS vytvořte nový soubor s následujícím obsahem. Uložte soubor s názvem **azuredeploy.parameters.dev.json**.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json":::
 
-Tento soubor je vaším souborem parametrů pro vývojové prostředí. Všimněte si, že pro účet úložiště používá Standard_LRS, pojmenuje prostředky s předponou pro **vývoj** a nastaví značku **prostředí** na **dev**.
+Tento soubor je soubor parametrů pro vývojové prostředí. Všimněte si, že používá Standard_LRS pro účet úložiště, názvy prostředků s předponou **dev** a nastaví značku **prostředí** na **Dev**.
 
-Znovu vytvořte nový soubor s následujícím obsahem. Uložte soubor s názvem **azuredeploy. Parameters. prod. JSON**.
+Znovu vytvořte nový soubor s následujícím obsahem. Uložte soubor s názvem **azuredeploy.parameters.prod.json**.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json":::
 
-Tento soubor je vaším souborem parametrů pro produkční prostředí. Všimněte si, že používá Standard_GRS pro účet úložiště, názvy prostředků s předponou **Contoso** a nastaví značku **prostředí** na **produkční**. V reálném produkčním prostředí byste také chtěli použít službu App Service s jinou skladovou jednotkou než bezplatnou, ale pro tento kurz bude tato SKU nadále používat.
+Tento soubor je soubor parametrů pro produkční prostředí. Všimněte si, že používá Standard_GRS pro účet úložiště, názvy prostředků s předponou **contoso** a nastaví značku **prostředí** na **produkční prostředí**. V reálném produkčním prostředí byste také chtěli používat službu aplikace s skladovou položkou než zdarma, ale budeme i nadále používat tuto skladovou položku pro tento kurz.
 
 ## <a name="deploy-template"></a>Nasazení šablony
 
-K nasazení šablony použijte rozhraní příkazového řádku Azure nebo Azure PowerShell.
+K nasazení šablony použijte azure cli nebo Azure PowerShell.
 
-Jako konečný test šablony vytvoříme dvě nové skupiny prostředků. Jednu pro vývojové prostředí a jednu pro produkční prostředí.
+Jako poslední test šablony vytvoříme dvě nové skupiny prostředků. Jeden pro prostředí pro dev a jeden pro produkční prostředí.
 
-Nejdřív nasadíme do vývojového prostředí.
+Nejprve se nasadíme do prostředí pro dev.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
-$templateFile = "{provide-the-path-to-the-template-file}"
+$templateFile = "{path-to-the-template-file}"
 $parameterFile="{path-to-azuredeploy.parameters.dev.json}"
 New-AzResourceGroup `
   -Name myResourceGroupDev `
@@ -71,8 +71,11 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
+Chcete-li spustit tento příkaz nasazení, musíte mít [nejnovější verzi](/cli/azure/install-azure-cli) azure cli.
+
 ```azurecli
-templateFile="{provide-the-path-to-the-template-file}"
+templateFile="{path-to-the-template-file}"
+devParameterFile="{path-to-azuredeploy.parameters.dev.json}"
 az group create \
   --name myResourceGroupDev \
   --location "East US"
@@ -80,12 +83,12 @@ az deployment group create \
   --name devenvironment \
   --resource-group myResourceGroupDev \
   --template-file $templateFile \
-  --parameters azuredeploy.parameters.dev.json
+  --parameters $devParameterFile
 ```
 
 ---
 
-Nyní nasadíme do produkčního prostředí.
+Nyní se nasadíme do produkčního prostředí.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -104,6 +107,7 @@ New-AzResourceGroupDeployment `
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
+prodParameterFile="{path-to-azuredeploy.parameters.prod.json}"
 az group create \
   --name myResourceGroupProd \
   --location "West US"
@@ -111,32 +115,32 @@ az deployment group create \
   --name prodenvironment \
   --resource-group myResourceGroupProd \
   --template-file $templateFile \
-  --parameters azuredeploy.parameters.prod.json
+  --parameters $prodParameterFile
 ```
 
 ---
 
 ## <a name="verify-deployment"></a>Ověření nasazení
 
-Nasazení můžete ověřit prozkoumáním skupin prostředků z Azure Portal.
+Nasazení můžete ověřit tak, že prozkoumáte skupiny prostředků z webu Azure Portal.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. V nabídce vlevo vyberte **skupiny prostředků**.
-1. V tomto kurzu se zobrazí dvě nové skupiny prostředků, které jste nasadili.
-1. Vyberte buď skupinu prostředků, a zobrazte nasazené prostředky. Všimněte si, že odpovídají hodnotám, které jste zadali v souboru parametrů pro toto prostředí.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. V levé nabídce vyberte **položku Skupiny prostředků**.
+1. Zobrazí se dvě nové skupiny prostředků, které jste nasadili v tomto kurzu.
+1. Vyberte skupinu prostředků a zobrazte nasazené prostředky. Všimněte si, že odpovídají hodnotám, které jste zadali v souboru parametrů pro toto prostředí.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-1. Na portálu Azure Portal vyberte v nabídce nalevo **Skupina prostředků**.
-2. Do pole **Filtrovat podle názvu** zadejte název skupiny prostředků. Pokud jste tuto řadu dokončili, máte tři skupiny prostředků pro odstranění – myResourceGroup, myResourceGroupDev a myResourceGroupProd.
+1. Na portálu Azure vyberte **skupinu prostředků** z levé nabídky.
+2. Do pole **Filtrovat podle názvu** zadejte název skupiny prostředků. Pokud jste dokončili tuto řadu, máte tři skupiny prostředků k odstranění - myResourceGroup, myResourceGroupDev a myResourceGroupProd.
 3. Vyberte název skupiny prostředků.
-4. V nabídce nahoře vyberte **Odstranit skupinu prostředků**.
+4. V horní nabídce vyberte **Odstranit skupinu prostředků.**
 
 ## <a name="next-steps"></a>Další kroky
 
-Gratulujeme, dokončili jste tento Úvod k nasazování šablon do Azure. Dejte nám vědět, pokud máte komentáře a návrhy v části věnované zpětné vazbě. Děkujeme!
+Gratulujeme, dokončili jste tento úvod k nasazení šablon do Azure. Dejte nám vědět, pokud máte nějaké připomínky a návrhy v sekci zpětná vazba. Děkujeme!
 
-Jste připraveni přejít k pokročilejším koncepcím o šablonách. V dalším kurzu se dozvíte víc o používání Referenční dokumentace k šablonám, které vám pomůžou definovat prostředky k nasazení.
+Další série kurzů jde do více podrobností o nasazení šablon.
 
 > [!div class="nextstepaction"]
-> [Využití referenčních informací k šablonám](template-tutorial-create-encrypted-storage-accounts.md)
+> [Nasazení místní šablony](./deployment-tutorial-local-template.md)

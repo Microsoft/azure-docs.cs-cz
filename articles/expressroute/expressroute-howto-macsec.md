@@ -1,6 +1,6 @@
 ---
 title: 'Azure ExpressRoute: Konfigurace MACsec'
-description: Tento článek vám pomůže nakonfigurovat MACsec pro zabezpečení připojení mezi hraničními směrovači a hraničními směrovači Microsoftu.
+description: Tento článek vám pomůže nakonfigurovat sadu MACsec tak, aby zabezpečila připojení mezi hraničními směrovači a hraničními směrovači společnosti Microsoft.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,46 +8,46 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: cherylmc
 ms.openlocfilehash: 626302845dfb4b19deb921675601818b35ab8edb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74083548"
 ---
-# <a name="configure-macsec-on-expressroute-direct-ports"></a>Konfigurace MACsec na přímých portech ExpressRoute
+# <a name="configure-macsec-on-expressroute-direct-ports"></a>Konfigurace funkce MACsec na portech ExpressRoute Direct
 
-Tento článek vám pomůže nakonfigurovat MACsec k zabezpečení připojení mezi hraničními směrovači a hraničními směrovači Microsoftu pomocí PowerShellu.
+Tento článek vám pomůže nakonfigurovat sadu MACsec tak, aby zabezpečila připojení mezi hraničními směrovači a hraničními směrovači společnosti Microsoft pomocí prostředí PowerShell.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Než začnete s konfigurací, potvrďte následující:
+Před zahájením konfigurace potvrďte následující:
 
-* Porozumíte [přímým pracovním postupům zřizování ExpressRoute](expressroute-erdirect-about.md).
+* Rozumíte [pracovním postupům zřizování ExpressRoute Direct](expressroute-erdirect-about.md).
 * Vytvořili jste [prostředek portu ExpressRoute Direct](expressroute-howto-erdirect.md).
-* Pokud chcete spustit prostředí PowerShell místně, ověřte, zda je v počítači nainstalována nejnovější verze Azure PowerShell.
+* Pokud chcete powershell spustit místně, ověřte, jestli je ve vašem počítači nainstalovaná nejnovější verze Prostředí Azure PowerShell.
 
-### <a name="working-with-azure-powershell"></a>Práce s využitím Azure Powershellu
+### <a name="working-with-azure-powershell"></a>Práce s Azure PowerShellem
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
-### <a name="sign-in-and-select-the-right-subscription"></a>Přihlaste se a vyberte správné předplatné.
+### <a name="sign-in-and-select-the-right-subscription"></a>Přihlaste se a vyberte správné předplatné
 
 Pokud chcete spustit konfiguraci, přihlaste se ke svému účtu Azure a vyberte předplatné, které chcete použít.
 
    [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
 
-## <a name="1-create-azure-key-vault-macsec-secrets-and-user-identity"></a>1. vytvoření Azure Key Vault, tajných kódů MACsec a identity uživatele
+## <a name="1-create-azure-key-vault-macsec-secrets-and-user-identity"></a>1. Vytvoření trezoru klíčů Azure, tajných kódů MACsec a identity uživatele
 
-1. Vytvořte instanci Key Vault pro uložení tajných kódů MACsec do nové skupiny prostředků.
+1. Vytvořte instanci trezoru klíčů pro uložení tajných kódů MACsec v nové skupině prostředků.
 
     ```azurepowershell-interactive
     New-AzResourceGroup -Name "your_resource_group" -Location "resource_location"
     $keyVault = New-AzKeyVault -Name "your_key_vault_name" -ResourceGroupName "your_resource_group" -Location "resource_location" -EnableSoftDelete 
     ```
 
-    Pokud už máte Trezor klíčů nebo skupinu prostředků, můžete je znovu použít. Je ale důležité, abyste [funkci **obnovitelného odstranění** ](../key-vault/key-vault-ovw-soft-delete.md) povolili ve svém stávajícím trezoru klíčů. Pokud není povolené obnovitelné odstranění, můžete k tomu použít následující příkazy:
+    Pokud již trezor klíčů nebo skupinu prostředků máte, můžete je znovu použít. Je však důležité povolit funkci [ **obnovitelného odstranění** ](../key-vault/key-vault-ovw-soft-delete.md) v existujícím trezoru klíčů. Pokud není povoleno obnovitelné odstranění, můžete jej povolit pomocí následujících příkazů:
 
     ```azurepowershell-interactive
     ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "your_existing_keyvault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"
@@ -59,7 +59,7 @@ Pokud chcete spustit konfiguraci, přihlaste se ke svému účtu Azure a vyberte
     $identity = New-AzUserAssignedIdentity  -Name "identity_name" -Location "resource_location" -ResourceGroupName "your_resource_group"
     ```
 
-    Pokud rutina New-AzUserAssignedIdentity není rozpoznaná jako platná rutina prostředí PowerShell, nainstalujte následující modul (v režimu správce) a znovu spusťte výše uvedený příkaz.
+    Pokud New-AzUserAssignedIdentity není rozpoznán jako platný rutina prostředí PowerShell, nainstalujte následující modul (v režimu správce) a znovu spusťte výše uvedený příkaz.
 
     ```azurepowershell-interactive
     Install-Module -Name Az.ManagedServiceIdentity
@@ -78,20 +78,20 @@ Pokud chcete spustit konfiguraci, přihlaste se ke svému účtu Azure a vyberte
     Set-AzKeyVaultAccessPolicy -VaultName "your_key_vault_name" -PermissionsToSecrets get -ObjectId $identity.PrincipalId
     ```
 
-   Tato identita teď může získat tajné kódy, například CAK a CKN, z trezoru klíčů.
-5. Nastavte tuto identitu uživatele pro použití v ExpressRoute.
+   Nyní tato identita může získat tajné klíče, například CAK a CKN, z trezoru klíčů.
+5. Nastavte tuto identitu uživatele pro použití expressroute.
 
     ```azurepowershell-interactive
     $erIdentity = New-AzExpressRoutePortIdentity -UserAssignedIdentityId $identity.Id
     ```
  
-## <a name="2-configure-macsec-on-expressroute-direct-ports"></a>2. konfigurace MACsec na přímých portech ExpressRoute
+## <a name="2-configure-macsec-on-expressroute-direct-ports"></a>2. Konfigurace macseku na portech ExpressRoute Direct
 
-### <a name="to-enable-macsec"></a>Povolení MACsec
+### <a name="to-enable-macsec"></a>Povolení macsec
 
-Každá instance ExpressRoute Direct má dva fyzické porty. Můžete se rozhodnout povolit MACsec na obou portech současně nebo povolit MACsec na jednom portu v daném okamžiku. Po jednom portu (přepnutím provozu na aktivní port při obsluhování druhého portu) může doejít přerušení, pokud je už Služba ExpressRoute Direct v provozu.
+Každá instance ExpressRoute Direct má dva fyzické porty. Můžete povolit MACsec na obou portech současně nebo povolit MACsec na jednom portu najednou. Dělat to jeden port v době (přepnutím provozu na aktivní port při údržbě druhého portu) může pomoci minimalizovat přerušení, pokud expressroute direct je již v provozu.
 
-1. Nastavte MACsec tajných klíčů a šifr a přidružte identitu uživatele k portu, aby kód správy ExpressRoute mohl v případě potřeby získat přístup k tajným tajným klíčům MACsec.
+1. Nastavte tajné kódy MACsec a šifru a přidružte identitu uživatele k portu tak, aby kód správy ExpressRoute měl v případě potřeby přístup k tajným kódům MACsec.
 
     ```azurepowershell-interactive
     $erDirect = Get-AzExpressRoutePort -ResourceGroupName "your_resource_group" -Name "your_direct_port_name"
@@ -104,7 +104,7 @@ Každá instance ExpressRoute Direct má dva fyzické porty. Můžete se rozhodn
     $erDirect.identity = $erIdentity
     Set-AzExpressRoutePort -ExpressRoutePort $erDirect
     ```
-2. Volitelné Pokud jsou porty v administrativním stavu, můžete tyto porty vyvolat spuštěním následujících příkazů.
+2. (Nepovinné) Pokud jsou porty ve stavu Správce dolů, můžete spustit následující příkazy pro zvýšení portů.
 
     ```azurepowershell-interactive
     $erDirect = Get-AzExpressRoutePort -ResourceGroupName "your_resource_group" -Name "your_direct_port_name"
@@ -113,11 +113,11 @@ Každá instance ExpressRoute Direct má dva fyzické porty. Můžete se rozhodn
     Set-AzExpressRoutePort -ExpressRoutePort $erDirect
     ```
 
-    V tuto chvíli je MACsec povolená na ExpressRoute přímých portech na straně Microsoftu. Pokud jste na hraničních zařízeních nenakonfigurovali, můžete je nakonfigurovat se stejnými tajnými klíči a šifrou MACsec.
+    V tomto okamžiku je macsec povolena na portech ExpressRoute Direct na straně microsoftu. Pokud jste ji nenakonfigurovali na hraničních zařízeních, můžete je nakonfigurovat se stejnými tajnými kódy MACsec a šifrem.
 
-### <a name="to-disable-macsec"></a>Zakázání MACsec
+### <a name="to-disable-macsec"></a>Zakázání funkce MACsec
 
-Pokud MACsec už není na vaší ExpressRoute přímé instanci žádoucí, můžete pro jeho zakázání spustit následující příkazy.
+Pokud již není macsec v instanci ExpressRoute Direct žádoucí, můžete ji zakázat následujícími příkazy.
 
 ```azurepowershell-interactive
 $erDirect = Get-AzExpressRoutePort -ResourceGroupName "your_resource_group" -Name "your_direct_port_name"
@@ -129,12 +129,12 @@ $erDirect.identity = $null
 Set-AzExpressRoutePort -ExpressRoutePort $erDirect
 ```
 
-V tomto okamžiku je MACsec v přímých portech ExpressRoute na straně Microsoftu zakázaný.
+V tomto okamžiku je macsec zakázán na portech ExpressRoute Direct na straně společnosti Microsoft.
 
 ### <a name="test-connectivity"></a>Test připojení
-Po nakonfigurování MACsec (včetně aktualizace klíče MACsec) na portech ExpressRoute Direct [Ověřte](expressroute-troubleshooting-expressroute-overview.md) , jestli jsou relace BGP okruhů v provozu. Pokud na těchto portech ještě nemáte žádný okruh, vytvořte si nejdřív jednu z nich a nastavte privátní partnerský vztah Azure nebo partnerský vztah Microsoftu pro okruh. Pokud je MACsec nesprávně nakonfigurovaný, včetně neshody klíčů MACsec, mezi síťovými zařízeními a síťovými zařízeními Microsoftu, na úrovni 2 a ve vrstvě 3 se rozlišení ARP nezobrazuje. Pokud je vše nakonfigurované správně, měli byste vidět správné trasy protokolu BGP v obou směrech a toku dat aplikací přes ExpressRoute.
+Po konfiguraci macsec (včetně aktualizace klíče MACsec) na portech ExpressRoute Direct [zkontrolujte,](expressroute-troubleshooting-expressroute-overview.md) zda jsou relace Protokolu BGP okruhů v provozu. Pokud ještě nemáte žádný okruh na portech, vytvořte nejprve jeden a nastavte Azure Private Peering nebo Microsoft Peering okruhu. Pokud je macsec nesprávně nakonfigurován, včetně neshody klíčů MACsec, mezi síťovými zařízeními a síťovými zařízeními společnosti Microsoft, neuvidíte rozlišení ARP ve vrstvě 2 a zařízení BGP ve vrstvě 3. Pokud je vše správně nakonfigurováno, měli byste vidět trasy Protokolu BGP inzerované správně v obou směrech a tok dat aplikace odpovídajícím způsobem přes ExpressRoute.
 
 ## <a name="next-steps"></a>Další kroky
-1. [Vytvoření okruhu ExpressRoute na ExpressRoute Direct](expressroute-howto-erdirect.md)
-2. [Propojení okruhu ExpressRoute k virtuální síti Azure](expressroute-howto-linkvnet-arm.md)
+1. [Vytvoření okruhu ExpressRoute v aplikaci ExpressRoute Direct](expressroute-howto-erdirect.md)
+2. [Propojení okruhu ExpressRoute s virtuální sítí Azure](expressroute-howto-linkvnet-arm.md)
 3. [Ověření připojení ExpressRoute](expressroute-troubleshooting-expressroute-overview.md)

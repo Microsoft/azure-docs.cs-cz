@@ -1,7 +1,7 @@
 ---
-title: Řešení potíží s protokolem SSL (MSAL iOS/macOS) | Azure
+title: Poradce při potížích s TLS/SSL (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
-description: Přečtěte si, co dělat s různými problémy pomocí certifikátů SSL s MSAL. Cíl – knihovna C.
+description: Přečtěte si, co dělat s různými problémy s použitím certifikátů TLS/SSL s msal. Knihovna Objective-C.
 services: active-directory
 documentationcenter: ''
 author: mmacy
@@ -17,37 +17,37 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: e278b928cc7f1e7f830ba246545ea52944a2e252
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 42bd016a9d0882cc97eaa800235226b2de9569a7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084363"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369404"
 ---
-# <a name="how-to-troubleshoot-msal-for-ios-and-macos-ssl-issues"></a>Postupy: řešení potíží s MSAL pro iOS a macOS SSL
+# <a name="how-to-troubleshoot-msal-for-ios-and-macos-tlsssl-issues"></a>Postup: Řešení potíží s msal pro problémy s iOS a macOS TLS/SSL
 
-Tento článek poskytuje informace, které vám pomůžou při řešení problémů, ke kterým může docházet při používání [knihovny Microsoft Authentication Library (MSAL) pro iOS a MacOS](reference-v2-libraries.md) .
+Tento článek obsahuje informace, které vám pomohou vyřešit problémy, se kterými se můžete sejít při používání [Knihovny ověřování MicrosoftU (MSAL) pro iOS a macOS](reference-v2-libraries.md)
 
 ## <a name="network-issues"></a>Problémy se sítí
 
-**Chyba-1200**: došlo k chybě SSL a zabezpečené připojení k serveru nelze vytvořit.
+**Chyba -1200**: "Došlo k chybě SSL a nelze provést zabezpečené připojení k serveru."
 
-Tato chyba znamená, že připojení není zabezpečené. K tomu dojde, pokud je certifikát neplatný. Další informace, včetně toho, který server selhává při kontrole SSL, najdete v tématu `NSURLErrorFailingURLErrorKey` ve slovníku `userInfo` objektu Error.
+Tato chyba znamená, že připojení není zabezpečené. K tomu dochází, když je certifikát neplatný. Další informace, včetně toho, který server se nedaří kontrola TLS, naleznete `NSURLErrorFailingURLErrorKey` ve `userInfo` slovníku objektu chyby.
 
-Tato chyba pochází ze síťové knihovny společnosti Apple. Úplný seznam kódů chyb NSURL je v NSURLError. h v sadách SDK pro macOS a iOS. Další podrobnosti o této chybě najdete v tématu [adresy URL při načítání kódů chyb systému](https://developer.apple.com/documentation/foundation/1508628-url_loading_system_error_codes?language=objc).
+Tato chyba je z síťové knihovny společnosti Apple. Úplný seznam kódů chyb NSURL je v souboru NSURLError.h v sadách MacOS a iOS SDK. Další podrobnosti o této chybě naleznete v [tématu URL Loading System Error Codes](https://developer.apple.com/documentation/foundation/1508628-url_loading_system_error_codes?language=objc).
 
-## <a name="certificate-issues"></a>Problémy s certifikátem
+## <a name="certificate-issues"></a>Certifikáty
 
-Pokud se adresa URL, která poskytuje neplatný certifikát, připojí k serveru, který chcete použít jako součást toku ověřování, dobrým účelem diagnostiky problému je otestování adresy URL pomocí ověřovací služby SSL, jako je [Qualys SSL Labs Analyzer](https://www.ssllabs.com/ssltest/analyze.html). Testuje server na nejrůznějších scénářích a prohlížečích a kontroluje mnoho známých chyb zabezpečení.
+Pokud se adresa URL poskytující neplatný certifikát připojí k serveru, který chcete použít jako součást toku ověřování, je dobrým začátkem diagnostiky problému otestovat adresu URL pomocí ověřovací služby SSL, jako je [například test serveru SSL](https://www.ssllabs.com/ssltest/analyze.html). Testuje server proti široké škále scénářů a prohlížečů a kontroluje mnoho známých chyb zabezpečení.
 
-Ve výchozím nastavení se nová funkce [Security Transport Security (ATS)](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW35) společnosti Apple aplikuje přísnější zásady zabezpečení pro aplikace, které používají certifikáty SSL. Některé operační systémy a webové prohlížeče začali ve výchozím nastavení vynucovat některé z těchto zásad. Z bezpečnostních důvodů Nedoporučujeme zakázat ATS.
+Ve výchozím nastavení nová funkce [zabezpečení přenosu aplikací (ATS)](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW35) společnosti Apple používá přísnější zásady zabezpečení pro aplikace, které používají certifikáty TLS/SSL. Některé operační systémy a webové prohlížeče začaly ve výchozím nastavení vynucovat některé z těchto zásad. Z bezpečnostních důvodů doporučujeme ats zakázat.
 
-Certifikáty využívající hodnoty hash SHA-1 mají známé chyby zabezpečení. Většina moderních webových prohlížečů nepovoluje certifikáty s hodnotami hash SHA-1.
+Certifikáty používající hashy SHA-1 mají známé chyby zabezpečení. Většina moderních webových prohlížečů nepovoluje certifikáty s hashe sha-1.
 
-## <a name="captive-portals"></a>Nedobrovolný portál
+## <a name="captive-portals"></a>Kaptivní portály
 
-Samoobslužný portál prezentuje uživateli webovou stránku při prvním přístupu k síti Wi-Fi, ale ještě jí nebyl udělen přístup k této síti. Zachycuje svůj internetový provoz, dokud uživatel nesplní požadavky portálu. Chyby sítě, protože se uživatel nemůže připojit k síťovým prostředkům, dokud se uživatel nepřipojí přes portál.
+Přijatý portál představuje uživateli webovou stránku, když poprvé přistupuje k síti Wi-Fi a dosud mu nebyl udělen přístup k této síti. Zachytí jejich internetový provoz, dokud uživatel nesplní požadavky portálu. Chyby sítě, protože uživatel se nemůže připojit k síťovým prostředkům, se očekávají, dokud se uživatel nepřipojí prostřednictvím portálu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si o [nedobrovolných portálech](https://en.wikipedia.org/wiki/Captive_portal) a funkci nového [zabezpečení přenosu aplikací (ATS)](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW35) společnosti Apple.
+Přečtěte si o [kaptivních portálech](https://en.wikipedia.org/wiki/Captive_portal) a nové funkci [Ats (App Transport Security)](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW35) společnosti Apple.
