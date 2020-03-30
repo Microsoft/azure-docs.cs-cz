@@ -1,6 +1,6 @@
 ---
-title: Parametrizovat propojené služby v Azure Data Factory
-description: Naučte se, jak parametrizovat propojené služby v Azure Data Factory a v době běhu předávat dynamické hodnoty.
+title: Parametrize propojených služeb v Azure Data Factory
+description: Zjistěte, jak parametrizovat propojené služby v Azure Data Factory a předat dynamické hodnoty za běhu.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -11,29 +11,29 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: acc7284eb607d20ca1d62b478d802be56048bc6c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75440095"
 ---
-# <a name="parameterize-linked-services-in-azure-data-factory"></a>Parametrizovat propojené služby v Azure Data Factory
+# <a name="parameterize-linked-services-in-azure-data-factory"></a>Parametrize propojených služeb v Azure Data Factory
 
-Nyní můžete parametrizovat propojenou službu a v době běhu předat dynamické hodnoty. Pokud se například chcete připojit k různým databázím na stejném serveru Azure SQL Database, můžete v definici propojené služby teď parametrizovat název databáze. Tím zabráníte tomu, abyste vytvořili propojenou službu pro každou databázi na serveru Azure SQL Database. V definici propojené služby můžete také parametrizovat jiné vlastnosti, například *uživatelské jméno.*
+Nyní můžete parametrizovat propojenou službu a předat dynamické hodnoty za běhu. Například pokud se chcete připojit k různým databázím na stejném serveru Azure SQL Database, můžete nyní parametrizovat název databáze v definici propojené služby. Tím zabráníte nutnosti vytvořit propojenou službu pro každou databázi na databázovém serveru Azure SQL. Můžete parametrizovat i další vlastnosti v definici propojené služby - například *Uživatelské jméno.*
 
-K parametrizovat propojených služeb můžete použít uživatelské rozhraní Data Factory v Azure Portal nebo programovacím rozhraní.
+Uživatelské rozhraní Datové továrny můžete použít na webu Azure Portal nebo programovací rozhraní k parametrizaci propojených služeb.
 
 > [!TIP]
-> Doporučujeme, abyste neparametrizovati hesla ani tajné klíče. Místo toho uložte všechny připojovací řetězce v Azure Key Vault a parametrizovat *název tajného klíče*.
+> Doporučujeme neparametrizovat hesla nebo tajné klíče. Místo toho uložte všechny připojovací řetězce do služby Azure Key Vault a parametrizujte *tajný název*.
 
-Pokud chcete tuto funkci seznámit a předvedení této funkce, podívejte se na následující video:
+Sedmiminutový úvod a ukázku této funkce najdete v následujícím videu:
 
 > [!VIDEO https://channel9.msdn.com/shows/azure-friday/Parameterize-connections-to-your-data-stores-in-Azure-Data-Factory/player]
 
 ## <a name="supported-data-stores"></a>Podporované zdroje dat
 
-V tuto chvíli je propojená služba Parametrizace podporovaná v uživatelském rozhraní Data Factory v Azure Portal pro následující úložiště dat. U všech ostatních úložišť dat můžete propojenou službu parametrizovat tak, že na kartě **připojení** vyberete ikonu **kódu** a použijete Editor JSON.
-- Databáze SQL Azure
+V tuto chvíli je parametrizace propojené služby podporována v uzdu datové továrny na webu Azure Portal pro následující úložiště dat. Pro všechna ostatní úložiště dat můžete parametrizovat propojenou službu výběrem ikony **Kód** na kartě **Připojení** a pomocí editoru JSON.
+- Azure SQL Database
 - Azure SQL Data Warehouse
 - SQL Server
 - Oracle
@@ -44,7 +44,7 @@ V tuto chvíli je propojená služba Parametrizace podporovaná v uživatelském
 
 ## <a name="data-factory-ui"></a>Uživatelské rozhraní Data Factory
 
-![Přidat dynamický obsah do definice propojené služby](media/parameterize-linked-services/parameterize-linked-services-image1.png)
+![Přidání dynamického obsahu do definice propojené služby](media/parameterize-linked-services/parameterize-linked-services-image1.png)
 
 ![Vytvoření nového parametru](media/parameterize-linked-services/parameterize-linked-services-image2.png)
 

@@ -1,43 +1,43 @@
 ---
 title: Migrace aplikací do nejnovějšího schématu
-description: Jak migrovat definice JSON pracovního postupu aplikace logiky na nejnovější verzi schématu jazyka definice pracovního postupu
+description: Jak migrovat definice JSON pracovního postupu aplikace logiky do nejnovější verze schématu definice pracovního postupu
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 ms.openlocfilehash: cef0fcb990cd2c5c6583822d4dc4c6993c52eac2
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75666784"
 ---
 # <a name="migrate-logic-apps-to-latest-schema-version"></a>Migrace aplikací logiky na nejnovější verzi schématu
 
-Pokud chcete stávající aplikace logiky přesunout do nejnovějšího schématu, postupujte takto: 
+Pokud chcete přesunout existující aplikace logiky do nejnovějšího schématu, postupujte takto: 
 
-1. V [Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v návrháři aplikace logiky.
+1. Na [webu Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v Návrháři aplikací logiky.
 
-2. V nabídce aplikace logiky klikněte na **Přehled**. Na panelu nástrojů vyberte **Aktualizovat schéma**.
+2. V nabídce aplikace logiky zvolte **Přehled**. Na panelu nástrojů zvolte **Aktualizovat schéma**.
 
    > [!NOTE]
-   > Když zvolíte možnost **Aktualizovat schéma**, Azure Logic Apps automaticky spustí kroky migrace a poskytne vám výstup kódu. Tento výstup můžete použít pro aktualizaci definice aplikace logiky. Ujistěte se však, že dodržujete osvědčené postupy, jak je popsáno v následující části věnované **osvědčeným postupům** .
+   > Když zvolíte **Aktualizovat schéma**, Azure Logic Apps automaticky spustí kroky migrace a poskytne výstup kódu pro vás. Tento výstup můžete použít k aktualizaci definice aplikace logiky. Ujistěte se však, že dodržujete osvědčené postupy, jak je popsáno v následující části **Doporučené postupy.**
 
    ![Aktualizovat schéma](./media/connectors-schema-migration/update-schema.png)
 
-   Zobrazí se stránka aktualizovat schéma a zobrazí odkaz na dokument, který popisuje vylepšení v novém schématu.
+   Zobrazí se stránka Aktualizovat schéma a zobrazí odkaz na dokument, který popisuje vylepšení nového schématu.
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
-Tady jsou některé osvědčené postupy pro migraci aplikací logiky na nejnovější verzi schématu:
+Tady je několik doporučených postupů pro migraci aplikací logiky na nejnovější verzi schématu:
 
-* Zkopírujte migrovaný skript do nové aplikace logiky. Nepřepisujte starou verzi, dokud nedokončíte testování a ověříte, že migrovaná aplikace funguje podle očekávání.
+* Zkopírujte migrovaný skript do nové aplikace logiky. Nepřepisujte starou verzi, dokud nedokončíte testování a nepotvrďte, že migrovaná aplikace funguje podle očekávání.
 
-* **Před** vložením do produkčního prostředí otestujte aplikaci logiky.
+* Otestujte aplikaci logiky **před** uvedením do produkčního prostředí.
 
-* Po dokončení migrace začněte aktualizovat aplikace logiky, aby používaly [spravovaná rozhraní API](../connectors/apis-list.md) tam, kde je to možné. Můžete například začít používat Dropbox v2 všude, kde používáte DropBox v1.
+* Po dokončení migrace začněte aktualizovat aplikace logiky tak, aby tam, kde je to možné, [používaly spravovaná rozhraní API.](../connectors/apis-list.md) Můžete například začít používat Dropbox v2 všude, kde používáte DropBox v1.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si, jak [ručně migrovat aplikace logiky](../logic-apps/logic-apps-schema-2015-08-01.md)
+* Přečtěte si, jak [ručně migrovat aplikace Logiky.](../logic-apps/logic-apps-schema-2015-08-01.md)

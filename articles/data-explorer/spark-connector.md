@@ -1,6 +1,6 @@
 ---
-title: Pomocí konektoru služby Azure Průzkumník dat můžete Apache Spark přesouvat data mezi clustery Azure Průzkumník dat a Spark.
-description: V tomto tématu se dozvíte, jak přesouvat data mezi clustery Azure Průzkumník dat a Apache Spark.
+title: Pomocí konektoru Azure Data Explorer pro Apache Spark můžete přesouvat data mezi clustery Azure Data Explorer a Spark.
+description: Toto téma ukazuje, jak přesouvat data mezi Clustery Azure Data Explorer a Apache Spark.
 author: orspod
 ms.author: orspodek
 ms.reviewer: michazag
@@ -8,51 +8,51 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 1/14/2020
 ms.openlocfilehash: b358287664ac6d6a3b641e1ab63073810ceb4c40
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78208581"
 ---
-# <a name="azure-data-explorer-connector-for-apache-spark"></a>Konektor Azure Průzkumník dat pro Apache Spark
+# <a name="azure-data-explorer-connector-for-apache-spark"></a>Konektor Průzkumníka dat Azure pro Apache Spark
 
-[Apache Spark](https://spark.apache.org/) je jednotný analytický modul pro zpracování velkých objemů dat. Azure Průzkumník dat je rychlá plně spravovaná služba analýzy dat pro analýzu velkých objemů dat v reálném čase. 
+[Apache Spark](https://spark.apache.org/) je jednotný analytický modul pro rozsáhlé zpracování dat. Azure Data Explorer je rychlá a plně spravovaná služba pro analýzu dat v reálném čase na velkých objemech dat. 
 
-Konektor Azure Průzkumník dat pro Spark je [otevřený zdrojový projekt](https://github.com/Azure/azure-kusto-spark) , který se dá spustit na jakémkoli clusteru Spark. Implementuje zdroj dat a datovou jímku pro přesouvání dat napříč clustery Azure Průzkumník dat a Spark. Pomocí Azure Průzkumník dat a Apache Spark můžete vytvářet rychlé a škálovatelné aplikace zaměřené na scénáře řízené daty. Například Machine Learning (ML), extrakce-transformace-Load (ETL) a Log Analytics. Pomocí konektoru se Azure Průzkumník dat stal platným úložištěm dat pro standardní operace zdroje a jímky Sparku, jako je například zápis, čtení a writeStream.
+Konektor Průzkumníka dat Azure pro Spark je [projekt s otevřeným zdrojovým kódem,](https://github.com/Azure/azure-kusto-spark) který se dá spouštět v libovolném clusteru Spark. Implementuje zdroj dat a jímka dat pro přesun dat přes Azure Data Explorer a Spark clustery. Pomocí Azure Data Explorer a Apache Spark můžete vytvářet rychlé a škálovatelné aplikace zaměřené na scénáře založené na datech. Například strojové učení (ML), extrahovat transformace-zatížení (ETL) a Log Analytics. Pomocí konektoru se Azure Data Explorer stane platným úložištěm dat pro standardní operace zdroje A jímky Spark, jako je zápis, čtení a zápis.
 
-Do služby Azure Průzkumník dat můžete zapisovat buď v režimu dávek, nebo v režimu streamování. Čtení z Azure Průzkumník dat podporuje vyřazení sloupců a přenos predikátu směrem dolů, který filtruje data v Azure Průzkumník dat a snižuje objem přenesených dat.
+Do Průzkumníka dat Azure můžete zapisovat v dávkovém režimu nebo v režimu streamování. Čtení z Azure Data Explorer podporuje column prořezávání a predikát pushdown, který filtruje data v Průzkumníku dat Azure, snížení objemu přenesených dat.
 
-Toto téma popisuje, jak nainstalovat a nakonfigurovat konektor Azure Průzkumník dat Spark a přesunout data mezi clustery Azure Průzkumník dat a Apache Spark.
+Toto téma popisuje, jak nainstalovat a nakonfigurovat konektor Azure Data Explorer Spark a přesouvat data mezi clustery Azure Data Explorer a Apache Spark.
 
 > [!NOTE]
-> I když některé z následujících příkladů odkazují na cluster [Azure Databricks](https://docs.azuredatabricks.net/) Spark, služba Azure Průzkumník dat Spark Connector nepoužívá přímé závislosti na datacihlech ani na jiné distribuci Spark.
+> I když některé z níže uvedených příkladů odkazují na cluster [Azure Databricks](https://docs.azuredatabricks.net/) Spark, konektor Azure Data Explorer Spark nepřijímá přímé závislosti na Databricks nebo jiné distribuci Spark.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Vytvoření clusteru a databáze Azure Průzkumník dat](/azure/data-explorer/create-cluster-database-portal) 
+* [Vytvoření clusteru a databáze Průzkumníka dat Azure](/azure/data-explorer/create-cluster-database-portal) 
 * Vytvoření clusteru Spark
-* Nainstalovat knihovnu konektorů Azure Průzkumník dat:
-    * Předem připravené knihovny pro [Spark 2,4, Scala 2,11](https://github.com/Azure/azure-kusto-spark/releases) 
-    * [Úložiště Maven](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/spark-kusto-connector)
-* [Maven 3. x](https://maven.apache.org/download.cgi) nainstalováno
+* Instalace knihovny konektorů Průzkumníka dat Azure:
+    * Předem sestavené knihovny pro [Spark 2.4, Scala 2.11](https://github.com/Azure/azure-kusto-spark/releases) 
+    * [Maven repo](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/spark-kusto-connector)
+* [Maven 3.x](https://maven.apache.org/download.cgi) nainstalován
 
 > [!TIP]
-> jsou podporovány také verze 2.3. x, ale mohou vyžadovat některé změny v závislosti pom. XML.
+> Podporovány jsou také verze 2.3.x, ale mohou vyžadovat určité změny v závislostech pom.xml.
 
-## <a name="how-to-build-the-spark-connector"></a>Postup sestavení konektoru Spark
+## <a name="how-to-build-the-spark-connector"></a>Jak vytvořit konektor Spark
 
 > [!NOTE]
-> Tento krok je nepovinný. Pokud používáte předem připravené knihovny, přečtěte si [instalaci clusteru Spark](#spark-cluster-setup).
+> Tento krok je volitelný. Pokud používáte předem vytvořené knihovny, přejděte na [nastavení clusteru Spark](#spark-cluster-setup).
 
-### <a name="build-prerequisites"></a>Předpoklady sestavení
+### <a name="build-prerequisites"></a>Sestavení předpokladů
 
-1. Nainstalujte knihovny uvedené v části [závislosti](https://github.com/Azure/azure-kusto-spark#dependencies) včetně následujících [KUSTO knihoven Java SDK](/azure/kusto/api/java/kusto-java-client-library) :
-    * [Kusto data Client](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-data)
-    * [Klient ingestování Kusto](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-ingest)
+1. Nainstalujte knihovny uvedené v [závislostech,](https://github.com/Azure/azure-kusto-spark#dependencies) včetně následujících knihoven [Kusto Java SDK:](/azure/kusto/api/java/kusto-java-client-library)
+    * [Datový klient Kusto](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-data)
+    * [Klient Kusto Ingest](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-ingest)
 
-1. Pokud chcete sestavit konektor Sparku, podívejte se na [Tento zdroj](https://github.com/Azure/azure-kusto-spark) .
+1. Naleznete v [tomto zdroji](https://github.com/Azure/azure-kusto-spark) pro vytváření konektoru Spark.
 
-1. Pro aplikace Scala/Java s použitím definicí projektů Maven propojte aplikaci s následujícím artefaktem (nejnovější verze se může lišit):
+1. U aplikací Scala/Java používajících definice projektu Maven propojte aplikaci s následujícím artefaktem (nejnovější verze se může lišit):
     
     ```Maven
        <dependency>
@@ -62,73 +62,73 @@ Toto téma popisuje, jak nainstalovat a nakonfigurovat konektor Azure Průzkumn�
        </dependency>
     ```
 
-### <a name="build-commands"></a>Příkazy sestavení
+### <a name="build-commands"></a>Vytvářet příkazy
 
-Sestavení jar a spuštění všech testů:
+Chcete-li vytvořit nádobu a spustit všechny testy:
 
 ```
 mvn clean package
 ```
 
-Pokud chcete sestavit jar, spusťte všechny testy a nainstalujte jar do místního úložiště Maven:
+Chcete-li vytvořit nádobu, spusťte všechny testy a nainstalujte nádobu do místního úložiště Maven:
 
 ```
 mvn clean install
 ```
 
-Další informace najdete v tématu [použití konektoru](https://github.com/Azure/azure-kusto-spark#usage).
+Další informace naleznete v tématu [použití konektoru](https://github.com/Azure/azure-kusto-spark#usage).
 
-## <a name="spark-cluster-setup"></a>Instalace clusteru Spark
+## <a name="spark-cluster-setup"></a>Nastavení podskřípěče clusteru
 
 > [!NOTE]
-> Při provádění následujících kroků doporučujeme použít nejnovější verzi služby Azure Průzkumník dat Spark Connector.
+> Při provádění následujících kroků doporučujeme použít nejnovější verzi konektoru Azure Data Explorer Spark.
 
-1. Nakonfigurujte následující nastavení clusteru Spark na základě Azure Databricks clusteru pomocí Spark 2.4.4 a Scala 2,11:
+1. Nakonfigurujte následující nastavení clusteru Spark na základě clusteru Azure Databricks pomocí Spark 2.4.4 a Scala 2.11:
 
-    ![Nastavení clusteru datacihly](media/spark-connector/databricks-cluster.png)
+    ![Nastavení clusteru Databricks](media/spark-connector/databricks-cluster.png)
     
-1. Nainstalujte nejnovější knihovnu Spark-kusto-Connector z Maven:
+1. Nainstalujte nejnovější knihovnu spark-kusto-connector od společnosti Maven:
     
-    ![](media/spark-connector/db-libraries-view.png) importovat knihovny ![vyberte Spark-Kusto-Connector](media/spark-connector/db-dependencies.png)
+    ![Import knihoven](media/spark-connector/db-libraries-view.png) ![Vyberte spark-kusto-konektor](media/spark-connector/db-dependencies.png)
 
-1. Ověřte, že jsou nainstalované všechny požadované knihovny:
+1. Ověřte, zda jsou nainstalovány všechny požadované knihovny:
 
-    ![Ověřit nainstalované knihovny](media/spark-connector/db-libraries-view.png)
+    ![Ověření nainstalovaných knihoven](media/spark-connector/db-libraries-view.png)
 
-1. Pro instalaci pomocí souboru JAR ověřte, zda byly nainstalovány další závislosti:
+1. Při instalaci pomocí souboru JAR ověřte, zda byly nainstalovány další závislosti:
 
-    ![Přidat závislosti](media/spark-connector/db-not-maven.png)
+    ![Přidání závislostí](media/spark-connector/db-not-maven.png)
 
 ## <a name="authentication"></a>Ověřování
 
-Konektor Azure Průzkumník dat Spark umožňuje ověřování pomocí služby Azure Active Directory (Azure AD) pomocí jedné z následujících metod:
+Konektor Azure Data Explorer Spark umožňuje ověření pomocí Služby Azure Active Directory (Azure AD) pomocí jedné z následujících metod:
 * [Aplikace Azure AD](#azure-ad-application-authentication)
 * [Přístupový token Azure AD](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#direct-authentication-with-access-token)
-* [Ověřování zařízení](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#device-authentication) (pro jiné než produkční scénáře)
-* [Azure Key Vault](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#key-vault) pro přístup k prostředku Key Vault nainstalujte balíček Azure-webtrezoru a zadejte přihlašovací údaje aplikace.
+* [Ověřování zařízení](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#device-authentication) (pro scénáře bez produkčního prostředí)
+* [Trezor klíčů Azure:](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#key-vault) Chcete-li získat přístup k prostředku trezoru klíčů, nainstalujte balíček azure-keyvault a poskytněte přihlašovací údaje aplikace.
 
 ### <a name="azure-ad-application-authentication"></a>Ověřování aplikací Azure AD
 
-Ověřování aplikací Azure AD je nejjednodušší a nejběžnější metoda ověřování a doporučuje se pro konektor Azure Průzkumník dat Spark.
+Ověřování aplikací Azure AD je nejjednodušší a nejběžnější metoda ověřování a doporučuje se pro konektor Azure Data Explorer Spark.
 
 |Vlastnosti  |Popis  |
 |---------|---------|
-|**KUSTO_AAD_CLIENT_ID**     |   Identifikátor aplikace (klienta) služby Azure AD.      |
-|**KUSTO_AAD_AUTHORITY_ID**     |  Ověřovací autorita Azure AD. ID adresáře Azure AD (tenant).        |
-|**KUSTO_AAD_CLIENT_PASSWORD**    |    Aplikační klíč služby Azure AD pro klienta.     |
+|**KUSTO_AAD_CLIENT_ID**     |   Identifikátor aplikace (klienta) Azure AD.      |
+|**KUSTO_AAD_AUTHORITY_ID**     |  Azure AD ověřování autority. ID adresáře Azure AD (tenanta).        |
+|**KUSTO_AAD_CLIENT_PASSWORD**    |    Klíč aplikace Azure AD pro klienta.     |
 
-### <a name="azure-data-explorer-privileges"></a>Oprávnění pro Azure Průzkumník dat
+### <a name="azure-data-explorer-privileges"></a>Oprávnění Průzkumníka dat Azure
 
-Pro cluster Azure Průzkumník dat udělte následující oprávnění:
+Udělte v clusteru Průzkumníka dat Azure následující oprávnění:
 
-* Pro čtení (zdroje dat) musí mít identita Azure AD oprávnění *prohlížeče* k cílové databázi nebo oprávnění *správce* cílové tabulky.
-* Pro zápis (datová jímka) *musí mít identita* Azure AD v cílové databázi oprávnění ingestovat. Aby bylo možné vytvářet nové tabulky, musí mít také *uživatelská* oprávnění k cílové databázi. Pokud cílová tabulka již existuje, musíte v cílové tabulce nakonfigurovat oprávnění *správce* .
+* Pro čtení (zdroj dat) musí mít identita Azure AD oprávnění *prohlížeče* v cílové databázi nebo oprávnění *správce* v cílové tabulce.
+* Pro zápis (jímky dat), identity Azure AD musí mít oprávnění *ingestor* v cílové databázi. Musí mít také *uživatelská* oprávnění v cílové databázi k vytvoření nových tabulek. Pokud cílová tabulka již existuje, je nutné nakonfigurovat oprávnění *správce* v cílové tabulce.
  
-Další informace o rolích zabezpečení Azure Průzkumník dat najdete v tématu [autorizace na základě rolí](/azure/kusto/management/access-control/role-based-authorization). Informace o správě rolí zabezpečení najdete v tématu [Správa rolí zabezpečení](/azure/kusto/management/security-roles).
+Další informace o hlavních rolích Průzkumníka dat Azure najdete v [tématu autorizace založená na rolích](/azure/kusto/management/access-control/role-based-authorization). Správa rolí zabezpečení naleznete v [tématu Správa rolí zabezpečení](/azure/kusto/management/security-roles).
 
-## <a name="spark-sink-writing-to-azure-data-explorer"></a>Jímka Sparku: zápis do Azure Průzkumník dat
+## <a name="spark-sink-writing-to-azure-data-explorer"></a>Jímka Spark: zápis do Azure Data Exploreru
 
-1. Nastavit parametry jímky:
+1. Nastavte parametry jímky:
 
      ```scala
     val KustoSparkTestAppId = dbutils.secrets.get(scope = "KustoDemos", key = "KustoSparkTestAppId")
@@ -142,7 +142,7 @@ Další informace o rolích zabezpečení Azure Průzkumník dat najdete v téma
     val table = "StringAndIntTable"
     ```
 
-1. Zápis Spark dataframe do Azure Průzkumník dat clusteru jako služby Batch:
+1. Zápis datového rámce Spark do clusteru Průzkumníka dat Azure jako dávka:
 
     ```scala
     import com.microsoft.kusto.spark.datasink.KustoSinkOptions
@@ -171,7 +171,7 @@ Další informace o rolích zabezpečení Azure Průzkumník dat najdete v téma
          df.write.kusto(cluster, database, table, conf, sparkIngestionProperties)
     ```
    
-1. Zapisovat streamovaná data:
+1. Zápis dat datových proudů:
 
     ```scala    
     import org.apache.spark.sql.streaming.Trigger
@@ -192,9 +192,9 @@ Další informace o rolích zabezpečení Azure Průzkumník dat najdete v téma
           .start()
     ```
 
-## <a name="spark-source-reading-from-azure-data-explorer"></a>Zdroj Spark: čtení z Azure Průzkumník dat
+## <a name="spark-source-reading-from-azure-data-explorer"></a>Zdroj Spark: čtení z Průzkumníka dat Azure
 
-1. Při čtení [malých objemů dat](/azure/kusto/concepts/querylimits)definujte dotaz na data:
+1. Při čtení [malých objemů dat](/azure/kusto/concepts/querylimits)definujte datový dotaz:
 
     ```scala
     import com.microsoft.kusto.spark.datasource.KustoSourceOptions
@@ -223,8 +223,8 @@ Další informace o rolích zabezpečení Azure Průzkumník dat najdete v téma
     display(df2)
     ```
 
-1. Volitelné **: Pokud zadáte přechodné** úložiště objektů BLOB (a ne Azure Průzkumník dat), vytvoří se objekty BLOB v rámci zodpovědnosti volajícího. To zahrnuje zřizování úložiště, střídání přístupových klíčů a odstraňování přechodných artefaktů. 
-    Modul KustoBlobStorageUtils obsahuje pomocné funkce pro odstraňování objektů BLOB založených na souřadnicích účtu a kontejneru a přihlašovacích údajích k účtu nebo na celé adrese URL SAS s oprávněním zapisovat, číst a zobrazit seznam. Když už odpovídající RDD není potřeba, každá transakce ukládá dočasné artefakty objektů BLOB v samostatném adresáři. Tento adresář se zachycuje jako součást protokolů informací pro čtení-transakce hlášených v uzlu ovladače Spark.
+1. Volitelné: **Pokud** zadáte přechodné úložiště objektů blob (a ne Azure Data Explorer), objekty BLOB jsou vytvořeny jsou pod odpovědností volajícího. To zahrnuje zřizování úložiště, otáčení přístupových klíčů a odstranění přechodných artefaktů. 
+    Modul KustoBlobStorageUtils obsahuje pomocné funkce pro odstranění objektů BLOB na základě souřadnic účtu a kontejneru a přihlašovacích údajů účtu nebo úplné adresy URL SAS s oprávněními k zápisu, čtení a seznamu. Pokud odpovídající RDD již není potřeba, každá transakce ukládá přechodné artefakty objektů blob v samostatném adresáři. Tento adresář je zachycen jako součást protokolů informací o transakcích čtení hlášených v uzlu Ovladače Spark.
 
     ```scala
     // Use either container/account-key/account name, or container SaS
@@ -234,11 +234,11 @@ Další informace o rolích zabezpečení Azure Průzkumník dat najdete v téma
     // val storageSas = dbutils.secrets.get(scope = "KustoDemos", key = "blobStorageSasUrl")
     ```
 
-    V příkladu výše se Key Vault nepoužívá přes rozhraní konektoru. používá se jednodušší metoda použití tajných kódů datacihly.
+    Ve výše uvedeném příkladu není k trezoru klíčů přístup pomocí rozhraní konektoru; používá se jednodušší metoda použití tajných kódů Databricks.
 
-1. Přečtěte si z Azure Průzkumník dat.
+1. Čtení z Průzkumníka dat Azure.
 
-    * Pokud **zadáte přechodné** úložiště objektů blob, přečtěte si z Azure Průzkumník dat následujícím způsobem:
+    * Pokud **poskytujete** přechodné úložiště objektů blob, přečtěte si z Azure Data Explorer takto:
 
         ```scala
          val conf3 = Map(
@@ -256,7 +256,7 @@ Další informace o rolích zabezpečení Azure Průzkumník dat najdete v téma
         display(dfFiltered)
         ```
 
-    * Pokud **azure Průzkumník dat** poskytuje přechodné úložiště objektů blob, přečtěte si z Azure Průzkumník dat následujícím způsobem:
+    * Pokud **Azure Data Explorer** poskytuje přechodné úložiště objektů blob, přečtěte si z Průzkumníka dat Azure takto:
     
         ```scala
         val dfFiltered = df2
@@ -270,5 +270,5 @@ Další informace o rolích zabezpečení Azure Průzkumník dat najdete v téma
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o [konektoru Azure Průzkumník dat Spark](https://github.com/Azure/azure-kusto-spark/tree/master/docs)
-* [Ukázka kódu pro Java a Python](https://github.com/Azure/azure-kusto-spark/tree/master/samples/src/main)
+* Další informace o [konektoru Azure Data Explorer Spark Connector](https://github.com/Azure/azure-kusto-spark/tree/master/docs)
+* [Ukázkový kód pro Javu a Python](https://github.com/Azure/azure-kusto-spark/tree/master/samples/src/main)

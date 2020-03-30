@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 4e262c9e5bb88e77bc9c09853c06f4cdb41eedaa
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175200"
 ---
-## <a name="preparing-for-updates"></a>Příprava pro aktualizace
-Budete muset před zkontrolovat a nainstalovat aktualizaci, proveďte následující kroky:
+## <a name="preparing-for-updates"></a>Příprava na aktualizace
+Před prohledání a aktualizací budete muset provést následující kroky:
 
-1. Pořiďte snímek v cloudu dat zařízení.
-2. Ujistěte se, že pevné IP adresy řadiče jsou směrovatelné a můžete se připojit k Internetu. Tyto pevné IP adresy se použije ke zpracování aktualizací do zařízení. Můžete ho otestovat spuštěním následující rutiny na každý kontroler rozhraní prostředí Windows PowerShell pro zařízení:
+1. Pořizovat snímek cloudu dat zařízení.
+2. Ujistěte se, že pevné IP adresy řadiče jsou směrovatelné a mohou se připojit k Internetu. Tyto pevné IP adresy budou použity ke službě aktualizací vašeho zařízení. Můžete to otestovat spuštěním následující rutiny na každém řadiči z rozhraní prostředí Windows PowerShell zařízení:
    
      `Test-Connection -Source <Fixed IP of your device controller> -Destination <Any IP or computer name outside of datacenter network>`
    
-    **Ukázkový výstup pro Test-Connection při pevné IP adresy můžete připojit k Internetu**
+    **Ukázkový výstup pro testovací připojení, když se pevné IP adresy mohou připojit k Internetu**
 
         Controller0>Test-Connection -Source 10.126.173.91 -Destination bing.com
 
@@ -39,5 +39,5 @@ Budete muset před zkontrolovat a nainstalovat aktualizaci, proveďte následuj�
         HCSNODE0  204.79.197.200  204.79.197.200
         HCSNODE0  204.79.197.200  204.79.197.200
 
-Po úspěšném dokončení těchto ruční předběžné kontroly můžete kontrolovat a instalovat aktualizace.
+Po úspěšném dokončení těchto ručních předběžných kontrol můžete pokračovat v prohledávaní a instalaci aktualizací.
 

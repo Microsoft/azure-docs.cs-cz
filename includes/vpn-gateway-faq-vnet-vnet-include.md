@@ -9,29 +9,29 @@ ms.date: 12/03/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 72ddd0b6cd6c3e12417d3698c403f89312b531f4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67174828"
 ---
-Nejčastější dotazy týkající se připojení typu VNet-to-VNet se týká připojení brány VPN. Informace o metodě VNet peering najdete v tématu [partnerský vztah virtuálních sítí](../articles/virtual-network/virtual-network-peering-overview.md).
+Nejčastější dotazy virtuální sítě k virtuální síti platí pro připojení brány VPN. Informace o partnerské síti virtuální sítě najdete v [tématu partnerský vztah virtuální sítě](../articles/virtual-network/virtual-network-peering-overview.md).
 
 ### <a name="does-azure-charge-for-traffic-between-vnets"></a>Účtuje se v Azure provoz mezi virtuálními sítěmi?
 
-Provoz VNet-to-VNet v rámci stejné oblasti je bezplatný v obou směrech, při použití připojení brány VPN. Výchozí přenos VNet-to-VNet mezi oblastmi se účtuje s rychlosti přenosu dat odchozí sítěmi podle zdrojových oblastí. Další informace najdete v tématu [VPN Gateway stránce s cenami](https://azure.microsoft.com/pricing/details/vpn-gateway/). Pokud se připojujete vašich virtuálních sítí pomocí VNet peering místo VPN gateway, přečtěte si téma [ceny služby Virtual network](https://azure.microsoft.com/pricing/details/virtual-network/).
+Provoz virtuální sítě na virtuální síť ve stejné oblasti je zdarma pro oba směry při použití připojení brány VPN. Přenosy odchozího přenosu dat mezi oblastmi virtuální sítě na virtuální síť se účtují sazby za odchozí přenos dat mezi virtuálními sítěmi na základě zdrojových oblastí. Další informace naleznete na [stránce s cenami služby VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway/). Pokud připojujete virtuální sítě pomocí partnerského vztahu virtuální sítě místo brány VPN, přečtěte si část [Ceny virtuální sítě](https://azure.microsoft.com/pricing/details/virtual-network/).
 
-### <a name="does-vnet-to-vnet-traffic-travel-across-the-internet"></a>Prochází provoz VNet-to-VNet přes internet?
+### <a name="does-vnet-to-vnet-traffic-travel-across-the-internet"></a>Je provoz virtuální sítě na virtuální síť přes internet?
 
-Ne. Provoz VNet-to-VNet se přenáší prostřednictvím páteřní síti Microsoft Azure, nikoli po Internetu.
+Ne. Provoz virtuální sítě na virtuální síť se pohybuje přes páteřní síť Microsoft Azure, ne přes internet.
 
-### <a name="can-i-establish-a-vnet-to-vnet-connection-across-azure-active-directory-aad-tenants"></a>Můžete vytvořit připojení VNet-to-VNet mezi tenanty Azure Active Directory (AAD)?
+### <a name="can-i-establish-a-vnet-to-vnet-connection-across-azure-active-directory-aad-tenants"></a>Můžu navázat připojení virtuální sítě k virtuální síti mezi klienty Azure Active Directory (AAD)?
 
-Ano, připojení VNet-to-VNet pomocí Azure VPN Gateway fungovat tenantů AAD.
+Ano, připojení virtuální sítě k virtuální síti, která používají brány Azure VPN, fungují napříč klienty AAD.
 
 ### <a name="is-vnet-to-vnet-traffic-secure"></a>Je provoz VNet-to-VNet bezpečný?
 
-Ano, je chráněný šifrováním protokolu IPsec/IKE.
+Ano, je chráněn šifrováním IPsec/IKE.
 
 ### <a name="do-i-need-a-vpn-device-to-connect-vnets-together"></a>Je k propojení virtuálních sítí potřeba zařízení VPN?
 
@@ -41,13 +41,13 @@ Ne. Propojení více virtuálních sítí Azure nevyžaduje žádná zařízení
 
 Ne. Virtuální sítě se můžou nacházet ve stejné oblasti (umístění) Azure nebo v různých oblastech.
 
-### <a name="if-the-vnets-arent-in-the-same-subscription-do-the-subscriptions-need-to-be-associated-with-the-same-active-directory-tenant"></a>Pokud tyto virtuální sítě nejsou ve stejném předplatném, předplatná musí být přidružená stejnému tenantu Active Directory?
+### <a name="if-the-vnets-arent-in-the-same-subscription-do-the-subscriptions-need-to-be-associated-with-the-same-active-directory-tenant"></a>Pokud virtuální sítě nejsou ve stejném předplatném, musí být předplatná přidružena ke stejnému klientovi služby Active Directory?
 
 Ne.
 
 ### <a name="can-i-use-vnet-to-vnet-to-connect-virtual-networks-in-separate-azure-instances"></a>Je možné použít VNet-to-VNet k propojení virtuálních sítí v samostatných instancích Azure? 
 
-Ne. VNet-to-VNet podporuje propojování virtuálních sítí v rámci stejné instance Azure. Například nelze vytvořit připojení mezi globální Azure a čínština/němčina/US government Azure instancí. Zvažte použití připojení VPN typu Site-to-Site pro tyto scénáře.
+Ne. VNet-to-VNet podporuje propojování virtuálních sítí v rámci stejné instance Azure. Například nelze vytvořit připojení mezi globální Azure a čínské/německé/americké vládní instance Azure. Zvažte použití připojení VPN mezi lokalitami pro tyto scénáře.
 
 ### <a name="can-i-use-vnet-to-vnet-along-with-multi-site-connections"></a>Je možné použít VNet-to-VNet společně s připojením propojujícím víc serverů?
 
@@ -55,23 +55,23 @@ Ano. Možnost připojení k virtuální síti je možné využívat současně s
 
 ### <a name="how-many-on-premises-sites-and-virtual-networks-can-one-virtual-network-connect-to"></a>Ke kolika místních serverům a virtuálním sítím se může připojit jedna virtuální síť?
 
-Zobrazit [požadavky na bránu](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#requirements) tabulky.
+Podívejte se na tabulku [požadavků brány.](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#requirements)
 
 ### <a name="can-i-use-vnet-to-vnet-to-connect-vms-or-cloud-services-outside-of-a-vnet"></a>Je možné použít VNet-to-VNet k propojení virtuálních počítačů nebo cloudových služeb mimo virtuální síť?
 
-Ne. Propojení VNet-to-VNet podporují propojování virtuálních sítí. Nepodporuje propojování virtuálních počítačů nebo cloudových služeb, které nejsou ve virtuální síti.
+Ne. Propojení VNet-to-VNet podporují propojování virtuálních sítí. Nepodporuje připojení virtuálních počítačů nebo cloudových služeb, které nejsou ve virtuální síti.
 
-### <a name="can-a-cloud-service-or-a-load-balancing-endpoint-span-vnets"></a>Můžete cloudovou službu nebo koncový bod Vyrovnávání zatížení pracovat nad virtuálními sítěmi?
+### <a name="can-a-cloud-service-or-a-load-balancing-endpoint-span-vnets"></a>Může cloudová služba nebo koncového bodu vyrovnávání zatížení span virtuální sítě?
 
-Ne. Cloudová služba nebo koncový bod Vyrovnávání zatížení nemohou pracovat nad více virtuálními sítěmi, i v případě, že jsou propojeny.
+Ne. Cloudová služba nebo koncový bod vyrovnávání zatížení se nemůže rozprostírat napříč virtuálními sítěmi, i když jsou propojené dohromady.
 
-### <a name="can-i-use-a-policybased-vpn-type-for-vnet-to-vnet-or-multi-site-connections"></a>Můžete použít síť VPN typu PolicyBased pro připojení typu VNet-to-VNet nebo multi-Site?
+### <a name="can-i-use-a-policybased-vpn-type-for-vnet-to-vnet-or-multi-site-connections"></a>Můžu použít typ VPN založený na zásadách pro připojení virtuální sítě k virtuální síti nebo připojení s více lokalitami?
 
-Ne. Připojení typu VNet-to-VNet a multi-Site vyžadují brány Azure VPN s RouteBased (dříve nazývané dynamické směrování) typy sítě VPN.
+Ne. Připojení virtuální sítě k virtuální síti a připojení s více lokalitami vyžadují brány Azure VPN s typy VPN RouteBased (dříve nazývané dynamické směrování).
 
 ### <a name="can-i-connect-a-vnet-with-a-routebased-vpn-type-to-another-vnet-with-a-policybased-vpn-type"></a>Je možné připojit virtuální síť typu RouteBased k jiné virtuální síti typu PolicyBased?
 
-Ne, obě virtuální sítě musí používat VPN založené na směrování (dříve nazývané dynamické směrování).
+Ne, obě virtuální sítě musí používat sítě VIRTUÁLNÍ SÍTĚ založené na směrování (dříve nazývané dynamické směrování).
 
 ### <a name="do-vpn-tunnels-share-bandwidth"></a>Sdílejí tunely VPN šířku pásma?
 

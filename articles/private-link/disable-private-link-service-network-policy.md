@@ -1,6 +1,6 @@
 ---
-title: 'Zakázat zásady sítě pro zdrojovou IP adresu služby privátního propojení Azure '
-description: Informace o zakázání zásad sítě pro privátní připojení Azure
+title: 'Zakázání zásad sítě pro zdrojovou IP adresu služby Azure Private Link '
+description: Přečtěte si, jak zakázat zásady sítě pro privátní propojení Azure.
 services: private-link
 author: malopMSFT
 ms.service: private-link
@@ -8,22 +8,22 @@ ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: 4c6bd64d141341e0b7fa5641e04320a95d7951bb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75452993"
 ---
-# <a name="disable-network-policies-for-private-link-service-source-ip"></a>Zakázat zásady sítě pro zdrojovou IP adresu služby privátního propojení
+# <a name="disable-network-policies-for-private-link-service-source-ip"></a>Zakázání zásad sítě pro zdrojovou ip adresu služby Private Link
 
-Aby bylo možné zvolit zdrojovou IP adresu pro službu privátního propojení, je v podsíti vyžadováno explicitní nastavení zakázat `privateLinkServiceNetworkPolicies`. Toto nastavení se vztahuje pouze na konkrétní privátní IP adresu, kterou jste zvolili jako zdrojovou IP adresu služby privátního propojení. V případě jiných prostředků v podsíti se přístup řídí podle definice pravidel zabezpečení skupiny zabezpečení sítě (NSG). 
+Chcete-li zvolit zdrojovou ADRESU IP pro službu `privateLinkServiceNetworkPolicies` Private Link, je v podsíti vyžadováno explicitní nastavení zakázání. Toto nastavení platí pouze pro konkrétní privátní IP adresu, kterou jste zvolili jako zdrojovou IP adresu služby Private Link. U ostatních prostředků v podsíti je přístup řízen na základě definice pravidel zabezpečení skupin zabezpečení sítě (NSG). 
  
-Při použití libovolného klienta Azure (PowerShell, CLI nebo šablony) se vyžaduje další krok, který tuto vlastnost změní. Zásadu můžete zakázat pomocí služby Cloud Shell z Azure Portal nebo místní instalace Azure PowerShell, rozhraní příkazového řádku Azure nebo pomocí šablon Azure Resource Manager.  
+Při použití libovolného klienta Azure (PowerShell, CLI nebo šablony), je nutné další krok ke změně této vlastnosti. Zásadu můžete zakázat pomocí cloudového prostředí z webu Azure Portal nebo místních instalací Azure PowerShellu, Azure CLI nebo použít šablony Azure Resource Manageru.  
  
-Použijte následující postup, chcete-li zakázat zásady sítě služby privátního propojení pro virtuální síť s názvem *myVirtualNetwork* s *výchozí* podsítí hostovanou ve skupině prostředků s názvem *myResourceGroup*. 
+Podle následujících kroků zakažte zásady sítě privátní služby propojení pro virtuální síť s názvem *myVirtualNetwork* s *výchozí* podsítí hostovohouji ve skupině prostředků s názvem *myResourceGroup*. 
 
 ## <a name="using-azure-powershell"></a>Použití Azure Powershell
-Tato část popisuje, jak zakázat zásady privátního koncového bodu podsítě pomocí Azure PowerShell.
+Tato část popisuje, jak zakázat zásady soukromého koncového bodu podsítě pomocí Azure PowerShellu.
 
 ```azurepowershell
 $virtualNetwork= Get-AzVirtualNetwork `
@@ -35,7 +35,7 @@ $virtualNetwork= Get-AzVirtualNetwork `
 $virtualNetwork | Set-AzVirtualNetwork 
 ```
 ## <a name="using-azure-cli"></a>Použití Azure CLI
-Tato část popisuje, jak zakázat zásady privátního koncového bodu podsítě pomocí Azure CLI.
+Tato část popisuje, jak zakázat zásady soukromého koncového bodu podsítě pomocí rozhraní příkazového příkazového příkazu Azure.
 ```azurecli
 az network vnet subnet update \ 
   --name default \ 
@@ -44,7 +44,7 @@ az network vnet subnet update \
   --disable-private-link-service-network-policies true 
 ```
 ## <a name="using-a-template"></a>Použití šablony
-Tato část popisuje, jak zakázat zásady privátního koncového bodu podsítě pomocí šablony Azure Resource Manager.
+Tato část popisuje, jak zakázat zásady soukromého koncového bodu podsítě pomocí šablony Správce prostředků Azure.
 ```json
 { 
     "name": "myVirtualNetwork", 
@@ -71,5 +71,5 @@ Tato část popisuje, jak zakázat zásady privátního koncového bodu podsít�
  
 ```
 ## <a name="next-steps"></a>Další kroky
-- Další informace o [privátním koncovém bodu Azure](private-endpoint-overview.md)
+- Další informace o [Azure Private Endpoint](private-endpoint-overview.md)
  

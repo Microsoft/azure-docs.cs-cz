@@ -9,21 +9,21 @@ ms.date: 07/17/2018
 ms.author: alkohli
 ms.custom: include file
 ms.openlocfilehash: 5aa64671cddf2542972ac753c0132a5abebaebfb
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175221"
 ---
-Po odeslání disky, vrátit **Import/Export** stránky na webu Azure portal. 
+Po odeslání disků se vraťte na stránku **Import/Export** na webu Azure Portal. 
 
 > [!IMPORTANT] 
-> Pokud číslo pro sledování neaktualizují do 2 týdnů od vytvoření úlohy, vyprší platnost úlohy. 
+> Pokud sledovací číslo není aktualizovándo 2 týdnů od vytvoření projektu, úloha vyprší. 
 
-Pokud chcete aktualizovat číslo pro sledování, proveďte následující kroky.
+Chcete-li aktualizovat sledovací číslo, proveďte následující kroky.
  
-1. Vyberte a klikněte na úlohu.
-2. Klikněte na tlačítko **aktualizace stavu úlohy a informace o sledování, jakmile se dodávají jednotky**. 
-3. Zaškrtněte políčko proti **označit jako expedované**.
-4. Zadejte **dopravce** a **číslo sledování**.
-5. Sledujte průběh úlohy na řídicím panelu portálu. Popis stavu jednotlivých úloh, přejděte na [zobrazení stavu úlohy](../articles/storage/common/storage-import-export-view-drive-status.md).
+1. Vyberte úlohu a klikněte na ni.
+2. Po odeslání jednotek klepněte na **tlačítko Aktualizovat stav úlohy a informace o sledování**. 
+3. Zaškrtněte políčko označit **jako dodané**.
+4. Zadejte **číslo dopravce** a sledovací **číslo**.
+5. Sledujte průběh úlohy na řídicím panelu portálu. Popis každého stavu úlohy naleznete v části [Zobrazení stavu úlohy](../articles/storage/common/storage-import-export-view-drive-status.md).

@@ -5,27 +5,27 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: e2d258f327ade2149adc92bdb7fb4bcc87cdd58c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67175048"
 ---
-#### <a name="to-install-the-storsimple-adapter-for-sharepoint"></a>Chcete-li nainstalovat adaptér služby StorSimple pro SharePoint
-1. Zkopírujte instalační program na webovém serveru front-end (WFE), který je také nakonfigurován na spuštění webové aplikace Centrální správa služby SharePoint. 
-2. Použijte účet s oprávněními správce pro přihlášení k serveru WFE.
-3. Klikněte dvakrát na Instalační služby. StorSimple Adapter pro SharePoint Průvodce instalací spustí. Klikněte na tlačítko **Další** a spusťte tak instalaci.
+#### <a name="to-install-the-storsimple-adapter-for-sharepoint"></a>Instalace adaptéru StorSimple pro SharePoint
+1. Zkopírujte instalační program na webový front-end (WFE), který je také nakonfigurován pro spuštění webové aplikace SharePoint Central Administration. 
+2. K přihlášení k serveru WFE použijte účet s oprávněními správce.
+3. Poklepejte na instalační program. Spustí se Průvodce instalací služby StorSimple pro službu SharePoint. Chcete-li zahájit instalaci, klepněte na tlačítko **Další.**
    
-    ![StorSimple adaptér nastavení úvodní stránky](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup1-include.png)
-4. Ve StorSimple Adapter pro stránku konfigurace instalace služby SharePoint, vyberte umístění instalace, zadejte IP adresu pro rozhraní DATA 0 sítě na zařízení StorSimple a klikněte na **Další**. 
+    ![Úvodní stránka nastavení adaptéru StorSimple](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup1-include.png)
+4. Na stránce konfigurace nastavení aplikace StorSimple Adapter for SharePoint vyberte umístění instalace, zadejte adresu IP síťového rozhraní DATA 0 na zařízení StorSimple a klepněte na tlačítko **Další**. 
    
-    ![Stránka Konfigurace nastavení adaptér StorSimple](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup2-include.png) 
-5. Na potvrzovací stránce instalace klikněte na tlačítko **nainstalovat**.
+    ![Stránka konfigurace nastavení adaptéru StorSimple](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup2-include.png) 
+5. Na stránce s potvrzením instalace klepněte na tlačítko **Instalovat**.
    
-    ![Stránka potvrzení instalace adaptér StorSimple](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Confirm_Setup-include.png) 
-6. Klikněte na tlačítko **Dokončit** zavřete průvodce instalací.
+    ![Stránka potvrzení nastavení adaptéru StorSimple](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Confirm_Setup-include.png) 
+6. Klepnutím na **tlačítko Dokončit** zavřete Průvodce instalací.
    
-    ![Dokončení stránku nastavení adaptér StorSimple](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup_finish-include.png) 
-7. Otevřete stránku Centrální správy služby SharePoint. Měli byste vidět skupinu StorSimple konfigurace, která obsahuje StorSimple Adapter pro SharePoint odkazy.
-8. Přejděte k dalšímu kroku: [Konfigurace RBS](#configure-rbs).
+    ![Stránka dokončená instalace adaptéru StorSimple](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup_finish-include.png) 
+7. Otevřete stránku Centrální správa SharePointu. Měla by se zobrazit skupina StorSimple Configuration, která obsahuje odkazy StorSimple Adapter for SharePoint.
+8. Přejděte k dalšímu kroku: [Konfigurace služby RBS](#configure-rbs).
 

@@ -1,6 +1,6 @@
 ---
-title: Přesunout konfiguraci údržby do jiné oblasti Azure
-description: Přečtěte si, jak přesunout konfiguraci údržby virtuálních počítačů do jiné oblasti Azure.
+title: Přesunutí konfigurace údržby do jiné oblasti Azure
+description: Zjistěte, jak přesunout konfiguraci údržby virtuálních počítačů do jiné oblasti Azure
 services: virtual-machines
 author: shants123
 ms.service: virtual-machines
@@ -9,66 +9,66 @@ ms.tgt_pltfrm: vm
 ms.date: 03/04/2020
 ms.author: shants
 ms.openlocfilehash: fe03bead238d3fb7bda3ee685bd5587c3e0dbc58
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78304456"
 ---
 # <a name="move-a-maintenance-control-configuration-to-another-region"></a>Přesunutí konfigurace řízení údržby do jiné oblasti
 
-Podle tohoto článku můžete přesunout konfiguraci řízení údržby do jiné oblasti Azure. Je možné, že budete chtít přesunout konfiguraci z několika důvodů. Například pro využití nové oblasti, k nasazení funkcí nebo služeb dostupných v konkrétní oblasti, k splnění požadavků na požadavky na interní zásady a zásady správného řízení nebo v reakci na plánování kapacity.
+Podle tohoto článku přesuňte konfiguraci řízení údržby do jiné oblasti Azure. Konfiguraci můžete přesunout z mnoha důvodů. Chcete-li například využít výhod nové oblasti, nasadit funkce nebo služby dostupné v určité oblasti, splnit požadavky na vnitřní zásady a zásady správného řízení nebo v reakci na plánování kapacity.
 
-Řízení údržby s přizpůsobenými konfiguracemi údržby umožňuje řídit, jak se aktualizace platforem aplikují na virtuální počítače s [Windows](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json) a [Linux](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Flinux%2Fbreadcrumb%2Ftoc.json&view=azure-java-stable) , a na vyhrazené hostitele Azure. Pro přesun řízení údržby mezi oblastmi je k dispozici několik scénářů:
+Řízení údržby s přizpůsobenými konfiguracemi údržby umožňuje řídit způsob použití aktualizací platformy pro virtuální počítače [s Windows](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json) a [Linuxem](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Flinux%2Fbreadcrumb%2Ftoc.json&view=azure-java-stable) a na vyhrazené hostitele Azure. Existuje několik scénářů pro přesunutí řízení údržby napříč oblastmi:
 
-- Pokud chcete přesunout konfiguraci řízení údržby, ale ne prostředky přidružené ke konfiguraci, postupujte podle pokynů v tomto článku.
-- Chcete-li přesunout prostředky spojené s konfigurací údržby, ale ne samotnou konfiguraci, postupujte podle [těchto pokynů](move-region-maintenance-configuration-resources.md).
-- Pokud chcete přesunout jak konfiguraci údržby, tak i prostředky, které jsou k němu přidružené, postupujte nejprve podle pokynů v tomto článku. Pak postupujte podle [těchto pokynů](move-region-maintenance-configuration-resources.md).
+- Chcete-li přesunout konfiguraci řízení údržby, ale ne prostředky přidružené ke konfiguraci, postupujte podle pokynů v tomto článku.
+- Chcete-li přesunout prostředky přidružené k konfiguraci údržby, ale ne samotnou konfiguraci, postupujte [podle těchto pokynů](move-region-maintenance-configuration-resources.md).
+- Chcete-li přesunout konfiguraci údržby i prostředky s ní spojené, postupujte nejprve podle pokynů v tomto článku. Poté postupujte podle [těchto pokynů](move-region-maintenance-configuration-resources.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Než začnete přesouvat konfiguraci řízení údržby:
+Než začnete s přesunem konfigurace řízení údržby:
 
-- Konfigurace údržby jsou přidružené k virtuálním počítačům Azure nebo vyhrazeným hostitelům Azure. Než začnete, ujistěte se, že prostředky virtuálních počítačů nebo hostitelů existují v nové oblasti.
-- Identifikace 
-    - Existující konfigurace řízení údržby.
-    - Skupiny prostředků, ve kterých se aktuálně nacházejí existující konfigurace. 
-    - Skupiny prostředků, do kterých budou přidány konfigurace po přesunu do nové oblasti. 
-    - Prostředky přidružené k konfiguraci údržby, kterou chcete přesunout.
-    - Ověřte, zda jsou prostředky v nové oblasti stejné jako ty, které jsou přidruženy k aktuálním konfiguracím údržby. Konfigurace můžou mít stejné názvy v nové oblasti, jako kdyby byly ve starém, ale to se nevyžaduje.
+- Konfigurace údržby jsou přidružené k virtuálním počítačům Azure nebo vyhrazeným hostitelům Azure. Ujistěte se, že prostředky virtuálního montovanebo hostitele existují v nové oblasti, než začnete.
+- Identifikovat: 
+    - Stávající konfigurace řízení údržby.
+    - Skupiny prostředků, ve kterých jsou aktuálně umístěny existující konfigurace. 
+    - Skupiny prostředků, do kterých budou konfigurace přidány po přesunutí do nové oblasti. 
+    - Prostředky přidružené ke konfiguraci údržby, kterou chcete přesunout.
+    - Zkontrolujte, zda jsou prostředky v nové oblasti stejné jako prostředky přidružené k aktuálním konfiguracím údržby. Konfigurace mohou mít stejné názvy v nové oblasti jako ve staré oblasti, ale to není nutné.
 
 ## <a name="prepare-and-move"></a>Příprava a přesun 
 
-1. Načte všechny konfigurace údržby v každém předplatném. Spusťte příkaz CLI [AZ Maintenance Configuration list](https://docs.microsoft.com/cli/azure/ext/maintenance/maintenance/configuration?view=azure-cli-latest#ext-maintenance-az-maintenance-configuration-list) a nahraďte $subId identifikátorem vašeho předplatného.
+1. Načíst všechny konfigurace údržby v každém předplatném. Spusťte příkaz [konfigurace údržby az](https://docs.microsoft.com/cli/azure/ext/maintenance/maintenance/configuration?view=azure-cli-latest#ext-maintenance-az-maintenance-configuration-list) příkazu CLI a proveďte to a nahraďte $subId ID předplatného.
 
     ```
     az maintenance configuration list --subscription $subId --query "[*].{Name:name, Location:location, ResGroup:resourceGroup}" --output table
     ```
-2. Projděte si seznam vrácených tabulek záznamů konfigurace v rámci předplatného. Tady je příklad. Seznam bude obsahovat hodnoty pro konkrétní prostředí.
+2. Zkontrolujte seznam vrácených tabulek konfiguračních záznamů v rámci předplatného. Tady je příklad. Seznam bude obsahovat hodnoty pro konkrétní prostředí.
 
     **Název** | **Umístění** | **Skupina prostředků**
     --- | --- | ---
-    Přeskočit údržbu | eastus2 | Konfigurace-Resource-Group
-    IgniteDemoConfig | eastus2 | Konfigurace-Resource-Group
-    defaultMaintenanceConfiguration – eastus | eastus | Konfigurace testu
+    Přeskočit údržbu | eastus2 | skupina prostředků konfigurace
+    IgniteDemoConfig | eastus2 | skupina prostředků konfigurace
+    výchozíMaintenanceConfiguration-eastus | eastus | testovací konfigurace
     
 
-3. Uložte si seznam pro referenci. Při přesunu konfigurací vám pomůže ověřit, jestli se všechno přesunulo.
-4. Jako referenci namapujte každou konfiguraci/skupinu prostředků na novou skupinu prostředků v nové oblasti.
-5. Pomocí [PowerShellu](../virtual-machines/maintenance-control-powershell.md#create-a-maintenance-configuration)nebo rozhraní příkazového [řádku](../virtual-machines/maintenance-control-cli.md#create-a-maintenance-configuration)vytvořte nové konfigurace údržby v nové oblasti.
-6. Přidružte konfigurace k prostředkům v nové oblasti, pomocí [PowerShellu](../virtual-machines/maintenance-control-powershell.md#assign-the-configuration)nebo rozhraní příkazového [řádku](../virtual-machines/maintenance-control-cli.md#assign-the-configuration).
+3. Seznam si můžete uložit jako referenci. Při přesouvání konfigurací vám to pomůže ověřit, že všechno bylo přesunuto.
+4. Jako odkaz namapujte každou skupinu konfigurace nebo prostředků na novou skupinu prostředků v nové oblasti.
+5. Vytvořte nové konfigurace údržby v nové oblasti pomocí [prostředí PowerShell](../virtual-machines/maintenance-control-powershell.md#create-a-maintenance-configuration)nebo [CLI](../virtual-machines/maintenance-control-cli.md#create-a-maintenance-configuration).
+6. Přidružte konfigurace k prostředkům v nové oblasti pomocí [prostředí PowerShell](../virtual-machines/maintenance-control-powershell.md#assign-the-configuration)nebo [CLI](../virtual-machines/maintenance-control-cli.md#assign-the-configuration).
 
 
-## <a name="verify-the-move"></a>Ověřit přesunutí
+## <a name="verify-the-move"></a>Ověření přesunu
 
-Po přesunutí konfigurací Porovnejte konfigurace a prostředky v nové oblasti se seznamem tabulek, který jste připravili.
+Po přesunutí konfigurací porovnejte konfigurace a prostředky v nové oblasti s připraveným seznamem tabulek.
 
 
 ## <a name="clean-up-source-resources"></a>Vyčištění zdrojových prostředků
 
-Po přesunutí Zvažte odstranění přesunutých konfigurací údržby ve zdrojové oblasti, [PowerShellu](../virtual-machines/maintenance-control-powershell.md#remove-a-maintenance-configuration)nebo rozhraní příkazového [řádku](../virtual-machines/maintenance-control-cli.md#delete-a-maintenance-configuration).
+Po přesunutí zvažte odstranění přesunutých konfigurací údržby ve zdrojové [oblasti, prostředí PowerShell](../virtual-machines/maintenance-control-powershell.md#remove-a-maintenance-configuration)nebo [CLI](../virtual-machines/maintenance-control-cli.md#delete-a-maintenance-configuration).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud potřebujete přesunout prostředky spojené s konfigurací údržby, postupujte podle [těchto pokynů](move-region-maintenance-configuration-resources.md) . 
+Pokud potřebujete přesunout prostředky přidružené k konfiguracím údržby, postupujte [podle těchto pokynů.](move-region-maintenance-configuration-resources.md) 

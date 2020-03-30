@@ -1,7 +1,7 @@
 ---
-title: Příklady transformací celočíselných deklarací pro vlastní zásady
+title: Celé číslo deklarace transformace příklady pro vlastní zásady
 titleSuffix: Azure AD B2C
-description: Příklady transformace celočíselných deklarací pro schéma IEF (identity Experience Framework) Azure Active Directory B2C.
+description: Celé číslo deklarace transformace příklady pro rozhraní Identity Experience Framework (IEF) schéma Služby Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,28 +12,28 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ece25e95bbbe9f1a1fa591c29ea9ffda0fefd369
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78187674"
 ---
-# <a name="integer-claims-transformations"></a>Transformace celočíselných deklarací
+# <a name="integer-claims-transformations"></a>Celé číslo deklarace identity transformace
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Tento článek popisuje příklady použití celočíselných transformací identity schématu rozhraní identity Experience v Azure Active Directory B2C (Azure AD B2C). Další informace najdete v tématu [ClaimsTransformations](claimstransformations.md).
+Tento článek obsahuje příklady pro použití celé číslo nároky transformace schématu rozhraní identity rozhraní ve službě Azure Active Directory B2C (Azure AD B2C). Další informace naleznete v tématu [ClaimsTransformations](claimstransformations.md).
 
-## <a name="convertnumbertostringclaim"></a>ConvertNumberToStringClaim
+## <a name="convertnumbertostringclaim"></a>Převéstdeklaraci řetězce
 
-Převede datový typ Long na datový typ String.
+Převede dlouhý datový typ na datový typ řetězce.
 
-| Položka | TransformationClaimType | Typ dat | Poznámky: |
+| Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim | long | Deklarace ClaimType pro převod na řetězec. |
-| outputClaim | outputClaim | řetězec | Deklarace ClaimType, která je vytvořena po vyvolání tohoto ClaimsTransformation. |
+| Vstupní deklarace | inputClaim | long | ClaimType převést na řetězec. |
+| Výstupní nárok | outputClaim | řetězec | ClaimType, který je vytvořen po této ClaimsTransformation byla vyvolána. |
 
-V tomto příkladu je deklarace `numericUserId` s typem hodnoty Long převedena na `UserId` deklaraci identity s typem hodnoty String.
+V tomto příkladu `numericUserId` je deklarace s typem `UserId` hodnoty long převedena na deklaraci s typem hodnoty řetězce.
 
 ```XML
 <ClaimsTransformation Id="CreateUserId" TransformationMethod="ConvertNumberToStringClaim">
@@ -48,8 +48,8 @@ V tomto příkladu je deklarace `numericUserId` s typem hodnoty Long převedena 
 
 ### <a name="example"></a>Příklad
 
-- Vstupní deklarace identity:
+- Vstupní deklarace:
     - **inputClaim**: 12334 (dlouhý)
-- Deklarace výstupů:
+- Výstupní nároky:
     - **outputClaim**: "12334" (řetězec)
 

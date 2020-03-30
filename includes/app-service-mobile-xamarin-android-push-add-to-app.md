@@ -5,14 +5,14 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: baf0f07002a21a8e4e60bc17186107b471243202
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175514"
 ---
-1. Vytvořte novou třídu v projektu volá `ToDoBroadcastReceiver`.
-2. Přidejte následující příkazy using do **ToDoBroadcastReceiver** třídy:
+1. Vytvořte novou třídu `ToDoBroadcastReceiver`v projektu s názvem .
+2. Do třídy **ToDoBroadcastReceiver** přidejte následující příkazy using:
 
     ```csharp
     using Gcm.Client;
@@ -20,7 +20,7 @@ ms.locfileid: "67175514"
     using Newtonsoft.Json.Linq;
     ```
 
-3. Přidejte následující žádosti oprávnění mezi **pomocí** příkazy a **obor názvů** deklarace:
+3. Mezi **příkazy using** a deklaraci **oboru názvů** přidejte následující požadavky na oprávnění:
 
     ```csharp
     [assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
@@ -32,7 +32,7 @@ ms.locfileid: "67175514"
     [assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
     ```
 
-4. Nahraďte existující **ToDoBroadcastReceiver** definici následující třídy:
+4. Nahraďte existující definici třídy **ToDoBroadcastReceiver** následujícím:
 
     ```csharp
     [BroadcastReceiver(Permission = Gcm.Client.Constants.PERMISSION_GCM_INTENTS)]
@@ -49,9 +49,9 @@ ms.locfileid: "67175514"
     }
     ```
 
-    Ve výše uvedeném kódu, je třeba nahradit *`<PROJECT_NUMBER>`* číslem projektu Google přiřadil při zřizování aplikace na portálu pro vývojáře Google. 
+    Ve výše uvedeném kódu *`<PROJECT_NUMBER>`* musíte při zřizování aplikace na portálu pro vývojáře Google nahradit číslo projektu přidělené společností Google. 
 
-5. V souboru projektu ToDoBroadcastReceiver.cs, přidejte následující kód, který definuje **PushHandlerService** třídy:
+5. Do souboru projektu ToDoBroadcastReceiver.cs přidejte následující kód, který definuje třídu **PushHandlerService:**
 
     ```csharp
     // The ServiceAttribute must be applied to the class.
@@ -63,12 +63,12 @@ ms.locfileid: "67175514"
     }
     ```
 
-    Všimněte si, že tato třída je odvozena z **GcmServiceBase** a že **služby** atribut musí použít pro tuto třídu.
+    Všimněte si, že tato třída je odvozena od **GcmServiceBase** a že **atribut Service** musí být použit pro tuto třídu.
 
     > [!NOTE]
-    > **GcmServiceBase** implementuje třída **OnRegistered()** , **OnUnRegistered()** , **OnMessage()** a  **OnError()** metody. Je nutné přepsat tyto metody v **PushHandlerService** třídy.
+    > Třída **GcmServiceBase** implementuje metody **OnRegistered()**, **OnUnRegistered()**, **OnMessage()** a **OnError().** Tyto metody je nutné přepsat ve třídě **PushHandlerService.**
 
-6. Přidejte následující kód, který **PushHandlerService** třídu, která přepíše **OnRegistered** obslužné rutiny události.
+6. Přidejte následující kód do třídy **PushHandlerService,** která přepíše obslužnou rutinu události **OnRegistered.**
 
     ```csharp
     protected override void OnRegistered(Context context, string registrationId)
@@ -109,9 +109,9 @@ ms.locfileid: "67175514"
     }
     ```
 
-    Tato metoda používá ID registrace vrácené GCM registraci v Azure pro nabízená oznámení. Značky lze přidat pouze k registraci po jeho vytvoření. Další informace najdete v tématu [jak: Přidání značek na instalaci zařízení chcete povolit nabízená značky](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags).
+    Tato metoda používá vrácené ID registrace GCM k registraci v Azure pro nabízená oznámení. Značky lze přidat pouze do registrace po vytvoření. Další informace najdete v [tématu Postup: Přidání značek do instalace zařízení, které umožňují nabízenou značky](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags).
 
-7. Přepsat **OnMessage** metoda **PushHandlerService** následujícím kódem:
+7. Přepište metodu **OnMessage** ve **službě PushHandlerService** následujícím kódem:
 
     ```csharp
     protected override void OnMessage(Context context, Intent intent)
@@ -149,7 +149,7 @@ ms.locfileid: "67175514"
     }
     ```
 
-8. Přepsat **OnUnRegistered()** a **OnError()** metody s následujícím kódem.
+8. Přepište metody **OnUnRegistered()** a **OnError()** následujícím kódem.
 
     ```csharp
     protected override void OnUnRegistered(Context context, string registrationId)

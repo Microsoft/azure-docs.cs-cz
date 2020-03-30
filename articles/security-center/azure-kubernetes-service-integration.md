@@ -1,6 +1,6 @@
 ---
 title: Azure Security Center a služba Azure Kubernetes
-description: Další informace o integraci Azure Security Center s Azure Kubernetes Services
+description: Informace o integraci Azure Security Center se službami Azure Kubernetes Services
 services: security-center
 documentationcenter: na
 author: memildin
@@ -12,55 +12,53 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 0743499b019bd1c7b985636e886eee9352284a55
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: d1cd4691586b27282d221a19c5fb7a1af034ed6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616073"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80125160"
 ---
-# <a name="azure-kubernetes-services-integration-with-security-center-preview"></a>Integrace služeb Azure Kubernetes Services s využitím Security Center (Preview)
-Služba Azure Kubernetes Service (AKS) je spravovaná služba Microsoftu pro vývoj, nasazování a správu kontejnerových aplikací. 
+# <a name="azure-kubernetes-services-integration-with-security-center"></a>Integrace služeb Azure Kubernetes s Centrem zabezpečení
 
-Využijte AKS společně s úrovní Standard Azure Security Center (viz [ceny](security-center-pricing.md)) a získejte hlubší přehled o vašich AKSch uzlech, cloudovém provozu a kontrolách zabezpečení.
+Azure Kubernetes Service (AKS) je spravovaná služba Microsoftu pro vývoj, nasazování a správu kontejnerizovaných aplikací. 
 
-Security Center přináší výhody zabezpečení clusterům AKS pomocí dat, která již byla shromážděna hlavním uzlem AKS. 
+Pomocí AKS společně se standardní úrovní Azure Security Center (viz [ceny)](security-center-pricing.md)získáte hlubší přehled o uzlech AKS, cloudovém provozu a ovládacích prvcích zabezpečení.
 
-![Přehled vysoké úrovně Azure Security Center a Azure Kubernetes Service (AKS)](./media/azure-kubernetes-service-integration/aks-asc-integration-overview.png)
+Security Center přináší výhody zabezpečení clusterům AKS pomocí dat, která již shromáždil hlavní uzel AKS. 
 
-Tyto dva nástroje tvoří nejlepší nabídku zabezpečení Kubernetes v cloudu. 
+![Azure Security Center a Azure Kubernetes Service (AKS) přehled na vysoké úrovni](./media/azure-kubernetes-service-integration/aks-asc-integration-overview.png)
+
+Tyto dva nástroje společně tvoří nejlepší cloudově nativní nabídku zabezpečení Kubernetes. 
 
 ## <a name="benefits-of-integration"></a>Výhody integrace
 
-Používání těchto dvou služeb nabízí:
+Použití obou služeb společně poskytuje:
 
-* **Doporučení zabezpečení** – Security Center IDENTIFIKUJE prostředky AKS a kategorizují je: z clusterů na jednotlivé virtuální počítače. Pak můžete zobrazit doporučení zabezpečení na prostředek. Další informace najdete v doporučeních pro kontejnery v [referenčním seznamu doporučení](recommendations-reference.md#recs-computeapp). 
+* **Doporučení zabezpečení** – Security Center identifikuje vaše prostředky AKS a kategorizuje je: od clusterů k jednotlivým virtuálním počítačům. Poté můžete zobrazit doporučení zabezpečení pro jednotlivé zdroje. Další informace naleznete v doporučení kontejnerů v [referenčníseznam doporučení](recommendations-reference.md#recs-computeapp). 
 
-    > [!NOTE]
-    > Pokud název Security Center doporučení končí značkou "(Preview)", odkazuje na charakter verze Preview doporučení, nikoli na funkci.
+* **Posílení prostředí** – Security Center neustále monitoruje konfiguraci clusterů Kubernetes a konfigurací Dockeru. Poté generuje doporučení zabezpečení, která odrážejí oborové standardy.
 
-* **Posílení zabezpečení prostředí** – Security Center neustále monitoruje konfiguraci clusterů Kubernetes a konfigurací Docker. Pak vygeneruje doporučení zabezpečení, která odpovídají oborovým standardům.
-
-* **Ochrana za běhu** – díky průběžné analýze následujících AKS zdrojů vás Security Center vás upozorní na hrozby a škodlivou aktivitu zjištěnou na úrovni clusteru hostitel *a* AKS:
-    * Nezpracované události zabezpečení, jako jsou například síťové údaje a vytváření procesů
+* **Ochrana za běhu** – Prostřednictvím průběžné analýzy následujících zdrojů AKS vás Centrum zabezpečení upozorní na hrozby a škodlivou aktivitu zjištěnou na úrovni hostitele *a* clusteru AKS:
+    * Nezpracovaná události zabezpečení, například síťová data a vytváření procesů
     * Protokol auditu Kubernetes
 
-    Další informace najdete v tématu [Ochrana před hrozbami pro kontejnery Azure](threat-protection.md#azure-containers) .
+    Další informace najdete v tématu [ochrana před hrozbami pro kontejnery Azure.](threat-protection.md#azure-containers)
 
-    Seznam možných výstrah najdete v těchto částech v tabulce referenčních informací o výstrahách: [AKS výstrahy na úrovni clusteru](alerts-reference.md#alerts-akscluster) a [výstrahy na úrovni hostitele kontejneru](alerts-reference.md#alerts-containerhost).  
+    Seznam možných výstrah naleznete v těchto částech v referenční tabulce výstrah: [Výstrahy na úrovni clusteru AKS](alerts-reference.md#alerts-akscluster) a [výstrahy na úrovni hostitele kontejneru](alerts-reference.md#alerts-containerhost).  
 
-![Další podrobnosti Azure Security Center a Azure Kubernetes Service (AKS)](./media/azure-kubernetes-service-integration/aks-asc-integration-detailed.png)
+![Azure Security Center a Azure Kubernetes Service (AKS) podrobněji](./media/azure-kubernetes-service-integration/aks-asc-integration-detailed.png)
 
 > [!NOTE]
-> Některá z dat, která prohledává Azure Security Center z prostředí Kubernetes, můžou obsahovat citlivé informace.
+> Některá data naskenovaná službou Azure Security Center z vašeho prostředí Kubernetes mohou obsahovat citlivé informace.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o funkcích zabezpečení kontejneru Security Center najdete v tématech:
+Další informace o funkcích zabezpečení kontejnerů centra Security Center najdete v tématu:
 
-* [Zabezpečení Azure Security Center a kontejneru](container-security.md)
+* [Azure Security Center a zabezpečení kontejnerů](container-security.md)
 
-* [Integrace s Azure Container Registry](azure-container-registry-integration.md)
+* [Integrace se službou Azure Container Registry](azure-container-registry-integration.md)
 
-* [Správa dat v Microsoftu](https://www.microsoft.com/trust-center/privacy/data-management) – popisuje zásady pro data služeb Microsoftu (včetně Azure, Intune a Office 365), podrobnosti o správě dat od Microsoftu a zásady uchovávání dat, které mají vliv na vaše data.
+* [Správa dat v Microsoftu](https://www.microsoft.com/trust-center/privacy/data-management) – popisuje zásady dat služeb Microsoftu (včetně Azure, Intune a Office 365), podrobnosti o správě dat microsoftu a zásady uchovávání informací, které ovlivňují vaše data.

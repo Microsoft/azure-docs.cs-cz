@@ -1,6 +1,6 @@
 ---
-title: MapReduce s Apache Hadoop v HDInsight
-description: Naučte se spouštět úlohy Apache MapReduce na Apache Hadoop v clusterech HDInsight.
+title: MapReduce s Apache Hadoop na HDInsight
+description: Přečtěte si, jak spustit úlohy Apache MapReduce na Apache Hadoop v clusterech HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,25 +9,25 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 238f37cc1e8cbc8d3260693181d6e54ac5f592f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75435709"
 ---
-# <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>Použití MapReduce v Apache Hadoop ve službě HDInsight
+# <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>Použití MapReduce v Apache Hadoopu ve službě HDInsight
 
-Naučte se spouštět úlohy MapReduce v clusterech HDInsight.
+Přečtěte si, jak spustit úlohy MapReduce v clusterech HDInsight.
 
 ## <a name="example-data"></a>Příklad dat
 
-HDInsight poskytuje různé příklady datových sad, které jsou uložené v adresáři `/example/data` a `/HdiSamples`. Tyto adresáře jsou ve výchozím úložišti pro váš cluster. V tomto dokumentu používáme soubor `/example/data/gutenberg/davinci.txt`. Tento soubor obsahuje poznámkové bloky Leonardo da Vinci.
+HDInsight poskytuje různé ukázkové datové sady, které jsou uloženy v adresáři `/example/data` a. `/HdiSamples` Tyto adresáře jsou ve výchozím úložišti pro váš cluster. V tomto dokumentu použijeme `/example/data/gutenberg/davinci.txt` soubor. Tento soubor obsahuje zápisníky Leonarda da Vinciho.
 
 ## <a name="example-mapreduce"></a>Příklad MapReduce
 
-Cluster HDInsight obsahuje příklad aplikace MapReduce počet slov. Tento příklad najdete na adrese `/example/jars/hadoop-mapreduce-examples.jar` ve výchozím úložišti pro váš cluster.
+Příklad aplikace MapReduce počet slov je součástí clusteru HDInsight. Tento příklad je `/example/jars/hadoop-mapreduce-examples.jar` umístěn na výchozí úložiště pro váš cluster.
 
-Následující kód Java je zdrojem aplikace MapReduce obsažené v souboru `hadoop-mapreduce-examples.jar`:
+Následující kód Jazyka Java je zdrojem aplikace MapReduce obsažené v souboru: `hadoop-mapreduce-examples.jar`
 
 ```java
 package org.apache.hadoop.examples;
@@ -101,22 +101,22 @@ public class WordCount {
 }
 ```
 
-Pokyny k psaní vlastních aplikací MapReduce najdete v tématu [vývoj aplikací Java MapReduce pro HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md).
+Pokyny k psaní vlastních aplikací MapReduce naleznete v [tématu Vývoj aplikací Java MapReduce pro HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md).
 
-## <a name="run-the-mapreduce"></a>Spusťte MapReduce.
+## <a name="run-the-mapreduce"></a>Spuštění mapového omezení
 
-HDInsight může spouštět úlohy HiveQL pomocí různých metod. Pomocí následující tabulky se rozhodněte, která metoda je pro vás nejvhodnější, a pak použijte odkaz na návod.
+HDInsight můžete spustit hiveql úlohy pomocí různých metod. V následující tabulce se můžete rozhodnout, která metoda je pro vás vhodná, a potom postupujte podle odkazu na návod.
 
-| **Použít**... | **...a tomu** |  ...from to **klientský operační systém** |
+| **Použijte tento**... | **... k tomu** |  ... z tohoto **klientského operačního systému** |
 |:--- |:--- |:--- |:--- |
-| [SSH](apache-hadoop-use-mapreduce-ssh.md) |Použití příkazu Hadoop přes **SSH** |Linux, UNIX, Mac OS X nebo Windows |
-| [Curl](apache-hadoop-use-mapreduce-curl.md) |Vzdálenou úlohu odešlete pomocí **REST** . |Linux, UNIX, Mac OS X nebo Windows |
-| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |Vzdálená úloha se odešle pomocí **Windows PowerShellu** .  |Windows |
+| [Ssh](apache-hadoop-use-mapreduce-ssh.md) |Použití příkazu Hadoop přes **SSH** |Linux, Unix, Mac OS X nebo Windows |
+| [Curl](apache-hadoop-use-mapreduce-curl.md) |Odeslání úlohy na dálku pomocí **rest** |Linux, Unix, Mac OS X nebo Windows |
+| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |Vzdáleně odeslat úlohu pomocí **prostředí Windows PowerShell**  |Windows |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o práci s daty v HDInsight najdete v následujících dokumentech:
+Další informace o práci s daty ve službě HDInsight najdete v následujících dokumentech:
 
 * [Vývoj programů Java MapReduce pro HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 
-* [Použití Apache Hive se službou HDInsight](./hdinsight-use-hive.md)
+* [Použití Apache Hive s HDInsight](./hdinsight-use-hive.md)

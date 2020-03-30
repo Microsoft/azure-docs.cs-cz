@@ -1,6 +1,6 @@
 ---
 title: Metody vytvoření certifikátu
-description: Způsoby vytvoření certifikátu v Key Vault.
+description: Způsoby vytvoření certifikátu v trezoru klíčů.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,55 +11,55 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: c27cde85952ca6d982accddad59eceae76e3f1e8
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78194453"
 ---
 # <a name="certificate-creation-methods"></a>Metody vytvoření certifikátu
 
- Certifikát Key Vault (KV) může být buď vytvořen, nebo importován do trezoru klíčů. Při vytvoření certifikátu KV se privátní klíč vytvoří v trezoru klíčů a nikdy se nezveřejňuje vlastníkovi certifikátu. Následující postup slouží jako způsob vytvoření certifikátu v Key Vault:  
+ Certifikát trezoru klíčů (KV) lze vytvořit nebo importovat do trezoru klíčů. Při vytvoření certifikátu KV je soukromý klíč vytvořen uvnitř trezoru klíčů a nikdy není vystaven vlastníkovi certifikátu. Níže jsou uvedeny způsoby vytvoření certifikátu v trezoru klíčů:  
 
--   **Vytvoření certifikátu podepsaného svým držitelem:** Tím se vytvoří pár veřejného klíče a přidruží se k němu certifikát. Certifikát bude podepsán vlastním klíčem.  
+-   **Vytvoření certifikátu podepsaného svým držitelem:** Tím se vytvoří pár klíčů veřejného a soukromého sektoru a přidružení k certifikátu. Certifikát bude podepsán vlastním klíčem.  
 
--    **Vytvořte nový certifikát ručně:** Tím se vytvoří pár privátních klíčů a vygeneruje se žádost o podepsání certifikátu X. 509. Žádost o podepsání může podepsat autorita pro registraci nebo certifikační autorita. Podepsaný certifikát x509 se dá sloučit s neřízeným párem klíčů, aby se mohl dokončit certifikát KV v Key Vault. I když tato metoda vyžaduje více kroků, nabízí větší zabezpečení, protože privátní klíč je vytvořený v a omezený na Key Vault. To je vysvětleno v diagramu níže.  
+-    **Vytvořte nový certifikát ručně:** Tím se vytvoří pár veřejných a soukromých klíčů a vygeneruje žádost o podpis certifikátu X.509. Žádost o podepsání může podepsat registrační úřad nebo certifikační úřad. Podepsaný certifikát x509 lze sloučit s čekajícím párem klíčů a dokončit certifikát KV v trezoru klíčů. Přestože tato metoda vyžaduje další kroky, poskytuje větší zabezpečení, protože soukromý klíč je vytvořen v trezoru klíčů a je omezen na něj. To je vysvětleno v diagramu níže.  
 
 ![Vytvoření certifikátu s vlastní certifikační autoritou](media/certificate-authority-1.png)  
 
-Následující popisy odpovídají zeleným písmenovým krokům v předchozím diagramu.
+Následující popisy odpovídají zeleným písmenům v předchozím diagramu.
 
-1. V diagramu výše vaše aplikace vytváří certifikát, který interně začíná vytvořením klíče v trezoru klíčů.
-2. Key Vault vrátí do vaší aplikace žádost o podepsání certifikátu (CSR)
-3. Vaše aplikace předá CSR vaší zvolené certifikační autoritě.
-4. Zvolená certifikační autorita odpoví certifikátem x509.
-5. Vaše aplikace dokončí vytváření nového certifikátu s fúzí certifikátu x509 z vaší certifikační autority.
+1. V diagramu výše vaše aplikace vytváří certifikát, což interně začíná vytvořením klíče ve vašem trezoru klíčů.
+2. Trezor klíčů vrátí do vaší aplikace žádost o podpis certifikátu (CSR)
+3. Vaše aplikace předá žádost o podepsání certifikátu vaší zvolené certifikační autoritě.
+4. Vybraná certifikační autorita odpoví certifikátem X509.
+5. Aplikace dokončí vytvoření nového certifikátu sloučením certifikátu X509 z certifikační autority.
 
--   **Vytvoření certifikátu se známým poskytovatelem vystavitele:** Tato metoda vyžaduje, abyste provedete jednorázovou úlohu vytvoření objektu vystavitele. Jakmile se v trezoru klíčů vytvoří objekt vystavitele, na jeho název se dá odkazovat v zásadách certifikátu KV. Požadavek na vytvoření takového certifikátu KV vytvoří pár klíčů v trezoru a nakomunikuje se službou poskytovatele vystavitelů s použitím informací v odkazovaném objektu vystavitele, aby získal certifikát x509. Certifikát x509 se načte ze služby vystavitele a sloučí se s dvojicí klíčů, aby se dokončilo vytváření certifikátu KV.  
+-   **Vytvořte certifikát se známým poskytovatelem vystavitele:** Tato metoda vyžaduje provést jednorázovou úlohu vytvoření objektu vystavittele. Jakmile je objekt vystavittele vytvořen ve vámi trezoru klíčů, jeho název může být odkazován v zásadách certifikátu KV. Požadavek na vytvoření takového certifikátu KV vytvoří v trezoru dvojici klíčů a bude komunikovat se službou poskytovatele vystavitele pomocí informací v objektu odkazovaného vystavitele k získání certifikátu x509. Certifikát x509 je načten ze služby vystavitela a je sloučen s dvojicí klíčů k dokončení vytvoření certifikátu KV.  
 
-![Vytvoření certifikátu s Key Vault Partnerská certifikační autorita](media/certificate-authority-2.png)  
+![Vytvoření certifikátu s přidruženou certifikační autoritou s partnerem trezoru klíčů](media/certificate-authority-2.png)  
 
-Následující popisy odpovídají zeleným písmenovým krokům v předchozím diagramu.
+Následující popisy odpovídají zeleným písmenům v předchozím diagramu.
 
-1. V diagramu výše vaše aplikace vytváří certifikát, který interně začíná vytvořením klíče v trezoru klíčů.
-2. Key Vault odešle certifikační autoritě žádost o certifikát TLS/SSL.
-3. Vaše aplikace se dotazuje v procesu smyčky a čekání, a to pro vaši Key Vault pro dokončení certifikátu. Vytvoření certifikátu je dokončeno, když Key Vault obdrží odpověď certifikační autority s certifikátem x509.
-4. Certifikační autorita reaguje na žádosti o certifikát TLS/SSL Key Vault certifikátem TLS/SSL X. 509.
-5. Vytvoření nového certifikátu se dokončí s fúzí certifikátu TLS/SSL X. 509 pro certifikační autoritu.
+1. V diagramu výše vaše aplikace vytváří certifikát, což interně začíná vytvořením klíče ve vašem trezoru klíčů.
+2. Trezor klíčů odešle certifikační autoritě žádost o certifikát TLS/SSL.
+3. Vaše aplikace se dotazuje Key Vaultu v procesu smyčky a čekání na dokončení certifikátu. Vytvoření certifikátu je dokončeno, když Key Vault obdrží odpověď certifikační autority s certifikátem X.509.
+4. Certifikační autorita reaguje na žádost o certifikát TLS/SSL trezoru klíčů s certifikátem TLS/SSL X.509.
+5. Vytvoření nového certifikátu je dokončeno sloučením certifikátu TLS/SSL X.509 pro certifikační autoritu.
 
 ## <a name="asynchronous-process"></a>Asynchronní proces
-KV – vytvoření certifikátu je asynchronní proces. Tato operace vytvoří žádost o certifikát KV a vrátí stavový kód HTTP 202 (přijato). Stav požadavku lze sledovat pomocí cyklického dotazování na objekt, který byl vytvořen touto operací. V hlavičce umístění se vrátí úplný identifikátor URI objektu, který čeká na vyřízení.  
+Vytvoření certifikátu KV je asynchronní proces. Tato operace vytvoří žádost o certifikát KV a vrátí stavový kód http 202 (Přijato). Stav požadavku lze sledovat dotazováním čekající objekt vytvořený touto operací. Úplný identifikátor URI čekajícího objektu je vrácen v hlavičce LOCATION.  
 
-Když se dokončí žádost o vytvoření certifikátu KV, stav objektu, který čeká na vyřízení, se změní na dokončeno z nedokončené verze a vytvoří se nová verze certifikátu KV. Tím se stane aktuální verze.  
+Po dokončení požadavku na vytvoření certifikátu KV se stav čekajícího objektu změní na "dokončeno" z "probíhá" a bude vytvořena nová verze certifikátu KV. To se stane aktuální verzí.  
 
 ## <a name="first-creation"></a>První vytvoření
- Při prvním vytvoření certifikátu KV se vytvoří také adresovatelný klíč a tajný kód se stejným názvem jako certifikát. Pokud se název už používá, operace se nezdaří se stavovým kódem HTTP 409 (konflikt).
-Adresovatelný klíč a tajný klíč získají své atributy z atributů certifikátu KV. Adresovatelný klíč a tajný kód vytvořené tímto způsobem jsou označené jako spravované klíče a tajné klíče, jejichž životnost je spravovaná pomocí Key Vault. Spravované klíče a tajné kódy jsou jen pro čtení. Poznámka: Pokud platnost certifikátu KV vyprší nebo je zakázaná, bude se stát, že bude fungovat odpovídající klíč a tajný klíč.  
+ Při prvním vytvoření certifikátu KV je vytvořen adresovatelný klíč a tajný klíč se stejným názvem jako certifikát. Pokud je název již používán, operace se nezdaří s http stavový kód 409 (konflikt).
+Adresovatelný klíč a tajný klíč získat jejich atributy z atributů certifikátu KV. Adresovatelný klíč a tajný klíč vytvořený tímto způsobem jsou označeny jako spravované klíče a tajné klíče, jejichž životnost je spravována trezorem klíčů. Spravované klíče a tajné klíče jsou jen pro čtení. Poznámka: Pokud vyprší platnost certifikátu KV nebo je zakázán, odpovídající klíč a tajný klíč se stanou nefunkčními.  
 
- Pokud se jedná o první operaci vytvoření certifikátu KV, vyžaduje se zásada.  Zásady je také možné dodávat s operacemi po úspěšném vytvoření, které nahradí prostředek zásad. Pokud není dodána zásada, použije se pro vytvoření další verze certifikátu KV prostředek zásady ve službě. Všimněte si, že zatímco probíhá žádost o vytvoření další verze, aktuální certifikát KV a odpovídající adresovatelný klíč a tajný kód zůstávají beze změny.  
+ Pokud se jedná o první operaci k vytvoření certifikátu KV, je vyžadována zásada.  Zásadu lze také dodat s následnými operacemi vytváření, které nahradí prostředek zásady. Pokud není zadána zásada, pak prostředek zásady ve službě se používá k vytvoření další verze certifikátu KV. Všimněte si, že zatímco požadavek na vytvoření další verze probíhá, aktuální certifikát KV a odpovídající adresovatelný klíč a tajný klíč zůstávají nezměněny.  
 
-## <a name="self-issued-certificate"></a>Certifikát vystavený svým držitelem
- Pokud chcete vytvořit certifikát vystavený svým držitelem, nastavte v zásadách certifikátu název vystavitele na "samoobslužné", jak je znázorněno v následujícím fragmentu kódu ze zásad certifikátu.  
+## <a name="self-issued-certificate"></a>Certifikát vydaný samostatně
+ Chcete-li vytvořit certifikát s vlastním vydáním, nastavte název vystavittele jako "Vlastní" v zásadách certifikátu, jak je znázorněno v následujícím fragmentu z certifikačních zásad.  
 
 ```  
 "issuer": {  
@@ -68,7 +68,7 @@ Adresovatelný klíč a tajný klíč získají své atributy z atributů certif
 
 ```  
 
- Pokud název vystavitele není zadaný, název vystavitele se nastaví na "Neznámý". Pokud je Vystavitel "Neznámý", vlastník certifikátu bude muset ručně získat certifikát x509 od vystavitele své volby a potom sloučit veřejný certifikát x509 s čekajícím objektem certifikátu trezoru klíčů, aby bylo možné dokončit vytváření certifikátu.
+ Pokud není zadán název vystavittele, je název vystavittele nastaven na "Neznámý". Pokud je vystavitel "Neznámý", vlastník certifikátu bude muset ručně získat certifikát x509 od vystavittele podle svého výběru a poté sloučit veřejný certifikát x509 s objektem certifikátu trezoru klíčů čekající na dokončení vytvoření certifikátu.
 
 ```  
 "issuer": {  
@@ -77,20 +77,20 @@ Adresovatelný klíč a tajný klíč získají své atributy z atributů certif
 
 ```  
 
-## <a name="partnered-ca-providers"></a>Poskytovatelé partnerských certifikačních autorit
-Vytvoření certifikátu lze provést ručně nebo pomocí vystavitele "samotný". Key Vault taky partnery s určitými poskytovateli vystavitelů, aby zjednodušili vytváření certifikátů. Pro Trezor klíčů s těmito poskytovateli vystavitelů se dají seřadit tyto typy certifikátů.  
+## <a name="partnered-ca-providers"></a>Partneři poskytovatelé certifikačníautority
+Vytvoření certifikátu lze dokončit ručně nebo pomocí vystavitele "Self". Key Vault také spolupracuje s určitými poskytovateli emitentů, aby zjednodušil vytváření certifikátů. Následující typy certifikátů lze objednat pro trezor klíčů s těmito poskytovateli vystavitele partnera.  
 
 |Poskytovatel|Typ certifikátu|  
 |--------------|----------------------|  
-|DigiCert|Key Vault nabízí certifikáty SSL OV nebo EV s DigiCert.|
-|GlobalSign|Key Vault nabízí certifikáty SSL OV nebo EV s GlobalSign.|
+|DigiCert|Key Vault nabízí Certifikáty OV nebo EV SSL s DigiCert|
+|Globální znak|Trezor klíčů nabízí certifikáty OV nebo EV SSL s GlobalSign|
 
- Vystavitel certifikátu je entita reprezentovaná v Azure Key Vault (KV) jako prostředek CertificateIssuer. Slouží k poskytnutí informací o zdroji certifikátu KV; název vystavitele, poskytovatel, přihlašovací údaje a další podrobnosti o správě.
+ Vystavitel certifikátu je entita reprezentovaná v trezoru klíčů Azure (KV) jako prostředek certifikátu issuer. Používá se k poskytnutí informací o zdroji certifikátu KV; název vystavitele, zprostředkovatele, pověření a další podrobnosti o správě.
 
-Všimněte si, že když je objednávka umístěná u poskytovatele vystavitele, může přijmout nebo přepsat rozšíření certifikátu x509 a období platnosti certifikátu na základě typu certifikátu.  
+Všimněte si, že při zadání objednávky u poskytovatele vystavitele může respektovat nebo přepsat rozšíření certifikátu x509 a dobu platnosti certifikátu na základě typu certifikátu.  
 
- Autorizace: vyžaduje oprávnění certifikáty/vytvořit.
+ Autorizace: Vyžaduje oprávnění k vytvoření certifikátů nebo vytvoření.
 
 ## <a name="see-also"></a>Viz také
- - [Informace o klíčích, tajných klíčích a certifikátech](about-keys-secrets-and-certificates.md)
+ - [Klíče, tajné klíče a certifikáty](about-keys-secrets-and-certificates.md)
  - [Monitorování a správa vytvoření certifikátu](create-certificate-scenarios.md)

@@ -9,32 +9,32 @@ ms.date: 06/08/2018
 ms.author: alkohli
 ms.custom: include file
 ms.openlocfilehash: e683d17422321b780a1c01b3011292f2e2c631cb
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175054"
 ---
-Pokud chcete odstranit kontejner svazků, je potřeba
- - Odstraňte svazky v kontejneru svazků. Pokud kontejner svazků obsahuje přidružené svazky, přepněte tyto svazky do režimu offline nejprve. Postupujte podle kroků v [svazek převést do režimu offline](../articles/storsimple/storsimple-8000-manage-volumes-u2.md#take-a-volume-offline). Jakmile svazků jsou offline, můžete je odstranit. 
- - Odstraňte přidružené zásady zálohování a cloudových snímků. Zaškrtněte, pokud kontejner svazků má přidružené zásady zálohování a cloudové snímky. Pokud ano, pak [odstranit zásady zálohování](../articles/storsimple/storsimple-8000-manage-backup-policies-u2.md#delete-a-backup-policy). Tato akce také odstraní cloudové snímky. 
+Chcete-li odstranit kontejner svazku, musíte
+ - odstraňte svazky v kontejneru svazků. Pokud kontejner svazků obsahuje přidružené svazky, přenesete tyto svazky nejprve do úpájení. Postupujte podle pokynů v [části Převedení svazku do funkce offline](../articles/storsimple/storsimple-8000-manage-volumes-u2.md#take-a-volume-offline). Po offline svazky, můžete je odstranit. 
+ - odstraňte přidružené zásady zálohování a snímky cloudu. Zkontrolujte, jestli kontejner svazku má přidružené zásady zálohování a cloudové snímky. Pokud ano, [odstraňte zásady zálohování](../articles/storsimple/storsimple-8000-manage-backup-policies-u2.md#delete-a-backup-policy). Tím se také odstraní snímky cloudu. 
  
-Když kontejner svazků nemá žádné přidružené svazky, zásady zálohování a cloudové snímky, můžete je odstranit. Proveďte následující postup se odstranit kontejner svazků.
+Pokud kontejner svazku nemá žádné přidružené svazky, zásady zálohování a cloudové snímky, můžete ho odstranit. Chcete-li odstranit kontejner svazku, proveďte následující postup.
 
-#### <a name="to-delete-a-volume-container"></a>Chcete-li odstranit kontejner svazků
-1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**. Vyberte a klikněte na zařízení a potom přejděte k **Nastavení > Správa > kontejnery svazků**.
+#### <a name="to-delete-a-volume-container"></a>Odstranění kontejneru svazku
+1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**. Vyberte zařízení a klepněte na něj a přejděte do **části Nastavení > Správa kontejnerů > svazků**.
 
-    ![Okno kontejnery svazků](./media/storsimple-8000-create-volume-container/createvolumecontainer2.png)
+    ![Objemkontejnery čepel](./media/storsimple-8000-create-volume-container/createvolumecontainer2.png)
 
-2. Tabulkový seznam kontejnerů svazků, vyberte kontejner svazků, které chcete odstranit, klikněte pravým tlačítkem na **...**  a pak vyberte **odstranit**.
+2. V tabulkovém seznamu kontejnerů svazků vyberte kontejner svazku, který chcete odstranit, klikněte pravým tlačítkem myši **...** a pak vyberte **Odstranit**.
 
-    ![Odstraňování kontejneru svazků](./media/storsimple-8000-delete-volume-container/deletevolumecontainer1.png)
+    ![Odstranit kontejner svazku](./media/storsimple-8000-delete-volume-container/deletevolumecontainer1.png)
 
-3. Pokud kontejner svazků nemá žádné přidružené svazky, zásady zálohování a cloudové snímky, pak je možné odstranit. Po zobrazení výzvy k potvrzení, přečtěte si a zaškrtněte políčko s informacemi o tom následky odstranění kontejneru svazků. Klikněte na tlačítko **odstranit** potom odstranit kontejner svazků.
+3. Pokud kontejner svazku nemá žádné přidružené svazky, zásady zálohování a cloudové snímky, pak jej lze odstranit. Po zobrazení výzvy k potvrzení zkontrolujte a zaškrtněte políčko s uvedením dopadu odstranění kontejneru svazku. Chcete-li odstranit kontejner svazku, klepněte na **tlačítko Odstranit.**
 
     ![Potvrzení odstranění](./media/storsimple-8000-delete-volume-container/deletevolumecontainer2.png)
 
-Seznam kontejnerů svazků se aktualizuje tak, aby odrážely kontejneru odstraněných svazků.
+Seznam kontejnerů svazků je aktualizován tak, aby odrážel odstraněný kontejner svazku.
 
 ![](./media/storsimple-8000-delete-volume-container/deletevolumecontainer5.png)
 

@@ -1,39 +1,39 @@
 ---
-title: Další Azure Policy pro modul AKS
-description: Přečtěte si, jak Azure Policy používá CustomResourceDefinitions a Open Agent zásad z gatekeeper V3 ke správě clusterů pomocí stroje AKS.
+title: Naučte se zásady Azure pro AKS Engine
+description: Zjistěte, jak zásady Azure používají vlastní definice prostředků a agenta otevřených zásad z gatekeeperu v3 ke správě clusterů pomocí Modulu AKS.
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: c41a9d84dfe43e356e9a4a17af523a37209c2933
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75436429"
 ---
-# <a name="understand-azure-policy-for-aks-engine"></a>Vysvětlení Azure Policy pro modul AKS
+# <a name="understand-azure-policy-for-aks-engine"></a>Principy zásad Azure pro Modul AKS
 
-Azure Policy se integruje s [modulem AKS](https://github.com/Azure/aks-engine/blob/master/docs/README.md), což je systém, který poskytuje praktické nástroje pro rychlé spuštění samoobslužně spravovaného clusteru Kubernetes v Azure. Tato integrace umožňuje v rámci samoobslužného a konzistentního výkonu provádět vynucování a zabezpečení AKSch clusterů v modulu pro správu. Rozšířením používání [otevřeného agenta zásad](https://www.openpolicyagent.org/) (Neprů) [gatekeeper](https://github.com/open-policy-agent/gatekeeper) V3 (beta) se _Webhook kontroleru_ připojení pro Kubernetes Azure Policy umožňuje spravovat a nahlásit stav dodržování předpisů vašich prostředků Azure a samoobslužně spravovaných clusterů AKS Engine z jednoho místa.
+Azure Policy se integruje se [systémem AKS Engine](https://github.com/Azure/aks-engine/blob/master/docs/README.md), který poskytuje pohodlné nástroje pro rychlé zavádění samoobslužného clusteru Kubernetes v Azure. Tato integrace umožňuje vynucování a zabezpečení ve vašem clusteru AKS Engine spravovanou centralizovaným a konzistentním způsobem. Rozšířením využití [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) [Gatekeeper](https://github.com/open-policy-agent/gatekeeper) v3 (beta), _vstupní řadič webhook_ pro Kubernetes, Azure Policy umožňuje spravovat a podávat zprávy o stavu dodržování vašich prostředků Azure a AKS Engine samoobslužné clustery z jednoho místa.
 
 > [!NOTE]
-> Azure Policy pro modul AKS je v Public Preview a nemá žádnou smlouvu SLA. Server Gatekeeper v3 je ve verzi beta a je podporovaný komunitou open source. Služba podporuje pouze předdefinované definice zásad a jeden cluster AKS Engine pro každou skupinu prostředků nakonfigurovanou s instančním objektem.
+> Zásady Azure pro AKS Engine je ve verzi Public Preview a nemá žádnou sla. Gatekeeper v3 je v Beta verzi a je podporován open source komunitou. Služba podporuje pouze předdefinované definice zásad a jeden cluster Modul AKS pro každou skupinu prostředků nakonfigurovanou pomocí instančního objektu.
 
 > [!IMPORTANT]
-> Pokud chcete získat podporu pro Azure Policy modul AKS, AKS Engine nebo gatekeeper v3, vytvořte [Nový problém](https://github.com/Azure/aks-engine/issues/new/choose) v úložišti GitHubu AKS Engine.
+> Chcete-li získat podporu pro zásady Azure pro AKS Engine, AKS Engine nebo Gatekeeper v3, vytvořte [nový problém](https://github.com/Azure/aks-engine/issues/new/choose) v úložišti AKS Engine GitHub.
 
 ## <a name="overview"></a>Přehled
 
-Pokud chcete povolit a používat Azure Policy pro modul AKS s vaším samoobslužným clusterem Kubernetes v Azure, proveďte následující akce:
+Pokud chcete povolit a používat Azure Policy for AKS Engine s vlastním clusterem Kubernetes v Azure, provázte následující akce:
 
 - [Požadavky](#prerequisites)
-- [Instalace doplňku Azure Policy](#installing-the-add-on)
-- [Přiřazení definice zásady pro modul AKS](#built-in-policies)
-- [Počkat na ověření](#validation-and-reporting-frequency)
+- [Instalace doplňku zásad Azure](#installing-the-add-on)
+- [Přiřazení definice zásad pro modul AKS](#built-in-policies)
+- [Počkejte na ověření](#validation-and-reporting-frequency)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před instalací doplňku Azure Policy nebo povolením kterékoli funkce služby musí vaše předplatné umožňovat poskytovatele prostředků **Microsoft. PolicyInsights** a vytvořit přiřazení role pro instanční objekt služby. 
+Před instalací doplňku zásad Azure nebo povolením některé z funkcí služby musí vaše předplatné povolit poskytovatele prostředků **Microsoft.PolicyInsights** a vytvořit přiřazení role pro objekt zabezpečení clusterové služby. 
 
-1. Pokud chcete poskytovatele prostředků povolit, postupujte podle kroků v části [poskytovatelé a typy prostředků](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) nebo spusťte příkaz Azure CLI nebo Azure PowerShell:
+1. Pokud chcete povolit poskytovatele prostředků, postupujte podle pokynů v [části Zprostředkovatelé a typy prostředků](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) nebo spusťte příkaz Azure CLI nebo Azure PowerShell:
 
    - Azure CLI
 
@@ -53,9 +53,9 @@ Před instalací doplňku Azure Policy nebo povolením kterékoli funkce služby
      Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
      ```
 
-1. Vytvoření přiřazení role pro objekt služby clusteru
+1. Vytvoření přiřazení role pro objekt zabezpečení clusterové služby
 
-   - Pokud neznáte ID aplikace instančního objektu služby, vyhledejte ji pomocí následujícího příkazu.
+   - Pokud neznáte ID hlavního objektu clusterové služby, vyhledejte jej pomocí následujícího příkazu.
 
      ```bash
      # Get the kube-apiserver pod name
@@ -65,28 +65,28 @@ Před instalací doplňku Azure Policy nebo povolením kterékoli funkce služby
      kubectl exec <kube-apiserver pod name> -n kube-system cat /etc/kubernetes/azure.json
      ```
 
-   - Přiřazení role zapisovače dat služby Application Insights (Preview) přiřaďte ID aplikace služby Cluster (hodnota _aadClientID_ z předchozího kroku) pomocí rozhraní příkazového řádku Azure CLI. Nahraďte `<subscriptionId>` IDENTIFIKÁTORem předplatného a `<aks engine cluster resource group>` se skupinou prostředků, ve které se cluster AKS Engine Kubernetese spravuje.
+   - Přiřazení role Zápisník dat (Preview) zásad přiřaďte k ID hlavní ho aplikace clusterové služby (hodnota _aadClientID_ z předchozího kroku) pomocí příkazového příkazu k příkazu k příkazu k řešení Azure. Nahraďte `<subscriptionId>` ID `<aks engine cluster resource group>` předplatného a skupinou prostředků, ve které se nachází samoobslužný cluster Kubernetes modulu AKS.
 
      ```azurecli-interactive
      az role assignment create --assignee <cluster service principal app ID> --scope "/subscriptions/<subscriptionId>/resourceGroups/<aks engine cluster resource group>" --role "Policy Insights Data Writer (Preview)"
      ```
 
-## <a name="azure-policy-add-on"></a>Doplněk Azure Policy
+## <a name="azure-policy-add-on"></a>Doplněk zásad Azure
 
-_Doplněk Azure Policy_ pro Kubernetes připojuje službu Azure Policy k řadiči pro přístup k serveru gatekeeper. Doplněk, který je nainstalován do oboru názvů _Kube-System_ , doplňuje následující funkce:
+Doplněk _zásad Azure_ pro Kubernetes propojuje službu Zásad Azure s řadičem přijetí Gatekeeper. Doplněk, který je nainstalován do oboru názvů _kube systému,_ uzákoní následující funkce:
 
-- Kontroluje Azure Policy přiřazení k clusteru modulu AKS.
-- Stažení a instalace podrobností zásad, šablon omezení a omezení
-- Spustí kontrolu dodržování předpisů s úplnou kontrolou v clusteru AKS Engine.
-- Hlásí informace o auditování a dodržování předpisů zpátky na Azure Policy
+- Zkontroluje pomocí zásad Azure přiřazení do clusteru Modul AKS
+- Stahuje a instaluje podrobnosti zásad, šablony omezení a omezení.
+- Spustí úplnou kontrolu dodržování předpisů v clusteru Modulu AKS.
+- Sestavy auditování a dodržování předpisů podrobnosti zpět do zásad Azure
 
 ### <a name="installing-the-add-on"></a>Instalace doplňku
 
-Až se požadavky dokončí, můžete nainstalovat doplněk Azure Policy. Instalace může být během cyklu vytváření nebo aktualizace modulu AKS nebo jako nezávislá akce v existujícím clusteru.
+Po dokončení požadavků lze nainstalovat doplněk zásad Azure. Instalace může být během cyklu vytváření nebo aktualizace modulu AKS nebo jako nezávislá akce na existujícím clusteru.
 
-- Nainstalovat během vytváření nebo aktualizačního cyklu
+- Instalace během vytváření nebo aktualizace cyklu
 
-  Pokud chcete povolit Azure Policy doplněk během vytváření nového clusteru, který je samostatně spravovaný, nebo jako Aktualizace existujícího clusteru, zahrňte do definice clusteru vlastností **Doplňky** pro modul AKS.
+  Chcete-li povolit doplněk zásad Azure během vytváření nového clusteru s vlastním správou nebo jako aktualizaci existujícího clusteru, zahrňte definici clusteru **vlastností addons** pro Modul AKS.
 
   ```json
   "addons": [{
@@ -99,98 +99,98 @@ Až se požadavky dokončí, můžete nainstalovat doplněk Azure Policy. Instal
   }]
   ```
 
-  Další informace o naleznete v tématu [definice clusteru modulu AKS](https://github.com/Azure/aks-engine/blob/master/docs/topics/clusterdefinitions.md)pro externí průvodce.
+  Další informace naleznete v externí příručce [Definice clusteru modulu AKS](https://github.com/Azure/aks-engine/blob/master/docs/topics/clusterdefinitions.md).
 
-- Instalace v existujícím clusteru s Helm grafy
+- Instalace v existujícím clusteru pomocí kormidelních grafů
 
-  K přípravě clusteru a instalaci doplňku použijte následující postup:
+  Pomocí následujících kroků připravte cluster a nainstalujte doplněk:
 
-  1. Nainstalujte server gatekeeper do oboru názvů _systému gatekeeper_ .
+  1. Nainstalujte gatekeeper do oboru názvů _gatekeeper-system._
 
      ```bash
      kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/deploy/gatekeeper.yaml
      ```
-  1. Přidejte popisek _Control-rovina_ do _Kube-System_. Tento popisek vylučuje auditování _Kube_ a služeb pomocí služby Gatekeeper a Azure Policy doplňku.
+  1. Přidejte popisek _roviny ovládacího prvku_ do _kube-system_. Tento popisek vylučuje auditování podů a služeb _kube systému_ gatekeeper a doplněk zásad Azure.
 
      ```bash
      kubectl label namespaces kube-system control-plane=controller-manager
      ```
 
-  1. Synchronizujte data Kubernetes (obor názvů, příchozí, příchozí, služba) pomocí NEPRŮ.
+  1. Synchronizujte data Kubernetes (Obor názvů, Pod, Ingress, Služba) s OPA.
 
      ```bash
      kubectl apply -f https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/gatekeeper-opa-sync.yaml
      ```
 
-     Další informace najdete v tématu [neprů data o replikaci](https://github.com/open-policy-agent/gatekeeper#replicating-data).
+     Další informace naleznete v tématu [OPA - Replikace dat](https://github.com/open-policy-agent/gatekeeper#replicating-data).
 
-  1. Přidejte úložiště Azure Policy do Helm.
+  1. Přidejte repo zásad Azure do helmu.
 
      ```bash
      helm repo add azure-policy https://raw.githubusercontent.com/Azure/azure-policy/master/extensions/policy-addon-kubernetes/helm-charts
      ```
 
-     Další informace najdete v tématu [Průvodce rychlým startem pro Helm graf](https://helm.sh/docs/using_helm/#quickstart-guide).
+     Další informace naleznete v [tématu Helm Chart - Quickstart Guide](https://helm.sh/docs/using_helm/#quickstart-guide).
 
-  1. Nainstalujte doplněk pomocí grafu Helm. Nahraďte `<subscriptionId>` IDENTIFIKÁTORem předplatného a `<aks engine cluster resource group>` se skupinou prostředků, ve které se cluster AKS Engine Kubernetese spravuje.
+  1. Nainstalujte doplněk pomocí helmového grafu. Nahraďte `<subscriptionId>` ID `<aks engine cluster resource group>` předplatného a skupinou prostředků, ve které se nachází samoobslužný cluster Kubernetes modulu AKS.
 
      ```bash
      helm install azure-policy/azure-policy-addon-aks-engine --name azure-policy-addon --set azurepolicy.env.resourceid="/subscriptions/<subscriptionId>/resourceGroups/<aks engine cluster resource group>"
      ```
 
-     Další informace o tom, co se instaluje graf doplňku Helm, najdete v tématu [Azure Policy definice grafu Helm](https://github.com/Azure/azure-policy/tree/master/extensions/policy-addon-kubernetes/helm-charts) na GitHubu.
+     Další informace o tom, co nainstalovat doplněk Helm Chart, najdete v [tématu Azure Policy Addon Helm Chart definice](https://github.com/Azure/azure-policy/tree/master/extensions/policy-addon-kubernetes/helm-charts) na GitHubu.
 
      > [!NOTE]
-     > Vzhledem k tomu, že vztah mezi doplňkem Azure Policy a ID skupiny prostředků Azure Policy podporuje pro každou skupinu prostředků pouze jeden cluster AKS Engine.
+     > Vzhledem k vztahu mezi doplňkem zásad Azure a ID skupiny prostředků podporuje Zásady Azure pouze jeden cluster AKS Engine pro každou skupinu prostředků.
 
-Chcete-li ověřit, zda byla instalace doplňku úspěšná a zda je spuštěná _zásada Azure-_ pod, spusťte následující příkaz:
+Chcete-li ověřit, zda byla instalace doplňku úspěšná a zda je spuštěn pod _zásad azure,_ spusťte následující příkaz:
 
 ```bash
 kubectl get pods -n kube-system
 ```
 
-### <a name="validation-and-reporting-frequency"></a>Frekvence ověřování a generování sestav
+### <a name="validation-and-reporting-frequency"></a>Četnost ověřování a podávání zpráv
 
-Doplněk se vrátí se změnami Azure Policy pro změny v přiřazení zásad každých 5 minut. Během tohoto cyklu aktualizace doplněk kontroluje změny. Tyto změny triggeru vytvoří, aktualizuje nebo odstraní šablony omezení a omezení.
+Doplněk se změnami v zásadách Azure pro změny v přiřazení zásad každých 5 minut. Během tohoto cyklu aktualizace doplněk zkontroluje změny. Tyto změny aktivační události vytvoří, aktualizace nebo odstranění šablony omezení a omezení.
 
 > [!NOTE]
-> I když _Správce clusteru_ může mít oprávnění k provádění změn v šablonách omezení a omezeních, nedoporučuje se ani se nepodporuje, aby provedl změny v šablonách omezení nebo omezeních vytvořených nástrojem Azure Policy. Jakékoli ručně provedené změny budou ztraceny během aktualizačního cyklu.
+> Zatímco _správce clusteru_ může mít oprávnění k provádění změn šablon omezení a omezení, není doporučeno ani podporováno provádět změny šablon omezení nebo omezení vytvořených zásadami Azure. Všechny provedené ruční změny budou během cyklu aktualizace ztraceny.
 
-Každých 5 minut doplněk volá úplnou kontrolu clusteru. Po shromáždění podrobností o úplné kontrole a všech vyhodnocení v reálném čase pomocí serveru gatekeeper na základě změn v clusteru hlásí doplněk výsledky zpět do Azure Policy pro zahrnutí v [podrobnostech o dodržování předpisů](../how-to/get-compliance-data.md) , jako je jakékoli přiřazení Azure Policy. Během cyklu auditu se vrátí jenom výsledky aktivních přiřazení zásad. Výsledky auditu se taky můžou považovat za porušení uvedená v poli stav u neúspěšného omezení.
+Každých 5 minut doplněk volá úplné prohledávací clusteru. Po shromáždění podrobností o úplném prohledávači a všech hodnoceních gatekeeperu v reálném čase o pokusech o změny v clusteru, doplněk hlásí výsledky zpět do zásad Azure pro zahrnutí [do podrobností o dodržování předpisů,](../how-to/get-compliance-data.md) jako je jakékoli přiřazení zásad Azure. Během cyklu auditu jsou vráceny pouze výsledky pro aktivní přiřazení zásad. Výsledky auditu lze také považovat za porušení uvedené v poli stavu neúspěšného omezení.
 
 ## <a name="policy-language"></a>Jazyk zásad
 
-Struktura Azure Policy jazyka pro správu modulu AKS se řídí existujícími zásadami. Efekt _EnforceOPAConstraint_ se používá ke správě clusterů AKS Engine a má _podrobné_ vlastnosti, které jsou specifické pro práci s [omezeními neprů](https://github.com/open-policy-agent/frameworks/tree/master/constraint) a gatekeeper v3. Podrobnosti a příklady najdete v [EnforceOPAConstraint](effects.md#enforceopaconstraint) efektu.
+Jazyková struktura zásad Azure pro správu AKS Engine se řídí existujícími zásadami. Efekt _EnforceOPAConstraint_ se používá ke správě clusterů modulu AKS a přebírá _vlastnosti podrobnosti_ specifické pro práci s [architekturou omezení OPA](https://github.com/open-policy-agent/frameworks/tree/master/constraint) a Gatekeeper v3. Podrobnosti a příklady naleznete v efektu [EnforceOPAConstraint.](effects.md#enforceopaconstraint)
 
-Jako součást _Details. constraintTemplate_ a _Details._ properties v definici zásad Azure Policy předá do doplňku identifikátory URI těchto [CustomResourceDefinitions](https://github.com/open-policy-agent/gatekeeper#constraint-templates) (CRD). Rego je jazyk, který podporuje NEPRŮ a gatekeeper, aby ověřil požadavek na cluster Kubernetes. Díky podpoře stávajícího standardu pro správu Kubernetes Azure Policy umožňuje znovu použít stávající pravidla a párovat je Azure Policy pro jednotné prostředí generování sestav dodržování předpisů cloudu. Další informace najdete v tématu [co je Rego?](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego).
+Jako součást _details.constraintTemplate_ a _details.constraint_ vlastnosti v definici zásady Azure předá URI těchto [CustomResourceDefinitions](https://github.com/open-policy-agent/gatekeeper#constraint-templates) (CRD) na doplněk. Rego je jazyk, který OPA a Gatekeeper podporují k ověření požadavku na cluster Kubernetes. Podporou existujícího standardu pro správu Kubernetes umožňuje Azure Policy znovu použít stávající pravidla a spárovat je s Azure Policy pro jednotné prostředí pro vytváření přehledů dodržování předpisů v cloudu. Další informace naleznete v tématu [Co je Rego?](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego).
 
 ## <a name="built-in-policies"></a>Předdefinované zásady
 
-Pokud chcete najít předdefinované zásady pro správu clusteru AKS Engine pomocí Azure Portal, postupujte takto:
+Integrované zásady pro správu clusteru AKS Engine pomocí portálu Azure najdete takto:
 
-1. Spusťte službu Azure Policy v Azure Portal. V levém podokně vyberte **všechny služby** a pak vyhledejte a vyberte **zásady**.
+1. Spusťte službu Zásad azure na webu Azure Portal. V levém podokně vyberte **Všechny služby** a pak vyhledejte a vyberte **zásady**.
 
-1. V levém podokně stránky Azure Policy vyberte **definice**.
+1. V levém podokně stránky Zásady Azure vyberte **Definice**.
 
-1. V rozevíracím seznamu kategorie použijte **možnost Vybrat vše** , pokud chcete filtr vymazat, a pak vyberte **Kubernetes**.
+1. V rozevíracím seznamu Kategorie použijte k vymazání filtru výběr **všech** a pak vyberte **Kubernetes**.
 
-1. Vyberte definici zásady a pak klikněte na tlačítko **přiřadit** .
+1. Vyberte definici zásad a pak vyberte tlačítko **Přiřadit.**
 
 > [!NOTE]
-> Při přiřazování Azure Policy pro definici modulu AKS musí být **obor** skupinou prostředků clusteru AKS Engine.
+> Při přiřazování zásad Azure pro definici modulu AKS musí být **obor** skupinou prostředků clusteru ModulAA.
 
-Případně můžete k vyhledání a přiřazení zásad AKS Engine použít průvodce [přiřazením portálu zásad](../assign-policy-portal.md) . Místo ukázky "Auditovat virtuální počítače" vyhledejte definici zásad pro modul AKS.
+Alternativně použijte [přiřadit zásadu - portál](../assign-policy-portal.md) rychlý start najít a přiřadit zásady AKS Engine. Vyhledejte definici zásad modulu AKS namísto ukázkových "auditních virtuálních modulů".
 
 > [!IMPORTANT]
-> Předdefinované zásady v kategorii **Kubernetes** se používají jenom pro modul AKS.
+> Vestavěné zásady v kategorii **Kubernetes** jsou určeny pouze pro použití s AKS Engine.
 
-## <a name="logging"></a>Protokolování
+## <a name="logging"></a>protokolování
 
-### <a name="azure-policy-add-on-logs"></a>Azure Policy protokoly doplňků
+### <a name="azure-policy-add-on-logs"></a>Protokoly doplňků zásad Azure
 
-Jako Kubernetes Controller nebo kontejner, Azure Policy doplněk udržuje protokoly v clusteru AKS Engine.
+Jako řadič/kontejner Kubernetes udržuje doplněk zásad Azure protokoly v clusteru Modulu AKS.
 
-Chcete-li zobrazit Azure Policy protokoly doplňku, použijte `kubectl`:
+Chcete-li zobrazit protokoly doplňku `kubectl`zásad Azure, použijte :
 
 ```bash
 # Get the Azure Policy Add-on pod name
@@ -200,26 +200,26 @@ kubectl -n kube-system get pods -l app=azure-policy --output=name
 kubectl logs <Azure Policy Add-on pod name> -n kube-system
 ```
 
-### <a name="gatekeeper-logs"></a>Protokoly gatekeeper
+### <a name="gatekeeper-logs"></a>Gatekeeper protokoly
 
-Gatekeeper pod, _gatekeeper-Controller-Manager-0_je obvykle v oboru názvů `gatekeeper-system` nebo `kube-system`, ale může se nacházet v jiném oboru názvů v závislosti na tom, jak je nasazený.
+Pod Gatekeeper, _gatekeeper-controller-manager-0_, je `gatekeeper-system` `kube-system` obvykle v oboru názvů nebo, ale může být v jiném oboru názvů v závislosti na tom, jak je nasazen.
 
-K zobrazení protokolů gatekeeper použijte `kubectl`:
+Chcete-li zobrazit protokoly `kubectl`Gatekeeper, použijte :
 
 ```bash
 NAMESPACE=<namespace of gatekeeper>
 kubectl logs gatekeeper-controller-manager-0 -n $NAMESPACE
 ```
 
-Další informace najdete v tématu [ladění serveru gatekeeper](https://github.com/open-policy-agent/gatekeeper#debugging) v dokumentaci k neprů.
+Další informace naleznete v [tématu Ladění gatekeeper](https://github.com/open-policy-agent/gatekeeper#debugging) v dokumentaci OPA.
 
 ## <a name="remove-the-add-on"></a>Odebrání doplňku
 
-Chcete-li odebrat Azure Policy doplněk a server gatekeeper z clusteru AKS Engine, použijte metodu, která se zarovnává s tím, jak byl doplněk nainstalován:
+Chcete-li odebrat doplněk zásad Azure a gatekeeper z clusteru Modulu AKS, použijte metodu, která je v souladu s tím, jak byl doplněk nainstalován:
 
-- Pokud je nainstalován, nastavte vlastnost **Doplňky** v definici clusteru pro modul AKS:
+- Pokud je nainstalována nastavením **vlastnosti addons** v definici clusteru pro Modul AKS:
 
-  Po změně vlastnosti **Doplňky** pro _Azure_ na hodnotu false znovu nasaďte definici clusteru na modul AKS:
+  Znovu nasadit definici clusteru do AKS Engine po změně **addons** vlastnost pro _azure-policy_ na false:
 
 
   ```json
@@ -229,59 +229,59 @@ Chcete-li odebrat Azure Policy doplněk a server gatekeeper z clusteru AKS Engin
   }]
   ```
 
-- Pokud je nainstalován s Helm grafy:
+- Pokud je nainstalován s helm grafy:
 
-  1. Odebrat stará omezení
+  1. Odebrání starých omezení
 
-     V současné době odinstalační mechanizmus odebere jenom systém gatekeeper, neodebere žádné prostředky _ConstraintTemplate_, _omezení_nebo _Konfigurace_ , které vytvořil uživatel, ani neodebere jejich doprovodné _CRDs_.
+     V současné době mechanismus odinstalace pouze odebere systém Gatekeeper, neodebere žádné _constrainttemplate_, _omezení_nebo _config_ prostředky, které byly vytvořeny uživatelem, ani neodebere jejich doprovodné _CRDs_.
 
-     Když je server gatekeeper spuštěný, je možné odebrat nežádoucí omezení:
+     Když gatekeeper běží, je možné odstranit nežádoucí omezení:
 
-     - Odstraňují se všechny instance prostředku omezení.
-     - Odstranění prostředku _ConstraintTemplate_ , který by měl automaticky vyčistit _CRD_
-     - Odstranění prostředku _Konfigurace_ odebere finalizační metody u synchronizovaných prostředků.
+     - Odstranění všech instancí prostředku omezení
+     - Odstranění prostředku _ConstraintTemplate,_ který by měl automaticky vyčistit _crd_
+     - Odstranění prostředku _Config_ odebere finalizační metody u synchronizovaných prostředků.
 
-  1. Odinstalace doplňku Azure Policy
+  1. Odinstalace doplňku zásad Azure
   
      ```bash
      helm del --purge azure-policy-addon
      ```
 
-  1. Odinstalace serveru gatekeeper
+  1. Odinstalace gatekeeperu
   
      ```bash
      kubectl delete -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/deploy/gatekeeper.yaml
      ```
 
-## <a name="diagnostic-data-collected-by-azure-policy-add-on"></a>Diagnostická data shromážděná pomocí doplňku Azure Policy
+## <a name="diagnostic-data-collected-by-azure-policy-add-on"></a>Diagnostická data shromážděná doplňkem zásad Azure
 
-Doplněk Azure Policy pro Kubernetes shromažďuje omezená diagnostická data clusteru. Tato diagnostická data jsou podstatná technická data týkající se softwaru a výkonu. Jsou využívána následujícími způsoby:
+Doplněk zásad Azure pro Kubernetes shromažďuje omezená diagnostická data clusteru. Tato diagnostická data jsou důležitými technickými údaji týkajícími se softwaru a výkonu. Používá se následujícími způsoby:
 
-- Udržování Azure Policyho doplňku v aktuálním stavu
-- Udržování Azure Policy zabezpečených, spolehlivých a výkonných doplňků
-- Vylepšení Azure Policyho doplňku agregovanou analýzou použití doplňku
+- Udržujte doplňky zásad Azure aktuální
+- Zabezpečení, spolehlivost a výkonná podpora zásad Azure
+- Vylepšete doplněk zásad Azure – prostřednictvím souhrnné analýzy použití doplňku
 
-Informace shromažďované doplňkem nejsou osobní údaje. V současné době jsou shromažďovány následující podrobnosti:
+Informace shromážděné doplňkem nejsou osobními údaji. V současné době jsou shromažďovány následující podrobnosti:
 
-- Azure Policy verze agenta doplňku
+- Verze agenta pro doplňky zásad Azure
 - Typ clusteru
 - Oblast clusteru
 - Skupina prostředků clusteru
 - ID prostředku clusteru
 - ID předplatného clusteru
 - Operační systém clusteru (příklad: Linux)
-- Město clusteru (příklad: Seattle)
-- Stav nebo provincie clusteru (příklad: Washington)
-- Země nebo oblast clusteru (příklad: USA)
-- Výjimky/chyby zjištěné Azure Policym doplňku během instalace agenta při vyhodnocování zásad
-- Počet zásad serveru gatekeeper, které nejsou nainstalované pomocí doplňku Azure Policy
+- Cluster město (Příklad: Seattle)
+- Stát nebo provincie clusteru (příklad: Washington)
+- Země nebo oblast clusteru (Příklad: Spojené státy)
+- Výjimky nebo chyby, které při instalaci agenta při vyhodnocení zásad zjistil doplněk zásad Azure
+- Počet zásad Gatekeeper, které nejsou nainstalovány doplňkem zásad Azure
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si příklady na [Azure Policy Samples](../samples/index.md).
+- Projděte si příklady na [ukázkách zásad Azure](../samples/index.md).
 - Projděte si [strukturu definic zásad](definition-structure.md).
 - Projděte si [Vysvětlení efektů zásad](effects.md).
-- Zjistěte, jak [programově vytvářet zásady](../how-to/programmatically-create.md).
+- Pochopit, jak [programově vytvářet zásady](../how-to/programmatically-create.md).
 - Přečtěte si, jak [získat data o dodržování předpisů](../how-to/get-compliance-data.md).
-- Přečtěte si, jak [opravit prostředky, které nedodržují předpisy](../how-to/remediate-resources.md).
-- Seznamte se s tím, co skupina pro správu [organizuje vaše prostředky pomocí skupin pro správu Azure](../../management-groups/overview.md).
+- Přečtěte si, jak [napravit nekompatibilní prostředky](../how-to/remediate-resources.md).
+- Zkontrolujte, co je skupina pro správu [pomocí organizace Uspořádat prostředky pomocí skupin pro správu Azure](../../management-groups/overview.md).

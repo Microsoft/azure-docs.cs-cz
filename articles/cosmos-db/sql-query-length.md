@@ -1,5 +1,5 @@
 ---
-title: Délka ve Azure Cosmos DB dotazovacího jazyka
+title: DÉLKA v dotazovacím jazyce Azure Cosmos DB
 description: Přečtěte si o délce funkce systému SQL v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: e020555b0c706b5577bd20ac9bd537604d43ba3f
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303711"
 ---
-# <a name="length-azure-cosmos-db"></a>Délka (Azure Cosmos DB)
- Vrátí počet znaků ze zadaného řetězcového výrazu.  
+# <a name="length-azure-cosmos-db"></a>DÉLKA (Azure Cosmos DB)
+ Vrátí počet znaků zadaného řetězcového výrazu.  
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -26,11 +26,11 @@ LENGTH(<str_expr>)
 ## <a name="arguments"></a>Argumenty
   
 *str_expr*  
-   Je řetězcový výraz, který má být vyhodnocen.  
+   Je řetězec výraz, který má být vyhodnocen.  
   
 ## <a name="return-types"></a>Návratové typy
   
-  Vrátí hodnotu číselného výrazu.  
+  Vrátí číselný výraz.  
   
 ## <a name="examples"></a>Příklady
   
@@ -48,10 +48,10 @@ SELECT LENGTH("abc") AS len
 
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce nebude index využívat.
+Tato systémová funkce nebude využívat index.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Azure Cosmos DB funkce řetězce](sql-query-string-functions.md)
+- [Funkce řetězce Azure Cosmos DB](sql-query-string-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
 - [Úvod do Azure Cosmos DB](introduction.md)

@@ -5,24 +5,24 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: 46cfb27b8bde95990d13ec4bca4e96f25cfe9dc5
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67175522"
 ---
-Z důvodu průběžného vývoje nemusí v nástroji Android Studio nainstalovanou verzi sady SDK pro Android odpovídat verzi v kódu. Sady Android SDK odkazované v tomto kurzu je verze 26, nejnovější v době zápisu. Zvýšit číslo verze a zobrazí nové verze sady SDK, doporučujeme používat nejnovější dostupná verze.
+Z důvodu průběžného vývoje nemusí verze sady Android SDK nainstalované ve studiu Android odpovídat verzi v kódu. Android SDK odkazuje v tomto kurzu je verze 26, nejpozději v době psaní. Číslo verze se může zvýšit, jak se zobrazí nové verze sady SDK, a doporučujeme použít nejnovější dostupnou verzi.
 
-Jsou dva příznaky zjistila se Neshoda verzí:
+Dva příznaky neshody verzí jsou:
 
-- Při sestavení nebo znovu sestavit projekt, se může zobrazit chybové zprávy Gradle jako `Gradle sync failed: Failed to find target with hash string 'android-XX'`.
-- Standardní Android objekty v kódu, který se musí se překládat na základě `import` příkazy mohou být generování chybové zprávy.
+- Při vytváření nebo znovu sestavu projektu, může `Gradle sync failed: Failed to find target with hash string 'android-XX'`se stát, že se zobrazí chybové zprávy Gradle jako .
+- Standardní android objekty v kódu, který by měl vyřešit na `import` základě příkazů může být generování chybových zpráv.
 
-Pokud některý z těchto se zobrazí, nemusí shodovat na verzi sady SDK pro Android nainstalována v nástroji Android Studio cíle sady SDK ze staženého projektu. K ověření verze, proveďte následující změny:
+Pokud se zobrazí některá z těchto verzí, verze sady Android SDK nainstalované ve studiu Android nemusí odpovídat cíli sady SDK staženého projektu. Chcete-li verzi ověřit, proveďte následující změny:
 
-1. V nástroji Android Studio, klikněte na tlačítko **nástroje** > **Android** > **správce sady SDK**. Pokud jste nenainstalovali nejnovější verzi sady SDK platformy, klepněte na jeho instalaci. Poznamenejte si číslo verze.
+1. Ve Studiu pro Android klikněte na **Nástroje** > **Správce** > **sady Android .** Pokud jste nenainstalovali nejnovější verzi platformy SDK, potom ji klepnutím nainstalujte. Poznamenejte si číslo verze.
 
-2. Na **Project Exploreru** ve skupině **skriptů Gradle**, otevřete soubor **build.gradle (modul: aplikace)** . Ujistěte se, **compileSdkVersion** a **targetSdkVersion** jsou nastaveny na nainstalovanou nejnovější verzi sady SDK. `build.gradle` Může vypadat třeba takto:
+2. Na kartě **Průzkumník projektu** otevřete v části **Gradle Scripts**soubor **build.gradle (Modul: aplikace).** Ujistěte se, že **compileSdkVersion** a **targetSdkVersion** jsou nastaveny na nejnovější nainstalovanou verzi sady SDK. Může `build.gradle` vypadat takto:
 
     ```gradle
     android {

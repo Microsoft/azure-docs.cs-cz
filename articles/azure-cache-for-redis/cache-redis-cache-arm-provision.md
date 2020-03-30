@@ -1,56 +1,56 @@
 ---
-title: Nasazení Azure cache pro Redis s Azure Resource Manager
-description: Naučte se používat šablonu Azure Resource Manager k nasazení mezipaměti Azure pro prostředek Redis. Šablony jsou k dispozici pro běžné scénáře.
+title: Nasazení mezipaměti Azure pro Redis pomocí Správce prostředků Azure
+description: Zjistěte, jak použít šablonu Azure Resource Managerka k nasazení prostředku Azure Cache for Redis. Šablony jsou k dispozici pro běžné scénáře.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.openlocfilehash: 787edf662aa3a34e167db61b0a89dfc5c2944219
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75412410"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-template"></a>Vytvoření mezipaměti Azure pro Redis pomocí šablony
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-V tomto tématu se dozvíte, jak vytvořit šablonu Azure Resource Manager, která nasadí mezipaměť Azure pro Redis. Mezipaměť lze použít s existujícím účtem úložiště pro zachování diagnostických dat. Naučíte se také, jak definovat, které prostředky jsou nasazeny a jak definovat parametry, které jsou zadány při spuštění nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky.
+V tomto tématu se dozvíte, jak vytvořit šablonu Azure Resource Manager, která nasazuje Azure Cache pro Redis. Mezipaměť lze použít s existujícím účtem úložiště k uchování diagnostických dat. Dozvíte se také, jak definovat, které prostředky jsou nasazeny a jak definovat parametry, které jsou určeny při spuštění nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky.
 
-V současné době se nastavení diagnostiky sdílí pro všechny mezipaměti ve stejné oblasti pro předplatné. Aktualizace jedné mezipaměti v oblasti má vliv na všechny ostatní mezipaměti v oblasti.
+V současné době jsou diagnostická nastavení sdílena pro všechny mezipaměti ve stejné oblasti pro odběr. Aktualizace jedné mezipaměti v oblasti ovlivní všechny ostatní mezipaměti v oblasti.
 
-Další informace o vytváření šablon najdete v tématu [vytváření šablon Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md). Další informace o syntaxi a vlastnostech JSON pro typy prostředků mezipaměti najdete v tématu [typy prostředků Microsoft. cache](/azure/templates/microsoft.cache/allversions).
+Další informace o vytváření šablon najdete v [tématu Vytváření šablon Azure Resource Manageru](../azure-resource-manager/templates/template-syntax.md). Informace o syntaxi JSON a vlastnostech pro typy prostředků mezipaměti naleznete v [tématu Microsoft.Cache typy prostředků](/azure/templates/microsoft.cache/allversions).
 
-Úplnou šablonu najdete v tématu [Šablona Azure cache pro Redis](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json).
+Kompletní šablonu najdete v tématu [Azure Cache for Redis template](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json).
 
 > [!NOTE]
-> K dispozici jsou šablony Správce prostředků pro novou [úroveň Premium](cache-premium-tier-intro.md) . 
+> Šablony Správce prostředků pro novou [úroveň Premium](cache-premium-tier-intro.md) jsou k dispozici. 
 > 
-> * [Vytvoření mezipaměti Azure Premium pro Redis s clusteringem](https://azure.microsoft.com/resources/templates/201-redis-premium-cluster-diagnostics/)
-> * [Vytvoření mezipaměti Azure Premium pro Redis s Trvalost dat](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
-> * [Vytvoření Redis Cache úrovně Premium nasazených do Virtual Network](https://azure.microsoft.com/resources/templates/201-redis-premium-vnet/)
+> * [Vytvoření prémiové mezipaměti Azure pro redis pomocí clusteringu](https://azure.microsoft.com/resources/templates/201-redis-premium-cluster-diagnostics/)
+> * [Vytvoření prémiové mezipaměti Azure pro redis s trvalostí dat](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
+> * [Vytvoření mezipaměti Premium Redis nasazené do virtuální sítě](https://azure.microsoft.com/resources/templates/201-redis-premium-vnet/)
 > 
-> Pokud chcete vyhledat nejnovější šablony, přečtěte si téma [šablony pro rychlý Start Azure](https://azure.microsoft.com/documentation/templates/) a vyhledejte `Azure Cache for Redis`.
+> Nejnovější šablony najdete v [tématu Šablony rychlého](https://azure.microsoft.com/documentation/templates/) `Azure Cache for Redis`spuštění Azure a vyhledejte .
 > 
 > 
 
-## <a name="what-you-will-deploy"></a>Co budete nasazovat
-V této šabloně nasadíte mezipaměť Azure pro Redis, která pro diagnostická data používá existující účet úložiště.
+## <a name="what-you-will-deploy"></a>Co nasadíte
+V této šabloně nasadíte Azure Cache pro Redis, který používá existující účet úložiště pro diagnostická data.
 
 Pokud chcete nasazení spustit automaticky, klikněte na následující tlačítko:
 
 [![Nasazení do Azure](./media/cache-redis-cache-arm-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>Parametry
-Pomocí Azure Resource Manageru definujete parametry pro hodnoty, které chcete zadat při nasazení šablony. Šablona obsahuje oddíl s názvem parametry, který obsahuje všechny hodnoty parametrů.
+Pomocí Azure Resource Manageru definujete parametry pro hodnoty, které chcete zadat při nasazení šablony. Šablona obsahuje oddíl s názvem Parametry, který obsahuje všechny hodnoty parametrů.
 Parametr byste měli definovat pro hodnoty, které se mění v závislosti na nasazovaném projektu nebo prostředí, do kterého nasazujete. Nedefinujte parametry pro hodnoty, které jsou vždy stejné. Každá hodnota parametru se v šabloně použije k definování nasazovaných prostředků. 
 
 [!INCLUDE [app-service-web-deploy-redis-parameters](../../includes/cache-deploy-parameters.md)]
 
 ### <a name="rediscachelocation"></a>redisCacheLocation
-Umístění mezipaměti Azure pro Redis. Nejlepšího výkonu dosáhnete, když použijete stejné umístění jako aplikace, která se má použít spolu s mezipamětí.
+Umístění azure mezipaměti pro Redis. Chcete-li dosáhnout nejlepšího výkonu, použijte stejné umístění jako aplikace, která se má používat s mezipamětí.
 
     "redisCacheLocation": {
       "type": "string"
@@ -64,14 +64,14 @@ Název existujícího účtu úložiště, který se má použít pro diagnostik
     }
 
 ### <a name="enablenonsslport"></a>enableNonSslPort
-Logická hodnota, která označuje, jestli se má povolený přístup přes porty bez SSL.
+Logická hodnota, která označuje, zda má být povolen přístup prostřednictvím portů bez SSL.
 
     "enableNonSslPort": {
       "type": "bool"
     }
 
-### <a name="diagnosticsstatus"></a>diagnosticsStatus
-Hodnota, která určuje, zda je povolena Diagnostika. Použijte ZAPNUTo nebo vypnuto.
+### <a name="diagnosticsstatus"></a>diagnosticsStav
+Hodnota, která označuje, zda je povolena diagnostika. Použijte ZAPNUTO nebo VYPNUTO.
 
     "diagnosticsStatus": {
       "type": "string",
@@ -84,7 +84,7 @@ Hodnota, která určuje, zda je povolena Diagnostika. Použijte ZAPNUTo nebo vyp
 
 ## <a name="resources-to-deploy"></a>Prostředky k nasazení
 ### <a name="azure-cache-for-redis"></a>Azure Cache for Redis
-Vytvoří službu Azure cache pro Redis.
+Vytvoří mezipaměť Azure pro Redis.
 
     {
       "apiVersion": "2015-08-01",

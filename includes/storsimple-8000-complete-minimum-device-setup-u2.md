@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: c44effe0bde3c7e880e53706fcb59d91a8605e7b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175058"
 ---
 #### <a name="to-complete-the-minimum-storsimple-device-setup"></a>Dokončení minimální instalace zařízení StorSimple
@@ -36,7 +36,7 @@ ms.locfileid: "67175058"
 
             ![Rutina Test-HcsmConnection zobrazující směrovatelné IP adresy](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig3.png)
 
-1. Klikněte na **OK**. Spustí se konfigurace zařízení. Po dokončení konfigurace zařízení se zobrazí oznámení. Stav zařízení v okně **Zařízení** se změní na **Online**.
+1. Klikněte na tlačítko **OK**. Spustí se konfigurace zařízení. Po dokončení konfigurace zařízení se zobrazí oznámení. Stav zařízení v okně **Zařízení** se změní na **Online**.
 
     ![Síťová rozhraní pro minimální instalaci zařízení StorSimple](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig4.png)
 

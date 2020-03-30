@@ -1,6 +1,6 @@
 ---
-title: Povolení spravovaných identit na virtuálních počítačích v testovacím prostředí v Azure DevTest Labs
-description: Tento článek ukazuje, jak vlastník testovacího prostředí může povolit uživatelsky přiřazené identity na virtuálních počítačích testovacího prostředí.
+title: Povolení spravovaných identit na virtuálních počítačích testovacího prostředí v laboratořích Azure DevTest Labs
+description: Tento článek ukazuje, jak vlastník testovacího prostředí může povolit uživatelem přiřazené spravované identity na virtuálních počítačích testovacího prostředí.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,44 +14,44 @@ ms.topic: article
 ms.date: 01/03/2020
 ms.author: spelluru
 ms.openlocfilehash: 5d70f83babcf53249f581230e72326d99a0533d6
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75692664"
 ---
-# <a name="enable-user-assigned-managed-identities-on-lab-virtual-machines-in-azure-devtest-labs"></a>Povolte uživatelem přiřazené spravované identity na virtuálních počítačích testovacího prostředí v Azure DevTest Labs
-Jako vlastník testovacího prostředí můžete povolit uživatelsky přiřazené spravované identity na virtuálních počítačích testovacího prostředí v Azure DevTest Labs.
+# <a name="enable-user-assigned-managed-identities-on-lab-virtual-machines-in-azure-devtest-labs"></a>Povolení spravovaných identit přiřazených uživatelem na virtuálních počítačích testovacího prostředí v laboratořích Azure DevTest Labs
+Jako vlastník testovacího prostředí můžete povolit spravované identity přiřazené uživateli na virtuálních počítačích testovacího prostředí (VM) v azure devtest labs.
 
-Spravovanou identitu lze použít k ověření u jakékoli služby, která podporuje ověřování Azure Active Directory (AD), včetně Key Vault, bez předání jakýchkoli přihlašovacích údajů v kódu. Další informace o spravovaných identitách najdete v tématu [co jsou spravované identity pro prostředky Azure?](../active-directory/managed-identities-azure-resources/overview.md).
+Spravovanou identitu lze použít k ověření na libovolné službě, která podporuje ověřování služby Azure Active Directory (AD), včetně trezoru klíčů, bez předání pověření v kódu. Další informace o spravovaných identitách najdete v tématu [Co je spravované identity pro prostředky Azure?](../active-directory/managed-identities-azure-resources/overview.md).
 
-Díky této funkci můžou uživatelé testovacího prostředí sdílet prostředky Azure, například Azure SQL Database v kontextu testovacího prostředí. Ověřování prostředku se stará o identitu, kterou sám zabere. Po nakonfigurování se pro tuto identitu povolí každý existující/nově vytvořený testovací virtuální počítač. Uživatelé testovacího prostředí můžou získat přístup k prostředkům po přihlášení ke svým počítačům.
+Pomocí této funkce mohou uživatelé testovacího prostředí sdílet prostředky Azure, jako je Azure SQL Database, v kontextu testovacího prostředí. Ověřování prostředku je postaráno samotnou identitou. Po nakonfigurování bude s touto identitou povolen každý existující/nově vytvořený virtuální virtuální počítače testovacího prostředí. Uživatelé testovacího prostředí mají přístup k prostředkům po přihlášení ke svým počítačům.
 
 > [!NOTE]
-> Pro virtuální počítače v testovacím prostředí můžete přidat více spravovaných identit přiřazených uživateli.
+> Můžete přidat více uživatelů přiřazených spravovaných identit, které mají být povoleny na virtuálních počítačích testovacího prostředí.
 
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal
-Pokud chcete přidat spravovanou identitu přiřazenou uživatelem pro virtuální počítače v testovacím prostředí, použijte následující postup:
+Pokud chcete přidat uživatele přiřazenou spravovanou identitu pro testovací virtuální uživatele, postupujte takto:
 
-1. [Vytvoření spravované identity přiřazené uživatelem v předplatném](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity)
+1. [Vytvoření spravované identity přiřazené uživateli v předplatném](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity)
 1. Přejděte na stránku **Konfigurace a zásady** pro testovací prostředí.
-2. V nabídce vlevo vyberte **identita (Preview)** .
-3. Vyberte kartu **virtuální počítač** .
-4. Vyberte možnost **Přidat** a vyberte existující identitu z předem vyplněných rozevíracích seznamů. 
+2. V levé nabídce vyberte **Identita (Náhled).**
+3. Vyberte kartu **Virtuální počítač.**
+4. Vyberte **Přidat,** chcete-li vybrat existující identitu z předem vyplněného rozevíracího seznamu. 
 
     ![Tlačítko Přidat identitu](./media/enable-managed-identities-lab-vms/add-identity-button.png)
-5. Z rozevíracího seznamu vyberte existující **identitu spravovanou uživatelem** a vyberte **OK**. 
+5. Vyberte existující **identitu spravovanou uživatelem** ze seznamu vynechaných položek a vyberte **OK**. 
 
     ![Přidat identitu](./media/enable-managed-identities-lab-vms/add-identity.png)
 
 ## <a name="use-api"></a>Použití rozhraní API
 
-1.  Po vytvoření identity si poznamenejte ID prostředku identity. Měl by vypadat jako v následující ukázce: 
+1.  Po vytvoření identity si poznamenejte ID prostředku identity. Mělo by to vypadat jako následující ukázka: 
 
     `/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/<RESOURCE GROUP NAME> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/<NAME of USER IDENTITY>`.
-2. Spusťte metodu PUT protokolu HTTPS pro přidání nového prostředku **ServiceRunner** do testovacího prostředí, jak je znázorněno v následujícím příkladu. 
+2. Spusťte metodu PUT HTTPS a přidejte do testovacího prostředí nový prostředek **ServiceRunner,** jak je znázorněno v následujícím příkladu. 
 
-    Prostředek spouštěče služeb je prostředek proxy serveru pro správu a řízení spravovaných identit v DevTest Labs. Název spouštěče služeb může být libovolný platný název, doporučujeme ale použít název spravovaného prostředku identity.
+    Prostředek pro běhání služeb je prostředek proxy pro správu a řízení spravovaných identit v devTest Labs. Název runner služby může být libovolný platný název, ale doporučujeme použít název prostředku spravované identity.
 
     ```json
     {
@@ -69,7 +69,7 @@ Pokud chcete přidat spravovanou identitu přiřazenou uživatelem pro virtuáln
     ```
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o spravovaných identitách najdete v tématu [co jsou spravované identity pro prostředky Azure?](../active-directory/managed-identities-azure-resources/overview.md).
+Další informace o spravovaných identitách najdete v tématu [Co je spravované identity pro prostředky Azure?](../active-directory/managed-identities-azure-resources/overview.md).
 
 
 

@@ -1,15 +1,15 @@
 ---
-title: Migrace ze sady Java SDK na Maven
+title: Migrace z sady Java SDK do sady Maven
 description: Aktualizace starších aplikací v Javě, které používaly Service Fabric Java SDK, k načtení závislostí Service Fabric v Javě z Mavenu. Po dokončení tohoto nastavení budou starší aplikace v Javě umožňovat sestavení.
 author: rapatchi
 ms.topic: conceptual
 ms.date: 08/23/2017
 ms.author: rapatchi
 ms.openlocfilehash: b5e126ebdf3b89470472391c59d378c7a6d39b86
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75609804"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Aktualizace předchozí aplikace Java Service Fabric pro načtení knihoven Javy z Mavenu
@@ -79,8 +79,8 @@ Podpora bezstavové služby Service Fabric pro vaši aplikaci.
   }
   ```
 
-### <a name="others"></a>Další
-#### <a name="transport"></a>Doprava
+### <a name="others"></a>Ostatní
+#### <a name="transport"></a>Přenos
 
 Podpora přenosové vrstvy pro aplikace Service Fabric Java. Pokud neprogramujete na úrovni přenosové vrstvy, nemusíte tuto závislost do aplikace Reliable Actor nebo aplikace služby explicitně přidávat.
 
@@ -158,7 +158,7 @@ task copyDeps <<{
     }
 }
 ```
-Teď, když chcete načíst závislosti z Maven, **aktualizované** ``build.gradle`` by měly odpovídající části:
+Teď by měl **aktualizovaný soubor ** ``build.gradle`` pro načtení závislostí z Mavenu mít příslušné části změněné takto:
 ```
 repositories {
         mavenCentral()
@@ -232,7 +232,7 @@ dependencies {
 .
 .
 ```
-Teď, když chcete načíst závislosti z Maven, **aktualizované** ``build.gradle`` by měly odpovídající části:
+Teď by měl **aktualizovaný soubor ** ``build.gradle`` pro načtení závislostí z Mavenu mít příslušné části změněné takto:
 ```
 repositories {
     mavenCentral()
@@ -304,7 +304,7 @@ task copyDeps<< {
     }
 }
 ```
-Teď, když chcete načíst závislosti z Maven, **aktualizované** ``build.gradle`` by měly odpovídající části:
+Teď by měl **aktualizovaný soubor ** ``build.gradle`` pro načtení závislostí z Mavenu mít příslušné části změněné takto:
 ```
 repositories {
     mavenCentral()
@@ -404,7 +404,7 @@ task copyDeps<< {
         }
 }
 ```
-Teď, když chcete načíst závislosti z Maven, **aktualizované** ``build.gradle`` by měly odpovídající části:
+Teď by měl **aktualizovaný soubor ** ``build.gradle`` pro načtení závislostí z Mavenu mít příslušné části změněné takto:
 ```
 repositories {
     mavenCentral()

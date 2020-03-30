@@ -1,6 +1,6 @@
 ---
-title: ZASTARALÉ Zabezpečení kontejneru v Azure Container Service
-description: Požadavky na zabezpečení kontejnerů Docker nasazených v Azure Container Service a souvisejících službách Azure.
+title: (ZASTARALÉ) Zabezpečení kontejnerů ve službě Azure Container Service
+description: Důležité informace o zabezpečení kontejnerů Dockeru nasazených ve službě Azure Container Service a souvisejících službách Azure.
 author: sauryadas
 ms.service: container-service
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 03/28/2017
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: d90d872175febf775e7d0892e133883f1a8ff8a2
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75552376"
 ---
-# <a name="deprecated-securing-docker-containers-in-azure-container-service"></a>ZASTARALÉ Zabezpečení kontejnerů Docker v Azure Container Service
+# <a name="deprecated-securing-docker-containers-in-azure-container-service"></a>(ZASTARALÉ) Zabezpečení kontejnerů Dockeru ve službě Azure Container Service
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -53,7 +53,7 @@ Jakmile je aplikace nasazená v produkčním prostředí, je velmi důležité n
 ## <a name="host-level-container-isolation"></a>Izolace kontejneru na úrovni hostitele
 Když zákazník nasazuje aplikace typu kontejner do prostředků Azure, nasazují se na úrovni předplatného ve skupinách prostředků a nejsou určené pro více tenantů. To znamená, že pokud zákazník sdílí předplatné s ostatními, mezi dvěma nasazeními ve stejném předplatném není možné vytvořit žádnou hranici. Z tohoto důvodu není zaručeno zabezpečení na úrovni kontejneru. 
 
-Také je důležité pochopit, že kontejnery sdílejí jádro a prostředky hostitele (kterým je ve službě Azure Container Service virtuální počítač Azure v clusteru). Proto je nutné kontejnery v produkčním prostředí spouštět v uživatelském režimu bez oprávnění správce. Spouštění kontejneru s kořenovými oprávněními může ohrozit celé prostředí. S přístupem ke kontejneru na kořenové úrovni může hacker získat na hostiteli přístup k úplným oprávněním správce. Kromě toho je důležité spouštět kontejnery se systémy souborů jen pro čtení. Tím se komukoli s přístupem k ohroženému kontejneru zabrání ve psaní škodlivých skriptů pro systém souborů a v získaní přístupu k dalším souborům. Podobně je důležité omezit prostředky (jako je paměť, procesor a šířka pásma sítě) přidělené kontejneru. To pomáhá zabránit hackerům v zabíráních prostředcích a při neplatných aktivitách, jako je podvodná nebo bitová těžba mincí, což by mohlo zabránit spuštění jiných kontejnerů na hostiteli nebo clusteru.
+Také je důležité pochopit, že kontejnery sdílejí jádro a prostředky hostitele (kterým je ve službě Azure Container Service virtuální počítač Azure v clusteru). Proto je nutné kontejnery v produkčním prostředí spouštět v uživatelském režimu bez oprávnění správce. Spouštění kontejneru s kořenovými oprávněními může ohrozit celé prostředí. S přístupem ke kontejneru na kořenové úrovni může hacker získat na hostiteli přístup k úplným oprávněním správce. Kromě toho je důležité spouštět kontejnery se systémy souborů jen pro čtení. Tím se komukoli s přístupem k ohroženému kontejneru zabrání ve psaní škodlivých skriptů pro systém souborů a v získaní přístupu k dalším souborům. Podobně je důležité omezit prostředky (jako je paměť, procesor a šířka pásma sítě) přidělené kontejneru. To pomáhá zabránit hackerům v zatěžování zdrojů a provádění nezákonných aktivit, jako jsou podvody s kreditními kartami nebo těžba bitových mincí, což by mohlo zabránit spuštění jiných kontejnerů na hostiteli nebo clusteru.
 
 ## <a name="orchestrator-considerations"></a>Důležité informace o orchestrátorech
 
@@ -61,11 +61,11 @@ Pro každý orchestrátor dostupný ve službě Azure Container Service platí s
 
 Další informace o zabezpečení specifické pro orchestrátor najdete v následujících zdrojích:
 
-* **Kubernetes:** [Security Best Practices for Kubernetes Deployment](https://kubernetes.io/blog/2016/08/security-best-practices-kubernetes-deployment/) (Osvědčené postupy zabezpečení pro nasazení Kubernetes)
+* **Kubernetes:**[Security Best Practices for Kubernetes Deployment](https://kubernetes.io/blog/2016/08/security-best-practices-kubernetes-deployment/) (Osvědčené postupy zabezpečení pro nasazení Kubernetes)
 
-* **DC/OS:** [Securing Your Cluster](https://docs.mesosphere.com/1.12/administering-clusters/securing-your-cluster) (Zabezpečení clusteru)
+* **DC/OS:**[Securing Your Cluster](https://docs.mesosphere.com/1.12/administering-clusters/securing-your-cluster) (Zabezpečení clusteru)
 
-* **Docker Swarm:** [Docker Security](https://www.docker.com/docker-security) (Zabezpečení Dockeru)
+* **Docker Swarm:**[Docker Security](https://www.docker.com/docker-security) (Zabezpečení Dockeru)
 
 ## <a name="next-steps"></a>Další kroky
 

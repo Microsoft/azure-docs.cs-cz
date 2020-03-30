@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: d5557ce1dda7bb36b8b0a6a44fcaca50e0667bb7
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67175499"
 ---
-Nejdřív je potřeba zaregistrovat aplikaci na webu zprostředkovatele identity a potom nastavit přihlašovací údaje vygenerované zprostředkovatelem v Mobile Apps back-endu.
+Nejprve musíte zaregistrovat aplikaci na webu poskytovatele identity a pak nastavíte přihlašovací údaje generované poskytovatelem v back-endu mobilních aplikací.
 
-1. Podle pokynů pro konkrétního poskytovatele nakonfigurujte preferovaného zprostředkovatele identity:
+1. Nakonfigurujte upřednostňovaného poskytovatele identity podle pokynů specifických pro zprostředkovatele:
 
    * [Azure Active Directory](../articles/app-service/configure-authentication-provider-aad.md)
    * [Facebook](../articles/app-service/configure-authentication-provider-facebook.md)

@@ -1,6 +1,6 @@
 ---
-title: Základní zásady podmíněného přístupu – Azure Active Directory
-description: Základní zásady podmíněného přístupu pro ochranu organizací před běžnými útoky
+title: Zásady směrného plánu podmíněného přístupu – Azure Active Directory
+description: Zásady podmíněného přístupu podle směrného plánu k ochraně organizací před běžnými útoky
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,88 +12,88 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 55de5a5c604273225a85e49ca682980f83a951d2
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75767564"
 ---
-# <a name="what-are-baseline-policies"></a>Co jsou základní zásady?
+# <a name="what-are-baseline-policies"></a>Co jsou zásady směrného plánu?
 
-Základní zásady představují sadu předdefinovaných zásad, které vám pomůžou chránit organizace před velkým počtem běžných útoků. Mezi tyto běžné útoky můžou patřit spreje, přehrávání a útoky prostřednictvím hesla. Základní zásady jsou k dispozici ve všech edicích služby Azure AD. Společnost Microsoft tyto zásady ochrany základní úrovně zpřístupňuje všem, protože útoky na základě identity byly na nárůstu za posledních několik let. Cílem těchto čtyř zásad je zajistit, aby u všech organizací byla povolená základní úroveň zabezpečení bez dalších poplatků.
+Zásady směrného plánu jsou sadou předdefinovaných zásad, které pomáhají chránit organizace před mnoha běžnými útoky. Tyto běžné útoky mohou zahrnovat sprej hesla, přehrání a phishing. Zásady směrného plánu jsou k dispozici ve všech edicích Azure AD. Společnost Microsoft zpřístupňuje tyto základní zásady ochrany všem uživatelům, protože útoky založené na identitě byly v posledních několika letech na vzestupu. Cílem těchto čtyř zásad je zajistit, aby všechny organizace měly povolenou základní úroveň zabezpečení bez dalších nákladů.
 
-Správa vlastních zásad podmíněného přístupu vyžaduje licenci Azure AD Premium.
+Správa přizpůsobených zásad podmíněného přístupu vyžaduje licenci Azure AD Premium.
 
 > [!IMPORTANT]
-> Základní zásady jsou zastaralé. Další informace najdete [v tématu Co je nového v Azure Active Directory?](../fundamentals/whats-new.md#replacement-of-baseline-policies-with-security-defaults) .
+> Zásady směrného plánu jsou zastaralé. Další informace najdete [v tématu Co je nového ve službě Azure Active Directory?](../fundamentals/whats-new.md#replacement-of-baseline-policies-with-security-defaults)
 
 ## <a name="baseline-policies"></a>Základní zásady
 
-![Základní zásady podmíněného přístupu v Azure Portal](./media/concept-baseline-protection/conditional-access-baseline-policies.png)
+![Zásady směrného plánu podmíněného přístupu na webu Azure Portal](./media/concept-baseline-protection/conditional-access-baseline-policies.png)
 
 Existují čtyři základní zásady:
 
-* Vyžadovat MFA pro správce (Preview)
-* Ochrana koncového uživatele (Preview)
-* Blokovat starší verze ověřování (Preview)
-* Vyžadovat MFA pro správu služby (Preview)
+* Vyžadovat vícefaktorové finanční pomocí pro správce (preview)
+* Ochrana koncového uživatele (náhled)
+* Blokovat starší verze ověřování (preview)
+* Vyžadovat vícefaktorové řízení pro správu služeb (preview)
 
-Všechny čtyři tyto zásady budou mít vliv na starší toky ověřování, jako jsou POP, IMAP a starší Office desktopových klientů.
+Všechny čtyři tyto zásady budou mít vliv na starší toky ověřování, jako jsou POP, IMAP a starší desktopoví klienti Office.
 
 ### <a name="exclusions"></a>Vyloučení
 
-Když se základní zásady přestanou do jejich prvotní verze Public Preview, bylo by k dispozici možnost vyloučit uživatele ze zásad. Tato funkce se vyvinula v rámci verze Preview a odebrala se v červenci 2019. Organizace, které již vytvořili vyloučení, mohly nadále zachovat, aby noví uživatelé nemohli přidat vyloučení do zásad.
+Když zásady směrného plánu přešly do počáteční verze Public Preview, existovala možnost vyloučit uživatele ze zásad. Tato funkce se vyvinula prostřednictvím náhledu a byla odstraněna v červenci 2019. Organizace, které již vytvořily vyloučení, mohly nadále udržovat nové uživatele, nemohly k zásadám přidat vyloučení.
 
-### <a name="require-mfa-for-admins-preview"></a>Vyžadovat MFA pro správce (Preview)
+### <a name="require-mfa-for-admins-preview"></a>Vyžadovat vícefaktorové finanční pomocí pro správce (preview)
 
-S ohledem na výkon a přístup k účtům správců byste je měli považovat za zvláštní péči. Jednou z běžných metod, jak zlepšit ochranu privilegovaných účtů, je vyžadovat silnější formu ověření účtu, když se používají k přihlášení. V Azure Active Directory můžete získat silnější ověření účtu tím, že budete vyžadovat, aby se správci zaregistrovali a používali Azure Multi-Factor Authentication.
+Vzhledem k výkonu a přístupu, který mají účty správce, byste s nimi měli zacházet se zvláštní péčí. Jednou z běžných metod, jak zlepšit ochranu privilegovaných účtů, je vyžadovat silnější formu ověření účtu při jejich přihlášení. Ve službě Azure Active Directory můžete získat silnější ověření účtu tím, že budete vyžadovat, aby se správci registrovali a používali azure multifaktorové ověřování.
 
-Vyžadovat MFA pro správce (Preview) je základní zásada, která vyžaduje vícefaktorové ověřování (MFA) pro následující role adresáře, které se považují za nejvíce privilegované role Azure AD:
+Vyžadovat vícefaktorové ověřování pro správce (preview) je zásada směrného plánu, která vyžaduje vícefaktorové ověřování (MFA) pro následující role adresáře, které jsou považovány za nejvíce privilegované role Azure AD:
 
 * Globální správce
 * Správce SharePointu
 * Správce Exchange
 * Správce podmíněného přístupu
 * Správce zabezpečení
-* Správce helpdesku/správce hesel
+* Správce technické podpory / Správce hesel
 * Správce fakturace
 * Správce uživatele
 
-Pokud má vaše organizace tyto účty používané ve skriptech nebo v kódu, zvažte jejich nahrazení pomocí [spravovaných identit](../managed-identities-azure-resources/overview.md).
+Pokud má vaše organizace tyto účty v provozu ve skriptech nebo kódu, zvažte jejich nahrazení [spravovanými identitami](../managed-identities-azure-resources/overview.md).
 
-### <a name="end-user-protection-preview"></a>Ochrana koncového uživatele (Preview)
+### <a name="end-user-protection-preview"></a>Ochrana koncového uživatele (náhled)
 
-Vysoce privilegovaní správci nejsou jediným cílem útoků. Chybné objekty actor mají za cíl normální uživatele. Po získání přístupu můžou tyto vadné aktéry požádat o přístup k privilegovaným informacím jménem původního držitele účtu nebo si stáhnout celý adresář a udělat útok útoku phishing na celou organizaci. Jednou z běžných metod, jak zlepšit ochranu pro všechny uživatele, je vyžadovat silnější formu ověření účtu, když se zjistí rizikové přihlášení.
+Vysoce privilegovaní správci nejsou jediní, na které se útoky zaměřují. Špatní herci mají tendenci cílit na běžné uživatele. Po získání přístupu mohou tito chybní aktéři požádat o přístup k privilegovaným informacím jménem původního držitele účtu nebo stáhnout celý adresář a provést phishingový útok na celou organizaci. Jednou z běžných metod ke zlepšení ochrany pro všechny uživatele je vyžadovat silnější formu ověření účtu při zjištění rizikového přihlášení.
 
-**Ochrana koncového uživatele (Preview)** je základní zásada, která chrání všechny uživatele v adresáři. Když se tyto zásady povolí, vyžaduje se, aby se všichni uživatelé zaregistrovali pro Azure Multi-Factor Authentication do 14 dnů. Po registraci se uživatelům zobrazí výzva k MFA jenom během pokusů o rizikové přihlašování. Ohrožení uživatelských účtů se zablokuje, dokud se resetování hesla nevrátí a nehrozí. 
+**Ochrana koncových uživatelů (preview)** je zásada směrného plánu, která chrání všechny uživatele v adresáři. Povolení této zásady vyžaduje, aby se všichni uživatelé zaregistrovali pro azure multifaktorové ověřování do 14 dnů. Po registraci budou uživatelé vyzváni k vícefaktorové muziky pouze během riskantních pokusů o přihlášení. Ohrožené uživatelské účty jsou blokovány až do resetování hesla a riziko propuštění. 
 
 > [!NOTE]
-> Všichni uživatelé, kteří byli dříve označeni příznakem rizika, budou zablokováni, dokud nevyberete heslo a nehrozí riziko při aktivaci zásad
+> Všichni uživatelé, kteří byli dříve označeni jako ohrožení, jsou blokováni, dokud nebude po aktivaci zásad resetováno a propuštěno riziko.
 
-### <a name="block-legacy-authentication-preview"></a>Blokovat starší verze ověřování (Preview)
+### <a name="block-legacy-authentication-preview"></a>Blokovat starší verze ověřování (preview)
 
-Starší protokoly ověřování (např. IMAP, SMTP, POP3) jsou protokoly, které obvykle používají starší e-mailové klienty k ověřování. Starší protokoly nepodporují službu Multi-Factor Authentication. I v případě, že máte zásadu vyžadující službu Multi-Factor Authentication pro váš adresář, může se špatný objekt actor ověřit pomocí některého z těchto starších protokolů a obejít službu Multi-Factor Authentication.
+Starší ověřovací protokoly (např. Protokoly IMAP, SMTP, POP3) jsou protokoly běžně používané staršími poštovními klienty k ověření. Starší protokoly nepodporují vícefaktorové ověřování. I v případě, že máte zásadu vyžadující vícefaktorové ověřování pro váš adresář, chybný objekt actor může ověřit pomocí jednoho z těchto starších protokolů a obejít vícefaktorové ověřování.
 
-Nejlepším způsobem, jak ochránit váš účet před nebezpečnými požadavky na ověření, které udělaly starší protokoly, je jejich blokování.
+Nejlepším způsobem, jak chránit účet před škodlivými požadavky na ověření ze strany starších protokolů, je jejich blokování.
 
-Zásada směrného plánu **starší verze ověřování (Preview)** blokuje žádosti o ověření vytvořené pomocí starších protokolů. K úspěšnému přihlášení pro všechny uživatele se musí použít moderní ověřování. Při použití ve spojení s ostatními základními zásadami budou požadavky přicházející ze starších protokolů blokované. Všechny uživatele budou navíc vyžadovat MFA, kdykoli je to potřeba. Tato zásada neblokuje Exchange ActiveSync.
+Zásady **block legacy authentication (preview)** blokují požadavky na ověření, které jsou prováděny pomocí starších protokolů. K úspěšnému přihlášení pro všechny uživatele je nutné použít moderní ověřování. Ve spojení s ostatními zásadami směrného plánu budou blokovány požadavky pocházející ze starších protokolů. Kromě toho budou všichni uživatelé povinni vícefaktorové financování, kdykoli je to požadováno. Tato zásada neblokuje exchange ActiveSync.
 
-### <a name="require-mfa-for-service-management-preview"></a>Vyžadovat MFA pro správu služby (Preview)
+### <a name="require-mfa-for-service-management-preview"></a>Vyžadovat vícefaktorové řízení pro správu služeb (preview)
 
-Organizace využívají celou řadu služeb Azure a spravují je od Azure Resource Managerch nástrojů, jako jsou:
+Organizace používají celou řadu služeb Azure a spravují je z nástrojů založených na Azure Resource Manageru, jako jsou:
 
-* Portál Azure
+* portál Azure
 * Azure PowerShell
 * Azure CLI
 
-Použití některého z těchto nástrojů k provedení správy prostředků je vysoce privilegované akce. Tyto nástroje můžou upravovat konfigurace v rámci předplatného, jako je třeba nastavení služby a fakturace předplatného.
+Použití některého z těchto nástrojů k provádění správy prostředků je vysoce privilegovaná akce. Tyto nástroje mohou změnit konfigurace pro celé předplatné, jako je nastavení služby a fakturace předplatného.
 
-Aby bylo možné chránit privilegované akce, bude **vyžadovat vícefaktorové ověřování** pro všechny uživatele, kteří přistupují k Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure CLI.
+K ochraně privilegovaných akcí bude tato **zásada Vyžadovat vícefaktorové ověřování pro správu služeb (preview)** vyžadovat vícefaktorové ověřování pro všechny uživatele, kteří přistupují k portálu Azure Portal, Azure PowerShell u nebo k rozhraní příkazového příkazu k Azure.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace:
+Další informace naleznete v tématu:
 
 * [Povolení výchozích hodnot zabezpečení](../fundamentals/concept-fundamentals-security-defaults.md)
-* [Společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)
-* [Pět kroků k zabezpečení vaší infrastruktury pro správu identit](../../security/fundamentals/steps-secure-identity.md)
+* [Běžné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)
+* [Pět kroků k zabezpečení infrastruktury identit](../../security/fundamentals/steps-secure-identity.md)

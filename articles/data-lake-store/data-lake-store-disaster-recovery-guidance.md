@@ -1,5 +1,5 @@
 ---
-title: Pokyny pro zotavení po havárii pro Azure Data Lake Storage Gen1 | Microsoft Docs
+title: Pokyny pro zotavení po havárii pro Azure Data Lake Storage Gen1 | Dokumenty společnosti Microsoft
 description: Pokyny pro zotavení po havárii pro Azure Data Lake Storage Gen1
 services: data-lake-store
 documentationcenter: ''
@@ -12,34 +12,34 @@ ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: twooley
 ms.openlocfilehash: b33977ca5184ea07b5651be18e3a132d30ce4b39
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75966053"
 ---
 # <a name="disaster-recovery-guidance-for-data-in-azure-data-lake-storage-gen1"></a>Pokyny pro zotavení po havárii pro data v Azure Data Lake Storage Gen1
 
-Azure Data Lake Storage Gen1 poskytuje místně redundantní úložiště (LRS). Data v Data Lake Storage Gen1m účtu jsou proto odolná proti přechodným chybám hardwaru v rámci datového centra prostřednictvím automatizovaných replik. Tím se zajistí odolnost a vysoká dostupnost, která splňuje Data Lake Storage Gen1 SLA. Tento článek poskytuje pokyny, jak dále chránit vaše data před vzácnými výpadky nebo neúmyslnými odstraněními v rámci oblastí.
+Azure Data Lake Storage Gen1 poskytuje místně redundantní úložiště (LRS). Proto data ve vašem účtu Data Lake Storage Gen1 je odolná vůči přechodným selháním hardwaru v rámci datového centra prostřednictvím automatizovaných replik. To zajišťuje odolnost a vysokou dostupnost, splnění Data Lake Storage Gen1 SLA. Tento článek obsahuje pokyny, jak dále chránit data před výpadky v celé oblasti nebo náhodným odstraněním.
 
 ## <a name="disaster-recovery-guidance"></a>Pokyny pro zotavení po havárii
-Je důležité, aby si každý zákazník připravil vlastní plán zotavení po havárii. Přečtěte si informace v tomto článku a sestavte si plán zotavení po havárii. Tady jsou některé prostředky, které vám můžou s vytvořením vlastního plánu pomoct.
+Je důležité, aby si každý zákazník připravil vlastní plán zotavení po havárii. Přečtěte si informace v tomto článku k vytvoření plánu zotavení po havárii. Tady jsou některé prostředky, které vám můžou s vytvořením vlastního plánu pomoct.
 
 * [Zotavení po havárii a vysoká dostupnost pro aplikace Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
 * [Technické pokyny k odolnosti Azure](../resiliency/resiliency-technical-guidance.md)
 
 ### <a name="best-practices"></a>Osvědčené postupy
-Doporučujeme zkopírovat kritická data do jiného Data Lake Storage Gen1 účtu v jiné oblasti s frekvencí zarovnaným na požadavky vašeho plánu zotavení po havárii. Pro kopírování dat existují nejrůznější způsoby včetně [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md), [Azure PowerShellu](data-lake-store-get-started-powershell.md) nebo [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md). Azure Data Factory je užitečná služba pro opakované vytváření a nasazování kanálů k přesunu dat.
+Doporučujeme zkopírovat důležitá data do jiného účtu Data Lake Storage Gen1 v jiné oblasti s frekvencí zarovnanou s potřebami vašeho plánu zotavení po havárii. Pro kopírování dat existují nejrůznější způsoby včetně [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md), [Azure PowerShellu](data-lake-store-get-started-powershell.md) nebo [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md). Azure Data Factory je užitečná služba pro opakované vytváření a nasazování kanálů k přesunu dat.
 
-Pokud dojde k oblastnímu výpadku, můžete k datům přistupovat v oblasti, kde byla data zkopírována. Pokud chcete zjistit stav služby Azure po celém světě, můžete monitorovat [Azure Service Health řídicí panel](https://azure.microsoft.com/status/) .
+Pokud dojde k místnímu výpadku, můžete získat přístup k datům v oblasti, kde byla data zkopírována. Řídicí panel [stavu služby Azure](https://azure.microsoft.com/status/) můžete sledovat a určit stav služby Azure po celém světě.
 
 ## <a name="data-corruption-or-accidental-deletion-recovery-guidance"></a>Pokyny pro obnovení v případě poškození nebo nechtěného odstranění dat
-I když Data Lake Storage Gen1 zajišťuje odolnost dat prostřednictvím automatizovaných replik, nebrání vaší aplikaci (nebo vývojářům a uživatelům) v poškození dat nebo jejich nechtěnému odstranění.
+Zatímco Data Lake Storage Gen1 poskytuje odolnost proti chybám dat prostřednictvím automatizovaných replik, to nebrání vaší aplikaci (nebo vývojáři/uživatelé) z poškození dat nebo jejich náhodné odstranění.
 
 ### <a name="best-practices"></a>Osvědčené postupy
-Abyste zabránili nechtěnému odstranění, doporučujeme, abyste nejdřív nastavili správné zásady přístupu pro svůj účet Data Lake Storage Gen1.  To zahrnuje použití [zámků prostředků Azure](../azure-resource-manager/management/lock-resources.md) k uzamčení důležitých prostředků a také k použití zabezpečení a řízení přístupu na úrovni souborů pomocí dostupných [funkcí zabezpečení Data Lake Storage Gen1](data-lake-store-security-overview.md). Doporučujeme také pravidelně vytvářet kopie důležitých dat pomocí [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md), [Azure PowerShell](data-lake-store-get-started-powershell.md) nebo [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) v jiném Data Lake Storage Gen1m účtu, složce nebo předplatném Azure.  Kopie pak můžete využít k obnovení poškozených nebo odstraněných dat. Azure Data Factory je užitečná služba pro opakované vytváření a nasazování kanálů k přesunu dat.
+Chcete-li zabránit nechtěnému odstranění, doporučujeme nejprve nastavit správné zásady přístupu pro váš účet Data Lake Storage Gen1.  To zahrnuje použití [uzamčení prostředků Azure](../azure-resource-manager/management/lock-resources.md) k uzamčení důležitých prostředků a také použití řízení přístupu na úrovni účtu a souboru pomocí dostupných [funkcí zabezpečení Data Lake Storage Gen1](data-lake-store-security-overview.md). Doporučujeme také, abyste běžně vytvářeli kopie důležitých dat pomocí [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md), [Azure PowerShellnebo](data-lake-store-get-started-powershell.md) [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) v jiném účtu, složce, složce nebo předplatném Azure úložiště datového jezera.  Kopie pak můžete využít k obnovení poškozených nebo odstraněných dat. Azure Data Factory je užitečná služba pro opakované vytváření a nasazování kanálů k přesunu dat.
 
-Organizace také můžou povolit [protokolování diagnostiky](data-lake-store-diagnostic-logs.md) pro svůj Data Lake Storage Gen1 účet ke shromáždění informací o auditu pro přístup k datům, které poskytují informace o tom, kdo mohl soubor odstranit nebo aktualizovat.
+Organizace mohou také povolit [diagnostické protokolování](data-lake-store-diagnostic-logs.md) pro svůj účet Data Lake Storage Gen1 ke shromažďování stop auditu přístupu k datům, které poskytují informace o tom, kdo mohl odstranit nebo aktualizovat soubor.
 
 ## <a name="next-steps"></a>Další kroky
 * [Začínáme s Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)

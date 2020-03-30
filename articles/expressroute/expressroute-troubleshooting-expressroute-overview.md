@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: ověření připojení – Průvodce odstraňováním potíží'
-description: Tato stránka poskytuje pokyny pro řešení potíží a ověření koncového připojení okruhu ExpressRoute.
+title: 'Azure ExpressRoute: Ověření připojení – průvodce odstraňováním potíží'
+description: Tato stránka obsahuje pokyny pro řešení potíží a ověření připojení okruhu ExpressRoute od konce do konce.
 services: expressroute
 author: rambk
 ms.service: expressroute
@@ -9,104 +9,104 @@ ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
 ms.openlocfilehash: 58ae39e8dfdf918ae14ca9bb8dac28405828999e
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78330953"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Ověření možností připojení ExpressRoute
-Tento článek vám pomůže ověřit ExpressRoute konektivitu a řešit potíže. ExpressRoute rozšiřuje místní síť do cloudu Microsoftu přes soukromé připojení, které běžně usnadňuje poskytovatel připojení. Připojení ExpressRoute tradičně zahrnuje tři odlišné síťové zóny, a to takto:
+Tento článek vám pomůže ověřit a odstranit potíže s připojením ExpressRoute. ExpressRoute rozšiřuje místní síť do cloudu Microsoftu přes privátní připojení, které je běžně usnadněno poskytovatelem připojení. Připojení ExpressRoute tradičně zahrnuje tři odlišné síťové zóny, a to následovně:
 
 -   Síť zákazníka
--   Síť poskytovatele
--   Datacenter Microsoftu
+-   Síť zprostředkovatelů
+-   Datové centrum Společnosti Microsoft
 
 > [!NOTE]
-> V modelu přímého připojení ExpressRoute (nabízený při 10/100 GB/s) se zákazníci můžou přímo připojit k portu směrovačů Microsoft Enterprise Edge (MSEE). V modelu přímého připojení proto existují jenom zóny zákazníka a sítě Microsoftu.
+> V modelu přímého připojení ExpressRoute (nabízeném s šířkou pásma 10/100 Gb/s) se mohou zákazníci přímo připojit k portu směrovačů Microsoft Enterprise Edge (MSEE). Proto v modelu přímé připojení existují pouze zóny sítě zákazníka a microsoft.
 >
 
 
-Účelem tohoto dokumentu je pomáhat uživateli zjistit, jestli a kde existuje problém s připojením. Kvůli vyřešení problému tak, aby bylo možné vyhodnotit podporu od příslušného týmu. Pokud je pro vyřešení problému nutná podpora Microsoftu, otevřete lístek podpory s [Podpora Microsoftu][Support].
+Účelem tohoto dokumentu je pomoci uživateli určit, zda a kde existuje problém s připojením. Tím, aby pomohla hledat podporu od příslušného týmu k vyřešení problému. Pokud je k vyřešení problému potřeba podpora společnosti Microsoft, otevřete lístek podpory s [podporou společnosti Microsoft][Support].
 
 > [!IMPORTANT]
-> Tento dokument je určený k tomu, aby vám pomohla diagnostikovat a opravit jednoduché problémy. Není určena jako náhrada za podporu Microsoftu. Pokud problém nemůžete vyřešit pomocí poskytnutých pokynů, otevřete lístek podpory s [Podpora Microsoftu][Support] .
+> Tento dokument je určen k diagnostice a opravě jednoduchých problémů. Není určena jako náhrada za podporu společnosti Microsoft. Pokud se vám nedaří problém vyřešit pomocí uvedených pokynů, otevřete lístek podpory s [podporou společnosti Microsoft.][Support]
 >
 >
 
 ## <a name="overview"></a>Přehled
-Následující diagram znázorňuje logické připojení sítě zákazníka k síti Microsoftu pomocí ExpressRoute.
+Následující diagram znázorňuje logické připojení sítě zákazníka k síti společnosti Microsoft pomocí expressroute.
 [![1]][1]
 
-V předchozím diagramu čísla označují klíčové síťové body. Na tyto síťové body se v tomto článku odkazuje v době podle jejich přidruženého čísla. V závislosti na modelu připojení ExpressRoute – ve společném umístění v cloudu Exchange, připojení k síti Ethernet typu Point-to-Point nebo Any-to-Any (IPVPN) – síťové body 3 a 4 můžou být přepínače (zařízení vrstvy 2) nebo směrovače (zařízení vrstvy 3). V modelu přímého připojení neexistují žádné síťové body 3 a 4; místo toho se službu zápis certifikátů (2) přímo připojí k směrovači msee prostřednictvím tmavého vlákna. Klíčové body sítě jsou znázorněny takto:
+V předchozím diagramu čísla označují klíčové síťové body. Tyto síťové body jsou odkazovány v tomto článku občas jejich přidružené číslo. V závislosti na modelu připojení ExpressRoute -- cloudové exchange společné umístění, připojení Ethernet typu point-to-point nebo libovolné (IPVPN)-- síťové body 3 a 4 mohou být přepínače (zařízení vrstvy 2) nebo směrovače (zařízení vrstvy 3). V modelu přímého připojení nejsou k dispozici žádné síťové body 3 a 4; místo toho jsou CE (2) přímo spojeny s MSEEs prostřednictvím tmavých vláken. Klíčové body sítě jsou následující:
 
 1.  Výpočetní zařízení zákazníka (například server nebo počítač)
-2.  Zápis certifikátů: hraniční směrovače zákazníka 
-3.  PEs (s přístupem CE): hraniční směrovače poskytovatele/přepínače, které jsou na hraničních směrovačích zákazníka. Označuje se jako PE-zápis certifikátů v tomto dokumentu.
-4.  PEs (MSEE s přístupem): hraniční směrovače a přepínače poskytovatele, které jsou na směrovači msee. V tomto dokumentu se říká směrovači msee PE.
-5.  Směrovači msee: směrovače ExpressRoute Microsoft Enterprise Edge (MSEE)
-6.  Brána Virtual Network (VNet)
-7.  Výpočetní zařízení ve virtuální síti Azure
+2.  Ce: Hraniční směrovače zákazníka 
+3.  PEs (CE směřující): Hraniční směrovače/přepínače poskytovatele, které čelí směrovačům hraničního propojení zákazníků. V tomto dokumentu se označuje jako PE-CE.
+4.  PEs (MSEE směřující): Hraniční směrovače/přepínače poskytovatele, které směřují k msees. V tomto dokumentu se označuje jako PE-MSEEs.
+5.  MSEEs: Směrovače Microsoft Enterprise Edge (MSEE) ExpressRoute
+6.  Brána virtuální sítě (VNet)
+7.  Výpočetní zařízení na virtuální síti Azure
 
-Pokud se používá společné umístění cloudového systému Exchange, sítě Ethernet Point-to-Point nebo přímé připojení, vystavování partnerského vztahu protokolu BGP (2) pomocí směrovači msee (5). 
+Pokud se používá společné umístění cloudové burzy, ethernet ový bod nebo přímé připojení, cees (2) vytvoří partnerský vztah Protokolu BGP s msees (5). 
 
-Pokud se používá model připojení any-to-Any (IPVPN), PE-směrovači msee (4) vytvoří partnerský vztah protokolu BGP s směrovači msee (5). PE – směrovači msee šíří trasy obdržené od Microsoftu zpátky k síti zákazníka prostřednictvím sítě poskytovatele služeb IPVPN.
+Pokud se používá model připojení Any-to-any (IPVPN), PE-MSEEs (4) vytvořit partnerský vztah Protokolu BGP s MSEEs (5). Pe-MSEEs šíří trasy přijaté od společnosti Microsoft zpět do sítě zákazníka prostřednictvím sítě poskytovatele služeb IPVPN.
 
 > [!NOTE]
->Pro zajištění vysoké dostupnosti společnost Microsoft vytvoří plně redundantní paralelní připojení mezi páry směrovači msee (5) a PE-směrovači msee (4). Mezi zákaznickou sítí a párm zápisů na straně typu PE se taky doporučuje plně redundantní cesta k paralelní síti. Další informace o vysoké dostupnosti najdete v článku [navrhování pro zajištění vysoké dostupnosti pomocí ExpressRoute][HA] .
+>Pro vysokou dostupnost společnost Microsoft zavádí plně redundantní paralelní připojení mezi dvojicemi MSEEs (5) a PE-MSEEs (4). Mezi zákaznickou sítí a dvojicí PE-CE je také podporována plně redundantní paralelní síťová cesta. Další informace týkající se vysoké dostupnosti naleznete v článku [Návrh vysoké dostupnosti pomocí technologie ExpressRoute][HA]
 >
 >
 
-Následující postup popisuje logické kroky při řešení potíží s okruhem ExpressRoute:
+Následující jsou logické kroky při odstraňování potíží expressroute okruhu:
 
-* [Ověřit zřizování a stav okruhu](#verify-circuit-provisioning-and-state)
+* [Ověření zřizování a stavu okruhu](#verify-circuit-provisioning-and-state)
   
 * [Ověřit konfiguraci partnerského vztahu](#validate-peering-configuration)
   
-* [Ověřit protokol ARP](#validate-arp)
+* [Ověřit ARP](#validate-arp)
   
-* [Ověření protokolu BGP a tras na MSEE](#validate-bgp-and-routes-on-the-msee)
+* [Ověření protokolu BGP a tras na msee](#validate-bgp-and-routes-on-the-msee)
   
-* [Potvrzení toku přenosů](#confirm-the-traffic-flow)
+* [Potvrzení dopravního toku](#confirm-the-traffic-flow)
 
 
-## <a name="verify-circuit-provisioning-and-state"></a>Ověřit zřizování a stav okruhu
-Zřízení okruhu ExpressRoute vytvoří redundantní připojení vrstvy 2 mezi zápisem a zápisem do PE – směrovači msee (2)/(4) a směrovači msee (5). Další informace o tom, jak vytvořit, upravit, zřídit a ověřit okruh ExpressRoute, najdete v článku [Vytvoření a úprava okruhu ExpressRoute][CreateCircuit].
+## <a name="verify-circuit-provisioning-and-state"></a>Ověření zřizování a stavu okruhu
+Zřizování okruhu ExpressRoute vytváří redundantní připojení vrstvy 2 mezi CE/PE-MSEEs (2)/(4) a MSEEs (5). Další informace o tom, jak vytvořit, upravit, zřídit a ověřit okruh ExpressRoute, naleznete v článku [Vytvoření a úprava okruhu ExpressRoute][CreateCircuit].
 
 >[!TIP]
->Klíč služby jednoznačně identifikuje okruh ExpressRoute. Pokud potřebujete pomoc od Microsoftu nebo od partnera ExpressRoute, abyste mohli řešit problémy s ExpressRoute, poskytněte klíč služby, který tento okruh snadno identifikuje.
+>Klíč služby jednoznačně identifikuje okruh ExpressRoute. Pokud potřebujete pomoc od společnosti Microsoft nebo od partnera ExpressRoute k řešení problému ExpressRoute, zadejte klíč služby pro snadnou identifikaci okruhu.
 >
 >
 
-### <a name="verification-via-the-azure-portal"></a>Ověření prostřednictvím Azure Portal
-V Azure Portal otevřete okno okruh ExpressRoute. V části ![3][3] v okně jsou uvedeny ExpressRoute základy, jak je znázorněno na následujícím snímku obrazovky:
+### <a name="verification-via-the-azure-portal"></a>Ověření prostřednictvím portálu Azure
+Na webu Azure Portal otevřete okno okruhu ExpressRoute. V části ![3][3] okna jsou základy ExpressRoute uvedeny tak, jak je znázorněno na následujícím snímku obrazovky:
 
 ![4][4]    
 
-Ve ExpressRoute Essentials indikuje *stav okruhu* stav okruhu na straně Microsoftu. *Stav poskytovatele* označuje, zda byl okruh *zřízen/není zřízen* na straně poskytovatele služby. 
+Ve stavu ExpressRoute Essentials *označuje stav okruhu* na straně Microsoftu. *Stav zprostředkovatele* označuje, pokud byl okruh *zřízen nebo není zřízen* na straně poskytovatele služeb. 
 
-Aby okruh ExpressRoute fungoval, musí být *povolen* *stav okruhu* a musí být *zřízen* *stav poskytovatele* .
+Aby byl okruh ExpressRoute funkční, musí být *povolen* *stav Okruhu* a musí být *zřízen* *stav Zprostředkovatel* .
 
 > [!NOTE]
-> Pokud je *stav okruhu* po konfiguraci okruhu ExpressRoute v nepovoleném stavu, kontaktujte [Podpora Microsoftu][Support]. Na druhé straně, pokud je *stav poskytovatele* v nezřízeném stavu, obraťte se na svého poskytovatele služeb.
+> Po konfiguraci okruhu ExpressRoute, pokud je *stav okruhu* zasažen ve stavu není povolen, obraťte se na [podporu společnosti Microsoft][Support]. Na druhou stranu, pokud *je stav poskytovatele* zasažen v nezřízeném stavu, obraťte se na svého poskytovatele služeb.
 >
 >
 
-### <a name="verification-via-powershell"></a>Ověření prostřednictvím PowerShellu
-Pokud chcete zobrazit seznam všech okruhů ExpressRoute ve skupině prostředků, použijte následující příkaz:
+### <a name="verification-via-powershell"></a>Ověření přes PowerShell
+Chcete-li vypsat všechny okruhy ExpressRoute ve skupině prostředků, použijte následující příkaz:
 
     Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
 
 >[!TIP]
->Pokud hledáte název skupiny prostředků, můžete k ní získat výpis všech skupin prostředků ve vašem předplatném pomocí příkazu *Get-AzResourceGroup* .
+>Pokud hledáte název skupiny prostředků, můžete ji získat tak, že vyhovíte všechny skupiny prostředků ve vašem předplatném pomocí příkazu *Get-AzResourceGroup*
 >
 
 
-Pokud chcete vybrat konkrétní okruh ExpressRoute ve skupině prostředků, použijte tento příkaz:
+Chcete-li vybrat určitý okruh ExpressRoute ve skupině prostředků, použijte následující příkaz:
 
     Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
 
-Ukázková odpověď:
+Odpověď vzorku je:
 
     Name                             : Test-ER-Ckt
     ResourceGroupName                : Test-ER-RG
@@ -131,47 +131,47 @@ Ukázková odpověď:
     Peerings                         : []
     Authorizations                   : []
 
-Pokud si chcete ověřit, jestli je okruh ExpressRoute funkční, věnujte zvláštní pozornost následujícím polím:
+Chcete-li potvrdit, zda je okruh ExpressRoute funkční, věnujte zvláštní pozornost následujícím polím:
 
     CircuitProvisioningState         : Enabled
     ServiceProviderProvisioningState : Provisioned
 
 > [!NOTE]
-> Pokud je *stav okruhu* po konfiguraci okruhu ExpressRoute v nepovoleném stavu, kontaktujte [Podpora Microsoftu][Support]. Na druhé straně, pokud je *stav poskytovatele* v nezřízeném stavu, obraťte se na svého poskytovatele služeb.
+> Po konfiguraci okruhu ExpressRoute, pokud je *stav okruhu* zasažen ve stavu není povolen, obraťte se na [podporu společnosti Microsoft][Support]. Na druhou stranu, pokud *je stav poskytovatele* zasažen v nezřízeném stavu, obraťte se na svého poskytovatele služeb.
 >
 >
 
 ## <a name="validate-peering-configuration"></a>Ověřit konfiguraci partnerského vztahu
-Poté, co poskytovatel služeb dokončí zřizování okruhu ExpressRoute, je možné vytvořit více konfigurací směrování na základě eBGP pro okruh ExpressRoute mezi zápisem a MSEE-PEs (2)/(4) a směrovači msee (5). Každý okruh ExpressRoute může mít: soukromý partnerský vztah Azure (provoz do privátních virtuálních sítí v Azure) nebo partnerský vztah Microsoftu (provoz do veřejných koncových bodů PaaS a SaaS). Další informace o tom, jak vytvořit a upravit konfiguraci směrování, najdete v článku [Vytvoření a úprava směrování pro okruh ExpressRoute][CreatePeering].
+Po dokončení zřizování okruhu ExpressRoute lze vytvořit více konfigurací směrování založených na eBGP prostředkem okruhu ExpressRoute mezi cees/MSEE-PEs (2)/(4) a MSEEs (5). Každý okruh ExpressRoute může mít: Privátní partnerský vztah Azure (provoz do privátních virtuálních sítí v Azure) nebo partnerský vztah Microsoftu (přenos do veřejných koncových bodů PaaS a SaaS). Další informace o vytváření a úpravě konfigurace směrování naleznete v článku [Vytvoření a úprava směrování okruhu ExpressRoute][CreatePeering].
 
-### <a name="verification-via-the-azure-portal"></a>Ověření prostřednictvím Azure Portal
+### <a name="verification-via-the-azure-portal"></a>Ověření prostřednictvím portálu Azure
 
 > [!NOTE]
-> V modelu připojení IPVPN zajišťují poskytovatelé služeb zodpovědnost za konfiguraci partnerských vztahů (služby vrstvy 3). V takovém modelu poté, co poskytovatel služby nakonfiguruje partnerský vztah a pokud je partnerský vztah na portálu prázdný, zkuste aktualizovat konfiguraci okruhu pomocí tlačítka Aktualizovat na portálu. Tato operace načte aktuální konfiguraci směrování z vašeho okruhu. 
+> V modelu připojení IPVPN zvládnou poskytovatelé služeb odpovědnost za konfiguraci partnerských uživatelů (služby vrstvy 3). V takovém modelu poté, co poskytovatel služeb nakonfiguroval partnerský vztah a pokud je partnerský vztah na portálu prázdný, zkuste aktualizovat konfiguraci okruhu pomocí tlačítka aktualizace na portálu. Tato operace bude vyžádat aktuální konfiguraci směrování z okruhu. 
 >
 
-V Azure Portal můžete v okně okruhu ExpressRoute zkontrolovat stav partnerského vztahu okruhu ExpressRoute. V části ![3][3] v okně by partnerské vztahy ExpressRoute byly uvedeny, jak je znázorněno na následujícím snímku obrazovky:
+Na portálu Azure lze zkontrolovat stav partnerského vztahu okruhu ExpressRoute pod unožem okruhu ExpressRoute. V části ![3][3] okna by byly peeringy ExpressRoute uvedeny tak, jak je znázorněno na následujícím snímku obrazovky:
 
 ![5][5]
 
-Jak je uvedeno v předchozím příkladu, jak je uvedeno u soukromého partnerského vztahu Azure, zatímco veřejné partnerské vztahy Azure a partnerské vztahy Microsoftu se zřízené nejsou. Úspěšně zřízený kontext partnerského vztahu by měl také obsahovat primární a sekundární podsítě typu Point-to-Point. Podsítě/30 se používají pro IP adresu rozhraní směrovači msee a zápis certifikátů/PE-směrovači msee. U partnerských vztahů, které jsou zřízeny, se v seznamu zobrazí také datum poslední změny konfigurace. 
+V předchozím příkladu, jak je uvedeno Azure privátní partnerský vztah je zřízena, vzhledem k tomu, že Azure veřejné a Partnerských společností Microsoft nejsou zřízené. Úspěšně zřízený kontext partnerského vztahu by měl také uvedené primární a sekundární podsítě typu point-to-point. Podsítě /30 se používají pro IP adresu rozhraní MSEEs a CE/PE-MSEEs. Pro partnerské partnerské partnerské partnery, které jsou zřízeny výpis také označuje, kdo naposledy upravil konfiguraci. 
 
 > [!NOTE]
-> Pokud se povolení partnerského vztahu nepovede, ověřte, jestli se přiřazené primární a sekundární podsítě shodují s konfigurací u propojeného CE/PE – MSEE. Také ověřte, zda jsou v směrovači msee použity správné *VlanId*, *AzureASN*a *PeerASN* a zda jsou tyto hodnoty mapovány na ty, které jsou použity v propojeném CE/PE-MSEE. Pokud je zvolena hodnota hash MD5, sdílený klíč by měl být stejný jako u páru MSEE a PE-MSEE/CE. Dříve nakonfigurovaný sdílený klíč se z bezpečnostních důvodů nezobrazuje. Pokud potřebujete změnit některou z těchto konfigurací na směrovači MSEE, přečtěte si téma [Vytvoření a úprava směrování pro okruh ExpressRoute][CreatePeering].  
+> Pokud povolení partnerského vztahu selže, zkontrolujte, zda přiřazené primární a sekundární podsítě odpovídají konfiguraci propojeného CE/PE-MSEE. Zkontrolujte také, zda správné *VlanId*, *AzureASN*a *PeerASN* se používají na MSEEs a pokud tyto hodnoty se mapuje na ty, které se používají na propojené CE/PE-MSEE. Pokud je vybráno hashování MD5, sdílený klíč by měl být stejný na MSEE a PE-MSEE/CE pár. Dříve nakonfigurovaný sdílený klíč nebude z bezpečnostních důvodů zobrazen. Pokud potřebujete změnit některou z těchto konfigurací na směrovači MSEE, přečtěte si informace [o vytvoření a úpravě směrování okruhu ExpressRoute][CreatePeering].  
 >
 
 > [!NOTE]
-> V podsíti/30 přiřazené k rozhraní vybere Microsoft druhou použitelnou IP adresu podsítě pro rozhraní MSEE. Proto zajistěte, aby byla první použitelná IP adresa podsítě přiřazena k partnerským uzlům CE/PE-MSEE.
+> V podsíti /30 přiřazené k rozhraní vybere společnost Microsoft druhou použitelnou adresu IP podsítě pro rozhraní MSEE. Proto zajistěte, aby první použitelná IP adresa podsítě byla přiřazena na partnerský CE/PE-MSEE.
 >
 
 
-### <a name="verification-via-powershell"></a>Ověření prostřednictvím PowerShellu
-Podrobnosti o konfiguraci privátního partnerského vztahu Azure získáte pomocí následujících příkazů:
+### <a name="verification-via-powershell"></a>Ověření přes PowerShell
+Chcete-li získat podrobnosti o konfiguraci privátního partnerského vztahu Azure, použijte následující příkazy:
 
     $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
     Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt
 
-Ukázková odpověď pro úspěšnou konfiguraci privátního partnerského vztahu je:
+Ukázková odpověď pro úspěšně nakonfigurovaný soukromý partnerský vztah je:
 
     Name                       : AzurePrivatePeering
     Id                         : /subscriptions/***************************/resourceGroups/Test-ER-RG/providers/***********/expressRouteCircuits/Test-ER-Ckt/peerings/AzurePrivatePeering
@@ -188,19 +188,19 @@ Ukázková odpověď pro úspěšnou konfiguraci privátního partnerského vzta
     MicrosoftPeeringConfig     : null
     ProvisioningState          : Succeeded
 
- Úspěšně povolený kontext partnerského vztahu by měl mít uvedené předpony primární a sekundární adresy. Podsítě/30 se používají pro IP adresu rozhraní směrovači msee a zápis certifikátů/PE-směrovači msee.
+ Úspěšně povolený kontext partnerského vztahu by měl uvedené předpony primární a sekundární adresy. Podsítě /30 se používají pro IP adresu rozhraní MSEEs a CE/PE-MSEEs.
 
-Podrobnosti o konfiguraci veřejného partnerského vztahu Azure získáte pomocí následujících příkazů:
+Chcete-li získat podrobnosti o konfiguraci veřejného partnerského vztahu Azure, použijte následující příkazy:
 
     $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
     Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
 
-Podrobnosti o konfiguraci partnerského vztahu Microsoftu získáte pomocí následujících příkazů:
+Chcete-li získat podrobnosti o konfiguraci partnerského vztahu microsoftu, použijte následující příkazy:
 
     $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
      Get-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
 
-Pokud partnerský vztah není nakonfigurovaný, bude se jednat o chybovou zprávu. Ukázková odpověď, když je v tomto příkladu uvedený partnerský vztah (veřejný partnerský vztah Azure v tomto příkladu), není v okruhu nakonfigurován:
+Pokud partnerský vztah není nakonfigurován, bude chybová zpráva. Ukázková odpověď, když uvedený partnerský vztah (veřejný partnerský vztah Azure v tomto příkladu) není nakonfigurován v rámci okruhu:
 
     Get-AzExpressRouteCircuitPeeringConfig : Sequence contains no matching element
     At line:1 char:1
@@ -211,32 +211,32 @@ Pokud partnerský vztah není nakonfigurovaný, bude se jednat o chybovou zpráv
 
 
 > [!NOTE]
-> Pokud se povolení partnerského vztahu nepovede, ověřte, jestli se přiřazené primární a sekundární podsítě shodují s konfigurací u propojeného CE/PE – MSEE. Také ověřte, zda jsou v směrovači msee použity správné *VlanId*, *AzureASN*a *PeerASN* a zda jsou tyto hodnoty mapovány na ty, které jsou použity v propojeném CE/PE-MSEE. Pokud je zvolena hodnota hash MD5, sdílený klíč by měl být stejný jako u páru MSEE a PE-MSEE/CE. Dříve nakonfigurovaný sdílený klíč se z bezpečnostních důvodů nezobrazuje. Pokud potřebujete změnit některou z těchto konfigurací na směrovači MSEE, přečtěte si téma [Vytvoření a úprava směrování pro okruh ExpressRoute][CreatePeering].  
+> Pokud povolení partnerského vztahu selže, zkontrolujte, zda přiřazené primární a sekundární podsítě odpovídají konfiguraci propojeného CE/PE-MSEE. Zkontrolujte také, zda správné *VlanId*, *AzureASN*a *PeerASN* se používají na MSEEs a pokud tyto hodnoty se mapuje na ty, které se používají na propojené CE/PE-MSEE. Pokud je vybráno hashování MD5, sdílený klíč by měl být stejný na MSEE a PE-MSEE/CE pár. Dříve nakonfigurovaný sdílený klíč nebude z bezpečnostních důvodů zobrazen. Pokud potřebujete změnit některou z těchto konfigurací na směrovači MSEE, přečtěte si informace [o vytvoření a úpravě směrování okruhu ExpressRoute][CreatePeering].  
 >
 >
 
 > [!NOTE]
-> V podsíti/30 přiřazené k rozhraní vybere Microsoft druhou použitelnou IP adresu podsítě pro rozhraní MSEE. Proto zajistěte, aby byla první použitelná IP adresa podsítě přiřazena k partnerským uzlům CE/PE-MSEE.
+> V podsíti /30 přiřazené k rozhraní vybere společnost Microsoft druhou použitelnou adresu IP podsítě pro rozhraní MSEE. Proto zajistěte, aby první použitelná IP adresa podsítě byla přiřazena na partnerský CE/PE-MSEE.
 >
 
-## <a name="validate-arp"></a>Ověřit protokol ARP
+## <a name="validate-arp"></a>Ověřit ARP
 
-Tabulka ARP poskytuje mapování IP adresy a adresy MAC pro konkrétní partnerský vztah. Tabulka ARP pro partnerský vztah okruhu ExpressRoute poskytuje pro každé rozhraní (primární a sekundární) následující informace:
-* Mapování IP adresy místního rozhraní směrovače na adresu MAC
+Tabulka ARP obsahuje mapování IP adresy a mac adresy pro konkrétní partnerský vztah. Tabulka ARP pro partnerský vztah okruhu ExpressRoute poskytuje následující informace pro každé rozhraní (primární a sekundární):
+* Mapování ip adresy rozhraní místního routeru na MAC adresu
 * Mapování IP adresy rozhraní směrovače ExpressRoute na adresu MAC
-* Stáří tabulek mapování protokolu ARP může pomáhat ověřit konfiguraci vrstvy 2 a řešit potíže s problémy s připojením základní vrstvy 2.
+* Stáří mapovacích tabulek ARP může pomoci ověřit konfiguraci vrstvy 2 a řešení potíží se základní mise 2.
 
 
-Viz téma [získání tabulek ARP v dokumentu modelu nasazení Správce prostředků][ARP] , informace o tom, jak zobrazit tabulku ARP partnerského vztahu ExpressRoute a jak používat informace k řešení potíží s připojením vrstvy 2.
+Informace o tom, jak zobrazit tabulku ARP partnerského vztahu ExpressRoute a jak tyto informace použít k řešení problému s připojením vrstvy 2, naleznete [v tématu Získání tabulek ARP v][ARP] dokumentu modelu nasazení Správce prostředků.
 
 
-## <a name="validate-bgp-and-routes-on-the-msee"></a>Ověření protokolu BGP a tras na MSEE
+## <a name="validate-bgp-and-routes-on-the-msee"></a>Ověření protokolu BGP a tras na msee
 
-Chcete-li získat směrovací tabulku z MSEE na *primární* cestě pro kontext *privátního* směrování, použijte následující příkaz:
+Chcete-li získat směrovací tabulku z MSEE na *primární* cestě pro kontext *soukromésměrování,* použijte následující příkaz:
 
     Get-AzExpressRouteCircuitRouteTable -DevicePath Primary -ExpressRouteCircuitName ******* -PeeringType AzurePrivatePeering -ResourceGroupName ****
 
-Příklad odpovědi:
+Příklad odpovědi je:
 
     Network : 10.1.0.0/16
     NextHop : 10.17.17.141
@@ -258,12 +258,12 @@ Příklad odpovědi:
 
 
 > [!NOTE]
-> Pokud je stav partnerského vztahu eBGP mezi MSEE a a MSEE/PE-MSEE aktivní nebo nečinný, ověřte, jestli se přiřazené primární a sekundární podsítě partnerského vztahu shodují s konfigurací u propojeného CE/PE-. Také ověřte, zda jsou v směrovači msee použity správné *VlanId*, *AzureAsn*a *PeerAsn* a zda jsou tyto hodnoty mapovány na ty, které se používají v propojeném prostředí PE-MSEE/CE. Pokud je zvolena hodnota hash MD5, sdílený klíč by měl být stejný v páru MSEE a CE/PE-MSEE. Pokud potřebujete změnit některou z těchto konfigurací na směrovači MSEE, přečtěte si téma [Vytvoření a úprava směrování pro okruh ExpressRoute][CreatePeering].
+> Pokud je stav partnerského vztahu eBGP mezi MSEE a CE/PE-MSEE v aktivní nebo nečinné, zkontrolujte, zda primární a sekundární partnerské podsítě přiřazené odpovídají konfiguraci na propojené CE/PE-MSEE. Zkontrolujte také, zda správné *VlanId*, *AzureAsn*a *PeerAsn* se používají na MSEEs a pokud tyto hodnoty se mapuje na ty, které se používají na propojené PE-MSEE/CE. Pokud je vybráno hashování MD5, sdílený klíč by měl být stejný na MSEE a CE/PE-MSEE pár. Pokud potřebujete změnit některou z těchto konfigurací na směrovači MSEE, přečtěte si informace [o vytvoření a úpravě směrování okruhu ExpressRoute][CreatePeering].
 >
 
 
 > [!NOTE]
-> Pokud nejsou některá cílová umístění dostupná přes partnerský vztah, podívejte se do směrovací tabulky směrovači msee pro odpovídající kontext partnerského vztahu. Pokud je v směrovací tabulce k dispozici odpovídající předpona (NATed IP), zkontrolujte, zda jsou brány firewall/NSG/seznamy ACL na cestě, která blokuje provoz.
+> Pokud některé cíle nejsou dosažitelné přes partnerský vztah, zkontrolujte trasovou tabulku MSEEs pro odpovídající kontext partnerského vztahu. Pokud je ve směrovací tabulce k dispozici odpovídající předpona (může se jedná o ADRESU IP), zkontrolujte, zda na cestě, která blokuje provoz, nejsou brány firewall/Seznamy a řízení sítě NSG/ACL.
 >
 
 
@@ -272,33 +272,33 @@ Následující příklad ukazuje odpověď příkazu pro partnerský vztah, kter
     Get-AzExpressRouteCircuitRouteTable : The BGP Peering AzurePublicPeering with Service Key ********************* is not found.
     StatusCode: 400
 
-## <a name="confirm-the-traffic-flow"></a>Potvrzení toku přenosů
-Pokud chcete získat kombinovanou statistiku přenosu primárních a sekundárních cest – bajty v a mimo kontext partnerského vztahu, použijte následující příkaz:
+## <a name="confirm-the-traffic-flow"></a>Potvrzení dopravního toku
+Chcete-li získat kombinovanou statistiku provozu primární a sekundární cesty – bajty v kontextu partnerského vztahu a ven), použijte následující příkaz:
 
     Get-AzExpressRouteCircuitStats -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -PeeringType 'AzurePrivatePeering'
 
-Vzorový výstup příkazu je:
+Ukázkový výstup příkazu je:
 
     PrimaryBytesIn PrimaryBytesOut SecondaryBytesIn SecondaryBytesOut
     -------------- --------------- ---------------- -----------------
          240780020       239863857        240565035         239628474
 
-Ukázkový výstup příkazu pro neexistující partnerský vztah:
+Ukázkový výstup příkazu pro neexistující partnerský vztah je:
 
     Get-AzExpressRouteCircuitRouteTable : The BGP Peering AzurePublicPeering with Service Key ********************* is not found.
     StatusCode: 400
 
 ## <a name="next-steps"></a>Další kroky
-Další informace a nápovědu najdete na následujících odkazech:
+Další informace nebo nápovědu najdete v následujících odkazech:
 
-- [podpora Microsoftu][Support]
+- [Podpora společnosti Microsoft][Support]
 - [Vytvoření a úprava okruhu ExpressRoute][CreateCircuit]
 - [Vytvoření a úprava směrování pro okruh ExpressRoute][CreatePeering]
 
 <!--Image References-->
-[1]: ./media/expressroute-troubleshooting-expressroute-overview/expressroute-logical-diagram.png "připojení logické expressové trasy"
-[2]: ./media/expressroute-troubleshooting-expressroute-overview/portal-all-resources.png "Ikona všech prostředků"
-[3]: ./media/expressroute-troubleshooting-expressroute-overview/portal-overview.png "Ikona přehledu"
+[1]: ./media/expressroute-troubleshooting-expressroute-overview/expressroute-logical-diagram.png "Připojení logické expresní trasy"
+[2]: ./media/expressroute-troubleshooting-expressroute-overview/portal-all-resources.png "Ikona Všechny zdroje"
+[3]: ./media/expressroute-troubleshooting-expressroute-overview/portal-overview.png "Ikona Přehled"
 [4]: ./media/expressroute-troubleshooting-expressroute-overview/portal-circuit-status.png "Ukázkový snímek obrazovky ExpressRoute Essentials"
 [5]: ./media/expressroute-troubleshooting-expressroute-overview/portal-private-peering.png "Ukázkový snímek obrazovky ExpressRoute Essentials"
 

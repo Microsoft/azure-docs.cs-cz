@@ -1,37 +1,37 @@
 ---
-title: Průběžná aktualizace kódu aplikace Function App pomocí Azure DevOps
-description: Přečtěte si, jak nastavit kanál Azure DevOps, který cílí na Azure Functions.
+title: Průběžná aktualizace kódu aplikace funkcí pomocí Azure DevOps
+description: Zjistěte, jak nastavit kanál Azure DevOps, který cílí na funkce Azure.
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
 ms.openlocfilehash: 5e2fc8fb06248e2cdad9067c56647da6d9626b50
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78255759"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>Průběžné doručování pomocí Azure DevOps
 
-Funkci můžete automaticky nasadit do aplikace Azure Functions pomocí [Azure Pipelines](/azure/devops/pipelines/).
+Svou funkci můžete automaticky nasadit do aplikace Azure Functions pomocí [Azure Pipelines](/azure/devops/pipelines/).
 
-Máte dvě možnosti, jak svůj kanál definovat:
+Máte dvě možnosti pro definování kanálu:
 
-- **YAML**: soubor YAML popisuje kanál. Soubor může obsahovat oddíl kroků sestavení a oddíl Release. Soubor YAML musí být ve stejném úložišti jako aplikace.
-- **Šablona**: šablony jsou připravené úkoly, které sestavují nebo nasazují vaši aplikaci.
+- **YAML soubor**: Soubor YAML popisuje kanál. Soubor může mít oddíl kroky sestavení a část vydání. Soubor YAML musí být ve stejném repo jako aplikace.
+- **Šablona**: Šablony jsou hotové úkoly, které vytvářejí nebo nasazují vaši aplikaci.
 
 ## <a name="yaml-based-pipeline"></a>Kanál založený na YAML
 
-Pokud chcete vytvořit kanál založený na YAML, nejdřív sestavte aplikaci a potom aplikaci nasaďte.
+Pokud chcete vytvořit kanál založený na YAML, nejdřív sestavte aplikaci a pak ji nasaďte.
 
-### <a name="build-your-app"></a>Sestavení aplikace
+### <a name="build-your-app"></a>Vytvoření aplikace
 
-Způsob sestavování aplikace v Azure Pipelines závisí na programovacím jazyku vaší aplikace. Každý jazyk má konkrétní kroky sestavení, které vytvářejí artefakt nasazení. Artefakt nasazení se používá k nasazení aplikace Function App v Azure.
+Způsob sestavení aplikace v Azure Pipelines závisí na programovacím jazyce vaší aplikace. Každý jazyk má konkrétní kroky sestavení, které vytvářejí artefakt nasazení. Artefakt nasazení se používá k nasazení aplikace funkce v Azure.
 
 # <a name="c"></a>[C\#](#tab/csharp)
 
-Pomocí následující ukázky můžete vytvořit soubor YAML k vytvoření aplikace .NET:
+Následující ukázka můžete vytvořit soubor YAML k vytvoření aplikace .NET:
 
 ```yaml
 pool:
@@ -60,9 +60,9 @@ steps:
     artifactName: 'drop'
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Pomocí následující ukázky můžete vytvořit soubor YAML pro sestavení aplikace JavaScriptu:
+Následující ukázka můžete vytvořit soubor YAML k vytvoření aplikace JavaScript:
 
 ```yaml
 pool:
@@ -90,9 +90,9 @@ steps:
 
 # <a name="python"></a>[Python](#tab/python)
 
-Pomocí jedné z následujících ukázek můžete vytvořit soubor YAML k vytvoření aplikace pro konkrétní verzi Pythonu. Python se podporuje jenom pro aplikace Function App spuštěné v systému Linux.
+Můžete použít jeden z následujících ukázek k vytvoření souboru YAML k vytvoření aplikace pro konkrétní verzi Pythonu. Python je podporován pouze pro funkční aplikace běžící na Linuxu.
 
-**Verze 3,7**
+**Verze 3.7**
 
 ```yaml
 pool:
@@ -121,7 +121,7 @@ steps:
     artifactName: 'drop'
 ```
 
-**Verze 3,6**
+**Verze 3.6**
 
 ```yaml
 pool:
@@ -152,7 +152,7 @@ steps:
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Pomocí následující ukázky můžete vytvořit soubor YAML pro zabalení aplikace PowerShellu. PowerShell se podporuje jenom pro Windows Azure Functions.
+Následující ukázka můžete použít k vytvoření souboru YAML pro balíček aplikace PowerShell. Prostředí PowerShell je podporované jenom pro funkce Windows Azure.
 
 ```yaml
 pool:
@@ -174,11 +174,11 @@ steps:
 
 ### <a name="deploy-your-app"></a>Nasazení aplikace
 
-V závislosti na hostitelském operačním systému musíte do souboru YAML zahrnout jednu z následujících ukázek YAML.
+V závislosti na hostitelském osu musíte do souboru YAML zahrnout jeden z následujících ukázek YAML.
 
-#### <a name="windows-function-app"></a>Aplikace funkcí Windows
+#### <a name="windows-function-app"></a>Aplikace pro funkce windows
 
-K nasazení aplikace funkcí systému Windows můžete použít následující fragment kódu:
+K nasazení aplikace pro funkce Windows můžete použít následující úryvek:
 
 ```yaml
 steps:
@@ -193,9 +193,9 @@ steps:
     #slotName: '<Slot name>'
 ```
 
-#### <a name="linux-function-app"></a>Aplikace funkce Linux
+#### <a name="linux-function-app"></a>Linux funkce aplikace
 
-K nasazení aplikace Functions pro Linux můžete použít následující fragment kódu:
+K nasazení aplikace pro funkce Linuxu můžete použít následující úryvek:
 
 ```yaml
 steps:
@@ -211,61 +211,61 @@ steps:
     #slotName: '<Slot name>'
 ```
 
-## <a name="template-based-pipeline"></a>Kanál založený na šablonách
+## <a name="template-based-pipeline"></a>Kanál založený na šabloně
 
-Šablony v Azure DevOps jsou předdefinované skupiny úloh, které sestavují nebo nasazují aplikaci.
+Šablony v Azure DevOps jsou předdefinované skupiny úloh, které vytvářejí nebo nasazují aplikaci.
 
-### <a name="build-your-app"></a>Sestavení aplikace
+### <a name="build-your-app"></a>Vytvoření aplikace
 
-Způsob sestavování aplikace v Azure Pipelines závisí na programovacím jazyku vaší aplikace. Každý jazyk má konkrétní kroky sestavení, které vytvářejí artefakt nasazení. K aktualizaci aplikace Function App v Azure se používá artefakt nasazení.
+Způsob sestavení aplikace v Azure Pipelines závisí na programovacím jazyce vaší aplikace. Každý jazyk má konkrétní kroky sestavení, které vytvářejí artefakt nasazení. Artefakt nasazení se používá k aktualizaci aplikace funkce v Azure.
 
-Chcete-li použít předdefinované šablony sestavení, při vytváření nového kanálu sestavení vyberte **použít klasický Editor** k vytvoření kanálu pomocí šablon návrháře.
+Chcete-li použít předdefinované šablony sestavení, při vytváření nového kanálu sestavení vyberte **Použít klasický editor** k vytvoření kanálu pomocí šablon návrháře.
 
-![Vybrat klasický Editor Azure Pipelines](media/functions-how-to-azure-devops/classic-editor.png)
+![Výběr klasického editoru Azure Pipelines](media/functions-how-to-azure-devops/classic-editor.png)
 
-Po nakonfigurování zdroje kódu vyhledejte Azure Functions šablon sestavení. Vyberte šablonu, která odpovídá vašemu jazyku aplikace.
+Po konfiguraci zdroje kódu vyhledejte šablony sestavení Azure Functions. Vyberte šablonu, která odpovídá jazyku vaší aplikace.
 
-![Vybrat šablonu sestavení Azure Functions](media/functions-how-to-azure-devops/build-templates.png)
+![Výběr šablony sestavení Azure Functions](media/functions-how-to-azure-devops/build-templates.png)
 
-V některých případech mají artefakty sestavení určitou strukturu složek. Je možné, že budete muset zaškrtnout políčko **název kořenové složky pro archivaci cest** .
+V některých případech mají artefakty sestavení určitou strukturu složek. Možná budete muset zaškrtnout políčko **Předeřadný název kořenové složky pro archivaci cest.**
 
 ![Možnost předřadit název kořenové složky](media/functions-how-to-azure-devops/prepend-root-folder.png)
 
-#### <a name="javascript-apps"></a>JavaScriptové aplikace
+#### <a name="javascript-apps"></a>Aplikace JavaScript
 
-Pokud má vaše aplikace JavaScriptu závislost na nativních modulech Windows, musíte aktualizovat verzi fondu agentů na **hostovanou VS2017**.
+Pokud má vaše aplikace JavaScript závislost na nativních modulech Windows, musíte aktualizovat verzi fondu agentů na **Hosted VS2017**.
 
-![Aktualizace verze fondu agentů](media/functions-how-to-azure-devops/change-agent.png)
+![Aktualizace verze fondu agenta](media/functions-how-to-azure-devops/change-agent.png)
 
 ### <a name="deploy-your-app"></a>Nasazení aplikace
 
-Když vytváříte nový kanál verze, vyhledejte šablonu verze Azure Functions.
+Když vytvoříte nový kanál vydání, vyhledejte šablonu vydání Azure Functions.
 
-![Vyhledat šablonu vydané verze Azure Functions](media/functions-how-to-azure-devops/release-template.png)
+![Hledání šablony vydání Azure Functions](media/functions-how-to-azure-devops/release-template.png)
 
-Nasazení do slotu nasazení není v šabloně vydané verze podporováno.
+Nasazení do slotu nasazení není v šabloně vydání podporováno.
 
-## <a name="create-a-build-pipeline-by-using-the-azure-cli"></a>Vytvoření kanálu sestavení pomocí Azure CLI
+## <a name="create-a-build-pipeline-by-using-the-azure-cli"></a>Vytvoření kanálu sestavení pomocí příkazového příkazového příkazu Azure
 
-Pokud chcete vytvořit kanál sestavení v Azure, použijte [příkaz](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create)`az functionapp devops-pipeline create`. Vytvoří se kanál sestavení pro sestavení a vydání všech změn kódu, které se provedou v úložišti. Příkaz vygeneruje nový soubor YAML, který definuje kanál sestavení a vydání a pak ho potvrdí do vašeho úložiště. Předpoklady pro tento příkaz závisí na umístění vašeho kódu.
+Chcete-li vytvořit kanál sestavení `az functionapp devops-pipeline create` v Azure, použijte [příkaz](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create). Kanál sestavení se vytvoří k sestavení a uvolnění všech změn kódu, které jsou provedeny v repo. Příkaz vygeneruje nový soubor YAML, který definuje kanál sestavení a vydání a pak jej potvrdí do vašeho repo. Předpoklady pro tento příkaz závisí na umístění kódu.
 
 - Pokud je váš kód na GitHubu:
 
-    - Musíte mít oprávnění k **zápisu** do svého předplatného.
+    - Musíte mít oprávnění k **zápisu** pro vaše předplatné.
 
-    - Musíte být správce projektu ve službě Azure DevOps.
+    - Musíte být správceprojektu v Azure DevOps.
 
-    - Musíte mít oprávnění k vytvoření osobního přístupového tokenu GitHubu, který má dostatečná oprávnění. Další informace najdete v tématu [požadavky na oprávnění GitHubu Pat.](https://aka.ms/azure-devops-source-repos)
+    - Musíte mít oprávnění k vytvoření githubu osobní přístupový token (PAT), který má dostatečná oprávnění. Další informace najdete v tématu [Požadavky na oprávnění GitHub PAT.](https://aka.ms/azure-devops-source-repos)
 
-    - Musíte mít oprávnění k potvrzení do hlavní větve ve vašem úložišti GitHub, abyste mohli potvrdit automaticky vygenerovaný soubor YAML.
+    - Musíte mít oprávnění k potvrzení hlavní větve v úložišti GitHub, abyste mohli potvrdit automaticky vygenerovaný soubor YAML.
 
 - Pokud je váš kód v Azure Repos:
 
-    - Musíte mít oprávnění k **zápisu** do svého předplatného.
+    - Musíte mít oprávnění k **zápisu** pro vaše předplatné.
 
-    - Musíte být správce projektu ve službě Azure DevOps.
+    - Musíte být správceprojektu v Azure DevOps.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si [přehled Azure Functions](functions-overview.md).
-- Přečtěte si [Přehled Azure DevOps](/azure/devops/pipelines/).
+- Projděte si [přehled funkcí Azure](functions-overview.md).
+- Projděte si [přehled Azure DevOps](/azure/devops/pipelines/).

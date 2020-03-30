@@ -1,64 +1,64 @@
 ---
-title: Dotaz na události clusteru pomocí rozhraní API Eventstoru
-description: Naučte se používat rozhraní API Azure Service Fabric Eventstoru k dotazování na události platformy.
+title: Dotaz na události clusteru pomocí úložišť API úložiště událostí
+description: Zjistěte, jak používat azure service fabric eventstore eventstore pro dotazování na události platformy
 author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 48350caef6bdaafda9aff7ac776d67b314aeaf8c
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75614396"
 ---
-# <a name="query-eventstore-apis-for-cluster-events"></a>Dotazování rozhraní API Eventstoru pro události clusteru
+# <a name="query-eventstore-apis-for-cluster-events"></a>Dotaz na pravidla API úložiště událostí pro události clusteru
 
-Tento článek popisuje, jak zadat dotaz na rozhraní API Eventstoru, která jsou k dispozici ve verzi Service Fabric 6,2 a novější – Pokud se chcete dozvědět víc o službě Eventstoru, přečtěte si téma [Přehled služby eventstoru](service-fabric-diagnostics-eventstore.md). V současné době může služba Eventstoru přistupovat jenom k datům za posledních 7 dnů (vychází ze zásad pro uchovávání dat v diagnostice vašeho clusteru).
+Tento článek popisuje, jak dotaz na rozhraní API EventStore, které jsou k dispozici v Service Fabric verze 6.2 a novější – pokud chcete získat další informace o službě EventStore, naleznete v [přehledu služby EventStore](service-fabric-diagnostics-eventstore.md). V současné době může služba EventStore přistupovat k datům pouze za posledních 7 dní (to je založeno na zásadách uchovávání dat diagnostiky vašeho clusteru).
 
 >[!NOTE]
->Rozhraní Eventstoru API jsou GA od Service Fabric verze 6,4 pouze pro clustery se systémem Windows běžící v Azure.
+>Pravidla api úložiště událostí jsou ga jako Service Fabric verze 6.4 pro pouze clustery Windows spuštěné v Azure.
 
-K rozhraním API Eventstoru lze přistupovat přímo prostřednictvím koncového bodu REST nebo prostřednictvím kódu programu. V závislosti na dotazu je k dispozici několik parametrů potřebných ke shromáždění správných dat. Mezi tyto parametry obvykle patří:
-* `api-version`: verze rozhraní API Eventstoru, která používáte
-* `StartTimeUtc`: definuje začátek období, které vás zajímá.
+K úložišti API úložiště událostí lze přistupovat přímo prostřednictvím koncového bodu REST nebo programově. V závislosti na dotazu existuje několik parametrů, které jsou nutné ke shromažďování správných dat. Tyto parametry obvykle zahrnují:
+* `api-version`: verze api úložiště událostí, které používáte
+* `StartTimeUtc`: definuje začátek období, na které máte zájem
 * `EndTimeUtc`: konec časového období
 
 Kromě těchto parametrů jsou k dispozici také volitelné parametry, jako například:
-* `timeout`: přepište výchozí 60 druhý časový limit pro provedení operace požadavku.
-* `eventstypesfilter`: Tato možnost umožňuje filtrovat konkrétní typy událostí.
-* `ExcludeAnalysisEvents`: nevracet události Analysis. Ve výchozím nastavení budou dotazy Eventstoru vracet s událostmi "analýza", pokud je to možné. Události analýzy jsou bohatší provozní kanály s událostmi, které obsahují další informace o kontextu nebo informacích, mimo běžné Service Fabric události a poskytují větší hloubku.
-* `SkipCorrelationLookup`: nehledají možné korelační události v clusteru. Ve výchozím nastavení se Eventstoru pokusí korelovat události napříč clusterem a současně propojit události, pokud je to možné. 
+* `timeout`: přepsat výchozí časový limit 60 sekund pro provedení operace požadavku
+* `eventstypesfilter`: To vám dává možnost filtrovat pro konkrétní typy událostí
+* `ExcludeAnalysisEvents`: nevracejte události analýzy. Ve výchozím nastavení eventstore dotazy vrátí s "analýzy" události, kde je to možné. Události analýzy jsou bohatší události operačního kanálu, které obsahují další kontext nebo informace nad rámec pravidelné události Service Fabric a poskytují větší hloubku.
+* `SkipCorrelationLookup`: nehledejte potenciální korelované události v clusteru. Ve výchozím nastavení eventstore se pokusí korelovat události v rámci clusteru a propojit události dohromady, pokud je to možné. 
 
-Každá entita v clusteru může být dotazem na události. Můžete také zadat dotaz na události pro všechny entity typu. Můžete například zadat dotaz na události pro určitý uzel nebo pro všechny uzly v clusteru. Aktuální sada entit, pro které se můžete dotazovat na události, je (s jakým způsobem je strukturovaný dotaz):
-* Cluster: `/EventsStore/Cluster/Events`
-* Uzly: `/EventsStore/Nodes/Events`
-* Uzel: `/EventsStore/Nodes/<NodeName>/$/Events`
-* Aplikace: `/EventsStore/Applications/Events`
-* Aplikace: `/EventsStore/Applications/<AppName>/$/Events`
-* Služby: `/EventsStore/Services/Events`
-* Služba: `/EventsStore/Services/<ServiceName>/$/Events`
-* Oddíly: `/EventsStore/Partitions/Events`
-* Oddíl: `/EventsStore/Partitions/<PartitionID>/$/Events`
-* Repliky: `/EventsStore/Partitions/<PartitionID>/$/Replicas/Events`
-* Replika: `/EventsStore/Partitions/<PartitionID>/$/Replicas/<ReplicaID>/$/Events`
+Každá entita v clusteru může být dotazy na události. Můžete také dotaz na události pro všechny entity typu. Můžete například dotazovat na události pro konkrétní uzel nebo pro všechny uzly v clusteru. Aktuální sada entit, pro které můžete dotaz ovat události (s tím, jak by byl dotaz strukturován):
+* Clusteru:`/EventsStore/Cluster/Events`
+* Uzly:`/EventsStore/Nodes/Events`
+* Uzel:`/EventsStore/Nodes/<NodeName>/$/Events`
+* Aplikace:`/EventsStore/Applications/Events`
+* Aplikace:`/EventsStore/Applications/<AppName>/$/Events`
+* Služby:`/EventsStore/Services/Events`
+* Služby:`/EventsStore/Services/<ServiceName>/$/Events`
+* Oddíly:`/EventsStore/Partitions/Events`
+* Oddíl:`/EventsStore/Partitions/<PartitionID>/$/Events`
+* Repliky:`/EventsStore/Partitions/<PartitionID>/$/Replicas/Events`
+* Replika:`/EventsStore/Partitions/<PartitionID>/$/Replicas/<ReplicaID>/$/Events`
 
 >[!NOTE]
->Při odkazování na název aplikace nebo služby nemusí dotaz zahrnovat "Fabric:/". směr. Kromě toho, pokud jsou v názvech aplikace nebo služby v nich znak "/", přepněte jej na "~", aby dotaz zůstal fungovat. Pokud se například vaše aplikace zobrazí jako Fabric:/app1/FrontendApp, dotazy specifické pro vaši aplikaci budou strukturovány jako `/EventsStore/Applications/App1~FrontendApp/$/Events`.
->Sestavy o stavu pro služby, které se dnes zobrazují, se zobrazí v odpovídající aplikaci, takže byste měli zadat dotaz na události `DeployedServiceHealthReportCreated` pro správnou entitu aplikace. 
+>Při odkazování na název aplikace nebo služby dotaz nemusí obsahovat "fabric:/" Předponu. Navíc pokud vaše aplikace nebo názvy služeb mají "/" v nich, přepněte na "~", aby dotaz fungoval. Například pokud vaše aplikace se zobrazí jako "fabric:/App1/FrontendApp", vaše konkrétní `/EventsStore/Applications/App1~FrontendApp/$/Events`dotazy aplikace by být strukturovány jako .
+>Kromě toho sestavy stavu pro služby dnes zobrazí v rámci `DeployedServiceHealthReportCreated` odpovídající aplikace, takže byste dotaz na události pro správnou entitu aplikace. 
 
-## <a name="query-the-eventstore-via-rest-api-endpoints"></a>Dotazování na Eventstoru prostřednictvím koncových bodů REST API
+## <a name="query-the-eventstore-via-rest-api-endpoints"></a>Dotaz na úložiště událostí prostřednictvím koncových bodů rozhraní REST API
 
-Dotaz na Eventstoru můžete zadat přímo přes koncový bod REST tím, že `GET` požadavky na: `<your cluster address>/EventsStore/<entity>/Events/`.
+EventStore můžete dotazovat přímo prostřednictvím koncového `GET` bodu REST, a to tak, že požádáte o: `<your cluster address>/EventsStore/<entity>/Events/`.
 
-Například pro dotazování na všechny události clusteru mezi `2018-04-03T18:00:00Z` a `2018-04-04T18:00:00Z`by vaše žádost vypadala takto:
+Například pro dotazování na všechny `2018-04-03T18:00:00Z` události `2018-04-04T18:00:00Z`clusteru mezi a , váš požadavek bude vypadat takto:
 
 ```
 Method: GET 
 URL: http://mycluster:19080/EventsStore/Cluster/Events?api-version=6.4&StartTimeUtc=2018-04-03T18:00:00Z&EndTimeUtc=2018-04-04T18:00:00Z
 ```
 
-To by buď nevrátilo žádné události, nebo seznam událostí vrácených ve formátu JSON:
+To může vrátit žádné události nebo seznam událostí vrácených v json:
 
 ```json
 Response: 200
@@ -106,15 +106,15 @@ Body:
 ]
 ```
 
-Tady vidíte, že mezi `2018-04-03T18:00:00Z` a `2018-04-04T18:00:00Z`tento cluster úspěšně dokončil první upgrade při prvním stood, od `"CurrentClusterVersion": "0.0.0.0:"` po `"TargetClusterVersion": "6.2:1.0"`, v `"OverallUpgradeElapsedTimeInMs": "120196.5212"`.
+Zde můžeme vidět, `2018-04-03T18:00:00Z` `2018-04-04T18:00:00Z`že mezi a , tento cluster úspěšně dokončil svůj `"CurrentClusterVersion": "0.0.0.0:"` `"TargetClusterVersion": "6.2:1.0"`první `"OverallUpgradeElapsedTimeInMs": "120196.5212"`upgrade, když byl poprvé vstal, z do , v .
 
-## <a name="query-the-eventstore-programmatically"></a>Programové dotazování na Eventstoru
+## <a name="query-the-eventstore-programmatically"></a>Programový dotaz na eventstore
 
-Pomocí [klientské knihovny Service Fabric také můžete prostřednictvím klientské knihovny](https://docs.microsoft.com/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library)dotazovat na eventstoru programově.
+Můžete také dotaz EventStore programově, prostřednictvím [knihovny klienta Service Fabric](https://docs.microsoft.com/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library).
 
-Po nastavení klienta Service Fabric můžete zadávat dotazy na události tím, že získáte přístup k Eventstoru, jako je toto: `sfhttpClient.EventStore.<request>`
+Jakmile máte klienta Service Fabric nastavit, můžete dotaz na události pomocí přístupu EventStore takto:`sfhttpClient.EventStore.<request>`
 
-Tady je příklad požadavku na všechny události clusteru mezi `2018-04-03T18:00:00Z` a `2018-04-04T18:00:00Z`prostřednictvím funkce `GetClusterEventListAsync`.
+Zde je příklad požadavku pro `2018-04-03T18:00:00Z` všechny `2018-04-04T18:00:00Z`události `GetClusterEventListAsync` clusteru mezi a , prostřednictvím funkce.
 
 ```csharp
 var sfhttpClient = ServiceFabricClientFactory.Create(clusterUrl, settings);
@@ -127,7 +127,7 @@ var clstrEvents = sfhttpClient.EventsStore.GetClusterEventListAsync(
     .ToList();
 ```
 
-Tady je další příklad, který se dotazuje na stav clusteru a události všech uzlů v září 2018 a tiskne je.
+Zde je další příklad, který se dotazuje na stav clusteru a všechny události uzlu v září 2018 a vytiskne je.
 
 ```csharp
   const int timeoutSecs = 60;
@@ -167,37 +167,37 @@ Tady je další příklad, který se dotazuje na stav clusteru a události všec
 
 ## <a name="sample-scenarios-and-queries"></a>Ukázkové scénáře a dotazy
 
-Tady je několik příkladů, jak můžete volat rozhraní REST API úložiště událostí, abyste pochopili stav clusteru.
+Zde je několik příkladů, jak můžete volat rest API úložiště událostí pochopit stav clusteru.
 
 *Upgrady clusteru:*
 
-Pokud chcete zjistit, kdy byl cluster naposledy úspěšně nebo jste se pokusili upgradovat minulý týden, můžete zadat dotaz na rozhraní API pro nedávno dokončené upgrady na svůj cluster pomocí dotazování na události ClusterUpgradeCompleted v Eventstoru: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ClusterUpgradeCompleted`
+Chcete-li zobrazit poslední čas, kdy byl cluster úspěšně nebo se pokusil o upgrade minulý týden, můžete dotaz ovat api pro nedávno dokončené upgrady do clusteru dotazem na události "ClusterUpgradeCompleted" v EventStore:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ClusterUpgradeCompleted`
 
 *Problémy s upgradem clusteru:*
 
-Podobně, pokud došlo k potížím s nedávným upgradem clusteru, mohli byste zadat dotaz na všechny události pro entitu clusteru. Zobrazí se různé události, včetně zahájení upgradů a všech UD, pro které byl upgrade úspěšně zahrnut. Zobrazí se také události pro bod, ve kterém bylo vráceno zpět a odpovídající události stavu. Tady je dotaz, který byste měli použít: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
+Podobně pokud došlo k problémům s nedávnou inovaci clusteru, můžete dotaz na všechny události pro entitu clusteru. Uvidíte různé události, včetně zahájení upgradů a každé ud, pro které upgrade úspěšně prošel. Zobrazí se také události pro bod, ve kterém bylo zahájeno vrácení zpět a odpovídající události stavu. Zde je dotaz, který byste použili pro toto:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
 *Změny stavu uzlu:*
 
-Chcete-li zobrazit změny stavu uzlu za posledních několik dní – když se uzly nacházely nahoru nebo dolů nebo byly aktivovány nebo dezaktivovány (buď platformou, službou chaos nebo uživatelským vstupem), použijte následující dotaz: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Nodes/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
+Chcete-li zobrazit změny stavu uzlu v posledních několika dnech - když uzly šly nahoru nebo dolů, nebo byly aktivovány nebo deaktivovány (buď platformou, službou chaos, nebo z uživatelského vstupu) - použijte následující dotaz:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Nodes/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
 *Události aplikace:*
 
-Můžete také sledovat vaše nedávná nasazení a upgrady aplikací. K zobrazení všech událostí aplikace v clusteru použijte následující dotaz: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
+Můžete také sledovat vaše poslední nasazení a upgrady aplikací. Všechny události aplikace v clusteru zobrazíte pomocí následujícího dotazu:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
-*Historický stav aplikace:*
+*Historické zdraví pro aplikaci:*
 
-Kromě toho, že se jenom zobrazují události životního cyklu aplikace, můžete taky chtít zobrazit historická data o stavu konkrétní aplikace. Můžete to provést tak, že zadáte název aplikace, pro kterou chcete data shromažďovat. Pomocí tohoto dotazu můžete získat všechny události stavu aplikace: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/myApp/$/Events?api-version=6.4&starttimeutc=2018-03-24T17:01:51Z&endtimeutc=2018-03-29T17:02:51Z&EventsTypesFilter=ApplicationNewHealthReport`. Pokud chcete zahrnout události stavu, jejichž platnost vypršela (neprošla doba TTL (Time to Live)), přidejte `,ApplicationHealthReportExpired` na konec dotazu, abyste mohli filtrovat dva typy událostí.
+Kromě pouze zobrazení událostí životního cyklu aplikace můžete také chtít zobrazit historická data o stavu konkrétní aplikace. To lze provést zadáním názvu aplikace, pro který chcete shromažďovat data. Tento dotaz slouží k získání všech `https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/myApp/$/Events?api-version=6.4&starttimeutc=2018-03-24T17:01:51Z&endtimeutc=2018-03-29T17:02:51Z&EventsTypesFilter=ApplicationNewHealthReport`událostí stavu aplikace: . Pokud chcete zahrnout události stavu, které mohou mít vypršela (pryč uplynulý `,ApplicationHealthReportExpired` jejich čas žít (TTL)), přidejte na konec dotazu, filtrovat na dva typy událostí.
 
-*Historická služba pro všechny služby v "myApp":*
+*Historické zdraví pro všechny služby v "myApp":*
 
-V současné době se události sestav stavu pro služby zobrazují jako události `DeployedServicePackageNewHealthReport` pod odpovídající entitou aplikace. Pokud chcete zjistit, jak vaše služby prováděly "app1", použijte následující dotaz: `https://winlrc-staging-10.southcentralus.cloudapp.azure.com:19080/EventsStore/Applications/myapp/$/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=DeployedServicePackageNewHealthReport`
+Události sestavy stavu pro služby `DeployedServicePackageNewHealthReport` se v současné době zobrazují jako události v rámci příslušné entity aplikace. Chcete-li zjistit, jak si vaše služby vedou pro "App1", použijte následující dotaz:`https://winlrc-staging-10.southcentralus.cloudapp.azure.com:19080/EventsStore/Applications/myapp/$/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=DeployedServicePackageNewHealthReport`
 
-*Konfigurace oddílu:*
+*Změna konfigurace oddílu:*
 
-Pokud chcete zobrazit všechny přesuny oddílů, ke kterým došlo v clusteru, dotaz na událost `PartitionReconfigured`. To vám může při diagnostikování problémů v clusteru zjistit, jaké úlohy běžely v konkrétní době. Tady je ukázkový dotaz, který umožňuje: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Partitions/Events?api-version=6.4&starttimeutc=2018-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=PartitionReconfigured`
+Chcete-li zobrazit všechny přesuny oddílu, ke `PartitionReconfigured` kterým došlo v clusteru, dotaz na událost. To vám může pomoci zjistit, jaké úlohy běžel na kterém uzlu v určitých časech, při diagnostice problémů v clusteru. Zde je ukázkový dotaz, který to dělá:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Partitions/Events?api-version=6.4&starttimeutc=2018-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=PartitionReconfigured`
 
-*Služba chaos:*
+*Služba Chaos:*
 
-Existuje událost pro případ, že je služba chaos spuštěná nebo zastavená, která je vystavená na úrovni clusteru. Pokud chcete zobrazit poslední použití služby chaos, použijte následující dotaz: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ChaosStarted,ChaosStopped`
+Je událost pro při spuštění nebo zastavení služby Chaos, která je vystavena na úrovni clusteru. Chcete-li zobrazit nedávné použití služby Chaos, použijte následující dotaz:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ChaosStarted,ChaosStopped`
 

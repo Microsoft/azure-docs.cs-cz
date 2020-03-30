@@ -1,29 +1,29 @@
 ---
 title: Simulace chyb v aplikacích Azure Service Fabric
-description: Přečtěte si, jak posílit vaše služby Azure Service Fabric před řádnými a nedarovanými chybami.
+description: Přečtěte si, jak posílit vaše služby Azure Service Fabric proti řádné a ungraceful selhání.
 author: anmolah
 ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: anmola
 ms.openlocfilehash: d3d9f6478336c59adb875bf21438d5ffa457b1d4
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645986"
 ---
-# <a name="simulate-failures-during-service-workloads"></a>Simulace chyb během zatížení služeb
-Scénáře testování v Azure Service Fabric umožňují vývojářům bez obav řešit jednotlivé chyby. Existují však situace, kdy může být potřeba explicitní prokládání úloh a selhání klienta. Prokládání zatížení a chyb klienta zajišťuje, že služba skutečně provádí určitou akci, když dojde k selhání. Vzhledem k úrovni řízení, které poskytuje testování, by mohly být v přesném bodě provádění úlohy. Tento počet chyb v různých stavech aplikace může najít chyby a zlepšit kvalitu.
+# <a name="simulate-failures-during-service-workloads"></a>Simulace selhání během úloh služby
+Scénáře testovatelnosti ve službě Azure Fabric umožňují vývojářům nestarat se o řešení jednotlivých chyb. Existují však scénáře, kde může být potřeba explicitní prokládání zatížení klienta a selhání. Prokládání zatížení klienta a chyb zajišťuje, že služba skutečně provádí některé akce, když dojde k selhání. Vzhledem k úrovni kontroly, kterou poskytuje testovatelnost, mohou být v přesných bodech provádění úlohy. Tato indukce chyb v různých stavech v aplikaci může najít chyby a zlepšit kvalitu.
 
-## <a name="sample-custom-scenario"></a>Ukázka vlastního scénáře
-Tento test znázorňuje scénář, který ponechá pracovní úlohu s [řádnými a nedarovanými chybami](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions). Chyby by se měly vystavit za provozu služeb nebo výpočetních prostředků pro dosažení nejlepších výsledků.
+## <a name="sample-custom-scenario"></a>Ukázkový vlastní scénář
+Tento test ukazuje scénář, který interleaves obchodní zatížení s [řádné a ungraceful selhání](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions). Chyby by měly být vyvolány uprostřed operací služby nebo vypočítat pro dosažení nejlepších výsledků.
 
-Podívejme se na příklad služby, která zveřejňuje čtyři úlohy: A, B, C a D. Každá z nich odpovídá sadě pracovních postupů a může být COMPUTE, úložiště nebo kombinace. V zájmu jednoduchosti se v našem příkladu vyčerpá úlohy. K různým chybám provedeným v tomto příkladu patří:
+Pojďme projít příklad služby, která zveřejňuje čtyři úlohy: A, B, C a D. Každý odpovídá sadě pracovních postupů a může být výpočetní, úložiště nebo mix. V zájmu jednoduchosti, budeme abstraktní z úlohy v našem příkladu. Různé chyby provedené v tomto příkladu jsou:
 
-* RestartNode: nedarovaná chyba pro simulaci restartování počítače.
-* RestartDeployedCodePackage: nedarovaná chyba pro simulaci selhání procesu hostitele služby.
-* RemoveReplica: plynulé selhání pro simulaci odebrání repliky.
-* Operace moveprimary: plynulá chyba pro simulaci přesunutí repliky spouštěného nástrojem Service Fabric Load Balancer.
+* RestartNode: Ungraceful chyba simulovat restartování počítače.
+* RestartDeployedCodePackage: Ungraceful chyba simulovat proces u hostitele služby havaruje.
+* RemoveReplica: Elegantní chyba simulovat odstranění repliky.
+* MovePrimary: Elegantní chyba simulovat repliky přesune spuštěna service fabric vyrovnávání zatížení.
 
 ```csharp
 // Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.

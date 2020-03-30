@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 98f9e0377e560fa0bba2fd470ff01431b2ed21d9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175447"
 ---
-| Port č.| Snížení nebo navýšení kapacity | Rozsah portů| Požaduje se|   Poznámky |   |
+| Port č.| Dovnitř nebo ven | Rozsah portu| Požaduje se|   Poznámky |   |
 |--------|-----|-----|-----------|----------|-----------|
-| TCP 80 (HTTP)|navýšení kapacity|WAN |Ne|Odchozí port se používá pro přístup k Internetu pro načtení aktualizací. <br>Odchozí webový proxy server je konfigurovatelná uživatelem. |
-| TCP 443 (HTTPS)|navýšení kapacity|WAN|Ano|Odchozí port se používá pro přístup k datům v cloudu.<br>Odchozí webový proxy server je konfigurovatelná uživatelem.|
-| UDP 123 (NTP)|navýšení kapacity|WAN|V některých případech<br>Viz poznámky|Tento port je požadován, pouze v případě, že používáte NTP server s procesorem na Internetu.  |   
-| UDP 53 (DNS)|navýšení kapacity|WAN|V některých případech<br>Viz poznámky|Tento port je povinný, jenom v případě, že používáte DNS server s procesorem na Internetu.<br>Doporučujeme používat místní server DNS. |
-| TCP 5985 (WinRM)|Out nebo přihlášení.|LAN|V některých případech<br>Viz poznámky|Tento port se nejde připojit k zařízení pomocí vzdáleného prostředí PowerShell přes protokol HTTP.  |
-| UDP 67 (DHCP)|navýšení kapacity|LAN|V některých případech<br>Viz poznámky|Tento port je povinný, jenom v případě, že používáte místní server DHCP.  |
-| TCP 80 (HTTP)|Out nebo přihlášení.|LAN|Ano|Toto je příchozí port pro místní uživatelské rozhraní na zařízení pro místní správu. <br>Přístup k místním uživatelského rozhraní pomocí protokolu HTTP bude automaticky přesměrovat na protokol HTTPS.  |
-| TCP 443 (HTTPS)|Out nebo přihlášení.|LAN|Ano|Toto je příchozí port pro místní uživatelské rozhraní na zařízení pro místní správu. |
-| TCP 445 (SMB)|V|LAN|V některých případech<br>Viz poznámky|Tento port je povinný, jenom v případě, že se připojujete přes SMB. |
-| TCP 2049 (NFS)|V|LAN|V některých případech<br>Viz poznámky|Tento port je povinný, jenom v případě, že se připojujete pomocí systému souborů NFS. |
+| Protokol TCP 80 (HTTP)|Out|Síť WAN |Ne|Odchozí port se používá pro přístup k Internetu k načtení aktualizací. <br>Odchozí webový proxy server lze konfigurovat uživatelem. |
+| Protokol TCP 443 (HTTPS)|Out|Síť WAN|Ano|Odchozí port se používá pro přístup k datům v cloudu.<br>Odchozí webový proxy server lze konfigurovat uživatelem.|
+| UDP 123 (NTP)|Out|Síť WAN|V některých případech<br>Zobrazit poznámky|Tento port je vyžadován pouze v případě, že používáte internetový server NTP.  |   
+| UDP 53 (DNS)|Out|Síť WAN|V některých případech<br>Zobrazit poznámky|Tento port je vyžadován pouze v případě, že používáte internetový server DNS.<br>Doporučujeme používat místní DNS server. |
+| TCP 5985 (WinRM)|Ven/Dovnitř|LAN|V některých případech<br>Zobrazit poznámky|Tento port je nutný pro připojení k zařízení prostřednictvím vzdáleného prostředí PowerShell přes PROTOKOL HTTP.  |
+| UDP 67 (DHCP)|Out|LAN|V některých případech<br>Zobrazit poznámky|Tento port je vyžadován pouze v případě, že používáte místní server DHCP.  |
+| Protokol TCP 80 (HTTP)|Ven/Dovnitř|LAN|Ano|Tento port je vstupní port pro místní rozhraní v zařízení pro místní správu. <br>Přístup k místnímu ui přes HTTP se automaticky přesměruje na protokol HTTPS.  |
+| Protokol TCP 443 (HTTPS)|Ven/Dovnitř|LAN|Ano|Tento port je vstupní port pro místní rozhraní v zařízení pro místní správu. |
+| TCP 445 (SMB)|V|LAN|V některých případech<br>Zobrazit poznámky|Tento port je vyžadován pouze v případě, že se připojujete přes SMB. |
+| TCP 2049 (NFS)|V|LAN|V některých případech<br>Zobrazit poznámky|Tento port je vyžadován pouze v případě, že se připojujete prostřednictvím služby NFS. |

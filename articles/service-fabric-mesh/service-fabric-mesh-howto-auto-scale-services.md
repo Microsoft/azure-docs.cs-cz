@@ -1,33 +1,33 @@
 ---
-title: Automatické škálování aplikace běžící v Azure Service Fabric sítě
-description: Zjistěte, jak nakonfigurovat zásady automatického škálování služby Service Fabric mřížky aplikace.
+title: Automatické škálování aplikace spuštěné v síti Azure Service Fabric Mesh
+description: Zjistěte, jak nakonfigurovat zásady automatického škálování pro služby aplikace Service Fabric Mesh.
 author: dkkapur
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: fb72806dd7ba838ba7170bda409715bc074e1d99
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75461974"
 ---
-# <a name="create-autoscale-policies-for-a-service-fabric-mesh-application"></a>Vytvořit zásady automatického škálování pro aplikaci Service Fabric mřížky
-Jednou z hlavních výhod nasazení aplikací do Service Fabric sítě je možnost snadného škálování služeb v systému nebo. Tato služba by se měla používat ke zpracování proměnlivých objemů zatížení vašich služeb nebo ke zlepšení dostupnosti. Můžete ručně škálovat služby snížení nebo navýšení kapacity nebo nastavení zásad pro automatické škálování.
+# <a name="create-autoscale-policies-for-a-service-fabric-mesh-application"></a>Vytvoření zásad automatického škálování pro aplikaci Service Fabric Mesh
+Jednou z hlavních výhod nasazení aplikací do sítě Service Fabric mesh je možnost snadnéškálování služeb v aplikaci nebo venku. To by mělo být použito pro zpracování různé množství zatížení vašich služeb nebo zlepšení dostupnosti. Můžete ručně škálovat služby v nebo out nebo nastavit zásady automatického škálování.
 
-[Automatické škálování](service-fabric-mesh-scalability.md#autoscaling-service-instances) umožňuje dynamicky škálovat počet instancí služby (horizontální škálování). Automatické škálování poskytuje skvělé pružnost a umožňuje zřizování nebo odebrání instancí služby na základě využití procesoru nebo paměti.
+[Automatické škálování](service-fabric-mesh-scalability.md#autoscaling-service-instances) umožňuje dynamicky škálovat počet instancí služby (horizontální škálování). Automatické škálování poskytuje velkou pružnost a umožňuje zřizování nebo odebrání instancí služby na základě využití procesoru nebo paměti.
 
-## <a name="options-for-creating-an-auto-scaling-policy-trigger-and-mechanism"></a>Možnosti pro vytvoření automatického škálování zásad, aktivační události a mechanismus
-Automatické škálování zásad je definována pro každou službu, kterou chcete škálovat. Zásady je definována v souboru prostředků služby YAML nebo JSON šablonu nasazení. Každé zásady škálování se skládá ze dvou částí: aktivační události a škálování mechanismus.
+## <a name="options-for-creating-an-auto-scaling-policy-trigger-and-mechanism"></a>Možnosti pro vytvoření zásadautomatického škálování, aktivační události a mechanismu
+Zásady automatického škálování jsou definovány pro každou službu, kterou chcete škálovat. Zásada je definována v souboru prostředků služby YAML nebo v šabloně nasazení JSON. Každá zásada škálování se skládá ze dvou částí: aktivační událost a mechanismus škálování.
 
-Aktivační událost definuje, kdy je vyvolána zásadu automatického škálování.  Zadejte typ aktivační události (průměrné zatížení) a metriku k monitorování (CPU, paměť).  Horní a dolní zatížení prahovými hodnotami určenými v procentech. Interval škálování definuje, jak často (v sekundách) Zkontrolujte zadaný využití (jako je průměrné zatížení CPU) napříč všemi instancemi aktuálně nasazená služba.  Mechanismu, který se aktivuje, když monitorovaných metrika poklesne pod nižší prahovou hodnotu nebo vyšší než horní prahová hodnota se zvyšuje.  
+Aktivační událost definuje, když je vyvolána zásada automatického škálování.  Určete druh aktivační události (průměrné zatížení) a metriku, kterou chcete sledovat (procesor nebo paměť).  Horní a dolní prahy zatížení zadané v procentech. Interval škálování definuje, jak často kontrolovat (v sekundách) zadané využití (například průměrné zatížení procesoru) ve všech aktuálně nasazených instancích služby.  Mechanismus se spustí, když monitorovaná metrika klesne pod dolní prahovou hodnotu nebo se zvýší nad horní prahovou hodnotu.  
 
-Škálování mechanismu, který definuje, jak škálování operaci provést, pokud zásada se aktivuje.  Určit druh mechanismu (Přidat/odebrat repliky), replika minimální a maximální počty (jako celá čísla).  Počet replik služby bude škálovat nikdy pod minimální počet nebo vyšší než maximální počet.  Zvýšení škálování můžete také zadejte jako celé číslo, což je počet replik, které budou přidány nebo odebrány při operaci škálování.  
+Mechanismus škálování definuje, jak provést operaci škálování při aktivaci zásady.  Zadejte druh mechanismu (přidat nebo odebrat repliku), minimální a maximální počet replik (jako celá čísla).  Počet replik služby nikdy nebude škálovat pod minimální počet nebo vyšší než maximální počet.  Také určete přírůstek měřítka jako celé číslo, což je počet replik, které budou přidány nebo odebrány v operaci škálování.  
 
-## <a name="define-an-auto-scaling-policy-in-a-json-template"></a>Definovat automaticky zásady škálování v šabloně JSON
+## <a name="define-an-auto-scaling-policy-in-a-json-template"></a>Definování zásad automatického škálování v šabloně JSON
 
-Následující příklad ukazuje zásadu automatického škálování v nasazení šablony JSON.  Zásady automatického škálování je deklarován ve vlastnosti služby škálování.  V tomto příkladu je definován trigger průměrné zatížení CPU.  Mechanismu, který se aktivuje, pokud se průměrné zatížení CPU všechny nasazené instance zhoršení pod 0.2 (20 %) nebo přejde nad 0,8 (80 %).  Zatížení procesoru se kontroluje každých 60 sekund.  Škálování mechanismu, který je definován přidávala nebo odebírala instance, pokud zásada se aktivuje.  Instance služby budou přidány nebo odebrány v přírůstcích po jedné.  Minimální počet instancí jedné, maximální počet instancí 40 je také definován.
+Následující příklad ukazuje zásady automatického škálování v šabloně nasazení JSON.  Zásady automatického škálování je deklarována ve vlastnosti služby, která má být škálována.  V tomto příkladu je definována aktivační událost průměrného zatížení procesoru.  Mechanismus se spustí, pokud průměrné zatížení procesoru všech nasazených instancí klesne pod 0,2 (20 %) nebo jde nad 0,8 (80 %).  Zatížení procesoru je kontrolováno každých 60 sekund.  Mechanismus škálování je definován pro přidání nebo odebrání instancí, pokud je zásada spuštěna.  Instance služby budou přidány nebo odebrány v přírůstcích po jednom.  Minimální počet instancí jeden a maximální počet instancí 40 je také definován.
 
 ```json
 {
@@ -79,8 +79,8 @@ Následující příklad ukazuje zásadu automatického škálování v nasazen�
 }
 ```
 
-## <a name="define-an-autoscale-policy-in-a-serviceyaml-resource-file"></a>Definovat zásady automatického škálování v souboru prostředků service.yaml
-Následující příklad ukazuje zásadu automatického škálování v souboru prostředků (YAML) služby.  Zásady automatického škálování je deklarován jako vlastnost službu škálovat.  V tomto příkladu je definován trigger průměrné zatížení CPU.  Mechanismu, který se aktivuje, pokud se průměrné zatížení CPU všechny nasazené instance zhoršení pod 0.2 (20 %) nebo přejde nad 0,8 (80 %).  Zatížení procesoru se kontroluje každých 60 sekund.  Škálování mechanismu, který je definován přidávala nebo odebírala instance, pokud zásada se aktivuje.  Instance služby budou přidány nebo odebrány v přírůstcích po jedné.  Minimální počet instancí jedné, maximální počet instancí 40 je také definován.
+## <a name="define-an-autoscale-policy-in-a-serviceyaml-resource-file"></a>Definování zásad automatického škálování v souboru prostředků service.yaml
+Následující příklad ukazuje zásady automatického škálování v souboru prostředků služby (YAML).  Zásady automatického škálování je deklarována jako vlastnost služby, která má být škálována.  V tomto příkladu je definována aktivační událost průměrného zatížení procesoru.  Mechanismus se spustí, pokud průměrné zatížení procesoru všech nasazených instancí klesne pod 0,2 (20 %) nebo jde nad 0,8 (80 %).  Zatížení procesoru je kontrolováno každých 60 sekund.  Mechanismus škálování je definován pro přidání nebo odebrání instancí, pokud je zásada spuštěna.  Instance služby budou přidány nebo odebrány v přírůstcích po jednom.  Minimální počet instancí jeden a maximální počet instancí 40 je také definován.
 
 ```yaml
 ## Service definition ##
@@ -115,4 +115,4 @@ application:
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Zjistěte, jak [ruční škálování služby](service-fabric-mesh-tutorial-template-scale-services.md)
+Přečtěte si, jak [ručně škálovat službu](service-fabric-mesh-tutorial-template-scale-services.md)

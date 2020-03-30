@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s připojením VPN typu Site-to-site k výpadku
-description: Naučte se, jak řešit potíže s tím, že připojení VPN typu Site-to-site se pravidelně odpojí.
+title: Poradce při potížích s azure site-to-site VPN odpojí občas
+description: Přečtěte si, jak vyřešit problém, kdy se připojení VPN site-to-Site pravidelně odpojilo.
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: chadmath
@@ -9,63 +9,63 @@ ms.topic: troubleshooting
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 82054099a5a496e99c49135ab98ee1163af19784
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75862556"
 ---
-# <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Řešení potíží: síť VPN typu Site-to-site se odpojí občas
+# <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Řešení potíží: Azure Site-to-Site VPN odpojuje občas
 
-Může dojít k problému s tím, že nové nebo existující Microsoft Azure připojení VPN typu Site-to-site není pravidelně stabilní nebo se odpojuje. Tento článek popisuje kroky pro řešení potíží, které vám pomůžou identifikovat a vyřešit příčinu problému. 
+Může se vyskytnat problém, že nové nebo stávající připojení VPN mezi lokalitami microsoft azure není stabilní nebo se pravidelně odpojuje. Tento článek obsahuje kroky pro řešení potíží, které vám pomohou identifikovat a vyřešit příčinu problému. 
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="troubleshooting-steps"></a>Postup při řešení potíží
 
-### <a name="prerequisite-step"></a>Krok požadovaných součástí
+### <a name="prerequisite-step"></a>Předpokladkrok
 
-Ověřte typ brány virtuální sítě Azure:
+Zkontrolujte typ brány virtuální sítě Azure:
 
-1. Přejít na [Azure Portal](https://portal.azure.com).
-2. Informace o typu najdete na stránce s **přehledem** brány virtuální sítě.
+1. Přejděte na [portál Azure](https://portal.azure.com).
+2. Informace o typu na stránce **Přehled** brány virtuální sítě najdete.
     
     ![Přehled brány](media/vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently/gatewayoverview.png)
 
-### <a name="step-1-check-whether-the-on-premises-vpn-device-is-validated"></a>Krok 1: ověření, jestli je místní zařízení VPN ověřené
+### <a name="step-1-check-whether-the-on-premises-vpn-device-is-validated"></a>Krok 1 Kontrola, zda je místní zařízení VPN ověřeno
 
-1. Ověřte, zda používáte [ověřené zařízení VPN a verzi operačního systému](vpn-gateway-about-vpn-devices.md#devicetable). Pokud se zařízení VPN neověřuje, možná budete muset kontaktovat výrobce zařízení a zjistit, jestli došlo k nějakému problému s kompatibilitou.
-2. Ujistěte se, že je zařízení VPN správně nakonfigurované. Další informace najdete v tématu [Úprava ukázek konfigurace zařízení](vpn-gateway-about-vpn-devices.md#editing).
+1. Zkontrolujte, zda používáte [ověřené zařízení VPN a verzi operačního systému](vpn-gateway-about-vpn-devices.md#devicetable). Pokud zařízení VPN není ověřeno, bude pravděpodobně muset kontaktovat výrobce zařízení a zjistit, zda došlo k nějakému problému s kompatibilitou.
+2. Zkontrolujte, zda je zařízení VPN správně nakonfigurováno. Další informace naleznete [v tématu Úpravy ukončovacích vzorků zařízení](vpn-gateway-about-vpn-devices.md#editing).
 
-### <a name="step-2-check-the-security-association-settingsfor-policy-based-azure-virtual-network-gateways"></a>Krok 2: ověření nastavení přidružení zabezpečení (pro brány virtuální sítě Azure založené na zásadách)
+### <a name="step-2-check-the-security-association-settingsfor-policy-based-azure-virtual-network-gateways"></a>Krok 2 Zkontrolujte nastavení přidružení zabezpečení (pro brány virtuální sítě Azure založené na zásadách)
 
-1. Zajistěte, aby byla virtuální síť, podsítě a rozsahy v definici **brány místní sítě** v Microsoft Azure stejné jako konfigurace na místním zařízení VPN.
-2. Ověřte, že se nastavení přidružení zabezpečení shodují.
+1. Ujistěte se, že virtuální síť, podsítě a rozsahy v **definici místní síťové brány** v Microsoft Azure jsou stejné jako konfigurace na místním zařízení VPN.
+2. Ověřte, zda se nastavení přidružení zabezpečení shodují.
 
-### <a name="step-3-check-for-user-defined-routes-or-network-security-groups-on-gateway-subnet"></a>Krok 3: Vyhledání tras definovaných uživatelem nebo skupin zabezpečení sítě v podsíti brány
+### <a name="step-3-check-for-user-defined-routes-or-network-security-groups-on-gateway-subnet"></a>Krok 3 Kontrola uživatelem definovaných tras nebo skupin zabezpečení sítě v podsíti brány
 
-Trasa definovaná uživatelem v podsíti brány může omezit určitý provoz a povolit další provoz. Tím se zobrazí, že připojení VPN není pro určitý provoz a dobré pro ostatní funkční. 
+Uživatelem definovaná trasa v podsíti brány může omezovat určitý provoz a povolovat jiný provoz. Díky tomu se zdá, že připojení VPN je nespolehlivé pro některé přenosy a dobré pro ostatní. 
 
-### <a name="step-4-check-the-one-vpn-tunnel-per-subnet-pair-setting-for-policy-based-virtual-network-gateways"></a>Krok 4: nastavení jedné dvojice tunelového propojení VPN na jednu podsíť (pro brány virtuální sítě založené na zásadách)
+### <a name="step-4-check-the-one-vpn-tunnel-per-subnet-pair-setting-for-policy-based-virtual-network-gateways"></a>Krok 4 Zkontrolujte nastavení "jeden tunel ový tunel VPN na pár podsítě" (pro brány virtuálnísítě založené na zásadách)
 
-Ujistěte se, že místní zařízení VPN je nastavené tak, aby pro brány virtuální sítě založené na zásadách mělo **jednu dvojici tunelu VPN na podsíť** .
+Ujistěte se, že místní zařízení VPN je nastaveno tak, aby pro brány virtuálnísítě založené na zásadách bylo mít **jeden tunelové propojení VPN na dvojici podsítě.**
 
-### <a name="step-5-check-for-security-association-limitation-for-policy-based-virtual-network-gateways"></a>Krok 5: ověření omezení přidružení zabezpečení (pro brány virtuální sítě založené na zásadách)
+### <a name="step-5-check-for-security-association-limitation-for-policy-based-virtual-network-gateways"></a>Krok 5 Kontrola omezení přidružení zabezpečení (pro brány virtuálnísítě založené na zásadách)
 
-Brána virtuální sítě založená na zásadách má omezení 200 párů přidružení zabezpečení podsítě. Pokud je počet podsítí virtuální sítě Azure vynásobený časem podle počtu místních podsítí větší než 200, zobrazí se občas odpojování podsítí.
+Brána virtuální sítě založená na zásadách má limit 200 párů přidružení zabezpečení podsítě. Pokud je počet podsítí virtuální sítě Azure vynásobený časy počtem místních podsítí je větší než 200, zobrazí se sporadické odpojení podsítí.
 
-### <a name="step-6-check-on-premises-vpn-device-external-interface-address"></a>Krok 6: místní adresa externího rozhraní zařízení VPN
+### <a name="step-6-check-on-premises-vpn-device-external-interface-address"></a>Krok 6 Kontrola adresy externího rozhraní zařízení VPN v místním prostředí
 
-- Pokud je internetová IP adresa zařízení VPN zahrnutá v definici **brány místní sítě** v Azure, může docházet ke občasnému odpojení.
-- Externí rozhraní zařízení musí být přímo na internetu. Mezi Internetem a zařízením by neměl být překlad síťových adres (NAT) ani brána firewall.
--  Pokud nakonfigurujete clustering brány firewall tak, aby měl virtuální IP adresu, musíte cluster přerušit a vystavit zařízení VPN přímo veřejnému rozhraní, se kterým může Brána rozhraní používat.
+- Pokud je ip adresa ip zařízení VPN, která se blíží internetu, zahrnuta v definici **místní síťové brány** v Azure, může docházet k sporadickým odpojením.
+- Externí rozhraní zařízení musí být přímo na Internetu. Mezi Internetem a zařízením by neměl být žádný překlad síťových adres (NAT) ani brána firewall.
+-  Pokud nakonfigurujete clustering brány firewall tak, aby měl virtuální IP adresu, musíte cluster přerušit a vystavit zařízení VPN přímo do veřejného rozhraní, se kterým může brána komunikovat.
 
-### <a name="step-7-check-whether-the-on-premises-vpn-device-has-perfect-forward-secrecy-enabled"></a>Krok 7: ověření, zda má místní zařízení VPN povolené Perfect Forward Secrecy
+### <a name="step-7-check-whether-the-on-premises-vpn-device-has-perfect-forward-secrecy-enabled"></a>Krok 7 Zkontrolujte, zda je v místním zařízení VPN povoleno dokonalé utajení vpřed
 
-Funkce **Perfect Forward Secrecy** může způsobit problémy s odpojením. Pokud má zařízení VPN povolené PFS ( **Perfect Forward Secrecy** ), zakažte tuto funkci. Pak [Aktualizujte zásady protokolu IPSec brány virtuální sítě](vpn-gateway-ipsecikepolicy-rm-powershell.md#managepolicy).
+Funkce **Perfect Forward Secrecy** může způsobit problémy s odpojením. Pokud je v zařízení VPN povoleno **dokonalé utajení vpřed,** zakažte tuto funkci. Potom [aktualizujte zásady ipsec brány virtuální sítě](vpn-gateway-ipsecikepolicy-rm-powershell.md#managepolicy).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Konfigurace připojení typu Site-to-site k virtuální síti](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-- [Konfigurace zásad IPsec/IKE pro připojení VPN typu Site-to-site](vpn-gateway-ipsecikepolicy-rm-powershell.md)
+- [Konfigurace připojení site-to-site k virtuální síti](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+- [Konfigurace zásad Protokolu IPsec/IKE pro připojení VPN mezi lokalitami](vpn-gateway-ipsecikepolicy-rm-powershell.md)
 

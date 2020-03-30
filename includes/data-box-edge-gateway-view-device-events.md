@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 0d47137e3149563903d4adcaaf34e72ddad043f7
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67175456"
 ---
-Pomocí následujících kroků na webu Azure Portal do zobrazení zařízení události.
+Chcete-li zobrazit událost zařízení, postupujte na webu Azure Portal následujícím postupem.
 
-1. Na webu Azure Portal, přejděte na hranici vaší zařízení Data Box / prostředku brány dat pole a potom přejděte na **monitorování > události zařízení**.
-2. Vyberte události a zobrazení podrobností výstrah. Proveďte příslušné akce k vyřešení se vyskytl výstražný stav.
+1. Na webu Azure Portal přejděte na prostředek Data Box Edge/ Data Box Gateway a potom na **Sledování událostí > zařízení**.
+2. Vyberte událost a zobrazte podrobnosti výstrahy. Přijmout vhodná opatření k vyřešení stavu výstrahy.
 
-    ![Vyberte události a zobrazení podrobností](media/data-box-edge-gateway-view-device-events/view-device-events.png)
+    ![Výběr podrobností o události a zobrazení](media/data-box-edge-gateway-view-device-events/view-device-events.png)

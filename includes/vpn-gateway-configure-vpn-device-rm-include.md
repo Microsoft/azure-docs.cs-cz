@@ -9,10 +9,10 @@ ms.date: 02/14/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 886fa6c088f2fbabb3d3ba1cd0b15bbc488784f3
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67174826"
 ---
 **Stažení konfiguračních skriptů zařízení VPN:**
@@ -27,7 +27,7 @@ V závislosti na vašem zařízení VPN možná budete moct stáhnut konfigurač
 
 - Odkazy na nastavení konfigurace zařízení najdete v popisu [ověřených zařízení VPN](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable). Při poskytování odkazů na konfigurace zařízení se snažíme maximálně vyhovět. Vždycky je nejlepší obrátit se na výrobce zařízení a vyžádat si nejnovější informace o konfiguraci. V seznamu se zobrazí verze, které jsme testovali. Verze může být kompatibilní i v případě, že se váš operační systém v seznamu nezobrazí. Obraťte se na výrobce vašeho zařízení a ověřte kompatibilitu verze operačního systému pro vaše zařízení VPN.
 
-- Přehled konfigurace zařízení VPN najdete v tématu [přehled o konfiguraci zařízení VPN](../articles/vpn-gateway/vpn-gateway-3rdparty-device-config-overview.md).
+- Přehled konfigurace zařízení VPN najdete v tématu [Přehled konfigurace zařízení VPN](../articles/vpn-gateway/vpn-gateway-3rdparty-device-config-overview.md).
 
 - Informace o úpravách ukázek konfigurace zařízení najdete v tématu popisujícím [úpravy ukázek](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#editing).
 

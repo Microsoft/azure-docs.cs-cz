@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: ff7ba04271c150018f2c55b62e40542a686608cf
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67175517"
 ---
-## <a name="create-client"></a>Vytvoření připojení klienta
+## <a name="create-a-client-connection"></a><a name="create-client"></a>Vytvoření připojení klienta
 Vytvořte připojení klienta tak, že vytvoříte objekt `WindowsAzure.MobileServiceClient`.  Nahraďte `appUrl` adresou URL vaší mobilní aplikace.
 
 ```javascript
 var client = WindowsAzure.MobileServiceClient(appUrl);
 ```
 
-## <a name="table-reference"></a>Práce s tabulkami
+## <a name="work-with-tables"></a><a name="table-reference"></a>Práce s tabulkami
 Pro přístup k datům a jejich aktualizaci vytvořte odkaz na back-endovou tabulku. Nahraďte `tableName` názvem vaší tabulky.
 
 ```javascript
@@ -35,7 +35,7 @@ Jakmile budete mít odkaz na tabulku, můžete s ní dále pracovat:
 * [Úprava dat](#modifying)
 * [Odstranění dat](#deleting)
 
-### <a name="querying"></a>Jak: Dotazování odkazu na tabulku
+### <a name="how-to-query-a-table-reference"></a><a name="querying"></a>Postup: Dotazování odkazu na tabulku
 Jakmile budete mít odkaz na tabulku, můžete jej použít k dotazování na data na serveru.  Dotazy se sestavují v jazyce podobném jazyku LINQ.
 Pokud chcete vrátit všechna data z tabulky, použijte následující kód:
 
@@ -69,7 +69,7 @@ S výsledky se zavolá funkce success.  Nepoužívejte ve funkci success smyčku
 
 Další informace o syntaxi dotazu najdete v [Dokumentaci k objektu dotazu].
 
-#### <a name="table-filter"></a>Filtrování dat na serveru
+#### <a name="filtering-data-on-the-server"></a><a name="table-filter"></a>Filtrování dat na serveru
 Můžete použít klauzuli `where` na odkaz na tabulku:
 
 ```javascript
@@ -92,7 +92,7 @@ table
     .then(success, failure);
 ```
 
-#### <a name="table-paging"></a>Procházení dat po stránkách
+#### <a name="paging-through-data"></a><a name="table-paging"></a>Stránkování dat
 Použijte metody `take()` a `skip()`.  Pokud například chcete rozdělit tabulku na záznamy po stovkách řádků:
 
 ```javascript
@@ -120,7 +120,7 @@ Metoda `.includeTotalCount()` slouží k přidání pole totalCount do objektu v
 
 Následně můžete pomocí proměnné pages a několika tlačítek uživatelského rozhraní zobrazit seznam stránek. K načtení nových záznamů pro jednotlivé stránky použijte metodu `loadPage()`.  Pro rychlý přístup k již načteným záznamům implementujte ukládání do mezipaměti.
 
-#### <a name="sorting-data"></a>Jak: Vrácení seřazených dat
+#### <a name="how-to-return-sorted-data"></a><a name="sorting-data"></a>Postup: Vrácení seřazených dat
 Použijte metody dotazu `.orderBy()` nebo `.orderByDescending()`:
 
 ```javascript
@@ -132,7 +132,7 @@ table
 
 Další informace o objektu dotazu najdete v [Dokumentaci k objektu dotazu].
 
-### <a name="inserting"></a>Jak: Vložení dat
+### <a name="how-to-insert-data"></a><a name="inserting"></a>Postup: Vkládání dat
 Vytvořte objekt JavaScriptu s vhodným datem a asynchronně zavolejte metodu `table.insert()`:
 
 ```javascript
@@ -152,7 +152,7 @@ Po úspěšném vložení se vrátí vložená položka i s dalšími poli poža
 
 Sada Node.js Server SDK ve funkci Azure Mobile Apps podporuje dynamické schéma pro účely vývoje.  Dynamické schéma umožňuje přidávat do tabulky sloupce tak, že je zadáte v operaci insert nebo update.  Před nasazením aplikace do ostrého provozu doporučujeme dynamické schéma vypnout.
 
-### <a name="modifying"></a>Jak: Úprava dat
+### <a name="how-to-modify-data"></a><a name="modifying"></a>Postup: Úprava dat
 Podobně jako u metody `.insert()` byste měli vytvořit objekt aktualizace a pak zavolat metodu `.update()`.  Objekt aktualizace musí obsahovat ID záznamu, který se má aktualizovat – ID získáte při čtení záznamu nebo zavoláním metody `.insert()`.
 
 ```javascript
@@ -168,7 +168,7 @@ table
     }, failure);
 ```
 
-### <a name="deleting"></a>Jak: Odstranění dat
+### <a name="how-to-delete-data"></a><a name="deleting"></a>Postup: Odstranění dat
 Pokud chcete odstranit záznam, zavolejte metodu `.del()`.  V odkazu na objekt předejte ID:
 
 ```javascript

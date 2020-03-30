@@ -1,56 +1,56 @@
 ---
-title: Služby a kontejnery automatického škálování pro Azure Service Fabric
-description: Azure Service Fabric umožňuje nastavit zásady automatického škálování pro služby a kontejnery.
+title: Služby automatického škálování azure service fabric a kontejnery
+description: Azure Service Fabric umožňuje nastavit zásady automatickéškálování pro služby a kontejnery.
 author: radicmilos
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: miradic
 ms.openlocfilehash: 3660ece7add8f279292340aae9ab445b682fe045
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75452091"
 ---
 # <a name="introduction-to-auto-scaling"></a>Úvod do automatického škálování
-Automatické škálování je další možností Service Fabric dynamicky škálovat vaše služby na základě zatížení, které služby hlásí, nebo na základě využití prostředků. Automatické škálování dává velkou flexibilitu a umožňuje zřídit další instance nebo oddíly vaší služby na vyžádání. Celý proces automatického škálování je automatizovaný a transparentní a po nastavení zásad na službě není potřeba provádět operace ručního škálování na úrovni služby. Automatické škálování je možné zapnout buď při vytvoření služby, nebo kdykoli pomocí aktualizace služby.
+Automatické škálování je další možnost Service Fabric dynamicky škálovat služby na základě zatížení, které služby hlásí, nebo na základě jejich využití prostředků. Automatické škálování poskytuje velkou pružnost a umožňuje zřizování dalších instancí nebo oddílů služby na vyžádání. Celý proces automatického škálování je automatizovaný a transparentní a po nastavení zásad ve službě není nutné provádět ruční škálování na úrovni služby. Automatické škálování lze zapnout buď v době vytvoření služby, nebo kdykoli aktualizací služby.
 
-Běžným scénářem, kdy je vhodné automatické škálování, je, když se zatížení konkrétní služby v průběhu času mění. Například služba, jako je brána, se může škálovat na základě množství prostředků potřebných pro zpracování příchozích požadavků. Pojďme se podívat na příklad toho, co pravidla škálování můžou vypadat takto:
-* Pokud všechny instance mých bran v průměru používají více než dvě jádra, můžete službu brány škálovat tak, že přidáte ještě jednu instanci. Proveďte tuto akci každou hodinu, ale nikdy nepoužívejte celkem více než sedm instancí.
-* Pokud všechny instance mých bran využívají méně než 0,5 jader v průměru, pak službu Škálujte tak, že odeberete jednu instanci. Proveďte tuto akci každou hodinu, ale nikdy nemají celkem méně než tři instance.
+Běžný scénář, kde automatické škálování je užitečné je, když zatížení na konkrétní služby se liší v průběhu času. Například služba, jako je brána můžete škálovat na základě množství prostředků potřebných ke zpracování příchozích požadavků. Podívejme se na příklad toho, jak by tato pravidla škálování mohla vypadat:
+* Pokud všechny instance mé brány používají v průměru více než dvě jádra, pak škálujte službu brány přidáním další instance. Udělejte to každou hodinu, ale nikdy mít více než sedm instancí celkem.
+* Pokud všechny instance mé brány používají v průměru méně než 0,5 jader, pak škálujte službu odebráním jedné instance. Proveďte to každou hodinu, ale nikdy mít méně než tři instance celkem.
 
-Automatické škálování je podporováno pro kontejnery i pro běžné Service Fabric služby. Aby bylo možné používat automatické škálování, je třeba spustit na verzi 6,2 nebo vyšší Service Fabric modulu runtime. 
+Automatické škálování je podporováno pro kontejnery i pravidelné služby Service Fabric. Chcete-li použít automatické škálování, musíte být spuštěna na verzi 6.2 nebo vyšší service fabric runtime. 
 
-Zbývající část tohoto článku popisuje zásady škálování, způsoby, jak povolit nebo zakázat automatické škálování, a obsahuje příklady použití této funkce.
+Zbývající část tohoto článku popisuje zásady škálování, způsoby povolení nebo zakázání automatickéškálování a uvádí příklady použití této funkce.
 
-## <a name="describing-auto-scaling"></a>Popisující automatické škálování
-Zásady automatického škálování je možné definovat pro každou službu v clusteru Service Fabric. Každá zásada škálování se skládá ze dvou částí:
-* **Aktivační událost škálování** popisuje, kdy se bude provádět škálování služby. Podmínky definované v triggeru se pravidelně kontrolují, aby se zjistilo, jestli se má služba škálovat nebo ne.
+## <a name="describing-auto-scaling"></a>Popis automatického škálování
+Zásady automatického škálování lze definovat pro každou službu v clusteru Service Fabric. Každá zásada škálování se skládá ze dvou částí:
+* **Aktivační událost škálování** popisuje, kdy bude provedeno škálování služby. Podmínky, které jsou definovány v aktivační události jsou pravidelně kontrolovány k určení, zda služba by měla být škálována nebo ne.
 
-* **Mechanismus škálování** popisuje, jak se při aktivaci provede škálování. Mechanismus se aplikuje jenom v případě, že jsou splněné podmínky triggeru.
+* **Mechanismus škálování** popisuje, jak bude škálování provedeno při jeho aktivaci. Mechanismus se použije pouze v případě, že jsou splněny podmínky z aktivační události.
 
-Všechny aktivační události, které aktuálně podporují práci s [logickými metrikami zatížení](service-fabric-cluster-resource-manager-metrics.md), nebo s fyzickými metrikami, jako je využití CPU nebo paměti. V obou případech Service Fabric monitoruje nahlášené zatížení pro danou metriku a vyhodnotí Trigger pravidelně, aby bylo možné určit, jestli je potřeba škálování potřebovat.
+Všechny aktivační události, které jsou aktuálně podporovány pracovat buď s [metriky logické zatížení](service-fabric-cluster-resource-manager-metrics.md), nebo s fyzické metriky, jako je využití procesoru nebo paměti. V obou tak či onak service fabric bude sledovat hlášené zatížení pro metriku a bude pravidelně vyhodnocovat aktivační událost k určení, zda je potřeba škálování.
 
-Existují dva mechanismy, které jsou aktuálně podporovány pro automatické škálování. První z nich je určena pro bezstavové služby nebo pro kontejnery, kde se automatické škálování provádí přidáním nebo odebráním [instancí](service-fabric-concepts-replica-lifecycle.md). U stavových i bezstavových služeb je možné automatické škálování také provést přidáním nebo odebráním pojmenovaných [oddílů](service-fabric-concepts-partitioning.md) služby.
+Existují dva mechanismy, které jsou aktuálně podporovány pro automatické škálování. První z nich je určena pro bezstavové služby nebo pro kontejnery, kde se provádí automatické škálování přidáním nebo odebráním [instancí](service-fabric-concepts-replica-lifecycle.md). Pro stavové i bezstavové služby lze automatické škálování provádět také přidáním nebo odebráním pojmenovaných [oddílů služby.](service-fabric-concepts-partitioning.md)
 
 > [!NOTE]
-> V současné době podporuje jenom jednu zásadu škálování na službu a jenom jednu aktivační událost škálování podle zásad škálování.
+> V současné době je podpora pouze pro jednu zásadu škálování na službu a pouze jednu aktivační událost škálování na zásadu škálování.
 
-## <a name="average-partition-load-trigger-with-instance-based-scaling"></a>Průměrná zátěžová aktivační událost oddílu s škálováním založeným na instancích
-První typ triggeru vychází z zatížení instancí v oddílu bezstavové služby. Zatížení metriky jsou nejprve vyhlazené, aby získaly zatížení pro všechny instance oddílu, a tyto hodnoty jsou průměrně rozloženy mezi všechny instance oddílu. Existují tři faktory, které určují, kdy se má služba škálovat:
+## <a name="average-partition-load-trigger-with-instance-based-scaling"></a>Průměrná aktivační událost načtení oddílu s měřítkem založeným na instancích
+První typ aktivační události je založen na zatížení instancí v oddílu služby bez stavů. Metrika zatížení jsou nejprve vyhlazeny získat zatížení pro každou instanci oddílu a pak tyto hodnoty jsou zprůměrovány ve všech instancích oddílu. Existují tři faktory, které určují, kdy bude služba škálovat:
 
-* _Nižší prahová hodnota zatížení_ je hodnota, která určuje, kdy se má služba **škálovat**. Pokud je průměrné zatížení všech instancí oddílů nižší než tato hodnota, služba se škáluje.
-* _Horní prahová hodnota zatížení_ je hodnota, která určuje, kdy se má služba **škálovat**. Pokud je průměrné zatížení všech instancí oddílu vyšší než tato hodnota, služba se škáluje.
-* _Interval škálování_ určuje, jak často se bude aktivační událost kontrolovat. V případě, že je aktivační událost zaškrtnuta, bude použit mechanismus škálování. Pokud se škálování nepotřebuje, neprovede se žádná akce. V obou případech se Trigger nevrátí znovu, než vyprší platnost intervalu škálování.
+* _Nižší prahová hodnota zatížení_ je hodnota, která určuje, kdy bude služba **škálovat v**. Pokud je průměrné zatížení všech instancí oddílů nižší než tato hodnota, bude služba škálována.
+* _Horní prahová hodnota zatížení_ je hodnota, která určuje, kdy bude služba **škálovat**. Pokud je průměrné zatížení všech instancí oddílu vyšší než tato hodnota, bude služba škálována.
+* _Interval změny velikosti_ určuje, jak často bude aktivační událost kontrolována. Jakmile je zaškrtnuto aktivační události, pokud je potřeba škálování mechanismus bude použit. Pokud není potřeba škálování, nebude provedena žádná akce. V obou případech aktivační událost nebude znovu zkontrolována před vypršením intervalu škálování znovu vyprší.
 
-Tato aktivační událost se dá použít jenom u bezstavových služeb (buď nestavové kontejnery, nebo Service Fabric služby). V případě, že má služba více oddílů, vyhodnotí se Trigger pro každý oddíl samostatně a na každý oddíl se použije zadaný mechanismus nezávisle na sobě. V takovém případě je možné, že některé oddíly služby budou škálované, a některé z nich se škálují ve stejnou dobu, a to na základě jejich zatížení.
+Tuto aktivační událost lze použít pouze se bezstavovými službami (bezstavové kontejnery nebo služby Service Fabric). V případě, že služba má více oddílů, aktivační událost je vyhodnocena pro každý oddíl zvlášť a každý oddíl bude mít zadaný mechanismus použít nezávisle. Proto v tomto případě je možné, že některé oddíly služby budou škálovány, některé budou škálovány a některé nebudou škálovány vůbec současně na základě jejich zatížení.
 
-Jediným mechanismem, který lze použít s touto triggerem, je PartitionInstanceCountScaleMechanism. Existují tři faktory, které určují, jak se tento mechanismus používá:
-* _Přírůstek měřítka_ určuje, kolik instancí bude přidáno nebo odebráno při aktivaci mechanismu.
-* Hodnota _maximální počet instancí_ definuje horní limit pro škálování. Pokud počet instancí oddílu dosáhne tohoto limitu, nebude služba škálovat bez ohledu na zatížení. Tento limit je možné vynechat zadáním hodnoty-1. v takovém případě se služba bude škálovat co nejvíc (limit je počet uzlů, které jsou v clusteru k dispozici).
-* _Minimální počet instancí_ definuje dolní limit pro škálování. Pokud počet instancí oddílu dosáhne tohoto limitu, služba nebude škálovat bez ohledu na zatížení.
+Jediný mechanismus, který lze použít s touto aktivační událostí je PartitionInstanceCountScaleMechanism. Existují tři faktory, které určují, jak je tento mechanismus použit:
+* _Zvýšení měřítka určuje,_ kolik instancí bude přidáno nebo odebráno při aktivaci mechanismu.
+* _Maximální počet instancí_ definuje horní limit pro změnu měřítka. Pokud počet instancí oddílu dosáhne tohoto limitu, nebude služba škálovat, bez ohledu na zatížení. Je možné vynechat tento limit zadáním hodnoty -1 a v takovém případě bude služba škálovat co nejvíce (limit je počet uzlů, které jsou k dispozici v clusteru).
+* _Minimální počet instancí_ definuje dolní limit pro změnu měřítka. Pokud počet instancí oddílu dosáhne tohoto limitu, pak služba nebude škálovat bez ohledu na zatížení.
 
-## <a name="setting-auto-scaling-policy"></a>Nastavují se zásady automatického škálování.
+## <a name="setting-auto-scaling-policy"></a>Nastavení zásad automatického škálování
 
 ### <a name="using-application-manifest"></a>Použití manifestu aplikace
 ``` xml
@@ -64,7 +64,7 @@ Jediným mechanismem, který lze použít s touto triggerem, je PartitionInstanc
 </ScalingPolicy>
 </ServiceScalingPolicies>
 ```
-### <a name="using-c-apis"></a>Používání C# rozhraní API
+### <a name="using-c-apis"></a>Použití přístupů api jazyka C#
 ```csharp
 FabricClient fabricClient = new FabricClient();
 StatelessServiceDescription serviceDescription = new StatelessServiceDescription();
@@ -85,7 +85,7 @@ serviceDescription.ScalingPolicies.Add(policy);
 serviceDescription.ServicePackageActivationMode = ServicePackageActivationMode.ExclusiveProcess
 await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
-### <a name="using-powershell"></a>Použití PowerShellu
+### <a name="using-powershell"></a>Použití prostředí Powershell
 ```posh
 $mechanism = New-Object -TypeName System.Fabric.Description.PartitionInstanceCountScaleMechanism
 $mechanism.MinInstanceCount = 1
@@ -106,33 +106,33 @@ $scalingpolicies.Add($scalingpolicy)
 Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName" -ScalingPolicies $scalingpolicies
 ```
 
-## <a name="average-service-load-trigger-with-partition-based-scaling"></a>Průměrná zátěžová aktivační událost služby s škálováním založeným na oddílech
-Druhá aktivační událost vychází z zatížení všech oddílů jedné služby. Zatížení metriky se nejprve vyhlazuje, aby se získalo zatížení pro všechny repliky nebo instance oddílu. U stavových služeb se zatížení oddílu považuje za zatížení primární repliky, zatímco u bezstavových služeb je zatížení oddílu průměrnou zátěží všech instancí oddílu. Tyto hodnoty jsou v průměru na všech oddílech služby a tato hodnota se používá k aktivaci automatického škálování. Stejné jako v předchozím mechanismu, existují tři faktory, které určují, kdy se má služba škálovat:
+## <a name="average-service-load-trigger-with-partition-based-scaling"></a>Průměrná aktivační událost zatížení služby s škálováním založeným na oddílech
+Druhá aktivační událost je založena na zatížení všech oddílů jedné služby. Metrika zatížení jsou nejprve vyhlazeny získat zatížení pro každou repliku nebo instanci oddílu. Pro stavové služby je zatížení oddílu považováno za zatížení primární repliky, zatímco pro bezstavové služby je zatížení oddílu průměrné zatížení všech instancí oddílu. Tyto hodnoty jsou zprůměrovány ve všech oddílech služby a tato hodnota se používá k aktivaci automatickéškálování. Stejné jako v předchozím mechanismu, existují tři faktory, které určují, kdy bude služba škálovat:
 
-* _Nižší prahová hodnota zatížení_ je hodnota, která určuje, kdy se má služba **škálovat**. Pokud je průměrné zatížení všech oddílů služby nižší než tato hodnota, služba se škáluje.
-* _Horní prahová hodnota zatížení_ je hodnota, která určuje, kdy se má služba **škálovat**. Pokud je průměrné zatížení všech oddílů služby vyšší než tato hodnota, služba se škáluje.
-* _Interval škálování_ určuje, jak často se bude aktivační událost kontrolovat. V případě, že je aktivační událost zaškrtnuta, bude použit mechanismus škálování. Pokud se škálování nepotřebuje, neprovede se žádná akce. V obou případech se Trigger nevrátí znovu, než vyprší platnost intervalu škálování.
+* _Nižší prahová hodnota zatížení_ je hodnota, která určuje, kdy bude služba **škálovat v**. Pokud je průměrné zatížení všech oddílů služby nižší než tato hodnota, bude služba škálována.
+* _Horní prahová hodnota zatížení_ je hodnota, která určuje, kdy bude služba **škálovat**. Pokud je průměrné zatížení všech oddílů služby vyšší než tato hodnota, bude služba škálována.
+* _Interval změny velikosti_ určuje, jak často bude aktivační událost kontrolována. Jakmile je zaškrtnuto aktivační události, pokud je potřeba škálování mechanismus bude použit. Pokud není potřeba škálování, nebude provedena žádná akce. V obou případech aktivační událost nebude znovu zkontrolována před vypršením intervalu škálování znovu vyprší.
 
-Tato aktivační událost se dá použít se stavovou a bezstavovou službou. Jediným mechanismem, který lze použít s touto triggerem, je AddRemoveIncrementalNamedPartitionScalingMechanism. Při horizontálním navýšení kapacity služby se přidá nový oddíl a když se služba škáluje v jednom z existujících oddílů, odeberou se. Existují omezení, která budou kontrolována při vytvoření nebo aktualizaci služby a vytvoření nebo aktualizace služby selže, pokud nejsou splněny tyto podmínky:
-* Pro službu se musí použít schéma pojmenovaného oddílu.
-* Názvy oddílů musí být po sobě jdoucí celočíselná čísla, například 0, 1,...
-* Název prvního oddílu musí být "0".
+Tuto aktivační událost lze použít se stavovými i bezstavovými službami. Jediný mechanismus, který lze použít s touto aktivační událostí je AddRemoveIncrementalNamedPartitionScaleingMechanism. Při škálování služby je přidán nový oddíl a při škálování služby v jednom z existujících oddílů je odebrána. Existují omezení, která budou kontrolována při vytvoření nebo aktualizaci služby a vytvoření/aktualizace služby se nezdaří, pokud tyto podmínky nejsou splněny:
+* Pro službu je nutné použít pojmenované schéma oddílů.
+* Názvy oddílů musí být po sobě jdoucí celá čísla, jako "0", "1", ...
+* První název oddílu musí být "0".
 
-Pokud je například služba zpočátku vytvořená se třemi oddíly, jedinou platnou možností pro názvy oddílů je "0", "1" a "2".
+Například pokud je služba původně vytvořena se třemi oddíly, jedinou platnou možností pro názvy oddílů je "0", "1" a "2".
 
-Skutečná prováděná operace automatického škálování bude brát ohled i na toto schéma pojmenování:
-* Pokud jsou aktuální oddíly služby pojmenované "0", "1" a "2", pak oddíl, který bude přidán pro horizontální navýšení kapacity, bude nazván "3".
-* Pokud jsou aktuální oddíly služby pojmenované "0", "1" a "2", pak oddíl, který bude odstraněn pro škálování v, je oddíl s názvem "2".
+Skutečná operace automatického škálování, která se provádí, bude respektovat také toto schéma pojmenování:
+* Pokud aktuální oddíly služby jsou pojmenovány "0", "1" a "2", pak oddíl, který bude přidán pro horizontální navýšení kapacity bude mít název "3".
+* Pokud aktuální oddíly služby jsou pojmenovány "0", "1" a "2", pak oddíl, který bude odebrán pro změnu měřítka v je oddíl s názvem "2".
 
-Stejné jako u mechanismu, který používá škálování přidáváním nebo odebíráním instancí, existují tři parametry, které určují, jak se tento mechanismus používá:
-* _Přírůstek měřítka_ určuje, kolik oddílů bude přidáno nebo odebráno při aktivaci mechanismu.
-* _Maximální počet oddílů_ definuje horní limit pro škálování. Pokud počet oddílů služby dosáhne tohoto limitu, nebude služba škálovat bez ohledu na zatížení. Tento limit je možné vynechat zadáním hodnoty-1. v takovém případě se služba bude škálovat co nejvíc (limit je skutečná kapacita clusteru).
-* _Minimální počet instancí_ definuje dolní limit pro škálování. Pokud počet oddílů služby dosáhne tohoto limitu, služba nebude škálovat bez ohledu na zatížení.
+Stejné jako u mechanismu, který používá škálování přidáním nebo odebráním instancí, existují tři parametry, které určují, jak se tento mechanismus použije:
+* _Zvýšení měřítka určuje,_ kolik oddílů bude přidáno nebo odebráno při aktivaci mechanismu.
+* _Maximální počet oddílů_ definuje horní limit pro změnu měřítka. Pokud počet oddílů služby dosáhne tohoto limitu, nebude služba škálovat, bez ohledu na zatížení. Je možné vynechat tento limit zadáním hodnoty -1 a v takovém případě bude služba co nejvíce škálovat (limit je skutečná kapacita clusteru).
+* _Minimální počet instancí_ definuje dolní limit pro změnu měřítka. Pokud počet oddílů služby dosáhne tohoto limitu, pak služba nebude škálovat bez ohledu na zatížení.
 
 > [!WARNING] 
-> Pokud se pro stavové služby používá AddRemoveIncrementalNamedPartitionScalingMechanism, Service Fabric bude přidávat nebo odebírat oddíly **bez oznámení nebo upozornění**. Při aktivaci mechanismu škálování se neprovede změna rozdělení dat do oddílů. V případě operace horizontálního navýšení kapacity budou nové oddíly prázdné a v případě operace horizontálního navýšení kapacity se **oddíl odstraní společně se všemi daty, která obsahuje**.
+> Při AddRemoveIncrementalNamedPartitionScale se používá se stavovými službami, Service Fabric přidá nebo odebere oddíly **bez oznámení nebo upozornění**. Při aktivaci mechanismu škálování se nebude provedeno rozdělení dat. V případě operace škálování nahoru budou nové oddíly prázdné a v případě operace škálování **dolů bude oddíl odstraněn spolu se všemi daty, která obsahuje**.
 
-## <a name="setting-auto-scaling-policy"></a>Nastavují se zásady automatického škálování.
+## <a name="setting-auto-scaling-policy"></a>Nastavení zásad automatického škálování
 
 ### <a name="using-application-manifest"></a>Použití manifestu aplikace
 ``` xml
@@ -143,7 +143,7 @@ Stejné jako u mechanismu, který používá škálování přidáváním nebo o
     </ScalingPolicy>
 </ServiceScalingPolicies>
 ```
-### <a name="using-c-apis"></a>Používání C# rozhraní API
+### <a name="using-c-apis"></a>Použití přístupů api jazyka C#
 ```csharp
 FabricClient fabricClient = new FabricClient();
 StatefulServiceUpdateDescription serviceUpdate = new StatefulServiceUpdateDescription();
@@ -162,7 +162,7 @@ serviceUpdate.ScalingPolicies = new List<ScalingPolicyDescription>;
 serviceUpdate.ScalingPolicies.Add(policy);
 await fabricClient.ServiceManager.UpdateServiceAsync(new Uri("fabric:/AppName/ServiceName"), serviceUpdate);
 ```
-### <a name="using-powershell"></a>Použití PowerShellu
+### <a name="using-powershell"></a>Použití prostředí Powershell
 ```posh
 $mechanism = New-Object -TypeName System.Fabric.Description.AddRemoveIncrementalNamedPartitionScalingMechanism
 $mechanism.MinPartitionCount = 1
@@ -185,7 +185,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 ## <a name="auto-scaling-based-on-resources"></a>Automatické škálování na základě prostředků
 
-Aby bylo možné povolit škálování služby monitorování prostředků na základě skutečných prostředků
+Aby bylo možné službu sledování zdrojů škálovat na základě skutečných zdrojů
 
 ``` json
 "fabricSettings": [
@@ -195,8 +195,8 @@ Aby bylo možné povolit škálování služby monitorování prostředků na z�
     "ResourceMonitorService"
 ],
 ```
-K dispozici jsou dvě metriky, které představují skutečné fyzické prostředky. Jedním z nich je servicefabric:/_CpuCores, který představuje skutečné využití procesoru (takže 0,5 představuje polovinu jádra) a druhý servicefabric:/_MemoryInMB, který představuje využití paměti v MB.
-ResourceMonitorService zodpovídá za sledování využití procesoru a paměti u uživatelských služeb. Tato služba bude uplatňovat vážený klouzavý průměr, aby se zohlednily možné krátkodobé špičky. Monitorování prostředků je podporováno pro kontejnerové i nekontejnerové aplikace ve Windows a pro kontejnery na platformě Linux. Automatické škálování u prostředků je povolené jenom pro služby aktivované ve [výhradním modelu procesu](service-fabric-hosting-model.md#exclusive-process-model).
+Existují dvě metriky, které představují skutečné fyzické prostředky. Jedním z nich je servicefabric:/_CpuCores, které představují skutečné využití procesoru (takže 0,5 představuje polovinu jádra) a druhý je servicefabric:/_MemoryInMB, který představuje využití paměti v MBs.
+ResourceMonitorService je zodpovědný za sledování využití procesoru a paměti uživatelských služeb. Tato služba bude používat vážený klouzavý průměr, aby se zohlednily potenciální krátkodobé špičky. Monitorování prostředků je podporováno pro kontejnerizované i nekontejnerizované aplikace v systému Windows a pro kontejnerizované aplikace v systému Linux. Automatické škálování prostředků je povoleno pouze pro služby aktivované ve [výhradním modelu procesu](service-fabric-hosting-model.md#exclusive-process-model).
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si další informace o [škálovatelnosti aplikace](service-fabric-concepts-scalability.md).
+Další informace o [škálovatelnosti aplikací](service-fabric-concepts-scalability.md).

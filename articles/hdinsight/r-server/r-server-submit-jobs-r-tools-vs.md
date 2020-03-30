@@ -1,6 +1,6 @@
 ---
-title: Odesílání úloh z Nástroje R pro Visual Studio – Azure HDInsight
-description: Odešlete úlohy R z místního počítače s Visual Studiem do clusteru HDInsight.
+title: Odeslání úloh z nástrojů R pro Visual Studio – Azure HDInsight
+description: Odešlete úlohy R z místního počítače Visual Studio do clusteru HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,66 +9,66 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.openlocfilehash: 73d1478ec2d6c90428f22a30ec82634df115d2f5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75435258"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Odesílání úloh z Nástrojů R pro Visual Studio
 
-[Nástroje R pro Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS) je bezplatné open source rozšíření pro edice Enterprise (Free), Professional a Enterprise sady [Visual Studio 2017](https://www.visualstudio.com/downloads/)a [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) nebo vyšší. RTVS není pro [Visual Studio 2019](https://docs.microsoft.com/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?view=vs-2019)k dispozici.
+[Nástroje R pro visual studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS) je bezplatné rozšíření s otevřeným zdrojovým kódem pro edice Community (free), Professional a Enterprise sady Visual Studio [2017](https://www.visualstudio.com/downloads/)a [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) nebo vyšší. RTVS není k dispozici pro [Visual Studio 2019](https://docs.microsoft.com/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?view=vs-2019).
 
-RTVS vylepšuje pracovní postup R tím, že nabízí nástroje, jako je například [okno interaktivní R](https://docs.microsoft.com/visualstudio/rtvs/interactive-repl) (REPL), IntelliSense (dokončování kódu), [vizualizaci grafu](https://docs.microsoft.com/visualstudio/rtvs/visualizing-data) pomocí knihoven R, jako jsou ggplot2 a Ggviz, [ladění kódu R](https://docs.microsoft.com/visualstudio/rtvs/debugging)a další.
+RTVS vylepšuje váš pracovní postup R tím, že nabízí nástroje, jako je [interaktivní okno R](https://docs.microsoft.com/visualstudio/rtvs/interactive-repl) (REPL), intellisense (dokončení kódu), [vizualizace vykreslení](https://docs.microsoft.com/visualstudio/rtvs/visualizing-data) prostřednictvím knihoven R, jako jsou ggplot2 a ggviz, [ladění kódu R](https://docs.microsoft.com/visualstudio/rtvs/debugging)a další.
 
 ## <a name="set-up-your-environment"></a>Nastavení prostředí
 
-1. Nainstalujte [nástroje R pro Visual Studio](/visualstudio/rtvs/installing-r-tools-for-visual-studio).
+1. Nainstalujte [nástroje R pro aplikaci Visual Studio](/visualstudio/rtvs/installing-r-tools-for-visual-studio).
 
-    ![Instalace RTVS v aplikaci Visual Studio 2017](./media/r-server-submit-jobs-r-tools-vs/install-r-tools-for-vs.png)
+    ![Instalace RTVS do Visual Studia 2017](./media/r-server-submit-jobs-r-tools-vs/install-r-tools-for-vs.png)
 
-2. Vyberte úlohu pro *datové vědy a analytické aplikace* a pak vyberte **podporu jazyka r**, **podporu modulu runtime pro vývoj**v jazyce r a možnosti **Microsoft R Client** .
+2. Vyberte zatížení *datové vědy a analytických aplikací* a vyberte **podporu jazyka R**, podporu **runtime pro vývoj jazyka R**a možnosti **klienta Microsoft R.**
 
-3. Pro ověřování SSH musíte mít veřejné a privátní klíče.
+3. Musíte mít veřejné a soukromé klíče pro ověřování SSH.
    <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
 
-4. Nainstalujte na svém počítači [ml Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) . ML Server poskytuje funkce [`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler) a `RxSpark`.
+4. Nainstalujte [server ML do](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) počítače. ML Server [`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler) poskytuje `RxSpark` funkce a.
 
-5. Nainstalujte si výstup, který poskytuje výpočetní [kontext pro spouštění](https://www.putty.org/) `RevoScaleR`ch funkcí z místního klienta do clusteru HDInsight.
+5. Nainstalujte [PuTTY,](https://www.putty.org/) abyste poskytli výpočetní kontext pro spouštění `RevoScaleR` funkcí z místního klienta do clusteru HDInsight.
 
-6. Máte možnost použít Nastavení pro datové vědy pro prostředí sady Visual Studio, které poskytuje nové rozložení pro váš pracovní prostor pro nástroje jazyka R.
-   1. Pokud chcete uložit aktuální nastavení sady Visual Studio, použijte příkaz **nástroje > import a export nastavení** a pak vyberte **exportovat vybraná nastavení prostředí** a zadejte název souboru. Chcete-li tato nastavení obnovit, použijte stejný příkaz a vyberte možnost **Importovat vybrané nastavení prostředí**.
+6. Máte možnost použít nastavení datové vědy pro prostředí sady Visual Studio, které poskytuje nové rozložení pro váš pracovní prostor pro nástroje R.
+   1. Chcete-li uložit aktuální nastavení sady Visual Studio, použijte příkaz **Nástroje > nastavení importu a exportu,** pak vyberte **Exportovat vybraná nastavení prostředí** a zadejte název souboru. Chcete-li tato nastavení obnovit, použijte stejný příkaz a vyberte **Importovat vybraná nastavení prostředí**.
 
-   2. Přejděte na položku nabídky **Nástroje jazyka R** a pak vyberte **nastavení pro datové vědy...** .
+   2. Přejděte na položku nabídky **Nástroje R** a vyberte Nastavení **datové vědy...**.
 
-       ![Nastavení pro datové vědy sady Visual Studio](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
+       ![Nastavení datové vědy sady Visual Studio](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
 
       > [!NOTE]  
-      > Pomocí přístupu v kroku 1 můžete také uložit a obnovit individuální rozvržení dat pro odborníky na data, a ne opakovat příkaz **nastavení pro datové vědy** .
+      > Pomocí přístupu v kroku 1 můžete také uložit a obnovit vlastní rozložení datových vědců, místo opakování příkazu **Nastavení datové vědy.**
 
-## <a name="execute-local-r-methods"></a>Spustit místní metody jazyka R
+## <a name="execute-local-r-methods"></a>Spustit místní metody R
 
-1. Vytvořte cluster služeb HDInsight ML.
+1. Vytvořte cluster služby HDInsight ML Services.
 2. Nainstalujte [rozšíření RTVS](https://docs.microsoft.com/visualstudio/rtvs/installation).
-3. Stáhněte si [soubor zip s ukázkami](https://github.com/Microsoft/RTVS-docs/archive/master.zip).
-4. Otevřete `examples/Examples.sln` pro spuštění řešení v aplikaci Visual Studio.
-5. Otevřete soubor `1-Getting Started with R.R` ve složce řešení `A first look at R`.
-6. V horní části souboru stiskněte kombinaci kláves CTRL + ENTER pro odeslání každého řádku, a to po jednom, do okna Interaktivní R. Některé řádky můžou při instalaci balíčků chvíli trvat.
-    * Případně můžete vybrat všechny řádky v souboru R (CTRL + A), pak buď provést vše (CTRL + ENTER), nebo na panelu nástrojů vybrat ikonu spustit interaktivní.
+3. Stáhněte si [ukázky zip souboru](https://github.com/Microsoft/RTVS-docs/archive/master.zip).
+4. Otevřete `examples/Examples.sln` spuštění řešení v sadě Visual Studio.
+5. Otevřete `1-Getting Started with R.R` soubor `A first look at R` ve složce řešení.
+6. Začněte v horní části souboru a stisknutím kombinace kláves Ctrl+Enter odešlete každý řádek po jednom do okna Interaktivní R. Některé řádky může chvíli trvat, jak se instalace balíčků.
+    * Případně můžete vybrat všechny řádky v souboru R (Ctrl+A), pak buď spustit všechny (Ctrl+Enter), nebo vybrat ikonu Spustit interaktivní na panelu nástrojů.
 
-        ![Interaktivní spuštění sady Visual Studio](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
+        ![Visual Studio spustit interaktivní](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
 
 7. Po spuštění všech řádků ve skriptu byste měli vidět výstup podobný tomuto:
 
-    ![Nástroje jazyka R pro Visual Studio Workspace](./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png)
+    ![Nástroje Visual Studio workspace R](./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png)
 
-## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>Odeslání úloh do clusteru služby HDInsight ML
+## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>Odeslání úloh do clusteru služby HDInsight ML Services
 
-Pomocí Microsoft ML Server/Microsoft R Client z počítače s Windows vybaveného pro zápis můžete vytvořit výpočetní kontext, který spustí distribuované `RevoScaleR` funkce z místního klienta do vašeho clusteru HDInsight. Použijte `RxSpark` k vytvoření výpočetního kontextu, zadání uživatelského jména, hraničního uzlu Apache Hadoopho clusteru, přepínačů SSH a tak dále.
+Pomocí klienta Microsoft ML Server/Microsoft R z počítače se systémem Windows vybaveného putty můžete vytvořit výpočetní kontext, který bude spouštět distribuované `RevoScaleR` funkce z místního klienta do clusteru HDInsight. Slouží `RxSpark` k vytvoření výpočetního kontextu, zadání uživatelského jména, hraničního uzlu clusteru Apache Hadoop, přepínačů SSH atd.
 
-1. Adresa hraničního uzlu služby ML v HDInsight je `CLUSTERNAME-ed-ssh.azurehdinsight.net`, kde `CLUSTERNAME` je název clusteru služeb ML.
+1. Adresa hraničního uzlu služby ML `CLUSTERNAME-ed-ssh.azurehdinsight.net` `CLUSTERNAME` services na serveru HDInsight je místo, kde je název clusteru služby ML Services.
 
-1. Vložte následující kód do okna Interaktivní R v aplikaci Visual Studio a změňte hodnoty proměnných nastavení tak, aby odpovídaly vašemu prostředí.
+1. Vložte následující kód do interaktivního okna R v sadě Visual Studio a změňte hodnoty proměnných nastavení tak, aby odpovídaly vašemu prostředí.
 
     ```R
     # Setup variables that connect the compute context to your HDInsight cluster
@@ -96,9 +96,9 @@ Pomocí Microsoft ML Server/Microsoft R Client z počítače s Windows vybavené
     rxSetComputeContext(mySparkCluster)
     ```
 
-   ![Apache Spark – nastavení kontextu](./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png)
+   ![apache jiskra nastavení kontextu](./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png)
 
-1. V okně Interaktivní R spusťte následující příkazy:
+1. V interaktivním okně R proveďte následující příkazy:
 
     ```R
     rxHadoopCommand("version") # should return version information
@@ -108,24 +108,24 @@ Pomocí Microsoft ML Server/Microsoft R Client z počítače s Windows vybavené
 
     Zobrazený výstup by měl vypadat přibližně takto:
 
-    ![úspěšné spuštění příkazu RX](./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png)
-1. Ověřte, že `rxHadoopCopy` úspěšně zkopíroval `people.json` soubor z ukázkové složky dat do nově vytvořené `/user/RevoShare/newUser` složky:
+    ![Úspěšné spuštění](./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png) příkazu rx
+1. Ověřte, zda `rxHadoopCopy` byl `people.json` soubor úspěšně zkopírován `/user/RevoShare/newUser` z ukázkové datové složky do nově vytvořené složky:
 
-    1. Z podokna clusteru služby HDInsight ML v Azure v nabídce vlevo vyberte **účty úložiště** .
+    1. V podokně clusteru SLUŽBY HDInsight ML v Azure vyberte **účty úložiště** z nabídky na levé straně.
 
-        ![Účty Azure HDInsight Storage](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
+        ![Účty úložiště Azure HDInsight](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
 
     2. Vyberte výchozí účet úložiště pro váš cluster a poznamenejte si název kontejneru nebo adresáře.
 
-    3. V nabídce na levé straně v podokně účtu úložiště vyberte **kontejnery** .
+    3. V levém podokně účtu úložiště vyberte **Kontejnery.**
 
-        ![Kontejnery Azure HDInsight Storage](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
+        ![Kontejnery úložiště Azure HDInsight](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
 
-    4. Vyberte název kontejneru vašeho clusteru, přejděte do složky **uživatele** (možná budete muset kliknout na *načíst další* v dolní části seznamu) a pak vyberte *RevoShare*a **nový_uživatel**. `people.json` soubor by měl být zobrazen ve složce `newUser`.
+    4. Vyberte název kontejneru clusteru, přejděte do **uživatelské** složky (možná budete muset kliknout na *tlačítko Načíst více* v dolní části seznamu), pak vyberte *RevoShare*, pak **newUser**. Soubor `people.json` by měl být `newUser` zobrazen ve složce.
 
         ![HDInsight zkopíroval umístění složky souborů](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
 
-1. Po dokončení používání aktuálního kontextu Apache Spark je nutné ho zastavit. Nelze spustit více kontextů najednou.
+1. Po dokončení používání aktuálního kontextu Apache Spark, musíte ho zastavit. Nelze spustit více kontextů najednou.
 
     ```R
     rxStopEngine(mySparkCluster)
@@ -133,5 +133,5 @@ Pomocí Microsoft ML Server/Microsoft R Client z počítače s Windows vybavené
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Možnosti výpočetního kontextu pro služby ML v HDInsight](r-server-compute-contexts.md)
-* [Kombinování škály a Sparku](../hdinsight-hadoop-r-scaler-sparkr.md) poskytuje příklad zpoždění leteckého letu předpovědi.
+* [Možnosti výpočetního kontextu pro služby ML na hdinsightu](r-server-compute-contexts.md)
+* [Kombinace ScaleR a SparkR](../hdinsight-hadoop-r-scaler-sparkr.md) poskytuje příklad předpovědí zpoždění letu letecké společnosti.

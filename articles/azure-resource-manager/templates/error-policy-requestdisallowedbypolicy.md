@@ -1,24 +1,24 @@
 ---
 title: Chyba RequestDisallowedByPolicy
-description: Popisuje příčinu chyby RequestDisallowedByPolicy při nasazování prostředků pomocí Azure Resource Manager.
+description: Popisuje příčinu chyby RequestDisallowedByPolicy při nasazování prostředků pomocí Správce prostředků Azure.
 author: genlin
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 41581ba48da2f2e717c5abf2a749f8fd2b86ac06
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75477665"
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Chyba RequestDisallowedByPolicy se zásadami prostředků Azure
 
-Tento článek popisuje příčinu chyby RequestDisallowedByPolicy, poskytuje také řešení pro tuto chybu.
+Tento článek popisuje příčinu chyby RequestDisallowedByPolicy, poskytuje také řešení této chyby.
 
 ## <a name="symptom"></a>Příznak
 
-Během nasazení se může zobrazit chyba **RequestDisallowedByPolicy** , která vám brání v vytváření prostředků. Následující příklad ukazuje chybu:
+Během nasazení se může zobrazit chyba **RequestDisallowedByPolicy,** která zabraňuje vytváření prostředků. Následující příklad ukazuje chybu:
 
 ```json
 {
@@ -31,13 +31,13 @@ Během nasazení se může zobrazit chyba **RequestDisallowedByPolicy** , která
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Chcete-li načíst podrobnosti o zásadách, které zablokovaly nasazení, použijte jednu z následujících metod:
+Chcete-li načíst podrobnosti o zásadách, které zablokovaly vaše nasazení, použijte následující jednu z metod:
 
 ### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-V PowerShellu zadejte jako parametr `Id` tento identifikátor zásady, aby se načetly podrobnosti o zásadách, které zablokovaly vaše nasazení.
+V PowerShellu zadejte tento `Id` identifikátor zásadjako parametr pro načtení podrobností o zásadách, které zablokovaly vaše nasazení.
 
 ```powershell
 (Get-AzPolicyDefinition -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json
@@ -45,7 +45,7 @@ V PowerShellu zadejte jako parametr `Id` tento identifikátor zásady, aby se na
 
 ### <a name="azure-cli"></a>Azure CLI
 
-V Azure CLI zadejte název definice zásady:
+V azure cli zadejte název definice zásady:
 
 ```azurecli
 az policy definition show --name regionPolicyAssignment
@@ -53,10 +53,10 @@ az policy definition show --name regionPolicyAssignment
 
 ## <a name="solution"></a>Řešení
 
-Pro zabezpečení nebo dodržování předpisů můžou správci předplatného přiřazovat zásady, které omezují způsob nasazení prostředků. Vaše předplatné může mít například zásadu, která zabraňuje vytváření veřejných IP adres, skupin zabezpečení sítě, uživatelem definovaných tras nebo směrovacích tabulek. Chybová zpráva v části **příznaky** zobrazuje název zásady.
-Pokud chcete tento problém vyřešit, Projděte si zásady prostředků a určete, jak nasadit prostředky, které tyto zásady dodržují.
+Z důvodu zabezpečení nebo dodržování předpisů mohou správci předplatného přiřazovat zásady, které omezují způsob nasazení prostředků. Vaše předplatné může mít například zásadu, která brání vytváření veřejných IP adres, skupin zabezpečení sítě, uživatelem definovaných tras nebo tabulek tras. Chybová zpráva v části **Příznaky** zobrazuje název zásady.
+Chcete-li tento problém vyřešit, zkontrolujte zásady prostředků a zjistěte, jak nasadit prostředky, které jsou v souladu s těmito zásadami.
 
 Další informace najdete v těchto článcích:
 
 - [Co je Azure Policy?](../../governance/policy/overview.md)
-- [Vytváření a správa zásad pro vynucování dodržování předpisů](../../governance/policy/tutorials/create-and-manage.md)
+- [Vytváření a správa zásad pro vynucení dodržování předpisů](../../governance/policy/tutorials/create-and-manage.md)

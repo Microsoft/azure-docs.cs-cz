@@ -1,6 +1,6 @@
 ---
-title: Zobrazit sestavu protokolu auditu pro role Azure AD ve službě Azure AD PIM | Microsoft Docs
-description: Přečtěte si, jak zobrazit historii protokolu auditu pro role Azure AD v Azure AD Privileged Identity Management (PIM).
+title: Zobrazení sestavy protokolu auditu pro role Azure AD v PIM Azure AD | Dokumenty společnosti Microsoft
+description: Zjistěte, jak zobrazit historii protokolu auditu pro role Azure AD v azure ad privilegované správy identit (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,56 +15,56 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4b8aef68e0f61e6ca995fc2bb362d59aba73ead2
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78329496"
 ---
-# <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>Zobrazit historii auditu pro role Azure AD v Privileged Identity Management
+# <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>Zobrazení historie auditu pro role Azure AD ve správě privilegovaných identit
 
-Historii auditu Privileged Identity Management (PIM) můžete použít k zobrazení všech přiřazení rolí a aktivací během posledních 30 dnů pro všechny privilegované role. Pokud chcete zobrazit úplnou historii auditu aktivity ve vaší organizaci Azure Active Directory (Azure AD), včetně aktivity správce, koncového uživatele a synchronizační aktivity, můžete použít [sestavy Azure Active Directory zabezpečení a aktivita](../reports-monitoring/overview-reports.md).
+Pomocí historie auditu správy privilegovaných identit (PIM) můžete zobrazit všechna přiřazení a aktivace rolí za posledních 30 dní pro všechny privilegované role. Pokud chcete zobrazit úplnou historii auditování aktivity v organizaci Azure Active Directory (Azure AD), včetně aktivity správce, koncového uživatele a synchronizace, můžete použít [sestavy zabezpečení a aktivit služby Azure Active Directory](../reports-monitoring/overview-reports.md).
 
-## <a name="determine-your-version-of-pim"></a>Určení vaší verze PIM
+## <a name="determine-your-version-of-pim"></a>Určení verze PIM
 
-Od listopadu 2019 se v části Privileged Identity Management role Azure AD aktualizuje na novou verzi, která se shoduje s prostředími pro role prostředků Azure. Tím se vytvoří další funkce a také [změny stávajícího rozhraní API](azure-ad-roles-features.md#api-changes). I když je nová verze zahrnuta, postupy, které provedete v tomto článku, závisí na verzi Privileged Identity Management, kterou máte v současnosti k dispozici. Podle pokynů v této části určete, kterou verzi Privileged Identity Management máte. Po zjištění vaší verze Privileged Identity Management můžete vybrat postupy v tomto článku, které odpovídají této verzi.
+Počínaje listopadem 2019 se část rolí Azure AD privileged identity Management aktualizuje na novou verzi, která odpovídá prostředí pro role prostředků Azure. Tím se vytvoří další funkce, stejně jako [změny existující rozhraní API](azure-ad-roles-features.md#api-changes). Při zavádění nové verze, které postupy, které budete postupovat v tomto článku, závisí na verzi správy privilegovaných identit, kterou aktuálně máte. Podle pokynů v této části určete, kterou verzi správy privilegovaných identit máte. Poté, co znáte verzi správy privilegovaných identit, můžete vybrat postupy v tomto článku, které odpovídají této verzi.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí uživatele, který je v roli [správce privilegované role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
-1. Otevřete **Azure AD Privileged Identity Management**. Pokud máte banner v horní části stránky s přehledem, postupujte podle pokynů na kartě **Nová verze** v tomto článku. Jinak postupujte podle pokynů na kartě **předchozí verze** .
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/) s uživatelem, který je v roli [správce privilegované role.](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
+1. Otevřete **správu privilegovaných identit Azure AD**. Pokud máte v horní části stránky přehledu nápis, postupujte podle pokynů na kartě **Nová verze** tohoto článku. V opačném případě postupujte podle pokynů na kartě **Předchozí verze.**
 
-    [![Nové verze rolí Azure AD](media/pim-how-to-use-audit-log/directory-roles-audit-history.png "Vyberte kartu pro vaši verzi.")](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
+    [![Azure AD role nová verze](media/pim-how-to-use-audit-log/directory-roles-audit-history.png "Výběr karty pro vaši verzi")](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
 
 # <a name="new-version"></a>[Nová verze](#tab/new)
 
-Pomocí těchto kroků zobrazíte historii auditu pro role Azure AD.
+Podle těchto kroků zobrazte historii auditu pro role Azure AD.
 
-## <a name="view-resource-audit-history"></a>Zobrazit historii auditu prostředků
+## <a name="view-resource-audit-history"></a>Zobrazit historii auditu zdrojů
 
-Audit prostředků poskytuje zobrazení všech aktivit přidružených k rolím Azure AD.
+Audit prostředků poskytuje zobrazení všech aktivit spojených s vašimi rolemi Azure AD.
 
-1. Otevřete **Azure AD Privileged Identity Management**.
+1. Otevřete **správu privilegovaných identit Azure AD**.
 
 1. Vyberte **role Azure AD**.
 
-1. Vyberte **audit prostředků**.
+1. Vyberte **příkaz Audit zdrojů**.
 
-1. Filtruje historii s použitím předdefinovaného data nebo vlastního rozsahu.
+1. Historie můžete filtrovat pomocí předdefinovaného data nebo vlastního rozsahu.
 
-    ![Seznam auditu prostředků s filtry](media/azure-pim-resource-rbac/rbac-resource-audit.png)
+    ![Seznam auditů zdrojů s filtry](media/azure-pim-resource-rbac/rbac-resource-audit.png)
 
 ## <a name="view-my-audit"></a>Zobrazit můj audit
 
-Můj audit umožňuje zobrazit aktivitu osobní role.
+Můj audit umožňuje zobrazit vaši osobní aktivitu role.
 
-1. Otevřete **Azure AD Privileged Identity Management**.
+1. Otevřete **správu privilegovaných identit Azure AD**.
 
 1. Vyberte **role Azure AD**.
 
-1. Vyberte prostředek, pro který chcete zobrazit historii auditu.
+1. Vyberte zdroj, pro který chcete zobrazit historii auditu.
 
-1. Vyberte **Moje audit**.
+1. Vyberte **možnost Můj audit**.
 
-1. Filtruje historii s použitím předdefinovaného data nebo vlastního rozsahu.
+1. Historie můžete filtrovat pomocí předdefinovaného data nebo vlastního rozsahu.
 
     ![Seznam auditu pro aktuálního uživatele](media/azure-pim-resource-rbac/my-audit-time.png)
 
@@ -72,72 +72,72 @@ Můj audit umožňuje zobrazit aktivitu osobní role.
 
 ## <a name="view-audit-history"></a>Zobrazení historie auditů
 
-Pomocí těchto kroků zobrazíte historii auditu pro role Azure AD.
+Podle těchto kroků zobrazte historii auditu pro role Azure AD.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/) s uživatelem, který je členem role [správce privilegovaných rolí](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/) s uživatelem, který je členem role [správce privilegované role.](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
 
-1. Otevřete **Azure AD Privileged Identity Management**.
+1. Otevřete **správu privilegovaných identit Azure AD**.
 
 1. Vyberte **role Azure AD**.
 
-1. Vyberte možnost **Historie auditu pro role adresáře**.
+1. Vyberte **historii auditu rolí adresářů**.
 
-    V závislosti na historii auditu se zobrazí sloupcový graf spolu s celkovými aktivacemi, maximální počet aktivací za den a průměrnou aktivací za den.
+    V závislosti na historii auditu se zobrazí sloupcový graf spolu s celkovým počtem aktivací, maximálními aktivacemi za den a průměrnými aktivacemi za den.
 
-    [![Nové verze rolí Azure AD](media/pim-how-to-use-audit-log/directory-roles-audit-history.png "Zobrazit historii auditu pro role adresáře")](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
+    [![Azure AD role nová verze](media/pim-how-to-use-audit-log/directory-roles-audit-history.png "Zobrazit historii auditu rolí adresářů")](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
 
-    V dolní části stránky se zobrazí tabulka s informacemi o každé akci v dostupné historii auditu. Sloupce mají následující význam:
+    V dolní části stránky se zobrazí tabulka s informacemi o každé akci v historii auditu, která je k dispozici. Sloupce mají následující významy:
 
     | Sloupec | Popis |
     | --- | --- |
-    | Čas | Při výskytu akce. |
-    | Žadatele | Uživatel, který požádal o aktivaci nebo změnu role Pokud je hodnota **systémem Azure**, podívejte se na historii auditu Azure, kde najdete další informace. |
-    | Akce | Akce prováděné žadatelem. Akce mohou zahrnovat přiřazení, zrušení přiřazení, aktivace, deaktivace nebo AddedOutsidePIM. |
-    | Člen | Uživatel, který se aktivuje nebo přiřadí k roli. |
-    | Role | Roli přiřazenou nebo aktivovanou uživatelem. |
-    | Reasoning | Text, který byl zadán do pole důvod během aktivace |
-    | Konec platnosti | Jakmile vyprší platnost aktivované role. Vztahuje se pouze na přiřazení oprávněných rolí. |
+    | Time | Kdy došlo k akci. |
+    | Requestor | Uživatel, který požádal o aktivaci nebo změnu role. Pokud je hodnota **Azure System**, zkontrolujte historii auditu Azure pro další informace. |
+    | Akce | Opatření přijatá žadatelem. Akce mohou zahrnovat přiřadit, Zrušit přiřazení, Aktivovat, Deaktivovat nebo AddedOutsidePIM. |
+    | Člen | Uživatel, který aktivuje nebo je přiřazen k roli. |
+    | Role | Role přiřazená nebo aktivovaná uživatelem. |
+    | Uvažování | Text, který byl zadán do pole důvod během aktivace. |
+    | Konec platnosti | Když vyprší platnost aktivované role. Platí pouze pro způsobilá přiřazení rolí. |
 
-1. Chcete-li seřadit historii auditu, klikněte na tlačítka **čas**, **Akce**a **role** .
+1. Chcete-li seřadit historii auditu, klepněte na tlačítka **Čas**, **Akce**a **Role.**
 
-## <a name="filter-audit-history"></a>Filtrovat historii auditu
+## <a name="filter-audit-history"></a>Historie auditu filtru
 
-1. V horní části stránky Historie auditu klikněte na tlačítko **Filtr** .
+1. V horní části stránky historie auditu klikněte na tlačítko **Filtrovat.**
 
-    Zobrazí se podokno **aktualizovat parametry grafu** .
+    Zobrazí se podokno **Aktualizovat parametry grafu.**
 
 1. V **časovém rozsahu**vyberte časový rozsah.
 
-1. V části **role**zaškrtněte políčka pro určení rolí, které chcete zobrazit.
+1. V **části Role**zaškrtněte políčka, která označují role, které chcete zobrazit.
 
-    ![Aktualizovat podokno parametrů grafu](media/pim-how-to-use-audit-log/update-chart-parameters.png)
+    ![Podokno Aktualizovat parametry grafu](media/pim-how-to-use-audit-log/update-chart-parameters.png)
 
-1. Vyberte **Hotovo** , chcete-li zobrazit filtrovanou historii auditu.
+1. Chcete-li zobrazit filtrovanou historii auditu, vyberte **možnost Hotovo.**
 
 ## <a name="get-reason-approver-and-ticket-number-for-approval-events"></a>Získat důvod, schvalovatele a číslo lístku pro události schválení
 
-1. Přihlaste se k [Azure Portal](https://aad.portal.azure.com) s oprávněními role správce privilegované role a otevřete službu Azure AD.
-1. Vyberte **protokoly auditu**.
-1. Pomocí filtru **služeb** můžete zobrazit pouze události auditu pro službu Privileged Identity Management. Na stránce **protokoly auditu** můžete:
+1. Přihlaste se k [portálu Azure](https://aad.portal.azure.com) s oprávněními role správce privilegovaných rolí a otevřete Azure AD.
+1. Vyberte **Protokoly auditování**.
+1. Filtr **Služby** slouží k zobrazení pouze událostí auditování pro službu Správa privilegovaných identit. Na stránce **Protokoly auditu** můžete:
 
-    - Podívejte se na důvod události auditu ve sloupci **Důvod stavu** .
-    - U události "přidat člena do žádosti o roli" schválíme zobrazení schvalovatele ve sloupci **Volaný (objekt actor)** .
+    - Důvod události auditu naleznete ve sloupci **Důvod stavu.**
+    - Naleznete schvalovatel ve **sloupci Iniciováno (objekt actor)** pro událost "přidat člena do žádosti o roli schváleno".
 
-    [![Nové verze rolí Azure AD](media/pim-how-to-use-audit-log/filter-audit-logs.png "Filtrování protokolu auditu pro službu PIM")](media/pim-how-to-use-audit-log/filter-audit-logs.png)
+    [![Azure AD role nová verze](media/pim-how-to-use-audit-log/filter-audit-logs.png "Filtrování protokolu auditu pro službu PIM")](media/pim-how-to-use-audit-log/filter-audit-logs.png)
 
-1. Vyberte událost protokolu auditu a na kartě **aktivita** v podokně **podrobností** se zobrazí číslo lístku.
+1. Výběrem události protokolu auditu zobrazíte číslo lístku na kartě **Aktivita** v podokně **Podrobnosti.**
   
-    [![Nové verze rolí Azure AD](media/pim-how-to-use-audit-log/audit-event-ticket-number.png "Zkontrolujte číslo lístku pro událost auditu.")](media/pim-how-to-use-audit-log/audit-event-ticket-number.png)
+    [![Azure AD role nová verze](media/pim-how-to-use-audit-log/audit-event-ticket-number.png "Zkontrolujte číslo lístku pro událost auditu")](media/pim-how-to-use-audit-log/audit-event-ticket-number.png)
 
-1. Žadatele (osoba aktivující roli) si můžete prohlédnout na kartě **cíle** v podokně **podrobností** pro událost auditu. Existují dva cílové typy pro role Azure AD:
+1. Žadatel (osoba, která roli aktivovala) můžete zobrazit na kartě **Cíle** v podokně **Podrobnosti** pro událost auditu. Existují dva typy cílů pro role Azure AD:
 
-    - Role (**Type** = role)
-    - Žadatel (**typ** = uživatel)
+    - Role (**Typ** = Role)
+    - Žadatel (**Typ** = Uživatel)
 
-Obvykle událost protokolu auditu přímo nad událostí schválení je událost pro "Přidání člena do role dokončeno", kde **iniciuje (actor)** žadatel. Ve většině případů nebudete muset žadatele v rámci žádosti o schválení najít v perspektivě pro auditování.
+Událost protokolu auditu bezprostředně nad událostí schválení je obvykle událost pro "Přidat člena do role dokončena", kde **Iniciována (actor)** je žadatel. Ve většině případů nebudete muset najít uchazeče v žádosti o schválení z hlediska auditování.
 
 ---
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Zobrazení historie aktivit a auditu pro role prostředků Azure v Privileged Identity Management](azure-pim-resource-rbac.md)
+- [Zobrazení historie aktivit a auditu rolí prostředků Azure v privilegované správě identit](azure-pim-resource-rbac.md)

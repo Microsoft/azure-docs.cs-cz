@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: a5c62c67cd401c043352b06e6e6070a7fc0f1296
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175045"
 ---
 #### <a name="to-connect-through-the-serial-console"></a>Připojení přes sériovou konzolu
@@ -21,11 +21,11 @@ ms.locfileid: "67175045"
 5. V pravém podokně změňte **Typ připojení** na **Sériové**.
 6. V pravém podokně zadejte odpovídající port COM. Ujistěte se, že jsou sériové konfigurační parametry nastavené takto:
    
-   * Rychlost: 115,200
+   * Rychlost: 115 200
    * Datové bity: 8
    * Stop-bity: 1
-   * Parita: Žádný
-   * Řízení toku: Žádný
+   * Parita: žádná
+   * Řízení toku: žádné
      
      Tato nastavení znázorňuje následující obrázek.
      

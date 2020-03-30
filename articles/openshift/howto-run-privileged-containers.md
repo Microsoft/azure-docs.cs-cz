@@ -1,37 +1,37 @@
 ---
-title: Spouštění privilegovaných kontejnerů v clusteru Azure Red Hat OpenShift | Microsoft Docs
-description: Spusťte privilegované kontejnery a sledujte zabezpečení a dodržování předpisů.
+title: Spuštění privilegovaných kontejnerů v clusteru Azure Red Hat OpenShift | Dokumenty společnosti Microsoft
+description: Spouštět privilegované kontejnery pro sledování zabezpečení a dodržování předpisů.
 author: makdaam
 ms.author: b-lejaku
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/05/2019
-keywords: ARO, OpenShift, aquasec, TwistLock, Red Hat
+keywords: aro, openshift, aquasec, twistlock, červený klobouk
 ms.openlocfilehash: e1c1dd9f27a207f78dd22e271f6b070c7f92f622
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78271366"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>Spouštění privilegovaných kontejnerů v clusteru Azure Red Hat OpenShift
 
-V clusterech Azure Red Hat OpenShift nemůžete spouštět libovolné privilegované kontejnery.
-Pro spouštění v clusterech v AROch je povoleno řešení dvou monitorování zabezpečení a dodržování předpisů.
-Tento dokument popisuje rozdíly v dokumentaci k nasazení obecných OpenShift v rámci dodavatelů produktů zabezpečení.
+V clusterech Azure Red Hat OpenShift nelze spouštět libovolné privilegované kontejnery.
+Dvě řešení monitorování zabezpečení a dodržování předpisů mohou být spuštěna v clusterech ARO.
+Tento dokument popisuje rozdíly od obecné dokumentace nasazení OpenShift dodavatelů bezpečnostních produktů.
 
 
-Než budete postupovat podle pokynů dodavatele, přečtěte si tyto pokyny.
-Nadpisy oddílů v následujících krocích pro konkrétní produkt odkazují přímo na nadpisy oddílů v dokumentaci pro dodavatele.
+Než se podle pokynů dodavatele pořídíte, přečtěte si tyto pokyny.
+Názvy oddílů v následujících krocích pro konkrétní produkty odkazují přímo na názvy oddílů v dokumentaci dodavatelů.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Dokumentace k většině produktů zabezpečení předpokládá, že máte oprávnění správce clusteru.
-Správci zákazníka nemají všechna oprávnění v Azure Red Hat OpenShift. Oprávnění požadovaná pro úpravu prostředků na úrovni clusteru jsou omezená.
+Dokumentace většiny produktů zabezpečení předpokládá, že máte oprávnění správce clusteru.
+Správci zákazníků nemají všechna oprávnění v Azure Red Hat OpenShift. Oprávnění potřebná k úpravě prostředků celého clusteru jsou omezená.
 
-Nejdřív zajistěte, aby byl uživatel přihlášený ke clusteru jako správce zákazníka spuštěním `oc get scc`. Všichni uživatelé, kteří jsou členy skupiny správců zákazníka, mají oprávnění Zobrazit omezení kontextu zabezpečení (SCCs) v clusteru.
+Nejprve se ujistěte, že je uživatel přihlášen ke `oc get scc`clusteru jako správce zákazníka, spuštěním aplikace . Všichni uživatelé, kteří jsou členy skupiny správců zákazníků, mají oprávnění k zobrazení omezení kontextu zabezpečení (SCC) v clusteru.
 
-Dále zkontrolujte, zda je `3.11.154`binární verze `oc`.
+Dále se ujistěte, že `oc` binární verze je `3.11.154`.
 ```
 oc version
 oc v3.11.154
@@ -43,10 +43,10 @@ openshift v3.11.154
 kubernetes v1.11.0+d4cacc0
 ```
 
-## <a name="product-specific-steps-for-aqua-security"></a>Kroky specifické pro produkt pro azurová zabezpečení
-Základní pokyny, které se mají upravit, najdete v [dokumentaci k nasazení](https://docs.aquasec.com/docs/openshift-red-hat)v podobě azurová. Postup se spustí společně s dokumentací ke azurová nasazení.
+## <a name="product-specific-steps-for-aqua-security"></a>Kroky specifické pro produkt pro zabezpečení aqua
+Základní pokyny, které budou upraveny, naleznete v [dokumentaci k nasazení aqua zabezpečení](https://docs.aquasec.com/docs/openshift-red-hat). Kroky zde budou spuštěny ve spojení s dokumentací nasazení Aqua.
 
-Prvním krokem je opatřit poznámkami požadované SCCs, které se budou aktualizovat. Tyto poznámky zabraňují synchronizaci clusteru pod vrácením změn na těchto SSCs.
+Prvním krokem je onicovat požadované řadiče domény, které budou aktualizovány. Tyto poznámky brání synchronizačnímu podu clusteru vrátit všechny změny těchto snopů.
 
 ```
 oc annotate scc hostaccess openshift.io/reconcile-protect=true
@@ -54,7 +54,7 @@ oc annotate scc privileged openshift.io/reconcile-protect=true
 ```
 
 ### <a name="step-1-prepare-prerequisites"></a>Krok 1: Příprava požadavků
-Nezapomeňte se přihlásit ke clusteru jako správce služby ARO a nikoli role Správce clusteru.
+Nezapomeňte se přihlásit do clusteru jako správce zákazníka ARO namísto role správce clusteru.
 
 Vytvořte projekt a účet služby.
 ```
@@ -62,21 +62,21 @@ oc new-project aqua-security
 oc create serviceaccount aqua-account -n aqua-security
 ```
 
-Místo přiřazení role modulu pro čtení clusteru přiřaďte k azurová účtu roli Customer-admin-cluster pomocí následujícího příkazu.
+Místo přiřazení role čtečky clusteru přiřaďte roli clusteru zákazník-admin-cluster k účtu aqua pomocí následujícího příkazu.
 ```
 oc adm policy add-cluster-role-to-user customer-admin-cluster system:serviceaccount:aqua-security:aqua-account
 oc adm policy add-scc-to-user privileged system:serviceaccount:aqua-security:aqua-account
 oc adm policy add-scc-to-user hostaccess system:serviceaccount:aqua-security:aqua-account
 ```
 
-Pokračujte podle zbývajících pokynů v kroku 1.  Tyto pokyny popisují nastavení tajného klíče pro azurová Registry.
+Pokračujte podle zbývajících pokynů v kroku 1.  Tyto pokyny popisují nastavení tajného klíče pro registr Aqua.
 
-### <a name="step-2-deploy-the-aqua-server-database-and-gateway"></a>Krok 2: nasazení azurová serveru, databáze a brány
-Postupujte podle kroků uvedených v části azurová dokumentace pro instalaci nástroje azurová-Console. yaml.
+### <a name="step-2-deploy-the-aqua-server-database-and-gateway"></a>Krok 2: Nasazení aquaserveru, databáze a brány
+Při instalaci souboru aqua-console.yaml postupujte podle pokynů uvedených v dokumentaci společnosti Aqua.
 
-Upravte poskytnutou `aqua-console.yaml`.  Odeberte horní dva objekty s označením `kind: ClusterRole` a `kind: ClusterRoleBinding`.  Tyto prostředky se nevytvoří, protože správce zákazníka nemá v tuto chvíli oprávnění ke změně `ClusterRole` a `ClusterRoleBinding` objektů.
+Upravte zadaný `aqua-console.yaml`.  Odstraňte dva horní objekty označené `kind: ClusterRole` a `kind: ClusterRoleBinding`.  Tyto prostředky nebudou vytvořeny, protože správce zákazníka nemá v tuto `ClusterRole` `ClusterRoleBinding` chvíli oprávnění k úpravám a objektům.
 
-Druhá změna bude `kind: Route` část `aqua-console.yaml`. Pro objekt `kind: Route` v souboru `aqua-console.yaml` nahraďte následující YAML.
+Druhá změna bude na `kind: Route` část `aqua-console.yaml`. Nahraďte následující yaml `kind: Route` pro `aqua-console.yaml` objekt v souboru.
 ```
 apiVersion: route.openshift.io/v1
 kind: Route
@@ -98,52 +98,52 @@ spec:
   wildcardPolicy: None
 ```
 
-Postupujte podle dalších pokynů.
+Postupujte podle zbývajících pokynů.
 
-### <a name="step-3-login-to-the-aqua-server"></a>Krok 3: přihlášení k serveru na azurová
-Tato část se nijak nijak nemění.  Postupujte podle dokumentace ke azurová.
+### <a name="step-3-login-to-the-aqua-server"></a>Krok 3: Přihlášení k aqua serveru
+Tato část není žádným způsobem změněna.  Postupujte podle dokumentace aqua.
 
-K získání adresy pro azurová konzolu použijte následující příkaz.
+Pomocí následujícího příkazu získáte adresu aquakonzole.
 ```
 oc get route aqua-web -n aqua-security
 ```
 
-### <a name="step-4-deploy-aqua-enforcers"></a>Krok 4: nasaďte azurová vynucené
-Při nasazování vynucení nastavte následující pole:
+### <a name="step-4-deploy-aqua-enforcers"></a>Krok 4: Nasazení aqua enforcerů
+Při nasazování vymahačů nastavte následující pole:
 
 | Pole          | Hodnota         |
 | -------------- | ------------- |
 | Orchestrator   | OpenShift     |
-| ServiceAccount | Azurová – účet  |
-| Project        | Azurová – zabezpečení |
+| Účet služby | aqua-účet  |
+| Project        | aqua-security |
 
-## <a name="product-specific-steps-for-prisma-cloud--twistlock"></a>Kroky specifické pro produkt Prisma Cloud/TwistLock
+## <a name="product-specific-steps-for-prisma-cloud--twistlock"></a>Kroky specifické pro prisma cloud / Twistlock
 
-Základní pokyny, které jsme změnili, najdete v [dokumentaci k nasazení cloudu Prisma](https://docs.paloaltonetworks.com/prisma/prisma-cloud/19-11/prisma-cloud-compute-edition-admin/install/install_openshift.html) .
+Základní pokyny, které budeme upravovat, najdete v [dokumentaci k nasazení Prisma Cloud.](https://docs.paloaltonetworks.com/prisma/prisma-cloud/19-11/prisma-cloud-compute-edition-admin/install/install_openshift.html)
 
-Začněte tím, že nainstalujete nástroj `twistcli`, jak je popsáno v části "Install Prisma Cloud" a "stažení The Prisma Cloud software".
+Začněte instalací `twistcli` nástroje, jak je popsáno v části "Instalace prisma cloudu" a "Stáhněte si software Prisma Cloud".
 
-Vytvořit nový projekt OpenShift
+Vytvoření nového projektu OpenShift
 ```
 oc new-project twistlock
 ```
 
-Přeskočit volitelný oddíl "vložení cloudových imagí Prisma do privátního registru". Nebude fungovat na Azure Red Hat OpenShift. Místo toho použijte online Registry.
+Přeskočte volitelnou sekci "Posuňte image Prisma Cloud do soukromého registru". Na Azure Red Hat Openshift to nebude fungovat. Místo toho použijte online registr.
 
-Při použití oprav popsaných níže můžete postupovat podle oficiální dokumentace.
-Začněte s oddílem "Install Console".
+Při použití níže popsaných oprav se můžete řídit oficiální dokumentací.
+Začněte s částí "Instalovat konzolu".
 
 ### <a name="install-console"></a>Nainstalovat konzolu
 
-Během `oc create -f twistlock_console.yaml` v kroku 2 se při vytváření oboru názvů zobrazí chyba.
-Můžete ji bezpečně ignorovat, obor názvů byl dříve vytvořen pomocí příkazu `oc new-project`.
+Během `oc create -f twistlock_console.yaml` kroku 2 se při vytváření oboru názvů zobrazí chyba.
+Můžete jej bez obav ignorovat, obor názvů `oc new-project` byl vytvořen dříve pomocí příkazu.
 
-Pro typ úložiště použijte `azure-disk`.
+Používá `azure-disk` se pro typ úložiště.
 
-### <a name="create-an-external-route-to-console"></a>Vytvoření externí trasy pro konzolu
+### <a name="create-an-external-route-to-console"></a>Vytvoření externí trasy do konzoly
 
-Pokud dáváte přednost příkazu oC, můžete postupovat podle dokumentace nebo podle pokynů níže.
-Zkopírujte následující definici trasy do souboru s názvem twistlock_route. yaml ve vašem počítači.
+Můžete buď postupovat podle dokumentace, nebo pokyny níže, pokud dáváte přednost příkazu oc.
+Zkopírujte následující definici trasy do souboru s názvem twistlock_route.yaml v počítači
 ```
 apiVersion: route.openshift.io/v1
 kind: Route
@@ -164,20 +164,20 @@ spec:
     weight: 100
   wildcardPolicy: None
 ```
-pak spusťte:
+pak spustit:
 ```
 oc create -f twistlock_route.yaml
 ```
 
-Adresu URL přiřazenou ke konzole TwistLock můžete získat pomocí tohoto příkazu: `oc get route twistlock-console -n twistlock`
+Pomocí tohoto příkazu můžete získat adresu URL přiřazenou konzoli Twistlock:`oc get route twistlock-console -n twistlock`
 
-### <a name="configure-console"></a>Konfigurovat konzolu
+### <a name="configure-console"></a>Konfigurace konzoly
 
-Postup najdete v dokumentaci k TwistLock.
+Postupujte podle dokumentace Twistlock.
 
-### <a name="install-defender"></a>Nainstalovat Defender
+### <a name="install-defender"></a>Instalace programu Defender
 
-Během `oc create -f defender.yaml` v kroku 2 se zobrazí chyby při vytváření vazby role clusteru a role clusteru.
+Během `oc create -f defender.yaml` kroku 2 se při vytváření role clusteru a vazby role clusteru zobrazí chyby.
 Můžete je ignorovat.
 
-Do výpočetních uzlů budou nasazené i ty. Nemusíte je omezovat pomocí voliče uzlů.
+Obránci budou nasazeni pouze na výpočetních uzlech. Není nutné je omezovat pomocí voliče uzlů.

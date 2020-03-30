@@ -1,50 +1,50 @@
 ---
-title: Ukázky šablon Azure Resource Manager
-description: Vyhledání ukázek šablon Azure Resource Manager k nasazení Azure Container Instances v různých konfiguracích
+title: Ukázky šablon Azure Resource Manageru
+description: Najděte ukázky šablon Azure Resource Manageru pro nasazení instancí kontejnerů Azure v různých konfiguracích
 ms.topic: article
 ms.date: 03/07/2019
 ms.openlocfilehash: a8f3c81c539562a3c56e4822cf6e4df77d04928f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75981653"
 ---
-# <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Šablony Azure Resource Manager pro Azure Container Instances
+# <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Šablony Azure Resource Manageru pro instance kontejnerů Azure
 
-Následující ukázkové šablony nasazují instance kontejneru v různých konfiguracích.
+Následující ukázkové šablony nasazují instance kontejnerů v různých konfiguracích.
 
-Možnosti nasazení najdete v části věnované [nasazení](#deployment) . Chcete-li vytvořit vlastní šablony, šablona Azure Container Instances [Správce prostředků šablony referenční][ref] podrobnosti a vlastnosti k dispozici.
+Možnosti nasazení najdete v části [Nasazení.](#deployment) Pokud chcete vytvořit vlastní šablony, šablona šablony Azure Container Instances [Resource Manager odkazuje na][ref] šablonu šablony podrobností a dostupných vlastností.
 
 ## <a name="sample-templates"></a>Ukázkové šablony
 
 | | |
 |-|-|
 | **Aplikace** ||
-| [WordPress][app-wp] | Vytvoří web WordPress a jeho databázi MySQL ve skupině kontejnerů. Obsah webu WordPress a databáze MySQL jsou trvalé ve sdílené složce souborů Azure. Vytvoří také aplikační bránu pro zpřístupnění přístupu k veřejné síti pro WordPress. |
-| [MS NAV s SQL Server a službou IIS][app-nav] | Nasadí jeden kontejner Windows s plně vybaveným samoobslužným podnikovým prostředím Dynamics NAV/Dynamics 365. |
-| **Svazků** ||
-| [emptyDir][vol-emptydir] | Nasadí dva kontejnery Linux, které sdílejí svazek emptyDir. |
-| [Gitrepo nepodporují][vol-gitrepo] | Nasadí kontejner pro Linux, který naklonuje úložiště GitHubu a připojí ho jako svazek. |
-| [secret][vol-secret] | Nasadí kontejner pro Linux s certifikátem PFX připojeným jako tajný svazek. |
-| **Sítě** ||
-| [Kontejner vystavený UDP][net-udp] | Nasadí kontejner systému Windows nebo Linux, který zveřejňuje port UDP. |
-| [Kontejner pro Linux s veřejnou IP adresou][net-publicip] | Nasadí jeden kontejner pro Linux přístupný prostřednictvím veřejné IP adresy. |
-| [Nasazení skupiny kontejnerů pomocí virtuální sítě (Preview)][net-vnet] | Nasadí novou virtuální síť, podsíť, síťový profil a skupinu kontejnerů. |
+| [WordPress][app-wp] | Vytvoří webové stránky WordPress a jeho MySQL databáze ve skupině kontejnerů. Obsah webu WordPress a databáze MySQL jsou trvalé do sdílené složky Azure Files. Také vytvoří aplikační bránu pro vystavení přístupu k veřejné síti wordpressu. |
+| [MS NAV se serverem SQL A Službou IIS][app-nav] | Nasazuje jeden kontejner Windows s plně vybaveným samostatným prostředím Dynamics NAV / Dynamics 365 Business Central. |
+| **Svazky** ||
+| [emptyDir][vol-emptydir] | Nasadí dva linuxové kontejnery, které sdílejí prázdný svazek Dir. |
+| [gitRepo][vol-gitrepo] | Nasadí linuxový kontejner, který klonuje úložiště GitHub a připojí ho jako svazek. |
+| [Tajemství][vol-secret] | Nasazuje linuxový kontejner s certifikátem PFX připojeným jako tajný svazek. |
+| **Síťové služby** ||
+| [Kontejner vystavený UDP][net-udp] | Nasazuje kontejner Windows nebo Linux, který zveřejňuje port UDP. |
+| [Linuxový kontejner s veřejnou IP adresou][net-publicip] | Nasazuje jeden kontejner Linuxu přístupný prostřednictvím veřejné IP adresy. |
+| [Nasazení skupiny kontejnerů s virtuální sítí (preview)][net-vnet] | Nasazuje novou virtuální síť, podsíť, profil sítě a skupinu kontejnerů. |
 | **Prostředky Azure** ||
-| [Vytvoření sdílené složky Azure Storage účtu a souborů][az-files] | Pomocí Azure CLI v instanci kontejneru vytvoří účet úložiště a sdílenou složku služby soubory Azure.
+| [Vytvoření sdílené položky účtu azure úložiště a sdílení souborů][az-files] | Používá Azure CLI v instanci kontejneru k vytvoření účtu úložiště a sdílené složky Azure Files.
 
 ## <a name="deployment"></a>Nasazení
 
-K nasazení prostředků pomocí šablon Správce prostředků máte několik možností:
+Máte několik možností pro nasazení prostředků pomocí šablon Správce prostředků:
 
 [Azure CLI][deploy-cli]
 
 [Azure PowerShell][deploy-powershell]
 
-[Azure Portal][deploy-portal]
+[Portál Azure][deploy-portal]
 
-[REST API][deploy-rest]
+[ROZHRANÍ API PRO ODPOČINEK][deploy-rest]
 
 <!-- LINKS - External -->
 [app-nav]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-dynamicsnav

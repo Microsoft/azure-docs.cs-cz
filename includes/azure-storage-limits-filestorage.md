@@ -9,18 +9,18 @@ ms.date: 07/01/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: d6f56f3500ab9c6b4482d2ade892dfdb46ccacb5
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67503373"
 ---
-Soubory typu Premium, použijte účet jedinečný úložiště s názvem **úložiště souborů**. Tento typ účtu je navržená pro úlohy s vysokým vstupně-výstupních operací, vysoké propustnosti s konzistentní s nízkou latencí. File storage úrovně Premium se škáluje s velikosti zřízené sdílené složky.
+Soubory Premium používají jedinečný účet úložiště s názvem **FileStorage**. Tento typ účtu je určen pro úlohy s vysokým iOPS, vysokou propustností s konzistentní nízkou latencí. Úložiště souborů Premium váhy s zřízenou velikost sdílené složky.
 
-|Oblast  |Target  |
+|Oblast  |Cíl  |
 |---------|---------|
-|Maximální počet zřízení velikost     |100 TiB     |
+|Maximální zřízená velikost     |100 TiB     |
 |Sdílené složky   |Unlimited  |
 |IOPS     |100 000    |
-|Příchozí přenos dat|4,136 MiB/s     |
-|Výchozí přenos|6,204 MiB/s |
+|Příchozí přenos dat|4 136 MiB/s     |
+|Výchozí přenos dat|6 204 MiB/s |

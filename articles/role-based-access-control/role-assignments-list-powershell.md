@@ -1,6 +1,6 @@
 ---
 title: Seznam přiřazení rolí pomocí Azure RBAC a Azure PowerShell
-description: Naučte se určit, které prostředky uživatelé, skupiny, instanční objekty nebo spravované identity mají přístup k používání řízení přístupu na základě role (RBAC) Azure a Azure PowerShell.
+description: Zjistěte, k jakým prostředkům mají uživatelé, skupiny, instanční objekty nebo spravované identity přístup pomocí řízení přístupu azure založeného na rolích (RBAC) a Azure PowerShellu.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,28 +15,28 @@ ms.date: 01/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 0ec3153e5b1bfbe04a079d1cfc44e8e8709784d4
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75931156"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-azure-powershell"></a>Seznam přiřazení rolí pomocí Azure RBAC a Azure PowerShell
 
-[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] tomto článku se dozvíte, jak vypsat přiřazení rolí pomocí Azure PowerShell.
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]Tento článek popisuje, jak vypsat přiřazení rolí pomocí Azure PowerShellu.
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
 > [!NOTE]
-> Pokud má vaše organizace samoobslužné funkce správy pro poskytovatele služeb, který používá [správu delegovaných prostředků Azure](../lighthouse/concepts/azure-delegated-resource-management.md), tady se nezobrazí přiřazení rolí autorizovaných tímto poskytovatelem služeb.
+> Pokud vaše organizace zadala funkce správy poskytovateli služeb, který používá [azure delegovanou správu prostředků](../lighthouse/concepts/azure-delegated-resource-management.md), přiřazení rolí autorizovaná tímto poskytovatelem služeb se zde nezobrazí.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [PowerShell v Azure Cloud Shell](/azure/cloud-shell/overview) nebo [Azure PowerShell](/powershell/azure/install-az-ps)
+- [PowerShell v Azure Cloud Shellu](/azure/cloud-shell/overview) nebo [Azure PowerShellu](/powershell/azure/install-az-ps)
 
 ## <a name="list-role-assignments-for-the-current-subscription"></a>Seznam přiřazení rolí pro aktuální předplatné
 
-Nejjednodušší způsob, jak získat seznam všech přiřazení rolí v rámci aktuálního předplatného (včetně děděných přiřazení rolí z kořenu a skupin pro správu), je použít [příkaz Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) bez parametrů.
+Nejjednodušší způsob, jak získat seznam všech přiřazení rolí v aktuálním předplatném (včetně zděděných přiřazení rolí z kořenových a skupin pro správu), je použít [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) bez jakýchkoli parametrů.
 
 ```azurepowershell
 Get-AzRoleAssignment
@@ -70,7 +70,7 @@ CanDelegate        : False
 
 ## <a name="list-role-assignments-for-a-subscription"></a>Výpis přiřazení rolí pro předplatné
 
-Pokud chcete zobrazit seznam všech přiřazení rolí v oboru předplatného, použijte [příkaz Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment). Pokud chcete získat ID předplatného, najdete ho v okně **předplatná** v Azure Portal nebo můžete použít [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription).
+Chcete-li vypsat všechna přiřazení rolí v oboru předplatného, použijte [get-azroleassignment](/powershell/module/az.resources/get-azroleassignment). Chcete-li získat ID předplatného, najdete ho na okně **Předplatná** na webu Azure portal nebo můžete použít [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription).
 
 ```azurepowershell
 Get-AzRoleAssignment -Scope /subscriptions/<subscription_id>
@@ -82,7 +82,7 @@ PS C:\> Get-AzRoleAssignment -Scope /subscriptions/00000000-0000-0000-0000-00000
 
 ## <a name="list-role-assignments-for-a-user"></a>Výpis přiřazení rolí pro uživatele
 
-Chcete-li zobrazit seznam všech rolí, které jsou přiřazeny určitému uživateli, použijte [příkaz Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
+Chcete-li vypsat všechny role, které jsou přiřazeny určenému uživateli, použijte [příkaz Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
 
 ```azurepowershell
 Get-AzRoleAssignment -SignInName <email_or_userprincipalname>
@@ -96,7 +96,7 @@ RoleDefinitionName : BizTalk Contributor
 Scope              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales
 ```
 
-Chcete-li zobrazit seznam všech rolí, které jsou přiřazeny určenému uživateli, a rolím, které jsou přiřazeny ke skupinám, do kterých uživatel patří, použijte [příkaz Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
+Chcete-li vypsat všechny role, které jsou přiřazeny určenému uživateli, a role, které jsou přiřazeny skupinám, do kterých uživatel patří, použijte [přiřazení Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
 
 ```azurepowershell
 Get-AzRoleAssignment -SignInName <email_or_userprincipalname> -ExpandPrincipalGroups
@@ -108,7 +108,7 @@ Get-AzRoleAssignment -SignInName isabella@example.com -ExpandPrincipalGroups | F
 
 ## <a name="list-role-assignments-for-a-resource-group"></a>Výpis přiřazení rolí pro skupinu prostředků
 
-Pokud chcete zobrazit seznam všech přiřazení rolí v oboru skupiny prostředků, použijte [příkaz Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
+Chcete-li vypsat všechna přiřazení rolí v oboru skupiny prostředků, použijte [příkaz Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
 
 ```azurepowershell
 Get-AzRoleAssignment -ResourceGroupName <resource_group_name>
@@ -132,7 +132,7 @@ Scope              : /subscriptions/00000000-0000-0000-0000-000000000000/resourc
 
 ## <a name="list-role-assignments-for-a-management-group"></a>Seznam přiřazení rolí pro skupinu pro správu
 
-Chcete-li zobrazit seznam všech přiřazení rolí v oboru skupiny pro správu, použijte [příkaz Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment). Pokud chcete získat ID skupiny pro správu, můžete ji najít v okně **skupiny pro správu** v Azure Portal nebo můžete použít [Get-AzManagementGroup](/powershell/module/az.resources/get-azmanagementgroup).
+Chcete-li vypsat všechna přiřazení rolí v oboru skupiny pro správu, použijte [příkaz Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment). Chcete-li získat ID skupiny pro správu, najdete ho na okně **Skupiny pro správu** na webu Azure Portal nebo můžete použít [Get-AzManagementGroup](/powershell/module/az.resources/get-azmanagementgroup).
 
 ```azurepowershell
 Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGroups/<group_id>
@@ -144,7 +144,7 @@ PS C:\> Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGr
 
 ## <a name="list-role-assignments-for-classic-service-administrator-and-co-administrators"></a>Seznam přiřazení rolí pro klasického správce služeb a spolusprávce
 
-K zobrazení seznamu přiřazení rolí pro klasického Správce předplatného a spolusprávce použijte [příkaz Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
+Chcete-li vypsat přiřazení rolí pro klasického správce předplatného a spolusprávce, použijte [příkaz Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
 
 ```azurepowershell
 Get-AzRoleAssignment -IncludeClassicAdministrators
@@ -152,15 +152,15 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
 
 ## <a name="list-role-assignments-for-a-managed-identity"></a>Seznam přiřazení rolí pro spravovanou identitu
 
-1. Získejte ID objektu spravované identity přiřazené systémem nebo uživatelem. 
+1. Získejte ID objektu spravované identity přiřazené nebo uživatelem. 
 
-    Chcete-li získat ID objektu spravované identity přiřazené uživatelem, můžete použít [příkaz Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal).
+    Chcete-li získat ID objektu spravované identity přiřazené uživateli, můžete použít [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal).
 
     ```azurepowershell
     Get-AzADServicePrincipal -DisplayNameBeginsWith "<name> or <vmname>"
     ```
 
-1. K zobrazení seznamu přiřazení rolí použijte [příkaz Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
+1. Chcete-li uvést přiřazení rolí, použijte [příkaz Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
 
     ```azurepowershell
     Get-AzRoleAssignment -ObjectId <objectid>
@@ -168,4 +168,4 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a Azure PowerShell](role-assignments-powershell.md)
+- [Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a Azure PowerShellu](role-assignments-powershell.md)

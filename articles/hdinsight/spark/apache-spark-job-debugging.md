@@ -1,6 +1,6 @@
 ---
 title: Ladění úloh Apache Spark spuštěných ve službě Azure HDInsight
-description: Pro sledování a ladění úloh spuštěných v clusteru Spark v Azure HDInsight použijte uživatelské rozhraní, rozhraní Spark a server historie Sparku.
+description: Použití ui, ui rozhraní Spark, ui spark a serveru Historie Spark ke sledování a ladění úloh spuštěných v clusteru Spark v Azure HDInsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,122 +9,122 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: bcf2f97e855126c86dbb1d74cd430704e2af3af1
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75932141"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Ladění úloh Apache Spark spuštěných ve službě Azure HDInsight
 
-V tomto článku se dozvíte, jak sledovat a ladit [Apache Spark](https://spark.apache.org/) úlohy spuštěné v clusterech HDInsight pomocí uživatelského rozhraní [Apache Hadoop nitě](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) , uživatelského rozhraní Spark a serveru pro historii Spark. Pomocí poznámkového bloku, který je k dispozici pro cluster Spark, můžete spustit úlohu Sparku, **Machine Learning: prediktivní analýza dat kontroly potravin pomocí MLLib**. Pomocí následujících kroků můžete sledovat aplikaci, kterou jste odeslali pomocí jakéhokoli jiného přístupu, například **Spark-Submit**.
+V tomto článku se dozvíte, jak sledovat a ladit úlohy [Apache Spark](https://spark.apache.org/) spuštěné na clusterech HDInsight pomocí ui [Apache Hadoop YARN,](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) ui Spark a Spark History Server. Úlohu Spark zahájíte pomocí poznámkového bloku dostupného v clusteru Spark, **Strojové učení: Prediktivní analýza dat kontroly potravin pomocí MLLib**. Následující kroky můžete použít ke sledování aplikace, kterou jste odeslali pomocí jiného přístupu, například **spark-submit**.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
-* Měli byste začít s poznámkovým blokem **[Machine Learning: prediktivní analýza dat kontroly potravin pomocí MLLib](apache-spark-machine-learning-mllib-ipython.md)** . Pokyny, jak spustit tento poznámkový blok, získáte pomocí odkazu.  
+* Měli jste začít s notebookem **[Machine learning: Prediktivní analýza údajů o kontrole potravin pomocí MLLib](apache-spark-machine-learning-mllib-ipython.md)**. Pokyny ke spuštění tohoto poznámkového bloku najdete na odkazu.  
 
-## <a name="track-an-application-in-the-yarn-ui"></a>Sledování aplikace v uživatelském rozhraní PŘÍZe
+## <a name="track-an-application-in-the-yarn-ui"></a>Sledování aplikace v uzlovém řízení YARN
 
-1. Spusťte uživatelské rozhraní PŘÍZe. V části **řídicí panely clusteru**vyberte **příze** .
+1. Spusťte ui. V části Řídicí **panely clusteru**vyberte **Přízi** .
 
-    ![Azure Portal spustit rozhraní PŘÍZe](./media/apache-spark-job-debugging/launch-apache-yarn-ui.png)
-
-   > [!TIP]  
-   > Alternativně můžete také spustit rozhraní PŘÍZe z uživatelského rozhraní Ambari. Pokud chcete spustit uživatelské rozhraní Ambari, vyberte **Ambari domů** v části **řídicí panely clusteru**. V uživatelském rozhraní Ambari přejděte na **příze** > **Rychlé odkazy** > **uživatelského rozhraní**aktivní Správce prostředků > Správce prostředků.
-
-2. Vzhledem k tomu, že jste spustili úlohu Spark pomocí poznámkových bloků Jupyter, aplikace má název **remotesparkmagics** (Toto je název pro všechny aplikace, které jsou spouštěny z poznámkových bloků). Chcete-li získat další informace o úloze, vyberte ID aplikace proti názvu aplikace. Tím se spustí zobrazení aplikace.
-
-    ![Server historie Sparku najít ID aplikace Spark](./media/apache-spark-job-debugging/find-application-id1.png)
-
-    U takových aplikací, které se spouštějí z notebooků Jupyter, je stav vždycky **spuštěný** , dokud neukončíte Poznámkový blok.
-
-3. V zobrazení aplikace můžete podrobněji přejít k části informace o kontejnerech přidružených k aplikaci a protokolech (stdout/stderr). Uživatelské rozhraní Spark můžete také spustit kliknutím na propojení odpovídající **adrese URL pro sledování**, jak je znázorněno níže.
-
-    ![Server historie Spark stáhnout protokoly kontejneru](./media/apache-spark-job-debugging/download-container-logs.png)
-
-## <a name="track-an-application-in-the-spark-ui"></a>Sledování aplikace v uživatelském rozhraní Spark
-
-V uživatelském rozhraní Spark můžete přejít k podrobnostem úloh Spark, které vytváří aplikace, kterou jste spustili dříve.
-
-1. Chcete-li spustit uživatelské rozhraní Spark, v zobrazení aplikace vyberte odkaz na **adresu URL pro sledování**, jak je znázorněno na snímku obrazovky výše. Zobrazí se všechny úlohy Sparku spouštěné aplikací běžícími na poznámkovém bloku Jupyter.
-
-    ![Karta úlohy serveru historie Sparku](./media/apache-spark-job-debugging/view-apache-spark-jobs.png)
-
-2. Vyberte kartu **vykonavatelé** a zobrazte informace o zpracování a uložení pro každý prováděcí modul. Můžete také načíst zásobník volání výběrem odkazu **výpisu vlákna** .
-
-    ![Karta vykonavatelé serveru historie Spark](./media/apache-spark-job-debugging/view-spark-executors.png)
-
-3. Vyberte kartu **fáze** a zobrazte fáze spojené s aplikací.
-
-    ![Karta fáze serveru historie Sparku](./media/apache-spark-job-debugging/view-apache-spark-stages.png "Zobrazit fáze Sparku")
-
-    Každá fáze může mít několik úloh, pro které můžete zobrazit statistiku spuštění, jak je znázorněno níže.
-
-    ![Podrobnosti karty fáze serveru pro historii Sparku](./media/apache-spark-job-debugging/view-spark-stages-details.png "Zobrazit podrobnosti o fázích Sparku")
-
-4. Na stránce Podrobnosti fáze můžete spustit vizualizaci DAG. Rozbalte odkaz **vizualizace DAG** v horní části stránky, jak je znázorněno níže.
-
-    ![Zobrazit vizualizaci DAG ve fázích Sparku](./media/apache-spark-job-debugging/view-spark-stages-dag-visualization.png)
-
-    DAG nebo Direct Aclyic Graph představuje různé fáze aplikace. Každé modré pole v grafu představuje operaci Spark vyvolanou z aplikace.
-
-5. Na stránce Podrobnosti fáze můžete také spustit zobrazení Časová osa aplikace. Rozbalte odkaz **Časová osa události** v horní části stránky, jak je znázorněno níže.
-
-    ![Zobrazit časovou osu události fází Sparku](./media/apache-spark-job-debugging/view-spark-stages-event-timeline.png)
-
-    Tím se zobrazí události Sparku ve formě časové osy. Zobrazení Časová osa je k dispozici na třech úrovních, napříč úlohami v rámci úlohy a v rámci fáze. Výše uvedený obrázek zachytí zobrazení časové osy pro danou fázi.
+    ![Spuštění ui portálu Azure](./media/apache-spark-job-debugging/launch-apache-yarn-ui.png)
 
    > [!TIP]  
-   > Pokud zaškrtnete políčko **Povolit zvětšení velikosti** , můžete v zobrazení Časová osa přejít doleva a doprava.
+   > Případně můžete také spustit UI YARN z ui Ambari. Chcete-li spustit ui Ambari, vyberte **ambari domů** v **řídicích panelech clusteru**. V uzdu Ambari přejděte na**rychlé odkazy** **yarn** > > aktivního správce prostředků > **ui správce prostředků**.
 
-6. Další karty v uživatelském rozhraní Spark obsahují také užitečné informace o instanci Spark.
+2. Vzhledem k tomu, že jste spustili úlohu Spark pomocí poznámkových bloků Jupyter, aplikace má název **remotesparkmagics** (to je název pro všechny aplikace, které jsou spuštěny z poznámkových bloků). Vyberte ID aplikace proti názvu aplikace, abyste získali další informace o úloze. Tím se spustí zobrazení aplikace.
 
-   * Karta úložiště – Pokud vaše aplikace vytvoří RDD, můžete najít informace o těchto možnostech na kartě úložiště.
-   * Karta prostředí – Tato karta poskytuje užitečné informace o vaší instanci Spark, jako je:
+    ![Spark historie server Najít Spark ID aplikace](./media/apache-spark-job-debugging/find-application-id1.png)
+
+    Pro takové aplikace, které jsou spuštěny z poznámkových bloků Jupyter, stav je vždy **spuštěn,** dokud neukončíte poznámkový blok.
+
+3. V zobrazení aplikace můžete přejít k podrobnostem dále zjistit kontejnery přidružené k aplikaci a protokoly (stdout/stderr). Ui Spark můžete spustit také kliknutím na odkaz odpovídající **měřicí adrese URL**, jak je znázorněno níže.
+
+    ![Protokoly kontejnerů pro stahování kontejnerů serveru historie jiskry](./media/apache-spark-job-debugging/download-container-logs.png)
+
+## <a name="track-an-application-in-the-spark-ui"></a>Sledování aplikace v uzlech Spark
+
+V uzdviže ní můžete přejít k podrobnostem úloh Spark, které jsou zplozené aplikací, kterou jste spustili dříve.
+
+1. Chcete-li spustit uzdu Spark, vyberte ze zobrazení aplikace odkaz na **měřicí adresu URL**, jak je znázorněno na obrazovce. Můžete vidět všechny úlohy Spark, které jsou spuštěny aplikací spuštěnou v poznámkovém bloku Jupyter.
+
+    ![Karta Úlohy serveru historie jiskřitek](./media/apache-spark-job-debugging/view-apache-spark-jobs.png)
+
+2. Výběrem karty **Executors** zobrazíte informace o zpracování a úložišti pro každého vykonavatele. Zásobník volání můžete také načíst výběrem odkazu **Výpis vláken.**
+
+    ![Karta Vykonavatelé serveru historie historie spark](./media/apache-spark-job-debugging/view-spark-executors.png)
+
+3. Výběrem karty **Fáze** zobrazíte fáze přidružené k aplikaci.
+
+    ![Karta Fáze historie historie jiskry](./media/apache-spark-job-debugging/view-apache-spark-stages.png "Zobrazit fáze Zapalovací hodu")
+
+    Každá fáze může mít více úkolů, pro které můžete zobrazit statistiky provádění, jako je uvedeno níže.
+
+    ![Podrobnosti k artě Fáze historie spark](./media/apache-spark-job-debugging/view-spark-stages-details.png "Zobrazit podrobnosti o fázích Spark")
+
+4. Na stránce podrobností o vymezené ploše můžete spustit vizualizaci DAG. Rozbalte odkaz **Vizualizace DAG** v horní části stránky, jak je znázorněno níže.
+
+    ![Zobrazit Spark fáze DAG vizualizace](./media/apache-spark-job-debugging/view-spark-stages-dag-visualization.png)
+
+    DAG nebo direct aclyic graph představuje různé fáze aplikace. Každý modrý rámeček v grafu představuje operaci Spark vyvolána z aplikace.
+
+5. Na stránce podrobností o vymezené ploše můžete také spustit zobrazení časové osy aplikace. Rozbalte odkaz **Časová osa události** v horní části stránky, jak je znázorněno níže.
+
+    ![Zobrazit časovou osu událostí fází Jiskry](./media/apache-spark-job-debugging/view-spark-stages-event-timeline.png)
+
+    Tím se zobrazí události Spark ve formě časové osy. Zobrazení časové osy je k dispozici na třech úrovních, napříč úlohami, v rámci úlohy a ve fázi. Výše uvedený obrázek zachycuje zobrazení časové osy pro danou fázi.
+
+   > [!TIP]  
+   > Pokud zaškrtnete políčko **Povolit přiblížení,** můžete se posouvat doleva a doprava v zobrazení časové osy.
+
+6. Další karty v uzdu Spark poskytují užitečné informace o instanci Spark také.
+
+   * Karta Úložiště – Pokud vaše aplikace vytvoří RDD, můžete najít informace o těch na kartě Úložiště.
+   * Karta Prostředí – tato karta obsahuje užitečné informace o instanci Spark, například:
      * Verze Scala
      * Adresář protokolu událostí přidružený ke clusteru
-     * Počet jader prováděcích modulů pro aplikaci
+     * Počet jader exekutorů pro aplikaci
      * Atd.
 
-## <a name="find-information-about-completed-jobs-using-the-spark-history-server"></a>Vyhledání informací o dokončených úlohách pomocí serveru historie Spark
+## <a name="find-information-about-completed-jobs-using-the-spark-history-server"></a>Vyhledání informací o dokončených úlohách pomocí serveru Historie spark
 
-Po dokončení úlohy jsou informace o úloze trvalé na serveru historie Sparku.
+Po dokončení úlohy jsou informace o úloze na serveru historie spark ustáleny.
 
-1. Pokud chcete spustit server historie Sparku, na stránce **Přehled** vyberte v části **řídicí panely clusteru**možnost **Server historie Spark** .
+1. Chcete-li spustit spark history server, vyberte na stránce **Přehled** v části **Řídicí panely clusteru** **vyberte server historie Spark** .
 
-    ![Azure Portal spustit historii serveru Spark](./media/apache-spark-job-debugging/launch-spark-history-server.png "Spustit historii Sparku Server1")
+    ![Spuštění serveru historie Spark portálu Azure](./media/apache-spark-job-debugging/launch-spark-history-server.png "Spuštění serveru historie Spark1")
 
    > [!TIP]  
-   > Alternativně můžete také spustit uživatelské rozhraní serveru historie Sparku z uživatelského rozhraní Ambari. Pokud chcete spustit uživatelské rozhraní Ambari, v okně Přehled vyberte **Ambari domů** v části **řídicí panely clusteru**. V uživatelském rozhraní Ambari přejděte na **Spark2** > **Rychlé odkazy** > **uživatelské rozhraní serveru historie Spark2**.
+   > Případně můžete také spustit spark History Server UI z ui Ambari. Chcete-li spustit ui Ambari, vyberte v okně Přehled **vyberte ambari domů** v **řídicích panelech clusteru**. Z ui Ambari přejděte na **Spark2** > **Quick Links** > **Spark2 History Server UI**.
 
-2. Zobrazí se všechny dokončené aplikace v seznamu. Pro další informace vyberte ID aplikace a přejděte k podrobnostem o aplikaci.
+2. Zobrazí se všechny dokončené aplikace uvedené. Vyberte ID aplikace, chcete-li přejít k podrobnostem aplikace pro další informace.
 
-    ![Server historie Spark dokončil aplikace](./media/apache-spark-job-debugging/view-completed-applications.png "Spustit historii Spark Server2")
+    ![Aplikace dokončené na serveru historie spark](./media/apache-spark-job-debugging/view-completed-applications.png "Spuštění serveru historie Spark2")
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 * [Správa prostředků v clusteru Apache Spark v Azure HDInsight](apache-spark-resource-manager.md)
-* [Ladění úloh Apache Spark pomocí serveru rozšířených historií Sparku](apache-azure-spark-history-server.md)
+* [Ladění úloh Apache Spark pomocí rozšířeného serveru historie Spark](apache-azure-spark-history-server.md)
 
-### <a name="for-data-analysts"></a>Pro analytiky dat
+### <a name="for-data-analysts"></a>Pro datové analytiky
 
-* [Apache Spark s Machine Learning: pomocí Sparku v HDInsight můžete analyzovat teplotu budovy pomocí dat TVK.](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark s Machine Learning: pomocí Sparku v HDInsight předpovídat výsledky kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
-* [Analýza webového protokolu pomocí Apache Spark ve službě HDInsight](apache-spark-custom-library-website-log-analysis.md)
-* [Analýza dat telemetrie Application Insight pomocí Apache Spark ve službě HDInsight](apache-spark-analyze-application-insight-logs.md)
+* [Apache Spark se strojovým učením: Použijte Spark v HDInsightu pro analýzu teploty budovy pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s machine learningem: Využijte Spark v HDInsightu k předvídání výsledků kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
+* [Analýza protokolu webových stránek pomocí Apache Spark v HDInsight](apache-spark-custom-library-website-log-analysis.md)
+* [Analýza telemetrických dat Application Insight pomocí Apache Spark v HDInsightu](apache-spark-analyze-application-insight-logs.md)
 
 
 ### <a name="for-spark-developers"></a>Pro vývojáře Spark
 
 * [Vytvoření samostatné aplikace pomocí Scala](apache-spark-create-standalone-application.md)
-* [Vzdálené spouštění úloh na clusteru Apache Spark s využitím Apache Livy](apache-spark-livy-rest-interface.md)
+* [Spouštění úloh na dálku v clusteru Apache Spark pomocí Apache Livy](apache-spark-livy-rest-interface.md)
 * [Modul plug-in nástroje HDInsight pro IntelliJ IDEA pro vytvoření a odesílání aplikací Spark Scala](apache-spark-intellij-tool-plugin.md)
-* [Použití modulu plug-in nástrojů HDInsight pro IntelliJ NÁPADu při vzdáleném ladění aplikací Apache Spark](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v HDInsight](apache-spark-zeppelin-notebook.md)
-* [Jádra dostupná pro Poznámkový blok Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
-* [Použití externích balíčků s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
-* [Instalace Jupyteru do počítače a připojení ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)
+* [Použití HDInsight Tools Plugin pro IntelliJ IDEA k ladění aplikací Apache Spark na dálku](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Používejte notebooky Apache Zeppelin s clusterem Apache Spark na HDInsightu](apache-spark-zeppelin-notebook.md)
+* [Jádra dostupná pro notebook Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Použijte externí balíčky s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
+* [Nainstalujte do počítače Jupyter a připojte ho ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)

@@ -1,51 +1,51 @@
 ---
-title: Řešení chyb přesunutí
-description: Použití Azure Resource Manageru k přesunutí prostředků do nové skupiny prostředků nebo předplatného.
+title: Poradce při potížích s přesunutím
+description: Pomocí Správce prostředků Azure přesuňte prostředky do nové skupiny prostředků nebo předplatného.
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.openlocfilehash: 5a65f7daa0f5e3b1c8c6ddfdbecc0ff7d53e5afd
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75891262"
 ---
-# <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>Řešení potíží s přesunutím prostředků Azure do nové skupiny prostředků nebo předplatného
+# <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>Řešení potíží s přesunem prostředků Azure do nové skupiny prostředků nebo nového předplatného
 
-Tento článek popisuje návrhy, které vám pomůžou vyřešit problémy při přesunu prostředků.
+Tento článek obsahuje návrhy, které pomáhají řešit problémy při přesouvání prostředků.
 
 ## <a name="upgrade-a-subscription"></a>Upgrade předplatného
 
-Pokud ve skutečnosti chcete upgradovat předplatné Azure (jako je například přepínání z bezplatného na průběžné platby), budete muset převést své předplatné.
+Pokud opravdu chcete upgradovat předplatné Azure (například přechod z bezplatného na platbu průběžně), musíte předplatné převést.
 
-* Upgrade bezplatné zkušební verze, najdete v článku [upgradujte vaše předplatné Microsoft Imagine Azure nebo bezplatná zkušební verze na průběžné platby](../../billing/billing-upgrade-azure-subscription.md).
-* Chcete-li změnit účet s průběžnými platbami, [změnit předplatné Azure s průběžnými platbami na jinou nabídku](../../billing/billing-how-to-switch-azure-offer.md).
+* Pokud chcete upgradovat bezplatnou zkušební verzi, [přečtěte si informace o upgradu bezplatné zkušební verze nebo předplatného Microsoft Imagine Azure na průběžný platby](../../billing/billing-upgrade-azure-subscription.md).
+* Pokud chcete změnit účet s průběžným platbaem, [přečtěte si, že změníte předplatné Azure s průběžným platbou na jinou nabídku](../../billing/billing-how-to-switch-azure-offer.md).
 
-Pokud nelze převést předplatné [vytvoření žádosti o podporu Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). Vyberte **správy předplatných** typ problému.
+Pokud se vám nepodaří převést předplatné, [vytvořte žádost o podporu Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). Vyberte **službu Správa předplatného** pro typ problému.
 
-## <a name="service-limitations"></a>Omezení služby
+## <a name="service-limitations"></a>Omezení služeb
 
-Některé služby vyžadují při přesunu prostředků další předpoklady. Pokud přesouváte následující služby, ujistěte se, že jste zkontrolovali pokyny a omezení.
+Některé služby vyžadují další důležité informace při přesouvání prostředků. Pokud přesouváte následující služby, zkontrolujte pokyny a omezení.
 
 * [App Services](./move-limitations/app-service-move-limitations.md)
-* [Služby Azure DevOps](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
+* [Azure DevOps Services](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
 * [Model nasazení Classic](./move-limitations/classic-model-move-limitations.md)
-* [Sítě](./move-limitations/networking-move-limitations.md)
+* [Síťové služby](./move-limitations/networking-move-limitations.md)
 * [Recovery Services](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
-* [Virtual Machines](./move-limitations/virtual-machines-move-limitations.md)
+* [Virtuální počítače](./move-limitations/virtual-machines-move-limitations.md)
 
 ## <a name="large-requests"></a>Velké požadavky
 
-Pokud je to možné, přerušení velké přesune do operací přesunu samostatných. Správce prostředků okamžitě vrátí chybu, pokud je v jedné operaci více než 800 prostředků. Ale přesun prostředků menší než 800 selhat také podle vypršení časového limitu.
+Pokud je to možné, rozbít velké přesune do samostatné operace přesunutí. Správce prostředků okamžitě vrátí chybu, pokud existuje více než 800 prostředků v jedné operaci. Přesunutí méně než 800 prostředků však může také selhat vypršení časového limitu.
 
-## <a name="resource-not-in-succeeded-state"></a>Prostředek není v úspěšném stavu.
+## <a name="resource-not-in-succeeded-state"></a>Zdroj není v úspěšném stavu
 
-Když se zobrazí chybová zpráva s informacemi o tom, že prostředek nelze přesunout, protože není v úspěšném stavu, může se jednat o závislý prostředek, který tento přesun blokuje. Kód chyby je obvykle **MoveCannotProceedWithResourcesNotInSucceededState**.
+Když se zobrazí chybová zpráva, která označuje, že prostředek nelze přesunout, protože není v úspěšném stavu, může být ve skutečnosti závislý prostředek, který blokuje přesun. Kód chyby je obvykle **MoveCannotProceedWithResourcesNotInSucceededState**.
 
-Pokud zdrojová nebo cílová skupina prostředků obsahuje virtuální síť, při přesunu se zkontrolují stavy všech závislých prostředků pro virtuální síť. Tato kontrolu zahrnuje tyto prostředky přímo a nepřímo závislé na virtuální síti. Pokud některý z těchto prostředků je ve stavu selhání, přesun se zablokuje. Pokud třeba virtuální počítač, který používá virtuální síť, selhal, přesun se zablokuje. Přesunutí je blokováno i v případě, že virtuální počítač není jedním z přesouvaných prostředků a není v jedné ze skupin prostředků pro přesunutí.
+Pokud zdrojová nebo cílová skupina prostředků obsahuje virtuální síť, stavy všech závislých prostředků pro virtuální síť jsou kontrolovány během přesunu. Kontrola zahrnuje tyto prostředky přímo a nepřímo závislé na virtuální síti. Pokud některý z těchto prostředků jsou ve stavu selhání, přesunutí je blokován. Například pokud virtuální počítač, který používá virtuální síť se nezdařilo, přesunutí je blokován. Přesunutí je blokováno i v případě, že virtuální počítač není jedním z prostředků, které se přesouvají, a není v jedné ze skupin prostředků pro přesun.
 
-Pokud se zobrazí tato chyba, máte dvě možnosti. Buď přesuňte prostředky do skupiny prostředků, která nemá virtuální síť, nebo se obraťte na [podporu](../../azure-portal/supportability/how-to-create-azure-support-request.md).
+Když se zobrazí tato chyba, máte dvě možnosti. Přesuňte prostředky do skupiny prostředků, která nemá virtuální síť, nebo [se obraťte na podporu](../../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Příkazy pro přesunutí prostředků najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](move-resource-group-and-subscription.md).
+Příkazy k přesunutí prostředků najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](move-resource-group-and-subscription.md).

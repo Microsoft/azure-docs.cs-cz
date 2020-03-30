@@ -1,6 +1,6 @@
 ---
-title: Správa přístupu k prostředkům & aplikací pomocí skupin – Azure AD
-description: Další informace o tom, jak spravovat přístup k prostředkům pomocí skupin Azure Active Directory, místních aplikací a cloudových aplikací vaší organizace.
+title: Správa přístupu k aplikacím & prostředkům pomocí skupin – Azure AD
+description: Přečtěte si, jak spravovat přístup ke cloudovým aplikacím, místním aplikacím a prostředkům vaší organizace pomocí skupin Azure Active Directory.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -14,57 +14,57 @@ ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 961444e15ae1c45db1fc7423a6ac3cc96cc7b3fb
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75768006"
 ---
-# <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Správa aplikací a přístup k prostředkům pomocí skupin Azure Active Directory
-Azure Active Directory (Azure AD) umožňuje používat skupiny ke správě přístupu ke cloudovým aplikacím, místním aplikacím a vašim prostředkům. Vaše prostředky můžou být součástí organizace Azure AD, například oprávnění ke správě objektů prostřednictvím rolí v Azure AD nebo externích organizacím, jako jsou například aplikace pro aplikace SaaS (software jako služba), služby Azure, weby SharePoint a místní prostředky.
+# <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Správa přístupu k aplikacím a prostředkům pomocí skupin služby Azure Active Directory
+Azure Active Directory (Azure AD) umožňuje používat skupiny ke správě přístupu ke cloudovým aplikacím, místním aplikacím a prostředkům. Vaše prostředky mohou být součástí organizace Azure AD, jako jsou oprávnění ke správě objektů prostřednictvím rolí ve službě Azure AD nebo externích aplikací, jako jsou aplikace Software jako služba (SaaS), služby Azure, weby SharePointu a místní prostředky.
 
 >[!NOTE]
 >Abyste mohli používat Azure Active Directory, musíte mít účet Azure. Pokud účet Azure nemáte, můžete si [zaregistrovat bezplatný účet Azure](https://azure.microsoft.com/free/).
 >
-> V Azure Portal uvidíte některé skupiny, jejichž podrobnosti o členství a skupinách nemůžete spravovat na portálu:
+> Na webu Azure Portal uvidíte některé skupiny, jejichž členství a podrobnosti o skupině se na portálu nedaří spravovat:
 >
-> - Skupiny synchronizované z místní služby Active Directory je možné spravovat jenom v místní službě Active Directory.
-> - Jiné typy skupin, například distribuční seznamy a skupiny zabezpečení s povolenými e-maily, se spravují pouze v centru pro správu Exchange nebo v centru pro správu Microsoft 365. Abyste mohli spravovat tyto skupiny, musíte se přihlásit do centra pro správu Exchange nebo Microsoft 365 centra pro správu.
+> - Skupiny synchronizované z místní služby Active Directory lze spravovat pouze v místním adresáři Active Directory.
+> - Jiné typy skupin, jako jsou distribuční seznamy a skupiny zabezpečení s povolenou poštou, se spravují jenom v Centru pro správu Exchange nebo v Centru pro správu Microsoftu 365. Chcete-li spravovat tyto skupiny, musíte se přihlásit do Centra pro správu Exchange nebo do Centra pro správu Microsoftu 365.
 
-## <a name="how-access-management-in-azure-ad-works"></a>Jak funguje Správa přístupu v Azure AD
+## <a name="how-access-management-in-azure-ad-works"></a>Jak funguje správa přístupu ve službě Azure AD
 
-Azure AD vám poskytnout přístup k prostředkům ve vaší organizaci tím, že poskytuje přístupová práva k jenom jednoho konkrétního uživatele nebo pro celý Azure AD seskupit. Použití skupin umožňuje prostředku vlastníka (nebo vlastník adresář Azure AD), přiřadit sadu oprávnění k přístupu na všechny členy skupiny, místo nutnosti poskytují práva jeden po druhém. Vlastník prostředku nebo adresář můžete také udělit práva pro správu pro seznam členů někomu jinému, jako je například vedoucí oddělení nebo správce technické podpory, aby tato osoba přidávat a odebírat, podle potřeby. Další informace o tom, jak Správa vlastníků skupin najdete v tématu [Správa vlastníků skupin](active-directory-accessmanagement-managing-group-owners.md)
+Azure AD vám pomůže udělit přístup k prostředkům vaší organizace tím, že poskytuje přístupová práva pro jednoho uživatele nebo pro celou skupinu Azure AD. Použití skupin umožňuje vlastníkovi prostředku (nebo vlastníkovi adresáře Azure AD) přiřadit sadu přístupových oprávnění všem členům skupiny – místo poskytování práv jedno po druhém. Vlastník prostředku nebo adresáře může také udělit práva správce seznamu členů někomu jinému, například vedoucímu oddělení nebo správci technické podpory, a podle potřeby umožnit této osobě přidávat a odebírat členy. Další informace o správě vlastníků skupin naleznete v tématu [Správa vlastníků skupin](active-directory-accessmanagement-managing-group-owners.md)
 
 ![Diagram správy přístupu ve službě Azure Active Directory](./media/active-directory-manage-groups/active-directory-access-management-works.png)
 
-## <a name="ways-to-assign-access-rights"></a>Způsoby, jak přiřadit přístupová práva
+## <a name="ways-to-assign-access-rights"></a>Způsoby přiřazení přístupových práv
 
-Existují čtyři způsoby, jak přiřadit přístupová práva uživatelům prostředků:
+Existují čtyři způsoby, jak uživatelům přiřadit přístupová práva k prostředkům:
 
-- **Přímého přiřazení.** Vlastník prostředku přiřadí uživatele přímo k prostředku.
+- **Přímé přiřazení.** Vlastník prostředku přímo přiřadí uživatele k prostředku.
 
-- **Skupina přiřazení.** Vlastník prostředku přiřadí k prostředku, který automaticky poskytuje všechny členy skupiny umožňuje přístup k prostředku skupiny Azure AD. Členství ve skupině spravuje vlastník skupiny a vlastníka prostředku, takže buď vlastník, přidat nebo odebrat členy ze skupiny. Další informace o přidávání nebo odebírání členství ve skupinách najdete v tématu [postupy: Přidat nebo odebrat skupiny z jiné skupiny pomocí portálu Azure Active Directory](active-directory-groups-membership-azure-portal.md). 
+- **Přiřazení skupiny.** Vlastník prostředku přiřadí skupině Azure AD k prostředku, který automaticky poskytuje všem členům skupiny přístup k prostředku. Členství ve skupině spravuje vlastník skupiny i vlastník prostředku, který umožňuje vlastníkovi přidávat nebo odebírat členy ze skupiny. Další informace o přidání nebo odebrání členství ve skupině najdete v [tématu Postup: Přidání nebo odebrání skupiny z jiné skupiny pomocí portálu Azure Active Directory](active-directory-groups-membership-azure-portal.md). 
 
-- **Přiřazování na základě pravidel.** Vlastník prostředku vytvoří skupinu a pravidlo používá k definování, kteří uživatelé jsou přiřazení ke konkrétnímu prostředku. Toto pravidlo je na základě atributů, které jsou přiřazeny k jednotlivým uživatelům. Vlastník prostředku spravuje pravidla určující, které atributy a hodnoty jsou požadovány pro povolení přístupu prostředku. Další informace najdete v tématu [vytvoření dynamické skupiny a zkontrolovat stav](../users-groups-roles/groups-create-rule.md).
+- **Přiřazení založené na pravidlech.** Vlastník prostředku vytvoří skupinu a použije pravidlo k definování, kteří uživatelé jsou přiřazeni k určitému prostředku. Pravidlo je založeno na atributech, které jsou přiřazeny jednotlivým uživatelům. Vlastník prostředku spravuje pravidlo a určuje, které atributy a hodnoty jsou nutné k povolení přístupu k prostředku. Další informace naleznete [v tématu Vytvoření dynamické skupiny a kontrola stavu](../users-groups-roles/groups-create-rule.md).
 
-    Můžete také sledovat toto krátké video rychlé vysvětlení o vytváření a používání dynamických skupin:
+    Můžete také sledovat toto krátké video pro rychlé vysvětlení o vytváření a používání dynamických skupin:
 
     >[!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD--Introduction-to-Dynamic-Memberships-for-Groups/player]
 
-- **Přiřazení externího úřadu.** Přístup pochází z externího zdroje, jako je například v místním adresáři nebo aplikaci SaaS. V takovém případě vlastník prostředku přiřadí skupinu a poskytne přístup k prostředku a potom spravuje externího zdroje členy skupiny.
+- **Přiřazení externího orgánu.** Přístup pochází z externího zdroje, jako je místní adresář nebo aplikace SaaS. V takovém případě vlastník prostředku přiřadí skupinu poskytnout přístup k prostředku a pak externí zdroj spravuje členy skupiny.
 
    ![Diagram s přehledem správy přístupu](./media/active-directory-manage-groups/access-management-overview.png)
 
-## <a name="can-users-join-groups-without-being-assigned"></a>Mohou uživatelé připojit skupiny bez přiřazení?
-Vlastník skupiny můžete umožnit uživatelům najít skupin pro připojení, namísto jejich přiřazení. Vlastníka můžete také nastavit skupiny, aby automaticky přijímat všechny uživatele, kteří připojení nebo tak, aby vyžadovala schválení.
+## <a name="can-users-join-groups-without-being-assigned"></a>Mohou se uživatelé připojit ke skupinám, aniž by byli přiřazeni?
+Vlastník skupiny může uživatelům povolit, aby místo jejich přiřazení našli své vlastní skupiny. Vlastník může také nastavit skupinu tak, aby automaticky přijímala všechny uživatele, kteří se připojují nebo vyžadují schválení.
 
-Jakmile uživatel požádá o připojení ke skupině, požadavek předá vlastníka skupiny. Pokud je to požadováno, vlastníka můžete schválit požadavek a uživatel informován o členství ve skupině. Pokud máte více vlastníkům a jeden z nich disapproves, uživatel obdrží oznámení, ale není přidán do skupiny. Další informace a pokyny o tom, jak vaše uživatelům umožněno žádat o připojení skupin najdete v tématu [nastavení Azure AD, takže uživatelé můžou požádat o připojení skupin](../users-groups-roles/groups-self-service-management.md)
+Poté, co uživatel požádá o připojení ke skupině, je žádost předána vlastníkovi skupiny. Pokud je to nutné, vlastník může žádost schválit a uživatel je upozorněn na členství ve skupině. Pokud však máte více vlastníků a jeden z nich nesouhlasí, uživatel je upozorněn, ale není přidán do skupiny. Další informace a pokyny, jak uživatelům povolit žádost o připojení ke skupinám, najdete v tématu [Nastavení Azure AD, aby uživatelé mohli požádat o připojení ke skupinám.](../users-groups-roles/groups-self-service-management.md)
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když máte hodně Úvod ke správě přístupu pomocí skupin, je spustit ke správě vašich prostředků a aplikací.
+Teď, když máte trochu úvod do správy přístupu pomocí skupin, začnete spravovat své prostředky a aplikace.
 
-- [Vytvořte novou skupinu pomocí Azure Active Directory](active-directory-groups-create-azure-portal.md) nebo [vytvořit a spravovat pomocí rutin Powershellu pro novou skupinu](../users-groups-roles/groups-settings-v2-cmdlets.md)
+- [Vytvoření nové skupiny pomocí služby Azure Active Directory](active-directory-groups-create-azure-portal.md) nebo [vytvoření a správa nové skupiny pomocí rutin prostředí PowerShell](../users-groups-roles/groups-settings-v2-cmdlets.md)
 
-- [Použití skupin pro přiřazení přístupu k aplikaci SaaS integrované](../users-groups-roles/groups-saasapps.md)
+- [Přiřazení přístupu k integrované aplikaci SaaS pomocí skupin](../users-groups-roles/groups-saasapps.md)
 
-- [Synchronizovat místní skupině do Azure pomocí služby Azure AD Connect](../hybrid/whatis-hybrid-identity.md)
+- [Synchronizace místní skupiny s Azure pomocí Azure AD Connect](../hybrid/whatis-hybrid-identity.md)

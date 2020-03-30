@@ -1,6 +1,6 @@
 ---
-title: Kurz – vytvoření tenanta Azure Active Directory B2C
-description: Naučte se připravit registraci aplikací vytvořením klienta Azure Active Directory B2C pomocí Azure Portal.
+title: Kurz – vytvoření klienta Služby Azure Active Directory B2C
+description: Zjistěte, jak se připravit na registraci aplikací vytvořením klienta Azure Active Directory B2C pomocí portálu Azure.
 services: B2C
 author: msmimart
 manager: celestedg
@@ -11,102 +11,102 @@ ms.date: 09/28/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c31f3c4c6688af7d2142180e8d9b7100965bad96
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78186399"
 ---
-# <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Kurz: vytvoření tenanta Azure Active Directory B2C
+# <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Kurz: Vytvoření tenanta Azure Active Directory B2C
 
-Než můžou vaše aplikace pracovat s Azure Active Directory B2C (Azure AD B2C), musí být zaregistrované v tenantovi, které spravujete.
+Než vaše aplikace můžou pracovat s Azure Active Directory B2C (Azure AD B2C), musí být registrované v tenantovi, který spravujete.
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvoření tenanta Azure AD B2C
-> * Propojení tenanta s předplatným
-> * Přejděte do adresáře, který obsahuje Azure AD B2C tenanta.
-> * Přidat prostředek Azure AD B2C jako **oblíbenou položku** do Azure Portal
+> * Propojení klienta s předplatným
+> * Přepnutí do adresáře obsahujícího vašeho klienta Azure AD B2C
+> * Přidání prostředku Azure AD B2C jako **oblíbeného** na webu Azure Portal
 
-Naučíte se, jak zaregistrovat aplikaci v dalším kurzu.
+Dozvíte se, jak zaregistrovat aplikaci v dalším kurzu.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 ## <a name="create-an-azure-ad-b2c-tenant"></a>Vytvoření tenanta Azure AD B2C
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/). Přihlaste se pomocí účtu Azure, kterému byla přiřazena alespoň role [Přispěvatel](../role-based-access-control/built-in-roles.md) v rámci předplatného nebo skupiny prostředků v rámci předplatného.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/). Přihlaste se pomocí účtu Azure, který byl přiřazen alespoň roli [přispěvatele](../role-based-access-control/built-in-roles.md) v rámci předplatného nebo skupiny prostředků v rámci předplatného.
 
 1. Vyberte adresář, který obsahuje vaše předplatné.
 
-    Na panelu nástrojů Azure Portal vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vaše předplatné. Tento adresář je jiný než ten, který bude obsahovat vašeho tenanta Azure AD B2C.
+    Na panelu nástrojů Portálu Azure vyberte ikonu **Adresář + předplatné** a pak vyberte adresář, který obsahuje vaše předplatné. Tento adresář se liší od adresáře, který bude obsahovat vašeho klienta Azure AD B2C.
 
-    ![Tenant předplatného, adresář a filtr předplatných vybraný tenant předplatného](media/tutorial-create-tenant/portal-01-pick-directory.png)
+    ![Tenant předplatného, filtr Adresář + Odběr s vybraným klientem předplatného](media/tutorial-create-tenant/portal-01-pick-directory.png)
 
-1. V nabídce Azure Portal nebo na **domovské** stránce vyberte **vytvořit prostředek**.
-1. Vyhledejte **Azure Active Directory B2C**a pak vyberte **vytvořit**.
+1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Vytvořit prostředek**.
+1. Vyhledejte **službu Azure Active Directory B2C**a vyberte **příkaz Vytvořit**.
 1. Vyberte **Vytvořit nového tenanta Azure AD B2C**.
 
-    ![Vytvoří nový tenant Azure AD B2C vybraný v Azure Portal.](media/tutorial-create-tenant/portal-02-create-tenant.png)
+    ![Vytvoření nového klienta Azure AD B2C vybraného na webu Azure Portal](media/tutorial-create-tenant/portal-02-create-tenant.png)
 
-1. Zadejte **název organizace** a **počáteční název domény**. Vyberte **zemi nebo oblast** (nedá se změnit později) a pak vyberte **vytvořit**.
+1. Zadejte **název organizace** a počáteční název **domény**. Vyberte **zemi nebo oblast** (nelze ji později změnit) a pak vyberte **Vytvořit**.
 
-    Název domény se používá jako součást úplného názvu domény tenanta. V tomto příkladu je název tenanta *contosob2c.onmicrosoft.com*:
+    Název domény se používá jako součást celého názvu domény klienta. V tomto příkladu je název klienta *contosob2c.onmicrosoft.com*:
 
-    ![Vytvořit formulář tenanta v s příklady hodnot v Azure Portal](media/tutorial-create-tenant/portal-03-tenant-naming.png)
+    ![Vytvoření formuláře klienta pomocí ukázkových hodnot na webu Azure Portal](media/tutorial-create-tenant/portal-03-tenant-naming.png)
 
-1. Po vytvoření tenanta vyberte odkaz **vytvořit nového TENANTA B2C nebo odkaz na existující tenanta** v horní části stránky pro vytvoření tenanta.
+1. Po dokončení vytvoření klienta vyberte **vytvořit nového klienta B2C nebo odkaz na existující nájemce** odkaz v horní části stránky vytvoření klienta.
 
-    ![Odkaz na odkaz s popisem klienta v Azure Portal zvýrazněn](media/tutorial-create-tenant/portal-04-select-link-sub-link.png)
+    ![Odkaz na odkaz popis cesty klienta zvýrazněný na webu Azure Portal](media/tutorial-create-tenant/portal-04-select-link-sub-link.png)
 
-1. Vyberte **propojit existujícího tenanta Azure AD B2C s předplatným Azure**.
+1. Vyberte **Propojit existujícího klienta Azure AD B2C s mým předplatným Azure**.
 
-   ![Propojit existující výběr předplatného v Azure Portal](media/tutorial-create-tenant/portal-05-link-subscription.png)
+   ![Propojení existujícího výběru předplatného na webu Azure Portal](media/tutorial-create-tenant/portal-05-link-subscription.png)
 
-1. Vyberte **klienta Azure AD B2C** , kterého jste vytvořili, a pak vyberte své **předplatné**.
+1. Vyberte **klienta Azure AD B2C,** který jste vytvořili, a vyberte **předplatné**.
 
-    V poli **Skupina prostředků** vyberte **Vytvořit novou**. Zadejte **název** skupiny prostředků, která bude obsahovat tenanta, vyberte **umístění skupiny prostředků**a pak vyberte **vytvořit**.
+    V poli **Skupina prostředků** vyberte **Vytvořit novou**. Zadejte **název** skupiny prostředků, která bude obsahovat klienta, vyberte **umístění skupiny prostředků**a pak vyberte **Vytvořit**.
 
-    ![Odkaz na formulář nastavení předplatného v Azure Portal](media/tutorial-create-tenant/portal-06-link-subscription-settings.png)
+    ![Propojit formulář nastavení předplatného na webu Azure Portal](media/tutorial-create-tenant/portal-06-link-subscription-settings.png)
 
-    Pro účely fakturace můžete propojit více Azure AD B2C tenantů s jedním předplatným Azure.
+    Můžete propojit více klientů Azure AD B2C s jedním předplatným Azure pro účely fakturace.
 
-## <a name="select-your-b2c-tenant-directory"></a>Vyberte adresář tenanta B2C
+## <a name="select-your-b2c-tenant-directory"></a>Vyberte adresář klienta B2C.
 
-Pokud chcete začít používat nový tenant Azure AD B2C, musíte přepnout do adresáře, který obsahuje tenanta.
+Chcete-li začít používat nové hospo- klienta Azure AD B2C, musíte přepnout do adresáře, který obsahuje klienta.
 
-V horní nabídce Azure Portal vyberte filtr **adresář + odběr** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
+Vyberte filtr **Directory + předplatné** v horní nabídce portálu Azure a vyberte adresář, který obsahuje vašeho klienta Azure AD B2C.
 
-Pokud se v seznamu nezobrazuje nový tenant Azure B2C, aktualizujte okno prohlížeče a potom v horní nabídce znovu vyberte filtr **adresář + odběr** .
+Pokud se váš nový tenant Azure B2C v seznamu zpočátku nezobrazuje, aktualizujte okno prohlížeče a v horní nabídce znovu vyberte filtr **Directory + předplatného.**
 
-![B2C je vybraný tenant, který obsahuje adresář vybraný v Azure Portal](media/tutorial-create-tenant/portal-07-select-tenant-directory.png)
+![Adresář obsahující klienta B2C vybraný na webu Azure Portal](media/tutorial-create-tenant/portal-07-select-tenant-directory.png)
 
-## <a name="add-azure-ad-b2c-as-a-favorite-optional"></a>Přidat Azure AD B2C jako oblíbenou položku (volitelné)
+## <a name="add-azure-ad-b2c-as-a-favorite-optional"></a>Přidání Azure AD B2C jako oblíbené (volitelné)
 
-Tento volitelný krok usnadňuje výběr klienta Azure AD B2C v následujících a všech dalších kurzech.
+Tento volitelný krok usnadňuje výběr klienta Azure AD B2C v následujících a všech následujících kurzech.
 
-Místo hledání *Azure AD B2C* ve **všech službách** pokaždé, když chcete s vaším klientem pracovat, můžete místo toho prostředek přidružit. Pak ho můžete vybrat z oddílu **Oblíbené** nabídky na portálu, abyste mohli rychle přejít k vašemu Azure AD B2C tenantovi.
+Místo hledání *Azure AD B2C* ve **všech službách** pokaždé, když chcete pracovat s tenantem, můžete místo toho oblíbené prostředek. Potom ji můžete vybrat z části **Oblíbené** nabídky portálu a rychle přejít do tenanta Azure AD B2C.
 
-Tuto operaci je nutné provést pouze jednou. Před provedením tohoto postupu se ujistěte, že jste přešli do adresáře, který obsahuje Azure AD B2C tenanta, jak je popsáno v předchozí části, a [Vyberte svůj adresář TENANTA B2C](#select-your-b2c-tenant-directory).
+Tuto operaci je třeba provést pouze jednou. Před provedením těchto kroků se ujistěte, že jste přepnuli do adresáře obsahujícího klienta Azure AD B2C, jak je popsáno v předchozí části [Vyberte adresář klienta B2C](#select-your-b2c-tenant-directory).
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
-1. V nabídce Azure Portal vyberte **všechny služby**.
-1. Ve vyhledávacím poli **všechny služby** vyhledejte **Azure AD B2C**, najeďte myší na výsledek hledání a potom vyberte ikonu hvězdičky v popisku. **Azure AD B2C** se nyní zobrazí v Azure Portal v části **Oblíbené**.
-1. Pokud chcete změnit pozici vaší nové oblíbené položky, přejděte do nabídky Azure Portal, vyberte **Azure AD B2C**a přetáhněte ji nahoru nebo dolů na požadovanou pozici.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. V nabídce Portál Azure vyberte **Všechny služby**.
+1. Ve vyhledávacím poli **Všechny služby** vyhledejte **Azure AD B2C**, najeďte na výsledek hledání a vyberte ikonu hvězdičky v popisku. **Azure AD B2C** se teď zobrazí na webu Azure portal v části **Oblíbené položky**.
+1. Pokud chcete změnit pozici nové oblíbené položky, přejděte do nabídky portálu Azure, vyberte **Azure AD B2C**a přetáhněte ji nahoru nebo dolů na požadovanou pozici.
 
-    ![Nabídka Azure AD B2C, oblíbené položky portál Microsoft Azure](media/tutorial-create-tenant/portal-08-b2c-favorite.png)
+    ![Azure AD B2C, nabídka Oblíbené položky, portál Microsoft Azure](media/tutorial-create-tenant/portal-08-b2c-favorite.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak:
+V tomto článku jste se naučili:
 
 > [!div class="checklist"]
 > * Vytvoření tenanta Azure AD B2C
-> * Propojení tenanta s předplatným
-> * Přejděte do adresáře, který obsahuje Azure AD B2C tenanta.
-> * Přidat prostředek Azure AD B2C jako **oblíbenou položku** do Azure Portal
+> * Propojení klienta s předplatným
+> * Přepnutí do adresáře obsahujícího vašeho klienta Azure AD B2C
+> * Přidání prostředku Azure AD B2C jako **oblíbeného** na webu Azure Portal
 
-V dalším kroku se dozvíte, jak zaregistrovat webovou aplikaci v novém tenantovi.
+Dále se dozvíte, jak zaregistrovat webovou aplikaci v novém tenantovi.
 
 > [!div class="nextstepaction"]
-> [Zaregistrujte své aplikace >](tutorial-register-applications.md)
+> [Zaregistrujte své žádosti >](tutorial-register-applications.md)

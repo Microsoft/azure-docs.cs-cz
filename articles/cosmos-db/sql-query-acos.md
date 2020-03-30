@@ -1,6 +1,6 @@
 ---
-title: ACOS v jazyce pro dotaz na Azure Cosmos DB
-description: Přečtěte si, jak funkce systému SQL ACOS (arccosice) v Azure Cosmos DB vrátí úhel v radiánech, jehož kosinus je zadaný numerický výraz.
+title: ACOS v dotazovacím jazyce Azure Cosmos DB
+description: Informace o tom, jak funkce systému ACOS (arccosic) SQL v Azure Cosmos DB vrací úhel v radiánech, jejichž kosinus je zadaný číselný výraz
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 733d6b009f03d61c37170cc506a3b2ec842d7c47
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78300957"
 ---
 # <a name="acos-azure-cosmos-db"></a>ACOS (Azure Cosmos DB)
- Vrací úhel v radiánech, jehož kosinus je zadaný číselný výraz. Zkratka Arkus kosinus.  
+ Vrátí úhel v radiánech, jehož kosinus je zadaný číselný výraz; také nazývá arckosin.  
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -30,11 +30,11 @@ ACOS(<numeric_expr>)
   
 ## <a name="return-types"></a>Návratové typy
   
-  Vrátí hodnotu číselného výrazu.  
+  Vrátí číselný výraz.  
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad vrátí `ACOS` hodnotu-1.  
+  Následující příklad vrátí `ACOS` hodnotu -1.  
   
 ```sql
 SELECT ACOS(-1) AS acos 
@@ -48,7 +48,7 @@ SELECT ACOS(-1) AS acos
 
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce nebude index využívat.
+Tato systémová funkce nebude využívat index.
 
 ## <a name="next-steps"></a>Další kroky
 

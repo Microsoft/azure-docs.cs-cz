@@ -9,40 +9,40 @@ ms.date: 05/21/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
 ms.openlocfilehash: 57736a3cd553e83294d5290867e261b626cb035f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66814813"
 ---
 ## <a name="before-you-begin"></a>Než začnete
 
-K dokončení příkladu v tomto článku, musíte mít existující spravované image zobecněného virtuálního počítače. Další informace najdete v tématu [kurzu: Vytvoření vlastní image virtuálního počítače Azure pomocí Azure CLI](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images). Pokud spravované image obsahuje datový disk, velikost datového disku nemůže být větší než 1 TB.
+Chcete-li dokončit příklad v tomto článku, musíte mít existující spravované image generalizovaného virtuálního aplikace. Další informace [najdete v tématu Kurz: Vytvoření vlastní image virtuálního počítače Azure s Azure CLI](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images). Pokud spravovaná bitová kopie obsahuje datový disk, velikost datového disku nesmí být větší než 1 TB.
 
 ## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 
 Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
 
-Pokud chcete otevřít Cloud Shell, vyberte **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese [https://shell.azure.com/bash](https://shell.azure.com/bash). Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
+Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné [https://shell.azure.com/bash](https://shell.azure.com/bash)kartě prohlížeče tak, že přejdete na . Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
 
-Pokud chcete nainstalovat a používat rozhraní příkazového řádku místně, naleznete v tématu [instalace Azure CLI](/cli/azure/install-azure-cli).
+Pokud dáváte přednost instalaci a použití příkazového příkazového příkazu místně, najdete [v tématu Instalace azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="create-an-image-gallery"></a>Vytvoření galerie obrázků 
 
-Galerie obrázků je primární prostředek, který používá k povolení sdílení imagí. Povolené znaky pro název galerie jsou malá a velká písmena, číslice, tečky a tečky. Název galerie nesmí obsahovat pomlčky.   Galerie názvy musí být jedinečné v rámci vašeho předplatného. 
+Galerie obrázků je primární prostředek používaný pro povolení sdílení obrázků. Povolené znaky pro název galerie jsou velká nebo malá písmena, číslice, tečky a tečky. Název galerie nesmí obsahovat pomlčky.   Názvy galerií musí být v rámci předplatného jedinečné. 
 
-Vytvoření galerie obrázků s využitím [az sig vytvořit](/cli/azure/sig#az-sig-create). Následující příklad vytvoří galerii s názvem *myGallery* v *myGalleryRG*.
+Vytvořte galerii obrázků pomocí [az sig create](/cli/azure/sig#az-sig-create). Následující příklad vytvoří galerii s názvem *myGallery* v *myGalleryRG*.
 
 ```azurecli-interactive
 az group create --name myGalleryRG --location WestCentralUS
 az sig create --resource-group myGalleryRG --gallery-name myGallery
 ```
 
-## <a name="create-an-image-definition"></a>Vytvoření definice bitové kopie
+## <a name="create-an-image-definition"></a>Vytvoření definice obrázku
 
-Definice Image vytvořte logické seskupení pro bitové kopie. Používají se ke správě informace o verzích bitové kopie, které jsou vytvořeny v nich. Názvy imagí definice mohou být tvořené malá a velká písmena, číslice, tečky, pomlčky a tečky. Další informace o hodnotách, můžete použít definici image, najdete v části [obrázku definice](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions).
+Definice obrázků vytvářejí logické seskupení pro obrazy. Používají se ke správě informací o verzích bitových obrázků, které jsou v nich vytvořeny. Názvy definic obrázků mohou být tvořeny velkými nebo velkými písmeny, číslicemi, tečkami, pomlčkami a tečkami. Další informace o hodnotách, které můžete zadat pro definici obrazu, naleznete v [tématu Definice obrázků](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions).
 
-Vytvoření definice počáteční image v galerii pomocí [vytvoření sig az image definice](/cli/azure/sig/image-definition#az-sig-image-definition-create).
+Vytvořte počáteční definici obrazu v galerii pomocí [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create).
 
 ```azurecli-interactive 
 az sig image-definition create \
@@ -56,13 +56,13 @@ az sig image-definition create \
 ```
 
 
-## <a name="create-an-image-version"></a>Vytvoření image verze 
+## <a name="create-an-image-version"></a>Vytvoření verze obrázku 
 
-Vytvoření verze Image podle potřeby pomocí [az image Galerie vytvořit image-version](/cli/azure/sig/image-version#az-sig-image-version-create). Je potřeba předat ID spravované image se má použít jako základ pro vytvoření verze image. Můžete použít [az image list](/cli/azure/image?view#az-image-list) zobrazíte informace o imagích, které jsou ve skupině prostředků. 
+Vytvořte verze obrazu podle potřeby pomocí [az galerie obrázků create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create). Budete muset předat ID spravované bitové kopie, abyste ji použili jako směrný plán pro vytvoření verze bitové kopie. [Pomocí seznamu obrázků az](/cli/azure/image?view#az-image-list) můžete získat informace o obrázcích, které jsou ve skupině prostředků. 
 
-Povolené znaky pro verze image jsou čísla a tečky. Čísla musí být v rozsahu 32bitového celého čísla. Formát: *Hlavní verze*. *Podverze*. *Oprava*.
+Povolené znaky pro verzi obrázku jsou čísla a tečky. Čísla musí být v rozsahu 32bitové celé číslo. Formát: *MajorVersion*. *MinorVersion*. *Záplata*.
 
-V tomto příkladu verzi naše image je *1.0.0* a budeme vytvářet 2 repliky v *střed USA – západ* oblast, 1 repliky v *střed USA – jih* oblasti a 1 repliky v *USA – východ 2* oblasti pomocí zónově redundantní úložiště.
+V tomto příkladu je verze naší bitové kopie *1.0.0* a vytvoříme 2 repliky v oblasti *USA – západ– střed,* 1 repliku v oblasti *USA – střed a* 1 repliku v oblasti VÝCHODNÍ USA *2* pomocí zónově redundantního úložiště.
 
 
 ```azurecli-interactive 
@@ -77,14 +77,14 @@ az sig image-version create \
 ```
 
 > [!NOTE]
-> Budete muset počkat na verzi image, aby zcela dokončit právě vytvořené a replikované před stejné spravované image můžete vytvořit jinou verzi image.
+> Před použitím stejné spravované bitové kopie k vytvoření jiné verze bitové kopie je třeba počkat, až bude verze bitové kopie zcela dokončena.
 >
-> Můžete také uložit všechny repliky verze vaší image v [Zónově redundantní úložiště](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) přidáním `--storage-account-type standard_zrs` při vytváření verze image.
+> Všechny repliky verzí bitových bitových žerek `--storage-account-type standard_zrs` můžete také uložit do [zónového redundantního úložiště](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) přidáním při vytváření verze bitové kopie.
 >
 
-## <a name="share-the-gallery"></a>Sdílení v galerii
+## <a name="share-the-gallery"></a>Sdílet galerii
 
-Doporučujeme vám, že můžete sdílet s ostatními uživateli na úrovni galerie. K získání ID objektu galerii, použijte [az sig zobrazit](/cli/azure/sig#az-sig-show).
+Doporučujeme sdílet s ostatními uživateli na úrovni galerie. Chcete-li získat ID objektu galerie, použijte [az sig show](/cli/azure/sig#az-sig-show).
 
 ```azurecli-interactive
 az sig show \
@@ -93,7 +93,7 @@ az sig show \
    --query id
 ```
 
-Použijte ID objektu jako obor, spolu s e-mailovou adresu a [vytvořit přiřazení role az](/cli/azure/role/assignment#az-role-assignment-create) k udělení přístupu uživateli v galerii sdílené bitové kopie.
+Použijte ID objektu jako obor spolu s e-mailovou adresou a [přiřazením role az,](/cli/azure/role/assignment#az-role-assignment-create) abyste uživateli poskytli přístup ke sdílené galerii obrázků.
 
 ```azurecli-interactive
 az role assignment create --role "Reader" --assignee <email address> --scope <gallery ID>

@@ -1,6 +1,6 @@
 ---
 title: Zpracování událostí v reálném čase pomocí Azure Stream Analytics
-description: Tento článek popisuje referenční architekturu pro zajištění zpracování událostí a analýzy v reálném čase pomocí Azure Stream Analytics.
+description: Tento článek popisuje referenční architekturu pro dosažení zpracování událostí v reálném čase a analýzy pomocí Azure Stream Analytics.
 author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
@@ -8,46 +8,46 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/24/2017
 ms.openlocfilehash: d219b3fcb27b23527c0a651bc8e842a9e036bfc2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75431483"
 ---
-# <a name="reference-architecture-real-time-event-processing-with-microsoft-azure-stream-analytics"></a>Referenční architektura: zpracování událostí v reálném čase pomocí Microsoft Azure Stream Analytics
-Referenční architektura pro zpracování událostí v reálném čase s Azure Stream Analytics je určena k poskytnutí obecného podrobného plánu pro nasazení řešení pro zpracování datových proudů platformy jako služby (PaaS) v reálném čase pomocí Microsoft Azure.
+# <a name="reference-architecture-real-time-event-processing-with-microsoft-azure-stream-analytics"></a>Referenční architektura: Zpracování událostí v reálném čase pomocí Služby Microsoft Azure Stream Analytics
+Referenční architektura pro zpracování událostí v reálném čase pomocí Azure Stream Analytics je určena k poskytování obecného podrobného plánu pro nasazení řešení zpracování datových proudů v reálném čase jako služby (PaaS) s Microsoft Azure.
 
 ## <a name="summary"></a>Souhrn
-Analytická řešení jsou tradičně založená na možnostech, jako je ETL (extrakce, transformace, zatížení) a datové sklady, kde jsou data uložená před analýzou. Změny požadavků, včetně rychlejšího doručování dat, přenáší tento existující model do limitu. Možnost analyzovat data v rámci přesunu datových proudů před úložištěm je jedním z řešení a i když se nejedná o novou funkci, přístup se v celém oboru vertikálně nepřijal. 
+Analytická řešení jsou tradičně založena na možnostech, jako je ETL (extrahovat, transformovat, načíst) a datové sklady, kde jsou data uložena před analýzou. Měnící se požadavky, včetně rychlejšího přijínáho data, posouvají tento stávající model na hranici možností. Schopnost analyzovat data v rámci pohybujících se datových proudů před úložištěm je jedním z řešení, a i když to není nová funkce, přístup nebyl široce přijat ve všech oborových vertikálách. 
 
-Microsoft Azure poskytuje rozsáhlý katalog analytických technologií, které podporují pole různých scénářů řešení a požadavků. Výběr služeb Azure, které se mají nasadit pro ucelené řešení, může být výzvou s ohledem na širokou škálu nabídek. Tento dokument je navržený tak, aby popsal možnosti a spolupráci různých služeb Azure, které podporují řešení streamování událostí. Vysvětluje taky některé z scénářů, ve kterých můžou zákazníci využít tento typ přístupu.
+Microsoft Azure poskytuje rozsáhlý katalog analytických technologií, které jsou schopné podporovat řadu různých scénářů a požadavků řešení. Výběr služeb Azure, které chcete nasadit pro komplexní řešení, může být vzhledem k šíři nabídek výzvou. Tento článek je navržen tak, aby popisoval možnosti a spolupráci různých služeb Azure, které podporují řešení streamování událostí. Vysvětluje také některé scénáře, ve kterých mohou zákazníci těžit z tohoto typu přístupu.
 
 ## <a name="contents"></a>Obsah
 * Shrnutí
-* Úvod do analýz v reálném čase
-* Hodnota umístění dat v reálném čase v Azure
-* Běžné scénáře analýzy v reálném čase
-* Architektura a součásti
+* Úvod do analýzy v reálném čase
+* Návrh hodnoty dat v reálném čase v Azure
+* Běžné scénáře pro analýzy v reálném čase
+* Architektura a komponenty
   * Zdroje dat
   * Vrstva integrace dat
-  * Analytická vrstva v reálném čase
+  * Vrstva analýzy v reálném čase
   * Vrstva úložiště dat
-  * Prezentační/spotřebovaná vrstva
+  * Vrstva prezentace / spotřeby
 * Závěr
 
-**Autor:** Charles Feddersen, architekt řešení, středisko pro data Insights, špičkové – Microsoft Corporation
+**Autor:** Charles Feddersen, architekt řešení, Centrum excelence datových poznatků, Microsoft Corporation
 
-**Publikováno:** Leden 2015
+**Zveřejněno:** Leden 2015
 
-**Revize:** 1,0
+**Revize:** 1.0
 
-**Stažení:** [zpracování událostí v reálném čase pomocí Microsoft Azure Stream Analytics](https://download.microsoft.com/download/6/2/3/623924DE-B083-4561-9624-C1AB62B5F82B/real-time-event-processing-with-microsoft-azure-stream-analytics.pdf)
+**Ke stažení:** [Zpracování událostí v reálném čase pomocí služby Microsoft Azure Stream Analytics](https://download.microsoft.com/download/6/2/3/623924DE-B083-4561-9624-C1AB62B5F82B/real-time-event-processing-with-microsoft-azure-stream-analytics.pdf)
 
-## <a name="get-help"></a>Získání nápovědy
-Pokud potřebujete další pomoc, zkuste [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics) .
+## <a name="get-help"></a>Podpora
+Další pomoc našlápte na [fóru Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>Další kroky
-* [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
+* [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
 * [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

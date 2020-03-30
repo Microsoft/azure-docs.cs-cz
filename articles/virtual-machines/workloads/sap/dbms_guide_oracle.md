@@ -1,5 +1,5 @@
 ---
-title: Nasazení Oracle Azure Virtual Machines DBMS pro úlohy SAP | Microsoft Docs
+title: Nasazení DBMS virtuálních počítačů Oracle Azure pro úlohy SAP | Dokumenty společnosti Microsoft
 description: Nasazení DBMS v počítačích Azure Virtual Machines s Oraclem pro úlohy SAP
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
@@ -16,20 +16,20 @@ ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a23fb981e24f6152d99b76bd72115f8159f5d60f
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645840"
 ---
-# <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Nasazení Azure Virtual Machines DBMS pro úlohy SAP
+# <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Nasazení DBMS virtuálních počítačů Azure pro úlohy SAP
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
 [826037]:https://launchpad.support.sap.com/#/notes/826037
 [965908]:https://launchpad.support.sap.com/#/notes/965908
 [1031096]:https://launchpad.support.sap.com/#/notes/1031096
-[1114181]: https://launchpad.support.sap.com/#/notes/1114181
+[1114181]:https://launchpad.support.sap.com/#/notes/1114181
 [1139904]:https://launchpad.support.sap.com/#/notes/1139904
 [1173395]:https://launchpad.support.sap.com/#/notes/1173395
 [1245200]:https://launchpad.support.sap.com/#/notes/1245200
@@ -38,7 +38,7 @@ ms.locfileid: "75645840"
 [1585981]:https://launchpad.support.sap.com/#/notes/1585981
 [1588316]:https://launchpad.support.sap.com/#/notes/1588316
 [1590719]:https://launchpad.support.sap.com/#/notes/1590719
-[1597355]: https://launchpad.support.sap.com/#/notes/1597355
+[1597355]:https://launchpad.support.sap.com/#/notes/1597355
 [1605680]:https://launchpad.support.sap.com/#/notes/1605680
 [1619720]:https://launchpad.support.sap.com/#/notes/1619720
 [1619726]:https://launchpad.support.sap.com/#/notes/1619726
@@ -54,23 +54,23 @@ ms.locfileid: "75645840"
 [1882376]:https://launchpad.support.sap.com/#/notes/1882376
 [1909114]:https://launchpad.support.sap.com/#/notes/1909114
 [1922555]:https://launchpad.support.sap.com/#/notes/1922555
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1941500]:https://launchpad.support.sap.com/#/notes/1941500
 [1956005]:https://launchpad.support.sap.com/#/notes/1956005
 [1973241]:https://launchpad.support.sap.com/#/notes/1973241
 [1984787]:https://launchpad.support.sap.com/#/notes/1984787
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [2002167]:https://launchpad.support.sap.com/#/notes/2002167
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
-[2039619]: https://launchpad.support.sap.com/#/notes/2039619
-[2069760]: https://launchpad.support.sap.com/#/notes/2069760
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2039619]:https://launchpad.support.sap.com/#/notes/2039619
+[2069760]:https://launchpad.support.sap.com/#/notes/2069760
 [2121797]:https://launchpad.support.sap.com/#/notes/2121797
 [2134316]:https://launchpad.support.sap.com/#/notes/2134316
-[2171857]: https://launchpad.support.sap.com/#/notes/2171857
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
+[2171857]:https://launchpad.support.sap.com/#/notes/2171857
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
 [2233094]:https://launchpad.support.sap.com/#/notes/2233094
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com
@@ -307,221 +307,221 @@ ms.locfileid: "75645840"
 [xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md
 
 
-Tento dokument popisuje několik různých oblastí, které je potřeba vzít v úvahu při nasazení Oracle Database pro úlohy SAP v Azure IaaS. Před čtením tohoto dokumentu doporučujeme přečíst si [informace o nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md). Doporučujeme také přečíst si další příručky v [dokumentaci ke službě SAP v dokumentaci k Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). 
+Tento dokument pokrývá několik různých oblastí, které je třeba zvážit při nasazování oracle database pro úlohy SAP v Azure IaaS. Než si tento dokument přečtete, doporučujeme přečíst si [důležité informace o nasazení DBMS virtuálních počítačů Azure pro úlohy SAP](dbms_guide_general.md). Doporučujeme také, abyste si přečetli další příručky v [zatížení SAP v dokumentaci Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). 
 
-Informace o verzích Oracle a odpovídajících verzích operačních systémů, které jsou podporované pro provoz SAP v Oracle v Azure, najdete v poznámce SAP [2039619].
+Informace o verzích Oracle a odpovídajících verzích operačního systému, které jsou podporované pro spuštění SAP v Azure, najdete v poznámkách SAP [2039619].
 
-Obecné informace o používání SAP Business Suite v Oracle najdete v [SAP v Oracle](https://www.sap.com/community/topic/oracle.html).
-Oracle podporuje software Oracle pro spouštění na Microsoft Azure. Další informace o obecné podpoře pro Windows Hyper-V a Azure najdete v [nejčastějších dotazech k Oracle a Microsoft Azure](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html). 
+Obecné informace o spuštění sady SAP Business Suite ve společnosti Oracle naleznete na adrese [SAP na adrese Oracle](https://www.sap.com/community/topic/oracle.html).
+Software Oracle je podporován společností Oracle pro spuštění v Microsoft Azure. Další informace o obecné podpoře windows hyper-v a Azure najdete v [nejčastějších dotazech k oracle a microsoft azure](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html). 
 
 ## <a name="sap-notes-relevant-for-oracle-sap-and-azure"></a>Poznámky SAP relevantní pro Oracle, SAP a Azure 
 
-Následující poznámky SAP souvisejí s SAP v Azure.
+Následující poznámky SAP se vztahují k SAP v Azure.
 
 | Číslo poznámky | Nadpis |
 | --- | --- |
-| [1928533] |Aplikace SAP v Azure: podporované produkty a typy virtuálních počítačů Azure |
-| [2015553] |SAP v Microsoft Azure: požadavky na podporu |
-| [1999351] |Řešení potíží s vylepšeným monitorováním Azure pro SAP |
-| [2178632] |Klíčové metriky monitorování pro SAP v Microsoft Azure |
-| [2191498] |SAP v systému Linux s Azure: rozšířené monitorování |
-| [2039619] |Aplikace SAP na Microsoft Azure s využitím databáze Oracle: podporované produkty a verze |
-| [2243692] |Virtuální počítač se systémem Linux na Microsoft Azure (IaaS): problémy s licencí SAP |
-| [2069760] |Instalace a upgrade systému Oracle Linux 7. x SAP |
-| [1597355] |Doporučení pro zaměněné místo pro Linux |
-| [2171857] |Oracle Database 12c-podpora systému souborů na platformě Linux |
-| [1114181] |Oracle Database 11g-podpora systému souborů na platformě Linux |
+| [1928533] |Aplikace SAP v Azure: Podporované produkty a typy virtuálních počítačů Azure |
+| [2015553] |SAP v Microsoft Azure: Požadavky podpory |
+| [1999351] |Poradce při potížích s rozšířeným monitorováním Azure pro SAP |
+| [2178632] |Klíčové metriky monitorování sapu v Microsoft Azure |
+| [2191498] |SAP na Linuxu s Azure: Vylepšené monitorování |
+| [2039619] |Aplikace SAP v Microsoft Azure pomocí databáze Oracle: Podporované produkty a verze |
+| [2243692] |Linux na virtuálním počítači Microsoft Azure (IaaS): Problémy s licencí SAP |
+| [2069760] |Instalace a upgrade systému Oracle Linux 7.x SAP |
+| [1597355] |Doporučení pro swap-space pro Linux |
+| [2171857] |Oracle Database 12c - podpora souborového systému na Linuxu |
+| [1114181] |Oracle Database 11g - podpora souborového systému na Linuxu |
 
-Přesné konfigurace a funkce podporované Oracle a SAP v Azure jsou popsané v části SAP Note [#2039619](https://launchpad.support.sap.com/#/notes/2039619).
+Přesné konfigurace a funkce, které jsou podporovány společnostmi Oracle a SAP v Azure, jsou popsány v sap note [#2039619](https://launchpad.support.sap.com/#/notes/2039619).
 
-Windows a Oracle Linux jsou jediné operační systémy, které podporují Oracle a SAP v Azure. Široce používané distribuce SLES a RHEL Linux se nepodporují pro nasazování komponent Oracle v Azure. Komponenty Oracle zahrnují klienta Oracle Database, který aplikace SAP používá pro připojení k systému Oracle DBMS. 
+Windows a Oracle Linux jsou jediné operační systémy, které jsou podporovány společnostmi Oracle a SAP v Azure. Široce používané distribuce SLES a RHEL Linux nejsou podporovány pro nasazení součástí Oracle v Azure. Součástí oracle patří klient Oracle Database, který aplikace SAP používají k připojení k systému Oracle DBMS. 
 
-Výjimky, v závislosti na službě SAP Note [#2039619](https://launchpad.support.sap.com/#/notes/2039619), jsou komponenty SAP, které nepoužívají klienta Oracle Database. Takovými součástmi SAP jsou samostatné služby pro zařazování do fronty SAP, server zpráv, fronty pro replikaci, Dispatch a SAP Gateway.  
+Výjimky jsou podle sap note [#2039619](https://launchpad.support.sap.com/#/notes/2039619)součásti SAP, které nepoužívají klienta Oracle Database. Tyto součásti SAP jsou samostatné fronty SAP, server zpráv, služby replikace Fronty, WebDispatcher a brána SAP.  
 
-I když v Oracle Linux spouštíte své instance aplikace Oracle DBMS a SAP, můžete provozovat služby SAP Central Services na SLES nebo RHEL a chránit je pomocí clusteru s podporou Pacemaker. Pacemaker jako rozhraní s vysokou dostupností se na Oracle Linux nepodporuje.
+I v případě, že používáte instance aplikací Oracle DBMS a SAP na Oracle Linuxu, můžete spouštět centrální služby SAP na SLES nebo RHEL a chránit je pomocí clusteru založeného na kardiostimulátoru. Kardiostimulátor jako rámec s vysokou dostupností není v oracle linuxu podporován.
 
-## <a name="specifics-for-oracle-database-on-windows"></a>Specifické pro Oracle Database ve Windows
+## <a name="specifics-for-oracle-database-on-windows"></a>Specifika databáze Oracle v systému Windows
 
-### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-windows"></a>Pokyny pro konfiguraci Oracle pro instalace SAP ve virtuálních počítačích Azure ve Windows
+### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-windows"></a>Pokyny pro konfiguraci Oracle pro instalace SAP v virtuálních počítačích Azure ve Windows
 
-V souladu s ruční instalací SAP by se soubory související s Oracle neměli instalovat nebo umístit do systémového ovladače pro disk s operačním systémem virtuálního počítače (jednotka c:). Virtuální počítače s různou velikostí můžou podporovat proměnlivý počet připojených disků. Menší typy virtuálních počítačů můžou podporovat menší počet připojených disků. 
+V souladu s instalační příručkou SAP by soubory související s Oracle neměly být nainstalovány nebo umístěny v systémovém ovladači pro disk s os v virtuálním počítače (jednotka c:). Virtuální počítače různých velikostí mohou podporovat různý počet připojených disků. Menší typy virtuálních počítačů mohou podporovat menší počet připojených disků. 
 
-Pokud máte menší virtuální počítače, doporučujeme na disk s operačním systémem nainstalovat nebo najít Oracle Home, Stage, "saptrace", "saparch", "sapbackup", "sapcheck" nebo "sapreorg". Tyto části komponent Oracle DBMS nejsou náročné na vstupně-výstupní operace a vstupně-výstupní propustnost. To znamená, že disk s operačním systémem může zpracovávat požadavky na vstupně-výstupní operace. Výchozí velikost disku s operačním systémem je 127 GB. 
+Pokud máte menší virtuální počítače, doporučujeme nainstalovat nebo lokalizovat Oracle home, stage, "saptrace", "saparch", "sapbackup", "sapcheck" nebo "sapreorg" do disku operačního systému. Tyto části součástí Oracle DBMS nejsou intenzivní na vstupně-v a vstupně-va vstupně-v./O propustnost. To znamená, že disk operačního systému zvládne požadavky na vstupně-va. Výchozí velikost disku operačního systému je 127 GB. 
 
-Pokud není k dispozici dostatek volného místa, velikost disku může být [změněna](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk) na 2048 GB. Soubory protokolu Oracle Database a znovu je třeba uložit na samostatné datové disky. Pro dočasný tabulkový prostor Oracle existuje výjimka. TempFiles se dá vytvořit v D:/ (netrvalá jednotka). Netrvalý D:\ jednotka také nabízí lepší latenci I/O a propustnost (s výjimkou virtuálních počítačů řady A-Series). 
+Pokud není k dispozici dostatek volného místa, lze velikost disku [na](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk) 2048 GB. Soubory protokolu Oracle Database a redo musí být uloženy na samostatných datových discích. Existuje výjimka pro dočasný tabulkový prostor Oracle. Tempfiles lze vytvořit na D:/ (netrvalý disk). Netrvalé D:\ jednotka také nabízí lepší latenci vstupně-výstupních služeb a propustnost (s výjimkou virtuálních zařízení řady A). 
 
-Chcete-li určit správné množství místa pro TempFiles, můžete ověřit velikost TempFiles v existujících systémech.
+Chcete-li určit správné množství místa pro dočasné soubory, můžete zkontrolovat velikosti tempfiles na existujících systémech.
 
 ### <a name="storage-configuration"></a>Konfigurace úložiště
-Podporovaná je jenom jedna instance Oracle, která používá disky formátované systémem souborů NTFS. Všechny soubory databáze musí být uložené v systému souborů NTFS na Managed Disks (doporučeno) nebo na VHD. Tyto disky jsou připojené k virtuálnímu počítači Azure a jsou založené na [Azure Page BLOB Storage](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) nebo [Azure Managed disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). 
+Podporována je pouze aplikace Oracle s jednou instancí, která používá disky ve formátu NTFS. Všechny databázové soubory musí být uloženy v systému souborů NTFS na spravovaných discích (doporučeno) nebo na virtuálních pevných discích. Tyto disky se připojují k virtuálnímu počítači Azure a jsou založené na [úložišti objektů blob stránky Azure](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) nebo [na spravovaných discích Azure](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). 
 
-Důrazně doporučujeme použít [Azure Managed disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). Důrazně doporučujeme pro nasazení Oracle Database použít [Premium SSD](../../windows/disks-types.md) .
+Důrazně doporučujeme používat [spravované disky Azure](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). Důrazně také doporučujeme používat [prémiové ssd disy](../../windows/disks-types.md) pro nasazení databáze Oracle Database.
 
-Síťové jednotky nebo vzdálené sdílené složky jako souborové služby Azure nejsou podporované pro Oracle Database soubory. Další informace:
+Síťové jednotky nebo vzdálené sdílené složky, jako jsou souborové služby Azure, nejsou pro soubory databáze Oracle podporovány. Další informace naleznete v tématu:
 
 - [Představujeme službu Microsoft Azure File](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 
 - [Nastavení trvalých připojení k Microsoft Azure Files](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
 
-Pokud používáte disky založené na Azure Page Storage nebo Managed Disks, příkazy v části [požadavky na nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) se vztahují i na nasazení s Oracle Database.
+Pokud používáte disky, které jsou založené na úložišti objektů blob stránky Azure nebo spravované disky, příkazy v [aspekty pro nasazení Azure virtuální počítače DBMS pro úlohy SAP](dbms_guide_general.md) platí i pro nasazení s databází Oracle Database.
 
-Kvóty pro propustnost vstupně-výstupních operací pro disky Azure existují. Tento koncept je vysvětlen v tématu [týkajícím se nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md). Přesná kvóta závisí na typu virtuálního počítače, který používáte. Seznam typů virtuálních počítačů s jejich kvótami najdete ve [velikosti pro virtuální počítače s Windows v Azure][virtual-machines-sizes-windows].
+Existují kvóty pro viops prodisky Azure. Tento koncept je vysvětlenv [aspekty pro nasazení AZURE virtuálnípočítače DBMS pro úlohy SAP](dbms_guide_general.md). Přesné kvóty závisí na typu virtuálního počítači, který používáte. Seznam typů virtuálních počítačů s jejich kvótami najdete na [webu Velikosti pro virtuální počítače s Windows v Azure][virtual-machines-sizes-windows].
 
-Pokud chcete identifikovat podporované typy virtuálních počítačů Azure, přečtěte si článek SAP Note [1928533].
+Informace o identifikaci podporovaných typů virtuálních počítačů Azure najdete v tématu SAP Note [1928533].
 
 Minimální konfigurace je následující: 
 
-| Součást | Disk | Mezipaměť | Fond úložiště |
+| Komponenta | Disk | Ukládání do mezipaměti | Fond úložiště |
 | --- | ---| --- | --- |
-| \oracle\<SID > \origlogaA & mirrlogB | Premium | Žádné | Není potřeba |
-| \oracle\<SID > \origlogaB & mirrlogA | Premium | Žádné | Není potřeba |
-| \oracle\<SID > \sapdata1... n | Premium | Jen pro čtení | Dá se použít |
-| \oracle\<SID > \oraarch | Úroveň Standard | Žádné | Není potřeba |
-| Oracle Home, saptrace,... | Disk OS | | Není potřeba |
+| \oracle\<SID>\origlogaA & mirrlogB | Premium | Žádný | Není potřeba |
+| \oracle\<SID>\origlogaB & mirrlogA | Premium | Žádný | Není potřeba |
+| \oracle\<SID>\sapdata1... N | Premium | Jen pro čtení | Lze použít |
+| \Oracle\<SID>\oraarch | Standard | Žádný | Není potřeba |
+| Oracle Home, saptrace, ... | Disk OS | | Není potřeba |
 
 
-Výběr disků pro hostování online protokolů opětovného provedení by měl být řízen požadavky IOPs. Je možné uložit všechny sapdata1... n (tabulkové prostory) na jednom jednom připojeném disku, pokud velikost, IOPS a propustnost splňují požadavky. 
+Výběr disků pro hostování protokolů opakování online by měl být řízen požadavky na iOP. Je možné uložit všechny sapdata1... n (tablespaces) na jednom připojeném disku tak dlouho, dokud velikost, VOPS a propustnost splňují požadavky. 
 
 Konfigurace výkonu je následující:
 
-| Součást | Disk | Mezipaměť | Fond úložiště |
+| Komponenta | Disk | Ukládání do mezipaměti | Fond úložiště |
 | --- | ---| --- | --- |
-| \oracle\<SID > \origlogaA | Premium | Žádné | Dá se použít  |
-| \oracle\<SID > \origlogaB | Premium | Žádné | Dá se použít |
-| \oracle\<SID > \mirrlogAB | Premium | Žádné | Dá se použít |
-| \oracle\<SID > \mirrlogBA | Premium | Žádné | Dá se použít |
-| \oracle\<SID > \sapdata1... n | Premium | Jen pro čtení | Doporučené  |
-| \oracle\SID\sapdata (n + 1) * | Premium | Žádné | Dá se použít |
-| \oracle\<SID > \oraarch * | Premium | Žádné | Není potřeba |
-| Oracle Home, saptrace,... | Disk OS | Není potřeba |
+| \oracle\<SID>\origlogaA | Premium | Žádný | Lze použít  |
+| \Oracle\<SID>\origlogaB | Premium | Žádný | Lze použít |
+| \Oracle\<SID>\mirrlogAB | Premium | Žádný | Lze použít |
+| \oracle\<SID>\mirrlogBA | Premium | Žádný | Lze použít |
+| \oracle\<SID>\sapdata1... N | Premium | Jen pro čtení | Doporučené  |
+| \oracle\SID\sapdata(n+1)* | Premium | Žádný | Lze použít |
+| \Oracle\<SID>\oraarch* | Premium | Žádný | Není potřeba |
+| Oracle Home, saptrace, ... | Disk OS | Není potřeba |
 
-\* (n + 1): hostování systému, dočasné a ZPĚTná prostoru. Vzor vstupně-výstupních prostorů systému a zpětných prostorů se liší od ostatních tabulkových prostorů hostujících data aplikací. Nejedná se o nejlepší možnost pro výkon systému a vrácení tabulkových prostorů.
+*(n+1): hostování tabulkových prostorů SYSTEM, TEMP a UNDO. Vstupně-v vzor systému a vrátit do tabulky prostory se liší od jiných tablespaces hostování dat aplikace. Žádné ukládání do mezipaměti je nejlepší volbou pro výkon systému a vrátit do tabulky.
 
-\* oraarch: fond úložiště není potřebný z hlediska výkonu v zobrazení. Dá se použít k získání více místa.
+*oraarch: fond úložiště není z hlediska výkonu nutný. To může být použit k získání více místa.
 
-Pokud je potřeba víc IOPS, doporučujeme použít fondy úložiště Windows (dostupné jenom ve Windows Serveru 2012 a novějším) a vytvořit tak jedno velké logické zařízení přes víc připojených disků. Tento přístup zjednodušuje správu místa na disku a pomáhá zabránit tomu, abyste se vyhnuli ruční distribuci souborů mezi více připojených disků.
+Pokud jsou požadovány další služby IOPS, doporučujeme použít fondy úložiště systému Windows (dostupné pouze v systému Windows Server 2012 a novějších) k vytvoření jednoho velkého logického zařízení na více připojených discích. Tento přístup zjednodušuje režii správy pro správu místa na disku a pomáhá vyhnout se úsilí o ruční distribuci souborů na více připojených disků.
 
 
 #### <a name="write-accelerator"></a>Akcelerátor zápisu
-U virtuálních počítačů Azure M-Series je latence při psaní do online protokolů možné snížit o faktorech v porovnání s Azure Premium Storage. Povolte Azure Akcelerátor zápisu pro disky (VHD) založené na Premium Storage Azure, které se používají pro soubory protokolu online opětovného provedení. Další informace najdete v tématu [akcelerátor zápisu](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator).
+U virtuálních počítačů Azure řady M lze latenci zápisu do protokolů opakování online snížit o faktory ve srovnání s Úložištěm Azure Premium. Povolte Azure Write Accelerator pro disky (VD) na základě Azure Premium Storage, které se používají pro soubory protokolu online opakování. Další informace naleznete v tématu [Akcelerátor zápisu](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator).
 
 
-### <a name="backuprestore"></a>Zálohování a obnovení
-V případě funkcí zálohování a obnovení jsou podporované nástroje SAP BR * pro Oracle stejným způsobem jako u standardních operačních systémů Windows Server. Oracle Recovery Manager (RMAN) se podporuje taky pro zálohování na disk a obnovení z disku.
+### <a name="backuprestore"></a>Zálohování/obnovení
+Pro funkci zálohování a obnovení jsou nástroje SAP BR*Pro Oracle podporovány stejným způsobem jako ve standardních operačních systémech Windows Server. Oracle Recovery Manager (RMAN) je také podporován pro zálohování na disk a obnovení z disku.
 
-Pomocí Azure Backup můžete také spustit zálohování virtuálních počítačů konzistentní s aplikací. Článek [plánování infrastruktury zálohování virtuálních počítačů v Azure](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction) vysvětluje, jak Azure Backup využívá funkci Windows VSS ke spouštění záloh konzistentních vzhledem k aplikacím. Verze systému Oracle DBMS podporované v Azure pomocí SAP můžou využívat funkci stínové kopie svazku (VSS). Další informace najdete v dokumentaci Oracle [základní koncepty zálohování a obnovení databáze pomocí služby VSS](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ntqrf/basic-concepts-of-database-backup-and-recovery-with-vss.html#GUID-C085101B-237F-4773-A2BF-1C8FD040C701).
+Azure Backup můžete taky použít ke spuštění zálohy virtuálních počítačů konzistentních s aplikací. Článek [Plánování infrastruktury zálohování virtuálních počítačů v Azure](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction) vysvětluje, jak Azure Backup používá funkci Windows VSS pro provádění záloh konzistentních s aplikacemi. Verze Oracle DBMS, které jsou podporované v Azure sap můžete využít funkce VSS pro zálohování. Další informace naleznete v dokumentaci oracle [Základní koncepty zálohování a obnovení databáze s VSS](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ntqrf/basic-concepts-of-database-backup-and-recovery-with-vss.html#GUID-C085101B-237F-4773-A2BF-1C8FD040C701).
 
 
 ### <a name="high-availability"></a>Vysoká dostupnost
-Oracle data Guard je podporováno pro účely vysoké dostupnosti a zotavení po havárii. Aby bylo možné zajistit automatické převzetí služeb při selhání v ochraně dat, je potřeba použít rychlé spuštění převzetí služeb při selhání (FSFA). Pozorovatel (FSFA) aktivuje převzetí služeb při selhání. Pokud FSFA nepoužíváte, můžete použít jenom ruční konfiguraci převzetí služeb při selhání.
+Oracle Data Guard je podporován pro účely vysoké dostupnosti a zotavení po havárii. Chcete-li dosáhnout automatického převzetí služeb při selhání v ochrana dat, je třeba použít rychlé spuštění převzetí služeb při selhání (FSFA). Pozorovatel (FSFA) aktivuje převzetí služeb při selhání. Pokud nepoužíváte FSFA, můžete použít pouze ruční konfiguraci převzetí služeb při selhání.
 
-Další informace o zotavení po havárii pro databáze Oracle v Azure najdete v tématu [zotavení po havárii pro databázi Oracle Database 12c v prostředí Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery).
+Další informace o zotavení po havárii pro databáze Oracle v Azure najdete v [tématu Zotavení po havárii pro databázi Oracle Database 12c v prostředí Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery).
 
 ### <a name="accelerated-networking"></a>Urychlení sítě
-Pro nasazení Oracle ve Windows důrazně doporučujeme zrychlit sítě, jak je popsáno v tématu [urychlené síťové služby Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Zvažte také doporučení, která jsou k [disVirtual Machines v části požadavky na nasazení Azure DBMS pro úlohy SAP](dbms_guide_general.md). 
-### <a name="other"></a>Jiné
-[Důležité informace týkající se nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) popisují další důležité koncepty týkající se nasazení virtuálních počítačů s Oracle Database, včetně skupin dostupnosti Azure a monitorování SAP.
+Pro nasazení Oracle v systému Windows důrazně doporučujeme zrychlené vytváření sítí, jak je popsáno v [Azure akcelerované sítě](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Zvažte také doporučení, která jsou uvedeny v [aspekty pro nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md). 
+### <a name="other"></a>Ostatní
+[Důležité informace o nasazení služby DBMS virtuálních počítačů Azure pro úlohy SAP](dbms_guide_general.md) popisují další důležité koncepty související s nasazením virtuálních počítačů s databází Oracle Database, včetně sad dostupnosti Azure a monitorování SAP.
 
-## <a name="specifics-for-oracle-database-on-oracle-linux"></a>Specifické pro Oracle Database Oracle Linux
-Oracle podporuje software Oracle pro spouštění na Microsoft Azure s Oracle Linux jako hostovaný operační systém. Další informace o obecné podpoře pro Windows Hyper-V a Azure najdete v [nejčastějších dotazech k Azure a Oracle](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html). 
+## <a name="specifics-for-oracle-database-on-oracle-linux"></a>Specifika pro databázi Oracle database na Oracle Linux
+Oracle software je podporován společností Oracle pro spuštění v Microsoft Azure s Oracle Linux jako hostovaný operační systém. Další informace o obecné podpoře windows hyper-v a Azure najdete v [nejčastějších dotazech k Azure a Oracle](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html). 
 
-Podporuje se taky konkrétní scénář aplikací SAP využívajících databáze Oracle. Podrobnosti jsou popsány v následující části dokumentu.
+Podporován je také specifický scénář aplikací SAP využívajících databáze Oracle Databases. Podrobnosti jsou popsány v další části dokumentu.
 
 ### <a name="oracle-version-support"></a>Podpora verzí Oracle
-Informace o tom, které verze Oracle a odpovídající verze operačního systému se podporují pro provozování SAP v Oracle v Azure Virtual Machines, najdete v článku SAP Note [2039619].
+Informace o tom, které verze Oracle a odpovídající verze operačního systému jsou podporovány pro spuštění SAP na Oracle na virtuálních počítačích Azure, naleznete v sap note [2039619].
 
-Obecné informace o používání SAP Business Suite na Oracle najdete na [stránce komunity SAP na Oracle](https://www.sap.com/community/topic/oracle.html).
+Obecné informace o spuštění sady SAP Business Suite ve společnosti Oracle naleznete na [stránce komunity společnosti Oracle](https://www.sap.com/community/topic/oracle.html).
 
-### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-linux"></a>Pokyny pro konfiguraci Oracle pro instalace SAP na virtuálních počítačích Azure v systému Linux
+### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-linux"></a>Pokyny pro konfiguraci Oracle pro instalace SAP v virtuálních počítačích Azure na Linuxu
 
-V souladu s instalačními příručkami SAP by se soubory související s Oracle neměly instalovat nebo umístit do systémových ovladačů pro spouštěcí disk virtuálního počítače. Různé velikosti virtuálních počítačů podporují proměnlivý počet připojených disků. Menší typy virtuálních počítačů můžou podporovat menší počet připojených disků. 
+V souladu s instalačními manuály SAP by soubory související s Oracle neměly být nainstalovány nebo umístěny do systémových ovladačů pro spouštěcí disketu virtuálního počítače. Různé velikosti virtuálních počítačů podporují různý počet připojených disků. Menší typy virtuálních počítačů mohou podporovat menší počet připojených disků. 
 
-V takovém případě doporučujeme na spouštěcí disk nainstalovat nebo najít Oracle Home, Stage, saptrace, saparch, sapbackup, sapcheck nebo sapreorg. Tyto části komponent Oracle DBMS nejsou náročné na vstupně-výstupní operace a vstupně-výstupní propustnost. To znamená, že disk s operačním systémem může zpracovávat požadavky na vstupně-výstupní operace. Výchozí velikost disku s operačním systémem je 30 GB. Spouštěcí disk můžete rozšířit pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku. Po rozbalení spouštěcího disku můžete přidat další oddíl pro binární soubory Oracle.
+V takovém případě doporučujeme nainstalovat/lokalizovat oracle domů, fázi, saptrace, saparch, sapbackup, sapcheck nebo sapreorg na spouštěcí disk. Tyto části součástí Oracle DBMS nejsou intenzivní na vstupně-v a vstupně-va vstupně-v./O propustnost. To znamená, že disk operačního systému zvládne požadavky na vstupně-va. Výchozí velikost disku operačního systému je 30 GB. Spouštěcí disk můžete rozbalit pomocí portálu Azure, PowerShellu nebo cli. Po rozšíření spouštěcího disku můžete přidat další oddíl pro binární soubory Oracle.
 
 
 ### <a name="storage-configuration"></a>Konfigurace úložiště
 
-Systémy souborů ext4, XFS a Oracle ASM jsou podporovány pro Oracle Database soubory v Azure. Všechny soubory databáze musí být uložené v těchto systémech souborů na základě VHD nebo Managed Disks. Tyto disky jsou připojené k virtuálnímu počítači Azure a jsou založené na [Azure Page BLOB Storage](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) nebo [Azure Managed disks](../../windows/managed-disks-overview.md).
+Pro soubory Oracle Database v Azure jsou podporovány souborové systémy ext4, xfs nebo Oracle ASM. Všechny databázové soubory musí být uloženy v těchto souborových systémech založených na virtuálních pevných prostředcích nebo spravovaných discích. Tyto disky se připojují k virtuálnímu počítači Azure a jsou založené na [úložišti objektů blob stránky Azure](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) nebo [na spravovaných discích Azure](../../windows/managed-disks-overview.md).
 
-Pro Oracle Linux jádra UEK se vyžaduje minimálně UEK verze 4, která podporuje [Azure Premium SSD](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-caching).
+Pro jádra Oracle Linux UEK je pro podporu [ssd dispozicí Azure premium](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-caching)vyžadováno minimálně UEK verze 4 .
 
-Používání [Azure Managed disks](../../windows/managed-disks-overview.md)se důrazně doporučuje. Pro nasazení Oracle Database se důrazně doporučuje používat [Azure Premium SSD](../../windows/disks-types.md) .
+Důrazně doporučujeme používat [spravované disky Azure](../../windows/managed-disks-overview.md). Důrazně se také doporučuje používat azure [premium SSD](../../windows/disks-types.md) pro vaše nasazení databáze Oracle Database.
 
-Síťové jednotky nebo vzdálené sdílené složky jako souborové služby Azure nejsou podporované pro Oracle Database soubory. Další informace: 
+Síťové jednotky nebo vzdálené sdílené složky, jako jsou souborové služby Azure, nejsou pro soubory databáze Oracle podporovány. Další informace najdete v následujících článcích: 
 
 - [Představujeme službu Microsoft Azure File](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 
 - [Nastavení trvalých připojení k Microsoft Azure Files](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-Pokud používáte disky založené na Azure Page Storage nebo Managed Disks, příkazy v části [požadavky na nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) se vztahují i na nasazení s Oracle Database.
+Pokud používáte disky založené na úložišti objektů blob stránky Azure nebo spravované disky, příkazy provedené v [aspekty pro nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) platí i pro nasazení s databází Oracle Database.
 
- Kvóty pro propustnost vstupně-výstupních operací pro disky Azure existují. Tento koncept je vysvětlen v tématu [týkajícím se nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md). Přesná kvóta závisí na použitém typu virtuálního počítače. Seznam typů virtuálních počítačů s jejich kvótami najdete v tématu [velikosti pro virtuální počítače Linux v Azure][virtual-machines-sizes-linux].
+ Existují kvóty pro viops prodisky Azure. Tento koncept je vysvětlenv [aspekty pro nasazení AZURE virtuálnípočítače DBMS pro úlohy SAP](dbms_guide_general.md). Přesné kvóty závisí na typu virtuálního počítači, který se používá. Seznam typů virtuálních počítačů s jejich kvótami najdete [v tématu Velikosti pro virtuální počítače s Linuxem v Azure][virtual-machines-sizes-linux].
 
-Pokud chcete identifikovat podporované typy virtuálních počítačů Azure, přečtěte si článek SAP Note [1928533].
+Informace o identifikaci podporovaných typů virtuálních počítačů Azure najdete v tématu SAP Note [1928533].
 
 Minimální konfigurace:
 
-| Součást | Disk | Mezipaměť | Odstranění |
+| Komponenta | Disk | Ukládání do mezipaměti | Odizolování* |
 | --- | ---| --- | --- |
-| /Oracle/\<SID >/origlogaA & mirrlogB | Premium | Žádné | Není potřeba |
-| /Oracle/\<SID >/origlogaB & mirrlogA | Premium | Žádné | Není potřeba |
-| /Oracle/\<SID >/sapdata1... n | Premium | Jen pro čtení | Dá se použít |
-| /Oracle/\<SID >/oraarch | Úroveň Standard | Žádné | Není potřeba |
-| Oracle Home, saptrace,... | Disk OS | | Není potřeba |
+| /oracle/\<SID>/origlogaA & mirrlogB | Premium | Žádný | Není potřeba |
+| /oracle/\<SID>/origlogaB & mirrlogA | Premium | Žádný | Není potřeba |
+| /oracle/\<SID>/sapdata1... N | Premium | Jen pro čtení | Lze použít |
+| /oracle/\<SID>/oraarch | Standard | Žádný | Není potřeba |
+| Oracle Home, saptrace, ... | Disk OS | | Není potřeba |
 
-\* Odstranění: LVM Stripe nebo MDADM using RAID0
+* Stripping: LVM pruh nebo MDADM pomocí RAID0
 
-Výběr disku pro hostování protokolů opětovného provedení online v Oracle by měl být řízený požadavky IOPS. Je možné uložit všechny sapdata1... n (tabulkové prostory) na jednom připojeném disku, pokud svazek, IOPS a propustnost splňují požadavky. 
+Výběr disku pro hostování online protokolů opakování společnosti Oracle by měl být řízen požadavky vsystému IOPS. Je možné uložit všechny sapdata1... n (tabulkové prostory) na jednom připojeném disku, pokud svazek, VOPS a propustnost splňují požadavky. 
 
 Konfigurace výkonu:
 
-| Součást | Disk | Mezipaměť | Odstranění |
+| Komponenta | Disk | Ukládání do mezipaměti | Odizolování* |
 | --- | ---| --- | --- |
-| /Oracle/\<SID >/origlogaA | Premium | Žádné | Dá se použít  |
-| /Oracle/\<SID >/origlogaB | Premium | Žádné | Dá se použít |
-| /Oracle/\<SID >/mirrlogAB | Premium | Žádné | Dá se použít |
-| /Oracle/\<SID >/mirrlogBA | Premium | Žádné | Dá se použít |
-| /Oracle/\<SID >/sapdata1... n | Premium | Jen pro čtení | Doporučené  |
-| /Oracle/\<SID >/sapdata (n + 1) * | Premium | Žádné | Dá se použít |
-| /Oracle/\<SID >/oraarch * | Premium | Žádné | Není potřeba |
-| Oracle Home, saptrace,... | Disk OS | Není potřeba |
+| /oracle/\<SID>/origlogaA | Premium | Žádný | Lze použít  |
+| /oracle/\<SID>/origlogaB | Premium | Žádný | Lze použít |
+| /oracle/\<SID>/mirrlogAB | Premium | Žádný | Lze použít |
+| /oracle/\<SID>/mirrlogBA | Premium | Žádný | Lze použít |
+| /oracle/\<SID>/sapdata1... N | Premium | Jen pro čtení | Doporučené  |
+| /oracle/\<SID>/sapdata(n+1)* | Premium | Žádný | Lze použít |
+| /oracle/\<SID>/oraarch* | Premium | Žádný | Není potřeba |
+| Oracle Home, saptrace, ... | Disk OS | Není potřeba |
 
-\* Odstranění: LVM Stripe nebo MDADM using RAID0
+* Stripping: LVM pruh nebo MDADM pomocí RAID0
 
-\* (n + 1): hostující prostředí, dočasné a odvolatelné prostory: vzor vstupně-výstupních prostorů systému a zpětných prostorů se liší od ostatních tabulkových prostorů hostujících data aplikací. Nejedná se o nejlepší možnost pro výkon systému a vrácení tabulkových prostorů.
+*(n+1):hostování tabulkových prostorů SYSTEM, TEMP a UNDO: Vzor vstupně-in systému a tabulky Undo se liší od ostatních tabulkových prostorů hostujících data aplikací. Žádné ukládání do mezipaměti je nejlepší volbou pro výkon systému a vrátit do tabulky.
 
-\* oraarch: fond úložiště není potřebný z hlediska výkonu v zobrazení.
+*oraarch: fond úložiště není z hlediska výkonu nutný.
 
 
-Pokud je vyžadováno více IOPS, doporučujeme použít LVM (Správce logických svazků) nebo MDADM k vytvoření jednoho velkého logického svazku na více připojených discích. Další informace najdete v tématu [týkajícím se nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) týkající se pokynů a ukazatelů, jak využít LVM nebo MDADM. Tento přístup zjednodušuje správu místa na disku a pomáhá zabránit tomu, abyste se vyhnuli ruční distribuci souborů mezi více připojených disků.
+Pokud jsou požadovány další iOPS, doporučujeme použít LVM (Logický správce svazků) nebo MDADM k vytvoření jednoho velkého logického svazku přes více připojených disků. Další informace najdete [v tématu důležité informace pro nasazení Azure Virtual Machines DBMS pro úlohy SAP,](dbms_guide_general.md) pokud jde o pokyny a odkazy na využití LVM nebo MDADM. Tento přístup zjednodušuje administrativní režii při správě místa na disku a pomáhá vyhnout se úsilí o ruční distribuci souborů na více připojených disků.
 
 
 #### <a name="write-accelerator"></a>Akcelerátor zápisu
-U virtuálních počítačů Azure řady M-Series se při použití služby Azure Akcelerátor zápisu dá latence zápisu do online protokolů pro opětovné provedení omezit o faktory ve srovnání s výkonem Azure Premium Storage. Povolte Azure Akcelerátor zápisu pro disky (VHD) založené na Premium Storage Azure, které se používají pro soubory protokolu online opětovného provedení. Další informace najdete v tématu [akcelerátor zápisu](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator).
+U virtuálních her Azure řady M může být při použití akcelerátoru zápisu Azure zápis u protokolů online opakování snížena o faktory ve srovnání s výkonem úložiště Azure Premium. Povolte Azure Write Accelerator pro disky (VD) na základě Azure Premium Storage, které se používají pro soubory protokolu online opakování. Další informace naleznete v tématu [Akcelerátor zápisu](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator).
 
 
-### <a name="backuprestore"></a>Zálohování a obnovení
-V případě funkcí zálohování a obnovení jsou podporované nástroje SAP BR * pro Oracle stejným způsobem jako na holém počítači a Hyper-V. Oracle Recovery Manager (RMAN) se podporuje taky pro zálohování na disk a obnovení z disku.
+### <a name="backuprestore"></a>Zálohování/obnovení
+Pro funkce zálohování a obnovení jsou nástroje SAP BR*pro oracle podporovány stejným způsobem jako na holém kovu a technologie Hyper-V. Oracle Recovery Manager (RMAN) je také podporován pro zálohování na disk a obnovení z disku.
 
-Další informace o tom, jak můžete pomocí Azure Backup a Recovery Services zálohovat a obnovovat databáze Oracle, najdete v tématu [zálohování a obnovení databáze Oracle Database 12c na virtuálním počítači Azure Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-backup-recovery).
+Další informace o tom, jak můžete používat služby Azure Backup and Recovery pro zálohování a obnovení databází Oracle, najdete v [tématu Zálohování a obnovení databáze Oracle Database 12c na virtuálním počítači Azure Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-backup-recovery).
 
 ### <a name="high-availability"></a>Vysoká dostupnost
-Oracle data Guard je podporováno pro účely vysoké dostupnosti a zotavení po havárii. Chcete-li dosáhnout automatického převzetí služeb při selhání v ochraně dat, je nutné použít příkaz rychle spustit převzetí služeb při selhání (FSFA). Funkce pozorovatele (FSFA) aktivuje převzetí služeb při selhání. Pokud FSFA nepoužíváte, můžete použít jenom ruční konfiguraci převzetí služeb při selhání. Další informace najdete v tématu [implementace Oracle data Guard na virtuálním počítači Azure Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard).
+Oracle Data Guard je podporován pro účely vysoké dostupnosti a zotavení po havárii. Chcete-li dosáhnout automatického převzetí služeb při selhání v ochraně dat, musíte použít převzetí služeb při selhání rychlého spuštění (FSFA). Funkce Pozorovatel (FSFA) aktivuje převzetí služeb při selhání. Pokud nepoužíváte FSFA, můžete použít pouze ruční konfiguraci převzetí služeb při selhání. Další informace najdete [v tématu Implementace služby Oracle Data Guard na virtuálním počítači Azure Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard).
 
 
-Aspekty zotavení po havárii pro databáze Oracle v Azure jsou uvedené v článku [zotavení po havárii pro databázi Oracle Database 12c v prostředí Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery).
+Aspekty zotavení po havárii pro databáze Oracle v Azure jsou uvedeny v článku [Zotavení po havárii pro databázi Oracle Database 12c v prostředí Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery).
 
 ### <a name="accelerated-networking"></a>Urychlení sítě
-Podpora pro rychlejší síťové sítě Azure v Oracle Linux je k dispozici s Oracle Linux 7 Update 5 (Oracle Linux 7,5). Pokud nemůžete upgradovat na nejnovější verzi Oracle Linux 7,5, může to být alternativní řešení s využitím jádra RHCK (RedHat Compatible kernel) místo jádra Oracle UEK. 
+Podpora azure accelerated networking v Oracle Linux je poskytována s aktualizací Oracle Linux 7 Update 5 (Oracle Linux 7.5). Pokud nemůžete upgradovat na nejnovější verzi Oracle Linux 7.5, může být řešení pomocí jádra kompatibilního s RedHat (RHCK) namísto jádra Oracle UEK. 
 
-Použití jádra RHEL v rámci Oracle Linux je podporované v souladu s poznámkou SAP [#1565179](https://launchpad.support.sap.com/#/notes/1565179). Pro akcelerované síťové služby Azure musí být minimální verze jádra RHCKL 3.10.0-862.13.1. el7. Pokud používáte jádro UEK v Oracle Linux ve spojení s [akcelerovanými síťovými sítěmi Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/), musíte použít jádro Oracle uek verze 5.
+Použití jádra RHEL v rámci Oracle Linux je podporováno podle SAP Note [#1565179](https://launchpad.support.sap.com/#/notes/1565179). Pro Azure Accelerated Networking musí být minimální verze jádra RHCKL 3.10.0-862.13.1.el7. Pokud používáte jádro UEK v Oracle Linuxve spojení s [Azure Accelerated Networking](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/), musíte použít jádro Oracle UEK verze 5.
 
-Pokud nasazujete virtuální počítače z image, která není založená na Azure Marketplace, musíte do virtuálního počítače zkopírovat další konfigurační soubory spuštěním následujícího kódu: 
+Pokud nasazujete virtuální počítače z image, která není založená na Azure Marketplace, musíte zkopírovat další konfigurační soubory do virtuálního počítače spuštěním následujícího kódu: 
 <pre><code># Copy settings from GitHub to the correct place in the VM
 sudo curl -so /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules https://raw.githubusercontent.com/LIS/lis-next/master/hv-rhel7.x/hv/tools/68-azure-sriov-nm-unmanaged.rules 
 </code></pre>
 
 
-### <a name="other"></a>Jiné
-[Důležité informace týkající se nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) popisují další důležité koncepty týkající se nasazení virtuálních počítačů s Oracle Database, včetně skupin dostupnosti Azure a monitorování SAP.
+### <a name="other"></a>Ostatní
+[Důležité informace o nasazení služby DBMS virtuálních počítačů Azure pro úlohy SAP](dbms_guide_general.md) popisují další důležité koncepty související s nasazením virtuálních počítačů s databází Oracle Database, včetně sad dostupnosti Azure a monitorování SAP.

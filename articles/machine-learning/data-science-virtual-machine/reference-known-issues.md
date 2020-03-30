@@ -1,7 +1,7 @@
 ---
-title: 'Reference: známé problémy & řešení potíží'
+title: 'Reference: Známé problémy & řešení potíží'
 titleSuffix: Azure Data Science Virtual  Machine
-description: Seznam známých problémů, řešení a řešení potíží pro Azure Data Science Virtual Machine
+description: Získejte seznam známých problémů, řešení a řešení potíží pro Virtuální počítač Azure Data Science
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -10,38 +10,38 @@ ms.author: gopalv
 ms.topic: reference
 ms.date: 10/10/2019
 ms.openlocfilehash: b83effa95b17d712d4019f8ab5bf13c4f02a7d2b
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78206516"
 ---
-# <a name="known-issues-and-troubleshooting-the-azure-data-science-virtual-machine"></a>Známé problémy a řešení potíží s Data Science Virtual Machine Azure
+# <a name="known-issues-and-troubleshooting-the-azure-data-science-virtual-machine"></a>Známé problémy a řešení potíží s virtuálním počítačem Azure Data Science
 
-Tento článek vám pomůže najít a opravit chyby nebo chyby, ke kterým může dojít při použití Data Science Virtual Machine Azure.
+Tento článek vám pomůže najít a opravit chyby nebo chyby, se kterými se můžete sejít při používání virtuálního počítače Azure Data Science.
 
 ## <a name="python-package-installation-issues"></a>Problémy s instalací balíčku Pythonu
 
-### <a name="installing-packages-with-pip-breaks-dependencies-on-linux"></a>Instalace balíčků se závislostmi přerušení v programu PIP na platformě Linux
+### <a name="installing-packages-with-pip-breaks-dependencies-on-linux"></a>Instalace balíčků s pip přestávky závislosti na Linuxu
 
-Při instalaci balíčků použít `sudo pip install` místo `pip install`
+Použijte `sudo pip install` místo `pip install` při instalaci balíčků.
 
 ## <a name="disk-encryption-issues"></a>Problémy se šifrováním disků
 
-### <a name="disk-encryption-fails-on-the-ubuntu-dsvm"></a>Šifrování disku se na Ubuntu DSVM nezdařilo.
+### <a name="disk-encryption-fails-on-the-ubuntu-dsvm"></a>Šifrování disku se nezdaří na Ubuntu DSVM
 
-Azure Disk Encryption (ADE) není aktuálně podporován na Ubuntu DSVM. Alternativním řešením je zvážit konfiguraci [šifrování na straně serveru Azure Managed disks](../../virtual-machines/windows/disk-encryption.md).
+Azure Disk Encryption (ADE) není aktuálně podporovánna Ubuntu DSVM. Jako zástupné řešení zvažte konfiguraci [šifrování na straně serveru disků spravovaných Azure](../../virtual-machines/windows/disk-encryption.md).
 
-## <a name="tool-appears-disabled"></a>Nástroj se zobrazuje zakázaný
+## <a name="tool-appears-disabled"></a>Nástroj se jeví jako zakázaný.
 
-### <a name="hyper-v-does-not-work-on-the-windows-dsvm"></a>Technologie Hyper-V nefunguje na DSVM Windows
+### <a name="hyper-v-does-not-work-on-the-windows-dsvm"></a>Technologie Hyper-V nefunguje v systému Windows DSVM
 
-Tato technologie Hyper-V zpočátku nefunguje v systému Windows je očekávané chování. Pro výkon spuštění jsme zakázali některé služby. Povolení technologie Hyper-V:
+To, že hyper-V zpočátku nefunguje v systému Windows, se očekává chování. Pro výkon při spuštění jsme zakázali některé služby. Povolení technologie Hyper-V:
 
-1. Otevřete panel hledání ve Windows DSVM
-1. Zadejte "Services".
-1. Nastavit všechny služby technologie Hyper-V na ruční
-1. Nastavte možnost Správa virtuálních počítačů s technologií Hyper-V na hodnotu automaticky.
+1. Otevření vyhledávacího panelu v systému Windows DSVM
+1. Zadejte "Služby".
+1. Nastavte všechny služby Hyper-V na "Ruční"
+1. Nastavení "Správa virtuálních strojů Hyper-V" na "Automatická"
 
 Poslední obrazovka by měla vypadat takto:
 

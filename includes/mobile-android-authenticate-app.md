@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: crdun
 ms.openlocfilehash: eded2d6a9f2c270a2b3ccca296277b0a016733fd
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67175694"
 ---
-1. Otevřete projekt v nástroji Android Studio.
+1. Otevřete projekt v Android Studiu.
 
-2. V **Project Exploreru** v nástroji Android Studio, otevřete `ToDoActivity.java` a přidejte následující příkazy pro import:
+2. V **Průzkumníkovi Projektu** v `ToDoActivity.java` Android Studiu otevřete soubor a přidejte následující příkazy importu:
 
     ```java
     import java.util.concurrent.ExecutionException;
@@ -27,7 +27,7 @@ ms.locfileid: "67175694"
     import com.microsoft.windowsazure.mobileservices.authentication.MobileServiceUser;
     ```
 
-3. Přidejte následující metodu do **ToDoActivity** třídy:
+3. Do třídy **ToDoActivity** přidejte následující metodu:
 
     ```java
     // You can choose any unique number here to differentiate auth providers from each other. Note this is the same code at login() and onActivityResult().
@@ -59,20 +59,20 @@ ms.locfileid: "67175694"
     }
     ```
 
-    Tento kód vytvoří metodu ke zpracování procesu ověřování Google. Dialogové okno zobrazí ID ověřeného uživatele. Pouze můžete přejít na úspěšné ověřování.
+    Tento kód vytvoří metodu pro zpracování procesu ověřování Google. V dialogovém okně se zobrazí ID ověřeného uživatele. Můžete pokračovat pouze na úspěšné ověření.
 
     > [!NOTE]
-    > Pokud používáte zprostředkovatelů identity než Google, změňte hodnotu předanou **přihlášení** metody do jednoho z následujících hodnot: _MicrosoftAccount_, _Facebook_, _Twitter_, nebo _windowsazureactivedirectory_.
+    > Pokud používáte jiného poskytovatele identity než Google, změňte hodnotu předanou metodě **přihlášení** na jednu z následujících hodnot: _MicrosoftAccount_, _Facebook_, _Twitter_nebo _windowsazureactivedirectory_.
 
-4. V **onCreate** metodu, přidejte následující řádek kódu za kód, který vytvoří instanci `MobileServiceClient` objektu.
+4. V **onCreate** metoda přidejte následující řádek kódu za kód, `MobileServiceClient` který konkretizovat objekt.
 
     ```java
     authenticate();
     ```
 
-    Toto volání zahájí proces ověřování.
+    Toto volání spustí proces ověřování.
 
-5. Přesunout zbývající kód po `authenticate();` v **onCreate** metoda do nového **createTable** metody:
+5. Přesuňte zbývající kód `authenticate();` po v **onCreate** metoda na novou **metodu createTable:**
 
     ```java
     private void createTable() {
@@ -92,7 +92,7 @@ ms.locfileid: "67175694"
     }
     ```
 
-6. Chcete-li zajistit přesměrování funguje podle očekávání, přidejte následující fragment `RedirectUrlActivity` k `AndroidManifest.xml`:
+6. Chcete-li zajistit, aby přesměrování fungovalo podle `RedirectUrlActivity` očekávání, přidejte následující úryvek do `AndroidManifest.xml`:
 
     ```xml
     <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity">
@@ -106,7 +106,7 @@ ms.locfileid: "67175694"
     </activity>
     ```
 
-7. Přidat `redirectUriScheme` k `build.gradle` vaší aplikace pro Android.
+7. `redirectUriScheme` Přidejte `build.gradle` do aplikace pro Android.
 
     ```gradle
     android {
@@ -123,7 +123,7 @@ ms.locfileid: "67175694"
     }
     ```
 
-8. Přidat `com.android.support:customtabs:23.0.1` závislostí ve vaší `build.gradle`:
+8. Přidat `com.android.support:customtabs:23.0.1` k závislostem `build.gradle`ve vašem :
 
     ```gradle
     dependencies {
@@ -132,9 +132,9 @@ ms.locfileid: "67175694"
     }
     ```
 
-9. Z **spustit** nabídky, klikněte na tlačítko **spuštění aplikace** spusťte aplikaci a přihlaste se pomocí zprostředkovatele identity zvolená.
+9. V nabídce **Spustit** klikněte na **Spustit aplikaci,** abyste aplikaci spustili a přihlásili se pomocí vybraného poskytovatele identity.
 
 > [!WARNING]
-> Schéma adresy URL uvedené rozlišuje velká a malá písmena. Ujistěte se, že všechny výskyty `{url_scheme_of_you_app}` velká a malá písmena.
+> Uvedené schéma adres URL rozlišuje malá a velká písmena. Ujistěte se, `{url_scheme_of_you_app}` že všechny výskyty použití stejného případu.
 
-Pokud jste úspěšně přihlášení, aplikace by měla běžet bez chyb a by měl mít provést aktualizace dat a dotazování na back-end službu.
+Když jste úspěšně přihlášeni, aplikace by měla běžet bez chyb a měli byste být schopni dotazovat back-endové služby a provádět aktualizace dat.

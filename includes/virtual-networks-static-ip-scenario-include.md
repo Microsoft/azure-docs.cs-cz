@@ -2,19 +2,19 @@
 author: genlin
 ms.service: virtual-network
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 02/14/2020
 ms.author: genli
-ms.openlocfilehash: d40f8fb263c5838d523108a1df7be99aba587354
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 280943bd965c4799ce294321129d1088be9c0caf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174916"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060586"
 ---
 ## <a name="scenario"></a>Scénář
-Abychom vám lépe předvedli jak nakonfigurovat statickou IP adresu pro virtuální počítač, bude tento dokument používat následující scénář.
 
-![Scénář sítě VNet](./media/virtual-networks-static-ip-scenario-include/static-ip-scenario.png)
+Chcete-li lépe ilustrovat, jak nakonfigurovat statickou ADRESU IP pro virtuální počítače, tento dokument používá tento scénář:
 
-V tomto scénáři vytvoříte virtuální počítač s názvem **DNS01** v **front-endu** podsítě a nastavte ho na použití statickou IP adresu z **192.168.1.101**.
+![Scénář virtuální sítě: Podsítě front-endu a back-end se statickou IP adresou pro podsíť front-endu](./media/virtual-networks-static-ip-scenario-include/static-ip-scenario.png)
 
+V tomto scénáři vytvoříte virtuální hosto s názvem *DNS01* v podsíti *FrontEnd* a pak jej nastavte tak, aby používal statickou ADRESU IP *192.168.1.101*.

@@ -1,37 +1,37 @@
 ---
-title: Šablony Správce prostředků pro rozhraní Azure Cosmos DB API pro MongoDB
-description: K vytvoření a konfiguraci Azure Cosmos DB API pro MongoDB použijte šablony Azure Resource Manager.
+title: Šablony Správce prostředků pro rozhraní API DB Azure Cosmos pro MongoDB
+description: Pomocí šablon Azure Resource Manager vytvořte a nakonfigurujte rozhraní API Azure Cosmos DB pro MongoDB.
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: eb3b0537b01c60e79959494c65306c4a56c331a3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 531f122679c463b11c84eba2fca9f30b09e0935f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79251853"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063641"
 ---
-# <a name="manage-azure-cosmos-db-mongodb-api-resources-using-azure-resource-manager-templates"></a>Správa Azure Cosmos DBch prostředků rozhraní API MongoDB pomocí šablon Azure Resource Manager
+# <a name="manage-azure-cosmos-db-mongodb-api-resources-using-azure-resource-manager-templates"></a>Správa prostředků rozhraní API Azure Cosmos DB MongoDB pomocí šablon Azure Resource Manager
 
-Tento článek popisuje, jak provádět různé operace pro automatizaci správy Azure Cosmos DB účtů, databází a kontejnerů pomocí šablon Azure Resource Manager. Tento článek obsahuje příklady pro rozhraní API Azure Cosmos DB jenom pro MongoDB. příklady pro jiné účty typu rozhraní API najdete v tématu použití šablon Azure Resource Manager s rozhraním API Azure Cosmos DB pro [Cassandra](manage-cassandra-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [SQL](manage-sql-with-resource-manager.md)a [tabulkové](manage-table-with-resource-manager.md) články.
+Tento článek popisuje, jak provádět různé operace k automatizaci správy účtů Azure Cosmos DB, databází a kontejnerů pomocí šablon Azure Resource Manager. Tento článek obsahuje příklady rozhraní API Azure Cosmos DB pouze pro MongoDB, chcete-li najít příklady pro jiné účty typu rozhraní API, viz: použití šablon Azure Resource Manager s rozhraním API Azure Cosmos DB pro [Cassandra](manage-cassandra-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [SQL](manage-sql-with-resource-manager.md), [Table](manage-table-with-resource-manager.md) articles.
 
-## Vytvoření Azure Cosmos DB API pro účet MongoDB, databázi a kolekci<a id="create-resource"></a>
+## <a name="create-azure-cosmos-db-api-for-mongodb-account-database-and-collection"></a>Vytvoření rozhraní API Azure Cosmos DB pro účet MongoDB, databázi a kolekci<a id="create-resource"></a>
 
-Vytvořte Azure Cosmos DB prostředky pomocí šablony Azure Resource Manager. Tato šablona vytvoří účet Azure Cosmos pro rozhraní MongoDB API se dvěma kolekcemi, které sdílejí propustnost 400 RU/s na úrovni databáze. Zkopírujte šablonu a nasazení, jak je znázorněno níže, nebo navštivte [galerii Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-cosmosdb-mongodb/) a nasaďte z Azure Portal. Můžete také stáhnout šablonu do místního počítače nebo vytvořit novou šablonu a zadat místní cestu s parametrem `--template-file`.
+Vytvořte prostředky Azure Cosmos DB pomocí šablony Azure Resource Manager. Tato šablona vytvoří účet Azure Cosmos pro rozhraní API MongoDB se dvěma kolekcemi, které sdílejí propustnost 400 RU/s na úrovni databáze. Zkopírujte šablonu a nasaďte, jak je znázorněno níže, nebo navštivte [Azure QuickStart Gallery](https://azure.microsoft.com/resources/templates/101-cosmosdb-mongodb/) a nasaďte je z webu Azure Portal. Šablonu můžete také stáhnout do místního počítače nebo vytvořit novou `--template-file` šablonu a zadat místní cestu s parametrem.
 
 > [!NOTE]
-> Názvy účtů musí být malé a 44 nebo méně znaků.
-> Chcete-li aktualizovat RU/s, šablonu znovu odešlete s aktualizovanými hodnotami vlastností propustnosti.
+> Názvy účtů musí být malá a 44 nebo méně znaků.
+> Chcete-li aktualizovat ru/s, odešlete šablonu s aktualizovanými hodnotami vlastností propustnosti.
 >
-> V současné době můžete pomocí šablon PowerShellu, CLI a Správce prostředků vytvořit jenom 3,2 verze (tj. účty používající koncový bod ve formátu `*.documents.azure.com`) Azure Cosmos DB API pro účty MongoDB. Pokud chcete vytvořit 3,6 verze účtů, použijte místo toho Azure Portal.
+> V současné době můžete vytvořit jenom verzi 3.2 (to `*.documents.azure.com`znamená účty pomocí koncového bodu ve formátu) rozhraní API Azure Cosmos DB pro účty MongoDB pomocí PowerShellu a CLI. Chcete-li vytvořit verzi účtů 3.6, použijte šablony Správce prostředků (níže) nebo portál Azure.
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-mongodb/azuredeploy.json":::
 
-### <a name="deploy-via-the-azure-cli"></a>Nasazení prostřednictvím rozhraní příkazového řádku Azure
+### <a name="deploy-via-the-azure-cli"></a>Nasazení pomocí azure cli
 
-Pokud chcete nasadit šablonu Azure Resource Manager pomocí rozhraní příkazového řádku Azure, **zkopírujte** skript a vyberte **zkusit,** aby se otevřela Azure Cloud Shell. Skript vložíte tak, že kliknete pravým tlačítkem na prostředí a pak vyberete **Vložit**:
+Pokud chcete nasadit šablonu Azure Resource Manager pomocí azure CLI, **zkopírujte** skript a vyberte **Vyzkoušet,** chcete-li otevřít Azure Cloud Shell. Chcete-li skript vložit, klepněte pravým tlačítkem myši na prostředí a pak vyberte **Vložit**:
 
 ```azurecli-interactive
 
@@ -53,13 +53,13 @@ az group deployment create --resource-group $resourceGroupName \
 az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
 ```
 
-Příkaz `az cosmosdb show` zobrazuje nově vytvořený účet Azure Cosmos po zřízení. Pokud se rozhodnete použít místně nainstalovanou verzi rozhraní příkazového řádku Azure CLI místo používání služby Cloud Shell, přečtěte si článek [Azure CLI](/cli/azure/) .
+Příkaz `az cosmosdb show` zobrazuje nově vytvořený účet Azure Cosmos po jeho zřízení. Pokud se rozhodnete použít místně nainstalovanou verzi azure cli namísto použití cloudového prostředí, najdete v článku [Azure CLI.](/cli/azure/)
 
 ## <a name="next-steps"></a>Další kroky
 
-Tady je několik dalších prostředků:
+Tady je několik dalších zdrojů:
 
-- [Dokumentace k Azure Resource Manager](/azure/azure-resource-manager/)
-- [Azure Cosmos DB schéma poskytovatele prostředků](/azure/templates/microsoft.documentdb/allversions)
-- [Šablony pro rychlý Start Azure Cosmos DB](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-- [Řešení běžných chyb při nasazení Azure Resource Manager](../azure-resource-manager/templates/common-deployment-errors.md)
+- [Dokumentace správce prostředků Azure](/azure/azure-resource-manager/)
+- [Schéma zprostředkovatele prostředků Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions)
+- [Šablony rychlých startů Azure Cosmos DB](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
+- [Poradce při potížích s běžnými chybami nasazení Azure Resource Manageru](../azure-resource-manager/templates/common-deployment-errors.md)

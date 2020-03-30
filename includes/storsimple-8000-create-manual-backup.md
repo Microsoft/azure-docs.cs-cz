@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 4fc92931979aa367bdead435c3d6fd758d66a397
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175082"
 ---
 #### <a name="to-create-a-manual-backup"></a>Ruční vytvoření zálohy
@@ -21,7 +21,7 @@ ms.locfileid: "67175082"
 
 3. V okně **Zálohovat nyní** proveďte následující kroky:
 
-    1. Zvolte odpovídající **typ snímku** z rozevíracího seznamu: **Místní** snímku nebo **cloudu** snímku. Pokud chcete rychlejší zálohování a obnovení, vyberte místní snímek; cloudový snímek vyberte, pokud chcete větší odolnost dat.
+    1. Z rozevíracího seznamu zvolte vhodný **Typ snímku**: **Místní** snímek nebo **Cloudový** snímek. Pokud chcete rychlejší zálohování a obnovení, vyberte místní snímek; cloudový snímek vyberte, pokud chcete větší odolnost dat.
 
         ![Ruční vytvoření zálohy](./media/storsimple-8000-create-manual-backup/createmanualbu2.png)
 

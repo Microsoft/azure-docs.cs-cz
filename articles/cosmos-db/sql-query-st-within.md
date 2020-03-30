@@ -1,6 +1,6 @@
 ---
 title: ST_WITHIN v dotazovacím jazyce Azure Cosmos DB
-description: Přečtěte si o funkcích systému SQL ST_WITHIN v Azure Cosmos DB.
+description: Přečtěte si o ST_WITHIN funkcí systému SQL v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 07a339d82f5e4bea1ea0412a5d5b19522611b54a
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78296112"
 ---
 # <a name="st_within-azure-cosmos-db"></a>ST_WITHIN (Azure Cosmos DB)
- Vrací výraz Boolean určující, zda je objekt GeoJSON (bodu, mnohoúhelník nebo LineString) zadané v prvním argumentu v rámci GeoJSON (bodu, mnohoúhelník nebo LineString) v druhý argument.  
+ Vrátí logický výraz označující, zda je objekt GeoJSON (point, polygon nebo linestring) zadaný v prvním argumentu v rámci pole GeoJSON (Point, Polygon nebo LineString) v druhém argumentu.  
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -26,7 +26,7 @@ ST_WITHIN (<spatial_expr>, <spatial_expr>)
 ## <a name="arguments"></a>Argumenty
   
 *spatial_expr*  
-   Je bodový výraz, mnohoúhelník nebo LineString objektu pro injson.  
+   Je výraz objektu GeoJSON Point, Polygon nebo LineString.  
   
 ## <a name="return-types"></a>Návratové typy
   
@@ -34,7 +34,7 @@ ST_WITHIN (<spatial_expr>, <spatial_expr>)
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad ukazuje, jak najít všechny rodiny dokumentů v mnohoúhelníku pomocí `ST_WITHIN`.  
+  Následující příklad ukazuje, jak najít všechny rodinné dokumenty `ST_WITHIN`v rámci polygonu pomocí .  
   
 ```sql
 SELECT f.id
@@ -53,10 +53,10 @@ WHERE ST_WITHIN(f.location, {
 
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce bude využívat [geoprostorové rejstřík](index-policy.md#spatial-indexes).
+Tato systémová funkce bude mít prospěch z [geoprostorového indexu](index-policy.md#spatial-indexes).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Azure Cosmos DB prostorových funkcí](sql-query-spatial-functions.md)
+- [Prostorové funkce Azure Cosmos DB](sql-query-spatial-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
 - [Úvod do Azure Cosmos DB](introduction.md)

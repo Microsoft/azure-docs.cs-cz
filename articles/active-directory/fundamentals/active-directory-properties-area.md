@@ -1,6 +1,6 @@
 ---
-title: Přidání informací o ochraně osobních údajů vaší organizace – Azure Active Directory | Dokumentace Microsoftu
-description: Pokyny ohledně toho, jak přidat informace o ochraně osobních údajů vaší organizace do oblasti Vlastnosti služby Azure Active Directory.
+title: Přidání informací o ochraně osobních údajů vaší organizace – Azure Active Directory | Dokumenty společnosti Microsoft
+description: Pokyny, jak přidat informace o ochraně osobních údajů vaší organizace do oblasti Vlastnosti služby Azure Active Directory.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -14,47 +14,47 @@ ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 95f1877ae630919ba7da5a851b5f8291ade2d165
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76897580"
 ---
-# <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Přidání informací o ochraně osobních údajů vaší organizace pomocí služby Azure Active Directory
-Tento článek vysvětluje, jak může správce tenanta přidat informace týkající se ochrany osobních údajů v organizaci tenanta Azure Active Directory (Azure AD), na webu Azure portal.
+# <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Přidání informací o ochraně osobních údajů vaší organizace pomocí Služby Azure Active Directory
+Tento článek vysvětluje, jak může správce tenanta přidat informace o ochraně osobních údajů do tenanta Azure Directory (Azure AD) organizace prostřednictvím portálu Azure.
 
-Důrazně doporučujeme že přidat kontakt globální ochrany osobních údajů a zásady ochrany osobních údajů vaší organizace, tak interní zaměstnance a externí hosté můžou, projděte si zásady. Protože prohlášení o ochraně osobních údajů jsou jednoznačně vytvořen a přizpůsobené pro každou firmu, důrazně doporučujeme, abyste že požádali advokát žádostí o pomoc.
+Důrazně doporučujeme přidat váš globální kontakt na ochranu osobních údajů a prohlášení o ochraně osobních údajů vaší organizace, aby vaši interní zaměstnanci a externí hosté mohli zkontrolovat vaše zásady. Vzhledem k tomu, že prohlášení o ochraně osobních údajů jsou jedinečně vytvořena a přizpůsobena pro každou firmu, důrazně doporučujeme, abyste se obrátili na právníka s žádostí o pomoc.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="add-your-privacy-info-on-azure-ad"></a>Přidejte své informace o ochraně osobních údajů v Azure AD
-Přidejte informace o ochraně osobních údajů vaší organizace v **vlastnosti** oblast služby Azure AD.
+## <a name="add-your-privacy-info-on-azure-ad"></a>Přidání informací o ochraně osobních údajů ve službě Azure AD
+Informace o ochraně osobních údajů vaší organizace přidáte do oblasti **Vlastnosti** ve službě Azure AD.
 
-### <a name="to-access-the-properties-area-and-add-your-privacy-information"></a>Pro přístup k oblasti vlastnosti a přidejte své informace o ochranu osobních údajů
+### <a name="to-access-the-properties-area-and-add-your-privacy-information"></a>Přístup k oblasti Vlastnosti a přidání informací o ochraně osobních údajů
 
-1.  Přihlaste se k webu Azure portal jako správce tenanta.
+1.  Přihlaste se k portálu Azure jako správce klienta.
 
-2.  V levém navigačním panelu vyberte **Azure Active Directory**a pak vyberte **vlastnosti**.
+2.  Na levém panelu vyberte **Azure Active Directory**a pak vyberte **Vlastnosti**.
 
-    **Vlastnosti** se zobrazí oblast.
+    Zobrazí se oblast **Vlastnosti.**
 
-    ![Zvýraznění oblasti informace o ochraně osobních údajů Azure AD vlastnosti oblasti](media/active-directory-properties-area/properties-area.png)
+    ![Oblast Azure AD Properties zvýrazňující oblast informací o ochraně osobních údajů](media/active-directory-properties-area/properties-area.png)
 
-3.  Přidejte své informace o ochraně osobních údajů pro svoje zaměstnance:
+3.  Přidejte své informace o ochraně osobních údajů pro své zaměstnance:
 
-    - **Technický kontakt.** Zadejte e-mailovou adresu osoby, obraťte se na technickou podporu v rámci vaší organizace.
+    - **Technický kontakt.** Zadejte e-mailovou adresu osoby, kterou má osoba kontaktovat s žádostí o technickou podporu ve vaší organizaci.
     
-    - **Obraťte se na globální ochrany osobních údajů.** Zadejte e-mailovou adresu pro osobu požádat o dotazy týkající se ochrany osobních údajů osobní údaje. Tato osoba je také kdo Microsoft obrátí, pokud dojde k porušení zabezpečení dat. Pokud neexistuje žádné osobě, tady najdete, kontaktuje Microsoft globální správci.
+    - **Globální kontakt na ochranu osobních údajů.** Zadejte e-mailovou adresu, na kterou se má daná osoba obrátit s dotazy týkajícími se ochrany osobních údajů. Tato osoba je také tím, s kým společnost Microsoft kontaktuje v případě porušení zabezpečení dat. Pokud zde není uvedena žádná osoba, společnost Microsoft kontaktuje globální správce.
 
-    - **Adresa URL prohlášení o ochraně osobních údajů.** Zadejte odkaz na dokument vaší organizace, popisující, jak organizace zpracovává i interních a externích hosta ochrany osobních údajů.
+    - **Adresa URL prohlášení o zásadách ochrany osobních údajů.** Zadejte odkaz na dokument vaší organizace, který popisuje, jak vaše organizace zpracovává ochranu osobních údajů interních i externích hostů.
 
         >[!Important]
-        >Pokud nechcete zahrnout vlastní prohlášení o ochraně osobních údajů nebo ochranu osobních údajů kontaktu, externí hosté se zobrazí text **kontrola oprávnění** pole,  **< _název vaší organizace_> neposkytl odkazy na podmínkách ke kontrole**. Při přijetí pozvánky pro přístup k organizaci prostřednictvím spolupráce B2B ve službě například uživatel typu Host se zobrazí tato zpráva.
+        >Pokud nezahrnete vlastní prohlášení o zásadách ochrany osobních údajů ani kontakt na ochranu osobních údajů, zobrazí se vašim externím hostům text v poli **Oprávnění k recenzování,** ve kterém je uvedeno, ** <že _název vaší organizace_> neposkytl odkazy na jejich podmínky, které byste měli zkontrolovat**. Například uživatel typu Host se zobrazí tato zpráva, když obdrží pozvánku pro přístup k organizaci prostřednictvím spolupráce B2B.
 
-        ![Oprávnění revize spolupráce B2B pole se zprávou](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
+        ![B2B Spolupráce Oprávnění revize se zprávou](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
 
 4.  Vyberte **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky
-- [Uplatnění pozvání spolupráce služby Azure Active Directory s B2B](https://aka.ms/b2bredemption)
-- [Přidání nebo změně informací profilu pro uživatele v Azure Active Directory](active-directory-users-profile-azure-portal.md)
+- [Využití pozvánky ke spolupráci služby Azure Active Directory B2B](https://aka.ms/b2bredemption)
+- [Přidání nebo změna informací o profilu uživatele ve službě Azure Active Directory](active-directory-users-profile-azure-portal.md)

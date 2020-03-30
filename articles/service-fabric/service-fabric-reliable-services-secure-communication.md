@@ -1,29 +1,29 @@
 ---
-title: Zabezpečená komunikace vzdálené služby sC#
-description: Naučte se zabezpečit komunikaci na základě vzdálené komunikace C# služby pro spolehlivé služby, které běží v clusteru Azure Service Fabric.
+title: 'Zabezpečená komunikace vzdálené komunikace se společností C #'
+description: Zjistěte, jak zabezpečit komunikaci vzdálenou komunikaci založenou na službě pro spolehlivé služby Jazyka C#, které jsou spuštěny v clusteru Azure Service Fabric.
 author: suchiagicha
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
 ms.openlocfilehash: ee2f1d70f4094ccc7d80edbfaf16509b5124f607
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75609617"
 ---
-# <a name="secure-service-remoting-communications-in-a-c-service"></a>Zabezpečená komunikace vzdálené služby ve C# službě
+# <a name="secure-service-remoting-communications-in-a-c-service"></a>Komunikace vzdálené komunikace zabezpečené služby ve službě C#
 > [!div class="op_single_selector"]
 > * [C# v systému Windows](service-fabric-reliable-services-secure-communication.md)
 > * [Java v Linuxu](service-fabric-reliable-services-secure-communication-java.md)
 >
 >
 
-Zabezpečení je jedním z nejdůležitějších aspektů komunikace. Rozhraní Reliable Services Application Framework poskytuje několik předem připravených komunikačních zásobníků a nástrojů, které můžete použít ke zvýšení zabezpečení. Tento článek popisuje, jak zvýšit zabezpečení při použití vzdálené komunikace služby v rámci C# služby. Ta se zabývá existujícím [příkladem](service-fabric-reliable-services-communication-remoting.md) , který vysvětluje, jak nastavit vzdálenou komunikaci pro spolehlivé služby C#napsané v. 
+Bezpečnost je jedním z nejdůležitějších aspektů komunikace. Architektura aplikací služby spolehlivé služby poskytuje několik předem vytvořených komunikačních zásobníků a nástrojů, které můžete použít ke zlepšení zabezpečení. Tento článek popisuje, jak zlepšit zabezpečení při použití vzdálené komunikace služby ve službě C#. Vychází z [existujícípříklad,](service-fabric-reliable-services-communication-remoting.md) který vysvětluje, jak nastavit vzdálenou řeč pro spolehlivé služby napsané v C#. 
 
-Chcete-li zajistit zabezpečení služby při použití vzdálené komunikace služby se C# službami, postupujte takto:
+Chcete-li zabezpečit službu při používání vzdálené komunikace služby c# pomocí služeb C#, postupujte takto:
 
-1. Vytvořte rozhraní `IHelloWorldStateful`, které definuje metody, které budou k dispozici pro vzdálené volání procedur ve vaší službě. Vaše služba bude používat `FabricTransportServiceRemotingListener`, která je deklarována v oboru názvů `Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime`. Toto je implementace `ICommunicationListener`, která poskytuje možnosti vzdálené komunikace.
+1. Vytvořte rozhraní `IHelloWorldStateful`, které definuje metody, které budou k dispozici pro vzdálené volání procedury ve vaší službě. Vaše služba `FabricTransportServiceRemotingListener`bude používat , `Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime` který je deklarován v oboru názvů. Toto `ICommunicationListener` je implementace, která poskytuje možnosti vzdálené komunikace.
 
     ```csharp
     public interface IHelloWorldStateful : IService
@@ -46,16 +46,16 @@ Chcete-li zajistit zabezpečení služby při použití vzdálené komunikace sl
         }
     }
     ```
-2. Přidejte nastavení naslouchacího procesu a zabezpečovací přihlašovací údaje.
+2. Přidejte nastavení posluchače a pověření zabezpečení.
 
-    Ujistěte se, že certifikát, který chcete použít k zabezpečení komunikace služby, je nainstalovaný na všech uzlech v clusteru. 
+    Ujistěte se, že certifikát, který chcete použít k zabezpečení komunikace služby, je nainstalován ve všech uzlech v clusteru. 
     
     > [!NOTE]
-    > V uzlech se systémem Linux musí být certifikát přítomen jako soubory ve formátu PEM v adresáři */var/lib/sfcerts* . Další informace najdete v tématu [umístění a formát certifikátů X. 509 na uzlech se systémem Linux](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes). 
+    > V uzlech Linux musí být certifikát přítomen jako soubory ve formátu PEM v adresáři */var/lib/sfcerts.* Další informace najdete [v tématu Umístění a formát certifikátů X.509 v linuxových uzlech](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes). 
 
-    Existují dva způsoby, jak můžete zadat nastavení naslouchacího procesu a přihlašovací údaje zabezpečení:
+    Nastavení naslouchací proces a pověření zabezpečení můžete zadat dvěma způsoby:
 
-   1. Poskytněte je přímo v kódu služby:
+   1. Uveďte je přímo v servisním kódu:
 
        ```csharp
        protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -88,9 +88,9 @@ Chcete-li zajistit zabezpečení služby při použití vzdálené komunikace sl
            return x509Credentials;
        }
        ```
-   2. Poskytněte je pomocí [konfiguračního balíčku](service-fabric-application-and-service-manifests.md):
+   2. Poskytněte jim pomocí [konfiguračního balíčku](service-fabric-application-and-service-manifests.md):
 
-       Přidejte oddíl s názvem `TransportSettings` do souboru Settings. XML.
+       Přidejte `TransportSettings` pojmenovaný oddíl do souboru settings.xml.
 
        ```xml
        <Section Name="HelloWorldStatefulTransportSettings">
@@ -106,7 +106,7 @@ Chcete-li zajistit zabezpečení služby při použití vzdálené komunikace sl
        </Section>
        ```
 
-       V tomto případě bude `CreateServiceReplicaListeners` metoda vypadat takto:
+       V tomto případě `CreateServiceReplicaListeners` bude metoda vypadat takto:
 
        ```csharp
        protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -120,7 +120,7 @@ Chcete-li zajistit zabezpečení služby při použití vzdálené komunikace sl
        }
        ```
 
-        Pokud přidáte část `TransportSettings` do souboru Settings. XML, `FabricTransportRemotingListenerSettings` ve výchozím nastavení načte všechna nastavení z této části.
+        Pokud přidáte `TransportSettings` oddíl do souboru settings.xml , `FabricTransportRemotingListenerSettings` načte se ve výchozím nastavení všechna nastavení z této části.
 
         ```xml
         <!--"TransportSettings" section .-->
@@ -128,7 +128,7 @@ Chcete-li zajistit zabezpečení služby při použití vzdálené komunikace sl
             ...
         </Section>
         ```
-        V tomto případě bude `CreateServiceReplicaListeners` metoda vypadat takto:
+        V tomto případě `CreateServiceReplicaListeners` bude metoda vypadat takto:
 
         ```csharp
         protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -141,7 +141,7 @@ Chcete-li zajistit zabezpečení služby při použití vzdálené komunikace sl
             };
         }
         ```
-3. Při volání metod v zabezpečené službě pomocí zásobníku vzdálené komunikace namísto použití třídy `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` k vytvoření proxy služby použijte `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory`. Předat `FabricTransportRemotingSettings`, který obsahuje `SecurityCredentials`.
+3. Při volání metod na zabezpečené služby pomocí zásobníku vzdálené `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` komunikace, namísto použití `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory`třídy k vytvoření proxy služby, použijte . Předak `FabricTransportRemotingSettings`, `SecurityCredentials`který obsahuje .
 
     ```csharp
 
@@ -171,7 +171,7 @@ Chcete-li zajistit zabezpečení služby při použití vzdálené komunikace sl
 
     ```
 
-    Pokud je klientský kód spuštěn jako součást služby, můžete načíst `FabricTransportRemotingSettings` ze souboru Settings. XML. Vytvořte část HelloWorldClientTransportSettings, která je podobná kódu služby, jak je uvedeno výše. Proveďte následující změny kódu klienta:
+    Pokud je kód klienta spuštěn jako součást `FabricTransportRemotingSettings` služby, můžete se načíst ze souboru settings.xml. Vytvořte část HelloWorldClientTransportSettings, která je podobná kódu služby, jak je znázorněno výše. Proveďte následující změny klientského kódu:
 
     ```csharp
     ServiceProxyFactory serviceProxyFactory = new ServiceProxyFactory(
@@ -184,11 +184,11 @@ Chcete-li zajistit zabezpečení služby při použití vzdálené komunikace sl
 
     ```
 
-    Pokud klient neběží jako součást služby, můžete vytvořit soubor client_name. Settings. XML ve stejném umístění, kde je client_name. exe. Pak vytvořte v tomto souboru oddíl TransportSettings.
+    Pokud klient není spuštěn jako součást služby, můžete vytvořit soubor client_name.settings.xml ve stejném umístění, kde je client_name.exe. Potom vytvořte oddíl TransportSettings v tomto souboru.
 
-    Podobně jako u služby, pokud přidáte část `TransportSettings` v nastavení klienta. XML/client_name. Settings. XML `FabricTransportRemotingSettings` načte všechna nastavení z této části ve výchozím nastavení.
+    Podobně jako služba, pokud `TransportSettings` přidáte oddíl v client settings.xml/client_name.settings.xml, `FabricTransportRemotingSettings` načte všechna nastavení z této části ve výchozím nastavení.
 
-    V takovém případě je dřívější kód ještě dále zjednodušený:  
+    V takovém případě je starší kód ještě více zjednodušen:  
 
     ```csharp
 
@@ -200,4 +200,4 @@ Chcete-li zajistit zabezpečení služby při použití vzdálené komunikace sl
     ```
 
 
-V dalším kroku si přečtete [webové rozhraní API s Owin v Reliable Services](service-fabric-reliable-services-communication-webapi.md).
+Jako další krok si přečtěte [webové rozhraní API s OWIN ve spolehlivých službách](service-fabric-reliable-services-communication-webapi.md).

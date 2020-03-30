@@ -5,26 +5,26 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 17778b3edf1845d85302a0bcdf72a1ebc3919cea
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67174945"
 ---
-## <a name="viewing-your-tags-in-the-usage-details"></a>Zobrazení značek v podrobnostech o využití
-Značky na výpočetní, síťové a úložné prostředky v modelu nasazení Správce prostředků se naplní na základě údajů o využití na [fakturačním portálu](https://account.windowsazure.com/).
+## <a name="viewing-your-tags-in-the-usage-details"></a>Zobrazení značek v podrobnostech o použití
+Značky umístěné na výpočetních, síťových a úložných prostředcích v modelu nasazení Správce prostředků budou vyplněny v podrobnostech o využití na [fakturačním portálu](https://account.windowsazure.com/).
 
-Kliknutím na **Stáhnout podrobnosti** o využití zobrazíte podrobnosti o využití v předplatném.
+Kliknutím na **Podrobnosti o využití stahování** zobrazíte podrobnosti o využití ve svém předplatném.
 
-![Podrobnosti o využití v Azure Portal](./media/virtual-machines-common-tag-usage/azure-portal-tags-usage-details.png)
+![Podrobnosti o využití na webu Azure Portal](./media/virtual-machines-common-tag-usage/azure-portal-tags-usage-details.png)
 
-Vyberte svůj výpis fakturace a podrobnosti o použití **verze 2** :
+Vyberte fakturační výpis a podrobnosti o využití **verze 2:**
 
-![Podrobnosti použití verze 2 Preview v Azure Portal](./media/virtual-machines-common-tag-usage/azure-portal-version2-usage-details.png)
+![Verze 2 Náhled podrobnosti o využití na webu Azure Portal](./media/virtual-machines-common-tag-usage/azure-portal-version2-usage-details.png)
 
-V podrobnostech o využití uvidíte všechny značky ve sloupci **značky** :
+Z podrobností o použití můžete vidět všechny značky ve sloupci **Značky:**
 
-![Značka sloupce v Azure Portal](./media/virtual-machines-common-tag-usage/azure-portal-tags-column.png)
+![Sloupec Značky na webu Azure Portal](./media/virtual-machines-common-tag-usage/azure-portal-tags-column.png)
 
-Díky analýze těchto značek spolu s využitím budou organizace moci získat nové poznatky o svých datech o spotřebě.
+Analýzou těchto značek spolu s využitím budou organizace moci získat nové poznatky o svých datech o spotřebě.
 

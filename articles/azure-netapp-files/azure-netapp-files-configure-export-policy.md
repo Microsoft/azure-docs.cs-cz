@@ -1,6 +1,6 @@
 ---
-title: Konfigurace zásad exportu pro svazek NFS – Azure NetApp Files
-description: Popisuje postup konfigurace zásad exportu pro řízení přístupu ke svazku systému souborů NFS pomocí Azure NetApp Files
+title: Konfigurace zásad exportu pro svazek systému souborů NFS – soubory Azure NetApp
+description: Popisuje, jak nakonfigurovat zásady exportu pro řízení přístupu ke svazku systému souborů nfs pomocí souborů Azure NetApp
 services: azure-netapp-files
 author: b-juche
 ms.author: b-juche
@@ -9,26 +9,26 @@ ms.workload: storage
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.openlocfilehash: b96fca3a5627a1c6c96c8db5c1c209a51c5e102a
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75551554"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>Konfigurace zásad exportu pro svazek NFS
 
-Můžete volitelně nakonfigurovat zásady exportu pro řízení přístupu ke svazku Azure NetApp Files. Zásada exportu Azure NetApp Files podporuje pouze svazky systému souborů NFS.  Podporují se NFSv3 i názvů NFSv4. 
+Můžete volitelně nakonfigurovat zásady exportu pro řízení přístupu ke svazku Azure NetApp Files. Zásady exportu souborů Azure NetApp podporují pouze svazky systému souborů NFS.  Jsou podporovány nfsv3 a NFSv4. 
 
 ## <a name="steps"></a>Kroky 
 
-1.  V navigačním podokně Azure NetApp Files klikněte na **Exportovat zásadu** . 
+1.  Klikněte na **Zásady exportu** z navigačního podokna Soubory Azure NetApp. 
 
 2.  Zadejte do následujících polí informace pro vytvoření pravidla zásad exportu:   
     *  **Index**   
         Určete číslo indexu pro pravidlo.  
         Zásady exportu můžou mít maximálně pět pravidel. Pravidla se vyhodnocují podle jejich pořadí v seznamu čísel indexu. Pravidla s nižším číslem indexu se vyhodnocují jako první. Například pravidlo s číslem indexu 1 je vyhodnoceno před pravidlem s číslem indexu 2. 
 
-    * **Povolení klienti**   
+    * **Povolené klienty**   
         Zadejte hodnotu v jednom z následujících formátů:  
         * IPv4 adresa, například `10.1.12.24` 
         * IPv4 adresa s maskou podsítě, vyjádřená jako počet bitů, například `10.1.12.10/4`

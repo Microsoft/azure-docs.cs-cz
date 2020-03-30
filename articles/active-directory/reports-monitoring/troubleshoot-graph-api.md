@@ -1,6 +1,6 @@
 ---
-title: Řešení chyb v rozhraní API pro vytváření sestav Azure Active Directory | Microsoft Docs
-description: Poskytuje řešení chyb při volání rozhraní API pro vytváření sestav Azure Active Directory.
+title: Poradce při potížích s chybami v rozhraní API pro vytváření sestav služby Azure Active Directory | Dokumenty společnosti Microsoft
+description: Poskytuje řešení chyb při volání rozhraní API pro vytváření sestav služby Azure Active Directory.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,37 +18,37 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0d1fb4f49e4f9ad41f971d869873200e6180b5cd
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78399285"
 ---
-# <a name="troubleshoot-errors-in-azure-active-directory-reporting-api"></a>Řešení chyb v rozhraní API pro vytváření sestav Azure Active Directory
+# <a name="troubleshoot-errors-in-azure-active-directory-reporting-api"></a>Poradce při potížích v rozhraní API pro vytváření sestav služby Azure Active Directory
 
-V tomto článku jsou uvedené běžné chybové zprávy, se kterými se můžete setkat při přístupu k sestavám aktivit pomocí rozhraní Microsoft Graph API a postupu pro jejich řešení.
+Tento článek uvádí běžné chybové zprávy, které můžete spustit při přístupu k sestavce aktivit pomocí rozhraní MICROSOFT Graph API a kroky pro jejich řešení.
 
-### <a name="500-http-internal-server-error-while-accessing-microsoft-graph-v2-endpoint"></a>500 interní chyba serveru HTTP při přístupu ke koncovému bodu Microsoft Graph v2
+### <a name="500-http-internal-server-error-while-accessing-microsoft-graph-v2-endpoint"></a>Chyba interního serveru 500 HTTP při přístupu ke koncovému bodu Microsoft Graph V2
 
-Momentálně nepodporujeme koncový bod Microsoft Graph v2 – zajistěte přístup k protokolům aktivit pomocí koncového bodu Microsoft Graph v1.
+Momentálně nepodporujeme koncový bod Microsoft Graph u2 – ujistěte se, že máte přístup k protokolům aktivit pomocí koncového bodu Microsoft Graph v1.
 
-### <a name="error-neither-tenant-is-b2c-or-tenant-doesnt-have-premium-license"></a>Chyba: tenant není B2C nebo tenant nemá licenci Premium.
+### <a name="error-neither-tenant-is-b2c-or-tenant-doesnt-have-premium-license"></a>Chyba: Ani klient není B2C nebo tenant nemá prémiovou licenci
 
-Přístup k sestavám přihlášení vyžaduje licenci Azure Active Directory Premium 1 (P1). Pokud se zobrazí tato chybová zpráva při přístupu k přihlašování, ujistěte se, že je váš tenant licencován pomocí licence Azure AD P1.
+Přístup k přihlašovacím sestavům vyžaduje licenci Služby Azure Active Directory premium 1 (P1). Pokud se při přístupu k přihlášení zobrazí tato chybová zpráva, ujistěte se, že váš tenant má licenci s licencí Azure AD P1.
 
-### <a name="error-user-is-not-in-the-allowed-roles"></a>Chyba: uživatel není v povolených rolích. 
+### <a name="error-user-is-not-in-the-allowed-roles"></a>Chyba: Uživatel není v povolených rolích. 
 
-Pokud se zobrazí tato chybová zpráva při pokusu o přístup k protokolům auditu nebo k přihlášení pomocí rozhraní API, ujistěte se, že je váš účet součástí role **Čtenář zabezpečení** nebo **Čtenář sestav** ve vašem tenantovi Azure Active Directory. 
+Pokud se zobrazí tato chybová zpráva při pokusu o přístup k protokolům auditu nebo přihlášení pomocí rozhraní API, ujistěte se, že váš účet je součástí **role Čtečka zabezpečení** nebo **Čtečka sestav** v tenantovi služby Azure Active Directory. 
 
-### <a name="error-application-missing-aad-read-directory-data-permission"></a>Chyba: aplikace postrádá oprávnění pro čtení dat adresáře služby AAD 
+### <a name="error-application-missing-aad-read-directory-data-permission"></a>Chyba: V aplikaci chybí oprávnění AAD číst data adresáře. 
 
-Postupujte prosím podle kroků v části [požadavky pro přístup k rozhraní API pro vytváření sestav Azure Active Directory](howto-configure-prerequisites-for-reporting-api.md) , abyste zajistili, že vaše aplikace běží se správnou sadou oprávnění. 
+Postupujte podle pokynů v [požadavcích pro přístup k rozhraní API pro vytváření sestav služby Azure Active Directory,](howto-configure-prerequisites-for-reporting-api.md) abyste zajistili, že vaše aplikace běží se správnou sadou oprávnění. 
 
-### <a name="error-application-missing-microsoft-graph-api-read-all-audit-log-data-permission"></a>Chyba: v aplikaci chybí oprávnění Microsoft Graph rozhraní API pro čtení všech dat protokolu auditu.
+### <a name="error-application-missing-microsoft-graph-api-read-all-audit-log-data-permission"></a>Chyba: Aplikace chybí Microsoft Graph API 'Číst všechna data protokolu auditu' oprávnění
 
-Postupujte prosím podle kroků v části [požadavky pro přístup k rozhraní API pro vytváření sestav Azure Active Directory](howto-configure-prerequisites-for-reporting-api.md) , abyste zajistili, že vaše aplikace běží se správnou sadou oprávnění. 
+Postupujte podle pokynů v [požadavcích pro přístup k rozhraní API pro vytváření sestav služby Azure Active Directory,](howto-configure-prerequisites-for-reporting-api.md) abyste zajistili, že vaše aplikace běží se správnou sadou oprávnění. 
 
 ## <a name="next-steps"></a>Další kroky
 
-[Použijte referenční informace k rozhraní API pro audit](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit)
-[použijte referenční informace k rozhraní API pro sestavování aktivit přihlašování](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin) .
+[Použití odkazu rozhraní](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit)
+API pro audit[Použití odkazu rozhraní API pro přihlášení o aktivity](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)

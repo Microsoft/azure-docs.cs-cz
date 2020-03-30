@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 980cbe17e982edb3aa72c3b58908f13a3d63a639
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76021218"
 ---
 #### <a name="to-create-a-new-service"></a>Vytvoření nové služby
@@ -19,7 +19,7 @@ ms.locfileid: "76021218"
 
     ![Vytvoření Správce zařízení StorSimple](./media/storsimple-8000-create-new-service/createssdevman1.png)
 
-    Vyhledejte _Fyzické zařízení StorSimple_. Vyberte a klikněte na **Řada fyzických zařízení StorSimple** a pak klikněte na **Vytvořit**. Případně můžete na webu Azure Portal kliknout na **+** a pak v části **Úložiště** kliknout na **Řada fyzických zařízení StorSimple**.
+    Vyhledejte _Fyzické zařízení StorSimple_. Vyberte a klikněte na **Řada fyzických zařízení StorSimple** a pak klikněte na **Vytvořit**. Případně klikněte na webu **+** Azure Portal a potom v části **Storage**klikněte **na StorSimple Physical Device Series**.
 
     ![Vytvoření Správce zařízení StorSimple](./media/storsimple-8000-create-new-service/createssdevman11.png)
 

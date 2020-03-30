@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
 ms.openlocfilehash: b657ee32e76dd90671f7e91337ced01b925889a1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175466"
 ---
-Pokud zaznamenáte problémy zařízení, můžete vytvořit balíček pro podporu ze systémových protokolů. Tento balíček použit Microsoft Support řešit problémy. Postupujte podle těchto kroků můžete vytvořit balíček pro podporu:
+Pokud dojde k problémům se zařízením, můžete vytvořit balíček podpory ze systémových protokolů. Podpora společnosti Microsoft používá tento balíček k řešení problémů. Chcete-li vytvořit balíček podpory, postupujte takto:
 
-1. [Připojení k rozhraní PowerShell vašeho zařízení](#connect-to-the-powershell-interface).
-2. Použití `Get-HcsNodeSupportPackage` příkazu vytvořte balíček pro podporu. Použití rutiny je následujícím způsobem:
+1. [Připojte se k rozhraní prostředí PowerShell vašeho zařízení](#connect-to-the-powershell-interface).
+2. Pomocí `Get-HcsNodeSupportPackage` příkazu vytvořte balíček podpory. Použití rutiny je následující:
 
     ```powershell
     Get-HcsNodeSupportPackage [-Path] <string> [-Zip] [-ZipFileName <string>] [-Include {None | RegistryKeys | EtwLogs
@@ -27,15 +27,15 @@ Pokud zaznamenáte problémy zařízení, můžete vytvořit balíček pro podpo
             [-IncludeArchived] [-IncludePeriodicStats] [-Credential <pscredential>]  [<CommonParameters>]
     ```
 
-    Rutina shromažďuje protokoly ze zařízení a zkopíruje tyto protokoly pro zadanou síť nebo místní sdílené složky.
+    Rutina shromažďuje protokoly z vašeho zařízení a zkopíruje tyto protokoly do zadané sítě nebo místní sdílené složky.
 
-    Parametry použité jsou následující:
+    Použité parametry jsou následující:
 
-    - `-Path` -Zadejte síť nebo místní cestu k zkopírujte balíček pro podporu. (požadováno)
-    - `-Credential` -Zadejte přihlašovací údaje pro přístup k cestě chráněné.
-    - `-Zip` -Zadejte ke generování souboru zip.
-    - `-Include` -Zadané k vložení komponent, které mají být zahrnuty do balíčku pro podporu. Pokud není zadán, `Default` se předpokládá, že.
-    - `-IncludeArchived` -Zadané k vložení archivované protokoly balíček pro podporu.
-    - `-IncludePeriodicStats` -Zadejte zahrnout pravidelné stat – protokoly balíček pro podporu.
+    - `-Path`- Zadejte síť nebo místní cestu ke kopírování balíčku podpory. (povinné)
+    - `-Credential`- Zadejte pověření pro přístup k chráněné cestě.
+    - `-Zip`- Zadejte pro generování souboru zip.
+    - `-Include`- Zadejte zahrnout součásti, které mají být zahrnuty do balíčku podpory. Pokud není `Default` zadán, předpokládá se.
+    - `-IncludeArchived`- Zadejte zahrnout archivované protokoly do balíčku podpory.
+    - `-IncludePeriodicStats`- Zadejte zahrnout periodické stat protokoly v balíčku podpory.
 
     

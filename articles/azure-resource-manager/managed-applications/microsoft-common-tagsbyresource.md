@@ -1,22 +1,22 @@
 ---
-title: TagsByResource – element uživatelského rozhraní
-description: Popisuje prvek uživatelského rozhraní Microsoft. Common. TagsByResource pro Azure Portal. Použijte k aplikování značek na prostředek během nasazování.
+title: Element ui služby TagsByResource
+description: Popisuje element microsoft.common.tagsbyresource ui pro portál Azure. Slouží k použití značek na prostředek během nasazení.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: tomfitz
 ms.openlocfilehash: 23a7c54a84ec083b8fa470f26582913fcc3d2ee6
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75652200"
 ---
-# <a name="microsoftcommontagsbyresource-ui-element"></a>Microsoft. Common. TagsByResource – element uživatelského rozhraní
+# <a name="microsoftcommontagsbyresource-ui-element"></a>Element uzlina microsoft.Common.TagsByResource
 
-Ovládací prvek pro přidružení [značek](../management/tag-resources.md) k prostředkům v nasazení.
+Ovládací prvek pro připojování [značek](../management/tag-resources.md) s prostředky v nasazení.
 
-## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
+## <a name="ui-sample"></a>Ukázka ui
 
 ![Microsoft.Common.DropDown](./media/managed-application-elements/microsoft.common.tagsbyresource.png)
 
@@ -49,9 +49,9 @@ Ovládací prvek pro přidružení [značek](../management/tag-resources.md) k p
 
 ## <a name="remarks"></a>Poznámky
 
-- Musí být zadána alespoň jedna položka v `resources`m poli.
-- Každý prvek v `resources` musí být plně kvalifikovaný typ prostředku. Tyto prvky se zobrazí v rozevíracím seznamu **prostředku** a uživatel je taggable.
-- Výstup ovládacího prvku je naformátován pro snadné přiřazení hodnot značek v šabloně Azure Resource Manager. Chcete-li přijmout výstup ovládacího prvku v šabloně, zahrňte parametr do šablony, jak je znázorněno v následujícím příkladu:
+- Musí být zadána `resources` alespoň jedna položka v poli.
+- Každý prvek `resources` v musí být plně kvalifikovaný typ prostředku. Tyto prvky se zobrazí v rozevírací **části Prostředek** a jsou taggable uživatelem.
+- Výstup ovládacího prvku je formátován pro snadné přiřazení hodnot značek v šabloně Azure Resource Manager. Chcete-li získat výstup ovládacího prvku v šabloně, zahrňte do šablony parametr, jak je znázorněno v následujícím příkladu:
 
   ```json
   "parameters": {
@@ -59,7 +59,7 @@ Ovládací prvek pro přidružení [značek](../management/tag-resources.md) k p
   }
   ```
 
-  Pro každý prostředek, který může být tagovaný, přiřaďte vlastnost Tags k hodnotě parametru pro tento typ prostředku:
+  U každého prostředku, který lze označit, přiřaďte vlastnost tagy hodnotě parametru pro daný typ prostředku:
 
   ```json
   {
@@ -69,9 +69,9 @@ Ovládací prvek pro přidružení [značek](../management/tag-resources.md) k p
     ...
   ```
 
-- Při přístupu k parametru tagsByResource použijte funkci [if](../templates/template-functions-logical.md#if) . Umožňuje přiřadit prázdný objekt, když se k danému typu prostředku nepřiřazují žádné značky.
+- Při přístupu k parametru tagsByResource použijte funkci [if.](../templates/template-functions-logical.md#if) Umožňuje přiřadit prázdný objekt, pokud nejsou přiřazeny žádné značky danému typu prostředku.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Úvod k vytváření definic uživatelského rozhraní najdete v tématu [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
-- Popis běžných vlastností v prvcích uživatelského rozhraní naleznete v tématu [CreateUiDefinition Elements](create-uidefinition-elements.md).
+- Úvod k vytváření definic ui naleznete [v tématu Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
+- Popis běžných vlastností v prvcích uživatelského rozhraní naleznete v [tématu CreateUiDefinition elements](create-uidefinition-elements.md).

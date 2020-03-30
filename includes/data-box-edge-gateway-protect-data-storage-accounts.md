@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
 ms.openlocfilehash: 8840e6649058837207c75dbdf7baa5c0b11ef387
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75468101"
 ---
-Vaše zařízení je přidružené k účtu úložiště, který se používá jako cíl pro vaše data v Azure. Přístup k účtu úložiště je řízen předplatným a 2 512 přístupovými klíči úložiště, které jsou přidružené k tomuto účtu úložiště.
+Vaše zařízení je přidružené k účtu úložiště, který se používá jako cíl pro vaše data v Azure. Přístup k účtu úložiště je řízen předplatným a dvěma 512bitovými přístupovými klíči úložiště přidruženými k tomuto účtu úložiště.
 
-Jeden z klíčů se používá pro ověřování, když Data Box Edge zařízení přistupuje k účtu úložiště. Druhý klíč se uchovává v rezervě, takže můžete klíče pravidelně střídat.
+Jeden z klíčů se používá pro ověřování, když zařízení Data Box Edge přistupuje k účtu úložiště. Druhý klíč je držen v záloze, takže můžete klíče pravidelně otáčet.
 
-Z bezpečnostních důvodů mnoho datových Center vyžaduje rotaci klíčů. Doporučujeme dodržovat tyto osvědčené postupy pro rotaci klíčů:
+Z bezpečnostních důvodů mnoho datových center vyžaduje střídání klíčů. Doporučujeme dodržovat tyto doporučené postupy pro střídání klíčů:
 
-- Klíč účtu úložiště je podobný kořenovému heslu vašeho účtu úložiště. Pečlivě Zabezpečte svůj klíč účtu. Nedistribuujte heslo jiným uživatelům, pevným kódem nebo ho uložte kdekoli v prostém textu, který je přístupný ostatním.
-- Pokud se domníváte, že by mohlo dojít k ohrožení, znovu vygenerujte klíč účtu pomocí Azure Portal. Další informace najdete v tématu [Správa přístupových klíčů účtu úložiště](../articles/storage/common/storage-account-keys-manage.md).
-- Správce Azure by měl primární nebo sekundární klíč pravidelně měnit nebo obnovovat pomocí části úložiště Azure Portal pro přímý přístup k účtu úložiště.
+- Klíč účtu úložiště je podobný kořenovému heslu vašeho účtu úložiště. Pečlivě chraňte klíč svého účtu. Nedistribuujte heslo ostatním uživatelům, nezakódujte ho ani ho neukládejte kamkoli ve formátu prostého textu, který je přístupný ostatním uživatelům.
+- Pokud si myslíte, že by mohl být ohrožen, obnovte klíč účtu prostřednictvím portálu Azure. Další informace naleznete v [tématu Správa přístupových klíčů účtu úložiště](../articles/storage/common/storage-account-keys-manage.md).
+- Správce Azure by měl pravidelně měnit nebo regenerovat primární nebo sekundární klíč pomocí části Úložiště na webu Azure Portal pro přímý přístup k účtu úložiště.

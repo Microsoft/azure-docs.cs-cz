@@ -1,5 +1,5 @@
 ---
-title: Přizpůsobení SQL Information Protection – Azure Security Center
+title: Přizpůsobení ochrany informací SQL – Azure Security Center
 description: Přečtěte si, jak přizpůsobit zásady ochrany informací v Azure Security Center.
 services: security-center
 documentationcenter: na
@@ -14,74 +14,74 @@ ms.workload: na
 ms.date: 04/29/2019
 ms.author: memildin
 ms.openlocfilehash: 9c776a32b4a35c72fc40a16afb87db9896a763cf
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75611062"
 ---
-# <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Přizpůsobení zásad SQL Information Protection v Azure Security Center (Preview)
+# <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Přizpůsobení zásad ochrany informací SQL v Azure Security Center (Preview)
  
-Můžete definovat a přizpůsobit zásady služby SQL Information Protection pro celý tenant Azure v Azure Security Center.
+Můžete definovat a přizpůsobit zásady ochrany informací SQL pro celý klient Azure, v Azure Security Center.
 
-Ochrana informací je pokročilá funkce zabezpečení pro zjišťování, klasifikaci, označování a vytváření sestav citlivých dat v datových prostředcích Azure. Vyhledávání a klasifikace vašich citlivých dat (podniková, finanční, zdravotní péče, osobní údaje atd.) mohou hrát pivotovou roli v stature organizace Information Protection. Může sloužit jako infrastruktura na:
-- Pomoc se splněním standardů ochrany osobních údajů a požadavků na dodržování legislativních předpisů
-- Scénáře zabezpečení, jako je monitorování (auditování) a upozorňování na neobvyklé přístup k citlivým datům
-- Řízení přístupu a posílení zabezpečení úložišť dat obsahujících vysoce citlivá data
+Ochrana informací je pokročilá funkce zabezpečení pro zjišťování, klasifikaci, označování a vytváření sestav citlivých dat ve vašich datových prostředcích Azure. Zjišťování a klasifikace nejcitlivějších údajů (obchodní, finanční, zdravotní péče, osobní údaje atd.) může hrát klíčovou roli ve vaší organizační ochraně informací. Může sloužit jako infrastruktura na:
+- Pomáháme splnit standardy ochrany osobních údajů a požadavky na dodržování předpisů
+- Scénáře zabezpečení, jako je monitorování (auditování) a upozorňování na neobvyklý přístup k citlivým datům
+- Řízení přístupu k úložištím dat obsahujícím vysoce citlivá data a posílení jeho zabezpečení
  
-[SQL Information Protection](../sql-database/sql-database-data-discovery-and-classification.md) implementuje toto paradigma pro vaše úložiště dat SQL, které se v současné době podporují pro Azure SQL Database. SQL Information Protection automaticky zjišťuje a klasifikuje potenciálně citlivá data, poskytuje mechanismus označování pro trvalé označení citlivých dat pomocí atributů klasifikace a poskytuje podrobný řídicí panel ukazující stav klasifikace databáze. Kromě toho počítá sadu výsledků dotazu SQL, takže dotazy, které extrahují citlivá data, lze explicitně auditovat a data lze chránit. Další informace o Information Protection SQL najdete v tématu [Azure SQL Database zjišťování a klasifikace dat](../sql-database/sql-database-data-discovery-and-classification.md).
+[SQL Information Protection](../sql-database/sql-database-data-discovery-and-classification.md) implementuje toto paradigma pro vaše úložiště dat SQL, aktuálně podporované pro Azure SQL Database. SQL Information Protection automaticky zjišťuje a klasifikuje potenciálně citlivá data, poskytuje mechanismus označování pro trvalé označování citlivých dat pomocí atributů klasifikace a poskytuje podrobný řídicí panel zobrazující stav klasifikace databáze. Kromě toho vypočítá citlivost sady výsledků dotazů SQL, takže dotazy, které extrahují citlivá data, mohou být explicitně auditovány a data mohou být chráněna. Další informace o ochraně informací SQL najdete v [tématu Zjišťování a klasifikace dat databáze Azure SQL](../sql-database/sql-database-data-discovery-and-classification.md).
  
-Klasifikační mechanizmus je založen na dvou primárních konstrukcích, které tvoří klasifikaci klasifikace – **popisky** a **typy informací**.
-- **Labels** – hlavní atributy klasifikace, které slouží k definování úrovně citlivosti dat uložených ve sloupci. 
-- **Typy informací** – poskytuje další členitost na typ dat uložených ve sloupci.
+Klasifikační mechanismus je založen na dvou primárních konstrukcích, které tvoří klasifikační taxonomii - **popisky** a **typy informací**.
+- **Popisky** – hlavní atributy klasifikace, které slouží k definování úrovně citlivosti dat uložených ve sloupci. 
+- **Typy informací** – poskytuje další rozlišovací schopnost do typu dat uložených ve sloupci.
  
-Information Protection obsahuje integrovanou sadu popisků a typů informací, které se používají ve výchozím nastavení. Pokud chcete tyto popisky a typy přizpůsobit, můžete zásady ochrany informací v Security Center přizpůsobit.
+Ochrana informací je dodávána s integrovanou sadou popisků a typů informací, které se používají ve výchozím nastavení. Chcete-li přizpůsobit tyto popisky a typy, můžete přizpůsobit zásady ochrany informací v Centru zabezpečení.
  
 ## <a name="customize-the-information-protection-policy"></a>Přizpůsobení zásad Information Protection
-Chcete-li upravit zásady ochrany informací pro vašeho tenanta Azure, musíte mít [oprávnění správce pro kořenovou skupinu pro správu klienta](security-center-management-groups.md). 
+Chcete-li přizpůsobit zásady ochrany informací pro vašeho tenanta Azure, musíte mít [oprávnění správce v kořenové skupině správy klienta](security-center-management-groups.md). 
  
-1. V hlavní nabídce Security Center v části **hygiena zabezpečení prostředků** přejděte na **data & úložiště** a klikněte na tlačítko **SQL Information Protection** .
+1. V hlavní nabídce Security Center přejděte v části **RESOURCE SECURITY HYGIENE** do data & **úložiště** a klikněte na tlačítko OCHRANA **INFORMACÍ SQL.**
 
    ![Konfigurace zásad ochrany informací](./media/security-center-info-protection-policy/security-policy.png) 
  
-2. Na stránce **Information Protection SQL** můžete zobrazit aktuální sadu štítků. Jedná se o hlavní atributy klasifikace, které se používají k kategorizaci úrovně citlivosti vašich dat. Tady můžete nakonfigurovat **popisky ochrany informací** a **typy informací** pro tenanta. 
+2. Na stránce **SQL Information Protection** můžete zobrazit aktuální sadu popisků. Jedná se o hlavní atributy klasifikace, které se používají ke kategorizaci úrovně citlivosti dat. Zde můžete nakonfigurovat **popisky ochrany informací** a **typy informací** pro klienta. 
  
 ### <a name="customizing-labels"></a>Přizpůsobení popisků
  
-1. Můžete upravit nebo odstranit existující popisek nebo přidat nový popisek. Pokud chcete upravit existující popisek, vyberte tento popisek a pak klikněte na **Konfigurovat**, a to buď v horní části, nebo v místní nabídce napravo. Chcete-li přidat nový popisek, klikněte na tlačítko **vytvořit popisek** v horním řádku nabídky nebo v dolní části tabulky popisků.
-2. Na obrazovce pro **označení citlivosti konfigurace** můžete vytvořit nebo změnit název popisku a jeho popis. Můžete také nastavit, zda je popisek aktivní nebo zakázaný přepnutím přepínače **Enabled** zapnuto nebo vypnuto. Nakonec můžete přidat nebo odebrat typy informací přidružené k popisku. Všechna zjištěná data, která odpovídají danému typu informací, budou automaticky zahrnovat popisek související citlivosti v doporučeních klasifikace.
-3. Klikněte na **OK**.
+1. Můžete upravit nebo odstranit libovolný existující popisek nebo přidat nový popisek. Chcete-li upravit existující popisek, vyberte tento popisek a klepněte na tlačítko **Konfigurovat**nahoře nebo v místní nabídce vpravo. Pokud chcete přidat nový popisek, klikněte na **Vytvořit popisek** v horním řádku nabídek nebo dole v tabulce popisků.
+2. Na obrazovce **Konfigurace popisku citlivosti** můžete vytvořit nebo změnit název popisku a popis. Můžete také nastavit, zda je popisek aktivní nebo zakázaný přepnutím **přepínače Povoleno.** Nakonec můžete přidat nebo odebrat typy informací přidružené k popisku. Všechna zjištěná data, která odpovídají danému typu informací, budou automaticky obsahovat přidružený popisek citlivosti v doporučeních klasifikace.
+3. Klikněte na tlačítko **OK**.
  
-   ![Konfigurovat popisek citlivosti](./media/security-center-info-protection-policy/config-sensitivity-label.png)
+   ![Konfigurace popisku citlivosti](./media/security-center-info-protection-policy/config-sensitivity-label.png)
  
-4. Popisky jsou uvedené v pořadí podle vzestupné citlivosti. Chcete-li změnit pořadí mezi popisky, přetáhněte popisky, abyste je změnili v tabulce, nebo použijte tlačítka **nahoru a** **dolů** pro změnu pořadí. 
+4. Popisky jsou seřazeny podle vzestupné citlivosti. Chcete-li změnit pořadí mezi popisky, přetažením popisků změňte jejich pořadí v tabulce nebo změňte pořadí pomocí tlačítek **Přesunout nahoru** a **Přesunout dolů.** 
  
     ![Konfigurace zásad ochrany informací](./media/security-center-info-protection-policy/move-up.png)
  
-5. Až skončíte, nezapomeňte kliknout na **Uložit** v horní části obrazovky.
+5. Nezapomeňte po dokončení kliknout na **Uložit** v horní části obrazovky.
  
  
-## <a name="adding-and-customizing-information-types"></a>Přidávání a přizpůsobení typů informací
+## <a name="adding-and-customizing-information-types"></a>Přidání a přizpůsobení typů informací
  
-1. Kliknutím na **Spravovat typy informací**můžete spravovat a upravovat typy informací.
-2. Chcete-li přidat nový **typ informací**, v horní nabídce vyberte možnost **vytvořit typ informací** . Pro **typ informací**můžete nakonfigurovat řetězec název, popis a vzor hledání. Řetězce vzorů hledání mohou volitelně používat klíčová slova se zástupnými znaky (pomocí znaku '% '), který modul automatizovaného zjišťování používá k identifikaci citlivých dat ve vašich databázích na základě metadat sloupců.
+1. Typy informací můžete spravovat a upravovat kliknutím na **položku Spravovat typy informací**.
+2. Chcete-li přidat nový **typ Informace**, vyberte v horní nabídce možnost Vytvořit **typ informací.** Můžete nakonfigurovat řetězec názvu, popisu a vyhledávacího vzoru pro **typ Informace**. Řetězce vyhledávacích vzorů mohou volitelně používat klíčová slova se zástupnými znaky (pomocí znaku %), které automatizovaný modul zjišťování používá k identifikaci citlivých dat ve vašich databázích na základě metadat sloupců.
  
     ![Konfigurace zásad ochrany informací](./media/security-center-info-protection-policy/info-types.png)
  
-3. Můžete také nakonfigurovat integrované **typy informací** přidáním dalších řetězců vzorů hledání, zakázáním některých existujících řetězců nebo změnou popisu. Předdefinované **typy informací** nemůžete odstranit ani upravit jejich názvy. 
-4. **Typy informací** jsou uvedené v pořadí podle vzestupného řazení, což znamená, že se typy vyšší v seznamu pokusí porovnat jako první. Chcete-li změnit hodnocení mezi typy informací, přetáhněte typy na pravé místo v tabulce nebo pomocí tlačítek **nahoru** a **dolů** změňte pořadí. 
-5. Až skončíte, klikněte na **OK** .
-6. Po dokončení správy typů informací nezapomeňte přidružit relevantní typy k příslušným popiskům kliknutím na možnost **Konfigurovat** pro konkrétní popisek a podle potřeby přidat nebo odstranit typy informací.
-7. V okně Hlavní **Štítky** nezapomeňte kliknout na **Uložit** , aby se všechny změny projevily.
+3. Předdefinované **typy informací** můžete také nakonfigurovat přidáním dalších řetězců vzorníku hledání, zakázáním některých existujících řetězců nebo změnou popisu. Předdefinované **typy informací** nelze odstranit ani upravit jejich názvy. 
+4. **Typy informací** jsou uvedeny v pořadí vzestupně zjišťování pořadí, což znamená, že typy vyšší v seznamu se pokusí odpovídat jako první. Chcete-li změnit pořadí mezi typy informací, přetáhněte typy na správné místo v tabulce nebo změňte pořadí pomocí tlačítek **Přesunout nahoru** a **Přesunout dolů.** 
+5. Až budete hotovi, klikněte na **OK.**
+6. Po dokončení správy typů informací nezapomeňte přidružit příslušné typy k příslušným popiskům, kliknutím na **Konfigurovat** pro konkrétní popisek a přidáním nebo odstraněním typů informací podle potřeby.
+7. Nezapomeňte kliknout na **Uložit** v hlavním okně **Štítky,** abyste použili všechny změny.
  
-Po úplném definování a uložení zásad služby Information Protection se tato zásada bude vztahovat na klasifikaci dat ve všech databázích Azure SQL ve vašem tenantovi.
+Jakmile budou zásady ochrany informací plně definovány a uloženy, budou se vztahovat na klasifikaci dat ve všech databázích Azure SQL ve vašem tenantovi.
  
  
 ## <a name="next-steps"></a>Další kroky
  
-V tomto článku jste se dozvěděli o definování zásad Information Protection SQL v Azure Security Center. Další informace o použití Information Protection SQL ke klasifikaci a ochraně citlivých dat ve vašich databázích SQL najdete v tématu [Azure SQL Database zjišťování a klasifikace dat](../sql-database/sql-database-data-discovery-and-classification.md). 
+V tomto článku jste se dozvěděli o definování zásad ochrany informací SQL v Azure Security Center. Další informace o použití ochrany informací SQL ke klasifikaci a ochraně citlivých dat v databázích SQL najdete v [tématu Azure SQL Database Data Discovery and Classification](../sql-database/sql-database-data-discovery-and-classification.md). 
 
 Další informace o zásadách zabezpečení a zabezpečení dat v Azure Security Center najdete v následujících článcích:
  
-- [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md): Naučte se konfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
-- [Azure Security Center zabezpečení dat](security-center-data-security.md): Přečtěte si, jak Security Center spravuje a chrání data.
+- [Nastavení zásad zabezpečení v Azure Security Center:](tutorial-security-policy.md)Zjistěte, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků
+- [Zabezpečení dat Azure Security Center:](security-center-data-security.md)Zjistěte, jak Security Center spravuje a zabezpečuje data

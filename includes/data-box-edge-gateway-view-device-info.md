@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 03/04/2019
 ms.author: alkohli
 ms.openlocfilehash: d5af557a62f4bd35c242d334c28a38c3d632f7cf
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175467"
 ---
-1. [Připojení k rozhraní PowerShell](#connect-to-the-powershell-interface).
-2. Použití `Get-HcsApplianceInfo` získat informace o zařízení.
+1. [Připojte se k rozhraní prostředí PowerShell](#connect-to-the-powershell-interface).
+2. Použijte `Get-HcsApplianceInfo` k získání informací pro vaše zařízení.
 
     Následující příklad ukazuje použití této rutiny:
 
@@ -43,16 +43,16 @@ ms.locfileid: "67175467"
     IsRegistered                  : False
     ```
 
-    Tady je tabulka shrnuje některé z informací o důležité zařízení:
+    Zde je tabulka shrnující některé důležité informace o zařízení:
     
     | Parametr                             | Popis                                                                                                                                                  |   |
     |--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
-    | FriendlyName                   | Popisný název zařízení podle konfigurace prostřednictvím místního webového uživatelského rozhraní během nasazování zařízení. Popisný název výchozí je sériové číslo zařízení.  |   |
-    | sériové číslo                   | Sériové číslo zařízení je jedinečné číslo přiřazené výrobcem.                                                                             |   |
-    | Model                          | Model pro vaše zařízení Data Box Edge nebo brána dat pole. Model je pro bránu dat pole virtuálními a fyzickými Edge Data Box.                   |   |
-    | FriendlySoftwareVersion        | Popisný řetězec, který odpovídá verzi softwaru zařízení. U systému, který používá ve verzi preview bude verze popisný softwaru 1902 okraj pole Data. |   |
-    | HcsVersion                     | Verze softwaru HCS, která běží na vašem zařízení. Například verze softwaru HCS odpovídající Data Box Edge 1902 je 1.4.771.324.            |   |
-    | LocalCapacityInMb              | Celková kapacita místní zařízení v MB.                                                                                                        |   |
-    | IsRegistered                   | Tato hodnota označuje, pokud vaše zařízení se aktivuje ve službě.                                                                                         |   |
+    | Friendlyname                   | Popisný název zařízení nakonfigurovaný prostřednictvím místního webového uživatelského rozhraní během nasazení zařízení. Výchozí popisný název je sériové číslo zařízení.  |   |
+    | SerialNumber                   | Sériové číslo zařízení je jedinečné číslo přiřazené z výroby.                                                                             |   |
+    | Model                          | Model pro zařízení Data Box Edge nebo Data Box Gateway. Model je virtuální pro bránu datové schránky a fyzické pro data box edge.                   |   |
+    | Verze FriendlySoftwareVersion        | Přátelský řetězec, který odpovídá verzi softwaru zařízení. Pro systém se spuštěnou předběžnou verzi by přátelská verze softwaru byla Data Box Edge 1902. |   |
+    | HcsVersion                     | Verze softwaru HCS spuštěná na vašem zařízení. Například verze softwaru HCS odpovídající Data Box Edge 1902 je 1.4.771.324.            |   |
+    | Místní kapacitainmb              | Celková místní kapacita zařízení v Megabits.                                                                                                        |   |
+    | Jeregistrován                   | Tato hodnota označuje, zda je zařízení aktivováno službou.                                                                                         |   |
 
 

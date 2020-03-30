@@ -1,30 +1,30 @@
 ---
-title: Přístup k datům v poznámkových blocích Jupyter – Preview Azure Notebooks
-description: Přečtěte si, jak získat přístup k souborům, rozhraním REST API, databázím a různým prostředkům Azure Storage z poznámkového bloku Jupyter.
+title: Přístup k datům v poznámkových blocích Jupyter – Azure Notebooks Preview
+description: Zjistěte, jak získat přístup k souborům, rest api, databázím a různým prostředkům úložiště Azure z poznámkového bloku Jupyter.
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.openlocfilehash: 47d2f869021851c1451a66a84b1a70ec4ff4998f
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75646343"
 ---
-# <a name="access-cloud-data-in-a-notebook"></a>Přístup k datům cloudu v poznámkovém bloku
+# <a name="access-cloud-data-in-a-notebook"></a>Přístup ke cloudovým datům v poznámkovém bloku
 
-Zajímavé práce v poznámkovém bloku Jupyter vyžaduje data. Data, je ve skutečnosti lifeblood poznámkových bloků.
+Dělat zajímavou práci v notebooku Jupyter vyžaduje data. Data jsou skutečně mízou notebooků.
 
-Můžete si určitě [importovat datové soubory do projektu](work-with-project-data-files.md)i pomocí příkazů, jako jsou `curl` z v rámci poznámkového bloku pro stažení souboru přímo. Je pravděpodobné, ale, že je nutné pracovat s mnohem rozsáhlejší data, která je k dispozici z jiných souborů zdrojů, jako je rozhraní REST API, relačních databází a cloudového úložiště, jako jsou tabulky Azure.
+Můžete určitě [importovat datové soubory do](work-with-project-data-files.md)projektu `curl` , a to i pomocí příkazů, jako je v rámci notebooku stáhnout soubor přímo. Je však pravděpodobné, že budete muset pracovat s mnohem rozsáhlejšími daty, která jsou dostupná z nesouborových zdrojů, jako jsou rozhraní REST API, relační databáze a cloudové úložiště, jako jsou tabulky Azure.
 
-Tento článek stručně popisuje tyto různé možnosti. Protože přístup k datům je nejlepší vidět v akci, můžete najít spustitelný kód [ukázky poznámkových bloků Azure – přístup k vašim datům](https://github.com/Microsoft/AzureNotebooks/blob/master/Samples/Access%20your%20data%20in%20Azure%20Notebooks.ipynb).
+Tento článek stručně popisuje tyto různé možnosti. Vzhledem k tomu, že přístup k datům je nejlépe vidět v akci, můžete najít spustitelný kód v [ukázkách poznámkových bloků Azure – přístup k datům](https://github.com/Microsoft/AzureNotebooks/blob/master/Samples/Access%20your%20data%20in%20Azure%20Notebooks.ipynb).
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="rest-apis"></a>Rozhraní REST API
 
-Ohromné množství dat, které jsou dostupné z Internetu obecně přistupuje, ne prostřednictvím souborů, ale přes rozhraní REST API. Naštěstí protože Poznámkový blok buňka může obsahovat jakýkoli kód vám vyhovuje, můžete použít kód pro odesílání požadavků a přijímání dat JSON. Tento kód JSON pak můžete převést do formátu, kterou chcete použít, jako je například pandas dataframe.
+Obecně řečeno, obrovské množství dat dostupných z Internetu není přístupné prostřednictvím souborů, ale prostřednictvím rozhraní REST API. Naštěstí vzhledem k tomu, že buňka poznámkového bloku může obsahovat jakýkoli kód, který se vám líbí, můžete použít kód k odesílání požadavků a přijímání dat JSON. Potom můžete převést, že JSON do libovolného formátu, který chcete použít, jako je například pandas datový rám.
 
-Pro přístup k datům pomocí rozhraní REST API, použijte stejný kód v buňkách poznámkového bloku kódu, které můžete použít v jakékoli jiné aplikace. Použití knihovny žádosti o obecnou strukturu vypadá takto:
+Chcete-li získat přístup k datům pomocí rozhraní REST API, použijte stejný kód v buňkách kódu poznámkového bloku, který používáte v jakékoli jiné aplikaci. Obecná struktura pomocí knihovny požadavků je následující:
 
 ```python
 import pandas
@@ -41,43 +41,43 @@ if response.status_code == 200:
     print(dataframe_rest2)
 ```
 
-## <a name="azure-sql-databases"></a>Azure SQL Database
+## <a name="azure-sql-databases"></a>Databáze Azure SQL
 
-Databáze systému SQL Server můžete přistupovat pomocí pomoc pyodbc nebo pymssql knihoven.
+K databázím SERVERU SQL můžete přistupovat s pomocí knihoven pyodbc nebo pymssql.
 
-[Použití Pythonu k dotazování Azure SQL database](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python) obsahuje pokyny týkající se vytvoření databáze obsahující AdventureWorks data a ukazuje, jak zadávat dotazy na data. Stejný kód je zobrazena ve vzorku poznámkového bloku pro účely tohoto článku.
+[Pomocí Pythonu můžete zadat dotaz na databázi Azure SQL,](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python) která vám poskytne pokyny k vytvoření databáze obsahující data AdventureWorks a ukáže, jak tato data zadat. Stejný kód je zobrazen v ukázkovém poznámkovém bloku pro tento článek.
 
 ## <a name="azure-storage"></a>Azure Storage
 
-Azure Storage nabízí několik různých typů nerelační úložiště, v závislosti na typu dat, ke kterým máte a jak budete potřebovat pro přístup k ní:
+Azure Storage poskytuje několik různých typů nerelačního úložiště v závislosti na typu dat, která máte a jak k nim potřebujete získat přístup:
 
-- Table Storage: poskytuje úložiště s nízkými náklady, vysoký počet pro tabulková data, jako jsou protokoly služby sensor shromážděných, diagnostické protokoly a tak dále.
-- Úložiště objektů blob: poskytuje soubor jako úložiště pro data libovolného typu.
+- Úložiště tabulek: Poskytuje levné velkoobjemové úložiště pro tabulková data, jako jsou shromážděné protokoly senzorů, diagnostické protokoly a tak dále.
+- Úložiště objektů blob: poskytuje úložiště podobné souborům pro jakýkoli typ dat.
 
-Poznámkový blok ukázka ukazuje práci s tabulkami a objekty BLOB, jak povolit přístup jen pro čtení k objektům BLOB pomocí sdíleného přístupového podpisu.
+Ukázkový poznámkový blok ukazuje práci s tabulkami i objekty BLOB, včetně použití sdíleného přístupového podpisu, který umožňuje přístup jen pro čtení k objektům BLOB.
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-Azure Cosmos DB zajišťující NoSQL s dvojicí plně indexovaných dokumentů JSON). Následující články poskytují celou řadou způsobů, jak pracovat s Cosmos DB z Pythonu:
+Azure Cosmos DB poskytuje plně indexované úložiště NoSQL pro dokumenty JSON). Následující články poskytují řadu různých způsobů práce s Cosmos DB z Pythonu:
 
-- [Sestavení rozhraní SQL API aplikací s využitím Pythonu](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-python)
-- [Sestavení aplikace v baňce s rozhraním API Azure Cosmos DB pro MongoDB](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
+- [Vytvoření aplikace SQL API s Pythonem](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-python)
+- [Vytvoření aplikace Flask s rozhraním API Azure Cosmos DB pro MongoDB](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
 - [Vytvoření databáze grafů pomocí Pythonu a rozhraní Gremlin API](https://docs.microsoft.com/azure/cosmos-db/create-graph-python)
-- [Sestavení aplikace Cassandra pomocí Pythonu a Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
-- [Sestavení aplikace Table API pomocí Pythonu a Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
+- [Vytvoření aplikace Cassandra s Pythonem a Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
+- [Vytvoření aplikace table api s Pythonem a Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
 
-Při práci se službou Cosmos DB, můžete použít [azure-cosmos DB table](https://pypi.org/project/azure-cosmosdb-table/) knihovny.
+Při práci s Cosmos DB, můžete použít [knihovnu azure-cosmosdb-table.](https://pypi.org/project/azure-cosmosdb-table/)
 
-## <a name="other-azure-databases"></a>Ostatní databáze Azure
+## <a name="other-azure-databases"></a>Další databáze Azure
 
-Azure nabízí celou řadu jiných typů databází, které můžete použít. Následující články poskytují pokyny pro přístup k těmto databázím z Pythonu:
+Azure poskytuje řadu dalších typů databází, které můžete použít. Níže uvedené články poskytují pokyny pro přístup k těmto databázím z Pythonu:
 
-- [Azure Database for PostgreSQL: použití Pythonu k připojení a dotazování dat](https://docs.microsoft.com/azure/postgresql/connect-python)
+- [Azure Database for PostgreSQL: Použití Pythonu k připojení a dotazování dat](https://docs.microsoft.com/azure/postgresql/connect-python)
 - [Rychlý start: Použití Azure Redis Cache s Pythonem](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
-- [Azure Database for MySQL: použití Pythonu k připojení a dotazování dat](https://docs.microsoft.com/azure/mysql/connect-python)
+- [Azure Database for MySQL: Použití Pythonu k připojení a dotazování dat](https://docs.microsoft.com/azure/mysql/connect-python)
 - [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)
-  - [Průvodce kopírováním pro službu Azure Data Factory](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
+  - [Průvodce kopírováním pro Azure Data Factory](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Postupy: práce s datovými soubory projektu](work-with-project-data-files.md)
+- [Postup: Práce s datovými soubory projektu](work-with-project-data-files.md)

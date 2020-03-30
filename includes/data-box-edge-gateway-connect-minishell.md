@@ -5,40 +5,40 @@ ms.topic: include
 ms.date: 03/06/2019
 ms.author: alkohli
 ms.openlocfilehash: 348f7bdd333da4f4a6cb41a438b7aee08d6a6bbb
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175469"
 ---
-Postupy pro vzdálené připojení k zařízení se liší podle operačního systému klienta.
+V závislosti na operačním systému klienta se postupy vzdáleného připojení k zařízení liší.
 
-### <a name="remotely-connect-from-a-windows-client"></a>Vzdálené připojení z klienta Windows
+### <a name="remotely-connect-from-a-windows-client"></a>Vzdálené připojení z klienta systému Windows
 
-Než začnete, ujistěte se, že váš klient Windows běží prostředí Windows PowerShell 5.0 nebo novější.
+Než začnete, ujistěte se, že váš klient systému Windows používá prostředí Windows PowerShell 5.0 nebo novější.
 
-Postupujte podle těchto kroků se vzdáleně připojíte z klienta Windows.
+Chcete-li se vzdáleně připojit z klienta systému Windows, postupujte takto.
 
 1. Spusťte relaci prostředí Windows PowerShell jako správce.
-2. Ujistěte se, že služba Vzdálená správa Windows běží na klientovi. Na příkazovém řádku zadejte:
+2. Zkontrolujte, zda je ve vašem klientovi spuštěna služba Vzdálená správa systému Windows. Na příkazovém řádku zadejte:
 
     `winrm quickconfig`
 
-3. Přiřazení proměnné na IP adresu zařízení.
+3. Přiřaďte k IP adrese zařízení proměnnou.
 
     $ip = "<device_ip>"
 
-    Nahraďte `<device_ip>` s IP adresou vašeho zařízení.
+    Nahraďte `<device_ip>` ji IP adresou vašeho zařízení.
 
-4. Chcete-li přidat IP adresu vašeho zařízení do seznamu důvěryhodných hostitelů klienta, zadejte následující příkaz:
+4. Chcete-li přidat IP adresu zařízení do seznamu důvěryhodných hostitelů klienta, zadejte následující příkaz:
 
     `Set-Item WSMan:\localhost\Client\TrustedHosts $ip -Concatenate -Force`
 
-5. Spusťte relaci prostředí Windows PowerShell na zařízení:
+5. Spuštění relace prostředí Windows PowerShell na zařízení:
 
     `Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell`
 
-6. Zadejte heslo po zobrazení výzvy. Použijte stejné heslo, který se používá k přihlašování do místního webového uživatelského rozhraní. Výchozí heslo místního webového uživatelského rozhraní je *Heslo1*. Po úspěšném připojení k zařízení pomocí vzdáleného prostředí PowerShell, se zobrazí následující ukázkový výstup:  
+6. Po zobrazení výzvy zadejte heslo. Použijte stejné heslo, které se používá k přihlášení do místního webového uživatelského prostředí. Výchozí heslo místního webového uživatelského uživatelského prostředí je *Password1*. Při úspěšném připojení k zařízení pomocí vzdáleného prostředí PowerShell se zobrazí následující ukázkový výstup:  
 
     ```
     Windows PowerShell
@@ -54,27 +54,27 @@ Postupujte podle těchto kroků se vzdáleně připojíte z klienta Windows.
     [10.100.10.10]: PS>
     ```
 
-### <a name="remotely-connect-from-a-linux-client"></a>Vzdálené připojení z klienta systému Linux
+### <a name="remotely-connect-from-a-linux-client"></a>Vzdálené připojení z klienta Linuxu
 
-V klientském počítači Linux, které budete používat pro připojení:
+V klientovi Linuxu, který budete používat pro připojení:
 
-- [Nainstalujte nejnovější PowerShell Core pro Linux](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6) z Githubu, které chcete tuto funkci vzdálenou komunikaci SSH. 
-- [Instalace pouze `gss-ntlmssp` balíček z modulu protokolu NTLM](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md). Pro klienty se systémem Ubuntu použijte následující příkaz:
+- [Nainstalujte nejnovější PowerShell Core pro Linux](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6) z GitHubu, abyste získali funkci vzdáleného komunikace SSH. 
+- [Nainstalujte `gss-ntlmssp` pouze balíček z modulu NTLM](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md). Pro klienty Ubuntu použijte následující příkaz:
     - `sudo apt-get install gss-ntlmssp`
 
-Další informace najdete v části [Vzdálená komunikace Powershellu přes SSH](https://docs.microsoft.com/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6).
+Další informace naleznete v [prostředí PowerShell remoting over SSH](https://docs.microsoft.com/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6).
 
-Postupujte podle těchto kroků se vzdáleně připojíte z klienta systému souborů NFS.
+Chcete-li se vzdáleně připojit z klienta systému nfs, postupujte takto.
 
-1. Chcete-li otevřít relaci prostředí PowerShell, zadejte:
+1. Chcete-li otevřít relaci Prostředí PowerShell, zadejte:
 
     `sudo pwsh`
  
-2. Pro připojení pomocí vzdáleného klienta, zadejte:
+2. Pro připojení pomocí vzdáleného klienta zadejte:
 
     `Enter-PSSession -ComputerName $ip -Authentication Negotiate -ConfigurationName Minishell -Credential ~\EdgeUser`
 
-    Po zobrazení výzvy zadejte heslo použité pro přihlášení ke svému zařízení.
+    Po zobrazení výzvy zadejte heslo použité k přihlášení k zařízení.
  
 > [!NOTE]
-> Tento postup nefunguje v Mac OS.
+> Tento postup nefunguje na Mac OS.

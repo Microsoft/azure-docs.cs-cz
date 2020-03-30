@@ -1,40 +1,40 @@
 ---
-title: Převod virtuálního počítače s Windows z nespravovaných disků na Managed disks
-description: Jak převést virtuální počítač s Windows z nespravovaných disků na Managed disks pomocí prostředí PowerShell v modelu nasazení Správce prostředků
+title: Převod virtuálního počítače s Windows z nespravovaných disků na spravované disky
+description: Převod virtuálního počítače systému Windows z nespravovaných disků na spravované disky pomocí prostředí PowerShell v modelu nasazení Správce prostředků
 author: roygara
 ms.service: virtual-machines-windows
 ms.topic: conceptual
 ms.date: 07/12/2018
 ms.author: rogarana
 ms.openlocfilehash: 8c180cfc597c0ade27b1fe8cca5a8751176ea12e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75460125"
 ---
-# <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Převod virtuálního počítače s Windows z nespravovaných disků na Managed disks
+# <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Převod virtuálního počítače s Windows z nespravovaných disků na spravované disky
 
-Pokud máte existující virtuální počítače s Windows, které používají nespravované disky, můžete virtuální počítače převést tak, aby používaly spravované disky prostřednictvím služby [Azure Managed disks](managed-disks-overview.md) . Tento proces převede disk s operačním systémem i všechny připojené datové disky.
+Pokud máte existující virtuální počítače s Windows,, které používají nespravované disky, můžete virtuální počítače převést na spravované disky prostřednictvím [služby Spravované disky Azure.](managed-disks-overview.md) Tento proces převádí disk operačního systému i všechny připojené datové disky.
 
  
 
 ## <a name="before-you-begin"></a>Než začnete
 
 
-* Přečtěte si [plán migrace na Managed disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks).
+* Zkontrolujte [plán migrace na spravované disky](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks).
 
-* Přečtěte si [Nejčastější dotazy týkající se migrace na Managed disks](faq-for-disks.md#migrate-to-managed-disks).
+* Projděte si [nejčastější dotazy týkající se migrace na spravované disky](faq-for-disks.md#migrate-to-managed-disks).
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 
-* Původní virtuální pevné disky a účet úložiště používané virtuálním počítačem před převodem se neodstraní. Budou se vám za ně i nadále účtovat poplatky. Abyste se vyhnuli účtování poplatků za tyto artefakty, po ověření dokončení převodu odstraňte původní objekty blob virtuálních pevných disků. Pokud potřebujete najít tyto nepřipojené disky a odstranit je, přečtěte si náš článek [hledání a odstraňování nepřipojených spravovaných a nespravovaných disků Azure](find-unattached-disks.md).
+* Původní virtuální pevné disky a účet úložiště používané virtuálním počítačem před převodem se neodstraní. Budou se vám za ně i nadále účtovat poplatky. Abyste se vyhnuli účtování poplatků za tyto artefakty, po ověření dokončení převodu odstraňte původní objekty blob virtuálních pevných disků. Pokud potřebujete najít tyto nepřipojené disky, abyste je odstranili, přečtěte si náš článek [Vyhledání a odstranění nepřipojených disků Azure.](find-unattached-disks.md)
 
 
-## <a name="convert-single-instance-vms"></a>Převod virtuálních počítačů s jednou instancí
-Tato část popisuje, jak převést virtuální počítače Azure s jednou instancí z nespravovaných disků na Managed disks. (Pokud jsou vaše virtuální počítače ve skupině dostupnosti, přečtěte si další část.) 
+## <a name="convert-single-instance-vms"></a>Převod virtuálních ms s jednou instancí
+Tato část popisuje, jak převést virtuální počítače Azure s jednou instancí z nespravovaných disků na spravované disky. (Pokud jsou vaše virtuální počítače v sadě dostupnosti, přečtěte si další část.) 
 
-1. Zrušte přidělení virtuálního počítače pomocí rutiny [stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) . Následující příklad zruší přidělení virtuálního počítače s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`: 
+1. Zruší přidělení virtuálního virtuálního trhu pomocí rutiny [Stop-AzVM.](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) Následující příklad navrací virtuální hosti s `myVM` `myResourceGroup`názvem ve skupině prostředků s názvem : 
 
    ```azurepowershell-interactive
    $rgName = "myResourceGroup"
@@ -42,7 +42,7 @@ Tato část popisuje, jak převést virtuální počítače Azure s jednou insta
    Stop-AzVM -ResourceGroupName $rgName -Name $vmName -Force
    ```
 
-2. Pomocí rutiny [ConvertTo-AzVMManagedDisk](https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk) PŘEVEĎTE virtuální počítač na spravované disky. Následující postup převede předchozí virtuální počítač, včetně disku s operačním systémem a všech datových disků, a spustí virtuální počítač:
+2. Převeďte virtuální ho na spravované disky pomocí rutiny [ConvertTo-AzVMManagedDisk.](https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk) Následující proces převede předchozí virtuální počítač, včetně disku operačního systému a všech datových disků, a spustí virtuální počítač:
 
    ```azurepowershell-interactive
    ConvertTo-AzVMManagedDisk -ResourceGroupName $rgName -VMName $vmName
@@ -50,11 +50,11 @@ Tato část popisuje, jak převést virtuální počítače Azure s jednou insta
 
 
 
-## <a name="convert-vms-in-an-availability-set"></a>Převod virtuálních počítačů ve skupině dostupnosti
+## <a name="convert-vms-in-an-availability-set"></a>Převod virtuálních aplikací v sadě dostupnosti
 
-Pokud jsou virtuální počítače, které chcete převést na spravované disky, ve skupině dostupnosti, musíte nejdřív převést skupinu dostupnosti na spravovanou skupinu dostupnosti.
+Pokud jsou virtuální počítače, které chcete převést na spravované disky, v sadě dostupnosti, musíte nejprve převést sadu dostupnosti na spravovanou skupinu dostupnosti.
 
-1. Pomocí rutiny [Update-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/update-azavailabilityset) převeďte skupinu dostupnosti. Následující příklad aktualizuje skupinu dostupnosti s názvem `myAvailabilitySet` ve skupině prostředků s názvem `myResourceGroup`:
+1. Převeďte sadu dostupnosti pomocí rutiny [Update-AzAvailabilitySet.](https://docs.microsoft.com/powershell/module/az.compute/update-azavailabilityset) Následující příklad aktualizuje sadu `myAvailabilitySet` dostupnosti pojmenovanou ve skupině prostředků s názvem `myResourceGroup`:
 
    ```azurepowershell-interactive
    $rgName = 'myResourceGroup'
@@ -64,14 +64,14 @@ Pokud jsou virtuální počítače, které chcete převést na spravované disky
    Update-AzAvailabilitySet -AvailabilitySet $avSet -Sku Aligned 
    ```
 
-   Pokud se v oblasti, kde je umístěna vaše skupina dostupnosti, nachází pouze 2 spravované domény selhání, ale počet nespravovaných domén selhání je 3, zobrazí tento příkaz chybu podobný řetězci "zadaný počet domén selhání 3 musí klesnout do rozsahu 1 až 2." Pokud chcete chybu vyřešit, aktualizujte doménu selhání na 2 a aktualizujte `Sku`, aby `Aligned` takto:
+   Pokud oblast, kde je umístěna vaše skupina dostupnosti má pouze 2 spravované domény selhání, ale počet nespravovaných domén selhání je 3, tento příkaz zobrazí chybu podobnou "Zadaný počet chyb domény 3 musí spadat do rozsahu 1 až 2." Chcete-li chybu vyřešit, aktualizujte `Sku` doménu selhání na 2 a aktualizujte takto: `Aligned`
 
    ```azurepowershell-interactive
    $avSet.PlatformFaultDomainCount = 2
    Update-AzAvailabilitySet -AvailabilitySet $avSet -Sku Aligned
    ```
 
-2. Navrácení a převod virtuálních počítačů ve skupině dostupnosti. Následující skript zruší přidělení každého virtuálního počítače pomocí rutiny [stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) , převede ho pomocí [ConvertTo-AzVMManagedDisk](https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk)a automaticky ho restartuje, i když je kromě procesu převodu:
+2. Navrátit a převést virtuální chod v množině dostupnosti. Následující skript zruší přidělení každého virtuálního počítače pomocí rutiny [Stop-AzVM,](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) převede jej pomocí [ConvertTo-AzVMManagedDisk](https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk)a automaticky jej restartuje jako druhý proces převodu:
 
    ```azurepowershell-interactive
    $avSet = Get-AzAvailabilitySet -ResourceGroupName $rgName -Name $avSetName
@@ -87,24 +87,24 @@ Pokud jsou virtuální počítače, které chcete převést na spravované disky
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud při převodu dojde k chybě nebo pokud je virtuální počítač ve stavu selhání kvůli problémům s předchozím převodem, spusťte rutinu `ConvertTo-AzVMManagedDisk` znovu. Jednoduchý opakování obvykle odblokuje situaci.
-Před převodem se ujistěte, že jsou všechna rozšíření virtuálních počítačů ve stavu "zřizování proběhlo úspěšně", nebo převod selže s kódem chyby 409.
+Pokud dojde k chybě během převodu nebo pokud je virtuální měnový virtuální ms `ConvertTo-AzVMManagedDisk` a ve stavu selhání z důvodu problémů v předchozím převodu, spusťte rutinu znovu. Jednoduchý pokus obvykle odblokuje situaci.
+Před převodem se ujistěte, že všechna rozšíření virtuálních virtuálních služeb jsou ve stavu "Zřizování proběhlo úspěšně", jinak se převod nezdaří s kódem chyby 409.
 
-## <a name="convert-using-the-azure-portal"></a>Převést pomocí Azure Portal
+## <a name="convert-using-the-azure-portal"></a>Převod pomocí portálu Azure
 
-Nespravované disky můžete také převést na spravované disky pomocí Azure Portal.
+Nespravované disky můžete také převést na spravované disky pomocí portálu Azure.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-2. Vyberte virtuální počítač ze seznamu virtuálních počítačů na portálu.
-3. V okně pro virtuální počítač vyberte z nabídky **disky** .
-4. V horní části okna **disky** vyberte **migrovat na Managed disks**.
-5. Pokud je váš virtuální počítač ve skupině dostupnosti, v okně **migrovat do spravovaných disků** se zobrazí upozornění, že nejdřív potřebujete skupinu dostupnosti převést. Upozornění by mělo mít odkaz, který můžete kliknutím převést na skupinu dostupnosti. Po převedení skupiny dostupnosti nebo pokud váš virtuální počítač není ve skupině dostupnosti, klikněte na **migrovat** a zahajte proces migrace disků na spravované disky.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+2. Vyberte virtuální ho virtuálního virtuálního motoru ze seznamu virtuálních discích na portálu.
+3. V okně pro virtuální počítače vyberte **disky** z nabídky.
+4. V horní části okna **Disky** vyberte **Migrovat na spravované disky**.
+5. Pokud váš virtuální počítač je v sadě dostupnosti, bude upozornění na **migrate na spravované disky** okno, které je třeba převést sadu dostupnosti jako první. Upozornění by mělo mít odkaz, na který můžete kliknout a převést sadu dostupnosti. Jakmile se sada dostupnosti převede nebo pokud váš virtuální počítač není v sadě dostupnosti, klikněte na **Migrovat** a spusťte proces migrace disků na spravované disky.
 
-Po dokončení migrace se virtuální počítač zastaví a restartuje.
+Virtuální virtuální měsíč se po dokončení migrace zastaví a restartuje.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Převod standardních spravovaných disků na úroveň Premium](convert-disk-storage.md)
+[Převod standardních spravovaných disků na premium](convert-disk-storage.md)
 
-Poznamenejte si kopii virtuálního počítače jen pro čtení pomocí [snímků](snapshot-copy-managed-disk.md).
+Pořiďte kopii virtuálního počítače jen pro čtení pomocí [snímků](snapshot-copy-managed-disk.md).
 
