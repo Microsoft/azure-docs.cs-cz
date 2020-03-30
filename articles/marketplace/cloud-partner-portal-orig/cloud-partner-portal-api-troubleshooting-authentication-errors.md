@@ -1,36 +1,35 @@
 ---
-title: Řešení běžných chyb ověřování | Azure Marketplace
-description: Poskytuje pomoc s běžnými chybami ověřování při použití rozhraní portál partnerů cloudu API.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Poradce při potížích s běžnými chybami ověřování | Azure Marketplace
+description: Poskytuje pomoc s běžnými chybami ověřování při použití souborů API portálu cloudových partnerů.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 0990e9aedf17f6d4ad01e4911e47efd60001f3d7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 1da9bbd1ed4bc4abea0699e56d8adc397086d6e7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827367"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280418"
 ---
-# <a name="troubleshooting-common-authentication-errors"></a>Řešení běžných chyb ověřování
+# <a name="troubleshooting-common-authentication-errors"></a>Poradce při potížích s běžnými chybami ověřování
 
-Tento článek poskytuje pomoc s běžnými chybami ověřování při použití rozhraní portál partnerů cloudu API.
+Tento článek poskytuje pomoc s běžnými chybami ověřování při použití souborů API portálu cloudových partnerů.
 
-## <a name="unauthorized-error"></a>Neoprávněná chyba
+## <a name="unauthorized-error"></a>Neautorizovaná chyba
 
-Pokud trvale získáte `401 unauthorized` chyby, ověřte, že máte platný přístupový token.  Pokud jste to ještě neudělali, vytvořte aplikaci Basic Azure Active Directory (Azure AD) a instanční objekt, jak je popsáno v tématu [použití portálu k vytvoření Azure Active Directory aplikace a instančního objektu, který má přístup k prostředkům](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Pak pomocí aplikace nebo jednoduché žádosti HTTP POST ověřte přístup.  K získání přístupového tokenu, jak je znázorněno na následujícím obrázku, budete zahrnovat ID tenanta, ID aplikace, ID objektu a tajný klíč:
+Pokud konzistentně získáte `401 unauthorized` chyby, ověřte, zda máte platný přístupový token.  Pokud jste tak ještě neučinili, vytvořte základní aplikaci Azure Active Directory (Azure AD) a instanční objekt, jak je popsáno v [části Použití portálu k vytvoření aplikace a instancí Azure Active Directory, která má přístup k prostředkům](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Potom použijte aplikaci nebo jednoduchý požadavek HTTP POST k ověření přístupu.  Zahrnete ID klienta, ID aplikace, ID objektu a tajný klíč k získání přístupového tokenu, jak je znázorněno na následujícím obrázku:
 
-![Řešení chyby 401](./media/cloud-partner-portal-api-troubleshooting-authentication-errors/troubleshooting-401-error.jpg)
+![Poradce při potížích s chybou 401](./media/cloud-partner-portal-api-troubleshooting-authentication-errors/troubleshooting-401-error.jpg)
 
 
-## <a name="forbidden-error"></a>Zakázaná chyba
+## <a name="forbidden-error"></a>Zakázaný přístup
 
-Pokud se zobrazí chyba `403 forbidden`, ujistěte se, že se do účtu vydavatele v portál partnerů cloudu přidal správný instanční objekt.
-Podle pokynů na stránce [požadavky](./cloud-partner-portal-api-prerequisites.md) přidejte instanční objekt na portál.
+Pokud se `403 forbidden` zobrazí chyba, ujistěte se, že správný instanční objekt služby byl přidán do vašeho účtu vydavatele na portálu cloudových partnerů.
+Postupujte podle kroků na stránce [Požadavky](./cloud-partner-portal-api-prerequisites.md) a přidejte instanční objekt na portál.
 
-Pokud byl přidán správný instanční objekt, ověřte všechny ostatní informace. Věnujte velkou pozornost na ID objektu zadané na portálu. Na stránce registrace aplikace Azure Active Directory jsou dvě ID objektů a musíte použít ID místního objektu. Správnou hodnotu můžete najít tak, že přejdete na stránku **Registrace aplikací** vaší aplikace a kliknete na název aplikace v části **spravovaná aplikace v místním adresáři**. Tím přejdete na místní vlastnosti aplikace, kde můžete najít správné ID objektu na stránce **vlastností** , jak je znázorněno na následujícím obrázku. Také se ujistěte, že při přidání instančního objektu a volání rozhraní API používáte správné ID vydavatele.
+Pokud byl přidán správný instanční objekt, ověřte všechny ostatní informace. Věnujte velkou pozornost ID objektu zadanému na portálu. Na stránce registrace aplikace Azure Active Directory jsou dvě ID objektů a musíte použít místní ID objektu. Správnou hodnotu najdete tak, že přejdete na stránku **Registrace aplikací** pro vaši aplikaci a kliknete na název aplikace v části **Spravovaná aplikace v místním adresáři**. Tím přejdete do místních vlastností aplikace, kde najdete správné ID objektu na stránce **Vlastnosti,** jak je znázorněno na následujícím obrázku. Také ujistěte se, že používáte správné ID vydavatele při přidání instančního objektu a provést volání rozhraní API.
 
-![Řešení chyby 403](./media/cloud-partner-portal-api-troubleshooting-authentication-errors/troubleshooting-403-error.jpg)
+![Poradce při potížích s chybou 403](./media/cloud-partner-portal-api-troubleshooting-authentication-errors/troubleshooting-403-error.jpg)

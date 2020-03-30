@@ -1,34 +1,33 @@
 ---
-title: Automatizace nabídky pro publikování | Azure Marketplace
-description: Vysvětluje, jak prostřednictvím kódu programu automatizovat pracovní postup publikování virtuálních počítačů.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Automatizovat publikování nabídky | Azure Marketplace
+description: Vysvětluje, jak programově automatizovat pracovní postup publikování virtuálního počítače.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 6464c8354c9d56092380e4b76c1ea962f5102c72
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 25c7429dc369fb8fc70a135950b16c0a5997656b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824334"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280333"
 ---
 <a name="automate-offer-publishing"></a>Automatizace publikování nabídek
 =========================
 
-Pracovní postup publikování virtuálních počítačů můžete také programově automatizovat pomocí rozhraní API v části [Reference k rozhraní API](./cloud-partner-portal-api-overview.md) . Existují dva různé scénáře, které je potřeba vzít v úvahu při plánování automatizace: nabízet úvodní publikování a následné publikování nabídek.
+Můžete také programově automatizovat pracovní postup publikování virtuálních lidí pomocí rozhraní API v části [Odkaz na rozhraní API.](./cloud-partner-portal-api-overview.md) Existují dva odlišné scénáře, které je třeba zvážit při plánování automatizace: nabídka počáteční publikování a následné publikování nabídky.
 
 
-<a name="offer-initial-publishing"></a>Nabídka prvotního publikování
+<a name="offer-initial-publishing"></a>Nabídka počátečního publikování
 -------------------------
 
-Při prvním publikování nabídky se před odesláním na web Marketplace vyžaduje několik dalších kroků.  Například musíte připravit metadata a vytvořit koncept nabídky. Úvodní pracovní postup publikování je zobrazený v následujícím diagramu.
+Při prvním publikování nabídky vyžaduje před odesláním na trh několik dalších kroků.  Například je nutné připravit metadata a vytvořit koncept nabídky. Počáteční pracovní postup publikování je uveden v následujícím diagramu.
 
-![Interakce prvotní publikace nabídky](media/cloud-partner-portal-automate-offer-publishing/first-time-offer-publishing.png)
+![Interakce publikace první nabídky](media/cloud-partner-portal-automate-offer-publishing/first-time-offer-publishing.png)
 
-Následující vzorový kód znázorňuje tyto kroky.
+Následující ukázkový kód ukazuje tyto kroky.
 
 ``` csharp
   CreateOfferAndPublish()
@@ -75,12 +74,12 @@ Následující vzorový kód znázorňuje tyto kroky.
 ```
 
 
-<a name="subsequent-offer-publishing"></a>Publikování následné nabídky
+<a name="subsequent-offer-publishing"></a>Následné publikování nabídky
 ---------------------------
 
-Po integraci nabídky virtuálního počítače do kanálu průběžné integrace můžete automatizovat pracovní postup publikování tak, aby se spouštěl při každém vytvoření nového virtuálního pevného disku (VHD).  Tento pracovní postup je znázorněný následujícím diagramem a ukázkovým kódem.
+Jakmile je nabídka virtuálního počítače (VM) integrována do kanálu průběžné integrace, můžete automatizovat pracovní postup publikování a spustit při každém vytvoření nového virtuálního pevného disku (VHD).  Tento pracovní postup je znázorněn na následujícím diagramu a ukázkový kód.
 
-![Interakce dalších publikací nabídky](media/cloud-partner-portal-automate-offer-publishing/update-offer-and-publish.png)
+![Interakce následných nabídkových publikací](media/cloud-partner-portal-automate-offer-publishing/update-offer-and-publish.png)
 
 ``` csharp
     UpdateOfferAndPublish()

@@ -1,64 +1,64 @@
 ---
-title: Přehled nasazení – avere vFXT pro Azure
-description: Přehled nasazení avere vFXT pro Azure
+title: Přehled nasazení – Avere vFXT pro Azure
+description: Přehled nasazení Avere vFXT pro Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: 78140fea74272dff6056bebfbd44ed9d55b0e1db
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76153679"
 ---
 <!-- filename is linked to in the marketplace template, make sure it gets a redirect if we rename it -->
 
 # <a name="avere-vfxt-for-azure---deployment-overview"></a>Avere vFXT pro Azure – přehled nasazení
 
-Tento článek obsahuje přehled kroků potřebných k zprovoznění služby avere vFXT pro cluster Azure.
+Tento článek poskytuje přehled kroků potřebných k získání Avere vFXT pro cluster Azure zprovoznění.
 
-Před a po vytvoření clusteru vFXT z Azure Marketplace je třeba provést několik úloh. Jasným smyslem procesu spuštění až po dokončení bude pomáhat s rozsahem potřebného úsilí.
+Před a po vytvoření clusteru vFXT z Azure Marketplace je potřeba několik úloh. Mít jasnou představu o procesu od začátku do konce vám pomůže rozsah potřebné úsilí.
 
 ## <a name="deployment-steps"></a>Kroky nasazení
 
-Po [Naplánování systému](avere-vfxt-deploy-plan.md)můžete začít vytvářet cluster avere vFXT.
+Po [plánování systému](avere-vfxt-deploy-plan.md)můžete začít vytvářet cluster Avere vFXT.
 
-Azure Resource Manager šablona v Azure Marketplace shromažďuje potřebné informace a automaticky nasadí celý cluster.
+Šablona Azure Resource Manager na Azure Marketplace shromažďuje potřebné informace a automaticky nasazuje celý cluster.
 
-Až bude cluster vFXT spuštěný, stále existují některé kroky konfigurace, které je nutné před jeho použitím provést. Pokud jste vytvořili nový kontejner úložiště objektů blob, budete na něj chtít přesunout data. Pokud používáte úložný systém NAS, budete ho muset přidat po vytvoření clusteru. Budete chtít připojit klienty ke clusteru.
+Po spuštění clusteru vFXT stále existují některé kroky konfigurace, které je třeba provést před jeho použitím. Pokud jste vytvořili nový kontejner úložiště objektů Blob, budete chtít přesunout data do něj. Pokud používáte systém úložiště NAS, musíte ho přidat po vytvoření clusteru. Budete chtít připojit klienty ke clusteru.
 
-Tady je přehled všech kroků.
+Zde je přehled všech kroků.
 
-1. Konfigurovat požadavky
+1. Konfigurace požadavků
 
-   Před vytvořením virtuálního počítače musíte pro projekt avere vFXT vytvořit nové předplatné, nakonfigurovat vlastnictví předplatného, kontrolovat kvóty a v případě potřeby požádat o zvýšení platnosti a přijmout podmínky pro používání softwaru avere vFXT. Podrobné pokyny najdete [v tématu Příprava k vytvoření avere vFXT](avere-vfxt-prereqs.md) .
+   Před vytvořením virtuálního počítače musíte vytvořit nové předplatné pro projekt Avere vFXT, nakonfigurovat vlastnictví předplatného, zkontrolovat kvóty a v případě potřeby požádat o zvýšení a přijmout podmínky pro použití softwaru Avere vFXT. Podrobné pokyny najdete v části [Příprava k vytvoření avere vFXT.](avere-vfxt-prereqs.md)
 
-1. Vytvoření clusteru avere vFXT
+1. Vytvoření clusteru Avere vFXT
 
-   K vytvoření clusteru avere vFXT pro Azure použijte Azure Marketplace. Šablona shromažďuje požadované informace a spouští skripty pro vytvoření konečného produktu.
+   Azure Marketplace slouží k vytvoření clusteru Avere vFXT pro Azure. Šablona shromažďuje požadované informace a spouští skripty k vytvoření konečného produktu.
 
-   Vytvoření clusteru zahrnuje tyto kroky, které jsou všechny dokončené šablonou Marketplace:
+   Vytvoření clusteru zahrnuje tyto kroky, které jsou všechny provedené šablonou marketplace:
 
-   * Vytvoření nové síťové infrastruktury a skupin prostředků (v případě potřeby)
+   * V případě potřeby vytvořte novou síťovou infrastrukturu a skupiny prostředků
    * Vytvoření řadiče clusteru
 
-     Řadič clusteru je jednoduchý virtuální počítač, který se nachází ve stejné virtuální síti jako cluster avere vFXT, a má vlastní software potřebný k vytvoření a správě clusteru. Kontrolér vytvoří uzly vFXT a vytvoří cluster a také rozhraní příkazového řádku pro správu clusteru během své životnosti.
+     Řadič clusteru je jednoduchý virtuální počítač, který se nachází ve stejné virtuální síti jako cluster Avere vFXT a má vlastní software potřebný k vytvoření a správě clusteru. Řadič vytvoří uzly vFXT a vytvoří cluster a také poskytuje rozhraní příkazového řádku pro správu clusteru během jeho životnosti.
 
-     Pokud během nasazení vytvoříte novou virtuální síť nebo podsíť, bude mít řadič veřejnou IP adresu. To znamená, že řadič může sloužit jako skokový hostitel pro připojení ke clusteru mimo virtuální síť.
+     Pokud během nasazení vytvoříte novou virtuální síť nebo podsíť, bude mít řadič veřejnou IP adresu. To znamená, že řadič může sloužit jako hostitel skoku pro připojení ke clusteru mimo virtuální síť.
 
-   * Vytvoření virtuálních počítačů uzlu clusteru
+   * Vytvoření virtuálních virtuálních disponérů uzlů clusteru
 
    * Vytvoření clusteru z jednotlivých uzlů
 
-   * Volitelně můžete vytvořit nový kontejner objektů BLOB a nakonfigurovat ho jako back-end úložiště pro cluster.
+   * Volitelně můžete vytvořit nový kontejner objektů Blob a nakonfigurovat jej jako back-endové úložiště pro cluster.
 
-   Vytváření clusteru je podrobně popsáno v tématu [nasazení clusteru vFXT](avere-vfxt-deploy.md).
+   Vytvoření clusteru je podrobně popsáno v [části Nasazení clusteru vFXT](avere-vfxt-deploy.md).
 
 1. Konfigurace clusteru
 
-   K přizpůsobení nastavení clusteru se připojte k rozhraní avere vFXT Configuration Interface (avere Control Panel). Pokud používáte hardwarové úložiště nebo další kontejnery objektů blob, přihlaste se ke sledování podpory a přidejte svůj systém úložiště.
+   Připojte se ke konfiguračnímu rozhraní Avere vFXT (Ovládací panely Avere) a přizpůsobte tak nastavení clusteru. Přihlaste se k monitorování podpory a přidejte úložný systém, pokud používáte hardwarové úložiště nebo další kontejnery objektů Blob.
 
    * [Přístup ke clusteru vFXT](avere-vfxt-cluster-gui.md)
    * [Povolit podporu](avere-vfxt-enable-support.md)
@@ -66,14 +66,14 @@ Tady je přehled všech kroků.
 
 1. Připojení klientů
 
-   Pokud se chcete dozvědět o vyrovnávání zatížení a jak by měly klientské počítače připojit cluster, postupujte podle pokynů v tématu [připojení clusteru avere vFXT](avere-vfxt-mount-clients.md) .
+   Postupujte podle pokynů v [připojení clusteru Avere vFXT](avere-vfxt-mount-clients.md) se dozvíte o vyrovnávání zatížení a jak by měly klientské počítače připojit cluster.
 
-1. Přidat data (v případě potřeby)
+1. Přidání dat (v případě potřeby)
 
-   Vzhledem k tomu, že avere vFXT je škálovatelná mezipaměť s více klienty, nejlepším způsobem, jak přesunout data do nového záložního kontejneru úložiště, je s více klienty, strategii kopírování souborů s více vlákny.
+   Vzhledem k tomu, že Avere vFXT je škálovatelná mezipaměť s více klienty, nejlepší způsob, jak přesunout data do nového kontejneru úložiště back-end, je pomocí strategie kopírování souborů s více klienty s více vlákny.
 
-   Pokud potřebujete přesunout pracovní sadu dat do nového kontejneru objektů BLOB nebo jiného záložního úložného systému, postupujte podle pokynů v tématu [přesun dat do clusteru vFXT](avere-vfxt-data-ingest.md).
+   Pokud potřebujete přesunout data pracovní sady do nového kontejneru objektů Blob nebo jiného back-endového úložného systému, postupujte podle pokynů v [části Přesunutí dat do clusteru vFXT](avere-vfxt-data-ingest.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokračujte v [přípravě na vytvoření avere vFXT](avere-vfxt-prereqs.md) k dokončení požadovaných úloh.
+Pokračujte [v přípravě na vytvoření Avere vFXT](avere-vfxt-prereqs.md) k dokončení požadovaných úkolů.
