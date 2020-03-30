@@ -1,6 +1,6 @@
 ---
-title: Základní hodnoty zabezpečení Azure pro HDInsight
-description: Základní hodnoty zabezpečení Azure pro HDInsight
+title: Základ zabezpečení Azure pro HDInsight
+description: Základ zabezpečení Azure pro HDInsight
 author: msmbaldwin
 manager: rkarlin
 ms.service: security
@@ -8,180 +8,180 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: c3452fc68f7add40979513d3e3956f1c93e327f0
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: eddfcacd01a67fffa8e3e992e021ed1771d25944
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943952"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471332"
 ---
-# <a name="azure-security-baseline-for-hdinsight"></a>Základní hodnoty zabezpečení Azure pro HDInsight
+# <a name="azure-security-baseline-for-hdinsight"></a>Základ zabezpečení Azure pro HDInsight
 
-Základní plán zabezpečení Azure pro HDInsight obsahuje doporučení, která vám pomůžou vylepšit stav zabezpečení vašeho nasazení.
+Azure Security Baseline pro HDInsight obsahuje doporučení, která vám pomohou zlepšit stav zabezpečení vašeho nasazení.
 
-Základní hodnoty pro tyto služby se vykreslí z [bezpečnostního testu Azure Security 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview), který poskytuje doporučení k zabezpečení cloudových řešení v Azure s využitím našich osvědčených postupů.
+Základní informace pro tyto služby jsou z azure [security benchmark verze 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview), který poskytuje doporučení, jak můžete zabezpečit cloudová řešení v Azure s našimi pokyny pro osvědčené postupy.
 
-Další informace najdete v tématu [Přehled standardních hodnot zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+Další informace naleznete v [tématu Přehled směrného plánu zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
 
 ## <a name="network-security"></a>Zabezpečení sítě
 
-*Další informace najdete v tématu [řízení zabezpečení: zabezpečení sítě](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
+*Další informace naleznete v [tématu Security Control: Network Security](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
 
-### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: Chraňte prostředky pomocí skupin zabezpečení sítě nebo Azure Firewall v Virtual Network
+### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1: Ochrana prostředků pomocí skupin zabezpečení sítě nebo brány Azure Firewall ve virtuální síti
 
-**Doprovodné**materiály: hraniční zabezpečení ve službě Azure HDInsight se dosahuje pomocí virtuálních sítí. Podnikový správce může vytvořit cluster v rámci virtuální sítě a použít skupinu zabezpečení sítě (NSG) k omezení přístupu k virtuální síti. Pouze povolené IP adresy v příchozích pravidlech skupiny zabezpečení sítě budou moci komunikovat s clusterem Azure HDInsight. Tato konfigurace poskytuje hraniční zabezpečení. Všechny clustery nasazené ve virtuální síti budou mít taky privátní koncový bod, který se přeloží na privátní IP adresu uvnitř Virtual Network pro privátní přístup HTTP ke branám clusteru.
+**Pokyny:** Zabezpečení perimetru v Azure HDInsight je dosaženo prostřednictvím virtuálních sítí. Podnikový správce může vytvořit cluster uvnitř virtuální sítě a použít skupinu zabezpečení sítě (NSG) k omezení přístupu k virtuální síti. S clusterem Azure HDInsight budou moct komunikovat jenom povolené IP adresy v pravidlech skupiny zabezpečení sítě. Tato konfigurace poskytuje zabezpečení obvodu. Všechny clustery nasazené ve virtuální síti budou mít také privátní koncový bod, který se překládá na privátní IP adresu uvnitř virtuální sítě pro privátní http přístup k bránám clusteru.
 
 
-Jak nasadit Azure HDInsight v rámci Virtual Network a zabezpečit pomocí skupiny zabezpečení sítě:
+Jak nasadit Azure HDInsight v rámci virtuální sítě a zabezpečené se skupinou zabezpečení sítě:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1,2: Sledujte a protokolujte konfiguraci a provoz virtuální sítě, podsítí a síťových karet.
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2: Sledování a protokolování konfigurace a provozu sítí, podsítí a síťových rozhraní
 
-**Doprovodné**materiály: použijte Azure Security Center a opravte doporučení k ochraně sítě pro virtuální síť, podsíť a skupinu zabezpečení sítě, která se používá k zabezpečení clusteru Azure HDInsight. Povolte protokoly toku NSG (Network Security Group) a odešlete protokoly do účtu Azure Storage pro audit provozu. Protokoly toku NSG můžete také odesílat do pracovního prostoru Azure Log Analytics a používat Azure Analýza provozu k poskytování přehledů o toku přenosů ve vašem cloudu Azure. Mezi výhody Azure Analýza provozu je schopnost vizualizovat síťovou aktivitu a identifikovat aktivní body, identifikovat bezpečnostní hrozby, pochopit vzory toků provozu a odhalit síťové opravy chyb.
+**Pokyny:** Použijte Azure Security Center a navažte doporučení ochrany sítě pro virtuální síť, podsíť a skupinu zabezpečení sítě, která se používá k zabezpečení clusteru Azure HDInsight. Povolte protokoly toku skupiny zabezpečení sítě (NSG) a odesílejte protokoly do účtu úložiště Azure do auditování provozu. Protokoly toku nsg můžete také odesílat do pracovního prostoru Azure Log Analytics a používat Azure Traffic Analytics k poskytování přehledů o toku provozu ve vašem cloudu Azure. Některé výhody Azure Traffic Analytics jsou možnost vizualizovat aktivitu v síti a identifikovat aktivní body, identifikovat bezpečnostní hrozby, pochopit vzorce toku provozu a určit chybné konfigurace sítě.
 
 
-Jak povolit protokoly toku NSG:
+Povolení protokolů toku nsg:
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
 
-Jak povolit a používat Azure Analýza provozu:
+Jak povolit a používat Azure Traffic Analytics:
 
 https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 
-Pochopení zabezpečení sítě, které poskytuje Azure Security Center:
+Seznamte se se zabezpečením sítě poskytovaným službou Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="13-protect-critical-web-applications"></a>1,3: Chraňte kritické webové aplikace
+### <a name="13-protect-critical-web-applications"></a>1.3: Ochrana kritických webových aplikací
 
-**Doprovodné**materiály: nepoužitelné; Srovnávací test je určený pro služby Azure apps nebo výpočetní prostředky hostující webové aplikace.
+**Pokyny**: Nepoužije se; benchmark je určen pro Službu Azure Apps Service nebo výpočetní prostředky hostující webové aplikace.
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování Azure Security Center**: Nelze použít
 
-**Odpovědnost**: netýká se
+**Odpovědnost**: Nepoužije se
 
-### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: zakažte komunikaci se známými škodlivými IP adresami.
+### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4: Odepřít komunikaci se známými škodlivými IP adresami
 
-**Doprovodné**materiály: u ochrany před útoky DDoS povolte službu Azure DDoS Standard Protection ve virtuální síti, ve které je vaše Azure HDInsight nasazené. K odepření komunikace se známými škodlivými nebo nepoužívanými internetovými IP adresami použijte Azure Security Center integrovanou analýzu hrozeb.
+**Pokyny:** Pro ochranu před útoky DDoS povolte ochranu Azure DDoS Standard ve virtuální síti, kde se nasazuje váš Azure HDInsight. Pomocí integrované analýzy hrozeb Azure Security Center můžete odepřít komunikaci se známými škodlivými nebo nepoužívanými internetovými IP adresami.
 
 
-Jak nakonfigurovat DDoS Protection:
+Jak nakonfigurovat ochranu Před sdos:
 
 https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
 
-Pochopení Azure Security Center integrované analýzy hrozeb:
+Seznamte se s integrovanou analýzou hrozeb Centra zabezpečení Azure:
 
 https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="15-record-network-packets-and-flow-logs"></a>1,5: záznam síťových paketů a protokolů toků
+### <a name="15-record-network-packets-and-flow-logs"></a>1.5: Záznam síťových paketů a protokolů toku
 
-**Pokyny**: povolení protokolů Flow skupiny zabezpečení sítě (NSG) pro NSG připojené k podsíti používané k ochraně clusteru Azure HDInsight. Zaznamenejte NSG Flow do účtu Azure Storage pro generování záznamů toků. Pokud se to vyžaduje pro prošetření aktivity neobvyklé, povolte zachytávání paketů služby Azure Network Watcher.
+**Pokyny:** Povolte protokoly toku skupiny zabezpečení sítě (NSG) pro skupinu zabezpečení sítě připojenou k podsíti, která se používá k ochraně clusteru Azure HDInsight. Zaznamenejte protokoly toku nsg do účtu úložiště Azure pro generování záznamů toku. Pokud je to nutné pro zkoumání neobvyklé aktivity, povolte zachytávání paketů Azure Network Watcher.
 
 
-Jak povolit protokoly toku NSG:
+Povolení protokolů toku nsg:
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
 
-Postup povolení Network Watcher:
+Jak povolit sledování sítě:
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: nasazení systémů ochrany před internetovými útoky/systémy prevence vniknutí (ID/IP adresy)
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6: Nasazení síťových systémů detekce vniknutí/prevence vniknutí (IDS/IPS)
 
-**Doprovodné**materiály: požadavek může splnit ID řízení zabezpečení Azure 1,1; Nasaďte cluster Azure HDInsight do virtuální sítě a zabezpečte ji pomocí skupiny zabezpečení sítě (NSG).
+**Pokyny:** Požadavek může být splněna Azure řízení zabezpečení ID 1.1; Nasaďte cluster Azure HDInsight do virtuální sítě a zabezpečte pomocí skupiny zabezpečení sítě (NSG).
 
-K dispozici je několik závislostí pro Azure HDInsight, které vyžadují příchozí provoz. Příchozí provoz správy nejde odeslat přes zařízení brány firewall. Zdrojové adresy pro požadovaný provoz správy jsou známé a publikované. Vytvořte pravidla skupiny zabezpečení sítě s těmito informacemi, abyste mohli povolit provoz jenom z důvěryhodných umístění, a zabezpečit příchozí provoz do clusterů.
+Existuje několik závislostí pro Azure HDInsight, které vyžadují příchozí provoz. Příchozí provoz správy nelze odeslat prostřednictvím zařízení brány firewall. Zdrojové adresy pro požadovaný provoz správy jsou známy a publikovány. Vytvořte pravidla skupiny zabezpečení sítě s těmito informacemi, která umožní provoz pouze z důvěryhodných umístění a zajistí příchozí provoz do clusterů.
 
-Postup nasazení služby HDInsight v rámci Virtual Network a zabezpečení pomocí skupiny zabezpečení sítě: https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
+Jak nasadit HDInsight v rámci virtuální sítě a zabezpečení se skupinou zabezpečení sítě:https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
 
-Vysvětlení závislostí HDInsight a využití brány firewall: https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic
+Seznamte se s závislostmi HDInsight a používáním brány firewall:https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic
 
-IP adresy správy HDInsight: https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses
+IP adresy hdinsight pro správu:https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="17-manage-traffic-to-web-applications"></a>1,7: Správa provozu do webových aplikací
+### <a name="17-manage-traffic-to-web-applications"></a>1.7: Správa návštěvnosti webových aplikací
 
-**Doprovodné**materiály: nepoužitelné; Srovnávací test je určený pro služby Azure apps nebo výpočetní prostředky hostující webové aplikace.
+**Pokyny**: Nepoužije se; benchmark je určen pro Službu Azure Apps Service nebo výpočetní prostředky hostující webové aplikace.
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování Azure Security Center**: Nelze použít
 
-**Odpovědnost**: netýká se
+**Odpovědnost**: Nepoužije se
 
-### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: Minimalizujte složitost a administrativní režii pravidel zabezpečení sítě
+### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8: Minimalizace složitosti a administrativní režie pravidel zabezpečení sítě
 
-**Pokyny**: pomocí značek služby virtuální sítě můžete definovat řízení přístupu k síti u skupin zabezpečení sítě (NSG), které jsou připojené k podsíti, ve které je nasazený cluster Azure HDInsight. Značky služeb můžete používat místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby (např. ApiManagement) v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu. Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje označení služby jako adresy změny.
+**Pokyny**: Pomocí značek virtuální síťové služby definujte ovládací prvky přístupu k síti ve skupinách zabezpečení sítě (NSG), které jsou připojené k podsíti, ve které je váš cluster Azure HDInsight nasazený. Značky služeb můžete používat místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby (např. apimanagement) v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo odepřít provoz pro odpovídající službu. Společnost Microsoft spravuje předpony adres zahrnuté v servisním štítku a automaticky aktualizuje výrobní číslo jako adresy změnit.
 
 
 Pochopení a používání značek služeb pro Azure HDInsight:
 
 https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: Udržujte standardní konfigurace zabezpečení pro síťová zařízení.
+### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9: Udržovat standardní konfigurace zabezpečení pro síťová zařízení
 
-**Pokyny**: definování a implementace standardních konfigurací zabezpečení pro síťové prostředky týkající se vašeho clusteru Azure HDInsight. Pomocí aliasů Azure Policy v oborech názvů Microsoft. HDInsight a Microsoft. Network můžete vytvářet vlastní zásady pro auditování nebo vymáhání konfigurace sítě v clusteru Azure HDInsight.
-
-
-Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tím, že zabalíte klíčové artefakty prostředí, jako jsou například šablony Azure Resource Manager, ovládací prvky RBAC a zásady, a to v jediné definici podrobného plánu. Podrobné sestavování můžete snadno použít pro nová předplatná a prostředí a vyladit řízení a správu prostřednictvím správy verzí.
+**Pokyny:** Definujte a implementujte standardní konfigurace zabezpečení pro síťové prostředky související s vaším clusterem Azure HDInsight. Pomocí aliasů zásad Azure v oborech názvů Microsoft.HDInsight a Microsoft.Network můžete vytvořit vlastní zásady pro auditování nebo vynucení síťové konfigurace vašeho clusteru Azure HDInsight.
 
 
-Jak zobrazit dostupné aliasy Azure Policy:
+Azure Blueprints můžete také použít ke zjednodušení rozsáhlých nasazení Azure tím, že zabalíte artefakty prostředí klíčů, jako jsou šablony Azure Resource Manager, ovládací prvky RBAC a zásady, v jediné definici podrobného plánu. Snadno použít podrobný plán pro nová předplatná a prostředí a doladit řízení a správu prostřednictvím správy verzí.
+
+
+Jak zobrazit dostupné aliasy zásad Azure:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 
-Jak nakonfigurovat a spravovat Azure Policy:
+Jak nakonfigurovat a spravovat zásady Azure:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
-Postup vytvoření Azure Blueprint:
+Jak vytvořit Azure Blueprint:
 
 https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="110-document-traffic-configuration-rules"></a>1,10: pravidla pro konfiguraci provozu dokumentu
+### <a name="110-document-traffic-configuration-rules"></a>1.10: Dokumentovat pravidla konfigurace provozu
 
-**Doprovodné**materiály: používejte značky pro skupinu zabezpečení sítě (skupin zabezpečení sítě) a další prostředky související se zabezpečením a tokem provozu sítě, které jsou přidruženy k vašemu clusteru Azure HDInsight. U individuálních pravidel NSG použijte pole Popis k zadání obchodních potřeb a/nebo doby trvání (atd.) pro všechna pravidla, která umožňují provoz do/ze sítě.
-
-
-Použijte některou z vestavěných definic zásad Azure souvisejících s označováním, jako je "vyžadovat značku a její hodnotu", aby se zajistilo, že se vytvoří všechny prostředky s značkami a upozorní vás na stávající neoznačené prostředky.
+**Pokyny:** Použití značek pro skupinu zabezpečení sítě (NSGs) a další prostředky související se zabezpečením sítě a tokem provozu, které jsou přidruženy k vašemu clusteru Azure HDInsight. Pro jednotlivá pravidla sítě zabezpečení sítě použijte pole Popis k určení obchodní potřeby a/nebo doby trvání (atd.) pro všechna pravidla, která umožňují provoz do nebo ze sítě.
 
 
-Pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure (CLI) můžete vyhledávat nebo provádět akce s prostředky na základě jejich značek.
+Pomocí některé z předdefinovaných definic zásad Azure souvisejících s označováním, jako je například Vyžadovat značku a její hodnotu, můžete zajistit, aby se všechny prostředky vytvořily pomocí značek, a upozornit vás na existující neoznačené prostředky.
 
 
-Vytváření a používání značek:
+Můžete použít Azure PowerShell nebo Azure rozhraní příkazového řádku (CLI) k vyhledávání nebo provádění akcí na prostředky na základě jejich značky.
+
+
+Jak vytvořit a používat značky:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
@@ -191,17 +191,17 @@ Jak vytvořit virtuální síť:
 https://docs.microsoft.com/azure/virtual-network/quick-create-portal
 
 
-Vytvoření NSG s konfigurací zabezpečení:
+Jak vytvořit skupinu zabezpečení zabezpečení s konfigurací zabezpečení:
 
 https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: pomocí automatizovaných nástrojů monitorujte konfigurace síťových prostředků a zjišťují změny.
+### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11: Použití automatizovaných nástrojů ke sledování konfigurace síťových prostředků a zjišťování změn
 
-**Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků, které se vztahují k nasazením Azure HDInsight. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích.
+**Pokyny:** Pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků souvisejících s nasazením Azure HDInsight. Vytvořte výstrahy v rámci Azure Monitor, který se aktivuje, když dojde ke změnám kritických síťových prostředků.
 
 
 Jak zobrazit a načíst události protokolu aktivit Azure:
@@ -209,50 +209,50 @@ Jak zobrazit a načíst události protokolu aktivit Azure:
 https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
 
 
-Postup při vytváření výstrah v Azure Monitor: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Jak vytvořit výstrahy ve službě Azure Monitor:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
 ## <a name="logging-and-monitoring"></a>Protokolování a monitorování
 
-*Další informace najdete v tématu [řízení zabezpečení: protokolování a monitorování](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Další informace naleznete [v tématu Security Control: Logging and Monitoring](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
 
-### <a name="21-use-approved-time-synchronization-sources"></a>2,1: Použijte schválené zdroje synchronizace času
+### <a name="21-use-approved-time-synchronization-sources"></a>2.1: Použití schválených zdrojů synchronizace času
 
-**Pokyny**: Společnost Microsoft udržuje časové zdroje pro součásti clusteru Azure HDInsight, můžete aktualizovat synchronizaci času pro vaše výpočetní nasazení.
+**Pokyny:** Microsoft udržuje zdroje času pro součásti clusteru Azure HDInsight, můžete aktualizovat synchronizaci času pro vaše výpočetní nasazení.
 
 
-Jak nakonfigurovat časovou synchronizaci pro výpočetní prostředky Azure:
+Jak nakonfigurovat synchronizaci času pro výpočetní prostředky Azure:
 
 https://docs.microsoft.com/azure/virtual-machines/windows/time-sync
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: Microsoft
+**Odpovědnost**: Microsoft
 
-### <a name="22-configure-central-security-log-management"></a>2,2: Konfigurace centrální správy protokolů zabezpečení
+### <a name="22-configure-central-security-log-management"></a>2.2: Konfigurace správy centrálního protokolu zabezpečení
 
-**Doprovodné**materiály: cluster Azure HDInsight můžete připojit k Azure monitor k agregaci dat zabezpečení generovaných clusterem. Využijte vlastní dotazy k detekci a reakci na hrozby v prostředí. 
+**Pokyny:** Cluster Azure HDInsight můžete založit do Azure Monitoru a agregovat data zabezpečení generovaná clusterem. Využijte vlastní dotazy ke zjišťování a reakci na hrozby v prostředí. 
 
 
-Jak připojit cluster Azure HDInsight k Azure Monitor:
+Jak zavést cluster Azure HDInsight do Azure Monitoru:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-tutorial
 
 
-Vytváření vlastních dotazů pro cluster Azure HDInsight:
+Jak vytvořit vlastní dotazy pro cluster Azure HDInsight:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-use-queries
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: povolení protokolování auditu pro prostředky Azure
+### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3: Povolení protokolování auditování prostředků Azure
 
-**Doprovodné**materiály: Povolte Azure monitor pro cluster HDInsight, nasměrujte ho do pracovního prostoru Log Analytics. Tím se zaprotokolují relevantní informace o clusteru a metriky OS pro všechny uzly clusteru Azure HDInsight.
+**Pokyny:** Povolte Azure Monitor pro cluster HDInsight, přesměrujte ho do pracovního prostoru Analýzy protokolů. Tím se budou protokolovat relevantní informace o clusteru a metriky operačního systému pro všechny uzly clusteru Azure HDInsight.
 
 
 Jak povolit protokolování pro cluster HDInsight:
@@ -260,208 +260,208 @@ Jak povolit protokolování pro cluster HDInsight:
  https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-tutorial
 
 
-Dotaz na protokoly HDInsight:
+Jak dotaz HDInsight protokoly:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-use-queries
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: shromáždění protokolů zabezpečení z operačních systémů
+### <a name="24-collect-security-logs-from-operating-systems"></a>2.4: Shromažďování protokolů zabezpečení z operačních systémů
 
-**Doprovodné**materiály: zprovoznění clusteru Azure HDInsight pro Azure monitor. Ujistěte se, že použitý pracovní prostor Log Analytics má dobu uchování protokolu nastavenou v souladu s předpisy pro dodržování předpisů vaší organizace.
+**Pokyny:** Palubní cluster Azure HDInsight do Azure Monitoru. Ujistěte se, že použitý pracovní prostor Log Analytics má nastavenou dobu uchovávání protokolu podle předpisů pro dodržování předpisů vaší organizace.
 
 
-Jak připojit cluster Azure HDInsight k Azure Monitor:
+Jak zavést cluster Azure HDInsight do Azure Monitoru:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-tutorial
 
 
-Jak nakonfigurovat Log Analytics dobu uchovávání pracovního prostoru:
+Jak nakonfigurovat dobu uchování pracovního prostoru analýzy protokolů:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="25-configure-security-log-storage-retention"></a>2,5: Konfigurace uchovávání úložiště protokolu zabezpečení
+### <a name="25-configure-security-log-storage-retention"></a>2.5: Konfigurace uchovávání úložiště protokolu zabezpečení
 
-**Doprovodné**materiály: zprovoznění clusteru Azure HDInsight pro Azure monitor. Ujistěte se, že se v pracovním prostoru Azure Log Analytics používala doba uchování protokolu nastavená v souladu s předpisy pro dodržování předpisů vaší organizace.
+**Pokyny:** Palubní cluster Azure HDInsight do Azure Monitoru. Ujistěte se, že použitý pracovní prostor Azure Log Analytics má nastavenou dobu uchovávání protokolů podle předpisů vaší organizace pro dodržování předpisů.
 
 
-Jak připojit cluster Azure HDInsight k Azure Monitor:
+Jak zavést cluster Azure HDInsight do Azure Monitoru:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-tutorial
 
 
-Jak nakonfigurovat Log Analytics dobu uchovávání pracovního prostoru:
+Jak nakonfigurovat dobu uchování pracovního prostoru analýzy protokolů:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="26-monitor-and-review-logs"></a>2,6: Sledujte a kontrolujte protokoly
+### <a name="26-monitor-and-review-logs"></a>2.6: Sledování a kontrola protokolů
 
-**Pokyny**: použití dotazů v pracovním prostoru Azure Log Analytics k dotazování na protokoly služby Azure HDInsight:
+**Pokyny:** Pomocí dotazů pracovního prostoru Azure Log Analytics můžete dotazovat protokoly Azure HDInsight:
 
 
-Vytváření vlastních dotazů pro clustery Azure HDInsight:
+Jak vytvořit vlastní dotazy pro clustery Azure HDInsight:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-use-queries
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: povolení výstrah pro aktivitu neobvyklé
+### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7: Povolit upozornění na anomální aktivitu
 
-**Pokyny**: pracovní prostor Azure Log Analytics slouží k monitorování a upozorňování na aktivity neobvyklé v protokolech zabezpečení a událostech týkajících se vašeho clusteru Azure HDInsight.
+**Pokyny:** Použijte pracovní prostor Azure Log Analytics pro monitorování a upozorňování na neobvyklé aktivity v protokolech zabezpečení a událostech souvisejících s vaším clusterem Azure HDInsight.
 
 
-Správa výstrah v Azure Security Center:
+Jak spravovat výstrahy v Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts
 
 
-Jak upozornit na data protokolu Log Analytics:
+Jak upozornit na data protokolu analytics protokolu:
 
 https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="28-centralize-anti-malware-logging"></a>2,8: centralizace protokolování proti malwaru
+### <a name="28-centralize-anti-malware-logging"></a>2.8: Centralizovat protokolování antimalwaru
 
-**Doprovodné**materiály: Azure HDInsight se dodává s ClamScan předinstalovaným a povoleným pro Image uzlů clusteru, ale musíte software spravovat a ručně agregovat nebo monitorovat všechny protokoly, které ClamScan vytvoří.
+**Pokyny**: Azure HDInsight je dodáván s předinstalovaným a povoleným funkcí služby Clamscan pro bitové kopie uzlu clusteru, ale musíte spravovat software a ručně agregovat nebo monitorovat všechny protokoly, které clamscan vytvoří.
 
 
-Principy ClamScan:
+Pochopte Škeble:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-faq#security-and-certificates
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="29-enable-dns-query-logging"></a>2,9: povolení protokolování dotazů DNS
+### <a name="29-enable-dns-query-logging"></a>2.9: Povolení protokolování dotazů DNS
 
-**Pokyny**: implementace řešení třetí strany pro protokolování DNS.
+**Pokyny**: Implementujte řešení třetí strany pro protokolování DNS.
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="210-enable-command-line-audit-logging"></a>2,10: povolení protokolování auditu příkazového řádku
+### <a name="210-enable-command-line-audit-logging"></a>2.10: Povolení protokolování auditu příkazového řádku
 
-**Pokyny**: ruční konfigurace protokolování konzoly na základě jednotlivých uzlů.
+**Pokyny:** Ručně nakonfigurujte protokolování konzoly na základě uzlů.
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
 ## <a name="identity-and-access-control"></a>Identita a řízení přístupu
 
-*Další informace najdete v tématu [řízení zabezpečení: identita a Access Control](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
+*Další informace naleznete [v tématu Zabezpečení: Identita a řízení přístupu](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
 
-### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
+### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: Vedení soupisu administrativních účtů
 
-**Doprovodné**materiály: Udržujte si záznam místního účtu pro správu, který se vytvoří během zřizování clusteru Azure HDInsight, i u všech dalších účtů, které vytvoříte. Kromě toho, pokud se používá Integrace Azure AD, Azure AD má předdefinované role, které se musí explicitně přiřadit a proto se Queryable. Pomocí modulu Azure AD PowerShell můžete provádět dotazy ad hoc a zjišťovat účty, které jsou členy skupin pro správu.
-
-
-Kromě toho můžete použít Azure Security Center doporučení pro správu identit a přístupu.
+**Pokyny:** Udržujte záznam o místním účtu pro správu, který se vytvoří během zřizování clusteru clusteru Azure HDInsight, a také o všech dalších účtech, které vytvoříte. Kromě toho pokud se používá integrace Azure AD, Azure AD má předdefinované role, které musí být explicitně přiřazeny a jsou proto dotazovatelné. Pomocí modulu Azure AD PowerShell můžete provádět adhoc dotazy ke zjišťování účtů, které jsou členy skupin pro správu.
 
 
-Jak získat roli adresáře ve službě Azure AD pomocí prostředí PowerShell:
+Kromě toho můžete použít azure security center identity a řízení přístupu doporučení.
+
+
+Jak získat roli adresáře ve službě Azure AD s PowerShellem:
 
 https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
 
 
-Jak získat členy role adresáře ve službě Azure AD pomocí prostředí PowerShell:
+Jak získat členy role adresáře ve službě Azure AD s PowerShellem:
 
 https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
 
 
-Jak monitorovat identitu a přístup pomocí Azure Security Center:
+Jak sledovat identitu a přístup pomocí Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="32-change-default-passwords-where-applicable"></a>3,2: Změna výchozích hesel tam, kde je to možné
+### <a name="32-change-default-passwords-where-applicable"></a>3.2: Změna výchozích hesel, pokud je to možné
 
-**Pokyny**: při zřizování clusteru vyžaduje Azure vytvořit nová hesla pro webový portál a přístup k Secure Shell (SSH). Neexistují žádná výchozí hesla, která by bylo možné změnit, ale můžete zadat různá hesla pro přístup SSH a webový portál.
+**Pokyny:** Při zřizování clusteru Azure vyžaduje vytvoření nových hesel pro webový portál a přístup k zabezpečenému prostředí (SSH). Neexistují žádná výchozí hesla změnit, ale můžete zadat různá hesla pro SSH a přístup k webovému portálu.
 
 
 Jak nastavit hesla při zřizování clusteru Azure HDInsight:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="33-use-dedicated-administrative-accounts"></a>3,3: použijte vyhrazené účty pro správu.
+### <a name="33-use-dedicated-administrative-accounts"></a>3.3: Použití vyhrazených administrativních účtů
 
-**Pokyny**: integrace ověřování pro cluster Azure HDInsight pomocí Azure Active Directory. Vytvořte zásady a postupy týkající se používání vyhrazených účtů pro správu.
-
-
-Kromě toho můžete použít Azure Security Center doporučení pro správu identit a přístupu.
+**Pokyny:** Integrace clusteru Authentication for Azure HDInsight s Azure Active Directory. Vytvořte zásady a postupy týkající se používání vyhrazených účtů pro správu.
 
 
-Jak integrovat ověřování Azure HDInsight pomocí Azure Active Directory:
+Kromě toho můžete použít azure security center identity a řízení přístupu doporučení.
+
+
+Jak integrovat ověřování Azure HDInsight s Azure Active Directory:
 
 https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds
 
 
-Jak monitorovat identitu a přístup pomocí Azure Security Center:
+Jak sledovat identitu a přístup pomocí Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: použijte jednotné přihlašování (SSO) s Azure Active Directory
+### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: Použití jednotného přihlašování (SSO) s Azure Active Directory
 
-**Doprovodné**materiály: pomocí služby Azure HDInsight ID Broker se přihlaste k clusterům balíček zabezpečení podniku (ESP) pomocí Multi-Factor Authentication bez zadání hesla. Pokud jste se už přihlásili k jiným službám Azure, jako je Azure Portal, můžete se ke svému clusteru Azure HDInsight přihlásit pomocí jednotného přihlašování (SSO).
+**Pokyny:** Pomocí azure HDInsight ID Broker se přihlásit k clustery balíček podnikového zabezpečení (ESP) pomocí vícefaktorového ověřování, bez zadání hesla. Pokud jste se už přihlásili k jiným službám Azure, jako je například portál Azure, můžete se přihlásit ke svému clusteru Azure HDInsight pomocí jednotného přihlašování (SSO).
 
 
-Jak povolit službu Azure HDInsight ID Broker:
+Jak povolit Azure HDInsight ID Broker:
 
 https://docs.microsoft.com/azure/hdinsight/domain-joined/identity-broker#enable-hdinsight-id-broker
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Používejte vícefaktorové ověřování pro veškerý přístup založený na Azure Active Directory
+### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: Použití vícefaktorového ověřování pro veškerý přístup založený na službě Azure Active Directory
 
-**Doprovodné**materiály: Povolte Azure AD MFA a sledujte Azure Security Center doporučení pro správu identit a přístupu. Clustery Azure HDInsight s nakonfigurovaným Balíček zabezpečení podniku můžou být připojené k doméně, aby uživatelé domény mohli k ověřování s clustery používat svoje doménové přihlašovací údaje a spouštět úlohy s velkými objemy dat. Při ověřování pomocí vícefaktorového ověřování (MFA) se uživatelům zobrazí výzva k zadání druhého ověřovacího faktoru.
+**Pokyny:** Povolte Azure AD MFA a postupujte podle doporučení Azure Security Center identity a správy přístupu. Clustery Azure HDInsight s nakonfigurovaným balíčkem podnikového zabezpečení lze připojit k doméně, aby uživatelé domény mohli používat svá pověření domény k ověřování pomocí clusterů a spouštění úloh velkých objemů dat. Při ověřování s vícefaktorovým ověřováním (MFA) povoleno, budou uživatelé vyzváni k poskytnutí druhého faktoru ověřování.
 
 
-Jak povolit vícefaktorové ověřování v Azure:
+Jak povolit vícefaktorové povolení v Azure:
 
 https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
 
-Jak monitorovat identitu a přístup v rámci Azure Security Center:
+Jak sledovat identitu a přístup v rámci Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: Používejte vyhrazené počítače (privilegovaný přístup k pracovní stanici) pro všechny úlohy správy
+### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: Pro všechny administrativní úkoly používejte vyhrazené počítače (pracovní stanice s privilegovaným přístupem)
 
-**Doprovodné**materiály: použití privilegovaným přístupem (privilegovaných pracovních stanic) se službou Multi-Factor Authentication (MFA) nakonfigurovaným pro přihlášení k a konfiguraci clusterů Azure HDInsight a souvisejících prostředků.
+**Pokyny:** Používejte paws (pracovní stanice s privilegovaným přístupem) s vícefaktorovým ověřováním (MFA) nakonfigurovaným pro přihlášení a konfiguraci clusterů Azure HDInsight a souvisejících prostředků.
 
 
 Další informace o pracovních stanicích s privilegovaným přístupem:
@@ -469,50 +469,50 @@ Další informace o pracovních stanicích s privilegovaným přístupem:
 https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
 
 
-Jak povolit vícefaktorové ověřování v Azure:
+Jak povolit vícefaktorové povolení v Azure:
 
 https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování Azure Security Center**: Nelze použít
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7: protokolování a upozornění na podezřelou aktivitu z účtů pro správu
+### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7: Protokolování a upozornění na podezřelou aktivitu z administrativních účtů
 
-**Doprovodné**materiály: clustery Azure HDInsight s nakonfigurovaným balíček zabezpečení podniku můžou být připojené k doméně, aby uživatelé domény mohli k ověřování použít svoje přihlašovací údaje do domény. Sestavy zabezpečení služby Azure Active Directory (AAD) můžete použít pro generování protokolů a výstrah v případě, že v prostředí AAD dojde k podezřelé nebo nebezpečné aktivitě. Pomocí Azure Security Center můžete monitorovat aktivitu identity a přístupu.
+**Pokyny:** Clustery Azure HDInsight s nakonfigurovaným balíčkem podnikového zabezpečení lze připojit k doméně, aby uživatelé domény mohli k ověření používat svá pověření domény. Sestavy zabezpečení Služby Azure Active Directory (AAD) můžete použít pro generování protokolů a výstrah, když dojde k podezřelé nebo nebezpečné aktivitě v prostředí AAD. Azure Security Center slouží ke sledování aktivity identity a přístupu.
 
 
-Jak identifikovat uživatele AAD označené příznakem rizika pro rizikové aktivity:
+Jak identifikovat uživatele AAD označené pro rizikovou aktivitu:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk
 
 
-Jak monitorovat aktivitu identity uživatelů a přístupu v Azure Security Center:
+Jak sledovat identitu uživatelů a aktivitu přístupu v Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: Správa prostředků Azure pouze ze schválených umístění
+### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8: Správa prostředků Azure z jenom schválených umístění
 
-**Doprovodné**materiály: clustery Azure HDInsight s nakonfigurovaným balíček zabezpečení podniku můžou být připojené k doméně, aby uživatelé domény mohli k ověřování použít svoje přihlašovací údaje do domény. Pomocí pojmenovaných umístění podmíněného přístupu povolíte přístup jenom z konkrétních logických skupin rozsahů IP adres nebo zemí nebo oblastí.
+**Pokyny:** Clustery Azure HDInsight s nakonfigurovaným balíčkem podnikového zabezpečení lze připojit k doméně, aby uživatelé domény mohli k ověření používat svá pověření domény. Pomocí pojmenovaných umístění podmíněného přístupu můžete povolit přístup pouze z určitých logických seskupení oblastí IP adres nebo zemí nebo oblastí.
 
 
 Jak nakonfigurovat pojmenovaná umístění v Azure:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="39-use-azure-active-directory"></a>3,9: použijte Azure Active Directory
+### <a name="39-use-azure-active-directory"></a>3.9: Použití služby Azure Active Directory
 
-**Doprovodné**materiály: jako centrální ověřování a systém autorizací použijte Azure Active Directory (AAD). AAD chrání data pomocí silného šifrování pro data v klidovém umístění a při přenosu. AAD taky soli, hodnoty hash a bezpečně ukládají přihlašovací údaje uživatele.
+**Pokyny:** Použijte Azure Active Directory (AAD) jako centrální ověřovací a autorizační systém. AAD chrání data pomocí silného šifrování pro data v klidovém stavu a při přenosu. AAD také soli, hasha a bezpečně ukládá přihlašovací údaje uživatele.
 
-Clustery Azure HDInsight s nakonfigurovaným Balíček zabezpečení podniku (ESP) se dají připojit k doméně, aby uživatelé domény mohli k ověřování s clustery použít svoje přihlašovací údaje do domény.
+Clustery Azure HDInsight s nakonfigurovaným balíčkem enterprise security package (ESP) lze připojit k doméně, aby uživatelé domény mohli používat svá pověření domény k ověřování pomocí clusterů.
 
 
 Jak vytvořit a nakonfigurovat instanci AAD:
@@ -520,239 +520,239 @@ Jak vytvořit a nakonfigurovat instanci AAD:
 https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
 
 
-Jak nakonfigurovat Balíček zabezpečení podniku pomocí Azure Active Directory Domain Services ve službě Azure HDInsight:
+Jak nakonfigurovat balíček podnikového zabezpečení pomocí služby Azure Active Directory Domain Services v Azure HDInsight:
 
 https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: pravidelně kontrolovat a sjednotit přístup uživatelů
+### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: Pravidelně kontrolujte a slaďujte přístup uživatelů
 
-**Doprovodné**materiály: použijte ověřování pomocí Azure Active Directory (AAD) u vašeho clusteru Azure HDInsight. AAD poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Navíc můžete pomocí kontrol přístupu Azure identity efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatele se může pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé. 
+**Pokyny:** Použijte ověřování Azure Active Directory (AAD) s clusterem Azure HDInsight. AAD poskytuje protokoly, které pomáhají zjistit zastaralé účty. Kromě toho můžete pomocí azure identity access reviews efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazení rolí. Přístup uživatele lze pravidelně kontrolovat, aby se zajistilo, že pouze ti praví uživatelé mají trvalý přístup. 
 
 
-Jak používat kontroly přístupu Azure identity:
+Jak používat recenze přístupu k identitám Azure:
 
 https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: monitorování pokusů o přístup k deaktivovaným účtům
+### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11: Sledování pokusů o přístup k deaktivovaným účtům
 
-**Pokyny**: pomocí Azure Active Directory (AAD) přihlašování a protokolů auditu můžete monitorovat pokusy o přístup k deaktivovaným účtům; Tyto protokoly je možné integrovat do jakéhokoli nástroje SIEM/monitoring třetí strany.
-
-
-Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživatelské účty AAD, odesláním protokolů auditu a přihlašovacích protokolů do pracovního prostoru Azure Log Analytics. Nakonfigurujte požadované výstrahy v pracovním prostoru Azure Log Analytics.
+**Pokyny:** Pomocí protokolů přihlášení a auditování služby Azure Active Directory (AAD) můžete sledovat pokusy o přístup k deaktivovaným účtům. tyto protokoly mohou být integrovány do libovolného nástroje SIEM/monitoring u jiných stran.
 
 
-Jak integrovat protokoly aktivit Azure do Azure Monitor:
+Tento proces můžete zjednodušit vytvořením diagnostických nastavení pro uživatelské účty AAD, odesláním protokolů auditu a protokolů přihlášení do pracovního prostoru Azure Log Analytics. Nakonfigurujte požadované výstrahy v pracovním prostoru Azure Log Analytics.
+
+
+Jak integrovat protokoly aktivit Azure do Azure Monitoru:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: upozornění na odchylku chování přihlášení k účtu
+### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: Upozornění na odchylku chování přihlášení k účtu
 
-**Pokyny**: clustery Azure HDInsight s nakonfigurovaným balíček zabezpečení podniku (ESP) se dají připojit k doméně, aby uživatelé domény mohli k ověřování s clustery použít svoje přihlašovací údaje do domény.  Pomocí funkce zjišťování rizik v Azure Active Directory (AAD) a funkce Ochrana identity můžete nakonfigurovat automatizované odezvy na zjištěné podezřelé akce týkající se identit uživatelů. Kromě toho můžete ingestovat data do služby Azure Sentinel pro další šetření.
+**Pokyny:** Clustery Azure HDInsight s nakonfigurovaným balíčkem enterprise security package (ESP) lze připojit k doméně, aby uživatelé domény mohli používat svá pověření domény k ověřování pomocí clusterů.  Pomocí funkce Azure Active Directory (AAD) detekce rizik a ochrana identity nakonfigurujte automatické odpovědi na zjištěné podezřelé akce související s identitami uživatelů. Kromě toho můžete ingestovat data do Azure Sentinelu pro další šetření.
 
 
-Postup zobrazení rizikových přihlášení AAD:
+Jak zobrazit aad riskantní přihlášení:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
 
 
-Jak nakonfigurovat a povolit zásady pro rizika ochrany identity:
+Jak nakonfigurovat a povolit zásady rizik a zásady ochrany identity:
 
 https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: Poskytněte Microsoftu přístup k relevantním zákaznickým datům během scénářů podpory.
+### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13: Poskytněte společnosti Microsoft přístup k relevantním zákaznickým datům během scénářů podpory
 
-**Doprovodné**materiály: není k dispozici; Customer Lockbox ještě není pro Azure HDInsight podporované.
+**Pokyny**: Není k dispozici; Customer Lockbox ještě není pro Azure HDInsight podporovaný.
 
-Seznam podporovaných služeb Customer Lockbox: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+Seznam služeb podporovaných customer lockbox:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
 ## <a name="data-protection"></a>Ochrana dat
 
-*Další informace najdete v tématu [řízení zabezpečení: Ochrana dat](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
+*Další informace naleznete [v tématu Security Control: Data Protection](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
 
-### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: Udržujte inventář citlivých informací
+### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: Udržovat soupis citlivých informací
 
-**Doprovodné**materiály: použití značek u prostředků souvisejících s nasazeními Azure HDInsight, které pomáhá při sledování prostředků Azure, které ukládají nebo zpracovávají citlivé informace.
+**Pokyny:** Pomocí značek na prostředky související s nasazením Azure HDInsight pomoci při sledování prostředků Azure, které ukládají nebo zpracovávají citlivé informace.
 
 
-Vytváření a používání značek:
+Jak vytvářet a používat značky:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: izolujte systémy, které ukládají nebo zpracovávají citlivé informace.
+### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2: Izolovat systémy ukládající nebo zpracovávající citlivé informace
 
-**Pokyny**: implementace samostatných předplatných nebo skupin pro správu pro vývoj, testování a produkci. Clustery Azure HDInsight a všechny přidružené účty úložiště by se měly oddělit pomocí virtuální sítě/podsítě, vhodně označit a zabezpečit v rámci skupiny zabezpečení sítě (NSG) nebo Azure Firewall. Data clusteru by se měla zahrnout do zabezpečeného Azure Storage účtu nebo Azure Data Lake Storage (Gen1 nebo Gen2).
+**Pokyny**: Implementujte samostatné odběry nebo skupiny pro správu pro vývoj, testování a výrobu. Clustery Azure HDInsight a všechny přidružené účty úložiště by měly být odděleny virtuální sítí nebo podsítí, odpovídajícím způsobem označeny a zabezpečeny v rámci skupiny zabezpečení sítě (NSG) nebo Azure Firewall. Data clusteru by měla být obsažena v rámci zabezpečeného účtu úložiště Azure nebo Azure Data Lake Storage (Gen1 nebo Gen2).
 
 
-Vyberte možnosti úložiště pro cluster Azure HDInsight:
+Zvolte možnosti úložiště pro cluster Azure HDInsight:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-compare-storage-options
 
 
-Postup zabezpečení Azure Data Lake Storage:
+Jak zabezpečit Azure Data Lake Storage:
 
 https://docs.microsoft.com/azure/data-lake-store/data-lake-store-security-overview
 
 
-Postup zabezpečení Azure Storage účtů:
+Jak zabezpečit účty úložiště Azure:
 
 https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: Sledujte a zablokujte neoprávněný přenos citlivých informací
+### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3: Sledování a blokování neoprávněného přenosu citlivých informací
 
-**Doprovodné**materiály: u clusterů Azure HDInsight, které ukládají nebo zpracovávají citlivé informace, označte cluster a související prostředky jako citlivé pomocí značek. Pokud chcete snížit riziko ztráty dat prostřednictvím exfiltrace, omezte odchozí síťový provoz pro clustery Azure HDInsight pomocí Azure Firewall.
-
-
-Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
+**Pokyny:** Pro clustery Azure HDInsight ukládání nebo zpracování citlivých informací, označte clusteru a související prostředky jako citlivé pomocí značek. Chcete-li snížit riziko ztráty dat prostřednictvím exfiltrace, omezte odchozí síťový provoz pro clustery Azure HDInsight pomocí azure firewall.
 
 
-Postup omezení odchozího provozu pro clustery Azure HDInsight pomocí Azure Firewall:
+Pro základní platformu, která je spravována společností Microsoft, společnost Microsoft považuje veškerý obsah zákazníků za citlivý a zachází velmi daleko, aby se ochránila před ztrátou a expozicí dat zákazníků. Aby byla zákaznická data v Azure stále zabezpečená, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a funkcí ochrany dat.
+
+
+Jak omezit odchozí provoz pro clustery Azure HDInsight pomocí Azure Firewall:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic
 
 
-Pochopení ochrany zákaznických dat v Azure:
+Seznamte se s ochranou zákaznických dat v Azure:
 
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Odpovědnost**: sdílená
+**Odpovědnost**: Sdíleno
 
-### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: šifrování všech citlivých informací během přenosu
+### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4: Šifrování všech citlivých informací při přepravě
 
-**Doprovodné**materiály: šifrování všech citlivých informací během přenosu. Ujistěte se, že všichni klienti připojující se ke clusteru Azure HDInsight nebo k úložištím dat clusteru (Azure Storage účty nebo Azure Data Lake Storage Gen1/Gen2) můžou vyjednávat TLS 1,2 nebo vyšší. Microsoft Azure prostředky vyjednávat TLS 1,2 ve výchozím nastavení. 
+**Pokyny**: Šifrování všech citlivých informací při přenosu. Ujistěte se, že všichni klienti, kteří se připojují k vašemu clusteru Azure HDInsight nebo datovým úložištím clusteru (účty úložiště Azure nebo Azure Data Lake Storage Gen1/Gen2), jsou schopni vyjednat TLS 1.2 nebo vyšší. Prostředky Microsoft Azure budou ve výchozím nastavení vyjednávat tls 1.2. 
 
 
-Pochopení Azure Data Lake Storage šifrování při přenosu:
+Principy šifrování Azure Data Lake Storage při přenosu:
 
 https://docs.microsoft.com/azure/data-lake-store/data-lake-store-security-overview
 
 
-Principy šifrování Azure Storage účtu při přenosu:
+Seznamte se s šifrováním účtu úložiště Azure při přenosu:
 
 https://docs.microsoft.com/azure/storage/blobs/security-recommendations
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Odpovědnost**: sdílená
+**Odpovědnost**: Sdíleno
 
-### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: k identifikaci citlivých dat použijte aktivní nástroj zjišťování.
+### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5: Použití aktivního nástroje pro zjišťování k identifikaci citlivých dat
 
-**Pokyny**: funkce pro identifikaci, klasifikaci a ochranu před únikem informací ještě nejsou k dispozici pro Azure Storage nebo výpočetní prostředky. Implementujte řešení třetích stran, pokud je to potřeba pro účely dodržování předpisů.
-
-
-
-Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
+**Pokyny:** Funkce identifikace, klasifikace a prevence ztrát dat ještě nejsou k dispozici pro Azure Storage nebo výpočetní prostředky. Implementujte řešení třetích stran, pokud je to nutné pro účely dodržování předpisů.
 
 
 
-Pochopení ochrany zákaznických dat v Azure:
-
-https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
-
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
-
-**Odpovědnost**: sdílená
-
-### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
-
-**Doprovodné**materiály: pomocí protokolu ESP (Azure HDInsight balíček zabezpečení podniku) můžete pomocí Apache Ranger vytvářet a spravovat zásady pro nenáročné řízení přístupu k datům uloženým v souborech, složkách, databázích, tabulkách a řádcích a sloupcích. Správce Hadoop může nakonfigurovat řízení přístupu na základě role (RBAC) pro zabezpečení Apache Hive, HBA, Kafka a Sparku pomocí těchto modulů plug-in v Apache Ranger.
-
-Konfigurace zásad RBAC pomocí Apache Ranger vám umožní přidružit oprávnění k roli v organizaci. Tato vrstva abstrakce usnadňuje zajištění, že lidé mají pouze oprávnění potřebná k provádění jejich pracovních odpovědností.
-
-Balíček zabezpečení podniku konfigurace pomocí Azure Active Directory Domain Services ve službě HDInsight: https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds
-
-Přehled podnikového zabezpečení ve službě Azure HDInsight: https://docs.microsoft.com/azure/hdinsight/domain-joined/hdinsight-security-overview
+Pro základní platformu, která je spravována společností Microsoft, společnost Microsoft považuje veškerý obsah zákazníků za citlivý a zachází velmi daleko, aby se ochránila před ztrátou a expozicí dat zákazníků. Aby byla zákaznická data v Azure stále zabezpečená, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a funkcí ochrany dat.
 
 
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
-
-**Zodpovědnost**: zákazník
-
-### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: použití prevence ztráty dat na základě hostitele k vymáhání řízení přístupu
-
-**Doprovodné**materiály: u clusterů Azure HDInsight, které ukládají nebo zpracovávají citlivé informace, označte cluster a související prostředky jako citlivé pomocí značek. Pro Azure Storage nebo výpočetní prostředky ještě nejsou dostupné funkce pro identifikaci, klasifikaci a ochranu před únikem informací. Implementujte řešení třetích stran, pokud je to potřeba pro účely dodržování předpisů.
-
-
-Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
-
-
-Pochopení ochrany zákaznických dat v Azure:
+Seznamte se s ochranou zákaznických dat v Azure:
 
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Odpovědnost**: sdílená
+**Odpovědnost**: Sdíleno
 
-### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: šifrování citlivých informací v klidovém umístění
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Použití Azure RBAC k řízení přístupu k prostředkům
 
-**Doprovodné**materiály: pokud používáte Azure SQL Database k ukládání Apache Hive a metadat Apache Oozie, zajistěte, aby data SQL zůstala vždy šifrovaná. U Azure Storageových účtů a Data Lake Storage (Gen1 nebo Gen2) doporučujeme, abyste Microsoftu povolili správu šifrovacích klíčů, ale máte možnost spravovat vlastní klíče.
+**Pokyny:** Pomocí balíčku Azure HDInsight Enterprise Security Package (ESP) můžete pomocí Apache Rangeru vytvářet a spravovat podrobné zásady řízení přístupu a zamlžování dat pro vaše data uložená v souborech, složkách, databázích, tabulkách a řádcích a sloupcích. Správce hadoopu může nakonfigurovat řízení přístupu na základě rolí (RBAC) pro zabezpečení Apache Hive, HBase, Kafka a Spark pomocí těchto pluginů v Apache Ranger.
+
+Konfigurace zásad RBAC pomocí Apache Ranger umožňuje přidružit oprávnění k roli v organizaci. Tato vrstva abstrakce usnadňuje zajištění, že uživatelé mají pouze oprávnění potřebná k plnění svých pracovních povinností.
+
+Konfigurace balíčků podnikového zabezpečení se službou Azure Active Directory Domain Services v HDInsightu:https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds
+
+Přehled podnikového zabezpečení v Azure HDInsightu:https://docs.microsoft.com/azure/hdinsight/domain-joined/hdinsight-security-overview
 
 
 
-Správa šifrovacích klíčů pro účty Azure Storage:
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
+
+**Odpovědnost**: Zákazník
+
+### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7: Použití ochrany před ztrátou dat na hostiteli k vynucení kontroly přístupu
+
+**Pokyny:** Pro clustery Azure HDInsight ukládání nebo zpracování citlivých informací, označte clusteru a související prostředky jako citlivé pomocí značek. Funkce identifikace, klasifikace a prevence ztrát ještě nejsou dostupné pro Azure Storage nebo výpočetní prostředky. Implementujte řešení třetích stran, pokud je to nutné pro účely dodržování předpisů.
+
+
+Pro základní platformu, která je spravována společností Microsoft, společnost Microsoft považuje veškerý obsah zákazníků za citlivý a zachází velmi daleko, aby se ochránila před ztrátou a expozicí dat zákazníků. Aby byla zákaznická data v Azure stále zabezpečená, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a funkcí ochrany dat.
+
+
+Seznamte se s ochranou zákaznických dat v Azure:
+
+https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
+
+**Odpovědnost**: Sdíleno
+
+### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8: Šifrování citlivých informací v klidovém stavu
+
+**Pokyny:** Pokud pomocí Azure SQL Database k ukládání metadat Apache Hive a Apache Oozie, ujistěte se, že data SQL zůstanou šifrovaná po celou dobu. Pro účty úložiště Azure a úložiště datových jezer (Gen1 nebo Gen2) se doporučuje povolit Microsoftu spravovat vaše šifrovací klíče, ale máte možnost spravovat vlastní klíče.
+
+
+
+Jak spravovat šifrovací klíče pro účty úložiště Azure:
 
 https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal
 
 
 
-Vytvoření Azure Data Lake Storage pomocí šifrovacích klíčů spravovaných zákazníkem:
+Jak vytvořit Azure Data Lake Storage pomocí šifrovacích klíčů spravovaných zákazníkem:
 
 https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal
 
 
 
-Vysvětlení šifrování pro Azure SQL Database:
+Principy šifrování pro Azure SQL Database:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview#data-encryption
 
 
 
-Jak nakonfigurovat transparentní šifrování dat pro SQL Database pomocí zákaznických klíčů:
+Konfigurace transparentního šifrování dat pro databázi SQL pomocí klíčů spravovaných zákazníkem:
 
 https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?tabs=azure-portal
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Odpovědnost**: sdílená
+**Odpovědnost**: Sdíleno
 
-### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: protokolovat a upozornit na změny kritických prostředků Azure
+### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: Protokolování a upozorňování na změny kritických prostředků Azure
 
-**Pokyny**: Konfigurace nastavení diagnostiky pro účty Azure Storage přidružené k clusterům Azure HDInsight za účelem monitorování a protokolování všech operací CRUD proti datům clusteru. Povolte auditování pro všechny účty úložiště nebo úložiště Data Lake přidružené k clusteru Azure HDInsight.
+**Pokyny:** Konfigurace nastavení diagnostiky pro účty úložiště Azure přidružené k clusterům Azure HDInsight pro monitorování a protokolování všech operací CRUD s daty clusteru. Povolte auditování pro všechny účty úložiště nebo úložiště datových jezer přidružených ke clusteru Azure HDInsight.
 
 
-Jak povolit další protokolování/auditování pro účet Azure Storage:
+Jak povolit další protokolování/auditování pro účet úložiště Azure:
 
 https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 
@@ -761,136 +761,136 @@ Jak povolit další protokolování/auditování pro Azure Data Lake Storage:
 
 https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-diagnostic-logs
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
 ## <a name="vulnerability-management"></a>Správa ohrožení zabezpečení
 
-*Další informace najdete v tématu [řízení zabezpečení: Správa ohrožení](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)zabezpečení.*
+*Další informace naleznete v [tématu Security Control: Vulnerability Management](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management).*
 
-### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: spuštění automatizovaných nástrojů pro kontrolu ohrožení zabezpečení
+### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1: Spuštění automatizovaných nástrojů pro vyhledávání chyb zabezpečení
 
-**Pokyny**: implementace řešení pro správu ohrožení zabezpečení třetí strany.
-
-
-Volitelně, pokud máte Rapid7, Qualys nebo jakékoli jiné předplatné platformy pro správu ohrožení zabezpečení, můžete použít akce skriptu k instalaci agentů posouzení ohrožení zabezpečení na uzlech clusteru Azure HDInsight a ke správě uzlů přes příslušný portál.
+**Pokyny**: Implementace řešení správy zranitelnosti jiných výrobců.
 
 
-Ruční instalace agenta Rapid7:
+Volitelně pokud máte předplatné rapid7, Qualys nebo jiné platformy pro správu zranitelnosti, můžete pomocí akcí skriptů nainstalovat agenty pro hodnocení zranitelnosti na uzly clusteru Azure HDInsight a spravovat uzly prostřednictvím příslušného portálu.
+
+
+Jak nainstalovat Rapid7 Agent ručně:
 
 https://insightvm.help.rapid7.com/docs/azure-security-center
 
 
-Ruční instalace agenta Qualys:
+Jak nainstalovat Qualys Agent ručně:
 
 https://www.qualys.com/docs/qualys-cloud-agent-linux-install-guide.pdf
 
 
-Jak používat akce skriptů:
+Jak používat akce skriptu:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: nasazení automatizovaného řešení pro správu oprav operačního systému
+### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2: Nasazení řešení pro správu automatických oprav operačního systému
 
-**Doprovodné**materiály: pro Image uzlů clusteru byly povoleny automatické aktualizace systému, je však nutné pravidelně restartovat uzly clusteru, aby bylo zajištěno, že budou aktualizace aplikovány.
+**Pokyny:** Automatické aktualizace systému byly povoleny pro bitové kopie uzlů clusteru, ale je nutné pravidelně restartovat uzly clusteru, abyste zajistili použití aktualizací.
 
 
-Microsoft zachovává a aktualizuje základní image uzlů Azure HDInsight.
+Microsoft pro údržbu a aktualizaci základních bitových kopií uzlů Azure HDInsight.
 
 
 Jak nakonfigurovat plán oprav operačního systému pro clustery HDInsight:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-os-patching
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Odpovědnost**: sdílená
+**Odpovědnost**: Sdíleno
 
-### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5,3: nasazení automatizovaného řešení pro správu oprav softwaru třetí strany
+### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3: Nasazení automatizovaného řešení pro správu softwarových oprav od jiných výrobců
 
-**Pokyny**: pomocí akcí skriptů nebo jiných mechanismů opravte clustery Azure HDInsight. Nově vytvořené clustery budou mít vždycky nejnovější dostupné aktualizace, včetně nejnovějších oprav zabezpečení.
+**Pokyny:** Pomocí akcí skriptů nebo jiných mechanismů opravte clustery Azure HDInsight. Nově vytvořené clustery budou mít vždy nejnovější dostupné aktualizace, včetně nejnovějších oprav zabezpečení.
 
 
-Jak nakonfigurovat plán oprav operačního systému pro clustery Azure HDInsight se systémem Linux:
+Jak nakonfigurovat plán oprav operačního systému pro clustery Azure HDInsight založených na Linuxu:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-os-patching
 
 
-Jak používat akce skriptů:
+Jak používat akce skriptu:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="54-compare-back-to-back-vulnerability-scans"></a>5,4: porovnání kontrol zabezpečení back-to-back
+### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4: Porovnání prohledávačů ohrožení zabezpečení zády k zadní straně
 
-**Doprovodné**materiály: implementace řešení pro správu ohrožení zabezpečení třetí strany, které má možnost porovnat prověřování ohrožení zabezpečení v průběhu času. Pokud máte předplatné Rapid7 nebo Qualys, můžete pomocí portálu tohoto dodavatele zobrazit a porovnat kontroly ohrožení zabezpečení zpětného vyhledávání.
+**Pokyny**: Implementujte řešení správy ohrožení zabezpečení od jiných výrobců, které dokáže v průběhu času porovnávat prohledávací výsledky zranitelnosti. Pokud máte předplatné Rapid7 nebo Qualys, můžete pomocí portálu tohoto dodavatele zobrazit a porovnat prohledávací chyby zabezpečení back-to-back.
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: použijte proces hodnocení rizik k určení priorit nápravy zjištěných ohrožení zabezpečení
+### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5: Použití procesu hodnocení rizik a upřednostnění nápravy zjištěných zranitelných míst
 
-**Doprovodné**materiály: Využijte společný program pro vyhodnocování rizik (např. běžný systém vyhodnocování chyb zabezpečení) nebo výchozí hodnocení rizik poskytovaná skenovacím nástrojem třetí strany.
+**Pokyny**: Používejte běžný program hodnocení rizik (např. společný systém hodnocení zranitelnosti) nebo výchozí hodnocení rizik poskytovaného vaším nástrojem pro skenování třetí stranou.
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
 ## <a name="inventory-and-asset-management"></a>Správa inventáře a aktiv
 
-*Další informace najdete v tématu [řízení zabezpečení: inventář a Správa prostředků](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Další informace naleznete v [tématu Security Control: Inventory and Asset Management](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
 
-### <a name="61-use-azure-asset-discovery"></a>6,1: použijte Azure Asset Discovery.
+### <a name="61-use-azure-asset-discovery"></a>6.1: Použití Azure Asset Discovery
 
-**Pokyny**: pomocí Azure Resource graphu můžete v rámci předplatných dotazovat a zjišťovat všechny prostředky (například výpočetní prostředky, úložiště, síť, porty a protokoly atd.), včetně clusterů Azure HDInsight.  Ujistěte se, že máte ve svém tenantovi příslušná oprávnění (pro čtení) a že máte v rámci předplatných také výčet všech předplatných Azure i prostředků.
-
-
-I když je možné zjistit klasické prostředky Azure pomocí grafu prostředků, důrazně doporučujeme vytvořit a používat prostředky Azure Resource Manager, které budou předány.
+**Pokyny:** Pomocí Azure Resource Graph můžete dotazovat/zjišťovat všechny prostředky (například výpočetní prostředky, úložiště, sítě, porty a protokoly atd.), včetně clusterů Azure HDInsight v rámci vašeho předplatného.  Ujistěte se, že máte příslušná (číst) oprávnění ve vašem tenantovi a jsou schopni vytvořit výčet všech předplatných Azure, stejně jako prostředky v rámci vašich předplatných.
 
 
-Jak vytvářet dotazy pomocí Azure graphu:
+I když klasické prostředky Azure může být zjištěna prostřednictvím Azure Resource Graph, je vysoce doporučeno vytvářet a používat prostředky Azure Resource Manager do budoucna.
+
+
+Jak vytvářet dotazy pomocí Azure Resource Graph:
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 
-Jak zobrazit vaše předplatná Azure:
+Jak zobrazit předplatná Azure:
 
 https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
 
-Porozumění službě Azure RBAC:
+Principy Azure RBAC:
 
 https://docs.microsoft.com/azure/role-based-access-control/overview
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="62-maintain-asset-metadata"></a>6,2: Údržba metadat assetu
+### <a name="62-maintain-asset-metadata"></a>6.2: Udržování metadat datových zdrojů
 
-**Doprovodné**materiály: použití značek pro prostředky Azure poskytující metadata k logickému uspořádání do taxonomie.
+**Pokyny:** Použijte značky pro prostředky Azure, které poskytují metadata, aby je logicky uspořádali do taxonomie.
 
 
-Vytváření a používání značek:
+Jak vytvářet a používat značky:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="63-delete-unauthorized-azure-resources"></a>6,3: odstranění neautorizovaných prostředků Azure
+### <a name="63-delete-unauthorized-azure-resources"></a>6.3: Odstranění neautorizovaných prostředků Azure
 
-**Doprovodné**materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování prostředků. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
+**Pokyny:** V případě potřeby použijte značkování, skupiny pro správu a samostatná předplatná k uspořádání a sledování datových zdrojů. Pravidelně odsouhlasete zásoby a zajistěte, aby byly z předplatného včas odstraněny neoprávněné prostředky.
 
 
 Jak vytvořit další předplatná Azure:
@@ -898,185 +898,185 @@ Jak vytvořit další předplatná Azure:
 https://docs.microsoft.com/azure/billing/billing-create-subscription
 
 
-Postup vytvoření Skupiny pro správu:
+Jak vytvořit skupiny pro správu:
 
 https://docs.microsoft.com/azure/governance/management-groups/create
 
 
-Vytváření a používání značek:
+Jak vytvářet a používat značky:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6,4: udržování inventáře schválených prostředků Azure a softwarových titulů
+### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4: Udržovat soupis schválených prostředků Azure a softwarových titulů
 
-**Doprovodné**materiály: definování seznamu schválených prostředků Azure a schváleného softwaru pro výpočetní prostředky
+**Pokyny:** Definování seznamu schválených prostředků Azure a schváleného softwaru pro vaše výpočetní prostředky
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitorování neschválených prostředků Azure
+### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: Monitorování neschválených prostředků Azure
 
-**Doprovodné**materiály: pomocí Azure Policy můžete klást omezení typů prostředků, které se dají vytvořit v zákaznických předplatných, a to pomocí těchto integrovaných definic zásad:
+**Pokyny**: Pomocí zásad Azure můžete omezit typ prostředků, které lze vytvořit v předplatných zákazníků pomocí následujících předdefinovaných definic zásad:
 
 - Nepovolené typy prostředků
 - Povolené typy prostředků
 
-Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky v rámci předplatných. Ujistěte se, že všechny prostředky Azure přítomné v daném prostředí jsou schválené.
+Pomocí Azure Resource Graph můžete dotazovat/zjišťovat prostředky v rámci vašeho předplatného. Ujistěte se, že jsou schváleny všechny prostředky Azure v prostředí.
 
-Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat zásady Azure:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Jak vytvářet dotazy pomocí Azure graphu: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
-
-
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
-
-**Zodpovědnost**: zákazník
-
-### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: monitorujte neschválené softwarové aplikace v rámci výpočetních prostředků.
-
-**Pokyny**: Implementujte řešení třetí strany pro monitorování uzlů clusteru pro neschválené softwarové aplikace.
-
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
-
-**Zodpovědnost**: zákazník
-
-### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: Odeberte neschválené prostředky Azure a softwarové aplikace
-
-**Pokyny**: pomocí Azure Resource graphu můžete v rámci předplatných dotazovat a zjišťovat všechny prostředky (například výpočetní prostředky, úložiště, síť, porty a protokoly atd.), včetně clusterů Azure HDInsight.  Odeberte všechny neschválené prostředky Azure, které zjistíte. Pro uzly clusteru Azure HDInsight implementujte řešení třetí strany, které vám umožní odebrat nebo upozornit na neschválený software.
+Jak vytvářet dotazy pomocí Azure Resource Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 
-Jak vytvářet dotazy pomocí Azure graphu:
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
+
+**Odpovědnost**: Zákazník
+
+### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6: Sledování neschválených softwarových aplikací v rámci výpočetních prostředků
+
+**Pokyny**: Implementace řešení jiného výrobce pro monitorování uzlů clusteru pro neschválené softwarové aplikace.
+
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
+
+**Odpovědnost**: Zákazník
+
+### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7: Odebrání neschválených prostředků Azure a softwarových aplikací
+
+**Pokyny:** Pomocí Azure Resource Graph můžete dotazovat/zjišťovat všechny prostředky (například výpočetní prostředky, úložiště, sítě, porty a protokoly atd.), včetně clusterů Azure HDInsight v rámci vašeho předplatného.  Odeberte všechny neschválené prostředky Azure, které zjistíte. Pro uzly clusteru Azure HDInsight implementujte řešení jiného výrobce, které odebere nebo upozorní na neschválený software.
+
+
+Jak vytvářet dotazy pomocí Azure Resource Graph:
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="68-use-only-approved-applications"></a>6,8: Používejte pouze schválené aplikace.
+### <a name="68-use-only-approved-applications"></a>6.8: Používejte pouze schválené aplikace
 
-**Doprovodné**materiály: u uzlů clusteru Azure HDInsight implementujte řešení třetích stran, které zabraňuje neoprávněnému softwaru v provádění.
+**Pokyny:** Pro uzly clusteru Azure HDInsight implementujte řešení jiného výrobce, abyste zabránili spuštění neoprávněného softwaru.
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="69-use-only-approved-azure-services"></a>6,9: Používejte jenom schválené služby Azure.
+### <a name="69-use-only-approved-azure-services"></a>6.9: Používejte jenom schválené služby Azure
 
-**Doprovodné**materiály: pomocí Azure Policy můžete klást omezení typů prostředků, které se dají vytvořit v zákaznických předplatných, a to pomocí těchto integrovaných definic zásad:
+**Pokyny**: Pomocí zásad Azure můžete omezit typ prostředků, které lze vytvořit v předplatných zákazníků pomocí následujících předdefinovaných definic zásad:
 
 - Nepovolené typy prostředků
 - Povolené typy prostředků
 
 
-Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat zásady Azure:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
-Jak odepřít konkrétní typ prostředku pomocí Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Jak odepřít konkrétní typ prostředku pomocí zásad Azure:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="610-implement-approved-application-list"></a>6,10: Implementujte schválený seznam aplikací
+### <a name="610-implement-approved-application-list"></a>6.10: Implementace schváleného seznamu žádostí
 
-**Doprovodné**materiály: u uzlů clusteru Azure HDInsight implementujte řešení třetí strany, které zabrání v provádění neautorizovaných typů souborů.
+**Pokyny:** Pro uzly clusteru Azure HDInsight implementujte řešení jiného výrobce, abyste zabránili spuštění neoprávněných typů souborů.
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="611-limit-users-ability-to-interact-with-azure-resources-manager-via-scripts"></a>6,11: Omezte schopnost uživatelů pracovat se správcem prostředků Azure prostřednictvím skriptů
+### <a name="611-limit-users-ability-to-interact-with-azure-resources-manager-via-scripts"></a>6.11: Omezte možnost uživatelů komunikovat se Správcem prostředků Azure prostřednictvím skriptů
 
-**Pokyny**: pomocí podmíněného přístupu Azure omezte schopnost uživatelů komunikovat s Azure Resource Manager konfigurací "blokování přístupu" pro aplikaci Microsoft Azure Management.
+**Pokyny:** Pomocí podmíněného přístupu Azure omezte uživatelům možnost pracovat se Správcem prostředků Azure konfigurací "Blokovat přístup" pro aplikaci Microsoft Azure Management.
 
 
-Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resource Manager: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Jak nakonfigurovat podmíněný přístup pro blokování přístupu ke Správci prostředků Azure:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: Omezte schopnost uživatelů spouštět skripty ve výpočetních prostředcích.
+### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12: Omezení možnosti uživatelů spouštět skripty v rámci výpočetních prostředků
 
-**Doprovodné**materiály: nepoužitelné; Neplatí to pro Azure HDInsight, protože uživatelé (kteří nejsou správci) clusteru nepotřebují přístup k jednotlivým uzlům ke spouštění úloh. Správce clusteru má kořenový přístup ke všem uzlům clusteru.
+**Pokyny**: Nepoužije se; To se nevztahuje na Azure HDInsight jako uživatelé (non-správci) clusteru nepotřebují přístup k jednotlivým uzlům ke spuštění úloh. Správce clusteru má root přístup ke všem uzlům clusteru.
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Odpovědnost**: netýká se
+**Odpovědnost**: Nepoužije se
 
-### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fyzicky nebo logicky oddělené aplikace s vysokým rizikem
+### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13: Fyzicky nebo logicky oddělit vysoce rizikové aplikace
 
-**Doprovodné**materiály: nepoužitelné; Srovnávací test je určený pro služby Azure apps nebo výpočetní prostředky hostující webové aplikace.
+**Pokyny**: Nepoužije se; benchmark je určen pro Službu Azure Apps Service nebo výpočetní prostředky hostující webové aplikace.
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Odpovědnost**: netýká se
+**Odpovědnost**: Nepoužije se
 
 ## <a name="secure-configuration"></a>Zabezpečená konfigurace
 
-*Další informace najdete v tématu [řízení zabezpečení: zabezpečená konfigurace](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
+*Další informace naleznete v [tématu Zabezpečení: Zabezpečená konfigurace](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
 
-### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
+### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
 
-**Pokyny**: použijte aliasy Azure Policy v oboru názvů Microsoft. HDInsight k vytvoření vlastních zásad pro auditování nebo vymáhání konfigurace sítě vašeho clusteru HDInsight.
+**Pokyny**: Pomocí aliasů zásad Azure v oboru názvů Microsoft.HDInsight vytvořte vlastní zásady pro auditování nebo vynucení konfigurace sítě vašeho clusteru HDInsight.
 
 
-Jak zobrazit dostupné aliasy Azure Policy:
+Jak zobrazit dostupné aliasy zásad Azure:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 
-Jak nakonfigurovat a spravovat Azure Policy:
+Jak nakonfigurovat a spravovat zásady Azure:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="72-establish-secure-operating-system-configurations"></a>7,2: Vytvoření zabezpečených konfigurací operačního systému
+### <a name="72-establish-secure-operating-system-configurations"></a>7.2: Vytvoření bezpečných konfigurací operačního systému
 
-**Doprovodné**materiály: image operačního systému Azure HDInsight spravované a udržované Microsoftem. Zákazník zodpovědný za implementaci zabezpečených konfigurací pro operační systém uzlů clusteru 
+**Pokyny:** Image operačního systému Azure HDInsight spravované a spravované společností Microsoft. Zákazník odpovědný za implementaci zabezpečených konfigurací operačního systému uzlů clusteru. 
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: udržování zabezpečených konfigurací prostředků Azure
+### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3: Udržování zabezpečených konfigurací prostředků Azure
 
-**Doprovodné**materiály: použití zásad Azure [Deny] a [nasazení, pokud neexistuje] pro vymáhání zabezpečených nastavení clusterů Azure HDInsight a souvisejících prostředků.
+**Pokyny:** Pomocí zásad Azure [odepřít] a [nasadit, pokud neexistují] vynutit zabezpečené nastavení pro vaše clustery Azure HDInsight a související prostředky.
 
 
-Jak nakonfigurovat a spravovat Azure Policy:
+Jak nakonfigurovat a spravovat zásady Azure:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
-Pochopení Azure Policych účinků:
+Principy efektů zásad Azure:
 
 https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="74-maintain-secure-operating-system-configurations"></a>7,4: udržování zabezpečených konfigurací operačního systému
+### <a name="74-maintain-secure-operating-system-configurations"></a>7.4: Udržovat bezpečné konfigurace operačního systému
 
-**Doprovodné**materiály: image operačního systému Azure HDInsight spravované a udržované Microsoftem. Zákazník zodpovědný za implementaci konfigurace stavu na úrovni operačního systému.
+**Pokyny:** Image operačního systému Azure HDInsight spravované a spravované společností Microsoft. Zákazník odpovědný za implementaci konfigurace stavu na úrovni operačního systému.
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Odpovědnost**: sdílená
+**Odpovědnost**: Sdíleno
 
-### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: Konfigurace prostředků Azure v zabezpečeném úložišti
+### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: Konfigurace prostředků Azure bezpečně ukládá
 
-**Doprovodné**materiály: Pokud používáte vlastní definice zásad Azure, použijte k bezpečnému ukládání a správě kódu službu Azure DevOps nebo Azure Repos.
+**Pokyny:** Pokud používáte vlastní definice zásad Azure, použijte Azure DevOps nebo Azure Repos bezpečně ukládat a spravovat svůj kód.
 
 
 
@@ -1086,343 +1086,343 @@ https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
 
 
-Azure Repos dokumentaci:
+Dokumentace k azure repos:
 
 https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="76-securely-store-custom-operating-system-images"></a>7,6: bezpečné uložení vlastních imagí operačního systému
+### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Bezpečné ukládání vlastních bitových kopií operačního systému
 
-**Doprovodné**materiály: nepoužitelné; vlastní image neplatí pro Azure HDInsight.
+**Pokyny**: Nepoužije se; vlastní image, které se nevztahují na Azure HDInsight.
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Odpovědnost**: netýká se
+**Odpovědnost**: Nepoužije se
 
-### <a name="77-deploy-system-configuration-management-tools"></a>7,7: nasazení nástrojů pro správu konfigurace systému
+### <a name="77-deploy-system-configuration-management-tools"></a>7.7: Nasazení nástrojů pro správu konfigurace systému
 
-**Pokyny**: použijte aliasy Azure Policy v oboru názvů Microsoft. HDInsight k vytvoření vlastních zásad pro upozornění, audit a prosazování konfigurace systému. Dále můžete vyvinout proces a kanál pro správu výjimek zásad.
+**Pokyny**: Pomocí aliasů zásad Azure v oboru názvů Microsoft.HDInsight vytvořte vlastní zásady pro výstrahu, auditování a vynucení konfigurací systému. Kromě toho vytvořte proces a kanál pro správu výjimek zásad.
 
 
 
-Jak nakonfigurovat a spravovat Azure Policy:
+Jak nakonfigurovat a spravovat zásady Azure:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7,8: nasaďte nástroje pro správu konfigurace systému pro operační systémy.
+### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8: Nasazení nástrojů pro správu konfigurace systému pro operační systémy
 
-**Pokyny**: Implementujte řešení třetí strany a udržujte požadovaný stav pro operační systémy uzlu clusteru.
+**Pokyny**: Implementujte řešení jiného výrobce pro zachování požadovaného stavu operačních systémů uzlů clusteru.
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7,9: Implementujte automatizované monitorování konfigurace pro služby Azure.
+### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9: Implementace automatického monitorování konfigurace pro služby Azure
 
-**Pokyny**: použijte aliasy Azure Policy v oboru názvů Microsoft. HDInsight k vytvoření vlastních zásad pro auditování nebo prosazování konfigurace clusteru HDInsight.
+**Pokyny:** Pomocí aliasů zásad Azure v oboru názvů Microsoft.HDInsight vytvořte vlastní zásady pro auditování nebo vynucení konfigurace clusteru HDInsight.
 
 
-Jak zobrazit dostupné aliasy Azure Policy:
+Jak zobrazit dostupné aliasy zásad Azure:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 
-Jak nakonfigurovat a spravovat Azure Policy:
+Jak nakonfigurovat a spravovat zásady Azure:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: Implementujte automatizované monitorování konfigurace pro operační systémy
+### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: Implementace automatizovaného monitorování konfigurace operačních systémů
 
-**Pokyny**: Implementujte řešení třetí strany a sledujte stav operačního systému vašeho uzlu clusteru.
+**Pokyny**: Implementujte řešení jiného výrobce pro sledování stavu operačních systémů uzlů clusteru.
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="711-manage-azure-secrets-securely"></a>7,11: zabezpečená Správa tajných kódů Azure
+### <a name="711-manage-azure-secrets-securely"></a>7.11: Bezpečná správa tajných kódů Azure
 
-**Doprovodné**materiály: Azure HDInsight zahrnuje podporu BRING Your Own Key (BYOK) pro Apache Kafka. Tato funkce vám umožní vlastnit a spravovat klíče používané k šifrování neaktivních dat.
-
-
-Všechny spravované disky ve službě Azure HDInsight jsou chráněné pomocí šifrování služby Azure Storage (SSE). Ve výchozím nastavení se data na těchto discích šifrují pomocí klíčů spravovaných Microsoftem. Pokud povolíte BYOK, poskytnete šifrovací klíč pro Azure HDInsight, který bude používat a spravovat pomocí Azure Key Vault.
+**Pokyny:** Azure HDInsight zahrnuje podporu přineste si vlastní klíč (BYOK) pro Apache Kafka. Tato funkce umožňuje vlastnit a spravovat klíče používané k šifrování dat v klidovém stavu.
 
 
-Key Vault taky můžete použít s nasazeními Azure HDInsight ke správě klíčů pro úložiště clusteru (účty Azure Storage a Azure Data Lake Storage).
+Všechny spravované disky v Azure HDInsight jsou chráněné pomocí Šifrování služby Azure Storage Service (SSE). Ve výchozím nastavení jsou data na těchto discích šifrována pomocí klíčů spravovaných společností Microsoft. Pokud povolíte BYOK, poskytnete šifrovací klíč pro Azure HDInsight k jeho použití a správě pomocí azure key vault.
 
 
-Jak přenést vlastní klíč pro Apache Kafka v Azure HDInsight:
+Trezor klíčů může být také používán s nasazeními Azure HDInsight ke správě klíčů pro úložiště clusteru (účty úložiště Azure a Azure Data Lake Storage).
+
+
+Jak si na Azure HDInsight přivést vlastní klíč pro Apache Kafka:
 
 https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-byok
 
 
-Správa šifrovacích klíčů pro účty Azure Storage:
+Jak spravovat šifrovací klíče pro účty úložiště Azure:
 
 https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="712-manage-identities-securely-and-automatically"></a>7,12: bezpečně a automaticky spravujte identity
+### <a name="712-manage-identities-securely-and-automatically"></a>7.12: Bezpečná a automatická správa identit
 
-**Doprovodné**materiály: spravované identity se dají použít ve službě Azure HDInsight, které svým clusterům umožní přístup k Azure Active Directory doménovým službám, přístupu Azure Key Vault nebo k souborům v Azure Data Lake Storage Gen2.
+**Pokyny:** Spravované identity lze použít v Azure HDInsight umožněte vašim clusterům přístup ke službám domény Azure Active Directory, přístup k úložišti Klíčů Azure nebo přístup k souborům v Azure Data Lake Storage Gen2.
 
 
-Pochopení spravovaných identit pomocí Azure HDInsight:
+Principy spravovaných identit pomocí Azure HDInsight:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-managed-identities
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: Eliminujte nezamýšlenou expozici přihlašovacích údajů
+### <a name="713-eliminate-unintended-credential-exposure"></a>7.13: Eliminujte nezamýšlenou expozici pověření
 
-**Doprovodné**materiály: Pokud používáte jakýkoliv kód související s nasazením Azure HDInsight, můžete implementovat kontrolu přihlašovacích údajů, abyste mohli identifikovat přihlašovací údaje v rámci kódu. Skener přihlašovacích údajů taky bude povzbudit přesunutí zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je Azure Key Vault. 
+**Pokyny:** Pokud používáte jakýkoli kód související s nasazením Azure HDInsight, můžete implementovat skener přihlašovacích údajů k identifikaci přihlašovacích údajů v rámci kódu. Skener přihlašovacích údajů také podpoří přesunutí zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je azure key vault. 
 
 
-Jak nastavit skener přihlašovacích údajů:
+Jak nastavit skener pověření:
 
 https://secdevtools.azurewebsites.net/helpcredscan.html
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování Azure Security Center**: Nelze použít
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
 ## <a name="malware-defense"></a>Obrana před malwarem
 
-*Další informace najdete v tématu [řízení zabezpečení: obrana proti malwaru](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*Další informace naleznete v [tématu Security Control: Malware Defense](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
 
-### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: použití centrálně spravovaného malwarového softwaru
+### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1: Používejte centrálně spravovaný antimalwarový software
 
-**Doprovodné**materiály: Azure HDInsight se dodává s ClamScan předinstalovaným a povoleným pro Image uzlů clusteru, ale musíte software spravovat a ručně agregovat nebo monitorovat všechny protokoly, které ClamScan vytvoří.
+**Pokyny**: Azure HDInsight je dodáván s předinstalovaným a povoleným funkcí služby Clamscan pro bitové kopie uzlu clusteru, ale musíte spravovat software a ručně agregovat nebo monitorovat všechny protokoly, které clamscan vytvoří.
 
 
-Vysvětlení ClamScan pro Azure HDInsight:
+Principy funkce Clamscan pro Azure HDInsight:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-faq#security-and-certificates
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2: předběžná kontrola souborů, které se mají nahrát do prostředků Azure, které nejsou COMPUTE
+### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2: Předprohledávací soubory, které se mají nahrát do nevýpočetních prostředků Azure
 
-**Pokyny**: Microsoft Antimalware je povolený na podkladovém hostiteli, který podporuje služby Azure, ale neběží na zákaznickém obsahu.
-
-
-Předem Prohledejte všechny nahrané soubory do všech prostředků Azure souvisejících s nasazením clusteru Azure HDInsight, jako je Data Lake Storage, Blob Storage atd. Společnost Microsoft nemá přístup k zákaznickým datům v těchto instancích.
+**Pokyny**: Microsoft Antimalware je povolena na podkladovém hostiteli, který podporuje služby Azure, ale neběží na obsah zákazníka.
 
 
-Pochopení ochrany proti malwaru Microsoftu pro Azure Cloud Services a Virtual Machines:
+Předem proskenujte všechny soubory nahrané do všech prostředků Azure souvisejících s nasazením vašeho clusteru Azure HDInsight, jako je úložiště datových jezer, úložiště objektů blob atd. Společnost Microsoft nemá v těchto případech přístup k zákaznickým datům.
+
+
+Seznamte se s antimalwarovým programem Microsoft pro cloudové služby Azure a virtuální počítače:
 
  https://docs.microsoft.com/azure/security/fundamentals/antimalware
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Odpovědnost**: sdílená
+**Odpovědnost**: Sdíleno
 
-### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8,3: Ujistěte se, že antimalwarový software a signatury jsou aktualizované.
+### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8.3: Zajistěte aktualizaci antimalwarového softwaru a podpisů
 
-**Doprovodné**materiály: Azure HDInsight se dodává s ClamScan předinstalovaným a povoleným pro Image uzlů clusteru. ClamScan bude provádět automatické aktualizace modulu a definic, ale agregace a správa protokolů bude nutné provést ručně.
+**Navádění**: Azure HDInsight je dodáván s předinstalovaným a povoleným službou Clamscan pro image uzlu clusteru. Clamscan bude provádět aktualizace motoru a definice automaticky, ale agregace a správa protokolů bude muset být provedena ručně.
 
 
-Vysvětlení ClamScan pro Azure Azure HDInsight:
+Principy funkce Clamscan pro Azure Azure HDInsight:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-faq#security-and-certificates
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
 ## <a name="data-recovery"></a>Obnovení dat
 
-*Další informace najdete v tématu [řízení zabezpečení – obnovení dat](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*Další informace naleznete [v tématu Security Control: Data Recovery](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9,1: zajištění pravidelného automatického zálohování
+### <a name="91-ensure-regular-automated-back-ups"></a>9.1: Zajistěte pravidelné automatické zálohování
 
-**Pokyny**: při použití účtu Azure Storage pro úložiště dat clusteru HDInsight vyberte odpovídající možnost redundance (LRS, ZRS, GRS, RA-GRS).  Při použití Azure SQL Database pro úložiště dat clusteru Azure HDInsight nakonfigurujte aktivní geografickou replikaci.
+**Pokyny:** Při použití účtu úložiště Azure pro úložiště dat clusteru HDInsight zvolte příslušnou možnost redundance (LRS,ZRS, GRS, RA-GRS).  Při použití azure sql database pro úložiště dat clusteru Azure HDInsight nakonfigurujte aktivní geografickou replikaci.
 
 
-Jak nakonfigurovat redundanci úložiště pro účty Azure Storage:
+Jak nakonfigurovat redundanci úložiště pro účty úložiště Azure:
 
 https://docs.microsoft.com/azure/storage/common/storage-redundancy
 
 
-Jak nakonfigurovat redundanci pro databáze SQL Azure:
+Jak nakonfigurovat redundanci pro Azure SQL Databases:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: proveďte kompletní systémové zálohy a zálohujte všechny spravované klíče zákazníka.
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: Proveďte kompletní zálohy systému a zálohujte všechny klienty spravované klíče
 
-**Pokyny**: při použití účtu Azure Storage pro úložiště dat clusteru Azure HDInsight vyberte odpovídající možnost redundance (LRS, ZRS, GRS, RA-GRS). Pokud používáte Azure Key Vault pro jakoukoli část nasazení Azure HDInsight, ujistěte se, že jsou vaše klíče zálohované.
+**Pokyny:** Při použití účtu úložiště Azure pro úložiště dat clusteru Azure HDInsight zvolte příslušnou možnost redundance (LRS,ZRS, GRS, RA-GRS). Pokud používáte Azure Key Vault pro jakoukoli část nasazení Azure HDInsight, ujistěte se, že vaše klíče jsou zálohované.
 
 
-Vyberte možnosti úložiště pro cluster Azure HDInsight:
+Zvolte možnosti úložiště pro cluster Azure HDInsight:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-compare-storage-options
 
 
-Jak nakonfigurovat redundanci úložiště pro účty Azure Storage:
+Jak nakonfigurovat redundanci úložiště pro účty úložiště Azure:
 
 https://docs.microsoft.com/azure/storage/common/storage-redundancy
 
 
-Postup zálohování klíčů Key Vault v Azure:
+Jak zálohovat klíče trezoru klíčů v Azure:
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: Ověřte všechny zálohy včetně spravovaných klíčů zákazníků.
+### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3: Ověření všech záloh včetně klíčů spravovaných zákazníkem
 
-**Pokyny**: Pokud se pro nasazení Azure HDInsight používá Azure Key Vault, testovací obnovení zálohovaných spravovaných klíčů zákazníka.
+**Pokyny:** Pokud se azure key vault používá s nasazením Azure HDInsight, otestujte obnovení zálohovaných klíčů spravovaných zákazníky.
 
 
-Jak přenést vlastní klíč pro Apache Kafka v Azure HDInsight:
+Jak si na Azure HDInsight přivést vlastní klíč pro Apache Kafka:
 
 https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-byok
 
 
-Postup obnovení klíčů trezoru klíčů v Azure:
+Jak obnovit klíče trezoru klíčů v Azure:
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: Zajistěte ochranu záloh a spravovaných klíčů zákazníků.
+### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: Zajištění ochrany záloh a klíčů spravovaných zákazníkem
 
-**Pokyny**: Pokud se pro nasazení Azure HDInsight používá Azure Key Vault, povolte v Key Vault obnovitelné odstranění, aby se chránily klíče proti náhodnému nebo škodlivému odstranění.
+**Pokyny:** Pokud se azure key vault používá s nasazením Azure HDInsight, povolte obnovitelné odstranění v trezoru klíčů k ochraně klíčů před náhodným nebo škodlivým odstraněním.
 
 
-Jak povolit obnovitelné odstranění v Azure Key Vault:
+Jak povolit obnovitelné odstranění v azure key vault:
 
 https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
 ## <a name="incident-response"></a>Reakce na incidenty
 
-*Další informace najdete v tématu [řízení zabezpečení: reakce na incidenty](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Další informace naleznete [v tématu Security Control: Incident Response](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
 
-### <a name="101-create-an-incident-response-guide"></a>10,1: Vytvoření Průvodce odpověďmi na incidenty
+### <a name="101-create-an-incident-response-guide"></a>10.1: Vytvoření průvodce odezvou na incidenty
 
-**Doprovodné**materiály: Zajistěte, aby existovaly písemné plány odpovědí na incidenty, které definují role pracovníků a také fáze zpracování a správy incidentů.
+**Pokyny**: Ujistěte se, že existují písemné plány reakce na incidenty, které definují role personálu, jakož i fáze zpracování incidentů / správy.
 
 
 
-Postup konfigurace automatizace pracovních postupů v rámci Azure Security Center:
+Jak nakonfigurovat automatizaci pracovních postupů v Centru zabezpečení Azure:
 
 https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování Azure Security Center**: Nelze použít
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: vytvoření bodování incidentu a postupu stanovení priorit
+### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2: Vytvoření postupu hodnocení incidentů a stanovení priorit
 
-**Pokyny**: Security Center přiřadí závažnosti výstrahám, které vám pomůžou určit prioritu pořadí, ve kterém se zúčastníte jednotlivých výstrah, takže pokud dojde k ohrožení určitého prostředku, můžete se k němu hned dostat. Závažnost je založena na tom, jak se nachází Security Center ve vyhledávání nebo v analytickém formátu, který vydává výstrahu, a také na úrovni spolehlivosti, u kterých došlo k škodlivému záměru za aktivitu, která vedla k upozornění.
+**Pokyny**: Centrum zabezpečení přiřazuje výstrahám závažnost, která vám pomůže určit pořadí, ve kterém se účastníte jednotlivých výstrah, takže když dojde k ohrožení zabezpečení prostředku, můžete se k němu hned dostat. Závažnost je založena na tom, jak sebevědomý Security Center je v hledání nebo analytice slouží k vydání výstrahy, stejně jako úroveň spolehlivosti, že tam byl škodlivý záměr za aktivitu, která vedla k upozornění.
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="103-test-security-response-procedures"></a>10,3: testovací postupy pro odpověď zabezpečení
+### <a name="103-test-security-response-procedures"></a>10.3: Zkušební postupy odezvy zabezpečení
 
-**Doprovodné**materiály: proveďte cvičení a otestujte možnosti reakce na incidenty v pravidelných tempo. Identifikujte slabá místa a mezery a podle potřeby upravte plán. Přečtěte si téma publikace NIST: Průvodce pro testování, školení a cvičení programů pro plány a možnosti IT: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
+**Pokyny**: Proveďte cvičení k testování schopností reakce na incidenty vašich systémů na pravidelné kadenci. Identifikujte slabá místa a mezery a podle potřeby plán revidujte. Podívejte se na publikaci NIST: Průvodce testovacími, školicími a cvičebními programy pro plány a schopnosti IT:https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování Azure Security Center**: Nelze použít
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: zadání podrobností o kontaktu incidentu zabezpečení a konfigurace oznámení o výstrahách pro incidenty zabezpečení
+### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4: Poskytněte kontaktní údaje bezpečnostních incidentů a nakonfigurujte upozornění na bezpečnostní incidenty
 
-**Doprovodné**materiály: kontaktní informace incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že k datům došlo nezákonní nebo neoprávněná osoba.
+**Pokyny**: Kontaktní informace o bezpečnostních incidentech společnost Microsoft použije k tomu, aby vás kontaktovala, pokud centrum MSRC (Microsoft Security Response Center) zjistí, že k vašim datům získala přístup nezákonná nebo neoprávněná strana.
 
 
 
-Jak nastavit Azure Security Center kontakt zabezpečení:
+Jak nastavit kontakt zabezpečení Centra zabezpečení Azure:
 
 https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: zahrňte výstrahy zabezpečení do systému reakce na incidenty.
+### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5: Začleňte výstrahy zabezpečení do systému reakce na incidenty
 
-**Doprovodné**materiály: vyexportujte výstrahy a doporučení Azure Security Center pomocí funkce průběžného exportu. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Pomocí konektoru Azure Security Center Data můžete streamovat ověřovací data výstrah.
+**Pokyny:** Exportujte výstrahy a doporučení Centra zabezpečení Azure pomocí funkce Nepřetržitý export. Nepřetržitý export umožňuje exportovat výstrahy a doporučení buď ručně, nebo průběžně. Datový konektor Azure Security Center můžete použít k streamování výstrah Sentinel.
 
 
 
-Postup konfigurace průběžného exportu:
+Jak nakonfigurovat nepřetržitý export:
 
 https://docs.microsoft.com/azure/security-center/continuous-export
 
 
 
-Jak streamovat výstrahy do Azure Sentinel:
+Jak streamovat výstrahy do Azure Sentinelu:
 
 https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="106-automate-the-response-to-security-alerts"></a>10,6: automatizujte reakci na výstrahy zabezpečení
+### <a name="106-automate-the-response-to-security-alerts"></a>10.6: Automatizace reakce na výstrahy zabezpečení
 
-**Doprovodné**materiály: použití funkce automatizace pracovního postupu v Azure Security Center k automatickému spouštění odpovědí prostřednictvím "Logic Apps" na výstrahy a doporučení zabezpečení.
+**Pokyny:** Pomocí funkce Automatizace pracovních postupů v Centru zabezpečení Azure můžete automaticky aktivovat odpovědi prostřednictvím "Logic Apps" na výstrahy zabezpečení a doporučení.
 
 
 
-Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps:
+Konfigurace automatizace pracovních postupů a aplikací logiky:
 
 https://docs.microsoft.com/azure/security-center/workflow-automation
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetrační testy a tzv. red team exercises
 
-*Další informace najdete v tématu [řízení zabezpečení: testy průniku a cvičení červeného týmu](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Další informace naleznete [v tématu Bezpečnostní kontrola: Penetrační testy a cvičení červeného týmu](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
 
-### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11,1: proveďte pravidelné testování průniku vašich prostředků Azure a zajistěte nápravu všech důležitých zjištění zabezpečení do 60 dnů.
+### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1: Proveďte pravidelné penetrační testování prostředků Azure a zajistěte nápravu všech kritických zjištění zabezpečení do 60 dnů
 
-**Doprovodné**materiály: řiďte se prosím pravidly zapojení Microsoftu, abyste zajistili, že testy průniku nejsou v rozporu s zásadami Microsoftu:
+**Pokyny**: Postupujte podle pravidel společnosti Microsoft a ujistěte se, že penetrační testy neporušují zásady společnosti Microsoft:
 
 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.
 
 
 
-Další informace o strategii a provádění testování na základě červeného seskupování a testování průniku na webu společnosti Microsoft pro cloudovou infrastrukturu, služby a aplikace Microsoftu najdete tady: https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
+Další informace o strategii společnosti Microsoft a provádění červených týmů a testování pronikání živých webů proti cloudové infrastruktuře, službám a aplikacím společnosti Microsoft naleznete zde:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování Azure Security Center**: Nelze použít
 
-**Odpovědnost**: sdílená
+**Odpovědnost**: Sdíleno
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zobrazit [Srovnávací test zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- Další informace o [plánech zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- Podívejte se na [srovnávací test zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- Další informace o [plánech zásad zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

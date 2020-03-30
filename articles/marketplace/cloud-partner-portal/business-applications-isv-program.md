@@ -1,108 +1,107 @@
 ---
-title: Průvodce registrací programu pro připojení nezávislého výrobce softwaru (ISV) společnosti Microsoft Business Applications
-description: Tady je postup připojení Business Applications programu ISV Connect.
-services: Azure Marketplace, Cloud Partner Portal
+title: Průvodce připojením programu pro připojení nezávislých dodavatelů softwaru společnosti Microsoft Business Applications (ISV)
+description: Zde je návod, jak se připojit k programu ISV ISV Business Applications Connect Program.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 7/12/2019
-ms.author: evansma
-ms.openlocfilehash: 4a47886176b704cc3bc36cc9fa85d1d3faee4c58
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: f7fd3f43c7faddb5481411dc9c4c94864b6dc0b1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819148"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288967"
 ---
-# <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Průvodce registrací programu pro připojení nezávislého výrobce softwaru (ISV) společnosti Microsoft Business Applications
+# <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Průvodce připojením programu pro připojení nezávislých dodavatelů softwaru společnosti Microsoft Business Applications (ISV)
 
-[Business Applications program ISV Connect](https://partner.microsoft.com/solutions/business-applications/isv-overview) se zaměřuje na urychlení nárůstu a celkové úspěšnosti nezávislých výrobců softwaru (ISV), které vytvářejí moderní, cloudová řešení, obchodní řešení a zákaznická nasazení s využitím *Dynamics 365. PowerApps* ("nabídky" Dynamics CE ") nebo *Dynamics 365 finance a operace* (" nabídky "Dynamics OPS"). Tady je postup, který je součástí.
-
-> [!IMPORTANT]
-> Stávající partneři ISV s *dynamics 365 Customer Engagement*, *Dynamics 365 pro finance a operace*a *PowerApps* aplikace by měly dokončit všechny kroky připojování do 15. **října 2019,** aby se předešlo tomu, že jejich existující nabídky se odebraly z [Microsoft AppSource](https://appsource.microsoft.com).
-
-Pokud chcete zaregistrovat a využít výhody pro Business Applications softwaru ISV Connect a využít přitom výhody, které se týkají [technické, marketingové a prodejní](https://partner.microsoft.com/solutions/business-applications/isv-overview) , požádáme o existující partnery ISV (s nabídkami *Dynamics CE* a *OPS* ) a dokončí se. následující kroky:
-
-- [Nastavte účet partnerského centra Microsoftu](#set-up-your-microsoft-partner-center-account).
-- [Přijměte Business Applications doplněk](#accept-the-business-applications-isv-program-addendum).
-- [Nastavte informace o fakturaci](#set-up-your-billing-information).
-- Znovu [certifikovat vaši aplikaci](#recertify-your-application).
+[Program ISV Connect pro obchodní aplikace](https://partner.microsoft.com/solutions/business-applications/isv-overview) si klade za cíl urychlit růst a celkový úspěch nezávislých dodavatelů softwaru (ISV), kteří budují moderní cloudová řešení založená na podnikání (LOB) s dynamics *365 Customer Engagement a PowerApps* ("Dynamics CE nabízí") nebo *Dynamics 365 Finance and Operations* ("Dynamics Ops offers"). Zde je návod, jak být jeho součástí.
 
 > [!IMPORTANT]
-> Před publikováním změn v existující nabídce budete muset dokončit všechny výše uvedené kroky.
+> Stávající partneři isv s *Dynamics 365 Customer Engagement*, Dynamics *365 for Finance and Operations*a *PowerApps* aplikace by měl dokončit všechny onboarding kroky níže před **15 října 2019,** aby se zabránilo jejich stávající nabídky odebrány z [Microsoft AppSource](https://appsource.microsoft.com).
 
-## <a name="set-up-your-microsoft-partner-center-account"></a>Nastavení účtu partnerského centra Microsoftu
+Chcete-li zaregistrovat a využít všech [technických, marketingových a prodejních výhod](https://partner.microsoft.com/solutions/business-applications/isv-overview) programu ISV Connect pro obchodní aplikace, žádáme stávající partnery isv (s nabídkami *Dynamics CE* a *Ops),* aby dokončili následující kroky:
 
-[Partnerské centrum](https://partner.microsoft.com) je místo, kde můžete spravovat nastavení účtu pro program ISV Connect.
+- [Nastavte si účet Microsoft Partner Center](#set-up-your-microsoft-partner-center-account).
+- [Přijměte dodatek k obchodním aplikacím](#accept-the-business-applications-isv-program-addendum).
+- [Nastavte fakturační údaje](#set-up-your-billing-information).
+- [Znovu certifikujte přihlášku](#recertify-your-application).
 
-> [!NOTE]
-> Tento krok vyžaduje roli *vlastníka* v portál partnerů cloudu pro daný účet a roli *vlastníka* nebo *manažera* v partnerském centru.
+> [!IMPORTANT]
+> Před publikováním změn existující nabídky budete muset dokončit všechny výše uvedené kroky.
 
-Pokud jste již publikovali nabídky Dynamics CE nebo Dynamics OPS, pravděpodobně váš účet portál partnerů cloudu (CPP) již byl migrován a aktivován v partnerském centru. V takovém případě můžete účet partnerského centra aktivovat ručně z profilu vašeho vydavatele CPP.
+## <a name="set-up-your-microsoft-partner-center-account"></a>Nastavení účtu Microsoft Partner Center
 
-1. Přihlaste se na stránku **profilu vydavatele** v [portál partnerů cloudu](https://cloudpartner.azure.com/).
-2. Pokud se zobrazí informační zpráva s informacemi o tom, že vaše nastavení účtu bylo migrováno do partnerského centra, pokračujte k další části. V opačném případě vyberte banner s výzvou k aktivaci účtu partnerského centra.
-
-Další informace najdete v tématu [migrace účtu z portál partnerů cloudu do partnerského centra](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc).
-
-## <a name="accept-the-business-applications-isv-program-addendum"></a>Přijetí dodatku k programu Business Applications ISV
-
-Účast v tomto programu vyžaduje, abyste zkontrolovali a přijali *Business Applications doplněk*.
+[Centrum partnerů](https://partner.microsoft.com) je místem pro správu nastavení účtu pro program ISV Connect.
 
 > [!NOTE]
-> Tento krok vyžaduje roli *vlastníka* nebo *manažera* v partnerském centru, aby váš účet mohl podepsat právní smlouvy. Pokud jste dokončili migraci účtu portál partnerů cloudu tím, že v předchozím kroku [aktivujete účet partnerského centra](#set-up-your-microsoft-partner-center-account) , vaše oprávnění se také migrují do partnerského centra.
+> Tento krok vyžaduje roli *vlastníka* na portálu partnerů cloudu pro daný účet a roli *vlastníka* nebo *manažera* v Partnerském centru.
 
-1. Po zobrazení výzvy přejdete na [řídicí panel partnerského centra](https://partner.microsoft.com/dashboard/account/agreements) a přihlaste se do partnerského centra.
+Pokud jste již publikovali nabídky Dynamics CE nebo Dynamics Ops, váš účet portálu partnerů cloudu (CPP) již byl migrován a aktivován v Centru partnerů. Pokud tomu tak není, můžete ručně aktivovat účet Partnerského centra z profilu aplikace CPP Publisher.
 
-2. Pod nadpisem **komerčního webu Marketplace**vyhledejte **Microsoft Business Applications ISV dodatku**.
+1. Přihlaste se na stránku **profilu vydavatele** na [portálu partnerů cloudu](https://cloudpartner.azure.com/).
+2. Pokud se zobrazí nápis, který ukazuje, že nastavení vašeho účtu bylo migrováno do Centra partnerů, pokračujte do další části. V opačném případě vyberte banner s výzvou k aktivaci účtu V centru partnerského centra.
 
-3. Vyberte odkaz verze a Prohlédněte si smlouvu.
+Další informace naleznete v [tématu Migrace účtu z portálu partnerů cloudu do Centra partnerů](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc).
 
-4. Pokud souhlasíte a souhlasíte s smlouvou, vyberte **přijmout smlouvu** .
+## <a name="accept-the-business-applications-isv-program-addendum"></a>Přijetí dodatku programu ISV obchodních aplikací
+
+Účast v tomto programu vyžaduje, abyste si přečetli a přijali *Dodatek k obchodním aplikacím*.
+
+> [!NOTE]
+> Tento krok vyžaduje roli *vlastníka* nebo *manažera* v Partnerském centru, aby váš účet mohl podepsat právní smlouvy. Pokud jste migraci účtu portálu cloudových partnerů dokončili [aktivací účtu Partnerského centra](#set-up-your-microsoft-partner-center-account) v předchozím kroku, vaše oprávnění se také přesunula do Centra partnerů.
+
+1. Přejděte [na řídicí panel Centra partnerů](https://partner.microsoft.com/dashboard/account/agreements) a přihlaste se do Centra partnerů podle výzvy.
+
+2. Pod nadpisem **Commercial Marketplace**vyhledejte **dodatek k isvu podnikových aplikací společnosti Microsoft Business Applications**.
+
+3. Vyberte odkaz na verzi a zobrazte smlouvu.
+
+4. Chcete-li smlouvu přijmout a přijmout ji, vyberte **možnost Přijmout smlouvu.**
 
 ## <a name="set-up-your-billing-information"></a>Nastavení fakturačních údajů
 
-Dále nastavte fakturační údaje pro Business Applications program ISV Connect.
+Dále nastavte fakturační údaje pro program ISV Connect pro obchodní aplikace.
 
 > [!NOTE]
-> Tento krok vyžaduje v partnerském centru roli *vlastníka* nebo *správce* , aby váš účet aktualizoval fakturační údaje.
+> Tento krok vyžaduje roli *vlastníka* nebo *manažera* v Partnerském centru, aby váš účet aktualizoval fakturační údaje.
 
-1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard).
+1. Přihlaste se do [Centra partnerů](https://partner.microsoft.com/dashboard).
 
-2. Vyberte ikonu *Nastavení* (ozubeného kolečka) a vyberte **Nastavení vývojáře**.
+2. Vyberte ikonu *Nastavení* (ozubené kolo) a vyberte **Nastavení vývojáře**.
 
-3. V části *účty*vyberte **profil fakturace**.
+3. V části *Účty*vyberte **Fakturační profil**.
 
-4. Zkontrolujte primární kontaktní a fakturační informace, které jsou vyplněny z vaší právní entity, a proveďte potřebné aktualizace.
+4. Zkontrolujte primární kontaktní a fakturační údaje, které jsou vyplněny od vaší právnické osoby, a proveďte potřebné aktualizace.
 
-5. Zadejte ID daně nebo nastavení ID DPH (Pokud je k dispozici).
+5. Podej diodu daně/Nastavení DIČ, je-li k dispozici.
 
-6. Kliknutím na **Uložit** uložte změny.
+6. Vyberte **Uložit** a uložte tak provedené změny.
 
-Fakturační profil můžete kdykoli aktualizovat, ale *název společnosti* a fakturační adresa *země* se nedají později změnit.
+Svůj fakturační profil můžete kdykoli aktualizovat, ale *název společnosti* a fakturační adresa *Země* nelze později změnit.
 
-## <a name="recertify-your-application"></a>Recertifikace aplikace
+## <a name="recertify-your-application"></a>Znovu certifikovat vaši žádost
 
-Po dokončení výše uvedených kroků budou vaše stávající nabídky Dynamics CE a Dynamics OPS k dispozici pro úpravy v partnerském centru. Nové nabídky můžete také vytvořit prostřednictvím partnerského centra.
+Po dokončení výše uvedených kroků budou stávající nabídky Dynamics CE a Dynamics Ops k dispozici pro úpravy v Centru partnerů. Nové nabídky můžete vytvářet také prostřednictvím Centra partnerů.
 
-Posledním krokem k registraci v programu Business Applications ISV Connect je recertifikace stávajících aplikací.
+Posledním krokem pro registraci do programu EnterpriseV Connect pro obchodní aplikace je opětovné potvrzení stávajících aplikací.
 
-1. [Pomocí těchto kroků](https://partner.microsoft.com/solutions/business-applications/isv-publish) znovu certifikovate svou aplikaci na AppSource.
-2. [Vytvořte a publikujte novou nabídku](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer). Tato nabídka bude zcela nová nabídka a nenahradí ji stávající.
+1. Chcete-li znovu certifikovat aplikaci na AppSource, [postupujte takto.](https://partner.microsoft.com/solutions/business-applications/isv-publish)
+2. [Vytvořte a publikujte novou nabídku](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer). Tato nabídka bude zcela novou nabídkou a nenahradí stávající.
 
 ## <a name="further-info"></a>Další informace
 
-Zeptejte se svého správce účtu nebo se obraťte na [podporu partnera Microsoftu](https://partner.microsoft.com/support) , kde získáte pomoc s vaším účtem. Obecné informace o Business Applications programu ISV Connect a partnerském centru Microsoftu najdete v těchto tématech:
+Požádejte svého správce účtu nebo požádejte o pomoc s vaším účtem [podporu partnerů společnosti Microsoft.](https://partner.microsoft.com/support) Obecné informace o programu ISV ISV pro firmy a centru microsoft partnercenter naleznete v následujících tématech:
 
-#### <a name="business-applications-for-isvs-online-article"></a>Business Applications pro nezávislé výrobce softwaru (online článek)
+#### <a name="business-applications-for-isvs-online-article"></a>Obchodní aplikace pro isv (on-line článek)
 https://partner.microsoft.com/solutions/business-applications/isv-overview
 
-#### <a name="overview-of-the-new-program-for-business-applications-isvs-pdf"></a>Přehled nového programu pro Business Applications nezávislým výrobcům softwaru (PDF)
+#### <a name="overview-of-the-new-program-for-business-applications-isvs-pdf"></a>Přehled nových nevizořitek nového programu pro podnikové aplikace (PDF)
 https://aka.ms/BizAppsISVProgram
 
-#### <a name="business-applications-isv-connect-program-faq-pdf"></a>Nejčastější dotazy k programu ISV Connect pro Business Applications (PDF)
+#### <a name="business-applications-isv-connect-program-faq-pdf"></a>Nejčastější dotazy k programu ISV Connect program pro obchodní aplikace (PDF)
 https://assetsprod.microsoft.com/business-applications-partner-faq.pdf
 
-#### <a name="upcoming-program-for-business-applications-isvs-blog-post"></a>Nadcházející program pro Business Applications nezávislým výrobcům softwaru (Blogový příspěvek)
+#### <a name="upcoming-program-for-business-applications-isvs-blog-post"></a>Připravované program pro firemní aplikace ISV (blog post)
 https://cloudblogs.microsoft.com/dynamics365/bdm/2019/04/17/upcoming-program-for-business-applications-isvs/

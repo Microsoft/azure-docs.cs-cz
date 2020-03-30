@@ -1,6 +1,6 @@
 ---
-title: Základní hodnoty zabezpečení Azure pro Batch
-description: Základní hodnoty zabezpečení Azure pro Batch
+title: Směrný plán zabezpečení Azure pro dávku
+description: Směrný plán zabezpečení Azure pro dávku
 author: msmbaldwin
 manager: rkarlin
 ms.service: security
@@ -8,117 +8,117 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: af0466299d1f972fe9334beb5f31c886c1928a1c
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: a9569c1f5de797c77f447b5df15e85a57e8be84b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78328995"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79472924"
 ---
-# <a name="azure-security-baseline-for-batch"></a>Základní hodnoty zabezpečení Azure pro Batch
+# <a name="azure-security-baseline-for-batch"></a>Směrný plán zabezpečení Azure pro dávku
 
-Základní plán zabezpečení Azure pro službu Batch obsahuje doporučení, která vám pomůžou vylepšit stav zabezpečení vašeho nasazení.
+Směrný plán zabezpečení Azure pro dávku obsahuje doporučení, která vám pomohou zlepšit stav zabezpečení vašeho nasazení.
 
-Základní hodnoty pro tyto služby se vykreslí z [bezpečnostního testu Azure Security 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview), který poskytuje doporučení k zabezpečení cloudových řešení v Azure s využitím našich osvědčených postupů.
+Základní informace pro tyto služby jsou z azure [security benchmark verze 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview), který poskytuje doporučení, jak můžete zabezpečit cloudová řešení v Azure s našimi pokyny pro osvědčené postupy.
 
-Další informace najdete v tématu [Přehled standardních hodnot zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+Další informace naleznete v [tématu Přehled směrného plánu zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
 
 ## <a name="network-security"></a>Zabezpečení sítě
 
-*Další informace najdete v tématu [řízení zabezpečení: zabezpečení sítě](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
+*Další informace naleznete v [tématu Security Control: Network Security](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
 
-### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: Chraňte prostředky pomocí skupin zabezpečení sítě nebo Azure Firewall v Virtual Network
+### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1: Ochrana prostředků pomocí skupin zabezpečení sítě nebo brány Azure Firewall ve virtuální síti
 
-**Pokyny**: nasazení Azure Batchch fondů v rámci virtuální sítě. Pokud chcete, aby výpočetní uzly fondu umožňovaly zabezpečeně komunikovat s jinými virtuálními počítači nebo s místní sítí, můžete fond zřídit v podsíti virtuální sítě Azure. Také nasazení fondu v rámci virtuální sítě vám umožní řídit skupinu zabezpečení sítě (NSG), která se používá k zabezpečení síťových rozhraní jednotlivých uzlů (NIC) a také podsíť. Nakonfigurujte NSG tak, aby povoloval provoz jenom z důvěryhodných IP adres/Locations na internetu.
+**Pokyny:** Nasazení fondu batch Azure v rámci virtuální sítě. Chcete-li povolit výpočetní uzly fondu bezpečně komunikovat s jinými virtuálními počítači nebo s místní sítí, můžete zřídit fond v podsíti virtuální sítě Azure. Nasazení fondu v rámci virtuální sítě také umožňuje kontrolu nad skupinou zabezpečení sítě (NSG) slouží k zabezpečení síťových rozhraní jednotlivých uzlů (NIC), stejně jako podsítě. Nakonfigurujte soubor zabezpečení sítě tak, aby umožňoval přenosy pouze z důvěryhodných adres IP/umístění v Internetu.
 
 
-Postup vytvoření fondu Azure Batch v rámci Virtual Network:
+Jak vytvořit fond dávek Azure v rámci virtuální sítě:
 
 https://docs.microsoft.com/azure/batch/batch-virtual-network
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1,2: Sledujte a protokolujte konfiguraci a provoz virtuální sítě, podsítí a síťových karet.
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2: Sledování a protokolování konfigurace a provozu vnech, podsítí a nics
 
-**Doprovodné**materiály: použijte Azure Security Center a opravte doporučení k ochraně sítě týkající se skupiny zabezpečení virtuální sítě nebo sítě (NSG) přidružené k vašemu fondu služby Batch. Povolte protokoly toku na NSG, který se používá k ochraně fondu Batch, a odešlete protokoly do účtu Azure Storage pro audit provozu. Protokoly toku NSG můžete také odesílat do pracovního prostoru Azure Log Analytics a používat Azure Analýza provozu k poskytování přehledů o toku přenosů ve vašem cloudu Azure. Mezi výhody Azure Analýza provozu je schopnost vizualizovat síťovou aktivitu a identifikovat aktivní body, identifikovat bezpečnostní hrozby, pochopit vzory toků provozu a odhalit síťové opravy chyb.
+**Pokyny:** Použijte Azure Security Center a napravit doporučení ochrany sítě související s virtuální sítě / skupiny zabezpečení sítě (NSG) přidružené k fondu Batch. Povolte protokoly toku na souboru zabezpečení sítě, který se používá k ochraně fondu dávek, a odesílejte protokoly do účtu úložiště Azure pro audit provozu. Protokoly toku nsg můžete také odesílat do pracovního prostoru Azure Log Analytics a používat Azure Traffic Analytics k poskytování přehledů o toku provozu ve vašem cloudu Azure. Některé výhody Azure Traffic Analytics jsou možnost vizualizovat aktivitu v síti a identifikovat aktivní body, identifikovat bezpečnostní hrozby, pochopit vzorce toku provozu a určit chybné konfigurace sítě.
 
 
-Jak povolit protokoly toku NSG:
+Povolení protokolů toku nsg:
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
 
-Jak povolit a použít Analýza provozu:
+Jak povolit a používat Traffic Analytics:
 
 https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 
-Pochopení zabezpečení sítě, které poskytuje Azure Security Center:
+Seznamte se se zabezpečením sítě poskytovaným službou Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="13-protect-critical-web-applications"></a>1,3: Chraňte kritické webové aplikace
+### <a name="13-protect-critical-web-applications"></a>1.3: Ochrana kritických webových aplikací
 
-**Doprovodné**materiály: nejde použít, srovnávací test je určený pro webové aplikace běžící na Azure App Service nebo IaaS instancích.
+**Pokyny:** Není použitelné, benchmark je určen pro webové aplikace spuštěné v azure app service nebo IaaS instance.
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování Azure Security Center**: Nelze použít
 
-**Odpovědnost**: netýká se
+**Odpovědnost**: Nepoužije se
 
-### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: zakažte komunikaci se známými škodlivými IP adresami.
+### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4: Odepřít komunikaci se známými škodlivými IP adresami
 
-**Pokyny**: povolení služby Azure DDoS (Distributed Denial-of-Service) ve virtuální síti s ochranou fondu Azure Batch pro ochranu před útoky DDoS. K odepření komunikace se známými škodlivými nebo nepoužívanými internetovými IP adresami použijte Azure Security Center integrovanou analýzu hrozeb.
+**Pokyny:** Povolte Azure DDoS (distribuované odmítnutí služby) Standardní ochrana ve virtuální síti chrání váš fond Azure Batch pro ochranu proti útokům DDoS. Pomocí integrované analýzy hrozeb Centra zabezpečení Azure můžete odepřít komunikaci se známými škodlivými nebo nepoužívanými internetovými IP adresami.
 
 
-Jak nakonfigurovat DDoS Protection:
+Jak nakonfigurovat ochranu Před sdos:
 
 https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
 
-Pochopení Azure Security Center integrované analýzy hrozeb:
+Seznamte se s integrovanou analýzou hrozeb Centra zabezpečení Azure:
 
 https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="15-record-network-packets-and-flow-logs"></a>1,5: záznam síťových paketů a protokolů toků
+### <a name="15-record-network-packets-and-flow-logs"></a>1.5: Záznam síťových paketů a protokolů toku
 
-**Doprovodné**materiály: Povolte protokoly toku ve skupině zabezpečení sítě (NSG), která se používá k ochraně fondu Azure Batch, a odešlete protokoly do Azure Storage účtu pro audit provozu.
+**Pokyny:** Povolte protokoly toku ve skupině zabezpečení sítě (NSG), která se používá k ochraně fondu Azure Batch, a odesílejte protokoly do účtu úložiště Azure pro audit provozu.
 
 
-Jak povolit protokoly toku NSG:
+Povolení protokolů toku nsg:
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems"></a>1,6: nasazení systémů ochrany před internetovými útoky na síť a prevence vniknutí
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems"></a>1.6: Nasazení systémů detekce a prevence vniknutí založených na síti
 
-**Doprovodné**materiály: Pokud je to nutné pro účely dodržování předpisů, vyberte síťové virtuální zařízení z Azure Marketplace, které podporuje funkce pro zjišťování neoprávněných vniknutí (ID) a systémy ochrany před únikem informací (IP) s možnostmi kontroly zatížení.
-
-
-Pokud zjišťování neoprávněných vniknutí nebo prevence na základě kontroly zatížení není požadavkem, je možné použít Azure Firewall s analýzou hrozeb. Azure Firewall filtrování na základě logiky hrozeb může upozorňovat a zamítnout provoz do a ze známých škodlivých IP adres a domén. IP adresy a domény se naúčtují z informačního kanálu Microsoft Threat Intelligence.
+**Pokyny:** Pokud je to nutné pro účely dodržování předpisů, vyberte síťové virtuální zařízení z Azure Marketplace, které podporuje systémy detekce vniknutí (IDS) a systémy prevence narušení (IPS) s možnostmi kontroly užitečného zatížení.
 
 
-Nasaďte Azure Firewall s veřejnou IP adresou ve stejné virtuální síti jako uzly fondu Azure Batch. Nakonfigurujte pravidla překladu adres (NAT) mezi důvěryhodnými umístěními na internetu a privátními IP adresami uzlů jednotlivých fondů. Na Azure Firewall v části Analýza hrozeb nakonfigurujte "Alert" a "deny" pro blokování výstrahy a zablokování provozu do a ze známých škodlivých IP adres a domén. IP adresy a domény se nacházejí z kanálu Microsoft Threat Intelligence a zahrnují se jenom ty nejvyšší důvěrné záznamy. 
+Pokud není vyžadováno zjišťování nebo prevence narušení na základě kontroly datové části, lze použít Azure Firewall se inteligentními hrozbami. Filtrování založené na analýzách hrozeb azure firewall může upozorňovat a odpírat provoz na známé škodlivé IP adresy a domény a z nich. IP adresy a domény jsou získávány z informačního kanálu Microsoft Threat Intelligence.
 
 
-Postup vytvoření fondu Azure Batch v rámci Virtual Network:
+Nasaďte Azure Firewall s veřejnou IP adresou ve stejné virtuální síti jako uzly fondu dávek Azure. Nakonfigurujte pravidla překladu síťových adres (NAT) mezi důvěryhodnými umístěními v Internetu a privátními IP adresami jednotlivých uzlů fondu. Na Azure Firewall, v rámci Threat Intelligence, nakonfigurujte "Výstrahy a odepřít" blokovat upozornění a blokovat provoz na nebo ze známých škodlivých IP adres a domén. IP adresy a domény jsou získávány z informačního kanálu Microsoft Threat Intelligence a jsou zahrnuty pouze záznamy s nejvyšší spolehlivostí. 
+
+
+Jak vytvořit fond dávek Azure v rámci virtuální sítě:
 
 https://docs.microsoft.com/azure/batch/batch-virtual-network
 
 
-Postup nasazení Azure Firewall:
+Jak nasadit Bránu Azure Firewall:
 
 https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal
 
@@ -127,57 +127,57 @@ Azure Marketplace:
 
 https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="17-manage-traffic-to-your-web-applications"></a>1,7: Správa provozu do webových aplikací
+### <a name="17-manage-traffic-to-your-web-applications"></a>1.7: Správa návštěvnosti webových aplikací
 
-**Doprovodné**materiály: nejde použít, srovnávací test je určený pro webové aplikace běžící na Azure App Service nebo IaaS instancích.
+**Pokyny:** Není použitelné, benchmark je určen pro webové aplikace spuštěné v azure app service nebo IaaS instance.
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování Azure Security Center**: Nelze použít
 
-**Odpovědnost**: netýká se
+**Odpovědnost**: Nepoužije se
 
-### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: Minimalizujte složitost a administrativní režii pravidel zabezpečení sítě
+### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8: Minimalizace složitosti a administrativní režie pravidel zabezpečení sítě
 
-**Pokyny**: pomocí značek služby virtuální sítě definujte řízení přístupu k síti pro skupiny zabezpečení sítě nebo brány firewall Azure, které jsou přidružené k vašim Azure Batch fondům. Značky služeb můžete používat místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby (např. ApiManagement) v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu. Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje označení služby jako adresy změny.
+**Pokyny:** Pomocí značek virtuálních síťových služeb definujte ovládací prvky přístupu k síti ve skupinách zabezpečení sítě nebo azure firewallech přidružených k vašemu fondu azure batch. Značky služeb můžete používat místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby (např. apimanagement) v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo odepřít provoz pro odpovídající službu. Společnost Microsoft spravuje předpony adres zahrnuté v servisním štítku a automaticky aktualizuje výrobní číslo jako adresy změnit.
 
 
-Pochopení a používání značek služeb:
+Porozumět servisním značkám a používat je:
 
 https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: Udržujte standardní konfigurace zabezpečení pro síťová zařízení.
+### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9: Udržovat standardní konfigurace zabezpečení pro síťová zařízení
 
-**Pokyny**: definování a implementace standardních konfigurací zabezpečení pro síťové prostředky přidružené k vašim Azure Batch fondům s Azure Policy. Pomocí aliasů Azure Policy v oborech názvů Microsoft. Batch a Microsoft. Network můžete vytvářet vlastní zásady pro auditování nebo prosazování konfigurace sítě vašich Azure Batch fondů.
+**Pokyny:** Definujte a implementujte standardní konfigurace zabezpečení pro síťové prostředky přidružené k vašemu fondu Azure Batch s Azure Policy. Pomocí aliasů zásad Azure v oborech názvů Microsoft.Batch a Microsoft.Network vytvořte vlastní zásady pro auditování nebo vynucení síťové konfigurace fondů Azure Batch.
 
 
 
-Jak nakonfigurovat a spravovat Azure Policy:
+Jak nakonfigurovat a spravovat zásady Azure:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="110-document-traffic-configuration-rules"></a>1,10: pravidla pro konfiguraci provozu dokumentu
+### <a name="110-document-traffic-configuration-rules"></a>1.10: Pravidla konfigurace provozu dokumentu
 
-**Doprovodné**materiály: používejte značky pro skupiny síťových služeb (skupin zabezpečení sítě) a další prostředky související se zabezpečením a tokem provozu sítě, které jsou spojené s vašimi fondy Azure Batch. U individuálních pravidel NSG použijte pole Popis k zadání obchodních potřeb a/nebo doby trvání (atd.) pro všechna pravidla, která umožňují provoz do/ze sítě.
-
-
-Použijte některou z vestavěných definic zásad Azure souvisejících s označováním, jako je "vyžadovat značku a její hodnotu", aby se zajistilo, že se vytvoří všechny prostředky s značkami a upozorní vás na stávající neoznačené prostředky.
+**Pokyny:** Použití značek pro skupiny síťových služeb (NSG) a další prostředky související se zabezpečením sítě a tokem provozu, které jsou přidruženy k dávkovým fondům Azure. Pro jednotlivá pravidla sítě zabezpečení sítě použijte pole Popis k určení obchodní potřeby a/nebo doby trvání (atd.) pro všechna pravidla, která umožňují provoz do nebo ze sítě.
 
 
-Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akce s prostředky na základě jejich značek.
+Pomocí některé z předdefinovaných definic zásad Azure souvisejících s označováním, jako je například Vyžadovat značku a její hodnotu, můžete zajistit, aby se všechny prostředky vytvořily pomocí značek, a upozornit vás na existující neoznačené prostředky.
 
 
-Vytváření a používání značek:
+Azure PowerShell nebo Azure CLI můžete použít k vyhledávání nebo provádění akcí na prostředky na základě jejich značek.
+
+
+Jak vytvářet a používat značky:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
@@ -187,79 +187,79 @@ Jak vytvořit virtuální síť:
 https://docs.microsoft.com/azure/virtual-network/quick-create-portal
 
 
-Vytvoření NSG:
+Jak vytvořit nsg:
 
 https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: pomocí automatizovaných nástrojů monitorujte konfigurace síťových prostředků a zjišťují změny.
+### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11: Použití automatizovaných nástrojů ke sledování konfigurace síťových prostředků a zjišťování změn
 
-**Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků, které souvisejí s vašimi fondy Azure Batch. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích.
+**Pokyny:** Pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků souvisejících s fondy Azure Batch. Vytvořte výstrahy v rámci Azure Monitor, který se aktivuje, když dojde ke změnám kritických síťových prostředků.
 
-Jak zobrazit a načíst události protokolu aktivit Azure: https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view 
+Jak zobrazit a načíst události protokolu aktivit Azure:https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view 
 
-Postup při vytváření výstrah v Azure Monitor: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Jak vytvořit výstrahy ve službě Azure Monitor:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
 ## <a name="logging-and-monitoring"></a>Protokolování a monitorování
 
-*Další informace najdete v tématu [řízení zabezpečení: protokolování a monitorování](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Další informace naleznete [v tématu Security Control: Logging and Monitoring](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
 
-### <a name="21-use-approved-time-synchronization-sources"></a>2,1: Použijte schválené zdroje synchronizace času
+### <a name="21-use-approved-time-synchronization-sources"></a>2.1: Použití schválených zdrojů synchronizace času
 
-**Doprovodné**materiály: u Azure Batch ve výchozím nastavení poskytuje společnost Microsoft časovou synchronizaci. Pokud ale máte specifické požadavky na synchronizaci času, můžete tyto změny implementovat.
+**Pokyny:** Pro Azure Batch, ve výchozím nastavení Microsoft poskytuje synchronizaci času. Pokud však máte konkrétní požadavky na synchronizaci času, můžete tyto změny implementovat.
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: Microsoft
+**Odpovědnost**: Microsoft
 
-### <a name="22-configure-central-security-log-management"></a>2,2: Konfigurace centrální správy protokolů zabezpečení
+### <a name="22-configure-central-security-log-management"></a>2.2: Konfigurace správy centrálního protokolu zabezpečení
 
-**Doprovodné**materiály: účet Azure Batch, který se má Azure monitor k agregaci dat zabezpečení generovaných zařízeními clusteru. Využijte vlastní dotazy k detekci a reakci na hrozby v prostředí.  Pro Azure Batch monitorování na úrovni prostředků použijte rozhraní API služby Batch k monitorování nebo dotazování stavu vašich prostředků, včetně úloh, úkolů, uzlů a fondů.
+**Pokyny:** Palubní účet Azure Batch do Azure Monitoru pro agregaci dat zabezpečení generovaných zařízeními clusteru. Využijte vlastní dotazy ke zjišťování a reakci na hrozby v prostředí.  Pro monitorování na úrovni prostředků Azure Batch použijte dávková api ke sledování nebo dotazování na stav prostředků, včetně úloh, úkolů, uzlů a fondů.
 
 
 
-Jak připojit účet Azure Batch k Azure Monitor:
+Jak napalubě účtu Azure Batch do Azure Monitoru:
 
 https://docs.microsoft.com/azure/batch/batch-diagnostics
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: povolení protokolování auditu pro prostředky Azure
+### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3: Povolení protokolování auditování prostředků Azure
 
-**Návod**: pro Azure Batch monitorování na úrovni účtu sledujte jednotlivé účty Batch pomocí funkcí Azure monitor. Azure Monitor shromažďuje metriky a volitelně diagnostické protokoly pro prostředky s rozsahem na úrovni účtu Batch, jako jsou fondy, úlohy a úkoly. Shromažďovat a spotřebovávat tato data ručně nebo programově, abyste mohli monitorovat aktivity v účtu Batch a diagnostikovat problémy.
-
-
-Pro Azure Batch monitorování na úrovni prostředků použijte rozhraní API Azure Batch k monitorování nebo dotazování stavu vašich prostředků, včetně úloh, úloh, uzlů a fondů.
+**Pokyny:** Pro monitorování úrovně účtu Azure Batch sledujte každý účet Batch pomocí funkcí Azure Monitoru. Azure Monitor shromažďuje metriky a volitelně diagnostické protokoly pro prostředky vymezené na úrovni účtu Batch, jako jsou fondy, úlohy a úkoly. Shromažďujte a konzumujte tato data ručně nebo programově, abyste sledovali aktivity ve vašem účtu Batch a diagnostikovali problémy.
 
 
-Jak nakonfigurovat Azure Batch monitorování a protokolování na úrovni účtu:
+Pro monitorování úrovně prostředků Azure Batch použijte azure dávková api ke sledování nebo dotazování na stav vašich prostředků, včetně úloh, úkolů, uzlů a fondů.
+
+
+Jak nakonfigurovat monitorování a protokolování na úrovni účtu Azure Batch:
 
 https://docs.microsoft.com/azure/batch/monitoring-overview
 
 
-Principy sledování na úrovni prostředků Batch:
+Principy monitorování na úrovni prostředků dávky:
 
 https://docs.microsoft.com/azure/batch/monitoring-overview#batch-resource-monitoring
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="24-collect-security-logs-from-operating-system"></a>2,4: shromáždění protokolů zabezpečení z operačního systému
+### <a name="24-collect-security-logs-from-operating-system"></a>2.4: Shromažďování protokolů zabezpečení z operačního systému
 
-**Doprovodné**materiály: Azure monitor shromažďuje metriky a protokoly diagnostiky pro prostředky v účtu Azure Batch. Shromažďovat a spotřebovávat tato data různými způsoby, jak monitorovat účet Azure Batch a diagnostikovat problémy. Můžete také nakonfigurovat upozornění na metriky, abyste obdrželi oznámení, když metrika dosáhne zadané hodnoty.
+**Pokyny:** Azure Monitor shromažďuje metriky a diagnostické protokoly pro prostředky ve vašem účtu Azure Batch. Shromažďujte a spotřebovávejte tato data různými způsoby, abyste monitorovali svůj účet Azure Batch a diagnostikovali problémy. Můžete také nakonfigurovat upozornění na metriky, abyste obdrželi oznámení, když metrika dosáhne zadané hodnoty.
 
 
-V případě potřeby se můžete ke svým uzlům fondu připojit pomocí protokolu SSH (Secure Shell) nebo protokol RDP (Remote Desktop Protocol) (RDP) a získat přístup k místním protokolům operačního systému.
+V případě potřeby se můžete připojit k jednotlivým uzlům fondu prostřednictvím zabezpečeného prostředí (SSH) nebo protokolu RDP (Remote Desktop Protocol) pro přístup k protokolům místního operačního systému.
 
 
 Jak shromažďovat diagnostické protokoly z účtu Azure Batch:
@@ -267,176 +267,176 @@ Jak shromažďovat diagnostické protokoly z účtu Azure Batch:
 https://docs.microsoft.com/azure/batch/batch-diagnostics#batch-diagnostics
 
 
-Jak se vzdáleně připojit k uzlům Azure Batch fondu:
+Jak se vzdáleně připojit k uzlům fondu Azure Batch:
 
 https://docs.microsoft.com/azure/batch/batch-api-basics#error-handling
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="25-configure-security-log-storage-retention"></a>2,5: Konfigurace uchovávání úložiště protokolu zabezpečení
+### <a name="25-configure-security-log-storage-retention"></a>2.5: Konfigurace uchovávání úložiště protokolu zabezpečení
 
-**Pokyny**: Azure Batch účet Azure monitor. Ujistěte se, že se v pracovním prostoru Azure Log Analytics používala doba uchování protokolu nastavená v souladu s pravidly dodržování předpisů vaší organizace.
+**Pokyny:** Palubní účet Azure Batch do Azure Monitoru. Ujistěte se, že použitý pracovní prostor Azure Log Analytics má nastavenou dobu uchovávání protokolů podle předpisů pro dodržování předpisů vaší organizace.
 
 
-Postup konfigurace Azure Batch monitorování a protokolování:
+Jak nakonfigurovat monitorování a protokolování azure batch:
 
 https://docs.microsoft.com/azure/batch/monitoring-overview
 
 
-Jak nakonfigurovat dobu uchování v pracovním prostoru Azure Log Analytics:
+Jak nakonfigurovat dobu uchovávání pracovního prostoru Azure Log Analytics:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="26-monitor-and-review-logs"></a>2,6: Sledujte a kontrolujte protokoly
+### <a name="26-monitor-and-review-logs"></a>2.6: Sledování a revize protokolů
 
-**Doprovodné**materiály: vytváření Azure Batch výstrah metrik, které se aktivují, když hodnota zadané metriky přechází z dané prahové hodnoty.
-
-
-Jak nakonfigurovat Azure Batch výstrahy metriky:
-
-https://docs.microsoft.com/azure/batch/batch-diagnostics
-
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
-
-**Zodpovědnost**: zákazník
-
-### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: povolení výstrah pro aktivitu neobvyklé
-
-**Doprovodné**materiály: vytváření Azure Batch výstrah metrik, které se aktivují, když hodnota zadané metriky přechází z dané prahové hodnoty.
+**Pokyny:** Vytvořte výstrahy metriky Azure Batch, které se aktivují, když hodnota zadané metriky překročí danou prahovou hodnotu.
 
 
-Jak nakonfigurovat Azure Batch výstrahy metriky:
+Jak nakonfigurovat upozornění na metriky Azure Batch:
 
 https://docs.microsoft.com/azure/batch/batch-diagnostics
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="28-centralize-anti-malware-logging"></a>2,8: centralizace protokolování proti malwaru
+### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7: Povolit upozornění na anomální aktivitu
 
-**Pokyny**: použijte Windows Defender na jednotlivých uzlech služby Batch v případě operačních systémů Windows nebo Poskytněte vlastní antimalwarové řešení, pokud používáte Linux.
+**Pokyny:** Vytvořte výstrahy metriky Azure Batch, které se aktivují, když hodnota zadané metriky překročí danou prahovou hodnotu.
 
-**Monitorování Azure Security Center**: Ano
 
-**Zodpovědnost**: zákazník
+Jak nakonfigurovat upozornění na metriky Azure Batch:
 
-### <a name="29-enable-dns-query-logging"></a>2,9: povolení protokolování dotazů DNS
+https://docs.microsoft.com/azure/batch/batch-diagnostics
 
-**Pokyny**: implementace řešení třetí strany pro protokolování DNS
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Odpovědnost**: Zákazník
 
-**Zodpovědnost**: zákazník
+### <a name="28-centralize-anti-malware-logging"></a>2.8: Centralizovat protokolování antimalwaru
 
-### <a name="210-enable-command-line-audit-logging"></a>2,10: povolení protokolování auditu příkazového řádku
+**Pokyny**: Použijte program Windows Defender na jednotlivých dávkových uzlech v případě operačních systémů Windows nebo poskytněte vlastní řešení ochrany proti malwaru, pokud používáte Linux.
 
-**Pokyny**: ruční konfigurace protokolování konzoly a přepisu prostředí PowerShell v jednotlivých uzlech.
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Odpovědnost**: Zákazník
 
-**Zodpovědnost**: zákazník
+### <a name="29-enable-dns-query-logging"></a>2.9: Povolení protokolování dotazů DNS
+
+**Pokyny**: Implementace řešení třetí strany pro protokolování DNS
+
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
+
+**Odpovědnost**: Zákazník
+
+### <a name="210-enable-command-line-audit-logging"></a>2.10: Povolení protokolování auditu příkazového řádku
+
+**Pokyny:** Ručně nakonfigurujte protokolování konzoly a přepis prostředí PowerShell na základě počtu uzlů.
+
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
+
+**Odpovědnost**: Zákazník
 
 ## <a name="identity-and-access-control"></a>Identita a řízení přístupu
 
-*Další informace najdete v tématu [řízení zabezpečení: identita a Access Control](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
+*Další informace naleznete [v tématu Zabezpečení: Identita a řízení přístupu](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
 
-### <a name="31-maintain-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
+### <a name="31-maintain-inventory-of-administrative-accounts"></a>3.1: Udržovat inventuru účtů pro správu
 
-**Doprovodné**materiály: Udržujte si záznam místního účtu pro správu, který se vytvoří během zřizování fondu Azure Batch, i všechny další účty, které vytvoříte. Kromě toho, pokud je použita Integrace Azure Active Directory (AAD), má AAD předdefinované role, které se musí explicitně přiřadit a proto se Queryable. Pomocí modulu PowerShellu pro AAD můžete provádět dotazy ad hoc a zjišťovat účty, které jsou členy skupin pro správu.
-
-
-Kromě toho můžete použít Azure Security Center doporučení pro správu identit a přístupu.
+**Pokyny:** Udržovat záznam místního účtu pro správu, který se vytvoří během zřizování fondu Azure Batch, a také všechny ostatní účty, které vytvoříte. Kromě toho pokud azure active directory (AAD) integrace se používá, AAD má předdefinované role, které musí být explicitně přiřazeny a jsou proto dotazovatelné. Pomocí modulu AAD PowerShell můžete provádět adhoc dotazy ke zjišťování účtů, které jsou členy skupin pro správu.
 
 
-Jak získat roli adresáře v AAD pomocí PowerShellu:
+Kromě toho můžete použít azure security center identity a řízení přístupu doporučení.
+
+
+Jak získat roli adresáře ve službě AAD pomocí prostředí PowerShell:
 
 https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
 
 
-Jak získat členy role adresáře v AAD pomocí PowerShellu:
+Jak získat členy role adresáře v AAD s PowerShellem:
 
 https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
 
 
-Jak monitorovat identitu a přístup pomocí Azure Security Center:
+Jak sledovat identitu a přístup pomocí Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="32-change-default-passwords-where-applicable"></a>3,2: Změna výchozích hesel tam, kde je to možné
+### <a name="32-change-default-passwords-where-applicable"></a>3.2: Změna výchozích hesel tam, kde je to možné
 
-**Pokyny**: při zřizování fondu Azure Batch máte možnost vytvářet účty místního počítače. Neexistují žádná výchozí hesla, která by bylo možné změnit, ale můžete zadat různá hesla pro přístup přes SSH (Secure Shell) a protokol RDP (Remote Desktop Protocol) (RDP). Po nakonfigurování Azure Batch fondu můžete vygenerovat náhodného uživatele pro jednotlivé uzly v rámci Azure Portal nebo prostřednictvím rozhraní API Azure Resource Manager.
+**Pokyny:** Při zřizování fondu Azure Batch máte možnost vytvořit účty místního počítače. Neexistují žádná výchozí hesla, která by bylo možné změnit, ale můžete zadat různá hesla pro přístup k zabezpečenému prostředí (SSH) a protokolu RDP (RdP). Po nakonfigurovaném fondu dávek Azure můžete vygenerovat náhodného uživatele pro jednotlivé uzly v rámci portálu Azure nebo prostřednictvím rozhraní API Azure Resource Manager.
 
 
-Postup přidání uživatele ke konkrétnímu výpočetnímu uzlu:
+Jak přidat uživatele do konkrétního výpočetního uzlu:
 
 https://docs.microsoft.com/rest/api/batchservice/computenode/adduser
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování Azure Security Center**: Nelze použít
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="33-ensure-the-use-of-dedicated-administrative-accounts"></a>3,3: Ujistěte se, že použití vyhrazených účtů pro správu
+### <a name="33-ensure-the-use-of-dedicated-administrative-accounts"></a>3.3: Zajistit používání vyhrazených administrativních účtů
 
-**Pokyny**: integrace ověřování pro aplikace Azure Batch s Azure Active Directory. Vytvořte zásady a postupy týkající se používání vyhrazených účtů pro správu.
-
-
-Kromě toho můžete použít Azure Security Center doporučení pro správu identit a přístupu.
+**Pokyny:** Integrace ověřování pro dávkové aplikace Azure s Azure Active Directory. Vytvořte zásady a postupy týkající se používání vyhrazených účtů pro správu.
 
 
-Ověřování aplikací Batch pomocí Azure Active Directory:
+Kromě toho můžete použít azure security center identity a řízení přístupu doporučení.
+
+
+Jak ověřit dávkové aplikace pomocí služby Azure Active Directory:
 
 https://docs.microsoft.com/azure/batch/batch-aad-auth
 
 
-Jak monitorovat identitu a přístup pomocí Azure Security Center:
+Jak sledovat identitu a přístup pomocí Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="34-utilize-single-sign-on-sso-with-azure-active-directory"></a>3,4: Využijte jednotné přihlašování (SSO) s Azure Active Directory
+### <a name="34-utilize-single-sign-on-sso-with-azure-active-directory"></a>3.4: Využití jednotného přihlašování (SSO) pomocí služby Azure Active Directory
 
-**Doprovodné**materiály: nejde použít, ale Azure Batch podporuje ověřování Azure AD, jednotné přihlašování se nepodporuje.
+**Pokyny:** Nelze použít, zatímco Azure Batch podporuje ověřování Azure AD, jednotné přihlašování není podporováno.
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování Azure Security Center**: Nelze použít
 
-**Odpovědnost**: netýká se
+**Odpovědnost**: Nepoužije se
 
-### <a name="35-use-multifactor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Používejte vícefaktorové ověřování pro veškerý přístup založený na Azure Active Directory.
+### <a name="35-use-multifactor-authentication-for-all-azure-active-directory-based-access"></a>3.5: Vícefaktorové ověřování použijte pro veškerý přístup založený na službě Azure Active Directory.
 
-**Pokyny**: integrace ověřování pro aplikace Azure Batch s využitím Azure Active Directory (AAD). Povolte službu AAD Multi-Factor Authentication (MFA) a sledujte Azure Security Center doporučení pro správu identit a přístupu.
+**Pokyny:** Integrace ověřování pro dávkové aplikace Azure s Azure Active Directory (AAD). Povolte vícefaktorové ověřování AAD (MFA) a postupujte podle doporučení Centra identit a správy přístupu Azure Security Center.
  
 
 
-Jak povolit vícefaktorové ověřování v Azure:
+Jak povolit vícefaktorové povolení v Azure:
 
 https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
 
-Jak monitorovat identitu a přístup v rámci Azure Security Center:
+Jak sledovat identitu a přístup v rámci Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: Používejte vyhrazené počítače (privilegovaný přístup k pracovní stanici) pro všechny úlohy správy
+### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: Používejte vyhrazené počítače (pracovní stanice s privilegovaným přístupem) pro všechny úkoly správy
 
-**Doprovodné**materiály: použití privilegovaným přístupem (privilegovaných pracovních stanic) se službou Multi-Factor Authentication (MFA) nakonfigurovaným pro přihlášení a konfiguraci vašich Azure Batchch prostředků.
+**Pokyny:** Používejte paws (privilegovaný přístup pracovnístanice) s vícefaktorové ověřování (MFA) nakonfigurované pro přihlášení a konfiguraci prostředků Azure Batch.
 
 
 Další informace o pracovních stanicích s privilegovaným přístupem:
@@ -444,35 +444,35 @@ Další informace o pracovních stanicích s privilegovaným přístupem:
 https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
 
 
-Jak povolit vícefaktorové ověřování v Azure:
+Jak povolit vícefaktorové povolení v Azure:
 
 https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování Azure Security Center**: Nelze použít
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7: protokolování a upozornění na podezřelou aktivitu z účtů pro správu
+### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7: Protokolování a záznam podezřelé aktivity z účtů pro správu
 
-**Doprovodné**materiály: Pokud máte integrované ověřování pro aplikace Azure Batch s Azure Active Directory (AAD), použijte sestavy Azure Active Directory zabezpečení pro generování protokolů a výstrah, pokud dojde k podezřelé nebo nebezpečné aktivitě v prostředí. Pomocí Azure Security Center můžete monitorovat aktivitu identity a přístupu.
+**Pokyny:** Pokud máte integrované ověřování pro dávkové aplikace Azure s Azure Active Directory (AAD), použijte sestavy zabezpečení Azure Active Directory pro generování protokolů a výstrah, když dojde k podezřelé nebo nebezpečné aktivity v prostředí. Azure Security Center slouží ke sledování aktivity identity a přístupu.
 
 
-Jak identifikovat uživatele Azure AD označené příznakem rizika pro rizikové aktivity:
+Jak identifikovat uživatele Azure AD označené pro rizikové aktivity:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk
 
 
-Jak monitorovat aktivitu identity uživatelů a přístupu v Azure Security Center:
+Jak sledovat identitu uživatelů a aktivitu přístupu v Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="38-manage-azure-resource-from-only-approved-locations"></a>3,8: Správa prostředků Azure pouze ze schválených umístění
+### <a name="38-manage-azure-resource-from-only-approved-locations"></a>3.8: Správa prostředků Azure z jenom schválených umístění
 
-**Pokyny**: Pokud máte k dispozici integrované ověřování pro aplikace Azure Batch s Azure Active Directory, můžete pomocí pojmenovaných umístění podmíněného přístupu dovolit přístup jenom z konkrétních logických skupin rozsahů IP adres nebo zemí nebo oblastí.
+**Pokyny:** Pokud máte integrované ověřování pro dávkové aplikace Azure s Azure Active Directory, můžete použít podmíněný přístup pojmenovaná umístění povolit přístup pouze z konkrétnílogické seskupení rozsahů IP adres nebo zemí nebo oblastí.
 
 
 
@@ -480,13 +480,13 @@ Jak nakonfigurovat pojmenovaná umístění v Azure:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="39-use-azure-active-directory"></a>3,9: použijte Azure Active Directory
+### <a name="39-use-azure-active-directory"></a>3.9: Použití služby Azure Active Directory
 
-**Doprovodné**materiály: jako centrální ověřování a autorizační systém použijte Azure Active Directory (AAD) a integrujte ověřování pro Azure Batch aplikace pomocí AAD. AAD chrání data pomocí silného šifrování pro data v klidovém umístění a při přenosu. AAD taky soli, hodnoty hash a bezpečně ukládají přihlašovací údaje uživatele.
+**Pokyny:** Použijte Azure Active Directory (AAD) jako centrální ověřovací a autorizační systém a integrujte ověřování pro dávkové aplikace Azure s AAD. AAD chrání data pomocí silného šifrování pro data v klidovém stavu a při přenosu. AAD také soli, hasha a bezpečně ukládá přihlašovací údaje uživatele.
 
 
 Jak vytvořit a nakonfigurovat instanci AAD:
@@ -494,176 +494,176 @@ Jak vytvořit a nakonfigurovat instanci AAD:
 https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance
 
 
-Jak ověřit aplikace Batch pomocí AAD:
+Jak ověřit dávkové aplikace pomocí služby AAD:
 
 https://docs.microsoft.com/azure/batch/batch-aad-auth
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: pravidelně kontrolovat a sjednotit přístup uživatelů
+### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: Pravidelné přezkoumávání a slaďuje přístup uživatelů
 
-**Doprovodné**materiály: Azure Active Directory (AAD) poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Kromě toho můžete pomocí kontrol přístupu Azure identity efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé.
+**Pokyny:** Azure Active Directory (AAD) poskytuje protokoly, které pomáhají zjistit zastaralé účty. Kromě toho můžete pomocí azure identity access reviews efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazení rolí. Přístup uživatelů lze pravidelně kontrolovat, aby bylo zajištěno, že pouze ti praví uživatelé mají trvalý přístup.
 
 
-Jak používat kontroly přístupu Azure identity:
+Jak používat recenze přístupu k identitám Azure:
 
 https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: monitorování pokusů o přístup k deaktivovaným účtům
+### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11: Sledování pokusů o přístup k deaktivovaným účtům
 
-**Doprovodné**materiály: Vytvoření nastavení diagnostiky pro Azure Active Directory uživatelských účtů, odesílání protokolů auditu a protokolů přihlášení do pracovního prostoru Azure Log Analytics. Nakonfigurujte požadované výstrahy v pracovním prostoru Azure Log Analytics.
+**Pokyny:** Vytvořte nastavení diagnostiky pro uživatelské účty Služby Azure Active Directory, odesílat protokoly auditu a protokoly přihlášení do pracovního prostoru Azure Log Analytics. Nakonfigurujte požadované výstrahy v pracovním prostoru Azure Log Analytics.
 
 
-Jak integrovat protokoly aktivit Azure do Azure Monitor:
+Jak integrovat protokoly aktivit Azure do Azure Monitoru:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: upozornění na odchylku chování přihlášení k účtu
+### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: Upozornění na odchylku chování přihlášení k účtu
 
-**Doprovodné**materiály: Využijte možnost detekce rizik v Azure Active Directory (AAD) a funkce Ochrana identit ke konfiguraci automatizovaných odpovědí na zjištěné podezřelé akce týkající se identit uživatelů. Kromě toho můžete ingestovat data do služby Azure Sentinel pro další šetření.
+**Pokyny:** Pomocí funkce Azure Active Directory (AAD) detekce rizik a ochrana identity nakonfigurujte automatické odpovědi na zjištěné podezřelé akce související s identitami uživatelů. Kromě toho můžete ingestovat data do Azure Sentinelu pro další šetření.
 
 
-Postup zobrazení rizikových přihlášení AAD:
+Jak zobrazit aad riskantní přihlášení:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
 
 
-Jak nakonfigurovat a povolit zásady pro rizika ochrany identity:
+Jak nakonfigurovat a povolit zásady rizik a zásady ochrany identity:
 
 https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
 
-Jak připojit Azure Sentinel:
+Jak napalubě Azure Sentinel:
 
 https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="313-divprovide-microsoft-with-access-to-relevant-customer-data-during-support-scenariosbrdiv"></a>3,13: <div>Poskytněte Microsoftu přístup k relevantním zákaznickým datům během scénářů podpory.<br></div>
+### <a name="313-divprovide-microsoft-with-access-to-relevant-customer-data-during-support-scenariosbrdiv"></a>3.13: <div>Poskytněte společnosti Microsoft přístup k relevantním zákaznickým datům během scénářů podpory<br></div>
 
-**Doprovodné**materiály: není k dispozici; Customer Lockbox ještě není pro Azure Batch podporované. Seznam podporovaných služeb Customer Lockbox: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+**Pokyny**: Není k dispozici; Customer Lockbox ještě není podporovánpro Azure Batch. Seznam služeb podporovaných customer lockbox:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování Azure Security Center**: Nelze použít
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
 ## <a name="data-protection"></a>Ochrana dat
 
-*Další informace najdete v tématu [řízení zabezpečení: Ochrana dat](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
+*Další informace naleznete [v tématu Security Control: Data Protection](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
 
-### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: Udržujte inventář citlivých informací
+### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: Udržovat soupis citlivých informací
 
-**Doprovodné**materiály: používejte značky, které vám pomůžou při sledování prostředků Azure, které ukládají nebo zpracovávají citlivé informace.
+**Pokyny:** Pomocí značek můžete při sledování prostředků Azure, které ukládají nebo zpracovávají citlivé informace,.
 
 
-Vytváření a používání značek:
+Jak vytvářet a používat značky:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: izolujte systémy, které ukládají nebo zpracovávají citlivé informace.
+### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2: Izolovat systémy ukládající nebo zpracovávající citlivé informace
 
-**Pokyny**: implementace samostatných předplatných nebo skupin pro správu pro vývoj, testování a produkci. Fondy Azure Batch by se měly oddělit pomocí virtuální sítě/podsítě, vhodně označit a zabezpečit pomocí skupin zabezpečení sítě (NSG). Data Azure Batch by měla být obsažena v zabezpečeném Azure Storagem účtu.
+**Pokyny**: Implementujte samostatné odběry nebo skupiny pro správu pro vývoj, testování a výrobu. Fondy dávek Azure by měly být odděleny virtuální sítí nebo podsítí, odpovídajícím způsobem označeny a zabezpečeny skupinou zabezpečení sítě (NSG). Azure Batch data by měla být obsažena v rámci zabezpečeného účtu úložiště Azure.
 
 
-Postup vytvoření fondu Azure Batch v rámci Virtual Network:
+Jak vytvořit fond dávek Azure v rámci virtuální sítě:
 
 https://docs.microsoft.com/azure/batch/batch-virtual-network
 
 
-Postup zabezpečení Azure Storage účtů:
+Jak zabezpečit účty úložiště Azure:
 
 https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: Sledujte a zablokujte neoprávněný přenos citlivých informací.
+### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3: Sledování a blokování neoprávněného přenosu citlivých informací.
 
-**Doprovodné**materiály: u účtů Azure Storage přidružených k vašim Azure Batch fondům, které obsahují citlivé informace, je označit jako citlivé pomocí značek a zabezpečit je pomocí osvědčených postupů Azure.
-
-
-Pro Azure Storage nebo výpočetní prostředky ještě nejsou dostupné funkce pro identifikaci, klasifikaci a ochranu před únikem informací. Implementujte řešení třetích stran, pokud je to potřeba pro účely dodržování předpisů.
+**Pokyny:** Pro účty úložiště Azure přidružené k vašemu fondu dávek Azure, které obsahují citlivé informace, označte je jako citlivé pomocí značek a zabezpečte je pomocí osvědčených postupů Azure.
 
 
-Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
+Funkce identifikace, klasifikace a prevence ztrát ještě nejsou dostupné pro Azure Storage nebo výpočetní prostředky. Implementujte řešení třetích stran, pokud je to nutné pro účely dodržování předpisů.
 
 
-Pochopení ochrany zákaznických dat v Azure:
+Pro základní platformu, která je spravována společností Microsoft, společnost Microsoft považuje veškerý obsah zákazníků za citlivý a zachází velmi daleko, aby se ochránila před ztrátou a expozicí dat zákazníků. Aby byla zákaznická data v Azure stále zabezpečená, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a funkcí ochrany dat.
+
+
+Seznamte se s ochranou zákaznických dat v Azure:
 
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 
-Postup zabezpečení Azure Storage účtů:
+Jak zabezpečit účty úložiště Azure:
 
 https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Odpovědnost**: sdílená
+**Odpovědnost**: Sdíleno
 
-### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: šifrování všech citlivých informací během přenosu
+### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4: Šifrování všech citlivých informací při přepravě
 
-**Doprovodné**materiály: šifrování všech citlivých informací během přenosu. Microsoft Azure prostředky vyjednávat TLS 1,2 ve výchozím nastavení. Ujistěte se, že všichni klienti, kteří se připojují ke svým fondům Azure Batch nebo úložiště dat (účty Azure Storage), můžou vyjednávat TLS 1,2 nebo vyšší.
-
-
-Ujistěte se, že se pro přístup k účtu úložiště obsahujícímu data Azure Batch vyžaduje protokol HTTPS.
+**Pokyny**: Šifrování všech citlivých informací při přenosu. Prostředky Microsoft Azure budou ve výchozím nastavení vyjednávat tls 1.2. Ujistěte se, že všichni klienti, kteří se připojují k vašim fondům dávek Azure nebo úložištím dat (účty úložiště Azure), jsou schopni vyjednat TLS 1.2 nebo vyšší.
 
 
-Principy šifrování Azure Storage účtu při přenosu:
+Ujistěte se, že protokol HTTPS je vyžadován pro přístup k účtu úložiště obsahujícím data Azure Batch.
+
+
+Principy šifrování účtu úložiště Azure při přenosu:
 
 https://docs.microsoft.com/azure/storage/blobs/security-recommendations
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Odpovědnost**: sdílená
+**Odpovědnost**: Sdíleno
 
-### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: k identifikaci citlivých dat použijte aktivní nástroj zjišťování.
+### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5: Použití aktivního nástroje pro zjišťování k identifikaci citlivých dat
 
-**Doprovodné**materiály: u účtů Azure Storage přidružených k vašim Azure Batch fondům, které obsahují citlivé informace, je označit jako citlivé pomocí značek a zabezpečit je pomocí osvědčených postupů Azure.
-
-
-Pro Azure Storage nebo výpočetní prostředky ještě nejsou dostupné funkce pro identifikaci, klasifikaci a ochranu před únikem informací. Implementujte řešení třetích stran, pokud je to potřeba pro účely dodržování předpisů.
+**Pokyny:** Pro účty úložiště Azure přidružené k vašemu fondu dávek Azure, které obsahují citlivé informace, označte je jako citlivé pomocí značek a zabezpečte je pomocí osvědčených postupů Azure.
 
 
-Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
+Funkce identifikace, klasifikace a prevence ztrát ještě nejsou dostupné pro Azure Storage nebo výpočetní prostředky. Implementujte řešení třetích stran, pokud je to nutné pro účely dodržování předpisů.
 
 
-Pochopení ochrany zákaznických dat v Azure:
+Pro základní platformu, která je spravována společností Microsoft, společnost Microsoft považuje veškerý obsah zákazníků za citlivý a zachází velmi daleko, aby se ochránila před ztrátou a expozicí dat zákazníků. Aby byla zákaznická data v Azure stále zabezpečená, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a funkcí ochrany dat.
+
+
+Seznamte se s ochranou zákaznických dat v Azure:
 
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 
-Postup zabezpečení Azure Storage účtů:
+Jak zabezpečit účty úložiště Azure:
 
 https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Odpovědnost**: sdílená
+**Odpovědnost**: Sdíleno
 
-### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Použití Azure RBAC k řízení přístupu k prostředkům
 
-**Pokyny**: k řízení přístupu k rovině správy prostředků Azure, včetně účtu Batch, fondů služby Batch a účtů úložiště, použijte řízení přístupu na základě role (RBAC) Azure Active Directory (AAD).
+**Pokyny:** Pomocí řízení přístupu na základě rolí Azure Active Directory (AAD) (RBAC) můžete řídit přístup k rovině správy prostředků Azure, včetně dávkového účtu, dávkového fondu a účtů úložiště.
 
 
-Porozumění službě Azure RBAC:
+Principy Azure RBAC:
 
 https://docs.microsoft.com/azure/role-based-access-control/overview
 
@@ -672,159 +672,159 @@ Jak nakonfigurovat RBAC v Azure:
 
 https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: použití prevence ztráty dat na základě hostitele k vymáhání řízení přístupu
+### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7: Použití funkce Zabránění ztrátám dat na hostiteli k vynucení řízení přístupu
 
-**Pokyny**: funkce pro identifikaci, klasifikaci a ochranu před únikem informací ještě nejsou k dispozici pro Azure Storage nebo výpočetní prostředky. Implementujte řešení třetích stran, pokud je to potřeba pro účely dodržování předpisů.
-
-
-
-Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
+**Pokyny:** Funkce identifikace, klasifikace a prevence ztrát dat ještě nejsou k dispozici pro Azure Storage nebo výpočetní prostředky. Implementujte řešení třetích stran, pokud je to nutné pro účely dodržování předpisů.
 
 
 
-Pochopení ochrany zákaznických dat v Azure:
+Pro základní platformu, která je spravována společností Microsoft, společnost Microsoft považuje veškerý obsah zákazníků za citlivý a zachází velmi daleko, aby se ochránila před ztrátou a expozicí dat zákazníků. Aby byla zákaznická data v Azure stále zabezpečená, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a funkcí ochrany dat.
+
+
+
+Seznamte se s ochranou zákaznických dat v Azure:
 
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Odpovědnost**: sdílená
+**Odpovědnost**: Sdíleno
 
-### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: šifrování citlivých informací v klidovém umístění
+### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8: Šifrování citlivých informací v klidovém stavu
 
-**Doprovodné**materiály: u účtů úložiště přidružených k vašemu Azure Batch účtu doporučujeme, aby Microsoft mohl spravovat šifrovací klíče, ale v případě potřeby máte možnost spravovat vlastní klíče.
+**Pokyny:** Pro účty úložiště přidružené k vašemu účtu Azure Batch se doporučuje povolit Microsoftu spravovat šifrovací klíče, ale v případě potřeby máte možnost spravovat vlastní klíče.
 
 
 
-Správa šifrovacích klíčů pro účty Azure Storage:
+Jak spravovat šifrovací klíče pro účty úložiště Azure:
 
 https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: protokolovat a upozornit na změny kritických prostředků Azure
+### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: Protokolování a upozorňování na změny kritických prostředků Azure
 
-**Pokyny**: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet upozornění na důležité prostředky Azure související s nebo přidruženými k vašim Azure Batchm účtům a fondům.
-
-
-
-Nakonfigurujte nastavení diagnostiky pro účty úložiště přidružené k fondu Azure Batch, abyste mohli monitorovat a protokolovat všechny operace CRUD pro data fondu.
+**Pokyny:** Pomocí Azure Monitoru s protokolem aktivit Azure vytvořte výstrahy, kdy dojde ke změnám u důležitých prostředků Azure souvisejících s vašimi účty/fondy Azure Batch nebo s nimi přidruženými.
 
 
 
-Vytváření upozornění pro události protokolu aktivit Azure:
+Nakonfigurujte diagnostická nastavení pro účty úložiště přidružené k fondu dávek Azure, abyste monitorovali a zaznamenávali všechny operace CRUD proti datům fondu.
+
+
+
+Jak vytvořit výstrahy pro události protokolu aktivit Azure:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 
 
-Jak povolit další protokolování/auditování pro účet Azure Storage:
+Jak povolit další protokolování/auditování pro účet úložiště Azure:
 
 https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
 ## <a name="vulnerability-management"></a>Správa ohrožení zabezpečení
 
-*Další informace najdete v tématu [řízení zabezpečení: Správa ohrožení](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)zabezpečení.*
+*Další informace naleznete v [tématu Security Control: Vulnerability Management](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management).*
 
-### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: spuštění automatizovaných nástrojů pro kontrolu ohrožení zabezpečení
+### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1: Spuštění automatizovaných nástrojů pro kontrolu zranitelnosti
 
-**Doprovodné**materiály: u uzlů fondu Azure Batch zodpovídáte za správu řešení pro správu ohrožení zabezpečení.
+**Pokyny:** Pro uzly fondu dávek Azure jste zodpovědní za správu řešení správy chyb zabezpečení.
 
 
-Volitelně, pokud máte Rapid7, Qualys nebo jakékoli jiné předplatné platformy pro správu ohrožení zabezpečení, můžete ručně nainstalovat agenty pro posouzení ohrožení zabezpečení do uzlů fondu Batch a spravovat uzly prostřednictvím příslušného portálu.
+Volitelně, pokud máte předplatné Rapid7, Qualys nebo jiné platformy pro správu chyb zabezpečení, můžete ručně nainstalovat agenty pro posouzení chyb zabezpečení na uzly fondu dávek a spravovat uzly prostřednictvím příslušného portálu.
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: nasazení automatizovaného řešení pro správu oprav operačního systému
+### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2: Nasazení řešení automatické správy oprav operačních systémů
 
-**Pokyny**: Společnost Microsoft zachovává a aktualizuje obrázky uzlů základních Azure Batch fondů. Zajistěte, aby operační systém uzlů Azure Batchového fondu zůstal opravený po dobu životnosti clusteru, což může vyžadovat povolení automatických aktualizací, monitorování uzlů nebo provádění pravidelných restartování.
+**Pokyny:** Microsoft udržovat a aktualizovat základní azure batch pool image uzlu. Ujistěte se, že operační systém uzlů fondu dávek Azure zůstane opravený po dobu životnosti clusteru, což může vyžadovat povolení automatických aktualizací, sledování uzlů nebo provádění pravidelných restartování.
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Odpovědnost**: sdílená
+**Odpovědnost**: Sdíleno
 
-### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5,3: nasazení automatizovaného řešení pro správu oprav Third Party Software
+### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3: Nasazení automatizovaného řešení pro správu oprav softwaru třetích stran
 
-**Pokyny**: Zajistěte, aby byly v uzlech fondu Azure Batch aplikace třetích stran opraveny po dobu životnosti clusteru, což může vyžadovat povolení automatických aktualizací, monitorování uzlů nebo provádění pravidelných restartování.
+**Pokyny:** Ujistěte se, že aplikace uzlů azure batch pool u jiných výrobců zůstávají opraveny po dobu životnosti clusteru, což může vyžadovat povolení automatických aktualizací, sledování uzlů nebo provádění pravidelných restartování.
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="54-compare-back-to-back-vulnerability-scans"></a>5,4: porovnání kontrol zabezpečení back-to-back
+### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4: Porovnání prohledávačů chyb zabezpečení zády k zadní straně
 
-**Doprovodné**materiály: Pokud máte Rapid7, Qualys nebo jakékoli jiné předplatné platformy pro správu ohrožení zabezpečení, můžete pomocí portálu tohoto dodavatele zobrazit a porovnat prověřování ohrožení zabezpečení back-.
+**Pokyny:** Pokud máte předplatné rapid7, Qualys nebo jiné platformy pro správu zranitelnosti, můžete použít portál tohoto dodavatele k zobrazení a porovnání prohledávačů chyb zabezpečení zády k sobě.
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: použijte proces hodnocení rizik k určení priorit nápravy zjištěných chyb zabezpečení.
+### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5: Pomocí procesu hodnocení rizik upřednostněte nápravu zjištěných chyb zabezpečení.
 
-**Doprovodné**materiály: Využijte společný program pro vyhodnocování rizik (např. běžný systém vyhodnocování chyb zabezpečení) nebo výchozí hodnocení rizik poskytovaná skenovacím nástrojem třetí strany.
+**Pokyny**: Používejte běžný program hodnocení rizik (např. společný systém hodnocení zranitelnosti) nebo výchozí hodnocení rizik poskytovaného vaším nástrojem pro skenování třetí stranou.
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování Azure Security Center**: Nelze použít
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
 ## <a name="inventory-and-asset-management"></a>Správa inventáře a aktiv
 
-*Další informace najdete v tématu [řízení zabezpečení: inventář a Správa prostředků](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Další informace naleznete v [tématu Security Control: Inventory and Asset Management](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
 
-### <a name="61-use-azure-asset-discovery"></a>6,1: použijte Azure Asset Discovery.
+### <a name="61-use-azure-asset-discovery"></a>6.1: Použití Azure Asset Discovery
 
-**Pokyny**: pomocí grafu prostředků Azure můžete v rámci vašich předplatných dotazovat nebo zjišťovat všechny prostředky (například výpočetní prostředky, úložiště, síť atd.). Ujistěte se, že máte ve svém tenantovi příslušná oprávnění (pro čtení) a že máte v rámci předplatných také výčet všech předplatných Azure i prostředků.
-
-
-I když je možné zjistit klasické prostředky Azure pomocí grafu prostředků, důrazně doporučujeme vytvořit a používat prostředky Azure Resource Manager (ARM), které budou předány dál.
+**Pokyny:** Pomocí Azure Resource Graph můžete dotazovat/zjišťovat všechny prostředky (například výpočetní prostředky, úložiště, síť atd.) v rámci předplatného. Ujistěte se, že máte příslušná (číst) oprávnění ve vašem tenantovi a jsou schopni vytvořit výčet všech předplatných Azure, stejně jako prostředky v rámci vašich předplatných.
 
 
-Jak vytvářet dotazy pomocí Azure graphu:
+I když klasické prostředky Azure může být zjištěna prostřednictvím Azure Resource Graph Explorer, je vysoce doporučeno vytvářet a používat prostředky Azure Resource Manager (ARM) do budoucna.
+
+
+Jak vytvářet dotazy pomocí Průzkumníka zdrojů Azure:
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 
-Jak zobrazit vaše předplatná Azure:
+Jak zobrazit předplatná Azure:
 
 https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
 
-Porozumění službě Azure RBAC:
+Principy Azure RBAC:
 
 https://docs.microsoft.com/azure/role-based-access-control/overview
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování Azure Security Center**: Nelze použít
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="62-maintain-asset-metadata"></a>6,2: Údržba metadat Assetu
+### <a name="62-maintain-asset-metadata"></a>6.2: Udržovat metadata datových zdrojů
 
-**Doprovodné**materiály: použití značek pro prostředky Azure poskytující metadata k logickému uspořádání do taxonomie.
+**Pokyny:** Použijte značky pro prostředky Azure, které poskytují metadata, aby je logicky uspořádali do taxonomie.
 
 
-Vytváření a používání značek:
+Jak vytvářet a používat značky:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="63-delete-unauthorized-azure-resources"></a>6,3: odstranění neautorizovaných prostředků Azure
+### <a name="63-delete-unauthorized-azure-resources"></a>6.3: Odstranění neautorizovaných prostředků Azure
 
-**Doprovodné**materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování prostředků. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
+**Pokyny:** V případě potřeby použijte značkování, skupiny pro správu a samostatná předplatná k uspořádání a sledování datových zdrojů. Pravidelně odsouhlasete zásoby a zajistěte, aby byly z předplatného včas odstraněny neoprávněné prostředky.
 
 
 
@@ -834,186 +834,186 @@ https://docs.microsoft.com/azure/billing/billing-create-subscription
 
 
 
-Postup vytvoření Skupiny pro správu:
+Jak vytvořit skupiny pro správu:
 
 https://docs.microsoft.com/azure/governance/management-groups/create
 
 
 
-Vytváření značek a uživatelských značek:
+Jak vytvořit a používat značky:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování Azure Security Center**: Nelze použít
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="64-maintain-inventory-of-approved-azure-resources-and-software-titles"></a>6,4: Udržujte inventarizaci schválených prostředků Azure a softwarových titulů.
+### <a name="64-maintain-inventory-of-approved-azure-resources-and-software-titles"></a>6.4: Udržujte inventář schválených prostředků Azure a softwarových titulů.
 
-**Doprovodné**materiály: definování seznamu schválených prostředků Azure a schváleného softwaru pro výpočetní prostředky
+**Pokyny:** Definování seznamu schválených prostředků Azure a schváleného softwaru pro výpočetní prostředky
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování Azure Security Center**: Nelze použít
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitorování neschválených prostředků Azure
+### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: Monitorování neschválených prostředků Azure
 
-**Doprovodné**materiály: pomocí Azure Policy můžete klást omezení typů prostředků, které se dají vytvořit v zákaznických předplatných, a to pomocí těchto integrovaných definic zásad:
-
-- Nepovolené typy prostředků
-- Povolené typy prostředků
-
-
-Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky v rámci předplatných. Ujistěte se, že všechny prostředky Azure přítomné v daném prostředí jsou schválené.
-
-
-Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
-
-
-Jak vytvářet dotazy pomocí Azure graphu: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
-
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
-
-**Zodpovědnost**: zákazník
-
-### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: monitorujte neschválené softwarové aplikace v rámci výpočetních prostředků.
-
-**Doprovodné**materiály: u uzlů Azure Batch fondu implementujte řešení třetí strany pro monitorování uzlů clusteru pro neschválené softwarové aplikace.
-
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
-
-**Zodpovědnost**: zákazník
-
-### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: Odeberte neschválené prostředky Azure a softwarové aplikace
-
-**Doprovodné**materiály: u uzlů Azure Batch fondu implementujte řešení třetí strany pro monitorování uzlů clusteru pro neschválené softwarové aplikace.
-
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
-
-**Zodpovědnost**: zákazník
-
-### <a name="68-use-only-approved-applications"></a>6,8: Používejte pouze schválené aplikace.
-
-**Doprovodné**materiály: u uzlů Azure Batch fondu implementujte řešení třetích stran, které zabraňuje neoprávněnému softwaru v provádění.
-
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
-
-**Zodpovědnost**: zákazník
-
-### <a name="69-use-only-approved-azure-services"></a>6,9: Používejte jenom schválené služby Azure.
-
-**Doprovodné**materiály: pomocí Azure Policy můžete klást omezení typů prostředků, které se dají vytvořit v zákaznických předplatných, a to pomocí těchto integrovaných definic zásad:
-
+**Pokyny**: Pomocí zásad Azure můžete omezit typ prostředků, které lze vytvořit v předplatných zákazníků pomocí následujících předdefinovaných definic zásad:
 
 - Nepovolené typy prostředků
 - Povolené typy prostředků
 
 
-Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Pomocí Azure Resource Graph můžete dotazovat/zjišťovat prostředky v rámci vašeho předplatného. Ujistěte se, že jsou schváleny všechny prostředky Azure v prostředí.
 
 
-Jak odepřít konkrétní typ prostředku pomocí Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
-
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
-
-**Zodpovědnost**: zákazník
-
-### <a name="610-implement-approved-application-list"></a>6,10: Implementujte schválený seznam aplikací
-
-**Doprovodné**materiály: pro uzly fondu Azure Batch implementujte řešení třetí strany, abyste zabránili spuštění neautorizovaných typů souborů.
-
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
-
-**Zodpovědnost**: zákazník
-
-### <a name="611-divlimit-users-ability-to-interact-with-azure-resource-manager-via-scriptsdiv"></a>6,11: <div>Omezení schopnosti uživatelů pracovat s Azure Resource Manager prostřednictvím skriptů</div>
-
-**Pokyny**: pomocí podmíněného přístupu Azure omezte schopnost uživatelů komunikovat s Azure Resource Manager konfigurací "blokování přístupu" pro aplikaci Microsoft Azure Management.
+Jak nakonfigurovat a spravovat zásady Azure:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
-Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resource Manager: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Jak vytvářet dotazy pomocí Průzkumníka zdrojů Azure:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: Omezte schopnost uživatelů spouštět skripty ve výpočetních prostředcích.
+### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6: Sledování neschválených softwarových aplikací v rámci výpočetních prostředků
 
-**Doprovodné**materiály: nelze použít,
+**Pokyny:** Pro uzly fondu dávek Azure implementujte řešení jiného výrobce pro monitorování uzlů clusteru pro neschválené softwarové aplikace.
 
-Neplatí to Azure Batch, protože uživatelé (bez správců) fondů Azure Batch nepotřebují přístup k jednotlivým uzlům ke spouštění úloh. Správce clusteru již má kořenový přístup ke všem uzlům.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Monitorování Azure Security Center**: nelze použít
+**Odpovědnost**: Zákazník
 
-**Odpovědnost**: netýká se
+### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7: Odebrání neschválených prostředků A Softwarových aplikací Azure
 
-### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fyzicky nebo logicky oddělené aplikace s vysokým rizikem
+**Pokyny:** Pro uzly fondu dávek Azure implementujte řešení jiného výrobce pro monitorování uzlů clusteru pro neschválené softwarové aplikace.
 
-**Doprovodné**materiály: nejde použít, srovnávací test je určený pro webové aplikace běžící na Azure App Service nebo IaaS instancích.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Monitorování Azure Security Center**: nelze použít
+**Odpovědnost**: Zákazník
 
-**Odpovědnost**: netýká se
+### <a name="68-use-only-approved-applications"></a>6.8: Používejte pouze schválené aplikace
+
+**Pokyny:** Pro uzly fondu dávek Azure implementujte řešení jiného výrobce, abyste zabránili spuštění neoprávněného softwaru.
+
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
+
+**Odpovědnost**: Zákazník
+
+### <a name="69-use-only-approved-azure-services"></a>6.9: Použití jenom schválených služeb Azure
+
+**Pokyny**: Pomocí zásad Azure můžete omezit typ prostředků, které lze vytvořit v předplatných zákazníků pomocí následujících předdefinovaných definic zásad:
+
+
+- Nepovolené typy prostředků
+- Povolené typy prostředků
+
+
+Jak nakonfigurovat a spravovat zásady Azure:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
+
+Jak odepřít konkrétní typ prostředku pomocí zásad Azure:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
+
+**Odpovědnost**: Zákazník
+
+### <a name="610-implement-approved-application-list"></a>6.10: Implementace schváleného seznamu žádostí
+
+**Pokyny:** Pro uzly fondu dávek Azure implementujte řešení jiného výrobce, abyste zabránili spuštění neoprávněných typů souborů.
+
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
+
+**Odpovědnost**: Zákazník
+
+### <a name="611-divlimit-users-ability-to-interact-with-azure-resource-manager-via-scriptsdiv"></a>6.11: <div>Omezení možnosti uživatelů komunikovat se Správcem prostředků Azure pomocí skriptů</div>
+
+**Pokyny:** Pomocí podmíněného přístupu Azure omezte uživatelům možnost pracovat se Správcem prostředků Azure konfigurací "Blokovat přístup" pro aplikaci Microsoft Azure Management.
+
+
+Jak nakonfigurovat podmíněný přístup pro blokování přístupu ke Správci prostředků Azure:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
+
+**Odpovědnost**: Zákazník
+
+### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12: Omezení možnosti uživatelů spouštět skripty v rámci výpočetních prostředků
+
+**Pokyny**: Nepoužije se,
+
+To se nevztahuje na Azure Batch, protože uživatelé (nesprávci) fondů Azure Batch nepotřebují přístup k jednotlivým uzlům ke spuštění úloh. Správce clusteru již má root přístup ke všem uzlům.
+
+**Monitorování Azure Security Center**: Nelze použít
+
+**Odpovědnost**: Nepoužije se
+
+### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13: Fyzicky nebo logicky oddělit vysoce rizikové aplikace
+
+**Pokyny:** Není použitelné, benchmark je určen pro webové aplikace spuštěné v azure app service nebo IaaS instance.
+
+**Monitorování Azure Security Center**: Nelze použít
+
+**Odpovědnost**: Nepoužije se
 
 ## <a name="secure-configuration"></a>Zabezpečená konfigurace
 
-*Další informace najdete v tématu [řízení zabezpečení: zabezpečená konfigurace](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
+*Další informace naleznete v [tématu Zabezpečení: Zabezpečená konfigurace](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
 
-### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
+### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
 
-**Doprovodné**materiály: použijte aliasy Azure Policy v oboru názvů Microsoft. Batch k vytvoření vlastních zásad pro auditování nebo vystavování konfigurace Azure Batch účtů a fondů.
+**Pokyny:** Pomocí aliasů zásad Azure v oboru názvů "Microsoft.Batch" můžete vytvořit vlastní zásady pro auditování nebo vynucení konfigurace účtů a fondů Azure Batch.
 
 
-Jak zobrazit dostupné aliasy Azure Policy:
+Jak zobrazit dostupné aliasy zásad Azure:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 
-Jak nakonfigurovat a spravovat Azure Policy:
+Jak nakonfigurovat a spravovat zásady Azure:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování Azure Security Center**: Nelze použít
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="72-establish-secure-configurations-for-your-operating-system"></a>7,2: Vytvoření zabezpečených konfigurací pro váš operační systém
+### <a name="72-establish-secure-configurations-for-your-operating-system"></a>7.2: Vytvoření bezpečných konfigurací pro váš operační systém
 
-**Pokyny**: Vytvoření zabezpečených konfigurací pro operační systém uzlů fondu Batch.
+**Pokyny:** Vytvořte zabezpečené konfigurace operačního systému uzlů fondu dávek.
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování Azure Security Center**: Nelze použít
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="73-maintain-secure-configurations-for-all-azure-resources"></a>7,3: Údržba zabezpečených konfigurací pro všechny prostředky Azure
+### <a name="73-maintain-secure-configurations-for-all-azure-resources"></a>7.3: Udržovat zabezpečené konfigurace pro všechny prostředky Azure
 
-**Pokyny**: použijte zásady Azure [Deny] a [nasazení, pokud neexistuje], abyste vynutili zabezpečená nastavení pro prostředky Azure související s účtem a fondy služby Batch (například virtuální sítě, podsítě, brány Azure firewall, účty Azure Storage atd.). Pomocí aliasů Azure Policy z následujících oborů názvů můžete vytvářet vlastní zásady:
+**Pokyny:** Pomocí zásad Azure [odepřít] a [nasadit, pokud neexistují] vynutit zabezpečené nastavení pro prostředky Azure související s vaším dávkovým účtem a fondy (jako jsou virtuální sítě, podsítě, Azure Firewalls, Účty azure storage atd.). Aliasy zásad Azure můžete použít z následujících oborů názvů k vytvoření vlastních zásad:
 
 - Microsoft.Batch
 - Microsoft.Storage
 - Microsoft.Network
 
 
-Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat zásady Azure:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
-Pochopení Azure Policych dopadů: https://docs.microsoft.com/azure/governance/policy/concepts/effects
+Principy efektů zásad Azure:https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování Azure Security Center**: Nelze použít
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="74-maintain-secure-configurations-for-operating-systems"></a>7,4: udržování zabezpečených konfigurací pro operační systémy
+### <a name="74-maintain-secure-configurations-for-operating-systems"></a>7.4: Udržovat zabezpečené konfigurace pro operační systémy
 
-**Doprovodné**materiály: Azure Batch ve fondu image operačních systémů spravované a udržované Microsoftem. Zodpovídáte za implementaci konfigurace stavu na úrovni operačního systému.
+**Pokyny:** Image operačního systému Azure Batch Pool, které spravuje a spravuje Microsoft. Jste zodpovědní za implementaci konfigurace stavu na úrovni operačního systému.
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Odpovědnost**: sdílená
+**Odpovědnost**: Sdíleno
 
-### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: Konfigurace prostředků Azure v zabezpečeném úložišti
+### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: Konfigurace prostředků Azure bezpečně ukládat
 
-**Pokyny**: Pokud používáte vlastní definice zásad Azure pro Azure Batch účty, fondy nebo související prostředky, používejte Azure Repos k bezpečnému ukládání a správě kódu.
+**Pokyny:** Pokud používáte vlastní definice zásad Azure pro vaše účty Azure Batch, fondy nebo související prostředky, použijte Azure Repos k bezpečnému ukládání a správě kódu.
 
 
 Jak ukládat kód v Azure DevOps:
@@ -1021,20 +1021,20 @@ Jak ukládat kód v Azure DevOps:
 https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
 
-Azure Repos dokumentaci:
+Dokumentace k azure repos:
 
 https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování Azure Security Center**: Nelze použít
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="76-securely-store-custom-operating-system-images"></a>7,6: bezpečné uložení vlastních imagí operačního systému
+### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Bezpečně ukládat obrázky vlastního operačního systému
 
-**Pokyny**: Pokud používáte pro fondy Azure Batch vlastní image, použijte řízení přístupu na základě role (RBAC), abyste zajistili, že k imagí budou mít přístup jenom autorizovaní uživatelé.
+**Pokyny:** Pokud používáte vlastní image pro fondy Azure Batch, použijte řízení přístupu na základě rolí (RBAC) a ujistěte se, že k bitovým kopiím mají přístup pouze oprávnění uživatelé.
 
 
-Princip RBAC v Azure:
+Principy RBAC v Azure:
 
 https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles
 
@@ -1043,302 +1043,302 @@ Jak nakonfigurovat RBAC v Azure:
 
 https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="77-deploy-system-configuration-management-tools"></a>7,7: nasazení nástrojů pro správu konfigurace systému
+### <a name="77-deploy-system-configuration-management-tools"></a>7.7: Nasazení nástrojů pro správu konfigurace systému
 
-**Doprovodné**materiály: Používejte předdefinované definice Azure Policy pro upozornění, audit a prosazování konfigurací prostředků souvisejících s Azure Batch.  Použijte aliasy Azure Policy v oboru názvů Microsoft. Batch k vytvoření vlastních zásad pro účty Azure Batch a fondy. Dále můžete vyvinout proces a kanál pro správu výjimek zásad.
+**Pokyny:** Pomocí předdefinovaných definic zásad Azure můžete upozorňovat, auditovat a vynucovat konfigurace prostředků související s azure batch.  Pomocí aliasů zásad Azure v oboru názvů Microsoft.Batch vytvořte vlastní zásady pro účty a fondy Azure Batch. Kromě toho vytvořte proces a kanál pro správu výjimek zásad.
 
 
 
-Jak nakonfigurovat a spravovat Azure Policy:
+Jak nakonfigurovat a spravovat zásady Azure:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7,8: nasaďte nástroje pro správu konfigurace systému pro operační systémy.
+### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8: Nasazení nástrojů pro správu konfigurace systému pro operační systémy
 
-**Pokyny**: Implementujte řešení třetí strany a udržujte požadovaný stav pro operační systémy uzlů Azure Batch fondu.
+**Pokyny:** Implementujte řešení jiného výrobce k udržení požadovaného stavu pro operační systémy uzlů azure batch pool.
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7,9: Implementujte automatizované monitorování konfigurace pro služby Azure.
+### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9: Implementace monitorování automatické konfigurace pro služby Azure
 
-**Pokyny**: použijte aliasy Azure Policy v oboru názvů Microsoft. Batch k vytvoření vlastních zásad pro auditování nebo prosazování konfigurace vaší instance Azure Batch. Můžete použít také všechny předdefinované zásady vytvořené speciálně pro Azure Batch nebo prostředky používané Azure Batch, například:
+**Pokyny:** Pomocí aliasů zásad Azure v oboru názvů "Microsoft.Batch" můžete vytvořit vlastní zásady pro auditování nebo vynucení konfigurace instance Azure Batch. Můžete také použít všechny integrované zásady vytvořené speciálně pro Azure Batch nebo prostředky používané Azure Batch, jako jsou:
 
-- Podsítě by měly být přidružené ke skupině zabezpečení sítě – účty úložiště by měly používat koncový bod služby virtuální sítě.
-- V účtech Batch by měly být povolené diagnostické protokoly.
+- Podsítě by měly být přidruženy ke skupině zabezpečení sítě - účty úložiště by měly používat koncový bod služby virtuální sítě.
+- Diagnostické protokoly v dávkových účtech by měly být povoleny.
 
-Jak zobrazit dostupné aliasy Azure Policy: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Jak zobrazit dostupné aliasy zásad Azure:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
-Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
-
-
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
-
-**Zodpovědnost**: zákazník
-
-### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: Implementujte automatizované monitorování konfigurace pro operační systémy
-
-**Pokyny**: Implementujte řešení třetí strany a sledujte stav operačních systémů uzlů Azure Batch fondu.
-
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
-
-**Zodpovědnost**: zákazník
-
-### <a name="711-securely-manage-azure-secrets"></a>7,11: zabezpečená Správa tajných klíčů Azure
-
-**Doprovodné**materiály: Azure Key Vault lze použít s nasazením Azure Batch ke správě klíčů pro úložiště fondu v rámci účtů Azure Storage.
+Jak nakonfigurovat a spravovat zásady Azure:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
-Jak integrovat se spravovanými identitami Azure:
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
+
+**Odpovědnost**: Zákazník
+
+### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: Implementace automatického monitorování konfigurace operačních systémů
+
+**Pokyny:** Implementujte řešení jiného výrobce pro sledování stavu operačních systémů uzlů uzly fondu dávek Azure.
+
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
+
+**Odpovědnost**: Zákazník
+
+### <a name="711-securely-manage-azure-secrets"></a>7.11: Bezpečná správa tajných kódů Azure
+
+**Pokyny:** Azure Key Vault se dá použít s nasazením Azure Batch ke správě klíčů pro úložiště fondu v rámci účtů úložiště Azure.
+
+
+Jak integrovat s Azure Spravované identity:
 
 https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
 
-Postup vytvoření Azure Key Vault:
+Jak vytvořit Azure Key Vault:
 
 https://docs.microsoft.com/azure/key-vault/quick-create-portal
 
 
-Jak zajistit Key Vault ověřování pomocí spravované identity:
+Jak zajistit ověřování trezoru klíčů se spravovanou identitou:
 
 https://docs.microsoft.com/azure/key-vault/managed-identity
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="712-securely-and-automatically-manage-identities"></a>7,12: bezpečné a automaticky spravované identity
+### <a name="712-securely-and-automatically-manage-identities"></a>7.12: Bezpečná a automatická správa identit
 
-**Doprovodné**materiály: není k dispozici, identita spravované služby Azure Batch nepodporuje.
+**Pokyny:** Není k dispozici, identita spravované služby není podporována Azure Batch
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování Azure Security Center**: Nelze použít
 
-**Odpovědnost**: netýká se
+**Odpovědnost**: Nepoužije se
 
-### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: Eliminujte nezamýšlenou expozici přihlašovacích údajů
+### <a name="713-eliminate-unintended-credential-exposure"></a>7.13: Eliminujte nezamýšlenou expozici pověření
 
-**Pokyny**: implementace skeneru přihlašovacích údajů pro identifikaci přihlašovacích údajů v rámci kódu. Skener přihlašovacích údajů taky bude povzbudit přesunutí zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je Azure Key Vault. 
+**Pokyny**: Implementujte skener pověření k identifikaci přihlašovacích údajů v rámci kódu. Skener přihlašovacích údajů také podpoří přesunutí zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je azure key vault. 
 
-Jak nastavit skener přihlašovacích údajů: https://secdevtools.azurewebsites.net/helpcredscan.html
+Jak nastavit skener pověření:https://secdevtools.azurewebsites.net/helpcredscan.html
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování Azure Security Center**: Nelze použít
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
 ## <a name="malware-defense"></a>Obrana před malwarem
 
-*Další informace najdete v tématu [řízení zabezpečení: obrana proti malwaru](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*Další informace naleznete v [tématu Security Control: Malware Defense](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
 
-### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: použití centrálně spravovaného malwarového softwaru
+### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1: Použití centrálně spravovaného antimalwarového softwaru
 
-**Doprovodné**materiály: pomocí programu Windows Defender na jednotlivých uzlech fondu Azure Batch v případě operačních systémů Windows nebo Poskytněte vlastní řešení proti malwaru, pokud používáte Linux.
+**Pokyny:** Použijte Windows Defender na jednotlivých uzlech fondu Azure Batch v případě operačních systémů Windows nebo poskytněte vlastní řešení ochrany proti malwaru, pokud používáte Linux.
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2: předběžná kontrola souborů, které se mají nahrát do prostředků Azure, které nejsou COMPUTE
+### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2: Předprohledávací soubory, které se mají nahrát do nevýpočetních prostředků Azure
 
-**Pokyny**: Microsoft Antimalware je povolený na podkladovém hostiteli, který podporuje služby Azure (například Azure Batch), ale neběží na zákaznickém obsahu.
-
-
-Předem Prohledejte všechny soubory nahrané do nevýpočetních prostředků Azure, například App Service, Data Lake Storage, Blob Storage atd. Společnost Microsoft nemá přístup k zákaznickým datům v těchto instancích.
+**Pokyny**: Microsoft Antimalware je povolena na podkladovém hostiteli, který podporuje služby Azure (například Azure Batch), ale neběží na obsah zákazníka.
 
 
-Pochopení ochrany proti malwaru Microsoftu pro Azure Cloud Services a Virtual Machines:
+Předem proskenujte všechny soubory nahrané do nevýpočetních prostředků Azure, jako je app service, úložiště datových jezer, úložiště objektů blob atd. Společnost Microsoft nemá v těchto případech přístup k zákaznickým datům.
+
+
+Seznamte se s antimalwarovým programem Microsoft pro cloudové služby Azure a virtuální počítače:
 
 https://docs.microsoft.com/azure/security/fundamentals/antimalware
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování Azure Security Center**: Nelze použít
 
-**Odpovědnost**: sdílená
+**Odpovědnost**: Sdíleno
 
-### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8,3: Ujistěte se, že antimalwarový software a signatury jsou aktualizované.
+### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8.3: Zajistěte aktualizaci softwaru a podpisů ochrany proti malwaru
 
-**Doprovodné**materiály: v případě operačních systémů Windows použijte Windows Defender na jednotlivých uzlech Azure Batch fondu a ujistěte se, že je povolená Automatická aktualizace. Poskytněte vlastní řešení proti malwaru, pokud používáte Linux.
+**Pokyny:** V případě operačních systémů Windows použijte program Windows Defender na jednotlivých uzlech fondu Azure Batch a zajistěte, aby byla povolena automatická aktualizace. Pokud používáte Linux, poskytněte své vlastní řešení proti malwaru.
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
 ## <a name="data-recovery"></a>Obnovení dat
 
-*Další informace najdete v tématu [řízení zabezpečení – obnovení dat](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*Další informace naleznete [v tématu Security Control: Data Recovery](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9,1: zajištění pravidelného automatického zálohování
+### <a name="91-ensure-regular-automated-back-ups"></a>9.1: Zajistěte pravidelné automatické zálohování
 
-**Pokyny**: při použití účtu Azure Storage pro úložiště dat fondu Azure Batch vyberte příslušnou možnost redundance (LRS, ZRS, GRS, RA-GRS). 
-
-
-Jak nakonfigurovat redundanci úložiště pro účty Azure Storage:
-
-https://docs.microsoft.com/azure/storage/common/storage-redundancy
-
-**Monitorování Azure Security Center**: nelze použít
-
-**Zodpovědnost**: zákazník
-
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: proveďte kompletní systémové zálohy a zálohujte všechny spravované klíče zákazníka.
-
-**Pokyny**: při použití účtu Azure Storage pro úložiště dat fondu Azure Batch vyberte příslušnou možnost redundance (LRS, ZRS, GRS, RA-GRS).  Pokud používáte Azure Key Vault pro jakoukoli součást nasazení Azure Batch, ujistěte se, že jsou vaše klíče zálohovány.
+**Pokyny:** Při použití účtu úložiště Azure pro úložiště dat fondu dávek Azure zvolte příslušnou možnost redundance (LRS,ZRS, GRS, RA-GRS). 
 
 
-Jak nakonfigurovat redundanci úložiště pro účty Azure Storage:
+Jak nakonfigurovat redundanci úložiště pro účty úložiště Azure:
 
 https://docs.microsoft.com/azure/storage/common/storage-redundancy
 
+**Monitorování Azure Security Center**: Nelze použít
 
-Postup zálohování klíčů trezoru klíčů v Azure:
+**Odpovědnost**: Zákazník
+
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: Proveďte kompletní zálohy systému a zálohujte všechny klienty spravované klíče
+
+**Pokyny:** Při použití účtu úložiště Azure pro úložiště dat fondu dávek Azure zvolte příslušnou možnost redundance (LRS,ZRS, GRS, RA-GRS).  Pokud používáte Azure Key Vault pro jakoukoli část nasazení Azure Batch, ujistěte se, že vaše klíče jsou zálohovány.
+
+
+Jak nakonfigurovat redundanci úložiště pro účty úložiště Azure:
+
+https://docs.microsoft.com/azure/storage/common/storage-redundancy
+
+
+Jak zálohovat klíče trezoru klíčů v Azure:
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: Ověřte všechny zálohy včetně spravovaných klíčů zákazníků.
+### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3: Ověření všech záloh včetně klíčů spravovaných zákazníkem
 
-**Pokyny**: Pokud spravujete vlastní klíče pro účty Azure Storage nebo jakýkoli jiný prostředek, který souvisí s implementací Azure Batch, pravidelně otestujte obnovení zálohovaných klíčů.
+**Pokyny:** Pokud spravujete vlastní klíče pro účty úložiště Azure nebo jakýkoli jiný prostředek související s implementací Azure Batch, pravidelně otestujte obnovení zálohovaných klíčů.
 
 
-Postup zálohování klíčů trezoru klíčů v Azure:
+Jak zálohovat klíče trezoru klíčů v Azure:
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
 
 
-Postup obnovení klíče spravovaného zákazníkem pomocí PowerShellu:
+Jak obnovit klíč spravovaný zákazníkem pomocí Prostředí PowerShell:
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování Azure Security Center**: Nelze použít
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: Zajistěte ochranu záloh a spravovaných klíčů zákazníků.
+### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: Zajištění ochrany záloh a klíčů spravovaných zákazníkem
 
-**Doprovodné**materiály: pokud se Azure Key Vault používá k ukládání klíčů souvisejících s účty úložiště Azure Batch fondu, povolte v Azure Key Vault obnovitelné odstranění, abyste chránili klíče před náhodným nebo úmyslným odstraněním.
+**Pokyny:** Pokud azure key vault se používá k uložení klíče související s účty úložiště dávkového fondu Azure, povolit obnovitelné odstranění v trezoru klíčů Azure chránit klíče před náhodným nebo škodlivým odstraněním.
 
 
-Jak povolit obnovitelné odstranění v Azure Key Vault:
+Jak povolit obnovitelné odstranění v azure key vault:
 
 https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
 ## <a name="incident-response"></a>Reakce na incidenty
 
-*Další informace najdete v tématu [řízení zabezpečení: reakce na incidenty](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Další informace naleznete [v tématu Security Control: Incident Response](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
 
-### <a name="101-create-incident-response-guide"></a>10,1: Vytvoření Průvodce odpověďmi na incidenty
+### <a name="101-create-incident-response-guide"></a>10.1: Vytvoření průvodce odezvou na incidenty
 
-**Doprovodné**materiály: Zajistěte, aby existovaly písemné plány odpovědí na incidenty, které definují role pracovníků a také fáze zpracování a správy incidentů.
+**Pokyny**: Ujistěte se, že existují písemné plány reakce na incidenty, které definují role personálu, jakož i fáze zpracování incidentů / správy.
 
 
 
-Postup konfigurace automatizace pracovních postupů v rámci Azure Security Center:
+Jak nakonfigurovat automatizaci pracovních postupů v Centru zabezpečení Azure:
 
 https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování Azure Security Center**: Nelze použít
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="102-create-incident-scoring-and-prioritization-procedure"></a>10,2: vytvoření bodování incidentu a postupu stanovení priorit
+### <a name="102-create-incident-scoring-and-prioritization-procedure"></a>10.2: Vytvoření postupu hodnocení incidentů a stanovení priorit
 
-**Pokyny**: Security Center přiřadí závažnosti výstrahám, které vám pomůžou určit prioritu pořadí, ve kterém se zúčastníte jednotlivých výstrah, takže pokud dojde k ohrožení určitého prostředku, můžete se k němu hned dostat. Závažnost je založena na tom, jak se nachází Security Center ve vyhledávání nebo v analytickém formátu, který vydává výstrahu, a také na úrovni spolehlivosti, u kterých došlo k škodlivému záměru za aktivitu, která vedla k upozornění.
+**Pokyny**: Centrum zabezpečení přiřazuje výstrahám závažnost, která vám pomůže určit pořadí, ve kterém se účastníte jednotlivých výstrah, takže když dojde k ohrožení zabezpečení prostředku, můžete se k němu hned dostat. Závažnost je založena na tom, jak sebevědomý Security Center je v hledání nebo analytice slouží k vydání výstrahy, stejně jako úroveň spolehlivosti, že tam byl škodlivý záměr za aktivitu, která vedla k upozornění.
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="103-test-security-response-procedures"></a>10,3: testovací postupy pro odpověď zabezpečení
+### <a name="103-test-security-response-procedures"></a>10.3: Zkušební postupy odezvy zabezpečení
 
-**Doprovodné**materiály: proveďte cvičení a otestujte možnosti reakce na incidenty v pravidelných tempo. Identifikujte slabá místa a mezery a podle potřeby upravte plán.
+**Pokyny**: Proveďte cvičení k testování schopností reakce na incidenty vašich systémů na pravidelné kadenci. Identifikujte slabá místa a mezery a podle potřeby plán revidujte.
 
-Přečtěte si téma publikace NIST: Průvodce pro testování, školení a cvičení programů pro plány a možnosti IT: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
+Podívejte se na publikaci NIST: Průvodce testovacími, školicími a cvičebními programy pro plány a schopnosti IT:https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování Azure Security Center**: Nelze použít
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-nbspfor-security-incidents"></a>10,4: zadání podrobností o kontaktu incidentu zabezpečení a konfigurace oznámení o výstrahách &nbsp;pro incidenty zabezpečení
+### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-nbspfor-security-incidents"></a>10.4: Poskytněte kontaktní údaje &nbsp;bezpečnostních incidentů a nakonfigurujte upozornění pro bezpečnostní incidenty
 
-**Doprovodné**materiály: kontaktní údaje incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že vaše data jsou přístupná z nezákonných nebo neoprávněných stran.
+**Pokyny**: Kontaktní informace o bezpečnostních incidentech společnost Microsoft použije k tomu, aby vás kontaktovala, pokud centrum MSRC (Microsoft Security Response Center) zjistí, že k vašim datům získala přístup nezákonná nebo neoprávněná strana.
 
 
 
-Jak nastavit Azure Security Center kontakt zabezpečení:
+Jak nastavit kontakt zabezpečení Centra zabezpečení Azure:
 
 https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování Centra zabezpečení Azure:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: zahrňte výstrahy zabezpečení do systému reakce na incidenty.
+### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5: Začleňte výstrahy zabezpečení do systému reakce na incidenty
 
-**Doprovodné**materiály: vyexportujte výstrahy a doporučení Azure Security Center pomocí funkce průběžného exportu. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Pomocí konektoru Azure Security Center Data můžete streamovat výstrahy do Azure Sentinel.
+**Pokyny:** Exportujte výstrahy a doporučení Centra zabezpečení Azure pomocí funkce Nepřetržitý export. Nepřetržitý export umožňuje exportovat výstrahy a doporučení buď ručně, nebo průběžně. Datový konektor Azure Security Center můžete použít k streamování výstrah do Azure Sentinelu.
 
 
-Postup konfigurace průběžného exportu:
+Jak nakonfigurovat nepřetržitý export:
 
 https://docs.microsoft.com/azure/security-center/continuous-export
 
 
-Jak streamovat výstrahy do Azure Sentinel:
+Jak streamovat výstrahy do Azure Sentinelu:
 
 https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
-### <a name="106-automate-the-response-to-security-alerts"></a>10,6: automatizujte reakci na výstrahy zabezpečení
+### <a name="106-automate-the-response-to-security-alerts"></a>10.6: Automatizace reakce na výstrahy zabezpečení
 
-**Doprovodné**materiály: použití funkce automatizace pracovního postupu v Azure Security Center k automatickému spouštění odpovědí prostřednictvím "Logic Apps" na výstrahy a doporučení zabezpečení.
+**Pokyny:** Pomocí funkce Automatizace pracovních postupů v Centru zabezpečení Azure můžete automaticky aktivovat odpovědi prostřednictvím "Logic Apps" na výstrahy zabezpečení a doporučení.
 
 
 
-Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps:
+Konfigurace automatizace pracovních postupů a aplikací logiky:
 
 https://docs.microsoft.com/azure/security-center/workflow-automation
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost**: Zákazník
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetrační testy a tzv. red team exercises
 
-*Další informace najdete v tématu [řízení zabezpečení: testy průniku a cvičení červeného týmu](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Další informace naleznete [v tématu Bezpečnostní kontrola: Penetrační testy a cvičení červeného týmu](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
 
-### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-to-remediate-all-critical-security-findings-within-60-days"></a>11,1: proveďte pravidelné testování průniku vašich prostředků Azure a ujistěte se, že máte v 60 dnech opravit všechny důležité výsledky zabezpečení.
+### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-to-remediate-all-critical-security-findings-within-60-days"></a>11.1: Proveďte pravidelné penetrační testování vašich prostředků Azure a zajistěte, aby byly všechny důležité výsledky zabezpečení opraveny do 60 dnů.
 
-**Doprovodné**materiály: řiďte se prosím pravidly zapojení Microsoftu, abyste zajistili, že testy průniku nejsou v rozporu s zásadami Microsoftu:
+**Pokyny**: Postupujte podle pravidel společnosti Microsoft a ujistěte se, že penetrační testy neporušují zásady společnosti Microsoft:
 
 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.
 
 
 
-Další informace o strategii a provádění testování na základě červeného seskupování a testování průniku na webu pomocí spravované cloudové infrastruktury, služeb a aplikací Microsoftu najdete tady: 
+Další informace o strategii společnosti Microsoft a provádění červených týmů a testování pronikání živých webů proti cloudové infrastruktuře, službám a aplikacím společnosti Microsoft naleznete zde: 
 
 https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování Azure Security Center**: Nelze použít
 
-**Odpovědnost**: sdílená
+**Odpovědnost**: Sdíleno
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zobrazit [Srovnávací test zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- Další informace o [plánech zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- Podívejte se na [srovnávací test zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- Další informace o [plánech zásad zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

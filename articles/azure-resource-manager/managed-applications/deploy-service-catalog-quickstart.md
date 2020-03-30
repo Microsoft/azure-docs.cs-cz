@@ -1,67 +1,67 @@
 ---
-title: Použití Azure Portal k nasazení aplikace Service Catalog
-description: Zobrazuje uživatele spravovaných aplikací, jak nasadit aplikaci katalogu služeb prostřednictvím Azure Portal.
+title: Nasazení aplikace katalogu služeb pomocí portálu Azure Portal
+description: Zobrazuje spotřebitele spravovaných aplikací, jak nasadit aplikaci katalogu služeb prostřednictvím portálu Azure.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3fa9709e096e908907772c940fc5e2f2895b7eb3
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 9a69296ddfc93fd7e8a6650df91876829631f5d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75650783"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473060"
 ---
-# <a name="deploy-service-catalog-app-through-azure-portal"></a>Nasazení aplikace Service Catalog prostřednictvím Azure Portal
+# <a name="quickstart-deploy-service-catalog-app-through-azure-portal"></a>Úvodní příručka: Nasazení aplikace katalogu služeb prostřednictvím portálu Azure
 
-V [předchozím rychlém](publish-managed-app-definition-quickstart.md)startu jste publikovali definici spravované aplikace. V tomto rychlém startu vytvoříte aplikaci katalogu služeb z této definice.
+V [předchozím rychlém startu](publish-managed-app-definition-quickstart.md)jste publikovali definici spravované aplikace. V tomto rychlém startu vytvoříte aplikaci katalogu služeb z této definice.
 
 ## <a name="create-service-catalog-app"></a>Vytvořit aplikaci katalogu služeb
 
-V Azure Portal použijte následující postup:
+Na webu Azure Portal použijte následující kroky:
 
-1. Vyberte **vytvořit prostředek**.
+1. Vyberte **Vytvořit prostředek**.
 
    ![Vytvoření prostředku](./media/deploy-service-catalog-quickstart/create-new.png)
 
 1. Vyhledejte **spravovanou aplikaci katalogu služeb** a vyberte ji z dostupných možností.
 
-   ![Vyhledat aplikaci katalogu služeb](./media/deploy-service-catalog-quickstart/select-service-catalog.png)
+   ![Hledat aplikaci katalogu služeb](./media/deploy-service-catalog-quickstart/select-service-catalog.png)
 
-1. Zobrazí se popis spravované aplikační služby. Vyberte **Vytvořit**.
+1. Zobrazí se popis služby Spravované aplikace. Vyberte **Vytvořit**.
 
    ![Výběr možnosti vytvoření](./media/deploy-service-catalog-quickstart/create-service-catalog.png)
 
-1. Na portálu se zobrazí definice spravovaných aplikací, ke kterým máte přístup. Z dostupných definic vyberte ten, který chcete nasadit. V tomto rychlém startu použijte definici **spravovaného účtu úložiště** , kterou jste vytvořili v předchozím rychlém startu. Vyberte **Vytvořit**.
+1. Portál zobrazuje definice spravovaných aplikací, ke kterým máte přístup. Z dostupných definic vyberte ten, který chcete nasadit. V tomto rychlém startu použijte definici **účtu spravovaného úložiště,** kterou jste vytvořili v předchozím rychlém startu. Vyberte **Vytvořit**.
 
-   ![Vyberte definici pro nasazení](./media/deploy-service-catalog-quickstart/select-definition.png)
+   ![Vyberte definici, která se má nasadit.](./media/deploy-service-catalog-quickstart/select-definition.png)
 
-1. Zadejte hodnoty pro kartu **základy** . Vyberte předplatné Azure, do kterého chcete nasadit aplikaci katalogu služeb. Vytvořte novou skupinu prostředků s názvem skupina **aplikací**. Vyberte umístění pro vaši aplikaci. Po dokončení vyberte **OK**.
+1. Zadejte hodnoty pro kartu **Základy.** Vytvořte novou skupinu prostředků s názvem **applicationGroup**. Vyberte umístění aplikace. Po dokončení vyberte **OK**.
 
    ![Zadejte hodnoty pro základní](./media/deploy-service-catalog-quickstart/provide-basics.png)
 
-1. Zadejte předponu názvu účtu úložiště. Vyberte typ účtu úložiště, který se má vytvořit. Po dokončení vyberte **OK**.
+1. Zadejte předponu pro název účtu úložiště. Vyberte typ účtu úložiště, který chcete vytvořit. Po dokončení vyberte **OK**.
 
-   ![Zadejte hodnoty pro úložiště.](./media/deploy-service-catalog-quickstart/provide-storage.png)
+   ![Zadejte hodnoty pro úložiště](./media/deploy-service-catalog-quickstart/provide-storage.png)
 
-1. Zkontrolujte souhrnné informace. Po úspěšném ověření spusťte nasazení výběrem **OK** .
+1. Zkontrolujte souhrnné informace. Po úspěšném ověření vyberte **ok** a stesk.
 
    ![Zobrazit souhrn](./media/deploy-service-catalog-quickstart/view-summary.png)
 
 ## <a name="view-results"></a>Zobrazení výsledků
 
-Po nasazení aplikace katalogu služeb máte dvě nové skupiny prostředků. Jedna skupina prostředků obsahuje aplikaci katalogu služeb. Tato skupina prostředků obsahuje prostředky pro aplikaci katalogu služeb.
+Po nasazení aplikace katalogu služeb máte dvě nové skupiny prostředků. Jedna skupina prostředků obsahuje aplikaci katalogu služeb. Druhá skupina prostředků obsahuje prostředky pro aplikaci katalogu služeb.
 
-1. Zobrazte skupinu prostředků s názvem App a podívejte **se na aplikaci** katalogu služeb.
+1. Zobrazení mno že skupiny prostředků s názvem **applicationGroup** zobrazíte aplikaci katalogu služeb.
 
    ![Zobrazení aplikace](./media/deploy-service-catalog-quickstart/view-managed-application.png)
 
-1. Pokud chcete zobrazit prostředky pro aplikaci katalogu služeb, zobrazte skupinu prostředků s názvem App Group **{hash-Characters}** .
+1. Chcete-li zobrazit prostředky aplikace katalogu služeb, prohlédněte skupinu prostředků s názvem **applicationGroup{hash-characters}.**
 
-   ![Zobrazit prostředky](./media/deploy-service-catalog-quickstart/view-resources.png)
+   ![Zobrazení prostředků](./media/deploy-service-catalog-quickstart/view-resources.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o tom, jak vytvořit definiční soubory pro spravovanou aplikaci, najdete v tématu [Vytvoření a publikování definice spravované aplikace](publish-service-catalog-app.md).
-* Informace o rozhraní příkazového řádku Azure najdete v tématu [nasazení aplikace katalogu služeb pomocí Azure CLI](./scripts/managed-application-cli-sample-create-application.md).
-* Informace o PowerShellu najdete v tématu [nasazení aplikace katalogu služeb pomocí PowerShellu](./scripts/managed-application-poweshell-sample-create-application.md).
+* Informace o tom, jak vytvořit definiční soubory pro spravovanou aplikaci, naleznete v [tématu Vytvoření a publikování definice spravované aplikace](publish-service-catalog-app.md).
+* Informace o rozhraní příkazového příkazového nastavení Azure najdete [v tématu Nasazení aplikace katalogu služeb pomocí rozhraní příkazového příkazu Kontu Azure](./scripts/managed-application-cli-sample-create-application.md).
+* V PowerShellu [najdete v tématu Nasazení aplikace katalogu služeb s PowerShellem](./scripts/managed-application-poweshell-sample-create-application.md).

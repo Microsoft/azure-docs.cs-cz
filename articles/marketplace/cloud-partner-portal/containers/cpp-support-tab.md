@@ -1,49 +1,48 @@
 ---
-title: Nastavení podpory pro Image kontejnerů Azure | Azure Marketplace
+title: Nastavení podpory pro image kontejnerů Azure | Azure Marketplace
 description: Nakonfigurujte nastavení podpory pro kontejner Azure.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: 144512683e6afa643639ba12b071e2a3ed7e01bd
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 8124828c565f344387ae946a1fa6e61a84675b81
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823094"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279959"
 ---
-# <a name="container-support-tab"></a>Karta Podpora kontejneru
+# <a name="container-support-tab"></a>Karta Podpora kontejnerů
 
-Karta **Podpora** na **nové stránce nabídek** vám poskytne prostředky technické podpory a podpory uživatelů pro vaši nabídku.  Ve formuláři podpory jsou k dispozici následující vstupní oblasti: **technický kontakt**, **zákaznická podpora**a **adresy URL podpory**. Hvězdička (*), která je připojena k názvu pole, označuje, že je požadováno.
+Karta **Podpora** na stránce **Nová nabídka** slouží k poskytování technických a uživatelských zdrojů podpory pro vaši nabídku.  Ve formuláři podpory jsou k dispozici následující vstupní oblasti: **Technický kontakt**, **Zákaznická podpora**a Adresy URL **podpory**. Hvězdička (*) připojená k názvu pole označuje, že je požadováno.
 
 
 ## <a name="support-form-fields"></a>Pole formuláře podpory
 
-Zadejte požadované informace pro pole technický kontakt a zákaznická podpora.
+Zadejte požadované informace pro pole Technický kontakt a Zákaznická podpora.
 
 
 ### <a name="engineering-contact"></a>Technický kontakt
 
-Technický kontakt je technickým kontaktem mezi vaší organizací a společností Microsoft. Požadovaná pole jsou indicted hvězdičkou (*).
+Technický kontakt je technický kontakt mezi vaší organizací a společností Microsoft. Povinná pole jsou obžalována hvězdičkou (*).
 
-- **Název\*** – jméno osoby nebo skupiny, která slouží jako technická/technická podpora.
-- **E-mailová\*** – e-mailová adresa tohoto technického kontaktu
-- **Telefon\*** – telefonní číslo pro technickou podporu.
+- **Jméno\* ** - Jméno osoby nebo skupiny, která slouží jako technická/technická podpora.
+- **E-mail\* ** - E-mailová adresa tohoto technického kontaktu.
+- **Telefon\* ** - Telefonní číslo pro technickou podporu.
 
 
 ### <a name="customer-support"></a>Zákaznická podpora
 
-Kontakt na zákaznickou podporu obdrží lístky podpory otevřené zákazníky v Azure.  Požadovaná pole jsou indicted hvězdičkou (*).
+Kontakt zákaznické podpory obdrží lístky podpory otevřené zákazníky v Azure.  Povinná pole jsou obžalována hvězdičkou (*).
 
-- **Název\*** – jméno osoby nebo skupiny, která slouží jako zákaznická podpora.
-- **E-mail\*** – e-mailová adresa tohoto kontaktu podpory
-- **Telefon\*** – telefonní číslo pro zákaznickou podporu.
+- **Jméno\* ** - Jméno osoby nebo skupiny, která slouží jako zákaznická podpora.
+- **E-mail\* ** - E-mailová adresa tohoto kontaktu podpory.
+- **Telefon\* ** - Telefonní číslo pro zákaznickou podporu.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Po dokončení poskytování informací o podpoře jste připraveni [publikovat vaši nabídku](./cpp-publish-offer.md). 
+Po dokončení poskytování informací o podpoře můžete [nabídku publikovat](./cpp-publish-offer.md). 
 

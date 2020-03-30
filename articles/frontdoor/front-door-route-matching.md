@@ -1,6 +1,6 @@
 ---
-title: Služba Azure branou – směrování pravidlo odpovídající monitorování | Dokumentace Microsoftu
-description: Tento článek vám pomůže pochopit, jak služba Azure branou odpovídá které pravidlo směrování pro příchozí požadavek
+title: Azure Front Door – monitorování párování pravidel směrování | Dokumenty společnosti Microsoft
+description: Tento článek vám pomůže pochopit, jak Azure Front Door odpovídá pravidlu směrování, které se má použít pro příchozí požadavek.
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -11,52 +11,52 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: eec99bde0ea73a99a9dc1345f938b821a95a7c05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 605974e76c3ca878784129f7c9827a78d0642da6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736275"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471587"
 ---
-# <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Jak branou odpovídá požadavků na pravidlo směrování
+# <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Způsob, jakým přední dveře odpovídají požadavkům s pravidlem směrování
 
-Po navázání připojení a udělat ověření typu handshake SSL, když jsou požadavek na prostředí s branou, jeden z prvních věcí, které nemá branou je určení ze všech konfigurací, které konkrétní pravidlo směrování tak, aby odpovídaly požadavku a pak můžete definované akce. Následující dokument vysvětluje, jak přední dveře Určuje konfiguraci směrování, kterou chcete použít při zpracování požadavku HTTP.
+Po navázání připojení a provedení ssl handshake, když požadavek přistane na front door prostředí jedna z prvních věcí, které přední dveře dělá, je určení ze všech konfigurací, které konkrétní směrování pravidlo, aby odpovídaly požadavku a pak s definované akce. Následující dokument vysvětluje, jak front door určuje, kterou konfiguraci trasy použít při zpracování požadavku HTTP.
 
-## <a name="structure-of-a-front-door-route-configuration"></a>Struktura konfiguraci směrování branou
-Přední dveře konfigurace pravidla směrování se skládá ze dvou hlavních částí: "levá strana" a "pravá strana". Příchozí požadavek na levé straně trasy porovnávat, zatímco na pravé straně definuje, jak jsme zpracování žádosti.
+## <a name="structure-of-a-front-door-route-configuration"></a>Struktura konfigurace trasy předních dveří
+Konfigurace pravidel směrování předních dveří se skládá ze dvou hlavních částí: "levá strana" a "pravá strana". Příchozí požadavek přiřazujeme k levé straně trasy, zatímco pravá strana definuje způsob zpracování požadavku.
 
-### <a name="incoming-match-left-hand-side"></a>Příchozí shodu (levá strana)
-Následující vlastnosti určují, zda příchozí žádost odpovídá pravidlo směrování (nebo levá strana):
+### <a name="incoming-match-left-hand-side"></a>Příchozí zápas (levá strana)
+Následující vlastnosti určují, zda příchozí požadavek odpovídá pravidlu směrování (nebo na levé straně):
 
 * **Protokoly HTTP** (HTTP/HTTPS)
-* **Hostitelé** (například www\.foo.com, \*. bar.com)
+* **Hostitelé** (například\.www \*foo.com, .bar.com)
 * **Cesty** (například /\*, /users/\*, /file.gif)
 
-Tyto vlastnosti jsou rozbaleny interně si tak, aby protokol/hostitele nebo cestu pro každou kombinaci sadu potenciální shoda.
+Tyto vlastnosti jsou rozbaleny interně tak, aby každá kombinace protokolu/hostitele/cesty je potenciální sada shody.
 
-### <a name="route-data-right-hand-side"></a>Data trasy (pravá strana)
-Rozhodnutí o tom, jak zpracovat požadavek, závisí na tom, zda je povoleno ukládání do mezipaměti, nebo ne pro konkrétní trasy. Ano, pokud odpověď uložená v mezipaměti pro žádost nemáme, jsme budete tento požadavek předá dál do příslušného back-endu v nakonfigurované back-endový fond.
+### <a name="route-data-right-hand-side"></a>Údaje o trase (pravá strana)
+Rozhodnutí o způsobu zpracování požadavku závisí na tom, zda je ukládání do mezipaměti povoleno nebo ne pro konkrétní trasu. Takže pokud nemáme odpověď uloženou v mezipaměti pro požadavek, předáme požadavek příslušnému back-endu v nakonfigurovaném back-endovém fondu.
 
-## <a name="route-matching"></a>Odpovídající trasy
-Tato část se zaměří na tom, jak porovnávat dané pravidlo směrování branou. Základním konceptem je, že jsme vždy odpovídat **specifické pro většinu nejprve srovnat** vypadající pouze na "levou stranu".  Jsme první shoda podle protokolu HTTP, pak front-endu hostitele a pak cesta.
+## <a name="route-matching"></a>Párování trasy
+Tato část se zaměří na to, jak odpovídáme danému pravidlu směrování předních dveří. Základním konceptem je, že vždy odpovídáme **nejkonkrétnějšímu zápasu,** který se nejprve dívá pouze na "levou stranu".  Nejprve se shodujeme na základě protokolu HTTP, pak frontendového hostitele a potom na cestě.
 
 ### <a name="frontend-host-matching"></a>Párování hostitele front-endu
-Při párování hostitele front-endu, můžeme použít logiku jak je uvedeno níže:
+Při porovnávání hostitelů Frontendu používáme logiku takto:
 
-1. Vyhledejte všechny směrování s přesnou shodu na hostiteli.
-2. Pokud se shodují se žádní hostitelé přesné front-endu, zamítnutí žádosti a odeslat chybu chybný požadavek 400.
+1. Vyhledejte jakékoli směrování s přesnou shodou na hostiteli.
+2. Pokud se neshodují žádní přesní hostitelé front-endu, zamítněte požadavek a odešlete chybu 400 chybný požadavek.
 
-Abychom vysvětlili, tento proces dále, Podívejme se na příklad konfigurace branou tras (pouze levá strana):
+Chcete-li tento proces dále vysvětlit, podívejme se na příklad konfigurace tras předních dveří (pouze na levé straně):
 
-| Pravidlo směrování | Hostitele front-endu | `Path` |
+| Pravidlo směrování | Frontendoví hostitelé | Cesta |
 |-------|--------------------|-------|
 | A | foo.contoso.com | /\* |
-| B | foo.contoso.com | složku /Users/\* |
-| C | WWW\.fabrikam.com, foo.adventure works.com  | /\*, /images/\* |
+| B | foo.contoso.com | /uživatelé/\* |
+| C | www\.fabrikam.com, foo.adventure-works.com  | /\*, /obrázky/\* |
 
-Pokud tyto příchozí požadavky byly branou, by porovnání následující pravidla směrování výše:
+Pokud byly do předních dveří odeslány následující příchozí požadavky, porovnávají se s následujícími pravidly směrování shora:
 
-| Příchozí hostitele front-endu | Odpovídající pravidla směrování |
+| Příchozí front-end hostitele | Odpovídající pravidla směrování |
 |---------------------|---------------|
 | foo.contoso.com | A, B |
 | www\.fabrikam.com | C |
@@ -66,19 +66,19 @@ Pokud tyto příchozí požadavky byly branou, by porovnání následující pra
 | www\.adventure-works.com | Chyba 400: Chybný požadavek |
 | www\.northwindtraders.com | Chyba 400: Chybný požadavek |
 
-### <a name="path-matching"></a>Cesta k porovnávání
-Po určení konkrétní front-endové hostitele a filtrování možných pravidla směrování pro trasy s front-endu, které jsou hostiteli, vyfiltruje branou pravidla směrování na základě cesty požadavku. Můžeme použít podobnou logiku jako hostitele front-endu:
+### <a name="path-matching"></a>Odpovídající cesta
+Po určení konkrétního front-endového hostitele a filtrování možných pravidel směrování pouze na trasy s tímto front-endovým hostitelem front door pak front door filtruje pravidla směrování na základě cesty požadavku. Používáme podobnou logiku jako frontendové hostitele:
 
-1. Vyhledejte všechny pravidlo směrování s přesnou shodou v cestě
-2. Pokud žádné cesty přesná shoda hledejte pravidla směrování se zástupným znakem cestu, která odpovídá
-3. Pokud se žádná pravidla směrování nenajdou odpovídající cestou, zamítnutí žádosti a vrátí 400: Chybný požadavek došlo k chybě odpověď HTTP.
+1. Vyhledejte libovolné pravidlo směrování s přesnou shodou na cestě
+2. Pokud není přesná shoda cesty, vyhledejte pravidla směrování se zástupným znakem cesta, která odpovídá
+3. Pokud nejsou nalezena žádná pravidla směrování s odpovídající cestou, zamítněte požadavek a vraťte 400: Chybný požadavek chyby HTTP odpověď.
 
 >[!NOTE]
-> Všechny cesty bez zástupné znaky jsou považovány za přesnou shodu cesty. I v případě, že cesta končí lomítkem, přesto považuje přesná shoda.
+> Všechny cesty bez zástupné znaku jsou považovány za cesty s přesnou shodou. I když cesta končí lomítkem, je stále považována za přesnou shodu.
 
-Abychom vysvětlili, dále, Podívejme se na jinou sadu příklady:
+Chcete-li dále vysvětlit, podívejme se na další sadu příkladů:
 
-| Pravidlo směrování | Hostitele front-endu    | `Path`     |
+| Pravidlo směrování | Front-end hostitele    | Cesta     |
 |-------|---------|----------|
 | A     | www\.contoso.com | /        |
 | B     | www\.contoso.com | /\*      |
@@ -87,11 +87,11 @@ Abychom vysvětlili, dále, Podívejme se na jinou sadu příklady:
 | E     | www\.contoso.com | /abc/    |
 | F     | www\.contoso.com | /abc/\*  |
 | G     | www\.contoso.com | /abc/def |
-| H     | www\.contoso.com | /Path/   |
+| H     | www\.contoso.com | /cesta/   |
 
-Zadaný tuto konfiguraci, výsledkem bude v následující tabulce odpovídající příkladu:
+Vzhledem k této konfiguraci by výsledkem následujícípříklad odpovídající tabulky:
 
-| Příchozí požadavek    | Porovnávané trasy |
+| Příchozí požadavek    | Odpovídající trasa |
 |---------------------|---------------|
 | www\.contoso.com/            | A             |
 | www\.contoso.com/a           | B             |
@@ -108,24 +108,24 @@ Zadaný tuto konfiguraci, výsledkem bude v následující tabulce odpovídajíc
 | www\.contoso.com/path/zzz    | B             |
 
 >[!WARNING]
-> </br> Pokud nejsou žádná pravidla směrování hostitele front-endu přesnou shodu s pokrývající vše směrovat cestu (`/*`), pak nebude existovat shoda pro jakékoli pravidlo směrování.
+> </br> Pokud neexistují žádná pravidla směrování pro front-endového hostitele s přesnou shodou s trasou catch-all (`/*`), nebude existovat shoda s žádným pravidlem směrování.
 >
 > Příklad konfigurace:
 >
-> | Trasa | Host             | `Path`    |
+> | Trasa | Hostitel             | Cesta    |
 > |-------|------------------|---------|
 > | A     | profile.contoso.com | /api/\* |
 >
 > Odpovídající tabulka:
 >
-> | Příchozí požadavek       | Porovnávané trasy |
+> | Příchozí požadavek       | Odpovídající trasa |
 > |------------------------|---------------|
-> | profile.domain.com/other | Žádné Chyba 400: Chybný požadavek |
+> | profile.domain.com/other | Žádné. Chyba 400: Chybný požadavek |
 
 ### <a name="routing-decision"></a>Rozhodnutí o směrování
-Jakmile zjišťována shoda pro jedno pravidlo směrování branou, pak musíme zvolte, jak zpracovat požadavek. Pokud je pro odpovídající pravidlo směrování branou odpověď uložená v mezipaměti k dispozici pak stejné získá obsluhovat zpět do klienta. V opačném případě je dalším krokem, který získá ohodnocení se, jestli jste nakonfigurovali [přepisu adresy URL (vlastního předávajícího cesta)](front-door-url-rewrite.md) odpovídající směrování je pravidlo nebo ne. Pokud není k dispozici vlastního předávajícího cestu definovanou, získá požadavek předá do příslušného back-endu v nakonfigurované back-endový fond, protože je. V opačném cestu požadavku se aktualizuje podle [vlastního předávajícího cesta](front-door-url-rewrite.md) definovaných a potom přeposílají do back-endu.
+Jakmile se přirovnáme k jedinému pravidlu směrování předních dveří, musíme zvolit způsob zpracování požadavku. Pokud pro odpovídající směrovací pravidlo, Front Door má cache odpověď k dispozici pak stejné dostane doručena zpět klientovi. V opačném případě je další věc, která se vyhodnotí, zda jste nakonfigurovali [přepis adresy URL (vlastní cestu pro předávání)](front-door-url-rewrite.md) pro odpovídající pravidlo směrování nebo ne. Pokud není definována vlastní cesta pro předávání, požadavek se předává příslušnému back-endu v nakonfigurovaném back-endovém fondu tak, jak je. Jinak je cesta požadavku aktualizována podle [vlastní cesty předávání](front-door-url-rewrite.md) definované a pak dopředu do back-endu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si, jak [vytvořit službu Front Door](quickstart-create-front-door.md).
+- Přečtěte si, jak [vytvořit Front Door](quickstart-create-front-door.md).
 - Přečtěte si, [jak služba Front Door funguje](front-door-routing-architecture.md).

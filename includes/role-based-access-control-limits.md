@@ -5,19 +5,19 @@ services: active-directory
 author: rolyon
 ms.service: role-based-access-control
 ms.topic: include
-ms.date: 06/21/2019
+ms.date: 03/02/2020
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: 56f4f24fb504d08c34542129f854547b78967cb3
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 734e3c698e9a0b6d6653cfd654295da41a369ca6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "70997592"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79504300"
 ---
-| Resource | Omezení |
+| Prostředek | Omezení |
 | --- | --- |
-| [Přiřazení rolí pro prostředky Azure v rámci předplatného Azure](../articles/role-based-access-control/overview.md) | 2 000 |
-| [Přiřazení rolí pro prostředky Azure na skupinu pro správu](../articles/role-based-access-control/overview.md) | 500 |
-| [Vlastní role pro prostředky Azure na tenanta](../articles/role-based-access-control/custom-roles.md) | 5,000 |
-| [Vlastní role pro prostředky Azure na tenanta](../articles/role-based-access-control/custom-roles.md)<br/>(specializované cloudy, například Azure Government, Azure Německo a Azure Čína 21Vianet) | 2 000 |
+| [Přiřazení rolí pro prostředky Azure na předplatné Azure](../articles/role-based-access-control/overview.md) | 2 000 |
+| [Přiřazení rolí pro prostředky Azure podle skupiny pro správu](../articles/role-based-access-control/overview.md) | 500 |
+| [Vlastní role pro prostředky Azure na klienta](../articles/role-based-access-control/custom-roles.md) | 5 000 |
+| [Vlastní role pro prostředky Azure na klienta](../articles/role-based-access-control/custom-roles.md)<br/>(pro Azure Germany a Azure China 21Vianet) | 2 000 |

@@ -1,6 +1,6 @@
 ---
 title: Transformace jímky v toku dat mapování
-description: Naučte se konfigurovat transformaci jímky v mapování toku dat.
+description: Zjistěte, jak nakonfigurovat transformaci jímky v toku dat mapování.
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,59 +9,59 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: 3b631c068d1a444691345e054219208c4c8b0b8c
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a0b9d424c1995fba075c05ffe5058e297d764775
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020042"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79531256"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Transformace jímky v toku dat mapování
 
-Po transformaci dat můžete data zajímky do cílové datové sady. Každý tok dat vyžaduje alespoň jednu transformaci jímky, ale můžete zapisovat do tolika umyvadel, kolik je potřeba k dokončení toku transformace. Chcete-li zapisovat do dalších umyvadel, vytvářejte nové datové proudy pomocí nových větví a podmíněných rozdělení.
+Po transformaci dat můžete uhloubení dat do cílové datové sady. Každý tok dat vyžaduje alespoň jednu transformaci jímky, ale můžete zapisovat do tolik jímky podle potřeby k dokončení toku transformace. Chcete-li zapisovat do dalších jímek, vytvořte nové datové proudy prostřednictvím nových větví a podmíněných rozdělení.
 
-Každá transformace jímky je přidružená k právě jedné datové sadě Data Factory. Datová sada definuje tvar a umístění dat, do kterých chcete zapisovat.
+Každá transformace jímky je přidružena přesně k jedné datové sadě Datové továrny. Datová sada definuje tvar a umístění dat, do kterých chcete zapisovat.
 
-## <a name="supported-sink-connectors-in-mapping-data-flow"></a>Podporované konektory jímky v mapování toku dat
+## <a name="supported-sink-connectors-in-mapping-data-flow"></a>Podporované konektory jímky v toku dat mapování
 
-V současné době lze v transformaci jímky použít následující datové sady:
+V současné době následující datové sady lze použít v transformaci jímky:
     
-* [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) (JSON, Avro, text, Parquet)
-* [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) (JSON, Avro, text, Parquet)
-* [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) (JSON, Avro, text, Parquet)
-* [Azure synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties)
+* [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) (JSON, Avro, Text, Parkety)
+* [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) (JSON, Avro, Text, Parkety)
+* [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) (JSON, Avro, Text, Parkety)
+* [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties)
 * [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties)
-* [CosmosDB Azure](connector-azure-cosmos-db.md#mapping-data-flow-properties)
+* [Azure CosmosDB](connector-azure-cosmos-db.md#mapping-data-flow-properties)
 
-Nastavení specifická pro tyto konektory jsou umístěna na kartě **Nastavení** . informace o těchto nastaveních najdete v dokumentaci konektoru. 
+Nastavení specifická pro tyto konektory jsou umístěna na kartě **Nastavení.** 
 
-Azure Data Factory má přístup k více než [90 nativním konektorům](connector-overview.md). Pokud chcete do těchto jiných zdrojů zapsat data z toku dat, pomocí aktivity kopírování načtěte tato data z jedné z podporovaných pracovních oblastí po dokončení toku dat.
+Azure Data Factory má přístup k více než [90 nativním konektorům](connector-overview.md). Chcete-li zapisovat data do těchto jiných zdrojů z toku dat, použijte aktivitu kopírování k načtení těchto dat z jedné z podporovaných pracovních oblastí po dokončení toku dat.
 
 ## <a name="sink-settings"></a>Nastavení jímky
 
-Po přidání jímky proveďte konfiguraci přes kartu **jímka** . Tady můžete vybrat nebo vytvořit datovou sadu, do které zapisuje jímka. 
+Po přidání jímky nakonfigurujte na kartě **Jímka.** Zde můžete vybrat nebo vytvořit datovou sadu, do které jímka 
 
 ![Nastavení jímky](media/data-flow/sink-settings.png "Nastavení jímky")
 
-**Posun schématu:** [posun schématu](concepts-data-flow-schema-drift.md) je schopnost objektu pro vytváření dat nativně zpracovávat flexibilní schémata v datových tocích, aniž by bylo nutné explicitně definovat změny sloupců. Povolit možnost **Povolit posun schématu** pro zápis dalších sloupců nad to, co je definováno ve schématu dat jímky.
+**Posun schématu:** [Posun schématu](concepts-data-flow-schema-drift.md) je schopnost datové továrny nativně zpracovávat flexibilní schémata v tocích dat bez nutnosti explicitně definovat změny sloupců. Povolit **povolit posun schématu** zapsat další sloupce nad co je definováno ve schématu dat jímky.
 
-**Ověřit schéma:** Pokud je vybraná možnost ověřit schéma, tok dat selže, pokud některý sloupec v definovaném schématu datové sady nebude nalezen.
+**Ověřit schéma:** Pokud je vybráno schéma ověření, tok dat se nezdaří, pokud není ve zdrojové projekci nalezen žádný sloupec schématu příchozího zdroje nebo pokud se datové typy neshodují. Toto nastavení slouží k vynucení, že zdrojová data splňují smlouvu definované projekce. Je velmi užitečné ve scénářích zdroj databáze signál, že názvy sloupců nebo typy byly změněny.
 
-## <a name="field-mapping"></a>Mapování polí
+## <a name="field-mapping"></a>Mapování pole
 
-Podobně jako u transformace Select se můžete rozhodnout, které příchozí sloupce budou zapsány na kartě **mapování** jímky. Ve výchozím nastavení jsou namapovány všechny vstupní sloupce, včetně unášených sloupců. Toto je známé jako **automatické mapování**.
+Podobně jako select transformace, v **mapování** kartu jímky, můžete rozhodnout, které příchozí sloupce budou zapsány. Ve výchozím nastavení jsou mapovány všechny vstupní sloupce, včetně posunutých sloupců. Tento jetomu označován jako **automatické mapování**.
 
-Když automatické mapování vypnete, budete mít možnost přidat buď pevná mapování na sloupce, nebo mapování na základě pravidel. Mapování na základě pravidel umožňují psát výrazy s porovnáváním vzorů, zatímco pevné mapování bude mapovat logické a fyzické názvy sloupců. Další informace o mapování na základě pravidel najdete v tématu [vzory sloupců v části mapování toku dat](concepts-data-flow-column-pattern.md#rule-based-mapping-in-select-and-sink).
+Když automatické mapování vypnete, budete mít možnost přidat buď pevná mapování založená na sloupech, nebo mapování založená na pravidlech. Mapování založené na pravidlech umožňuje psát výrazy s porovnáváním vzorů, zatímco pevné mapování mapuje logické a fyzické názvy sloupců. Další informace o mapování založeném na pravidlech naleznete [v tématu vzory sloupců v toku dat mapování](concepts-data-flow-column-pattern.md#rule-based-mapping-in-select-and-sink).
 
 ## <a name="custom-sink-ordering"></a>Vlastní řazení jímky
 
-Ve výchozím nastavení jsou data zapisována do více umyvadel v nedeterministickém pořadí. Spouštěcí modul zapisuje data paralelně, protože je dokončena transformace logiky a řazení jímky se může u každého spuštění lišit. Chcete-li zadat a přesné řazení jímky, povolte **vlastní řazení jímky** na kartě Obecné v toku dat. Pokud je povoleno, jímky budou zapisovány postupně ve vzestupném pořadí.
+Ve výchozím nastavení jsou data zapsána do více jímek v nedeterministickém pořadí. Spuštění motoru bude zapisovat data paralelně jako logika transformace je dokončena a řazení jímky se může lišit každý běh. Chcete-li zadat a přesné řazení jímky, povolte **vlastní řazení jímky** v obecné záložce toku dat. Pokud je povoleno, propady budou zapsány postupně v pořadí zvyšování.
 
 ![Vlastní řazení jímky](media/data-flow/custom-sink-ordering.png "Vlastní řazení jímky")
 
-## <a name="data-preview-in-sink"></a>Náhled dat v jímky
+## <a name="data-preview-in-sink"></a>Náhled dat v jímce
 
-Při načítání náhledu dat v clusteru ladění nebudou do jímky zapsána žádná data. Vrátí se snímek toho, co budou data vypadat, ale do svého cíle se nezapisují žádné údaje. Pokud chcete testovat zápis dat do jímky, spusťte ladění kanálu z plátna kanálu.
+Při načítání náhledu dat v ladicím clusteru se do jímky nezapisují žádná data. Snímek toho, jak data vypadají, bude vrácen, ale nic nebude zapsáno do cíle. Chcete-li otestovat zápis dat do jímky, spusťte ladění kanálu z plátna kanálu.
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste vytvořili tok dat, přidejte [do svého kanálu aktivitu toku dat](concepts-data-flow-overview.md).
+Teď, když jste vytvořili tok dat, přidejte [aktivitu toku dat do kanálu](concepts-data-flow-overview.md).

@@ -2,14 +2,14 @@
 author: Blackmist
 ms.service: machine-learning
 ms.topic: include
-ms.date: 11/06/2019
+ms.date: 03/16/2020
 ms.author: larryfr
-ms.openlocfilehash: 4fb30abc2b8be6b81414631addce41c819eb8df6
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 202b3dc5df75af4c9075b3962fcf6e86833ecdfa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926982"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477285"
 ---
 > [!IMPORTANT]
-> Měli byste použít jenom modely, které vytvoříte nebo získáte z důvěryhodného zdroje. Serializované modely by měly být považovány za kód, protože chyby zabezpečení byly zjištěny v řadě oblíbených formátů. Modely také mohou být záměrně vyškoleny se škodlivým záměrem, aby mohl poskytovat posunutý nebo nepřesný výstup.
+> Měli byste používat pouze modely, které vytvoříte nebo získáte z důvěryhodného zdroje. Serializované modely byste měli považovat za kód, protože chyby zabezpečení byly zjištěny v řadě oblíbených formátů. Modely mohou být také záměrně trénované se zlým úmyslem poskytnout neobjektivní nebo nepřesný výstup.

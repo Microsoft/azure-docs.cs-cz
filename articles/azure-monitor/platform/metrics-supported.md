@@ -1,869 +1,869 @@
 ---
-title: Azure Monitor podporované metriky podle typu prostředku
-description: Seznam metrik dostupných pro každý typ prostředku s Azure Monitor.
+title: Azure Monitor podporuje metriky podle typu prostředku
+description: Seznam metrik, které jsou k dispozici pro každý typ prostředku pomocí Azure Monitoru.
 author: anirudhcavale
 services: azure-monitor
 ms.topic: reference
-ms.date: 12/18/2019
+ms.date: 03/17/2020
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 3e43d2baf4337e7a986d59c47f805183a920c7a1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: e01ed9f784d77b3c425c60de31ab87f86dbb688b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79275383"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79500598"
 ---
-# <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky s Azure Monitor
+# <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky pomocí Azure Monitoru
 
-Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně jejich grafu na portálu, přístupu k nim prostřednictvím REST API nebo jejich dotazování pomocí PowerShellu nebo rozhraní příkazového řádku. Níže je uvedený úplný seznam všech metrik, které jsou aktuálně k dispozici s kanálem metriky Azure Monitor. Jiné metriky mohou být k dispozici na portálu nebo pomocí starších rozhraní API. Tento seznam obsahuje jenom metriky, které jsou k dispozici, pomocí kanálu konsolidace Azure Monitor metriky. Metriky jsou uspořádány podle oboru názvů. Seznam služeb a obory názvů, které do nich patří, najdete v tématu [poskytovatelé prostředků pro služby Azure](../../azure-resource-manager/management/azure-services-resource-providers.md). Pokud chcete získat dotaz na tyto metriky a přistupovat k nim programově, použijte prosím [rozhraní API verze 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) .
+Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně jejich vytváření grafů na portálu, přístupu k nim prostřednictvím rozhraní REST API nebo dotazování pomocí prostředí PowerShell nebo CLI. Níže je úplný seznam všech metrik, které jsou aktuálně dostupné v kanálu metrik Azure Monitoru. Jiné metriky mohou být k dispozici na portálu nebo pomocí starších rozhraní API. Tento seznam níže zahrnuje pouze metriky, které jsou k dispozici pomocí konsolidovaného kanálu metrikazure monitoru. Metriky jsou uspořádány podle oboru názvů. Seznam služeb a obory názvů, které jim patří, najdete v [tématu zprostředkovatelé prostředků pro služby Azure](../../azure-resource-manager/management/azure-services-resource-providers.md). Chcete-li tyto metriky dotazovat a přistupovat k nim programově, použijte [verzi api 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
 
 > [!NOTE]
 > Odesílání vícedimenzionálních metrik přes nastavení diagnostiky se v současné době nepodporuje. Metriky s dimenzemi se exportují jako ploché jednodimenzionální metriky agregované napříč hodnotami dimenzí.
 >
 > *Příklad:* Metriku Příchozí zprávy v centru událostí je možné zkoumat a převést na graf na úrovni jednotlivých front. Pokud se však metrika exportuje přes nastavení diagnostiky, bude reprezentovaná jako všechny příchozí zprávy ve všech frontách v centru událostí.
 >
-> Seznam metrik platforem, které můžete exportovat prostřednictvím nastavení diagnostiky, najdete v [tomto článku](metrics-supported-export-diagnostic-settings.md).
+> Seznam metrik platformy exportovatelné pomocí nastavení diagnostiky naleznete v [tomto článku](metrics-supported-export-diagnostic-settings.md).
 
 
 
-## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
+## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servery
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |qpu_metric|QPU|Počet|Průměr|QPU. Rozsah 0-100 pro S1, 0-200 pro S2 a 0-400 pro S4|ServerResourceType|
-|memory_metric|Paměť|Bajty|Průměr|Rezident. Rozsah 0-25 GB pro S1, 0-50 GB pro S2 a 0-100 GB pro S4|ServerResourceType|
+|memory_metric|Memory (Paměť)|Bajty|Průměr|Memory: Rozsah 0-25 GB pro S1, 0-50 GB pro S2 a 0-100 GB pro S4|ServerResourceType|
 |private_bytes_metric|Soukromé bajty|Bajty|Průměr|Soukromé bajty.|ServerResourceType|
 |virtual_bytes_metric|Virtuální bajty|Bajty|Průměr|Virtuální bajty.|ServerResourceType|
-|TotalConnectionRequests|Požadavky na připojení celkem|Počet|Průměr|Celkový počet požadavků na připojení Jedná se o příjem.|ServerResourceType|
-|SuccessfullConnectionsPerSec|Úspěšná připojení za sekundu|CountPerSecond|Průměr|Frekvence úspěšných dokončení připojení.|ServerResourceType|
-|TotalConnectionFailures|Celkový počet selhání připojení|Počet|Průměr|Celkový počet neúspěšných pokusů o připojení|ServerResourceType|
-|CurrentUserSessions|Aktuální uživatelské relace|Počet|Průměr|Aktuální počet navázaných uživatelských relací.|ServerResourceType|
-|QueryPoolBusyThreads|Zaneprázdněná vlákna fondu dotazů|Počet|Průměr|Počet zaneprázdněných vláken ve fondu vláken dotazů.|ServerResourceType|
-|CommandPoolJobQueueLength|Délka fronty úloh fondu příkazů|Počet|Průměr|Počet úloh ve frontě fondu vláken příkazů|ServerResourceType|
-|ProcessingPoolJobQueueLength|Délka fronty úloh zpracování fondu|Počet|Průměr|Počet nevstupně-výstupních úloh ve frontě fondu vláken zpracování.|ServerResourceType|
-|CurrentConnections|Připojení: aktuální připojení|Počet|Průměr|Aktuální počet navázaných připojení klientů.|ServerResourceType|
-|CleanerCurrentPrice|Paměť: aktuální cena čisticího modulu|Počet|Průměr|Aktuální cena paměti $ USD, normalizovaná na 1000.|ServerResourceType|
-|CleanerMemoryShrinkable|Paměť: velikost čisticí paměti|Bajty|Průměr|Množství paměti (v bajtech), které se může vyčistit čisticím nástrojem na pozadí.|ServerResourceType|
-|CleanerMemoryNonshrinkable|Paměť: nezmenšovaná paměť čisticí paměti|Bajty|Průměr|Množství paměti (v bajtech), které není předmětem mazání čisticím pozadím.|ServerResourceType|
-|MemoryUsage|Paměť: využití paměti|Bajty|Průměr|Využití paměti procesu serveru, které se používá při výpočtu ceny čisticí paměti. Rovná se čítači Process\PrivateBytes a velikostí dat mapovaných do paměti, přičemž se ignoruje jakákoli paměť, která byla namapována nebo přidělena xVelocitym stroji pro analýzu paměti (VertiPaq), nad rámec limitu paměti stroje xVelocity.|ServerResourceType|
-|MemoryLimitHard|Paměť: limit paměti – pevný|Bajty|Průměr|Limit pevné paměti, z konfiguračního souboru.|ServerResourceType|
-|Hodnota memorylimithigh|Paměť: limit paměti – vysoká|Bajty|Průměr|Horní limit paměti, z konfiguračního souboru.|ServerResourceType|
-|MemoryLimitLow|Paměť: limit paměti – nízká|Bajty|Průměr|Omezení nedostatku paměti, z konfiguračního souboru.|ServerResourceType|
-|MemoryLimitVertiPaq|Paměť: limit paměti VertiPaq|Bajty|Průměr|Limit v paměti, z konfiguračního souboru.|ServerResourceType|
-|Kvóta|Paměť: kvóta|Bajty|Průměr|Aktuální kvóta paměti (v bajtech). Kvóta paměti je také známá jako přidělení paměti nebo rezervace paměti.|ServerResourceType|
-|QuotaBlocked|Paměť: kvóta blokována|Počet|Průměr|Aktuální počet požadavků na kvótu, které jsou blokovány, dokud nebudou uvolněny jiné kvóty paměti.|ServerResourceType|
-|VertiPaqNonpaged|Paměť: VertiPaq nestránkované|Bajty|Průměr|Počet bajtů paměti uzamčených v pracovní sadě pro použití modulem v paměti.|ServerResourceType|
-|VertiPaqPaged|Paměť: VertiPaq stránkované|Bajty|Průměr|Počet bajtů stránkované paměti používaných pro data v paměti.|ServerResourceType|
-|RowsReadPerSec|Zpracování: Počet přečtených řádků za sekundu|CountPerSecond|Průměr|Rychlost čtení řádků ze všech relačních databází.|ServerResourceType|
-|RowsConvertedPerSec|Zpracování: počet převedených řádků za sekundu|CountPerSecond|Průměr|Rychlost převodu řádků během zpracování.|ServerResourceType|
-|RowsWrittenPerSec|Zpracování: počet zapsaných řádků za sekundu|CountPerSecond|Průměr|Rychlost zápisu řádků během zpracování.|ServerResourceType|
-|CommandPoolBusyThreads|Vlákna: zaneprázdněná vlákna fondu příkazů|Počet|Průměr|Počet zaneprázdněných vláken ve fondu vláken příkazů.|ServerResourceType|
-|CommandPoolIdleThreads|Vlákna: nečinná vlákna fondu příkazů|Počet|Průměr|Počet nečinných vláken ve fondu vláken příkazů.|ServerResourceType|
-|LongParsingBusyThreads|Vlákna: zaneprázdněná vlákna s dlouhou analýzou|Počet|Průměr|Počet zaneprázdněných vláken ve fondu vláken dlouhého analýzy.|ServerResourceType|
-|LongParsingIdleThreads|Vlákna: nečinná vlákna při dlouhé analýze|Počet|Průměr|Počet nečinných vláken ve fondu vláken dlouhého analýzy.|ServerResourceType|
-|LongParsingJobQueueLength|Vlákna: délka fronty úloh dlouhého rozboru|Počet|Průměr|Počet úloh ve frontě fondu vláken dlouhého analýzy.|ServerResourceType|
-|ProcessingPoolBusyIOJobThreads|Vlákna: zaneprázdněná vlákna úloh v/v fondu zpracování|Počet|Průměr|Počet vláken, ve kterých běží úlohy v/v, ve fondu vláken zpracování.|ServerResourceType|
-|ProcessingPoolBusyNonIOThreads|Vlákna: zaneprázdněná vlákna, která nejsou v/v fondu zpracování|Počet|Průměr|Počet vláken, ve kterých běží jiné úlohy než v/v, ve fondu vláken zpracování.|ServerResourceType|
-|ProcessingPoolIOJobQueueLength|Vlákna: délka fronty úloh v/v fondu zpracování|Počet|Průměr|Počet vstupně-výstupních úloh ve frontě fondu vláken zpracování.|ServerResourceType|
-|ProcessingPoolIdleIOJobThreads|Vlákna: vlákna nečinných úloh v/v fondu zpracování|Počet|Průměr|Počet nečinných vláken pro úlohy v/v ve fondu vláken zpracování.|ServerResourceType|
-|ProcessingPoolIdleNonIOThreads|Vlákna: nečinná vlákna v/v fondu zpracování|Počet|Průměr|Počet nečinných vláken ve fondu vláken zpracování vyhrazeného pro úlohy bez vstupně-výstupních operací.|ServerResourceType|
-|QueryPoolIdleThreads|Vlákna: nečinná vlákna fondu dotazů|Počet|Průměr|Počet nečinných vláken pro úlohy v/v ve fondu vláken zpracování.|ServerResourceType|
-|QueryPoolJobQueueLength|Vlákna: délka fronty úloh fondu dotazů|Počet|Průměr|Počet úloh ve frontě fondu vláken dotazů.|ServerResourceType|
-|ShortParsingBusyThreads|Vlákna: krátkodobá analýza zaneprázdněných vláken|Počet|Průměr|Počet zaneprázdněných vláken ve zkráceném fondu vláken pro analýzu.|ServerResourceType|
-|ShortParsingIdleThreads|Vlákna: nečinná vlákna krátké analýzy|Počet|Průměr|Počet nečinných vláken ve zkráceném fondu vláken pro analýzu.|ServerResourceType|
-|ShortParsingJobQueueLength|Vlákna: délka fronty úlohy krátké analýzy|Počet|Průměr|Počet úloh ve frontě krátkého analýzy fondu vláken.|ServerResourceType|
-|memory_thrashing_metric|Thrashing paměti|Procento|Průměr|Průměrná velikost thrashing paměti|ServerResourceType|
-|mashup_engine_qpu_metric|QPU modulu M|Počet|Průměr|QPU využití hybridních procesů v hybridních modulech|ServerResourceType|
-|mashup_engine_memory_metric|Paměť motoru M|Bajty|Průměr|Využití paměti procesy modulu hybridní webové aplikace|ServerResourceType|
-|mashup_engine_private_bytes_metric|Počet privátních bajtů modulu M|Bajty|Průměr|Používání privátních bajtů procesy v hybridních hybridních modulech.|ServerResourceType|
-|mashup_engine_virtual_bytes_metric|Virtuální bajty motoru M|Bajty|Průměr|Využití virtuálních bajtů procesy modulu hybridní webové aplikace|ServerResourceType|
+|TotalConnectionRequests|Celkový počet požadavků na připojení|Počet|Průměr|Celkový počet požadavků na připojení. Tohle jsou příjezdy.|ServerResourceType|
+|SuccessfullConnectionsPerSec|Úspěšná připojení za sekundu|CountPerSecond|Průměr|Rychlost úspěšného dokončení připojení.|ServerResourceType|
+|Selhání totalconnections|Celkový počet selhání připojení|Počet|Průměr|Celkový počet neúspěšných pokusů o připojení.|ServerResourceType|
+|CurrentUserSessions|Aktuální uživatelské relace|Počet|Průměr|Aktuální počet vytvořených uživatelských relací.|ServerResourceType|
+|Podprocesy QueryPoolBusy|Zaneprázdněná vlákna fondu dotazů|Počet|Průměr|Počet zaneprázdněných vláken ve fondu vláken dotazu.|ServerResourceType|
+|Délka fronty commandpoolu|Délka fronty úlohy fondu příkazů|Počet|Průměr|Počet úloh ve frontě fondu vláken příkazů.|ServerResourceType|
+|ProcessingPoolJobQueueLength|Délka fronty úlohy fondu pro zpracování|Počet|Průměr|Počet úloh bez vstupně-va ve frontě fondu vláken zpracování.|ServerResourceType|
+|CurrentConnections|Připojení: Aktuální připojení|Počet|Průměr|Aktuální počet navázání připojení klientů.|ServerResourceType|
+|CleanerCurrentCena|Paměť: Čistší aktuální cena|Počet|Průměr|Aktuální cena paměti, $/bajt/čas, normalizována na 1000.|ServerResourceType|
+|CleanerMemoryShrinkable|Paměť: Čistší paměť smrštitelná|Bajty|Průměr|Množství paměti v bajtů, které podléhají vymazání čističem pozadí.|ServerResourceType|
+|CleanerMemoryNeshrinkable|Paměť: Čistší paměť nesmrštná|Bajty|Průměr|Množství paměti v bajtů, které nejsou předmětem čištění čističem pozadí.|ServerResourceType|
+|Využití paměti|Paměť: Využití paměti|Bajty|Průměr|Využití paměti procesu serveru, jak je použito při výpočtu čistší ceny paměti. Rovno čítač Process\PrivateBytes plus velikost dat mapovaných v paměti, ignoruje všechny paměti, která byla mapována nebo přidělena xVelocity v paměti analytický modul (VertiPaq) nad limit paměti motoru xVelocity.|ServerResourceType|
+|MemoryLimitHard|Paměť: Limit paměti pevný|Bajty|Průměr|Pevný limit paměti, z konfiguračního souboru.|ServerResourceType|
+|MemoryLimitHigh|Paměť: Maximální limit paměti|Bajty|Průměr|Vysoký limit paměti z konfiguračního souboru.|ServerResourceType|
+|MemoryLimitLow|Paměť: Nedostatek limitu paměti|Bajty|Průměr|Nízký limit paměti z konfiguračního souboru.|ServerResourceType|
+|PaměťLimitVertiPaq|Paměť: Limit paměti VertiPaq|Bajty|Průměr|Limit v paměti z konfiguračního souboru.|ServerResourceType|
+|Kvóta|Paměť: Kvóta|Bajty|Průměr|Aktuální kvóta paměti v bajtech. Kvóta paměti se také označuje jako udělení paměti nebo rezervace paměti.|ServerResourceType|
+|Kvóta blokována|Paměť: Kvóta byla zablokována|Počet|Průměr|Aktuální počet požadavků na kvótu, které jsou blokovány, dokud nejsou uvolněny jiné kvóty paměti.|ServerResourceType|
+|VertiPaqNonpaged|Paměť: VertiPaq Nonpaged|Bajty|Průměr|Bajty paměti uzamčeny v pracovní sadě pro použití v modulu v paměti.|ServerResourceType|
+|VertiPaqPaged|Paměť: VertiPaq Stránkované|Bajty|Průměr|Bajty stránkované paměti, které se používají pro data v paměti.|ServerResourceType|
+|RowsReadPerSec|Zpracování: Řádky přečtené za sekundu|CountPerSecond|Průměr|Rychlost čtení řádků ze všech relačních databází.|ServerResourceType|
+|RowsConvertedPerSec|Zpracování: Řádky převedené za sekundu|CountPerSecond|Průměr|Rychlost řádků převedených během zpracování.|ServerResourceType|
+|RowsWrittenPerSec|Zpracování: Řádky napsané za sekundu|CountPerSecond|Průměr|Rychlost řádků zapsaných během zpracování.|ServerResourceType|
+|Podprocesy CommandPoolBusy|Vlákna: Podprocesy zaneprázdněné příkazy|Počet|Průměr|Počet zaneprázdněných vláken ve fondu vláken příkazů.|ServerResourceType|
+|Příkazy Pročinné a|Vlákna: Nečinná vlákna fondu příkazů|Počet|Průměr|Počet nečinných vláken ve fondu vláken příkazů.|ServerResourceType|
+|LongParsingBusyVlákna|Vlákna: Dlouhá analýza zaneprázdněných vláken|Počet|Průměr|Počet zaneprázdněných vláken ve fondu dlouhých analyzátorů.|ServerResourceType|
+|LongParsingIdleThreads|Závity: Dlouhá analýza nečinných závitů|Počet|Průměr|Počet nečinných vláken ve fondu dlouhých analyzujících vláken.|ServerResourceType|
+|Délka fronty|Vlákna: Délka fronty úloh dlouhé analýzy|Počet|Průměr|Počet úloh ve frontě fondu dlouhých analyzátorů vláken.|ServerResourceType|
+|ProcessingPoolBusyIOJobThreads|Vlákna: Zpracování fondu zaneprázdněnvstupně-v.,V úlohy podprocesů|Počet|Průměr|Počet podprocesů spuštěných vstupně-v., které jsou ve fondu vláken zpracování vláken.|ServerResourceType|
+|ProcessingPoolBusyNonIOThreads|Vlákna: Zpracování fondu zaneprázdněné vlákny, která nejsou vstupně-vstupně-va.|Počet|Průměr|Počet podprocesů, na kterých jsou ve fondu vláken zpracování vláken spuštěny úlohy bez vstupně-videa.|ServerResourceType|
+|ProcessingPoolIOJobQueueLength|Vlákna: Délka fronty úloh vstupně-v.i.a. fondu|Počet|Průměr|Počet vstupně-v.i.,v.i.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,|ServerResourceType|
+|ProcessingPoolIdleIOJobThreads|Vlákna: Zpracování nečinných vstupně-vi úloh fondu|Počet|Průměr|Počet nečinných podprocesů pro vstupně-tovitých úloh ve fondu vláken zpracování.|ServerResourceType|
+|ProcessingPoolIdleNonIOThreads|Vlákna: Zpracování nečinnosti fondu bez vstupně-v/V podprocesů|Počet|Průměr|Počet nečinných vláken ve fondu vláken zpracování vyhrazených pro úlohy bez vstupně-v..|ServerResourceType|
+|QueryPoolIdleThreads|Vlákna: Nečinná vlákna fondu dotazů|Počet|Průměr|Počet nečinných podprocesů pro vstupně-tovitých úloh ve fondu vláken zpracování.|ServerResourceType|
+|QueryPoolJobQueueLength|Vlákna: Lengt fronty úloh fondu dotazů|Počet|Průměr|Počet úloh ve frontě fondu vláken dotazu.|ServerResourceType|
+|ShortParsingBusyVlákna|Vlákna: Krátká analýza zaneprázdněných vláken|Počet|Průměr|Počet zaneprázdněných vláken ve fondu krátkých analyzátorů.|ServerResourceType|
+|ShortParsingIdleThreads|Závity: Krátká analýza nečinných závitů|Počet|Průměr|Počet nečinných vláken ve fondu krátkých analyzátorů.|ServerResourceType|
+|ShortParsingJobQueueLength|Vlákna: Délka fronty úlohy krátké analýzy|Počet|Průměr|Počet úloh ve frontě fondu krátkých analyzátorů vláken.|ServerResourceType|
+|memory_thrashing_metric|Thrashing paměti|Procento|Průměr|Průměrná paměť výprask.|ServerResourceType|
+|mashup_engine_qpu_metric|M Motor QPU|Počet|Průměr|Využití QPU procesy mashup motoru|ServerResourceType|
+|mashup_engine_memory_metric|M Paměť motoru|Bajty|Průměr|Využití paměti procesy mashup motoru|ServerResourceType|
+|mashup_engine_private_bytes_metric|Soukromé bajty motoru M|Bajty|Průměr|Soukromé bajty využití procesy mashup motoru.|ServerResourceType|
+|mashup_engine_virtual_bytes_metric|M Virtuální bajty motoru|Bajty|Průměr|Virtuální bajty využití procesy mashup motoru.|ServerResourceType|
 
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|TotalRequests|Požadavky brány celkem (zastaralé)|Počet|Celkem|Počet požadavků brány – použijte místo toho metriku žádostí s více dimenzemi s dimenzí GatewayResponseCodeCategory|Umístění, název hostitele|
-|SuccessfulRequests|Úspěšné požadavky brány (zastaralé)|Počet|Celkem|Počet úspěšných požadavků brány – použít místo toho metriku žádostí s více dimenzemi s dimenzí GatewayResponseCodeCategory|Umístění, název hostitele|
-|UnauthorizedRequests|Neautorizované žádosti o bránu (zastaralé)|Počet|Celkem|Počet neautorizovaných požadavků brány – použít místo toho metriku žádostí s více dimenzemi s dimenzí GatewayResponseCodeCategory|Umístění, název hostitele|
-|FailedRequests|Neúspěšné požadavky brány (zastaralé)|Počet|Celkem|Počet chyb v žádostech brány – použijte místo toho metriku žádostí s více dimenzemi s dimenzí GatewayResponseCodeCategory.|Umístění, název hostitele|
-|OtherRequests|Jiné požadavky na bránu (zastaralé)|Počet|Celkem|Počet dalších požadavků brány – použijte místo toho metriku žádostí s více dimenzemi s dimenzí GatewayResponseCodeCategory|Umístění, název hostitele|
-|Doba platnosti|Celková doba trvání žádostí o bránu|Milisekundy|Průměr|Celková doba trvání požadavků brány v milisekundách|Umístění, název hostitele|
-|BackendDuration|Doba trvání požadavků back-endu|Milisekundy|Průměr|Doba trvání požadavků back-endu v milisekundách|Umístění, název hostitele|
+|TotalRequests|Celkový počet požadavků na bránu (zastaralé)|Počet|Celkem|Počet požadavků brány – místo toho použijte metriku požadavku s více dimenzemi s dimenzí GatewayResponseCodeCategory|Umístění,Název hostitele|
+|Úspěšné požadavky|Úspěšné požadavky na bránu (zastaralé)|Počet|Celkem|Počet úspěšných požadavků brány – místo toho použijte metriku požadavku na více dimenzí s dimenzí GatewayResponseCodeCategory|Umístění,Název hostitele|
+|Neautorizované požadavky|Neautorizované požadavky na bránu (zastaralé)|Počet|Celkem|Počet neoprávněných požadavků brány – místo toho použijte metriku požadavku na více dimenzí s dimenzí GatewayResponseCodeCategory|Umístění,Název hostitele|
+|Požadavky na selhání|Neúspěšné požadavky na bránu (zastaralé)|Počet|Celkem|Počet chyb v požadavcích na bránu – místo toho použijte metriku požadavku na více dimenzí s dimenzí GatewayResponseCodeCategory|Umístění,Název hostitele|
+|Ostatní požadavky|Další požadavky na bránu (zastaralé)|Počet|Celkem|Počet dalších požadavků brány – místo toho použijte metriku požadavku na více dimenzí s dimenzí GatewayResponseCodeCategory|Umístění,Název hostitele|
+|Doba trvání|Celková doba trvání požadavků brány|Milisekund|Průměr|Celková doba trvání požadavků brány v milisekundách|Umístění,Název hostitele|
+|BackendDuration|Doba trvání back-endových požadavků|Milisekund|Průměr|Doba trvání back-endových požadavků v milisekundách|Umístění,Název hostitele|
 |Kapacita|Kapacita|Procento|Průměr|Metrika využití pro službu ApiManagement|Umístění|
-|EventHubTotalEvents|Celkový počet událostí EventHub|Počet|Celkem|Počet událostí odeslaných do centra EventHub|Umístění|
-|EventHubSuccessfulEvents|Úspěšné události EventHub|Počet|Celkem|Počet úspěšných událostí EventHub|Umístění|
-|EventHubTotalFailedEvents|Neúspěšné události EventHub|Počet|Celkem|Počet neúspěšných událostí EventHub|Umístění|
-|EventHubRejectedEvents|Odmítnuté události EventHub|Počet|Celkem|Počet odmítnutých událostí EventHub (nesprávná konfigurace nebo neoprávněná)|Umístění|
-|EventHubThrottledEvents|Omezené události EventHub|Počet|Celkem|Počet omezených událostí EventHub|Umístění|
-|EventHubTimedoutEvents|Vypršel časový limit událostí EventHub.|Počet|Celkem|Počet vypršení časového limitu událostí EventHub|Umístění|
-|EventHubDroppedEvents|Vyřazené události EventHub|Počet|Celkem|Počet vynechaných událostí z důvodu dosažení limitu velikosti fronty|Umístění|
+|EventHubTotalEvents|Celkový počet událostí EventHub|Počet|Celkem|Počet událostí odeslaných na EventHub|Umístění|
+|EventHubÚspěšné události|Úspěšné události EventHub|Počet|Celkem|Počet úspěšných událostí EventHub|Umístění|
+|EventHubTotalFailedEvents|Neúspěšné události eventhubu|Počet|Celkem|Počet neúspěšných událostí EventHub|Umístění|
+|EventHubRejectedEvents|Odmítnuté události EventHub|Počet|Celkem|Počet odmítnutých událostí EventHub (nesprávná konfigurace nebo neautorizovaná)|Umístění|
+|EventHubThrottledEvents|Události eventhubu s omezením|Počet|Celkem|Počet událostí s omezením EventHub|Umístění|
+|Události EventHubTimedoutEvents|Události EventHub s časovým výtažkem|Počet|Celkem|Počet časových časových událostí EventHub|Umístění|
+|EventHubDroppedEvents|Zrušené události EventHub|Počet|Celkem|Počet událostí přeskočených z důvodu dosaženého limitu velikosti fronty|Umístění|
 |EventHubTotalBytesSent|Velikost událostí EventHub|Bajty|Celkem|Celková velikost událostí EventHub v bajtech|Umístění|
-|Požadavky|Požadavky|Počet|Celkem|Metriky žádostí brány s více dimenzemi|Umístění, název hostitele, LastErrorReason, BackendResponseCode, GatewayResponseCode, BackendResponseCodeCategory, GatewayResponseCodeCategory|
+|Žádosti|Žádosti|Počet|Celkem|Metriky požadavků brány s více dimenzemi|Umístění,Název_hostitele,LastErrorReason,BackendResponseCode,GatewayResponseCode,BackendResponseCodeCategory,GatewayResponseCodeCategory|
 
 
-## <a name="microsoftappconfigurationconfigurationstores"></a>Microsoft.AppConfiguration/configurationStores
+## <a name="microsoftappconfigurationconfigurationstores"></a>Microsoft.AppKonfigurace/configurationStores
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|HttpIncomingRequestCount|HttpIncomingRequestCount|Počet|Počet|Celkový počet příchozích požadavků HTTP.|Žádné|
-|FailedHttpRequestCount|FailedHttpRequestCount|Počet|Počet|Neúspěšné požadavky HTTP.|Žádné|
-|HttpIncomingRequestDuration|HttpIncomingRequestDuration|Počet|Průměr|Latence požadavku HTTP.|Žádné|
+|HttpIncomingRequestCount|HttpIncomingRequestCount|Počet|Počet|Celkový počet příchozích požadavků http.|Žádný|
+|SelháníhttpRequestCount|SelháníhttpRequestCount|Počet|Počet|Neúspěšné požadavky http.|Žádný|
+|Doba trvání httpIncomingrequest|Doba trvání httpIncomingrequest|Počet|Průměr|Latence na požadavek http.|Žádný|
 
 
-## <a name="microsoftappplatformspring"></a>Microsoft. AppPlatform/pružina
+## <a name="microsoftappplatformspring"></a>Microsoft.AppPlatform/jaro
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|SystemCpuUsagePercentage|Procento využití procesoru v systému|Procento|Průměr|Poslední využití CPU pro celý systém|AppName, pod|
-|AppCpuUsagePercentage|Procento využití procesoru aplikací|Procento|Průměr|Procento využití CPU App JVM|AppName, pod|
-|AppMemoryCommitted|Přiřazená paměť aplikace|Bajty|Průměr|Paměť přiřazená k JVM v bajtech|AppName, pod|
-|AppMemoryUsed|Využitá paměť aplikace|Bajty|Průměr|Využitá paměť aplikace v bajtech|AppName, pod|
-|AppMemoryMax|Maximální velikost paměti aplikace|Bajty|Maximum|Maximální množství paměti v bajtech, které lze použít pro správu paměti|AppName, pod|
-|MaxOldGenMemoryPoolBytes|Maximální velikost dostupných starých dat generace|Bajty|Průměr|Maximální velikost staré generace fondu paměti|AppName, pod|
-|OldGenMemoryPoolBytes|Stará velikost dat generace|Bajty|Průměr|Velikost staré generace fondu paměti po úplném GC|AppName, pod|
-|OldGenPromotedBytes|Zvýšit úroveň na starou velikost dat generace|Bajty|Maximum|Počet kladných zvýšení velikosti staré paměti generace před GC na po GC|AppName, pod|
-|YoungGenPromotedBytes|Zvýšení úrovně na velikost dat malé generace|Bajty|Maximum|Zvýšeno na zvýšení velikosti fondu paměti pro mladé generaci po jednom GC na další|AppName, pod|
-|GCPauseTotalCount|Počet pozastavení GC|Počet|Celkem|Počet pozastavení GC|AppName, pod|
-|GCPauseTotalTime|Celkový čas pozastavení GC|Milisekundy|Celkem|Celkový čas pozastavení GC|AppName, pod|
-|TomcatSentBytes|Celkový počet odeslaných bajtů Tomcat|Bajty|Celkem|Celkový počet odeslaných bajtů Tomcat|AppName, pod|
-|TomcatReceivedBytes|Celkový počet přijatých bajtů Tomcat|Bajty|Celkem|Celkový počet přijatých bajtů Tomcat|AppName, pod|
-|TomcatRequestTotalTime|Celkový počet požadavků Tomcat|Milisekundy|Celkem|Celkový počet požadavků Tomcat|AppName, pod|
-|TomcatRequestTotalCount|Celkový počet žádostí Tomcat|Počet|Celkem|Celkový počet žádostí Tomcat|AppName, pod|
-|TomcatResponseAvgTime|Průměrná doba požadavku Tomcat|Milisekundy|Průměr|Průměrná doba požadavku Tomcat|AppName, pod|
-|TomcatRequestMaxTime|Maximální čas požadavku Tomcat|Milisekundy|Maximum|Maximální čas požadavku Tomcat|AppName, pod|
-|TomcatErrorCount|Globální chyba Tomcat|Počet|Celkem|Globální chyba Tomcat|AppName, pod|
-|TomcatSessionActiveMaxCount|Maximální počet aktivních relací Tomcat|Počet|Celkem|Maximální počet aktivních relací Tomcat|AppName, pod|
-|TomcatSessionAliveMaxTime|Maximální doba běhu relace Tomcat|Milisekundy|Maximum|Maximální doba běhu relace Tomcat|AppName, pod|
-|TomcatSessionActiveCurrentCount|Počet otevřených relací Tomcat|Počet|Celkem|Počet otevřených relací Tomcat|AppName, pod|
-|TomcatSessionCreatedCount|Počet vytvořených relací Tomcat|Počet|Celkem|Počet vytvořených relací Tomcat|AppName, pod|
-|TomcatSessionExpiredCount|Počet vypršení relace Tomcat|Počet|Celkem|Počet vypršení relace Tomcat|AppName, pod|
-|TomcatSessionRejectedCount|Počet odmítnutých relací Tomcat|Počet|Celkem|Počet odmítnutých relací Tomcat|AppName, pod|
+|SystemCpuUsageProcento|Procento využití procesoru systému|Procento|Průměr|Nedávné využití procesoru pro celý systém|Název aplikace,Pod|
+|AppCpuUsageProcento|Procento využití procesoru aplikace|Procento|Průměr|Procento využití procesoru JVM aplikace|Název aplikace,Pod|
+|AppMemoryCommitted|Přiřazená paměť aplikace|Bajty|Průměr|Paměť přiřazená JVM v bajtech|Název aplikace,Pod|
+|Použitá paměť aplikace|Použitá paměť aplikace|Bajty|Průměr|Paměť aplikace používaná v bajtech|Název aplikace,Pod|
+|AppMemoryMax|Paměť aplikace Max|Bajty|Maximum|Maximální velikost paměti v bajtů, které lze použít pro správu paměti|Název aplikace,Pod|
+|Bajty maxoldgenmemorypool|Maximální dostupná velikost dat staré generace|Bajty|Průměr|Maximální velikost fondu paměti staré generace|Název aplikace,Pod|
+|OldGenMemoryPoolBajty|Velikost dat staré generace|Bajty|Průměr|Velikost fondu paměti staré generace po úplném GC|Název aplikace,Pod|
+|OldGenPromotedBajty|Zvýšit velikost dat staré generace|Bajty|Maximum|Počet kladných zvýšení velikosti fondu paměti staré generace před GC po GC|Název aplikace,Pod|
+|YoungGenPromotedBajty|Povýšení na velikost dat mladé generace|Bajty|Maximum|Zvýšení velikosti fondu paměti mladé generace po jednom GC na před dalším|Název aplikace,Pod|
+|Počet gcpausetotalcount|Počet pozastavení GC|Počet|Celkem|Počet pozastavení GC|Název aplikace,Pod|
+|Čas gcpausetotaltime|Celkový čas pozastavení GC|Milisekund|Celkem|Celkový čas pozastavení GC|Název aplikace,Pod|
+|TomcatSentBytes|Celkový počet odeslaných bajtů kotomak|Bajty|Celkem|Celkový počet odeslaných bajtů kotomak|Název aplikace,Pod|
+|TomcatReceivedBytes|Tomcat Celkem přijatých bajtů|Bajty|Celkem|Tomcat Celkem přijatých bajtů|Název aplikace,Pod|
+|TomcatRequestTotalTime|Tomcat Žádost Celkem Krát|Milisekund|Celkem|Tomcat Žádost Celkem Krát|Název aplikace,Pod|
+|TomcatRequestTotalCount|Celkový počet požadavků na kotomcat|Počet|Celkem|Celkový počet požadavků na kotomcat|Název aplikace,Pod|
+|TomcatResponseAvgTime|Průměrná doba požadavku Tomcat|Milisekund|Průměr|Průměrná doba požadavku Tomcat|Název aplikace,Pod|
+|TomcatRequestMaxTime|Maximální čas požadavku Tomcat|Milisekund|Maximum|Maximální čas požadavku Tomcat|Název aplikace,Pod|
+|Počet chyb Tomcat|Globální chyba Společnosti Tomcat|Počet|Celkem|Globální chyba Společnosti Tomcat|Název aplikace,Pod|
+|TomcatSessionActiveMaxCount|Počet aktivních aktivit relace Kotomcat|Počet|Celkem|Počet aktivních aktivit relace Kotomcat|Název aplikace,Pod|
+|TomcatSessionAliveMaxČas|Tomcat Session Max Alive Čas|Milisekund|Maximum|Tomcat Session Max Alive Čas|Název aplikace,Pod|
+|TomcatSessionActiveCurrentCount|Počet živých relací Tomcat|Počet|Celkem|Počet živých relací Tomcat|Název aplikace,Pod|
+|Počet vytvořených v tomcatSession|Počet vytvořených relací Tomcat|Počet|Celkem|Počet vytvořených relací Tomcat|Název aplikace,Pod|
+|Počet buněk TomcatSessionExpiredCount|Počet prošlých platností relace Tomcat|Počet|Celkem|Počet prošlých platností relace Tomcat|Název aplikace,Pod|
+|TomcatSessionRejectedCount|Počet odmítnutých relace Tomcat|Počet|Celkem|Počet odmítnutých relace Tomcat|Název aplikace,Pod|
 
 
-## <a name="microsoftautomationautomationaccounts"></a>Microsoft. Automation/automationAccounts
+## <a name="microsoftautomationautomationaccounts"></a>Microsoft.Automation/automationÚčty
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|TotalJob|Celkový počet úloh|Počet|Celkem|Celkový počet úloh|Runbook, stav|
-|TotalUpdateDeploymentRuns|Celkový počet spuštění nasazení aktualizací|Počet|Celkem|Celkový počet spuštění nasazení aktualizací softwaru|SoftwareUpdateConfigurationName, stav|
-|TotalUpdateDeploymentMachineRuns|Celkový počet spuštěných počítačů nasazení aktualizace|Počet|Celkem|Celkový počet spuštěných počítačů nasazení aktualizace softwaru v běhu nasazení aktualizace softwaru|SoftwareUpdateConfigurationName, status, TargetComputer, SoftwareUpdateConfigurationRunId|
+|TotalJob|Celkový počet úloh|Počet|Celkem|Celkový počet pracovních míst|Runbook,Stav|
+|Počet nasazení totalupdatedeploymentruns|Celkový počet spuštění nasazení aktualizace|Počet|Celkem|Celkový počet spuštění nasazení aktualizací softwaru|SoftwareUpdateConfigurationName,Stav|
+|TotalUpdateDeploymentMachineRuns|Celkový počet spuštění počítače pro nasazení aktualizace|Počet|Celkem|Celkový počet spuštění počítače pro nasazení aktualizací softwaru při spuštění nasazení aktualizace softwaru|SoftwareUpdateConfigurationName,Stav,Cílový počítač,SoftwareUpdateConfigurationRunId|
 
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|CoreCount|Vyhrazený počet jader|Počet|Celkem|Celkový počet vyhrazených jader v účtu Batch|Žádné|
-|TotalNodeCount|Počet vyhrazených uzlů|Počet|Celkem|Celkový počet vyhrazených uzlů v účtu Batch|Žádné|
-|LowPriorityCoreCount|Počet jader LowPriority|Počet|Celkem|Celkový počet jader s nízkou prioritou v účtu Batch|Žádné|
-|TotalLowPriorityNodeCount|Počet uzlů s nízkou prioritou|Počet|Celkem|Celkový počet uzlů s nízkou prioritou v účtu Batch|Žádné|
-|CreatingNodeCount|Vytváření počtu uzlů|Počet|Celkem|Počet vytvořených uzlů|Žádné|
-|StartingNodeCount|Počáteční počet uzlů|Počet|Celkem|Počet spuštěných uzlů|Žádné|
-|WaitingForStartTaskNodeCount|Čekání na počet uzlů spouštěcí úlohy|Počet|Celkem|Počet uzlů, které čekají na dokončení počátečního úkolu|Žádné|
-|StartTaskFailedNodeCount|Počet neúspěšných spuštění úlohy – počet uzlů|Počet|Celkem|Počet uzlů, ve kterých se spouštěcí úkol nezdařil|Žádné|
-|IdleNodeCount|Počet nečinných uzlů|Počet|Celkem|Počet nečinných uzlů|Žádné|
-|OfflineNodeCount|Počet uzlů v režimu offline|Počet|Celkem|Počet offline uzlů|Žádné|
-|RebootingNodeCount|Restartování počtu uzlů|Počet|Celkem|Počet restartování uzlů|Žádné|
-|ReimagingNodeCount|Počet uzlů obnovování imagí|Počet|Celkem|Počet uzlů obnovování imagí|Žádné|
-|RunningNodeCount|Počet spuštěných uzlů|Počet|Celkem|Počet spuštěných uzlů|Žádné|
-|LeavingPoolNodeCount|Počet ponechávání uzlů fondu|Počet|Celkem|Počet uzlů opouštících fond|Žádné|
-|UnusableNodeCount|Počet nepoužitelných uzlů|Počet|Celkem|Počet nepoužitelných uzlů|Žádné|
-|PreemptedNodeCount|Počet zrušených uzlů|Počet|Celkem|Počet zrušených uzlů|Žádné|
-|TaskStartEvent|Události zahájení úlohy|Počet|Celkem|Celkový počet úloh, které byly spuštěny|Žádné|
-|TaskCompleteEvent|Události dokončení úlohy|Počet|Celkem|Celkový počet úloh, které byly dokončeny|Žádné|
-|TaskFailEvent|Události neúspěšných úloh|Počet|Celkem|Celkový počet úloh, které byly dokončeny ve stavu selhání|Žádné|
-|PoolCreateEvent|Vytváření fondů – události|Počet|Celkem|Celkový počet vytvořených fondů|Žádné|
-|PoolResizeStartEvent|Události spuštění změny velikosti fondu|Počet|Celkem|Celkový počet změněných počtu fondů, které byly spuštěny|Žádné|
-|PoolResizeCompleteEvent|Události dokončení změny velikosti fondu|Počet|Celkem|Celkový počet změněných velikostí fondu, které byly dokončeny|Žádné|
-|PoolDeleteStartEvent|Události spuštění odstranění fondu|Počet|Celkem|Celkový počet odstranění fondů, které byly spuštěny|Žádné|
-|PoolDeleteCompleteEvent|Události dokončení odstranění fondu|Počet|Celkem|Celkový počet odstranění fondů, které byly dokončeny|Žádné|
-|JobDeleteCompleteEvent|Události dokončení odstranění úlohy|Počet|Celkem|Celkový počet úspěšně odstraněných úloh.|Žádné|
-|JobDeleteStartEvent|Události spuštění odstranění úlohy|Počet|Celkem|Celkový počet úloh, které byly vyžádány k odstranění.|Žádné|
-|JobDisableCompleteEvent|Úloha zakázat kompletní události|Počet|Celkem|Celkový počet úloh, které byly úspěšně zakázány.|Žádné|
-|JobDisableStartEvent|Úloha zakázat počáteční události|Počet|Celkem|Celkový počet úloh, které byly vyžádány k zakázání.|Žádné|
-|JobStartEvent|Události spuštění úlohy|Počet|Celkem|Celkový počet úloh, které byly úspěšně spuštěny.|Žádné|
-|JobTerminateCompleteEvent|Ukončit události dokončení úlohy|Počet|Celkem|Celkový počet úloh, které byly úspěšně ukončeny.|Žádné|
-|JobTerminateStartEvent|Události spuštění ukončení úlohy|Počet|Celkem|Celkový počet úloh, které byly vyžádány k ukončení.|Žádné|
+|Počet corecount|Vyhrazený počet jádra|Počet|Celkem|Celkový počet vyhrazených jader v dávkovém účtu|Žádný|
+|TotalNodeCount|Počet vyhrazených uzlů|Počet|Celkem|Celkový počet vyhrazených uzlů v dávkovém účtu|Žádný|
+|LowPriorityCoreCount|Počet jádra LowPriority|Počet|Celkem|Celkový počet jader s nízkou prioritou v dávkovém účtu|Žádný|
+|TotalLowPriorityNodeCount|Počet uzlů s nízkou prioritou|Počet|Celkem|Celkový počet uzlů s nízkou prioritou v dávkovém účtu|Žádný|
+|CreatingNodeCount|Vytvoření počtu uzlů|Počet|Celkem|Počet vytvářených uzlů|Žádný|
+|StartingNodeCount|Počáteční počet uzlů|Počet|Celkem|Počet počátečních uzlů|Žádný|
+|WaitingForStartTaskNodeCount|Čekání na počet počátečních uzlů úloh|Počet|Celkem|Počet uzlů čekajících na dokončení počáteční úlohy|Žádný|
+|Počet nepodařilose spustit úkol|Počet neúspěšných uzlů spuštění|Počet|Celkem|Počet uzlů, ve kterých se nezdařila počáteční úloha|Žádný|
+|IdleNodeCount|Počet nečinných uzlů|Počet|Celkem|Počet nečinných uzlů|Žádný|
+|OfflineNodeCount|Počet uzlů offline|Počet|Celkem|Počet uzlů offline|Žádný|
+|RebootingNodeCount|Restartování počtu uzlů|Počet|Celkem|Počet restartování uzlů|Žádný|
+|ReimagingNodeCount|Počet reimagingových uzlů|Počet|Celkem|Počet uzlů reimagingu|Žádný|
+|RunningNodeCount|Počet spuštěné uzlu|Počet|Celkem|Počet spuštěných uzlů|Žádný|
+|LeavingPoolNodeCount|Počet uzlů opuštění fondu|Počet|Celkem|Počet uzlů opouštějících fond|Žádný|
+|UnusableNodeCount|Počet nepoužitelných uzlů|Počet|Celkem|Počet nepoužitelných uzlů|Žádný|
+|PreemptedNodeCount|Počet předplyňovaných uzlů|Počet|Celkem|Počet předplyňovaných uzlů|Žádný|
+|Událost TaskStartEvent|Události zahájení úkolu|Počet|Celkem|Celkový počet zahájených úkolů|Žádný|
+|Událost úkolu CompleteEvent|Události dokončení úkolu|Počet|Celkem|Celkový počet dokončených úkolů|Žádný|
+|Událost úlohy FailEvent|Události selhání úlohy|Počet|Celkem|Celkový počet úkolů, které byly dokončeny ve stavu selhání|Žádný|
+|PoolCreateEvent|Události vytvoření fondu|Počet|Celkem|Celkový počet vytvořených fondů|Žádný|
+|PoolResizeStartEvent|Události zahájení změny velikosti fondu|Počet|Celkem|Celkový počet velikostí fondu, které byly zahájeny|Žádný|
+|PoolResizeCompleteEvent|Události dokončení velikosti fondu|Počet|Celkem|Celkový počet velikostí fondu, které byly dokončeny|Žádný|
+|Událost PoolDeleteStartEvent|Události spuštění odstranění fondu|Počet|Celkem|Celkový počet odstranění fondu, které byly zahájeny|Žádný|
+|PoolDeleteCompleteEvent|Úplné události odstranění fondu|Počet|Celkem|Celkový počet odstraněných objemů fondu, které byly dokončeny|Žádný|
+|JobDeleteCompleteEvent|Úloha odstranit úplné události|Počet|Celkem|Celkový počet úloh, které byly úspěšně odstraněny.|Žádný|
+|Událost JobDeleteStartEvent|Události spuštění s odstraněním úlohy|Počet|Celkem|Celkový počet úloh, které byly požádány o odstranění.|Žádný|
+|JobDisableCompleteEvent|Zakázat dokončení událostí úlohy|Počet|Celkem|Celkový počet úloh, které byly úspěšně zakázány.|Žádný|
+|Událost JobDisableStartEvent|Zakázat události zahájení úlohy|Počet|Celkem|Celkový počet úloh, které byly požadovány k zakázání.|Žádný|
+|Událost Úloha StartEvent|Události zahájení úlohy|Počet|Celkem|Celkový počet úloh, které byly úspěšně spuštěny.|Žádný|
+|Akce JobTerminateCompleteEvent|Události ukončení úlohy|Počet|Celkem|Celkový počet úloh, které byly úspěšně ukončeny.|Žádný|
+|Událost JobTerminateStartEvent|Události ukončení úlohy zahájení|Počet|Celkem|Celkový počet úloh, které byly požadovány k ukončení.|Žádný|
 
 
-## <a name="microsoftbatchaiworkspaces"></a>Microsoft. BatchAI/pracovní prostory
+## <a name="microsoftbatchaiworkspaces"></a>Pracovní prostory Microsoft.BatchAI
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|Úloha odeslána|Úloha odeslána|Počet|Celkem|Počet odeslaných úloh|Scénář, název_clusteru|
-|Dokončená úloha|Dokončená úloha|Počet|Celkem|Počet dokončených úloh|Scénář, název_clusteru, ResultType|
-|Celkem uzlů|Celkem uzlů|Počet|Průměr|Počet uzlů celkem|Scénář, název_clusteru|
-|Aktivní uzly|Aktivní uzly|Počet|Průměr|Počet spuštěných uzlů|Scénář, název_clusteru|
-|Nečinné uzly|Nečinné uzly|Počet|Průměr|Počet nečinných uzlů|Scénář, název_clusteru|
-|Nepoužité uzly|Nepoužité uzly|Počet|Průměr|Počet nepoužitelných uzlů|Scénář, název_clusteru|
-|Přepnuté uzly|Přepnuté uzly|Počet|Průměr|Počet zrušených uzlů|Scénář, název_clusteru|
-|Ukončení uzlů|Ukončení uzlů|Počet|Průměr|Počet opouštících uzlů|Scénář, název_clusteru|
-|Celkový počet jader|Celkový počet jader|Počet|Průměr|Počet jader celkem|Scénář, název_clusteru|
-|Aktivní jádra|Aktivní jádra|Počet|Průměr|Počet aktivních jader|Scénář, název_clusteru|
-|Jádra nečinných|Jádra nečinných|Počet|Průměr|Počet nečinných jader|Scénář, název_clusteru|
-|Nepoužitelné jádra|Nepoužitelné jádra|Počet|Průměr|Počet nepoužitelných jader|Scénář, název_clusteru|
-|Zrušené jádra|Zrušené jádra|Počet|Průměr|Počet zrušených jader|Scénář, název_clusteru|
-|Vynechávání jader|Vynechávání jader|Počet|Průměr|Počet opouštících jader|Scénář, název_clusteru|
-|Procento využití kvóty|Procento využití kvóty|Počet|Průměr|Procento využité kvóty|Scénář, název_clusteru, VmFamilyName, VmPriority|
+|Odeslaná úloha|Odeslaná úloha|Počet|Celkem|Počet odeslaných pracovních míst|Scénář,Název_clusteru|
+|Úloha dokončena|Úloha dokončena|Počet|Celkem|Počet dokončených úloh|Scénář,Název_clusteru,Typ výsledku|
+|Uzly celkem|Uzly celkem|Počet|Průměr|Počet uzlů součtu|Scénář,Název_clusteru|
+|Aktivní uzly|Aktivní uzly|Počet|Průměr|Počet spuštěných uzlů|Scénář,Název_clusteru|
+|Nečinné uzly|Nečinné uzly|Počet|Průměr|Počet nečinných uzlů|Scénář,Název_clusteru|
+|Nepoužitelné uzly|Nepoužitelné uzly|Počet|Průměr|Počet nepoužitelných uzlů|Scénář,Název_clusteru|
+|Předpisované uzly|Předpisované uzly|Počet|Průměr|Počet předplyňovaných uzlů|Scénář,Název_clusteru|
+|Opuštění uzlů|Opuštění uzlů|Počet|Průměr|Počet opouštějících uzlů|Scénář,Název_clusteru|
+|Jádra celkem|Jádra celkem|Počet|Průměr|Počet celkových jader|Scénář,Název_clusteru|
+|Aktivní jádra|Aktivní jádra|Počet|Průměr|Počet aktivních jader|Scénář,Název_clusteru|
+|Nečinná jádra|Nečinná jádra|Počet|Průměr|Počet nečinných jader|Scénář,Název_clusteru|
+|Nepoužitelná jádra|Nepoužitelná jádra|Počet|Průměr|Počet nepoužitelných jader|Scénář,Název_clusteru|
+|Předpjatojádra|Předpjatojádra|Počet|Průměr|Počet preemptovaných jader|Scénář,Název_clusteru|
+|Opuštění jader|Opuštění jader|Počet|Průměr|Počet odnechávacích jader|Scénář,Název_clusteru|
+|Procento využití kvóty|Procento využití kvóty|Počet|Průměr|Procento využité kvóty|Scénář,Název_clusteru,Název_vmFamily,Priorita VmPriority|
 
-## <a name="microsoftblockchainblockchainmembers"></a>Microsoft. blockchain/blockchainMembers
+## <a name="microsoftblockchainblockchainmembers"></a>Microsoft.Blockchain/blockchainČlenové
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|CpuUsagePercentageInDouble|Procento využití procesoru|Procento|Maximum|Procento využití procesoru|Uzel|
-|MemoryUsage|Využití paměti|Bajty|Průměr|Využití paměti|Uzel|
-|Limitu|Limit paměti|Bajty|Průměr|Limit paměti|Uzel|
-|MemoryUsagePercentageInDouble|Procento využití paměti|Procento|Průměr|Procento využití paměti|Uzel|
-|StorageUsage|Využití úložiště|Bajty|Průměr|Využití úložiště|Uzel|
-|IOReadBytes|Bajty čtení v/v|Bajty|Celkem|Bajty čtení v/v|Uzel|
-|IOWriteBytes|Bajty zápisu v/v|Bajty|Celkem|Bajty zápisu v/v|Uzel|
-|ConnectionAccepted|Přijatá připojení|Počet|Celkem|Přijatá připojení|Uzel|
-|ConnectionHandled|Zpracovaná připojení|Počet|Celkem|Zpracovaná připojení|Uzel|
-|ConnectionActive|Aktivní připojení|Počet|Průměr|Aktivní připojení|Uzel|
-|RequestHandled|Zpracované žádosti|Počet|Celkem|Zpracované žádosti|Uzel|
-|ProcessedBlocks|Zpracované bloky|Počet|Celkem|Zpracované bloky|Uzel|
-|ProcessedTransactions|Zpracované transakce|Počet|Celkem|Zpracované transakce|Uzel|
-|PendingTransactions|Nedokončené transakce|Počet|Průměr|Nedokončené transakce|Uzel|
-|QueuedTransactions|Transakce ve frontě|Počet|Průměr|Transakce ve frontě|Uzel|
+|CpuUsagePercentageInDouble|Procento využití procesoru|Procento|Maximum|Procento využití procesoru|Node|
+|Využití paměti|Využití paměti|Bajty|Průměr|Využití paměti|Node|
+|Limit paměti|Limit paměti|Bajty|Průměr|Limit paměti|Node|
+|MemoryUsagePercentageInDouble|Procento využití paměti|Procento|Průměr|Procento využití paměti|Node|
+|Využití úložiště|Využití úložiště|Bajty|Průměr|Využití úložiště|Node|
+|IOReadBytes|Čtení bajtů v iO|Bajty|Celkem|Čtení bajtů v iO|Node|
+|IOWriteBytes|Vypoučovat bajty|Bajty|Celkem|Vypoučovat bajty|Node|
+|Připojení přijato|Přijatá připojení|Počet|Celkem|Přijatá připojení|Node|
+|ConnectionHandled|Manipulovní připojení|Počet|Celkem|Manipulovní připojení|Node|
+|ConnectionActive|Aktivní připojení|Počet|Průměr|Aktivní připojení|Node|
+|Zpracování požadavku|Zpracované požadavky|Počet|Celkem|Zpracované požadavky|Node|
+|Zpracované bloky|Zpracované bloky|Počet|Celkem|Zpracované bloky|Node|
+|Zpracované transakce|Zpracované transakce|Počet|Celkem|Zpracované transakce|Node|
+|Čekající transakce|Čekající transakce|Počet|Průměr|Čekající transakce|Node|
+|Transakce ve frontě|Transakce ve frontě|Počet|Průměr|Transakce ve frontě|Node|
 
 
 
 ## <a name="microsoftcacheredis"></a>Microsoft.Cache/redis
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|connectedclients|Připojení klienti|Počet|Maximum||ShardId|
-|totalcommandsprocessed|Celkem operací|Počet|Celkem||ShardId|
+|připojení klienti|Připojení klienti|Počet|Maximum||ShardId|
+|totalcommandszpracovány|Celkový počet operací|Počet|Celkem||ShardId|
 |cachehits|Přístupy do mezipaměti|Počet|Celkem||ShardId|
-|cachemisses|Neúspěšné přístupy do mezipaměti|Počet|Celkem||ShardId|
-|cachemissrate|Frekvence neúspěšných přístupů do mezipaměti|Procento|cachemissrate||ShardId|
-|GetCommands|Získá|Počet|Celkem||ShardId|
-|setcommands|Obnovení|Počet|Celkem||ShardId|
-|operationsPerSecond|Operace za sekundu|Počet|Maximum||ShardId|
-|evictedkeys|Vyřazení klíčů|Počet|Celkem||ShardId|
-|totalkeys|Celkem klíčů|Počet|Maximum||ShardId|
-|expiredkeys|Prošlé klíče|Počet|Celkem||ShardId|
-|usedmemory|Využitá paměť|Bajty|Maximum||ShardId|
-|usedmemorypercentage|Procento využité paměti|Procento|Maximum||ShardId|
-|usedmemoryRss|RSS využité paměti|Bajty|Maximum||ShardId|
+|cachemine|Počet neúspěšných přístupů do mezipaměti|Počet|Celkem||ShardId|
+|cachemissrate|Míra nedoletosti mezipaměti|Procento|cachemissrate||ShardId|
+|příkazy get|Získá|Počet|Celkem||ShardId|
+|setcommands|Sady|Počet|Celkem||ShardId|
+|operacePerSecond|Operace za sekundu|Počet|Maximum||ShardId|
+|vyřazení klíčů|Vystěhované klíče|Počet|Celkem||ShardId|
+|totalkeys|Celkový počet klíčů|Počet|Maximum||ShardId|
+|klávesy expired|Klíče s prošlou platností|Počet|Celkem||ShardId|
+|použitá paměť|Použitá paměť|Bajty|Maximum||ShardId|
+|procento použité paměti|Procento použité paměti|Procento|Maximum||ShardId|
+|použité pamětiRss|Použité paměti RSS|Bajty|Maximum||ShardId|
 |serverLoad|Zatížení serveru|Procento|Maximum||ShardId|
-|cacheWrite|Zápis do mezipaměti|BytesPerSecond|Maximum||ShardId|
-|cacheRead|Čtení z mezipaměti|BytesPerSecond|Maximum||ShardId|
+|cacheWrite|Zápis do mezipaměti|BajtyPerSekunda|Maximum||ShardId|
+|cacheRead|Čtení mezipaměti|BajtyPerSekunda|Maximum||ShardId|
 |percentProcessorTime|Procesor|Procento|Maximum||ShardId|
-|cacheLatency|Mikrosekundy latence mezipaměti (Preview)|Počet|Průměr||ShardId|
-|chyby|Chyby|Počet|Maximum||ShardId,ErrorType|
-|connectedclients0|Připojení klienti (horizontálních oddílů 0)|Počet|Maximum||Žádné|
-|totalcommandsprocessed0|Celkem operací (horizontálních oddílů 0)|Počet|Celkem||Žádné|
-|cachehits0|Přístupy do mezipaměti (horizontálních oddílů 0)|Počet|Celkem||Žádné|
-|cachemisses0|Neúspěšné přístupy do mezipaměti (horizontálních oddílů 0)|Počet|Celkem||Žádné|
-|getcommands0|Načtení (horizontálních oddílů 0)|Počet|Celkem||Žádné|
-|setcommands0|Sady (horizontálních oddílů 0)|Počet|Celkem||Žádné|
-|operationsPerSecond0|Operací za sekundu (horizontálních oddílů 0)|Počet|Maximum||Žádné|
-|evictedkeys0|Vyřazené klíče (horizontálních oddílů 0)|Počet|Celkem||Žádné|
-|totalkeys0|Celkem klíčů (horizontálních oddílů 0)|Počet|Maximum||Žádné|
-|expiredkeys0|Klíče vypršení platnosti (horizontálních oddílů 0)|Počet|Celkem||Žádné|
-|usedmemory0|Využitá paměť (horizontálních oddílů 0)|Bajty|Maximum||Žádné|
-|usedmemoryRss0|RSS využité paměti (horizontálních oddílů 0)|Bajty|Maximum||Žádné|
-|serverLoad0|Zatížení serveru (horizontálních oddílů 0)|Procento|Maximum||Žádné|
-|cacheWrite0|Zápis do mezipaměti (horizontálních oddílů 0)|BytesPerSecond|Maximum||Žádné|
-|cacheRead0|Čtení z mezipaměti (horizontálních oddílů 0)|BytesPerSecond|Maximum||Žádné|
-|percentProcessorTime0|PROCESOR (horizontálních oddílů 0)|Procento|Maximum||Žádné|
-|connectedclients1|Připojení klienti (horizontálních oddílů 1)|Počet|Maximum||Žádné|
-|totalcommandsprocessed1|Celkem operací (horizontálních oddílů 1)|Počet|Celkem||Žádné|
-|cachehits1|Přístupy do mezipaměti (horizontálních oddílů 1)|Počet|Celkem||Žádné|
-|cachemisses1|Neúspěšné přístupy do mezipaměti (horizontálních oddílů 1)|Počet|Celkem||Žádné|
-|getcommands1|Načtení (horizontálních oddílů 1)|Počet|Celkem||Žádné|
-|setcommands1|Sady (horizontálních oddílů 1)|Počet|Celkem||Žádné|
-|operationsPerSecond1|Operací za sekundu (horizontálních oddílů 1)|Počet|Maximum||Žádné|
-|evictedkeys1|Vyřazené klíče (horizontálních oddílů 1)|Počet|Celkem||Žádné|
-|totalkeys1|Celkem klíčů (horizontálních oddílů 1)|Počet|Maximum||Žádné|
-|expiredkeys1|Klíče vypršení platnosti (horizontálních oddílů 1)|Počet|Celkem||Žádné|
-|usedmemory1|Využitá paměť (horizontálních oddílů 1)|Bajty|Maximum||Žádné|
-|usedmemoryRss1|RSS využité paměti (horizontálních oddílů 1)|Bajty|Maximum||Žádné|
-|serverLoad1|Zatížení serveru (horizontálních oddílů 1)|Procento|Maximum||Žádné|
-|cacheWrite1|Zápis do mezipaměti (horizontálních oddílů 1)|BytesPerSecond|Maximum||Žádné|
-|cacheRead1|Čtení z mezipaměti (horizontálních oddílů 1)|BytesPerSecond|Maximum||Žádné|
-|percentProcessorTime1|PROCESOR (horizontálních oddílů 1)|Procento|Maximum||Žádné|
-|connectedclients2|Připojení klienti (horizontálních oddílů 2)|Počet|Maximum||Žádné|
-|totalcommandsprocessed2|Celkem operací (horizontálních oddílů 2)|Počet|Celkem||Žádné|
-|cachehits2|Přístupy do mezipaměti (horizontálních oddílů 2)|Počet|Celkem||Žádné|
-|cachemisses2|Neúspěšné přístupy do mezipaměti (horizontálních oddílů 2)|Počet|Celkem||Žádné|
-|getcommands2|Get (horizontálních oddílů 2)|Počet|Celkem||Žádné|
-|setcommands2|Sady (horizontálních oddílů 2)|Počet|Celkem||Žádné|
-|operationsPerSecond2|Operací za sekundu (horizontálních oddílů 2)|Počet|Maximum||Žádné|
-|evictedkeys2|Vyřazené klíče (horizontálních oddílů 2)|Počet|Celkem||Žádné|
-|totalkeys2|Celkem klíčů (horizontálních oddílů 2)|Počet|Maximum||Žádné|
-|expiredkeys2|Klíče vypršení platnosti (horizontálních oddílů 2)|Počet|Celkem||Žádné|
-|usedmemory2|Využitá paměť (horizontálních oddílů 2)|Bajty|Maximum||Žádné|
-|usedmemoryRss2|RSS využité paměti (horizontálních oddílů 2)|Bajty|Maximum||Žádné|
-|serverLoad2|Zatížení serveru (horizontálních oddílů 2)|Procento|Maximum||Žádné|
-|cacheWrite2|Zápis do mezipaměti (horizontálních oddílů 2)|BytesPerSecond|Maximum||Žádné|
-|cacheRead2|Čtení z mezipaměti (horizontálních oddílů 2)|BytesPerSecond|Maximum||Žádné|
-|percentProcessorTime2|PROCESOR (horizontálních oddílů 2)|Procento|Maximum||Žádné|
-|connectedclients3|Připojení klienti (horizontálních oddílů 3)|Počet|Maximum||Žádné|
-|totalcommandsprocessed3|Celkem operací (horizontálních oddílů 3)|Počet|Celkem||Žádné|
-|cachehits3|Přístupy do mezipaměti (horizontálních oddílů 3)|Počet|Celkem||Žádné|
-|cachemisses3|Neúspěšné přístupy do mezipaměti (horizontálních oddílů 3)|Počet|Celkem||Žádné|
-|getcommands3|Get (horizontálních oddílů 3)|Počet|Celkem||Žádné|
-|setcommands3|Sady (horizontálních oddílů 3)|Počet|Celkem||Žádné|
-|operationsPerSecond3|Operací za sekundu (horizontálních oddílů 3)|Počet|Maximum||Žádné|
-|evictedkeys3|Vyřazené klíče (horizontálních oddílů 3)|Počet|Celkem||Žádné|
-|totalkeys3|Celkem klíčů (horizontálních oddílů 3)|Počet|Maximum||Žádné|
-|expiredkeys3|Klíče vypršení platnosti (horizontálních oddílů 3)|Počet|Celkem||Žádné|
-|usedmemory3|Využitá paměť (horizontálních oddílů 3)|Bajty|Maximum||Žádné|
-|usedmemoryRss3|RSS využité paměti (horizontálních oddílů 3)|Bajty|Maximum||Žádné|
-|serverLoad3|Zatížení serveru (horizontálních oddílů 3)|Procento|Maximum||Žádné|
-|cacheWrite3|Zápis do mezipaměti (horizontálních oddílů 3)|BytesPerSecond|Maximum||Žádné|
-|cacheRead3|Čtení z mezipaměti (horizontálních oddílů 3)|BytesPerSecond|Maximum||Žádné|
-|percentProcessorTime3|PROCESOR (horizontálních oddílů 3)|Procento|Maximum||Žádné|
-|connectedclients4|Připojení klienti (horizontálních oddílů 4)|Počet|Maximum||Žádné|
-|totalcommandsprocessed4|Celkem operací (horizontálních oddílů 4)|Počet|Celkem||Žádné|
-|cachehits4|Přístupy do mezipaměti (horizontálních oddílů 4)|Počet|Celkem||Žádné|
-|cachemisses4|Neúspěšné přístupy do mezipaměti (horizontálních oddílů 4)|Počet|Celkem||Žádné|
-|getcommands4|Get (horizontálních oddílů 4)|Počet|Celkem||Žádné|
-|setcommands4|Sady (horizontálních oddílů 4)|Počet|Celkem||Žádné|
-|operationsPerSecond4|Operací za sekundu (horizontálních oddílů 4)|Počet|Maximum||Žádné|
-|evictedkeys4|Vyřazené klíče (horizontálních oddílů 4)|Počet|Celkem||Žádné|
-|totalkeys4|Celkem klíčů (horizontálních oddílů 4)|Počet|Maximum||Žádné|
-|expiredkeys4|Klíče vypršení platnosti (horizontálních oddílů 4)|Počet|Celkem||Žádné|
-|usedmemory4|Využitá paměť (horizontálních oddílů 4)|Bajty|Maximum||Žádné|
-|usedmemoryRss4|RSS využité paměti (horizontálních oddílů 4)|Bajty|Maximum||Žádné|
-|serverLoad4|Zatížení serveru (horizontálních oddílů 4)|Procento|Maximum||Žádné|
-|cacheWrite4|Zápis do mezipaměti (horizontálních oddílů 4)|BytesPerSecond|Maximum||Žádné|
-|cacheRead4|Čtení z mezipaměti (horizontálních oddílů 4)|BytesPerSecond|Maximum||Žádné|
-|percentProcessorTime4|PROCESOR (horizontálních oddílů 4)|Procento|Maximum||Žádné|
-|connectedclients5|Připojení klienti (horizontálních oddílů 5)|Počet|Maximum||Žádné|
-|totalcommandsprocessed5|Celkem operací (horizontálních oddílů 5)|Počet|Celkem||Žádné|
-|cachehits5|Přístupy do mezipaměti (horizontálních oddílů 5)|Počet|Celkem||Žádné|
-|cachemisses5|Neúspěšné přístupy do mezipaměti (horizontálních oddílů 5)|Počet|Celkem||Žádné|
-|getcommands5|Získá (horizontálních oddílů 5)|Počet|Celkem||Žádné|
-|setcommands5|Sady (horizontálních oddílů 5)|Počet|Celkem||Žádné|
-|operationsPerSecond5|Operací za sekundu (horizontálních oddílů 5)|Počet|Maximum||Žádné|
-|evictedkeys5|Vyřazení klíčů (horizontálních oddílů 5)|Počet|Celkem||Žádné|
-|totalkeys5|Celkem klíčů (horizontálních oddílů 5)|Počet|Maximum||Žádné|
-|expiredkeys5|Klíče vypršení platnosti (horizontálních oddílů 5)|Počet|Celkem||Žádné|
-|usedmemory5|Využitá paměť (horizontálních oddílů 5)|Bajty|Maximum||Žádné|
-|usedmemoryRss5|RSS využité paměti (horizontálních oddílů 5)|Bajty|Maximum||Žádné|
-|serverLoad5|Zatížení serveru (horizontálních oddílů 5)|Procento|Maximum||Žádné|
-|cacheWrite5|Zápis do mezipaměti (horizontálních oddílů 5)|BytesPerSecond|Maximum||Žádné|
-|cacheRead5|Čtení z mezipaměti (horizontálních oddílů 5)|BytesPerSecond|Maximum||Žádné|
-|percentProcessorTime5|PROCESOR (horizontálních oddílů 5)|Procento|Maximum||Žádné|
-|connectedclients6|Připojení klienti (horizontálních oddílů 6)|Počet|Maximum||Žádné|
-|totalcommandsprocessed6|Celkem operací (horizontálních oddílů 6)|Počet|Celkem||Žádné|
-|cachehits6|Přístupy do mezipaměti (horizontálních oddílů 6)|Počet|Celkem||Žádné|
-|cachemisses6|Neúspěšné přístupy do mezipaměti (horizontálních oddílů 6)|Počet|Celkem||Žádné|
-|getcommands6|Načtení (horizontálních oddílů 6)|Počet|Celkem||Žádné|
-|setcommands6|Sady (horizontálních oddílů 6)|Počet|Celkem||Žádné|
-|operationsPerSecond6|Operací za sekundu (horizontálních oddílů 6)|Počet|Maximum||Žádné|
-|evictedkeys6|Vyřazené klíče (horizontálních oddílů 6)|Počet|Celkem||Žádné|
-|totalkeys6|Celkem klíčů (horizontálních oddílů 6)|Počet|Maximum||Žádné|
-|expiredkeys6|Klíče vypršení platnosti (horizontálních oddílů 6)|Počet|Celkem||Žádné|
-|usedmemory6|Využitá paměť (horizontálních oddílů 6)|Bajty|Maximum||Žádné|
-|usedmemoryRss6|RSS využité paměti (horizontálních oddílů 6)|Bajty|Maximum||Žádné|
-|serverLoad6|Zatížení serveru (horizontálních oddílů 6)|Procento|Maximum||Žádné|
-|cacheWrite6|Zápis do mezipaměti (horizontálních oddílů 6)|BytesPerSecond|Maximum||Žádné|
-|cacheRead6|Čtení z mezipaměti (horizontálních oddílů 6)|BytesPerSecond|Maximum||Žádné|
-|percentProcessorTime6|PROCESOR (horizontálních oddílů 6)|Procento|Maximum||Žádné|
-|connectedclients7|Připojení klienti (horizontálních oddílů 7)|Počet|Maximum||Žádné|
-|totalcommandsprocessed7|Celkem operací (horizontálních oddílů 7)|Počet|Celkem||Žádné|
-|cachehits7|Přístupy do mezipaměti (horizontálních oddílů 7)|Počet|Celkem||Žádné|
-|cachemisses7|Neúspěšné přístupy do mezipaměti (horizontálních oddílů 7)|Počet|Celkem||Žádné|
-|getcommands7|Načtení (horizontálních oddílů 7)|Počet|Celkem||Žádné|
-|setcommands7|Sady (horizontálních oddílů 7)|Počet|Celkem||Žádné|
-|operationsPerSecond7|Operací za sekundu (horizontálních oddílů 7)|Počet|Maximum||Žádné|
-|evictedkeys7|Vyřazení klíčů (horizontálních oddílů 7)|Počet|Celkem||Žádné|
-|totalkeys7|Celkem klíčů (horizontálních oddílů 7)|Počet|Maximum||Žádné|
-|expiredkeys7|Klíče vypršení platnosti (horizontálních oddílů 7)|Počet|Celkem||Žádné|
-|usedmemory7|Využitá paměť (horizontálních oddílů 7)|Bajty|Maximum||Žádné|
-|usedmemoryRss7|RSS využité paměti (horizontálních oddílů 7)|Bajty|Maximum||Žádné|
-|serverLoad7|Zatížení serveru (horizontálních oddílů 7)|Procento|Maximum||Žádné|
-|cacheWrite7|Zápis do mezipaměti (horizontálních oddílů 7)|BytesPerSecond|Maximum||Žádné|
-|cacheRead7|Čtení z mezipaměti (horizontálních oddílů 7)|BytesPerSecond|Maximum||Žádné|
-|percentProcessorTime7|PROCESOR (horizontálních oddílů 7)|Procento|Maximum||Žádné|
-|connectedclients8|Připojení klienti (horizontálních oddílů 8)|Počet|Maximum||Žádné|
-|totalcommandsprocessed8|Celkem operací (horizontálních oddílů 8)|Počet|Celkem||Žádné|
-|cachehits8|Přístupy do mezipaměti (horizontálních oddílů 8)|Počet|Celkem||Žádné|
-|cachemisses8|Neúspěšné přístupy do mezipaměti (horizontálních oddílů 8)|Počet|Celkem||Žádné|
-|getcommands8|Získá (horizontálních oddílů 8)|Počet|Celkem||Žádné|
-|setcommands8|Sady (horizontálních oddílů 8)|Počet|Celkem||Žádné|
-|operationsPerSecond8|Operací za sekundu (horizontálních oddílů 8)|Počet|Maximum||Žádné|
-|evictedkeys8|Vyřazené klíče (horizontálních oddílů 8)|Počet|Celkem||Žádné|
-|totalkeys8|Celkem klíčů (horizontálních oddílů 8)|Počet|Maximum||Žádné|
-|expiredkeys8|Klíče vypršení platnosti (horizontálních oddílů 8)|Počet|Celkem||Žádné|
-|usedmemory8|Využitá paměť (horizontálních oddílů 8)|Bajty|Maximum||Žádné|
-|usedmemoryRss8|RSS využité paměti (horizontálních oddílů 8)|Bajty|Maximum||Žádné|
-|serverLoad8|Zatížení serveru (horizontálních oddílů 8)|Procento|Maximum||Žádné|
-|cacheWrite8|Zápis do mezipaměti (horizontálních oddílů 8)|BytesPerSecond|Maximum||Žádné|
-|cacheRead8|Čtení z mezipaměti (horizontálních oddílů 8)|BytesPerSecond|Maximum||Žádné|
-|percentProcessorTime8|PROCESOR (horizontálních oddílů 8)|Procento|Maximum||Žádné|
-|connectedclients9|Připojení klienti (horizontálních oddílů 9)|Počet|Maximum||Žádné|
-|totalcommandsprocessed9|Celkem operací (horizontálních oddílů 9)|Počet|Celkem||Žádné|
-|cachehits9|Přístupy do mezipaměti (horizontálních oddílů 9)|Počet|Celkem||Žádné|
-|cachemisses9|Neúspěšné přístupy do mezipaměti (horizontálních oddílů 9)|Počet|Celkem||Žádné|
-|getcommands9|Načtení (horizontálních oddílů 9)|Počet|Celkem||Žádné|
-|setcommands9|Sady (horizontálních oddílů 9)|Počet|Celkem||Žádné|
-|operationsPerSecond9|Operací za sekundu (horizontálních oddílů 9)|Počet|Maximum||Žádné|
-|evictedkeys9|Vyřazené klíče (horizontálních oddílů 9)|Počet|Celkem||Žádné|
-|totalkeys9|Celkem klíčů (horizontálních oddílů 9)|Počet|Maximum||Žádné|
-|expiredkeys9|Klíče vypršení platnosti (horizontálních oddílů 9)|Počet|Celkem||Žádné|
-|usedmemory9|Využitá paměť (horizontálních oddílů 9)|Bajty|Maximum||Žádné|
-|usedmemoryRss9|RSS využité paměti (horizontálních oddílů 9)|Bajty|Maximum||Žádné|
-|serverLoad9|Zatížení serveru (horizontálních oddílů 9)|Procento|Maximum||Žádné|
-|cacheWrite9|Zápis do mezipaměti (horizontálních oddílů 9)|BytesPerSecond|Maximum||Žádné|
-|cacheRead9|Čtení z mezipaměti (horizontálních oddílů 9)|BytesPerSecond|Maximum||Žádné|
-|percentProcessorTime9|PROCESOR (horizontálních oddílů 9)|Procento|Maximum||Žádné|
+|cacheLatency|Mikrosekunda latence mezipaměti (náhled)|Počet|Průměr||ShardId|
+|chyby|chyby|Počet|Maximum||ShardId,Typ chyby|
+|připojení klienti0|Připojení klienti (střep 0)|Počet|Maximum||Žádný|
+|totalcommandsprocessed0|Celkový počet operací (střep 0)|Počet|Celkem||Žádný|
+|cachehits0|Přístupy do mezipaměti (střep 0)|Počet|Celkem||Žádný|
+|cachemisses0|Počet neúspěšných přístupů do mezipaměti (střep 0)|Počet|Celkem||Žádný|
+|příkazy get0|Získá (střep 0)|Počet|Celkem||Žádný|
+|setcommands0|Sady (úlomek 0)|Počet|Celkem||Žádný|
+|operacePo sekundách|Operace za sekundu (střep 0)|Počet|Maximum||Žádný|
+|vyřazení klíčů0|Vystěhované klíče (střep 0)|Počet|Celkem||Žádný|
+|totalkeys0|Celkový počet klíčů (střep 0)|Počet|Maximum||Žádný|
+|expiredkeys0|Klíče s prošlou platností (střep 0)|Počet|Celkem||Žádný|
+|použité paměti0|Použitá paměť (střep 0)|Bajty|Maximum||Žádný|
+|použité pamětiRss0|Použité paměti RSS (střep 0)|Bajty|Maximum||Žádný|
+|serverLoad0|Zatížení serveru (střep 0)|Procento|Maximum||Žádný|
+|cacheWrite0|Zápis do mezipaměti (střep 0)|BajtyPerSekunda|Maximum||Žádný|
+|cacheRead0|Čtení mezipaměti (střep 0)|BajtyPerSekunda|Maximum||Žádný|
+|percentProcessorTime0|Procesor (úlomek 0)|Procento|Maximum||Žádný|
+|připojení klienti1|Připojení klienti (Shard 1)|Počet|Maximum||Žádný|
+|totalcommandsprocessed1|Celkový počet operací (střep 1)|Počet|Celkem||Žádný|
+|cachehits1|Přístupy do mezipaměti (střep 1)|Počet|Celkem||Žádný|
+|počet mezipamětí1|Počet neúspěšných přístupů do mezipaměti (střep 1)|Počet|Celkem||Žádný|
+|příkazy get1|Získá (střep 1)|Počet|Celkem||Žádný|
+|setcommands1|Sady (úlomek 1)|Počet|Celkem||Žádný|
+|operacePerSecond1|Operace za sekundu (střep 1)|Počet|Maximum||Žádný|
+|vyřazení klíčů1|Vystěhované klíče (střep 1)|Počet|Celkem||Žádný|
+|totalkeys1|Celkový počet klíčů (střep 1)|Počet|Maximum||Žádný|
+|expiredkeys1|Klíče s prošlou platností (střep 1)|Počet|Celkem||Žádný|
+|použité paměti1|Použitá paměť (střep 1)|Bajty|Maximum||Žádný|
+|použité pamětiRss1|Použité paměti RSS (střep 1)|Bajty|Maximum||Žádný|
+|serverLoad1|Zatížení serveru (střep 1)|Procento|Maximum||Žádný|
+|cacheWrite1|Zápis do mezipaměti (střep 1)|BajtyPerSekunda|Maximum||Žádný|
+|cacheRead1|Čtení mezipaměti (střep 1)|BajtyPerSekunda|Maximum||Žádný|
+|percentProcessorTime1|Procesor (střep 1)|Procento|Maximum||Žádný|
+|připojení klienti2|Připojení klienti (Shard 2)|Počet|Maximum||Žádný|
+|totalcommandsprocessed2|Celkový počet operací (střep 2)|Počet|Celkem||Žádný|
+|cachehits2|Přístupy do mezipaměti (střep 2)|Počet|Celkem||Žádný|
+|počet mezipamětí2|Počet neúspěšných přístupů do mezipaměti (střep 2)|Počet|Celkem||Žádný|
+|příkazy get2|Získá (střep 2)|Počet|Celkem||Žádný|
+|setcommands2|Sady (úlomek 2)|Počet|Celkem||Žádný|
+|operaceSekunda2|Operace za sekundu (střep 2)|Počet|Maximum||Žádný|
+|vyřazovacíklíče2|Vystěhované klíče (střep 2)|Počet|Celkem||Žádný|
+|totalkeys2|Celkový počet klíčů (střep 2)|Počet|Maximum||Žádný|
+|expiredkeys2|Klíče s prošlou platností (střep 2)|Počet|Celkem||Žádný|
+|použité paměti2|Použitá paměť (střep 2)|Bajty|Maximum||Žádný|
+|použité pamětiRss2|Použité paměti RSS (střep 2)|Bajty|Maximum||Žádný|
+|serverLoad2|Zatížení serveru (střep 2)|Procento|Maximum||Žádný|
+|cacheWrite2|Zápis do mezipaměti (střep 2)|BajtyPerSekunda|Maximum||Žádný|
+|cacheRead2|Čtení mezipaměti (střep 2)|BajtyPerSekunda|Maximum||Žádný|
+|percentProcessorTime2|Procesor (střep 2)|Procento|Maximum||Žádný|
+|připojení klienti3|Připojení klienti (Shard 3)|Počet|Maximum||Žádný|
+|totalcommandsprocessed3|Celkový počet operací (střep 3)|Počet|Celkem||Žádný|
+|cachehits3|Přístupy do mezipaměti (střep 3)|Počet|Celkem||Žádný|
+|počet mezipamětí3|Počet neúspěšných přístupů do mezipaměti (střep 3)|Počet|Celkem||Žádný|
+|příkazy get3|Získá (střep 3)|Počet|Celkem||Žádný|
+|setcommands3|Sady (střep 3)|Počet|Celkem||Žádný|
+|operaceSecond3|Operace za sekundu (střep 3)|Počet|Maximum||Žádný|
+|vyřazení klíčů3|Vystěhované klíče (střep 3)|Počet|Celkem||Žádný|
+|totalkeys3|Celkový počet klíčů (střep 3)|Počet|Maximum||Žádný|
+|expiredkeys3|Klíče s prošlou platností (střep 3)|Počet|Celkem||Žádný|
+|použité paměti3|Použitá paměť (střep 3)|Bajty|Maximum||Žádný|
+|použité pamětiRss3|Použité paměti RSS (střep 3)|Bajty|Maximum||Žádný|
+|serverLoad3|Zatížení serveru (střep 3)|Procento|Maximum||Žádný|
+|cacheWrite3|Zápis do mezipaměti (střep 3)|BajtyPerSekunda|Maximum||Žádný|
+|cacheRead3|Čtení mezipaměti (střep 3)|BajtyPerSekunda|Maximum||Žádný|
+|percentProcessorTime3|Procesor (střep 3)|Procento|Maximum||Žádný|
+|připojení klienti4|Připojení klienti (Shard 4)|Počet|Maximum||Žádný|
+|totalcommandsprocessed4|Celkový počet operací (střep 4)|Počet|Celkem||Žádný|
+|cachehits4|Přístupy do mezipaměti (střep 4)|Počet|Celkem||Žádný|
+|počet mezipamětí4|Počet neúspěšných přístupů do mezipaměti (střep 4)|Počet|Celkem||Žádný|
+|příkazy get4|Získá (střep 4)|Počet|Celkem||Žádný|
+|setcommands4|Sady (úlomek 4)|Počet|Celkem||Žádný|
+|operaceSecond4|Operace za sekundu (střep 4)|Počet|Maximum||Žádný|
+|vyřazení klíčů4|Vystěhované klíče (střep 4)|Počet|Celkem||Žádný|
+|totalkeys4|Celkový počet klíčů (střep 4)|Počet|Maximum||Žádný|
+|expiredkeys4|Klíče s prošlou platností (střep 4)|Počet|Celkem||Žádný|
+|použité paměti4|Použitá paměť (střep 4)|Bajty|Maximum||Žádný|
+|použité pamětiRss4|Použité paměti RSS (střep 4)|Bajty|Maximum||Žádný|
+|serverLoad4|Zatížení serveru (střep 4)|Procento|Maximum||Žádný|
+|cacheWrite4|Zápis do mezipaměti (střep 4)|BajtyPerSekunda|Maximum||Žádný|
+|cacheRead4|Čtení mezipaměti (střep 4)|BajtyPerSekunda|Maximum||Žádný|
+|percentProcessorTime4|Procesor (střep 4)|Procento|Maximum||Žádný|
+|připojení klienti5|Připojení klienti (Shard 5)|Počet|Maximum||Žádný|
+|totalcommandsprocessed5|Celkový počet operací (střep 5)|Počet|Celkem||Žádný|
+|cachehits5|Přístupy do mezipaměti (střep 5)|Počet|Celkem||Žádný|
+|počet mezipamětí5|Počet neúspěšných přístupů do mezipaměti (střep 5)|Počet|Celkem||Žádný|
+|příkazy get5|Získá (střep 5)|Počet|Celkem||Žádný|
+|setcommands5|Sady (úlomek 5)|Počet|Celkem||Žádný|
+|operacePerSecond5|Operace za sekundu (střep 5)|Počet|Maximum||Žádný|
+|vyřazení klíčů5|Vystěhované klíče (střep 5)|Počet|Celkem||Žádný|
+|totalkeys5|Celkový počet klíčů (střep 5)|Počet|Maximum||Žádný|
+|expiredkeys5|Klíče s prošlou platností (střep 5)|Počet|Celkem||Žádný|
+|použité paměti5|Použitá paměť (střep 5)|Bajty|Maximum||Žádný|
+|použité pamětiRss5|Použité paměti RSS (střep 5)|Bajty|Maximum||Žádný|
+|serverLoad5|Zatížení serveru (střep 5)|Procento|Maximum||Žádný|
+|cacheWrite5|Zápis do mezipaměti (střep 5)|BajtyPerSekunda|Maximum||Žádný|
+|cacheRead5|Čtení mezipaměti (střep 5)|BajtyPerSekunda|Maximum||Žádný|
+|percentProcessorTime5|Procesor (střep 5)|Procento|Maximum||Žádný|
+|připojení klienti6|Připojení klienti (Shard 6)|Počet|Maximum||Žádný|
+|totalcommandsprocessed6|Celkový počet operací (střep 6)|Počet|Celkem||Žádný|
+|cachehits6|Přístupy do mezipaměti (střep 6)|Počet|Celkem||Žádný|
+|počet mezipamětí6|Počet neúspěšných přístupů do mezipaměti (střep 6)|Počet|Celkem||Žádný|
+|příkazy get6|Získá (střep 6)|Počet|Celkem||Žádný|
+|setcommands6|Sady (střep 6)|Počet|Celkem||Žádný|
+|operacePerSecond6|Operace za sekundu (střep 6)|Počet|Maximum||Žádný|
+|vyřazení klíčů6|Vystěhované klíče (střep 6)|Počet|Celkem||Žádný|
+|totalkeys6|Celkový počet klíčů (střep 6)|Počet|Maximum||Žádný|
+|expiredkeys6|Klíče s prošlou platností (střep 6)|Počet|Celkem||Žádný|
+|použitá paměť6|Použitá paměť (střep 6)|Bajty|Maximum||Žádný|
+|použité pamětiRss6|Použité paměti RSS (střep 6)|Bajty|Maximum||Žádný|
+|serverLoad6|Zatížení serveru (střep 6)|Procento|Maximum||Žádný|
+|cacheWrite6|Zápis do mezipaměti (střep 6)|BajtyPerSekunda|Maximum||Žádný|
+|cacheRead6|Čtení mezipaměti (střep 6)|BajtyPerSekunda|Maximum||Žádný|
+|percentProcessorTime6|Procesor (střep 6)|Procento|Maximum||Žádný|
+|připojení klienti7|Připojení klienti (Shard 7)|Počet|Maximum||Žádný|
+|totalcommandsprocessed7|Celkový počet operací (střep 7)|Počet|Celkem||Žádný|
+|cachehits7|Přístupy do mezipaměti (střep 7)|Počet|Celkem||Žádný|
+|počet mezipamětí7|Počet neúspěšných přístupů do mezipaměti (střep 7)|Počet|Celkem||Žádný|
+|příkazy get7|Získá (střep 7)|Počet|Celkem||Žádný|
+|setcommands7|Sady (úlomek 7)|Počet|Celkem||Žádný|
+|operacePerSecond7|Operace za sekundu (střep 7)|Počet|Maximum||Žádný|
+|vyřazovacíklíče7|Vystěhované klíče (střep 7)|Počet|Celkem||Žádný|
+|totalkeys7|Celkový počet klíčů (střep 7)|Počet|Maximum||Žádný|
+|expiredkeys7|Klíče s prošlou platností (střep 7)|Počet|Celkem||Žádný|
+|použitá paměť7|Použitá paměť (střep 7)|Bajty|Maximum||Žádný|
+|použité pamětiRss7|Použité paměti RSS (střep 7)|Bajty|Maximum||Žádný|
+|serverLoad7|Zatížení serveru (střep 7)|Procento|Maximum||Žádný|
+|cacheWrite7|Zápis do mezipaměti (střep 7)|BajtyPerSekunda|Maximum||Žádný|
+|cacheRead7|Čtení mezipaměti (střep 7)|BajtyPerSekunda|Maximum||Žádný|
+|percentProcessorTime7|Procesor (úlomek 7)|Procento|Maximum||Žádný|
+|připojení klienti8|Připojení klienti (Shard 8)|Počet|Maximum||Žádný|
+|totalcommandsprocessed8|Celkový počet operací (střep 8)|Počet|Celkem||Žádný|
+|cachehits8|Přístupy do mezipaměti (střep 8)|Počet|Celkem||Žádný|
+|cachemisses8|Počet neúspěšných přístupů do mezipaměti (střep 8)|Počet|Celkem||Žádný|
+|příkazy get8|Získá (střep 8)|Počet|Celkem||Žádný|
+|setcommands8|Sady (úlomek 8)|Počet|Celkem||Žádný|
+|operacePerSecond8|Operace za sekundu (střep 8)|Počet|Maximum||Žádný|
+|vyřazení klíčů8|Vystěhované klíče (střep 8)|Počet|Celkem||Žádný|
+|totalkeys8|Celkový počet klíčů (střep 8)|Počet|Maximum||Žádný|
+|expiredkeys8|Klíče s prošlou platností (střep 8)|Počet|Celkem||Žádný|
+|použitá paměť8|Použitá paměť (střep 8)|Bajty|Maximum||Žádný|
+|použité pamětiRss8|Použité paměti RSS (střep 8)|Bajty|Maximum||Žádný|
+|serverLoad8|Zatížení serveru (střep 8)|Procento|Maximum||Žádný|
+|cacheWrite8|Zápis do mezipaměti (střep 8)|BajtyPerSekunda|Maximum||Žádný|
+|cacheRead8|Čtení mezipaměti (střep 8)|BajtyPerSekunda|Maximum||Žádný|
+|percentProcessorTime8|Procesor (střep 8)|Procento|Maximum||Žádný|
+|připojení klienti9|Připojení klienti (Shard 9)|Počet|Maximum||Žádný|
+|totalcommandsprocessed9|Celkový počet operací (střep 9)|Počet|Celkem||Žádný|
+|cachehits9|Přístupy do mezipaměti (střep 9)|Počet|Celkem||Žádný|
+|počet mezipamětí9|Počet neúspěšných přístupů do mezipaměti (střep 9)|Počet|Celkem||Žádný|
+|příkazy get9|Získá (střep 9)|Počet|Celkem||Žádný|
+|setcommands9|Sady (střep 9)|Počet|Celkem||Žádný|
+|operacePerSecond9|Operace za sekundu (střep 9)|Počet|Maximum||Žádný|
+|vyřazení klíčů9|Vystěhované klíče (střep 9)|Počet|Celkem||Žádný|
+|totalkeys9|Celkový počet klíčů (střep 9)|Počet|Maximum||Žádný|
+|expiredkeys9|Klíče s prošlou platností (střep 9)|Počet|Celkem||Žádný|
+|použité paměti9|Použitá paměť (střep 9)|Bajty|Maximum||Žádný|
+|použité pamětiRss9|Použité paměti RSS (Shard 9)|Bajty|Maximum||Žádný|
+|serverLoad9|Zatížení serveru (střep 9)|Procento|Maximum||Žádný|
+|cacheWrite9|Zápis do mezipaměti (střep 9)|BajtyPerSekunda|Maximum||Žádný|
+|cacheRead9|Čtení mezipaměti (střep 9)|BajtyPerSekunda|Maximum||Žádný|
+|percentProcessorTime9|Procesor (střep 9)|Procento|Maximum||Žádný|
 
 
 
-## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft. CDN/cdnwebapplicationfirewallpolicies
+## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Zásady brány firewall microsoft.cdn/cdnwebapplication
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|WebApplicationFirewallRequestCount|Počet požadavků firewallu webových aplikací|Počet|Celkem|Počet požadavků klientů zpracovaných bránou firewall webových aplikací|Policy, Rule, Action|
+|WebApplicationFirewallRequestCount|Počet požadavků brány firewall webové aplikace|Počet|Celkem|Počet požadavků klientů zpracovaných bránou firewall webové aplikace|Název_zásady,Název_pravidla,Akce|
 
 
-## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft. ClassicCompute/virtualMachines
+## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.ClassicCompute/virtualMachines
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|Procento CPU|Procento CPU|Procento|Průměr|Procento přidělených výpočetních jednotek, které jsou aktuálně používány virtuálními počítači.|Žádné|
-|Síťové vstupy|Síťové vstupy|Bajty|Celkem|Počet bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz).|Žádné|
-|Síťové výstupy|Síťové výstupy|Bajty|Celkem|Počet bajtů vycházejících ze všech síťových rozhraní virtuálních počítačů (odchozí provoz).|Žádné|
-|Bajty čtení z disku/s|Čtení z disku|BytesPerSecond|Průměr|Průměrný počet bajtů přečtených z disku během období monitorování|Žádné|
-|Bajty zápisu na disk/s|Zápis na disk|BytesPerSecond|Průměr|Průměrný počet bajtů zapsaných na disk během období monitorování|Žádné|
-|Operace čtení z disku/s|Operace čtení z disku/s|CountPerSecond|Průměr|Čtení z disku – IOPS|Žádné|
-|Operace zápisu na disk/s|Operace zápisu na disk/s|CountPerSecond|Průměr|Zápis na disk – IOPS|Žádné|
+|Procento CPU|Procento CPU|Procento|Průměr|Procento přidělených výpočetních jednotek, které jsou aktuálně používány virtuálním počítačem.|Žádný|
+|Síťové vstupy|Síťové vstupy|Bajty|Celkem|Počet bajtů přijatých ve všech síťových rozhraních virtuálním počítačem (příchozíprovoz).|Žádný|
+|Síťové výstupy|Síťové výstupy|Bajty|Celkem|Počet bajtů ve všech síťových rozhraních virtuálním počítačem (odchozíprovoz).|Žádný|
+|Čtení bajtů disku/s|Čtení na disku|BajtyPerSekunda|Průměr|Průměrné bajty přečtené z disku během období sledování.|Žádný|
+|Bajty zápisu disku/s|Zápis na disk|BajtyPerSekunda|Průměr|Průměrné bajty zapsané na disk během období sledování.|Žádný|
+|Operace čtení disku/s|Operace čtení disku/s|CountPerSecond|Průměr|Disk číst IOPS.|Žádný|
+|Operace zápisu na disk/s|Operace zápisu na disk/s|CountPerSecond|Průměr|Vipony pro zápis disku.|Žádný|
 
 
 ## <a name="microsoftclassiccomputedomainnamesslotsroles"></a>Microsoft.ClassicCompute/domainNames/slots/roles
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|Procento CPU|Procento CPU|Procento|Průměr|Procento přidělených výpočetních jednotek, které jsou aktuálně používány virtuálními počítači.|RoleInstanceId|
-|Síťové vstupy|Síťové vstupy|Bajty|Celkem|Počet bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz).|RoleInstanceId|
-|Síťové výstupy|Síťové výstupy|Bajty|Celkem|Počet bajtů vycházejících ze všech síťových rozhraní virtuálních počítačů (odchozí provoz).|RoleInstanceId|
-|Bajty čtení z disku/s|Čtení z disku|BytesPerSecond|Průměr|Průměrný počet bajtů přečtených z disku během období monitorování|RoleInstanceId|
-|Bajty zápisu na disk/s|Zápis na disk|BytesPerSecond|Průměr|Průměrný počet bajtů zapsaných na disk během období monitorování|RoleInstanceId|
-|Operace čtení z disku/s|Operace čtení z disku/s|CountPerSecond|Průměr|Čtení z disku – IOPS|RoleInstanceId|
-|Operace zápisu na disk/s|Operace zápisu na disk/s|CountPerSecond|Průměr|Zápis na disk – IOPS|RoleInstanceId|
+|Procento CPU|Procento CPU|Procento|Průměr|Procento přidělených výpočetních jednotek, které jsou aktuálně používány virtuálním počítačem.|RoleInstanceId|
+|Síťové vstupy|Síťové vstupy|Bajty|Celkem|Počet bajtů přijatých ve všech síťových rozhraních virtuálním počítačem (příchozíprovoz).|RoleInstanceId|
+|Síťové výstupy|Síťové výstupy|Bajty|Celkem|Počet bajtů ve všech síťových rozhraních virtuálním počítačem (odchozíprovoz).|RoleInstanceId|
+|Čtení bajtů disku/s|Čtení na disku|BajtyPerSekunda|Průměr|Průměrné bajty přečtené z disku během období sledování.|RoleInstanceId|
+|Bajty zápisu disku/s|Zápis na disk|BajtyPerSekunda|Průměr|Průměrné bajty zapsané na disk během období sledování.|RoleInstanceId|
+|Operace čtení disku/s|Operace čtení disku/s|CountPerSecond|Průměr|Disk číst IOPS.|RoleInstanceId|
+|Operace zápisu na disk/s|Operace zápisu na disk/s|CountPerSecond|Průměr|Vipony pro zápis disku.|RoleInstanceId|
 
 
 
-## <a name="microsoftclassicstoragestorageaccounts"></a>Microsoft. ClassicStorage/storageAccounts
+## <a name="microsoftclassicstoragestorageaccounts"></a>Microsoft.ClassicStorage/storageAccounts
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|UsedCapacity|Použitá kapacita|Bajty|Průměr|Kapacita využitá účtem|Žádné|
-|Transakce|Transakce|Počet|Celkem|Počet požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Toto číslo zahrnuje úspěšné i neúspěšné požadavky a požadavky, které došlo k chybě. Hodnota ResponseType dimenzi používejte pro počet různých typů odpovědi.|ResponseType, typ, ApiName, ověřování|
-|Příchozí přenos dat|Příchozí přenos dat|Bajty|Celkem|Množství příchozích dat v bajtech. Toto číslo zahrnuje příchozí přenos dat z externího klienta do služby Azure Storage i příchozí přenos dat v rámci Azure.|Typ, ApiName, ověřování|
-|Výchozí přenos|Výchozí přenos|Bajty|Celkem|Objem odchozích přenosů dat v bajtech. Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat.|Typ, ApiName, ověřování|
-|SuccessServerLatency|Latence serveru při úspěchu|Milisekundy|Průměr|Latence používaná Azure Storage ke zpracování úspěšné žádosti v milisekundách. Tato hodnota nezahrnuje latenci sítě zadanou v metrice Celková latence při úspěchu.|Typ, ApiName, ověřování|
-|SuccessE2ELatency|Celková latence při úspěchu|Milisekundy|Průměr|Koncová latence úspěšných požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API (v milisekundách). Tato hodnota zahrnuje čas zpracování ve službě Azure Storage potřebný k přečtení požadavku, odeslání odpovědi a přijetí potvrzení dané odpovědi.|Typ, ApiName, ověřování|
-|Dostupnost|Dostupnost|Procento|Průměr|Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že hodnota TotalBillableRequests vydělí počtem příslušných požadavků, včetně těch, ke které došlo k neočekávané chybě. Všechny neočekávané chyby za následek sníženou dostupnost pro službu úložiště nebo zadanou operaci rozhraní API.|Typ, ApiName, ověřování|
+|Usedcapacity|Využitá kapacita|Bajty|Průměr|Využitá kapacita účtu|Žádný|
+|Transakce|Transakce|Počet|Celkem|Počet požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Toto číslo zahrnuje úspěšné i neúspěšné požadavky a také požadavky, u kterých došlo k chybě. Použijte dimenzi ResponseType pro počet různých typů odpovědí.|Type odezvy,GeoType,ApiName,Ověřování|
+|Příchozí přenos dat|Příchozí přenos dat|Bajty|Celkem|Množství dat příchozího přenosu dat v bajtů. Toto číslo zahrnuje příchozí přenos dat z externího klienta do služby Azure Storage i příchozí přenos dat v rámci Azure.|geotype,ApiName,Ověřování|
+|Výchozí přenos dat|Výchozí přenos dat|Bajty|Celkem|Množství dat odchozího přenosu v bajtech. Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat.|geotype,ApiName,Ověřování|
+|SuccessServerLatency|Latence serveru při úspěchu|Milisekund|Průměr|Latence používaná službou Azure Storage ke zpracování úspěšného požadavku v milisekundách. Tato hodnota nezahrnuje latenci sítě zadanou v metrice Celková latence při úspěchu.|geotype,ApiName,Ověřování|
+|SuccessE2ELatency|Celková latence při úspěchu|Milisekund|Průměr|End-to-end latence úspěšné požadavky na službu úložiště nebo zadanou operaci rozhraní API v milisekundách. Tato hodnota zahrnuje čas zpracování ve službě Azure Storage potřebný k přečtení požadavku, odeslání odpovědi a přijetí potvrzení dané odpovědi.|geotype,ApiName,Ověřování|
+|Dostupnost|Dostupnost|Procento|Průměr|Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že se hodnota TotalBillableRequests vydělí počtem příslušných požadavků včetně těch, u kterých došlo k neočekávaným chybám. Všechny neočekávané chyby mají pro službu úložiště nebo zadanou operaci rozhraní API za následek sníženou dostupnost.|geotype,ApiName,Ověřování|
 
-## <a name="microsoftclassicstoragestorageaccountsblobservices"></a>Microsoft. ClassicStorage/storageAccounts/blobServices
+## <a name="microsoftclassicstoragestorageaccountsblobservices"></a>Microsoft.ClassicStorage/storageAccounts/blobServices
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|BlobCapacity|Kapacita služby Blob|Bajty|Průměr|Velikost úložiště využitá službou Blob Service účtu úložiště v bajtech|BlobType, úroveň|
-|BlobCount|Počet objektů blob|Počet|Průměr|Počet objektů blob ve službě Blob Service účtu úložiště|BlobType, úroveň|
-|ContainerCount|Počet kontejnerů služby Blob|Počet|Průměr|Počet kontejnerů ve službě Blob Service účtu úložiště|Žádné|
-|IndexCapacity|Kapacita indexu|Bajty|Průměr|Velikost úložiště, kterou používá ADLS Gen2 (hierarchický) index v bajtech|Žádné|
-|Transakce|Transakce|Počet|Celkem|Počet požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Toto číslo zahrnuje úspěšné i neúspěšné požadavky a požadavky, které došlo k chybě. Hodnota ResponseType dimenzi používejte pro počet různých typů odpovědi.|ResponseType, typ, ApiName, ověřování|
-|Příchozí přenos dat|Příchozí přenos dat|Bajty|Celkem|Množství příchozích dat v bajtech. Toto číslo zahrnuje příchozí přenos dat z externího klienta do služby Azure Storage i příchozí přenos dat v rámci Azure.|Typ, ApiName, ověřování|
-|Výchozí přenos|Výchozí přenos|Bajty|Celkem|Objem odchozích přenosů dat v bajtech. Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat.|Typ, ApiName, ověřování|
-|SuccessServerLatency|Latence serveru při úspěchu|Milisekundy|Průměr|Latence používaná Azure Storage ke zpracování úspěšné žádosti v milisekundách. Tato hodnota nezahrnuje latenci sítě zadanou v metrice Celková latence při úspěchu.|Typ, ApiName, ověřování|
-|SuccessE2ELatency|Celková latence při úspěchu|Milisekundy|Průměr|Koncová latence úspěšných požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API (v milisekundách). Tato hodnota zahrnuje čas zpracování ve službě Azure Storage potřebný k přečtení požadavku, odeslání odpovědi a přijetí potvrzení dané odpovědi.|Typ, ApiName, ověřování|
-|Dostupnost|Dostupnost|Procento|Průměr|Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že hodnota TotalBillableRequests vydělí počtem příslušných požadavků, včetně těch, ke které došlo k neočekávané chybě. Všechny neočekávané chyby za následek sníženou dostupnost pro službu úložiště nebo zadanou operaci rozhraní API.|Typ, ApiName, ověřování|
+|Možnost objektů blob|Kapacita objektu blob|Bajty|Průměr|Velikost úložiště používané službou Blob účtu úložiště v bajtů.|Objekt BlobType,vrstva|
+|Počet objektů BlobCount|Počet objektů blob|Počet|Průměr|Počet objektů Blob ve službě objektu blob účtu úložiště.|Objekt BlobType,vrstva|
+|ContainerCount|Počet kontejnerů objektů blob|Počet|Průměr|Počet kontejnerů ve službě objektu Blob účtu úložiště.|Žádný|
+|IndexCapacity|Kapacita indexu|Bajty|Průměr|Velikost úložiště používaného indexem ADLS Gen2 (Hierarchické) v bajtech.|Žádný|
+|Transakce|Transakce|Počet|Celkem|Počet požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Toto číslo zahrnuje úspěšné i neúspěšné požadavky a také požadavky, u kterých došlo k chybě. Použijte dimenzi ResponseType pro počet různých typů odpovědí.|Type odezvy,GeoType,ApiName,Ověřování|
+|Příchozí přenos dat|Příchozí přenos dat|Bajty|Celkem|Množství dat příchozího přenosu dat v bajtů. Toto číslo zahrnuje příchozí přenos dat z externího klienta do služby Azure Storage i příchozí přenos dat v rámci Azure.|geotype,ApiName,Ověřování|
+|Výchozí přenos dat|Výchozí přenos dat|Bajty|Celkem|Množství dat odchozího přenosu v bajtech. Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat.|geotype,ApiName,Ověřování|
+|SuccessServerLatency|Latence serveru při úspěchu|Milisekund|Průměr|Latence používaná službou Azure Storage ke zpracování úspěšného požadavku v milisekundách. Tato hodnota nezahrnuje latenci sítě zadanou v metrice Celková latence při úspěchu.|geotype,ApiName,Ověřování|
+|SuccessE2ELatency|Celková latence při úspěchu|Milisekund|Průměr|End-to-end latence úspěšné požadavky na službu úložiště nebo zadanou operaci rozhraní API v milisekundách. Tato hodnota zahrnuje čas zpracování ve službě Azure Storage potřebný k přečtení požadavku, odeslání odpovědi a přijetí potvrzení dané odpovědi.|geotype,ApiName,Ověřování|
+|Dostupnost|Dostupnost|Procento|Průměr|Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že se hodnota TotalBillableRequests vydělí počtem příslušných požadavků včetně těch, u kterých došlo k neočekávaným chybám. Všechny neočekávané chyby mají pro službu úložiště nebo zadanou operaci rozhraní API za následek sníženou dostupnost.|geotype,ApiName,Ověřování|
 
-## <a name="microsoftclassicstoragestorageaccountstableservices"></a>Microsoft. ClassicStorage/storageAccounts/tableServices
+## <a name="microsoftclassicstoragestorageaccountstableservices"></a>Microsoft.ClassicStorage/storageAccounts/tableServices
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|TableCapacity|Kapacita služby Table|Bajty|Průměr|Velikost úložiště využitá službou Table Service účtu úložiště v bajtech|Žádné|
-|TableCount|Počet tabulek|Počet|Průměr|Počet tabulek ve službě Table Service účtu úložiště|Žádné|
-|TableEntityCount|Počet entit tabulek|Počet|Průměr|Počet entit tabulek ve službě Table Service účtu úložiště|Žádné|
-|Transakce|Transakce|Počet|Celkem|Počet požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Toto číslo zahrnuje úspěšné i neúspěšné požadavky a požadavky, které došlo k chybě. Hodnota ResponseType dimenzi používejte pro počet různých typů odpovědi.|ResponseType, typ, ApiName, ověřování|
-|Příchozí přenos dat|Příchozí přenos dat|Bajty|Celkem|Množství příchozích dat v bajtech. Toto číslo zahrnuje příchozí přenos dat z externího klienta do služby Azure Storage i příchozí přenos dat v rámci Azure.|Typ, ApiName, ověřování|
-|Výchozí přenos|Výchozí přenos|Bajty|Celkem|Objem odchozích přenosů dat v bajtech. Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat.|Typ, ApiName, ověřování|
-|SuccessServerLatency|Latence serveru při úspěchu|Milisekundy|Průměr|Latence používaná Azure Storage ke zpracování úspěšné žádosti v milisekundách. Tato hodnota nezahrnuje latenci sítě zadanou v metrice Celková latence při úspěchu.|Typ, ApiName, ověřování|
-|SuccessE2ELatency|Celková latence při úspěchu|Milisekundy|Průměr|Koncová latence úspěšných požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API (v milisekundách). Tato hodnota zahrnuje čas zpracování ve službě Azure Storage potřebný k přečtení požadavku, odeslání odpovědi a přijetí potvrzení dané odpovědi.|Typ, ApiName, ověřování|
-|Dostupnost|Dostupnost|Procento|Průměr|Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že hodnota TotalBillableRequests vydělí počtem příslušných požadavků, včetně těch, ke které došlo k neočekávané chybě. Všechny neočekávané chyby za následek sníženou dostupnost pro službu úložiště nebo zadanou operaci rozhraní API.|Typ, ApiName, ověřování|
+|TabulkaKapacita|Kapacita tabulky|Bajty|Průměr|Velikost úložiště používané službou Table účtu úložiště v bajtech.|Žádný|
+|Počet tabulek|Počet tabulek|Počet|Průměr|Číslo tabulky ve službě Table účtu úložiště.|Žádný|
+|Počet tabulkových entií|Počet entit tabulky|Počet|Průměr|Počet entit tabulky ve službě Table účtu úložiště.|Žádný|
+|Transakce|Transakce|Počet|Celkem|Počet požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Toto číslo zahrnuje úspěšné i neúspěšné požadavky a také požadavky, u kterých došlo k chybě. Použijte dimenzi ResponseType pro počet různých typů odpovědí.|Type odezvy,GeoType,ApiName,Ověřování|
+|Příchozí přenos dat|Příchozí přenos dat|Bajty|Celkem|Množství dat příchozího přenosu dat v bajtů. Toto číslo zahrnuje příchozí přenos dat z externího klienta do služby Azure Storage i příchozí přenos dat v rámci Azure.|geotype,ApiName,Ověřování|
+|Výchozí přenos dat|Výchozí přenos dat|Bajty|Celkem|Množství dat odchozího přenosu v bajtech. Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat.|geotype,ApiName,Ověřování|
+|SuccessServerLatency|Latence serveru při úspěchu|Milisekund|Průměr|Latence používaná službou Azure Storage ke zpracování úspěšného požadavku v milisekundách. Tato hodnota nezahrnuje latenci sítě zadanou v metrice Celková latence při úspěchu.|geotype,ApiName,Ověřování|
+|SuccessE2ELatency|Celková latence při úspěchu|Milisekund|Průměr|End-to-end latence úspěšné požadavky na službu úložiště nebo zadanou operaci rozhraní API v milisekundách. Tato hodnota zahrnuje čas zpracování ve službě Azure Storage potřebný k přečtení požadavku, odeslání odpovědi a přijetí potvrzení dané odpovědi.|geotype,ApiName,Ověřování|
+|Dostupnost|Dostupnost|Procento|Průměr|Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že se hodnota TotalBillableRequests vydělí počtem příslušných požadavků včetně těch, u kterých došlo k neočekávaným chybám. Všechny neočekávané chyby mají pro službu úložiště nebo zadanou operaci rozhraní API za následek sníženou dostupnost.|geotype,ApiName,Ověřování|
 
-## <a name="microsoftclassicstoragestorageaccountsfileservices"></a>Microsoft. ClassicStorage/storageAccounts/služby
+## <a name="microsoftclassicstoragestorageaccountsfileservices"></a>Microsoft.ClassicStorage/storageAccounts/fileServices
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|Kapacita zařízení|Kapacita souboru|Bajty|Průměr|Velikost úložiště využitá službou File účtu úložiště v bajtech|Sdílení souborů|
-|FileCount|Počet souborů|Počet|Průměr|Počet souborů v Souborové službě účtu úložiště.|Sdílení souborů|
-|FileShareCount|Počet sdílených souborů|Počet|Průměr|Počet sdílených souborů v Souborové službě účtu úložiště.|Žádné|
-|FileShareSnapshotCount|Počet snímků sdílené složky|Počet|Průměr|Počet snímků, které jsou k dispozici ve službě soubory účtu úložiště ve sdílené složce.|Sdílení souborů|
-|FileShareSnapshotSize|Velikost snímku sdílené složky|Bajty|Průměr|Velikost úložiště využívané snímky v Souborové službě účtu úložiště v bajtech|Sdílení souborů|
-|FileShareQuota|Velikost kvóty sdílení souborů|Bajty|Průměr|Horní limit velikosti úložiště, který může služba soubory Azure využít v bajtech.|Sdílení souborů|
-|Transakce|Transakce|Počet|Celkem|Počet požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Toto číslo zahrnuje úspěšné i neúspěšné požadavky a požadavky, které došlo k chybě. Hodnota ResponseType dimenzi používejte pro počet různých typů odpovědi.|ResponseType, typ, ApiName, ověřování, sdílení souborů|
-|Příchozí přenos dat|Příchozí přenos dat|Bajty|Celkem|Množství příchozích dat v bajtech. Toto číslo zahrnuje příchozí přenos dat z externího klienta do služby Azure Storage i příchozí přenos dat v rámci Azure.|Typ, ApiName, ověřování, sdílení souborů|
-|Výchozí přenos|Výchozí přenos|Bajty|Celkem|Objem odchozích přenosů dat v bajtech. Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat.|Typ, ApiName, ověřování, sdílení souborů|
-|SuccessServerLatency|Latence serveru při úspěchu|Milisekundy|Průměr|Latence používaná Azure Storage ke zpracování úspěšné žádosti v milisekundách. Tato hodnota nezahrnuje latenci sítě zadanou v metrice Celková latence při úspěchu.|Typ, ApiName, ověřování, sdílení souborů|
-|SuccessE2ELatency|Celková latence při úspěchu|Milisekundy|Průměr|Koncová latence úspěšných požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API (v milisekundách). Tato hodnota zahrnuje čas zpracování ve službě Azure Storage potřebný k přečtení požadavku, odeslání odpovědi a přijetí potvrzení dané odpovědi.|Typ, ApiName, ověřování, sdílení souborů|
-|Dostupnost|Dostupnost|Procento|Průměr|Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že hodnota TotalBillableRequests vydělí počtem příslušných požadavků, včetně těch, ke které došlo k neočekávané chybě. Všechny neočekávané chyby za následek sníženou dostupnost pro službu úložiště nebo zadanou operaci rozhraní API.|Typ, ApiName, ověřování, sdílení souborů|
+|Souborkapacita|Kapacita souboru|Bajty|Průměr|Velikost úložiště používaného službou File účtu úložiště v bajtech.|Fileshare|
+|Počet souborů|Počet souborů|Počet|Průměr|Počet souborů ve službě Soubor účtu úložiště.|Fileshare|
+|FileShareCount|Počet sdílení souborů|Počet|Průměr|Počet sdílených složek ve službě Soubor účtu úložiště.|Žádný|
+|FileShareSnapshotCount|Počet snímků sdílené složky|Počet|Průměr|Počet snímků, které jsou k dispozici ve sdílené složce ve službě souborů účtu úložiště.|Fileshare|
+|Soubor ShareSnapshotSize|Velikost snímku sdílené složky|Bajty|Průměr|Velikost úložiště používané snímky v účtu úložiště souborové služby v bajtů.|Fileshare|
+|FileShareQuota|Velikost kvóty sdílení souborů|Bajty|Průměr|Horní limit na velikost úložiště, které můžete použít službou Azure Files Service v bajtů.|Fileshare|
+|Transakce|Transakce|Počet|Celkem|Počet požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Toto číslo zahrnuje úspěšné i neúspěšné požadavky a také požadavky, u kterých došlo k chybě. Použijte dimenzi ResponseType pro počet různých typů odpovědí.|ResponseType,GeoType,ApiName,Authentication,FileShare|
+|Příchozí přenos dat|Příchozí přenos dat|Bajty|Celkem|Množství dat příchozího přenosu dat v bajtů. Toto číslo zahrnuje příchozí přenos dat z externího klienta do služby Azure Storage i příchozí přenos dat v rámci Azure.|geotype,ApiName,Ověřování,Sdílení souborů|
+|Výchozí přenos dat|Výchozí přenos dat|Bajty|Celkem|Množství dat odchozího přenosu v bajtech. Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat.|geotype,ApiName,Ověřování,Sdílení souborů|
+|SuccessServerLatency|Latence serveru při úspěchu|Milisekund|Průměr|Latence používaná službou Azure Storage ke zpracování úspěšného požadavku v milisekundách. Tato hodnota nezahrnuje latenci sítě zadanou v metrice Celková latence při úspěchu.|geotype,ApiName,Ověřování,Sdílení souborů|
+|SuccessE2ELatency|Celková latence při úspěchu|Milisekund|Průměr|End-to-end latence úspěšné požadavky na službu úložiště nebo zadanou operaci rozhraní API v milisekundách. Tato hodnota zahrnuje čas zpracování ve službě Azure Storage potřebný k přečtení požadavku, odeslání odpovědi a přijetí potvrzení dané odpovědi.|geotype,ApiName,Ověřování,Sdílení souborů|
+|Dostupnost|Dostupnost|Procento|Průměr|Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že se hodnota TotalBillableRequests vydělí počtem příslušných požadavků včetně těch, u kterých došlo k neočekávaným chybám. Všechny neočekávané chyby mají pro službu úložiště nebo zadanou operaci rozhraní API za následek sníženou dostupnost.|geotype,ApiName,Ověřování,Sdílení souborů|
 
-## <a name="microsoftclassicstoragestorageaccountsqueueservices"></a>Microsoft. ClassicStorage/storageAccounts/queueServices
+## <a name="microsoftclassicstoragestorageaccountsqueueservices"></a>Microsoft.ClassicStorage/storageAccounts/queueServices
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|QueueCapacity|Kapacita služby Queue|Bajty|Průměr|Velikost úložiště využitá službou Queue účtu úložiště v bajtech|Žádné|
-|QueueCount|Počet front|Počet|Průměr|Počet front ve službě Queue účtu úložiště|Žádné|
-|QueueMessageCount|Počet zpráv fronty|Počet|Průměr|Přibližný počet zpráv fronty ve službě Queue účtu úložiště|Žádné|
-|Transakce|Transakce|Počet|Celkem|Počet požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Toto číslo zahrnuje úspěšné i neúspěšné požadavky a požadavky, které došlo k chybě. Hodnota ResponseType dimenzi používejte pro počet různých typů odpovědi.|ResponseType, typ, ApiName, ověřování|
-|Příchozí přenos dat|Příchozí přenos dat|Bajty|Celkem|Množství příchozích dat v bajtech. Toto číslo zahrnuje příchozí přenos dat z externího klienta do služby Azure Storage i příchozí přenos dat v rámci Azure.|Typ, ApiName, ověřování|
-|Výchozí přenos|Výchozí přenos|Bajty|Celkem|Objem odchozích přenosů dat v bajtech. Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat.|Typ, ApiName, ověřování|
-|SuccessServerLatency|Latence serveru při úspěchu|Milisekundy|Průměr|Latence používaná Azure Storage ke zpracování úspěšné žádosti v milisekundách. Tato hodnota nezahrnuje latenci sítě zadanou v metrice Celková latence při úspěchu.|Typ, ApiName, ověřování|
-|SuccessE2ELatency|Celková latence při úspěchu|Milisekundy|Průměr|Koncová latence úspěšných požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API (v milisekundách). Tato hodnota zahrnuje čas zpracování ve službě Azure Storage potřebný k přečtení požadavku, odeslání odpovědi a přijetí potvrzení dané odpovědi.|Typ, ApiName, ověřování|
-|Dostupnost|Dostupnost|Procento|Průměr|Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že hodnota TotalBillableRequests vydělí počtem příslušných požadavků, včetně těch, ke které došlo k neočekávané chybě. Všechny neočekávané chyby za následek sníženou dostupnost pro službu úložiště nebo zadanou operaci rozhraní API.|Typ, ApiName, ověřování|
+|QueueCapacity|Kapacita fronty|Bajty|Průměr|Velikost úložiště používané službou Fronty účtu úložiště v bajtech.|Žádný|
+|Počet front|Počet front|Počet|Průměr|Počet fronty ve službě Fronty účtu úložiště.|Žádný|
+|QueueMessageCount|Počet zpráv fronty|Počet|Průměr|Přibližný počet zpráv fronty ve službě Fronty účtu úložiště.|Žádný|
+|Transakce|Transakce|Počet|Celkem|Počet požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Toto číslo zahrnuje úspěšné i neúspěšné požadavky a také požadavky, u kterých došlo k chybě. Použijte dimenzi ResponseType pro počet různých typů odpovědí.|Type odezvy,GeoType,ApiName,Ověřování|
+|Příchozí přenos dat|Příchozí přenos dat|Bajty|Celkem|Množství dat příchozího přenosu dat v bajtů. Toto číslo zahrnuje příchozí přenos dat z externího klienta do služby Azure Storage i příchozí přenos dat v rámci Azure.|geotype,ApiName,Ověřování|
+|Výchozí přenos dat|Výchozí přenos dat|Bajty|Celkem|Množství dat odchozího přenosu v bajtech. Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat.|geotype,ApiName,Ověřování|
+|SuccessServerLatency|Latence serveru při úspěchu|Milisekund|Průměr|Latence používaná službou Azure Storage ke zpracování úspěšného požadavku v milisekundách. Tato hodnota nezahrnuje latenci sítě zadanou v metrice Celková latence při úspěchu.|geotype,ApiName,Ověřování|
+|SuccessE2ELatency|Celková latence při úspěchu|Milisekund|Průměr|End-to-end latence úspěšné požadavky na službu úložiště nebo zadanou operaci rozhraní API v milisekundách. Tato hodnota zahrnuje čas zpracování ve službě Azure Storage potřebný k přečtení požadavku, odeslání odpovědi a přijetí potvrzení dané odpovědi.|geotype,ApiName,Ověřování|
+|Dostupnost|Dostupnost|Procento|Průměr|Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že se hodnota TotalBillableRequests vydělí počtem příslušných požadavků včetně těch, u kterých došlo k neočekávaným chybám. Všechny neočekávané chyby mají pro službu úložiště nebo zadanou operaci rozhraní API za následek sníženou dostupnost.|geotype,ApiName,Ověřování|
 
 
-## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.CognitiveServices/accounts
+## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.CognitiveServices/účty
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|TotalCalls|Celkový počet volání|Počet|Celkem|Celkový počet volání.|ApiName, OperationName, oblast|
-|SuccessfulCalls|Úspěšná volání|Počet|Celkem|Počet úspěšných volání.|ApiName, OperationName, oblast|
-|TotalErrors|Celkový počet chyb|Počet|Celkem|Celkový počet volání s chybovou odpovědí (kód odpovědi HTTP 4xx nebo 5xx).|ApiName, OperationName, oblast|
-|BlockedCalls|Blokovaná volání|Počet|Celkem|Počet volání, která překročily limit nebo kvótu.|ApiName, OperationName, oblast|
-|ServerErrors|Chyby serveru|Počet|Celkem|Počet volání s interní chybou služby (kód odpovědi HTTP 5xx).|ApiName, OperationName, oblast|
-|ClientErrors|Chyby klienta|Počet|Celkem|Počet volání s chybou na straně klienta (kód odpovědi HTTP 4xx).|ApiName, OperationName, oblast|
-|DataIn|Vstupní data|Bajty|Celkem|Velikost příchozích dat v bajtech|ApiName, OperationName, oblast|
-|Data|Výstupní data|Bajty|Celkem|Velikost odchozích dat v bajtech|ApiName, OperationName, oblast|
-|Čekací doba|Čekací doba|Milisekund|Průměr|Latence v milisekundách|ApiName, OperationName, oblast|
-|CharactersTranslated|Přeložené znaky|Počet|Celkem|Celkový počet znaků v příchozím textovém požadavku.|ApiName, OperationName, oblast|
-|CharactersTrained|Vyškolené znaky|Počet|Celkem|Celkový počet vyškolených znaků|ApiName, OperationName, oblast|
-|SpeechSessionDuration|Doba trvání relace řeči|Sekundy|Celkem|Celková doba trvání relace řeči v sekundách.|ApiName, OperationName, oblast|
-|TotalTransactions|Celkový počet transakcí|Počet|Celkem|Celkový počet transakcí|Žádné|
-|TotalTokenCalls|Celkový počet volání tokenu|Počet|Celkem|Celkový počet volání tokenů|ApiName, OperationName, oblast|
+|Celkový počet volání|Celkový počet volání|Počet|Celkem|Celkový počet hovorů.|ApiName,OperationName,Region|
+|Úspěšné volání|Úspěšné volání|Počet|Celkem|Počet úspěšných volání.|ApiName,OperationName,Region|
+|Celkemchyby|Celkový počet chyb|Počet|Celkem|Celkový počet volání s chybovou odpovědí (kód odpovědi HTTP 4xx nebo 5xx).|ApiName,OperationName,Region|
+|Blokované hovory|Blokovaná volání|Počet|Celkem|Počet volání, která překročila rychlost nebo limit kvóty.|ApiName,OperationName,Region|
+|Serverchyby|Chyby serveru|Počet|Celkem|Počet volání s vnitřní chybou služby (kód odpovědi HTTP 5xx).|ApiName,OperationName,Region|
+|Chyby klienta|Chyby klienta|Počet|Celkem|Počet volání s chybou na straně klienta (kód odpovědi HTTP 4xx).|ApiName,OperationName,Region|
+|DataIn|Data v|Bajty|Celkem|Velikost příchozích dat v bajtech.|ApiName,OperationName,Region|
+|Datový out|Data Out|Bajty|Celkem|Velikost odchozích dat v bajtech.|ApiName,OperationName,Region|
+|Latence|Latence|Milisekund|Průměr|Latence v milisekundách.|ApiName,OperationName,Region|
+|ZnakyPřeloženo|Přeložené znaky|Počet|Celkem|Celkový počet znaků v žádosti o příchozí text.|ApiName,OperationName,Region|
+|ZnakyTrénované|Vycvičené postavy|Počet|Celkem|Celkový počet trénovaných znaků.|ApiName,OperationName,Region|
+|Trvání speechsession|Doba trvání relace řeči|Sekundy|Celkem|Celková doba trvání relace řeči v sekundách.|ApiName,OperationName,Region|
+|TotalTransactions|Transakce celkem|Počet|Celkem|Celkový počet transakcí.|Žádný|
+|Volání TotalToken|Celkový počet volání tokenu|Počet|Celkem|Celkový počet volání tokenu.|ApiName,OperationName,Region|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|Procento CPU|Procento CPU|Procento|Průměr|Procento přidělených výpočetních jednotek, které virtuální počítače aktuálně používají|Žádné|
-|Síťové vstupy|Síť v fakturovatelný (zastaralé)|Bajty|Celkem|Počet fakturovatelných bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz) (zastaralé)|Žádné|
-|Síťové výstupy|Fakturovatelná odchozí síť (zastaralé)|Bajty|Celkem|Počet fakturovatelných bajtů vycházejících ze všech síťových rozhraní virtuálních počítačů (odchozí provoz) (zastaralé)|Žádné|
-|Bajty čtení z disku|Bajty čtení z disku|Bajty|Celkem|Bajty přečtené z disku během období monitorování|Žádné|
-|Bajty zápisu na disk|Bajty zápisu na disk|Bajty|Celkem|Bajty zapsané na disk během období monitorování|Žádné|
-|Operace čtení z disku/s|Operace čtení z disku/s|CountPerSecond|Průměr|Čtení z disku – IOPS|Žádné|
-|Operace zápisu na disk/s|Operace zápisu na disk/s|CountPerSecond|Průměr|Zápis na disk – IOPS|Žádné|
-|Zbývající kredity procesoru|Zbývající kredity procesoru|Počet|Průměr|Celkový počet kreditů dostupných pro shlukování|Žádné|
-|Spotřebované kredity procesoru|Spotřebované kredity procesoru|Počet|Průměr|Celkový počet kreditů spotřebovaných virtuálním počítačem|Žádné|
-|Přečtené bajty podle disku/s|Bajty přečtené z datového disku za sekundu (zastaralé)|CountPerSecond|Průměr|Počet bajtů za sekundu přečtených z jednoho disku během období monitorování|SlotId|
-|Bajty zápisu na disk/s|Bajty zapsané na datový disk za sekundu (zastaralé)|CountPerSecond|Průměr|Počet bajtů za sekundu zapsaných na jeden disk během období monitorování|SlotId|
-|Operace čtení na disk/s|Operace čtení z datového disku za sekundu (zastaralé)|CountPerSecond|Průměr|Čtení IOPS z jednoho disku během období monitorování|SlotId|
-|Operace zápisu na disk/s|Operace zápisu na datový disk za sekundu (zastaralé)|CountPerSecond|Průměr|Zápis IOPS z jednoho disku během období monitorování|SlotId|
-|Hloubka fronty na disk|Datový disk hloubka fronty (zastaralé)|Počet|Průměr|Hloubka fronty datových disků (nebo délka fronty)|SlotId|
-|Přečtené bajty v operačním systému na disk/s|Bajty přečtené z disku s operačním systémem/s (zastaralé)|CountPerSecond|Průměr|Počet bajtů za sekundu přečtených z jednoho disku během období monitorování pro disk s operačním systémem|Žádné|
-|Bajty zapsané v operačním systému na disk/s|Bajty zápisu na disk s operačním systémem/s (zastaralé)|CountPerSecond|Průměr|Počet bajtů za sekundu zapsaných na jeden disk během období monitorování pro disk s operačním systémem|Žádné|
-|Operace čtení z operačního systému na disk/s|Operace čtení z disku s operačním systémem za sekundu (zastaralé)|CountPerSecond|Průměr|Čtení IOPS z jednoho disku během období monitorování pro disk s operačním systémem|Žádné|
-|Operace zápisu v operačním systému na disk/s|Operace zápisu na disk s operačním systémem za sekundu (zastaralé)|CountPerSecond|Průměr|Zápis IOPS z jednoho disku během období monitorování pro disk s operačním systémem|Žádné|
-|Operační systém na disk hloubka fronty|Disk s operačním systémem hloubka fronty (zastaralé)|Počet|Průměr|Hloubka fronty disku s operačním systémem (nebo délka fronty)|Žádné|
-|Bajty přečtené z datového disku za sekundu|Bajty přečtené z datového disku za sekundu (Preview)|CountPerSecond|Průměr|Počet bajtů za sekundu přečtených z jednoho disku během období monitorování|LOGICKÉ JEDNOTKY|
-|Bajty zapsané na datový disk/s|Bajty zapsané na datový disk za sekundu (Preview)|CountPerSecond|Průměr|Počet bajtů za sekundu zapsaných na jeden disk během období monitorování|LOGICKÉ JEDNOTKY|
-|Operace čtení z datového disku za sekundu|Operace čtení z datového disku za sekundu (Preview)|CountPerSecond|Průměr|Čtení IOPS z jednoho disku během období monitorování|LOGICKÉ JEDNOTKY|
-|Operace zápisu na datový disk/s|Operace zápisu na datový disk za sekundu (Preview)|CountPerSecond|Průměr|Zápis IOPS z jednoho disku během období monitorování|LOGICKÉ JEDNOTKY|
-|Hloubka fronty datových disků|Hloubka fronty datových disků (Preview)|Počet|Průměr|Hloubka fronty datových disků (nebo délka fronty)|LOGICKÉ JEDNOTKY|
-|Bajty přečtené z disku s operačním systémem/s|Počet přečtených bajtů disku s operačním systémem za sekundu (Preview)|CountPerSecond|Průměr|Počet bajtů za sekundu přečtených z jednoho disku během období monitorování pro disk s operačním systémem|Žádné|
-|Bajty zápisu na disk s operačním systémem/s|Bajty zápisu na disk s operačním systémem za sekundu (Preview)|CountPerSecond|Průměr|Počet bajtů za sekundu zapsaných na jeden disk během období monitorování pro disk s operačním systémem|Žádné|
-|Operace čtení z disku s operačním systémem za sekundu|Operace čtení z disku s operačním systémem za sekundu (Preview)|CountPerSecond|Průměr|Čtení IOPS z jednoho disku během období monitorování pro disk s operačním systémem|Žádné|
-|Operace zápisu na disk s operačním systémem za sekundu|Operace zápisu na disk s operačním systémem za sekundu (Preview)|CountPerSecond|Průměr|Zápis IOPS z jednoho disku během období monitorování pro disk s operačním systémem|Žádné|
-|Hloubka fronty disku s operačním systémem|Hloubka fronty disku operačního systému (Preview)|Počet|Průměr|Hloubka fronty disku s operačním systémem (nebo délka fronty)|Žádné|
-|Příchozí toky|Příchozí toky|Počet|Průměr|Příchozí toky představují počet současných toků v příchozím směru (provoz směřující do virtuálního počítače).|Žádné|
-|Odchozí toky|Odchozí toky|Počet|Průměr|Odchozí toky představují počet současných toků v odchozím směru (provoz, který se odchází z virtuálního počítače).|Žádné|
-|Maximální rychlost vytváření příchozích toků|Míra vytváření maximálního počtu příchozích toků (Preview)|CountPerSecond|Průměr|Maximální rychlost vytváření příchozích toků (provoz, který do virtuálního počítače směřuje)|Žádné|
-|Maximální rychlost vytváření odchozích toků|Frekvence maximálního vytváření odchozích toků (Preview)|CountPerSecond|Průměr|Maximální rychlost vytváření odchozích toků (provoz, který se odchází z virtuálního počítače)|Žádné|
-|Počet přístupů do mezipaměti pro datový disk úrovně Premium|Počet přístupů do mezipaměti pro datový disk úrovně Premium (Preview)|Procento|Průměr|Počet přístupů do mezipaměti pro datový disk úrovně Premium|LOGICKÉ JEDNOTKY|
-|Neúspěšné čtení mezipaměti datových disků Premium|Neúspěšné čtení mezipaměti datových disků Premium (Preview)|Procento|Průměr|Neúspěšné čtení mezipaměti datových disků Premium|LOGICKÉ JEDNOTKY|
-|Počet přístupů do mezipaměti disku s operačním systémem Premium|Pozice pro čtení mezipaměti disku s operačním systémem Premium (Preview)|Procento|Průměr|Počet přístupů do mezipaměti disku s operačním systémem Premium|Žádné|
-|Neúspěšné čtení mezipaměti disku s operačním systémem Premium|Neúspěšné čtení mezipaměti disku s operačním systémem Premium (Preview)|Procento|Průměr|Neúspěšné čtení mezipaměti disku s operačním systémem Premium|Žádné|
-|Celková síť|Celková síť|Bajty|Celkem|Počet bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz)|Žádné|
-|Celkový počet síťových výstupů|Celkový počet síťových výstupů|Bajty|Celkem|Počet bajtů vycházejících ze všech síťových rozhraní virtuálních počítačů (odchozí provoz)|Žádné|
+|Procento CPU|Procento CPU|Procento|Průměr|Procento přidělených výpočetních jednotek, které jsou aktuálně používány virtuálním počítačem|Žádný|
+|Síťové vstupy|Fakturovatelné síťové (zastaralé)|Bajty|Celkem|Počet fakturovatelných bajtů přijatých ve všech síťových rozhraních virtuálním počítačem (příchozí provoz) (zastaralé)|Žádný|
+|Síťové výstupy|Vyúčtování sítě (zastaralé)|Bajty|Celkem|Počet fakturovatelných bajtů ve všech síťových rozhraních virtuálním počítačem (odchozí provoz) (zastaralé)|Žádný|
+|Bajty čtení disku|Bajty čtení disku|Bajty|Celkem|Bajty přečtené z disku během období sledování|Žádný|
+|Bajty zápisu disku|Bajty zápisu disku|Bajty|Celkem|Bajty zapsané na disk během období sledování|Žádný|
+|Operace čtení disku/s|Operace čtení disku/s|CountPerSecond|Průměr|VIS pro čtení disku|Žádný|
+|Operace zápisu na disk/s|Operace zápisu na disk/s|CountPerSecond|Průměr|Viposlužby pro zápis disku|Žádný|
+|Zbývající kredity procesoru|Zbývající kredity procesoru|Počet|Průměr|Celkový počet kreditů dostupných k výbuchu|Žádný|
+|Spotřebované kredity procesoru|Spotřebované kredity procesoru|Počet|Průměr|Celkový počet kreditů spotřebovaných virtuálním počítačem|Žádný|
+|Bajty pro čtení na disk/s|Čtení bajtů datového disku/s (zastaralé)|CountPerSecond|Průměr|Bajty/s čtení z jednoho disku během období sledování|SlotId|
+|Bajty zápisu na disk/s|Bajty zápisu datového disku/s (zastaralé)|CountPerSecond|Průměr|Bajty/s zapsané na jeden disk během období sledování|SlotId|
+|Operace čtení na disk/s|Operace čtení datového disku/s (zastaralé)|CountPerSecond|Průměr|Čtení vipozd z jednoho disku během období sledování|SlotId|
+|Operace zápisu na disk/s|Operace zápisu datového disku/s (zastaralé)|CountPerSecond|Průměr|Zápis viop z jednoho disku během období sledování|SlotId|
+|Na disk QD|Datový disk QD (zastaralé)|Počet|Průměr|Hloubka fronty datového disku (nebo délka fronty)|SlotId|
+|Bajty pro čtení na disk/s|Čtení bajtů/s disku operačního systému (zastaralé)|CountPerSecond|Průměr|Bajty/s čtení z jednoho disku během období sledování disku operačního systému|Žádný|
+|Bajty zápisu na disk na disk/s|Bajty zapisované na disku operačního systému/s (zastaralé)|CountPerSecond|Průměr|Bajty/s zapsané na jeden disk během období sledování disku operačního systému|Žádný|
+|Operace čtení na disk na disk/s|Operace čtení disku operačního systému/s (zastaralé)|CountPerSecond|Průměr|Čtení vipozd z jednoho disku během období sledování disku operačního systému|Žádný|
+|Operace zápisu na disk na disk/s|Operace zápisu disku operačního systému/s (zastaralé)|CountPerSecond|Průměr|Zápis viop ů z jednoho disku během období sledování disku operačního systému|Žádný|
+|Operační systém na disku QD|Operační disk QD (zastaralé)|Počet|Průměr|Hloubka fronty disku operačního systému (nebo délka fronty)|Žádný|
+|Čtení bajtů datového disku/s|Čtení bajtů datového disku/s (náhled)|CountPerSecond|Průměr|Bajty/s čtení z jednoho disku během období sledování|Lun|
+|Bajty zápisu datového disku/s|Bajty za zápis datového disku/s (náhled)|CountPerSecond|Průměr|Bajty/s zapsané na jeden disk během období sledování|Lun|
+|Operace čtení datového disku/s|Operace čtení datového disku/s (náhled)|CountPerSecond|Průměr|Čtení vipozd z jednoho disku během období sledování|Lun|
+|Operace zápisu datového disku/s|Operace zápisu datového disku/s (náhled)|CountPerSecond|Průměr|Zápis viop z jednoho disku během období sledování|Lun|
+|Hloubka fronty datového disku|Hloubka fronty datového disku (náhled)|Počet|Průměr|Hloubka fronty datového disku (nebo délka fronty)|Lun|
+|Bajty čtení disku operačního systému/s|Čtení bajtů/s disku operačního systému (náhled)|CountPerSecond|Průměr|Bajty/s čtení z jednoho disku během období sledování disku operačního systému|Žádný|
+|Bajty zápisu disku operačního systému/s|Bajty za zápis disku operačního systému/s (náhled)|CountPerSecond|Průměr|Bajty/s zapsané na jeden disk během období sledování disku operačního systému|Žádný|
+|Operace čtení disku operačního systému/s|Operace čtení disku operačního systému/s (náhled)|CountPerSecond|Průměr|Čtení vipozd z jednoho disku během období sledování disku operačního systému|Žádný|
+|Operace zápisu disku operačního systému/s|Operace zápisu disku operačního systému/s (náhled)|CountPerSecond|Průměr|Zápis viop ů z jednoho disku během období sledování disku operačního systému|Žádný|
+|Hloubka fronty disku s operačním systémem|Hloubka fronty disku operačního systému (náhled)|Počet|Průměr|Hloubka fronty disku operačního systému (nebo délka fronty)|Žádný|
+|Příchozí toky|Příchozí toky|Počet|Průměr|Příchozí toky jsou počet aktuálních toků ve směru příchozí (provoz směřující do virtuálního mísy)|Žádný|
+|Odchozí toky|Odchozí toky|Počet|Průměr|Odchozí toky jsou počet aktuálních toků v odchozím směru (provoz z virtuálního účtu)|Žádný|
+|Maximální míra vytvoření příchozích toků|Maximální míra vytvoření příchozích toků (náhled)|CountPerSecond|Průměr|Maximální rychlost vytváření příchozích toků (provoz do virtuálního provozu)|Žádný|
+|Maximální míra vytvoření odchozích toků|Maximální míra vytvoření odchozích toků (náhled)|CountPerSecond|Průměr|Maximální rychlost vytváření odchozích toků (přenos y odchozí z virtuálního provozu)|Žádný|
+|Požadavek na čtení mezipaměti premium data|Požadavek na čtení mezipaměti premium data (náhled)|Procento|Průměr|Požadavek na čtení mezipaměti premium data|Lun|
+|Chybět čtení mezipaměti premium data|Premium Data Disk Cache Číst Miss (Náhled)|Procento|Průměr|Chybět čtení mezipaměti premium data|Lun|
+|Přístupový přístup ke čtení mezipaměti disku premium oS|Premium OS Disk Cache Čtení Hit (Náhled)|Procento|Průměr|Přístupový přístup ke čtení mezipaměti disku premium oS|Žádný|
+|Premium OS Disk Cache Čtení Miss|Premium OS Disk Cache Číst Miss (Náhled)|Procento|Průměr|Premium OS Disk Cache Čtení Miss|Žádný|
+|Síť celkem|Síť celkem|Bajty|Celkem|Počet bajtů přijatých ve všech síťových rozhraních virtuálním počítačem (příchozím provozem)|Žádný|
+|Síť out celkem|Síť out celkem|Bajty|Celkem|Počet bajtů ve všech síťových rozhraních virtuálním počítačem (odchozí provoz)|Žádný|
 
 
 ## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|Procento CPU|Procento CPU|Procento|Průměr|Procento přidělených výpočetních jednotek, které virtuální počítače aktuálně používají|VMName|
-|Síťové vstupy|Síť v fakturovatelný (zastaralé)|Bajty|Celkem|Počet fakturovatelných bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz) (zastaralé)|VMName|
-|Síťové výstupy|Fakturovatelná odchozí síť (zastaralé)|Bajty|Celkem|Počet fakturovatelných bajtů vycházejících ze všech síťových rozhraní virtuálních počítačů (odchozí provoz) (zastaralé)|VMName|
-|Bajty čtení z disku|Bajty čtení z disku|Bajty|Celkem|Bajty přečtené z disku během období monitorování|VMName|
-|Bajty zápisu na disk|Bajty zápisu na disk|Bajty|Celkem|Bajty zapsané na disk během období monitorování|VMName|
-|Operace čtení z disku/s|Operace čtení z disku/s|CountPerSecond|Průměr|Čtení z disku – IOPS|VMName|
-|Operace zápisu na disk/s|Operace zápisu na disk/s|CountPerSecond|Průměr|Zápis na disk – IOPS|VMName|
-|Zbývající kredity procesoru|Zbývající kredity procesoru|Počet|Průměr|Celkový počet kreditů dostupných pro shlukování|Žádné|
-|Spotřebované kredity procesoru|Spotřebované kredity procesoru|Počet|Průměr|Celkový počet kreditů spotřebovaných virtuálním počítačem|Žádné|
-|Přečtené bajty podle disku/s|Bajty přečtené z datového disku za sekundu (zastaralé)|CountPerSecond|Průměr|Počet bajtů za sekundu přečtených z jednoho disku během období monitorování|SlotId|
-|Bajty zápisu na disk/s|Bajty zapsané na datový disk za sekundu (zastaralé)|CountPerSecond|Průměr|Počet bajtů za sekundu zapsaných na jeden disk během období monitorování|SlotId|
-|Operace čtení na disk/s|Operace čtení z datového disku za sekundu (zastaralé)|CountPerSecond|Průměr|Čtení IOPS z jednoho disku během období monitorování|SlotId|
-|Operace zápisu na disk/s|Operace zápisu na datový disk za sekundu (zastaralé)|CountPerSecond|Průměr|Zápis IOPS z jednoho disku během období monitorování|SlotId|
-|Hloubka fronty na disk|Datový disk hloubka fronty (zastaralé)|Počet|Průměr|Hloubka fronty datových disků (nebo délka fronty)|SlotId|
-|Přečtené bajty v operačním systému na disk/s|Bajty přečtené z disku s operačním systémem/s (zastaralé)|CountPerSecond|Průměr|Počet bajtů za sekundu přečtených z jednoho disku během období monitorování pro disk s operačním systémem|Žádné|
-|Bajty zapsané v operačním systému na disk/s|Bajty zápisu na disk s operačním systémem/s (zastaralé)|CountPerSecond|Průměr|Počet bajtů za sekundu zapsaných na jeden disk během období monitorování pro disk s operačním systémem|Žádné|
-|Operace čtení z operačního systému na disk/s|Operace čtení z disku s operačním systémem za sekundu (zastaralé)|CountPerSecond|Průměr|Čtení IOPS z jednoho disku během období monitorování pro disk s operačním systémem|Žádné|
-|Operace zápisu v operačním systému na disk/s|Operace zápisu na disk s operačním systémem za sekundu (zastaralé)|CountPerSecond|Průměr|Zápis IOPS z jednoho disku během období monitorování pro disk s operačním systémem|Žádné|
-|Operační systém na disk hloubka fronty|Disk s operačním systémem hloubka fronty (zastaralé)|Počet|Průměr|Hloubka fronty disku s operačním systémem (nebo délka fronty)|Žádné|
-|Bajty přečtené z datového disku za sekundu|Bajty přečtené z datového disku za sekundu (Preview)|CountPerSecond|Průměr|Počet bajtů za sekundu přečtených z jednoho disku během období monitorování|LUN, VMName|
-|Bajty zapsané na datový disk/s|Bajty zapsané na datový disk za sekundu (Preview)|CountPerSecond|Průměr|Počet bajtů za sekundu zapsaných na jeden disk během období monitorování|LUN, VMName|
-|Operace čtení z datového disku za sekundu|Operace čtení z datového disku za sekundu (Preview)|CountPerSecond|Průměr|Čtení IOPS z jednoho disku během období monitorování|LUN, VMName|
-|Operace zápisu na datový disk/s|Operace zápisu na datový disk za sekundu (Preview)|CountPerSecond|Průměr|Zápis IOPS z jednoho disku během období monitorování|LUN, VMName|
-|Hloubka fronty datových disků|Hloubka fronty datových disků (Preview)|Počet|Průměr|Hloubka fronty datových disků (nebo délka fronty)|LUN, VMName|
-|Bajty přečtené z disku s operačním systémem/s|Počet přečtených bajtů disku s operačním systémem za sekundu (Preview)|CountPerSecond|Průměr|Počet bajtů za sekundu přečtených z jednoho disku během období monitorování pro disk s operačním systémem|VMName|
-|Bajty zápisu na disk s operačním systémem/s|Bajty zápisu na disk s operačním systémem za sekundu (Preview)|CountPerSecond|Průměr|Počet bajtů za sekundu zapsaných na jeden disk během období monitorování pro disk s operačním systémem|VMName|
-|Operace čtení z disku s operačním systémem za sekundu|Operace čtení z disku s operačním systémem za sekundu (Preview)|CountPerSecond|Průměr|Čtení IOPS z jednoho disku během období monitorování pro disk s operačním systémem|VMName|
-|Operace zápisu na disk s operačním systémem za sekundu|Operace zápisu na disk s operačním systémem za sekundu (Preview)|CountPerSecond|Průměr|Zápis IOPS z jednoho disku během období monitorování pro disk s operačním systémem|VMName|
-|Hloubka fronty disku s operačním systémem|Hloubka fronty disku operačního systému (Preview)|Počet|Průměr|Hloubka fronty disku s operačním systémem (nebo délka fronty)|VMName|
-|Příchozí toky|Příchozí toky|Počet|Průměr|Příchozí toky představují počet současných toků v příchozím směru (provoz směřující do virtuálního počítače).|VMName|
-|Odchozí toky|Odchozí toky|Počet|Průměr|Odchozí toky představují počet současných toků v odchozím směru (provoz, který se odchází z virtuálního počítače).|VMName|
-|Maximální rychlost vytváření příchozích toků|Míra vytváření maximálního počtu příchozích toků (Preview)|CountPerSecond|Průměr|Maximální rychlost vytváření příchozích toků (provoz, který do virtuálního počítače směřuje)|VMName|
-|Maximální rychlost vytváření odchozích toků|Frekvence maximálního vytváření odchozích toků (Preview)|CountPerSecond|Průměr|Maximální rychlost vytváření odchozích toků (provoz, který se odchází z virtuálního počítače)|VMName|
-|Počet přístupů do mezipaměti pro datový disk úrovně Premium|Počet přístupů do mezipaměti pro datový disk úrovně Premium (Preview)|Procento|Průměr|Počet přístupů do mezipaměti pro datový disk úrovně Premium|LUN, VMName|
-|Neúspěšné čtení mezipaměti datových disků Premium|Neúspěšné čtení mezipaměti datových disků Premium (Preview)|Procento|Průměr|Neúspěšné čtení mezipaměti datových disků Premium|LUN, VMName|
-|Počet přístupů do mezipaměti disku s operačním systémem Premium|Pozice pro čtení mezipaměti disku s operačním systémem Premium (Preview)|Procento|Průměr|Počet přístupů do mezipaměti disku s operačním systémem Premium|VMName|
-|Neúspěšné čtení mezipaměti disku s operačním systémem Premium|Neúspěšné čtení mezipaměti disku s operačním systémem Premium (Preview)|Procento|Průměr|Neúspěšné čtení mezipaměti disku s operačním systémem Premium|VMName|
-|Celková síť|Celková síť|Bajty|Celkem|Počet bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz)|VMName|
-|Celkový počet síťových výstupů|Celkový počet síťových výstupů|Bajty|Celkem|Počet bajtů vycházejících ze všech síťových rozhraní virtuálních počítačů (odchozí provoz)|VMName|
+|Procento CPU|Procento CPU|Procento|Průměr|Procento přidělených výpočetních jednotek, které jsou aktuálně používány virtuálním počítačem|VMName|
+|Síťové vstupy|Fakturovatelné síťové (zastaralé)|Bajty|Celkem|Počet fakturovatelných bajtů přijatých ve všech síťových rozhraních virtuálním počítačem (příchozí provoz) (zastaralé)|VMName|
+|Síťové výstupy|Vyúčtování sítě (zastaralé)|Bajty|Celkem|Počet fakturovatelných bajtů ve všech síťových rozhraních virtuálním počítačem (odchozí provoz) (zastaralé)|VMName|
+|Bajty čtení disku|Bajty čtení disku|Bajty|Celkem|Bajty přečtené z disku během období sledování|VMName|
+|Bajty zápisu disku|Bajty zápisu disku|Bajty|Celkem|Bajty zapsané na disk během období sledování|VMName|
+|Operace čtení disku/s|Operace čtení disku/s|CountPerSecond|Průměr|VIS pro čtení disku|VMName|
+|Operace zápisu na disk/s|Operace zápisu na disk/s|CountPerSecond|Průměr|Viposlužby pro zápis disku|VMName|
+|Zbývající kredity procesoru|Zbývající kredity procesoru|Počet|Průměr|Celkový počet kreditů dostupných k výbuchu|Žádný|
+|Spotřebované kredity procesoru|Spotřebované kredity procesoru|Počet|Průměr|Celkový počet kreditů spotřebovaných virtuálním počítačem|Žádný|
+|Bajty pro čtení na disk/s|Čtení bajtů datového disku/s (zastaralé)|CountPerSecond|Průměr|Bajty/s čtení z jednoho disku během období sledování|SlotId|
+|Bajty zápisu na disk/s|Bajty zápisu datového disku/s (zastaralé)|CountPerSecond|Průměr|Bajty/s zapsané na jeden disk během období sledování|SlotId|
+|Operace čtení na disk/s|Operace čtení datového disku/s (zastaralé)|CountPerSecond|Průměr|Čtení vipozd z jednoho disku během období sledování|SlotId|
+|Operace zápisu na disk/s|Operace zápisu datového disku/s (zastaralé)|CountPerSecond|Průměr|Zápis viop z jednoho disku během období sledování|SlotId|
+|Na disk QD|Datový disk QD (zastaralé)|Počet|Průměr|Hloubka fronty datového disku (nebo délka fronty)|SlotId|
+|Bajty pro čtení na disk/s|Čtení bajtů/s disku operačního systému (zastaralé)|CountPerSecond|Průměr|Bajty/s čtení z jednoho disku během období sledování disku operačního systému|Žádný|
+|Bajty zápisu na disk na disk/s|Bajty zapisované na disku operačního systému/s (zastaralé)|CountPerSecond|Průměr|Bajty/s zapsané na jeden disk během období sledování disku operačního systému|Žádný|
+|Operace čtení na disk na disk/s|Operace čtení disku operačního systému/s (zastaralé)|CountPerSecond|Průměr|Čtení vipozd z jednoho disku během období sledování disku operačního systému|Žádný|
+|Operace zápisu na disk na disk/s|Operace zápisu disku operačního systému/s (zastaralé)|CountPerSecond|Průměr|Zápis viop ů z jednoho disku během období sledování disku operačního systému|Žádný|
+|Operační systém na disku QD|Operační disk QD (zastaralé)|Počet|Průměr|Hloubka fronty disku operačního systému (nebo délka fronty)|Žádný|
+|Čtení bajtů datového disku/s|Čtení bajtů datového disku/s (náhled)|CountPerSecond|Průměr|Bajty/s čtení z jednoho disku během období sledování|LUN,Název VM|
+|Bajty zápisu datového disku/s|Bajty za zápis datového disku/s (náhled)|CountPerSecond|Průměr|Bajty/s zapsané na jeden disk během období sledování|LUN,Název VM|
+|Operace čtení datového disku/s|Operace čtení datového disku/s (náhled)|CountPerSecond|Průměr|Čtení vipozd z jednoho disku během období sledování|LUN,Název VM|
+|Operace zápisu datového disku/s|Operace zápisu datového disku/s (náhled)|CountPerSecond|Průměr|Zápis viop z jednoho disku během období sledování|LUN,Název VM|
+|Hloubka fronty datového disku|Hloubka fronty datového disku (náhled)|Počet|Průměr|Hloubka fronty datového disku (nebo délka fronty)|LUN,Název VM|
+|Bajty čtení disku operačního systému/s|Čtení bajtů/s disku operačního systému (náhled)|CountPerSecond|Průměr|Bajty/s čtení z jednoho disku během období sledování disku operačního systému|VMName|
+|Bajty zápisu disku operačního systému/s|Bajty za zápis disku operačního systému/s (náhled)|CountPerSecond|Průměr|Bajty/s zapsané na jeden disk během období sledování disku operačního systému|VMName|
+|Operace čtení disku operačního systému/s|Operace čtení disku operačního systému/s (náhled)|CountPerSecond|Průměr|Čtení vipozd z jednoho disku během období sledování disku operačního systému|VMName|
+|Operace zápisu disku operačního systému/s|Operace zápisu disku operačního systému/s (náhled)|CountPerSecond|Průměr|Zápis viop ů z jednoho disku během období sledování disku operačního systému|VMName|
+|Hloubka fronty disku s operačním systémem|Hloubka fronty disku operačního systému (náhled)|Počet|Průměr|Hloubka fronty disku operačního systému (nebo délka fronty)|VMName|
+|Příchozí toky|Příchozí toky|Počet|Průměr|Příchozí toky jsou počet aktuálních toků ve směru příchozí (provoz směřující do virtuálního mísy)|VMName|
+|Odchozí toky|Odchozí toky|Počet|Průměr|Odchozí toky jsou počet aktuálních toků v odchozím směru (provoz z virtuálního účtu)|VMName|
+|Maximální míra vytvoření příchozích toků|Maximální míra vytvoření příchozích toků (náhled)|CountPerSecond|Průměr|Maximální rychlost vytváření příchozích toků (provoz do virtuálního provozu)|VMName|
+|Maximální míra vytvoření odchozích toků|Maximální míra vytvoření odchozích toků (náhled)|CountPerSecond|Průměr|Maximální rychlost vytváření odchozích toků (přenos y odchozí z virtuálního provozu)|VMName|
+|Požadavek na čtení mezipaměti premium data|Požadavek na čtení mezipaměti premium data (náhled)|Procento|Průměr|Požadavek na čtení mezipaměti premium data|LUN,Název VM|
+|Chybět čtení mezipaměti premium data|Premium Data Disk Cache Číst Miss (Náhled)|Procento|Průměr|Chybět čtení mezipaměti premium data|LUN,Název VM|
+|Přístupový přístup ke čtení mezipaměti disku premium oS|Premium OS Disk Cache Čtení Hit (Náhled)|Procento|Průměr|Přístupový přístup ke čtení mezipaměti disku premium oS|VMName|
+|Premium OS Disk Cache Čtení Miss|Premium OS Disk Cache Číst Miss (Náhled)|Procento|Průměr|Premium OS Disk Cache Čtení Miss|VMName|
+|Síť celkem|Síť celkem|Bajty|Celkem|Počet bajtů přijatých ve všech síťových rozhraních virtuálním počítačem (příchozím provozem)|VMName|
+|Síť out celkem|Síť out celkem|Bajty|Celkem|Počet bajtů ve všech síťových rozhraních virtuálním počítačem (odchozí provoz)|VMName|
 
 
 ## <a name="microsoftcomputevirtualmachinescalesetsvirtualmachines"></a>Microsoft.Compute/virtualMachineScaleSets/virtualMachines
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|Procento CPU|Procento CPU|Procento|Průměr|Procento přidělených výpočetních jednotek, které virtuální počítače aktuálně používají|Žádné|
-|Síťové vstupy|Síť v fakturovatelný (zastaralé)|Bajty|Celkem|Počet fakturovatelných bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz) (zastaralé)|Žádné|
-|Síťové výstupy|Fakturovatelná odchozí síť (zastaralé)|Bajty|Celkem|Počet fakturovatelných bajtů vycházejících ze všech síťových rozhraní virtuálních počítačů (odchozí provoz) (zastaralé)|Žádné|
-|Bajty čtení z disku|Bajty čtení z disku|Bajty|Celkem|Bajty přečtené z disku během období monitorování|Žádné|
-|Bajty zápisu na disk|Bajty zápisu na disk|Bajty|Celkem|Bajty zapsané na disk během období monitorování|Žádné|
-|Operace čtení z disku/s|Operace čtení z disku/s|CountPerSecond|Průměr|Čtení z disku – IOPS|Žádné|
-|Operace zápisu na disk/s|Operace zápisu na disk/s|CountPerSecond|Průměr|Zápis na disk – IOPS|Žádné|
-|Zbývající kredity procesoru|Zbývající kredity procesoru|Počet|Průměr|Celkový počet kreditů dostupných pro shlukování|Žádné|
-|Spotřebované kredity procesoru|Spotřebované kredity procesoru|Počet|Průměr|Celkový počet kreditů spotřebovaných virtuálním počítačem|Žádné|
-|Přečtené bajty podle disku/s|Bajty přečtené z datového disku za sekundu (zastaralé)|CountPerSecond|Průměr|Počet bajtů za sekundu přečtených z jednoho disku během období monitorování|SlotId|
-|Bajty zápisu na disk/s|Bajty zapsané na datový disk za sekundu (zastaralé)|CountPerSecond|Průměr|Počet bajtů za sekundu zapsaných na jeden disk během období monitorování|SlotId|
-|Operace čtení na disk/s|Operace čtení z datového disku za sekundu (zastaralé)|CountPerSecond|Průměr|Čtení IOPS z jednoho disku během období monitorování|SlotId|
-|Operace zápisu na disk/s|Operace zápisu na datový disk za sekundu (zastaralé)|CountPerSecond|Průměr|Zápis IOPS z jednoho disku během období monitorování|SlotId|
-|Hloubka fronty na disk|Datový disk hloubka fronty (zastaralé)|Počet|Průměr|Hloubka fronty datových disků (nebo délka fronty)|SlotId|
-|Přečtené bajty v operačním systému na disk/s|Bajty přečtené z disku s operačním systémem/s (zastaralé)|CountPerSecond|Průměr|Počet bajtů za sekundu přečtených z jednoho disku během období monitorování pro disk s operačním systémem|Žádné|
-|Bajty zapsané v operačním systému na disk/s|Bajty zápisu na disk s operačním systémem/s (zastaralé)|CountPerSecond|Průměr|Počet bajtů za sekundu zapsaných na jeden disk během období monitorování pro disk s operačním systémem|Žádné|
-|Operace čtení z operačního systému na disk/s|Operace čtení z disku s operačním systémem za sekundu (zastaralé)|CountPerSecond|Průměr|Čtení IOPS z jednoho disku během období monitorování pro disk s operačním systémem|Žádné|
-|Operace zápisu v operačním systému na disk/s|Operace zápisu na disk s operačním systémem za sekundu (zastaralé)|CountPerSecond|Průměr|Zápis IOPS z jednoho disku během období monitorování pro disk s operačním systémem|Žádné|
-|Operační systém na disk hloubka fronty|Disk s operačním systémem hloubka fronty (zastaralé)|Počet|Průměr|Hloubka fronty disku s operačním systémem (nebo délka fronty)|Žádné|
-|Bajty přečtené z datového disku za sekundu|Bajty přečtené z datového disku za sekundu (Preview)|CountPerSecond|Průměr|Počet bajtů za sekundu přečtených z jednoho disku během období monitorování|LOGICKÉ JEDNOTKY|
-|Bajty zapsané na datový disk/s|Bajty zapsané na datový disk za sekundu (Preview)|CountPerSecond|Průměr|Počet bajtů za sekundu zapsaných na jeden disk během období monitorování|LOGICKÉ JEDNOTKY|
-|Operace čtení z datového disku za sekundu|Operace čtení z datového disku za sekundu (Preview)|CountPerSecond|Průměr|Čtení IOPS z jednoho disku během období monitorování|LOGICKÉ JEDNOTKY|
-|Operace zápisu na datový disk/s|Operace zápisu na datový disk za sekundu (Preview)|CountPerSecond|Průměr|Zápis IOPS z jednoho disku během období monitorování|LOGICKÉ JEDNOTKY|
-|Hloubka fronty datových disků|Hloubka fronty datových disků (Preview)|Počet|Průměr|Hloubka fronty datových disků (nebo délka fronty)|LOGICKÉ JEDNOTKY|
-|Bajty přečtené z disku s operačním systémem/s|Počet přečtených bajtů disku s operačním systémem za sekundu (Preview)|CountPerSecond|Průměr|Počet bajtů za sekundu přečtených z jednoho disku během období monitorování pro disk s operačním systémem|Žádné|
-|Bajty zápisu na disk s operačním systémem/s|Bajty zápisu na disk s operačním systémem za sekundu (Preview)|CountPerSecond|Průměr|Počet bajtů za sekundu zapsaných na jeden disk během období monitorování pro disk s operačním systémem|Žádné|
-|Operace čtení z disku s operačním systémem za sekundu|Operace čtení z disku s operačním systémem za sekundu (Preview)|CountPerSecond|Průměr|Čtení IOPS z jednoho disku během období monitorování pro disk s operačním systémem|Žádné|
-|Operace zápisu na disk s operačním systémem za sekundu|Operace zápisu na disk s operačním systémem za sekundu (Preview)|CountPerSecond|Průměr|Zápis IOPS z jednoho disku během období monitorování pro disk s operačním systémem|Žádné|
-|Hloubka fronty disku s operačním systémem|Hloubka fronty disku operačního systému (Preview)|Počet|Průměr|Hloubka fronty disku s operačním systémem (nebo délka fronty)|Žádné|
-|Příchozí toky|Příchozí toky|Počet|Průměr|Příchozí toky představují počet současných toků v příchozím směru (provoz směřující do virtuálního počítače).|Žádné|
-|Odchozí toky|Odchozí toky|Počet|Průměr|Odchozí toky představují počet současných toků v odchozím směru (provoz, který se odchází z virtuálního počítače).|Žádné|
-|Maximální rychlost vytváření příchozích toků|Míra vytváření maximálního počtu příchozích toků (Preview)|CountPerSecond|Průměr|Maximální rychlost vytváření příchozích toků (provoz, který do virtuálního počítače směřuje)|Žádné|
-|Maximální rychlost vytváření odchozích toků|Frekvence maximálního vytváření odchozích toků (Preview)|CountPerSecond|Průměr|Maximální rychlost vytváření odchozích toků (provoz, který se odchází z virtuálního počítače)|Žádné|
-|Počet přístupů do mezipaměti pro datový disk úrovně Premium|Počet přístupů do mezipaměti pro datový disk úrovně Premium (Preview)|Procento|Průměr|Počet přístupů do mezipaměti pro datový disk úrovně Premium|LOGICKÉ JEDNOTKY|
-|Neúspěšné čtení mezipaměti datových disků Premium|Neúspěšné čtení mezipaměti datových disků Premium (Preview)|Procento|Průměr|Neúspěšné čtení mezipaměti datových disků Premium|LOGICKÉ JEDNOTKY|
-|Počet přístupů do mezipaměti disku s operačním systémem Premium|Pozice pro čtení mezipaměti disku s operačním systémem Premium (Preview)|Procento|Průměr|Počet přístupů do mezipaměti disku s operačním systémem Premium|Žádné|
-|Neúspěšné čtení mezipaměti disku s operačním systémem Premium|Neúspěšné čtení mezipaměti disku s operačním systémem Premium (Preview)|Procento|Průměr|Neúspěšné čtení mezipaměti disku s operačním systémem Premium|Žádné|
-|Celková síť|Celková síť|Bajty|Celkem|Počet bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz)|Žádné|
-|Celkový počet síťových výstupů|Celkový počet síťových výstupů|Bajty|Celkem|Počet bajtů vycházejících ze všech síťových rozhraní virtuálních počítačů (odchozí provoz)|Žádné|
+|Procento CPU|Procento CPU|Procento|Průměr|Procento přidělených výpočetních jednotek, které jsou aktuálně používány virtuálním počítačem|Žádný|
+|Síťové vstupy|Fakturovatelné síťové (zastaralé)|Bajty|Celkem|Počet fakturovatelných bajtů přijatých ve všech síťových rozhraních virtuálním počítačem (příchozí provoz) (zastaralé)|Žádný|
+|Síťové výstupy|Vyúčtování sítě (zastaralé)|Bajty|Celkem|Počet fakturovatelných bajtů ve všech síťových rozhraních virtuálním počítačem (odchozí provoz) (zastaralé)|Žádný|
+|Bajty čtení disku|Bajty čtení disku|Bajty|Celkem|Bajty přečtené z disku během období sledování|Žádný|
+|Bajty zápisu disku|Bajty zápisu disku|Bajty|Celkem|Bajty zapsané na disk během období sledování|Žádný|
+|Operace čtení disku/s|Operace čtení disku/s|CountPerSecond|Průměr|VIS pro čtení disku|Žádný|
+|Operace zápisu na disk/s|Operace zápisu na disk/s|CountPerSecond|Průměr|Viposlužby pro zápis disku|Žádný|
+|Zbývající kredity procesoru|Zbývající kredity procesoru|Počet|Průměr|Celkový počet kreditů dostupných k výbuchu|Žádný|
+|Spotřebované kredity procesoru|Spotřebované kredity procesoru|Počet|Průměr|Celkový počet kreditů spotřebovaných virtuálním počítačem|Žádný|
+|Bajty pro čtení na disk/s|Čtení bajtů datového disku/s (zastaralé)|CountPerSecond|Průměr|Bajty/s čtení z jednoho disku během období sledování|SlotId|
+|Bajty zápisu na disk/s|Bajty zápisu datového disku/s (zastaralé)|CountPerSecond|Průměr|Bajty/s zapsané na jeden disk během období sledování|SlotId|
+|Operace čtení na disk/s|Operace čtení datového disku/s (zastaralé)|CountPerSecond|Průměr|Čtení vipozd z jednoho disku během období sledování|SlotId|
+|Operace zápisu na disk/s|Operace zápisu datového disku/s (zastaralé)|CountPerSecond|Průměr|Zápis viop z jednoho disku během období sledování|SlotId|
+|Na disk QD|Datový disk QD (zastaralé)|Počet|Průměr|Hloubka fronty datového disku (nebo délka fronty)|SlotId|
+|Bajty pro čtení na disk/s|Čtení bajtů/s disku operačního systému (zastaralé)|CountPerSecond|Průměr|Bajty/s čtení z jednoho disku během období sledování disku operačního systému|Žádný|
+|Bajty zápisu na disk na disk/s|Bajty zapisované na disku operačního systému/s (zastaralé)|CountPerSecond|Průměr|Bajty/s zapsané na jeden disk během období sledování disku operačního systému|Žádný|
+|Operace čtení na disk na disk/s|Operace čtení disku operačního systému/s (zastaralé)|CountPerSecond|Průměr|Čtení vipozd z jednoho disku během období sledování disku operačního systému|Žádný|
+|Operace zápisu na disk na disk/s|Operace zápisu disku operačního systému/s (zastaralé)|CountPerSecond|Průměr|Zápis viop ů z jednoho disku během období sledování disku operačního systému|Žádný|
+|Operační systém na disku QD|Operační disk QD (zastaralé)|Počet|Průměr|Hloubka fronty disku operačního systému (nebo délka fronty)|Žádný|
+|Čtení bajtů datového disku/s|Čtení bajtů datového disku/s (náhled)|CountPerSecond|Průměr|Bajty/s čtení z jednoho disku během období sledování|Lun|
+|Bajty zápisu datového disku/s|Bajty za zápis datového disku/s (náhled)|CountPerSecond|Průměr|Bajty/s zapsané na jeden disk během období sledování|Lun|
+|Operace čtení datového disku/s|Operace čtení datového disku/s (náhled)|CountPerSecond|Průměr|Čtení vipozd z jednoho disku během období sledování|Lun|
+|Operace zápisu datového disku/s|Operace zápisu datového disku/s (náhled)|CountPerSecond|Průměr|Zápis viop z jednoho disku během období sledování|Lun|
+|Hloubka fronty datového disku|Hloubka fronty datového disku (náhled)|Počet|Průměr|Hloubka fronty datového disku (nebo délka fronty)|Lun|
+|Bajty čtení disku operačního systému/s|Čtení bajtů/s disku operačního systému (náhled)|CountPerSecond|Průměr|Bajty/s čtení z jednoho disku během období sledování disku operačního systému|Žádný|
+|Bajty zápisu disku operačního systému/s|Bajty za zápis disku operačního systému/s (náhled)|CountPerSecond|Průměr|Bajty/s zapsané na jeden disk během období sledování disku operačního systému|Žádný|
+|Operace čtení disku operačního systému/s|Operace čtení disku operačního systému/s (náhled)|CountPerSecond|Průměr|Čtení vipozd z jednoho disku během období sledování disku operačního systému|Žádný|
+|Operace zápisu disku operačního systému/s|Operace zápisu disku operačního systému/s (náhled)|CountPerSecond|Průměr|Zápis viop ů z jednoho disku během období sledování disku operačního systému|Žádný|
+|Hloubka fronty disku s operačním systémem|Hloubka fronty disku operačního systému (náhled)|Počet|Průměr|Hloubka fronty disku operačního systému (nebo délka fronty)|Žádný|
+|Příchozí toky|Příchozí toky|Počet|Průměr|Příchozí toky jsou počet aktuálních toků ve směru příchozí (provoz směřující do virtuálního mísy)|Žádný|
+|Odchozí toky|Odchozí toky|Počet|Průměr|Odchozí toky jsou počet aktuálních toků v odchozím směru (provoz z virtuálního účtu)|Žádný|
+|Maximální míra vytvoření příchozích toků|Maximální míra vytvoření příchozích toků (náhled)|CountPerSecond|Průměr|Maximální rychlost vytváření příchozích toků (provoz do virtuálního provozu)|Žádný|
+|Maximální míra vytvoření odchozích toků|Maximální míra vytvoření odchozích toků (náhled)|CountPerSecond|Průměr|Maximální rychlost vytváření odchozích toků (přenos y odchozí z virtuálního provozu)|Žádný|
+|Požadavek na čtení mezipaměti premium data|Požadavek na čtení mezipaměti premium data (náhled)|Procento|Průměr|Požadavek na čtení mezipaměti premium data|Lun|
+|Chybět čtení mezipaměti premium data|Premium Data Disk Cache Číst Miss (Náhled)|Procento|Průměr|Chybět čtení mezipaměti premium data|Lun|
+|Přístupový přístup ke čtení mezipaměti disku premium oS|Premium OS Disk Cache Čtení Hit (Náhled)|Procento|Průměr|Přístupový přístup ke čtení mezipaměti disku premium oS|Žádný|
+|Premium OS Disk Cache Čtení Miss|Premium OS Disk Cache Číst Miss (Náhled)|Procento|Průměr|Premium OS Disk Cache Čtení Miss|Žádný|
+|Síť celkem|Síť celkem|Bajty|Celkem|Počet bajtů přijatých ve všech síťových rozhraních virtuálním počítačem (příchozím provozem)|Žádný|
+|Síť out celkem|Síť out celkem|Bajty|Celkem|Počet bajtů ve všech síťových rozhraních virtuálním počítačem (odchozí provoz)|Žádný|
 
 ## <a name="microsoftcontainerinstancecontainergroups"></a>Microsoft.ContainerInstance/containerGroups
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|CpuUsage|Využití CPU|Počet|Průměr|Využití CPU na všech jádrech v millicores.|containerName|
-|MemoryUsage|Využití paměti|Bajty|Průměr|Celkové využití paměti v bajtech|containerName|
-|NetworkBytesReceivedPerSecond|Počet přijatých bajtů sítě za sekundu|Bajty|Průměr|Počet přijatých bajtů sítě za sekundu.|Žádné|
-|NetworkBytesTransmittedPerSecond|Bajty přenášené přes síť za sekundu|Bajty|Průměr|Počet bajtů přenášených sítí za sekundu.|Žádné|
+|Využití procesoru|Využití procesoru|Počet|Průměr|Využití procesoru na všech jádrech v milijádrích.|containerName|
+|Využití paměti|Využití paměti|Bajty|Průměr|Celkové využití paměti v bajtu.|containerName|
+|NetworkBytesReceivedPerSecond|Přijaté síťové bajty za sekundu|Bajty|Průměr|Počet přijatých síťových bajtů za sekundu.|Žádný|
+|NetworkBytesTransmittedPerSecond|Přenesené síťové bajty za sekundu|Bajty|Průměr|Sítě se přenášejí za sekundu.|Žádný|
 
-## <a name="microsoftcontainerregistryregistries"></a>Microsoft.ContainerRegistry/registries
+## <a name="microsoftcontainerregistryregistries"></a>Microsoft.ContainerRegistry/registry
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|TotalPullCount|Celkový počet vyžádané replikace|Počet|Průměr|Celkový počet načtených dat imagí|Žádné|
-|SuccessfulPullCount|Počet úspěšných vyžádané replikace|Počet|Průměr|Počet úspěšných stažení imagí|Žádné|
-|TotalPushCount|Celkový počet nabízených oznámení|Počet|Průměr|Celkový počet nabízených oznámení imagí|Žádné|
-|SuccessfulPushCount|Počet úspěšných vložení|Počet|Průměr|Počet úspěšných vložení imagí|Žádné|
-|RunDuration|Doba trvání běhu|Milisekundy|Celkem|Doba běhu v milisekundách|Žádné|
+|TotalPullCount|Celkový počet tahů|Počet|Průměr|Celkový počet tažení obrázků|Žádný|
+|ÚspěšnýPullCount|Úspěšný počet pull|Počet|Průměr|Počet úspěšných bitových naležek|Žádný|
+|TotalPushCount|Celkový počet nabízených tiskovin|Počet|Průměr|Celkový počet nabízených oznámení obrázků|Žádný|
+|Úspěšný počet stisknuté hod.|Úspěšný počet nabízených kliby|Počet|Průměr|Počet úspěšných nabízených oznámení obrázku|Žádný|
+|Doba trvání běhu|Doba trvání spuštění|Milisekund|Celkem|Doba trvání běhu v milisekundách|Žádný|
 
 
-## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft.ContainerService/managedClusters
+## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft.ContainerService/spravované clustery
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|kube_node_status_allocatable_cpu_cores|Celkový počet dostupných jader procesoru ve spravovaném clusteru|Počet|Průměr|Celkový počet dostupných jader procesoru ve spravovaném clusteru|Žádné|
-|kube_node_status_allocatable_memory_bytes|Celková velikost dostupné paměti ve spravovaném clusteru|Bajty|Průměr|Celková velikost dostupné paměti ve spravovaném clusteru|Žádné|
-|kube_pod_status_ready|Počet lusků ve stavu připraveno|Počet|Průměr|Počet lusků ve stavu připraveno|obor názvů, pod|
-|kube_node_status_condition|Stavy pro různé podmínky uzlu|Počet|Průměr|Stavy pro různé podmínky uzlu|podmínka, stav, status2, uzel|
-|kube_pod_status_phase|Počet lusků podle fáze|Počet|Průměr|Počet lusků podle fáze|fáze, obor názvů pod|
+|kube_node_status_allocatable_cpu_cores|Celkový počet dostupných jader procesoru ve spravovaném clusteru|Počet|Průměr|Celkový počet dostupných jader procesoru ve spravovaném clusteru|Žádný|
+|kube_node_status_allocatable_memory_bytes|Celkové množství dostupné paměti ve spravovaném clusteru|Bajty|Průměr|Celkové množství dostupné paměti ve spravovaném clusteru|Žádný|
+|kube_pod_status_ready|Počet podů ve stavu Připraveno|Počet|Průměr|Počet podů ve stavu Připraveno|obor názvů,pod|
+|kube_node_status_condition|Stavy pro různé podmínky uzlu|Počet|Průměr|Stavy pro různé podmínky uzlu|podmínka,stav,stav2,uzel|
+|kube_pod_status_phase|Počet podů podle fáze|Počet|Průměr|Počet podů podle fáze|fáze,obor názvů,pod|
 
 
 
-## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft. CustomProviders/resourceproviders
+## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft.CustomProviders/resourceproviders
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|SuccessfullRequests|Úspěšné požadavky|Počet|Celkem|Úspěšné požadavky vytvořené vlastním poskytovatelem|HttpMethod, CallPath, StatusCode|
-|FailedRequests|Neúspěšné požadavky|Počet|Celkem|Získá dostupné protokoly pro vlastní poskytovatele prostředků.|HttpMethod, CallPath, StatusCode|
+|Úspěšné požadavky|Úspěšné požadavky|Počet|Celkem|Úspěšné požadavky provedené vlastním zprostředkovatelem|HttpMethod,CallPath,StatusCode|
+|Požadavky na selhání|Neúspěšné požadavky|Počet|Celkem|Získá dostupné protokoly pro vlastní zprostředkovatele prostředků|HttpMethod,CallPath,StatusCode|
 
 ## <a name="microsoftdataboxedgedataboxedgedevices"></a>Microsoft.DataBoxEdge/dataBoxEdgeDevices
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|NICReadThroughput|Propustnost čtení (síť)|BytesPerSecond|Průměr|Propustnost čtení síťového rozhraní v zařízení v období vytváření sestav pro všechny svazky v bráně.|InstanceName|
-|NICWriteThroughput|Propustnost zápisu (síť)|BytesPerSecond|Průměr|Propustnost zápisu síťového rozhraní v zařízení v období vytváření sestav pro všechny svazky v bráně.|InstanceName|
-|CloudReadThroughputPerShare|Propustnost stahování do cloudu (sdílení)|BytesPerSecond|Průměr|Propustnost stahování do Azure ze sdílené složky během období generování sestav.|Sdílená složka|
-|CloudUploadThroughputPerShare|Propustnost nahrávání do cloudu (sdílení)|BytesPerSecond|Průměr|Odeslání propustnosti do Azure ze sdílené složky během období generování sestav.|Sdílená složka|
-|BytesUploadedToCloudPerShare|Odeslané bajty v cloudu (sdílená složka)|Bajty|Průměr|Celkový počet bajtů odeslaných do Azure ze sdílené složky během období generování sestav.|Sdílená složka|
-|Úložiště|Celková kapacita|Bajty|Průměr|Celková kapacita|Žádné|
-|Availablecapacity;)|Dostupná kapacita|Bajty|Průměr|Dostupná kapacita v bajtech během období generování sestav.|Žádné|
-|CloudUploadThroughput|Propustnost nahrávání do cloudu|BytesPerSecond|Průměr|Propustnost nahrávání do cloudu do Azure během období generování sestav.|Žádné|
-|CloudReadThroughput|Propustnost stahování v cloudu|BytesPerSecond|Průměr|Propustnost stahování cloudu do Azure během období generování sestav.|Žádné|
-|BytesUploadedToCloud|Odeslané bajty v cloudu (zařízení)|Bajty|Průměr|Celkový počet bajtů odeslaných do Azure ze zařízení během období generování sestav.|Žádné|
-|HyperVVirtualProcessorUtilization|Výpočetní prostředí Edge – procento využití procesoru|Procento|Průměr|Procento využití procesoru|InstanceName|
-|HyperVMemoryUtilization|Výpočet využití paměti na hraničních zařízeních|Procento|Průměr|Velikost využité paměti RAM|InstanceName|
+|NicReadThroughput|Propustnost čtení (síť)|BajtyPerSekunda|Průměr|Propustnost čtení síťového rozhraní na zařízení v období vykazování pro všechny svazky v bráně.|Název_instance|
+|Průchodnost zápisu NIC|Propustnost zápisu (síť)|BajtyPerSekunda|Průměr|Propustnost zápisu síťového rozhraní na zařízení v období vykazování pro všechny svazky v bráně.|Název_instance|
+|CloudReadThroughputPerShare|Propustnost stahování v cloudu (sdílení)|BajtyPerSekunda|Průměr|Propustnost stahování do Azure ze sdílené složky během období vykazování.|Sdílet|
+|CloudUploadThroughputPerShare|Propustnost nahrávání v cloudu (sdílení)|BajtyPerSekunda|Průměr|Propustnost nahrávání do Azure ze sdílené složky během období vykazování.|Sdílet|
+|BajtůNahrálToCloudPerShare|Nahrané bajty v cloudu (sdílet)|Bajty|Průměr|Celkový počet bajtů, které se nahrají do Azure ze sdílené složky během vykazovaného období.|Sdílet|
+|Celková kapacita|Celková kapacita|Bajty|Průměr|Celková kapacita|Žádný|
+|Dostupná kapacita|Dostupná kapacita|Bajty|Průměr|Dostupná kapacita v bajtech během vykazovaného období.|Žádný|
+|CloudUploadThroughput|Propustnost nahrávání v cloudu|BajtyPerSekunda|Průměr|Propustnost cloudu nahrát do Azure během období vykazování.|Žádný|
+|CloudReadThroughput|Propustnost stahování v cloudu|BajtyPerSekunda|Průměr|Propustnost cloudu ke stažení do Azure během období vykazování.|Žádný|
+|BajtyNahranéToCloud|Nahrané bajty v cloudu (zařízení)|Bajty|Průměr|Celkový počet bajtů, které se nahrají do Azure ze zařízení během období vykazování.|Žádný|
+|Využití virtuálního procesoru HyperV|Edge Compute – procentuální procesor|Procento|Průměr|Procento využití procesoru|Název_instance|
+|Využití hypervmemory|Edge Compute – využití paměti|Procento|Průměr|Množství paměti RAM v provozu|Název_instance|
 
 
-## <a name="microsoftdatafactorydatafactories"></a>Microsoft. DataFactory/DataFactory
+## <a name="microsoftdatafactorydatafactories"></a>Microsoft.DataFactory/datafactories
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|FailedRuns|Neúspěšná spuštění|Počet|Celkem||profilace, Activity|
-|SuccessfulRuns|Úspěšná spuštění|Počet|Celkem||profilace, Activity|
+|Selhání spustí|Selhání spuštění|Počet|Celkem||pipelineName,activityName|
+|Úspěšné spuštění|Úspěšné spuštění|Počet|Celkem||pipelineName,activityName|
 
 
-## <a name="microsoftdatafactoryfactories"></a>Microsoft. DataFactory/továrny
+## <a name="microsoftdatafactoryfactories"></a>Microsoft.DataFactory/továrny
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|PipelineFailedRuns|Neúspěšná metrika spuštění kanálu|Počet|Celkem||FailureType, název|
-|PipelineSucceededRuns|Úspěšné metriky spuštění kanálu|Počet|Celkem||FailureType, název|
-|PipelineCancelledRuns|Zrušené metriky spuštění kanálu|Počet|Celkem||FailureType, název|
-|ActivityFailedRuns|Neúspěšná aktivita spustí metriky|Počet|Celkem||ActivityType, název kanálu, FailureType, název|
-|ActivitySucceededRuns|Úspěšná aktivita spustí metriky|Počet|Celkem||ActivityType, název kanálu, FailureType, název|
-|ActivityCancelledRuns|Zrušené metriky spuštění aktivit|Počet|Celkem||ActivityType, název kanálu, FailureType, název|
-|TriggerFailedRuns|Neúspěšná aktivační událost spustí metriky|Počet|Celkem||Název, FailureType|
-|TriggerSucceededRuns|Úspěšná aktivační událost spustí metriky|Počet|Celkem||Název, FailureType|
-|TriggerCancelledRuns|Zrušené aktivační události spustí metriky|Počet|Celkem||Název, FailureType|
-|IntegrationRuntimeCpuPercentage|Využití procesoru prostředí Integration runtime|Procento|Průměr||IntegrationRuntimeName, Node|
-|IntegrationRuntimeAvailableMemory|Dostupná paměť modulu runtime integrace|Bajty|Průměr||IntegrationRuntimeName, Node|
-|IntegrationRuntimeAverageTaskPickupDelay|Doba trvání fronty prostředí Integration runtime|Sekundy|Průměr||IntegrationRuntimeName|
-|IntegrationRuntimeQueueLength|Délka fronty prostředí Integration runtime|Počet|Průměr||IntegrationRuntimeName|
-|IntegrationRuntimeAvailableNodeNumber|Počet dostupných uzlů prostředí Integration runtime|Počet|Průměr||IntegrationRuntimeName|
-|MaxAllowedResourceCount|Maximální počet povolených entit|Počet|Maximum||Žádné|
-|MaxAllowedFactorySizeInGbUnits|Maximální povolená velikost továrny (jednotka GB)|Počet|Maximum||Žádné|
-|ResourceCount|Celkový počet entit|Počet|Maximum||Žádné|
-|FactorySizeInGbUnits|Celková velikost továrny (jednotka GB)|Počet|Maximum||Žádné|
+|Spuštění pipelinefailedruns|Metriky spuštění neúspěšného kanálu|Počet|Celkem||Typ selhání,Název|
+|PipelineSucceededRuns|Úspěšné metriky spuštění kanálu|Počet|Celkem||Typ selhání,Název|
+|PipelineCancelledRuns|Zrušené kanály spouští metriky|Počet|Celkem||Typ selhání,Název|
+|ActivityFailedRuns|Neúspěšná aktivita spustí metriky|Počet|Celkem||ActivityType,PipelineName,FailureType,Name|
+|Úspěšné spuštění aktivity|Úspěšná aktivita spustí metriky|Počet|Celkem||ActivityType,PipelineName,FailureType,Name|
+|ActivityCancelledRuns|Zrušená aktivita spustí metriky|Počet|Celkem||ActivityType,PipelineName,FailureType,Name|
+|Spuštění spouštění|Metriky spuštění aktivační události se nezdařilo.|Počet|Celkem||Název,Typ selhání|
+|TriggerSucceededRuns|Úspěšné aktivační události spustí metriky|Počet|Celkem||Název,Typ selhání|
+|TriggerCancelledRuns|Zrušené aktivační události spustí metriky|Počet|Celkem||Název,Typ selhání|
+|IntegraceRuntimeCpuProcento|Využití procesoru runtime integrace|Procento|Průměr||IntegrationRunTimeName,NodeName|
+|IntegrationRuntimeAvailableMemory|Integrační paměť s runtime|Bajty|Průměr||IntegrationRunTimeName,NodeName|
+|IntegrationRuntimeAverageTaskPickupDelay|Doba trvání fronty za běhu integrace|Sekundy|Průměr||IntegrationRuntimeName|
+|IntegrationRuntimeQueueLength|Délka fronty za běhu integrace|Počet|Průměr||IntegrationRuntimeName|
+|IntegrationRuntimeAvailableNodeNumber|Počet dostupných uzlů za běhu integrace|Počet|Průměr||IntegrationRuntimeName|
+|MaxAllowedResourceCount|Počet maximálních povolených entit|Počet|Maximum||Žádný|
+|MaxAllowedFactorySizeIngbUnits|Maximální povolená tovární velikost (jednotka GB)|Počet|Maximum||Žádný|
+|ResourceCount|Celkový počet entit|Počet|Maximum||Žádný|
+|FactorySizeInGbUnits|Celková velikost továrny (GB jednotka)|Počet|Maximum||Žádný|
 
-## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.DataLakeAnalytics/accounts
+## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.DataLakeAnalytics/účty
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|JobEndedSuccess|Úspěšné úlohy|Počet|Celkem|Počet úspěšných úloh|Žádné|
-|JobEndedFailure|Neúspěšné úlohy|Počet|Celkem|Počet neúspěšných úloh|Žádné|
-|JobEndedCancelled|Zrušené úlohy|Počet|Celkem|Počet zrušených úloh|Žádné|
-|JobAUEndedSuccess|Úspěšná doba AU|Sekundy|Celkem|Celková doba AU pro úspěšné úlohy.|Žádné|
-|JobAUEndedFailure|Neúspěšná doba aktualizace AU|Sekundy|Celkem|Celková doba AU pro neúspěšné úlohy.|Žádné|
-|JobAUEndedCancelled|Čas AU se zrušil.|Sekundy|Celkem|Celková doba AU pro zrušené úlohy.|Žádné|
+|JobEndedÚspěch|Úspěšná pracovní místa|Počet|Celkem|Počet úspěšných úloh.|Žádný|
+|JobendedSelhání|Neúspěšné úlohy|Počet|Celkem|Počet neúspěšných úloh.|Žádný|
+|Úloha Byla zrušena.|Zrušené úlohy|Počet|Celkem|Počet zrušených úloh.|Žádný|
+|JobauendedÚspěch|Úspěšný čas AU|Sekundy|Celkem|Celkový čas AU pro úspěšné úlohy.|Žádný|
+|JobauendedSelhání|Neúspěšný čas au|Sekundy|Celkem|Celkový čas AU pro neúspěšné úlohy.|Žádný|
+|JobAUEndedZrušeno|Zrušený čas AU|Sekundy|Celkem|Celkový čas AU pro zrušené úlohy.|Žádný|
 
 
-## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.DataLakeStore/accounts
+## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.DataLakeStore/účty
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|TotalStorage|Celková velikost úložiště|Bajty|Maximum|Celková velikost dat uložených v účtu.|Žádné|
-|Napsáno|Zapsaná data|Bajty|Celkem|Celkové množství dat zapsaných na účet.|Žádné|
-|DataRead|Přečtená data|Bajty|Celkem|Celkový objem dat načtených z účtu.|Žádné|
-|WriteRequests|Požadavky na zápis|Počet|Celkem|Počet požadavků na zápis dat na účet.|Žádné|
-|ReadRequests|Žádosti o čtení|Počet|Celkem|Počet požadavků na čtení dat pro účet.|Žádné|
+|TotalStorage|Celkové úložiště|Bajty|Maximum|Celkové množství dat uložených v účtu.|Žádný|
+|DataWritten|Zapsaná data|Bajty|Celkem|Celkové množství dat zapsaných na účet.|Žádný|
+|Čtení dat|Čtení dat|Bajty|Celkem|Celkové množství dat přečtených z účtu.|Žádný|
+|Požadavky na zápis|Psát požadavky|Počet|Celkem|Počet požadavků na zápis dat do účtu.|Žádný|
+|ReadRequests|Číst požadavky|Počet|Celkem|Počet požadavků na čtení dat k účtu.|Žádný|
 
 
-## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
+## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servery
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|cpu_percent|Procento využití procesoru|Procento|Průměr|Procento využití procesoru|Žádné|
-|memory_percent|Procentuální hodnota paměti|Procento|Průměr|Procentuální hodnota paměti|Žádné|
-|io_consumption_percent|V/v procenta|Procento|Průměr|V/v procenta|Žádné|
-|storage_percent|Procento úložiště|Procento|Průměr|Procento úložiště|Žádné|
-|storage_used|Využité úložiště|Bajty|Průměr|Využité úložiště|Žádné|
-|storage_limit|Omezení úložiště|Bajty|Maximum|Omezení úložiště|Žádné|
-|serverlog_storage_percent|Procentuální hodnota úložiště protokolu serveru|Procento|Průměr|Procentuální hodnota úložiště protokolu serveru|Žádné|
-|serverlog_storage_usage|Využité úložiště protokolu serveru|Bajty|Průměr|Využité úložiště protokolu serveru|Žádné|
-|serverlog_storage_limit|Limit úložiště protokolu serveru|Bajty|Průměr|Limit úložiště protokolu serveru|Žádné|
-|active_connections|Aktivní připojení|Počet|Průměr|Aktivní připojení|Žádné|
-|connections_failed|Neúspěšná připojení|Počet|Celkem|Neúspěšná připojení|Žádné|
-|seconds_behind_master|Prodleva replikace v sekundách|Počet|Maximum|Prodleva replikace v sekundách|Žádné|
-|backup_storage_used|Využité úložiště záloh|Bajty|Průměr|Využité úložiště záloh|Žádné|
-|network_bytes_egress|Síťové výstupy|Bajty|Celkem|Vyprší síť napříč aktivními připojeními|Žádné|
-|network_bytes_ingress|Síťové vstupy|Bajty|Celkem|Síť v rámci aktivních připojení|Žádné|
+|cpu_percent|Procento procesoru|Procento|Průměr|Procento procesoru|Žádný|
+|memory_percent|Procento paměti|Procento|Průměr|Procento paměti|Žádný|
+|io_consumption_percent|IO procent|Procento|Průměr|IO procent|Žádný|
+|storage_percent|Procento úložiště|Procento|Průměr|Procento úložiště|Žádný|
+|storage_used|Použité úložiště|Bajty|Průměr|Použité úložiště|Žádný|
+|storage_limit|Limit úložiště|Bajty|Maximum|Limit úložiště|Žádný|
+|serverlog_storage_percent|Procento úložiště protokolu serveru|Procento|Průměr|Procento úložiště protokolu serveru|Žádný|
+|serverlog_storage_usage|Použité úložiště protokolu serveru|Bajty|Průměr|Použité úložiště protokolu serveru|Žádný|
+|serverlog_storage_limit|Limit úložiště protokolu serveru|Bajty|Průměr|Limit úložiště protokolu serveru|Žádný|
+|active_connections|Aktivní připojení|Počet|Průměr|Aktivní připojení|Žádný|
+|connections_failed|Neúspěšná připojení|Počet|Celkem|Neúspěšná připojení|Žádný|
+|seconds_behind_master|Zpoždění replikace v sekundách|Počet|Maximum|Zpoždění replikace v sekundách|Žádný|
+|backup_storage_used|Použité úložiště záloh|Bajty|Průměr|Použité úložiště záloh|Žádný|
+|network_bytes_egress|Síťové výstupy|Bajty|Celkem|Síť mezi aktivními připojeními|Žádný|
+|network_bytes_ingress|Síťové vstupy|Bajty|Celkem|Síť v napříč aktivními připojeními|Žádný|
 
 
-## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
+## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servery
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|cpu_percent|Procento využití procesoru|Procento|Průměr|Procento využití procesoru|Žádné|
-|memory_percent|Procentuální hodnota paměti|Procento|Průměr|Procentuální hodnota paměti|Žádné|
-|io_consumption_percent|V/v procenta|Procento|Průměr|V/v procenta|Žádné|
-|storage_percent|Procento úložiště|Procento|Průměr|Procento úložiště|Žádné|
-|storage_used|Využité úložiště|Bajty|Průměr|Využité úložiště|Žádné|
-|storage_limit|Omezení úložiště|Bajty|Maximum|Omezení úložiště|Žádné|
-|serverlog_storage_percent|Procentuální hodnota úložiště protokolu serveru|Procento|Průměr|Procentuální hodnota úložiště protokolu serveru|Žádné|
-|serverlog_storage_usage|Využité úložiště protokolu serveru|Bajty|Průměr|Využité úložiště protokolu serveru|Žádné|
-|serverlog_storage_limit|Limit úložiště protokolu serveru|Bajty|Maximum|Limit úložiště protokolu serveru|Žádné|
-|active_connections|Aktivní připojení|Počet|Průměr|Aktivní připojení|Žádné|
-|connections_failed|Neúspěšná připojení|Počet|Celkem|Neúspěšná připojení|Žádné|
-|seconds_behind_master|Prodleva replikace v sekundách|Počet|Maximum|Prodleva replikace v sekundách|Žádné|
-|backup_storage_used|Využité úložiště záloh|Bajty|Průměr|Využité úložiště záloh|Žádné|
-|network_bytes_egress|Síťové výstupy|Bajty|Celkem|Vyprší síť napříč aktivními připojeními|Žádné|
-|network_bytes_ingress|Síťové vstupy|Bajty|Celkem|Síť v rámci aktivních připojení|Žádné|
+|cpu_percent|Procento procesoru|Procento|Průměr|Procento procesoru|Žádný|
+|memory_percent|Procento paměti|Procento|Průměr|Procento paměti|Žádný|
+|io_consumption_percent|IO procent|Procento|Průměr|IO procent|Žádný|
+|storage_percent|Procento úložiště|Procento|Průměr|Procento úložiště|Žádný|
+|storage_used|Použité úložiště|Bajty|Průměr|Použité úložiště|Žádný|
+|storage_limit|Limit úložiště|Bajty|Maximum|Limit úložiště|Žádný|
+|serverlog_storage_percent|Procento úložiště protokolu serveru|Procento|Průměr|Procento úložiště protokolu serveru|Žádný|
+|serverlog_storage_usage|Použité úložiště protokolu serveru|Bajty|Průměr|Použité úložiště protokolu serveru|Žádný|
+|serverlog_storage_limit|Limit úložiště protokolu serveru|Bajty|Maximum|Limit úložiště protokolu serveru|Žádný|
+|active_connections|Aktivní připojení|Počet|Průměr|Aktivní připojení|Žádný|
+|connections_failed|Neúspěšná připojení|Počet|Celkem|Neúspěšná připojení|Žádný|
+|seconds_behind_master|Zpoždění replikace v sekundách|Počet|Maximum|Zpoždění replikace v sekundách|Žádný|
+|backup_storage_used|Použité úložiště záloh|Bajty|Průměr|Použité úložiště záloh|Žádný|
+|network_bytes_egress|Síťové výstupy|Bajty|Celkem|Síť mezi aktivními připojeními|Žádný|
+|network_bytes_ingress|Síťové vstupy|Bajty|Celkem|Síť v napříč aktivními připojeními|Žádný|
 
 
-## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
+## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servery
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|cpu_percent|Procento využití procesoru|Procento|Průměr|Procento využití procesoru|Žádné|
-|memory_percent|Procentuální hodnota paměti|Procento|Průměr|Procentuální hodnota paměti|Žádné|
-|io_consumption_percent|V/v procenta|Procento|Průměr|V/v procenta|Žádné|
-|storage_percent|Procento úložiště|Procento|Průměr|Procento úložiště|Žádné|
-|storage_used|Využité úložiště|Bajty|Průměr|Využité úložiště|Žádné|
-|storage_limit|Omezení úložiště|Bajty|Maximum|Omezení úložiště|Žádné|
-|serverlog_storage_percent|Procentuální hodnota úložiště protokolu serveru|Procento|Průměr|Procentuální hodnota úložiště protokolu serveru|Žádné|
-|serverlog_storage_usage|Využité úložiště protokolu serveru|Bajty|Průměr|Využité úložiště protokolu serveru|Žádné|
-|serverlog_storage_limit|Limit úložiště protokolu serveru|Bajty|Maximum|Limit úložiště protokolu serveru|Žádné|
-|active_connections|Aktivní připojení|Počet|Průměr|Aktivní připojení|Žádné|
-|connections_failed|Neúspěšná připojení|Počet|Celkem|Neúspěšná připojení|Žádné|
-|backup_storage_used|Využité úložiště záloh|Bajty|Průměr|Využité úložiště záloh|Žádné|
-|network_bytes_egress|Síťové výstupy|Bajty|Celkem|Vyprší síť napříč aktivními připojeními|Žádné|
-|network_bytes_ingress|Síťové vstupy|Bajty|Celkem|Síť v rámci aktivních připojení|Žádné|
-|pg_replica_log_delay_in_seconds|Prodleva repliky|Sekundy|Maximum|Prodleva repliky v sekundách|Žádné|
-|pg_replica_log_delay_in_bytes|Maximální prodleva napříč replikami|Bajty|Maximum|Prodleva z největšího zpoždění repliky v bajtech|Žádné|
+|cpu_percent|Procento procesoru|Procento|Průměr|Procento procesoru|Žádný|
+|memory_percent|Procento paměti|Procento|Průměr|Procento paměti|Žádný|
+|io_consumption_percent|IO procent|Procento|Průměr|IO procent|Žádný|
+|storage_percent|Procento úložiště|Procento|Průměr|Procento úložiště|Žádný|
+|storage_used|Použité úložiště|Bajty|Průměr|Použité úložiště|Žádný|
+|storage_limit|Limit úložiště|Bajty|Maximum|Limit úložiště|Žádný|
+|serverlog_storage_percent|Procento úložiště protokolu serveru|Procento|Průměr|Procento úložiště protokolu serveru|Žádný|
+|serverlog_storage_usage|Použité úložiště protokolu serveru|Bajty|Průměr|Použité úložiště protokolu serveru|Žádný|
+|serverlog_storage_limit|Limit úložiště protokolu serveru|Bajty|Maximum|Limit úložiště protokolu serveru|Žádný|
+|active_connections|Aktivní připojení|Počet|Průměr|Aktivní připojení|Žádný|
+|connections_failed|Neúspěšná připojení|Počet|Celkem|Neúspěšná připojení|Žádný|
+|backup_storage_used|Použité úložiště záloh|Bajty|Průměr|Použité úložiště záloh|Žádný|
+|network_bytes_egress|Síťové výstupy|Bajty|Celkem|Síť mezi aktivními připojeními|Žádný|
+|network_bytes_ingress|Síťové vstupy|Bajty|Celkem|Síť v napříč aktivními připojeními|Žádný|
+|pg_replica_log_delay_in_seconds|Zpoždění replik|Sekundy|Maximum|Zpoždění repliky v sekundách|Žádný|
+|pg_replica_log_delay_in_bytes|Maximální zpoždění mezi replikami|Bajty|Maximum|Zpoždění v bajtů nejvíce zaostávající repliky|Žádný|
 
 
 ## <a name="microsoftdbforpostgresqlserversv2"></a>Microsoft.DBforPostgreSQL/serversv2
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|cpu_percent|Procento využití procesoru|Procento|Průměr|Procento využití procesoru|Žádné|
-|memory_percent|Procentuální hodnota paměti|Procento|Průměr|Procentuální hodnota paměti|Žádné|
-|IOPS|IOPS|Počet|Průměr|Vstupně-výstupní operace za sekundu|Žádné|
-|storage_percent|Procento úložiště|Procento|Průměr|Procento úložiště|Žádné|
-|storage_used|Využité úložiště|Bajty|Průměr|Využité úložiště|Žádné|
-|active_connections|Aktivní připojení|Počet|Průměr|Aktivní připojení|Žádné|
-|network_bytes_egress|Síťové výstupy|Bajty|Celkem|Vyprší síť napříč aktivními připojeními|Žádné|
-|network_bytes_ingress|Síťové vstupy|Bajty|Celkem|Síť v rámci aktivních připojení|Žádné|
+|cpu_percent|Procento procesoru|Procento|Průměr|Procento procesoru|Žádný|
+|memory_percent|Procento paměti|Procento|Průměr|Procento paměti|Žádný|
+|Iops|IOPS|Počet|Průměr|IO Operace za sekundu|Žádný|
+|storage_percent|Procento úložiště|Procento|Průměr|Procento úložiště|Žádný|
+|storage_used|Použité úložiště|Bajty|Průměr|Použité úložiště|Žádný|
+|active_connections|Aktivní připojení|Počet|Průměr|Aktivní připojení|Žádný|
+|network_bytes_egress|Síťové výstupy|Bajty|Celkem|Síť mezi aktivními připojeními|Žádný|
+|network_bytes_ingress|Síťové vstupy|Bajty|Celkem|Síť v napříč aktivními připojeními|Žádný|
 
 
 
@@ -871,1276 +871,1276 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.Devices/IotHubs
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|d2c.telemetry.ingress.allProtocol|Počet pokusů o odeslání zprávy telemetrie|Počet|Celkem|Počet zpráv typu zařízení-Cloud telemetrie, které se pokusily o odeslání do služby IoT Hub|Žádné|
-|d2c.telemetry.ingress.success|Odeslané zprávy telemetrie|Počet|Celkem|Počet zpráv telemetrie typu zařízení-Cloud, které se úspěšně odeslaly do služby IoT Hub|Žádné|
-|c2d.commands.egress.complete.success|Doručení zpráv C2D bylo dokončeno.|Počet|Celkem|Počet úspěšně dokončených doručení zpráv typu cloud-zařízení do zařízení|Žádné|
-|c2d.commands.egress.abandon.success|Zrušené zprávy C2D|Počet|Celkem|Počet zpráv typu cloud-zařízení opuštěných zařízením|Žádné|
-|c2d.commands.egress.reject.success|Odmítnuté zprávy C2D|Počet|Celkem|Počet zpráv typu cloud-zařízení odmítnutých zařízením|Žádné|
-|C2DMessagesExpired|C2D zprávy prošly (Preview)|Počet|Celkem|Počet zpráv typu cloud-zařízení, jejichž platnost vypršela|Žádné|
-|devices.totalDevices|Celkem zařízení (zastaralé)|Počet|Celkem|Počet zařízení zaregistrovaných ve službě IoT Hub|Žádné|
-|devices.connectedDevices.allProtocol|Připojená zařízení (zastaralé) |Počet|Celkem|Počet zařízení připojených ke službě IoT Hub|Žádné|
-|d2c.telemetry.egress.success|Směrování: doručené zprávy telemetrie|Počet|Celkem|Počet pokusů o úspěšné doručení zpráv do všech koncových bodů pomocí směrování IoT Hub. Pokud je zpráva směrována do více koncových bodů, tato hodnota se u každého úspěšného doručení zvyšuje o jednu. Pokud se zpráva doručí do stejného koncového bodu víckrát, tato hodnota se u každého úspěšného doručení zvyšuje o jednu.|Žádné|
-|d2c.telemetry.egress.dropped|Směrování: vyřazené zprávy telemetrie |Počet|Celkem|Počet pokusů o vyřazení zpráv IoT Hub směrování z důvodu nedoručených koncových bodů. Tato hodnota nepočítá počet zpráv doručených do záložní trasy, protože se tam nedoručují vyřazené zprávy.|Žádné|
-|d2c.telemetry.egress.orphaned|Směrování: osamocené zprávy telemetrie |Počet|Celkem|Počet, kolikrát byly zprávy osamocené IoT Hub směrování, protože neodpovídaly pravidlům směrování (včetně záložního pravidla). |Žádné|
-|d2c.telemetry.egress.invalid|Směrování: nekompatibilní zprávy telemetrie|Počet|Celkem|Počet, kolikrát IoT Hub směrování nedokázala doručovat zprávy z důvodu nekompatibility s koncovým bodem. Tato hodnota nezahrnuje opakované pokusy.|Žádné|
-|d2c.telemetry.egress.fallback|Směrování: zprávy doručené do záložního režimu|Počet|Celkem|Počet, kolikrát IoT Hub směrování doručených zpráv do koncového bodu přidruženého k záložní trase.|Žádné|
-|d2c.endpoints.egress.eventHubs|Směrování: zprávy doručené do centra událostí|Počet|Celkem|Počet, kolikrát IoT Hub směrování úspěšně doručuje zprávy do koncových bodů centra událostí.|Žádné|
-|d2c.endpoints.latency.eventHubs|Směrování: latence zprávy pro centrum událostí|Milisekundy|Průměr|Průměrná latence (v milisekundách) mezi příchozími a příchozími zprávami IoT Hub a příchozími zprávami do koncového bodu centra událostí.|Žádné|
-|d2c.endpoints.egress.serviceBusQueues|Směrování: zprávy doručené do fronty Service Bus|Počet|Celkem|Počet, kolikrát IoT Hub směrování úspěšně doručuje zprávy do koncových bodů fronty Service Bus|Žádné|
-|d2c.endpoints.latency.serviceBusQueues|Směrování: latence zprávy pro Service Bus frontu|Milisekundy|Průměr|Průměrná latence (v milisekundách) mezi vstupem zprávy a IoT Hub a zpráv telemetrie do koncového bodu fronty Service Bus|Žádné|
-|d2c.endpoints.egress.serviceBusTopics|Směrování: zprávy doručené do Service Bus tématu|Počet|Celkem|Počet, kolikrát IoT Hub směrování úspěšně doručuje zprávy do koncových bodů tématu Service Bus.|Žádné|
-|d2c.endpoints.latency.serviceBusTopics|Směrování: latence zprávy pro Service Bus téma|Milisekundy|Průměr|Průměrná latence (v milisekundách) mezi vstupem zprávy a IoT Hub a zpráv telemetrie do koncového bodu Service Bus tématu.|Žádné|
-|d2c.endpoints.egress.builtIn.events|Směrování: zprávy doručené zprávám/událostem|Počet|Celkem|Počet, kolikrát IoT Hub směrování úspěšně doručuje zprávy do integrovaného koncového bodu (zprávy/události).|Žádné|
-|d2c.endpoints.latency.builtIn.events|Směrování: latence zpráv pro zprávy/události|Milisekundy|Průměr|Průměrná latence (v milisekundách) mezi vstupem zprávy a IoT Hub a zprávou telemetrie do integrovaného koncového bodu (zprávy/události)|Žádné|
-|d2c.endpoints.egress.storage|Směrování: zprávy doručené do úložiště|Počet|Celkem|Počet pokusů, IoT Hub směrování úspěšně doručuje zprávy do koncových bodů úložiště.|Žádné|
-|D2C. Endpoints. latence. Storage|Směrování: latence zpráv pro úložiště|Milisekundy|Průměr|Průměrná latence (v milisekundách) mezi příchozími a příchozími zprávami pro IoT Hub a zprávy telemetrie do koncového bodu úložiště|Žádné|
-|d2c.endpoints.egress.storage.bytes|Směrování: data Doručená do úložiště|Bajty|Celkem|Množství dat (v bajtech) IoT Hub směrování doručené koncovým bodům úložiště.|Žádné|
-|d2c.endpoints.egress.storage.blobs|Směrování: objekty blob doručené do úložiště|Počet|Celkem|Počet pokusů IoT Hub směrování dodaných objektů blob do koncových bodů úložiště.|Žádné|
-|EventGridDeliveries|Event Grid doručení (Preview)|Počet|Celkem|Počet událostí IoT Hub publikovaných do Event Grid Použijte výslednou dimenzi pro počet úspěšných a neúspěšných žádostí. Dimenze EventType zobrazuje typ události (https://aka.ms/ioteventgrid).|ResourceId, výsledek, EventType|
-|EventGridLatency|Latence Event Grid (Preview)|Milisekundy|Průměr|Průměrná latence (v milisekundách) od okamžiku, kdy byla událost centra IoT vygenerována při publikování události do Event Grid. Toto číslo je průměrem mezi všemi typy událostí. Použijte dimenzi EventType k zobrazení latence konkrétního typu události.|ResourceId, EventType|
-|d2c.twin.read.success|Úspěšné čtení ze zařízení|Počet|Celkem|Počet všech úspěšných zdvojených čtení iniciované zařízením|Žádné|
-|d2c.twin.read.failure|Neúspěšná čtení ze zařízení|Počet|Celkem|Počet všech neúspěšných čtení, která byla iniciována zařízením.|Žádné|
-|d2c.twin.read.size|Velikost odpovědi u dvojitých čtení ze zařízení|Bajty|Průměr|Průměrná, minimální a maximální hodnota všech úspěšných zdvojených čtení iniciované zařízením|Žádné|
-|d2c.twin.update.success|Úspěšné nedokončené změny ze zařízení|Počet|Celkem|Počet všech úspěšných nevyžádaných aktualizací iniciované zařízením|Žádné|
-|d2c.twin.update.failure|Neúspěšné aktualizace ze zařízení se zdvojenými chybami|Počet|Celkem|Počet všech neúspěšných aktualizací inicializovaných zařízením.|Žádné|
-|d2c.twin.update.size|Velikost dvojitě aktualizovaných aktualizací ze zařízení|Bajty|Průměr|Průměrná, minimální a maximální velikost všech úspěšných nevyžádaných aktualizací iniciované zařízením|Žádné|
-|c2d.methods.success|Úspěšná volání přímé metody|Počet|Celkem|Počet všech úspěšných volání přímé metody.|Žádné|
-|C2D. Methods. Failure|Neúspěšná volání přímé metody|Počet|Celkem|Počet všech neúspěšných volání metody Direct|Žádné|
-|c2d.methods.requestSize|Velikost žádosti o vyvolání přímé metody|Bajty|Průměr|Průměrně, minimální a maximální počet všech úspěšných požadavků na metodu Direct.|Žádné|
-|c2d.methods.responseSize|Velikost odezvy volání přímých metod|Bajty|Průměr|Průměrných, minimálních a maximálních odpovědí všech úspěšných přímých metod.|Žádné|
-|c2d.twin.read.success|Úspěšné zdvojené čtení z back-endu|Počet|Celkem|Počet všech úspěšných zdvojených čtení spouštěných back-endu.|Žádné|
-|c2d.twin.read.failure|Neúspěšné čtení z back-endu ze zadních vláken|Počet|Celkem|Počet všech neúspěšných čtení, která byla inicializována back-endu.|Žádné|
-|c2d.twin.read.size|Velikost odpovědi zdvojeného čtení z back-endu|Bajty|Průměr|Průměrně, minimální a maximální počet všech úspěšných zdvojených čtení, které byly spuštěny na konci.|Žádné|
-|c2d.twin.update.success|Úspěšné zdvojené aktualizace z back-endu|Počet|Celkem|Počet všech úspěšných dokončených aktualizací, které jsou úspěšně spouštěny po konci.|Žádné|
-|c2d.twin.update.failure|Neúspěšné zdvojené aktualizace z back-endu|Počet|Celkem|Počet všech neúspěšných provolaných aktualizací, které selhaly po back-endu.|Žádné|
-|c2d.twin.update.size|Velikost dvojitě aktualizovaných aktualizací z back-endu|Bajty|Průměr|Průměrná, minimální a maximální velikost všech úspěšných kompletních aktualizací spuštěných na konci.|Žádné|
-|twinQueries.success|Úspěšné zdvojené dotazy|Počet|Celkem|Počet všech úspěšných vlákenných dotazů.|Žádné|
-|twinQueries.failure|Neúspěšné zdvojené dotazy|Počet|Celkem|Počet všech neúspěšných dotazů, které selhaly.|Žádné|
-|twinQueries.resultSize|Velikost výsledku nevlákenných dotazů|Bajty|Průměr|Průměrnou, minimální a maximální velikost výsledku všech úspěšných vlákenných dotazů.|Žádné|
-|jobs.createTwinUpdateJob.success|Úspěšné vytváření zdvojených úloh aktualizace|Počet|Celkem|Počet všech úspěšných vytvoření zdvojených úloh aktualizace.|Žádné|
-|jobs.createTwinUpdateJob.failure|Nepovedlo se vytvořit úlohy s dvojitou aktualizací|Počet|Celkem|Počet všech neúspěšných vytvoření zdvojených úloh aktualizace.|Žádné|
-|jobs.createDirectMethodJob.success|Úspěšné vytváření úloh vyvolání metod|Počet|Celkem|Počet všech úspěšných vytvoření úloh vyvolání přímé metody.|Žádné|
-|jobs.createDirectMethodJob.failure|Nepovedlo se vytvořit úlohy vyvolání metody|Počet|Celkem|Počet všech neúspěšných vytvoření úloh volání přímé metody.|Žádné|
-|jobs.listJobs.success|Úspěšná volání na seznam úloh|Počet|Celkem|Počet všech úspěšných volání pro výpis úloh.|Žádné|
-|jobs.listJobs.failure|Neúspěšná volání pro výpis úloh|Počet|Celkem|Počet všech neúspěšných volání pro výpis úloh|Žádné|
-|jobs.cancelJob.success|Úspěšná zrušení úlohy|Počet|Celkem|Počet všech úspěšných volání pro zrušení úlohy.|Žádné|
-|jobs.cancelJob.failure|Neúspěšná zrušení úloh|Počet|Celkem|Počet všech neúspěšných volání pro zrušení úlohy.|Žádné|
-|jobs.queryJobs.success|Úspěšné dotazy na úlohy|Počet|Celkem|Počet všech úspěšných volání úloh dotazů.|Žádné|
-|jobs.queryJobs.failure|Neúspěšné dotazy na úlohy|Počet|Celkem|Počet všech neúspěšných volání pro úlohy dotazu.|Žádné|
-|dokončené úlohy|Dokončené úlohy|Počet|Celkem|Počet všech dokončených úloh.|Žádné|
-|úlohy. nezdařilo se|Neúspěšné úlohy|Počet|Celkem|Počet všech neúspěšných úloh.|Žádné|
-|d2c.telemetry.ingress.sendThrottle|Počet chyb omezování|Počet|Celkem|Počet chyb omezení z důvodu omezení propustnosti zařízení|Žádné|
-|dailyMessageQuotaUsed|Celkový počet použitých zpráv|Počet|Průměr|Počet celkem aktuálně využívaných zpráv|Žádné|
-|deviceDataUsage|Celkové využití dat zařízení|Bajty|Celkem|Bajtů přenesených do a ze všech zařízení připojených k IotHub|Žádné|
-|deviceDataUsageV2|Celkové využití dat zařízení (Preview)|Bajty|Celkem|Bajtů přenesených do a ze všech zařízení připojených k IotHub|Žádné|
-|totalDeviceCount|Celkem zařízení (Preview)|Počet|Průměr|Počet zařízení zaregistrovaných ve službě IoT Hub|Žádné|
-|connectedDeviceCount|Připojená zařízení (Preview)|Počet|Průměr|Počet zařízení připojených ke službě IoT Hub|Žádné|
-|konfigurace|Metriky konfigurace|Počet|Celkem|Metriky pro operace konfigurace|Žádné|
+|d2c.telemetry.ingress.allProtocol|Pokusy o odeslání telemetrické zprávy|Počet|Celkem|Počet telemetrických zpráv mezi zařízeními a cloudy, které se pokusily odeslat do služby IoT hub|Žádný|
+|d2c.telemetry.ingress.success|Odeslané telemetrické zprávy|Počet|Celkem|Počet telemetrických zpráv mezi zařízeními a cloudy, které byly úspěšně odeslány do služby IoT hub|Žádný|
+|c2d.commands.egress.complete.success|Dokončené dodávky zpráv C2D|Počet|Celkem|Počet doručování zpráv z cloudu na zařízení, které zařízení úspěšně dokončilo|Žádný|
+|c2d.commands.egress.abandon.success|Zprávy C2D byly opuštěny.|Počet|Celkem|Počet zpráv mezi cloudy a zařízení, které zařízení opustilo|Žádný|
+|c2d.commands.egress.reject.success|Zprávy C2D byly odmítnuty.|Počet|Celkem|Počet zpráv mezi cloudy a zařízení, které zařízení odmítlo|Žádný|
+|C2DMessagesVypršela|Platnost zpráv C2D vypršela (náhled)|Počet|Celkem|Počet zpráv s prošlým platností v oblasti cloudu se zařízením|Žádný|
+|devices.totalDevices|Zařízení celkem (zastaralé)|Počet|Celkem|Počet zařízení registrovaných do vašeho centra IoT hub|Žádný|
+|devices.connectedDevices.allProtocol|Připojená zařízení (zastaralé) |Počet|Celkem|Počet zařízení připojených k vašemu centru IoT hub|Žádný|
+|d2c.telemetry.egress.success|Směrování: doručovány telemetrické zprávy|Počet|Celkem|Počet, kolikrát byly zprávy úspěšně doručeny do všech koncových bodů pomocí směrování služby IoT Hub. Pokud je zpráva směrována do více koncových bodů, tato hodnota se zvýší o jeden pro každou úspěšnou doručení. Pokud je zpráva doručena do stejného koncového bodu vícekrát, tato hodnota se zvýší o jeden pro každou úspěšnou doručení.|Žádný|
+|d2c.telemetry.egress.dropped|Směrování: zprávy telemetrie vynechány |Počet|Celkem|Počet, kolikrát zprávy byly vynechány směrování služby IoT Hub z důvodu mrtvé koncové body. Tato hodnota nepočítá zprávy doručovány do záložní trasy jako vynecháné zprávy nejsou doručovány tam.|Žádný|
+|d2c.telemetry.egress.orphaned|Směrování: telemetrické zprávy osamocené |Počet|Celkem|Počet osamocených zpráv směrováním služby IoT Hub, protože neodpovídaly žádným pravidlům směrování (včetně záložního pravidla). |Žádný|
+|d2c.telemetry.egress.invalid|Směrování: telemetrické zprávy nekompatibilní|Počet|Celkem|Počet směrování služby IoT Hub se nezdařilo doručit zprávy z důvodu nekompatibility s koncovým bodem. Tato hodnota nezahrnuje opakování.|Žádný|
+|d2c.telemetry.egress.fallback|Směrování: zprávy doručovány do záložní|Počet|Celkem|Počet, kolikrát ioT Hub směrování doručovány zprávy do koncového bodu přidruženého k záložní trasy.|Žádný|
+|d2c.endpoints.egress.eventHubs|Směrování: zprávy doručené do centra událostí|Počet|Celkem|Počet směrování služby IoT Hub úspěšně doručoval zprávy do koncových bodů centra událostí.|Žádný|
+|d2c.endpoints.latency.eventHubs|Směrování: latence zpráv pro centrum událostí|Milisekund|Průměr|Průměrná čekací doba (milisekund) mezi příchozím přenosem zpráv do služby IoT Hub a příchozím přenosem zpráv do koncového bodu centra událostí.|Žádný|
+|d2c.endpoints.egress.serviceBusQueues|Směrování: zprávy doručené do fronty služby Service Bus|Počet|Celkem|Počet směrování služby IoT Hub úspěšně doručoval zprávy do koncových bodů fronty služby Service Bus.|Žádný|
+|d2c.endpoints.latency.serviceBusQueues|Směrování: latence zpráv pro frontu služby Service Bus|Milisekund|Průměr|Průměrná čekací doba (milisekund) mezi příchozím přenosem zprávy do služby IoT Hub a příchozím přenosem dat telemetrické zprávy do koncového bodu fronty služby Service Bus.|Žádný|
+|d2c.endpoints.egress.serviceBusTémata|Směrování: zprávy doručené do tématu sběrnice|Počet|Celkem|Počet směrování služby IoT Hub úspěšně doručoval zprávy do koncových bodů tématu služby Service Bus.|Žádný|
+|d2c.endpoints.latency.serviceBusTopics|Směrování: latence zpráv pro téma služby Service Bus|Milisekund|Průměr|Průměrná čekací doba (milisekund) mezi příchozím přenosem zpráv do služby IoT Hub a příchozím přenosem dat telemetrické zprávy do koncového bodu tématu služby Service Bus.|Žádný|
+|d2c.endpoints.egress.builtIn.events|Směrování: zprávy doručené do zpráv/událostí|Počet|Celkem|Počet směrování služby IoT Hub úspěšně doručoval zprávy do předdefinovaného koncového bodu (zprávy nebo události).|Žádný|
+|d2c.endpoints.latency.builtIn.events|Směrování: latence zpráv pro zprávy nebo události|Milisekund|Průměr|Průměrná čekací doba (milisekund) mezi příchozím přenosem zpráv do služby IoT Hub a příchozím přenosem dat telemetrické zprávy do předdefinovaného koncového bodu (zprávy/události).|Žádný|
+|d2c.endpoints.egress.storage|Směrování: zprávy doručené do úložiště|Počet|Celkem|Počet směrování služby IoT Hub úspěšně doručoval zprávy koncovým bodům úložiště.|Žádný|
+|d2c.endpoints.latency.storage|Směrování: latence zpráv pro úložiště|Milisekund|Průměr|Průměrná čekací doba (milisekund) mezi příchozím přenosem zpráv do služby IoT Hub a příchozím přenosem dat telemetrické zprávy do koncového bodu úložiště.|Žádný|
+|d2c.endpoints.egress.storage.bytes|Směrování: data dodaná do úložiště|Bajty|Celkem|Množství dat (bajtů) Směrování služby IoT Hub dodané do koncových bodů úložiště.|Žádný|
+|objekty blob d2c.endpoints.egress.storage.|Směrování: objekty BLOB dodané do úložiště|Počet|Celkem|Kolikrát směrování služby IoT Hub doručovalo objekty blob do koncových bodů úložiště.|Žádný|
+|EventGridDeliveries|Dodávky v gridu událostí (náhled)|Počet|Celkem|Počet událostí ioT hub publikovaných do mřížky událostí. Dimenzi Výsledek použijte pro počet úspěšných a neúspěšných požadavků. Dimenze EventType zobrazuje typhttps://aka.ms/ioteventgrid)události ( .|ResourceId,Výsledek,EventType|
+|Latence eventgridu|Latence sítě událostí (náhled)|Milisekund|Průměr|Průměrná čekací doba (milisekund) od doby, kdy byla generována událost centra Iot Hub, do doby, kdy byla událost publikována do mřížky událostí. Toto číslo je průměr mezi všemi typy událostí. Pomocí dimenze EventType můžete zobrazit latenci určitého typu události.|ResourceId,EventType|
+|d2c.twin.read.success|Úspěšná dvojitá čtení ze zařízení|Počet|Celkem|Počet všech úspěšných dvojčetů iniciovaných zařízením.|Žádný|
+|d2c.twin.read.selhání|Selhání dvojčete čte ze zařízení|Počet|Celkem|Počet všech neúspěšných dvojčete iniciovaných zařízením.|Žádný|
+|d2c.twin.read.size|Velikost odezvy dvojčete čte ze zařízení|Bajty|Průměr|Průměr, min a max všech úspěšných zařízení-inicioval dvojče čte.|Žádný|
+|d2c.twin.update.success|Úspěšné aktualizace dvojčete ze zařízení|Počet|Celkem|Počet všech úspěšných aktualizací dvojčete iniciovaných zařízením.|Žádný|
+|d2c.twin.update.selhání|Neúspěšné aktualizace dvojčete ze zařízení|Počet|Celkem|Počet všech neúspěšných aktualizací dvojčete iniciovaných zařízením.|Žádný|
+|d2c.twin.update.size|Velikost aktualizací dvojčete ze zařízení|Bajty|Průměr|Průměrná, min a maximální velikost všech úspěšných aktualizací dvojčete iniciovaných zařízením.|Žádný|
+|c2d.methods.success|Úspěšné přímé vyvolání metody|Počet|Celkem|Počet všech úspěšných volání přímé metody.|Žádný|
+|c2d.methods.selhání|Neúspěšná přímá metoda vyvolání|Počet|Celkem|Počet všech neúspěšných volání přímé metody.|Žádný|
+|c2d.methods.requestVelikost|Velikost požadavku na vyvolání přímé metody|Bajty|Průměr|Průměr, min a max všech úspěšných požadavků přímé metody.|Žádný|
+|c2d.methods.responseVelikost|Velikost odpovědi přímé metody vyvolání|Bajty|Průměr|Průměr, min a max všech úspěšných přímých odpovědí metod.|Žádný|
+|c2d.twin.read.success|Úspěšné dvojče čte z back-endu|Počet|Celkem|Počet všech úspěšných back-end iniciované dvojče čte.|Žádný|
+|c2d.twin.read.selhání|Neúspěšné dvojče čte ze zadního konce|Počet|Celkem|Počet všech neúspěšných čtení dvojčete iniciovaného back-endem.|Žádný|
+|c2d.twin.read.size|Velikost odpovědi dvojčete čte ze back-endu|Bajty|Průměr|Průměr, min a max všech úspěšných back-end-inicioval dvojče čte.|Žádný|
+|c2d.twin.update.success|Úspěšné aktualizace dvojčat z back-endu|Počet|Celkem|Počet všech úspěšných aktualizací dvojčete iniciovaných back-endem.|Žádný|
+|c2d.twin.update.selhání|Neúspěšné aktualizace dvojčete ze back-endu|Počet|Celkem|Počet všech neúspěšných aktualizací dvojčete iniciovaných back-endem.|Žádný|
+|c2d.twin.update.size|Velikost twin aktualizace z back-endu|Bajty|Průměr|Průměrná, min a maximální velikost všech úspěšných aktualizací dvojčete iniciovaných back-endem.|Žádný|
+|twinQueries.success|Úspěšné dotazy na dvojče|Počet|Celkem|Počet všech úspěšných twin dotazy.|Žádný|
+|twinQueries.failure|Neúspěšné dotazy na dvojče|Počet|Celkem|Počet všech neúspěšných dotazů dvojčat.|Žádný|
+|twinQueries.resultSize|Velikost výsledku twin queries|Bajty|Průměr|Průměr, min a max velikost výsledku všech úspěšných twin dotazů.|Žádný|
+|jobs.createTwinUpdateJob.success|Úspěšné výtvory úloh s dvojčaty|Počet|Celkem|Počet všech úspěšných vytvoření úloh s dvojčaty.|Žádný|
+|jobs.createTwinUpdateJob.failure|Neúspěšné vytvoření úloh s dvojčaty|Počet|Celkem|Počet všech neúspěšných vytvoření úloh s dvojčaty aktualizací.|Žádný|
+|jobs.createDirectMethodJob.success|Úspěšné vytváření úloh vyvolání metody|Počet|Celkem|Počet všech úspěšných vytvoření úloh přímého vyvolání metody.|Žádný|
+|jobs.createDirectMethodJob.failure|Neúspěšné vytváření úloh vyvolání metody|Počet|Celkem|Počet všech neúspěšných vytvoření úloh přímého vyvolání metody.|Žádný|
+|jobs.listJobs.success|Úspěšná volání do seznamu úloh|Počet|Celkem|Počet všech úspěšných volání do seznamu úloh.|Žádný|
+|jobs.listJobs.selhání|Neúspěšná volání seznam úloh|Počet|Celkem|Počet všech neúspěšných volání seznam úloh.|Žádný|
+|jobs.cancelJob.success|Úspěšné zrušení úlohy|Počet|Celkem|Počet všech úspěšných volání zrušit úlohu.|Žádný|
+|jobs.cancelJob.failure|Neúspěšné zrušení úlohy|Počet|Celkem|Počet všech neúspěšných volání zrušit úlohu.|Žádný|
+|jobs.queryJobs.success|Dotazy na úspěšnou úlohu|Počet|Celkem|Počet všech úspěšných volání dotazovacích úloh.|Žádný|
+|jobs.queryJobs.failure|Dotazy na úlohy se nezdařilo|Počet|Celkem|Počet všech neúspěšných volání dotazovacích úloh.|Žádný|
+|jobs.completed|Dokončené úlohy|Počet|Celkem|Počet všech dokončených úloh.|Žádný|
+|jobs.failed|Neúspěšné úlohy|Počet|Celkem|Počet všech neúspěšných úloh.|Žádný|
+|d2c.telemetry.ingress.sendThrottle|Počet chyb omezení|Počet|Celkem|Počet chyb omezení z důvodu omezení propustnost zařízení|Žádný|
+|dailyMessageQuotaUsed|Celkový počet použitých zpráv|Počet|Průměr|Počet dnes použitých zpráv|Žádný|
+|deviceDataUsage|Celkové využití dat zařízení|Bajty|Celkem|Bajty přenesené do a z všech zařízení připojených k IotHub|Žádný|
+|deviceDataUsageV2|Celkové využití dat zařízení (náhled)|Bajty|Celkem|Bajty přenesené do a z všech zařízení připojených k IotHub|Žádný|
+|totalDeviceCount|Celkový počet zařízení (náhled)|Počet|Průměr|Počet zařízení registrovaných do vašeho centra IoT hub|Žádný|
+|připojenýPočet zařízení|Připojená zařízení (náhled)|Počet|Průměr|Počet zařízení připojených k vašemu centru IoT hub|Žádný|
+|Konfigurace|Metriky konfigurace|Počet|Celkem|Metriky pro operace konfigurace|Žádný|
 
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft.Devices/provisioningServices
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|RegistrationAttempts|Pokusy o registraci|Počet|Celkem|Počet pokusů o registraci zařízení|ProvisioningServiceName, IotHubName, status|
-|DeviceAssignments|Přiřazená zařízení|Počet|Celkem|Počet zařízení přiřazených ke centru IoT Hub|ProvisioningServiceName,IotHubName|
-|AttestationAttempts|Pokusy o ověření identity|Počet|Celkem|Počet pokusů o ověření identity zařízení|ProvisioningServiceName, status, protokol|
+|Pokusy o registraci|Pokusy o registraci|Počet|Celkem|Počet pokusů o registraci zařízení|ProvisioningServiceName,IotHubName,Stav|
+|Přiřazení zařízení|Přiřazená zařízení|Počet|Celkem|Počet zařízení přiřazených k centru IoT|ProvisioningServiceName,IotHubName|
+|Pokusy o atestaci|Pokusy o atestaci|Počet|Celkem|Počet pokusů o ateace zařízení|ProvisioningServiceName,Stav,Protokol|
 
 
-## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft. DocumentDB/databaseAccounts
+## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|AddRegion|Přidání oblasti|Počet|Počet|Přidání oblasti|Oblast|
-|AvailableStorage|Úložiště k dispozici|Bajty|Celkem|Celkové dostupné úložiště hlášené s členitosti 5 minut|CollectionName, DatabaseName, region|
-|CassandraConnectionClosures|Ukončení připojení Cassandra|Počet|Celkem|Počet uzavřených připojení Cassandra, která se hlásí s členitou úrovní 1 minuty|APIType, oblast, ClosureReason|
-|CassandraRequestCharges|Poplatky za žádosti Cassandra|Počet|Celkem|Ru spotřebované pro vytvořené požadavky Cassandra|APIType, DatabaseName, CollectionName, region, typem operace OperationType, ResourceType|
-|CassandraRequests|Žádosti Cassandra|Počet|Počet|Počet provedených požadavků Cassandra|APIType, DatabaseName, CollectionName, region, typem operace OperationType, ResourceType, ErrorCode|
-|CreateAccount|Účet vytvořen|Počet|Počet|Účet vytvořen|Žádné|
-|Využití datausage|Využití dat|Bajty|Celkem|Celkové využití dat nahlášené s členitosti 5 minut|CollectionName, DatabaseName, region|
-|DeleteAccount|Účet se odstranil.|Počet|Počet|Účet se odstranil.|Žádné|
-|DocumentCount|Počet dokumentů|Počet|Celkem|Celkový počet dokumentů hlášených v rozmezí 5 minut|CollectionName, DatabaseName, region|
-|DocumentQuota|Kvóta dokumentu|Bajty|Celkem|Celková kvóta úložiště vykazovaná s členitosti 5 minut|CollectionName, DatabaseName, region|
-|IndexUsage|Využití indexu|Bajty|Celkem|Celkové využití indexu nahlášené s členitosti 5 minut|CollectionName, DatabaseName, region|
-|MetadataRequests|Žádosti o metadata|Počet|Počet|Počet požadavků na metadata Cosmos DB udržuje shromažďování systémových metadat pro každý účet, což vám umožní vytvořit výčet kolekcí, databází atd. a jejich konfigurací zdarma.|DatabaseName, CollectionName, region, StatusCode, role|
-|MongoRequestCharge|Poplatek za požadavek Mongo|Počet|Celkem|Spotřebované jednotky žádosti Mongo|DatabaseName, CollectionName, region, příkaz, ErrorCode|
-|MongoRequests|Žádosti Mongo|Počet|Počet|Počet provedených požadavků Mongo|DatabaseName, CollectionName, region, příkaz, ErrorCode|
-|MongoRequestsCount|Počet požadavků Mongo|CountPerSecond|Průměr|Počet požadavků Mongo za sekundu|DatabaseName, CollectionName, region, příkaz, ErrorCode|
-|MongoRequestsDelete|Frekvence žádosti o odstranění Mongo|CountPerSecond|Průměr|Mongo žádosti o odstranění za sekundu|DatabaseName, CollectionName, region, příkaz, ErrorCode|
-|MongoRequestsInsert|Frekvence požadavků na vložení Mongo|CountPerSecond|Průměr|Mongo vložení počtu za sekundu|DatabaseName, CollectionName, region, příkaz, ErrorCode|
-|MongoRequestsQuery|Frekvence požadavků na dotaz Mongo|CountPerSecond|Průměr|Požadavek na dotaz Mongo za sekundu|DatabaseName, CollectionName, region, příkaz, ErrorCode|
-|MongoRequestsUpdate|Frekvence požadavků na aktualizace Mongo|CountPerSecond|Průměr|Žádost o aktualizaci Mongo za sekundu|DatabaseName, CollectionName, region, příkaz, ErrorCode|
-|ProvisionedThroughput|Zřízená propustnost|Počet|Maximum|Zřízená propustnost|DatabaseName, CollectionName|
-|RegionFailover|Převzetí služeb při selhání oblasti|Počet|Počet|Převzetí služeb při selhání oblasti|Žádné|
-|RemoveRegion|Oblast odebrána|Počet|Počet|Oblast odebrána|Oblast|
-|ReplicationLatency|Latence replikace p99|Milisekund|Průměr|Latence replikace p99 napříč zdrojovou a cílovou oblastí pro geograficky povolený účet|SourceRegion,TargetRegion|
-|ServiceAvailability|Dostupnost služby|Procento|Průměr|Dostupnost žádostí o účet v časovém rozmezí jedné hodiny, dne nebo měsíce|Žádné|
-|TotalRequestUnits|Celkový počet jednotek žádostí|Počet|Celkem|Spotřebované jednotky žádosti|DatabaseName, CollectionName, region, StatusCode, typem operace OperationType|
-|TotalRequests|Požadavky celkem|Počet|Počet|Počet provedených požadavků|DatabaseName, CollectionName, region, StatusCode, typem operace OperationType|
-|UpdateAccountKeys|Klíče účtu se aktualizovaly.|Počet|Počet|Klíče účtu se aktualizovaly.|KeyType|
-|UpdateAccountNetworkSettings|Nastavení sítě účtu se aktualizovala.|Počet|Počet|Nastavení sítě účtu se aktualizovala.|Žádné|
-|UpdateAccountReplicationSettings|Nastavení replikace účtu se aktualizovala|Počet|Počet|Nastavení replikace účtu se aktualizovala|Žádné|
+|Přidat oblast|Přidána oblast|Počet|Počet|Přidána oblast|Region (Oblast)|
+|Dostupné úložiště|Úložiště k dispozici|Bajty|Celkem|Celkové dostupné úložiště nahlášené při rozlišovací schopnosti 5 minut|CollectionName,Název_databáze,Oblast|
+|CassandraConnectionClosures|Uzavření připojení Cassandra|Počet|Celkem|Počet uzavřených připojení Cassandra, hlášených v 1 minutě granularity|APIType,Oblast,Důvod uzavření|
+|CassandraRequestCharges|Cassandra požadovat poplatky|Počet|Celkem|Ru spotřebované pro cassandra požadavky|APIType,Název_databáze,Název_kolekce,Oblast,Typ operace,Typ_prostředku|
+|CassandraPožadavky|Cassandra žádosti|Počet|Počet|Počet žádostí společnosti Cassandra|APIType,Název_databáze,Název_kolekce,Region,Typ operace,Typ_prostředku,Kód chyby|
+|Vytvořitúčet|Účet vytvořen|Počet|Počet|Účet vytvořen|Žádný|
+|Využití dat|Využití dat|Bajty|Celkem|Celkové využití dat vykázané při rozlišovací schopnosti 5 minut|CollectionName,Název_databáze,Oblast|
+|Odstranitúčet|Účet byl odstraněn.|Počet|Počet|Účet byl odstraněn.|Žádný|
+|DocumentCount|Počet dokumentů|Počet|Celkem|Celkový počet dokumentů hlášených při rozlišovací schopnosti 5 minut|CollectionName,Název_databáze,Oblast|
+|DocumentQuota|Kvóta dokumentu|Bajty|Celkem|Celková kvóta úložiště vykázaná při rozlišovací schopnost5 minut|CollectionName,Název_databáze,Oblast|
+|Využití indexu|Využití indexu|Bajty|Celkem|Celkové využití indexu hlášené při rozlišovací schopnosti 5 minut|CollectionName,Název_databáze,Oblast|
+|Požadavky na metadata|Požadavky na metadata|Počet|Počet|Počet požadavků metadat. Cosmos DB udržuje kolekci metadat systému pro každý účet, který umožňuje vytvořit výčet kolekcí, databází atd.|Název_databáze,Název_kolekce,Oblast,Stavový kód,Role|
+|MongoRequestCharge|Poplatek za žádost Mongo|Počet|Celkem|Spotřebované jednotky požadavku Mongo|Název_databáze,Název_kolekce,Oblast,CommandName,ErrorCode|
+|MongoPožadavky|Mongo žádosti|Počet|Počet|Počet posudků Mongo|Název_databáze,Název_kolekce,Oblast,CommandName,ErrorCode|
+|MongoRequestsCount|Míra požadavků Mongo|CountPerSecond|Průměr|Mongo požadavek Počet za sekundu|Název_databáze,Název_kolekce,Oblast,CommandName,ErrorCode|
+|MongoRequestsOdstranit|Rychlost odstranění požadavku Mongo|CountPerSecond|Průměr|Mongo Odstranit požadavek za sekundu|Název_databáze,Název_kolekce,Oblast,CommandName,ErrorCode|
+|MongoRequestsInsert|Rychlost požadavků vložení mongo|CountPerSecond|Průměr|Počet vložení Mongo za sekundu|Název_databáze,Název_kolekce,Oblast,CommandName,ErrorCode|
+|MongoRequestsQuery|Rychlost požadavků na dotazy Mongo|CountPerSecond|Průměr|Požadavek na dotaz Mongo za sekundu|Název_databáze,Název_kolekce,Oblast,CommandName,ErrorCode|
+|MongoRequestsAktualizace|Rychlost požadavků na aktualizaci mongo|CountPerSecond|Průměr|Požadavek na aktualizaci Mongo za sekundu|Název_databáze,Název_kolekce,Oblast,CommandName,ErrorCode|
+|Zřízená průchodnost|Zřízená propustnost|Počet|Maximum|Zřízená propustnost|Název_databáze,Název_kolekce|
+|Selhání oblasti|Převzetí selhání oblasti|Počet|Počet|Převzetí selhání oblasti|Žádný|
+|Odebrat oblast|Oblast odebrána|Počet|Počet|Oblast odebrána|Region (Oblast)|
+|Latence replikace|Latence replikace P99|Milisekund|Průměr|Latence replikace P99 napříč zdrojovými a cílovými oblastmi pro geograficky povolený účet|SourceRegion,TargetRegion|
+|Dostupnost služby|Dostupnost služby|Procento|Průměr|Dostupnost požadavků na účet v rozlišovací schopnost jedné hodiny, dne nebo měsíce|Žádný|
+|Jednotky TotalRequest|Celkový počet jednotek požadavků|Počet|Celkem|Spotřebované jednotky požadavku|Název_databáze,Název_kolekce,Oblast,StatusCode,Typ operace|
+|TotalRequests|Požadavky celkem|Počet|Počet|Počet posudků|Název_databáze,Název_kolekce,Oblast,StatusCode,Typ operace|
+|Aktualizovat klávesy AccountKeys|Klíče účtu byly aktualizovány.|Počet|Počet|Klíče účtu byly aktualizovány.|Keytype|
+|Aktualizace Nastavení sítě|Aktualizováno nastavení sítě účtů|Počet|Počet|Aktualizováno nastavení sítě účtů|Žádný|
+|Aktualizovat Nastavení replikace účtů|Aktualizováno nastavení replikace účtu|Počet|Počet|Aktualizováno nastavení replikace účtu|Žádný|
 
 
 
-## <a name="microsoftenterpriseknowledgegraphservices"></a>Microsoft. EnterpriseKnowledgeGraph/Services
+## <a name="microsoftenterpriseknowledgegraphservices"></a>Microsoft.EnterpriseKnowledgeGraph/služby
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|TransactionCount|Počet transakcí|Počet|Počet|Celkový počet transakcí|TransactionCount|
-|SuccessCount|Počet úspěchů|Počet|Počet|Počet úspěšných transakcí|SuccessCount|
-|FailureCount|Počet selhání|Počet|Počet|Počet neúspěšných transakcí|FailureCount|
-|SuccessLatency|Latence úspěchu|Milisekund|Průměr|Latence úspěšných transakcí|SuccessCount|
+|Počet transakcí|Počet transakcí|Počet|Počet|Celkový počet transakcí|Počet transakcí|
+|Počet úspěšných|Success Count|Počet|Počet|Počet úspěšných transakcí|Počet úspěšných|
+|Počet selhání|Failure Count|Počet|Počet|Počet neúspěšných transakcí|Počet selhání|
+|SuccessLatency|Latence úspěchu|Milisekund|Průměr|Latence úspěšných transakcí|Počet úspěšných|
 
-## <a name="microsofteventgriddomains"></a>Microsoft. EventGrid/domény
+## <a name="microsofteventgriddomains"></a>Microsoft.EventGrid/domény
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|PublishSuccessCount|Publikované události|Počet|Celkem|Celkový počet událostí publikovaných na toto téma|Téma|
-|PublishFailCount|Publikovat neúspěšné události|Počet|Celkem|Celkový počet událostí neúspěšných publikování do tohoto tématu|Téma, ErrorType, chyba|
-|PublishSuccessLatencyInMs|Latence úspěšného publikování|Milisekundy|Celkem|Latence úspěšného publikování v milisekundách|Žádné|
-|MatchedEventCount|Spárované události|Počet|Celkem|Celkový počet událostí odpovídajících tomuto odběru události|Téma, EventSubscriptionName, DomainEventSubscriptionName|
-|DeliveryAttemptFailCount|Doručení – neúspěšné události|Počet|Celkem|Celkový počet událostí neúspěšných doručování do tohoto odběru události|Téma, EventSubscriptionName, DomainEventSubscriptionName, chyba, ErrorType|
-|DeliverySuccessCount|Doručené události|Počet|Celkem|Celkový počet událostí doručených do tohoto předplatného události|Téma, EventSubscriptionName, DomainEventSubscriptionName|
-|DestinationProcessingDurationInMs|Doba trvání zpracování cíle|Milisekundy|Průměr|Doba zpracování cíle v milisekundách|Téma, EventSubscriptionName, DomainEventSubscriptionName|
-|DroppedEventCount|Vyřazené události|Počet|Celkem|Celkový počet vyřazených událostí, které odpovídají tomuto odběru události|Téma, EventSubscriptionName, DomainEventSubscriptionName, DropReason|
-|DeadLetteredCount|Nedoručené události s písmeny|Počet|Celkem|Celkový počet nedoručených událostí, které odpovídají tomuto odběru události|Téma, EventSubscriptionName, DomainEventSubscriptionName, DeadLetterReason|
+|PublishSuccessCount|Publikované události|Počet|Celkem|Celkový počet událostí publikovaných v tomto tématu|Téma|
+|PublishFailCount|Publikovat neúspěšné události|Počet|Celkem|Celkový počet událostí, které se nepodařilo publikovat na toto téma.|Téma,Typ chyby,Chyba|
+|PublishSuccessLatencyInMs|Publikovat latenci úspěšnosti|Milisekund|Celkem|Publikování latence úspěšnosti v milisekundách|Žádný|
+|MatchedEventCount|Odpovídající události|Počet|Celkem|Celkový počet událostí odpovídajících tomuto předplatnému události|Téma,Název odběru události,Název_aplikace DomainEventSubscriptionName|
+|DeliveryAttemptFailCount|Události doručení se nezdařilo|Počet|Celkem|Celkový počet událostí se nepodařilo doručit do tohoto odběru událostí|Téma,EventSubscriptionName,DomainEventSubscriptionName,Error,ErrorType|
+|DeliverySuccessCountCount|Dodané události|Počet|Celkem|Celkový počet událostí doručených do tohoto předplatného události|Téma,Název odběru události,Název_aplikace DomainEventSubscriptionName|
+|DestinationProcessingDurationInMs|Doba zpracování cíle|Milisekund|Průměr|Doba zpracování cíle v milisekundách|Téma,Název odběru události,Název_aplikace DomainEventSubscriptionName|
+|Vynechánípočtu událostí|Zrušené události|Počet|Celkem|Celkový počet vyřazených událostí odpovídajících tomuto předplatnému události|Téma,EventSubscriptionName,DomainEventSubscriptionName,DropReason|
+|DeadLetteredCount|Události s mrtvými písmeny|Počet|Celkem|Celkový počet nedoručených událostí odpovídajících tomuto předplatnému události|Téma,EventSubscriptionName,DomainEventSubscriptionName,DeadLetterReason|
 
-## <a name="microsofteventgridtopics"></a>Microsoft.EventGrid/topics
+## <a name="microsofteventgridtopics"></a>Microsoft.EventGrid/témata
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|PublishSuccessCount|Publikované události|Počet|Celkem|Celkový počet událostí publikovaných na toto téma|Žádné|
-|PublishFailCount|Publikovat neúspěšné události|Počet|Celkem|Celkový počet událostí neúspěšných publikování do tohoto tématu|ErrorType, chyba|
-|UnmatchedEventCount|Nespárované události|Počet|Celkem|Celkový počet událostí nevyhovujících žádnému z odběrů událostí pro toto téma|Žádné|
-|PublishSuccessLatencyInMs|Latence úspěšného publikování|Milisekundy|Celkem|Latence úspěšného publikování v milisekundách|Žádné|
-|MatchedEventCount|Spárované události|Počet|Celkem|Celkový počet událostí odpovídajících tomuto odběru události|EventSubscriptionName|
-|DeliveryAttemptFailCount|Doručení – neúspěšné události|Počet|Celkem|Celkový počet událostí neúspěšných doručování do tohoto odběru události|Chyba, ErrorType, EventSubscriptionName|
-|DeliverySuccessCount|Doručené události|Počet|Celkem|Celkový počet událostí doručených do tohoto předplatného události|EventSubscriptionName|
-|DestinationProcessingDurationInMs|Doba trvání zpracování cíle|Milisekundy|Průměr|Doba zpracování cíle v milisekundách|EventSubscriptionName|
-|DroppedEventCount|Vyřazené události|Počet|Celkem|Celkový počet vyřazených událostí, které odpovídají tomuto odběru události|DropReason,EventSubscriptionName|
-|DeadLetteredCount|Nedoručené události s písmeny|Počet|Celkem|Celkový počet nedoručených událostí, které odpovídají tomuto odběru události|DeadLetterReason,EventSubscriptionName|
+|PublishSuccessCount|Publikované události|Počet|Celkem|Celkový počet událostí publikovaných v tomto tématu|Žádný|
+|PublishFailCount|Publikovat neúspěšné události|Počet|Celkem|Celkový počet událostí, které se nepodařilo publikovat na toto téma.|Typ chyby,Chyba|
+|UnmatchedEventCount|Bezkonkurenční události|Počet|Celkem|Celkový počet událostí, které neodpovídají žádnému odběru událostí pro toto téma|Žádný|
+|PublishSuccessLatencyInMs|Publikovat latenci úspěšnosti|Milisekund|Celkem|Publikování latence úspěšnosti v milisekundách|Žádný|
+|MatchedEventCount|Odpovídající události|Počet|Celkem|Celkový počet událostí odpovídajících tomuto předplatnému události|Název odběru_události|
+|DeliveryAttemptFailCount|Události doručení se nezdařilo|Počet|Celkem|Celkový počet událostí se nepodařilo doručit do tohoto odběru událostí|Chyba,ErrorType,EventSubscriptionName|
+|DeliverySuccessCountCount|Dodané události|Počet|Celkem|Celkový počet událostí doručených do tohoto předplatného události|Název odběru_události|
+|DestinationProcessingDurationInMs|Doba zpracování cíle|Milisekund|Průměr|Doba zpracování cíle v milisekundách|Název odběru_události|
+|Vynechánípočtu událostí|Zrušené události|Počet|Celkem|Celkový počet vyřazených událostí odpovídajících tomuto předplatnému události|DropReason,Název odběru události|
+|DeadLetteredCount|Události s mrtvými písmeny|Počet|Celkem|Celkový počet nedoručených událostí odpovídajících tomuto předplatnému události|DeadLetterReason,EventSubscriptionName|
 
 ## <a name="microsofteventgrideventsubscriptions"></a>Microsoft.EventGrid/eventSubscriptions
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|MatchedEventCount|Spárované události|Počet|Celkem|Celkový počet událostí odpovídajících tomuto odběru události|Žádné|
-|DeliveryAttemptFailCount|Doručení – neúspěšné události|Počet|Celkem|Celkový počet událostí neúspěšných doručování do tohoto odběru události|Chyba, ErrorType|
-|DeliverySuccessCount|Doručené události|Počet|Celkem|Celkový počet událostí doručených do tohoto předplatného události|Žádné|
-|DestinationProcessingDurationInMs|Doba trvání zpracování cíle|Milisekundy|Průměr|Doba zpracování cíle v milisekundách|Žádné|
-|DroppedEventCount|Vyřazené události|Počet|Celkem|Celkový počet vyřazených událostí, které odpovídají tomuto odběru události|DropReason|
-|DeadLetteredCount|Nedoručené události s písmeny|Počet|Celkem|Celkový počet nedoručených událostí, které odpovídají tomuto odběru události|DeadLetterReason|
+|MatchedEventCount|Odpovídající události|Počet|Celkem|Celkový počet událostí odpovídajících tomuto předplatnému události|Žádný|
+|DeliveryAttemptFailCount|Události doručení se nezdařilo|Počet|Celkem|Celkový počet událostí se nepodařilo doručit do tohoto odběru událostí|Chyba,Typ chyby|
+|DeliverySuccessCountCount|Dodané události|Počet|Celkem|Celkový počet událostí doručených do tohoto předplatného události|Žádný|
+|DestinationProcessingDurationInMs|Doba zpracování cíle|Milisekund|Průměr|Doba zpracování cíle v milisekundách|Žádný|
+|Vynechánípočtu událostí|Zrušené události|Počet|Celkem|Celkový počet vyřazených událostí odpovídajících tomuto předplatnému události|Důvod přetažení|
+|DeadLetteredCount|Události s mrtvými písmeny|Počet|Celkem|Celkový počet nedoručených událostí odpovídajících tomuto předplatnému události|DeadLetterReason|
 
 ## <a name="microsofteventgridextensiontopics"></a>Microsoft.EventGrid/extensionTopics
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|PublishSuccessCount|Publikované události|Počet|Celkem|Celkový počet událostí publikovaných na toto téma|Žádné|
-|PublishFailCount|Publikovat neúspěšné události|Počet|Celkem|Celkový počet událostí neúspěšných publikování do tohoto tématu|ErrorType, chyba|
-|UnmatchedEventCount|Nespárované události|Počet|Celkem|Celkový počet událostí nevyhovujících žádnému z odběrů událostí pro toto téma|Žádné|
-|PublishSuccessLatencyInMs|Latence úspěšného publikování|Milisekundy|Celkem|Latence úspěšného publikování v milisekundách|Žádné|
+|PublishSuccessCount|Publikované události|Počet|Celkem|Celkový počet událostí publikovaných v tomto tématu|Žádný|
+|PublishFailCount|Publikovat neúspěšné události|Počet|Celkem|Celkový počet událostí, které se nepodařilo publikovat na toto téma.|Typ chyby,Chyba|
+|UnmatchedEventCount|Bezkonkurenční události|Počet|Celkem|Celkový počet událostí, které neodpovídají žádnému odběru událostí pro toto téma|Žádný|
+|PublishSuccessLatencyInMs|Publikovat latenci úspěšnosti|Milisekund|Celkem|Publikování latence úspěšnosti v milisekundách|Žádný|
 
 
 
-## <a name="microsofteventhubnamespaces"></a>Microsoft.EventHub/namespaces
+## <a name="microsofteventhubnamespaces"></a>Obory názvů Microsoft.EventHub/Namespaces
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|SuccessfulRequests|Úspěšné požadavky|Počet|Celkem|Úspěšné požadavky pro Microsoft. EventHub|EntityName, výsledek operace uvnitř|
-|ServerErrors|Chyby serveru.|Počet|Celkem|Chyby serveru pro Microsoft. EventHub|EntityName, výsledek operace uvnitř|
-|UserErrors|Chyby uživatele.|Počet|Celkem|Chyby uživatele pro Microsoft. EventHub|EntityName, výsledek operace uvnitř|
-|QuotaExceededErrors|Chyby překročení kvóty|Počet|Celkem|Při překročení kvóty se vyskytly chyby pro Microsoft. EventHub.|EntityName, výsledek operace uvnitř|
-|ThrottledRequests|Omezené požadavky.|Počet|Celkem|Omezené požadavky pro Microsoft. EventHub|EntityName, výsledek operace uvnitř|
-|IncomingRequests|Příchozí žádosti|Počet|Celkem|Příchozí požadavky pro Microsoft. EventHub|EntityName|
-|IncomingMessages|Příchozí zprávy|Počet|Celkem|Příchozí zprávy pro Microsoft. EventHub|EntityName|
-|OutgoingMessages|Odchozí zprávy|Počet|Celkem|Odchozí zprávy pro Microsoft. EventHub|EntityName|
-|IncomingBytes|Příchozí bajty.|Bajty|Celkem|Příchozí bajty pro Microsoft. EventHub|EntityName|
-|OutgoingBytes|Odchozí bajty|Bajty|Celkem|Odchozí bajty pro Microsoft. EventHub|EntityName|
-|ActiveConnections|ActiveConnections|Počet|Průměr|Celkový počet aktivních připojení pro Microsoft. EventHub|Žádné|
-|ConnectionsOpened|Otevřená připojení.|Počet|Průměr|Otevřená připojení pro Microsoft. EventHub|EntityName|
-|ConnectionsClosed|Uzavřená připojení.|Počet|Průměr|Otevřená připojení pro Microsoft. EventHub|EntityName|
-|CaptureBacklog|Zachyťte nevyřízené položky.|Počet|Celkem|Zachyťte nevyřízené položky pro Microsoft. EventHub.|EntityName|
-|CapturedMessages|Zachycené zprávy.|Počet|Celkem|Zachycené zprávy pro Microsoft. EventHub|EntityName|
-|CapturedBytes|Zachycené bajty.|Bajty|Celkem|Zachycené bajty pro Microsoft. EventHub|EntityName|
-|Velikost|Velikost|Bajty|Průměr|Velikost centra EventHub v bajtech|EntityName|
-|INREQS|Příchozí požadavky (zastaralé)|Počet|Celkem|Celkový počet příchozích žádostí o odeslání pro obor názvů (zastaralé)|Žádné|
-|SUCCREQ|Úspěšné požadavky (zastaralé)|Počet|Celkem|Celkový počet úspěšných žádostí pro obor názvů (zastaralé)|Žádné|
-|FAILREQ|Neúspěšné žádosti (zastaralé)|Počet|Celkem|Celkový počet neúspěšných žádostí pro obor názvů (zastaralé)|Žádné|
-|SVRBSY|Chyby zaneprázdněnosti serveru (zastaralé)|Počet|Celkem|Celkový počet chyb zaneprázdněných serverem pro obor názvů (zastaralé)|Žádné|
-|MEZI sebou|Interní chyby serveru (zastaralé)|Počet|Celkem|Celkový počet interních chyb serveru pro obor názvů (zastaralé)|Žádné|
-|MISCERR|Další chyby (zastaralé)|Počet|Celkem|Celkový počet neúspěšných žádostí pro obor názvů (zastaralé)|Žádné|
-|INMSGS|Příchozí zprávy (zastaralé) (zastaralé)|Počet|Celkem|Celkový počet příchozích zpráv pro obor názvů Tato metrika je zastaralá. Místo toho prosím použijte metriku příchozích zpráv (zastaralé).|Žádné|
-|EHINMSGS|Příchozí zprávy (zastaralé)|Počet|Celkem|Celkový počet příchozích zpráv pro obor názvů (zastaralé)|Žádné|
-|OUTMSGS|Odchozí zprávy (zastaralé) (zastaralé)|Počet|Celkem|Celkový počet odchozích zpráv pro obor názvů Tato metrika je zastaralá. Místo toho prosím použijte metriku odchozích zpráv (zastaralé).|Žádné|
-|EHOUTMSGS|Odchozí zprávy (zastaralé)|Počet|Celkem|Celkový počet odchozích zpráv pro obor názvů (zastaralé)|Žádné|
-|EHINMBS|Příchozí bajty (zastaralé) (zastaralé)|Bajty|Celkem|Propustnost příchozích zpráv centra událostí pro obor názvů Tato metrika je zastaralá. Místo toho prosím použijte metriku příchozích bajtů (zastaralé).|Žádné|
-|EHINBYTES|Příchozí bajty (zastaralé)|Bajty|Celkem|Propustnost příchozích zpráv centra událostí pro obor názvů (zastaralé)|Žádné|
-|EHOUTMBS|Odchozí bajty (zastaralé) (zastaralé)|Bajty|Celkem|Propustnost odchozích zpráv centra událostí pro obor názvů Tato metrika je zastaralá. Místo toho prosím použijte metriku odchozích bajtů (zastaralé).|Žádné|
-|EHOUTBYTES|Odchozí bajty (zastaralé)|Bajty|Celkem|Propustnost odchozích zpráv centra událostí pro obor názvů (zastaralé)|Žádné|
-|EHABL|Archivovat nevyřízené zprávy (zastaralé)|Počet|Celkem|Archivní zprávy centra událostí v backlogu pro obor názvů (zastaralé)|Žádné|
-|EHAMSGS|Archivní zprávy (zastaralé)|Počet|Celkem|Archivované zprávy centra událostí v oboru názvů (zastaralé)|Žádné|
-|EHAMBS|Propustnost zpráv archivu (zastaralé)|Bajty|Celkem|Propustnost archivovaných zpráv centra událostí v oboru názvů (zastaralé)|Žádné|
+|Úspěšné požadavky|Úspěšné požadavky|Počet|Celkem|Úspěšné požadavky pro Microsoft.EventHub.|EntityName,Výsledek operace|
+|Serverchyby|Chyby serveru.|Počet|Celkem|Chyby serveru pro Microsoft.EventHub.|EntityName,Výsledek operace|
+|Uživatelské chyby|Chyby uživatele.|Počet|Celkem|Chyby uživatelů pro Microsoft.EventHub.|EntityName,Výsledek operace|
+|Kvótaexceededchyb|Kvóta byla překročena chyby.|Počet|Celkem|Kvóta byla překročena chyby pro Microsoft.EventHub.|EntityName,Výsledek operace|
+|ThrottledRequests|Omezené požadavky.|Počet|Celkem|Omezené požadavky pro Microsoft.EventHub.|EntityName,Výsledek operace|
+|Příchozí požadavky|Příchozí požadavky|Počet|Celkem|Příchozí požadavky pro Microsoft.EventHub.|Název entity|
+|Příchozí zprávy|Příchozí zprávy|Počet|Celkem|Příchozí zprávy pro Microsoft.EventHub.|Název entity|
+|Odchozí zprávy|Odchozí zprávy|Počet|Celkem|Odchozí zprávy pro Microsoft.EventHub.|Název entity|
+|Příchozí bajty|Příchozí bajty.|Bajty|Celkem|Příchozí bajty pro Microsoft.EventHub.|Název entity|
+|OutgoingBytes|Odchozí bajty.|Bajty|Celkem|Odchozí bajty pro Microsoft.EventHub.|Název entity|
+|Aktivní připojení|Aktivní připojení|Počet|Průměr|Celkový počet aktivních připojení pro Microsoft.EventHub.|Žádný|
+|Otevřená připojení|Připojení byla otevřena.|Počet|Průměr|Otevřená připojení pro Microsoft.EventHub.|Název entity|
+|Připojení uzavřeno|Připojení uzavřena.|Počet|Průměr|Připojení uzavřena pro Microsoft.EventHub.|Název entity|
+|CaptureBacklog|Zachytit nevyřízené položky.|Počet|Celkem|Zachytit nevyřízené položky pro Microsoft.EventHub.|Název entity|
+|Zachycené zprávy|Zachycené zprávy.|Počet|Celkem|Zachycené zprávy pro Microsoft.EventHub.|Název entity|
+|Zachycené bajty|Zachycené bajty.|Bajty|Celkem|Zachycené bajty pro Microsoft.EventHub.|Název entity|
+|Velikost|Velikost|Bajty|Průměr|Velikost EventHub v bajtů.|Název entity|
+|Inreqs|Příchozí požadavky (zastaralé)|Počet|Celkem|Celkový počet příchozích požadavků na odeslání oboru názvů (Zastaralé)|Žádný|
+|SUCCREQ|Úspěšné požadavky (zastaralé)|Počet|Celkem|Celkový počet úspěšných požadavků na obor názvů (zastaralé)|Žádný|
+|FUNKCE FAILREQ|Neúspěšné požadavky (zastaralé)|Počet|Celkem|Celkový počet neúspěšných požadavků na obor názvů (zastaralé)|Žádný|
+|SVRBSY|Chyby zaneprázdnění serveru (zastaralé)|Počet|Celkem|Celkový počet chyb serveru zaneprázdněnpro obor názvů (zastaralé)|Žádný|
+|INTERR|Chyby interního serveru (zastaralé)|Počet|Celkem|Celkový počet chyb interního serveru pro obor názvů (zastaralé)|Žádný|
+|Miscerr|Jiné chyby (zastaralé)|Počet|Celkem|Celkový počet neúspěšných požadavků na obor názvů (zastaralé)|Žádný|
+|INMSGS|Příchozí zprávy (zastaralé) (zastaralé)|Počet|Celkem|Celkový počet příchozích zpráv pro obor názvů Tato metrika je zastaralá. Místo toho použijte metriku Příchozí zprávy (zastaralé)|Žádný|
+|EHINMSGS|Příchozí zprávy (zastaralé)|Počet|Celkem|Celkový počet příchozích zpráv pro obor názvů (zastaralé)|Žádný|
+|OUTMSGS|Odchozí zprávy (zastaralé) (zastaralé)|Počet|Celkem|Celkový počet odchozích zpráv pro obor názvů Tato metrika je zastaralá. Místo toho použijte metriku Odchozí zprávy (zastaralé)|Žádný|
+|EHOUTMSGS|Odchozí zprávy (zastaralé)|Počet|Celkem|Celkový počet odchozích zpráv pro obor názvů (zastaralé)|Žádný|
+|EHINMBS|Příchozí bajty (zastaralé) (zastaralé)|Bajty|Celkem|Propustnost příchozích zpráv centra událostí pro obor názvů. Tato metrika je zastaralá. Místo toho použijte metriku Příchozí bajty (Zastaralé)|Žádný|
+|EHINBYTES|Příchozí bajty (zastaralé)|Bajty|Celkem|Propustnost příchozích zpráv centra událostí pro obor názvů (zastaralé)|Žádný|
+|EHOUTMBS|Odchozí bajty (zastaralé) (zastaralé)|Bajty|Celkem|Propustnost odchozích zpráv centra událostí pro obor názvů. Tato metrika je zastaralá. Místo toho použijte metriku odchozích bajtů (zastaralé)|Žádný|
+|EHOUTBYTES|Odchozí bajty (zastaralé)|Bajty|Celkem|Propustnost odchozích zpráv centra událostí pro obor názvů (zastaralé)|Žádný|
+|EHABL|Archivovat nevyřízené zprávy (zastaralé)|Počet|Celkem|Archivní zprávy centra událostí v nevyřízených položkách pro obor názvů (zastaralé)|Žádný|
+|EHAMSGS|Archivní zprávy (zastaralé)|Počet|Celkem|Archivované zprávy centra událostí v oboru názvů (zastaralé)|Žádný|
+|EHAMBS|Archivovat propustnost zpráv (zastaralé)|Bajty|Celkem|Propustnost zpráv centra událostí v oboru názvů (zastaralé)|Žádný|
 
-## <a name="microsofteventhubclusters"></a>Microsoft. EventHub/clustery
+## <a name="microsofteventhubclusters"></a>Microsoft.EventHub/clustery
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|SuccessfulRequests|Úspěšné požadavky|Počet|Celkem|Úspěšné požadavky pro Microsoft. EventHub|Výsledek operace uvnitř|
-|ServerErrors|Chyby serveru.|Počet|Celkem|Chyby serveru pro Microsoft. EventHub|Výsledek operace uvnitř|
-|UserErrors|Chyby uživatele.|Počet|Celkem|Chyby uživatele pro Microsoft. EventHub|Výsledek operace uvnitř|
-|QuotaExceededErrors|Chyby překročení kvóty|Počet|Celkem|Při překročení kvóty se vyskytly chyby pro Microsoft. EventHub.|Výsledek operace uvnitř|
-|ThrottledRequests|Omezené požadavky.|Počet|Celkem|Omezené požadavky pro Microsoft. EventHub|Výsledek operace uvnitř|
-|IncomingRequests|Příchozí žádosti|Počet|Celkem|Příchozí požadavky pro Microsoft. EventHub|Žádné|
-|IncomingMessages|Příchozí zprávy|Počet|Celkem|Příchozí zprávy pro Microsoft. EventHub|Žádné|
-|OutgoingMessages|Odchozí zprávy|Počet|Celkem|Odchozí zprávy pro Microsoft. EventHub|Žádné|
-|IncomingBytes|Příchozí bajty.|Bajty|Celkem|Příchozí bajty pro Microsoft. EventHub|Žádné|
-|OutgoingBytes|Odchozí bajty|Bajty|Celkem|Odchozí bajty pro Microsoft. EventHub|Žádné|
-|ActiveConnections|ActiveConnections|Počet|Průměr|Celkový počet aktivních připojení pro Microsoft. EventHub|Žádné|
-|ConnectionsOpened|Otevřená připojení.|Počet|Průměr|Otevřená připojení pro Microsoft. EventHub|Žádné|
-|ConnectionsClosed|Uzavřená připojení.|Počet|Průměr|Otevřená připojení pro Microsoft. EventHub|Žádné|
-|CaptureBacklog|Zachyťte nevyřízené položky.|Počet|Celkem|Zachyťte nevyřízené položky pro Microsoft. EventHub.|Žádné|
-|CapturedMessages|Zachycené zprávy.|Počet|Celkem|Zachycené zprávy pro Microsoft. EventHub|Žádné|
-|CapturedBytes|Zachycené bajty.|Bajty|Celkem|Zachycené bajty pro Microsoft. EventHub|Žádné|
-|Procesor|Procesor|Procento|Maximum|Využití CPU pro cluster centra událostí jako procento|Role|
-|AvailableMemory|Paměť k dispozici|Procento|Maximum|Dostupná paměť pro cluster centra událostí jako procento z celkové paměti.|Role|
+|Úspěšné požadavky|Úspěšné požadavky|Počet|Celkem|Úspěšné požadavky pro Microsoft.EventHub.|Výsledek operace|
+|Serverchyby|Chyby serveru.|Počet|Celkem|Chyby serveru pro Microsoft.EventHub.|Výsledek operace|
+|Uživatelské chyby|Chyby uživatele.|Počet|Celkem|Chyby uživatelů pro Microsoft.EventHub.|Výsledek operace|
+|Kvótaexceededchyb|Kvóta byla překročena chyby.|Počet|Celkem|Kvóta byla překročena chyby pro Microsoft.EventHub.|Výsledek operace|
+|ThrottledRequests|Omezené požadavky.|Počet|Celkem|Omezené požadavky pro Microsoft.EventHub.|Výsledek operace|
+|Příchozí požadavky|Příchozí požadavky|Počet|Celkem|Příchozí požadavky pro Microsoft.EventHub.|Žádný|
+|Příchozí zprávy|Příchozí zprávy|Počet|Celkem|Příchozí zprávy pro Microsoft.EventHub.|Žádný|
+|Odchozí zprávy|Odchozí zprávy|Počet|Celkem|Odchozí zprávy pro Microsoft.EventHub.|Žádný|
+|Příchozí bajty|Příchozí bajty.|Bajty|Celkem|Příchozí bajty pro Microsoft.EventHub.|Žádný|
+|OutgoingBytes|Odchozí bajty.|Bajty|Celkem|Odchozí bajty pro Microsoft.EventHub.|Žádný|
+|Aktivní připojení|Aktivní připojení|Počet|Průměr|Celkový počet aktivních připojení pro Microsoft.EventHub.|Žádný|
+|Otevřená připojení|Připojení byla otevřena.|Počet|Průměr|Otevřená připojení pro Microsoft.EventHub.|Žádný|
+|Připojení uzavřeno|Připojení uzavřena.|Počet|Průměr|Připojení uzavřena pro Microsoft.EventHub.|Žádný|
+|CaptureBacklog|Zachytit nevyřízené položky.|Počet|Celkem|Zachytit nevyřízené položky pro Microsoft.EventHub.|Žádný|
+|Zachycené zprávy|Zachycené zprávy.|Počet|Celkem|Zachycené zprávy pro Microsoft.EventHub.|Žádný|
+|Zachycené bajty|Zachycené bajty.|Bajty|Celkem|Zachycené bajty pro Microsoft.EventHub.|Žádný|
+|Procesor|Procesor|Procento|Maximum|Využití procesoru pro cluster centra událostí v procentech|Role|
+|AvailableMemory|Paměť k dispozici|Procento|Maximum|Dostupná paměť pro cluster centra událostí jako procento celkové paměti.|Role|
 
 
-## <a name="microsofthdinsightclusters"></a>Microsoft.HDInsight/clusters
+## <a name="microsofthdinsightclusters"></a>Microsoft.HDInsight/clustery
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|GatewayRequests|Žádosti o bránu|Počet|Celkem|Počet žádostí o bránu|HttpStatus|
-|CategorizedGatewayRequests|Zařadit požadavky na bránu|Počet|Celkem|Počet požadavků brány podle kategorií (1xx/2xx/3xx/4xx/5xx)|HttpStatus|
+|Požadavky na brány|Požadavky na brány|Počet|Celkem|Počet požadavků brány|HttpStatus|
+|Požadavky na brány zařazené do kategorií|Požadavky na brány zařazené do kategorií|Počet|Celkem|Počet požadavků na brány podle kategorií (1xx/2xx/3xx/4xx/5xx)|HttpStatus|
 |NumActiveWorkers|Počet aktivních pracovníků|Počet|Maximum|Počet aktivních pracovníků|MetricName|
 
 
 ## <a name="microsoftinsightsautoscalesettings"></a>Microsoft.Insights/AutoscaleSettings
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|ObservedMetricValue|Zaznamenaná hodnota metriky|Počet|Průměr|Hodnota vypočítaná AutoScale při spuštění|MetricTriggerSource|
-|MetricThreshold|Prahová hodnota metriky|Počet|Průměr|Nakonfigurované prahové hodnoty automatického škálování, když se spustilo automatické škálování.|MetricTriggerRule|
-|ObservedCapacity|Zjištěná kapacita|Počet|Průměr|Kapacita nahlášená pro automatické škálování při jejím spuštění.|Žádné|
-|ScaleActionsInitiated|Zahájené akce škálování|Počet|Celkem|Směr operace škálování.|ScaleDirection|
+|Hodnota ObservedMetric|Zjištěná metrická hodnota|Počet|Průměr|Hodnota vypočítaná automatickým měřítkem při spuštění|Zdroj metriky spouštěčů|
+|Metrická prahová hodnota|Prahová hodnota metriky|Počet|Průměr|Nakonfigurovaná prahová hodnota automatického škálování při spuštění automatického škálování.|Metrické pravidlo spouštění|
+|Pozorovaná kapacita|Pozorovaná kapacita|Počet|Průměr|Kapacita hlášena automatické škálování při jeho spuštění.|Žádný|
+|ScaleActionsInitiated|Zahájené akce škálování|Počet|Celkem|Směr operace měřítka.|ScaleDirection|
 
 
 
 
-## <a name="microsoftinsightscomponents"></a>Microsoft. Insights/Components
+## <a name="microsoftinsightscomponents"></a>Microsoft.Insights/Komponenty
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|availabilityResults/availabilityPercentage|Dostupnost|Procento|Průměr|Procento úspěšně dokončených testů dostupnosti|availabilityResult/název, availabilityResult/umístění|
-|availabilityResults/Count|Testy dostupnosti|Počet|Počet|Počet testů dostupnosti|availabilityResult/název, availabilityResult/umístění, availabilityResult/úspěch|
-|availabilityResults/doba trvání|Doba trvání testu dostupnosti|Milisekund|Průměr|Doba trvání testu dostupnosti|availabilityResult/název, availabilityResult/umístění, availabilityResult/úspěch|
-|browserTimings/networkDuration|Doba připojení k síti – načtení stránky|Milisekund|Průměr|Doba mezi požadavkem uživatele a připojením k síti. Zahrnuje vyhledávání DNS a přenosové připojení.|Žádné|
-|browserTimings/processingDuration|Doba zpracování klienta|Milisekund|Průměr|Doba mezi přijetím posledního bajtu dokumentu, dokud není načten DOM. Je možné, že se stále zpracovávají asynchronní požadavky.|Žádné|
-|browserTimings/receiveDuration|Doba přijetí odezvy|Milisekund|Průměr|Čas mezi prvním a posledním bajtů nebo až do odpojení|Žádné|
-|browserTimings/sendDuration|Čas požadavku na odeslání|Milisekund|Průměr|Doba mezi síťovým připojením a přijetím prvního bajtu.|Žádné|
-|browserTimings/totalDuration|Doba načítání stránky v prohlížeči|Milisekund|Průměr|Čas od žádosti uživatele do načtení DOM, šablon stylů, skriptů a imagí.|Žádné|
-|závislosti/počet|Volání závislostí|Počet|Počet|Počet volání prováděných aplikací vůči externím prostředkům|závislost/typ, závislost/performanceBucket, závislost/úspěšnost, závislost/cíl, provoz/syntetické, Cloud/roleInstance, Cloud/roleName|
-|závislosti/doba trvání|Doba trvání závislosti|Milisekund|Průměr|Doba trvání volání prováděných aplikací vůči externím prostředkům|závislost/typ, závislost/performanceBucket, závislost/úspěšnost, závislost/cíl, provoz/syntetické, Cloud/roleInstance, Cloud/roleName|
-|závislosti/selhání|Selhání volání závislostí|Počet|Počet|Počet neúspěšných volání závislostí prováděných aplikací vůči externím prostředkům|závislost/typ, závislost/performanceBucket, závislost/úspěšnost, závislost/cíl, provoz/syntetické, Cloud/roleInstance, Cloud/roleName|
-|pageViews/Count|Zobrazení stránek|Počet|Počet|Počet zobrazení stránek|provoz/syntetické, cloudové/roleName|
-|pageViews/doba trvání|Doba načítání zobrazení stránky|Milisekund|Průměr|Doba načítání zobrazení stránky|provoz/syntetické, cloudové/roleName|
-|Čítače výkonu/requestExecutionTime|Doba provádění požadavku HTTP|Milisekund|Průměr|Čas provedení posledního požadavku.|Cloud/roleInstance|
-|performanceCounters/requestsInQueue|Požadavky HTTP ve frontě aplikací|Počet|Průměr|Délka fronty požadavků aplikace|Cloud/roleInstance|
-|performanceCounters/requestsPerSecond|Četnost požadavků HTTP|CountPerSecond|Průměr|Míra všech požadavků na aplikaci za sekundu z ASP.NET.|Cloud/roleInstance|
-|performanceCounters/exceptionsPerSecond|Frekvence výjimek|CountPerSecond|Průměr|Počet zpracovaných a nezpracovaných výjimek hlášených systému Windows, včetně výjimek .NET a nespravovaných výjimek převedených na výjimky .NET.|Cloud/roleInstance|
-|performanceCounters/processIOBytesPerSecond|Frekvence V/V procesu|BytesPerSecond|Průměr|Celkový počet bajtů za sekundu přečtených a zapsaných do souborů, sítě a zařízení.|Cloud/roleInstance|
-|Čítače výkonu/processCpuPercentage|Procesor procesu|Procento|Průměr|Procentuální hodnota uplynulého času, který všechny podprocesy procesu používají k provádění instrukcí. Může se lišit od 0 do 100. Tato metrika indikuje výkon samotného procesu W3wp.|Cloud/roleInstance|
-|Čítače výkonu/processorCpuPercentage|Čas procesoru|Procento|Průměr|Procento času, které procesor stráví v nečinných vláknech|Cloud/roleInstance|
-|Čítače výkonu/memoryAvailableBytes|Dostupná paměť|Bajty|Průměr|Fyzická paměť je okamžitě k dispozici pro přidělení procesu nebo pro použití systémem.|Cloud/roleInstance|
-|performanceCounters/processPrivateBytes|Nesdílené bajty procesu|Bajty|Průměr|Paměť exkluzivně přiřazená k procesům monitorovaných aplikací.|Cloud/roleInstance|
-|žádosti/doba trvání|Doba odezvy serveru|Milisekund|Průměr|Doba mezi přijetím požadavku HTTP a dokončením odesílání odpovědi|požadavek/performanceBucket, požadavky/resultCode, provoz/syntetické, cloudové/roleInstance, požadavky/úspěch, Cloud/roleName|
-|požadavky/počet|Požadavky serveru|Počet|Počet|Počet dokončených požadavků HTTP|požadavek/performanceBucket, požadavky/resultCode, provoz/syntetické, cloudové/roleInstance, požadavky/úspěch, Cloud/roleName|
-|požadavky/selhání|Neúspěšné žádosti|Počet|Počet|Počet požadavků HTTP označených jako neúspěšné Ve většině případů se jedná o žádosti s kódem odpovědi > = 400 a nerovná se 401.|požadavek/performanceBucket, žádosti/resultCode, požadavky/úspěch, provoz/syntetické, Cloud/roleInstance, Cloud/roleName|
-|žádosti/rychlost|Počet požadavků serveru|CountPerSecond|Průměr|Frekvence požadavků serveru za sekundu|požadavek/performanceBucket, požadavky/resultCode, provoz/syntetické, cloudové/roleInstance, požadavky/úspěch, Cloud/roleName|
-|výjimky/počet|Výjimky|Počet|Počet|Kombinovaný počet všech nezachycených výjimek.|Cloud/roleName, Cloud/roleInstance, klient/typ|
-|výjimky/prohlížeč|Výjimky prohlížečů|Počet|Počet|Počet nezachycených výjimek vyvolaných v prohlížeči|klient/server, Cloud/roleName|
-|výjimky/Server|Výjimky serveru|Počet|Počet|Počet nezachycených výjimek vyvolaných v serverové aplikaci|klient/server, Cloud/roleName, Cloud/roleInstance|
-|trasování/počet|Trasování|Počet|Počet|Počet dokumentů trasování|Trace/severityLevel, provozní/syntetické, Cloud/roleName, Cloud/roleInstance|
+|availabilityResults/availabilityPercentage|Dostupnost|Procento|Průměr|Procento úspěšně dokončených testů dostupnosti|availabilityVýsledek/název,dostupnostVýsledek/umístění|
+|availabilityResults/count|Testy dostupnosti|Počet|Počet|Počet testů dostupnosti|availabilityResult/name,availabilityResult/location,availabilityResult/success|
+|availabilityResults/duration|Doba trvání testu dostupnosti|Milisekund|Průměr|Doba trvání testu dostupnosti|availabilityResult/name,availabilityResult/location,availabilityResult/success|
+|browserTimings/networkDuration|Čas připojení sítě načítání stránky|Milisekund|Průměr|Doba mezi požadavkem uživatele a síťovým připojením. Zahrnuje vyhledávání DNS a přenosové připojení.|Žádný|
+|browserTimings/processingDuration|Doba zpracování klienta|Milisekund|Průměr|Doba mezi přijetím posledního bajtu dokumentu do načtení dom. Asynchronní požadavky mohou být stále zpracování.|Žádný|
+|browserTimings/receiveDuration|Doba odezvy příjmu|Milisekund|Průměr|Čas mezi prvním a posledním bajtem nebo do odpojení.|Žádný|
+|browserTimings/sendDuration|Čas odeslání požadavku|Milisekund|Průměr|Doba mezi síťovým připojením a přijetím prvního bajtu.|Žádný|
+|browserTimings/totalDuration|Čas načítání stránky prohlížeče|Milisekund|Průměr|Čas od požadavku uživatele až do DOM, styly, skripty a obrázky jsou načteny.|Žádný|
+|závislosti/počet|Volání závislostí|Počet|Počet|Počet volání provedených aplikací do externích prostředků.|závislost/typ,závislost/performanceBucket,závislost/úspěch,závislost/cíl,operace/syntetické,cloud/roleInstance,cloud/roleName|
+|závislosti/doba trvání|Doba trvání závislosti|Milisekund|Průměr|Doba trvání volání aplikace na externí prostředky.|závislost/typ,závislost/performanceBucket,závislost/úspěch,závislost/cíl,operace/syntetické,cloud/roleInstance,cloud/roleName|
+|závislosti/selhání|Selhání volání závislostí|Počet|Počet|Počet neúspěšných volání závislostí provedených aplikací na externí prostředky.|závislost/typ,závislost/performanceBucket,závislost/úspěch,závislost/cíl,operace/syntetické,cloud/roleInstance,cloud/roleName|
+|zobrazení/počet stránek|Zobrazení stránky|Počet|Počet|Počet zobrazení stránky.|operace/syntetické,cloud/roleName|
+|pageViews/duration pageViews/duration pageViews/duration pageViews|Doba načítání zobrazení stránky|Milisekund|Průměr|Doba načítání zobrazení stránky|operace/syntetické,cloud/roleName|
+|performanceCounters/requestExecutionTime|Doba spuštění požadavku HTTP|Milisekund|Průměr|Doba spuštění poslední ho požadavku.|cloud/roleInstance|
+|performanceCounters/requestsInQueue|Požadavky HTTP ve frontě aplikací|Počet|Průměr|Délka fronty žádostí o aplikaci.|cloud/roleInstance|
+|performanceCounters/requestsPerSecond|Rychlost požadavků HTTP|CountPerSecond|Průměr|Rychlost všech požadavků na aplikaci za sekundu od ASP.NET.|cloud/roleInstance|
+|performanceCounters/exceptionsPerSecond|Míra výjimek|CountPerSecond|Průměr|Počet zpracovaných a neošetřených výjimek hlášených do systému Windows, včetně výjimek .NET a nespravovaných výjimek, které jsou převedeny na výjimky rozhraní .NET.|cloud/roleInstance|
+|performanceCounters/processIOBytesPerSecond|Rychlost vi.|BajtyPerSekunda|Průměr|Celkový počet bajtů za sekundu čtení a zápis do souborů, sítě a zařízení.|cloud/roleInstance|
+|performanceCounters/processCpuPercentage|Procesní procesor|Procento|Průměr|Procento uplynulého času, který všechna vlákna procesu používala procesor k provádění pokynů. To se může pohybovat mezi 0 až 100. Tato metrika označuje výkon samotného procesu w3wp.|cloud/roleInstance|
+|performanceCounters/processorCpuPercentage|Čas procesoru|Procento|Průměr|Procento času, který procesor stráví v nečinné vlákna.|cloud/roleInstance|
+|performanceCounters/memoryAvailableBytes|Dostupná paměť|Bajty|Průměr|Fyzická paměť okamžitě k dispozici pro přidělení procesu nebo pro použití v systému.|cloud/roleInstance|
+|performanceCounters/processPrivateBytes|Zpracovat soukromé bajty|Bajty|Průměr|Paměť je přiřazena výhradně procesům monitorované aplikace.|cloud/roleInstance|
+|žádosti/doba trvání|Doba odezvy serveru|Milisekund|Průměr|Doba mezi přijetím požadavku HTTP a dokončením odeslání odpovědi.|request/performanceBucket,request/resultCode,operation/synthetic,cloud/roleInstance,request/success,cloud/roleName|
+|požadavky/počet|Serverové požadavky|Počet|Počet|Počet dokončených požadavků HTTP.|request/performanceBucket,request/resultCode,operation/synthetic,cloud/roleInstance,request/success,cloud/roleName|
+|požadavky/neúspěšné|Neúspěšné požadavky|Počet|Počet|Počet požadavků HTTP označených jako neúspěšné. Ve většině případů se jedná o požadavky s kódem odpovědi >= 400 a nerovná se 401.|request/performanceBucket,request/resultCode,request/success,operation/synthetic,cloud/roleInstance,cloud/roleName|
+|žádosti/sazba|Rychlost požadavků serveru|CountPerSecond|Průměr|Rychlost požadavků serveru za sekundu|request/performanceBucket,request/resultCode,operation/synthetic,cloud/roleInstance,request/success,cloud/roleName|
+|výjimky/počet|Výjimky|Počet|Počet|Kombinovaný počet všech nezachycených výjimek.|cloud/roleName,cloud/roleInstance,klient/typ|
+|výjimky/prohlížeč|Výjimky prohlížečů|Počet|Počet|Počet nezachycených výjimek vyváděných v prohlížeči.|client/isServer,cloud/roleName|
+|výjimky/server|Výjimky serveru|Počet|Počet|Počet nezachycených výjimek vyzvaných v serverové aplikaci.|client/isServer,cloud/roleName,cloud/roleInstance|
+|stopy/počet|Trasování|Počet|Počet|Počet trasovacích dokumentů|trace/severityLevel,operation/synthetic,cloud/roleName,cloud/roleInstance|
 
 
 
-## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
+## <a name="microsoftkeyvaultvaults"></a>Úložiště Microsoft.KeyVault/trezory
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|ServiceApiHit|Celkový počet přístupů k rozhraní API služby|Počet|Počet|Celkový počet přístupů k rozhraní API služby|ActivityType, Activity|
-|ServiceApiLatency|Celková latence rozhraní API služby|Milisekundy|Průměr|Celková latence požadavků na rozhraní API služby|ActivityType, Activity, StatusCode, StatusCodeClass|
-|ServiceApiResult|Celkový počet výsledků rozhraní API služby|Počet|Počet|Počet celkových výsledků rozhraní API služby|ActivityType, Activity, StatusCode, StatusCodeClass|
-|SaturationShoebox|Celkové sytosti trezoru|Procento|Průměr|Využitá kapacita trezoru|ActivityType, Activity, TransactionType|
-|Dostupnost|Celková dostupnost trezoru|Procento|Průměr|Dostupnost žádostí o trezor|ActivityType, Activity, StatusCode, StatusCodeClass|
+|ServiceApiHit|Celkový počet přístupů rozhraní API služby|Počet|Počet|Počet celkových přístupů rozhraní API služby|ActivityType,ActivityName|
+|ServiceApiLatency|Celková latence rozhraní API služby|Milisekund|Průměr|Celková latence požadavků rozhraní API služby|ActivityType,ActivityName,StatusCode,StatusCodeClass|
+|ServiceApiResult|Celkový počet výsledků rozhraní API služby|Počet|Počet|Počet celkových výsledků rozhraní API služby|ActivityType,ActivityName,StatusCode,StatusCodeClass|
+|SytostKrabice na boty|Celková sytost trezoru|Procento|Průměr|Využitá kapacita trezoru|ActivityType,ActivityName,TransactionType|
+|Dostupnost|Celková dostupnost trezoru|Procento|Průměr|Dostupnost požadavků na úložiště|ActivityType,ActivityName,StatusCode,StatusCodeClass|
 
-## <a name="microsoftkustoclusters"></a>Microsoft.Kusto/Clusters
+## <a name="microsoftkustoclusters"></a>Microsoft.Kusto/Clustery
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|CacheUtilization|Využití mezipaměti|Procento|Průměr|Úroveň využití v oboru clusteru|Žádné|
-|QueryDuration|Doba trvání dotazu|Milisekundy|Průměr|Doba trvání dotazů v sekundách|QueryStatus|
-|IngestionUtilization|Využití příjmu|Procento|Průměr|Poměr využitých slotů pro přijímání na clusteru|Žádné|
-|Udržení|Zachovat naživu|Počet|Průměr|Správnosti check indikuje, že cluster reaguje na dotazy|Žádné|
-|IngestionVolumeInMB|Objem příjmu (v MB)|Počet|Celkem|Celkový objem zpracovaných dat do clusteru (v MB)|Databáze|
-|IngestionLatencyInSeconds|Latence příjmu (v sekundách)|Sekundy|Průměr|Doba ingestování ze zdroje (např. zpráva je v centru EventHub) do clusteru v řádu sekund|Žádné|
-|EventsProcessedForEventHubs|Zpracované události (pro Event/centra IoT)|Počet|Celkem|Počet událostí zpracovaných clusterem při příjmu z události nebo IoT Hub|EventStatus|
-|IngestionResult|Výsledek ingestování|Počet|Počet|Počet operací ingestování|IngestionResultDetails|
-|Procesor|Procesor|Procento|Průměr|Úroveň využití procesoru|Žádné|
-|ContinuousExportNumOfRecordsExported|Průběžný export – počet exportovaných záznamů|Počet|Celkem|Počet exportovaných záznamů, které se vyvolaly pro každý artefakt úložiště zapsaný během operace exportu|Žádné|
-|ExportUtilization|Využití exportu|Procento|Maximum|Využití exportu|Žádné|
-|ContinuousExportPendingCount|Počet nevyřízených položek průběžného exportu|Počet|Maximum|Počet probíhajících úloh průběžného exportu připravených k provedení|Žádné|
-|ContinuousExportMaxLatenessMinutes|Maximální počet minut zpoždění pro průběžný export|Počet|Maximum|Maximální zpoždění v minutách všech průběžných exportů čeká na vyřízení a připraveno ke spuštění|Žádné|
-|ContinuousExportResult|Výsledek průběžného exportu|Počet|Počet|Indikuje, jestli se průběžný export zdařil nebo selhal.|ContinuousExportName, výsledek, databáze|
-|StreamingIngestDuration|Doba ingestování streamování|Milisekundy|Průměr|Doba ingestování streamování v milisekundách|Žádné|
-|StreamingIngestDataRate|Přenosová rychlost ingestování datových proudů|Počet|Průměr|Přenosová rychlost ingestování datových proudů (MB za sekundu)|Žádné|
-|SteamingIngestRequestRate|Rychlost přijímání požadavků pro streamování|Počet|RateRequestsPerSecond|Míra požadavků ingestování datových proudů (počet požadavků za sekundu)|Žádné|
-|StreamingIngestResults|Výsledek ingestování streamování|Počet|Průměr|Výsledek ingestování streamování|Výsledek|
-|TotalNumberOfConcurrentQueries|Celkový počet souběžných dotazů|Počet|Celkem|Celkový počet souběžných dotazů|Žádné|
-|TotalNumberOfThrottledQueries|Celkový počet omezených dotazů|Počet|Celkem|Celkový počet omezených dotazů|Žádné|
-|TotalNumberOfThrottledCommands|Celkový počet příkazů s omezením|Počet|Celkem|Celkový počet příkazů s omezením|CommandType|
-|TotalNumberOfExtents|Celkový počet rozsahů|Počet|Celkem|Celkový počet rozsahů dat|Žádné|
+|Využití mezipaměti|Využití mezipaměti|Procento|Průměr|Úroveň využití v oboru clusteru|Žádný|
+|Trvání dotazu|Doba trvání dotazu|Milisekund|Průměr|Doba trvání dotazů v sekundách|Stav dotazu|
+|IngestionUtilizace|Využití požití|Procento|Průměr|Poměr použitých ingestačních slotů v clusteru|Žádný|
+|Keepalive|Udržujte naživu|Počet|Průměr|Kontrola příčetnosti označuje, že cluster odpovídá na dotazy|Žádný|
+|PožitíVolumeInMB|Svazek požití (v MB)|Počet|Celkem|Celkový objem ingemovaných dat do clusteru (v MB)|Databáze|
+|IngestionLatencyInSeconds|Latence požití (v sekundách)|Sekundy|Průměr|Doba požití ze zdroje (např. zpráva je v EventHubu) do clusteru v sekundách|Žádný|
+|UdálostiProcessedForEventHubs|Zpracované události (pro centra událostí/IoT)|Počet|Celkem|Počet událostí zpracovaných clusterem při ingestování z centra Event/IoT Hub|EventStatus|
+|Výsledek požití|Výsledek požití|Počet|Počet|Počet operací požití|IngestionResultDetails|
+|Procesor|Procesor|Procento|Průměr|Úroveň využití procesoru|Žádný|
+|ContinuousExportNumOfRecordsExported|Nepřetržitý export – číslo exportovaných záznamů|Počet|Celkem|Počet exportovaných záznamů, vytápěných pro každý artefakt úložiště napsaný během operace exportu|Žádný|
+|Využití exportu|Využití exportu|Procento|Maximum|Využití exportu|Žádný|
+|ContinuousExportPendingCount|Počet čekajícího nepřetržitého exportu|Počet|Maximum|Počet čekajících úloh průběžného exportu připravených k provedení|Žádný|
+|ContinuousExportMaxLatenessMinutes|Minut maximální zpoždění nepřetržitého exportu|Počet|Maximum|Maximální zpoždění v minutách všech probíhajících exportů čekajících a připravených k provedení|Žádný|
+|Výsledek průběžného exportu|Výsledek nepřetržitého exportu|Počet|Počet|Označuje, zda byl nepřetržitý export úspěšný nebo neúspěšný.|ContinuousExportName,Výsledek,Databáze|
+|Streamovánítrvání|Doba trvání ingestování streamování|Milisekund|Průměr|Doba streamování v milisekundách|Žádný|
+|StreamingIngestData|Rychlost streamování ingestování dat|Počet|Průměr|Rychlost streamování dat ingestuce (MB za sekundu)|Žádný|
+|SteamingestRequestRate|Rychlost požadavků ingestování datových proudů|Počet|RateRequestsPerSecond|Rychlost streamování požadavků na ingestování (požadavky za sekundu)|Žádný|
+|StreamingIngestResults|Výsledek ingestování streamování|Počet|Průměr|Výsledek streamování|Výsledek|
+|TotalNumberOfConcurrentQueries|Celkový počet souběžných dotazů|Počet|Celkem|Celkový počet souběžných dotazů|Žádný|
+|TotalNumberOfThrottledQueries|Celkový počet dotazů s omezením|Počet|Celkem|Celkový počet dotazů s omezením|Žádný|
+|TotalNumberOfThrottledCommands|Celkový počet příkazů s omezením|Počet|Celkem|Celkový počet příkazů s omezením|Commandtype|
+|Celkový počet rozsahů|Celkový počet rozsahů|Počet|Celkem|Celkový počet datových rozsahů|Žádný|
 
 
-## <a name="microsoftlogicworkflows"></a>Microsoft.Logic/workflows
+## <a name="microsoftlogicworkflows"></a>Microsoft.Logic/pracovní postupy
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|RunsStarted|Spuštěné běhy|Počet|Celkem|Počet spuštěných pracovních postupů|Žádné|
-|RunsCompleted|Dokončené běhy|Počet|Celkem|Počet dokončených běhů pracovního postupu.|Žádné|
-|RunsSucceeded|Úspěšné běhy|Počet|Celkem|Počet úspěšných běhů pracovního postupu.|Žádné|
-|RunsFailed|Neúspěšné běhy|Počet|Celkem|Počet spuštění pracovního postupu se nezdařil.|Žádné|
-|RunsCancelled|Zrušené běhy|Počet|Celkem|Počet zrušených běhů pracovního postupu.|Žádné|
-|RunLatency|Latence běhu|Sekundy|Průměr|Latence dokončených běhů pracovního postupu.|Žádné|
-|RunSuccessLatency|Latence úspěšných běhů|Sekundy|Průměr|Latence úspěšných spuštění pracovního postupu.|Žádné|
-|RunThrottledEvents|Omezené události běhu|Počet|Celkem|Počet akcí pracovního postupu nebo omezené události triggeru|Žádné|
-|RunStartThrottledEvents|Spustit omezené události|Počet|Celkem|Počet neomezených událostí spuštění pracovního postupu.|Žádné|
-|RunFailurePercentage|Procento selhání spuštění|Procento|Celkem|Procento běhu pracovního postupu se nezdařilo.|Žádné|
-|ActionsStarted|Spuštěné akce |Počet|Celkem|Počet spuštěných akcí pracovního postupu.|Žádné|
-|ActionsCompleted|Dokončené akce |Počet|Celkem|Počet dokončených akcí pracovního postupu.|Žádné|
-|ActionsSucceeded|Úspěšné akce |Počet|Celkem|Počet úspěšných akcí pracovního postupu.|Žádné|
-|ActionsFailed|Neúspěšné akce |Počet|Celkem|Počet neúspěšných akcí pracovního postupu.|Žádné|
-|ActionsSkipped|Vynechané akce |Počet|Celkem|Počet vynechaných akcí pracovního postupu.|Žádné|
-|ActionLatency|Latence akcí |Sekundy|Průměr|Latence dokončených akcí pracovního postupu.|Žádné|
-|ActionSuccessLatency|Latence úspěšných akcí |Sekundy|Průměr|Latence úspěšných akcí pracovního postupu.|Žádné|
-|ActionThrottledEvents|Omezené události akcí|Počet|Celkem|Počet omezených událostí akcí pracovního postupu...|Žádné|
-|TriggersStarted|Spuštěné triggery |Počet|Celkem|Počet spuštěných triggerů pracovního postupu.|Žádné|
-|TriggersCompleted|Dokončené triggery |Počet|Celkem|Počet dokončených triggerů pracovního postupu.|Žádné|
-|TriggersSucceeded|Aktivační události byly úspěšné |Počet|Celkem|Počet úspěšných triggerů pracovního postupu|Žádné|
-|TriggersFailed|Neúspěšné triggery |Počet|Celkem|Počet neúspěšných triggerů pracovního postupu.|Žádné|
-|TriggersSkipped|Vynechané triggery|Počet|Celkem|Počet vynechaných triggerů pracovního postupu.|Žádné|
-|TriggersFired|Vyvolané triggery |Počet|Celkem|Počet vyvolaných triggerů pracovního postupu.|Žádné|
-|TriggerLatency|Latence triggeru |Sekundy|Průměr|Latence dokončených triggerů pracovního postupu.|Žádné|
-|TriggerFireLatency|Latence při vyvolání triggeru |Sekundy|Průměr|Latence aktivovaných triggerů pracovního postupu.|Žádné|
-|TriggerSuccessLatency|Latence úspěšného triggeru |Sekundy|Průměr|Latence úspěšných triggerů pracovního postupu.|Žádné|
-|TriggerThrottledEvents|Omezené události triggeru|Počet|Celkem|Počet neomezených událostí triggeru pracovního postupu.|Žádné|
-|BillableActionExecutions|Fakturovatelné operace provedení akce|Počet|Celkem|Počet fakturovaných provedení akcí pracovního postupu|Žádné|
-|BillableTriggerExecutions|Fakturovatelná spuštění triggerů|Počet|Celkem|Počet fakturovaných provedení triggerů pracovního postupu|Žádné|
-|TotalBillableExecutions|Fakturovatelné operace provedení celkem|Počet|Celkem|Počet fakturovaných provedení pracovního postupu|Žádné|
-|BillingUsageNativeOperation|Využití fakturace pro provádění nativních operací|Počet|Celkem|Počet fakturovaných provedení nativních operací|Žádné|
-|BillingUsageStandardConnector|Využití fakturace pro spuštění standardních konektorů|Počet|Celkem|Počet fakturovaných spuštění standardních konektorů|Žádné|
-|BillingUsageStorageConsumption|Využití fakturace pro provádění spotřeby úložiště|Počet|Celkem|Počet fakturovaných spuštění spotřeby úložiště|Žádné|
-|BillingUsageNativeOperation|Využití fakturace pro provádění nativních operací|Počet|Celkem|Počet fakturovaných provedení nativních operací|Žádné|
-|BillingUsageStandardConnector|Využití fakturace pro spuštění standardních konektorů|Počet|Celkem|Počet fakturovaných spuštění standardních konektorů|Žádné|
-|BillingUsageStorageConsumption|Využití fakturace pro provádění spotřeby úložiště|Počet|Celkem|Počet fakturovaných spuštění spotřeby úložiště|Žádné|
+|Spuštění|Spuštění bylo zahájeno.|Počet|Celkem|Počet spuštění pracovního postupu.|Žádný|
+|Spuštění Dokončeno|Spuštění dokončeno|Počet|Celkem|Počet dokončených spuštění pracovního postupu.|Žádný|
+|Spuštění proběhlo úspěšně.|Spuštění proběhlo úspěšně.|Počet|Celkem|Počet spuštění pracovního postupu byl úspěšný.|Žádný|
+|Spuštění se nezdařilo.|Spuštění se nezdařilo.|Počet|Celkem|Počet spuštění pracovního postupu se nezdařil.|Žádný|
+|Spuštěnízrušeno|Spuštění byla zrušena.|Počet|Celkem|Počet spuštění pracovního postupu byl zrušen.|Žádný|
+|RunLatency|Spustit latenci|Sekundy|Průměr|Latence dokončeného pracovního postupu je spuštěna.|Žádný|
+|RunSuccessLatency|Spustit latenci úspěchu|Sekundy|Průměr|Latence úspěšného pracovního postupu běží.|Žádný|
+|RunThrottledEvents|Spustit události s omezením|Počet|Celkem|Počet akcí pracovního postupu nebo aktivační události omezení.|Žádný|
+|Akce RunStartŠkrtdEvents|Spustit události s omezením spuštění|Počet|Celkem|Počet spuštění spuštění pracovního postupu události omezení.|Žádný|
+|Procento selhání systému Run|Procento selhání spuštění|Procento|Celkem|Procento spuštění pracovního postupu se nezdařilo.|Žádný|
+|AkceZahájené|Zahájené akce |Počet|Celkem|Počet zahájených akcí pracovního postupu.|Žádný|
+|Dokončené akce|Dokončené akce |Počet|Celkem|Počet dokončených akcí pracovního postupu.|Žádný|
+|Akce proběhly úspěšně.|Akce proběhly úspěšně. |Počet|Celkem|Počet akcí pracovního postupu byl úspěšný.|Žádný|
+|Akce se nezdařily.|Akce se nezdařily. |Počet|Celkem|Počet akcí pracovního postupu se nezdařil.|Žádný|
+|AkceSkipped|Akce přeskočeny |Počet|Celkem|Počet akcí pracovního postupu přeskočen.|Žádný|
+|Latence akce|Latence akce |Sekundy|Průměr|Latence dokončených akcí pracovního postupu.|Žádný|
+|AkceSuccessLatency|Latence úspěšnosti akce |Sekundy|Průměr|Latence úspěšných akcí pracovního postupu.|Žádný|
+|Akce Akce|Akce škrticí události|Počet|Celkem|Počet událostí akce pracovního postupu omezení..|Žádný|
+|TriggersStarted|Aktivační události byly spuštěny. |Počet|Celkem|Počet spuštěných aktivačních událostí pracovního postupu|Žádný|
+|Aktivační události dokončeny|Aktivační události dokončeny |Počet|Celkem|Počet aktivačních událostí pracovního postupu byl dokončen.|Žádný|
+|Aktivační události proběhly úspěšně.|Aktivační události byly úspěšné. |Počet|Celkem|Počet aktivačních událostí pracovního postupu byl úspěšný.|Žádný|
+|Aktivační události se nezdařily|Aktivační události se nezdařily. |Počet|Celkem|Počet aktivačních událostí pracovního postupu se nezdařil.|Žádný|
+|TriggersSkipped|Přeskočené aktivační události|Počet|Celkem|Počet aktivačních událostí pracovního postupu přeskočen.|Žádný|
+|TriggersFired|Aktivační události aktivována |Počet|Celkem|Počet aktivačních událostí pracovního postupu.|Žádný|
+|Latence spouště|Latence aktivační události |Sekundy|Průměr|Latence dokončených aktivačních událostí pracovního postupu.|Žádný|
+|TriggerFireLatency|Aktivovat latenci požáru |Sekundy|Průměr|Latence aktivačních událostí vytápěného pracovního postupu.|Žádný|
+|TriggerSuccessLatency|Aktivace latence úspěšnosti |Sekundy|Průměr|Latence úspěšných aktivačních událostí pracovního postupu.|Žádný|
+|TriggerThrottledEvents|Události s omezením aktivace|Počet|Celkem|Počet událostí omezení omezení pracovního postupu.|Žádný|
+|BillableActionExecutions|Fakturovatelné spuštění akcí|Počet|Celkem|Počet spuštění akce pracovního postupu, které se účtují.|Žádný|
+|BillableTriggerExecutions|Fakturovatelné spuštění aktivační události|Počet|Celkem|Počet spuštění aktivačníudálosti pracovního postupu, která se účtují.|Žádný|
+|TotalBillableExecutions|Fakturovatelná spuštění celkem|Počet|Celkem|Počet spuštění pracovního postupu, které se účtují.|Žádný|
+|BillingUsageNativeOperation|Využití fakturace pro nativní spuštění operací|Počet|Celkem|Počet nativních spuštění operací, které se účtují.|Žádný|
+|BillingUsageStandardConnector|Využití fakturace pro spuštění standardního konektoru|Počet|Celkem|Počet spuštění standardníkonektor, které se účtují.|Žádný|
+|BillingUsageStorageConsumptionS|Využití fakturace pro spouštění spotřeby úložiště|Počet|Celkem|Počet spuštění spotřeby úložiště, které se účtují.|Žádný|
+|BillingUsageNativeOperation|Využití fakturace pro nativní spuštění operací|Počet|Celkem|Počet nativních spuštění operací, které se účtují.|Žádný|
+|BillingUsageStandardConnector|Využití fakturace pro spuštění standardního konektoru|Počet|Celkem|Počet spuštění standardníkonektor, které se účtují.|Žádný|
+|BillingUsageStorageConsumptionS|Využití fakturace pro spouštění spotřeby úložiště|Počet|Celkem|Počet spuštění spotřeby úložiště, které se účtují.|Žádný|
 
 
 
-## <a name="microsoftlogicintegrationserviceenvironments"></a>Microsoft. Logic/integrationServiceEnvironments
+## <a name="microsoftlogicintegrationserviceenvironments"></a>Microsoft.Logic/integrationServiceEnvironments
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|RunsStarted|Spuštěné běhy|Počet|Celkem|Počet spuštěných pracovních postupů|Žádné|
-|RunsCompleted|Dokončené běhy|Počet|Celkem|Počet dokončených běhů pracovního postupu.|Žádné|
-|RunsSucceeded|Úspěšné běhy|Počet|Celkem|Počet úspěšných běhů pracovního postupu.|Žádné|
-|RunsFailed|Neúspěšné běhy|Počet|Celkem|Počet spuštění pracovního postupu se nezdařil.|Žádné|
-|RunsCancelled|Zrušené běhy|Počet|Celkem|Počet zrušených běhů pracovního postupu.|Žádné|
-|RunLatency|Latence běhu|Sekundy|Průměr|Latence dokončených běhů pracovního postupu.|Žádné|
-|RunSuccessLatency|Latence úspěšných běhů|Sekundy|Průměr|Latence úspěšných spuštění pracovního postupu.|Žádné|
-|RunThrottledEvents|Omezené události běhu|Počet|Celkem|Počet akcí pracovního postupu nebo omezené události triggeru|Žádné|
-|RunStartThrottledEvents|Spustit omezené události|Počet|Celkem|Počet neomezených událostí spuštění pracovního postupu.|Žádné|
-|RunFailurePercentage|Procento selhání spuštění|Procento|Celkem|Procento běhu pracovního postupu se nezdařilo.|Žádné|
-|ActionsStarted|Spuštěné akce |Počet|Celkem|Počet spuštěných akcí pracovního postupu.|Žádné|
-|ActionsCompleted|Dokončené akce |Počet|Celkem|Počet dokončených akcí pracovního postupu.|Žádné|
-|ActionsSucceeded|Úspěšné akce |Počet|Celkem|Počet úspěšných akcí pracovního postupu.|Žádné|
-|ActionsFailed|Neúspěšné akce |Počet|Celkem|Počet neúspěšných akcí pracovního postupu.|Žádné|
-|ActionsSkipped|Vynechané akce |Počet|Celkem|Počet vynechaných akcí pracovního postupu.|Žádné|
-|ActionLatency|Latence akcí |Sekundy|Průměr|Latence dokončených akcí pracovního postupu.|Žádné|
-|ActionSuccessLatency|Latence úspěšných akcí |Sekundy|Průměr|Latence úspěšných akcí pracovního postupu.|Žádné|
-|ActionThrottledEvents|Omezené události akcí|Počet|Celkem|Počet omezených událostí akcí pracovního postupu...|Žádné|
-|TriggersStarted|Spuštěné triggery |Počet|Celkem|Počet spuštěných triggerů pracovního postupu.|Žádné|
-|TriggersCompleted|Dokončené triggery |Počet|Celkem|Počet dokončených triggerů pracovního postupu.|Žádné|
-|TriggersSucceeded|Aktivační události byly úspěšné |Počet|Celkem|Počet úspěšných triggerů pracovního postupu|Žádné|
-|TriggersFailed|Neúspěšné triggery |Počet|Celkem|Počet neúspěšných triggerů pracovního postupu.|Žádné|
-|TriggersSkipped|Vynechané triggery|Počet|Celkem|Počet vynechaných triggerů pracovního postupu.|Žádné|
-|TriggersFired|Vyvolané triggery |Počet|Celkem|Počet vyvolaných triggerů pracovního postupu.|Žádné|
-|TriggerLatency|Latence triggeru |Sekundy|Průměr|Latence dokončených triggerů pracovního postupu.|Žádné|
-|TriggerFireLatency|Latence při vyvolání triggeru |Sekundy|Průměr|Latence aktivovaných triggerů pracovního postupu.|Žádné|
-|TriggerSuccessLatency|Latence úspěšného triggeru |Sekundy|Průměr|Latence úspěšných triggerů pracovního postupu.|Žádné|
-|TriggerThrottledEvents|Omezené události triggeru|Počet|Celkem|Počet neomezených událostí triggeru pracovního postupu.|Žádné|
-|IntegrationServiceEnvironmentWorkflowProcessorUsage|Využití procesoru pracovního postupu pro prostředí integrační služby|Procento|Průměr|Využití procesoru pracovního postupu pro prostředí integrační služby.|Žádné|
-|IntegrationServiceEnvironmentWorkflowMemoryUsage|Využití paměti workflowu pro prostředí integrační služby|Procento|Průměr|Využití paměti pracovního postupu pro prostředí integrační služby.|Žádné|
-|IntegrationServiceEnvironmentConnectorProcessorUsage|Využití procesoru konektoru pro prostředí integrační služby|Procento|Průměr|Využití procesoru konektoru pro prostředí integrační služby.|Žádné|
-|IntegrationServiceEnvironmentConnectorMemoryUsage|Využití paměti konektoru pro prostředí integrační služby|Procento|Průměr|Využití paměti konektoru pro prostředí integrační služby.|Žádné|
+|Spuštění|Spuštění bylo zahájeno.|Počet|Celkem|Počet spuštění pracovního postupu.|Žádný|
+|Spuštění Dokončeno|Spuštění dokončeno|Počet|Celkem|Počet dokončených spuštění pracovního postupu.|Žádný|
+|Spuštění proběhlo úspěšně.|Spuštění proběhlo úspěšně.|Počet|Celkem|Počet spuštění pracovního postupu byl úspěšný.|Žádný|
+|Spuštění se nezdařilo.|Spuštění se nezdařilo.|Počet|Celkem|Počet spuštění pracovního postupu se nezdařil.|Žádný|
+|Spuštěnízrušeno|Spuštění byla zrušena.|Počet|Celkem|Počet spuštění pracovního postupu byl zrušen.|Žádný|
+|RunLatency|Spustit latenci|Sekundy|Průměr|Latence dokončeného pracovního postupu je spuštěna.|Žádný|
+|RunSuccessLatency|Spustit latenci úspěchu|Sekundy|Průměr|Latence úspěšného pracovního postupu běží.|Žádný|
+|RunThrottledEvents|Spustit události s omezením|Počet|Celkem|Počet akcí pracovního postupu nebo aktivační události omezení.|Žádný|
+|Akce RunStartŠkrtdEvents|Spustit události s omezením spuštění|Počet|Celkem|Počet spuštění spuštění pracovního postupu události omezení.|Žádný|
+|Procento selhání systému Run|Procento selhání spuštění|Procento|Celkem|Procento spuštění pracovního postupu se nezdařilo.|Žádný|
+|AkceZahájené|Zahájené akce |Počet|Celkem|Počet zahájených akcí pracovního postupu.|Žádný|
+|Dokončené akce|Dokončené akce |Počet|Celkem|Počet dokončených akcí pracovního postupu.|Žádný|
+|Akce proběhly úspěšně.|Akce proběhly úspěšně. |Počet|Celkem|Počet akcí pracovního postupu byl úspěšný.|Žádný|
+|Akce se nezdařily.|Akce se nezdařily. |Počet|Celkem|Počet akcí pracovního postupu se nezdařil.|Žádný|
+|AkceSkipped|Akce přeskočeny |Počet|Celkem|Počet akcí pracovního postupu přeskočen.|Žádný|
+|Latence akce|Latence akce |Sekundy|Průměr|Latence dokončených akcí pracovního postupu.|Žádný|
+|AkceSuccessLatency|Latence úspěšnosti akce |Sekundy|Průměr|Latence úspěšných akcí pracovního postupu.|Žádný|
+|Akce Akce|Akce škrticí události|Počet|Celkem|Počet událostí akce pracovního postupu omezení..|Žádný|
+|TriggersStarted|Aktivační události byly spuštěny. |Počet|Celkem|Počet spuštěných aktivačních událostí pracovního postupu|Žádný|
+|Aktivační události dokončeny|Aktivační události dokončeny |Počet|Celkem|Počet aktivačních událostí pracovního postupu byl dokončen.|Žádný|
+|Aktivační události proběhly úspěšně.|Aktivační události byly úspěšné. |Počet|Celkem|Počet aktivačních událostí pracovního postupu byl úspěšný.|Žádný|
+|Aktivační události se nezdařily|Aktivační události se nezdařily. |Počet|Celkem|Počet aktivačních událostí pracovního postupu se nezdařil.|Žádný|
+|TriggersSkipped|Přeskočené aktivační události|Počet|Celkem|Počet aktivačních událostí pracovního postupu přeskočen.|Žádný|
+|TriggersFired|Aktivační události aktivována |Počet|Celkem|Počet aktivačních událostí pracovního postupu.|Žádný|
+|Latence spouště|Latence aktivační události |Sekundy|Průměr|Latence dokončených aktivačních událostí pracovního postupu.|Žádný|
+|TriggerFireLatency|Aktivovat latenci požáru |Sekundy|Průměr|Latence aktivačních událostí vytápěného pracovního postupu.|Žádný|
+|TriggerSuccessLatency|Aktivace latence úspěšnosti |Sekundy|Průměr|Latence úspěšných aktivačních událostí pracovního postupu.|Žádný|
+|TriggerThrottledEvents|Události s omezením aktivace|Počet|Celkem|Počet událostí omezení omezení pracovního postupu.|Žádný|
+|IntegrationServiceEnvironmentWorkflowProcessorUsage|Využití procesoru pracovního postupu pro prostředí integračních služeb|Procento|Průměr|Využití procesoru pracovního postupu pro prostředí integrační služby.|Žádný|
+|IntegrationServiceEnvironmentWorkflowMemoryUsage|Využití paměti pracovního postupu pro prostředí integrační ch služeb|Procento|Průměr|Využití paměti pracovního postupu pro prostředí integrační služby.|Žádný|
+|IntegrationServiceEnvironmentConnectorProcessorUsage|Využití procesoru konektoru pro prostředí služby integrace|Procento|Průměr|Využití procesoru konektoru pro prostředí integrační služby.|Žádný|
+|IntegrationServiceEnvironmentConnectorMemoryUsage|Využití paměti konektoru pro prostředí služby Integrace|Procento|Průměr|Využití paměti konektoru pro prostředí služby integrace.|Žádný|
 
-## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft.MachineLearningServices/workspaces
+## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft.MachineLearningServices/pracovní prostory
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|Dokončená spuštění|Dokončená spuštění|Počet|Celkem|Počet spuštěných běhů pro tento pracovní prostor byl úspěšně dokončen.|Scénář, RunType, PublishedPipelineId, ComputeType, PipelineStepType|
-|Spuštěná spuštění|Spuštěná spuštění|Počet|Celkem|Počet spuštění spuštěných pro tento pracovní prostor|Scénář, RunType, PublishedPipelineId, ComputeType, PipelineStepType|
-|Neúspěšná spuštění|Neúspěšná spuštění|Počet|Celkem|Počet spuštění se pro tento pracovní prostor nezdařil.|Scénář, RunType, PublishedPipelineId, ComputeType, PipelineStepType|
-|Registr modelu byl úspěšný.|Registr modelu byl úspěšný.|Počet|Celkem|Počet registrací modelů, které byly v tomto pracovním prostoru úspěšně dokončeny|Scénář|
-|Nepovedlo se zaregistrovat model|Nepovedlo se zaregistrovat model|Počet|Celkem|Počet registrací modelů, které se v tomto pracovním prostoru nezdařily|Scénář, StatusCode|
-|Nasazení modelu spuštěn|Nasazení modelu spuštěn|Počet|Celkem|Počet nasazení modelů spuštěných v tomto pracovním prostoru|Scénář|
-|Nasazení modelu bylo úspěšné.|Nasazení modelu bylo úspěšné.|Počet|Celkem|Počet nasazení modelů, která byla v tomto pracovním prostoru úspěšná|Scénář|
-|Nasazení modelu se nezdařilo|Nasazení modelu se nezdařilo|Počet|Celkem|Počet nasazení modelů, která v tomto pracovním prostoru selhala|Scénář, StatusCode|
-|Celkem uzlů|Celkem uzlů|Počet|Průměr|Počet uzlů celkem Tento součet zahrnuje některé z aktivních uzlů, nečinných uzlů, nepoužitelných uzlů, přerušených uzlů a opouští uzly.|Scénář, název_clusteru|
-|Aktivní uzly|Aktivní uzly|Počet|Průměr|Počet uzlů Active Jedná se o uzly, které aktivně spouštějí úlohu.|Scénář, název_clusteru|
-|Nečinné uzly|Nečinné uzly|Počet|Průměr|Počet nečinných uzlů. Nečinné uzly jsou uzly, které nespouštějí žádné úlohy, ale mohou přijmout novou úlohu, je-li k dispozici.|Scénář, název_clusteru|
-|Nepoužité uzly|Nepoužité uzly|Počet|Průměr|Počet nepoužitelných uzlů. Nepoužité uzly nejsou funkční kvůli nějakému problému s nepřeložitelné. Azure bude tyto uzly recyklovat.|Scénář, název_clusteru|
-|Přepnuté uzly|Přepnuté uzly|Počet|Průměr|Počet zrušených uzlů. Tyto uzly jsou uzly s nízkou prioritou, které jsou mimo dostupný fond uzlů.|Scénář, název_clusteru|
-|Ukončení uzlů|Ukončení uzlů|Počet|Průměr|Počet opouštících uzlů. Ukončení uzlů jsou uzly, které právě dokončí zpracování úlohy a přestanou do stavu nečinnosti.|Scénář, název_clusteru|
-|Celkový počet jader|Celkový počet jader|Počet|Průměr|Počet jader celkem|Scénář, název_clusteru|
-|Aktivní jádra|Aktivní jádra|Počet|Průměr|Počet aktivních jader|Scénář, název_clusteru|
-|Jádra nečinných|Jádra nečinných|Počet|Průměr|Počet nečinných jader|Scénář, název_clusteru|
-|Nepoužitelné jádra|Nepoužitelné jádra|Počet|Průměr|Počet nepoužitelných jader|Scénář, název_clusteru|
-|Zrušené jádra|Zrušené jádra|Počet|Průměr|Počet zrušených jader|Scénář, název_clusteru|
-|Vynechávání jader|Vynechávání jader|Počet|Průměr|Počet opouštících jader|Scénář, název_clusteru|
-|Procento využití kvóty|Procento využití kvóty|Počet|Průměr|Procento využité kvóty|Scénář, název_clusteru, VmFamilyName, VmPriority|
-|CpuUtilization|CpuUtilization|Počet|Průměr|PROCESOR (Preview)|Scénář, runId, NodeId, CreatedTime|
-|GpuUtilization|GpuUtilization|Počet|Průměr|GPU (Náhled)|Scénář, runId, NodeId, CreatedTime, DeviceId|
+|Dokončené spuštění|Dokončené spuštění|Počet|Celkem|Počet úspěšně dokončených spuštění pro tento pracovní prostor|Scénář,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
+|Spuštěno spuštění|Spuštěno spuštění|Počet|Celkem|Počet spuštění spuštěných pro tento pracovní prostor|Scénář,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
+|Selhání spuštění|Selhání spuštění|Počet|Celkem|Počet spuštění se nezdařil o tento pracovní prostor.|Scénář,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
+|Registr modelů byl úspěšný.|Registr modelů byl úspěšný.|Počet|Celkem|Počet registrací modelu, které byly úspěšné v tomto pracovním prostoru|Scénář|
+|Registr modelů se nezdařil.|Registr modelů se nezdařil.|Počet|Celkem|Počet registrací modelu, které se v tomto pracovním prostoru nezdařily|Scénář,StatusCode|
+|Zahájení nasazení modelu|Zahájení nasazení modelu|Počet|Celkem|Počet nasazení modelu spuštěných v tomto pracovním prostoru|Scénář|
+|Nasazení modelu bylo úspěšné.|Nasazení modelu bylo úspěšné.|Počet|Celkem|Počet nasazení modelu, která byla úspěšná v tomto pracovním prostoru|Scénář|
+|Nasazení modelu se nezdařilo.|Nasazení modelu se nezdařilo.|Počet|Celkem|Počet nasazení modelu, která se v tomto pracovním prostoru nezdařila|Scénář,StatusCode|
+|Uzly celkem|Uzly celkem|Počet|Průměr|Počet uzlů součtu. Tento součet zahrnuje některé aktivní uzly, nečinné uzly, nepoužitelné uzly, předpisované uzly, opuštění uzlů|Scénář,Název_clusteru|
+|Aktivní uzly|Aktivní uzly|Počet|Průměr|Počet acitve uzlů. Jedná se o uzly, které jsou aktivně spuštěny úlohy.|Scénář,Název_clusteru|
+|Nečinné uzly|Nečinné uzly|Počet|Průměr|Počet nečinných uzlů. Nečinné uzly jsou uzly, které nejsou spuštěny žádné úlohy, ale může přijmout novou úlohu, pokud je k dispozici.|Scénář,Název_clusteru|
+|Nepoužitelné uzly|Nepoužitelné uzly|Počet|Průměr|Počet nepoužitelných uzlů. Nepoužitelné uzly nejsou funkční z důvodu některých neřešitelných problémů. Azure tyto uzly recykluje.|Scénář,Název_clusteru|
+|Předpisované uzly|Předpisované uzly|Počet|Průměr|Počet předplyňovaných uzlů. Tyto uzly jsou uzly s nízkou prioritou, které jsou odebrány z fondu k dispozici uzel.|Scénář,Název_clusteru|
+|Opuštění uzlů|Opuštění uzlů|Počet|Průměr|Počet opouštějících uzlů. Opuštění uzly jsou uzly, které právě dokončili zpracování úlohy a přejde do stavu Nečinnosti.|Scénář,Název_clusteru|
+|Jádra celkem|Jádra celkem|Počet|Průměr|Počet celkových jader|Scénář,Název_clusteru|
+|Aktivní jádra|Aktivní jádra|Počet|Průměr|Počet aktivních jader|Scénář,Název_clusteru|
+|Nečinná jádra|Nečinná jádra|Počet|Průměr|Počet nečinných jader|Scénář,Název_clusteru|
+|Nepoužitelná jádra|Nepoužitelná jádra|Počet|Průměr|Počet nepoužitelných jader|Scénář,Název_clusteru|
+|Předpjatojádra|Předpjatojádra|Počet|Průměr|Počet preemptovaných jader|Scénář,Název_clusteru|
+|Opuštění jader|Opuštění jader|Počet|Průměr|Počet odnechávacích jader|Scénář,Název_clusteru|
+|Procento využití kvóty|Procento využití kvóty|Počet|Průměr|Procento využité kvóty|Scénář,Název_clusteru,Název_vmFamily,Priorita VmPriority|
+|Využití procesoru|Využití procesoru|Počet|Průměr|PROCESOR (náhled)|Scénář,runId,NodeId,CreatedTime|
+|GpuUtilization|GpuUtilization|Počet|Průměr|GPU (náhled)|Scénář,runId,NodeId,CreatedTime,DeviceId|
 
 
-## <a name="microsoftmapsaccounts"></a>Microsoft. Maps/Accounts
+## <a name="microsoftmapsaccounts"></a>Microsoft.Maps/účty
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|Využití|Využití|Počet|Počet|Počet volání rozhraní API|ApiCategory, ApiName, ResultType, ResponseCode|
-|Dostupnost|Dostupnost|Procento|Průměr|Dostupnost rozhraní API|ApiCategory, ApiName|
+|Využití|Využití|Počet|Počet|Počet volání rozhraní API|ApiCategory,ApiName,ResultType,ResponseCode|
+|Dostupnost|Dostupnost|Procento|Průměr|Dostupnost api|ApiCategory,ApiName|
 
-## <a name="microsoftmediamediaservicesstreamingendpoints"></a>Microsoft. Media/MediaServices/starají
+## <a name="microsoftmediamediaservicesstreamingendpoints"></a>Microsoft.Media/mediaservices/streamingKoncové body
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|Výchozí přenos|Výchozí přenos|Bajty|Celkem|Objem výstupních dat (v bajtech).|OutputFormat|
-|SuccessE2ELatency|Koncová latence úspěch|Milisekundy|Průměr|Průměrná latence pro úspěšné požadavky v milisekundách.|OutputFormat|
-|Požadavky|Požadavky|Počet|Celkem|Požadavky na koncový bod streamování.|OutputFormat, HttpStatusCode, ErrorCode|
+|Výchozí přenos dat|Výchozí přenos dat|Bajty|Celkem|Množství dat odchozího přenosu v bajtech.|Výstupní formát|
+|SuccessE2ELatency|Úspěšnost latence od konce ke konci|Milisekund|Průměr|Průměrná latence pro úspěšné požadavky v milisekundách.|Výstupní formát|
+|Žádosti|Žádosti|Počet|Celkem|Požadavky na koncový bod streamování.|OutputFormat,HttpStatusCode,ErrorCode|
 
 
-## <a name="microsoftmediamediaservices"></a>Microsoft. Media/MediaServices
+## <a name="microsoftmediamediaservices"></a>Microsoft.Media/mediaservices
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|AssetQuota|Kvóta prostředků|Počet|Průměr|Počet povolených prostředků pro aktuální účet Media Service|Žádné|
-|AssetCount|Počet assetů|Počet|Průměr|Kolik prostředků již bylo vytvořeno v aktuálním účtu Media Service|Žádné|
-|AssetQuotaUsedPercentage|Procento využité kvóty prostředků|Procento|Průměr|Procento využitého prostředku v aktuálním účtu Media Service|Žádné|
-|ContentKeyPolicyQuota|Kvóta zásad pro klíč obsahu|Počet|Průměr|Kolik zásad pro klíč obsahu je pro aktuální účet Media Service povolené|Žádné|
-|ContentKeyPolicyCount|Počet zásad klíče obsahu|Počet|Průměr|Kolik zásad pro klíč obsahu se už v aktuálním účtu Media Service vytvořilo|Žádné|
-|ContentKeyPolicyQuotaUsedPercentage|Procento využité kvóty zásad klíčů obsahu|Procento|Průměr|Procento použitých zásad klíče obsahu v aktuálním účtu Media Service|Žádné|
-|StreamingPolicyQuota|Kvóta zásad streamování|Počet|Průměr|Počet povolených zásad streamování pro aktuální účet Media Service|Žádné|
-|StreamingPolicyCount|Počet zásad streamování|Počet|Průměr|Kolik zásad streamování už je v aktuálním účtu Media Service vytvořené|Žádné|
-|StreamingPolicyQuotaUsedPercentage|Procento využité kvóty zásad streamování|Procento|Průměr|Procento využité zásady streamování v aktuálním účtu Media Service|Žádné|
+|AssetQuota|Kvóta aktiv|Počet|Průměr|Kolik datových zdrojů je povoleno pro běžný účet mediálních služeb|Žádný|
+|Počet majetku|Počet majetku|Počet|Průměr|Kolik datových zdrojů je již vytvořeno na běžném účtu mediální chslužeb|Žádný|
+|Procento použitého assetaused|Procento použité kvóty aktiv|Procento|Průměr|Procento použitého majetku v aktuálním účtu mediální služby|Žádný|
+|ContentKeyPolicyQuota|Kvóta zásad klíče obsahu|Počet|Průměr|Kolik klíčových textových kláves obsahu je povoleno pro běžný účet mediálních služeb|Žádný|
+|ContentKeyPolicyCount|Počet zásad klíče obsahu|Počet|Průměr|Kolik zásad klíče obsahu je již vytvořeno v aktuálním účtu mediální služby|Žádný|
+|Procento contentkeypolicyquotausedprocento|Procento použité kvóty zásad obsahu|Procento|Průměr|Zásady klíče obsahu použily procento v aktuálním účtu mediální služby|Žádný|
+|StreamingPolicyQuota|Kvóta zásad streamování|Počet|Průměr|Kolik zásad streamování je povoleno pro aktuální účet mediální služby|Žádný|
+|StreamingPolicyCount|Počet zásad streamování|Počet|Průměr|Kolik zásad streamování je již vytvořeno v aktuálním účtu mediální služby|Žádný|
+|StreamingPolicyQuotaUsedPercentage|Procento použité kvóty zásad streamování|Procento|Průměr|Zásady streamování použité procento v aktuálním účtu mediální chod|Žádný|
 
-## <a name="microsoftnetappnetappaccountscapacitypoolsvolumes"></a>Microsoft. NetApp/netAppAccounts/capacityPools/svazky
+## <a name="microsoftnetappnetappaccountscapacitypoolsvolumes"></a>Microsoft.NetApp/netAppAccounts/capacityPools/volumes
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|AverageReadLatency|Průměrná latence čtení|Milisekund|Průměr|Průměrná latence čtení v milisekundách na operaci|Žádné|
-|AverageWriteLatency|Průměrná latence zápisu|Milisekund|Průměr|Průměrná latence zápisu v milisekundách na operaci|Žádné|
-|VolumeLogicalSize|Logická velikost svazku|Bajty|Průměr|Logická velikost svazku (použité bajty)|Žádné|
-|VolumeSnapshotSize|Velikost snímku svazku|Bajty|Průměr|Velikost všech snímků ve svazku|Žádné|
-|ReadIops|Čtení IOPS|CountPerSecond|Průměr|Načíst vstupně-výstupní operace za sekundu|Žádné|
-|WriteIops|Zápis IOPS|CountPerSecond|Průměr|Zapsat vstupně-výstupní operace za sekundu|Žádné|
+|Průměrná latence|Průměrná latence čtení|Milisekund|Průměr|Průměrná latence čtení v milisekundách na operaci|Žádný|
+|AverageWriteLatency|Průměrná latence zápisu|Milisekund|Průměr|Průměrná latence zápisu v milisekundách na operaci|Žádný|
+|VolumeLogicalSize|Logická velikost svazku|Bajty|Průměr|Logická velikost svazku (použité bajty)|Žádný|
+|VolumeSnapshotSize|Velikost snímku svazku|Bajty|Průměr|Velikost všech snímků ve svazku|Žádný|
+|ReadIops|Přečtěte si iops|CountPerSecond|Průměr|Čtení operací In/out za sekundu|Žádný|
+|WriteIops|Napište iops|CountPerSecond|Průměr|Zapsat operace in/out za sekundu|Žádný|
 
 ## <a name="microsoftnetappnetappaccountscapacitypools"></a>Microsoft.NetApp/netAppAccounts/capacityPools
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|VolumePoolAllocatedUsed|Využití přiděleného fondu svazků|Bajty|Průměr|Přidělená velikost fondu, která se používá|Žádné|
-|VolumePoolTotalLogicalSize|Celková logická velikost fondu svazků|Bajty|Průměr|Součet logické velikosti všech svazků patřících do fondu|Žádné|
+|VolumePoolAllocatedUsed|Přidělený objemový fond|Bajty|Průměr|Přidělená použitá velikost fondu|Žádný|
+|VolumePoolTotalLogicalSize|Celková logická velikost fondu svazků|Bajty|Průměr|Součet logické velikosti všech svazků patřících do fondu|Žádný|
 
 ## <a name="microsoftnetworknetworkinterfaces"></a>Microsoft.Network/networkInterfaces
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|BytesSentRate|Odeslané bajty|Bajty|Celkem|Počet bajtů, které síťové rozhraní odeslalo|Žádné|
-|BytesReceivedRate|Přijaté bajty|Bajty|Celkem|Počet bajtů, které síťové rozhraní přijalo|Žádné|
-|PacketsSentRate|Odeslané pakety|Počet|Celkem|Počet paketů, které síťové rozhraní odeslalo|Žádné|
-|PacketsReceivedRate|Přijaté pakety|Počet|Celkem|Počet paketů, které síťové rozhraní přijalo|Žádné|
+|BytesSentRate|Odeslané bajty|Bajty|Celkem|Počet odeslaných bajtů síťového rozhraní|Žádný|
+|Míra obdržené hod.|Přijaté bajty|Bajty|Celkem|Počet přijatých bajtů síťového rozhraní|Žádný|
+|PacketsSentRate|Odeslané pakety|Počet|Celkem|Počet odeslaných paketů síťového rozhraní|Žádný|
+|Míra paketů ReceivedRate|Přijaté pakety|Počet|Celkem|Počet přijatých paketů síťového rozhraní|Žádný|
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft.Network/loadBalancers
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|VipAvailability|Dostupnost cesty k datům|Počet|Průměr|Průměrná dostupnost cesty k datům Load Balancer za dobu trvání|FrontendIPAddress,FrontendPort|
-|DipAvailability|Stav sondy stavu|Počet|Průměr|Průměrný stav testu stavu Load Balancer za dobu trvání|Typprotokolu, BackendPort, FrontendIPAddress, FrontendPort, BackendIPAddress|
-|ByteCount|Počet bajtů|Počet|Celkem|Celkový počet odeslaných bajtů v časovém období|FrontendIPAddress, FrontendPort, směr|
-|PacketCount|Počet paketů|Počet|Celkem|Celkový počet odeslaných paketů v časovém období|FrontendIPAddress, FrontendPort, směr|
-|SYNCount|Počet SYN|Počet|Celkem|Celkový počet odeslaných paketů SYN v časovém období|FrontendIPAddress, FrontendPort, směr|
-|SnatConnectionCount|Počet připojení SNAT|Počet|Celkem|Celkový počet nových připojení SNAT vytvořených během časového období|FrontendIPAddress, BackendIPAddress, vlastnost ConnectionState|
-|AllocatedSnatPorts|Přidělené porty SNAT (Preview)|Počet|Celkem|Celkový počet portů SNAT přidělených v rámci časového období|FrontendIPAddress, BackendIPAddress, Typprotokolu, IsAwaitingRemoval|
-|UsedSnatPorts|Využité porty SNAT (Preview)|Počet|Celkem|Celkový počet portů SNAT používaných během časového období|FrontendIPAddress, BackendIPAddress, Typprotokolu, IsAwaitingRemoval|
+|VipDostupnost|Dostupnost cesty k datům|Počet|Průměr|Průměrná dostupnost cesty k datům vykladače zatížení za dobu trvání|FrontendIPAddress,FrontendPort|
+|DipAvailability|Stav sondy stavu|Počet|Průměr|Průměrný stav sondy pro vyrovnávání zatížení za dobu trvání|ProtocolType,BackendPort,FrontendIPAddress,FrontendPort,BackendIPAddress|
+|Bytecount|Počet bajtů|Počet|Celkem|Celkový počet bajtů přenesených v časovém období|FrontendIPAddress,FrontendPort,Směr|
+|PacketCount|Počet paketů|Počet|Celkem|Celkový počet paketů odeslaných v časovém období|FrontendIPAddress,FrontendPort,Směr|
+|POČET SYNCount|Počet SYN|Počet|Celkem|Celkový počet paketů SYN odeslaných v časovém období|FrontendIPAddress,FrontendPort,Směr|
+|SnatConnectionCount|Počet připojení SNAT|Počet|Celkem|Celkový počet nových připojení SNAT vytvořených v časovém období|FrontendIPAddress,BackendIPAddress,ConnectionState|
+|Přidělenésnatporty|Přidělené porty SNAT (náhled)|Počet|Celkem|Celkový počet portů SNAT přidělených v časovém období|FrontendIPAddress,BackendIPAddress,ProtocolType,IsAwaitingRemoval|
+|PoužitéPorty|Použité porty SNAT (náhled)|Počet|Celkem|Celkový počet portů SNAT použitých v časovém období|FrontendIPAddress,BackendIPAddress,ProtocolType,IsAwaitingRemoval|
 
 
 ## <a name="microsoftnetworkdnszones"></a>Microsoft.Network/dnszones
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|QueryVolume|Svazek dotazu|Počet|Celkem|Počet dotazů poskytovaných pro zónu DNS|Žádné|
-|RecordSetCount|Počet sad záznamů|Počet|Maximum|Počet sad záznamů v zóně DNS|Žádné|
-|RecordSetCapacityUtilization|Využití kapacity sady záznamů|Procento|Maximum|Procento kapacity sady záznamů využité zónou DNS|Žádné|
+|QueryVolume|Svazek dotazu|Počet|Celkem|Počet dotazů obsluhovaných pro zónu DNS|Žádný|
+|RecordSetCount|Počet sad záznamů|Počet|Maximum|Počet sad záznamů v zóně DNS|Žádný|
+|Využití kapacity recordSetCapacity|Využití kapacity sady záznamů|Procento|Maximum|Procento kapacity sady záznamů využité zónou DNS|Žádný|
 
 
-## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft.Network/publicIPAddresses
+## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft.Network/publicIPAdresy
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|PacketsInDDoS|DDoS příchozích paketů|CountPerSecond|Maximum|DDoS příchozích paketů|Žádné|
-|PacketsDroppedDDoS|Vynechané příchozí pakety DDoS|CountPerSecond|Maximum|Vynechané příchozí pakety DDoS|Žádné|
-|PacketsForwardedDDoS|DDoS předaných příchozích paketů|CountPerSecond|Maximum|DDoS předaných příchozích paketů|Žádné|
-|TCPPacketsInDDoS|DDoS příchozí pakety TCP|CountPerSecond|Maximum|DDoS příchozí pakety TCP|Žádné|
-|TCPPacketsDroppedDDoS|Zrušené příchozí pakety protokolu TCP DDoS|CountPerSecond|Maximum|Zrušené příchozí pakety protokolu TCP DDoS|Žádné|
-|TCPPacketsForwardedDDoS|DDoS předaných paketů příchozího protokolu TCP|CountPerSecond|Maximum|DDoS předaných paketů příchozího protokolu TCP|Žádné|
-|UDPPacketsInDDoS|Příchozí pakety UDP DDoS|CountPerSecond|Maximum|Příchozí pakety UDP DDoS|Žádné|
-|UDPPacketsDroppedDDoS|Zrušené příchozí pakety UDP DDoS|CountPerSecond|Maximum|Zrušené příchozí pakety UDP DDoS|Žádné|
-|UDPPacketsForwardedDDoS|Příchozí pakety UDP předané DDoS|CountPerSecond|Maximum|Příchozí pakety UDP předané DDoS|Žádné|
-|BytesInDDoS|Příchozí bajty DDoS|BytesPerSecond|Maximum|Příchozí bajty DDoS|Žádné|
-|BytesDroppedDDoS|Příchozí bajty vynechané DDoS|BytesPerSecond|Maximum|Příchozí bajty vynechané DDoS|Žádné|
-|BytesForwardedDDoS|Příchozí bajty předané DDoS|BytesPerSecond|Maximum|Příchozí bajty předané DDoS|Žádné|
-|TCPBytesInDDoS|Příchozí bajty DDoS TCP|BytesPerSecond|Maximum|Příchozí bajty DDoS TCP|Žádné|
-|TCPBytesDroppedDDoS|Příchozí bajty protokolu TCP vyhozené DDoS|BytesPerSecond|Maximum|Příchozí bajty protokolu TCP vyhozené DDoS|Žádné|
-|TCPBytesForwardedDDoS|Příchozí DDoS předaných bajtů protokolu TCP|BytesPerSecond|Maximum|Příchozí DDoS předaných bajtů protokolu TCP|Žádné|
-|UDPBytesInDDoS|Příchozí bajty UDP DDoS|BytesPerSecond|Maximum|Příchozí bajty UDP DDoS|Žádné|
-|UDPBytesDroppedDDoS|Zrušené Příchozí bajty UDP DDoS|BytesPerSecond|Maximum|Zrušené Příchozí bajty UDP DDoS|Žádné|
-|UDPBytesForwardedDDoS|Příchozí DDoS předávaných bajtů UDP|BytesPerSecond|Maximum|Příchozí DDoS předávaných bajtů UDP|Žádné|
-|IfUnderDDoSAttack|V části útok DDoS nebo ne|Počet|Maximum|V části útok DDoS nebo ne|Žádné|
-|DDoSTriggerTCPPackets|Příchozí pakety TCP pro aktivaci zmírnění DDoS|CountPerSecond|Maximum|Příchozí pakety TCP pro aktivaci zmírnění DDoS|Žádné|
-|DDoSTriggerUDPPackets|Příchozí pakety UDP pro aktivaci zmírnění DDoS|CountPerSecond|Maximum|Příchozí pakety UDP pro aktivaci zmírnění DDoS|Žádné|
-|DDoSTriggerSYNPackets|Příchozí pakety SYN pro aktivaci zmírnění DDoS|CountPerSecond|Maximum|Příchozí pakety SYN pro aktivaci zmírnění DDoS|Žádné|
-|VipAvailability|Dostupnost cesty k datům|Počet|Průměr|Průměrná dostupnost IP adresy za dobu trvání|Port|
-|ByteCount|Počet bajtů|Počet|Celkem|Celkový počet odeslaných bajtů v časovém období|Port, směr|
-|PacketCount|Počet paketů|Počet|Celkem|Celkový počet odeslaných paketů v časovém období|Port, směr|
-|SynCount|Počet SYN|Počet|Celkem|Celkový počet odeslaných paketů SYN v časovém období|Port, směr|
+|PacketsInDDoS|Vstupní pakety DDoS|CountPerSecond|Maximum|Vstupní pakety DDoS|Žádný|
+|PaketyDroppedDDoS|Příchozí pakety vynechány DDoS|CountPerSecond|Maximum|Příchozí pakety vynechány DDoS|Žádný|
+|PacketsForwardedDDoS|Příchozí pakety předané DDoS|CountPerSecond|Maximum|Příchozí pakety předané DDoS|Žádný|
+|TCPPacketsInDDoS|Příchozí pakety TCP DDoS|CountPerSecond|Maximum|Příchozí pakety TCP DDoS|Žádný|
+|TCPPacketsDroppedDDoS|Příchozí pakety TCP vynechanou DDoS|CountPerSecond|Maximum|Příchozí pakety TCP vynechanou DDoS|Žádný|
+|TCPPacketsForwardedDDoS|Příchozí pakety TCP předané DDoS|CountPerSecond|Maximum|Příchozí pakety TCP předané DDoS|Žádný|
+|UDPPacketsInDDoS|Příchozí UDP pakety DDoS|CountPerSecond|Maximum|Příchozí UDP pakety DDoS|Žádný|
+|UDPPacketsDroppedDDoS|Příchozí pakety UDP vynechanou DDoS|CountPerSecond|Maximum|Příchozí pakety UDP vynechanou DDoS|Žádný|
+|UDPPacketsForwardedDDoS|Příchozí pakety UDP předané DDoS|CountPerSecond|Maximum|Příchozí pakety UDP předané DDoS|Žádný|
+|BajtůInDDoS|DDoS příchozích bajtů|BajtyPerSekunda|Maximum|DDoS příchozích bajtů|Žádný|
+|BajtůKleslDDoS|Příchozí bajty vynechány DDoS|BajtyPerSekunda|Maximum|Příchozí bajty vynechány DDoS|Žádný|
+|BajtůForwardedDDoS|Příchozí bajty předaných DDoS|BajtyPerSekunda|Maximum|Příchozí bajty předaných DDoS|Žádný|
+|TCPBytesInDDoS|Příchozí tcp bajty DDoS|BajtyPerSekunda|Maximum|Příchozí tcp bajty DDoS|Žádný|
+|TCPBytesDroppedDDoS|Příchozí bajty TCP vynechány DDoS|BajtyPerSekunda|Maximum|Příchozí bajty TCP vynechány DDoS|Žádný|
+|TCPBytesForwardedDDoS|Příchozí tcp bajty předané DDoS|BajtyPerSekunda|Maximum|Příchozí tcp bajty předané DDoS|Žádný|
+|UDPBytesInDDoS|Příchozí UDP bajty DDoS|BajtyPerSekunda|Maximum|Příchozí UDP bajty DDoS|Žádný|
+|UDPBytesDroppedDDoS|Příchozí udp bajty vynechány DDoS|BajtyPerSekunda|Maximum|Příchozí udp bajty vynechány DDoS|Žádný|
+|UDPBytesForwardedDDoS|Příchozí udp předané ddos|BajtyPerSekunda|Maximum|Příchozí udp předané ddos|Žádný|
+|Ifunderddosattack|Pod DDoS útokem nebo ne|Počet|Maximum|Pod DDoS útokem nebo ne|Žádný|
+|Pakety DDoSTriggerTCP|Příchozí pakety TCP pro aktivaci zmírnění ddos|CountPerSecond|Maximum|Příchozí pakety TCP pro aktivaci zmírnění ddos|Žádný|
+|Pakety DDoSTriggerUDP|Příchozí pakety UDP pro aktivaci zmírnění ddos|CountPerSecond|Maximum|Příchozí pakety UDP pro aktivaci zmírnění ddos|Žádný|
+|Pakety DDoSTriggerSYN|Příchozí pakety SYN pro aktivaci zmírnění ddos|CountPerSecond|Maximum|Příchozí pakety SYN pro aktivaci zmírnění ddos|Žádný|
+|VipDostupnost|Dostupnost cesty k datům|Počet|Průměr|Průměrná dostupnost IP adresy za dobu trvání|Port|
+|Bytecount|Počet bajtů|Počet|Celkem|Celkový počet bajtů přenesených v časovém období|Port,Směr|
+|PacketCount|Počet paketů|Počet|Celkem|Celkový počet paketů odeslaných v časovém období|Port,Směr|
+|Počet synů|Počet SYN|Počet|Celkem|Celkový počet paketů SYN odeslaných v časovém období|Port,Směr|
 
 
 
 ## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft.Network/virtualNetworks
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|PingMeshAverageRoundtripMs|Čas odezvy na virtuální počítač pomocí příkazů pro odeslání|Milisekund|Průměr|Čas odezvy pro příkazy pro odeslání do cílového virtuálního počítače|SourceCustomerAddress,DestinationCustomerAddress|
-|PingMeshProbesFailedPercent|Nepovedlo se odeslat příkazy do virtuálního počítače|Procento|Průměr|Procento počtu neúspěšných příkazů pro odeslání z testu na celkový počet odeslaných příkazů VMM cílového virtuálního počítače|SourceCustomerAddress,DestinationCustomerAddress|
+|PingMeshAverageRoundtripMs|Doba odezvy pro příkazy Ping k virtuálnímu virtuálnímu virtuálnímu virtuálnímu okamžiku|Milisekund|Průměr|Doba odezvy pro příkazy Ping odeslané do cílového virtuálního montovny|SourceCustomerAddress,DestinationCustomerAddress|
+|PingMeshProbesFailedPercent|Neúspěšný příkaz ping pro virtuální hospodařící s virtuálním mem|Procento|Průměr|Procento počtu neúspěšných pingů k celkovému počtu odeslaných příkazů Ping cílového virtuálního účtu|SourceCustomerAddress,DestinationCustomerAddress|
 
 
-## <a name="microsoftnetworkazurefirewalls"></a>Microsoft. Network/azurefirewalls
+## <a name="microsoftnetworkazurefirewalls"></a>Microsoft.Network/azurefirewalls
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|ApplicationRuleHit|Počet volání pravidel aplikace|Počet|Celkem|Počet přístupů k pravidlům aplikace|Stav, důvod, protokol|
-|NetworkRuleHit|Počet volání síťových pravidel|Počet|Celkem|Počet přístupů k síťovým pravidlům|Stav, důvod, protokol|
-|FirewallHealth|Stav brány firewall|Procento|Průměr|Stav brány firewall|Stav, důvod|
-|Zpracováno na zpracování|Zpracovaná data|Bajty|Celkem|Celkový objem dat zpracovaných bránou firewall|Žádné|
-|SNATPortUtilization|Využití portu SNAT|Procento|Průměr|Využití portu SNAT|Žádné|
+|AplikaceRuleHit|Počet přístupů pravidel aplikace|Počet|Celkem|Počet přístupů k pravidlům aplikace|Stav,Důvod,Protokol|
+|NetworkRuleHit|Počet přístupů síťových pravidel|Počet|Celkem|Počet přístupů k pravidlům sítě|Stav,Důvod,Protokol|
+|Stav brány firewall|Stav brány firewall|Procento|Průměr|Stav brány firewall|Stav,Důvod|
+|Data zpracována|Zpracovávaná data|Bajty|Celkem|Celkové množství dat zpracovávaných bránou firewall|Žádný|
+|SNATPortUtilizace|Využití portu SNAT|Procento|Průměr|Využití portu SNAT|Žádný|
 
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationGateways
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|Propustnost|Propustnost|BytesPerSecond|Průměr|Počet bajtů za sekundu, které Application Gateway zasloužily|Žádné|
-|UnhealthyHostCount|Počet hostitelů není v pořádku|Počet|Průměr|Počet nezdravých hostitelů back-endu|BackendSettingsPool|
-|HealthyHostCount|Počet hostitelů v pořádku|Počet|Průměr|Počet nefunkčních hostitelů back-endu|BackendSettingsPool|
-|TotalRequests|Požadavky celkem|Počet|Celkem|Počet úspěšných požadavků, které Application Gateway obsluhovány|BackendSettingsPool|
-|AvgRequestCountPerHealthyHost|Počet požadavků za minutu na hostitele v pořádku|Počet|Průměr|Průměrný počet požadavků za minutu na hostitele back-endu v pořádku ve fondu|BackendSettingsPool|
-|FailedRequests|Neúspěšné požadavky|Počet|Celkem|Počet neúspěšných žádostí, které Application Gateway obsluhovány|BackendSettingsPool|
-|ResponseStatus|Stav odpovědi|Počet|Celkem|Stav odpovědi HTTP vrácený Application Gateway|HttpStatusGroup|
-|CurrentConnections|Aktuální připojení|Počet|Celkem|Počet aktuálních připojení vytvořených pomocí Application Gateway|Žádné|
-|CpuUtilization|Využití procesoru|Procento|Průměr|Aktuální využití CPU v Application Gateway|Žádné|
-|CapacityUnits|Aktuální jednotky kapacity|Počet|Průměr|Spotřebované jednotky kapacity|Žádné|
-|ComputeUnits|Aktuální výpočetní jednotky|Počet|Průměr|Spotřebované výpočetní jednotky|Žádné|
-|BackendResponseStatus|Stav odpovědi back-endu|Počet|Celkem|Počet kódů odpovědí HTTP generovaných členy back-end. Nezahrnuje žádné kódy odpovědí vygenerované Application Gateway.|BackendServer, problémových, BackendHttpSetting, HttpStatusGroup|
-|TlsProtocol|Protokol TLS klienta|Počet|Celkem|Počet požadavků TLS a non-TLS iniciované klientem, který vytvořil spojení s Application Gateway. Chcete-li zobrazit distribuci protokolu TLS, filtrujte podle protokolu TLS (Dimension TLS).|Naslouchací proces, TlsProtocol|
-|BytesSent|Odeslané bajty|Bajty|Celkem|Celkový počet bajtů odeslaných Application Gateway klientům|Služby|
-|BytesReceived|Přijaté bajty|Bajty|Celkem|Celkový počet bajtů přijatých Application Gateway od klientů|Služby|
-|ClientRtt|Čas odezvy klienta|Milisekund|Průměr|Průměrná doba odezvy mezi klienty a Application Gateway. Tato metrika indikuje, jak dlouho trvá navázání připojení a vrácení potvrzení.|Služby|
-|ApplicationGatewayTotalTime|Čas Application Gateway celkem|Milisekund|Průměr|Průměrná doba, kterou trvá zpracování požadavku, a jeho odpověď k odeslání. Počítá se jako průměr intervalu od času, kdy Application Gateway přijme první bajt požadavku HTTP do doby, kdy se dokončí operace odeslání odpovědi. Je důležité si uvědomit, že to obvykle zahrnuje dobu zpracování Application Gateway, čas, po který jsou pakety požadavků a odpovědí přenášeny přes síť, a čas, kdy server back-end trvala odpověď.|Služby|
-|BackendConnectTime|Čas připojení back-endu|Milisekund|Průměr|Čas strávený navázáním spojení s back-end serverem|Naslouchací proces, BackendServer, problémových, BackendHttpSetting|
-|BackendFirstByteResponseTime|Doba odezvy prvního bajtu back-endu|Milisekund|Průměr|Časový interval mezi zahájením navázání připojení k back-endu serveru a přijetí prvního bajtu hlavičky odpovědi, odhad doby zpracování back-endu serveru|Naslouchací proces, BackendServer, problémových, BackendHttpSetting|
-|BackendLastByteResponseTime|Doba odezvy posledního bajtu back-endu|Milisekund|Průměr|Časový interval mezi zahájením navázání připojení k back-endu serveru a příjem posledního bajtu textu odpovědi|Naslouchací proces, BackendServer, problémových, BackendHttpSetting|
-|MatchedCount|Distribuce všech pravidel v firewallu webových aplikací|Počet|Celkem|Celková distribuce pravidla v bráně firewall webových aplikací pro příchozí provoz|Rules, RuleId|
-|BlockedCount|Distribuce pravidla Blokované požadavky brány firewall webových aplikací|Počet|Celkem|Distribuce pravidla Blokované požadavky brány firewall webových aplikací|Rules, RuleId|
-|BlockedReqCount|Počet blokovaných požadavků firewallu webových aplikací|Počet|Celkem|Počet blokovaných požadavků firewallu webových aplikací|Žádné|
+|Propustnost|Propustnost|BajtyPerSekunda|Průměr|Počet bajtů za sekundu, které aplikační brána obsluhovala|Žádný|
+|Nezdravýpočet hostitelů|Počet hostitelů není v pořádku|Počet|Průměr|Počet hostitelů back-endu není v pořádku|Fond backendsettingspool|
+|HealthyHostCount|Počet hostitelů v pořádku|Počet|Průměr|Počet hostitelů back-endu v pořádku|Fond backendsettingspool|
+|TotalRequests|Požadavky celkem|Počet|Celkem|Počet úspěšných požadavků, kterým aplikační brána sloužila|Fond backendsettingspool|
+|AvgRequestCountPerHealthyHost|Požadavky za minutu na zdravého hostitele|Počet|Průměr|Průměrný počet požadavků za minutu na hostitele back-endu v pořádku ve fondu|Fond backendsettingspool|
+|Požadavky na selhání|Neúspěšné požadavky|Počet|Celkem|Počet neúspěšných požadavků, které aplikace Gateway obsluhovala|Fond backendsettingspool|
+|Stav odpovědi|Stav odpovědi|Počet|Celkem|Stav odpovědi http vrácený aplikací brány|Skupina HttpStatus|
+|CurrentConnections|Aktuální připojení|Počet|Celkem|Počet aktuálních připojení navazujících pomocí aplikační brány|Žádný|
+|Využití procesoru|Využití procesoru|Procento|Průměr|Aktuální využití procesoru aplikační brány|Žádný|
+|Kapacitní jednotky|Jednotky aktuální kapacity|Počet|Průměr|Spotřebované jednotky kapacity|Žádný|
+|Výpočetní jednotky|Aktuální výpočetní jednotky|Počet|Průměr|Spotřebované výpočetní jednotky|Žádný|
+|Stav backendové odpovědi|Stav back-endové odpovědi|Počet|Celkem|Počet kódů odpovědi HTTP generovaných členy back-endu. To nezahrnuje žádné kódy odpovědí generované aplikační bránou.|BackendServer,BackendPool,BackendHttpSetting,HttpStatusGroup|
+|Protokol TL|Protokol TLS klienta|Počet|Celkem|Počet požadavků TLS a non-TLS iniciovaných klientem, který navázal spojení s aplikační bránou. Chcete-li zobrazit distribuci protokolu TLS, filtrujte podle protokolu TLS dimenze.|Naslouchací proces,Protokol TlsProtocol|
+|BajtůOdeslání|Odeslané bajty|Bajty|Celkem|Celkový počet bajtů odeslaných aplikační bránou klientům|Naslouchací proces|
+|Přijaté bajty|Přijaté bajty|Bajty|Celkem|Celkový počet bajtů přijatých aplikační bránou od klientů|Naslouchací proces|
+|KlientRtt|RTT klienta|Milisekund|Průměr|Průměrná doba odezvy mezi klienty a aplikační bránou. Tato metrika označuje, jak dlouho trvá navázání připojení a vrácení potvrzení|Naslouchací proces|
+|ApplicationGatewayTotalTime|Celkový čas aplikační brány|Milisekund|Průměr|Průměrná doba, která trvá pro zpracování požadavku a jeho odpověď, která má být odeslána. Vypočítá se jako průměr intervalu od okamžiku, kdy brána aplikace obdrží první bajt požadavku HTTP do okamžiku dokončení operace odeslání odpovědi. Je důležité si uvědomit, že to obvykle zahrnuje dobu zpracování aplikační brány, čas, který pakety požadavku a odpovědi cestují po síti a čas, který server back-endu trval a odpověděl.|Naslouchací proces|
+|BackendConnectTime|Čas připojení back-endu|Milisekund|Průměr|Čas strávený navázáním spojení s back-endovým serverem|Naslouchací proces,BackendServer,BackendPool,BackendHttpSetting|
+|BackendFirstByteResponseTime|Doba odezvy prvního bajtu back-endu|Milisekund|Průměr|Časový interval mezi zahájením navazování připojení k serveru back-end a přijetím prvního bajtu hlavičky odpovědi, přiblížení množin y back-endového serveru|Naslouchací proces,BackendServer,BackendPool,BackendHttpSetting|
+|BackendLastByteResponseTime|Doba odezvy posledního bajtu back-endu|Milisekund|Průměr|Časový interval mezi zahájením navazování připojení k serveru back-end a přijetím posledního bajtu těla odezvy|Naslouchací proces,BackendServer,BackendPool,BackendHttpSetting|
+|MatchedCount|Brána firewall webových aplikací v1 Distribuce celkového pravidla|Počet|Celkem|Brána firewall webových aplikací v1 Celková distribuce pravidel pro příchozí přenosy|RuleGroup,RuleId|
+|Blokovaný počet|Brána firewall webových aplikací v1 Distribuce pravidel blokovaných požadavků|Počet|Celkem|Brána firewall webových aplikací v1 blokované požadavky pravidlo distribuce|RuleGroup,RuleId|
+|BlockedReqCount|Brána firewall webových aplikací v1 Počet blokovaných požadavků|Počet|Celkem|Počet blokovaných požadavků brány firewall webové aplikace v1|Žádný|
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.Network/virtualNetworkGateways
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|AverageBandwidth|Šířka pásma S2S brány|BytesPerSecond|Průměr|Průměrná šířka pásma brány mezi lokalitami v bajtech za sekundu|Žádné|
-|P2SBandwidth|Šířka pásma P2S brány|BytesPerSecond|Průměr|Průměrná šířka pásma sítě typu Point-to-site brány v bajtech za sekundu|Žádné|
-|P2SConnectionCount|Počet připojení P2S|Počet|Maximum|Počet připojení typu Point-to-site brány|Protokol|
-|TunnelAverageBandwidth|Šířka pásma tunelu|BytesPerSecond|Průměr|Průměrná šířka pásma tunelu v bajtech za sekundu|ConnectionName, RemoteIP|
-|TunnelEgressBytes|Výstupní bajty tunelu|Bajty|Celkem|Odchozí bajty tunelu|ConnectionName, RemoteIP|
-|TunnelIngressBytes|Vstupní bajty tunelového propojení|Bajty|Celkem|Příchozí bajty tunelu|ConnectionName, RemoteIP|
-|TunnelEgressPackets|Odchozí tunelové pakety|Počet|Celkem|Počet odchozích paketů tunelu|ConnectionName, RemoteIP|
-|TunnelIngressPackets|Tunelové pakety pro příchozí připojení|Počet|Celkem|Počet příchozích paketů tunelu|ConnectionName, RemoteIP|
-|TunnelEgressPacketDropTSMismatch|Odpojení odchozího paketu o neshodě tunelového propojení TS|Počet|Celkem|Počet odchozích odkládacích paketů z výběrů neshody tunelového propojení|ConnectionName, RemoteIP|
-|TunnelIngressPacketDropTSMismatch|Přetažení paketů neshody TS s tunelem pro příchozí přenosy|Počet|Celkem|Počet odkládacích paketů ze seznamu neshody pro výběr odchozího přenosu tunelu|ConnectionName, RemoteIP|
+|Průměrná šířka pásma|Šířka pásma brány S2S|BajtyPerSekunda|Průměr|Průměrná šířka pásma mezi lokalitami brány v bajtech za sekundu|Žádný|
+|Šířka pásma P2S|Šířka pásma brány P2S|BajtyPerSekunda|Průměr|Průměrná šířka pásma brány od bodu do bodu k lokalitě v bajtech za sekundu|Žádný|
+|P2SConnectionCount|Počet připojení P2S|Počet|Maximum|Počet připojení bodu k webu brány|Protocol (Protokol)|
+|TunnelAverageBandwidth|Šířka pásma tunelu|BajtyPerSekunda|Průměr|Průměrná šířka pásma tunelu v bajtech za sekundu|ConnectionName,RemoteIP|
+|TunnelEgressBytes|Tunelové propojení bajtů|Bajty|Celkem|Odchozí bajty tunelu|ConnectionName,RemoteIP|
+|TunnelIngressBytes|Příchozí bajty příchozího přenosu dat tunelového propojení|Bajty|Celkem|Příchozí bajty tunelu|ConnectionName,RemoteIP|
+|TunnelEgressPackets|Pakety odchozího přenosu tunelového propojení|Počet|Celkem|Počet odchozích paketů tunelového propojení|ConnectionName,RemoteIP|
+|TunnelIngressPackets|Pakety příchozího přenosu dat do tunelového propojení|Počet|Celkem|Počet příchozích paketů tunelového propojení|ConnectionName,RemoteIP|
+|TunnelEgressPacketDropTSMismatch|Přetažení paketu ts neodpovídajícího přenosu tunelového přenosu|Počet|Celkem|Počet přetažení odchozích paketů z neshody voliče přenosů tunelového propojení|ConnectionName,RemoteIP|
+|TunnelIngressPacketDropTSMismatch|Přetažení paketu neshody příchozího přenosu dat v tunelovém přenosu|Počet|Celkem|Počet příchozích paketů z neshody voliče přenosů tunelového propojení|ConnectionName,RemoteIP|
 
 
-## <a name="microsoftnetworkexpressrouteports"></a>Microsoft. Network/expressRoutePorts
+## <a name="microsoftnetworkexpressrouteports"></a>Microsoft.Network/expressRoutePorts
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|RxLightLevel|RxLightLevel|Počet|Průměr|Úroveň světla příjmu v dBm|Odkaz, Lane|
-|TxLightLevel|TxLightLevel|Počet|Průměr|Úroveň Light tx v dBm|Odkaz, Lane|
-|AdminState|AdminState|Počet|Průměr|Stav Správce portu|Odkaz|
-|LineProtocol|LineProtocol|Počet|Průměr|Stav protokolu linky portu|Odkaz|
-|PortBitsInPerSecond|BitsInPerSecond|CountPerSecond|Průměr|Počet příchozích přenosů Azure za sekundu v bitech|Odkaz|
-|PortBitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Průměr|BITS – výstup Azure za sekundu|Odkaz|
+|Úroveň RxLight|Úroveň RxLight|Počet|Průměr|Rx Úroveň světla v dBm|Odkaz,Jízdní pruh|
+|TxLightLevel|TxLightLevel|Počet|Průměr|Tx úroveň světla v dBm|Odkaz,Jízdní pruh|
+|Stav správce|Stav správce|Počet|Průměr|Stav správce portu|Odkaz|
+|LineProtocol|LineProtocol|Počet|Průměr|Stav čárového protokolu portu|Odkaz|
+|PortBitsInPerSecond|BitsInPerSecond|CountPerSecond|Průměr|Bity příchozí do Azure za sekundu|Odkaz|
+|PortBitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Průměr|Bity odchozí Azure za sekundu|Odkaz|
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.Network/expressRouteCircuits
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|BitsInPerSecond|BitsInPerSecond|CountPerSecond|Průměr|Počet příchozích přenosů Azure za sekundu v bitech|PeeringType|
-|BitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Průměr|BITS – výstup Azure za sekundu|PeeringType|
-|GlobalReachBitsInPerSecond|GlobalReachBitsInPerSecond|CountPerSecond|Průměr|Počet příchozích přenosů Azure za sekundu v bitech|PeeredCircuitSKey|
-|GlobalReachBitsOutPerSecond|GlobalReachBitsOutPerSecond|CountPerSecond|Průměr|BITS – výstup Azure za sekundu|PeeredCircuitSKey|
-|BgpAvailability|Dostupnost protokolu BGP|Procento|Průměr|Dostupnost protokolu BGP z MSEE směrem ke všem partnerským uzlům.|PeeringType, partner|
-|ArpAvailability|Dostupnost protokolu ARP|Procento|Průměr|Dostupnost protokolu ARP z MSEE směrem ke všem partnerským uzlům.|PeeringType, partner|
-|QosDropBitsInPerSecond|DroppedInBitsPerSecond|CountPerSecond|Průměr|Počet vyřazených bitů dat za sekundu|Žádné|
-|QosDropBitsOutPerSecond|DroppedOutBitsPerSecond|CountPerSecond|Průměr|Výstupní bity zahozených dat za sekundu|Žádné|
+|BitsInPerSecond|BitsInPerSecond|CountPerSecond|Průměr|Bity příchozí do Azure za sekundu|Typ partnerského vztahu|
+|BitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Průměr|Bity odchozí Azure za sekundu|Typ partnerského vztahu|
+|Globální DosahBitsInPerSecond|Globální DosahBitsInPerSecond|CountPerSecond|Průměr|Bity příchozí do Azure za sekundu|PeeredCircuitSKey|
+|GlobalReachBitsOutPerSecond|GlobalReachBitsOutPerSecond|CountPerSecond|Průměr|Bity odchozí Azure za sekundu|PeeredCircuitSKey|
+|Dostupnost protokolu BGP|Dostupnost protokolu BGP|Procento|Průměr|Dostupnost Protokolu BGP od msee ke všem protějškům.|PeeringType,Partner|
+|ArpAvailability|Arp Dostupnost|Procento|Průměr|ARP Dostupnost od MSEE ke všem vrstevníkům.|PeeringType,Partner|
+|QosDropBitsInPerSecond|VynechánoInBitsPerSecond|CountPerSecond|Průměr|Počet bitů příchozího přenosu dat poklesl za sekundu|Žádný|
+|QosDropBitsOutPerSecond|VynechánoOutBitsPerSecond|CountPerSecond|Průměr|Odchozí bity dat vynechány za sekundu|Žádný|
 
-## <a name="microsoftnetworkexpressroutecircuitspeerings"></a>Microsoft. Network/expressRouteCircuits/peering
+## <a name="microsoftnetworkexpressroutecircuitspeerings"></a>Microsoft.Network/expressRouteCircuits/peerings
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|BitsInPerSecond|BitsInPerSecond|CountPerSecond|Průměr|Počet příchozích přenosů Azure za sekundu v bitech|Žádné|
-|BitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Průměr|BITS – výstup Azure za sekundu|Žádné|
+|BitsInPerSecond|BitsInPerSecond|CountPerSecond|Průměr|Bity příchozí do Azure za sekundu|Žádný|
+|BitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Průměr|Bity odchozí Azure za sekundu|Žádný|
 
-## <a name="microsoftnetworkconnections"></a>Microsoft. Network/připojení
+## <a name="microsoftnetworkconnections"></a>Microsoft.Network/připojení
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|BitsInPerSecond|BitsInPerSecond|CountPerSecond|Průměr|Počet příchozích přenosů Azure za sekundu v bitech|Žádné|
-|BitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Průměr|BITS – výstup Azure za sekundu|Žádné|
+|BitsInPerSecond|BitsInPerSecond|CountPerSecond|Průměr|Bity příchozí do Azure za sekundu|Žádný|
+|BitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Průměr|Bity odchozí Azure za sekundu|Žádný|
 
-## <a name="microsoftnetworkexpressroutegateways"></a>Microsoft. Network/expressRouteGateways
+## <a name="microsoftnetworkexpressroutegateways"></a>Microsoft.Network/expressRouteGateways
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|ErGatewayConnectionBitsInPerSecond|BitsInPerSecond|CountPerSecond|Průměr|Počet příchozích přenosů Azure za sekundu v bitech|ConnectionName|
-|ErGatewayConnectionBitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Průměr|BITS – výstup Azure za sekundu|ConnectionName|
+|ErGatewayConnectionBitsInSecond|BitsInPerSecond|CountPerSecond|Průměr|Bity příchozí do Azure za sekundu|ConnectionName|
+|ErGatewayConnectionBitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Průměr|Bity odchozí Azure za sekundu|ConnectionName|
 
 ## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft.Network/trafficManagerProfiles
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|QpsByEndpoint|Dotazy podle vráceného koncového bodu|Počet|Celkem|Počet vrácených Traffic Managerho koncového bodu v daném časovém rámci|EndpointName|
-|ProbeAgentCurrentEndpointStateByProfileResourceId|Stav koncového bodu podle koncového bodu|Počet|Maximum|1, pokud je stav testu koncového bodu zapnuto, 0 jinak.|EndpointName|
+|QpsByEndpoint|Vrácené dotazy podle koncového bodu|Počet|Celkem|Počet vrácených koncových bodů Traffic Manageru v daném časovém rámci|Název koncového bodu|
+|ProbeAgentCurrentEndpointStateByProfileResourceId|Stav koncového bodu podle koncového bodu|Počet|Maximum|1 Pokud je stav sondy koncového bodu "Povoleno", 0 jinak.|Název koncového bodu|
 
 
 
-## <a name="microsoftnetworknetworkwatchersconnectionmonitors"></a>Microsoft.Network/networkWatchers/connectionMonitors
+## <a name="microsoftnetworknetworkwatchersconnectionmonitors"></a>Microsoft.Network/networkWatchers/connectionMonitory
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|ProbesFailedPercent|% PROBE selhalo|Procento|Průměr|% sond monitorování připojení selhalo.|Žádné|
-|AverageRoundtripMs|Průměrná doba odezvy (MS)|Milisekund|Průměr|Průměrná doba odezvy sítě (MS) pro testy monitorování připojení odesílané mezi zdrojem a cílem|Žádné|
-|ChecksFailedPercent|Počet neúspěšných kontrol v procentech (Preview)|Procento|Průměr|% kontrol monitorování připojení selhalo.|SourceAddress, source, parametr sourceresourceid, SourceType, protokol, DestinationAddress, Destination, DestinationResourceId, DestinationType, DestinationPort, TestGroupName, TestConfigurationName|
-|RoundTripTimeMs|Doba odezvy (MS) (Preview)|Milisekund|Průměr|Doba odezvy v milisekundách pro kontroly monitorování připojení|SourceAddress, source, parametr sourceresourceid, SourceType, protokol, DestinationAddress, Destination, DestinationResourceId, DestinationType, DestinationPort, TestGroupName, TestConfigurationName|
+|SondaFailedPercent|% sond se nezdařilo.|Procento|Průměr|% sond pro monitorování připojení se nezdařilo.|Žádný|
+|AverageRoundtripMs|Vzdušnou dobu odezvy (ms)|Milisekund|Průměr|Průměrná doba odezvy sítě (ms) pro sondy pro monitorování připojení odeslané mezi zdrojem a cílem|Žádný|
+|ChecksFailedPercent|Kontroluje procento se nezdařilo (náhled)|Procento|Průměr|% kontrol monitorování připojení se nezdařilo.|SourceAddress,SourceName,SourceResourceId,SourceType,Protocol,DestinationAddress,DestinationName,DestinationResourceId,DestinationType,DestinationPort,DestinationPort,TestGroupName,TestConfigurationName|
+|RoundTripTimeMs|Doba odezvy (ms) (náhled)|Milisekund|Průměr|Doba odezvy v milisekundách pro kontroly monitorování připojení|SourceAddress,SourceName,SourceResourceId,SourceType,Protocol,DestinationAddress,DestinationName,DestinationResourceId,DestinationType,DestinationPort,DestinationPort,TestGroupName,TestConfigurationName|
 
 
-## <a name="microsoftnetworkfrontdoors"></a>Microsoft. Network/frontdoors
+## <a name="microsoftnetworkfrontdoors"></a>Microsoft.Network/frontdoors
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|RequestCount|Počet požadavků|Počet|Celkem|Počet požadavků klientů obsluhovaných proxy HTTP/S|Stavu protokolu HTTP, HttpStatusGroup, ClientRegion, ClientCountry|
-|RequestSize|Velikost požadavku|Bajty|Celkem|Počet bajtů odeslaných jako požadavek od klientů na proxy server HTTP/S|Stavu protokolu HTTP, HttpStatusGroup, ClientRegion, ClientCountry|
-|ResponseSize|Velikost odpovědi|Bajty|Celkem|Počet bajtů odeslaných jako odpověď z proxy serveru HTTP/S na klienty|Stavu protokolu HTTP, HttpStatusGroup, ClientRegion, ClientCountry|
-|BillableResponseSize|Fakturovatelná velikost odpovědi|Bajty|Celkem|Počet fakturovatelných bajtů (minimálně 2 KB na požadavek) odeslaných jako odpověď z proxy serveru HTTP/S na klienty.|Stavu protokolu HTTP, HttpStatusGroup, ClientRegion, ClientCountry|
-|BackendRequestCount|Počet požadavků back-endu|Počet|Celkem|Počet požadavků odeslaných z proxy serveru HTTP/S do back-endu|Stavu protokolu HTTP, HttpStatusGroup, back-end|
-|BackendRequestLatency|Latence žádosti back-endu|Milisekund|Průměr|Čas vypočítaný z doby, kdy byl požadavek odeslán proxy HTTP/S do back-endu do back-endu, dokud proxy protokolu HTTP/S nedostalo poslední bajt odpovědi z back-endu|Back-end|
-|TotalLatency|Celková latence|Milisekund|Průměr|Čas vypočítaný z doby, kdy byl požadavek klienta přijat serverem HTTP/S, dokud klient nepotvrdí poslední bajt odpovědi z proxy serveru HTTP/S|Stavu protokolu HTTP, HttpStatusGroup, ClientRegion, ClientCountry|
-|BackendHealthPercentage|Procento stavu back-endu|Procento|Průměr|Procento úspěšných sond stavu z proxy serveru HTTP/S do back-endu|Back-end, problémových|
-|WebApplicationFirewallRequestCount|Počet požadavků firewallu webových aplikací|Počet|Celkem|Počet požadavků klientů zpracovaných bránou firewall webových aplikací|Policy, Rule, Action|
+|RequestCount|Počet požadavků|Počet|Celkem|Počet požadavků klientů obsluhovaných proxy serverem HTTP/S|HttpStatus,HttpStatusGroup,ClientRegion,ClientCountry|
+|RequestSize|Velikost požadavku|Bajty|Celkem|Počet bajtů odeslaných jako požadavky od klientů na proxy server HTTP/S|HttpStatus,HttpStatusGroup,ClientRegion,ClientCountry|
+|Velikost odpovědi|Velikost odpovědi|Bajty|Celkem|Počet bajtů odeslaných jako odpovědi z http/s proxy klientům|HttpStatus,HttpStatusGroup,ClientRegion,ClientCountry|
+|Fakturovatelná velikost odpovědi|Fakturovatelná velikost odpovědi|Bajty|Celkem|Počet fakturovatelných bajtů (minimálně 2 KB na požadavek) odeslaných klientům jako odpovědi z proxy serveru HTTP/S.|HttpStatus,HttpStatusGroup,ClientRegion,ClientCountry|
+|BackendRequestCount|Počet požadavků back-endu|Počet|Celkem|Počet požadavků odeslaných z proxy serveru HTTP/S back-endům|HttpStatus,HttpStatusGroup,Back-end|
+|BackendRequestLatency|Latence back-endu|Milisekund|Průměr|Čas vypočítaný od okamžiku odeslání požadavku serverem HTTP/S do back-endu, dokud proxy server HTTP/S neobdržel poslední bajt odpovědi z back-endu|Back-end|
+|Celková latence|Celková latence|Milisekund|Průměr|Čas vypočítaný od přijetí požadavku klienta serverem PROXY HTTP/S, dokud klient nepotvrdil poslední bajt odpovědi z proxy serveru HTTP/S|HttpStatus,HttpStatusGroup,ClientRegion,ClientCountry|
+|Procento backendhealth|Procento stavu back-endu|Procento|Průměr|Procento úspěšných sond stavu z proxy serveru HTTP/S do back-endů|Back-end,BackendPool|
+|WebApplicationFirewallRequestCount|Počet požadavků brány firewall webové aplikace|Počet|Celkem|Počet požadavků klientů zpracovaných bránou firewall webové aplikace|Název_zásady,Název_pravidla,Akce|
 
 
-## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft.NotificationHubs/Namespaces/NotificationHubs
+## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft.NotificationHubs/Obory názvů/NotificationHubs
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|registrace. vše|Operace registrace|Počet|Celkem|Počet všech úspěšných operací registrace (vytváření dotazů a odstraňování aktualizací). |Žádné|
-|registration.create|Operace vytvoření registrace|Počet|Celkem|Počet všech úspěšných vytvoření registrace.|Žádné|
-|registration.update|Operace aktualizace registrace|Počet|Celkem|Počet všech úspěšných aktualizací registrace.|Žádné|
-|registration.get|Registrace – operace čtení|Počet|Celkem|Počet všech úspěšných dotazů na registraci.|Žádné|
-|registration.delete|Registrace – operace odstranění|Počet|Celkem|Počet všech úspěšných odstranění registrací.|Žádné|
-|přijíman|Příchozí zprávy|Počet|Celkem|Počet všech úspěšných volání rozhraní API pro odeslání. |Žádné|
-|incoming.scheduled|Odeslaná naplánovaná nabízená oznámení|Počet|Celkem|Zrušená plánovaná nabízená oznámení|Žádné|
-|incoming.scheduled.cancel|Zrušená plánovaná nabízená oznámení|Počet|Celkem|Zrušená plánovaná nabízená oznámení|Žádné|
-|naplánováno. čeká na|Nedokončená plánovaná oznámení|Počet|Celkem|Nedokončená plánovaná oznámení|Žádné|
-|instalace. vše|Operace správy instalace|Počet|Celkem|Operace správy instalace|Žádné|
-|installation.get|Získat operace instalace|Počet|Celkem|Získat operace instalace|Žádné|
-|installation.upsert|Operace vytvoření nebo aktualizace instalace|Počet|Celkem|Operace vytvoření nebo aktualizace instalace|Žádné|
-|instalace. patch|Operace instalace opravy|Počet|Celkem|Operace instalace opravy|Žádné|
-|installation.delete|Odstranit operace instalace|Počet|Celkem|Odstranit operace instalace|Žádné|
-|odchozí. allpns. úspěch|Úspěšná oznámení|Počet|Celkem|Počet všech úspěšných oznámení|Žádné|
-|odchozí. allpns. invalidpayload|Chyby datové části|Počet|Celkem|Počet nabídek, které nebyly úspěšné, protože PNS vrátil chybnou datovou část.|Žádné|
-|odchozí. allpns. pnserror|Chyby systému externích oznámení|Počet|Celkem|Počet nabídek, které nebyly úspěšné, protože došlo k potížím při komunikaci s PNS (nezahrnuje problémy s ověřováním).|Žádné|
-|outgoing.allpns.channelerror|Chyby kanálu|Počet|Celkem|Počet nabízených oznámení, která selhala, protože kanál byl neplatný, ale není přidružený ke správné aplikaci nebo vypršela její platnost.|Žádné|
-|outgoing.allpns.badorexpiredchannel|Chybné nebo prošlé chyby kanálu|Počet|Celkem|Počet nabídek, které nebyly úspěšné, protože v registraci vypršela platnost kanálu/tokenu nebo registrationId, nebo je neplatná.|Žádné|
-|odchozí. WNS. úspěch|WNS úspěšná oznámení|Počet|Celkem|Počet všech úspěšných oznámení|Žádné|
-|odchozí. WNS. invalidcredentials|WNS – chyby autorizace (neplatné přihlašovací údaje)|Počet|Celkem|Počet nabídek, které nebyly úspěšné, protože PNS nepřijal zadané přihlašovací údaje nebo jsou přihlašovací údaje blokované. (Windows Live nerozpoznává přihlašovací údaje.)|Žádné|
-|outgoing.wns.badchannel|Chyba WNS špatného kanálu|Počet|Celkem|Počet nabídek, které nebyly úspěšné, protože parametr channeluri v registraci nebyl rozpoznán (stav WNS: 404 nebyl nalezen).|Žádné|
-|outgoing.wns.expiredchannel|Chyba kanálu vypršení platnosti WNS|Počet|Celkem|Počet nabídek, které nebyly úspěšné, protože platnost parametr channeluri vypršela (stav WNS: 410 pryč).|Žádné|
-|odchozí. WNS. omezení|WNS omezená oznámení|Počet|Celkem|Počet nabídek, které nebyly úspěšné, protože WNS omezuje tuto aplikaci (stav WNS: 406 není přijatelné).|Žádné|
-|outgoing.wns.tokenproviderunreachable|WNS – chyby autorizace (nedostupné)|Počet|Celkem|Systém Windows Live není dostupný.|Žádné|
-|odchozí. WNS. invalidtoken|WNS – chyby autorizace (neplatný token)|Počet|Celkem|Token poskytnutý pro WNS není platný (stav WNS: 401 Neautorizováno).|Žádné|
-|outgoing.wns.wrongtoken|WNS chyby autorizace (špatný token)|Počet|Celkem|Token poskytnutý pro WNS je platný, ale pro jinou aplikaci (stav WNS: 403 zakázaný). K tomu může dojít, pokud je parametr channeluri v registraci přidružen k jiné aplikaci. Ověřte, že je klientská aplikace přidružená ke stejné aplikaci, jejíž přihlašovací údaje jsou v centru oznámení.|Žádné|
-|odchozí. WNS. invalidnotificationformat|WNS neplatný formát oznámení|Počet|Celkem|Formát oznámení je neplatný (stav WNS: 400). Všimněte si, že WNS neumožňuje odmítat všechny neplatné datové části.|Žádné|
-|odchozí. WNS. invalidnotificationsize|WNSá Chyba neplatné velikosti oznámení|Počet|Celkem|Datová část oznámení je příliš velká (stav WNS: 413).|Žádné|
-|outgoing.wns.channelthrottled|WNS kanál – omezení|Počet|Celkem|Oznámení bylo vyřazeno, protože parametr channeluri v registraci je omezené (hlavička odpovědi WNS: X-WNS-NotificationStatus: channelThrottled).|Žádné|
-|odchozí. WNS. channeldisconnected|WNS kanál odpojen|Počet|Celkem|Oznámení bylo vyřazeno, protože parametr channeluri v registraci je omezené (hlavička odpovědi WNS: X-WNS-DeviceConnectionStatus: odpojeno).|Žádné|
-|outgoing.wns.dropped|WNS Vyřazená oznámení|Počet|Celkem|Oznámení bylo vyřazeno, protože parametr channeluri v registraci je omezené (X-WNS-NotificationStatus: vyřazeno, ale ne X-WNS-DeviceConnectionStatus: odpojeno).|Žádné|
-|odchozí. WNS. pnserror|WNS chyby|Počet|Celkem|Oznámení nebylo doručeno kvůli chybám při komunikaci s WNS.|Žádné|
-|outgoing.wns.authenticationerror|WNS chyby ověřování|Počet|Celkem|Oznámení nebylo doručeno kvůli chybám při komunikaci s Windows Live neplatné přihlašovací údaje nebo chybný token.|Žádné|
-|outgoing.apns.success|Úspěšná oznámení APNS|Počet|Celkem|Počet všech úspěšných oznámení|Žádné|
-|outgoing.apns.invalidcredentials|Chyby autorizace APNS|Počet|Celkem|Počet nabídek, které nebyly úspěšné, protože PNS nepřijal zadané přihlašovací údaje nebo jsou přihlašovací údaje blokované.|Žádné|
-|outgoing.apns.badchannel|Chyba služby APN Bad Channel|Počet|Celkem|Počet nabídek, které nebyly úspěšné, protože token je neplatný (Stavový kód služby APN: 8).|Žádné|
-|outgoing.apns.expiredchannel|Chyba kanálu vypršení platnosti služby APNS|Počet|Celkem|Počet tokenů, u kterých se zrušila platnost kanálu zpětné vazby APNS.|Žádné|
-|odchozí. APNs. invalidnotificationsize|APN – Chyba neplatné velikosti oznámení|Počet|Celkem|Počet nabídek, které nebyly úspěšné, protože datová část byla příliš velká (Stavový kód APNS: 7).|Žádné|
-|outgoing.apns.pnserror|Chyby služby APN|Počet|Celkem|Počet nabídek, které nebyly úspěšné kvůli chybám při komunikaci s APNS.|Žádné|
-|outgoing.gcm.success|GCM úspěšná oznámení|Počet|Celkem|Počet všech úspěšných oznámení|Žádné|
-|odchozí. GCM. invalidcredentials|GCM – chyby autorizace (neplatné přihlašovací údaje)|Počet|Celkem|Počet nabídek, které nebyly úspěšné, protože PNS nepřijal zadané přihlašovací údaje nebo jsou přihlašovací údaje blokované.|Žádné|
-|outgoing.gcm.badchannel|Chyba GCM špatného kanálu|Počet|Celkem|Počet nabídek, které nebyly úspěšné, protože registrationId v registraci nebyl rozpoznán (výsledek GCM: Neplatná registrace).|Žádné|
-|outgoing.gcm.expiredchannel|Chyba kanálu vypršení platnosti GCM|Počet|Celkem|Počet nabídek, které nebyly úspěšné, protože vypršela platnost registrationId v registraci (výsledek GCM: NotRegistered).|Žádné|
-|odchozí. GCM. omezení|GCM omezená oznámení|Počet|Celkem|Počet nabídek, které nebyly úspěšné, protože aplikace GCM omezila tuto aplikaci (kód stavu GCM: 501-599 nebo výsledek: nedostupný)|Žádné|
-|odchozí. GCM. invalidnotificationformat|GCM neplatný formát oznámení|Počet|Celkem|Počet nabídek, které nebyly úspěšné, protože datová část nebyla správně naformátována (výsledek GCM: InvalidDataKey nebo InvalidTtl).|Žádné|
-|odchozí. GCM. invalidnotificationsize|GCMá Chyba neplatné velikosti oznámení|Počet|Celkem|Počet nabídek, které nebyly úspěšné, protože datová část byla příliš velká (výsledek GCM: MessageTooBig).|Žádné|
-|outgoing.gcm.wrongchannel|GCM chybná chyba kanálu|Počet|Celkem|Počet nabídek, které nebyly úspěšné, protože registrationId v registraci není přidružená k aktuální aplikaci (výsledek GCM: InvalidPackageName).|Žádné|
-|outgoing.gcm.pnserror|GCM chyby|Počet|Celkem|Počet nabídek, které nebyly úspěšné kvůli chybám při komunikaci s GCM|Žádné|
-|outgoing.gcm.authenticationerror|GCM chyby ověřování|Počet|Celkem|Počet nabízených oznámení, která selhala, protože PNS nepřijaly zadané přihlašovací údaje, jsou přihlašovací údaje blokované nebo SenderId není v aplikaci správně nakonfigurovaný (výsledek GCM: MismatchedSenderId).|Žádné|
-|outgoing.mpns.success|MPNS úspěšná oznámení|Počet|Celkem|Počet všech úspěšných oznámení|Žádné|
-|outgoing.mpns.invalidcredentials|Neplatné přihlašovací údaje MPNS|Počet|Celkem|Počet nabídek, které nebyly úspěšné, protože PNS nepřijal zadané přihlašovací údaje nebo jsou přihlašovací údaje blokované.|Žádné|
-|outgoing.mpns.badchannel|Chyba MPNS špatného kanálu|Počet|Celkem|Počet nabídek, které nebyly úspěšné, protože parametr channeluri v registraci nebyl rozpoznán (stav MPNS: 404 nebyl nalezen).|Žádné|
-|outgoing.mpns.throttled|MPNS omezená oznámení|Počet|Celkem|Počet nabídek, které nebyly úspěšné, protože MPNS omezuje tuto aplikaci (WNS MPNS: 406 není přijatelné).|Žádné|
-|odchozí. MPNS. invalidnotificationformat|MPNS neplatný formát oznámení|Počet|Celkem|Počet nabídek, které nebyly úspěšné, protože datová část oznámení byla příliš velká.|Žádné|
-|outgoing.mpns.channeldisconnected|MPNS kanál odpojen|Počet|Celkem|Počet nabídek, které nebyly úspěšné, protože parametr channeluri v registraci byl odpojen (stav MPNS: 412 nebyl nalezen).|Žádné|
-|outgoing.mpns.dropped|MPNS Vyřazená oznámení|Počet|Celkem|Počet nabídek, které byly vyřazeny pomocí MPNS (hlavička odpovědi MPNS: X-NotificationStatus: QueueFull nebo potlačeno).|Žádné|
-|outgoing.mpns.pnserror|MPNS chyby|Počet|Celkem|Počet nabídek, které nebyly úspěšné kvůli chybám při komunikaci s MPNS|Žádné|
-|outgoing.mpns.authenticationerror|MPNS chyby ověřování|Počet|Celkem|Počet nabídek, které nebyly úspěšné, protože PNS nepřijal zadané přihlašovací údaje nebo jsou přihlašovací údaje blokované.|Žádné|
-|notificationhub. push|Všechna odchozí oznámení|Počet|Celkem|Všechna odchozí oznámení centra oznámení|Žádné|
-|incoming.all.requests|Všechny příchozí žádosti|Počet|Celkem|Celkový počet příchozích požadavků pro Centrum oznámení|Žádné|
-|příchozí. All. failedrequests|Všechny příchozí neúspěšné požadavky|Počet|Celkem|Celkový počet příchozích neúspěšných žádostí pro Centrum oznámení|Žádné|
+|registration.all|Registrační operace|Počet|Celkem|Počet všech úspěšných registračních operací (vytváření aktualizuje dotazy a odstranění). |Žádný|
+|registration.create|Operace vytvoření registrace|Počet|Celkem|Počet všech úspěšných registrací výtvorů.|Žádný|
+|registration.update|Operace aktualizace registrace|Počet|Celkem|Počet všech úspěšných aktualizací registrace.|Žádný|
+|registrace.získat|Operace čtení registrace|Počet|Celkem|Počet všech úspěšných registračních dotazů.|Žádný|
+|registration.delete|Registrace odstranit operace|Počet|Celkem|Počet všech úspěšných odstranění registrace.|Žádný|
+|Příchozí|Příchozí zprávy|Počet|Celkem|Počet všech úspěšných volání rozhraní API pro odesílání. |Žádný|
+|incoming.scheduled|Odeslaná naplánovaná nabízená oznámení|Počet|Celkem|Naplánovaná nabízená oznámení byla zrušena.|Žádný|
+|incoming.scheduled.cancel|Naplánovaná nabízená oznámení byla zrušena.|Počet|Celkem|Naplánovaná nabízená oznámení byla zrušena.|Žádný|
+|scheduled.pending|Nevyřízená naplánovaná oznámení|Počet|Celkem|Nevyřízená naplánovaná oznámení|Žádný|
+|instalace.všechny|Operace správy instalace|Počet|Celkem|Operace správy instalace|Žádný|
+|installation.get|Získat instalační operace|Počet|Celkem|Získat instalační operace|Žádný|
+|instalace.upsert|Vytvořit nebo aktualizovat instalační operace|Počet|Celkem|Vytvořit nebo aktualizovat instalační operace|Žádný|
+|installation.patch|Operace instalace opravy|Počet|Celkem|Operace instalace opravy|Žádný|
+|installation.delete|Odstranit instalační operace|Počet|Celkem|Odstranit instalační operace|Žádný|
+|odchozí.allpns.success|Úspěšná oznámení|Počet|Celkem|Počet všech úspěšných oznámení.|Žádný|
+|odchozí.allpns.invalidpayload|Chyby datové části|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože server PNS vrátil chybnou chybu datové části.|Žádný|
+|chyba odchozí.allpns.pns|Chyby systému externích oznámení|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože došlo k potížím s komunikací s pns (vylučuje problémy s ověřováním).|Žádný|
+|chyba odchozí.allpns.channel|Chyby kanálu|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože kanál byl neplatný není spojen a správné aplikace omezena nebo vypršela.|Žádný|
+|odchozí.allpns.badorexpiredchannel|Chybné chyby kanálu nebo chyby kanálu s ukončenou platností|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože platnost kanálu/tokenu/id v registraci vypršela nebo byla neplatná.|Žádný|
+|odchozí.wns.success|Úspěšná oznámení systému WNS|Počet|Celkem|Počet všech úspěšných oznámení.|Žádný|
+|odchozí.wns.invalidcredentials|Chyby autorizace aktualizace WNS (neplatná pověření)|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože zpráva PNS nepřijala zadaných pověření nebo pověření jsou blokována. (Služba Windows Live nerozpozná pověření).|Žádný|
+|odchozí.wns.badchannel|Chyba chybného kanálu WNS|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože ChannelURI v registraci nebyl rozpoznán (WNS stav: 404 nebyl nalezen).|Žádný|
+|odchozí.wns.expiredchannel|Chyba kanálu vypršela platnost i wns|Počet|Celkem|Počet nabízených oznámení, které se nezdařily, protože channeluri vypršela (WNS stav: 410 Gone).|Žádný|
+|odchozí.wns.škrtil|Oznámení s omezením systému WNS|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože wns je omezení této aplikace (WNS stav: 406 nepřijatelné).|Žádný|
+|odchozí.wns.tokenproviderunreachable|Chyby autorizace WNS (nedostupné)|Počet|Celkem|Služba Windows Live není dostupná.|Žádný|
+|odchozí.wns.invalidtoken|Chyby autorizace wns (neplatný token)|Počet|Celkem|Token poskytnutý společnosti WNS není platný (stav WNS: 401 Neautorizováno).|Žádný|
+|odchozí.wns.wrongtoken|Chyby autorizace wns (nesprávný token)|Počet|Celkem|Token poskytnutý wns je platný, ale pro jinou aplikaci (WNS stav: 403 Zakázáno). K tomu může dojít, pokud channeluri v registraci je přidružen k jiné aplikaci. Zkontrolujte, zda je klientská aplikace přidružená ke stejné aplikaci, jejíž přihlašovací údaje jsou v centru oznámení.|Žádný|
+|outgoing.wns.invalidnotificationformat|Neplatný formát oznámení systému WNS|Počet|Celkem|Formát oznámení je neplatný (stav WNS: 400). Všimněte si, že služba WNS neodmítne všechny neplatné datové části.|Žádný|
+|outgoing.wns.invalidnotificationsize|Chyba neplatné velikosti oznámení služba WNS|Počet|Celkem|Datová část oznámení je příliš velká (stav WNS: 413).|Žádný|
+|odchozí.wns.channelthrottled|Kanál WNS s omezením|Počet|Celkem|Oznámení bylo vynecháno, protože ChannelURI v registraci je omezen (WNS hlavička odpovědi: X-WNS-NotificationStatus:channelThrottled).|Žádný|
+|odchozí.wns.channelodpojen|Kanál WNS odpojen|Počet|Celkem|Oznámení bylo vynecháno, protože ChannelURI v registraci je omezen (WNS hlavička odpovědi: X-WNS-DeviceConnectionStatus: odpojeno).|Žádný|
+|odchozí.wns.dropped|Zrušená oznámení systému WNS|Počet|Celkem|Oznámení bylo vynecháno, protože ChannelURI v registraci je omezen (X-WNS-NotificationStatus: vynecháno, ale ne X-WNS-DeviceConnectionStatus: odpojeno).|Žádný|
+|odchozí.wns.pnserror|Chyby wns|Počet|Celkem|Oznámení nebylo doručeno z důvodu chyb při komunikaci se společností WNS.|Žádný|
+|chyba odchozí.wns.authentication|Chyby ověřování služby WNS|Počet|Celkem|Oznámení nebylo doručeno z důvodu chyb při komunikaci se službou Windows Live neplatných přihlašovacích údajů nebo nesprávného tokenu.|Žádný|
+|odchozí.apns.success|Úspěšná oznámení APNS|Počet|Celkem|Počet všech úspěšných oznámení.|Žádný|
+|odchozí.apns.invalidcredentials|Chyby autorizace APNS|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože zpráva PNS nepřijala zadaných pověření nebo pověření jsou blokována.|Žádný|
+|odchozí.apns.badchannel|Chyba chybného kanálu APNS|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože token je neplatný (stavový kód APNS: 8).|Žádný|
+|odchozí.apns.expiredchannel|Chyba kanálu apns vypršela|Počet|Celkem|Počet tokenu, které byly zrušeny kanálem zpětné vazby APNS.|Žádný|
+|outgoing.apns.invalidnotificationsize|Chyba neplatné velikosti oznámení APNs|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože datová část byla příliš velká (stavový kód APNS: 7).|Žádný|
+|odchozí.apns.pnserror|Chyby APNS|Počet|Celkem|Počet nabízených oznámení, která se nezdařila z důvodu chyb při komunikaci s apns.|Žádný|
+|odchozí.gcm.success|Úspěšná oznámení GCM|Počet|Celkem|Počet všech úspěšných oznámení.|Žádný|
+|odchozí.gcm.invalidcredentials|Chyby autorizace gcm (neplatná pověření)|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože zpráva PNS nepřijala zadaných pověření nebo pověření jsou blokována.|Žádný|
+|odchozí.gcm.badchannel|Chyba chybného kanálu GCM|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože nebylrozpoznán id registrace v registraci (výsledek GCM: Neplatná registrace).|Žádný|
+|odchozí.gcm.expiredchannel|Chyba kanálu vypršení platnosti gcm|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože registraceId v registraci vypršela (VÝSLEDEK GCM: NotRegistered).|Žádný|
+|odchozí.gcm.throttled|Oznámení s omezením gcm|Počet|Celkem|Počet nabízených oznámení, které se nezdařily, protože GCM omezena tuto aplikaci (GCM stavový kód: 501-599 nebo výsledek:Není k dispozici).|Žádný|
+|outgoing.gcm.invalidnotificationformat|Formát neplatného oznámení globálního katalogu|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože datová část nebyla správně formátována (výsledek GCM: InvalidDataKey nebo InvalidTttl).|Žádný|
+|outgoing.gcm.invalidnotificationsize|Chyba neplatné velikosti oznámení v rámci globálního katalogu|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože datová část byla příliš velká (výsledek GCM: MessageTooBig).|Žádný|
+|odchozí.gcm.wrongchannel|Chyba nesprávného kanálu gcm|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože id registrace není přidružena k aktuální aplikaci (výsledek GCM: InvalidPackageName).|Žádný|
+|odchozí.gcm.pnserror|Chyby GCM|Počet|Celkem|Počet nabízených oznámení, která se nezdařila z důvodu chyb při komunikaci s GCM.|Žádný|
+|chyba odchozího.gcm.authentication|Chyby ověřování globálního katalogu|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože pns nepřijal zadaných pověření pověření jsou blokovány nebo SenderId není správně nakonfigurován v aplikaci (VÝSLEDEK GCM: NeshodaSenderId).|Žádný|
+|odchozí.mpns.úspěch|Úspěšná oznámení mpns|Počet|Celkem|Počet všech úspěšných oznámení.|Žádný|
+|odchozí.mpns.invalidcredentials|Neplatná pověření protokolu MPNS|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože zpráva PNS nepřijala zadaných pověření nebo pověření jsou blokována.|Žádný|
+|odchozí.mpns.badchannel|Chyba chybného kanálu MPNS|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože channeluri v registraci nebyl rozpoznán (MPNS stav: 404 nebyl nalezen).|Žádný|
+|odchozí.mpns.omezena|Oznámení s omezením systému MPNS|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože mpns je omezení této aplikace (WNS MPNS: 406 nepřijatelné).|Žádný|
+|outgoing.mpns.invalidnotificationformat|Formát oznámení protokolu MPNS|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože datová část oznámení byla příliš velká.|Žádný|
+|odchozí.mpns.channelodpojen|Kanál MPNS odpojen|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože ChannelURI v registraci byla odpojena (MPNS stav: 412 nebyl nalezen).|Žádný|
+|odchozí.mpns.dropped|Zrušená oznámení mpns|Počet|Celkem|Počet nabízených oznámení, které byly vynechány mpns (hlavička odpovědi MPNS: X-NotificationStatus: QueueFull nebo Suppressed).|Žádný|
+|chyba odchozí.mpns.pns|Chyby mpns|Počet|Celkem|Počet nabízených oznámení, která se nezdařila z důvodu chyb při komunikaci se sadou MPNS.|Žádný|
+|chyba odchozího.mpns.authentication|Chyby ověřování souborů MPN|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože zpráva PNS nepřijala zadaných pověření nebo pověření jsou blokována.|Žádný|
+|notificationhub.push|Všechna odchozí oznámení|Počet|Celkem|Všechna odchozí oznámení centra oznámení|Žádný|
+|incoming.all.requests|Všechny příchozí požadavky|Počet|Celkem|Celkový počet příchozích žádostí o centrum oznámení|Žádný|
+|požadavky incoming.all.failedrequests|Všechny příchozí neúspěšné požadavky|Počet|Celkem|Celkový počet příchozích neúspěšných požadavků na centrum oznámení|Žádný|
 
-## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.OperationalInsights/workspaces
+## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.OperationalInsights/pracovní prostory
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|Average_ uzlů inode% Free|% Bezplatného uzlů inode|Počet|Průměr|Average_ uzlů inode% Free|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% volného místa|% Volné místo|Počet|Průměr|Average_% volného místa|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% využití uzlů inode|% Použitého uzlů inode|Počet|Průměr|Average_% využití uzlů inode|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Využité místo Average_%|% Využitého místa|Počet|Průměr|Využité místo Average_%|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Disk přečtených bajtů/s|Čtení disku bajtů/s|Počet|Průměr|Average_Disk přečtených bajtů/s|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Disk čtení za sekundu|Čtení disku/s|Počet|Průměr|Average_Disk čtení za sekundu|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Disk přenosů za sekundu|Přenosy disku/s|Počet|Průměr|Average_Disk přenosů za sekundu|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Disk bajty zápisu za sekundu|Zápis disku bajtů/s|Počet|Průměr|Average_Disk bajty zápisu za sekundu|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Zápisy Average_Disk za sekundu|Zápis disku/s|Počet|Průměr|Zápisy Average_Disk za sekundu|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Free megabajtů|Volné megabajty|Počet|Průměr|Average_Free megabajtů|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Počet bajtů Average_Logical disku za sekundu|Bajtů logického disku/s|Počet|Průměr|Počet bajtů Average_Logical disku za sekundu|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_ k dispozici paměti|% Dostupné paměti|Počet|Průměr|Average_ k dispozici paměti|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% dostupného odkládacího prostoru|% Dostupného odkládacího prostoru|Počet|Průměr|Average_% dostupného odkládacího prostoru|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Využitá paměť Average_%|% Využité paměti|Počet|Průměr|Využitá paměť Average_%|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% využitého místa odkládacího souboru|% Využitého místa odkládacího souboru|Počet|Průměr|Average_% využitého místa odkládacího souboru|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Paměť Average_Available v MB|Dostupná paměť v MB|Počet|Průměr|Paměť Average_Available v MB|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Přeměna Average_Available MB|Dostupný počet MB swap|Počet|Průměr|Přeměna Average_Available MB|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Page čtení za sekundu|přečtené strany/s|Počet|Průměr|Average_Page čtení za sekundu|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Zápisy Average_Page za sekundu|zapsané strany/s|Počet|Průměr|Zápisy Average_Page za sekundu|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Pages/s|Stránky/s|Počet|Průměr|Average_Pages/s|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Used MB odkládacího prostoru|Využité místo odkládacího souboru v MB|Počet|Průměr|Average_Used MB odkládacího prostoru|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Used paměť v MB|Využitá paměť v MB|Počet|Průměr|Average_Used paměť v MB|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Přenesené bajty Average_Total|Celkový počet bajtů přenesených|Počet|Průměr|Přenesené bajty Average_Total|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Přijaté bajty Average_Total|Celkový počet přijatých bajtů|Počet|Průměr|Přijaté bajty Average_Total|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Total bajty|Bajty celkem|Počet|Průměr|Average_Total bajty|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Odeslané Average_Total pakety|Celkový počet odeslaných paketů|Počet|Průměr|Odeslané Average_Total pakety|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Přijaté pakety Average_Total|Celkový počet přijatých paketů|Počet|Průměr|Přijaté pakety Average_Total|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Total chyby příjmu|Celkový počet chyb příjmu|Počet|Průměr|Average_Total chyby příjmu|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Chyby při odesílání Average_Total|Chyby odesílání celkem|Počet|Průměr|Chyby při odesílání Average_Total|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Total kolizí|Celkový počet kolizí|Počet|Průměr|Average_Total kolizí|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Avg. doba disku/čtení|Střední doba disku/čtení|Počet|Průměr|Average_Avg. doba disku/čtení|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Avg. doba disku/přenos|Střední doba disku/přenos|Počet|Průměr|Average_Avg. doba disku/přenos|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Avg. doba disku/zápis|Střední doba disku/zápis|Počet|Průměr|Average_Avg. doba disku/zápis|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Počet bajtů Average_Physical disku za sekundu|Bajty fyzického disku/s|Počet|Průměr|Počet bajtů Average_Physical disku za sekundu|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Pct privilegovaného času|Privilegovaný čas protokolu PCT|Počet|Průměr|Average_Pct privilegovaného času|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Čas uživatele Average_Pct|Doba uživatele v protokolu PCT|Počet|Průměr|Čas uživatele Average_Pct|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Used kB paměti|Využitá paměť v kilobajtech|Počet|Průměr|Average_Used kB paměti|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Virtual sdílená paměť|Virtuální sdílená paměť|Počet|Průměr|Average_Virtual sdílená paměť|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% času DPC|% Času DPC|Počet|Průměr|Average_% času DPC|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% času nečinnosti|% času nečinnosti|Počet|Průměr|Average_% času nečinnosti|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% času přerušení|% Času přerušení|Počet|Průměr|Average_% času přerušení|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% času čekání na v/v|% Času čekání na v/v|Počet|Průměr|Average_% času čekání na v/v|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% dobrý čas|% Dobrý čas|Počet|Průměr|Average_% dobrý čas|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% privilegovaného času|%privilegovaného času|Počet|Průměr|Average_% privilegovaného času|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% času procesoru|% času procesoru|Počet|Průměr|Average_% času procesoru|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Čas uživatele Average_%|% Uživatelského času|Počet|Průměr|Čas uživatele Average_%|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Free fyzická paměť|Volná fyzická paměť|Počet|Průměr|Average_Free fyzická paměť|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Free mezera v stránkovacích souborech|Volné místo ve stránkovacích souborech|Počet|Průměr|Average_Free mezera v stránkovacích souborech|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Free virtuální paměti|Volná virtuální paměť|Počet|Průměr|Average_Free virtuální paměti|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Processes|Procesy|Počet|Průměr|Average_Processes|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Size uložený ve stránkovacích souborech|Velikost uložená ve stránkovacích souborech|Počet|Průměr|Average_Size uložený ve stránkovacích souborech|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Uptime|Provoz|Počet|Průměr|Average_Uptime|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Users|Uživatelé|Počet|Průměr|Average_Users|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Avg. doba disku/čtení|Střední doba disku/čtení|Počet|Průměr|Average_Avg. doba disku/čtení|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Avg. doba disku/zápis|Střední doba disku/zápis|Počet|Průměr|Average_Avg. doba disku/zápis|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Délka fronty disku Average_Current|Aktuální délka fronty disku|Počet|Průměr|Délka fronty disku Average_Current|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Disk čtení za sekundu|Čtení disku/s|Počet|Průměr|Average_Disk čtení za sekundu|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Disk přenosů za sekundu|Přenosy disku/s|Počet|Průměr|Average_Disk přenosů za sekundu|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Zápisy Average_Disk za sekundu|Zápis disku/s|Počet|Průměr|Zápisy Average_Disk za sekundu|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Free megabajtů|Volné megabajty|Počet|Průměr|Average_Free megabajtů|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% volného místa|% Volné místo|Počet|Průměr|Average_% volného místa|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Available MB|Počet MB k dispozici|Počet|Průměr|Average_Available MB|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% používaných potvrzených bajtů|% Používaných potvrzených bajtů|Počet|Průměr|Average_% používaných potvrzených bajtů|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Přijaté Average_Bytes za sekundu|Přijaté bajty/s|Počet|Průměr|Přijaté Average_Bytes za sekundu|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Odeslané Average_Bytes za sekundu|Odeslané bajty/s|Počet|Průměr|Odeslané Average_Bytes za sekundu|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Bytes celkem/s|Bajty celkem/s|Počet|Průměr|Average_Bytes celkem/s|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% času procesoru|% času procesoru|Počet|Průměr|Average_% času procesoru|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Délka fronty Average_Processor|Délka fronty procesoru|Počet|Průměr|Délka fronty Average_Processor|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Prezenční signál|Prezenční signál|Počet|Celkem|Prezenční signál|Počítač, OSType, verze, SourceComputerId|
-|Aktualizovat|Aktualizovat|Počet|Průměr|Aktualizovat|Počítač, produkt, klasifikace, UpdateState, volitelné, schválené|
-|Událost|Událost|Počet|Průměr|Událost|Zdroj, protokol událostí, počítač, EventCategory, EventLevel, EventLevelName, ID události|
+|Average_% volných inodů|% volných inodů|Počet|Průměr|Average_% volných inodů|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_% volného místa|% volného místa|Počet|Průměr|Average_% volného místa|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_% Použité Inody|% použitých inodů|Počet|Průměr|Average_% Použité Inody|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_% využitý prostor|% využitého místa|Počet|Průměr|Average_% využitý prostor|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Disk čtení bajtů/s|Čtení bajtů disku/s|Počet|Průměr|Average_Disk čtení bajtů/s|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Disk čtení/s|Čtení disku/s|Počet|Průměr|Average_Disk čtení/s|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Disk převody/s|Přenosy disků/s|Počet|Průměr|Average_Disk převody/s|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Disk zápis bajtů/s|Bajty zápisu disku/s|Počet|Průměr|Average_Disk zápis bajtů/s|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Disk zápisy/s|Zápisy na disk/s|Počet|Průměr|Average_Disk zápisy/s|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Free megabajty|Megabajty zdarma|Počet|Průměr|Average_Free megabajty|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Logical bajty disku/s|Bajty logického disku/s|Počet|Průměr|Average_Logical bajty disku/s|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_% dostupné paměti|% dostupné paměti|Počet|Průměr|Average_% dostupné paměti|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_% k dispozici odkládací prostor|% dostupného odkládacího prostoru|Počet|Průměr|Average_% k dispozici odkládací prostor|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_% použité paměti|% použité paměti|Počet|Průměr|Average_% použité paměti|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_% využitý odkládací prostor|% použitého odkládacího prostoru|Počet|Průměr|Average_% využitý odkládací prostor|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Available mbajtů paměti|Dostupná paměť MBytes|Počet|Průměr|Average_Available mbajtů paměti|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Available mbajtů swap|K dispozici mbytes swap|Počet|Průměr|Average_Available mbajtů swap|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Page čtení/s|Čtení stránky/s|Počet|Průměr|Average_Page čtení/s|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Page zápisy/s|Zápisy stránky/s|Počet|Průměr|Average_Page zápisy/s|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Pages/s|Stránky/s|Počet|Průměr|Average_Pages/s|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Used bajtů swapové mezery|Použité mbytes swap ové místo|Počet|Průměr|Average_Used bajtů swapové mezery|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Used paměti MBytes|Mbytes použité paměti|Počet|Průměr|Average_Used paměti MBytes|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|přenesené Average_Total bajty|Celkový počet přenesených bajtů|Počet|Průměr|přenesené Average_Total bajty|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|přijaté bajty Average_Total|Celkový počet přijatých bajtů|Počet|Průměr|přijaté bajty Average_Total|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Total bajtů|Celkový počet bajtů|Počet|Průměr|Average_Total bajtů|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Total přenášených paketů|Celkový počet přenesených paketů|Počet|Průměr|Average_Total přenášených paketů|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Total přijaté pakety|Celkový počet přijatých paketů|Počet|Průměr|Average_Total přijaté pakety|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Total chybr|Celkový počet chyb Rx|Počet|Průměr|Average_Total chybr|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Total chyby Tx|Celkový počet chyb Tx|Počet|Průměr|Average_Total chyby Tx|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Total Kolize|Celkový počet kolizí|Počet|Průměr|Average_Total Kolize|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Avg. doba disku/čtení|Vně disku sec/čtení|Počet|Průměr|Average_Avg. doba disku/čtení|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Avg. Diskový sk/Přenos|Vznětový disk ový s/přenos|Počet|Průměr|Average_Avg. Diskový sk/Přenos|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Avg. doba disku/zápis|Vg. Disk sec/Zápis|Počet|Průměr|Average_Avg. doba disku/zápis|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Physical bajty disku/s|Bajty fyzického disku/s|Počet|Průměr|Average_Physical bajty disku/s|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Pct privilegovaný čas|Pct privilegovaný čas|Počet|Průměr|Average_Pct privilegovaný čas|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Pct uživatelský čas|Pct uživatelský čas|Počet|Průměr|Average_Pct uživatelský čas|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Used paměťové kby|Kby využité paměti|Počet|Průměr|Average_Used paměťové kby|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Virtual sdílená paměť|Virtuální sdílená paměť|Počet|Průměr|Average_Virtual sdílená paměť|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_% času DPC|% času DPC|Počet|Průměr|Average_% času DPC|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_% doba nečinnosti|% doby nečinnosti|Počet|Průměr|Average_% doba nečinnosti|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_% doba přerušení|% času přerušení|Počet|Průměr|Average_% doba přerušení|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_% Čekací doba IO|% čekací doby vi|Počet|Průměr|Average_% Čekací doba IO|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_% pěkný čas|% Pěkný čas|Počet|Průměr|Average_% pěkný čas|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_% privilegovaný čas|% privilegovaného času|Počet|Průměr|Average_% privilegovaný čas|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_% času procesoru|Procesorový čas v %|Počet|Průměr|Average_% času procesoru|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_% uživatelský čas|% času uživatele|Počet|Průměr|Average_% uživatelský čas|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Free fyzická paměť|Volná fyzická paměť|Počet|Průměr|Average_Free fyzická paměť|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Free místa v stránkovacích souborech|Volné místo v stránkovacích souborech|Počet|Průměr|Average_Free místa v stránkovacích souborech|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Free virtuální paměti|Virtuální paměť zdarma|Počet|Průměr|Average_Free virtuální paměti|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Processes|Procesy|Počet|Průměr|Average_Processes|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Size uloženy v stránkovacích souborech|Velikost uložená v stránkovacích souborech|Počet|Průměr|Average_Size uloženy v stránkovacích souborech|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Uptime|Uptime|Počet|Průměr|Average_Uptime|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Users|Uživatelé|Počet|Průměr|Average_Users|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Avg. doba disku/čtení|Vně disku sec/čtení|Počet|Průměr|Average_Avg. doba disku/čtení|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Avg. doba disku/zápis|Vg. Disk sec/Zápis|Počet|Průměr|Average_Avg. doba disku/zápis|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Current délka fronty disku|Aktuální délka fronty disku|Počet|Průměr|Average_Current délka fronty disku|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Disk čtení/s|Čtení disku/s|Počet|Průměr|Average_Disk čtení/s|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Disk převody/s|Přenosy disků/s|Počet|Průměr|Average_Disk převody/s|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Disk zápisy/s|Zápisy na disk/s|Počet|Průměr|Average_Disk zápisy/s|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Free megabajty|Megabajty zdarma|Počet|Průměr|Average_Free megabajty|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_% volného místa|% volného místa|Počet|Průměr|Average_% volného místa|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Available Bajty|Dostupné mbajty|Počet|Průměr|Average_Available Bajty|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_% potvrzených bajtů, které se používají|% potvrzených bajtů je používáno|Počet|Průměr|Average_% potvrzených bajtů, které se používají|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Bytes přijato/s|Přijaté bajty/s|Počet|Průměr|Average_Bytes přijato/s|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Bytes odesláno/s|Odeslané bajty/s|Počet|Průměr|Average_Bytes odesláno/s|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Bytes celkem/s|Celkový počet bajtů/s|Počet|Průměr|Average_Bytes celkem/s|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_% času procesoru|Procesorový čas v %|Počet|Průměr|Average_% času procesoru|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Average_Processor délka fronty|Délka fronty procesoru|Počet|Průměr|Average_Processor délka fronty|Počítač,Název_objektu,InstanceName,Proticestní,Zdrojový systém|
+|Prezenční signál|Prezenční signál|Počet|Celkem|Prezenční signál|Počítač,OSType,Verze,SourceComputerId|
+|Aktualizace|Aktualizace|Počet|Průměr|Aktualizace|počítač,produkt,klasifikace,UpdateState,volitelné,schváleno|
+|Událost|Událost|Počet|Průměr|Událost|Zdroj,EventLog,Počítač,EventCategory,EventLevel,EventLevelName,EventID|
 
-## <a name="microsoftpeeringpeeringservices"></a>Microsoft. peering/peeringServices
+## <a name="microsoftpeeringpeeringservices"></a>Služby Microsoft.Peering/peeringServices
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|PrefixLatency|Latence předpony|Milisekundy|Průměr|Střední latence předpony|Předpona|
+|PrefixLatency|Latence předpony|Milisekund|Průměr|Medián latence předpony|Název předpony|
 
-## <a name="microsoftpeeringpeerings"></a>Microsoft. peering/peering
+## <a name="microsoftpeeringpeerings"></a>Microsoft.Peering/peerings
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|SessionAvailabilityV4|Dostupnost relace v4|Procento|Průměr|Dostupnost relace v4|ConnectionId|
-|SessionAvailabilityV6|Dostupnost relace V6|Procento|Průměr|Dostupnost relace V6|ConnectionId|
-|IngressTrafficRate|Rychlost příchozího přenosu dat|BitsPerSecond|Průměr|Míra přenosů příchozích dat v bitech za sekundu|ConnectionId|
-|EgressTrafficRate|Rychlost přenosů na výstup|BitsPerSecond|Průměr|Rychlost přenosů dat v bitech za sekundu|ConnectionId|
+|Dostupnost relaceV4|Dostupnost relace V4|Procento|Průměr|Dostupnost relace V4|ConnectionId|
+|Dostupnost relaceV6|Dostupnost relace V6|Procento|Průměr|Dostupnost relace V6|ConnectionId|
+|Míra přenosu dat|Rychlost přenosu dat|BitsPerSecond|Průměr|Rychlost přenosu dat v bitech za sekundu|ConnectionId|
+|EgressTrafficRate|Rychlost odchozího přenosu|BitsPerSecond|Průměr|Rychlost odchozího přenosu v bitech za sekundu|ConnectionId|
 
-## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
+## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/kapacity
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|QueryDuration|Doba trvání dotazu|Milisekundy|Průměr|Doba trvání dotazu DAX v posledním intervalu|Žádné dimenze|
-|QueryPoolJobQueueLength|Vlákna: délka fronty úloh fondu dotazů|Počet|Průměr|Počet úloh ve frontě fondu vláken dotazů.|Žádné dimenze|
-|qpu_high_utilization_metric|QPU vysoké využití|Počet|Celkem|QPU vysoké využití za poslední minutu, 1 pro vysoké využití QPU, jinak 0|Žádné dimenze|
-|memory_metric|Paměť|Bajty|Průměr|Rezident. Rozsah 0-3 GB pro a1, 0-5 GB pro a2, 0-10 GB pro a3, 0-25 GB pro A4, 0-50 GB pro A5 a 0-100 GB pro A6|Žádné dimenze|
-|memory_thrashing_metric|Thrashing paměti|Procento|Průměr|Průměrná velikost thrashing paměti|Žádné dimenze|
+|Trvání dotazu|Doba trvání dotazu|Milisekund|Průměr|Doba trvání dotazu jazyka DAX v posledním intervalu|Žádné dimenze|
+|QueryPoolJobQueueLength|Vlákna: Délka fronty úloh fondu dotazů|Počet|Průměr|Počet úloh ve frontě fondu vláken dotazu.|Žádné dimenze|
+|qpu_high_utilization_metric|Vysoké využití procesoru|Počet|Celkem|QPU vysoké využití v last minute, 1 pro vysoké QPU využití, jinak 0|Žádné dimenze|
+|memory_metric|Memory (Paměť)|Bajty|Průměr|Memory: Rozsah 0-3 GB pro A1, 0-5 GB pro A2, 0-10 GB pro A3, 0-25 GB pro A4, 0-50 GB pro A5 a 0-100 GB pro A6|Žádné dimenze|
+|memory_thrashing_metric|Thrashing paměti|Procento|Průměr|Průměrná paměť výprask.|Žádné dimenze|
 
 
 
-## <a name="microsoftrelaynamespaces"></a>Microsoft. Relay/obory názvů
+## <a name="microsoftrelaynamespaces"></a>Obory názvů Microsoft.Relay/Namespaces
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|ListenerConnections – úspěch|ListenerConnections – úspěch|Počet|Celkem|Úspěšně se ListenerConnections pro Microsoft. Relay.|EntityName, výsledek operace uvnitř|
-|ListenerConnections-ClientError|ListenerConnections-ClientError|Počet|Celkem|ClientError v ListenerConnections pro Microsoft. Relay|EntityName, výsledek operace uvnitř|
-|ListenerConnections-ServerError|ListenerConnections-ServerError|Počet|Celkem|ServerError v ListenerConnections pro Microsoft. Relay|EntityName, výsledek operace uvnitř|
-|SenderConnections – úspěch|SenderConnections – úspěch|Počet|Celkem|Úspěšně se SenderConnections pro Microsoft. Relay.|EntityName, výsledek operace uvnitř|
-|SenderConnections – ClientError|SenderConnections – ClientError|Počet|Celkem|ClientError v SenderConnections pro Microsoft. Relay|EntityName, výsledek operace uvnitř|
-|SenderConnections-ServerError|SenderConnections-ServerError|Počet|Celkem|ServerError v SenderConnections pro Microsoft. Relay|EntityName, výsledek operace uvnitř|
-|ListenerConnections-TotalRequests|ListenerConnections-TotalRequests|Počet|Celkem|Total ListenerConnections for Microsoft. Relay|EntityName|
-|SenderConnections-TotalRequests|SenderConnections-TotalRequests|Počet|Celkem|Požadavky SenderConnections (celkem) pro Microsoft. Relay|EntityName|
-|ActiveConnections|ActiveConnections|Počet|Celkem|Total ActiveConnections for Microsoft. Relay|EntityName|
-|ActiveListeners|ActiveListeners|Počet|Celkem|Total ActiveListeners for Microsoft. Relay|EntityName|
-|BytesTransferred|BytesTransferred|Počet|Celkem|Total BytesTransferred for Microsoft. Relay|EntityName|
-|ListenerDisconnects|ListenerDisconnects|Počet|Celkem|Total ListenerDisconnects for Microsoft. Relay|EntityName|
-|SenderDisconnects|SenderDisconnects|Počet|Celkem|Total SenderDisconnects for Microsoft. Relay|EntityName|
+|ListenerConnections-Úspěch|ListenerConnections-Úspěch|Počet|Celkem|Úspěšné ListenerConnections pro Microsoft.Relay.|EntityName,Výsledek operace|
+|Chyba ListenerConnections-ClientError|Chyba ListenerConnections-ClientError|Počet|Celkem|ClientError na ListenerConnections pro Microsoft.Relay.|EntityName,Výsledek operace|
+|ListenerConnections-ServerError|ListenerConnections-ServerError|Počet|Celkem|Chyba serveru při připojení listenerconnections pro Microsoft.Relay.|EntityName,Výsledek operace|
+|SenderConnections-Úspěch|SenderConnections-Úspěch|Počet|Celkem|Úspěšné SenderConnections pro Microsoft.Relay.|EntityName,Výsledek operace|
+|Chyba SenderConnections-ClientError|Chyba SenderConnections-ClientError|Počet|Celkem|ClientError na SenderConnections pro Microsoft.Relay.|EntityName,Výsledek operace|
+|Chyba senderConnections-ServerError|Chyba senderConnections-ServerError|Počet|Celkem|Chyba serveru v připojení SenderConnections pro microsoft.relay.|EntityName,Výsledek operace|
+|ListenerConnections-TotalRequests|ListenerConnections-TotalRequests|Počet|Celkem|Celkový počet listenerconnections pro Microsoft.Relay.|Název entity|
+|SenderConnections-TotalRequests|SenderConnections-TotalRequests|Počet|Celkem|Celkový počet požadavků senderconnections pro Microsoft.Relay.|Název entity|
+|Aktivní připojení|Aktivní připojení|Počet|Celkem|Celkový počet aktivních připojení pro Microsoft.Relay.|Název entity|
+|Aktivní posluchači|Aktivní posluchači|Počet|Celkem|Celkový počet aktivních listenerů pro microsoft.relay.|Název entity|
+|BytesPřevedeno|BytesPřevedeno|Počet|Celkem|Celkový počet bajtů převedených pro Microsoft.Relay.|Název entity|
+|ListenerDisconnects|ListenerDisconnects|Počet|Celkem|Celkový listenerDisconnects pro Microsoft.Relay.|Název entity|
+|OdesílatelOdpojidne|OdesílatelOdpojidne|Počet|Celkem|Celkem SenderDisconnects pro Microsoft.Relay.|Název entity|
 
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.Search/searchServices
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|SearchLatency|Latence hledání|Sekundy|Průměr|Průměrná latence hledání pro vyhledávací službu|Žádné|
-|SearchQueriesPerSecond|Hledání dotazů za sekundu|CountPerSecond|Průměr|Hledání dotazů za sekundu pro vyhledávací službu|Žádné|
-|ThrottledSearchQueriesPercentage|Procento omezených vyhledávacích dotazů|Procento|Průměr|Procento vyhledávacích dotazů, které byly pro vyhledávací službu omezené|Žádné|
+|SearchLatency|Latence hledání|Sekundy|Průměr|Průměrná latence vyhledávání pro vyhledávací službu|Žádný|
+|Vyhledávací dotazyPerSecond|Vyhledávací dotazy za sekundu|CountPerSecond|Průměr|Vyhledávací dotazy za sekundu pro vyhledávací službu|Žádný|
+|OmezeníVyhledávací dotazyProcento|Procento dotazů s omezením|Procento|Průměr|Procento vyhledávacích dotazů, které byly omezeny pro vyhledávací službu|Žádný|
 
 
-## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
+## <a name="microsoftservicebusnamespaces"></a>Obory názvů Microsoft.ServiceBus
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|SuccessfulRequests|Úspěšné požadavky|Počet|Celkem|Celkový počet úspěšných žádostí pro obor názvů|EntityName, výsledek operace uvnitř|
-|ServerErrors|Chyby serveru.|Počet|Celkem|Chyby serveru pro Microsoft. ServiceBus|EntityName, výsledek operace uvnitř|
-|UserErrors|Chyby uživatele.|Počet|Celkem|Chyby uživatele pro Microsoft. ServiceBus|EntityName, výsledek operace uvnitř|
-|ThrottledRequests|Omezené požadavky.|Počet|Celkem|Omezené požadavky pro Microsoft. ServiceBus|EntityName, výsledek operace uvnitř|
-|IncomingRequests|Příchozí žádosti|Počet|Celkem|Příchozí požadavky pro Microsoft. ServiceBus|EntityName|
-|IncomingMessages|Příchozí zprávy|Počet|Celkem|Příchozí zprávy pro Microsoft. ServiceBus|EntityName|
-|OutgoingMessages|Odchozí zprávy|Počet|Celkem|Odchozí zprávy pro Microsoft. ServiceBus|EntityName|
-|ActiveConnections|ActiveConnections|Počet|Celkem|Celkový počet aktivních připojení pro Microsoft. ServiceBus|Žádné|
-|ConnectionsOpened|Otevřená připojení.|Počet|Průměr|Otevřená připojení pro Microsoft. ServiceBus|EntityName|
-|ConnectionsClosed|Uzavřená připojení.|Počet|Průměr|Uzavřená připojení pro Microsoft. ServiceBus|EntityName|
-|Velikost|Velikost|Bajty|Průměr|Velikost fronty nebo tématu v bajtech|EntityName|
-|Zprávy|Počet zpráv ve frontě nebo tématu.|Počet|Průměr|Počet zpráv ve frontě nebo tématu.|EntityName|
-|ActiveMessages|Počet aktivních zpráv ve frontě nebo tématu.|Počet|Průměr|Počet aktivních zpráv ve frontě nebo tématu.|EntityName|
-|DeadletteredMessages|Počet nedoručených zpráv ve frontě nebo tématu|Počet|Průměr|Počet nedoručených zpráv ve frontě nebo tématu|EntityName|
-|ScheduledMessages|Počet naplánovaných zpráv ve frontě nebo tématu.|Počet|Průměr|Počet naplánovaných zpráv ve frontě nebo tématu.|EntityName|
-|NamespaceCpuUsage|Procesor|Procento|Maximum|Metrika využití procesoru oboru názvů služby Service Bus Premium.|Replika|
-|NamespaceMemoryUsage|Využití paměti|Procento|Maximum|Metrika využití paměti oboru názvů služby Service Bus Premium|Replika|
-|CPUXNS|PROCESOR (zastaralé)|Procento|Maximum|Metrika využití procesoru oboru názvů služby Service Bus Premium. Tato metrika je depricated. Místo toho prosím použijte metriku CPU (NamespaceCpuUsage).|Replika|
-|WSXNS|Využití paměti (zastaralé)|Procento|Maximum|Metrika využití paměti oboru názvů služby Service Bus Premium Tato metrika je zastaralá. Místo toho prosím použijte metriku využití paměti (NamespaceMemoryUsage).|Replika|
+|Úspěšné požadavky|Úspěšné požadavky|Počet|Celkem|Celkový počet úspěšných požadavků na obor názvů|EntityName,Výsledek operace|
+|Serverchyby|Chyby serveru.|Počet|Celkem|Chyby serveru pro microsoft.servicebus.|EntityName,Výsledek operace|
+|Uživatelské chyby|Chyby uživatele.|Počet|Celkem|Chyby uživatelů pro Microsoft.ServiceBus.|EntityName,Výsledek operace|
+|ThrottledRequests|Omezené požadavky.|Počet|Celkem|Omezené požadavky pro Microsoft.ServiceBus.|EntityName,Výsledek operace|
+|Příchozí požadavky|Příchozí požadavky|Počet|Celkem|Příchozí požadavky na Microsoft.ServiceBus.|Název entity|
+|Příchozí zprávy|Příchozí zprávy|Počet|Celkem|Příchozí zprávy pro Microsoft.ServiceBus.|Název entity|
+|Odchozí zprávy|Odchozí zprávy|Počet|Celkem|Odchozí zprávy pro Microsoft.ServiceBus.|Název entity|
+|Aktivní připojení|Aktivní připojení|Počet|Celkem|Celkový počet aktivních připojení pro microsoft.servicebus.|Žádný|
+|Otevřená připojení|Připojení byla otevřena.|Počet|Průměr|Otevřená připojení pro microsoft.servicebus.|Název entity|
+|Připojení uzavřeno|Připojení uzavřena.|Počet|Průměr|Připojení uzavřena pro Microsoft.ServiceBus.|Název entity|
+|Velikost|Velikost|Bajty|Průměr|Velikost fronty/tématu v bajtech.|Název entity|
+|Zprávy|Počet zpráv ve frontě nebo tématu.|Počet|Průměr|Počet zpráv ve frontě nebo tématu.|Název entity|
+|Aktivní zprávy|Počet aktivních zpráv ve frontě nebo tématu.|Počet|Průměr|Počet aktivních zpráv ve frontě nebo tématu.|Název entity|
+|Zprávy s mrtvým písmem|Počet nedoručených zpráv ve frontě nebo tématu.|Počet|Průměr|Počet nedoručených zpráv ve frontě nebo tématu.|Název entity|
+|Naplánované zprávy|Počet naplánovaných zpráv ve frontě nebo tématu.|Počet|Průměr|Počet naplánovaných zpráv ve frontě nebo tématu.|Název entity|
+|Využití prostředků_prostředků názvů|Procesor|Procento|Maximum|Metrika využití procesoru oboru výkonu oboru výkonu oboru výkonu služby Service bus premium.|Replika|
+|Využití paměti oboru názvů|Využití paměti|Procento|Maximum|Metrika využití paměti oboru názvů Service Bus premium.|Replika|
+|CPUXNS|PROCESOR (zastaralé)|Procento|Maximum|Metrika využití procesoru oboru výkonu oboru výkonu oboru výkonu služby Service bus premium. Tato metrika je depricated. Místo toho použijte metriku procesoru (NamespaceCpuUsage).|Replika|
+|WSXNS|Využití paměti (zastaralé)|Procento|Maximum|Metrika využití paměti oboru názvů Service Bus premium. Tato metrika je zastaralá. Místo toho použijte metriku Využití paměti (NamespaceMemoryUsage).|Replika|
 
 
-## <a name="microsoftservicefabricmeshapplications"></a>Microsoft.ServiceFabricMesh/applications
+## <a name="microsoftservicefabricmeshapplications"></a>Microsoft.ServiceFabricMesh/aplikace
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|AllocatedCpu|AllocatedCpu|Počet|Průměr|Procesor přidělený tomuto kontejneru v lisovnách|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
-|AllocatedMemory|AllocatedMemory|Bajty|Průměr|Paměť přidělená tomuto kontejneru v MB|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
-|ActualCpu|ActualCpu|Počet|Průměr|Skutečné využití CPU v lisovnách|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
-|ActualMemory|ActualMemory|Bajty|Průměr|Skutečné využití paměti v MB|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
-|CpuUtilization|CpuUtilization|Procento|Průměr|Využití CPU pro tento kontejner jako procento AllocatedCpu|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
-|MemoryUtilization|MemoryUtilization|Procento|Průměr|Využití CPU pro tento kontejner jako procento AllocatedCpu|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
-|ApplicationStatus|ApplicationStatus|Počet|Průměr|Stav aplikace Service Fabric mřížka|ApplicationName, status|
-|ServiceStatus|ServiceStatus|Počet|Průměr|Stav služby v aplikaci Service Fabric sítě|ApplicationName, status, ServiceName|
-|ServiceReplicaStatus|ServiceReplicaStatus|Počet|Průměr|Stav repliky služby v aplikaci Service Fabric sítě|ApplicationName, status, ServiceName, ServiceReplicaName|
-|ContainerStatus|ContainerStatus|Počet|Průměr|Stav kontejneru v aplikaci Service Fabric mřížka|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName, status|
-|RestartCount|RestartCount|Počet|Průměr|Restartování počtu kontejnerů v aplikaci Service Fabric sítě|ApplicationName, status, ServiceName, ServiceReplicaName, CodePackageName|
+|Přidělení procesoru|Přidělení procesoru|Počet|Průměr|Procesor přidělený tomuto kontejneru v jádrech mili|ApplicationName,ServiceName,CodePackageName,ServiceReplicaName|
+|Přidělená paměť|Přidělená paměť|Bajty|Průměr|Paměť přidělená tomuto kontejneru v MB|ApplicationName,ServiceName,CodePackageName,ServiceReplicaName|
+|ActualCpu|ActualCpu|Počet|Průměr|Skutečné využití procesoru v jádrech mili|ApplicationName,ServiceName,CodePackageName,ServiceReplicaName|
+|Skutečná paměť|Skutečná paměť|Bajty|Průměr|Skutečné využití paměti v MB|ApplicationName,ServiceName,CodePackageName,ServiceReplicaName|
+|Využití procesoru|Využití procesoru|Procento|Průměr|Využití procesoru pro tento kontejner jako procento přiděleného procesoru|ApplicationName,ServiceName,CodePackageName,ServiceReplicaName|
+|Využití paměti|Využití paměti|Procento|Průměr|Využití procesoru pro tento kontejner jako procento přiděleného procesoru|ApplicationName,ServiceName,CodePackageName,ServiceReplicaName|
+|Stav aplikace|Stav aplikace|Počet|Průměr|Stav aplikace Síťovina service fabric|Název_aplikace,Stav|
+|Stav služby|Stav služby|Počet|Průměr|Stav služby v aplikaci Service Fabric Mesh|Název_aplikace,Stav,Název_služby|
+|ServiceReplicaStatus|ServiceReplicaStatus|Počet|Průměr|Stav repliky služby v aplikaci Service Fabric Mesh|ApplicationName,Status,ServiceName,ServiceReplicaName|
+|ContainerStatus|ContainerStatus|Počet|Průměr|Stav kontejneru v aplikaci Service Fabric Mesh|ApplicationName,ServiceName,CodePackageName,ServiceReplicaName,Status|
+|Restartovatcount|Restartovatcount|Počet|Průměr|Počet restartování kontejneru v aplikaci Service Fabric Mesh|Název_aplikace,Status,Název_služby,Název_služby__|
 
-## <a name="microsoftsignalrservicesignalr"></a>Microsoft. SignalRService/Signaler
+## <a name="microsoftsignalrservicesignalr"></a>Microsoft.SignalRService/SignalR
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|ConnectionCount|Počet připojení|Počet|Maximum|Množství připojení uživatele.|Koncový bod|
-|MessageCount|Počet zpráv|Počet|Celkem|Celková velikost zpráv|Žádné|
-|InboundTraffic|Příchozí provoz|Bajty|Celkem|Příchozí provoz služby|Žádné|
-|OutboundTraffic|Odchozí provoz|Bajty|Celkem|Odchozí provoz služby|Žádné|
-|UserErrors|Chyby uživatele|Procento|Maximum|Procento uživatelských chyb|Žádné|
-|SystemErrors|Systémové chyby|Procento|Maximum|Procento systémových chyb|Žádné|
+|ConnectionCount|Počet připojení|Počet|Maximum|Velikost připojení uživatele.|Koncový bod|
+|Počet zpráv|Počet zpráv|Počet|Celkem|Celkový počet zpráv.|Žádný|
+|Příchozí provoz|Příchozí provoz|Bajty|Celkem|Příchozí provoz služeb|Žádný|
+|Odchozí provoz|Odchozí provoz|Bajty|Celkem|Odchozí provoz služby|Žádný|
+|Uživatelské chyby|Uživatelské chyby|Procento|Maximum|Procento uživatelských chyb|Žádný|
+|Chyby systému|Systémové chyby|Procento|Maximum|Procento systémových chyb|Žádný|
 
 
 
 
 
-## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servers/databases
+## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servery/databáze
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|cpu_percent|Procento procesoru|Procento|Průměr|Procento procesoru|Žádné|
-|physical_data_read_percent|Procento datových V/V|Procento|Průměr|Procento datových V/V|Žádné|
-|log_write_percent|Procentní hodnota protokolu v/v|Procento|Průměr|Procentní hodnota protokolu v/v. Neplatí pro datové sklady.|Žádné|
-|dtu_consumption_percent|Procento využití DTU|Procento|Průměr|Procento DTU Platí pro databáze založené na DTU.|Žádné|
-|úložiště|Využité místo pro data|Bajty|Maximum|Využité místo pro data Neplatí pro datové sklady.|Žádné|
-|connection_successful|Úspěšná připojení|Počet|Celkem|Úspěšná připojení|Žádné|
-|connection_failed|Neúspěšná připojení|Počet|Celkem|Neúspěšná připojení|Žádné|
-|blocked_by_firewall|Blokováno bránou firewall|Počet|Celkem|Blokováno bránou firewall|Žádné|
-|zablokování|Zablokování|Počet|Celkem|Zablokování. Neplatí pro datové sklady.|Žádné|
-|storage_percent|Procento využitého datového prostoru|Procento|Maximum|Procento využitého datového prostoru Neplatí pro datové sklady nebo databáze na úrovni dat.|Žádné|
-|xtp_storage_percent|Procentuální hodnota úložiště OLTP v paměti|Procento|Průměr|Procentuální hodnota úložiště OLTP v paměti Neplatí pro datové sklady.|Žádné|
-|workers_percent|Procento pracovních procesů|Procento|Průměr|Procento pracovních procesů Neplatí pro datové sklady.|Žádné|
-|sessions_percent|Procento relací|Procento|Průměr|Procento relací Neplatí pro datové sklady.|Žádné|
-|dtu_limit|Limit DTU|Počet|Průměr|Limit DTU. Platí pro databáze založené na DTU.|Žádné|
-|dtu_used|Využité DTU|Počet|Průměr|Používá se DTU. Platí pro databáze založené na DTU.|Žádné|
-|cpu_limit|Limit procesoru|Počet|Průměr|Limit procesoru. Platí pro databáze založené na vCore.|Žádné|
-|cpu_used|Využitý procesor|Počet|Průměr|Využitý procesor. Platí pro databáze založené na vCore.|Žádné|
-|dwu_limit|DWU limit|Počet|Maximum|DWU limit. Platí jenom pro datové sklady.|Žádné|
-|dwu_consumption_percent|Procento DWU|Procento|Maximum|Procento DWU Platí jenom pro datové sklady.|Žádné|
-|dwu_used|DWU použito|Počet|Maximum|DWU použito. Platí jenom pro datové sklady.|Žádné|
-|cache_hit_percent|Procento přístupů do mezipaměti|Procento|Maximum|Procento přístupů do mezipaměti Platí jenom pro datové sklady.|Žádné|
-|cache_used_percent|Procento využité mezipaměti|Procento|Maximum|Procento využité mezipaměti Platí jenom pro datové sklady.|Žádné|
-|sqlserver_process_core_percent|Základní procento procesu SQL Server|Procento|Maximum|Procento využití procesoru pro proces SQL Server, jak je měřené operačním systémem. Aktuálně k dispozici pouze pro databáze bez serveru.|Žádné|
-|sqlserver_process_memory_percent|% SQL Server paměti procesu|Procento|Maximum|Procento využití paměti pro proces SQL Server, jak je měřené operačním systémem. Aktuálně k dispozici pouze pro databáze bez serveru.|Žádné|
-|tempdb_data_size|Velikost datového souboru tempdb v kilobajtech|Počet|Maximum|Velikost datového souboru tempdb v kilobajtech Neplatí pro datové sklady.|Žádné|
-|tempdb_log_size|Velikost souboru protokolu tempdb v kilobajtech|Počet|Maximum|Velikost souboru protokolu tempdb v kilobajtech Neplatí pro datové sklady.|Žádné|
-|tempdb_log_used_percent|Použit protokol tempdb v procentech|Procento|Maximum|Byl použit protokol tempdb Percent. Neplatí pro datové sklady.|Žádné|
-|local_tempdb_usage_percent|Místní procento databáze tempdb|Procento|Průměr|Místní procento databáze tempdb. Platí jenom pro datové sklady.|Žádné|
-|app_cpu_billed|CPU aplikace se fakturuje.|Počet|Celkem|CPU aplikace se fakturuje. Platí pro databáze bez serveru.|Žádné|
-|app_cpu_percent|Procento využití procesoru aplikací|Procento|Průměr|Procento využití procesoru aplikací Platí pro databáze bez serveru.|Žádné|
-|app_memory_percent|Procento paměti aplikace|Procento|Průměr|Procento paměti aplikace. Platí pro databáze bez serveru.|Žádné|
-|allocated_data_storage|Přidělené datové místo|Bajty|Průměr|Přidělené úložiště dat. Neplatí pro datové sklady.|Žádné|
-|memory_usage_percent|Procento paměti|Procento|Maximum|Procento paměti. Platí jenom pro datové sklady.|Žádné|
-|full_backup_size_bytes|Velikost úložiště pro úplné zálohování|Bajty|Maximum|Celková velikost úložiště pro úplné zálohování Platí pro databáze založené na vCore. Neplatí pro databáze s škálovatelným škálováním.|Žádné|
-|diff_backup_size_bytes|Rozdílová velikost úložiště zálohování|Bajty|Maximum|Kumulativní velikost úložiště rozdílové zálohy. Platí pro databáze založené na vCore. Neplatí pro databáze s škálovatelným škálováním.|Žádné|
-|log_backup_size_bytes|Velikost úložiště zálohy protokolu|Bajty|Maximum|Velikost úložiště pro zálohu kumulativního protokolu. Platí pro databáze založené na vCore. Neplatí pro databáze s škálovatelným škálováním.|Žádné|
+|cpu_percent|Procento CPU|Procento|Průměr|Procento CPU|Žádný|
+|physical_data_read_percent|Procento datových V/V|Procento|Průměr|Procento datových V/V|Žádný|
+|log_write_percent|Procento vio protokolu|Procento|Průměr|Procento vypořivodé evidence. Nevztahuje se na datové sklady.|Žádný|
+|dtu_consumption_percent|Procento DTU|Procento|Průměr|Procento DTU. Platí pro databáze založené na DTU.|Žádný|
+|úložiště|Využitý datový prostor|Bajty|Maximum|Využitý datový prostor. Nevztahuje se na datové sklady.|Žádný|
+|connection_successful|Úspěšná připojení|Počet|Celkem|Úspěšná připojení|Žádný|
+|connection_failed|Neúspěšná připojení|Počet|Celkem|Neúspěšná připojení|Žádný|
+|blocked_by_firewall|Blokováno bránou firewall|Počet|Celkem|Blokováno bránou firewall|Žádný|
+|Zablokování|Zablokování|Počet|Celkem|Zablokování. Nevztahuje se na datové sklady.|Žádný|
+|storage_percent|Procento využitého datového prostoru|Procento|Maximum|V procentech využitého datového prostoru. Nevztahuje se na datové sklady nebo hyperškálovatdatabáze.|Žádný|
+|xtp_storage_percent|Procento úložiště OLTP v paměti|Procento|Průměr|Procento úložiště OLTP v paměti. Nevztahuje se na datové sklady.|Žádný|
+|workers_percent|Procento pracovníků|Procento|Průměr|Procento pracovníků. Nevztahuje se na datové sklady.|Žádný|
+|sessions_percent|Procento návštěv|Procento|Průměr|Procento relací. Nevztahuje se na datové sklady.|Žádný|
+|dtu_limit|DTU Limit|Počet|Průměr|Limit DTU. Platí pro databáze založené na DTU.|Žádný|
+|dtu_used|Používá se DTU|Počet|Průměr|Používá se DTU. Platí pro databáze založené na DTU.|Žádný|
+|cpu_limit|Limit procesoru|Počet|Průměr|Limit procesoru. Platí pro databáze založené na virtuálních jádrech.|Žádný|
+|cpu_used|Použitý procesor|Počet|Průměr|Použitý procesor. Platí pro databáze založené na virtuálních jádrech.|Žádný|
+|dwu_limit|DWU limit|Počet|Maximum|DWU limit. Platí pouze pro datové sklady.|Žádný|
+|dwu_consumption_percent|Procento DWU|Procento|Maximum|Procento DWU. Platí pouze pro datové sklady.|Žádný|
+|dwu_used|Použitý DWU|Počet|Maximum|DWU používá. Platí pouze pro datové sklady.|Žádný|
+|cache_hit_percent|Procento přístupů do mezipaměti|Procento|Maximum|Procento zásahu do mezipaměti. Platí pouze pro datové sklady.|Žádný|
+|cache_used_percent|Procento použité mezipaměti|Procento|Maximum|Procento použité mezipaměti. Platí pouze pro datové sklady.|Žádný|
+|sqlserver_process_core_percent|Procento jádra procesu SQL Serveru|Procento|Maximum|Procento využití procesoru pro proces serveru SQL Server měřené operačním systémem.|Žádný|
+|sqlserver_process_memory_percent|Procento paměti procesu serveru SQL Server|Procento|Maximum|Procento využití paměti pro proces serveru SQL Server měřeno operačním systémem.|Žádný|
+|tempdb_data_size|Velikost datového souboru Tempdb kilobajty|Počet|Maximum|Velikost datového souboru Tempdb kilobajty. Nevztahuje se na datové sklady.|Žádný|
+|tempdb_log_size|Velikost souboru protokolu databáze Tempdb kilobajty|Počet|Maximum|Velikost souboru protokolu databáze Tempdb kilobajtů. Nevztahuje se na datové sklady.|Žádný|
+|tempdb_log_used_percent|Použitý protokol procenta databáze dat|Procento|Maximum|Použitý protokol procenta databáze. Nevztahuje se na datové sklady.|Žádný|
+|local_tempdb_usage_percent|Procento místní databáze tempdb|Procento|Průměr|Procento místní databáze tempdb. Platí pouze pro datové sklady.|Žádný|
+|app_cpu_billed|Fakturováno s procesorem aplikace|Počet|Celkem|Fakturováno s procesorem aplikace. Platí pro databáze bez serveru.|Žádný|
+|app_cpu_percent|Procento procesoru aplikace|Procento|Průměr|Procento procesoru aplikace. Platí pro databáze bez serveru.|Žádný|
+|app_memory_percent|Procento paměti aplikace|Procento|Průměr|Procento paměti aplikace. Platí pro databáze bez serveru.|Žádný|
+|allocated_data_storage|Přidělený datový prostor|Bajty|Průměr|Přidělené úložiště dat. Nevztahuje se na datové sklady.|Žádný|
+|memory_usage_percent|Procento paměti|Procento|Maximum|Procento paměti. Platí pouze pro datové sklady.|Žádný|
+|full_backup_size_bytes|Úplná velikost úložiště záloh|Bajty|Maximum|Kumulativní úplná velikost úložiště záloh. Platí pro databáze založené na virtuálních jádrech. Nevztahuje se na hyperškálovací databáze.|Žádný|
+|diff_backup_size_bytes|Velikost úložiště rozdílového úložiště|Bajty|Maximum|Kumulativní velikost rozdílového úložiště záloh. Platí pro databáze založené na virtuálních jádrech. Nevztahuje se na hyperškálovací databáze.|Žádný|
+|log_backup_size_bytes|Protokolovat velikost úložiště záloh|Bajty|Maximum|Kumulativní velikost úložiště záloh protokolu. Platí pro databáze založené na virtuálních jádrech. Nevztahuje se na hyperškálovací databáze.|Žádný|
 
 
-## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
+## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servery/elastické bazény
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|cpu_percent|Procento procesoru|Procento|Průměr|Procento procesoru|Žádné|
-|database_cpu_percent|Procento procesoru|Procento|Průměr|Procento procesoru|DatabaseResourceId|
-|physical_data_read_percent|Procento datových V/V|Procento|Průměr|Procento datových V/V|Žádné|
-|database_physical_data_read_percent|Procento datových V/V|Procento|Průměr|Procento datových V/V|DatabaseResourceId|
-|log_write_percent|Procentní hodnota protokolu v/v|Procento|Průměr|Procentní hodnota protokolu v/v|Žádné|
-|database_log_write_percent|Procentní hodnota protokolu v/v|Procento|Průměr|Procentní hodnota protokolu v/v|DatabaseResourceId|
-|dtu_consumption_percent|Procento využití DTU|Procento|Průměr|Procento DTU Platí pro elastické fondy založené na DTU.|Žádné|
-|database_dtu_consumption_percent|Procento využití DTU|Procento|Průměr|Procento využití DTU|DatabaseResourceId|
-|storage_percent|Procento využitého datového prostoru|Procento|Průměr|Procento využitého datového prostoru|Žádné|
-|workers_percent|Procento pracovních procesů|Procento|Průměr|Procento pracovních procesů|Žádné|
-|database_workers_percent|Procento pracovních procesů|Procento|Průměr|Procento pracovních procesů|DatabaseResourceId|
-|sessions_percent|Procento relací|Procento|Průměr|Procento relací|Žádné|
-|database_sessions_percent|Procento relací|Procento|Průměr|Procento relací|DatabaseResourceId|
-|eDTU_limit|limit eDTU|Počet|Průměr|limit eDTU. Platí pro elastické fondy založené na DTU.|Žádné|
-|storage_limit|Maximální velikost dat|Bajty|Průměr|Maximální velikost dat|Žádné|
-|eDTU_used|využité eDTU|Počet|Průměr|používá se eDTU. Platí pro elastické fondy založené na DTU.|Žádné|
-|database_eDTU_used|využité eDTU|Počet|Průměr|využité eDTU|DatabaseResourceId|
-|storage_used|Využité místo pro data|Bajty|Průměr|Využité místo pro data|Žádné|
-|database_storage_used|Využité místo pro data|Bajty|Průměr|Využité místo pro data|DatabaseResourceId|
-|xtp_storage_percent|Procentuální hodnota úložiště OLTP v paměti|Procento|Průměr|Procentuální hodnota úložiště OLTP v paměti|Žádné|
-|cpu_limit|Limit procesoru|Počet|Průměr|Limit procesoru. Platí pro elastické fondy založené na vCore.|Žádné|
-|database_cpu_limit|Limit procesoru|Počet|Průměr|Limit procesoru|DatabaseResourceId|
-|cpu_used|Využitý procesor|Počet|Průměr|Využitý procesor. Platí pro elastické fondy založené na vCore.|Žádné|
-|database_cpu_used|Využitý procesor|Počet|Průměr|Využitý procesor|DatabaseResourceId|
-|sqlserver_process_core_percent|Základní procento procesu SQL Server|Procento|Maximum|Využití CPU jako procento procesu SQL DB. Platí pro elastické fondy.|Žádné|
-|sqlserver_process_memory_percent|% SQL Server paměti procesu|Procento|Maximum|Využití paměti jako procento procesu SQL DB. Platí pro elastické fondy.|Žádné|
-|tempdb_data_size|Velikost datového souboru tempdb v kilobajtech|Počet|Maximum|Velikost datového souboru tempdb v kilobajtech|Žádné|
-|tempdb_log_size|Velikost souboru protokolu tempdb v kilobajtech|Počet|Maximum|Velikost souboru protokolu tempdb v kilobajtech|Žádné|
-|tempdb_log_used_percent|Použit protokol tempdb v procentech|Procento|Maximum|Použit protokol tempdb v procentech|Žádné|
-|allocated_data_storage|Přidělené datové místo|Bajty|Průměr|Přidělené datové místo|Žádné|
-|database_allocated_data_storage|Přidělené datové místo|Bajty|Průměr|Přidělené datové místo|DatabaseResourceId|
-|allocated_data_storage_percent|Procentuální hodnota přiděleného datového prostoru|Procento|Maximum|Procentuální hodnota přiděleného datového prostoru|Žádné|
+|cpu_percent|Procento CPU|Procento|Průměr|Procento CPU|Žádný|
+|database_cpu_percent|Procento CPU|Procento|Průměr|Procento CPU|Id databázového zdroje|
+|physical_data_read_percent|Procento datových V/V|Procento|Průměr|Procento datových V/V|Žádný|
+|database_physical_data_read_percent|Procento datových V/V|Procento|Průměr|Procento datových V/V|Id databázového zdroje|
+|log_write_percent|Procento vio protokolu|Procento|Průměr|Procento vio protokolu|Žádný|
+|database_log_write_percent|Procento vio protokolu|Procento|Průměr|Procento vio protokolu|Id databázového zdroje|
+|dtu_consumption_percent|Procento DTU|Procento|Průměr|Procento DTU. Platí pro elastické fondy založené na DTU.|Žádný|
+|database_dtu_consumption_percent|Procento DTU|Procento|Průměr|Procento DTU|Id databázového zdroje|
+|storage_percent|Procento využitého datového prostoru|Procento|Průměr|Procento využitého datového prostoru|Žádný|
+|workers_percent|Procento pracovníků|Procento|Průměr|Procento pracovníků|Žádný|
+|database_workers_percent|Procento pracovníků|Procento|Průměr|Procento pracovníků|Id databázového zdroje|
+|sessions_percent|Procento návštěv|Procento|Průměr|Procento návštěv|Žádný|
+|database_sessions_percent|Procento návštěv|Procento|Průměr|Procento návštěv|Id databázového zdroje|
+|eDTU_limit|limit eDTU|Počet|Průměr|eDTU. Platí pro elastické fondy založené na DTU.|Žádný|
+|storage_limit|Maximální velikost dat|Bajty|Průměr|Maximální velikost dat|Žádný|
+|eDTU_used|použitý eDTU|Počet|Průměr|eDTU. Platí pro elastické fondy založené na DTU.|Žádný|
+|database_eDTU_used|použitý eDTU|Počet|Průměr|použitý eDTU|Id databázového zdroje|
+|storage_used|Využitý datový prostor|Bajty|Průměr|Využitý datový prostor|Žádný|
+|database_storage_used|Využitý datový prostor|Bajty|Průměr|Využitý datový prostor|Id databázového zdroje|
+|xtp_storage_percent|Procento úložiště OLTP v paměti|Procento|Průměr|Procento úložiště OLTP v paměti|Žádný|
+|cpu_limit|Limit procesoru|Počet|Průměr|Limit procesoru. Platí pro elastické fondy založené na virtuálních jádrech.|Žádný|
+|database_cpu_limit|Limit procesoru|Počet|Průměr|Limit procesoru|Id databázového zdroje|
+|cpu_used|Použitý procesor|Počet|Průměr|Použitý procesor. Platí pro elastické fondy založené na virtuálních jádrech.|Žádný|
+|database_cpu_used|Použitý procesor|Počet|Průměr|Použitý procesor|Id databázového zdroje|
+|sqlserver_process_core_percent|Procento jádra procesu SQL Serveru|Procento|Maximum|Procento využití procesoru pro proces serveru SQL Server měřené operačním systémem. Platí pro elastické bazény.|Žádný|
+|sqlserver_process_memory_percent|Procento paměti procesu serveru SQL Server|Procento|Maximum|Procento využití paměti pro proces serveru SQL Server měřeno operačním systémem. Platí pro elastické bazény.|Žádný|
+|tempdb_data_size|Velikost datového souboru Tempdb kilobajty|Počet|Maximum|Velikost datového souboru Tempdb kilobajty|Žádný|
+|tempdb_log_size|Velikost souboru protokolu databáze Tempdb kilobajty|Počet|Maximum|Velikost souboru protokolu databáze Tempdb kilobajty|Žádný|
+|tempdb_log_used_percent|Použitý protokol procenta databáze dat|Procento|Maximum|Použitý protokol procenta databáze dat|Žádný|
+|allocated_data_storage|Přidělený datový prostor|Bajty|Průměr|Přidělený datový prostor|Žádný|
+|database_allocated_data_storage|Přidělený datový prostor|Bajty|Průměr|Přidělený datový prostor|Id databázového zdroje|
+|allocated_data_storage_percent|Procento přidělené datového prostoru|Procento|Maximum|Procento přidělené datového prostoru|Žádný|
 
-## <a name="microsoftsqlservers"></a>Microsoft.Sql/servers
+## <a name="microsoftsqlservers"></a>Microsoft.SQL/servery
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|dtu_consumption_percent|Procento využití DTU|Procento|Průměr|Procento využití DTU|ElasticPoolResourceId|
-|database_dtu_consumption_percent|Procento využití DTU|Procento|Průměr|Procento využití DTU|DatabaseResourceId,ElasticPoolResourceId|
-|storage_used|Využité místo pro data|Bajty|Průměr|Využité místo pro data|ElasticPoolResourceId|
-|database_storage_used|Využité místo pro data|Bajty|Průměr|Využité místo pro data|DatabaseResourceId,ElasticPoolResourceId|
-|dtu_used|Využité DTU|Počet|Průměr|Využité DTU|DatabaseResourceId|
+|dtu_consumption_percent|Procento DTU|Procento|Průměr|Procento DTU|Elastické PoolResourceId|
+|database_dtu_consumption_percent|Procento DTU|Procento|Průměr|Procento DTU|Id databázového prostředku,ElasticPoolResourceId|
+|storage_used|Využitý datový prostor|Bajty|Průměr|Využitý datový prostor|Elastické PoolResourceId|
+|database_storage_used|Využitý datový prostor|Bajty|Průměr|Využitý datový prostor|Id databázového prostředku,ElasticPoolResourceId|
+|dtu_used|Používá se DTU|Počet|Průměr|Používá se DTU|Id databázového zdroje|
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|virtual_core_count|Počet virtuálních jader|Počet|Průměr|Počet virtuálních jader|Žádné|
-|avg_cpu_percent|Průměrné procento procesoru|Procento|Průměr|Průměrné procento procesoru|Žádné|
-|reserved_storage_mb|Rezervované místo v úložišti|Počet|Průměr|Rezervované místo v úložišti|Žádné|
-|storage_space_used_mb|Využité místo úložiště|Počet|Průměr|Využité místo úložiště|Žádné|
-|io_requests|Počet požadavků v/v|Počet|Průměr|Počet požadavků v/v|Žádné|
-|io_bytes_read|Přečtené vstupně-výstupní bajty|Bajty|Průměr|Přečtené vstupně-výstupní bajty|Žádné|
-|io_bytes_written|Zapsané vstupně-výstupní bajty|Bajty|Průměr|Zapsané vstupně-výstupní bajty|Žádné|
+|virtual_core_count|Počet virtuálních jader|Počet|Průměr|Počet virtuálních jader|Žádný|
+|avg_cpu_percent|Průměrné procento procesoru|Procento|Průměr|Průměrné procento procesoru|Žádný|
+|reserved_storage_mb|Vyhrazený úložný prostor|Počet|Průměr|Vyhrazený úložný prostor|Žádný|
+|storage_space_used_mb|Využitý úložný prostor|Počet|Průměr|Využitý úložný prostor|Žádný|
+|io_requests|Počet požadavků vi|Počet|Průměr|Počet požadavků vi|Žádný|
+|io_bytes_read|Čtení bajtů vi|Bajty|Průměr|Čtení bajtů vi|Žádný|
+|io_bytes_written|IO bajty napsané|Bajty|Průměr|IO bajty napsané|Žádný|
 
 
 
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|UsedCapacity|Použitá kapacita|Bajty|Průměr|Kapacita využitá účtem|Žádné|
-|Transakce|Transakce|Počet|Celkem|Počet požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Toto číslo zahrnuje úspěšné i neúspěšné požadavky a požadavky, které došlo k chybě. Hodnota ResponseType dimenzi používejte pro počet různých typů odpovědi.|ResponseType, typ, ApiName, ověřování|
-|Příchozí přenos dat|Příchozí přenos dat|Bajty|Celkem|Množství příchozích dat v bajtech. Toto číslo zahrnuje příchozí přenos dat z externího klienta do služby Azure Storage i příchozí přenos dat v rámci Azure.|Typ, ApiName, ověřování|
-|Výchozí přenos|Výchozí přenos|Bajty|Celkem|Objem odchozích přenosů dat v bajtech. Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat.|Typ, ApiName, ověřování|
-|SuccessServerLatency|Latence serveru při úspěchu|Milisekundy|Průměr|Průměrná latence služby Azure Storage ke zpracování úspěšného požadavku v milisekundách. Tato hodnota nezahrnuje síťovou latenci určenou v AverageE2ELatency.|Typ, ApiName, ověřování|
-|SuccessE2ELatency|Celková latence při úspěchu|Milisekundy|Průměr|Průměrná latence začátku do konce úspěšných požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API v milisekundách. Tato hodnota zahrnuje čas zpracování ve službě Azure Storage potřebný k přečtení požadavku, odeslání odpovědi a přijetí potvrzení dané odpovědi.|Typ, ApiName, ověřování|
-|Dostupnost|Dostupnost|Procento|Průměr|Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že hodnota TotalBillableRequests vydělí počtem příslušných požadavků, včetně těch, ke které došlo k neočekávané chybě. Všechny neočekávané chyby za následek sníženou dostupnost pro službu úložiště nebo zadanou operaci rozhraní API.|Typ, ApiName, ověřování|
+|Usedcapacity|Využitá kapacita|Bajty|Průměr|Využitá kapacita účtu|Žádný|
+|Transakce|Transakce|Počet|Celkem|Počet požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Toto číslo zahrnuje úspěšné i neúspěšné požadavky a také požadavky, u kterých došlo k chybě. Použijte dimenzi ResponseType pro počet různých typů odpovědí.|Type odezvy,GeoType,ApiName,Ověřování|
+|Příchozí přenos dat|Příchozí přenos dat|Bajty|Celkem|Množství dat příchozího přenosu dat v bajtů. Toto číslo zahrnuje příchozí přenos dat z externího klienta do služby Azure Storage i příchozí přenos dat v rámci Azure.|geotype,ApiName,Ověřování|
+|Výchozí přenos dat|Výchozí přenos dat|Bajty|Celkem|Množství dat odchozího přenosu v bajtech. Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat.|geotype,ApiName,Ověřování|
+|SuccessServerLatency|Latence serveru při úspěchu|Milisekund|Průměr|Průměrná latence používaná službou Azure Storage ke zpracování úspěšného požadavku v milisekundách. Tato hodnota nezahrnuje latenci sítě zadanou v metrice Průměrná latence E2E.|geotype,ApiName,Ověřování|
+|SuccessE2ELatency|Celková latence při úspěchu|Milisekund|Průměr|Průměrná latence od konce na konec úspěšných požadavků provedených na službě úložiště nebo zadané operaci rozhraní API v milisekundách. Tato hodnota zahrnuje čas zpracování ve službě Azure Storage potřebný k přečtení požadavku, odeslání odpovědi a přijetí potvrzení dané odpovědi.|geotype,ApiName,Ověřování|
+|Dostupnost|Dostupnost|Procento|Průměr|Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že se hodnota TotalBillableRequests vydělí počtem příslušných požadavků včetně těch, u kterých došlo k neočekávaným chybám. Všechny neočekávané chyby mají pro službu úložiště nebo zadanou operaci rozhraní API za následek sníženou dostupnost.|geotype,ApiName,Ověřování|
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft.Storage/storageAccounts/blobServices
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|BlobCapacity|Kapacita služby Blob|Bajty|Průměr|Velikost úložiště využitá službou Blob Service účtu úložiště v bajtech|BlobType, úroveň|
-|BlobCount|Počet objektů blob|Počet|Průměr|Počet objektů blob ve službě Blob Service účtu úložiště|BlobType, úroveň|
-|ContainerCount|Počet kontejnerů služby Blob|Počet|Průměr|Počet kontejnerů ve službě Blob Service účtu úložiště|Žádné|
-|IndexCapacity|Kapacita indexu|Bajty|Průměr|Velikost úložiště, kterou používá ADLS Gen2 (hierarchický) index v bajtech|Žádné|
-|Transakce|Transakce|Počet|Celkem|Počet požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Toto číslo zahrnuje úspěšné i neúspěšné požadavky a požadavky, které došlo k chybě. Hodnota ResponseType dimenzi používejte pro počet různých typů odpovědi.|ResponseType, typ, ApiName, ověřování|
-|Příchozí přenos dat|Příchozí přenos dat|Bajty|Celkem|Množství příchozích dat v bajtech. Toto číslo zahrnuje příchozí přenos dat z externího klienta do služby Azure Storage i příchozí přenos dat v rámci Azure.|Typ, ApiName, ověřování|
-|Výchozí přenos|Výchozí přenos|Bajty|Celkem|Objem odchozích přenosů dat v bajtech. Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat.|Typ, ApiName, ověřování|
-|SuccessServerLatency|Latence serveru při úspěchu|Milisekundy|Průměr|Průměrná latence služby Azure Storage ke zpracování úspěšného požadavku v milisekundách. Tato hodnota nezahrnuje síťovou latenci určenou v AverageE2ELatency.|Typ, ApiName, ověřování|
-|SuccessE2ELatency|Celková latence při úspěchu|Milisekundy|Průměr|Průměrná latence začátku do konce úspěšných požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API v milisekundách. Tato hodnota zahrnuje čas zpracování ve službě Azure Storage potřebný k přečtení požadavku, odeslání odpovědi a přijetí potvrzení dané odpovědi.|Typ, ApiName, ověřování|
-|Dostupnost|Dostupnost|Procento|Průměr|Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že hodnota TotalBillableRequests vydělí počtem příslušných požadavků, včetně těch, ke které došlo k neočekávané chybě. Všechny neočekávané chyby za následek sníženou dostupnost pro službu úložiště nebo zadanou operaci rozhraní API.|Typ, ApiName, ověřování|
+|Možnost objektů blob|Kapacita objektu blob|Bajty|Průměr|Velikost úložiště používané službou Blob účtu úložiště v bajtů.|Objekt BlobType,vrstva|
+|Počet objektů BlobCount|Počet objektů blob|Počet|Průměr|Počet objektů Blob ve službě objektu blob účtu úložiště.|Objekt BlobType,vrstva|
+|ContainerCount|Počet kontejnerů objektů blob|Počet|Průměr|Počet kontejnerů ve službě objektu Blob účtu úložiště.|Žádný|
+|IndexCapacity|Kapacita indexu|Bajty|Průměr|Velikost úložiště používaného indexem ADLS Gen2 (Hierarchické) v bajtech.|Žádný|
+|Transakce|Transakce|Počet|Celkem|Počet požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Toto číslo zahrnuje úspěšné i neúspěšné požadavky a také požadavky, u kterých došlo k chybě. Použijte dimenzi ResponseType pro počet různých typů odpovědí.|Type odezvy,GeoType,ApiName,Ověřování|
+|Příchozí přenos dat|Příchozí přenos dat|Bajty|Celkem|Množství dat příchozího přenosu dat v bajtů. Toto číslo zahrnuje příchozí přenos dat z externího klienta do služby Azure Storage i příchozí přenos dat v rámci Azure.|geotype,ApiName,Ověřování|
+|Výchozí přenos dat|Výchozí přenos dat|Bajty|Celkem|Množství dat odchozího přenosu v bajtech. Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat.|geotype,ApiName,Ověřování|
+|SuccessServerLatency|Latence serveru při úspěchu|Milisekund|Průměr|Průměrná latence používaná službou Azure Storage ke zpracování úspěšného požadavku v milisekundách. Tato hodnota nezahrnuje latenci sítě zadanou v metrice Průměrná latence E2E.|geotype,ApiName,Ověřování|
+|SuccessE2ELatency|Celková latence při úspěchu|Milisekund|Průměr|Průměrná latence od konce na konec úspěšných požadavků provedených na službě úložiště nebo zadané operaci rozhraní API v milisekundách. Tato hodnota zahrnuje čas zpracování ve službě Azure Storage potřebný k přečtení požadavku, odeslání odpovědi a přijetí potvrzení dané odpovědi.|geotype,ApiName,Ověřování|
+|Dostupnost|Dostupnost|Procento|Průměr|Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že se hodnota TotalBillableRequests vydělí počtem příslušných požadavků včetně těch, u kterých došlo k neočekávaným chybám. Všechny neočekávané chyby mají pro službu úložiště nebo zadanou operaci rozhraní API za následek sníženou dostupnost.|geotype,ApiName,Ověřování|
 
 ## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft.Storage/storageAccounts/tableServices
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|TableCapacity|Kapacita služby Table|Bajty|Průměr|Velikost úložiště využitá službou Table Service účtu úložiště v bajtech|Žádné|
-|TableCount|Počet tabulek|Počet|Průměr|Počet tabulek ve službě Table Service účtu úložiště|Žádné|
-|TableEntityCount|Počet entit tabulek|Počet|Průměr|Počet entit tabulek ve službě Table Service účtu úložiště|Žádné|
-|Transakce|Transakce|Počet|Celkem|Počet požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Toto číslo zahrnuje úspěšné i neúspěšné požadavky a požadavky, které došlo k chybě. Hodnota ResponseType dimenzi používejte pro počet různých typů odpovědi.|ResponseType, typ, ApiName, ověřování|
-|Příchozí přenos dat|Příchozí přenos dat|Bajty|Celkem|Množství příchozích dat v bajtech. Toto číslo zahrnuje příchozí přenos dat z externího klienta do služby Azure Storage i příchozí přenos dat v rámci Azure.|Typ, ApiName, ověřování|
-|Výchozí přenos|Výchozí přenos|Bajty|Celkem|Objem odchozích přenosů dat v bajtech. Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat.|Typ, ApiName, ověřování|
-|SuccessServerLatency|Latence serveru při úspěchu|Milisekundy|Průměr|Průměrná latence služby Azure Storage ke zpracování úspěšného požadavku v milisekundách. Tato hodnota nezahrnuje síťovou latenci určenou v AverageE2ELatency.|Typ, ApiName, ověřování|
-|SuccessE2ELatency|Celková latence při úspěchu|Milisekundy|Průměr|Průměrná latence začátku do konce úspěšných požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API v milisekundách. Tato hodnota zahrnuje čas zpracování ve službě Azure Storage potřebný k přečtení požadavku, odeslání odpovědi a přijetí potvrzení dané odpovědi.|Typ, ApiName, ověřování|
-|Dostupnost|Dostupnost|Procento|Průměr|Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že hodnota TotalBillableRequests vydělí počtem příslušných požadavků, včetně těch, ke které došlo k neočekávané chybě. Všechny neočekávané chyby za následek sníženou dostupnost pro službu úložiště nebo zadanou operaci rozhraní API.|Typ, ApiName, ověřování|
+|TabulkaKapacita|Kapacita tabulky|Bajty|Průměr|Velikost úložiště používané službou Table účtu úložiště v bajtech.|Žádný|
+|Počet tabulek|Počet tabulek|Počet|Průměr|Číslo tabulky ve službě Table účtu úložiště.|Žádný|
+|Počet tabulkových entií|Počet entit tabulky|Počet|Průměr|Počet entit tabulky ve službě Table účtu úložiště.|Žádný|
+|Transakce|Transakce|Počet|Celkem|Počet požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Toto číslo zahrnuje úspěšné i neúspěšné požadavky a také požadavky, u kterých došlo k chybě. Použijte dimenzi ResponseType pro počet různých typů odpovědí.|Type odezvy,GeoType,ApiName,Ověřování|
+|Příchozí přenos dat|Příchozí přenos dat|Bajty|Celkem|Množství dat příchozího přenosu dat v bajtů. Toto číslo zahrnuje příchozí přenos dat z externího klienta do služby Azure Storage i příchozí přenos dat v rámci Azure.|geotype,ApiName,Ověřování|
+|Výchozí přenos dat|Výchozí přenos dat|Bajty|Celkem|Množství dat odchozího přenosu v bajtech. Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat.|geotype,ApiName,Ověřování|
+|SuccessServerLatency|Latence serveru při úspěchu|Milisekund|Průměr|Průměrná latence používaná službou Azure Storage ke zpracování úspěšného požadavku v milisekundách. Tato hodnota nezahrnuje latenci sítě zadanou v metrice Průměrná latence E2E.|geotype,ApiName,Ověřování|
+|SuccessE2ELatency|Celková latence při úspěchu|Milisekund|Průměr|Průměrná latence od konce na konec úspěšných požadavků provedených na službě úložiště nebo zadané operaci rozhraní API v milisekundách. Tato hodnota zahrnuje čas zpracování ve službě Azure Storage potřebný k přečtení požadavku, odeslání odpovědi a přijetí potvrzení dané odpovědi.|geotype,ApiName,Ověřování|
+|Dostupnost|Dostupnost|Procento|Průměr|Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že se hodnota TotalBillableRequests vydělí počtem příslušných požadavků včetně těch, u kterých došlo k neočekávaným chybám. Všechny neočekávané chyby mají pro službu úložiště nebo zadanou operaci rozhraní API za následek sníženou dostupnost.|geotype,ApiName,Ověřování|
 
-## <a name="microsoftstoragestorageaccountsfileservices"></a>Microsoft. Storage/storageAccounts/služby
+## <a name="microsoftstoragestorageaccountsfileservices"></a>Microsoft.Storage/storageAccounts/fileServices
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|Kapacita zařízení|Kapacita souboru|Bajty|Průměr|Velikost úložiště využitá službou File účtu úložiště v bajtech|Sdílení souborů|
-|FileCount|Počet souborů|Počet|Průměr|Počet souborů v Souborové službě účtu úložiště.|Sdílení souborů|
-|FileShareCount|Počet sdílených souborů|Počet|Průměr|Počet sdílených souborů v Souborové službě účtu úložiště.|Žádné|
-|FileShareSnapshotCount|Počet snímků sdílené složky|Počet|Průměr|Počet snímků, které jsou k dispozici ve službě soubory účtu úložiště ve sdílené složce.|Sdílení souborů|
-|FileShareSnapshotSize|Velikost snímku sdílené složky|Bajty|Průměr|Velikost úložiště využívané snímky v Souborové službě účtu úložiště v bajtech|Sdílení souborů|
-|FileShareQuota|Velikost kvóty sdílení souborů|Bajty|Průměr|Horní limit velikosti úložiště, který může služba soubory Azure využít v bajtech.|Sdílení souborů|
-|Transakce|Transakce|Počet|Celkem|Počet požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Toto číslo zahrnuje úspěšné i neúspěšné požadavky a požadavky, které došlo k chybě. Hodnota ResponseType dimenzi používejte pro počet různých typů odpovědi.|ResponseType, typ, ApiName, ověřování, sdílení souborů|
-|Příchozí přenos dat|Příchozí přenos dat|Bajty|Celkem|Množství příchozích dat v bajtech. Toto číslo zahrnuje příchozí přenos dat z externího klienta do služby Azure Storage i příchozí přenos dat v rámci Azure.|Typ, ApiName, ověřování, sdílení souborů|
-|Výchozí přenos|Výchozí přenos|Bajty|Celkem|Objem odchozích přenosů dat v bajtech. Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat.|Typ, ApiName, ověřování, sdílení souborů|
-|SuccessServerLatency|Latence serveru při úspěchu|Milisekundy|Průměr|Průměrná latence služby Azure Storage ke zpracování úspěšného požadavku v milisekundách. Tato hodnota nezahrnuje síťovou latenci určenou v AverageE2ELatency.|Typ, ApiName, ověřování, sdílení souborů|
-|SuccessE2ELatency|Celková latence při úspěchu|Milisekundy|Průměr|Průměrná latence začátku do konce úspěšných požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API v milisekundách. Tato hodnota zahrnuje čas zpracování ve službě Azure Storage potřebný k přečtení požadavku, odeslání odpovědi a přijetí potvrzení dané odpovědi.|Typ, ApiName, ověřování, sdílení souborů|
-|Dostupnost|Dostupnost|Procento|Průměr|Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že hodnota TotalBillableRequests vydělí počtem příslušných požadavků, včetně těch, ke které došlo k neočekávané chybě. Všechny neočekávané chyby za následek sníženou dostupnost pro službu úložiště nebo zadanou operaci rozhraní API.|Typ, ApiName, ověřování, sdílení souborů|
+|Souborkapacita|Kapacita souboru|Bajty|Průměr|Velikost úložiště používaného službou File účtu úložiště v bajtech.|Fileshare|
+|Počet souborů|Počet souborů|Počet|Průměr|Počet souborů ve službě Soubor účtu úložiště.|Fileshare|
+|FileShareCount|Počet sdílení souborů|Počet|Průměr|Počet sdílených složek ve službě Soubor účtu úložiště.|Žádný|
+|FileShareSnapshotCount|Počet snímků sdílené složky|Počet|Průměr|Počet snímků, které jsou k dispozici ve sdílené složce ve službě souborů účtu úložiště.|Fileshare|
+|Soubor ShareSnapshotSize|Velikost snímku sdílené složky|Bajty|Průměr|Velikost úložiště používané snímky v účtu úložiště souborové služby v bajtů.|Fileshare|
+|FileShareQuota|Velikost kvóty sdílení souborů|Bajty|Průměr|Horní limit na velikost úložiště, které můžete použít službou Azure Files Service v bajtů.|Fileshare|
+|Transakce|Transakce|Počet|Celkem|Počet požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Toto číslo zahrnuje úspěšné i neúspěšné požadavky a také požadavky, u kterých došlo k chybě. Použijte dimenzi ResponseType pro počet různých typů odpovědí.|ResponseType,GeoType,ApiName,Authentication,FileShare|
+|Příchozí přenos dat|Příchozí přenos dat|Bajty|Celkem|Množství dat příchozího přenosu dat v bajtů. Toto číslo zahrnuje příchozí přenos dat z externího klienta do služby Azure Storage i příchozí přenos dat v rámci Azure.|geotype,ApiName,Ověřování,Sdílení souborů|
+|Výchozí přenos dat|Výchozí přenos dat|Bajty|Celkem|Množství dat odchozího přenosu v bajtech. Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat.|geotype,ApiName,Ověřování,Sdílení souborů|
+|SuccessServerLatency|Latence serveru při úspěchu|Milisekund|Průměr|Průměrná latence používaná službou Azure Storage ke zpracování úspěšného požadavku v milisekundách. Tato hodnota nezahrnuje latenci sítě zadanou v metrice Průměrná latence E2E.|geotype,ApiName,Ověřování,Sdílení souborů|
+|SuccessE2ELatency|Celková latence při úspěchu|Milisekund|Průměr|Průměrná latence od konce na konec úspěšných požadavků provedených na službě úložiště nebo zadané operaci rozhraní API v milisekundách. Tato hodnota zahrnuje čas zpracování ve službě Azure Storage potřebný k přečtení požadavku, odeslání odpovědi a přijetí potvrzení dané odpovědi.|geotype,ApiName,Ověřování,Sdílení souborů|
+|Dostupnost|Dostupnost|Procento|Průměr|Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že se hodnota TotalBillableRequests vydělí počtem příslušných požadavků včetně těch, u kterých došlo k neočekávaným chybám. Všechny neočekávané chyby mají pro službu úložiště nebo zadanou operaci rozhraní API za následek sníženou dostupnost.|geotype,ApiName,Ověřování,Sdílení souborů|
 
 ## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft.Storage/storageAccounts/queueServices
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|QueueCapacity|Kapacita služby Queue|Bajty|Průměr|Velikost úložiště využitá službou Queue účtu úložiště v bajtech|Žádné|
-|QueueCount|Počet front|Počet|Průměr|Počet front ve službě Queue účtu úložiště|Žádné|
-|QueueMessageCount|Počet zpráv fronty|Počet|Průměr|Přibližný počet zpráv fronty ve službě Queue účtu úložiště|Žádné|
-|Transakce|Transakce|Počet|Celkem|Počet požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Toto číslo zahrnuje úspěšné i neúspěšné požadavky a požadavky, které došlo k chybě. Hodnota ResponseType dimenzi používejte pro počet různých typů odpovědi.|ResponseType, typ, ApiName, ověřování|
-|Příchozí přenos dat|Příchozí přenos dat|Bajty|Celkem|Množství příchozích dat v bajtech. Toto číslo zahrnuje příchozí přenos dat z externího klienta do služby Azure Storage i příchozí přenos dat v rámci Azure.|Typ, ApiName, ověřování|
-|Výchozí přenos|Výchozí přenos|Bajty|Celkem|Objem odchozích přenosů dat v bajtech. Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat.|Typ, ApiName, ověřování|
-|SuccessServerLatency|Latence serveru při úspěchu|Milisekundy|Průměr|Průměrná latence služby Azure Storage ke zpracování úspěšného požadavku v milisekundách. Tato hodnota nezahrnuje síťovou latenci určenou v AverageE2ELatency.|Typ, ApiName, ověřování|
-|SuccessE2ELatency|Celková latence při úspěchu|Milisekundy|Průměr|Průměrná latence začátku do konce úspěšných požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API v milisekundách. Tato hodnota zahrnuje čas zpracování ve službě Azure Storage potřebný k přečtení požadavku, odeslání odpovědi a přijetí potvrzení dané odpovědi.|Typ, ApiName, ověřování|
-|Dostupnost|Dostupnost|Procento|Průměr|Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že hodnota TotalBillableRequests vydělí počtem příslušných požadavků, včetně těch, ke které došlo k neočekávané chybě. Všechny neočekávané chyby za následek sníženou dostupnost pro službu úložiště nebo zadanou operaci rozhraní API.|Typ, ApiName, ověřování|
+|QueueCapacity|Kapacita fronty|Bajty|Průměr|Velikost úložiště používané službou Fronty účtu úložiště v bajtech.|Žádný|
+|Počet front|Počet front|Počet|Průměr|Počet fronty ve službě Fronty účtu úložiště.|Žádný|
+|QueueMessageCount|Počet zpráv fronty|Počet|Průměr|Přibližný počet zpráv fronty ve službě Fronty účtu úložiště.|Žádný|
+|Transakce|Transakce|Počet|Celkem|Počet požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Toto číslo zahrnuje úspěšné i neúspěšné požadavky a také požadavky, u kterých došlo k chybě. Použijte dimenzi ResponseType pro počet různých typů odpovědí.|Type odezvy,GeoType,ApiName,Ověřování|
+|Příchozí přenos dat|Příchozí přenos dat|Bajty|Celkem|Množství dat příchozího přenosu dat v bajtů. Toto číslo zahrnuje příchozí přenos dat z externího klienta do služby Azure Storage i příchozí přenos dat v rámci Azure.|geotype,ApiName,Ověřování|
+|Výchozí přenos dat|Výchozí přenos dat|Bajty|Celkem|Množství dat odchozího přenosu v bajtech. Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat.|geotype,ApiName,Ověřování|
+|SuccessServerLatency|Latence serveru při úspěchu|Milisekund|Průměr|Průměrná latence používaná službou Azure Storage ke zpracování úspěšného požadavku v milisekundách. Tato hodnota nezahrnuje latenci sítě zadanou v metrice Průměrná latence E2E.|geotype,ApiName,Ověřování|
+|SuccessE2ELatency|Celková latence při úspěchu|Milisekund|Průměr|Průměrná latence od konce na konec úspěšných požadavků provedených na službě úložiště nebo zadané operaci rozhraní API v milisekundách. Tato hodnota zahrnuje čas zpracování ve službě Azure Storage potřebný k přečtení požadavku, odeslání odpovědi a přijetí potvrzení dané odpovědi.|geotype,ApiName,Ověřování|
+|Dostupnost|Dostupnost|Procento|Průměr|Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že se hodnota TotalBillableRequests vydělí počtem příslušných požadavků včetně těch, u kterých došlo k neočekávaným chybám. Všechny neočekávané chyby mají pro službu úložiště nebo zadanou operaci rozhraní API za následek sníženou dostupnost.|geotype,ApiName,Ověřování|
 
 
 
 
 
-## <a name="microsoftstoragecachecaches"></a>Microsoft. StorageCache/caches
+## <a name="microsoftstoragecachecaches"></a>Microsoft.StorageCache/caches
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|ClientIOPS|Celkový počet vstupně-výstupních operací klienta|Počet|Průměr|Frekvence operací souborů klienta zpracovávaných mezipamětí.|Žádné|
-|ClientLatency|Průměrná latence klienta|Milisekundy|Průměr|Průměrná latence operací s klientskými soubory do mezipaměti úložiště|Žádné|
-|ClientReadIOPS|Klientský vstupně-výstupní operace čtení|CountPerSecond|Průměr|Klientské operace čtení za sekundu.|Žádné|
-|ClientReadThroughput|Průměrná propustnost čtení mezipaměti|BytesPerSecond|Průměr|Rychlost přenosu dat čtení klienta.|Žádné|
-|ClientWriteIOPS|Zápis klientského IOPS za sekundu|CountPerSecond|Průměr|Operace zápisu klienta za sekundu|Žádné|
-|ClientWriteThroughput|Průměrná propustnost zápisu mezipaměti|BytesPerSecond|Průměr|Přenosová rychlost zápisu dat klienta.|Žádné|
-|ClientMetadataReadIOPS|Metadata klienta přečetla IOPS|CountPerSecond|Průměr|Frekvence operací s klientskými soubory odesílanými do mezipaměti s výjimkou čtení dat, která nemění trvalý stav.|Žádné|
-|ClientMetadataWriteIOPS|Zápis metadat klienta za sekundu|CountPerSecond|Průměr|Počet operací klientského souboru odeslaných do mezipaměti s výjimkou zápisů dat, které upravují trvalý stav.|Žádné|
-|ClientLockIOPS|IOPS zámku klienta|CountPerSecond|Průměr|Operace uzamčení souborů klienta za sekundu|Žádné|
-|StorageTargetHealth|Stav cíle úložiště|Počet|Průměr|Logické výsledky testu připojení mezi cíli mezipaměti a úložištěm.|Žádné|
-|Provoz|Provoz|Počet|Průměr|Logické výsledky testu připojení mezi mezipamětí a systémem monitorování.|Žádné|
-|StorageTargetIOPS|Celkem StorageTarget IOPS|Počet|Průměr|Frekvence všech operací se soubory, které mezipaměť odesílá na konkrétní StorageTarget.|StorageTarget|
-|StorageTargetWriteIOPS|StorageTarget zápis IOPS|Počet|Průměr|Frekvence operací zápisu souborů, které mezipaměť odesílá do konkrétní StorageTarget.|StorageTarget|
-|StorageTargetAsyncWriteThroughput|Propustnost asynchronního zápisu StorageTarget|BytesPerSecond|Průměr|Rychlost, jakou mezipaměť asynchronně zapisuje data do konkrétního StorageTarget. Jedná se o příležitostné zápisy, které nezpůsobují klientům blokování.|StorageTarget|
-|StorageTargetSyncWriteThroughput|Propustnost synchronního zápisu StorageTarget|BytesPerSecond|Průměr|Rychlost, jakou mezipaměť synchronně zapisuje data do konkrétního StorageTarget. Jedná se o zápisy, které způsobují blokování klientů.|StorageTarget|
-|StorageTargetTotalWriteThroughput|StorageTarget celkové propustnosti zápisu|BytesPerSecond|Průměr|Celková míra, kterou mezipaměť zapisuje data do konkrétního StorageTarget.|StorageTarget|
-|StorageTargetLatency|Latence StorageTarget|Milisekundy|Průměr|Průměrná latence odezvy všech operací se soubory, kterou mezipaměť odesílá na partricular StorageTarget.|StorageTarget|
-|StorageTargetMetadataReadIOPS|StorageTarget metadata Read IOPS|CountPerSecond|Průměr|Frekvence operací se soubory, které nemění trvalý stav a s výjimkou operace čtení, kterou mezipaměť odesílá na konkrétní StorageTarget.|StorageTarget|
-|StorageTargetMetadataWriteIOPS|Zápisy metadat StorageTarget IOPS|CountPerSecond|Průměr|Frekvence operací se soubory, které upravují trvalý stav a s výjimkou operace zápisu, kterou mezipaměť odesílá na konkrétní StorageTarget.|StorageTarget|
-|StorageTargetReadIOPS|StorageTarget čtení IOPS|CountPerSecond|Průměr|Míra operací čtení souborů, které mezipaměť odesílá do konkrétního StorageTarget.|StorageTarget|
-|StorageTargetReadAheadThroughput|Propustnost před čtením StorageTarget|BytesPerSecond|Průměr|Rychlost, jakou mezipaměť opportunisticly čte data z StorageTarget.|StorageTarget|
-|StorageTargetFillThroughput|Propustnost výplně StorageTarget|BytesPerSecond|Průměr|Rychlost, jakou mezipaměť čte data z StorageTarget a zpracovává tak Neúspěšné přístupy do mezipaměti|StorageTarget|
-|StorageTargetTotalReadThroughput|StorageTarget celkové propustnosti čtení|BytesPerSecond|Průměr|Celková míra, kterou mezipaměť čte data z konkrétní StorageTarget.|StorageTarget|
+|Klientské ops|Celkový počet viponek klienta|Počet|Průměr|Rychlost operací klientských souborů zpracovaných mezipamětí.|Žádný|
+|Latence klienta|Průměrná latence klienta|Milisekund|Průměr|Průměrná latence operací klientských souborů do mezipaměti úložiště.|Žádný|
+|KlientreadiOPS|Klient číst vops|CountPerSecond|Průměr|Operace čtení klienta za sekundu.|Žádný|
+|KlientReadThroughput|Průměrná propustnost čtení mezipaměti|BajtyPerSekunda|Průměr|Klient čte rychlost přenosu dat.|Žádný|
+|KlientwriteIOPS|Klient zapsat viopy|CountPerSecond|Průměr|Operace zápisu klienta za sekundu.|Žádný|
+|KlientWriteThroughput|Průměrná propustnost zápisu do mezipaměti|BajtyPerSekunda|Průměr|Rychlost přenosu dat klienta.|Žádný|
+|KlientMetadataReadIOPS|Metadata klienta čtení VOPS|CountPerSecond|Průměr|Rychlost operací souborů klienta odeslaných do mezipaměti, s výjimkou čtení dat, které nemění trvalý stav.|Žádný|
+|KlientMetadataWriteIOPS|VIOP zápisu metadat klienta|CountPerSecond|Průměr|Rychlost operací souborů klienta odeslaných do mezipaměti, s výjimkou zápisů dat, které upravují trvalý stav.|Žádný|
+|ClientlockiOPS|VĚTEV zámku klienta|CountPerSecond|Průměr|Operace uzamčení souborů klienta za sekundu.|Žádný|
+|StorageTargetHealth|Stav cíle úložiště|Počet|Průměr|Logické výsledky testu připojení mezi cíli mezipaměti a úložiště.|Žádný|
+|Uptime|Uptime|Počet|Průměr|Logické výsledky testu připojení mezi mezipamětí a monitorovacím systémem.|Žádný|
+|Optimalizace pro storagetarget|Celkový počet vyskladnění cílů úložiště|Počet|Průměr|Rychlost všech operací se soubory cache odešle na konkrétní StorageTarget.|StorageTarget|
+|StorageTargetWriteIOPS|Vyps atleta cílová možnost zápisu StorageTarget|Počet|Průměr|Rychlost operací zápisu souboru, které mezipaměť odesílá určitému cíli storagetarget.|StorageTarget|
+|StorageTargetAsyncWriteThroughput|Propustnost asynchronního zápisu StorageTarget|BajtyPerSekunda|Průměr|Rychlost cache asynchronně zapisuje data do konkrétní StorageTarget. Jedná se o oportunistické zápisy, které nezpůsobí, že klienti blokovat.|StorageTarget|
+|StorageTargetSyncWriteThroughput|Propustnost zápisu StorageTarget|BajtyPerSekunda|Průměr|Rychlost mezipaměti synchronně zapisuje data do konkrétnístoragetarget. Jedná se o zápisy, které způsobují, že klienti blokují.|StorageTarget|
+|StorageTargetTotalWriteThroughput|Celková propustnost zápisu StorageTarget|BajtyPerSekunda|Průměr|Celková rychlost, že mezipaměť zapíše data na konkrétní StorageTarget.|StorageTarget|
+|StorageTargetLatency|Latence cíle úložiště|Milisekund|Průměr|Průměrná latence odezvy všech operací souborů, které mezipaměť odesílá partrikulárnímu úložištiTarget.|StorageTarget|
+|StorageTargetMetadataReadIOPS|Viposlužby pro čtení metadat StorageTarget|CountPerSecond|Průměr|Rychlost operací se soubory, které nemění trvalý stav a s výjimkou operace čtení, které mezipaměti odešle na konkrétní StorageTarget.|StorageTarget|
+|StorageTargetMetadataWriteIOPS|Viposlužby zápisu metadat StorageTarget|CountPerSecond|Průměr|Rychlost operací se soubory, které upravují trvalý stav a bez operace zápisu, kterou mezipaměť odesílá do konkrétního cíle úložiště.|StorageTarget|
+|Zásobníky připravenosti cíl storageTarget|Vyčitatá ops pro čtení storagetarget|CountPerSecond|Průměr|Rychlost operací čtení souborů, které mezipaměť odesílá určitému cíli storagetarget.|StorageTarget|
+|ÚložištěCílReadAheadThroughputput|Propustnost pročtení dopředu StorageTarget|BajtyPerSekunda|Průměr|Rychlost cache příležitostně čte data z StorageTarget.|StorageTarget|
+|Správce výplně TargetFillput|Propustnost výplně StorageTarget|BajtyPerSekunda|Průměr|Rychlost, jakou cache čte data z storagetarget pro zpracování mezipaměť chybí.|StorageTarget|
+|StorageTargetTotalReadThroughput|Celková propustnost čtení storagetarget|BajtyPerSekunda|Průměr|Celková rychlost, že mezipaměť čte data z konkrétní storagetarget.|StorageTarget|
 
 ## <a name="microsoftstoragesyncstoragesyncservices"></a>microsoft.storagesync/storageSyncServices
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|ServerSyncSessionResult|Výsledek relace synchronizace|Počet|Průměr|Metrika, která protokoluje hodnotu 1 pokaždé, když koncový bod serveru úspěšně dokončí relaci synchronizace s koncovým bodem cloudu|SyncGroupName,ServerEndpointName,SyncDirection|
+|Výsledek serverové synchronizuje|Výsledek synchronizace relace|Počet|Průměr|Metrika, která zaznamenává hodnotu 1 pokaždé, když koncový bod serveru úspěšně dokončí relaci synchronizace s koncovým bodem cloudu|SyncGroupName,ServerEndpointName,SyncDirection|
 |StorageSyncSyncSessionAppliedFilesCount|Synchronizované soubory|Počet|Celkem|Počet synchronizovaných souborů|SyncGroupName,ServerEndpointName,SyncDirection|
-|StorageSyncSyncSessionPerItemErrorsCount|Soubory se nesynchronizují|Počet|Celkem|Počet souborů, jejichž synchronizace se nezdařila|SyncGroupName,ServerEndpointName,SyncDirection|
-|StorageSyncBatchTransferredFileBytes|Synchronizované bajty|Bajty|Celkem|Celková velikost souborů přenesených pro relace synchronizace|SyncGroupName,ServerEndpointName,SyncDirection|
-|StorageSyncServerHeartbeat|Online stav serveru|Počet|Maximum|Metrika, která protokoluje hodnotu 1 pokaždé, když server resigtered úspěšně zaznamená prezenční signál pomocí koncového bodu cloudu|ServerName|
-|StorageSyncRecallIOTotalSizeBytes|Stažení vrstvení cloudu|Bajty|Celkem|Celková velikost dat vrácených serverem|ServerName|
-|StorageSyncRecalledTotalNetworkBytes|Velikost odvolání při vyvolání vrstvy cloudu|Bajty|Celkem|Velikost vrácených dat|SyncGroupName, servername|
-|StorageSyncRecallThroughputBytesPerSecond|Propustnost volání při navracení cloudových vrstev|BytesPerSecond|Průměr|Velikost propustnosti odvolání dat|SyncGroupName, servername|
-|StorageSyncRecalledNetworkBytesByApplication|Velikost odvolání při vrstvení cloudu podle aplikace|Bajty|Celkem|Velikost dat vrácených aplikací|SyncGroupName, servername, ApplicationName|
+|Počet chyb a chyb y synchronizačních synchronizujích položek|Nesynchronizované soubory|Počet|Celkem|Počet souborů se nepodařilo synchronizovat|SyncGroupName,ServerEndpointName,SyncDirection|
+|StorageSyncBatchTransferredFileBytes|Synchronizované bajty|Bajty|Celkem|Celková velikost souboru přenesená pro relace synchronizace|SyncGroupName,ServerEndpointName,SyncDirection|
+|Heartbeat služby StorageSyncServer|Stav online serveru|Počet|Maximum|Metrika, která zaznamenává hodnotu 1 pokaždé, když resigtered server úspěšně zaznamená prezenční signál s koncovým bodem cloudu|ServerName|
+|StorageSyncRecallIOTotalSizebajty|Vyvolání vrstvení cloudu|Bajty|Celkem|Celková velikost dat stažených serverem|ServerName|
+|StorageSyncRecalledTotalNetworkBytes|Velikost vyvolání vrstvení v cloudu|Bajty|Celkem|Velikost stažených dat|SyncGroupName,Název_serveru|
+|StorageSyncRecallThroughputtesPerSecond|Propustnost odvolání vrstvení v cloudu|BajtyPerSekunda|Průměr|Velikost propustnost vyvolání dat|SyncGroupName,Název_serveru|
+|StorageSyncRecalledNetworkBytesByApplication|Velikost vyvolání vrstvení v cloudu podle aplikace|Bajty|Celkem|Velikost dat stažených aplikací|SyncGroupName,Název_serveru,Název_aplikace|
 
-## <a name="microsoftstoragesyncstoragesyncservicessyncgroups"></a>Microsoft. storagesync/storageSyncServices/syncGroups
+## <a name="microsoftstoragesyncstoragesyncservicessyncgroups"></a>microsoft.storagesync/storageSyncServices/syncGroups
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |SyncGroupSyncSessionAppliedFilesCount|Synchronizované soubory|Počet|Celkem|Počet synchronizovaných souborů|SyncGroupName,ServerEndpointName,SyncDirection|
-|SyncGroupSyncSessionPerItemErrorsCount|Soubory se nesynchronizují|Počet|Celkem|Počet souborů, jejichž synchronizace se nezdařila|SyncGroupName,ServerEndpointName,SyncDirection|
-|SyncGroupBatchTransferredFileBytes|Synchronizované bajty|Bajty|Celkem|Celková velikost souborů přenesených pro relace synchronizace|SyncGroupName,ServerEndpointName,SyncDirection|
+|SyncGroupSyncSessionPerItemPočet chyb|Nesynchronizované soubory|Počet|Celkem|Počet souborů se nepodařilo synchronizovat|SyncGroupName,ServerEndpointName,SyncDirection|
+|SyncGroupBatchPřevedenyFileBytes|Synchronizované bajty|Bajty|Celkem|Celková velikost souboru přenesená pro relace synchronizace|SyncGroupName,ServerEndpointName,SyncDirection|
 
-## <a name="microsoftstoragesyncstoragesyncservicessyncgroupsserverendpoints"></a>Microsoft. storagesync/storageSyncServices/syncGroups/serverEndpoints
+## <a name="microsoftstoragesyncstoragesyncservicessyncgroupsserverendpoints"></a>microsoft.storagesync/storageSyncServices/syncGroups/serverEndpoints
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|ServerEndpointSyncSessionAppliedFilesCount|Synchronizované soubory|Počet|Celkem|Počet synchronizovaných souborů|ServerEndpointName,SyncDirection|
-|ServerEndpointSyncSessionPerItemErrorsCount|Soubory se nesynchronizují|Počet|Celkem|Počet souborů, jejichž synchronizace se nezdařila|ServerEndpointName,SyncDirection|
-|ServerEndpointBatchTransferredFileBytes|Synchronizované bajty|Bajty|Celkem|Celková velikost souborů přenesených pro relace synchronizace|ServerEndpointName,SyncDirection|
+|ServerEndpointSyncSessionAppliedAppliedFilesCount|Synchronizované soubory|Počet|Celkem|Počet synchronizovaných souborů|Název_serveru EndpointName,Směr synchronizace|
+|Počet chyb chyb v centru serveru EndPointSyncSessionPerItem|Nesynchronizované soubory|Počet|Celkem|Počet souborů se nepodařilo synchronizovat|Název_serveru EndpointName,Směr synchronizace|
+|ServerEndpointBatchpřevedenéfileby|Synchronizované bajty|Bajty|Celkem|Celková velikost souboru přenesená pro relace synchronizace|Název_serveru EndpointName,Směr synchronizace|
 
-## <a name="microsoftstoragesyncstoragesyncservicesregisteredservers"></a>Microsoft. storagesync/storageSyncServices/registeredServers
+## <a name="microsoftstoragesyncstoragesyncservicesregisteredservers"></a>microsoft.storagesync/storageSyncServices/registeredServers
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|ServerHeartbeat|Online stav serveru|Počet|Maximum|Metrika, která protokoluje hodnotu 1 pokaždé, když server resigtered úspěšně zaznamená prezenční signál pomocí koncového bodu cloudu|ServerResourceId, servername|
-|ServerRecallIOTotalSizeBytes|Stažení vrstvení cloudu|Bajty|Celkem|Celková velikost dat vrácených serverem|ServerResourceId, servername|
+|Serverheartbeat|Stav online serveru|Počet|Maximum|Metrika, která zaznamenává hodnotu 1 pokaždé, když resigtered server úspěšně zaznamená prezenční signál s koncovým bodem cloudu|ServerResourceId,Název_serveru|
+|ServerRecallIOTotalSizeBytes|Vyvolání vrstvení cloudu|Bajty|Celkem|Celková velikost dat stažených serverem|ServerResourceId,Název_serveru|
 
 
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|ResourceUtilization|% využití SU|Procento|Maximum|% využití SU|ID logického, PartitionId|
-|InputEvents|Vstupní události|Počet|Celkem|Vstupní události|ID logického, PartitionId|
-|InputEventBytes|Bajty vstupních událostí|Bajty|Celkem|Bajty vstupních událostí|ID logického, PartitionId|
-|LateInputEvents|Pozdní vstupní události|Počet|Celkem|Pozdní vstupní události|ID logického, PartitionId|
-|OutputEvents|Výstupní události|Počet|Celkem|Výstupní události|ID logického, PartitionId|
-|ConversionErrors|Chyby převodu dat|Počet|Celkem|Chyby převodu dat|ID logického, PartitionId|
-|Chyby|Chyby za běhu|Počet|Celkem|Chyby za běhu|ID logického, PartitionId|
-|DroppedOrAdjustedEvents|Události mimo pořadí|Počet|Celkem|Události mimo pořadí|ID logického, PartitionId|
-|AMLCalloutRequests|Požadavky na funkce|Počet|Celkem|Požadavky na funkce|ID logického, PartitionId|
-|AMLCalloutFailedRequests|Nezdařené požadavky na funkce|Počet|Celkem|Nezdařené požadavky na funkce|ID logického, PartitionId|
-|AMLCalloutInputEvents|Události funkcí|Počet|Celkem|Události funkcí|ID logického, PartitionId|
-|DeserializationError|Chyby deserializace vstupu|Počet|Celkem|Chyby deserializace vstupu|ID logického, PartitionId|
-|EarlyInputEvents|Události předčasného vstupu|Počet|Celkem|Události předčasného vstupu|ID logického, PartitionId|
-|OutputWatermarkDelaySeconds|Zpoždění vodoznaku|Sekundy|Maximum|Zpoždění vodoznaku|ID logického, PartitionId|
-|InputEventsSourcesBacklogged|Vstupní události v backlogu|Počet|Maximum|Vstupní události v backlogu|ID logického, PartitionId|
-|InputEventsSourcesPerSecond|Přijaté vstupní zdroje|Počet|Celkem|Přijaté vstupní zdroje|ID logického, PartitionId|
+|Využití prostředků|Využití SU %|Procento|Maximum|Využití SU %|LogicalName,PartitionId|
+|InputEvents|Vstupní události|Počet|Celkem|Vstupní události|LogicalName,PartitionId|
+|VstupOvatbajty|Bajty vstupních událostí|Bajty|Celkem|Bajty vstupních událostí|LogicalName,PartitionId|
+|LateInputEvents|Události pozdního vstupu|Počet|Celkem|Události pozdního vstupu|LogicalName,PartitionId|
+|Výstupní události|Výstupní události|Počet|Celkem|Výstupní události|LogicalName,PartitionId|
+|Chyby převodu|Chyby převodu dat|Počet|Celkem|Chyby převodu dat|LogicalName,PartitionId|
+|chyby|Chyby za běhu|Počet|Celkem|Chyby za běhu|LogicalName,PartitionId|
+|Vynecháno Nebo AdjustedEvents|Události mimo pořadí|Počet|Celkem|Události mimo pořadí|LogicalName,PartitionId|
+|AMLCalloutPožadavky|Požadavky na funkce|Počet|Celkem|Požadavky na funkce|LogicalName,PartitionId|
+|Požadavky AMLCalloutFailed|Neúspěšné požadavky na funkci|Počet|Celkem|Neúspěšné požadavky na funkci|LogicalName,PartitionId|
+|AMLCalloutInputEvents|Události funkcí|Počet|Celkem|Události funkcí|LogicalName,PartitionId|
+|Chyba deserializace|Vstupní chyby deserializace|Počet|Celkem|Vstupní chyby deserializace|LogicalName,PartitionId|
+|EarlyInputEvents|Události včasného vstupu|Počet|Celkem|Události včasného vstupu|LogicalName,PartitionId|
+|VýstupVozemdelayseconds|Zpoždění vodoznaku|Sekundy|Maximum|Zpoždění vodoznaku|LogicalName,PartitionId|
+|InputEventsSourcesBacklogged|Zpětné vstupní události|Počet|Maximum|Zpětné vstupní události|LogicalName,PartitionId|
+|InputEventsSourcesPerSecond|Přijaté vstupní zdroje|Počet|Celkem|Přijaté vstupní zdroje|LogicalName,PartitionId|
 
-## <a name="microsofttimeseriesinsightsenvironments"></a>Microsoft.TimeSeriesInsights/environments
+## <a name="microsofttimeseriesinsightsenvironments"></a>Microsoft.TimeSeriesInsights/prostředí
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|IngressReceivedMessages|Příchozí zprávy příchozího přenosu dat|Počet|Celkem|Počet zpráv načtených ze všech centra událostí nebo zdrojů událostí služby IoT Hub|Žádné|
-|IngressReceivedInvalidMessages|Příchozí přenos dat přijal neplatné zprávy.|Počet|Celkem|Počet neplatných zpráv přečtených ze všech centra událostí nebo zdrojů událostí služby IoT Hub|Žádné|
-|IngressReceivedBytes|Přijaté bajty příchozího přenosu dat|Bajty|Celkem|Počet přečtených bajtů ze všech zdrojů událostí|Žádné|
-|IngressStoredBytes|Uložené bajty příchozího přenosu dat|Bajty|Celkem|Celková velikost událostí úspěšně zpracovaných a dostupných pro dotaz|Žádné|
-|IngressStoredEvents|Uložené události příchozího přenosu dat|Počet|Celkem|Počet úspěšně zpracovaných a dostupných dotazů v počtu plochých událostí|Žádné|
-|IngressReceivedMessagesTimeLag|Časová prodleva přijatých příchozích zpráv příchozího přenosu dat|Sekundy|Maximum|Rozdíl mezi časem, kdy je zpráva zařazená do fronty ve zdroji událostí a čas zpracování v příchozím přenosu dat|Žádné|
-|IngressReceivedMessagesCountLag|Prodleva počtu přijatých zpráv příchozího přenosu|Počet|Průměr|Rozdíl mezi pořadovým číslem poslední zprávy ve frontě ve zdrojovém oddílu události a pořadovým číslem zpracovávaných zpráv v příchozím přenosu dat|Žádné|
-|WarmStorageMaxProperties|Maximální počet vlastností služby teplé úložiště|Počet|Maximum|Maximální počet vlastností používaných prostředím pro SKU S1/S2 a maximální počet vlastností povolený pro PAYG SKU v rámci služby teplé úložiště|Žádné|
-|WarmStorageUsedProperties|Vlastnosti použití teplého úložiště |Počet|Maximum|Počet vlastností používaných prostředím pro SKU S1/S2 a počet vlastností, které používá služba pro zahřívání v úložišti pro PAYG|Žádné|
+|Příchozípřijaté zprávy|Příchozí odchozí přenos zpráv|Počet|Celkem|Počet zpráv přečtených ze všech zdrojů událostí Centra událostí nebo IoT hubu|Žádný|
+|IngressReceivedInvalidMessages|Příchozí přenos dat přijal neplatné zprávy|Počet|Celkem|Počet neplatných zpráv přečtených ze všech zdrojů událostí Centra událostí nebo IoT hubu|Žádný|
+|IngressReceivedBytes|Příchozí přijaté bajty|Bajty|Celkem|Počet bajtů přečtených ze všech zdrojů událostí|Žádný|
+|IngressStoredBytes|Příchozí uložené bajty|Bajty|Celkem|Celková velikost událostí úspěšně zpracovaných a dostupných pro dotaz|Žádný|
+|IngressStoredEvents|Příchozí uložené události|Počet|Celkem|Počet složených událostí, které byly úspěšně zpracovány a jsou k dispozici pro dotaz|Žádný|
+|IngressReceivedMessagesTimeLag|Časová prodleva přijatých zpráv příchozího přenosu dat|Sekundy|Maximum|Rozdíl mezi časem, kdy je zpráva zařazena do fronty ve zdroji událostí, a časem, kdy je zpracována v příchozím přenosu dat|Žádný|
+|IngressReceivedMessagesCountLag|Prodleva počtu přijatých zpráv příchozího přenosu dat|Počet|Průměr|Rozdíl mezi pořadovým číslem poslední zprávy zařazené do fronty ve zdrojovém oddílu události a pořadovým číslem zpráv zpracovávaných v příchozím přenosu dat|Žádný|
+|WarmStorageMaxProperties|Maximální vlastnosti teplého úložiště|Počet|Maximum|Maximální počet vlastností povolených prostředím pro skladovou položku S1/S2 a maximální počet vlastností povolených službou Warm Store pro sku PAYG|Žádný|
+|Vlastnosti WarmStorageUsedUsed|Teplé úložiště použité vlastnosti |Počet|Maximum|Počet vlastností používaných prostředím pro skladovou položku S1/S2 a počet vlastností používaných službou Warm Store pro sku PAYG|Žádný|
 
-## <a name="microsofttimeseriesinsightsenvironmentseventsources"></a>Microsoft.TimeSeriesInsights/environments/eventsources
+## <a name="microsofttimeseriesinsightsenvironmentseventsources"></a>Microsoft.TimeSeriesInsights/prostředí/zdroje událostí
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|IngressReceivedMessages|Příchozí zprávy příchozího přenosu dat|Počet|Celkem|Počet zpráv přečtených ze zdroje události|Žádné|
-|IngressReceivedInvalidMessages|Příchozí přenos dat přijal neplatné zprávy.|Počet|Celkem|Počet neplatných zpráv přečtených ze zdroje události|Žádné|
-|IngressReceivedBytes|Přijaté bajty příchozího přenosu dat|Bajty|Celkem|Počet přečtených bajtů ze zdroje události|Žádné|
-|IngressStoredBytes|Uložené bajty příchozího přenosu dat|Bajty|Celkem|Celková velikost událostí úspěšně zpracovaných a dostupných pro dotaz|Žádné|
-|IngressStoredEvents|Uložené události příchozího přenosu dat|Počet|Celkem|Počet úspěšně zpracovaných a dostupných dotazů v počtu plochých událostí|Žádné|
-|IngressReceivedMessagesTimeLag|Časová prodleva přijatých příchozích zpráv příchozího přenosu dat|Sekundy|Maximum|Rozdíl mezi časem, kdy je zpráva zařazená do fronty ve zdroji událostí a čas zpracování v příchozím přenosu dat|Žádné|
-|IngressReceivedMessagesCountLag|Prodleva počtu přijatých zpráv příchozího přenosu|Počet|Průměr|Rozdíl mezi pořadovým číslem poslední zprávy ve frontě ve zdrojovém oddílu události a pořadovým číslem zpracovávaných zpráv v příchozím přenosu dat|Žádné|
-|WarmStorageMaxProperties|Maximální počet vlastností služby teplé úložiště|Počet|Maximum|Maximální počet vlastností používaných prostředím pro SKU S1/S2 a maximální počet vlastností povolený pro PAYG SKU v rámci služby teplé úložiště|Žádné|
-|WarmStorageUsedProperties|Vlastnosti použití teplého úložiště |Počet|Maximum|Počet vlastností používaných prostředím pro SKU S1/S2 a počet vlastností, které používá služba pro zahřívání v úložišti pro PAYG|Žádné|
+|Příchozípřijaté zprávy|Příchozí odchozí přenos zpráv|Počet|Celkem|Počet zpráv přečtených ze zdroje událostí|Žádný|
+|IngressReceivedInvalidMessages|Příchozí přenos dat přijal neplatné zprávy|Počet|Celkem|Počet neplatných zpráv přečtených ze zdroje události|Žádný|
+|IngressReceivedBytes|Příchozí přijaté bajty|Bajty|Celkem|Počet bajtů přečtených ze zdroje událostí|Žádný|
+|IngressStoredBytes|Příchozí uložené bajty|Bajty|Celkem|Celková velikost událostí úspěšně zpracovaných a dostupných pro dotaz|Žádný|
+|IngressStoredEvents|Příchozí uložené události|Počet|Celkem|Počet složených událostí, které byly úspěšně zpracovány a jsou k dispozici pro dotaz|Žádný|
+|IngressReceivedMessagesTimeLag|Časová prodleva přijatých zpráv příchozího přenosu dat|Sekundy|Maximum|Rozdíl mezi časem, kdy je zpráva zařazena do fronty ve zdroji událostí, a časem, kdy je zpracována v příchozím přenosu dat|Žádný|
+|IngressReceivedMessagesCountLag|Prodleva počtu přijatých zpráv příchozího přenosu dat|Počet|Průměr|Rozdíl mezi pořadovým číslem poslední zprávy zařazené do fronty ve zdrojovém oddílu události a pořadovým číslem zpráv zpracovávaných v příchozím přenosu dat|Žádný|
+|WarmStorageMaxProperties|Maximální vlastnosti teplého úložiště|Počet|Maximum|Maximální počet vlastností povolených prostředím pro skladovou položku S1/S2 a maximální počet vlastností povolených službou Warm Store pro sku PAYG|Žádný|
+|Vlastnosti WarmStorageUsedUsed|Teplé úložiště použité vlastnosti |Počet|Maximum|Počet vlastností používaných prostředím pro skladovou položku S1/S2 a počet vlastností používaných službou Warm Store pro sku PAYG|Žádný|
 
-## <a name="microsoftvmwarecloudsimplevirtualmachines"></a>Microsoft. VMwareCloudSimple/virtualMachines
+## <a name="microsoftvmwarecloudsimplevirtualmachines"></a>Microsoft.VMwareCloudSimple/virtualMachines
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|DiskReadBytesPerSecond|Bajty čtení z disku/s|BytesPerSecond|Průměr|Průměrná propustnost disku z důvodu operací čtení v období vzorkování.|Žádné|
-|DiskWriteBytesPerSecond|Bajty zápisu na disk/s|BytesPerSecond|Průměr|Průměrná propustnost disku z důvodu operací zápisu v období vzorkování.|Žádné|
-|Bajty čtení z disku|Bajty čtení z disku|Bajty|Celkem|Celková propustnost disku z důvodu operací čtení v období vzorkování.|Žádné|
-|Bajty zápisu na disk|Bajty zápisu na disk|Bajty|Celkem|Celková propustnost disku v důsledku operací zápisu v období vzorkování.|Žádné|
-|DiskReadOperations|Operace čtení z disku|Počet|Celkem|Počet vstupně-výstupních operací čtení v předchozích ukázkových obdobích. Všimněte si, že tyto operace mohou být proměnlivé velikosti.|Žádné|
-|DiskWriteOperations|Operace zápisu na disk|Počet|Celkem|Počet operací zápisu v/v v předchozím období vzorkování. Všimněte si, že tyto operace mohou být proměnlivé velikosti.|Žádné|
-|Operace čtení z disku/s|Operace čtení z disku/s|CountPerSecond|Průměr|Průměrný počet vstupně-výstupních operací čtení v předchozích ukázkových obdobích. Všimněte si, že tyto operace mohou být proměnlivé velikosti.|Žádné|
-|Operace zápisu na disk/s|Operace zápisu na disk/s|CountPerSecond|Průměr|Průměrný počet operací zápisu v/v v předchozím období vzorkování. Všimněte si, že tyto operace mohou být proměnlivé velikosti.|Žádné|
-|DiskReadLatency|Latence čtení disku|Milisekundy|Průměr|Celková latence čtení Součet latencí čtení zařízení a jádra.|Žádné|
-|DiskWriteLatency|Latence zápisu na disk|Milisekundy|Průměr|Celková latence zápisu Součet latencí zápisu zařízení a jádra.|Žádné|
-|NetworkInBytesPerSecond|Síť v bajtech/s|BytesPerSecond|Průměr|Průměrná propustnost sítě pro přijatý provoz.|Žádné|
-|NetworkOutBytesPerSecond|Výstupní bajty sítě/s|BytesPerSecond|Průměr|Průměrná propustnost sítě pro přenos přenášených dat.|Žádné|
-|Síťové vstupy|Síťové vstupy|Bajty|Celkem|Celková propustnost sítě pro přijatý provoz.|Žádné|
-|Síťové výstupy|Síťové výstupy|Bajty|Celkem|Celková propustnost sítě pro přenos přenášených dat.|Žádné|
-|MemoryUsed|Využitá paměť|Bajty|Průměr|Velikost paměti počítače, kterou virtuální počítač používá.|Žádné|
-|MemoryGranted|Přidělená paměť|Bajty|Průměr|Velikost paměti, která byla k virtuálnímu počítači udělena hostitelem. Hostiteli není pro hostitele udělené, dokud se nedotknete jednou, a pokud VMkernel potřebuje paměť, může se tato paměť vyměnit.|Žádné|
-|MemoryActive|Paměť aktivní|Bajty|Průměr|Velikost paměti, kterou virtuální počítač využíval v posledních malých oknech času. Toto je "pravdivý" počet paměti, které virtuální počítač v současnosti potřebuje. Dodatečná, nevyužitá paměť může být vyměněna nebo v bublině bez dopadu na výkon hosta.|Žádné|
-|Procento CPU|Procento CPU|Procento|Průměr|Využití procesoru. Tato hodnota je hlášena s 100%, která představuje všechny jádra procesoru v systému. Příklad: oboustranný virtuální počítač, který používá 50% systému se čtyřmi jádry, plně používá dvě jádra.|Žádné|
-|PercentageCpuReady|Procento připraveného procesoru|Milisekundy|Celkem|Čas připravenosti je doba, po kterou se bude čekat na dostupnost PROCESORů v minulém intervalu aktualizace.|Žádné|
+|DiskReadBajtůmPerSecond|Čtení bajtů disku/s|BajtyPerSekunda|Průměr|Průměrná propustnost disku z důvodu operací čtení za ukázkové období.|Žádný|
+|DiskWriteBytesPerSecond|Bajty zápisu disku/s|BajtyPerSekunda|Průměr|Průměrná propustnost disku z důvodu zápisu operace za ukázkové období.|Žádný|
+|Bajty čtení disku|Bajty čtení disku|Bajty|Celkem|Celková propustnost disku z důvodu operací čtení za ukázkové období.|Žádný|
+|Bajty zápisu disku|Bajty zápisu disku|Bajty|Celkem|Celková propustnost disku z důvodu zápisu operace za ukázkové období.|Žádný|
+|DiskReadOperations|Operace čtení disku|Počet|Celkem|Počet operací čtení vplatnosti v předchozím ukázkovém období. Všimněte si, že tyto operace mohou mít velikost proměnné velikosti.|Žádný|
+|DiskWriteOperations|Operace zápisu na disk|Počet|Celkem|Počet operací zápisu vsazení vpředchozí ukázkové období. Všimněte si, že tyto operace mohou mít velikost proměnné velikosti.|Žádný|
+|Operace čtení disku/s|Operace čtení disku/s|CountPerSecond|Průměr|Průměrný počet operací čtení vi v předchozí ukázkové období. Všimněte si, že tyto operace mohou mít velikost proměnné velikosti.|Žádný|
+|Operace zápisu na disk/s|Operace zápisu na disk/s|CountPerSecond|Průměr|Průměrný počet operací zápisu vi v předchozím ukázkovém období. Všimněte si, že tyto operace mohou mít velikost proměnné velikosti.|Žádný|
+|DiskReadLatency|Latence čtení disku|Milisekund|Průměr|Celková latence čtení. Součet latence čtení zařízení a jádra.|Žádný|
+|DiskWriteLatency|Latence zápisu disku|Milisekund|Průměr|Celková latence zápisu. Součet latencí zápisu zařízení a jádra.|Žádný|
+|NetworkInBytesPerSecond|V síti v bajtů/s|BajtyPerSekunda|Průměr|Průměrná propustnost sítě pro přijatý provoz.|Žádný|
+|NetworkOutBytesPerSecond|Nezletěné bajty sítě/s|BajtyPerSekunda|Průměr|Průměrná propustnost sítě pro přenášený provoz.|Žádný|
+|Síťové vstupy|Síťové vstupy|Bajty|Celkem|Celková propustnost sítě pro přijatý provoz.|Žádný|
+|Síťové výstupy|Síťové výstupy|Bajty|Celkem|Celková propustnost sítě pro přenášený provoz.|Žádný|
+|Využité paměti|Použitá paměť|Bajty|Průměr|Množství paměti počítače, která je používána virtuálním počítačem.|Žádný|
+|MemoryGranted|Paměť udělena|Bajty|Průměr|Množství paměti, která byla udělena virtuálnímu zařízení hostitelem. Paměť není udělena hostiteli, dokud se jí nedotknete jednou a udělená paměť může být vyměněna nebo nafouknuta, pokud vmkernel potřebuje paměť.|Žádný|
+|MemoryActive|Paměť aktivní|Bajty|Průměr|Množství paměti používané virtuálním virtuálním min v minulém malém časovém období. Toto je "true" číslo, kolik paměti virtuálního zařízení aktuálně potřebuje. Další nevyužité paměti může být vyměněnnebo nafouknutý bez vlivu na výkon hosta.|Žádný|
+|Procento CPU|Procento CPU|Procento|Průměr|Využití procesoru. Tato hodnota je hlášena se 100 % představující všechna procesorová jádra v systému. Například dvoucestný virtuální virtuální ms používající 50 % čtyřjádrového systému zcela používá dvě jádra.|Žádný|
+|ProcentoCpuReady|Procento připravenosti procesoru|Milisekund|Celkem|Doba připravenosti je čas čekání na procesory, které mají být k dispozici v minulém intervalu aktualizace.|Žádný|
 
 
 
@@ -2151,175 +2151,182 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 
 
 
-## <a name="microsoftwebserverfarms"></a>Microsoft.Web/serverfarms
+## <a name="microsoftwebserverfarms"></a>Farmy Microsoft.Web/server
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|CpuPercentage|Procento procesoru|Procento|Průměr|Procento procesoru|Instance|
-|MemoryPercentage|Procento paměti|Procento|Průměr|Procento paměti|Instance|
-|DiskQueueLength|Délka fronty disku|Počet|Průměr|Délka fronty disku|Instance|
-|HttpQueueLength|Délka fronty http|Počet|Průměr|Délka fronty http|Instance|
-|BytesReceived|Vstupní data|Bajty|Celkem|Vstupní data|Instance|
-|BytesSent|Výstupní data|Bajty|Celkem|Výstupní data|Instance|
-|TcpSynSent|Odesláno TCP syn|Počet|Průměr|Odesláno TCP syn|Instance|
-|TcpSynReceived|Přijato TCP syn|Počet|Průměr|Přijato TCP syn|Instance|
-|TcpEstablished|TCP – vytvořeno|Počet|Průměr|TCP – vytvořeno|Instance|
-|TcpFinWait1|TCP FIN – čekání 1|Počet|Průměr|TCP FIN – čekání 1|Instance|
-|TcpFinWait2|TCP FIN – čekání 2|Počet|Průměr|TCP FIN – čekání 2|Instance|
-|TcpClosing|Ukončení protokolu TCP|Počet|Průměr|Ukončení protokolu TCP|Instance|
-|TcpCloseWait|Ukončení čekání protokolu TCP|Počet|Průměr|Ukončení čekání protokolu TCP|Instance|
-|TcpLastAck|Poslední potvrzení TCP|Počet|Průměr|Poslední potvrzení TCP|Instance|
-|TcpTimeWait|Doba čekání protokolu TCP|Počet|Průměr|Doba čekání protokolu TCP|Instance|
+|Procento procesoru|Procento procesoru|Procento|Průměr|Procento procesoru|Instance|
+|Procento paměti|Procento paměti|Procento|Průměr|Procento paměti|Instance|
+|Délka fronty disků|Délka fronty disku|Počet|Průměr|Délka fronty disku|Instance|
+|HttpQueueLength|Délka fronty Http|Počet|Průměr|Délka fronty Http|Instance|
+|Přijaté bajty|Data v|Bajty|Celkem|Data v|Instance|
+|BajtůOdeslání|Data Out|Bajty|Celkem|Data Out|Instance|
+|Protokol TcpSynSent|Protokol TCP Syn odeslán|Počet|Průměr|Protokol TCP Syn odeslán|Instance|
+|Protokol TcpSynObdržel|Protokol TCP Syn byl přijat|Počet|Průměr|Protokol TCP Syn byl přijat|Instance|
+|TcpEstablished|TCP založena|Počet|Průměr|TCP založena|Instance|
+|TcpFinWait1|TCP Fin Čekání 1|Počet|Průměr|TCP Fin Čekání 1|Instance|
+|TcpFinWait2|TCP Fin Čekání 2|Počet|Průměr|TCP Fin Čekání 2|Instance|
+|TcpClosing|Uzávěrka protokolu TCP|Počet|Průměr|Uzávěrka protokolu TCP|Instance|
+|TcpCloseWait|Čekání na zavření protokolu TCP|Počet|Průměr|Čekání na zavření protokolu TCP|Instance|
+|TcpLastAck|Poslední potvrzení protokolu TCP|Počet|Průměr|Poslední potvrzení protokolu TCP|Instance|
+|TcpTimeWait|Čas čekání protokolu TCP|Počet|Průměr|Čas čekání protokolu TCP|Instance|
 
-## <a name="microsoftwebsites-excluding-functions"></a>Microsoft. Web/weby (kromě funkcí)
+## <a name="microsoftwebsites-excluding-functions"></a>Microsoft.Web/weby (kromě funkcí)
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+> [!NOTE]
+> **Využití systému souborů** je nová metrika, která se zavádí globálně, žádná data se neočekávají, pokud jste nebyli zařazeni na seznam povolených pro privátní náhled.
+
+> [!IMPORTANT]
+> **Průměrná doba odezvy** bude zastaralá, aby nedošlo k záměně s agregacemi metrik. Použijte **dobu odezvy** jako náhradu.
+
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|CpuTime|Čas procesoru|Sekundy|Celkem|Čas procesoru|Instance|
-|Požadavky|Požadavky|Počet|Celkem|Požadavky|Instance|
-|BytesReceived|Vstupní data|Bajty|Celkem|Vstupní data|Instance|
-|BytesSent|Výstupní data|Bajty|Celkem|Výstupní data|Instance|
+|ProcesorOvý čas|Čas procesoru|Sekundy|Celkem|Čas procesoru|Instance|
+|Žádosti|Žádosti|Počet|Celkem|Žádosti|Instance|
+|Přijaté bajty|Data v|Bajty|Celkem|Data v|Instance|
+|BajtůOdeslání|Data Out|Bajty|Celkem|Data Out|Instance|
 |Http101|Http 101|Počet|Celkem|Http 101|Instance|
 |Http2xx|Http 2xx|Počet|Celkem|Http 2xx|Instance|
 |Http3xx|Http 3xx|Počet|Celkem|Http 3xx|Instance|
 |Http401|Http 401|Počet|Celkem|Http 401|Instance|
-|Http403|HTTP 403|Počet|Celkem|HTTP 403|Instance|
-|Http404|HTTP 404|Počet|Celkem|HTTP 404|Instance|
+|Http403|Http 403|Počet|Celkem|Http 403|Instance|
+|Http404|Http 404|Počet|Celkem|Http 404|Instance|
 |Http406|Http 406|Počet|Celkem|Http 406|Instance|
 |Http4xx|Http 4xx|Počet|Celkem|Http 4xx|Instance|
-|Http5xx|Chyby serveru http|Počet|Celkem|Chyby serveru http|Instance|
-|MemoryWorkingSet|Pracovní sada paměti|Bajty|Průměr|Pracovní sada paměti|Instance|
+|Http5xx|Chyby serveru HTTP|Počet|Celkem|Chyby serveru HTTP|Instance|
+|Paměťworkingová sada|Pracovní sada paměti|Bajty|Průměr|Pracovní sada paměti|Instance|
 |AverageMemoryWorkingSet|Průměrná pracovní sada paměti|Bajty|Průměr|Průměrná pracovní sada paměti|Instance|
-|AverageResponseTime|Průměrný čas odezvy|Sekundy|Průměr|Průměrný čas odezvy|Instance|
-|AppConnections|Připojení|Počet|Průměr|Připojení|Instance|
-|Řeší|Počet popisovačů|Počet|Průměr|Počet popisovačů|Instance|
+|Doba odezvy|Doba odezvy|Sekundy|Celkem|Doba odezvy|Instance|
+|Průměrný čas odezvy|Průměrná doba odezvy (zastaralá)|Sekundy|Průměr|Průměrná doba odezvy|Instance|
+|Připojení aplikací|Připojení|Počet|Průměr|Připojení|Instance|
+|Handles|Počet popisovačů|Počet|Průměr|Počet popisovačů|Instance|
 |Vlákna|Počet vláken|Počet|Průměr|Počet vláken|Instance|
-|PrivateBytes|Soukromé bajty|Bajty|Průměr|Soukromé bajty|Instance|
-|IoReadBytesPerSecond|Bajty čtení v/v za sekundu|BytesPerSecond|Celkem|Bajty čtení v/v za sekundu|Instance|
-|IoWriteBytesPerSecond|Vstupně-výstupní bajty zápisu za sekundu|BytesPerSecond|Celkem|Vstupně-výstupní bajty zápisu za sekundu|Instance|
-|IoOtherBytesPerSecond|IO – ostatní bajty za sekundu|BytesPerSecond|Celkem|IO – ostatní bajty za sekundu|Instance|
-|IoReadOperationsPerSecond|Vstupně-výstupní operace čtení za sekundu|BytesPerSecond|Celkem|Vstupně-výstupní operace čtení za sekundu|Instance|
-|IoWriteOperationsPerSecond|Vstupně-výstupní operace zápisu za sekundu|BytesPerSecond|Celkem|Vstupně-výstupní operace zápisu za sekundu|Instance|
-|IoOtherOperationsPerSecond|V/v – ostatní operace za sekundu|BytesPerSecond|Celkem|V/v – ostatní operace za sekundu|Instance|
-|RequestsInApplicationQueue|Žádosti ve frontě aplikací|Počet|Průměr|Žádosti ve frontě aplikací|Instance|
+|Soukromé bajty|Soukromé bajty|Bajty|Průměr|Soukromé bajty|Instance|
+|IoReadBytesPerSecond|Čtení bajtů v iza sekundě|BajtyPerSekunda|Celkem|Čtení bajtů v iza sekundě|Instance|
+|IoWriteBytesPerSecond|IO zápis bajtů za sekundu|BajtyPerSekunda|Celkem|IO zápis bajtů za sekundu|Instance|
+|IoOtherBytesPerSecond|IO ostatní bajty za sekundu|BajtyPerSekunda|Celkem|IO ostatní bajty za sekundu|Instance|
+|IoReadOperationsPerSekunda|Operace čtení vi za sekundu|BajtyPerSekunda|Celkem|Operace čtení vi za sekundu|Instance|
+|IoWriteOperationsPerSecond|Operace zápisu vi za sekundu|BajtyPerSekunda|Celkem|Operace zápisu vi za sekundu|Instance|
+|IoOtherOperationsPerSecond|Vi další operace za sekundu|BajtyPerSekunda|Celkem|Vi další operace za sekundu|Instance|
+|RequestsInApplicationQueue|Požadavky ve frontě aplikací|Počet|Průměr|Požadavky ve frontě aplikací|Instance|
 |CurrentAssemblies|Aktuální sestavení|Počet|Průměr|Aktuální sestavení|Instance|
-|TotalAppDomains|Celkový počet domén aplikace|Počet|Průměr|Celkový počet domén aplikace|Instance|
-|TotalAppDomainsUnloaded|Celkový počet uvolněných domén aplikace|Počet|Průměr|Celkový počet uvolněných domén aplikace|Instance|
-|Gen0Collections|Generace paměti gen 0|Počet|Celkem|Generace paměti gen 0|Instance|
-|Gen1Collections|Generace paměti 1. generace|Počet|Celkem|Generace paměti 1. generace|Instance|
-|Gen2Collections|Uvolňování paměti 2. generace|Počet|Celkem|Uvolňování paměti 2. generace|Instance|
-|HealthCheckStatus|Stav kontroly stavu|Počet|Průměr|Stav kontroly stavu|Instance|
-|FileSystemUsage|Využití systému souborů|Bajty|Průměr|Využití systému souborů|Žádné|
+|TotalAppDomains|Celkový počet domén aplikací|Počet|Průměr|Celkový počet domén aplikací|Instance|
+|TotalAppDomainsUnloaded|Celkový počet uvolněných domén aplikací|Počet|Průměr|Celkový počet uvolněných domén aplikací|Instance|
+|Gen0Kolekce|Gen 0 Uvolňování paměti|Počet|Celkem|Gen 0 Uvolňování paměti|Instance|
+|Gen1Kolekce|Gen 1 Uvolňování paměti|Počet|Celkem|Gen 1 Uvolňování paměti|Instance|
+|Gen2Kolekce|Gen 2 Uvolňování paměti|Počet|Celkem|Gen 2 Uvolňování paměti|Instance|
+|Stav kontroly stavu|Stav kontroly stavu|Počet|Průměr|Stav kontroly stavu|Instance|
+|Využití systému souborů|Využití systému souborů|Bajty|Průměr|Využití systému souborů|Žádný|
 
-## <a name="microsoftwebsites-functions"></a>Microsoft. Web/lokality (funkce)
+## <a name="microsoftwebsites-functions"></a>Microsoft.Web/weby (funkce)
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|BytesReceived|Vstupní data|Bajty|Celkem|Vstupní data|Instance|
-|BytesSent|Výstupní data|Bajty|Celkem|Výstupní data|Instance|
-|Http5xx|Chyby serveru http|Počet|Celkem|Chyby serveru http|Instance|
-|MemoryWorkingSet|Pracovní sada paměti|Bajty|Průměr|Pracovní sada paměti|Instance|
+|Přijaté bajty|Data v|Bajty|Celkem|Data v|Instance|
+|BajtůOdeslání|Data Out|Bajty|Celkem|Data Out|Instance|
+|Http5xx|Chyby serveru HTTP|Počet|Celkem|Chyby serveru HTTP|Instance|
+|Paměťworkingová sada|Pracovní sada paměti|Bajty|Průměr|Pracovní sada paměti|Instance|
 |AverageMemoryWorkingSet|Průměrná pracovní sada paměti|Bajty|Průměr|Průměrná pracovní sada paměti|Instance|
-|FunctionExecutionUnits|Jednotky spuštění funkce|MB/milisekundy|Celkem|[Jednotky spuštění funkce](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ#how-can-i-view-graphs-of-execution-count-and-gb-seconds)|Instance|
+|FunkceExecutionUnits|Jednotky provádění funkcí|MB / Milisekundy|Celkem|[Jednotky provádění funkcí](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ#how-can-i-view-graphs-of-execution-count-and-gb-seconds)|Instance|
 |FunctionExecutionCount|Počet spuštění funkce|Počet|Celkem|Počet spuštění funkce|Instance|
-|PrivateBytes|Soukromé bajty|Bajty|Průměr|Soukromé bajty|Instance|
-|IoReadBytesPerSecond|Bajty čtení v/v za sekundu|BytesPerSecond|Celkem|Bajty čtení v/v za sekundu|Instance|
-|IoWriteBytesPerSecond|Vstupně-výstupní bajty zápisu za sekundu|BytesPerSecond|Celkem|Vstupně-výstupní bajty zápisu za sekundu|Instance|
-|IoOtherBytesPerSecond|IO – ostatní bajty za sekundu|BytesPerSecond|Celkem|IO – ostatní bajty za sekundu|Instance|
-|IoReadOperationsPerSecond|Vstupně-výstupní operace čtení za sekundu|BytesPerSecond|Celkem|Vstupně-výstupní operace čtení za sekundu|Instance|
-|IoWriteOperationsPerSecond|Vstupně-výstupní operace zápisu za sekundu|BytesPerSecond|Celkem|Vstupně-výstupní operace zápisu za sekundu|Instance|
-|IoOtherOperationsPerSecond|V/v – ostatní operace za sekundu|BytesPerSecond|Celkem|V/v – ostatní operace za sekundu|Instance|
-|RequestsInApplicationQueue|Žádosti ve frontě aplikací|Počet|Průměr|Žádosti ve frontě aplikací|Instance|
+|Soukromé bajty|Soukromé bajty|Bajty|Průměr|Soukromé bajty|Instance|
+|IoReadBytesPerSecond|Čtení bajtů v iza sekundě|BajtyPerSekunda|Celkem|Čtení bajtů v iza sekundě|Instance|
+|IoWriteBytesPerSecond|IO zápis bajtů za sekundu|BajtyPerSekunda|Celkem|IO zápis bajtů za sekundu|Instance|
+|IoOtherBytesPerSecond|IO ostatní bajty za sekundu|BajtyPerSekunda|Celkem|IO ostatní bajty za sekundu|Instance|
+|IoReadOperationsPerSekunda|Operace čtení vi za sekundu|BajtyPerSekunda|Celkem|Operace čtení vi za sekundu|Instance|
+|IoWriteOperationsPerSecond|Operace zápisu vi za sekundu|BajtyPerSekunda|Celkem|Operace zápisu vi za sekundu|Instance|
+|IoOtherOperationsPerSecond|Vi další operace za sekundu|BajtyPerSekunda|Celkem|Vi další operace za sekundu|Instance|
+|RequestsInApplicationQueue|Požadavky ve frontě aplikací|Počet|Průměr|Požadavky ve frontě aplikací|Instance|
 |CurrentAssemblies|Aktuální sestavení|Počet|Průměr|Aktuální sestavení|Instance|
-|TotalAppDomains|Celkový počet domén aplikace|Počet|Průměr|Celkový počet domén aplikace|Instance|
-|TotalAppDomainsUnloaded|Celkový počet uvolněných domén aplikace|Počet|Průměr|Celkový počet uvolněných domén aplikace|Instance|
-|Gen0Collections|Generace paměti gen 0|Počet|Celkem|Generace paměti gen 0|Instance|
-|Gen1Collections|Generace paměti 1. generace|Počet|Celkem|Generace paměti 1. generace|Instance|
-|Gen2Collections|Uvolňování paměti 2. generace|Počet|Celkem|Uvolňování paměti 2. generace|Instance|
-|HealthCheckStatus|Stav kontroly stavu|Počet|Průměr|Stav kontroly stavu|Instance|
-|FileSystemUsage|Využití systému souborů|Bajty|Průměr|Využití systému souborů|Žádné|
+|TotalAppDomains|Celkový počet domén aplikací|Počet|Průměr|Celkový počet domén aplikací|Instance|
+|TotalAppDomainsUnloaded|Celkový počet uvolněných domén aplikací|Počet|Průměr|Celkový počet uvolněných domén aplikací|Instance|
+|Gen0Kolekce|Gen 0 Uvolňování paměti|Počet|Celkem|Gen 0 Uvolňování paměti|Instance|
+|Gen1Kolekce|Gen 1 Uvolňování paměti|Počet|Celkem|Gen 1 Uvolňování paměti|Instance|
+|Gen2Kolekce|Gen 2 Uvolňování paměti|Počet|Celkem|Gen 2 Uvolňování paměti|Instance|
+|Stav kontroly stavu|Stav kontroly stavu|Počet|Průměr|Stav kontroly stavu|Instance|
+|Využití systému souborů|Využití systému souborů|Bajty|Průměr|Využití systému souborů|Žádný|
 
 
-## <a name="microsoftwebsitesslots"></a>Microsoft.Web/sites/slots
+## <a name="microsoftwebsitesslots"></a>Microsoft.Web/weby/sloty
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|CpuTime|Čas procesoru|Sekundy|Celkem|Čas procesoru|Instance|
-|Požadavky|Požadavky|Počet|Celkem|Požadavky|Instance|
-|BytesReceived|Vstupní data|Bajty|Celkem|Vstupní data|Instance|
-|BytesSent|Výstupní data|Bajty|Celkem|Výstupní data|Instance|
+|ProcesorOvý čas|Čas procesoru|Sekundy|Celkem|Čas procesoru|Instance|
+|Žádosti|Žádosti|Počet|Celkem|Žádosti|Instance|
+|Přijaté bajty|Data v|Bajty|Celkem|Data v|Instance|
+|BajtůOdeslání|Data Out|Bajty|Celkem|Data Out|Instance|
 |Http101|Http 101|Počet|Celkem|Http 101|Instance|
 |Http2xx|Http 2xx|Počet|Celkem|Http 2xx|Instance|
 |Http3xx|Http 3xx|Počet|Celkem|Http 3xx|Instance|
 |Http401|Http 401|Počet|Celkem|Http 401|Instance|
-|Http403|HTTP 403|Počet|Celkem|HTTP 403|Instance|
-|Http404|HTTP 404|Počet|Celkem|HTTP 404|Instance|
+|Http403|Http 403|Počet|Celkem|Http 403|Instance|
+|Http404|Http 404|Počet|Celkem|Http 404|Instance|
 |Http406|Http 406|Počet|Celkem|Http 406|Instance|
 |Http4xx|Http 4xx|Počet|Celkem|Http 4xx|Instance|
-|Http5xx|Chyby serveru http|Počet|Celkem|Chyby serveru http|Instance|
-|MemoryWorkingSet|Pracovní sada paměti|Bajty|Průměr|Pracovní sada paměti|Instance|
+|Http5xx|Chyby serveru HTTP|Počet|Celkem|Chyby serveru HTTP|Instance|
+|Paměťworkingová sada|Pracovní sada paměti|Bajty|Průměr|Pracovní sada paměti|Instance|
 |AverageMemoryWorkingSet|Průměrná pracovní sada paměti|Bajty|Průměr|Průměrná pracovní sada paměti|Instance|
-|AverageResponseTime|Průměrný čas odezvy|Sekundy|Průměr|Průměrný čas odezvy|Instance|
+|Průměrný čas odezvy|Průměrná doba odezvy|Sekundy|Průměr|Průměrná doba odezvy|Instance|
 |HttpResponseTime|Doba odezvy|Sekundy|Průměr|Doba odezvy|Instance|
-|FunctionExecutionUnits|Jednotky spuštění funkce|Počet|Celkem|Jednotky spuštění funkce|Instance|
+|FunkceExecutionUnits|Jednotky provádění funkcí|Počet|Celkem|Jednotky provádění funkcí|Instance|
 |FunctionExecutionCount|Počet spuštění funkce|Počet|Celkem|Počet spuštění funkce|Instance|
-|AppConnections|Připojení|Počet|Průměr|Připojení|Instance|
-|Řeší|Počet popisovačů|Počet|Průměr|Počet popisovačů|Instance|
+|Připojení aplikací|Připojení|Počet|Průměr|Připojení|Instance|
+|Handles|Počet popisovačů|Počet|Průměr|Počet popisovačů|Instance|
 |Vlákna|Počet vláken|Počet|Průměr|Počet vláken|Instance|
-|PrivateBytes|Soukromé bajty|Bajty|Průměr|Soukromé bajty|Instance|
-|IoReadBytesPerSecond|Bajty čtení v/v za sekundu|BytesPerSecond|Celkem|Bajty čtení v/v za sekundu|Instance|
-|IoWriteBytesPerSecond|Vstupně-výstupní bajty zápisu za sekundu|BytesPerSecond|Celkem|Vstupně-výstupní bajty zápisu za sekundu|Instance|
-|IoOtherBytesPerSecond|IO – ostatní bajty za sekundu|BytesPerSecond|Celkem|IO – ostatní bajty za sekundu|Instance|
-|IoReadOperationsPerSecond|Vstupně-výstupní operace čtení za sekundu|BytesPerSecond|Celkem|Vstupně-výstupní operace čtení za sekundu|Instance|
-|IoWriteOperationsPerSecond|Vstupně-výstupní operace zápisu za sekundu|BytesPerSecond|Celkem|Vstupně-výstupní operace zápisu za sekundu|Instance|
-|IoOtherOperationsPerSecond|V/v – ostatní operace za sekundu|BytesPerSecond|Celkem|V/v – ostatní operace za sekundu|Instance|
-|RequestsInApplicationQueue|Žádosti ve frontě aplikací|Počet|Průměr|Žádosti ve frontě aplikací|Instance|
+|Soukromé bajty|Soukromé bajty|Bajty|Průměr|Soukromé bajty|Instance|
+|IoReadBytesPerSecond|Čtení bajtů v iza sekundě|BajtyPerSekunda|Celkem|Čtení bajtů v iza sekundě|Instance|
+|IoWriteBytesPerSecond|IO zápis bajtů za sekundu|BajtyPerSekunda|Celkem|IO zápis bajtů za sekundu|Instance|
+|IoOtherBytesPerSecond|IO ostatní bajty za sekundu|BajtyPerSekunda|Celkem|IO ostatní bajty za sekundu|Instance|
+|IoReadOperationsPerSekunda|Operace čtení vi za sekundu|BajtyPerSekunda|Celkem|Operace čtení vi za sekundu|Instance|
+|IoWriteOperationsPerSecond|Operace zápisu vi za sekundu|BajtyPerSekunda|Celkem|Operace zápisu vi za sekundu|Instance|
+|IoOtherOperationsPerSecond|Vi další operace za sekundu|BajtyPerSekunda|Celkem|Vi další operace za sekundu|Instance|
+|RequestsInApplicationQueue|Požadavky ve frontě aplikací|Počet|Průměr|Požadavky ve frontě aplikací|Instance|
 |CurrentAssemblies|Aktuální sestavení|Počet|Průměr|Aktuální sestavení|Instance|
-|TotalAppDomains|Celkový počet domén aplikace|Počet|Průměr|Celkový počet domén aplikace|Instance|
-|TotalAppDomainsUnloaded|Celkový počet uvolněných domén aplikace|Počet|Průměr|Celkový počet uvolněných domén aplikace|Instance|
-|Gen0Collections|Generace paměti gen 0|Počet|Celkem|Generace paměti gen 0|Instance|
-|Gen1Collections|Generace paměti 1. generace|Počet|Celkem|Generace paměti 1. generace|Instance|
-|Gen2Collections|Uvolňování paměti 2. generace|Počet|Celkem|Uvolňování paměti 2. generace|Instance|
-|HealthCheckStatus|Stav kontroly stavu|Počet|Průměr|Stav kontroly stavu|Instance|
-|FileSystemUsage|Využití systému souborů|Bajty|Průměr|Využití systému souborů|Žádné|
+|TotalAppDomains|Celkový počet domén aplikací|Počet|Průměr|Celkový počet domén aplikací|Instance|
+|TotalAppDomainsUnloaded|Celkový počet uvolněných domén aplikací|Počet|Průměr|Celkový počet uvolněných domén aplikací|Instance|
+|Gen0Kolekce|Gen 0 Uvolňování paměti|Počet|Celkem|Gen 0 Uvolňování paměti|Instance|
+|Gen1Kolekce|Gen 1 Uvolňování paměti|Počet|Celkem|Gen 1 Uvolňování paměti|Instance|
+|Gen2Kolekce|Gen 2 Uvolňování paměti|Počet|Celkem|Gen 2 Uvolňování paměti|Instance|
+|Stav kontroly stavu|Stav kontroly stavu|Počet|Průměr|Stav kontroly stavu|Instance|
+|Využití systému souborů|Využití systému souborů|Bajty|Průměr|Využití systému souborů|Žádný|
 
 ## <a name="microsoftwebhostingenvironmentsmultirolepools"></a>Microsoft.Web/hostingEnvironments/multiRolePools
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|Požadavky|Požadavky|Počet|Celkem|Požadavky|Instance|
-|BytesReceived|Vstupní data|Bajty|Celkem|Vstupní data|Instance|
-|BytesSent|Výstupní data|Bajty|Celkem|Výstupní data|Instance|
+|Žádosti|Žádosti|Počet|Celkem|Žádosti|Instance|
+|Přijaté bajty|Data v|Bajty|Celkem|Data v|Instance|
+|BajtůOdeslání|Data Out|Bajty|Celkem|Data Out|Instance|
 |Http101|Http 101|Počet|Celkem|Http 101|Instance|
 |Http2xx|Http 2xx|Počet|Celkem|Http 2xx|Instance|
 |Http3xx|Http 3xx|Počet|Celkem|Http 3xx|Instance|
 |Http401|Http 401|Počet|Celkem|Http 401|Instance|
-|Http403|HTTP 403|Počet|Celkem|HTTP 403|Instance|
-|Http404|HTTP 404|Počet|Celkem|HTTP 404|Instance|
+|Http403|Http 403|Počet|Celkem|Http 403|Instance|
+|Http404|Http 404|Počet|Celkem|Http 404|Instance|
 |Http406|Http 406|Počet|Celkem|Http 406|Instance|
 |Http4xx|Http 4xx|Počet|Celkem|Http 4xx|Instance|
-|Http5xx|Chyby serveru http|Počet|Celkem|Chyby serveru http|Instance|
-|AverageResponseTime|Průměrný čas odezvy|Sekundy|Průměr|Průměrný čas odezvy|Instance|
-|CpuPercentage|Procento procesoru|Procento|Průměr|Procento procesoru|Instance|
-|MemoryPercentage|Procento paměti|Procento|Průměr|Procento paměti|Instance|
-|DiskQueueLength|Délka fronty disku|Počet|Průměr|Délka fronty disku|Instance|
-|HttpQueueLength|Délka fronty http|Počet|Průměr|Délka fronty http|Instance|
-|ActiveRequests|Aktivní požadavky|Počet|Celkem|Aktivní požadavky|Instance|
-|TotalFrontEnds|Celkový počet front-endy|Počet|Průměr|Celkový počet front-endy|Žádné|
-|SmallAppServicePlanInstances|Plánování pracovníků malých App Service|Počet|Průměr|Plánování pracovníků malých App Service|Žádné|
-|MediumAppServicePlanInstances|Střední App Service plánování pracovních procesů|Počet|Průměr|Střední App Service plánování pracovních procesů|Žádné|
-|LargeAppServicePlanInstances|Zaměstnanci s velkými App Servicey plánu|Počet|Průměr|Zaměstnanci s velkými App Servicey plánu|Žádné|
+|Http5xx|Chyby serveru HTTP|Počet|Celkem|Chyby serveru HTTP|Instance|
+|Průměrný čas odezvy|Průměrná doba odezvy|Sekundy|Průměr|Průměrná doba odezvy|Instance|
+|Procento procesoru|Procento procesoru|Procento|Průměr|Procento procesoru|Instance|
+|Procento paměti|Procento paměti|Procento|Průměr|Procento paměti|Instance|
+|Délka fronty disků|Délka fronty disku|Počet|Průměr|Délka fronty disku|Instance|
+|HttpQueueLength|Délka fronty Http|Počet|Průměr|Délka fronty Http|Instance|
+|Aktivní požadavky|Aktivní požadavky|Počet|Celkem|Aktivní požadavky|Instance|
+|TotalFrontEnds|Celkový počet předních konců|Počet|Průměr|Celkový počet předních konců|Žádný|
+|Instance SmallAppServicePlan|Pracovníci plánu malých aplikací|Počet|Průměr|Pracovníci plánu malých aplikací|Žádný|
+|Instance MediumAppServicePlan|Pracovníci plánu středních služeb aplikace|Počet|Průměr|Pracovníci plánu středních služeb aplikace|Žádný|
+|Instance LargeAppServicePlan|Pracovníci plánu velkých služeb aplikace|Počet|Průměr|Pracovníci plánu velkých služeb aplikace|Žádný|
 
 ## <a name="microsoftwebhostingenvironmentsworkerpools"></a>Microsoft.Web/hostingEnvironments/workerPools
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Rozměry|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|WorkersTotal|Celkový počet pracovníků|Počet|Průměr|Celkový počet pracovníků|Žádné|
-|WorkersAvailable|Zaměstnanci, kteří jsou k dispozici|Počet|Průměr|Zaměstnanci, kteří jsou k dispozici|Žádné|
-|WorkersUsed|Využívané pracovní procesy|Počet|Průměr|Využívané pracovní procesy|Žádné|
-|CpuPercentage|Procento procesoru|Procento|Průměr|Procento procesoru|Instance|
-|MemoryPercentage|Procento paměti|Procento|Průměr|Procento paměti|Instance|
+|Celkem pracovníků|Celkový počet pracovníků|Počet|Průměr|Celkový počet pracovníků|Žádný|
+|PracovníciK dispozici|Dostupní pracovníci|Počet|Průměr|Dostupní pracovníci|Žádný|
+|Použité pracovníky|Ojeté pracovníky|Počet|Průměr|Ojeté pracovníky|Žádný|
+|Procento procesoru|Procento procesoru|Procento|Průměr|Procento procesoru|Instance|
+|Procento paměti|Procento paměti|Procento|Průměr|Procento paměti|Instance|
 ## <a name="next-steps"></a>Další kroky
-* [Přečtěte si o metrikách v Azure Monitor](data-platform.md)
+* [Přečtěte si o metrikách ve Službě Azure Monitor](data-platform.md)
 * [Vytváření upozornění na metriky](alerts-overview.md)
-* [Exportovat metriky do úložiště, centra událostí nebo Log Analytics](platform-logs-overview.md)
+* [Export metrik do úložiště, Centra událostí nebo analýzy protokolů](platform-logs-overview.md)

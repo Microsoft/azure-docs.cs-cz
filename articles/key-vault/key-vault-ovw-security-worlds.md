@@ -1,5 +1,6 @@
 ---
-title: Azure Key Vault zabezpečení světů | Microsoft Docs
+title: Azure Key Vault bezpečnostní světy | Dokumenty společnosti Microsoft
+description: Azure Key Vault je služba s více klienty. Používá fond hsm v každé umístění Azure. Všechna umístění v zeměpisné oblasti sdílejí kryptografickou hranici.
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
@@ -7,41 +8,41 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 07/03/2017
-ms.openlocfilehash: 35d2683495a12b864378f8fb6f5edb6663d92c27
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 3584f83c5e1a5e83d069373395227b70c084eae9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78194916"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79457385"
 ---
-# <a name="azure-key-vault-security-worlds-and-geographic-boundaries"></a>Azure Key Vault světů zabezpečení a geografické hranice
+# <a name="azure-key-vault-security-worlds-and-geographic-boundaries"></a>Azure Key Vault bezpečnostní světy a geografické hranice
 
-Azure Key Vault je víceklientské služby a v každém umístění Azure používá fond modulů hardwarového zabezpečení (HSM). 
+Azure Key Vault je služba s více klienty a používá fond modulů hardwarového zabezpečení (HSM) v každém umístění Azure. 
 
-Všechny HSM v umístěních Azure ve stejné geografické oblasti sdílejí stejnou šifrovací hranici (Thales Security World). Například Východní USA a Západní USA sdílet stejný svět zabezpečení, protože patří do geografického umístění USA. Podobně všechna umístění Azure v Japonsku sdílejí stejný bezpečnostní svět a všechna umístění Azure v Austrálii, Indii a tak dále. 
+Všechny hmenové názvy v umístění Azure ve stejné geografické oblasti sdílejí stejnou kryptografickou hranici (Thales Security World). Například východní USA a Západní USA sdílejí stejný svět zabezpečení, protože patří do geografické polohy USA. Podobně všechna umístění Azure v Japonsku sdílejí stejný svět zabezpečení a všechna umístění Azure v Austrálii, Indii a tak dále. 
 
 ## <a name="backup-and-restore-behavior"></a>Chování zálohování a obnovení
 
-Záloha klíče z trezoru klíčů v jednom umístění Azure se dá obnovit do trezoru klíčů v jiném umístění Azure, pokud jsou splněné obě tyto podmínky:
+Zálohu odebranou klíči z trezoru klíčů v jednom umístění Azure lze obnovit do trezoru klíčů v jiném umístění Azure, pokud jsou splněny obě tyto podmínky:
 
-- Obě umístění Azure patří do stejného geografického umístění.
-- Oba trezory klíčů patří do stejného předplatného Azure.
+- Obě umístění Azure patří do stejné zeměpisné polohy
+- Oba trezory klíčů patří ke stejnému předplatnému Azure.
 
-Například záloha pořízená daným předplatným klíče v trezoru klíčů v Západní Indie může být obnovena pouze do jiného trezoru klíčů ve stejném předplatném a geografickém umístění. Západní Indie, Střed Indie nebo Jižní Indie.
+Například záloha přijatá daným předplatným klíče v trezoru klíčů v západní Indii může být obnovena pouze do jiného trezoru klíčů ve stejném předplatném a geografickém umístění. západní Indie, střední Indie nebo jižní Indie.
 
-## <a name="regions-and-products"></a>Oblasti a produkty
+## <a name="regions-and-products"></a>Regiony a produkty
 
-- [Oblasti Azure](https://azure.microsoft.com/regions/)
+- [Oblast Azure](https://azure.microsoft.com/regions/)
 - [Produkty společnosti Microsoft podle oblastí](https://azure.microsoft.com/regions/services/)
 
-Oblasti se mapují na světů zabezpečení, které se zobrazují jako hlavní nadpisy v tabulkách:
+Oblasti jsou mapovány do světů zabezpečení, které jsou v tabulkách zobrazeny jako hlavní nadpisy:
 
-V článku produkty podle oblasti obsahuje například karta **Severní Amerika** , USA – východ, střed USA, západní USA, všechna mapování na oblast v Severní Americe. 
+V článku Produkty podle oblasti například karta **Amerika** obsahuje všechny mapování na oblast Ameriky – východ USA, STŘEDNÍ USA, ZÁPADNÍ USA. 
 
 >[!NOTE]
->Výjimkou je to, že US DOD a USA – střed mají vlastní světů zabezpečení. 
+>Výjimkou je, že US DOD EAST a US DOD CENTRAL mají své vlastní bezpečnostní světy. 
 
-Podobně jsou na kartě **Evropa** v oblasti Severní Evropa a západní Evropa namapovány na oblast Evropa. Totéž platí také na kartě **Asie a Tichomoří** .
+Podobně na kartě **Evropa** se severní Evropa i ZÁPADNÍ EVROPA mapují na evropský region. Totéž platí i na kartě **Asie a Tichomoří.**
 
 
 

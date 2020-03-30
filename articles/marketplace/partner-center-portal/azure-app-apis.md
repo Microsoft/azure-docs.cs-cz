@@ -1,58 +1,57 @@
 ---
-title: Připojování rozhraní API pro aplikace Azure na komerčním webu Marketplace
-description: Požadavky na rozhraní API pro aplikace Azure na komerčním webu Marketplace na partnerském centru Microsoftu.
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+title: Připojení rozhraní API pro aplikace Azure na komerčním trhu
+description: Požadavky rozhraní API pro aplikace Azure na komerčním trhu v Microsoft Partner Center.
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: c14d8c6f27e4b0f4a4a75fa14b83455ff30ee35a
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: cc4d56058ce3985ec3a1d9124ef4ec73ff6be1a2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933665"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279755"
 ---
-# <a name="api-for-onboarding-azure-apps-in-partner-center"></a>Rozhraní API pro připojování aplikací Azure do partnerského centra
+# <a name="api-for-onboarding-azure-apps-in-partner-center"></a>ROZHRANÍ API pro připojení aplikací Azure v Partnerském centru
 
-*Rozhraní API pro odeslání prostřednictvím služby partner Center* slouží k programovému dotazování, vytváření odesílání pro a publikování nabídek Azure.  Toto rozhraní API je užitečné v případě, že váš účet spravuje mnoho nabídek a chcete automatizovat a optimalizovat proces odeslání pro tyto nabídky.
+Pomocí *rozhraní API pro odesílání v Partnerském centru* můžete programově dotazovat, vytvářet odeslání a publikovat nabídky Azure.  Toto rozhraní API je užitečné, pokud váš účet spravuje mnoho nabídek a chcete automatizovat a optimalizovat proces odesílání pro tyto nabídky.
 
-## <a name="api-prerequisites"></a>Požadavky na rozhraní API
+## <a name="api-prerequisites"></a>Požadavky rozhraní API
 
-K dispozici je několik programových prostředků, které potřebujete k používání rozhraní API partnerského centra pro produkty Azure: 
+K použití rozhraní API partnerského centra pro produkty Azure potřebujete několik programových prostředků: 
 
 - aplikace Azure Active Directory.
-- přístupový token pro Azure Active Directory (Azure AD).
+- přístupový token služby Azure Active Directory (Azure AD).
 
-### <a name="step-1-complete-prerequisites-for-using-the-partner-center-submission-api"></a>Krok 1: dokončení požadavků na použití rozhraní API pro odeslání partnerského centra
+### <a name="step-1-complete-prerequisites-for-using-the-partner-center-submission-api"></a>Krok 1: Dokončení předpokladů pro použití rozhraní API pro odesílání v Partnerském centru
 
-Než začnete psát kód pro volání rozhraní API pro odeslání partnerského centra, ujistěte se, že jste dokončili následující požadavky.
+Než začnete psát kód pro volání rozhraní API pro odeslání v Partnerském centru, ujistěte se, že jste dokončili následující požadavky.
 
-- Vy (nebo vaše organizace) musí mít adresář služby Azure AD a musíte mít oprávnění [globálního správce](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) pro tento adresář. Pokud už používáte Office 365 nebo jiné firemní služby od Microsoftu, už máte adresář Azure AD. V opačném případě můžete [vytvořit novou službu Azure AD v partnerském centru](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center#create-a-brand-new-azure-ad-to-associate-with-your-partner-center-account) bez dalších poplatků.
+- Vy (nebo vaše organizace) musíte mít adresář Azure AD a musíte mít [oprávnění globálního správce](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) pro adresář. Pokud už používáte Office 365 nebo jiné obchodní služby od Microsoftu, už máte adresář Azure AD. V opačném případě můžete [vytvořit nový Azure AD v Centru partnerů](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center#create-a-brand-new-azure-ad-to-associate-with-your-partner-center-account) bez dalších poplatků.
 
-- Musíte [přidružit aplikaci Azure AD k účtu partnerského centra](https://docs.microsoft.com/windows/uwp/monetize/create-and-manage-submissions-using-windows-store-services#associate-an-azure-ad-application-with-your-windows-partner-center-account) a získat ID TENANTA, ID klienta a klíč. Tyto hodnoty budete potřebovat k získání přístupového tokenu Azure AD, který použijete v volání rozhraní API pro odeslání Microsoft Store.
+- Aplikaci Azure AD musíte [přidružit k účtu Partnerského centra](https://docs.microsoft.com/windows/uwp/monetize/create-and-manage-submissions-using-windows-store-services#associate-an-azure-ad-application-with-your-windows-partner-center-account) a získat ID klienta, ID klienta a klíč. Tyto hodnoty potřebujete k získání přístupového tokenu Azure AD, který budete používat při volání rozhraní API pro odeslání Microsoft Store.
 
-#### <a name="how-to-associate-an-azure-ad-application-with-your-partner-center-account"></a>Jak přidružit aplikaci Azure AD k účtu partnerského centra
+#### <a name="how-to-associate-an-azure-ad-application-with-your-partner-center-account"></a>Jak přidružit aplikaci Azure AD k účtu Partnerského centra
 
-Pokud chcete použít rozhraní API pro odesílání Microsoft Store, musíte aplikaci Azure AD přidružit k účtu partnerského centra, načíst ID tenanta a ID klienta pro aplikaci a vygenerovat klíč. Aplikace Azure AD představuje aplikaci nebo službu, ze které chcete zavolat rozhraní API pro odeslání partnerského centra. K získání přístupového tokenu Azure AD, který předáte do rozhraní API, potřebujete ID tenanta, ID klienta a klíč.
+Chcete-li použít rozhraní API pro odeslání microsoft store, musíte přidružit aplikaci Azure AD k účtu Partner ského centra, načíst ID klienta a ID klienta pro aplikaci a vygenerovat klíč. Aplikace Azure AD představuje aplikaci nebo službu, ze které chcete volat rozhraní API pro odeslání partnerského centra. Potřebujete ID klienta, ID klienta a klíč k získání přístupového tokenu Azure AD, který předáte do rozhraní API.
 
 >[!Note]
->Tuto úlohu je třeba provést pouze jednou. Až budete mít ID tenanta, ID klienta a klíč, můžete je znovu použít, kdykoli budete potřebovat vytvořit nový přístupový token Azure AD.
+>Tento úkol je třeba provést pouze jednou. Po budete mít ID klienta, ID klienta a klíč, můžete je znovu použít kdykoli v případě, že potřebujete vytvořit nový přístupový token Azure AD.
 
-1. V partnerském centru [přidružte účet partnerského centra vaší organizace k adresáři Azure AD vaší organizace](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center).
-1. Potom na stránce **Uživatelé** v části **Nastavení účtu** v partnerském centru [přidejte aplikaci Azure AD](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#add-azure-ad-applications-to-your-partner-center-account) , která představuje aplikaci nebo službu, kterou budete používat pro přístup k odeslání účtu partnerského centra. Ujistěte se, že tuto aplikaci přiřadíte roli **správce** . Pokud aplikace ještě v adresáři Azure AD neexistuje, můžete [vytvořit novou aplikaci Azure AD v partnerském centru](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#create-a-new-azure-ad-application-account-in-your-organizations-directory-and-add-it-to-your-partner-center-account).
-1. Vraťte se na stránku **Uživatelé** , klikněte na název vaší aplikace Azure AD, přejděte do nastavení aplikace a zkopírujte **ID TENANTA** a hodnoty **ID klienta** .
-1. Klikněte na **Přidat nový klíč**. Na následující obrazovce Zkopírujte hodnotu **klíče** . Po opuštění této stránky nebudete moct znovu získat přístup k těmto informacím. Další informace najdete v tématu [Správa klíčů pro aplikaci Azure AD](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#manage-keys).
+1. V Partnerském centru [přidružte účet Partnerského centra vaší organizace k adresáři Azure AD vaší organizace](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center).
+1. Dále na stránce **Uživatelé** v části **Nastavení účtu** v Centru partnerů [přidejte aplikaci Azure AD,](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#add-azure-ad-applications-to-your-partner-center-account) která představuje aplikaci nebo službu, kterou použijete pro přístup k odeslání pro váš účet Partnerského centra. Ujistěte se, že jste této aplikaci přiřadili roli **Správce.** Pokud aplikace ještě neexistuje ve vašem adresáři Azure AD, můžete [vytvořit novou aplikaci Azure AD v Centru partnerů](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#create-a-new-azure-ad-application-account-in-your-organizations-directory-and-add-it-to-your-partner-center-account).
+1. Vraťte se na stránku **Uživatelé,** kliknutím na název aplikace Azure AD přejděte na nastavení aplikace a zkopírujte hodnoty **ID klienta** a **ID klienta.**
+1. Klepněte na tlačítko **Přidat novou klávesu**. Na následující obrazovce zkopírujte hodnotu **Klíč.** Po opuštění této stránky nebudete mít přístup k těmto informacím znovu. Další informace najdete [v tématu Správa klíčů pro aplikaci Azure AD](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#manage-keys).
 
-### <a name="step-2-obtain-an-azure-ad-access-token"></a>Krok 2: získání přístupového tokenu Azure AD
+### <a name="step-2-obtain-an-azure-ad-access-token"></a>Krok 2: Získání přístupového tokenu Azure AD
 
-Před voláním kterékoli z metod v rozhraní API pro odeslání z partnerského centra musíte nejdřív získat přístupový token Azure AD, který předáte do **autorizační** hlavičky každé metody v rozhraní API. Po získání přístupového tokenu máte 60 minut, než ho začnete používat. Po vypršení platnosti tokenu můžete token aktualizovat, abyste ho mohli dál používat v budoucích voláních rozhraní API.
+Před voláním některé z metod v rozhraní API pro odesílání partnerského centra musíte nejprve získat přístupový token Azure AD, který předáte do hlavičky **autorizace** každé metody v rozhraní API. Po získání přístupového tokenu máte 60 minut na jeho použití před vypršením jeho platnosti. Po vypršení platnosti tokenu můžete aktualizovat token, abyste ho mohli dál používat v budoucích voláních rozhraní API.
 
-Pokud chcete získat přístupový token, postupujte podle pokynů v tématu [volání služby Service to Service Calls pomocí pověření klienta](https://azure.microsoft.com/documentation/articles/active-directory-protocols-oauth-service-to-service/) k odeslání `HTTP POST` do koncového bodu `https://login.microsoftonline.com/<tenant_id>/oauth2/token`. Tady je ukázkový požadavek:
+Chcete-li získat přístupový token, postupujte podle pokynů v `HTTP POST` service `https://login.microsoftonline.com/<tenant_id>/oauth2/token` volání pomocí [pověření klienta](https://azure.microsoft.com/documentation/articles/active-directory-protocols-oauth-service-to-service/) k odeslání koncového bodu. Zde je ukázkový požadavek:
 
-JSONCopy
+JSONCopy (JSON)
 ```Json
 POST https://login.microsoftonline.com/<tenant_id>/oauth2/token HTTP/1.1
 Host: login.microsoftonline.com
@@ -64,10 +63,10 @@ grant_type=client_credentials
 &resource= https://api.partner.microsoft.com
 ```
 
-Pro hodnotu *tenant_id* `POST URI` a parametry *client_id* a *CLIENT_SECRET* zadejte ID tenanta, ID klienta a klíč vaší aplikace, které jste získali z partnerského centra v předchozí části. Pro parametr *prostředku* je nutné zadat `https://api.partner.microsoft.com`.
+Pro *tenant_id* hodnotu `POST URI` v a *a client_id* a *client_secret* parametry, zadejte ID klienta, ID klienta a klíč pro vaši aplikaci, kterou jste načetli z Centra partnerů v předchozí části. Pro parametr *prostředku* je `https://api.partner.microsoft.com`nutné zadat .
 
-### <a name="step-3-use-the-microsoft-store-submission-api"></a>Krok 3: použití rozhraní API pro odeslání Microsoft Store
+### <a name="step-3-use-the-microsoft-store-submission-api"></a>Krok 3: Použití rozhraní API pro odeslání microsoft store
 
-Po získání přístupového tokenu Azure AD můžete volat metody v rozhraní API pro odesílání v partnerském centru. Pokud chcete vytvořit nebo aktualizovat odesílání, obvykle v určitém pořadí zavoláte do rozhraní API pro odesílání v partnerském centru více metod. Informace o jednotlivých scénářích a syntaxi jednotlivých metod najdete v tématu rozhraní API pro přijímání ingestování.
+Po vytvoření přístupového tokenu Azure AD můžete volat metody v rozhraní API pro odesílání v Partnerském centru. Chcete-li vytvořit nebo aktualizovat odeslání, obvykle voláte více metod v rozhraní API pro odeslání partnerského centra v určitém pořadí. Informace o jednotlivých scénářích a syntaxi každé metody naleznete v tématu Ingestion API naparování.
 
 https://apidocs.microsoft.com/services/partneringestion/

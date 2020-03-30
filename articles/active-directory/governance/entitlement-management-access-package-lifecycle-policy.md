@@ -1,6 +1,6 @@
 ---
 title: Změna nastavení životního cyklu pro balíček přístupu ve správě nároků Azure AD – Azure Active Directory
-description: Přečtěte si, jak změnit nastavení životního cyklu pro balíček přístupu v Azure Active Directory správě nároků.
+description: Přečtěte si, jak změnit nastavení životního cyklu pro balíček přístupu ve správě nároků služby Azure Active Directory.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,42 +17,42 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 959d85f496a4a573a969bf736aba137d5b86154a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79261980"
 ---
-# <a name="change-lifecycle-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Změna nastavení životního cyklu pro balíček přístupu v Azure AD – Správa nároků
+# <a name="change-lifecycle-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Změna nastavení životního cyklu pro balíček přístupu ve správě nároků Azure AD
 
-Jako správce balíčků přístupu můžete kdykoli změnit nastavení životního cyklu pro balíček přístupu úpravou stávající zásady. Pokud změníte datum vypršení platnosti zásady, datum vypršení platnosti požadavků, které jsou již v nedokončeném schválení nebo schváleném stavu, se nezmění.
+Jako správce přístupových balíčků můžete kdykoli změnit nastavení životního cyklu pro přístupový balíček úpravou existující zásady. Pokud změníte datum vypršení platnosti zásady, datum vypršení platnosti pro požadavky, které jsou již v čekajícím schválení nebo schváleném stavu, se nezmění.
 
 Tento článek popisuje, jak změnit nastavení životního cyklu pro existující balíček přístupu.
 
-## <a name="open-lifecycle-settings"></a>Otevřít nastavení životního cyklu
+## <a name="open-lifecycle-settings"></a>Otevření nastavení životního cyklu
 
-Chcete-li změnit nastavení životního cyklu pro balíček přístupu, je nutné otevřít odpovídající zásadu. Pomocí těchto kroků otevřete nastavení životního cyklu pro balíček přístupu.
+Chcete-li změnit nastavení životního cyklu pro přístupový balíček, musíte otevřít odpovídající zásady. Podle těchto kroků otevřete nastavení životního cyklu pro přístupový balíček.
 
-**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
+**Předpokladová role:** Globální správce, správce uživatele, vlastník katalogu nebo správce balíčků aplikace Access
 
-1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
+1. Na webu Azure Portal klikněte na **Azure Active Directory** a potom klikněte na **Identity Governance**.
 
-1. V nabídce vlevo klikněte na **přístup k balíčkům** a otevřete balíček pro přístup.
+1. V levé nabídce klikněte na **accessové balíčky** a potom otevřete přístupový balíček.
 
-1. Klikněte na **zásady** a potom klikněte na zásadu, která má nastavení životního cyklu, které chcete upravit.
+1. Klikněte na **Zásady** a potom klikněte na zásadu, která má nastavení životního cyklu, které chcete upravit.
 
-    V dolní části stránky se otevře podokno Podrobnosti o zásadách.
+    Otevře se podokno podrobností zásad v dolní části stránky.
 
-    ![Přístupový balíček – podokno podrobností zásad](./media/entitlement-management-shared/policy-details.png)
+    ![Balíček aplikace Access – podokno podrobností o zásadách](./media/entitlement-management-shared/policy-details.png)
 
-1. Zásadu upravíte kliknutím na **Upravit** .
+1. Kliknutím na **Upravit** upravte zásadu.
 
-    ![Přístup k balíčku – upravit zásadu](./media/entitlement-management-shared/policy-edit.png)
+    ![Přístupový balíček – zásady úprav](./media/entitlement-management-shared/policy-edit.png)
 
-1. Kliknutím na kartu **životní cyklus** otevřete nastavení životního cyklu.
+1. Kliknutím na kartu **Životní cyklus** otevřete nastavení životního cyklu.
 
 [!INCLUDE [Entitlement management lifecycle policy](../../../includes/active-directory-entitlement-management-lifecycle-policy.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Nastavení žádosti o změnu a schválení pro balíček pro přístup](entitlement-management-access-package-request-policy.md)
+- [Změna nastavení žádosti a schválení pro přístupový balíček](entitlement-management-access-package-request-policy.md)

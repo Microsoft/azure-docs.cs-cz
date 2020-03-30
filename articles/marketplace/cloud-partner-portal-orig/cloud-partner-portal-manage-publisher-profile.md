@@ -1,51 +1,49 @@
 ---
-title: Spravovat Azure Marketplace a profil vydavatele AppSource
-description: Správa Azure Marketplace a profilu vydavatele AppSource
-services: Azure, Marketplace, Cloud Partner Portal,
+title: Správa profilu vydavatele Azure Marketplace a AppSource
+description: Správa profilu vydavatele Azure Marketplace a AppSource
 author: qianw211
-manager: pbutlerm
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/15/2018
-ms.author: pabutler
-ms.openlocfilehash: c9e8e73d18ec0c2a7334fbb5521e89ead4334cc7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 9b89ff803e08d0ca929eea913be9a1c87664b124
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826370"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280231"
 ---
-# <a name="manage-azure-marketplace-and-appsource-publisher-profile"></a>Spravovat profil vydavatele ' Azure Marketplace ' a ' AppSource '
+# <a name="manage-azure-marketplace-and-appsource-publisher-profile"></a>Správa profilu vydavatele Azure Marketplace a AppSource
 
-Tento dokument je návodem k zobrazení a správě uživatelů v registrovaném profilu vydavatele.
+Tento dokument je návodem k zobrazení a správě uživatelů v profilu registrovaného majitele stránek.
 
-V tuto chvíli jste dokončili kroky, abyste se stali Azure Marketplace a vydavatelem AppSource. Profil vydavatele je zaregistrován na **[portál partnerů cloudu](https://cloudpartner.azure.com/)** následující schválení vaší partnerské žádosti. Váš profil vydavatele bude platit pro všechny nabídky a SKU publikované z účtu, který jste použili při registraci partnera.
+Do této doby jste dokončili kroky, aby se stal Azure Marketplace a AppSource vydavatele. Profil vydavatele je registrován na **[portálu cloudových partnerů](https://cloudpartner.azure.com/)** po schválení vašeho požadavku partnera. Váš profil majitele stránek se bude vztahovat na všechny nabídky a sku sku zveřejněny z účtu použitého při registraci partnera.
 
-Pokud jste svoji společnost nezaregistrovali jako cloudový partner, přečtěte si téma Začínáme [s portálem Cloud Partner](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal).
+Pokud jste svou společnost nezaregistrovali jako partnera v cloudu, přečtěte si informace [o tom, jak začít s portálem pro partnery v cloudu](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal).
 
-**Profil vydavatele**: váš profil vydavatele rozlišuje vaši společnost na Azure Marketplace a AppSource. Skládá se z ID vašeho vydavatele, zobrazovaného jména a e-mailů vlastníků. Dobře spravovaný profil zvýší vaši viditelnost a pomůže uživatelům Marketplace snadno identifikovat a vybrat příslušnou nabídku.
+**Profil vydavatele:** Profil vydavatele rozlišuje vaši společnost na Azure Marketplace a AppSource. Skládá se z id vydavatele, zobrazovaného jména a e-mailů vlastníka. Dobře spravovaný profil zvýší vaši viditelnost a pomůže uživatelům tržiště snadno identifikovat a vybrat vhodnou nabídku.
 
 > [!NOTE]
-> ID vydavatele a e-mail registrovaného vlastníka se po publikování první nabídky neumožňují upravovat. Můžete si ale prohlédnout svůj profil a upravit zobrazovaný název vydavatele z portál partnerů cloudu.
+> Id vašeho majitele stránek a e-mail s registrovaným vlastníkem nelze po publikování první nabídky upravit. Můžete však zobrazit svůj profil a upravit zobrazovaný název vydavatele z portálu partnerů cloudu.
 
 <!-- Dummy comment added to suppress MD linter warning -->
 
 > [!NOTE]
-> Do svého profilu publikování přidejte uživatele (přispěvatelé a vlastníci) z oddílu uživatelé v levém navigačním podokně v části Uživatelé portálu cloud partner.
+> Přidejte uživatele (přispěvatele a vlastníky) do svého profilu publikování z oddílu Uživatelé v levém navigačním podokně z oddílu Uživatelé na portálu cloudových partnerů."
 
-**Chcete-li zobrazit a spravovat váš profil vydavatele**, klikněte v pravém horním řádku nabídky na **kartu Profil vydavatele**.
+**Chcete-li zobrazit a spravovat profil vydavatele**, klepněte na panelu nabídek v pravém horním rohu na **kartu Profil aplikace Publisher**.
 
-![Karta profil vydavatele – profil vydavatele](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofilenew.png)
+![Karta Profil aplikace Publisher – profil vydavatele](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofilenew.png)
 
-![Podrobnosti o profilu vydavatele – podrobnosti o profilu vydavatele](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofiledetails.png)
+![Podrobnosti profilu vydavatele – podrobnosti o profilu vydavatele](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofiledetails.png)
 
-**Propojit účet služby Dev Center**: můžete také propojit existující účet služby Dev Center s vaším profilem vydavatele na portál partnerů cloudu.
-Nejdřív se přihlaste k portálu pomocí stejné e-mailové adresy, kterou jste použili k registraci svého účtu služby Dev Center. Na stránce profil vydavatele se zobrazí stav účtu vývojového centra, e-mail vlastníka účtu centra pro vývojáře a název účtu centra pro vývojáře.
+**Propojte svůj účet Dev Center**: Svůj stávající účet Dev Center můžete také propojit s profilem vydavatele na portálu partnerů cloudu.
+Nejprve se přihlaste k portálu pomocí stejné e-mailové adresy, která se používá k registraci účtu Dev Center. Potom na stránce profilu vydavatele se zobrazí stav účtu Dev Center, e-mail vlastníka účtu Dev Center a název účtu Dev Center.
 
 >[!NOTE]
->Registrace účtu centra pro vývoj je povinná pro publikování placených skladových míst na trhu.
+>Registrace účtu Dev Center je povinná pro publikování placených prodejních míst na trhu.
 
-Pokud nemáte [účet centra pro vývojáře](./cloud-partner-portal-dev-center-accounts-registration.md), můžete vytvořit účet. Pak přidejte registrovanou e-mailovou adresu jako vlastníka na portál partnerů cloudu pro vaši nabídku. Vlastník může do vašeho profilu publikování přidat jenom registrovanou e-mailovou adresu z oddílu **uživatel** . Pak se přihlaste k portálu pomocí stejné e-mailové adresy a propojte svůj účet na webu Dev Center.
+Pokud nemáte [účet Centra pro vývojáře](./cloud-partner-portal-dev-center-accounts-registration.md), můžete si vytvořit účet. Pak přidejte registrovanou e-mailovou adresu jako vlastníka na portálu partnerů cloudu pro vaši nabídku. Vlastník může do vašeho profilu publikování přidat registrovanou e-mailovou adresu pouze z části **Uživatel.** Potom se přihlaste k portálu pomocí stejné e-mailové adresy a propojte svůj účet Dev Center.
 
-![Podrobnosti o profilu vydavatele – popis profilu vydavatele](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofiledescription.png)
+![Podrobnosti profilu vydavatele – popis profilu vydavatele](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofiledescription.png)

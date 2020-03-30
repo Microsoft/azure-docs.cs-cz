@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 02/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 0e3f996ab2a42057198368759c75f10e911d5f54
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 608b148dc3929065df44530da65e695df19be03e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68936776"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79486125"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>Je protokol BGP podporován ve všech SKU služby Azure VPN Gateway?
-Ne, protokol BGP se podporuje v branách VPN Azure úrovně **VpnGw1**, **VpnGw2**, **VpnGw3**, **Standard** a **HighPerformance**. Pro SKU **Basic** NENÍ podporován.
+Protokol BGP je podporovaný na všech skladových objektech Azure VPN Gateawy s výjimkou základní skladové položky.
 
 ### <a name="can-i-use-bgp-with-azure-policy-based-vpn-gateways"></a>Je možné protokol BGP používat se službami Azure VPN Gateway se zásadami?
 Ne, protokol BGP je podporován pouze u služeb VPN Gateway se směrováním.
@@ -24,14 +24,14 @@ Ne, protokol BGP je podporován pouze u služeb VPN Gateway se směrováním.
 ### <a name="can-i-use-private-asns-autonomous-system-numbers"></a>Je možné používat privátní čísla ASN (čísla autonomního systému)?
 Ano, svá vlastní veřejná čísla ASN nebo privátní čísla ASN můžete používat pro své místní sítě i virtuální sítě Azure.
 
-### <a name="can-i-use-32-bit-asns-autonomous-system-numbers"></a>Je možné používat 32bitová čísla ASN (čísla autonomního systému)?
-Ne, služby Azure VPN Gateway v současnosti podporují 16bitová čísla ASN.
+### <a name="can-i-use-32-bit-4-byte-asns-autonomous-system-numbers"></a>Mohu použít 32bitové (4bajtové) asny (autonomní systémová čísla)?
+Ano, brány Azure VPN teď podporují 32bitové (4bajtové) asn. Ke konfiguraci pomocí asn v desítkovém formátu použijte powershell/cli/sdk.
 
 ### <a name="are-there-asns-reserved-by-azure"></a>Existují ASN vyhrazená sítí Azure?
 Ano, následující ASN jsou vyhrazena sítí Azure pro vnitřní a vnější peering:
 
-* Veřejné čísla ASN: 8074, 8075, 12076
-* Privátní čísla ASN: 65515, 65517, 65518, 65519, 65520
+* Veřejná ASN: 8074, 8075, 12076
+* Soukromá ASN: 65515, 65517, 65518, 65519, 65520
 
 Tato ASN nelze zadat pro místní zařízení VPN při připojování k bránám sítě Azure VPN.
 
@@ -40,12 +40,12 @@ Ano, následující ASN jsou [rezervovaná pro IANA](http://www.iana.org/assignm
 
 23456, 64496–64511, 65535–65551 a 429496729
 
-### <a name="what-private-asns-can-i-use"></a>Jaké soukromé čísla ASN můžu použít?
-Rozsah použitelných privátních čísla ASN, které lze použít, jsou tyto:
+### <a name="what-private-asns-can-i-use"></a>Jaké soukromé ASN smím použít?
+Použitelný rozsah soukromých ASNs, které lze použít, jsou:
 
 * 64512-65514, 65521-65534
 
-Tyto čísla ASN nejsou vyhrazené organizací IANA nebo Azure pro použití, a proto je můžete použít k přiřazení VPN Gateway k Azure.
+Tyto asns nejsou vyhrazeny IANA nebo Azure pro použití, a proto lze přiřadit k bráně Azure VPN.
 
 ### <a name="can-i-use-the-same-asn-for-both-on-premises-vpn-networks-and-azure-vnets"></a>Je možné používat stejné číslo ASN pro místní sítě VPN a sítě Azure VNet?
 Ne, pokud pomocí protokolu BGP vzájemně propojujete místní sítě a sítě Azure VNet, je nutné pro ně přiřadit různá čísla ASN. Službám Azure VPN Gateway je přiřazeno výchozí číslo ASN 65515, ať už je protokol BGP povolen pro připojení mezi místními sítěmi, či nikoliv. Toto výchozí nastavení můžete změnit přiřazením jiného čísla ASN při vytváření služby VPN Gateway nebo můžete číslo ASN změnit po vytvoření služby brány. Místní čísla ASN je nutné přiřadit odpovídajícím bránám místních sítí Azure.
@@ -57,7 +57,7 @@ Služby Azure VPN Gateway budou místním zařízením BGP prezentovat následuj
 * předpony Azure pro jednotlivé brány místních sítí připojené ke službě Azure VPN Gateway
 * směrování převzatá z jiných relací vytvoření partnerského vztahu protokolu BGP připojených ke službě Azure VPN Gateway, **kromě výchozího směrování nebo směrování překrytých jinými předponami sítě VNet**
 
-### <a name="how-many-prefixes-can-i-advertise-to-azure-vpn-gateway"></a>Kolik předpon je možné inzerovat službě Azure VPN Gateway?
+### <a name="how-many-prefixes-can-i-advertise-to-azure-vpn-gateway"></a>Kolik předpon můžu inzerovat na Azure VPN gateway?
 Podporujeme až 4000 předpon. Pokud počet předpon překročí toto omezení, relace BGP se ukončí.
 
 ### <a name="can-i-advertise-default-route-00000-to-azure-vpn-gateways"></a>Mohu inzerovat výchozí cestu (0.0.0.0/0) do bran Azure VPN Gateway?
@@ -78,7 +78,7 @@ Ano, protokol BGP lze použít pro připojení mezi místními sítěmi i připo
 Ano, u stejné služby Azure VPN Gateway je možné kombinovat připojení pomocí protokolu BGP i bez protokolu BGP.
 
 ### <a name="does-azure-vpn-gateway-support-bgp-transit-routing"></a>Podporuje služba Azure VPN Gateway směrování provozu pomocí protokolu BGP?
-Ano, směrování provozu pomocí protokolu BGP je podporováno, pouze s tou výjimkou, že služby Azure VPN Gateway **NEBUDOU** prezentovat výchozí směrování ostatním partnerům BGP. Pokud chcete povolit směrování provozu mezi více různými službami Azure VPN Gateway, je nutné povolit protokol BGP ve všech zprostředkujících připojení mezi sítěmi VNet. Další informace najdete v tématu [o protokolu BGP](../articles/vpn-gateway/vpn-gateway-bgp-overview.md).
+Ano, směrování provozu pomocí protokolu BGP je podporováno, pouze s tou výjimkou, že služby Azure VPN Gateway **NEBUDOU** prezentovat výchozí směrování ostatním partnerům BGP. Pokud chcete povolit směrování provozu mezi více různými službami Azure VPN Gateway, je nutné povolit protokol BGP ve všech zprostředkujících připojení mezi sítěmi VNet. Další informace naleznete v [tématu O protokolu BGP](../articles/vpn-gateway/vpn-gateway-bgp-overview.md).
 
 ### <a name="can-i-have-more-than-one-tunnel-between-azure-vpn-gateway-and-my-on-premises-network"></a>Je možné mít víc než jeden tunel mezi službou Azure VPN Gateway a místní sítí?
 Ano, můžete vytvořit více než jeden tunel VPN S2S mezi službou Azure VPN Gateway a místní sítí. Upozornění: Všechny tyto tunely se započítají do celkového počtu tunelů služeb Azure VPN Gateway a musíte pro oba tunely povolit BGP.
@@ -92,10 +92,10 @@ Ano, ale alespoň jedna z bran virtuální sítě musí být v konfiguraci aktiv
 Ano. 
 
 ### <a name="what-address-does-azure-vpn-gateway-use-for-bgp-peer-ip"></a>Jakou adresu služba Azure VPN Gateway používá pro IP adresu partnera BGP?
-Brána Azure VPN Gateway přidělí jednu IP adresu z rozsahu GatewaySubnet pro brány VPN typu aktivní-pohotovostní nebo dvě IP adresy pro brány VPN typu aktivní-aktivní. Můžete získat vlastní IP adresy protokolu BGP přidělené pomocí prostředí PowerShell (Get-AzVirtualNetworkGateway, vyhledat vlastnost "bgpPeeringAddress") nebo v Azure Portal (pod vlastností "konfigurace ASN protokolu BGP" na stránce Konfigurace brány).
+Brána Azure VPN přidělí jednu IP adresu z oblasti GatewaySubnet pro aktivní pohotovostní brány VPN nebo dvě IP adresy pro brány VPN s aktivní platností. Skutečná IP adresa Protokolu BGP přidělená můžete pomocí prostředí PowerShell (Get-AzVirtualNetworkGateway, vyhledejte vlastnost "bgpPeeringAddress" nebo na portálu Azure (ve vlastnosti Konfigurace protokolu BGP ASN na stránce Konfigurace brány).
 
 ### <a name="what-are-the-requirements-for-the-bgp-peer-ip-addresses-on-my-vpn-device"></a>Jaké jsou požadavky na IP adresu partnera BGP v zařízení VPN?
-Vaše místní adresa partnerského uzlu BGP **nesmí** být shodná s veřejnou IP adresou vašeho zařízení VPN nebo adresním prostorem virtuální sítě VPN Gateway. Jako místní adresu partnera BGP v zařízení VPN použijte jinou IP adresu. Může se jednat o adresu přiřazenou k rozhraní zpětné smyčky na zařízení, ale mějte na paměti, že se nemůže jednat o adresu APIPA (169.254.x.x). Adresu zadejte v odpovídající bráně místní sítě reprezentující umístění.
+Vaše místní adresa partnerské sítě BGP **nesmí** být stejná jako veřejná IP adresa vašeho zařízení VPN nebo adresní prostor virtuální sítě brány VPN. Jako místní adresu partnera BGP v zařízení VPN použijte jinou IP adresu. Může se jednat o adresu přiřazenou k rozhraní zpětné smyčky na zařízení, ale mějte na paměti, že se nemůže jednat o adresu APIPA (169.254.x.x). Adresu zadejte v odpovídající bráně místní sítě reprezentující umístění.
 
 ### <a name="what-should-i-specify-as-my-address-prefixes-for-the-local-network-gateway-when-i-use-bgp"></a>Co je třeba zadat jako předpony adres pro bránu místní sítě při použití protokolu BGP?
 Azure Local Network Gateway určuje počáteční předpony adres pro místní síť. Při použití protokolu BGP je nutné přidělit předponu hostitele (předponu /32) vaší IP adresy partnera BGP jako adresní prostor pro danou místní síť. Pokud je vaše IP adresa partnera BGP 10.52.255.254, je jako hodnotu localNetworkAddressSpace místní síťové brány reprezentující místní síť nutné zadat 10.52.255.254/32. To zajistí, že služba Azure VPN Gateway vytvoří relaci BGP prostřednictvím tunelu VPN S2S.

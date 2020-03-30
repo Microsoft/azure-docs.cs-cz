@@ -1,21 +1,21 @@
 ---
 title: Řešení potíží s běžnými chybami nasazení
-description: Popisuje řešení běžných chyb při nasazení prostředků do Azure pomocí Azure Resource Manager.
+description: Popisuje, jak vyřešit běžné chyby při nasazování prostředků do Azure pomocí Azure Resource Manager.
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 10/04/2019
-ms.openlocfilehash: 58519056bd59f449fe26aa2fee3620f3ed28cc31
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: bc1568c53cdb5518f694d77a2f28f3cf77296ee2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154512"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460377"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Řešení běžných problémů s nasazením v Azure při použití Azure Resource Manageru
 
-Tento článek popisuje některé běžné chyby při nasazení Azure a poskytuje informace pro řešení chyb. Pokud nemůžete najít kód chyby pro vaši chybu nasazení, přečtěte si téma [Hledání kódu chyby](#find-error-code).
+Tento článek popisuje některé běžné chyby nasazení Azure a poskytuje informace k vyřešení chyb. Pokud nemůžete najít kód chyby pro chybu nasazení, přečtěte si informace [o hledání kódu chyby](#find-error-code).
 
-Pokud hledáte informace o kódu chyby a tyto informace nejsou v tomto článku k dispozici, dejte nám prosím na starosti. V dolní části této stránky můžete nechat svůj názor. Zpětná vazba je sledována s problémy GitHubu.
+Pokud hledáte informace o kódu chyby a tyto informace nejsou uvedeny v tomto článku, dejte nám vědět. V dolní části této stránky můžete zanechat zpětnou vazbu. Zpětná vazba je sledována pomocí githubových problémů.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -23,62 +23,62 @@ Pokud hledáte informace o kódu chyby a tyto informace nejsou v tomto článku 
 
 | Kód chyby | Omezení rizik | Další informace |
 | ---------- | ---------- | ---------------- |
-| AccountNameInvalid | Řiďte se omezeními názvů účtů úložiště. | [Přeložit název účtu úložiště](error-storage-account-name.md) |
-| AccountPropertyCannotBeSet | Ověřte dostupné vlastnosti účtu úložiště. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
-| AllocationFailed | V clusteru nebo oblasti nejsou dostupné prostředky nebo nemůžou podporovat požadovanou velikost virtuálního počítače. Opakujte požadavek později nebo si vyžádejte jinou velikost virtuálního počítače. | [Problémy se zřizováním a](../../virtual-machines/linux/troubleshoot-deployment-new-vm.md)přidělením pro [problémy se systémem Linux, zřizováním a přidělením pro Windows](../../virtual-machines/windows/troubleshoot-deployment-new-vm.md) a [odstraňování potíží s přidělováním](../../virtual-machines/troubleshooting/allocation-failure.md)|
-| AnotherOperationInProgress | Počkejte na dokončení souběžné operace. | |
-| AuthorizationFailed | Váš účet nebo objekt služby nemá dostatečný přístup k dokončení nasazení. Ověřte, do jaké role účet patří, a jeho přístup k oboru nasazení.<br><br>Tato chyba se může zobrazit, když požadovaný poskytovatel prostředků není zaregistrován. | [Access Control na základě rolí Azure](../../role-based-access-control/role-assignments-portal.md)<br><br>[Vyřešit registraci](error-register-resource-provider.md) |
-| Důvodu chybného požadavku | Odeslali jste hodnoty nasazení, které se neshodují s tím, co očekává Správce prostředků. Pro pomoc s řešením potíží se podívejte na vnitřní stavovou zprávu. | [Odkaz na šablonu](/azure/templates/) a [podporovaná umístění](resource-location.md) |
-| Konflikt | Požadujete operaci, která není v aktuálním stavu prostředku povolena. Například změna velikosti disku je povolená jenom při vytváření virtuálního počítače nebo při uvolnění virtuálního počítače. | |
-| DeploymentActiveAndUneditable | Počkejte, než se dokončí souběžné nasazení do této skupiny prostředků. | |
-| DeploymentFailedCleanUp | Při nasazení v režimu úplného se odstraní všechny prostředky, které nejsou v šabloně. Tato chyba se zobrazí, pokud nemáte dostatečná oprávnění k odstranění všech prostředků, které v šabloně nejsou. Chcete-li se této chybě vyhnout, změňte režim nasazení na přírůstkové. | [Režimy nasazení Azure Resource Manager](deployment-modes.md) |
-| DeploymentNameInvalidCharacters | Název nasazení může obsahovat jenom písmena, číslice, znak "-", "." nebo "_". | |
-| DeploymentNameLengthLimitExceeded | Názvy nasazení jsou omezené na 64 znaků.  | |
-| DeploymentFailed | Chyba DeploymentFailed je obecná chyba, která neposkytuje podrobnosti potřebné k vyřešení chyby. Vyhledejte v podrobnostech o chybě kód chyby, který poskytuje další informace. | [Najít kód chyby](#find-error-code) |
-| DeploymentQuotaExceeded | Pokud dosáhnete limitu nasazení 800 na jednu skupinu prostředků, odstraňte nasazení z historie, která už nepotřebujete. | [Vyřešit chybu, pokud je počet nasazení vyšší než 800](deployment-quota-exceeded.md) |
+| AccountNameInvalid | Postupujte podle omezení pojmenování pro účty úložiště. | [Překlad názvu účtu úložiště](error-storage-account-name.md) |
+| PropertyPropertyCannotBeSet | Zkontrolujte dostupné vlastnosti účtu úložiště. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
+| Přidělení se nezdařilo. | Cluster nebo oblast nemá k dispozici prostředky nebo nemůže podporovat požadovanou velikost virtuálního počítače. Opakujte požadavek později nebo požádejte o jinou velikost virtuálního počítače. | [Zřizování a přidělování problémy pro Linux](../../virtual-machines/linux/troubleshoot-deployment-new-vm.md), [zřizování a přidělování problémy pro Windows](../../virtual-machines/windows/troubleshoot-deployment-new-vm.md) a řešení potíží přidělení [selhání](../../virtual-machines/troubleshooting/allocation-failure.md)|
+| Další operaceProbíhá | Počkejte na dokončení souběžné operace. | |
+| Autorizace se nezdařila. | Váš účet nebo instanční objekt nemá dostatečný přístup k dokončení nasazení. Zkontrolujte roli, do které váš účet patří, a jeho přístup k oboru nasazení.<br><br>Tato chyba se může zobrazit, pokud není zaregistrován požadovaný poskytovatel prostředků. | [Řízení přístupu na základě role v Azure](../../role-based-access-control/role-assignments-portal.md)<br><br>[Vyřešit registraci](error-register-resource-provider.md) |
+| Chybný požadavek | Odeslali jste hodnoty nasazení, které neodpovídají tomu, co očekává Správce prostředků. Nápovědu k řešení potíží naleznete ve zprávě o vnitřním stavu. | [Odkaz na šablonu](/azure/templates/) a [podporovaná umístění](resource-location.md) |
+| Konflikt | Požadujete operaci, která není povolena v aktuálním stavu zdroje. Například změna velikosti disku je povolena pouze při vytváření virtuálního počítače nebo při vzdáleném virtuálnímu počítače. | |
+| NasazeníAktivní A neupravitelné | Počkejte na dokončení souběžného nasazení do této skupiny prostředků. | |
+| NasazeníFailedCleanUp | Při nasazení v úplném režimu se odstraní všechny prostředky, které nejsou v šabloně. Tato chyba se zobrazí, pokud nemáte dostatečná oprávnění k odstranění všech prostředků, které nejsou v šabloně. Chcete-li se vyhnout chybě, změňte režim nasazení na přírůstkový. | [Režimy nasazení Azure Resource Manageru](deployment-modes.md) |
+| DeploymentNameInvalidCharacters | Název nasazení může obsahovat pouze písmeno, číslice, '-', '.' nebo '_'. | |
+| DeploymentNameLengthLimitByl překročen | Názvy nasazení jsou omezeny na 64 znaků.  | |
+| Nasazení se nezdařilo. | Chyba DeploymentFailed je obecná chyba, která neposkytuje podrobnosti, které potřebujete k vyřešení chyby. Vyhledejte v podrobnostech o chybě kód chyby, který poskytuje další informace. | [Najít kód chyby](#find-error-code) |
+| DeploymentQuotaExceeded | Pokud dosáhnete limitu 800 nasazení na skupinu prostředků, odstraňte nasazení z historie, které již nejsou potřeba. | [Vyřešit chybu, pokud počet nasazení překročí 800](deployment-quota-exceeded.md) |
 | DnsRecordInUse | Název záznamu DNS musí být jedinečný. Zadejte jiný název. | |
-| ImageNotFound | Ověřte nastavení bitové kopie virtuálního počítače. |  |
-| InUseSubnetCannotBeDeleted | Tato chyba se může zobrazit při pokusu o aktualizaci prostředku a žádost se zpracovává odstraněním a vytvořením prostředku. Ujistěte se, že jste zadali všechny nezměněné hodnoty. | [Aktualizace prostředku](/azure/architecture/building-blocks/extending-templates/update-resource) |
-| InvalidAuthenticationTokenTenant | Získat přístupový token pro příslušného tenanta Token můžete získat jenom z tenanta, ke kterému patří váš účet. | |
-| InvalidContentLink | Pravděpodobně došlo k pokusu o propojení s vnořenou šablonou, která není k dispozici. Projděte si identifikátor URI, který jste zadali pro vnořenou šablonu. Pokud šablona existuje v účtu úložiště, ujistěte se, že je identifikátor URI přístupný. Možná budete muset předat token SAS. V současné době nemůžete propojit šablonu, která se nachází v účtu úložiště za [bránou Azure Storage firewall](../../storage/common/storage-network-security.md). Zvažte přesunutí šablony do jiného úložiště, jako je GitHub. | [Propojené šablony](linked-templates.md) |
-| InvalidDeploymentLocation | Při nasazování na úrovni předplatného máte k dispozici jiné umístění pro dříve použitý název nasazení. | [Nasazení na úrovni předplatného](deploy-to-subscription.md) |
-| InvalidParameter | Jedna z hodnot, které jste zadali pro prostředek, se neshoduje s očekávanou hodnotou. Tato chyba může být způsobena z mnoha různých podmínek. Například heslo může být nedostatečné nebo může být nesprávné jméno objektu BLOB. Chybová zpráva by měla indikovat, která hodnota musí být opravena. | |
-| InvalidRequestContent | Hodnoty nasazení buď obsahují hodnoty, které nebyly rozpoznány, nebo požadované hodnoty chybí. Potvrďte hodnoty pro typ prostředku. | [Referenční informace k šablonám](/azure/templates/) |
-| InvalidRequestFormat | Povolte protokolování ladění při spuštění nasazení a ověřte obsah žádosti. | [Protokolování ladění](#enable-debug-logging) |
-| InvalidResourceNamespace | Ověřte obor názvů prostředku, který jste zadali ve vlastnosti **typ** . | [Referenční informace k šablonám](/azure/templates/) |
-| InvalidResourceReference | Prostředek ještě neexistuje nebo je na něj nesprávně odkazováno. Ověřte, zda potřebujete přidat závislost. Ověřte, že vaše použití **referenční** funkce zahrnuje požadované parametry pro váš scénář. | [Vyřešit závislosti](error-not-found.md) |
-| InvalidResourceType | Ověřte typ prostředku, který jste zadali ve vlastnosti **typ** . | [Referenční informace k šablonám](/azure/templates/) |
+| Obrázek nebyl nalezen | Zkontrolujte nastavení obrazu virtuálního počítače. |  |
+| InUseSubnetCannotNelzeBýt odstraněno | Tato chyba se může stát při pokusu o aktualizaci prostředku a požadavek je zpracován odstraněním a vytvořením prostředku. Ujistěte se, že jste určili všechny nezměněné hodnoty. | [Aktualizace prostředku](/azure/architecture/building-blocks/extending-templates/update-resource) |
+| Neplatný tenant tokenu ověřování | Získejte přístupový token pro příslušného klienta. Token můžete získat pouze od klienta, ke kterému váš účet patří. | |
+| Neplatný odkaz ContentLink | S největší pravděpodobností jste se pokusili vytvořit odkaz na vnořenou šablonu, která není k dispozici. Zkontrolujte identifikátor URI, který jste zadali pro vnořenou šablonu. Pokud šablona existuje v účtu úložiště, ujistěte se, že identifikátor URI je přístupný. Možná budete muset předat token SAS. V současné době nelze propojit šablonu, která je v účtu úložiště za [bránou firewall služby Azure Storage](../../storage/common/storage-network-security.md). Zvažte přesunutí šablony do jiného úložiště, jako je GitHub. | [Propojené šablony](linked-templates.md) |
+| Neplatné umístění nasazení | Při nasazování na úrovni předplatného jste zadali jiné umístění pro dříve použitý název nasazení. | [Nasazení na úrovni předplatného](deploy-to-subscription.md) |
+| Parametr InvalidParameter | Jedna z hodnot, které jste zadali pro prostředek, neodpovídá očekávané hodnotě. Tato chyba může být důsledkem mnoha různých podmínek. Například heslo může být nedostatečné nebo název objektu blob může být nesprávný. Chybová zpráva by měla označovat, která hodnota je třeba opravit. | |
+| Neplatný obsah požadavků | Hodnoty nasazení buď zahrnují hodnoty, které nejsou rozpoznány, nebo chybí požadované hodnoty. Potvrďte hodnoty pro typ prostředku. | [Referenční informace k šablonám](/azure/templates/) |
+| Neplatnýformát Žádosti | Povolte protokolování ladění při spuštění nasazení a ověřte obsah požadavku. | [Protokolování ladění](#enable-debug-logging) |
+| Neplatnýoborový obor ResourceName | Zkontrolujte obor názvů prostředků, který jste zadali ve vlastnosti **type.** | [Referenční informace k šablonám](/azure/templates/) |
+| Neplatnýodkaz na prostředky | Prostředek buď ještě neexistuje, nebo je nesprávně odkazován. Zkontrolujte, zda je třeba přidat závislost. Ověřte, zda vaše použití **referenční** funkce obsahuje požadované parametry pro váš scénář. | [Řešení závislostí](error-not-found.md) |
+| Neplatný typ prostředku | Zkontrolujte typ prostředku, který jste zadali ve vlastnosti **type.** | [Referenční informace k šablonám](/azure/templates/) |
 | InvalidSubscriptionRegistrationState | Zaregistrujte své předplatné u poskytovatele prostředků. | [Vyřešit registraci](error-register-resource-provider.md) |
-| InvalidTemplate | Vyhledejte chyby v syntaxi šablony. | [Vyřešit neplatnou šablonu](error-invalid-template.md) |
+| InvalidTemplate | Zkontrolujte, zda v syntaxi šablony neobsahuje chyby. | [Vyřešit neplatnou šablonu](error-invalid-template.md) |
 | InvalidTemplateCircularDependency | Odeberte zbytečné závislosti. | [Vyřešit cyklické závislosti](error-invalid-template.md#circular-dependency) |
-| LinkedAuthorizationFailed | Ověřte, jestli váš účet patří ke stejnému tenantovi jako skupina prostředků, do které nasazujete. | |
-| LinkedInvalidPropertyId | ID prostředku neřeší správně. Ověřte, že jste zadali všechny požadované hodnoty pro ID prostředku, včetně ID předplatného, názvu skupiny prostředků, typu prostředku, názvu nadřazeného prostředku (v případě potřeby) a názvu prostředku. | |
-| LocationRequired | Zadejte umístění prostředku. | [Nastavení umístění](resource-location.md) |
-| MismatchingResourceSegments | Ujistěte se, že vnořený prostředek má v názvu a typu správný počet segmentů. | [Vyřešit segmenty prostředků](error-invalid-template.md#incorrect-segment-lengths)
-| MissingRegistrationForLocation | Ověřte stav registrace poskytovatele prostředků a podporovaná umístění. | [Vyřešit registraci](error-register-resource-provider.md) |
-| MissingSubscriptionRegistration | Zaregistrujte své předplatné u poskytovatele prostředků. | [Vyřešit registraci](error-register-resource-provider.md) |
-| NoRegisteredProviderFound | Ověřte stav registrace poskytovatele prostředků. | [Vyřešit registraci](error-register-resource-provider.md) |
-| NotFound | Můžete se pokusit o nasazení závislého prostředku paralelně s nadřazeným prostředkem. Ověřte, zda potřebujete přidat závislost. | [Vyřešit závislosti](error-not-found.md) |
-| OperationNotAllowed | Nasazení probíhá pokus o operaci, která překračuje kvótu pro předplatné, skupinu prostředků nebo oblast. Pokud je to možné, upravte nasazení tak, aby zůstalo v rámci kvót. V opačném případě zvažte, že se bude vyžadovat změna vašich kvót. | [Řešení kvót](error-resource-quota.md) |
-| ParentResourceNotFound | Před vytvořením podřízených prostředků zajistěte, aby existoval nadřazený prostředek. | [Vyřešit nadřazený prostředek](error-parent-resource.md) |
-| PasswordTooLong | Možná jste vybrali heslo s příliš velkým počtem znaků nebo jste převedli hodnotu hesla na zabezpečený řetězec, než je předáte jako parametr. Pokud šablona obsahuje parametr **zabezpečeného řetězce** , nemusíte tuto hodnotu převést na zabezpečený řetězec. Zadejte hodnotu pro heslo jako text. |  |
-| PrivateIPAddressInReservedRange | Zadaná IP adresa zahrnuje rozsah adres vyžadovaný službou Azure. Změňte IP adresu, aby se zabránilo rezervovanému rozsahu. | [IP adresy](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
-| PrivateIPAddressNotInSubnet | Zadaná IP adresa je mimo rozsah podsítě. Změňte IP adresu tak, aby klesla do rozsahu podsítí. | [IP adresy](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
-| PropertyChangeNotAllowed | Některé vlastnosti se u nasazeného prostředku nedají změnit. Při aktualizaci prostředku omezte změny na povolené vlastnosti. | [Aktualizace prostředku](/azure/architecture/building-blocks/extending-templates/update-resource) |
-| RequestDisallowedByPolicy | Vaše předplatné zahrnuje zásadu prostředků, která brání akci, kterou se pokoušíte provést během nasazování. Vyhledejte zásadu, která zablokuje akci. Pokud je to možné, změňte nasazení tak, aby splňovalo omezení ze zásad. | [Řešení zásad](error-policy-requestdisallowedbypolicy.md) |
-| ReservedResourceName | Zadejte název prostředku, který neobsahuje rezervovaný název. | [Názvy rezervovaných prostředků](error-reserved-resource-name.md) |
+| LinkedAuthorizationFailed | Zkontrolujte, jestli váš účet patří stejnému tenantovi jako skupina prostředků, do které nasazujete. | |
+| LinkedInvalidPropertyId | ID prostředku pro prostředek není řešení správně. Zkontrolujte, zda jste zadali všechny požadované hodnoty pro ID prostředku, včetně ID předplatného, názvu skupiny prostředků, typu prostředku, nadřazeného názvu prostředku (v případě potřeby) a názvu prostředku. | |
+| LocationRequired | Zadejte umístění zdroje. | [Nastavení umístění](resource-location.md) |
+| NeshodySegmenty zdrojů | Ujistěte se, že vnořený prostředek má správný počet segmentů v názvu a typu. | [Vyřešit segmenty prostředků](error-invalid-template.md#incorrect-segment-lengths)
+| MissingRegistrationForLocation | Zkontrolujte stav registrace poskytovatele prostředků a podporovaná umístění. | [Vyřešit registraci](error-register-resource-provider.md) |
+| Chybějící Registrace předplatného | Zaregistrujte své předplatné u poskytovatele prostředků. | [Vyřešit registraci](error-register-resource-provider.md) |
+| NoRegisteredProviderFound | Zkontrolujte stav registrace poskytovatele prostředků. | [Vyřešit registraci](error-register-resource-provider.md) |
+| NotFound | Pravděpodobně se pokoušíte nasadit závislý prostředek paralelně s nadřazeným prostředkem. Zkontrolujte, zda potřebujete přidat závislost. | [Řešení závislostí](error-not-found.md) |
+| Operace není povolena. | Nasazení se pokouší o operaci, která překračuje kvótu pro předplatné, skupinu prostředků nebo oblast. Pokud je to možné, upravili nasazení tak, aby zůstalo v rámci kvót. V opačném případě zvažte požadavek na změnu kvót. | [Vyřešit kvóty](error-resource-quota.md) |
+| ParentResourceNotFound | Před vytvořením podřízených prostředků se ujistěte, že existuje nadřazený prostředek. | [Vyřešit nadřazený prostředek](error-parent-resource.md) |
+| Heslopříliš dlouhé | Je možné, že jste vybrali heslo s příliš mnoha znaky nebo jste před předáním jako parametru převedli hodnotu hesla na zabezpečený řetězec. Pokud šablona obsahuje **parametr zabezpečeného řetězce,** není nutné převést hodnotu na zabezpečený řetězec. Zadejte hodnotu hesla jako text. |  |
+| Privátní IPaddressInreservedRange | Zadaná ADRESA IP obsahuje rozsah adres vyžadované ho Azure. Změňte adresu IP, abyste se vyhnuli vyhrazenému rozsahu. | [IP adresy](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
+| Privátní IPAddressNotInPodnet | Zadaná adresa IP je mimo rozsah podsítě. Změňte adresu IP tak, aby spadala do rozsahu podsítě. | [IP adresy](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
+| PropertyChangeNotAllowed | Některé vlastnosti nelze změnit na nasazený prostředek. Při aktualizaci prostředku omezte změny na povolené vlastnosti. | [Aktualizace prostředku](/azure/architecture/building-blocks/extending-templates/update-resource) |
+| RequestDisallowedByPolicy | Vaše předplatné obsahuje zásady prostředků, které brání akci, kterou se pokoušíte provést během nasazení. Najděte zásadu, která blokuje akci. Pokud je to možné, změňte nasazení tak, aby splňovalo omezení ze zásad. | [Řešení zásad](error-policy-requestdisallowedbypolicy.md) |
+| ReservedResourceName | Zadejte název prostředku, který neobsahuje rezervovaný název. | [Názvy vyhrazených prostředků](error-reserved-resource-name.md) |
 | ResourceGroupBeingDeleted | Počkejte na dokončení odstranění. | |
-| ResourceGroupNotFound | Ověřte název cílové skupiny prostředků pro nasazení. Cílová skupina prostředků už musí existovat ve vašem předplatném. Ověřte svůj kontext předplatného. | [Azure CLI](/cli/azure/account?#az-account-set) [PowerShell](/powershell/module/Az.Accounts/Set-AzContext) |
-| ResourceNotFound | Vaše nasazení odkazuje na prostředek, který nelze přeložit. Ověřte, že vaše použití **referenční** funkce zahrnuje parametry požadované pro váš scénář. | [Vyřešit odkazy](error-not-found.md) |
-| ResourceQuotaExceeded | Nasazení se snaží vytvořit prostředky, které překračují kvótu pro předplatné, skupinu prostředků nebo oblast. Pokud je to možné, upravte infrastrukturu tak, aby zůstala v rámci kvót. V opačném případě zvažte, že se bude vyžadovat změna vašich kvót. | [Řešení kvót](error-resource-quota.md) |
-| SkuNotAvailable | Vyberte položku SKU (například velikost virtuálního počítače), která je k dispozici pro vybrané umístění. | [Vyřešit SKU](error-sku-not-available.md) |
-| StorageAccountAlreadyExists | Zadejte jedinečný název účtu úložiště. | [Přeložit název účtu úložiště](error-storage-account-name.md)  |
-| StorageAccountAlreadyTaken | Zadejte jedinečný název účtu úložiště. | [Přeložit název účtu úložiště](error-storage-account-name.md) |
-| StorageAccountNotFound | Ověřte předplatné, skupinu prostředků a název účtu úložiště, který se pokoušíte použít. | |
-| SubnetsNotInSameVnet | Virtuální počítač může mít jenom jednu virtuální síť. Při nasazování několika síťových adaptérů se ujistěte, že patří do stejné virtuální sítě. | [Více síťových karet](../../virtual-machines/windows/multiple-nics.md) |
-| SubscriptionNotRegistered | Při nasazování síťových prostředků se poskytovatel prostředků Microsoft. Network automaticky zaregistruje v předplatném. V některých případech se automatická registrace nedokončila v čase. Chcete-li se vyhnout této občasné chybě, zaregistrujte poskytovatele prostředků Microsoft. Network před nasazením. | [Vyřešit registraci](error-register-resource-provider.md) |
-| TemplateResourceCircularDependency | Odeberte zbytečné závislosti. | [Vyřešit cyklické závislosti](error-invalid-template.md#circular-dependency) |
-| TooManyTargetResourceGroups | Snižte počet skupin prostředků pro jedno nasazení. | [Nasazení napříč skupinami prostředků](cross-resource-group-deployment.md) |
+| ResourceGroupNotFound | Zkontrolujte název cílové skupiny prostředků pro nasazení. Cílová skupina prostředků musí již existovat ve vašem předplatném. Zkontrolujte kontext předplatného. | [Powershell Azure](/powershell/module/Az.Accounts/Set-AzContext) [CLI](/cli/azure/account?#az-account-set) |
+| ResourceNotFound | Vaše nasazení odkazuje na prostředek, který nelze vyřešit. Ověřte, zda vaše použití **referenční** funkce obsahuje parametry požadované pro váš scénář. | [Vyřešit odkazy](error-not-found.md) |
+| ResourceQuotaExceeded | Nasazení se pokouší vytvořit prostředky, které překračují kvótu pro předplatné, skupinu prostředků nebo oblast. Pokud je to možné, upravili infrastrukturu tak, aby byla v rámci kvót. V opačném případě zvažte požadavek na změnu kvót. | [Vyřešit kvóty](error-resource-quota.md) |
+| SkuNotAvailable | Vyberte skladovou položku (například velikost virtuálního počítače), která je dostupná pro vybrané umístění. | [Vyřešit skladovou položku](error-sku-not-available.md) |
+| StorageAccountAlreadyExists | Zadejte jedinečný název účtu úložiště. | [Překlad názvu účtu úložiště](error-storage-account-name.md)  |
+| StorageAccountAlreadyTaken | Zadejte jedinečný název účtu úložiště. | [Překlad názvu účtu úložiště](error-storage-account-name.md) |
+| StorageAccountNotFound | Zkontrolujte předplatné, skupinu prostředků a název účtu úložiště, který se pokoušíte použít. | |
+| PodsítěNotInSameVnet | Virtuální počítač může mít jenom jednu virtuální síť. Při nasazování několika síťových připojení se ujistěte, že patří do stejné virtuální sítě. | [Více nic](../../virtual-machines/windows/multiple-nics.md) |
+| Předplatnénotregistrována | Při nasazování síťových prostředků je poskytovatel prostředků Microsoft.Network automaticky zaregistrován v předplatném. Někdy se automatická registrace nedokončí včas. Chcete-li se této občasné chybě vyhnout, zaregistrujte před nasazením zprostředkovatele prostředků microsoft.network. | [Vyřešit registraci](error-register-resource-provider.md) |
+| ŠablonaResourceCircularDependency | Odeberte zbytečné závislosti. | [Vyřešit cyklické závislosti](error-invalid-template.md#circular-dependency) |
+| TooManyTargetResourceGroups TooManyTargetGroups TooMany | Snižte počet skupin prostředků pro jedno nasazení. | [Nasazení napříč skupinami prostředků](cross-resource-group-deployment.md) |
 
 ## <a name="find-error-code"></a>Najít kód chyby
 
@@ -91,15 +91,15 @@ K chybám ověření dochází ve scénářích, které je možné určit před 
 
 Oba typy chyb vrací kód chyby, který můžete použít při řešení potíží s nasazením. Oba typy chyb se zobrazí v [protokolu aktivit](../management/view-activity-logs.md). Chyby ověření se ale nezobrazí v historii nasazení, protože vůbec nedojde k zahájení nasazení.
 
-### <a name="validation-errors"></a>Chyby ověřování
+### <a name="validation-errors"></a>Chyby ověření
 
 Při nasazování pomocí portálu se po odeslání hodnot zobrazí chyba ověření.
 
-![Zobrazit chybu ověřování portálu](./media/common-deployment-errors/validation-error.png)
+![zobrazit chybu ověření portálu](./media/common-deployment-errors/validation-error.png)
 
 Výběrem zprávy zobrazíte další podrobnosti. Na následujícím obrázku se zobrazí chyba **InvalidTemplateDeployment** a zpráva, která označuje blokované nasazení zásad.
 
-![Zobrazit podrobnosti ověření](./media/common-deployment-errors/validation-details.png)
+![zobrazit podrobnosti ověření](./media/common-deployment-errors/validation-details.png)
 
 ### <a name="deployment-errors"></a>Chyby nasazení
 
@@ -114,7 +114,7 @@ Pokud chcete zobrazit kódy a zprávy chyb nasazení v PowerShellu, použijte n�
 Pokud chcete zobrazit kódy a zprávy chyb nasazení v Azure CLI, použijte následující příkaz:
 
 ```azurecli-interactive
-az group deployment operation list --name exampledeployment -g examplegroup --query "[*].properties.statusMessage"
+az deployment group operation list --name exampledeployment -g examplegroup --query "[*].properties.statusMessage"
 ```
 
 Na portálu vyberte oznámení.
@@ -123,19 +123,19 @@ Na portálu vyberte oznámení.
 
 Zobrazí se další podrobnosti o nasazení. Výběrem možnosti zobrazíte další informace o chybě.
 
-![nasazení selhalo.](./media/common-deployment-errors/deployment-failed.png)
+![nasazení se nezdařilo](./media/common-deployment-errors/deployment-failed.png)
 
 Zobrazí se chybová zpráva a kódy chyb. Všimněte si, že se zobrazí dva kódy chyb. První kód chyby (**DeploymentFailed**) značí obecnou chybu a neposkytuje podrobnosti potřebné k vyřešení této chyby. Druhý kód chyby (**StorageAccountNotFound**) poskytuje potřebné podrobnosti.
 
-![Podrobnosti o chybě](./media/common-deployment-errors/error-details.png)
+![podrobnosti o chybě](./media/common-deployment-errors/error-details.png)
 
 ## <a name="enable-debug-logging"></a>Povolit protokolování ladění
 
-Někdy potřebujete další informace o žádosti a odpovědi, abyste se dozvěděli, co se nepovedlo. Během nasazení si můžete vyžádat, aby se během nasazení do protokolu zaznamenaly Další informace.
+Někdy potřebujete více informací o žádosti a odpovědi, abyste zjistili, co se stalo. Během nasazení můžete požadovat, aby byly během nasazení zaznamenány další informace.
 
 ### <a name="powershell"></a>PowerShell
 
-V PowerShellu nastavte parametr **DeploymentDebugLogLevel** na All, obsah responsecontent nebo RequestContent.
+V Prostředí PowerShell nastavte parametr **DeploymentDebugLogLevel** na Všechny, ResponseContent nebo RequestContent.
 
 ```powershell
 New-AzResourceGroupDeployment `
@@ -145,7 +145,7 @@ New-AzResourceGroupDeployment `
   -DeploymentDebugLogLevel All
 ```
 
-Projděte si obsah žádosti pomocí následující rutiny:
+Zkontrolujte obsah požadavku pomocí následující rutiny:
 
 ```powershell
 (Get-AzResourceGroupDeploymentOperation `
@@ -163,41 +163,41 @@ Nebo obsah odpovědi s:
 | ConvertTo-Json
 ```
 
-Tyto informace vám pomohou určit, zda je hodnota v šabloně nesprávně nastavena.
+Tyto informace vám mohou pomoci určit, zda je hodnota v šabloně nesprávně nastavena.
 
 ### <a name="azure-cli"></a>Azure CLI
 
 V současné době Azure CLI nepodporuje zapnutí protokolování ladění, ale můžete načíst protokolování ladění.
 
-Projděte si operace nasazení pomocí následujícího příkazu:
+Zkontrolujte operace nasazení pomocí následujícího příkazu:
 
 ```azurecli
-az group deployment operation list \
+az deployment group operation list \
   --resource-group examplegroup \
   --name exampledeployment
 ```
 
-Projděte si obsah žádosti pomocí následujícího příkazu:
+Zkontrolujte obsah požadavku pomocí následujícího příkazu:
 
 ```azurecli
-az group deployment operation list \
+az deployment group operation list \
   --name exampledeployment \
   -g examplegroup \
   --query [].properties.request
 ```
 
-Pomocí následujícího příkazu Projděte obsah odpovědi:
+Zkontrolujte obsah odpovědi pomocí následujícího příkazu:
 
 ```azurecli
-az group deployment operation list \
+az deployment group operation list \
   --name exampledeployment \
   -g examplegroup \
   --query [].properties.response
 ```
 
-### <a name="nested-template"></a>Vnořené šablony
+### <a name="nested-template"></a>Vnořená šablona
 
-Chcete-li protokolovat informace o ladění pro vnořenou šablonu, použijte element **debugSetting** .
+Chcete-li protokolovat informace o ladění vnořené šablony, použijte element **debugSetting.**
 
 ```json
 {
@@ -217,9 +217,9 @@ Chcete-li protokolovat informace o ladění pro vnořenou šablonu, použijte el
 }
 ```
 
-## <a name="create-a-troubleshooting-template"></a>Vytvoření šablony pro odstraňování potíží
+## <a name="create-a-troubleshooting-template"></a>Vytvoření šablony pro řešení potíží
 
-V některých případech nejjednodušší způsob, jak řešit potíže s vaší šablonou, je otestovat jejich části. Můžete vytvořit zjednodušenou šablonu, která vám umožní soustředit se na součást, o kterou se domníváte, že je příčinou chyby. Předpokládejme například, že při odkazování na prostředek obdržíte chybu. Místo toho, abyste museli pracovat s celou šablonou, vytvořte šablonu, která vrátí část, která by mohla způsobovat váš problém. Může vám pomoci určit, zda předáváte správné parametry, pomocí funkce šablony správně a získat očekávaný prostředek.
+V některých případech je nejjednodušším způsobem řešení potíží s šablonou testování jeho částí. Můžete vytvořit zjednodušenou šablonu, která vám umožní zaměřit se na část, o které se domníváte, že chybu způsobuje. Předpokládejme například, že se při odkazování na prostředek zobrazuje chyba. Místo toho, abyste se zabývali celou šablonou, vytvořte šablonu, která vrátí část, která může být příčinou vašeho problému. Může vám pomoci určit, zda předáváte správné parametry, používáte správně funkce šablony a získáváte očekávaný prostředek.
 
 ```json
 {
@@ -244,10 +244,10 @@ V některých případech nejjednodušší způsob, jak řešit potíže s vaš�
 }
 ```
 
-Nebo Předpokládejme, že máte k dispozici chyby nasazení, které se domníváte, že jsou v relaci nesprávně nastavené závislosti. Otestujte šablonu tím, že ji rozdělíte na zjednodušené šablony. Nejprve vytvořte šablonu, která nasadí pouze jeden prostředek (například SQL Server). Když jste si jisti, že tento prostředek máte správně definovaný, přidejte prostředek, který na něm závisí (například SQL Database). Po správném definování těchto dvou prostředků přidejte další závislé prostředky (například zásady auditování). V rámci každého testovacího nasazení odstraňte skupinu prostředků, abyste se ujistili, že jste správně otestovali závislosti.
+Nebo předpokládejme, že se vám zobrazily chyby nasazení, o kterých se domníváte, že souvisejí s nesprávně nastavenými závislostmi. Otestujte šablonu rozdělením na zjednodušené šablony. Nejprve vytvořte šablonu, která nasazuje pouze jeden prostředek (například SQL Server). Pokud jste si jisti, že máte tento prostředek správně definován, přidejte prostředek, který na něm závisí (například databáze SQL). Pokud máte tyto dva prostředky správně definovány, přidejte další závislé prostředky (například zásady auditování). Mezi jednotlivými testovacími nasazeními odstraňte skupinu prostředků a ujistěte se, že odpovídajícím způsobem testujete závislosti.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Kurz řešení potíží najdete v tématu [kurz: řešení potíží s nasazením správce prostředků šablon.](template-tutorial-troubleshoot.md)
-* Další informace o akcích auditování najdete v tématu věnovaném [operacím auditu správce prostředků](../management/view-activity-logs.md).
-* Další informace o akcích k určení chyb během nasazení najdete v tématu [Zobrazení operací nasazení](deployment-history.md).
+* Chcete-li projít kurz pro řešení potíží, [přečtěte si článek Kurz: Poradce při potížích s nasazením šablon Správce prostředků](template-tutorial-troubleshoot.md)
+* Další informace o auditování akcí naleznete v [tématu Audit operace se Správcem prostředků](../management/view-activity-logs.md).
+* Informace o akcích k určení chyb během nasazení najdete v [tématu Zobrazení operací nasazení](deployment-history.md).

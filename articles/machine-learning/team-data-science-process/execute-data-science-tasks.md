@@ -1,6 +1,6 @@
 ---
-title: Spuštění úloh datových věd - vědecké zpracování týmových dat
-description: Jak můžete spustit projekt vědeckého zpracování dat v organizovaným, odborník přes data správy verzí a spolupráce.
+title: Provádění úloh datové vědy – proces vědecké správy týmových dat
+description: Jak může datový vědec provést projekt datové vědy sledovatelným, řízeným verzí a kolaborativním způsobem.
 author: marktab
 manager: marktab
 editor: marktab
@@ -10,106 +10,106 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 984b03288b8dae644fc04a2cd78fb03a2e027f62
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e69a03cd142fdbcc5864ee38a4843e1c2e44a124
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722199"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477149"
 ---
-# <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Spuštění úloh datových věd: zkoumání, modelování a nasazení
+# <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Provádění úloh datové vědy: průzkum, modelování a nasazení
 
-Typické úloh vědeckého zpracování zahrnout zkoumání dat, modelování a nasazení. V tomto článku se dozvíte, jak používat interaktivní nástroje pro **zkoumání a analýzu dat a vytváření sestav (** **AMAR)** k dokončení několika běžných úloh vědeckého zpracování dat, jako jsou interaktivní zkoumání dat, analýza dat, generování sestav a vytváření modelů. Možnosti nasazení modelu do produkčního prostředí můžou zahrnovat:
+Typické úlohy datové vědy zahrnují zkoumání dat, modelování a nasazení. Tento článek ukazuje, jak pomocí **interaktivní data průzkum, analýzy a vykazování (IDEAR)** a **automatizované modelování a vykazování (AMAR)** nástroje k dokončení několika běžných úloh datové vědy, jako je interaktivní zkoumání dat, analýza dat, vytváření sestav a vytváření modelu. Možnosti nasazení modelu do produkčního prostředí mohou zahrnovat:
 
 - [Azure Machine Learning](../index.yml)
-- [SQL Server se službami ML](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
-- [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
+- [SQL-Server se službami ML](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
+- [Server Microsoft Machine Learning](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 
 
-## 1. <a name='DataQualityReportUtility-1'></a> průzkum 
+## <a name="1--exploration"></a>1. <a name='DataQualityReportUtility-1'></a> Průzkum 
 
-Můžete provádět mezi odborníky přes data, prozkoumávání a vytváření sestav v mnoha různými způsoby: pomocí knihoven nebo balíčků, které jsou k dispozici pro jazyk Python (například matplotlib) nebo s jazykem R (ggplot nebo mřížkových příkladu). Odborníci přes data můžete přizpůsobit podle potřeb zkoumání dat pro konkrétní scénáře takového kódu. Požadavky pro práci se strukturovanými daty se liší, který pro Nestrukturovaná data, jako je například text nebo obrázky. 
+Datový vědec může provádět průzkum a vykazování různými způsoby: pomocí knihoven a balíčků dostupných pro Python (například matplotlib) nebo s R (například ggplot nebo mříž). Vědci dat můžete přizpůsobit takový kód tak, aby vyhovoval potřebám zkoumání dat pro konkrétní scénáře. Potřeby pro zpracování strukturovaných dat se liší od potřeb nestrukturovaných dat, jako je text nebo obrázky. 
 
-Produkty jako Azure Machine Learning také poskytují [pokročilou přípravu dat](../how-to-create-register-datasets.md) pro tahání a zkoumání dat, včetně vytváření funkcí. Uživatel měli rozhodnout na nástroje, knihovny a balíčky, které osvědčené suite jejich potřeb. 
+Produkty, jako je Azure Machine Learning, také poskytují [pokročilou přípravu dat](../how-to-create-register-datasets.md) pro hádání dat a zkoumání, včetně vytváření funkcí. Uživatel by měl rozhodnout o nástrojích, knihovnách a balíčcích, které nejlépe vyhovují svým potřebám. 
 
-Dodávky na konci této fáze je sestava průzkumu data. Sestava by měla poskytnout poměrně rozsáhlý náhled na data, která má být použit pro modelování a určuje, zda je vhodné, pokračujte ke kroku modelování data posouzení. Vědecké zpracování týmových dat (TDSP) nástroje popsané v následujících částech poloautomatických průzkumných, modelování a vytváření sestav také poskytuje standardizované zkoumání a modelování sestavy. 
+Výstupem na konci této fáze je zpráva o průzkumu dat. Zpráva by měla poskytnout poměrně komplexní přehled o údajích, které mají být použity pro modelování, a posouzení toho, zda jsou data vhodná k tomu, aby bylo možné přistoupit ke kroku modelování. Nástroje TDSP (Team Data Science Process) popsané v následujících částech pro poloautomatizovaný průzkum, modelování a vytváření sestav také poskytují standardizované sestavy průzkumu a modelování dat. 
 
-### <a name="interactive-data-exploration-analysis-and-reporting-using-the-idear-utility"></a>Interaktivní zkoumání dat, analýzu a vytváření sestav pomocí nástroje IDEAR
+### <a name="interactive-data-exploration-analysis-and-reporting-using-the-idear-utility"></a>Interaktivní zkoumání dat, analýza a vytváření sestav pomocí nástroje IDEAR
 
-Tento R markdown systémem nebo nástroj založený na Poznámkový blok Python poskytuje flexibilní a interaktivní nástroj pro vyhodnocení a prozkoumejte datových sad. Uživatelům můžete rychle vytvořit sestavy z datové sady s minimálním kódováním. Uživatelé mohou klepnutím na tlačítko Exportovat výsledky průzkumu nástroji pro interaktivní Konečná sestava, která může doručit do klientů nebo používá k rozhodování, na které proměnné k zahrnutí v kroku následné modelování.
+Tento nástroj založený na r markdownnebo Python na základě poznámkového bloku poskytuje flexibilní a interaktivní nástroj pro vyhodnocení a prozkoumání datových sad. Uživatelé mohou rychle generovat sestavy ze sady dat s minimálním kódováním. Uživatelé mohou klepnutím na tlačítka exportovat výsledky průzkumu v interaktivním nástroji do závěrečné sestavy, která může být doručena klientům nebo použita k rozhodování o tom, které proměnné mají být zahrnuty do následujícího kroku modelování.
 
-V tuto chvíli nástroj funguje pouze na datové rámce v paměti. Soubor YAML, je potřeba zadat parametry datové sady má být zkoumána. Další informace najdete v tématu [nápad v TDSP pro datové vědy](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/DataReport-Utils).
-
-
-## 2. <a name='ModelingUtility-2'></a> modelování
-
-Existuje mnoho sad nástrojů a balíčky pro trénování modelů v různých jazycích. Odborníci přes data by měla můžete použít, který následně ty jsou zvyklí, tak dlouho, dokud jsou splněny důležité informace o výkonu týkající se přesnosti a latencí pro důležité obchodní použít případy a produkční scénáře.
-
-V další části ukazuje, jak používat nástroj založené na jazyce R TDSP pro poloautomatických modelování. Tento nástroj AMAR lze použít ke generování řádku základní modely rychle stejně jako parametry, které musí být vyladěné tak, aby poskytují lepší provádění modelu.
-Následující části model správy ukazuje, jak systém pro registraci a správu více modelů.
+V tomto okamžiku nástroj pracuje pouze na datových snímcích v paměti. Soubor YAML je potřeba určit parametry datové sady, které mají být prozkoumány. Další informace naleznete v tématu [IDEAR v tdsp data science utilities](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/DataReport-Utils).
 
 
-### <a name="model-training-modeling-and-reporting-using-the-amar-utility"></a>Model školení: modelování a vytváření sestav pomocí nástroje AMAR
+## <a name="2--modeling"></a>2. <a name='ModelingUtility-2'></a> Modelování
 
-[Nástroj pro automatizované modelování a vytváření sestav (AMAR)](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/Modeling) nabízí přizpůsobitelný, poloautomatický Nástroj pro vytváření modelů s možností vyrovnávání pomocí technologie Hyper-v a pro porovnání přesnosti těchto modelů. 
+Existuje mnoho sad nástrojů a balíčků pro modely školení v různých jazycích. Datoví vědci by měli klidně používat ty, které jsou pohodlné, pokud jsou splněny důležité informace o výkonu týkající se přesnosti a latence pro příslušné obchodní případy použití a produkční scénáře.
 
-Nástroj pro vytváření modelu je soubor R Markdown, který můžete spustit pro vytvoření samostatné výstupu protokolu HTML s obsah pro snadnou navigaci si jeho různé části. Tři algoritmy jsou spouštěny, když běží soubor Markdownu (spojit): Vyřešeno regresi využívající glmnet balíček, náhodných doménové struktury pomocí balíčku randomForest a zvýšení úrovně stromové struktury pomocí balíčku xgboost). Každá z těchto algoritmů vytváří trénovaného modelu. Přesnost tyto modely se následně porovnává a vykreslení funkce relativní důležitost jsou hlášeny. V současné době existují dva nástroje: jeden je pro úlohu binární klasifikace a jeden je pro úlohu regrese. Základní rozdíly mezi nimi je způsob, jak řídicí parametry a přesnost metriky jsou určené pro tyto úlohy učení. 
+V další části je uvedeno, jak používat nástroj TDSP založený na R pro poloautomatické modelování. Tento nástroj AMAR lze použít ke generování modelů základní linie rychle, stejně jako parametry, které je třeba vyladit poskytnout výkonnější model.
+Následující část správy modelu ukazuje, jak mít systém pro registraci a správu více modelů.
 
-Soubor YAML slouží k určení:
 
-- datový vstup (zdroje SQL nebo R-datového souboru) 
-- jaká část dat se používá pro trénování a jaká část pro účely testování
-- jaké algoritmy pro spuštění 
-- Výběr ovládacího prvku parametry pro optimalizaci modelů:
+### <a name="model-training-modeling-and-reporting-using-the-amar-utility"></a>Model školení: modelování a vykazování pomocí nástroje AMAR
+
+[Nástroj Automatické modelování a vytváření sestav (AMAR)](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/Modeling) poskytuje přizpůsobitelný poloautomatizovaný nástroj pro vytváření modelů s hyperparametrizací a pro porovnání přesnosti těchto modelů. 
+
+Nástroj pro vytváření modelu je soubor R Markdown, který lze spustit za účelem vytvoření samostatného výstupu HTML s obsahem pro snadnou navigaci v různých částech. Tři algoritmy jsou spuštěny při spuštění souboru Markdown (knit): regularized regrese pomocí glmnet balíčku, náhodné doménové struktury pomocí randomForest balíček a posílení stromy pomocí xgboost balíčku). Každý z těchto algoritmů vytváří trénovaný model. Přesnost těchto modelů je pak porovnána a jsou hlášeny obrázky důležitosti relativnífunkce. V současné době existují dva nástroje: jeden je pro úlohu binární klasifikace a jeden je pro regresní úlohu. Hlavní rozdíly mezi nimi je způsob, jakým jsou určeny parametry řízení a přesnost metriky pro tyto úkoly učení. 
+
+Soubor YAML se používá k určení:
+
+- vstup dat (zdroj SQL nebo soubor R-Data) 
+- jaká část dat se používá pro školení a jakou část pro testování
+- které algoritmy spustit 
+- volba řídicích parametrů pro optimalizaci modelu:
     - křížové ověření 
-    - zavádění
-    - přeložení křížového ověřování
-- hyperparametrické sady jednotlivých algoritmů. 
+    - Bootstrapping
+    - záhyby křížové validace
+- hyperparametry pro každý algoritmus. 
 
-Počet algoritmů, počet složení pro optimalizaci, technologie hyper parametry a počet sad hyperparametrické na čištění přes můžete také změnit v souboru Yaml pro rychlé spouštění modelů. Například, můžete spustit s menším počtem CV složení, menším počtem sady parametrů. Pokud je oprávněné, mohou také být spouštět více komplexněji s vyšší počet CV složení nebo větší počet sad parametrů.
+Počet algoritmů, počet záhybů pro optimalizaci, hyperparametry a počet sad hyperparametrů, které mají být zamést, lze také upravit v souboru Yaml pro rychlé spuštění modelů. Například mohou být spuštěny s nižším počtem cv záhybů, nižším počtem sad parametrů. Pokud je to oprávněné, mohou být také provozovány komplexněji s vyšším počtem cv záhybů nebo větším počtem sad parametrů.
 
-Další informace najdete v tématu [automatizované modelování a nástroj pro vytváření sestav v TDSP nástrojů pro datové vědy](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/Modeling).
+Další informace naleznete [v tématu Automated Modeling and Reporting Utility in TDSP Data Science Utilities](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/Modeling).
 
 ### <a name="model-management"></a>Správa modelů
-Po sestavené více modelů, obvykle potřebujete mít systém pro registraci a správu modelů. Obvykle budete potřebovat kombinaci skripty nebo rozhraní API a back-endové databáze nebo správu verzí systému. Několik možností, které mohou být užitečné pro tyto úlohy správy jsou:
+Po vytvoření více modelů obvykle potřebujete mít systém pro registraci a správu modelů. Obvykle potřebujete kombinaci skriptů nebo api a back-endové databáze nebo systému správy verzí. Několik možností, které můžete zvážit pro tyto úkoly správy jsou:
 
-1. [Azure Machine Learning – služba správy modelů](../index.yml)
-2. [ModelDB od MIT](https://mitdbg.github.io/modeldb/) 
-3. [SQL Server jako systém správy modelů](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
-4. [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
+1. [Azure Machine Learning – služba pro správu modelů](../index.yml)
+2. [ModelDB z MIT](http://modeldb.csail.mit.edu:3000/projects) 
+3. [SQL-server jako systém pro správu modelů](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
+4. [Server Microsoft Machine Learning](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
-## 3. <a name='Deployment-3'></a> nasazení
+## <a name="3--deployment"></a>3. <a name='Deployment-3'></a> Nasazení
 
-Produkční nasazení umožňuje modelu k přehrání aktivní roli v podniku. Předpovědi z nasazeného modelu lze použít pro obchodní rozhodnutí.
+Produkční nasazení umožňuje modelu hrát aktivní roli v podnikání. Předpovědi z nasazeného modelu lze použít pro obchodní rozhodnutí.
 
-### <a name="production-platforms"></a>Produkčních platforem
-Existují různé přístupy a platformy pro převedení modely do produkčního prostředí. Tady je několik možností:
+### <a name="production-platforms"></a>Výrobní plošiny
+Existují různé přístupy a platformy, aby modely do výroby. Zde je několik možností:
 
 
 - [Nasazení modelu v Azure Machine Learning](../how-to-deploy-and-where.md)
-- [Nasazení modelu v systému SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
-- [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
+- [Nasazení modelu v SQL-serveru](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
+- [Server Microsoft Machine Learning](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
 > [!NOTE]
-> Před nasazením je nutné zajistit, že latence vyhodnocování modelu je dostatečně nízko, používat v produkčním prostředí.
+> Před nasazením je třeba pojistit latence vyhodnocování modelu je dostatečně nízká pro použití v produkčním prostředí.
 >
 >
 
-Další příklady jsou k dispozici v návodech, které ukazují všechny kroky v procesu pro **konkrétní scénáře**. Jsou uvedeny a propojeny s popisy miniatur v článku [příklad návodu](walkthroughs.md) . Jejich ukazují, jak zkombinovat cloudové, místní nástroje a služby do pracovního postupu nebo kanálu pro vytváření inteligentních aplikací.
+Další příklady jsou k dispozici v návodech, které ukazují všechny kroky v procesu pro **konkrétní scénáře**. Jsou uvedeny a propojeny s popisy miniatur v článku [ukázkové návody.](walkthroughs.md) Ilustrují, jak kombinovat cloud, místní nástroje a služby do pracovního postupu nebo kanálu a vytvořit tak inteligentní aplikaci.
 
 > [!NOTE]
-> Informace o nasazení pomocí Azure Machine Learning Studio najdete v tématu [nasazení webové služby Azure Machine Learning](../studio/deploy-a-machine-learning-web-service.md).
+> Nasazení pomocí Azure Machine Learning Studio najdete [v tématu nasazení webové služby Azure Machine Learning](../studio/deploy-a-machine-learning-web-service.md).
 >
 >
 
-### <a name="ab-testing"></a>A / B testování
-Pokud je v produkčním prostředí více modelů, může být užitečné provést [testování a/B](https://en.wikipedia.org/wiki/A/B_testing) pro porovnání výkonu modelů. 
+### <a name="ab-testing"></a>A/B testování
+Pokud je ve výrobě více modelů, může být užitečné provést [testování A/B](https://en.wikipedia.org/wiki/A/B_testing) za účelem porovnání výkonu modelů. 
 
  
 ## <a name="next-steps"></a>Další kroky
 
-[Sledování průběhu projektů pro datové vědy](track-progress.md) ukazuje, jak může vědecký pracovník dat sledovat průběh projektu pro datové vědy.
+[Sledování průběhu projektů datové vědy](track-progress.md) ukazuje, jak může datový vědec sledovat průběh projektu datové vědy.
 
-[Operace modelu a CI/CD](ci-cd-flask.md) ukazuje, jak se dají provádět CI/CD s využitím rozvinutých modelů.
+[Provoz modelu a CI/CD](ci-cd-flask.md) ukazuje, jak lze CI/CD provádět s vyvinutými modely.
 
 

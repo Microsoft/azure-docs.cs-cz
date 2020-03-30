@@ -1,21 +1,21 @@
 ---
 title: Agregační funkce v Azure Cosmos DB
-description: Přečtěte si o syntaxi agregační funkce SQL, typech agregačních funkcí, které podporuje Azure Cosmos DB.
+description: Přečtěte si o syntaxi agregačních funkcí SQL, typech agregačních funkcí podporovaných službou Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 03/16/2020
 ms.author: tisande
-ms.openlocfilehash: df9700dd51c8915ff28c34cf0a29c2f5e48baa44
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 24acd1e9c13320244ff4c27abd13abeda6f70b2b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78897832"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79464457"
 ---
 # <a name="aggregate-functions-in-azure-cosmos-db"></a>Agregační funkce v Azure Cosmos DB
 
-Agregační funkce provádějí výpočet pro sadu hodnot v klauzuli SELECT a vracejí jedinou hodnotu. Například následující dotaz vrátí počet položek v kontejneru `Families`:
+Agregační funkce provést výpočet na `SELECT` sadu hodnot v klauzuli a vrátit jednu hodnotu. Například následující dotaz vrátí počet položek `Families` v kontejneru:
 
 ## <a name="examples"></a>Příklady
 
@@ -24,7 +24,7 @@ Agregační funkce provádějí výpočet pro sadu hodnot v klauzuli SELECT a vr
     FROM Families f
 ```
 
-Výsledky jsou:
+Výsledky jsou následující:
 
 ```json
     [{
@@ -39,13 +39,13 @@ Můžete také vrátit pouze skalární hodnotu agregace pomocí klíčového sl
     FROM Families f
 ```
 
-Výsledky jsou:
+Výsledky jsou následující:
 
 ```json
     [ 2 ]
 ```
 
-Agregace můžete kombinovat i s filtry. Například následující dotaz vrátí počet položek se stavem adresy `WA`.
+Můžete také kombinovat agregace s filtry. Například následující dotaz vrátí počet položek se stavem adresy `WA`.
 
 ```sql
     SELECT VALUE COUNT(1)
@@ -53,7 +53,7 @@ Agregace můžete kombinovat i s filtry. Například následující dotaz vrát�
     WHERE f.address.state = "WA"
 ```
 
-Výsledky jsou:
+Výsledky jsou následující:
 
 ```json
     [ 1 ]
@@ -61,23 +61,27 @@ Výsledky jsou:
 
 ## <a name="types-of-aggregate-functions"></a>Typy agregačních funkcí
 
-Rozhraní SQL API podporuje následující agregační funkce. SUM a AVG pracují na numerických hodnotách a počet, minimální a maximální práce na číslech, řetězcích, logických hodnotách a hodnotách null.
+Rozhraní SQL API podporuje následující agregační funkce. `SUM`a `AVG` pracovat s číselnými hodnotami a `COUNT`, `MIN`a `MAX` pracovat s čísly, řetězci, logickými hodnotami a hodnotami null.
 
 | Funkce | Popis |
 |-------|-------------|
 | POČET | Vrátí počet položek ve výrazu. |
-| SOUČET   | Vrátí součet všech hodnot ve výrazu. |
+| SUM   | Vrátí součet všech hodnot ve výrazu. |
 | MIN   | Vrátí minimální hodnotu ve výrazu. |
-| MAX.   | Vrátí maximální hodnotu ve výrazu. |
+| MAX   | Vrátí maximální hodnotu ve výrazu. |
 | PRŮMĚR   | Vrátí průměr hodnot ve výrazu. |
 
-Můžete také agregovat výsledky iterace pole.
+Můžete také agregovat přes výsledky iterace pole.
 
 > [!NOTE]
-> Dotazy agregace v Průzkumník dat Azure Portal můžou agregovat částečné výsledky jenom na jednu stránku dotazu. Sada SDK vytvoří v rámci všech stránek jednu kumulativní hodnotu. Chcete-li provádět agregační dotazy pomocí kódu, potřebujete sadu .NET SDK 1.12.0, .NET Core SDK 1.1.0 nebo Java SDK 1.9.5 nebo vyšší.
+> V Průzkumníku dat na webu Azure Portal mohou dotazy agregace agregovat částečné výsledky pouze na jedné stránce dotazu. Sada SDK vytváří jednu kumulativní hodnotu na všech stránkách. Chcete-li provádět dotazy na agregaci pomocí kódu, potřebujete .NET SDK 1.12.0, .NET Core SDK 1.1.0 nebo Java SDK 1.9.5 nebo vyšší.
+
+## <a name="remarks"></a>Poznámky
+
+Tyto agregované systémové funkce budou mít prospěch z [indexu rozsahu](index-policy.md#includeexclude-strategy). Pokud očekáváte `COUNT`, `SUM`, `MIN` `MAX`, `AVG` nebo na vlastnost, měli byste [zahrnout příslušnou cestu do zásad indexování](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Úvod do Azure Cosmos DB](introduction.md)
 - [Systémové funkce](sql-query-system-functions.md)
-- [Uživatelsky definované funkce](sql-query-udfs.md)
+- [Uživatelem definované funkce](sql-query-udfs.md)

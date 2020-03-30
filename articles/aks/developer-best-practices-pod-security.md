@@ -1,50 +1,50 @@
 ---
-title: Osvědčené postupy pro vývojáře – Pod zabezpečení ve službě Azure Kubernetes služby (AKS)
-description: Další informace pro vývojáře osvědčené postupy pro zabezpečení podů ve službě Azure Kubernetes Service (AKS)
+title: Doporučené postupy pro vývojáře – zabezpečení podů ve službách Azure Kubernetes Services (AKS)
+description: Seznamte se s doporučenými postupy pro vývojáře, jak zabezpečit pody ve službě Azure Kubernetes Service (AKS).
 services: container-service
 author: zr-msft
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: zarhoads
-ms.openlocfilehash: eaeb81d7f93124f1f3dedf9676314b1b786d8571
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 2ee41770f9993da381215f03ebf67aea3cc7dd9e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79252984"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475574"
 ---
-# <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zabezpečení pod ve službě Azure Kubernetes Service (AKS)
+# <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Doporučené postupy pro zabezpečení podu ve službě Azure Kubernetes Service (AKS)
 
-Vývoj a spouštění aplikací ve službě Azure Kubernetes Service (AKS), je zabezpečení pody je důležitým aspektem. Vaše aplikace by měly být navržené pro princip minimálního počtu požadovaných oprávnění. Zabezpečení dat soukromých je zřeteli pro zákazníky. Nechcete, aby se přihlašovací údaje, jako jsou databázové připojovací řetězce, klíče nebo tajné klíče a certifikáty vystaveny vnějšímu světu, kde by útočník mohl tyto tajné kódy využít ke škodlivým účelům. Nemáte přidejte do kódu nebo je vložit do imagí kontejnerů. Tento přístup by představovat riziko pro vystavení a omezit možnost obměňovat tyto přihlašovací údaje jako Image kontejneru bude třeba znovu sestavit.
+Při vývoji a spouštění aplikací ve službě Azure Kubernetes Service (AKS) je zabezpečení podů klíčovým aspektem. Vaše aplikace by měly být navrženy pro zásadu nejmenšího počtu požadovaných oprávnění. Zabezpečení soukromých dat je pro zákazníky na prvním místě. Nechcete, aby pověření, jako jsou připojovací řetězce databáze, klíče nebo tajné klíče a certifikáty vystavené vnějšímu světu, kde by útočník mohl tyto tajné klíče využít ke škodlivým účelům. Nepřidávejte je do kódu ani je nevkládejte do iniciovaných kontejnerů. Tento přístup by vytvořil riziko pro expozici a omezil možnost otočení těchto přihlašovacích údajů, protože image kontejneru bude nutné znovu sestavit.
 
-Tento článek o osvědčených postupech se zaměřuje na zabezpečení lusků v AKS. Získáte informace o těchto tématech:
+Tento článek osvědčených postupů se zaměřuje na zabezpečení podů v AKS. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Kontext zabezpečení pod použít k omezení přístupu k procesů a služeb nebo zvýšení úrovně oprávnění
-> * Ověřování pomocí dalších prostředků Azure pomocí pod spravovaných identit
-> * Vyžádání a načtení přihlašovacích údajů z digitální trezoru, jako je Azure Key Vault
+> * Použití kontextu zabezpečení podu k omezení přístupu k procesům a službám nebo eskalaci oprávnění
+> * Ověření pomocí jiných prostředků Azure pomocí spravovaných identit podu
+> * Vyžádání a načtení přihlašovacích údajů z digitálního trezoru, jako je azure key vault
 
-Můžete si také přečíst osvědčené postupy pro [zabezpečení clusteru][best-practices-cluster-security] a [správu imagí kontejneru][best-practices-container-image-management].
+Můžete si také přečíst osvědčené postupy pro [zabezpečení clusteru][best-practices-cluster-security] a [pro správu image kontejneru][best-practices-container-image-management].
 
-## <a name="secure-pod-access-to-resources"></a>Zabezpečení pod přístupu k prostředkům
+## <a name="secure-pod-access-to-resources"></a>Zabezpečený přístup podu k prostředkům
 
-**Doprovodné materiály k osvědčeným postupům** – můžete spustit jako jiný uživatel nebo skupinu a omezit přístup k podkladovým procesům a službám uzlů, definovat pod nastavením kontextu zabezpečení. Přiřadit nejmenší počet požadovaná oprávnění.
+**Pokyny pro osvědčené postupy** – Chcete-li spustit jako jiný uživatel nebo skupinu a omezit přístup k základním procesům a službám uzlů, definujte nastavení kontextu zabezpečení podu. Přiřaďte nejmenší počet požadovaných oprávnění.
 
-Aby vaše aplikace běžely správně, měly by být spuštěny v rámci definovaného uživatele nebo skupiny, nikoli jako *kořen*. `securityContext` pro pod nebo kontejner umožňuje definovat nastavení, jako je například *runAsUser* nebo *fsGroup* , aby se mohla předpokládat příslušná oprávnění. Pouze požadovaného uživatele nebo skupiny oprávnění a nepoužívejte kontextu zabezpečení jako způsob předpokládat, že další oprávnění. Nastavení *runAsUser*, eskalace oprávnění a dalších možností pro Linux jsou k dispozici pouze v uzlech a luskech systému Linux.
+Aby vaše aplikace běžely správně, pody by měly běžet jako definovaný uživatel nebo skupina a ne jako *root*. For `securityContext` pro pod nebo kontejner umožňuje definovat nastavení, jako je *runAsUser* nebo *fsGroup* převzít příslušná oprávnění. Přiřazuji pouze požadovaná oprávnění uživatele nebo skupiny a nepoužívejte kontext zabezpečení jako prostředek k převzetí dalších oprávnění. *RunAsUser*, eskalace oprávnění a další nastavení funkcí Linuxu jsou k dispozici pouze na linuxových uzlech a podech.
 
-Při spuštění jako uživatel bez kořenového kontejnery nelze vytvořit vazbu na privilegované porty v části 1 024. V tomto scénáři je možné ke skrytí skutečnost, že je aplikace spuštěna na konkrétním portu služby Kubernetes.
+Při spuštění jako uživatel bez kořenů kontejnery nelze vytvořit vazbu na privilegované porty pod 1024. V tomto scénáři Kubernetes služby lze zamaskovat skutečnost, že aplikace běží na konkrétním portu.
 
-Kontext zabezpečení pod můžete také definovat oprávnění pro přístup k procesů a služeb nebo další funkce. Můžete nastavit následující běžné definice kontext zabezpečení:
+Kontext zabezpečení podu můžete také definovat další možnosti nebo oprávnění pro přístup k procesům a službám. Lze nastavit následující společné definice kontextu zabezpečení:
 
-* **allowPrivilegeEscalation** definuje, zda může rozhraním pod předpokládat *Kořenová* oprávnění. Navrhněte své aplikace, aby toto nastavení bylo vždycky nastavené na *false*.
-* **Funkce systému Linux** umožňují podkladové procesy přístupu pod uzlem. Postará se přiřazení těchto možností. Přiřadit nejmenší počet potřebná oprávnění. Další informace najdete v tématu [Možnosti pro Linux][linux-capabilities].
-* **SELinux Labels** je modul zabezpečení jádra pro Linux, který umožňuje definovat zásady přístupu pro služby, procesy a přístup k systému souborů. Znovu přiřadit nejmenší počet potřebná oprávnění. Další informace najdete v tématu [Možnosti SELinux v Kubernetes][selinux-labels] .
+* **allowPrivilegeEscalation** definuje, zda pod může převzít *oprávnění kořenového adresáře.* Navrhněte aplikace tak, aby toto nastavení bylo vždy nastaveno na *hodnotu false*.
+* **Linux schopnosti** umožňují pod přístup základní procesy uzlu. Při přiřazování těchto funkcí dbát e-li. Přiřaďte nejmenší počet potřebných oprávnění. Další informace naleznete v tématu [Linux capabilities][linux-capabilities].
+* **SELinux štítky** je linuxové jádro bezpečnostní modul, který vám umožní definovat přístupové politiky pro služby, procesy a přístup k souborové soustavě. Opět přiřaďte nejmenší počet potřebných oprávnění. Další informace naleznete [v tématu MOŽNOSTI SELinuxu v Kubernetes][selinux-labels]
 
-Manifest YAML pod následující příklad nastaví kontext nastavení k definování zabezpečení:
+Následující příklad pod manifestem YAML nastaví nastavení kontextu zabezpečení tak, aby definovala:
 
-* Pod se spustí jako ID uživatele *1000* a část id skupiny *2000* .
-* Nejde eskalovat oprávnění k použití `root`
-* Umožňuje Linux možnosti pro přístup k síťovým rozhraním a hodiny v reálném čase (hardware) hostiteli
+* Pod běží jako ID uživatele *1000* a část ID skupiny *2000*
+* Nelze eskalovat oprávnění k použití`root`
+* Umožňuje linuxovým funkcím přístup k síťovým rozhraním a hodinám v reálném čase (hardwaru) hostitele
 
 ```yaml
 apiVersion: v1
@@ -63,52 +63,52 @@ spec:
         add: ["NET_ADMIN", "SYS_TIME"]
 ```
 
-Operátor clusteru rozhodnout, jaká nastavení kontextu zabezpečení je nutné pracovat. Došlo k pokusu o navrhnout aplikace tak, že minimalizovat další oprávnění a přístupu, kterou chcete pod vyžaduje. Existují další funkce zabezpečení k omezení přístupu pomocí AppArmor a seccomp (zabezpečené výpočetní), který může být implementována operátory clusteru. Další informace najdete v tématu [zabezpečení přístupu kontejneru k prostředkům][apparmor-seccomp].
+Spolupracujte s operátorem clusteru a zjistěte, jaké nastavení kontextu zabezpečení potřebujete. Pokuste se navrhnout aplikace minimalizovat další oprávnění a přístup pod vyžaduje. Existují další funkce zabezpečení pro omezení přístupu pomocí AppArmor a seccomp (zabezpečené výpočetní techniky), které mohou být implementovány operátory clusteru. Další informace naleznete v [tématu Zabezpečený přístup kontejneru k prostředkům][apparmor-seccomp].
 
-## <a name="limit-credential-exposure"></a>Limit odhalení přihlašovacích údajů
+## <a name="limit-credential-exposure"></a>Omezit expozici pověření
 
-**Doprovodné materiály k osvědčeným postupům** – nedefinujte přihlašovací údaje v kódu aplikace. Pod žádost o přístup k dalším prostředkům pomocí spravované identity pro prostředky Azure. Digitální trezoru, jako je Azure Key Vault, by měla také sloužit k ukládání a načítání digitálních klíčů a přihlašovacích údajů. Spravované identity pod jsou určené pro použití jenom pro systémy Linux a image kontejnerů.
+**Pokyny pro osvědčené postupy** – nedefinujte pověření v kódu aplikace. Pomocí spravovaných identit pro prostředky Azure umožníte podu požadovat přístup k jiným prostředkům. Digitální trezor, jako je například Azure Key Vault, by měl být také použit k ukládání a načítání digitálních klíčů a přihlašovacích údajů. Spravované identity podů jsou určeny pouze pro linuxové pody a image kontejnerů.
 
-Pokud chcete omezit riziko vystavení v kódu aplikace přihlašovacích údajů, se vyhněte použití fixed nebo sdílené přihlašovací údaje. Přihlašovacím údajům nebo klíčům by neměla být obsažená přímo v kódu. Pokud tyto přihlašovací údaje jsou odhaleny, aplikace potřebuje aktualizovat a znovu nasadit. Lepším řešením je poskytnout podů vlastní identity a způsob, jak sami ověření, nebo automaticky načíst přihlašovací údaje z digitální trezoru.
+Chcete-li omezit riziko vystavení pověření v kódu aplikace, vyhněte se použití pevných nebo sdílených pověření. Přihlašovací údaje nebo klíče by neměly být zahrnuty přímo do vašeho kódu. Pokud jsou tato pověření vystavena, je třeba aktualizovat a znovu nasadit aplikaci. Lepším přístupem je poskytnout podům vlastní identitu a způsob, jak se ověřit, nebo automaticky načíst přihlašovací údaje z digitálního trezoru.
 
-Následující [přidružené open source projekty AKS][aks-associated-projects] vám umožňují automaticky ověřovat lusky nebo požadovat přihlašovací údaje a klíče z digitálního trezoru:
+Následující [přidružené projekty s otevřeným zdrojovým kódem AKS][aks-associated-projects] umožňují automaticky ověřovat pody nebo požadovat pověření a klíče z digitálního trezoru:
 
-* Spravované identity pro prostředky Azure, a
-* Azure Key Vault FlexVol ovladače
+* Spravované identity pro prostředky Azure a
+* Ovladač FlexVol trezoru klíčů Azure
 
-Technická podpora Azure nepodporuje přidružené open source projekty v AKS. Jsou k dispozici za účelem shromažďování názorů a chyb od naší komunity. Tyto projekty se nedoporučují pro použití v produkčním prostředí.
+Přidružené projekty s otevřeným zdrojovým kódem AKS nejsou podporovány technickou podporou Azure. Jsou poskytovány shromažďovat zpětnou vazbu a chyby z naší komunity. Tyto projekty se nedoporučují pro použití ve výrobě.
 
-### <a name="use-pod-managed-identities"></a>Pod použití spravované identity
+### <a name="use-pod-managed-identities"></a>Použití spravovaných identit podu
 
-Spravovaná identita pro prostředky Azure umožňuje sám sebe ověřit vůči službám Azure, které je podporují, jako je například Storage nebo SQL. Pod se přiřadí Azure Identity, ve kterém je ověření do služby Azure Active Directory a získat digitální token. Tento digitální token lze zobrazit k jiným službám Azure, které kontrolují, jestli chcete pod autorizaci pro přístup ke službě a provádět požadované akce. Tento postup znamená, že žádné tajné klíče jsou požadovány pro databázové připojovací řetězce, například. Zjednodušený pracovní postup pro pod spravované identity můžete vidět v následujícím diagramu:
+Spravovaná identita pro prostředky Azure umožňuje podu ověřit sám proti službám Azure, které ji podporují, jako je úložiště nebo SQL. Pod je přiřazen a Azure Identity, která jim umožní ověřit azure active directory a přijímat digitální token. Tento digitální token lze prezentovat jiným službám Azure, které zkontrolují, jestli je pod oprávněný k přístupu ke službě a k provedení požadovaných akcí. Tento přístup znamená, že žádné tajné klíče jsou vyžadovány pro připojovací řetězce databáze, například. Zjednodušený pracovní postup pro identitu spravované podem je uveden v následujícím diagramu:
 
-![Zjednodušený pracovní postup pro pod spravovat identity v Azure](media/developer-best-practices-pod-security/basic-pod-identity.png)
+![Zjednodušený pracovní postup pro spravovanou identitu podu v Azure](media/developer-best-practices-pod-security/basic-pod-identity.png)
 
-S využitím spravované identity kódu aplikace nemusí zahrnovat přihlašovací údaje pro přístup ke službě, jako je Azure Storage. Jak každý pod ověřuje pomocí vlastní identity, tak můžete auditovat a kontrolovat přístup. Pokud vaše aplikace připojuje s ostatními službami Azure, pomocí spravované identity pro opakované použití omezení přihlašovacích údajů a riziko ohrožení.
+Se spravovanou identitou nemusí kód aplikace obsahovat přihlašovací údaje pro přístup ke službě, jako je Azure Storage. Jako každý pod ověřuje s vlastní identitou, takže můžete auditovat a kontrolovat přístup. Pokud se vaše aplikace připojuje k jiným službám Azure, použijte spravované identity k omezení opakovaného použití přihlašovacích údajů a rizika expozice.
 
-Další informace o identitách pod najdete v tématu [Konfigurace clusteru AKS, který se použije pod spravovanými identitami a s vašimi aplikacemi][aad-pod-identity] .
+Další informace o identitách podu [najdete v tématu Konfigurace clusteru AKS pro použití spravovaných identit podů a s vašimi aplikacemi.][aad-pod-identity]
 
-### <a name="use-azure-key-vault-with-flexvol"></a>Použití Azure Key Vault s FlexVol
+### <a name="use-azure-key-vault-with-flexvol"></a>Použití trezoru klíčů Azure s FlexVol
 
-Identity spravovaných pod ideální ověřování na základě podpůrné služby Azure. Vlastní služby nebo aplikace bez spravovaným identitám pro prostředky Azure stále ověření pomocí služby přihlašovacím údajům nebo klíčům. Digitální trezor slouží k ukládání těchto přihlašovacích údajů.
+Spravované identity podu fungují skvěle ověřit proti podpoře služeb Azure. U vlastních služeb nebo aplikací bez spravovaných identit pro prostředky Azure se stále ověřujete pomocí přihlašovacích údajů nebo klíčů. K uložení těchto přihlašovacích údajů lze použít digitální trezor.
 
-Když aplikace potřebuje přihlašovací údaje, komunikují s digitální trezor načíst nejnovější přihlašovací údaje a připojte se k požadované služby. Služba Azure Key Vault může být tento digitální trezor. Zjednodušený pracovní postup pro načtení přihlašovacích údajů služby Azure Key Vault pomocí pod spravovaných identit můžete vidět v následujícím diagramu:
+Když aplikace potřebují pověření, komunikují s digitálním trezorem, načítají nejnovější pověření a pak se připojují k požadované službě. Azure Key Vault může být tento digitální trezor. Zjednodušený pracovní postup pro načítání přihlašovacích údajů z azure key vault pomocí pod spravované identity se zobrazí v následujícím diagramu:
 
-![Zjednodušený pracovní postup pro načtení přihlašovacích údajů ze služby Key Vault pomocí pod spravované identity](media/developer-best-practices-pod-security/basic-key-vault-flexvol.png)
+![Zjednodušený pracovní postup pro načítání přihlašovacích údajů z trezoru klíčů pomocí spravované identity podu](media/developer-best-practices-pod-security/basic-key-vault-flexvol.png)
 
-Se službou Key Vault ukládat a pravidelně otočit tajné kódy jako jsou přihlašovací údaje, klíče účtu úložiště nebo certifikáty. Azure Key Vault můžete integrovat s clusterem AKS pomocí FlexVolume. Ovladač FlexVolume umožňuje clusteru AKS nativně načíst přihlašovací údaje ze služby Key Vault a bezpečné poskytování přesných pouze na žádost o pod. Práce s operátorem váš cluster nasadit ovladač Key Vault FlexVol do uzlů AKS. Pod spravované identity můžete požádat o přístup do služby Key Vault a načíst přihlašovací údaje, které potřebujete prostřednictvím FlexVolume ovladače.
+Pomocí trezoru klíčů ukládáte a pravidelně střídáte tajné klíče, jako jsou přihlašovací údaje, klíče účtů úložiště nebo certifikáty. Azure Key Vault můžete integrovat s clusterem AKS pomocí FlexVolume. Ovladač FlexVolume umožňuje clusteru AKS nativně načíst pověření z trezoru klíčů a bezpečně je poskytnout pouze žádajícímu podu. Spolupracujte s operátorem clusteru na nasazení ovladače FlexVol trezoru klíčů do uzlů AKS. Pomocí spravované identity podu můžete požádat o přístup k trezoru klíčů a načíst potřebná pověření prostřednictvím ovladače FlexVolume.
 
-Azure Key Vault s FlexVol jsou určené pro použití s aplikacemi a službami běžícími v systémech Linux a uzlech.
+Azure Key Vault s FlexVol je určen pro použití s aplikacemi a službami běžícími na podech a uzlech Linuxu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento článek se zaměřuje na tom, jak zabezpečit vaše pody. K provedení některých z těchto oblastí, naleznete v následujících článcích:
+Tento článek se zaměřil na to, jak zabezpečit vaše lusky. Chcete-li implementovat některé z těchto oblastí, naleznete v následujících článcích:
 
-* [Použití spravovaných identit pro prostředky Azure s AKS][aad-pod-identity]
-* [Integrace Azure Key Vault s AKS][aks-keyvault-flexvol]
+* [Použití spravovaných identit pro prostředky Azure pomocí AKS][aad-pod-identity]
+* [Integrace trezoru klíčů Azure s AKS][aks-keyvault-flexvol]
 
 <!-- EXTERNAL LINKS -->
-[aad-pod-identity]: https://github.com/Azure/aad-pod-identity#demo-pod
+[aad-pod-identity]: https://github.com/Azure/aad-pod-identity#demo
 [aks-keyvault-flexvol]: https://github.com/Azure/kubernetes-keyvault-flexvol
 [linux-capabilities]: http://man7.org/linux/man-pages/man7/capabilities.7.html
 [selinux-labels]: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.12/#selinuxoptions-v1-core

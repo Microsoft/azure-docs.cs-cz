@@ -1,69 +1,68 @@
 ---
-title: Platba na komerční tržiště | Azure Marketplace
-description: Přečtěte si, jak přijímat platby za tržby na komerčním webu Marketplace.
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+title: Jak dostat zaplaceno na komerčním trhu | Azure Marketplace
+description: Přečtěte si o přijímání plateb za vaše příjmy na komerčním trhu.
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 7f539d4165df04ddca198385f9eef4f90ed15189
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 3c75d5ccdd2d632fbc31d1be3faf6cbc6d3fb223
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933601"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275828"
 ---
 # <a name="getting-paid"></a>Vyplacení
-Zde jsou některé důležité informace o tom, jak přijímat platby za vaše nabídky, doplňky a příjmy za reklamu.
+Tady jsou některé důležité informace o přijímání plateb za nabídky, doplňky a příjmy z reklamy.
 
 > [!IMPORTANT]
-> Než budete moct získat peníze z nabídky prodejů na komerčním webu Marketplace, musíte [nastavit svůj účet pro výběr a vyplnit nezbytné daňové formuláře](set-up-your-payout-account-tax-forms.md).
+> Než budete moci získat peníze z prodeje nabídky na komerčním trhu, musíte [si nastavit výplatní účet a vyplnit potřebné daňové formuláře](set-up-your-payout-account-tax-forms.md).
 
-## <a name="store-fee"></a>Poplatek za Store
+## <a name="store-fee"></a>Poplatek za obchod
 
-Když se [přihlásíte k vývojářskému účtu](https://go.microsoft.com/fwlink/p/?LinkID=615100), přijímáte [smlouvu Microsoft Azure Marketplace vydavatele](https://go.microsoft.com/fwlink/p/?LinkID=699560). Tato smlouva vysvětluje vztah mezi vámi a Microsoftem, který se vztahuje k prodeji nabídky na komerčním webu Marketplace, včetně poplatků za Store, které Microsoft účtuje za každý prodej.
+Když [si zaregistrujete vývojářský účet](https://go.microsoft.com/fwlink/p/?LinkID=615100), přijmete [smlouvu s vydavatelem microsoft azure marketplace](https://go.microsoft.com/fwlink/p/?LinkID=699560). Tato smlouva vysvětluje vztah mezi vámi a společností Microsoft, protože se jedná o prodej nabídky na komerčním trhu, včetně poplatku za obchod, který společnost Microsoft účtuje za každý uskutečněný prodej.
 
-Poplatky jsou v rámci [smlouvy Microsoft Azure Marketplace vydavatele](https://go.microsoft.com/fwlink/p/?LinkID=699560)oficiálně definovány. Pokud máte nějaké dotazy, vždy si ho Projděte.
+Poplatky jsou oficiálně definovány ve [Smlouvě s vydavatelem webu Microsoft Azure Marketplace](https://go.microsoft.com/fwlink/p/?LinkID=699560). Pokud máte nějaké dotazy, vždy si tento dokument zkontrolujte.
 
-Poplatek za Store se použije na všechny prodejní nabídky shromážděné komerčním Marketplace, včetně doplňků.
+Poplatek za obchod se vztahuje na všechny prodeje nabídek vybrané komerčním tržištěm, včetně doplňků.
 
 ## <a name="price-tiers"></a>Cenové úrovně
 
-Cenové úrovně, které vyberete, nastaví prodejní cenu ve všech zemích, kde se rozhodnete distribuovat svou nabídku. Můžete také využít další cenové funkce, jako je například výběr různých cen pro různé trhy.
+Vybraná cenová úroveň nastaví prodejní cenu ve všech zemích, ve kterých se rozhodnete nabídku distribuovat. Můžete také použít další cenové funkce, jako je výběr různých cen pro různé trhy.
 
-Svou aplikaci můžete nabízet zdarma nebo si můžete vybrat cenu, kterou si zákazníci musí zaplatit za získání vaší nabídky. Cenové úrovně začínají na. 99 USD, s dalšími přírůstky (1,09 USD, 1,19 USD atd.). Zvýšení ceny mezi cenové úrovně se zvyšuje, protože cena je vyšší.
+Aplikaci můžete nabídnout zdarma nebo si můžete vybrat cenu, kterou musí zákazníci zaplatit za získání vaší nabídky. Cenové úrovně začínají na 0,99 USD s dalšími přírůstky (1,09 USD, 1,19 USD a tak dále). Přírůstky mezi cenovými úrovněmi se zvyšují s tím, jak se cena zvyšuje.
 
 > [!NOTE] 
-> Tyto cenové úrovně se vztahují také na všechny doplňky, které nabízíte v rámci vaší nabídky.
+> Tyto cenové úrovně platí také pro všechny doplňky, které nabízíte v rámci vaší nabídky.
 
-Každá cenová úroveň má odpovídající hodnotu v každé z měn nabízených úložištěm. Tyto hodnoty používáme k tomu, abychom vám pomohli prodávat nabídku za srovnatelný cenový bod po celém světě. V důsledku změn v devizových kurzech se ale přesná částka prodeje může mírně lišit od jedné měny k druhé.
+Každá cenová úroveň má odpovídající hodnotu v každé z měn nabízených obchodem. Tyto hodnoty používáme k tomu, abychom vám pomohli prodat vaši nabídku za srovnatelnou cenu po celém světě. V důsledku změn směnných kurzů se však přesná částka prodeje může mírně lišit od jedné měny k druhé.
 
-Máte také možnost zadat cenu z volné formy, kterou zvolíte v místní měně konkrétního trhu. Když to uděláte, cena se neupraví (i když se změní míra převodu), Pokud neodešlete aktualizaci s novou cenou. 
+Máte také možnost zadat volnou cenu podle vašeho výběru v místní měně konkrétního trhu. Pokud tak učiníte, cena nebude upravena (i když se změní přepočítací koeficienty), pokud neodešlete aktualizaci s novou cenou. 
 
-Mějte na paměti, že vybraná cena může zahrnovat daň z prodeje nebo přidané hodnoty, kterou musí vaši zákazníci platit. Další informace najdete v tématu [daňové detaily pro placené nabídky](tax-details-paid-transactions.md) .
-
-
-## <a name="payout-reporting"></a>Vytváření sestav o výběrech
-
-K podrobnostem o svých platebních údajích a ke stažení sestav můžete získat informace v **přehledu výběrů** [partnerského centra](https://partner.microsoft.com/dashboard). Pokud chcete získat další informace o zde zobrazených informacích a o tom, jak kategorizovat peníze, které získáte, podívejte se na [Souhrn výběr](payout-summary.md).
+Mějte na paměti, že vybraná cena může zahrnovat daň z prodeje nebo daň z přidané hodnoty, kterou musí zákazníci zaplatit. Další informace najdete [v části Daňové údaje pro placenou nabídku.](tax-details-paid-transactions.md)
 
 
-## <a name="payout-timeframe"></a>Rámec výběr
+## <a name="payout-reporting"></a>Výplatní hlášení
 
-Platby se účtují měsíčně (za předpokladu, že byla splněna platná prahová hodnota platby a neuvedli jste svůj výběr, jak je popsáno níže). Obvykle budeme v daném měsíci zasílat platbu za 15. den tohoto měsíce. Všimněte si, že platby obvykle mezi 3 až 10 dalšími pracovními dny dosáhnou, abyste dosáhli svého účtu na výběr. Další informace najdete v tématu [prahové hodnoty pro platby, metody a časové rámce](payment-thresholds-methods-timeframes.md).
+K podrobnostem o platebních údajích a přehledech ke stažení můžete získat informace v **souhrnu výplat** [v Centru partnerů](https://partner.microsoft.com/dashboard). Další informace o zde uvedených informacích a o tom, jak peníze, které vyděláte, kategorizujeme, najdete v [tématu Souhrn výplat](payout-summary.md).
 
 
-##  <a name="payout-hold-status"></a>Stav blokování ve výběr
+## <a name="payout-timeframe"></a>Časový rámec výplaty
 
-Ve výchozím nastavení pošleme platby měsíčně, jak je popsáno výše. Máte ale možnost umístit své výběry do pozastaveného programu, což nám zabrání v posílání plateb na váš účet. Pokud se rozhodnete, že se vaše výběry zablokují, budeme nahrávat všechny výnosy, které získáte, a poskytnout podrobné údaje v **souhrnu**výběru. Do vašeho účtu ale nepošleme žádné platby, dokud ho neodeberete.
+Platby se provádějí měsíčně (za předpokladu, že byl splněn příslušný limit platby a výplatu jste neodložili, jak je popsáno níže). Platbu splatnou v daném měsíci obvykle zašleme do patnáctého dne daného měsíce. Upozorňujeme, že platby obvykle trvá 3 až 10 dalších pracovních dnů, než se dostanete k vašemu výplatnímu účtu. Další informace najdete [v tématu Prahové hodnoty plateb, metody a časové rámce](payment-thresholds-methods-timeframes.md).
 
-Pokud chcete své platby zablokovat, přečtěte si **nastavení pro vývojáře**. V části **Výběr a daň**vyberte v části **přiřazení do výběrového a daňového profilu** program, pro který chcete, aby se platby držely. Kliknutím na zaškrtávací políčko **podržet moji platbu** zadržíte platby za tento program. Stav blokování můžete kdykoli změnit, ale mějte na paměti, že vaše rozhodnutí bude mít vliv na další měsíční výběr. Pokud například chcete pozastavit výběr z dubna, ujistěte se, že jste na konci března nastavili stav blokování vstupu na **zapnuto** .
 
-Jakmile nastavíte stav blokování vyčerpání na **zapnuto**, všechny výběry tohoto programu se pozastaví, dokud nepřepnete posuvník zpět na **vypnuto**. Když to uděláte, budete zahrnuti během měsíčního cyklu výběrů (za předpokladu, že byly splněny příslušné prahové hodnoty plateb). Například pokud máte vaše výběry podrženy, ale chcete mít vygenerovaný výběr v červnu, nezapomeňte přepnout stav typu blokování na **vypnuto** před koncem květen.
+##  <a name="payout-hold-status"></a>Stav blokování výplaty
+
+Ve výchozím nastavení budeme zasílat platby měsíčně, jak je popsáno výše. Máte však možnost pozdržet výplaty pro program, což nám zabrání v odesílání plateb na váš účet. Pokud se rozhodnete své výplaty pozdržet, budeme i nadále zaznamenávat veškeré příjmy, které získáte, a podrobnosti poskytneme ve **svém souhrnu výplat**. Žádné platby na váš účet však nepošleme, dokud blokování neodeberete.
+
+Chcete-li platby pozdržet, přejděte na **nastavení vývojáře**. V části **Výplata a daň**vyhledejte v části **Výplata a přiřazení daňového profilu** program, pro který chcete platby držet. Kliknutím na zaškrtávací **políčko Podržet platbu** podržíte platby pro tento program. Stav podržení výplaty můžete kdykoli změnit, ale uvědomte si, že vaše rozhodnutí bude mít vliv na další měsíční výplatu. Pokud například chcete podržet dubnovou výplatu, nezapomeňte do konce března nastavit stav podržení výplaty **na zapnuto.**
+
+Jakmile nastavíte stav podržení výplaty **na Zapnuto**, budou všechny výplaty pro tento program pozastaveny, dokud jezdec nepřepnete zpět na **Vypnuto**. Pokud tak učiníte, budete zahrnuti během dalšího měsíčního výplatního cyklu (za předpokladu, že byly splněny příslušné limity plateb). Pokud jste například měli výplaty pozastavené, ale chtěli byste, aby výplata byla vygenerována v červnu, nezapomeňte do konce května přepnout stav podržení výplaty na **Vypnuto.**
 
 > [!NOTE]
-> Váš **Výběr** se vztahuje na každý program zvlášť (Microsoft Store, inzerce, Azure Marketplace atd.). Pokud chcete uchovávat platby na všech svých programech, musíte uchovávat platby jednotlivě v každém programu.
+> Stav **blokování výplaty** platí pro jednotlivé programy jednotlivě (Microsoft Store, reklama, Azure Marketplace atd.). Pokud chcete mít platby na všech vašich programech, musíte mít platby na každý program jednotlivě.
 
 
  

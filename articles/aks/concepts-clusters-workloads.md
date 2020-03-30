@@ -1,134 +1,134 @@
 ---
-title: Koncepty – základy Kubernetes pro služby Azure Kubernetes (AKS)
-description: Seznamte se se základními komponentami clusterů a úloh Kubernetes a s tím, jak se vztahují k funkcím ve službě Azure Kubernetes Service (AKS).
+title: Koncepty – základy Kubernetes pro služby Azure Kubernetes Services (AKS)
+description: Naučte se základní součásti clusteru a pracovního vytížení Kubernetes a jejich vztah k funkcím ve službě Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: bcf56aa89a42d65fdb7bf03696faad13c64cbc8a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79259640"
 ---
-# <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)
+# <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Základní koncepty Kubernetes pro službu Azure Kubernetes Service (AKS)
 
-Vzhledem k tomu, že vývoj aplikací se přesouvá směrem k přístupu založenému na kontejneru, je potřeba orchestrovat a spravovat prostředky, které jsou důležité. Kubernetes je přední platforma, která poskytuje možnost poskytovat spolehlivé plánování úloh aplikací odolných proti chybám. Služba Azure Kubernetes Service (AKS) je spravovaná Kubernetes nabídka, která dále zjednodušuje nasazování a správu aplikací založených na kontejnerech.
+Vývoj aplikací se pohybuje směrem k přístupu založenému na kontejnerech, je důležité, aby bylo důležité organizovat a spravovat prostředky. Kubernetes je přední platforma, která poskytuje možnost poskytovat spolehlivé plánování úloh aplikací odolných proti chybám. Azure Kubernetes Service (AKS) je spravovaná nabídka Kubernetes, která dále zjednodušuje nasazení a správu aplikací založených na kontejnerech.
 
-V tomto článku se seznámíte se základními komponentami infrastruktury Kubernetes, jako je například *řídicí plocha*, *uzly*a *fondy uzlů*. Společně s postupem seskupení prostředků do *oborů názvů*se zavádějí i prostředky úlohy, jako jsou *lusky*, *nasazení*a *sady* .
+Tento článek představuje základní součásti infrastruktury Kubernetes, jako je *například řídicí rovina*, *uzly*a *fondy uzlů*. Jsou také zavedeny prostředky pracovního vytížení, jako *jsou pody*, *nasazení*a *sady,* spolu s postupem seskupit prostředky do *oborů názvů*.
 
 ## <a name="what-is-kubernetes"></a>Co je Kubernetes?
 
-Kubernetes je rychle se vyvíjející platforma, která spravuje aplikace založené na kontejnerech a jejich přidružené síťové komponenty a součásti úložiště. Zaměřuje se na úlohy aplikace, nikoli na základní součásti infrastruktury. Kubernetes poskytuje deklarativní přístup k nasazením zajištěné robustní sadou rozhraní API pro operace správy.
+Kubernetes je rychle se vyvíjející platforma, která spravuje aplikace založené na kontejnerech a jejich přidružené síťové a úložné komponenty. Důraz je kladen na úlohy aplikace, nikoli základní součásti infrastruktury. Kubernetes poskytuje deklarativní přístup k nasazením, podporovaný robustní sadu api pro operace správy.
 
-Můžete vytvářet a spouštět moderní a přenosné aplikace založené na mikroslužbách, které využívají Kubernetes Orchestrace a správu dostupnosti těchto komponent aplikace. Kubernetes podporuje bezstavové a stavové aplikace jako průběh týmů prostřednictvím přijetí aplikací založených na mikroslužbách.
+Můžete vytvářet a spouštět moderní, přenosné aplikace založené na mikroslužbách, které těží z orchestrace kubernetes a správu dostupnosti těchto součástí aplikace. Kubernetes podporuje bezstavové i stavové aplikace jako týmy postupují prostřednictvím přijetí aplikací založených na mikroslužbách.
 
-Jako otevřená platforma vám Kubernetes umožňuje sestavovat aplikace s preferovaným programovacím jazykem, operačním systémem, knihovnami nebo sběrnicí pro zasílání zpráv. Stávající nástroje pro průběžnou integraci a průběžné doručování (CI/CD) můžete integrovat s Kubernetes k naplánování a nasazení vydaných verzí.
+Jako otevřená platforma vám Kubernetes umožňuje vytvářet aplikace s preferovaným programovacím jazykem, osem, knihovnami nebo sběrnicí pro zasílání zpráv. Stávající nástroje průběžné integrace a průběžného doručování (CI/CD) se mohou integrovat s Kubernetes a naplánovat a nasadit vydání.
 
-Služba Azure Kubernetes Service (AKS) poskytuje spravovanou službu Kubernetes, která snižuje složitost pro úlohy správy nasazení a jádra, včetně koordinačních upgradů. Rovina ovládacího prvku AKS je spravovaná platformou Azure a platíte jenom za uzly AKS, na kterých běží vaše aplikace. AKS je postaven na Open Source modulu Azure Kubernetes Service Engine ([AKS-Engine][aks-engine]).
+Služba Azure Kubernetes Service (AKS) poskytuje spravovanou službu Kubernetes, která snižuje složitost nasazení a úloh správy jádra, včetně koordinace upgradů. Rovina řízení AKS je spravována platformou Azure a platíte jenom za uzly AKS, které spouštějí vaše aplikace. AKS je postaven na open source Azure Kubernetes Service Engine[(aks-engine).][aks-engine]
 
 ## <a name="kubernetes-cluster-architecture"></a>Architektura clusteru Kubernetes
 
-Cluster Kubernetes je rozdělen do dvou součástí:
+Kubernetesův cluster je rozdělen do dvou složek:
 
-- *Řídicí uzly ovládacích prvků* poskytují základní služby Kubernetes a orchestraci úloh aplikací.
-- *Uzly* spouštějí úlohy vaší aplikace.
+- *Řídicí rovina* uzly poskytují základní služby Kubernetes a orchestraci úloh aplikací.
+- *Uzly* spouštějí úlohy aplikací.
 
-![Rovina ovládacího prvku Kubernetes a součásti uzlu](media/concepts-clusters-workloads/control-plane-and-nodes.png)
+![Součásti řídicí roviny a uzlů Kubernetes](media/concepts-clusters-workloads/control-plane-and-nodes.png)
 
-## <a name="control-plane"></a>Rovina ovládacího prvku
+## <a name="control-plane"></a>Řídicí rovina
 
-Při vytváření clusteru AKS se automaticky vytvoří a nakonfiguruje rovina ovládacího prvku. Tato Řídicí rovina je k dispozici jako spravovaný prostředek Azure, který je z uživatele abstraktní. Pro plochu ovládacího prvku se neúčtují žádné náklady, jenom uzly, které jsou součástí clusteru AKS.
+Když vytvoříte cluster AKS, automaticky se vytvoří a nakonfiguruje rovina ovládacího prvku. Tato rovina ovládacího prvku je k dispozici jako spravovaný prostředek Azure abstrahovaný od uživatele. Neexistuje žádné náklady na rovinu ovládacího prvku, pouze uzly, které jsou součástí clusteru AKS.
 
-Rovina ovládacího prvku zahrnuje následující základní komponenty Kubernetes:
+Řídicí rovina obsahuje následující základní komponenty Kubernetes:
 
-- *Kube-apiserver* – Server rozhraní API je způsob, jakým jsou vystavená základní rozhraní API Kubernetes. Tato součást poskytuje interakci pro nástroje pro správu, například `kubectl` nebo řídicí panel Kubernetes.
-- *etcd* – Chcete-li zachovat stav clusteru a konfigurace Kubernetes, vysoce dostupný *etcd* je klíčovým úložištěm hodnot v rámci Kubernetes.
-- *Kube-Scheduler* – když vytváříte nebo škálovat aplikace, Plánovač určí, které uzly můžou úlohu spouštět, a spustí je.
-- *Kube-Controller-Manager* – správce kontroléru se dohlíží na počet menších řadičů, které provádějí akce jako replikace lusků a zpracování operací uzlu.
+- *kube-apiserver* - Server API je způsob, jakým jsou základní rozhraní API Kubernetes vystavena. Tato součást poskytuje interakci pro nástroje `kubectl` pro správu, jako je například řídicí panel Kubernetes.
+- *etcd* - Pro zachování stavu vašeho clusteru Kubernetes a konfigurace je vysoce dostupný *etcd* klíčovým úložištěm hodnot v rámci Kubernetes.
+- *kube-scheduler* – při vytváření nebo škálování aplikací plánovač určuje, které uzly můžete spustit úlohu a spustí je.
+- *kube-controller-manager* - Správce kontrolorů dohlíží na řadu menších řadičů, které provádějí akce, jako je replikace podů a zpracování operací uzlů.
 
-AKS poskytuje rovinu ovládacího prvku s jedním klientem a vyhrazeným serverem API, plánovačem atd. Definujete počet a velikost uzlů a platforma Azure nakonfiguruje zabezpečenou komunikaci mezi řídicí rovinou a uzly. Interakce s rovinou ovládacího prvku probíhá prostřednictvím rozhraní API Kubernetes, jako je například `kubectl` nebo řídicí panel Kubernetes.
+AKS poskytuje jednoklientské řídicí roviny, s vyhrazeným serverem ROZHRANÍ API, plánovačem atd. Definujete počet a velikost uzlů a platforma Azure konfiguruje zabezpečenou komunikaci mezi rovinou ovládacího prvku a uzly. Interakce s řídicí rovinou probíhá prostřednictvím rozhraní API `kubectl` Kubernetes, jako je například řídicí panel Kubernetes.
 
-Tato spravovaná rovina řízení znamená, že nemusíte konfigurovat komponenty jako vysoce dostupné úložiště *etcd* , ale také to znamená, že nemůžete získat přístup k rovině ovládacího prvku přímo. Upgrady na Kubernetes se orchestrují prostřednictvím Azure CLI nebo Azure Portal, který upgraduje rovinu ovládacího prvku a pak uzly. Pokud chcete řešit možné problémy, můžete zkontrolovat protokoly roviny ovládacího prvku prostřednictvím protokolů Azure Monitor.
+Toto spravované řízení roviny znamená, že není nutné konfigurovat součásti, jako je vysoce dostupné *etcd* úložiště, ale také to znamená, že nelze získat přístup k rovině ovládacího prvku přímo. Upgrady na Kubernetes se řídí prostřednictvím rozhraní příkazového příkazu Azure nebo portálu Azure, který upgraduje rovinu ovládacího prvku a pak uzly. Chcete-li vyřešit možné problémy, můžete zkontrolovat protokoly roviny ovládacího prvku prostřednictvím protokolů Azure Monitor.
 
-Pokud potřebujete řídicí plochu nakonfigurovat určitým způsobem nebo potřebujete k ní přímý přístup, můžete nasadit vlastní cluster Kubernetes pomocí [AKS-Engine][aks-engine].
+Pokud potřebujete nakonfigurovat řídicí rovinu určitým způsobem nebo potřebujete k ní mít přímý přístup, můžete nasadit vlastní cluster Kubernetes pomocí [aks-engine][aks-engine].
 
-Související osvědčené postupy najdete [v tématu osvědčené postupy pro zabezpečení a upgrady clusterů v AKS][operator-best-practices-cluster-security].
+Doporučené postupy v přidružených tématech najdete [v tématu Doporučené postupy pro zabezpečení clusteru a upgrady v AKS][operator-best-practices-cluster-security].
 
 ## <a name="nodes-and-node-pools"></a>Fondy uzlů a uzlů
 
-Chcete-li spustit aplikace a podpůrné služby, potřebujete *uzel*Kubernetes. Cluster AKS má jeden nebo více uzlů, což je virtuální počítač Azure, který spouští součásti uzlu Kubernetes a modul runtime kontejneru:
+Chcete-li spouštět aplikace a podpůrné služby, potřebujete *uzel*Kubernetes . Cluster AKS má jeden nebo více uzlů, což je virtuální počítač Azure (VM), který spouští komponenty uzlů Kubernetes a runtime kontejneru:
 
-- `kubelet` je agent Kubernetes, který zpracovává požadavky orchestrace z roviny řízení a plánování spouštění požadovaných kontejnerů.
-- Virtuální sítě zpracovává *Kube-proxy* na každém uzlu. Proxy směruje síťový provoz a spravuje přidělování IP adres pro služby a lusky.
-- *Modul runtime kontejneru* je komponenta, která umožňuje spuštění kontejnerových aplikací a interakce s dalšími prostředky, jako je například virtuální síť a úložiště. V AKS se jako modul runtime kontejneru používá Moby.
+- Je `kubelet` agent Kubernetes, který zpracovává požadavky orchestrace z řídicí roviny a plánování spuštění požadovaných kontejnerů.
+- Virtuální síť je zpracována *kube-proxy* na každém uzlu. Proxy server směruje síťový provoz a spravuje adresování IP adres pro služby a pody.
+- *Za běhu kontejneru* je součást, která umožňuje kontejnerizované aplikace ke spuštění a interakci s dalšími prostředky, jako je například virtuální síť a úložiště. V AKS Moby se používá jako zaběhu kontejneru.
 
 ![Virtuální počítač Azure a podpůrné prostředky pro uzel Kubernetes](media/concepts-clusters-workloads/aks-node-resource-interactions.png)
 
-Velikost virtuálního počítače Azure pro vaše uzly definuje, kolik procesorů, kolik paměti a velikost a typ úložiště je k dispozici (například vysoce výkonné SSD nebo běžný pevný disk). Pokud předpokládáte potřebu aplikací, které vyžadují velké množství procesoru a paměti nebo vysoce výkonné úložiště, naplánujte odpovídající velikost uzlu. Můžete také škálovat počet uzlů v clusteru AKS tak, aby splňovaly požadavky.
+Velikost virtuálního počítače Azure pro vaše uzly definuje, kolik procesorů, kolik paměti a velikost a typ úložiště k dispozici (například vysoce výkonný SSD nebo běžné HDD). Pokud očekáváte potřebu aplikací, které vyžadují velké množství procesoru a paměti nebo vysoce výkonné úložiště, naplánujte odpovídajícím způsobem velikost uzlu. Můžete také vertikálně navýšit kapacitu počtu uzlů v clusteru AKS tak, aby splňovaly požadavky.
 
-V AKS je image virtuálního počítače pro uzly v clusteru v současné době založená na Ubuntu Linux nebo Windows serveru 2019. Když vytvoříte cluster AKS nebo rozvedete horizontální navýšení počtu uzlů, platforma Azure vytvoří požadovaný počet virtuálních počítačů a nakonfiguruje je. Neexistuje žádná ruční konfigurace, kterou byste mohli provést. Uzly agentů se účtují jako standardní virtuální počítače, takže se automaticky aplikují všechny slevy, které používáte pro velikost virtuálního počítače (včetně [rezervací Azure][reservation-discounts]).
+V AKS je image virtuálního počítače pro uzly ve vašem clusteru aktuálně založená na Ubuntu Linux nebo Windows Server 2019. Když vytvoříte cluster AKS nebo navodíte kapacitu počtu uzlů, platforma Azure vytvoří požadovaný počet virtuálních počítačů a nakonfiguruje je. Neexistuje žádná ruční konfigurace pro vás provést. Uzly agentů se účtují jako standardní virtuální počítače, takže se automaticky použijí všechny slevy, které máte na velikost virtuálního počítače, kterou používáte (včetně [rezervací Azure).][reservation-discounts]
 
-Pokud potřebujete použít jiný hostitelský operační systém, modul runtime kontejneru nebo zahrnout vlastní balíčky, můžete nasadit vlastní cluster Kubernetes pomocí [AKS-Engine][aks-engine]. Nadřazený `aks-engine` vydává funkce a poskytuje možnosti konfigurace předtím, než jsou oficiálně podporované v clusterech AKS. Pokud například chcete použít modul runtime kontejneru jiný než Moby, můžete pomocí `aks-engine` nakonfigurovat a nasadit cluster Kubernetes, který splňuje vaše aktuální potřeby.
+Pokud potřebujete použít jiný hostitelský operační systém, modul runtime kontejneru nebo zahrnout vlastní balíčky, můžete nasadit vlastní cluster Kubernetes pomocí [aks-engine][aks-engine]. Upstream `aks-engine` vydává funkce a poskytuje možnosti konfigurace dříve, než jsou oficiálně podporovány v clusterech AKS. Například pokud chcete použít za běhu kontejneru než Moby, můžete použít `aks-engine` ke konfiguraci a nasazení clusteru Kubernetes, který splňuje vaše aktuální potřeby.
 
-### <a name="resource-reservations"></a>Rezervace prostředků
+### <a name="resource-reservations"></a>Rezervace zdrojů
 
-Prostředky uzlů využívají AKS k zajištění funkce uzlu jako součásti clusteru. To může při použití v AKS vytvořit nesoulad mezi celkovými prostředky vašeho uzlu a ALLOCATABLE prostředky. To je důležité poznamenat si, že při nastavování požadavků a omezení pro uživatele nasazené lusky.
+Prostředky uzlu jsou využívány AKS, aby uzel fungoval jako součást clusteru. To může způsobit nesoulad mezi celkovými prostředky uzlu a prostředky, které lze přidělit při použití v AKS. To je důležité si uvědomit při nastavování požadavků a omezení pro uživatelem nasazené pody.
 
-Pokud chcete najít allocatableé prostředky uzlu, proveďte následující:
+Chcete-li najít alokovatelné prostředky uzlu spustit:
 ```kubectl
 kubectl describe node [NODE_NAME]
 
 ```
 
-Aby bylo možné udržovat výkon a funkce uzlu, jsou prostředky rezervovány na jednotlivých uzlech pomocí AKS. V případě, že uzel roste větší množství prostředků, rezervace prostředků roste v důsledku většího počtu uživatelů nasazených v části s potřebnou správou lusků.
+Chcete-li zachovat výkon uzlu a funkčnost, prostředky jsou vyhrazeny na každém uzlu AKS. Jako uzel zvětšuje prostředky, rezervace prostředků roste z důvodu vyšší množství uživatelů nasazených podů, které potřebují správu.
 
 >[!NOTE]
-> Použití doplňků AKS, jako je Container Insights (OMS), bude spotřebovávat další prostředky uzlů.
+> Pomocí doplňků AKS, jako je například Container Insights (OMS) bude spotřebovávat další prostředky uzlu.
 
-- PROCESOR vyhrazený pro **procesor** závisí na typu uzlu a konfiguraci clusteru, což může způsobit, že by ALLOCATABLE procesor byl v důsledku spuštění dalších funkcí.
+- **CPU** - vyhrazený procesor je závislý na typu uzlu a konfiguraci clusteru, což může způsobit méně alokovatelný procesor z důvodu spuštění dalších funkcí
 
 | Jádra procesoru na hostiteli | 1 | 2 | 4 | 8 | 16 | 32|64|
 |---|---|---|---|---|---|---|---|
-|Kube – rezervováno (millicores)|60|100|140|180|260|420|740|
+|Kube-vyhrazeno (milijádra)|60|100|140|180|260|420|740|
 
-- **Paměť,** kterou využívá AKS, zahrnuje součet dvou hodnot.
+- **Paměť** - paměť využívaná AKS obsahuje součet dvou hodnot.
 
-1. Démon kubelet je nainstalován na všech uzlech agenta Kubernetes za účelem správy vytváření a ukončování kontejneru. Ve výchozím nastavení má démon následující pravidlo vyřazení: *paměť. k dispozici < 750Mi*, což znamená, že uzel musí vždy mít alespoň 750 mi ALLOCATABLE.  Když je hostitel pod touto prahovou hodnotou dostupné paměti, kubelet ukončí jednu z běžících lusků, aby uvolnil paměť na hostitelském počítači a chránil ji. Tato akce je reaktivní, jakmile se velikost dostupné paměti sníží nad prahovou hodnotu 750Mi.
+1. Kubelet daemon je nainstalován na všech uzlech agentka Kubernetes pro správu vytváření a ukončení kontejneru. Ve výchozím nastavení na AKS, tento daemon má následující pravidlo vystěhování: *memory.available<750Mi*, což znamená, že uzel musí mít vždy alespoň 750 Mi alokovatelné za všech okolností.  Pokud je hostitel pod touto prahovou hodnotou dostupné paměti, kubelet ukončí jeden z běžících podů, aby uvolnil paměť v hostitelském počítači a chránil ji. Jedná se o reaktivní akci, jakmile dostupná paměť klesne nad prahovou hodnotu 750Mi.
 
-2. Druhá hodnota je progresivní frekvence rezervací paměti pro funkci démona kubelet na správnou funkci (Kube – rezervováno).
-    - 25% prvních 4 GB paměti
-    - 20% z dalších 4 GB paměti (až 8 GB)
-    - 10% z dalších 8 GB paměti (až 16 GB)
-    - 6% z dalších 112 GB paměti (až 128 GB)
-    - 2% libovolné paměti nad 128 GB
+2. Druhá hodnota je progresivní rychlost rezervace paměti pro kubelet daemon správně fungovat (kube-reserved).
+    - 25 % z prvních 4 GB paměti
+    - 20 % z následujících 4 GB paměti (až 8 GB)
+    - 10 % z dalších 8 GB paměti (až 16 GB)
+    - 6 % z následujících 112 GB paměti (až 128 GB)
+    - 2% paměti nad 128 GB
 
-Výše uvedená pravidla pro paměť a přidělení procesoru se používají k udržení dobrých uzlů agentů, včetně některých z nich hostujících prostředí, které jsou pro stav clusteru zásadní. Tato pravidla přidělení také způsobí, že uzel hlásí méně ALLOCATABLE paměť a procesor, než by by neměl být součástí clusteru Kubernetes. Výše uvedené rezervace prostředků se nedají změnit.
+Výše uvedená pravidla pro přidělení paměti a procesoru se používají k udržení uzlů agenta v pořádku, včetně některých hostitelských systémových podů, které jsou důležité pro stav clusteru. Tato pravidla přidělení také způsobit uzel sestavy méně alokovatelné paměti a procesoru, než by v případě, že nebyly součástí clusteru Kubernetes. Výše uvedené rezervace zdrojů nelze změnit.
 
-Například pokud uzel nabízí 7 GB, bude hlásit 34% ALLOCATABLE paměti, která není nad prahovou hodnotou 750Mi pevného vyřazení.
+Například pokud uzel nabízí 7 GB, bude hlásit 34 % paměti, které nelze přidělit nad prahovou hodnotu 750Mi pevné vystěhovávky.
 
 `(0.25*4) + (0.20*3) = + 1 GB + 0.6GB = 1.6GB / 7GB = 22.86% reserved`
 
-Kromě rezervací pro samotný Kubernetes vyhradí základní operační systém Node také množství prostředků procesoru a paměti pro udržení funkcí operačního systému.
+Kromě rezervací pro samotné kubernetes, základní uzel OS také rezervuje množství prostředků procesoru a paměti pro údržbu funkcí operačního systému.
 
-Související osvědčené postupy najdete v tématu [osvědčené postupy pro základní funkce nástroje Scheduler v AKS][operator-best-practices-scheduler].
+Doporučené postupy najdete [v tématu Doporučené postupy pro základní funkce plánovače v AKS][operator-best-practices-scheduler].
 
 ### <a name="node-pools"></a>Fondy uzlů
 
-Uzly stejné konfigurace jsou seskupeny dohromady do *fondů uzlů*. Cluster Kubernetes obsahuje jeden nebo více fondů uzlů. Počáteční počet uzlů a velikost je definován při vytváření clusteru AKS, který vytváří *výchozí fond uzlů*. Tento výchozí fond uzlů v AKS obsahuje základní virtuální počítače, které spouštějí vaše uzly agentů.
+Uzly stejné konfigurace jsou seskupeny do *fondů uzlů*. Cluster Kubernetes obsahuje jeden nebo více fondů uzlů. Počáteční počet uzlů a velikost jsou definovány při vytváření clusteru AKS, který vytvoří *výchozí fond uzlů*. Tento výchozí fond uzlů v AKS obsahuje základní virtuální počítače, které spouštějí uzly agenta.
 
 > [!NOTE]
-> Aby cluster fungoval spolehlivě, měli byste spustit alespoň 2 (dva) uzly ve výchozím fondu uzlů.
+> Chcete-li zajistit, aby váš cluster fungoval spolehlivě, měli byste spustit alespoň 2 (dva) uzly ve výchozím fondu uzlů.
 
-Při škálování nebo upgradu clusteru AKS je akce prováděna s výchozím fondem uzlů. Můžete se také rozhodnout škálovat nebo upgradovat určitý fond uzlů. V případě operací upgradu jsou spuštěné kontejnery naplánovány na jiných uzlech ve fondu uzlů, dokud nebudou všechny uzly úspěšně upgradovány.
+Při škálování nebo upgradu clusteru AKS se akce provádí proti výchozímu fondu uzlů. Můžete také změnit měřítko nebo upgradovat fond konkrétních uzlů. Pro operace upgradu jsou spuštěné kontejnery naplánovány na jiných uzlech ve fondu uzlů, dokud nebudou všechny uzly úspěšně upgradovány.
 
-Další informace o použití více fondů uzlů v AKS najdete v tématu [Vytvoření a Správa fondů více uzlů pro cluster v AKS][use-multiple-node-pools].
+Další informace o použití více fondů uzlů v AKS naleznete v [tématu Vytvoření a správa více fondů uzlů pro cluster v AKS][use-multiple-node-pools].
 
-### <a name="node-selectors"></a>Selektory uzlů
+### <a name="node-selectors"></a>Voliči uzlů
 
-V clusteru AKS, který obsahuje víc fondů uzlů, možná budete muset říct, aby se pro daný prostředek používal příslušný fond uzlů pro Kubernetes Scheduler. Například řadiče příchozího přenosu dat by se neměly spouštět na uzlech Windows serveru (v současnosti ve verzi Preview v AKS). Selektory uzlů umožňují definovat různé parametry, jako je například uzel OS, aby bylo možné určit, kde má být uzel pod naplánován.
+V clusteru AKS, který obsahuje více fondů uzlů, budete muset sdělit Plánovač kubernetes, který fond uzlů se má použít pro daný prostředek. Například řadiče příchozího přenosu dat by neměly být spuštěny v uzlech Windows Server (aktuálně ve verzi Preview v AKS). Voliči uzlů umožňují definovat různé parametry, například operační modul uzlu, pro řízení, kde by měl být pod naplánován.
 
-Následující základní příklad naplánuje instanci NGINX na uzlu Linux pomocí voliče uzlů *"beta.Kubernetes.IO/OS": Linux*:
+Následující základní příklad naplánuje instanci NGINX na linuxovém uzlu pomocí voliče uzlů *"beta.kubernetes.io/os": linux*:
 
 ```yaml
 kind: Pod
@@ -143,29 +143,29 @@ spec:
     "beta.kubernetes.io/os": linux
 ```
 
-Další informace o tom, jak určit, kde mají být lusky, najdete v tématu [osvědčené postupy pro pokročilé funkce plánovače v AKS][operator-best-practices-advanced-scheduler].
+Další informace o tom, jak řídit, kde jsou naplánovány pody, naleznete [v tématu Doporučené postupy pro pokročilé funkce plánovače v AKS][operator-best-practices-advanced-scheduler].
 
-## <a name="pods"></a>Podů
+## <a name="pods"></a>Lusky
 
-Kubernetes používá *lusky* ke spuštění instance aplikace. Pod představuje jednu instanci vaší aplikace. Lusky mají typicky mapování 1:1 s kontejnerem, i když existují pokročilé scénáře, kde objekt pod může obsahovat více kontejnerů. Tyto lomené lusky jsou naplánované společně na stejném uzlu a umožňují kontejnerům sdílet související prostředky.
+Kubernetes používá *pods* ke spuštění instance aplikace. Pod představuje jednu instanci aplikace. Pody mají obvykle mapování 1:1 s kontejnerem, i když existují pokročilé scénáře, kde pod může obsahovat více kontejnerů. Tyto pody s více kontejnery jsou naplánovány společně na stejném uzlu a umožňují kontejnerům sdílet související prostředky.
 
-Když vytvoříte pod, můžete definovat *požadavky* na prostředky pro vyžádání určitého množství prostředků procesoru nebo paměti. Plánovač Kubernetes se pokusí naplánovat lusky, aby běžely na uzlu s dostupnými prostředky pro splnění požadavku. Můžete také zadat maximální omezení prostředků, které brání danému zařízení v využívání příliš velkého množství výpočetních prostředků ze základního uzlu. Osvědčeným postupem je zahrnout do všech lusků omezení prostředků, které pomůžou plánovači Kubernetes pochopit, které prostředky jsou potřeba a povolené.
+Při vytváření podu můžete definovat *požadavky na prostředky* a požádat o určité množství prostředků procesoru nebo paměti. Plánovač Kubernetes se pokusí naplánovat pody spustit na uzlu s dostupnými prostředky ke splnění požadavku. Můžete také určit maximální limity prostředků, které brání danému podu spotřebovávat příliš mnoho výpočetního prostředku z podkladového uzlu. Osvědčeným postupem je zahrnout omezení prostředků pro všechny pody pomoci Plánovač Kubernetes pochopit, které prostředky jsou potřebné a povolené.
 
-Další informace najdete v tématu životní cyklus [Kubernetes lusky][kubernetes-pods] a [Kubernetes pod][kubernetes-pod-lifecycle].
+Další informace naleznete [v tématech Kubernetes lusky][kubernetes-pods] a [Kubernetes pod životní cyklus][kubernetes-pod-lifecycle].
 
-Pod je logický prostředek, ale kontejnery jsou spuštěny úlohami aplikace. Lusky jsou obvykle dočasné a nepoužívané prostředky a samostatně naplánované lusky neposkytují některé z funkcí vysoké dostupnosti a redundance Kubernetes. Místo toho jsou lusky obvykle nasazeny a spravovány Kubernetes *řadiči*, jako je například kontrolér nasazení.
+Pod je logický prostředek, ale kontejnery jsou místo, kde se spouštějí úlohy aplikace. Pody jsou obvykle pomíjivé, jednorázové zdroje a individuálně naplánované pody chybí některé funkce vysoké dostupnosti a redundance, které Kubernetes poskytuje. Místo toho pody jsou obvykle nasazeny a *spravovány*kubernetes řadiče , jako je například řadič nasazení.
 
 ## <a name="deployments-and-yaml-manifests"></a>Nasazení a manifesty YAML
 
-*Nasazení* představuje jednu nebo více identické lusky spravované kontrolérem nasazení Kubernetes. Nasazení definuje počet *replik* (lusky), které se mají vytvořit, a Plánovač Kubernetes zajišťuje, aby v případě, že dojde k rozchodu nebo uzlů, bylo naplánováno další lusky na uzlech v pořádku.
+*Nasazení* představuje jeden nebo více identických podů, které spravuje řadič nasazení Kubernetes. Nasazení definuje počet *replik (podů)* k vytvoření a Plánovač Kubernetes zajišťuje, že pokud pody nebo uzly narazí na problémy, další pody jsou naplánovány na uzly v pořádku.
 
-Nasazení můžete aktualizovat, aby se změnila konfigurace lusků, použitého obrazu kontejneru nebo připojeného úložiště. Řadič nasazení vyprázdní a ukončí daný počet replik, vytvoří repliky z nové definice nasazení a pokračuje v procesu, dokud nebudou všechny repliky v nasazení aktualizovány.
+Můžete aktualizovat nasazení změnit konfiguraci podů, image kontejneru nebo připojené úložiště. Řadič nasazení vyprázdní a ukončí daný počet replik, vytvoří repliky z nové definice nasazení a pokračuje v procesu, dokud nebudou aktualizovány všechny repliky v nasazení.
 
-Většina bezstavových aplikací v AKS by měla místo plánování jednotlivých lusků používat model nasazení. Kubernetes může monitorovat stav a stav nasazení, aby se zajistilo, že se v clusteru spustí požadovaný počet replik. Když naplánujete pouze jednotlivé lusky, lusky se nerestartují, pokud dojde k potížím a nedojde k jejich přeplánování na funkčních uzlech, pokud jejich aktuální uzel narazí na problém.
+Většina bezstavových aplikací v AKS by měla používat model nasazení spíše než plánování jednotlivých podů. Kubernetes můžete sledovat stav a stav nasazení a zajistit tak, aby požadovaný počet replik spuštěných v clusteru. Při plánování pouze jednotlivé pody, pody nejsou restartovány, pokud narazí na problém a nejsou přeplánovány na uzly v pořádku, pokud jejich aktuální uzel narazí na problém.
 
-Pokud aplikace vyžaduje, aby byly kvora instancí vždy k dispozici pro rozhodování o správě, nechcete, aby proces aktualizace narušil tuto schopnost. *Rozpočty přerušení pod* mohou být použity k definování toho, kolik replik v nasazení lze v průběhu aktualizace nebo upgradu uzlu považovat za nefunkční. Například pokud máte ve svém nasazení *5* replik, můžete definovat přerušení v případě *4* , aby bylo možné současně odstranit nebo přeplánovat pouze jednu repliku. Stejně jako u omezení prostředků pod je osvědčeným postupem definování rozpočtů přerušení v aplikacích vyžadujících minimální počet replik, které mají být vždy k dispozici.
+Pokud aplikace vyžaduje kvorum instancí, které mají být vždy k dispozici pro rozhodnutí o správě, které mají být provedeny, nechcete, aby proces aktualizace narušit tuto schopnost. *Rozpočty přerušení podu* lze definovat, kolik replik v nasazení lze vyjmuta během aktualizace nebo upgrade uzlu. Například pokud máte *5* replik y v nasazení, můžete definovat přerušení pod *4* povolit pouze jednu repliku z odstranění nebo přeplánování najednou. Stejně jako u omezení prostředků pod, osvědčeným postupem je definovat rozpočty přerušení pod u aplikací, které vyžadují minimální počet replik být vždy přítomen.
 
-Nasazení se obvykle vytváří a spravují pomocí `kubectl create` nebo `kubectl apply`. Nasazení vytvoříte tak, že definujete soubor manifestu ve formátu YAML (YAML Ain't Markup Language). Následující příklad vytvoří základní nasazení webového serveru NGINX. Nasazení určuje *3* repliky, které mají být vytvořeny, a port *80* bude otevřen na kontejneru. Pro procesor a paměť se definují taky požadavky na prostředky a omezení.
+Nasazení se obvykle vytvářejí a `kubectl create` `kubectl apply`spravují pomocí nebo . Chcete-li vytvořit nasazení, definujte soubor manifestu ve formátu YAML (YAML Ain't Markup Language). Následující příklad vytvoří základní nasazení webového serveru NGINX. Nasazení určuje *3* repliky, které mají být vytvořeny a tento port *80* být otevřena v kontejneru. Požadavky na prostředky a omezení jsou také definovány pro procesor a paměť.
 
 ```yaml
 apiVersion: apps/v1
@@ -196,75 +196,75 @@ spec:
             memory: 256Mi
 ```
 
-Složitější aplikace se dají vytvářet taky včetně služeb, jako jsou například nástroje pro vyrovnávání zatížení v manifestu YAML.
+Složitější aplikace lze vytvořit také včetně služeb, jako jsou například vykladače zatížení v rámci manifestu YAML.
 
-Další informace najdete v tématu [nasazení Kubernetes][kubernetes-deployments].
+Další informace naleznete v [tématu Kubernetes nasazení][kubernetes-deployments].
 
-### <a name="package-management-with-helm"></a>Správa balíčků pomocí Helm
+### <a name="package-management-with-helm"></a>Správa balíčků s helmou
 
-Běžným přístupem ke správě aplikací v Kubernetes je [Helm][helm]. Můžete sestavit a použít stávající veřejné Helm *grafy* , které obsahují zabalenou verzi kódu aplikace a manifesty YAML Kubernetes pro nasazení prostředků. Tyto Helm grafy se můžou ukládat lokálně nebo často ve vzdáleném úložišti, jako je třeba [úložiště grafu Azure Container Registry Helm][acr-helm].
+Společný přístup ke správě aplikací v Kubernetes je s [Helmem][helm]. Můžete vytvářet a používat existující veřejné *grafy helmu,* které obsahují zabalenou verzi kódu aplikace a manifesty Kubernetes YAML k nasazení prostředků. Tyto helm grafy mohou být uloženy místně nebo často ve vzdáleném úložišti, jako je například [úložiště grafu Helm registru kontejnerů Azure][acr-helm].
 
-Chcete-li použít Helm, je do vašeho clusteru Kubernetes nainstalována součást serveru *s názvem "* do". Do něj se spravuje instalace grafů v rámci clusteru. Samotný klient Helm je nainstalován místně na počítači nebo je možné jej použít v rámci [Azure Cloud Shell][azure-cloud-shell]. Pomocí klienta můžete vyhledat nebo vytvořit grafy Helm a pak je nainstalovat do clusteru Kubernetes.
+Chcete-li použít Helm, serverová součást s názvem *Tiller* je nainstalována v clusteru Kubernetes. Kultivátor spravuje instalaci grafů v rámci clusteru. Samotný klient Helm je nainstalován místně ve vašem počítači nebo lze použít v rámci [prostředí Azure Cloud Shell][azure-cloud-shell]. Můžete vyhledat nebo vytvořit Helm grafy s klientem a pak je nainstalovat do clusteru Kubernetes.
 
-![Helm zahrnuje komponentu klienta a komponentu serveru na straně serveru, která vytváří prostředky v rámci clusteru Kubernetes.](media/concepts-clusters-workloads/use-helm.png)
+![Helm obsahuje klientskou komponentu a součást Tiller na straně serveru, která vytváří prostředky uvnitř clusteru Kubernetes](media/concepts-clusters-workloads/use-helm.png)
 
-Další informace najdete v tématu [instalace aplikací pomocí Helm ve službě Azure Kubernetes Service (AKS)][aks-helm].
+Další informace najdete [v tématu Instalace aplikací pomocí helmu ve službě Azure Kubernetes Service (AKS).][aks-helm]
 
-## <a name="statefulsets-and-daemonsets"></a>StatefulSets a DaemonSets
+## <a name="statefulsets-and-daemonsets"></a>Stavové sady a daemonsets
 
-Řadič nasazení používá Plánovač Kubernetes ke spuštění určitého počtu replik na jakémkoli dostupném uzlu s dostupnými prostředky. Tento přístup k použití nasazení může být pro bezstavové aplikace dostačující, ale ne pro aplikace, které vyžadují trvalou konvenci pojmenování nebo úložiště. Pro aplikace, které vyžadují, aby existovala replika na každém uzlu nebo vybrané uzly v rámci clusteru, kontroler nasazení se nedívá na to, jak jsou repliky distribuované napříč uzly.
+Řadič nasazení používá Plánovač Kubernetes ke spuštění daného počtu replik na libovolném dostupném uzlu s dostupnými prostředky. Tento přístup pomocí nasazení může být dostatečná pro bezstavové aplikace, ale ne pro aplikace, které vyžadují trvalé konvence pojmenování nebo úložiště. U aplikací, které vyžadují repliku, aby existovala v každém uzlu nebo vybraných uzlech v rámci clusteru, se řadič nasazení nedívá na to, jak jsou repliky distribuovány mezi uzly.
 
-Existují dva Kubernetes prostředky, které umožňují spravovat tyto typy aplikací:
+Existují dva prostředky Kubernetes, které umožňují spravovat tyto typy aplikací:
 
-- *StatefulSets* – Udržujte stav aplikací nad rámec individuálního životního cyklu, například úložiště.
-- *DaemonSets* – zajistěte spuštěnou instanci na každém uzlu, a to nejdříve v procesu Bootstrap Kubernetes.
+- *Stavové sady* – udržovat stav aplikací mimo životní cyklus jednotlivých podů, jako je například úložiště.
+- *DaemonSets* - Zajistěte spuštěnou instanci na každém uzlu v rané fázi procesu zaváděcích pastí Kubernetes.
 
-### <a name="statefulsets"></a>StatefulSets
+### <a name="statefulsets"></a>Stavové sady
 
-Moderní vývoj aplikací se často zaměřuje na bezstavové aplikace, ale *StatefulSets* se dají použít pro stavové aplikace, jako jsou například aplikace, které obsahují databázové součásti. StatefulSet se podobá nasazení v tom, že jedna nebo více identických lusků se vytváří a spravují. Repliky v StatefulSet sledují řádný a sekvenční přístup k nasazení, škálování, upgradům a ukončením. U StatefulSet (jako repliky se přejmenovává) konvence pojmenování, názvy sítí a uchování úložiště.
+Vývoj moderních aplikací se často zaměřuje na bezstavové aplikace, ale *stavové sady* lze použít pro stavové aplikace, jako jsou například aplikace, které obsahují součásti databáze. StatefulSet je podobný nasazení v tom, že jeden nebo více identických podů jsou vytvořeny a spravovány. Repliky v StatefulSet postupujte podle řádné, sekvenční přístup k nasazení, škálování, upgrady a ukončení. S StatefulSet (jako repliky jsou přeplánovány) konvence pojmenování, názvy sítí a úložiště přetrvávají.
 
-Aplikaci definujete ve formátu YAML pomocí `kind: StatefulSet`a kontroler StatefulSet pak zpracovává nasazení a správu požadovaných replik. Data se zapisují do trvalého úložiště, které poskytuje Azure Managed Disks nebo soubory Azure. V StatefulSets zůstane příslušné trvalé úložiště i v případě, že se StatefulSet odstraní.
+Aplikaci definujete ve formátu `kind: StatefulSet`YAML pomocí aplikace a řadič StatefulSet pak zpracovává nasazení a správu požadovaných replik. Data se zapisují do trvalého úložiště poskytovaného spravovanými disky Azure nebo soubory Azure. S StatefulSets základní trvalé úložiště zůstane i v případě, že StatefulSet je odstraněn.
 
-Další informace najdete v tématu [Kubernetes StatefulSets][kubernetes-statefulsets].
+Další informace naleznete v tématu [Kubernetes StatefulSets][kubernetes-statefulsets].
 
-Repliky ve StatefulSet se naplánují a spouštějí napříč libovolným dostupným uzlem v clusteru AKS. Pokud potřebujete zajistit, aby na uzlu běžela aspoň jedna pod v sadě, můžete místo toho použít DaemonSet.
+Repliky v StatefulSet jsou naplánovány a běží přes všechny dostupné uzla v clusteru AKS. Pokud potřebujete zajistit, že alespoň jeden pod v sadě běží na uzlu, můžete místo toho použít DaemonSet.
 
-### <a name="daemonsets"></a>DaemonSets
+### <a name="daemonsets"></a>Sady daemonů
 
-Pro konkrétní účely shromažďování protokolů nebo monitorování možná budete muset spustit dané zařízení na všech nebo vybraných uzlech. *DaemonSet* se znovu používá k nasazení jedné nebo více identické lusky, ale kontroler DaemonSet zajišťuje, že každý zadaný uzel spustí instanci uzlu pod.
+Pro konkrétní potřeby shromažďování nebo monitorování protokolu může být nutné spustit daný pod na všech nebo vybraných uzlech. *DaemonSet* se opět používá k nasazení jednoho nebo více identických podů, ale DaemonSet Controller zajišťuje, že každý uzel zadaný spustí instanci podu.
 
-Řadič DaemonSet může naplánovat lusky na uzlech na začátku v procesu spouštění clusteru, než se spustí výchozí Plánovač Kubernetes. Tato možnost zajistí, že lusky ve DaemonSet začínají před tradičními lusky v nasazení nebo v StatefulSet.
+DaemonSet Controller můžete naplánovat pody na uzly v rané fázi procesu spouštění clusteru, před spuštěním výchozího plánovače Kubernetes. Tato schopnost zajišťuje, že pody v DaemonSet jsou spuštěny před tradiční pody v nasazení nebo StatefulSet jsou naplánovány.
 
-Podobně jako StatefulSets je DaemonSet definován jako součást definice YAML pomocí `kind: DaemonSet`.
+Podobně jako Stavové sady je sada DaemonSet definována `kind: DaemonSet`jako součást definice YAML pomocí .
 
-Další informace najdete v tématu [Kubernetes DaemonSets][kubernetes-daemonset].
+Další informace naleznete v tématu [Kubernetes DaemonSets][kubernetes-daemonset].
 
 > [!NOTE]
-> Pokud se používá [doplněk virtuálních uzlů](virtual-nodes-cli.md#enable-virtual-nodes-addon), DaemonSets ve virtuálním uzlu nevytvoří lusky.
+> Pokud používáte [doplněk Virtuální uzly](virtual-nodes-cli.md#enable-virtual-nodes-addon), DaemonSets nevytvoří pody na virtuální uzel.
 
-## <a name="namespaces"></a>Obory názvů
+## <a name="namespaces"></a>Jmenné prostory
 
-Prostředky Kubernetes, například lusky a nasazení, jsou logicky seskupeny do *oboru názvů*. Tato seskupení poskytují způsob, jak logicky rozdělit cluster AKS a omezit přístup k vytváření, zobrazení nebo správě prostředků. Můžete například vytvořit obory názvů pro oddělení obchodních skupin. Uživatelé můžou pracovat jenom s prostředky v rámci svých přiřazených oborů názvů.
+Kubernetes prostředky, jako jsou pody a nasazení, jsou logicky seskupeny do *oboru názvů*. Tato seskupení poskytují způsob, jak logicky rozdělit cluster AKS a omezit přístup k vytváření, zobrazení nebo správě prostředků. Můžete vytvořit obory názvů pro oddělení obchodních skupin, například. Uživatelé mohou pracovat pouze s prostředky v rámci svých přiřazených oborů názvů.
 
-![Kubernetes obory názvů pro logicky dělit prostředky a aplikace](media/concepts-clusters-workloads/namespaces.png)
+![Kubernetes obory názvů logicky rozdělit prostředky a aplikace](media/concepts-clusters-workloads/namespaces.png)
 
 Při vytváření clusteru AKS jsou k dispozici následující obory názvů:
 
-- *výchozí* – tento obor názvů je tam, kde jsou ve výchozím nastavení vytvářeny lusky a nasazení, když žádné není k dispozici. V menších prostředích můžete nasazovat aplikace přímo do výchozího oboru názvů, aniž byste museli vytvářet další logické separace. Při interakci s rozhraním API Kubernetes, jako je například s `kubectl get pods`, se použije výchozí obor názvů, pokud není zadán žádný.
-- *Kube-System* – tento obor názvů je tam, kde existují základní prostředky, jako jsou například síťové funkce jako DNS a proxy nebo řídicí panel Kubernetes. Do tohoto oboru názvů obvykle nesadíte vlastní aplikace.
-- *Kube – Public* – tento obor názvů se obvykle nepoužívá, ale dá se použít k zobrazení prostředků v celém clusteru a může ho zobrazit libovolný uživatel.
+- *výchozí* – Tento obor názvů je místo, kde pody a nasazení jsou vytvořeny ve výchozím nastavení, pokud není k dispozici žádný. V menších prostředích můžete nasadit aplikace přímo do výchozího oboru názvů bez vytváření dalších logických oddělení. Při interakci s rozhraním API Kubernetes, například s `kubectl get pods`, výchozí obor názvů se používá, když není zadán žádný.
+- *kube-system* - Tento obor názvů je místo, kde existují základní prostředky, jako jsou síťové funkce, jako je DNS a proxy nebo řídicí panel Kubernetes. Obvykle není nasadit vlastní aplikace do tohoto oboru názvů.
+- *kube-public* - Tento obor názvů se obvykle nepoužívá, ale lze použít pro prostředky, které mají být viditelné v celém clusteru a může být zobrazen libovolným uživatelem.
 
-Další informace najdete v tématu [obory názvů Kubernetes][kubernetes-namespaces].
+Další informace naleznete [v tématu Kubernetes obory názvů][kubernetes-namespaces].
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento článek popisuje některé základní komponenty Kubernetes a jejich použití v clusterech AKS. Další informace o základních konceptech Kubernetes a AKS najdete v následujících článcích:
+Tento článek popisuje některé základní komponenty Kubernetes a jak se vztahují na clustery AKS. Další informace o základních konceptech Kubernetes a AKS naleznete v následujících článcích:
 
-- [Přístup a identita Kubernetes/AKS][aks-concepts-identity]
-- [Zabezpečení Kubernetes/AKS][aks-concepts-security]
-- [Virtuální sítě Kubernetes/AKS][aks-concepts-network]
-- [Úložiště Kubernetes/AKS][aks-concepts-storage]
-- [Škálování Kubernetes/AKS][aks-concepts-scale]
+- [Kubernetes / AKS přístup a identita][aks-concepts-identity]
+- [Kubernetes / AKS zabezpečení][aks-concepts-security]
+- [Kubernetes / AKS virtuální sítě][aks-concepts-network]
+- [Kubernetes / AKS úložiště][aks-concepts-storage]
+- [Kubernetes / AKS váha][aks-concepts-scale]
 
 <!-- EXTERNAL LINKS -->
 [aks-engine]: https://github.com/Azure/aks-engine

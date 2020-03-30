@@ -1,30 +1,30 @@
 ---
-title: Referenční dokumentace pro vývojáře v Pythonu pro Azure Functions
-description: Vysvětlení, jak vyvíjet funkce pomocí Pythonu
+title: Odkaz na vývojáře Pythonu pro funkce Azure
+description: Pochopit, jak vyvíjet funkce s Pythonem
 ms.topic: article
 ms.date: 12/13/2019
 ms.openlocfilehash: 30f40db33b6aa8b40202c023f301265565257180
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79276683"
 ---
-# <a name="azure-functions-python-developer-guide"></a>Příručka pro vývojáře Azure Functions Pythonu
+# <a name="azure-functions-python-developer-guide"></a>Průvodce vývojářem Azure Functions Pythonu
 
-Tento článek představuje úvod k vývoji Azure Functions s využitím Pythonu. Níže uvedený obsah předpokládá, že už jste si přečetli [příručku pro vývojáře Azure Functions](functions-reference.md). 
+Tento článek je úvod do vývoje funkcí Azure pomocí Pythonu. Níže uvedený obsah předpokládá, že jste si už [přečetli průvodce vývojáři Azure Functions](functions-reference.md). 
 
 Ukázkové projekty samostatné funkce v Pythonu najdete v [ukázkách funkcí Pythonu](/samples/browse/?products=azure-functions&languages=python). 
 
 ## <a name="programming-model"></a>Programovací model
 
-Azure Functions očekává ve skriptu Pythonu funkci, která bude mít nestavovou metodu, která zpracuje vstup a vytvoří výstup. Ve výchozím nastavení očekává modul runtime metodu, která má být implementována jako globální metoda s názvem `main()` v souboru `__init__.py`. Můžete také [zadat alternativní vstupní bod](#alternate-entry-point).
+Azure Functions očekává, že funkce bude bezstavová metoda ve skriptu Pythonu, který zpracovává vstup a vytváří výstup. Ve výchozím nastavení runtime očekává, že metoda bude `main()` implementována jako globální metoda volaná v souboru. `__init__.py` Můžete také [určit alternativní vstupní bod](#alternate-entry-point).
 
-Data z aktivačních událostí a vazeb jsou svázána s funkcí prostřednictvím atributů metody pomocí vlastnosti `name` definované v souboru *Function. JSON* . Například _funkce. JSON_ níže popisuje jednoduchou funkci aktivovanou požadavkem http s názvem `req`:
+Data z aktivačních událostí a vazeb jsou vázána `name` na funkci pomocí atributů metody pomocí vlastnosti definované v souboru *function.json.* Například níže uvedený _soubor function.json_ popisuje jednoduchou funkci `req`spuštěnou požadavkem HTTP s názvem :
 
 :::code language="son" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
 
-Na základě této definice může `__init__.py` soubor obsahující kód funkce vypadat jako v následujícím příkladu:
+Na základě této `__init__.py` definice může soubor obsahující kód funkce vypadat jako následující příklad:
 
 ```python
 def main(req):
@@ -32,7 +32,7 @@ def main(req):
     return f'Hello, {user}!'
 ```
 
-Typy atributů a návratový typ lze také explicitně deklarovat pomocí anotací typu Python. To vám pomůže používat funkce IntelliSense a automatického dokončování poskytované mnoha editory kódu Python.
+Můžete také explicitně deklarovat typy atributů a návratový typ ve funkci pomocí anotací typu Pythonu. To vám pomůže používat funkce intellisense a automatického dokončování poskytované mnoha editory kódu Pythonu.
 
 ```python
 import azure.functions
@@ -43,11 +43,11 @@ def main(req: azure.functions.HttpRequest) -> str:
     return f'Hello, {user}!'
 ```
 
-Použijte poznámky Pythonu, které jsou součástí balíčku [Azure. Functions. *](/python/api/azure-functions/azure.functions?view=azure-python) pro svázání vstupu a výstupů s vašimi metodami.
+Pomocí anotací pythonu zahrnutých v balíčku [azure.functions.*](/python/api/azure-functions/azure.functions?view=azure-python) můžete svázat vstupy a výstupy s vašimi metodami.
 
 ## <a name="alternate-entry-point"></a>Alternativní vstupní bod
 
-Můžete změnit výchozí chování funkce, a to tak, že v souboru *Function. JSON* zadáte `scriptFile` a vlastnosti `entryPoint`. Například _funkce Function. JSON_ níže říká modulu runtime, aby používal metodu `customentry()` v souboru _Main.py_ jako vstupní bod pro funkci Azure Functions.
+Výchozí chování funkce můžete změnit volitelně zadáním `scriptFile` `entryPoint` vlastností a v souboru *function.json.* Například _function.json_ níže říká, že runtime použít metodu `customentry()` v _souboru main.py,_ jako vstupní bod pro funkci Azure.
 
 ```json
 {
@@ -61,7 +61,7 @@ Můžete změnit výchozí chování funkce, a to tak, že v souboru *Function. 
 
 ## <a name="folder-structure"></a>Struktura složek
 
-Doporučená struktura složek pro projekt funkcí Pythonu vypadá jako v následujícím příkladu:
+Doporučená struktura složek pro projekt Funkce Pythonu vypadá jako následující příklad:
 
 ```
  __app__
@@ -79,21 +79,21 @@ Doporučená struktura složek pro projekt funkcí Pythonu vypadá jako v násle
  | - requirements.txt
  tests
 ```
-Hlavní složka projektu (\_\_App\_\_) může obsahovat následující soubory:
+Hlavní složka projektu\_\_\_\_( aplikace ) může obsahovat následující soubory:
 
-* *Local. Settings. JSON*: používá se k ukládání nastavení aplikace a připojovacích řetězců při místním spuštění. Tento soubor se nepublikuje do Azure. Další informace najdete v tématu [Local. Settings. File](functions-run-local.md#local-settings-file).
-* *požadavky. txt*: obsahuje seznam balíčků, které systém nainstaluje při publikování do Azure.
-* *Host. JSON*: obsahuje možnosti globální konfigurace, které ovlivňují všechny funkce aplikace Function App. Tento soubor se publikuje do Azure. Ne všechny možnosti jsou podporovány při místním spuštění. Další informace najdete v tématu [Host. JSON](functions-host-json.md).
-* *. funcignore*: (volitelné) deklaruje soubory, které by neměly být publikovány do Azure.
-* *. gitignore*: (nepovinný) deklaruje soubory, které jsou vyloučené z úložiště Git, jako je Local. Settings. JSON.
+* *local.settings.json*: Používá se k ukládání nastavení aplikací a připojovacích řetězců při místním spuštění. Tento soubor se do Azure nepublikuje. Další informace naleznete v [tématu local.settings.file](functions-run-local.md#local-settings-file).
+* *requirements.txt*: Obsahuje seznam balíčků, které systém nainstaluje při publikování do Azure.
+* *host.json*: Obsahuje možnosti globální konfigurace, které ovlivňují všechny funkce v aplikaci funkce. Tento soubor se publikuje do Azure. Ne všechny možnosti jsou podporovány při spuštění místně. Další informace naleznete v [tématu host.json](functions-host-json.md).
+* *.funcignore*: (Volitelné) deklaruje soubory, které by neměly být publikovány do Azure.
+* *.gitignore*: (Volitelné) deklaruje soubory, které jsou vyloučeny z úložiště git, například local.settings.json.
 
-Každá funkce má svůj vlastní soubor kódu a konfigurační soubor vazby (Function. JSON). 
+Každá funkce má svůj vlastní soubor kódu a konfigurační soubor vazby (function.json). 
 
-Když nasadíte projekt do aplikace Function App v Azure, měli byste zahrnout celý obsah hlavního projektu ( *\_\_app\_\_* ) do balíčku, ale ne do samotné složky. Doporučujeme udržovat testy ve složce oddělené od složky projektu, v tomto příkladu `tests`. Tím zajistíte, že budete nasazovat testovací kód s vaší aplikací. Další informace najdete v tématu [testování částí](#unit-testing).
+Při nasazování projektu do aplikace funkce v Azure by měl být do balíčku zahrnut celý obsah složky hlavního projektu (*\_\_aplikace),\_* ale ne samotná složka. V tomto příkladu `tests`doporučujeme udržovat testy ve složce oddělené od složky projektu . To vám zabrání nasazení testovacího kódu s vaší aplikací. Další informace naleznete [v tématu Testování částí](#unit-testing).
 
-## <a name="import-behavior"></a>Chování při importu
+## <a name="import-behavior"></a>Chování importu
 
-Moduly v kódu funkce můžete importovat pomocí explicitních relativních i absolutních odkazů. V závislosti na struktuře složky uvedené výše následující importy fungují v rámci souboru funkce *\_\_aplikaci\_\_\my\_první\_funkce\\_\_init\_\_. py*:
+Moduly v kódu funkce můžete importovat pomocí explicitních relativních i absolutních odkazů. Na základě výše uvedené struktury složek fungují následující importy z * \_ \_aplikace\_\_\_souboru\_\_funkcí \my\_first\_function\\_ init .py*:
 
 ```python
 from . import example #(explicit relative)
@@ -111,7 +111,7 @@ from __app__ import shared_code #(absolute)
 import __app__.shared_code #(absolute)
 ```
 
-Následující importy *nefungují* v rámci stejného souboru:
+Následující importy *nefungují* ze stejného souboru:
 
 ```python
 import example
@@ -125,7 +125,7 @@ from example import some_helper_code
 import shared_code
 ```
 
-Sdílený kód by měl být uložený v samostatné složce v *aplikaci\_\_\_\_* . Chcete-li odkazovat na moduly ve složce *sdíleného\_kódu* , můžete použít následující syntaxi:
+Sdílený kód by měl být uložen v samostatné složce v * \_ \_aplikaci\_*. Chcete-li odkazovat na moduly ve sdílené složce *\_kódu,* můžete použít následující syntaxi:
 
 ```python
 from __app__.shared_code import my_first_helper_function
@@ -133,7 +133,7 @@ from __app__.shared_code import my_first_helper_function
 
 ## <a name="triggers-and-inputs"></a>Aktivační události a vstupy
 
-Vstupy jsou rozdělené do dvou kategorií v Azure Functions: aktivační událost vstup a další vstup. I když se liší v souboru `function.json`, je použití v kódu Pythonu stejné.  Připojovací řetězce nebo tajné klíče pro zdroje triggeru a vstupu jsou mapovány na hodnoty v souboru `local.settings.json` při spuštění místně a nastavení aplikace při spuštění v Azure. 
+Vstupy jsou rozděleny do dvou kategorií v Azure Functions: aktivační vstup a další vstup. I když se `function.json` v souboru liší, použití je v kódu Pythonu stejné.  Připojovací řetězce nebo tajné klíče pro `local.settings.json` spouštěcí a vstupní zdroje mapovat na hodnoty v souboru při spuštění místně a nastavení aplikace při spuštění v Azure. 
 
 Například následující kód ukazuje rozdíl mezi těmito dvěma:
 
@@ -183,16 +183,16 @@ def main(req: func.HttpRequest,
     logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-Když je funkce vyvolána, požadavek HTTP se předává funkci jako `req`. Položka bude načtena z Blob Storage Azure na základě _ID_ v adrese URL trasy a zpřístupněna jako `obj` v těle funkce.  Tady je zadaný účet úložiště připojovací řetězec, který se nachází v nastavení aplikace AzureWebJobsStorage, což je stejný účet úložiště, který používá aplikace Function App.
+Pokud je funkce vyvolána, je požadavek HTTP `req`předán funkci jako . Položka se načte z úložiště objektů blob Azure na základě _ID_ `obj` v adrese URL trasy a bude k dispozici jako v těle funkce.  Zde je zadaný účet úložiště připojovací řetězec nalezený v nastavení aplikace AzureWebJobsStorage, což je stejný účet úložiště, který používá aplikace funkce.
 
 
 ## <a name="outputs"></a>Výstupy
 
-Výstup může být vyjádřen v návratové hodnotě i v parametrech Output. Pokud je k dispozici pouze jeden výstup, doporučujeme použít vrácenou hodnotu. Pro více výstupů budete muset použít výstupní parametry.
+Výstup může být vyjádřen jak v návratové hodnotě, tak v výstupních parametrech. Pokud existuje pouze jeden výstup, doporučujeme použít vrácenou hodnotu. Pro více výstupů budete muset použít výstupní parametry.
 
-Chcete-li použít vrácenou hodnotu funkce jako hodnotu výstupní vazby, vlastnost `name` vazby by měla být nastavena na `$return` v `function.json`.
+Chcete-li použít vrácenou hodnotu funkce jako hodnotu výstupní vazby, `name` `$return` vlastnost `function.json`vazby by měla být nastavena na v .
 
-Chcete-li vytvořit více výstupů, použijte metodu `set()` poskytovanou rozhraním [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python) k přiřazení hodnoty k vazbě. Například následující funkce může odeslat zprávu do fronty a také vrátit odpověď HTTP.
+Chcete-li vytvořit více `set()` výstupů, použijte [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python) metodu poskytnutou rozhraním k přiřazení hodnoty vazbě. Například následující funkce může push zprávu do fronty a také vrátit odpověď HTTP.
 
 ```json
 {
@@ -232,11 +232,11 @@ def main(req: func.HttpRequest,
     return message
 ```
 
-## <a name="logging"></a>Protokolování
+## <a name="logging"></a>protokolování
 
-Přístup k protokolovacímu nástroji Azure Functions runtime je k dispozici prostřednictvím kořenové [`logging`](https://docs.python.org/3/library/logging.html#module-logging) obslužné rutiny ve vaší aplikaci Function App. Tento protokolovací nástroj je svázán s Application Insights a umožňuje označit upozornění a chyby, které byly zjištěny během provádění funkce.
+Přístup k runtime loggeru Azure Functions [`logging`](https://docs.python.org/3/library/logging.html#module-logging) je k dispozici prostřednictvím root handler ve vaší aplikaci funkce. Tento protokolování je vázána na Application Insights a umožňuje příznak upozornění a chyby došlo během provádění funkce.
 
-Následující příklad zaznamená informační zprávu, když je funkce vyvolána prostřednictvím triggeru protokolu HTTP.
+Následující příklad zaznamená informační zprávu, když je funkce vyvolána pomocí aktivační události HTTP.
 
 ```python
 import logging
@@ -250,21 +250,21 @@ K dispozici jsou další metody protokolování, které umožňují zapisovat do
 
 | Metoda                 | Popis                                |
 | ---------------------- | ------------------------------------------ |
-| **`critical(_message_)`**   | Zapíše zprávu s KRITICKou úrovní na kořenovém protokolovacím nástroji.  |
-| **`error(_message_)`**   | Zapíše zprávu s CHYBou úrovně v kořenovém protokolovacím nástroji.    |
-| **`warning(_message_)`**    | Zapíše zprávu s UPOZORNĚNÍm na úrovni kořenového protokolovacího nástroje.  |
-| **`info(_message_)`**    | Zapíše zprávu s informacemi o úrovni kořenového protokolovacího nástroje.  |
-| **`debug(_message_)`** | Zapíše zprávu s LADĚNÍm úrovně na kořenovém protokolovacím nástroji.  |
+| **`critical(_message_)`**   | Zapíše zprávu s úrovní CRITICAL na kořenovém záznamníku.  |
+| **`error(_message_)`**   | Zapíše zprávu s chybou úrovně na kořenovém záznamníku.    |
+| **`warning(_message_)`**    | Zapíše zprávu s úrovní UPOZORNĚNÍ na kořenovém záznamníku.  |
+| **`info(_message_)`**    | Zapíše zprávu s úrovní INFO na kořenovém záznamníku.  |
+| **`debug(_message_)`** | Zapíše zprávu s úrovní LADĚNÍ na kořenovém záznamníku.  |
 
-Další informace o protokolování najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
+Další informace o protokolování najdete [v tématu Sledování funkcí Azure](functions-monitoring.md).
 
-## <a name="http-trigger-and-bindings"></a>Aktivační procedura HTTP a vazby
+## <a name="http-trigger-and-bindings"></a>Aktivační událost protokolu HTTP a vazby
 
-Aktivační událost HTTP je definována v souboru Function. Jan. `name` vazby musí odpovídat pojmenovanému parametru ve funkci. V předchozích příkladech se používá název vazby `req`. Tento parametr je objekt [HttpRequest] a je vrácen objekt [HttpResponse] .
+Aktivační událost HTTP je definována v souboru function.jon. Vazba `name` musí odpovídat pojmenované parametr ve funkci. V předchozích příkladech se `req` používá název vazby. Tento parametr je [objekt HttpRequest] a je vrácen objekt [HttpResponse.]
 
-Z objektu [HttpRequest] můžete získat hlavičky žádosti, parametry dotazu, parametry směrování a tělo zprávy. 
+Z objektu [HttpRequest] můžete získat záhlaví požadavku, parametry dotazu, parametry trasy a text zprávy. 
 
-Následující příklad pochází ze [šablony triggeru http pro Python](https://github.com/Azure/azure-functions-templates/tree/dev/Functions.Templates/Templates/HttpTrigger-Python). 
+Následující příklad je ze [šablony aktivační události HTTP pro Python](https://github.com/Azure/azure-functions-templates/tree/dev/Functions.Templates/Templates/HttpTrigger-Python). 
 
 ```python
 def main(req: func.HttpRequest) -> func.HttpResponse:
@@ -288,34 +288,34 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         )
 ```
 
-V této funkci se hodnota parametru dotazu `name` získá z parametru `params` objektu [HttpRequest] . Tělo zprávy s kódováním JSON je čteno pomocí metody `get_json`. 
+V této funkci je `name` hodnota parametru dotazu získána z parametru `params` objektu [HttpRequest.] Tělo zprávy kódované JSON je čteno pomocí `get_json` metody. 
 
-Podobně můžete nastavit `status_code` a `headers` zprávy odpovědi v vráceném objektu [HttpResponse] .
+Podobně můžete nastavit `status_code` a `headers` pro odpověď zprávy ve vrácenéhttpResponse objektu. [HttpResponse]
 
-## <a name="scaling-and-concurrency"></a>Škálování a souběžnost
+## <a name="scaling-and-concurrency"></a>Změna velikosti a souběžnost
 
-Ve výchozím nastavení Azure Functions automaticky monitoruje zatížení aplikace a v případě potřeby vytvoří další instance hostitele pro Python. Funkce používá předdefinované (neuživatelsky konfigurovatelné) prahové hodnoty pro různé typy triggerů k rozhodnutí, kdy přidat instance, například stáří zpráv a velikost fronty pro QueueTrigger. Další informace najdete v tématu [Jak fungují plány spotřeby a Premium](functions-scale.md#how-the-consumption-and-premium-plans-work).
+Ve výchozím nastavení Funkce Azure automaticky monitoruje zatížení vaší aplikace a podle potřeby vytvoří další instance hostitele pro Python. Funkce používá vestavěné (nikoli uživatelsky konfigurovatelné) prahové hodnoty pro různé typy aktivačních událostí k rozhodnutí, kdy přidat instance, jako je stáří zpráv a velikost fronty pro QueueTrigger. Další informace najdete [v tématu Jak fungují plány Spotřeba a Premium](functions-scale.md#how-the-consumption-and-premium-plans-work).
 
-Toto chování škálování je dostatečné pro mnoho aplikací. Aplikace s kteroukoli z následujících vlastností se ale nemusí škálovat efektivně:
+Toto chování škálování je dostatečná pro mnoho aplikací. Aplikace s některou z následujících vlastností však nesmí být tak účinné:
 
-- Aplikace potřebuje zpracovat mnoho souběžných volání.
-- Aplikace zpracovává velký počet vstupně-výstupních událostí.
-- Aplikace je vázaná na vstupně-výstupní operace.
+- Aplikace musí zpracovat mnoho souběžných vyvolání.
+- Aplikace zpracovává velký počet vstupně-va událostí.
+- Aplikace je vázána na vstupně-výstupní.
 
-V takových případech můžete zvýšit výkon tím, že budete využívat asynchronní vzorce a pomocí více pracovních procesů jazyka.
+V takových případech můžete dále zlepšit výkon použitím asynchronních vzorů a pomocí více jazykových pracovních procesů.
 
 ### <a name="async"></a>Async
 
-Vzhledem k tomu, že Python je modul runtime s jedním vláknem, může instance hostitele pro Python zpracovat pouze jedno vyvolání funkce najednou. Pro aplikace, které zpracovávají velký počet vstupně-výstupních událostí a/nebo jsou vázané na vstup/výstup, můžete zvýšit výkon spuštěním asynchronních funkcí.
+Vzhledem k tomu, že Python je runtime s jedním podprocesem, instance hostitele pro Python může zpracovat pouze jednu vyvolání funkce najednou. U aplikací, které zpracovávají velký počet vstupně-výstupních událostí a/nebo jsou vstupně-výstupní vstupně-výstupní vázány, můžete zvýšit výkon spuštěním funkcí asynchronně.
 
-Chcete-li spustit funkci asynchronně, použijte příkaz `async def`, který spouští funkci s [asyncio](https://docs.python.org/3/library/asyncio.html) přímo:
+Chcete-li spustit funkci asynchronně, `async def` použijte příkaz, který spustí funkci s [asyncio](https://docs.python.org/3/library/asyncio.html) přímo:
 
 ```python
 async def main():
     await some_nonblocking_socket_io_op()
 ```
 
-Funkce bez klíčového slova `async` se automaticky spustí ve fondu vláken asyncio:
+Funkce bez `async` klíčového slova je spuštěna automaticky v fondu vláken asyncio:
 
 ```python
 # Runs in an asyncio thread-pool
@@ -324,17 +324,17 @@ def main():
     some_blocking_socket_io()
 ```
 
-### <a name="use-multiple-language-worker-processes"></a>Použít více pracovních procesů jazyka
+### <a name="use-multiple-language-worker-processes"></a>Použití více jazykových pracovních procesů
 
-Ve výchozím nastavení má každá instance hostitele Functions pracovní proces s jedním jazykem. Počet pracovních procesů na hostitele můžete zvýšit (až 10) pomocí nastavení aplikace [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) . Azure Functions se pak pokusí rovnoměrně distribuovat souběžná volání funkcí mezi tyto pracovní procesy. 
+Ve výchozím nastavení má každá instance hostitele Functions pracovní proces v jednom jazyce. Pomocí nastavení [aplikace FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) můžete zvýšit počet pracovních procesů na hostitele (až 10). Azure Functions se pak pokusí rovnoměrně distribuovat souběžné vyvolání funkcí napříč těmito pracovníky. 
 
-FUNCTIONS_WORKER_PROCESS_COUNT se vztahuje na každého hostitele, který funkce vytvoří při horizontálním navýšení kapacity aplikace, aby splňovala požadavky. 
+FUNCTIONS_WORKER_PROCESS_COUNT platí pro každého hostitele, který funkce vytvoří při škálování z vaší aplikace tak, aby splňovaly požadavky. 
 
 ## <a name="context"></a>Kontext
 
-Chcete-li získat kontext vyvolání funkce během provádění, zahrňte do signatury argument [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) . 
+Chcete-li získat kontext vyvolání funkce během [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) provádění, zahrňte argument do jeho podpisu. 
 
-Příklad:
+Například:
 
 ```python
 import azure.functions
@@ -348,17 +348,17 @@ def main(req: azure.functions.HttpRequest,
 Třída [**Context**](/python/api/azure-functions/azure.functions.context?view=azure-python) má následující atributy řetězce:
 
 `function_directory`  
-Adresář, ve kterém je funkce spuštěná.
+Adresář, ve kterém je spuštěna funkce.
 
 `function_name`  
-Název funkce
+Název funkce.
 
 `invocation_id`  
-ID aktuálního vyvolání funkce
+ID vyvolání aktuální funkce.
 
 ## <a name="global-variables"></a>Globální proměnné
 
-Není zaručeno, že se stav vaší aplikace bude uchovávat pro budoucí provádění. Modul runtime Azure Functions však často opakovaně používá stejný proces pro více spuštění stejné aplikace. Aby bylo možné ukládat výsledky nákladných výpočtů do mezipaměti, deklarujte ji jako globální proměnnou. 
+Není zaručeno, že stav vaší aplikace bude zachován pro budoucí spuštění. Však Azure Functions runtime často používá stejný proces pro více spuštění stejné aplikace. Chcete-li uložit výsledky nákladného výpočtu do mezipaměti, deklarujte jej jako globální proměnnou. 
 
 ```python
 CACHED_DATA = None
@@ -374,9 +374,9 @@ def main(req):
 
 ## <a name="environment-variables"></a>Proměnné prostředí
 
-V funkcích jsou [nastavení aplikace](functions-app-settings.md), jako jsou například připojovací řetězce služby, vystavena jako proměnné prostředí během provádění. K těmto nastavením můžete přistupovat tím, že deklarujete `import os` a potom použijete `setting = os.environ["setting-name"]`.
+V funkcích jsou [nastavení aplikace](functions-app-settings.md), například připojovací řetězce služby, během provádění vystavena jako proměnné prostředí. K těmto nastavením můžete `import os` přistupovat `setting = os.environ["setting-name"]`deklarováním a následným použitím aplikace .
 
-Následující příklad získá [nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings)s klíčem s názvem `myAppSetting`:
+Následující příklad získá [nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings)s `myAppSetting`názvem klíče :
 
 ```python
 import logging
@@ -390,28 +390,28 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info(f'My app setting value:{my_app_setting_value}')
 ```
 
-Pro místní vývoj se nastavení aplikace [uchovávají v souboru Local. Settings. JSON](functions-run-local.md#local-settings-file).  
+Pro místní vývoj jsou nastavení aplikace [udržována v souboru local.settings.json](functions-run-local.md#local-settings-file).  
 
 ## <a name="python-version"></a>Verze Pythonu 
 
-Azure Functions podporuje následující verze Pythonu:
+Funkce Azure podporuje následující verze Pythonu:
 
 | Verze funkcí | Verze<sup>*</sup> Pythonu |
 | ----- | ----- |
 | 3.x | 3.8<br/>3.7<br/>3.6 |
 | 2.x | 3.7<br/>3.6 |
 
-<sup>*</sup> Oficiální CPython distribuce
+<sup>*</sup>Oficiální distribuce CPython
 
-Pokud chcete požádat o konkrétní verzi Pythonu při vytváření aplikace Function App v Azure, použijte možnost `--runtime-version` příkazu [`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) . Verze modulu runtime Functions je nastavená možností `--functions-version`. Verze Pythonu se nastaví, když se aplikace Function App vytvoří a nedá se změnit.  
+Chcete-li požádat o konkrétní verzi Pythonu při `--runtime-version` vytváření [`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) aplikace funkcí v Azure, použijte možnost příkazu. Funkce runtime verze je `--functions-version` nastavena možností. Verze Pythonu je nastavena, když je aplikace funkce vytvořena a nelze ji změnit.  
 
-Při místním spuštění používá modul runtime dostupnou verzi Pythonu. 
+Při místním spuštění modul runtime používá dostupnou verzi Pythonu. 
 
 ## <a name="package-management"></a>Správa balíčků
 
-Při místním vývoji pomocí Azure Functions Core Tools nebo Visual Studio Code přidejte do souboru `requirements.txt` názvy a verze požadovaných balíčků a nainstalujte je pomocí `pip`. 
+Při místním vývoji pomocí nástrojů Azure Functions Core Tools nebo visual studio code `requirements.txt` přidejte do `pip`souboru názvy a verze požadovaných balíčků a nainstalujte je pomocí . 
 
-K instalaci balíčku `requests` z PyPI můžete použít například následující soubor požadavků a příkaz PIP.
+Například následující požadavky soubor a pip příkaz lze `requests` použít k instalaci balíčku z PyPI.
 
 ```txt
 requests==2.19.1
@@ -423,63 +423,63 @@ pip install -r requirements.txt
 
 ## <a name="publishing-to-azure"></a>Publikování do Azure
 
-Až budete připraveni k publikování, ujistěte se, že všechny veřejně dostupné závislosti jsou uvedeny v souboru. txt požadavků, který je umístěn v kořenovém adresáři adresáře projektu. 
+Až budete připraveni k publikování, ujistěte se, že všechny veřejně dostupné závislosti jsou uvedeny v souboru requirements.txt, který je umístěn v kořenovém adresáři projektu. 
 
-Soubory projektu a složky, které jsou vyloučeny z publikování, včetně složky virtuálního prostředí, jsou uvedeny v souboru. funcignore.
+Soubory projektu a složky, které jsou vyloučeny z publikování, včetně složky virtuálního prostředí, jsou uvedeny v souboru .funcignore.
 
-K publikování projektu Pythonu do Azure jsou podporované tři akce sestavení:
+Pro publikování projektu Pythonu do Azure jsou podporované tři akce sestavení:
 
-+ Vzdálené sestavení: závislosti se získávají vzdáleně na základě obsahu souboru. txt požadavků. Doporučenou metodou sestavení je [vzdálené sestavení](functions-deployment-technologies.md#remote-build) . Vzdálená aplikace je také výchozí možností sestavení nástrojů Azure. 
-+ Místní sestavení: závislosti se získávají místně na základě obsahu souboru. txt požadavků. 
-+ Vlastní závislosti: váš projekt používá pro naše nástroje balíčky, které nejsou veřejně dostupné. (Vyžaduje Docker.)
++ Vzdálené sestavení: Závislosti jsou získávány vzdáleně na základě obsahu souboru requirements.txt. [Vzdálené sestavení](functions-deployment-technologies.md#remote-build) je doporučená metoda sestavení. Vzdálené je také výchozí možnost sestavení nástrojů Azure. 
++ Místní sestavení: Závislosti jsou získávány místně na základě obsahu souboru requirements.txt. 
++ Vlastní závislosti: Váš projekt používá balíčky, které nejsou veřejně dostupné pro naše nástroje. (Vyžaduje Docker.)
 
-K sestavování závislostí a publikování pomocí systému pro průběžné doručování (CD) [použijte Azure Pipelines](functions-how-to-azure-devops.md).
+Chcete-li vytvořit své závislosti a publikovat pomocí systému průběžného doručování (CD), [použijte Azure Pipelines](functions-how-to-azure-devops.md).
 
 ### <a name="remote-build"></a>Vzdálené sestavení
 
-Ve výchozím nastavení Azure Functions Core Tools požádá o vzdálené sestavení, když použijete následující příkaz [Func Azure functionapp Publish](functions-run-local.md#publish) pro publikování projektu v Pythonu do Azure. 
+Ve výchozím nastavení nástroje Azure Functions Core Tools požadují vzdálené sestavení, když použijete následující příkaz [pro publikování funkce func azure k](functions-run-local.md#publish) publikování projektu Pythonu do Azure. 
 
 ```bash
 func azure functionapp publish <APP_NAME>
 ```
 
-Nezapomeňte nahradit `<APP_NAME>` názvem vaší aplikace Function App v Azure.
+Nezapomeňte nahradit `<APP_NAME>` názvem aplikace funkce v Azure.
 
-[Rozšíření Azure Functions pro Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) také požádá o vzdálené sestavení ve výchozím nastavení. 
+[Rozšíření funkcí Azure pro visual studio kód](functions-create-first-function-vs-code.md#publish-the-project-to-azure) také požaduje vzdálené sestavení ve výchozím nastavení. 
 
 ### <a name="local-build"></a>Místní sestavení
 
-Můžete zabránit provedení vzdáleného sestavení pomocí následujícího příkazu [Func Azure functionapp Publish](functions-run-local.md#publish) pro publikování s místním sestavením. 
+Můžete zabránit dělá vzdálené sestavení pomocí [následujícífunc azure functionapp publikovat](functions-run-local.md#publish) příkaz publikovat s místní sestavení. 
 
 ```command
 func azure functionapp publish <APP_NAME> --build local
 ```
 
-Nezapomeňte nahradit `<APP_NAME>` názvem vaší aplikace Function App v Azure. 
+Nezapomeňte nahradit `<APP_NAME>` názvem aplikace funkce v Azure. 
 
-Pomocí možnosti `--build local` se závislosti projektu čtou ze souboru požadavků. txt a tyto závislé balíčky se stahují a instalují místně. Soubory projektu a závislosti se nasazují z místního počítače do Azure. Výsledkem je větší balíček pro nasazení, který se nahrává do Azure. Pokud z nějakého důvodu závislosti v souboru. txt nemůžete získat ze základních nástrojů, musíte použít možnost vlastní závislosti pro publikování. 
+Pomocí `--build local` možnosti jsou závislosti projektu čteny ze souboru requirements.txt a tyto závislé balíčky jsou staženy a nainstalovány místně. Soubory a závislosti projektu se nasazují z místního počítače do Azure. To má za následek větší balíček nasazení se nahrává do Azure. Pokud z nějakého důvodu nelze získat závislosti v souboru requirements.txt pomocí nástroje Core Tools, musíte použít možnost vlastních závislostí pro publikování. 
 
 ### <a name="custom-dependencies"></a>Vlastní závislosti
 
-Pokud váš projekt používá balíčky, které nejsou veřejně dostupné pro naše nástroje, můžete je zpřístupnit pro vaši aplikaci jejich vložením do aplikace \_\_\_\_/. python_packages adresář. Před publikováním spusťte následující příkaz pro místní instalaci závislostí:
+Pokud váš projekt používá balíčky, které nejsou veřejně dostupné pro naše nástroje, \_ \_\_\_můžete je zpřístupnit vaší aplikaci tak, že je vložíte do adresáře /.python_packages. Před publikováním spusťte následující příkaz pro místní instalaci závislostí:
 
 ```command
 pip install  --target="<PROJECT_DIR>/.python_packages/lib/site-packages"  -r requirements.txt
 ```
 
-Pokud používáte vlastní závislosti, měli byste použít možnost publikování `--no-build`, protože už jste nainstalovali závislosti.  
+Při použití vlastních závislostí `--no-build` byste měli použít možnost publikování, protože jste již nainstalovali závislosti.  
 
 ```command
 func azure functionapp publish <APP_NAME> --no-build
 ```
 
-Nezapomeňte nahradit `<APP_NAME>` názvem vaší aplikace Function App v Azure.
+Nezapomeňte nahradit `<APP_NAME>` názvem aplikace funkce v Azure.
 
 ## <a name="unit-testing"></a>Testování částí
 
-Funkce napsané v Pythonu se dají testovat jako jiný kód Pythonu pomocí standardních testovacích architektur. U většiny vazeb je možné vytvořit objektový vstupní objekt vytvořením instance příslušné třídy z balíčku `azure.functions`. Vzhledem k tomu, že balíček [`azure.functions`](https://pypi.org/project/azure-functions/) není hned k dispozici, nezapomeňte jej nainstalovat pomocí souboru `requirements.txt`, jak je popsáno výše v části [Správa balíčků](#package-management) . 
+Funkce napsané v Pythonu mohou být testovány jako jiný kód Pythonu pomocí standardních testovacích rámců. Pro většinu vazeb je možné vytvořit mock vstupní objekt vytvořením instance příslušné `azure.functions` třídy z balíčku. Vzhledem [`azure.functions`](https://pypi.org/project/azure-functions/) k tomu, že balíček není `requirements.txt` okamžitě k dispozici, nezapomeňte jej nainstalovat prostřednictvím souboru, jak je popsáno v části [správy balíčků](#package-management) výše. 
 
-Následující příklad je vzorovým testem funkce aktivované protokolem HTTP:
+Například následující je falešný test funkce aktivované protokolem HTTP:
 
 ```json
 {
@@ -557,7 +557,7 @@ class TestFunction(unittest.TestCase):
         )
 ```
 
-Tady je další příklad s funkcí aktivovanými ve frontě:
+Zde je další příklad s funkcí spuštěnou frontou:
 
 ```json
 {
@@ -607,12 +607,12 @@ class TestFunction(unittest.TestCase):
 ```
 ## <a name="temporary-files"></a>Dočasné soubory
 
-Metoda `tempfile.gettempdir()` vrátí dočasnou složku, která je v systému Linux `/tmp`. Aplikace může pomocí tohoto adresáře ukládat dočasné soubory vygenerované a používané funkcemi během provádění. 
+Metoda `tempfile.gettempdir()` vrátí dočasnou složku, která `/tmp`je v Linuxu . Aplikace může tento adresář použít k ukládání dočasných souborů generovaných a používaných vašimi funkcemi během provádění. 
 
 > [!IMPORTANT]
-> U souborů zapsaných do dočasného adresáře není zaručeno zachování trvalých volání. Během horizontálního navýšení kapacity se nesdílí dočasné soubory mezi instancemi. 
+> Není zaručeno, že soubory zapsané do dočasného adresáře zůstanou zachovány napříč vyvoláními. Během horizontálního navýšení kapacity nejsou dočasné soubory sdíleny mezi instancemi. 
 
-Následující příklad vytvoří pojmenovaný dočasný soubor v dočasném adresáři (`/tmp`):
+Následující příklad vytvoří pojmenovaný dočasný soubor v`/tmp`dočasném adresáři ( ):
 
 ```python
 import logging
@@ -627,17 +627,17 @@ from os import listdir
    filesDirListInTemp = listdir(tempFilePath)     
 ```   
 
-Doporučujeme udržovat testy ve složce oddělené od složky projektu. Tím zajistíte, že budete nasazovat testovací kód s vaší aplikací. 
+Doporučujeme udržovat testy ve složce oddělené od složky projektu. To vám zabrání nasazení testovacího kódu s vaší aplikací. 
 
 ## <a name="known-issues-and-faq"></a>Známé problémy a nejčastější dotazy
 
-Všechny známé problémy a žádosti o funkce jsou sledovány pomocí seznamu [problémů na GitHubu](https://github.com/Azure/azure-functions-python-worker/issues) . Pokud narazíte na problém a nemůžete najít problém v GitHubu, otevřete nový problém a zahrňte podrobný popis problému.
+Všechny známé problémy a požadavky na funkce jsou sledovány pomocí seznamu [problémů GitHubu.](https://github.com/Azure/azure-functions-python-worker/issues) Pokud narazíte na problém a nemůžete najít problém v GitHubu, otevřete nový problém a zahrňte podrobný popis problému.
 
 ### <a name="cross-origin-resource-sharing"></a>Sdílení prostředků různého původu
 
-Azure Functions podporuje sdílení prostředků mezi zdroji (CORS). CORS se konfiguruje na [portálu](functions-how-to-use-azure-function-app-settings.md#cors) a prostřednictvím rozhraní příkazového [řádku Azure CLI](/cli/azure/functionapp/cors). Seznam povolených zdrojů CORS se vztahuje na úrovni aplikace Function App. Pokud je povolená CORS, odpovědi zahrnují hlavičku `Access-Control-Allow-Origin`. Další informace naleznete v tématu [Sdílení prostředků různého původu](functions-how-to-use-azure-function-app-settings.md#cors).
+Funkce Azure podporuje sdílení prostředků mezi zdroji (CORS). CORS je nakonfigurovaný [na portálu](functions-how-to-use-azure-function-app-settings.md#cors) a prostřednictvím [azure cli](/cli/azure/functionapp/cors). Seznam povolených počátků CORS platí na úrovni aplikace funkce. S cors povoleno odpovědi `Access-Control-Allow-Origin` zahrnují záhlaví. Další informace naleznete v tématu [Sdílení prostředků různého původu](functions-how-to-use-azure-function-app-settings.md#cors).
 
-Seznam povolených zdrojů [není aktuálně podporován](https://github.com/Azure/azure-functions-python-worker/issues/444) pro aplikace funkcí Pythonu. Z důvodu tohoto omezení musíte výslovně nastavit hlavičku `Access-Control-Allow-Origin` ve funkcích HTTP, jak je znázorněno v následujícím příkladu:
+Seznam povolených původů [není aktuálně podporován](https://github.com/Azure/azure-functions-python-worker/issues/444) pro aplikace funkcí Pythonu. Z důvodu tohoto omezení je nutné `Access-Control-Allow-Origin` výslovně nastavit záhlaví ve funkcích HTTP, jak je znázorněno v následujícím příkladu:
 
 ```python
 def main(req: func.HttpRequest) -> func.HttpResponse:
@@ -652,7 +652,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     )
 ``` 
 
-Ujistěte se, že jste taky aktualizovali Function. JSON, aby podporoval metodu HTTP OPTIONS:
+Ujistěte se, že také aktualizujete soubor function.json tak, aby podporoval metodu OPTIONS HTTP:
 
 ```json
     ...
@@ -664,18 +664,18 @@ Ujistěte se, že jste taky aktualizovali Function. JSON, aby podporoval metodu 
     ...
 ```
 
-Tuto metodu HTTP používají webové prohlížeče k vyjednání seznamu povolených zdrojů. 
+Tato metoda HTTP používá webové prohlížeče k vyjednání seznamu povolených počátků. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace naleznete v následujících zdrojích:
+Další informace najdete v následujících materiálech:
 
-* [Dokumentace k rozhraní API balíčku Azure Functions](/python/api/azure-functions/azure.functions?view=azure-python)
+* [Dokumentace rozhraní API balíčku Azure Functions](/python/api/azure-functions/azure.functions?view=azure-python)
 * [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
-* [Aktivační události a vazby Azure Functions](functions-triggers-bindings.md)
-* [Vazby úložiště objektů BLOB](functions-bindings-storage-blob.md)
+* [Azure Funkce aktivační události a vazby](functions-triggers-bindings.md)
+* [Vazby úložiště objektů blob](functions-bindings-storage-blob.md)
 * [Vazby HTTP a Webhooku](functions-bindings-http-webhook.md)
-* [Vazby úložiště front](functions-bindings-storage-queue.md)
+* [Vazby úložiště fronty](functions-bindings-storage-queue.md)
 * [Trigger časovače](functions-bindings-timer.md)
 
 

@@ -1,38 +1,38 @@
 ---
-title: Volání Webhooku s klasickou výstrahou metriky v Azure Monitor
-description: Naučte se, jak přesměrovat výstrahy metrik Azure do jiných systémů mimo Azure.
+title: Volání webhooku s klasickou metrikou ve službě Azure Monitor
+description: Zjistěte, jak přesměrovat upozornění na metriky Azure do jiných systémů, které nejsou azure.
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
 ms.openlocfilehash: 27510871f9a022cb27c6b03b812ce1d37b47312c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79248980"
 ---
-# <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Volání Webhooku s klasickou výstrahou metriky v Azure Monitor
+# <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Volání webhooku s klasickou metrikou ve službě Azure Monitor
 
-Webhooky můžete použít ke směrování oznámení o výstrahách Azure do jiných systémů pro následné zpracování nebo vlastní akce. Webhook na výstraze můžete použít ke směrování do služeb, které odesílají zprávy SMS, k protokolování chyb, k oznamování týmu prostřednictvím chatu nebo služby zasílání zpráv nebo pro různé další akce. 
+Pomocí webhooků můžete směrovat upozornění Azure do jiných systémů pro následné zpracování nebo vlastní akce. Můžete použít webhook na upozornění směrovat do služeb, které posílají SMS zprávy, protokolovat chyby, upozornit tým prostřednictvím chatu nebo zasílání zpráv služby, nebo pro různé jiné akce. 
 
-Tento článek popisuje, jak nastavit Webhook na upozornění metriky Azure. Zobrazuje také informace o tom, jak bude datová část příspěvku HTTP na Webhook vypadat. Informace o nastavení a schématu pro upozornění protokolu aktivit Azure (výstrahy na události) najdete v tématu [volání Webhooku v upozornění protokolu aktivit Azure](alerts-log-webhook.md).
+Tento článek popisuje, jak nastavit webhooku na upozornění metriky Azure. Také ukazuje, jak vypadá datová část pro HTTP POST na webhooku. Informace o nastavení a schématu pro výstrahu protokolu aktivit Azure (výstraha na události) najdete v [tématu Volání webhooku na upozornění protokolu aktivit Azure](alerts-log-webhook.md).
 
-Výstrahy Azure používají HTTP POST k odeslání obsahu upozornění ve formátu JSON k identifikátoru URI Webhooku, který zadáte při vytváření výstrahy. Schéma je definováno dále v tomto článku. Identifikátor URI musí být platný koncový bod HTTP nebo HTTPS. Azure při aktivaci výstrahy účtuje jednu položku na žádost.
+Výstrahy Azure používají HTTP POST k odeslání obsahu výstrah ve formátu JSON do identifikátoru URI webhooku, který zadáte při vytváření výstrahy. Schéma je definováno dále v tomto článku. Identifikátor URI musí být platný koncový bod PROTOKOLU HTTP nebo HTTPS. Azure zaúčtuje jednu položku na žádost, když je aktivována výstraha.
 
-## <a name="configure-webhooks-via-the-azure-portal"></a>Konfigurace webhooků prostřednictvím Azure Portal
-Pokud chcete přidat nebo aktualizovat identifikátor URI Webhooku, klikněte na [Azure Portal](https://portal.azure.com/)na stránce **vytvořit nebo aktualizovat výstrahy**.
+## <a name="configure-webhooks-via-the-azure-portal"></a>Konfigurace webových háků přes portál Azure
+Pokud chcete přidat nebo aktualizovat identifikátor URI webhooku, přejděte na [portál Azure](https://portal.azure.com/)na **stránku Vytvoření nebo aktualizace výstrah**.
 
-![Přidat podokno pravidla výstrahy](./media/alerts-webhooks/Alertwebhook.png)
+![Přidání podokna pravidel výstrahy](./media/alerts-webhooks/Alertwebhook.png)
 
-Můžete také nakonfigurovat upozornění pro odeslání na identifikátor URI Webhooku pomocí [rutin Azure PowerShell](../../azure-monitor/platform/powershell-quickstart-samples.md#create-metric-alerts), rozhraní příkazového [řádku pro více platforem](../../azure-monitor/platform/cli-samples.md#work-with-alerts)nebo [rozhraní API REST Azure monitor](https://msdn.microsoft.com/library/azure/dn933805.aspx).
+Výstrahu můžete také nakonfigurovat pro odeslání do identifikátoru URI pomocí [rutin Azure PowerShell](../../azure-monitor/platform/powershell-quickstart-samples.md#create-metric-alerts), rozhraní API pro různé [platformy](../../azure-monitor/platform/cli-samples.md#work-with-alerts)nebo [rozhraní REST monitoru Azure](https://msdn.microsoft.com/library/azure/dn933805.aspx).
 
-## <a name="authenticate-the-webhook"></a>Ověření Webhooku
-Webhook se může ověřit pomocí ověřování na základě tokenu. Identifikátor URI Webhooku se uloží s ID tokenu. Příklad: `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
+## <a name="authenticate-the-webhook"></a>Ověření webového háku
+Webhook lze ověřit pomocí autorizace založené na tokenech. Identifikátor URI webhooku je uložen s ID tokenu. Příklad: `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
 
 ## <a name="payload-schema"></a>Schéma datové části
-Operace POST obsahuje následující datovou část a schéma JSON pro všechny výstrahy založené na metrikách:
+Operace POST obsahuje následující datové části JSON a schéma pro všechny výstrahy založené na metrikách:
 
 ```JSON
 {
@@ -68,41 +68,41 @@ Operace POST obsahuje následující datovou část a schéma JSON pro všechny 
 ```
 
 
-| Pole | Mandatory | Opravená sada hodnot | Poznámky |
+| Pole | Povinné | Pevná sada hodnot | Poznámky |
 |:--- |:--- |:--- |:--- |
-| stav |Ano |Aktivované, vyřešené |Stav výstrahy na základě podmínek, které jste nastavili. |
-| context |Ano | |Kontext výstrahy. |
-| časové razítko |Ano | |Čas, kdy byla výstraha aktivována. |
+| status |Ano |Aktivováno, vyřešeno |Stav výstrahy na základě nastavených podmínek. |
+| kontext |Ano | |Kontext výstrahy. |
+| časové razítko |Ano | |Čas, kdy byla výstraha spuštěna. |
 | id |Ano | |Každé pravidlo výstrahy má jedinečné ID. |
-| name |Ano | |Název výstrahy |
-| description |Ano | |Popis výstrahy |
-| conditionType |Ano |Metrika, událost |Podporují se dva typy výstrah: metrika a událost. Výstrahy metriky jsou založené na podmínce metriky. Výstrahy událostí jsou založené na události v protokolu aktivit. Tuto hodnotu použijte, chcete-li ověřit, zda je výstraha založena na metrikě nebo události. |
-| condition |Ano | |Konkrétní pole, která se mají kontrolovat v závislosti na hodnotě **conditionType** |
-| metricName |Pro výstrahy metriky | |Název metriky, která definuje, co pravidlo monitoruje. |
-| metricUnit |Pro výstrahy metriky |Bajty, BytesPerSecond, Count, CountPerSecond, procenta, sekundy |Jednotka povolená v metrikě Viz [Povolené hodnoty](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx). |
-| metricValue |Pro výstrahy metriky | |Skutečná hodnota metriky, která způsobila výstrahu. |
-| threshold |Pro výstrahy metriky | |Prahová hodnota, při které je výstraha aktivována. |
-| windowSize |Pro výstrahy metriky | |Časové období, které se používá k monitorování aktivity výstrahy na základě prahové hodnoty. Hodnota musí být mezi 5 minutami a 1 dnem. Hodnota musí být ve formátu ISO 8601 Duration. |
-| timeAggregation |Pro výstrahy metriky |Průměr, poslední, maximum, minimum, žádné, celkem |Způsob, jakým budou shromážděná data v průběhu času kombinována. Výchozí hodnota je Average. Viz [Povolené hodnoty](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx). |
-| operátor |Pro výstrahy metriky | |Operátor, který se používá k porovnání aktuálních dat metriky s prahovou hodnotou sady. |
+| jméno |Ano | |Název výstrahy. |
+| description |Ano | |Popis výstrahy. |
+| conditionType |Ano |Metrika, Událost |Podporovány jsou dva typy výstrah: metrika a událost. Upozornění metriky jsou založeny na metrická podmínka. Upozornění na události jsou založena na události v protokolu aktivit. Pomocí této hodnoty můžete zkontrolovat, zda je výstraha založena na metrice nebo události. |
+| Podmínka |Ano | |Konkrétní pole, která chcete zkontrolovat na základě hodnoty **conditionType.** |
+| metricName |Pro upozornění na metriky | |Název metriky, která definuje, co pravidlo monitoruje. |
+| metricUnit |Pro upozornění na metriky |Bajty, BajtyPerSecond, Počet, PočetPerSekunda, Procento, Sekundy |Jednotka povolena v metrice. Viz [povolené hodnoty](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx). |
+| metricValue |Pro upozornění na metriky | |Skutečná hodnota metriky, která způsobila výstrahu. |
+| threshold |Pro upozornění na metriky | |Prahová hodnota, při které je výstraha aktivována. |
+| windowSize |Pro upozornění na metriky | |Doba, která se používá ke sledování aktivity výstrahy na základě prahové hodnoty. Hodnota musí být mezi 5 minut a 1 den. Hodnota musí být ve formátu trvání ISO 8601. |
+| timeAggregation |Pro upozornění na metriky |Průměr, poslední, Maximální, Minimální, Žádný, Součet |Jak by měla být shromážděná data kombinována v průběhu času. Výchozí hodnota je Průměr. Viz [povolené hodnoty](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx). |
+|  – operátor |Pro upozornění na metriky | |Operátor, který se používá k porovnání aktuální data metriky na nastavenou prahovou hodnotu. |
 | subscriptionId |Ano | |ID předplatného Azure. |
-| resourceGroupName |Ano | |Název skupiny prostředků pro ovlivněný prostředek. |
-| resourceName |Ano | |Název prostředku ovlivněného prostředku. |
+| resourceGroupName |Ano | |Název skupiny prostředků pro ohrožený prostředek. |
+| resourceName |Ano | |Název prostředku ohroženého prostředku. |
 | resourceType |Ano | |Typ prostředku ovlivněného prostředku. |
-| resourceId |Ano | |ID prostředku ovlivněného prostředku. |
-| resourceRegion |Ano | |Oblast nebo umístění ovlivněného prostředku. |
-| portalLink |Ano | |Přímý odkaz na stránku souhrnu prostředků na portálu. |
-| vlastnosti |N |Volitelné |Sada párů klíč/hodnota, která obsahuje podrobnosti o události. například `Dictionary<String, String>`. Pole vlastností je volitelné. Ve vlastním uživatelském rozhraní nebo pracovním postupu založeném na aplikaci logiky mohou uživatelé zadat páry klíč/hodnota, které lze předat prostřednictvím datové části. Alternativní způsob, jak předat vlastní vlastnosti zpátky Webhooku, je prostřednictvím samotného identifikátoru URI Webhooku (jako parametr dotazů). |
+| resourceId |Ano | |ID prostředku ohroženého prostředku. |
+| resourceRegion |Ano | |Oblast nebo umístění ohroženého prostředku. |
+| portalLink |Ano | |Přímý odkaz na stránku souhrnu prostředků portálu. |
+| properties |Ne |Nepovinné |Sada párů klíč/hodnota, která má podrobnosti o události. Například, `Dictionary<String, String>`. Pole vlastností je volitelné. Ve vlastním uživatelském postupu nebo pracovním postupu založeném na aplikaci logiky mohou uživatelé zadat dvojice klíč/hodnota, které lze předat prostřednictvím datové části. Alternativní způsob, jak předat vlastní vlastnosti zpět do webhooku je přes webhooku URI sám (jako parametry dotazu). |
 
 > [!NOTE]
-> Pole **vlastnosti** můžete nastavit jenom pomocí [Azure monitor rozhraní REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx).
+> Pole **vlastností** můžete nastavit jenom pomocí [rozhraní API AZURE Monitor REST](https://msdn.microsoft.com/library/azure/dn933805.aspx).
 >
 >
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o výstrahách a webhookech Azure v videu [integrace výstrah Azure s PagerDuty](https://go.microsoft.com/fwlink/?LinkId=627080).
-* Naučte se [spouštět skripty Azure Automation (runbooky) na výstrahách Azure](https://go.microsoft.com/fwlink/?LinkId=627081).
-* Naučte se [používat aplikaci logiky k odeslání zprávy SMS přes Twilio z výstrahy Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app).
-* Naučte se [používat aplikaci logiky k odeslání zprávy s časovou rezervou z výstrahy Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app).
-* Naučte se [používat aplikaci logiky k odeslání zprávy do fronty Azure z výstrahy Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app).
+* Další informace o výstrahách Azure a webhookech najdete ve videu [Integrace výstrah Azure s PagerDuty](https://go.microsoft.com/fwlink/?LinkId=627080).
+* Zjistěte, jak [spouštět skripty Azure Automation (runbooky) ve výstrahách Azure](https://go.microsoft.com/fwlink/?LinkId=627081).
+* Naučte se, jak [pomocí aplikace logiky odeslat SMS zprávu prostřednictvím Twilio z výstrahy Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app).
+* Přečtěte si, jak [pomocí aplikace logiky odeslat zprávu Slack z výstrahy Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app).
+* Zjistěte, jak [pomocí aplikace logiky odeslat zprávu do fronty Azure z výstrahy Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app).
 

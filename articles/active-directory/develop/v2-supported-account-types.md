@@ -1,6 +1,6 @@
 ---
-title: Podporované typy účtů – Microsoft Identity Platform | Azure
-description: Koncepční dokumentace o cílových a podporovaných typech účtů v aplikacích
+title: Podporované typy účtů – platforma identit Microsoftu | Azure
+description: Koncepční dokumentace o cílových skupinách a podporovaných typech účtů v aplikacích
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -17,47 +17,47 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: de90c81f56b6017b2d53ecbfb2c400a4c9f05d81
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79262279"
 ---
 # <a name="supported-account-types"></a>Podporované typy účtu
 
-Tento článek vysvětluje, jaké typy účtů (někdy označované jako cílové skupiny) jsou podporované v aplikacích.
+Tento článek vysvětluje, jaké typy účtů (někdy pojmenované cílové skupiny) jsou podporovány v aplikacích.
 
 <!-- This section can be in an include for many of the scenarios (SPA, Web App signing-in users, protecting a Web API, Desktop (depending on the flows), Mobile -->
 
-## <a name="supported-accounts-types-in-microsoft-identity-platform-applications"></a>Podporované typy účtů v aplikacích Microsoft Identity Platform
+## <a name="supported-accounts-types-in-microsoft-identity-platform-applications"></a>Podporované typy účtů v aplikacích platformy Microsoft Identity
 
-Ve veřejném cloudu Microsoft Azure se může většina typů aplikací přihlašovat uživatelům pomocí libovolné cílové skupiny:
+Ve veřejném cloudu Microsoft Azure může většina typů aplikací přihlašovat uživatele pomocí libovolné cílové skupiny:
 
-- Pokud píšete obchodní aplikaci (LOB), můžete se přihlásit uživatele ve vaší vlastní organizaci. Taková aplikace se někdy nazývá **jeden tenant**.
-- Pokud jste nezávislý výrobce softwaru, můžete napsat aplikaci, která přihlašuje uživatele:
+- Pokud píšete aplikaci Line of Business (LOB), můžete přihlásit uživatele ve vlastní organizaci. Taková aplikace je někdy **pojmenována jeden tenant**.
+- Pokud jste isv, můžete napsat aplikaci, která přihlášení-in uživatelů:
 
-  - V jakékoli organizaci. Taková aplikace se nazývá **víceklientské** webové aplikace. Někdy si přečtete, že se přihlásí uživatelé pomocí svých pracovních nebo školních účtů.
-  - S jejich pracovními nebo školními nebo osobními účet Microsoft.
-  - Pouze osobní účet Microsoft.
+  - V každé organizaci. Taková aplikace se nazývá **víceklientská** webová aplikace. Někdy si přečtete, že se uživatelé připisují svým pracovním nebo školním účtům.
+  - S jejich pracovní nebo školní nebo osobní účet Microsoft.
+  - Pouze s osobním účtem Microsoft.
     > [!NOTE]
-    > Platforma Microsoft Identity Platform v současné době podporuje osobní účty Microsoft jenom tím, že registruje aplikaci pro **pracovní nebo školní nebo osobní účty Microsoftu**a pak při sestavování aplikace, jako je například `https://login.microsoftonline.com/consumers`, omezuje přihlášení v kódu pro aplikaci zadáním autority Azure AD.
+    > V současné době platforma identit Microsoft podporuje osobní účty Microsoft pouze registrací aplikace pro **pracovní nebo školní nebo osobní účty Microsoft**a pak omezit přihlášení v kódu `https://login.microsoftonline.com/consumers`aplikace zadáním autority Azure AD při vytváření aplikace, například .
 
-- Pokud píšete firmu pro příjemce aplikace, můžete se také přihlašovat pomocí Azure AD B2C uživatelů pomocí svých sociálních identit.
+- Pokud píšete obchodní aplikace pro spotřebitele, můžete také přihlásit uživatele s jejich sociální identity, pomocí Azure AD B2C.
 
-## <a name="certain-authentication-flows-dont-support-all-the-account-types"></a>Některé toky ověřování nepodporují všechny typy účtů.
+## <a name="certain-authentication-flows-dont-support-all-the-account-types"></a>Některé toky ověřování nepodporují všechny typy účtů
 
-Některé typy účtů se nedají používat s určitými toky ověřování. Například na desktopu, v aplikacích pro UWP nebo v aplikacích démona:
+Některé typy účtů nelze použít s určitými toky ověřování. Například v aplikacích pro stolní počítače, UPW nebo v aplikacích daemonu:
 
-- Aplikace démona se dají používat jenom s Azure Active Directory organizacemi. Nedoporučuje se pokusit používat aplikace démona k manipulaci s osobními účty Microsoft (souhlas správce nebude nikdy udělen).  
-- Tok integrovaného ověřování systému Windows můžete použít jenom s pracovními nebo školními účty (ve vaší organizaci nebo v jakékoli organizaci). Integrované ověřování systému Windows funguje s doménovým účtem a vyžaduje, aby počítače byly připojené k doméně nebo aby bylo připojené k Azure AD. Tento tok nedává smysl pro osobní účty Microsoft.
-- [Udělení hesla vlastníka prostředku](./v2-oauth-ropc.md) (uživatelské jméno/heslo) se nedá použít u osobních účtů Microsoft. Osobní účty Microsoft totiž vyžadují, aby se uživatel přihlásil k osobním prostředkům v každé přihlašovací relaci. To je důvod, proč toto chování není kompatibilní s neinteraktivními toky.
-- Tok kódu zařízení ještě nepracuje s osobními účty Microsoft.
+- Aplikace Daemon lze použít pouze s organizacemi Azure Active Directory. Nemá smysl pokoušet se používat aplikace pro daemon k manipulaci s osobními účty Microsoft (souhlas správce nebude nikdy udělen).  
+- Integrovaný tok ověřování systému Windows můžete používat pouze s pracovními nebo školními účty (ve vaší organizaci nebo v jakékoli organizaci). Integrované ověřování windows funguje s účty domény a vyžaduje, aby se počítače připojily k doméně nebo k připojily Azure AD. Tento tok nemá smysl pro osobní účty Microsoft.
+- [Udělení hesla vlastníka prostředku](./v2-oauth-ropc.md) (uživatelské jméno/heslo) nelze použít s osobními účty Microsoft. Osobní účty Microsoft ve skutečnosti vyžadují, aby uživatel souhlasil s přístupem k osobním prostředkům při každé relaci přihlášení. To je důvod, proč toto chování není kompatibilní s neinteraktivní toky.
+- Tok kódu zařízení ještě nefunguje s osobními účty Microsoft.
 
 ## <a name="supported-account-types-in-national-clouds"></a>Podporované typy účtů v národních cloudech
 
- Aplikace se můžou také přihlašovat uživatelům v [národních cloudech](authentication-national-cloud.md). Osobní účty Microsoft se ale v těchto cloudech nepodporují (podle definice těchto cloudů). To je důvod, proč jsou podporované typy účtů pro tyto cloudy omezené na vaši organizaci (jeden tenant) nebo na jakékoli organizace (víceklientské aplikace).
+ Aplikace se můžou přihlašovat i k uživatelům v [národních cloudech](authentication-national-cloud.md). Osobní účty Microsoft však nejsou podporovány v těchto cloudech (podle definice těchto cloudů). To je důvod, proč podporované typy účtů jsou sníženy, pro tyto cloudy, pro vaši organizaci (jeden tenant) nebo všechny organizace (víceklientské aplikace).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [architektuře v Azure Active Directory](./single-and-multi-tenant-apps.md)
-- Další informace o [národních cloudech](./authentication-national-cloud.md)
+- Další informace o [nájmu ve službě Azure Active Directory](./single-and-multi-tenant-apps.md)
+- Další informace o [Národních cloudech](./authentication-national-cloud.md)

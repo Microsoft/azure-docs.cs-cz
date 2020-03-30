@@ -1,27 +1,27 @@
 ---
-title: Zprostředkovatel výstupní mezipaměti ASP.NET pro Azure cache pro Redis
-description: Přečtěte si, jak ukládat výstup stránky ASP.NET do mezipaměti pomocí Azure cache pro Redis. Zprostředkovatel výstupní mezipaměti Redis je nezpracovávající mechanismus úložiště pro data výstupní mezipaměti.
+title: ASP.NET zprostředkovatele výstupní mezipaměti pro Azure Cache for Redis
+description: Přečtěte si, jak uložit do mezipaměti ASP.NET výstup stránky pomocí Azure Cache for Redis. Zprostředkovatel mezipaměti výstupu Redis je mimoprocesový mechanismus úložiště pro výstupní data mezipaměti.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/22/2018
-ms.openlocfilehash: 1a375f063d398c19ed86a0a401e2a41c696ef4e2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: af003f1f0422c2351bcdf9b0c0010e38785c0344
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75412991"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530321"
 ---
-# <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>Zprostředkovatel výstupní mezipaměti ASP.NET pro Azure cache pro Redis
+# <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>ASP.NET zprostředkovatele výstupní mezipaměti pro Azure Cache for Redis
 
-Zprostředkovatel výstupní mezipaměti Redis je nezpracovávající mechanismus úložiště pro data výstupní mezipaměti. Tato data jsou určena konkrétně pro úplné odpovědi HTTP (ukládání výstupu stránky do mezipaměti). Zprostředkovatel se připojí k novému bodu rozšiřitelnosti zprostředkovatele výstupní mezipaměti, který byl představen v ASP.NET 4.
+Zprostředkovatel mezipaměti výstupu Redis je mimoprocesový mechanismus úložiště pro výstupní data mezipaměti. Tato data jsou speciálně pro úplné odpovědi HTTP (ukládání do mezipaměti výstupu stránky). Zprostředkovatel se zapojí do nového bodu rozšiřitelnosti poskytovatele výstupní mezipaměti, který byl zaveden v ASP.NET 4.
 
-Pokud chcete použít poskytovatele výstupní mezipaměti Redis, nejdřív nakonfigurujte mezipaměť a pak nakonfigurujte aplikaci ASP.NET pomocí balíčku NuGet poskytovatele výstupní mezipaměti Redis. Toto téma poskytuje pokyny ke konfiguraci aplikace pro použití poskytovatele výstupní mezipaměti Redis. Další informace o vytváření a konfiguraci mezipaměti Azure pro instanci Redis najdete v tématu [vytvoření mezipaměti](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
+Chcete-li použít zprostředkovatele výstupní mezipaměti Redis, nejprve nakonfigurujte mezipaměť a potom nakonfigurujte ASP.NET aplikaci pomocí balíčku NuGet zprostředkovatele výstupní mezipaměti Redis. Toto téma obsahuje pokyny ke konfiguraci aplikace pro použití zprostředkovatele výstupní mezipaměti Redis. Další informace o vytvoření a konfiguraci instance Azure Cache for Redis najdete [v tématu Vytvoření mezipaměti](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
 
-## <a name="store-aspnet-page-output-in-the-cache"></a>Ukládat výstup stránky ASP.NET do mezipaměti
+## <a name="store-aspnet-page-output-in-the-cache"></a>Uložení výstupu stránky ASP.NET do mezipaměti
 
-Chcete-li konfigurovat klientskou aplikaci v aplikaci Visual Studio pomocí balíčku NuGet pro stav relace Azure cache for Redis, klikněte na **Správce balíčků NuGet**, **Konzola správce balíčků** v nabídce **nástroje** .
+Chcete-li nakonfigurovat klientskou aplikaci v sadě Visual Studio pomocí balíčku NuGet stavu relace Azure Cache for Redis, klepněte na položku **NuGet Package Manager**, **Console správce balíčků** z nabídky **Nástroje.**
 
 V okně `Package Manager Console` spusťte následující příkaz.
 
@@ -29,12 +29,12 @@ V okně `Package Manager Console` spusťte následující příkaz.
 Install-Package Microsoft.Web.RedisOutputCacheProvider
 ```
 
-Balíček NuGet zprostředkovatele výstupní mezipaměti Redis má závislost na balíčku StackExchange. Redis. StrongName. Pokud se v projektu nenachází balíček StackExchange. Redis. StrongName, je nainstalován. Další informace o balíčku NuGet poskytovatele výstupní mezipaměti Redis najdete na stránce NuGet [RedisOutputCacheProvider](https://www.nuget.org/packages/Microsoft.Web.RedisOutputCacheProvider/) .
+Balíček NuGet zprostředkovatele výstupní mezipaměti Redis má závislost na balíčku StackExchange.Redis.StrongName. Pokud StackExchange.Redis.StrongName balíček není k dispozici v projektu, je nainstalován. Další informace o balíčku NuGet zprostředkovatele výstupní mezipaměti Redis naleznete na stránce [RedisOutputCacheProvider](https://www.nuget.org/packages/Microsoft.Web.RedisOutputCacheProvider/) NuGet.
 
 >[!NOTE]
->Kromě balíčku StackExchange. Redis. StrongName se silným názvem existuje také StackExchange. Redis verze, která není silně pojmenována. Pokud váš projekt používá verzi StackExchange. Redis, která není silně pojmenována, musíte ji odinstalovat; v opačném případě budete mít v projektu konflikty pojmenování. Další informace o těchto balíčcích najdete v tématu [Konfigurace klientů mezipaměti rozhraní .NET](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
+>Kromě balíčku stackexchange.redis.strongname se silným názvem stackexchange.redis.strongname balíček, je také StackExchange.Redis bez silné pojmenované verze. Pokud váš projekt používá verzi stackexchange.redis bez silného názvem, je nutné ji odinstalovat. v opačném případě dojde ke konfliktům názvů v projektu. Další informace o těchto balíčcích naleznete v [tématu Konfigurace klientů mezipaměti .NET](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
 
-Balíček NuGet stáhne a přidá požadované odkazy na sestavení a přidá následující oddíl do souboru Web. config. Tato část obsahuje požadovanou konfiguraci pro vaši aplikaci ASP.NET, aby používala poskytovatele výstupní mezipaměti Redis.
+Balíček NuGet se stáhne a přidá požadované odkazy na sestavení a přidá následující část do souboru web.config. Tato část obsahuje požadovanou konfiguraci pro ASP.NET aplikace pro použití zprostředkovatele výstupní mezipaměti Redis.
 
 ```xml
 <caching>
@@ -49,33 +49,32 @@ Balíček NuGet stáhne a přidá požadované odkazy na sestavení a přidá n�
 </caching>
 ```
 
-Nakonfigurujte atributy s hodnotami z okna cache v portál Microsoft Azure a podle potřeby nakonfigurujte další hodnoty. Pokyny k přístupu k vlastnostem mezipaměti najdete v tématu [Konfigurace nastavení služby Azure cache pro Redis](cache-configure.md#configure-azure-cache-for-redis-settings).
+Nakonfigurujte atributy s hodnotami z okna mezipaměti na portálu Microsoft Azure a podle potřeby nakonfigurujte další hodnoty. Pokyny k přístupu ke vlastnostem mezipaměti najdete [v tématu Konfigurace mezipaměti Azure pro nastavení Redis](cache-configure.md#configure-azure-cache-for-redis-settings).
 
 | Atribut | Typ | Výchozí | Popis |
 | --------- | ---- | ------- | ----------- |
-| *host* | string | místního | IP adresa nebo název hostitele serveru Redis |
-| *přístavní* | kladné celé číslo | 6379 (bez SSL)<br/>6380 (SSL) | Port serveru Redis |
-| *accessKey* | string | "" | Redis heslo serveru, když je povolená autorizace Redis. Ve výchozím nastavení je hodnota prázdný řetězec, což znamená, že zprostředkovatel stavu relace nebude při připojování k serveru Redis používat žádné heslo. **Pokud je server Redis ve veřejně přístupné síti, jako je Azure Redis Cache, Nezapomeňte povolit autorizaci Redis pro zlepšení zabezpečení a zadat zabezpečené heslo.** |
-| *ssl* | Boolean | **false** | Zda se chcete připojit k serveru Redis prostřednictvím protokolu SSL. Ve výchozím nastavení je tato hodnota **false** , protože Redis nepodporuje protokol SSL. **Pokud používáte Azure Redis Cache, který podporuje protokol SSL, nezapomeňte tuto vlastnost nastavit na hodnotu true, aby se zlepšila zabezpečení.**<br/><br/>Port bez SSL je ve výchozím nastavení pro nové mezipaměti zakázán. Pro toto nastavení zadejte **hodnotu true** , pokud chcete použít port SSL. Další informace o povolení portu bez SSL najdete v části [přístupové porty](cache-configure.md#access-ports) v tématu [Konfigurace mezipaměti](cache-configure.md) . |
-| *databaseIdNumber* | kladné celé číslo | 0 | *Tento atribut lze zadat pouze pomocí souboru Web. config nebo AppSettings.*<br/><br/>Určete, která databáze Redis se má použít. |
-| *connectionTimeoutInMilliseconds* | kladné celé číslo | Poskytuje StackExchange. Redis | Slouží k nastavení *ConnectTimeout* při vytváření stackexchange. Redis. ConnectionMultiplexer. |
-| *operationTimeoutInMilliseconds* | kladné celé číslo | Poskytuje StackExchange. Redis | Slouží k nastavení *SyncTimeout* při vytváření stackexchange. Redis. ConnectionMultiplexer. |
-| *ConnectionString* (platný připojovací řetězec stackexchange. Redis) | string | *není k dispozici* | Buď odkaz na parametr AppSettings nebo Web. config, nebo jiný platný připojovací řetězec StackExchange. Redis. Tento atribut může poskytovat hodnoty pro *hostitel*, *port*, *AccessKey*, *SSL*a další atributy stackexchange. Redis. Bližší pohled na *ConnectionString*najdete v tématu [Nastavení ConnectionString](#setting-connectionstring) v oddílu [poznámky k atributu](#attribute-notes) . |
-| *settingsClassName*<br/>*settingsMethodName* | string<br/>string | *není k dispozici* | *Tyto atributy lze zadat pouze pomocí souboru Web. config nebo AppSettings.*<br/><br/>Tyto atributy použijte k poskytnutí připojovacího řetězce. *settingsClassName* by měl být kvalifikovaný název třídy sestavení, který obsahuje metodu určenou parametrem *settingsMethodName*.<br/><br/>Metoda určená parametrem *settingsMethodName* by měla být public, static a void (nesmí přebírat žádné parametry) s návratovým typem **řetězce**. Tato metoda vrátí skutečný připojovací řetězec. |
-| *loggingClassName*<br/>*loggingMethodName* | string<br/>string | *není k dispozici* | *Tyto atributy lze zadat pouze pomocí souboru Web. config nebo AppSettings.*<br/><br/>Tyto atributy použijte k ladění aplikace poskytováním protokolů z stavu relace/výstupní mezipaměti spolu s protokoly z StackExchange. Redis. *loggingClassName* by měl být kvalifikovaný název třídy sestavení, který obsahuje metodu určenou parametrem *loggingMethodName*.<br/><br/>Metoda určená parametrem *loggingMethodName* by měla být public, static a void (nesmí přebírat žádné parametry) s návratovým typem **System. IO. TextWriter**. |
-| *applicationName* | string | Název modulu aktuálního procesu nebo "/" | *Jenom SessionStateProvider*<br/>*Tento atribut lze zadat pouze pomocí souboru Web. config nebo AppSettings.*<br/><br/>Předpona názvu aplikace, která se má použít v Redis Cache Zákazník může používat stejnou mezipaměť Redis pro různé účely. Aby se zajistilo, že klíče relace nekolidují, může být předpona s názvem aplikace. |
-| *throwOnError* | Boolean | true | *Jenom SessionStateProvider*<br/>*Tento atribut lze zadat pouze pomocí souboru Web. config nebo AppSettings.*<br/><br/>Určuje, zda má být při výskytu chyby vyvolána výjimka.<br/><br/>Další informace o *parametr throwOnError*naleznete v tématu [poznámky k *parametr throwOnError* ](#notes-on-throwonerror) v oddílu [poznámky k atributu](#attribute-notes) . |>*Microsoft.Web.Redis.RedisSessionStateProvider.LastException*. |
-| *retryTimeoutInMilliseconds* | kladné celé číslo | 5000 | *Jenom SessionStateProvider*<br/>*Tento atribut lze zadat pouze pomocí souboru Web. config nebo AppSettings.*<br/><br/>Doba, po kterou se bude opakovat pokus o neúspěch operace. Pokud je tato hodnota menší než *operationTimeoutInMilliseconds*, poskytovatel se nezopakuje.<br/><br/>Další informace o *retryTimeoutInMilliseconds*naleznete v tématu [poznámky k *retryTimeoutInMilliseconds* ](#notes-on-retrytimeoutinmilliseconds) v oddílu [poznámky k atributu](#attribute-notes) . |
-| *redisSerializerType* | string | *není k dispozici* | Určuje kvalifikovaný název typu sestavení třídy, která implementuje Microsoft. Web. Redis. ISerializer a obsahuje vlastní logiku k serializaci a deserializaci hodnot. Další informace naleznete v části [o *redisSerializerType* ](#about-redisserializertype) v oddílu [poznámky k atributu](#attribute-notes) . |
-|
+| *Hostitele* | řetězec | "localhost" | Ip adresa serveru Redis nebo název hostitele |
+| *Port* | kladné celé číslo | 6379 (jiné než SSL)<br/>6380 (SSL) | Port serveru Redis |
+| *Accesskey* | řetězec | "" | Redis heslo serveru, pokud je povolena autorizace Redis. Hodnota je ve výchozím nastavení prázdný řetězec, což znamená, že poskytovatel stavu relace nepoužije žádné heslo při připojování k serveru Redis. **Pokud je váš server Redis ve veřejně přístupné síti, jako je Azure Redis Cache, nezapomeňte povolit autorizaci Redis ke zlepšení zabezpečení a zadat zabezpečené heslo.** |
+| *Ssl* | Boolean | **False** | Zda se připojit k serveru Redis přes SSL. Tato hodnota je ve výchozím nastavení **false,** protože Redis nepodporuje SSL po vybalení z krabice. **Pokud používáte Azure Redis Cache, který podporuje SSL po vybalení z krabice, nezapomeňte nastavit na true ke zlepšení zabezpečení.**<br/><br/>Port bez SSL je ve výchozím nastavení pro nové mezipaměti zakázán. Zadejte **hodnotu true** pro toto nastavení, chcete-li použít port SSL. Další informace o povolení portu bez SSL naleznete v části [Přístupové porty](cache-configure.md#access-ports) v [tématu Konfigurace mezipaměti.](cache-configure.md) |
+| *databaseIdNumber* | kladné celé číslo | 0 | *Tento atribut lze zadat pouze prostřednictvím web.config nebo AppSettings.*<br/><br/>Určete, kterou databázi Redis chcete použít. |
+| *connectionTimeoutInMilliseconds* | kladné celé číslo | Poskytuje StackExchange.Redis | Slouží k nastavení *ConnectTimeout* při vytváření StackExchange.Redis.ConnectionMultiplexer. |
+| *operationTimeoutInMilliseconds* | kladné celé číslo | Poskytuje StackExchange.Redis | Slouží k nastavení *SyncTimeout* při vytváření StackExchange.Redis.ConnectionMultiplexer. |
+| *connectionString* (Platný připojovací řetězec StackExchange.Redis) | řetězec | *N/a* | Buď odkaz na parametr AppSettings nebo web.config, nebo platný připojovací řetězec StackExchange.Redis. Tento atribut může poskytnout hodnoty pro *atributy hostitele*, *port*, *accessKey*, *ssl*a další atributy StackExchange.Redis. Bližší pohled na *connectionString*naleznete v [tématu Nastavení řetězce připojení](#setting-connectionstring) v části [Poznámky atributu.](#attribute-notes) |
+| *settingsNázev_třídy*<br/>*settingsMethodName* | řetězec<br/>řetězec | *N/a* | *Tyto atributy lze zadat pouze prostřednictvím web.config nebo AppSettings.*<br/><br/>Tyto atributy slouží k poskytnutí připojovacího řetězce. *settingsClassName* by měl být název třídy s kvalifikací sestavení, který obsahuje metodu určenou *parametrem settingsMethodName*.<br/><br/>Metoda určená *podle settingsMethodName* by měla být veřejná, statická a neplatná (nepřevzít žádné parametry) s návratovým typem **řetězce**. Tato metoda vrátí skutečný připojovací řetězec. |
+| *loggingClassName*<br/>*název_metody logging* | řetězec<br/>řetězec | *N/a* | *Tyto atributy lze zadat pouze prostřednictvím web.config nebo AppSettings.*<br/><br/>Pomocí těchto atributů ladit aplikace tím, že protokoly z relace stavu nebo výstupu mezipaměti spolu s protokoly z StackExchange.Redis. *loggingClassName* by měl být název třídy s kvalifikací sestavení, který obsahuje metodu určenou *názvem loggingMethodName*.<br/><br/>Metoda určená *loggingMethodName* by měla být veřejná, statická a neplatná (nepřevzít žádné parametry) s návratovým typem **System.IO.TextWriter**. |
+| *název aplikace* | řetězec | Název modulu aktuálního procesu nebo "/" | *Pouze sessionStateProvider*<br/>*Tento atribut lze zadat pouze prostřednictvím web.config nebo AppSettings.*<br/><br/>Předpona názvu aplikace, která se má použít v mezipaměti Redis. Zákazník může používat stejnou mezipaměť Redis pro různé účely. Chcete-li se ujistit, že klíče relace nejsou kolize, může být předponou s názvem aplikace. |
+| *Throwonerror* | Boolean | true | *Pouze sessionStateProvider*<br/>*Tento atribut lze zadat pouze prostřednictvím web.config nebo AppSettings.*<br/><br/>Určuje, zda má být vyvolána výjimka, když dojde k chybě.<br/><br/>Další informace o *throwOnError*naleznete v [tématu Poznámky *k throwOnError* ](#notes-on-throwonerror) v části [Poznámky atributu.](#attribute-notes) |>*Microsoft.Web.Redis.RedisSessionStateProvider.LastException*. |
+| *retryTimeoutInMilliseconds* | kladné celé číslo | 5000 | *Pouze sessionStateProvider*<br/>*Tento atribut lze zadat pouze prostřednictvím web.config nebo AppSettings.*<br/><br/>Jak dlouho opakovat, když se operace nezdaří. Pokud je tato hodnota menší než *operaceTimeoutInMilliseconds*, zprostředkovatel nebude opakovat.<br/><br/>Další informace o *retryTimeoutInMilliseconds*najdete v [článku Poznámky na *retryTimeoutInMilliseconds* ](#notes-on-retrytimeoutinmilliseconds) v části [Poznámky atributu.](#attribute-notes) |
+| *redisSerializerType* | řetězec | *N/a* | Určuje název typu s kvalifikací sestavení třídy, která implementuje soubor Microsoft.Web.Redis. ISerializer a který obsahuje vlastní logiku serializovat a rekonstruovat hodnoty. Další informace naleznete v [tématu O *redisSerializerType* ](#about-redisserializertype) v části [Poznámky atributu.](#attribute-notes) |
 
-## <a name="attribute-notes"></a>Poznámky k atributu
+## <a name="attribute-notes"></a>Poznámky atributů
 
-### <a name="setting-connectionstring"></a>Nastavení *připojovacího řetězce*
+### <a name="setting-connectionstring"></a>Nastavení *řetězce připojení*
 
-Hodnota *ConnectionString* se používá jako klíč k načtení skutečného připojovacího řetězce z appSettings, pokud takový řetězec existuje v appSettings. Pokud se v AppSettings nenajde, hodnota *ConnectionString* se použije jako klíč k načtení skutečného připojovacího řetězce z oddílu **ConnectionString** Web. config, pokud tato část existuje. Pokud připojovací řetězec **v oddílu appSettings** nebo Web. config neexistuje, použije se při vytváření stackexchange. Redis. ConnectionMultiplexer hodnota literálu *ConnectionString* jako připojovací řetězec.
+Hodnota *connectionString* se používá jako klíč k načtení skutečného připojovacího řetězce z AppSettings, pokud takový řetězec existuje v AppSettings. Pokud není nalezen uvnitř AppSettings, hodnota *connectionString* bude použita jako klíč pro načtení skutečného připojovacího řetězce z oddílu web.config **ConnectionString,** pokud tato část existuje. Pokud připojovací řetězec neexistuje v AppSettings nebo web.config **ConnectionString** části, literál hodnota *connectionString* bude použita jako připojovací řetězec při vytváření StackExchange.Redis.ConnectionMultiplexer.
 
-Následující příklady znázorňují, jak se používá *připojovací řetězec* .
+Následující příklady ilustrují, jak se používá *connectionString.*
 
 #### <a name="example-1"></a>Příklad 1
 
@@ -85,7 +84,7 @@ Následující příklady znázorňují, jak se používá *připojovací řetě
 </connectionStrings>
 ```
 
-V `web.config`použijte místo skutečné hodnoty klíč jako hodnotu parametru.
+V `web.config`, použijte výše klíč jako hodnotu parametru namísto skutečné hodnoty.
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -105,7 +104,7 @@ V `web.config`použijte místo skutečné hodnoty klíč jako hodnotu parametru.
 </appSettings>
 ```
 
-V `web.config`použijte místo skutečné hodnoty klíč jako hodnotu parametru.
+V `web.config`, použijte výše klíč jako hodnotu parametru namísto skutečné hodnoty.
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -129,25 +128,25 @@ V `web.config`použijte místo skutečné hodnoty klíč jako hodnotu parametru.
 </sessionState>
 ```
 
-### <a name="notes-on-throwonerror"></a>Poznámky k *parametr throwOnError*
+### <a name="notes-on-throwonerror"></a>Poznámky *k throwOnError*
 
-Pokud v současné době dojde k chybě během operace relace, zprostředkovatel stavu relace vyvolá výjimku. Tím se aplikace ukončí.
+V současné době dojde k chybě během operace relace, zprostředkovatel stavu relace vyvolá výjimku. Tím se aplikace vypne.
 
-Toto chování bylo upraveno způsobem, který podporuje očekávání stávajících uživatelů poskytovatele stavu relace ASP.NET a zároveň poskytuje schopnost jednat o výjimky, pokud je to požadováno. Výchozí chování stále vyvolá výjimku, pokud dojde k chybě, která je konzistentní s jinými zprostředkovateli stavu relací ASP.NET. existující kód by měl fungovat stejně jako předtím.
+Toto chování bylo upraveno způsobem, který podporuje očekávání stávajících uživatelů ASP.NET stavu relace a zároveň poskytuje možnost jednat na výjimky, pokud je to žádoucí. Výchozí chování stále vyvolá výjimku, když dojde k chybě, konzistentní s jinými poskytovateli stavu ASP.NET relace; existující kód by měl fungovat stejně jako dříve.
 
-Pokud nastavíte *parametr throwOnError* na **hodnotu false**, pak namísto vyvolání výjimky, pokud dojde k chybě, dojde k selhání v tichém režimu. Chcete-li zjistit, zda došlo k chybě, a pokud ano, zjistíte, co byla výjimka, zkontrolujte statickou vlastnost *Microsoft. Web. Redis. RedisSessionStateProvider. LastException*.
+Pokud nastavíte *throwOnError* na **false**, pak místo vyvolání výjimky při výskytu chyby se nezdaří tiše. Chcete-li zjistit, zda došlo k chybě, a pokud ano, zjistěte, jaká byla výjimka, zkontrolujte statickou vlastnost *Microsoft.Web.Redis.RedisSessionStateProvider.LastException*.
 
 ### <a name="notes-on-retrytimeoutinmilliseconds"></a>Poznámky k *retryTimeoutInMilliseconds*
 
-Díky tomu je k dispozici několik logických postupů, které zjednodušují případ, kdy by se operace relace měla opakovat při selhání, a to kvůli tomu, jako je například Network porucha, a zároveň vám umožní řídit časový limit opakování nebo se zcela znovu odhlásit.
+To poskytuje některé logiky opakování zjednodušit případ, kdy některé operace relace by měl opakovat na selhání z důvodu chyby sítě, a zároveň umožňuje řídit časový režim opakování nebo odhlásit opakování úplně.
 
-Pokud *retryTimeoutInMilliseconds* nastavíte na číslo, například 2000, pak když operace relace selže, bude po dobu 2000 milisekund znovu opakována, než se zpracuje jako chyba. Takže pokud chcete, aby zprostředkovatel stavu relací mohl použít tuto logiku opakování, stačí nakonfigurovat časový limit. K prvnímu opakování dojde po 20 milisekundách, což ve většině případů postačuje, když dojde k síťovému poruchau. Pak se to opakuje každou sekundu, dokud nevyprší časový limit. Hned po vypršení časového limitu se to opakuje ještě jednou, aby se zajistilo, že nezíská časový limit (nejvýše) jednu sekundu.
+Pokud nastavíte *retryTimeoutInMilliseconds* na číslo, například 2000, pak při selhání operace relace, bude opakovat pro 2000 milisekund před zpracováním jako chyba. Takže mít zprostředkovatele stavu relace použít tuto logiku opakování, stačí nakonfigurovat časový čas. První pokus se uskuteční po 20 milisekundách, což je ve většině případů dostačující, když dojde k chybě sítě. Poté se bude opakovat každou sekundu, dokud neskončí časový rámec. Hned po odletu se bude opakovat ještě jednou, aby se ujistil, že neodřízne časový rámec (maximálně) o jednu sekundu.
 
-Pokud si nejste vědomi, že budete chtít opakovat pokus (například pokud používáte server Redis ve stejném počítači jako aplikaci) nebo pokud chcete zpracovat logiku opakování sami, nastavte *retryTimeoutInMilliseconds* na 0.
+Pokud si nemyslíte, že potřebujete opakování (například při spuštění serveru Redis ve stejném počítači jako vaše aplikace) nebo pokud chcete zpracovat logiku opakování sami, nastavte *retryTimeoutInMilliseconds* na 0.
 
-### <a name="about-redisserializertype"></a>O *redisSerializerType*
+### <a name="about-redisserializertype"></a>O *společnosti redisSerializerType*
 
-Ve výchozím nastavení je serializace pro ukládání hodnot na Redis provedeno v binárním formátu poskytovaném třídou **BinaryFormatter** . Použijte *redisSerializerType* k určení kvalifikovaného názvu typu sestavení třídy, která implementuje **Microsoft. Web. Redis. ISerializer** a má vlastní logiku k serializaci a deserializaci hodnot. Například tady je třída serializátoru JSON s použitím JSON.NET:
+Ve výchozím nastavení serializace pro uložení hodnot na Redis se provádí v binárním formátu poskytované **BinaryFormatter** třídy. Pomocí *redisSerializerType* určete typ typu s kvalifikací sestavení třídy, která implementuje **Microsoft.Web.Redis.ISerializer** a má vlastní logiku serializovat a rekonstruovat hodnoty. Zde je například třída serializátoru Json používající JSON.NET:
 
 ```cs
 namespace MyCompany.Redis
@@ -173,7 +172,7 @@ namespace MyCompany.Redis
 }
 ```
 
-Za předpokladu, že je tato třída definována v sestavení s názvem **MyCompanyDll**, můžete nastavit parametr *redisSerializerType* na použití:
+Za předpokladu, že tato třída je definována v sestavení s názvem **MyCompanyDll**, můžete nastavit parametr *redisSerializerType* ji použít:
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -186,18 +185,24 @@ Za předpokladu, že je tato třída definována v sestavení s názvem **MyComp
 </sessionState>
 ```
 
-## <a name="output-cache-directive"></a>Direktiva výstupní mezipaměti
+## <a name="output-cache-directive"></a>Výstupní směrnice mezipaměti
 
-Přidejte direktivu OutputCache na každou stránku, pro kterou chcete výstup ukládat do mezipaměti.
+Přidejte na každou stránku direktivu OutputCache, pro kterou chcete výstup uložit do mezipaměti.
 
 ```xml
 <%@ OutputCache Duration="60" VaryByParam="*" %>
 ```
 
-V předchozím příkladu data stránky uložená v mezipaměti zůstanou v mezipaměti po dobu 60 sekund a pro každou kombinaci parametrů se ukládá do mezipaměti jiná verze této stránky. Další informace o direktivě OutputCache naleznete v tématu [@OutputCache](https://go.microsoft.com/fwlink/?linkid=320837).
+V předchozím příkladu zůstanou data stránky uložená v mezipaměti v mezipaměti po dobu 60 sekund a pro každou kombinaci parametrů je uložena do mezipaměti jiná verze stránky. Další informace o směrnici OutputCache [@OutputCache](https://go.microsoft.com/fwlink/?linkid=320837)naleznete v tématu .
 
-Po provedení těchto kroků je vaše aplikace nakonfigurovaná tak, aby používala poskytovatele výstupní mezipaměti Redis.
+Po provedení těchto kroků je aplikace nakonfigurována tak, aby používala zprostředkovatele výstupní mezipaměti Redis.
+
+## <a name="third-party-output-cache-providers"></a>Poskytovatelé výstupní mezipaměti jiných výrobců
+
+* [NCache](https://www.alachisoft.com/blogs/how-to-use-a-distributed-cache-for-asp-net-output-cache/)
+* [Apache Zapalte](https://apacheignite-net.readme.io/docs/aspnet-output-caching)
+
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [zprostředkovatele stavu relace ASP.NET pro Azure cache pro Redis](cache-aspnet-session-state-provider.md).
+Podívejte se na [zprostředkovatele stavu ASP.NET relace pro Azure Cache for Redis](cache-aspnet-session-state-provider.md).

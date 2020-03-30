@@ -1,6 +1,6 @@
 ---
-title: Zaregistrujte se na Azure NetApp Files | Microsoft Docs
-description: Popisuje, jak se zaregistrovat pro použití Azure NetApp Files.
+title: Registrace k souborům Azure NetApp | Dokumenty společnosti Microsoft
+description: Popisuje, jak se zaregistrovat k použití souborů Azure NetApp.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,46 +15,46 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: b-juche
 ms.openlocfilehash: 6f5d84dea2e835fd12a062b628181354295ed9f6
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79274057"
 ---
 # <a name="register-for-azure-netapp-files"></a>Registrace pro Azure NetApp Files
 
 > [!IMPORTANT] 
-> Před registrací poskytovatele prostředků Azure NetApp Files musíte obdržet e-mail od Azure NetApp Files týmu potvrzující, že vám byl udělen přístup ke službě. 
+> Před registrací zprostředkovatele prostředků Azure NetApp Files musíte obdržet e-mail od týmu Soubory Azure NetApp potvrzující, že vám byl udělen přístup ke službě. 
 
-V tomto článku se dozvíte, jak se zaregistrovat pro Azure NetApp Files, abyste mohli začít službu používat.
+V tomto článku se dozvíte, jak se zaregistrovat pro soubory Azure NetApp, abyste mohli začít používat službu.
 
-## <a name="waitlist"></a>Odeslat žádost o přístup ke službě pořadníku
+## <a name="submit-a-waitlist-request-for-accessing-the-service"></a><a name="waitlist"></a>Odeslat požadavek na čekací listinu pro přístup ke službě
 
-1. Odešlete žádost o pořadníku k přístupu ke službě Azure NetApp Files prostřednictvím [stránky pro odeslání Azure NetApp Files pořadníku](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u). 
+1. Odešlete žádost o čekací listinu pro přístup ke službě Azure NetApp Files prostřednictvím [stránky odeslání seznamu souborů Azure NetApp](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u). 
 
-    Registrace pořadníku nezaručuje okamžitý přístup k službě. 
+    Registrace seznamu čekánky nezaručuje okamžitý přístup ke službě. 
 
-2. Než budete pokračovat s dalšími úkoly, počkejte na oficiální e-mail s potvrzením od Azure NetApp Files týmu. 
+2. Než budete pokračovat v dalších úkolech, počkejte na oficiální potvrzovací e-mail od týmu Azure NetApp Files. 
 
-## <a name="resource-provider"></a>Registrace poskytovatele prostředků NetApp
+## <a name="register-the-netapp-resource-provider"></a><a name="resource-provider"></a>Registrace zprostředkovatele prostředků NetApp
 
-Pokud chcete službu používat, musíte zaregistrovat poskytovatele prostředků Azure pro Azure NetApp Files.
+Chcete-li službu používat, musíte zaregistrovat zprostředkovatele prostředků Azure pro soubory Azure NetApp.
 
 > [!NOTE] 
-> Poskytovatele prostředků NetApp budete moct úspěšně zaregistrovat i bez udělení přístupu ke službě. Bez přístupu k autorizaci ale nemusíte k vytvoření účtu NetApp nebo žádného jiného prostředku Azure NetApp Files zamítnout všechny Azure Portal ani požadavky na rozhraní API, a to s následující chybou:  
+> Budete moci úspěšně zaregistrovat Poskytovatele prostředků NetApp i bez udělení přístupu ke službě. Bez autorizace přístupu však bude odmítnut jakýkoli portál Azure nebo požadavek rozhraní API na vytvoření účtu NetApp nebo jiného prostředku souborů Azure NetApp s následující chybou:  
 >
 > `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"NotFound","message":"{\r\n \"error\": {\r\n \"code\": \"InvalidResourceType\",\r\n \"message\": \"The resource type could not be found in the namespace 'Microsoft.NetApp' for api version '2017-08-15'.\"\r\n }\r\n}"}]}`
 
 
-1. V Azure Portal klikněte na ikonu Azure Cloud Shell v pravém horním rohu:
+1. Na webu Azure Portal klikněte na ikonu Azure Cloud Shell v pravém horním rohu:
 
-      ![Ikona Azure Cloud Shell](../media/azure-netapp-files/azure-netapp-files-azure-cloud-shell.png)
+      ![Ikona prostředí Azure Cloud Shell](../media/azure-netapp-files/azure-netapp-files-azure-cloud-shell.png)
 
-2. Pokud máte ve svém účtu Azure více předplatných, vyberte účet, který je povolený pro Azure NetApp Files:
+2. Pokud máte na účtu Azure víc předplatných, vyberte ten, který byl na seznamu povolených pro soubory Azure NetApp:
     
         az account set --subscription <subscriptionId>
 
-3. V konzole Azure Cloud Shell zadejte následující příkaz, který ověří, jestli je vaše předplatné v seznamu povolených:
+3. V konzole Azure Cloud Shell zadejte následující příkaz a ověřte, že vaše předplatné bylo na seznamu povolených:
     
         az feature list | grep NetApp
 
@@ -63,17 +63,17 @@ Pokud chcete službu používat, musíte zaregistrovat poskytovatele prostředk�
        "id": "/subscriptions/<SubID>/providers/Microsoft.Features/providers/Microsoft.NetApp/features/ANFGA",  
        "name": "Microsoft.NetApp/ANFGA" 
        
-   `<SubID>` je vaše ID vašeho předplatného.
+   `<SubID>`je vaše ID předplatného.
 
-    Pokud nevidíte název funkce `Microsoft.NetApp/ANFGA`, nemáte k této službě přístup. V tomto kroku zastavte. Než budete pokračovat, postupujte podle pokynů v tématu [odeslání žádosti pořadníku](#waitlist) o přístup ke službě, aby požádala o přístup k službě. 
+    Pokud název funkce nevidíte `Microsoft.NetApp/ANFGA`, nemáte přístup ke službě. Zastavte se u tohoto kroku. Postupujte podle pokynů v [Odeslat čekací listinu žádost o přístup ke službě](#waitlist) požádat o přístup ke službě před pokračováním. 
 
-4. V konzole Azure Cloud Shell zadejte následující příkaz pro registraci poskytovatele prostředků Azure: 
+4. V konzole Azure Cloud Shell zadejte následující příkaz pro registraci zprostředkovatele prostředků Azure: 
     
         az provider register --namespace Microsoft.NetApp --wait
 
-   Parametr `--wait` dá konzole pokyn, aby čekala na dokončení registrace. Dokončení procesu registrace může trvat delší dobu.
+   Parametr `--wait` instruuje konzolu čekat na dokončení registrace. Proces registrace může nějakou dobu trvat.
 
-5. V konzole Azure Cloud Shell zadejte následující příkaz, který ověří, jestli je poskytovatel prostředků Azure zaregistrovaný: 
+5. V konzole Azure Cloud Shell zadejte následující příkaz a ověřte, že poskytovatel prostředků Azure byl zaregistrován: 
     
         az provider show --namespace Microsoft.NetApp
 
@@ -85,13 +85,13 @@ Pokud chcete službu používat, musíte zaregistrovat poskytovatele prostředk�
         "registrationState": "Registered", 
         "resourceTypes": […. 
 
-   `<SubID>` je vaše ID vašeho předplatného.  Hodnota parametru `state` označuje `Registered`.
+   `<SubID>`je vaše ID předplatného.  Hodnota `state` parametru `Registered`označuje .
 
-6. V Azure Portal klikněte na okno **předplatná** .
-7. V okně předplatná klikněte na své ID předplatného. 
-8. V nastavení předplatného klikněte na **poskytovatelé prostředků** , abyste ověřili, že se pro poskytovatele Microsoft. NetApp označuje registrovaný stav: 
+6. Na portálu Azure klikněte na okno **Předplatná.**
+7. V okně Předplatná klikněte na ID předplatného. 
+8. V nastavení předplatného klikněte na **Zprostředkovatelé prostředků** a ověřte, že poskytovatel Microsoft.NetApp označuje stav Registrovaný: 
 
-      ![Registrovaný Microsoft. NetApp](../media/azure-netapp-files/azure-netapp-files-registered-resource-providers.png)
+      ![Registrovaný Microsoft.NetApp](../media/azure-netapp-files/azure-netapp-files-registered-resource-providers.png)
 
 
 ## <a name="next-steps"></a>Další kroky

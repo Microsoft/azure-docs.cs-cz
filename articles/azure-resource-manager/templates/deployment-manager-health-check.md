@@ -1,47 +1,47 @@
 ---
-title: Zavedení integrace stavu – Azure Deployment Manager
-description: Popisuje postup nasazení služby v mnoha oblastech Azure Deployment Manager. Zobrazuje postupy bezpečného nasazení, aby se ověřilo nasazení před zavedením do všech oblastí.
+title: Zavedení integrace stavu – Správce nasazení Azure
+description: Popisuje, jak nasadit službu v mnoha oblastech pomocí Azure Deployment Manager. Zobrazuje postupy bezpečného nasazení k ověření stability vašeho nasazení před zavedením do všech oblastí.
 author: mumian
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: jgao
 ms.openlocfilehash: aa99bdfcbc2f42ae81bdd55c266bcd7d87808031
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79273797"
 ---
-# <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>Zavedení integrace stavu do Azure Deployment Manager (Public Preview)
+# <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>Zavedení integrace stavu do Správce nasazení Azure (Veřejná verze preview)
 
-[Azure Deployment Manager](./deployment-manager-overview.md) umožňuje provádět připravené uváděníy prostředků Azure Resource Manager. Prostředky jsou nasazené v oblasti podle oblasti uspořádaným způsobem. Integrovaná kontrolu stavu Azure Deployment Manager můžou monitorovat uvádění a automaticky zastavovat problematické uvádění, abyste mohli řešit problémy a snižovat rozsah dopadu. Tato funkce může snížit nedostupnost služby způsobené regresi v aktualizacích.
+[Azure Deployment Manager](./deployment-manager-overview.md) umožňuje provádět postupné zavádění prostředků Azure Resource Manager. Prostředky jsou nasazeny oblast podle oblasti v seřazené způsobem. Integrovaná kontrola stavu Správce nasazení Azure může monitorovat zavádění a automaticky zastavit problematické zavádění, takže můžete řešit potíže a snížit rozsah dopadu. Tato funkce může snížit nedostupnost služby způsobenou regresí v aktualizacích.
 
-## <a name="health-monitoring-providers"></a>Poskytovatelé sledování stavu
+## <a name="health-monitoring-providers"></a>Poskytovatelé monitorování stavu
 
-Abychom mohli co nejsnáze integrovat stav, společnost Microsoft spolupracuje s některými špičkovými společnostmi sledování stavu služby, které vám poskytnou jednoduché řešení kopírování a vkládání za účelem integrace kontrol stavu s nasazeními. Pokud ještě nepoužíváte monitorování stavu, jedná se o skvělé řešení, která můžete začít s:
+Aby byla integrace stavu co nejjednodušší, společnost Microsoft spolupracuje s některými špičkovými společnostmi pro sledování stavu služeb, aby vám poskytla jednoduché řešení kopírování a vkládání pro integraci kontrol stavu s vašimi nasazeními. Pokud ještě nepoužíváte monitor stavu, jedná se o skvělá řešení, která můžete začít:
 
-| ![služby Datadog zprostředkovatele monitorování stavu nástroje Azure Deployment Manager](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-datadog.svg) | ![site24x7 zprostředkovatele monitorování stavu nástroje Azure Deployment Manager](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-site24x7.svg) | ![Wavefront zprostředkovatele monitorování stavu nástroje Azure Deployment Manager](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-wavefront.svg) |
+| ![azure deployment manager health monitor provider datadog](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-datadog.svg) | ![azure deployment manager health monitor provider site24x7](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-site24x7.svg) | ![Azure Deployment Manager health monitor poskytovatele wavefront](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-wavefront.svg) |
 |-----|------|------|
-|Služby Datadog je špičková platforma pro monitorování a analýzu pro moderní cloudová prostředí. Podívejte [se, jak služby Datadog integruje s Azure Deployment Manager](https://www.datadoghq.com/azure-deployment-manager/).|Site24x7, jedno řešení pro monitorování privátních a veřejných cloudových služeb. Podívejte [se, jak Site24x7 integruje s Azure Deployment Manager](https://www.site24x7.com/azure/adm.html).| Wavefront, platforma monitorování a analýzy pro prostředí více cloudových aplikací. Podívejte [se, jak Wavefront integruje s Azure Deployment Manager](https://go.wavefront.com/wavefront-adm/).|
+|Datadog, přední platforma pro monitorování a analýzu moderních cloudových prostředí. Podívejte se, jak se [Datadog integruje se Správcem nasazení Azure](https://www.datadoghq.com/azure-deployment-manager/).|Site24x7, all-in-one soukromé a veřejné cloudové služby monitorovací řešení. Podívejte [se, jak se Site24x7 integruje se Správcem nasazení Azure](https://www.site24x7.com/azure/adm.html).| Wavefront, platforma pro monitorování a analýzu pro vícecloudová aplikační prostředí. Podívejte [se, jak se Wavefront integruje se Správcem nasazení Azure](https://go.wavefront.com/wavefront-adm/).|
 
-## <a name="how-service-health-is-determined"></a>Jak se určuje stav služby
+## <a name="how-service-health-is-determined"></a>Jak je určen stav služby
 
-[Poskytovatelé sledování stavu](#health-monitoring-providers) nabízejí několik mechanismů pro služby monitorování a upozorňování na případné problémy se stavem služeb. [Azure monitor](../../azure-monitor/overview.md) je příklad jedné takové nabídky. Azure Monitor lze použít k vytvoření výstrah při překročení určité prahové hodnoty. Například při nasazení nové aktualizace služby dojde k nárůstu využití paměti a procesoru nad rámec očekávaných úrovní. Když se zobrazí oznámení, můžete provést nápravné akce.
+[Poskytovatelé monitorování stavu](#health-monitoring-providers) nabízejí několik mechanismů pro sledování služeb a upozorňování na jakékoli problémy se stavem služby. [Azure Monitor](../../azure-monitor/overview.md) je příkladem jedné takové nabídky. Azure Monitor se dá použít k vytvoření výstrah, když jsou překročeny určité prahové hodnoty. Například využití paměti a procesoru špička nad očekávané úrovně při nasazení nové aktualizace do služby. Když budete upozorněni, můžete provést nápravná opatření.
 
-Tito poskytovatelé stavu obvykle nabízejí rozhraní REST API, aby bylo možné zkontrolovat stav monitorů služby prostřednictvím kódu programu. Rozhraní REST API se můžou vrátit pomocí jednoduchého pořádku/nesprávného signálu (určeného kódem odpovědi HTTP) a/nebo s podrobnými informacemi o signálech, které přijímá.
+Tito poskytovatelé stavu obvykle nabízejí rest API tak, aby stav monitorů vaší služby lze zkoumat programově. REST API můžete buď vrátit s jednoduchým v pořádku/není v pořádku signál (určena kód odpovědi HTTP) a/nebo s podrobnými informacemi o signály, které přijímá.
 
-Nový krok *healthCheck* v Azure Deployment Manager umožňuje deklarovat kódy HTTP, které indikují v pořádku službu, nebo pro SLOŽITĚJŠÍ výsledky REST můžete dokonce zadat regulární výrazy, které, pokud se shodují, a označit v pořádku reakci.
+Nový krok *healthCheck* ve Správci nasazení Azure umožňuje deklarovat kódy HTTP, které označují službu v pořádku, nebo pro složitější výsledky REST můžete dokonce zadat regulární výrazy, které, pokud se shodují, označují odpověď v pořádku.
 
-Tok pro získání instalace pomocí kontrol stavu služby Azure Deployment Manager:
+Tok k získání nastavení pomocí kontrolstavu Správce nasazení Azure:
 
-1. Vytvořte monitorování stavu prostřednictvím poskytovatele služby Health Service dle vašeho výběru.
-1. Vytvořte jeden nebo více kroků healthCheck jako součást zavedení služby Azure Deployment Manager. Do kroků healthCheck zadejte následující informace:
+1. Vytvořte si monitory stavu prostřednictvím poskytovatele zdravotních služeb podle vašeho výběru.
+1. Vytvořte jeden nebo více kroků stavuZkontrolujtejte kroky jako součást zavedení Azure Deployment Manageru. Vyplňte kroky stavuZkontrolujte následujícími informacemi:
 
-    1. Identifikátor URI pro REST API pro monitory stavu (definovaný vaším poskytovatelem služby Health Service).
-    1. Informace o ověřování. V současné době je podporováno pouze ověřování stylu klíčů rozhraní API.
-    1. [Stavové kódy http](https://www.wikipedia.org/wiki/List_of_HTTP_status_codes) nebo regulární výrazy, které definují reakci v pořádku. Všimněte si, že můžete zadat regulární výrazy, které se musí shodovat, aby odpověď považovala za v pořádku, nebo můžete poskytnout výrazy, které musí splňovat, aby odpověď byla považována za v dobrém stavu. Obě metody jsou podporovány.
+    1. Identifikátor URI pro rozhraní REST API pro monitorování stavu (podle definice poskytovatele služeb zdravotní ho d).
+    1. Ověřovací informace. V současné době je podporováno pouze ověřování stylu klíče rozhraní API.
+    1. [Kódy stavu HTTP](https://www.wikipedia.org/wiki/List_of_HTTP_status_codes) nebo regulární výrazy, které definují odpověď v pořádku. Všimněte si, že můžete poskytnout regulární výrazy, které all musí odpovídat odpovědi, které mají být považovány za v pořádku, nebo můžete poskytnout výrazy, které any musí odpovídat pro odpověď považovat za v pořádku. Obě metody jsou podporovány.
 
-    Následující JSON je příklad:
+    Následující Json je příkladem:
 
     ```json
     {
@@ -90,7 +90,7 @@ Tok pro získání instalace pomocí kontrol stavu služby Azure Deployment Mana
     },
     ```
 
-1. Vyvolejte kroky healthCheck ve vhodné době při zavádění služby Azure Deployment Manager. V následujícím příkladu je krok kontroly stavu vyvolán v **postDeploymentSteps** z **stepGroup2**.
+1. Vyvolat kroky stavuKontrola ve vhodnou dobu ve vašem Azure Deployment Manager zavedení. V následujícím příkladu je v **postDeploymentSteps of** **stepGroup2**vyvolán krok kontroly stavu.
 
     ```json
     "stepGroups": [
@@ -128,33 +128,33 @@ Tok pro získání instalace pomocí kontrol stavu služby Azure Deployment Mana
     ]
     ```
 
-Příklad najdete v tématu [kurz: použití kontroly stavu v Azure Deployment Manager](./deployment-manager-health-check.md).
+Příklad najdete v [tématu Kurz: Použití kontroly stavu ve Správci nasazení Azure](./deployment-manager-health-check.md).
 
 ## <a name="phases-of-a-health-check"></a>Fáze kontroly stavu
 
-V tomto okamžiku Azure Deployment Manager ví, jak zadat dotaz na stav vaší služby a v jaké fázi zavádění. Azure Deployment Manager ale umožňuje také hloubkovou konfiguraci časování těchto kontrol. HealthCheck krok se provádí ve 3 sekvenčních fázích, přičemž všechny mají konfigurovatelné doby trvání: 
+V tomto okamžiku Azure Deployment Manager ví, jak dotaz na stav vaší služby a v jakých fázích v zavádění k tomu. Azure Deployment Manager však také umožňuje hluboké konfigurace časování těchto kontrol. Krok healthCheck se provádí ve 3 sekvenčních fázích, z nichž všechny mají konfigurovatelné doby trvání: 
 
-1. Wait (Čekat)
+1. Wait
 
-    1. Po dokončení operace nasazení se můžou virtuální počítače restartovat, znovu nakonfigurovat na základě nových dat nebo dokonce spustit poprvé. V některých případech také trvá, než služby začnou vysílat signály stavu, aby je mohl agregovat poskytovatel sledování stavu. Během tohoto procesu tumultuous nemusí být smyslem kontrolovat stav služby, protože aktualizace ještě nedosáhla stabilního stavu. Služba může být ve skutečnosti mezi dobrým a špatným stavem v rámci vyrovnání prostředků. 
-    1. Během čekací fáze není stav služby monitorován. Tato možnost slouží k povolení zanesli nasazených prostředků před zahájením procesu kontroly stavu. 
-1. Udává
+    1. Po dokončení operace nasazení virtuálních počítače může být restartování, rekonfigurace na základě nových dat, nebo dokonce spuštění poprvé. Také trvá nějakou dobu, než služby začnou vyzařovat signály stavu, které mají být agregovány poskytovatelem monitorování stavu do něčeho užitečného. Během tohoto bouřlivého procesu nemusí mít smysl kontrolovat stav služby, protože aktualizace ještě nedosáhla ustáleného stavu. Služba může být oscilující mezi stavy v pořádku a nezdravé jako prostředky usadit. 
+    1. Během fáze čekání není sledován stav služby. To se používá k povolení nasazených prostředků čas péct před zahájením procesu kontroly stavu. 
+1. Elastické
 
-    1. Vzhledem k tomu, že ve všech případech nemůžete znát, jak dlouho budou prostředky trvat zanesli, než se budou stabilní, elastická fáze umožní flexibilní časové období mezi tím, kdy jsou prostředky potenciálně nestabilní a kdy jsou nutné pro udržení dobré stabilní doby. státech.
-    1. Po zahájení elastické fáze začíná Azure Deployment Manager dotazování poskytnutého koncového bodu REST na stav služby pravidelně. Interval dotazování se dá konfigurovat. 
-    1. Pokud se monitor stavu vrátí s signály, které signalizují, že služba není v pořádku, tyto signály se ignorují, elastická fáze pokračuje a dotazování pokračuje. 
-    1. Jakmile se monitor stavu vrátí se signály, které signalizují, že je služba v pořádku, ukončí se elastická fáze a spustí se fáze stav v pořádku. 
-    1. Doba trvání pro elastickou fázi tedy představuje maximální dobu, která může být strávená dotazem na stav služby před tím, než je považována za povinná odpověď v pořádku. 
-1. Stav V pořádku
+    1. Vzhledem k tomu, že není možné ve všech případech vědět, jak dlouho bude trvat pečení zdrojů, než se stanou stabilními, elastická fáze umožňuje pružné časové období mezi tím, kdy jsou zdroje potenciálně nestabilní, a kdy jsou potřebné k udržení zdravé hospo- Státu.
+    1. Když začne elastická fáze, Azure Deployment Manager začne dotazování poskytovaného koncového bodu REST pro stav služby pravidelně. Interval dotazování je konfigurovatelný. 
+    1. Pokud monitorování stavu vrátí se signály označující, že služba není v pořádku, tyto signály jsou ignorovány, elastická fáze pokračuje a dotazování pokračuje. 
+    1. Jakmile monitorování stavu vrátí se signály označující, že služba je v pořádku, elastická fáze končí a HealthyState fáze začíná. 
+    1. Doba trvání zadaná pro elastickou fázi je tedy maximální množství času, které lze strávit dotazování pro stav služby před v pořádku odpověď je považovánza povinný. 
+1. HealthyState
 
-    1. Během fáze stav v pořádku se stav služby průběžně dotazuje ve stejném intervalu jako elastická fáze. 
-    1. Očekává se, že služba bude udržovat v pořádku signály z poskytovatele sledování stavu po celou určenou dobu trvání. 
-    1. Pokud je v jakémkoli okamžiku zjištěna chybná odpověď, služba Azure Deployment Manager zastaví celé zavedení a vrátí odpověď REST, která bude mít nefunkční signály služby.
-    1. Po skončení stav v pořádku doby trvání se healthCheck dokončí a nasazení pokračuje dalším krokem.
+    1. Během fáze HealthyState stav služby je neustále dotazovánve stejném intervalu jako elastická fáze. 
+    1. Očekává se, že služba bude udržovat signály v pořádku od poskytovatele monitorování stavu po celou zadanou dobu. 
+    1. Pokud je v libovolném okamžiku zjištěna nefunkční odpověď, Azure Deployment Manager zastaví celé zavedení a vrátí odpověď REST nesoucí signály služby není v pořádku.
+    1. Po ukončení doby trvání HealthyState je kontrola stavu dokončena a nasazení pokračuje k dalšímu kroku.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se naučili, jak integrovat monitorování stavu v Azure Deployment Manager. Přejděte k dalším článku se dozvíte, jak nasadit pomocí nástroje Deployment Manager.
+V tomto článku jste se dozvěděli o tom, jak integrovat monitorování stavu ve Správci nasazení Azure. Přejděte k dalšímu článku a zjistěte, jak nasadit pomocí Správce nasazení.
 
 > [!div class="nextstepaction"]
-> [Kurz: integrace kontroly stavu v Azure Deployment Manager](./deployment-manager-tutorial-health-check.md)
+> [Kurz: integrace kontroly stavu ve Správci nasazení Azure](./deployment-manager-tutorial-health-check.md)

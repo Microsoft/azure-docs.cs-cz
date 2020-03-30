@@ -1,7 +1,7 @@
 ---
-title: Extrahovat N-gram funkcí z odkazu na modul textu
+title: Extrahování n-gramových funkcí z odkazu textového modulu
 titleSuffix: Azure Machine Learning
-description: Naučte se používat modul extrakce N-gramů v Azure Machine Learning k zpracování textových dat.
+description: Zjistěte, jak pomocí modulu Extract N-Gram v Azure Machine Learning featurize textová data.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,131 +9,131 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/01/2019
-ms.openlocfilehash: cae128505c61e7c640819041c6ffdae10a4947e7
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: efe09c1d516b37c23b024e07ae387772fa7e5992
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152274"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477608"
 ---
-# <a name="extract-n-gram-features-from-text-module-reference"></a>Extrahovat N-gram funkcí z odkazu na modul textu
+# <a name="extract-n-gram-features-from-text-module-reference"></a>Extrahování n-gramových funkcí z odkazu textového modulu
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview). K *zpracování* nestrukturovaných textových dat použijte z modulu text extrakci N-gram funkcí. 
+Tento článek popisuje modul v návrháři Azure Machine Learning (preview). Pomocí funkce Extrahovat n-gram z textového modulu *featurize* nestrukturovaných textových dat. 
 
-## <a name="configuration-of-the-extract-n-gram-features-from-text-module"></a>Konfigurace funkcí extrakce N-gramů z modulu textu
+## <a name="configuration-of-the-extract-n-gram-features-from-text-module"></a>Konfigurace prvků Extrahovat N-Gram z textového modulu
 
-Modul podporuje následující scénáře pro použití slovníku n-gramů:
+Modul podporuje následující scénáře pro použití slovníku n-gram:
 
-* [Vytvoří nový slovník n-gramů](#create-a-new-n-gram-dictionary) ze sloupce s volným textem.
+* [Vytvořte nový slovník n-gram](#create-a-new-n-gram-dictionary) ze sloupce volného textu.
 
-* [Pomocí existující sady textových funkcí](#use-an-existing-n-gram-dictionary) zpracování volný textový sloupec.
+* [Použijte existující sadu textových funkcí](#use-an-existing-n-gram-dictionary) featurize sloupec volného textu.
 
-* [Skóre nebo publikování modelu](#score-or-publish-a-model-that-uses-n-grams) , který používá n-gramů.
+* [Skóre nebo publikovat model,](#score-or-publish-a-model-that-uses-n-grams) který používá n-gramů.
 
-### <a name="create-a-new-n-gram-dictionary"></a>Vytvořit nový slovník n-gramů
+### <a name="create-a-new-n-gram-dictionary"></a>Vytvoření nového slovníku n-gram
 
-1.  Přidejte funkce extrakce N-gramů z modulu textu do vašeho kanálu a připojte datovou sadu, která obsahuje text, který chcete zpracovat.
+1.  Přidejte extrahujte n-gramové funkce z textového modulu do kanálu a připojte datovou sadu, která obsahuje text, který chcete zpracovat.
 
-1.  Pomocí **textového sloupce** můžete zvolit sloupec typu String, který obsahuje text, který chcete extrahovat. Vzhledem k tomu, že výsledky jsou podrobné, můžete současně zpracovat pouze jeden sloupec.
+1.  Pomocí **sloupce Text** vyberte sloupec typu řetězce, který obsahuje text, který chcete extrahovat. Vzhledem k tomu, že výsledky jsou podrobné, můžete zpracovat pouze jeden sloupec najednou.
 
-1. Nastavte **režim slovníku** , který se má **vytvořit** , aby označoval, že vytváříte nový seznam funkcí n-gramů. 
+1. Nastavte **režim slovní zásoby** na **Vytvořit,** abyste označili, že vytváříte nový seznam funkcí n-gram. 
 
-1. **Velikost n-gramů** nastavte tak, aby označovala *maximální* velikost n-gramů k extrakci a uložení. 
+1. Nastavte **n-gramů velikost** označuje *maximální* velikost n-gramů extrahovat a ukládat. 
 
-    Pokud například zadáte 3, unigrams, bigrams a trigrams, vytvoří se.
+    Pokud například zadáte 3, vytvoří se jednogramy, bigramy a trigramy.
 
-1. **Funkce váhy** určuje, jak se má vytvořit vektor funkce dokumentu a jak z dokumentů extrahovat slovník.
+1. **Funkce vážení** určuje, jak vytvořit vektor funkce dokumentu a jak extrahovat slovní zásobu z dokumentů.
 
-    * **Binární váha**: přiřadí hodnotu binární přítomnosti extrahovaných n-gramů. Hodnota pro každý n-gram je 1, pokud v dokumentu existuje, a 0 jinak.
+    * **Binární hmotnost**: Přiřadí binární hodnotu přítomnosti extrahovanénce n-gramů. Hodnota pro každý n-gram je 1, pokud existuje v dokumentu a 0 jinak.
 
-    * **TF Weight**: přiřadí skóre termínu (TF) pro extrahované n-gramy. Hodnota pro každý n-gram je jeho četnost výskytů v dokumentu.
+    * **Hmotnost TF**: Přiřadí skóre frekvence termínu (TF) extrahovanému n-gramů. Hodnota pro každý n-gram je četnost výskytu v dokumentu.
 
-    * **IDF Weight**: přiřadí skóre funkce inverzního dokumentu (IDF) k extrahované n-gramům. Hodnota pro každý n-gram je protokol velikosti corpus dělené četností výskytů v celém corpus.
+    * **Hmotnost IDF**: Přiřadí extrahovanému n-gramu inverzní skóre frekvence dokumentu (IDF). Hodnota pro každý n-gram je protokol velikosti korpusu dělený četností výskytu v celém korpusu.
     
       `IDF = log of corpus_size / document_frequency`
  
-    *  **TF-IDF Weight**: přiřadí skóre období/inverzní funkce četnosti dokumentů (TF/IDF) na extrahované n-gramy. Hodnota pro každé n-gram je jeho skóre TF vynásobené skóre IDF.
+    *  **Hmotnost TF-IDF**: Přiřadí skóre frekvence/inverzní frekvence dokumentu (TF/IDF) extrahovanénce n-gramů. Hodnota pro každý n-gram je jeho skóre TF vynásobené jeho skóre IDF.
 
-1. Nastavte **minimální délku slova** na minimální počet písmen, která se dají použít v jakémkoli *jediném slově* v n-gramu.
+1. Nastavte **minimální délku slova** na minimální počet písmen, která lze použít v *libovolném jediném slově* v n-gramu.
 
-1. Použijte možnost **Maximální délka slova** pro nastavení maximálního počtu písmen, která lze použít v libovolném *slově* v n-gramu.
+1. Maximální **délka slova** slouží k nastavení maximálního počtu písmen, která lze použít v *libovolném jediném slově* v n-gramu.
 
-    Ve výchozím nastavení je povolený až 25 znaků na jedno slovo nebo token.
+    Ve výchozím nastavení je povoleno až 25 znaků na slovo nebo token.
 
-1. Chcete-li nastavit minimální počet výskytů, které jsou požadovány pro všechny n-gramy ve slovníku n-gram, použijte **Minimální četnost dokumentů n-gram** . 
+1. Minimální **absolutní četnost n-gram dokumentu** slouží k nastavení minimálních výskytů požadovaných pro všechny n-gramy, které mají být zahrnuty do slovníku n-gram. 
 
-    Pokud například použijete výchozí hodnotu 5, všechna n-gram se musí v Corpus objevit alespoň pětkrát, aby bylo možné zahrnout do slovníku n-gramů. 
+    Pokud například použijete výchozí hodnotu 5, musí se všechny n-gramy objevit alespoň pětkrát v korpusu, aby byly zahrnuty do slovníku n-gram. 
 
-1.  Nastaví **maximální poměr dokumentů n-gram** na maximální poměr počtu řádků, které obsahují konkrétní n-gram, za počet řádků v celkové corpus.
+1.  Nastavte **maximální poměr dokumentu n-gram** k maximálnímu poměru počtu řádků, které obsahují určitý n-gram, nad počtem řádků v celkovém korpusu.
 
-    Například poměr 1 znamená, že i v případě, že je v každém řádku k dispozici konkrétní n-gram, nelze do slovníku n-gramů přidat n-gram. Obvykle se slovo, které se vyskytuje v každém řádku, považuje za neobsažných slov a bude odebráno. Pokud chcete vyfiltrovat neobsažných slov závislých na doméně, zkuste tento poměr omezit.
+    Například poměr 1 by znamenalo, že i když je v každém řádku přítomen určitý n-gram, n-gram může být přidán do slovníku n-gram. Obvykle slovo, které se vyskytuje v každém řádku by být považovány za šum slovo a bude odebrána. Chcete-li odfiltrovat šumová slova závislá na doméně, zkuste tento poměr snížit.
 
     > [!IMPORTANT]
-    > Míra výskytu konkrétních slov není jednotná. Liší se od dokumentu k dokumentu. Pokud například analyzujete připomínky zákazníků k určitému produktu, může být název produktu velmi vysoký frekvencí a blízko neobsažných slov, ale v jiných kontextech se jedná o významný termín.
+    > Rychlost výskytu určitých slov není jednotná. To se liší od dokumentu k dokumentu. Pokud například analyzujete komentáře zákazníků k určitému produktu, může být název produktu velmi vysoký a blízký šumu, ale v jiných kontextech se jedná o významný termín.
 
-1. Vyberte možnost **normalizovat vektory funkcí n-gramů** pro normalizaci vektorů funkcí. Pokud je tato možnost povolená, každý n-gram funkce Vector se vydělí jeho normou L2.
+1. Vyberte volbu **Normalizovat vektory n-gram prvku,** chcete-li normalizovat vektory prvku. Pokud je tato možnost povolena, každý vektor prvku n-gram je vydělen normou L2.
 
-1. Spuštění kanálu
+1. Odešlete potrubí.
 
-### <a name="use-an-existing-n-gram-dictionary"></a>Použít existující slovník n-gramů
+### <a name="use-an-existing-n-gram-dictionary"></a>Použití existujícího slovníku n-gram
 
-1.  Přidejte funkce extrakce N-gramů z modulu textu do vašeho kanálu a připojte datovou sadu, která obsahuje text, který chcete zpracovat na port **datové sady** .
+1.  Přidejte extrahovat n-gramové funkce z textového modulu do kanálu a připojte datovou sadu, která obsahuje text, který chcete zpracovat, k portu **datové sady.**
 
-1.  Pomocí **textového sloupce** vyberte sloupec text, který obsahuje text, který chcete zpracování. Ve výchozím nastavení modul vybere všechny sloupce typu **řetězec**. Nejlepších výsledků dosáhnete, když najednou zpracujete jeden sloupec.
+1.  Pomocí **sloupce Text** vyberte textový sloupec obsahující text, který chcete featurize. Ve výchozím nastavení modul vybere všechny sloupce typu **řetězec**. Nejlepších výsledků dosáhnete zpracováním jednoho sloupce současně.
 
-1. Přidejte uloženou datovou sadu, která obsahuje dříve generovaný slovník n-gramů, a připojte ho ke **vstupnímu portu slovníku** . Můžete také propojit výstup **slovníku výsledků** z nadřazené instance extrahovat N-gram funkcí z modulu textu.
+1. Přidejte uloženou datovou sadu, která obsahuje dříve generovaný slovník n-gram, a připojte ji k portu **slovníku Input.** Můžete také připojit **výstup slovní zásoby výsledek** upstream instance extrahovat n-gram funkce z textového modulu.
 
-1. V části **režim slovníku**v rozevíracím seznamu vyberte možnost aktualizace **jen pro čtení** .
+1. V **režimu slovníku**vyberte možnost **Aktualizace jen pro čtení** v rozevíracím seznamu.
 
-   Možnost **ReadOnly** reprezentuje vstupní corpus pro vstupní slovník. Místo výpočetní frekvence z nové datové sady textu (na levém vstupu) se použije n-gram závaží ze vstupního slovníku, jak je.
+   Možnost **Jen pro čtení** představuje vstupní korpus pro vstupní slovní zásobu. Spíše než výpočetní termín frekvence z nové textové datové sady (na levém vstupu), n-gram váhy ze vstupní slovní zásoby jsou použity tak, jak je.
 
    > [!TIP]
-   > Tuto možnost použijte při bodování klasifikátoru textu.
+   > Tuto možnost použijte, pokud vyhodnocujete klasifikátor textu.
 
-1.  Všechny ostatní možnosti najdete v popisech vlastností v [předchozí části](#create-a-new-n-gram-dictionary).
+1.  Všechny ostatní možnosti naleznete v popisech vlastností v [předchozí části](#create-a-new-n-gram-dictionary).
 
-1.  Spuštění kanálu
+1.  Odešlete potrubí.
 
 ### <a name="score-or-publish-a-model-that-uses-n-grams"></a>Skóre nebo publikování modelu, který používá n-gramů
 
-1.  Zkopírujte **funkce extrakce N-gramů z modulu textu** z školicího toku dat do toku dat bodování.
+1.  Zkopírujte **funkce Extrahovat N-Gram z modulu Text** z toku dat školení do toku dat vyhodnocování.
 
-1.  Připojte výstup **slovníku výsledků** z školicího toku dat ke **vstupnímu slovníku** v toku dat bodování.
+1.  Připojte **výstup výsledkové slovní zásoby** z toku dat školení vstupní **slovní zásobu** na tok dat bodování.
 
-1.  V pracovním postupu bodování upravte funkce extrakce N-gramů z textového modulu a nastavte parametr **režimu slovníku** na **jen pro čtení**. Všechny ostatní ponechte stejné.
+1.  V pracovním postupu hodnocení upravte funkce Extrahování N-Gram z textového modulu a nastavte parametr **režimu slovníku** na **hodnotu Jen pro čtení**. Nechte všechno ostatní stejné.
 
-1.  Pokud chcete publikovat kanál, uložte **slovník výsledků** jako datovou sadu.
+1.  Chcete-li publikovat kanál, uložte **slovní zásobu výsledků** jako datovou sadu.
 
-1.  Připojte uloženou datovou sadu k extrakci N-gram funkcí z modulu textu v grafu bodování.
+1.  Připojte uloženou datovou sadu k extrahování n-gramových funkcí z textového modulu v grafu hodnocení.
 
 ## <a name="results"></a>Výsledky
 
-Extrahování N-gramů funkcí z textového modulu vytvoří dva typy výstupu: 
+Funkce Extrahovat N-Gram z textového modulu vytvoří dva typy výstupů: 
 
-* **Výsledná sada dat**: Tento výstup je souhrnem analyzovaného textu v kombinaci s počtem odebraných n-gramů. Sloupce, které jste nevybrali v možnosti **textový sloupec** , se předávají do výstupu. Pro každý sloupec textu, který analyzujete, modul vygeneruje tyto sloupce:
+* **Výsledná datová sada**: Tento výstup je souhrnem analyzovaného textu v kombinaci s n-gramy, které byly extrahovány. Sloupce, které jste nevybrali ve **sloupci Text,** jsou předány výstupu. Pro každý sloupec textu, který analyzujete, modul generuje tyto sloupce:
 
-  * **Matice n-gramů výskytů**: modul vygeneruje sloupec pro každý n-gram, který byl nalezen v celkové corpus, a přidá do každého sloupce skóre, které určuje váhu n-gramu pro daný řádek. 
+  * **Matice n-gram výskytů**: Modul vygeneruje sloupec pro každý n-gram nalezený v celkovém korpusu a přidá do každého sloupce skóre označující hmotnost n-gramu pro tento řádek. 
 
-* **Slovník výsledků**: slovník obsahuje skutečný slovník n-gramů spolu s termínem četnosti, která se generují jako součást analýzy. Datovou sadu můžete uložit pro opakované použití s jinou sadou vstupů nebo pro pozdější aktualizace. Slovník můžete také použít pro modelování a bodování.
+* **Výsledek slovní zásoby**: Slovní zásoba obsahuje skutečný n-gram slovník, spolu s termínem frekvence skóre, které jsou generovány jako součást analýzy. Datovou sadu můžete uložit pro opakované použití s jinou sadou vstupů nebo pro pozdější aktualizaci. Můžete také znovu použít slovní zásobu pro modelování a bodování.
 
-### <a name="result-vocabulary"></a>Slovník výsledků
+### <a name="result-vocabulary"></a>Výsledná slovní zásoba
 
-Slovník obsahuje slovník n-gramů s termínem četnosti, která se generují jako součást analýzy. Skóre DF a IDF jsou vygenerována bez ohledu na jiné možnosti.
+Slovní zásoba obsahuje slovník n-gram s termínem frekvenční skóre, které jsou generovány jako součást analýzy. Skóre DF a IDF jsou generovány bez ohledu na jiné možnosti.
 
-+ **ID**: identifikátor generovaný pro každý jedinečný n-gram.
-+ **NGram**: n-gram. Mezery nebo jiné oddělovače slov jsou nahrazeny znakem podtržítka.
-+ **DF**: skóre četnosti pro n-gram v původní corpus.
-+ **IDF**: inverzní četnosti dokumentů pro n-gram v původní Corpus
++ **ID**: Identifikátor generovaný pro každý jedinečný n-gram.
++ **NGram**: N-gram. Mezery nebo jiné oddělovače slov jsou nahrazeny znakem podtržítka.
++ **DF**: Termín frekvence skóre pro n-gram v původním korpusu.
++ **IDF**: Inverzní skóre frekvence dokumentu pro n-gram v původním korpusu.
 
-Tuto datovou sadu můžete ručně aktualizovat, ale můžete uvést chyby. Například:
+Tuto datovou sadu můžete aktualizovat ručně, ale může dojít k chybám. Například:
 
-* Pokud modul nalezne v vstupním slovníku duplicitní řádky se stejným klíčem, vyvolá se chyba. Ujistěte se, že žádné dva řádky ve slovníku nemají stejné slovo.
-* Vstupní schéma datových sad slovníku se musí přesně shodovat, včetně názvů sloupců a typů sloupců. 
-* Sloupec **ID** a sloupec **DF** musí být typu Integer. 
+* Pokud modul najde duplicitní řádky se stejným klíčem ve vstupním slovníku, je vyvolána chyba. Ujistěte se, že žádné dva řádky ve slovní zásobě nemají stejné slovo.
+* Vstupní schéma datových sad slovníku musí přesně odpovídat, včetně názvů sloupců a typů sloupců. 
+* Sloupec **ID** a sloupec **DF** musí být celého typu. 
 * Sloupec **IDF** musí být typu float.
 
 > [!Note]
-> Nepřipojujte výstup dat přímo modulu vlakového modelu. Před odesláním do modelu vlaků byste měli odstranit sloupce s volnými textem. V opačném případě se sloupce s volnými textem budou zacházet jako s funkcemi kategorií.
+> Nepřipojujte datový výstup přímo k modulu Model vlaku. Sloupce volného textu byste měli odstranit dříve, než jsou vloženy do modelu vlaku. V opačném případě budou sloupce volného textu považovány za kategorické prvky.
 
 ## <a name="next-steps"></a>Další kroky
 
