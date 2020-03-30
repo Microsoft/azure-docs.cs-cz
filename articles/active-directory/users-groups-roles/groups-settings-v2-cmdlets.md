@@ -1,7 +1,7 @@
 ---
-title: Příklady prostředí PowerShell v2 pro správu skupin – Azure AD | Microsoft Docs
-description: Tato stránka poskytuje příklady prostředí PowerShell, které vám pomůžou se správou skupin v Azure Active Directory
-keywords: Azure AD, Azure Active Directory, PowerShell, skupiny, Správa skupin
+title: Příklady PowerShellu V2 pro správu skupin – Azure AD | Dokumenty společnosti Microsoft
+description: Tato stránka obsahuje příklady PowerShellu, které vám pomohou spravovat vaše skupiny ve službě Azure Active Directory.
+keywords: Azure AD, Azure Active Directory, PowerShell, Skupiny, Správa skupin
 services: active-directory
 author: curtand
 manager: daveba
@@ -15,32 +15,32 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a218e956c72f8005e533db7b8800e98ee72ce223
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74233120"
 ---
-# <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Rutiny Azure Active Directory verze 2 pro správu skupin
+# <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Rutiny služby Azure Active Directory verze 2 pro správu skupin
 
 > [!div class="op_single_selector"]
-> - [Azure Portal](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
+> - [Portál Azure](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
 > - [PowerShell](groups-settings-v2-cmdlets.md)
 >
 >
 
-Tento článek obsahuje příklady použití prostředí PowerShell ke správě skupin ve službě Azure Active Directory (Azure AD).  Dozvíte se taky, jak si nastavit modul Azure AD PowerShell. Nejdřív je nutné [Stáhnout modul Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/).
+Tento článek obsahuje příklady použití PowerShellu ke správě skupin ve službě Azure Active Directory (Azure AD).  Taky vám řekne, jak nastavit pomocí modulu Azure AD PowerShell. Nejprve je nutné [stáhnout modul Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/).
 
-## <a name="install-the-azure-ad-powershell-module"></a>Instalace modulu Azure AD Powershellu
+## <a name="install-the-azure-ad-powershell-module"></a>Instalace modulu Azure AD PowerShell
 
-K instalaci modulu Azure AD PowerShell použijte následující příkazy:
+Chcete-li nainstalovat modul Azure AD PowerShell, použijte následující příkazy:
 
 ```powershell
     PS C:\Windows\system32> install-module azuread
     PS C:\Windows\system32> import-module azuread
 ```
 
-Chcete-li ověřit, zda je modul připravený k použití, použijte následující příkaz:
+Chcete-li ověřit, zda je modul připraven k použití, použijte následující příkaz:
 
 ```powershell
     PS C:\Windows\system32> get-module azuread
@@ -50,17 +50,17 @@ Chcete-li ověřit, zda je modul připravený k použití, použijte následují
     Binary     2.0.0.115    azuread                      {Add-AzureADAdministrati...}
 ```
 
-Teď můžete začít používat rutiny v modulu. Úplný popis rutin v modulu Azure AD najdete v online referenční dokumentaci pro [Azure Active Directory PowerShell verze 2](/powershell/azure/install-adv2?view=azureadps-2.0).
+Nyní můžete začít používat rutiny v modulu. Úplný popis rutin v modulu Azure AD najdete v online referenční dokumentaci pro [prostředí Azure Active Directory PowerShell verze 2](/powershell/azure/install-adv2?view=azureadps-2.0).
 
-## <a name="connect-to-the-directory"></a>Připojit k adresáři
+## <a name="connect-to-the-directory"></a>Připojení k adresáři
 
-Než budete moct začít spravovat skupiny pomocí rutin Azure AD PowerShellu, musíte připojit relaci PowerShellu k adresáři, který chcete spravovat. Použijte následující příkaz:
+Než začnete spravovat skupiny pomocí rutin prostředí Azure AD PowerShell, musíte připojit relaci PowerShellu k adresáři, který chcete spravovat. Použijte následující příkaz:
 
 ```powershell
     PS C:\Windows\system32> Connect-AzureAD
 ```
 
-Rutina vás vyzve k zadání přihlašovacích údajů, které chcete použít pro přístup k adresáři. V tomto příkladu používáme karen@drumkit.onmicrosoft.com k přístupu k demonstračnímu adresáři. Rutina vrátí potvrzení pro zobrazení relace, která byla úspěšně připojena k vašemu adresáři:
+Rutina zobrazí výzvu k zadání pověření, která chcete použít pro přístup k adresáři. V tomto příkladu karen@drumkit.onmicrosoft.com používáme přístup k demonstračníadresář. Rutina vrátí potvrzení, že relace byla úspěšně připojena k vašemu adresáři:
 
 ```powershell
     Account                       Environment Tenant
@@ -70,11 +70,11 @@ Rutina vás vyzve k zadání přihlašovacích údajů, které chcete použít p
 
 Teď můžete začít používat rutiny AzureAD ke správě skupin ve vašem adresáři.
 
-## <a name="retrieve-groups"></a>Načtení skupin
+## <a name="retrieve-groups"></a>Načíst skupiny
 
-K načtení existujících skupin z adresáře použijte rutinu Get-AzureADGroups. 
+Chcete-li načíst existující skupiny z adresáře, použijte rutinu Get-AzureADGroups. 
 
-Pokud chcete načíst všechny skupiny v adresáři, použijte rutinu bez parametrů:
+Chcete-li načíst všechny skupiny v adresáři, použijte rutinu bez parametrů:
 
 ```powershell
     PS C:\Windows\system32> get-azureadgroup
@@ -82,13 +82,13 @@ Pokud chcete načíst všechny skupiny v adresáři, použijte rutinu bez parame
 
 Rutina vrátí všechny skupiny v připojeném adresáři.
 
-Pomocí parametru-objectID můžete načíst konkrétní skupinu, pro kterou zadáte objectID skupiny:
+Parametr -objectID můžete použít k načtení určité skupiny, pro kterou zadáte id objektu skupiny:
 
 ```powershell
     PS C:\Windows\system32> get-azureadgroup -ObjectId e29bae11-4ac0-450c-bc37-6dae8f3da61b
 ```
 
-Rutina nyní vrátí skupinu, jejíž identifikátor objectID odpovídá hodnotě parametru, který jste zadali:
+Rutina nyní vrátí skupinu, jejíž id objektu odpovídá hodnotě zadaného parametru:
 
 ```powershell
     DeletionTimeStamp            :
@@ -107,7 +107,7 @@ Rutina nyní vrátí skupinu, jejíž identifikátor objectID odpovídá hodnot�
     SecurityEnabled              : True
 ```
 
-Konkrétní skupinu můžete vyhledat pomocí parametru-Filter. Tento parametr přebírá klauzuli filtru ODATA a vrátí všechny skupiny, které odpovídají filtru, jak je uvedeno v následujícím příkladu:
+Určitou skupinu můžete vyhledat pomocí parametru -filter. Tento parametr přebírá klauzuli filtru ODATA a vrátí všechny skupiny, které odpovídají filtru, jako v následujícím příkladu:
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
@@ -130,11 +130,11 @@ Konkrétní skupinu můžete vyhledat pomocí parametru-Filter. Tento parametr p
 ```
 
 > [!NOTE]
-> Rutiny PowerShellu pro Azure AD implementují Standard dotazů OData. Další informace najdete v tématu **$Filter** v [možnostech dotazů na systém OData pomocí koncového bodu OData](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter).
+> Rutiny prostředí Azure AD PowerShell implementují standard dotazu OData. Další informace naleznete **v tématu $filter** v [možnostech systémových dotazů OData pomocí koncového bodu OData](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter).
 
-## <a name="create-groups"></a>Vytváření skupin
+## <a name="create-groups"></a>Vytvoření skupin
 
-Pokud chcete ve svém adresáři vytvořit novou skupinu, použijte rutinu New-AzureADGroup. Tato rutina vytvoří novou skupinu zabezpečení nazvanou "marketing":
+Chcete-li vytvořit novou skupinu ve vašem adresáři, použijte rutinu New-AzureADGroup. Tato rutina vytvoří novou skupinu zabezpečení nazvanou "Marketing":
 
 ```powershell
     PS C:\Windows\system32> New-AzureADGroup -Description "Marketing" -DisplayName "Marketing" -MailEnabled $false -SecurityEnabled $true -MailNickName "Marketing"
@@ -142,7 +142,7 @@ Pokud chcete ve svém adresáři vytvořit novou skupinu, použijte rutinu New-A
 
 ## <a name="update-groups"></a>Aktualizovat skupiny
 
-Chcete-li aktualizovat existující skupinu, použijte rutinu Set-AzureADGroup. V tomto příkladu měníme vlastnost displayName skupiny Administrators služby Intune. Nejdříve vyhledáme skupinu pomocí rutiny Get-AzureADGroup a filtru s použitím atributu DisplayName:
+Chcete-li aktualizovat existující skupinu, použijte rutinu Set-AzureADGroup. V tomto příkladu měníme vlastnost DisplayName skupiny Intune Administrators. Nejprve jsme najít skupinu pomocí rutiny Get-AzureADGroup a filtr pomocí DisplayName atribut:
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
@@ -164,13 +164,13 @@ Chcete-li aktualizovat existující skupinu, použijte rutinu Set-AzureADGroup. 
     SecurityEnabled              : True
 ```
 
-V dalším kroku měníme vlastnost Description na novou hodnotu "Správci zařízení Intune":
+Dále měníme vlastnost Description na novou hodnotu "Správci zařízení Intune":
 
 ```powershell
     PS C:\Windows\system32> Set-AzureADGroup -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -Description "Intune Device Administrators"
 ```
 
-Pokud teď znovu vyhledáme skupinu, uvidíme, že je vlastnost Description aktualizována, aby odrážela novou hodnotu:
+Nyní, pokud najdeme skupinu znovu, vidíme Description vlastnost je aktualizován tak, aby odrážely novou hodnotu:
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
@@ -191,29 +191,29 @@ Pokud teď znovu vyhledáme skupinu, uvidíme, že je vlastnost Description aktu
     SecurityEnabled              : True
 ```
 
-## <a name="delete-groups"></a>Odstranit skupiny
+## <a name="delete-groups"></a>Odstranění skupin
 
-Pokud chcete odstranit skupiny z adresáře, použijte rutinu Remove-AzureADGroup následujícím způsobem:
+Chcete-li odstranit skupiny z adresáře, použijte rutinu Odebrat AzureADGroup následujícím způsobem:
 
 ```powershell
     PS C:\Windows\system32> Remove-AzureADGroup -ObjectId b11ca53e-07cc-455d-9a89-1fe3ab24566b
 ```
 
-## <a name="manage-group-membership"></a>Spravovat členství ve skupinách
+## <a name="manage-group-membership"></a>Správa členství ve skupinách
 
-### <a name="add-members"></a>Přidat členy
+### <a name="add-members"></a>Přidání členů
 
-Pokud chcete přidat nové členy do skupiny, použijte rutinu Add-AzureADGroupMember. Tento příkaz přidá člena do skupiny Správci Intune, kterou jsme použili v předchozím příkladu:
+Chcete-li přidat nové členy do skupiny, použijte rutinu Add-AzureADGroupMember. Tento příkaz přidá člena do skupiny Administrators Intune, kterou jsme použili v předchozím příkladu:
 
 ```powershell
     PS C:\Windows\system32> Add-AzureADGroupMember -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 ```
 
-Parametr-ObjectId je ObjectID skupiny, do které chceme přidat člena, a parametr-RefObjectId je ObjectID uživatele, který chceme přidat jako člena do skupiny.
+Parametr -ObjectId je ObjectID skupiny, do které chceme přidat člena, a -RefObjectId je ObjectID uživatele, kterého chceme přidat jako člena do skupiny.
 
-### <a name="get-members"></a>Načíst členy
+### <a name="get-members"></a>Získat členy
 
-Chcete-li získat existující členy skupiny, použijte rutinu Get-AzureADGroupMember, jako v tomto příkladu:
+Chcete-li získat stávající členy skupiny, použijte rutinu Get-AzureADGroupMember, jako v tomto příkladu:
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroupMember -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df
@@ -224,9 +224,9 @@ Chcete-li získat existující členy skupiny, použijte rutinu Get-AzureADGroup
                           8120cc36-64b4-4080-a9e8-23aa98e8b34f User
 ```
 
-### <a name="remove-members"></a>Odebrat členy
+### <a name="remove-members"></a>Odebrání členů
 
-Pokud chcete odebrat člena, který jsme dřív přidali do skupiny, použijte rutinu Remove-AzureADGroupMember, jak je znázorněno zde:
+Chcete-li odebrat člena, který jsme dříve přidali do skupiny, použijte rutinu Remove-AzureADGroupMember, jak je znázorněno zde:
 
 ```powershell
     PS C:\Windows\system32> Remove-AzureADGroupMember -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -MemberId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
@@ -234,19 +234,19 @@ Pokud chcete odebrat člena, který jsme dřív přidali do skupiny, použijte r
 
 ### <a name="verify-members"></a>Ověřit členy
 
-Pokud chcete ověřit členství uživatele ve skupině, použijte rutinu Select-AzureADGroupIdsUserIsMemberOf. Tato rutina přijímá jako své parametry identifikátor ObjectId uživatele, pro který se má ověřit členství ve skupině, a seznam skupin, pro které se mají kontrolovat členství. Seznam skupin musí být uveden ve formě komplexní proměnné typu Microsoft. Open. AzureAD. model. GroupIdsForMembershipCheck, proto je nejprve nutné vytvořit proměnnou s tímto typem:
+Chcete-li ověřit členství ve skupinách uživatele, použijte rutinu Select-AzureADGroupIdsUserIsMemberOf. Tato rutina bere jako jeho parametry ObjectId uživatele, pro které chcete zkontrolovat členství ve skupinách a seznam skupin, pro které chcete zkontrolovat členství. Seznam skupin musí být poskytnuty ve formě komplexní proměnné typu "Microsoft.Open.AzureAD.Model.GroupIdsForMembershipCheck", takže nejprve musíme vytvořit proměnnou s tímto typem:
 
 ```powershell
     PS C:\Windows\system32> $g = new-object Microsoft.Open.AzureAD.Model.GroupIdsForMembershipCheck
 ```
 
-Dále poskytujeme hodnoty pro identifikátory groupId pro kontrolu atributu "GroupIds" této komplexní proměnné:
+Dále poskytujeme hodnoty pro groupIds se změnami v atributu "GroupIds" této komplexní proměnné:
 
 ```powershell
     PS C:\Windows\system32> $g.GroupIds = "b11ca53e-07cc-455d-9a89-1fe3ab24566b", "31f1ff6c-d48c-4f8a-b2e1-abca7fd399df"
 ```
 
-Pokud teď chceme zkontrolovat členství uživatele ve skupině s ObjectID 72cd4bbd-2594-40a2-935c-016f3cfeeeea proti skupinám v $g, měli byste použít:
+Nyní, pokud chceme zkontrolovat členství ve skupinách uživatele s ObjectID 72cd4bbd-2594-40a2-935c-016f3cfeeeea proti skupinám v $g, měli bychom použít:
 
 ```powershell
     PS C:\Windows\system32> Select-AzureADGroupIdsUserIsMemberOf -ObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea -GroupIdsForMembershipCheck $g
@@ -256,21 +256,21 @@ Pokud teď chceme zkontrolovat členství uživatele ve skupině s ObjectID 72cd
     https://graph.windows.net/85b5ff1e-0402-400c-9e3c-0f9e965325d1/$metadata#Collection(Edm.String)             {31f1ff6c-d48c-4f8a-b2e1-abca7fd399df}
 ```
 
-Vrácená hodnota je seznam skupin, ze kterých je tento uživatel členem. Tuto metodu můžete použít také ke kontrole kontaktů, skupin nebo členství instančních objektů pro daný seznam skupin pomocí metody Select-AzureADGroupIdsContactIsMemberOf, Select-AzureADGroupIdsGroupIsMemberOf nebo Vybrat – AzureADGroupIdsServicePrincipalIsMemberOf
+Vrácená hodnota je seznam skupin, jejichž členem je tento uživatel. Tuto metodu můžete také použít ke kontrole členství kontaktů, skupin nebo instančních objektů pro daný seznam skupin pomocí select-AzureADGroupIdsContactIsMemberOf, Select-AzureADGroupIdsGroupIsMemberOf nebo Select-AzureADGroupIdsServicePrincipalIsMemberOf
 
-## <a name="disable-group-creation-by-your-users"></a>Zakázání vytváření skupin pomocí uživatelů
+## <a name="disable-group-creation-by-your-users"></a>Zakázání vytváření skupin uživateli
 
-Uživatelům, kteří nejsou správci, můžete zabránit v vytváření skupin zabezpečení. Výchozím chováním v Microsoft online Directory Services (MSODS) je povolit uživatelům bez role správce vytvářet skupiny bez ohledu na to, jestli je povolená taky Samoobslužná správa skupin (SSGM). Nastavení SSGM řídí chování pouze na přístupovém panelu Moje aplikace.
+Uživatelům, kteří nejsou správci, můžete zabránit ve vytváření skupin zabezpečení. Výchozím chováním ve službě Microsoft Online Directory Services (MSODS) je umožnit uživatelům, kteří nejsou správci, vytvářet skupiny bez ohledu na to, zda je povolena také samoobslužná správa skupin (SSGM). Nastavení SSGM řídí chování pouze na přístupovém panelu Moje aplikace.
 
 Zakázání vytváření skupin pro uživatele, kteří nejsou správci:
 
-1. Ověřte, že uživatelé, kteří nejsou správci, můžou vytvářet skupiny:
+1. Ověřte, zda mohou uživatelé, kteří nejsou správci, vytvářet skupiny:
    
    ```powershell
    PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
    ```
   
-2. Pokud vrátí `UsersPermissionToCreateGroupsEnabled : True`, mohou vytvářet skupiny i uživatelé, kteří nejsou správci. Zakázání této funkce:
+2. Pokud se `UsersPermissionToCreateGroupsEnabled : True`vrátí , mohou skupiny vytvářet uživatelé, kteří nejsou správci. Zakázání této funkce:
   
    ```powershell 
    Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
@@ -278,15 +278,15 @@ Zakázání vytváření skupin pro uživatele, kteří nejsou správci:
   
 ## <a name="manage-owners-of-groups"></a>Správa vlastníků skupin
 
-Pokud chcete přidat vlastníky do skupiny, použijte rutinu Add-AzureADGroupOwner:
+Chcete-li přidat vlastníky do skupiny, použijte rutinu Add-AzureADGroupOwner:
 
 ```powershell
     PS C:\Windows\system32> Add-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 ```
 
-Parametr-ObjectId je ObjectID skupiny, do které chceme přidat vlastníka, a parametr-RefObjectId je ObjectID uživatele nebo instančního objektu, který chceme přidat jako vlastníka skupiny.
+Parametr -ObjectId je ObjectID skupiny, do které chceme přidat vlastníka, a -RefObjectId je ObjectID uživatele nebo instančního objektu, který chceme přidat jako vlastník skupiny.
 
-Pokud chcete načíst vlastníky skupiny, použijte rutinu Get-AzureADGroupOwner:
+Chcete-li načíst vlastníky skupiny, použijte rutinu Get-AzureADGroupOwner:
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df
@@ -300,7 +300,7 @@ Rutina vrátí seznam vlastníků (uživatelů a instančních objektů) pro zad
                           e831b3fd-77c9-49c7-9fca-de43e109ef67 User
 ```
 
-Pokud chcete odebrat vlastníka ze skupiny, použijte rutinu Remove-AzureADGroupOwner:
+Pokud chcete odebrat vlastníka ze skupiny, použijte rutinu Odebrat AzureADGroupOwner:
 
 ```powershell
     PS C:\Windows\system32> remove-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -OwnerId e831b3fd-77c9-49c7-9fca-de43e109ef67
@@ -308,33 +308,33 @@ Pokud chcete odebrat vlastníka ze skupiny, použijte rutinu Remove-AzureADGroup
 
 ## <a name="reserved-aliases"></a>Rezervované aliasy
 
-Když se vytvoří skupina, některé koncové body umožní koncovému uživateli zadat mailNickname nebo alias, který se má použít jako součást e-mailové adresy skupiny. Skupiny s následujícími vysoce privilegovanými e-mailovými aliasy můžou vytvořit jenom globální správce Azure AD. 
+Při vytvoření skupiny umožňují určité koncové body koncovému uživateli zadat mailNickname nebo alias, který má být použit jako součást e-mailové adresy skupiny.Skupiny s následujícími vysoce privilegovanými e-mailovými aliasy může vytvořit jenom globální správce Služby Azure AD. 
   
-* pošt
-* správ
-* Správce
+* Zneužívání
+* admin
+* správce
 * hostmaster
 * majordomo
-* postmaster
+* Postmaster
 * kořen
-* Zabezpečený
-* zabezpečení
-* SSL – správce
-* příslušného
+* Zabezpečené
+* security
+* ssl-admin
+* Webmaster
 
-## <a name="group-writeback-to-on-premises-preview"></a>Zpětný zápis skupin do místního prostředí (Preview)
+## <a name="group-writeback-to-on-premises-preview"></a>Skupinový zpětný zápis do místního prostředí (náhled)
 
-V současné době je řada skupin stále spravována v místní službě Active Directory. Pro zodpovězení žádostí o synchronizaci cloudových skupin zpátky do místního prostředí je teď k dispozici funkce zpětného zápisu skupin Office 365 pro službu Azure AD ve verzi Preview.
+V současné době je mnoho skupin stále spravováno v místní službě Active Directory. Chcete-li odpovědět na požadavky na synchronizaci cloudových skupin zpět do místního prostředí, funkce zpětného zápisu skupin Office 365 pro Azure AD je teď k dispozici pro náhled.
 
-Skupiny Office 365 se vytvářejí a spravují v cloudu. Funkce zpětného zápisu umožňuje zapisovat skupiny sady Office 365 jako distribuční skupiny do doménové struktury služby Active Directory s nainstalovaným systémem Exchange. Uživatelé s místními poštovními schránkami Exchange můžou odesílat a přijímat e-maily z těchto skupin. Funkce zpětného zápisu skupiny nepodporuje skupiny zabezpečení nebo distribuční skupiny Azure AD.
+Skupiny Office 365 se vytvářejí a spravují v cloudu. Funkce zpětného zápisu umožňuje odepsat skupiny Office 365 jako distribuční skupiny do doménové struktury služby Active Directory s nainstalovanou službou Exchange. Uživatelé s místními poštovními schránkami Exchange pak můžou odesílat a přijímat e-maily z těchto skupin. Funkce zpětného zápisu skupiny nepodporuje skupiny zabezpečení Azure AD ani distribuční skupiny.
 
-Další podrobnosti najdete v dokumentaci ke [službě Azure AD Connect Sync](../hybrid/how-to-connect-syncservice-features.md).
+Další podrobnosti naleznete v dokumentaci ke [službě synchronizace Azure AD Connect](../hybrid/how-to-connect-syncservice-features.md).
 
-Zpětný zápis skupin Office 365 je funkce Public Preview služby Azure Active Directory (Azure AD) a je dostupná s veškerým placeným licenčním plánem Azure AD. Nějaké právní informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
+Zpětný zápis skupiny Office 365 je veřejná funkce preview služby Azure Active Directory (Azure AD) a je dostupná s jakýmkoli placeným licenčním tarifem Azure AD. Některé právní informace o náhledech najdete [v tématu Doplňkové podmínky použití pro Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další Azure Active Directory dokumentaci PowerShellu najdete v [Azure Active Directory rutinách](/powershell/azure/install-adv2?view=azureadps-2.0).
+Další dokumentaci k prostředí Azure Active Directory PowerShell najdete na [rutinách služby Azure Active Directory](/powershell/azure/install-adv2?view=azureadps-2.0).
 
 * [Správa přístupu k prostředkům pomocí skupin služby Azure Active Directory](../fundamentals/active-directory-manage-groups.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
 * [Integrování místních identit do služby Azure Active Directory](../hybrid/whatis-hybrid-identity.md?context=azure/active-directory/users-groups-roles/context/ugr-context)

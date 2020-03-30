@@ -1,6 +1,6 @@
 ---
 title: Technologie v paměti
-description: Technologie Azure SQL Database v paměti významně zlepšují výkon transakčních a analytických úloh.
+description: Technologie Azure SQL Database In-Memory výrazně zlepšují výkon transakčních a analytických úloh.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,166 +12,166 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/19/2019
 ms.openlocfilehash: de60712451d4c2e8a7d931f7a09352f55be05694
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73810268"
 ---
-# <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optimalizujte výkon pomocí technologií v paměti v SQL Database
+# <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optimalizace výkonu pomocí technologií v paměti v databázi SQL
 
-Technologie v paměti v Azure SQL Database umožňují zvýšit výkon aplikace a potenciálně snížit náklady na vaši databázi. 
+Technologie v paměti v Azure SQL Database umožňují zlepšit výkon vaší aplikace a potenciálně snížit náklady na databázi. 
 
-## <a name="when-to-use-in-memory-technologies"></a>Kdy použít technologie v paměti
+## <a name="when-to-use-in-memory-technologies"></a>Kdy používat technologie v paměti
 
 Pomocí technologií v paměti v Azure SQL Database můžete dosáhnout zlepšení výkonu s různými úlohami:
 
-- **Transakce** (online transakční zpracování (OLTP)), kde většina požadavků čte nebo aktualizuje menší sadu dat (například operace CRUD).
-- **Analytické** (online analytické zpracování (OLAP)), kde většina dotazů má složité výpočty pro účely generování sestav, s určitým počtem dotazů, které načítají a přidávají data do existujících tabulek (označované jako hromadné zatížení), nebo odstraňují data z tabulky. 
-- **Smíšené** (hybridní transakce/analytické zpracování (HTAP)), kde jsou dotazy OLTP a OLAP spouštěny na stejné sadě dat.
+- **Transakční** (online transakční zpracování (OLTP)), kde většina požadavků čte nebo aktualizuje menší sadu dat (například operace CRUD).
+- **Analytické** (online analytické zpracování (OLAP)), kde většina dotazů má složité výpočty pro účely vykazování, s určitým počtem dotazů, které načítají a připojují data k existujícím tabulkám (tzv. hromadné načítání) nebo odstraňují data z tabulek. 
+- **Smíšené** (hybridní transakce/analytické zpracování (HTAP)), kde jsou dotazy OLTP i OLAP prováděny na stejné sadě dat.
 
-Technologie v paměti můžou zlepšit výkon těchto úloh tím, že udržuje data, která by se měla zpracovat do paměti, pomocí nativní kompilace dotazů nebo pokročilé zpracování, jako jsou dávkové zpracování, a pokyny k SIMD, které jsou k dispozici na základní hardware. 
+Technologie v paměti mohou zlepšit výkon těchto úloh udržováním dat, která by měla být zpracována do paměti, pomocí nativní kompilace dotazů nebo pokročilého zpracování, jako je dávkové zpracování a pokyny SIMD, které jsou k dispozici na základního hardwaru. 
 
 ## <a name="overview"></a>Přehled
 
-Azure SQL Database má následující paměťové technologie:
-- *[OLTP v paměti](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)* zvyšuje počet transakcí za sekundu a snižuje latenci pro zpracování transakcí. Scénáře, které využívají OLTP v paměti, jsou: vysoce propustnost při zpracování transakcí, jako je například obchodování a hraní, příjem dat z událostí nebo zařízení IoT, ukládání do mezipaměti, načítání dat a dočasné scénáře tabulkových a tabulkových proměnných.
-- *Clusterované indexy columnstore* snižují nároky na úložiště (až 10krát) a zlepšují výkon pro vytváření sestav a analytické dotazy. Můžete ji použít s tabulkami faktů ve vašich datech tržiště k tomu, aby se do databáze vešla více dat a vylepšila výkon. Můžete ho také použít s historickými daty v provozní databázi k archivaci a budete moct dotazovat až na 10 dalších dat.
-- *Neclusterované indexy columnstore* pro HTAP vám pomůžou získat přehled o vaší firmě v reálném čase pomocí dotazování provozní databáze přímo, aniž by bylo nutné spouštět nákladný proces extrakce, transformace a načítání (ETL) a čekat na data. Sklad, který má být vyplněn. Neclusterované indexy columnstore umožňují rychlé spouštění analytických dotazů v databázi OLTP a současně snižuje dopad na provozní zatížení.
-- *Clusterově optimalizované indexy columnstore* pro HTAP umožňují provádět rychlé zpracování transakcí a *souběžně* spouštějte analytické dotazy se stejnými daty.
+Azure SQL Database má následující technologie v paměti:
+- *[V paměti OLTP](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)* zvyšuje počet transakcí za sekundu a snižuje latenci pro zpracování transakcí. Scénáře, které využívají IN-Memory OLTP jsou: zpracování transakcí s vysokou propustností, jako je obchodování a hraní her, ingestování dat z událostí nebo zařízení IoT, ukládání do mezipaměti, načítání dat a dočasné scénáře proměnných tabulek a tabulek.
+- *Clustered columnstore indexy* snížit vaše nároky na úložiště (až 10 krát) a zlepšit výkon pro vytváření sestav a analytických dotazů. Můžete jej použít s tabulkami faktů v datových tržišti, aby se vešly více dat do databáze a zlepšit výkon. Můžete ji také použít s historickými daty v provozní databázi k archivaci a k dotazování až 10krát více dat.
+- *Nonclustered columnstore indexy* pro HTAP vám pomohou získat přehled o vaší firmě v reálném čase prostřednictvím přímého dotazování na provozní databázi, aniž byste museli spouštět nákladný proces extrakce, transformace a načítání (ETL) a čekat na naplnění datového skladu. Nonclustered columnstore indexy umožňují rychlé provádění analytických dotazů v databázi OLTP a zároveň snižuje dopad na provozní zatížení.
+- *Indexy clusterového úložiště sloupců optimalizované pro paměť* pro HTAP umožňují provádět rychlé zpracování transakcí a *současně* velmi rychle spouštět analytické dotazy na stejná data.
 
-Indexy columnstore i OLTP v paměti byly součástí SQL Server produktu od 2012 do 2014, v uvedeném pořadí. Azure SQL Database a SQL Server sdílejí stejnou implementaci technologií v paměti. Kromě toho se nové funkce pro tyto technologie vydávají v Azure SQL Database nejdřív, než se uvolní v SQL Server.
+Indexy columnstore a OLTP v paměti jsou součástí produktu SQL Server od roku 2012 a 2014. Azure SQL Database a SQL Server sdílejí stejnou implementaci technologií v paměti. Do budoucna nové funkce pro tyto technologie jsou vydány v Azure SQL Database první před jejich vydáním v SQL Server.
 
 ## <a name="benefits-of-in-memory-technology"></a>Výhody technologie v paměti
 
-Z důvodu efektivnějšího zpracování dotazů a transakcí vám také pomůžou snížit náklady. Obvykle není nutné upgradovat cenovou úroveň databáze, aby se dosáhlo zvýšení výkonu. V některých případech můžete dokonce snížit cenovou úroveň, a přitom stále vidět zvýšení výkonu s využitím technologií v paměti.
+Díky efektivnějšímu zpracování dotazů a transakcí vám technologie v paměti také pomohou snížit náklady. Obvykle není nutné upgradovat cenovou úroveň databáze k dosažení zvýšení výkonu. V některých případech můžete dokonce snížit cenovou úroveň, zatímco stále vidíte zlepšení výkonu s technologiemi v paměti.
 
-Tady jsou dva příklady, jak OLTP v paměti pomohl významně zlepšit výkon:
+Zde jsou dva příklady toho, jak oltp v paměti pomohl výrazně zlepšit výkon:
 
-- Při použití OLTP v paměti [bylo řešení kvora schopno dvojnásobit své zatížení a zároveň zlepšuje DTU o 70%](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database).
+- Pomocí OLTP v paměti, [Quorum Business Solutions byl schopen zdvojnásobit své zatížení při zlepšování DTU o 70 %](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database).
 
-  - DTU znamená *jednotku transakce databáze*a obsahuje měření spotřeby prostředků.
-- Následující video demonstruje významné vylepšení spotřeby prostředků s využitím ukázkových úloh: [OLTP v paměti ve Azure SQL Database videu](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB).
-  - Další informace najdete v blogovém příspěvku: [OLTP v paměti v tématu Azure SQL Database Blogový příspěvek](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/) .
+  - DTU znamená *databázovou transakční jednotku*a zahrnuje měření spotřeby zdrojů.
+- Následující video ukazuje významné zlepšení spotřeby prostředků s ukázkovou úlohou: [V paměti OLTP v Azure SQL Database Video](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB).
+  - Další informace najdete v příspěvku blogu: [OlTP v paměti v blogu Azure SQL Database](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
 > [!NOTE]  
-> Technologie v paměti jsou dostupné v databázích Azure SQL úrovně Premium a Pro důležité obchodní informace a elastických fondech úrovně Premium.
+> Technologie v paměti jsou dostupné v databázích AZURE SQL úrovně Premium a Business Critical a v elastických fondech Premium.
 
-Následující video vysvětluje potenciální nárůst výkonu pomocí technologií v paměti v Azure SQL Database. Mějte na paměti, že ke zvýšení výkonu, které vidíte, se vždy závisí na mnoha faktorech, včetně povahy zatížení a dat, vzoru přístupu databáze a tak dále.
+Následující video vysvětluje potenciální zvýšení výkonu s technologiemi v paměti v Azure SQL Database. Nezapomeňte, že zvýšení výkonu, které vidíte vždy závisí na mnoha faktorech, včetně povahy úlohy a data, přístup vzor databáze a tak dále.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-In-Memory-Technologies/player]
 >
 >
 
-Tento článek popisuje aspekty OLTP a indexů columnstore v paměti, které jsou specifické pro Azure SQL Database a také obsahuje ukázky:
+Tento článek popisuje aspekty indexů OLTP v paměti a columnstore, které jsou specifické pro Azure SQL Database a také obsahují ukázky:
 
-- V omezeních velikosti úložiště a dat uvidíte dopad těchto technologií.
-- Uvidíte, jak spravovat přesun databází, které používají tyto technologie mezi různými cenovými úrovněmi.
-- Zobrazí se dvě ukázky, které ilustrují použití OLTP v paměti a také indexy columnstore v Azure SQL Database.
+- Uvidíte dopad těchto technologií na úložiště a omezení velikosti dat.
+- Uvidíte, jak spravovat pohyb databází, které používají tyto technologie mezi různými cenovými úrovněmi.
+- Uvidíte dvě ukázky, které ilustrují použití OLTP v paměti, stejně jako columnstore indexy v Azure SQL Database.
 
 Další informace naleznete v tématu:
 
-- [Přehled OLTP v paměti a scénáře použití](https://msdn.microsoft.com/library/mt774593.aspx) (zahrnuje odkazy na případové studie zákazníků a informace o tom, jak začít)
-- [Dokumentace k OLTP v paměti](https://msdn.microsoft.com/library/dn133186.aspx)
+- [Scénáře přehledu oltp v paměti a použití](https://msdn.microsoft.com/library/mt774593.aspx) (obsahuje odkazy na případové studie zákazníka a informace, které můžete začít)
+- [Dokumentace pro OLTP v paměti](https://msdn.microsoft.com/library/dn133186.aspx)
 - [Průvodce indexy columnstore](https://msdn.microsoft.com/library/gg492088.aspx)
-- Hybridní transakční/analytické zpracování (HTAP), označované také jako [provozní analýza v reálném čase](https://msdn.microsoft.com/library/dn817827.aspx)
+- Hybridní transakční/analytické zpracování (HTAP), známé také jako [provozní analýza v reálném čase](https://msdn.microsoft.com/library/dn817827.aspx)
 
 ## <a name="in-memory-oltp"></a>OLTP v paměti
 
-Technologie OLTP v paměti poskytuje extrémně rychlé operace přístupu k datům a zajišťuje tak všechna data v paměti. Používá také specializované indexy, nativní kompilaci dotazů a přístup k datům bez západek ke zvýšení výkonu OLTP úloh. Existují dva způsoby, jak uspořádat data OLTP v paměti:
+Technologie OLTP v paměti poskytuje extrémně rychlé operace přístupu k datům tím, že uchovává všechna data v paměti. Používá také specializované indexy, nativní kompilaci dotazů a přístup k datům bez zámku ke zlepšení výkonu úlohy OLTP. Data OLTP v paměti lze uspořádat dvěma způsoby:
 
-- **Paměťově optimalizované formáty rowstore** , kde každý řádek je samostatný objekt paměti. Toto je klasický formát OLTP v paměti optimalizovaný pro vysoce výkonné OLTP úlohy. Existují dva typy paměťově optimalizovaných tabulek, které lze použít v paměťově optimalizovaném formátu rowstore:
-  - *Odolné tabulky* (SCHEMA_AND_DATA), kde se po restartování serveru uchovávají řádky umístěné v paměti. Tento typ tabulek se chová jako tradiční tabulka rowstore s dalšími výhodami optimalizace v paměti.
-  - *Neodolné tabulky* (SCHEMA_ONLY), kde po restartu nejsou zachovány řádky. Tento typ tabulky je navržený pro dočasná data (například nahrazení dočasných tabulek) nebo tabulky, ve kterých potřebujete rychle načíst data, než je přesunete do některé trvale uložené tabulky (takže se říká pracovní tabulky).
-- Formát **columnstore optimalizovaný pro paměť** , ve kterém jsou data uspořádána ve sloupcovém formátu. Tato struktura je navržená pro HTAP scénáře, kdy potřebujete spouštět analytické dotazy ve stejné datové struktuře, ve které je spuštěná vaše úloha OLTP.
+- **Formát rowstore optimalizovaný pro paměť,** kde každý řádek je samostatný objekt paměti. Jedná se o klasický formát OLTP v paměti optimalizovaný pro vysoce výkonné úlohy OLTP. Existují dva typy tabulek optimalizovaných pro paměť, které lze použít ve formátu rowstore optimalizovaného pro paměť:
+  - *Trvalé tabulky* (SCHEMA_AND_DATA), kde jsou po restartování serveru zachovány řádky umístěné v paměti. Tento typ tabulek se chová jako tradiční tabulka rowstore s dalšími výhodami optimalizace v paměti.
+  - *Netrvalé tabulky* (SCHEMA_ONLY), kde řádky nejsou zachovány po restartování. Tento typ tabulky je určen pro dočasná data (například nahrazení dočasných tabulek) nebo tabulky, ve kterých je třeba rychle načíst data před jejich přesunutím do některé trvalé tabulky (tzv. pracovní tabulky).
+- **Formát columnstore optimalizované ho s optimalizovaným** pro paměť, kde jsou data uspořádána ve sloupcovém formátu. Tato struktura je určena pro scénáře HTAP, kde je třeba spustit analytické dotazy na stejné datové struktuře, kde je spuštěna vaše úloha OLTP.
 
 > [!Note]
-> Technologie OLTP v paměti je navržená pro datové struktury, které se můžou plně nacházet v paměti. Vzhledem k tomu, že data v paměti nelze přesměrovat na disk, ujistěte se, že používáte databázi, která má dostatek paměti. Další podrobnosti najdete [v tématu velikost dat a limit úložiště pro OLTP v paměti](#data-size-and-storage-cap-for-in-memory-oltp) .
+> Technologie OLTP v paměti je určena pro datové struktury, které se mohou plně nasytit v paměti. Vzhledem k tomu, že data v paměti nelze převést na disk, ujistěte se, že používáte databázi, která má dostatek paměti. Další podrobnosti najdete [v tématu Velikost dat a uzávěr úložiště pro OLTP v paměti.](#data-size-and-storage-cap-for-in-memory-oltp)
 
-Rychlý úvod na OLTP v paměti: [rychlý Start 1: technologie OLTP v paměti pro rychlejší výkon T-SQL](https://msdn.microsoft.com/library/mt694156.aspx) (další článek, který vám může pomáhat začít)
+Rychlý primer na IN-Memory OLTP: [Úvodní start 1: In-Memory OLTP Technologie pro rychlejší T-SQL výkon](https://msdn.microsoft.com/library/mt694156.aspx) (další článek, který vám pomůže začít)
 
-Podrobnější videa o technologiích:
+Podrobná videa o technologiích:
 
-- [OLTP v paměti v Azure SQL Database](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB) (obsahuje ukázku výhod výkonu a kroky pro reprodukování těchto výsledků)
-- [OLTP videa v paměti: co je a kdy se má použít](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../in-memory-oltp-video-what-it-is-and-whenhow-to-use-it/)
+- [Oltp v paměti v Azure SQL Database](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB) (který obsahuje ukázku výhod výkonu a kroky k reprodukci těchto výsledků sami)
+- [Videa OLTP v paměti: Co to je a kdy/jak ji používat](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../in-memory-oltp-video-what-it-is-and-whenhow-to-use-it/)
 
-Existuje programový způsob, jak pochopit, jestli daná databáze podporuje OLTP v paměti. Můžete spustit následující dotaz Transact-SQL:
+Existuje programový způsob, jak pochopit, zda daná databáze podporuje oltp v paměti. Můžete provést následující dotaz Transact-SQL:
 ```
 SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 ```
-Pokud dotaz vrátí **1**, v této databázi se podporuje OLTP v paměti. Následující dotazy identifikují všechny objekty, které je třeba před přechodem na úroveň Standard/Basic odebrat.
+Pokud dotaz vrátí **hodnotu 1**, je v této databázi podporován protokol OLTP v paměti. Následující dotazy identifikují všechny objekty, které je třeba odebrat před přechodem databáze na standardní/základní:
 ```
 SELECT * FROM sys.tables WHERE is_memory_optimized=1
 SELECT * FROM sys.table_types WHERE is_memory_optimized=1
 SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 ```
 
-### <a name="data-size-and-storage-cap-for-in-memory-oltp"></a>Velikost dat a limit úložiště pro OLTP v paměti
+### <a name="data-size-and-storage-cap-for-in-memory-oltp"></a>Velikost dat a uzávěr úložiště pro OLTP v paměti
 
-OLTP v paměti zahrnuje paměťově optimalizované tabulky, které se používají k ukládání uživatelských dat. Tyto tabulky jsou nutné pro přizpůsobení paměti. Vzhledem k tomu, že můžete spravovat paměť přímo ve službě SQL Database, máme koncept kvóty pro uživatelská data. Tento nápad se označuje jako *úložiště OLTP v paměti*.
+Oltp v paměti obsahuje tabulky optimalizované pro paměť, které se používají pro ukládání uživatelských dat. Tyto tabulky jsou nutné, aby se vešly do paměti. Vzhledem k tomu, že spravujete paměť přímo ve službě SQL Database, máme koncept kvóty pro uživatelská data. Tato myšlenka se označuje jako *úložiště OLTP v paměti*.
 
-Každá podporovaná cenová úroveň jedné databáze a každá cenová úroveň elastického fondu zahrnuje určité množství OLTP úložiště v paměti. Viz omezení [prostředků na základě DTU –](sql-database-dtu-resource-limits-single-databases.md)izolovaná databáze, [omezení prostředků založené na DTU – elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md),[omezení prostředků založené na Vcore – izolované databáze](sql-database-vcore-resource-limits-single-databases.md) a [omezení prostředků založené na Vcore – elastické fondy](sql-database-vcore-resource-limits-elastic-pools.md).
+Každá podporovaná cenová úroveň jedné databáze a každá cenová úroveň elastického fondu zahrnuje určité množství úložiště OLTP v paměti. Viz [Limity prostředků založených na DTU – jedna databáze](sql-database-dtu-resource-limits-single-databases.md), Omezení prostředků založených na [DTU - elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md),[omezení prostředků založených na virtuálních jádrech – limity prostředků založené na single databases](sql-database-vcore-resource-limits-single-databases.md) a [omezení prostředků založených na virtuálních jádrech – elastické fondy](sql-database-vcore-resource-limits-elastic-pools.md).
 
-Následující položky se počítají do limitu úložiště OLTP v paměti:
+Do limitu úložiště OLTP v paměti se započítávají následující položky:
 
-- Řádky aktivních uživatelských dat v paměťově optimalizovaných tabulkách a proměnných tabulek. Všimněte si, že staré verze řádků se nepočítají směrem k zakončení.
-- Indexy na paměťově optimalizované tabulky.
-- Provozní režie operací ALTER TABLE
+- Aktivní řádky uživatelských dat v tabulkách optimalizovaných pro paměť a proměnných tabulek. Všimněte si, že staré verze řádků se do zakončení nezapočítávají.
+- Indexy v tabulkách optimalizovaných pro paměť.
+- Provozní režie operací ALTER TABLE.
 
-Pokud máte limit, obdržíte chybu s nekvótou a už nebudete moct data vkládat ani aktualizovat. Chcete-li tuto chybu zmírnit, odstraňte data nebo zvyšte cenovou úroveň databáze nebo fondu.
+Pokud stisknete omezení, zobrazí se chyba mimo kvótu a již nebudete moci vkládat nebo aktualizovat data. Chcete-li tuto chybu zmírnit, odstraňte data nebo zvyšte cenovou úroveň databáze nebo fondu.
 
-Podrobnosti o monitorování využití úložiště v paměti OLTP a konfiguraci výstrah, když skoro vyrazíte na limit, najdete v tématu [monitorování úložiště v paměti](sql-database-in-memory-oltp-monitoring.md).
+Podrobnosti o monitorování využití úložiště OLTP v paměti a konfiguraci výstrah při téměř dosažení limitu naleznete [v tématu Sledování úložiště v paměti](sql-database-in-memory-oltp-monitoring.md).
 
-#### <a name="about-elastic-pools"></a>O elastických fondech
+#### <a name="about-elastic-pools"></a>O elastických bazénech
 
-U elastických fondů je úložiště OLTP v paměti sdíleno napříč všemi databázemi ve fondu. Proto použití v jedné databázi může mít potenciálně vliv na ostatní databáze. Dvě zmírnění rizika jsou tato:
+S elastické fondy úložiště OLTP v paměti je sdílena ve všech databázích ve fondu. Proto použití v jedné databázi může potenciálně ovlivnit jiné databáze. Dvě skutečnosti snižující závažnost rizika pro toto jsou:
 
-- Nakonfigurujte `Max-eDTU` nebo `MaxvCore` pro databáze, které jsou nižší než eDTU nebo počet vCore pro fond jako celek. Toto je maximální využití úložiště OLTP v paměti ve všech databázích ve fondu na velikost, která odpovídá počtu eDTU.
-- Nakonfigurujte `Min-eDTU` nebo `MinvCore`, která je větší než 0. Tato minimální záruka zaručuje, že každá databáze ve fondu má velikost dostupného úložiště OLTP v paměti, které odpovídá nakonfigurovanému `Min-eDTU` nebo `vCore`.
+- Konfigurace `Max-eDTU` nebo `MaxvCore` pro databáze, která je nižší než eDTU nebo počet virtuálních jader pro fond jako celek. Toto maximum omezuje využití úložiště OLTP v paměti v libovolné databázi ve fondu na velikost, která odpovídá počtu eDTU.
+- Konfigurace `Min-eDTU` nebo `MinvCore` který je větší než 0. Toto minimum zaručuje, že každá databáze ve fondu má množství dostupné úložiště OLTP v paměti, které odpovídá nakonfigurovanému `Min-eDTU` nebo `vCore`.
 
 ### <a name="changing-service-tiers-of-databases-that-use-in-memory-oltp-technologies"></a>Změna úrovní služeb databází, které používají technologie OLTP v paměti
 
-Databázi nebo instanci můžete kdykoli upgradovat na vyšší úroveň, například z Pro obecné účely na Pro důležité obchodní informace (nebo do úrovně Premium). Dostupné funkce a prostředky se zvyšují.
+Databázi nebo instanci můžete vždy upgradovat na vyšší úroveň, například z obecného účelu na důležité pro firmy (nebo standardní na prémiovou). Dostupné funkce a prostředky pouze zvýšit.
 
-Ale downgrade úrovně může mít negativní vliv na vaši databázi. Pokud vaše databáze obsahuje objekty OLTP v paměti, je to obzvláště zřejmé, když se downgrade z Pro důležité obchodní informace na Pro obecné účely (nebo Premium na Standard nebo Basic). Paměťově optimalizované tabulky nejsou po downgradi k dispozici (i když zůstanou viditelné). Stejné předpoklady platí při snížení cenové úrovně elastického fondu nebo při přesunu databáze s technologiemi v paměti do elastického fondu Standard nebo Basic.
+Ale snížení úrovně může negativně ovlivnit vaši databázi. Dopad je zvláště zřejmé, když downgrade z business critical na obecné účely (nebo Premium na standardní nebo základní) pokud databáze obsahuje objekty OLTP v paměti. Tabulky optimalizované pro paměť nejsou po přechodu na starší verzi k dispozici (i když zůstanou viditelné). Stejné aspekty platí, když snižujete cenovou úroveň elastického fondu nebo přesouváte databázi s technologiemi v paměti do standardního nebo základního elastického fondu.
 
 > [!Important]
-> OLTP v paměti se v úrovni Pro obecné účely, Standard a Basic nepodporuje. Proto není možné přesunout databázi, která má žádné objekty OLTP v paměti na úroveň Standard nebo Basic.
+> Oltp v paměti není podporován na úrovni Obecné účely, Standard nebo Basic. Proto není možné přesunout databázi, která má všechny objekty OLTP v paměti na úroveň Standard nebo Basic.
 
-Před přechodem databáze na úroveň Standard/Basic odeberte všechny paměťově optimalizované tabulky a typy tabulek a také všechny nativně zkompilované moduly T-SQL. 
+Před přechodem databáze na standard/basic odeberte všechny tabulky optimalizované pro paměť a typy tabulek, stejně jako všechny nativně zkompilované moduly T-SQL. 
 
-*Škálování prostředků v pro důležité obchodní informace vrstvě*: data v paměťově optimalizovaných tabulkách se musí vejít do úložiště OLTP v paměti, které je přidružené k úrovni databáze nebo spravované instance, nebo je k dispozici v elastickém fondu. Pokud se pokusíte škálovat vrstvu dolů nebo přesunout databázi do fondu, který nemá dost dostupného úložiště OLTP v paměti, operace se nezdařila.
+*Škálování prostředků v důležité obchodní vrstvě*: Data v tabulkách optimalizovaných pro paměť se musí vejít do úložiště OLTP v paměti, které je přidruženo k vrstvě databáze nebo spravované instanci, nebo jsou k dispozici v elastickém fondu. Pokud se pokusíte škálovat úroveň nebo přesunout databázi do fondu, který nemá dostatek dostupné úložiště OLTP v paměti, operace se nezdaří.
 
-## <a name="in-memory-columnstore"></a>Columnstore v paměti
+## <a name="in-memory-columnstore"></a>Úložiště sloupců v paměti
 
-Technologie columnstore v paměti umožňuje ukládat a dotazovat velké objemy dat v tabulkách. Technologie columnstore používá formát úložiště dat založeného na sloupcích a zpracování dávkového dotazování, aby bylo možné získat až desetkrát výkon dotazů v úlohách OLAP v případě tradičních sloupcově orientovaného úložiště. Pro komprimaci dat v nekomprimovaných datech můžete také dosáhnout nárůstu až desetkrát.
-Existují dva typy modelů columnstore, které můžete použít k uspořádání dat:
+Technologie columnstore v paměti umožňuje ukládat a dotazovat velké množství dat v tabulkách. Technologie ColumnStore využívá formát úložiště dat založený na sloupcích a zpracování dávkových dotazů k dosažení zisku až 10násobku výkonu dotazů v úlohách OLAP oproti tradičnímu úložišti orientovanému na řádky. Můžete také dosáhnout zisky až 10 násobek komprese dat přes nekomprimované velikosti dat.
+Existují dva typy columnstore modely, které můžete použít k uspořádání dat:
 
-- **Clusterovaný columnstore** , kde jsou všechna data v tabulce uspořádána ve sloupcovém formátu. V tomto modelu jsou všechny řádky v tabulce umístěny ve sloupcovém formátu, který silně komprimuje data a umožňuje provádět rychlé analytické dotazy a sestavy v tabulce. V závislosti na povaze dat se může velikost dat snížit 10x-100x. Clusterovaný model columnstore také umožňuje rychlou příjem velkých objemů dat (hromadné zatížení), protože velké dávky dat větší než 100 tisíc řádky jsou komprimovány před jejich uložením na disk. Tento model je dobrou volbou pro scénáře klasického datového skladu. 
-- **Neclusterovaný columnstore** , kde jsou uložena data v tradiční tabulce rowstore a ve formátu columnstore, který se používá pro analytické dotazy, je index. Tento model umožňuje hybridní transakční a analytické zpracování (HTAP): schopnost spouštět provádění analýz v reálném čase na transakčních úlohách. Dotazy OLTP se spouštějí v tabulce rowstore, která je optimalizovaná pro přístup k malé sadě řádků, zatímco dotazy OLAP se spouštějí v indexu columnstore, který je lepší volbou pro kontroly a analýzy. Azure SQL Database Optimalizátor dotazů dynamicky zvolí rowstore nebo formát columnstore na základě dotazu. Neclusterované indexy columnstore nezmenšují velikost dat, protože původní sada dat je udržována v původní tabulce rowstore beze změny. Nicméně velikost dalšího indexu columnstore by měla být v rozsahu menším než ekvivalentní index B-Tree.
+- **Clustered columnstore,** kde jsou všechna data v tabulce uspořádána ve sloupcovém formátu. V tomto modelu jsou všechny řádky v tabulce umístěny ve sloupcovém formátu, který vysoce komprimuje data a umožňuje provádět rychlé analytické dotazy a sestavy v tabulce. V závislosti na povaze dat může být velikost dat snížena 10x-100x. Clustered columnstore model také umožňuje rychlé požití velkého množství dat (hromadné zatížení), protože velké dávky dat větší než 100 kB řádky jsou komprimovány před jejich uložením na disk. Tento model je dobrou volbou pro klasické scénáře datového skladu. 
+- **Neseskupené columnstore,** kde jsou data uložena v tradiční tabulce rowstore a je index ve formátu columnstore, který se používá pro analytické dotazy. Tento model umožňuje hybridní transakční analytick –zpracování(HTAP): možnost spouštět výkonné analýzy v reálném čase na transakční množiny. DOTAZY OLTP jsou spouštěny v tabulce rowstore, která je optimalizována pro přístup k malé sadě řádků, zatímco dotazy OLAP jsou spouštěny na indexu columnstore, který je lepší volbou pro skenování a analýzy. Optimalizátor dotazů Azure SQL Database dynamicky vybírá formát rowstore nebo columnstore na základě dotazu. Indexy columnstore bez clusterů nezmenšují velikost dat, protože původní sada dat je uložena v původní tabulce rowstore bez jakékoli změny. Velikost indexu dalšího columnstore by však měla být řádově menší než ekvivalentní index b-stromu.
 
 > [!Note]
-> Technologie columnstore v paměti uchovává pouze data potřebná pro zpracování v paměti, zatímco data, která se nevejdou do paměti, jsou uložená na disku. Proto množství dat v strukturách columnstore v paměti může překročit množství dostupné paměti. 
+> Technologie columnstore v paměti uchovává pouze data potřebná pro zpracování v paměti, zatímco data, která se nevejdou do paměti, jsou uložena na disku. Proto množství dat ve strukturách columnstore v paměti může překročit množství dostupné paměti. 
 
 Podrobné video o technologii:
 
-- [Index columnstore: videa k analýze v paměti z Ignite 2016](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016/)
+- [Index columnstore: Videa analýzy v paměti z Ignite 2016](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016/)
 
 ### <a name="data-size-and-storage-for-columnstore-indexes"></a>Velikost dat a úložiště pro indexy columnstore
 
-Indexy columnstore se nevyžadují pro přizpůsobení paměti. Jediným limitem velikosti indexů je tedy maximální celková velikost databáze, která je dokumentována v [nákupních modelech založených na DTU](sql-database-service-tiers-dtu.md) a v článcích [pro nákupní modely založené na Vcore](sql-database-service-tiers-vcore.md) .
+Columnstore indexy nejsou nutné, aby se vešly do paměti. Proto pouze limit na velikost indexů je maximální celková velikost databáze, která je dokumentována v [nákupnímodel založený na DTU](sql-database-service-tiers-dtu.md) a na [základě virtuálních jader nákupní model](sql-database-service-tiers-vcore.md) články.
 
-Při použití clusterovaných indexů columnstore se pro základní úložiště tabulek používá sloupcová komprese. Tato komprese může významně snížit nároky na úložiště vašich uživatelských dat, což znamená, že do databáze můžete přizpůsobovat další data. A komprimaci lze dále zvýšit pomocí [sloupcové komprese](https://msdn.microsoft.com/library/cc280449.aspx#using-columnstore-and-columnstore-archive-compression). Velikost komprese, kterou můžete dosáhnout, závisí na povaze dat, ale na 10 časech komprese není neobvyklá.
+Při použití clusterovaných indexů columnstore se pro úložiště základní tabulky používá sloupcová komprese. Tato komprese může výrazně snížit nároky na úložiště vašich uživatelských dat, což znamená, že můžete umístit více dat do databáze. A komprese může být dále zvýšena s [sloupcovou archivní kompresí](https://msdn.microsoft.com/library/cc280449.aspx#using-columnstore-and-columnstore-archive-compression). Množství komprese, které můžete dosáhnout, závisí na povaze dat, ale 10násobek komprese není neobvyklé.
 
-Pokud máte například databázi s maximální velikostí 1 terabajt (TB) a dosáhnete 10 krát komprese pomocí indexů columnstore, můžete v databázi použít celkem 10 TB uživatelských dat.
+Například pokud máte databázi s maximální velikostí 1 terabajt (TB) a dosáhnout 10 krát komprese pomocí columnstore indexy, můžete se vejde celkem 10 TB uživatelských dat v databázi.
 
-Při použití neclusterovaných indexů columnstore je základní tabulka stále uložena v tradičním formátu rowstore. Proto úspory úložiště nejsou tak velké jako u clusterovaných indexů columnstore. Pokud ale nahrazujete několik tradičních neclusterovaných indexů s jedním indexem columnstore, můžete si i nadále zobrazit celkové úspory v kapacitě úložiště pro danou tabulku.
+Při použití indexy columnstore bez clusterů, základní tabulka je stále uložena v tradičním formátu rowstore. Proto úspory úložiště nejsou tak velké jako u clusterovaných indexů columnstore. Pokud však nahrazujete několik tradičních indexů bez clusterů indexy s jedním indexem columnstore, stále můžete zobrazit celkové úspory v stopách úložiště pro tabulku.
 
 ### <a name="changing-service-tiers-of-databases-containing-columnstore-indexes"></a>Změna úrovní služeb databází obsahujících indexy columnstore
 
-Pokud je cílová úroveň nižší než S3, nemusí být *databáze na úrovni Basic nebo Standard* dostupná. Indexy columnstore jsou podporované jenom na cenové úrovni Pro důležité obchodní informace/Premium a na úrovni Standard, S3 a vyšší, a ne na úrovni Basic. Když provedete downgrade databáze na nepodporovanou úroveň nebo úroveň, váš index columnstore nebude k dispozici. Systém udržuje index columnstore, ale nikdy nevyužívá index. Pokud později upgradujete zpátky na podporovanou úroveň nebo úroveň, váš index columnstore je hned připravený k jeho využití.
+*Přeřazení jedné databáze na základní nebo standardní* nemusí být možné, pokud je vaše cílová úroveň pod S3. Columnstore indexy jsou podporovány pouze na obchodní kritické/premium cenové úrovně a na úrovni Standard, S3 a vyšší a ne na úrovni Basic. Při přechodu databáze na nepodporovanou úroveň nebo úroveň, index columnstore přestane být k dispozici. Systém udržuje index columnstore, ale nikdy nevyužívá index. Pokud později upgradujete zpět na podporovanou úroveň nebo úroveň, index columnstore je okamžitě připraven k novému využití.
 
-Pokud máte **clusterovaný** index columnstore, celá tabulka po downgradu nebude k dispozici. Proto doporučujeme, abyste před přechodem databáze na nepodporovanou úroveň nebo úroveň vyřadíte všechny *clusterované* indexy columnstore.
+Pokud máte **index clusterovanécolumnstore,** celá tabulka přestane být po přechodu na starší verzi k dispozici. Proto doporučujeme přetažení všech *indexů clusterované* columnstore před přechodem databáze na nepodporovanou úroveň nebo úroveň.
 
 > [!Note]
 > Spravovaná instance podporuje indexy ColumnStore ve všech vrstvách.
@@ -180,29 +180,29 @@ Pokud máte **clusterovaný** index columnstore, celá tabulka po downgradu nebu
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Rychlý Start 1: technologie OLTP v paměti pro rychlejší výkon T-SQL](https://msdn.microsoft.com/library/mt694156.aspx)
+- [Úvodní příručka 1: Technologie OLTP v paměti pro rychlejší výkon T-SQL](https://msdn.microsoft.com/library/mt694156.aspx)
 - [Použití OLTP v paměti v existující aplikaci Azure SQL](sql-database-in-memory-oltp-migration.md)
-- [Monitorování úložiště OLTP v paměti](sql-database-in-memory-oltp-monitoring.md) pro OLTP v paměti
-- [Vyzkoušení funkcí v paměti v Azure SQL Database](sql-database-in-memory-sample.md)
+- [Úložiště OLTP monitoru v paměti](sql-database-in-memory-oltp-monitoring.md) pro oltp v paměti
+- [Vyzkoušet funkce v paměti v Azure SQL Database](sql-database-in-memory-sample.md)
 
 ## <a name="additional-resources"></a>Další zdroje
 
 ### <a name="deeper-information"></a>Hlubší informace
 
-- [Přečtěte si, jak kvorum podvoje úlohy klíčové databáze při snižování DTU o 70% s OLTP v paměti v SQL Database](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
-- [OLTP v paměti v příspěvku Azure SQL Database na blogu](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
-- [Další informace o OLTP v paměti](https://msdn.microsoft.com/library/dn133186.aspx)
+- [Zjistěte, jak kvorum zdvojnásobuje zatížení databáze klíčů při současném snížení DTU o 70 % pomocí oltp v paměti v databázi SQL Database](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
+- [Oltp v paměti v příspěvku blogu databáze Azure SQL](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
+- [Další informace o oltp v paměti](https://msdn.microsoft.com/library/dn133186.aspx)
 - [Další informace o indexech columnstore](https://msdn.microsoft.com/library/gg492088.aspx)
-- [Další informace o provozní analýze v reálném čase](https://msdn.microsoft.com/library/dn817827.aspx)
-- Podívejte se [na téma běžné vzorce úloh a důležité informace k migraci](https://msdn.microsoft.com/library/dn673538.aspx) (které popisují vzorce úloh, které OLTP v paměti často přináší výrazné zvýšení výkonu).
+- [Další informace o provozních analýzách v reálném čase](https://msdn.microsoft.com/library/dn817827.aspx)
+- Viz [Běžné vzory pracovního vytížení a aspekty migrace](https://msdn.microsoft.com/library/dn673538.aspx) (který popisuje vzory pracovního vytížení, kde oltp v paměti běžně poskytuje významné zvýšení výkonu)
 
 ### <a name="application-design"></a>Návrh aplikací
 
-- [OLTP v paměti (optimalizace v paměti)](https://msdn.microsoft.com/library/dn133186.aspx)
+- [Oltp v paměti (optimalizace v paměti)](https://msdn.microsoft.com/library/dn133186.aspx)
 - [Použití OLTP v paměti v existující aplikaci Azure SQL](sql-database-in-memory-oltp-migration.md)
 
 ### <a name="tools"></a>Nástroje
 
-- [Azure Portal](https://portal.azure.com/)
+- [Portál Azure](https://portal.azure.com/)
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 - [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)

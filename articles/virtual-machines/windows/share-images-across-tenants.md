@@ -1,6 +1,6 @@
 ---
-title: Sdílení imagí Galerie napříč klienty v Azure
-description: Naučte se sdílet image virtuálních počítačů napříč klienty Azure pomocí galerií sdílených imagí.
+title: Sdílení imitací galerie mezi tenanty v Azure
+description: Zjistěte, jak sdílet image virtuálních počítačí mezi klienty Azure pomocí sdílených galerií obrázků.
 services: virtual-machines-windows
 author: cynthn
 manager: gwallace
@@ -11,25 +11,25 @@ ms.topic: article
 ms.date: 07/15/2019
 ms.author: cynthn
 ms.openlocfilehash: 9b7e7066f186017b7cc4408cd4f7edcc7e5f0dcd
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74065521"
 ---
-# <a name="share-gallery-vm-images-across-azure-tenants"></a>Sdílení imagí virtuálních počítačů galerie v klientech Azure
+# <a name="share-gallery-vm-images-across-azure-tenants"></a>Sdílení ibi virtuálních počítačů galerie napříč tenanty Azure
 
-Galerie sdílených imagí vám umožňují sdílet Image pomocí RBAC. Ke sdílení imagí v rámci tenanta a dokonce i jednotlivcům mimo vašeho tenanta můžete použít RBAC. Další informace o této možnosti jednoduchého sdílení najdete v tématu [sdílení Galerie](/azure/virtual-machines/windows/shared-images-portal#share-the-gallery).
+Sdílené galerie obrázků umožňují sdílet obrázky pomocí RBAC. RBAC můžete použít ke sdílení bitových kopií v rámci vašeho tenanta, a dokonce i pro jednotlivce mimo vašeho tenanta. Další informace o této jednoduché možnosti sdílení naleznete v galerii [Sdílení](/azure/virtual-machines/windows/shared-images-portal#share-the-gallery).
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../../includes/virtual-machines-share-images-across-tenants.md)]
 
 
 > [!IMPORTANT]
-> Portál nemůžete použít k nasazení virtuálního počítače z image v jiném tenantovi Azure. Pokud chcete vytvořit virtuální počítač z image sdílené mezi klienty, musíte použít [Azure CLI](../linux/share-images-across-tenants.md) nebo PowerShell.
+> Portál nelze použít k nasazení virtuálního počítače z image v jiném tenantovi Azure. Chcete-li vytvořit virtuální počítač z image sdílené mezi klienty, musíte použít [Azure CLI](../linux/share-images-across-tenants.md) nebo Powershell.
 
-## <a name="create-a-vm-using-powershell"></a>Vytvoření virtuálního počítače pomocí PowerShellu
+## <a name="create-a-vm-using-powershell"></a>Vytvoření virtuálního počítače s využitím PowerShellu
 
-Přihlaste se do obou tenantů pomocí ID aplikace, tajného klíče a ID tenanta. 
+Přihlaste se k oběma klientům pomocí ID aplikace, tajného a id klienta. 
 
 ```azurepowershell-interactive
 $applicationId = '<App ID>'
@@ -42,7 +42,7 @@ Connect-AzAccount -ServicePrincipal -Credential $cred  -Tenant "<Tenant 1 ID>"
 Connect-AzAccount -ServicePrincipal -Credential $cred -Tenant "<Tenant 2 ID>"
 ```
 
-Vytvořte virtuální počítač ve skupině prostředků, která má oprávnění k registraci aplikace. Informace v tomto příkladu nahraďte vlastními.
+Vytvořte virtuální počítač ve skupině prostředků, která má oprávnění k registraci aplikace. Nahraďte informace v tomto příkladu vlastními.
 
 
 
@@ -86,4 +86,4 @@ New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 
 ## <a name="next-steps"></a>Další kroky
 
-Pomocí [Azure Portal](shared-images-portal.md)můžete také vytvořit prostředky galerie sdílených imagí.
+Prostředky sdílené galerie obrázků můžete také vytvořit pomocí [portálu Azure](shared-images-portal.md).

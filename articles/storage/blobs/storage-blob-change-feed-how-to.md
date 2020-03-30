@@ -1,6 +1,6 @@
 ---
-title: Zpracování kanálu změn ve službě Azure Blob Storage (Preview) | Microsoft Docs
-description: Informace o zpracování protokolů změn kanálu v klientské aplikaci .NET
+title: Informační kanál změn procesu v azure blob storage (preview) | Dokumenty společnosti Microsoft
+description: Zjistěte, jak zpracovat protokoly informačního kanálu o změnách v klientské aplikaci .NET
 author: normesta
 ms.author: normesta
 ms.date: 11/04/2019
@@ -9,36 +9,36 @@ ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.openlocfilehash: 75995eeb3f8255cb4c60d5be267f9c343edfea89
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74111865"
 ---
-# <a name="process-change-feed-in-azure-blob-storage-preview"></a>Zpracování kanálu změn ve službě Azure Blob Storage (Preview)
+# <a name="process-change-feed-in-azure-blob-storage-preview"></a>Informační kanál změn procesů ve službě Azure Blob Storage (preview)
 
-Změna kanálu poskytuje transakční protokoly všech změn, ke kterým dojde, do objektů BLOB a metadat objektů BLOB ve vašem účtu úložiště. V tomto článku se dozvíte, jak číst záznamy kanálu změn pomocí knihovny změn v modulu BLOB Change feed Processor.
+Kanál změn poskytuje protokoly transakcí všech změn, ke kterým dochází k objektům BLOB a metadatům objektů blob v účtu úložiště. Tento článek ukazuje, jak číst záznamy kanálu změn pomocí knihovny procesoru kanálu blob změnit.
 
-Další informace o kanálu změn najdete v tématu [Změna kanálu v Azure Blob Storage (Preview)](storage-blob-change-feed.md).
+Další informace o kanálu změn najdete [v tématu Změna informačního kanálu v Azure Blob Storage (Preview).](storage-blob-change-feed.md)
 
 > [!NOTE]
-> Kanál změn je ve verzi Public Preview a je dostupný v oblastech **westcentralus** a **westus2** . Další informace o této funkci spolu se známými problémy a omezeních najdete v tématu [Změna podpory kanálu v Azure Blob Storage](storage-blob-change-feed.md). Knihovna Change feed Processor se může změnit mezi nyní a až bude tato knihovna všeobecně dostupná.
+> Kanál změn je ve verzi Public Preview a je k dispozici v oblastech **westcentralus** a **westus2.** Další informace o této funkci spolu se známými problémy a omezeními najdete [v tématu Změna podpory informačního kanálu ve službě Azure Blob Storage](storage-blob-change-feed.md). Knihovna procesoru kanálu změn se může měnit mezi dneškem a tím, kdy bude tato knihovna obecně dostupná.
 
-## <a name="get-the-blob-change-feed-processor-library"></a>Získání knihovny pro změnu objektu BLOB Processor
+## <a name="get-the-blob-change-feed-processor-library"></a>Získání knihovny procesoru kanálu blob změnit kanál
 
-1. Do sady Visual Studio přidejte `https://azuresdkartifacts.blob.core.windows.net/azuresdkpartnerdrops/index.json` URL do zdrojů balíčků NuGet. 
+1. V sadě Visual Studio `https://azuresdkartifacts.blob.core.windows.net/azuresdkpartnerdrops/index.json` přidejte adresu URL do zdrojů balíčku NuGet. 
 
-   Informace o postupu najdete v tématu [zdroje balíčků](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#package-sources).
+   Chcete-li se dozvědět, jak, viz [zdroje balíčků](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#package-sources).
 
-2. Ve Správci balíčků NuGet Najděte balíček **Microsoft. Azure. Storage. Changefeed** a nainstalujte ho do svého projektu. 
+2. Ve Správci balíčků NuGet najděte balíček **Microsoft.Azure.Storage.Changefeed** a nainstalujte ho do projektu. 
 
-   Informace o postupu najdete v tématu [vyhledání a instalace balíčku](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package).
+   Informace o tom, jak najdete v [tématu Vyhledání a instalace balíčku](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package).
 
 ## <a name="connect-to-the-storage-account"></a>Připojení k účtu úložiště
 
-Analyzujte připojovací řetězec voláním metody [CloudStorageAccount. TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse) . 
+Analyzovat připojovací řetězec voláním [CloudStorageAccount.TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse) metoda. 
 
-Pak vytvořte objekt, který představuje Blob Storage v účtu úložiště voláním metody [CloudStorageAccount. CreateCloudBlobClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobaccountextensions.createcloudblobclient) .
+Potom vytvořte objekt, který představuje úložiště objektů blob ve vašem účtu úložiště voláním [metody CloudStorageAccount.CreateCloudBlobClient.](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobaccountextensions.createcloudblobclient)
 
 ```cs
 public bool GetBlobClient(ref CloudBlobClient cloudBlobClient, string storageConnectionString)
@@ -58,16 +58,16 @@ public bool GetBlobClient(ref CloudBlobClient cloudBlobClient, string storageCon
 }
 ```
 
-## <a name="initialize-the-change-feed"></a>Inicializace kanálu změn
+## <a name="initialize-the-change-feed"></a>Inicializovat kanál změn
 
-Do horní části souboru kódu přidejte následující příkazy using. 
+Přidejte následující příkazy pomocí horní části souboru kódu. 
 
 ```csharp
 using Avro.Generic;
 using ChangeFeedClient;
 ```
 
-Pak vytvořte instanci třídy **ChangeFeed** voláním metody **GetContainerReference** . Předejte název kontejneru kanálu změn.
+Potom vytvořte instanci třídy **ChangeFeed** voláním metody **GetContainerReference.** Předaj název kontejneru kanálu změn.
 
 ```csharp
 public async Task<ChangeFeed> GetChangeFeed(CloudBlobClient cloudBlobClient)
@@ -85,11 +85,11 @@ public async Task<ChangeFeed> GetChangeFeed(CloudBlobClient cloudBlobClient)
 ## <a name="reading-records"></a>Čtení záznamů
 
 > [!NOTE]
-> Kanál změn je v účtu úložiště neměnný a entita s oprávněními jen pro čtení. Libovolný počet aplikací může číst a zpracovávat kanál změn současně a nezávisle na svém vlastním pohodlí. Záznamy se neodstraňují z kanálu změn, když je aplikace přečte. Stav čtení nebo iterace každého náročného čtecího modulu je nezávislý a spravovaný pouze vaší aplikací.
+> Kanál změn je neměnná entita jen pro čtení ve vašem účtu úložiště. Libovolný počet aplikací může číst a zpracovávat kanál změn současně a nezávisle na vlastní pohodlí. Záznamy nejsou odebrány z kanálu změn při čtení aplikace. Stav čtení nebo iterace každého náročného čteče je nezávislý a udržuje pouze vaše aplikace.
 
-Nejjednodušší způsob, jak číst záznamy, je vytvořit instanci třídy **ChangeFeedReader** . 
+Nejjednodušší způsob čtení záznamů je vytvořit instanci třídy **ChangeFeedReader.** 
 
-Tento příklad prochází všechny záznamy v kanálu změn a pak tiskne do konzoly několik hodnot z každého záznamu. 
+Tento příklad itetuje všechny záznamy v kanálu změn a potom vytiskne do konzoly několik hodnot z každého záznamu. 
  
 ```csharp
 public async Task ProcessRecords(ChangeFeed changeFeed)
@@ -116,15 +116,15 @@ public async Task ProcessRecords(ChangeFeed changeFeed)
 }
 ```
 
-## <a name="resuming-reading-records-from-a-saved-position"></a>Obnovování čtení záznamů z uložené pozice
+## <a name="resuming-reading-records-from-a-saved-position"></a>Obnovení čtení záznamů z uložené pozice
 
-Můžete zvolit, že se má vaše pozice pro čtení uložit v informačním kanálu, a pokračovat v iteraci záznamů v budoucím čase. Stav iterace kanálu změn můžete kdykoli uložit pomocí metody **ChangeFeedReader. SerializeState ()** . Stav je **řetězec** a aplikace může tento stav uložit na základě návrhu vaší aplikace (například: do databáze nebo souboru).
+Můžete si vybrat, zda chcete uložit pozici pro čtení ve zdroji změn a pokračovat v iterace záznamů v budoucnu. Stav iterace kanálu změn můžete kdykoli uložit pomocí metody **ChangeFeedReader.SerializeState().** Stav je **řetězec** a aplikace můžete uložit tento stav na základě návrhu aplikace (například: do databáze nebo souboru).
 
 ```csharp
     string currentReadState = processor.SerializeState();
 ```
 
-Můžete pokračovat v iteraci pomocí záznamů z posledního stavu vytvořením **ChangeFeedReader** pomocí metody **CreateChangeFeedReaderFromPointerAsync** .
+Můžete pokračovat iterace prostřednictvím záznamů z posledního stavu vytvořením **ChangeFeedReader** pomocí **CreateChangeFeedReaderFromPointerAsync** metoda.
 
 ```csharp
 public async Task ProcessRecordsFromLastPosition(ChangeFeed changeFeed, string lastReadState)
@@ -154,7 +154,7 @@ public async Task ProcessRecordsFromLastPosition(ChangeFeed changeFeed, string l
 
 ## <a name="stream-processing-of-records"></a>Zpracování datových proudů záznamů
 
-Můžete zvolit zpracování záznamů kanálu změn při jejich doručení. Viz [specifikace](storage-blob-change-feed.md#specifications).
+Můžete se rozhodnout zpracovat záznamy informačního kanálu o změnách při jejich doručení. Viz [Specifikace](storage-blob-change-feed.md#specifications).
 
 ```csharp
 public async Task ProcessRecordsStream(ChangeFeed changeFeed, int waitTimeMs)
@@ -188,9 +188,9 @@ public async Task ProcessRecordsStream(ChangeFeed changeFeed, int waitTimeMs)
 
 ## <a name="reading-records-within-a-time-range"></a>Čtení záznamů v časovém rozsahu
 
-Kanál změn je uspořádán do hodinových segmentů na základě času události změny. Viz [specifikace](storage-blob-change-feed.md#specifications). Můžete číst záznamy z segmentů změny kanálu, které spadají do určitého časového rozsahu.
+Kanál změn je uspořádán do hodinových segmentů na základě času události změny. Viz [Specifikace](storage-blob-change-feed.md#specifications). Záznamy můžete číst ze segmentů kanálu změn, které spadají do určitého časového rozsahu.
 
-Tento příklad získá počáteční časy všech segmentů. Pak tento seznam projde do tohoto seznamu, dokud počáteční čas nenásleduje za časem posledního přípraváho segmentu nebo mimo koncový čas požadovaného rozsahu. 
+Tento příklad získá počáteční časy všech segmentů. Poté iteruje tento seznam, dokud počáteční čas nepřekročí čas posledního segmentu spotřebního materiálu nebo za koncový čas požadovaného rozsahu. 
 
 ### <a name="selecting-segments-for-a-time-range"></a>Výběr segmentů pro časový rozsah
 
@@ -269,9 +269,9 @@ public async Task ProcessRecordsInSegment(ChangeFeed changeFeed, DateTimeOffset 
 
 ## <a name="read-records-starting-from-a-time"></a>Čtení záznamů od času
 
-Můžete číst záznamy kanálu změn od počátečního segmentu až do konce. Podobně jako při čtení záznamů v časovém rozsahu můžete vypsat segmenty a vybrat segment, ze kterého se má spustit iterace.
+Záznamy kanálu změn můžete číst od počátečního segmentu až do konce. Podobně jako čtení záznamů v časovém rozsahu můžete vypsat segmenty a vybrat segment, ze který chcete začít iterace.
 
-Tento příklad načte hodnotu [DateTimeOffset](https://docs.microsoft.com/dotnet/api/system.datetimeoffset?view=netframework-4.8) prvního segmentu ke zpracování.
+Tento příklad získá [DateTimeOffset](https://docs.microsoft.com/dotnet/api/system.datetimeoffset?view=netframework-4.8) první segment ke zpracování.
 
 ```csharp
 public async Task<DateTimeOffset> GetChangeFeedSegmentRefAfterTime
@@ -304,7 +304,7 @@ public async Task<DateTimeOffset> GetChangeFeedSegmentRefAfterTime
 }
 ```
 
-Tento příklad zpracovává záznamy kanálu změn počínaje od [DateTimeOffset](https://docs.microsoft.com/dotnet/api/system.datetimeoffset?view=netframework-4.8) počátečního segmentu.
+Tento příklad zpracovává záznamy kanálu změny počínaje [DateTimeOffset](https://docs.microsoft.com/dotnet/api/system.datetimeoffset?view=netframework-4.8) počátečnísegment.
 
 ```csharp
 public async Task ProcessRecordsStartingFromSegment(ChangeFeed changeFeed, DateTimeOffset segmentStart)
@@ -367,8 +367,8 @@ private async Task<bool> IsSegmentConsumableAsync(ChangeFeed changeFeed, ChangeF
 ```
 
 >[!TIP]
-> Segment může mít v jednom nebo více *chunkFilePath*protokoly změny kanálu. V případě více *chunkFilePath* systém interně rozdělil záznamy do více horizontálních oddílů pro správu propustnosti publikování. Je zaručeno, že každý oddíl segmentu bude obsahovat změny pro vzájemně se vylučující objekty BLOB a lze je zpracovat nezávisle bez porušení řazení. Třídu **ChangeFeedSegmentShardReader** můžete použít k iteraci záznamů na úrovni horizontálních oddílů, pokud je to pro váš scénář nejúčinnější.
+> Segment může mít protokoly kanálu změn v jednom nebo více *chunkFilePath*. V případě více *chunkFilePath* systém interně rozdělil záznamy do více oddílů pro správu propustnost publikování. Je zaručeno, že každý oddíl segmentu bude obsahovat změny pro vzájemně se vylučující objekty BLOB a může být zpracován nezávisle bez porušení pořadí. Třídu **ChangeFeedSegmentShardReader** můžete použít k iterátu prostřednictvím záznamů na úrovni úlomku, pokud je to pro váš scénář nejefektivnější.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o protokolech změn kanálu. Viz [Změna kanálu v Azure Blob Storage (Preview)](storage-blob-change-feed.md)
+Přečtěte si další informace o protokolech zdrojů změn. Viz [Kanál změn ve službě Azure Blob Storage (preview)](storage-blob-change-feed.md)

@@ -1,6 +1,6 @@
 ---
-title: Komponenty vysoké dostupnosti ve službě Azure HDInsight
-description: Přehled různých komponent vysoké dostupnosti používaných clustery HDInsight.
+title: Komponenty s vysokou dostupností v Azure HDInsight
+description: Přehled různých komponent s vysokou dostupností používaných clustery HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,130 +8,130 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.openlocfilehash: 38fb45fd339b5e2c7cab6f66a1ed6c0df73fb29e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74069633"
 ---
-# <a name="high-availability-services-supported-by-azure-hdinsight"></a>Služby vysoké dostupnosti podporované službou Azure HDInsight
+# <a name="high-availability-services-supported-by-azure-hdinsight"></a>Služby s vysokou dostupností podporované službou Azure HDInsight
 
- Pro zajištění optimální úrovně dostupnosti pro komponenty analýzy se služba HDInsight vyvinula s jedinečnou architekturou pro zajištění vysoké dostupnosti důležitých služeb (HA). Některé součásti této architektury byly vyvinuty společností Microsoft za účelem poskytování automatického převzetí služeb při selhání. Další komponenty jsou standardní komponenty Apache, které jsou nasazené pro podporu konkrétních služeb. Tento článek popisuje architekturu modelu služby HA v HDInsight, jak HDInsight podporuje převzetí služeb při selhání pro služby HA a osvědčené postupy pro obnovení z dalších přerušení služby.
+ Abyvám bylo možné poskytnout optimální úroveň dostupnosti pro komponenty analýzy, byl hdinsight vyvinut s jedinečnou architekturou pro zajištění vysoké dostupnosti (HA) kritických služeb. Některé součásti této architektury byly vyvinuty společností Microsoft poskytovat automatické převzetí služeb při selhání. Další součásti jsou standardní součásti Apache, které jsou nasazeny pro podporu konkrétních služeb. Tento článek vysvětluje architekturu modelu služeb HA v HDInsight, jak HDInsight podporuje převzetí služeb při selhání pro služby HA a osvědčené postupy pro obnovení z jiných přerušení služeb.
 
-## <a name="high-availability-infrastructure"></a>Infrastruktura vysoké dostupnosti
+## <a name="high-availability-infrastructure"></a>Infrastruktura s vysokou dostupností
 
-HDInsight nabízí přizpůsobenou infrastrukturu, která zajistí vysokou dostupnost čtyř primárních služeb díky funkcím automatického převzetí služeb při selhání:
+HDInsight poskytuje přizpůsobenou infrastrukturu, která zajišťuje vysokou dostupnost čtyř primárních služeb s automatickými možnostmi převzetí služeb při selhání:
 
 - Server Apache Ambari
-- Časová osa aplikace Server pro Apache nitě
-- Server historie úlohy pro Hadoop MapReduce
-- Apache Livy
+- Server časové osy aplikace pro Apache YARN
+- Server historie úloh pro hadoopovou mapuSnížit
+- Apačská Livy
 
-Tato infrastruktura se skládá z řady služeb a softwarových komponent, které některé z nich navrhují Microsoft. Následující komponenty jsou pro platformu HDInsight jedinečné:
+Tato infrastruktura se skládá z řady služeb a softwarových součástí, z nichž některé jsou navrženy společností Microsoft. Platforma HDInsight je jedinečná následující součást:
 
-- Podřízený kontroler převzetí služeb při selhání
-- Hlavní kontroler převzetí služeb při selhání
-- Služba s vysokou dostupností na podřízené úrovni
-- Hlavní služba vysoké dostupnosti
+- Řadič převzetí služeb při selhání slave
+- Hlavní řadič převzetí služeb při selhání
+- Služba vysoké dostupnosti slave
+- Hlavní služba s vysokou dostupností
 
-![Infrastruktura vysoké dostupnosti](./media/hdinsight-high-availability-components/high-availability-architecture.png)
+![infrastruktura s vysokou dostupností](./media/hdinsight-high-availability-components/high-availability-architecture.png)
 
-K dispozici jsou i další služby vysoké dostupnosti, které podporuje Open Source součásti pro spolehlivost Apache. Tyto součásti jsou také k dispozici v clusterech HDInsight:
+Existují také další služby s vysokou dostupností, které jsou podporovány komponentami spolehlivosti Apache s otevřeným zdrojovým kódem. Tyto součásti jsou také k dispozici v clusterech HDInsight:
 
-- Systém souborů Hadoop (HDFS) NameNode
-- Správce prostředků PŘÍZe
-- HBase Master
+- Hadoop souborový systém (HDFS) NameNode
+- Správce prostředků příze
+- HZákladní vzor
 
-Následující části poskytují další podrobnosti o tom, jak tyto služby spolupracují.
+V následujících částech naleznete další podrobnosti o tom, jak tyto služby spolupracují.
 
-## <a name="hdinsight-high-availability-services"></a>Služby HDInsight s vysokou dostupností
+## <a name="hdinsight-high-availability-services"></a>HDInsight služby s vysokou dostupností
 
-Společnost Microsoft poskytuje podporu pro čtyři služby Apache v následující tabulce v clusterech HDInsight. Aby je bylo možné odlišit od služeb s vysokou dostupností, které jsou podporovány součástmi z Apache, označují se jako *služby HDInsight ha*.
+Společnost Microsoft poskytuje podporu pro čtyři služby Apache v následující tabulce v clusterech HDInsight. Aby se odlišily od služeb s vysokou dostupností podporovaných komponentami od Apache, nazývají se *služby HDInsight HA*.
 
 | Služba | Uzly clusteru | Typy clusterů | Účel |
 |---|---|---|---|
-| Server Apache Ambari| Aktivní hlavnímu uzlu | Vše | Monitoruje a spravuje cluster.|
-| Časová osa aplikace Server pro Apache nitě | Aktivní hlavnímu uzlu | Vše kromě Kafka | Udržuje ladicí informace o úlohách PŘÍZe spuštěných v clusteru.|
-| Server historie úlohy pro Hadoop MapReduce | Aktivní hlavnímu uzlu | Vše kromě Kafka | Udržuje data ladění pro úlohy MapReduce.|
-| Apache Livy | Aktivní hlavnímu uzlu | Spark | Umožňuje snadnou interakci s clusterem Spark přes rozhraní REST. |
+| Server Apache Ambari| Aktivní headnode | Všechny | Monitoruje a spravuje cluster.|
+| Server časové osy aplikace pro Apache YARN | Aktivní headnode | Všichni kromě Kafky | Udržuje ladění informací o úlohách YARN spuštěných v clusteru.|
+| Server historie úloh pro hadoopovou mapuSnížit | Aktivní headnode | Všichni kromě Kafky | Udržuje ladicí data pro úlohy MapReduce.|
+| Apačská Livy | Aktivní headnode | Spark | Umožňuje snadnou interakci s clusterem Spark přes rozhraní REST |
 
 >[!Note]
-> Clustery HDInsight Balíček zabezpečení podniku (ESP) aktuálně poskytují pouze vysokou dostupnost serveru Ambari.
+> Clustery balíčků HDInsight Enterprise Security Package (ESP) aktuálně poskytují pouze server Ambari vysokou dostupnost.
 
 ### <a name="architecture"></a>Architektura
 
-Každý cluster HDInsight má dva hlavních v aktivním a pohotovostním režimu. Služby HDInsight HA běží jenom na hlavních. Tyto služby by měly být vždy spuštěné na aktivním hlavnímu uzlu a zastaveny a přepnuty do režimu údržby v pohotovostním hlavnímu uzlu.
+Každý cluster HDInsight má dva headnodes v aktivním a pohotovostním režimu. Služby HDInsight HA běží pouze na headnodes. Tyto služby by měly být vždy spuštěny na aktivním headnode a zastaveny a uvedeny do režimu údržby v pohotovostním uzlu.
 
-Aby se zajistilo správné stavy služeb HA a poskytovaly rychlé převzetí služeb při selhání, využívá služba HDInsight Apache ZooKeeper, což je koordinační služba pro distribuované aplikace, která umožňuje aktivní volby hlavnímu uzlu. HDInsight také zřizuje několik procesů Java na pozadí, které koordinují postup převzetí služeb při selhání pro služby HDInsight HA. Jedná se o následující služby: hlavní kontroler převzetí služeb při selhání, podřízený řadič pro převzetí služeb při selhání, *hlavní-ha-Service*a *podřízený-ha-Service*.
+Pro udržování správných stavů služeb HA a poskytování rychlého převzetí služeb při selhání využívá HDInsight Apache ZooKeeper, což je koordinační služba pro distribuované aplikace, k provádění aktivních voleb headnode. HDInsight také zřstanoví několik procesů java na pozadí, které koordinují postup převzetí služeb při selhání pro služby HDInsight HA. Tyto služby jsou následující: hlavní řadič převzetí služeb při selhání, řadič převzetí služeb při selhání slave, *master-ha-service*a *slave-ha-service*.
 
 ### <a name="apache-zookeeper"></a>Apache ZooKeeper
 
-Apache ZooKeeper je vysoce výkonná koordinační služba pro distribuované aplikace. V produkčním prostředí se ZooKeeper obvykle spouští v replikovaném režimu, kde replikovaná skupina serverů ZooKeeper tvoří kvorum. Každý cluster HDInsight má tři uzly ZooKeeper, které umožňují třem serverům ZooKeeper vytvořit kvorum. HDInsight má souběžně spuštěné dvě ZooKeeper kvora. Jeden kvorum rozhoduje o aktivním hlavnímu uzlu v clusteru, ve kterém by se měly spustit služby HDInsight HA. Další kvorum slouží ke koordinaci služeb HA poskytovaných službou Apache, jak je popsáno v dalších částech.
+Apache ZooKeeper je vysoce výkonná koordinační služba pro distribuované aplikace. V produkčním prostředí zookeeper obvykle běží v replikovaném režimu, kde replikovaná skupina serverů ZooKeeper tvoří kvorum. Každý cluster HDInsight má tři uzly ZooKeeper, které umožňují tři zookeeper servery tvořit kvorum. HDInsight má dvě kvora ZooKeeper běží paralelně s sebou. Jedno kvorum rozhodne o aktivním headnode v clusteru, ve kterém by měly být spuštěny služby HDInsight HA. Další kvorum se používá ke koordinaci služeb HA poskytovaných Apache, jak je podrobně popsáno v pozdějších částech.
 
-### <a name="slave-failover-controller"></a>Podřízený kontroler převzetí služeb při selhání
+### <a name="slave-failover-controller"></a>Řadič převzetí služeb při selhání slave
 
-Podřízený kontroler převzetí služeb při selhání běží na všech uzlech v clusteru HDInsight. Tento kontroler zodpovídá za spouštění agenta Ambari a *podřízeného-ha-Service* na každém uzlu. Pravidelně se dotazuje prvního ZooKeeper kvora o aktivním hlavnímu uzlu. Když se hlavních aktivní a pohotovostní, kontroler převzetí služeb při selhání provede toto:
+Řadič převzetí služeb při selhání slave běží na každém uzlu v clusteru HDInsight. Tento řadič je zodpovědný za spuštění agenta Ambari a *slave-ha-service* na každém uzlu. Pravidelně se dotazuje prvního kvora ZooKeeper o aktivním headnode. Při změně aktivní ho a pohotovostního režimu headnodes, podřízený řadič převzetí služeb při selhání provede následující:
 
 1. Aktualizuje konfigurační soubor hostitele.
 1. Restartuje agenta Ambari.
 
-*Podřízená služba ha-Service* zodpovídá za zastavování služeb HDInsight ha (s výjimkou Ambari serveru) v pohotovostním hlavnímu uzlu.
+Služba *slave-ha* je zodpovědná za zastavení služeb HDInsight HA (s výjimkou serveru Ambari) v pohotovostním uzlu.
 
-### <a name="master-failover-controller"></a>Hlavní kontroler převzetí služeb při selhání
+### <a name="master-failover-controller"></a>Hlavní řadič převzetí služeb při selhání
 
-Hlavní kontroler převzetí služeb při selhání běží na obou hlavních. Hlavní řadiče pro převzetí služeb při selhání komunikují s prvním ZooKeeper kvorem, aby bylo možné jmenovat hlavnímu uzlu, na kterém běží jako aktivní hlavnímu uzlu.
+Hlavní řadič převzetí služeb při selhání běží na obou hlavové uzly. Oba hlavní řadiče převzetí služeb při selhání komunikují s prvním kvorem ZooKeeper a nominují headnode, na které běží jako aktivní headnode.
 
-Pokud například hlavní řadič pro převzetí služeb při selhání na hlavnímu uzlu 0 vyhledá výběr, probíhají tyto změny:
+Pokud například hlavní řadič převzetí služeb při selhání na headnode 0 vyhraje volby, dojde k následujícím změnám:
 
-1. Hlavnímu uzlu 0 bude aktivní.
-1. Hlavní kontroler převzetí služeb při selhání spustí server Ambari a *hlavní-ha-Service* na hlavnímu uzlu 0.
-1. Druhý hlavní řadič pro převzetí služeb při selhání zastaví Ambari Server a *hlavní-ha-Service* na hlavnímu uzlu 1.
+1. Headnode 0 se aktivuje.
+1. Hlavní řadič převzetí služeb při selhání spustí server Ambari a *službu master-ha-service* na headnode 0.
+1. Druhý hlavní řadič převzetí služeb při selhání zastaví server Ambari a *službu master-ha* na headnode 1.
 
-Hlavní-ha-Service se spouští jenom na aktivním hlavnímu uzlu, zastaví služby HDInsight HA (s výjimkou serveru Ambari) na pohotovostním hlavnímu uzlu a spustí je v aktivním hlavnímu uzlu.
+Master-ha-service běží pouze na aktivním headnode, zastaví služby HDInsight HA (s výjimkou serveru Ambari) v pohotovostním uzlu a spustí je na aktivním headnode.
 
 ### <a name="the-failover-process"></a>Proces převzetí služeb při selhání
 
-![Proces převzetí služeb při selhání](./media/hdinsight-high-availability-components/failover-steps.png)
+![proces převzetí služeb při selhání](./media/hdinsight-high-availability-components/failover-steps.png)
 
-Monitor stavu běží na každém hlavnímu uzlu spolu s hlavním řadičem pro převzetí služeb při selhání, aby odesílal hearbeat oznámení do kvora Zookeeper. Hlavnímu uzlu se v tomto scénáři považuje za službu HA. Monitor stavu zkontroluje, jestli je každá služba vysoké dostupnosti v pořádku a jestli je připravená k zapojení do volby vedoucího vedení. Pokud ano, bude tento hlavnímu uzlu konkurovat ve volbách. Pokud ne, ukončí volbu, dokud nebude znovu připravena.
+Na každém headnode je spuštěn monitor stavu spolu s hlavním řadičem převzetí služeb při selhání, který odesílá oznámení o poslechu do kvora Zookeeper. Headnode je v tomto scénáři považován za službu HA. Monitor stavu kontroluje, zda je každá služba s vysokou dostupností v pořádku a zda je připravena k účasti ve volbách do vedení. Pokud ano, bude tento headnode soutěžit ve volbách. Pokud ne, skončí volby, dokud se znovu nepřipraví.
 
-Pokud se v pohotovostním režimu hlavnímu uzlu kdykoli dosáhne vedoucího a bude aktivní (například v případě selhání s předchozím aktivním uzlem), zahájí hlavní řadič pro převzetí služeb při selhání všechny služby HDInsight HA. Hlavní kontroler převzetí služeb při selhání také zastaví tyto služby na ostatních hlavnímu uzlu.
+Pokud přeplože nýtoviny někdy dosáhne vedení a stane se aktivní (například v případě selhání s předchozím aktivním uzřem), jeho hlavní řadič převzetí služeb při selhání spustí všechny služby HDInsight HA na něm. Hlavní řadič převzetí služeb při selhání také zastaví tyto služby na druhém uzlu.
 
-V případě selhání služby HDInsight HA, jako je stav výpadku služby nebo není v pořádku, by měl hlavní kontroler převzetí služeb při selhání automaticky restartovat nebo zastavit služby podle stavu hlavnímu uzlu. Uživatelé by neměli ručně spouštět službu HDInsight HA na obou hlavní uzlech. Místo toho povolte automatické nebo ruční převzetí služeb při selhání pomocí služby obnovení.
+V případě selhání služby HDInsight HA, jako je například služba je dolů nebo není v pořádku, hlavní řadič převzetí služeb při selhání by měl automaticky restartovat nebo zastavit služby podle stavu headnode. Uživatelé by neměli ručně spouštět služby HDInsight HA na obou hlavních uzlech. Místo toho povolte automatické nebo ruční převzetí služeb při selhání, které službu obnoví.
 
-### <a name="inadvertent-manual-intervention"></a>Neúmyslná ruční zásah
+### <a name="inadvertent-manual-intervention"></a>Neúmyslný ruční zásah
 
-Služby HDInsight HA by se měly spouštět jenom na aktivních hlavnímu uzlu a v případě potřeby se automaticky restartují. Vzhledem k tomu, že individuální služby HA nemají své vlastní monitorování stavu, nejde převzetí služeb při selhání aktivovat na úrovni jednotlivých služeb. Převzetí služeb při selhání je zajištěno na úrovni uzlu a nikoli na úrovni služby.
+Služby HDInsight HA by měly být spuštěny pouze na aktivním headnode a v případě potřeby budou automaticky restartovány. Vzhledem k tomu, že jednotlivé služby HA nemají vlastní monitor stavu, nelze převzetí služeb při selhání spustit na úrovni jednotlivých služeb. Převzetí služeb při selhání je zajištěno na úrovni uzlu a nikoli na úrovni služby.
 
 ### <a name="some-known-issues"></a>Některé známé problémy
 
-- Při ručním spuštění služby HA v pohotovostním režimu hlavnímu uzlu přestane fungovat, dokud nedojde k dalšímu převzetí služeb při selhání. Pokud jsou na obou hlavních spuštěné služby HA, můžou některé potenciální problémy zahrnovat: uživatelské rozhraní Ambari je nedostupné, Ambari vyvolává chyby, operace PŘÍZe, Spark a Oozie se můžou zablokovat.
+- Při ručním spuštění služby HA v pohotovostním uzlu se nezastaví, dokud nedojde k dalšímu převzetí služeb při selhání. Když ha služby běží na obou headnodes, některé potenciální problémy patří: Ambari UI je nepřístupný, Ambari hází chyby, YARN, Spark, a Oozie pracovních míst může uvíznout.
 
-- Když se služba HA na aktivním hlavnímu uzlu zastaví, nerestartuje se, dokud nedojde k dalšímu převzetí služeb při selhání, nebo pokud je hlavní řadič pro převzetí služeb při selhání nebo hlavní server, který Když se jedna nebo víc služeb HA zastaví na aktivním hlavnímu uzlu, obzvláště když se Ambari Server zastaví, uživatelské rozhraní Ambari je nedostupné, další možné problémy zahrnují selhání úloh PŘÍZ, Spark a Oozie.
+- Když se služba HA na aktivním hlavním uzlu zastaví, nerestartuje se, dokud nedojde k dalšímu převzetí služeb při selhání nebo dokud se hlavní řadič převzetí služeb při selhání/hlavní služba ha-service nerestartuje. Když se jedna nebo více služeb HA zastaví na aktivním headnode, zvláště když se zastaví server Ambari, je ui Ambari nepřístupné, mezi další potenciální problémy patří selhání úloh YARN, Spark a Oozie.
 
-## <a name="apache-high-availability-services"></a>Služby Apache High Availability
+## <a name="apache-high-availability-services"></a>Služby s vysokou dostupností Apache
 
-Apache poskytuje vysokou dostupnost pro HDFS NameNode, PŘÍZ ResourceManager a HBase Master, které jsou také k dispozici v clusterech HDInsight. Na rozdíl od služeb HDInsight HA jsou podporované v clusterech ESP. Služba Apache HA komunikuje s druhým ZooKeeper kvorem (popsaným v předchozí části) a volí stav aktivní/pohotovostní a provádí automatické převzetí služeb při selhání. Následující části obsahují podrobnosti o fungování těchto služeb.
+Apache poskytuje vysokou dostupnost pro HDFS NameNode, YARN ResourceManager a HBase Master, které jsou také k dispozici v clusterech HDInsight. Na rozdíl od služeb HDInsight HA jsou podporovány v clusterech ESP. Služby Apache HA komunikují s druhým kvorem ZooKeeper (popsaným ve výše uvedené části) a volí aktivní/pohotovostní stavy a provádějí automatické převzetí služeb při selhání. V následujících částech jsou podrobně popsány informace o tom, jak tyto služby fungují.
 
-### <a name="hadoop-distributed-file-system-hdfs-namenode"></a>Hadoop systém souborů DFS (Distributed File System) (HDFS) NameNode
+### <a name="hadoop-distributed-file-system-hdfs-namenode"></a>Hadoop Distribuovaný souborový systém (HDFS) NameNode
 
-Clustery HDInsight založené na Apache Hadoop 2,0 nebo vyšší poskytují vysokou dostupnost NameNode. Existují dva NameNodes spuštěné v hlavních, které jsou nakonfigurovány pro automatické převzetí služeb při selhání. NameNodes používá *ZKFailoverController* ke komunikaci s Zookeeper pro stav aktivního/úsporného režimu. *ZKFailoverController* běží na obou hlavních a funguje stejným způsobem jako hlavní kontroler převzetí služeb při selhání.
+HdInsight clustery založené na Apache Hadoop 2.0 nebo vyšší poskytují NameNode vysokou dostupnost. Na hlavových uzlech jsou spuštěny dva názvové uzly, které jsou nakonfigurovány pro automatické převzetí služeb při selhání. NameNodes použít *ZKFailoverController* komunikovat s Zookeeper zvolit pro aktivní/pohotovostní stav. *ZKFailoverController* běží na obou headnodes a funguje stejným způsobem jako hlavní řadič převzetí služeb při selhání výše.
 
-Druhé kvorum Zookeeper je nezávislé na prvním kvoru, takže aktivní NameNode nemusí běžet na aktivním hlavnímu uzlu. Pokud je aktivní NameNode v nesprávném stavu nebo není v pořádku, v pohotovostním NameNode se tato volba vystaví jako aktivní.
+Druhé kvorum Zookeeper je nezávislé na prvním kvoru, takže aktivní NameNode nemusí běžet na aktivním headnode. Pokud je aktivní název mrtvé nebo není v pořádku, pohotovostní názevnode vyhraje volby a stane se aktivní.
 
-### <a name="yarn-resourcemanager"></a>Správce prostředků PŘÍZe
+### <a name="yarn-resourcemanager"></a>Správce prostředků příze
 
-Clustery HDInsight založené na Apache Hadoop 2,4 nebo vyšší podporují vysokou dostupnost prostředků PŘÍZového správce. Existují dva správce prostředků, RM1 a RM2, spuštěné v hlavnímu uzlu 0 a hlavnímu uzlu 1 v uvedeném pořadí. Podobně jako NameNode je také pro automatické převzetí služeb při selhání nakonfigurován správce prostředků PŘÍZe. Pokud aktuální aktivní Správce prostředků přestane reagovat nebo nereaguje, bude se automaticky aktivovat jiný správce prostředků.
+HDInsight clustery založené na Apache Hadoop 2.4 nebo vyšší, podporují YARN ResourceManager vysokou dostupnost. Existují dva ResourceManagers, rm1 a rm2, běží na headnode 0 a headnode 1, resp. Podobně jako NameNode je správce prostředků YARN také nakonfigurován pro automatické převzetí služeb při selhání. Jiný ResourceManager je automaticky zvolen být aktivní, když aktuální aktivní ResourceManager přejde dolů nebo neodpovídá.
 
-PŘÍZ ResourceManager používá svůj vložený *ActiveStandbyElector* jako detektor selhání a vodicího voliče. Na rozdíl od HDFS NameNode nepotřebuje PŘÍZe ResourceManager samostatný ZKFC démon. Aktivní Správce prostředků zapisuje své stavy do Apache Zookeeper.
+YARN ResourceManager používá svůj vestavěný *ActiveStandbyElector* jako detektor selhání a vůdce voliče. Na rozdíl od HDFS NameNode, YARN ResourceManager nepotřebuje samostatný daemon ZKFC. Aktivní ResourceManager zapisuje své stavy do Apache Zookeeper.
 
-Vysoká dostupnost PŘÍZového správce prostředků je nezávislá na NameNode a dalších službách HDInsight HA. Aktivní Správce prostředků se nemusí spustit na aktivním hlavnímu uzlu nebo hlavnímu uzlu, kde běží aktivní NameNode. Další informace o vysoké dostupnosti správce prostředků PŘÍZe najdete v tématu [Vysoká dostupnost správce prostředků](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/ResourceManagerHA.html).
+Vysoká dostupnost YARN ResourceManager je nezávislá na NameNode a dalších službách HDInsight HA. Aktivní ResourceManager nemusí být spuštěn na aktivní madou nebo v headnode, kde je spuštěn aktivní NázevNode. Další informace o vysoké dostupnosti yarn resourcemanageru naleznete v [tématu ResourceManager High Availability](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/ResourceManagerHA.html).
 
-### <a name="hbase-master"></a>HBase Master
+### <a name="hbase-master"></a>HZákladní vzor
 
-Clustery HDInsight HBA podporují HBase Master vysoké dostupnosti. Na rozdíl od jiných služeb HA, které běží na hlavních, se hlavní servery spouští na třech uzlech Zookeeper, kde jedna z nich je aktivní hlavní a druhá druhá z nich je pohotovostní. Podobně jako NameNode HBase Master koordinuje s Apache Zookeeper a umožňuje automatické převzetí služeb při selhání, když má aktuální aktivní hlavní server problémy. V tuto chvíli existuje jenom jedna aktivní HBase Master.
+Clustery HDInsight HBase podporují vysokou dostupnost HBase Master. Na rozdíl od jiných služeb HA, které běží na headnodes, HBase Masters běží na třech uzlech Zookeeper, kde jeden z nich je aktivní master a další dva jsou v pohotovostním režimu. Stejně jako NameNode, HBase Master koordinuje s Apache Zookeeper pro volby vůdce a dělá automatické převzetí služeb při selhání, když aktuální aktivní master má problémy. V každém okamžiku existuje pouze jeden aktivní hbase master.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Dostupnost a spolehlivost clusterů Apache Hadoop v HDInsight](hdinsight-high-availability-linux.md)
+- [Dostupnost a spolehlivost clusterů Apache Hadoop v HDInsightu](hdinsight-high-availability-linux.md)
 - [Architektura virtuální sítě Azure HDInsight](hdinsight-virtual-network-architecture.md)

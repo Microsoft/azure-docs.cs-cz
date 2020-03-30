@@ -1,51 +1,51 @@
 ---
-title: Správa prostředků v Azure Red Hat OpenShift | Microsoft Docs
-description: Správa projektů, šablon a datových proudů imagí v clusteru Azure Red Hat OpenShift
+title: Správa prostředků v Azure Red Hat OpenShift | Dokumenty společnosti Microsoft
+description: Správa projektů, šablon, datových proudů bitových obrázků v clusteru Azure Red Hat OpenShift
 services: openshift
-keywords: projekty Red Hat OpenShift žádají samoobslužného zřizování
+keywords: red hat openshift projekty požaduje self-provisioner
 author: mjudeikis
 ms.author: gwallace
 ms.date: 07/19/2019
 ms.topic: conceptual
 ms.service: container-service
 ms.openlocfilehash: d4f53238951784a74e6e3fc8a73d1f112ce75608
-ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79139109"
 ---
-# <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Správa projektů, šablon a datových proudů imagí v clusteru Azure Red Hat OpenShift 
+# <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Správa projektů, šablon, datových proudů bitových obrázků v clusteru Azure Red Hat OpenShift 
 
-V kontejnerové platformě OpenShift se projekty používají k seskupení a izolaci souvisejících objektů. Jako správce můžete vývojářům udělit přístup ke konkrétním projektům, umožnit jim vytvářet vlastní projekty a udělovat jim práva správce pro jednotlivé projekty.
+V platformě kontejnerů OpenShift se projekty používají k seskupení a izoluje související objekty. Jako správce můžete vývojářům poskytnout přístup ke konkrétním projektům, umožnit jim vytvářet vlastní projekty a udělit jim práva správce pro jednotlivé projekty.
 
-## <a name="self-provisioning-projects"></a>Projekty pro samoobslužné zřizování
+## <a name="self-provisioning-projects"></a>Projekty samozásobitení
 
-Můžete povolit vývojářům vytvářet své vlastní projekty. Koncový bod rozhraní API zodpovídá za zřízení projektu na základě šablony s názvem Project-Request. Webová konzola a příkaz `oc new-project` používají tento koncový bod, když vývojář vytvoří nový projekt.
+Můžete povolit vývojářům vytvářet své vlastní projekty. Koncový bod rozhraní API je zodpovědný za zřizování projektu podle šablony s názvem žádost o projekt. Webová konzola `oc new-project` a příkaz používají tento koncový bod, když vývojář vytvoří nový projekt.
 
-Při odeslání žádosti o projekt nahradí rozhraní API následující parametry v šabloně:
+Při odeslání žádosti o projekt rozhraní API nahradí následující parametry v šabloně:
 
 | Parametr               | Popis                                    |
 | ----------------------- | ---------------------------------------------- |
-| PROJECT_NAME            | Název projektu. Požadováno.             |
-| PROJECT_DISPLAYNAME     | Zobrazovaný název projektu. Může být prázdné. |
-| PROJECT_DESCRIPTION     | Popis projektu Může být prázdné.  |
-| PROJECT_ADMIN_USER      | Uživatelské jméno uživatele pro správu       |
+| PROJECT_NAME            | Název projektu. Povinná hodnota.             |
+| PROJECT_DISPLAYNAME     | Zobrazovaný název projektu. Může být prázdný. |
+| PROJECT_DESCRIPTION     | Popis projektu. Může být prázdný.  |
+| PROJECT_ADMIN_USER      | Uživatelské jméno uživatele spravujícího.       |
 | PROJECT_REQUESTING_USER | Uživatelské jméno žádajícího uživatele.           |
 
-Přístup k rozhraní API se uděluje vývojářům s vazbou role clusteru samoobslužné zřizování. Tato funkce je ve výchozím nastavení dostupná všem ověřeným vývojářům.
+Přístup k rozhraní API je udělen vývojářům s vazbou role clusteru self-provisioners. Tato funkce je ve výchozím nastavení dostupná všem ověřeným vývojářům.
 
-## <a name="modify-the-template-for-a-new-project"></a>Úprava šablony nového projektu 
+## <a name="modify-the-template-for-a-new-project"></a>Úprava šablony pro nový projekt 
 
-1. Přihlaste se jako uživatel s oprávněními `customer-admin`.
+1. Přihlaste se `customer-admin` jako uživatel s oprávněními.
 
-2. Upravte výchozí šablonu projekt – požadavek.
+2. Upravte výchozí šablonu žádosti o projekt.
 
    ```
    oc edit template project-request -n openshift
    ```
 
-3. Odeberte výchozí šablonu projektu z procesu aktualizace služby Azure Red Hat OpenShift (ARO) přidáním následující poznámky: `openshift.io/reconcile-protect: "true"`
+3. Odeberte výchozí šablonu projektu z procesu aktualizace Azure Red Hat OpenShift (ARO) přidáním následující poznámky:`openshift.io/reconcile-protect: "true"`
 
    ```
    ...
@@ -55,21 +55,21 @@ Přístup k rozhraní API se uděluje vývojářům s vazbou role clusteru samoo
    ...
    ```
 
-   Šablona projektu – požadavek nebude aktualizována procesem aktualizace ARO společnosti. To zákazníkům umožňuje přizpůsobit šablonu a zachovat tato přizpůsobení při aktualizaci clusteru.
+   Šablona žádosti o projekt nebude aktualizována procesem aktualizace ARO. To umožňuje zákazníkům přizpůsobit šablonu a zachovat tato vlastní nastavení při aktualizaci clusteru.
 
-## <a name="disable-the-self-provisioning-role"></a>Zakázání role samoobslužného zřizování
+## <a name="disable-the-self-provisioning-role"></a>Zakázání role samozřivace
 
-Ověřenou skupinu uživatelů můžete zabránit v samoobslužných zřizováních nových projektů.
+Můžete zabránit ověřené skupině uživatelů v samozřivacím novém ustavování nových projektů.
 
-1. Přihlaste se jako uživatel s oprávněními `customer-admin`.
+1. Přihlaste se `customer-admin` jako uživatel s oprávněními.
 
-2. Upravte vazbu role clusteru samoobslužné zřizování.
+2. Upravte vazbu role clusteru vlastních zřízenců.
 
    ```
    oc edit clusterrolebinding.rbac.authorization.k8s.io self-provisioners
    ```
 
-3. Odeberte roli z procesu aktualizace ARO a přidejte následující poznámku: `openshift.io/reconcile-protect: "true"`.
+3. Odeberte roli z procesu aktualizace ARO přidáním následující poznámky: `openshift.io/reconcile-protect: "true"`.
 
    ```
    ...
@@ -79,7 +79,7 @@ Ověřenou skupinu uživatelů můžete zabránit v samoobslužných zřizován�
    ...
    ```
 
-4. Změnou vazby role clusteru zabráníte `system:authenticated:oauth` vytváření projektů:
+4. Změňte vazbu role `system:authenticated:oauth` clusteru, abyste zabránili vytváření projektů:
 
    ```
    apiVersion: rbac.authorization.k8s.io/v1
@@ -99,12 +99,12 @@ Ověřenou skupinu uživatelů můžete zabránit v samoobslužných zřizován�
      name: osa-customer-admins
    ```
 
-## <a name="manage-default-templates-and-imagestreams"></a>Správa výchozích šablon a imageStreams
+## <a name="manage-default-templates-and-imagestreams"></a>Správa výchozích šablon a datových proudů obrázků
 
-V Azure Red Hat OpenShift můžete zakázat aktualizace pro jakékoli výchozí šablony a datové proudy imagí v oboru názvů `openshift`.
-Zakázání aktualizací pro všechny `Templates` a `ImageStreams` v oboru názvů `openshift`:
+V Azure Red Hat OpenShift můžete zakázat aktualizace pro všechny `openshift` výchozí šablony a datové proudy bitových obrázků uvnitř oboru názvů.
+Zakázání aktualizací `Templates` pro `ImageStreams` `openshift` všechny a v oboru názvů:
 
-1. Přihlaste se jako uživatel s oprávněními `customer-admin`.
+1. Přihlaste se `customer-admin` jako uživatel s oprávněními.
 
 2. Upravit `openshift` obor názvů:
 
@@ -112,7 +112,7 @@ Zakázání aktualizací pro všechny `Templates` a `ImageStreams` v oboru názv
    oc edit namespace openshift
    ```
 
-3. Z procesu aktualizace ARO odeberte `openshift` obor názvů přidáním následující poznámky: `openshift.io/reconcile-protect: "true"`
+3. Přidejte následující poznámku, která odebere `openshift` obor názvů z procesu aktualizace ARO:`openshift.io/reconcile-protect: "true"`
 
    ```
    ...
@@ -122,10 +122,10 @@ Zakázání aktualizací pro všechny `Templates` a `ImageStreams` v oboru názv
    ...
    ```
 
-   Jakýkoli jednotlivý objekt v oboru názvů `openshift` lze odebrat z procesu aktualizace přidáním poznámky `openshift.io/reconcile-protect: "true"`.
+   Každý jednotlivý objekt `openshift` v oboru názvů lze odebrat z `openshift.io/reconcile-protect: "true"` procesu aktualizace přidáním poznámky k němu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Vyzkoušejte si kurz:
+Vyzkoušejte výukový program:
 > [!div class="nextstepaction"]
 > [Vytvoření clusteru Azure Red Hat OpenShift](tutorial-create-cluster.md)

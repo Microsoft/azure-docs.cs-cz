@@ -1,5 +1,5 @@
 ---
-title: Místní spuštění úloh U-SQL – Azure Data Lake sadu U-SQL SDK
+title: Spouštění úloh U-SQL místně – Azure Data Lake U-SQL SDK
 description: Naučte se spouštět a testovat úlohy U-SQL místně pomocí příkazového řádku a programovacích rozhraní na místní pracovní stanici.
 services: data-lake-analytics
 ms.service: data-lake-analytics
@@ -9,49 +9,49 @@ ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 03/01/2017
 ms.openlocfilehash: 51d9060eaf4b30c696ef2a3b5f798a31e2f2a98a
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71309684"
 ---
-# <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Spuštění a testování U-SQL s Azure Data Lake U-SQL SDK
+# <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Spuštění a testování U-SQL pomocí azure data lake U-SQL SDK
 
-Při vývoji skriptu U-SQL je běžné spouštět a testovat skript U-SQL místně před odesláním do cloudu. Azure Data Lake poskytuje balíček NuGet s názvem Azure Data Lake SDK U-SQL pro tento scénář, pomocí kterého můžete snadno škálovat běh a testování U-SQL. K automatizaci kompilace a testování je také možné integrovat tento test U-SQL se systémem CI (průběžný Integration).
+Při vývoji U-SQL skript, je běžné spustit a otestovat U-SQL skript místně před odesláním do cloudu. Azure Data Lake poskytuje balíček Nuget s názvem Azure Data Lake U-SQL SDK pro tento scénář, pomocí kterého můžete snadno škálovat U-SQL spustit a testovat. Je také možné integrovat tento U-SQL test s CI (kontinuální integrace) systém pro automatizaci kompilace a testování.
 
-Pokud se zajímáte, jak ručně spustit místní a ladit skript U-SQL pomocí nástrojů grafického uživatelského rozhraní, můžete pro to použít Nástroje Azure Data Lake pro Visual Studio. Další informace najdete [tady](data-lake-analytics-data-lake-tools-local-run.md).
+Pokud vám záleží na tom, jak ručně místní spuštění a ladění U-SQL skript s nástroji GUI, pak můžete použít Azure Data Lake Tools pro Visual Studio pro to. Můžete se dozvědět více [zde](data-lake-analytics-data-lake-tools-local-run.md).
 
-## <a name="install-azure-data-lake-u-sql-sdk"></a>Instalace Azure Data Lake U-SQL SDK
+## <a name="install-azure-data-lake-u-sql-sdk"></a>Instalace sady Azure Data Lake U-SQL SDK
 
-Azure Data Lake sadu U-SQL SDK můžete získat [tady](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/) na NuGet.org. A před použitím je nutné se ujistit, že máte závislosti následujícím způsobem.
+Azure Data Lake U-SQL SDK můžete získat [zde](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/) na Nuget.org. A před použitím, musíte se ujistit, že máte závislosti takto.
 
 ### <a name="dependencies"></a>Závislosti
 
-Data Lake SDK U-SQL vyžaduje následující závislosti:
+Sada Data Lake U-SQL SDK vyžaduje následující závislosti:
 
-- [Microsoft .NET Framework 4,6 nebo novější](https://www.microsoft.com/download/details.aspx?id=17851).
-- Microsoft Visual C++ 14 a Windows SDK 10.0.10240.0 nebo novější (označované jako CppSDK v tomto článku). Existují dva způsoby, jak získat CppSDK:
+- [Rozhraní Microsoft .NET Framework 4.6 nebo novější](https://www.microsoft.com/download/details.aspx?id=17851).
+- Microsoft Visual C++ 14 a Windows SDK 10.0.10240.0 nebo novější (který se nazývá CppSDK v tomto článku). CppSDK lze získat dvěma způsoby:
 
-  - Nainstalujte [Visual Studio Community Edition](https://developer.microsoft.com/downloads/vs-thankyou). Budete mít složku \Windows Kits\10 ve složce Program Files – například C:\Program Files (x86) \Windows Kits\10\. V části \Windows Kits\10\Lib. najdete taky verzi Windows 10 SDK. Pokud tyto složky nevidíte, přeinstalujte sadu Visual Studio a nezapomeňte při instalaci vybrat sadu Windows 10 SDK. Pokud máte tuto instalaci se sadou Visual Studio, místní kompilátor U-SQL ho automaticky najde.
+  - Nainstalujte [aplikaci Visual Studio Community Edition](https://developer.microsoft.com/downloads/vs-thankyou). Ve složce Program Files budete mít složku \Windows Kits\10, například C:\Program Files (x86)\Windows Kits\10\. Verzi sady Windows 10 najdete také v části \Windows Kit\10\Lib. Pokud tyto složky nevidíte, přeinstalujte Visual Studio a nezapomeňte během instalace vybrat sadu Windows 10 SDK. Pokud máte to to nainstalované s Visual Studio, u-SQL místní kompilátor najde automaticky.
 
-    ![Data Lake Tools for Visual Studio Local-run Windows 10 SDK](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-windows-10-sdk.png)
+    ![Nástroje datového jezera pro místní windows 10 SDK pro Visual Studio](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-windows-10-sdk.png)
 
-  - Nainstalovat [Data Lake nástroje pro Visual Studio](https://aka.ms/adltoolsvs). Předbalený vizuál C++ a soubory Windows SDK najdete na adrese C:\Program Files (x86) \Microsoft Visual Studio 14.0 \ Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.xxxx.X\CppSDK. V tomto případě místní kompilátor U-SQL nemůže závislosti automaticky najít. Je nutné zadat cestu k CppSDK. Soubory můžete buď zkopírovat do jiného umístění, nebo je použít tak, jak jsou.
+  - Nainstalujte [nástroje datového jezera pro visual studio](https://aka.ms/adltoolsvs). Soubory sady Visual C++ a Windows SDK naleznete v souborech C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK. V tomto případě místní kompilátor U-SQL nemůže najít závislosti automaticky. Je třeba zadat cestu CppSDK pro něj. Soubory můžete zkopírovat do jiného umístění nebo je použít tak, jak jsou.
 
-## <a name="understand-basic-concepts"></a>Principy základních konceptů
+## <a name="understand-basic-concepts"></a>Porozumět základním pojmům
 
-### <a name="data-root"></a>Kořen dat
+### <a name="data-root"></a>Kořenová data
 
-Kořenová složka data je místní úložiště pro místní výpočetní účet. Je ekvivalentní s účtem Azure Data Lake Store účtu Data Lake Analytics. Přepnutí na jiná data – kořenová složka je stejně jako přepnutí na jiný účet úložiště. Pokud chcete mít přístup k běžně sdíleným datům s různými kořenovými složkami dat, musíte ve svých skriptech použít absolutní cesty. Případně můžete vytvořit symbolické odkazy systému souborů (například **MKLINK** v systému souborů NTFS) v kořenové složce data-Point na sdílená data.
+Složka kořenová data je "místní úložiště" pro místní výpočetní účet. Je ekvivalentní účtu Azure Data Lake Store účtu Data Lake Analytics. Přepnutí do jiné složky kořenových dat je stejné jako přepnutí na jiný účet úložiště. Pokud chcete získat přístup k běžně sdíleným datům s různými složkami kořenových dat, musíte ve skriptech použít absolutní cesty. Nebo vytvořte symbolické odkazy systému souborů (například **mklink** na NTFS) pod složkou kořenových dat, které odkazují na sdílená data.
 
-Kořenová složka data se používá k těmto akcím:
+Složka kořenových dat se používá k:
 
-- Ukládejte místní metadata, včetně databází, tabulek, funkcí vracejících tabulku (TVF) a sestavení.
-- Vyhledejte vstupní a výstupní cesty, které jsou definovány jako relativní cesty v U-SQL. Použití relativních cest usnadňuje nasazení projektů U-SQL do Azure.
+- Uklápěte místní metadata, včetně databází, tabulek, funkcí s hodnotou tabulky (TVF) a sestavení.
+- Vyhledejte vstupní a výstupní cesty, které jsou definovány jako relativní cesty v U-SQL. Použití relativní cesty usnadňuje nasazení projektů U-SQL do Azure.
 
 ### <a name="file-path-in-u-sql"></a>Cesta k souboru v U-SQL
 
-V skriptech U-SQL můžete použít jak relativní cestu, tak i místní absolutní cestu. Relativní cesta je relativní vzhledem k zadaným datům – cesta ke kořenové složce. Doporučujeme použít "/" jako oddělovač cest k zajištění, aby byly skripty kompatibilní se serverem. Tady je několik příkladů relativních cest a jejich ekvivalentních absolutních cest. V těchto příkladech je C:\LocalRunDataRoot kořenová složka data-root.
+Ve skriptech U-SQL můžete použít relativní i místní absolutní cestu. Relativní cesta je relativní k zadané cestě kořenové složky dat. Doporučujeme použít "/" jako oddělovač cesty, aby byly skripty kompatibilní se stranou serveru. Zde jsou některé příklady relativnícesty a jejich ekvivalentní absolutní cesty. V těchto příkladech je C:\LocalRunDataRoot složka kořenová složka dat.
 
 |Relativní cesta|Absolutní cesta|
 |-------------|-------------|
@@ -61,29 +61,29 @@ V skriptech U-SQL můžete použít jak relativní cestu, tak i místní absolut
 
 ### <a name="working-directory"></a>Pracovní adresář
 
-Při místním spuštění skriptu U-SQL je pracovní adresář vytvořen během kompilace v rámci aktuálního spuštěného adresáře. Kromě výstupů kompilace budou k tomuto pracovnímu adresáři zkopírovány nezbytné běhové soubory pro místní spuštění. Kořenová složka pracovního adresáře se nazývá "ScopeWorkDir" a soubory v pracovním adresáři jsou následující:
+Při místním spuštění skriptu U-SQL je během kompilace vytvořen pracovní adresář pod aktuálním spuštěným adresářem. Kromě výstupů kompilace budou potřebné soubory runtime pro místní spuštění zkopírovány do tohoto pracovního adresáře. Kořenová složka pracovního adresáře se nazývá "ScopeWorkDir" a soubory pod pracovním adresářem jsou následující:
 
-|Adresář nebo soubor|Adresář nebo soubor|Adresář nebo soubor|Definice|Popis|
+|Adresář/soubor|Adresář/soubor|Adresář/soubor|Definice|Popis|
 |--------------|--------------|--------------|----------|-----------|
-|C6A101DDCB470506| | |Řetězec hash verze modulu runtime|Stínová kopie souborů modulu runtime potřebných pro místní spuštění|
-| |Script_66AE4909AA0ED06C| |Název skriptu + hash řetězec cesty ke skriptu|Výstupy kompilace a protokolování kroků spuštění|
-| | |\_skript\_. ABR|Výstup kompilátoru|Soubor algebraický|
-| | |\_ScopeCodeGen\_. *|Výstup kompilátoru|Generovaný spravovaný kód|
-| | |\_ScopeCodeGenEngine\_. *|Výstup kompilátoru|Generovaný nativní kód|
+|C6A101DDCB470506| | |Řetězec hash verze runtime|Stínová kopie souborů runtime potřebných pro místní spuštění|
+| |Script_66AE4909AA0ED06C| |Název skriptu + hash řetězec cesty skriptu|Výstupy kompilace a protokolování kroků spuštění|
+| | |\_skript\_.abr|Výstup kompilátoru|Soubor algebry|
+| | |\_ScopeCodeGen\_.*|Výstup kompilátoru|Vygenerovaný spravovaný kód|
+| | |\_ScopeCodeGenEngine\_.*|Výstup kompilátoru|Generovaný nativní kód|
 | | |odkazovaná sestavení|Odkaz na sestavení|Odkazované soubory sestavení|
 | | |deployed_resources|Nasazení prostředků|Soubory nasazení prostředků|
-| | |xxxxxxxx.xxx[1..n]\_\*.*|Protokol spuštění|Protokol kroků provedení|
+| | |xxxxxxxx.xxx[1..n]\_\*.*|Protokol provádění|Protokol kroků spuštění|
 
 
 ## <a name="use-the-sdk-from-the-command-line"></a>Použití sady SDK z příkazového řádku
 
 ### <a name="command-line-interface-of-the-helper-application"></a>Rozhraní příkazového řádku pomocné aplikace
 
-V rámci sady SDK directory\build\runtime je LocalRunHelper. exe pomocná aplikace příkazového řádku, která poskytuje rozhraní pro většinu běžně používaných funkcí místního spuštění. Všimněte si, že oba příkazy a přepínače argumentů rozlišují velká a malá písmena. Pro vyvolání:
+V části Adresář sady SDK\build\runtime je soubor LocalRunHelper.exe pomocnou aplikací příkazového řádku, která poskytuje rozhraní většině běžně používaných funkcí místního spuštění. Všimněte si, že příkaz a argument přepínače jsou malá a velká písmena. Chcete-li jej vyvolat:
 
     LocalRunHelper.exe <command> <Required-Command-Arguments> [Optional-Command-Arguments]
 
-Spusťte LocalRunHelper. exe bez argumentů nebo pomocí přepínače **help** zobrazíte informace o nápovědě:
+Spusťte soubor LocalRunHelper.exe bez argumentů nebo pomocí přepínače **nápovědy,** který zobrazí informace nápovědy:
 
     > LocalRunHelper.exe help
 
@@ -96,102 +96,102 @@ Spusťte LocalRunHelper. exe bez argumentů nebo pomocí přepínače **help** z
             -Shallow [default value 'False']
                     Shallow compile
 
-V informacích o nápovědě:
+V nápovědě:
 
--  **Příkaz** poskytuje název příkazu.  
--  **Požadovaný argument** uvádí argumenty, které musí být dodány.  
--  **Volitelný argument** uvádí nepovinné argumenty s výchozími hodnotami.  Volitelné logické argumenty nemají parametry a jejich vzhledy znamenají negativní význam na jejich výchozí hodnotu.
+-  **Příkaz** udává název příkazu.  
+-  **Požadovaný argument** uvádí argumenty, které musí být zadány.  
+-  **Volitelný argument** uvádí argumenty, které jsou volitelné, s výchozími hodnotami.  Volitelné logické argumenty nemají parametry a jejich vzhled znamená negativní na jejich výchozí hodnotu.
 
-### <a name="return-value-and-logging"></a>Návratová hodnota a protokolování
+### <a name="return-value-and-logging"></a>Vrácená hodnota a protokolování
 
-Pomocná aplikace vrátí **0** pro úspěch a **-1** pro selhání. Ve výchozím nastavení pomocník odesílá všechny zprávy do aktuální konzoly. Většina příkazů ale podporuje volitelný argument **-Message path_to_log_file** , který přesměruje výstupy do souboru protokolu.
+Pomocná aplikace vrátí **0** pro úspěch a **-1** pro selhání. Ve výchozím nastavení pomocník odesílá všechny zprávy do aktuální konzoly. Většina příkazů však podporuje volitelný argument **-MessageOut path_to_log_file,** který přesměruje výstupy do souboru protokolu.
 
-### <a name="environment-variable-configuring"></a>Konfigurace proměnné prostředí
+### <a name="environment-variable-configuring"></a>Konfigurace proměnných prostředí
 
-Místní spuštění U-SQL potřebuje zadaný datový kořen jako místní účet úložiště a také zadanou cestu CppSDK pro závislosti. Můžete nastavit argument na příkazovém řádku nebo nastavit proměnnou prostředí pro ně.
+Místní spuštění U-SQL potřebuje zadaný kořen dat jako účet místního úložiště a také zadanou cestu CppSDK pro závislosti. Argument můžete nastavit v příkazovém řádku nebo nastavit proměnnou prostředí pro ně.
 
-- Nastavte proměnnou prostředí **SCOPE_CPP_SDK** .
+- Nastavte **proměnnou prostředí SCOPE_CPP_SDK.**
 
-    Pokud získáte Microsoft vizuál C++ a Windows SDK instalací nástroje Data Lake Tools for Visual Studio, ověřte, že máte následující složku:
+    Pokud získáte sadu Microsoft Visual C++ a sadu Windows SDK instalací nástrojů Data Lake Tools pro sadu Visual Studio, ověřte, zda máte následující složku:
 
         C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Microsoft Azure Data Lake Tools for Visual Studio 2015\X.X.XXXX.X\CppSDK
 
-    Definujte novou proměnnou prostředí s názvem **SCOPE_CPP_SDK** , která odkazuje na tento adresář. Nebo zkopírujte složku do druhého umístění a zadejte **SCOPE_CPP_SDK** .
+    Definujte novou proměnnou prostředí nazvanou **SCOPE_CPP_SDK,** která bude na tento adresář ukazovat. Nebo zkopírujte složku do jiného umístění a zadejte **SCOPE_CPP_SDK.**
 
-    Kromě nastavení proměnné prostředí můžete zadat argument **-CppSDK** při použití příkazového řádku. Tento argument přepíše výchozí proměnnou prostředí CppSDK.
+    Kromě nastavení proměnné prostředí můžete při použití příkazového řádku zadat argument **-CppSDK.** Tento argument přepíše výchozí proměnnou prostředí CppSDK.
 
-- Nastavte proměnnou prostředí **LOCALRUN_DATAROOT** .
+- Nastavte **proměnnou prostředí LOCALRUN_DATAROOT.**
 
-    Definujte novou proměnnou prostředí nazvanou **LOCALRUN_DATAROOT** , která odkazuje na kořen dat.
+    Definujte novou proměnnou prostředí nazvanou **LOCALRUN_DATAROOT,** která odkazuje na kořen dat.
 
-    Kromě nastavení proměnné prostředí můžete při použití příkazového řádku zadat **kořenový parametr-** dataroot s cestou k datovému kořenu. Tento argument přepíše výchozí proměnnou prostředí pro kořen dat. Tento argument je nutné přidat do každého spouštěného příkazového řádku, abyste mohli přepsat výchozí proměnnou prostředí kořene dat pro všechny operace.
+    Kromě nastavení proměnné prostředí můžete při použití příkazového řádku zadat argument **-DataRoot** s cestou kořene dat. Tento argument přepíše výchozí proměnnou prostředí kořenového data. Tento argument je třeba přidat do každého příkazového řádku, který používáte, abyste mohli přepsat výchozí proměnnou prostředí kořenového data pro všechny operace.
 
-### <a name="sdk-command-line-usage-samples"></a>Ukázky použití příkazového řádku sady SDK
+### <a name="sdk-command-line-usage-samples"></a>Ukázky využití příkazového řádku sady SDK
 
 #### <a name="compile-and-run"></a>Kompilace a spuštění
 
-Příkaz **Run** slouží ke kompilaci skriptu a následnému spuštění kompilovaných výsledků. Argumenty příkazového řádku jsou kombinací funkcí pro **kompilaci** a **spouštění**.
+Příkaz **spustit** se používá ke kompilaci skriptu a následnému spuštění zkompilovaných výsledků. Jeho argumenty příkazového řádku jsou kombinací argumentů z **kompilace** a **spuštění**.
 
     LocalRunHelper run -Script path_to_usql_script.usql [optional_arguments]
 
-Níže jsou uvedené nepovinné argumenty pro **běh**:
+Následují volitelné argumenty pro **spuštění**:
 
 
 |Argument|Výchozí hodnota|Popis|
 |--------|-------------|-----------|
-|– CodeBehind|False|Skript obsahuje kód. cs za|
+|-CodeBehind|False|Skript má kód .cs za sebou|
 |-CppSDK| |Adresář CppSDK|
-|-DataRoot| Proměnná prostředí dataroot|Dataroot pro místní spuštění, výchozí hodnota proměnné prostředí LOCALRUN_DATAROOT|
-|– Zpráva| |Vypsat zprávy v konzole nástroje do souboru|
-|– Paralelní|1|Spustit plán se zadaným paralelismu|
-|– Odkazy| |Seznam cest k dodatečným referenčním sestavením nebo datovým souborům kódu, které jsou oddělené znakem '; '|
-|-UdoRedirect|False|Generovat konfiguraci přesměrování Udo sestavení|
-|-UseDatabase|předloha|Databáze, která se má použít pro kód za dočasnou registraci sestavení|
-|– Verbose|False|Zobrazit podrobné výstupy z modulu runtime|
-|-WorkDir|Aktuální adresář|Adresář pro použití a výstupy kompilátoru|
+|-Datový kořen| Proměnná prostředí DataRoot|Název_data pro místní spuštění, výchozí proměnná prostředí "LOCALRUN_DATAROOT".|
+|-MessageOut| |Výpis zpráv v konzole do souboru|
+|-Paralelní|1|Spuštění plánu se zadaným paralelismem|
+|-Reference| |Seznam cest k nadbytečným referenčním sestavením nebo datovým souborům kódu, oddělených ';'|
+|-UdoRedirect|False|Generovat konfiguraci přesměrování sestavení Udo|
+|-UseDatabase|master|Databáze, která se má použít pro kód za dočasnou registrací sestavení|
+|-Podrobné|False|Zobrazit podrobné výstupy z běhu|
+|-WorkDir|Aktuální adresář|Adresář pro použití kompilátoru a výstupy|
 |-RunScopeCEP|0|Režim ScopeCEP, který se má použít|
-|-ScopeCEPTempPath|názvem|Dočasná cesta, která se má použít pro streamovaná data|
-|-OptFlags| |Čárkami oddělený seznam příznaků Optimalizátoru|
+|-ScopeCEPTempPath|Temp|Dočasná cesta, kterou se má použít pro streamování dat|
+|-OptFlags| |Seznam příznaků optimalizátorů oddělených čárkami|
 
 
 Tady je příklad:
 
     LocalRunHelper run -Script d:\test\test1.usql -WorkDir d:\test\bin -CodeBehind -References "d:\asm\ref1.dll;d:\asm\ref2.dll" -UseDatabase testDB –Parallel 5 -Verbose
 
-Kromě kombinování **kompilace** a **provádění**lze zkompilovat a spustit samostatně zkompilované spustitelné soubory.
+Kromě kombinování **kompilace** a **spuštění**můžete kompilovat a spouštět zkompilované spustitelné soubory samostatně.
 
 #### <a name="compile-a-u-sql-script"></a>Kompilace skriptu U-SQL
 
-Příkaz **Compile** slouží ke kompilaci skriptu U-SQL do spustitelných souborů.
+Příkaz **kompilace** se používá ke kompilaci skriptu U-SQL do spustitelných souborů.
 
     LocalRunHelper compile -Script path_to_usql_script.usql [optional_arguments]
 
-Následující jsou nepovinné argumenty pro **kompilaci**:
+Následují volitelné argumenty pro **kompilaci**:
 
 
 |Argument|Popis|
 |--------|-----------|
-| -CodeBehind [výchozí hodnota false]|Skript obsahuje kód. cs za|
-| -CppSDK [výchozí hodnota]|Adresář CppSDK|
-| -Dataroot [výchozí hodnota ' dataroot prostředí proměnná ']|Dataroot pro místní spuštění, výchozí hodnota proměnné prostředí LOCALRUN_DATAROOT|
-| -Messageing [výchozí hodnota]|Vypsat zprávy v konzole nástroje do souboru|
-| -Odkazuje na [výchozí hodnota].|Seznam cest k dodatečným referenčním sestavením nebo datovým souborům kódu, které jsou oddělené znakem '; '|
-| -Omezený [výchozí hodnota false]|Podkompilace bez podstruktury|
-| -UdoRedirect [výchozí hodnota false]|Generovat konfiguraci přesměrování Udo sestavení|
-| -UseDatabase [výchozí hodnota ' Master ']|Databáze, která se má použít pro kód za dočasnou registraci sestavení|
-| -WorkDir [výchozí hodnota ' aktuální adresář ']|Adresář pro použití a výstupy kompilátoru|
-| -RunScopeCEP [výchozí hodnota 0]|Režim ScopeCEP, který se má použít|
-| -ScopeCEPTempPath [výchozí hodnota ' Temp ']|Dočasná cesta, která se má použít pro streamovaná data|
-| -OptFlags [výchozí hodnota]|Čárkami oddělený seznam příznaků Optimalizátoru|
+| -CodeBehind [výchozí hodnota 'False']|Skript má kód .cs za sebou|
+| -CppSDK [výchozí hodnota '']|Adresář CppSDK|
+| -DataRoot [výchozí hodnota 'DataRoot proměnné prostředí']|Název_data pro místní spuštění, výchozí proměnná prostředí "LOCALRUN_DATAROOT".|
+| -MessageOut [výchozí hodnota '']|Výpis zpráv v konzole do souboru|
+| -Reference [výchozí hodnota '']|Seznam cest k nadbytečným referenčním sestavením nebo datovým souborům kódu, oddělených ';'|
+| -Shallow [výchozí hodnota 'False']|Mělká kompilace|
+| -UdoRedirect [výchozí hodnota 'False']|Generovat konfiguraci přesměrování sestavení Udo|
+| -UseDatabase [výchozí hodnota 'master']|Databáze, která se má použít pro kód za dočasnou registrací sestavení|
+| -WorkDir [výchozí hodnota 'Aktuální adresář']|Adresář pro použití kompilátoru a výstupy|
+| -RunScopeCEP [výchozí hodnota '0']|Režim ScopeCEP, který se má použít|
+| -ScopeCEPTempPath [výchozí hodnota 'temp']|Dočasná cesta, kterou se má použít pro streamování dat|
+| -OptFlags [výchozí hodnota '']|Seznam příznaků optimalizátorů oddělených čárkami|
 
 
-Tady je několik příkladů použití.
+Zde jsou některé příklady použití.
 
-Zkompilujte skript U-SQL:
+Kompilace skriptu U-SQL:
 
     LocalRunHelper compile -Script d:\test\test1.usql
 
-Zkompilujte skript U-SQL a nastavte kořenovou složku data-SQL. Všimněte si, že tato akce přepíše proměnnou prostředí set.
+Zkompilujte skript U-SQL a nastavte složku kořenových dat. Všimněte si, že to přepíše proměnnou nastavené prostředí.
 
     LocalRunHelper compile -Script d:\test\test1.usql –DataRoot c:\DataRoot
 
@@ -199,50 +199,50 @@ Zkompilujte skript U-SQL a nastavte pracovní adresář, referenční sestavení
 
     LocalRunHelper compile -Script d:\test\test1.usql -WorkDir d:\test\bin -References "d:\asm\ref1.dll;d:\asm\ref2.dll" -UseDatabase testDB
 
-#### <a name="execute-compiled-results"></a>Spustit kompilované výsledky
+#### <a name="execute-compiled-results"></a>Spustit zkompilované výsledky
 
-Příkaz **Execute** slouží ke spuštění kompilovaných výsledků.   
+Příkaz **execute** se používá ke spuštění kompilovaných výsledků.   
 
     LocalRunHelper execute -Algebra path_to_compiled_algebra_file [optional_arguments]
 
-Níže jsou uvedené volitelné argumenty pro **provedení**:
+Následují volitelné argumenty pro **spuštění**:
 
 |Argument|Výchozí hodnota|Popis|
 |--------|-------------|-----------|
-|-DataRoot | '' |Kořen dat pro provedení metadat. Je nastavené jako výchozí pro proměnnou prostředí **LOCALRUN_DATAROOT** .|
-|– Zpráva | '' |Vypíše zprávy v konzole nástroje do souboru.|
-|– Paralelní | první |Indikátor pro spuštění generovaných kroků místního spuštění se zadanou úrovní paralelismus.|
-|– Verbose | Chybné |Indikátor pro zobrazení podrobných výstupů z modulu runtime.|
+|-Datový kořen | '' |Kořen dat pro spuštění metadat. Výchozí hodnota je **LOCALRUN_DATAROOT** proměnné prostředí.|
+|-MessageOut | '' |Vypáčit zprávy v konzole do souboru.|
+|-Paralelní | '1' |Indikátor pro spuštění generovaných kroků místního spuštění se zadanou úrovní paralelismu.|
+|-Podrobné | "Nepravdivé" |Indikátor pro zobrazení podrobných výstupů z běhu.|
 
-Tady je příklad použití:
+Zde je příklad použití:
 
     LocalRunHelper execute -Algebra d:\test\workdir\C6A101DDCB470506\Script_66AE4909AA0ED06C\__script__.abr –DataRoot c:\DataRoot –Parallel 5
 
 
 ## <a name="use-the-sdk-with-programming-interfaces"></a>Použití sady SDK s programovacími rozhraními
 
-Rozhraní pro programování jsou umístěna v LocalRunHelper. exe. Můžete je použít k integraci funkcí sady U-SQL SDK a C# testovacího rozhraní pro škálování místního testu skriptu U-SQL. V tomto článku použijete projekt standardní C# jednotky testů k zobrazení, jak použít tato rozhraní k otestování skriptu U-SQL.
+Všechna programovací rozhraní jsou umístěna v programu LocalRunHelper.exe. Můžete je použít k integraci funkcí U-SQL SDK a C# testovací rozhraní pro škálování u-SQL skript místní test. V tomto článku budu používat standardní c# projekt testování částí ukázat, jak používat tato rozhraní k testování u-SQL skript.
 
-### <a name="step-1-create-c-unit-test-project-and-configuration"></a>Krok 1: Vytvořit C# projekt testu jednotek a konfiguraci
+### <a name="step-1-create-c-unit-test-project-and-configuration"></a>Krok 1: Vytvoření projektu a konfigurace testování částí c#
 
-- Vytvořte projekt C# testu jednotek pomocí souboru > nový projekt > > Visual C# > test > jednotek test.
-- Přidejte LocalRunHelper. exe jako referenci pro projekt. LocalRunHelper. exe se nachází na \build\runtime\LocalRunHelper.exe v balíčku NuGet.
+- Vytvořte projekt testování částí C# prostřednictvím projektu File > New > Project > Visual C# > Test > projekt testování částí.
+- Jako referenci pro projekt přidejte soubor LocalRunHelper.exe. Soubor LocalRunHelper.exe je umístěn na adrese \build\runtime\LocalRunHelper.exe v balíčku Nuget.
 
-    ![Azure Data Lake přidat odkaz na sadu SDK U-SQL SDK](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-add-reference.png)
+    ![Azure Data Lake U-SQL SDK přidat odkaz](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-add-reference.png)
 
-- Sada U-SQL SDK podporuje **pouze** prostředí x64, nezapomeňte nastavit cíl platformy sestavení jako x64. Můžete nastavit, aby prostřednictvím vlastnosti projektu > Cílová platforma >.
+- U-SQL SDK podporuje **pouze** prostředí x64, ujistěte se, že nastavit cíl platformy sestavení jako x64. Můžete nastavit, že prostřednictvím vlastnosti projektu > sestavení > platformy cíl.
 
-    ![Azure Data Lake sady U-SQL SDK konfigurace projektu x64](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-configure-x64.png)
+    ![Azure Data Lake U-SQL SDK Konfigurace projektu x64](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-configure-x64.png)
 
-- Ujistěte se, že jste nastavili testovací prostředí jako x64. V sadě Visual Studio je můžete nastavit pomocí testovacích > nastavení testu > výchozí architekturu procesoru > x64.
+- Ujistěte se, že nastavit testovací prostředí jako x64. V sadě Visual Studio ji můžete nastavit pomocí nastavení testování test > > výchozí architektura procesoru > x64.
 
-    ![Azure Data Lake sady U-SQL SDK konfigurace testovacího prostředí x64](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-configure-test-x64.png)
+    ![Azure Data Lake U-SQL SDK Konfigurace testovacího prostředí x64](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-configure-test-x64.png)
 
-- Nezapomeňte zkopírovat všechny soubory závislosti v rámci NugetPackage\build\runtime\ do pracovního adresáře, který je obvykle v rámci ProjectFolder\bin\x64\Debug.
+- Nezapomeňte zkopírovat všechny soubory závislostí v části NugetPackage\build\runtime\ do pracovního adresáře projektu, který je obvykle v části ProjectFolder\bin\x64\Debug.
 
-### <a name="step-2-create-u-sql-script-test-case"></a>Krok 2: Vytvořit testovací případ skriptu U-SQL
+### <a name="step-2-create-u-sql-script-test-case"></a>Krok 2: Vytvoření testovacího případu skriptu U-SQL
 
-Níže je uveden vzorový kód pro test skriptu U-SQL. Pro účely testování musíte připravit skripty, vstupní soubory a očekávané výstupní soubory.
+Níže je ukázkový kód pro test skriptu U-SQL. Pro testování je třeba připravit skripty, vstupní soubory a očekávané výstupní soubory.
 
     using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -324,69 +324,69 @@ Níže je uveden vzorový kód pro test skriptu U-SQL. Pro účely testování m
     }
 
 
-### <a name="programming-interfaces-in-localrunhelperexe"></a>Programovací rozhraní v LocalRunHelper. exe
+### <a name="programming-interfaces-in-localrunhelperexe"></a>Programovací rozhraní v souboru LocalRunHelper.exe
 
-LocalRunHelper. exe poskytuje programovací rozhraní pro místní kompilaci U-SQL, spuštění atd. Rozhraní jsou uvedena níže.
+LocalRunHelper.exe poskytuje programovací rozhraní pro U-SQL lokální kompilaci, spuštění, atd. Rozhraní jsou uvedeny takto.
 
-**BeginRequestEventArgs**
+**Konstruktor**
 
-Public LocalRunHelper ([System. IO. TextWriter messageOutput = null])
+public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 
-|Parametr|type|Popis|
+|Parametr|Typ|Popis|
 |---------|----|-----------|
-|messageOutput|System.IO.TextWriter|pro výstupní zprávy nastavte na hodnotu null, aby se použila konzola.|
+|messageOutput|System.io.TextWriter|pro výstupní zprávy, nastavte hodnotu null pro použití konzoly|
 
 **Vlastnosti**
 
 |Vlastnost|Typ|Popis|
 |--------|----|-----------|
-|AlgebraPath|řetězec|Cesta k souboru algebraický (soubor algebraický je jedním z výsledků kompilace)|
-|CodeBehindReferences|řetězec|Pokud má skript další kód na pozadí, zadejte cesty oddělené znakem '; '|
+|Algebracesta|řetězec|Cesta k souboru algebry (soubor algebry je jedním z výsledků kompilace)|
+|CodeBehindReferences|řetězec|Pokud má skript za odkazy další kód, zadejte cesty oddělené ";".|
 |CppSdkDir|řetězec|Adresář CppSDK|
 |CurrentDir|řetězec|Aktuální adresář|
-|DataRoot|řetězec|Cesta ke kořenu dat|
-|DebuggerMailPath|řetězec|Cesta k ladicímu programu zásuvek pošty|
-|GenerateUdoRedirect|bool|Chcete-li generovat konfiguraci přepsání přesměrování načítání sestavení|
+|Kořenová_složka_dat|řetězec|Kořenová cesta dat|
+|DebuggerMailPath|řetězec|Cesta k slotu pro ladicí program|
+|GenerateUdoRedirect|bool|Pokud chceme generovat přepsání přepsání přepsání přesměrovávacího zařízení načítání sestavy|
 |HasCodeBehind|bool|Pokud má skript kód za|
 |InputDir|řetězec|Adresář pro vstupní data|
-|MessagePath|řetězec|Cesta k souboru výpisu zpráv|
-|OutputDir|řetězec|Adresář pro výstupní data|
-|Paralelismu|int|Paralelismus ke spuštění algebraický|
-|ParentPid|int|PID nadřazeného objektu, na kterém se služba sleduje, je nastavená na hodnotu 0 nebo záporná hodnota, která se má ignorovat.|
-|ResultPath|řetězec|Cesta k souboru výpisu výsledků|
-|RuntimeDir|řetězec|Běhový adresář|
-|scriptPath|řetězec|Kde najít skript|
-|Seznamu|bool|Bez podkompilace nebo ne|
-|TempDir|řetězec|Dočasný adresář|
-|UseDataBase|řetězec|Zadejte databázi, která se má použít pro kód za dočasným registrací sestavení, hlavní ve výchozím nastavení.|
+|MessagePath|řetězec|Cesta k souboru výpisu zprávy|
+|Výstupní dir|řetězec|Adresář pro výstupní data|
+|Paralelnost|int|Paralelismus pro spuštění algebry|
+|ParentPid|int|PID nadřazeného objektu, ve kterém služba monitoruje ukončení, nastaveno na hodnotu 0 nebo záporné, aby bylo ignorováno|
+|Výsledná cesta|řetězec|Cesta k souboru výpisu výsledků|
+|RuntimeDir|řetězec|Adresář runtime|
+|Cesta skriptu|řetězec|Kde najít skript|
+|Mělké|bool|Mělká kompilace nebo ne|
+|Tempdir|řetězec|Dočasný adresář|
+|UseDataBase|řetězec|Zadejte databázi, která se má použít pro kód za dočasnou registrací sestavení, hlavní ve výchozím nastavení|
 |WorkDir|řetězec|Preferovaný pracovní adresář|
 
 
-**– Metoda**
+**Metoda**
 
-|Metoda|Popis|Návrat|Parametr|
+|Metoda|Popis|Vrátit|Parametr|
 |------|-----------|------|---------|
-|Public bool DoCompile ()|Kompilace skriptu U-SQL|True při úspěchu| |
-|Public bool DoExec ()|Spustí zkompilovaný výsledek.|True při úspěchu| |
-|Public bool DoRun ()|Spuštění skriptu U-SQL (kompilovat a provést)|True při úspěchu| |
-|Public bool IsValidRuntimeDir (cesta k řetězci)|Zkontroluje, jestli daná cesta představuje platnou cestu k běhu.|True pro platné|Cesta k adresáři modulu runtime|
+|veřejné bool DoCompile()|Kompilace skriptu U-SQL|Pravda o úspěchu| |
+|veřejné bool DoExec()|Provedení zkompilovaného výsledku|Pravda o úspěchu| |
+|veřejné bool DoRun()|Spuštění skriptu U-SQL (kompilace + spuštění)|Pravda o úspěchu| |
+|veřejné bool IsValidRuntimeDir(cesta řetězce)|Zkontrolujte, zda je daná cesta platná cesta runtime|Platí pro platné|Cesta k adresáři runtime|
 
 
-## <a name="faq-about-common-issue"></a>Nejčastější dotazy týkající se běžných potíží
+## <a name="faq-about-common-issue"></a>Nejčastější dotazy k běžnému problému
 
 ### <a name="error-1"></a>Chyba 1:
-E_CSC_SYSTEM_INTERNAL: Vnitřní chyba! Nepovedlo se načíst soubor nebo sestavení ScopeEngineManaged. dll nebo jednu z jeho závislostí. Zadaný modul nebyl nalezen.
+E_CSC_SYSTEM_INTERNAL: Vnitřní chyba! Nelze načíst soubor nebo sestavení ScopeEngineManaged.dll nebo jednu z jeho závislostí. Zadaný modul nebyl nalezen.
 
 Zkontrolujte prosím následující:
 
-- Ujistěte se, že máte prostředí x64. Cílová platforma sestavení a testovací prostředí by měly být x64, viz **krok 1: Vytvořte C# projekt testu jednotek a konfiguraci** výše.
-- Ujistěte se, že jste zkopírovali všechny soubory závislosti v NugetPackage\build\runtime\ do pracovního adresáře projektu.
+- Ujistěte se, že máte prostředí x64. Cílová platforma sestavení a testovací prostředí by měly být x64, viz **krok 1: Vytvoření projektu testování částí c# a konfigurace** výše.
+- Ujistěte se, že jste zkopírovali všechny soubory závislostí v rámci NugetPackage\build\runtime\ do pracovního adresáře projektu.
 
 
 ## <a name="next-steps"></a>Další kroky
 
 * Pokud se chcete naučit jazyk U-SQL, informace najdete v tématu [Začínáme s jazykem U-SQL Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md).
-* Informace o diagnostice protokolu najdete v tématu [přístup k protokolům diagnostiky pro Azure Data Lake Analytics](data-lake-analytics-diagnostic-logs.md).
-* Složitější dotaz najdete v tématu [Analýza webových protokolů pomocí Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
-* Podrobnosti o úlohách najdete v tématu [použití prohlížeče úloh a zobrazení úloh pro úlohy Azure Data Lake Analytics](data-lake-analytics-data-lake-tools-view-jobs.md).
-* Chcete-li použít zobrazení spuštění vrcholu, přečtěte si téma [použití zobrazení spuštění vrcholu v nástroji Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md).
+* Informace o diagnostice najdete [v tématu Přístup k protokolům diagnostiky pro Azure Data Lake Analytics](data-lake-analytics-diagnostic-logs.md).
+* Složitější dotaz najdete v [tématu Analýza protokolů webů pomocí Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
+* Podrobnosti o úloze najdete [v tématu Použití prohlížeče úloh a zobrazení úloh pro úlohy Azure Data Lake Analytics](data-lake-analytics-data-lake-tools-view-jobs.md).
+* Pokud chcete použít zobrazení spuštění vrcholu, [přečtěte si informace o použití zobrazení spuštění vrcholu v nástrojích datového jezera pro visual studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md).

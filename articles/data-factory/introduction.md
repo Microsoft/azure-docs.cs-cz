@@ -1,5 +1,5 @@
 ---
-title: Úvod do Azure Data Factory
+title: Úvod do služby Azure Data Factory
 description: Seznamte se se službou Azure Data Factory, cloudovou službou pro integraci dat, která orchestruje a automatizuje přesouvání a transformaci dat.
 services: data-factory
 documentationcenter: ''
@@ -10,10 +10,10 @@ ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
 ms.openlocfilehash: e23268d21b01435aa71d4f471afc6d37ee9e9c1d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73672702"
 ---
 # <a name="what-is-azure-data-factory"></a>Co je služba Azure Data Factory?
@@ -28,15 +28,15 @@ Aby společnost mohla tyto protokoly analyzovat, potřebuje použít referenčn�
 
 Za účelem získání informací hodlá zpracovat spojená data pomocí clusteru Spark v cloudu (Azure HDInsight) a transformovaná data publikovat do cloudového datového skladu, jako je služba Azure SQL Data Warehouse, aby z nich mohla snadno vytvářet sestavy. Tento pracovní postup chce automatizovat a provádět jeho monitorování a správu na každodenní bázi. Zároveň ho chce spouštět, jakmile se v kontejneru úložiště objektů blob objeví soubory.
 
-Právě v takových scénářích práce s daty nachází uplatnění platforma Azure Data Factory. Jedná se o *cloudovou službu ETL a integraci dat, která umožňuje vytvářet pracovní postupy řízené daty pro orchestraci přesunu dat a transformaci dat ve velkém měřítku*. Pomocí služby Azure Data Factory můžete vytvářet a plánovat pracovní postupy řízené daty (označované jako kanály), které dokáží ingestovat data z různorodých zdrojů dat. Můžete vytvářet složité procesy ETL, které vizuálně transformují data pomocí toků dat nebo pomocí výpočetních služeb, jako jsou Azure HDInsight Hadoop, Azure Databricks a Azure SQL Database. 
+Právě v takových scénářích práce s daty nachází uplatnění platforma Azure Data Factory. Jedná se o *cloudovou ETL a službu integrace dat, která umožňuje vytvářet pracovní postupy řízené daty pro orchestraci pohybu dat a transformaci dat ve velkém měřítku*. Pomocí služby Azure Data Factory můžete vytvářet a plánovat pracovní postupy řízené daty (označované jako kanály), které dokáží ingestovat data z různorodých zdrojů dat. Můžete vytvářet složité etl procesy, které vizuálně transformují data pomocí toků dat nebo pomocí výpočetních služeb, jako je Azure HDInsight Hadoop, Azure Databricks a Azure SQL Database. 
 
-Transformovaná data navíc můžete publikovat do úložišť dat, jako jsou Azure SQL Data Warehouse pro aplikace business intelligence (BI), která se mají spotřebovat. V neposlední řadě služba Azure Data Factory umožňuje uspořádání nezpracovaných dat do smysluplných úložišť dat a datových jezer, která pomáhají při obchodním rozhodování.
+Kromě toho můžete publikovat transformovaná data do úložišť dat, jako je Azure SQL Data Warehouse pro business intelligence (BI) aplikace využívat. V neposlední řadě služba Azure Data Factory umožňuje uspořádání nezpracovaných dat do smysluplných úložišť dat a datových jezer, která pomáhají při obchodním rozhodování.
 
 ![Zobrazení nejvyšší úrovně služby Data Factory](media/data-flow/overview.png)
 
 ## <a name="how-does-it-work"></a>Jak to funguje?
 
-Data Factory obsahuje řadu vzájemně propojených systémů, které poskytují kompletní ucelenou platformu pro inženýry dat.
+Data Factory obsahuje řadu propojených systémů, které poskytují kompletní end-to-end platformu pro datové inženýry.
 
 ### <a name="connect-and-collect"></a>Připojení a shromažďování
 
@@ -46,18 +46,18 @@ Prvním krokem při sestavování systému vytváření informací je připojen�
 
 Bez služby Data Factory musí podniky sestavovat vlastní komponenty pro přesun dat nebo vyvíjet vlastní služby pro integraci a zpracování těchto zdrojů dat. Integrace a údržba takových systémů je nákladná a složitá. Kromě toho často postrádají monitorování a upozorňování na podnikové úrovni a ovládací prvky, které může nabídnout plně spravovaná služba.
 
-Se službou Data Factory můžete pomocí [aktivity kopírování](copy-activity-overview.md) v datovém kanálu přesouvat data z místních i cloudových úložišť dat do centralizovaného úložiště v cloudu pro účely další analýzy. Data můžete například shromažďovat v Azure Data Lake Storage a později je transformovat pomocí výpočetní služby Azure Data Lake Analytics. Data můžete shromažďovat i ve službě Azure Blob Storage a později je transformovat pomocí clusteru Azure HDInsight Hadoop.
+Se službou Data Factory můžete pomocí [aktivity kopírování](copy-activity-overview.md) v datovém kanálu přesouvat data z místních i cloudových úložišť dat do centralizovaného úložiště v cloudu pro účely další analýzy. Například můžete shromažďovat data v Azure Data Lake Storage a transformovat data později pomocí výpočetní služby Azure Data Lake Analytics. Data můžete shromažďovat i ve službě Azure Blob Storage a později je transformovat pomocí clusteru Azure HDInsight Hadoop.
 
 ### <a name="transform-and-enrich"></a>Transformace a rozšíření
-Po zobrazení dat v centralizovaném úložišti dat v cloudu zpracujte nebo Transformujte shromážděná data pomocí toků dat mapování ADF. Datové toky umožňují datovým technikům vytvářet a udržovat grafy transformace dat, které se spouštějí v Sparku, aniž by museli porozumět clusterům Spark nebo programování Spark.
+Poté, co jsou data přítomna v centralizovaném úložišti dat v cloudu, zpracujte nebo transformujte shromážděná data pomocí toků mapování ADF. Toky dat umožňují datovým inženýrům vytvářet a udržovat grafy transformace dat, které se spouštějí na Sparku, aniž by museli rozumět clusterům Spark nebo programování Spark.
 
-Pokud dáváte přednost transformaci kódu rukou, služba ADF podporuje externí aktivity pro provádění transformací na výpočetních službách, jako je HDInsight Hadoop, Spark, Data Lake Analytics a Machine Learning.
+Pokud dáváte přednost ručnítransformaci kódu, ADF podporuje externí aktivity pro provádění transformace na výpočetní služby, jako je HDInsight Hadoop, Spark, Data Lake Analytics a Machine Learning.
 
-### <a name="cicd-and-publish"></a>CI/CD a publikování
-Data Factory nabízí plnou podporu pro CI/CD vašich datových kanálů pomocí Azure DevOps a GitHubu. To vám umožní přírůstkově vyvíjet a doručovat procesy ETL před publikováním dokončeného produktu. Po převodu nezpracovaných dat do podoby, která umožňuje využití v rámci podniku, můžete tato data nahrát do služby Azure Data Warehouse, Azure SQL Database, Azure CosmosDB nebo jakéhokoli jiného analytického nástroje, na který se můžou vaši obchodní uživatelé nasměrovat ze svých nástrojů business intelligence.
+### <a name="cicd-and-publish"></a>CI/CD a publikovat
+Data Factory nabízí plnou podporu pro CI/CD vašich datových kanálů pomocí Azure DevOps a GitHub. To umožňuje postupně vyvíjet a dodávat vaše ETL procesy před publikováním hotového produktu. Po převodu nezpracovaných dat do podoby, která umožňuje využití v rámci podniku, můžete tato data nahrát do služby Azure Data Warehouse, Azure SQL Database, Azure CosmosDB nebo jakéhokoli jiného analytického nástroje, na který se můžou vaši obchodní uživatelé nasměrovat ze svých nástrojů business intelligence.
 
 ### <a name="monitor"></a>Monitorování
-Jakmile úspěšně sestavíte a nasadíte kanál integrace dat, který ze zpracovaných dat získává obchodní hodnotu, můžete monitorovat naplánované aktivity a kanály a jejich míru úspěšnosti a chyb. Azure Data Factory obsahuje integrovanou podporu monitorování kanálů prostřednictvím Azure Monitor, rozhraní API, PowerShellu, protokolů Azure Monitor a panelů stavu na Azure Portal.
+Jakmile úspěšně sestavíte a nasadíte kanál integrace dat, který ze zpracovaných dat získává obchodní hodnotu, můžete monitorovat naplánované aktivity a kanály a jejich míru úspěšnosti a chyb. Azure Data Factory má integrovanou podporu pro monitorování kanálu přes Azure Monitor, ROZHRANÍ API, PowerShell, protokoly Azure Monitoru a panely stavu na webu Azure Portal.
 
 ## <a name="top-level-concepts"></a>Koncepty nejvyšší úrovně
 Předplatné Azure může obsahovat jednu nebo více instancí služby Azure Data Factory (neboli datových továren). Azure Data Factory se skládá ze čtyř klíčových součástí. Tyto součásti společně poskytují platformu, na které můžete vytvářet pracovní postupy řízené daty s kroky pro přesun a transformaci dat.
@@ -68,7 +68,7 @@ Datová továrna může mít jeden nebo víc kanálů. Kanál je logické seskup
 Výhodou tohoto přístupu je, že vám kanál umožňuje spravovat aktivity jako sadu, a ne každou jednotlivě. Aktivity v kanálu je možné zřetězit, aby probíhaly postupně, nebo můžou probíhat souběžně a nezávisle na sobě.
 
 ### <a name="mapping-data-flows"></a>Toky dat mapování
-Vytvářejte a spravujte grafy logiky transformace dat, které můžete použít k transformaci libovolné velikosti dat. Můžete vytvořit opakovaně použitelnou knihovnu transformačních rutin dat a spouštět tyto procesy v rámci škálování kanálů ADF. Data Factory spustí vaši logiku na clusteru Spark, který se rozpíná a točí, když ho potřebujete. Nebudete muset nikdy spravovat nebo spravovat clustery.
+Vytvořte a spravujte grafy logiky transformace dat, které můžete použít k transformaci dat libovolné velikosti. Můžete vytvořit opakovaně použitelnou knihovnu rutin transformace dat a spustit tyto procesy v horizontálním navýšení kapacity způsobem z vašich kanálů ADF. Data Factory spustí vaši logiku v clusteru Spark, který se otáčí nahoru a točí dolů, když ji potřebujete. Nikdy nebudete muset spravovat nebo udržovat clustery.
 
 ### <a name="activity"></a>Aktivita
 Aktivity představují krok zpracování v rámci kanálu. Například můžete použít aktivitu kopírování ke kopírování dat z jednoho úložiště dat do jiného. Podobně můžete použít aktivitu Hivu, která spustí dotaz Hivu na clusteru Azure HDInsight, aby transformoval a analyzoval vaše data. Data Factory podporuje tři typy aktivit: aktivity přesunu dat, aktivity transformace dat a aktivity řízení.
@@ -85,37 +85,37 @@ Propojené služby slouží ve službě Data Factory ke dvěma účelům:
 
 - Představují **výpočetní prostředek**, který může hostovat provádění aktivity. Například aktivita HDInsightHive se spouští na clusteru HDInsight Hadoop. Seznam aktivit transformace a podporovaných výpočetních prostředí najdete v článku o [transformaci dat](transform-data.md).
 
-### <a name="triggers"></a>Triggery
+### <a name="triggers"></a>Aktivační události
 Aktivační události jsou jednotkou zpracování, která určuje, kdy se má zahájit provádění kanálu. Pro různé typy událostí existují různé typy aktivačních událostí.
 
 ### <a name="pipeline-runs"></a>Spuštění kanálu
 Spuštění kanálu je instance provádění kanálu. Instance spuštění kanálu se obvykle vytvářejí předáváním argumentů do parametrů definovaných v kanálech. Argumenty je možné předat ručně nebo v rámci definice aktivační události.
 
 ### <a name="parameters"></a>Parametry
-Parametry jsou páry klíč-hodnota v rámci konfigurace jen pro čtení.  Parametry jsou definované v kanálu. Argumenty definovaných parametrů se předávají během provádění z kontextu spuštění vytvořeného aktivační událostí nebo ručně spuštěným kanálem. Aktivity v rámci kanálu využívají hodnoty parametrů.
+Parametry jsou dvojice klíčů a hodnot v rámci konfigurace jen pro čtení.Parametry jsou definované v kanálu. Argumenty definovaných parametrů se předávají během provádění z kontextu spuštění vytvořeného aktivační událostí nebo ručně spuštěným kanálem. Aktivity v rámci kanálu využívají hodnoty parametrů.
 
 Datová sada je parametr silného typu a opakovaně použitelná/odkazovatelná entita. Aktivita může odkazovat na datové sady a může využívat vlastnosti definované v definici datové sady.
 
 Propojená služba je také parametr silného typu, který obsahuje informace o připojení k úložišti dat nebo výpočetnímu prostředí. Je to také opakovaně použitelná/odkazovatelná entita.
 
 ### <a name="control-flow"></a>Tok řízení
-Tok řízení představuje orchestraci aktivit kanálu, která zahrnuje zřetězení aktivit v sekvenci, větvení, definování parametrů na úrovni kanálu a předávání argumentů při volání kanálu na vyžádání nebo z aktivační události. Zahrnuje také předávání vlastního stavu a kontejnery smyček, tedy iterátory For-each.
+Tok řízení představuje orchestraci aktivit kanálu, která zahrnuje zřetězení aktivit v sekvenci, větvení, definování parametrů na úrovni kanálu, a předávání argumentů při volání kanálu na vyžádání nebo z aktivační události. Zahrnuje také předávání vlastního stavu a kontejnery smyček, tedy iterátory For-each.
 
 ### <a name="variables"></a>Proměnné
-Proměnné se dají použít v kanálech k ukládání dočasných hodnot a dají se použít i ve spojení s parametry, které umožňují předávání hodnot mezi kanály, datovými toky a dalšími aktivitami.
+Proměnné lze použít uvnitř kanálu k ukládání dočasných hodnot a lze je také použít ve spojení s parametry pro povolení předávání hodnot mezi kanály, toky dat a další aktivity.
 
 ## <a name="next-steps"></a>Další kroky
-Tady jsou důležité dokumenty dalších kroků k prozkoumání:
+Zde jsou důležité další kroky dokumenty k prozkoumání:
 
 - [Datové sady a propojené služby](concepts-datasets-linked-services.md)
 - [Kanály a aktivity](concepts-pipelines-activities.md)
 - [Prostředí Integration Runtime](concepts-integration-runtime.md)
-- [Mapování toků dat](concepts-data-flow-overview.md)
+- [Mapování datových toků](concepts-data-flow-overview.md)
 - [Uživatelské rozhraní Data Factory na webu Azure Portal](quickstart-create-data-factory-portal.md)
-- [Nástroj Kopírování dat na webu Azure Portal](quickstart-create-data-factory-copy-data-tool.md)
+- [Nástroj pro kopírování dat na webu Azure Portal](quickstart-create-data-factory-copy-data-tool.md)
 - [PowerShell](quickstart-create-data-factory-powershell.md)
 - [.NET](quickstart-create-data-factory-dot-net.md)
 - [Python](quickstart-create-data-factory-python.md)
-- [REST](quickstart-create-data-factory-rest-api.md)
+- [Odpočinku](quickstart-create-data-factory-rest-api.md)
 - [Šablona Azure Resource Manageru](quickstart-create-data-factory-resource-manager-template.md)
  

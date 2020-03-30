@@ -1,69 +1,71 @@
 ---
-title: Optimalizace dotazů protokolu v Azure Monitor
-description: Osvědčené postupy pro optimalizaci dotazů protokolu v Azure Monitor.
+title: Optimalizace dotazů protokolů v Azure Monitoru
+description: Doporučené postupy pro optimalizaci dotazů protokolů v Azure Monitoru.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/28/2019
-ms.openlocfilehash: 7316415a0f0c423a8a37477020a4ffd0ec044d73
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: c32731ce2de2b0f886a1e21ee8ccad3996e395eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79369467"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480262"
 ---
-# <a name="optimize-log-queries-in-azure-monitor"></a>Optimalizace dotazů protokolu v Azure Monitor
-Protokoly Azure Monitor používají k ukládání dat protokolu službu [Azure Průzkumník dat (ADX)](/azure/data-explorer/) a spouštějí dotazy k analýze těchto dat. Vytváří, spravuje a udržuje clustery ADX za vás a optimalizuje je pro vaši úlohu analýzy protokolů. Když spustíte dotaz, bude optimalizován a směrován do příslušného clusteru ADX, který ukládá data pracovního prostoru. Protokoly Azure Monitor a Azure Průzkumník dat využívají řadu automatických mechanismů optimalizace dotazů. I když automatické optimalizace poskytují výrazné zvýšení, jsou v některých případech, kdy můžete výrazně vylepšit výkon dotazů. V tomto článku se dozvíte o požadavcích na výkon a o některých technikech jejich řešení.
+# <a name="optimize-log-queries-in-azure-monitor"></a>Optimalizace dotazů protokolů v Azure Monitoru
+Protokoly monitorování Azure používá [Azure Data Explorer (ADX)](/azure/data-explorer/) k ukládání dat protokolu a spouštění dotazů pro analýzu dat. Vytváří, spravuje a udržuje clustery ADX pro vás a optimalizuje je pro úlohy analýzy protokolu. Když spustíte dotaz, je optimalizován a směrován do příslušného clusteru ADX, který ukládá data pracovního prostoru. Protokoly monitorování Azure i Azure Data Explorer používá mnoho mechanismů automatické optimalizace dotazů. Zatímco automatické optimalizace poskytují významné zvýšení, jsou v některých případech, kdy můžete výrazně zlepšit výkon dotazu. Tento článek vysvětluje aspekty výkonu a několik technik k jejich opravě.
 
-Většina techniků je společná pro dotazy, které se spouštějí přímo v protokolech Azure Průzkumník dat a Azure Monitor, i když existuje několik jedinečných důležitých Azure Monitor protokolů, které jsou zde popsány. Další tipy k optimalizaci pro Azure Průzkumník dat najdete v tématu [osvědčené postupy pro dotazy](/azure/kusto/query/best-practices).
+Většina technik jsou běžné pro dotazy, které se spouštějí přímo v Azure Data Explorer a Azure Monitor protokoly, i když existuje několik jedinečných azure monitor protokoly úvahy, které jsou popsány zde. Další tipy pro optimalizaci Průzkumníka dat Azure najdete v [tématu Doporučené postupy pro dotaz](/azure/kusto/query/best-practices).
 
 Optimalizované dotazy budou:
 
-- Rychlejší spuštění, zkrácení celkové doby trvání provádění dotazu.
-- Mít menší pravděpodobnost omezení nebo odmítnutí.
+- Spouštět rychleji, zkrátit celkovou dobu trvání spuštění dotazu.
+- Mají menší šanci na škrticí nebo zamítnuté.
 
-Měli byste věnovat zvláštní pozornost dotazům, které se používají pro restávající a shlukové použití, jako jsou řídicí panely, výstrahy, Logic Apps a Power BI. Dopad neúčinného dotazu v těchto případech je podstatný.
+Zvláštní pozornost byste měli věnovat dotazům, které se používají pro opakované a prasklé použití, jako jsou řídicí panely, výstrahy, logic aplikace a Power BI. Dopad neefektivní dotaz v těchto případech je značný.
 
-## <a name="query-performance-pane"></a>Podokno výkon dotazu
-Po spuštění dotazu v Log Analytics klikněte na šipku dolů nad výsledky dotazu, abyste zobrazili podokno výkon dotazu, které zobrazuje výsledky několika ukazatelů výkonu pro dotaz. Tyto indikátory výkonu jsou popsány v následující části.
+## <a name="query-performance-pane"></a>Podokno výkonu dotazu
+Po spuštění dotazu v Log Analytics klikněte na šipku dolů nad výsledky dotazu zobrazíte podokno výkonu dotazu, které zobrazuje výsledky několika ukazatelů výkonu pro dotaz. Tyto ukazatele výkonnosti jsou popsány v následující části.
 
-![Podokno výkon dotazu](media/query-optimization/query-performance-pane.png)
-
-
-## <a name="query-performance-indicators"></a>Ukazatele výkonu dotazů
-
-Pro každý spuštěný dotaz jsou k dispozici následující indikátory výkonu dotazů:
-
-- [Total CPU](#total-cpu): celkový počet výpočtů používaných pro zpracování dotazu napříč všemi výpočetními uzly. Představuje čas, který se používá pro výpočet, analýzu a načítání dat. 
-
-- [Data použitá pro zpracovaný dotaz](#data-used-for-processed-query): celková data, ke kterým byl přidaný dotaz zpracován. Ovlivněno velikostí cílové tabulky, použitým časovým rozsahem, použitými filtry a počtem odkazovaných sloupců.
-
-- [Časové období zpracovávaného dotazu](#time-span-of-the-processed-query): mezera mezi nejnovějšími a nejstarší daty, ke kterým byl přidaný dotaz zpracován. Ovlivněno explicitním časovým rozsahem zadaným pro dotaz.
-
-- [Stáří zpracovaných dat](#age-of-processed-data): mezera mezi nyní a nejstarší daty, ke kterým byl přidaný dotaz zpracován. Má velmi vliv na efektivitu načítání dat.
-
-- [Počet pracovních prostorů](#number-of-workspaces): Kolik pracovních prostorů bylo během zpracování dotazu k dispozici v důsledku implicitního nebo explicitního výběru.
-
-- [Počet oblastí](#number-of-regions): kolik oblastí bylo během zpracování dotazu k dispozici v důsledku implicitního nebo explicitního výběru pracovních prostorů. Dotazy na více oblastí jsou mnohem méně efektivní a indikátory výkonu představují částečnou pokrytí.
-
-- [Paralelismus](#parallelism): udává, kolik systému bylo možné spustit tento dotaz na více uzlech. Týká se pouze dotazů, které mají vysokou spotřebu procesoru. Ovlivněno používáním určitých funkcí a operátorů.
+![Podokno výkonu dotazu](media/query-optimization/query-performance-pane.png)
 
 
-## <a name="total-cpu"></a>PROCESOR celkem
-Skutečný výpočetní procesor, který byl investoval do zpracování tohoto dotazu napříč všemi uzly zpracování dotazů. Vzhledem k tomu, že většina dotazů je prováděna na velkých číslech uzlů, bude obvykle mnohem větší než doba, jakou bude dotaz skutečně proveden. 
+## <a name="query-performance-indicators"></a>Indikátory výkonu dotazu
 
-Doba zpracování dotazu je strávená na:
-- Načítání dat – načtení starých dat bude spotřebovávat víc času než při načítání nedávných dat.
+Pro každý spouštěný dotaz jsou k dispozici následující ukazatele výkonu dotazu:
+
+- [Celkový počet procesorů](#total-cpu): Celkové výpočetní prostředky používané ke zpracování dotazu ve všech výpočetních uzlech. Představuje čas používaný pro výpočet, analýzu a načítání dat. 
+
+- [Data použitá pro zpracovaný dotaz](#data-used-for-processed-query): Celková data, ke kterým byl přístup ke zpracování dotazu. Ovlivněno velikostí cílové tabulky, použitým časovým rozsahem, použitými filtry a počtem odkazovaných sloupců.
+
+- [Časové rozpětí zpracovaného dotazu](#time-span-of-the-processed-query): Mezera mezi nejnovějšími a nejstaršími daty, ke kterým bylo přistupováno ke zpracování dotazu. Ovlivněno explicitním časovým rozsahem určeným pro dotaz.
+
+- [Stáří zpracovaných dat](#age-of-processed-data): Mezera mezi nyní a nejstarší data, která byla přístupná ke zpracování dotazu. To velmi ovlivňuje efektivitu načítání dat.
+
+- [Počet pracovních prostorů](#number-of-workspaces): Kolik pracovních prostorů bylo při přístupu během zpracování dotazu z důvodu implicitního nebo explicitního výběru.
+
+- [Počet oblastí](#number-of-regions): Kolik oblastí bylo přistupováno během zpracování dotazů na základě implicitního nebo explicitního výběru pracovních prostorů. Dotazy s více oblastmi jsou mnohem méně efektivní a ukazatele výkonu představují částečné pokrytí.
+
+- [Paralelismus](#parallelism): Označuje, kolik systém byl schopen spustit tento dotaz na více uzlů. Relevantní pouze pro dotazy, které mají vysokou spotřebu procesoru. Ovlivněno použitím specifických funkcí a operátorů.
+
+
+## <a name="total-cpu"></a>Celkový procesor
+Skutečný výpočetní procesor, který byl investován do zpracování tohoto dotazu ve všech uzlech zpracování dotazu. Vzhledem k tomu, že většina dotazů jsou spouštěny na velký počet uzlů, to bude obvykle mnohem větší než doba trvání dotazu skutečně trvalo spustit. 
+
+Doba zpracování dotazu je vynaložena na:
+- Načítání dat – načítání starých dat bude spotřebovávat více času než načítání posledních dat.
 - Zpracování dat – logika a vyhodnocení dat. 
 
-Jiné než čas strávený v uzlech zpracování dotazů je Azure Monitor protokolů k dispozici další čas: ověření uživatele a ověření, že mají povolen přístup k těmto datům, vyhledejte úložiště dat, analyzujte dotaz a přidělte zpracování dotazu. sortiment. Tento čas není zahrnutý v dotazu na celkový čas procesoru.
+Jiné než čas strávený v uzlech zpracování dotazů, je další čas, který je vynakládána protokoly Azure Monitor: ověření uživatele a ověření, že mají povoleno přístup k těmto datům, vyhledejte úložiště dat, analyzovat dotaz a přidělit zpracování dotazu Uzly. Tato doba není zahrnuta v celkovém čase procesoru dotazu.
 
-Některé příkazy a funkce dotazu jsou v jejich spotřebě procesoru těžké. To platí hlavně pro příkazy, které analyzují JSON a XML nebo extrahují komplexní regulární výrazy. Tato analýza může být provedena explicitně prostřednictvím funkcí [parse_json ()](/azure/kusto/query/parsejsonfunction) nebo [parse_xml ()](/azure/kusto/query/parse-xmlfunction) nebo implicitně při odkazování na dynamické sloupce.
+### <a name="early-filtering-of-records-prior-of-using-high-cpu-functions"></a>Včasné filtrování záznamů před použitím vysokých funkcí procesoru
 
-Tyto funkce spotřebovávají procesor v poměru k počtu zpracovávaných řádků. Nejúčinnější optimalizací je přidání podmínek WHERE do začátku dotazu, který může vyfiltrovat co nejvíc záznamů, než se spustí funkce náročné na procesor.
+Některé příkazy a funkce dotazu jsou velké ve své spotřebě procesoru. To platí zejména pro příkazy, které analyzují JSON a XML nebo extrahují složité regulární výrazy. Taková analýza může dojít explicitně prostřednictvím [parse_json()](/azure/kusto/query/parsejsonfunction) nebo [parse_xml()](/azure/kusto/query/parse-xmlfunction) funkce nebo implicitně při odkazování na dynamické sloupce.
 
-Například následující dotazy vydávají přesně stejný výsledek, ale druhá z nich je mnohem nejúčinnější jako podmínka [WHERE](/azure/kusto/query/whereoperator) před analýzou vyloučení mnoha záznamů:
+Tyto funkce spotřebovávají procesor v poměru k počtu řádků, které zpracovávají. Nejúčinnější optimalizace je přidat, kde podmínky v rané fázi dotazu, který můžete odfiltrovat co nejvíce záznamů, jak je to možné před spuštěním funkce náročné na procesor.
+
+Například následující dotazy vytvářejí přesně stejný výsledek, ale druhý je zdaleka nejúčinnější jako podmínka [where](/azure/kusto/query/whereoperator) před analýzou vylučuje mnoho záznamů:
 
 ```Kusto
 //less efficient
@@ -86,8 +88,10 @@ SecurityEvent
 | where FileHash != "" // No need to filter out %SYSTEM32 here as it was removed before
 ```
 
-Dotazy, které obsahují klauzule [WHERE](/azure/kusto/query/whereoperator) u vyhodnoceného sloupce a nikoli pro sloupce, které jsou fyzicky přítomny v datové sadě, ztratí efektivitu. Filtrování u vyhodnocených sloupců brání optimalizaci systému při zpracování velkých sad dat.
-Například následující dotazy vytvářejí přesně stejný výsledek, ale druhý je efektivnější, protože podmínka [WHERE](/azure/kusto/query/whereoperator) odkazuje na předdefinovaný sloupec.
+### <a name="avoid-using-evaluated-where-clauses"></a>Vyhněte se použití vyhodnocených, kde klauzule
+
+Dotazy, které obsahují [kde](/azure/kusto/query/whereoperator) klauzule na vyhodnocený sloupec spíše než na sloupce, které jsou fyzicky k dispozici v datové sadě ztratit účinnost. Filtrování na vyhodnocených sloupcích zabraňuje některým optimalizacím systému při zpracování velkých sad dat.
+Například následující dotazy vytvořit přesně stejný výsledek, ale druhý je efektivnější jako [kde](/azure/kusto/query/whereoperator) podmínka odkazuje na vestavěné sloupce
 
 ```Kusto
 //less efficient
@@ -104,11 +108,13 @@ Heartbeat
 | summarize count() by Computer
 ```
 
-Zatímco některé agregační příkazy jako [Max ()](/azure/kusto/query/max-aggfunction), [Sum ()](/azure/kusto/query/sum-aggfunction), [Count ()](/azure/kusto/query/count-aggfunction)a [AVG ()](/azure/kusto/query/avg-aggfunction) mají nízký dopad na procesor z důvodu jejich logiky, jiné jsou složitější a zahrnují heuristické a odhady, které umožňují jejich efektivní spouštění. Například [DCount ()](/azure/kusto/query/dcount-aggfunction) používá HyperLogLog algoritmus k poskytnutí přibližného odhadu pro jedinečný počet velkých sad dat, aniž by bylo nutné skutečně počítat každou hodnotu; funkce percentilu jsou podobné aproximace pomocí nejbližšího algoritmu percentilu. Několik příkazů zahrnuje volitelné parametry, které snižují jejich dopad. Například funkce [makeset ()](/azure/kusto/query/makeset-aggfunction) má volitelný parametr pro definování maximální velikosti sady, která VÝZNAMNĚ ovlivňuje procesor a paměť.
+### <a name="use-effective-aggregation-commands-and-dimmentions-in-summarize-and-join"></a>Používejte příkazy efektivní agregace a dimmentions ve shrnutí a spojení
 
-Příkazy [Join](/azure/kusto/query/joinoperator?pivots=azuremonitor) a [sumarizace](/azure/kusto/query/summarizeoperator) můžou způsobit vysoké využití procesoru při zpracování velké sady dat. Jejich složitost přímo souvisí s počtem možných hodnot, které se označují jako *mohutnost*sloupců, které se používají jako `by` v souhrnu nebo jako atributy spojení. Vysvětlení a optimalizace spojení a shrnutí najdete v článcích dokumentace a tipy k optimalizaci.
+Zatímco některé agregační příkazy jako [max()](/azure/kusto/query/max-aggfunction), [sum()](/azure/kusto/query/sum-aggfunction), [count()](/azure/kusto/query/count-aggfunction)a [avg()](/azure/kusto/query/avg-aggfunction) mají nízký dopad procesoru kvůli jejich logice, jiné jsou složitější a zahrnují heuristiku a odhady, které umožňují jejich efektivní provádění. Například [dcount()](/azure/kusto/query/dcount-aggfunction) používá algoritmus HyperLogLog poskytnout blízký odhad na odlišný počet velkých sad dat bez skutečného počítání každou hodnotu; funkce percentilu provádějí podobné aproximace pomocí nejbližšího algoritmu percentilu pořadí. Několik příkazů obsahuje volitelné parametry pro snížení jejich dopadu. Například [makeset()](/azure/kusto/query/makeset-aggfunction) funkce má volitelný parametr definovat maximální velikost sady, což výrazně ovlivňuje procesor a paměť.
 
-Například následující dotazy vytváří přesně stejný výsledek, protože **CounterPath** je vždy mapováno na **CounterName** a **ObjectName**. Druhá je efektivnější, protože dimenze agregace je menší:
+[Připojit](/azure/kusto/query/joinoperator?pivots=azuremonitor) a [sumarizovat](/azure/kusto/query/summarizeoperator) příkazy může způsobit vysoké využití procesoru při zpracování velké sady dat. Jejich složitost přímo souvisí s počtem možných hodnot, označovaných jako *mohutnost* `by` , sloupců, které používají jako souhrn nebo jako atributy spojení. Vysvětlení a optimalizaci spojení a shrnutí najdete v jejich dokumentačních článcích a optimalizačních tipech.
+
+Například následující dotazy vytvářejí přesně stejný výsledek, protože **CounterPath** je vždy 1:1 mapován na **CounterName** a **ObjectName**. Druhý je efektivnější, protože dimenze agregace je menší:
 
 ```Kusto
 //less efficient
@@ -123,9 +129,9 @@ Perf
 by CounterPath
 ```
 
-Využití CPU může být ovlivněno i v případě, že podmínky nebo rozšířené sloupce vyžadující náročné výpočty. Veškerá porovnávání triviálních řetězců, jako [je EQUAL = =](/azure/kusto/query/datatypes-string-operators) a [StartsWith](/azure/kusto/query/datatypes-string-operators) , mají zhruba stejný dopad na procesor, zatímco rozšířené shody textu mají větší vliv. Konkrétně operátor is je efektivnější [pro operátor](/azure/kusto/query/datatypes-string-operators) [Contains](/azure/kusto/query/datatypes-string-operators) . Z důvodu technik zpracování řetězců je efektivnější Hledat řetězce, které jsou delší než čtyři znaky než krátké řetězce.
+Spotřeba procesoru může být také ovlivněna podmínkami nebo rozšířenými sloupci, které vyžadují intenzivní práci s počítačem. Všechny porovnání triviální řetězce, například [equal ==](/azure/kusto/query/datatypes-string-operators) a [startswith](/azure/kusto/query/datatypes-string-operators) mají zhruba stejný dopad procesoru, zatímco rozšířené textové shody mají větší dopad. Konkrétně [has](/azure/kusto/query/datatypes-string-operators) operátor je efektivnější, že [obsahuje](/azure/kusto/query/datatypes-string-operators) operátor. Z důvodu techniky zpracování řetězců je efektivnější hledat řetězce, které jsou delší než čtyři znaky než krátké řetězce.
 
-Například následující dotazy poskytují podobné výsledky v závislosti na zásadách pojmenovávání počítačů, ale druhá z nich je efektivnější:
+Například následující dotazy vytvářejí podobné výsledky v závislosti na zásadách pojmenování počítače, ale druhý je efektivnější:
 
 ```Kusto
 //less efficient – due to filter based on contains
@@ -148,17 +154,20 @@ Heartbeat
 ```
 
 > [!NOTE]
-> Tento ukazatel prezentuje jenom procesor z bezprostředního clusteru. Dotaz ve více oblastech by představoval jenom jednu z oblastí. V dotazu s více pracovními prostory nemusí obsahovat všechny pracovní prostory.
+> Tento indikátor představuje pouze procesor z okamžitého clusteru. V dotazu s více oblastmi by představoval pouze jednu z oblastí. V dotazu s více pracovními prostory nemusí obsahovat všechny pracovní prostory.
 
 
 ## <a name="data-used-for-processed-query"></a>Data použitá pro zpracovaný dotaz
 
-Důležitým faktorem při zpracování dotazu je objem dat, který je prohledáván a používán pro zpracování dotazu. Azure Průzkumník dat používá agresivní optimalizace, které výrazně snižují objem dat v porovnání s jinými datovými platformami. Stále existují v dotazu kritické faktory, které mohou ovlivnit objem dat, který se používá.
-V protokolu Azure Monitor se sloupec **TimeGenerated** používá jako způsob, jak data indexovat. Omezení **TimeGeneratedch** hodnot na co nejblíže větší rozsah zajistí výrazné zlepšení výkonu dotazů tím, že významně omezí množství dat, která se mají zpracovat.
+Kritickým faktorem při zpracování dotazu je objem dat, který je naskenován a použit pro zpracování dotazu. Azure Data Explorer používá agresivní optimalizace, které výrazně snižují objem dat ve srovnání s jinými datovými platformami. Přesto existují kritické faktory v dotazu, které mohou mít vliv na svazek dat, který se používá.
 
-Dalším faktorem, který zvyšuje počet zpracovaných dat, je použití velkého počtu tabulek. K tomu obvykle dochází, když se používají příkazy `search *` a `union *`. Tyto příkazy vynutí, aby systém vyhodnotil a kontroloval data ze všech tabulek v pracovním prostoru. V některých případech může být v pracovním prostoru stovky tabulek. Snažte se vyhnout co nejvíc pomocí "vyhledávání *" nebo hledání bez jeho oboru na konkrétní tabulku.
+V protokolech monitorování Azure se sloupec **TimeGenerated** používá jako způsob indexování dat. Omezení **TimeGenerated** hodnoty co nejužší rozsah, jak je to možné provede významné zlepšení výkonu dotazu tím, že výrazně omezí množství dat, která má být zpracována.
 
-Například následující dotazy vytváří přesně stejný výsledek, ale poslední má nejvyšší účinnost:
+### <a name="avoid-unnecessary-use-of-search-and-union-operators"></a>Vyhněte se zbytečnému používání vyhledávacích a odborových operátorů
+
+Dalším faktorem, který zvyšuje data, která je proces je použití velkého počtu tabulek. K tomu `search *` obvykle `union *` dochází, když a příkazy jsou používány. Tyto příkazy vynucují systému vyhodnotit a skenovat data ze všech tabulek v pracovním prostoru. V některých případech mohou být stovky tabulek v pracovním prostoru. Snažte se co nejvíce vyhnout pomocí "hledat *" nebo jakékoliv hledání bez vymezení do konkrétní tabulky.
+
+Například následující dotazy vytvářejí přesně stejný výsledek, ale poslední z nich je zdaleka nejúčinnější:
 
 ```Kusto
 // This version scans all tables though only Perf has this kind of data
@@ -178,9 +187,11 @@ Perf
 | summarize count(), avg(CounterValue)  by Computer
 ```
 
-Další metodou, jak snížit objem dat, [je, aby](/azure/kusto/query/whereoperator) byly v počátečním stavu dotazu. Platforma Azure Průzkumník dat zahrnuje mezipaměť, která umožňuje zjistit, které oddíly obsahují data relevantní pro konkrétní podmínku WHERE. Například pokud dotaz obsahuje `where EventID == 4624` pak by měl distribuovat dotaz pouze uzlům, které zpracovávají oddíly s odpovídajícími událostmi.
+### <a name="add-early-filters-to-the-query"></a>Přidání časných filtrů do dotazu
 
-Následující příklady dotazů vytváří přesně stejný výsledek, ale druhý z nich je efektivnější:
+Další metodou ke snížení objemu dat je mít [kde](/azure/kusto/query/whereoperator) podmínky v rané fázi dotazu. Platforma Azure Data Explorer obsahuje mezipaměť, která mu umožňuje vědět, které oddíly obsahují data, která jsou relevantní pro konkrétní podmínku. Například pokud dotaz `where EventID == 4624` obsahuje pak by distribuovat dotaz pouze do uzlů, které zpracovávají oddíly s odpovídající události.
+
+Následující příklad dotazů vytvořit přesně stejný výsledek, ale druhý je efektivnější:
 
 ```Kusto
 //less efficient
@@ -194,9 +205,11 @@ SecurityEvent
 | summarize LoginSessions = dcount(LogonGuid) by Account
 ```
 
-Vzhledem k tomu, že Azure Průzkumník dat je sloupcové úložiště dat, načítání každého sloupce je nezávisle na ostatních. Počet sloupců, které jsou načteny přímo, ovlivňuje celkový objem dat. Měli byste zahrnout pouze sloupce ve výstupu, které jsou potřeba při [sumarizaci](/azure/kusto/query/summarizeoperator) výsledků nebo probíhajících [projektů](/azure/kusto/query/projectoperator) pro konkrétní sloupce. Azure Průzkumník dat má několik optimalizací pro snížení počtu načtených sloupců. Pokud zjistí, že sloupec není potřeba, například pokud není odkazován v příkazu [Shrnutí](/azure/kusto/query/summarizeoperator) , nebude ho načíst.
+### <a name="reduce-the-number-of-columns-that-is-retrieved"></a>Snížení počtu načtených sloupců
 
-Druhý dotaz může například zpracovat třikrát více dat, protože potřebuje načíst ne jeden sloupec, ale tři:
+Vzhledem k tomu, že Azure Data Explorer je sloupcové úložiště dat, načítání každého sloupce je nezávislé na ostatních. Počet načtených sloupců přímo ovlivňuje celkový objem dat. Měli byste zahrnout pouze sloupce ve výstupu, které jsou potřebné [sumarzací](/azure/kusto/query/summarizeoperator) výsledků nebo [promítáním](/azure/kusto/query/projectoperator) konkrétních sloupců. Azure Data Explorer má několik optimalizací ke snížení počtu načtených sloupců. Pokud zjistí, že sloupec není potřeba, například pokud není odkazováno v příkazu [summarize,](/azure/kusto/query/summarizeoperator) nebude načíst.
+
+Například druhý dotaz může zpracovat třikrát více dat, protože potřebuje načíst ne jeden sloupec, ale tři:
 
 ```Kusto
 //Less columns --> Less data
@@ -209,16 +222,18 @@ SecurityEvent
 | summarize count(), dcount(EventID), avg(Level) by Computer  
 ```
 
-## <a name="time-span-of-the-processed-query"></a>Časové období zpracovávaného dotazu
+## <a name="time-span-of-the-processed-query"></a>Časové rozpětí zpracovaného dotazu
 
-Všechny protokoly v protokolu Azure Monitor jsou rozdělené podle sloupce **TimeGenerated** . Počet oddílů, které jsou k dispozici, přímo souvisí s časovým rozsahem. Snížení časového rozsahu představuje nejúčinnější způsob, jak zajistit, aby se provádění dotazů zobrazilo.
+Všechny protokoly v protokolech monitorování Azure jsou rozděleny podle sloupce **TimeGenerated.** Počet oddílů, které jsou přístupné přímo souvisí s časovým rozpětím. Snížení časového rozsahu je nejúčinnější způsob, jak zajistit spuštění dotazu výzvu.
 
-Časový rozsah lze nastavit pomocí voliče časového rozsahu na obrazovce Log Analytics, jak je popsáno v tématu [rozsah dotazu protokolu a časový rozsah v Azure Monitor Log Analytics](scope.md#time-range). Toto je doporučená metoda, protože vybraný časový rozsah je předán do back-endu pomocí metadat dotazu. 
+Časový rozsah lze nastavit pomocí voliče časového rozsahu na obrazovce Log Analytics, jak je popsáno v [oboru dotazu protokolu a časového rozsahu v Azure Monitor Log Analytics](scope.md#time-range). Toto je doporučená metoda, protože vybraný časový rozsah je předán back-endu pomocí metadat dotazu. 
 
-Alternativním způsobem je explicitní zahrnutí podmínky [WHERE](/azure/kusto/query/whereoperator) na **TimeGenerated** v dotazu. Tuto metodu byste měli použít, protože zajišťuje, že časové rozpětí je vyřešeno, a to i v případě, že je dotaz použit z jiného rozhraní.
-Měli byste se ujistit, že všechny části dotazu mají **TimeGenerated** filtry. Když dotaz obsahuje poddotazy načítající data z různých tabulek nebo stejné tabulky, každá z nich musí zahrnovat vlastní podmínku [WHERE](/azure/kusto/query/whereoperator) .
+Alternativní metoda je explicitně zahrnout [where](/azure/kusto/query/whereoperator) condition on **TimeGenerated** v dotazu. Tuto metodu byste měli použít, protože zajišťuje, že časový rozsah je pevný, i když je dotaz použit z jiného rozhraní.
+Měli byste zajistit, že všechny části dotazu mají **Filtry TimeGenerated.** Pokud dotaz obsahuje dílčí dotazy načítání dat z různých tabulek nebo stejné tabulky, každý musí obsahovat své [vlastní, kde](/azure/kusto/query/whereoperator) podmínka.
 
-Například v následujícím dotazu se v případě, že je tabulka **výkonu** prohledávána pouze za poslední den, bude prohledána tabulka **prezenčního signálu** pro celou svou historii, což může trvat až dva roky:
+### <a name="make-sure-all-sub-queries-have-timegenerated-filter"></a>Ujistěte se, že všechny dílčí dotazy mají filtr TimeGenerated.
+
+Například v následujícím dotazu, zatímco tabulka **Perf** bude zkontrolována pouze za poslední den, bude tabulka **Prezenční signál** zkontrolována pro celou svou historii, což může být až dva roky:
 
 ```Kusto
 Perf
@@ -231,7 +246,7 @@ Perf
 ) on Computer
 ```
 
-Běžným případem, kdy dojde k takové chybě, je použití [arg_max ()](/azure/kusto/query/arg-max-aggfunction) k vyhledání nejaktuálnějšího výskytu. Příklad:
+Běžným případem, kdy k takové chybě dojde, je, když se k nalezení nejnovějšího výskytu používá [arg_max().](/azure/kusto/query/arg-max-aggfunction) Například:
 
 ```Kusto
 Perf
@@ -245,7 +260,7 @@ by Computer
 ) on Computer
 ```
 
-Tuto možnost lze snadno opravit přidáním časového filtru do vnitřního dotazu:
+To lze snadno opravit přidáním časového filtru do vnitřního dotazu:
 
 ```Kusto
 Perf
@@ -259,9 +274,9 @@ by Computer
 ) on Computer
 ```
 
-Dalším příkladem této chyby je, že se provádí filtrování oboru času hned po [sjednocení](/azure/kusto/query/unionoperator?pivots=azuremonitor) nad několika tabulkami. Při provádění sjednocení by měl mít každý dílčí dotaz rozsah. K zajištění konzistence oboru můžete použít příkaz [let](/azure/kusto/query/letstatement) .
+Dalším příkladem této chyby je při provádění filtrování časového oboru těsně po [sjednocení](/azure/kusto/query/unionoperator?pivots=azuremonitor) přes několik tabulek. Při provádění unie by měl být každý dílčí dotaz vymezen. Příkaz [let](/azure/kusto/query/letstatement) můžete použít k zajištění konzistence oboru.
 
-Například následující dotaz vyhledá všechna data v tabulkách *prezenčního signálu* a *výkonu* , nikoli jenom poslední 1 den:
+Například následující dotaz prohledá všechna data v *tabulkách Prezenční signál* a *Perf,* nejen za poslední 1 den:
 
 ```Kusto
 Heartbeat 
@@ -273,7 +288,7 @@ Heartbeat
 | summarize min(TimeGenerated) by Computer
 ```
 
-Tento dotaz by měl být vyřešen následujícím způsobem:
+Tento dotaz by měl být stanoven takto:
 
 ```Kusto
 let MinTime = ago(1d);
@@ -287,67 +302,69 @@ Heartbeat
 | summarize min(TimeGenerated) by Computer
 ```
 
-Měření je vždy větší než zadaný skutečný čas. Pokud je například filtr dotazu 7 dní, systém může kontrolovat 7,5 nebo 8,1 dnů. Je to proto, že systém rozdělí data do bloků dat v proměnné velikosti. Aby bylo zajištěno, že všechny relevantní záznamy budou prohledávány, prohledá celý oddíl, který může pokrývat několik hodin a dokonce i více než jeden den.
+### <a name="time-span-measurement-limitations"></a>Omezení měření časového rozpětí
 
-Existuje několik případů, kdy systém nemůže poskytnout přesné měření časového rozsahu. K tomu dochází ve většině případů, kdy je méně než jeden den nebo v dotazech na více pracovních prostorů.
+Měření je vždy větší než skutečný čas určený. Pokud je například filtr na dotazu 7 dní, může systém prohledat 7,5 nebo 8,1 dne. Důvodem je, že systém je rozdělení dat do bloků v proměnné velikosti. Aby bylo zajištěno, že všechny relevantní záznamy jsou naskenovány, skenuje celý oddíl, který by mohl pokrýt několik hodin a dokonce i více než jeden den.
+
+Existuje několik případů, kdy systém nemůže poskytnout přesné měření časového rozsahu. K tomu dochází ve většině případů, kdy je rozsah dotazu kratší než jeden den nebo v dotazech s více pracovními prostory.
 
 
 > [!IMPORTANT]
-> Tento indikátor prezentuje pouze data zpracovaná v bezprostředním clusteru. Dotaz ve více oblastech by představoval jenom jednu z oblastí. V dotazu s více pracovními prostory nemusí obsahovat všechny pracovní prostory.
+> Tento indikátor zobrazuje pouze data zpracovaná v bezprostředním clusteru. V dotazu s více oblastmi by představoval pouze jednu z oblastí. V dotazu s více pracovními prostory nemusí obsahovat všechny pracovní prostory.
 
 ## <a name="age-of-processed-data"></a>Stáří zpracovaných dat
-Azure Průzkumník dat využívá několik vrstev úložiště: místní disky SSD v paměti a mnohem pomalejší objekty blob Azure. V novějších datech je vyšší pravděpodobnost, že je uložená v výkonnější úrovni s menší latencí, což snižuje dobu trvání dotazů a CPU. Kromě samotných dat má systém také mezipaměť pro metadata. Starší data, menší pravděpodobnost, že metadata budou v mezipaměti.
+Azure Data Explorer používá několik úrovní úložiště: v paměti, místní SSD disky a mnohem pomalejší objekty BLOB Azure. Čím novější data, tím vyšší je pravděpodobnost, že je uložena v výkonnější vrstvě s menší latencí, což snižuje dobu trvání dotazu a procesor. Kromě samotných dat má systém také mezipaměť pro metadata. Čím starší data, tím menší je pravděpodobnost, že jejich metadata budou v mezipaměti.
 
-I když některé dotazy vyžadují použití starých dat, existují případy, kdy omylem používá stará data. K tomu dochází, pokud jsou dotazy spouštěny bez časového rozsahu v jejich metadatech a ne všechny odkazy tabulky zahrnují filtr na sloupec **TimeGenerated** . V těchto případech bude systém kontrolovat všechna data, která jsou uložena v této tabulce. Pokud je uchovávání dat dlouhé, může se vztahovat na dlouhé časové rozsahy, tedy na data, která jsou stará jako doba uchovávání dat.
+Zatímco některé dotazy vyžadují použití starých dat, existují případy, kdy jsou stará data použita omylem. K tomu dochází, když jsou dotazy provedeny bez poskytnutí časového rozsahu v meta-datech a ne všechny odkazy na tabulky obsahují filtr ve **sloupci TimeGenerated.** V těchto případech systém prohledá všechna data uložená v této tabulce. Pokud je uchovávání dat dlouhé, může zahrnovat dlouhé časové rozsahy a tedy data, která jsou stejně stará jako doba uchovávání dat.
 
-Takové případy můžou být například:
+Takové případy mohou být například:
 
-- Nenastavuje se časový rozsah v Log Analytics poddotazem, který není omezen. Viz výše uvedený příklad.
+- Není nastavení časového rozsahu v Log Analytics s dílčí dotaz, který není omezen. Viz příklad výše.
 - Použití rozhraní API bez volitelných parametrů časového rozsahu.
-- Pomocí klienta, který nevynucuje časový rozsah, jako je Power BI konektor.
+- Použití klienta, který nevynucuje časový rozsah, jako je konektor Power BI.
 
-Podívejte se na příklady a poznámky v části zkontrolují, protože jsou také relevantní v tomto případě.
+Viz příklady a poznámky v prostupné části, protože jsou také relevantní v tomto případě.
 
-## <a name="number-of-regions"></a>Počet oblastí
-Existuje několik situací, kdy může být jeden dotaz spuštěn v různých oblastech:
+## <a name="number-of-regions"></a>Počet regionů
+Existuje několik situací, kdy může být spuštěn jeden dotaz v různých oblastech:
 
-- V případě, že je v seznamu výslovně uvedeno několik pracovních prostorů a jsou umístěny v různých oblastech.
-- Když dotaz v oboru prostředků načítá data a data jsou uložena ve více pracovních prostorech nacházejících se v různých oblastech.
+- Pokud je explicitně uvedeno několik pracovních prostorů a jsou umístěny v různých oblastech.
+- Když dotaz s rozsahem prostředků načítá data a data jsou uložena ve více pracovních prostorech, které jsou umístěny v různých oblastech.
 
-Provádění dotazů mezi oblastmi vyžaduje, aby systém serializován a přenesl do back-endu velkých bloků mezilehlých dat, která jsou obvykle mnohem větší než konečné výsledky dotazu. Také omezuje schopnost systému provádět optimalizace, heuristické a využité mezipaměti.
-Pokud není k dispozici žádný reálný důvod pro kontrolu všech těchto oblastí, měli byste obor upravit tak, aby se kryl méně oblastí. Pokud je obor prostředku minimalizován, ale stále se používá mnoho oblastí, může k tomu dojít z důvodu chyby konfigurace. Například protokoly auditu a nastavení diagnostiky jsou odesílány do různých pracovních prostorů v různých oblastech nebo existují více konfigurací nastavení diagnostiky. 
+Spuštění dotazu mezi oblastmi vyžaduje, aby systém serializovat a přenášet v back-endu velké bloky zprostředkující data, která jsou obvykle mnohem větší než konečné výsledky dotazu. Také omezuje schopnost systému provádět optimalizace, heuristiky a využívat mezipaměti.
+Pokud neexistuje žádný skutečný důvod pro skenování všech těchto oblastí, měli byste upravit obor tak, aby pokrýval méně oblastí. Pokud je obor prostředků minimalizován, ale stále se používá mnoho oblastí, může k tomu dojít z důvodu chybné konfigurace. Například protokoly auditu a nastavení diagnostiky jsou odesílány do různých pracovních prostorů v různých oblastech nebo existuje více konfigurací nastavení diagnostiky. 
 
 > [!IMPORTANT]
-> Když se dotaz spustí napříč několika oblastmi, měření procesoru a dat nebudou přesné a bude reprezentovat měření pouze v jedné z oblastí.
+> Při spuštění dotazu v několika oblastech, cpu a měření dat nebude přesné a bude představovat měření pouze v jedné z oblastí.
 
 ## <a name="number-of-workspaces"></a>Počet pracovních prostorů
-Pracovní prostory jsou logické kontejnery, které slouží k oddělení a správě dat protokolů. Back-end optimalizuje umístění pracovních prostorů na fyzických clusterech v rámci vybrané oblasti.
+Pracovní prostory jsou logické kontejnery, které se používají k oddělení a správě dat protokolů. Back-end optimalizuje umístění pracovního prostoru na fyzických clusterech ve vybrané oblasti.
 
-Využití více pracovních prostorů může mít za následek: 
+Použití více pracovních prostorů může být výsledkem: 
 
 - Kde je výslovně uvedeno několik pracovních prostorů.
-- Když dotaz v oboru prostředků načítá data a data jsou uložena ve více pracovních prostorech.
+- Když dotaz s rozsahem prostředků načítá data a data jsou uložena ve více pracovních prostorech.
  
-Provádění dotazů mezi oblastmi a mezi clustery vyžaduje, aby systém serializován a přenesl do back-endu velkých bloků mezilehlých dat, která jsou obvykle mnohem větší než konečné výsledky dotazu. Také omezuje schopnost systému provádět optimalizace, heuristické a využití mezipamětí.
+Provádění dotazů mezi oblastmi a mezi clustery vyžaduje, aby systém serializoval a přenášel v back-endu velké bloky zprostředkujících dat, které jsou obvykle mnohem větší než konečné výsledky dotazu. Omezuje také systémovou schopnost provádět optimalizace, heuristiky a využití mezipamětí.
 
 > [!IMPORTANT]
-> V některých scénářích s více pracovními prostory nebudou měření procesoru a dat přesné a bude reprezentovat měření jenom pro několik pracovních prostorů.
+> V některých scénářích více pracovních prostorů cpu a data měření nebude přesné a bude představovat měření pouze několik pracovních prostorů.
 
-## <a name="parallelism"></a>Paralelismu
-Protokoly Azure Monitor používají pro spouštění dotazů velké clustery Azure Průzkumník dat a tyto clustery se škálují ve velkém měřítku, ale můžou získat až desítky výpočetních uzlů. Systém automaticky škáluje clustery podle logiky umístění pracovního prostoru a kapacity.
+## <a name="parallelism"></a>Paralelnost
+Protokoly monitorování Azure používá velké clustery Průzkumníka dat Azure ke spouštění dotazů a tyto clustery se liší ve škálování, potenciálně získat až desítky výpočetních uzlů. Systém automaticky škáluje clustery podle logiky umístění pracovního prostoru a kapacity.
 
-Chcete-li efektivně spustit dotaz, je rozdělen a distribuován do výpočetních uzlů na základě dat, která jsou požadována pro jeho zpracování. Existují situace, kdy systém nemůže provádět to efektivně. To může mít za následek dlouhou dobu trvání dotazu. 
+Chcete-li efektivně spustit dotaz, je rozdělen a distribuován y výpočetníu uzlů na základě dat, která je požadována pro jeho zpracování. Existují situace, kdy systém nemůže tak efektivně provést. To může vést k dlouhé trvání dotazu. 
 
-Chování dotazů, které může snížit paralelismus, zahrnuje:
+Mezi chování dotazů, které mohou omezit paralelismus, patří:
 
-- Použití funkcí serializace a okno, jako je například [operátor serializace](/azure/kusto/query/serializeoperator), [Next ()](/azure/kusto/query/nextfunction), [předchozí ()](/azure/kusto/query/prevfunction)a funkce [řádku](/azure/kusto/query/rowcumsumfunction) . V některých případech je možné použít časové řady a funkce uživatelsky Analytics. Neefektivní serializace se může vyskytnout také v případě, že na konci dotazu nejsou použity následující operátory: [Rozsah](/azure/kusto/query/rangeoperator), [řazení](/azure/kusto/query/sortoperator), [pořadí](/azure/kusto/query/orderoperator), [horní](/azure/kusto/query/topoperator), [horní – hitters](/azure/kusto/query/tophittersoperator), [GetSchema](/azure/kusto/query/getschemaoperator).
--   Použití agregační funkce [DCount ()](/azure/kusto/query/dcount-aggfunction) vynutí, aby systém měl centrální kopii jedinečných hodnot. V případě vysoké škály dat zvažte použití volitelných parametrů funkce DCOUNT pro snížení přesnosti.
--   V mnoha případech operátor [Join](/azure/kusto/query/joinoperator?pivots=azuremonitor) snižuje celkový paralelismus. Pokud je výkon problematický, prověřte náhodné spojení jako alternativu.
--   V dotazech v oboru prostředků se kontroly RBAC před provedením můžou omezit v situacích, kdy existuje velký počet přiřazení RBAC. To může vést k delším kontrolám, které by způsobily nižší paralelismus. Například dotaz se spustí v předplatném, kde jsou tisíce prostředků a každý prostředek má mnoho přiřazení rolí na úrovni prostředků, nikoli na předplatném nebo skupině prostředků.
--   Pokud dotaz zpracovává malé bloky dat, jeho paralelismus bude nízký, protože systém nebude rozložen mezi mnoho výpočetních uzlů.
+- Použití serializace a funkce okna, jako je například [operátor serializovat](/azure/kusto/query/serializeoperator), [next()](/azure/kusto/query/nextfunction), [prev()](/azure/kusto/query/prevfunction)a funkce [řádku.](/azure/kusto/query/rowcumsumfunction) V některých z těchto případů lze použít funkce časové řady a analýzy uživatelů. K neefektivní serializaci může dojít také v případě, že na konci dotazu nejsou použity následující operátory: [rozsah](/azure/kusto/query/rangeoperator), [řazení](/azure/kusto/query/sortoperator), [řazení](/azure/kusto/query/orderoperator), [horní](/azure/kusto/query/topoperator), [top-hitters](/azure/kusto/query/tophittersoperator), [getschema](/azure/kusto/query/getschemaoperator).
+-    Použití funkce agregace [dcount()](/azure/kusto/query/dcount-aggfunction) vynutí, aby systém měl centrální kopii odlišných hodnot. Pokud je měřítko dat vysoké, zvažte použití volitelných parametrů funkce dcount ke snížení přesnosti.
+-    V mnoha případech operátor [join](/azure/kusto/query/joinoperator?pivots=azuremonitor) snižuje celkový paralelismus. Zkontrolujte náhodné spojení jako alternativu, pokud je výkon problematický.
+-    V dotazech oboru prostředků může předběžné spuštění kontrolr RBAC přetrvávat v situacích, kdy je velmi velký počet přiřazení RBAC. To může vést k delším kontrolám, které by vedly k nižšímu paralelismu. Například dotaz se spustí na předplatné, kde existují tisíce prostředků a každý prostředek má mnoho přiřazení rolí na úrovni prostředků, nikoli na předplatné nebo skupiny prostředků.
+-    Pokud dotaz zpracovává malé bloky dat, jeho paralelismus bude nízký, protože systém jej nebude šířit mezi mnoho výpočetních uzlů.
 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Referenční dokumentace k dotazovacímu jazyku Kusto](/azure/kusto/query/)
+- [Referenční dokumentace pro dotazovací jazyk Kusto](/azure/kusto/query/).

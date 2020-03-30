@@ -1,40 +1,40 @@
 ---
-title: Úrovně služeb a SKU
-description: Přečtěte si o funkcích a omezeních úrovní služeb Basic, Standard a Premium (SKU) Azure Container Registry.
+title: Úrovně služeb a sloky
+description: Další informace o funkcích a omezeních v základních, standardních a prémiových úrovních služeb (SKU) v Registru kontejnerů Azure.
 ms.topic: article
 ms.date: 11/05/2019
 ms.openlocfilehash: 1ebe5339b7523a4463dee45b126244d7ec5b2e4b
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74456267"
 ---
-# <a name="azure-container-registry-skus"></a>Azure Container Registry SKU
+# <a name="azure-container-registry-skus"></a>Azure Container Registry SKUs
 
-Azure Container Registry (ACR) je k dispozici ve více úrovních služeb, označovaných jako SKU. Tyto SKU poskytují předvídatelné ceny a několik možností pro zarovnávání se vzory kapacity a využití vašeho privátního registru Docker v Azure.
+Azure Container Registry (ACR) je k dispozici ve více úrovních služeb, označované jako SKU. Tyto sku poskytují předvídatelné ceny a několik možností pro zarovnání kapacity a využití vašeho soukromého registru Dockerv Azure.
 
 | Skladová jednotka (SKU) | Popis |
 | --- | ----------- |
-| **Basic** | Vstupní bod optimalizovaný z hlediska nákladů pro vývojáře, kteří se seznamují se službou Azure Container Registry. Základní registry mají stejné programové možnosti jako standard a Premium (jako je Azure Active Directory [integrace ověřování](container-registry-authentication.md#individual-login-with-azure-ad), [odstraňování imagí][container-registry-delete]a [Webhooky][container-registry-webhook]). Zahrnutá propustnost úložiště a imagí je ale nejvhodnější pro scénáře s nižším využitím. |
-| **Standard** | Registry úrovně Standard nabízejí stejné možnosti jako základní a zvyšují propustnost úložiště a imagí. Registry úrovně Standard by měly vyhovovat požadavkům většiny produkčních scénářů. |
-| **Premium** | Registry úrovně Premium poskytují nejvyšší objem zahrnutých úložišť a souběžných operací, což umožňuje použití scénářů s velkými objemy. Kromě propustnosti vyšších imagí přináší Premium navíc funkce, jako je [geografická replikace][container-registry-geo-replication] pro správu jednoho registru napříč několika oblastmi, [důvěryhodnost obsahu](container-registry-content-trust.md) pro podepisování značek imagí, [brány firewall a virtuální sítě (Preview)](container-registry-vnet.md) do Omezte přístup k registru. |
+| **Basic** | Vstupní bod optimalizovaný z hlediska nákladů pro vývojáře, kteří se seznamují se službou Azure Container Registry. Základní registry mají stejné programové funkce jako Standard a Premium (například [integrace ověřování](container-registry-authentication.md#individual-login-with-azure-ad)Azure Active Directory , [odstranění bitových obrázků][container-registry-delete]a [webhooky).][container-registry-webhook] Zahrnuté úložiště a propustnost bitové kopie jsou však nejvhodnější pro scénáře nižší využití. |
+| **Standard** | Standardní registry nabízejí stejné funkce jako Basic, se zvýšenou zahrnutou propustností úložiště a image. Registry úrovně Standard by měly vyhovovat požadavkům většiny produkčních scénářů. |
+| **Premium** | Prémiové registry poskytují nejvyšší množství zahrnutého úložiště a souběžných operací, což umožňuje scénáře s velkým objemem. Kromě vyšší propustnosti bitových obrázků přidává premium funkce, jako je [geografická replikace][container-registry-geo-replication] pro správu jednoho registru ve více oblastech, [důvěryhodnost obsahu](container-registry-content-trust.md) pro podepisování značek bitových označení, brány firewall a virtuální [sítě (náhled)](container-registry-vnet.md) pro omezení přístupu k registru. |
 
-Všechny SKU Basic, Standard a Premium poskytují stejné programové funkce. Všechny mají i výhody [úložiště imagí][container-registry-storage] spravované výhradně Azure. Výběr SKU vyšší úrovně poskytuje vyšší výkon a škálování. S více úrovněmi služeb můžete začít používat základní a pak po zvýšení využití registru převést na standard a Premium.
+Základní, standardní a premium sloky poskytují stejné programové funkce. Všechny také využívají [úložiště bitových obrázků][container-registry-storage] spravovaného výhradně azurem. Výběr skladové položky vyšší úrovně poskytuje vyšší výkon a škálování. S více úrovněmi služeb můžete začít s Basic, pak převést na standardní a premium jako vaše využití registru zvyšuje.
 
-## <a name="sku-features-and-limits"></a>Funkce a omezení SKU
+## <a name="sku-features-and-limits"></a>Funkce a limity skladové položky
 
-Následující tabulka obsahuje informace o funkcích a omezeních úrovní služeb Basic, Standard a Premium.
+V následující tabulce jsou podrobně uvedeny funkce a omezení úrovní služeb Basic, Standard a Premium.
 
 [!INCLUDE [container-instances-limits](../../includes/container-registry-limits.md)]
 
-## <a name="changing-skus"></a>Změna SKU
+## <a name="changing-skus"></a>Změna SKUs
 
-SKLADOVOU položku registru můžete změnit pomocí rozhraní příkazového řádku Azure CLI nebo v Azure Portal. Můžete volně přesouvat mezi SKU, pokud SKU, na který přecházíte, má požadovanou maximální kapacitu úložiště. 
+Skladovou položku registru můžete změnit pomocí příkazového příkazu k příkazu Azure nebo na webu Azure Portal. Mezi skladovými položkami se můžete volně pohybovat, dokud má skladová položka, na kterou přepínáte, požadovanou maximální kapacitu úložiště. 
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Pokud chcete přesouvat mezi SKU v Azure CLI, použijte příkaz [AZ ACR Update][az-acr-update] . Například pro přepnutí na Premium:
+Chcete-li přejít mezi SKU v příkazovém příkazu k onomu Azure CLI, použijte příkaz [az acr update.][az-acr-update] Chcete-li například přepnout na premium:
 
 ```azurecli
 az acr update --name myregistry --sku Premium
@@ -42,25 +42,25 @@ az acr update --name myregistry --sku Premium
 
 ### <a name="azure-portal"></a>portál Azure
 
-V **přehledu** registru kontejnerů v Azure Portal vyberte **aktualizovat**a potom z rozevíracího seznamu SKU vyberte novou **skladovou** položku.
+V registru kontejneru **Přehled** na portálu Azure vyberte **Aktualizovat**a pak vrozené nové **skladové položky** z rozbalovací položky skladové položky.
 
-![Aktualizace SKU registru kontejneru v Azure Portal][update-registry-sku]
+![Aktualizovat skladovou položku registru kontejneru na webu Azure Portal][update-registry-sku]
 
 ## <a name="pricing"></a>Ceny
 
-Informace o cenách každé z Azure Container Registry SKU najdete v tématu [Container Registry ceny][container-registry-pricing].
+Informace o cenách ke každému sumu registru kontejnerů Azure najdete v [tématu Ceny registru kontejnerů][container-registry-pricing].
 
-Podrobnosti o cenách přenosů dat najdete v tématu [Podrobnosti o cenách šířky pásma](https://azure.microsoft.com/pricing/details/bandwidth/). 
+Podrobnosti o cenách za přenos dat naleznete v [tématu Podrobnosti o cenách šířky pásma](https://azure.microsoft.com/pricing/details/bandwidth/). 
 
 ## <a name="next-steps"></a>Další kroky
 
-**Azure Container Registry plán**
+**Plán registru kontejnerů Azure**
 
-Informace o nadcházejících funkcích ve službě najdete v [ACR][acr-roadmap] plánu na GitHubu.
+Informace o nadcházejících funkcích služby najdete v [plánu ACR][acr-roadmap] na GitHubu.
 
 **Azure Container Registry UserVoice**
 
-Posílejte na nové návrhy funkcí v [ACR UserVoice][container-registry-uservoice]a hlasovat o nich.
+Odeslat a hlasovat o nových funkcích v [ACR UserVoice][container-registry-uservoice].
 
 <!-- IMAGES -->
 [update-registry-sku]: ./media/container-registry-skus/update-registry-sku.png

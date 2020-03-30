@@ -1,7 +1,7 @@
 ---
-title: Příklad vlastní dovednosti pomocí rozhraní API Bingu pro vyhledávání entit
+title: Příklad vlastní chytlací schopnosti pomocí rozhraní API pro vyhledávání entit Bingu
 titleSuffix: Azure Cognitive Search
-description: Ukazuje použití služby Vyhledávání entit Bingu ve vlastní dovednosti mapované na kanál pro indexování s obohaceným AI ve službě Azure Kognitivní hledání.
+description: Ukazuje použití služby Hledání entit Bingu ve vlastní dovednosti mapované na kanál indexování obohacené umělou ai v Azure Cognitive Search.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,47 +9,47 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 2994c55b39d30ff16a0ca135e93a116784feb201
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74113813"
 ---
-# <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Příklad: Vytvoření vlastní dovednosti pomocí rozhraní API Bingu pro vyhledávání entit
+# <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Příklad: Vytvoření vlastní dovednosti pomocí rozhraní API pro vyhledávání entit Bingu
 
-V tomto příkladu se dozvíte, jak vytvořit vlastní dovednost webového rozhraní API. Tato dovednost bude přijímat umístění, veřejné údaje a organizace a vrátí popisy pro ně. Tento příklad používá [funkci Azure](https://azure.microsoft.com/services/functions/) k zabalení [rozhraní API Bingu pro vyhledávání entit](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) tak, aby implementovala vlastní rozhraní dovedností.
+V tomto příkladu se dozvíte, jak vytvořit vlastní dovednosti webového rozhraní API. Tato dovednost bude přijímat místa, veřejné osobnosti a organizace a vrátí popisy pro ně. Příklad používá [funkci Azure](https://azure.microsoft.com/services/functions/) k zabalení [rozhraní API pro vyhledávání entit Bingu](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) tak, aby implementovalo vlastní rozhraní dovedností.
 
 ## <a name="prerequisites"></a>Požadavky
 
-+ Přečtěte si o vlastním článku o [dovednostech rozhraní](cognitive-search-custom-skill-interface.md) , pokud neznáte vstupní/výstupní rozhraní, které by měla vlastní dovednost implementovat.
++ Přečtěte si o [vlastní dovednosti rozhraní](cognitive-search-custom-skill-interface.md) článku, pokud nejste obeznámeni s vstupní a výstupní rozhraní, které vlastní dovednost by měla implementovat.
 
 + [!INCLUDE [cognitive-services-bing-entity-search-signup-requirements](../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
-+ Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/vs/) nebo novější, včetně úlohy vývoj pro Azure.
++ Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/vs/) nebo novější, včetně úlohy vývoje Azure.
 
 ## <a name="create-an-azure-function"></a>Vytvoření funkce Azure
 
-I když tento příklad používá funkci Azure k hostování webového rozhraní API, nevyžaduje se.  Pokud splňujete [požadavky na rozhraní pro vnímání znalostí](cognitive-search-custom-skill-interface.md), je přístup, který převezmete, nemateriálný. Azure Functions však usnadňuje vytváření vlastních dovedností.
+I když tento příklad používá funkci Azure k hostování webového rozhraní API, není vyžadováno.  Tak dlouho, jak budete splňovat [požadavky na rozhraní pro kognitivní dovednosti](cognitive-search-custom-skill-interface.md), přístup, který budete mít, je nepodstatné. Azure Functions však usnadňují vytvoření vlastní chod.
 
 ### <a name="create-a-function-app"></a>Vytvoření Function App
 
-1. V aplikaci Visual Studio vyberte v nabídce soubor možnost **nový** > **projekt** .
+1. V Sadě Visual Studio **vyberte** > nový**projekt** z nabídky Soubor.
 
-1. V dialogovém okně Nový projekt vyberte možnost **nainstalováno**, rozbalte položku **Visual C#**  > **Cloud**, vyberte možnost **Azure Functions**, zadejte název projektu a vyberte možnost **OK**. Název aplikace funkcí musí být platný jako C# obor názvů, proto nepoužívejte podtržítka, spojovníky nebo žádné jiné jiné než alfanumerické znaky.
+1. V dialogovém okně Nový projekt vyberte **Nainstalovaný**, rozbalte **Visual C#** > **Cloud**, vyberte **Funkce Azure**, zadejte název projektu a vyberte **OK**. Název aplikace funkce musí být platný jako obor názvů jazyka C#, proto nepoužívejte podtržítka, pomlčky ani jiné nealfanumerické znaky.
 
-1. Vyberte **Azure Functions v2 (.NET Core)** . Můžete to také provést s verzí 1, ale kód napsaný níže je založen na šabloně v2.
+1. Vyberte **funkce Azure v2 (.NET Core)**. Dalo by se také udělat s verzí 1, ale níže uvedený kód je založen na šabloně v2.
 
-1. Vyberte typ, který se má **aktivovat protokolem HTTP** .
+1. Vyberte typ, který má být **http trigger**
 
-1. V případě účtu úložiště můžete vybrat možnost **žádné**, protože pro tuto funkci nebudete potřebovat žádné úložiště.
+1. Pro účet úložiště můžete vybrat **žádný**, protože pro tuto funkci nebudete potřebovat žádné úložiště.
 
-1. Výběrem **OK** vytvořte projekt funkce a funkci AKTIVOVANou protokolem HTTP.
+1. Výběrem **možnosti OK** vytvořte projekt funkce a funkci spuštěnou protokolem HTTP.
 
-### <a name="modify-the-code-to-call-the-bing-entity-search-service"></a>Upravte kód pro volání služby Vyhledávání entit Bingu
+### <a name="modify-the-code-to-call-the-bing-entity-search-service"></a>Úprava kódu pro volání služby Hledání entit Bingu
 
 Visual Studio vytvoří projekt a v něm třídu, která obsahuje často používaný kód pro zvolený typ funkce. Atribut *FunctionName* metody nastavuje název funkce. Atribut *HttpTrigger* určuje, že je funkce aktivována požadavkem HTTP.
 
-Nyní nahraďte veškerý obsah souboru *function1.cs* následujícím kódem:
+Nyní nahraďte veškerý obsah souboru *Function1.cs* následujícím kódem:
 
 ```csharp
 using System;
@@ -311,15 +311,15 @@ namespace SampleSkills
 }
 ```
 
-Nezapomeňte zadat vlastní hodnotu *klíče* v `key` konstantu podle klíče, který jste získali při registraci rozhraní API Bingu pro vyhledávání entit.
+Nezapomeňte zadat vlastní *key* hodnotu klíče `key` do konstanty na základě klíče, který jste získali při registraci do rozhraní API pro vyhledávání entit Bingu.
 
-Tato ukázka zahrnuje veškerý potřebný kód v jednom souboru pro usnadnění práce. V [úložišti dovedností pro napájení](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch)najdete poněkud více strukturované verze stejné dovednosti.
+Tato ukázka obsahuje veškerý potřebný kód v jednom souboru pro usnadnění. Můžete najít o něco strukturovanější verzi stejné dovednosti v [úložišti silových dovedností](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch).
 
-Je samozřejmě možné, že soubor přejmenujete z `Function1.cs` na `BingEntitySearch.cs`.
+Soubor můžete samozřejmě přejmenovat `Function1.cs` z `BingEntitySearch.cs`na .
 
-## <a name="test-the-function-from-visual-studio"></a>Testování funkce ze sady Visual Studio
+## <a name="test-the-function-from-visual-studio"></a>Testování funkce z aplikace Visual Studio
 
-Stiskněte klávesu **F5** ke spuštění programu a chování funkce testu. V tomto případě použijeme níže uvedenou funkci k vyhledání dvou entit. Použijte post nebo Fiddler k vydání volání jako na následujícím obrázku:
+Stisknutím **klávesy F5** spusťte program a otestujte chování funkcí. V takovém případě použijeme níže uvedenou funkci k vyhledat dvě entity. Pomocí Pošťáka nebo Šumaře můžete volat jako ten, který je uveden níže:
 
 ```http
 POST https://localhost:7071/api/EntitySearch
@@ -348,7 +348,7 @@ POST https://localhost:7071/api/EntitySearch
 ```
 
 ### <a name="response"></a>Odpověď
-Měla by se zobrazit odpověď podobná následujícímu příkladu:
+Měli byste vidět odpověď podobnou následujícímu příkladu:
 
 ```json
 {
@@ -373,21 +373,21 @@ Měla by se zobrazit odpověď podobná následujícímu příkladu:
 
 ## <a name="publish-the-function-to-azure"></a>Publikování funkce do Azure
 
-Až budete s chováním funkce spokojeni, můžete ho publikovat.
+Když jste spokojeni s chováním funkce, můžete ji publikovat.
 
-1. V **Průzkumníku řešení** klikněte pravým tlačítkem na požadovaný projekt a vyberte **Publikovat**. Vyberte **vytvořit novou** > **publikovat**.
+1. V **Průzkumníku řešení** klikněte pravým tlačítkem na požadovaný projekt a vyberte **Publikovat**. Zvolte **Vytvořit novou** > **publikování**.
 
-1. Pokud jste ještě nepřipojili Visual Studio k účtu Azure, vyberte **Přidat účet....**
+1. Pokud jste visual studio ještě nepřipojili ke svému účtu Azure, vyberte **Přidat účet....**
 
-1. Postupujte podle výzev na obrazovce. Budete požádáni o zadání jedinečného názvu pro službu App Service, předplatné Azure, skupinu prostředků, plán hostování a účet úložiště, který chcete použít. Můžete vytvořit novou skupinu prostředků, nový plán hostování a účet úložiště, pokud je ještě nemáte. Po dokončení vyberte **vytvořit** .
+1. Postupujte podle výzev na obrazovce. Budete vyzváni k zadání jedinečného názvu pro vaši službu aplikace, předplatné Azure, skupinu prostředků, plán hostování a účet úložiště, který chcete použít. Můžete vytvořit novou skupinu prostředků, nový plán hostování a účet úložiště, pokud je ještě nemáte. Po dokončení vyberte **Vytvořit**
 
-1. Po dokončení nasazení si všimněte adresy URL webu. Je to adresa vaší aplikace Function App v Azure. 
+1. Po dokončení nasazení si všimněte adresy URL webu. Je to adresa vaší funkční aplikace v Azure. 
 
-1. V [Azure Portal](https://portal.azure.com)přejděte do skupiny prostředků a vyhledejte funkci `EntitySearch`, kterou jste publikovali. V části **Spravovat** byste měli vidět klíče hostitele. Vyberte ikonu **kopírování** pro *výchozí* klíč hostitele.  
+1. Na [webu Azure Portal](https://portal.azure.com)přejděte do skupiny `EntitySearch` prostředků a vyhledejte funkci, kterou jste publikovali. V části **Spravovat** byste měli vidět klíče hostitelů. Vyberte ikonu **Kopírovat** pro *výchozí* klíč hostitele.  
 
 ## <a name="test-the-function-in-azure"></a>Testování funkce v Azure
 
-Teď, když máte výchozí klíč hostitele, otestujte funkci následujícím způsobem:
+Nyní, když máte výchozí klíč hostitele, otestujte svou funkci následujícím způsobem:
 
 ```http
 POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?code=[enter default host key here]
@@ -415,10 +415,10 @@ POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?co
 }
 ```
 
-Tento příklad by měl mít stejný výsledek, který jste viděli dříve při spuštění funkce v místním prostředí.
+Tento příklad by měl způsobit stejný výsledek, který jste viděli dříve při spuštění funkce v místním prostředí.
 
-## <a name="connect-to-your-pipeline"></a>Připojení k vašemu kanálu
-Teď, když máte novou vlastní dovednost, ji můžete přidat do svého dovednostiu. Následující příklad ukazuje, jak volat dovednost pro přidání popisů do organizací v dokumentu (může být rozšířena tak, aby fungovala také na místech a na lidech). Nahraďte `[your-entity-search-app-name]` názvem vaší aplikace.
+## <a name="connect-to-your-pipeline"></a>Připojení k potrubí
+Nyní, když máte novou vlastní dovednost, můžete ji přidat do své dovednosti. Následující příklad ukazuje, jak volat dovednost přidat popisy organizacím v dokumentu (to by mohlo být rozšířeno také na práci na místech a lidech). Nahraďte `[your-entity-search-app-name]` se názvem aplikace.
 
 ```json
 {
@@ -446,7 +446,7 @@ Teď, když máte novou vlastní dovednost, ji můžete přidat do svého dovedn
 }
 ```
 
-Tady se počítáme s předdefinovanými [dovednostmi pro rozpoznávání entit](cognitive-search-skill-entity-recognition.md) , která se mají prezentovat v dovednosti a rozšířit dokument seznamem organizací. V tomto článku najdete konfiguraci dovedností pro extrakci entit, která by byla dostatečná pro vytváření dat, která potřebujeme:
+Zde počítáme s tím, že v sadě dovedností bude přítomen předdefinovaný [způsob rozpoznávání entit](cognitive-search-skill-entity-recognition.md) a že dokument obohatíte seznamem organizací. Pro referenci, tady je konfigurace dovedností extrakce entity, která by byla dostatečná při generování dat, která potřebujeme:
 
 ```json
 {
@@ -476,10 +476,10 @@ Tady se počítáme s předdefinovanými [dovednostmi pro rozpoznávání entit]
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Blahopřejeme! Vytvořili jste svou první vlastní dovednost. Teď můžete postupovat podle stejného vzoru, abyste mohli přidat vlastní funkce. Další informace získáte kliknutím na následující odkazy.
+Blahopřejeme! Vytvořili jste si svou první vlastní dovednost. Nyní můžete postupovat podle stejného vzoru a přidat vlastní funkce. Další informace najdete na následujících odkazech.
 
-+ [Dovednosti v Power: úložiště vlastních dovedností](https://github.com/Azure-Samples/azure-search-power-skills)
-+ [Přidání vlastní dovednosti do kanálu pro obohacení AI](cognitive-search-custom-skill-interface.md)
-+ [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
-+ [Vytvořit dovednosti (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Power Skills: úložiště vlastních dovedností](https://github.com/Azure-Samples/azure-search-power-skills)
++ [Přidání vlastní chudinské dovednosti do kanálu obohacení umělou ai.](cognitive-search-custom-skill-interface.md)
++ [Jak definovat sadu dovedností](cognitive-search-defining-skillset.md)
++ [Vytvořit sadu dovedností (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [Jak mapovat obohacená pole](cognitive-search-output-field-mapping.md)

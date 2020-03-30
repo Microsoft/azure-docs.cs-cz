@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s chybějícími daty v protokolech aktivit | Microsoft Docs
+title: Poradce při potížích s chybějícími daty v protokolech aktivit | Dokumenty společnosti Microsoft
 description: Nabízí řešení pro chybějící data v protokolech aktivit Azure Active Directory.
 services: active-directory
 documentationcenter: ''
@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c335a4d30846f7c1b4dbd6b6aedc4d100a9b43a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74014292"
 ---
 # <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Řešení potíží: Chybějící data v protokolech aktivit Azure Active Directory 
@@ -38,7 +38,7 @@ Provedl jsem nějaké akce na webu Azure Portal a očekával jsem pro tyto akce 
 
 Akce se v protokolech aktivit nezobrazí okamžitě. V následující tabulce jsou uvedené naše latence u protokolů aktivit. 
 
-| Zpráva | &nbsp; | Latence (P95) | Latence (P99) |
+| Sestava | &nbsp; | Latence (P95) | Latence (P99) |
 |--------|--------|---------------|---------------|
 | Audit adresáře | &nbsp; | 2 minuty | 5 minut |
 | Aktivita přihlášení | &nbsp; | 2 minuty | 5 minut | 
@@ -59,7 +59,7 @@ Nedávno jsem se přihlásil/a k webu Azure Portal a očekával/a jsem, že se p
 
 Akce se v protokolech aktivit nezobrazí okamžitě. V následující tabulce jsou uvedené naše latence u protokolů aktivit. 
 
-| Zpráva | &nbsp; | Latence (P95) | Latence (P99) |
+| Sestava | &nbsp; | Latence (P95) | Latence (P99) |
 |--------|--------|---------------|---------------|
 | Audit adresáře | &nbsp; | 2 minuty | 5 minut |
 | Aktivita přihlášení | &nbsp; | 2 minuty | 5 minut | 
@@ -80,7 +80,7 @@ Na webu Azure Portal nemůžu zobrazit data přihlášení a auditu za více ne�
 
 V závislosti na vaší licenci akce služby Azure Active Directory ukládají sestavy aktivit na tyto počty dní:
 
-| Zpráva           | &nbsp; |  Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| Sestava           | &nbsp; |  Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | ---              | ----   |  ---           | ---                 | ---                 |
 | Audit adresáře  | &nbsp; |   7 dní     | 30 dní             | 30 dní             |
 | Přihlašovací aktivita | &nbsp; | Není k dispozici. K vlastním přihlášením máte přístup po dobu 7 dnů v okně profilu uživatele. | 30 dní | 30 dní             |
@@ -94,6 +94,6 @@ Pokud chcete data uchovávat déle než 30 dnů, máte dvě možnosti. Pomocí [
 ## <a name="next-steps"></a>Další kroky
 
 * [Uchovávání sestav v Azure AD](reference-reports-data-retention.md)
-* [Latence generování sestav v Azure Active Directory](reference-reports-latencies.md)
+* [Latence vytváření sestav služby Azure Active Directory](reference-reports-latencies.md).
 * [Nejčastější dotazy ke generování sestav v Azure Active Directory](reports-faq.md)
 

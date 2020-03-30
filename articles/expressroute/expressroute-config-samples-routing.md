@@ -1,6 +1,6 @@
 ---
 title: 'Azure ExpressRoute: Ukázky konfigurace směrovače'
-description: Tato stránka obsahuje ukázky konfigurace směrovače pro směrovačů Cisco a Juniper.
+description: Tato stránka obsahuje konfigurační ukázky směrovačů Cisco a Juniper.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,36 +8,36 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
 ms.openlocfilehash: 2c37dadeb669fb88f858b5487379828a8dddec6c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74076663"
 ---
-# <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>Ukázky konfigurace směrovače nastavit a spravovat směrování
-Tato stránka obsahuje rozhraní a směrování ukázky konfigurace pro Cisco IOS-XE a Juniper MX řady směrovače, při práci se službou ExpressRoute. Ty by měla být ukázky pouze pokyny a nesmí se používat je. Můžete pracovat s vaším dodavatelem přijít s odpovídající konfigurací pro vaši síť. 
+# <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>Ukázky konfigurace směrovače pro nastavení a správu směrování
+Tato stránka poskytuje ukázky konfigurace rozhraní a směrování pro směrovače řady Cisco IOS-XE a Juniper MX při práci s ExpressRoute. Jsou určeny pouze jako vzorky, které jsou orientační, a nesmějí být používány tak, jak jsou. Můžete spolupracovat s dodavatelem a přijít s vhodnými konfiguracemi pro vaši síť. 
 
 > [!IMPORTANT]
-> Ukázky na této stránce jsou určené výhradně pro doprovodné materiály. Musí fungovat s vaším dodavatelem prodejní a technickým týmem a síťovým týmem přijít s odpovídající konfigurací podle svých potřeb. Problémy související s konfigurací, které jsou uvedené na této stránce nebude podpory společnosti Microsoft. Pro problémy podpory musí kontaktujte dodavatele zařízení.
+> Vzorky na této stránce jsou určeny pouze pro orientaci. Musíte pracovat s prodejním / technickým týmem vašeho dodavatele a vaším síťovým týmem, abyste přišli s vhodnými konfiguracemi, které splní vaše potřeby. Společnost Microsoft nebude podporovat problémy související s konfiguracemi uvedenými na této stránce. Problémy s podporou vám poskytne dodavatel zařízení.
 > 
 > 
 
-## <a name="mtu-and-tcp-mss-settings-on-router-interfaces"></a>Nastavení jednotek MTU a TCP MSS na rozhraní směrovače
-* MTU pro rozhraní ExpressRoute je 1500, což je typické výchozí MTU pro rozhraní sítě Ethernet na směrovač. Pokud ve výchozím nastavení má směrovač jiné MTU, není nutné zadat hodnotu na rozhraní směrovače.
-* Na rozdíl od služby Azure VPN Gateway MSS protokolu TCP pro okruh ExpressRoute není nutné zadat.
+## <a name="mtu-and-tcp-mss-settings-on-router-interfaces"></a>Nastavení MTU a TCP MSS na rozhraních směrovačů
+* MTU pro rozhraní ExpressRoute je 1500, což je typické výchozí MTU pro ethernetové rozhraní na směrovači. Pokud váš směrovač nemá ve výchozím nastavení jinou mtu, není nutné zadat hodnotu v rozhraní směrovače.
+* Na rozdíl od brány Azure VPN není nutné zadat protokol TCP MSS pro okruh ExpressRoute.
 
-Ukázky konfigurace směrovače níže se vztahují na všechny partnerské vztahy. Kontrola [partnerské vztahy ExpressRoute](expressroute-circuit-peerings.md) a [požadavky na směrování služby ExpressRoute](expressroute-routing.md) podrobné informace o směrování.
+Ukázky konfigurace směrovače níže platí pro všechny partnerské partnerské partnerské společnosti. Další podrobnosti o směrování naleznete v [partnerských partnerech ExpressRoute](expressroute-circuit-peerings.md) a [požadavcích na směrování Služby ExpressRoute](expressroute-routing.md) a
 
 
-## <a name="cisco-ios-xe-based-routers"></a>Cisco IOS-XE na základě směrovače
-Příklady v této části platí pro všechny směrovače řady operačního systému IOS XE.
+## <a name="cisco-ios-xe-based-routers"></a>Routery založené na cisco IOS-XE
+Ukázky v této části platí pro všechny směrovače se systémem řady IOS-XE OS.
 
-### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1. konfigurace rozhraní a podřízených rozhraní
-Budete potřebovat sub rozhraní na partnerský vztah v každé směrovače, ke kterému se připojíte k Microsoftu. Dílčí rozhraní lze identifikovat s ID sítě VLAN nebo pár skládaný ID sítě VLAN a IP adresu.
+### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1. Konfigurace rozhraní a podrozhraní
+V každém směrovači, který se připojujete k microsoftu, budete na partnerské propojení vyžadovat dílčí rozhraní pro každý partnerský vztah. Dílčí rozhraní lze identifikovat pomocí ID sítě VLAN nebo skládané dvojice ID sítě VLAN a IP adresy.
 
 **Definice rozhraní Dot1Q**
 
-Tato ukázka obsahuje definici dílčí rozhraní pro dílčí rozhraní s jednotné ID sítě VLAN. ID sítě VLAN je pro každý partnerský vztah jedinečná. Poslední oktet si IPv4 adresu, bude vždy liché číslo.
+Tato ukázka poskytuje definici dílčího rozhraní pro dílčí rozhraní s jedním ID sítě VLAN. ID sítě VLAN je jedinečné pro jeden partnerský vztah. Poslední oktet adresy IPv4 bude vždy liché číslo.
 
     interface GigabitEthernet<Interface_Number>.<Number>
      encapsulation dot1Q <VLAN_ID>
@@ -45,14 +45,14 @@ Tato ukázka obsahuje definici dílčí rozhraní pro dílčí rozhraní s jedno
 
 **Definice rozhraní QinQ**
 
-Tato ukázka obsahuje definici dílčí rozhraní pro dílčí rozhraní se dva identifikátory ID sítě VLAN. Vnější ID sítě VLAN (s-tag), pokud používá zůstává stejná napříč všechny partnerské vztahy. Vnitřní ID sítě VLAN (c-tag) je pro každý partnerský vztah jedinečná. Poslední oktet si IPv4 adresu, bude vždy liché číslo.
+Tato ukázka poskytuje definici dílčího rozhraní pro dílčí rozhraní se dvěma ID sítě VLAN. Vnější ID sítě VLAN (s-tag), pokud se používá, zůstane stejné ve všech partnerských položkách. Vnitřní ID sítě VLAN (c-tag) je jedinečné pro jeden partnerský vztah. Poslední oktet adresy IPv4 bude vždy liché číslo.
 
     interface GigabitEthernet<Interface_Number>.<Number>
      encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
      ip address <IPv4_Address><Subnet_Mask>
 
-### <a name="2-setting-up-ebgp-sessions"></a>2. nastavení relací eBGP
-Musíte nastavit relace protokolu BGP s Microsoftem pro každý partnerský vztah. Následující ukázka umožňuje nastavení relace protokolu BGP s Microsoftem. Pokud adresu IPv4, které jste použili pro vaše rozhraní sub a.b.c.d, IP adresa (Microsoft) okolní sítě BGP budou a.b.c.d+1. Poslední oktet IPv4 adresy okolní sítě BGP budou vždy sudé číslo.
+### <a name="2-setting-up-ebgp-sessions"></a>2. Nastavení eBGP relací
+Pro každý partnerský vztah je nutné nastavit relaci protokolu BGP se společností Microsoft. Následující ukázka umožňuje nastavit relaci protokolu BGP se společností Microsoft. Pokud byla adresa IPv4 použitá pro dílčí rozhraní a.b.c.d, bude adresa IP souseda Protokolu BGP (Microsoft) a.b.c.d+1. Poslední oktet adresy IPv4 souseda Protokolu BGP bude vždy sudé číslo.
 
     router bgp <Customer_ASN>
      bgp log-neighbor-changes
@@ -63,8 +63,8 @@ Musíte nastavit relace protokolu BGP s Microsoftem pro každý partnerský vzta
      exit-address-family
     !
 
-### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. nastavení předpon, které se mají inzerovat přes relaci protokolu BGP
-Můžete nakonfigurovat směrovače inzerovat vyberte předpony společnosti Microsoft. Můžete tak učinit pomocí ukázky níže.
+### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. Nastavení předpon, které mají být inzerovány v průběhu relace Protokolu BGP
+Směrovač můžete nakonfigurovat tak, aby inzeroval vybrané předpony společnosti Microsoft. Můžete tak učinit pomocí níže uvedeného vzorku.
 
     router bgp <Customer_ASN>
      bgp log-neighbor-changes
@@ -76,8 +76,8 @@ Můžete nakonfigurovat směrovače inzerovat vyberte předpony společnosti Mic
      exit-address-family
     !
 
-### <a name="4-route-maps"></a>4. mapy tras
-Můžete použít trasy mapy a předponu v seznamech předpony filtru rozšíří do vaší sítě. Následující ukázky můžete použít ke splnění úkolu. Ujistěte se, že máte příslušné předpony seznamy nastavení.
+### <a name="4-route-maps"></a>4. Mapy tras
+Mapy tras a seznamy předponek můžete použít k filtrování předpon šířených do sítě. K provedení úkolu můžete použít následující ukázku. Ujistěte se, že máte příslušnou instalaci předpon.
 
     router bgp <Customer_ASN>
      bgp log-neighbor-changes
@@ -94,14 +94,14 @@ Můžete použít trasy mapy a předponu v seznamech předpony filtru rozšíř�
     !
 
 
-## <a name="juniper-mx-series-routers"></a>Řada směrovače Juniper MX
-Příklady v této části platí pro všechny řady směrovače Juniper MX.
+## <a name="juniper-mx-series-routers"></a>Juniper MX série směrovačů
+Ukázky v této části platí pro všechny směrovače řady Juniper MX.
 
-### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1. konfigurace rozhraní a podřízených rozhraní
+### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1. Konfigurace rozhraní a podrozhraní
 
 **Definice rozhraní Dot1Q**
 
-Tato ukázka obsahuje definici dílčí rozhraní pro dílčí rozhraní s jednotné ID sítě VLAN. ID sítě VLAN je pro každý partnerský vztah jedinečná. Poslední oktet si IPv4 adresu, bude vždy liché číslo.
+Tato ukázka poskytuje definici dílčího rozhraní pro dílčí rozhraní s jedním ID sítě VLAN. ID sítě VLAN je jedinečné pro jeden partnerský vztah. Poslední oktet adresy IPv4 bude vždy liché číslo.
 
     interfaces {
         vlan-tagging;
@@ -118,7 +118,7 @@ Tato ukázka obsahuje definici dílčí rozhraní pro dílčí rozhraní s jedno
 
 **Definice rozhraní QinQ**
 
-Tato ukázka obsahuje definici dílčí rozhraní pro dílčí rozhraní se dva identifikátory ID sítě VLAN. Vnější ID sítě VLAN (s-tag), pokud používá zůstává stejná napříč všechny partnerské vztahy. Vnitřní ID sítě VLAN (c-tag) je pro každý partnerský vztah jedinečná. Poslední oktet si IPv4 adresu, bude vždy liché číslo.
+Tato ukázka poskytuje definici dílčího rozhraní pro dílčí rozhraní se dvěma ID sítě VLAN. Vnější ID sítě VLAN (s-tag), pokud se používá, zůstane stejné ve všech partnerských položkách. Vnitřní ID sítě VLAN (c-tag) je jedinečné pro jeden partnerský vztah. Poslední oktet adresy IPv4 bude vždy liché číslo.
 
     interfaces {
         <Interface_Number> {
@@ -132,8 +132,8 @@ Tato ukázka obsahuje definici dílčí rozhraní pro dílčí rozhraní se dva 
         }                                   
     }                           
 
-### <a name="2-setting-up-ebgp-sessions"></a>2. nastavení relací eBGP
-Musíte nastavit relace protokolu BGP s Microsoftem pro každý partnerský vztah. Následující ukázka umožňuje nastavení relace protokolu BGP s Microsoftem. Pokud adresu IPv4, které jste použili pro vaše rozhraní sub a.b.c.d, IP adresa (Microsoft) okolní sítě BGP budou a.b.c.d+1. Poslední oktet IPv4 adresy okolní sítě BGP budou vždy sudé číslo.
+### <a name="2-setting-up-ebgp-sessions"></a>2. Nastavení eBGP relací
+Pro každý partnerský vztah je nutné nastavit relaci protokolu BGP se společností Microsoft. Následující ukázka umožňuje nastavit relaci protokolu BGP se společností Microsoft. Pokud byla adresa IPv4 použitá pro dílčí rozhraní a.b.c.d, bude adresa IP souseda Protokolu BGP (Microsoft) a.b.c.d+1. Poslední oktet adresy IPv4 souseda Protokolu BGP bude vždy sudé číslo.
 
     routing-options {
         autonomous-system <Customer_ASN>;
@@ -148,8 +148,8 @@ Musíte nastavit relace protokolu BGP s Microsoftem pro každý partnerský vzta
         }                                   
     }
 
-### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. nastavení předpon, které se mají inzerovat přes relaci protokolu BGP
-Můžete nakonfigurovat směrovače inzerovat vyberte předpony společnosti Microsoft. Můžete tak učinit pomocí ukázky níže.
+### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. Nastavení předpon, které mají být inzerovány v průběhu relace Protokolu BGP
+Směrovač můžete nakonfigurovat tak, aby inzeroval vybrané předpony společnosti Microsoft. Můžete tak učinit pomocí níže uvedeného vzorku.
 
     policy-options {
         policy-statement <Policy_Name> {
@@ -173,8 +173,8 @@ Můžete nakonfigurovat směrovače inzerovat vyberte předpony společnosti Mic
     }
 
 
-### <a name="4-route-maps"></a>4. mapy tras
-Můžete použít trasy mapy a předponu v seznamech předpony filtru rozšíří do vaší sítě. Následující ukázky můžete použít ke splnění úkolu. Ujistěte se, že máte příslušné předpony seznamy nastavení.
+### <a name="4-route-maps"></a>4. Mapy tras
+Mapy tras a seznamy předponek můžete použít k filtrování předpon šířených do sítě. K provedení úkolu můžete použít následující ukázku. Ujistěte se, že máte příslušnou instalaci předpon.
 
     policy-options {
         prefix-list MS_Prefixes {

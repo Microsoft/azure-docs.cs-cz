@@ -1,6 +1,6 @@
 ---
-title: Co se stalo s mým projektem ASP.NET 5 (připojené služby sady Visual Studio)
-description: Popisuje, co se stane po připojení k účtu služby Azure Storage v projektu Visual Studio ASP.NET 5 pomocí připojených služeb sady Visual Studio.
+title: Co se stalo s mým projektem ASP.NET 5 (služby připojení k sadě Visual Studio)
+description: Popisuje, co se stane po připojení k účtu úložiště Azure v projektu Visual Studio ASP.NET 5 pomocí připojených služeb Visual Studia
 services: storage
 author: ghogen
 manager: jillfra
@@ -14,30 +14,30 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: be99465a48aaf680834f313e03384a9f0c211502
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72300015"
 ---
-# <a name="what-happened-to-my-aspnet-5-project-visual-studio-azure-storage-connected-services"></a>Co se stalo s mým projektem ASP.NET 5 (připojené služby sady Visual Studio Azure Storage)?
+# <a name="what-happened-to-my-aspnet-5-project-visual-studio-azure-storage-connected-services"></a>Co se stalo s mým projektem ASP.NET 5 (služby připojení Visual Studio Azure Storage)?
 ## <a name="references-added"></a>Přidané odkazy
-Do projektu Visual studia se přidal balíček NuGet Azure Storage.  
+Balíček Azure Storage NuGet byl přidán do projektu Sady Visual Studio.  
 Tento balíček přidává následující odkazy .NET:
 
-* **Microsoft. data. Edm**
-* **Microsoft. data. OData**
-* **Microsoft. data. Services. Client**
-* **Microsoft. WindowsAzure. Configuration**
-* **Microsoft. WindowsAzure. Storage**
-* **Newtonsoft. JSON**
-* **System. data**
-* **System. prostor**
+* **Microsoft.Data.Edm**
+* **Microsoft.Data.OData**
+* **Microsoft.data.Services.client**
+* **Microsoft.WindowsAzure.Configuration**
+* **Microsoft.WindowsAzure.Storage**
+* **Newtonsoft.Json**
+* **System.Data**
+* **System.Spatial**
 
-Také byl přidán balíček NuGet **Microsoft. Framework. Configuration. JSON** .
+Byl také přidán balíček NuGet **Microsoft.Framework.Configuration.Json.**
 
 ## <a name="connection-string-for-azure-storage-added"></a>Připojovací řetězec pro Azure Storage přidán
-V souboru config. JSON projektu byl vytvořen element s připojovacím řetězcem a klíčem vybraného účtu úložiště.
+V souboru config.json projektu byl vytvořen prvek s připojovacím řetězcem a klíčem vybraného účtu úložiště.
 
-Další informace najdete v tématu [ASP.NET 5](https://www.asp.net/vnext).
+Další informace naleznete [v tématu ASP.NET 5](https://www.asp.net/vnext).
 

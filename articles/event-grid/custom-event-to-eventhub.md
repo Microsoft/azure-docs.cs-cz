@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: odesílání vlastních událostí do Event Hubs-Event Grid, Azure CLI'
-description: 'Rychlý Start: pomocí Azure Event Grid a Azure CLI můžete publikovat téma a přihlásit se k odběru této události. Centrum událostí se používá pro koncový bod.'
+title: 'Úvodní příručka: Odeslání vlastních událostí do centra událostí – grid událostí, azure cli'
+description: 'Úvodní příručka: Pomocí Azure Event Grid a Azure CLI publikujte téma a přihlaste se k odběru této události. Centrum událostí se používá pro koncový bod.'
 services: event-grid
 keywords: ''
 author: spelluru
@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
 ms.openlocfilehash: 832c4e453befc9e54051c968e0c364d22afd2bc2
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73721424"
 ---
-# <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>Rychlý Start: směrování vlastních událostí do Azure Event Hubs pomocí Azure CLI a Event Grid
+# <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>Úvodní příručka: Směrování vlastních událostí do Centra událostí Azure pomocí Azure CLI a Event Grid
 
 Azure Event Grid je služba zpracování událostí pro cloud. Služba Azure Event Hubs je jednou z podporovaných obslužných rutin události. V tomto článku vytvoříte pomocí Azure CLI vlastní téma, přihlásíte se k jeho odběru a aktivujete událost, abyste viděli výsledek. Události odešlete do centra událostí.
 
@@ -59,7 +59,7 @@ az eventhubs eventhub create --name $hubname --namespace-name $namespace --resou
 
 ## <a name="subscribe-to-a-custom-topic"></a>Přihlášení k odběru vlastního tématu
 
-Přihlásíte se k odběru tématu Event gridu, které informuje Event Grid události, které chcete sledovat. Následující příklad se přihlásí k odběru vlastního tématu, které jste vytvořili, a předá ID prostředku centra událostí pro koncový bod. Koncový bod je ve formátu:
+Přihlásíte se k odběru tématu mřížky událostí a sdělíte aplikaci Event Grid, které události chcete sledovat. Následující příklad se přihlásí k odběru vlastního tématu, které jste vytvořili, a předá ID prostředku centra událostí pro koncový bod. Koncový bod je ve formátu:
 
 `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.EventHub/namespaces/<namespace-name>/eventhubs/<hub-name>`
 

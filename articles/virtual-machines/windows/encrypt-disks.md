@@ -1,6 +1,6 @@
 ---
 title: Šifrování disků na virtuálním počítači s Windows v Azure
-description: Šifrování virtuálních disků na virtuálním počítači s Windows kvůli zvýšení zabezpečení pomocí Azure PowerShell
+description: Šifrování virtuálních disků na virtuálním počítači s Windows pro lepší zabezpečení pomocí Azure PowerShellu
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -15,56 +15,56 @@ ms.workload: infrastructure
 ms.date: 10/30/2018
 ms.author: cynthn
 ms.openlocfilehash: 096fe779c077424b01df3ead5965cb799866a03b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74033529"
 ---
 # <a name="encrypt-virtual-disks-on-a-windows-vm"></a>Šifrování virtuálních disků na virtuálním počítači s Windows
-Pro rozšířené zabezpečení virtuálních počítačů a dodržování předpisů můžete virtuální disky v Azure šifrovat. Disky se šifrují pomocí kryptografických klíčů, které jsou zabezpečené v Azure Key Vault. Můžete řídit tyto kryptografické klíče a auditovat jejich použití. Tento článek popisuje, jak pomocí Azure PowerShell šifrovat virtuální disky na virtuálním počítači s Windows. Můžete také [Šifrovat virtuální počítače se systémem Linux](../linux/disk-encryption-overview.md).
+Pro rozšířené zabezpečení virtuálních počítačů (VM) a dodržování předpisů, virtuální disky v Azure lze šifrovat. Disky jsou šifrovány pomocí kryptografických klíčů, které jsou zabezpečené v trezoru klíčů Azure. Řídíte tyto kryptografické klíče a můžete auditovat jejich použití. Tento článek popisuje, jak šifrovat virtuální disky na virtuálním počítači s Windows pomocí Azure PowerShellu. Můžete také [šifrovat linuxové virtuální počítače](../linux/disk-encryption-overview.md).
 
  
 
 ## <a name="overview-of-disk-encryption"></a>Přehled šifrování disku
-Virtuální disky na virtuálních počítačích s Windows jsou v klidovém stavu šifrované pomocí nástroje BitLocker. Za šifrování virtuálních disků v Azure se neúčtují žádné poplatky. Kryptografické klíče jsou uložené v Azure Key Vault pomocí ochrany softwaru nebo můžete importovat nebo generovat klíče v modulech hardwarového zabezpečení (HSM) s certifikací podle standardů FIPS 140-2 úrovně 2. Kryptografické klíče slouží k šifrování a dešifrování virtuálních disků připojených k VIRTUÁLNÍmu počítači. Řízení těchto kryptografických klíčů a jejich použití může být prováděno. 
+Virtuální disky na virtuálních počítačích se systémem Windows jsou šifrovány v klidovém stavu pomocí nástroje BitLocker. Šifrování virtuálních disků v Azure se neúčtuje. Kryptografické klíče jsou uloženy v trezoru klíčů Azure pomocí ochrany softwaru nebo můžete importovat nebo generovat klíče v modulech hardwarového zabezpečení (HSM) certifikovaných podle standardů FIPS 140-2 úrovně 2. Kryptografické klíče se používají k šifrování a dešifrování virtuálních disků připojených k virtuálnímu počítači. Můžete mít kontrolu nad těmito kryptografickými klíči a můžete auditovat jejich použití. 
 
-Postup pro šifrování virtuálního počítače je následující:
+Proces šifrování virtuálního virtuálního montu je následující:
 
-1. Vytvoření kryptografického klíče v Azure Key Vault.
-1. Nakonfigurujte kryptografický klíč, který bude použitelný pro šifrování disků.
+1. Vytvořte kryptografický klíč v trezoru klíčů Azure.
+1. Nakonfigurujte kryptografický klíč tak, aby byl použitelný pro šifrování disků.
 1. Povolte šifrování disku pro virtuální disky.
-1. Požadované kryptografické klíče jsou požadovány od Azure Key Vault.
-1. Virtuální disky se šifrují pomocí zadaného kryptografického klíče.
+1. Požadované kryptografické klíče jsou požadovány z trezoru klíčů Azure.
+1. Virtuální disky jsou šifrovány pomocí poskytnutého kryptografického klíče.
 
 
 ## <a name="requirements-and-limitations"></a>Požadavky a omezení
 
 Podporované scénáře a požadavky na šifrování disku:
 
-* Povolení šifrování pro nové virtuální počítače s Windows z Azure Marketplace imagí nebo vlastních imagí VHD
-* Povolení šifrování u stávajících virtuálních počítačů s Windows v Azure.
-* Povolení šifrování pro virtuální počítače s Windows, které jsou nakonfigurované pomocí prostorů úložiště.
-* Zakázání šifrování v operačním systému a datových jednotkách pro virtuální počítače s Windows
-* Virtuální počítače úrovně Standard, jako jsou virtuální počítače, D, DS, G a GS řady GS.
+* Povolení šifrování na nových virtuálních počítačích s Windows z ibi na webu Azure Marketplace nebo vlastních ibivk ových hd.
+* Povolení šifrování na existujících virtuálních počítačích s Windows v Azure.
+* Povolení šifrování na virtuálních počítačích se systémem Windows, které jsou nakonfigurovány pomocí prostorů úložiště.
+* Zakázání šifrování na operačních jednotkách a datových jednotkách pro virtuální počítačwindows Windows.
+* Virtuální virtuální chod standardní úrovně, například virtuální chod řady A, D, DS, G a GS.
 
     > [!NOTE]
-    > Všechny prostředky (včetně Key Vault, účtu úložiště a virtuálního počítače) musí být ve stejné oblasti a předplatném Azure.
+    > Všechny prostředky (včetně trezoru klíčů, účtu úložiště a virtuálního počítače) musí být ve stejné oblasti Azure a předplatné.
 
-Šifrování disku se v současné době nepodporuje v následujících scénářích:
+Šifrování disku není aktuálně podporováno v následujících scénářích:
 
-* Virtuální počítače úrovně Basic.
-* Virtuální počítače vytvořené pomocí modelu nasazení Classic.
-* Aktualizují se kryptografické klíče na už šifrovaném virtuálním počítači.
+* Virtuální virtuální chod základní úrovně.
+* Virtuální počítače vytvořené pomocí modelu klasického nasazení.
+* Aktualizace kryptografických klíčů na již šifrovaném virtuálním počítači.
 * Integrace s místní službou správy klíčů.
 
 
-## <a name="create-an-azure-key-vault-and-keys"></a>Vytvoření Azure Key Vault a klíčů
-Než začnete, ujistěte se, že je nainstalovaná nejnovější verze modulu Azure PowerShell. Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview). V následujících příkladech příkazů nahraďte všechny ukázkové parametry vlastními názvy, umístěním a klíčovými hodnotami, například *myResourceGroup*, *myKeyVault*, *myVM*a tak dále.
+## <a name="create-an-azure-key-vault-and-keys"></a>Vytvoření trezoru klíčů azure a klíčů
+Než začnete, ujistěte se, že byla nainstalovaná nejnovější verze modulu Azure PowerShell. Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview). V následujících příkladech příkazů nahraďte všechny ukázkové parametry vlastními názvy, umístěním a hodnotami klíčů, například *myResourceGroup*, *myKeyVault*, *myVM*a tak dále.
 
-Prvním krokem je vytvoření Azure Key Vault k uložení kryptografických klíčů. Trezory klíčů Azure můžou ukládat klíče, tajné klíče nebo hesla, které vám umožní je bezpečně implementovat do svých aplikací a služeb. Pro šifrování virtuálního disku vytvoříte Key Vault k uložení kryptografického klíče, který se používá k šifrování nebo dešifrování virtuálních disků. 
+Prvním krokem je vytvoření trezoru klíčů Azure pro ukládání kryptografických klíčů. Azure Key Vaults můžete ukládat klíče, tajné klíče nebo hesla, které vám umožní bezpečně implementovat ve vašich aplikacích a službách. Pro šifrování virtuálních disků vytvoříte trezor klíčů pro uložení kryptografického klíče, který se používá k šifrování nebo dešifrování virtuálních disků. 
 
-Povolte poskytovatele Azure Key Vault v rámci předplatného Azure pomocí [Register-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/register-azresourceprovider)a pak vytvořte skupinu prostředků pomocí [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Následující příklad vytvoří název skupiny prostředků *myResourceGroup* v umístění *východní USA* :
+Povolte zprostředkovatele Azure Key Vault v rámci předplatného Azure pomocí [Register-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/register-azresourceprovider)a pak vytvořte skupinu prostředků s [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Následující příklad vytvoří název skupiny prostředků *myResourceGroup* v umístění *Ve východní části USA:*
 
 ```azurepowershell-interactive
 $rgName = "myResourceGroup"
@@ -74,7 +74,7 @@ Register-AzResourceProvider -ProviderNamespace "Microsoft.KeyVault"
 New-AzResourceGroup -Location $location -Name $rgName
 ```
 
-Azure Key Vault držíte kryptografické klíče a přidružené výpočetní prostředky, jako je úložiště, a samotný virtuální počítač musí být ve stejné oblasti. Vytvořte Azure Key Vault pomocí [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault) a povolte Key Vault pro použití s šifrováním disku. Zadejte jedinečný Key Vault název pro *trezor* klíčů následujícím způsobem:
+Trezor klíčů Azure, který obsahuje kryptografické klíče a přidružené výpočetní prostředky, jako je úložiště a samotný virtuální počítač, musí být ve stejné oblasti. Vytvořte azure key vault s [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault) a povolte trezor klíčů pro použití s šifrováním disku. Zadejte jedinečný název trezoru klíčů pro *keyVaultName* následujícím způsobem:
 
 ```azurepowershell-interactive
 $keyVaultName = "myKeyVault$(Get-Random)"
@@ -84,9 +84,9 @@ New-AzKeyVault -Location $location `
     -EnabledForDiskEncryption
 ```
 
-Kryptografické klíče můžete ukládat pomocí ochrany softwaru nebo hardwarového zabezpečení (HSM).  Standardní Key Vault ukládá pouze klíče chráněné softwarem. Použití modulu hardwarového zabezpečení (HSM) vyžaduje prémiové Key Vault za další náklady. Pokud chcete vytvořit prémiovou Key Vault, v předchozím kroku přidejte parametr *-SKU "Premium"* . Následující příklad používá klíče chráněné softwarem, protože jsme vytvořili standardní Key Vault. 
+Kryptografické klíče můžete ukládat pomocí softwaru nebo hardwarového modelu zabezpečení (HSM).  Standardní trezor klíčů ukládá pouze klíče chráněné softwarem. Použití objektu hsm vyžaduje prémiový trezor klíčů za příplatek. Chcete-li vytvořit prémiový trezor klíčů, přidejte v předchozím kroku parametr *-Sku "Premium".* Následující příklad používá od vytvoření standardního trezoru klíčů klíče chráněné softwarem. 
 
-U obou modelů ochrany musí mít platforma Azure udělený přístup, aby vyžádala kryptografické klíče, když se virtuální počítač spustí k dešifrování virtuálních disků. Pomocí [Add-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultkey)vytvořte v Key Vault kryptografický klíč. Následující příklad vytvoří klíč s názvem *myKey*:
+Pro oba modely ochrany platformy Azure musí být udělen přístup k vyžádání kryptografických klíčů při spuštění virtuálního počítače k dešifrování virtuálních disků. Vytvořte kryptografický klíč v trezoru klíčů pomocí [klávesy Add-AzureVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultkey). Následující příklad vytvoří klíč s názvem *myKey*:
 
 ```azurepowershell-interactive
 Add-AzKeyVaultKey -VaultName $keyVaultName `
@@ -95,7 +95,7 @@ Add-AzKeyVaultKey -VaultName $keyVaultName `
 ```
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
-K otestování procesu šifrování vytvořte virtuální počítač pomocí [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Následující příklad vytvoří virtuální počítač s názvem *myVM* s použitím image *Windows serveru 2016 Datacenter* . Po zobrazení výzvy k zadání přihlašovacích údajů zadejte uživatelské jméno a heslo, které se má použít pro virtuální počítač:
+Chcete-li otestovat proces šifrování, vytvořte virtuální virtuální město s [new-azvm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Následující příklad vytvoří virtuální hosti s názvem *myVM* pomocí bitové kopie *datového centra Windows Server 2016.* Po zobrazení výzvy k zadání přihlašovacích údajů zadejte uživatelské jméno a heslo, které se má použít pro virtuální počítač:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -113,7 +113,7 @@ New-AzVm `
 
 
 ## <a name="encrypt-a-virtual-machine"></a>Šifrování virtuálního počítače
-Pomocí klíče Azure Key Vault Zašifrujte svůj virtuální počítač pomocí [set-AzVMDiskEncryptionExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmdiskencryptionextension) . Následující příklad načte všechny klíčové informace a pak zašifruje virtuální počítač s názvem *myVM*:
+Šifrujte svůj virtuální počítač pomocí [rozšíření Set-AzVMDiskEncryptionExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmdiskencryptionextension) pomocí klíče Azure Key Vault. Následující příklad načte všechny informace o klíči a pak zašifruje virtuální ho virtuálního virtuálního ma s názvem *myVM*:
 
 ```azurepowershell-interactive
 $keyVault = Get-AzKeyVault -VaultName $keyVaultName -ResourceGroupName $rgName;
@@ -129,7 +129,7 @@ Set-AzVMDiskEncryptionExtension -ResourceGroupName $rgName `
     -KeyEncryptionKeyVaultId $keyVaultResourceId
 ```
 
-Pokud chcete pokračovat v šifrování virtuálního počítače, potvrďte výzvu. Virtuální počítač se restartuje během procesu. Jakmile proces šifrování dokončí a virtuální počítač se restartuje, zkontrolujte stav šifrování pomocí [Get-AzVmDiskEncryptionStatus](https://docs.microsoft.com/powershell/module/az.compute/get-azvmdiskencryptionstatus):
+Přijměte výzvu k pokračování šifrování virtuálního zařízení. Virtuální počítač se restartuje během procesu. Po dokončení procesu šifrování a restartování virtuálního počítače zkontrolujte stav šifrování pomocí [funkce Get-AzVmDiskEncryptionStatus](https://docs.microsoft.com/powershell/module/az.compute/get-azvmdiskencryptionstatus):
 
 ```azurepowershell-interactive
 Get-AzVmDiskEncryptionStatus  -ResourceGroupName $rgName -VMName "myVM"
@@ -145,5 +145,5 @@ ProgressMessage            : OsVolume: Encrypted, DataVolumes: Encrypted
 ```
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o správě Azure Key Vault najdete v tématu [nastavení Key Vault pro virtuální počítače](key-vault-setup.md).
-* Další informace o šifrování disku, jako je například příprava šifrovaného vlastního virtuálního počítače pro nahrání do Azure, najdete v tématu [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md).
+* Další informace o správě trezoru klíčů Azure najdete v [tématu Nastavení trezoru klíčů pro virtuální počítače](key-vault-setup.md).
+* Další informace o šifrování disku, jako je například příprava šifrovaného vlastního virtuálního počítače k nahrání do Azure, najdete v [tématu Azure Disk Encryption](../../security/fundamentals/encryption-overview.md).

@@ -1,6 +1,6 @@
 ---
-title: Referenční příručka stroje standardních pravidel pro Azure CDN | Microsoft Docs
-description: Referenční dokumentace pro podmínky a akce shody v modulu Standard rules pro Azure Content Delivery Network (Azure CDN).
+title: Odkaz na modul standardních pravidel pro Azure CDN | Dokumenty společnosti Microsoft
+description: Referenční dokumentace pro podmínky a akce shody v modulu standardních pravidel pro síť doručování obsahu Azure (Azure CDN).
 services: cdn
 author: mdgattuso
 ms.service: azure-cdn
@@ -8,63 +8,63 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
 ms.openlocfilehash: aa401150ee7a0f02e809ad702b8247e18081c8a3
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74171564"
 ---
-# <a name="standard-rules-engine-reference-for-azure-cdn"></a>Referenční příručka stroje standardních pravidel pro Azure CDN
+# <a name="standard-rules-engine-reference-for-azure-cdn"></a>Odkaz na modul standardních pravidel pro Azure CDN
 
-V [modulu Standard Rules](cdn-standard-rules-engine.md) pro Azure Content Delivery Network (Azure CDN) se pravidlo skládá z jedné nebo více podmínek shody a akci. Tento článek obsahuje podrobný popis podmínek shody a funkcí, které jsou k dispozici v modulu Standard rules pro Azure CDN.
+V [modulu standardnípravidla](cdn-standard-rules-engine.md) pro Azure Content Delivery Network (Azure CDN) se pravidlo skládá z jedné nebo více podmínek shody a akce. Tento článek obsahuje podrobný popis podmínek shody a funkce, které jsou k dispozici v modulu standardní pravidla pro Azure CDN.
 
-Modul pravidel je navržený tak, aby měl koncovou autoritu, jak jsou konkrétní typy požadavků zpracovávány standardním Azure CDN.
+Modul pravidel je navržen tak, aby byl konečným orgánem pro zpracování konkrétních typů požadavků pomocí standardu Azure CDN.
 
-**Společná použití pro pravidla**:
+**Běžné použití pravidel**:
 
-- Přepsat nebo definovat vlastní zásadu mezipaměti.
-- Přesměrování požadavků.
-- Úprava hlaviček požadavků a odpovědí HTTP.
+- Přepište nebo definujte vlastní zásady mezipaměti.
+- Požadavky na přesměrování.
+- Upravte hlavičky požadavků a odpovědí http.
 
 ## <a name="terminology"></a>Terminologie
 
-Chcete-li definovat pravidlo v modulu pravidel, nastavte [podmínky](cdn-standard-rules-engine-match-conditions.md) a [Akce](cdn-standard-rules-engine-actions.md)shody:
+Chcete-li definovat pravidlo v modulu pravidel, nastavte [podmínky shody](cdn-standard-rules-engine-match-conditions.md) a [akce](cdn-standard-rules-engine-actions.md):
 
- ![Struktura Azure CDNch pravidel](./media/cdn-standard-rules-engine-reference/cdn-rules-structure.png)
+ ![Struktura pravidel Azure CDN](./media/cdn-standard-rules-engine-reference/cdn-rules-structure.png)
 
 Každé pravidlo může mít až čtyři podmínky shody a tři akce. Každý koncový bod Azure CDN může mít až pět pravidel. 
 
-Zahrnuté v aktuálním omezení s pěti pravidly pro Azure CDN koncový bod je výchozí *globální pravidlo*. Globální pravidlo nemá podmínky shody a akce, které jsou definovány v globálním pravidle, budou vždy aktivovány.
+Součástí aktuálního limitu pěti pravidel pro koncový bod Azure CDN je výchozí *globální pravidlo*. Globální pravidlo nemá podmínky shody a akce, které jsou definovány v globálním pravidle, se vždy aktivují.
 
 ## <a name="syntax"></a>Syntaxe
 
-Způsob zpracování speciálních znaků v pravidle se liší v závislosti na tom, jak různé podmínky shody a akce zpracovávají textové hodnoty. Podmínka nebo akce shody mohou interpretovat text jedním z následujících způsobů:
+Způsob, jakým jsou speciální znaky zpracovány v pravidle, se liší v závislosti na tom, jak různé podmínky shody a akce zpracovávají textové hodnoty. Podmínka nebo akce shody může text interpretovat jedním z následujících způsobů:
 
-- [Hodnoty literálu](#literal-values)
-- [Zástupné hodnoty](#wildcard-values)
+- [Literálové hodnoty](#literal-values)
+- [Hodnoty zástupných symbolů](#wildcard-values)
 
 
-### <a name="literal-values"></a>Hodnoty literálu
+### <a name="literal-values"></a>Literálové hodnoty
 
-Text, který je interpretován jako hodnota literálu, zpracovává všechny speciální znaky *s výjimkou% symbol* jako součást hodnoty, která musí být v pravidle shodná. Například podmínka shody literálů nastavená na `'*'` je splněna pouze v případě, že je nalezena přesná hodnota `'*'`.
+Text, který je interpretován jako literál hodnota zachází všechny speciální znaky *s výjimkou symbolu %* jako součást hodnoty, která musí být uzavřeno v pravidle. Například podmínka doslovné shody nastavená na `'*'` je `'*'` splněna pouze v případě, že je nalezena přesná hodnota.
 
-K označení kódování adresy URL (například `%20`) se používá znak procenta.
+Znak procenta se používá k označení kódování `%20`adresy URL (například).
 
-### <a name="wildcard-values"></a>Zástupné hodnoty
+### <a name="wildcard-values"></a>Hodnoty zástupných symbolů
 
-Text, který je interpretován jako zástupná hodnota, přiřadí další význam pro speciální znaky. Následující tabulka popisuje, jak se interpretují konkrétní speciální znaky v modulu Standard Rules:
+Text, který je interpretován jako zástupná hodnota, přiřazuje speciálním znakům další význam. Následující tabulka popisuje, jak jsou v modulu standardních pravidel interpretovány konkrétní speciální znaky:
 
 Znak | Popis
 ----------|------------
-\ | Zpětné lomítko se používá k úniku znaků určených v této tabulce. Zpětné lomítko musí být zadáno přímo před speciálním znakem, který by měl být uvozen řídicím znakem. Například následující syntaxe řídí hvězdičku: `\*`
-% | K označení kódování adresy URL (například `%20`) se používá znak procenta.
-\* | Hvězdička je zástupný znak, který reprezentuje jeden nebo více znaků.
-Space | Znak mezery označuje, že podmínka shody může být splněna některou ze zadaných hodnot nebo vzorů.
-jednoduché uvozovky | Jednoduché uvozovky nemají zvláštní význam. Sada jednoduchých uvozovek však označuje, že hodnota by měla být považována za hodnotu literálu. Jednoduché uvozovky lze použít následujícími způsoby:<ul><li>Aby byla splněna podmínka shody pokaždé, když zadaná hodnota odpovídá jakékoli části hodnoty porovnání.  `'ma'` by například odpovídaly jakémukoli z následujících řetězců: <ul><li>/business/**ma**rathon/asset.htm</li><li>**ma**p.gif</li><li>/business/template. **ma**p</li></ul><li>Aby bylo možné zadat speciální znak jako literální znak. Můžete například zadat literální znak mezery přidáním znaku mezery do sady jednoduchých uvozovek (`' '` nebo `'<sample value>'`).</li><li>Povoluje zadání prázdné hodnoty. Zadejte prázdnou hodnotu zadáním sady jednoduchých uvozovek (' **'** ).</li></ul>**Důležité**informace:<br /><ul><li>Pokud zadaná hodnota neobsahuje zástupný znak, hodnota se automaticky považuje za hodnotu literálu. Pro hodnotu literálu není nutné zadávat sadu jednoduchých uvozovek.</li><li>Pokud zpětné lomítko není použito k úniku jiného znaku v této tabulce, je zpětné lomítko ignorováno, je-li zadáno v sadě jednoduchých uvozovek.</li><li>Dalším způsobem, jak zadat speciální znak jako literální znak, je vystavení řídicím znakem pomocí zpětného lomítka (`\`).</li></ul>
+\ | Zpětné lomítko se používá k úniku všech znaků uvedených v této tabulce. Zpětné lomítko musí být zadáno přímo před speciálníznak, který by měl být uvozen. Například následující syntaxe unikne hvězdičkou:`\*`
+% | Znak procenta se používá k označení kódování `%20`adresy URL (například).
+\* | Hvězdička je zástupný znak, který představuje jeden nebo více znaků.
+mezera | Mezerník označuje, že podmínka shody může být splněna buď zadanými hodnotami nebo vzorky.
+jednoduché uvozovky | Jedna uvozovka nemá zvláštní význam. Sada jednoduchých uvozovek však označuje, že hodnota by měla být považována za hodnotu literálu. Jednoduché uvozovky lze použít následujícími způsoby:<ul><li>Chcete-li povolit splnění podmínky shody vždy, když zadaná hodnota odpovídá libovolné části srovnávací hodnoty.  Například `'ma'` by odpovídaly některé z následujících řetězců: <ul><li>/business/**ma**rathon/asset.htm</li><li>**ma**p.gif</li><li>/business/template. **ma**p</li></ul><li>Chcete-li povolit speciální znak, který má být určen jako literál znak. Můžete například zadat znak mezery literálu tak, že znak mezery`' '` `'<sample value>'`založíte do sady jednoduchých uvozovek ( nebo ).</li><li>Chcete-li povolit zadaný prázdný hodnotu. Zadejte prázdnou hodnotu zadáním sady jednoduchých uvozovek (**''**).</li></ul>**Důležité**:<br /><ul><li>Pokud zadaná hodnota neobsahuje zástupný znak, hodnota se automaticky považuje za hodnotu literálu. Není nutné zadat sadu jednoduchých uvozovek pro hodnotu literálu.</li><li>Pokud zpětné lomítko není použit k úniku jiný znak v této tabulce, zpětné lomítko je ignorována, pokud je zadánv sadě jednoduchých uvozovek.</li><li>Dalším způsobem, jak určit speciální znak jako literálový znak,`\`je uniknout pomocí zpětného lomítka ( ).</li></ul>
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Podmínky shody v modulu Standard Rules](cdn-standard-rules-engine-match-conditions.md)
-- [Akce v modulu Standard Rules](cdn-standard-rules-engine-actions.md)
-- [Vynutilit HTTPS pomocí modulu Standard Rules](cdn-standard-rules-engine.md)
-- [Přehled Azure CDN](cdn-overview.md)
+- [Podmínky shody v modulu standardních pravidel](cdn-standard-rules-engine-match-conditions.md)
+- [Akce v modulu standardních pravidel](cdn-standard-rules-engine-actions.md)
+- [Vynucení HTTPS s využitím stroje pravidel Standard](cdn-standard-rules-engine.md)
+- [Přehled azure cdn](cdn-overview.md)

@@ -1,6 +1,6 @@
 ---
-title: Klíčové rozdíly pro Machine Learning Services (Preview)
-description: Toto téma popisuje klíčové rozdíly mezi Azure SQL Database Machine Learning Services (s R) a SQL Server Machine Learning Services.
+title: Klíčové rozdíly ve službách strojového učení (preview)
+description: Toto téma popisuje klíčové rozdíly mezi službou Azure SQL Database Machine Learning Services (s R) a službou SQL Server Machine Learning Services.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -13,55 +13,55 @@ ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 11/20/2019
 ms.openlocfilehash: 533e2b9e50a92cce1419da521d8cebc4955e4df6
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74462109"
 ---
-# <a name="key-differences-between-machine-learning-services-in-azure-sql-database-preview-and-sql-server"></a>Klíčové rozdíly mezi Machine Learning Services v Azure SQL Database (Preview) a SQL Server
+# <a name="key-differences-between-machine-learning-services-in-azure-sql-database-preview-and-sql-server"></a>Klíčové rozdíly mezi službami Machine Learning Services v Azure SQL Database (preview) a SQL Serveru
 
-Funkce Azure SQL Database Machine Learning Services (s R) v (Preview) se podobá [SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning). Níže jsou uvedeny některé klíčové rozdíly.
+Funkce služby Azure SQL Database Machine Learning Services (s R) v (preview) je podobná [sql server machine learning services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning). Níže jsou uvedeny některé klíčové rozdíly.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="language-support"></a>Podpora jazyků
 
-SQL Server podporuje jazyk R a Python prostřednictvím [rozhraní rozšiřitelnosti](https://docs.microsoft.com/sql/advanced-analytics/concepts/extensibility-framework). SQL Database nepodporuje oba jazyky. Hlavní rozdíly:
+SQL Server má podporu pro R a Python prostřednictvím [rozhraní rozšiřitelnosti](https://docs.microsoft.com/sql/advanced-analytics/concepts/extensibility-framework). SQL Database nepodporuje oba jazyky. Hlavní rozdíly jsou:
 
-- Jazyk R je jediným podporovaným jazykem v SQL Database. Python se momentálně nepodporuje.
+- R je jediný podporovaný jazyk v databázi SQL. Python se momentálně nepodporuje.
 - Verze R je 3.4.4.
-- `external scripts enabled` přes `sp_configure`není potřeba konfigurovat. Po [registraci](sql-database-machine-learning-services-overview.md#signup)bude pro vaši databázi SQL povolený strojové učení.
+- Není třeba konfigurovat `external scripts enabled` přes `sp_configure`. Po [registraci](sql-database-machine-learning-services-overview.md#signup)je pro databázi SQL povoleno strojové učení.
 
 ## <a name="package-management"></a>Správa balíčků
 
-Správa balíčků R a instalace se liší od SQL Database a SQL Server. Jsou to tyto rozdíly:
+Správa balíčků R a instalace práce se liší mezi SQL Database a SQL Server. Tyto rozdíly jsou:
 
-- Balíčky R se instalují přes [sqlmlutils](https://github.com/Microsoft/sqlmlutils) nebo [vytvářejí externí knihovny](https://docs.microsoft.com/sql/t-sql/statements/create-external-library-transact-sql).
-- Balíčky nemůžou provádět odchozí síťová volání. Toto omezení se podobá [výchozím pravidlům brány firewall pro Machine Learning Services](https://docs.microsoft.com//sql/advanced-analytics/security/firewall-configuration) v SQL Server, ale nedá se změnit v SQL Database.
-- Neexistuje žádná podpora pro balíčky, které závisí na externích modulech runtime (jako Java), nebo při instalaci nebo použití nepotřebují přístup k rozhraním API operačního systému.
+- Balíčky R jsou nainstalovány prostřednictvím [sqlmlutils](https://github.com/Microsoft/sqlmlutils) nebo [CREATE EXTERNAL LIBRARY](https://docs.microsoft.com/sql/t-sql/statements/create-external-library-transact-sql).
+- Balíčky nemohou provádět odchozí síťová volání. Toto omezení je podobné [výchozím pravidlům brány firewall pro služby Machine Learning Services](https://docs.microsoft.com//sql/advanced-analytics/security/firewall-configuration) v serveru SQL Server, ale nelze je změnit v databázi SQL.
+- Neexistuje žádná podpora pro balíčky, které závisí na externích runtimes (jako je Java) nebo potřebují přístup k os API pro instalaci nebo použití.
 
 ## <a name="writing-to-a-temporary-table"></a>Zápis do dočasné tabulky
 
-Pokud používáte RODBC v Azure SQL Database, nemůžete zapisovat do dočasné tabulky, ať už je vytvořená v relaci `sp_execute_external_script` nebo mimo ni. Alternativním řešením je použití [RxOdbcData](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxodbcdata) a [rxDataStep](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxdatastep) (s přepsáním = false a Append = "Rows") k zápisu do globální dočasné tabulky vytvořené před dotazem `sp_execute_external_script`.
+Pokud používáte rod rod v Azure SQL Database, pak nelze zapisovat do dočasné tabulky, `sp_execute_external_script` ať už je vytvořen uvnitř nebo vně relace. Řešení je použít [RxOdbcData](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxodbcdata) a [rxDataStep](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxdatastep) (s overwrite=FALSE a append="rows") k zápisu do globální dočasné tabulky vytvořené před dotazem. `sp_execute_external_script`
 
 ## <a name="resource-governance"></a>Zásady správného řízení prostředků
 
-Prostředky R není možné omezit prostřednictvím [Správce prostředků](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) a externích fondů zdrojů.
+Není možné omezit prostředky R prostřednictvím [správce prostředků](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) a externífondy prostředků.
 
-V rámci verze Public Preview jsou prostředky R nastavené na maximálně 20% SQL Databasech prostředků a závisí na zvolené úrovni služby. Další informace najdete v tématu [Azure SQL Database nákup modelů](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers).
-### <a name="insufficient-memory-error"></a>Nedostatek paměti – chyba
+Během verze Public Preview jsou prostředky R nastaveny na maximálně 20 % prostředků databáze SQL a závisí na tom, kterou úroveň služby zvolíte. Další informace naleznete v [tématu Nákupní modely Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers).
+### <a name="insufficient-memory-error"></a>Nedostatečná chyba paměti
 
-Pokud pro R není k dispozici dostatek paměti, zobrazí se chybová zpráva. Běžné chybové zprávy jsou:
+Pokud není k dispozici dostatek paměti pro R, zobrazí se chybová zpráva. Běžné chybové zprávy jsou:
 
-- Nelze komunikovat s modulem runtime pro skript R pro ID požadavku: * * * * * * *. Zkontrolujte prosím požadavky modulu runtime R.
-- Při provádění sp_execute_external_script s HRESULT 0x80004004 došlo k chybě skriptu R. ... došlo k chybě externího skriptu: ".. Nelze přidělit paměť (0 MB) ve funkci C R_AllocStringBuffer.
-- Došlo k chybě externího skriptu: Chyba: Nelze přidělit vektor velikosti.
+- Nelze komunikovat s runtime pro skript 'R' pro id požadavku: *******. Zkontrolujte prosím požadavky na runtime "R"
+- Při provádění sp_execute_external_script s HRESULT 0x80004004 došlo k chybě skriptu R. ... došlo k chybě externího skriptu: ".. Nelze přidělit paměť (0 Mb) ve funkci C 'R_AllocStringBuffer'"
+- Došlo k chybě externího skriptu: Chyba: nelze přidělit vektor velikosti.
 
-Využití paměti závisí na tom, kolik je použito ve skriptech jazyka R a počet paralelně spuštěných paralelních dotazů. Pokud obdržíte výše uvedené chyby, můžete škálovat databázi na vyšší úroveň služby a vyřešit ji.
+Využití paměti závisí na tom, kolik se používá ve skriptech R a počet paralelních dotazů, které jsou prováděny. Pokud se zobrazí výše uvedené chyby, můžete škálovat databázi na vyšší úroveň služby k vyřešení tohoto problému.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Podívejte se na přehled [Azure SQL Database Machine Learning Services s R (Preview)](sql-database-machine-learning-services-overview.md).
-- Pokud se chcete dozvědět, jak použít R k dotazování Azure SQL Database Machine Learning Services (Preview), přečtěte si [příručku pro rychlý Start](sql-database-connect-query-r.md).
-- Pokud chcete začít s některými jednoduchými skripty jazyka R, přečtěte si téma [Vytvoření a spuštění jednoduchých skriptů r v Azure SQL Database Machine Learning Services (Preview)](sql-database-quickstart-r-create-script.md).
+- Podívejte se na přehled [Služby strojového učení Azure SQL Database s R (preview).](sql-database-machine-learning-services-overview.md)
+- Informace o použití jazyka R k dotazování služby Azure SQL Database Machine Learning Services (preview) najdete v [příručce K Rychlému startu](sql-database-connect-query-r.md).
+- Pokud chcete začít s některými jednoduchými skripty R, přečtěte si část [Vytvoření a spuštění jednoduchých skriptů Jazyka R ve službě Azure SQL Database Machine Learning Services (preview).](sql-database-quickstart-r-create-script.md)

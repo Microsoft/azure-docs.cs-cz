@@ -1,116 +1,116 @@
 ---
 title: Instalace služby Azure FarmBeats
-description: Tento článek popisuje, jak nainstalovat Azure FarmBeats ve vašem předplatném Azure.
+description: Tento článek popisuje, jak nainstalovat Azure FarmBeats ve vašem předplatném Azure
 author: usha-rathnavel
 ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
-ms.openlocfilehash: 701e42caba5325df34bdbb2381389708b9b5a03f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 0761db6b73c6fcfeb1ef6fda729a68c9644bbc72
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198850"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79479555"
 ---
 # <a name="install-azure-farmbeats"></a>Instalace služby Azure FarmBeats
 
-Tento článek popisuje, jak nainstalovat Azure FarmBeats ve svém předplatném Azure.
+Tento článek popisuje, jak nainstalovat Azure FarmBeats ve vašem předplatném Azure.
 
-Azure FarmBeats je nabídka pro firmy, která je dostupná v Azure Marketplace. Umožňuje agregaci zemědělských datových sad mezi poskytovateli a generování užitečných přehledů. Azure FarmBeats to dělá tak, že vám umožní vytvořit modely umělé Intelligence (AI) nebo strojového učení (ML) založené na prostředcích s pojistnou datovou sadu. Mezi tyto dvě hlavní součásti Azure FarmBeats patří:
+Azure FarmBeats je nabídka mezi podniky, která je dostupná na Azure Marketplace. Umožňuje agregaci zemědělských datových souborů mezi poskytovateli a generování užitečných poznatků. Azure FarmBeats to umožňuje vytvářet modely umělé inteligence (AI) nebo strojového učení (ML) na základě tavené datové sady. Dvě hlavní součásti Azure FarmBeats jsou:
 
-- **DataHub**: vrstva rozhraní API, která umožňuje agregaci, normalizaci a kontextování různých zemědělských sad dat napříč různými poskytovateli.
+- **Datahub**: Vrstva rozhraní API, která umožňuje agregaci, normalizaci a kontextovou analýzu různých datových sad zemědělství napříč různými poskytovateli.
 
-- **Akcelerátor**: webová aplikace, která je postavená na DataHub. Tento odkaz – spustí vývoj a vizualizaci modelu. Akcelerátor používá rozhraní API Azure FarmBeats k předvedení vizualizace dat s příjmovým senzorem jako grafů a vizualizaci výstupu modelu jako map.
+- **Akcelerátor**: Webová aplikace, která je postavena na Datahubu. To skok-spustí vývoj modelu a vizualizaci. Akcelerátor používá Azure FarmBeats ROZHRANÍ API k předvedení vizualizace ingestovaných dat senzorů jako grafy a vizualizace výstupu modelu jako mapy.
 
 ## <a name="general-information"></a>Obecné informace
 
-### <a name="components-installed"></a>Nainstalované součásti
+### <a name="components-installed"></a>Instalované součásti
 
-Při instalaci Azure FarmBeats se ve vašem předplatném Azure zřídí tyto prostředky:
+Při instalaci Azure FarmBeats se ve vašem předplatném Azure zřídí následující prostředky:
 
-| Nainstalovaná prostředky Azure  | Komponenta Azure FarmBeats  |
+| Nainstalované prostředky Azure  | Součást Azure FarmBeats  |
 |---------|---------|
-| Application Insights   |      Akcelerátor & DataHub      |
-| App Service     |     Akcelerátor & DataHub     |
-| Plán služby App Service   | Akcelerátor & DataHub  |
-| Připojení API    |  Datahub       |
-| Azure Cache for Redis       | Datahub      |
-| Databáze Azure Cosmos   |  Datahub       |
-| Azure Data Factory V2       |     Akcelerátor & DataHub      |
-| Účet Azure Batch    | Datahub   |
-| Azure Key Vault |  Akcelerátor & DataHub        |
+| Application Insights   |      Datový & akcelerátor      |
+| App Service     |     Datový & akcelerátor     |
+| Plán služby App Service   | Datový & akcelerátor  |
+| Připojení rozhraní API    |  Datový hub       |
+| Azure Cache for Redis       | Datový hub      |
+| Azure Cosmos DB   |  Datový hub       |
+| Azure Data Factory V2       |     Datový & akcelerátor      |
+| Účet Azure Batch    | Datový hub   |
+| Azure Key Vault |  Datový & akcelerátor        |
 | Účet Azure Maps       |     Accelerator    |
-| Obor názvů centra událostí    |     Datahub      |
-| Aplikace logiky      |  Datahub       |
-| Účet úložiště      |     Akcelerátor & DataHub      |
-| Time Series Insights     |    Datahub    |
+| Obor názvů centra událostí    |     Datový hub      |
+| Aplikace logiky      |  Datový hub       |
+| Účet úložiště      |     Datový & akcelerátor      |
+| Time Series Insights     |    Datový hub    |
 
-### <a name="costs-incurred"></a>Náklady vznikly
+### <a name="costs-incurred"></a>Vzniklé náklady
 
-Náklady na Azure FarmBeats jsou agregované z nákladů na základní služby Azure. Informace o cenách služeb Azure se dají vypočítat pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator). Skutečné náklady na celkovou instalaci se budou lišit v závislosti na využití. Ustálené stavové náklady na tyto dvě komponenty jsou:
+Náklady na Azure FarmBeats je souhrn nákladů na základní služby Azure. Informace o cenách pro služby Azure lze vypočítat pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator). Skutečné náklady na celkovou instalaci se budou lišit v závislosti na použití. Náklady na ustálený stav pro dvě složky jsou:
 
-- DataHub-méně než $10 za den
-- Akcelerátor – méně než $2 za den
+- Datahub – méně než 10 USD za den
+- Akcelerátor - méně než $2 za den
 
-### <a name="regions-supported"></a>Podporované oblasti
+### <a name="regions-supported"></a>Podporované regiony
 
-V současné době se Azure FarmBeats podporuje ve veřejných cloudových prostředích v následujících oblastech:
+V současné době azure farmbeats je podporována v prostředí veřejného cloudu v následujících oblastech:
 
 - Austrálie – východ
-- Střední USA
+- USA – střed
 - USA – východ
-- Východní USA 2
-- Západní USA
-- Západní USA 2
+- USA – východ 2
+- USA – západ
+- USA – západ 2
 - Severní Evropa
 - Západní Evropa
 - Východní Asie
 - Jihovýchodní Asie
 
-### <a name="time-taken"></a>Doba trvání
+### <a name="time-taken"></a>Doba doby
 
-Celá instalace Azure FarmBeats, včetně přípravy a instalace, bude trvat méně než hodinu.
+Celé nastavení Azure FarmBeats, včetně přípravy a instalace bude trvat méně než hodinu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Než začnete s vlastní instalací Azure FarmBeats, musíte provést následující kroky:
+Před zahájením vlastní instalace Azure FarmBeats budete muset provést následující kroky:
 
 ### <a name="verify-permissions"></a>Ověřit oprávnění
 
-V tenantovi Azure budete potřebovat následující oprávnění pro instalaci Azure FarmBeats:
+K instalaci Azure FarmBeats budete potřebovat následující oprávnění v tenantovi Azure:
 
-- Tenant – Autor aplikace AAD
+- Tenant – tvůrce aplikace AAD
 - Předplatné – vlastník
-- Skupina prostředků, ve které se FarmBeats instaluje – vlastník
+- Skupina prostředků, ve které je farmbeats instalována – vlastník
 
-První dvě oprávnění jsou potřebná k [Vytvoření kroku aplikace AAD](#create-an-aad-application) . V případě potřeby můžete získat někoho s příslušnými oprávněními k vytvoření aplikace AAD.
+První dvě oprávnění jsou potřebné pro vytvoření kroku [aplikace AAD.](#create-an-aad-application) V případě potřeby můžete získat někoho s příslušnými oprávněními k vytvoření aplikace AAD.
 
-Osoba, která spouští FarmBeats Install z Marketplace, musí být vlastníkem skupiny prostředků, ve které se instaluje FarmBeats. Pro vlastníky předplatného se k tomu automaticky dojde při vytvoření skupiny prostředků. Pro jiné nastavte skupinu prostředků předem a požádejte vlastníka předplatného, aby vás vytvořil jako vlastník skupiny prostředků.
+Osoba, která provozuje instalaci FarmBeats z trhu, musí být vlastníkem skupiny zdrojů, ve které je farmbeats instalován. Pro vlastníky předplatného k tomu dojde automaticky při vytvoření skupiny prostředků. Pro ostatní, prosím, pre-vytvořit skupinu prostředků a požádejte vlastníka předplatného, aby vás vlastník skupiny prostředků.
 
-Oprávnění k přístupu můžete v Azure Portal ověřit podle pokynů v tématu [řízení přístupu na základě rolí](https://docs.microsoft.com/azure/role-based-access-control/check-access).
+Svá přístupová oprávnění na webu Azure Portal můžete ověřit podle pokynů k [řízení přístupu na základě rolí](https://docs.microsoft.com/azure/role-based-access-control/check-access).
 
-### <a name="decide-subscription-and-region"></a>Rozhodnutí o předplatném a oblasti
+### <a name="decide-subscription-and-region"></a>Rozhodněte předplatné a oblast
 
-Budete potřebovat ID předplatného Azure a oblast, do které chcete nainstalovat Azure FarmBeats. Vyberte jednu z oblastí uvedených v části [podporované oblasti](#regions-supported) .
+Budete potřebovat ID předplatného Azure a oblast, do které chcete nainstalovat Azure FarmBeats. Zvolte jednu z oblastí uvedených v části [Podporované oblasti.](#regions-supported)
 
 Poznamenejte si **ID předplatného Azure** a **oblast Azure**.
 
 ### <a name="create-an-aad-application"></a>Vytvoření aplikace AAD
 
-Azure FarmBeats vyžaduje vytvoření a registraci aplikace Azure Active Directory. K úspěšnému spuštění skriptu pro vytváření AAD jsou potřeba následující oprávnění –
+Azure FarmBeats vyžadují vytvoření a registraci aplikací Azure Active Directory. Chcete-li úspěšně spustit skript pro vytvoření služby AAD, jsou zapotřebí následující oprávnění:
 
-- Tenant – Autor aplikace AAD
+- Tenant – tvůrce aplikace AAD
 - Předplatné – vlastník
 
-Spusťte následující postup v instanci Cloud Shell pomocí prostředí PowerShell. Uživatelé budou při prvním spuštění vyzváni k výběru předplatného a vytvoření účtu úložiště. Dokončete nastavení podle pokynů.
+Spusťte následující kroky v instanci cloudového prostředí pomocí prostředí PowerShell. První uživatelé budou vyzváni k výběru předplatného a vytvoření účtu úložiště. Dokončete nastavení podle pokynů.
 
-1. Stáhnout [skript generátoru aplikace AAD](https://aka.ms/FarmBeatsAADScript)
+1. Stáhněte si [skript generátoru aplikací AAD](https://aka.ms/FarmBeatsAADScript)
 
     ```azurepowershell-interactive
         wget -q https://aka.ms/FarmBeatsAADScript -O ./create_aad_script.ps1
     ```
 
-2. Ve výchozím nastavení se soubor stáhne do domovského adresáře. Přejděte do adresáře.
+2. Ve výchozím nastavení je soubor stažen do domovského adresáře. Přejděte do adresáře.
 
     ```azurepowershell-interactive
         cd
@@ -122,61 +122,61 @@ Spusťte následující postup v instanci Cloud Shell pomocí prostředí PowerS
         ./create_aad_script.ps1
     ```
 
-4. Skript si vyžádá následující tři vstupy:
+4. Skript požádá o následující tři vstupy:
 
-    - FarmBeats název webu: Jedná se o jedinečnou předponu adresy URL vaší webové aplikace FarmBeats. V případě, že předpona už je obsazená, skript se zobrazí jako chyba. Po instalaci bude vaše nasazení FarmBeats dostupné z https://\<FarmBeats-web-Name >. azurewebsites. NET a rozhraní API Swagger budou na https://\<FarmBeats – název webu >-api.azurewebsites.net
+    - **FarmBeats název webových stránek:** Toto je unikátní URL předpona pro vaši webovou aplikaci FarmBeats. V případě, že je předpona již přijata, skript se změní. Po instalaci bude vaše nasazení FarmBeats\<přístupné z https:// FarmBeats-website-name>.azurewebsites.net a\<rozhraní API bude na https:// FarmBeats-website-name>-api.azurewebsites.net
 
-    - Přihlašovací ID Azure: zadejte přihlašovací ID Azure pro uživatele, kterého chcete přidat jako správce FarmBeats. Tento uživatel pak může udělit přístup pro přístup k webové aplikaci FarmBeats jiným uživatelům. ID přihlášení je obecně ve formě john.doe@domain.com. Podporuje se i hlavní název uživatele (UPN) Azure.
+    - **Azure login ID**: Zadejte ID přihlášení Azure pro uživatele, který chcete přidat jako správce FarmBeats. Tento uživatel pak může udělit přístup k webové aplikaci FarmBeats ostatním uživatelům. ID přihlášení je obecně john.doe@domain.comformuláře . Azure UPN je také podporována.
 
-    - ID předplatného: Toto je ID předplatného, ve kterém chcete nainstalovat službu Azure FarmBeats.
+    - **ID předplatného:** Toto je ID předplatného, ve kterém chcete nainstalovat Azure FarmBeats
 
-5. Spuštění skriptu AAD trvá přibližně 2 minuty a na obrazovce se vytvoří výstup hodnot na obrazovce a také soubor JSON ve stejném adresáři. Pokud jste museli skript spustit někomu jinému, požádejte ho, aby s vámi nasdílel tento výstup.
+5. Spuštění skriptu AAD trvá přibližně 2 minuty a výstupy hodnot na obrazovce, stejně jako do souboru json ve stejném adresáři. Pokud máte někoho jiného spustit skript, požádejte ho, aby sdílet tento výstup s vámi.
 
 ### <a name="create-sentinel-account"></a>Vytvořit účet Sentinel
 
-Vaše instalace Azure FarmBeats vám umožní získat satelitní dokumentaci z oblasti satelitu [Sentinel-2](https://scihub.copernicus.eu/) Evropské kosmické organizace pro vaši farmu. Pro konfiguraci tohoto nastavení budete potřebovat účet Sentinel.
+Vaše nastavení Azure FarmBeats vám umožní získat satelitní snímky ze satelitní mise [Sentinel-2](https://scihub.copernicus.eu/) Evropské kosmické agentury pro vaši farmu. Chcete-li nakonfigurovat toto nastavení, budete potřebovat účet Sentinel.
 
-Použijte postup vytvoření bezplatného účtu s Sentinel:
+Postupujte podle pokynů k vytvoření bezplatného účtu u Sentinelu:
 
-1. Přejít na oficiální [registrační](https://aka.ms/SentinelRegistration) stránku.
-2. Zadejte požadované podrobnosti (křestní jméno, příjmení, uživatelské jméno, heslo a ID e-mailu) a vyplňte formulář.
-3. Ověřovací odkaz se pošle na registrované ID e-mailu. Vyberte odkaz uvedený v e-mailu a dokončete ověření.
+1. Přejděte na oficiální [registrační](https://aka.ms/SentinelRegistration) stránku.
+2. Zadejte požadované údaje (jméno, příjmení, uživatelské jméno, heslo a ID e-mailu) a vyplňte formulář.
+3. Na registrované ID e-mailu je odeslán ověřovací odkaz. Vyberte odkaz uvedený v e-mailu a dokončete ověření.
 
-Proces registrace je dokončený. Až se ověření dokončí, poznamenejte si **uživatelské jméno** a **heslo Sentinel**.
+Proces registrace je dokončen. Poznamenejte si své **sentinelové uživatelské jméno** a **sentinelové heslo**, jakmile je ověření také dokončeno.
 
 ## <a name="install"></a>Instalace
 
-Nyní jste připraveni nainstalovat FarmBeats. Spusťte instalaci podle následujících kroků:
+Nyní jste připraveni k instalaci FarmBeats. Chcete-li zahájit instalaci, postupujte podle následujících kroků:
 
-1. Přihlaste se k portálu Azure. V pravém horním rohu vyberte svůj účet a přepněte se na tenanta Azure AD, do kterého chcete nainstalovat Azure FarmBeats.
+1. Přihlaste se k portálu Azure. Vyberte svůj účet v pravém horním rohu a přepněte na klienta Azure AD, kde chcete nainstalovat Azure FarmBeats.
 
-2. Na portálu můžete přejít na Azure Marketplace a vyhledat **Azure FarmBeats** na webu Marketplace.
+2. Přejděte na Azure Marketplace na portálu a vyhledejte **Azure FarmBeats** na Marketplace.
 
-3. Zobrazí se nové okno s přehledem služby Azure FarmBeats. Vyberte **Create** (Vytvořit).
+3. Zobrazí se nové okno s přehledem Azure FarmBeats. Vyberte **Vytvořit**.
 
-4. Zobrazí se nové okno. Dokončete proces registrace výběrem správného předplatného, skupiny prostředků a umístění, do kterého chcete nainstalovat službu Azure FarmBeats.
+4. Zobrazí se nové okno. Proces registrace dokončete výběrem správného předplatného, skupiny prostředků a umístění, do kterého chcete nainstalovat Azure FarmBeats.
 
-5. Zadejte e-mailovou adresu, která by měla přijímat výstrahy služby související se službou Azure FarmBeats v části **výstrahy služby FarmBeats** . V dolní části stránky vyberte **Další** a přejděte na kartu **závislosti** .
+5. Zadejte e-mailovou adresu, která by měla přijímat všechny výstrahy služby související s Azure FarmBeats v části **Upozornění služby FarmBeats.** Vyberte **Další** v dolní části stránky, chcete-li přejít na kartu **Závislosti.**
 
-    ![Karta základy](./media/install-azure-farmbeats/create-azure-farmbeats-basics.png)
+    ![Karta Základy](./media/install-azure-farmbeats/create-azure-farmbeats-basics.png)
 
 6. Zkopírujte jednotlivé položky z výstupu [skriptu AAD](#create-an-aad-application) do vstupů v části aplikace AAD.
 
-7. V části účet Sentinel zadejte uživatelské jméno a heslo [účtu Sentinel](#create-sentinel-account) . Kliknutím na tlačítko **Další** přejdete na kartu **Revize + vytvořit** .
+7. Do části Účet Sentinel zadejte uživatelské jméno a heslo [účtu Sentinel.](#create-sentinel-account) Chcete-li přejít na kartu **Revize + Vytvořit,** vyberte **Možnost Další.**
 
-    ![Karta závislosti](./media/install-azure-farmbeats/create-azure-farmbeats-dependencies.png)
+    ![Karta Závislosti](./media/install-azure-farmbeats/create-azure-farmbeats-dependencies.png)
 
-8. Po ověření zadaných podrobností vyberte **OK**. Zobrazí se stránka Podmínky použití. Přečtěte si podmínek a vyberte **vytvořit** a spusťte instalaci. Budete přesměrováni na stránku, kde můžete postupovat podle pokynů k instalaci.
+8. Po ověření zadaných údajů vyberte **možnost OK**. Zobrazí se stránka Podmínky použití. Zkontrolujte podmínky a vyberte **Vytvořit** pro spuštění instalace. Budete přesměrováni na stránku, kde můžete sledovat průběh instalace.
 
-Po dokončení instalace můžete ověřit instalaci a začít používat portál FarmBeats, a to tak, že přejdete na název webu, který jste zadali během instalace: https://\<FarmBeats-website-název >. azurewebsites. NET. Mělo by se zobrazit uživatelské rozhraní FarmBeats s možností vytváření farem.
+Po dokončení instalace můžete ověřit instalaci a začít používat portál FarmBeats tak, že přejdete\<na název webové stránky, který jste zadali během instalace: https:// FarmBeats-website-name>.azurewebsites.net. Měli byste vidět FarmBeats uživatelské rozhraní s možností vytvořit farmy.
 
-**DataHub** najdete na adrese https://\<FarmBeats-website-název >-API. azurewebsites. NET/Swagger. Tady uvidíte různé objekty rozhraní API FarmBeats a na rozhraních API se provádějí operace REST.
+**Datahub** lze nalézt\<na adrese https:// FarmBeats-website-name>-api.azurewebsites.net/swagger. Zde uvidíte různé objekty rozhraní API FarmBeats a provádět operace REST na rozhraní API.
 
 ## <a name="upgrade"></a>Upgrade
 
-Pokud chcete upgradovat FarmBeats na nejnovější verzi, spusťte následující kroky v instanci Cloud Shell pomocí prostředí PowerShell. Uživatel bude muset být vlastníkem předplatného, ve kterém je FarmBeats nainstalovaný.
+Chcete-li upgradovat FarmBeats na nejnovější verzi, spusťte následující kroky v instanci prostředí Cloud Shell pomocí prostředí PowerShell. Uživatel bude muset být vlastníkem předplatného, ve kterém je nainstalován FarmBeats.
 
-Uživatelé budou při prvním spuštění vyzváni k výběru předplatného a vytvoření účtu úložiště. Dokončete nastavení podle pokynů.
+První uživatelé budou vyzváni k výběru předplatného a vytvoření účtu úložiště. Dokončete nastavení podle pokynů.
 
 1. Stažení [skriptu pro upgrade](https://aka.ms/FarmBeatsUpgradeScript)
 
@@ -184,28 +184,28 @@ Uživatelé budou při prvním spuštění vyzváni k výběru předplatného a 
         wget –q https://aka.ms/FarmBeatsUpgradeScript -O ./upgrade-farmbeats.ps1
     ```
 
-2. Ve výchozím nastavení se soubor stáhne do domovského adresáře. Přejděte do adresáře.
+2. Ve výchozím nastavení je soubor stažen do domovského adresáře. Přejděte do adresáře.
 
     ```azurepowershell-interactive
         cd
     ```
 
-3. Spuštění skriptu upgradu
+3. Spuštění skriptu pro upgrade
 
     ```azurepowershell-interactive
         ./upgrade-farmbeats.ps1 -InputFilePath [Path to input.json file]
     ```
 
-Cesta ke vstupnímu souboru. JSON je volitelná. Pokud není zadaný, skript se vyzve pro všechny požadované vstupy. Upgrade by se měl dokončit během přibližně 30 minut.
+Cesta k souboru input.json je volitelná. Pokud není zadán, skript požádá o všechny požadované vstupy. Upgrade by měl skončit přibližně za 30 minut.
 
 ## <a name="uninstall"></a>Odinstalace
 
-Pokud chcete odinstalovat službu Azure FarmBeats DataHub nebo akcelerátor, proveďte následující kroky:
+Chcete-li odinstalovat Azure FarmBeats Datahub nebo Akcelerátor, proveďte následující kroky:
 
-1. Přihlaste se k Azure Portal a **odstraňte skupiny prostředků** , ve kterých jsou tyto součásti nainstalovány.
+1. Přihlaste se k portálu Azure a **odstraňte skupiny prostředků,** ve kterých jsou tyto součásti nainstalovány.
 
-2. Přejít na Azure Active Directory & **Odstranit aplikaci Azure AD** propojenou s instalací služby Azure FarmBeats.
+2. Přejděte na Azure Active Directory & **odstranit aplikaci Azure AD** propojenou s instalací Azure FarmBeats.
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistili jste, jak nainstalovat Azure FarmBeats ve svém předplatném Azure. Nyní se dozvíte, jak [Přidat uživatele](manage-users-in-azure-farmbeats.md#manage-users) do instance služby Azure FarmBeats.
+Zjistili jste, jak nainstalovat Azure FarmBeats ve vašem předplatném Azure. Teď se dozvíte, jak [přidat uživatele](manage-users-in-azure-farmbeats.md#manage-users) do instance Azure FarmBeats.

@@ -1,34 +1,34 @@
 ---
-title: Použití návratové hodnoty z funkce Azure
-description: Naučte se spravovat návratové hodnoty pro Azure Functions
+title: Použití vrácené hodnoty z funkce Azure
+description: Naučte se spravovat vrácené hodnoty pro funkce Azure
 author: craigshoemaker
 ms.topic: reference
 ms.date: 01/14/2019
 ms.author: cshoe
 ms.openlocfilehash: 7ba104e288204dfbf3d24f5783bf69682a286553
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74480572"
 ---
-# <a name="using-the-azure-function-return-value"></a>Použití návratové hodnoty funkce Azure Functions
+# <a name="using-the-azure-function-return-value"></a>Použití vrácené hodnoty funkce Azure
 
-Tento článek vysvětluje, jak vracet hodnoty fungují uvnitř funkce.
+Tento článek vysvětluje, jak vrácené hodnoty fungují uvnitř funkce.
 
-V jazycích, které mají vrácenou hodnotu, můžete svázat [výstupní vazbu](./functions-triggers-bindings.md#binding-direction) funkce s návratovou hodnotou:
+V jazycích, které mají vrácenou hodnotu, můžete vázat [vazbu výstupu](./functions-triggers-bindings.md#binding-direction) funkce na vrácenou hodnotu:
 
-* V knihovně C# tříd použijte atribut výstupní vazby pro návratovou hodnotu metody.
-* V jazyce Java použijte výstupní vazbu poznámky k metodě Function.
-* V jiných jazycích nastavte vlastnost `name` v *Function. JSON* na `$return`.
+* V knihovně tříd jazyka C# aplikujte atribut výstupní vazby na vrácenou hodnotu metody.
+* V jazyce Java použijte anotaci výstupní vazby na metodu funkce.
+* V jiných jazycích `name` nastavte vlastnost *function.json* na `$return`.
 
 Pokud existuje více výstupních vazeb, použijte vrácenou hodnotu pouze pro jednu z nich.
 
-V C# skriptu C# a jsou alternativní způsoby odesílání dat do výstupní vazby `out` parametry a [objekty kolekce](functions-reference-csharp.md#writing-multiple-output-values).
+Ve skriptu C# a C# jsou `out` alternativní způsoby odesílání dat do výstupní vazby parametry a [objekty kolekcí](functions-reference-csharp.md#writing-multiple-output-values).
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Zde je C# kód, který používá návratovou hodnotu pro výstupní vazbu následovanou asynchronním příkladem:
+Zde je kód Jazyka C#, který používá vrácenou hodnotu pro výstupní vazbu, následovaný asynchronním příkladem:
 
 ```cs
 [FunctionName("QueueTrigger")]
@@ -52,9 +52,9 @@ public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, ILogg
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
+# <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Tady je výstupní vazba v souboru *Function. JSON* :
+Zde je výstupní vazba v souboru *function.json:*
 
 ```json
 {
@@ -65,7 +65,7 @@ Tady je výstupní vazba v souboru *Function. JSON* :
 }
 ```
 
-Zde je kód C# skriptu následovaný asynchronním příkladem:
+Tady je kód skriptu C#, následovaný asynchronním příkladem:
 
 ```cs
 public static string Run(WorkItem input, ILogger log)
@@ -85,9 +85,9 @@ public static Task<string> Run(WorkItem input, ILogger log)
 }
 ```
 
-# <a name="ftabfsharp"></a>[F#](#tab/fsharp)
+# <a name="f"></a>[F #](#tab/fsharp)
 
-Tady je výstupní vazba v souboru *Function. JSON* :
+Zde je výstupní vazba v souboru *function.json:*
 
 ```json
 {
@@ -98,7 +98,7 @@ Tady je výstupní vazba v souboru *Function. JSON* :
 }
 ```
 
-Tady je F# kódu:
+Zde je kód F#:
 
 ```fsharp
 let Run(input: WorkItem, log: ILogger) =
@@ -107,9 +107,9 @@ let Run(input: WorkItem, log: ILogger) =
     json
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Tady je výstupní vazba v souboru *Function. JSON* :
+Zde je výstupní vazba v souboru *function.json:*
 
 ```json
 {
@@ -120,7 +120,7 @@ Tady je výstupní vazba v souboru *Function. JSON* :
 }
 ```
 
-V jazyce JavaScript vrátí návratová hodnota ve druhém parametru pro `context.done`:
+V jazyce JavaScript přejde vrácená `context.done`hodnota do druhého parametru pro :
 
 ```javascript
 module.exports = function (context, input) {
@@ -130,9 +130,9 @@ module.exports = function (context, input) {
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-Tady je výstupní vazba v souboru *Function. JSON* :
+Zde je výstupní vazba v souboru *function.json:*
 
 ```json
 {
@@ -142,7 +142,7 @@ Tady je výstupní vazba v souboru *Function. JSON* :
     "path": "output-container/{id}"
 }
 ```
-Tady je kód Pythonu:
+Zde je kód Pythonu:
 
 ```python
 def main(input: azure.functions.InputStream) -> str:
@@ -153,9 +153,9 @@ def main(input: azure.functions.InputStream) -> str:
     })
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-Zde je kód Java, který používá návratovou hodnotu pro výstupní vazbu:
+Tady je java kód, který používá vrácenou hodnotu pro výstupní vazbu:
 
 ```java
 @FunctionName("QueueTrigger")
@@ -176,4 +176,4 @@ public static String run(
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Zpracování chyb vazeb Azure Functions](./functions-bindings-errors.md)
+> [Zpracování chyb vazby Azure Functions](./functions-bindings-errors.md)

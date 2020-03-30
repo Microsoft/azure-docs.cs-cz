@@ -1,25 +1,25 @@
 ---
-title: Poznámky k verzi pro Microsoft Azure Backup Server V3
-description: Tento článek poskytuje informace o známých problémech a alternativním řešení pro Microsoft Azure Backup Server (MABS) v3.
+title: Poznámky k vydání pro Microsoft Azure Backup Server v3
+description: Tento článek obsahuje informace o známých problémech a řešeních pro Microsoft Azure Backup Server (MABS) v3.
 ms.topic: conceptual
 ms.date: 11/22/2018
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
 ms.openlocfilehash: b47d83e0e3714f3f035397acaadeac9cda39d12a
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74172279"
 ---
-# <a name="release-notes-for-microsoft-azure-backup-server"></a>Poznámky k verzi pro Microsoft Azure Backup Server
+# <a name="release-notes-for-microsoft-azure-backup-server"></a>Poznámky k vydání pro microsoft azure backup server
 
-V tomto článku jsou uvedené známé problémy a řešení pro Microsoft Azure Backup Server (MABS) v3.
+Tento článek obsahuje známé problémy a řešení pro Microsoft Azure Backup Server (MABS) V3.
 
-## <a name="backup-and-recovery-fails-for-clustered-workloads"></a>Zálohování a obnova se u clusterových úloh nezdařila.
+## <a name="backup-and-recovery-fails-for-clustered-workloads"></a>Zálohování a obnovení se nezdaří pro clusterované úlohy
 
-**Popis:** Zálohování a obnovení se u zdrojů clusterovaných dat, jako je cluster Hyper-V nebo cluster SQL (Always On SQL Server), nezdařila, nebo Exchange ve skupině dostupnosti databáze (DAG) po upgradu MABS v2 na MABS v3.
+**Popis:** Zálohování a obnovení se nezdaří pro clusterované zdroje dat, jako je například cluster Hyper-V nebo cluster SQL (SQL Always On) nebo Exchange ve skupině dostupnosti databáze (DAG) po upgradu MABS V2 na MABS V3.
 
-**Alternativní řešení:** Chcete-li tomu zabránit, otevřete SQL Server Management Studio (SSMS)) a spusťte následující skript SQL v databázi aplikace DPM:
+**Řešení:** Chcete-li tomu zabránit, otevřete sql server management studio (SSMS)) a spusťte následující skript SQL v db dpm:
 
 ```sql
     IF EXISTS (SELECT * FROM dbo.sysobjects
@@ -48,20 +48,20 @@ V tomto článku jsou uvedené známé problémy a řešení pro Microsoft Azure
     GO
 ```
 
-## <a name="upgrade-to-mabs-v3-fails-in-russian-locale"></a>Upgrade na MABS V3 se nezdařil v ruštině národním prostředí.
+## <a name="upgrade-to-mabs-v3-fails-in-russian-locale"></a>Upgrade na MABS V3 selže v ruském národním prostředí
 
-**Popis:** Upgrade z MABS v2 na MABS V3 v ruštině locale se nezdařil s kódem chyby **4387**.
+**Popis:** Upgrade z MABS V2 na MABS V3 v ruském národním prostředí selže s kódem chyby **4387**.
 
-**Alternativní řešení:** Proveďte následující kroky, pokud chcete upgradovat na MABS V3 pomocí nástroje Ruština Install Package:
+**Řešení:** Provedení následujících kroků k upgradu na MABS V3 pomocí ruského instalačního balíčku:
 
-1. [Zálohujte](https://docs.microsoft.com/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server?view=sql-server-2017#SSMSProcedure) databázi SQL a odinstalujte MABS v2 (při odinstalaci si můžete zachovat chráněná data).
-2. Upgradujte na SQL 2017 (Enterprise) a odinstalujte hlášení v rámci upgradu.
-3. [Nainstalovat](https://docs.microsoft.com/sql/reporting-services/install-windows/install-reporting-services?view=sql-server-2017#install-your-report-server) SQL Server Reporting Services (SSRS).
-4. [Nainstalovat](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) SQL Server Management Studio (SSMS).
-5. Nakonfigurujte vytváření sestav pomocí parametrů popsaných v [konfiguraci služby SSRS pomocí SQL 2017](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup#upgrade-mabs).
-6. [Nainstalovat](backup-azure-microsoft-azure-backup.md) MABS V3.
-7. [Obnovit](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms?view=sql-server-2017) SQL pomocí SSMS a spusťte nástroj DPM-Sync, jak je popsáno [zde](https://docs.microsoft.com/previous-versions/system-center/data-protection-manager-2010/ff634215(v=technet.10)).
-8. Aktualizujte vlastnost ' verze databáze ' v tabulce dbo. tbl_DLS_GlobalSetting pomocí následujícího příkazu:
+1. [Zálohujte](https://docs.microsoft.com/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server?view=sql-server-2017#SSMSProcedure) databázi SQL a odinstalujte MABS V2 (zvolte zachování chráněných dat během odinstalace).
+2. Upgradujte na SQL 2017 (Enterprise) a odinstalujte sestavy jako součást upgradu.
+3. [Instalace](https://docs.microsoft.com/sql/reporting-services/install-windows/install-reporting-services?view=sql-server-2017#install-your-report-server) SQL Server Reporting Services (SSRS).
+4. [Instalace](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) SQL Server Management Studio (SSMS).
+5. Konfigurace reportingu pomocí parametrů, jak jsou popsány v [konfiguraci SSRS pomocí SQL 2017](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup#upgrade-mabs).
+6. [Instalace](backup-azure-microsoft-azure-backup.md) MABS V3.
+7. [Obnovit](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms?view=sql-server-2017) SQL pomocí SSMS a spustit DPM-Sync nástroj, jak je popsáno [zde](https://docs.microsoft.com/previous-versions/system-center/data-protection-manager-2010/ff634215(v=technet.10)).
+8. Aktualizujte vlastnost DataBaseVersion v tabulce dbo.tbl_DLS_GlobalSetting pomocí následujícího příkazu:
 
 ```sql
         UPDATE dbo.tbl_DLS_GlobalSetting

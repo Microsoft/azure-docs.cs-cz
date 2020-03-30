@@ -1,6 +1,6 @@
 ---
-title: Obnovení virtuálních počítačů se systémem Linux pomocí chroot, kde se používá LVM (Správce logických svazků) – virtuální počítače Azure
-description: Obnovení virtuálních počítačů se systémem Linux pomocí LVMs.
+title: Obnovení virtuálních počítačů S Linuxem pomocí chroot, kde se používá LVM (Logický správce svazků) – virtuální počítače Azure
+description: Obnovení virtuálních počítačů s Linuxem s LVM.
 services: virtual-machines-linux
 documentationcenter: ''
 author: vilibert
@@ -15,68 +15,68 @@ ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
 ms.openlocfilehash: 20d710f717a9dff26f46ac7a201a9b694f3fbe84
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74684132"
 ---
-# <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Řešení potíží s virtuálním počítačem Linux, když není k dispozici přístup ke konzole sériového rozhraní Azure a rozložení disku používá LVM (Správce logických svazků)
+# <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Řešení potíží s virtuálním počítačem s Linuxem, když není přístup k konzolové konzoli Azure a rozložení disku používá LVM (Logical Volume Manager)
 
-Tato příručka pro řešení potíží je výhodná pro situace, kdy se virtuální počítač se systémem Linux nespouští, SSH není možné a základní rozložení systému souborů je nakonfigurované pomocí LVM (Správce logických svazků).
+Tento průvodce odstraňováním potíží je přínosem pro scénáře, kde není spuštěn virtuální počítač s Operačním systémem Linux, ssh není možné a základní rozložení systému souborů je nakonfigurováno s LVM (Logical Volume Manager).
 
-## <a name="take-snapshot-of-the-failing-vm"></a>Pořídit snímek neúspěšného virtuálního počítače
+## <a name="take-snapshot-of-the-failing-vm"></a>Pořízení snímku neúspěšného virtuálního počítače
 
-Pořídit snímek ovlivněného virtuálního počítače. 
+Pořizovat snímek ovlivněného virtuálního počítače. 
 
-Snímek se pak připojí k **záchrannému** virtuálnímu počítači. Postupujte podle [pokynů,](https://docs.microsoft.com/azure/virtual-machines/linux/snapshot-copy-managed-disk#use-azure-portal) jak si pořídit **snímek**.
+Snímek pak bude připojen k **záchrannému** virtuálnímu počítače. Postupujte podle pokynů [zde](https://docs.microsoft.com/azure/virtual-machines/linux/snapshot-copy-managed-disk#use-azure-portal) o tom, jak pořídit **snímek**.
 
-## <a name="create-a-rescue-vm"></a>Vytvoření záchranného virtuálního počítače
-Obvykle se doporučuje zachránit virtuální počítač se stejnou nebo podobnou verzí operačního systému. Použijte stejnou **oblast** a **skupinu prostředků** ovlivněného virtuálního počítače.
+## <a name="create-a-rescue-vm"></a>Vytvoření záchranného virtuálního virtuálního mísa
+Obvykle se doporučuje záchranný virtuální virtuální soud stejné nebo podobné verze operačního systému. Použití stejné **oblasti** a **skupiny prostředků** ovlivněného virtuálního mísy
 
-## <a name="connect-to-the-rescue-vm"></a>Připojení k záchrannému virtuálnímu počítači
-Připojte se pomocí SSH k **záchrannému** virtuálnímu počítači. Zvýšení oprávnění a použití superuživatele jako uživatel
+## <a name="connect-to-the-rescue-vm"></a>Připojení k záchrannému virtuálnímu virtuálnímu zařízení
+Připojte se pomocí ssh do **záchranného** virtuálního zařízení. Zvýšit oprávnění a stát se super uživatelem pomocí
 
 `sudo su -`
 
-## <a name="attach-the-disk"></a>Připojit disk
-Připojte disk k **záchrannému** virtuálnímu počítači vytvořenému ze snímku, který jste provedli dříve.
+## <a name="attach-the-disk"></a>Připojte disk
+Připojte disk k **záchrannému** virtuálnímu počítače provedenému ze snímku pořízeného dříve.
 
-Azure Portal > Výběr **disků** **záchranného** virtuálního počítače > 
+Portál Azure -> vybrat **záchranné** **disky** > virtuálních počítačů 
 
 ![Vytvořit disk](./media/chroot-logical-volume-manager/create-disk-from-snap.png)
 
-Naplňte pole. Přiřaďte novému disku název, vyberte stejnou skupinu prostředků jako snímek, ovlivněný virtuální počítač a záchranný virtuální počítač.
+Naplňte pole. Přiřaďte nový disk název, vyberte stejnou skupinu prostředků jako snímek, ovlivněný virtuální počítač a záchranný virtuální počítač.
 
-**Typ zdroje** je **snímek** .
-**Zdrojový snímek** je název **snímku** , který byl dříve vytvořen.
+**Typ Zdroje** je **Snímek** .
+**Source snímek** je název **snímku** dříve vytvořené.
 
 ![vytvořit disk 2](./media/chroot-logical-volume-manager/create-disk-from-snap-2.png)
 
-Vytvořte přípojný bod připojeného disku.
+Vytvořte přípojný bod pro připojený disk.
 
 `mkdir /rescue`
 
-Spuštěním příkazu **fdisk-l** ověříte, že je disk snímku připojený a že je v seznamu všechna zařízení a oddíly k dispozici.
+Spuštěnípříkaze **fdisk -l** ověřte, zda byl disk snímku připojen, a uveďte seznam všech dostupných zařízení a oddílů
 
 `fdisk -l`
 
-U většiny scénářů se k připojenému disku snímku zobrazuje **/dev/sdc** , kde se zobrazují dva oddíly **/dev/sdc1** a **/dev/sdc2** .
+Ve většině scénářů bude připojený snímek disk zobrazit jako **/dev/sdc** zobrazující dva oddíly **/dev/sdc1** a **/dev/sdc2**
 
 ![Fdisk](./media/chroot-logical-volume-manager/fdisk-output-sdc.png)
 
-**\*** označuje spouštěcí oddíl, oba oddíly budou připojeny.
+Označuje **\*** spouštěcí oddíl, oba oddíly mají být připojeny.
 
-Pokud chcete zobrazit LVMs ovlivněného virtuálního počítače, spusťte příkaz **lsblk** .
+Spuštěním příkazu **Lsblk** zobrazíte lvm postiženého virtuálního virtuálního soudu.
 
 `lsblk`
 
 ![Spustit lsblk](./media/chroot-logical-volume-manager/lsblk-output-mounted.png)
 
 
-Ověřte, jestli se zobrazuje LVMs z ovlivněného virtuálního počítače.
-V takovém případě pomocí následujících příkazů je povolte a znovu spusťte **lsblk**.
-Než budete pokračovat, ujistěte se, že je LVMs z připojeného disku viditelný.
+Ověřte, jestli se zobrazí LVM z ovlivněného virtuálního jevu.
+Pokud ne, použijte níže uvedené příkazy, aby jim a znovu spustit **lsblk**.
+Ujistěte se, že lvm z připojeného disku viditelné před pokračováním.
 
 ```
 vgscan --mknodes
@@ -86,37 +86,37 @@ mount –a
 lsblk
 ```
 
-Vyhledejte cestu k připojení logického svazku, který obsahuje oddíl/(root). Obsahuje konfigurační soubory, jako je například/etc/default/grub
+Vyhledejte cestu k připojení logického svazku, který obsahuje oddíl / (kořen). Má konfigurační soubory, jako je /etc/default/grub
 
-V tomto příkladu převezme výstup z předchozího příkazu **lsblk** **rootvg-rootlv** správnou **kořenovou** hodnotu LV pro připojení a dá se použít v dalším příkazu.
+V tomto příkladu je přijetí výstupu z předchozího příkazu **lsblk** **rootvg-rootlv** správné **kořenové** LV pro připojení a lze jej použít v dalším příkazu.
 
-Výstup dalšího příkazu zobrazí cestu pro připojení pro **kořene** LV.
+Výstup dalšího příkazu zobrazí cestu k připojení pro **kořenové** LV
 
 `pvdisplay -m | grep -i rootlv`
 
 ![Rootlv](./media/chroot-logical-volume-manager/locate-rootlv.png)
 
-Pokračujte a připojte toto zařízení k adresáři/Rescue
+Pokračujte k připojení tohoto zařízení do adresáře /rescue
 
 `mount /dev/rootvg/rootlv /rescue`
 
-Připojte oddíl, který má **příznak spouštění** nastavený na/Rescue/Boot.
+Připojení oddílu, který má **nastavený příznak Boot** na /rescue/boot
 
 `
 mount /dev/sdc1 /rescue/boot
 `
 
-Ověřte, jestli jsou systémy souborů připojeného disku teď správně připojené pomocí příkazu **lsblk** .
+Ověřte, zda jsou systémy souborů připojeného disku správně připojeny pomocí příkazu **Lsblk**
 
 ![Spustit lsblk](./media/chroot-logical-volume-manager/lsblk-output-1.png)
 
-nebo **DF-th –** příkaz
+nebo **příkaz df -Th**
 
-![Příznak](./media/chroot-logical-volume-manager/df-output.png)
+![Df](./media/chroot-logical-volume-manager/df-output.png)
 
 ## <a name="gaining-chroot-access"></a>Získání přístupu chroot
 
-Získejte přístup **chroot** , který vám umožní provádět různé opravy, pro každou distribuci Linux existují mírné odchylky.
+Získejte **chroot** přístup, který vám umožní provádět různé opravy, existují mírné varianty pro každou distribuci Linuxu.
 
 ```
  cd /rescue
@@ -127,29 +127,29 @@ Získejte přístup **chroot** , který vám umožní provádět různé opravy,
  chroot /rescue
 ```
 
-V případě, že došlo k chybě, například:
+Pokud dojde k chybě, například:
 
-**chroot: nepovedlo se spustit příkaz/bin/bash: žádný takový soubor nebo adresář.**
+**chroot: nepodařilo se spustit příkaz '/bin/bash': Žádný takový soubor nebo adresář**
 
-pokus o připojení logického svazku **usr**
+pokus o připojení logického svazku **USR**
 
 `
 mount  /dev/mapper/rootvg-usrlv /rescue/usr
 `
 
 > [!TIP]
-> Při provádění příkazů v prostředí **chroot** si všimněte, že se spouštějí na připojeném disku s operačním systémem a ne na místním virtuálním počítači pro **záchranu** . 
+> Při provádění příkazů v prostředí **chroot,** všimněte si, že jsou spuštěny proti připojenému disku operačního systému a nikoli místní **záchranné** virtuální počítače. 
 
-Příkazy lze použít k instalaci, odebrání a aktualizaci softwaru. Pokud chcete opravit chyby, vyřešte problémy s virtuálními počítači.
+Příkazy lze použít k instalaci, odebrání a aktualizaci softwaru. Poradce při potížích s virtuálními maješky za účelem opravy chyb.
 
 
-Spusťte příkaz lsblk a/Rescue je nyní/a/Rescue/Boot je/Boot ![Chrooted](./media/chroot-logical-volume-manager/chrooted.png)
+Vykonat příkaz lsblk a /rescue is now / ![and /rescue/boot is /boot Chrooted](./media/chroot-logical-volume-manager/chrooted.png)
 
-## <a name="perform-fixes"></a>Provést opravy
+## <a name="perform-fixes"></a>Provádění oprav
 
-### <a name="example-1---configure-the-vm-to-boot-from-a-different-kernel"></a>Příklad 1 – konfigurace virtuálního počítače pro spuštění z jiného jádra
+### <a name="example-1---configure-the-vm-to-boot-from-a-different-kernel"></a>Příklad 1 – konfigurace spuštění virtuálního počítače z jiného jádra
 
-Běžným scénářem je vynutit spuštění virtuálního počítače z předchozího jádra, protože je možné, že aktuální nainstalované jádro je poškozené nebo že se upgrade nedokončil správně.
+Běžným scénářem je vynucení spuštění virtuálního počítače z předchozího jádra, protože aktuální nainstalované jádro mohlo být poškozeno nebo upgrade nebyl dokončen správně.
 
 
 ```
@@ -168,56 +168,56 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 
 *názorném postupu*
 
-Příkaz **grep** vypíše seznam jader, na které **grub. cfg** ví.
-![jádra](./media/chroot-logical-volume-manager/kernels.png)
+Příkaz **grep** uvádí jádra, která **grub.cfg** ví.
+![Jádra](./media/chroot-logical-volume-manager/kernels.png)
 
-**seznam grub2-editenv** zobrazuje, které jádro se načte při dalším spuštění ![výchozím nastavení jádra](./media/chroot-logical-volume-manager/kernel-default.png)
+**Grub2-editenv seznam** zobrazí, které jádro ![bude načteno při příštím výchozím nastavení jádra](./media/chroot-logical-volume-manager/kernel-default.png)
 
-**grub2-set-default** se používá ke změně na jiný jádro ![grub2 sady](./media/chroot-logical-volume-manager/grub2-set-default.png)
+**grub2-set-default** se používá ke ![změně na jinou sadu grub2 jádra](./media/chroot-logical-volume-manager/grub2-set-default.png)
 
-seznam **grub2-editenv** zobrazuje, které jádro se načte při příštím spuštění ![nové jádro](./media/chroot-logical-volume-manager/kernel-new.png)
+**grub2-editenv** seznam zobrazuje, které jádro ![bude načteno při příštím startu Nové jádro](./media/chroot-logical-volume-manager/kernel-new.png)
 
-**grub2-mkconfig** znovu sestaví grub. cfg pomocí požadovaných verzí ![grub2 mkconfig](./media/chroot-logical-volume-manager/grub2-mkconfig.png)
+**grub2-mkconfig** obnoví grub.cfg pomocí požadovaných ![verzí Grub2 mkconfig](./media/chroot-logical-volume-manager/grub2-mkconfig.png)
 
 
 
-### <a name="example-2---upgrade-packages"></a>Příklad 2 – aktualizace balíčků
+### <a name="example-2---upgrade-packages"></a>Příklad 2 - balíčky pro upgrade
 
-Při neúspěšném upgradu jádra se dá virtuální počítač vykreslit jako nespouštěcí.
-Připojit všechny logické svazky, aby bylo možné balíčky odebrat nebo přeinstalovat
+Neúspěšný upgrade jádra může vykreslit nezaváděcí modul virtuálního virtuálního zařízení.
+Připojení všech logických svazků, aby bylo možné odebrat nebo přeinstalovat balíčky
 
-Spuštěním příkazu **LVS** ověřte, které **LVS** jsou k dispozici pro připojení, všechny virtuální počítače, které byly migrovány nebo pocházejí od jiného poskytovatele cloudu, se budou lišit v konfiguraci.
+Spusťte příkaz **LVs** a ověřte, které **lV** jsou k dispozici pro montáž, každý virtuální počítače, který byl migrován nebo pochází od jiného poskytovatele cloudu, se bude lišit v konfiguraci.
 
-Ukončení prostředí **chroot** připojit požadované **LV**
+Ukončete prostředí **chroot** připojit požadovaný **LV**
 
-![Rozšířený](./media/chroot-logical-volume-manager/advanced.png)
+![Upřesnit](./media/chroot-logical-volume-manager/advanced.png)
 
-Teď znovu přihlaste k prostředí **chroot** spuštěním
+Nyní přístup **chroot** prostředí znovu spuštěním
 
 `chroot /rescue`
 
-Všechny LVs musí být viditelné jako připojené oddíly.
+Všechny LV by měly být viditelné jako namontované oddíly
 
-![Rozšířený](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
+![Upřesnit](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
 
 Dotaz na nainstalované **jádro**
 
-![Rozšířený](./media/chroot-logical-volume-manager/rpm-kernel.png)
+![Upřesnit](./media/chroot-logical-volume-manager/rpm-kernel.png)
 
-V případě potřeby odeberte nebo upgradujte
-**jádra** ![pokročilé](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)
-
-
-### <a name="example-3---enable-serial-console"></a>Příklad 3 – povolení sériové konzoly
-Pokud nemáte přístup ke konzole sériového prostředí Azure, ověřte parametry konfigurace GRUB pro virtuální počítač se systémem Linux a opravte je. Podrobné informace najdete [v tomto dokumentu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-proactive-configuration) .
-
-### <a name="example-4---kernel-loading-with-problematic-lvm-swap-volume"></a>Příklad 4 – načítání jádra s problematickým svazkem LVM swap
-
-Spuštění virtuálního počítače se nemusí zdařit a na příkazovém řádku se **Dracut** .
-Další podrobnosti o tomto selhání najdete v části buď pomocí sériové konzole Azure, nebo v části > Azure Portal Diagnostika spouštění – > sériového protokolu.
+V případě potřeby odeberte nebo upgradujte **jádro**
+![Upřesnit](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)
 
 
-Může se zobrazit chyba podobná této:
+### <a name="example-3---enable-serial-console"></a>Příklad 3 – povolit sériovou konzolu
+Pokud přístup nebyl možný pro konzolu Azure sériové konzole, ověřte grub parametry konfigurace pro váš virtuální počítač s Linuxem a opravit je. Podrobné informace naleznete [v tomto dokumentu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-proactive-configuration)
+
+### <a name="example-4---kernel-loading-with-problematic-lvm-swap-volume"></a>Příklad 4 - načítání jádra s problematickým objemem výměny LVM
+
+Virtuální ho virtuálního zařízení se nemusí plně spustit a klesne do výzvy **dracut.**
+Další podrobnosti o selhání můžete lokalizovat buď ze sériové konzoly Azure nebo přejděte na Azure Portal -> diagnostika spuštění -> sériový protokol
+
+
+Může se chybět tato:
 
 ```
 [  188.000765] dracut-initqueue[324]: Warning: /dev/VG/SwapVol does not exist
@@ -225,19 +225,19 @@ Může se zobrazit chyba podobná této:
 Warning: /dev/VG/SwapVol does not exist
 ```
 
-V tomto příkladu je nakonfigurován grub. cfg, aby se načetla LV s názvem **Rd. LVM. lv = VG/SwapVol** a virtuální počítač ho nemůže najít. Tento řádek ukazuje, jak se jádro načítá na SwapVol LV.
+Grub.cfg je nakonfigurován v tomto příkladu načíst LV s názvem **rd.lvm.lv=VG/SwapVol** a virtuální ho dohledu není schopen najít. Tento řádek ukazuje, jak se jádro načítá odkazující na LV SwapVol
 
 ```
 [    0.000000] Command line: BOOT_IMAGE=/vmlinuz-3.10.0-1062.4.1.el7.x86_64 root=/dev/mapper/VG-OSVol ro console=tty0 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0 biosdevname=0 crashkernel=256M rd.lvm.lv=VG/OSVol rd.lvm.lv=VG/SwapVol nodmraid rhgb quiet
 [    0.000000] e820: BIOS-provided physical RAM map:
 ```
 
- Odstraňte problematický Lotyšsko z konfigurace/etc/default/grub a znovu sestavte grub2. cfg.
+ Odeberte problematický LV z /etc/default/grub konfigurace a znovu grub2.cfg
 
 
-## <a name="exit-chroot-and-swap-the-os-disk"></a>Ukončení chroot a prohození disku s operačním systémem
+## <a name="exit-chroot-and-swap-the-os-disk"></a>Ukončete kořenovou moc a zaměřte disk operačního systému
 
-Po vyřešení problému přejděte k odpojování a odpojte disk od záchranného virtuálního počítače, aby bylo možné ho prohodit s ovlivněným diskem s operačním systémem virtuálního počítače.
+Po opravě problému pokračujte k odpojení a odpojení disku od záchranného virtuálního počítače, který umožňuje jeho výměnu s postiženým diskem operačního systému VM.
 
 ```
 exit
@@ -252,26 +252,26 @@ umount /rescue
 
 Odpojte disk od záchranného virtuálního počítače a proveďte prohození disku.
 
-Vyberte virtuální počítač z **disků** portálu a vyberte **Odpojit**
-![odpojit disk](./media/chroot-logical-volume-manager/detach-disk.png) 
+Vyberte virtuální virtuální ms z portálu **Disky** a vyberte **odpojit**
+![disk odpojení](./media/chroot-logical-volume-manager/detach-disk.png) 
 
-Uložte změny ![Uložit odpojení](./media/chroot-logical-volume-manager/save-detach.png) 
+Uložit změny ![Uložit odpojení](./media/chroot-logical-volume-manager/save-detach.png) 
 
-Disk bude nyní k dispozici, takže ho bude možné vyměnit s původním diskem s operačním systémem ovlivněného virtuálního počítače.
+Disk bude nyní k dispozici umožňuje proměnit s původním diskem operačního systému ovlivněného virtuálního počítače.
 
-Přejděte v Azure Portal k neúspěšnému virtuálnímu počítači a vyberte **disky** -> **odkládací disk s operačním systémem**
-![odkládací disk](./media/chroot-logical-volume-manager/swap-disk.png) 
+Přejděte na webu Azure portal na neúspěšný virtuální počítač a vyberte **disky** -> **Swap OS Disk**
+![Swap disk disk](./media/chroot-logical-volume-manager/swap-disk.png) 
 
-Dokončete pole, na kterých je vybraný **disk** , je snímkový disk, který je právě odpojený v předchozím kroku. Vyžaduje se taky název virtuálního počítače, který se týká daného virtuálního počítače, a pak vyberte **OK** .
+Vyplňte pole **Zvolte disk** je snímek disk právě odpojen v předchozím kroku. Název virtuálního_ virtuálního_ **OK**
 
-![Nový disk s operačním systémem](./media/chroot-logical-volume-manager/new-osdisk.png) 
+![Nový disk operačního systému](./media/chroot-logical-volume-manager/new-osdisk.png) 
 
-Pokud je na virtuálním počítači spuštěná Výměna disku, vypne se, jakmile se operace prohození disku dokončí, restartujte virtuální počítač.
+Pokud virtuální počítač běží disk swap vypne, restartujte virtuální počítač po dokončení operace odkládání disků.
 
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o
+Další informace:
 
- [Sériová konzola Azure]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
+ [Azure Serial Console]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
 
 [Režim jednoho uživatele](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode)

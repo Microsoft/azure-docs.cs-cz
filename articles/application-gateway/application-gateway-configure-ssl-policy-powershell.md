@@ -1,7 +1,7 @@
 ---
-title: Konfigurace zásad protokolu SSL pomocí prostředí PowerShell
+title: Konfigurace zásad SSL pomocí Prostředí PowerShell
 titleSuffix: Azure Application Gateway
-description: Tento článek poskytuje pokyny ke konfiguraci zásad protokolu SSL v Azure Application Gateway
+description: Tento článek obsahuje pokyny ke konfiguraci zásad SSL v bráně aplikace Azure
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,21 +9,21 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: 105b0b3e40e6e9433ee456914cd5babc1d17d036
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74075233"
 ---
-# <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>Nakonfigurujte verze zásad protokolu SSL a šifrovací sady na Application Gateway
+# <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>Konfigurace verzí zásad SSL a šifrovacích sad v bráně aplikace
 
-Přečtěte si, jak nakonfigurovat verze zásad protokolu SSL a šifrovací sady na Application Gateway. Můžete si vybrat ze seznamu předdefinovaných zásad, které obsahují různé konfigurace verzí zásad SSL a povolených šifrovacích sad. Máte také možnost definovat [vlastní zásadu protokolu SSL](#configure-a-custom-ssl-policy) na základě vašich požadavků.
+Přečtěte si, jak nakonfigurovat verze zásad SSL a šifrovací sady v application gateway. Můžete si vybrat ze seznamu předdefinovaných zásad, které obsahují různé konfigurace verzí zásad SSL a povolených šifrovacích sad. Máte také možnost definovat [vlastní zásady SSL](#configure-a-custom-ssl-policy) na základě vašich požadavků.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-available-ssl-options"></a>Získat dostupné možnosti SSL
 
-Rutina `Get-AzApplicationGatewayAvailableSslOptions` poskytuje seznam dostupných předdefinovaných zásad, dostupných šifrovacích sad a verzí protokolů, které lze konfigurovat. Následující příklad ukazuje příklad výstupu spuštění rutiny.
+Rutina `Get-AzApplicationGatewayAvailableSslOptions` obsahuje seznam dostupných předdefinovaných zásad, dostupných šifrovacích sad a verzí protokolů, které lze konfigurovat. Následující příklad ukazuje ukázkový výstup ze spuštění rutiny.
 
 ```
 DefaultPolicy: AppGwSslPolicy20150501
@@ -71,11 +71,11 @@ AvailableProtocols:
     TLSv1_2
 ```
 
-## <a name="list-pre-defined-ssl-policies"></a>Výpis předdefinovaných zásad protokolu SSL
+## <a name="list-pre-defined-ssl-policies"></a>Seznam předdefinovaných zásad SSL
 
-Aplikační brána nabízí tři předdefinované zásady, které se dají použít. Rutina `Get-AzApplicationGatewaySslPredefinedPolicy` tyto zásady načte. Každá zásada má povolené jiné verze protokolu a šifrovací sady. Tyto předdefinované zásady je možné použít k rychlé konfiguraci zásad protokolu SSL v bráně Application Gateway. Ve výchozím nastavení je zvolena možnost **AppGwSslPolicy20150501** , pokud nejsou definovány žádné konkrétní zásady protokolu SSL.
+Aplikační brána je dodávána se třemi předdefinovanými zásadami, které lze použít. Rutina `Get-AzApplicationGatewaySslPredefinedPolicy` načte tyto zásady. Každá zásada má různé verze protokolu a šifrovací sady povoleny. Tyto předdefinované zásady lze rychle nakonfigurovat zásady SSL na vaší aplikační bráně. Ve výchozím nastavení **AppGwSslPolicy20150501** je vybrán, pokud není definována žádná konkrétní zásada SSL.
 
-Následující výstup je příkladem spuštění `Get-AzApplicationGatewaySslPredefinedPolicy`.
+Následující výstup je příkladem `Get-AzApplicationGatewaySslPredefinedPolicy`spuštění .
 
 ```
 Name: AppGwSslPolicy20150501
@@ -106,17 +106,17 @@ CipherSuites:
 ...
 ```
 
-## <a name="configure-a-custom-ssl-policy"></a>Konfigurace vlastních zásad protokolu SSL
+## <a name="configure-a-custom-ssl-policy"></a>Konfigurace vlastních zásad SSL
 
-Při konfiguraci vlastních zásad protokolu SSL předáte následující parametry: PolicyType, MinProtocolVersion, CipherSuite a ApplicationGateway. Pokud se pokusíte předat další parametry, zobrazí se při vytváření nebo aktualizaci Application Gateway chyba. 
+Při konfiguraci vlastní zásady SSL předáte následující parametry: PolicyType, MinProtocolVersion, CipherSuite a ApplicationGateway. Pokud se pokusíte předat další parametry, zobrazí se chyba při vytváření nebo aktualizaci aplikační brány. 
 
-Následující příklad nastaví vlastní zásadu protokolu SSL pro aplikační bránu. Nastaví minimální verzi protokolu na `TLSv1_1` a povolí následující šifrovací sady:
+Následující příklad nastaví vlastní zásady SSL na aplikační bráně. Nastaví minimální verzi `TLSv1_1` protokolu a povolí následující šifrovací sady:
 
 * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 
 > [!IMPORTANT]
-> Při konfiguraci vlastních zásad SSL musí být vybraná TLS_RSA_WITH_AES_256_CBC_SHA256. Application Gateway používá tuto šifrovací sadu pro správu back-endu. Můžete ho použít v kombinaci s jinými sadami, ale toto musí být zaškrtnuté i jedna z nich. 
+> TLS_RSA_WITH_AES_256_CBC_SHA256 musí být vybrána při konfiguraci vlastní zásady SSL. Aplikační brána používá tuto šifrovací sadu pro správu back-endu. Můžete použít v kombinaci s jinými sadami, ale tohle musí být také vybráno. 
 
 ```powershell
 # get an application gateway resource
@@ -132,11 +132,11 @@ Get-AzApplicationGatewaySslPolicy -ApplicationGateway $gw
 Set-AzApplicationGateway -ApplicationGateway $gw
 ```
 
-## <a name="create-an-application-gateway-with-a-pre-defined-ssl-policy"></a>Vytvoření aplikační brány s předem definovanými zásadami protokolu SSL
+## <a name="create-an-application-gateway-with-a-pre-defined-ssl-policy"></a>Vytvoření aplikační brány s předdefinovanou zásadou SSL
 
-Při konfiguraci předdefinovaných zásad protokolu SSL předáte následující parametry: PolicyType, Policy a ApplicationGateway. Pokud se pokusíte předat další parametry, zobrazí se při vytváření nebo aktualizaci Application Gateway chyba.
+Při konfiguraci předdefinované zásady SSL předáte následující parametry: PolicyType, PolicyName a ApplicationGateway. Pokud se pokusíte předat další parametry, zobrazí se chyba při vytváření nebo aktualizaci aplikační brány.
 
-Následující příklad vytvoří novou aplikační bránu s předem definovanými zásadami protokolu SSL.
+Následující příklad vytvoří novou aplikační bránu s předdefinovanou zásadou SSL.
 
 ```powershell
 # Create a resource group
@@ -189,11 +189,11 @@ $policy = New-AzApplicationGatewaySslPolicy -PolicyType Predefined -PolicyName A
 $appgw = New-AzApplicationGateway -Name appgwtest -ResourceGroupName $rg.ResourceGroupName -Location "East US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SslCertificates $cert -SslPolicy $policy
 ```
 
-## <a name="update-an-existing-application-gateway-with-a-pre-defined-ssl-policy"></a>Aktualizace existující aplikační brány s předdefinovanými zásadami protokolu SSL
+## <a name="update-an-existing-application-gateway-with-a-pre-defined-ssl-policy"></a>Aktualizace existující aplikační brány pomocí předdefinované zásady SSL
 
-Chcete-li nastavit vlastní zásadu protokolu SSL, předejte následující parametry: **policyType**, **MinProtocolVersion**, **CipherSuite**a **ApplicationGateway**. Pokud chcete nastavit předdefinované zásady protokolu SSL, předejte následující parametry: **policyType**, **Policy**a **ApplicationGateway**. Pokud se pokusíte předat další parametry, zobrazí se při vytváření nebo aktualizaci Application Gateway chyba.
+Chcete-li nastavit vlastní zásady SSL, předajte následující parametry: **PolicyType**, **MinProtocolVersion**, **CipherSuite**a **ApplicationGateway**. Chcete-li nastavit předdefinovanou zásadu SSL, předavěte následující parametry: **PolicyType**, **PolicyName**a **ApplicationGateway**. Pokud se pokusíte předat další parametry, zobrazí se chyba při vytváření nebo aktualizaci aplikační brány.
 
-V následujícím příkladu jsou k dispozici ukázky kódu pro vlastní zásady i předdefinované zásady. Odkomentujte zásady, které chcete použít.
+V následujícím příkladu jsou ukázky kódu pro vlastní zásady a předdefinované zásady. Odkomentujte zásady, které chcete použít.
 
 ```powershell
 # You have to change these parameters to match your environment.
@@ -217,4 +217,4 @@ $SetGW = Set-AzApplicationGateway -ApplicationGateway $AppGW
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete zjistit, jak přesměrovat přenosy HTTP na koncový bod HTTPS, přejděte na [téma Přehled přesměrování Application Gateway](application-gateway-redirect-overview.md) .
+Navštivte [přehled přesměrování brány aplikace,](application-gateway-redirect-overview.md) kde se dozvíte, jak přesměrovat přenoshttp do koncového bodu HTTPS.

@@ -1,6 +1,6 @@
 ---
-title: úlohy AzCopy odebrat | Microsoft Docs
-description: Tento článek popisuje referenční informace o příkazu pro odebrání úloh AzCopy.
+title: azcopy pracovních míst odstranit | Dokumenty společnosti Microsoft
+description: Tento článek obsahuje referenční informace pro příkaz odebrat úlohy azcopy.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -9,18 +9,18 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: ba403c8d823b7ead0414521ebd51dc6f6601ccd8
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74034162"
 ---
 # <a name="azcopy-jobs-remove"></a>azcopy jobs remove
 
-Odebere všechny soubory přidružené k danému ID úlohy.
+Odeberte všechny soubory přidružené k id dané úlohy.
 
 > [!NOTE] 
-> Můžete přizpůsobit umístění, kam se ukládají soubory protokolů a plánů. Další informace najdete v příkazu [AzCopy ENV](storage-ref-azcopy-env.md) .
+> Můžete přizpůsobit umístění, kde jsou uloženy soubory protokolu a plánu. Další informace najdete v příkazu [azcopy env.](storage-ref-azcopy-env.md)
 
 ```
 azcopy jobs remove [jobID] [flags]
@@ -28,10 +28,10 @@ azcopy jobs remove [jobID] [flags]
 
 ## <a name="related-conceptual-articles"></a>Související koncepční články
 
-- [Začínáme s AzCopy](storage-use-azcopy-v10.md)
-- [Přenos dat pomocí AzCopy a BLOB Storage](storage-use-azcopy-blobs.md)
-- [Přenos dat pomocí AzCopy a úložiště souborů](storage-use-azcopy-files.md)
-- [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
+- [Začínáme s nástrojem AzCopy](storage-use-azcopy-v10.md)
+- [Přenos dat pomocí úložiště AzCopy a Blob](storage-use-azcopy-blobs.md)
+- [Přenos dat pomocí AzCopy a ukládání souborů](storage-use-azcopy-files.md)
+- [Konfigurace, optimalizace a řešení potíží s azcopy](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Příklady
 
@@ -41,14 +41,14 @@ azcopy jobs remove [jobID] [flags]
 
 ## <a name="options"></a>Možnosti
 
-**-h,--help**                Nápovědu pro odebrání
+**-h, --pomoc**                Nápověda k odstranění.
 
 ## <a name="options-inherited-from-parent-commands"></a>Možnosti zděděné z nadřazených příkazů
 
-**--Cap – Mbps**      Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.
+**--cap-mbps uint32**      Završuje přenosovou rychlost v megabitech za sekundu. Propustnost se může mírně lišit od víčka. Pokud je tato možnost nastavena na nulu nebo je vynechána, propustnost není omezena.
 
-**--výstupní** formát řetězce výstupu příkazu. Mezi možnosti patří: text, JSON. Výchozí hodnota je "text". (výchozí "text")
+**--řetězec typu výstupu** Formát výstupu příkazu. Volby zahrnují: text, json. Výchozí hodnota je text. (výchozí "text")
 
 ## <a name="see-also"></a>Viz také
 
-- [AzCopy úlohy](storage-ref-azcopy-jobs.md)
+- [azcopy jobs](storage-ref-azcopy-jobs.md)

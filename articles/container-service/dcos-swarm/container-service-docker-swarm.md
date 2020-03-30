@@ -1,6 +1,6 @@
 ---
-title: ZASTARALÉ Správa clusteru Azure Swarm pomocí rozhraní Docker API
-description: Nasazení kontejnerů do clusteru Docker Swarm v Azure Container Service
+title: (ZASTARALÉ) Správa clusteru Azure Swarm pomocí rozhraní Docker API
+description: Nasazení kontejnerů do clusteru Docker Swarm ve službě Azure Container Service
 services: container-service
 author: rgardler
 manager: madhana
@@ -10,13 +10,13 @@ ms.date: 09/13/2016
 ms.author: rogardle
 ms.custom: mvc
 ms.openlocfilehash: c76701ce74aafcccdbb2f1a2454f9528b52fc096
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79136223"
 ---
-# <a name="deprecated-container-management-with-docker-swarm"></a>ZASTARALÉ Správa kontejnerů pomocí Docker Swarm
+# <a name="deprecated-container-management-with-docker-swarm"></a>(ZASTARALÉ) Správa kontejnerů s Docker Swarm
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -28,7 +28,7 @@ Předpoklady pro praktická cvičení v tomto dokumentu:
 
 [Vytvoření clusteru Swarm v Azure Container Service](container-service-deployment.md)
 
-[Propojení s clusterem Swarm ve službě Azure Container Service](../container-service-connect.md)
+[Propojení s clusterem Swarm v Azure Container Service](../container-service-connect.md)
 
 ## <a name="deploy-a-new-container"></a>Nasazení nového kontejneru
 Chcete-li vytvořit nový kontejner v Docker Swarm, použijte příkaz `docker run` (zajistí, že jste otevřeli tunelové propojení SSH k předlohám podle výše uvedených požadavků). Tento příklad vytvoří kontejner z image `yeasy/simple-web`:
@@ -69,7 +69,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 ## <a name="deploy-containers-by-using-docker-compose"></a>Nasazení kontejnerů pomocí Docker Compose
 Pomocí Docker Compose je možné automatizovat nasazení a konfiguraci několika kontejnerů. Abyste toho mohli využít, ujistěte se, že je vytvořen tunel Secure Shell (SSH) a že je nastavena proměnná DOCKER_HOST (viz předpoklady výše).
 
-Vytvořte v lokálním systému soubor docker-compose.yml. K tomu použijte tuto ukázku:
+Vytvořte v lokálním systému soubor docker-compose.yml. Chcete-li to provést, použijte tuto ukázku:
 
 ```dockerfile
 web:

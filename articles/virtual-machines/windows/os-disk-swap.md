@@ -1,6 +1,6 @@
 ---
-title: Výměna disku s operačním systémem pro virtuální počítač Azure pomocí PowerShellu
-description: Změna disku operačního systému používaného virtuálním počítačem Azure pomocí PowerShellu
+title: Výměna disku operačního systému pro virtuální počítač Azure s Prostředím PowerShell
+description: Změňte disk operačního systému používaný virtuálním počítačem Azure pomocí PowerShellu.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -15,29 +15,29 @@ ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
 ms.openlocfilehash: ec66892804f3c2d1f831168a2955f2498462cbf3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74033026"
 ---
-# <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>Změna disku s operačním systémem používaného virtuálním počítačem Azure pomocí PowerShellu
+# <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>Změna disku operačního systému používaného virtuálním počítačem Azure pomocí PowerShellu
 
-Pokud máte existující virtuální počítač, ale chcete disk zaměnit na záložní disk nebo jiný disk s operačním systémem, můžete k prohození disků s operačním systémem použít Azure PowerShell. Nemusíte odstranit a znovu vytvořit virtuální počítač. Můžete dokonce použít spravovaný disk v jiné skupině prostředků, pokud se ještě nepoužívá.
+Pokud máte existující virtuální počítač, ale chcete vyměnit disk za záložní disk nebo jiný disk operačního systému, můžete použít Azure PowerShell k odhození disků operačního systému. Není nutné odstranit a znovu vytvořit virtuální ho. Spravovaný disk můžete dokonce použít v jiné skupině prostředků, pokud ještě není používán.
 
  
 
-Virtuální počítač musí být stopped\deallocated, a ID prostředku spravovaného disku se dá nahradit ID prostředku jiného spravovaného disku.
+Virtuální modul je nutné zastavit\deallocated, pak ID prostředku spravovaného disku lze nahradit ID prostředku na jiném spravovaném disku.
 
-Ujistěte se, že velikost virtuálního počítače a typ úložiště jsou kompatibilní s diskem, který chcete připojit. Pokud je například disk, který chcete použít, v Premium Storage, musí být virtuální počítač schopný Premium Storage (například velikost řady DS-Series). Oba disky musí mít také stejnou velikost.
+Ujistěte se, že velikost virtuálního počítače a typ úložiště jsou kompatibilní s diskem, který chcete připojit. Například pokud disk, který chcete použít, je v úložišti Premium, pak virtuální modul musí být schopný úložiště Premium (například velikost řady DS). Oba disky musí mít také stejnou velikost.
 
-Získání seznamu disků ve skupině prostředků pomocí [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk)
+Získání seznamu disků ve skupině prostředků pomocí [služby Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk)
 
 ```azurepowershell-interactive
 Get-AzDisk -ResourceGroupName myResourceGroup | Format-Table -Property Name
 ```
  
-Pokud máte název disku, který chcete použít, nastavte ho jako disk s operačním systémem pro virtuální počítač. V tomto příkladu se stop\deallocates virtuální počítač s názvem *myVM* a přiřadí se disk s názvem *newDisk* jako nový disk s operačním systémem. 
+Pokud máte název disku, který chcete použít, nastavte jej jako disk operačního systému pro virtuální počítače. Tento příklad stop\naallocates virtuálního počítače s názvem *myVM* a přiřadí disk s názvem *newDisk* jako nový disk operačního systému. 
  
 ```azurepowershell-interactive 
 # Get the VM 
@@ -62,4 +62,4 @@ Start-AzVM -Name $vm.Name -ResourceGroupName myResourceGroup
 
 **Další kroky**
 
-Pokud chcete vytvořit kopii disku, přečtěte si téma vytvoření [snímku disku](snapshot-copy-managed-disk.md).
+Chcete-li vytvořit kopii disku, přečtěte si [odkaz na snímek disku](snapshot-copy-managed-disk.md).

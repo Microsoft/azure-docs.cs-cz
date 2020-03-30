@@ -1,6 +1,6 @@
 ---
 title: Přidání skriptu do plánu obnovení v Azure Site Recovery
-description: Naučte se, jak přidat skript VMM do plánu obnovení pro zotavení po havárii virtuálních počítačů Hyper-V v cloudech VMM.
+description: Zjistěte, jak přidat skript VMM do plánu obnovení pro zotavení po havárii virtuálních virtuálních měn Hyper-V v cloudech.
 author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
@@ -8,74 +8,74 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 6902876e066649ae4dff4134fb8cc462f30dd0b7
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74084876"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>Přidání skriptu VMM do plánu obnovení
 
-Tento článek popisuje, jak vytvořit skript System Center Virtual Machine Manager (VMM) a přidat ho do plánu obnovení v [Azure Site Recovery](site-recovery-overview.md).
+Tento článek popisuje, jak vytvořit skript Správce virtuálních strojů system center (VMM) a přidat ho do plánu obnovení v [Azure Site Recovery](site-recovery-overview.md).
 
-Všechny komentáře nebo dotazy vystavte na konci tohoto článku nebo na [fóru Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Komentáře nebo dotazy zveřejněte v dolní části tohoto článku nebo na [fóru Služby Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 ## <a name="prerequisites"></a>Požadavky
 
-V plánech obnovení můžete použít skripty prostředí PowerShell. Aby bylo možné získat přístup z plánu obnovení, je nutné vytvořit skript a umístit skript do knihovny VMM. Při psaní skriptu mějte na paměti následující skutečnosti:
+Skripty prostředí PowerShell můžete použít ve svých plánech obnovení. Chcete-li být přístupné z plánu obnovení, musíte vytvořit skript a umístit skript do knihovny VMM. Při psaní skriptu mějte na paměti následující skutečnosti:
 
-* Zajistěte, aby skripty používaly bloky try-catch, aby byly výjimky zpracovávány řádným způsobem.
-    - Pokud ve skriptu dojde k výjimce, skript se zastaví a úloha se zobrazí jako neúspěšná.
-    - Pokud dojde k chybě, zbývající část skriptu se nespustí.
-    - Pokud dojde k chybě při spuštění neplánovaného převzetí služeb při selhání, plán obnovení pokračuje.
-    - Pokud při spuštění plánovaného převzetí služeb při selhání dojde k chybě, plán obnovení se zastaví. Opravte skript, zkontrolujte, že funguje podle očekávání, a pak znovu spusťte plán obnovení.
-        - Příkaz `Write-Host` nefunguje ve skriptu plánu obnovení. Pokud ve skriptu použijete příkaz `Write-Host`, skript se nezdařil. Pokud chcete vytvořit výstup, vytvořte skript proxy, který zase spustí hlavní skript. Chcete-li zajistit, aby byl veškerý výstup v kanálu, použijte příkaz **\>\>** .
-        - Vyprší časový limit skriptu, pokud se nevrátí do 600 sekund.
-        - Pokud je do STDERR zapisována žádná z nich, je skript klasifikován jako neúspěšný. Tyto informace se zobrazí v podrobnostech spuštění skriptu.
+* Ujistěte se, že skripty používají try-catch bloky, tak, aby výjimky jsou zpracovány řádně.
+    - Pokud dojde k výjimce ve skriptu, skript se zastaví a úloha se zobrazí jako neúspěšná.
+    - Pokud dojde k chybě, zbytek skriptu nelze spustit.
+    - Pokud dojde k chybě při spuštění neplánované převzetí služeb při selhání, plán obnovení pokračuje.
+    - Pokud dojde k chybě při spuštění plánované převzetí služeb při selhání, plán obnovení se zastaví. Opravte skript, zkontrolujte, zda je spuštěn podle očekávání, a pak znovu spusťte plán obnovení.
+        - Příkaz `Write-Host` nefunguje ve skriptu plánu obnovení. Pokud použijete `Write-Host` příkaz ve skriptu, skript se nezdaří. Chcete-li vytvořit výstup, vytvořte proxy skript, který zase spustí hlavní skript. Chcete-li zajistit, aby byl veškerý ** \> ** výstup odveden, použijte příkaz.
+        - Pokud se skript nevrátí do 600 sekund, dojde k jeho vypršení.
+        - Pokud je něco zapsáno do STDERR, skript je klasifikován jako neúspěšný. Tyto informace se zobrazí v podrobnostech spuštění skriptu.
 
-* Skripty v plánu obnovení běží v kontextu účtu služby VMM. Zajistěte, aby měl tento účet oprávnění ke čtení pro vzdálenou sdílenou složku, na které je umístěný skript. Otestujte skript, který se má spustit se stejnou úrovní uživatelských práv jako účet služby VMM.
-* Rutiny VMM se dodávají v modulu Windows PowerShellu. Modul se nainstaluje při instalaci konzoly VMM. Pokud chcete modul načíst do skriptu, použijte ve skriptu následující příkaz: 
+* Skripty v plánu obnovení jsou spuštěny v kontextu účtu služby VMM. Ujistěte se, že tento účet má oprávnění ke čtení pro vzdálenou sdílenou složku, na které je skript umístěn. Otestujte spuštění skriptu se stejnou úrovní uživatelských práv jako účet služby VMM.
+* Rutiny VMM jsou dodávány v modulu prostředí Windows PowerShell. Modul je nainstalován při instalaci konzoly VMM. Chcete-li modul načíst do skriptu, použijte ve skriptu následující příkaz: 
 
     `Import-Module -Name virtualmachinemanager`
 
-    Další informace najdete v tématu [Začínáme s prostředím Windows PowerShell a nástrojem VMM](https://technet.microsoft.com/library/hh875013.aspx).
-* Ujistěte se, že máte ve svém nasazení VMM aspoň jeden server knihovny. Ve výchozím nastavení je cesta ke sdílené složce knihovny pro server VMM místně umístěná na serveru VMM. Název složky je MSCVMMLibrary.
+    Další informace naleznete [v tématu Začínáme s prostředím Windows PowerShell a VMM](https://technet.microsoft.com/library/hh875013.aspx).
+* Ujistěte se, že máte alespoň jeden server knihovny v nasazení VMM. Ve výchozím nastavení je cesta ke sdílení knihovny pro server VMM umístěna místně na serveru VMM. Název složky je MSCVMMLibrary.
 
-  Pokud je vaše cesta ke sdílené složce knihovny vzdálená (nebo pokud je místní, ale není sdílená s MSCVMMLibrary), nakonfigurujte sdílenou složku následujícím způsobem pomocí \\libserver2. contoso. com\share\ jako příklad:
+  Pokud je cesta ke sdílení knihovny vzdálená (nebo je místní, ale nesdílená s knihovnou \\MSCVMMLibrary), nakonfigurujte sdílenou složku následujícím způsobem pomocí libserver2.contoso.com\share\jako příklad:
   
-  1. Otevřete Editor registru a pak vyhledejte **HKEY_LOCAL_MACHINE \Software\microsoft\azure site Recovery\Registration**.
+  1. Otevřete Editor registru a přejděte na **HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\Azure Site Recovery\Registration**.
 
-  1. Změňte hodnotu vlastnosti **ScriptLibraryPath** na **\\na\\\libserver2.contoso.com\share** . Zadejte úplný plně kvalifikovaný název domény. Zadejte oprávnění k umístění sdílené složky. Toto je kořenový uzel sdílené složky. Chcete-li kontrolovat kořenový uzel, v nástroji VMM, přejít do kořenového uzlu v knihovně. Cesta, která se otevře, je kořenem cesty. Toto je cesta, kterou je nutné použít v proměnné.
+  1. Změňte hodnotu **aplikace ScriptLibraryPath** na ** \\\libserver2.contoso.com\share\\**. Zadejte úplný plně kvalifikovaný kvit. Poskytněte oprávnění k umístění sdílené složky. Toto je kořenový uzel sdílené složky. Chcete-li zkontrolovat kořenový uzel, přejděte v v knihovně do kořenového uzlu. Cesta, která se otevře, je kořen cesty. Toto je cesta, kterou je nutné použít v proměnné.
 
-  1. Otestujte skript pomocí uživatelského účtu, který má stejnou úroveň uživatelských práv jako účet služby VMM. Pomocí těchto uživatelských práv ověříte, že tyto samostatné testované skripty běží stejným způsobem jako v plánech obnovení. Na serveru VMM nastavte zásady spouštění na vynechat následujícím způsobem:
+  1. Otestujte skript pomocí uživatelského účtu, který má stejnou úroveň uživatelských práv jako účet služby VMM. Pomocí těchto uživatelských práv ověří, že samostatné, testované skripty spustit stejným způsobem, že jsou spuštěny v plánech obnovení. Na serveru VMM nastavte zásady spuštění obejít, a to takto:
 
-     a. Otevřete konzolu **prostředí Windows PowerShell 64** jako správce.
+     a. Otevřete **64bitovou** konzolu prostředí Windows PowerShell jako správce.
      
-     b. Zadejte **Set-ExecutionPolicy bypass**. Další informace najdete v tématu [použití rutiny Set-ExecutionPolicy](https://technet.microsoft.com/library/ee176961.aspx).
+     b. Zadejte **obejít zásadu spuštění sady**. Další informace naleznete [v tématu Použití rutiny Set-ExecutionPolicy](https://technet.microsoft.com/library/ee176961.aspx).
 
      > [!IMPORTANT]
-     > Nastavte **vynechání Set-ExecutionPolicy** pouze v konzole powershellu 64. Pokud ho nastavíte pro konzoli PowerShellu 32, skripty se nespustí.
+     > Nastavte **zásady spuštění sady pouze** v 64bitové konzoli PowerShell. Pokud ji nastavíte pro 32bitovou konzolu PowerShell, skripty se nespustí.
 
 ## <a name="add-the-script-to-the-vmm-library"></a>Přidání skriptu do knihovny VMM
 
-Pokud máte zdrojovou lokalitu VMM, můžete vytvořit skript na serveru VMM. Pak do svého plánu obnovení zahrňte skript.
+Pokud máte zdrojový web VMM, můžete vytvořit skript na serveru VMM. Potom zahrňte skript do plánu obnovení.
 
-1. Ve sdílené složce knihovny vytvořte novou složku. Například \<název serveru VMM > \MSSCVMMLibrary\RPScripts. Umístěte složku na zdrojový a cílový server VMM.
-1. Vytvořte skript. Například název skriptu RPScript. Ověřte, že skript funguje podle očekávání.
-1. Umístěte skript do \<název serveru VMM > složce \MSSCVMMLibrary na zdrojovém a cílovém serveru VMM.
+1. Ve sdílené složce knihovny vytvořte novou složku. Například \<název serveru VMM>\MSSCVMLibrary\RPScripts. Umístěte složku na zdrojové a cílové servery VMM.
+1. Vytvořte skript. Pojmenujte například skript RPScript. Ověřte, zda skript funguje podle očekávání.
+1. Umístěte skript do \<názvu serveru VMM>\MSSCVMLibrary na zdrojové a cílové servery VMM.
 
 ## <a name="add-the-script-to-a-recovery-plan"></a>Přidání skriptu do plánu obnovení
 
-Po přidání virtuálních počítačů nebo skupin replikace do plánu obnovení a vytvoření plánu můžete do skupiny přidat skript.
+Po přidání virtuálních účtů nebo replikačních skupin do plánu obnovení a vytvoření plánu můžete přidat skript do skupiny.
 
 1. Otevřete plán obnovení.
-1. V seznamu **Krok** vyberte položku. Pak vyberte buď **skript** , nebo **Ruční akce**.
-1. Určete, zda se má přidat skript nebo akce před nebo za vybranou položkou. Chcete-li přesunout pozici skriptu nahoru nebo **dolů, vyberte tlačítko** nahoru **a dolů** .
-1. Pokud přidáte skript VMM, vyberte **převzetí služeb při selhání do skriptu VMM**. Do pole **cesta ke skriptu**zadejte relativní cestu ke sdílené složce. Zadejte například **\RPScripts\RPScript.ps1**.
-1. Pokud přidáte Azure Automation Runbook, zadejte účet Automation, ve kterém se sada Runbook nachází. Pak vyberte skript Azure Runbook, který chcete použít.
-1. Chcete-li zajistit, že skript funguje podle očekávání, proveďte test převzetí služeb při selhání plánu obnovení.
+1. V seznamu **Krok** vyberte položku. Potom vyberte **skript** nebo **ruční akci**.
+1. Určete, zda chcete přidat skript nebo akci před nebo za vybranou položku. Chcete-li přesunout pozici skriptu nahoru nebo dolů, vyberte tlačítka **Přesunout nahoru** a **Přesunout dolů.**
+1. Pokud přidáte skript VMM, vyberte **možnost Převzetí služeb při selhání skriptu VMM**. V **části Cesta skriptu**zadejte relativní cestu ke sdílené položce. Zadejte například **\RPScripts\RPScript.PS1**.
+1. Pokud přidáte runbook Azure Automation, zadejte účet Automation, ve kterém je umístěn. Potom vyberte skript runbooku Azure, který chcete použít.
+1. Chcete-li zajistit, aby skript fungoval podle očekávání, proveďte zkušební převzetí služeb při selhání plánu obnovení.
 
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si další informace o [spuštění převzetí služeb při selhání](site-recovery-failover.md).
+* Další informace o [spuštění převzetí služeb při selhání](site-recovery-failover.md).
 

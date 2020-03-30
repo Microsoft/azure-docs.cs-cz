@@ -1,6 +1,6 @@
 ---
-title: Značky služby skupiny zabezpečení sítě (NSG) pro Azure HDInsight
-description: Pomocí značek služby HDInsight můžete povolit příchozí provoz do clusteru z uzlů služby stavu HDInsight a služeb správy, aniž byste museli explicitně přidávat IP adresy do skupin zabezpečení sítě.
+title: Značky služeb skupiny zabezpečení sítě (NSG) pro Azure HDInsight
+description: Pomocí značek služeb HDInsight povolte příchozí provoz do clusteru z uzlů služby HDInsight pro stav a správu, aniž byste museli explicitně přidávat IP adresy do skupin zabezpečení sítě.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
@@ -8,120 +8,120 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/10/2020
 ms.openlocfilehash: a72753d5553e79a8ed28c3afcc7e54af6c2d230c
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79117232"
 ---
-# <a name="network-security-group-nsg-service-tags-for-azure-hdinsight"></a>Značky služby skupiny zabezpečení sítě (NSG) pro Azure HDInsight
+# <a name="network-security-group-nsg-service-tags-for-azure-hdinsight"></a>Značky služeb skupiny zabezpečení sítě (NSG) pro Azure HDInsight
 
-Značky služby HDInsight pro skupiny zabezpečení sítě (skupin zabezpečení sítě) jsou skupiny IP adres pro služby stavu a správy. Tyto skupiny vám pomůžou minimalizovat složitost pro vytváření pravidel zabezpečení. [Značky služeb](../virtual-network/security-overview.md#service-tags) poskytují alternativní metodu pro povolení příchozího provozu z konkrétních IP adres bez nutnosti ZADÁVAT jednotlivé [IP adresy pro správu](hdinsight-management-ip-addresses.md) ve skupinách zabezpečení sítě.
+Značky služeb HDInsight pro skupiny zabezpečení sítě (NSG) jsou skupiny IP adres pro služby stavu a správy. Tyto skupiny pomáhají minimalizovat složitost při vytváření pravidel zabezpečení. [Značky služeb](../virtual-network/security-overview.md#service-tags) poskytují alternativní metodu umožňující povolit příchozí přenosy z určitých adres IP bez zadání jednotlivých [adres IP pro správu](hdinsight-management-ip-addresses.md) ve skupinách zabezpečení sítě.
 
-Tyto značky služby vytváří a spravuje služba HDInsight. Nemůžete vytvořit vlastní značku služby nebo upravit existující značku. Společnost Microsoft spravuje předpony adres, které se shodují se značkou služby, a automaticky aktualizuje značku služby na změny adres.
+Tyto značky služeb jsou vytvářeny a spravovány službou HDInsight. Nelze vytvořit vlastní výrobní značku ani upravit existující značku. Společnost Microsoft spravuje předpony adres, které odpovídají výrobnímu stavu, a automaticky aktualizuje výrobní číslo, jak se adresy mění.
 
-## <a name="getting-started-with-service-tags"></a>Začínáme s visačkami služeb
+## <a name="getting-started-with-service-tags"></a>Začínáme se značkami služeb
 
 Ve skupinách zabezpečení sítě máte dvě možnosti použití značek služeb:
 
-1. Použít jednu značku služby HDInsight – Tato možnost otevře vaši virtuální síť se všemi IP adresami, které služba HDInsight používá pro monitorování clusterů napříč všemi oblastmi. Tato možnost je nejjednodušší způsob, ale nemusí být vhodný, pokud máte omezující požadavky na zabezpečení.
+1. Použijte jednu značku služby HDInsight – tato možnost otevře vaši virtuální síť všem IP adresám, které služba HDInsight používá ke sledování clusterů ve všech oblastech. Tato možnost je nejjednodušší metoda, ale nemusí být vhodné, pokud máte omezující požadavky na zabezpečení.
 
-1. Použít více značek regionální služby – Tato možnost otevře virtuální síť pouze s IP adresami, které HDInsight používá v konkrétní oblasti. Pokud ale používáte více oblastí, budete muset do své virtuální sítě přidat několik značek služby.
+1. Použijte více značek místních služeb – tato možnost otevře virtuální síť pouze ip adresám, které HDInsight používá v dané konkrétní oblasti. Pokud však používáte více oblastí, budete muset do virtuální sítě přidat více značek služeb.
 
-## <a name="use-a-single-global-hdinsight-service-tag"></a>Použít jednu globální značku služby HDInsight
+## <a name="use-a-single-global-hdinsight-service-tag"></a>Použití jediné globální značky hdinsightu
 
-Nejjednodušší způsob, jak začít používat značky služeb v clusteru HDInsight, je přidat globální značku `HDInsight` k pravidlu skupiny zabezpečení sítě.
+Nejjednodušší způsob, jak začít používat značky služeb v clusteru `HDInsight` HDInsight, je přidat globální značku do pravidla skupiny zabezpečení sítě.
 
-1. Z [Azure Portal](https://portal.azure.com/)vyberte skupinu zabezpečení sítě.
+1. Na [portálu Azure](https://portal.azure.com/)vyberte skupinu zabezpečení sítě.
 
-1. V části **Nastavení**vyberte **příchozí pravidla zabezpečení**a pak vyberte **+ Přidat**.
+1. V části **Nastavení**vyberte **Příchozí pravidla zabezpečení**a pak vyberte + **Přidat**.
 
-1. V rozevíracím seznamu **zdroj** vyberte možnost **značka služby**.
+1. V rozevíracím seznamu **Zdroj** vyberte **Číslo servisu**.
 
-1. V rozevíracím seznamu **tag zdrojové služby** vyberte **HDInsight**.
+1. V rozevíracím seznamu **Zdrojová značka služby** vyberte **hdinsight**.
 
-    ![Azure Portal přidat značku služby](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
+    ![Azure Portal přidal značku služby](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
 
-Tato značka obsahuje IP adresy služeb stavu a správy pro všechny oblasti, kde je HDInsight k dispozici, a zajistí, že cluster bude moci komunikovat s nezbytnými službami pro stav a správu bez ohledu na to, kde je vytvořen.
+Tato značka obsahuje IP adresy služeb stavu a správy pro všechny oblasti, kde je k dispozici HDInsight a zajistí, že váš cluster může komunikovat s potřebnými službami stavu a správy bez ohledu na to, kde je vytvořen.
 
-## <a name="use-regional-hdinsight-service-tags"></a>Použití regionálních značek služby HDInsight
+## <a name="use-regional-hdinsight-service-tags"></a>Použití regionálních značek služeb HDInsight
 
-Pokud možnost One nebude fungovat, protože potřebujete více omezující oprávnění, můžete pro vaši oblast použít jenom značky služeb. Příslušné značky služby můžou být jedna, dvě nebo tři značky služby v závislosti na oblasti, ve které se cluster vytváří.
+Pokud možnost jedna nebude fungovat, protože potřebujete více omezující oprávnění, můžete povolit pouze značky služeb platné pro vaši oblast. Příslušné značky služby mohou být jedna, dvě nebo tři značky služby v závislosti na oblasti, kde je vytvořen cluster.
 
-Chcete-li zjistit, které značky služby se mají přidat do vaší oblasti, přečtěte si následující části dokumentu.
+Chcete-li zjistit, které značky služeb chcete přidat pro vaši oblast, přečtěte si následující části dokumentu.
 
-### <a name="use-a-single-regional-service-tag"></a>Použít jednu regionální značku služby
+### <a name="use-a-single-regional-service-tag"></a>Použití jednoho regionálního servisního tagu
 
-Pokud upřednostňujete možnost označení služby dvě a váš cluster se nachází v jedné z oblastí uvedených v této tabulce, stačí do skupiny zabezpečení sítě přidat jenom jednu oblastní značku služby.
+Pokud dáváte přednost možnosti druhé značky služby a váš cluster se nachází v jedné z oblastí uvedených v této tabulce, stačí do skupiny zabezpečení sítě přidat pouze jednu místní značku služby.
 
-| Země | Oblast | Značka služby |
+| Země | Region (Oblast) | Značka služby |
 | ---- | ---- | ---- |
-| Austrálie | Austrálie – východ | HDInsight. AustraliaEast |
-| &nbsp; | Austrálie – jihovýchod | HDInsight. AustraliaSoutheast |
-| &nbsp; | Austrálie – střed | HDInsight. AustraliaCentral |
-| Čína | Čína – východ 2 | HDInsight. ChinaEast2 |
-| &nbsp; | Čína – sever 2 | HDInsight. ChinaNorth2 |
-| Spojené státy | USA – středosever | HDInsight. NorthCentralUS |
-| &nbsp; | USA – západ 2 | HDInsight. WestUS2 |
-| &nbsp; | USA – středozápad | HDInsight. WestCentralUS |
-| Kanada | Východní Kanada | HDInsight. CanadaEast |
-| Brazílie | Brazílie – jih | HDInsight. BrazilSouth |
-| Jižní Korea | Jižní Korea – střed | HDInsight. KoreaCentral |
-| &nbsp; | Jižní Korea – jih | HDInsight. KoreaSouth |
-| Indie | Indie – střed | HDInsight. CentralIndia |
-| &nbsp; | Indie – jih | HDInsight. SouthIndia |
-| Japonsko | Japonsko – západ | HDInsight. JapanWest |
-| Francie | Francie – střed| HDInsight. FranceCentral |
-| Spojené království | Velká Británie – jih | HDInsight. UKSouth |
-| Azure Government | USDoD – střed   | HDInsight. USDoDCentral |
-| &nbsp; | USGov Texas | HDInsight. USGovTexas |
-| &nbsp; | UsDoD východ | HDInsight. USDoDEast |
-| &nbsp; | USGov Arizona | HDInsight. USGovArizona |
+| Austrálie | Austrálie – východ | HDInsight.AustraliaVýchod |
+| &nbsp; | Austrálie – jihovýchod | HDInsight.AustrálieJihovýchod |
+| &nbsp; | Austrálie – střed | HDInsight.AustrálieCentrální |
+| Čína | Čína východ 2 | HDInsight.ChinaEast2 |
+| &nbsp; | Čína Sever 2 | HDInsight.ChinaSever2 |
+| Spojené státy | USA – středosever | HDInsight.NorthCentralUS |
+| &nbsp; | USA – západ 2 | HDInsight.WestUS2 |
+| &nbsp; | USA – středozápad | HDInsight.WestCentralUS |
+| Kanada | Kanada – východ | HDInsight.KanadaVýchod |
+| Brazílie | Brazílie – jih | HDInsight.BrazílieJižní |
+| Jižní Korea | Jižní Korea – střed | HDInsight.KoreaStřední |
+| &nbsp; | Jižní Korea – jih | HDInsight.KoreaJižní |
+| Indie | Indie – střed | HDInsight.CentralIndie |
+| &nbsp; | Indie – jih | HDInsight.Jižní Indie |
+| Japonsko | Japonsko – západ | HDInsight.JapanZápad |
+| Francie | Francie – střed| HDInsight.FranceCentral |
+| UK | Spojené království – jih | HDInsight.UKJižní |
+| Azure Government | USDoD centrální   | HDInsight.USDoDCentral |
+| &nbsp; | USGov Texas | HDInsight.USGovTexas |
+| &nbsp; | UsDoD východ | HDInsight.USDoDEast |
+| &nbsp; | USGov Arizona | HDInsight.USGovArizona |
 
-### <a name="use-multiple-regional-service-tags"></a>Použití více značek regionální služby
+### <a name="use-multiple-regional-service-tags"></a>Použití více značek místních služeb
 
-Pokud upřednostňujete možnost označení služby dvě a oblast, ve které se váš cluster vytvořil, není uvedená výše, je potřeba, abyste povolili více značek regionální služby. Nutnost použít více než jednu je v důsledku rozdílů v uspořádání poskytovatelů prostředků pro různé oblasti.
+Pokud dáváte přednost možnosti značky služby dvě a oblast, kde je vytvořen cluster, nebyla uvedena výše, musíte povolit více značek místních služeb. Potřeba používat více než jeden je způsobenrozdíly v uspořádání poskytovatelů zdrojů pro různé regiony.
 
-Zbývající oblasti jsou rozdělené do skupin podle toho, které značky regionální služby používají.
+Zbývající oblasti jsou rozděleny do skupin podle toho, které značky místních služeb používají.
 
 #### <a name="group-1"></a>Skupina 1
 
-Pokud je váš cluster vytvořen v jedné z oblastí v následující tabulce, kromě uvedené značky regionální služby povolte značky služby `HDInsight.WestUS` a `HDInsight.EastUS`. Oblasti v této části vyžadují tři značky služeb.
+Pokud je váš cluster vytvořen v jedné z oblastí v `HDInsight.WestUS` `HDInsight.EastUS` následující tabulce, povolte značky služeb a kromě uvedené místní značky služby. Oblasti v této části vyžadují tři značky služeb.
 
-Pokud je například cluster vytvořen v oblasti `East US 2`, bude nutné do skupiny zabezpečení sítě přidat následující značky služby:
+Pokud je například cluster vytvořen `East US 2` v oblasti, budete muset do skupiny zabezpečení sítě přidat následující značky služeb:
 
 - `HDInsight.EastUS2`
 - `HDInsight.WestUS`
 - `HDInsight.EastUS`
 
-| Země | Oblast | Značka služby |
+| Země | Region (Oblast) | Značka služby |
 | ---- | ---- | ---- |
-| Spojené státy | USA – východ 2 | HDInsight. EastUS2 |
-| &nbsp; | USA – střed | HDInsight. CentralUS |
-| &nbsp; | NorthCentral nás | HDInsight. NorthCentralUS |
-| &nbsp; | USA – středojih | HDInsight. SouthCentralUS |
-| &nbsp; | USA – východ | HDInsight. EastUS |
-| &nbsp; | USA – západ | HDInsight. WestUS |
-| Japonsko | Japonsko – východ | HDInsight. JapanEast |
-| Evropa | Severní Evropa | HDInsight. NorthEurope |
-| &nbsp; | Západní Evropa| HDInsight. WestEurope |
-| Asie | Východní Asie | HDInsight. EastAsia |
-| &nbsp; | Jihovýchodní Asie | HDInsight. SoutheastAsia |
-| Austrálie | Austrálie – východ | HDInsight. AustraliaEast |
+| Spojené státy | USA – východ 2 | HDInsight.EastUS2 |
+| &nbsp; | USA – střed | HDInsight.CentralUS |
+| &nbsp; | NorthCentral USA | HDInsight. NorthCentralUS |
+| &nbsp; | USA – středojih | HDInsight.SouthCentralUS |
+| &nbsp; | USA – východ | HDInsight.EastUS |
+| &nbsp; | USA – západ | HDInsight.WestUS |
+| Japonsko | Japonsko – východ | HDInsight.JapanEast |
+| Evropa | Severní Evropa | HDInsight.NorthEurope |
+| &nbsp; | Západní Evropa| HDInsight.WestEurope |
+| Asie | Východní Asie | HDInsight.EastAsia |
+| &nbsp; | Jihovýchodní Asie | HDInsight.SoutheastAsie |
+| Austrálie | Austrálie – východ | HDInsight.AustraliaVýchod |
 
 #### <a name="group-2"></a>Skupina 2
 
-Clustery v oblastech **Čína – sever** a **Čína – východ**musí umožňovat dvě značky služby: `HDInsight.ChinaNorth` a `HDInsight.ChinaEast`.
+Klastry v oblastech **Číny – sever** a čína – `HDInsight.ChinaEast` **východ**musí povolit dvě značky služeb: `HDInsight.ChinaNorth` a .
 
 #### <a name="group-3"></a>Skupina 3
 
-Clustery v oblastech **US gov – Iowa** a **US gov – Virginie**musí umožňovat dvě značky služby: `HDInsight.USGovIowa` a `HDInsight.USGovVirginia`.
+Clustery v oblastech **US Gov Iowa** a US Gov **Virginia** `HDInsight.USGovIowa` , `HDInsight.USGovVirginia`musí povolit dvě značky služeb: a .
 
 #### <a name="group-4"></a>Skupina 4
 
-Clustery v oblastech **Německa (střední** a **Německo – severovýchod**) musí umožňovat dvě značky služby: `HDInsight.GermanyCentral` a `HDInsight.GermanyNorthEast`.
+Clustery v oblastech **Německo – střed** a **–severovýchod některou**musí povolit dvě značky služeb: `HDInsight.GermanyCentral` a `HDInsight.GermanyNorthEast`.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Skupiny zabezpečení sítě – značky služeb](../virtual-network/security-overview.md#security-rules)
+- [Skupiny zabezpečení sítě - značky služeb](../virtual-network/security-overview.md#security-rules)
 - [Vytváření virtuálních sítí pro clustery Azure HDInsight](hdinsight-create-virtual-network.md)

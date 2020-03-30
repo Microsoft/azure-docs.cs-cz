@@ -1,6 +1,6 @@
 ---
-title: Streamování dat pomocí Stream Analytics Integration (Preview)
-description: Použijte Azure Stream Analytics ke streamování dat do Azure SQL Database.
+title: Streamování dat pomocí integrace Stream Analytics (preview)
+description: Azure Stream Analytics slouží k streamování dat do databáze Azure SQL.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,114 +12,114 @@ ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
 ms.openlocfilehash: d233d3c98cc495e4b9e84142781f5eb9faa7eec8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73820845"
 ---
-# <a name="stream-data-by-using-azure-sql-database-stream-analytics-integration-preview"></a>Streamování dat pomocí Azure SQL Database Stream Analytics Integration (Preview)
+# <a name="stream-data-by-using-azure-sql-database-stream-analytics-integration-preview"></a>Streamování dat pomocí integrace Azure SQL Database Stream Analytics (preview)
 
-Uživatelé teď můžou ingestovat, zpracovávat, zobrazovat a analyzovat streamovaná data v reálném čase do tabulky přímo z databáze SQL v Azure Portal pomocí [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md). Toto prostředí umožňuje širokou škálu scénářů, jako jsou připojené automobily, vzdálené monitorování, rozpoznávání podvodů a spousta dalších. V Azure Portal můžete vybrat zdroj událostí (centrum událostí/IoT Hub), zobrazit příchozí události v reálném čase a vybrat tabulku pro ukládání událostí. K transformaci příchozích událostí a jejich uložení do vybrané tabulky můžete také na portálu napsat dotazy dotazovacího jazyka Stream Analytics. Tento nový vstupní bod je kromě funkcí vytváření a konfigurace, které už existují v Stream Analytics. Toto prostředí se spouští z kontextu vaší databáze a umožňuje vám rychle nastavit Stream Analytics úlohu a plynule procházet mezi Azure SQL Database a Stream Analyticsmi prostředími.
+Uživatelé teď můžou ingestovat, zpracovávat, zobrazovat a analyzovat streamovaná data v reálném čase do tabulky přímo z databáze SQL na webu Azure Portal pomocí [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md). Tato zkušenost umožňuje širokou škálu scénářů, jako je připojené auto, vzdálené monitorování, odhalování podvodů a mnoho dalších. Na webu Azure Portal můžete vybrat zdroj událostí (Event Hub/IoT Hub), zobrazit příchozí události v reálném čase a vybrat tabulku pro ukládání událostí. Můžete také napsat dotazy Stream Analytics dotazovací ho jazyka na portálu transformovat příchozí události a uložit je do vybrané tabulky. Tento nový vstupní bod je navíc k vytváření a konfiguraci prostředí, které již existují v Stream Analytics. Toto prostředí začíná z kontextu vaší databáze, což vám umožní rychle nastavit úlohu Stream Analytics a bezproblémově procházet mezi azure SQL database a stream analytics prostředí.
 
 ![Tok Stream Analytics](media/sql-database-stream-analytics/stream-analytics-flow.png)
 
 ## <a name="key-benefits"></a>Klíčové výhody
 
-- Minimální přepínání kontextu: můžete začít z SQL Database na portálu a začít ingestovat data v reálném čase do tabulky, aniž byste museli přepnout na jinou službu. 
-- Omezený počet kroků: kontext databáze a tabulky slouží k předkonfiguraci Stream Analytics úlohy.
-- Další snadné použití s daty verze Preview: náhled příchozích dat ze zdroje událostí (centrum událostí/IoT Hub) v kontextu vybrané tabulky 
+- Minimální přepínání kontextu: Můžete začít z databáze SQL na portálu a začít ingestovat data v reálném čase do tabulky bez přepnutí na jinou službu. 
+- Snížený počet kroků: Kontext databáze a tabulky se používá k předběžné konfiguraci úlohy Stream Analytics.
+- Další snadné použití s daty náhledu: Zobrazení náhledu příchozích dat ze zdroje událostí (Event Hub/IoT Hub) v kontextu vybrané tabulky 
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení kroků v tomto článku budete potřebovat následující zdroje:
+K provedení kroků v tomto článku budete potřebovat následující:
 
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/). 
-- Databáze SQL. Podrobnosti najdete v tématu [Vytvoření izolované databáze v Azure SQL Database](sql-database-single-database-get-started.md).
-- Pravidlo brány firewall, které umožňuje počítači připojit se k serveru SQL Azure. Podrobnosti najdete v tématu [Vytvoření pravidla brány firewall na úrovni serveru](sql-database-server-level-firewall-rule.md).
+- Databáze SQL. Podrobnosti najdete [v tématu Vytvoření jedné databáze v Azure SQL Database](sql-database-single-database-get-started.md).
+- Pravidlo brány firewall, které umožňuje počítači připojit se k serveru Azure SQL. Podrobnosti naleznete [v tématu Vytvoření pravidla brány firewall na úrovni serveru](sql-database-server-level-firewall-rule.md).
 
 
-## <a name="configure-stream-analytics-integration"></a>Konfigurace integrace Stream Analytics
+## <a name="configure-stream-analytics-integration"></a>Konfigurace integrace analýzy datového proudu
 
 1. Přihlaste se k portálu Azure. 
-2. Přejděte do databáze SQL, kde chcete ingestovat streamovaná data. Vyberte **Stream Analytics (Preview)** . 
+2. Přejděte do databáze SQL, kde chcete ingestovat streamovaná data. Vyberte **Analýza datového proudu (náhled).** 
 
     ![Stream Analytics](media/sql-database-stream-analytics/stream-analytics.png)
 
-3. Chcete-li začít ingestovat vaše streamovaná data do této databáze SQL, vyberte **vytvořit** a pojmenujte úlohu streamování a potom vyberte **Další: vstup**. 
+3. Pokud chcete začít ingestovat streamovaná data do této databáze SQL, vyberte **Vytvořit** a pojmenujte úlohu streamování a pak vyberte **Další: Vstup**. 
 
     ![vytvořit úlohu Stream Analytics](media/sql-database-stream-analytics/create-job.png)
 
-4. Zadejte podrobnosti o zdroji událostí a potom vyberte **Další: výstup**.
+4. Zadejte podrobnosti o zdroji událostí a pak vyberte **Další: Výstup**.
 
-   - **Typ vstupu**: centrum událostí/IoT Hub
-   - **Vstupní alias**: zadejte název pro identifikaci zdroje událostí. 
-   - **Předplatné**: stejné jako SQL Database předplatné 
-   - **Obor názvů centra událostí**: název oboru názvů 
-   - **Název centra událostí**: název centra událostí ve vybraném oboru názvů 
-   - **Název zásad centra událostí** (výchozí vytvoření nového): zadejte název zásady. 
-   - **Skupina uživatelů centra událostí** (výchozí vytvoření nového): zadejte název skupiny příjemců.  
-     - Doporučujeme vytvořit skupinu příjemců a zásadu pro každou novou Azure Stream Analytics úlohu, kterou vytvoříte tady. Skupiny uživatelů umožňují jenom pět současných čtecích zařízení, takže pokud pro každou úlohu zadáte vyhrazenou skupinu uživatelů, vyhnete se případným chybám, které by mohly vzniknout nad rámec tohoto omezení. Vyhrazená zásada vám umožní otočit klíč nebo odvolat oprávnění, aniž by to mělo vliv na jiné prostředky.
+   - **Typ vstupu**: Centrum událostí/Centrum IoT Hub
+   - **Vstupní alias**: Zadejte název pro identifikaci zdroje událostí. 
+   - **Předplatné**: Stejné jako předplatné databáze SQL 
+   - **Obor názvů centra událostí**: Název oboru názvů 
+   - **Název centra událostí**: Název centra událostí ve vybraném oboru názvů 
+   - **Název zásad centra událostí** (Výchozí pro vytvoření nového): Zadejte název zásady 
+   - **Skupina spotřebitelů Centra událostí** (Výchozí pro vytvoření nového): Přiřazujte název skupiny příjemce  
+     - Doporučujeme vytvořit skupinu spotřebitelů a zásady pro každou novou úlohu Azure Stream Analytics, kterou vytvoříte zde. Skupiny spotřebitelů povolují pouze pět souběžných čtecích programů, takže poskytnutí vyhrazené skupiny spotřebitelů pro každou úlohu zabrání chybám, které by mohly vzniknout při překročení tohoto limitu. Vyhrazená zásada umožňuje otočit klíč nebo odvolat oprávnění bez ovlivnění jiných prostředků.
 
     ![vytvořit úlohu Stream Analytics](media/sql-database-stream-analytics/create-job-output.png)
 
-5. Vyberte, do které tabulky chcete ingestovat streamovaná data. Po dokončení vyberte **vytvořit**.
-   - **Uživatelské jméno**, **heslo**: Zadejte svoje přihlašovací údaje pro ověřování SQL serveru. Vyberte **Ověřit**.
-   - **Tabulka**: vyberte **vytvořit novou** nebo **použít existující**. V tomto toku Pojďme vybrat **vytvořit**. Tím se vytvoří nová tabulka při spuštění úlohy Stream Analytics.
+5. Vyberte tabulku, do které chcete singestovat streamovaná data. Po dokončení vyberte **Vytvořit**.
+   - **Uživatelské jméno**, **Heslo**: Zadejte pověření pro ověřování serveru SQL. Vyberte **Ověřit**.
+   - **Tabulka**: Vyberte **Vytvořit nový** nebo **Použít existující**. V tomto toku vyberte **vytvořit**. Tím se vytvoří nová tabulka při spuštění úlohy Analytics datového proudu.
 
     ![vytvořit úlohu Stream Analytics](media/sql-database-stream-analytics/create.png)
 
-6. Otevře se stránka s dotazem s následujícími podrobnostmi:
+6. Otevře se stránka dotazu s následujícími podrobnostmi:
 
-   - Váš **vstup** (zdroj vstupních událostí), ze kterého budete ingestovat data  
-   - **Výstup** (výstupní tabulka), ve kterém se budou ukládat transformovaná data 
+   - **Váš vstup** (zdroj vstupních událostí), ze kterého budete ingestovat data  
+   - **Výstup** (výstupní tabulka), ve kterém budou ukládána transformovaná data 
    - Ukázkový [dotaz SAQL](../stream-analytics/stream-analytics-stream-analytics-query-patterns.md) s příkazem SELECT. 
-   - **Input Preview**: zobrazuje snímek nejnovějších příchozích dat ze zdroje vstupních událostí.  
-     - Typ serializace v datech se automaticky detekuje (JSON/CSV). Můžete ji ručně změnit i na JSON/CSV/AVRO. 
-     - Můžete zobrazit náhled příchozích dat ve formátu tabulky nebo v nezpracovaném formátu. 
-     - Pokud vaše data nejsou aktuální, vyberte **aktualizovat** , aby se zobrazily nejnovější události. 
-     - Vyberte **možnost vyberte časový rozsah** pro otestování dotazu proti určitému časovému rozsahu příchozích událostí. 
-     - Vyberte **Odeslat ukázkový vstup** a otestujte dotaz nahrajte tak, že nahrajete ukázkový soubor JSON/CSV. Další informace o testování dotazu SAQL najdete v tématu [test úlohy Azure Stream Analytics s ukázkovými daty](../stream-analytics/stream-analytics-test-query.md). 
+   - **Náhled vstupu**: Zobrazuje snímek nejnovějších příchozích dat ze zdroje vstupních událostí.  
+     - Typ serializace v datech je automaticky rozpoznán (JSON/CSV). Můžete ručně změnit také JSON / CSV / AVRO. 
+     - Můžete zobrazit náhled příchozích dat ve formátu Tabulka nebo Nezpracovaný. 
+     - Pokud zobrazená data nejsou aktuální, kliknutím na **Aktualizovat** zobrazte nejnovější události. 
+     - Výběrem **časového rozsahu** otestujete dotaz podle určitého časového rozsahu příchozích událostí. 
+     - Vyberte **Nahrát ukázkový vstup** k otestování dotazu nahráním ukázkového souboru JSON/CSV. Další informace o testování dotazu SAQL najdete v [tématu Testování úlohy Azure Stream Analytics s ukázkovými daty](../stream-analytics/stream-analytics-test-query.md). 
 
-    ![Testovat dotaz](media/sql-database-stream-analytics/test-query.png)
+    ![testovací dotaz](media/sql-database-stream-analytics/test-query.png)
 
 
-   - **Výsledky testu**: vyberte **dotaz testu** a uvidíte výsledky dotazu streamování. 
+   - **Výsledky testu**: Vyberte **testovací dotaz** a uvidíte výsledky streamovacího dotazu. 
 
     ![výsledky testu](media/sql-database-stream-analytics/test-results.png)
 
-   - **Schéma výsledků testů**: zobrazuje schéma výsledků dotazu streamování po otestování. Ujistěte se, že schéma výsledků testů odpovídá vašemu výstupnímu schématu. 
+   - **Schéma výsledků testů**: Zobrazuje schéma výsledků dotazu streamování po testování. Ujistěte se, že schéma výsledků testu odpovídá výstupnímu schématu. 
 
     ![schéma výsledků testů](media/sql-database-stream-analytics/test-results-schema.png)
 
 
-   - **Výstupní schéma**: obsahuje schéma tabulky, kterou jste vybrali v kroku 5 (nové nebo existující).
-     - Vytvořit novou: Pokud jste v kroku 5 vybrali tuto možnost, schéma se zatím nezobrazí, dokud nespustíte úlohu streamování. Při vytváření nové tabulky vyberte příslušný index tabulky. Další informace o indexování tabulek najdete v tématu věnovaném [clusterovaným a neclusterovaným indexům](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described/).
-    - Použít existující: Pokud jste v kroku 5 vybrali tuto možnost, zobrazí se schéma vybrané tabulky. 
+   - **Schéma výstupu**: Obsahuje schéma tabulky, kterou jste vybrali v kroku 5 (nové nebo existující).
+     - Vytvořit nový: Pokud jste tuto možnost vybrali v kroku 5, schéma se ještě nezobrazí, dokud nespustíte úlohu streamování. Při vytváření nové tabulky vyberte příslušný index tabulky. Další informace o indexování tabulek naleznete v tématu [Clustered and Nonclustered Indexes Described](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described/).
+    - Použít existující: Pokud jste tuto možnost vybrali v kroku 5, zobrazí se schéma vybrané tabulky. 
  
-7. Po dokončení vytváření & testování dotazu vyberte **Uložit dotaz**. Vyberte **spustit Stream Analytics úlohu** pro zahájení ingestování transformovaných dat do tabulky SQL. Po dokončení následujících polí **Spusťte** úlohu. 
-   - **Čas spuštění výstupu**: definuje čas prvního výstupu úlohy.  
-     - Nyní: úloha se spustí nyní a zpracuje nová příchozí data.
-     - Vlastní: úloha se spustí teď, ale zpracuje data z určitého bodu v čase (může to být v minulosti nebo v budoucnosti). Další informace najdete v tématu [spuštění Azure Stream Analytics úlohy](../stream-analytics/start-job.md).
-   - **Jednotky streamování**: Azure Stream Analytics se účtuje podle počtu jednotek streamování potřebných ke zpracování dat do služby. Další informace najdete v tématu [Azure Stream Analytics ceny](https://azure.microsoft.com/pricing/details/stream-analytics/). 
+7. Po dokončení vytváření & testování dotazu vyberte **Uložit dotaz**. Vyberte **Spustit úlohu Analýzy datového proudu,** chcete-li začít ingestovat transformovaná data do tabulky SQL. Po dokončení následujících polí **spusťte** úlohu. 
+   - **Čas zahájení výstupu**: Definuje čas prvního výstupu úlohy.  
+     - Nyní: Úloha bude nyní zahájena a bude zpracovávat nová příchozí data.
+     - Vlastní: Úloha bude zahájena nyní, ale bude zpracovávat data z určitého bodu v čase (které mohou být v minulosti nebo budoucnosti). Další informace najdete v [tématu Jak spustit úlohu Azure Stream Analytics](../stream-analytics/start-job.md).
+   - **Jednotky streamování**: Azure Stream Analytics se oceňuje podle počtu jednotek streamování potřebných ke zpracování dat do služby. Další informace najdete v tématu [Azure Stream Analytics ceny](https://azure.microsoft.com/pricing/details/stream-analytics/). 
    - **Zpracování chyb výstupních dat**:  
-     - Opakování: když dojde k chybě, Azure Stream Analytics pokusy o zápis události po neomezenou dobu, dokud zápis nebude úspěšný. Pro opakované pokusy není k dispozici žádný časový limit. Nakonec se všechny následné události zablokují ze zpracování událostí, která se opakuje. Tato možnost je výchozí zásadou zpracování chyb výstupu. 
-     - Drop: Azure Stream Analytics vynechá událost výstupu, která má za následek chybu převodu dat. Zahozené události není možné obnovit pro pozdější opětovné zpracování. Všechny přechodné chyby (například chyby sítě) se zopakují bez ohledu na konfiguraci zásad zpracování chyb výstupu. 
-   - **Nastavení výstupu SQL Database**: možnost dědění schématu dělení v předchozím kroku dotazu, která umožňuje úplnou paralelní topologii s několika zapisovači v tabulce. Další informace najdete v tématu [Azure Stream Analytics výstup do Azure SQL Database](../stream-analytics/stream-analytics-sql-output-perf.md).
-   - **Maximální počet dávek**: doporučený horní limit počtu záznamů odeslaných při každé hromadné vložené transakci.  
-    Další informace o zpracování výstupních chyb najdete [v tématu výstupní zásady chyb v Azure Stream Analytics](../stream-analytics/stream-analytics-output-error-policy.md).  
+     - Opakování: Pokud dojde k chybě, Azure Stream Analytics opakuje zápis události neomezeně dlouho, dokud zápis proběhne úspěšně. Neexistuje žádný časový časový osývač pro opakování. Nakonec všechny následné události jsou blokovány zpracování událostí, která se pokouší znovu. Tato možnost je výchozí zásady zpracování výstupních chyb. 
+     - Drop: Azure Stream Analytics klesne všechny výstupní události, která má za následek chybu převodu dat. Zahozené události není možné obnovit pro pozdější opětovné zpracování. Všechny přechodné chyby (například chyby sítě) jsou opakovány bez ohledu na konfiguraci zásad zpracování výstupních chyb. 
+   - **Nastavení výstupu databáze SQL:** Možnost pro dědění schéma dělení předchozí krok dotazu, povolit plně paralelní topologie s více zapisovače do tabulky. Další informace najdete v tématu [Výstup Azure Stream Analytics do Azure SQL Database](../stream-analytics/stream-analytics-sql-output-perf.md).
+   - **Maximální počet dávek**: Doporučený horní limit počtu záznamů odeslaných s každou transakcí hromadného vložení.  
+    Další informace o zpracování chyb výstupu najdete [v tématu Zásady chyb výstupu ve službě Azure Stream Analytics](../stream-analytics/stream-analytics-output-error-policy.md).  
 
-    ![Spustit úlohu](media/sql-database-stream-analytics/start-job.png)
+    ![zahájit úlohu](media/sql-database-stream-analytics/start-job.png)
 
-8. Po spuštění úlohy se v seznamu zobrazí spuštěná úloha a můžete provést následující akce: 
-   - **Spustit/zastavit úlohu**: Pokud je úloha spuštěná, můžete úlohu zastavit. Pokud se úloha zastaví, můžete úlohu spustit. 
-   - **Upravit úlohu**: dotaz můžete upravit. Pokud chcete v úloze udělat další změny, přidejte další vstupy a výstupy a pak otevřete úlohu v Stream Analytics. Možnost upravit je při běhu úlohy zakázána. 
-   - **Náhled výstupní tabulky**: náhled tabulky můžete zobrazit v editoru dotazů SQL. 
-   - **Otevřít v Stream Analytics**: Otevřete úlohu ve službě Stream Analytics, abyste zobrazili monitorování, podrobnosti o ladění úlohy. 
+8. Po spuštění úlohy se v seznamu zobrazí úloha Spuštěno a můžete provést následující akce: 
+   - **Spuštění/zastavení úlohy**: Pokud je úloha spuštěna, můžete ji zastavit. Pokud je úloha zastavena, můžete ji spustit. 
+   - **Upravit úlohu**: Dotaz můžete upravit. Pokud chcete provést další změny úlohy ex, přidejte další vstupy /výstupy a otevřete úlohu v Stream Analytics. Možnost úpravy je zakázána, pokud je úloha spuštěna. 
+   - **Náhled výstupní tabulky**: Tabulku můžete zobrazit v editoru dotazů SQL. 
+   - **Otevřít v Stream Analytics**: Otevřete úlohu ve službě Stream Analytics a zobrazte monitorování a laděte podrobnosti o úloze. 
 
 
-    ![úlohy Stream Analytics](media/sql-database-stream-analytics/jobs.png)
+    ![úlohy analýzy datového proudu](media/sql-database-stream-analytics/jobs.png)
 
 
 
@@ -128,5 +128,5 @@ K dokončení kroků v tomto článku budete potřebovat následující zdroje:
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Dokumentace k Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/)
-- [Azure Stream Analytics způsoby řešení](../stream-analytics/stream-analytics-solution-patterns.md)
+- [Dokumentace ke službě Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/)
+- [Vzory řešení služby Azure Stream Analytics](../stream-analytics/stream-analytics-solution-patterns.md)

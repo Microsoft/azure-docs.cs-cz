@@ -1,15 +1,15 @@
 ---
-title: Rychlý Start – zálohování virtuálního počítače pomocí Azure CLI
-description: V tomto rychlém startu se dozvíte, jak vytvořit trezor Recovery Services, povolit ochranu na virtuálním počítači a vytvořit počáteční bod obnovení pomocí Azure CLI.
+title: Úvodní příručka – zálohování virtuálního počítače pomocí azure CLI
+description: V tomto rychlém startu se dozvíte, jak vytvořit trezor služby Recovery Services, povolit ochranu na virtuálním počítači a vytvořit počáteční bod obnovení pomocí azure cli.
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.custom: mvc
 ms.openlocfilehash: a359e47a70f6a1a9e0957b4e1c3965c8db12339a
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74171993"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>Zálohování virtuálního počítače v Azure pomocí rozhraní příkazového řádku
@@ -20,7 +20,7 @@ V tomto rychlém startu se povolí zálohování na existujícím virtuálním p
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud chcete rozhraní příkazového řádku nainstalovat a používat místně, musíte použít Azure CLI verze 2.0.18 nebo novější. Verzi rozhraní příkazového řádku zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+Pokud chcete rozhraní příkazového řádku nainstalovat a používat místně, musíte použít Azure CLI verze 2.0.18 nebo novější. Verzi rozhraní příkazového řádku zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru služby Recovery Services
 
@@ -38,7 +38,7 @@ az backup vault create --resource-group myResourceGroup \
     --location eastus
 ```
 
-Ve výchozím nastavení je trezor služby Recovery Services nastavený pro geograficky redundantní úložiště. Geograficky redundantní úložiště zajišťuje replikaci vašich zálohovaných dat do sekundární oblasti Azure, která je od primární oblasti vzdálená stovky kilometrů. Pokud je potřeba upravit nastavení redundance úložiště, použijte příkaz [AZ Backup trezor Backup-Properties set](https://docs.microsoft.com/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set) rutina.
+Ve výchozím nastavení je trezor služby Recovery Services nastavený pro geograficky redundantní úložiště. Geograficky redundantní úložiště zajišťuje replikaci vašich zálohovaných dat do sekundární oblasti Azure, která je od primární oblasti vzdálená stovky kilometrů. Pokud je potřeba změnit nastavení redundance úložiště, použijte rutinu [nastavení vlastností zálohy az.](https://docs.microsoft.com/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set)
 
 ```azurecli
 az backup vault backup-properties set \
@@ -71,7 +71,7 @@ az backup protection enable-for-vm \
 ```
 
 > [!IMPORTANT]
-> Při použití rozhraní příkazového řádku pro povolení zálohování několika virtuálních počítačů najednou zajistěte, aby k jedné zásadě nedošlo k více než 100 virtuálním počítačům. Toto je [doporučený postup](https://docs.microsoft.com/azure/backup/backup-azure-vm-backup-faq#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-a-same-backup-policy). V současné době klient PS explicitně neblokuje, pokud je k dispozici více než 100 virtuálních počítačů, ale tato kontrolní služba bude plánována do budoucna.
+> Při použití rozhraní se kvitování spojení s jedním rozhraním a k obstavení pro více virtuálních počítačích najednou zajistěte, aby k jedné zásadě nebylo přidruženo více než 100 virtuálních počítačů. Toto je [doporučený osvědčený postup](https://docs.microsoft.com/azure/backup/backup-azure-vm-backup-faq#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-a-same-backup-policy). V současné době klient PS explicitně neblokuje, pokud existuje více než 100 virtuálních připojení, ale kontrola je plánována na přidání v budoucnu.
 
 ## <a name="start-a-backup-job"></a>Spuštění úlohy zálohování
 

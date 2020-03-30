@@ -1,7 +1,7 @@
 ---
-title: Referenční dokumentace syntaxe výrazu OData
+title: Odkaz syntaxe výrazu OData
 titleSuffix: Azure Cognitive Search
-description: Formální gramatika a specifikace syntaxe pro výrazy OData v Azure Kognitivní hledání dotazy.
+description: Formální gramatika a syntaxe specifikace pro výrazy OData v azure kognitivní vyhledávání dotazů.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -20,28 +20,28 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: f3422fd10e062ae87bc165491e0d01ac2b4943d2
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72793231"
 ---
-# <a name="odata-expression-syntax-reference-for-azure-cognitive-search"></a>Referenční dokumentace syntaxe výrazu OData pro Azure Kognitivní hledání
+# <a name="odata-expression-syntax-reference-for-azure-cognitive-search"></a>Odkaz na syntaxi výrazu OData pro Azure Cognitive Search
 
-Azure Kognitivní hledání jako parametry v rozhraní API používá [výrazy OData](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) . K parametrům `$orderby` a `$filter` se nejčastěji používají výrazy OData. Tyto výrazy mohou být složité, obsahující více klauzulí, funkcí a operátorů. Nicméně i jednoduché výrazy OData, jako jsou cesty k vlastnostem, se používají v mnoha částech REST API Azure Kognitivní hledání. Například výrazy cest se používají k odkazování na podpole komplexních polí všude v rozhraní API, například při výpisu dílčích polí v modulu pro [návrhy](index-add-suggesters.md), [funkci hodnocení](index-add-scoring-profiles.md), parametru `$select` nebo dokonce [hledání v dotazech Lucene. ](query-lucene-syntax.md).
+Azure Cognitive Search používá [výrazy OData](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) jako parametry v celém rozhraní API. Nejčastěji se pro parametry `$orderby` a `$filter` používají výrazy OData. Tyto výrazy mohou být složité, obsahující více klauzulí, funkcí a operátorů. Však i jednoduché OData výrazy, jako jsou cesty vlastností se používají v mnoha částech rozhraní API Azure Cognitive Search REST. Výrazy cesty se například používají k odkazování na dílčí pole složitých polí všude v rozhraní API, například při výpisu dílčích polí v [návrhu](index-add-suggesters.md), [funkci hodnocení](index-add-scoring-profiles.md), `$select` parametr nebo dokonce [fielded vyhledávání v Lucene dotazech](query-lucene-syntax.md).
 
-Tento článek popisuje všechny tyto formy výrazů OData pomocí formální gramatiky. K dispozici je také [interaktivní diagram](#syntax-diagram) , který usnadňuje vizuální zkoumání gramatiky.
+Tento článek popisuje všechny tyto formy výrazů OData pomocí formální gramatiky. K dispozici je také [interaktivní diagram,](#syntax-diagram) který vám pomůže vizuálně prozkoumat gramatiku.
 
 ## <a name="formal-grammar"></a>Formální gramatika
 
-Podmnožinu jazyka OData podporovaného službou Azure Kognitivní hledání můžete popsat pomocí gramatiky na EBNF ([Rozšířená Backus – Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)). Pravidla jsou uvedena v seznamu "shora dolů", počínaje nejsložitějšími výrazy a jejich rozdělení do více primitivních výrazů. V horní části jsou gramatická pravidla, která odpovídají konkrétním parametrům Azure Kognitivní hledání REST API:
+Můžeme popsat podmnožinu jazyka OData podporované azure kognitivní vyhledávání pomocí EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) gramatiky. Pravidla jsou uvedena "shora dolů", počínaje nejsložitějšími výrazy a jejich rozdělením na více primitivní výrazy. V horní části jsou gramatická pravidla, která odpovídají konkrétním parametrům rozhraní REST API Azure Cognitive Search:
 
-- [`$filter`](search-query-odata-filter.md)definuje pravidlo `filter_expression`.
-- [`$orderby`](search-query-odata-orderby.md)definuje pravidlo `order_by_expression`.
-- [`$select`](search-query-odata-select.md)definuje pravidlo `select_expression`.
-- Cesty polí definované pravidlem `field_path`. Cesty polí se používají v celém rozhraní API. Můžou odkazovat buď na pole nejvyšší úrovně indexu, nebo na dílčí pole s jedním nebo více [komplexními poli](search-howto-complex-data-types.md) .
+- [`$filter`](search-query-odata-filter.md), definované `filter_expression` pravidlem.
+- [`$orderby`](search-query-odata-orderby.md), definované `order_by_expression` pravidlem.
+- [`$select`](search-query-odata-select.md), definované `select_expression` pravidlem.
+- Cesty polí definované pravidlem. `field_path` Cesty polí se používají v celém rozhraní API. Mohou odkazovat buď na pole nejvyšší úrovně indexu, nebo na dílčí pole s jedním nebo více složitými předky [polí.](search-howto-complex-data-types.md)
 
-Poté, co je EBNF [diagram syntaxe](https://en.wikipedia.org/wiki/Syntax_diagram) , který umožňuje interaktivně prozkoumat gramatickou a vztah mezi pravidly.
+Po EBNF je browsable [syntaktický diagram,](https://en.wikipedia.org/wiki/Syntax_diagram) který vám umožní interaktivně prozkoumat gramatiku a vztahy mezi jeho pravidly.
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -207,16 +207,16 @@ query_type ::= "'full'" | "'simple'"
 search_mode ::= "'any'" | "'all'"
 ```
 
-## <a name="syntax-diagram"></a>Diagram syntaxe
+## <a name="syntax-diagram"></a>Syntaktický diagram
 
-Pokud chcete vizuálně prozkoumat gramatickou gramatiku, kterou podporuje Azure Kognitivní hledání, vyzkoušejte interaktivní diagram syntaxe:
+Chcete-li vizuálně prozkoumat gramatiku jazyka OData podporovanou službou Azure Cognitive Search, vyzkoušejte interaktivní syntaktický diagram:
 
 > [!div class="nextstepaction"]
-> [Diagram syntaxe OData pro Azure Kognitivní hledání](https://azuresearch.github.io/odata-syntax-diagram/)
+> [Syntaxový diagram OData pro Azure Cognitive Search](https://azuresearch.github.io/odata-syntax-diagram/)
 
-## <a name="see-also"></a>Další informace najdete v tématech  
+## <a name="see-also"></a>Viz také  
 
-- [Filtry v Azure Kognitivní hledání](search-filters.md)
-- [Hledání dokumentů &#40;Azure kognitivní hledání REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Filtry v Azure Cognitive Search](search-filters.md)
+- [Hledání dokumentů &#40;azure kognitivní vyhledávání rozhraní API rozhraní&#41;API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 - [Syntaxe dotazů Lucene](query-lucene-syntax.md)
-- [Jednoduchá syntaxe dotazů v Azure Kognitivní hledání](query-simple-syntax.md)
+- [Jednoduchá syntaxe dotazu v Azure Cognitive Search](query-simple-syntax.md)

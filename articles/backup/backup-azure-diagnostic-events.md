@@ -1,91 +1,91 @@
 ---
-title: Použití nastavení diagnostiky pro trezory Recovery Services
-description: Článek popisující, jak používat staré a nové diagnostické události pro Azure Backup
+title: Použití nastavení diagnostiky pro trezory služby Recovery Services
+description: Článek popisující použití starých a nových diagnostických událostí pro azure backup
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.openlocfilehash: e3919d120e5f741af6cd30dd27e5a1dfa2b06cf2
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79136935"
 ---
 # <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>Použití nastavení diagnostiky pro trezory služby Recovery Services
 
-Azure Backup odesílá diagnostické události, které je možné shromažďovat a používat pro účely analýzy, upozorňování a vytváření sestav. 
+Azure Backup odesílá diagnostické události, které lze shromažďovat a používat pro účely analýzy, upozorňování a vytváření sestav. 
 
-Nastavení diagnostiky pro Recovery Services trezor můžete nakonfigurovat přes Azure Portal tak, že přejdete do trezoru a kliknete na položku nabídky **nastavení diagnostiky** . Kliknutím na **+ Přidat nastavení diagnostiky** můžete odeslat jednu nebo více událostí diagnostiky do účtu úložiště, centra událostí nebo pracovního prostoru Log Analytics (La).
+Nastavení diagnostiky trezoru služby Recovery Services můžete nakonfigurovat prostřednictvím portálu Azure, přejdete do trezoru a kliknete na položku nabídky **Nastavení diagnostiky.** Kliknutím na **+ Přidat diagnostické nastavení** můžete odeslat jednu nebo více diagnostických událostí do pracovního prostoru úložiště, centra událostí nebo do pracovního prostoru Analýzy protokolů (LA).
 
 ![Okno nastavení diagnostiky](./media/backup-azure-diagnostics-events/diagnostics-settings-blade.png)
 
-## <a name="diagnostics-events-available-for-azure-backup-users"></a>Události diagnostiky dostupné pro Azure Backup uživatele
+## <a name="diagnostics-events-available-for-azure-backup-users"></a>Diagnostické události dostupné pro uživatele zálohování Azure
 
-Azure Backup poskytuje následující diagnostické události, z nichž každá poskytuje podrobná data na konkrétní sadu artefaktů souvisejících se zálohováním:
+Azure Backup poskytuje následující diagnostické události, z nichž každá poskytuje podrobná data o konkrétní sadě artefaktů souvisejících se zálohováním:
 
 * CoreAzureBackup
 * AddonAzureBackupAlerts
-* AddonAzureBackupProtectedInstance
-* AddonAzureBackupJobs
-* AddonAzureBackupPolicy
+* Instance AddonAzureBackupProtectedInstance
+* AddonAzureZálohy
+* Zásady zálohování AddonAzure
 * AddonAzureBackupStorage
 
-[Datový model pro události diagnostiky Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)
+[Datový model pro události diagnostiky zálohování Azure](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)
 
-Data pro tyto události se dají odeslat do účtu úložiště, do pracovního prostoru LA nebo do centra událostí. Pokud tato data posíláte do pracovního prostoru LA, musíte na obrazovce **nastavení diagnostiky** vybrat přepínač **specifický pro prostředky** (Další informace najdete v následujících částech).
+Data pro tyto události lze odeslat buď do účtu úložiště, pracovního prostoru LA nebo centra událostí. Pokud tato data odesíláte do pracovního prostoru LA, musíte na obrazovce **Nastavení diagnostiky** vybrat přepínač **Specifické pro daný prostředek** (další informace naleznete v následujících částech).
 
-## <a name="using-diagnostics-settings-with-log-analytics-la"></a>Použití nastavení diagnostiky s Log Analytics (LA)
+## <a name="using-diagnostics-settings-with-log-analytics-la"></a>Použití nastavení diagnostiky s analýzou protokolů (LA)
 
-V souladu s plánem Azure Log Analytics se teď Azure Backup umožňuje odeslat diagnostická data trezoru k vyhrazeným tabulkám LA pro zálohování. Tyto jsou označovány jako [tabulky specifické pro prostředky](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#resource-specific).
+V souladu s plánem Azure Log Analytics, Azure Backup nyní umožňuje odesílat data diagnostiky trezoru do vyhrazených tabulek LA pro zálohování. Tyto tabulky se označují jako [tabulky specifické pro prostředky](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#resource-specific).
 
-Odeslání dat diagnostiky trezoru do nástroje LA:
+Odeslání diagnostických dat trezoru do LA:
 
-1.  Přejděte do trezoru a klikněte na **nastavení diagnostiky**. Klikněte na **+ Přidat nastavení diagnostiky**.
-2.  Zadejte název nastavení diagnostiky.
-3.  Zaškrtněte políčko **Odeslat do Log Analytics** a vyberte pracovní prostor Log Analytics.
-4.  V přepínači vyberte **prostředky specifické** a zaškrtněte následující šest událostí – **CoreAzureBackup**, **AddonAzureBackupAlerts**, **AddonAzureBackupProtectedInstance**, **AddonAzureBackupJobs**, **AddonAzureBackupPolicy**a **AddonAzureBackupStorage**.
+1.  Přejděte do trezoru a klikněte na **diagnostické nastavení**. Klepněte na tlačítko **+ Přidat diagnostické nastavení**.
+2.  Pojmenujte nastavení Diagnostika.
+3.  Zaškrtněte políčko **Odeslat do analýzy protokolů** a vyberte pracovní prostor Analýzy protokolů.
+4.  Vyberte v přepěťovém přepínači **konkrétní prostředek** a zkontrolujte následujících šest událostí – **CoreAzureBackup** **AddonAzureBackupPolicy**, **AddonAzureBackupAlerts**, **AddonAzureBackupProtectedInstance**, **AddonAzureBackupJobs**a **AddonAzureBackupStorage**.
 5.  Klikněte na **Uložit**.
 
-![Režim specifický pro prostředky](./media/backup-azure-diagnostics-events/resource-specific-blade.png)
+![Režim specifický pro daný prostředek](./media/backup-azure-diagnostics-events/resource-specific-blade.png)
 
-Jakmile se data natoků do pracovního prostoru LA, v pracovním prostoru se vytvoří vyhrazené tabulky pro každou z těchto událostí. V případě potřeby můžete zadávat dotazy na kterékoli z těchto tabulek přímo a v případě potřeby také provádět spojení nebo sjednocení mezi těmito tabulkami.
+Jakmile data proudí do pracovního prostoru LA, vytvoří se ve vašem pracovním prostoru vyhrazené tabulky pro každou z těchto událostí. Můžete dotaz ovat některou z těchto tabulek přímo a také provádět spojení nebo sjednocení mezi těmito tabulkami v případě potřeby.
 
 > [!IMPORTANT]
-> Výše uvedené šest událostí, konkrétně CoreAzureBackup, AddonAzureBackupAlerts, AddonAzureBackupProtectedInstance, AddonAzureBackupJobs, AddonAzureBackupPolicy a AddonAzureBackupStorage, jsou podporovány **pouze** v režimu specifických pro prostředky. **Upozorňujeme, že pokud se pokusíte odeslat data pro tyto šest událostí v režimu Azure Diagnostics, nebudou se do pracovního prostoru LA nacházet žádná data.**
+> Výše uvedených šest událostí, konkrétně CoreAzureBackup, AddonAzureBackupAlerts, AddonAzureBackupProtectedInstance, AddonAzureBackupJobs, AddonAzureBackupPolicy a AddonAzureBackupStorage, jsou podporovány **pouze** v režimu specifickém pro prostředky. **Upozorňujeme, že pokud se pokusíte odeslat data pro těchto šest událostí v režimu diagnostiky Azure, žádná data budou tok do pracovního prostoru LA.**
 
-## <a name="legacy-event"></a>Starší verze události
+## <a name="legacy-event"></a>Starší událost
 
-V rámci jedné události s názvem "AzureBackupReport" se tradičně používala všechna diagnostická data týkající se zálohování pro trezor. Šest událostí popsaných výše jsou v podstatě dekompozice všech dat obsažených v AzureBackupReport. 
+Tradičně všechna data diagnostiky související se zálohováním pro trezor byla obsažena v jedné události s názvem AzureBackupReport. Šest výše popsaných událostí je v podstatě rozklad všech dat obsažených v AzureBackupReport. 
 
-V současné době i nadále podporujeme událost AzureBackupReport pro zpětnou kompatibilitu, v případech, kdy uživatelé mají v této události existující vlastní dotazy, například vlastní výstrahy protokolu, vlastní vizualizace atd. Doporučujeme ale **co nejdříve přejít na nové události**, protože to usnadňuje práci s daty v protokolových dotazech, poskytuje lepší zjistitelnost schémat a jejich struktury, zlepšuje výkon v rámci latence příjmu i časů dotazů. **Podpora pro použití režimu Azure Diagnostics bude nakonec vycházet z provozu, takže výběr nových událostí vám může pomoci vyhnout se složitým migracím později**.
+V současné době budeme i nadále podporovat AzureBackupReport událost pro zpětnou kompatibilitu, v případech, kdy uživatelé mají existující vlastní dotazy na tuto událost, například vlastní výstrahy protokolu, vlastní vizualizace atd. Doporučujeme však **přejít na nové události co nejdříve**, protože to usnadňuje práci s daty v dotazech protokolu, poskytuje lepší zjistitelnost schémat a jejich struktury, zlepšuje výkon v latenci ingestování a časy dotazů. **Podpora pro použití režimu Diagnostika Azure bude nakonec postupně vyřazena, a proto výběr nových událostí vám může pomoci vyhnout se složitým migracím později**.
 
-Pomocí předdefinované zásady Azure Backup můžete přidat nové nastavení diagnostiky s 6 novými událostmi pro všechny trezory v zadaném rozsahu: [Konfigurace nastavení diagnostiky trezoru ve velkém měřítku](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)
+Pomocí předdefinovaných zásad Azure Backup můžete přidat nové nastavení diagnostiky se 6 novými událostmi pro všechny vaše trezory v určeném oboru: [Konfigurace nastavení diagnostiky úložiště ve velkém měřítku](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)
 
-Můžete se rozhodnout vytvořit samostatná nastavení diagnostiky pro AzureBackupReport a šest nových událostí, dokud nemigrujete všechny vlastní dotazy, aby používaly data z nových tabulek. Následující obrázek ukazuje příklad trezoru se dvěma nastaveními diagnostiky. První nastavení s názvem **Setting1** odesílá data události AzureBackupReport do pracovního prostoru La v režimu AzureDiagnostics. Druhé nastavení s názvem **Setting2** odesílá data o šesti nových událostech Azure Backup do pracovního prostoru La v režimu specifickém pro prostředky.
+Můžete vytvořit samostatné nastavení diagnostiky pro AzureBackupReport a šest nových událostí, dokud nemigrujete všechny vlastní dotazy k použití dat z nových tabulek. Na obrázku níže je zobrazen příklad trezoru se dvěma diagnostickými nastaveními. První nastavení s názvem **Setting1** odesílá data události AzureBackupReport do pracovního prostoru LA v režimu AzureDiagnostics. Druhé nastavení s názvem **Setting2** odesílá data šesti nových událostí azure backup do pracovního prostoru LA v režimu specifickém pro prostředky.
 
 ![Dvě nastavení](./media/backup-azure-diagnostics-events/two-settings-example.png)
 
 > [!IMPORTANT]
-> Událost AzureBackupReport je podporována **pouze** v režimu Azure Diagnostics. **Počítejte s tím, že pokud se pokusíte odeslat data pro tuto událost v režimu specifickém pro prostředky, nebudou do pracovního prostoru LA předávána žádná data.**
+> Událost AzureBackupReport je podporovaná **jenom** v režimu diagnostiky Azure. **Vezměte prosím na vědomí, že pokud se pokusíte odeslat data pro tuto událost v režimu specifickém pro prostředky, žádná data nebudou přetékat do pracovního prostoru LA.**
 
 > [!NOTE]
-> Přepínač pro Azure Diagnostics/prostředek se zobrazí jenom v případě, že uživatel vyhledá **Log Analytics odeslat**. Pokud chcete odesílat data do účtu úložiště nebo centra událostí, uživatel může jednoduše vybrat požadovaný cíl a ověřit jakoukoli z požadovaných událostí bez dalších vstupů. Znovu se doporučuje, abyste nezvolili starší verzi Event AzureBackupReport, a to až dál.
+> Přepínač pro Diagnostika Azure / Specifické pro prostředek se zobrazí pouze v případě, že uživatel zkontroluje **Odeslat do analýzy protokolů**. Chcete-li odeslat data do účtu úložiště nebo centra událostí, uživatel může jednoduše vybrat požadovaný cíl a zkontrolovat některou z požadovaných událostí bez dalších vstupů. Opět se doporučuje nevybírat starší událost AzureBackupReport, do budoucna.
 
-## <a name="users-sending-azure-site-recovery-events-to-log-analytics-la"></a>Uživatelé odesílající události Azure Site Recovery do Log Analytics (LA)
+## <a name="users-sending-azure-site-recovery-events-to-log-analytics-la"></a>Uživatelé odesílající události obnovení webu Azure do analýzy protokolů (LA)
 
-Události Azure Backup a Azure Site Recovery jsou odesílány ze stejného trezoru Recovery Services. Protože Azure Site Recovery není v současné době připojená k tabulkám specifických pro prostředky, uživatelé, kteří chtějí posílat Azure Site Recovery události do LA, se přesměrují **jenom** na použití režimu Azure Diagnostics (viz obrázek níže). **Volba režimu specifického pro prostředky pro události Azure Site Recovery zabrání odeslání požadovaných dat do pracovního prostoru La**.
+Události zálohování Azure a obnovení webu Azure se odesílají ze stejného trezoru služby Recovery Services. Vzhledem k tomu, že Azure Site Recovery není aktuálně na palubě tabulek specifických pro prostředky, uživatelé, kteří chtějí odesílat události obnovení webu Azure do LA, jsou přesměrováni na použití **pouze** režimu diagnostiky Azure (viz obrázek níže). **Volba režimu specifického pro prostředek pro události obnovení webu Azure zabrání odeslání požadovaných dat do pracovního prostoru LA**.
 
-![Události Site Recovery](./media/backup-azure-diagnostics-events/site-recovery-settings.png)
+![Události obnovení webu](./media/backup-azure-diagnostics-events/site-recovery-settings.png)
 
-Sumarizace výše uvedených drobné odlišnosti:
+Chcete-li shrnout výše uvedené nuance:
 
-* Pokud už máte diagnostiku LA nastavenou na Azure Diagnostics a máte na ní vytvořené vlastní dotazy, nechte toto nastavení **nedotčeno**, dokud nemigrujete dotazy na použití dat z nových událostí.
-* Pokud chcete také zařadit do nových tabulek (podle doporučení), vytvořte **nové** nastavení diagnostiky, zvolte možnost **specifické pro prostředky** a vyberte šest nových událostí, jak je uvedeno výše.
-* Pokud nyní odesíláte události Azure Site Recovery do nástroje LA, **nevybírejte pro** tyto události režim pro konkrétní prostředky, jinak nebudou data pro tyto události předávat do pracovního prostoru La. Místo toho vytvořte **Další nastavení diagnostiky**, vyberte **Azure Diagnostics**a zvolte příslušné události Azure Site Recovery.
+* Pokud už máte la diagnostiku nastavenou pomocí Azure Diagnostics a nato jste napsali vlastní dotazy, ponechejte toto nastavení **beze změny**, dokud nemigrujete dotazy za účelem použití dat z nových událostí.
+* Pokud chcete také přejít na nové tabulky (podle doporučení), vytvořte **nové** nastavení diagnostiky, zvolte **Specifické pro prostředky** a vyberte šest nových událostí, jak je uvedeno výše.
+* Pokud aktuálně odesíláte události obnovení webu Azure do LA, **nezvolte** pro tyto události režim specifický pro prostředky, jinak data pro tyto události nebudou tok do pracovního prostoru LA. Místo toho vytvořte **další diagnostické nastavení**, vyberte **Diagnostika Azure**a zvolte příslušné události Azure Site Recovery.
 
-Následující obrázek ukazuje příklad uživatele se třemi nastaveními diagnostiky pro trezor. První nastavení s názvem **Setting1** odesílá data z události AzureBackupReport do pracovního prostoru La v režimu AzureDiagnostics. Druhé nastavení s názvem **Setting2** odesílá data z šesti nových událostí Azure Backup do pracovního prostoru La v režimu specifického pro prostředky. Třetí nastavení s názvem **Setting3**odesílá data z událostí Azure Site Recovery do pracovního prostoru La v režimu Azure Diagnostics.
+Na obrázku na obrázku níže je zobrazen příklad uživatele, který má tři diagnostická nastavení pro trezor. První nastavení s názvem **Setting1** odesílá data z události AzureBackupReport do pracovního prostoru LA v režimu AzureDiagnostics. Druhé nastavení s názvem **Setting2** odesílá data ze šesti nových událostí zálohování Azure do pracovního prostoru LA v režimu specifickém pro prostředky. Třetí nastavení s názvem **Setting3**odesílá data z událostí Obnovení webu Azure do pracovního prostoru LA v režimu diagnostiky Azure.
 
 ![Tři nastavení](./media/backup-azure-diagnostics-events/three-settings-example.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-[Naučte se Log Analytics datový model pro diagnostické události](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)
+[Naučte se datový model analýzy protokolů pro události diagnostiky](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)

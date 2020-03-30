@@ -1,6 +1,6 @@
 ---
-title: Rozhraní CLI agenta připojeného počítače Azure
-description: Referenční dokumentace pro rozhraní příkazového řádku Azure Connected Machine Agent
+title: Rozhraní příkazového řádku agenta připojeného počítače Azure
+description: Referenční dokumentace pro cli agenta připojeného počítače Azure
 author: bobbytreed
 manager: carmonm
 services: azure-arc
@@ -10,19 +10,19 @@ ms.topic: reference
 ms.date: 11/04/2019
 ms.author: robreed
 ms.openlocfilehash: d35c5e283f2e1e2f8afd431d83775167dc2a531a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73513195"
 ---
-# <a name="azure-connected-machine-agent-cli-interface"></a>Rozhraní CLI agenta připojeného počítače Azure
+# <a name="azure-connected-machine-agent-cli-interface"></a>Rozhraní příkazového řádku agenta připojeného počítače Azure
 
-Nástroj `Azcmagent` (agent připojení počítače Azure) se používá ke konfiguraci a odstraňování potíží s připojením počítačů mimo Azure do Azure.
+Nástroj `Azcmagent` (Azure Connected Machine Agent) se používá ke konfiguraci a řešení potíží s připojením počítačů, které nejsou azure, k Azure.
 
-Samotný Agent je proces démona nazvaný `himdsd` v systému Linux a služba systému Windows s názvem `himds` ve Windows.
+Samotný agent je proces daemon u `himdsd` Linuxu a `himds` služba Windows volána v systému Windows.
 
-Při běžném používání se `azcmagent connect` používá k navázání spojení mezi tímto počítačem a Azure a `azcmagent disconnect`, pokud se rozhodnete, že už toto připojení nechcete. Ostatní příkazy jsou pro řešení potíží nebo jiné zvláštní případy.
+Při normálním `azcmagent connect` použití se používá k navázání spojení `azcmagent disconnect` mezi tímto počítačem a Azure a pokud se rozhodnete, že už toto připojení nechcete. Ostatní příkazy jsou pro řešení potíží nebo jiné zvláštní případy.
 
 ## <a name="options"></a>Možnosti
 
@@ -33,30 +33,30 @@ Při běžném používání se `azcmagent connect` používá k navázání spo
 
 ## <a name="see-also"></a>VIZ TAKÉ
 
-* [azcmagent Connect](#azcmagent-connect) – připojí tento počítač k Azure.
-* [azcmagent odpojit](#azcmagent-disconnect) – odpojí tento počítač od Azure.
-* [azcmagent reconnect](#azcmagent-reconnect) – znovu připojí tento počítač k Azure.
-* [azcmagent show](#azcmagent-show) -Získá metadata počítače a stav agenta. To je užitečné hlavně při řešení potíží.
-* [verze azcmagent](#azcmagent-version) – zobrazení verze hybridního agenta pro správu
+* [azcmagent connect](#azcmagent-connect) – připojí tento počítač k Azure
+* [azcmagent odpojit](#azcmagent-disconnect) - Odpojí tento počítač od Azure
+* [azcmagent znovu připojit](#azcmagent-reconnect) - znovu připojí tento počítač k Azure
+* [azcmagent show](#azcmagent-show) - Získá metadata počítače a stav agenta. To je užitečné především pro řešení potíží.
+* [Azcmagent verze](#azcmagent-version) - Zobrazení verze Hybrid Management Agent
 
 ## <a name="azcmagent-connect"></a>azcmagent připojit
 
-Připojí tento počítač k Azure.
+Připojí tento počítač k Azure
 
-### <a name="synopsis"></a>Stručný obsah
+### <a name="synopsis"></a>Synopse
 
-Vytvoří prostředek v Azure, který představuje tento počítač.
+Vytvoří prostředek v Azure představující tento počítač.
 
-Tato možnost využívá možnosti ověřování, které jsou k dispozici pro vytvoření prostředku v Azure Resource Manager představuje tento počítač. Prostředek se nachází v předplatném a skupině prostředků a data o počítači se ukládají v oblasti Azure určené parametrem Location.
+To používá možnosti ověřování k vytvoření prostředku ve Správci prostředků Azure představující tento počítač. Prostředek je v požadované skupině předplatného a prostředků a data o počítači se ukládají v oblasti Azure určené parametrem umístění.
 Výchozí název prostředku je název hostitele tohoto počítače, pokud není přepsán.
 
-Certifikát, který odpovídá identitě přiřazené systémem tohoto počítače, se pak stáhne a uloží místně. Po dokončení tohoto kroku se služba **metadat připojeného počítače Azure** a Agent konfigurace hosta začnou synchronizovat s cloudem Azure.
+Certifikát odpovídající systémově přiřazené identitě tohoto počítače je pak stažen a uložen místně. Po dokončení tohoto kroku azure **connected machine metadata** service a host configuration agent začít synchronizovat s Cloud Azure.
 
 Možnosti ověřování:
 
-* `azcmagent connect --access-token <> --subscription-id <> --resource-group <> --location <>` přístupového tokenu
-* ID objektu služby a tajný kód `azcmagent connect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid> --subscription-id <> --resource-group <> --location <>`
-* Přihlášení zařízení (interaktivní) `azcmagent connect --tenant-id <> --subscription-id <> --resource-group <> --location <>`
+* Přístupový token`azcmagent connect --access-token <> --subscription-id <> --resource-group <> --location <>`
+* ID a tajný klíč jistiny služby`azcmagent connect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid> --subscription-id <> --resource-group <> --location <>`
+* Přihlášení k zařízení (interaktivní)`azcmagent connect --tenant-id <> --subscription-id <> --resource-group <> --location <>`
 
 ### <a name="syntax"></a>Syntaxe
 
@@ -80,25 +80,25 @@ azcmagent connect [flags]
       --tenant-id string                  Tenant Id
 ```
 
-## <a name="azcmagent-disconnect"></a>azcmagent odpojení
+## <a name="azcmagent-disconnect"></a>azcmagent odpojit
 
-Odpojí tento počítač od Azure.
+Odpojí tento počítač od Azure
 
-### <a name="synopsis"></a>Stručný obsah
+### <a name="synopsis"></a>Synopse
 
 Odstraní prostředek v Azure, který představuje tento server.
 
-Tento příkaz používá možnosti ověřování, které jsou k dispozici pro odebrání prostředku Azure Resource Manager představujícího tento počítač. Po této fázi se **počítač s připojením k Azure metadata Service** a Agent konfigurace hosta se odpojí. Tento příkaz neukončí ani neodebere služby: Pokud to chcete udělat, odstraňte balíček.
+Tento příkaz používá možnosti ověřování k odebrání prostředku Azure Resource Manager představující tento počítač. Po tomto okamžiku **azure connected machine metadata service** a host configuration agent bude odpojen. Tento příkaz nezastaví nebo neodebere služby: za tímto účelem balíček odeberete.
 
-Tento příkaz vyžaduje vyšší oprávnění než role "Připojování počítačů připojených k Azure".
+Tento příkaz vyžaduje vyšší oprávnění než role "Azure Connected Machine Onboarding".
 
-Když je počítač odpojený, použijte `azcmagent connect`, ne `azcmagent reconnect`, pokud chcete pro něj vytvořit nový prostředek v Azure.
+Po odpojení počítače použijte `azcmagent connect`, `azcmagent reconnect` ne pokud chcete vytvořit nový prostředek pro něj v Azure.
 
 Možnosti ověřování:
 
-* `azcmagent disconnect --access-token <>` přístupového tokenu
-* ID objektu služby a tajný kód `azcmagent disconnect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid>`
-* Přihlášení `azcmagent disconnect --tenant-id <>` interaktivního zařízení
+* Přístupový token`azcmagent disconnect --access-token <>`
+* ID a tajný klíč jistiny služby`azcmagent disconnect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid>`
+* Přihlášení interaktivního zařízení`azcmagent disconnect --tenant-id <>`
 
 ### <a name="syntax"></a>Syntaxe
 
@@ -121,25 +121,25 @@ azcmagent disconnect [flags]
 
 ## <a name="azcmagent-reconnect"></a>azcmagent znovu připojit
 
-Znovu připojí tento počítač k Azure.
+Znovu připojí tento počítač k Azure
 
-### <a name="synopsis"></a>Stručný obsah
+### <a name="synopsis"></a>Synopse
 
-Připojte počítač k Azure pomocí neplatných přihlašovacích údajů.
+Znovu připojte počítač s neplatnými přihlašovacími údaji do Azure.
 
-Pokud už počítač obsahuje prostředek v Azure, ale nedá se k němu ověřit, dá se ho pomocí tohoto příkazu znovu připojit. To je možné v případě, že byl počítač dostatečně dlouhý, aby jeho platnost vypršela (nejméně 45 dní).
+Pokud počítač již má prostředek v Azure, ale není možné ověřit na něj, lze znovu připojit pomocí tohoto příkazu. To je možné, pokud byl počítač vypnutý dostatečně dlouho, aby jeho certifikát vypršel (alespoň 45 dní).
 
-Pokud byl počítač odpojený pomocí `azcmagent disconnect`, místo toho použijte `azcmagent connect`.
+Pokud byl počítač odpojen `azcmagent disconnect`s `azcmagent connect` , použijte místo.
 
-Tento příkaz používá dostupné možnosti ověřování pro načtení nových přihlašovacích údajů odpovídajících prostředku Azure Resource Manager, který představuje tento počítač.
+Tento příkaz používá možnosti ověřování k načtení nových přihlašovacích údajů odpovídajících prostředku Azure Resource Manager představující tento počítač.
 
-Tento příkaz vyžaduje vyšší oprávnění než role registrace **počítače připojeného k Azure** .
+Tento příkaz vyžaduje vyšší oprávnění než role **Připojení k počítači Azure.**
 
 Možnosti ověřování
 
-* `azcmagent reconnect --access-token <>` přístupového tokenu
-* ID objektu služby a tajný kód `azcmagent reconnect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid>`
-* Přihlášení `azcmagent reconnect --tenant-id <>` interaktivního zařízení
+* Přístupový token`azcmagent reconnect --access-token <>`
+* ID a tajný klíč jistiny služby`azcmagent reconnect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid>`
+* Přihlášení interaktivního zařízení`azcmagent reconnect --tenant-id <>`
 
 ### <a name="syntax"></a>Syntaxe
 
@@ -161,13 +161,13 @@ azcmagent reconnect [flags]
       --tenant-id string                  tenant id
 ```
 
-## <a name="azcmagent-show"></a>azcmagent zobrazit
+## <a name="azcmagent-show"></a>azcmagent show
 
-Získá metadata počítače a stav agenta. To je užitečné hlavně při řešení potíží.
+Získá metadata počítače a stav agenta. To je užitečné především pro řešení potíží.
 
-### <a name="synopsis"></a>Stručný obsah
+### <a name="synopsis"></a>Synopse
 
-Získá metadata počítače a stav agenta. To je užitečné hlavně při řešení potíží.
+Získá metadata počítače a stav agenta. To je užitečné především pro řešení potíží.
 
 
 ### <a name="syntax"></a>Syntaxe
@@ -182,13 +182,13 @@ azcmagent show [flags]
   -h, --help   help for show
 ```
 
-## <a name="azcmagent-version"></a>verze azcmagent
+## <a name="azcmagent-version"></a>azcmagent verze
 
-Zobrazit verzi hybridního agenta pro správu
+Zobrazení verze agenta hybridní správy
 
-### <a name="synopsis"></a>Stručný obsah
+### <a name="synopsis"></a>Synopse
 
-Zobrazit verzi hybridního agenta pro správu
+Zobrazení verze agenta hybridní správy
 
 ### <a name="syntax"></a>Syntaxe
 

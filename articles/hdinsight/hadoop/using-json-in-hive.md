@@ -1,6 +1,6 @@
 ---
-title: Analýza & procesu JSON pomocí Apache Hive – Azure HDInsight
-description: Naučte se používat dokumenty JSON a analyzovat je pomocí Apache Hive ve službě Azure HDInsight.
+title: Analýza & zpracování JSON pomocí Apache Hive – Azure HDInsight
+description: Naučte se používat dokumenty JSON a analyzovat je pomocí Apache Hive v Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,15 +8,15 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.openlocfilehash: 1c519533625835677ddae0a274c9ce9f10edc6dd
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73098000"
 ---
-# <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Zpracování a analýza dokumentů JSON pomocí Apache Hive ve službě Azure HDInsight
+# <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Zpracování a analýza dokumentů JSON pomocí Apache Hive v Azure HDInsight
 
-Naučte se zpracovávat a analyzovat soubory JavaScript Object Notation (JSON) pomocí Apache Hive ve službě Azure HDInsight. Tento článek používá následující dokument JSON:
+Naučte se zpracovávat a analyzovat soubory JavaScript Object Notation (JSON) pomocí Apache Hive v Azure HDInsight. Tento článek používá následující dokument JSON:
 
 ```json
 {
@@ -55,13 +55,13 @@ Naučte se zpracovávat a analyzovat soubory JavaScript Object Notation (JSON) p
 }
 ```
 
-Soubor najdete na adrese `wasb://processjson@hditutorialdata.blob.core.windows.net/`. Další informace o tom, jak používat úložiště objektů BLOB v Azure se službou HDInsight, najdete v článku [použití služby Azure Blob Storage kompatibilní s HDFS s Apache Hadoop v HDInsight](../hdinsight-hadoop-use-blob-storage.md). Soubor můžete zkopírovat do výchozího kontejneru clusteru.
+Soubor lze nalézt `wasb://processjson@hditutorialdata.blob.core.windows.net/`na adrese . Další informace o tom, jak používat úložiště objektů blob Azure s HDInsight, najdete [v tématu použití úložiště objektů blob Azure kompatibilního s HDFS s Apache Hadoop ve službě HDInsight](../hdinsight-hadoop-use-blob-storage.md). Soubor můžete zkopírovat do výchozího kontejneru clusteru.
 
-V tomto článku použijete konzolu Apache Hive. Pokyny k otevření konzoly podregistru najdete v tématu [použití zobrazení podregistru Apache Ambari s Apache Hadoop v HDInsight](apache-hadoop-use-hive-ambari-view.md).
+V tomto článku použijete konzolu Apache Hive. Pokyny k otevření konzole Hive najdete v [tématu Použití apache ambari hive view s Apache Hadoop v HDInsight](apache-hadoop-use-hive-ambari-view.md).
 
 ## <a name="flatten-json-documents"></a>Sloučení dokumentů JSON
 
-Metody uvedené v další části vyžadují, aby dokument JSON byl složený z jednoho řádku. Proto je nutné dokument JSON sloučit do řetězce. Pokud je váš dokument JSON již plochý, můžete tento krok přeskočit a přejít rovnou k další části týkající se analýzy dat JSON. Pro sloučení dokumentu JSON spusťte následující skript:
+Metody uvedené v další části vyžadují, aby se dokument JSON skládal z jednoho řádku. Proto je nutné slono dokumentu JSON na řetězec. Pokud je váš dokument JSON již sloučí, můžete tento krok přeskočit a přejít přímo k další části analýzy dat JSON. Chcete-li slopísem dokumentu JSON, spusťte následující skript:
 
 ```sql
 DROP TABLE IF EXISTS StudentsRaw;
@@ -82,32 +82,32 @@ SELECT CONCAT_WS(' ',COLLECT_LIST(textcol)) AS singlelineJSON
 SELECT * FROM StudentsOneLine
 ```
 
-Nezpracovaný soubor JSON je umístěný na `wasb://processjson@hditutorialdata.blob.core.windows.net/`. Tabulka podregistru **StudentsRaw** odkazuje na nezpracovaný dokument JSON, který není plochý.
+Nezpracovaný soubor JSON `wasb://processjson@hditutorialdata.blob.core.windows.net/`je umístěn na adrese . Tabulka **StudentsRaw** Hive odkazuje na nezpracovaný dokument JSON, který není srovnaný.
 
-Tabulka podregistr **StudentsOneLine** ukládá data do výchozího systému souborů HDInsight pod cestou **/JSON/Students/** .
+Tabulka **StudentsOneLine** Hive ukládá data ve výchozím souborovém systému HDInsight pod cestou **/json/students/.**
 
-Příkaz **INSERT** naplní tabulku **StudentOneLine** pomocí shrnutých dat JSON.
+Příkaz **INSERT** naplní tabulku **StudentOneLine** sjednocovanými daty JSON.
 
-Příkaz **Select** vrátí pouze jeden řádek.
+Příkaz **SELECT** vrátí pouze jeden řádek.
 
-Zde je výstup příkazu **Select** :
+Zde je výstup příkazu **SELECT:**
 
-![HDInsight – sloučení dokumentu JSON](./media/using-json-in-hive/hdinsight-flatten-json.png)
+![HdInsight sloučí dokument JSON](./media/using-json-in-hive/hdinsight-flatten-json.png)
 
-## <a name="analyze-json-documents-in-hive"></a>Analyzovat dokumenty JSON v podregistru
+## <a name="analyze-json-documents-in-hive"></a>Analýza dokumentů JSON v Úlu
 
-Podregistr poskytuje tři různé mechanismy pro spouštění dotazů na dokumentech JSON, nebo můžete napsat vlastní:
+Hive poskytuje tři různé mechanismy pro spouštění dotazů na dokumenty JSON, nebo můžete napsat vlastní:
 
-* Použijte uživatelsky definovanou funkci get_json_object (UDF).
+* Použijte get_json_object uživatelem definovanou funkci (UDF).
 * Použijte json_tuple UDF.
-* Použijte vlastní serializátor nebo deserializaci (SerDe).
-* Vytvářejte vlastní systém souborů UDF pomocí Pythonu nebo jiných jazyků. Další informace o tom, jak spustit vlastní kód Pythonu s podregistrem, najdete v tématu [Python UDF s Apache Hive a Apache prasete](./python-udf-hdinsight.md).
+* Použijte vlastní serializátor/deserializer (SerDe).
+* Napište si vlastní UDF pomocí Pythonu nebo jiných jazyků. Další informace o tom, jak spustit vlastní kód Pythonu s Hive, najdete v [tématu Python UDF s Apache Hive a Apache Pig](./python-udf-hdinsight.md).
 
 ### <a name="use-the-get_json_object-udf"></a>Použití get_json_object UDF
 
-Podregistr poskytuje integrovaný systém souborů UDF s názvem [get_json_object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) , který může během běhu provádět dotazování JSON. Tato metoda přijímá dva argumenty – název tabulky a název metody, které mají sloučený dokument JSON a pole JSON, které je nutné analyzovat. Pojďme se podívat na příklad, jak tento systém souborů UDF funguje.
+Hive poskytuje předdefinovaný UDF s názvem [get_json_object,](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) který může provádět dotazy JSON za běhu. Tato metoda trvá dva argumenty -- název tabulky a název metody, která má složený dokument JSON a pole JSON, které je třeba analyzovat. Podívejme se na příklad, jak tento UDF funguje.
 
-Následující dotaz vrátí křestní jméno a příjmení pro každého studenta:
+Následující dotaz vrátí jméno a příjmení každého studenta:
 
 ```sql
 SELECT
@@ -116,20 +116,20 @@ SELECT
 FROM StudentsOneLine;
 ```
 
-Toto je výstup při spuštění tohoto dotazu v okně konzoly:
+Zde je výstup při spuštění tohoto dotazu v okně konzoly:
 
-![Apache Hive získat objekt JSON typu UDF](./media/using-json-in-hive/hdinsight-get-json-object.png)
+![Apache Hive získat json objekt UDF](./media/using-json-in-hive/hdinsight-get-json-object.png)
 
-Existují omezení get_json_object systému souborů UDF:
+Existují omezení get_json_object UDF:
 
-* Vzhledem k tomu, že každé pole v dotazu vyžaduje přeanalýzu dotazu, má vliv na výkon.
-* **GET\_JSON_OBJECT ()** vrátí řetězcovou reprezentaci pole. Chcete-li převést toto pole na pole podregistru, je nutné použít regulární výrazy k nahrazení hranatých závorek "[" a "]" a pak je také nutné volat rozdělení pro získání pole.
+* Vzhledem k tomu, že každé pole v dotazu vyžaduje úpravu dotazu, ovlivňuje výkon.
+* **GET\_JSON_OBJECT()** vrátí řetězcovou reprezentaci pole. Chcete-li převést toto pole na pole Hive, musíte použít regulární výrazy k nahrazení hranatých závorek "[" a "]" a potom také musíte volat split, abyste získali pole.
 
-To proto, že wiki v podregistru doporučuje používat **json_tuple**.  
+Proto wiki Hive doporučuje používat **json_tuple**.  
 
 ### <a name="use-the-json_tuple-udf"></a>Použití json_tuple UDF
 
-Další UDF, který poskytuje podregistr, se nazývá [json_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple), což je lepší než [get_ JSON _object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object). Tato metoda přebírá sadu klíčů a řetězec JSON a vrací řazenou kolekci hodnot pomocí jedné funkce. Následující dotaz vrátí ID studenta a třídu z dokumentu JSON:
+Jiný UDF poskytovaný Hive se nazývá [json_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple), který funguje lépe než [get_ json _object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object). Tato metoda trvá sadu klíčů a řetězec JSON a vrátí řazené kolekce členů s hodnotami pomocí jedné funkce. Následující dotaz vrátí ID studenta a hodnocení z dokumentu JSON:
 
 ```sql
 SELECT q1.StudentId, q1.Grade
@@ -138,24 +138,24 @@ LATERAL VIEW JSON_TUPLE(jt.json_body, 'StudentId', 'Grade') q1
   AS StudentId, Grade;
 ```
 
-Výstup tohoto skriptu v konzole podregistru:
+Výstup tohoto skriptu v konzole Hive:
 
-![Apache Hive výsledků dotazu JSON](./media/using-json-in-hive/hdinsight-json-tuple.png)
+![Výsledky dotazu Apache Hive json](./media/using-json-in-hive/hdinsight-json-tuple.png)
 
-Json_tuple UDF používá v podregistru syntaxi [příčného zobrazení](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) , která umožňuje, aby služba JSON\_Tuple vytvořila virtuální tabulku použitím funkce UDT na každý řádek původní tabulky. Komplexní JSON se přestanou nepraktický z důvodu opakovaného použití **bočního zobrazení**. **JSON_TUPLE** navíc nemůže zpracovat vnořené JSON.
+Json_tuple UDF používá syntaxi [bočního zobrazení](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) v Hive, která umožňuje řazené kolekce členů json\_vytvořit virtuální tabulku použitím funkce UDT na každý řádek původní tabulky. Komplexní JSONs se příliš těžkopádné, protože opakované použití **laterální pohled**. Kromě toho **JSON_TUPLE** nemůže zpracovat vnořené JSONs.
 
 ### <a name="use-a-custom-serde"></a>Použití vlastního SerDe
 
-SerDe je nejlepší volbou pro analýzu vnořených dokumentů JSON. Umožňuje definovat schéma JSON a pak můžete použít schéma k analýze dokumentů. Pokyny najdete v tématu [Jak používat vlastní SERDE JSON s Microsoft Azure HDInsight](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/).
+SerDe je nejlepší volbou pro analýzu vnořených dokumentů JSON. Umožňuje definovat schéma JSON a potom můžete použít schéma k analýzu dokumentů. Pokyny najdete [v tématu Jak používat vlastní JSON SerDe s Microsoft Azure HDInsight](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/).
 
 ## <a name="summary"></a>Souhrn
 
-V závěru je typ operátoru JSON v podregistru, který zvolíte, závisí na vašem scénáři. Pokud máte jednoduchý dokument JSON a máte k dispozici jenom jedno pole, můžete si vybrat, jestli chcete použít **get_json_object**pro podregistr UDF. Pokud máte více než jeden klíč k vyhledání, můžete použít **json_tuple**. Pokud máte vnořený dokument, měli byste použít **SerDe JSON**.
+Na závěr typ operátoru JSON v Hive, který zvolíte, závisí na vašem scénáři. Pokud máte jednoduchý dokument JSON a máte k dispozici pouze jedno pole, můžete použít **get_json_object**Hive UDF . Pokud máte více než jeden klíč, na který se můžete podívat, můžete použít **json_tuple**. Pokud máte vnořený dokument, měli byste použít **JSON SerDe**.
 
 ## <a name="next-steps"></a>Další kroky
 
-Související články najdete v tématech:
+Související články naleznete v:
 
-* [Analýza ukázkového souboru Apache log4j pomocí Apache Hive a HiveQL s Apache Hadoop v HDInsight](../hdinsight-use-hive.md)
-* [Analýza dat zpoždění letů pomocí interaktivního dotazu ve službě HDInsight](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)
-* [Analýza dat Twitteru pomocí Apache Hive ve službě HDInsight](../hdinsight-analyze-twitter-data-linux.md)
+* [Použití Apache Hive a HiveQL s Apache Hadoop v HDInsight k analýze ukázkového souboru Apache log4j](../hdinsight-use-hive.md)
+* [Analýza dat zpoždění letu pomocí interaktivního dotazu v HDInsightu](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)
+* [Analyzujte data z Twitteru pomocí Apache Hive v HDInsightu](../hdinsight-analyze-twitter-data-linux.md)

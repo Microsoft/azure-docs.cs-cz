@@ -1,25 +1,25 @@
 ---
-title: Správa vzdálených místních prostředků pomocí funkcí PowerShellu
-description: Naučte se, jak nakonfigurovat Hybrid Connections v Azure Relay, aby se připojila aplikace funkce PowerShellu k místním prostředkům, které pak můžete použít k vzdálené správě místního prostředku.
+title: Správa vzdálených místních prostředků pomocí funkcí Prostředí PowerShell
+description: Zjistěte, jak nakonfigurovat hybridní připojení ve službě Azure Relay pro připojení aplikace funkcí PowerShellu k místním prostředkům, které pak můžou vzdáleně spravovat místní prostředky.
 author: eamono
 ms.topic: conceptual
 ms.date: 9/5/2019
 ms.author: eamono
 ms.openlocfilehash: 36fc4c873dccfe9fa814bddccd829ed04207f095
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74226940"
 ---
-# <a name="managing-hybrid-environments-with-powershell-in-azure-functions-and-app-service-hybrid-connections"></a>Správa hybridních prostředí pomocí prostředí PowerShell v Azure Functions a App Service Hybrid Connections
+# <a name="managing-hybrid-environments-with-powershell-in-azure-functions-and-app-service-hybrid-connections"></a>Správa hybridních prostředí pomocí PowerShellu v Azure Functions and App Service Hybrid Connections
 
-Funkce Azure App Service Hybrid Connections umožňuje přístup k prostředkům v jiných sítích. Další informace o této funkci najdete v dokumentaci k [Hybrid Connections](../app-service/app-service-hybrid-connections.md) . Tento článek popisuje, jak používat tuto možnost ke spouštění funkcí prostředí PowerShell, které cílí na místní server. Tento server pak můžete použít ke správě všech prostředků v místním prostředí pomocí funkce Azure PowerShell.
+Funkce hybridnípřipojení služby Azure App Service umožňuje přístup k prostředkům v jiných sítích. Další informace o této funkci naleznete v dokumentaci [hybridní připojení.](../app-service/app-service-hybrid-connections.md) Tento článek popisuje, jak tuto funkci používat ke spuštění funkcí prostředí PowerShell, které cílí na místní server. Tento server pak můžete použít ke správě všech prostředků v místním prostředí z funkce Azure PowerShell.
 
 
-## <a name="configure-an-on-premises-server-for-powershell-remoting"></a>Konfigurace místního serveru pro vzdálenou komunikaci PowerShellu
+## <a name="configure-an-on-premises-server-for-powershell-remoting"></a>Konfigurace místního serveru pro vzdálené hlasování prostředí PowerShell
 
-Následující skript umožňuje vzdálenou komunikaci PowerShellu a vytvoří nové pravidlo brány firewall a naslouchací proces https protokolu WinRM. Pro účely testování se používá certifikát podepsaný svým držitelem. V produkčním prostředí doporučujeme použít podepsaný certifikát.
+Následující skript umožňuje vzdálené volání prostředí PowerShell a vytvoří nové pravidlo brány firewall a naslouchací proces https služby WinRM. Pro účely testování se používá certifikát podepsaný svým držitelem. V provozním prostředí doporučujeme použít podepsaný certifikát.
 
 ```powershell
 # For configuration of WinRM, see
@@ -48,48 +48,48 @@ cmd.exe /C $Cmd
 
 ## <a name="create-a-powershell-function-app-in-the-portal"></a>Vytvoření aplikace funkcí PowerShellu na portálu
 
-Funkce App Service Hybrid Connections je dostupná jenom v cenových plánech Basic, Standard a Isolated. Když vytvoříte aplikaci Function App pomocí PowerShellu, vytvořte nebo vyberte jeden z těchto plánů.
+Funkce Hybridní připojení služby App Service je k dispozici pouze v základních, standardních a izolovaných cenových plánech. Když vytvoříte aplikaci funkcí s PowerShellem, vytvořte nebo vyberte jeden z těchto plánů.
 
-1. V [Azure Portal](https://portal.azure.com)v nabídce vlevo vyberte **+ vytvořit prostředek** a pak vyberte **Function App (aplikace funkcí**).
+1. Na [webu Azure Portal](https://portal.azure.com)vyberte **+ Vytvořit prostředek** v nabídce vlevo a pak vyberte Aplikace **Funkce**.
 
-1. V případě **plánu hostování**vyberte **plán App Service**a pak vyberte **App Service plán/umístění**.
+1. V **případě hostování plánu**vyberte Plán **služby App Service**a pak vyberte **Plán/umístění služby App Service**.
 
-1. Vyberte **vytvořit nový**, zadejte název **App Serviceho plánu** , zvolte **umístění** v [oblasti](https://azure.microsoft.com/regions/) poblíž nebo poblíž dalších služeb, ke kterým máte přístup, a pak vyberte **cenovou úroveň**.
+1. Vyberte **Vytvořit nový**, zadejte název **plánu služby App Service,** zvolte **umístění** v [oblasti](https://azure.microsoft.com/regions/) ve vašem okolí nebo v blízkosti jiných služeb, ke které vaše funkce přistupují, a pak vyberte **Cenovou úroveň**.
 
-1. Zvolte plán Standard S1 a pak vyberte **použít**.
+1. Zvolte standardní plán S1 a pak vyberte **Použít**.
 
-1. Vyberte **OK** a vytvořte plán a potom nakonfigurujte zbývající **Function App** nastavení, jak je uvedeno v tabulce hned po následujícím snímku obrazovky:
+1. Chcete-li plán vytvořit, vyberte **ok** a pak nakonfigurujte zbývající nastavení **aplikace funkce,** jak je uvedeno v tabulce, bezprostředně za následujícím snímkem obrazovky:
 
-    ![Aplikace PowerShell Core Function](./media/functions-hybrid-powershell/create-function-powershell-app.png)  
+    ![Aplikace pro funkce PowerShell U jádra](./media/functions-hybrid-powershell/create-function-powershell-app.png)  
 
     | Nastavení      | Navrhovaná hodnota  | Popis                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Název aplikace** | Globálně jedinečný název | Název identifikující novou aplikaci Function App. Platné znaky jsou `a-z`, `0-9` a `-`.  | 
     | **Předplatné** | Vaše předplatné | Předplatné, pod kterým je tato nová aplikace Function App vytvořena. |
     | **Skupina prostředků** |  myResourceGroup | Název nové skupiny prostředků, ve které chcete vytvořit aplikaci Function App. Můžete také použít navrhovanou hodnotu. |
-    | **OS** | Preferovaný operační systém | Vyberte možnost Windows. |
-    | **Zásobník modulu runtime** | Upřednostňovaný jazyk | Vyberte PowerShell Core. |
-    | **Storage** |  Globálně jedinečný název |  Vytvořte účet úložiště používaný vaší aplikací funkcí. Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena. Můžete taky použít existující účet.
-    | **Application Insights** | Výchozí | Vytvoří Application Insights prostředek stejného *názvu aplikace* v nejbližší podporované oblasti. Rozbalením tohoto nastavení můžete změnit **název nového prostředku** nebo zvolit jiné **umístění** v [geografické oblasti Azure](https://azure.microsoft.com/global-infrastructure/geographies/) , kam chcete ukládat data. |
+    | **OS** | Upřednostňovaný operační operační hod | Vyberte Windows. |
+    | **Zásobník modulu runtime** | Upřednostňovaný jazyk | Zvolte PowerShell Core. |
+    | **Úložiště** |  Globálně jedinečný název |  Vytvořte účet úložiště používaný vaší aplikací funkcí. Názvy účtů úložiště musí mít délku od 3 do 24 znaků a mohou obsahovat pouze čísla a malá písmena. Můžete taky použít existující účet.
+    | **Application Insights** | Výchozí | Vytvoří prostředek Application Insights se stejným *názvem aplikace* v nejbližší podporované oblasti. Rozšířením tohoto nastavení můžete změnit **název nového prostředku** nebo zvolit jiné **umístění** v oblasti geografické oblasti [Azure,](https://azure.microsoft.com/global-infrastructure/geographies/) kde chcete ukládat data. |
 
-1. Po ověření nastavení vyberte **vytvořit**.
+1. Po ověření nastavení vyberte **Vytvořit**.
 
-1. Vyberte ikonu **oznámení** v pravém horním rohu portálu a počkejte, než se zobrazí zpráva o úspěšném nasazení.
+1. Vpravém horním rohu portálu vyberte ikonu **Oznámení** a počkejte na zprávu "Nasazení proběhlo úspěšně".
 
-1. Volbou **Přejít k prostředku** novou aplikaci Function App zobrazíte. Můžete také vybrat **Připnout na řídicí panel**. Připnutí usnadňuje návrat k tomuto prostředku Function App z vašeho řídicího panelu.
+1. Volbou **Přejít k prostředku** novou aplikaci Function App zobrazíte. Můžete také vybrat **připnout na řídicí panel**. Připnutí usnadňuje návrat k tomuto prostředku aplikace funkce z řídicího panelu.
 
-## <a name="create-a-hybrid-connection-for-the-function-app"></a>Vytvoření hybridního připojení pro aplikaci Function App
+## <a name="create-a-hybrid-connection-for-the-function-app"></a>Vytvoření hybridního připojení pro aplikaci funkcí
 
-Hybridní připojení jsou nakonfigurovaná v části síť aplikace Function App:
+Hybridní připojení jsou konfigurována z síťové části aplikace funkce:
 
-1. V aplikaci Function App vyberte kartu **funkce platformy** a pak vyberte **sítě**. 
-   Přehled aplikace ![pro síťové platformy](./media/functions-hybrid-powershell/app-overview-platform-networking.png)  
+1. V aplikaci funkce vyberte kartu **Funkce platformy** a pak vyberte **Síť .** 
+   ![Přehled aplikací pro síť platformy](./media/functions-hybrid-powershell/app-overview-platform-networking.png)  
 1. Vyberte **Konfigurovat koncové body hybridních připojení**.
    ![Sítě](./media/functions-hybrid-powershell/select-network-feature.png)  
 1. Vyberte **Přidat hybridní připojení**.
-   ](./media/functions-hybrid-powershell/hybrid-connection-overview.png) ![Hybrid Connection  
-1. Zadejte informace o hybridním připojení, jak je znázorněno na následujícím snímku obrazovky. Máte možnost nastavit, aby se nastavení **hostitele koncového bodu** shodovalo s názvem hostitele místního serveru, aby bylo snazší pamatovat server později při spuštění vzdálených příkazů. Port odpovídá výchozímu portu služby vzdálené správy systému Windows, který byl dříve definován na serveru.
-  ![přidat hybridní připojení](./media/functions-hybrid-powershell/add-hybrid-connection.png)  
+   ![Hybridní připojení](./media/functions-hybrid-powershell/hybrid-connection-overview.png)  
+1. Zadejte informace o hybridním připojení, jak je znázorněno hned za následujícím snímku obrazovky. Máte možnost nastavit **koncový bod hostitele** odpovídat názvu hostitele místního serveru, aby bylo snazší si server později zapamatovat při spuštění vzdálených příkazů. Port odpovídá výchozímu portu služby vzdálené správy systému Windows, který byl definován na serveru dříve.
+  ![Přidat hybridní připojení](./media/functions-hybrid-powershell/add-hybrid-connection.png)  
 
     **Název hybridního připojení**: ContosoHybridOnPremisesServer
     
@@ -97,47 +97,47 @@ Hybridní připojení jsou nakonfigurovaná v části síť aplikace Function Ap
     
     **Port koncového bodu**: 5986
     
-    **ServiceBus obor názvů**: vytvořit nový
+    **Obor názvů ServiceBus**: Vytvořit nový
     
-    **Umístění**: vyberte dostupné umístění.
+    **Umístění**: Vyberte dostupné místo
     
     **Název**: contosopowershellhybrid
 
-5. Vyberte **OK** a vytvořte hybridní připojení.
+5. Chcete-li vytvořit hybridní připojení, vyberte **možnost OK.**
 
 ## <a name="download-and-install-the-hybrid-connection"></a>Stažení a instalace hybridního připojení
 
-1. Vyberte možnost **Stáhnout Správce připojení** a uložte soubor. msi místně do počítače.
-![stáhnout instalační program](./media/functions-hybrid-powershell/download-hybrid-connection-installer.png)  
-1. Zkopírujte soubor. msi z místního počítače na místní server.
-1. Spusťte instalační program Správce hybridního připojení a nainstalujte službu na místní server.
-![instalaci hybridního připojení](./media/functions-hybrid-powershell/hybrid-installation.png)  
-1. Z portálu otevřete hybridní připojení a pak zkopírujte připojovací řetězec brány do schránky.
-![kopírovat řetězec Hybrid Connection](./media/functions-hybrid-powershell/copy-hybrid-connection.png)  
-1. Otevřete Správce hybridního připojení uživatelské rozhraní na místním serveru.
-![otevřít uživatelské rozhraní hybridního připojení](./media/functions-hybrid-powershell/hybrid-connection-ui.png)  
-1. Vyberte tlačítko **zadat ručně** a vložte připojovací řetězec ze schránky.
-![vložit](./media/functions-hybrid-powershell/enter-manual-connection.png) připojení  
-1. Pokud se nezobrazí jako připojené, restartujte Správce hybridního připojení z PowerShellu.
+1. Výběrem **možnosti Stáhnout správce připojení** uložíte soubor MSI místně do počítače.
+![Stáhnout instalační program](./media/functions-hybrid-powershell/download-hybrid-connection-installer.png)  
+1. Zkopírujte soubor MSI z místního počítače na místní server.
+1. Spusťte instalační program Nástroje pro hybridní připojení a nainstalujte službu na místní server.
+![Instalace hybridního připojení](./media/functions-hybrid-powershell/hybrid-installation.png)  
+1. Z portálu otevřete hybridní připojení a zkopírujte připojovací řetězec brány do schránky.
+![Kopírovat hybridní připojovací řetězec](./media/functions-hybrid-powershell/copy-hybrid-connection.png)  
+1. Otevřete umístního serveru hybridní ho sazí.
+![Otevřené hybridní připojení uj.](./media/functions-hybrid-powershell/hybrid-connection-ui.png)  
+1. Vyberte tlačítko **Zadat ručně** a vložte připojovací řetězec ze schránky.
+![Vložit připojení](./media/functions-hybrid-powershell/enter-manual-connection.png)  
+1. Pokud se správce hybridního připojení nezobrazuje jako připojený, restartujte správce hybridního připojení z prostředí PowerShell.
     ```powershell
     Restart-Service HybridConnectionManager
     ```
 
 ## <a name="create-an-app-setting-for-the-password-of-an-administrator-account"></a>Vytvoření nastavení aplikace pro heslo účtu správce
 
-1. V aplikaci Function App vyberte kartu **funkce platformy** .
+1. V aplikaci funkce vyberte kartu **Funkce platformy.**
 1. V části **Obecné nastavení**vyberte **Konfigurace**.
-![vybrat konfiguraci platformy](./media/functions-hybrid-powershell/select-configuration.png)  
-1. Rozbalte položku **nové nastavení aplikace** a vytvořte nové nastavení pro heslo.
+![Vybrat konfiguraci platformy](./media/functions-hybrid-powershell/select-configuration.png)  
+1. Chcete-li vytvořit nové nastavení hesla, rozbalte **nové nastavení aplikace.**
 1. Pojmenujte nastavení _ContosoUserPassword_a zadejte heslo.
-1. Vyberte **OK** a pak uložte, aby se heslo uložilo do aplikace Function.
-![přidat nastavení aplikace pro heslo](./media/functions-hybrid-powershell/add-appsetting-password.png)  
+1. Vyberte **OK** a pak uložte heslo do aplikace funkce.
+![Přidání nastavení aplikace pro heslo](./media/functions-hybrid-powershell/add-appsetting-password.png)  
 
-## <a name="create-a-function-http-trigger-to-test"></a>Vytvoření triggeru funkce HTTP pro testování
+## <a name="create-a-function-http-trigger-to-test"></a>Vytvoření funkce http aktivační událost pro testování
 
-1. Vytvořte novou funkci triggeru HTTP z aplikace Function App.
-![vytvoření nového triggeru HTTP](./media/functions-hybrid-powershell/create-http-trigger-function.png)  
-1. Nahraďte kód PowerShellu ze šablony následujícím kódem:
+1. Vytvořte novou funkci aktivační události HTTP z aplikace funkce.
+![Vytvořit novou aktivační událost HTTP](./media/functions-hybrid-powershell/create-http-trigger-function.png)  
+1. Nahraďte kód Prostředí PowerShell ze šablony následujícím kódem:
 
     ```powershell
     # Input bindings are passed in via param block.
@@ -172,12 +172,12 @@ Hybridní připojení jsou nakonfigurovaná v části síť aplikace Function Ap
                    -SessionOption (New-PSSessionOption -SkipCACheck)
     ```
 
-3. Pro otestování funkce vyberte **Uložit** a **Spustit** .
-![testování aplikace Function App](./media/functions-hybrid-powershell/test-function-hybrid.png)  
+3. Chcete-li funkci otestovat, vyberte **možnost Uložit** a **spustit.**
+![Testování aplikace funkcí](./media/functions-hybrid-powershell/test-function-hybrid.png)  
 
-## <a name="managing-other-systems-on-premises"></a>Místní správa jiných systémů
+## <a name="managing-other-systems-on-premises"></a>Správa dalších místních systémů
 
-Pomocí připojeného místního serveru se můžete připojit k ostatním serverům a systémům pro správu v místním prostředí. Díky tomu můžete spravovat operace datacentra z Azure pomocí vašich funkcí PowerShellu. Následující skript zaregistruje relaci konfigurace PowerShellu, která se spouští pod zadanými pověřeními. Tyto přihlašovací údaje musí být pro správce na vzdálených serverech. Tuto konfiguraci pak můžete použít pro přístup k dalším koncovým bodům na místním serveru nebo datacentru.
+Připojený místní server můžete použít k připojení k jiným serverům a systémům správy v místním prostředí. To vám umožní spravovat operace datového centra z Azure pomocí funkcí PowerShellu. Následující skript registruje relaci konfigurace prostředí PowerShell, která běží pod zadanými pověřeními. Tato pověření musí být pro správce na vzdálených serverech. Tuto konfiguraci pak můžete použít pro přístup k dalším koncovým bodům na místním serveru nebo datovém centru.
 
 ```powershell
 # Input bindings are passed in via param block.
@@ -244,13 +244,13 @@ Invoke-Command -ComputerName $HybridEndpoint `
                -ConfigurationName $SessionName
 ```
 
-Nahraďte následující proměnné v tomto skriptu hodnotami platnými z vašeho prostředí:
+Nahraďte následující proměnné v tomto skriptu příslušnými hodnotami z vašeho prostředí:
 * $HybridEndpoint
 * $RemoteServer
 
-Ve dvou předchozích scénářích se můžete připojit a spravovat v místních prostředích pomocí prostředí PowerShell v Azure Functions a Hybrid Connections. Doporučujeme vám seznámit se s [Hybrid Connections](../app-service/app-service-hybrid-connections.md) a [PowerShellem ve funkcích](./functions-reference-powershell.md).
+Ve dvou předchozích scénářích můžete připojit a spravovat místní prostředí pomocí PowerShellu v Azure Functions a hybridní připojení. Doporučujeme vám, abyste se dozvěděli více o [hybridních připojeních](../app-service/app-service-hybrid-connections.md) a [PowerShellu ve funkcích](./functions-reference-powershell.md).
 
-[Virtuální sítě](./functions-create-vnet.md) Azure můžete použít také k připojení k místnímu prostředí prostřednictvím Azure Functions.
+[Virtuální sítě](./functions-create-vnet.md) Azure můžete taky použít k připojení k místnímu prostředí prostřednictvím Azure Functions.
 
 ## <a name="next-steps"></a>Další kroky
 

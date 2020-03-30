@@ -1,6 +1,6 @@
 ---
-title: Použít .NET Core k dotazování
-description: V tomto tématu se dozvíte, jak pomocí .NET Core vytvořit program, který se připojí k Azure SQL Database a provede dotaz pomocí příkazů jazyka Transact-SQL.
+title: Dotaz pomocí rozhraní .NET Core
+description: Toto téma ukazuje, jak pomocí .NET Core vytvořit program, který se připojí k azure SQL database a dotazy pomocí příkazů Transact-SQL.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,55 +12,55 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/29/2019
 ms.openlocfilehash: 369c708fd3181076c6deb9d7ac9134c57a18f819
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73827093"
 ---
 # <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>Rychlý start: Použití .NET Core (jazyk C#) k dotazování databáze Azure SQL
 
-V tomto rychlém startu použijete [.NET Core](https://www.microsoft.com/net/) a C# Code pro připojení k databázi SQL Azure. Pak spustíte příkaz Transact-SQL k dotazování dat.
+V tomto rychlém startu použijete kód [.NET Core](https://www.microsoft.com/net/) a C# pro připojení k databázi Azure SQL. Potom spustíte příkaz Transact-SQL pro dotazování dat.
 
 > [!TIP]
-> Následující Microsoft Learn modul vám pomůže naučit se zdarma [, jak vyvíjet a konfigurovat aplikaci ASP.NET, která se dotazuje Azure SQL Database](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
+> Následující modul Microsoft Learn vám pomůže zdarma se naučit [vyvíjet a konfigurovat ASP.NET aplikaci, která se dotazuje na Azure SQL Database.](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro tento kurz potřebujete:
+Pro účely tohoto kurzu potřebujete:
 
-- Databázi Azure SQL. K vytvoření a konfiguraci databáze v Azure SQL Database můžete použít jeden z těchto rychlých startů:
+- Databázi Azure SQL. Pomocí jednoho z těchto rychlých startů můžete vytvořit a pak nakonfigurovat databázi v Azure SQL Database:
 
   || Izolovaná databáze | Spravovaná instance |
   |:--- |:--- |:---|
-  | Vytvoření| [Azure Portal](sql-database-single-database-get-started.md) | [Azure Portal](sql-database-managed-instance-get-started.md) |
-  || [Rozhraní příkazového řádku](scripts/sql-database-create-and-configure-database-cli.md) | [Rozhraní příkazového řádku](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
+  | Vytvořit| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
+  || [Cli](scripts/sql-database-create-and-configure-database-cli.md) | [Cli](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Konfigurace | [Pravidlo brány firewall protokolu IP na úrovni serveru](sql-database-server-level-firewall-rule.md)| [Připojení z virtuálního počítače](sql-database-managed-instance-configure-vm.md)|
-  |||[Připojení z webu](sql-database-managed-instance-configure-p2s.md)
-  |Načtení dat|Načtený Adventure Works pro každý rychlý Start|[Obnovení celosvětových dovozců](sql-database-managed-instance-get-started-restore.md)
-  |||Obnovení nebo import Adventure Works ze souboru [BacPac](sql-database-import.md) z [GitHubu](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  | Konfigurace | [Pravidlo brány firewall IP na úrovni serveru](sql-database-server-level-firewall-rule.md)| [Připojení z virtuálního virtuálního zařízení](sql-database-managed-instance-configure-vm.md)|
+  |||[Připojení z místa na místě](sql-database-managed-instance-configure-p2s.md)
+  |Načtení dat|Adventure Works načtený podle rychlého startu|[Obnovit wide world dovozci](sql-database-managed-instance-get-started-restore.md)
+  |||Obnovení nebo import adventure works ze souboru [BACPAC](sql-database-import.md) z [GitHubu](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
   > [!IMPORTANT]
-  > Skripty v tomto článku jsou určeny k používání databáze Adventure Works. Se spravovanou instancí musíte buď importovat databázi Adventure Works do databáze instance, nebo upravit skripty v tomto článku, aby používaly databázi World Importers.
+  > Skripty v tomto článku jsou zapsány k použití databáze Adventure Works. Se spravovanou instancí je nutné buď importovat databázi adventure works do databáze instancí, nebo upravit skripty v tomto článku, aby bylo nutné používat databázi Wide World Importers.
 
-- [Rozhraní .NET Core pro nainstalovaný operační systém](https://www.microsoft.com/net/core) .
+- [Rozhraní .NET Core pro nainstalovaný operační systém.](https://www.microsoft.com/net/core)
 
 > [!NOTE]
-> V tomto rychlém startu se používá databáze *mySampleDatabase* . Pokud chcete použít jinou databázi, budete muset změnit odkazy databáze a upravit `SELECT` dotaz v C# kódu.
+> Tento rychlý start používá databázi *mySampleDatabase.* Pokud chcete použít jinou databázi, budete muset změnit odkazy `SELECT` na databázi a upravit dotaz v kódu C#.
 
-## <a name="get-sql-server-connection-information"></a>Získat informace o připojení k SQL serveru
+## <a name="get-sql-server-connection-information"></a>Získání informací o připojení k serveru SQL
 
-Získejte informace o připojení, které potřebujete pro připojení ke službě Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
+Získejte informace o připojení, které potřebujete k připojení k databázi Azure SQL. Pro nadcházející postupy budete potřebovat úplný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
 
-2. Přejděte na stránku **databáze SQL** nebo **spravované instance SQL** .
+2. Přejděte na stránku **databází SQL** nebo **instancí spravovaných SQL.**
 
-3. Na stránce **Přehled** zkontrolujte plně kvalifikovaný název serveru vedle **názvu serveru** pro izolovanou databázi nebo plně kvalifikovaný název serveru vedle možnost **hostitel** pro spravovanou instanci. Pokud chcete zkopírovat název serveru nebo název hostitele, najeďte na něj ukazatelem myši a vyberte ikonu **kopírování** .
+3. Na stránce **Přehled** zkontrolujte úplný název serveru vedle **názvu serveru** pro jednu databázi nebo plně kvalifikovaný název serveru vedle **hostitele** pro spravovanou instanci. Chcete-li zkopírovat název serveru nebo název hostitele, najeďte na něj a vyberte ikonu **Kopírovat.**
 
-## <a name="get-adonet-connection-information-optional"></a>Získat informace o připojení ADO.NET (volitelné)
+## <a name="get-adonet-connection-information-optional"></a>Získání informací o připojení ADO.NET (volitelné)
 
 1. Přejděte na stránku **mySampleDatabase** a v části **Nastavení**vyberte **připojovací řetězce**.
 
@@ -68,7 +68,7 @@ Získejte informace o připojení, které potřebujete pro připojení ke služb
 
     ![Připojovací řetězec pro ADO.NET](./media/sql-database-connect-query-dotnet/adonet-connection-string2.png)
 
-3. Pokud ho máte v úmyslu používat, zkopírujte připojovací řetězec **ADO.NET** .
+3. Zkopírujte připojovací řetězec **ADO.NET,** pokud jej chcete použít.
   
 ## <a name="create-a-new-net-core-project"></a>Vytvoření nového projektu .NET Core
 
@@ -77,9 +77,9 @@ Získejte informace o připojení, které potřebujete pro připojení ke služb
     ```cmd
     dotnet new console
     ```
-    Tento příkaz vytvoří nové soubory projektu aplikace, včetně počátečního C# souboru kódu (**program.cs**), konfiguračního souboru XML (**sqltest. csproj**) a potřebných binárních souborů.
+    Tento příkaz vytvoří nové soubory projektu aplikace, včetně počátečního souboru kódu C# (**Program.cs**), konfiguračního souboru XML (**sqltest.csproj**) a potřebných binárních souborů.
 
-2. V textovém editoru otevřete soubor **sqltest. csproj** a vložte následující kód XML mezi značky `<Project>`. Tento kód XML přidá `System.Data.SqlClient` jako závislost.
+2. V textovém editoru otevřete **sqltest.csproj** a `<Project>` vložte mezi tagy následující XML. Tento xml `System.Data.SqlClient` přidá jako závislost.
 
     ```xml
     <ItemGroup>
@@ -89,12 +89,12 @@ Získejte informace o připojení, které potřebujete pro připojení ke služb
 
 ## <a name="insert-code-to-query-sql-database"></a>Vložení kódu pro dotazování databáze SQL
 
-1. V textovém editoru otevřete **program.cs**.
+1. V textovém editoru otevřete **Program.cs**.
 
-2. Nahraďte obsah následujícím kódem a přidejte odpovídající hodnoty pro váš server, databázi, uživatelské jméno a heslo.
+2. Nahraďte obsah následujícím kódem a přidejte příslušné hodnoty pro server, databázi, uživatelské jméno a heslo.
 
 > [!NOTE]
-> Chcete-li použít připojovací řetězec ADO.NET, nahraďte 4 řádky v kódu nastavení server, databáze, uživatelské jméno a heslo následujícím řádkem. V řetězci nastavte své uživatelské jméno a heslo.
+> Chcete-li použít připojovací řetězec ADO.NET, nahraďte 4 řádky v nastavení kódu serveru, databáze, uživatelského jména a hesla níže uvedenou řádkou. V řetězci nastavte uživatelské jméno a heslo.
 >
 >    `builder.ConnectionString="<your_ado_net_connection_string>";`
 
@@ -156,7 +156,7 @@ namespace sqltest
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
-1. Na příkazovém řádku spusťte následující příkazy.
+1. Na výzvu spusťte následující příkazy.
 
    ```cmd
    dotnet restore
@@ -192,11 +192,11 @@ namespace sqltest
 
    Done. Press enter.
    ```
-3. Kliknutím na tlačítko **ENTER** zavřete okno aplikace.
+3. Chcete-li zavřít okno aplikace, zvolte **Enter.**
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Začínáme s .NET Core v systému Windows, Linux nebo macOS pomocí příkazového řádku](/dotnet/core/tutorials/using-with-xplat-cli)
-- Naučte se, jak se [připojit k databázi SQL Azure a dotazovat ji pomocí .NET Framework a sady Visual Studio](sql-database-connect-query-dotnet-visual-studio.md).  
-- Přečtěte si, jak [navrhnout první databázi SQL Azure pomocí SSMS](sql-database-design-first-database.md) nebo [navrhnout databázi SQL Azure a připojit se C# pomocí a ADO.NET](sql-database-design-first-database-csharp.md).
+- Zjistěte, jak [připojit a dotazovat se na databázi Azure SQL pomocí rozhraní .NET Framework a Visual Studia](sql-database-connect-query-dotnet-visual-studio.md).  
+- Naučte se [navrhovat první databázi Azure SQL pomocí SSMS](sql-database-design-first-database.md) nebo [navrhnout databázi Azure SQL a spojit se s C# a ADO.NET](sql-database-design-first-database-csharp.md).
 - Další informace o .NET najdete v [dokumentaci rozhraní .NET](https://docs.microsoft.com/dotnet/).

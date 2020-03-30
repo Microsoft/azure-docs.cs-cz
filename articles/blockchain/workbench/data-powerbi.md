@@ -5,15 +5,15 @@ ms.date: 05/09/2019
 ms.topic: article
 ms.reviewer: mmercuri
 ms.openlocfilehash: 6e1f160c3563a280548c74ebe84f30bf08945c3f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74324795"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>Použití dat služby Azure Blockchain Workbench v Power BI
 
-Microsoft Power BI umožňuje snadno generovat výkonné sestavy z databází SQL DB pomocí Power BI Desktopu a potom je publikovat na stránku [https://www.powerbi.com](https://www.powerbi.com).
+Microsoft Power BI umožňuje snadno generovat výkonné sestavy z databází SQL DB pomocí [https://www.powerbi.com](https://www.powerbi.com)Power BI Desktop a pak je publikovat do aplikace .
 
 Tento článek obsahuje podrobný návod, jak se připojit k databázi SQL Database služby Azure Blockchain Workbench z Power BI Desktopu, vytvořit sestavu a nasadit ji na stránku powerbi.com.
 
@@ -21,7 +21,7 @@ Tento článek obsahuje podrobný návod, jak se připojit k databázi SQL Datab
 
 * Stáhněte si [Power BI Desktop](https://aka.ms/pbidesktopstore).
 
-## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>Připojení Power BI k datům v Azure blockchain Workbench
+## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>Připojení Power BI k datům v Azure Blockchain Workbench
 
 1.  Otevřete Power BI Desktop.
 2.  Vyberte **Načíst data**.
@@ -43,7 +43,7 @@ Tento článek obsahuje podrobný návod, jak se připojit k databázi SQL Datab
 
     ![Navigátor](./media/data-powerbi/navigator.png)
 
-7.  Vyberte zobrazení, které chcete zahrnout. Pro demonstrační účely jsme zahrnuli **vwContractAction**, která poskytuje podrobné informace o akcích, které byly provedeny ve smlouvě.
+7.  Vyberte zobrazení, které chcete zahrnout. Pro demonstrační účely, zahrnujeme **vwContractAction**, který poskytuje podrobnosti o akcích, které byly ve smlouvě.
 
     ![Výběr zobrazení](./media/data-powerbi/select-views.png)
 

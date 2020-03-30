@@ -1,6 +1,6 @@
 ---
-title: Kontrola odhadů nákladů v Plánovač nasazení služby Azure Site Recovery
-description: V tomto článku se dozvíte, jak zkontrolovat odhad nákladů v Plánovač nasazení služby Azure Site Recovery pro zotavení po havárii VMware.
+title: Kontrola odhadů nákladů v plánovači nasazení webu Azure
+description: Tento článek popisuje, jak zkontrolovat odhady nákladů v Plánovači nasazení webu Azure pro zotavení po havárii v systému VMware.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 7/29/2019
 ms.author: mayg
 ms.openlocfilehash: 27678fff1c0322f9755e7726026c73934810d5d6
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73953340"
 ---
-# <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>Kontrola odhadů nákladů v Plánovač nasazení VMware 
+# <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>Kontrola odhadů nákladů v plánovači nasazení vmware 
 
 Sestava plánovače nasazení obsahuje souhrn odhadu nákladů na listech [Recommendations](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations) (Doporučení) a podrobnou analýzu nákladů na listu Cost Estimation (Odhad nákladů). Obsahuje podrobnou analýzu nákladů na virtuální počítač. 
 
 >[!Note]
->Aktuální verze nástroje pro plánování nasazení v 2.5 poskytuje odhad nákladů na virtuální počítače, které se replikují do Managed Disks.
+>Aktuální verze nástroje plánovačnasazení verze 2.5 poskytuje odhad nákladů pro virtuální počítače replikující se na spravované disky.
 
 ### <a name="cost-estimation-summary"></a>Souhrn odhadu nákladů 
 Graf zobrazuje přehled odhadovaných celkových nákladů na zotavení po havárii do Azure ve zvolené cílové oblasti a měnu, kterou jste zadali pro generování sestav.
@@ -101,7 +101,7 @@ Ruční přidání virtuálních počítačů:
 
 * Number of VMs, IaaS size (Your selection)
 * Storage Type (Standard/Premium)
-* VIRTUÁLNÍ počítač: Celková velikost úložiště (GB) zdrojového počítače
+* Celková velikost úložiště virtuálního počítače (GB) zdrojového počítače
 * Number of DR drills in a year 
 * Each DR drill duration (Days) 
 * OS Type
@@ -122,7 +122,7 @@ Ruční přidání virtuálních počítačů:
 
 **Storage type:** Typ úložiště, který virtuální počítač využívá. Je to Storage úrovně Standard nebo Premium.
 
-**Virtuální počítač celková velikost úložiště (GB)** : Celková velikost úložiště zdrojového virtuálního počítače.
+**Celková velikost úložiště virtuálního počítače (GB):** Celkové úložiště zdrojového virtuálního počítače.
 
 **Number of DR-Drills in a year:** Počet, kolikrát za rok provedete nácvik zotavení po havárii. Ve výchozím nastavení je to 4krát do roka. Můžete změnit období pro konkrétní virtuální počítače nebo použít novou hodnotu pro všechny virtuální počítače, a to zadáním požadované hodnoty do horního řádku a kliknutím na tlačítko Apply to all (Použít u všech). Na základě počtu nácviků zotavení po havárii za rok a délce trvání jednotlivých nácviků se vypočtou celkové náklady na nácvik zotavení po havárii.  
 
@@ -150,7 +150,7 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 ## <a name="supported-currencies"></a>Podporované měny
 Plánovač nasazení Azure Site Recovery může vygenerovat sestavu nákladů s libovolnou z následujících měn.
 
-|Měna|Název||Měna|Název||Měna|Název|
+|Měna|Name (Název)||Měna|Name (Název)||Měna|Name (Název)|
 |---|---|---|---|---|---|---|---|
 |ARS|Argentinské peso ($)||AUD|Australský dolar ($)||BRL|Brazilský real (R$)|
 |CAD|Kanadský dolar ($)||CHF|Švýcarský frank (chf)||DKK|Dánská koruna (kr)|

@@ -16,47 +16,47 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 894d8dfb7f870ec4a2a11f1d75ee0376b25d8c7f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74014456"
 ---
-# <a name="users-flagged-for-risk-report-in-the-azure-portal"></a>Sestava uživatelů označených příznakem rizika v Azure Portal
+# <a name="users-flagged-for-risk-report-in-the-azure-portal"></a>Uživatelé označeni pro sestavu rizik na webu Azure Portal
 
-Azure Active Directory (Azure AD) detekuje podezřelé akce týkající se vašich uživatelských účtů. Pro každou zjištěnou akci se vytvoří záznam s názvem [zjišťování rizik](concept-risk-events.md) .
+Azure Active Directory (Azure AD) detekuje podezřelé akce související s vašimi uživatelskými účty. Pro každou zjištěnou akci je vytvořen záznam nazývaný [zjišťování rizik.](concept-risk-events.md)
 
-K sestavám zabezpečení můžete přistupovat z [Azure Portal](https://portal.azure.com) tak, že vyberete okno **Azure Active Directory** a pak přejdete do části **zabezpečení** . 
+K sestavám zabezpečení z [portálu Azure](https://portal.azure.com) se dostanete tak, že vyberete okno **Azure Active Directory** a pak přejdete do části **Zabezpečení.** 
 
-Pro výpočet se používají zjištěná zjištění rizik:
+Detekované detekce rizik se používají k výpočtu:
 
-- **Riziková přihlášení** –Rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. 
+- **Riziková přihlášení** – Rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. 
 
 - **Uživatelé označení příznakem rizika** – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený. 
 
-Informace o tom, jak nakonfigurovat zásady, které aktivují tyto detekce rizik, najdete v tématu [Postup konfigurace zásad rizik uživatelů](../identity-protection/howto-user-risk-policy.md). 
+Informace o konfiguraci zásad, které tato zjišťování rizik aktivují, naleznete [v tématu Konfigurace zásad rizik pro uživatele](../identity-protection/howto-user-risk-policy.md). 
 
 ![Riziková přihlášení](./media/concept-user-at-risk/10.png)
 
 
-## <a name="what-azure-ad-license-do-you-need-to-access-the-users-at-risk-report"></a>Jaká licence Azure AD potřebujete pro přístup k sestavě rizik uživatelů?  
+## <a name="what-azure-ad-license-do-you-need-to-access-the-users-at-risk-report"></a>Jakou licenci Azure AD potřebujete pro přístup k ohlášení ohrožených uživatelů?  
 
 Sestavy uživatelů označených příznakem rizika nabízí všechny edice Azure Active Directory. Úroveň podrobností sestav se však mezi jednotlivými edicemi liší: 
 
-- V **edicích Azure Active Directory Free a Basic**se zobrazí seznam uživatelů označených příznakem rizika. 
+- V **edicích Azure Active Directory Free a Basic**získáte seznam uživatelů označených příznakem riziko. 
 
-- Kromě toho edice **Azure Active Directory Premium 1** umožňuje prozkoumávat některé z základních detekcí rizik zjištěných pro jednotlivé sestavy. 
+- Kromě toho **azure Active Directory Premium 1** vydání umožňuje prozkoumat některé základní zjišťování rizik, které byly zjištěny pro každou sestavu. 
 
-- Edice **Azure Active Directory Premium 2** poskytuje nejpodrobnější informace o všech základních detekcích rizik a umožňuje také konfigurovat zásady zabezpečení, které automaticky reagují na nakonfigurované úrovně rizika.
+- **Edice Azure Active Directory Premium 2** poskytuje nejpodrobnější informace o všech základních zjišťovánírizik a také umožňuje konfigurovat zásady zabezpečení, které automaticky reagují na nakonfigurované úrovně rizika.
 
 
-## <a name="users-at-risk-report-for-azure-ad-free-and-basic-editions"></a>Sestava rizik uživatelů pro edice Free a Basic pro Azure AD
+## <a name="users-at-risk-report-for-azure-ad-free-and-basic-editions"></a>Sestava ohrožených uživatelů pro azure a dlaze zdarma a základní edice
 
-Zpráva uživatelé označení příznakem rizika v edicích Free a Basic služby Azure AD nabízí seznam uživatelských účtů, které mohou být ohroženy. 
+Uživatelé označeny pro zprávu o rizicích ve službě Azure AD zdarma a základní edice poskytuje seznam uživatelských účtů, které mohou být ohroženy. 
 
 ![Riziková přihlášení](./media/concept-user-at-risk/03.png)
 
-Když se vybere uživatel, zobrazí se přihlašovací údaje. U ohrožených uživatelů můžete zkontrolovat historii jejich přihlášení a v případě potřeby resetovat heslo.
+Výběr uživatele poskytuje přihlašovací informace. U ohrožených uživatelů můžete zkontrolovat historii jejich přihlášení a v případě potřeby resetovat heslo.
 
 V tomto dialogovém okně máte možnost:
 
@@ -67,17 +67,17 @@ V tomto dialogovém okně máte možnost:
 
 Pro podrobnější informace potřebujete prémiovou licenci.
 
-## <a name="users-at-risk-report-for-azure-ad-premium-editions"></a>Sestava rizik uživatelů pro edice Azure AD Premium
+## <a name="users-at-risk-report-for-azure-ad-premium-editions"></a>Sestava ohrožených uživatelů pro edice Azure AD premium
 
-Sestava uživatelé označení příznakem rizika v edicích Azure AD Premium vám poskytne:
+Uživatelé označeni pro sestavu rizik v edicích Azure AD premium vám poskytuje:
 
 - Seznam uživatelských účtů, které by mohly být ohrožené 
 
-- Agregované informace o zjištěných [typech detekce rizik](concept-risk-events.md)
+- Souhrnné informace o [typech detekce rizik,](concept-risk-events.md) které byly zjištěny
 
 - Možnost stažení sestavy
 
-- Možnost konfigurace [zásad odstraňování rizik uživatelů](../identity-protection/howto-user-risk-policy.md)  
+- Výběr možnosti konfigurace [zásad odstraňování rizik uživatelů](../identity-protection/howto-user-risk-policy.md)  
 
 ![Riziková přihlášení](./media/concept-user-at-risk/71.png)
 
@@ -89,18 +89,18 @@ Po výběru uživatele získáte podrobné zobrazení sestavy pro tohoto uživat
 
 - Zavřít všechny události
 
-- Prozkoumat zjištěná zjištění rizik pro uživatele. 
+- Prozkoumejte hlášené detekce rizik pro uživatele. 
 
 ![Riziková přihlášení](./media/concept-user-at-risk/324.png)
 
-Pokud chcete zjistit detekci rizik, vyberte ji ze seznamu a otevřete okno **Podrobnosti** pro toto zjišťování rizik. V okně **podrobností** máte možnost buď ručně uzavřít detekci rizik, nebo znovu aktivovat ručně uzavřenou detekci rizik. 
+Chcete-li prozkoumat detekci rizik, vyberte jednu ze seznamu a otevřete okno **Podrobnosti** pro tuto detekci rizik. V okně **Podrobnosti** máte možnost buď ručně uzavřít detekci rizik, nebo znovu aktivovat ručně uzavřenou detekci rizik. 
 
 ![Riziková přihlášení](./media/concept-user-at-risk/325.png)
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Jak nakonfigurovat zásady rizik uživatelů](../identity-protection/howto-user-risk-policy.md)
-- [Jak nakonfigurovat zásady pro nápravu rizik](../identity-protection/howto-user-risk-policy.md)
-- [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
+- [Jak nakonfigurovat zásady rizika pro uživatele](../identity-protection/howto-user-risk-policy.md)
+- [Jak nakonfigurovat zásadu nápravy rizik](../identity-protection/howto-user-risk-policy.md)
+- [Ochrana identit služby Azure Active Directory](../active-directory-identityprotection.md)
 

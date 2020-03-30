@@ -1,6 +1,6 @@
 ---
-title: Migrace zásad WAF pro Azure Application Gateway
-description: Naučte se migrovat zásady firewallu webových aplikací Azure pomocí Azure PowerShell.
+title: Migrace zásad WAF pro azure aplikační bránu
+description: Zjistěte, jak migrovat zásady Azure Web Application Firewall pomocí Azure PowerShellu.
 services: web-application-firewall
 ms.topic: conceptual
 author: vhorne
@@ -8,26 +8,26 @@ ms.service: web-application-firewall
 ms.date: 11/19/2019
 ms.author: ant
 ms.openlocfilehash: 1fac524af4b69f8e35934840643c6d3ad99fe1cd
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74174600"
 ---
-# <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>Migrace zásad firewallu webových aplikací pomocí Azure PowerShell
+# <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>Migrace zásad brány firewall webových aplikací pomocí Azure PowerShellu
 
-Tento skript usnadňuje přechod z WAF konfigurace nebo vlastní pravidla WAF zásady na úplné zásady WAF. Na portálu se může zobrazit upozornění, které se dá *migrovat na zásady WAF*, nebo můžete chtít, aby se nové funkce Public Preview WAF, jako jsou vlastní pravidla pro inshodě, zásady pro jednotlivé lokality a identifikátory URI WAF, nebo RuleSet pro zmírnění hrozeb. Pokud chcete použít některou z těchto funkcí, potřebujete k vaší aplikační bráně přidružené úplné zásady WAF. 
+Tento skript usnadňuje přechod z konfigurace WAF nebo zásadwaf pouze pro vlastní pravidla na úplnou zásadu WAF. Na portálu se může zobrazit upozornění, které říká, že *migrujte do zásad WAF*, nebo můžete chtít nové funkce WAF ve verzi Public Preview, jako jsou vlastní pravidla geomatch, zásady WAF pro web a URI nebo sada pravidel pro zmírnění rizik a robotů. Chcete-li použít některou z těchto funkcí, potřebujete úplné zásady WAF přidružené k vaší aplikační bráně. 
 
-Další informace o vytváření nových zásad WAF najdete v tématu věnovaném [Vytvoření zásad firewallu webových aplikací pro Application Gateway](create-waf-policy-ag.md). Informace o migraci najdete v tématu [migrace na zásady WAF](create-waf-policy-ag.md#migrate-to-waf-policy).
+Další informace o vytvoření nové zásady WAF naleznete v [tématu Vytvoření zásad brány firewall webových aplikací pro aplikaci Gateway](create-waf-policy-ag.md). Informace o migraci naleznete v [tématu Migrace do zásad WAF](create-waf-policy-ag.md#migrate-to-waf-policy).
 
-## <a name="to-migrate-to-waf-policy-using-the-migration-script"></a>Migrace na zásady WAF pomocí skriptu migrace
+## <a name="to-migrate-to-waf-policy-using-the-migration-script"></a>Migrace do zásad WAF pomocí skriptu pro migraci
 
-Skript migrace spustíte pomocí následujících kroků: 
+Ke spuštění skriptu pro migraci použijte následující kroky: 
 
-1. Otevřete následující okno Cloud shellu nebo ho otevřete v rámci portálu.
-2. Zkopírujte skript do okna Cloud Shell a spusťte ho.
-3. Skript požádá o ID předplatného, název skupiny prostředků, název Application Gateway, ke kterému je přidružená konfigurace WAF, a název nové zásady WAF, které se mají vytvořit. Po zadání těchto vstupů se skript spustí a vytvoří vaše nové zásady WAF.
-4. Přidružte nové zásady WAF k aplikační bráně. Na portálu klikněte na zásady WAF a vyberte kartu **přidružené služby Application Gateway** . Vyberte **přidružit Application Gateway** a pak vyberte Application Gateway k přidružení zásady WAF k.
+1. Otevřete následující okno prostředí cloud nebo otevřete jedno z portálu.
+2. Zkopírujte skript do okna prostředí cloudu a spusťte jej.
+3. Skript požádá o ID předplatného, název skupiny prostředků, název aplikační brány, ke které je přidružena konfigurace WAF, a název nové zásady WAF, které chcete vytvořit. Jakmile zadáte tyto vstupy, skript se spustí a vytvoří nové zásady WAF
+4. Přidružte nové zásady WAF k bráně aplikace. Přejděte na zásadu WAF na portálu a vyberte kartu **Přidružené aplikační brány.** **Associate an Application Gateway**
 
 ```azurepowershell-interactive
 <#PSScriptInfo
@@ -212,4 +212,4 @@ Main
 ```
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [skupinách pravidel a pravidlech pro Firewall webových aplikací](application-gateway-crs-rulegroups-rules.md).
+Další informace o [skupinách a pravidlech](application-gateway-crs-rulegroups-rules.md)serveru FIREWALL brány firewall webových aplikací .

@@ -1,87 +1,87 @@
 ---
-title: Webhooky, které reagují na akce registru
-description: Naučte se, jak pomocí webhooků aktivovat události, když se akce push nebo Pull vyskytnou v úložištích registru.
+title: Webhooky pro reakci na akce registru
+description: Naučte se používat webhooky k aktivaci událostí, když dojde k akcím push nebo pull v repozitářích registru.
 ms.topic: article
 ms.date: 05/24/2019
 ms.openlocfilehash: 5e6fd2d9f4c7727365a8e2fe3893aafebfeb7bd4
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74454377"
 ---
-# <a name="using-azure-container-registry-webhooks"></a>Používání Azure Container Registry webhooků
+# <a name="using-azure-container-registry-webhooks"></a>Použití webových háků registru kontejnerů Azure
 
-Registr kontejnerů Azure ukládá a spravuje privátní image kontejnerů Docker, podobně jako Docker Hub ukládá veřejné image Docker. Může také hostovat úložiště pro [grafy Helm](container-registry-helm-repos.md) (Preview), formát balení pro nasazení aplikací do Kubernetes. Webhooky můžete použít k aktivaci událostí, když probíhají určité akce v jednom z úložišť registru. Webhooky můžou reagovat na události na úrovni registru nebo můžou být vymezené na konkrétní značku úložiště. Pomocí [geograficky replikovaného](container-registry-geo-replication.md) registru můžete každý Webhook nakonfigurovat tak, aby reagoval na události v konkrétní místní replice.
+Registr kontejnerů Azure uchovává a spravuje privátní image kontejnerů Dockeru podobným způsobem, jakým Docker Hub uchovává veřejné image Dockeru. Může také hostovat repozitáře pro [grafy Helm](container-registry-helm-repos.md) (preview), formát balení pro nasazení aplikací do Kubernetes. Pomocí webhooků můžete aktivovat události, když se určité akce uskuteční v jednom z úložišť registru. Webhooky mohou reagovat na události na úrovni registru nebo mohou být vymezeny na konkrétní značku úložiště. Pomocí [geograficky replikovaného](container-registry-geo-replication.md) registru nakonfigurujete každý webhook tak, aby reagoval na události v konkrétní místní replice.
 
-Podrobnosti o požadavcích Webhooku najdete v tématu [Azure Container Registry Reference k schématu Webhooku](container-registry-webhook-reference.md).
+Podrobnosti o požadavcích na webhooku najdete v [tématu Azure Container Registry webhook](container-registry-webhook-reference.md)odkaz na schéma .
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Azure Container Registry – vytvořte registr kontejnerů ve vašem předplatném Azure. Použijte například [Azure Portal](container-registry-get-started-portal.md) nebo rozhraní příkazového [řádku Azure CLI](container-registry-get-started-azure-cli.md). [Azure Container Registry SKU](container-registry-skus.md) mají různé kvóty webhooků.
-* Docker CLI – Pokud chcete nastavit místní počítač jako hostitele Docker a získat přístup k příkazům rozhraní příkazového řádku Docker, nainstalujte [modul Docker](https://docs.docker.com/engine/installation/).
+* Registr kontejnerů Azure – Vytvořte registr kontejnerů ve svém předplatném Azure. Například použijte [portál Azure](container-registry-get-started-portal.md) nebo [Azure CLI](container-registry-get-started-azure-cli.md). [Virtuální počítače registru azure](container-registry-skus.md) registru mají různé kvóty webhooky.
+* Rozhraní příkazového řádku Dockeru – Chcete-li nastavit místní počítač jako hostitele Dockeru a získat přístup k příkazům rozhraní příkazového řádku Dockeru, nainstalujte si modul runtime [Docker Engine](https://docs.docker.com/engine/installation/).
 
-## <a name="create-webhook---azure-portal"></a>Vytvořit Webhook – Azure Portal
+## <a name="create-webhook---azure-portal"></a>Vytvořit webhook – portál Azure
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
-1. Přejděte do registru kontejneru, ve kterém chcete vytvořit Webhook.
-1. V části **služby**vyberte **Webhooky**.
-1. Na panelu nástrojů Webhooku vyberte **Přidat** .
-1. Vyplňte formulář *vytvořit Webhook* s následujícími informacemi:
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přejděte do registru kontejneru, ve kterém chcete vytvořit webhooku.
+1. V části **Služby**vyberte **možnost Webhooks**.
+1. Vyberte **Přidat** na panelu nástrojů webhooku.
+1. Vyplňte formulář *Vytvořit webhook* u následujících informací:
 
 | Hodnota | Popis |
 |---|---|
-| Název Webhooku | Název, který chcete předat Webhooku. Může obsahovat jenom písmena a číslice a musí mít délku 5-50 znaků. |
-| Umístění | V případě [geograficky replikovaného](container-registry-geo-replication.md) registru zadejte oblast Azure repliky registru. 
-| Identifikátor URI služby | Identifikátor URI, kam má Webhook odeslat oznámení POST |
-| Vlastní hlavičky | Hlavičky, které chcete předat spolu s požadavkem POST. Měly by být ve formátu "klíč: hodnota". |
-| Aktivační akce | Akce, které aktivují Webhook Akce zahrnují vložení obrázku, odstranění obrázku, vložení grafu Helm, odstranění grafu Helm a karanténu obrázku. Můžete vybrat jednu nebo více akcí pro aktivaci Webhooku. |
-| Status | Stav Webhooku po jeho vytvoření. Tato možnost je ve výchozím nastavení povolená. |
-| Rozsah | Rozsah, ve kterém Webhook pracuje. Pokud tento parametr nezadáte, bude obor pro všechny události v registru. Dá se zadat pro úložiště nebo značku pomocí formátu "úložiště: Značka" nebo "úložiště: *" pro všechny značky v úložišti. |
+| Název webhooku | Název, který chcete dát webhooku. Může obsahovat pouze písmena a číslice a musí mít délku 5-50 znaků. |
+| Umístění | Pro [geograficky replikovaný](container-registry-geo-replication.md) registr zadejte oblast Azure repliky registru. 
+| Identifikátor URI služby | Identifikátor URI, kde webhooku by měl odeslat oznámení POST. |
+| Vlastní hlavičky | Záhlaví, které chcete předat spolu s požadavkem POST. Měly by být ve formátu "klíč: hodnota". |
+| Spouštěcí akce | Akce, které aktivují webhooku. Akce zahrnují nabízení obrázků, odstranění obrázku, nabízení grafu Helm, odstranění helmového grafu a karanténu obrázků. Můžete zvolit jednu nebo více akcí pro aktivaci webového háčku. |
+| Status | Stav webhooku po jeho vytvoření. Ve výchozím nastavení je povolena. |
+| Rozsah | Obor, ve kterém webhooku funguje. Pokud není zadán, obor je pro všechny události v registru. Lze jej zadat pro úložiště nebo značku pomocí formátu "repository:tag" nebo "repository:*" pro všechny značky v úložišti. |
 
-Příklad formuláře Webhooku:
+Příklad formuláře webhooku:
 
-![ACR uživatelského rozhraní pro vytvoření Webhooku v Azure Portal](./media/container-registry-webhook/webhook.png)
+![Vytvoření uživatelského uživatelského uživatelského uživatelského uživatelského uživatelského uživatelského místa pro webhook u ACR na webu Azure Portal](./media/container-registry-webhook/webhook.png)
 
-## <a name="create-webhook---azure-cli"></a>Vytvoření Webhooku – Azure CLI
+## <a name="create-webhook---azure-cli"></a>Vytvoření webhooku – azure cli
 
-Pokud chcete vytvořit Webhook pomocí Azure CLI, použijte příkaz [AZ ACR Webhook Create](/cli/azure/acr/webhook#az-acr-webhook-create) . Následující příkaz vytvoří Webhook pro všechny události odstranění imagí v registru *mycontainerregistry*:
+Chcete-li vytvořit webhooku pomocí příkazového příkazu Azure CLI, použijte příkaz [az acr webhook create.](/cli/azure/acr/webhook#az-acr-webhook-create) Následující příkaz vytvoří webhooku pro všechny události odstranění bitové kopie v registru *mycontainerregistry*:
 
 ```azurecli-interactive
 az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --actions delete --uri http://webhookuri.com
 ```
 
-## <a name="test-webhook"></a>Test Webhooku
+## <a name="test-webhook"></a>Test webhooku
 
 ### <a name="azure-portal"></a>portál Azure
 
-Před použitím Webhooku ho můžete otestovat pomocí tlačítka **otestovat** . Nástroj test odesílá do zadaného koncového bodu obecný požadavek POST a zaznamená odpověď. Použití funkce příkazem testovat v nástroji můžete ověřit, že jste Webhook správně nakonfigurovali.
+Před použitím webhooku jej můžete otestovat pomocí tlačítka **Ping.** Příkaz Ping odešle obecný požadavek POST zadanému koncovému bodu a zaznamená odpověď. Pomocí funkce ping vám může pomoci ověřit, že jste správně nakonfigurovali webhook.
 
-1. Vyberte Webhook, který chcete testovat.
-2. Na horním panelu nástrojů vyberte **příkaz Testovat**.
-3. Ve sloupci **stav HTTP** ověřte odpověď koncového bodu.
+1. Vyberte webhook, který chcete testovat.
+2. V horním panelu nástrojů vyberte **příkaz Ping**.
+3. Zkontrolujte odpověď koncového bodu ve sloupci **STAV HTTP.**
 
-![ACR uživatelského rozhraní pro vytvoření Webhooku v Azure Portal](./media/container-registry-webhook/webhook-02.png)
+![Vytvoření uživatelského uživatelského uživatelského uživatelského uživatelského uživatelského uživatelského místa pro webhook u ACR na webu Azure Portal](./media/container-registry-webhook/webhook-02.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Pokud chcete otestovat Webhook ACR pomocí Azure CLI, použijte příkaz [AZ ACR Webhook příkazu příkazového](/cli/azure/acr/webhook#az-acr-webhook-ping) řádku.
+Chcete-li otestovat webhook ACR s Azure CLI, použijte příkaz [ping az acr webhook.](/cli/azure/acr/webhook#az-acr-webhook-ping)
 
 ```azurecli-interactive
 az acr webhook ping --registry mycontainerregistry --name myacrwebhook01
 ```
 
-Výsledky zobrazíte pomocí příkazu [AZ ACR Webhook list-Events](/cli/azure/acr/webhook) .
+Chcete-li zobrazit výsledky, použijte [az acr webhook seznam událostí](/cli/azure/acr/webhook) příkazu.
 
 ```azurecli-interactive
 az acr webhook list-events --registry mycontainerregistry08 --name myacrwebhook01
 ```
 
-## <a name="delete-webhook"></a>Odstranit Webhook
+## <a name="delete-webhook"></a>Odstranit webový hák
 
 ### <a name="azure-portal"></a>portál Azure
 
-Každý Webhook se dá odstranit tak, že vyberete Webhook a pak na Azure Portal tlačítko **Odstranit** .
+Každý webhooku se dá odstranit výběrem webhooku a potom tlačítkem **Delete** na webu Azure Portal.
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -91,14 +91,14 @@ az acr webhook delete --registry mycontainerregistry --name myacrwebhook01
 
 ## <a name="next-steps"></a>Další kroky
 
-### <a name="webhook-schema-reference"></a>Referenční dokumentace schématu Webhooku
+### <a name="webhook-schema-reference"></a>Webhook odkaz na schéma
 
-Podrobnosti o formátu a vlastnostech datových částí události JSON vygenerovaných Azure Container Registry najdete v referenčních informacích o schématu Webhooku:
+Podrobnosti o formátu a vlastnostech datové části událostí JSON vyzařované registrem kontejnerů Azure najdete v tématu odkaz na schéma webhooku:
 
-[Odkaz na schéma Azure Container Registry Webhooku](container-registry-webhook-reference.md)
+[Odkaz na webhookové schéma registru azure kontejnerů](container-registry-webhook-reference.md)
 
-### <a name="event-grid-events"></a>Události Event Grid
+### <a name="event-grid-events"></a>Události v mřížce událostí
 
-Kromě událostí Webhooku v nativním registru, které jsou popsány v tomto článku, Azure Container Registry mohou generovat události Event Grid:
+Kromě nativních událostí webhooku registru popsaných v tomto článku může Registr kontejnerů Azure vyzařovat události do mřížky událostí:
 
-[Rychlý Start: odeslání událostí registru kontejneru do Event Grid](container-registry-event-grid-quickstart.md)
+[Úvodní příručka: Odeslání událostí registru kontejneru do mřížky událostí](container-registry-event-grid-quickstart.md)

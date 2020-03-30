@@ -5,23 +5,23 @@ author: zr-msft
 ms.author: zarhoads
 ms.date: 07/17/2019
 ms.topic: conceptual
-description: Pomocí vlastního informačního kanálu NuGet můžete získat přístup k balíčkům NuGet v prostoru pro vývoj Azure a používat je.
+description: Použijte vlastní NuGet feed pro přístup a použití balíčků NuGet v Azure Dev Space.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery
 manager: gwallace
 ms.openlocfilehash: 39984a3b3a1be64a497fb8088559ccfcdee4f1c6
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74325730"
 ---
 # <a name="use-a-custom-nuget-feed-with-azure-dev-spaces"></a>Použití vlastního informačního kanálu NuGet s Azure Dev Spaces
 
-Kanál NuGet poskytuje pohodlný způsob, jak zahrnout zdroje balíčků do projektu. Azure Dev Spaces musí mít přístup k tomuto informačnímu kanálu, aby bylo možné správně nainstalovat závislosti v kontejneru Docker.
+NuGet kanál poskytuje pohodlný způsob, jak zahrnout zdroje balíčků v projektu. Azure Dev Spaces potřebuje přístup k tomuto kanálu, aby se závislosti správně nainstalovaly v kontejneru Dockeru.
 
-## <a name="set-up-a-nuget-feed"></a>Nastavení kanálu NuGet
+## <a name="set-up-a-nuget-feed"></a>Nastavení informačního kanálu NuGet
 
-Přidejte [odkaz na balíček](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files) pro vaši závislost do souboru `*.csproj` pod uzlem `PackageReference`. Příklad:
+Přidejte [odkaz na balíček](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files) `*.csproj` pro vaši `PackageReference` závislost v souboru pod uzlovým. Například:
 
 ```xml
 <ItemGroup>
@@ -31,7 +31,7 @@ Přidejte [odkaz na balíček](https://docs.microsoft.com/nuget/consume-packages
 </ItemGroup>
 ```
 
-Vytvořte soubor [NuGet. config](https://docs.microsoft.com/nuget/reference/nuget-config-file) ve složce projektu a nastavte `packageSources` a `packageSourceCredentials` oddíly pro váš informační kanál NuGet. Oddíl `packageSources` obsahuje adresu URL vašeho informačního kanálu, která musí být přístupná z vašeho clusteru AKS. `packageSourceCredentials` jsou přihlašovací údaje pro přístup k informačnímu kanálu. Příklad:
+Vytvořte soubor [NuGet.Config](https://docs.microsoft.com/nuget/reference/nuget-config-file) ve složce `packageSources` `packageSourceCredentials` projektu a nastavte oddíly a pro informační kanál NuGet. Tato `packageSources` část obsahuje adresu URL zdroje, která musí být přístupná z clusteru AKS. Jsou `packageSourceCredentials` pověření pro přístup k informačníkanál. Například:
 
 ```xml
 <packageSources>
@@ -46,17 +46,17 @@ Vytvořte soubor [NuGet. config](https://docs.microsoft.com/nuget/reference/nuge
 </packageSourceCredentials>
 ```
 
-Aktualizujte fázemi a zkopírujte soubor `NuGet.Config` do image. Příklad:
+Aktualizujte soubory Dockerfiles `NuGet.Config` a zkopírujte soubor do obrazu. Například:
 
 ```console
 COPY ["<project folder>/NuGet.Config", "./NuGet.Config"]
 ```
 
 > [!TIP]
-> Ve Windows, `NuGet.Config`, `Nuget.Config`a `nuget.config` všechny fungují jako platné názvy souborů. V systému Linux je pro tento soubor pouze `NuGet.Config` platný název souboru. Vzhledem k tomu, že Azure Dev Spaces používá Docker a Linux, musí mít tento soubor název `NuGet.Config`. Pojmenování můžete opravit ručně nebo spuštěním `dotnet restore --configfile nuget.config`.
+> V systému `Nuget.Config`Windows `nuget.config` , `NuGet.Config`, a všechny funguje jako platné názvy souborů. Na Linuxu `NuGet.Config` je platný název souboru pouze pro tento soubor. Vzhledem k tomu, že Azure Dev `NuGet.Config`Spaces používá Docker a Linux, musí být tento soubor pojmenován . Pojmenování můžete opravit ručně nebo `dotnet restore --configfile nuget.config`spuštěním .
 
 
-Pokud používáte Git, neměli byste mít přihlašovací údaje pro váš informační kanál NuGet ve správě verzí. Přidejte `NuGet.Config` do `.gitignore` pro váš projekt, aby se soubor `NuGet.Config` nepřidal do správy verzí. Azure Dev Spaces bude tento soubor potřebovat během procesu sestavení image kontejneru, ale ve výchozím nastavení respektuje pravidla definovaná v `.gitignore` a `.dockerignore` během synchronizace. Pokud chcete změnit výchozí nastavení a povolíte Azure Dev Spaces synchronizaci `NuGet.Config` souboru, aktualizujte soubor `azds.yaml`:
+Pokud používáte Git, neměli byste mít pověření pro váš nugetový kanál ve správu verzí. Přidejte `NuGet.Config` `.gitignore` do projektu tak, `NuGet.Config` aby soubor nebyl přidán do správy verzí. Azure Dev Spaces bude potřebovat tento soubor během procesu sestavení image kontejneru, ale ve výchozím nastavení respektuje pravidla definovaná v `.gitignore` a `.dockerignore` během synchronizace. Chcete-li změnit výchozí nastavení a povolit synchronizaci souboru `NuGet.Config` azure dev spaces, aktualizujte `azds.yaml` soubor:
 
 ```yaml
 build:
@@ -65,10 +65,10 @@ ignore:
 - "!NuGet.Config"
 ```
 
-Pokud Git nepoužíváte, můžete tento krok přeskočit.
+Pokud nepoužíváte Git, můžete tento krok přeskočit.
 
-Při příštím spuštění `azds up` nebo `F5` v Visual Studio Code nebo v aplikaci Visual Studio se Azure Dev Spaces synchronizuje soubor `NuGet.Config` použije k instalaci závislostí balíčku.
+Při příštím spuštění `azds up` nebo `F5` přístupů v kódu Visual Studio nebo Visual `NuGet.Config` Studio, Azure Dev Spaces synchronizuje soubor použít k instalaci závislostí balíčků.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [NuGet a o tom, jak funguje](https://docs.microsoft.com/nuget/what-is-nuget).
+Další informace o [NuGet a jak to funguje](https://docs.microsoft.com/nuget/what-is-nuget).

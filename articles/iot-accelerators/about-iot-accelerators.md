@@ -1,5 +1,5 @@
 ---
-title: Seznámení s akcelerátory řešení IoT – Azure | Microsoft Docs
+title: Úvod do akcelerátorů řešení IoT – Azure | Dokumenty společnosti Microsoft
 description: Seznamte se s akcelerátory řešení Azure IoT. Akcelerátory řešení IoT jsou kompletní a ucelená řešení IoT připravená k nasazení.
 author: dominicbetts
 ms.author: dobett
@@ -10,17 +10,17 @@ ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
 ms.openlocfilehash: 1a27d748e16f892a748cf18569c13ca3f9ead1dd
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "71309520"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Co jsou akcelerátory řešení Azure IoT?
 
-Cloudové řešení IoT obvykle používá vlastní kód a cloudové služby ke správě připojení zařízení, zpracování dat a analýz a prezentaci.
+Cloudové řešení IoT obvykle používá vlastní kód a cloudové služby ke správě připojení zařízení, zpracování dat a analýzy a prezentace.
 
-Akcelerátory řešení IoT jsou kompletní a připravené k nasazení řešení IoT, které implementují běžné scénáře IoT. Scénáře zahrnují vzdálené monitorování, propojenou továrnu, prediktivní údržbu a simulaci zařízení. Když nasadíte akcelerátor řešení, součástí nasazení jsou všechny požadované cloudové služby i veškerý požadovaný kód aplikace.
+Akcelerátory řešení IoT jsou kompletní a ucelená řešení IoT připravená k nasazení, která implementují běžné scénáře IoT. Tyto scénáře zahrnují vzdálené monitorování, propojenou továrnu, prediktivní údržbu a simulaci zařízení. Když nasadíte akcelerátor řešení, součástí nasazení jsou všechny požadované cloudové služby i veškerý požadovaný kód aplikace.
 
 Akcelerátory řešení představují výchozí body pro vaše vlastní řešení IoT. Zdrojový kód všech akcelerátorů řešení je open source a dostupný na GitHubu. Akcelerátory řešení si můžete stáhnout a přizpůsobit podle svých potřeb.
 
@@ -32,37 +32,37 @@ Kód aplikace v každém akcelerátoru řešení obsahuje webovou aplikaci, ve k
 
 V současné době jsou k dispozici čtyři akcelerátory řešení, které můžete nasadit:
 
-### <a name="remote-monitoring"></a>Vzdálené sledování
+### <a name="remote-monitoring"></a>Vzdálené monitorování
 
-K shromažďování telemetrie ze vzdálených zařízení a jejich řízení použijte [akcelerátor řešení vzdáleného monitorování](iot-accelerators-remote-monitoring-sample-walkthrough.md) . Mezi příklady zařízení patří chladící systémy nainstalované u vašich zákazníků nebo ventily nainstalované na vzdálených čerpacích stanicích.
+Pomocí [akcelerátoru řešení vzdáleného monitorování](iot-accelerators-remote-monitoring-sample-walkthrough.md) můžete shromažďovat telemetrii ze vzdálených zařízení a ovládat je. Mezi příklady zařízení patří chladící systémy nainstalované u vašich zákazníků nebo ventily nainstalované na vzdálených čerpacích stanicích.
 
 Pomocí řídicího panelu vzdáleného monitorování můžete zobrazit telemetrii z připojených zařízení, zřizovat nová zařízení nebo upgradovat firmware na připojených zařízeních:
 
-[![Řídicí panel řešení pro vzdálené monitorování](./media/about-iot-accelerators/rm-dashboard-inline.png)](./media/about-iot-accelerators/rm-dashboard-expanded.png#lightbox)
+[![Řídicí panel řešení vzdáleného monitorování](./media/about-iot-accelerators/rm-dashboard-inline.png)](./media/about-iot-accelerators/rm-dashboard-expanded.png#lightbox)
 
-### <a name="connected-factory"></a>Připojená továrna
+### <a name="connected-factory"></a>Propojená továrna
 
-Pomocí [akcelerátoru řešení propojené továrny](iot-accelerators-connected-factory-features.md) můžete shromažďovat telemetrii od průmyslových prostředků přes rozhraní [OPC Unified Architecture](https://opcfoundation.org/about/opc-technologies/opc-ua/) a řídit je. Mezi průmyslové prostředky můžou patřit montážní a testovací stanice na výrobní lince továrny.
+Pomocí [akcelerátoru řešení Connected Factory](iot-accelerators-connected-factory-features.md) můžete shromažďovat telemetrii z průmyslových prostředků s rozhraním [OPC Unified Architecture](https://opcfoundation.org/about/opc-technologies/opc-ua/) a řídit je. Mezi průmyslové prostředky můžou patřit montážní a testovací stanice na výrobní lince továrny.
 
 Pomocí řídicího panelu propojené továrny můžete monitorovat a spravovat svá průmyslová zařízení:
 
-[![Řídicí panel řešení propojené továrny](./media/about-iot-accelerators/cf-dashboard-inline.png)](./media/about-iot-accelerators/cf-dashboard-expanded.png#lightbox)
+[![Řídicí panel řešení připojené továrny](./media/about-iot-accelerators/cf-dashboard-inline.png)](./media/about-iot-accelerators/cf-dashboard-expanded.png#lightbox)
 
 ### <a name="predictive-maintenance"></a>Prediktivní údržba
 
-Pomocí [akcelerátoru řešení prediktivní údržby](iot-accelerators-predictive-walkthrough.md) můžete předpovědět, kdy se očekává, že vzdálené zařízení selže, aby bylo možné provést údržbu ještě před selháním zařízení. Tento akcelerátor řešení k předvídání selhání na základě telemetrie zařízení využívá algoritmy strojového učení. Příklady zařízení můžou být letadlové motory nebo výtahy.
+Pomocí [akcelerátoru řešení prediktivní údržby](iot-accelerators-predictive-walkthrough.md) můžete předpovědět, kdy se očekává selhání vzdáleného zařízení, abyste mohli provést údržbu dříve, než zařízení selže. Tento akcelerátor řešení k předvídání selhání na základě telemetrie zařízení využívá algoritmy strojového učení. Příklady zařízení můžou být letadlové motory nebo výtahy.
 
 Pomocí řídicího panelu prediktivní údržby můžete zobrazit analýzu prediktivní údržby:
 
-[![Řídicí panel řešení propojené továrny](./media/about-iot-accelerators/pm-dashboard-inline.png)](./media/about-iot-accelerators/pm-dashboard-expanded.png#lightbox)
+[![Řídicí panel řešení připojené továrny](./media/about-iot-accelerators/pm-dashboard-inline.png)](./media/about-iot-accelerators/pm-dashboard-expanded.png#lightbox)
 
 ### <a name="device-simulation"></a>Simulace zařízení
 
-Pomocí [akcelerátoru řešení pro simulaci zařízení](iot-accelerators-device-simulation-overview.md) můžete spouštět simulovaná zařízení, která generují realistickou telemetrii. Pomocí tohoto akcelerátoru řešení můžete testovat chování ostatních akcelerátorů řešení nebo testovat vlastní řešení IoT.
+Pomocí [akcelerátoru řešení Simulace zařízení](iot-accelerators-device-simulation-overview.md) spusťte simulovaná zařízení, která generují realistickou telemetrii. Pomocí tohoto akcelerátoru řešení můžete testovat chování ostatních akcelerátorů řešení nebo testovat vlastní řešení IoT.
 
 Pomocí webové aplikace simulace zařízení můžete konfigurovat a spouštět simulace:
 
-[![Řídicí panel řešení propojené továrny](./media/about-iot-accelerators/ds-dashboard-inline.png)](./media/about-iot-accelerators/ds-dashboard-expanded.png#lightbox)
+[![Řídicí panel řešení připojené továrny](./media/about-iot-accelerators/ds-dashboard-inline.png)](./media/about-iot-accelerators/ds-dashboard-expanded.png#lightbox)
 
 ## <a name="design-principles"></a>Principy návrhu
 
@@ -82,10 +82,10 @@ Původní akcelerátory řešení byly napsané v .NET a využívaly architektur
 | ---------------------- | ------------- | ------------- |
 | Vzdálené monitorování      | Mikroslužby | [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java) a [.NET](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet) |
 | Prediktivní údržba | MVC           | [.NET](https://github.com/Azure/azure-iot-predictive-maintenance)          |
-| Připojená továrna      | MVC           | [.NET](https://github.com/Azure/azure-iot-connected-factory)          |
+| Propojená továrna      | MVC           | [.NET](https://github.com/Azure/azure-iot-connected-factory)          |
 | Simulace zařízení      | Mikroslužby | [.NET](https://github.com/Azure/device-simulation-dotnet)          |
 
-Další informace o architektuře mikroslužeb najdete v tématu [Úvod do referenční architektury Azure IoT](https://docs.microsoft.com/azure/architecture/reference-architectures/iot/).
+Další informace o architektuře mikroslužeb najdete v [tématu Úvod do referenční architektury Azure IoT](https://docs.microsoft.com/azure/architecture/reference-architectures/iot/).
 
 ## <a name="deployment-options"></a>Možnosti nasazení
 
@@ -93,11 +93,11 @@ Akcelerátory řešení můžete nasadit na webu [Akcelerátory řešení Micros
 
 Akcelerátor řešení pro vzdálené monitorování můžete nasadit v následujících konfiguracích:
 
-* **Standardní** Nasazení rozšířené infrastruktury pro vývoj produkčního nasazení. Azure Container Service nasadí mikroslužby na několik virtuálních počítačů Azure. Kubernetes orchestruje kontejnery Dockeru, které jsou hostiteli jednotlivých mikroslužeb.
-* **Basic** Verze s nižšími náklady pro ukázku nebo testování nasazení. Všechny mikroslužby se nasazují do jednoho virtuálního počítače Azure.
-* **Místní** Nasazení místního počítače pro testování a vývoj. S tímto přístupem se mikroslužby nasazují do místního kontejneru Dockeru a připojují se ke službám IoT Hub, Azure Cosmos DB a Azure Storage v cloudu.
+* **Standard:** Nasazení rozšířené infrastruktury pro vývoj produkčního nasazení. Služba Azure Container Service nasazuje mikroslužby do několika virtuálních počítačů Azure. Kubernetes orchestruje kontejnery Dockeru, které jsou hostiteli jednotlivých mikroslužeb.
+* **Basic:** Verze s nižšími náklady pro ukázku nebo otestování nasazení. Všechny mikroslužby se nasazují do jednoho virtuálního počítače Azure.
+* **Místní:** Nasazení do místního počítače pro účely vývoje a testování. S tímto přístupem se mikroslužby nasazují do místního kontejneru Dockeru a připojují se ke službám IoT Hub, Azure Cosmos DB a Azure Storage v cloudu.
 
-Cena za spuštění akcelerátoru řešení je celková [cena za provozování základních služeb Azure](https://azure.microsoft.com/pricing). Podrobnosti o použitých službách Azure se zobrazí po výběru možností nasazení.
+Náklady na spuštění akcelerátoru řešení jsou kombinované [náklady na provoz základních služeb Azure](https://azure.microsoft.com/pricing). Podrobnosti o použitých službách Azure se zobrazí po výběru možností nasazení.
 
 ## <a name="next-steps"></a>Další kroky
 

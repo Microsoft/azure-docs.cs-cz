@@ -1,6 +1,6 @@
 ---
-title: Monitorování Azure Site Recovery pomocí protokolů Azure Monitor
-description: Naučte se monitorovat Azure Site Recovery pomocí protokolů Azure Monitor (Log Analytics).
+title: Monitorování azure site recovery pomocí protokolů monitorování Azure
+description: Zjistěte, jak monitorovat Azure Site Recovery pomocí protokolů monitorování Azure (Log Analytics)
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
@@ -8,83 +8,83 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
 ms.openlocfilehash: f20d0d38a7fbd831d3e97a69373bac04b9b330aa
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74133413"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Monitorování Site Recovery s využitím protokolů Azure Monitoru
 
-Tento článek popisuje, jak monitorovat počítače replikované pomocí Azure [Site Recovery](site-recovery-overview.md), pomocí [protokolů Azure monitor](../azure-monitor/platform/data-platform-logs.md)a [Log Analytics](../azure-monitor/log-query/log-query-overview.md).
+Tento článek popisuje, jak sledovat počítače replikované azure [site recovery](site-recovery-overview.md), pomocí [protokolů monitorování Azure](../azure-monitor/platform/data-platform-logs.md)a Log [Analytics](../azure-monitor/log-query/log-query-overview.md).
 
-Protokoly Azure Monitor poskytují datovou platformu protokolu, která shromažďuje protokoly aktivit a diagnostiky spolu s dalšími daty monitorování. V protokolech Azure Monitor používáte Log Analytics k zápisu a testování dotazů protokolu a k interaktivní analýze dat protokolu. Můžete vizualizovat výsledky protokolu a dotazovat se na ně a nakonfigurovat výstrahy tak, aby na základě monitorovaných dat probíhat akce.
+Protokoly monitorování Azure poskytují datovou platformu protokolu, která shromažďuje protokoly aktivity a diagnostiky spolu s dalšími daty monitorování. V rámci protokolů monitorování Azure používáte analýzu protokolů k zápisu a testování dotazů protokolu a k interaktivní analýze dat protokolu. Můžete vizualizovat a dotazovat výsledky protokolu a nakonfigurovat výstrahy tak, aby akce na základě monitorovaných dat.
 
-V případě Site Recovery můžete Azure Monitor protokoly, které vám pomohou s těmito kroky:
+Pro site recovery můžete protokoly monitorování Azure, které vám pomohou provést následující akce:
 
-- **Monitoruje stav a stav Site Recovery**. Můžete například monitorovat stav replikace, stav testovacího převzetí služeb při selhání, Site Recovery události, cíle bodu obnovení (RPO) pro chráněné počítače a míry změny disků a dat.
-- **Nastavte výstrahy pro Site Recovery**. Můžete například nakonfigurovat výstrahy pro stav počítače, stav testovacího převzetí služeb při selhání nebo Site Recovery stav úlohy.
+- **Sledování stavu a stavu obnovení webu**. Můžete například sledovat stav replikace, testovat stav převzetí služeb při selhání, události obnovení lokality, cíle bodů obnovení (RPO) pro chráněné počítače a rychlost výměny disků/dat.
+- **Nastavte výstrahy pro obnovení webu**. Můžete například nakonfigurovat výstrahy pro stav počítače, test stavu převzetí služeb při selhání nebo stav úlohy obnovení lokality.
 
-Použití protokolů Azure Monitor s Site Recovery podporuje replikaci z **Azure do Azure** a **virtuální počítač VMware nebo fyzický server do replikace Azure** .
+Použití protokolů monitorování Azure s obnovením lokality se podporuje pro replikaci **Azure to Azure** a pro replikaci **Virtuálního počítače VM ware a na replikaci Azure.**
 
 > [!NOTE]
-> Chcete-li získat protokoly dat o četnosti a protokoly pro VMware a fyzické počítače, je nutné na procesový server nainstalovat agenta Microsoft Monitoring Agent. Tento Agent odesílá do pracovního prostoru protokoly replikačních počítačů. Tato funkce je k dispozici pouze pro 9,30 verze agenta mobility a vyšší.
+> Chcete-li získat protokoly dat konve a protokoly rychlosti odesílání pro vmware a fyzické počítače, je třeba nainstalovat agenta monitorování společnosti Microsoft na procesní mši. Tento agent odesílá protokoly replikačních počítačů do pracovního prostoru. Tato funkce je k dispozici pouze pro verzi agenta mobility 9.30.
 
 ## <a name="before-you-start"></a>Než začnete
 
-Zde je, co potřebujete:
+Zde je seznam toho, co k tomu potřebujete:
 
-- Aspoň jeden počítač chráněný v úložišti Recovery Services.
-- Log Analytics pracovní prostor pro ukládání protokolů Site Recovery. [Přečtěte si o](../azure-monitor/learn/quick-create-workspace.md) nastavení pracovního prostoru.
-- Základní informace o tom, jak zapisovat, spouštět a analyzovat dotazy protokolu v Log Analytics. [Další informace](../azure-monitor/log-query/get-started-portal.md)
+- Alespoň jeden počítač chráněný v trezoru služby Recovery Services.
+- Pracovní prostor Analýzy protokolů pro ukládání protokolů obnovení webu. [Přečtěte si o](../azure-monitor/learn/quick-create-workspace.md) nastavení pracovního prostoru.
+- Základní znalosti o tom, jak psát, spouštět a analyzovat dotazy protokolu v Log Analytics. [Další informace](../azure-monitor/log-query/get-started-portal.md).
 
-Než začnete, doporučujeme, abyste si přečtěte [běžné otázky týkající se monitorování](monitoring-common-questions.md) .
+Doporučujeme, abyste si před zahájením prověřili [běžné otázky týkající se monitorování.](monitoring-common-questions.md)
 
-## <a name="configure-site-recovery-to-send-logs"></a>Konfigurace Site Recovery pro odesílání protokolů
+## <a name="configure-site-recovery-to-send-logs"></a>Konfigurace obnovení webu pro odesílání protokolů
 
-1. V trezoru klikněte na **nastavení diagnostiky** > **Přidat nastavení diagnostiky**.
+1. V úschovně klikněte na **Nastavení** > diagnostiky Přidat diagnostické**nastavení**.
 
-    ![Vybrat protokolování diagnostiky](./media/monitoring-log-analytics/add-diagnostic.png)
+    ![Výběr diagnostického protokolování](./media/monitoring-log-analytics/add-diagnostic.png)
 
-2. V okně **nastavení diagnostiky**zadejte název a zaškrtněte políčko **Odeslat do Log Analytics**.
-3. Vyberte odběr Azure Monitor protokoly a pracovní prostor Log Analytics.
-4. V přepínači vyberte **Azure Diagnostics** .
-5. V seznamu protokol vyberte všechny protokoly s předponou **AzureSiteRecovery**. Pak klikněte na **OK**.
+2. V **nastavení diagnostiky**zadejte název a zaškrtněte políčko **Odeslat do analýzy protokolů**.
+3. Vyberte předplatné protokolů monitorování Azure a pracovní prostor Log Analytics.
+4. V přepínači vyberte **Diagnostika Azure.**
+5. Ze seznamu protokolů vyberte všechny protokoly s předponou **AzureSiteRecovery**. Pak klikněte na **OK**.
 
     ![Výběr pracovního prostoru](./media/monitoring-log-analytics/select-workspace.png)
 
-Protokoly Site Recovery začnou předávat do tabulky (**AzureDiagnostics**) ve vybraném pracovním prostoru.
+Protokoly obnovení webu se začnou podávat do tabulky (**AzureDiagnostics**) ve vybraném pracovním prostoru.
 
-## <a name="configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs"></a>Konfigurace služby Microsoft Monitoring Agent na procesovém serveru pro odesílání četností a nahrávání protokolů
+## <a name="configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs"></a>Konfigurace agenta monitorování společnosti Microsoft na procesním serveru za účelem odesílání protokolů rychlosti změn a odesílání
 
-V místním prostředí můžete zachytit informace o míře četnosti změn dat a rychlost odesílání zdrojových dat pro vaše VMware/fyzické počítače. Chcete-li tuto možnost povolit, musí být na procesovém serveru nainstalována aplikace Microsoft Monitoring Agent.
+Informace o rychlosti konve dat a informace o rychlosti odesílání dat zdrojových dat pro vaše počítače VMware/fyzické počítače můžete zachytit v místním prostředí. Chcete-li to povolit, je nutné nainstalovat na procesní server agenta společnosti Microsoft.
 
 1. Přejděte do pracovního prostoru Log Analytics a klikněte na **Upřesnit nastavení**.
-2. Klikněte na stránku **připojené zdroje** a dále vyberte **Windows servery**.
-3. Na procesovém serveru Stáhněte agenta pro Windows (64 bitů). 
+2. Klikněte na stránku **Připojené zdroje** a dále vyberte **windows servery**.
+3. Stáhněte si agenta Windows (64 bit) na procesním serveru. 
 4. [Získání ID a klíče pracovního prostoru](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)
-5. [Nakonfigurovat agenta na používání protokolu TLS 1,2](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
-6. [Dokončete instalaci agenta](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard) poskytnutím získaného ID a klíče pracovního prostoru.
-7. Po dokončení instalace přejděte do pracovního prostoru Log Analytics a klikněte na **Upřesnit nastavení**. Přejděte na **datovou** stránku a dále klikněte na **čítače výkonu systému Windows**. 
-8. Kliknutím na **+** přidejte následující dva čítače s intervalem vzorkování 300 sekund:
+5. [Konfigurace agenta pro použití protokolu TLS 1.2](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
+6. [Dokončete instalaci agenta](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard) poskytnutím získaného ID pracovního prostoru a klíče.
+7. Po dokončení instalace přejděte do pracovního prostoru Log Analytics a klikněte na **Upřesnit nastavení**. Přejděte na stránku **Data** a dále klikněte na **čítače výkonu systému Windows**. 
+8. Kliknutím na **'+'** přidáte následující dva čítače s intervalem vzorkování 300 sekund:
 
         ASRAnalytics(*)\SourceVmChurnRate 
         ASRAnalytics(*)\SourceVmThrpRate 
 
-Data míry změn a nahrávání začnou dodávat do pracovního prostoru.
+Data rychlosti změn a nahrávání se začnou připájet do pracovního prostoru.
 
 
-## <a name="query-the-logs---examples"></a>Dotazování protokolů – příklady
+## <a name="query-the-logs---examples"></a>Dotaz na protokoly - příklady
 
-Data z protokolů načítáte pomocí dotazů protokolu napsaných pomocí [dotazovacího jazyka Kusto](../azure-monitor/log-query/get-started-queries.md). V této části najdete několik příkladů běžných dotazů, které můžete použít pro Site Recovery monitorování.
+Data z protokolů načítáte pomocí dotazů protokolů napsaných [pomocí dotazovacího jazyka Kusto](../azure-monitor/log-query/get-started-queries.md). Tato část obsahuje několik příkladů běžných dotazů, které můžete použít pro monitorování site recovery.
 
 > [!NOTE]
-> Některé příklady používají **replicationProviderName_s** nastavené na **A2A**. Tím se načte virtuální počítače Azure, které se replikují do sekundární oblasti Azure pomocí Site Recovery. V těchto příkladech můžete měnit **A2A** pomocí **InMageAzureV2**, pokud chcete načíst místní virtuální počítače VMware nebo fyzické servery, které se replikují do Azure pomocí Site Recovery.
+> Některé příklady používají **replicationProviderName_s** nastaveny na **A2A**. Tím se načte virtuální počítače Azure, které se replikují do sekundární oblasti Azure pomocí site recovery. V těchto příkladech můžete nahradit **A2A** **inMageAzureV2**, pokud chcete načíst místní virtuální počítače VMware nebo fyzické servery, které jsou replikovány do Azure pomocí site recovery.
 
 
-### <a name="query-replication-health"></a>Dotaz na stav replikace
+### <a name="query-replication-health"></a>Stav replikace dotazu
 
-Tento dotaz vykreslí výsečový graf pro aktuální stav replikace všech chráněných virtuálních počítačů Azure, které jsou rozdělené do tří stavů: normální, upozornění nebo kritická.
+Tento dotaz vykreslí výsečový graf pro aktuální stav replikace všech chráněných virtuálních počítačích Azure, rozdělených do tří stavů: Normální, Upozornění nebo Kritické.
 
 ```
 AzureDiagnostics  
@@ -95,9 +95,9 @@ AzureDiagnostics 
 | summarize count() by replicationHealth_s  
 | render piechart   
 ```
-### <a name="query-mobility-service-version"></a>Verze služby mobility dotazů
+### <a name="query-mobility-service-version"></a>Verze služby Mobility dotazu
 
-Tento dotaz vykresluje výsečový graf pro virtuální počítače Azure replikované s Site Recovery, rozepsaný podle verze agenta mobility, na kterém běží.
+Tento dotaz vykreslí výsečový graf pro virtuální počítače Azure replikované pomocí site recovery, rozdělené podle verze agenta mobility, který jsou spuštěny.
 
 ```
 AzureDiagnostics  
@@ -109,9 +109,9 @@ AzureDiagnostics 
 | render piechart 
 ```
 
-### <a name="query-rpo-time"></a>Čas RPO dotazu
+### <a name="query-rpo-time"></a>Čas rpo dotazu
 
-Tento dotaz znázorňuje pruhový graf virtuálních počítačů Azure replikovaných s Site Recovery, rozepsaný podle cíle bodu obnovení (RPO): méně než 15 minut, mezi 15-30 minutami a více než 30 minutami.
+Tento dotaz vykreslí pruhový graf virtuálních počítačích Azure replikovaných pomocí site recovery, rozdělený podle cíle bodu obnovení (RPO): Méně než 15 minut, mezi 15 a 30 minut, více než 30 minut.
 
 ```
 AzureDiagnostics 
@@ -125,11 +125,11 @@ rpoInSeconds_d <= 1800, "15-30Min", ">30Min") 
 | render barchart 
 ```
 
-![CÍL dotazu](./media/monitoring-log-analytics/example1.png)
+![RPO dotazu](./media/monitoring-log-analytics/example1.png)
 
-### <a name="query-site-recovery-jobs"></a>Úlohy Site Recovery dotazů
+### <a name="query-site-recovery-jobs"></a>Úlohy obnovení webu dotazu
 
-Tento dotaz načte všechny úlohy Site Recovery (pro všechny scénáře zotavení po havárii) spouštěné za posledních 72 hodin a jejich stav dokončení.
+Tento dotaz načte všechny úlohy obnovení webu (pro všechny scénáře zotavení po havárii), které se aktivují za posledních 72 hodin a jejich stav dokončení.
 
 ```
 AzureDiagnostics  
@@ -138,9 +138,9 @@ AzureDiagnostics 
 | project JobName = OperationName , VaultName = Resource , TargetName = affectedResourceName_s, State = ResultType  
 ```
 
-### <a name="query-site-recovery-events"></a>Dotazy Site Recovery události
+### <a name="query-site-recovery-events"></a>Události obnovení webu dotazu
 
-Tento dotaz načte všechny události Site Recovery (pro všechny scénáře zotavení po havárii) vyvolané během posledních 72 hodin, včetně jejich závažnosti. 
+Tento dotaz načte všechny události obnovení webu (pro všechny scénáře zotavení po havárii) vyvolané v posledních 72 hodinách, spolu s jejich závažnosti. 
 
 ```
 AzureDiagnostics   
@@ -149,9 +149,9 @@ AzureDiagnostics  
 | project AffectedObject=affectedResourceName_s , VaultName = Resource, Description_s = healthErrors_s , Severity = Level  
 ```
 
-### <a name="query-test-failover-state-pie-chart"></a>Stav testovacího převzetí služeb při selhání dotazu (výsečový graf)
+### <a name="query-test-failover-state-pie-chart"></a>Stav převzetí služeb při selhání testu dotazu (výsečový graf)
 
-Tento dotaz vykresluje výsečový graf pro stav testovacího převzetí služeb při selhání u virtuálních počítačů Azure replikovaných pomocí Site Recovery.
+Tento dotaz vykreslí výsečový graf pro stav převzetí služeb při selhání testu virtuálních počítačích Azure replikované s site recovery.
 
 ```
 AzureDiagnostics  
@@ -166,7 +166,7 @@ AzureDiagnostics 
 
 ### <a name="query-test-failover-state-table"></a>Stav převzetí služeb při selhání testu dotazu (tabulka)
 
-Tento dotaz vykreslí tabulku pro stav testovacího převzetí služeb při selhání u virtuálních počítačů Azure replikovaných pomocí Site Recovery.
+Tento dotaz vykreslí tabulku pro stav převzetí služeb při selhání testu virtuálních počítačích Azure replikované s site recovery.
 
 ```
 AzureDiagnostics   
@@ -177,9 +177,9 @@ AzureDiagnostics  
 | project VirtualMachine = name_s , VaultName = Resource , TestFailoverStatus = failoverHealth_s 
 ```
 
-### <a name="query-machine-rpo"></a>Dotaz RPO počítače
+### <a name="query-machine-rpo"></a>RPO dotazovacího stroje
 
-Tento dotaz vykresluje graf trendu, který sleduje RPO pro určitý virtuální počítač Azure (ContosoVM123) za posledních 72 hodin.
+Tento dotaz vykresluje graf trendů, který sleduje rpo konkrétního virtuálního počítače Azure (ContosoVM123) za posledních 72 hodin.
 
 ```
 AzureDiagnostics   
@@ -190,11 +190,11 @@ AzureDiagnostics  
 | project TimeGenerated, name_s , RPO_in_seconds = rpoInSeconds_d   
 | render timechart 
 ```
-![Dotaz RPO počítače](./media/monitoring-log-analytics/example2.png)
+![RPO dotazovacího stroje](./media/monitoring-log-analytics/example2.png)
 
-### <a name="query-data-change-rate-churn-and-upload-rate-for-an-azure-vm"></a>Četnost změn dat dotazů a rychlost nahrávání pro virtuální počítač Azure
+### <a name="query-data-change-rate-churn-and-upload-rate-for-an-azure-vm"></a>Rychlost dotazování na změnu dat (konve) a rychlost odesílání pro virtuální počítač Azure
 
-Tento dotaz vykreslí graf trendu pro konkrétní virtuální počítač Azure (ContosoVM123), který představuje rychlost změny dat (bajty zápisu za sekundu) a rychlost nahrávání dat. 
+Tento dotaz vykresluje graf trendů pro konkrétní virtuální počítač Azure (ContosoVM123), který představuje rychlost změny dat (počet bajtů za sekundu) a rychlost odesílání dat. 
 
 ```
 AzureDiagnostics   
@@ -209,12 +209,12 @@ Category contains "Upload", "UploadRate", "none") 
 ```
 ![Změna dat dotazu](./media/monitoring-log-analytics/example3.png)
 
-### <a name="query-data-change-rate-churn-and-upload-rate-for-a-vmware-or-physical-machine"></a>Četnost změn dat dotazů a rychlost nahrávání pro VMware nebo fyzický počítač
+### <a name="query-data-change-rate-churn-and-upload-rate-for-a-vmware-or-physical-machine"></a>Rychlost změny dat dotazu (konve) a rychlost odesílání pro počítač VMware nebo fyzický počítač
 
 > [!Note]
-> Ujistěte se, že jste na procesovém serveru nastavili agenta monitorování, abyste tyto protokoly načetli. [Postup konfigurace agenta monitorování](#configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs)najdete v tématu.
+> Ujistěte se, že jste nastavili agenta monitorování na procesním serveru pro načtení těchto protokolů. Odkazovat [kroky ke konfiguraci agenta monitorování](#configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs).
 
-Tento dotaz vykreslí graf trendu pro určitý disk **Disk0** replikované položky **Win-9r7sfh9qlru**, která představuje rychlost změny dat (bajty zápisu za sekundu) a rychlost nahrávání dat. V okně s názvem disku v replikované položce v trezoru služby Recovery Services **najdete okno název** disku. Název instance, který se má použít v dotazu, je název DNS počítače následovaný znakem _ a názvem disku, jako v tomto příkladu.
+Tento dotaz vykresluje graf trendů pro konkrétní disk **disk0** replikované **položky win-9r7sfh9qlru**, který představuje rychlost změny dat (Zápis bajtů za sekundu) a rychlost odesílání dat. Název disku naleznete v okně **Disky** replikované položky v trezoru služeb pro obnovení. Název instance, který má být použit v dotazu, je název DNS počítače následovaný _ a název disku jako v tomto příkladu.
 
 ```
 Perf
@@ -224,11 +224,11 @@ Perf
 | project TimeGenerated ,CounterName, Churn_MBps = todouble(CounterValue)/5242880 
 | render timechart
 ```
-Procesový Server doručí tato data každých 5 minut do pracovního prostoru Log Analytics. Tyto datové body udávají průměr vypočítaný po dobu 5 minut.
+Process Server odesílá tato data každých 5 minut do pracovního prostoru Analýzy protokolů. Tyto datové body představují průměr vypočítaný po dobu 5 minut.
 
-### <a name="query-disaster-recovery-summary-azure-to-azure"></a>Dotaz na souhrn zotavení po havárii (Azure do Azure)
+### <a name="query-disaster-recovery-summary-azure-to-azure"></a>Souhrn zotavení po havárii dotazu (Azure to Azure)
 
-Tento dotaz vykreslí souhrnnou tabulku pro virtuální počítače Azure replikované do sekundární oblasti Azure.  Zobrazuje název virtuálního počítače, replikaci a stav ochrany, RPO, stav převzetí služeb při selhání, verzi agenta mobility, všechny aktivní chyby replikace a zdrojové umístění.
+Tento dotaz vykreslí souhrnnou tabulku pro virtuální počítače Azure replikované do sekundární oblasti Azure.  Zobrazuje název virtuálního zařízení, stav replikace a ochrany, rpo, test stavu převzetí služeb při selhání, verzi agenta mobility, všechny aktivní chyby replikace a zdrojové umístění.
 
 ```
 AzureDiagnostics 
@@ -238,9 +238,9 @@ AzureDiagnostics 
 | project VirtualMachine = name_s , Vault = Resource , ReplicationHealth = replicationHealth_s, Status = protectionState_s, RPO_in_seconds = rpoInSeconds_d, TestFailoverStatus = failoverHealth_s, AgentVersion = agentVersion_s, ReplicationError = replicationHealthErrors_s, SourceLocation = primaryFabricName_s 
 ```
 
-### <a name="query-disaster-recovery-summary-vmwarephysical-servers"></a>Dotaz na souhrn zotavení po havárii (VMware/fyzické servery)
+### <a name="query-disaster-recovery-summary-vmwarephysical-servers"></a>Souhrn zotavení po havárii dotazu (VMware/fyzické servery)
 
-Tento dotaz vykreslí souhrnnou tabulku pro virtuální počítače VMware a fyzické servery replikované do Azure.  Zobrazuje název počítače, replikaci a stav ochrany, cíl obnovení, stav převzetí služeb při selhání, verzi agenta mobility, všechny aktivní chyby replikace a příslušný procesový Server.
+Tento dotaz vykresluje souhrnnou tabulku pro virtuální počítače VMware a fyzické servery replikované do Azure.  Zobrazuje název počítače, stav replikace a ochrany, rpo, test stavu převzetí služeb při selhání, verzi agenta mobility, všechny aktivní chyby replikace a příslušný procesní server.
 
 ```
 AzureDiagnostics  
@@ -250,16 +250,16 @@ AzureDiagnostics 
 | project VirtualMachine = name_s , Vault = Resource , ReplicationHealth = replicationHealth_s, Status = protectionState_s, RPO_in_seconds = rpoInSeconds_d, TestFailoverStatus = failoverHealth_s, AgentVersion = agentVersion_s, ReplicationError = replicationHealthErrors_s, ProcessServer = processServerName_g  
 ```
 
-## <a name="set-up-alerts---examples"></a>Nastavení upozornění – příklady
+## <a name="set-up-alerts---examples"></a>Nastavení výstrah – příklady
 
-Můžete nastavit Site Recovery výstrahy na základě Azure Monitor dat. [Přečtěte si další informace](../azure-monitor/platform/alerts-log.md#managing-log-alerts-from-the-azure-portal) o nastavení upozornění protokolu. 
+Výstrahy obnovení webu můžete nastavit na základě dat Azure Monitor. [Přečtěte si další informace](../azure-monitor/platform/alerts-log.md#managing-log-alerts-from-the-azure-portal) o nastavení upozornění protokolu. 
 
 > [!NOTE]
-> Některé příklady používají **replicationProviderName_s** nastavené na **A2A**. Tím se nastaví výstrahy pro virtuální počítače Azure, které se replikují do sekundární oblasti Azure. V těchto příkladech můžete měnit **A2A** pomocí **InMageAzureV2** , pokud chcete nastavit upozornění pro místní virtuální počítače VMware nebo fyzické servery replikované do Azure.
+> Některé příklady používají **replicationProviderName_s** nastaveny na **A2A**. To nastaví výstrahy pro virtuální počítače Azure, které se replikují do sekundární oblasti Azure. V těchto příkladech můžete nahradit **A2A** **inMageAzureV2,** pokud chcete nastavit výstrahy pro místní virtuální počítače VMware nebo fyzické servery replikované do Azure.
 
 ### <a name="multiple-machines-in-a-critical-state"></a>Více počítačů v kritickém stavu
 
-Nastavte výstrahu, pokud se více než 20 replikovaných virtuálních počítačů Azure přejdou do kritického stavu.
+Nastavte výstrahu, pokud více než 20 replikovaných virtuálních počítačů Azure přejde do kritického stavu.
 
 ```
 AzureDiagnostics   
@@ -269,9 +269,9 @@ AzureDiagnostics  
 | summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by name_s   
 | summarize count() 
 ```
-Pro tuto výstrahu nastavte **mezní hodnotu** na 20.
+Pro výstrahu nastavte **prahovou hodnotu** na 20.
 
-### <a name="single-machine-in-a-critical-state"></a>Jeden počítač v kritickém stavu
+### <a name="single-machine-in-a-critical-state"></a>Jeden stroj v kritickém stavu
 
 Nastavte výstrahu, pokud konkrétní replikovaný virtuální počítač Azure přejde do kritického stavu.
 
@@ -284,11 +284,11 @@ AzureDiagnostics  
 | summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by name_s   
 | summarize count()  
 ```
-U pole výstraha nastavte **mezní hodnotu** na 1.
+Pro výstrahu nastavte **prahovou hodnotu** na hodnotu 1.
 
-### <a name="multiple-machines-exceed-rpo"></a>Více počítačů překročilo RPO
+### <a name="multiple-machines-exceed-rpo"></a>Více počítačů překračuje RPO
 
-Nastavte výstrahu v případě, že RPO pro více než 20 virtuálních počítačů Azure přesáhne 30 minut.
+Nastavte výstrahu, pokud rpo pro více než 20 virtuálních počítačů Azure překročí 30 minut.
 ```
 AzureDiagnostics   
 | where replicationProviderName_s == "A2A"   
@@ -298,11 +298,11 @@ AzureDiagnostics  
 | project name_s , rpoInSeconds_d   
 | summarize count()  
 ```
-Pro tuto výstrahu nastavte **mezní hodnotu** na 20.
+Pro výstrahu nastavte **prahovou hodnotu** na 20.
 
-### <a name="single-machine-exceeds-rpo"></a>Jeden počítač přesahuje RPO
+### <a name="single-machine-exceeds-rpo"></a>Jeden stroj překračuje RPO
 
-Nastavte výstrahu, pokud RPO pro jeden virtuální počítač Azure přesáhne 30 minut.
+Nastavte výstrahu, pokud rpo pro jeden virtuální počítač Azure překročí 30 minut.
 
 ```
 AzureDiagnostics   
@@ -314,11 +314,11 @@ AzureDiagnostics  
 | project name_s , rpoInSeconds_d   
 | summarize count()  
 ```
-U pole výstraha nastavte **mezní hodnotu** na 1.
+Pro výstrahu nastavte **prahovou hodnotu** na hodnotu 1.
 
-### <a name="test-failover-for-multiple-machines-exceeds-90-days"></a>Testovací převzetí služeb při selhání pro více počítačů překračuje 90 dní.
+### <a name="test-failover-for-multiple-machines-exceeds-90-days"></a>Test převzetí služeb při selhání pro více počítačů přesahuje 90 dnů
 
-Nastavte výstrahu, pokud poslední úspěšné testovací převzetí služeb při selhání bylo více než 90 dní, pro více než 20 virtuálních počítačů. 
+Nastavte výstrahu, pokud poslední úspěšné zkušební převzetí služeb při selhání bylo více než 90 dní, pro více než 20 virtuálních m. . 
 
 ```
 AzureDiagnostics  
@@ -329,11 +329,11 @@ AzureDiagnostics 
 | summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by name_s   
 | summarize count()  
 ```
-Pro tuto výstrahu nastavte **mezní hodnotu** na 20.
+Pro výstrahu nastavte **prahovou hodnotu** na 20.
 
-### <a name="test-failover-for-single-machine-exceeds-90-days"></a>Testovací převzetí služeb při selhání pro jeden počítač překračuje 90 dní.
+### <a name="test-failover-for-single-machine-exceeds-90-days"></a>Zkušební převzetí služeb při selhání pro jeden počítač přesahuje 90 dní
 
-Nastavte výstrahu v případě, že poslední úspěšné testovací převzetí služeb při selhání pro určitý virtuální počítač bylo před více než 90 dny.
+Nastavte výstrahu, pokud poslední úspěšné testovací převzetí služeb při selhání pro konkrétní virtuální ms bylo před více než 90 dny.
 ```
 AzureDiagnostics  
 | where replicationProviderName_s == "A2A"   
@@ -344,11 +344,11 @@ AzureDiagnostics 
 | summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by name_s   
 | summarize count()  
 ```
-U pole výstraha nastavte **mezní hodnotu** na 1.
+Pro výstrahu nastavte **prahovou hodnotu** na hodnotu 1.
 
-### <a name="site-recovery-job-fails"></a>Úloha Site Recovery se nezdařila
+### <a name="site-recovery-job-fails"></a>Úloha obnovení webu se nezdaří.
 
-Nastavte výstrahu v případě, že úloha Site Recovery (v tomto případě se úloha opětovné ochrany) neprojde jakýmkoli Site Recoverymu scénáři během posledního dne. 
+Nastavte výstrahu, pokud úloha obnovení webu (v tomto případě úloha Znovu chránit) selže pro jakýkoli scénář obnovení webu během posledního dne. 
 ```
 AzureDiagnostics   
 | where Category == "AzureSiteRecoveryJobs"   
@@ -357,8 +357,8 @@ AzureDiagnostics  
 | summarize count()  
 ```
 
-Pro tuto výstrahu nastavte **prahovou hodnotu** na 1 a **periodu** na 1440 minut, abyste zkontrolovali selhání za poslední den.
+Pro výstrahu nastavte **hodnotu Threshold** na hodnotu 1 a **Období** na 1440 minut, chcete-li zkontrolovat selhání v poslední den.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Přečtěte si informace o](site-recovery-monitor-and-troubleshoot.md) sestaveném Site Recovery monitoring.
+[Přečtěte si o](site-recovery-monitor-and-troubleshoot.md) integrovaném monitorování site recovery.

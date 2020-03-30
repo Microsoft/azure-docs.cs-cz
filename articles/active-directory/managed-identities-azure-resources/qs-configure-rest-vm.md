@@ -1,6 +1,6 @@
 ---
 title: Konfigurace spravovaných identit na virtuálním počítači Azure pomocí REST – Azure AD
-description: Podrobné pokyny pro konfiguraci systémových a uživatelem přiřazených identit na virtuálním počítači Azure pomocí objektu KUDRLINKOU pro REST API volání.
+description: Krok za krokem pokyny pro konfiguraci systému a uživatelem přiřazené spravované identity na virtuálním počítači Azure pomocí CURL k volání rozhraní REST API.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -16,60 +16,60 @@ ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9f975595e935a5c0254450168aa295e6e7366a94
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79244157"
 ---
-# <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí volání REST API
+# <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí volání rozhraní REST API
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Spravované identity pro prostředky Azure poskytují služby Azure s automaticky spravovanou identitou systému v Azure Active Directory. Tuto identitu můžete použít k ověření pro libovolnou službu, která podporuje ověřování Azure AD, a to bez nutnosti přihlašovacích údajů ve vašem kódu. 
+Spravované identity pro prostředky Azure poskytují služby Azure s automaticky spravovanou systémovou identitou ve službě Azure Active Directory. Tuto identitu můžete použít k ověření na libovolnou službu, která podporuje ověřování Azure AD, bez pověření ve vašem kódu. 
 
-V tomto článku se pomocí objektu KUDRLINKOU pro volání Azure Resource Manager koncového bodu REST naučíte provádět následující spravované identity pro operace prostředků Azure na virtuálním počítači Azure:
+V tomto článku pomocí CURL k volání koncového bodu Azure Resource Manager REST se dozvíte, jak provádět následující spravované identity pro operace prostředků Azure na virtuálním počítači Azure:
 
-- Povolení a zakázání spravované identity přiřazené systémem na virtuálním počítači Azure
-- Přidání a odebrání spravované identity přiřazené uživatelem na virtuálním počítači Azure
+- Povolení a zakázání spravované identity přiřazené k systému na virtuálním počítači Azure
+- Přidání a odebrání spravované identity přiřazené uživateli na virtuálním počítači Azure
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
+- Pokud nejste obeznámeni se spravovanými identitami pro prostředky Azure, podívejte se na [část s přehledem](overview.md). **Zkontrolujte rozdíl [mezi systémem přiřazenou a uživatelem přiřazenou spravovanou identitou](overview.md#how-does-the-managed-identities-for-azure-resources-work)**.
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
-- Pokud používáte systém Windows, nainstalujte [subsystém Windows pro Linux](https://msdn.microsoft.com/commandline/wsl/about) nebo použijte [Azure Cloud Shell](../../cloud-shell/overview.md) v Azure Portal.
-- Pokud používáte [subsystém Windows pro Linux](https://msdn.microsoft.com/commandline/wsl/about) nebo systém pro [distribuci Linux](/cli/azure/install-azure-cli-apt?view=azure-cli-latest), [nainstalujte místní konzolu Azure CLI](/cli/azure/install-azure-cli).
-- Pokud používáte místní konzolu Azure CLI, přihlaste se k Azure pomocí `az login` s účtem, který je přidružený k předplatnému Azure. chcete spravovat spravované identity v systému nebo uživateli.
+- Pokud používáte Windows, nainstalujte [podsystém Windows pro Linux](https://msdn.microsoft.com/commandline/wsl/about) nebo použijte [Azure Cloud Shell](../../cloud-shell/overview.md) na webu Azure Portal.
+- Pokud používáte [podsystém Windows pro Linux](https://msdn.microsoft.com/commandline/wsl/about) nebo operační systém linuxové distribuce , [nainstalujte místní konzolu Azure](/cli/azure/install-azure-cli) [CLI](/cli/azure/install-azure-cli-apt?view=azure-cli-latest).
+- Pokud používáte místní konzolu Azure CLI, `az login` přihlaste se k Azure pomocí účtu, který je přidružený k předplatnému Azure, který chcete spravovat spravované identity systému nebo uživatelem.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="system-assigned-managed-identity"></a>Spravovaná identita přiřazená systémem
 
-V této části se dozvíte, jak povolit a zakázat spravovanou identitu přiřazenou systémem na virtuálním počítači Azure pomocí technologie KUDRLINKOU k volání Azure Resource Manager koncového bodu REST.
+V této části se dozvíte, jak povolit a zakázat systémem přiřazenou spravovanou identitu na virtuálním počítači Azure pomocí CURL k volání koncového bodu REST Azure Resource Manager.
 
-### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-vm"></a>Povolit spravovanou identitu přiřazenou systémem během vytváření virtuálního počítače Azure
+### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-vm"></a>Povolení spravované identity přiřazené systémem při vytváření virtuálního počítače Azure
 
-Aby bylo možné vytvořit virtuální počítač Azure s povolenou spravovanou identitou přiřazenou systémem, váš účet potřebuje přiřazení role [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .  Nevyžadují se žádné další přiřazení role adresáře Azure AD.
+K vytvoření virtuálního počítače Azure s povolenou spravovanou identitou přiřazenou systémem potřebuje váš účet přiřazení role [Přispěvatel virtuálního počítače.](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)  Nejsou vyžadována žádná další přiřazení rolí adresáře Azure AD.
 
-1. Pomocí příkazu [az group create](../../azure-resource-manager/management/overview.md#terminology) vytvořte [skupinu prostředků](/cli/azure/group/#az-group-create) pro nasazení a uchování virtuálního počítače a souvisejících prostředků. Pokud už máte skupinu prostředků, kterou chcete použít, můžete tento krok přeskočit:
+1. Pomocí příkazu [az group create](/cli/azure/group/#az-group-create) vytvořte [skupinu prostředků](../../azure-resource-manager/management/overview.md#terminology) pro nasazení a uchování virtuálního počítače a souvisejících prostředků. Pokud už máte skupinu prostředků, kterou chcete použít, můžete tento krok přeskočit:
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
    ```
 
-2. Vytvoření [síťového rozhraní](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) pro virtuální počítač:
+2. Vytvořte [síťové rozhraní](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) pro virtuální počítač:
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
    ```
 
-3. Načte přístupový token nosiče, který použijete v dalším kroku v autorizační hlavičce k vytvoření virtuálního počítače pomocí spravované identity přiřazené systémem.
+3. Načíst přístupový token nosiče, který použijete v dalším kroku v hlavičce autorizace k vytvoření virtuálního počítače se systémem přiřazenou spravovanou identitou.
 
    ```azurecli-interactive
    az account get-access-token
    ``` 
 
-4. Vytvořte virtuální počítač pomocí metody KUDRLINKOU pro volání Azure Resource Manager koncového bodu REST. Následující příklad vytvoří virtuální počítač s názvem *myVM* se spravovanou identitou přiřazenou systémem, jak je uvedeno v těle žádosti hodnotou `"identity":{"type":"SystemAssigned"}`. Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste si vyžádali přístupový token nosiče a hodnotu `<SUBSCRIPTION ID>`, jak je to vhodné pro vaše prostředí.
+4. Vytvořte virtuální počítač pomocí CURL volat koncový bod AZURE Resource Manager REST. Následující příklad vytvoří virtuální hod s názvem *myVM* se systémem přiřazenou spravovanou `"identity":{"type":"SystemAssigned"}`identitou, jak je identifikovánv tělese požadavku hodnotou . Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, když jste požadovali přístupový token nosiče a hodnotu `<SUBSCRIPTION ID>` podle vašeho prostředí.
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PUT -d '{"location":"westus","name":"myVM","identity":{"type":"SystemAssigned"},"properties":{"hardwareProfile":{"vmSize":"Standard_D2_v2"},"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"name":"myVM3osdisk","createOption":"FromImage"},"dataDisks":[{"diskSizeGB":1023,"createOption":"Empty","lun":0},{"diskSizeGB":1023,"createOption":"Empty","lun":1}]},"osProfile":{"adminUsername":"azureuser","computerName":"myVM","adminPassword":"<SECURE PASSWORD STRING>"},"networkProfile":{"networkInterfaces":[{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic","properties":{"primary":true}}]}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -79,14 +79,14 @@ Aby bylo možné vytvořit virtuální počítač Azure s povolenou spravovanou 
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
    
-   **Hlavičky požadavku**
+   **Záhlaví požadavku**
    
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
-   |*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.        | 
+   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Autorizace*     | Povinná hodnota. Nastavte na `Bearer` platný přístupový token.        | 
    
-   **Text žádosti**
+   **Text požadavku**
 
    ```JSON
      {
@@ -146,20 +146,20 @@ Aby bylo možné vytvořit virtuální počítač Azure s povolenou spravovanou 
     }  
    ```
 
-### <a name="enable-system-assigned-identity-on-an-existing-azure-vm"></a>Povolení identity přiřazené systémem na stávajícím virtuálním počítači Azure
+### <a name="enable-system-assigned-identity-on-an-existing-azure-vm"></a>Povolení systémově přiřazené identity na existujícím virtuálním počítači Azure
 
-Aby se povolila spravovaná identita přiřazená systémem na virtuálním počítači, který se původně zřídil bez něho, váš účet potřebuje přiřazení role [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .  Nevyžadují se žádné další přiřazení role adresáře Azure AD.
+Chcete-li povolit systémem přiřazenou spravovanou identitu na virtuálním počítači, který byl původně zřízen bez něj, váš účet potřebuje přiřazení role [přispěvatele virtuálního počítače.](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)  Nejsou vyžadována žádná další přiřazení rolí adresáře Azure AD.
 
-1. Načte přístupový token nosiče, který použijete v dalším kroku v autorizační hlavičce k vytvoření virtuálního počítače pomocí spravované identity přiřazené systémem.
+1. Načíst přístupový token nosiče, který použijete v dalším kroku v hlavičce autorizace k vytvoření virtuálního počítače se systémem přiřazenou spravovanou identitou.
 
    ```azurecli-interactive
    az account get-access-token
    ```
 
-2. Pomocí následujícího příkazu KUDRLINKOU zavolejte Azure Resource Manager koncový bod REST, aby se na VIRTUÁLNÍm počítači povolila spravovaná identita přiřazená systémem, jak je identifikované v těle žádosti `{"identity":{"type":"SystemAssigned"}` pro virtuální počítač s názvem *myVM*.  Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste si vyžádali přístupový token nosiče a hodnotu `<SUBSCRIPTION ID>`, jak je to vhodné pro vaše prostředí.
+2. Pomocí následujícího příkazu CURL můžete volat koncový bod REST Správce prostředků Azure a povolit systémově přiřazenou spravovanou identitu na vašem virtuálním počítači, jak je v těle požadavku identifikována hodnotou `{"identity":{"type":"SystemAssigned"}` virtuálního počítače s názvem *myVM*.  Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, když jste požadovali přístupový token nosiče a hodnotu `<SUBSCRIPTION ID>` podle vašeho prostředí.
    
    > [!IMPORTANT]
-   > Aby se zajistilo, že neodstraníte žádné existující spravované identity přiřazené uživatelem, které jsou přiřazené k virtuálnímu počítači, musíte pomocí tohoto příkazu SLOŽENÉho příkazu Zobrazit seznam spravovaných identit přiřazených uživateli: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`. Pokud máte k virtuálnímu počítači přiřazené nějaké spravované identity přiřazené uživatelem, jak je identifikované v odpovědi na hodnotu `identity`, přeskočte na krok 3, který vám ukáže, jak uchovávat spravované identity přiřazené uživatelem a zároveň na svém VIRTUÁLNÍm počítači povolit spravovanou identitu přiřazenou systémem.
+   > Chcete-li zajistit, že neodstraníte žádné existující spravované identity přiřazené uživateli, které jsou přiřazeny k virtuálnímu `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`virtuálnímu msu, musíte pomocí tohoto příkazu CURL uvést spravované identity přiřazené uživateli: . Pokud máte všechny uživatelem přiřazené spravované identity přiřazené `identity` k virtuálnímu počítači, jak je uvedeno v hodnotě v odpovědi, přeskočte ke kroku 3, který ukazuje, jak zachovat spravované identity přiřazené uživatelem při povolení spravované identity přiřazené systému na vašem virtuálním počítači.
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -168,14 +168,14 @@ Aby se povolila spravovaná identita přiřazená systémem na virtuálním poč
    ```HTTP
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
-   **Hlavičky požadavku**
+   **Záhlaví požadavku**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
-   |*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.        | 
+   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Autorizace*     | Povinná hodnota. Nastavte na `Bearer` platný přístupový token.        | 
    
-   **Text žádosti**
+   **Text požadavku**
     
    ```JSON
     {  
@@ -185,13 +185,13 @@ Aby se povolila spravovaná identita přiřazená systémem na virtuálním poč
     }
    ```
 
-3. Pokud chcete povolit spravovanou identitu přiřazenou systémem na virtuálním počítači s existujícími spravovanými identitami přiřazenými uživatelem, musíte do `type` hodnoty přidat `SystemAssigned`.  
+3. Chcete-li povolit spravovanou identitu přiřazenou systémem na virtuálním počítači `type` s existujícími spravovanými identitami přiřazenými uživatelem, musíte k hodnotě přidat. `SystemAssigned`  
    
-   Pokud například váš virtuální počítač obsahuje spravované identity přiřazené uživatelem `ID1` a `ID2` k tomuto virtuálnímu počítači, a chcete do virtuálního počítače přidat spravovanou identitu přiřazenou systémem, použijte následující volání KUDRLINKOU. Nahraďte `<ACCESS TOKEN>` a `<SUBSCRIPTION ID>` hodnotami, které jsou vhodné pro vaše prostředí.
+   Například pokud váš virtuální počítač má uživatelem `ID1` `ID2` přiřazené spravované identity a přiřazeny k němu a chcete přidat systémem přiřazenou spravovanou identitu do virtuálního počítače, použijte následující volání CURL. Nahraďte `<ACCESS TOKEN>` a `<SUBSCRIPTION ID>` s hodnotami odpovídajícími vašemu prostředí.
 
-   Verze rozhraní API `2018-06-01` ukládá uživatelem přiřazené identity ve formátu slovníku `userAssignedIdentities` ve formátu slovníku na rozdíl od `identityIds` hodnoty ve formátu pole používaném v rozhraní API verze `2017-12-01`.
+   Verze `2018-06-01` rozhraní API ukládá uživatelem `userAssignedIdentities` přiřazené spravované identity ve formátu `identityIds` slovníku na rozdíl od `2017-12-01`hodnoty v maticovém formátu používaném ve verzi rozhraní API .
    
-   **ROZHRANÍ API VERZE 2018-06-01**
+   **API VERZE 2018-06-01**
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<<SUBSCRIPTION ID>>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{},"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -200,14 +200,14 @@ Aby se povolila spravovaná identita přiřazená systémem na virtuálním poč
    ```HTTP
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
-   **Hlavičky požadavku**
+   **Záhlaví požadavku**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
-   |*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.        | 
+   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Autorizace*     | Povinná hodnota. Nastavte na `Bearer` platný přístupový token.        | 
 
-   **Text žádosti**
+   **Text požadavku**
 
    ```JSON
     {  
@@ -225,7 +225,7 @@ Aby se povolila spravovaná identita přiřazená systémem na virtuálním poč
     }
    ```
 
-   **ROZHRANÍ API VERZE 2017-12-01**
+   **API VERZE 2017-12-01**
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "identityIds":["/subscriptions/<<SUBSCRIPTION ID>>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1","/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -235,14 +235,14 @@ Aby se povolila spravovaná identita přiřazená systémem na virtuálním poč
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01 HTTP/1.1
    ```
     
-   **Hlavičky požadavku**
+   **Záhlaví požadavku**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
-   |*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.        | 
+   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Autorizace*     | Povinná hodnota. Nastavte na `Bearer` platný přístupový token.        | 
 
-   **Text žádosti**
+   **Text požadavku**
 
    ```JSON
     {  
@@ -256,20 +256,20 @@ Aby se povolila spravovaná identita přiřazená systémem na virtuálním poč
     }
    ```   
 
-### <a name="disable-system-assigned-managed-identity-from-an-azure-vm"></a>Zakázat spravovanou identitu přiřazenou systémem z virtuálního počítače Azure
+### <a name="disable-system-assigned-managed-identity-from-an-azure-vm"></a>Zakázání spravované identity přiřazené systému z virtuálního počítače Azure
 
-Aby se na virtuálním počítači zakázala spravovaná identita přiřazená systémem, váš účet potřebuje přiřazení role [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .  Nevyžadují se žádné další přiřazení role adresáře Azure AD.
+Chcete-li zakázat systémem přiřazenou spravovanou identitu na virtuálním počítači, váš účet potřebuje přiřazení role [Přispěvatel virtuálního počítače.](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)  Nejsou vyžadována žádná další přiřazení rolí adresáře Azure AD.
 
-1. Načte přístupový token nosiče, který použijete v dalším kroku v autorizační hlavičce k vytvoření virtuálního počítače pomocí spravované identity přiřazené systémem.
+1. Načíst přístupový token nosiče, který použijete v dalším kroku v hlavičce autorizace k vytvoření virtuálního počítače se systémem přiřazenou spravovanou identitou.
 
    ```azurecli-interactive
    az account get-access-token
    ```
 
-2. Aktualizujte virtuální počítač pomocí metody KUDRLINKOU a zavolejte tak Azure Resource Manager koncový bod REST, aby se zakázala spravovaná identita přiřazená systémem.  Následující příklad zakáže spravovanou identitu přiřazenou systémem, která je označená v těle žádosti, hodnotou `{"identity":{"type":"None"}}` z virtuálního počítače s názvem *myVM*.  Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste si vyžádali přístupový token nosiče a hodnotu `<SUBSCRIPTION ID>`, jak je to vhodné pro vaše prostředí.
+2. Aktualizujte virtuální počítač pomocí CURL volat koncový bod REST Správce prostředků Azure zakázat spravované identity přiřazené systému.  Následující příklad zakáže systémem přiřazenou spravovanou identitu, `{"identity":{"type":"None"}}` jak je identifikována v těle požadavku hodnotou z virtuálního virtuálního soudu s názvem *myVM*.  Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, když jste požadovali přístupový token nosiče a hodnotu `<SUBSCRIPTION ID>` podle vašeho prostředí.
 
    > [!IMPORTANT]
-   > Aby se zajistilo, že neodstraníte žádné existující spravované identity přiřazené uživatelem, které jsou přiřazené k virtuálnímu počítači, musíte pomocí tohoto příkazu SLOŽENÉho příkazu Zobrazit seznam spravovaných identit přiřazených uživateli: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`. Pokud máte k virtuálnímu počítači přiřazené nějaké spravované identity přiřazené uživatelem, jak je identifikované v odpovědi na hodnotu `identity`, přeskočte na krok 3, který vám ukáže, jak zachovat uživatelem přiřazené spravované identity a zároveň na svém VIRTUÁLNÍm počítači zablokovat spravovanou identitu přiřazenou systémem.
+   > Chcete-li zajistit, že neodstraníte žádné existující spravované identity přiřazené uživateli, které jsou přiřazeny k virtuálnímu `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`virtuálnímu msu, musíte pomocí tohoto příkazu CURL uvést spravované identity přiřazené uživateli: . Pokud máte všechny uživatelem přiřazené spravované identity přiřazené `identity` k virtuálnímu počítači, jak je uvedeno v hodnotě v odpovědi, přeskočte ke kroku 3, který ukazuje, jak zachovat spravované identity přiřazené uživatelem při zakázání spravované identity přiřazené systému na vašem virtuálním počítači.
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"None"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -278,14 +278,14 @@ Aby se na virtuálním počítači zakázala spravovaná identita přiřazená s
    ```HTTP
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
-   **Hlavičky požadavku**
+   **Záhlaví požadavku**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
-   |*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.        | 
+   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Autorizace*     | Povinná hodnota. Nastavte na `Bearer` platný přístupový token.        | 
 
-   **Text žádosti**
+   **Text požadavku**
 
    ```JSON
     {  
@@ -295,39 +295,39 @@ Aby se na virtuálním počítači zakázala spravovaná identita přiřazená s
     }
    ```
 
-   Pokud chcete odebrat spravovanou identitu přiřazenou systémem z virtuálního počítače, který má uživatelsky přiřazené spravované identity, odeberte `SystemAssigned` z `{"identity":{"type:" "}}` hodnoty a zachováte `UserAssigned` hodnotu a hodnoty `userAssignedIdentities` slovníku, pokud používáte **rozhraní API verze 2018-06-01**. Pokud používáte **rozhraní API verze 2017-12-01** nebo starší, nechejte pole `identityIds`.
+   Chcete-li odebrat spravovanou identitu přiřazenou systémem z virtuálního `{"identity":{"type:" "}}` počítače, ke `UserAssigned` kterému `userAssignedIdentities` jsou přiřazeny spravované identity přiřazené uživatelem, odeberte `SystemAssigned` z hodnoty a současně zachovejte hodnotu a hodnoty slovníku, pokud používáte **rozhraní API verze 2018-06-01**. Pokud používáte **rozhraní API verze 2017-12-01** nebo starší, zachovat `identityIds` pole.
 
 ## <a name="user-assigned-managed-identity"></a>Spravovaná identita přiřazená uživatelem
 
-V této části se dozvíte, jak přidat a odebrat spravovanou identitu přiřazenou uživatelem na virtuálním počítači Azure pomocí objektu KUDRLINKOU pro volání Azure Resource Manager koncového bodu REST.
+V této části se dozvíte, jak přidat a odebrat uživatelem přiřazenou spravovanou identitu na virtuálním počítači Azure pomocí CURL k volání koncového bodu REST Azure Resource Manager.
 
-### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-an-azure-vm"></a>Přiřazení spravované identity přiřazené uživatelem během vytváření virtuálního počítače Azure
+### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-an-azure-vm"></a>Přiřazení spravované identity přiřazené uživateli při vytváření virtuálního počítače Azure
 
-K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači potřebuje váš účet [přispěvatele virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) a přiřazení rolí [spravovaného operátoru identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator) . Nevyžadují se žádné další přiřazení role adresáře Azure AD.
+Chcete-li přiřadit uživatelem přiřazenou identitu k virtuálnímu počítači, váš účet potřebuje přiřazení rolí [Přispěvatel virtuálního počítače](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) a [Operátor spravované identity.](/azure/role-based-access-control/built-in-roles#managed-identity-operator) Nejsou vyžadována žádná další přiřazení rolí adresáře Azure AD.
 
-1. Načte přístupový token nosiče, který použijete v dalším kroku v autorizační hlavičce k vytvoření virtuálního počítače pomocí spravované identity přiřazené systémem.
+1. Načíst přístupový token nosiče, který použijete v dalším kroku v hlavičce autorizace k vytvoření virtuálního počítače se systémem přiřazenou spravovanou identitou.
 
    ```azurecli-interactive
    az account get-access-token
    ```
 
-2. Vytvoření [síťového rozhraní](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) pro virtuální počítač:
+2. Vytvořte [síťové rozhraní](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) pro virtuální počítač:
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
    ```
 
-3. Načte přístupový token nosiče, který použijete v dalším kroku v autorizační hlavičce k vytvoření virtuálního počítače pomocí spravované identity přiřazené systémem.
+3. Načíst přístupový token nosiče, který použijete v dalším kroku v hlavičce autorizace k vytvoření virtuálního počítače se systémem přiřazenou spravovanou identitou.
 
    ```azurecli-interactive
    az account get-access-token
    ``` 
 
-4. Pomocí pokynů, které najdete tady, vytvořte uživatelem přiřazenou spravovanou identitu: [vytvořte spravovanou identitu přiřazenou uživatelem](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
+4. Vytvořte spravovanou identitu přiřazenou uživateli podle pokynů, které naleznete zde: [Vytvoření spravované identity přiřazené uživateli](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
 
-5. Vytvořte virtuální počítač pomocí metody KUDRLINKOU pro volání Azure Resource Manager koncového bodu REST. Následující příklad vytvoří virtuální počítač s názvem *myVM* ve skupině prostředků *myResourceGroup* s uživatelem přiřazenou spravovanou identitou `ID1`, jak je uvedeno v těle žádosti hodnotou `"identity":{"type":"UserAssigned"}`. Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste si vyžádali přístupový token nosiče a hodnotu `<SUBSCRIPTION ID>`, jak je to vhodné pro vaše prostředí.
+5. Vytvořte virtuální počítač pomocí CURL volat koncový bod AZURE Resource Manager REST. Následující příklad vytvoří virtuální hod s názvem *myVM* ve skupině prostředků *myResourceGroup* s uživatelem přiřazenou spravovanou identitou `ID1`, jak je v těle požadavku identifikováno hodnotou `"identity":{"type":"UserAssigned"}`. Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, když jste požadovali přístupový token nosiče a hodnotu `<SUBSCRIPTION ID>` podle vašeho prostředí.
  
-   **ROZHRANÍ API VERZE 2018-06-01**
+   **API VERZE 2018-06-01**
 
    ```bash   
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PUT -d '{"location":"westus","name":"myVM","identity":{"type":"UserAssigned","identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]},"properties":{"hardwareProfile":{"vmSize":"Standard_D2_v2"},"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"name":"myVM3osdisk","createOption":"FromImage"},"dataDisks":[{"diskSizeGB":1023,"createOption":"Empty","lun":0},{"diskSizeGB":1023,"createOption":"Empty","lun":1}]},"osProfile":{"adminUsername":"azureuser","computerName":"myVM","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaces":[{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic","properties":{"primary":true}}]}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -337,14 +337,14 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Hlavičky požadavku**
+   **Záhlaví požadavku**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
-   |*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.        | 
+   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Autorizace*     | Povinná hodnota. Nastavte na `Bearer` platný přístupový token.        | 
 
-   **Text žádosti**
+   **Text požadavku**
 
    ```JSON
     {  
@@ -408,7 +408,7 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
 
    ```
   
-   **ROZHRANÍ API VERZE 2017-12-01**
+   **API VERZE 2017-12-01**
 
    ```bash   
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PUT -d '{"location":"westus","name":"myVM","identity":{"type":"UserAssigned","identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]},"properties":{"hardwareProfile":{"vmSize":"Standard_D2_v2"},"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"name":"myVM3osdisk","createOption":"FromImage"},"dataDisks":[{"diskSizeGB":1023,"createOption":"Empty","lun":0},{"diskSizeGB":1023,"createOption":"Empty","lun":1}]},"osProfile":{"adminUsername":"azureuser","computerName":"myVM","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaces":[{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic","properties":{"primary":true}}]}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -418,14 +418,14 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Hlavičky požadavku**
+   **Záhlaví požadavku**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
-   |*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.        | 
+   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Autorizace*     | Povinná hodnota. Nastavte na `Bearer` platný přístupový token.        | 
 
-   **Text žádosti**
+   **Text požadavku**
 
    ```JSON
     {
@@ -490,17 +490,17 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
 
 ### <a name="assign-a-user-assigned-managed-identity-to-an-existing-azure-vm"></a>Přiřazení spravované identity přiřazené uživateli k existujícímu virtuálnímu počítači Azure
 
-K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači potřebuje váš účet [přispěvatele virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) a přiřazení rolí [spravovaného operátoru identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator) . Nevyžadují se žádné další přiřazení role adresáře Azure AD.
+Chcete-li přiřadit uživatelem přiřazenou identitu k virtuálnímu počítači, váš účet potřebuje přiřazení rolí [Přispěvatel virtuálního počítače](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) a [Operátor spravované identity.](/azure/role-based-access-control/built-in-roles#managed-identity-operator) Nejsou vyžadována žádná další přiřazení rolí adresáře Azure AD.
 
-1. Načte přístupový token nosiče, který použijete v dalším kroku v autorizační hlavičce k vytvoření virtuálního počítače pomocí spravované identity přiřazené systémem.
+1. Načíst přístupový token nosiče, který použijete v dalším kroku v hlavičce autorizace k vytvoření virtuálního počítače se systémem přiřazenou spravovanou identitou.
 
    ```azurecli-interactive
    az account get-access-token
    ```
 
-2.  Pomocí pokynů, které najdete tady, vytvořte uživatelem přiřazenou spravovanou identitu a [vytvořte spravovanou identitu přiřazenou uživatelem](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
+2.  Vytvořte spravovanou identitu přiřazenou uživateli pomocí pokynů, které naleznete zde, [Vytvoření spravované identity přiřazené uživateli](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
 
-3. K tomu, abyste se ujistili, že neodstraňujete stávající spravované identity uživatelů nebo systémem přiřazené k virtuálnímu počítači, musíte zobrazit seznam typů identit přiřazených k virtuálnímu počítači pomocí následujícího příkazu. Pokud máte spravované identity přiřazené k sadě škálování virtuálních počítačů, jsou uvedené v části v poli `identity` hodnota.
+3. Chcete-li zajistit, že neodstraníte existující spravované identity přiřazené uživateli nebo systému, které jsou přiřazeny k virtuálnímu počítače, musíte pomocí následujícího příkazu CURL uvést typy identit přiřazené k virtuálnímu počítače. Pokud jste spravovali identity přiřazené k škálovací sadě `identity` virtuálních strojů, jsou uvedeny v části hodnota.
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>" 
@@ -509,19 +509,19 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
    ```HTTP
    GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01 HTTP/1.1
    ```
-   **Hlavičky požadavku**
+   **Záhlaví požadavku**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.
+   |*Autorizace*     | Povinná hodnota. Nastavte na `Bearer` platný přístupový token.
 
-    Pokud máte ke svému virtuálnímu počítači přiřazenou nějaké spravované identity přiřazené uživateli nebo systémem, jak je identifikované v odpovědi na hodnotu `identity`, přeskočte na krok 5, který vám ukáže, jak zachovat spravovanou identitu přiřazenou systémem při přidávání uživatelsky přiřazené spravované identity na VIRTUÁLNÍm počítači.
+    Pokud máte nějaké uživatele nebo systém přiřazené spravované identity přiřazené k virtuálnímu počítači, jak je uvedeno v `identity` hodnotě v odpovědi, přeskočte ke kroku 5, který ukazuje, jak zachovat spravovanou identitu přiřazenou systémem při přidávání spravované identity přiřazené uživateli na vašem virtuálním počítači.
 
-4. Pokud nemáte ke svému VIRTUÁLNÍmu počítači přiřazené žádné spravované identity přiřazené uživatelem, použijte následující příkaz, který zavolá Azure Resource Manager koncový bod REST a přiřadí k virtuálnímu počítači první spravovanou identitu přiřazenou uživatelem.
+4. Pokud nemáte žádné uživatelem přiřazené spravované identity přiřazené k vašemu virtuálnímu počítači, použijte následující příkaz CURL k volání koncového bodu Azure Resource Manager REST a přiřaďte k virtuálnímu počítači první uživatelem přiřazenou spravovanou identitu.
 
-   Následující příklady přiřadí spravovanou identitu přiřazenou uživatelem `ID1` k virtuálnímu počítači s názvem *myVM* ve skupině prostředků *myResourceGroup*.  Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste si vyžádali přístupový token nosiče a hodnotu `<SUBSCRIPTION ID>`, jak je to vhodné pro vaše prostředí.
+   Následující příklady přiřadí uživatelem přiřazenou `ID1` spravovanou identitu virtuálnímu virtuálnímu uživateli s názvem *myVM* ve skupině prostředků *myResourceGroup*.  Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, když jste požadovali přístupový token nosiče a hodnotu `<SUBSCRIPTION ID>` podle vašeho prostředí.
 
-   **ROZHRANÍ API VERZE 2018-06-01**
+   **API VERZE 2018-06-01**
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -530,14 +530,14 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
    ```HTTP
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
-   **Hlavičky požadavku**
+   **Záhlaví požadavku**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
-   |*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.        |
+   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Autorizace*     | Povinná hodnota. Nastavte na `Bearer` platný přístupový token.        |
  
-   **Text žádosti**
+   **Text požadavku**
 
    ```JSON
     {
@@ -552,7 +552,7 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
     }
    ```
 
-   **ROZHRANÍ API VERZE 2017-12-01**
+   **API VERZE 2017-12-01**
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"userAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -562,14 +562,14 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01 HTTP/1.1
    ```
    
-   **Hlavičky požadavku**
+   **Záhlaví požadavku**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
-   |*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.        | 
+   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Autorizace*     | Povinná hodnota. Nastavte na `Bearer` platný přístupový token.        | 
 
-   **Text žádosti**
+   **Text požadavku**
 
    ```JSON
     {
@@ -582,13 +582,13 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
     }
    ```
 
-5. Pokud máte ke svému VIRTUÁLNÍmu počítači přiřazenou stávající spravovanou identitu přiřazenou uživatelem nebo systémem:
+5. Pokud máte k virtuálnímu počítači přiřazenou nebo systémem přiřazenou spravovanou identitu:
    
-   **ROZHRANÍ API VERZE 2018-06-01**
+   **API VERZE 2018-06-01**
 
-   Přidejte spravovanou identitu přiřazenou uživatelem do hodnoty `userAssignedIdentities` slovníku.
+   Přidejte uživatelem přiřazenou spravovanou identitu do hodnoty slovníku. `userAssignedIdentities`
     
-   Pokud máte například spravovanou identitu přiřazenou systémem a uživatelem přiřazenou spravovanou identitu `ID1` aktuálně přiřazenou k vašemu VIRTUÁLNÍmu počítači a chcete do ní přidat spravovanou identitu přiřazenou uživatelem, `ID2`:
+   Pokud jste například přiřadili spravovanou identitu přiřazenou do systému a uživatelem přiřazenou spravovanou `ID1` `ID2` identitu aktuálně přiřazenou k vašemu virtuálnímu počítači a chtěli byste do něj přidat spravovanou identitu přiřazenou uživatelem:
 
    ```bash
    curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{},"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -598,14 +598,14 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
    
-   **Hlavičky požadavku**
+   **Záhlaví požadavku**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
-   |*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.        | 
+   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Autorizace*     | Povinná hodnota. Nastavte na `Bearer` platný přístupový token.        | 
 
-   **Text žádosti**
+   **Text požadavku**
 
    ```JSON
     {
@@ -623,11 +623,11 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
     }
    ```
 
-   **ROZHRANÍ API VERZE 2017-12-01**
+   **API VERZE 2017-12-01**
 
-   Zachovejte spravované identity přiřazené uživatelem, které chcete zachovat v hodnotě `identityIds` pole při přidávání nové spravované identity přiřazené uživatelem.
+   Zachovat uživatelem přiřazené spravované identity, které `identityIds` chcete zachovat v hodnotě pole při přidávání nové spravované identity přiřazené uživateli.
 
-   Pokud máte například spravovanou identitu přiřazenou systémem a uživatelem přiřazenou spravovanou identitu `ID1` aktuálně přiřazenou k vašemu VIRTUÁLNÍmu počítači a chcete do ní přidat spravovanou identitu přiřazenou uživatelem, `ID2`: 
+   Pokud jste například přiřadili spravovanou identitu přiřazenou do systému a uživatelem přiřazenou spravovanou `ID1` `ID2` identitu aktuálně přiřazenou k vašemu virtuálnímu počítači a chtěli byste do něj přidat spravovanou identitu přiřazenou uživatelem: 
 
    ```bash
    curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned,UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1","/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -637,14 +637,14 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Hlavičky požadavku**
+   **Záhlaví požadavku**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
-   |*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.        | 
+   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Autorizace*     | Povinná hodnota. Nastavte na `Bearer` platný přístupový token.        | 
 
-   **Text žádosti**
+   **Text požadavku**
 
    ```JSON
     {
@@ -658,17 +658,17 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
     }
    ```   
 
-### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Odebrání spravované identity přiřazené uživatelem z virtuálního počítače Azure
+### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Odebrání spravované identity přiřazené uživateli z virtuálního počítače Azure
 
-K odebrání uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači vyžaduje váš účet přiřazení role [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .
+Chcete-li odebrat uživatelem přiřazenou identitu virtuálnímu počítači, váš účet potřebuje přiřazení role [Přispěvatel virtuálního počítače.](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)
 
-1. Načte přístupový token nosiče, který použijete v dalším kroku v autorizační hlavičce k vytvoření virtuálního počítače pomocí spravované identity přiřazené systémem.
+1. Načíst přístupový token nosiče, který použijete v dalším kroku v hlavičce autorizace k vytvoření virtuálního počítače se systémem přiřazenou spravovanou identitou.
 
    ```azurecli-interactive
    az account get-access-token
    ```
 
-2. Abyste se ujistili, že neodstraníte žádné existující spravované identity přiřazené uživatelem, které byste chtěli zachovat přiřazený virtuálnímu počítači nebo odebrat spravovanou identitu přiřazenou systémem, musíte vypsat spravované identity pomocí následujícího příkazu SLOŽENÉho příkazu: 
+2. Chcete-li zajistit, že neodstraníte žádné existující spravované identity přiřazené uživatelem, které chcete zachovat přiřazené k virtuálnímu virtuálnímu ms, nebo odebrat spravovanou identitu přiřazenou systémem, musíte spravované identity uvést pomocí následujícího příkazu CURL: 
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -678,18 +678,18 @@ K odebrání uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači vyž
    GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Hlavičky požadavku**
+   **Záhlaví požadavku**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
-   |*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.
+   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Autorizace*     | Povinná hodnota. Nastavte na `Bearer` platný přístupový token.
  
-   Pokud máte přiřazené spravované identity k virtuálnímu počítači, zobrazí se v odpovědi v hodnotě `identity`.
+   Pokud jste spravovali identity přiřazené k virtuálnímu týmu, jsou uvedeny v odpovědi v hodnotě. `identity`
 
-   Například pokud máte uživatelem přiřazené spravované identity `ID1` a `ID2` k vašemu VIRTUÁLNÍmu počítači, a chcete zachovat `ID1` přiřazenou a zachovat identitu přiřazenou systémem:
+   Například pokud jste uživatelem přiřazené `ID1` `ID2` spravované identity a přiřazené k `ID1` virtuálnímu počítači a chcete pouze zachovat přiřazené a zachovat systémově přiřazenou identitu:
    
-   **ROZHRANÍ API VERZE 2018-06-01**
+   **API VERZE 2018-06-01**
 
    Přidejte `null` k uživatelem přiřazené spravované identitě, kterou chcete odebrat:
 
@@ -701,14 +701,14 @@ K odebrání uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači vyž
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Hlavičky požadavku**
+   **Záhlaví požadavku**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
-   |*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.        | 
+   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Autorizace*     | Povinná hodnota. Nastavte na `Bearer` platný přístupový token.        | 
 
-   **Text žádosti**
+   **Text požadavku**
 
    ```JSON
     {
@@ -721,9 +721,9 @@ K odebrání uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači vyž
     }
    ```
 
-   **ROZHRANÍ API VERZE 2017-12-01**
+   **API VERZE 2017-12-01**
 
-   Zachovejte pouze uživatelsky přiřazené spravované identity, které chcete ponechat v poli `identityIds`:
+   Zachovat pouze uživatelem přiřazené spravované identity, které chcete `identityIds` zachovat v poli:
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -733,14 +733,14 @@ K odebrání uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači vyž
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Hlavičky požadavku**
+   **Záhlaví požadavku**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
-   |*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.        | 
+   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Autorizace*     | Povinná hodnota. Nastavte na `Bearer` platný přístupový token.        | 
 
-   **Text žádosti**
+   **Text požadavku**
 
    ```JSON
     {
@@ -753,7 +753,7 @@ K odebrání uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači vyž
     }
    ```
 
-Pokud má váš virtuální počítač spravované identity přiřazené systémem i uživatelem, můžete odebrat všechny spravované identity přiřazené uživatelem tak, že přepnete na použití spravované identity přiřazené systémem, a to pomocí následujícího příkazu:
+Pokud má váš virtuální počítač přiřazené i uživatelem přiřazené spravované identity, můžete odebrat všechny spravované identity přiřazené uživateli tak, že přepnete na použití pouze spravované identity přiřazené k systému pomocí následujícího příkazu:
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -763,14 +763,14 @@ curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
 ```
 
-**Hlavičky požadavku**
+**Záhlaví požadavku**
 
 |Hlavička požadavku  |Popis  |
 |---------|---------|
-|*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
-|*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`. | 
+|*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+|*Autorizace*     | Povinná hodnota. Nastavte na `Bearer` platný přístupový token. | 
 
-**Text žádosti**
+**Text požadavku**
 
 ```JSON
 {
@@ -780,7 +780,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 }
 ```
     
-Pokud má váš virtuální počítač jenom spravované identity přiřazené uživatelem a Vy byste ho chtěli odebrat, použijte následující příkaz:
+Pokud má váš virtuální počítač jenom spravované identity přiřazené k uživateli a chcete je všechny odebrat, použijte následující příkaz:
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"None"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -790,14 +790,14 @@ curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
 ```
 
-**Hlavičky požadavku**
+**Záhlaví požadavku**
 
 |Hlavička požadavku  |Popis  |
 |---------|---------|
-|*Typ obsahu*     | Požadováno. Nastavte na `application/json`.        |
-|*Autorizace*     | Požadováno. Nastavte na platný přístupový token `Bearer`.| 
+|*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+|*Autorizace*     | Povinná hodnota. Nastavte na `Bearer` platný přístupový token.| 
 
-**Text žádosti**
+**Text požadavku**
 
 ```JSON
 {
@@ -809,6 +809,6 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak vytvořit, vypsat nebo odstranit spravované identity přiřazené uživatelem pomocí REST, najdete v těchto tématech:
+Informace o tom, jak vytvořit, vypsat nebo odstranit spravované identity přiřazené uživatelem pomocí služby REST, naleznete v tomto tématu:
 
-- [Vytvoření, vypsání nebo odstranění spravovaných identit přiřazených uživatelem pomocí REST API volání](how-to-manage-ua-identity-rest.md)
+- [Vytvoření, zobrazení seznamu nebo odstranění spravovaných identit přiřazených uživatelem pomocí volání rozhraní REST API](how-to-manage-ua-identity-rest.md)

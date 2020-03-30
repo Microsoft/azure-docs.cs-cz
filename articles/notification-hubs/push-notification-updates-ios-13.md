@@ -1,6 +1,6 @@
 ---
-title: Aktualizace pro Azure Notification Hubs iOS 13 | Microsoft Docs
-description: Přečtěte si o nejnovějších změnách v Azure Notification Hubs v iOS 13
+title: Aktualizace Centra oznámení Azure iOS 13 | Dokumenty společnosti Microsoft
+description: Informace o průlomových změnách iOS 13 v Centru oznámení Azure
 author: sethmanheim
 ms.author: sethm
 ms.date: 10/16/2019
@@ -9,27 +9,27 @@ ms.service: notification-hubs
 ms.reviewer: jowargo
 ms.lastreviewed: 10/16/2019
 ms.openlocfilehash: 697e8ba9c9f27e8d5644e3a78950ff006290efe7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74228141"
 ---
-# <a name="azure-notification-hubs-updates-for-ios-13"></a>Aktualizace Azure Notification Hubs pro iOS 13
+# <a name="azure-notification-hubs-updates-for-ios-13"></a>Aktualizace Centra oznámení Azure pro iOS 13
 
-Společnost Apple nedávno provedla některé změny své veřejné nabízené služby. změny se většinou zarovnají s verzemi iOS 13 a Xcode. Tento článek popisuje vliv těchto změn na Azure Notification Hubs.
+Apple nedávno provedl některé změny ve své veřejné push službě; změny většinou v souladu s verzemi iOS 13 a Xcode. Tento článek popisuje dopad těchto změn na Centra oznámení Azure.
 
-## <a name="apns-push-payload-changes"></a>Změny datové části APNS push
+## <a name="apns-push-payload-changes"></a>Změny užitečného zatížení nabízená vypočtení APNS
 
-### <a name="apns-push-type"></a>Typ push APNS
+### <a name="apns-push-type"></a>Typ nabízení APNS
 
-Společnost Apple teď vyžaduje, aby vývojáři identifikovali oznámení jako výstrahu nebo oznámení na pozadí prostřednictvím nové hlavičky `apns-push-type` v rozhraní API služby APN. Podle [Dokumentace společnosti Apple](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns): "hodnota této hlavičky musí přesně odrážet obsah datové části oznámení. Pokud dojde k neshodě nebo pokud tato hlavička v požadovaných systémech chybí, služby APN mohou vrátit chybu, pozdržet doručení příslušného oznámení nebo ho úplně zahodit.“
+Apple nyní vyžaduje, aby vývojáři identifikovali oznámení jako `apns-push-type` upozornění nebo oznámení na pozadí prostřednictvím nové hlavičky v rozhraní APNS API. Podle [dokumentace společnosti Apple](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns): "Hodnota této hlavičky musí přesně odrážet obsah datové části oznámení. Pokud dojde k neshodě nebo pokud záhlaví chybí v požadovaných systémech, mohou kódy APN vrátit chybu, zpozdit doručení oznámení nebo jej úplně vynechat."
 
-Vývojáři musí nyní tuto hlavičku nastavit v aplikacích, které odesílají oznámení prostřednictvím služby Azure Notification Hubs. Z důvodu technického omezení musí zákazníci používat ověřování na základě tokenů pro přihlašovací údaje APNS s požadavky, které obsahují tento atribut. Pokud pro přihlašovací údaje APNS používáte ověřování na základě certifikátů, musíte přepnout na použití ověřování založeného na tokenech.
+Vývojáři teď musí nastavit tuto hlavičku v aplikacích, které odesílají oznámení prostřednictvím Centra oznámení Azure. Z důvodu technického omezení musí zákazníci používat ověřování na základě tokenů pro pověření APNS s požadavky, které obsahují tento atribut. Pokud pro pověření APNS používáte ověřování na základě certifikátu, musíte přepnout na použití ověřování založeného na tokenech.
 
-Následující ukázky kódu ukazují, jak nastavit tento atribut záhlaví v žádostech o oznámení odeslaných prostřednictvím Azure Notification Hubs.
+Následující ukázky kódu ukazují, jak nastavit tento atribut záhlaví v požadavcích na oznámení odeslaných prostřednictvím centra oznámení Azure.
 
-#### <a name="template-notifications---net-sdk"></a>Oznámení šablon – sada .NET SDK
+#### <a name="template-notifications---net-sdk"></a>Oznámení šablon - sada .NET SDK
 
 ```csharp
 var hub = NotificationHubClient.CreateFromConnectionString(...);
@@ -40,7 +40,7 @@ notification.Headers = headers;
 await hub.SendNotificationAsync(notification);
 ```
 
-#### <a name="native-notifications---net-sdk"></a>Nativní oznámení – sada .NET SDK
+#### <a name="native-notifications---net-sdk"></a>Nativní oznámení - sada .NET SDK
 
 ```csharp
 var hub = NotificationHubClient.CreateFromConnectionString(...);
@@ -49,7 +49,7 @@ var notification = new AppleNotification("notification text", headers);
 await hub.SendNotificationAsync(notification);
 ```
 
-#### <a name="direct-rest-calls"></a>Přímá volání REST
+#### <a name="direct-rest-calls"></a>Přímé volání REST
 
 ```csharp
 var request = new HttpRequestMessage(method, $"<resourceUri>?api-version=2017-04");
@@ -58,13 +58,13 @@ request.Headers.Add("ServiceBusNotification-Format", "apple");
 request.Headers.Add("apns-push-type", "alert");
 ```
 
-Pokud vám Azure Notification Hubs detekuje oznámení, které nemá `apns-push-type` nastavené v tomto přechodu, vyvozuje z požadavku na oznámení typ push a automaticky nastaví hodnotu. Pamatujte, že je nutné nakonfigurovat Azure Notification Hubs pro použití ověřování založeného na tokenech k nastavení požadované hlavičky; Další informace najdete v tématu [ověřování založené na tokenech (http/2) pro služby APN](notification-hubs-push-notification-http2-token-authentification.md).
+Abychom vám pomohli během tohoto přechodu, když Azure Notification Hubs zjistí oznámení, které nemá nastavenou, `apns-push-type` služba odvodí typ push z žádosti o oznámení a automaticky nastaví hodnotu. Nezapomeňte, že je nutné nakonfigurovat Centra oznámení Azure tak, aby používala ověřování založené na tokenech k nastavení požadované hlavičky. Další informace naleznete [v tématu Ověřování na základě tokenu (HTTP/2) pro apns](notification-hubs-push-notification-http2-token-authentification.md).
 
-## <a name="apns-priority"></a>Priorita služby APN
+## <a name="apns-priority"></a>Priorita APNS
 
-Další menší změna, ale ta, která vyžaduje změnu aplikace back-end, která odesílá oznámení, je požadavek na to, aby oznámení na pozadí `apns-priority` záhlaví měla být nastavena na 5. Mnoho aplikací nastavuje hlavičku `apns-priority` na hodnotu 10 (indikuje okamžité doručení), nebo ji nenastaví a získá výchozí hodnotu (což je také 10).
+Další menší změna, ale ten, který vyžaduje změnu back-endové aplikace, která `apns-priority` odesílá oznámení, je požadavek, že pro oznámení na pozadí záhlaví musí být nyní nastavena na 5. Mnoho aplikací `apns-priority` nastaví záhlaví na 10 (označující okamžité doručení) nebo ji nenastaví a nezískáte výchozí hodnotu (což je také 10).
 
-Nastavení této hodnoty na hodnotu 10 již není povoleno pro oznámení na pozadí a je nutné nastavit hodnotu pro každý požadavek. Pokud tato hodnota chybí, Apple nebude doručovat oznámení na pozadí. Příklad:
+Nastavení této hodnoty na 10 již není povoleno pro oznámení na pozadí a je nutné nastavit hodnotu pro každý požadavek. Společnost Apple nebude doručovat oznámení na pozadí, pokud tato hodnota chybí. Například:
 
 ```csharp
 var hub = NotificationHubClient.CreateFromConnectionString(...);
@@ -75,4 +75,4 @@ await hub.SendNotificationAsync(notification);
 
 ## <a name="sdk-changes"></a>Změny sady SDK
 
-Pro roky vývojáři pro iOS použili atribut `description` `deviceToken` dat, která se odesílají do delegáta tokenu push, k extrakci tokenu push, který aplikace back-end používá k odesílání oznámení do zařízení. S Xcode 11 se tento atribut `description` změnil na jiný formát. Existující kód, který vývojářům použili pro tento atribut, je teď porušený. Aktualizovali jsme sadu Azure Notification Hubs SDK, aby odpovídala této změně, proto aktualizujte sadu SDK používané vašimi aplikacemi na verzi 2.0.4 nebo novější v [sadě Azure Notification Hubs iOS SDK](https://github.com/Azure/azure-notificationhubs-ios).
+Vývojáři iOS používali `description` atribut `deviceToken` dat odeslaných delegátovi tokenu nabízených oznámení k extrahování nabízeného tokenu, který back-endová aplikace používá k odesílání oznámení do zařízení. S Xcode 11 `description` se tento atribut změnil na jiný formát. Existující kód, který vývojáři pro tento atribut použili, je nyní přerušený. Aktualizovali jsme sdk centra oznámení Azure tak, aby vyhovovala této změně, proto aktualizujte sadu SDK používanou vašimi aplikacemi na verzi 2.0.4 nebo novější sady [Azure Notification Hubs iOS SDK](https://github.com/Azure/azure-notificationhubs-ios).

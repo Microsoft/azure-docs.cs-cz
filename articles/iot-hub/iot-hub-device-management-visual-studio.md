@@ -1,6 +1,6 @@
 ---
-title: Správa zařízení Azure IoT w/Visual Studio Cloud Explorer
-description: Použijte Průzkumníka cloudu pro Visual Studio pro službu Azure IoT Hub Správa zařízení, která nabízí přímé metody a možnosti správy požadovaných vlastností.
+title: Správa zařízení Azure IoT w/ Visual Studio Cloud Explorer
+description: Použijte Průzkumníka Cloud pro Visual Studio pro správu zařízení Azure IoT Hub, který obsahuje přímé metody a požadované možnosti správy vlastností twin.
 author: shizn
 ms.service: iot-hub
 services: iot-hub
@@ -8,107 +8,107 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
 ms.openlocfilehash: 6fe5a45dda6632c56b3c6714827950e25e7d26af
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73953183"
 ---
-# <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>Použití Průzkumníka cloudu pro Visual Studio pro správu zařízení IoT Hub Azure
+# <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>Použití Průzkumníka Cloud pro správu zařízení Služby Visual Studio pro Azure IoT Hub
 
-![Komplexní diagram](media/iot-hub-device-management-visual-studio/iot-e2e-simple.png)
+![Diagram koncového bodu](media/iot-hub-device-management-visual-studio/iot-e2e-simple.png)
 
-[Průzkumník cloudu](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) je užitečnou příponou sady Visual Studio, která umožňuje zobrazit prostředky Azure, kontrolovat jejich vlastnosti a provádět klíčové vývojářské akce v rámci sady Visual Studio. Obsahuje možnosti správy, které můžete použít k provádění různých úloh.
+[Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) je užitečné rozšíření Sady Visual Studio, které umožňuje zobrazit prostředky Azure, kontrolovat jejich vlastnosti a provádět klíčové akce vývojáře z visual studia. Dodává se s možnostmi správy, které můžete použít k provádění různých úkolů.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-| Možnost správy          | Úkol                    |
+| Možnost řízení          | Úkol                    |
 |----------------------------|--------------------------------|
-| Přímé metody             | Udělejte zařízení jako takové, jako je spuštění nebo zastavení odesílání zpráv nebo restartování zařízení.                                        |
-| Čtení z vlákna zařízení           | Načte stav nahlášeného zařízení. Například zařízení nahlásí, že indikátor LED právě bliká.                                    |
-| Aktualizovat dvojitou dvojici zařízení         | Vložte zařízení do určitých stavů, jako je například nastavení indikátoru LED na zelenou nebo nastavení intervalu odesílání telemetrie na 30 minut.         |
-| Zprávy typu cloud zařízení   | Odesílání oznámení do zařízení. Například "je velmi pravděpodobnost, že už ještě nejste v dnešní době deště. Nezapomeňte uvést deštník. "              |
+| Přímé metody             | Nastavíte zařízení tak, aby spouštění nebo zastavování odesílání zpráv nebo restartování zařízení.                                        |
+| Čtení dvojčete zařízení           | Získejte nahlášený stav zařízení. Zařízení například hlásí, že led dioda nyní bliká.                                    |
+| Aktualizovat dvojče zařízení         | Přepni zařízení do určitých stavů, například nastavení led diody na zelenou nebo nastavení intervalu odesílání telemetrie na 30 minut.         |
+| Zprávy z cloudu na zařízení   | Odesílat oznámení do zařízení. Například, "Je velmi pravděpodobné, že déšť dnes. Nezapomeň si vzít deštník."              |
 
-Podrobnější vysvětlení rozdílů a pokynů k používání těchto možností najdete v tématu [pokyny k komunikaci mezi zařízeními a cloudem](iot-hub-devguide-d2c-guidance.md) a [pokyny pro komunikaci z cloudu na zařízení](iot-hub-devguide-c2d-guidance.md).
+Podrobnější vysvětlení rozdílů a pokyny k použití těchto možností naleznete v tématu [Pokyny pro komunikaci mezi zařízeními](iot-hub-devguide-d2c-guidance.md) a pokyny ke komunikaci mezi [cloudem](iot-hub-devguide-c2d-guidance.md).
 
-Vlákna zařízení jsou dokumenty JSON, které ukládají informace o stavu zařízení, včetně metadat, konfigurací a podmínek. IoT Hub přetrvává pro každé zařízení, které se k němu připojuje. Další informace o nevlákenách zařízení najdete v tématu [Začínáme s dvojitými zprávami](iot-hub-node-node-twin-getstarted.md)o zařízení.
+Dvojčata zařízení jsou dokumenty JSON s uloženými informacemi o stavu zařízení, včetně metadat, konfigurací a podmínek. IoT Hub zachová dvojče zařízení pro každé zařízení, které se k němu připojí. Další informace o dvojčatech zařízení najdete [v tématu Začínáme s dvojčaty zařízení](iot-hub-node-node-twin-getstarted.md).
 
 ## <a name="what-you-learn"></a>Co se naučíte
 
-V tomto článku se dozvíte, jak používat Průzkumníka cloudu pro Visual Studio s různými možnostmi správy ve vývojovém počítači.
+V tomto článku se dozvíte, jak používat Cloud Explorer pro Visual Studio s různými možnostmi správy ve vývojovém počítači.
 
-## <a name="what-you-do"></a>Co dělat
+## <a name="what-you-do"></a>Co děláte
 
-V tomto článku spusťte Průzkumníka cloudu pro Visual Studio s různými možnostmi správy.
+V tomto článku spusťte Průzkumníka Cloud pro Visual Studio s různými možnostmi správy.
 
 ## <a name="what-you-need"></a>Co potřebujete
 
-Potřebujete následující požadavky:
+Potřebujete následující předpoklady:
 
 - Aktivní předplatné Azure.
 
-- IoT Hub Azure v rámci vašeho předplatného.
+- Azure IoT Hub v rámci vašeho předplatného.
 
-- Microsoft Visual Studio 2017 Update 9 nebo novější. V tomto článku se používá [Visual studio 2017 nebo Visual studio 2019](https://www.visualstudio.com/vs/).
+- Aktualizace Microsoft Visual Studio 2017 Aktualizace 9 nebo novější. Tento článek používá [Visual Studio 2017 nebo Visual Studio 2019](https://www.visualstudio.com/vs/).
 
-- Součást Průzkumníka cloudu z Instalační program pro Visual Studio, která je standardně vybraná s úlohou Azure.
+- Komponenta Cloud Explorer z Instalační služby Visual Studia, která je ve výchozím nastavení vybraná s azure workload.
 
-## <a name="update-cloud-explorer-to-latest-version"></a>Aktualizovat Průzkumníka cloudu na nejnovější verzi
+## <a name="update-cloud-explorer-to-latest-version"></a>Aktualizace Průzkumníka Cloud na nejnovější verzi
 
-Součást Průzkumníka cloudu z Instalační program pro Visual Studio pro Visual Studio 2017 podporuje pouze monitorování zpráv ze zařízení do cloudu a z cloudu na zařízení. Pokud chcete použít Visual Studio 2017, Stáhněte a nainstalujte si nejnovější [Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS).
+Komponenta Průzkumníka cloudu z Instalační služby Visual Studia pro Visual Studio 2017 podporuje jenom monitorování zpráv mezi zařízeními a cloudem. Chcete-li používat Visual Studio 2017, stáhněte a nainstalujte nejnovější [Průzkumníka Cloud .](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS)
 
-## <a name="sign-in-to-access-your-hub"></a>Přihlaste se, abyste měli přístup ke svému centru.
+## <a name="sign-in-to-access-your-hub"></a>Přihlášení pro přístup k rozbočovači
 
-1. V aplikaci Visual Studio vyberte **zobrazit** > **Průzkumník cloudu** a otevřete Průzkumníka cloudu.
+1. V Visual Studiu vyberte **Zobrazit** > **Průzkumníka cloudu** a otevřete Cloud Explorer.
 
-1. Vyberte ikonu Správa účtů a zobrazte si Vaše předplatná.
+1. Výběrem ikony Správa účtu zobrazíte svá předplatná.
 
-    ![Ikona správy účtů](media/iot-hub-visual-studio-cloud-device-messaging/account-management-icon.png)
+    ![Ikona Správy účtu](media/iot-hub-visual-studio-cloud-device-messaging/account-management-icon.png)
 
-1. Pokud jste přihlášeni k Azure, zobrazí se vaše účty. Pokud se chcete přihlásit k Azure poprvé, vyberte **Přidat účet**.
+1. Pokud jste přihlášení k Azure, zobrazí se vaše účty. Pokud se chcete do Azure přihlásit poprvé, zvolte **Přidat účet**.
 
-1. Vyberte předplatná Azure, která chcete použít, a klikněte na **použít**.
+1. Vyberte předplatná Azure, která chcete použít, a zvolte **Použít**.
 
-1. Rozbalte své předplatné a potom rozbalte položku **centra IoT**.  V rámci každého centra si můžete zobrazit vaše zařízení pro toto centrum. Kliknutím pravým tlačítkem myši na jedno zařízení získáte přístup k možnostem správy.
+1. Rozbalte své předplatné a pak rozbalte **služby IoT Hubs**.  Pod každým rozbočovačem uvidíte svá zařízení pro tento rozbočovač. Kliknutím pravým tlačítkem myši na jedno zařízení zobrazíte přístup k možnostem správy.
 
     ![Možnosti správy](media/iot-hub-device-management-visual-studio/management-options-vs2019.png)
 
 ## <a name="direct-methods"></a>Přímé metody
 
-Chcete-li použít přímé metody, proveďte následující kroky:
+Chcete-li použít přímé metody, postupujte takto:
 
-1. Klikněte pravým tlačítkem na zařízení a vyberte **vyvolat metodu Direct zařízení**.
+1. Klepněte pravým tlačítkem myši na zařízení a vyberte **příkaz Vyvolat přímou metodu zařízení**.
 
-1. Zadejte název metody a datovou část v **metodě Invoke Direct**a pak vyberte **OK**.
+1. Zadejte název metody a datovou část do **příkazu Invoke Direct Method**a pak vyberte **OK**.
 
     Výsledky se zobrazí ve **výstupu**.
 
-## <a name="update-device-twin"></a>Aktualizovat dvojitou dvojici zařízení
+## <a name="update-device-twin"></a>Aktualizovat dvojče zařízení
 
-Chcete-li upravit vlákna zařízení, proveďte následující kroky:
+Chcete-li upravit dvojče zařízení, postupujte takto:
 
-1. Klikněte pravým tlačítkem na zařízení a vyberte **Upravit nevlákenné zařízení**.
+1. Klikněte pravým tlačítkem myši na zařízení a vyberte **upravit dvojče zařízení**.
 
-   Otevře se soubor **Azure-IoT-Device-zdvojené. JSON** s obsahem vlákna zařízení.
+   Otevře se soubor **azure-iot-device-twin.json** s obsahem dvojčete zařízení.
 
-1. Udělejte nějaké úpravy **značek** nebo **vlastností. požadovaná** pole se zavedou do souboru **Azure-IoT-Device-zdvojené. JSON** .
+1. Proveďte některé úpravy **značek** nebo **vlastností.požadovaná** pole do souboru **azure-iot-device-twin.json.**
 
-1. Stisknutím **kombinace kláves CTRL + S** aktualizujte vlákna zařízení.
+1. Stisknutím **kombinace kláves Ctrl+S** aktualizujte dvojče zařízení.
 
    Výsledky se zobrazí ve **výstupu**.
 
 ## <a name="send-cloud-to-device-messages"></a>Odesílání zpráv z cloudu do zařízení
 
-Pokud chcete poslat zprávu z IoT Hub do zařízení, postupujte podle těchto kroků:
+Pokud chcete do zařízení poslat zprávu z centra IoT Hub, postupujte takto:
 
-1. Klikněte pravým tlačítkem na zařízení a vyberte **Odeslat zprávu C2D**.
+1. Klikněte pravým tlačítkem myši na zařízení a vyberte **Odeslat zprávu C2D**.
 
-1. Zadejte zprávu do pole **Odeslat zprávu C2D** a vyberte **OK**.
+1. Zadejte zprávu do **odeslat zprávu C2D** a vyberte **OK**.
 
    Výsledky se zobrazí ve **výstupu**.
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistili jste, jak používat Průzkumníka cloudu pro Visual Studio s různými možnostmi správy.
+Naučili jste se používat Cloud Explorer pro Visual Studio s různými možnostmi správy.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

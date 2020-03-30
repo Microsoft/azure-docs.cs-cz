@@ -1,6 +1,6 @@
 ---
 title: Typy připojení spravované instance
-description: Další informace o typech připojení spravované instance
+description: Informace o typech připojení spravovaných instancí
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -10,43 +10,43 @@ ms.author: srbozovi
 ms.reviewer: vanto
 ms.date: 10/07/2019
 ms.openlocfilehash: 46223d1701b930d93de7c49c1e216a41045dda16
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73819462"
 ---
-# <a name="azure-sql-database-managed-instance-connection-types"></a>Azure SQL Database typy připojení spravované instance
+# <a name="azure-sql-database-managed-instance-connection-types"></a>Typy připojení spravovaných instancí Azure SQL Database
 
-Tento článek vysvětluje, jak se klienti připojují k Azure SQL Database spravované instanci v závislosti na typu připojení. Ukázky skriptů pro změnu typů připojení jsou uvedené níže a s důležitými informacemi týkajícími se změny výchozího nastavení připojení.
+Tento článek vysvětluje, jak se klienti připojují ke spravované instanci Azure SQL Database v závislosti na typu připojení. Ukázky skriptů pro změnu typů připojení jsou uvedeny níže spolu s aspekty souvisejícími se změnou výchozího nastavení připojení.
 
 ## <a name="connection-types"></a>Typy připojení
 
-Azure SQL Database spravovaná instance podporuje následující dva typy připojení:
+Spravovaná instance Azure SQL Database podporuje následující dva typy připojení:
 
-- **Přesměrování (doporučeno):** Klienti navážou připojení přímo k uzlu, který je hostitelem databáze. Pokud chcete povolit připojení pomocí přesměrování, musíte otevřít brány firewall a skupiny zabezpečení sítě (NSG), abyste mohli povolit přístup na portech 1433 a 11000-11999. Pakety se přecházejí přímo do databáze a díky přesměrování přes proxy se pak zvyšují latence a výkon.
-- **Proxy server (výchozí):** V tomto režimu všechna připojení používají komponentu proxy serveru. Chcete-li povolit připojení, je nutné otevřít pouze port 1433 pro privátní sítě a port 3342 pro veřejné připojení. Výběr tohoto režimu může mít za následek vyšší latenci a nižší propustnost, a to v závislosti na povaze úlohy. Pro nejnižší latenci a nejvyšší propustnost důrazně doporučujeme zásady připojení přesměrování použít u zásad připojení k proxy serveru.
+- **Přesměrování (doporučeno):** Klienti navázat připojení přímo k uzlu hostování databáze. Chcete-li povolit připojení pomocí přesměrování, je nutné otevřít brány firewall a skupiny zabezpečení sítě (NSG), aby byl povolen přístup na portech 1433 a 11000-11999. Pakety přejdou přímo do databáze, a proto existují vylepšení latence a výkonu propustnosti pomocí přesměrování přes proxy server.
+- **Proxy server (výchozí):** V tomto režimu všechna připojení používají součást brány proxy. Chcete-li povolit připojení, je třeba otevřít pouze port 1433 pro privátní sítě a port 3342 pro veřejné připojení. Výběr tohoto režimu může mít za následek vyšší latenci a nižší propustnost, v závislosti na povaze úlohy. Důrazně doporučujeme zásady přesměrování připojení přes zásady připojení proxy pro nejnižší latenci a nejvyšší propustnost.
 
-## <a name="redirect-connection-type"></a>Přesměrování – typ připojení
+## <a name="redirect-connection-type"></a>Typ přesměrování připojení
 
-Typ připojení přesměrování znamená, že po navázání relace TCP na modul SQL klientská relace získá cílovou virtuální IP adresu uzlu virtuálního clusteru z nástroje pro vyrovnávání zatížení. Následné pakety se přecházejí přímo na uzel virtuálního clusteru a brána se vynechá. Tento tok přenosů znázorňuje následující diagram.
+Typ připojení přesměrování znamená, že po vytvoření relace TCP pro modul SQL získá relace klienta cílovou virtuální IP adresu uzlu virtuálního clusteru z nástroje pro vyrovnávání zatížení. Následné pakety toku přímo do uzlu virtuálního clusteru, obcházet bránu. Následující diagram znázorňuje tento tok provozu.
 
-![přesměrovat. png](media/sql-database-managed-instance-connection-types/redirect.png)
+![redirect.png](media/sql-database-managed-instance-connection-types/redirect.png)
 
 > [!IMPORTANT]
-> Typ připojení přesměrování aktuálně funguje pouze pro soukromý koncový bod. Bez ohledu na nastavení typu připojení by připojení přicházející prostřednictvím veřejného koncového bodu byla prostřednictvím proxy serveru.
+> Typ připojení přesměrování aktuálně funguje pouze pro soukromý koncový bod. Bez ohledu na nastavení typu připojení by připojení přicházející přes veřejný koncový bod byla prostřednictvím proxy serveru.
 
 ## <a name="proxy-connection-type"></a>Typ připojení proxy
 
-Typ připojení proxy znamená, že relace TCP se naváže pomocí brány a všech dalších paketů toku. Tento tok přenosů znázorňuje následující diagram.
+Typ připojení proxy znamená, že relace TCP je vytvořena pomocí brány a všechny následující pakety ji procházejí. Následující diagram znázorňuje tento tok provozu.
 
-![proxy. png](media/sql-database-managed-instance-connection-types/proxy.png)
+![proxy.png](media/sql-database-managed-instance-connection-types/proxy.png)
 
 ## <a name="script-to-change-connection-type-settings-using-powershell"></a>Skript pro změnu nastavení typu připojení pomocí PowerShellu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Následující skript prostředí PowerShell ukazuje, jak změnit typ připojení pro spravovanou instanci na přesměrování.
+Následující skript prostředí PowerShell ukazuje, jak změnit typ připojení spravované instance na Přesměrovat.
 
 ```powershell
 Install-Module -Name Az
@@ -66,5 +66,5 @@ $mi = $mi | Set-AzSqlInstance -ProxyOverride "Redirect" -force
 ## <a name="next-steps"></a>Další kroky
 
 - [Obnovení databáze do spravované instance](sql-database-managed-instance-get-started-restore.md)
-- Informace o tom, jak [nakonfigurovat veřejný koncový bod na spravované instanci](sql-database-managed-instance-public-endpoint-configure.md)
-- Další informace o [architektuře připojení spravované instance](sql-database-managed-instance-connectivity-architecture.md)
+- Zjistěte, jak [nakonfigurovat veřejný koncový bod ve spravované instanci](sql-database-managed-instance-public-endpoint-configure.md)
+- Informace o [architektuře připojení spravovaných instancí](sql-database-managed-instance-connectivity-architecture.md)

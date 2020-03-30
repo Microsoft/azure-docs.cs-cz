@@ -1,6 +1,6 @@
 ---
-title: Exportovat protokol aktivit Azure
-description: Exportujte protokol aktivit Azure do úložiště k archivaci nebo Azure Event Hubs pro export mimo Azure.
+title: Export protokolu aktivit Azure
+description: Exportujte protokol aktivit Azure do úložiště pro archivaci nebo Centra událostí Azure pro export mimo Azure.
 author: bwren
 services: azure-monitor
 ms.topic: conceptual
@@ -8,110 +8,110 @@ ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: edaa585ffb3448a80b021aa924a9d654ac829931
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79096284"
 ---
-# <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Export protokolu aktivit Azure do úložiště nebo do Azure Event Hubs
+# <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Export protokolu aktivit Azure do úložiště nebo Centra událostí Azure
 
 > [!IMPORTANT]
-> Metoda pro odeslání protokolu aktivit Azure pro Azure Storage a Azure Event Hubs se změnila na [nastavení diagnostiky](diagnostic-settings.md). Tento článek popisuje starší metodu, která se v procesu již nepoužívá. Přečtěte si téma aktualizace [shromažďování a exportu protokolů aktivit Azure](diagnostic-settings-legacy.md) pro porovnání.
+> Metoda odesílání protokolu aktivit Azure do Azure Storage a Azure Event Hubs se změnila na [diagnostická nastavení](diagnostic-settings.md). Tento článek popisuje starší metodu, která je v procesu zastaralá. Viz Aktualizace [kolekce protokolu aktivit Azure a export](diagnostic-settings-legacy.md) pro porovnání.
 
 
-[Protokol aktivit Azure](platform-logs-overview.md) poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo ve vašem předplatném Azure. Kromě zobrazení protokolu aktivit v Azure Portal nebo jeho zkopírování do pracovního prostoru Log Analytics, kde se dá analyzovat s ostatními daty shromažďovanými Azure Monitor můžete vytvořit profil protokolu pro archivaci protokolu aktivit do účtu služby Azure Storage nebo jeho streamování do  Centrum událostí.
+[Protokol aktivit Azure](platform-logs-overview.md) poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo ve vašem předplatném Azure. In addition to viewing the Activity log in the Azure portal or copying it to a Log Analytics workspace where it can be analyzed with other data collected by Azure Monitor, you can create a log profile to archive the Activity log to an Azure storage account or stream it to an Centrum událostí.
 
 ## <a name="archive-activity-log"></a>Protokol aktivit archivu
-Archivace protokolu aktivit do účtu úložiště je užitečná v případě, že byste chtěli uchovávat data protokolu déle než 90 dní (s úplnou kontrolou nad zásadami uchovávání informací) pro audit, statickou analýzu nebo zálohování. Pokud potřebujete události uchovávat jenom 90 dní nebo méně, nemusíte v účtu úložiště nastavovat archivaci, protože události protokolu aktivit se uchovávají na platformě Azure po dobu 90 dnů.
+Archivace protokolu aktivit na účet úložiště je užitečná, pokud chcete uchovávat data protokolu déle než 90 dní (s plnou kontrolou nad zásadami uchovávání informací) pro audit, statickou analýzu nebo zálohování. Pokud potřebujete zachovat události po dobu 90 dnů nebo méně, nemusíte nastavit archivaci na účet úložiště, protože události protokolu aktivit jsou zachovány v platformě Azure po dobu 90 dnů.
 
-## <a name="stream-activity-log-to-event-hub"></a>Streamování protokolu aktivit do centra událostí
-[Azure Event Hubs](/azure/event-hubs/) je platforma pro streamování dat a služba pro příjem událostí, která může přijímat a zpracovávat miliony událostí za sekundu. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Možnosti streamování pro protokol aktivit můžete použít dvěma způsoby:
-* **Streamování do systémů protokolování a telemetrie třetích stran**: v průběhu času se streamování služby Azure Event Hubs stane mechanismem pro přesměrování vaší aktivity do řešení systémů Siem a Log Analytics třetích stran.
-* **Sestavení vlastní telemetrie a**rozhraní pro protokolování: Pokud už máte vlastní platformu telemetrie nebo uvažujete o jejím sestavování, je vysoce škálovatelná verze Event Hubs pro publikování a odběr, která umožňuje flexibilní ingestování protokolu aktivit.
+## <a name="stream-activity-log-to-event-hub"></a>Streamovat protokol aktivit do centra událostí
+[Azure Event Hubs](/azure/event-hubs/) je platforma pro streamování dat a služba příjmu událostí, která může přijímat a zpracovávat miliony událostí za sekundu. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Dvě možnosti streamování pro protokol aktivit jsou následující:
+* **Streamování do systémů protokolování a telemetrie třetích stran**: V průběhu času se streamování azure event hubů stane mechanismem pro přenos vašeho protokolu aktivit do řešení siem třetích stran a řešení pro analýzu protokolů.
+* **Vytvořte vlastní platformu telemetrie a protokolování**: Pokud už máte vlastní telemetrickou platformu nebo uvažujete o vytvoření, vysoce škálovatelná povaha publikování a odběru centra událostí umožňuje flexibilně ingestovat protokol aktivit.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="storage-account"></a>Účet úložiště
-Pokud budete protokol aktivit archivovat, musíte si [vytvořit účet úložiště](../../storage/common/storage-account-create.md) , pokud ho ještě nemáte. Neměli byste používat existující účet úložiště, který obsahuje jiná, nemonitorovaná data, která jsou v něm uložená, abyste mohli lépe řídit přístup k datům monitorování. Pokud i přesto archivujte protokoly a metriky do účtu úložiště, můžete použít stejný účet úložiště, abyste zachovali všechna data monitorování v centrálním umístění.
+Pokud archivujete protokol aktivit, musíte [si vytvořit účet úložiště,](../../storage/common/storage-account-create.md) pokud ho ještě nemáte. Neměli byste používat existující účet úložiště, který má jiné, non-monitoring data uložená v něm, takže můžete lépe řídit přístup k datům monitorování. Pokud také archivujete protokoly a metriky do účtu úložiště, můžete použít stejný účet úložiště, abyste uchovávají všechna data monitorování v centrálním umístění.
 
-Účet úložiště nemusí být ve stejném předplatném jako odběr, který vydává protokoly, pokud uživatel, který nakonfiguruje nastavení, má odpovídající přístup RBAC k oběma předplatným. 
+Účet úložiště nemusí být ve stejném předplatném jako protokoly vyzařující odběr, pokud uživatel, který konfiguruje nastavení, má odpovídající přístup RBAC k oběma předplatným. 
 
 > [!TIP]
-> Další informace najdete v tématu [konfigurace Azure Storage bran firewall a virtuálních sítí](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) pro poskytování přístupu k účtu úložiště za zabezpečenou virtuální sítí.
+> Na [webu Konfigurace firewallů azure storage a virtuálních sítí,](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) kde najdete přístup k účtu úložiště za zabezpečenou virtuální sítí.
 
 ### <a name="event-hubs"></a>Event Hubs
-Pokud odesíláte protokol aktivit do centra událostí, budete muset [vytvořit centrum událostí](../../event-hubs/event-hubs-create.md) , pokud ho ještě nemáte. Pokud jste do tohoto oboru názvů Event Hubs dříve zasílaly události protokolu aktivit, pak se toto centrum událostí znovu použije.
+Pokud odesíláte protokol aktivit do centra událostí, musíte [vytvořit centrum událostí,](../../event-hubs/event-hubs-create.md) pokud ho ještě nemáte. Pokud jste dříve streamovali události protokolu aktivit do tohoto oboru názvů Centra událostí, bude toto centrum událostí znovu použito.
 
-Zásady sdíleného přístupu definují oprávnění, která má mechanismus streamování. Streamování do Event Hubs vyžaduje oprávnění spravovat, odesílat a naslouchat. Zásady sdíleného přístupu pro obor názvů Event Hubs můžete vytvořit nebo upravit v Azure Portal na kartě konfigurovat pro obor názvů Event Hubs.
+Zásady sdíleného přístupu definují oprávnění, která má mechanismus streamování. Streamování do centra událostí vyžaduje oprávnění Ke správě, odesílání a naslouchání. Můžete vytvořit nebo upravit zásady sdíleného přístupu pro obor názvů Event Hubs na webu Azure Portal na kartě Konfigurace pro obor názvů Event Hubs.
 
-Pokud chcete profil protokolu aktivit aktualizovat tak, aby zahrnoval streamování, musíte mít pro toto Event Hubs autorizační pravidlo oprávnění ListKey. Obor názvů Event Hubs nemusí být ve stejném předplatném, jako je předplatné, které vysílá protokoly, pokud uživatel, který nastavení nakonfiguruje, má odpovídající přístup RBAC k oběma předplatným a oba odběry jsou ve stejném tenantovi AAD.
+Chcete-li aktualizovat profil protokolu aktivit tak, aby zahrnoval streamování, musíte mít oprávnění ListKey k tomuto autorizačnímu pravidlu centra událostí. Obor názvů Event Hubs nemusí být ve stejném předplatném jako předplatné, které vyzařuje protokoly, pokud uživatel, který konfiguruje nastavení, má odpovídající přístup RBAC k oběma předplatným a obě předplatná jsou ve stejném tenantovi AAD.
 
 Streamujte protokol aktivit do centra událostí [vytvořením profilu protokolu](#create-a-log-profile).
 
 ## <a name="create-a-log-profile"></a>Vytvoření profilu protokolu
-Můžete definovat způsob exportu protokolu aktivit Azure pomocí **profilu protokolu**. Každé předplatné Azure může mít jenom jeden profil protokolu. Tato nastavení se dají nakonfigurovat pomocí možnosti **exportovat** v okně Protokol aktivit na portálu. Dá se taky nakonfigurovat programově [pomocí Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931927.aspx), rutin PowerShellu nebo rozhraní příkazového řádku.
+Můžete definovat, jak se exportuje váš protokol aktivit Azure pomocí **profilu protokolu**. Každé předplatné Azure může mít jenom jeden profil protokolu. Tato nastavení lze nakonfigurovat pomocí možnosti **Exportovat** v okně Protokol aktivit na portálu. Můžete je také nakonfigurovat programově [pomocí rozhraní AZURE Monitor REST API](https://msdn.microsoft.com/library/azure/dn931927.aspx), rutin prostředí PowerShell nebo CLI.
 
 Profil protokolu definuje následující.
 
-**Kam se má protokol aktivit odeslat.** V současné době jsou dostupné možnosti účet úložiště nebo Event Hubs.
+**Kde by měl být odeslán protokol aktivit.** V současné době jsou k dispozici dostupné možnosti, aby účet úložiště nebo centra událostí.
 
-**Které kategorie událostí by se měly odeslat.** Význam *kategorie* v profilech protokolů a událostech protokolu aktivit se liší. V profilu protokolu *kategorie* představuje typ operace (zápis, odstranit, akce). *Kategorie*"* vlastnost" v události protokolu aktivit představuje zdroj nebo typ události (například Správa, ServiceHealth a výstraha).
+**Které kategorie událostí by měly být odeslány.** Význam *kategorie* v profilech protokolu a události protokolu aktivit se liší. V profilu protokolu *kategorie* představuje typ operace (Zápis, Odstranit, Akce). V protokolu aktivit událost *kategorie*"* vlastnost představuje zdroj nebo typ události (například správa, ServiceHealth a výstraha).
 
-**Které oblasti (umístění) by měly být exportovány.** Měli byste zahrnout všechna umístění, protože mnoho událostí v protokolu aktivit je globální události.
+**Které oblasti (umístění) by měly být exportovány.** Měli byste zahrnout všechna umístění, protože mnoho událostí v protokolu aktivit jsou globální události.
 
-**Jak dlouho má být protokol aktivit uchováván v účtu úložiště.** Uchování 0 dnů znamená, že protokoly se uchovávají navždy. V opačném případě může být hodnota libovolný počet dní mezi 1 a 365.
+**Jak dlouho by měl být protokol aktivit zachován v účtu úložiště.** Nastavení doby uchovávání na 0 dní znamená, že se protokoly uchovávají trvale. V opačném případě může být hodnota libovolný počet dní mezi 1 a 365.
 
-Pokud jsou nastavené zásady uchovávání informací, ale ukládání protokolů v účtu úložiště je zakázané, pak zásady uchovávání nemají žádný vliv. Zásady uchovávání informací jsou použitých za den, takže na konci za den (UTC), tento počet protokolů ze dne, který je nyní mimo uchovávání se zásada odstraní. Například pokud máte zásady uchovávání informací o jeden den, na začátku dne dnes protokoly ze včerejška před den se odstraní. Proces odstraňování začíná o půlnoci UTC, ale Všimněte si, že může trvat až 24 hodin pro protokoly, které mají být odstraněny z vašeho účtu úložiště.
+Pokud jsou nastaveny zásady uchovávání informací, ale ukládání protokolů v účtu úložiště je zakázáno, pak zásady uchovávání informací nemají žádný vliv. Zásady uchovávání informací se používají za den, takže na konci dne (UTC) protokoly ze dne, který je nyní mimo zásady uchovávání informací jsou odstraněny. Například pokud jste měli zásady uchovávání informací jeden den, na začátku dne dnes protokoly z předevčírem budou odstraněny. Proces odstranění začíná o půlnoci UTC, ale všimněte si, že může trvat až 24 hodin pro protokoly, které mají být odstraněny z vašeho účtu úložiště.
 
 
 > [!IMPORTANT]
-> Pokud poskytovatel prostředků Microsoft. Insights není zaregistrovaný, může se vám při vytváření profilu protokolu zobrazovat chyba. Pokud chcete tohoto poskytovatele zaregistrovat, přečtěte si téma [poskytovatelé a typy prostředků Azure](../../azure-resource-manager/management/resource-providers-and-types.md) .
+> Pokud není poskytovatel prostředků Microsoft.Insights zaregistrován, může se při vytváření profilu protokolu zobrazit chyba. Viz [Zprostředkovatelé a typy prostředků Azure](../../azure-resource-manager/management/resource-providers-and-types.md) k registraci tohoto zprostředkovatele.
 
 
-### <a name="create-log-profile-using-the-azure-portal"></a>Vytvořit profil protokolu pomocí Azure Portal
+### <a name="create-log-profile-using-the-azure-portal"></a>Vytvoření profilu protokolu pomocí portálu Azure
 
-Vytvořte nebo upravte profil protokolu s možností **exportovat do centra událostí** v Azure Portal.
+Vytvořte nebo upravte profil protokolu pomocí možnosti **Exportovat do centra událostí** na webu Azure Portal.
 
-1. V nabídce **Azure monitor** v Azure Portal vyberte **Protokol aktivit**.
+1. Z nabídky **Azure Monitor** na webu Azure Portal vyberte **protokol aktivit**.
 3. Klikněte na **Nastavení diagnostiky**.
 
    ![Nastavení diagnostiky](media/diagnostic-settings-subscription/diagnostic-settings.png)
 
-4. Klikněte na fialový banner pro starší verze prostředí.
+4. Klikněte na fialový banner pro starší prostředí.
 
     ![Starší verze prostředí](media/diagnostic-settings-subscription/legacy-experience.png)
 
-3. V okně, které se zobrazí, zadejte následující:
-   * Oblasti s událostmi k exportu. Měli byste vybrat všechny oblasti, abyste se ujistili, že nedošlo ke klíčovým událostem, protože protokol aktivit je globální (neregionální) protokol, a takže většina událostí nemá přidruženou oblast.
+3. V noži, která se zobrazí, zadejte následující:
+   * Oblasti s událostmi k exportu. Měli byste vybrat všechny oblasti, abyste zajistili, že nezmeškáte klíčové události, protože protokol aktivit je globální (neregionální) protokol, a proto většina událostí nemá k nim přidruženou oblast.
    * Pokud chcete zapisovat do účtu úložiště:
-       * Účet úložiště, na který byste chtěli ukládat události.
-       * Počet dní, po které mají být tyto události v úložišti uchovávány. Nastavení 0 dnů uchová protokoly navždy.
+       * Účet úložiště, do kterého chcete uložit události.
+       * Počet dní, po které chcete zachovat tyto události v úložišti. Nastavení 0 dní uchovává protokoly navždy.
    * Pokud chcete zapisovat do centra událostí:
-       * Obor názvů Service Bus, ve kterém se má vytvořit centrum událostí pro streamování těchto událostí.
+       * Obor názvů služby Service Bus, ve kterém chcete vytvořit centrum událostí pro streamování těchto událostí.
 
      ![Okno Exportovat protokol aktivit](./media/activity-logs-overview/activity-logs-portal-export-blade.png)
 
 
-4. Kliknutím na **Uložit** tato nastavení uložte. Nastavení se okamžitě použijí pro vaše předplatné.
+4. Chcete-li tato nastavení uložit, klepněte na tlačítko **Uložit.** Nastavení se okamžitě použijí pro vaše předplatné.
 
 
 ### <a name="configure-log-profile-using-powershell"></a>Konfigurace profilu protokolu pomocí PowerShellu
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Pokud profil protokolu již existuje, musíte nejprve odebrat existující profil protokolu a pak vytvořit nový.
+Pokud profil protokolu již existuje, je třeba nejprve odebrat existující profil protokolu a potom vytvořit nový.
 
-1. Pokud chcete zjistit, jestli profil protokolu existuje, použijte `Get-AzLogProfile`.  Pokud profil protokolu existuje, poznamenejte si jeho vlastnost *Name* .
+1. Slouží `Get-AzLogProfile` k identifikaci, zda existuje profil protokolu.  Pokud profil protokolu existuje, poznamenejte si vlastnost *name.*
 
-1. Pomocí `Remove-AzLogProfile` odeberte profil protokolu pomocí hodnoty z vlastnosti *název* .
+1. Slouží `Remove-AzLogProfile` k odebrání profilu protokolu pomocí hodnoty z vlastnosti *name.*
 
     ```powershell
     # For example, if the log profile name is 'default'
     Remove-AzLogProfile -Name "default"
     ```
 
-3. Vytvořit nový profil protokolu pomocí `Add-AzLogProfile`:
+3. Slouží `Add-AzLogProfile` k vytvoření nového profilu protokolu:
 
     ```powershell
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
@@ -119,15 +119,15 @@ Pokud profil protokolu již existuje, musíte nejprve odebrat existující profi
 
     | Vlastnost | Požaduje se | Popis |
     | --- | --- | --- |
-    | Název |Ano |Název vašeho profilu protokolu. |
-    | StorageAccountId |Ne |ID prostředku účtu úložiště, do kterého se má ukládat protokol aktivit |
-    | serviceBusRuleId |Ne |Service Bus ID pravidla pro Service Bus oboru názvů, ve kterém chcete vytvořit centra událostí. Toto je řetězec ve formátu: `{service bus resource ID}/authorizationrules/{key name}`. |
-    | Umístění |Ano |Čárkami oddělený seznam oblastí, pro které chcete shromažďovat události protokolu aktivit. |
-    | RetentionInDays |Ano |Počet dní, po které se mají události uchovávat v účtu úložiště v rozmezí od 1 do 365. Hodnota nula ukládá protokoly po neomezenou dobu. |
-    | Kategorie |Ne |Čárkami oddělený seznam kategorií událostí, které se mají shromáždit. Možné hodnoty jsou _Write_, _Delete_a _Action_. |
+    | Name (Název) |Ano |Název profilu protokolu. |
+    | Id účtu úložiště |Ne |ID prostředku účtu úložiště, do kterého by měl být uložen protokol aktivit. |
+    | serviceBusRuleId |Ne |ID pravidla sběrnice pro obor názvů Service Bus, ve které chcete mít vytvořena centra událostí. Jedná se o řetězec `{service bus resource ID}/authorizationrules/{key name}`s formátem: . |
+    | Umístění |Ano |Seznam oblastí oddělených čárkami, pro které chcete shromažďovat události protokolu aktivit. |
+    | RetenceInDays |Ano |Počet dní, po které by měly být události uchovávány v účtu úložiště, mezi 1 a 365. Hodnota nula ukládá protokoly neomezeně dlouho. |
+    | Kategorie |Ne |Seznam kategorií událostí oddělených čárkami, které by měly být shromažďovány. Možné hodnoty jsou _Zápis_, _Odstranit_a _Akce_. |
 
 ### <a name="example-script"></a>Ukázkový skript
-Následuje ukázkový skript prostředí PowerShell pro vytvoření profilu protokolu aktivit, který zapisuje protokol aktivit do účtu úložiště i centra událostí.
+Následuje ukázkový skript prostředí PowerShell pro vytvoření profilu protokolu, který zapisuje protokol aktivit do účtu úložiště i do centra událostí.
 
    ```powershell
    # Settings needed for the new log profile
@@ -148,13 +148,13 @@ Následuje ukázkový skript prostředí PowerShell pro vytvoření profilu prot
    ```
 
 
-### <a name="configure-log-profile-using-azure-cli"></a>Konfigurace profilu protokolu pomocí Azure CLI
+### <a name="configure-log-profile-using-azure-cli"></a>Konfigurace profilu protokolu pomocí rozhraní příkazového příkazového příkazu Azure
 
-Pokud profil protokolu již existuje, musíte nejprve odebrat existující profil protokolu a pak vytvořit nový profil protokolu.
+Pokud profil protokolu již existuje, je třeba nejprve odebrat existující profil protokolu a potom vytvořit nový profil protokolu.
 
-1. Pokud chcete zjistit, jestli profil protokolu existuje, použijte `az monitor log-profiles list`.
-2. Pomocí `az monitor log-profiles delete --name "<log profile name>` odeberte profil protokolu pomocí hodnoty z vlastnosti *název* .
-3. Vytvořit nový profil protokolu pomocí `az monitor log-profiles create`:
+1. Slouží `az monitor log-profiles list` k identifikaci, zda existuje profil protokolu.
+2. Slouží `az monitor log-profiles delete --name "<log profile name>` k odebrání profilu protokolu pomocí hodnoty z vlastnosti *name.*
+3. Slouží `az monitor log-profiles create` k vytvoření nového profilu protokolu:
 
    ```azurecli-interactive
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
@@ -162,16 +162,16 @@ Pokud profil protokolu již existuje, musíte nejprve odebrat existující profi
 
     | Vlastnost | Požaduje se | Popis |
     | --- | --- | --- |
-    | jméno |Ano |Název vašeho profilu protokolu. |
-    | storage-account-id |Ano |ID prostředku účtu úložiště, do kterého se mají ukládat protokoly aktivit |
-    | místa |Ano |Mezerou oddělený seznam oblastí, pro které chcete shromažďovat události protokolu aktivit. Seznam všech oblastí pro vaše předplatné můžete zobrazit pomocí `az account list-locations --query [].name`. |
-    | dní |Ano |Počet dní, po které se mají uchovávat události v rozmezí od 1 do 365. Hodnota nula bude ukládat protokoly po neomezenou dobu (navždy).  Je-li nastavena hodnota nula, parametr Enabled by měl být nastaven na hodnotu false. |
-    |povolené | Ano |True nebo False.  Slouží k povolení nebo zakázání zásad uchovávání informací.  Pokud je hodnota true, parametr Days musí být hodnota větší než 0.
-    | categories |Ano |Prostor – seznam kategorií událostí, které mají být shromážděny. Možné hodnoty jsou Write, DELETE a Action. |
+    | jméno |Ano |Název profilu protokolu. |
+    | id účtu úložiště |Ano |ID prostředku účtu úložiště, do kterého mají být uloženy protokoly aktivit. |
+    | Umístění |Ano |Prostorově oddělený seznam oblastí, pro které chcete shromažďovat události protokolu aktivit. Pomocí aplikace můžete zobrazit seznam všech `az account list-locations --query [].name`oblastí předplatného. |
+    | Dní |Ano |Počet dní, po které by měly být události zachovány, mezi 1 a 365. Hodnota nula bude ukládat protokoly neomezeně dlouho (navždy).  Pokud nula, pak by měl být povolený parametr nastaven na false. |
+    |enabled | Ano |True nebo False  Slouží k povolení nebo zakázání zásad uchovávání informací.  Pokud True, pak days parametr musí být hodnota větší než 0.
+    | categories |Ano |Prostorově oddělený seznam kategorií událostí, které by měly být shromažďovány. Možné hodnoty jsou Zápis, Odstranit a Akce. |
 
 
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Další informace o protokolu aktivit](../../azure-resource-manager/management/view-activity-logs.md)
-* [Shromáždění protokolu aktivit do protokolů Azure Monitor](activity-log-collect.md)
+* [Shromažďování protokolů aktivit do protokolů monitorování Azure](activity-log-collect.md)

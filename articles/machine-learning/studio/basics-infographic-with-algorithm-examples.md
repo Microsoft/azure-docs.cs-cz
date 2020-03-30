@@ -1,7 +1,7 @@
 ---
 title: Příklady algoritmů
 titleSuffix: ML Studio (classic) - Azure
-description: Přehled snadno pochopit základy machine learning obsahuje příklady algoritmů. Infografika ke stažení obsahuje většina strojového učení dotazy.
+description: Přehled základů strojového učení obsahuje příklady algoritmů. Infografika ke stažení pokrývá většinu otázek strojového učení.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,34 +11,34 @@ ms.author: keli19
 ms.custom: seodc18
 ms.date: 03/04/2019
 ms.openlocfilehash: 34316b13c93ca2739e87262dd09dcbaf38186b16
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79204473"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Infografika ke stažení: Základy služby Machine Learning s příklady algoritmů
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Stáhněte si tento snadno pochopitelné infografika přehled nástroje machine learning základní informace o další informace o Oblíbené algoritmy, které jsou použity jako odpovědi na běžné dotazy machine learning. Příklady algoritmů pomoct pochopit, jaké algoritmy mají použít, a co slouží pro začátečníky learning počítače.
+Stáhněte si tento srozumitelný infografický přehled základů strojového učení, kde se dozvíte o populárních algoritmech používaných k zodpovězení běžných otázek strojového učení. Příklady algoritmů pomáhají začátečníkovi strojového učení pochopit, které algoritmy použít a k čemu se používají.
 
-## <a name="popular-algorithms-in-machine-learning-studio-classic"></a>Oblíbené algoritmy v Machine Learning Studio (klasické)
+## <a name="popular-algorithms-in-machine-learning-studio-classic"></a>Populární algoritmy ve Studiu strojového učení (klasika)
 
-[Azure Machine Learning Studio (Classic)](https://studio.azureml.net/) přináší rozsáhlou knihovnu algoritmů pro prediktivní analýzy. Tato infografika identifikuje čtyři oblíbené řady pro algoritmy – regresi, detekci anomálií, clusteringu a klasifikaci – a poskytuje odkazy na pracovní příklady v [Azure AI Gallery](https://gallery.azure.ai/). Galerie obsahuje příklady experimentů a kurzy, které ukazují, jak tyto algoritmy lze použít v mnoha řešeních reálného světa.
+[Azure Machine Learning Studio (classic)](https://studio.azureml.net/) je dodáván s velkou knihovnou algoritmů pro prediktivní analýzy. Tato infografika identifikuje čtyři oblíbené rodiny algoritmů – regrese, detekce anomálií, clustering a klasifikace – a obsahuje odkazy na pracovní příklady v [Galerii AI Azure](https://gallery.azure.ai/). Galerie obsahuje příkladexperimenty a kurzy, které ukazují, jak tyto algoritmy lze použít v mnoha reálných řešeních.
 
-## <a name="download-the-infographic-with-algorithm-examples"></a>Stáhněte si informační grafiky s příklady algoritmů
+## <a name="download-the-infographic-with-algorithm-examples"></a>Stáhněte si infografiku s příklady algoritmů
 
-**[Stažení: infografika základy strojového učení s odkazy na příklady algoritmů (PDF)](https://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
+**[Ke stažení: Infografika základů strojového učení s odkazy na příklady algoritmů (PDF)](https://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
 
-![Infografika: Základy služby Machine learning s příklady algoritmů. Oblíbené algoritmy. Machine learning pro začátečníky.](./media/basics-infographic-with-algorithm-examples/machine-learning-basics-infographic-with-algorithm-examples.png)
+![Infografika: Základy strojového učení s příklady algoritmů. Populární algoritmy. Strojové učení pro začátečníky.](./media/basics-infographic-with-algorithm-examples/machine-learning-basics-infographic-with-algorithm-examples.png)
 
-## <a name="more-help-with-algorithms-for-beginners-and-advanced-users"></a>Další pomoc s algoritmy pro začátečníky a zkušené uživatele
+## <a name="more-help-with-algorithms-for-beginners-and-advanced-users"></a>Další pomoc s algoritmy pro začátečníky i pokročilé uživatele
 
-* Podrobnější diskuzi o různých typech algoritmů strojového učení, způsobu jejich použití a o tom, jak vybrat tu správnou verzi pro vaše řešení, najdete v tématu [Jak zvolit algoritmy pro Microsoft Azure Machine Learning Studio (Classic)](algorithm-choice.md).
-* Seznam podle kategorie všech algoritmů strojového učení, které jsou k dispozici v Machine Learning Studio (Classic), naleznete v tématu [Inicializace modelu][initialize-model] v algoritmu Machine Learning Studio (Classic) a v nápovědě k modulu.
-* Úplný Abecední seznam algoritmů a modulů v Machine Learning Studio (Classic) najdete v tématu [seznam modulů Machine Learning Studio (Classic)][a-z-list] v Machine Learning Studio (klasickém) algoritmu a v nápovědě k modulu.
-* Přehled Azure AI Gallery a množství dostupných prostředků generovaných komunitou najdete v tématu [sdílení a zjišťování prostředků v Azure AI Gallery](gallery-how-to-use-contribute-publish.md).
+* Pro hlubší diskusi o různých typech algoritmů strojového učení, jak se používají a jak vybrat ten správný pro vaše řešení, najdete v [tématu Jak vybrat algoritmy pro Microsoft Azure Machine Learning Studio (klasické)](algorithm-choice.md).
+* Seznam podle kategorií všech algoritmů strojového učení dostupných ve studiu Strojového učení (klasika) najdete v [tématu Inicializace modelu][initialize-model] v klasickém) algoritmu a nápovědě k modulu machine learningu.
+* Úplný abecední seznam algoritmů a modulů ve Machine Learning Studiu (klasika) najdete v [seznamu modulů A-Z Machine Learning Studio (klasické)][a-z-list] v machine learningovém studiu (klasické) algoritmus a nápověda modulu.
+* Přehled Galerie AI Azure a mnoho prostředků vytvořených komunitou, které jsou k dispozici, najdete v článku [Sdílení a zjišťování prostředků v Galerii Azure AI](gallery-how-to-use-contribute-publish.md).
 
 
 <!-- Module References -->

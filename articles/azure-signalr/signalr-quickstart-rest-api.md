@@ -1,16 +1,16 @@
 ---
-title: Rychlý Start – REST API služby signalizace Azure
-description: Naučte se používat REST API se službou Azure Signal Service následující ukázky. Vyhledejte podrobnosti REST API specifikace.
+title: Úvodní příručka – rozhraní REST služby Azure SignalR
+description: Zjistěte, jak používat rozhraní REST API se službou Azure SignalR po ukázkách. Najděte podrobnosti o specifikaci rozhraní REST API.
 author: sffamily
 ms.service: signalr
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 17371e3bd426ea81b5e7e07610aac0073ea972c9
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74157680"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Rychlý start: Vysílání zpráv v reálném čase z konzoly aplikace
@@ -21,7 +21,7 @@ V tomto rychlém startu se dozvíte, jak odesílat zprávy z aplikace příkazov
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento rychlý start je možné použít v systému macOS, Windows nebo Linux.
+Toto Rychlé zprovoznění je možné spustit v systémech macOS, Windows nebo Linux.
 
 * [Sada .NET Core SDK](https://www.microsoft.com/net/download/core)
 * Textový editor nebo editor kódu podle vašeho výběru.
@@ -36,7 +36,7 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
 
 ## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
 
-Zatímco se nasazuje služba, přejděme na přípravu kódu. Naklonujte [ukázkovou aplikaci z GitHubu](https://github.com/aspnet/AzureSignalR-samples.git), nastavte připojovací řetězec služby SignalR a spusťte aplikaci místně.
+Zatímco se nasazuje služba, přejděme na přípravu kódu. Naklonujte [ukázkovou aplikaci z GitHubu](https://github.com/aspnet/AzureSignalR-samples.git), nastavte připojovací řetězec služby SignalR Service a spusťte aplikaci místně.
 
 1. Otevřete okno terminálu Git. Přejděte do složky, kam chcete klonovat ukázkový projekt.
 
@@ -111,7 +111,7 @@ broadcast
 
 Můžete spustit více klientů s různými názvy.
 
-## <a name="usage"> </a>Integrace se službami třetích stran
+## <a name="integration-with-third-party-services"></a><a name="usage"> </a>Integrace se službami třetích stran
 
 Služba Azure SignalR umožňuje v systému integraci služeb třetích stran.
 
@@ -126,13 +126,13 @@ Version | Stav rozhraní API | Dveře | Specifikace
 
 Dostupná rozhraní API pro jednotlivé verze najdete v následujícím seznamu.
 
-Rozhraní API | `1.0-preview` | `1.0`
+rozhraní API | `1.0-preview` | `1.0`
 --- | --- | ---
 [Všesměrové vysílání pro všechny](#broadcast) | **&#x2713;** | **&#x2713;**
 [Všesměrové vysílání do skupiny](#broadcast-group) | **&#x2713;** | **&#x2713;**
-Všesměrové vysílání do některých skupin | **&#x2713;** Zastaralé | `N / A`
+Všesměrové vysílání do některých skupin | **&#x2713;** (zastaralé) | `N / A`
 [Odesílání konkrétním uživatelům](#send-user) | **&#x2713;** | **&#x2713;**
-Odesílání některým uživatelům | **&#x2713;** Zastaralé | `N / A`
+Odesílání některým uživatelům | **&#x2713;** (zastaralé) | `N / A`
 [Přidání uživatele do skupiny](#add-user-to-group) | `N / A` | **&#x2713;**
 [Odebrání uživatele ze skupiny](#remove-user-from-group) | `N / A` | **&#x2713;**
 
@@ -178,7 +178,7 @@ Version | Metoda HTTP v rozhraní API | Adresa URL požadavku
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste zjistili, jak pomocí REST API vysílat zprávy v reálném čase od služby signalizace klientům. V dalším kroku se dozvíte, jak vyvíjet a nasazovat Azure Functions pomocí vazby služby signalizace, která je postavená na REST API.
+V tomto rychlém startu jste se naučili používat rozhraní REST API k vysílání zpráv v reálném čase ze služby SignalR klientům. Další informace o tom, jak vyvíjet a nasazovat funkce Azure pomocí vazby služby SignalR, která je postavená na rozhraní REST API.
 
 > [!div class="nextstepaction"]
-> [Vývoj Azure Functions pomocí vazeb služby signalizace Azure](signalr-quickstart-azure-functions-csharp.md)
+> [Vývoj funkcí Azure pomocí vazeb služby Azure SignalR](signalr-quickstart-azure-functions-csharp.md)

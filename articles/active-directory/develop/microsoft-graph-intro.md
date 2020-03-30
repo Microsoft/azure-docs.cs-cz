@@ -1,5 +1,5 @@
 ---
-title: Rozhraní API pro Microsoft Graph | Microsoft Docs
+title: Rozhraní Microsoft Graph API | Dokumenty společnosti Microsoft
 description: Rozhraní Microsoft Graph API je webové rozhraní API RESTful, které umožňuje přístup k prostředkům služby Microsoft Cloud.
 author: davidmu1
 services: active-directory
@@ -12,49 +12,49 @@ ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
 ms.openlocfilehash: 6c1b4390282f6d54178365714b1e2e665b4cf061
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79136496"
 ---
-# <a name="microsoft-graph-api"></a>Rozhraní API pro Microsoft Graph
+# <a name="microsoft-graph-api"></a>Microsoft Graph API
 
-Rozhraní Microsoft Graph API je webové rozhraní API RESTful, které umožňuje přístup k prostředkům služby Microsoft Cloud. Po registraci aplikace a získání ověřovacích tokenů pro uživatele nebo službu můžete vytvořit požadavky na rozhraní Microsoft Graph API. Další informace najdete v tématu [přehled Microsoft Graph](https://docs.microsoft.com/graph/overview).
+Rozhraní Microsoft Graph API je webové rozhraní API RESTful, které umožňuje přístup k prostředkům služby Microsoft Cloud. Po registraci aplikace a získání ověřovacích tokenů pro uživatele nebo službu můžete požádat o rozhraní Microsoft Graph API. Další informace naleznete v [tématu Přehled aplikace Microsoft Graph](https://docs.microsoft.com/graph/overview).
 
-Microsoft Graph zpřístupňuje rozhraní REST API a klientské knihovny pro přístup k datům v následujících Microsoft 365 službách:
-- Služby Office 365: Delvu, Excel, Microsoft Books, Microsoft teams, OneDrive, OneNote, Outlook/Exchange, Planner a SharePoint
-- Enterprise mobility and Security Services: Advanced Threat Analytics, Rozšířená ochrana před internetovými útoky, Azure Active Directory, Identity Manager a Intune
+Microsoft Graph zpřístupňuje rozhraní REST API a klientské knihovny pro přístup k datům v následujících službách Microsoft 365:
+- Služby Office 365: Delve, Excel, Microsoft Bookings, Microsoft Teams, OneDrive, OneNote, Outlook/Exchange, Planner a SharePoint
+- Podnikové služby mobility a zabezpečení: Pokročilá analýza hrozeb, pokročilá ochrana před hrozbami, Azure Active Directory, Správce identit a Intune
 - Služby Windows 10: aktivity, zařízení, oznámení
 - Dynamics 365 Business Central
 
 ## <a name="versions"></a>Verze
 
-Microsoft Graph aktuálně podporuje dvě verze: v 1.0 a beta. Verze v 1.0 zahrnuje všeobecně dostupná rozhraní API. Pro všechny produkční aplikace použijte verzi v 1.0. Beta verze obsahuje rozhraní API, která jsou momentálně ve verzi Preview. Vzhledem k tomu, že můžeme zavést zásadní změny v našich rozhraních API beta verze, doporučujeme, abyste používali beta verzi pouze pro testovací aplikace, které jsou ve vývoji. Nepoužívejte beta rozhraní API v produkčních aplikacích. Další informace najdete v tématu [Správa verzí, podpora a přerušující zásady změny pro Microsoft Graph](https://docs.microsoft.com/graph/versioning-and-support).
+Microsoft Graph v současné době podporuje dvě verze: v1.0 a beta. Verze v1.0 obsahuje obecně dostupná rozhraní API. Použijte verzi v1.0 pro všechny produkční aplikace. Beta verze obsahuje api, která jsou aktuálně ve verzi Preview. Vzhledem k tomu, že můžeme zavést nejnovější změny našich beta api, doporučujeme použít beta verzi pouze k testování aplikací, které jsou ve vývoji; nepoužívejte beta API ve vašich produkčních aplikacích. Další informace naleznete v [tématu Správa verzí, podpora a zásady změn pro microsoft graph](https://docs.microsoft.com/graph/versioning-and-support).
 
-Pokud chcete začít používat beta rozhraní API, přečtěte si téma [referenční informace o Microsoft Graph beta verzi](https://docs.microsoft.com/graph/api/overview?view=graph-rest-beta)
+Informace o tom, jak začít používat beta rozhraní API, najdete v [tématu Odkaz na koncový bod beta aplikace Microsoft Graph](https://docs.microsoft.com/graph/api/overview?view=graph-rest-beta)
 
-Pokud chcete začít používat rozhraní API v 1.0, přečtěte si referenční informace o [Microsoft Graph REST API v 1.0](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0) .
+Informace o tom, jak začít používat rozhraní API v1.0, naleznete [v tématu Microsoft Graph REST API v1.0 reference](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)
 
 ## <a name="get-started"></a>Začínáme
 
-Chcete-li číst nebo zapisovat do prostředku, jako je například uživatel nebo e-mailová zpráva, vytvoříte požadavek, který bude vypadat nějak takto:
+Chcete-li číst nebo zapisovat do prostředku, jako je například uživatel nebo e-mailová zpráva, vytvořte požadavek, který vypadá takto:
 
 `{HTTP method} https://graph.microsoft.com/{version}/{resource}?{query-parameters}`
 
-Další informace o prvcích vytvořené žádosti najdete v tématu [použití rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api) .
+Další informace o prvcích vytvořeného požadavku najdete v [tématu Použití rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api)
 
-Ukázky pro rychlý Start jsou k dispozici, abyste viděli, jak získat přístup k výkonu rozhraní Microsoft Graph API. Příklady, které jsou k dispozici, mají přístup ke dvěma službám s jedním ověřováním: účet Microsoft a Outlook. Každý rychlý Start má přístup k informacím z profilů účet Microsoft uživatelů a zobrazuje události ze svého kalendáře.
-Rychlé starty obsahují čtyři kroky:
-- Výběr platformy
-- Získat ID aplikace (ID klienta)
+K dispozici jsou ukázky rychlého startu, které vám ukáží, jak získat přístup k výkonu rozhraní Microsoft Graph API. Ukázky, které jsou k dispozici přístup dvě služby s jedním ověřováním: účet Microsoft a Outlook. Každý rychlý start přistupuje k informacím z profilů uživatelů účtu Microsoft a zobrazuje události z jejich kalendáře.
+Rychlé starty zahrnují čtyři kroky:
+- Vyberte si platformu
+- Získání ID aplikace (ID klienta)
 - Sestavení ukázky
-- Přihlaste se a Prohlédněte si události v kalendáři.
+- Přihlášení a zobrazení událostí v kalendáři
 
-Po dokončení rychlého startu máte aplikaci, která je připravená ke spuštění. Další informace najdete v [nejčastějších dotazech k rychlému startu Microsoft Graph](https://docs.microsoft.com/graph/quick-start-faq). Pokud chcete začít s ukázkami, přečtěte si téma [rychlý start Microsoft Graph](https://developer.microsoft.com/graph/quick-start).
+Po dokončení rychlého startu máte aplikaci, která je připravená ke spuštění. Další informace naleznete v [nejčastějších dotazech k rychlému spuštění aplikace Microsoft Graph](https://docs.microsoft.com/graph/quick-start-faq). Chcete-li začít s ukázkami, naleznete [v tématu Microsoft Graph QuickStart](https://developer.microsoft.com/graph/quick-start).
 
 ## <a name="tools"></a>Nástroje
 
-Microsoft Graph Explorer je webový nástroj, který můžete použít k sestavování a testování požadavků pomocí rozhraní Microsoft Graph API. K Microsoft Graph Průzkumníku můžete přistupovat v: `https://developer.microsoft.com/graph/graph-explorer`.
+Microsoft Graph Explorer je webový nástroj, který můžete použít k vytváření a testování požadavků pomocí rozhraní API aplikace Microsoft Graph. K aplikaci Microsoft Graph `https://developer.microsoft.com/graph/graph-explorer`Explorer můžete přistupovat na adrese: .
 
-Metoda post je nástroj, který můžete použít také k sestavení a testování požadavků pomocí Microsoft Graph rozhraní API. Metodu post můžete stáhnout na adrese: `https://www.getpostman.com/`. Pokud chcete pracovat s Microsoft Graph v nástroji post, použijete Microsoft Graph kolekci v poli post. Další informace najdete v tématu [použití metody post s rozhraním Microsoft Graph API](/graph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta).
+Pošťák je nástroj, který můžete také použít k vytváření a testování požadavků pomocí rozhraní API aplikace Microsoft Graph. Zde si můžete stáhnout `https://www.getpostman.com/`Pošťák na adrese: . Chcete-li komunikovat s Microsoft Graph v Postman, použijte kolekci Microsoft Graph v Postman. Další informace naleznete [v tématu Použití postman s rozhraním Microsoft Graph API](/graph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta).

@@ -1,6 +1,6 @@
 ---
-title: Automatizujte replikaci změn schématu v Synchronizace dat SQL
-description: Naučte se automatizovat replikaci změn schématu v Azure Synchronizace dat SQL.
+title: Automatizace replikace změn schématu v synchronizaci dat SQL
+description: Zjistěte, jak automatizovat replikaci změn schématu v Azure SQL Data Sync.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -12,30 +12,30 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/14/2018
 ms.openlocfilehash: 639901975bbb66b9f410bea297d9e48cd96d6d1b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73822437"
 ---
-# <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Automatizace replikace změn schématu v Azure Synchronizace dat SQL
+# <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Automatizace replikace změn schématu v azure SQL data sync
 
-Synchronizace dat SQL umožňuje uživatelům synchronizovat data mezi databázemi Azure SQL a místními SQL Server v jednom směru nebo v obou směrech. Jedním z aktuálních omezení Synchronizace dat SQL je nedostatek podpory pro replikaci změn schématu. Pokaždé, když změníte schéma tabulky, je nutné použít změny ručně u všech koncových bodů, včetně rozbočovače a všech členů, a pak aktualizovat schéma synchronizace.
+Synchronizace dat SQL umožňuje uživatelům synchronizovat data mezi databázemi Azure SQL a místním SQL Serverem v jednom směru nebo v obou směrech. Jedním z aktuálních omezení synchronizace dat SQL je nedostatečná podpora replikace změn schématu. Pokaždé, když změníte schéma tabulky, budete muset použít změny ručně na všechny koncové body, včetně rozbočovače a všechny členy a potom aktualizovat schéma synchronizace.
 
-Tento článek představuje řešení, které automaticky replikuje změny schématu do všech koncových bodů Synchronizace dat SQL.
-1. Toto řešení používá ke sledování změn schématu TRIGGER DDL.
-1. Aktivační událost vloží příkazy pro změnu schématu do sledovací tabulky.
-1. Tato sledovací tabulka je synchronizovaná se všemi koncovými body pomocí služby synchronizace dat.
-1. Příkazy DML po vložení slouží k aplikování změn schématu na ostatních koncových bodech.
+Tento článek představuje řešení pro automatickou replikaci změn schématu do všech koncových bodů synchronizace dat SQL.
+1. Toto řešení používá aktivační událost DDL ke sledování změn schématu.
+1. Aktivační událost vloží příkazy změny schématu do tabulky sledování.
+1. Tato tabulka sledování se synchronizuje se všemi koncovými body pomocí služby Synchronizace dat.
+1. Aktivační události DML po vložení se používají k použití změn schématu na ostatní koncové body.
 
-Tento článek používá jako příklad změny schématu příkaz ALTER TABLE, ale toto řešení funguje i pro jiné typy změn schématu.
+Tento článek používá ALTER TABLE jako příklad změny schématu, ale toto řešení funguje také pro jiné typy změn schématu.
 
 > [!IMPORTANT]
-> Doporučujeme, abyste si tento článek důkladně přečetli, zejména v oddílech týkajících se [řešení potíží](#troubleshoot) a [dalších informací](#other), než začnete implementovat automatickou replikaci změn schématu v synchronizačním prostředí. Doporučujeme také číst [data synchronizace napříč několika cloudy a místními databázemi pomocí synchronizace dat SQL](sql-database-sync-data.md). Některé databázové operace mohou poškodit řešení popsané v tomto článku. K řešení těchto problémů může být potřeba další znalosti v doméně SQL Server a Transact-SQL.
+> Doporučujeme, abyste si pozorně přečetli tento článek, zejména části o [řešení potíží](#troubleshoot) a [další aspekty](#other), než začnete implementovat automatické replikace změn schématu v synchronizačním prostředí. Doporučujeme také, abyste si [přečetli data synchronizace ve více cloudových a místních databázích pomocí synchronizace dat SQL](sql-database-sync-data.md). Některé databázové operace může přerušit řešení popsané v tomto článku. Další znalost domény SQL Server a Transact-SQL může být nutné k řešení těchto problémů.
 
 ![Automatizace replikace změn schématu](media/sql-database-update-sync-schema/automate-schema-changes.png)
 
-## <a name="set-up-automated-schema-change-replication"></a>Nastavte automatickou replikaci změn schématu.
+## <a name="set-up-automated-schema-change-replication"></a>Nastavení automatické replikace změn schématu
 
 ### <a name="create-a-table-to-track-schema-changes"></a>Vytvoření tabulky pro sledování změn schématu
 
@@ -49,11 +49,11 @@ SqlStmt nvarchar(max),
 )
 ```
 
-Tato tabulka obsahuje sloupec identity, který sleduje pořadí změn schématu. V případě potřeby můžete přidat další pole pro protokolování dalších informací.
+Tato tabulka obsahuje sloupec identity pro sledování pořadí změn schématu. V případě potřeby můžete přidat další pole pro protokolování dalších informací.
 
 ### <a name="create-a-table-to-track-the-history-of-schema-changes"></a>Vytvoření tabulky pro sledování historie změn schématu
 
-U všech koncových bodů vytvořte tabulku pro sledování ID naposledy použitého příkazu pro změnu schématu.
+Ve všech koncových bodech vytvořte tabulku pro sledování ID naposledy použitého příkazu změny schématu.
 
 ```sql
 CREATE TABLE SchemaChangeHistory (
@@ -64,9 +64,9 @@ GO
 INSERT INTO SchemaChangeHistory VALUES (0)
 ```
 
-### <a name="create-an-alter-table-ddl-trigger-in-the-database-where-schema-changes-are-made"></a>Vytvoření triggeru příkazu DDL tabulky v databázi, kde jsou provedeny změny schématu
+### <a name="create-an-alter-table-ddl-trigger-in-the-database-where-schema-changes-are-made"></a>Vytvoření aktivační události ALTER TABLE DDL v databázi, kde jsou provedeny změny schématu
 
-Vytvořte TRIGGER DDL pro operace ALTER TABLE. Tuto aktivační událost stačí vytvořit pouze v databázi, kde jsou provedeny změny schématu. Aby nedocházelo ke konfliktům, povolte pouze změny schématu v jedné databázi ve skupině synchronizace.
+Vytvořte aktivační událost DDL pro operace ALTER TABLE. Tuto aktivační událost je třeba vytvořit pouze v databázi, kde jsou provedeny změny schématu. Chcete-li se vyhnout konfliktům, povolte pouze změny schématu v jedné databázi ve skupině synchronizace.
 
 ```sql
 CREATE TRIGGER AlterTableDDLTrigger
@@ -82,13 +82,13 @@ INSERT INTO SchemaChanges (SqlStmt, Description)
     VALUES (EVENTDATA().value('(/EVENT_INSTANCE/TSQLCommand/CommandText)[1]', 'nvarchar(max)'), 'From DDL trigger')
 ```
 
-Aktivační událost vloží záznam do tabulky sledování změn schématu pro každý příkaz ALTER TABLE. Tento příklad přidá filtr, aby se zabránilo replikaci změn schématu provedených v rámci schématu data **Sync**, protože tyto změny jsou pravděpodobně provedeny službou synchronizace dat. Pokud chcete replikovat pouze určité typy změn schématu, přidejte další filtry.
+Aktivační událost vloží záznam do tabulky sledování změn schématu pro každý příkaz ALTER TABLE. Tento příklad přidá filtr, aby se zabránilo replikaci změny schématu provedené v rámci schématu **DataSync**, protože tyto jsou s největší pravděpodobností provedené službou Synchronizace dat. Další filtry přidejte, pokud chcete replikovat pouze určité typy změn schématu.
 
-Můžete také přidat další aktivační události pro replikaci jiných typů změn schématu. Můžete například vytvořit CREATE_PROCEDURE, ALTER_PROCEDURE a DROP_PROCEDURE triggery pro replikaci změn uložených procedur.
+Můžete také přidat další aktivační události replikovat jiné typy změn schématu. Můžete například vytvořit CREATE_PROCEDURE, ALTER_PROCEDURE a DROP_PROCEDURE aktivační události replikovat změny uložené procedury.
 
-### <a name="create-a-trigger-on-other-endpoints-to-apply-schema-changes-during-insertion"></a>Vytvořit Trigger na jiných koncových bodech pro použití změn schématu během vložení
+### <a name="create-a-trigger-on-other-endpoints-to-apply-schema-changes-during-insertion"></a>Vytvoření aktivační události u jiných koncových bodů pro použití změn schématu během vložení
 
-Tato aktivační událost spustí příkaz změny schématu při synchronizaci do jiných koncových bodů. Tuto aktivační událost je nutné vytvořit ve všech koncových bodech s výjimkou toho, kde jsou provedeny změny schématu (tj. v databázi, ve které je aktivační událost DDL `AlterTableDDLTrigger` vytvořena v předchozím kroku).
+Tato aktivační událost spustí příkaz změny schématu při synchronizaci s jinými koncovými body. Tuto aktivační událost je třeba vytvořit ve všech koncových bodech, s výjimkou té, kde jsou provedeny `AlterTableDDLTrigger` změny schématu (to znamená v databázi, kde je aktivační událost DDL vytvořena v předchozím kroku).
 
 ```sql
 CREATE TRIGGER SchemaChangesTrigger
@@ -119,31 +119,31 @@ BEGIN
 END
 ```
 
-Tato aktivační událost se spustí po vložení a zkontroluje, jestli se má aktuální příkaz Spustit jako další. Logika kódu zajišťuje, že žádný příkaz ke změně schématu není vynechán, a všechny změny jsou aplikovány i v případě, že vložení je mimo pořadí.
+Tato aktivační událost se spustí po vložení a zkontroluje, zda má být aktuální příkaz spuštěn jako další. Logika kódu zajišťuje, že není přeskočen žádný příkaz změny schématu a všechny změny jsou použity i v případě, že vložení je mimo pořadí.
 
-### <a name="sync-the-schema-change-tracking-table-to-all-endpoints"></a>Synchronizovat tabulku sledování změn schématu se všemi koncovými body
+### <a name="sync-the-schema-change-tracking-table-to-all-endpoints"></a>Synchronizace tabulky sledování změn schématu se všemi koncovými body
 
-Tabulku sledování změn schématu můžete synchronizovat se všemi koncovými body pomocí existující skupiny synchronizace nebo nové skupiny synchronizace. Ujistěte se, že změny v tabulce sledování mohou být synchronizovány do všech koncových bodů, zejména v případě, že používáte jednu směrovou synchronizaci.
+Tabulku sledování změn schématu můžete synchronizovat se všemi koncovými body pomocí existující skupiny synchronizace nebo nové skupiny synchronizace. Ujistěte se, že změny v tabulce sledování lze synchronizovat do všech koncových bodů, zejména při použití synchronizace jedním směrem.
 
-Nesynchronizuje tabulku historie změn schématu, protože tato tabulka udržuje různý stav na různých koncových bodech.
+Nesynchronizujte tabulku historie změn schématu, protože tato tabulka udržuje jiný stav v různých koncových bodech.
 
-### <a name="apply-the-schema-changes-in-a-sync-group"></a>Použít změny schématu ve skupině synchronizace
+### <a name="apply-the-schema-changes-in-a-sync-group"></a>Použití změn schématu ve skupině synchronizace
 
-Replikují se pouze změny schématu provedené v databázi, kde je vytvořen TRIGGER DDL. Změny schématu provedené v jiných databázích se nereplikují.
+Replikují se pouze změny schématu provedené v databázi, kde je vytvořena aktivační událost DDL. Změny schématu provedené v jiných databázích nejsou replikovány.
 
-Po dokončení replikace změn schématu do všech koncových bodů je také nutné provést další kroky k aktualizaci schématu synchronizace, aby bylo možné spustit nebo zastavit synchronizaci nových sloupců.
+Po změny schématu jsou replikovány do všech koncových bodů, je také nutné provést další kroky k aktualizaci schématu synchronizace spustit nebo zastavit synchronizaci nových sloupců.
 
-#### <a name="add-new-columns"></a>Přidat nové sloupce
+#### <a name="add-new-columns"></a>Přidání nových sloupců
 
 1.  Proveďte změnu schématu.
 
-1.  Vyhněte se změnám dat, kde jsou tyto nové sloupce zapojeny, dokud nedokončíte krok, který aktivační událost vytvořil.
+1.  Vyhněte se jakékoli změně dat, kde se jedná o nové sloupce, dokud nedokončíte krok, který vytvoří aktivační událost.
 
-1.  Počkejte, dokud nebudou změny schématu aplikovány na všechny koncové body.
+1.  Počkejte, dokud změny schématu se použijí na všechny koncové body.
 
 1.  Aktualizujte schéma databáze a přidejte nový sloupec do schématu synchronizace.
 
-1.  Data v novém sloupci jsou synchronizovaná během další operace synchronizace.
+1.  Data v novém sloupci se synchronizují během další operace synchronizace.
 
 #### <a name="remove-columns"></a>Odebrání sloupců
 
@@ -151,85 +151,85 @@ Po dokončení replikace změn schématu do všech koncových bodů je také nut
 
 1.  Proveďte změnu schématu.
 
-1.  Aktualizuje schéma databáze.
+1.  Aktualizujte schéma databáze.
 
 #### <a name="update-data-types"></a>Aktualizace datových typů
 
 1.  Proveďte změnu schématu.
 
-1.  Počkejte, dokud nebudou změny schématu aplikovány na všechny koncové body.
+1.  Počkejte, dokud změny schématu se použijí na všechny koncové body.
 
-1.  Aktualizuje schéma databáze.
+1.  Aktualizujte schéma databáze.
 
-1.  Pokud nové a staré datové typy nejsou plně kompatibilní – například pokud změníte z `int` na `bigint`, může dojít k selhání synchronizace před dokončením kroků, které vytvořily triggery. Po opakovaném pokusu synchronizace proběhne úspěšně.
+1.  Pokud nové a staré datové typy nejsou plně kompatibilní – `int` `bigint` například pokud změníte z na - synchronizace může selhat před kroky, které vytvářejí aktivační události jsou dokončeny. Synchronizace proběhne úspěšně po opakování.
 
 #### <a name="rename-columns-or-tables"></a>Přejmenování sloupců nebo tabulek
 
-Při přejmenování sloupců nebo tabulek se synchronizace dat přestane fungovat. Vytvořte novou tabulku nebo sloupec, data vyplňte a místo přejmenování odstraňte starou tabulku nebo sloupec.
+Přejmenování sloupců nebo tabulek způsobí, že synchronizace dat přestane fungovat. Vytvořte novou tabulku nebo sloupec, vyplníte data a místo přejmenování odstraníte starou tabulku nebo sloupec.
 
 #### <a name="other-types-of-schema-changes"></a>Jiné typy změn schématu
 
-Pro jiné typy změn schématu – například vytváření uložených procedur nebo odstranění indexu – aktualizace schématu synchronizace není vyžadována.
+Pro jiné typy změn schématu – například vytváření uložených procedur nebo uvolnění indexu – není aktualizace schématu synchronizace vyžadována.
 
-## <a name="troubleshoot"></a>Řešení potíží s automatickou replikací změn schématu
+## <a name="troubleshoot-automated-schema-change-replication"></a><a name="troubleshoot"></a>Poradce při potížích s automatickou replikací změn schématu
 
-Logika replikace popsaná v tomto článku v některých situacích přestane fungovat – například pokud jste provedli změnu schématu v místní databázi, která není v Azure SQL Database podporovaná. V takovém případě se synchronizace tabulky sledování změn schématu nezdařila. Tento problém je potřeba vyřešit ručně:
+Logika replikace popsané v tomto článku přestane fungovat v některých situacích– například pokud jste provedli změnu schématu v místní databázi, která není podporována v Azure SQL Database. V takovém případě se nezdaří synchronizace tabulky sledování změn schématu. Tento problém je třeba vyřešit ručně:
 
-1.  Zakažte TRIGGER DDL a zabraňte jakýmkoli dalším změnám schématu, dokud problém nebude vyřešen.
+1.  Zakažte aktivační událost DDL a vyhněte se dalším změnám schématu, dokud nebude problém vyřešen.
 
-1.  V databázi koncového bodu, kde se problém děje, zakažte aktivační událost po vložení na koncovém bodu, kde nelze provést změnu schématu. Tato akce umožňuje synchronizaci příkazu změny schématu.
+1.  V databázi koncového bodu, kde k problému dochází, zakažte aktivační událost AFTER INSERT v koncovém bodě, kde nelze provést změnu schématu. Tato akce umožňuje synchronizovat příkaz změny schématu.
 
-1.  Spusťte synchronizaci pro synchronizaci tabulky sledování změn schématu.
+1.  Aktivace synchronizace tabulky sledování změn schématu
 
-1.  V databázi koncových bodů, kde se problém děje, zadejte dotaz na tabulku historie změn schématu, abyste získali ID posledního použitého příkazu pro změnu schématu.
+1.  V databázi koncového bodu, kde k problému dochází, dotaz tabulka historie změny schématu získat ID poslední použité schéma změnit příkaz.
 
-1.  Pomocí dotazu na tabulku sledování změn schématu vypíšete všechny příkazy s ID větší než hodnota ID, kterou jste získali v předchozím kroku.
+1.  Dotaz na tabulku sledování změn schématu zobrazí seznam všech příkazů s ID větším, než je hodnota ID, kterou jste načetli v předchozím kroku.
 
-    a.  Ignorujte tyto příkazy, které se nedají spustit v databázi koncových bodů. Musíte se zabývat nekonzistencí schématu. Vrátí původní změny schématu, pokud nekonzistence ovlivní vaši aplikaci.
+    a.  Ignorujte ty příkazy, které nelze provést v databázi koncových bodů. Musíte se vypořádat s nekonzistencí schématu. Vrátit původní změny schématu, pokud nekonzistence ovlivňuje vaši aplikaci.
 
-    b.  Ručně použijte tyto příkazy, které se mají použít.
+    b.  Ručně použít ty příkazy, které by měly být použity.
 
-1.  Aktualizujte tabulku historie změn schématu a nastavte poslední použité ID na správnou hodnotu.
+1.  Aktualizujte tabulku historie změn schématu a nastavte poslední aplikované ID na správnou hodnotu.
 
-1.  Dvakrát ověřte, zda je schéma aktuální.
+1.  Zkontrolujte, zda je schéma aktuální.
 
-1.  V druhém kroku znovu povolte aktivační událost po vložení zakázané.
+1.  Znovu povolte aktivační událost AFTER INSERT, která je ve druhém kroku zakázána.
 
-1.  V prvním kroku znovu povolte TRIGGER DDL zakázaný.
+1.  Znovu povolte aktivační událost DDL zakázáno v prvním kroku.
 
-Chcete-li vyčistit záznamy v tabulce sledování změn schématu, použijte příkaz DELETE místo ZKRÁCENí. Nikdy neměňte základ sloupce identity v tabulce sledování změn schématu pomocí DBCC CHECKIDENT. Pokud je požadováno opětovné osazení, můžete vytvořit nové tabulky sledování změn schématu a aktualizovat název tabulky v triggeru DDL.
+Pokud chcete vyčistit záznamy v tabulce sledování změn schématu, použijte místo Funkce Zkrátit klávesu DELETE. Nikdy reseed sloupec identity v tabulce sledování změny schématu pomocí DBCC CHECKIDENT. Můžete vytvořit nové tabulky sledování změn schématu a aktualizovat název tabulky v aktivační události DDL, pokud je vyžadováno prosazení.
 
-## <a name="other"></a>Další požadavky
+## <a name="other-considerations"></a><a name="other"></a>Další aspekty
 
--   Uživatelé databáze, kteří konfigurují centrum a členské databáze, musí mít dostatečná oprávnění ke spuštění příkazů změny schématu.
+-   Uživatelé databáze, kteří konfigurují databáze rozbočovače a členů, musí mít dostatečná oprávnění ke spuštění příkazů pro změnu schématu.
 
--   Do triggeru DDL můžete přidat další filtry, aby se změny schématu prováděly jenom ve vybraných tabulkách nebo operacích.
+-   Do aktivační události DDL můžete přidat další filtry, které budou replikovat pouze změnu schématu ve vybraných tabulkách nebo operacích.
 
--   Změny schématu lze provádět pouze v databázi, ve které je vytvořen TRIGGER DDL.
+-   Změny schématu lze provádět pouze v databázi, kde je vytvořena aktivační událost DDL.
 
--   Pokud provádíte změnu v místní databázi SQL Server, ujistěte se, že je změna schématu v Azure SQL Database podporovaná.
+-   Pokud provádíte změnu v místní databázi SQL Serveru, ujistěte se, že změna schématu je podporována v Azure SQL Database.
 
--   Pokud se změny schématu provádějí v databázích, které nejsou v databázi, ve které je vytvořený TRIGGER DDL, změny se nereplikují. Chcete-li se tomuto problému vyhnout, můžete vytvořit triggery DDL pro blokování změn v jiných koncových bodech.
+-   Pokud jsou provedeny změny schématu v databázích než v databázi, kde je vytvořena aktivační událost DDL, změny nejsou replikovány. Chcete-li se tomuto problému vyhnout, můžete vytvořit aktivační události DDL blokovat změny na jiných koncových bodech.
 
--   Pokud potřebujete změnit schéma tabulky sledování změn schématu, před provedením změny zakažte TRIGGER DDL a pak tuto změnu použijte ručně u všech koncových bodů. Aktualizace schématu v rámci triggeru vložení ve stejné tabulce nefunguje.
+-   Pokud potřebujete změnit schéma tabulky sledování změn schématu, zakažte aktivační událost DDL před změnou a potom ručně aplikujte změnu na všechny koncové body. Aktualizace schématu v aktivační události AFTER INSERT ve stejné tabulce nefunguje.
 
--   Nepoužívejte znovu základ sloupce identity pomocí DBCC CHECKIDENT.
+-   Nepoužívejte reseed sloupec identity pomocí DBCC CHECKIDENT.
 
--   Nepoužívejte zkrátit k vyčištění dat v tabulce sledování změn schématu.
+-   Nepoužívejte Funkce Zkrátit k vyčištění dat v tabulce sledování změn schématu.
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o Synchronizaci dat SQL:
 
--   Přehled – [synchronizace dat napříč několika cloudy a místními databázemi pomocí Azure synchronizace dat SQL](sql-database-sync-data.md)
+-   Přehled – [Synchronizace dat mezi několika cloudovými a místními databázemi pomocí Azure SQL Data Sync](sql-database-sync-data.md)
 -   Nastavení synchronizace dat
-    - Na portálu – [kurz: nastavení synchronizace dat SQL pro synchronizaci dat mezi Azure SQL Database a SQL Server místním](sql-database-get-started-sql-data-sync.md) prostředím
+    - Na portálu – [kurz: Nastavení synchronizace dat SQL pro synchronizaci dat mezi databází Azure SQL a SQL Server em i v místním prostředí](sql-database-get-started-sql-data-sync.md)
     - S využitím PowerShellu
         -  [Synchronizace mezi několika databázemi Azure SQL pomocí PowerShellu](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [Použití PowerShellu k synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru](scripts/sql-database-sync-data-between-azure-onprem.md)
--   Agent synchronizace dat – [Agent synchronizace dat pro Azure synchronizace dat SQL](sql-database-data-sync-agent.md)
--   Osvědčené postupy – [osvědčené postupy pro Azure synchronizace dat SQL](sql-database-best-practices-data-sync.md)
--   Monitorování – [monitorování synchronizace dat SQL pomocí protokolů Azure monitor](sql-database-sync-monitor-oms.md)
--   Řešení potíží – [řešení potíží s Azure synchronizace dat SQL](sql-database-troubleshoot-data-sync.md)
+-   Agent synchronizace dat – [agent synchronizace dat pro synchronizaci dat Azure SQL](sql-database-data-sync-agent.md)
+-   Doporučené postupy – [doporučené postupy pro Azure SQL Data Sync](sql-database-best-practices-data-sync.md)
+-   Monitor – [monitorování synchronizace dat SQL pomocí protokolů Azure Monitoru](sql-database-sync-monitor-oms.md)
+-   Poradce při potížích – [řešení problémů se synchronizací dat Azure SQL](sql-database-troubleshoot-data-sync.md)
 -   Aktualizace schématu synchronizace
-    -   Prostředí PowerShell – [použití PowerShellu k aktualizaci schématu synchronizace v existující skupině synchronizace](scripts/sql-database-sync-update-schema.md)
+    -   S PowerShellem – [k aktualizaci schématu synchronizace v existující skupině synchronizace použijte PowerShell](scripts/sql-database-sync-update-schema.md)
