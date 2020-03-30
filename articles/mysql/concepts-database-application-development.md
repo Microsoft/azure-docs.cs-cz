@@ -1,48 +1,48 @@
 ---
 title: Vývoj aplikací – Azure Database for MySQL
-description: Zavádí faktory návrhu, které by měl vývojář postupovat při psaní kódu aplikace pro připojení k Azure Database for MySQL
+description: Zavádí aspekty návrhu, které by měl vývojář dodržovat při psaní kódu aplikace pro připojení k Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 74abf680223d562522a11ecb8999fedb37de9907
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 02ce6b00b6555f849d162b9f3b381c0ab358d712
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770267"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79532837"
 ---
 # <a name="application-development-overview-for-azure-database-for-mysql"></a>Přehled vývoje aplikací pro Azure Database for MySQL 
-Tento článek popisuje faktory návrhu, které by měl vývojář postupovat při psaní kódu aplikace pro připojení k Azure Database for MySQL. 
+Tento článek popisuje aspekty návrhu, které by měl vývojář sledovat při psaní kódu aplikace pro připojení k Azure Database for MySQL. 
 
 > [!TIP]
-> Návod, jak vytvořit server, vytvořit bránu firewall založenou na serveru, zobrazit vlastnosti serveru, vytvořit databázi a připojit a dotazovat pomocí nástroje Workbench a MySQL. exe, najdete v tématu [Návrh první databáze Azure Database for MySQL](tutorial-design-database-using-portal.md) .
+> Kurz, který vám ukáže, jak vytvořit server, vytvořit bránu firewall na serveru, zobrazit vlastnosti serveru, vytvořit databázi a připojit se a dotazovat pomocí workbench a mysql.exe, najdete v [tématu Návrh první databáze Azure pro MySQL.](tutorial-design-database-using-portal.md)
 
 ## <a name="language-and-platform"></a>Jazyk a platforma
-K dispozici jsou ukázky kódu pro různé programovací jazyky a platformy. Odkazy na ukázky kódu najdete v tématech [knihovny připojení používané pro připojení k Azure Database for MySQL](concepts-connection-libraries.md)
+K dispozici jsou ukázky kódu pro různé programovací jazyky a platformy. Odkazy na ukázky kódu najdete na adrese: [Knihovny připojení používané pro připojení k Azure Database for MySQL](concepts-connection-libraries.md)
 
 ## <a name="tools"></a>Nástroje
-Azure Database for MySQL používá komunitu MySQL, která je kompatibilní s nástroji pro správu MySQL, jako je Workbench nebo nástroje MySQL, jako je MySQL. exe, [phpMyAdmin](https://www.phpmyadmin.net/), [Navicat](https://www.navicat.com/products/navicat-for-mysql)a další. K interakci s databázovou službou můžete použít taky Azure Portal, rozhraní příkazového řádku Azure a rozhraní REST API.
+Azure Database for MySQL používá komunitní verzi MySQL, kompatibilní s běžnými nástroji pro správu MySQL, jako jsou nástroje Workbench nebo MySQL, jako je mysql.exe, [phpMyAdmin](https://www.phpmyadmin.net/), [Navicat](https://www.navicat.com/products/navicat-for-mysql)a další. K interakci s databázovou službou můžete taky použít portál Azure, azure CLI a REST API.
 
 ## <a name="resource-limitations"></a>Omezení prostředků
-Azure Database for MySQL spravuje prostředky, které jsou k dispozici na serveru, pomocí dvou různých mechanismů: 
-- Zásady správného řízení prostředků
-- Vynucování omezení.
+Azure Database for MySQL spravuje prostředky, které jsou k dispozici pro server pomocí dvou různých mechanismů: 
+- Řízení zdrojů.
+- Prosazování limitů.
 
 ## <a name="security"></a>Zabezpečení
 Azure Database for MySQL poskytuje prostředky pro omezení přístupu, ochranu dat, konfiguraci uživatelů a rolí a monitorování aktivit v databázi MySQL.
 
-## <a name="authentication"></a>Ověření
-Azure Database for MySQL podporuje ověřování uživatelů a přihlašovacích údajů serveru.
+## <a name="authentication"></a>Ověřování
+Azure Database for MySQL podporuje ověřování uživatelů a přihlášení serveru.
 
 ## <a name="resiliency"></a>Odolnost
-Pokud při připojování k databázi MySQL dojde k přechodné chybě, váš kód by měl zavolat znovu. Doporučujeme, aby logika opakování použila zpětnou logiku, aby nedošlo k zahlcení databáze SQL s více klienty, které se opakují současně.
+Když dojde k přechodné chybě při připojování k databázi MySQL, váš kód by měl opakovat volání. Doporučujeme, aby logika opakování použít zpět nouzi logiku tak, aby není zahlceni sql databáze s více klientů opakování současně.
 
-- Ukázky kódu: ukázky kódu, které ilustrují logiku opakování, najdete v ukázkách pro jazyk podle vašeho výběru v tématu: [knihovny připojení používané pro připojení k Azure Database for MySQL](concepts-connection-libraries.md)
+- Ukázky kódu: Ukázky kódu, které ilustrují logiku opakování, najdete v tématu ukázky jazyka, který si vyberete, na adrese: [Knihovny připojení používané k připojení k Azure Database for MySQL](concepts-connection-libraries.md)
 
 ## <a name="managing-connections"></a>Správa připojení
-Databázová připojení jsou omezeného prostředku, proto doporučujeme, abyste při přístupu k databázi MySQL rozumné používání připojení, abyste dosáhli lepšího výkonu.
-- Přístup k databázi pomocí sdružování připojení nebo trvalých připojení.
-- Přístup k databázi pomocí krátkého životního rozsahu připojení. 
-- V bodě pokusu o připojení, který vyplývají ze souběžných připojení, bylo dosaženo maximálního povoleného počtu, v aplikaci použijte logiku opakování. V logice opakování nastavte krátké zpoždění a potom před pokusy o připojení počkat na náhodný čas.
+Připojení k databázi jsou omezeným zdrojem, proto doporučujeme rozumné použití připojení při přístupu k databázi MySQL k dosažení lepšího výkonu.
+- Přístup k databázi pomocí sdružování připojení nebo trvalé připojení.
+- Přístup k databázi pomocí krátké životnosti připojení. 
+- Logiku opakování v aplikaci v okamžiku pokusu o připojení k zachycení selhání vyplývajících ze souběžných připojení dosáhly maximální povolené. V logice opakování nastavte krátkou prodlevu a počkejte na náhodný čas, než se pokusí o další připojení.

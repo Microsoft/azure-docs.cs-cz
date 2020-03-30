@@ -1,50 +1,50 @@
 ---
-title: Instalace Azure IoT Edge v Linuxu | Dokumentace Microsoftu
-description: Pokyny k instalaci Azure IoT Edge na zařízeních se systémem Linux se systémem Ubuntu nebo Raspbian
+title: Instalace Azure IoT Edge na Linux | Dokumenty společnosti Microsoft
+description: Pokyny k instalaci Azure IoT Edge na zařízeních s Linuxem s Ubuntu nebo Raspbianem
 author: kgremban
 manager: philmea
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 02/21/2020
 ms.author: kgremban
-ms.openlocfilehash: af53dea76670be500e7be20063487e3e4a2177b6
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: fb86ee9ce956917f8da44146e58a4775e0ba639f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79285081"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535897"
 ---
-# <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>Instalace modulu runtime Azure IoT Edge v systémech Linux založených na Debian
+# <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>Instalace modulu runtime Azure IoT Edge v systémech Linux založených na distribuci Debian
 
-Modul runtime Azure IoT Edge je co se změní na zařízení do zařízení IoT Edge. Modul runtime můžete nasadit na zařízení jako Raspberry Pi malé nebo velké průmyslové serveru. Jakmile je zařízení nakonfigurovaná s modulem runtime IoT Edge, můžete začít nasazovat obchodní logiky k němu z cloudu. Další informace najdete v tématu [pochopení Azure IoT Edge runtime a jeho architektury](iot-edge-runtime.md).
+Azure IoT Edge runtime je to, co změní zařízení na zařízení IoT Edge. Runtime lze nasadit na zařízení tak malá jako Raspberry Pi nebo velká jako průmyslový server. Jakmile je zařízení nakonfigurované s runtime IoT Edge, můžete do něj začít nasazovat obchodní logiku z cloudu. Další informace najdete [v tématu Principy azure iot edge runtime a jeho architektura](iot-edge-runtime.md).
 
-V tomto článku jsou uvedené kroky pro instalaci modulu runtime Azure IoT Edge na zařízení s platformou x64, ARM32 nebo ARM64 Linux. Poskytujeme instalační balíčky pro server Ubuntu 16,04, Ubuntu Server 18,04 a Raspbian Stretch. Seznam podporovaných operačních systémů a architektur pro Linux najdete v tématu [Azure IoT Edge podporované systémy](support.md#operating-systems) .
+Tento článek uvádí kroky k instalaci runtime Azure IoT Edge na zařízení X64, ARM32 nebo ARM64 Linux. Poskytujeme instalační balíčky pro Ubuntu Server 16.04, Ubuntu Server 18.04 a Raspbian Stretch. Seznam podporovaných operačních systémů a architektur Linuxu najdete v [podporovaných systémech Azure IoT Edge.](support.md#operating-systems)
 
 > [!NOTE]
-> Balíčky v úložištích softwaru Linux podléhají licenčním podmínkám, které jsou umístěny v každém balíčku (/usr/share/doc/*název balíčku*). Přečtěte si licenční podmínky před použitím balíčku. Instalace a použití balíčku se považuje za svůj souhlas s těmito podmínkami. Pokud s licenčními podmínkami nesouhlasíte, nepoužívejte balíček.
+> Balíčky v úložištích linuxového softwaru podléhají licenčním podmínkám umístěným v*package-name*každém balíčku (/usr/share/doc/package-name ). Před použitím balíčku si přečtěte licenční podmínky. Vaše instalace a používání balíčku představuje váš souhlas s těmito podmínkami. Pokud nesouhlasíte s licenčními podmínkami, balíček nepoužívejte.
 
-## <a name="install-the-latest-runtime-version"></a>Nainstalovat nejnovější verzi modulu runtime
+## <a name="install-the-latest-runtime-version"></a>Instalace nejnovější verze runtime
 
-Pomocí následujících částí můžete nainstalovat nejnovější verzi Azure IoT Edge runtime do svého zařízení.
+Pomocí následujících částí nainstalujte do zařízení nejnovější verzi runtime Azure IoT Edge.
 
 >[!NOTE]
 >Podpora pro zařízení ARM64 je ve [verzi Public Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-### <a name="register-microsoft-key-and-software-repository-feed"></a>Zaregistrujte informační kanál úložiště Microsoft klíč a softwaru
+### <a name="register-microsoft-key-and-software-repository-feed"></a>Registrace zdroje klíčů a úložiště softwaru Microsoft
 
-Připravte zařízení na instalaci modulu runtime IoT Edge.
+Připravte zařízení na runtime instalaci IoT Edge.
 
-Nainstalujte konfiguraci úložiště. Vyberte příkaz **16,04** nebo **18,04** , který odpovídá operačnímu systému zařízení:
+Nainstalujte konfiguraci úložiště. Zvolte příkaz **16.04** nebo **18.04,** který odpovídá operačnímu systému vašeho zařízení:
 
-* **Ubuntu Server 16,04**:
+* **Ubuntu Server 16.04**:
 
    ```bash
    curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
    ```
 
-* **Ubuntu Server 18,04**:
+* **Ubuntu Server 18.04**:
 
    ```bash
    curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
@@ -62,114 +62,114 @@ Zkopírujte vygenerovaný seznam.
    sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
    ```
 
-Nainstalovat veřejný klíč Microsoft GPG
+Instalace veřejného klíče Microsoft GPG
 
    ```bash
    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
    sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
    ```
 
-### <a name="install-the-container-runtime"></a>Nainstalovat modul runtime kontejneru
+### <a name="install-the-container-runtime"></a>Instalace běhu kontejneru
 
-Azure IoT Edge spoléhá na modul runtime kontejneru kompatibilní s rozhraním [OCI](https://www.opencontainers.org/) . V produkčních scénářích doporučujeme použít modul založený na [Moby](https://mobyproject.org/) , který je uvedený níže. Modul Moby je jediným kontejnerovým modulem, který je oficiálně podporován s Azure IoT Edge. Jsou kompatibilní s modulem runtime Moby imagí kontejnerů dockeru CE/EE.
+Azure IoT Edge spoléhá na runtime kontejneru [kompatibilní s OCI.](https://www.opencontainers.org/) Pro produkční scénáře doporučujeme použít modul [založený na Moby,](https://mobyproject.org/) který je k dispozici níže. Motor Moby je jediný modul kontejneru, který je oficiálně podporován azure iot edge. Image kontejneru Docker CE/EE jsou kompatibilní s moby runtime.
 
-Aktualizuje seznamy balíčků na vašem zařízení.
+Aktualizujte seznamy balíčků v zařízení.
 
    ```bash
    sudo apt-get update
    ```
 
-Nainstalujte modul Moby.
+Nainstalujte motor Moby.
 
    ```bash
    sudo apt-get install moby-engine
    ```
 
-Nainstalujte Moby rozhraní příkazového řádku (CLI). Rozhraní příkazového řádku je užitečné pro vývoj, ale volitelný pro nasazení v produkčním prostředí.
+Nainstalujte rozhraní příkazového řádku Moby (CLI). ClI je užitečné pro vývoj, ale volitelné pro nasazení v produkčním prostředí.
 
    ```bash
    sudo apt-get install moby-cli
    ```
 
-Pokud při instalaci modulu runtime kontejneru Moby dojde k chybám, postupujte podle kroků a [Ověřte, zda jádro systému Linux pro kompatibilitu s Moby](#verify-your-linux-kernel-for-moby-compatibility)je uvedeno dále v tomto článku.
+Pokud se při instalaci modulu runtime kontejneru Moby zobrazí chyby, postupujte podle pokynů k [ověření linuxového jádra pro kompatibilitu Moby](#verify-your-linux-kernel-for-moby-compatibility), které jsou uvedeny dále v tomto článku.
 
-### <a name="install-the-azure-iot-edge-security-daemon"></a>Instalace démona zabezpečení Azure IoT Edge
+### <a name="install-the-azure-iot-edge-security-daemon"></a>Instalace daemonu zabezpečení Azure IoT Edge
 
-**Démon zabezpečení IoT Edge** poskytuje a udržuje standardy zabezpečení na zařízení IoT Edge. Proces démon spustí při každé spuštění a bootstraps zařízení spuštěním rest modul runtime IoT Edge.
+**Déon zabezpečení IoT Edge** poskytuje a udržuje standardy zabezpečení na zařízení IoT Edge. Daemon začíná při každém spuštění a zavádí zařízení spuštěním zbytku runtime IoT Edge.
 
-Instalační příkaz nainstaluje také standardní verzi **libiothsm** , pokud ještě není k dispozici.
+Instalační příkaz také nainstaluje standardní verzi **libiothsmu,** pokud již není k dispozici.
 
-Aktualizuje seznamy balíčků na vašem zařízení.
+Aktualizujte seznamy balíčků v zařízení.
 
    ```bash
    sudo apt-get update
    ```
 
-Instalace démona zabezpečení. Balíček je nainstalován na `/etc/iotedge/`.
+Nainstalujte bezpečnostního daemona. Balíček je `/etc/iotedge/`nainstalován na adrese .
 
    ```bash
    sudo apt-get install iotedge
    ```
 
-Po úspěšné instalaci IoT Edge zobrazí se ve výstupu výzva k aktualizaci konfiguračního souboru. Dokončete zřizování zařízení podle kroků v části [Konfigurace démona zabezpečení](#configure-the-security-daemon) .
+Po úspěšné instalaci ioT Edge vás výstup vyzve k aktualizaci konfiguračního souboru. Postupujte podle pokynů v části [Konfigurace demonu zabezpečení](#configure-the-security-daemon) k dokončení zřizování zařízení.
 
-## <a name="install-a-specific-runtime-version"></a>Instalace konkrétní verze modulu runtime
+## <a name="install-a-specific-runtime-version"></a>Instalace konkrétní verze runtime
 
-Pokud chcete nainstalovat určitou verzi Moby a modul runtime Azure IoT Edge namísto použití nejnovějších verzí, můžete cílové soubory součásti cílit přímo z úložiště GitHub IoT Edge. Pomocí následujících kroků načtete všechny součásti IoT Edge do svého zařízení: modul Moby a rozhraní příkazového řádku, libiothsm a nakonec proces démona zabezpečení IoT Edge. Pokud nechcete, aby se změnila na konkrétní verzi modulu runtime, přejděte k další části a [nakonfigurujte démona zabezpečení](#configure-the-security-daemon).
+Pokud chcete nainstalovat konkrétní verzi Moby a Azure IoT Edge runtime namísto použití nejnovějších verzí, můžete cílit na soubory komponent přímo z úložiště IoT Edge GitHub. Pomocí následujících kroků přenesete do zařízení všechny součásti IoT Edge: motor Moby a cli, libiothsm a nakonec dém zabezpečení IoT Edge. Pokud nechcete změnit na konkrétní verzi runtime, přejděte k další části [Konfigurace daemonu zabezpečení.](#configure-the-security-daemon)
 
-1. Přejděte do vydaných verzí [Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases)a vyhledejte verzi pro vydání, na kterou chcete cílit.
+1. Přejděte na [verze Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases)a najděte verzi, na kterou chcete cílit.
 
-2. Rozbalte část **assets (prostředky** ) pro danou verzi.
+2. Rozbalte část **Prostředky** pro tuto verzi.
 
-3. V žádné dané vydané verzi může nebo nemusí být možné aktualizovat modul Moby. Pokud se zobrazí soubory, které začínají na **Moby** a **Moby-CLI**, aktualizujte tyto součásti pomocí následujících příkazů. Pokud nevidíte žádné soubory Moby, přečtěte si předchozí assety vydaných verzí, dokud nenajdete nejnovější verzi.
+3. V dané verzi může nebo nemusí být aktualizace motoru Moby. Pokud se zobrazí soubory začínající **moby-engine** a **moby-cli**, použijte následující příkazy k aktualizaci těchto součástí. Pokud nevidíte žádné moby soubory, procházet starší verze datových zdrojů, dokud nenajdete nejnovější verzi.
 
-   1. Vyhledejte soubor **Moby** , který odpovídá architektuře zařízení IoT Edge. Klikněte pravým tlačítkem na odkaz na soubor a zkopírujte adresu odkazu.
+   1. Najděte soubor **moby-engine,** který odpovídá architektuře zařízení IoT Edge. Klikněte pravým tlačítkem myši na odkaz na soubor a zkopírujte adresu odkazu.
 
-   2. Pomocí zkopírovaného odkazu v následujícím příkazu nainstalujte tuto verzi modulu Moby:
+   2. K instalaci této verze motoru Moby použijte zkopírovaný odkaz v následujícím příkazu:
 
       ```bash
       curl -L <moby-engine link> -o moby_engine.deb && sudo dpkg -i ./moby_engine.deb
       ```
 
-   3. Vyhledejte soubor **Moby-CLI** , který odpovídá architektuře zařízení IoT Edge. Moby CLI je volitelná součást, ale může být užitečná během vývoje. Klikněte pravým tlačítkem na odkaz na soubor a zkopírujte adresu odkazu.
+   3. Najděte soubor **moby-cli,** který odpovídá architektuře zařízení IoT Edge. Moby CLI je volitelná součást, ale může být užitečné během vývoje. Klikněte pravým tlačítkem myši na odkaz na soubor a zkopírujte adresu odkazu.
 
-   4. Pomocí zkopírovaného odkazu v následujícím příkazu nainstalujte tuto verzi rozhraní příkazového řádku Moby:
+   4. K instalaci této verze příkazového příkazu Moby použijte zkopírovaný odkaz v následujícím příkazu:
 
       ```bash
       curl -L <moby-cli link> -o moby_cli.deb && sudo dpkg -i ./moby_cli.deb
       ```
 
-4. Každé vydání by mělo mít nové soubory pro démona zabezpečení IoT Edge a hsmlib. Tyto součásti můžete aktualizovat pomocí následujících příkazů.
+4. Každé vydání by mělo mít nové soubory pro daemon zabezpečení IoT Edge a hsmlib. K aktualizaci těchto součástí použijte následující příkazy.
 
-   1. Vyhledejte soubor **libiothsm-STD** , který odpovídá architektuře zařízení IoT Edge. Klikněte pravým tlačítkem na odkaz na soubor a zkopírujte adresu odkazu.
+   1. Najděte soubor **libiothsm-std,** který odpovídá architektuře zařízení IoT Edge. Klikněte pravým tlačítkem myši na odkaz na soubor a zkopírujte adresu odkazu.
 
-   2. Pomocí zkopírovaného odkazu v následujícím příkazu nainstalujte tuto verzi nástroje hsmlib:
+   2. K instalaci této verze hsmlib použijte zkopírovaný odkaz v následujícím příkazu:
 
       ```bash
       curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo dpkg -i ./libiothsm-std.deb
       ```
 
-   3. Vyhledejte soubor **iotedge** , který odpovídá architektuře zařízení IoT Edge. Klikněte pravým tlačítkem na odkaz na soubor a zkopírujte adresu odkazu.
+   3. Najděte soubor **iotedge,** který odpovídá architektuře zařízení IoT Edge. Klikněte pravým tlačítkem myši na odkaz na soubor a zkopírujte adresu odkazu.
 
-   4. Pomocí zkopírovaného odkazu v následujícím příkazu nainstalujte tuto verzi procesu démona zabezpečení IoT Edge.
+   4. Pomocí zkopírovaného odkazu v následujícím příkazu nainstalujte tuto verzi daemonu zabezpečení IoT Edge.
 
       ```bash
       curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
       ```
 
-Po úspěšné instalaci IoT Edge zobrazí se ve výstupu výzva k aktualizaci konfiguračního souboru. Dokončete zřizování zařízení podle kroků v následující části.
+Po úspěšné instalaci ioT Edge vás výstup vyzve k aktualizaci konfiguračního souboru. Postupujte podle kroků v další části k dokončení zřizování zařízení.
 
-## <a name="configure-the-security-daemon"></a>Konfigurace démona zabezpečení
+## <a name="configure-the-security-daemon"></a>Konfigurace daemonu zabezpečení
 
-Konfigurace modulu runtime IoT Edge k propojení vaší fyzické zařízení s identitou zařízení, která existuje v Azure IoT hub.
+Nakonfigurujte runtime IoT Edge tak, aby propojil vaše fyzické zařízení s identitou zařízení, která existuje v centru Azure IoT.
 
-Démona se dá nakonfigurovat pomocí konfiguračního souboru na `/etc/iotedge/config.yaml`. Soubor je chráněn proti zápisu ve výchozím nastavení, bude pravděpodobně nutné zvýšenou úroveň oprávnění a upravte ji.
+Daemon lze nakonfigurovat pomocí konfiguračního souboru na adrese `/etc/iotedge/config.yaml`. Soubor je ve výchozím nastavení chráněn proti zápisu, k jeho úpravám může být pravděpodobně nutné jeho úpravy.
 
-Jedno zařízení IoT Edge se dá zřídit ručně pomocí řetězce připojení zařízení k dispozici ve službě IoT Hub. Nebo můžete do služby Device Provisioning k automatickému zřízení zařízení, což je užitečné, když máte velký počet zařízení ke zřízení. Podle svého výběru: zřizování zvolte příslušný instalační skript.
+Jedno zařízení IoT Edge lze zřídit ručně pomocí řetězce připojení zařízení poskytovaného službou IoT Hub. Nebo můžete použít službu zřizování zařízení k automatickému zřizování zařízení, což je užitečné, když máte mnoho zařízení k zřízení. V závislosti na volbě zřizování zvolte příslušný instalační skript.
 
 ### <a name="option-1-manual-provisioning"></a>Možnost 1: Ruční zřizování
 
-Pokud chcete zařízení zřídit ručně, musíte ho zadat pomocí [připojovacího řetězce zařízení](how-to-register-device.md#register-in-the-azure-portal) , který můžete vytvořit tak, že zaregistrujete nové zařízení ve službě IoT Hub.
+Chcete-li zařízení zřídit ručně, musíte mu poskytnout [připojovací řetězec zařízení,](how-to-register-device.md#register-in-the-azure-portal) který můžete vytvořit registrací nového zařízení ve vašem centru IoT Hub.
 
 Otevřete konfigurační soubor.
 
@@ -177,31 +177,22 @@ Otevřete konfigurační soubor.
 sudo nano /etc/iotedge/config.yaml
 ```
 
-Vyhledejte konfigurace zřizování souboru a odkomentujte oddíl **Ruční konfigurace zřizování** . Aktualizujte hodnotu **device_connection_string** připojovacím řetězcem ze zařízení IoT Edge. Ujistěte se, že jsou všechny ostatní oddíly pro zřizování zakomentovány. Ujistěte se, že **zřizování:** řádek neobsahuje žádné předchozí prázdné znaky a že vnořené položky jsou odsazeny dvěma mezerami.
+Najděte konfigurace zřizování souboru a odkomentujte část **Ruční konfigurace zřizování.** Aktualizujte hodnotu **device_connection_string** pomocí připojovacího řetězce ze zařízení IoT Edge. Ujistěte se, že všechny ostatní zřizování oddíly jsou komentované. Ujistěte se, že **zřizování:** řádek nemá žádné předchozí mezery a že vnořené položky jsou odsazeny dvěma mezerami.
 
-   ```yaml
-   # Manual provisioning configuration
-   provisioning:
-     source: "manual"
-     device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
-  
-   # DPS TPM provisioning configuration
-   # provisioning:
-   #   source: "dps"
-   #   global_endpoint: "https://global.azure-devices-provisioning.net"
-   #   scope_id: "{scope_id}"
-   #   attestation:
-   #     method: "tpm"
-   #     registration_id: "{registration_id}"
-   ```
+```yml
+# Manual provisioning configuration
+provisioning:
+  source: "manual"
+  device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+```
 
-Pokud chcete vložit obsah schránky do nano `Shift+Right Click` nebo stiskněte `Shift+Insert`.
+Chcete-li vložit obsah `Shift+Right Click` schránky `Shift+Insert`do nano nebo stiskněte tlačítko .
 
 Uložte soubor a zavřete ho.
 
    `CTRL + X`, `Y`, `Enter`
 
-Jakmile zadáte informace o zřizování v konfiguračním souboru, restartujte démona:
+Po zadání informací o zřizování do konfiguračního souboru restartujte daemon:
 
 ```bash
 sudo systemctl restart iotedge
@@ -209,7 +200,13 @@ sudo systemctl restart iotedge
 
 ### <a name="option-2-automatic-provisioning"></a>Možnost 2: Automatické zřizování
 
-Pokud chcete automaticky zřídit zařízení, [nastavte službu Device Provisioning a načtěte ID registrace zařízení](how-to-auto-provision-simulated-device-linux.md). Pokud používáte Automatické zřizování, ale vaše požadavky na hardware mají vliv na řadu mechanismů ověřování, které IoT Edge podporuje. Například zařízení malinu PI ve výchozím nastavení nespadají do čipu TPM (Trusted Platform Module).
+Zařízení IoT Edge se dá automaticky zřídit pomocí [služby Azure IoT Hub Device Provisioning Service (DPS).](../iot-dps/index.yml) V současné době IoT Edge podporuje dva mechanismy ověřování při použití automatickézřižení, ale vaše požadavky na hardware může mít vliv na vaše volby. Například zařízení Raspberry Pi nejsou ve výchozím nastavení dodávána s čipem TPM (Trusted Platform Module). Další informace najdete v těchto článcích:
+
+* [Vytvoření a zřízení zařízení IoT Edge s virtuálním čipem TPM na virtuálním počítači s Linuxem](how-to-auto-provision-simulated-device-linux.md)
+* [Vytvoření a zřízení zařízení IoT Edge pomocí certifikátů X.509](how-to-auto-provision-x509-certs.md)
+* [Vytvoření a zřízení zařízení IoT Edge pomocí symetrického atestace klíče](how-to-auto-provision-symmetric-keys.md)
+
+Tyto články vás provedou nastavením zápisů v DPS a generováním správných certifikátů nebo klíčů pro ověřování. Bez ohledu na to, který mechanismus ověřování zvolíte, informace o zřizování se přidá do konfiguračního souboru IoT Edge na vašem zařízení IoT Edge.
 
 Otevřete konfigurační soubor.
 
@@ -217,31 +214,55 @@ Otevřete konfigurační soubor.
 sudo nano /etc/iotedge/config.yaml
 ```
 
-Vyhledejte konfigurace zřizování souboru a zrušte komentář k oddílu, který je vhodný pro váš mechanismus ověřování. Pokud používáte ověření identity pomocí čipu TPM, například aktualizujte hodnoty **scope_id** a **registration_id** hodnotami ze služby IoT Hub Device Provisioning a IoT Edge zařízení s čipem TPM. Ujistěte se, že **zřizování:** řádek neobsahuje žádné předchozí prázdné znaky a že vnořené položky jsou odsazeny dvěma mezerami.
+Najděte konfigurace zřizování souboru a odkomentujte oddíl vhodný pro mechanismus ověřování. Ujistěte se, že všechny ostatní zřizování oddíly jsou komentované. **Zřizování:** řádek by neměl mít žádné předchozí mezery a vnořené položky by měly být odsazeny dvěma mezerami. Aktualizujte hodnotu **scope_id** hodnotou z instance služby Zřizování zařízení služby IoT Hub a zadejte příslušné hodnoty pro pole atestace.
 
-   ```yaml
-   # Manual provisioning configuration
-   # provisioning:
-   #   source: "manual"
-   #   device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
-  
-   # DPS TPM provisioning configuration
-   provisioning:
-     source: "dps"
-     global_endpoint: "https://global.azure-devices-provisioning.net"
-     scope_id: "{scope_id}"
-     attestation:
-       method: "tpm"
-       registration_id: "{registration_id}"
-   ```
+Osvědčení tpm:
 
-Pokud chcete vložit obsah schránky do nano `Shift+Right Click` nebo stiskněte `Shift+Insert`.
+```yml
+# DPS TPM provisioning configuration
+provisioning:
+  source: "dps"
+  global_endpoint: "https://global.azure-devices-provisioning.net"
+  scope_id: "<SCOPE_ID>"
+  attestation:
+    method: "tpm"
+    registration_id: "<REGISTRATION_ID>"
+```
 
-Uložte soubor a zavřete ho.
+X.509 osvědčení:
 
-   `CTRL + X`, `Y`, `Enter`
+```yml
+# DPS X.509 provisioning configuration
+provisioning:
+  source: "dps"
+  global_endpoint: "https://global.azure-devices-provisioning.net"
+  scope_id: "<SCOPE_ID>"
+  attestation:
+    method: "x509"
+#   registration_id: "<OPTIONAL REGISTRATION ID. LEAVE COMMENTED OUT TO REGISTER WITH CN OF identity_cert>"
+    identity_cert: "<REQUIRED URI TO DEVICE IDENTITY CERTIFICATE>"
+    identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
+```
 
-Jakmile zadáte informace o zřizování v konfiguračním souboru, restartujte démona:
+Symetrické atestace klíče:
+
+```yml
+# DPS symmetric key provisioning configuration
+provisioning:
+  source: "dps"
+  global_endpoint: "https://global.azure-devices-provisioning.net"
+  scope_id: "<SCOPE_ID>"
+  attestation:
+    method: "symmetric_key"
+    registration_id: "<REGISTRATION_ID>"
+    symmetric_key: "<SYMMETRIC_KEY>"
+```
+
+Chcete-li vložit obsah `Shift+Right Click` schránky `Shift+Insert`do nano nebo stiskněte tlačítko .
+
+Uložte soubor a zavřete ho. `CTRL + X`, `Y`, `Enter`
+
+Po zadání informací o zřizování do konfiguračního souboru restartujte daemon:
 
 ```bash
 sudo systemctl restart iotedge
@@ -249,27 +270,27 @@ sudo systemctl restart iotedge
 
 ## <a name="verify-successful-installation"></a>Ověření úspěšné instalace
 
-Pokud jste použili kroky **Ruční konfigurace** v předchozí části, modul runtime IoT Edge by měl být na vašem zařízení úspěšně zřízený a spuštěný. Pokud jste použili kroky pro **automatické konfigurace** , budete muset provést některé další kroky, aby modul runtime mohl vaše zařízení zaregistrovat vaším jménem vaší služby IoT Hub. Další postup najdete v tématu [Vytvoření a zřízení simulovaného zařízení TPM IoT Edge na virtuálním počítači se systémem Linux](how-to-auto-provision-simulated-device-linux.md#give-iot-edge-access-to-the-tpm).
+Pokud jste použili **ruční kroky konfigurace** v předchozí části, runtime IoT Edge by měl být úspěšně zřízena a běží na vašem zařízení. Pokud jste **použili** kroky automatické konfigurace, pak je třeba provést některé další kroky, aby runtime můžete zaregistrovat vaše zařízení s centrem IoT vaším jménem. Další kroky najdete v [tématu Vytvoření a zřízení simulovaného zařízení TPM IoT Edge na virtuálním počítači s Linuxem](how-to-auto-provision-simulated-device-linux.md#give-iot-edge-access-to-the-tpm).
 
-Můžete kontrolovat stav procesu démona IoT Edge:
+Můžete zkontrolovat stav daemonu IoT Edge:
 
 ```bash
 systemctl status iotedge
 ```
 
-Kontrola protokolů démona:
+Zkontrolujte protokoly daemonů:
 
 ```bash
 journalctl -u iotedge --no-pager --no-full
 ```
 
-Spusťte automatizovanou kontrolu nejběžnějších chyb konfigurace a sítě:
+Spusťte automatickou kontrolu nejčastějších chyb konfigurace a sítě:
 
 ```bash
 sudo iotedge check
 ```
 
-Až nasadíte svůj první modul, abyste IoT Edgei na zařízení, modul **$edgeHub** systému nebude na zařízení nasazený. V důsledku toho automatizovaná kontroly vrátí chybu pro kontrolu připojení `Edge Hub can bind to ports on host`. Tuto chybu je možné ignorovat, pokud se neobjeví po nasazení modulu do zařízení.
+Dokud nenasadíte první modul do ioT Edge na vašem zařízení, **$edgeHub** systémový modul se do zařízení nenasadí. V důsledku toho automatická kontrola vrátí chybu `Edge Hub can bind to ports on host` pro kontrolu připojení. Tato chyba může být ignorována, pokud k ní dojde po nasazení modulu do zařízení.
 
 Nakonec seznam spuštěných modulů:
 
@@ -277,19 +298,19 @@ Nakonec seznam spuštěných modulů:
 sudo iotedge list
 ```
 
-Jediným modulem, který by měl být spuštěný, je po instalaci IoT Edge na zařízení **edgeAgent**. Po vytvoření prvního nasazení se v zařízení spustí i jiný systémový modul **$edgeHub** . Další informace najdete v tématu [nasazení IoT Edgech modulů](how-to-deploy-modules-portal.md).
+Po instalaci IoT Edge na vašem zařízení, jediný modul, který byste měli vidět běží je **edgeAgent**. Po vytvoření prvního nasazení se v zařízení spustí také další modul systému **$edgeHub.** Další informace naleznete v [tématu nasazení modulů IoT Edge](how-to-deploy-modules-portal.md).
 
 ## <a name="tips-and-troubleshooting"></a>Tipy a řešení potíží
 
-Ke spouštění příkazů `iotedge` potřebujete zvýšená oprávnění. Po instalaci modulu runtime, odhlaste se z vašeho počítače a znovu se přihlaste automaticky aktualizovat vaše oprávnění. Do té doby použijte **sudo** před jakýmkoli `iotedge` příkazů.
+Ke spouštění příkazů `iotedge` potřebujete zvýšená oprávnění. Po instalaci runtime se odhlaste od počítače a znovu se přihlaste a automaticky aktualizujte svá oprávnění. Do té doby, použijte **sudo** před všemi `iotedge` příkazy.
 
-U zařízení s omezeným prostředkem se důrazně doporučuje nastavit proměnnou prostředí *OptimizeForPerformance* na *hodnotu false* podle pokynů v [Průvodci odstraňováním potíží](troubleshoot.md).
+Na zařízeních s omezenými prostředky důrazně doporučujeme nastavit proměnnou prostředí *OptimizeForPerformance* na *hodnotu false* podle pokynů v [průvodci odstraňováním potíží](troubleshoot.md).
 
-Pokud vaše síť obsahuje proxy server, postupujte podle kroků v části [Konfigurace zařízení IoT Edge pro komunikaci prostřednictvím proxy server](how-to-configure-proxy-support.md).
+Pokud vaše síť, která má proxy server, postupujte podle pokynů v [části Konfigurace zařízení IoT Edge pro komunikaci prostřednictvím proxy serveru](how-to-configure-proxy-support.md).
 
-### <a name="verify-your-linux-kernel-for-moby-compatibility"></a>Ověření kompatibility se systémem Linux v jádře Moby
+### <a name="verify-your-linux-kernel-for-moby-compatibility"></a>Ověření kompatibility linuxového jádra moby
 
-Řada integrovaných výrobců zařízení dodává obrázky zařízení, které obsahují vlastní jádra systému Linux bez funkcí požadovaných pro kompatibilitu s modulem runtime kontejneru. Pokud narazíte na problémy při instalaci doporučeného modulu runtime Moby Container, možná budete moci vyřešit potíže s konfigurací jádra pro Linux pomocí skriptu [check-config](https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh) z oficiálního [úložiště GitHub Moby](https://github.com/moby/moby). Spuštěním následujících příkazů na zařízení ověřte konfiguraci jádra:
+Mnoho výrobců vestavěných zařízení doručuje imitace zařízení, které obsahují vlastní jádra Linuxu bez funkcí požadovaných pro kompatibilitu kontejnerového modulu runtime. Pokud při instalaci doporučeného modulu runtime kontejneru Moby narazíte na problémy, můžete vyřešit potíže s konfigurací jádra Linuxu pomocí skriptu [check-config](https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh) z oficiálního [úložiště Moby GitHub](https://github.com/moby/moby). Spusťte v zařízení následující příkazy a zkontrolujte konfiguraci jádra:
 
    ```bash
    curl -sSL https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh -o check-config.sh
@@ -297,11 +318,11 @@ Pokud vaše síť obsahuje proxy server, postupujte podle kroků v části [Konf
    ./check-config.sh
    ```
 
-Tento příkaz poskytuje podrobný výstup, který obsahuje stav funkcí jádra používaných modulem runtime Moby. Budete chtít zajistit, aby všechny položky v části `Generally Necessary` a `Network Drivers` byly povoleny, aby bylo zajištěno, že je jádro plně kompatibilní s modulem runtime Moby.  Pokud jste identifikovali chybějící funkce, povolte je opětovným sestavením jádra ze zdroje a výběrem přidružených modulů pro zahrnutí do příslušného souboru kernel. config.  Podobně pokud používáte generátor konfigurace jádra, jako je defconfig nebo menuconfig, najděte a povolte příslušné funkce a odpovídajícím způsobem Sestavte jádro.  Po nasazení nově upraveného jádra spusťte skript check-config znovu, abyste ověřili, že všechny požadované funkce byly úspěšně povoleny.
+Tento příkaz poskytuje podrobný výstup, který obsahuje stav funkcí jádra, které jsou používány modulem Runtime Moby. Budete chtít zajistit, aby `Generally Necessary` všechny `Network Drivers` položky pod a jsou povoleny, aby zajistily, že vaše jádro je plně kompatibilní s runtime Moby.  Pokud jste identifikovali chybějící funkce, povolte je opětovným sestavením jádra ze zdroje a výběrem přidružených modulů pro zařazení do příslušného jádra .config.  Podobně, pokud používáte generátor konfigurace `defconfig` jádra, jako je nebo `menuconfig`, najít a povolit příslušné funkce a obnovit jádro odpovídajícím způsobem.  Po nasazení nově upraveného jádra znovu spusťte skript check-config a ověřte, zda byly úspěšně povoleny všechny požadované funkce.
 
-## <a name="uninstall-iot-edge"></a>Odinstalace IoT Edge
+## <a name="uninstall-iot-edge"></a>Odinstalace ioT edge
 
-Pokud chcete odebrat instalaci IoT Edge ze zařízení se systémem Linux, použijte následující příkazy z příkazového řádku.
+Pokud chcete odebrat instalaci IoT Edge ze zařízení s Linuxem, použijte následující příkazy z příkazového řádku.
 
 Odeberte modul runtime IoT Edge.
 
@@ -309,19 +330,19 @@ Odeberte modul runtime IoT Edge.
 sudo apt-get remove --purge iotedge
 ```
 
-Po odebrání IoT Edge modulu runtime dojde k zastavení kontejnerů, které vytvořili, ale stále existují na vašem zařízení. Zobrazením všech kontejnerů zjistíte, které z nich zůstanou.
+Po odebrání runtime IoT Edge kontejnery, které vytvořil, jsou zastaveny, ale stále existují na vašem zařízení. Zobrazit všechny kontejnery vidět, které z nich zůstávají.
 
 ```bash
 sudo docker ps -a
 ```
 
-Odstraňte kontejnery ze zařízení včetně dvou kontejnerů modulu runtime.
+Odstraňte kontejnery ze zařízení, včetně dvou kontejnerů runtime.
 
 ```bash
 sudo docker rm -f <container name>
 ```
 
-Nakonec odeberte modul runtime kontejneru z vašeho zařízení.
+Nakonec odeberte za běhu kontejneru ze zařízení.
 
 ```bash
 sudo apt-get remove --purge moby-cli
@@ -330,8 +351,8 @@ sudo apt-get remove --purge moby-engine
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když máte nainstalovanou IoT Edge zařízení s nainstalovaným modulem runtime, můžete [nasadit IoT Edge moduly](how-to-deploy-modules-portal.md).
+Teď, když máte zařízení IoT Edge zřízené s nainstalovaným modulem runtime, můžete [nasadit moduly IoT Edge](how-to-deploy-modules-portal.md).
 
-Pokud máte problémy s instalací modulu runtime IoT Edge správně, podívejte se na stránku [Poradce při potížích](troubleshoot.md) .
+Pokud máte problémy s instalací runtime IoT Edge správně, podívejte se na stránku [řešení potíží.](troubleshoot.md)
 
-Chcete-li aktualizovat existující instalaci na nejnovější verzi IoT Edge, přečtěte si téma [aktualizace procesu démona zabezpečení IoT Edge a modulu runtime](how-to-update-iot-edge.md).
+Informace o aktualizaci existující instalace na nejnovější verzi technologie IoT Edge naleznete v [tématu Aktualizace daemonu zabezpečení IoT Edge a runtime](how-to-update-iot-edge.md).

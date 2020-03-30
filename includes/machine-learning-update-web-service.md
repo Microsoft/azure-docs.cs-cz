@@ -2,25 +2,25 @@
 author: Blackmist
 ms.service: machine-learning
 ms.topic: include
-ms.date: 01/10/2019
+ms.date: 03/16/2020
 ms.author: larryfr
-ms.openlocfilehash: 469d87a828df19ca30260cada9dcea43859be9e0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: d36bf2db05113656a77e76ff900d95910f313c73
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75901732"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477251"
 ---
-Chcete-li aktualizovat webovou službu, použijte metodu `update`. Webovou službu můžete aktualizovat tak, aby používala nový model, nový vstupní skript nebo nové závislosti, které lze zadat v konfiguraci odvození. Další informace najdete v dokumentaci ke službě [WebService. Update](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#update--args-).
+Chcete-li aktualizovat webovou `update` službu, použijte metodu. Můžete aktualizovat webovou službu tak, aby používala nový model, nový vstupní skript nebo nové závislosti, které lze zadat v konfiguraci odvození. Další informace naleznete v dokumentaci k [webu Webservice.update](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#update--args-).
 
 > [!IMPORTANT]
-> Když vytváříte novou verzi modelu, je nutné ručně aktualizovat každou službu, kterou chcete použít.
+> Při vytváření nové verze modelu je nutné ručně aktualizovat každou službu, kterou chcete použít.
 >
-> Sadu SDK nemůžete použít k aktualizaci webové služby publikované z návrháře Azure Machine Learning.
+> Sadu SDK nelze použít k aktualizaci webové služby publikované z návrháře Azure Machine Learning.
 
-**Používání sady SDK**
+**Použití sady SDK**
 
-Následující kód ukazuje, jak použít sadu SDK k aktualizaci modelu, prostředí a vstupního skriptu pro webovou službu:
+Následující kód ukazuje, jak pomocí sady SDK aktualizovat model, prostředí a vstupní skript pro webovou službu:
 
 ```python
 from azureml.core import Environment
@@ -51,9 +51,9 @@ print(service.state)
 print(service.get_logs())
 ```
 
-**Použití rozhraní příkazového řádku**
+**Použití cli**
 
-Webovou službu můžete také aktualizovat pomocí rozhraní příkazového řádku ML. Následující příklad ukazuje registraci nového modelu a následné aktualizaci webové služby na použití nového modelu:
+Můžete také aktualizovat webovou službu pomocí cli ML. Následující příklad ukazuje registraci nového modelu a aktualizaci webové služby tak, aby používala nový model:
 
 ```azurecli
 az ml model register -n sklearn_mnist  --asset-path outputs/sklearn_mnist_model.pkl  --experiment-name myexperiment --output-metadata-file modelinfo.json
@@ -61,8 +61,8 @@ az ml service update -n myservice --model-metadata-file modelinfo.json
 ```
 
 > [!TIP]
-> V tomto příkladu se k předání informací o modelu z příkazu k registraci do příkazu Update používá dokument JSON.
+> V tomto příkladu se dokument JSON používá k předání informací o modelu z příkazu registrace do příkazu update.
 >
-> Chcete-li aktualizovat službu tak, aby používala nový skriptovací skript nebo prostředí, vytvořte [konfigurační soubor odvození](/azure/machine-learning/service/reference-azure-machine-learning-cli#inference-configuration-schema) a zadejte jej pomocí parametru `ic`.
+> Chcete-li službu aktualizovat tak, aby používala nový vstupní skript nebo `ic` prostředí, [vytvořte konfigurační soubor odvození](/azure/machine-learning/service/reference-azure-machine-learning-cli#inference-configuration-schema) a zadejte jej pomocí parametru.
 
-Další informace najdete v dokumentaci [AZ ml Service Update](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-update) .
+Další informace naleznete v dokumentaci k [aktualizaci služby az ml.](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-update)

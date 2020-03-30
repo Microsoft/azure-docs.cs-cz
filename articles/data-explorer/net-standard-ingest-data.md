@@ -1,6 +1,6 @@
 ---
-title: Ingestování dat pomocí sady Azure Průzkumník dat .NET Standard SDK (Preview)
-description: V tomto článku se dozvíte, jak pomocí sady .NET Standard SDK ingestovat (načítat) data do Azure Průzkumník dat.
+title: Ingestování dat pomocí Azure Data Explorer .NET Standard SDK (Preview)
+description: V tomto článku se dozvíte, jak ingestovat (načíst) data do Průzkumníka dat Azure pomocí .NET Standard SDK.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,21 +8,21 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 9b6eda60f0b0cb1b697560cccc2cffe719d58536
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251775"
 ---
-# <a name="ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Ingestování dat pomocí sady Azure Průzkumník dat .NET Standard SDK (Preview)
+# <a name="ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Ingestování dat pomocí azure data exploreru .NET Standard SDK (Preview)
 
-Azure Průzkumník dat (ADX) je rychlá a vysoce škálovatelná služba pro zkoumání dat pro data protokolů a telemetrie. ADX poskytuje dvě klientské knihovny pro .NET Standard: [knihovnu](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard) ingest a [knihovnu dat](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard). Tyto knihovny umožňují snadno ingestovat (načíst) data do clusteru a dotazovat se na data z vašeho kódu. V tomto článku vytvoříte nejprve tabulku a mapování dat v testovacím clusteru. Potom do fronty zařadíte ingestování do clusteru a ověříte výsledky.
+Azure Data Explorer (ADX) je rychlá a vysoce škálovatelná služba pro zkoumání dat pro data protokolu a telemetrie. ADX poskytuje dvě klientské knihovny pro rozhraní .NET Standard: [knihovnu ingestování](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard) a [knihovnu dat](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard). Tyto knihovny umožňují snadno ingestovat (načíst) data do clusteru a dotazovat se na data z vašeho kódu. V tomto článku nejprve vytvoříte mapování tabulky a dat v testovacím clusteru. Potom fronty ingestování do clusteru a ověřit výsledky.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
-* [Testovací cluster a databáze](create-cluster-database-portal.md)
+* [Testovací cluster a databázi](create-cluster-database-portal.md)
 
 ## <a name="install-the-ingest-library"></a>Instalace knihovny ingestování
 
@@ -32,7 +32,7 @@ Install-Package Microsoft.Azure.Kusto.Ingest.NETStandard
 
 ## <a name="authentication"></a>Ověřování
 
-K ověření aplikace používá Průzkumník dat Azure ID vašeho tenanta AAD. ID tenanta zjistíte pomocí následující adresy URL, ve které *YourDomain* nahradíte svou doménou.
+K ověření aplikace používá Azure Data Explorer ID vašeho tenanta AAD. ID tenanta zjistíte pomocí následující adresy URL, ve které *YourDomain* nahradíte svou doménou.
 
 ```
 https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
@@ -44,9 +44,9 @@ Pokud je vaše doména například *contoso.com*, je adresa URL [https://login.w
 "authorization_endpoint":"https://login.windows.net/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
 ```
 
-V tomto případě je ID tenanta `6babcaad-604b-40ac-a9d7-9fd97c0b779f`.
+ID tenanta je v tomto případě `6babcaad-604b-40ac-a9d7-9fd97c0b779f`.
 
-V tomto příkladu se k přístupu ke clusteru používá uživatel a heslo AAD pro ověřování. Můžete také použít certifikát aplikace AAD a klíč aplikace AAD. Před spuštěním tohoto kódu nastavte hodnoty pro `tenantId`, `user`a `password`.
+Tento příklad používá pro přístup ke clusteru uživatele a heslo a heslo AAD pro ověřování. Můžete také použít certifikát aplikace AAD a klíč aplikace AAD. Před spuštěním `tenantId`tohoto `user`kódu `password` nastavte hodnoty pro položku , a před spuštěním tohoto kódu.
 
 ```csharp
 var tenantId = "<TenantId>";
@@ -54,7 +54,7 @@ var user = "<User>";
 var password = "<Password>";
 ```
 
-## <a name="construct-the-connection-string"></a>Vytvoření připojovacího řetězce
+## <a name="construct-the-connection-string"></a>Konstrukce připojovacího řetězce
 Teď sestavte připojovací řetězec. Cílovou tabulku a mapování vytvoříte v pozdějším kroku.
 
 ```csharp
@@ -74,14 +74,14 @@ var kustoConnectionStringBuilder =
 
 ## <a name="set-source-file-information"></a>Nastavení informací o zdrojovém souboru
 
-Nastavte cestu ke zdrojovému souboru. Tento příklad používá ukázkový soubor hostovaný v Azure Blob Storage. Ukázková datová sada **StormEvents** obsahuje data týkající se počasí od [National Centers for Environmental Information](https://www.ncdc.noaa.gov/stormevents/).
+Nastavte cestu pro zdrojový soubor. Tento příklad používá ukázkový soubor hostovaný v Azure Blob Storage. Ukázková datová sada **StormEvents** obsahuje data týkající se počasí od [National Centers for Environmental Information](https://www.ncdc.noaa.gov/stormevents/).
 
 ```csharp
 var blobPath = "https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
 ```
 
 ## <a name="create-a-table-on-your-test-cluster"></a>Vytvoření tabulky v testovacím clusteru
-Vytvořte tabulku s názvem `StormEvents`, která odpovídá schématu dat v souboru `StormEvents.csv`.
+Vytvořte tabulku `StormEvents` s názvem, která odpovídá schématu `StormEvents.csv` dat v souboru.
 
 ```csharp
 var table = "StormEvents";
@@ -122,8 +122,8 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 
 ## <a name="define-ingestion-mapping"></a>Definování mapování ingestace
 
-Data příchozích sdílených svazků clusteru namapujte na názvy sloupců používané při vytváření tabulky.
-Zřízení [objektu mapování sloupců sdíleného svazku clusteru](/azure/kusto/management/create-ingestion-mapping-command) v této tabulce
+Namapujte příchozí data CSV na názvy sloupců použité při vytváření tabulky.
+Zřízení [objektu mapování sloupců CSV](/azure/kusto/management/create-ingestion-mapping-command) v této tabulce
 
 ```csharp
 var tableMapping = "StormEvents_CSV_Mapping";
@@ -165,7 +165,7 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 
 ## <a name="queue-a-message-for-ingestion"></a>Přidání zprávy do fronty pro ingestaci
 
-Zařadí zprávu do fronty pro vyžádání dat z úložiště objektů BLOB a ingestování těchto dat do ADX.
+Zařaďte zprávu do fronty, která má vyžádat data z úložiště objektů blob a tato data ingestovat do adxu.
 
 ```csharp
 var ingestUri = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/";
@@ -193,9 +193,9 @@ using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestConn
 }
 ```
 
-## <a name="validate-data-was-ingested-into-the-table"></a>Ověření dat bylo ingestované do tabulky.
+## <a name="validate-data-was-ingested-into-the-table"></a>Ověření dat bylo ingestováno do tabulky.
 
-Počkejte pět až deset minut, než se ingestuje do fronty, aby se naplánovala příjem a načetla se data do ADX. Pak spuštěním následujícího kódu získejte počet záznamů v tabulce `StormEvents`.
+Počkejte pět až deset minut pro intence ve frontě naplánovat ingest a načíst data do ADX. Pak spuštěním následujícího kódu získejte počet záznamů v tabulce `StormEvents`.
 
 ```csharp
 using (var cslQueryProvider = KustoClientFactory.CreateCslQueryProvider(kustoConnectionStringBuilder))
@@ -209,7 +209,7 @@ using (var cslQueryProvider = KustoClientFactory.CreateCslQueryProvider(kustoCon
 
 ## <a name="run-troubleshooting-queries"></a>Spuštění dotazů pro řešení potíží
 
-Přihlaste se k [https://dataexplorer.azure.com](https://dataexplorer.azure.com) a připojte se k vašemu clusteru. Spuštěním následujícího příkazu ve vaší databázi zjistíte, jestli za poslední čtyři hodiny došlo k chybám ingestování. Přes spuštěním nahraďte název databáze.
+Přihlaste [https://dataexplorer.azure.com](https://dataexplorer.azure.com) se ke clusteru a připojte se ke svému clusteru. Spuštěním následujícího příkazu ve vaší databázi zjistíte, jestli za poslední čtyři hodiny došlo k chybám ingestování. Přes spuštěním nahraďte název databáze.
 
 ```Kusto
 .show ingestion failures
@@ -226,7 +226,7 @@ Spuštěním následujícího příkazu zobrazíte stav všech operací ingestac
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud plánujete postupovat podle našich dalších článků, ponechejte prostředky, které jste vytvořili. Pokud ne, spuštěním následujícího příkazu v databázi tabulku `StormEvents` vyčistěte.
+Pokud máte v plánu sledovat naše další články, uchovávejte zdroje, které jste vytvořili. Pokud ne, spuštěním následujícího příkazu v databázi tabulku `StormEvents` vyčistěte.
 
 ```Kusto
 .drop table StormEvents

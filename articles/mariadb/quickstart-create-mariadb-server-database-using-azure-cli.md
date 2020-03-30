@@ -1,29 +1,29 @@
 ---
-title: 'Rychlý Start: vytvoření serveru – Azure CLI – Azure Database for MariaDB'
+title: 'Úvodní příručka: Vytvoření serveru – Azure CLI – Azure Database for MariaDB'
 description: Tento rychlý start popisuje, jak použít Azure CLI k vytvoření serveru Azure Database for MariaDB ve skupině prostředků Azure.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 12/02/2019
+ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: 5cfdcf2664871849d4488be4320f6aa03e296ce7
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: f83af794a179634b9b6b7adedd329ea6f4a7b8d0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770029"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79536458"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Vytvoření serveru Azure Database for MariaDB pomocí Azure CLI
 
-Pomocí Azure CLI můžete vytvářet a spravovat prostředky Azure z příkazového řádku nebo ve skriptech. Tento rychlý start popisuje, jak za pět minut vytvořit pomocí Azure CLI server Azure Database for MariaDB ve skupině prostředků Azure. 
+Pomocí Azure CLI můžete vytvářet a spravovat prostředky Azure z příkazového řádku nebo ve skriptech. Tento rychlý start popisuje, jak za pět minut vytvořit pomocí Azure CLI server Azure Database for MariaDB ve skupině prostředků Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet, než začnete.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-Pokud používáte místní instalaci rozhraní příkazového řádku, musíte mít Azure CLI verze 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Pokud používáte místní instalaci rozhraní příkazového řádku, musíte mít Azure CLI verze 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
 Pokud máte více předplatných, zvolte předplatné, které obsahuje prostředek nebo ve kterém se vám prostředek účtuje. Pokud chcete vybrat ID konkrétního předplatného ve vašem účtu, použijte příkaz [az account set](/cli/azure/account#az-account-set):
 
@@ -49,7 +49,7 @@ Nastavení | Ukázková hodnota | Popis
 ---|---|---
 jméno | **mydemoserver** | Zadejte jedinečný název, který identifikuje váš server Azure Database for MariaDB. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí mít 3 až 63 znaků.
 resource-group | **myresourcegroup** | Zadejte název skupiny prostředků Azure.
-sku-name | **GP_Gen5_2** | Název skladové položky. Dodržuje konvenci *cenová úroveň*\_*výpočetní generace*\_*počet virtuálních jader* ve zkráceném zápisu. Další informace o parametru **sku-name** najdete v části pod touto tabulkou.
+sku-name | **GP_Gen5_2** | Název skladové položky. Následuje výpočtové virtuální jádra cenové *úrovně*\_*compute generation*\_konvence v těsnopisu.*vCores* Další informace o parametru **sku-name** najdete v části pod touto tabulkou.
 backup-retention | **7** | Určuje, jak dlouho se mají uchovávat zálohy. Jednotkou jsou dny. Rozsah: 7 až 35. 
 geo-redundant-backup | **Disabled** (Zakázáno) | Určuje, jestli pro tento server mají být povolené geograficky redundantní zálohy. Povolené hodnoty: **Enabled** (Povoleno), **Disabled** (Zakázáno).
 location | **westus** | Lokace Azure pro server.
@@ -60,27 +60,26 @@ admin-user | **myadmin** | Uživatelské jméno pro přihlášení správce. Par
 admin-password | *Vaše heslo* | Heslo uživatele, který je správcem. Vaše heslo musí mít 8 až 128 znaků. Musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice a jiné než alfanumerické znaky.
 
 Hodnota parametru sku-name má formát {cenová_úroveň}\_{výpočetní_generace}\_{počet_virtuálních_jader} jako v následujících příkladech:
-+ `--sku-name B_Gen5_1` se mapuje na Basic, Gen 5 a 1 vCore. Tato možnost je k dispozici nejmenší SKU.
++ `--sku-name B_Gen5_1`mapy na Základní, Gen 5 a 1 virtuální jádro. Tato možnost je nejmenší skladová položka k dispozici.
 + `--sku-name GP_Gen5_32` se mapuje na úroveň pro obecné účely 5. generace se 32 virtuálními jádry.
 + `--sku-name MO_Gen5_2` se mapuje na úroveň optimalizovanou pro paměť 5. generace se 2 virtuálními jádry.
 
 Informace o platných hodnotách pro jednotlivé oblasti a úrovně najdete v tématu [Cenové úrovně](./concepts-pricing-tiers.md).
 
-Následující příklad vytvoří server **mydemoserver** v oblasti Západní USA. Server je ve skupině prostředků **myresourcegroup** a má přihlašovací jméno správce serveru **myadmin**. Jedná se o server 5. generace na cenové úrovni pro obecné účely se 2 virtuálními jádry. Název serveru se mapuje na název DNS a v rámci Azure musí být globálně jedinečný. Nahraďte `<server_admin_password>` vlastním heslem správce serveru.
+Následující příklad vytvoří server **mydemoserver** v oblasti USA – západ. Server je ve skupině prostředků **myresourcegroup** a má přihlašovací jméno správce serveru **myadmin**. Jedná se o server 5. generace na cenové úrovni pro obecné účely se 2 virtuálními jádry. Název serveru se mapuje na název DNS a v rámci Azure musí být globálně jedinečný. Nahraďte `<server_admin_password>` vlastním heslem správce serveru.
 
 ```azurecli-interactive
 az mariadb server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 10.2
 ```
 
 > [!NOTE]
-> Zvažte použití cenové úrovně Basic, pokud je pro vaše zatížení vhodné světlé výpočetní prostředky a vstupně-výstupní operace. Upozorňujeme, že servery vytvořené v cenové úrovni Basic se nedají později škálovat na Pro obecné účely nebo paměťově optimalizované. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/mariadb/) .
-> 
+> Zvažte použití základní cenové úrovně, pokud light compute a V/V jsou dostatečné pro vaše úlohy. Všimněte si, že servery vytvořené v základní cenové vrstvě nelze později škálovat na obecné účely nebo optimalizované pro paměť. Další informace naleznete na [stránce s cenami.](https://azure.microsoft.com/pricing/details/mariadb/)
 
 ## <a name="configure-a-firewall-rule"></a>Konfigurace pravidla brány firewall
 
-Pravidlo brány firewall na úrovni serveru Azure Database for MariaDB vytvoříte pomocí příkazu [az mariadb server firewall-rule create](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create). Pravidlo brány firewall na úrovni serveru umožňuje externí aplikaci, jako je například nástroj pro příkazový řádek mysql nebo MySQL Workbench, aby se k vašemu serveru připojila prostřednictvím brány firewall služby Azure Database for MariaDB. 
+Pravidlo brány firewall na úrovni serveru Azure Database for MariaDB vytvoříte pomocí příkazu [az mariadb server firewall-rule create](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create). Pravidlo brány firewall na úrovni serveru umožňuje externí aplikaci, jako je například nástroj pro příkazový řádek mysql nebo MySQL Workbench, aby se k vašemu serveru připojila prostřednictvím brány firewall služby Azure Database for MariaDB.
 
-Následující příklad vytvoří pravidlo brány firewall `AllowMyIP`, které povolí připojení z konkrétní IP adresy 192.168.0.1. Použijte IP adresu nebo rozsah IP adres odpovídající umístění, ze kterého se připojujete. 
+Následující příklad vytvoří pravidlo brány firewall `AllowMyIP`, které povolí připojení z konkrétní IP adresy 192.168.0.1. Použijte IP adresu nebo rozsah IP adres odpovídající umístění, ze kterého se připojujete.
 
 ```azurecli-interactive
 az mariadb server firewall-rule create --resource-group myresourcegroup --server mydemoserver --name AllowMyIP --start-ip-address 192.168.0.1 --end-ip-address 192.168.0.1
@@ -88,14 +87,13 @@ az mariadb server firewall-rule create --resource-group myresourcegroup --server
 
 > [!NOTE]
 > Připojení ke službě Azure Database for MariaDB komunikují přes port 3306. Pokud se pokoušíte připojit z podnikové sítě, odchozí provoz přes port 3306 nemusí být povolený. V takovém případě se k serveru budete moct připojit pouze v případě, že vaše IT oddělení otevře port 3306.
-> 
 
 ## <a name="configure-ssl-settings"></a>Konfigurace nastavení SSL
 
 Ve výchozím nastavení se připojení SSL mezi serverem a klientskými aplikacemi vynucuje. Toto výchozí nastavení zajišťuje zabezpečení dat „v pohybu“ prostřednictvím šifrování datového proudu přes internet. Pro účely tohoto rychlého startu zakažte u svého serveru připojení SSL. Pro provozní servery se zakázání protokolu SSL nedoporučuje. Další informace najdete v článku o [konfiguraci připojení SSL v aplikaci pro zabezpečené připojení k Azure Database for MariaDB](./howto-configure-ssl.md).
 
 Následující příklad na serveru Azure Database for MariaDB zakáže vynucování SSL:
- 
+
 ```azurecli-interactive
 az mariadb server update --resource-group myresourcegroup --name mydemoserver --ssl-enforcement Disabled
 ```
@@ -156,9 +154,10 @@ Připojení k serveru pomocí nástroje pro příkazový řádek mysql:
    ```sql
    status
    ```
+
    Měl by se zobrazit text podobný následujícímu:
 
-   ```bash
+   ```cmd
    C:\Users\>mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
    Enter password: ***********
    Welcome to the MySQL monitor.  Commands end with ; or \g.
@@ -241,4 +240,4 @@ az mariadb server delete --resource-group myresourcegroup --name mydemoserver
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Návrh databáze MariaDB pomocí Azure CLI](./tutorial-design-database-cli.md)
+> [Návrh databáze MariaDB pomocí rozhraní příkazového příkazu Azure](./tutorial-design-database-cli.md)
