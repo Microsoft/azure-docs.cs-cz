@@ -1,6 +1,6 @@
 ---
-title: Azure Lab Services – příručka pro správce | Microsoft Docs
-description: Tato příručka pomáhá správcům, kteří vytvářejí a spravují účty testovacího prostředí pomocí Azure Lab Services.
+title: Azure Lab Services – průvodce správcem | Dokumenty společnosti Microsoft
+description: Tato příručka pomáhá správcům, kteří vytvářejí a spravují účty testovacího prostředí pomocí služby Azure Lab Services.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -13,235 +13,251 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 318f16df6ac10be5909b255f2f1988be028d0eef
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 8608aaab7bb8b6d10e67f27678c17f20a6c243da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78162416"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80370848"
 ---
-# <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – příručka pro správce
-Správcům informačních technologií (IT), kteří spravují cloudové prostředky vysoké školy, se obvykle zodpovídá za nastavení účtu testovacího prostředí pro svou školu. Po nastavení účtu testovacího prostředí můžou správci nebo pedagogy vytvářet učebny, které jsou obsaženy v rámci účtu testovacího prostředí. Tento článek poskytuje podrobný přehled o prostředcích Azure a pokyny pro jejich vytváření.
+# <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – průvodce správcem
+Správci informačních technologií (IT), kteří spravují cloudové prostředky univerzity, jsou obvykle zodpovědní za nastavení účtu testovacího prostředí pro svou školu. Po nastavení účtu testovacího prostředí správci nebo pedagogové vytvoří testovací prostředí ve třídě, která jsou obsažena v účtu testovacího prostředí. Tento článek poskytuje podrobný přehled o azure prostředků zapojených a pokyny pro jejich vytvoření.
 
 ![Zobrazení prostředků Azure na vysoké úrovni v účtu testovacího prostředí](../media/administrator-guide/high-level-view.png)
 
-- Laboratoře učebny se hostují v rámci předplatného Azure, které vlastní Azure Lab Services.
-- Účty testovacího prostředí, Galerie sdílených imagí a verze imagí se hostují v rámci vašeho předplatného.
-- Můžete mít účet testovacího prostředí a galerii sdílených imagí ve stejné skupině prostředků. V tomto diagramu jsou v různých skupinách prostředků. 
+- Testovací prostředí učebny se hostují v rámci předplatného Azure vlastněného službou Azure Lab Services.
+- Účty testovacího prostředí, galerie sdílených obrázků a verze obrázků jsou hostovány v rámci vašeho předplatného.
+- Svůj účet testovacího prostředí a sdílenou galerii obrázků můžete mít ve stejné skupině prostředků. V tomto diagramu jsou v různých skupinách prostředků. 
 
 ## <a name="subscription"></a>Předplatné
-Vaše univerzita má jedno nebo několik předplatných Azure. Předplatné se používá ke správě fakturace a zabezpečení pro všechny služby Azure resources\services, které se v ní používají, včetně účtů testovacího prostředí.
+Vaše univerzita má jedno nebo více předplatných Azure. Předplatné se používá ke správě fakturace a zabezpečení pro všechny prostředky Azure\služby, které se v něm používají, včetně účtů testovacího prostředí.
 
-Vztah mezi účtem testovacího prostředí a jeho předplatným je důležitý z těchto důvodů:
+Vztah mezi účtem testovacího prostředí a jeho předplatným je důležitý, protože:
 
-- Fakturace se oznamuje prostřednictvím předplatného, které obsahuje účet testovacího prostředí.
-- Uživatelům v Azure Active Directory (AD) daného předplatného můžete udělit přístup k Azure Lab Services. Můžete přidat uživatele jako účet testovacího prostředí owner\contributor, učebnu pro tvorbu testovacího prostředí nebo vlastníka prostředí učebny.
+- Fakturace se hlásí prostřednictvím předplatného, které obsahuje účet testovacího prostředí.
+- Uživatelům v tenantovi Azure Active Directory (AD) můžete uživatelům v tenantovi Azure Active Directory (AD) poskytnout přístup ke službám Azure Lab Services. Můžete přidat uživatele jako vlastníka účtu testovacího prostředí\přispěvatele, tvůrce testovacího prostředí učebny nebo vlastníka testovacího prostředí učebny.
 
-Učebna Labs a jejich virtuální počítače jsou spravované a hostované v rámci předplatného, které vlastní Azure Lab Services.
+Učebna labs a jejich virtuální počítače (VM) jsou spravované a hostované pro vás v rámci předplatného vlastněného Služby Azure Lab Services.
 
 ## <a name="resource-group"></a>Skupina prostředků
-Předplatné obsahuje jednu nebo více skupin prostředků. Skupiny prostředků slouží k vytváření logických seskupení prostředků Azure, které se používají společně v rámci stejného řešení.  
+Předplatné obsahuje jednu nebo více skupin prostředků. Skupiny prostředků se používají k vytvoření logické seskupení prostředků Azure, které se používají společně v rámci stejného řešení.  
 
-Když vytváříte účet testovacího prostředí, musíte nakonfigurovat skupinu prostředků, která obsahuje účet testovacího prostředí. 
+Při vytváření účtu testovacího prostředí je nutné nakonfigurovat skupinu prostředků, která obsahuje účet testovacího prostředí. 
 
-Skupina prostředků se také vyžaduje při vytváření [Galerie sdílených imagí](#shared-image-gallery). Můžete si vybrat účet testovacího prostředí a galerii sdílených imagí do dvou samostatných skupin prostředků, které jsou typické v případě, že plánujete sdílet galerii imagí napříč různými řešeními. Nebo se můžete rozhodnout, že je vložíte do stejné skupiny prostředků.
+Skupina prostředků je vyžadována také při vytváření [sdílené galerie obrázků](#shared-image-gallery). Můžete se rozhodnout umístit svůj účet testovacího prostředí a sdílenou galerii obrázků do dvou samostatných skupin prostředků, což je typické, pokud plánujete sdílet galerii obrázků mezi různými řešeními. Nebo můžete zvolit jejich zařazení do stejné skupiny prostředků.
 
-Když vytváříte účet testovacího prostředí, můžete automaticky vytvořit a připojit galerii sdílených imagí současně.  Tato možnost způsobí, že se účet testovacího prostředí a galerie sdílených imagí vytvoří v samostatných skupinách prostředků. Toto chování se zobrazí při použití kroků popsaných v tomto kurzu: [Konfigurace Galerie sdílených imagí v době vytváření účtu testovacího prostředí](how-to-attach-detach-shared-image-gallery.md#configure-at-the-time-of-lab-account-creation). Obrázek v horní části tohoto článku také používá tuto konfiguraci. 
+Když vytvoříte účet testovacího prostředí, můžete automaticky vytvořit a připojit sdílenou galerii obrázků současně.  Výsledkem této možnosti je vytvoření účtu testovacího prostředí a galerie sdílených obrázků v samostatných skupinách prostředků. Toto chování se zobrazí při použití kroků popsaných v tomto kurzu: [Konfigurace galerie sdílených obrázků v době vytvoření účtu testovacího prostředí](how-to-attach-detach-shared-image-gallery.md#configure-at-the-time-of-lab-account-creation). Obrázek v horní části tohoto článku také používá tuto konfiguraci. 
 
-Doporučujeme, abyste včas investovali do plánu struktury svých skupin prostředků, protože po jejím vytvoření *není* možné změnit skupinu prostředků Galerie sdílených imagí účtu testovacího prostředí. Pokud potřebujete změnit skupinu prostředků pro tyto prostředky, budete muset odstranit a znovu vytvořit účet testovacího prostředí and\or sdílenou image galerie.
+Doporučujeme předem investovat čas na plánování struktury skupin prostředků, protože není *možné* změnit skupinu prostředků účtu testovacího prostředí nebo sdílené galerie obrázků, jakmile je vytvořena. Pokud potřebujete změnit skupinu prostředků pro tyto prostředky, budete muset odstranit a znovu vytvořit účet testovacího prostředí a\nebo sdílenou galerii obrázků.
 
-## <a name="lab-account"></a>Účet testovacího prostředí
-Účet testovacího prostředí slouží jako kontejner pro jednu nebo více cvičení v učebně. Když začnete s Azure Lab Services, je běžné mít jenom jeden účet testovacího prostředí. Když se vaše testovací využití škáluje, můžete se později rozhodnout vytvořit další účty testovacího prostředí.
+## <a name="lab-account"></a>Laboratorní účet
+Laboratorní účet slouží jako kontejner pro jednu nebo více laboratoří ve třídě. Když začínáme se službami Azure Lab Services, je běžné mít jenom jeden účet testovacího prostředí. Jako vaše testovací využití se škáluje, můžete později vytvořit další účty testovacího prostředí.
 
-Následující seznam popisuje scénáře, ve kterých může být výhodné více než jeden účet testovacího prostředí:
+Následující seznam upozorňuje na scénáře, kde může být přínosné více než jeden účet testovacího prostředí:
 
-- **Správa různých požadavků na zásady napříč učebnami Labs** 
+- **Správa různých požadavků na zásady napříč učebnami** 
     
-    Při nastavování účtu testovacího prostředí můžete nastavit zásady, které se vztahují na *všechny* učebny v rámci účtu testovacího prostředí, například:
-    - Virtuální síť Azure se sdílenými prostředky, ke kterým má laboratoř učebny přístup. Můžete mít například sadu učebn Labs, která potřebuje přístup ke sdílené datové sadě v rámci virtuální sítě.
-    - Image virtuálního počítače (VM), které mohou laboratoře v rámci učebny použít k vytvoření virtuálních počítačů. Můžete mít například sadu učebn Labs, která potřebuje přístup k imagi [Data Science VM pro systém Linux](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) Marketplace. 
+    Při nastavovat účet testovacího prostředí nastavíte zásady, které se vztahují na *všechna* testovací prostředí v rámci testovacího účtu, například:
+    - Virtuální síť Azure se sdílenými prostředky, ke kterým má testovací prostředí učebny přístup. Můžete mít například sadu testovacích prostředí ve třídě, které potřebují přístup ke sdílené sadě dat v rámci virtuální sítě.
+    - Image virtuálního počítače (VM), které můžete použít v testovacím prostředí učebny k vytváření virtuálních počítačů. Můžete mít například sadu testovacích prostředí ve třídě, které potřebují přístup k virtuálnímu [počítači datové vědy pro](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) image Linux Marketplace. 
     
-    Pokud máte učebnové laboratoře, které mají od sebe jedinečné požadavky na zásady, může být výhodné vytvořit samostatné účty testovacího prostředí pro správu těchto učebných cvičení samostatně.
+    Pokud máte učebny laboratoře, které mají jedinečné požadavky na zásady od sebe, může být prospěšné vytvořit samostatné laboratorní účty pro správu těchto učebny laboratoře samostatně.
 
-- **Oddělit rozpočet podle účtu testovacího prostředí**
+- **Samostatný rozpočet podle účtu testovacího prostředí**
   
-    Místo vytváření sestav pro všechny náklady na učebnu učebny prostřednictvím jednoho účtu testovacího prostředí může být potřeba více jasně odděleného rozpočtu. Můžete například vytvořit účty testovacího prostředí pro oddělení IT, počítačové vědy a tak dále, abyste mohli rozdělit rozpočet mezi jednotlivá oddělení.  Náklady na jednotlivé účty testovacího prostředí pak můžete zobrazit pomocí [Azure cost management](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview).
+    Místo vykazování všech nákladů na testovací prostředí ve třídě prostřednictvím jednoho účtu testovacího prostředí můžete potřebovat jasněji oddělený rozpočet. Můžete například vytvořit laboratorní účty pro katedru matematiky univerzity, oddělení informatiky a tak dále, abyste rozdělili rozpočet mezi odděleními.  Náklady na jednotlivé testovací prostředí pak můžete zobrazit pomocí [azure cost managementu](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview).
     
-- **Izolace pilotních cvičení z active\production Labs**
+- **Izolovat pilotní laboratoře z aktivních\produkčních laboratoří**
   
-    Můžete mít případy, kdy chcete pilotní pravidla pro účet testovacího prostředí, aniž by to mělo vliv na active\production Labs. V tomto typu scénáře vytvoření samostatného testovacího účtu pro účely pilotního nasazení umožňuje izolovat změny. 
+    Můžete mít případy, kdy chcete pilotní změny zásad pro účet testovacího prostředí bez potenciálního dopadu na aktivní\produkční laboratoře. V tomto typu scénáře vytvoření samostatného účtu testovacího prostředí pro účely pilotního řízení umožňuje izolovat změny. 
 
-## <a name="classroom-lab"></a>Testovací prostředí pro učebnu
-Prostředí učebny obsahuje virtuální počítače (VM), které jsou přiřazeny jednomu studentovi. Obecně můžete očekávat:
+## <a name="classroom-lab"></a>Učebna laboratoř
+Testovací prostředí učebny obsahuje virtuální počítače ,, které jsou přiřazeny jednomu studentovi. Obecně lze očekávat:
 
-- Pro každou třídu máte jednu laboratoř učebny.
-- Vytvořte novou sadu učebn Labs každé pololetí (nebo pro každý časový rámec, který vaše třída nabízí). Typicky pro třídy, které mají stejný obraz, byste měli použít [galerii sdílených imagí](#shared-image-gallery) k opakovanému použití imagí v laboratořích a pololetí.
+- Mít jednu učebnu laboratoř pro každou třídu.
+- Vytvořte novou sadu učebních laboratoří každý semestr (nebo pro každý časový rámec, který je nabízen vaší třídě). Obvykle pro třídy, které mají stejné potřeby obrázku, měli byste použít [sdílenou galerii obrázků](#shared-image-gallery) k opakovanému použití obrázků v testovacích prostředích a semestrech.
 
-Při určování způsobu strukturování cvičení v učebně Vezměte v úvahu následující body:
+Při určování struktury učebních laboratoří zvažte následující body:
 
-- **Všechny virtuální počítače v rámci prostředí učebny se nasazují pomocí stejné image, která je publikovaná**. 
+- **Všechny virtuální virtuální mích v učebně lab jsou nasazené se stejným obrázkem, který je publikovaný**
 
-    V důsledku toho, pokud máte třídu, která vyžaduje, aby byly současně publikovány jiné image testovacího prostředí, je nutné pro každou z nich vytvořit samostatné laboratoře učeben.
+    V důsledku toho pokud máte třídu, která vyžaduje, aby byly současně publikovány různé bitové kopie testovacího prostředí, musí být pro každou z nich vytvořena samostatná testovací prostředí třídy.
   
-- **Kvóta využití je nastavená na úrovni testovacího prostředí a platí pro všechny uživatele v rámci testovacího prostředí**. 
+- **Kvóta využití je nastavena na úrovni testovacího prostředí a vztahuje se na všechny uživatele v rámci testovacího prostředí.**
     
-    Chcete-li pro uživatele nastavit různé kvóty, je nutné vytvořit samostatnou laboratoři učeben. Po nastavení kvóty je však možné přidat další hodiny ke konkrétnímu uživateli.
+    Chcete-li nastavit různé kvóty pro uživatele, musíte vytvořit samostatná testovací prostředí učebny. Po nastavení kvóty je však možné přidat další hodiny konkrétnímu uživateli.
   
-- **Plán spuštění nebo vypnutí se nastaví na úrovni testovacího prostředí a vztahuje se na všechny virtuální počítače v testovacím prostředí**. 
+- **Plán spuštění nebo vypnutí je nastavený na úrovni testovacího prostředí a platí pro všechny virtuální počítače v testovacím prostředí.**
 
-    Podobně jako u předchozího bodu, pokud potřebujete nastavit různé plány pro uživatele, je nutné vytvořit samostatnou laboratoř pro učebnu. 
+    Podobně jako předchozí bod, pokud potřebujete nastavit různé plány pro uživatele, musíte vytvořit samostatné učebny. 
 
-## <a name="shared-image-gallery"></a>Galerie sdílených imagí
-Galerie sdílených imagí je připojená k účtu testovacího prostředí a slouží jako centrální úložiště pro ukládání imagí. Obrázek se uloží do galerie, když se Educator rozhodne exportovat z virtuálního počítače šablony laboratoře pro učebnu. Pokaždé, když Educator provede změny pro virtuální počítač šablony a export, ukládají se nové verze image při zachování předchozích verzí.
+## <a name="shared-image-gallery"></a>Sdílená galerie obrázků
+Sdílená galerie obrázků je připojena k účtu testovacího prostředí a slouží jako centrální úložiště pro ukládání obrázků. Obrázek se uloží do galerie, když se pedagog rozhodne exportovat z virtuálního počítače šablony učebny v laboratoři. Pokaždé, když pedagog provede změny virtuálního počítače šablony a exportuje, nové verze image se uloží při zachování předchozích verzí.
 
-Instruktoři můžou publikovat verzi image z Galerie sdílených imagí při vytváření nového testovacího prostředí pro učebnu. I když galerie může ukládat více verzí obrazu, můžou učitelé při vytváření testovacího prostředí vybrat jenom nejnovější verzi.
+Instruktoři mohou publikovat verzi obrázku ze sdílené galerie obrázků při vytváření nové laboratoře pro učebny. Přestože galerie může uložit více verzí obrázku, pedagogové mohou vybrat pouze nejnovější verzi během vytváření testovacího prostředí.
 
-Galerie sdílených imagí je volitelný prostředek, který možná nebudete potřebovat hned při spuštění jenom v několika laboratořích pro učebnu. Díky galerii sdílených imagí ale máte spoustu výhod, které jsou užitečné při škálování pro více učebných cvičení:
+Sdílená galerie obrázků je volitelný prostředek, který nemusíte potřebovat okamžitě, když začínáte pouze s několika učebnami. Použití sdílené galerie obrázků však přináší mnoho výhod, které jsou užitečné při škálování na další laboratoře ve třídě:
 
-- **Umožňuje ukládat a spravovat verze image virtuálního počítače šablony**.
+- **Umožňuje ukládat a spravovat verze bitové kopie virtuálního počítače šablony.**
 
-    Je vhodné vytvořit vlastní image nebo provést změny (software, konfigurace atd.) z Galerie veřejné služby Marketplace.  Například je běžné, že pedagogy vyžadují, aby se nainstalovaly různé software\tooling. Místo toho, aby se studenti nemuseli ručně nainstalovat tyto požadavky na vlastní, je možné exportovat různé verze image virtuálních počítačů do galerie sdílených imagí. Tyto verze image se pak dají použít při vytváření nových prostředí pro učebnu Labs.
-- **Povoluje sharing\reuse imagí šablon virtuálních počítačů napříč učebn Labs**.
+    Je užitečné vytvořit vlastní obrázek nebo provést změny (software, konfigurace a tak dále) na obrázek z veřejné galerie Marketplace.  Je například běžné, že pedagogové vyžadují instalaci jiného softwaru a nástrojů. Místo toho, aby studenti museli ručně nainstalovat tyto předpoklady sami, lze do sdílené galerie obrázků exportovat různé verze image virtuálního počítače šablony. Tyto verze obrázků pak lze použít při vytváření nových učebních laboratoří.
+- **Umožňuje sdílení\opakované použití bitových kopií virtuálních počítačů šablony v laboratořích učebny.**
 
-    Image můžete uložit a znovu použít, abyste nemuseli konfigurovat Image od začátku pokaždé, když vytvoříte novou laboratoř pro učebnu. Pokud je například nabízeno více tříd, které potřebují stejný obrázek, je nutné tento obrázek vytvořit pouze jednou a exportovat do galerie sdílených imagí, aby jej bylo možné sdílet v rámci učebn Labs.
-- **Zajišťuje dostupnost obrazu prostřednictvím replikace**.
+    Bitovou kopii můžete uložit a znovu použít, abyste ji nemuseli konfigurovat od začátku při každém vytvoření nové ho testovacího prostředí ve třídě. Pokud je například nabízeno více tříd, které potřebují stejný obrázek, je třeba tento obrázek vytvořit pouze jednou a exportovat do sdílené galerie obrázků, aby mohl být sdílen mezi laboratořemi učebny.
+- **Zajišťuje dostupnost bitové kopie prostřednictvím replikace.**
 
-    Když ukládáte do galerie sdílených imagí z prostředí učebny, vaše image se automaticky replikuje do jiných [oblastí ve stejné zeměpisné oblasti](https://azure.microsoft.com/global-infrastructure/regions/). V případě, že dojde k výpadku oblasti, publikování image do vašeho testovacího prostředí není ovlivněno, protože je možné použít repliku obrázků z jiné oblasti.  Publikování virtuálních počítačů z více replik může také pomáhat s výkonem.
+    Když uložíte do sdílené galerie obrázků z učebny, obrázek se automaticky replikuje do jiných [oblastí v rámci stejné zeměpisné oblasti](https://azure.microsoft.com/global-infrastructure/regions/). V případě výpadku oblasti není publikování obrázku do testovacího prostředí učebny ovlivněno, protože lze použít repliku obrázku z jiné oblasti.  Publikování virtuálních počítačů z více replik může také pomoci s výkonem.
 
-Pro logickou skupinu sdílených imagí máte několik možností:
+Chcete-li logicky seskupit sdílené obrázky, máte několik možností:
 
-- Vytvořte několik galerií sdílených imagí. Každý účet testovacího prostředí se může připojit jenom k jedné galerii sdílených imagí, takže tato možnost taky vyžaduje vytvoření více účtů testovacího prostředí.
-- Nebo můžete použít jednu galerii sdílených imagí, která je sdílená více účty testovacího prostředí. V takovém případě každý účet testovacího prostředí může povolit pouze image, které se vztahují na učebny, které obsahuje.
+- Vytvořte více sdílených galerií obrázků. Každý účet testovacího prostředí se může připojit pouze k jedné galerii sdílených obrázků, takže tato možnost bude také vyžadovat vytvoření více účtů testovacího prostředí.
+- Nebo můžete použít jednu sdílenou galerii obrázků, která je sdílená více účty testovacího prostředí. V takovém případě může každý účet testovacího prostředí povolit pouze ty obrázky, které se vztahují k laboratořím učebny, které obsahuje.
 
 ## <a name="naming"></a>Pojmenování
-Po zahájení práce s Azure Lab Services doporučujeme zřídit zásady vytváření názvů pro skupiny prostředků, účty testovacího prostředí, laboratoře v učebně a galerii sdílených imagí. Zásady pojmenování, které vytvoříte, budou jedinečné pro potřeby vaší organizace. v následující tabulce jsou uvedeny obecné pokyny.
+Když začnete pracovat se službami Azure Lab Services, doporučujeme vytvořit konvence pojmenování pro skupiny prostředků, účty testovacího prostředí, testovací prostředí v učebnách a sdílenou galerii bitové kopie. Zatímco konvence pojmenování, které vytvoříte, budou jedinečné pro potřeby vaší organizace, v následující tabulce jsou uvedeny obecné pokyny.
 
 | Typ prostředku | Role | Navrhovaný vzor | Příklady |
 | ------------- | ---- | ----------------- | -------- | 
-| Skupina prostředků | Obsahuje jeden nebo víc účtů testovacího prostředí a jednu nebo víc galerií sdílených imagí. | \<zkrácený název organizace\>-prostředí \<\>– RG<ul><li>**Zkrácený název organizace** Určuje název organizace, kterou skupina prostředků podporuje.</li><li>**Prostředí** identifikuje prostředí pro daný prostředek, jako je pilotní nebo produkční.</li><li>**RG** představuje typ prostředku: Skupina prostředků.</li></ul> | contosouniversitylabs – RG<br/>contosouniversitylabs-pilot – RG<br/>contosouniversitylabs-prod-RG |
-| Účet testovacího prostředí | Obsahuje jednu nebo více cvičení | \<zkrácený název organizace\>-prostředí \<\>-La<ul><li>**Zkrácený název organizace** Určuje název organizace, kterou skupina prostředků podporuje.</li><li>**Prostředí** identifikuje prostředí pro daný prostředek, jako je pilotní nebo produkční.</li><li>**La** představuje typ prostředku: účet testovacího prostředí.</li></ul> | contosouniversitylabs – La<br/>mathdeptlabs – La<br/>sciencedeptlabs-pilot – La<br/>sciencedeptlabs-prod-La |
-| Testovací prostředí pro učebnu | Obsahuje jeden nebo víc virtuálních počítačů. |název třídy \<\>-\<časový rámec\>-\<identifikátor Educator\><ul><li>**Název třídy** identifikuje název třídy, kterou testovací prostředí podporuje.</li><li>**Časový rámec** identifikuje časový rámec, ve kterém je třída nabízena.</li>**Identifikátor vzdělávání** identifikuje Educator, který vlastní testovací prostředí.</li></ul> | CS1234-fall2019-johndoe<br/>CS1234-spring2019-johndoe | 
-| Galerie sdílených imagí | Obsahuje jednu nebo více verzí imagí virtuálních počítačů. | \>Galerie \<krátký název organizace | contosouniversitylabsgallery |
+| Skupina prostředků | Obsahuje jeden nebo více laboratorních účtů a jednu nebo více sdílených galerií obrázků. | \<prostředí s\>-\<\>krátkým názvem organizace -rg<ul><li>**Zkrácený název organizace** označuje název organizace, kterou skupina prostředků podporuje.</li><li>**Prostředí** identifikuje prostředí pro zdroj, například Pilot nebo Production</li><li>**Rg** je zkratka pro typ prostředku: skupina prostředků.</li></ul> | contosouniversitylabs-rg<br/>contosouniversitylabs-pilot-rg<br/>contosouniversitylabs-prod-rg |
+| Laboratorní účet | Obsahuje jednu nebo více laboratoří. | \<organizace krátký\>-\<\>název prostředí -la<ul><li>**Zkrácený název organizace** označuje název organizace, kterou skupina prostředků podporuje.</li><li>**Prostředí** identifikuje prostředí pro zdroj, například Pilot nebo Production</li><li>**La** je zkratka pro typ prostředku: laboratorní účet.</li></ul> | contosouniversitylabs-la<br/>mathdeptlabs-la<br/>sciencedeptlabs-pilot-la<br/>sciencedeptlabs-prod-la |
+| Učebna laboratoř | Obsahuje jeden nebo více virtuálních mích. |\<identifikátor\>-\<pedagoga\>-\<časového rámce názvu třídy\><ul><li>**Název třídy** identifikuje název třídy, kterou testovací prostředí podporuje.</li><li>**Časový rámec** určuje časový rámec, ve kterém je třída nabízena.</li>**Identifikátor vzdělání** identifikuje pedagoga, který laboratoř vlastní.</li></ul> | CS1234-podzim2019-johndoe<br/>CS1234-jaro2019-johndoe | 
+| Sdílená galerie obrázků | Obsahuje jednu nebo více verzí bitové kopie virtuálního aplikace. | \<organizace krátký\>název galerie | contosouniversitylabsgallery |
 
-Další informace o pojmenování dalších prostředků Azure najdete v tématu zásady [vytváření názvů pro prostředky Azure](/azure/architecture/best-practices/naming-conventions).
+Další informace o pojmenování jiných prostředků Azure najdete [v tématu Konvence pojmenování pro prostředky Azure](/azure/architecture/best-practices/naming-conventions).
 
-## <a name="regions-or-locations"></a>Oblasti nebo umístění
-Při nastavování prostředků Azure Lab Services budete muset zadat oblast (nebo umístění) datového centra, které bude hostovat prostředek. Tady jsou další podrobnosti o tom, jak region ovlivňuje každý z následujících prostředků, které se používají při nasazení testovacího prostředí:
+## <a name="regionslocations"></a>Oblasti\Umístění
 
-- **Skupina prostředků**
+Při nastavování prostředků Azure Lab Services, budete muset poskytnout oblast (nebo umístění) datového centra, které bude hostitelem prostředku. Tady jsou další podrobnosti o tom, jak oblast ovlivňuje jednotlivé zdroje, které se podílejí na nastavení testovacího prostředí.
 
-    Oblast Určuje datové centrum, ve kterém se ukládají informace o skupině prostředků. Prostředky Azure obsažené v rámci skupiny prostředků mohou být v různých oblastech od jejich nadřazeného objektu.
-- **Účet testovacího prostředí nebo prostředí učebny**
+### <a name="resource-group"></a>Skupina prostředků
 
-    Umístění účtu testovacího prostředí indikuje oblast pro tento prostředek.  
+Oblast určuje datové centrum, ve kterém jsou uloženy informace o skupině prostředků. Prostředky Azure obsažené ve skupině prostředků může být v různých oblastech od jejich nadřazené.
+
+### <a name="lab-account"></a>Laboratorní účet
+
+Umístění účtu testovacího prostředí označuje oblast, ve které tento prostředek existuje.  
+
+### <a name="classroom-lab"></a>Učebna laboratoř
     
-    V rámci učebny Labs Azure Lab Services automaticky vybere oblast, na kterou je každé testovací prostředí nasazené, na základě dostupné kapacity.  Konkrétně Azure Lab Services vyhledá dostupnost v [oblastech, které se nacházejí ve stejné zeměpisné oblasti jako účet testovacího prostředí](https://azure.microsoft.com/global-infrastructure/regions). 
+Umístění, ve které existuje učebna, se liší v závislosti na následujících faktorech:
+
+  - **Účet testovacího prostředí je partnerský vztah k virtuální síti (VNet)**
+  
+    Účet testovacího prostředí může být [partnerský vztah s virtuální sítí,](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network) pokud jsou ve stejné oblasti.  Když je účet testovacího prostředí peered s virtuální sítí, učebny laboratoře se automaticky vytvoří ve stejné oblasti jako účet testovacího prostředí a virtuální sítě.
+
+    > [!NOTE]
+    > Když je účet testovacího prostředí peered s virtuální sítí, nastavení **Povolit tvůrce testovacího prostředí vybrat umístění testovacího prostředí** je zakázáno. Další informace o tomto nastavení naleznete v článku: [Povolit autorovi testovacího prostředí vybrat umístění pro testovací prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location).
     
-    Pokud správce umožňuje tvůrcům testovacího prostředí zvolit umístění testovacího prostředí, budou umístění, která jsou k dispozici pro výběr, založena na dostupné místní kapacitě při vytváření testovacího prostředí.
+  - **Žádná virtuální síť není peered ***a*** tvůrci testovacího prostředí není povoleno vybrat umístění testovacího prostředí**
+  
+    Pokud neexistuje **žádný** partnerský vztah virtuální sítě s účtem testovacího prostředí *a* [tvůrci testovacího prostředí **nemají** povoleno vybrat umístění testovacího prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location), testovací prostředí učebny se automaticky vytvoří v oblasti, která má dostupnou kapacitu virtuálních účtů.  Konkrétně Azure Lab Services hledá dostupnost v [oblastech, které jsou ve stejné zeměpisné oblasti jako účet testovacího prostředí](https://azure.microsoft.com/global-infrastructure/regions).
 
-    Umístění testovacího prostředí učebny také určuje, které výpočetní velikosti virtuálních počítačů jsou k dispozici pro výběr. Určité velikosti výpočetních prostředků jsou k dispozici pouze v rámci určitých umístění.
-- **Galerie sdílených imagí**
+  - **Žádná virtuální síť není peered ***a*** tvůrci testovacího prostředí mohou vybrat umístění testovacího prostředí**
+       
+    Pokud neexistuje **žádný** partnerský vztah virtuální sítě a [tvůrci testovacího prostředí mohou vybrat umístění testovacího prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location), umístění, která může být vybrána tvůrcem testovacího prostředí, jsou založená na dostupné kapacitě.
 
-    Oblast označuje zdrojovou oblast, kde je uložena první verze obrázku před tím, než se automaticky replikuje do cílových oblastí.
-    
-Obecným pravidlem je nastavit oblast prostředku na jednu, která je nejblíže svým uživatelům. V rámci učebny Labs to znamená, že je vytvoření prostředí učebny co nejblíže vašim studentům. V případě online kurzů, ve kterých se studenty nacházejí po celém světě, je potřeba k vytvoření prostředí učebny, které je centrálně umístěné, použít své nejlepší rozhodnutí. Nebo rozdělte třídu na více laboratoří učebny na základě oblasti vašeho studenta.
+Obecným pravidlem je nastavit oblast prostředku na oblast, která je nejblíže uživatelům. Pro učebny laboratoře, to znamená vytvoření učebny laboratoř nejblíže k vašim studentům. Pro online kurzy, kde se studenti nacházejí po celém světě, musíte použít svůj nejlepší úsudek k vytvoření učební laboratoře, která je centrálně umístěná. Nebo rozdělte třídu do několika učebních laboratoří na základě oblasti vašich studentů.
 
-## <a name="vm-sizing"></a>Změna velikosti virtuálního počítače
-Když správci nebo tvůrci testovacího prostředí vytvoří testovací prostředí, můžou si vybrat z následujících velikostí virtuálních počítačů na základě potřeb své učebny. Mějte na paměti, že dostupné velikosti výpočtů závisí na oblasti, ve které se nachází váš účet testovacího prostředí:
+### <a name="shared-image-gallery"></a>Sdílená galerie obrázků
 
-| Velikost | Specifikace | Navrhované použití |
-| ---- | ----- | ------------- |
-| Krátkodobé používání| <ul><li>2 jádra</li><li>3,5 GB RAM</li></ul> | Tato velikost je nejvhodnější pro příkazový řádek, otevírá webový prohlížeč, webové servery s nízkým provozem, malé až střední databáze. |
-| Střednědobé používání | <ul><li>4 jádra</li><li>7 GB PAMĚTI RAM</li></ul> | Tato velikost se nejlépe hodí pro relační databáze, ukládání do mezipaměti v paměti a analýzy. |
-| Střední (vnořená virtualizace) | <ul><li>4 jádra</li><li>16 GB PAMĚTI RAM</li></ul> | Tato velikost se nejlépe hodí pro relační databáze, ukládání do mezipaměti v paměti a analýzy.  Tato velikost také podporuje vnořenou virtualizaci. |
-| Dlouhodobé používání | <ul><li>8 jader</li><li>32 GB RAM</li></ul> | Tato velikost je nejvhodnější pro aplikace, které vyžadují rychlejší procesory, lepší výkon místních disků, velké databáze a velké mezipaměti paměti.  Tato velikost také podporuje vnořenou virtualizaci. |
-| Malý grafický procesor (vizualizace) | <ul><li>6 jader</li><li>56 GB RAM</li> | Tato velikost se nejlépe hodí pro vzdálenou vizualizaci, streamování, hraní her a kódování pomocí platforem, jako je OpenGL a DirectX. |
-| Malý grafický procesor (COMPUTE) | <ul><li>6 jader</li><li>56 GB RAM</li></ul> |Tato velikost nejlépe vyhovuje aplikacím náročným na počítač, jako je umělá a obsáhlá výuka. |
-| Střední GPU (vizualizace) | <ul><li>12 jader</li><li>112 GB RAM</li></ul> | Tato velikost se nejlépe hodí pro vzdálenou vizualizaci, streamování, hraní her a kódování pomocí platforem, jako je OpenGL a DirectX. |
+Oblast označuje zdrojovou oblast, kde je uložena první verze bitové kopie před její automatickou replikací do cílových oblastí.
+
+## <a name="vm-sizing"></a>Změna velikosti virtuálního mísa
+Když správci nebo tvůrci testovacího prostředí vytvoří testovací prostředí učebny, můžou si vybrat z následujících velikostí virtuálních her na základě potřeb své učebny. Nezapomeňte, že výpočetní velikosti, které jsou k dispozici, závisí na oblasti, ve které se nachází váš účet testovacího prostředí:
+
+| Velikost | Specifikace | Řada | Doporučené použití |
+| ---- | ----- | ------ | ------------- |
+| Krátkodobé používání| <ul><li>2 jádra</li><li>3,5 GB paměti RAM</li> | [Standard_A2_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Tato velikost je nejvhodnější pro příkazový řádek, otevření webového prohlížeče, webové servery s nízkým provozem, malé až střední databáze. |
+| Střednědobé používání | <ul><li>4 Jádra</li><li>7 GB PAMĚTI RAM</li> | [Standard_A4_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Tato velikost je nejvhodnější pro relační databáze, ukládání do mezipaměti v paměti a analýzy. |
+| Střední (vnořená virtualizace) | <ul><li>4 Jádra</li><li>16 GB paměti RAM</li></ul> | [Standard_DC4s_v2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Tato velikost je nejvhodnější pro relační databáze, ukládání do mezipaměti v paměti a analýzy.  Tato velikost také podporuje vnořenou virtualizaci. |
+| Dlouhodobé používání | <ul><li>8 jader</li><li>32 GB paměti RAM</li></ul>  | [Standard_DC8_v2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Tato velikost je nejvhodnější pro aplikace, které potřebují rychlejší procesory, lepší výkon místního disku, velké databáze, velké mezipaměti.  Tato velikost také podporuje vnořenou virtualizaci. |
+| Malý GPU (vizualizace) | <ul><li>6 Jader</li><li>56 GB paměti RAM</li>  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Tato velikost je nejvhodnější pro vzdálenou vizualizaci, streamování, hraní her, kódování pomocí architektur, jako jsou OpenGL a DirectX. |
+| Malý GPU (výpočetní) | <ul><li>6 Jader</li><li>56 GB paměti RAM</li></ul>  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Tato velikost je nejvhodnější pro počítačem náročné aplikace, jako je umělá inteligence a hloubkové učení. |
+| Střední GPU (vizualizace) | <ul><li>12 Jader</li><li>112 GB paměti RAM</li></ul>  | [Standard_NC12](https://docs.microsoft.com/azure/virtual-machines/nc-series) | Tato velikost je nejvhodnější pro vzdálenou vizualizaci, streamování, hraní her, kódování pomocí architektur, jako jsou OpenGL a DirectX. |
 
 ## <a name="manage-identity"></a>Správa identity
-Pomocí [řízení přístupu založeného na rolích Azure](https://docs.microsoft.com/azure/role-based-access-control/overview)můžete přiřadit následující role, které umožní přístup k účtům testovacího prostředí a Labs v učebně:
+Pomocí [řízení přístupu na základě rolí Azure](https://docs.microsoft.com/azure/role-based-access-control/overview)lze přiřadit následující role, které poskytují přístup k testovacím účtům a testovacím prostředím učebny:
 
 - **Vlastník účtu testovacího prostředí**
 
-    Správce, který vytvoří účet testovacího prostředí, se automaticky přidá do role **vlastníka** účtu testovacího prostředí.  Správce, kterému je přiřazena role **vlastníka** , může:
+    Správce, který vytvoří účet testovacího prostředí, se automaticky přidá do role **vlastníka** účtu testovacího prostředí.  Správce, kterému je přiřazena role **Vlastník,** může:
      - Změňte nastavení účtu testovacího prostředí.
-     - Udělte ostatním správcům přístup k účtu testovacího prostředí jako vlastníci nebo přispěvatele. 
-     - Poskytněte učitelům přístup k učebným cvičením jako tvůrci, vlastníci nebo přispěvatele.
-     - Vytvářejte a spravujte všechna učebná cvičení v rámci účtu testovacího prostředí.
+     - Poskytněte ostatním správcům přístup k účtu testovacího prostředí jako vlastníkům nebo přispěvatelům. 
+     - Poskytněte pedagogům přístup k laboratořím ve třídě jako tvůrci, vlastníci nebo přispěvatelé.
+     - Vytvořte a spravujte všechna testovací prostředí ve třídě v rámci účtu testovacího prostředí.
 
 - **Přispěvatel účtu testovacího prostředí**
 
-    Správce, který má přiřazenou roli **přispěvatele** , může:
+    Správce, kterému je přiřazena role **Přispěvatel,** může:
     - Změňte nastavení účtu testovacího prostředí.
-    - Vytvářejte a spravujte všechna učebná cvičení v rámci účtu testovacího prostředí.
+    - Vytvořte a spravujte všechna testovací prostředí ve třídě v rámci účtu testovacího prostředí.
     
-    Nemůžou ale jiným uživatelům poskytnout přístup k účtům testovacího prostředí ani učebným cvičením.
+    *Nemohou* však ostatním uživatelům poskytnout přístup k testovacím účtům nebo laboratořím učebny.
 
-- **Tvůrce testovacího prostředí učebny**
+- **Tvůrce učebny v laboratoři**
 
-    Aby bylo možné vytvořit učebnu Labs v rámci účtu testovacího prostředí, musí být Educator členem role **Tvůrce testovacího prostředí** .  Když Educator vytvoří testovací prostředí pro učebnu, automaticky se přidá jako vlastník testovacího prostředí.  Informace o tom, jak [Přidat uživatele do role **testovacího prostředí** ](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#add-a-user-to-the-lab-creator-role), najdete v kurzu. 
+    Chcete-li vytvořit testovací prostředí ve třídě v rámci účtu testovacího prostředí, musí být pedagog členem role **Tvůrce testovacího prostředí.**  Když pedagog vytvoří učebnu, automaticky se přidá jako vlastník laboratoře.  Podívejte se na návod, jak [přidat uživatele do role Tvůrce **lab** ](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#add-a-user-to-the-lab-creator-role). 
 
-- **Owner\contributor testovacího prostředí pro učebnu**
+- **Vlastník učebny v laboratoři\přispěvatel**
   
-    Educator může zobrazit a změnit nastavení testovacího prostředí učebny, když jsou členy role testovacího **prostředí nebo role** **přispěvatele** . musí být také členy role **čtenáře** účtu testovacího prostředí.
+    Pedagog může zobrazit a změnit nastavení učebny, pokud je členem role **vlastníka** testovacího prostředí nebo **přispěvatele.** musí být také členem role **čtenáře** účtu testovacího prostředí.
 
-    Hlavním rozdílem mezi rolemi **vlastníka** a **přispěvatele** testovacího prostředí je, že Přispěvatel *nemůže* udělit přístup ke správě testovacího prostředí ostatním uživatelům.
+    Klíčovým rozdílem mezi rolemi **vlastníka** testovacího prostředí a **přispěvatele** je, že přispěvatel *nemůže* poskytnout ostatním uživatelům přístup ke správě testovacího prostředí – pouze vlastníci mohou ostatním uživatelům poskytnout přístup ke správě testovacího prostředí.
     
-    Kromě toho Educator *nemůže* vytvořit novou učebnu Labs, pokud nejsou zároveň členem role **Tvůrce testovacího prostředí** .
+    Kromě toho pedagog *nemůže* vytvářet nové učebny, pokud nejsou také členem role **Lab Creator.**
 
-- **Galerie sdílených imagí**
+- **Sdílená galerie obrázků**
     
-    Když připojíte galerii sdílených imagí k účtu testovacího prostředí, účet testovacího prostředí owners\contributors a testovací creators\owners\contributors automaticky udělí přístup k zobrazení a uložení obrázků v galerii. 
+    Když k účtu testovacího prostředí připojíte sdílenou galerii obrázků, budou vlastníci účtu testovacího prostředí\přispěvatelé a tvůrci testovacího prostředí\vlastníci\přispěvatelé automaticky mít přístup k zobrazení a uložení obrázků v galerii. 
 
-Tady je několik tipů, které vám pomůžou s přiřazováním rolí:
-   - Obvykle by měly být členy role **vlastníka** nebo **přispěvatele** účtu testovacího prostředí. můžete mít více než jeden owner\contributor.
+Tady je několik tipů, které vám pomohou s přiřazením rolí:
+   - Obvykle pouze správci by měli být členy role **vlastníka** účtu testovacího prostředí nebo **přispěvatele;** můžete mít více než jednoho vlastníka\přispěvatele.
 
-   - Aby Educator mohli vytvořit novou výukovou laboratoř a spravovat laboratoře, které vytvořili; musíte přiřadit přístup pouze k roli **Tvůrce testovacího prostředí** .
+   - Dát pedagogovi možnost vytvářet nová učební laboratoře a spravovat laboratoře, které vytvářejí; stačí přiřadit přístup k roli **Tvůrce testovacího prostředí.**
    
-   - Aby Educator schopnost spravovat konkrétní učebny, ale *ne* možnost vytvářet nové laboratoře; měli byste přidělit přístup k roli **vlastníka** nebo **přispěvatele** pro každou z učebnních cvičení, kterou budou spravovat.  Můžete například chtít, aby profesor i Pomocník pro vzdělávání spoluvlastníící prostředí učebny.  Informace o tom, jak [Přidat uživatele jako vlastníka k prostředí učebny](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-add-user-lab-owner), najdete v příručce.
+   - Chcete-li dát pedagog možnost spravovat konkrétní učebny laboratoře, ale *ne* schopnost vytvářet nové laboratoře; Měli byste přiřadit přístup k roli **Vlastník** nebo **Přispěvatel** pro každou z učebních laboratoří, které budou spravovat.  Můžete například povolit profesorovi i asistentovi učitele, aby spoluvlastnili učebnu.  Informace o tom, jak [přidat uživatele jako vlastníka do učebny,](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-add-user-lab-owner)naleznete v příručce .
 
 ## <a name="pricing"></a>Ceny
 
 ### <a name="azure-lab-services"></a>Azure Lab Services
-Ceny za Azure Lab Services jsou popsané v následujícím článku: [Azure Lab Services ceny](https://azure.microsoft.com/pricing/details/lab-services/).
+Ceny za Služby Azure Lab services jsou popsané v následujícím článku: [Ceny azure lab služby](https://azure.microsoft.com/pricing/details/lab-services/).
 
-Pokud plánujete použít pro ukládání a správu verzí imagí, je potřeba zvážit také ceny pro galerii sdílených imagí. 
+Je také třeba zvážit ceny pro sdílenou galerii obrázků, pokud ji plánujete použít pro ukládání a správu verzí obrázků. 
 
-### <a name="shared-image-gallery"></a>Galerie sdílených imagí
-Vytvoření sdílené Galerie imagí a její připojení k účtu testovacího prostředí je bezplatné. Náklady se neúčtují, dokud neuložíte verzi obrazu do galerie. Ceny za použití sdílené Galerie imagí jsou obvykle poměrně zanedbatelné, ale je důležité pochopit, jak se počítají, protože nejsou zahrnuté do cen pro Azure Lab Services.  
+### <a name="shared-image-gallery"></a>Sdílená galerie obrázků
+Vytvoření sdílené galerie obrázků a její připojení k účtu testovacího prostředí je zdarma. Náklady nevznikají, dokud neuložíte verzi obrázku do galerie. Ceny za použití sdílené galerie obrázků jsou obvykle poměrně zanedbatelné, ale je důležité pochopit, jak se počítá, protože není zahrnuta v cenách za služby Azure Lab Services.  
 
-### <a name="storage-charges"></a>Poplatky za úložiště
-K ukládání verzí imagí používá Galerie sdílených imagí standardní disky spravované HDD. Velikost disku spravovaného PEVNÝm diskem, který se používá, závisí na velikosti uložené verze image. V následujícím článku se zobrazí ceny: ceny za [spravované disky](https://azure.microsoft.com/pricing/details/managed-disks/).
+#### <a name="storage-charges"></a>Poplatky za úložiště
+Pro ukládání verzí bitových kopií používá sdílená galerie obrázků standardní disky spravované pevným diskem. Velikost disku spravovaného pevným diskem, který se používá, závisí na velikosti uložené verze bitové kopie. Ceny: [Ceny spravovaných disků](https://azure.microsoft.com/pricing/details/managed-disks/)naleznete v následujícím článku.
 
 
-### <a name="replication-and-network-egress-charges"></a>Poplatky za replikaci a přenos sítě
-Když ukládáte verzi Image pomocí virtuálního počítače šablony testovacího prostředí (VM), Azure Lab Services nejdřív uloží do zdrojové oblasti a pak automaticky replikuje verzi zdrojového obrazu do jedné nebo víc cílových oblastí. Je důležité si uvědomit, že Azure Lab Services automaticky replikuje verzi zdrojového obrázku do všech cílových [oblastí v rámci geografické](https://azure.microsoft.com/global-infrastructure/regions/) oblasti, kde se nachází vývojové prostředí učebny. Pokud je například vaše prostředí vaší učebny v oblasti USA, je verze bitové kopie replikována do každé z osmi oblastí, které existují v rámci USA.
+#### <a name="replication-and-network-egress-charges"></a>Poplatky za replikaci a odchozí přenos sítě
+Když uložíte verzi image pomocí virtuálního počítače šablony učebny lab (VM), Azure Lab Services nejprve uloží do zdrojové oblasti a pak automaticky replikuje verzi zdrojové bitové kopie do jedné nebo více cílových oblastí. Je důležité si uvědomit, že Azure Lab Services automaticky replikuje verzi zdrojové image do všech [cílových oblastí v rámci geografické oblasti,](https://azure.microsoft.com/global-infrastructure/regions/) kde se nachází laboratoře učebny. Pokud je například vaše učební laboratoř v geografii USA, je verze obrázku replikována do každé z osmi oblastí, které existují v USA.
 
-Poplatek za výstupní síť se stane při replikaci verze image ze zdrojové oblasti do dalších cílových oblastí. Účtovaná částka vychází z velikosti verze bitové kopie, když je data na obrázku zpočátku převedena ze zdrojové oblasti.  Podrobnosti o cenách najdete v následujícím článku: [Podrobnosti o cenách šířky pásma](https://azure.microsoft.com/pricing/details/bandwidth/).
+Poplatek za odchozí přenos sítě nastane, když je verze bitové kopie replikována ze zdrojové oblasti do dalších cílových oblastí. Účtovaná částka je založena na velikosti verze bitové kopie při počátečním přenosu dat bitové kopie odchozí chod ze zdrojové oblasti.  Podrobnosti o cenách naleznete v následujícím článku: [Podrobnosti o cenách šířky pásma](https://azure.microsoft.com/pricing/details/bandwidth/).
 
-Zákazníkům s [vzdělávacími řešeními](https://www.microsoft.com/licensing/licensing-programs/licensing-for-industries?rtc=1&activetab=licensing-for-industries-pivot:primaryr3) se můžou vzdát poplatky za výstupní náklady. Promluvte si svého správce účtu a získejte další informace.  Další informace najdete v části **Nejčastější dotazy** v odkazovaném dokumentu, konkrétně na otázku "jaké programy pro přenos dat existují pro akademické zákazníky a jak se dá kvalifikovat?".
+[Vzdělávací řešení](https://www.microsoft.com/licensing/licensing-programs/licensing-for-industries?rtc=1&activetab=licensing-for-industries-pivot:primaryr3) zákazníci mohou být upuštěno od placení výstupních poplatků. Další informace vám poskytne správce účtu.  Další informace naleznete v části **Nejčastější dotazy** v propojeném dokumentu, konkrétně na otázku "Jaké programy přenosu dat existují pro akademické zákazníky a jak se kvalifikuji?".
 
-### <a name="pricing-example"></a>Příklad ceny
-Pokud si chcete rekapitulace ceny popsané výše, Podívejme se na příklad uložení naší šablony virtuálního počítače do galerie sdílených imagí. Předpokládejme následující scénáře:
+#### <a name="pricing-example"></a>Příklad ceny
+Chcete-li rekapitulovat výše popsané ceny, podívejme se na příklad uložení obrázku virtuálního počítače šablony do sdílené galerie obrázků. Předpokládejme následující scénáře:
 
-- Máte jednu vlastní image virtuálního počítače.
-- Ukládáte dvě verze image.
-- Vaše testovací prostředí je v USA, což má celkem osm oblastí.
-- Každá verze image má velikost 32 GB; v důsledku toho cena za disk spravovaný PEVNÝm diskem je $1,54 za měsíc.
+- Máte jednu vlastní image virtuálního virtuálního virtuálního sea.
+- Ukládáte dvě verze obrázku.
+- Vaše laboratoř je v USA, která má celkem osm oblastí.
+- Každá verze obrázku má velikost 32 GB; v důsledku toho je cena disku spravovaná hdd je $ 1.54 za měsíc.
 
-Celkové náklady jsou odhadované jako:
+Celkové náklady se odhadují na:
 
-Počet imagí × počet verzí × počet replik × spravovaná cena za jednotku
+Počet bitových kopií × počet verzí × počet replik × cena spravovaného disku
 
-V tomto příkladu jsou náklady následující:
+V tomto příkladu jsou náklady:
 
-1 vlastní image (32 GB) × 2 verze x 8 americké oblasti × $1,54 = $24,64 za měsíc
+1 vlastní obrázek (32 GB) x 2 verze x 8 regionů USA x $ 1.54 = $ 24.64 za měsíc
 
-### <a name="cost-management"></a>Správa nákladů
-Pro správce účtu testovacího prostředí je důležité spravovat náklady pomocí rutiny, které z Galerie odstraňují nepotřebné verze imagí. 
+#### <a name="cost-management"></a>Správa nákladů
+Pro správce účtu testovacího prostředí je důležité spravovat náklady rutinním mazáním nepotřebných verzí bitových obrázků z galerie. 
 
-Replikaci byste neměli odstraňovat do konkrétních oblastí jako způsob snížení nákladů (Tato možnost je k dispozici v galerii sdílených imagí). Změny replikace můžou mít negativní vliv na schopnost Azure Lab Service publikovat virtuální počítače z imagí uložených v galerii sdílených imagí.
+Replikaci do určitých oblastí byste neměli odstraňovat jako způsob, jak snížit náklady (tato možnost existuje ve sdílené galerii obrázků). Změny replikace může mít nepříznivý vliv na schopnost služby Azure Lab Service publikovat virtuální počítače z bitových kopií uložených v galerii sdílených bitových kopií.
 
 ## <a name="next-steps"></a>Další kroky
-Podrobné pokyny k vytvoření účtu testovacího prostředí a testovacího prostředí najdete v tomto kurzu: vytvoření [účtu testovacího prostředí](tutorial-setup-lab-account.md)
+Podrobné pokyny k vytvoření testovacího účtu a testovacího prostředí: [Průvodce nastavením](tutorial-setup-lab-account.md) najdete v kurzu.

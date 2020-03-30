@@ -1,106 +1,105 @@
 ---
-title: Nejčastější dotazy a terminologie pro analýzy komerčního tržiště v partnerském centru
-description: Naučte se řešit Nejčastější dotazy týkající se komerčních analýz na webu Marketplace. Zahrnuje slovník dat pro terminologii analýzy.
-author: ChJenk
-manager: evansma
-ms.author: v-chjen
+title: Nejčastější dotazy a terminologie pro analytiku komerčního tržiště v Partnerském centru
+description: Přečtěte si, jak řešit nejčastější dotazy týkající se analýz y Komerčního tržiště. Obsahuje datový slovník pro terminologii analýzy.
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 081109c2208e2006eb1628fbf0cfb99b1e6bd8f9
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: d53ae01fb302382ca5bc2d31e729e153aea6c838
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462135"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286077"
 ---
-# <a name="frequently-asked-questions-and-terminology-for-commercial-marketplace-analytics"></a>Nejčastější dotazy a terminologie pro komerční analýzy na webu Marketplace
+# <a name="frequently-asked-questions-and-terminology-for-commercial-marketplace-analytics"></a>Nejčastější dotazy a terminologie pro analytiku komerčního tržiště
 
-Tento článek se zabývá nejčastějšími dotazy týkajícími se analytických zpráv v partnerském centru a také poskytuje slovník analytických terminologie.
+Tento článek se zabývá běžně kladenými dotazy týkajícími se analytických zpráv v Partnerském centru a také obsahuje slovník terminologie analýzy.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-V této části najdete odpovědi na nejčastější dotazy týkající se **dosud nedostupných analýz** ve zprávách v partnerském centru.
+Tato část obsahuje odpovědi na nejčastější dotazy týkající se **zpráv No Analytics Available Yet** v Centru partnerů.
 
-**Nedaří se mi zobrazit data analýz v partnerském centru. Po přístupu na tyto stránky se zobrazí zpráva níže. Proč je to?**
+**V Partnerském centru nelze zobrazit analytická data. Když přistupuji k těmto stránkám, zobrazí se níže uvedená zpráva. Proč?**
 
 ![Zatím žádná data pro vaše nabídky](./media/analytics-faq-no-data.png)
 
-Proč se vám může stát, že se vám tato zpráva zobrazuje:
+Proč se vám může dostat tuto zprávu:
 
-- Pro vaše publikované nabídky na webu Marketplace zatím neexistují žádné akvizice. To může znamenat, že vaše nabídky jsou živé v Marketplace a získají zobrazení od zákazníků na stránkách zobrazení produktu, ale zákazníci zatím neudělali, že si je nakoupili a nasadili.
-- Publikování vaší nabídky může být v procesu a ještě není živé. Zákazníci mohou získat pouze živé nabídky. Pokud chcete zjistit stav nabídek, přečtěte si téma Přehled na [řídicím panelu analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary). Další informace najdete v tématu [souhrnný řídicí panel v tématu Analýza komerčního tržiště](./summary-dashboard.md).
-- Vaše nabídky můžou být uvedené jako **kontaktní mě**, což jsou jenom nabídky se seznamem a zákazníci na webu Marketplace je nemůžou koupit. I když tyto nabídky umožňují generovat zájemce a sdílí se s vámi, objednávky pro tyto nabídky se nevytvoří, protože je nejde koupit. Chcete-li kontrolovat typ seznamu nabídek, klikněte na stránku nastavení.
+- Pro publikované nabídky na tržišti v současné době neexistují žádné akvizice. To může znamenat, že vaše nabídky jsou aktivní na marketplace a získávají zobrazení od zákazníků na stránkách zobrazení produktu, ale zákazníci ještě nepodnikli kroky k jejich nákupu a nasazení.
+- Publikování vaší nabídky může být v procesu a ještě není živé. Zákazníci mohou získat pouze živé nabídky. Chcete-li zkontrolovat stav nabídek, přečtěte si část Přehled na [řídicím panelu Analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary). Další informace naleznete [v tématu Summary Dashboard in Commercial Marketplace analytics](./summary-dashboard.md).
+- Vaše nabídky mohou být uvedeny jako **Služby Kontaktujte mě**, což jsou nabídky pouze pro seznam a zákazníci na trhu je nemohou zakoupit. I když tyto nabídky generují zájemce a jsou s vámi sdíleny, objednávky se pro tyto nabídky nevytvářejí, protože je nelze zakoupit. Chcete-li zkontrolovat typ nabídky, přejděte na stránku nastavení.
 
-**Vím, že mám analytická data, ale zobrazuje se následující zpráva:**
+**Vím, že mám analytická data, ale zobrazuje se níže uvedená zpráva:**
 
-![Pro daný rozsah dat nejsou k dispozici žádná data.](./media/analytics-faq-data-range.png)
+![Pro dané časové období nejsou k dispozici žádná data.](./media/analytics-faq-data-range.png)
 
-Pokud obdržíte tuto zprávu, znamená to, že máte analytická data, ale pro vybraný rozsah dat nejsou k dispozici žádná data. Vyberte jiný rozsah kalendářních dat nebo vlastní rozsah kalendářních dat, abyste zobrazili data od 2010. Další informace najdete v části rozsah dat [v řídicím panelu souhrnu v tématu Přehled komerčních webů na webu Marketplace](./summary-dashboard.md).
+Pokud se zobrazí tato zpráva, znamená to, že máte analytická data, ale pro vybrané období nejsou k dispozici žádná data. Vyberte jiné časové období nebo vlastní rozsah dat, chcete-li zobrazit všechna data od roku 2010. Další informace naleznete v části Rozsah dat [v souhrnné mašice v analýze komerčního tržiště](./summary-dashboard.md).
 
-## <a name="dictionary-of-data-terms"></a>Slovník datových podmínek
+## <a name="dictionary-of-data-terms"></a>Slovník datových termínů
 
 | Název atributu | Sestavy | Definice|
 |---|---|---|
-| Typ licence Azure | Zákazník, objednávka | Typ licenční smlouvy používané zákazníky k nákupu Azure. Známý také jako kanál |
-| Typ licence Azure: Cloud Solution Provider | Zákazník, objednávka | Koncový zákazník si nabídne Azure a vaši nabídku na webu Marketplace prostřednictvím poskytovatele Cloud Solution Provider, který funguje jako váš prodejce.|
-| Typ licence Azure: Enterprise | Zákazník, objednávka | Koncový zákazník získává Azure a nabídku na webu Marketplace prostřednictvím smlouva Enterprise podepsaného přímo s Microsoftem.|
-| Typ licence Azure: Enterprise přes prodejce  | Zákazník, objednávka | Koncový zákazník si nabídne Azure a vaši nabídku na webu Marketplace prostřednictvím prodejce, který usnadní jejich smlouva Enterprise s Microsoftem.|  |
-| Typ licence Azure: průběžné platby| Zákazník, objednávka | Koncový zákazník získává Azure a nabídku na webu Marketplace prostřednictvím smlouvy s průběžnými platbami, která se podepisuje přímo s Microsoftem.||
-| Název cloudové instance| Objednání| Microsoft Cloud, ve kterém došlo k nasazení virtuálního počítače.||
-| Název instance cloudu: globální Azure| Objednání| Veřejný globální Cloud Microsoftu.|| |
-| Název instance cloudu: Azure Government | Objednání| Cloudy Microsoftu pro konkrétní státní správu pro jednu z následujících vlád: Čína, Německo nebo USA v Americe.| |
-| Město zákazníka| Zákazník| Název města, který zadal zákazník. Město může být jiné než město v předplatném Azure zákazníka.||
-| Jazyk zákaznické komunikace  | Zákazník| Jazyk upřednostňovaný zákazníkem pro komunikaci.||
-| Název společnosti zákazníka | Zákazník, objednávka | Název společnosti poskytnutý zákazníkem Název může být jiný než město v předplatném Azure zákazníka.|  |
-| Země zákazníka | Zákazník, objednávka | Název země, kterou zadal zákazník. Země by mohla být jiná než země v předplatném Azure zákazníka.|  |
-| E-mail zákazníka| Zákazník| E-mailová adresa poskytnutá koncovým zákazníkem E-mail může být jiný než e-mailová adresa v předplatném Azure zákazníka.||
-| Křestní jméno zákazníka| Zákazník| Název zadaný zákazníkem Název může být jiný než název uvedený v předplatném Azure zákazníka.| |
-| ID zákazníka | Zákazník, objednávka | Jedinečný identifikátor přiřazený k zákazníkovi. Zákazník může mít nula nebo více Azure Marketplace předplatných.|  |
-| Poštovní směrovací číslo zákazníka  | Zákazník| Poštovní směrovací číslo poskytnuté zákazníkem Kód může být jiný než poštovní směrovací číslo poskytované v rámci předplatného Azure zákazníka.| |
-| Stav zákazníka| Zákazník| Stav (adresa) poskytovaný zákazníkem. Stav může být jiný než stav uvedený v předplatném Azure zákazníka.| |
-| Datum získání| Zákazník| První datum, kdy si zákazník koupil jakoukoli nabídku publikovanou vámi| |
-| Datum ztráty| Zákazník| Poslední datum, kdy zákazník zrušil poslední z předchozích nabídek, byl zakoupen.||
-| Je nový zákazník  | Objednání| Tato hodnota identifikuje nového zákazníka, který získá jednu nebo více nabídek poprvé (nebo ne). Hodnota bude "Ano", pokud se nachází ve stejném kalendářním měsíci pro "datum získání". Pokud zákazník zakoupil nějaké nabídky před nahlášeným kalendářním měsícem, bude hodnota "ne". |
-| Je verze Preview SKU| Objednání| Tato hodnota vám umožní zjistit, jestli jste SKU označili jako "Preview". Hodnota bude "Ano", pokud je odpovídajícím způsobem označena skladová jednotka a pouze předplatná Azure, která jsou autorizována, můžete nasadit a použít tuto bitovou kopii. Pokud nebyla položka SKU identifikována jako "Preview", bude hodnota "ne".  |
-| Je propagační kontaktní osoba v| Zákazník| Tato hodnota vám umožní zjistit, jestli se zákazník aktivně přihlásil k propagačnímu kontaktu od vydavatelů. V tuto chvíli Neprezentujeme možnost pro zákazníky, takže jsme na vývěsce uvedli "ne". Po nasazení této funkce se odpovídajícím způsobem spustí aktualizace.|
-| Typ licence Marketplace| Objednání| Způsob fakturace nabídky Marketplace||
-| Typ licence Marketplace: účtuje se přes Azure.| Objednání| Microsoft je vaším agentem pro tuto nabídku na webu Marketplace a účtuje zákazníky vaším jménem. (Buď platební karta PAYG, nebo faktura na podnikové straně)||
-| Typ licence Marketplace: Přineste si vlastní licenci | Objednání| Virtuální počítač vyžaduje k nasazení licenční klíč poskytnutý zákazníkem. Společnost Microsoft si neúčtuje zákazníky, kteří si tyto nabídky na webu Marketplace dostanou.||
-| Typ licence Marketplace: Free| Objednání| Tato nabídka je nakonfigurovaná tak, aby byla pro všechny uživatele volná. Společnost Microsoft neúčtuje zákazníkům za využití této nabídky.||
-| Typ licence Marketplace: Microsoft jako prodejce  | Objednání| Microsoft je prodejcem této nabídky na webu Marketplace.|  |
-| ID předplatného Marketplace | Zákazník, objednávka | Jedinečný identifikátor přidružený k předplatnému Azure, který zákazník použil k nákupu vaší nabídky na webu Marketplace. IDENTIFIKÁTORem byl dřív identifikátor GUID předplatného Azure.||
+| Typ licence Azure | Zákazník, Objednávka | Typ licenční smlouvy, kterou zákazníci používají k nákupu Azure. Také známý jako kanál |
+| Typ licence Azure: Poskytovatel cloudových řešení | Zákazník, Objednávka | Koncový zákazník pořizuje Azure a vaši nabídku marketplace prostřednictvím svého poskytovatele cloudových řešení, který jedná jako váš prodejce.|
+| Typ licence Azure: Enterprise | Zákazník, Objednávka | Koncový zákazník pořizuje Azure a vaši nabídku marketplace prostřednictvím smlouvy Enterprise, podepsané přímo se společností Microsoft.|
+| Typ licence Azure: Enterprise prostřednictvím prodejce  | Zákazník, Objednávka | Koncový zákazník pořizuje Azure a vaši nabídku marketplace prostřednictvím prodejce, který usnadňuje jejich smlouvu Enterprise s Microsoftem.|  |
+| Typ licence Azure: Plaťte průběžně| Zákazník, Objednávka | Koncový zákazník pořizuje Azure a vaši nabídku marketplace prostřednictvím smlouvy "Pay as You Go", podepsané přímo se společností Microsoft.||
+| Název instance cloudu| Objednání| Microsoft Cloud, ve kterém došlo k nasazení virtuálního počítače.||
+| Název instance cloudu: Azure Global| Objednání| Veřejný globální cloud Microsoftu.|| |
+| Název instance cloudu: Azure Government | Objednání| Microsoft pro jednu z následujících vlád: Čína, Německo nebo Spojené státy americké.| |
+| Město zákazníka| Zákazník| Název města poskytnutý zákazníkem. Město se může lišit od města v předplatném Azure zákazníka.||
+| Jazyk komunikace se zákazníky  | Zákazník| Jazyk preferovaný zákazníkem pro komunikaci.||
+| Název společnosti odběratele | Zákazník, Objednávka | Název společnosti poskytnutý zákazníkem. Název se může lišit od města v předplatném Azure zákazníka.|  |
+| Země zákazníka | Zákazník, Objednávka | Název země poskytnutý zákazníkem. Země se může lišit od země v předplatném Azure zákazníka.|  |
+| E-mail pro zákazníky| Zákazník| E-mailová adresa poskytnutá koncovým zákazníkem. E-mail se může lišit od e-mailové adresy v předplatném Azure zákazníka.||
+| Jméno zákazníka| Zákazník| Jméno poskytnuté zákazníkem. Název se může lišit od názvu uvedeného v předplatném Azure zákazníka.| |
+| ID zákazníka | Zákazník, Objednávka | Jedinečný identifikátor přiřazený zákazníkovi. Zákazník může mít nula nebo více předplatných Azure Marketplace.|  |
+| PSČ zákazníka  | Zákazník| PSČ poskytnuté zákazníkem. Kód se může lišit od PSČ uvedeného v předplatném Azure zákazníka.| |
+| Stát zákazníka| Zákazník| Stát (adresa) poskytnutý zákazníkem. Stát může být jiný než stav poskytovaný v předplatném Azure zákazníka.| |
+| Datum nabytí| Zákazník| První datum, kdy zákazník zakoupil jakoukoli vyznavatelku.| |
+| Datum ztráty| Zákazník| Poslední datum, kdy zákazník zrušil poslední ze všech dříve zakoupených nabídek.||
+| Je nový zákazník  | Objednání| Hodnota identifikuje nového zákazníka, který poprvé získá jednu nebo více vašich nabídek (nebo ne). Hodnota bude "Ano", pokud ve stejném kalendářním měsíci pro "Datum získání". Hodnota bude "Ne", pokud zákazník zakoupil některou z vašich nabídek před nahlášeným kalendářním měsícem. |
+| Je náhled SKU| Objednání| Hodnota vás upozorní, pokud jste označili skladovou položku jako "náhled". Hodnota bude "Ano", pokud skladová položka byla označena odpovídajícím způsobem a pouze předplatná Azure autorizovaná vámi můžete nasadit a použít tuto bitovou kopii. Hodnota bude "Ne", pokud skladová položka nebyla identifikována jako "náhled".  |
+| Je propagační kontakt Opt In| Zákazník| Hodnota vás upozorní, pokud se zákazník aktivně přihlásil k propagačnímu kontaktu od vydavatelů. V tuto chvíli nepředstavujeme možnost zákazníkům, takže jsme uvedli "ne" plošně. Po nasazení této funkce začneme odpovídajícím způsobem aktualizovat.|
+| Typ licence Marketplace| Objednání| Způsob fakturace nabídky Marketplace.||
+| Typ licence Marketplace: Fakturovaný prostřednictvím Azure| Objednání| Společnost Microsoft je vaším zástupcem pro tuto nabídku Marketplace a účtuje zákazníkům vaším jménem. (Platební karta PAYG nebo podniková faktura)||
+| Typ licence Marketplace: Přineste si vlastní licenci | Objednání| Virtuální ho virtuálního uživatele vyžaduje licenční klíč poskytnutý zákazníkem k nasazení. Společnost Microsoft neúčtuje zákazníkům, že tímto způsobem uvádějí své nabídky na trhu.||
+| Typ licence Marketplace: Zdarma| Objednání| Nabídka je konfigurována tak, aby byla zdarma pro všechny uživatele. Společnost Microsoft neúčtuje zákazníkům za jejich použití této nabídky.||
+| Typ licence Marketplace: Microsoft jako prodejce  | Objednání| Společnost Microsoft je vaším prodejcem pro tuto nabídku Marketplace.|  |
+| ID předplatného Marketplace | Zákazník, Objednávka | Jedinečný identifikátor přidružený k předplatnému Azure, které zákazník použil k nákupu vaší nabídky marketplace. ID bylo dříve identifikátor GUID předplatného Azure.||
 | Název nabídky  | Objednání| Název nabídky Marketplace.|| |
-| Typ nabídky  | Objednání| Typ Microsoft Marketplace nabídky|||
-| Typ nabídky: spravovaná aplikace  | Za | Použití aplikace Azure: typ nabídky spravované aplikace, když jsou vyžadované následující podmínky: nasazení řešení založeného na předplatném pro zákazníka můžete nasadit buď pomocí virtuálního počítače, nebo celého řešení založeného na IaaS. Vy nebo váš zákazník požadujete, aby bylo řešení spravované partnerem. |
-| Typ nabídky: aplikace Azure| Za | Pokud vaše řešení vyžaduje další automatizaci nasazení a konfigurace než jednoduchý virtuální počítač, použijte typ nabídky šablony řešení Azure Application.||
-| Typ nabídky: konzultační služba| Objednání| Konzultační služby v Azure Marketplace pomůžou propojit zákazníky se službami pro podporu a rozšiřování jejich používání Azure.| |
-| Typ nabídky: kontejner | Objednání| Typ nabídky kontejneru použijte, pokud je vaše řešení image kontejneru Docker zřízená jako Kubernetes Azure Container Service.||
-| Typ nabídky: Dynamics 365 Business Central| Objednání| Tento typ nabídky použijte, když se vaše řešení integruje s Dynamics 365 pro finance a operace.| |
-| Typ nabídky: Dynamics 365 pro zákaznickou zapojení | Objednání| Tento typ nabídky použijte, když se vaše řešení integruje s Dynamics 365 pro zapojení zákazníka.||
-| Typ nabídky: modul IoT Edge | Objednání| Azure IoT Edge moduly jsou nejmenší výpočetní jednotky spravované IoT Edge a mohou obsahovat služby společnosti Microsoft (například Azure Stream Analytics), služby třetích stran nebo vlastní kód specifický pro řešení. |
-| Typ nabídky: Power BI aplikace | Objednání| Pokud nasadíte aplikaci integrovanou s Power BI, použijte typ nabídky Power BI aplikace.|  |
-| Typ nabídky: aplikace SaaS| Objednání| Pomocí typu nabídky aplikace SaaS můžete zákazníkům povolit, aby si koupili vaše technické řešení založené na SaaS jako předplatné.||
-| Typ nabídky: virtuální počítač | Objednání| Typ nabídky virtuálního počítače použijte, když nasadíte virtuální zařízení do předplatného přidruženého k vašemu zákazníkovi.||
-| Typ nabídky: rozšíření Visual Studio Marketplace  | Objednání| Typ nabídky, který jste dříve k dispozici vývojářům rozšíření Azure DevOps. Po přeposílání vývojářů rozšíření Azure DevOps můžou své rozšíření prodávat přímo zákazníkům. Nabídky rozšíření se dají nakonfigurovat jako placené nebo včetně zkušební verze. |
-| Datum zrušení objednávky| Objednání| Datum, kdy se objednávka webu Marketplace zrušila||
-| ID objednávky| Objednání| Jedinečný identifikátor objednávky zákazníka pro vaši službu Marketplace Nabídky založené na využití virtuálních počítačů nejsou přidruženy k objednávce.| |
-| Datum nákupu objednávky| Objednání| Datum vytvoření objednávky Marketplace.|||
-| Stav objednávky| Objednání| Stav objednávky Marketplace v době poslední aktualizace dat.|     |
-| Stav objednávky: aktivní  | Objednání| Zákazník zakoupil objednávku a nezrušil jejich pořadí.|         |
-| Stav objednávky: zrušeno | Objednání| Zákazník si předtím koupil objednávku a následně zrušil jejich pořadí.||
-| E-mail poskytovatele| Zákazník| E-mailová adresa poskytovatele zapojená v relaci mezi společností Microsoft a koncovým zákazníkem. Pokud zákazník je podnikem prostřednictvím prodejce, bude to prodejce. Pokud se jedná o poskytovatele Cloud Solution Provider (CSP), bude to CSP.|
-| Název poskytovatele| Zákazník| Název zprostředkovatele zapojeného v relaci mezi společností Microsoft a koncovým zákazníkem. Pokud zákazník je podnikem prostřednictvím prodejce, bude to prodejce. Pokud se jedná o poskytovatele Cloud Solution Provider (CSP), bude to CSP.|
-| Skladová položka| Objednání| Název SKU, jak je definovaný během publikování. Nabídka může mít mnoho SKU, ale SKU může být přidruženo pouze k jedné nabídce.||
-| Datum ukončení zkušební verze| Objednání| Datum ukončení zkušebního období pro tuto objednávku skončí nebo skončí.||
+| Typ nabídky  | Objednání| Typ nabídky Microsoft Marketplace.|||
+| Typ nabídky: Spravovaná aplikace  | Objednávky | Použití aplikace Azure: typ nabídky spravované aplikace, když jsou vyžadovány následující podmínky: Nasadíte buď řešení založené na předplatném pro zákazníka pomocí virtuálního počítače nebo celého řešení založeného na IaaS. Vy nebo váš zákazník požadujete, aby řešení bylo řízeno partnerem. |
+| Typ nabídky: Aplikace Azure| Objednávky | Typ nabídky šablony řešení Azure, když vaše řešení vyžaduje další nasazení a automatizaci konfigurace nad rámec jednoduchého virtuálního počítače.||
+| Typ nabídky: Konzultační servis| Objednání| Poradenské služby na Azure Marketplace pomáhají propojit zákazníky se službami a podporovat a rozšiřovat jejich používání Azure.| |
+| Typ nabídky: Kontejner | Objednání| Typ nabídky Container použijte, když vaše řešení je image kontejneru Dockeru zřízená jako služba kontejneru Azure založená na Kubernetes.||
+| Typ nabídky: Dynamics 365 Business Central| Objednání| Tento typ nabídky použijte, pokud je vaše řešení integrováno s dynamics 365 pro finance a provoz| |
+| Typ nabídky: Dynamics 365 pro zapojení zákazníků | Objednání| Tento typ nabídky použijte, pokud je vaše řešení integrováno s dynamics 365 pro customer engagement.||
+| Typ nabídky: Modul IoT Edge | Objednání| Moduly Azure IoT Edge jsou nejmenší výpočetní jednotky spravované IoT Edge a mohou obsahovat služby Microsoftu (například Azure Stream Analytics), služby třetích stran nebo vlastní kód specifický pro řešení. |
+| Typ nabídky: Aplikace Power BI | Objednání| Typ nabídky aplikace Power BI použijte při nasazení aplikace integrované s Power BI.|  |
+| Typ nabídky: Aplikace SaaS| Objednání| Pomocí typu nabídky aplikace SaaS umožníte zákazníkovi zakoupit si technické řešení založené na SaaS jako předplatné.||
+| Typ nabídky: Virtuální počítač | Objednání| Typ nabídky virtuálního počítače použijte při nasazení virtuálního zařízení do předplatného přidruženého k zákazníkovi.||
+| Typ nabídky: Rozšíření Visual Studio Marketplace  | Objednání| Typ nabídky dříve k dispozici vývojářům rozšíření Azure DevOps. Do budoucna azure devops rozšíření vývojáři můžete prodávat své rozšíření přímo zákazníkům. Nabídky rozšíření lze nakonfigurovat jako placené nebo včetně zkušební verze. |
+| Datum zrušení objednávky| Objednání| Datum zrušení objednávky marketplace.||
+| ID objednávky| Objednání| Jedinečný identifikátor objednávky zákazníka pro vaši službu Marketplace. Nabídky založené na využití virtuálního počítače nejsou přidruženy k objednávce.| |
+| Datum nákupu objednávky| Objednání| Datum vytvoření marketplace objednávky.|||
+| Order Status| Objednání| Stav objednávky Marketplace v době poslední aktualizace dat.|     |
+| Stav objednávky: Aktivní  | Objednání| Zákazník si objednávku zakoupil a nezrušil její objednávku.|         |
+| Stav objednávky: zrušeno | Objednání| Zákazník již dříve zakoupil objednávku a následně její objednávku zrušil.||
+| E-mail poskytovatele| Zákazník| E-mailová adresa poskytovatele zapojeného do vztahu mezi společností Microsoft a koncovým zákazníkem. Pokud je zákazníkem podnik prostřednictvím prodejce, bude to prodejce. Pokud se jedná o poskytovatele cloudových řešení (CSP), bude to zprostředkovatel csp.|
+| Název zprostředkovatele| Zákazník| Název zprostředkovatele zapojeného do vztahu mezi společností Microsoft a koncovým zákazníkem. Pokud je zákazníkem podnik prostřednictvím prodejce, bude to prodejce. Pokud se jedná o poskytovatele cloudových řešení (CSP), bude to zprostředkovatel csp.|
+| Skladová jednotka (SKU)| Objednání| Název skladové položky definovaný během publikování. Nabídka může mít mnoho skladových položk, ale skladová položka může být přidružena pouze k jedné nabídce.||
+| Datum ukončení zkušební verze| Objednání| Datum ukončení nebo ukončení zkušebního období pro tuto objednávku.||
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přehled analytických sestav dostupných na obchodním tržišti partnerského centra najdete v tématu [analýzy pro komerční tržiště v partnerském centru](./analytics.md).
-- Grafy, trendy a hodnoty agregovaných dat, která shrnují aktivity Marketplace pro vaši nabídku, najdete v tématu [souhrnný řídicí panel v části komerční analýza na webu Marketplace](./summary-dashboard.md).
-- Informace o vašich objednávkách v grafickém formátu a ve formátu ke stažení najdete v tématu věnovaném [řídicímu panelu objednávky v rámci komerčních tržišť](./orders-dashboard.md).
-- U virtuálních počítačů nabízí metriky využití a měření fakturace, viz [řídicí panel využití v komerčních obchodech na webu Marketplace](./usage-dashboard.md).
-- Podrobné informace o vašich zákaznících, včetně trendů růstu, najdete [v tématu řídicí panel zákazníka v analytickém obchodě na komerčním webu](./customer-dashboard.md).
-- Seznam vašich žádostí o stažení za posledních 30 dní najdete [v tématu řídicí panel ke stažení v komerčních obchodech na webu Marketplace](./downloads-dashboard.md).
-- Chcete-li zobrazit konsolidované zobrazení zpětné vazby od zákazníků pro nabídky Azure Marketplace a AppSource, přečtěte si téma [hodnocení a recenze řídicího panelu na komerčních analýzách na webu Marketplace](./ratings-reviews.md).
+- Přehled analytických přehledů dostupných na komerčním trhu Partnerského centra najdete v [článku Analýza pro komerční tržiště v Centru partnerů](./analytics.md).
+- Grafy, trendy a hodnoty souhrnných dat, které shrnují aktivitu na marketplace pro vaši nabídku, najdete [v tématu Summary Dashboard in Commercial Marketplace analytics](./summary-dashboard.md).
+- Informace o vašich objednávkách v grafickém formátu a formátu ke stažení najdete [v tématu Dashboard objednávek v analýze komerčního tržiště](./orders-dashboard.md).
+- Pro virtuální počítač (VM) nabízí využití a účtované metriky účtované podle objemu dat, najdete [v tématu Využití Řídicí panel v komerčních Marketplace analýzy](./usage-dashboard.md).
+- Podrobné informace o zákaznících, včetně trendů růstu, najdete [v tématu Řídicí panel zákazníků v analýze komerčního webu Marketplace](./customer-dashboard.md).
+- Seznam žádostí o stažení za posledních 30 dní najdete v článku [Panel stahování v analýze komerčního tržiště](./downloads-dashboard.md).
+- Konsolidované zobrazení zpětné vazby od zákazníků u nabídek na Azure Marketplace a AppSource najdete [v tématu Hodnocení a recenze na řídicím panelu Commercial Marketplace analytics](./ratings-reviews.md).

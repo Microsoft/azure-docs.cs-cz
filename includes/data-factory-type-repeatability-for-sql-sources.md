@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 24bb7a1fcb1569922fb34034fb3c0d003cdd7061
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175474"
 ---
-## <a name="repeatability-during-copy"></a>Opakovatelnosti během kopírování
-Při kopírování dat do Azure SQL nebo SQL Server z jiných dat ukládá třeba opakovatelnosti mějte na paměti, aby se zabránilo neúmyslnému výsledků. 
+## <a name="repeatability-during-copy"></a>Opakovatelnost během kopírování
+Při kopírování dat do Azure SQL/SQL Server z jiných úložišť dat je třeba mít na paměti opakovatelnost, aby se zabránilo nezamýšleným výsledkům. 
 
-Při kopírování dat do služby Azure SQL nebo SQL Server Database, aktivitu kopírování, která bude ve výchozím nastavení připojení sady dat do tabulky jímky ve výchozím nastavení. Například při kopírování dat ze zdroje souboru CSV (data hodnoty oddělené čárkami) obsahující dva záznamy do služby Azure SQL nebo SQL Server Database, to vypadá v tabulce:
+Při kopírování dat do databáze Azure SQL/SQL Server bude aktivita kopírování ve výchozím nastavení APPEND data nastavena na tabulku jímky ve výchozím nastavení. Například při kopírování dat ze zdroje souboru CSV (data oddělené hodnoty čárky) obsahující dva záznamy do databáze Azure SQL/SQL Server, je to, jak tabulka vypadá:
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -23,7 +23,7 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    2            2015-05-01 00:00:00
 ```
 
-Předpokládejme, že byly nalezeny chyby ve zdrojovém souboru a aktualizovat množství trubky snížit z 2 na 4 ve zdrojovém souboru. Pokud znovu spustíte datový řez za toto období, zjistíte dva nové záznamy připojenou k databázi Azure SQL nebo SQL Server. Níže předpokládá žádný sloupců v tabulce nemá omezení primárního klíče.
+Předpokládejme, že jste našli chyby ve zdrojovém souboru a aktualizovali množství Down Tube od 2 do 4 ve zdrojovém souboru. Pokud znovu spustíte řez dat pro toto období, najdete dva nové záznamy připojené k Azure SQL/SQL Server Database. Níže uvedené předpokládá, že žádný ze sloupců v tabulce nemá omezení primárního klíče.
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -34,15 +34,15 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    4            2015-05-01 00:00:00
 ```
 
-Abyste tomu předešli, budete muset zadat UPSERT sémantika s využitím jeden z pod 2 mechanismy, které jsou uvedeny níže.
+Chcete-li tomu zabránit, budete muset zadat sémantiku UPSERT využitím jednoho z níže uvedených mechanismů níže uvedených níže.
 
 > [!NOTE]
-> Řez opětovně lze spustit automaticky ve službě Azure Data Factory podle určené zásady opakování.
+> Řez lze spustit automaticky v Azure Data Factory podle zásady opakování zadané.
 > 
 > 
 
 ### <a name="mechanism-1"></a>Mechanismus 1
-Můžete využít **sqlWriterCleanupScript** vlastnost nejprve provést akce vyčištění při spuštění řezu. 
+Vlastnost **sqlWriterCleanupScript** můžete využít k prvnímu provedení akce vyčištění při spuštění řezu. 
 
 ```json
 "sink":  
@@ -52,9 +52,9 @@ Můžete využít **sqlWriterCleanupScript** vlastnost nejprve provést akce vy�
 }
 ```
 
-Skript pro vyčištění by byl proveden první během kopírování pro danou řez, který by odstranit data z tabulky SQL odpovídající této řez. Aktivity následně vložte data do tabulky SQL. 
+Skript pro vyčištění by byl proveden nejprve během kopírování pro daný řez, který by odstranil data z tabulky SQL odpovídající tomuto řezu. Aktivita následně vloží data do tabulky SQL. 
 
-Pokud je řez teď znovu spustit, budete se najít že množství se aktualizuje jako požadovaný.
+Pokud je řez nyní znovu spuštěn, zjistíte, že množství je aktualizováno podle potřeby.
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -63,25 +63,25 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    4            2015-05-01 00:00:00
 ```
 
-Předpokládejme, že záznam pro plochý podložku Odebereme z původní sdílený svazek clusteru. Opětovné spuštění řezu byste mohli vytvořit následující výsledek: 
+Předpokládejme, že záznam ploché podložky bude odebrán z původního csv. Potom opětovné spuštění řezu by vedlo k následujícímu výsledku: 
 
 ```
 ID    Product        Quantity    ModifiedDate
 ...    ...            ...            ...
 7     Down Tube    4            2015-05-01 00:00:00
 ```
-Není nic nového museli provést. Aktivita kopírování spustili skript pro vyčištění odstranit odpovídajících dat pro tento řez. Potom jej číst vstup ze souboru csv (což je obsaženy pouze 1 záznam) a vloženy do tabulky. 
+Nic nového se nemuselo dělat. Aktivita kopírování spustila skript vyčištění, aby odstranila odpovídající data pro tento řez. Pak si přečetl vstup z csv (který pak obsahoval pouze 1 záznam) a vložil jej do tabulky. 
 
 ### <a name="mechanism-2"></a>Mechanismus 2
 > [!IMPORTANT]
-> sliceIdentifierColumnName není v tuto chvíli podporováno pro službu Azure SQL Data Warehouse. 
+> sliceIdentifierColumnName není v současné době pro datový sklad Azure SQL podporován. 
 
-Jiný mechanismus opakovatelnosti dosáhnout spočívá v použití vyhrazené sloupec (**sliceIdentifierColumnName**) v cílové tabulce. V tomto sloupci se použije službou Azure Data Factory k zajištění, že zdroj a cíl zůstat synchronizováni. Tento přístup funguje, když je flexibilitu při změně nebo definování schématu cílové tabulky SQL. 
+Dalším mechanismem pro dosažení opakovatelnosti je vyhrazený sloupec **(sliceIdentifierColumnName**) v cílové tabulce. Tento sloupec by byl používán Azure Data Factory k zajištění synchronizace zdrojového a cílového zůstatu. Tento přístup funguje, pokud je flexibilita při změně nebo definování cílového schématu tabulky SQL. 
 
-V tomto sloupci se použije službou Azure Data Factory pro účely opakovatelnost a v procesu služby Azure Data Factory neprovede žádné změny schématu tabulky. Způsob, jak pomocí tohoto postupu:
+Tento sloupec by byl používán Azure Data Factory pro účely opakovatelnosti a v procesu Azure Data Factory nebude provádět žádné změny schématu v tabulce. Způsob použití tohoto přístupu:
 
-1. Definujte sloupce binárního typu (32) v cílové tabulce SQL. Měla by existovat bez omezení na tomto sloupci. V tomto příkladu pojmenujeme v tomto sloupci jako "ColumnForADFuseOnly".
-2. Použije v aktivitě kopírování následujícím způsobem:
+1. Definujte sloupec typu binární (32) v cílové tabulce SQL. V tomto sloupci by neměla být žádná omezení. Pojmenujme tento sloupec jako "ColumnForADFuseOnly" pro tento příklad.
+2. Použijte ji v aktivitě kopírování následujícím způsobem:
    
     ```json
     "sink":  
@@ -92,7 +92,7 @@ V tomto sloupci se použije službou Azure Data Factory pro účely opakovatelno
     }
     ```
 
-Azure Data Factory se vyplní v tomto sloupci podle jeho potřeba zajistit, že zdroj a cíl zůstat synchronizováni. Hodnoty daného sloupce by neměly používat mimo tento kontext uživatelem. 
+Azure Data Factory naplní tento sloupec podle potřeby zajistit, aby zdroj a cíl zůstat synchronizovány. Hodnoty tohoto sloupce by neměly být používány mimo tento kontext uživatelem. 
 
-Podobně jako mechanismus 1 aktivitu kopírování, která bude automaticky nejprve vyčištění dat pro danou řezu cílové tabulky SQL a pak spusťte aktivity kopírování obvykle k vložení dat ze zdroje do cíle pro tuto řez. 
+Podobně jako mechanismus 1, aktivita kopírování automaticky nejprve vyčistí data pro daný řez z cílové tabulky SQL a potom spustí aktivitu kopírování normálně vložit data ze zdroje do cíle pro tento řez. 
 

@@ -4,31 +4,31 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 2/14/2020
 ms.author: rohink
-ms.openlocfilehash: b674f8e31eb61328f60bb24866f73d02653b655f
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 3fbbb9d491eef202309c9e64f9a5a839a5d4516d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494959"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334572"
 ---
 **Veřejné zóny DNS**
 
-| Prostředek | Výchozí omezení |
+| Prostředek | Omezení |
 | --- | --- |
-| Veřejné Zóny DNS na předplatné |250 <sup>1</sup> |
-| Sady záznamů na veřejnou zónu DNS |10 000 <sup>1</sup> |
-| Záznamů na sadu záznamů ve veřejné zóně DNS |20 |
-| Počet záznamů aliasů pro jeden prostředek Azure |20|
-| Privátní DNS zóny na předplatné |1 000|
-| Sady záznamů na privátní zónu DNS |25000|
-| Počet záznamů na sadu záznamů pro privátní zóny DNS |20|
-| Virtual Network odkazy na privátní zónu DNS |1 000|
-| Odkazy na virtuální sítě podle privátních zón DNS s povolenou automatickou registrací |100|
-| Počet privátních zón DNS, na které může virtuální síť připojit s povolenou automatickou registrací |1|
-| Počet privátních zón DNS, které může virtuální síť připojit |1 000|
-| Počet dotazů DNS, které může virtuální počítač odeslat Azure DNS překladač za sekundu |500 <sup>2</sup> |
+| Veřejné zóny DNS na předplatné |250 <sup>1.</sup> |
+| Sady záznamů pro veřejnou zónu DNS |10 000 <sup>1</sup> |
+| Záznamy na záznam nastavený ve veřejné zóně DNS |20 |
+| Počet záznamů aliasu pro jeden prostředek Azure |20|
+| Privátní zóny DNS na předplatné |1000|
+| Sady záznamů pro soukromou zónu DNS |250 000|
+| Záznamy na sadu záznamů pro soukromé zóny DNS |20|
+| Propojení virtuálních sítí na soukromou zónu DNS |1000|
+| Propojení virtuálních sítí na soukromé zóny DNS s povolenou automatickou registrací |100|
+| Počet privátních zón DNS, na které se virtuální síť může propojit s povolenou automatickou registrací |1|
+| Počet privátních dns zón, které může virtuální síť propojit |1000|
+| Počet dotazů DNS, které může virtuální počítač odeslat překladači Azure DNS za sekundu |500 <sup>2</sup> |
 | Maximální počet dotazů DNS zařazených do fronty (čekající odpověď) na virtuální počítač |200 <sup>2</sup> |
 
-<sup>1</sup> Pokud potřebujete tato omezení zvýšit, obraťte se na podporu Azure.
+<sup>1.</sup> Pokud potřebujete zvýšit tato omezení, obraťte se na podporu Azure.
 
-<sup>2</sup> . Tato omezení platí pro každý jednotlivý virtuální počítač, nikoli na úrovni virtuální sítě. Dotazy DNS překračující tato omezení jsou vyřazené.
+<sup>2.</sup> Tyto limity se vztahují na každý jednotlivý virtuální počítač a ne na úrovni virtuální sítě. Dotazy DNS překračující tato omezení jsou vynechány.

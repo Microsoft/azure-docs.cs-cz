@@ -1,37 +1,37 @@
 ---
-title: 'Rychlý Start: Vytvoření webové aplikace v PHP'
-description: Nasaďte první Hello World PHP do Azure App Service v řádu minut. Nasadíte pomocí Gitu, což je jedním z mnoha způsobů, jak nasadit do App Service.
+title: 'Rychlý start: Vytvoření webové aplikace PHP'
+description: Nasaďte svůj první PHP Hello World do služby Azure App Service během několika minut. Nasazujete pomocí Gitu, což je jeden z mnoha způsobů nasazení do služby App Service.
 ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
 ms.date: 08/24/2018
-ms.custom: seodec18
-ms.openlocfilehash: 59e59fdf7fc6207a77bbe9923899570eeaa06a87
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 2813d96fdd9fcd588b78cbfb58fe57bf58a4fe68
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500146"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80047354"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Vytvoření webové aplikace v PHP v Azure
 
 > [!NOTE]
-> Tento článek nasadí aplikaci do služby App Service v systému Windows. Nasazení do služby App Service v _Linuxu_ je popsané v tématu [Vytvoření webové aplikace v PHP ve službě App Service v Linuxu](./containers/quickstart-php.md).
+> Tento článek nasadí aplikaci do služby App Service ve Windows. Nasazení do služby App Service v _Linuxu_ je popsané v tématu [Vytvoření webové aplikace v PHP ve službě App Service v Linuxu](./containers/quickstart-php.md).
 >
 
-[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  V tomto kurzu rychlý Start se dozvíte, jak nasadit aplikaci v PHP do Azure App Service. Pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) ve službě Cloud Shell vytvoříte webovou aplikaci a pomocí Gitu do této webové aplikace nasadíte vzorový kód PHP.
+[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  Tento úvodní kurz ukazuje, jak nasadit aplikaci PHP do služby Azure App Service. Pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) ve službě Cloud Shell vytvoříte webovou aplikaci a pomocí Gitu do této webové aplikace nasadíte vzorový kód PHP.
 
-![Ukázková aplikace spuštěná ve službě Azure](media/app-service-web-get-started-php/hello-world-in-browser.png)
+![Ukázková aplikace spuštěná v Azure](media/app-service-web-get-started-php/hello-world-in-browser.png)
 
 Tento postup můžete použít v případě počítačů se systémem Mac, Windows nebo Linux. Pokud máte nainstalované všechny požadované prostředky, zabere vám tento postup zhruba pět minut.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 * <a href="https://git-scm.com/" target="_blank">Nainstalovat Git</a>.
-* <a href="https://php.net/manual/install.php" target="_blank">Nainstalovat PHP</a>.
+* <a href="https://php.net/manual/install.php" target="_blank">Instalace PHP</a>
 
 ## <a name="download-the-sample-locally"></a>Místní stažení ukázky
 
@@ -68,9 +68,9 @@ V okně terminálu ukončete webový server stisknutím **Ctrl + C**.
 
 ## <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
-Ve službě Cloud Shell pomocí příkazu `myAppServicePlan`[`az webapp create` vytvořte v plánu služby App Service ](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) webovou aplikaci. 
+V prostředí Cloud Shell vytvořte `myAppServicePlan` webovou aplikaci [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) v plánu služby App Service pomocí příkazu. 
 
-V následujícím příkladu nahraďte `<app_name>` globálně jedinečným názvem aplikace (platné znaky jsou `a-z`, `0-9` a `-`). Modul runtime je nastavený na `PHP|7.0`. Pokud chcete zobrazit všechny podporované moduly runtime, spusťte příkaz [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes). 
+V následujícím příkladu nahraďte `<app_name>` globálně jedinečným názvem aplikace (platné znaky jsou `a-z`, `0-9` a `-`). Modul runtime je nastavený na `PHP|7.0`. Chcete-li zobrazit všechny [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes)podporované moduly runtimes, spusťte . 
 
 ```azurecli-interactive
 # Bash
@@ -95,13 +95,13 @@ Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebs
   < JSON data removed for brevity. >
 }
 ```
-Vytvořili jste novou prázdnou webovou aplikaci s povoleným nasazením Gitu.
+Vytvořili jste prázdnou novou webovou aplikaci s povoleným nasazením gitu.
 
 > [!NOTE]
 > Adresa URL vzdáleného úložiště Git se zobrazuje ve vlastnosti `deploymentLocalGitUrl` ve formátu `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`. Tuto adresu URL si uložte, protože ji budete potřebovat později.
 >
 
-Přejděte do vaší nově vytvořené webové aplikace. _&lt;Název aplikace>_ nahraďte jedinečným názvem aplikace, který jste vytvořili v předchozím kroku.
+Přejděte do vaší nově vytvořené webové aplikace. Nahraďte _ &lt;název aplikace>_ jedinečným názvem aplikace vytvořeným v předchozím kroku.
 
 ```bash
 http://<app name>.azurewebsites.net
@@ -148,7 +148,7 @@ http://<app_name>.azurewebsites.net
 
 Vzorový kód PHP je spuštěný ve webové aplikaci služby Azure App Service.
 
-![Ukázková aplikace spuštěná ve službě Azure](media/app-service-web-get-started-php/hello-world-in-browser.png)
+![Ukázková aplikace spuštěná v Azure](media/app-service-web-get-started-php/hello-world-in-browser.png)
 
 **Blahopřejeme!** Nasadili jste svoji první aplikaci v PHP do služby App Service.
 
@@ -173,15 +173,15 @@ Po dokončení nasazení se vraťte do okna prohlížeče, které se otevřelo v
 
 ## <a name="manage-your-new-azure-app"></a>Správa nové aplikace Azure
 
-1. Pokud chcete spravovat webovou aplikaci, kterou jste vytvořili, přejděte na web <a href="https://portal.azure.com" target="_blank">Azure Portal</a>. Vyhledejte a vyberte **App Services**.
+1. Pokud chcete spravovat webovou aplikaci, kterou jste vytvořili, přejděte na web <a href="https://portal.azure.com" target="_blank">Azure Portal</a>. Vyhledejte a vyberte **služby App Services**.
 
-    ![Hledání App Services, Azure Portal a vytvoření webové aplikace v PHP](media/app-service-web-get-started-php/navigate-to-app-services-in-the-azure-portal.png)
+    ![Hledání služeb aplikace, portál Azure, vytvoření webové aplikace PHP](media/app-service-web-get-started-php/navigate-to-app-services-in-the-azure-portal.png)
 
 2. Vyberte název aplikace Azure.
 
     ![Přechod do aplikace Azure na portálu](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
 
-    Zobrazí se stránka s **přehledem** vaší webové aplikace. Tady můžete provádět základní úlohy správy, jako je **procházení**, **zastavení**, **restartování**a **odstranění**.
+    Zobrazí se stránka **Přehled** vaší webové aplikace. Zde můžete provádět základní úlohy správy, jako **je Procházet**, **Zastavit**, **Restartovat**a **Odstranit**.
 
     ![Stránka služby App Service na webu Azure Portal](media/app-service-web-get-started-php/php-docs-hello-world-app-service-detail.png)
 

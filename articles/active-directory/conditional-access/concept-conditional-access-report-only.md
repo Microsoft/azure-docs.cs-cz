@@ -1,54 +1,54 @@
 ---
-title: Co je režim pouze pro sestavy podmíněného přístupu? -Azure Active Directory
-description: Jak může pomáhat režim pouze sestav s nasazením zásad podmíněného přístupu
+title: Co je režim pouze pro sestavu podmíněného přístupu? - Služba Azure Active Directory
+description: Jak může pomoc režimu sestavy pomocí nasazení zásad podmíněného přístupu
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 03/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75880f4c533a503852d62ff940e53d4bcc30d218
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: bd41e79a1e08c57e806f6ada32faccfa5fdf5792
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186123"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295285"
 ---
-# <a name="what-is-conditional-access-report-only-mode"></a>Co je režim pouze pro sestavy podmíněného přístupu?
+# <a name="what-is-conditional-access-report-only-mode"></a>Co je režim pouze pro sestavu podmíněného přístupu?
 
-Podmíněný přístup se v mnoha případech používá pro naše zákazníky k zajištění zabezpečení díky použití správných řízení přístupu ve správných situacích. Některá z potíží s nasazením zásad podmíněného přístupu ve vaší organizaci ale určuje dopad na koncové uživatele. Může být obtížné předvídat počet a jména uživatelů ovlivněných běžnými iniciativami nasazení, jako je blokování ověřování starší verze, vyžadování vícefaktorového ověřování pro populace uživatelů nebo implementace zásad rizik přihlašování. 
+Podmíněný přístup je široce používán našimi zákazníky, aby zůstali v bezpečí použitím správných ovládacích prvků přístupu za správných okolností. Jednou z výzev při nasazování zásad podmíněného přístupu ve vaší organizaci je však určení dopadu na koncové uživatele. Může být obtížné předvídat počet a názvy uživatelů ovlivněných běžnými iniciativami nasazení, jako je blokování starších verzí ověřování, vyžadování vícefaktorového ověřování pro populaci uživatelů nebo implementace zásad rizik přihlášení. 
 
-Režim pouze pro sestavy je nový stav zásad podmíněného přístupu, který umožňuje správcům vyhodnotit dopad zásad podmíněného přístupu předtím, než je povolí ve svém prostředí.  S vydáním režimu pouze pro sestavy:
+Režim pouze pro sestavu je nový stav zásad podmíněného přístupu, který umožňuje správcům vyhodnotit dopad zásad podmíněného přístupu před povolením v jejich prostředí.  S vydáním režimu pouze pro hlášení:
 
-- V režimu pouze pro sestavy lze povolit zásady podmíněného přístupu.
-- Během přihlašování jsou zásady v režimu pouze sestavy vyhodnocovány, ale nejsou vyhodnoceny.
-- Výsledky jsou protokolovány na kartách **podmíněný přístup** a **pouze sestava (Preview)** v podrobnostech protokolu přihlášení.
-- Zákazníci s předplatným Azure Monitor můžou monitorovat dopad zásad podmíněného přístupu pomocí sešitu s přehledem podmíněného přístupu.
+- Zásady podmíněného přístupu lze povolit v režimu pouze pro sestavu.
+- Během přihlášení zásady v režimu pouze sestavy jsou vyhodnocovány, ale nejsou vynuceny.
+- Výsledky jsou zaznamenány v **podmíněném přístupu** a **sestavy pouze (Preview)** karty přihlašovací protokol podrobnosti.
+- Zákazníci s předplatným Azure Monitoru můžou sledovat dopad svých zásad podmíněného přístupu pomocí sešitu Přehledy podmíněného přístupu.
 
 > [!WARNING]
-> Zásady v režimu pouze pro sestavy, které vyžadují vyhovující zařízení, mohou uživatele v systému Mac, iOS a Android vyzvat k výběru certifikátu zařízení během vyhodnocování zásad, a to i v případě, že není vynuceno dodržování předpisů zařízením. Tyto výzvy se můžou opakovat, dokud zařízení nedodržuje předpisy. Pokud chcete koncovým uživatelům zabránit v přijímání výzev během přihlašování, vylučte platformy Mac, iOS a Android ze zásad pouze pro sestavy, které provádějí kontroly dodržování předpisů zařízením.
+> Zásady v režimu pouze pro sestavu, které vyžadují kompatibilní zařízení, mohou uživatele na Macu, iOS a Androidu vyzvat k výběru certifikátu zařízení během vyhodnocení zásad, i když dodržování předpisů zařízení není vynuceno. Tyto výzvy se mohou opakovat, dokud nebude zařízení kompatibilní. Chcete-li koncovým uživatelům zabránit v přijímání výzev během přihlašování, vylučte platformy zařízení Mac, iOS a Android ze zásad pouze pro sestavy, které provádějí kontroly dodržování předpisů zařízení.
 
-![Karta pouze pro sestavy v protokolu přihlášení ke službě Azure AD](./media/concept-conditional-access-report-only/report-only-detail-in-sign-in-log.png)
+![Karta Pouze sestava v přihlašovacím protokolu Azure AD](./media/concept-conditional-access-report-only/report-only-detail-in-sign-in-log.png)
 
 ## <a name="policy-results"></a>Výsledky zásad
 
-Pokud je pro dané přihlášení vyhodnocena zásada v režimu pouze sestavy, existují čtyři nové možné hodnoty výsledků:
+Pokud je zásada v režimu pouze pro sestavu vyhodnocena pro dané přihlášení, existují čtyři nové možné hodnoty výsledků:
 
 | Výsledek | Popis |
 | --- | --- |
-| Pouze sestava: úspěch | Všechny nakonfigurované podmínky zásad, vyžadované neinteraktivní ovládací prvky grantu a ovládací prvky relace byly splněné. Například požadavek služby Multi-Factor Authentication je spokojen deklarací MFA, která už je v tokenu přítomná, nebo se na zařízení, které dodržuje předpisy, vyhovět zásadám zařízení, které dodržuje předpisy. |
-| Pouze sestava: Chyba | Všechny nakonfigurované podmínky zásad byly splněny, ale nebyly splněny všechny požadované ovládací prvky pro udělení neinteraktivního udělení nebo řízení relace. Například zásada platí pro uživatele, kde je nakonfigurovaný ovládací prvek blokování, nebo zařízení nesplňuje požadavky zásad zařízení. |
-| Pouze sestava: vyžaduje se akce uživatele. | Byly splněny všechny nakonfigurované podmínky zásad, ale akce uživatele by vyžadovala, aby splňovala požadované ovládací prvky udělení nebo relace. V režimu pouze sestavy není uživatel vyzván k splnění požadovaných ovládacích prvků. Například uživatelé nejsou dotazováni na výzvy služby Multi-Factor Authentication nebo podmínek použití.   |
-| Pouze sestava: Nepoužito | Nebyly splněny všechny nakonfigurované podmínky zásad. Uživatel je například vyloučen ze zásady nebo zásada se vztahuje pouze na určitá důvěryhodná umístění. |
+| Pouze zpráva: Úspěch | Byly splněny všechny nakonfigurované podmínky zásad, požadované neinteraktivní ovládací prvky grantů a ovládací prvky relace. Například požadavek vícefaktorového ověřování je splněn deklarací mfa, která je již v tokenu k dispozici, nebo je splněna kompatibilní zásada zařízení provedením kontroly zařízení na kompatibilním zařízení. |
+| Pouze sestava: Selhání | Všechny nakonfigurované podmínky zásad byly splněny, ale nebyly splněny všechny požadované neinteraktivní ovládací prvky grantu nebo ovládací prvky relace. Zásada se například vztahuje na uživatele, u kterého je nakonfigurován ovládací prvek bloku nebo pokud zařízení selže v zásadách kompatibilního zařízení. |
+| Pouze sestava: Je vyžadována akce uživatele | Všechny nakonfigurované podmínky zásad byly splněny, ale akce uživatele by byla nutná ke splnění požadovaných ovládacích prvků udělení nebo relací. V režimu pouze sestavy není uživatel vyzván ke splnění požadovaných ovládacích prvků. Uživatelé například nejsou vyzváni k vícefaktorové ověřování výzvy nebo podmínky použití.   |
+| Pouze sestava: Nepoužito | Nebyly splněny všechny nakonfigurované podmínky zásad. Například uživatel je vyloučen ze zásady nebo se zásada vztahuje pouze na určitá důvěryhodná místa s názvem. |
 
-## <a name="conditional-access-insights-workbook"></a>Sešit pro podmíněný přístup – přehled
+## <a name="conditional-access-insights-workbook"></a>Sešit Přehledy podmíněného přístupu
 
-Správci mají možnost vytvořit více zásad v režimu pouze sestavy, takže je nutné pochopit individuální dopad obou zásad a kombinovaný dopad více zásad, které jsou vyhodnocovány dohromady. Nový sešit podmíněného přístupu s přehledem umožňuje správcům vizualizovat dotazy podmíněného přístupu a monitorovat dopad zásad pro daný časový rozsah, sadu aplikací a uživatele. 
+Správci mají možnost vytvářet více zásad v režimu pouze sestavy, takže je nutné pochopit individuální dopad jednotlivých zásad a kombinovaný dopad více zásad vyhodnocených společně. Nový sešit Přehledy podmíněného přístupu umožňuje správcům vizualizovat dotazy podmíněného přístupu a sledovat dopad zásad pro daný časový rozsah, sadu aplikací a uživatelů. 
  
 ## <a name="next-steps"></a>Další kroky
 
-[Konfigurace režimu pouze pro sestavy na základě zásad podmíněného přístupu](howto-conditional-access-report-only.md)
+[Konfigurace režimu pouze pro sestavu v zásadách podmíněného přístupu](howto-conditional-access-report-only.md)

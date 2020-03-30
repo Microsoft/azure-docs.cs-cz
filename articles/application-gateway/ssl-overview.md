@@ -1,78 +1,78 @@
 ---
-title: Povolení koncového šifrování protokolu SSL v Azure Application Gateway
-description: Tento článek představuje přehled Application Gateway Podpora koncových protokolů SSL.
+title: Povolení koncového ssl v bráně aplikace Azure
+description: Tento článek je přehled aplikační brány end to-end SSL podpory.
 services: application-gateway
 author: amsriva
 ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: 64b90afd598b96604fc9c3ddc4bc10586e714363
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 9c4e6124acdbb35233f8e829f43d2665fd4a5176
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79279101"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80284802"
 ---
-# <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>Přehled ukončení protokolu SSL a koncového šifrování protokolu SSL s Application Gateway
+# <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>Přehled ukončení SSL a ukončení ssl s aplikační bránou
 
-SSL (Secure Sockets Layer) (SSL) je standardní technologie zabezpečení pro vytvoření šifrovaného propojení mezi webovým serverem a prohlížečem. Tento odkaz zajistí, že všechna data předaná mezi webovým serverem a prohlížečem zůstanou soukromá a šifrovaná. Aplikační brána podporuje jak ukončení protokolu SSL v bráně, tak i koncové šifrování protokolu SSL.
+Secure Sockets Layer (SSL) je standardní technologie zabezpečení pro vytvoření šifrovaného propojení mezi webovým serverem a prohlížečem. Tento odkaz zajišťuje, že všechna data předávaná mezi webovým serverem a prohlížeči zůstanou soukromá a šifrovaná. Aplikační brána podporuje jak ukončení SSL na bráně, tak šifrování SSL od konce.
 
 ## <a name="ssl-termination"></a>Ukončení protokolu SSL
 
-Služba Application Gateway podporuje ukončení protokolu SSL na bráně, po čemž provoz typicky teče nešifrován na back-endové servery. Ukončení protokolu SSL ve službě Application Gateway má několik výhod:
+Služba Application Gateway podporuje ukončení protokolu SSL na bráně, po čemž provoz typicky teče nešifrován na back-endové servery. Existuje celá řada výhod ukončení SSL na aplikační bráně:
 
-- **Vylepšený výkon** – největší dosažený výkon při dešifrování SSL je počáteční metodou handshake. Pro zvýšení výkonu Server, který provádí dešifrování, zapíše ID relací SSL a spravuje lístky relace TLS. Pokud se tato služba používá u služby Application Gateway, můžou všechny požadavky ze stejného klienta používat hodnoty uložené v mezipaměti. Pokud se to provede na back-end serverech, pak pokaždé, když požadavky klienta přejdou na jiný server, musí se klient znovu ověřit. Použití lístků protokolu TLS může přispět k zmírnění tohoto problému, ale není podporováno všemi klienty a může být obtížné ho nakonfigurovat a spravovat.
-- **Lepší využití back-end serverů** – zpracování SSL/TLS je velmi náročné na procesor a výrazně se zvyšuje i při zvýšení velikosti klíče. Odebráním této práce ze serverů back-end se jim umožní soustředit se na to, co je pro vás nejúčinnější, a poskytovat obsah.
-- **Inteligentní směrování** – dešifrováním provozu má Aplikační brána přístup k obsahu požadavku, jako jsou HLAVIČKY, URI a tak dále, a může tato data použít k směrování požadavků.
-- **Správa certifikátů** – certifikáty je potřeba koupit a nainstalovat jenom na aplikační bránu, ne na všechny back-endové servery. Tím ušetříte čas i peníze.
+- **Zlepšený výkon** – Největší výkon hit při provádění SSL dešifrování je počáteční handshake. Chcete-li zvýšit výkon, server, který provádí dešifrování, ukládá ID relací SSL a spravuje lístky relace TLS. Pokud se tak děje v bráně aplikace, všechny požadavky od stejného klienta můžete použít hodnoty uložené v mezipaměti. Pokud se provádí na serverech back-end, pak pokaždé, když požadavky klienta přejít na jiný server klient musí znovu ověřit. Použití lístků TLS může pomoci zmírnit tento problém, ale nejsou podporovány všemi klienty a může být obtížné konfigurovat a spravovat.
+- **Lepší využití back-endových serverů** – zpracování SSL/TLS je velmi náročné na procesor a s růstem velikosti klíčů je stále intenzivnější. Odebrání této práce z back-endových serverů jim umožňuje zaměřit se na to, co jsou nejúčinnější, poskytování obsahu.
+- **Inteligentní směrování** – Dešifrováním provozu má aplikační brána přístup k obsahu požadavku, jako jsou záhlaví, identifikátor URI a tak dále, a může tato data použít k směrování požadavků.
+- **Správa certifikátů** – Certifikáty je potřeba zakoupit a nainstalovat pouze na aplikační bráně a ne všechny back-endové servery. To šetří čas i peníze.
 
-Chcete-li nakonfigurovat ukončení protokolu SSL, je nutné přidat certifikát SSL do naslouchacího procesu, aby služba Application Gateway mohla odvodit symetrický klíč podle specifikace protokolu SSL. Symetrický klíč se pak použije k šifrování a dešifrování provozu odeslaného do brány. Certifikát SSL musí být ve formátu PFX (Personal Information Exchange). Tento formát souboru umožňuje exportovat privátní klíč, který služba Application Gateway vyžaduje k provádění šifrování a dešifrování provozu.
+Chcete-li nakonfigurovat ukončení SSL, je nutné přidat certifikát SSL do naslouchací proces, aby aplikační brána mohla odvodit symetrický klíč podle specifikace protokolu SSL. Symetrický klíč se pak používá k šifrování a dešifrování přenosů odeslaných do brány. Certifikát SSL musí být ve formátu PFX (Personal Information Exchange). Tento formát souboru umožňuje exportovat soukromý klíč, který je vyžadován aplikační bránou k provedení šifrování a dešifrování provozu.
 
 > [!NOTE] 
 >
-> Application Gateway neposkytuje žádnou možnost vytvořit nový certifikát nebo odeslat žádost o certifikát certifikační autoritě.
+> Aplikační brána neposkytuje žádnou možnost vytvořit nový certifikát nebo odeslat žádost o certifikát certifikačnímu úřadu.
 
-Aby připojení SSL fungovalo, musíte zajistit, aby certifikát SSL splňoval následující podmínky:
+Aby připojení SSL fungovalo, je třeba zajistit, aby certifikát SSL splňoval následující podmínky:
 
-- Aktuální datum a čas spadá do rozsahu dat "platný od" a "platné do" na certifikátu.
+- Aktuální datum a čas je v rozsahu "Platné od" a "Platné do" na certifikátu.
 - Běžný název certifikátu (CN) odpovídá hlavičce hostitele v požadavku. Například pokud klient posílá požadavek na `https://www.contoso.com/`, musí být CN `www.contoso.com`.
 
-### <a name="certificates-supported-for-ssl-termination"></a>Certifikáty podporované pro ukončení SSL
+### <a name="certificates-supported-for-ssl-termination"></a>Certifikáty podporované pro ukončení ssl
 
-Application Gateway podporuje následující typy certifikátů:
+Aplikační brána podporuje následující typy certifikátů:
 
-- Certifikát CA (certifikační autorita): certifikát certifikační autority je digitální certifikát vydaný certifikační autoritou (CA).
-- Certifikát EV (rozšířené ověřování): certifikát proev je standardními pokyny pro certifikát. Tím se zamění i název společnosti na panelu lokátoru v prohlížeči a zároveň na jeho publikování.
-- Certifikát se zástupnými znaky: Tento certifikát podporuje libovolný počet subdomén na základě *. site.com, kde by vaše subdoména nahradila *. Ale nepodporuje site.com, takže pokud uživatelé přistupují k webu, aniž by museli psát úvodní "www", certifikát se zástupnými znaky nebude pokrývat.
-- Certifikáty podepsané svým držitelem: klientské prohlížeče nedůvěřují těmto certifikátům a upozorní uživatele, že certifikát virtuální služby není součástí řetězce důvěryhodnosti. Certifikáty podepsané svým držitelem jsou vhodné pro testování nebo prostředí, kde správci kontrolují klienty a můžou bezpečně obejít výstrahy zabezpečení v prohlížeči. Provozní úlohy by nikdy neměly používat certifikáty podepsané svým držitelem.
+- Certifikát certifikační autority: Certifikát certifikační autority je digitální certifikát vydaný certifikační autoritou (CA)
+- Certifikát EV (Extended Validation): Certifikát EV je certifikát, který odpovídá standardním pokynům certifikátu. Tím se změní na lištu lokátoru prohlížeče zeleně a zveřejní se také název společnosti.
+- Certifikát se zástupnými znaky: Tento certifikát podporuje libovolný počet subdomén na základě *.site.com, kde by subdoména nahradila *. Nepodporuje však site.com, takže v případě, že uživatelé přistupují k vašim webovým stránkům bez zadání úvodního "www", certifikát se zástupnými symboly se na to nevztahuje.
+- Certifikáty podepsané svým držitelem: Prohlížeče klienta těmto certifikátům nedůvěřují a upozorní uživatele, že certifikát virtuální služby není součástí řetězce důvěryhodnosti. Certifikáty podepsané svým držitelem jsou vhodné pro testování nebo prostředí, kde správci řídí klienty a mohou bezpečně obejít výstrahy zabezpečení prohlížeče. Produkční úlohy by nikdy neměly používat certifikáty podepsané svým držitelem.
 
-Další informace najdete v tématu [Konfigurace ukončení protokolu SSL pomocí služby Application Gateway](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
+Další informace naleznete v [tématu konfigurace ukončení protokolu SSL pomocí brány aplikace](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
 
-### <a name="size-of-the-certificate"></a>Velikost certifikátu
-V části [omezení Application Gateway](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#application-gateway-limits) můžete zjistit, že je podporovaná maximální velikost certifikátu SSL.
+### <a name="size-of-the-certificate"></a>Velikost osvědčení
+V části [Omezení aplikační brány](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#application-gateway-limits) zjistěte, jaká je maximální podporovaná velikost certifikátu SSL.
 
-## <a name="end-to-end-ssl-encryption"></a>Koncové šifrování protokolu SSL
+## <a name="end-to-end-ssl-encryption"></a>Šifrování SSL od konce do konce
 
-Někteří zákazníci možná nevyžadují nešifrovanou komunikaci se servery back-end. Může to být z důvodu požadavků na zabezpečení nebo dodržování předpisů nebo protože aplikace může přijímat pouze zabezpečená připojení. Pro takové aplikace služba Application Gateway podporuje koncové šifrování protokolu SSL.
+Někteří zákazníci nemusí chtít nešifrovanou komunikaci se servery back-end. Může to být z důvodu požadavků na zabezpečení nebo dodržování předpisů nebo protože aplikace může přijímat pouze zabezpečená připojení. Pro takové aplikace služba Application Gateway podporuje koncové šifrování protokolu SSL.
 
 Koncové šifrování protokolu SSL umožňuje bezpečně přenášet citlivá data do back-endu v zašifrované podobě a současně využívat výhody funkcí pro vyrovnávání zatížení vrstvy 7, které nabízí aplikační brána. Jde například o spřažení relací na základě souborů cookie, směrování na základě adres URL, podporu směrování založeného na webech nebo možnost vkládat hlavičky X-Forwarded-*.
 
-Když je nakonfigurována s režimem komunikace koncového šifrování protokolu SSL, služba Application Gateway ukončuje na bráně relace protokolu SSL a dešifruje provoz uživatelů. Následně použije nakonfigurovaná pravidla k výběru příslušné instance back-endového fondu, na kterou provoz přesměruje. Služba Application Gateway poté zahájí nové připojení SSL k back-endovému serveru a před odesláním požadavku do back-endu znovu zašifruje data pomocí certifikátu s veřejným klíčem back-endového serveru. Každá odpověď webového serveru prochází ke koncovému uživateli stejným procesem. Koncové šifrování protokolu SSL je povolené nastavením nastavení protokolu v [Nastavení http back-endu](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http-settings) na https, které se pak použije na back-end fond.
+Když je nakonfigurována s režimem komunikace koncového šifrování protokolu SSL, služba Application Gateway ukončuje na bráně relace protokolu SSL a dešifruje provoz uživatelů. Následně použije nakonfigurovaná pravidla k výběru příslušné instance back-endového fondu, na kterou provoz přesměruje. Služba Application Gateway poté zahájí nové připojení SSL k back-endovému serveru a před odesláním požadavku do back-endu znovu zašifruje data pomocí certifikátu s veřejným klíčem back-endového serveru. Každá odpověď webového serveru prochází ke koncovému uživateli stejným procesem. Ssl od konce do konce je povoleno nastavením protokolu v [nastavení HTTP back-endu](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http-settings) na protokol HTTPS, který se pak použije na back-endový fond.
 
-Zásady SSL se vztahují na provoz front-endu i back-endu. Na front-endu Application Gateway funguje jako server a vynutila zásady. V back-endu Application Gateway slouží jako klient a odesílá informace protokolu/šifry jako preference během ověřování SSL.
+Zásady SSL platí pro front-endový i back-endový provoz. Na front-endu funguje aplikační brána jako server a vynucuje zásady. V back-endu aplikace gateway funguje jako klient a odešle informace o protokolu/šifra jako předvolba během handshake SSL.
 
-Služba Application Gateway komunikuje pouze s instancemi back-end, které mají buď povolený certifikát s aplikační bránou, nebo jejichž certifikáty jsou podepsané známými CERTIFIKAČNÍmi autoritami, kde CN certifikátu odpovídá názvu hostitele v HTTP. nastavení back-endu. Patří mezi ně důvěryhodné služby Azure, jako jsou Azure App Service Web Apps a Azure API Management.
+Aplikační brána komunikuje pouze s těmi instancemi back-endu, které buď zadali svůj certifikát na seznamu povolených, s aplikační bránou nebo jejichž certifikáty jsou podepsány známými autoritami certifikační autority, kde certifikát Cn odpovídá názvu hostitele v protokolu HTTP nastavení back-endu. Patří mezi ně důvěryhodné služby Azure, jako jsou webové aplikace služby Azure App service a Správa rozhraní API Azure.
 
-Pokud certifikáty členů ve fondu back-end nejsou podepsané známými autoritami certifikační autority, musí být každá instance ve fondu back-end s povoleným koncovým protokolem SSL nakonfigurovaná s certifikátem, aby bylo možné zabezpečenou komunikaci. Přidáním certifikátu zajistíte, aby brána Application Gateway komunikovala pouze se známými back-end instancemi. Tím se dále zabezpečuje koncová komunikace.
-
-> [!NOTE] 
->
-> Pro důvěryhodné služby Azure, jako jsou Azure App Service Web Apps a Azure API Management se nevyžaduje nastavení ověřovacího certifikátu.
+Pokud certifikáty členů v back-endovém fondu nejsou podepsány známými autoritami certifikační autority, musí být každá instance v back-endovém fondu s povoleným protokolem SSL od konce nakonfigurována pomocí certifikátu, který umožní zabezpečenou komunikaci. Přidání certifikátu zajistí, že aplikační brána komunikuje pouze se známými back-endovými instancemi. To dále zabezpečuje komunikaci mezi koncovými soubory.
 
 > [!NOTE] 
 >
-> Certifikát přidaný do **back-endu http** k ověření back-end serverů může být stejný jako certifikát přidaný do **naslouchacího procesu** pro ukončení protokolu SSL v aplikační bráně nebo jiný pro rozšířené zabezpečení.
+> Nastavení ověřovacího certifikátu není vyžadováno pro důvěryhodné služby Azure, jako jsou webové aplikace služby Azure App service a Správa rozhraní Azure API.
+
+> [!NOTE] 
+>
+> Certifikát přidaný do **nastavení HTTP back-endu** k ověření serverů back-endu může být stejný jako certifikát přidaný k **naslouchací procesu** pro ukončení protokolu SSL v bráně aplikace nebo jiný pro rozšířené zabezpečení.
 
 ![scénář koncového šifrování protokolu ssl][1]
 
@@ -80,36 +80,36 @@ V tomto příkladu jsou požadavky, které používají šifrování TLS 1.2, p�
 
 ## <a name="end-to-end-ssl-and-whitelisting-of-certificates"></a>Koncové šifrování protokolu SSL a vytváření seznamu povolených certifikátů
 
-Služba Application Gateway komunikuje pouze se známými back-endovými instancemi, jejichž certifikáty jsou uvedeny v seznamu povolených certifikátů ve službě Application Gateway. Chcete-li povolit vytváření seznamu povolených certifikátů, musíte do aplikační brány nahrát veřejný klíč certifikátů back-endového serveru (nikoliv kořenový certifikát). Potom budou povolena jenom připojení ke známým back-endům uvedeným v seznamu. Zbývající back-endy způsobí chybu brány. Certifikáty podepsané svým držitelem slouží pouze k testování a nedoporučují se pro úlohy v produkčním prostředí. Tyto certifikáty musí být v seznamu povolených s aplikační bránou, jak je popsáno v předchozích krocích předtím, než je můžete použít.
+Služba Application Gateway komunikuje pouze se známými back-endovými instancemi, jejichž certifikáty jsou uvedeny v seznamu povolených certifikátů ve službě Application Gateway. Chcete-li povolit vytváření seznamu povolených certifikátů, musíte do aplikační brány nahrát veřejný klíč certifikátů back-endového serveru (nikoliv kořenový certifikát). Potom budou povolena jenom připojení ke známým back-endům uvedeným v seznamu. Zbývající back-endy způsobí chybu brány. Certifikáty podepsané svým držitelem slouží pouze k testování a nedoporučují se pro úlohy v produkčním prostředí. Tyto certifikáty musí být uvedeny na seznamu povolených s bránou aplikace, jak je popsáno v předchozích krocích, aby mohly být použity.
 
 > [!NOTE]
-> Pro důvěryhodné služby Azure, jako je Azure App Service, se nevyžaduje nastavení ověřovacího certifikátu.
+> Nastavení ověřovacího certifikátu není vyžadováno pro důvěryhodné služby Azure, jako je služba Azure App Service.
 
-## <a name="end-to-end-ssl-with-the-v2-sku"></a>Koncové šifrování protokolu SSL s SKU v2
+## <a name="end-to-end-ssl-with-the-v2-sku"></a>Konec na konec SSL s v2 Skladové položky
 
-Ověřovací certifikáty jsou zastaralé a v SKU Application Gateway v2 byly nahrazeny důvěryhodnými kořenovými certifikáty. Fungují podobně jako u ověřovacích certifikátů s několika klíčovými rozdíly:
+Ověřovací certifikáty byly zastaralé a nahrazeny důvěryhodnými kořenovými certifikáty ve skladové jednotce sku aplikace v2. Fungují podobně jako ověřovací certifikáty s několika klíčovými rozdíly:
 
-- Certifikáty podepsané dobře známými CERTIFIKAČNÍmi autoritami, jejichž CN odpovídá názvu hostitele v nastavení back-endu HTTP, nevyžaduje žádný další krok pro fungování koncového protokolu SSL. 
+- Certifikáty podepsané známými autoritami certifikační autority, jejichž název propojené sítě odpovídá názvu hostitele v nastavení back-endu HTTP, nevyžadují žádný další krok, aby protokol SSL ukončil. 
 
-   Pokud jsou například certifikáty back-end vydávány dobře známou certifikační autoritou a má CN of contoso.com a pole hostitel nastavení http back-endu je také nastaveno na contoso.com, nejsou nutné žádné další kroky. Můžete nastavit protokol nastavení http back-endu na HTTPS a sondu stavu a datovou cestu by byl protokol SSL povolený. Pokud jako svůj back-end používáte Azure App Service nebo jiné webové služby Azure, pak jsou tyto aplikace implicitně důvěryhodné a v koncovém protokolu SSL nejsou nutné žádné další kroky.
+   Pokud jsou například back-endové certifikáty vydávány známou certifikační autoritou a má kn contoso.com a pole hostitele nastavení back-endu http je také nastaveno na contoso.com, nejsou nutné žádné další kroky. Můžete nastavit protokol nastavení back-endu http na protokol HTTPS a sonda stavu i datová cesta by byla povolena protokolem SSL. Pokud používáte Azure App Service nebo jiné webové služby Azure jako back-end, pak jsou implicitně důvěryhodné a žádné další kroky jsou nutné pro koncové až koncové SSL.
    
 > [!NOTE] 
 >
-> Aby byl certifikát SSL důvěryhodný, musí být tento certifikát serveru back-end vydaný certifikační autoritou, která je součástí důvěryhodného úložiště Application Gateway. Pokud certifikát nebyl vydán důvěryhodnou certifikační autoritou, bude Application Gateway zkontrolován Chcete-li zjistit, zda certifikát vydávající certifikační autority vystavila důvěryhodná certifikační autorita, a tak dále, dokud nenalezne důvěryhodnou certifikační autoritu (v takovém případě se naváže důvěryhodné připojení) nebo nenalezne žádnou důvěryhodnou certifikační autoritu (v tomto okamžiku Application Gateway označí back-end není v pořádku). Proto se doporučuje certifikát back-end serveru, který obsahuje kořenové i intermidiate certifikační autority.
+> Aby byl certifikát SSL důvěryhodný, musí být tento certifikát back-endového serveru vydán certifikační autoritou, která je součástí důvěryhodného úložiště brány aplikace.Pokud certifikát nebyl vydán důvěryhodným certifikačním systémem, bude aplikační brána zkontrolována chcete-li zjistit, zda byl certifikát vystavující certifikační autority vydán důvěryhodnou certifikační autoritou a tak dále, dokud nebude nalezen adůvěryhodná certifikační autorita (v tomto okamžiku bude navázáno důvěryhodné a zabezpečené připojení) nebo dokud nebude nalezena důvěryhodná certifikační autorita (v tomto okamžiku bude brána aplikace označovat back-end nezdravé). Proto se doporučuje, aby certifikát back-endového serveru obsahoval kořenové i zprostředkující certifikační autority.
 
-- Pokud je certifikát podepsaný svým držitelem nebo je podepsaný neznámými zprostředkujícími zprostředkovateli, pak se musí definovat důvěryhodný kořenový certifikát v části v2 SKU. Application Gateway bude komunikovat jenom s back-endy, jejichž kořenový certifikát serveru se shoduje s jedním ze seznamů důvěryhodných kořenových certifikátů v nastavení http back-endu přidružené k tomuto fondu.
+- Pokud je certifikát podepsán svým držitelem nebo podepsán neznámými zprostředkovateli, musí být definován důvěryhodný kořenový certifikát, aby byl povolen ssl konec ve sku v2. Aplikační brána bude komunikovat pouze s back-endy, jejichž kořenový certifikát certifikátu serveru odpovídá jednomu ze seznamu důvěryhodných kořenových certifikátů v nastavení http back-endu přidruženém ke fondu.
 
 > [!NOTE] 
 >
-> Certifikát podepsaný svým držitelem musí být součástí řetězu certifikátů. V SKU v2 není podporován jediný certifikát podepsaný svým držitelem bez řetězu.
+> Certifikát podepsaný svým držitelem musí být součástí řetězu certifikátů. Jeden certifikát podepsaný svým držitelem bez řetězce není ve skladové jednotce V2 podporován.
 
-- Kromě shody s kořenovým certifikátem Application Gateway taky ověří, jestli nastavení hostitele zadané v nastavení http back-endu odpovídá běžnému názvu (CN), který prezentuje certifikát SSL back-end serveru. Při pokusu o navázání připojení SSL k back-endu Application Gateway nastaví rozšíření Indikace názvu serveru (SNI) na hostitele zadané v nastavení http back-endu.
-- Pokud je zvolená možnost **Vybrat název hostitele z back-endu** , místo pole hostitel v nastavení http back-endu, pak je hlavička sni vždycky nastavená na plně kvalifikovaný název domény fondu back-end a CN v certifikátu SSL back-end serveru musí odpovídat svému plně kvalifikovanému názvu domény. V tomto scénáři nejsou podporovány členy fondu back-end s IP adresami.
-- Kořenový certifikát je kořenový certifikát kódovaný v kódování Base64 od certifikátů back-end serveru.
+- Kromě shody kořenového certifikátu aplikace gateway také ověří, zda nastavení Host zadané v nastavení http back-endu odpovídá nastavení běžného názvu (CN) prezentovaného certifikátem SSL serveru back-endu. Při pokusu o vytvoření připojení SSL k back-endu nastaví aplikační brána rozšíření SNI (SNI) na hostitele určeného v nastavení http back-endu.
+- Pokud je místo pole Host v nastavení http back-endu **vybránnázev hostitele z back-endové adresy,** je hlavička SNI vždy nastavena na hlavní název back-endového fondu a cn na serveru SSL serveru musí odpovídat svému konečnému názvu na název sítě. Back-endu členové fondu s IP adresy nejsou podporovány v tomto scénáři.
+- Kořenový certifikát je kořenový certifikát kódovaný na základně 64 z certifikátů back-endového serveru.
 
 ## <a name="next-steps"></a>Další kroky
 
-Po získání informací o koncovém šifrování protokolu SSL v prostředí PowerShell použijte k vytvoření služby Application Gateway s koncovým PROTOKOLem SSL [konfiguraci koncového](application-gateway-end-to-end-ssl-powershell.md) a koncového protokolu ssl pomocí Application Gateway.
+Po naučení o ssl od konce přejděte na [Konfigurovat protokol SSL od konce k ukončení pomocí aplikační brány s prostředím PowerShell](application-gateway-end-to-end-ssl-powershell.md) k vytvoření aplikační brány pomocí ssl od konce k ukončení.
 
 <!--Image references-->
 

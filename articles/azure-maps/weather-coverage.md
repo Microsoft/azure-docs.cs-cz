@@ -1,36 +1,36 @@
 ---
-title: Povětrnostní pokrytí | Mapy Microsoft Azure
-description: V tomto článku se dozvíte o počasí v Microsoft Azure Maps.
-author: farah-alyasari
-ms.author: v-faalya
+title: Pokrytí počasí | Mapy Microsoft Azure
+description: V tomto článku se dozvíte o pokrytí počasí v Mapách Microsoft Azure.
+author: philmea
+ms.author: philmea
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: fdae00a07b364252ae6d297a6df5eb242beac262
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 60761f7641d8cf87121992fce9050aea0f0b434b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207940"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80333573"
 ---
-# <a name="azure-maps-weather-coverage"></a>Azure Maps povětrnostní pokrytí
+# <a name="azure-maps-weather-coverage"></a>Pokrytí počasí v Azure Maps
 
-Tento článek poskytuje informace o pokrytí Azure Maps [povětrnostní služby](https://aka.ms/AzureMapsWeatherService). Azure Maps datové služby počasí vrací podrobné informace, jako jsou například paprskové dlaždice, aktuální povětrnostní podmínky, předpovědi počasí a počasí na trase.
+Tento článek obsahuje informace o pokrytí pro [služby Počasí](https://aka.ms/AzureMapsWeatherService)Azure Maps . Azure Maps Datové služby počasí vrátí podrobnosti, jako jsou radarové dlaždice, aktuální povětrnostní podmínky, předpovědi počasí a počasí na trase.
 
-Azure Maps nemá stejnou úroveň informací a přesnost pro všechny země a oblasti.
+Azure Maps nemá stejnou úroveň informací a přesnosti pro všechny země a oblasti.
 
-Následující tabulka poskytuje informace o tom, jaký druh informací o počasí si můžete vyžádat od každé země nebo oblasti.
+V následující tabulce jsou uvedeny informace o tom, jaký druh informací o počasí můžete požadovat od jednotlivých zemí nebo oblastí.
 
-| Písmeno | Význam |
+| Symbol | Význam |
 |--------|---------|
-|*       |Pokrývá počasí v rámci trasy, aktuální podmínky, hodinovou prognózu, předpovědi čtvrtletních dnů a rozhraní API pro denní prognózy. |
+|*       |Zahrnuje počasí na trase, aktuální podmínky, hodinovou předpověď, čtvrtdenní předpověď a data denní hospo- |
 
 
 ## <a name="americas"></a>Amerika
 
-| Země/oblast              |  Satelitní dlaždice | Minutová prognóza, paprskové dlaždice | Jiná | 
+| Země              |  Satelitní dlaždice | Minutová předpověď, radarové dlaždice | Ostatní* | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
 | Anguilla                                 | ✓ |   |  ✓| 
 | Antarktida                               | ✓ |   |  ✓|
@@ -74,19 +74,19 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Paraguay                                 | ✓ |   |  ✓| 
 | Peru                                     | ✓ |   |  ✓| 
 | Portoriko                              | ✓ |   |  ✓| 
-| Svatý Bartoloměj                         | ✓ |   |  ✓| 
+| Svatý Barthélemy                         | ✓ |   |  ✓| 
 | Svatý Kryštof a Nevis                    | ✓ |   |  ✓| 
 | Svatá Lucie                              | ✓ |   |  ✓| 
-| Svatý Martin                             | ✓ |   |  ✓| 
-| Saint-Pierre a Miquelon                | ✓ |   |  ✓| 
+| Svatý Martin (Francie)                             | ✓ |   |  ✓| 
+| Svatý Pierre a Miquelon                | ✓ |   |  ✓| 
 | Svatý Vincenc a Grenadiny         | ✓ |   |  ✓| 
-| Svatý Eustach                           | ✓ |   |  ✓|  
-| Svatý Martin                             | ✓ |   |  ✓| 
+| Sint Eustatius                           | ✓ |   |  ✓|  
+| Svatý Martin (Nizozemsko)                             | ✓ |   |  ✓| 
 | Jižní Georgie a Jižní Sandwichovy ostrovy | ✓ |   |  ✓| 
 | Surinam                                 | ✓ |   |  ✓| 
 | Trinidad a Tobago                      | ✓ |   |  ✓| 
 | Turks a Caicos                 | ✓ |   |  ✓| 
-| Odlehlé ostrovy USA                    | ✓ |   |  ✓| 
+| Americké odlehlé ostrovy                    | ✓ |   |  ✓| 
 | Americké Panenské ostrovy                      | ✓ |   |  ✓| 
 | Spojené státy                            | ✓ | ✓ |  ✓| 
 | Uruguay                                  | ✓ |   |  ✓| 
@@ -95,14 +95,14 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 
 ## <a name="middle-east-and-africa"></a>Střední východ a Afrika
 
-| Země/oblast              |  Satelitní dlaždice | Minutová prognóza, paprskové dlaždice | Jiná | 
+| Země              |  Satelitní dlaždice | Minutová předpověď, radarové dlaždice | Ostatní* | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
 | Alžírsko                     | ✓               |                              |        ✓| 
 | Angola                      | ✓               |                              |        ✓| 
 | Bahrajn                     | ✓               |                              |        ✓| 
 | Benin                       | ✓               |                              |        ✓| 
 | Botswana                    | ✓               |                              |        ✓| 
-| Bouvet               | ✓               |                              |        ✓| 
+| Bouvetův ostrov               | ✓               |                              |        ✓| 
 | Burkina Faso                | ✓               |                              |        ✓| 
 | Burundi                     | ✓               |                              |        ✓| 
 | Kamerun                    | ✓               |                              |        ✓| 
@@ -111,12 +111,12 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Čad                        | ✓               |                              |        ✓| 
 | Komory                     | ✓               |                              |        ✓| 
 | Konžská demokratická republika                 | ✓               |                              |        ✓|
-| Pobřeží slonoviny               | ✓               |                              |        ✓| 
+| Slonoviny               | ✓               |                              |        ✓| 
 | Džibutsko                    | ✓               |                              |        ✓| 
 | Egypt                       | ✓               |                              |        ✓| 
 | Rovníková Guinea           | ✓               |                              |        ✓| 
 | Eritrea                     | ✓               |                              |        ✓| 
-| eSwatini                    | ✓               |                              |        ✓| 
+| eSwatini řekl:                    | ✓               |                              |        ✓| 
 | Etiopie                    | ✓               |                              |        ✓| 
 | Francouzská jižní území | ✓               |                              |        ✓| 
 | Gabon                       | ✓               |                              |        ✓| 
@@ -124,7 +124,7 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Ghana                       | ✓               |                              |        ✓| 
 | Guinea                      | ✓               |                              |        ✓| 
 | Guinea-Bissau               | ✓               |                              |        ✓| 
-| Írán                        | ✓               |                              |        ✓| 
+| Iran                        | ✓               |                              |        ✓| 
 | Irák                        | ✓               |                              |        ✓| 
 | Izrael                      | ✓               |                              |        ✓| 
 | Jordánsko                      | ✓               |                              |        ✓| 
@@ -150,18 +150,18 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Katar                       | ✓               |                              |        ✓| 
 | Réunion                     | ✓               |                              |        ✓| 
 | Rwanda                      | ✓               |                              |        ✓| 
-| Svatá Helena, Ascension a Tristan da Cunha        | ✓               |                              |        ✓| 
+| Svatá Helena, Nanebevstoupení, Tristan da Cunha        | ✓               |                              |        ✓| 
 | Svatý Tomáš a Princův ostrov       | ✓               |                              |        ✓| 
 | Saúdská Arábie                | ✓               |                              |        ✓| 
 | Senegal                     | ✓               |                              |        ✓| 
-| Seychel                  | ✓               |                              |        ✓| 
+| Seychely                  | ✓               |                              |        ✓| 
 | Sierra Leone                | ✓               |                              |        ✓| 
 | Somálsko                     | ✓               |                              |        ✓| 
 | Jižní Afrika                | ✓               |                              |        ✓| 
 | Jižní Súdán                 | ✓               |                              |        ✓| 
 | Súdán                       | ✓               |                              |        ✓| 
 | Sýrie                       | ✓               |                              |        ✓| 
-| Oblasti                    | ✓               |                              |        ✓| 
+| Tanzanie                    | ✓               |                              |        ✓| 
 | Togo                        | ✓               |                              |        ✓| 
 | Tunisko                     | ✓               |                              |        ✓| 
 | Uganda                      | ✓               |                              |        ✓| 
@@ -174,24 +174,24 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 
 ## <a name="asia-pacific"></a>Asie a Tichomoří
 
-| Země/oblast              |  Satelitní dlaždice | Minutová prognóza, paprskové dlaždice | Jiná | 
+| Země              |  Satelitní dlaždice | Minutová předpověď, radarové dlaždice | Ostatní* | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
 | Afghánistán                       | ✓ |   |  ✓| 
 | Americká Samoa                    | ✓ |   |  ✓| 
 | Austrálie                         | ✓ | ✓ |  ✓| 
 | Bangladéš                        | ✓ |   |  ✓| 
 | Bhútán                            | ✓ |   |  ✓| 
-| Britské území v Indickém oceánu    | ✓ |   |  ✓| 
-| Sultanát                            | ✓ |   |  ✓| 
+| Britské indickooceánské území    | ✓ |   |  ✓| 
+| Brunej                            | ✓ |   |  ✓| 
 | Kambodža                          | ✓ |   |  ✓| 
 | Čína                             | ✓ | ✓ |  ✓| 
 | Vánoční ostrov                  | ✓ |   |  ✓| 
-| Kokosové (Keelingovy) ostrovy           | ✓ |   |  ✓| 
+| Kokosové ostrovy           | ✓ |   |  ✓| 
 | Cookovy ostrovy                      | ✓ |   |  ✓| 
 | Fidži                              | ✓ |   |  ✓| 
 | Francouzská Polynésie                  | ✓ |   |  ✓| 
 | Guam                              | ✓ |   |  ✓| 
-| Heardův ostrov a MacDonaldovy ostrovy | ✓ |   |  ✓| 
+| Heardův ostrov a McDonaldovy ostrovy | ✓ |   |  ✓| 
 | Hongkong – zvláštní správní oblast                     | ✓ |   |  ✓| 
 | Indie                             | ✓ |   |  ✓| 
 | Indonésie                         | ✓ |   |  ✓| 
@@ -201,7 +201,7 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Jižní Korea                             | ✓ | ✓ |  ✓| 
 | Kyrgyzstán                        | ✓ |   |  ✓| 
 | Laos                              | ✓ |   |  ✓| 
-| Macao – zvláštní správní oblast                         | ✓ |   |  ✓| 
+| Macao – zvláštní administrativní oblast                         | ✓ |   |  ✓| 
 | Malajsie                          | ✓ |   |  ✓| 
 | Maledivy                          | ✓ |   |  ✓| 
 | Marshallovy ostrovy                  | ✓ |   |  ✓| 
@@ -213,12 +213,12 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Nová Kaledonie                     | ✓ |   |  ✓| 
 | Nový Zéland                       | ✓ |   |  ✓| 
 | Niue                              | ✓ |   |  ✓| 
-| Ostrov Norfolk                    | ✓ |   |  ✓| 
+| Norfolk                    | ✓ |   |  ✓| 
 | Severní Korea                       | ✓ |   |  ✓| 
 | Severní Mariany          | ✓ |   |  ✓| 
 | Pákistán                          | ✓ |   |  ✓| 
 | Palau                             | ✓ |   |  ✓| 
-| Papua – Nová Guinea                  | ✓ |   |  ✓| 
+| Papua-Nová Guinea                  | ✓ |   |  ✓| 
 | Filipíny                       | ✓ |   |  ✓| 
 | Pitcairnovy ostrovy                  | ✓ |   |  ✓| 
 | Samoa                             | ✓ |   |  ✓| 
@@ -241,7 +241,7 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 
 ## <a name="europe"></a>Evropa
 
-| Země/oblast              |  Satelitní dlaždice | Minutová prognóza, paprskové dlaždice | Jiná | 
+| Země              |  Satelitní dlaždice | Minutová předpověď, radarové dlaždice | Ostatní* | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|
 | Albánie                | ✓ |   |  ✓| 
 | Andorra                | ✓ |   |  ✓| 
@@ -254,7 +254,7 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Bulharsko               | ✓ |   |  ✓| 
 | Chorvatsko                | ✓ | ✓ |  ✓| 
 | Kypr                 | ✓ |   |  ✓| 
-| Czechia                | ✓ | ✓ |  ✓| 
+| Česko                | ✓ | ✓ |  ✓| 
 | Dánsko                | ✓ | ✓ |  ✓| 
 | Estonsko                | ✓ | ✓ |  ✓| 
 | Faerské ostrovy          | ✓ |   |  ✓| 
@@ -299,4 +299,4 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Turecko                 | ✓ |   |  ✓| 
 | Ukrajina                | ✓ |   |  ✓| 
 | Spojené království         | ✓ | ✓ |  ✓| 
-| Vatikán           | ✓ |   |  ✓| 
+| Vatikánu           | ✓ |   |  ✓| 

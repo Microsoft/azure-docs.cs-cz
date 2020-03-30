@@ -1,6 +1,6 @@
 ---
-title: Architektury řešení pomocí Azure NetApp Files | Microsoft Docs
-description: Poskytuje odkazy na osvědčené postupy pro architektury řešení pomocí Azure NetApp Files.
+title: Architektury řešení pomocí souborů Azure NetApp | Dokumenty společnosti Microsoft
+description: Obsahuje odkazy na osvědčené postupy pro architektury řešení pomocí souborů Azure NetApp.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,48 +12,54 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/28/2020
+ms.date: 03/27/2020
 ms.author: b-juche
-ms.openlocfilehash: 81711394b56287e67c51882744a5032555a186f0
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 8eae528c965e599e7adfb546a09b0d5879e7c54f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206295"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369530"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Architektury řešení s využitím Azure NetApp Files
-Tento článek poskytuje odkazy na osvědčené postupy, které vám pomůžou pochopit architektury řešení pro použití Azure NetApp Files.  
+Tento článek obsahuje odkazy na osvědčené postupy, které vám pomohou pochopit architektury řešení pro použití souborů Azure NetApp.  
 
-## <a name="azure-kubernetes-service-aks-solutions"></a>Řešení Azure Kubernetes Service (AKS)
+## <a name="azure-high-performance-computing-hpc-solutions"></a>Řešení Azure high-performance computing (HPC)
 
-* [Integrace Azure NetApp Files s AKS](https://github.com/andyzhangx/demo/tree/master/linux/nfs)
-* [Integrace Azure NetApp Files se službou Azure Kubernetes](https://docs.microsoft.com/azure/aks/azure-netapp-files)
+* [Spuštění simulačního softwaru nádrže v Azure](https://docs.microsoft.com/azure/architecture/example-scenario/infrastructure/reservoir-simulation)
+* [Spouštění úloh MPI se soubory Azure Batch a Azure NetApp](https://azure.microsoft.com/resources/run-mpi-workloads-with-azure-batch-and-azure-netapp-files/)
 
-## <a name="oracle-database-solutions"></a>Řešení Oracle Database
+## <a name="azure-kubernetes-service-aks-solutions"></a>Řešení služby Azure Kubernetes (AKS)
 
-* [Průvodce nasazením Oracle v Azure v praxi pomocí Azure NetApp Files](https://www.netapp.com/us/media/tr-4780.pdf)
-* [Image virtuálních počítačů Oracle a jejich nasazení na Microsoft Azure: možnosti konfigurace sdíleného úložiště](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-vm-solutions#shared-storage-configuration-options)
+* [Integrace souborů Azure NetApp s AKS](https://github.com/andyzhangx/demo/tree/master/linux/nfs)
+* [Integrace souborů Azure NetApp se službou Azure Kubernetes](https://docs.microsoft.com/azure/aks/azure-netapp-files)
 
-## <a name="sap-application-solutions"></a>Řešení aplikací SAP 
+## <a name="oracle-database-solutions"></a>Databázová řešení Oracle
 
-* [Aplikace SAP na Microsoft Azure s využitím Azure NetApp Files](https://www.netapp.com/us/media/tr-4746.pdf)
-* [SAP HANA konfigurací úložiště virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
-* [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
-* [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na Red Hat Enterprise Linux s Azure NetApp Files pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
-* [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure v Red Hat Enterprise Linux pro Průvodce pro aplikace SAP s více SID](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
-* [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure ve Windows pomocí protokolu SMB (Azure NetApp Files) pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)
-* [SAP HANA horizontálního navýšení kapacity s pohotovostním uzlem na virtuálních počítačích Azure s Azure NetApp Files na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
-* [SAP HANA horizontálního navýšení kapacity s pohotovostním uzlem na virtuálních počítačích Azure s Azure NetApp Files na RedHat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
-* [Azure NetApp Files – zálohování SAP HANA během několika sekund](https://blog.netapp.com/azure-netapp-files-sap-hana-backup-in-seconds/)
-* [Azure NetApp Files – obnovení databáze HANA ze zálohy snímku](https://blog.netapp.com/azure-netapp-files-backup-sap-hana/)
-* [Urychlení SAP HANA systémových kopií pomocí Azure NetApp Files](https://blog.netapp.com/sap-hana-faster-using-azure-netapp-files/)
-* [Cloudové svazky ONTAP a Azure NetApp Files: Snadná migrace systému SAP HANA](https://blog.netapp.com/cloud-volumes-ontap-and-azure-netapp-files-sap-hana-system-migration-made-easy/)
+* [Průvodce osvědčenými postupy pro nasazení Oracle v Azure pomocí souborů Azure NetApp](https://www.netapp.com/us/media/tr-4780.pdf)
+* [Image virtuálních počítačů Oracle a jejich nasazení v Microsoft Azure: Možnosti konfigurace sdíleného úložiště](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-vm-solutions#shared-storage-configuration-options)
 
-## <a name="talon-solutions"></a>Řešení Talon
+## <a name="sap-application-solutions"></a>Aplikační řešení SAP 
 
-* [Globálně distribuované podnikové sdílení souborů s Azure NetApp Files a Talon FAST™](https://www.talonstorage.com/products/azure-netapp-files)
+* [Aplikace SAP v Microsoft Azure pomocí souborů Azure NetApp](https://www.netapp.com/us/media/tr-4746.pdf)
+* [Konfigurace úložiště virtuálních počítačů Azure SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
+* [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server se soubory Azure NetApp pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
+* [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na Red Hat Enterprise Linux u souborů Azure NetApp pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
+* [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na Red Hat Enterprise Linux pro SAP aplikace multi-SID průvodce](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
+* [Vysoká dostupnost pro SAP NetWeaver ve virtuálních počítačích Azure ve Windows se soubory Azure NetApp (SMB) pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)
+* [Sap HANA horizontální navýšení kapacity s pohotovostním uzly na virtuálních počítačích Azure se soubory Azure NetApp na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
+* [Sap HANA horizontální navýšení kapacity s pohotovostním uzly na virtuálních počítačích Azure se soubory Azure NetApp na RedHat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
+* [Soubory Azure NetApp – zálohování SAP HANA během několika sekund](https://blog.netapp.com/azure-netapp-files-sap-hana-backup-in-seconds/)
+* [Soubory Azure NetApp – obnovení databáze HANA ze zálohy snímků](https://blog.netapp.com/azure-netapp-files-backup-sap-hana/)
+* [Soubory Azure NetApp – SAP HANA překládá zálohování pomocí cloudové synchronizace](https://blog.netapp.com/azure-netapp-files-sap-hana)
+* [Urychlete systémové kopie SAP HANA pomocí souborů Azure NetApp](https://blog.netapp.com/sap-hana-faster-using-azure-netapp-files/)
+* [Soubory ONTAP a Azure NetApp, které jsou v cloudových svazcích: Migrace systému SAP HANA je snadná](https://blog.netapp.com/cloud-volumes-ontap-and-azure-netapp-files-sap-hana-system-migration-made-easy/) 
 
-## <a name="windows-virtual-desktopvdi-solutions"></a>Řešení Virtual Desktop/VDI pro Windows
+## <a name="global-file-caching-solutions"></a>Řešení globálního ukládání souborů do mezipaměti
 
-* [Vytvoření kontejneru profilu FSLogix pro fond hostitelů pomocí Azure NetApp Files](https://docs.microsoft.com/azure/virtual-desktop/create-fslogix-profile-container)
+* [Globálně distribuované podnikové sdílení souborů se soubory Azure NetApp a Talon FAST™](https://www.talonstorage.com/products/azure-netapp-files)
+
+## <a name="windows-virtual-desktopvdi-solutions"></a>Řešení Windows Virtual Desktop/VDI
+
+* [Vytvoření kontejneru profilu FSLogix pro fond hostitelů pomocí souborů Azure NetApp](https://docs.microsoft.com/azure/virtual-desktop/create-fslogix-profile-container)
 

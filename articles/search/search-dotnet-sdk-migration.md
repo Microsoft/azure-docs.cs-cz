@@ -1,7 +1,7 @@
 ---
 title: Upgrade na Azure Search .NET SDK verze 3
 titleSuffix: Azure Cognitive Search
-description: Migruje kód do sady Azure Search .NET SDK verze 3 ze starších verzí. Podívejte se, co je nového a kdy se vyžadují změny kódu.
+description: Migrace kódu do azure search .NET SDK verze 3 ze starších verzí. Zjistěte, co je nového a jaké změny kódu jsou povinné.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -10,10 +10,10 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: fcad05749892e3a652e110a7e351450bffaca6f2
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72792984"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-3"></a>Upgrade na Azure Search .NET SDK verze 3
@@ -25,71 +25,71 @@ Indexer execution result errors no longer have status
 the data source API will no longer return in the response of any REST operation, the connection string specified by the user.
 --->
 
-Pokud používáte verzi 2,0-Preview nebo starší [sadu Azure Search .NET SDK](https://aka.ms/search-sdk), Tento článek vám pomůže při upgradu aplikace na použití verze 3.
+Pokud používáte verzi 2.0-preview nebo starší azure [search .NET SDK](https://aka.ms/search-sdk), tento článek vám pomůže upgradovat aplikaci na verzi 3.
 
-Obecnější návod k sadě SDK, včetně příkladů, najdete v tématu [použití Azure Search z aplikace .NET](search-howto-dotnet-sdk.md).
+Obecnější návod sady SDK včetně příkladů naleznete v tématu [Jak používat Azure Search z aplikace .NET](search-howto-dotnet-sdk.md).
 
-Verze 3 sady Azure Search .NET SDK obsahuje některé změny z dřívějších verzí. Jsou to většinou méně významné, takže změna kódu by měla vyžadovat jenom minimální úsilí. Pokyny ke změně kódu pro použití nové verze sady SDK najdete v tématu [Postup upgradu](#UpgradeSteps) .
+Verze 3 sady Azure Search .NET SDK obsahuje některé změny z předchozích verzí. Jedná se většinou o menší, takže změna kódu by měla vyžadovat pouze minimální úsilí. Pokyny, jak změnit kód tak, aby používal novou verzi sady SDK, najdete v tématu [Kroky pro upgrade.](#UpgradeSteps)
 
 > [!NOTE]
-> Pokud používáte verzi 1.0.2-Preview nebo starší, měli byste nejdřív upgradovat na verzi 1,1 a potom upgradovat na verzi 3. Pokyny najdete v tématu [upgrade na sadu Azure Search .NET SDK verze 1,1](search-dotnet-sdk-migration-version-1.md) .
+> Pokud používáte verzi 1.0.2-preview nebo starší, měli byste nejprve upgradovat na verzi 1.1 a potom upgradovat na verzi 3. Pokyny najdete [v tématu Upgrade na Azure Search .NET SDK verze 1.1.](search-dotnet-sdk-migration-version-1.md)
 >
-> Vaše instance služby Azure Search podporuje několik verzí REST API, včetně nejnovějšího. Můžete i nadále používat verzi, pokud již není nejnovější, ale doporučujeme, abyste si kód migrovali na používání nejnovější verze. Při použití REST API musíte v každé žádosti zadat verzi rozhraní API přes parametr verze API. Pokud používáte sadu .NET SDK, verze sady SDK, kterou používáte, určí odpovídající verzi REST API. Pokud používáte starší sadu SDK, můžete pokračovat ve spuštění tohoto kódu bez změny, i když je služba upgradována na podporu novější verze rozhraní API.
+> Vaše instance služby Azure Search podporuje několik verzí rozhraní REST API, včetně nejnovější. Verzi můžete nadále používat, pokud již není nejnovější, ale doporučujeme migrovat kód a používat nejnovější verzi. Při použití rozhraní REST API, musíte zadat verzi rozhraní API v každém požadavku prostřednictvím parametru api-version. Při použití sady .NET SDK určuje verze sady SDK, kterou používáte, odpovídající verzi rozhraní REST API. Pokud používáte starší sadu SDK, můžete pokračovat v spouštění tohoto kódu bez evidenčních změn, i když je služba upgradována na podporu novější verze rozhraní API.
 
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-3"></a>Co je nového ve verzi 3
-Verze 3 sady Azure Search .NET SDK cílí na nejnovější všeobecně dostupnou verzi Azure Search REST API, konkrétně 2016-09-01. Díky tomu je možné využít mnoho nových funkcí Azure Search z aplikace .NET, včetně následujících:
+Verze 3 sady Azure Search .NET SDK se zaměřuje na nejnovější obecně dostupnou verzi rozhraní AZURE Search REST API, konkrétně 2016-09-01. To umožňuje používat mnoho nových funkcí Azure Search z aplikace .NET, včetně následujících:
 
 * [Vlastní analyzátory](https://aka.ms/customanalyzers)
-* Podpora [azure BLOB Storage](search-howto-indexing-azure-blob-storage.md) a [Azure Table Storage](search-howto-indexing-azure-tables.md) indexeru
-* Přizpůsobení indexeru prostřednictvím [mapování polí](search-indexer-field-mappings.md)
-* Podpora značek ETag umožňuje bezpečný souběžnou aktualizaci definic indexů, indexerů a zdrojů dat.
-* Podpora pro sestavování definic polí indexu deklarativně pomocí upravení třídy modelu a použití nové třídy `FieldBuilder`.
-* Podpora pro přenosný profil .NET Core a .NET 111
+* [Podpora azureblob storage](search-howto-indexing-azure-blob-storage.md) a indexeru [table storage Azure](search-howto-indexing-azure-tables.md)
+* Přizpůsobení indexeru pomocí [mapování polí](search-indexer-field-mappings.md)
+* Podpora eTags pro umožnění bezpečné souběžné aktualizace definic indexů, indexerů a zdrojů dat
+* Podpora pro vytváření definic indexových polí deklarativně zdobením třídy modelu a použitím nové `FieldBuilder` třídy.
+* Podpora pro .NET Core a .NET portable profile 111
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>Postup upgradu
-Nejdřív aktualizujte svůj odkaz na NuGet pro `Microsoft.Azure.Search` pomocí konzoly Správce balíčků NuGet nebo kliknutím pravým tlačítkem na odkazy na projekt a výběrem možnosti spravovat balíčky NuGet... v aplikaci Visual Studio.
+Nejprve aktualizujte odkaz `Microsoft.Azure.Search` NuGet pro použití konzoly NuGet Package Manager nebo kliknutím pravým tlačítkem myši na odkazy na projekt a výběrem možnosti "Spravovat balíčky NuGet..." v sadě Visual Studio.
 
-Jakmile NuGet stáhne nové balíčky a jejich závislosti, sestavte projekt znovu. V závislosti na tom, jak je kód strukturovaný, se může úspěšně znovu sestavit. Pokud ano, jste připraveni!
+Jakmile NuGet stáhla nové balíčky a jejich závislosti, znovu sestavit projekt. V závislosti na tom, jak je váš kód strukturován, může být úspěšně znovu sestavit. Pokud ano, jste připraveni jít!
 
-Pokud se sestavení nepovede, měla by se zobrazit chyba sestavení podobný následujícímu:
+Pokud se sestavení nezdaří, měla by se zobrazit chyba sestavení, jako je následující:
 
     Program.cs(31,45,31,86): error CS0266: Cannot implicitly convert type 'Microsoft.Azure.Search.ISearchIndexClient' to 'Microsoft.Azure.Search.SearchIndexClient'. An explicit conversion exists (are you missing a cast?)
 
-Dalším krokem je opravit tuto chybu sestavení. Podrobnosti o tom, co způsobuje chybu a jak ji opravit, najdete v tématu zásadní [změny ve verzi 3](#ListOfChanges) .
+Dalším krokem je oprava této chyby sestavení. Podrobnosti o tom, co chybu způsobuje a jak ji opravit, najdete v tématu [Nejnovější změny ve verzi 3.](#ListOfChanges)
 
-Může se zobrazit další upozornění sestavení související s zastaralými metodami nebo vlastnostmi. Upozornění budou obsahovat pokyny k používání funkce místo zastaralé funkce. Například pokud vaše aplikace používá vlastnost `IndexingParameters.Base64EncodeKeys`, mělo by se zobrazit upozornění, které říká `"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."`
+Může se zobrazit další sestavení upozornění týkající se zastaralé metody nebo vlastnosti. Upozornění budou obsahovat pokyny k použití namísto zastaralé funkce. Například pokud vaše aplikace `IndexingParameters.Base64EncodeKeys` používá vlastnost, měli byste dostat upozornění, že`"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."`
 
-Jakmile opravíte jakékoli chyby sestavení, můžete v aplikaci provádět změny, abyste mohli využít nové funkce, pokud chcete. Nové funkce v sadě SDK jsou podrobně popsané v části [co je nového ve verzi 3](#WhatsNew).
+Jakmile opravíte všechny chyby sestavení, můžete v aplikaci provést změny a využít tak nové funkce, pokud chcete. Nové funkce sady SDK jsou podrobně popsány v části [Co je nového ve verzi 3](#WhatsNew).
 
 <a name="ListOfChanges"></a>
 
-## <a name="breaking-changes-in-version-3"></a>Přerušující změny ve verzi 3
-Ve verzi 3 Existuje malý počet zásadních změn, které mohou vyžadovat změny kódu kromě opakovaného sestavování aplikace.
+## <a name="breaking-changes-in-version-3"></a>Nejnovější změny ve verzi 3
+Existuje malý počet narušující změny ve verzi 3, které mohou vyžadovat změny kódu kromě opětovnésestavení aplikace.
 
-### <a name="indexesgetclient-return-type"></a>Indexs. GetClient – návratový typ
-Metoda `Indexes.GetClient` má nový návratový typ. Dříve vrátila `SearchIndexClient`, ale ta se změnila na `ISearchIndexClient` ve verzi 2,0-Preview a tato změna se přenáší na verzi 3. To je podpora pro zákazníky, kteří chtějí napodobovat `GetClient` metodu pro testování částí, a to vrácením makety implementace `ISearchIndexClient`.
+### <a name="indexesgetclient-return-type"></a>Indexes.GetClient návratový typ
+Metoda `Indexes.GetClient` má nový návratový typ. Dříve se `SearchIndexClient`vrátil , ale `ISearchIndexClient` to to bylo změněno na verzi 2.0-preview a tato změna přenáší na verzi 3. Toto je podporovat zákazníky, `GetClient` kteří chtějí zesměšňovat `ISearchIndexClient`metodu pro testy částí vrácením mock implementace .
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 Pokud váš kód vypadá takto:
 
 ```csharp
 SearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ```
 
-Můžete ji změnit na tuto možnost, chcete-li opravit chyby sestavení:
+Můžete jej změnit na to to opravit všechny chyby sestavení:
 
 ```csharp
 ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ```
 
-### <a name="analyzername-datatype-and-others-are-no-longer-implicitly-convertible-to-strings"></a>Deanalýza, datový typ a další už nejsou implicitně převoditelné na řetězce.
-V sadě Azure Search .NET SDK existuje mnoho typů, které jsou odvozeny od `ExtensibleEnum`. Dříve tyto typy byly implicitně převoditelné na typ `string`. Při implementaci `Object.Equals` pro tyto třídy se ale zjistila chyba a opravuje se chyba, která vyžaduje zakázání tohoto implicitního převodu. Explicitní převod na `string` je stále povolený.
+### <a name="analyzername-datatype-and-others-are-no-longer-implicitly-convertible-to-strings"></a>AnalyzerName, DataType a další již nejsou implicitně převoditelné na řetězce
+Existuje mnoho typů ve službě Azure Search .NET `ExtensibleEnum`SDK, které jsou odvozeny z . Dříve tyto typy byly všechny `string`implicitně převoditelné typu . Chyba však byla zjištěna v `Object.Equals` implementaci pro tyto třídy a oprava chyby vyžaduje zakázání tohoto implicitního převodu. Explicitní převod `string` na je stále povolen.
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 Pokud váš kód vypadá takto:
 
 ```csharp
@@ -108,7 +108,7 @@ index.Analyzers = new Analyzer[]
 }; 
 ```
 
-Můžete ji změnit na tuto možnost, chcete-li opravit chyby sestavení:
+Můžete jej změnit na to to opravit všechny chyby sestavení:
 
 ```csharp
 const string CustomTokenizerName = "my_tokenizer"; 
@@ -128,25 +128,25 @@ index.Analyzers = new Analyzer[]
 
 ### <a name="removed-obsolete-members"></a>Odebrané zastaralé členy
 
-Můžou se zobrazit chyby sestavení související s metodami nebo vlastnostmi, které byly označené jako zastaralé ve verzi 2,0-Preview a následně odebrány ve verzi 3. Pokud dojde k takovým chybám, můžete je vyřešit:
+Chyby sestavení související s metodami nebo vlastnostmi, které byly ve verzi 2.0-preview označeny jako zastaralé a následně odebrány ve verzi 3. Pokud narazíte na takové chyby, zde je návod, jak je vyřešit:
 
-- Pokud jste tento konstruktor používali: `ScoringParameter(string name, string value)`, použijte tento příkaz: `ScoringParameter(string name, IEnumerable<string> values)`
-- Pokud jste používali vlastnost `ScoringParameter.Value`, použijte místo toho vlastnost `ScoringParameter.Values` nebo metodu `ToString`.
-- Pokud jste používali vlastnost `SearchRequestOptions.RequestId`, použijte místo toho vlastnost `ClientRequestId`.
+- Pokud jste používali tento `ScoringParameter(string name, string value)`konstruktor: , použijte tento:`ScoringParameter(string name, IEnumerable<string> values)`
+- Pokud jste používali `ScoringParameter.Value` vlastnost, `ScoringParameter.Values` použijte vlastnost `ToString` nebo metodu.
+- Pokud jste používali `SearchRequestOptions.RequestId` vlastnost, `ClientRequestId` použijte místo toho vlastnost.
 
-### <a name="removed-preview-features"></a>Odebrané funkce verze Preview
+### <a name="removed-preview-features"></a>Odebrané funkce náhledu
 
-Pokud upgradujete z verze 2,0-Preview na verzi 3, počítejte s tím, že podpora analýzy JSON a CSV pro indexery objektů BLOB se odebrala, protože tyto funkce jsou stále ve verzi Preview. Byly odebrány konkrétně následující metody třídy `IndexingParametersExtensions`:
+Pokud upgradujete z verze 2.0-preview na verzi 3, uvědomte si, že podpora analýzy JSON a CSV pro indexery objektů Blob byla odebrána, protože tyto funkce jsou stále ve verzi preview. Konkrétně byly odebrány `IndexingParametersExtensions` následující metody třídy:
 
 - `ParseJson`
 - `ParseJsonArrays`
 - `ParseDelimitedTextFiles`
 
-Pokud je vaše aplikace pevně závislá na těchto funkcích, nebudete moct upgradovat na verzi 3 sady Azure Search .NET SDK. Můžete dál používat verzi 2,0-Preview. Mějte ale na paměti, že **v produkčních aplikacích nedoporučujeme používat sady SDK pro verze Preview**. Funkce ve verzi Preview jsou jenom pro vyhodnocení a můžou se změnit.
+Pokud vaše aplikace má pevné závislosti na těchto funkcích, nebude možné upgradovat na verzi 3 Azure Search .NET SDK. Můžete pokračovat v používání verze 2.0-preview. Mějte však na paměti, že **nedoporučujeme používat sady Preview SDK v produkčních aplikacích**. Funkce náhledu jsou pouze pro vyhodnocení a mohou se změnit.
 
 ## <a name="conclusion"></a>Závěr
-Pokud potřebujete další podrobnosti o používání sady Azure Search .NET SDK, přečtěte si [článek postupy pro .NET](search-howto-dotnet-sdk.md).
+Pokud potřebujete další podrobnosti o používání sady Azure Search .NET SDK, podívejte [se na .NET Návod](search-howto-dotnet-sdk.md).
 
-Vaše názory na sadu SDK jsme uvítá. Pokud narazíte na problémy, řekněte nám, abychom vám pomohli [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search). Pokud narazíte na chybu, můžete založit problém v [úložišti GitHub Azure .NET SDK](https://github.com/Azure/azure-sdk-for-net/issues). Ujistěte se, že název problému bude předponou "[Azure Search]".
+Uvítáme vaši zpětnou vazbu k sdk. Pokud narazíte na problémy, neváhejte a požádejte nás o pomoc na [Stack Přetečení](https://stackoverflow.com/questions/tagged/azure-search). Pokud najdete chybu, můžete podat problém v [úložišti GitHub Azure .NET SDK](https://github.com/Azure/azure-sdk-for-net/issues). Nezapomeňte předponu název problému s "[Azure Search]".
 
-Děkujeme, že používáte Azure Search!
+Děkujeme vám, že používáte Azure Search!

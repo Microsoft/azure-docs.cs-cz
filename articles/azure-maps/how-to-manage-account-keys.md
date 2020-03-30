@@ -1,56 +1,56 @@
 ---
-title: Správa účtu Azure Maps v Azure Portal | Mapy Microsoft Azure
-description: V tomto článku se dozvíte, jak pomocí Azure Portal spravovat účet služby Microsoft Azure Maps.
-author: farah-alyasari
-ms.author: v-faalya
+title: Správa účtu Azure Maps na webu Azure Portal | Mapy Microsoft Azure
+description: V tomto článku se dozvíte, jak pomocí portálu Azure spravovat účet Microsoft Azure Maps.
+author: philmea
+ms.author: philmea
 ms.date: 01/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 1186c3ab0fc333896f3be4db5d103bcd6d12abf9
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 42247cc576e55c7c504e9832017af336439b11b9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209966"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335552"
 ---
 # <a name="manage-your-azure-maps-account"></a>Správa účtu Azure Maps
 
-Účet Azure Maps můžete spravovat prostřednictvím Azure Portal. Po použití účtu můžete rozhraní API implementovat na svém webu nebo v mobilní aplikaci.
+Účet Azure Maps můžete spravovat prostřednictvím portálu Azure. Po spuštění účtu můžete implementovat api ve svém webu nebo mobilní aplikaci.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 ## <a name="create-a-new-account"></a>Vytvoření nového účtu
 
-1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
 
-2. V levém horním rohu Azure Portal vyberte **vytvořit prostředek** .
+2. Vyberte **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
 
-3. Vyhledejte a vyberte **Maps**. Potom vyberte **Vytvořit**.
+3. Vyhledejte a vyberte **Mapy**. Pak vyberte **Vytvořit**.
 
-4. Zadejte informace o svém novém účtu.
+4. Zadejte informace o novém účtu.
 
-[![zadat Azure Maps informace o účtu v Azure Portal](./media/how-to-manage-account-keys/new-account-portal.png)](./media/how-to-manage-account-keys/new-account-portal.png#lightbox)
+[![Zadávání informací o účtu Azure Maps na webu Azure Portal](./media/how-to-manage-account-keys/new-account-portal.png)](./media/how-to-manage-account-keys/new-account-portal.png#lightbox)
 
 ## <a name="delete-an-account"></a>Odstranění účtu
 
-Účet můžete z Azure Portal odstranit. Přejděte na stránku Přehled účtu a vyberte **Odstranit**.
+Účet můžete odstranit z webu Azure Portal. Přejděte na stránku s přehledem účtu a vyberte **Odstranit**.
 
-[![odstranit účet Azure Maps v Azure Portal](./media/how-to-manage-account-keys/account-delete-portal.png)](./media/how-to-manage-account-keys/account-delete-portal.png#lightbox)
+[![Odstranění účtu Azure Maps na webu Azure Portal](./media/how-to-manage-account-keys/account-delete-portal.png)](./media/how-to-manage-account-keys/account-delete-portal.png#lightbox)
 
-Zobrazí se stránka s potvrzením. Odstranění účtu můžete potvrdit zadáním jeho názvu.
+Poté se zobrazí stránka s potvrzením. Smazání účtu můžete potvrdit zadáním jeho názvu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Nastavte ověřování pomocí Azure Maps a Naučte se, jak získat Azure Maps klíč předplatného:
+Nastavte si ověřování pomocí Azure Maps a zjistěte, jak získat klíč předplatného Azure Maps:
 > [!div class="nextstepaction"]
 > [Správa ověřování](how-to-manage-authentication.md)
 
-Naučte se spravovat cenovou úroveň účtu Azure Maps:
+Přečtěte si, jak spravovat cenovou úroveň účtu Azure Maps:
 > [!div class="nextstepaction"] 
 > [Správa cenové úrovně](how-to-manage-pricing-tier.md)
 
-Přečtěte si, jak zobrazit metriky využití rozhraní API pro účet Azure Maps:
+Přečtěte si, jak zobrazit metriky využití rozhraní API pro váš účet Azure Maps:
 > [!div class="nextstepaction"] 
-> [Zobrazit metriky využití](how-to-view-api-usage.md)
+> [Zobrazení metrik využití](how-to-view-api-usage.md)

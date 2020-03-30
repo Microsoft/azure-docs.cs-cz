@@ -1,88 +1,96 @@
 ---
-title: Postup vytvoření zásad konfigurace hostů
-description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro virtuální počítače s Windows nebo Linux s Azure PowerShell.
-ms.date: 12/16/2019
+title: Jak vytvořit zásady konfigurace hosta pro Windows
+description: Přečtěte si, jak vytvořit zásady Azure Zásady konfigurace pro Windows.
+ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 8bd769b61ed87c9ded45ceca11586cfe105740c9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 24069ff6518c4244026378e48216d4568fffeb8a
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79264580"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365469"
 ---
-# <a name="how-to-create-guest-configuration-policies"></a>Postup vytvoření zásad konfigurace hostů
+# <a name="how-to-create-guest-configuration-policies-for-windows"></a>Jak vytvořit zásady konfigurace hosta pro Windows
 
-Konfigurace hosta používá modul prostředků [požadované konfigurace stavu](/powershell/scripting/dsc/overview/overview) (DSC) k vytvoření konfigurace pro auditování počítačů Azure. Konfigurace DSC definuje stav, ve kterém má být počítač. Pokud se konfigurace nezdařila, je aktivován efekt zásad **auditIfNotExists** a počítač se považuje za **nevyhovující**.
+Před vytvořením vlastních zásad je vhodné přečíst si informace o koncepčním přehledu na stránce [Konfigurace hosta zásad Azure](../concepts/guest-configuration.md).
+ 
+Další informace o vytváření zásad konfigurace hosta pro Linux najdete na stránce [Jak vytvořit zásady konfigurace hosta pro Linux.](./guest-configuration-create-linux.md)
 
-[Konfiguraci hosta Azure Policy](../concepts/guest-configuration.md) můžete použít jenom k auditování nastavení v počítačích. Náprava nastavení v počítačích ještě není k dispozici.
+Při auditování systému Windows používá konfigurace hosta do [konfiguračního](/powershell/scripting/dsc/overview/overview) souboru modul prostředku Konfigurace požadovaného stavu (DSC). Konfigurace DSC definuje podmínku, ve které by měl být počítač.
+Pokud se vyhodnocení konfigurace nezdaří, je spuštěn audit efektu **zásadIfNotExists** a počítač je považován za **nevyhovující**.
 
-Pomocí následujících akcí vytvořte vlastní konfiguraci pro ověření stavu počítače Azure.
+[Konfigurace hosta zásad Azure](../concepts/guest-configuration.md) slouží pouze k auditování nastavení uvnitř počítačů. Sanace nastavení uvnitř strojů ještě není k dispozici.
+
+Pomocí následujících akcí vytvořte vlastní konfiguraci pro ověření stavu počítače Azure nebo než Azure.
 
 > [!IMPORTANT]
-> Vlastní zásady s konfigurací hosta jsou funkcí verze Preview.
+> Vlastní zásady s konfigurací hosta je funkce náhledu.
 
-## <a name="add-the-guestconfiguration-resource-module"></a>Přidat modul prostředků GuestConfiguration
+## <a name="install-the-powershell-module"></a>Instalace modulu PowerShellu
 
-Chcete-li vytvořit zásadu konfigurace hosta, je nutné přidat modul prostředků. Tento modul prostředků se dá použít s místně nainstalovaným PowerShellem, s [Azure Cloud Shell](https://shell.azure.com), nebo s [imagí Azure PowerShell Core Docker](https://hub.docker.com/r/azuresdk/azure-powershell-core).
+Vytvoření artefaktu konfigurace hosta, automatizované testování artefaktu, vytvoření definice zásad a publikování zásad je zcela možné pomocí modulu Konfigurace hosta v prostředí PowerShell. Modul se dá nainstalovat do počítače se systémem Windows, macOS nebo Linux s PowerShellem 6.2 nebo novějším, který běží místně, nebo s [Azure Cloud Shell](https://shell.azure.com)nebo s image Azure [PowerShell Core Docker](https://hub.docker.com/r/azuresdk/azure-powershell-core).
 
 > [!NOTE]
-> I když ve výše uvedených prostředích funguje modul **GuestConfiguration** , musí být kroky pro zkompilování konfigurace DSC dokončené ve Windows powershellu 5,1.
+> Kompilace konfigurací ještě není v Linuxu podporována.
 
 ### <a name="base-requirements"></a>Základní požadavky
 
-Modul prostředků konfigurace hosta vyžaduje následující software:
+Operační systémy, ve kterých lze modul nainstalovat:
 
-- Prostředí. Pokud ještě není nainstalovaný, postupujte podle [těchto pokynů](/powershell/scripting/install/installing-powershell).
+- Linux
+- macOS
+- Windows
+
+Modul prostředku konfigurace hosta vyžaduje následující software:
+
+- Prostředí PowerShell 6.2 nebo novější. Pokud ještě není nainstalovaný, postupujte podle [těchto pokynů](/powershell/scripting/install/installing-powershell).
 - Azure PowerShell 1.5.0 nebo vyšší. Pokud ještě není nainstalovaný, postupujte podle [těchto pokynů](/powershell/azure/install-az-ps).
+  - Jsou vyžadovány pouze moduly AZ "Az.Accounts" a "Az.Resources".
 
-### <a name="install-the-module"></a>Nainstalovat modul
+### <a name="install-the-module"></a>Instalace modulu
 
-Konfigurace hosta používá modul prostředků **GuestConfiguration** k vytváření konfigurací DSC a jejich publikování do Azure Policy:
+Instalace modulu **GuestConfiguration** v PowerShellu:
 
-1. Z příkazového řádku PowerShellu spusťte následující příkaz:
+1. Z výzvy prostředí PowerShell spusťte následující příkaz:
 
    ```azurepowershell-interactive
    # Install the Guest Configuration DSC resource module from PowerShell Gallery
    Install-Module -Name GuestConfiguration
    ```
 
-1. Ověřte, že se modul importoval:
+1. Ověřte, zda byl modul importován:
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported GuestConfiguration module
    Get-Command -Module 'GuestConfiguration'
    ```
 
-## <a name="create-custom-guest-configuration-configuration-and-resources"></a>Vytvoření vlastní konfigurace a prostředků konfigurace hosta
+## <a name="guest-configuration-artifacts-and-policy-for-windows"></a>Artefakty konfigurace hosta a zásady pro Windows
 
-Prvním krokem k vytvoření vlastní zásady pro konfiguraci hosta je vytvoření konfigurace DSC. Přehled konceptů a terminologie DSC najdete v tématu [Přehled prostředí POWERSHELL DSC](/powershell/scripting/dsc/overview/overview).
+Konfigurace hosta používá konfiguraci požadovaného stavu prostředí PowerShell jako abstrakce jazyka pro zápis co auditovat v systému Windows. Agent načte samostatnou instanci prostředí PowerShell 6.2, takže není v konfliktu s použitím prostředí PowerShell DSC v prostředí Windows PowerShell 5.1 a není nutné předinstalovat prostředí PowerShell 6.2 nebo novější.
 
-Pokud vaše konfigurace vyžaduje jenom prostředky, které jsou integrované s instalací agenta konfigurace hosta, stačí vytvořit konfigurační soubor MOF. Pokud potřebujete spustit další skript, budete muset vytvořit vlastní modul prostředků.
+Přehled konceptů a terminologie DSC najdete v [tématu Přehled DSC prostředí PowerShell](/powershell/scripting/dsc/overview/overview).
 
-### <a name="requirements-for-guest-configuration-custom-resources"></a>Požadavky na vlastní prostředky konfigurace hosta
+### <a name="how-guest-configuration-modules-differ-from-windows-powershell-dsc-modules"></a>Jak se moduly konfigurace hosta liší od modulů DSC prostředí Windows PowerShell
 
-Když konfigurace hosta Audituje počítač, nejprve se spustí `Test-TargetResource`, abyste zjistili, jestli je ve správném stavu. Logická hodnota vrácená funkcí určuje, zda má být stav Azure Resource Manager pro přiřazení hostů kompatibilní/nekompatibilní. Pokud je logická hodnota `$false` pro libovolný prostředek v konfiguraci, bude poskytovatel spuštěn `Get-TargetResource`. Pokud je logická hodnota `$true` pak `Get-TargetResource` není volána.
+Když konfigurace hosta audituje `Test-TargetResource` počítač, nejprve se spustí, aby zjistil, zda je ve správném stavu. Logická hodnota vrácená funkcí určuje, jestli by měl být stav Správce prostředků Azure pro přiřazení hosta kompatibilní nebo nekompatibilní. Dále zprostředkovatel `Get-TargetResource` spustí vrátit aktuální stav každé nastavení, takže podrobnosti jsou k dispozici jak o tom, proč počítač není kompatibilní, nebo pro potvrzení, že aktuální stav je kompatibilní.
 
-#### <a name="configuration-requirements"></a>Požadavky na konfiguraci
+### <a name="get-targetresource-requirements"></a>Požadavky na zdroj Get-Target
 
-Jediný požadavek na konfiguraci hosta pro použití vlastní konfigurace je, aby se název konfigurace shodoval všude, kde se používá. Tento požadavek na název zahrnuje název souboru. zip pro balíček obsahu, název konfigurace v souboru MOF, který je uložený uvnitř balíčku obsahu, a název konfigurace, který se používá v šabloně Správce prostředků jako název přiřazení hostů.
+Funkce `Get-TargetResource` má speciální požadavky na konfiguraci hosta, které nebyly potřebné pro konfiguraci požadovaného stavu systému Windows.
 
-#### <a name="get-targetresource-requirements"></a>Požadavky GET-TargetResource
+- Vrátit el-it musí obsahovat vlastnost s názvem **Důvody**.
+- Vlastnost Důvody musí být pole.
+- Každá položka v poli by měla být hashtable s klíči s názvem **Kód** a **fráze**.
 
-Funkce `Get-TargetResource` má zvláštní požadavky na konfiguraci hosta, která není potřebná pro konfiguraci požadovaného stavu Windows.
+Vlastnost Důvody používá služba standardizovat, jak jsou informace prezentovány, když je počítač mimo dodržování předpisů. Každou položku v důvodech si můžete vypočitat jako "důvod", že prostředek není kompatibilní. Vlastnost je pole, protože prostředek může být mimo dodržování předpisů z více důvodů.
 
-- Vrácená zatřiďovací tabulka musí zahrnovat vlastnost s názvem **důvody**.
-- Vlastnost důvody musí být pole.
-- Každá položka v poli musí být zatřiďovací tabulka s klíči s názvem **Code** a **frází**.
+Vlastnosti **Kód** a **Fráze** jsou očekávány službou. Při vytváření vlastního prostředku nastavte text (obvykle stdout), který chcete zobrazit jako důvod, proč prostředek není kompatibilní jako hodnota **phrase**. **Kód** má specifické požadavky na formátování, takže vykazování může jasně zobrazit informace o zdroji použitém k provedení auditu. Toto řešení činí konfiguraci hosta rozšiřitelnou. Libovolný příkaz může být spuštěn tak dlouho, dokud výstup může být vrácen jako hodnota řetězce pro **Phrase** vlastnost.
 
-Vlastnost důvody používá služba ke standardizaci způsobu, jakým jsou informace zobrazeny, když je počítač nekompatibilní. Jednotlivé položky si můžete představit z důvodů, proč prostředek není kompatibilní. Vlastnost je pole, protože prostředek může být nekompatibilní s více než jedním důvodem.
-
-Služba očekává **kód** a **frázi** vlastností. Při vytváření vlastního prostředku nastavte text (obvykle STDOUT), který chcete zobrazit jako důvod, proč prostředek není kompatibilní jako hodnota **fráze**. **Kód** má specifické požadavky na formátování, takže hlášení může jasně zobrazit informace o prostředku, který se použil k provedení auditu. Toto řešení zajišťuje rozšiřitelnou konfiguraci hostů. Libovolný příkaz lze spustit pro audit počítače, pokud je možné zachytit výstup a vrátit ho jako řetězcovou hodnotu pro vlastnost **fráze** .
-
-- **Code** (String): název prostředku, opakuje a pak krátký název bez mezer jako identifikátor z důvodu. Tyto tři hodnoty by měly být odděleny dvojtečkami bez mezer.
-  - Příklad by `registry:registry:keynotpresent`
-- **Fráze** (String): text čitelný lidmi pro vysvětlení, proč nastavení není vyhovující.
-  - Příklad by `The registry key $key is not present on the machine.`
+- **Kód** (řetězec): Název prostředku, opakované a pak krátký název bez mezery jako identifikátor z důvodu. Tyto tři hodnoty by měly být vymezeny dvojtečkou bez mezer.
+  - Příkladem by bylo`registry:registry:keynotpresent`
+- **Frázi** (řetězec): Text čitelný pro člověka, který vysvětluje, proč nastavení není kompatibilní.
+  - Příkladem by bylo`The registry key $key is not present on the machine.`
 
 ```powershell
 $reasons = @()
@@ -94,40 +102,39 @@ return @{
     reasons = $reasons
 }
 ```
+### <a name="configuration-requirements"></a>Požadavky na konfiguraci
 
-#### <a name="scaffolding-a-guest-configuration-project"></a>Generování uživatelského rozhraní projektu konfigurace hosta
+Název vlastní konfigurace musí být konzistentní všude. Název souboru ZIP pro balíček obsahu, název konfigurace v souboru MOF a název přiřazení hosta v šabloně Správce prostředků musí být stejný.
 
-Pro vývojáře, kteří chtějí urychlit proces zahájení práce a práci z ukázkového kódu, existuje projekt komunity s názvem **projekt konfigurace hosta** jako šablona pro modul [sádry](https://github.com/powershell/plaster) prostředí PowerShell. Tento nástroj lze použít k vytvoření uživatelského rozhraní projektu, včetně pracovní konfigurace a ukázkového prostředku, a sady testů [platformy pester](https://github.com/pester/pester) pro ověření projektu. Šablona obsahuje také Spouštěče úloh pro Visual Studio Code pro automatizaci vytváření a ověřování konfiguračního balíčku hosta. Další informace najdete v [projektu konfigurace hosta](https://github.com/microsoft/guestconfigurationproject)projektu GitHubu.
+### <a name="scaffolding-a-guest-configuration-project"></a>Vytvoření uživatelského prohlášení projektu Konfigurace hosta
 
-### <a name="custom-guest-configuration-configuration-on-linux"></a>Konfigurace vlastní konfigurace hosta v systému Linux
+Vývojáři, kteří by chtěli urychlit proces začínáme a pracovat z ukázkového kódu, mohou nainstalovat komunitní projekt s názvem **Guest Configuration Project**. Projekt nainstaluje šablonu pro modul [Plaster](https://github.com/powershell/plaster) PowerShell. Tento nástroj lze použít k vytvoření uživatelského rozhraní projektu včetně pracovní konfigurace a ukázkového prostředku a sady [testů Pester](https://github.com/pester/pester) k ověření projektu. Šablona také obsahuje úlohy běžců pro Visual Studio kód pro automatizaci vytváření a ověřování konfigurace hosta balíček. Další informace naleznete v projektu GitHub [Guest Configuration Project](https://github.com/microsoft/guestconfigurationproject).
 
-Konfigurace DSC pro konfiguraci hosta v systému Linux používá prostředek `ChefInSpecResource` k tomu, aby modul poskytoval název definice [INSPEC](https://www.chef.io/inspec/) . **Název** je jediná požadovaná vlastnost prostředku.
+Další informace o práci s konfiguracemi obecně naleznete v [tématu Zápis, kompilace a použití konfigurace](/powershell/scripting/dsc/configurations/write-compile-apply-configuration).
 
-V následujícím příkladu se vytvoří konfigurace s názvem **směrný plán**, naimportuje se modul prostředků **GuestConfiguration** a pomocí `ChefInSpecResource` prostředku nastaví název INSPEC definice na **Linux-patch-Baseline**:
+### <a name="expected-contents-of-a-guest-configuration-artifact"></a>Očekávaný obsah artefaktu konfigurace hosta
 
-```powershell
-# Define the DSC configuration and import GuestConfiguration
-Configuration baseline
-{
-    Import-DscResource -ModuleName 'GuestConfiguration'
+Dokončený balíček se používá konfigurace hosta k vytvoření definice zásad Azure. Balíček se skládá z:
 
-    ChefInSpecResource 'Audit Linux patch baseline'
-    {
-        Name = 'linux-patch-baseline'
-    }
-}
+- Zkompilovaná konfigurace DSC jako MOF
+- Složka Moduly
+  - Modul GuestConfiguration
+  - Modul DscNativeResources
+  - (Windows) Moduly prostředků DSC vyžadované mof
 
-# Compile the configuration to create the MOF files
-baseline
-```
+Rutiny prostředí PowerShell pomáhají při vytváření balíčku.
+Není vyžadována žádná složka kořenové úrovně nebo složka verze.
+Formát balíčku musí být soubor ZIP.
 
-Další informace najdete v tématu [zápis, kompilace a použití konfigurace](/powershell/scripting/dsc/configurations/write-compile-apply-configuration).
+### <a name="storing-guest-configuration-artifacts"></a>Ukládání artefaktů konfigurace hosta
 
-### <a name="custom-guest-configuration-configuration-on-windows"></a>Konfigurace vlastní konfigurace hosta ve Windows
+Balíček ZIP musí být uložen v umístění, které je přístupné spravované virtuální počítače.
+Mezi příklady patří úložiště GitHub, Azure Repo nebo úložiště Azure. Pokud nechcete balíček zveřejnit, můžete do adresy URL zahrnout [token SAS.](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md)
+Můžete také implementovat [koncový bod služby](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) pro počítače v privátní síti, i když tato konfigurace platí pouze pro přístup k balíčku a nekomunikuje se službou.
 
-Konfigurace DSC pro Azure Policy konfiguraci hostů se používá jenom u agenta konfigurace hosta, nekoliduje s konfigurací požadovaného stavu Windows PowerShellu.
+## <a name="step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows"></a>Postupné vytvoření vlastní zásady auditu konfigurace hosta pro systém Windows
 
-Následující příklad vytvoří konfiguraci s názvem **AuditBitLocker**, importuje modul prostředků **GuestConfiguration** a pomocí prostředku `Service` Audituje spuštěnou službu:
+Vytvořte konfiguraci DSC. Následující příklad skriptu prostředí PowerShell vytvoří konfiguraci s názvem **AuditBitLocker**, importuje modul prostředků **PsDscResources** a použije `Service` prostředek k auditování spuštěné služby. Konfigurační skript lze spustit z počítače se systémem Windows nebo macOS.
 
 ```powershell
 # Define the DSC configuration and import GuestConfiguration
@@ -135,114 +142,197 @@ Configuration AuditBitLocker
 {
     Import-DscResource -ModuleName 'PSDscResources'
 
-    Service 'Ensure BitLocker service is present and running'
-    {
-        Name = 'BDESVC'
-        Ensure = 'Present'
-        State = 'Running'
+    Node AuditBitlocker {
+      Service 'Ensure BitLocker service is present and running'
+      {
+          Name = 'BDESVC'
+          Ensure = 'Present'
+          State = 'Running'
+      }
     }
 }
 
 # Compile the configuration to create the MOF files
-AuditBitLocker
+AuditBitLocker -out ./Config
 ```
 
-Další informace najdete v tématu [zápis, kompilace a použití konfigurace](/powershell/scripting/dsc/configurations/write-compile-apply-configuration).
+Příkaz `Node AuditBitlocker` není technicky vyžadován, ale vytvoří soubor `AuditBitlocker.mof` s názvem `localhost.mof`spíše než výchozí . S .mof název souboru postupujte podle konfigurace usnadňuje uspořádání mnoho souborů při provozu ve velkém měřítku.
 
-## <a name="create-guest-configuration-custom-policy-package"></a>Vytvořit vlastní balíček zásad konfigurace hosta
+Po kompilaci MOF musí být podpůrné soubory zabaleny společně. Dokončený balíček se používá konfigurace hosta k vytvoření definice zásad Azure.
 
-Jakmile je soubor MOF zkompilován, podpůrné soubory musí být zabaleny dohromady. Dokončený balíček používá konfigurace hosta k vytvoření Azure Policych definic. Balíček se skládá z těchto součástí:
+Rutina `New-GuestConfigurationPackage` vytvoří balíček. Parametry rutiny při vytváření obsahu systému `New-GuestConfigurationPackage` Windows:
 
-- Kompilovaná konfigurace DSC jako MOF
-- Složka modulů
-  - Modul GuestConfiguration
-  - Modul DscNativeResources
-  - Linux Složka s definicí INSPEC a dalším obsahem
-  - Systému Moduly prostředků DSC, které nejsou vestavěné
+- **Název**: Název balíčku Konfigurace hosta.
+- **Konfigurace**: Zkompilovaný konfigurační dokument DSC úplná cesta.
+- **Cesta**: Cesta k výstupní složce. Tento parametr je volitelný. Pokud není zadán, balíček je vytvořen v aktuálním adresáři.
 
-Rutina `New-GuestConfigurationPackage` vytvoří balíček. Pro vytvoření vlastního balíčku se používá následující formát:
+Spusťte následující příkaz a vytvořte balíček pomocí konfigurace uvedené v předchozím kroku:
 
 ```azurepowershell-interactive
-New-GuestConfigurationPackage -Name '{PackageName}' -Configuration '{PathToMOF}' `
-    -Path '{OutputFolder}' -Verbose
+New-GuestConfigurationPackage `
+  -Name 'AuditBitlocker' `
+  -Configuration './Config/AuditBitlocker.mof'
 ```
 
-Parametry `New-GuestConfigurationPackage` rutiny:
+Po vytvoření balíčku konfigurace, ale před publikováním do Azure, můžete otestovat balíček z pracovní stanice nebo CI/CD prostředí. Rutina GuestConfiguration `Test-GuestConfigurationPackage` obsahuje ve vývojovém prostředí stejného agenta, jak se používá v počítačích Azure. Pomocí tohoto řešení můžete provést testování integrace místně před uvolněním do fakturovaných cloudových prostředí.
 
-- **Název**: název konfiguračního balíčku hosta.
-- **Konfigurace**: kompilovaná úplná cesta dokumentu konfigurace DSC.
-- **Cesta**: cesta ke výstupní složce. Tento parametr je volitelný. Pokud není zadaný, balíček se vytvoří v aktuálním adresáři.
-- **ChefProfilePath**: úplná cesta k profilu INSPEC. Tento parametr je podporován pouze při vytváření obsahu pro audit systému Linux.
+Vzhledem k tomu, že agent ve skutečnosti vyhodnocuje místní prostředí, ve většině případů je třeba spustit rutinu Test- na stejné platformě operačního systému, jak plánujete auditovat.
 
-Dokončený balíček musí být uložený v umístění, ke kterému mají přístup spravované virtuální počítače. Mezi příklady patří úložiště GitHub, úložiště Azure nebo Azure Storage. Pokud nechcete, aby balíček byl veřejný, můžete do adresy URL přidat [token SAS](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) .
-Můžete také implementovat [koncový bod služby](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) pro počítače v privátní síti, i když tato konfigurace platí pouze pro přístup k balíčku a nekomunikuje se službou.
+Parametry rutiny: `Test-GuestConfigurationPackage`
 
-## <a name="test-a-guest-configuration-package"></a>Testování konfiguračního balíčku hosta
+- **Název**: Název zásadkonfigurace hosta.
+- **Parametr**: Parametry zásad uvedené ve formátu hashtable.
+- **Cesta**: Úplná cesta balíčku Konfigurace hosta.
 
-Po vytvoření konfiguračního balíčku, ale před jeho publikováním do Azure, můžete otestovat funkčnost balíčku z prostředí pro pracovní stanici nebo CI/CD. Modul GuestConfiguration zahrnuje rutinu `Test-GuestConfigurationPackage`, která načte stejného agenta ve vývojovém prostředí, protože se používá v počítačích Azure. Pomocí tohoto řešení můžete provádět testování integrací místně ještě předtím, než vydáte účtované/testovací/provozní prostředí.
+Chcete-li otestovat balíček vytvořený předchozím krokem, spusťte následující příkaz:
 
 ```azurepowershell-interactive
-Test-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindowsService.zip -Verbose
+Test-GuestConfigurationPackage `
+  -Path ./AuditBitlocker.zip
 ```
 
-Parametry `Test-GuestConfigurationPackage` rutiny:
-
-- **Název**: název zásad konfigurace hostů.
-- **Parametr**: parametry zásad, které jsou k dispozici ve formátu zatřiďovací tabulky.
-- **Cesta**: úplná cesta k balíčku pro konfiguraci hosta.
-
-Rutina podporuje také vstup z kanálu PowerShellu. Přesměrování výstupu rutiny `New-GuestConfigurationPackage` do rutiny `Test-GuestConfigurationPackage`.
+Rutina také podporuje vstup z kanálu Prostředí PowerShell. Potrubí výstup `New-GuestConfigurationPackage` rutiny na `Test-GuestConfigurationPackage` rutinu.
 
 ```azurepowershell-interactive
-New-GuestConfigurationPackage -Name AuditWindowsService -Configuration .\DSCConfig\localhost.mof -Path .\package -Verbose | Test-GuestConfigurationPackage -Verbose
+New-GuestConfigurationPackage -Name AuditBitlocker -Configuration ./Config/AuditBitlocker.mof | Test-GuestConfigurationPackage
 ```
 
-Další informace o tom, jak testovat pomocí parametrů, najdete v níže uvedené části [použití parametrů ve vlastních zásadách konfigurace hostů](#using-parameters-in-custom-guest-configuration-policies).
-
-## <a name="create-the-azure-policy-definition-and-initiative-deployment-files"></a>Vytvoření souborů nasazení definice Azure Policy a iniciativa
-
-Po vytvoření balíčku vlastní zásady konfigurace hosta a nahrání do umístění přístupného pro počítače vytvořte definici zásady konfigurace hosta pro Azure Policy. Rutina `New-GuestConfigurationPolicy` přebírá veřejně přístupný balíček vlastní zásady konfigurace hosta a vytvoří definici zásad **auditIfNotExists** a **deployIfNotExists** . Vytvoří se také definice iniciativy zásad, která zahrnuje definice obou zásad.
-
-Následující příklad vytvoří definice zásad a iniciativ v zadané cestě z balíčku vlastní zásady konfigurace hosta pro Windows a poskytuje název, popis a verzi:
+Dalším krokem je publikování souboru do úložiště objektů blob. Níže uvedený skript obsahuje funkci, kterou můžete použít k automatizaci této úlohy. Příkazy použité ve `publish` funkci `Az.Storage` vyžadují modul.
 
 ```azurepowershell-interactive
-New-GuestConfigurationPolicy
+function publish {
+    param(
+    [Parameter(Mandatory=$true)]
+    $resourceGroup,
+    [Parameter(Mandatory=$true)]
+    $storageAccountName,
+    [Parameter(Mandatory=$true)]
+    $storageContainerName,
+    [Parameter(Mandatory=$true)]
+    $filePath,
+    [Parameter(Mandatory=$true)]
+    $blobName
+    )
+
+    # Get Storage Context
+    $Context = Get-AzStorageAccount -ResourceGroupName $resourceGroup `
+        -Name $storageAccountName | `
+        ForEach-Object { $_.Context }
+
+    # Upload file
+    $Blob = Set-AzStorageBlobContent -Context $Context `
+        -Container $storageContainerName `
+        -File $filePath `
+        -Blob $blobName `
+        -Force
+
+    # Get url with SAS token
+    $StartTime = (Get-Date)
+    $ExpiryTime = $StartTime.AddYears('3')  # THREE YEAR EXPIRATION
+    $SAS = New-AzStorageBlobSASToken -Context $Context `
+        -Container $storageContainerName `
+        -Blob $blobName `
+        -StartTime $StartTime `
+        -ExpiryTime $ExpiryTime `
+        -Permission rl `
+        -FullUri
+
+    # Output
+    return $SAS
+}
+
+# replace the $storageAccountName value below, it must be globally unique
+$resourceGroup        = 'policyfiles'
+$storageAccountName   = 'youraccountname'
+$storageContainerName = 'artifacts'
+
+$uri = publish `
+  -resourceGroup $resourceGroup `
+  -storageAccountName $storageAccountName `
+  -storageContainerName $storageContainerName `
+  -filePath ./AuditBitlocker.zip `
+  -blobName 'AuditBitlocker'
+```
+
+Po vytvoření a nahrání balíčku vlastních zásad Konfigurace hosta vytvořte definici zásad Konfigurace hosta. Rutina `New-GuestConfigurationPolicy` přebírá vlastní balíček zásad a vytvoří definici zásad.
+
+Parametry rutiny: `New-GuestConfigurationPolicy`
+
+- **ContentUri**: Veřejné http(s) uri balíčku obsahu konfigurace hosta.
+- **DisplayName**: Zobrazovaný název zásady.
+- **Popis**: Popis zásad.
+- **Parametr**: Parametry zásad uvedené ve formátu hashtable.
+- **Verze**: Verze zásad.
+- **Cesta**: Cílová cesta, kde jsou vytvořeny definice zásad.
+- **Platforma:** Cílová platforma (Windows/Linux) pro zásady konfigurace hosta a balíček obsahu.
+
+Následující příklad vytvoří definice zásad v zadané cestě z balíčku vlastních zásad:
+
+```azurepowershell-interactive
+New-GuestConfigurationPolicy `
     -ContentUri 'https://storageaccountname.blob.core.windows.net/packages/AuditBitLocker.zip?st=2019-07-01T00%3A00%3A00Z&se=2024-07-01T00%3A00%3A00Z&sp=rl&sv=2018-03-28&sr=b&sig=JdUf4nOCo8fvuflOoX%2FnGo4sXqVfP5BYXHzTl3%2BovJo%3D' `
     -DisplayName 'Audit BitLocker Service.' `
     -Description 'Audit if BitLocker is not enabled on Windows machine.' `
-    -Path '.\policyDefinitions' `
+    -Path './policies' `
     -Platform 'Windows' `
-    -Version 1.2.3.4 `
+    -Version 1.0.0 `
     -Verbose
 ```
 
-Parametry `New-GuestConfigurationPolicy` rutiny:
+Následující soubory jsou `New-GuestConfigurationPolicy`vytvořeny :
 
-- **ContentUri**: veřejné http (s) URI balíčku obsahu konfigurace hosta.
-- **DisplayName**: zobrazovaný název zásad.
-- **Popis**: popis zásady.
-- **Parametr**: parametry zásad, které jsou k dispozici ve formátu zatřiďovací tabulky.
-- **Verze**: verze zásad
-- **Cesta**: cílová cesta, kde jsou vytvořeny definice zásad.
-- **Platforma**: cílová platforma (Windows/Linux) pro zásady konfigurace hosta a balíček obsahu.
+- **auditIfNotExists.json**
+- **deployIfNotExists.json**
+- **Iniciativa.json**
 
-Následující soubory jsou vytvořeny pomocí `New-GuestConfigurationPolicy`:
+Výstup rutiny vrátí objekt obsahující zobrazovaný název iniciativy a cestu k souborům zásad.
 
-- **auditIfNotExists. JSON**
-- **deployIfNotExists. JSON**
-- **Iniciativa. JSON**
+Nakonec publikujte definice zásad `Publish-GuestConfigurationPolicy` pomocí rutiny. Rutina má pouze **Path** parametr, který odkazuje na umístění souborů `New-GuestConfigurationPolicy`JSON vytvořených .
 
-Výstup rutiny vrátí objekt, který obsahuje zobrazovaný název iniciativy a cestu k souborům zásad.
+Chcete-li spustit příkaz Publikovat, potřebujete přístup k vytváření zásad v Azure. Konkrétní požadavky na autorizaci jsou popsány na stránce [Přehled zásad Azure.](../overview.md) Nejlepší předdefinovanou rolí je **přispěvatel zásad zdrojů**.
 
-Pokud chcete tento příkaz použít k vytvoření uživatelského rozhraní pro vlastní projekt zásad, můžete provádět změny těchto souborů. Příkladem je změna oddílu if pro vyhodnocení toho, jestli je pro počítače k dispozici konkrétní značka. Podrobnosti o vytváření zásad najdete v tématu [programové vytváření zásad](./programmatically-create.md).
+```azurepowershell-interactive
+Publish-GuestConfigurationPolicy -Path '.\policyDefinitions'
+```
 
-### <a name="using-parameters-in-custom-guest-configuration-policies"></a>Použití parametrů ve vlastních zásadách konfigurace hostů
+Rutina `Publish-GuestConfigurationPolicy` přijímá cestu z kanálu Prostředí PowerShell. Tato funkce znamená, že můžete vytvářet soubory zásad a publikovat je v jedné sadě příkazů s potrubím.
 
-Konfigurace hosta podporuje přepsání vlastností konfigurace v době běhu. Tato funkce znamená, že hodnoty v souboru MOF v balíčku není nutné považovat za statické. Hodnoty přepsání jsou poskytovány prostřednictvím Azure Policy a neovlivňují způsob, jakým jsou vytvořeny nebo kompilovány konfigurace.
+```azurepowershell-interactive
+New-GuestConfigurationPolicy `
+ -ContentUri 'https://storageaccountname.blob.core.windows.net/packages/AuditBitLocker.zip?st=2019-07-01T00%3A00%3A00Z&se=2024-07-01T00%3A00%3A00Z&sp=rl&sv=2018-03-28&sr=b&sig=JdUf4nOCo8fvuflOoX%2FnGo4sXqVfP5BYXHzTl3%2BovJo%3D' `
+  -DisplayName 'Audit BitLocker service.' `
+  -Description 'Audit if the BitLocker service is not enabled on Windows machine.' `
+  -Path './policies' `
+ | Publish-GuestConfigurationPolicy
+```
 
-Rutiny `New-GuestConfigurationPolicy` a `Test-GuestConfigurationPolicyPackage` zahrnují parametr s názvem **Parameters**. Tento parametr převezme definici zatřiďovací tabulky včetně všech podrobností o jednotlivých parametrech a automaticky vytvoří všechny požadované oddíly souborů použité k vytvoření každé definice Azure Policy.
+Se zásadou vytvořenou v Azure je posledním krokem přiřazení iniciativy. Přečtěte si, jak přiřadit iniciativu pomocí [portálu](../assign-policy-portal.md), [Azure CLI](../assign-policy-azurecli.md)a [Azure PowerShellu](../assign-policy-powershell.md).
 
-Následující příklad vytvoří Azure Policy pro audit služby, kde uživatel vybere ze seznamu služeb v době přiřazování zásad.
+> [!IMPORTANT]
+> Zásady konfigurace hosta musí být **vždy** přiřazeny pomocí iniciativy, která kombinuje _zásady AuditIfNotExists_ a _DeployIfNotExists._ Pokud je přiřazena pouze _zásada AuditIfNotExists,_ požadavky nejsou nasazeny a zásady vždy ukazují, že servery "0" jsou kompatibilní.
+
+Přiřazení definice zásady s efektem _DeployIfNotExists_ vyžaduje další úroveň přístupu. Chcete-li udělit nejnižší oprávnění, můžete vytvořit vlastní definici role, která rozšiřuje **přispěvatele zásad zdrojů**. Následující příklad vytvoří roli s názvem **Přispěvatel zásad prostředků DINE** s dalším oprávněním _Microsoft.Authorization/roleAssignments/write_.
+
+```azurepowershell-interactive
+$subscriptionid = '00000000-0000-0000-0000-000000000000'
+$role = Get-AzRoleDefinition "Resource Policy Contributor"
+$role.Id = $null
+$role.Name = "Resource Policy Contributor DINE"
+$role.Description = "Can assign Policies that require remediation."
+$role.Actions.Clear()
+$role.Actions.Add("Microsoft.Authorization/roleAssignments/write")
+$role.AssignableScopes.Clear()
+$role.AssignableScopes.Add("/subscriptions/$subscriptionid")
+New-AzRoleDefinition -Role $role
+```
+
+### <a name="using-parameters-in-custom-guest-configuration-policies"></a>Použití parametrů ve vlastních zásadách konfigurace hosta
+
+Konfigurace hosta podporuje přepsání vlastností konfigurace za běhu. Tato funkce znamená, že hodnoty v souboru MOF v balíčku nemusí být považovány za statické. Hodnoty přepsání jsou k dispozici prostřednictvím zásad Azure a nemají vliv na to, jak jsou konfigurace vytvářeny nebo kompilovány.
+
+Rutiny `New-GuestConfigurationPolicy` a `Test-GuestConfigurationPolicyPackage` obsahují parametr s názvem **Parametry**. Tento parametr přebírá hodnotitelnou definici včetně všech podrobností o každém parametru a vytvoří požadované oddíly každého souboru použitého pro definici zásad Azure.
+
+Následující příklad vytvoří definici zásad pro audit služby, kde uživatel vybere ze seznamu v době přiřazení zásad.
 
 ```azurepowershell-interactive
 $PolicyParameterInfo = @(
@@ -264,106 +354,44 @@ New-GuestConfigurationPolicy
     -Description 'Audit if a Windows Service is not enabled on Windows machine.' `
     -Path '.\policyDefinitions' `
     -Parameters $PolicyParameterInfo `
-    -Platform 'Windows' `
-    -Version 1.2.3.4 `
-    -Verbose
+    -Version 1.0.0
 ```
-
-V případě zásad pro Linux zahrňte vlastnost **AttributesYmlContent** do konfigurace a podle potřeby hodnoty přepište. Agent konfigurace hosta automaticky vytvoří soubor YAML používaný nespecifikací k ukládání atributů. Viz následující příklad.
-
-```powershell
-Configuration FirewalldEnabled {
-
-    Import-DscResource -ModuleName 'GuestConfiguration'
-
-    Node FirewalldEnabled {
-
-        ChefInSpecResource FirewalldEnabled {
-            Name = 'FirewalldEnabled'
-            AttributesYmlContent = "DefaultFirewalldProfile: [public]"
-        }
-    }
-}
-```
-
-Pro každý další parametr přidejte do pole zatřiďovací tabulku. V souborech zásad se zobrazí vlastnosti přidané do souboru configurationName konfigurace hosta, který identifikuje typ prostředku, název, vlastnost a hodnotu.
-
-```json
-{
-    "apiVersion": "2018-11-20",
-    "type": "Microsoft.Compute/virtualMachines/providers/guestConfigurationAssignments",
-    "name": "[concat(parameters('vmName'), '/Microsoft.GuestConfiguration/', parameters('configurationName'))]",
-    "location": "[parameters('location')]",
-    "properties": {
-        "guestConfiguration": {
-            "name": "[parameters('configurationName')]",
-            "version": "1.*",
-            "configurationParameter": [{
-                "name": "[Service]windowsService;Name",
-                "value": "[parameters('ServiceName')]"
-            }]
-        }
-    }
-}
-```
-
-## <a name="publish-to-azure-policy"></a>Publikovat do Azure Policy
-
-Modul **GuestConfiguration** Resource nabízí způsob, jak pomocí rutiny `Publish-GuestConfigurationPolicy` vytvořit jak definice zásad, tak definice iniciativy v Azure s jedním krokem.
-Rutina má pouze parametr **path** , který odkazuje na umístění tří souborů JSON vytvořených pomocí `New-GuestConfigurationPolicy`.
-
-```azurepowershell-interactive
-Publish-GuestConfigurationPolicy -Path '.\policyDefinitions' -Verbose
-```
-
-Rutina `Publish-GuestConfigurationPolicy` akceptuje cestu z kanálu PowerShellu. Tato funkce znamená, že můžete vytvořit soubory zásad a publikovat je v jedné sadě příkazů s použitím kanálu.
-
-```azurepowershell-interactive
-New-GuestConfigurationPolicy -ContentUri 'https://storageaccountname.blob.core.windows.net/packages/AuditBitLocker.zip?st=2019-07-01T00%3A00%3A00Z&se=2024-07-01T00%3A00%3A00Z&sp=rl&sv=2018-03-28&sr=b&sig=JdUf4nOCo8fvuflOoX%2FnGo4sXqVfP5BYXHzTl3%2BovJo%3D' -DisplayName 'Audit BitLocker service.' -Description 'Audit if the BitLocker service is not enabled on Windows machine.' -Path '.\policyDefinitions' -Platform 'Windows' -Version 1.2.3.4 -Verbose | ForEach-Object {$_.Path} | Publish-GuestConfigurationPolicy -Verbose
-```
-
-S definicemi zásad a iniciativ vytvořenými v Azure se posledním krokem přiřadí iniciativa. Podívejte se, jak přiřadit iniciativu k [portálu](../assign-policy-portal.md), rozhraní příkazového [řádku Azure](../assign-policy-azurecli.md)a [Azure PowerShell](../assign-policy-powershell.md).
-
-> [!IMPORTANT]
-> Zásady konfigurace hosta se musí **vždy** přiřadit pomocí iniciativy, která kombinuje zásady _AuditIfNotExists_ a _DeployIfNotExists_ . Pokud je přiřazena pouze zásada _AuditIfNotExists_ , požadavky nejsou nasazeny a zásady vždy ukazují, že jsou servery "0" kompatibilní.
 
 ## <a name="policy-lifecycle"></a>Životní cyklus zásad
 
-Po publikování vlastního Azure Policy pomocí vlastního balíčku obsahu jsou k dispozici dvě pole, která je potřeba aktualizovat, pokud chcete publikovat novou verzi.
+Pokud chcete vydat aktualizaci zásady, existují dvě pole, která vyžadují pozornost.
 
-- **Verze**: když spustíte rutinu `New-GuestConfigurationPolicy`, musíte zadat číslo verze, které je větší než aktuálně publikované. Vlastnost aktualizuje verzi přiřazení konfigurace hosta v novém souboru zásad tak, aby rozšíření rozpoznalo aktualizaci balíčku.
-- **contentHash**: Tato vlastnost je automaticky aktualizována rutinou `New-GuestConfigurationPolicy`. Je to hodnota hash balíčku vytvořeného pomocí `New-GuestConfigurationPackage`. Vlastnost musí být správná pro `.zip` soubor, který publikujete. Pokud je aktualizována pouze vlastnost **contentUri** , například v případě, kdy by někdo mohl provést ruční změnu definice zásady z portálu, rozšíření nepřijme balíček obsahu.
+- **Verze**: Při `New-GuestConfigurationPolicy` spuštění rutiny je nutné zadat číslo verze větší, než je aktuálně publikováno. Vlastnost aktualizuje verzi přiřazení konfigurace hosta, takže agent rozpozná aktualizovaný balíček.
+- **contentHash**: Tato vlastnost je `New-GuestConfigurationPolicy` automaticky aktualizována rutinou. Je to hodnota hash balíčku vytvořeného společností `New-GuestConfigurationPackage`. Vlastnost musí být správná pro soubor, který `.zip` publikujete. Pokud je aktualizována pouze **contentUri** vlastnost, rozšíření nepřijme balíček obsahu.
 
-Nejjednodušším způsobem, jak vydat aktualizovaný balíček, je opakovat postup popsaný v tomto článku a zadat aktualizované číslo verze. Tento proces zaručuje, že všechny vlastnosti jsou správně aktualizované.
+Nejjednodušší způsob, jak uvolnit aktualizovaný balíček, je zopakovat proces popsaný v tomto článku a poskytnout aktualizované číslo verze. Tento proces zaručuje, že všechny vlastnosti byly správně aktualizovány.
 
-## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Převod obsahu Windows Zásady skupiny na Azure Policy konfiguraci hosta
+## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Převod obsahu zásad skupiny Windows na konfiguraci hosta zásad Azure
 
-Konfigurace hosta, při auditování počítačů s Windows, je implementovaná syntaxe konfigurace požadovaného stavu prostředí PowerShell. Komunita DSC zveřejnila nástroje pro převod exportovaných šablon Zásady skupiny do formátu DSC. Pomocí tohoto nástroje spolu s rutinami konfigurace hosta, které jsou popsané výše, můžete převést Windows Zásady skupiny obsah a balíček/publikovat pro Azure Policy k auditování. Podrobnosti o používání tohoto nástroje najdete v článku [rychlý Start: převod zásady skupiny do DSC](/powershell/scripting/dsc/quickstarts/gpo-quickstart).
-Po převedení tohoto obsahu výše uvedené kroky pro vytvoření balíčku a jeho publikování jako Azure Policy budou stejné jako u jakéhokoli obsahu DSC.
+Konfigurace hosta při auditování počítačů se systémem Windows je implementace syntaxe konfigurace požadovaného stavu prostředí PowerShell. Komunita DSC zveřejnila nástroje pro převod exportovaných šablon zásad skupiny do formátu DSC. Pomocí tohoto nástroje společně s rutinami konfigurace hosta popsanými výše můžete převést obsah zásad skupiny Windows a zabalit/publikovat jej pro zásady Azure k auditování. Podrobnosti o použití nástroje naleznete v článku [Úvodní příručka: Převést zásady skupiny na DSC](/powershell/scripting/dsc/quickstarts/gpo-quickstart).
+Po převodu obsahu výše uvedené kroky k vytvoření balíčku a publikovat jako Zásady Azure jsou stejné jako pro jakýkoli obsah DSC.
 
-## <a name="optional-signing-guest-configuration-packages"></a>Volitelné: podepisování balíčků konfigurace hosta
+## <a name="optional-signing-guest-configuration-packages"></a>Volitelné: Podepisování balíčků konfigurace hosta
 
-Vlastní zásady konfigurace hosta ve výchozím nastavení používají SHA256 hash k ověření, že se balíček zásad nezměnil od okamžiku, kdy byl vyčten serverem, který je auditován.
-V případě potřeby mohou zákazníci také použít certifikát k podepisování balíčků a vynucení rozšíření konfigurace hosta pouze k povolení podepsaného obsahu.
+Vlastní zásady konfigurace hosta používají sha256 hash k ověření balíčku zásad se nezměnil.
+Volitelně mohou zákazníci také použít certifikát k podepsání balíčků a vynutit rozšíření Konfigurace hosta povolit pouze podepsaný obsah.
 
-Chcete-li povolit tento scénář, je třeba provést dva kroky. Spusťte rutinu pro podepsání balíčku obsahu a přidejte značku do počítačů, které by měly vyžadovat podepsání kódu.
+Chcete-li povolit tento scénář, existují dva kroky, které je třeba provést. Spusťte rutinu k podepsání balíčku obsahu a připojit značku k počítačům, které by měly vyžadovat podepsání kódu.
 
-Chcete-li použít funkci ověření podpisu, spusťte rutinu `Protect-GuestConfigurationPackage` pro podepsání balíčku před jeho publikováním. Tato rutina vyžaduje certifikát pro podepsání kódu.
+Chcete-li použít funkci Ověření `Protect-GuestConfigurationPackage` podpisu, spusťte rutinu a podepište balíček před jeho publikováním. Tato rutina vyžaduje certifikát podepisování kódu.
 
 ```azurepowershell-interactive
 $Cert = Get-ChildItem -Path cert:\LocalMachine\My | Where-Object {($_.Subject-eq "CN=mycert") }
 Protect-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindowsService.zip -Certificate $Cert -Verbose
 ```
 
-Parametry `Protect-GuestConfigurationPackage` rutiny:
+Parametry rutiny: `Protect-GuestConfigurationPackage`
 
-- **Cesta**: úplná cesta k balíčku pro konfiguraci hosta.
-- **Certifikát**: certifikát pro podepsání kódu pro podepsání balíčku. Tento parametr je podporován pouze při podepisování obsahu pro systém Windows.
-- **PrivateGpgKeyPath**: privátní cesta GPG klíče. Tento parametr je podporován pouze při podepisování obsahu pro Linux.
-- **PublicGpgKeyPath**: cesta k veřejnému klíči GPG. Tento parametr je podporován pouze při podepisování obsahu pro Linux.
+- **Cesta**: Úplná cesta balíčku Konfigurace hosta.
+- **Certifikát**: Podpisový certifikát kódu pro podepsání balíčku. Tento parametr je podporován pouze při podepisování obsahu pro systém Windows.
 
-Agent GuestConfiguration očekává, že se veřejný klíč certifikátu nachází v počítačích s Windows a v cestě `/usr/local/share/ca-certificates/extra` v počítačích se systémem Linux. Aby mohl uzel ověřit podepsaný obsah, nainstalujte na počítači veřejný klíč certifikátu a pak použijte vlastní zásady. Tento proces se dá provést pomocí libovolné techniky uvnitř virtuálního počítače nebo pomocí Azure Policy. [Tady je uvedena](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows)Ukázková šablona.
-Zásady přístupu Key Vault musí umožňovat poskytovateli výpočetních prostředků přístup k certifikátům během nasazení. Podrobný postup najdete v tématu [nastavení Key Vault pro virtuální počítače v Azure Resource Manager](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault).
+GuestConfiguration agent očekává, že veřejný klíč certifikátu bude přítomen v "Důvěryhodné `/usr/local/share/ca-certificates/extra` kořenové certifikační autority" na počítačích se systémem Windows a v cestě na počítačích s Linuxem. Chcete-li uzel ověřit podepsaný obsah, nainstalujte před použitím vlastních zásad do počítače veřejný klíč certifikátu. Tento proces lze provést pomocí libovolné techniky uvnitř virtuálního počítače nebo pomocí zásad Azure. Příklad šablony je [k dispozici zde](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows).
+Zásady přístupu trezoru klíčů musí umožnit poskytovateli výpočetních prostředků přístup k certifikátům během nasazení. Podrobné kroky najdete v tématu [Nastavení trezoru klíčů pro virtuální počítače ve Správci prostředků Azure](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault).
 
 Následuje příklad exportu veřejného klíče z podpisového certifikátu pro import do počítače.
 
@@ -372,18 +400,16 @@ $Cert = Get-ChildItem -Path cert:\LocalMachine\My | Where-Object {($_.Subject-eq
 $Cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 ```
 
-Dobrá Reference k vytváření GPG klíčů pro použití s počítači se systémem Linux je poskytována článkem na GitHubu, který [generuje nový klíč GPG](https://help.github.com/en/articles/generating-a-new-gpg-key).
+Po publikování obsahu přidejte značku s `GuestConfigPolicyCertificateValidation` názvem `enabled` a hodnotou ke všem virtuálním počítačům, kde by mělo být vyžadováno podepisování kódu. Podívejte se na [ukázky značek,](../samples/built-in-policies.md#tags) jak se značky můžou doručovat ve velkém měřítku pomocí Azure Policy. Jakmile je tato značka na místě, definice `New-GuestConfigurationPolicy` zásad generované pomocí rutiny umožňuje požadavek prostřednictvím rozšíření konfigurace hosta.
 
-Po publikování obsahu přidejte značku s názvem `GuestConfigPolicyCertificateValidation` a hodnotou `enabled` na všechny virtuální počítače, kde by mělo být požadováno podepisování kódu. Podívejte se na [ukázky značek](../samples/built-in-policies.md#tags) , jak mohou být značky doručovány ve velkém rozsahu pomocí Azure Policy. Jakmile je tato značka nastavená, definice zásady vytvořená pomocí rutiny `New-GuestConfigurationPolicy` povolí požadavek prostřednictvím rozšíření konfigurace hosta.
+## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>Poradce při potížích s přiřazeními zásad konfigurace hosta (preview)
 
-## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>Řešení potíží s přiřazením zásad konfigurace hosta (Preview)
+Nástroj je k dispozici ve verzi Preview, který vám pomůže při řešení potíží s přiřazeními konfigurace hosta zásad Azure. Nástroj je ve verzi Preview a byl publikován v galerii prostředí PowerShell jako poradce při potížích s [konfigurací hosta](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/).
 
-Nástroj je k dispozici ve verzi Preview, který vám pomůže při řešení potíží s Azure Policy přiřazení konfigurace hostů. Nástroj je ve verzi Preview a byl publikován do Galerie prostředí PowerShell jako název modulu [Poradce při potížích s konfigurací hosta](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/).
-
-Další informace o rutinách v tomto nástroji získáte pomocí příkazu Get-Help v prostředí PowerShell k zobrazení integrovaných pokynů. Jak nástroj načítá časté aktualizace, což je nejlepší způsob, jak získat nejnovější informace.
+Další informace o rutinách v tomto nástroji získáte pomocí příkazu Get-Help v prostředí PowerShell k zobrazení předdefinovaných pokynů. Vzhledem k tomu, že nástroj získává časté aktualizace, je to nejlepší způsob, jak získat nejnovější informace.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si o auditování virtuálních počítačů pomocí [Konfigurace hostů](../concepts/guest-configuration.md).
-- Zjistěte, jak [programově vytvářet zásady](programmatically-create.md).
+- Další informace o auditování virtuálních počítačů pomocí [konfigurace hosta](../concepts/guest-configuration.md).
+- Pochopit, jak [programově vytvářet zásady](programmatically-create.md).
 - Přečtěte si, jak [získat data o dodržování předpisů](get-compliance-data.md).

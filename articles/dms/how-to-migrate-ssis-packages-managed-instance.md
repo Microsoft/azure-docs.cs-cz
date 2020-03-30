@@ -1,7 +1,7 @@
 ---
 title: Migrace balíčků SSIS do spravované instance SQL
 titleSuffix: Azure Database Migration Service
-description: Naučte se migrovat balíčky služba SSIS (SQL Server Integration Services) (SSIS) a projekty do Azure SQL Database spravované instance pomocí Azure Database Migration Service nebo Data Migration Assistant.
+description: Zjistěte, jak migrovat balíčky a projekty služby SQL Server Integration Services (SSIS) do spravované instance Azure SQL Database pomocí služby migrace databáze Azure nebo Pomocníka pro migraci dat.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -12,44 +12,44 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: a0669724888f02672d18ef9e8f725eef1c744f90
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 97a466ab033a42016c0d82465d1f98e2dcae8080
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650960"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297178"
 ---
-# <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-database-managed-instance"></a>Migrace balíčků služba SSIS (SQL Server Integration Services) do spravované instance Azure SQL Database
-Pokud používáte služba SSIS (SQL Server Integration Services) (SSIS) a chcete migrovat SSIS projekty/balíčky ze zdrojového SSISDBu, který hostuje SQL Server, do cílového SSISDB hostovaného v Azure SQL Database spravované instanci, můžete použít Azure Database Migration Service.
+# <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-database-managed-instance"></a>Migrace balíčků služby SSIS (SQL Server Integration Services) do spravované instance Azure SQL Database
+Pokud používáte službu SQL Server Integration Services (SSIS) a chcete migrovat projekty/balíčky SSIS ze zdrojového SSISDB hostovaného SQL Serverem do cílové databáze SSISDB hostované instancí spravované databází Azure SQL Database, můžete použít službu Migrace databáze Azure.
 
-Pokud je verze SSIS, kterou používáte, starší než 2012 nebo používáte typy úložiště balíčků bez SSISDB, je nutné je před migrací projektů a balíčků SSIS převést pomocí Průvodce převodem projektu integrační služby, který lze také spustit z SSMS. Další informace naleznete v článku [Převod projektů do modelu nasazení projektu](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert).
+Pokud je verze SSIS, kterou používáte, starší než 2012 nebo používáte jiné typy obchodů s balíčky SSISDB, před migrací projektů/balíčků SSIS je nutné je převést pomocí Průvodce převodem projektu integračních služeb, který lze spustit také ze služby SSMS. Další informace naleznete v článku [Převod projektů na model nasazení projektu](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert).
 
 > [!NOTE]
-> Azure Database Migration Service (DMS) v současné době nepodporuje Azure SQL Database jako cílovou cílovou migraci. Chcete-li znovu nasadit projekty nebo balíčky SSIS do Azure SQL Database, přečtěte si článek [služba SSIS (SQL Server Integration Services) balíčky znovu nasaďte do Azure SQL Database](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages).
+> Služba Migrace databáze Azure (DMS) momentálně nepodporuje Azure SQL Database jako cílovou migraci. Pokud chcete znovu nasadit projekty/balíčky SSIS do Azure SQL Database, přečtěte si článek [Znovu nasadit balíčky služby SQL Server Integration Services do Azure SQL Database](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages).
 
 V tomto článku získáte informace o těchto tématech:
 > [!div class="checklist"]
 >
-> * Vyhodnoťte zdrojové SSIS projekty/balíčky.
-> * Migrujte projekty a balíčky SSIS do Azure.
+> * Posoudit zdroj SSIS projekty/balíčky.
+> * Migrace projektů/balíčků SSIS do Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K provedení těchto kroků potřebujete:
+Chcete-li provést tyto kroky, potřebujete:
 
-* Pokud chcete vytvořit Microsoft Azure Virtual Network pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manager, který zajišťuje připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Další informace najdete v článku [síťové topologie pro migraci Azure SQL Database spravované instance pomocí Azure Database Migration Service]( https://aka.ms/dmsnetworkformi). Další informace o vytváření virtuálních sítí najdete v [dokumentaci k Virtual Network](https://docs.microsoft.com/azure/virtual-network/)a zejména v článcích rychlý Start s podrobnými údaji.
-* Chcete-li zajistit, aby pravidla skupiny zabezpečení sítě virtuálních sítí neblokovala následující příchozí komunikační porty Azure Database Migration Service: 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm).
-* Ke konfiguraci [brány Windows Firewall pro přístup ke zdrojovému databázovému stroji](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access?view=sql-server-2017).
-* Otevřete bránu Windows Firewall, aby Azure Database Migration Service mohl získat přístup ke zdrojovému SQL Server, což je standardně port TCP 1433.
+* Vytvoření virtuální sítě Microsoft Azure pro službu migrace databáze Azure pomocí modelu nasazení Azure Resource Manager, který poskytuje připojení k místním zdrojovým serverům site-to-site pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Další informace najdete v článku [Síťové topologií pro migrace spravovaných instancí Azure SQL Database pomocí služby Migrace databáze Azure]( https://aka.ms/dmsnetworkformi). Další informace o vytvoření virtuální sítě naleznete v [dokumentaci k virtuální síti](https://docs.microsoft.com/azure/virtual-network/)a zejména v článcích rychlého startu s podrobnými podrobnostmi.
+* Chcete-li zajistit, aby pravidla skupiny zabezpečení sítě virtuální sítě neblokovala následující příchozí komunikační porty služby Azure Database Migration Service: 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování přenosů skupin nsg ve virtuální síti naleznete v článku [Filtrování síťového provozu se skupinami zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm).
+* Konfigurace brány [Windows Firewall pro přístup ke zdrojovému databázovému stroji](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access?view=sql-server-2017).
+* Otevření brány Windows Firewall umožňuje službě Migrace databáze Azure přístup ke zdrojovému serveru SQL Server, který je ve výchozím nastavení port TCP 1433.
 * Pokud provozujete několik pojmenovaných instancí SQL Serveru s využitím dynamických portů, možná budete chtít povolit službu SQL Browser a přístup k portu UDP 1434 přes vaše brány firewall, aby se služba Azure Database Migration Service mohla připojit k pojmenované instanci na vašem zdrojovém serveru.
 * Pokud před zdrojovými databázemi používáte zařízení brány firewall, možná bude potřeba přidat pravidla brány firewall, která službě Azure Database Migration Service povolí přístup ke zdrojovým databázím za účelem migrace a také k souborům přes port SMB 445.
-* Azure SQL Database spravovaná instance pro hostování SSISDB. Pokud ho potřebujete vytvořit, postupujte podle podrobných pokynů v článku [Vytvoření spravované Instance Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started).
-* Aby se zajistilo, že přihlášení používaná k připojení zdrojového SQL Server a cílové spravované instance jsou členy role serveru sysadmin.
-* Pokud chcete ověřit, že se SSIS zřídí v Azure Data Factory (ADF) obsahující Azure-SSIS Integration Runtime (IR) s cílovým SSISDB hostovaným Azure SQL Database Managed instance (jak je popsáno v článku [vytvoření prostředí Azure-SSIS Integration runtime v Azure Data Factory](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)).
+* Instance spravované službou Azure SQL Database pro hostování SSISDB. Pokud potřebujete vytvořit, postupujte podle podrobností v článku [Vytvořit Azure SQL Database Spravované instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started).
+* Chcete-li zajistit, že přihlášení slouží k připojení zdrojsql server a cíl spravované instance jsou členy role serveru sysadmin.
+* Ověření, že se SSIS zřápá v Azure Data Factory (ADF) obsahující modul Runtime integrace Azure-SSIS (IR) s cílovým SSISDB hostovaným spravovanou instancí Azure SQL Database (jak je popsáno v článku [Vytvoření runtime integrace Azure-SSIS v Azure Data Factory).](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)
 
-## <a name="assess-source-ssis-projectspackages"></a>Vyhodnocení zdrojového SSIS projektů/balíčků
+## <a name="assess-source-ssis-projectspackages"></a>Posoudit zdroj projektů/balíčků SSIS
 
-I když se hodnocení source SSISDB ještě Neintegruje do databáze Pomocník s migrací (DMA), SSIS projekty/balíčky se vyhodnotí a ověří, že se znovu nasazují do cílového SSISDBu hostovaného ve Azure SQL Database spravované instanci.
+Zatímco hodnocení zdrojového SSISDB ještě není integrováno do Pomocníka pro migraci databáze (DMA), vaše projekty/balíčky SSIS budou posouzeny nebo ověřeny, jakmile se znovu nasadí do cílové Hodsu SIsDB hostovaného v spravované instanci Azure SQL Database.
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Registrace poskytovatele prostředků Microsoft.DataMigration
 
@@ -57,7 +57,7 @@ I když se hodnocení source SSISDB ještě Neintegruje do databáze Pomocník s
 
     ![Zobrazení předplatných na portálu](media/how-to-migrate-ssis-packages-mi/portal-select-subscriptions.png)
 
-2. Vyberte předplatné, ve kterém chcete vytvořit instanci Azure Database Migration Service a pak vyberte **poskytovatelé prostředků**.
+2. Vyberte předplatné, ve kterém chcete vytvořit instanci služby Migrace databáze Azure, a pak vyberte **zprostředkovatele prostředků**.
 
     ![Zobrazení poskytovatelů prostředků](media/how-to-migrate-ssis-packages-mi/portal-select-resource-provider.png)
 
@@ -67,7 +67,7 @@ I když se hodnocení source SSISDB ještě Neintegruje do databáze Pomocník s
 
 ## <a name="create-an-azure-database-migration-service-instance"></a>Vytvoření instance služby Azure Database Migration Service
 
-1. Na webu Azure Portal vyberte **+ Vytvořit prostředek**, vyhledejte **Azure Database Migration Service** a pak v rozevíracím seznamu vyberte **Azure Database Migration Service**.
+1. Na webu Azure Portal vyberte + **Vytvořit prostředek**, vyhledejte **službu Migrace databáze Azure**a v rozevíracím seznamu vyberte **službu Migrace databáze Azure.**
 
      ![Azure Marketplace](media/how-to-migrate-ssis-packages-mi/portal-marketplace.png)
 
@@ -81,11 +81,11 @@ I když se hodnocení source SSISDB ještě Neintegruje do databáze Pomocník s
 
 5. Vyberte existující virtuální síť nebo ji vytvořte.
 
-    Virtuální síť poskytuje Azure Database Migration Service s přístupem ke zdrojovému SQL Server a cílové Azure SQL Database spravované instanci.
+    Virtuální síť poskytuje službě Migrace databáze Azure přístup ke zdrojovému serveru SQL Server a cílové instanci spravované službou Azure SQL Database.
 
-    Další informace o tom, jak vytvořit virtuální síť v Azure Portal, najdete v článku [vytvoření virtuální sítě pomocí Azure Portal](https://aka.ms/DMSVnet).
+    Další informace o tom, jak vytvořit virtuální síť na webu Azure Portal, najdete v článku [Vytvoření virtuální sítě pomocí portálu Azure](https://aka.ms/DMSVnet).
 
-    Další podrobnosti najdete v článku [síťové topologie pro migrace spravované instance služby Azure SQL DB pomocí Azure Database Migration Service](https://aka.ms/dmsnetworkformi).
+    Další podrobnosti najdete v článku [Síťové topologií pro migrace spravovaných instancí Azure SQL DB pomocí služby Migrace databáze Azure](https://aka.ms/dmsnetworkformi).
 
 6. Vyberte cenovou úroveň.
 
@@ -103,11 +103,11 @@ Po vytvoření instance služby ji vyhledejte na webu Azure Portal, otevřete ji
 
     ![Vyhledání všech instancí služby Azure Database Migration Service](media/how-to-migrate-ssis-packages-mi/dms-search.png)
 
-2. Na obrazovce **Azure Database Migration Service** vyhledejte název instance, kterou jste vytvořili, a vyberte ji.
+2. Na obrazovce **Azure Database Migration Service** vyhledejte název instance, kterou jste vytvořili, a vyberte instanci.
 
 3. Vyberte **+ Nový projekt migrace**.
 
-4. Na obrazovce **Nový projekt migrace** zadejte název projektu, v textovém poli **typ zdrojového serveru** vyberte možnost **SQL Server**, v textovém poli **typ cílového serveru** vyberte možnost **Azure SQL Database spravovaná instance**a pak u **Možnosti zvolit typ aktivity**vyberte možnost **migrace balíčku SSIS**.
+4. Na obrazovce **Nový projekt migrace** zadejte název projektu, v textovém poli Typ **zdrojového serveru** vyberte sql **server**, v textovém poli **Typ cílového serveru,** vyberte Azure **SQL Database Managed Instance**a potom pro zvolit **typ aktivity**, vyberte **migraci balíčku SSIS**.
 
    ![Vytvoření projektu DMS](media/how-to-migrate-ssis-packages-mi/dms-create-project2.png)
 
@@ -122,25 +122,25 @@ Po vytvoření instance služby ji vyhledejte na webu Azure Portal, otevřete ji
     Pokud není nainstalovaný důvěryhodný certifikát, SQL Server při spuštění instance vygeneruje certifikát podepsaný svým držitelem. Tento certifikát slouží k šifrování přihlašovacích údajů pro připojení klientů.
 
     > [!CAUTION]
-    > Připojení SSL šifrovaná pomocí certifikátu podepsaného svým držitelem neposkytují silné zabezpečení. Jsou náchylná na útoky, kdy se útočníci vydávají za prostředníky. Na připojení SSL s použitím certifikátů podepsaných svým držitelem byste neměli spoléhat v produkčním prostředí ani na serverech připojených k internetu.
+    > Připojení TLS, která jsou šifrována pomocí certifikátu podepsaného svým držitelem, neposkytuje silné zabezpečení. Jsou náchylná na útoky, kdy se útočníci vydávají za prostředníky. Na protokol TLS byste neměli spoléhat pomocí certifikátů podepsaných svým držitelem v produkčním prostředí nebo na serverech, které jsou připojeny k Internetu.
 
    ![Podrobnosti zdroje](media/how-to-migrate-ssis-packages-mi/dms-source-details1.png)
 
-3. Vyberte **Save** (Uložit).
+3. Vyberte **Uložit**.
 
 ## <a name="specify-target-details"></a>Zadání podrobností o cíli
 
-1. Na obrazovce **Podrobnosti cíle migrace** zadejte podrobnosti o připojení pro cíl.
+1. Na obrazovce **podrobnosti cíle migrace** zadejte podrobnosti o připojení pro cíl.
 
-     ![Podrobnosti cíle](media/how-to-migrate-ssis-packages-mi/dms-target-details2.png)
+     ![Podrobnosti o cíli](media/how-to-migrate-ssis-packages-mi/dms-target-details2.png)
 
-2. Vyberte **Save** (Uložit).
+2. Vyberte **Uložit**.
 
 ## <a name="review-the-migration-summary"></a>Kontrola shrnutí migrace
 
 1. Na obrazovce **Shrnutí migrace** do textového pole **Název aktivity** zadejte název aktivity migrace.
 
-2. Pro **SSIS projekty a prostředí (y) možnost přepsat**určete, jestli se mají přepsat nebo ignorovat existující projekty a prostředí SSIS.
+2. Pro **projekty SSIS a prostředí přepsání možnost**, určete, zda chcete přepsat nebo ignorovat existující projekty SSIS a prostředí.
 
     ![Shrnutí projektu migrace](media/how-to-migrate-ssis-packages-mi/dms-project-summary2.png)
 
@@ -152,4 +152,4 @@ Po vytvoření instance služby ji vyhledejte na webu Azure Portal, otevřete ji
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si pokyny k migraci v [Průvodci migrací databáze](https://datamigration.microsoft.com/)společnosti Microsoft.
+* Přečtěte si pokyny k migraci v [Příručce pro migraci databáze](https://datamigration.microsoft.com/)společnosti Microsoft .

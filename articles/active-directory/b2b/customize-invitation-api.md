@@ -1,5 +1,5 @@
 ---
-title: Rozhraní API pro spolupráci B2B a přizpůsobení – Azure Active Directory
+title: Rozhraní API pro spolupráci b2B a přizpůsobení – Azure Active Directory
 description: Spolupráce B2B ve službě Azure Active Directory podporuje vaše vztahy s ostatními společnostmi tím, že vašim obchodním partnerům umožní selektivní přístup ke podnikovým aplikacím
 services: active-directory
 ms.service: active-directory
@@ -12,56 +12,56 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3a090ee3f9588ff6bff01e12db469bf04407a7fc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79263462"
 ---
-# <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory rozhraní API pro spolupráci B2B a přizpůsobení
+# <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Rozhraní API pro spolupráci a přizpůsobení služby Azure Active Directory B2B
 
-Spousta zákazníků nám informovala, že chce přizpůsobit proces pozvánky způsobem, který nejlépe vyhovuje jejich organizacím. Pomocí našeho rozhraní API můžete provést pouze to. [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
+Mnoho zákazníků nám říká, že chtějí přizpůsobit proces pozvání způsobem, který nejlépe vyhovuje jejich organizacím. S naším ROZHRANÍm API to můžete udělat. [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
 
-## <a name="capabilities-of-the-invitation-api"></a>Schopnosti rozhraní API pro pozvánky
+## <a name="capabilities-of-the-invitation-api"></a>Možnosti rozhraní API pro pozvání
 
-Rozhraní API nabízí následující možnosti:
+Rozhraní API nabízí následující funkce:
 
-1. Pozvání externího uživatele pomocí *libovolné* e-mailové adresy
+1. Pozvěte externího uživatele s *libovolnou* e-mailovou adresou.
 
     ```
     "invitedUserDisplayName": "Sam"
     "invitedUserEmailAddress": "gsamoogle@gmail.com"
     ```
 
-2. Přizpůsobte si, kam chcete, aby vaši uživatelé mohli po přijetí pozvánky vykládat.
+2. Přizpůsobte si, kde mají uživatelé přistát poté, co přijmou pozvání.
 
     ```
     "inviteRedirectUrl": "https://myapps.microsoft.com/"
     ```
 
-3. Vyberte, chcete-li odeslat standardní e-mail s pozvánkou prostřednictvím nás.
+3. Zvolte, zda chcete prostřednictvím nás poslat standardní e-mail s pozvánkou
 
     ```
     "sendInvitationMessage": true
     ```
 
-   se zprávou na příjemce, kterého můžete přizpůsobit
+   se zprávou příjemci, kterou můžete přizpůsobit
 
     ```
     "customizedMessageBody": "Hello Sam, let's collaborate!"
     ```
 
-4. A zvolíte možnost CC: lidi, které chcete ve smyčce zachovávat o pozvání tohoto spolupracovníka.
+4. A zvolte cc: lidé, které chcete udržet v obraze o své pozvání tohoto spolupracovníka.
 
-5. Můžete také úplně přizpůsobit pozvánku a pracovní postup připojování tím, že zvolíte, že nechcete odesílat oznámení prostřednictvím služby Azure AD.
+5. Nebo úplně přizpůsobte pozvánku a pracovní postup registrace tím, že se rozhodnete neodesílat oznámení prostřednictvím Azure AD.
 
     ```
     "sendInvitationMessage": false
     ```
 
-   V takovém případě se vrátí URL pro uplatnění z rozhraní API, které můžete vložit do e-mailové šablony, IM nebo jiné metody distribuce podle vašeho výběru.
+   V takovém případě získáte zpět adresu URL pro využití z rozhraní API, kterou můžete vložit do šablony e-mailu, zasílání odložených společností nebo jiné metody distribuce podle vašeho výběru.
 
-6. Nakonec, pokud jste správce, můžete zvolit, aby uživatel pozvaní jako člen.
+6. A konečně, pokud jste správce, můžete pozvat uživatele jako člena.
 
     ```
     "invitedUserType": "Member"
@@ -70,22 +70,22 @@ Rozhraní API nabízí následující možnosti:
 
 ## <a name="authorization-model"></a>Autorizační model
 
-Rozhraní API je možné spustit v následujících režimech autorizace:
+Rozhraní API lze spustit v následujících režimech autorizace:
 
-### <a name="app--user-mode"></a>Aplikace a uživatelský režim
+### <a name="app--user-mode"></a>Aplikace + uživatelský režim
 
-V tomto režimu musí, kdo používá rozhraní API, mít oprávnění k vytváření pozvánek B2B.
+V tomto režimu, ten, kdo používá rozhraní API musí mít oprávnění k vytváření b2B pozvánky.
 
-### <a name="app-only-mode"></a>Režim pouze aplikace
+### <a name="app-only-mode"></a>Režim pouze pro aplikaci
 
-V kontextu pouze aplikace potřebuje aplikace uživatele. pozve. All, aby bylo pozvání úspěšné.
+V kontextu pouze aplikace aplikace potřebuje User.Invite.All obor pro pozvání k úspěchu.
 
-Další informace najdete v tématu: https://developer.microsoft.com/graph/docs/authorization/permission_scopes
+Další informace naleznete v:https://developer.microsoft.com/graph/docs/authorization/permission_scopes
 
 
 ## <a name="powershell"></a>PowerShell
 
-K snadnému přidání a pozvání externích uživatelů do organizace můžete použít PowerShell. Vytvoření pozvánky pomocí rutiny:
+Pomocí PowerShellu můžete snadno přidávat a zvát externí uživatele do organizace. Vytvořte pozvánku pomocí rutiny:
 
 ```powershell
 New-AzureADMSInvitation
@@ -94,18 +94,18 @@ New-AzureADMSInvitation
 Můžete použít následující možnosti:
 
 * -InvitedUserDisplayName
-* -InvitedUserEmailAddress
+* -InvitedUserEmailAddress -InvitedUserEmailAddress -InvitedUserEmailAddress -Invite
 * -SendInvitationMessage
 * -InvitedUserMessageInfo
 
 ### <a name="invitation-status"></a>Stav pozvánky
 
-Po odeslání pozvánky externímu uživateli můžete pomocí rutiny **Get-AzureADUser** zjistit, jestli je přijal. Když se externímu uživateli pošle pozvánka, naplní se následující vlastnosti Get-AzureADUser:
+Po odeslání pozvánky externímu uživateli můžete pomocí rutiny **Get-AzureADUser** zjistit, jestli ji přijali. Následující vlastnosti Get-AzureADUser jsou naplněny při odeslání pozvánky externímu uživateli:
 
-* **UserState** označuje, zda je pozvánka **PendingAcceptance** nebo **přijata**.
-* **UserStateChangedOn** zobrazuje časové razítko pro poslední změnu vlastnosti **userState** .
+* **UserState** označuje, zda je **pozvánka PendingAcceptance** nebo **Accepted**.
+* **UserStateChangedOn** zobrazí časové razítko pro nejnovější změnu **vlastnosti UserState.**
 
-K filtrování výsledků podle **userState**můžete použít možnost **Filter** . Následující příklad ukazuje, jak filtrovat výsledky, aby se zobrazily pouze uživatelé, kteří mají nevyřízenou pozvánku. Tento příklad také ukazuje možnost **formátovat seznam** , která umožňuje určit vlastnosti, které se mají zobrazit. 
+Pomocí možnosti **Filtr** můžete filtrovat výsledky podle **UserState**. Následující příklad ukazuje, jak filtrovat výsledky tak, aby zobrazovalo pouze uživatele, kteří mají nevyřízenou pozvánku. V příkladu je také zobrazena možnost **Formát-List,** která umožňuje určit vlastnosti, které se mají zobrazit. 
  
 
 ```powershell
@@ -113,15 +113,15 @@ Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Proper
 ```
 
 > [!NOTE]
-> Ujistěte se, že máte nejnovější verzi modulu PowerShellu AzureAD nebo modulu PowerShellu AzureADPreview. 
+> Ujistěte se, že máte nejnovější verzi modulu AzureAD PowerShell nebo Modul UVerU Pro PowerShell AzureADPreview. 
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
-Podívejte se na reference k rozhraní API pozvánky v [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation).
+Podívejte se na odkaz [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)na rozhraní API pozvánky v .
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Co je spolupráce B2B ve službě Azure AD?](what-is-b2b.md)
-- [Prvky e-mailu s pozvánkou pro spolupráci B2B](invitation-email-elements.md)
-- [Uplatnění pozvánky B2B pro spolupráci](redemption-experience.md)
-- [Přidat uživatele spolupráce B2B bez pozvánky](add-user-without-invite.md)
+- [Prvky b2B spolupráce pozvání e-mail](invitation-email-elements.md)
+- [Uplatnění pozvánky na spolupráci B2B](redemption-experience.md)
+- [Přidání uživatelů spolupráce B2B bez pozvání](add-user-without-invite.md)

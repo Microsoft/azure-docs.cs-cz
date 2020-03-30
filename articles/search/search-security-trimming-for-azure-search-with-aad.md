@@ -1,7 +1,7 @@
 ---
 title: Filtry zabezpečení pro oříznutí výsledků pomocí služby Active Directory
 titleSuffix: Azure Cognitive Search
-description: Řízení přístupu v Azure Kognitivní hledání obsahu pomocí filtrů zabezpečení a identit Azure Active Directory (AAD).
+description: Řízení přístupu k obsahu Azure Cognitive Search pomocí filtrů zabezpečení a identit Azure Active Directory (AAD).
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -9,61 +9,61 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 01280b6ee9dda15af3c0fc707a385501580c624c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72794307"
 ---
-# <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>Filtry zabezpečení pro oříznutí výsledků Kognitivní hledání Azure pomocí identit služby Active Directory
+# <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>Filtry zabezpečení pro oříznutí výsledků Azure Cognitive Search pomocí identit služby Active Directory
 
-Tento článek ukazuje, jak používat bezpečnostní identity služby Azure Active Directory (AAD) společně s filtry ve službě Azure Kognitivní hledání k vystřihování výsledků hledání na základě členství ve skupinách uživatelů.
+Tento článek ukazuje, jak používat identity zabezpečení Azure Active Directory (AAD) spolu s filtry v Azure Cognitive Search pro oříznutí výsledků hledání na základě členství ve skupině uživatelů.
 
 Tento článek se zabývá následujícími úkony:
 > [!div class="checklist"]
-> - Vytvoření skupin AAD a uživatelů
-> - Přidružte uživatele ke skupině, kterou jste vytvořili.
-> - Ukládat nové skupiny do mezipaměti
-> - Rejstřík dokumentů s přidruženými skupinami
-> - Vystavení žádosti o vyhledávání pomocí filtru identifikátorů skupin
+> - Vytvoření skupin a uživatelů a uživatelů add
+> - Přidružení uživatele k vytvořené skupině
+> - Ukládat do mezipaměti nové skupiny
+> - Indexovat dokumenty s přidruženými skupinami
+> - Vydat požadavek na hledání s filtrem identifikátorů skupiny
 > 
 > [!NOTE]
-> Ukázky fragmentů kódu v tomto článku jsou napsané C#v. Úplný zdrojový kód najdete [na GitHubu](https://aka.ms/search-dotnet-howto). 
+> Ukázkové fragmenty kódu v tomto článku jsou napsány v c#. Úplný zdrojový kód najdete [na GitHubu](https://aka.ms/search-dotnet-howto). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Váš index v Azure Kognitivní hledání musí mít [pole zabezpečení](search-security-trimming-for-azure-search.md) pro uložení seznamu identit skupin, které mají k dokumentu přístup pro čtení. Tento případ použití předpokládá, že se jedná o korespondenci mezi zabezpečenou položkou (jako je aplikace školních aplikací jednotlivce) a bezpečnostní pole určující, kdo má přístup k této položce (zaměstnancům pro přijímání).
+Váš index v Azure Cognitive Search musí mít [pole zabezpečení](search-security-trimming-for-azure-search.md) pro uložení seznamu identit skupiny, které mají přístup pro čtení do dokumentu. Tento případ použití předpokládá individuální korespondenci mezi zabezpečenou položkou (například přihláškou na vysokou školu) a bezpečnostním polem určujícím, kdo má k této položce přístup (personál pro přijetí).
 
-Musíte mít oprávnění správce AAD, které se v tomto návodu vyžaduje pro vytváření uživatelů, skupin a přidružení v AAD.
+Pro vytváření uživatelů, skupin a přidružení ve službě AAD musíte mít oprávnění správce služby AAD, která jsou vyžadována v tomto návodu.
 
-Vaše aplikace musí být také zaregistrovaná v AAD, jak je popsáno v následujícím postupu.
+Vaše přihláška musí být také zaregistrována u služby AAD, jak je popsáno v následujícím postupu.
 
-### <a name="register-your-application-with-aad"></a>Registrace aplikace pomocí AAD
+### <a name="register-your-application-with-aad"></a>Zaregistrujte svou přihlášku u AAD
 
-Tento krok integruje vaši aplikaci s AAD pro účely přijímání přihlášení uživatelů a skupinových účtů. Pokud nejste správcem AAD ve vaší organizaci, možná budete muset [vytvořit nového tenanta](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) , abyste mohli provést následující kroky.
+Tento krok integruje vaši aplikaci s AAD za účelem přijetí přihlášení uživatelských a skupinových účtů. Pokud nejste správcem AAD ve vaší organizaci, možná budete muset [vytvořit nového klienta,](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) abyste provedli následující kroky.
 
-1. Přejít na [**portál pro registraci aplikací**](https://apps.dev.microsoft.com) >  **sblížené aplikace** > **Přidání aplikace**
-2. Zadejte název aplikace a pak klikněte na **vytvořit**. 
-3. Na stránce Moje aplikace vyberte svou nově registrovanou aplikaci.
-4. Na stránce pro registraci aplikace > **platforem** > **Přidat platformu**vyberte **webové rozhraní API**.
-5. Pořád na stránce registrace aplikace přejdete na > **Microsoft Graph oprávnění** > **Přidat**.
-6. V části vybrat oprávnění přidejte následující delegovaná oprávnění a pak klikněte na **OK**:
+1. Přejděte do >  **konvergované aplikace** >  [**Portál pro registraci aplikací**](https://apps.dev.microsoft.com)**Přidejte aplikaci**.
+2. Zadejte název aplikace a klepněte na **tlačítko Vytvořit**. 
+3. Na stránce Moje aplikace vyberte nově registrovanou aplikaci.
+4. Na stránce registrace aplikace > **platformy** > **Přidat platformu**zvolte **webové rozhraní API**.
+5. Stále na stránce registrace aplikace, přejděte na > **Microsoft Graph Oprávnění** > **Přidat**.
+6. V části Vybrat oprávnění přidejte následující delegovaná oprávnění a klepněte na **tlačítko OK**:
 
-   + **Adresář. pročtení. vše**
-   + **Group. pročtení. All**
-   + **User. pročtení. All**
+   + **Directory.ReadWrite.All**
+   + **Group.ReadWrite.All**
+   + **Uživatel.ReadWrite.All**
 
-Microsoft Graph poskytuje rozhraní API, které umožňuje programový přístup k AAD prostřednictvím REST API. Ukázka kódu pro tento návod používá oprávnění k volání rozhraní Microsoft Graph API pro vytváření skupin, uživatelů a přidružení. Rozhraní API se také používají k ukládání identifikátorů skupin do mezipaměti pro rychlejší filtrování.
+Microsoft Graph poskytuje rozhraní API, které umožňuje programový přístup k AAD prostřednictvím rozhraní REST API. Ukázka kódu pro tento návod používá oprávnění k volání rozhraní Microsoft Graph API pro vytváření skupin, uživatelů a přidružení. Api se také používají k ukládání identifikátorů skupiny do mezipaměti pro rychlejší filtrování.
 
 ## <a name="create-users-and-groups"></a>Vytváření uživatelů a skupin
 
-Pokud přidáváte vyhledávání do zavedené aplikace, můžete v AAD mít existující identifikátory uživatelů a skupin. V takovém případě můžete přeskočit další tři kroky. 
+Pokud přidáváte vyhledávání do zavedené aplikace, můžete mít existující identifikátory uživatelů a skupin v aad. V takovém případě můžete přeskočit další tři kroky. 
 
-Pokud ale existující uživatele nemáte, můžete k vytvoření objektů zabezpečení použít rozhraní Microsoft Graph API. Následující fragmenty kódu ukazují, jak generovat identifikátory, které se stanou hodnotami dat pro pole zabezpečení v indexu Azure Kognitivní hledání. V naší aplikaci pro přijímání hypotetické školy se jedná o identifikátory zabezpečení pro pracovníky, kteří mají přístup.
+Pokud však nemáte stávající uživatele, můžete k vytvoření objektů zabezpečení použít rozhraní API aplikace Microsoft Graph. Následující fragmenty kódu ukazují, jak generovat identifikátory, které se stanou datovými hodnotami pro pole zabezpečení v indexu Azure Cognitive Search. V naší hypotetické žádosti o přijetí na vysokou školu by to byly bezpečnostní identifikátory pro přijímací personál.
 
-Členství uživatele a skupiny může být velmi kapalina, zejména ve velkých organizacích. Kód, který sestavuje identity uživatelů a skupin, by měl být často spuštěný dostatečně, aby bylo možné vybírat změny v členství organizace. Stejně tak váš index služby Azure Kognitivní hledání vyžaduje podobný plán aktualizace, který odráží aktuální stav povolených uživatelů a prostředků.
+Členství uživatelů a skupin může být velmi plynulé, zejména ve velkých organizacích. Kód, který vytváří identity uživatelů a skupin, by měl být spuštěn dostatečně často, aby bylo třeba vyzvednout změny členství v organizaci. Podobně váš index Azure Cognitive Search vyžaduje podobný plán aktualizací, aby odrážel aktuální stav povolených uživatelů a prostředků.
 
-### <a name="step-1-create-aad-grouphttpsdocsmicrosoftcomgraphapigroup-post-groupsviewgraph-rest-10"></a>Krok 1: vytvoření [skupiny AAD](https://docs.microsoft.com/graph/api/group-post-groups?view=graph-rest-1.0) 
+### <a name="step-1-create-aad-group"></a>Krok 1: Vytvoření [skupiny AAD](https://docs.microsoft.com/graph/api/group-post-groups?view=graph-rest-1.0) 
 ```csharp
 // Instantiate graph client 
 GraphServiceClient graph = new GraphServiceClient(new DelegateAuthenticationProvider(...));
@@ -77,7 +77,7 @@ Group group = new Group()
 Group newGroup = await graph.Groups.Request().AddAsync(group);
 ```
    
-### <a name="step-2-create-aad-userhttpsdocsmicrosoftcomgraphapiuser-post-usersviewgraph-rest-10"></a>Krok 2: vytvoření [uživatele AAD](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)
+### <a name="step-2-create-aad-user"></a>Krok 2: Vytvoření [uživatele add](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)
 ```csharp
 User user = new User()
 {
@@ -92,25 +92,25 @@ User user = new User()
 User newUser = await graph.Users.Request().AddAsync(user);
 ```
 
-### <a name="step-3-associate-user-and-group"></a>Krok 3: přidružení uživatele a skupiny
+### <a name="step-3-associate-user-and-group"></a>Krok 3: Přidružení uživatele a skupiny
 ```csharp
 await graph.Groups[newGroup.Id].Members.References.Request().AddAsync(newUser);
 ```
 
-### <a name="step-4-cache-the-groups-identifiers"></a>Krok 4: ukládání identifikátorů skupin do mezipaměti
-Pokud chcete snížit latenci sítě, můžete přidružení skupin uživatelů ukládat do mezipaměti, aby při vydání žádosti o vyhledávání byly skupiny vráceny z mezipaměti a ukládaly do AAD zpětný převod. Pomocí [rozhraní API pro AAD Batch](https://developer.microsoft.com/graph/docs/concepts/json_batching) můžete odeslat jednu žádost HTTP s více uživateli a sestavit mezipaměť.
+### <a name="step-4-cache-the-groups-identifiers"></a>Krok 4: Ukládat identifikátory skupin do mezipaměti
+Volitelně můžete snížit latenci sítě, můžete ukládat do mezipaměti přidružení skupin uživatelů tak, aby při vydání požadavku na vyhledávání byly skupiny vráceny z mezipaměti a ukládají se do ad. Dávkové [rozhraní API AAD](https://developer.microsoft.com/graph/docs/concepts/json_batching) můžete použít k odeslání jednoho požadavku Http s více uživateli a vytvoření mezipaměti.
 
-Microsoft Graph je navržena tak, aby zpracovávala velký objem požadavků. Pokud dojde k zahlcení počtu požadavků, Microsoft Graph požadavek se stavovým kódem HTTP 429. Další informace najdete v tématu [omezení Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/throttling).
+Microsoft Graph je navržen tak, aby zpracovávat velký objem požadavků. Pokud dojde k obrovskému počtu požadavků, microsoft graph nezdaří požadavek se stavovým kódem HTTP 429. Další informace naleznete v [tématu Omezení aplikace Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/throttling).
 
 ## <a name="index-document-with-their-permitted-groups"></a>Indexovat dokument s povolenými skupinami
 
-Operace dotazů v Azure Kognitivní hledání se provádějí přes index Azure Kognitivní hledání. V tomto kroku operace indexování importuje hledaná data do indexu, včetně identifikátorů použitých jako filtry zabezpečení. 
+Operace dotazů v Azure Cognitive Search se spouštějí přes index Azure Cognitive Search. V tomto kroku operace indexování importuje prohledávatelná data do indexu, včetně identifikátorů používaných jako filtry zabezpečení. 
 
-Azure Kognitivní hledání neověřuje identity uživatelů ani neposkytuje logiku pro zjištění, který obsah má uživatel oprávnění k zobrazení. Případ použití pro ořezávání zabezpečení předpokládá, že zadáváte přidružení mezi citlivý dokument a identifikátor skupiny, který má přístup k tomuto dokumentu, importován do indexu vyhledávání beze změny. 
+Azure Cognitive Search neověřuje identity uživatelů ani neposkytuje logiku pro určení obsahu, k jehož zobrazení má uživatel oprávnění. Případ použití pro oříznutí zabezpečení předpokládá, že zadáte přidružení mezi citlivým dokumentem a identifikátorem skupiny, který má přístup k tomuto dokumentu, importované ho do indexu hledání. 
 
-V hypotetickém příkladu tělo žádosti o vložení na indexu služby Azure Kognitivní hledání by zahrnovalo essay školního typu nebo přepisu spolu s identifikátorem skupiny, který má oprávnění k zobrazení tohoto obsahu. 
+V hypotetickém příkladu by tělo žádosti PUT na indexu Azure Cognitive Search zahrnovalo esej nebo přepis uchazeče na vysokou školu spolu s identifikátorem skupiny, který má oprávnění k zobrazení tohoto obsahu. 
 
-V obecném příkladu použitém v ukázce kódu pro tento návod může akce index vypadat takto:
+V obecném příkladu použitém v ukázce kódu pro tento návod může akce indexu vypadat takto:
 
 ```csharp
 var actions = new IndexAction<SecuredFiles>[]
@@ -130,15 +130,15 @@ var batch = IndexBatch.New(actions);
 _indexClient.Documents.Index(batch);  
 ```
 
-## <a name="issue-a-search-request"></a>Vydat požadavek hledání
+## <a name="issue-a-search-request"></a>Vydat žádost o hledání
 
-Pro účely oříznutí zabezpečení jsou hodnoty v poli zabezpečení v indexu statické hodnoty používané pro zahrnutí nebo vyloučení dokumentů ve výsledcích hledání. Pokud je například identifikátor skupiny pro přístup "A11B22C33D44-E55F66G77-H88I99JKK", všechny dokumenty v indexu služby Azure Kognitivní hledání s tímto identifikátorem v zaznamenaném zabezpečení jsou zahrnuty (nebo vyloučeny) ve výsledcích hledání odeslaných zpět žadateli.
+Pro účely oříznutí zabezpečení jsou hodnoty v poli zabezpečení v indexu statické hodnoty používané pro zahrnutí nebo vyloučení dokumentů ve výsledcích hledání. Například pokud identifikátor skupiny pro přijetí je "A11B22C33D44-E55F66G77-H88I99JKK", všechny dokumenty v indexu Azure Cognitive Search, které mají tento identifikátor v zabezpečení soubor jsou zahrnuty (nebo vyloučeny) ve výsledcích hledání odeslaných zpět žadateli.
 
-Pokud chcete filtrovat dokumenty vrácené ve výsledcích hledání na základě skupin uživatele, který požadavek vystavil, Projděte si následující postup.
+Chcete-li filtrovat dokumenty vrácené ve výsledcích hledání na základě skupin uživatele, který žádost vydal, přečtěte si následující kroky.
 
-### <a name="step-1-retrieve-users-group-identifiers"></a>Krok 1: načtení identifikátorů skupin uživatelů
+### <a name="step-1-retrieve-users-group-identifiers"></a>Krok 1: Načtení identifikátorů skupiny uživatele
 
-Pokud skupiny uživatelů ještě nejsou uložené v mezipaměti nebo vypršela platnost mezipaměti, vydejte požadavek [skupin](https://docs.microsoft.com/graph/api/directoryobject-getmembergroups?view=graph-rest-1.0) .
+Pokud skupiny uživatele ještě nebyly uloženy do mezipaměti nebo vypršela platnost mezipaměti, vydejte žádost o [skupiny](https://docs.microsoft.com/graph/api/directoryobject-getmembergroups?view=graph-rest-1.0)
 ```csharp
 private static void RefreshCacheIfRequired(string user)
 {
@@ -164,9 +164,9 @@ private static async Task<List<string>> GetGroupIdsForUser(string userPrincipalN
 }
 ``` 
 
-### <a name="step-2-compose-the-search-request"></a>Krok 2: vytvoření žádosti o hledání
+### <a name="step-2-compose-the-search-request"></a>Krok 2: Sestavte požadavek na hledání
 
-Za předpokladu, že máte členství uživatele ve skupinách, můžete vystavit požadavek hledání pomocí příslušných hodnot filtru.
+Za předpokladu, že máte členství ve skupinách uživatele, můžete žádost o hledání vydat s příslušnými hodnotami filtru.
 
 ```csharp
 string filter = String.Format("groupIds/any(p:search.in(p, '{0}'))", string.Join(",", groups.Select(g => g.ToString())));
@@ -178,16 +178,16 @@ SearchParameters parameters = new SearchParameters()
 
 DocumentSearchResult<SecuredFiles> results = _indexClient.Documents.Search<SecuredFiles>("*", parameters);
 ```
-### <a name="step-3-handle-the-results"></a>Krok 3: zpracování výsledků
+### <a name="step-3-handle-the-results"></a>Krok 3: Zpracování výsledků
 
-Odpověď obsahuje filtrovaný seznam dokumentů, který se skládá z těch, které má uživatel oprávnění k zobrazení. V závislosti na tom, jak vytváříte stránku výsledků hledání, můžete chtít zahrnout vizuální pomůcky, které odrážejí filtrovanou sadu výsledků.
+Odpověď obsahuje filtrovaný seznam dokumentů, který se skládá z těch, ke kterým má uživatel oprávnění k zobrazení. V závislosti na tom, jak vytvoříte stránku s výsledky hledání, můžete chtít zahrnout vizuální podněty tak, aby odrážely filtrovanou sadu výsledků.
 
 ## <a name="conclusion"></a>Závěr
 
-V tomto návodu jste zjistili techniky použití přihlášení AAD k filtrování dokumentů v Azure Kognitivní hledání výsledky, oříznutí výsledků dokumentů, které neodpovídají filtru zadanému na žádosti.
+V tomto návodu jste se naučili techniky pro použití přihlášení AAD k filtrování dokumentů ve výsledcích Azure Cognitive Search, oříznutí výsledků dokumentů, které neodpovídají filtru k dispozici na žádost.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
-+ [Řízení přístupu na základě identity pomocí filtrů Azure Kognitivní hledání](search-security-trimming-for-azure-search.md)
-+ [Filtry v Azure Kognitivní hledání](search-filters.md)
-+ [Zabezpečení a řízení přístupu k datům v Azure Kognitivní hledáních operacích](search-security-overview.md)
++ [Řízení přístupu založené na identitě pomocí filtrů Azure Cognitive Search](search-security-trimming-for-azure-search.md)
++ [Filtry v Azure Cognitive Search](search-filters.md)
++ [Zabezpečení dat a řízení přístupu v operacích Azure Cognitive Search](search-security-overview.md)

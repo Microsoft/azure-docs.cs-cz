@@ -1,7 +1,7 @@
 ---
-title: Oblasti, ve kterých je Video Indexer k dispozici – Azure
+title: Oblasti, ve kterých je video indexer k dispozici - Azure
 titleSuffix: Azure Media Services
-description: Tento článek pojednává o oblastech Azure, ve kterých je k dispozici Azure Media Services Video Indexer.
+description: Tento článek popisuje oblasti Azure, ve kterých je k dispozici Azure Media Services Video Indexer.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,28 +10,28 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 6ba6f189f4290bb2751adf9b44135eeda7266ca0
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: c91b38fcbfb9b517651adead010408425e519a82
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892749"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382745"
 ---
-# <a name="azure-regions-in-which-video-indexer-exists"></a>Oblasti Azure, ve kterých Video Indexer existuje
+# <a name="azure-regions-in-which-video-indexer-exists"></a>Oblasti Azure, ve kterých existuje Video Indexer
 
-Rozhraní Video Indexer API obsahují parametr **Location** , který byste měli nastavit na oblast Azure, do které se má volání směrovat. Musí se jednat o [oblast Azure, ve které je video indexer k dispozici](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all).
+Rozhraní API indexeru videa obsahují parametr **umístění,** který byste měli nastavit na oblast Azure, do které by mělo být volání směrováno. Musí se jednat o [oblast Azure, ve které je k dispozici video indexer](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all).
 
 ## <a name="locations"></a>Umístění
 
-Parametru **Location** se musí jako jeho hodnota přidávat název kódu oblasti Azure. Pokud používáte Video Indexer v režimu náhledu, měli byste jako hodnotu vložit *"zkušební"* . Jinak, pokud chcete získat název kódu oblasti Azure, ve které je váš účet, a na to, že se má vaše volání směrovat, můžete v [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)spustit následující řádek:
+Parametr **umístění** musí mít jako hodnotu kódový název oblasti Azure. Pokud používáte Video Indexer v režimu náhledu, měli byste dát *"zkušební"* jako hodnotu. V opačném případě chcete-li získat kódový název oblasti Azure, ve které se váš účet nachází, a na který by měl být směrován váš hovor, můžete v [azure cli](/cli/azure)spustit následující řádek :
 
-```bash
+```azurecli-interactive
 az account list-locations
 ```
 
-Po spuštění výše uvedeného řádku získáte seznam všech oblastí Azure. Přejděte do oblasti Azure s názvem *DisplayName* , který hledáte, a použijte jeho *název* pro parametr **Location** .
+Po spuštění řádku uvedeného výše získáte seznam všech oblastí Azure. Přejděte do oblasti Azure, která má *displayName,* který hledáte, a použijte jeho hodnotu *názvu* pro parametr **umístění.**
 
-Například pro oblast Azure Západní USA 2 (zobrazenou níže) budete pro parametr **Location** používat "westus2".
+Například pro oblast Azure West US 2 (zobrazeno níže) použijete "westus2" pro parametr **umístění.**
 
 ```json
    {
@@ -47,5 +47,5 @@ Například pro oblast Azure Západní USA 2 (zobrazenou níže) budete pro para
 ## <a name="next-steps"></a>Další kroky
 
 - [Přizpůsobení jazykového modelu pomocí rozhraní API](customize-language-model-with-api.md)
-- [Přizpůsobení modelu značek pomocí rozhraní API](customize-brands-model-with-api.md)
-- [Přizpůsobení modelu osoby pomocí rozhraní API](customize-person-model-with-api.md)
+- [Přizpůsobení modelu značek pomocí api](customize-brands-model-with-api.md)
+- [Přizpůsobení modelu osoby pomocí api](customize-person-model-with-api.md)

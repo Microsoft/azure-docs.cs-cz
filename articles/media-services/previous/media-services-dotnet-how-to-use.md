@@ -1,6 +1,6 @@
 ---
-title: Jak nastavit počítače pro vývoj pro Media Services s .NET
-description: Informace o požadavcích pro Media Services pomocí sady Media Services SDK pro .NET. Také zjistěte, jak vytvořit aplikaci Visual Studio.
+title: Jak nastavit počítač pro vývoj mediálních služeb pomocí rozhraní .NET
+description: Informace o předpokladech pro služby Media Services pomocí sady Media Services SDK pro rozhraní .NET. Přečtěte si taky, jak vytvořit aplikaci Visual Studia.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,57 +15,57 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 51fffbd170daecfec6fcea95caa0526e6d881407
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64724117"
 ---
-# <a name="media-services-development-with-net"></a>Vývoj pro Media Services s .NET 
+# <a name="media-services-development-with-net"></a>Vývoj mediálních služeb pomocí rozhraní .NET 
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
 
-Tento článek popisuje, jak začít s vývojem aplikací Media Services pomocí rozhraní .NET.
+Tento článek popisuje, jak začít vyvíjet aplikace služby Media Services pomocí rozhraní .NET.
 
-**Azure Media Services .NET SDK** knihovny umožňuje programovat proti Media Services pomocí rozhraní .NET. Chcete-li to bylo ještě jednodušší vývoj pomocí .NET, **rozšíření Azure Media Services .NET SDK** knihovny je k dispozici. Tato knihovna obsahuje sadu metod rozšíření a pomocných funkcí, které zjednodušují kódu .NET. Obě knihovny jsou k dispozici prostřednictvím **NuGet** a **Githubu**.
+Knihovna **Sady Azure Media Services .NET SDK** umožňuje programovat proti mediálním službám pomocí rozhraní .NET. Chcete-li ještě usnadnit vývoj s rozhraním .NET, je k dispozici knihovna **rozšíření Azure Media Services .NET SDK Extensions.** Tato knihovna obsahuje sadu rozšiřujících metod a pomocných funkcí, které zjednodušují kód .NET. Obě knihovny jsou k dispozici prostřednictvím **NuGet** a **GitHub**.
 
 ## <a name="prerequisites"></a>Požadavky
-* Účet Media Services v novém nebo existujícím předplatném Azure. Přečtěte si článek [postup vytvoření účtu Media Services](media-services-portal-create-account.md).
+* Účet Media Services v novém nebo existujícím předplatném Azure. V článku [Jak vytvořit účet mediálních služeb](media-services-portal-create-account.md).
 * Operační systémy: Windows 10, Windows 7, Windows 2008 R2 nebo Windows 8.
-* Rozhraní .NET framework 4.5 nebo novější.
+* Rozhraní .NET Framework 4.5 nebo novější.
 * Visual Studio.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
-Tato část ukazuje, jak vytvořit projekt v sadě Visual Studio a připravit prostředí pro vývoj pro Media Services.  V takovém případě je projekt C# Windows konzolovou aplikaci, ale stejný postup instalace je vidět tady platí pro jiné typy projektů, můžete vytvořit pro aplikace služby Media Services (například aplikace modelu Windows Forms nebo webové aplikace ASP.NET).
+Tato část ukazuje, jak vytvořit projekt v sadě Visual Studio a nastavit jej pro vývoj mediálních služeb.  V tomto případě je projekt aplikace konzoly Systému Windows jazyka C#, ale stejné kroky instalace uvedené zde platí pro jiné typy projektů, které můžete vytvořit pro aplikace Služby Media (například aplikace Windows Forms nebo ASP.NET webová aplikace).
 
-Tato část ukazuje způsob použití **NuGet** přidejte sadu Media Services .NET SDK rozšíření a dalších závislých knihoven.
+Tato část ukazuje, jak pomocí **NuGet** přidat rozšíření sady Media Services .NET SDK a další závislé knihovny.
 
-Alternativně můžete získat nejnovější součásti Media Services .NET SDK z Githubu ([github.com/Azure/azure-sdk-for-media-services](https://github.com/Azure/azure-sdk-for-media-services) nebo [github.com/Azure/azure-sdk-for-media-services-extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions)), sestavte řešení a přidejte odkazy do projektu klienta. Všechny potřebné závislosti získat stažené a rozbalené automaticky.
+Případně můžete získat nejnovější bity Media Services .NET SDK z GitHubu[(github.com/Azure/azure-sdk-for-media-services](https://github.com/Azure/azure-sdk-for-media-services) nebo [github.com/Azure/azure-sdk-for-media-services-extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions)), sestavit řešení a přidat odkazy na klientský projekt. Všechny potřebné závislosti se automaticky stáhnou a extrahují.
 
-1. Vytvořte novou konzolovou aplikaci v jazyce C# v sadě Visual Studio. Zadejte **název**, **umístění**, a **název řešení**a potom klikněte na tlačítko OK.
+1. Vytvořte novou konzolovou aplikaci v jazyce C# v sadě Visual Studio. Zadejte **název**, **umístění**a **název řešení**a klepněte na tlačítko OK.
 2. Sestavte řešení.
-3. Použití **NuGet** nainstalujte a přidejte **rozšíření Azure Media Services .NET SDK** (**windowsazure.mediaservices.extensions**). Při instalaci tohoto balíčku se nainstaluje také **sada SDK služby Media Services pro .NET** a přidá všechny ostatní požadované závislosti.
+3. Pomocí **nugetu** nainstalujte a přidejte **rozšíření Sady Azure Media Services .NET SDK** **(windowsazure.mediaservices.extensions).** Při instalaci tohoto balíčku se nainstaluje také **sada SDK služby Media Services pro .NET** a přidá všechny ostatní požadované závislosti.
    
-    Ujistěte se, že máte nejnovější verzi aplikace nainstalován nástroj NuGet. Další informace a pokyny k instalaci, naleznete v tématu [NuGet](https://nuget.codeplex.com/).
+    Ujistěte se, že máte nainstalovanou nejnovější verzi NuGet. Další informace a pokyny k instalaci naleznete v tématu [NuGet](https://nuget.codeplex.com/).
 
-    1. V Průzkumníku řešení klikněte pravým tlačítkem myši na název projektu a zvolte **spravovat balíčky NuGet**.
+    1. V Průzkumníku řešení klikněte pravým tlačítkem myši na název projektu a zvolte **Spravovat balíčky NuGet**.
 
-    2. Zobrazí se dialogové okno Spravovat balíčky NuGet.
+    2. Zobrazí se dialogové okno Správa balíčků NuGet.
 
-    3. V galerii Online hledání MediaServices rozšíření Azure, zvolte **rozšíření Azure Media Services .NET SDK** (**windowsazure.mediaservices.extensions**) a potom klikněte na tlačítko  **Nainstalujte** tlačítko.
+    3. V galerii Online vyhledejte rozšíření Azure MediaServices, zvolte **rozšíření Azure Media Services .NET SDK Extensions** **(windowsazure.mediaservices.extensions)** a klikněte na tlačítko **Instalovat.**
    
-    4. Upravit projekt a jsou přidány odkazy na rozšíření Media Services .NET SDK, Media Services .NET SDK a dalších závislých sestavení.
-4. Ke zvýšení úrovně čištění vývojového prostředí, zvažte povolení obnovení balíčků NuGet. Další informace najdete v tématu [obnovení balíčků NuGet "](https://docs.nuget.org/consume/package-restore).
-5. Přidejte odkaz na **System.Configuration** sestavení. Toto sestavení obsahuje System.Configuration. **ConfigurationManager** třídu, která se používá pro přístup k konfigurační soubory (například App.config).
+    4. Projekt je upraven a jsou přidány odkazy na rozšíření sady Media Services .NET SDK, sady Media Services .NET SDK a další závislá sestavení.
+4. Chcete-li podporovat čistší vývojové prostředí, zvažte povolení NuGet package restore. Další informace naleznete v tématu [NuGet Package Restore"](https://docs.nuget.org/consume/package-restore).
+5. Přidejte odkaz na sestavení **System.Configuration.** Toto sestavení obsahuje System.Configuration. **Třída ConfigurationManager,** která se používá pro přístup ke konfiguračním souborům (například App.config).
    
-    1. Přidání odkazů pomocí dialogového okna Spravovat odkazy, klikněte pravým tlačítkem na název projektu v Průzkumníku řešení. Potom klikněte na **přidat**, pak klikněte na tlačítko **odkaz...** .
+    1. Chcete-li přidat odkazy pomocí dialogového okna Spravovat odkazy, klepněte pravým tlačítkem myši na název projektu v Průzkumníku řešení. Potom klepněte na tlačítko **Přidat**a potom klepněte na **odkaz...**.
    
     2. Zobrazí se dialogové okno Spravovat odkazy.
-    3. V části sestavení rozhraní .NET framework, vyhledejte a vyberte sestavení System.Configuration a stiskněte klávesu **OK**.
-6. Otevřete soubor App.config a přidat **appSettings** část do souboru. Nastavte hodnoty, které jsou potřebné pro připojení k rozhraní API služby Media Services. Další informace najdete v tématu [přístup k rozhraní API Azure Media Services pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+    3. V části sestavení rozhraní .NET framework vyhledejte a vyberte sestavení System.Configuration a stiskněte **ok**.
+6. Otevřete soubor App.config a přidejte do něj oddíl **AppSettings.** Nastavte hodnoty potřebné pro připojení k rozhraní API mediálních služeb. Další informace najdete [v tématu Přístup k rozhraní API Azure Media Services s ověřováním Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
-    Nastavit hodnoty, které jsou potřebné pro připojení pomocí **instanční objekt služby** metodu ověřování.
+    Nastavte hodnoty, které jsou potřebné pro připojení pomocí metody ověřování **instančního objektu.**
 
         ```csharp
                 <configuration>
@@ -79,8 +79,8 @@ Alternativně můžete získat nejnovější součásti Media Services .NET SDK 
                 </configuration>
         ```
 
-7. Přidat **System.Configuration** odkaz na svůj projekt.
-8. Přepsat existující **pomocí** příkazy na začátku souboru Program.cs následujícím kódem:
+7. Přidejte odkaz **System.Configuration** do projektu.
+8. Přepište existující **příkazy using** na začátku Program.cs souboru pomocí následujícího kódu:
 
     ```csharp      
             using System;
@@ -92,11 +92,11 @@ Alternativně můžete získat nejnovější součásti Media Services .NET SDK 
             using System.Linq;
     ```
 
-    V tuto chvíli jste připraveni začít vyvíjet aplikace služby Media Services.    
+    V tomto okamžiku jste připraveni začít vyvíjet aplikaci mediálních služeb.    
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 
-Tady je malý příklad, který se připojuje k rozhraní API pro AMS a uvádí všechny dostupné procesory médií.
+Zde je malý příklad, který se připojuje k rozhraní API AMS a obsahuje seznam všech dostupných mediálních procesorů.
 
 ```csharp
         class Program
@@ -133,12 +133,12 @@ Tady je malý příklad, který se připojuje k rozhraní API pro AMS a uvádí 
             }
  ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Nyní [se můžete připojit k rozhraní API pro AMS](media-services-use-aad-auth-to-access-ams-api.md) a spustit [vývoj](media-services-dotnet-get-started.md).
+Nyní [se můžete připojit k Rozhraní API AMS](media-services-use-aad-auth-to-access-ams-api.md) a začít [vyvíjet](media-services-dotnet-get-started.md).
 
 
-## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
+## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby

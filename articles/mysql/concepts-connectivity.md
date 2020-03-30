@@ -1,77 +1,77 @@
 ---
-title: Chyby přechodného připojení – Azure Database for MySQL
-description: Naučte se zpracovávat chyby s přechodným připojením a efektivně se připojit k Azure Database for MySQL.
-keywords: připojení MySQL, připojovací řetězec, problémy s připojením, přechodná chyba, Chyba připojení, efektivní připojení
+title: Přechodné chyby připojení – Azure Database for MySQL
+description: Zjistěte, jak zpracovat přechodné chyby připojení a efektivně se připojit k Azure Database for MySQL.
+keywords: připojení mysql,připojovací řetězec,problémy s připojením,přechodná chyba,chyba připojení,efektivní připojení
 author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: d91048c52794869b5db1467a3456ca58e703d1ad
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 3/18/2020
+ms.openlocfilehash: 79c5c7e485cc9cb03757b8a981cef92d79b81c3d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719921"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79537172"
 ---
 # <a name="handle-transient-errors-and-connect-efficiently-to-azure-database-for-mysql"></a>Zpracování přechodných chyb a efektivní připojení k Azure Database for MySQL
 
-Tento článek popisuje, jak řešit přechodné chyby a efektivně se připojovat k Azure Database for MySQL.
+Tento článek popisuje, jak zpracovat přechodné chyby a efektivně se připojit k Azure Database for MySQL.
 
 ## <a name="transient-errors"></a>Přechodné chyby
 
-Přechodná chyba, označovaná také jako přechodná chyba, je chyba, která se vyřeší sám. Nejčastěji tyto chyby se manifestují jako připojení k databázovému serveru, který se vynechává. Nová připojení k serveru se taky nedají otevřít. K přechodným chybám může dojít například v případě, že dojde k selhání hardwaru nebo sítě. Dalším důvodem může být nová verze služby PaaS, která se zavádí. Většina těchto událostí je systémem automaticky snížena za méně než 60 sekund. Osvědčeným postupem pro navrhování a vývoj aplikací v cloudu je očekávat přechodné chyby. Předpokládejte, že se k nim může kdykoli docházet v každé komponentě a mít k dispozici odpovídající logiku pro zpracování těchto situací.
+Přechodná chyba, označovaná také jako přechodná chyba, je chyba, která se vyřeší sama. Většina obvykle tyto chyby manifest jako připojení k databázovému serveru je vynechána. Také nelze otevřít nová připojení k serveru. K přechodným chybám může dojít například při selhání hardwaru nebo sítě. Dalším důvodem může být nová verze služby PaaS, která je právě zaváděna. Většina těchto událostí jsou automaticky zmírněny systémem za méně než 60 sekund. Osvědčeným postupem pro navrhování a vývoj aplikací v cloudu je očekávat přechodné chyby. Předpokládejme, že může dojít v libovolné součásti kdykoli a mít příslušnou logiku na místě pro zpracování těchto situací.
 
 ## <a name="handling-transient-errors"></a>Zpracování přechodných chyb
 
-Přechodné chyby by se měly zpracovat pomocí logiky opakování. Situace, které je třeba vzít v úvahu:
+Přechodné chyby by měly být zpracovány pomocí logiky opakování. Situace, které je třeba vzít v úvahu:
 
 * Při pokusu o otevření připojení dojde k chybě.
-* Nečinné připojení je na straně serveru vyřazeno. Když se pokusíte o vydání příkazu, nejde ho spustit.
-* Aktivní připojení, které aktuálně provádí příkaz, je vyřazeno.
+* Na straně serveru je přerušeno nečinné připojení. Při pokusu o vydání příkazu nelze provést
+* Aktivní připojení, které právě provádí příkaz, je vynecháno.
 
-První a druhý případ jsou poměrně přímo předávány na popisovač. Pokuste se znovu otevřít připojení. Po úspěšném provedení přechodné chyby systém sníží. Azure Database for MySQL můžete použít znovu. Doporučujeme, abyste počkali před opakováním pokusu o připojení. Pokud nedojde k selhání počátečních pokusů, je záložní. Tímto způsobem systém může použít všechny prostředky, které jsou k dispozici k překonání chybové situace. Dobrý vzor, který je potřeba provést:
+První a druhý případ jsou poměrně přímočaré zvládnout. Zkuste připojení otevřít znovu. Když uspějete, přechodná chyba byla zmírněna systémem. Můžete znovu použít databázi Azure pro MySQL. Doporučujeme mít čeká před opakováním připojení. Pokud se počáteční opakování nezdaří, ustoupíte. Tímto způsobem může systém použít všechny prostředky, které jsou k dispozici k překonání chybové situace. Dobrý vzor následovat, je:
 
-* Počkejte 5 sekund před prvním opakováním.
-* Pro každou z následujících možností zkuste zvětšit počkat exponenciálně až 60 sekund.
-* Nastavte maximální počet opakovaných pokusů, na kterých by vaše aplikace pomohly operaci považovat za neúspěšnou.
+* Před prvním opakováním počkejte 5 sekund.
+* Pro každý následující opakování zvýšit čekání exponenciálně, až 60 sekund.
+* Nastavte maximální počet opakování, ve kterém okamžiku aplikace považuje operaci za neúspěšnou.
 
-V případě, že připojení k aktivní transakci dojde k chybě, je obtížné správně zpracovat obnovení. Existují dva případy: Pokud byla transakce určena jen pro čtení, je bezpečné znovu otevřít připojení a opakovat transakci. Pokud je však transakce také zapsána do databáze, je nutné určit, zda byla transakce vrácena zpět nebo zda byla úspěšná, než došlo k přechodné chybě. V takovém případě je možné, že jste neobdrželi potvrzení potvrzení z databázového serveru.
+Pokud se nezdaří připojení s aktivní transakcí, je obtížnější správně zpracovat obnovení. Existují dva případy: Pokud transakce byla jen pro čtení v přírodě, je bezpečné znovu otevřít připojení a opakovat transakci. Pokud však transakce byla také zápis do databáze, je nutné určit, pokud transakce byla vrácena zpět, nebo pokud byla úspěšná před přechodnou chybu došlo. V takovém případě pravděpodobně jste potvrzení potvrzení neobdrželi z databázového serveru.
 
-Jedním ze způsobů, jak to provést, je vygenerovat v klientovi jedinečné ID, které se používá pro všechny opakované pokusy. Toto jedinečné ID předáte jako součást transakce serveru a uložíte ji do sloupce s jedinečným omezením. Tímto způsobem lze transakci bezpečně opakovat. V případě, že předchozí transakce byla vrácena zpět a jedinečné ID generované klientem v systému ještě neexistuje, bude úspěšné. V případě, že se jedinečné ID dříve uložilo z důvodu úspěšného dokončení předchozí transakce, selže oznámení, že dojde k porušení duplicitního klíče.
+Jedním ze způsobů, jak toho dosáhnout, je generovat jedinečné ID na straně klienta, který se používá pro všechny opakování. Toto jedinečné ID předáte jako součást transakce serveru a uložíte ho do sloupce s jedinečným omezením. Tímto způsobem můžete bezpečně opakovat transakci. Bude úspěšná, pokud předchozí transakce byla vrácena zpět a klientem generované jedinečné ID ještě neexistuje v systému. Selhat označující duplicitní narušení klíče, pokud bylo jedinečné ID dříve uloženo, protože předchozí transakce byla úspěšně dokončena.
 
-Když váš program komunikuje s Azure Database for MySQL prostřednictvím middlewaru třetí strany, požádejte dodavatele, zda middleware obsahuje logiku opakování pro přechodné chyby.
+Když váš program komunikuje s Azure Database for MySQL prostřednictvím middlewaru jiného výrobce, zeptejte se dodavatele, zda middleware obsahuje logiku opakování pro přechodné chyby.
 
-Nezapomeňte otestovat logiku opakování. Například zkuste spustit kód při vertikálním navýšení nebo snížení kapacity výpočetních prostředků serveru Azure Database for MySQL. Vaše aplikace by měla zpracovávat krátké výpadky zjištěné během této operace bez jakýchkoli problémů.
+Ujistěte se, že test logiku opakování. Například zkuste spustit kód při škálování nahoru nebo dolů výpočetní prostředky databáze Azure pro server MySQL. Aplikace by měla zpracovat krátké prostoje, ke kterým došlo během této operace bez problémů.
 
-## <a name="connect-efficiently-to-azure-database-for-mysql"></a>Efektivně se připojte k Azure Database for MySQL
+## <a name="connect-efficiently-to-azure-database-for-mysql"></a>Efektivní připojení k Azure Database pro MySQL
 
-Databázová připojení jsou omezeným prostředkem, takže efektivní využití sdružování připojení pro přístup k Azure Database for MySQL optimalizuje výkon. Následující část vysvětluje, jak používat sdružování připojení nebo trvalá připojení k efektivnějšímu přístupu Azure Database for MySQL.
+Připojení databáze jsou omezený prostředek, takže efektivní využití sdružování připojení pro přístup k Azure Database for MySQL optimalizuje výkon. V následující části je vysvětleno, jak používat sdružování připojení nebo trvalá připojení k efektivnějšímu přístupu k Azure Database for MySQL.
 
 ## <a name="access-databases-by-using-connection-pooling-recommended"></a>Přístup k databázím pomocí sdružování připojení (doporučeno)
 
-Správa připojení k databázi může mít významný dopad na výkon aplikace jako celek. Pro optimalizaci výkonu aplikace by měl být cílem snížit počet navázání připojení a čas pro vytvoření připojení v cestách kódu klíče. Pro připojení k Azure Database for MySQL důrazně doporučujeme použít sdružování připojení databáze nebo trvalá připojení. Sdružování připojení databáze zajišťuje vytváření, správu a přidělování databázových připojení. Když program požádá o připojení k databázi, upřednostní přidělení stávajících nečinných připojení databáze místo vytvoření nového připojení. Po dokončení programu pomocí databázového připojení se připojení obnoví v příprava pro další použití, místo abyste ho jednoduše zavřeli.
+Správa připojení databáze může mít významný dopad na výkon aplikace jako celku. Chcete-li optimalizovat výkon aplikace, cílem by mělo být snížení počtu navázání připojení a čas pro navázání připojení v cestě kódu klíče. Důrazně doporučujeme používat sdružování připojení k databázi nebo trvalá připojení pro připojení k Azure Database for MySQL. Sdružování připojení k databázi zpracovává vytváření, správu a přidělování připojení k databázi. Pokud program požaduje připojení k databázi, upřednostňuje přidělení existujících nečinných databázových připojení, nikoli vytvoření nového připojení. Po dokončení programu pomocí připojení k databázi je připojení obnoveno v rámci přípravy na další použití, nikoli jednoduše ukončeno.
 
-Pro lepší ilustraci Tento článek obsahuje [ukázku kódu](./sample-scripts-java-connection-pooling.md) , který jako příklad používá Java. Další informace najdete v tématu [Apache Common DBCP](https://commons.apache.org/proper/commons-dbcp/).
+Pro lepší ilustraci tento článek obsahuje [ukázkový kód,](./sample-scripts-java-connection-pooling.md) který používá java jako příklad. Další informace naleznete v [tématu Apache common DBCP](https://commons.apache.org/proper/commons-dbcp/).
 
 > [!NOTE]
-> Server po nějakou dobu nakonfiguruje mechanismus časového limitu, aby uzavřel připojení, které bylo v nečinném stavu, aby bylo možné prostředky uvolnit. Nezapomeňte nastavit ověřovací systém, aby se zajistila efektivita trvalých připojení při jejich používání. Další informace najdete v tématu [Konfigurace ověřovacích systémů na straně klienta, aby se zajistila efektivita trvalých připojení](concepts-connectivity.md#configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections).
+> Server nakonfiguruje mechanismus časového limitu pro ukončení připojení, které bylo po určitou dobu v nečinnosti, aby uvolnil oprostředek. Nezapomeňte nastavit ověřovací systém, abyste zajistili účinnost trvalých připojení při jejich používání. Další informace naleznete v [tématu Konfigurace ověřovacích systémů na straně klienta, abyste zajistili účinnost trvalých připojení](concepts-connectivity.md#configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections).
 
 ## <a name="access-databases-by-using-persistent-connections-recommended"></a>Přístup k databázím pomocí trvalých připojení (doporučeno)
 
-Koncept trvalých připojení je podobný jako sdružování připojení. Nahrazení krátkých připojení pomocí trvalých připojení vyžaduje pouze drobné změny kódu, ale má zásadní vliv na zlepšení výkonu v řadě typických aplikačních scénářů.
+Koncept trvalé připojení je podobný jako sdružování připojení. Nahrazení krátkých připojení trvalými připojeními vyžaduje pouze drobné změny kódu, ale má zásadní vliv z hlediska zlepšení výkonu v mnoha typických scénářích aplikace.
 
 ## <a name="access-databases-by-using-wait-and-retry-mechanism-with-short-connections"></a>Přístup k databázím pomocí mechanismu čekání a opakování s krátkými připojeními
 
-Pokud máte omezení prostředků, důrazně doporučujeme, abyste pro přístup k databázím použili fondy databází nebo trvalá připojení. Pokud vaše aplikace používá krátká připojení a dochází k selhání připojení při přístupu k hornímu limitu počtu souběžných připojení, můžete zkusit počkat a znovu použít mechanismus. Můžete nastavit vhodný čekací čas s kratší čekací dobou po prvním pokusu. Potom můžete zkusit počkat na události víckrát.
+Pokud máte omezení prostředků, důrazně doporučujeme použít sdružování databází nebo trvalá připojení pro přístup k databázím. Pokud vaše aplikace používat krátká připojení a dojde k selhání připojení při přiblížení k horní limit na počet souběžných připojení, můžete zkusit čekat a opakovat mechanismus. Můžete nastavit vhodnou čekací dobu s kratší čekací dobou po prvním pokusu. Poté můžete zkusit čekat na události vícekrát.
 
-## <a name="configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections"></a>Konfigurace ověřovacích mechanismů v klientech pro ověření efektivity trvalých připojení
+## <a name="configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections"></a>Konfigurace ověřovacích mechanismů v klientech pro potvrzení účinnosti trvalých připojení
 
-Server po nějakou dobu nakonfiguruje mechanismus časového limitu, aby uzavřel připojení, které je ve stavu nečinnosti, aby bylo možné prostředky uvolnit. Když klient znovu přistupuje k databázi, je stejný jako vytvoření nové žádosti o připojení mezi klientem a serverem. Aby se zajistila efektivita připojení během procesu jejich použití, nakonfigurujte ověřovací mechanismus na klientovi. Jak je znázorněno v následujícím příkladu, můžete ke konfiguraci tohoto mechanismu ověřování použít sdružování připojení Tomcat JDBC.
+Server nakonfiguruje mechanismus časového limitu pro ukončení připojení, které bylo nějakou dobu v nečinném stavu, aby se uvolnily prostředky. Když klient znovu přistupuje k databázi, je ekvivalentní k vytvoření nového požadavku na připojení mezi klientem a serverem. Chcete-li zajistit účinnost připojení během procesu jejich používání, nakonfigurujte ověřovací mechanismus na straně klienta. Jak je znázorněno v následujícím příkladu, můžete použít sdružování připojení Tomcat JDBC ke konfiguraci tohoto ověřovacího mechanismu.
 
-Po nastavení parametru TestOnBorrow, když je k dispozici nový požadavek, fond připojení automaticky ověří efektivitu všech dostupných nečinných připojení. Pokud je takové připojení účinné, přímo vráceno jinak fond připojení odvolá připojení. Fond připojení potom vytvoří nové efektivní připojení a vrátí jej. Tento proces zajišťuje efektivní použití databáze. 
+Nastavením Parametr TestOnBorrow, když je nový požadavek, fond připojení automaticky ověří účinnost všech dostupných nečinných připojení. Pokud je takové připojení účinné, jeho přímo vrácené jinak fond připojení zruší připojení. Fond připojení pak vytvoří nové efektivní připojení a vrátí jej. Tento proces zajišťuje, že databáze je přístupná efektivně. 
 
-Informace o konkrétních nastaveních najdete v článku [Úvod do fondu připojení JDBC oficiálního dokumentu](https://tomcat.apache.org/tomcat-7.0-doc/jdbc-pool.html#Common_Attributes). Většinou je potřeba nastavit následující tři parametry: TestOnBorrow (nastavte na true), ValidationQuery (nastavte na vybrat 1) a ValidationQueryTimeout (nastavte na 1). Konkrétní vzorový kód je uveden níže:
+Informace o konkrétních nastaveních naleznete v [oficiálním úvodním dokumentu fondu připojení JDBC](https://tomcat.apache.org/tomcat-7.0-doc/jdbc-pool.html#Common_Attributes). Je třeba hlavně nastavit následující tři parametry: TestOnBorrow (nastaveno na hodnotu true), ValidationQuery (nastaveno na SELECT 1) a ValidationQueryTimeout (nastaveno na 1). Specifický ukázkový kód je uveden níže:
 
 ```java
 public class SimpleTestOnBorrowExample {

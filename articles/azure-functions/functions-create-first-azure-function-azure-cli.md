@@ -1,20 +1,21 @@
 ---
 title: Vytvoření funkce v Azure, která reaguje na požadavky HTTP
-description: Naučte se vytvořit funkci z příkazového řádku a pak publikovat místní projekt na hostování bez serveru v Azure Functions.
+description: Zjistěte, jak vytvořit funkci z příkazového řádku a pak publikovat místní projekt na hostování bez serveru v Azure Functions.
 ms.date: 01/28/2020
 ms.topic: quickstart
-ms.openlocfilehash: f2ec642a477348923e8f587879d4804c07fff5a0
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+zone_pivot_groups: programming-languages-set-functions
+ms.openlocfilehash: 89b6a9f31414cbaa9cc92c1a0d881a1354180990
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096257"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282728"
 ---
-# <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Rychlý Start: vytvoření funkce v Azure, která reaguje na požadavky HTTP
+# <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Úvodní příručka: Vytvoření funkce v Azure, která reaguje na požadavky HTTP
 
-V tomto článku použijete nástroje příkazového řádku k vytvoření funkce, která reaguje na požadavky HTTP. Po místním testování kódu ho nasadíte do prostředí Azure Functions bez serveru. Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům na několik centů nebo méně.
+V tomto článku pomocí nástrojů příkazového řádku vytvořit funkci, která reaguje na požadavky HTTP. Po testování kódu místně jej nasadíte do prostředí Azure Functions bez serveru. Dokončení tohoto rychlého startu bude mít na účtu Azure malé náklady na několik usd centů nebo méně.
 
-K dispozici je také [Visual Studio Codeá verze](functions-create-first-function-vs-code.md) tohoto článku.
+K dispozici je také [visual studio verze tohoto článku.](functions-create-first-function-vs-code.md)
 
 ## <a name="configure-your-local-environment"></a>Konfigurace místního prostředí
 
@@ -23,46 +24,46 @@ Než začnete, musíte mít následující:
 + Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell"  
-+ Verze [Azure Functions Core Tools](./functions-run-local.md#v2) 2.7.1846 nebo novější verze 2. x.
++ [Nástroje Azure Functions Core verze](./functions-run-local.md#v2) 2.7.1846 nebo novější verze 2.x.
 ::: zone-end  
 ::: zone pivot="programming-language-python"
-+ Python 3,6 a 3,7 vyžadují verzi [Azure Functions Core Tools](./functions-run-local.md#v2) 2.7.1846 nebo novější verzi 2. x. Python 3,8 vyžaduje [verzi 3. x](./functions-run-local.md#v2) základních nástrojů.
++ Python 3.6 a 3.7 vyžadují [nástroje Azure Functions Core Tools](./functions-run-local.md#v2) verze 2.7.1846 nebo novější verzi 2.x. Python 3.8 vyžaduje [verzi 3.x](./functions-run-local.md#v2) základních nástrojů.
 ::: zone-end
 
-+ Verze [Azure CLI](/cli/azure/install-azure-cli) 2.0.76 nebo novější. 
++ [Azure CLI](/cli/azure/install-azure-cli) verze 2.0.76 nebo novější. 
 ::: zone pivot="programming-language-javascript,programming-language-typescript"
-+ Verze [Node. js](https://nodejs.org/), Active LTS a Maintenance LTS (Doporučené 8.11.1 a 10.14.1).
++ [Verze Node.js](https://nodejs.org/), Active LTS a Maintenance LTS (doporučeno 8.11.1 a 10.14.1).
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-+ [Python 3,8](https://www.python.org/downloads/release/python-382/), [Python 3,7](https://www.python.org/downloads/release/python-375/), [Python 3,6](https://www.python.org/downloads/release/python-368/), které jsou podporovány nástrojem Azure Functions. 
++ [Python 3.8](https://www.python.org/downloads/release/python-382/), [Python 3.7](https://www.python.org/downloads/release/python-375/), [Python 3.6](https://www.python.org/downloads/release/python-368/), které jsou podporované funkcemi Azure (x64).
 ::: zone-end
 ::: zone pivot="programming-language-powershell"
-+ [Jádro PowerShellu](/powershell/scripting/install/installing-powershell-core-on-windows)
++ [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-+ [.NET Core SDK 2.2 +](https://www.microsoft.com/net/download)
++ Sada [SDK 2.2 core .NET](https://www.microsoft.com/net/download)
 ::: zone-end
 
-### <a name="check-your-environment"></a>Kontroly prostředí
+### <a name="check-your-environment"></a>Zkontrolujte své prostředí
 
-+ V okně terminálu nebo příkazu spusťte `func --version` a ověřte, že Azure Functions Core Tools verze 2.7.1846 nebo novější verze 2. x.
++ V terminálu nebo příkazovém okně spusťte `func --version` a zkontrolujte, zda jsou základní nástroje Azure Functions verze 2.7.1846 nebo novější verze 2.x.
 
-+ Spusťte `az --version` a ověřte, že verze Azure CLI je 2.0.76 nebo novější.
++ Spuštěním `az --version` zkontrolujte, zda je verze příkazového příkazového příkazu Azure 2.0.76 nebo novější.
 
-+ Spusťte `az login`, abyste se přihlásili do Azure a ověřili aktivní předplatné.
++ Spusťte `az login` přihlášení k Azure a ověřte aktivní předplatné.
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript"
-+ Spusťte `node --version` pro kontrolu verze Node. js sestavy 8. x nebo 10. x.
++ Spuštěním `node --version` zkontrolujte, zda se v souboru Node.js verze sestavy 8.x nebo 10.x.
 ::: zone-end
 ::: zone pivot="programming-language-python"
-+ Spusťte `python --version` (Linux/MacOS) nebo `py --version` (Windows), abyste zkontrolovali, jestli verze Pythonu jsou ve zprávách 3.8. x, 3.7. x nebo 3.6. x.
++ Spuštěním `python --version` (Linux/MacOS) nebo `py --version` (Windows) zkontrolujte, zda se v Pythonu sestavy verzí 3.8.x, 3.7.x nebo 3.6.x.
 
-## <a name="create-venv"></a>Vytvoření a aktivace virtuálního prostředí
+## <a name="create-and-activate-a-virtual-environment"></a><a name="create-venv"></a>Vytvoření a aktivace virtuálního prostředí
 
-Ve vhodné složce spusťte následující příkazy, abyste vytvořili a aktivovali virtuální prostředí s názvem `.venv`. Ujistěte se, že používáte Python 3,8, 3,7 nebo 3,6, které podporuje Azure Functions.
+Ve vhodné složce spusťte následující příkazy a `.venv`vytvořte a aktivujte virtuální prostředí s názvem . Nezapomeňte použít Python 3.8, 3.7 nebo 3.6, které jsou podporované funkcemi Azure.
 
 
-# <a name="bash"></a>[bash](#tab/bash)
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```bash
 python -m venv .venv
@@ -72,7 +73,7 @@ python -m venv .venv
 source .venv/bin/activate
 ```
 
-Pokud Python nenainstaloval balíček venv do distribuce systému Linux, spusťte následující příkaz:
+Pokud Python nenainstaloval balíček venv do vaší distribuce Linuxu, spusťte následující příkaz:
 
 ```bash
 sudo apt-get install python3-venv
@@ -88,7 +89,7 @@ py -m venv .venv
 .venv\scripts\activate
 ```
 
-# <a name="cmd"></a>[Přepsat](#tab/cmd)
+# <a name="cmd"></a>[Cmd](#tab/cmd)
 
 ```cmd
 py -m venv .venv
@@ -100,15 +101,15 @@ py -m venv .venv
 
 ---
 
-V tomto aktivovaném virtuálním prostředí spustíte všechny následné příkazy. (Pokud chcete virtuální prostředí ukončit, spusťte `deactivate`.)
+Spuštění všech následných příkazů v tomto aktivovaném virtuálním prostředí. (Chcete-li virtuální prostředí `deactivate`ukončit, spusťte .)
 
 ::: zone-end
 
 ## <a name="create-a-local-function-project"></a>Vytvoření projektu místní funkce
 
-V Azure Functions je projekt funkce kontejnerem pro jednu nebo více jednotlivých funkcí, které každý reaguje na konkrétní Trigger. Všechny funkce v projektu sdílejí stejné místní konfigurace a konfigurace hostování. V této části vytvoříte projekt funkce, který obsahuje jedinou funkci.
+V Azure Functions je projekt funkce kontejner pro jednu nebo více jednotlivých funkcí, které každý reaguje na konkrétní aktivační událost. Všechny funkce v projektu sdílejí stejné místní a hostitelské konfigurace. V této části vytvoříte projekt funkce, který obsahuje jednu funkci.
 
-1. Ve virtuálním prostředí spuštěním příkazu `func init` vytvořte projekt Functions ve složce s názvem *LocalFunctionProj* se zadaným modulem runtime:
+1. Ve virtuálním prostředí `func init` spusťte příkaz a vytvořte projekt funkcí ve složce s názvem *LocalFunctionProj* se zadaným časem runtime:
 
     ::: zone pivot="programming-language-python"
     ```
@@ -137,7 +138,7 @@ V Azure Functions je projekt funkce kontejnerem pro jednu nebo více jednotlivý
     ::: zone-end
 
 
-    Tato složka obsahuje různé soubory pro projekt, včetně konfigurací souborů s názvem [Local. Settings. JSON](functions-run-local.md#local-settings-file) a [Host. JSON](functions-host-json.md). Protože *Local. Settings. JSON* může obsahovat tajné kódy stažené z Azure, soubor je ve výchozím nastavení vyloučený ze správy zdrojového kódu v souboru *. gitignore* .
+    Tato složka obsahuje různé soubory pro projekt, včetně konfiguračních souborů s názvem [local.settings.json](functions-run-local.md#local-settings-file) a [host.json](functions-host-json.md). Vzhledem k tomu, *že local.settings.json* může obsahovat tajné klíče stažené z Azure, je soubor ve výchozím nastavení vyloučen ze správy zdrojového kódu v souboru *.gitignore.*
 
 1. Přejděte do složky projektu:
 
@@ -145,81 +146,81 @@ V Azure Functions je projekt funkce kontejnerem pro jednu nebo více jednotlivý
     cd LocalFunctionProj
     ```
     
-1. Do projektu přidejte funkci pomocí následujícího příkazu, kde `--name` argument je jedinečný název vaší funkce a argument `--template` určuje Trigger funkce. 
+1. Přidejte funkci do projektu pomocí následujícího `--name` příkazu, kde argument je `--template` jedinečný název funkce a argument určuje aktivační událost funkce. 
 
     ```
     func new --name HttpExample --template "HTTP trigger"
     ```
 
     ::: zone pivot="programming-language-csharp"
-    `func new` vytvoří soubor kódu HttpExample.cs.
+    `func new`vytvoří soubor kódu HttpExample.cs.
     ::: zone-end
     ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
-    `func new` vytvoří podsložku, která odpovídá názvu funkce, který obsahuje soubor kódu, který je vhodný pro zvolený jazyk projektu, a konfiguračního souboru s názvem *Function. JSON*.
+    `func new`Vytvoří podsložku odpovídající názvu funkce, která obsahuje soubor kódu odpovídající zvolenému jazyku projektu a konfigurační soubor s názvem *function.json*.
     ::: zone-end
 
-### <a name="optional-examine-the-file-contents"></a>Volitelné Kontrola obsahu souboru
+### <a name="optional-examine-the-file-contents"></a>(Nepovinné) Zkontrolujte obsah souboru
 
-V případě potřeby můžete přeskočit, aby se [funkce spouštěla místně](#run-the-function-locally) , a prohlédnout si obsah souboru později.
+V případě potřeby můžete přeskočit na [Spustit funkci místně](#run-the-function-locally) a prozkoumat obsah souboru později.
 
 ::: zone pivot="programming-language-csharp"
 #### <a name="httpexamplecs"></a>HttpExample.cs
 
-*HttpExample.cs* obsahuje metodu `Run`, která přijímá data žádosti v proměnné `req` je [HttpRequest](/dotnet/api/microsoft.aspnetcore.http.httprequest) , který je upravený pomocí **HttpTriggerAttribute**, který definuje chování triggeru. 
+*HttpExample.cs* obsahuje `Run` metodu, která přijímá `req` data požadavku v proměnné je [HttpRequest,](/dotnet/api/microsoft.aspnetcore.http.httprequest) který je zdoben **HttpTriggerAttribute**, který definuje chování aktivační události. 
 
 :::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs":::
 
-Návratový objekt je [ActionResult](/dotnet/api/microsoft.aspnetcore.mvc.actionresult) , který vrací zprávu odpovědi buď jako [OkObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.okobjectresult) (200), nebo jako [BadRequestObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.badrequestobjectresult) (400). Další informace najdete v tématu [Azure Functions triggerů http a vazeb](/azure/azure-functions/functions-bindings-http-webhook?tabs=csharp).
+Návratový objekt je [ActionResult,](/dotnet/api/microsoft.aspnetcore.mvc.actionresult) který vrací zprávu odpovědi jako [OkObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.okobjectresult) (200) nebo [BadRequestObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.badrequestobjectresult) (400). Další informace najdete v [tématu Azure Functions HTTP aktivační události a vazby](/azure/azure-functions/functions-bindings-http-webhook?tabs=csharp).
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-#### <a name="__init__py"></a>\_\_init\_\_. py
+#### <a name="__init__py"></a>\_\_init\_\_.py
 
-*\_\_init\_\_. py* obsahuje `main()` funkci Pythonu, která se aktivuje podle konfigurace v *Function. JSON*.
+*\_\_init\_\_.py* `main()` obsahuje funkci Pythonu, která se aktivuje podle konfigurace v *souboru function.json*.
 
 :::code language="python" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/__init__.py":::
 
-U triggeru HTTP funkce přijímá data žádosti v proměnné `req`, jak je definováno v *Function. JSON*. `req` je instance [třídy Azure. Functions. HttpRequest](/python/api/azure-functions/azure.functions.httprequest). Návratový objekt definovaný jako `$return` v *Function. JSON*je instancí [třídy Azure. Functions. HttpResponse](/python/api/azure-functions/azure.functions.httpresponse). Další informace najdete v tématu [Azure Functions triggerů http a vazeb](/azure/azure-functions/functions-bindings-http-webhook?tabs=python).
+Pro aktivační událost HTTP funkce přijímá data `req` požadavku v proměnné, jak je definována v *function.json*. `req`je instancí [třídy azure.functions.HttpRequest](/python/api/azure-functions/azure.functions.httprequest). Return Object, definované `$return` jako *function.json*, je instance [azure.functions.HttpResponse class](/python/api/azure-functions/azure.functions.httpresponse). Další informace najdete v [tématu Azure Functions HTTP aktivační události a vazby](/azure/azure-functions/functions-bindings-http-webhook?tabs=python).
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript"
-#### <a name="indexjs"></a>index. js
+#### <a name="indexjs"></a>index.js
 
-*index. js* vyexportuje funkci, která se aktivuje podle konfigurace v *Function. JSON*.
+*index.js* exportuje funkci, která je spuštěna podle konfigurace v *souboru function.json*.
 
 :::code language="javascript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-JavaScript/index.js":::
 
-U triggeru HTTP funkce přijímá data žádosti v proměnné `req`, jak je definováno v *Function. JSON*. Návratový objekt definovaný jako `$return` v *Function. JSON*je odpověď. Další informace najdete v tématu [Azure Functions triggerů http a vazeb](/azure/azure-functions/functions-bindings-http-webhook?tabs=javascript).
+Pro aktivační událost HTTP funkce přijímá data `req` požadavku v proměnné, jak je definována v *function.json*. Návratový objekt, `$return` definovaný jako *function.json*, je odpověď. Další informace najdete v [tématu Azure Functions HTTP aktivační události a vazby](/azure/azure-functions/functions-bindings-http-webhook?tabs=javascript).
 ::: zone-end
 
 ::: zone pivot="programming-language-typescript"
-#### <a name="indexts"></a>index. TS
+#### <a name="indexts"></a>index.ts
 
-*index. TS* exportuje funkci, která se aktivuje podle konfigurace v *Function. JSON*.
+*index.ts* exportuje funkci, která je spuštěna podle konfigurace v *souboru function.json*.
 
 :::code language="typescript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-TypeScript/index.ts":::
 
-U triggeru HTTP funkce přijímá data žádosti v proměnné `req` typu **HttpRequest** , jak je definováno v *Function. JSON*. Návratový objekt definovaný jako `$return` v *Function. JSON*je odpověď. 
+Pro aktivační událost HTTP přijímá funkce data `req` požadavků v proměnné typu **HttpRequest,** jak je definováno v *function.json*. Návratový objekt, `$return` definovaný jako *function.json*, je odpověď. 
 ::: zone-end
 
 ::: zone pivot="programming-language-powershell"
-#### <a name="runps1"></a>spustit. ps1
+#### <a name="runps1"></a>run.ps1
 
-*příkaz run. ps1* definuje skript funkce, který se aktivuje podle konfigurace v *Function. JSON*.
+*run.ps1* definuje skript funkce, který se aktivuje podle konfigurace v *souboru function.json*.
 
 :::code language="powershell" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-PowerShell/run.ps1":::
 
-U triggeru HTTP funkce přijímá data žádosti předaná `$Request`mu parametru definovanému v *Function. JSON*. Návratový objekt definovaný jako `Response` v *Function. JSON*je předán rutině `Push-OutputBinding` jako odpověď. 
+Pro aktivační událost HTTP funkce přijímá data `$Request` požadavku předaná param definované v *function.json*. Návratový objekt, `Response` definovaný jako *function.json*, `Push-OutputBinding` je předán rutině jako odpověď. 
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
 #### <a name="functionjson"></a>function.json
 
-*Function. JSON* je konfigurační soubor, který definuje vstupní a výstupní `bindings` pro funkci, včetně typu triggeru. 
+*function.json* je konfigurační soubor, `bindings` který definuje vstup a výstup pro funkci, včetně typu aktivační události. 
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-V případě potřeby můžete změnit `scriptFile` k vyvolání jiného souboru Pythonu.
+V případě `scriptFile` potřeby můžete změnit vyvolání jiného souboru Pythonu.
 
 :::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
 ::: zone-end
@@ -233,51 +234,51 @@ V případě potřeby můžete změnit `scriptFile` k vyvolání jiného souboru
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"  
-Každá vazba vyžaduje směr, typ a jedinečný název. Aktivační událost HTTP má vstupní vazbu typu [`httpTrigger`](functions-bindings-http-webhook-trigger.md) a výstupní vazba typu [`http`](functions-bindings-http-webhook-output.md).
+Každá vazba vyžaduje směr, typ a jedinečný název. Aktivační událost HTTP má vstupní [`httpTrigger`](functions-bindings-http-webhook-trigger.md) vazbu typu [`http`](functions-bindings-http-webhook-output.md)a výstupní vazby typu .
 ::: zone-end  
 
 [!INCLUDE [functions-run-function-test-local-cli](../../includes/functions-run-function-test-local-cli.md)]
 
-## <a name="create-supporting-azure-resources-for-your-function"></a>Vytvoření podpory prostředků Azure pro vaši funkci
+## <a name="create-supporting-azure-resources-for-your-function"></a>Vytvoření podpůrných prostředků Azure pro vaši funkci
 
-Než budete moct nasadit kód funkce do Azure, musíte vytvořit tři prostředky:
+Než budete moci nasadit kód funkce do Azure, musíte vytvořit tři prostředky:
 
-- Skupina prostředků, což je logický kontejner pro související prostředky.
-- Účet úložiště, který uchovává stav a další informace o vašich projektech.
-- Aplikace Function App, která poskytuje prostředí pro spuštění kódu vaší funkce. Aplikace Function App se mapuje na váš místní projekt funkce a umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků.
+- Skupina prostředků, která je logickým kontejnerem pro související prostředky.
+- Účet úložiště, který udržuje stav a další informace o vašich projektech.
+- Aplikace funkce, která poskytuje prostředí pro provádění kódu funkce. Aplikace funkcí se mapuje na projekt místních funkcí a umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazení a sdílení prostředků.
 
-Tyto položky vytvoříte pomocí následujících příkazů Azure CLI. Každý příkaz poskytuje výstup JSON po dokončení.
+Pomocí následujících příkazů Azure CLI k vytvoření těchto položek. Každý příkaz poskytuje výstup JSON po dokončení.
 
-1. Pokud jste to ještě neudělali, přihlaste se k Azure pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) :
+1. Pokud jste tak ještě neučinili, přihlaste se do Azure pomocí příkazu [az login:](/cli/azure/reference-index#az-login)
 
     ```azurecli
     az login
     ```
     
-1. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Následující příklad vytvoří skupinu prostředků s názvem `AzureFunctionsQuickstart-rg` v oblasti `westeurope`. (Obecně vytvoříte skupinu prostředků a prostředky v oblasti, která je blízko vás, pomocí dostupné oblasti z příkazu `az account list-locations`.)
+1. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Následující příklad vytvoří skupinu `AzureFunctionsQuickstart-rg` prostředků `westeurope` s názvem v oblasti. (Skupinu prostředků a prostředky obvykle vytváříte v oblasti ve `az account list-locations` vašem okolí pomocí dostupné oblasti z příkazu.)
 
     ```azurecli
     az group create --name AzureFunctionsQuickstart-rg --location westeurope
     ```
     ::: zone pivot="programming-language-python"  
     > [!NOTE]
-    > Nemůžete hostovat aplikace pro Linux a Windows ve stejné skupině prostředků. Pokud máte existující skupinu prostředků s názvem `AzureFunctionsQuickstart-rg` s aplikací Function App nebo webovou aplikací Windows, musíte použít jinou skupinu prostředků.
+    > Linux a Windows nelze hostovat ve stejné skupině prostředků. Pokud máte existující skupinu `AzureFunctionsQuickstart-rg` prostředků pojmenovanou pomocí aplikace pro funkce Windows nebo webové aplikace, musíte použít jinou skupinu prostředků.
     ::: zone-end  
     
-1. Pomocí příkazu [AZ Storage Account Create](/cli/azure/storage/account#az-storage-account-create) vytvořte účet úložiště pro obecné účely ve vaší skupině prostředků a oblasti. V následujícím příkladu nahraďte `<STORAGE_NAME>` globálně jedinečným názvem vhodným pro vás. Názvy musí obsahovat tři až 24 znaků a jenom malá písmena. `Standard_LRS` Určuje účet pro obecné účely, který [podporují funkce](storage-considerations.md#storage-account-requirements).
+1. Vytvořte účet úložiště pro obecné účely ve skupině prostředků a oblasti pomocí příkazu [vytvořit účet úložiště az.](/cli/azure/storage/account#az-storage-account-create) V následujícím příkladu `<STORAGE_NAME>` nahraďte globálně jedinečný název, který je vám vhodný. Názvy musí obsahovat pouze tři až 24 písmen a malá písmena. `Standard_LRS`určuje účet pro obecné účely, který je [podporován funkcemi](storage-considerations.md#storage-account-requirements).
 
     ```azurecli
     az storage account create --name <STORAGE_NAME> --location westeurope --resource-group AzureFunctionsQuickstart-rg --sku Standard_LRS
     ```
     
-    Účet úložiště pro tento rychlý Start vychází jenom z několika centů (USD).
+    Účet úložiště vznikne pouze několik centů (USD) pro tento rychlý start.
     
-1. Pomocí příkazu [AZ functionapp Create](/cli/azure/functionapp#az-functionapp-create) vytvořte aplikaci Function App. V následujícím příkladu nahraďte `<STORAGE_NAME>` názvem účtu, který jste použili v předchozím kroku, a nahraďte `<APP_NAME>` globálně jedinečným názvem, který je pro vás vhodný. `<APP_NAME>` je také výchozí doména DNS pro aplikaci funkcí. 
+1. Vytvořte aplikaci funkce pomocí příkazu [az functionapp create.](/cli/azure/functionapp#az-functionapp-create) V následujícím příkladu `<STORAGE_NAME>` nahraďte názvem účtu, který jste použili v předchozím kroku, a nahraďte `<APP_NAME>` globálně jedinečným názvem, který je vám vhodný. `<APP_NAME>` je také výchozí doména DNS pro aplikaci funkcí. 
 
     ::: zone pivot="programming-language-python"  
-    Pokud používáte Python 3,8, změňte `--runtime-version` na `3.8` a `--functions_version` na `3`.
+    Pokud používáte Python 3.8, `3.8` `--functions_version` změňte `--runtime-version` na a na `3`.
     
-    Pokud používáte Python 3,6, změňte `--runtime-version` na `3.6`.
+    Pokud používáte Python 3.6, změňte `--runtime-version` na `3.6`.
 
     ```azurecli
     az functionapp create --resource-group AzureFunctionsQuickstart-rg --os-type Linux --consumption-plan-location westeurope --runtime python --runtime-version 3.7 --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
@@ -285,7 +286,7 @@ Tyto položky vytvoříte pomocí následujících příkazů Azure CLI. Každý
     ::: zone-end  
 
     ::: zone pivot="programming-language-javascript,programming-language-typescript"  
-    Pokud používáte Node. js 8, změňte také `--runtime-version` na `8`.
+    Pokud používáte soubor Node.js `--runtime-version` 8, změňte také na `8`.
 
     
     ```azurecli
@@ -305,29 +306,29 @@ Tyto položky vytvoříte pomocí následujících příkazů Azure CLI. Každý
     ```
     ::: zone-end  
 
-    Tento příkaz vytvoří aplikaci Function App spuštěnou v zadaném jazykovém modulu runtime v rámci [plánu Azure Functions spotřeby](functions-scale.md#consumption-plan), který je zdarma pro množství využití, které se vám bude účtovat. Příkaz taky zřídí přidruženou instanci služby Azure Application Insights ve stejné skupině prostředků, pomocí které můžete monitorovat aplikaci Function App a zobrazovat protokoly. Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md). Instance nenese žádné náklady, dokud ji neaktivujete.
+    Tento příkaz vytvoří aplikaci funkcí spuštěnou v zadaném prostředí jazyka v rámci [plánu spotřeby funkcí Azure](functions-scale.md#consumption-plan), který je zdarma pro množství využití, které zde vznikne. Příkaz také zřídí přidruženou instanci Azure Application Insights ve stejné skupině prostředků, pomocí které můžete sledovat aplikaci funkcí a zobrazit protokoly. Další informace naleznete v [tématu Sledování funkcí Azure](functions-monitoring.md). Instance nevznikne žádné náklady, dokud ji neaktivujete.
     
 ## <a name="deploy-the-function-project-to-azure"></a>Nasazení projektu funkce do Azure
 
 ::: zone pivot="programming-language-typescript"  
-Před použitím základních nástrojů k nasazení projektu do Azure vytvoříte sestavení JavaScriptu připravené pro produkční soubory z zdrojových souborů TypeScriptu.
+Před použitím základních nástrojů k nasazení projektu do Azure vytvoříte sestavení javascriptových souborů připravené pro produkční prostředí ze zdrojových souborů Typu Script.
 
-Následující příkaz připraví projekt TypeScript k nasazení:
+Následující příkaz připraví projekt jazyka TypeScript pro nasazení:
 
 ```
 npm run build:production 
 ```
 ::: zone-end  
 
-V případě nezbytných prostředků teď budete připraveni nasadit projekt místní funkce do aplikace Function App v Azure pomocí příkazu [Func Azure functionapp Publish](functions-run-local.md#project-file-deployment) . V následujícím příkladu nahraďte `<APP_NAME>` názvem vaší aplikace.
+S potřebnými prostředky na místě, teď jste připraveni nasadit místní funkce projektu do aplikace funkce v Azure pomocí [func azure functionapp publikovat](functions-run-local.md#project-file-deployment) příkaz. V následujícím příkladu `<APP_NAME>` nahraďte názvem aplikace.
 
 ```
 func azure functionapp publish <APP_NAME>
 ```
 
-Pokud se zobrazí chyba, "Nejde najít aplikaci s názvem...", počkejte pár sekund a zkuste to znovu, protože Azure nemusel aplikaci zcela inicializovat po předchozím `az functionapp create` příkazu.
+Pokud se zobrazí chyba "Nelze najít aplikaci s názvem ...", počkejte několik sekund a zkuste to znovu, protože Azure nemusí mít plně inicializována aplikace po předchozím `az functionapp create` příkazu.
 
-Příkaz publikovat zobrazuje výsledky podobné následujícímu výstupu (zkrácený pro zjednodušení):
+Příkaz publikovat zobrazuje výsledky podobné následujícímu výstupu (zkráceno pro jednoduchost):
 
 <pre>
 ...
@@ -348,31 +349,31 @@ Functions in msdocs-azurefunctions-qs:
 
 ## <a name="invoke-the-function-on-azure"></a>Vyvolání funkce v Azure
 
-Vzhledem k tomu, že funkce používá Trigger HTTP, vyvoláte ji pomocí požadavku HTTP na adresu URL v prohlížeči nebo pomocí nástroje, jako je například kudrlinkou. V obou instancích je parametr adresy URL `code` jedinečný [klíč funkcí](functions-bindings-http-webhook-trigger.md#authorization-keys) , který autorizuje vyvolání koncového bodu funkce.
+Vzhledem k tomu, že vaše funkce používá aktivační událost HTTP, vyvoláte ji tak, že vytvoříte požadavek HTTP na adresu URL v prohlížeči nebo pomocí nástroje, jako je curl. V obou případech `code` je parametr URL [jedinečným funkčním klíčem,](functions-bindings-http-webhook-trigger.md#authorization-keys) který autorizuje vyvolání koncového bodu funkce.
 
-# <a name="browser"></a>[Prohlížeee](#tab/browser)
+# <a name="browser"></a>[Prohlížeč](#tab/browser)
 
-Zkopírujte úplnou **adresu URL pro vyvolání** zobrazenou ve výstupu příkazu publikovat do adresního řádku prohlížeče a přidejte parametr dotazu `&name=Functions`. V prohlížeči by se měl zobrazit podobný výstup jako při spuštění funkce místně.
+Zkopírujte úplnou **adresu URL invoke** zobrazenou ve výstupu příkazu publikovat `&name=Functions`do adresního řádku prohlížeče a přidejte parametr dotazu . Prohlížeč by měl zobrazit podobný výstup jako při spuštění funkce místně.
 
 ![Výstup funkce spuštěné v Azure v prohlížeči](./media/functions-create-first-azure-function-azure-cli/function-test-cloud-browser.png)
 
 
 # <a name="curl"></a>[Curl](#tab/curl)
 
-Spusťte [`curl`](https://curl.haxx.se/) s **adresou URL vyvolání**a připojením parametru `&name=Functions`. Výstupem příkazu by měl být text "Hello".
+Spustit [`curl`](https://curl.haxx.se/) s **adresou URL**invoke `&name=Functions`, připojit parametr . Výstupem příkazu by měl být text "Funkce Hello".
 
-![Výstup funkce spuštěný v Azure pomocí kudrlinkou](./media/functions-create-first-azure-function-azure-cli/function-test-cloud-curl.png)
+![Výstup funkce spuštěné v Azure pomocí curl](./media/functions-create-first-azure-function-azure-cli/function-test-cloud-curl.png)
 
 ---
 
 > [!TIP]
-> K zobrazení protokolů téměř v reálném čase pro publikovanou aplikaci Function App použijte [Application Insights Live Metrics Stream](functions-monitoring.md#streaming-logs).
+> Chcete-li zobrazit protokoly v reálném čase pro publikovanou aplikaci funkcí, použijte [datový proud živých metrik Application Insights](functions-monitoring.md#streaming-logs).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud budete pokračovat k dalšímu kroku, [přidejte výstupní vazbu fronty Azure Storage](functions-add-output-binding-storage-queue-cli.md), zachovejte všechny prostředky na místě, jak budete vytvářet informace o tom, co jste už provedli.
+Pokud budete pokračovat k dalšímu kroku, [přidejte výstupní vazbu fronty Azure Storage](functions-add-output-binding-storage-queue-cli.md), udržujte všechny prostředky na místě, protože budete stavět na tom, co jste už udělali.
 
-Jinak pomocí následujícího příkazu odstraňte skupinu prostředků a všechny její obsažené prostředky, abyste se vyhnuli vzniku dalších nákladů.
+V opačném případě pomocí následujícího příkazu odstraňte skupinu prostředků a všechny její obsažené prostředky, abyste zabránili vzniku dalších nákladů.
 
 ```azurecli
 az group delete --name AzureFunctionsQuickstart-rg
