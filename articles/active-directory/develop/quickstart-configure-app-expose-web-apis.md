@@ -1,5 +1,5 @@
 ---
-title: Konfigurace aplikace k vystavování webových rozhraní API – Microsoft Identity Platform | Azure
+title: Konfigurace aplikace pro vystavení webových rozhraní API – platforma identit Microsoftu | Azure
 description: Zjistěte, jak nakonfigurovat aplikaci pro zveřejnění nového oprávnění nebo oboru a role a tím ji zpřístupnit klientským aplikacím.
 services: active-directory
 author: rwike77
@@ -13,13 +13,13 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.openlocfilehash: e005ba9c5458849863bd4668ffde1e0f6fb4bf91
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76704217"
 ---
-# <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Rychlý Start: Konfigurace aplikace k vystavení webových rozhraní API
+# <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Rychlý start: Konfigurace aplikace pro vystavení webových rozhraní API
 
 Můžete vyvinout webové rozhraní API a zpřístupnit ho klientským aplikacím zveřejněním [oprávnění nebo oborů](developer-glossary.md#scopes) a [rolí](developer-glossary.md#roles). Správně nakonfigurované webové rozhraní API bude k dispozici stejně jako ostatní webová rozhraní API Microsoftu, včetně rozhraní Graph API a rozhraní API pro Office 365.
 
@@ -39,7 +39,7 @@ Než budete moct nakonfigurovat aplikaci, postupujte podle těchto kroků:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
-1. V levém navigačním podokně vyberte službu **Azure Active Directory** a pak vyberte **Registrace aplikací**.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** a pak vyberte Registrace **aplikací**.
 1. Vyhledejte a vyberte aplikaci, kterou chcete nakonfigurovat. Jakmile vyberete aplikaci, zobrazí se stránka **Přehled** neboli hlavní stránka registrace dané aplikace.
 1. Zvolte metodu, kterou chcete ke zveřejnění nového oboru použít – uživatelské rozhraní nebo manifest aplikace:
     * [Zveřejnění nového oboru prostřednictvím uživatelského rozhraní](#expose-a-new-scope-through-the-ui)
@@ -47,7 +47,7 @@ Než budete moct nakonfigurovat aplikaci, postupujte podle těchto kroků:
 
 ## <a name="expose-a-new-scope-through-the-ui"></a>Zveřejnění nového oboru prostřednictvím uživatelského rozhraní
 
-[![ukazuje, jak vystavit rozhraní API pomocí uživatelského rozhraní](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
+[![Ukazuje, jak vystavit rozhraní API pomocí rozhraní.](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
 
 Zveřejnění nového oboru prostřednictvím uživatelského rozhraní:
 
@@ -79,7 +79,7 @@ Zveřejnění nového oboru prostřednictvím uživatelského rozhraní:
 
 ## <a name="expose-a-new-scope-or-role-through-the-application-manifest"></a>Zveřejnění nového oboru nebo role prostřednictvím manifestu aplikace
 
-[![Zveřejnění nového oboru pomocí kolekce oauth2Permissions v manifestu](./media/quickstart-update-azure-ad-app-preview/expose-new-scope-through-app-manifest-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-new-scope-through-app-manifest-expanded.png#lightbox)
+[![Vystavit nový obor pomocí kolekce oauth2Permissions v manifestu](./media/quickstart-update-azure-ad-app-preview/expose-new-scope-through-app-manifest-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-new-scope-through-app-manifest-expanded.png#lightbox)
 
 Zveřejnění nového oboru prostřednictvím manifestu aplikace:
 
@@ -112,8 +112,8 @@ Zveřejnění nového oboru prostřednictvím manifestu aplikace:
 
 1. Vraťte se do svého tenanta Azure AD, vyberte **Registrace aplikací** a vyhledejte a vyberte klientskou aplikaci, kterou chcete nakonfigurovat.
 1. Zopakujte postup popsaný v části [Konfigurace klientské aplikace pro přístup k webovým rozhraním API](quickstart-configure-app-access-web-apis.md).
-1. Když se dostanete k kroku [výběru rozhraní API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis
-), vyberte prostředek. Měl by se zobrazit nový obor, který je k dispozici pro žádosti o oprávnění klientů.
+1. Až se dostanete ke kroku pro [výběr rozhraní API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis
+), vyberte svůj prostředek. Měl by se zobrazit nový obor, který je k dispozici pro žádosti o oprávnění klientů.
 
 ## <a name="more-on-the-application-manifest"></a>Další informace o manifestu aplikace
 

@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: použití mezipaměti Azure pro Redis s aplikacemi .NET Core'
-description: V tomto rychlém startu se dozvíte, jak získat přístup k Azure cache pro Redis ve vašich aplikacích .NET Core.
+title: 'Úvodní příručka: Použití Azure Cache for Redis s aplikacemi .NET Core'
+description: V tomto rychlém startu se dozvíte, jak získat přístup k Azure Cache pro Redis ve vašich aplikacích .NET Core.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
@@ -9,21 +9,21 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/18/2018
 ms.openlocfilehash: d723ffc4e94dcdcb63d74d65c55288015931adad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75413056"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Rychlý Start: použití mezipaměti Azure pro Redis s aplikací .NET Core
+# <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Úvodní příručka: Použití Azure Cache for Redis s aplikací .NET Core
 
-V tomto rychlém startu zahrňte Azure cache pro Redis do aplikace .NET Core, abyste měli přístup k zabezpečené vyhrazené mezipaměti, která je přístupná z libovolné aplikace v Azure. Konkrétně použijete klienta [stackexchange. Redis](https://github.com/StackExchange/StackExchange.Redis) s C# kódem v konzolové aplikaci .NET Core.
+V tomto rychlém startu začlenit Azure Cache pro Redis do aplikace .NET Core mít přístup k zabezpečené, vyhrazené mezipaměti, která je přístupná z libovolné aplikace v rámci Azure. Konkrétně použít [klientstackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) s kódem C# v aplikaci konzoly .NET Core.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+- Předplatné Azure – [vytvořte si ho zdarma](https://azure.microsoft.com/free/)
 - [Sada .NET Core SDK](https://dotnet.microsoft.com/download)
-- [.NET Framework 4 nebo vyšší](https://www.microsoft.com/net/download/dotnet-framework-runtime), které vyžaduje klient StackEdchange. Redis.
+- [Rozhraní .NET Framework 4 nebo vyšší](https://www.microsoft.com/net/download/dotnet-framework-runtime), což je vyžadováno klientem StackEdchange.Redis.
 
 ## <a name="create-a-cache"></a>Vytvoření mezipaměti
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -90,7 +90,7 @@ K souboru *Program.cs* přidejte následující příkaz `using`:
 using Microsoft.Extensions.Configuration;
 ```
 
-K třídě `Program` v souboru *Program.cs* přidejte následující členy. Tento kód inicializuje konfiguraci pro přístup k tajnému kódu uživatele pro připojovací řetězec Azure cache pro Redis.
+K třídě `Program` v souboru *Program.cs* přidejte následující členy. Tento kód inicializuje konfiguraci pro přístup k tajnému klíči uživatele pro připojovací řetězec Azure Cache for Redis.
 
 ```csharp
         private static IConfigurationRoot Configuration { get; set; }
@@ -126,7 +126,7 @@ K souboru *Program.cs* přidejte následující příkaz `using`:
 using StackExchange.Redis;
 ```
 
-Připojení k mezipaměti Azure pro Redis je spravováno třídou `ConnectionMultiplexer`. Tato třída by se měla v rámci klientské aplikace sdílet a opakovaně používat. Nevytvářejte pro každou operaci nové připojení. 
+Připojení k Azure Cache pro Redis `ConnectionMultiplexer` je spravováno třídou. Tato třída by se měla v rámci klientské aplikace sdílet a opakovaně používat. Nevytvářejte pro každou operaci nové připojení. 
 
 V souboru *Program.cs* přidejte k třídě `Program` konzolové aplikace následující členy:
 
@@ -146,7 +146,7 @@ V souboru *Program.cs* přidejte k třídě `Program` konzolové aplikace násle
         }
 ```
 
-Tento přístup ke sdílení instance `ConnectionMultiplexer` v aplikaci používá statickou vlastnost, která vrací připojenou instanci. Tento kód poskytuje způsob inicializace pouze jedné připojené instance `ConnectionMultiplexer`, který je bezpečný pro přístup z více vláken. `abortConnect` je nastavené na false, což znamená, že se volání zdaří i v případě, že není navázáno připojení k mezipaměti Azure pro Redis. Klíčovou vlastností `ConnectionMultiplexer` je automatické obnovení připojení k mezipaměti po vyřešení problémů se sítí nebo jiných příčin.
+Tento přístup ke sdílení instance `ConnectionMultiplexer` v aplikaci používá statickou vlastnost, která vrací připojenou instanci. Tento kód poskytuje způsob inicializace pouze jedné připojené instance `ConnectionMultiplexer`, který je bezpečný pro přístup z více vláken. `abortConnect`je nastavena na false, což znamená, že volání úspěšné i v případě, že připojení k Azure Cache pro Redis není vytvořen. Klíčovou vlastností `ConnectionMultiplexer` je automatické obnovení připojení k mezipaměti po vyřešení problémů se sítí nebo jiných příčin.
 
 Hodnota tajného kódu *CacheConnection* se používá jako parametr hesla a je možné k ní získat přístup použitím zprostředkovatele konfigurace Secret Manager.
 
@@ -195,7 +195,7 @@ V souboru *Program.cs* přidejte pro proceduru `Program` třídy konzolové apli
 
 Soubor *Program.cs* uložte.
 
-Azure cache pro Redis má konfigurovatelný počet databází (výchozí hodnota je 16), který se dá použít k logickému oddělení dat v mezipaměti Azure pro Redis. Kód se připojí k výchozí databázi DB 0. Další informace najdete v tématu [Co jsou databáze Redis?](cache-faq.md#what-are-redis-databases) a [Výchozí konfigurace serveru Redis](cache-configure.md#default-redis-server-configuration).
+Azure Cache for Redis má konfigurovatelný počet databází (výchozí 16), které lze použít k logickému oddělení dat v rámci mezipaměti Azure pro Redis. Kód se připojí k výchozí databázi DB 0. Další informace najdete v tématu [Co jsou databáze Redis?](cache-faq.md#what-are-redis-databases) a [Výchozí konfigurace serveru Redis](cache-configure.md#default-redis-server-configuration).
 
 Položky v mezipaměti lze ukládat a načítat pomocí metod `StringSet` a `StringGet`.
 
@@ -220,7 +220,7 @@ V níže uvedeném příkladu můžete vidět, že klíč `Message` měl předt�
 
 ## <a name="work-with-net-objects-in-the-cache"></a>Práce s objekty .NET v mezipaměti
 
-Mezipaměť Azure pro Redis může ukládat do mezipaměti objekty .NET i primitivní datové typy, ale před tím, než může být objekt .NET uložen do mezipaměti, musí být serializován. Serializaci objektů .NET má na starosti vývojář aplikace, kterému je tak poskytnuta flexibilita při výběru serializátoru.
+Azure Cache for Redis může ukládat do mezipaměti objekty .NET i primitivní datové typy, ale před uložením objektu .NET do mezipaměti musí být serializován. Serializaci objektů .NET má na starosti vývojář aplikace, kterému je tak poskytnuta flexibilita při výběru serializátoru.
 
 Jeden snadný způsob, jak serializovat objekty, je použít metody serializace `JsonConvert` v balíčku [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) a serializovat a deserializovat tak objekty do a z formátu JSON. V této části přidáte do mezipaměti objekt .NET.
 
@@ -299,7 +299,7 @@ Přihlaste se na web [Azure Portal ](https://portal.azure.com) a klikněte na **
 
 Do textového pole **Filtrovat podle názvu** zadejte název vaší skupiny prostředků. V pokynech v tomto článku se používala skupina prostředků *TestResources*. Ve výsledcích hledání klikněte na **...** u vaší skupiny prostředků a pak na **Odstranit skupinu prostředků**.
 
-![Odstranit](./media/cache-dotnet-core-quickstart/cache-delete-resource-group.png)
+![Odstranění](./media/cache-dotnet-core-quickstart/cache-delete-resource-group.png)
 
 Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Potvrďte odstranění zadáním názvu vaší skupiny prostředků a klikněte na **Odstranit**.
 
@@ -311,10 +311,10 @@ Po chvíli bude skupina prostředků včetně všech obsažených prostředků o
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste zjistili, jak používat Azure cache pro Redis z aplikace .NET Core. Přejděte k dalšímu rychlému startu a použijte Azure cache pro Redis s webovou aplikací ASP.NET.
+V tomto rychlém startu jste se dozvěděli, jak používat Azure Cache pro Redis z aplikace .NET Core. Pokračujte k dalšímu rychlému startu a pomocí ASP.NET webové aplikace můžete používat Azure Cache for Redis.
 
 > [!div class="nextstepaction"]
-> [Vytvořte webovou aplikaci ASP.NET, která používá Azure cache pro Redis.](./cache-web-app-howto.md)
+> [Vytvořte ASP.NET webovou aplikaci, která používá Azure Cache pro Redis.](./cache-web-app-howto.md)
 
 
 

@@ -15,19 +15,19 @@ ms.date: 04/24/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 81621a2b63eec804aaa7c74e1d77b06ef1adb79a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76844985"
 ---
 # <a name="what-is-azure-network-watcher"></a>Co je Azure Network Watcher?
 
-Azure Network Watcher poskytuje nástroje pro monitorování, diagnostiku, zobrazení metrik a povolení nebo zakázání protokolů pro prostředky ve virtuální síti Azure. Network Watcher je navržený tak, aby sledoval a opravil stav sítě IaaS (infrastruktura jako služba), které zahrnují Virtual Machines, virtuální sítě, aplikační brány, nástroje pro vyrovnávání zatížení atd. Poznámka: není určena pro a nebude fungovat pro PaaS monitoring nebo Web Analytics. 
+Azure Network Watcher poskytuje nástroje pro monitorování, diagnostiku, zobrazení metrik a povolení nebo zakázání protokolů pro prostředky ve virtuální síti Azure. Network Watcher je určen ke sledování a opravě stavu sítě produktů IaaS (Infrastructure-as-a-Service), které zahrnují virtuální počítače, virtuální sítě, aplikační brány, nástroje pro vyrovnávání zatížení atd. Poznámka: Není určen pro monitorování PaaS nebo webovou analýzu a nebude fungovat. 
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 
-### <a name = "connection-monitor"></a>Monitorování komunikace mezi virtuálním počítačem a koncovým bodem
+### <a name="monitor-communication-between-a-virtual-machine-and-an-endpoint"></a><a name = "connection-monitor"></a>Monitorování komunikace mezi virtuálním počítačem a koncovým bodem
 
 Koncovým bodem může být jiný virtuální počítač, plně kvalifikovaný název domény, identifikátor URI nebo IPv4 adresa. Funkce *monitorování připojení* v pravidelných intervalech monitoruje komunikaci a poskytuje informace o dostupnosti, latenci a změnách síťové topologie mezi virtuálním počítačem a koncovým bodem. Například můžete mít virtuální počítač s webovým serverem, který komunikuje s virtuálním počítačem s databázovým serverem. Někdo ve vaší organizaci může bez vašeho vědomí pro virtuální počítač s webovým nebo databázovým serverem nebo podsíť použít vlastní pravidlo zabezpečení sítě nebo směrování.
 
@@ -55,7 +55,7 @@ Když nasadíte virtuální počítač, Azure pro něj použije několik výchoz
 
 Když vytvoříte virtuální síť, Azure vytvoří pro provoz několik výchozích odchozích tras. Odchozí provoz ze všech prostředků nasazených ve virtuální síti, jako jsou virtuální počítače, se směruje na základě výchozích tras Azure. Výchozí trasy Azure můžete přepsat nebo můžete vytvořit další trasy. Možná zjistíte, že virtuální počítač už kvůli určité trase nemůže komunikovat s dalšími prostředky. Funkce *dalšího segmentu směrování* umožňuje zadat zdrojovou a cílovou IPv4 adresu. Další segment směrování pak otestuje komunikaci a poskytne vám informace o použitém typu dalšího segmentu směrování ke směrování provozu. Problém se směrováním pak můžete vyřešit odebráním, změnou nebo přidáním trasy. Další informace o funkci [dalšího segmentu směrování](diagnose-vm-network-routing-problem.md).
 
-### <a name="connection-troubleshoot"></a>Diagnostika odchozích připojení z virtuálního počítače
+### <a name="diagnose-outbound-connections-from-a-vm"></a><a name="connection-troubleshoot"></a>Diagnostika odchozích připojení z virtuálního počítače
 
 Funkce *řešení potíží s připojením* umožňuje otestovat připojení mezi virtuálním počítačem a jiným virtuálním počítačem, plně kvalifikovaným názvem domény, identifikátorem URI nebo IPv4 adresou. Test vrací podobné informace jako funkce [monitorování připojení](#connection-monitor), ale otestuje připojení k určitému bodu v čase, a nemonitoruje ho v průběhu času, jako to dělá monitorování připojení. Další informace o řešení potíží s připojeními pomocí funkce [řešení potíží s připojením](network-watcher-connectivity-overview.md).
 
@@ -95,10 +95,10 @@ Další informace o protokolech toku NSG získáte tak, že si projdete kurz tý
 
 ### <a name="view-diagnostic-logs-for-network-resources"></a>Zobrazení diagnostických protokolů pro síťové prostředky
 
-Pro síťové prostředky Azure, jako jsou skupiny zabezpečení sítě, veřejné IP adresy, nástroje pro vyrovnávání zatížení, brány virtuálních sítí a aplikační brány, můžete povolit protokolování diagnostiky. Funkce *diagnostických protokolů* poskytuje jednotné rozhraní umožňující povolení a zakázání diagnostických protokolů všech síťových prostředků, které generují diagnostické protokoly. Diagnostické protokoly můžete zobrazit pomocí nástrojů, jako jsou protokoly Microsoft Power BI a Azure Monitor. Další informace o analýze protokolů diagnostiky sítě Azure najdete [v tématu síťová řešení Azure v protokolu Azure monitor](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+Pro síťové prostředky Azure, jako jsou skupiny zabezpečení sítě, veřejné IP adresy, nástroje pro vyrovnávání zatížení, brány virtuálních sítí a aplikační brány, můžete povolit protokolování diagnostiky. Funkce *diagnostických protokolů* poskytuje jednotné rozhraní umožňující povolení a zakázání diagnostických protokolů všech síťových prostředků, které generují diagnostické protokoly. Diagnostické protokoly můžete zobrazit pomocí nástrojů, jako jsou protokoly Microsoft Power BI a Azure Monitor. Další informace o analýze protokolů diagnostiky sítě Azure najdete [v tématu Síťová řešení Azure v protokolech Azure Monitoru](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
-## <a name="network-watcher-automatic-enablement"></a>Network Watcher automatické povolení
-Když ve svém předplatném vytvoříte nebo aktualizujete virtuální síť, Network Watcher se automaticky povolí v oblasti vašeho Virtual Network. Na vaše prostředky to nemá žádný dopad a za automatické povolení služby Network Watcher se neúčtuje žádný poplatek. Další informace najdete v tématu [Network Watcher Create](network-watcher-create.md).
+## <a name="network-watcher-automatic-enablement"></a>Automatické povolení sledování sítě
+Když ve svém předplatném vytvoříte nebo aktualizujete virtuální síť, automaticky se pro oblast této virtuální sítě povolí Network Watcher. Automatické povolení služby Network Watcher nemá žádný vliv na vaše prostředky ani se s ním nepojí žádné poplatky. Další informace naleznete v tématu [Network Watcher create](network-watcher-create.md).
 
 ## <a name="next-steps"></a>Další kroky
 

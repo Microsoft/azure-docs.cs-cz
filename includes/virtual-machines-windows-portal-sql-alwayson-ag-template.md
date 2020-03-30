@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 540223d28542a78245dfe699d9068accb618ea76
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67673288"
 ---
-Tento kurz vás provede sestavení řešení na webu Azure Portal. Pokud vás zajímá při vytváření tohoto řešení ze šablony, zvolte odpovídající šablonu z [šablony Microsoft Azure na Githubu](https://github.com/Azure/azure-quickstart-templates). [Vytvořit skupinu dostupnosti s virtuálními počítači SQL serveru 2014 repliky](https://github.com/Azure/azure-quickstart-templates/tree/master/sqlvm-alwayson-cluster) šablona vytvoří do stejného řešení jako v tomto kurzu. 
+Tento kurz vás provede sestavením řešení z portálu Azure. Pokud máte zájem o vytvoření tohoto řešení ze šablony, zvolte příslušnou šablonu ze [šablon GitHub Microsoft Azure](https://github.com/Azure/azure-quickstart-templates). Vytvořit [skupinu dostupnosti se šablonou virtuálních počítačů repliky SQL Serveru 2014](https://github.com/Azure/azure-quickstart-templates/tree/master/sqlvm-alwayson-cluster) vytvoří stejné řešení jako v tomto kurzu. 
 

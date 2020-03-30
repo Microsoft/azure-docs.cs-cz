@@ -1,6 +1,6 @@
 ---
-title: Licenční požadavky pro použití Privileged Identity Management-Azure Active Directory | Microsoft Docs
-description: Popisuje licenční požadavky pro použití Azure AD Privileged Identity Management (PIM).
+title: Licenční požadavky na používání správy privilegovaných identit – Azure Active Directory | Dokumenty společnosti Microsoft
+description: Popisuje licenční požadavky na použití Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -18,58 +18,58 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 70696cdb95fffc1e5faa46ca1b5f2180633ed63a
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75932324"
 ---
-# <a name="license-requirements-to-use-privileged-identity-management"></a>Licenční požadavky pro použití Privileged Identity Management
+# <a name="license-requirements-to-use-privileged-identity-management"></a>Licenční požadavky na používání správy privilegovaných identit
 
-Aby bylo možné používat Azure Active Directory (Azure AD) Privileged Identity Management (PIM), musí mít adresář platnou licenci. Kromě toho musí být licence přiřazeny správcům a relevantním uživatelům. Tento článek popisuje licenční požadavky pro použití Privileged Identity Management.
+Chcete-li používat Azure Active Directory (Azure AD) Privileged Identity Management (PIM), musí mít adresář platnou licenci. Kromě toho musí být licence přiřazeny správcům a příslušným uživatelům. Tento článek popisuje licenční požadavky na použití správy privilegovaných identit.
 
 ## <a name="valid-licenses"></a>Platné licence
 
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-## <a name="how-many-licenses-must-you-have"></a>Kolik licencí potřebujete?
+## <a name="how-many-licenses-must-you-have"></a>Kolik licencí musíte mít?
 
-Zajistěte, aby měl váš adresář aspoň tolik licencí Azure AD Premium P2, protože máte zaměstnance, kteří budou provádět následující úlohy:
+Ujistěte se, že váš adresář má alespoň tolik licencí Azure AD Premium P2, jako máte zaměstnance, kteří budou provádět následující úkoly:
 
-- Uživatelé přiřazení k rolím služby Azure AD, které jsou spravovány pomocí PIM
-- Uživatelé mohou schvalovat nebo odmítat žádosti o aktivaci v PIM
-- Uživatelé přiřazení k roli prostředku Azure pomocí přiřazení za běhu nebo přímo (podle času)  
-- Uživatelé přiřazení k recenzi přístupu
+- Uživatelé přiřazení k rolím Azure AD spravovaným pomocí PIM
+- Uživatelé, kteří mohou schválit nebo odmítnout žádosti o aktivaci v PIM
+- Uživatelé přiřazení k roli prostředku Azure s přiřazeními just-in-time nebo direct (časově založenými)  
+- Uživatelé přiřazení k revizi přístupu
 - Uživatelé, kteří provádějí kontroly přístupu
 
-Licence Azure AD Premium P2 nejsou **požadovány** pro následující úlohy:
+Licence Azure AD Premium P2 **nejsou** vyžadovány pro následující úkoly:
 
-- Pro uživatele s rolemi správce globálního správce nebo privilegované role, kteří nastavili PIM, konfigurují zásady, dostanou výstrahy a nastavují kontroly přístupu, nejsou potřeba žádné licence.
+- Pro uživatele s rolemi globálního správce nebo správce privilegovaných rolí, kteří nastavují PIM, konfigurují zásady, přijímají výstrahy a nastavují kontroly přístupu, nejsou vyžadovány žádné licence.
 
-Další informace o licencích najdete v tématu [přiřazení nebo odebrání licencí pomocí portálu Azure Active Directory](../fundamentals/license-users-groups.md).
+Další informace o licencích najdete v tématu [Přiřazení nebo odebrání licencí pomocí portálu Azure Active Directory](../fundamentals/license-users-groups.md).
 
 ## <a name="example-license-scenarios"></a>Příklady scénářů licencí
 
-Tady je několik ukázkových scénářů licencí, které vám pomůžou určit počet licencí, které musíte mít.
+Zde je několik příkladů licenčních scénářů, které vám pomohou určit počet licencí, které musíte mít.
 
 | Scénář | Výpočet | Počet licencí |
 | --- | --- | --- |
-| Woodgrove banka má 10 správců pro různá oddělení a 2 globální správce, kteří konfigurují a spravují PIM. Poskytují pět správcům nároků. | Pět licencí pro správce, kteří mají nárok | 5 |
-| Graphics design Institute má 25 správců, z nichž 14 spravuje PIM. Aktivace role vyžaduje schválení a v organizaci existují tři různé uživatele, kteří můžou schvalovat aktivace. | 14 licencí na opravňující role a tři schvalovatele | 17 |
-| Společnost Contoso má 50 správců, které 42 spravuje PIM. Aktivace role vyžaduje schválení a v organizaci existuje pět různých uživatelů, kteří můžou schvalovat aktivace. Společnost Contoso také provádí měsíční přezkoumání uživatelů přiřazených rolím Správce a kontrolorům, kteří nejsou v rolích správce spravovaných pomocí PIM. | 42 licencí na opravňující role + pět schvalovatelů + šest revidujících | 53 |
+| Woodgrove Bank má 10 správců pro různá oddělení a 2 globální administrátory, kteří konfigurují a spravují PIM. Mají nárok na pět administrátorů. | Pět licencí pro administrátory, kteří mají nárok | 5 |
+| Graphic Design Institute má 25 administrátorů, z nichž 14 je řízeno prostřednictvím PIM. Aktivace role vyžaduje schválení a v organizaci jsou tři různí uživatelé, kteří mohou schvalovat aktivace. | 14 licencí pro způsobilé role + tři schvalovatelé | 17 |
+| Contoso má 50 správců, z nichž 42 je spravováno prostřednictvím PIM. Aktivace role vyžaduje schválení a v organizaci je pět různých uživatelů, kteří mohou schvalovat aktivace. Společnost Contoso také provádí měsíční kontroly uživatelů přiřazených k rolím správce a recenzenti jsou správci uživatelů, z nichž šest není v rolích správců spravovaných PIM. | 42 licencí pro způsobilé role + pět schvalovatelů + šest recenzentů | 53 |
 
-## <a name="what-happens-when-a-license-expires"></a>Co se stane, když platnost licence vyprší?
+## <a name="what-happens-when-a-license-expires"></a>Co se stane, když vyprší platnost licence?
 
-Pokud vyprší platnost Azure AD Premium P2, EMS E5 nebo zkušební licence, nebudou ve vašem adresáři k dispozici Privileged Identity Management funkce:
+Pokud vyprší platnost licence Azure AD Premium P2, EMS E5 nebo zkušební verze, funkce správy privilegovaných identit už nebudou ve vašem adresáři dostupné:
 
-- Trvalá přiřazení rolí k rolím Azure AD nebudou mít vliv na.
-- Služba Privileged Identity Management v Azure Portal a také rutiny Graph API a rozhraní PowerShell Privileged Identity Management už nebudou k dispozici pro uživatele, aby mohli aktivovat privilegované role, spravovat privilegovaný přístup nebo provádět kontroly přístupu privilegovaných rolí.
-- Budou odebrána oprávněná přiřazení rolí rolí Azure AD, protože uživatelé již nebudou moci aktivovat privilegované role.
-- Všechny průběžné kontroly přístupu rolí Azure AD skončí a Privileged Identity Management nastavení konfigurace se odeberou.
-- Privileged Identity Management už nebude posílat e-maily při změnách přiřazení role.
+- Trvalé přiřazení rolí pro role Azure AD nebude ovlivněna.
+- Služba Správa privilegovaných identit na webu Azure Portal, také rutiny rozhraní API graphu a rozhraní prostředí PowerShell s privilegovanou správou identit již nebudou k dispozici uživatelům k aktivaci privilegovaných rolí, správě privilegovaného přístupu nebo provedení přístup k přezkumům privilegovaných rolí.
+- Způsobilá přiřazení rolí Azure AD se odeberou, protože uživatelé už nebudou moct aktivovat privilegované role.
+- Všechny průběžné kontroly přístupu rolí Azure AD skončí a nastavení konfigurace správy privilegovaných identit budou odebrána.
+- Správa privilegovaných identit již nebude odesílat e-maily se změnami přiřazení rolí.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Nasazení Privileged Identity Management](pim-deployment-plan.md)
-- [Začněte používat Privileged Identity Management](pim-getting-started.md)
-- [Role, které nemůžete spravovat v Privileged Identity Management](pim-roles.md)
+- [Nasazení technologie Privileged Identity Management](pim-deployment-plan.md)
+- [Zahájení využití technologie Privileged Identity Management](pim-getting-started.md)
+- [Role, které nelze spravovat ve správě privilegovaných identit](pim-roles.md)

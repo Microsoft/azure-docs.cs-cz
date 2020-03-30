@@ -1,6 +1,6 @@
 ---
-title: Rychlý Start – nasazení kontejneru Docker do instance kontejneru – Azure CLI
-description: V tomto rychlém startu použijete rozhraní příkazového řádku Azure CLI k rychlému nasazení kontejnerové webové aplikace, která běží v izolované instanci kontejneru Azure.
+title: Úvodní příručka – nasazení kontejneru Dockeru do instance kontejneru – Azure CLI
+description: V tomto rychlém startu použijete azure cli rychle nasadit kontejnerizovanou webovou aplikaci, která běží v izolované instanci kontejneru Azure
 ms.topic: quickstart
 ms.date: 03/21/2019
 ms.custom:
@@ -8,31 +8,31 @@ ms.custom:
 - seodec18
 - mvc
 ms.openlocfilehash: e5cad7d9141963e5062423545f7e5b94f0575152
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78252189"
 ---
-# <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>Rychlý Start: nasazení instance kontejneru v Azure pomocí rozhraní příkazového řádku Azure
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>Úvodní příručka: Nasazení instance kontejneru v Azure pomocí azure cli
 
-Použijte Azure Container Instances ke spouštění kontejnerů Docker bez serveru v Azure s využitím jednoduchosti a rychlosti. Pokud nepotřebujete úplnou platformu orchestrace kontejnerů, jako je třeba služba Azure Kubernetes, nasaďte aplikaci na vyžádání do instance kontejneru na vyžádání.
+Instance kontejnerů Azure slouží ke spouštění kontejnerů Dockeru bez serveru v Azure s jednoduchostí a rychlostí. Nasaďte aplikaci na instanci kontejneru na vyžádání, když nepotřebujete úplnou platformu orchestrace kontejneru, jako je služba Azure Kubernetes Service.
 
-V tomto rychlém startu použijete Azure CLI k nasazení izolovaného kontejneru Docker a zpřístupníte jeho aplikaci s plně kvalifikovaným názvem domény (FQDN). Několik sekund po provedení jednoho příkazu pro nasazení můžete procházet do aplikace spuštěné v kontejneru:
+V tomto rychlém startu použijete rozhraní příkazového příkazu K dispozici azure k nasazení izolovaného kontejneru Dockeru a zpřístupnění jeho aplikace s plně kvalifikovaným názvem domény (Plně kvalifikovaný název domény). Několik sekund po spuštění jednoho příkazu nasazení můžete přejít na aplikaci spuštěnou v kontejneru:
 
-![Zobrazení aplikace nasazené do Azure Container Instances v prohlížeči][aci-app-browser]
+![Zobrazení aplikace nasazené do instancí Kontejnerů Azure v prohlížeči][aci-app-browser]
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet][azure-account] před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,][azure-account] než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-K dokončení tohoto rychlého startu můžete použít Azure Cloud Shell nebo místní instalaci Azure CLI. Pokud byste ho chtěli používat místně, doporučuje se verze 2.0.55 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+K dokončení tohoto rychlého startu můžete použít Azure Cloud Shell nebo místní instalaci Azure CLI. Pokud jej chcete používat místně, doporučujeme verzi 2.0.55 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 Instance kontejnerů Azure, stejně jako všechny prostředky Azure, se musí nasadit do skupiny prostředků. Skupiny prostředků vám umožňují organizaci a správu souvisejících prostředků Azure.
 
-Nejdřív vytvořte skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* pomocí následujícího příkazu [AZ Group Create][az-group-create] :
+Nejprve pomocí následujícího příkazu [az group create][az-group-create]vytvořte skupinu prostředků s názvem *myResourceGroup* v umístění *eastus*:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -40,17 +40,17 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container"></a>Vytvoření kontejneru
 
-Teď když máte skupinu prostředků, můžete spustit kontejner v Azure. Pokud chcete vytvořit instanci kontejneru pomocí Azure CLI, zadejte název skupiny prostředků, název instance kontejneru a image kontejneru Docker do příkazu [AZ Container Create][az-container-create] . V tomto rychlém startu použijete obrázek veřejné `mcr.microsoft.com/azuredocs/aci-helloworld`. Tento obrázek zabalí malou webovou aplikaci napsanou v Node. js, která slouží ke statické stránce HTML.
+Teď máte skupinu prostředků a můžete spustit kontejner v Azure. K vytvoření instance kontejneru pomocí Azure CLI zadejte do příkazu [az container create][az-container-create] název skupiny prostředků, název instance kontejneru a image kontejneru Dockeru. V tomto rychlém startu použijete veřejný `mcr.microsoft.com/azuredocs/aci-helloworld` obrázek. Tento obrázek sbalí malou webovou aplikaci napsanou v souboru Node.js, která slouží statické stránce HTML.
 
-Kontejnery můžete zveřejnit na Internetu tak, že zadáte jeden nebo více otevíraných portů, popisek názvu DNS nebo oboje. V tomto rychlém startu nasadíte kontejner s označením názvu DNS, aby byla webová aplikace veřejně dosažitelná.
+Kontejnery můžete zveřejnit na internetu tak, že zadáte jeden nebo více otevíraných portů, popisek názvu DNS nebo oboje. V tomto rychlém startu nasadíte kontejner s popiskem názvu DNS tak, aby byla webová aplikace veřejně dostupná.
 
-Spusťte příkaz podobný následujícímu jako při spuštění instance kontejneru. Nastavte hodnotu `--dns-name-label` jedinečnou v rámci oblasti Azure, ve které vytvoříte instanci. Pokud se zobrazí chybová zpráva „Popisek názvu DNS není dostupný“, zkuste jiný popisek názvu DNS.
+Spusťte příkaz podobný následujícímu a spusťte instanci kontejneru. Nastavte `--dns-name-label` hodnotu, která je jedinečná v oblasti Azure, kde vytvoříte instanci. Pokud se zobrazí chybová zpráva „Popisek názvu DNS není dostupný“, zkuste jiný popisek názvu DNS.
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld --dns-name-label aci-demo --ports 80
 ```
 
-Během několika sekund byste měli dostat odpověď z rozhraní příkazového řádku Azure oznamující, že nasazení bylo dokončeno. Ověřte jeho stav pomocí příkazu [AZ Container show][az-container-show] :
+Během několika sekund byste měli dostat odpověď z rozhraní příkazového řádku Azure oznamující, že nasazení bylo dokončeno. Zkontrolujte stav pomocí příkazu [az container show][az-container-show]:
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name mycontainer --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" --out table
@@ -64,9 +64,9 @@ FQDN                               ProvisioningState
 aci-demo.eastus.azurecontainer.io  Succeeded
 ```
 
-Pokud je `ProvisioningState` kontejneru **úspěšný**, v prohlížeči přejdete na jeho plně kvalifikovaný název domény. Pokud zobrazená webová stránka vypadá přibližně takto, blahopřejeme! Úspěšně jste nasadili aplikaci spuštěnou v kontejneru Dockeru do Azure.
+Pokud `ProvisioningState` je kontejner **úspěšný**, přejděte v prohlížeči do jeho hlavního obsahu. Pokud zobrazená webová stránka vypadá přibližně takto, blahopřejeme! Úspěšně jste nasadili aplikaci spuštěnou v kontejneru Dockeru do Azure.
 
-![Zobrazení aplikace nasazené do Azure Container Instances v prohlížeči][aci-app-browser]
+![Zobrazení aplikace nasazené do instancí Kontejnerů Azure v prohlížeči][aci-app-browser]
 
 Pokud se zpočátku aplikace nezobrazí, může být nutné několik sekund počkat, než se DNS rozšíří, a pak zkusit aktualizovat stránku v prohlížeči.
 
@@ -74,7 +74,7 @@ Pokud se zpočátku aplikace nezobrazí, může být nutné několik sekund poč
 
 Pokud potřebujete odstranit potíže s kontejnerem nebo aplikací, která je v něm spuštěna (nebo pouze zobrazit její výstup), začněte zobrazením protokolů instance kontejneru.
 
-Vyžádejte si protokoly instance kontejneru pomocí příkazu [AZ Container logs][az-container-logs] :
+Vyžádejte si protokoly instance kontejneru pomocí příkazu [az container logs][az-container-logs]:
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer
@@ -93,7 +93,7 @@ listening on port 80
 
 Kromě zobrazení protokolů můžete k datovým proudům kontejneru připojit i standardní výstupní a chybový datový proud.
 
-Nejprve spuštěním příkazu [AZ Container Attach][az-container-attach] připojte místní konzolu k výstupním datovým proudům kontejneru:
+Nejprve proveďte příkaz [az kontejner připojit][az-container-attach] připojit místní konzoli k výstupním datovým proudům kontejneru:
 
 ```azurecli-interactive
 az container attach --resource-group myResourceGroup --name mycontainer
@@ -120,7 +120,7 @@ listening on port 80
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Až budete s kontejnerem hotovi, odeberte ho pomocí příkazu [AZ Container Delete][az-container-delete] :
+Až s kontejnerem skončíte, odeberte ho pomocí příkazu [az container delete][az-container-delete]:
 
 ```azurecli-interactive
 az container delete --resource-group myResourceGroup --name mycontainer
@@ -134,7 +134,7 @@ az container list --resource-group myResourceGroup --output table
 
 Kontejner **mycontainer** by se neměl zobrazit ve výstupu příkazu. Pokud ve skupině prostředků nemáte žádné další kontejnery, nezobrazí se žádný výstup.
 
-Pokud jste hotovi se skupinou prostředků *myResourceGroup* a všemi prostředky, které obsahuje, odstraňte ji pomocí příkazu [AZ Group Delete][az-group-delete] :
+Když jste hotovi se skupinou prostředků *myResourceGroup* a všemi prostředky, které obsahuje, odstraňte ji pomocí příkazu [az group delete][az-group-delete]:
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
@@ -142,12 +142,12 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili službu Azure Container instance pomocí veřejné image Microsoft. Pokud chcete sestavit image kontejneru a nasadit ji z privátního registru kontejnerů Azure, pokračujte ke kurzu služby Azure Container Instances.
+V tomto rychlém startu jste vytvořili instanci kontejneru Azure pomocí veřejné image Microsoftu. Pokud si chcete sestavit image kontejneru a nasadit ji z privátního registru kontejnerů Azure, pokračujte ke kurzu služby Azure Container Instances.
 
 > [!div class="nextstepaction"]
 > [Kurz služby Azure Container Instances](./container-instances-tutorial-prepare-app.md)
 
-Pokud chcete vyzkoušet možnosti spuštění kontejnerů v systému orchestrace v Azure, přečtěte si téma rychlý Start pro [službu Azure Kubernetes (AKS)][container-service] .
+Vyzkoušet možnosti pro spouštění kontejnerů v systému orchestrace v Azure, najdete v tématu [Azure Kubernetes Service (AKS)][container-service] rychlé starty.
 
 <!-- IMAGES -->
 [aci-app-browser]: ./media/container-instances-quickstart/view-an-application-running-in-an-azure-container-instance.png

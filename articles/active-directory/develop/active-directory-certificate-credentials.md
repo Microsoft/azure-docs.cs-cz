@@ -1,7 +1,7 @@
 ---
-title: Přihlašovací údaje k certifikátu platformy Microsoft Identity Platform
+title: Pověření certifikátu platformy identit y Microsoft
 titleSuffix: Microsoft identity platform
-description: Tento článek popisuje registraci a použití přihlašovacích údajů certifikátu pro ověřování aplikací.
+description: Tento článek popisuje registraci a použití pověření certifikátu pro ověřování aplikací.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -15,45 +15,45 @@ ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 26030c12d98d796ceb1f66f198aede6e40eebd94
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78399022"
 ---
-# <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Přihlašovací údaje ověřovacího certifikátu aplikace Microsoft Identity Platform
+# <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Pověření certifikátu pro ověřování aplikací platformy identit platformy Microsoft
 
-Platforma Microsoft Identity umožňuje aplikaci používat pro ověřování vlastní přihlašovací údaje, například v [přihlašovacích údajích klienta OAuth 2,0 udělení flowv 2.0](v2-oauth2-client-creds-grant-flow.md) a [tok](v2-oauth2-on-behalf-of-flow.md)za běhu).
+Platforma identit microsoftu umožňuje aplikaci používat vlastní pověření pro ověřování, například v [oauth 2.0 klientská pověření grant flowv2.0](v2-oauth2-client-creds-grant-flow.md) a [on-behalf-of toku](v2-oauth2-on-behalf-of-flow.md)).
 
-Jedna forma přihlašovacích údajů, kterou může aplikace použít k ověřování, je kontrolní výraz JSON Web Token (JWT) podepsaný certifikátem, který vlastní aplikace.
+Jednou z forem pověření, které může aplikace použít pro ověřování, je kontrolní výraz JSON Web Token(JWT) podepsaný certifikátem, který aplikace vlastní.
 
 ## <a name="assertion-format"></a>Formát kontrolního výrazu
-Platforma Microsoft identity pro výpočet kontrolního výrazu, můžete použít jednu z mnoha knihoven [JSON web token](https://jwt.ms/) v jazyce podle vašeho výběru. Tato informace je převedená tímto tokenem:
+Platforma identit Microsoft Chcete-li vypočítat kontrolní výraz, můžete použít jednu z mnoha knihoven [JSON Web Token](https://jwt.ms/) v jazyce podle vašeho výběru. Informace přenášené žetonem jsou následující:
 
 ### <a name="header"></a>Hlavička
 
-| Parametr |  Přeznačit |
+| Parametr |  Poznámka |
 | --- | --- |
-| `alg` | By měl být **RS256** |
-| `typ` | Měla by být **JWT** |
-| `x5t` | Měl by se jednat o kryptografický otisk SHA-1 certifikátu X. 509. |
+| `alg` | Měl by být **RS256** |
+| `typ` | Měl by to být **JWT** |
+| `x5t` | Měl by to být otisk palce Certifikát u X.509 SHA-1 |
 
-### <a name="claims-payload"></a>Deklarace identity (datová část)
+### <a name="claims-payload"></a>Nároky (datová část)
 
 | Parametr |  Poznámky |
 | --- | --- |
-| `aud` | Cílová skupina: by měla být **https://login.microsoftonline.com/*tenant_Id*/OAuth2/token** |
-| `exp` | Datum vypršení platnosti: datum vypršení platnosti tokenu. Čas je reprezentován jako počet sekund od 1. ledna 1970 (1970-01-01T0:0: 0Z) UTC až do doby, kdy platnost tokenu vyprší.|
-| `iss` | Vystavitel: mělo by se jednat o client_id (ID aplikace služby klienta). |
-| `jti` | GUID: ID JWT |
-| `nbf` | Ne před: datum, před kterým se token nedá použít. Čas je reprezentován jako počet sekund od 1. ledna 1970 (1970-01-01T0:0: 0Z) UTC až do doby, kdy byl token vydán. |
-| `sub` | Předmět: jako u `iss`by měl být client_id (ID aplikace služby klienta). |
+| `aud` | Cílová skupina: Měla by být ** https://login.microsoftonline.com/ *tenant_Id*/oauth2/token** |
+| `exp` | Datum vypršení platnosti: datum vypršení platnosti tokenu. Čas je reprezentován jako počet sekund od 1 ledna 1970 (1970-01-01T0:0:0Z) UTC až do doby vypršení platnosti tokenu.|
+| `iss` | Vydavatel: by měl být client_id (ID aplikace klientské služby) |
+| `jti` | GUID: the JWT ID |
+| `nbf` | Ne před: datum, před kterým nelze token použít. Čas je reprezentován jako počet sekund od 1 ledna 1970 (1970-01-01T0:0:0Z) UTC až do doby, kdy byl vydán token. |
+| `sub` | Předmět: Pokud `iss`jde o , by měla být client_id (ID aplikace klientské služby) |
 
 ### <a name="signature"></a>Podpis
 
-Podpis se počítá s použitím certifikátu, jak je popsáno ve [specifikaci JSON web token RFC7519 Specification](https://tools.ietf.org/html/rfc7519) .
+Podpis je vypočítán použitím certifikátu, jak je popsáno ve [specifikaci JSON Web Token RFC7519](https://tools.ietf.org/html/rfc7519)
 
-## <a name="example-of-a-decoded-jwt-assertion"></a>Příklad dekódového kontrolního výrazu JWT
+## <a name="example-of-a-decoded-jwt-assertion"></a>Příklad dekódovaného výrazu JWT
 
 ```JSON
 {
@@ -74,42 +74,42 @@ Podpis se počítá s použitím certifikátu, jak je popsáno ve [specifikaci J
 "Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ```
 
-## <a name="example-of-an-encoded-jwt-assertion"></a>Příklad kódovaného kontrolního výrazu JWT
+## <a name="example-of-an-encoded-jwt-assertion"></a>Příklad kódovaného výrazu JWT
 
-Následující řetězec je příkladem kódovaného kontrolního výrazu. Pokud pečlivě prohledáváte, všimnete si tří sekcí oddělených tečkami (.):
-* První oddíl kóduje hlavičku.
-* Druhá část kóduje datovou část.
-* Poslední část je podpis vypočítanýý pomocí certifikátů z obsahu prvních dvou částí.
+Následující řetězec je příkladem kódovaného výrazu. Podíváte-li se pozorně, všimnete si tří částí oddělených tečkami (.):
+* První oddíl zakóduje záhlaví
+* Druhá část kóduje užitečné zatížení
+* Poslední část je podpis vypočítaný s certifikáty z obsahu prvních dvou částí
 
 ```
 "eyJhbGciOiJSUzI1NiIsIng1dCI6Imd4OHRHeXN5amNScUtqRlBuZDdSRnd2d1pJMCJ9.eyJhdWQiOiJodHRwczpcL1wvbG9naW4ubWljcm9zb2Z0b25saW5lLmNvbVwvam1wcmlldXJob3RtYWlsLm9ubWljcm9zb2Z0LmNvbVwvb2F1dGgyXC90b2tlbiIsImV4cCI6MTQ4NDU5MzM0MSwiaXNzIjoiOTdlMGE1YjctZDc0NS00MGI2LTk0ZmUtNWY3N2QzNWM2ZTA1IiwianRpIjoiMjJiM2JiMjYtZTA0Ni00MmRmLTljOTYtNjVkYmQ3MmMxYzgxIiwibmJmIjoxNDg0NTkyNzQxLCJzdWIiOiI5N2UwYTViNy1kNzQ1LTQwYjYtOTRmZS01Zjc3ZDM1YzZlMDUifQ.
 Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ```
 
-## <a name="register-your-certificate-with-microsoft-identity-platform"></a>Registrace certifikátu s platformou Microsoft identity
+## <a name="register-your-certificate-with-microsoft-identity-platform"></a>Registrace certifikátu pomocí platformy microsoft identit
 
-Přihlašovací údaje certifikátu můžete přidružit k klientské aplikaci na platformě Microsoft identity prostřednictvím Azure Portal pomocí kterékoli z následujících metod:
+Pověření certifikátu můžete přidružit ke klientské aplikaci v platformě microsoftových identit prostřednictvím portálu Azure pomocí některé z následujících metod:
 
-### <a name="uploading-the-certificate-file"></a>Nahrává se soubor certifikátu.
+### <a name="uploading-the-certificate-file"></a>Nahrání souboru certifikátu
 
 V registraci aplikace Azure pro klientskou aplikaci:
-1. Vyberte **certifikáty & tajných**kódů.
-2. Klikněte na **nahrát certifikát** a vyberte soubor certifikátu, který se má nahrát.
+1. Vyberte **možnost Certifikáty & tajných kódů**.
+2. Klikněte na **Nahrát certifikát** a vyberte soubor certifikátu, který chcete nahrát.
 3. Klikněte na **Přidat**.
-  Po nahrání certifikátu se zobrazí miniatura, datum zahájení a hodnoty vypršení platnosti.
+  Po nahrání certifikátu se zobrazí kryptografický otisk, počáteční datum a hodnoty vypršení platnosti.
 
 ### <a name="updating-the-application-manifest"></a>Aktualizace manifestu aplikace
 
-Po uložení certifikátu je potřeba vypočítat:
+Po držení certifikátu je třeba vypočítat:
 
-- `$base64Thumbprint`, což je kódování Base64 hodnoty hash certifikátu
-- `$base64Value`, což je kódování Base64 nezpracovaných dat certifikátu
+- `$base64Thumbprint`, což je základní kódování hash certifikátu 64
+- `$base64Value`, což je základní kódování 64 nezpracovaných dat certifikátu
 
-Pro identifikaci klíče v manifestu aplikace (`$keyId`) je také nutné zadat identifikátor GUID.
+Je také nutné zadat identifikátor GUID k identifikaci`$keyId`klíče v manifestu aplikace ( ).
 
 V registraci aplikace Azure pro klientskou aplikaci:
-1. Vyberte **manifest** pro otevření manifestu aplikace.
-2. Nahraďte vlastnost *přihlašovací údaje* pomocí nových informací o certifikátu pomocí následujícího schématu.
+1. Vyberte **Manifest,** chcete-li otevřít manifest aplikace.
+2. Nahraďte vlastnost *keyCredentials* novými informacemi o certifikátu pomocí následujícího schématu.
 
    ```JSON
    "keyCredentials": [
@@ -122,13 +122,13 @@ V registraci aplikace Azure pro klientskou aplikaci:
        }
    ]
    ```
-3. Uložte úpravy manifestu aplikace a pak nahrajte manifest na platformu Microsoft identity.
+3. Uložte úpravy do manifestu aplikace a potom nahrajte manifest na platformu identit microsoftu.
 
-   Vlastnost `keyCredentials` je vícehodnotový, takže můžete nahrát více certifikátů pro bohatší správu klíčů.
+   Vlastnost `keyCredentials` je multi-hodnota, takže můžete nahrát více certifikátů pro bohatší správu klíčů.
 
 ## <a name="code-sample"></a>Ukázka kódu
 
 > [!NOTE]
-> Hlavičku X5T musíte vypočítat tak, že ji převedete na základní řetězec 64 pomocí hodnoty hash certifikátu. Kód, který se má provést C# v, je `System.Convert.ToBase64String(cert.GetCertHash());`.
+> Hlavičku X5T je nutné vypočítat tak, že ji převedete na základní řetězec 64 pomocí hodnoty hash certifikátu. Kód k provedení v c# je `System.Convert.ToBase64String(cert.GetCertHash());`.
 
-Ukázková [aplikace konzoly .NET Core daemon s použitím platformy Microsoft Identity](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) ukazuje, jak aplikace používá vlastní přihlašovací údaje pro ověřování. Také ukazuje, jak můžete [vytvořit certifikát podepsaný svým držitelem](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script) pomocí příkazu `New-SelfSignedCertificate` PowerShellu. Můžete také využít a použít [skripty pro vytváření aplikací](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md) k vytvoření certifikátů, výpočtů kryptografických otisků a tak dále.
+Ukázka kódu [.NET Core daemon konzoly aplikace pomocí platformy identit microsoft](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) ukazuje, jak aplikace používá vlastní pověření pro ověřování. Ukazuje také, jak můžete vytvořit certifikát podepsaný `New-SelfSignedCertificate` svým [držitelem](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script) pomocí příkazu Powershell. Můžete také využít výhod a použít [skripty pro vytváření aplikací](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md) k vytvoření certifikátů, výpočtu kryptografického otisku a tak dále.

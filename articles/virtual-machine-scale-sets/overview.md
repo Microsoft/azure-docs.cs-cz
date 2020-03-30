@@ -1,5 +1,5 @@
 ---
-title: Přehled služby Azure Virtual Machine Scale Sets
+title: Přehled škálovacích sad virtuálních strojů Azure
 description: Seznamte se se škálovacími sadami virtuálních počítačů Azure a způsobem automatického škálování aplikací.
 author: mayanknayar
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: manayar
 ms.openlocfilehash: e6201f9ac2e9b813de5a4622fc7996eb1202a164
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76273695"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Co jsou škálovací sady virtuálních počítačů?
@@ -38,8 +38,8 @@ Za účelem zajištění redundance a vyššího výkonu se aplikace obvykle dis
     - Automatické škálování také minimalizuje počet nepotřebných instancí virtuálních počítačů s vaší aplikací při nízké poptávce, zatímco zákazníci mají stále k dispozici přijatelnou úroveň výkonu díky automatickému přidávání dalších instancí virtuálních počítačů, když se poptávka zvýší. Tato schopnost pomáhá snižovat náklady a efektivně vytvářet prostředky Azure podle potřeby.
 
 - **Práce ve velkém měřítku**
-    - Škálovací sady podporují až 1 000 instancí virtuálních počítačů. Pokud vytváříte a nahráváte vlastní image virtuálních počítačů, tento limit je 600 instancí virtuálních počítačů.
-    - K dosažení nejlepšího výkonu u produkčních úloh použijte [Azure Managed disks](../virtual-machines/windows/managed-disks-overview.md).
+    - Škálovací sady podporují až 1 000 instancí virtuálních počítačů. Pokud vytvoříte a nahrajete vlastní image virtuálních počítače, limit je 600 instancí virtuálních počítače.
+    - Nejlepší výkon s produkčními úlohami nawebu využijte [spravované disky Azure](../virtual-machines/windows/managed-disks-overview.md).
 
 
 ## <a name="differences-between-virtual-machines-and-scale-sets"></a>Rozdíly mezi virtuálními počítači a škálovacími sadami
@@ -54,11 +54,11 @@ Za účelem zajištění redundance a vyššího výkonu se aplikace obvykle dis
 
 Za použití škálovacích sad se neúčtují žádné další poplatky. Platíte pouze za základní výpočetní prostředky, jako jsou instance virtuálních počítačů, nástroj pro vyrovnávání zatížení nebo spravované diskové úložiště. Za funkce správy a automatizace, jako jsou automatické škálování a redundance, se neúčtují žádné další poplatky nad rámec použití virtuálních počítačů.
 
-## <a name="how-to-monitor-your-scale-sets"></a>Jak monitorovat sady škálování
+## <a name="how-to-monitor-your-scale-sets"></a>Jak sledovat škálovací sady
 
-Použijte [Azure monitor pro virtuální počítače](../azure-monitor/insights/vminsights-overview.md), který má jednoduchý proces připojování a bude automatizovat shromažďování důležitých ČÍTAČŮ výkonu procesoru, paměti, disku a sítě z virtuálních počítačů ve vaší sadě škálování. Obsahuje také další možnosti monitorování a předdefinované vizualizace, které vám pomůžou se zaměřit na dostupnost a výkon vašich sad škálování.
+Použijte [Azure Monitor pro virtuální počítače](../azure-monitor/insights/vminsights-overview.md), který má jednoduchý proces registrace a bude automatizovat shromažďování důležitých čítačů výkonu procesoru, paměti, disku a sítě z virtuálních počítačů ve vaší škálovací sadě. Obsahuje také další možnosti monitorování a předdefinované vizualizace, které vám pomohou zaměřit se na dostupnost a výkon škálovacích sad.
 
-Pokud chcete shromažďovat podrobné informace o vaší aplikaci, včetně zobrazení stránek, žádostí o aplikace a výjimek, povolte monitorování pro [aplikaci Virtual Machine Scale set](../azure-monitor/app/azure-vm-vmss-apps.md) s Application Insights. Dále ověřte dostupnost aplikace konfigurací [testu dostupnosti](../azure-monitor/app/monitor-web-app-availability.md) pro simulaci provozu uživatelů.
+Povolte monitorování [pro aplikaci škálovací sady virtuálních strojů](../azure-monitor/app/azure-vm-vmss-apps.md) pomocí Application Insights a shromažďujte podrobné informace o vaší aplikaci, včetně zobrazení stránek, požadavků aplikací a výjimek. Dále ověřte dostupnost aplikace konfigurací [testu dostupnosti](../azure-monitor/app/monitor-web-app-availability.md) pro simulaci provozu uživatelů.
 
 ## <a name="next-steps"></a>Další kroky
 Začněte vytvořením své první škálovací sady virtuálních počítačů na webu Azure Portal.

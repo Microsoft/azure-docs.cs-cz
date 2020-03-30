@@ -1,6 +1,6 @@
 ---
-title: Platba za službu Azure Průzkumník dat Markup za účelem úspory peněz
-description: Naučte se, jak koupit rezervovanou kapacitu Azure Průzkumník dat, abyste ušetřili náklady na Azure Průzkumník dat.
+title: Předplatit značky Azure Data Explorer ušetřit peníze
+description: Přečtěte si, jak koupit rezervovanou kapacitu Azure Data Exploreru, abyste ušetřili náklady na Azure Data Explorer.
 author: avneraa
 ms.author: avnera
 ms.reviewer: orspodek
@@ -8,62 +8,62 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.openlocfilehash: bbb2108967353b851a0fa0ee610ec30380e3fc50
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75969264"
 ---
-# <a name="prepay-for-azure-data-explorer-markup-units-with-azure-data-explorer-reserved-capacity"></a>Platba za služby Azure Průzkumník dat označení jednotek pomocí Azure Průzkumník dat rezervované kapacity
+# <a name="prepay-for-azure-data-explorer-markup-units-with-azure-data-explorer-reserved-capacity"></a>Platba předem pro značkovací jednotky Azure Data Explorer u rezervované kapacity Azure Data Exploreru
 
-V porovnání s cenami za průběžné platby vám ušetříme peníze pomocí Azure Průzkumník dat za jednotky značek. S využitím služby Azure Průzkumník dat rezervované kapacity provedete závazek Azure Průzkumník dat použít po dobu jednoho nebo tří let, abyste získali značnou slevu za náklady na kód v Azure Průzkumník dat. Pokud si chcete koupit službu Azure Průzkumník dat rezervovanou kapacitu, stačí zadat termín, který se použije pro všechna nasazení Azure Průzkumník dat ve všech oblastech.
+Ušetřete peníze s Azure Data Explorer ušetřete předplacením za jednotky značek ve srovnání s průběžnými platbami. S rezervovanou kapacitou Aplikace Azure Data Explorer se zavazujete, že Azure Data Explorer bude používat po dobu jednoho nebo tří let, abyste získali výraznou slevu na přirážky k Azure Data Exploreru. Chcete-li zakoupit rezervovanou kapacitu Aplikace Azure Data Explorer, stačí zadat termín, bude se vztahovat na všechna nasazení Průzkumníka dat Azure ve všech oblastech.
 
-Zakoupením rezervované rezervace platíte za náklady na označení po dobu jednoho nebo tří let. Jakmile si koupíte rezervaci, poplatky za službu Azure Průzkumník dat s označením, které odpovídají atributům rezervace, už se nebudou účtovat podle tarifů průběžných plateb. Výhody služby Azure Průzkumník dat, které jsou již spuštěny nebo jsou nově nasazeny, budou automaticky získány. Tato rezervace nepokrývá výpočetní prostředky, sítě ani poplatky za úložiště spojené s clustery. Rezervovanou kapacitu těchto prostředků je potřeba koupit samostatně. Na konci rezervovaného období vyprší platnost fakturačního přínosu a jednotky služby Azure Průzkumník dat Markup se účtují podle ceny za průběžné platby. Rezervace se neobnoví automaticky. Informace o cenách najdete na [stránce s cenami za Azure Průzkumník dat](https://azure.microsoft.com/pricing/details/data-explorer/).
+Zakoupením rezervace platíte předem náklady na přirážku po dobu jednoho nebo tří let. Jakmile si koupíte rezervaci, poplatky za značky Azure Data Explorer, které odpovídají atributům rezervace, se už nebudou účtovat podle tarifů průběžných plateb. Azure Data Explorer clustery, které jsou již spuštěné nebo ty, které jsou nově nasazené automaticky získáte výhodu. Tato rezervace se nevztahuje na výpočetní prostředky, síťové nebo tarify úložiště spojené s clustery. Rezervovanou kapacitu pro tyto prostředky je třeba zakoupit samostatně. Na konci období rezervace vyprší platnost fakturační výhody a značkovací jednotky Průzkumníka dat Azure se účtují za průběžnou platbu. Rezervace se neobnovují automaticky. Informace o cenách najdete na [stránce s cenami v Průzkumníku dat Azure](https://azure.microsoft.com/pricing/details/data-explorer/).
 
-V [Azure Portal](https://portal.azure.com)si můžete koupit rezervovanou kapacitu Azure Průzkumník dat. Zakoupení rezervované kapacity Azure Průzkumník dat:
+Rezervovanou kapacitu Azure Data Exploreru si můžete koupit na [webu Azure Portal](https://portal.azure.com). Zakoupení rezervované kapacity Aplikace Azure Data Explorer:
 
-* Musíte být vlastníkem aspoň jednoho předplatného organizace nebo předplatného s průběžnými platbami.
-* U předplatných se smlouvou Enterprise musí být na webu [EA Portal](https://ea.azure.com) povolená možnost **Přidat rezervované instance**. Případně, pokud je toto nastavení zakázáno, musíte být správce EA v předplatném.
-* V případě programu Cloud Solution Provider (CSP) si můžou koupit službu Azure Průzkumník dat rezervovanou kapacitu jenom agenti pro správu nebo prodejní agenty.
+* Musíte být vlastníkem alespoň jednoho předplatného Enterprise nebo Pay-You-Go.
+* U předplatných se smlouvou Enterprise musí být na webu [EA Portal](https://ea.azure.com) povolená možnost **Přidat rezervované instance**. Případně pokud je toto nastavení zakázáno, musíte být správcem EA v předplatném.
+* V případě programu Zprostředkovatel cloudových řešení (CSP) mohou rezervovanou kapacitu aplikace Azure Data Explorer zakoupit jenom agenti správce nebo prodejci.
 
-Podrobnosti o tom, jak se zákazníkům z podnikových zákazníků a průběžné platby účtují poplatky za nákupy rezervací, najdete tady:
-* [Vysvětlení využití rezervace Azure pro podnikovou registraci](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) 
-* [Pochopte využívání rezervací Azure pro předplatné](../cost-management-billing/reservations/understand-reserved-instance-usage.md)s průběžnými platbami.
+Podrobnosti o tom, jak se zákazníkům podnikových a zákazníkům s průběžným inami účtují poplatky za nákupy rezervací, najdete v tématu:
+* [Principy využití rezervací Azure pro registraci enterprise](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) 
+* [Seznamte se s využitím rezervací Azure pro předplatné s průběžným platbaem](../cost-management-billing/reservations/understand-reserved-instance-usage.md).
 
-## <a name="determine-the-right-markup-usage-before-purchase"></a>Určíte správné použití značek před nákupem.
+## <a name="determine-the-right-markup-usage-before-purchase"></a>Určení správného využití přirážky před nákupem
 
-Velikost rezervace by měla být založená na celkovém počtu jednotek služby Azure Průzkumník dat značek používaných existujícími a již nasazenými clustery Azure Průzkumník dat. Počet jednotek značek se rovná počtu jader clusteru modulu Azure Průzkumník dat v produkčním prostředí (včetně SKU pro vývoj/testování). 
+Velikost rezervace by měla být založená na celkovém počtu značkovacích jednotek Průzkumníka dat Azure používaných existujícími clustery Azure Data Explorer nebo brzy nasazené. Počet značkovacích jednotek se rovná počtu jader clusteru Clusteru Azure Data Explorer v produkčním prostředí (bez dat a test skladové položky). 
 
-## <a name="buy-azure-data-explorer-reserved-capacity"></a>Koupit rezervovanou kapacitu Azure Průzkumník dat
+## <a name="buy-azure-data-explorer-reserved-capacity"></a>Zakoupení rezervované kapacity Azure Data Exploreru
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-1. Vyberte **všechny služby** > **rezervacích** > **koupit nyní**. Vyberte **Přidat**.
-1. V podokně **Vybrat typ produktu** vyberte **Azure Průzkumník dat** , abyste si koupili novou rezervaci pro jednotky značek Azure Průzkumník dat. 
-1. Vybrat **Nákup**
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Vyberte **Možnost Všechny služby** > **Reservations** > **Rezervace nákup nyní**. Vyberte **Přidat**.
+1. V podokně **Vybrat typ produktu** vyberte Azure Data **Explorer** a zakupte novou rezervaci pro značkovací jednotky Průzkumníka dat Azure. 
+1. Vybrat **koupit**
 1. Vyplňte požadovaná pole. 
 
     ![Stránka nákupu](media/pricing-reserved-capacity/purchase-page.png)
 
-1. Přečtěte si náklady na rezervaci rezervované kapacity služby Azure Průzkumník dat v části **náklady** .
+1. Zkontrolujte náklady na rezervaci rezervované kapacity služby Azure Data Explorer v části **Náklady.**
 1. Vyberte **Koupit**.
-1. Pokud chcete zobrazit stav nákupu, vyberte **Zobrazit tuto rezervaci** .
+1. Chcete-li zobrazit stav nákupu, vyberte možnost **Zobrazit tuto rezervaci.**
 
 ## <a name="cancellations-and-exchanges"></a>Zrušení a výměny
 
-Pokud potřebujete zrušit rezervaci rezervované kapacity Azure Průzkumník dat, může existovat 12% poplatek za předčasné ukončení. Náhrady vycházejí z nejnižší ceny nákupní ceny nebo aktuální ceny za rezervaci. Výše vrácených peněz je omezená na 50 000 USD za rok. Výše vrácených peněz, které obdržíte, je zbývající poměrný zůstatek minus poplatek za předčasné ukončení ve výši 12 %. Chcete-li požádat o zrušení, pokračujte na rezervaci v Azure Portal a výběrem možnosti **refundace** vytvořte žádost o podporu.
+Pokud potřebujete zrušit rezervaci rezervované kapacity aplikace Azure Data Explorer, může být 12 % poplatek za předčasné ukončení. Refundace jsou založeny na nejnižší ceně vaší kupní ceny nebo aktuální ceně rezervace. Výše vrácených peněz je omezená na 50 000 USD za rok. Výše vrácených peněz, které obdržíte, je zbývající poměrný zůstatek minus poplatek za předčasné ukončení ve výši 12 %. Pokud chcete požádat o zrušení, přejděte na rezervaci na webu Azure portal a kliknutím na **refundaci** vytvořte žádost o podporu.
 
-Pokud potřebujete změnit rezervaci rezervované kapacity Azure Průzkumník dat na jiný termín, můžete ji vyměnit pro jinou rezervaci, která má stejnou nebo větší hodnotu. Počáteční datum období nové rezervace se z vyměněné rezervace nepřenáší. Termín 1 nebo 3 rok začíná při vytváření nové rezervace. Pokud chcete požádat o výměnu, v Azure Portal klikněte na rezervace a vytvořte žádost o podporu výběrem možnosti **Exchange** .
+Pokud potřebujete změnit rezervaci rezervované kapacity Azure Data Explorer na jiný termín, můžete ji vyměnit za jinou rezervaci, která má stejnou nebo vyšší hodnotu. Počáteční datum období nové rezervace se z vyměněné rezervace nepřenáší. Období 1 nebo 3 roky začíná vytvořením nové rezervace. Pokud chcete požádat o výměnu, přejděte na rezervaci na webu Azure Portal a kliknutím na **Exchange** vytvořte žádost o podporu.
 
-Další informace o výměně nebo refundaci rezervacích najdete v tématu věnovaném [výměnám a refundacím rezervací](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
+Další informace o výměně nebo refundaci rezervací naleznete v [tématu Rezervace a refundace](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ## <a name="manage-your-reserved-capacity-reservation"></a>Správa rezervace rezervované kapacity
 
-Sleva za rezervované jednotky služby Azure Průzkumník dat se automaticky použije na počet jednotek značek, které se shodují s rozsahem rezervace rezervovaných kapacit a atributů Azure Průzkumník dat. 
+Sleva na rezervaci značkovacích jednotek Průzkumníka dat Azure se automaticky použije na počet jednotek značek, které odpovídají oboru rezervace rezervované kapacity a atributům Průzkumníka dat Azure. 
 
 
 > [!NOTE]
-> * Rozsah rezervované rezervace kapacity Azure Průzkumník dat můžete aktualizovat prostřednictvím [Azure Portal](https://portal.azure.com), PowerShellu, CLI nebo přes rozhraní API.
-> * Informace o tom, jak spravovat rezervaci rezervované kapacity Azure Průzkumník dat, najdete v tématu [Správa rezervované kapacity azure Průzkumník dat](../cost-management-billing/reservations/understand-azure-data-explorer-reservation-charges.md).
+> * Rozsah rezervace rezervované kapacity Aplikace Azure Data Explorer můžete aktualizovat prostřednictvím [portálu Azure](https://portal.azure.com)Portal , PowerShellu, rozhraní PŘÍKAZOVÉHO PŘÍKAZOVÉHO PŘÍKAZU nebo prostřednictvím rozhraní API.
+> * Informace o tom, jak spravovat rezervaci rezervované kapacity aplikace Azure Data Explorer, najdete v [tématu správa rezervované kapacity aplikace Azure Data Explorer](../cost-management-billing/reservations/understand-azure-data-explorer-reservation-charges.md).
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -76,6 +76,6 @@ Další informace o rezervacích Azure najdete v následujících článcích:
 * [Vysvětlení využití rezervací u smlouvy Enterprise](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
 * [Rezervace Azure v programu Partner Center Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

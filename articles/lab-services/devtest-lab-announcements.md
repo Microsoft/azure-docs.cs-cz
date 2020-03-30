@@ -1,6 +1,6 @@
 ---
-title: Zveřejnění oznámení do testovacího prostředí v Azure DevTest Labs | Microsoft Docs
-description: Naučte se, jak přidat oznámení do testovacího prostředí v Azure DevTest Labs
+title: Zaúčtování oznámení do testovacího prostředí v laboratořích Azure DevTest Labs | Dokumenty společnosti Microsoft
+description: Přečtěte si, jak přidat oznámení do testovacího prostředí v Azure DevTest Labs
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: spelluru
@@ -15,70 +15,70 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 84120b07de3a03a049493eb973b6dc46f8668387
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75976452"
 ---
-# <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Zveřejnění oznámení do testovacího prostředí v Azure DevTest Labs
+# <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Odeslání oznámení do testovacího prostředí v laboratořích Azure DevTest Labs
 
-Jako správce testovacího prostředí můžete publikovat vlastní oznámení v existujícím testovacím prostředí a upozornit uživatele na nedávné změny nebo dodatky do testovacího prostředí. Například může být vhodné informovat uživatele o:
+Jako správce testovacího prostředí můžete v existujícím testovacím prostředí zveřejnit vlastní oznámení, které uživatele upozorní na nedávné změny nebo dodatky k testovacímu prostředí. Můžete například uživatele informovat o:
 
-- Nové velikosti virtuálních počítačů, které jsou k dispozici
+- Nové velikosti virtuálních počítače, které jsou k dispozici
 - Obrázky, které jsou aktuálně nepoužitelné
 - Aktualizace zásad testovacího prostředí
 
-Po odeslání se oznámení zobrazí na stránce Přehled testovacího prostředí a uživatel ho může vybrat.
+Po odeslání se oznámení zobrazí na stránce Přehled testovacího prostředí a uživatel jej může vybrat pro další podrobnosti.
 
-Funkce oznámení je určena k použití pro dočasná oznámení.  Oznámení můžete snadno zakázat poté, co už nebude potřeba.
+Funkce oznámení je určena pro dočasná oznámení.  Oznámení můžete snadno zakázat poté, co již není potřeba.
 
-## <a name="steps-to-post-an-announcement-in-an-existing-lab"></a>Postup zveřejnění oznámení v existujícím testovacím prostředí
+## <a name="steps-to-post-an-announcement-in-an-existing-lab"></a>Postup odeslání oznámení v existující laboratoři
 
-1. Přihlaste se na web [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. V případě potřeby vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** . (Vaše testovací prostředí se už možná zobrazuje na řídicím panelu v části **všechny prostředky**).
-1. V seznamu cvičení vyberte testovací prostředí, ve kterém chcete publikovat oznámení.
+1. Přihlaste se k [portálu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. V případě potřeby vyberte **všechny služby**a ze seznamu vyberte **DevTest Labs.** (Vaše testovací prostředí se už může zobrazit na řídicím panelu v části **Všechny prostředky**).
+1. Ze seznamu testovacích prostředí vyberte testovací prostředí, ve kterém chcete zveřejnit oznámení.
 1. V oblasti **Přehled** testovacího prostředí vyberte **Konfigurace a zásady**.
 
     ![Tlačítko Konfigurace a zásady](./media/devtest-lab-announcements/devtestlab-config-and-policies.png)
 
-1. Vlevo v části **Nastavení**vyberte **oznámení testovacího prostředí**.
+1. Vlevo v části **NASTAVENÍ**vyberte **možnost Oznámení lab**.
 
-    ![Tlačítko oznámení testovacího prostředí](./media/devtest-lab-announcements/devtestlab-announcements.png)
+    ![Tlačítko Oznámení v laboratoři](./media/devtest-lab-announcements/devtestlab-announcements.png)
 
-1. Pokud chcete vytvořit zprávu pro uživatele v tomto testovacím prostředí, nastavte možnost **povoleno** na **Ano**.
+1. Chcete-li vytvořit zprávu pro uživatele v tomto testovacím prostředí, nastavte **možnost Povoleno** na **ano**.
 
-1. Můžete zadat **Datum vypršení platnosti** a zadat datum a čas, po kterém se oznámení již nebude zobrazovat uživatelům. Pokud nezadáte datum vypršení platnosti, oznámení zůstane, dokud ho nezakážete.
+1. Můžete zadat **datum vypršení platnosti** a zadat datum a čas, po kterém se oznámení již uživatelům nezobrazuje. Pokud nezadáte datum vypršení platnosti, oznámení zůstane, dokud ho nezakážete.
 
    > [!NOTE]
-   > Po vypršení platnosti oznámení se už nebude zobrazovat uživatelům, ale pořád existuje v podokně **oznámení testovacího prostředí** . Můžete je upravit a znovu aktivovat, aby se znovu aktivoval.
+   > Po vypršení platnosti oznámení se již uživatelům nezobrazuje, ale stále existuje v podokně **oznámení testovacího prostředí.** Můžete provést úpravy a znovu ji povolit, aby byla znovu aktivní.
    >
    >
 
-1. Zadejte **název oznámení** a **Text oznámení**.
+1. Zadejte **název oznámení** a text **oznámení**.
 
-   Název může mít až 100 znaků a zobrazí se uživateli na stránce s přehledem testovacího prostředí. Pokud uživatel vybere název, zobrazí se text oznámení.
+   Název může mít až 100 znaků a zobrazí se uživateli na stránce Přehled testovacího prostředí. Pokud uživatel vybere název, zobrazí se text oznámení.
 
-   Text oznámení přijímá Markdownu. Když zadáte text oznámení, můžete zobrazit zprávu v oblasti náhledu v dolní části obrazovky.
+   Text oznámení přijímá markdown. Při zadávání textu oznámení můžete zprávu zobrazit v oblasti Náhled v dolní části obrazovky.
 
-    ![Obrazovka oznámení testovacího prostředí pro vytvoření zprávy.](./media/devtest-lab-announcements/devtestlab-post-announcement.png)
+    ![Lab oznámení obrazovky k vytvoření zprávy.](./media/devtest-lab-announcements/devtestlab-post-announcement.png)
 
 
-1. Pokud je oznámení připravené k publikování, vyberte **Uložit** .
+1. Až bude oznámení připravené k odeslání, vyberte **Uložit.**
 
-Když už nechcete zobrazovat toto oznámení pro uživatele testovacího prostředí, vraťte se na stránku **oznámení testovacího prostředí** a nastavte **Povolit** na **ne**. Pokud jste zadali datum vypršení platnosti, oznámení se v tomto datu a čase automaticky zakáže.
+Pokud již nechcete zobrazovat toto oznámení uživatelům testovacího prostředí, vraťte se na stránku **oznámení testovacího prostředí** a nastavte **možnost Povoleno** na **ne**. Pokud jste zadali datum vypršení platnosti, oznámení bude v daný den a čas automaticky zakázáno.
 
-## <a name="steps-for-users-to-view-an-announcement"></a>Postup pro uživatele, kteří si můžou zobrazit oznámení
+## <a name="steps-for-users-to-view-an-announcement"></a>Postup zobrazení oznámení pro uživatele
 
-1. Z [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)vyberte testovací prostředí.
+1. Na [webu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)vyberte testovací prostředí.
 
-1. Pokud je pro testovací prostředí vyslané oznámení, zobrazí se v horní části stránky s přehledem testovacího prostředí informační oznámení. Tato informace je název oznámení, který jste zadali při vytváření oznámení.
+1. Pokud pro něj laboratoř zveřejnila oznámení, zobrazí se v horní části stránky Přehled testovacího prostředí informační oznámení. Toto oznámení informací je název oznámení, který byl zadán při vytvoření oznámení.
 
-    ![Oznámení testovacího prostředí na stránce s přehledem](./media/devtest-lab-announcements/devtestlab-user-announcement.png)
+    ![Oznámení laboratoře na stránce Přehled](./media/devtest-lab-announcements/devtestlab-user-announcement.png)
 
 1. Uživatel může vybrat zprávu pro zobrazení celého oznámení.
 
-    ![Další informace o oznámení testovacího prostředí](./media/devtest-lab-announcements/devtestlab-user-announcement-text.png)
+    ![Více informací k oznámení laboratoře](./media/devtest-lab-announcements/devtestlab-user-announcement-text.png)
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
@@ -158,13 +158,13 @@ Oznámení můžete zadat jako součást šablony Azure Resource Manager, jak je
 }
 ```
 
-Šablonu Azure Resource Manager můžete nasadit pomocí některého z následujících způsobů:
+Šablonu Azure Resource Manageru můžete nasadit jedním z následujících způsobů:
 
-- [Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
+- [Portál Azure](../azure-resource-manager/templates/deploy-portal.md)
 - [Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 - [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
-- [REST API](../azure-resource-manager/templates/deploy-rest.md)
+- [ROZHRANÍ API PRO ODPOČINEK](../azure-resource-manager/templates/deploy-rest.md)
 
 ## <a name="next-steps"></a>Další kroky
-* Pokud změníte nebo nastavíte zásady testovacího prostředí, budete možná chtít zveřejnit oznámení, abyste uživatelům informovali. [Nastavení zásad a plánů](devtest-lab-set-lab-policy.md) poskytuje informace o použití omezení a konvencí v rámci předplatného pomocí přizpůsobených zásad.
-* Prozkoumejte [galerii šablon rychlého startu Azure Resource Manager DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).
+* Pokud změníte nebo nastavíte zásady testovacího prostředí, můžete zveřejnit oznámení, které informuje uživatele. [Nastavení zásad a plánů](devtest-lab-set-lab-policy.md) poskytuje informace o použití omezení a konvencí v rámci předplatného pomocí přizpůsobených zásad.
+* Prozkoumejte [galerii šablon rychlého startu nástroje DevTest Labs Azure .](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)

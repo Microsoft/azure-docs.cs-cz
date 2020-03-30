@@ -1,6 +1,6 @@
 ---
-title: Platba za plán softwaru – Azure Reservations
-description: Přečtěte si, jak můžete předem zaplatit softwarové plány a ušetřit tak peníze nad náklady na průběžné platby.
+title: Platba předem za softwarové plány – rezervace Azure
+description: Zjistěte, jak si můžete předplatit softwarové plány, abyste ušetřili peníze za vaše náklady na platby za vaše peníze.
 author: bandersmsft
 manager: yashesvi
 ms.service: virtual-machines-linux
@@ -10,57 +10,57 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: 3bb7a62433993f1af26b1ce8bcb4ed258c34623c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75973139"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Předplacení softwarových plánů Azure
 
-Když platíte za vaše SUSE a RedHat software v Azure, můžete ušetřit peníze nad náklady na průběžné platby. Slevy se vztahují jenom na SUSE a RedHat měřiče a ne na využití virtuálních počítačů. Rezervace virtuálních počítačů můžete koupit samostatně pro další úspory.
+Když si předplatíte používání softwaru SUSE a RedHat v Azure, můžete ušetřit peníze za vaše náklady s průběžným platbou. Slevy se vztahují pouze na měřiče SUSE a RedHat a nikoli na využití virtuálního počítače. Rezervace pro virtuální počítače si můžete zakoupit samostatně pro další úspory.
 
-V Azure Portal můžete koupit softwarové plány SUSE a RedHat. Postup při nákupu plánu:
+Softwarové plány SUSE a RedHat si můžete zakoupit na webu Azure Portal. Zakoupení plánu:
 
-- Pro alespoň jeden podnik nebo individuální předplatné s cenami průběžných plateb musíte mít roli vlastníka.
-- U předplatných se smlouvou Enterprise musí být na portálu [EA Portal](https://ea.azure.com/) povolená možnost **Přidat rezervované instance**. Pokud je nastavení zakázané, musíte být správce EA pro předplatné.
-- Pro program CSP (Cloud Solution Provider) můžou agenti správce nebo prodejní agenti koupit softwarové plány.
+- Musíte mít roli vlastníka alespoň pro jedno předplatné Enterprise nebo individuální předplatné s průběžnými platbami.
+- U předplatných se smlouvou Enterprise musí být na portálu [EA Portal](https://ea.azure.com/) povolená možnost **Přidat rezervované instance**. Pokud je nastavení zakázané, musíte být správcem EA pro předplatné.
+- V programu Zprostředkovatel cloudových řešení (CSP) mohou softwarová plánu zakoupit správci nebo prodejci.
 
-## <a name="buy-a-software-plan"></a>Koupit plán softwaru
+## <a name="buy-a-software-plan"></a>Zakoupení softwarového tarifu
 
-1. Přihlaste se k Azure Portal a pokračujte na [rezervace](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
-2. Klikněte na **Přidat** a pak vyberte plán softwaru, který chcete koupit.
-Vyplňte požadovaná pole. Slevový virtuální počítač se systémem SUSE nebo RedHat, který odpovídá atributům, co kupujete. Skutečný počet nasazení, která získají slevu, závisí na zvoleném rozsahu a množství.
-3. Vyberte předplatné. Používá se k platbě za plán.
-Platební metodou předplatného se účtují náklady na front-end pro rezervaci. Typ předplatného musí být smlouva Enterprise (počet nabídek: MS-AZR-0017P nebo MS-AZR-0148P) nebo individuální smlouva s cenami průběžných plateb (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P).
+1. Přihlaste se na portál Azure a přejděte na [Rezervace](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
+2. Klikněte na **Přidat** a vyberte softwarový plán, který chcete koupit.
+Vyplňte požadovaná pole. Každý virtuální počítač SUSE Linux nebo virtuální počítač RedHat, který odpovídá atributům, co si koupíte, získá slevu. Skutečný počet nasazení, která získají slevu, závisí na vybraném oboru a množství.
+3. Vyberte předplatné. Používá se k zaplacení plánu.
+Za platbu předplatným se účtují předem náklady na rezervaci. Typ předplatného musí být smlouva Enterprise (čísla nabídek: MS-AZR-0017P nebo MS-AZR-0148P) nebo individuální smlouva s průběžnými platbami (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P).
     - V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití.
-    - U jednotlivých předplatných s průběžnými platbami se poplatky účtují na platební kartu nebo platební metodu předplatného.
-4. Vyberte rozsah. Obor může zahrnovat jedno nebo víc předplatných (sdílený rozsah).
-    - Jedno předplatné – sleva plánu se používá pro porovnání využití v rámci předplatného.
-    - Shared – sleva plánu se použije pro porovnání instancí v jakémkoli předplatném v rámci vašeho fakturačního kontextu. Pro podnikové zákazníky je účetním kontextem registrace a zahrnuje všechna předplatná v registraci. Pro jednotlivé tarify, které jsou zákazníky s průběžnými platbami podle aktuálního využití, jsou fakturačním účtem všechny jednotlivé plány s předplatnými s průběžnými platbami, které vytvořil správce účtu.
-5. Vyberte produkt a zvolte velikost virtuálního počítače a typ obrázku. Tato sleva se vztahuje jenom na vybranou velikost virtuálního počítače.
-6. Vyberte jeden nebo tři roky.
-7. Vyberte množství, což je počet předplacených instancí virtuálních počítačů, které můžou získat fakturační slevu.
-8. Přidejte produkt na košík, Projděte si ho a kupte si ho.
+    - U individuálního předplatného s průběžnými platbami se poplatky účtují na platební kartu nebo způsob platby faktury.
+4. Vyberte rozsah. Obor může zahrnovat jedno předplatné nebo více předplatných (sdílený obor).
+    - Jednotné předplatné – sleva plánu se použije na odpovídající využití v předplatném.
+    - Sdílené – sleva plánu se použije na odpovídající instance v libovolném předplatném v kontextu fakturace. Pro podnikové zákazníky je fakturační kontext registrace a zahrnuje všechna předplatná v registraci. U individuálního plánu s průběžnými platbami jsou v kontextu fakturace všechny individuální plány s předplatnými s průběžnými platbami vytvořenými správcem účtu.
+5. Vyberte produkt, který chcete zvolit velikost virtuálního počítače a typ obrázku. Sleva se vztahuje pouze na vybranou velikost virtuálního počítače.
+6. Vyberte jednoleté nebo tříleté období.
+7. Zvolte množství, což je počet předplacených instancí virtuálních účtů, které můžou získat fakturační slevu.
+8. Přidejte produkt do košíku, zkontrolujte a zakupte.
 
-Sleva rezervace se automaticky použije na měřič softwaru, pro který platíte předem. Plán nepokrývá poplatky za výpočetní prostředky virtuálních počítačů. Rezervace virtuálních počítačů si můžete koupit samostatně.
+Sleva na rezervaci se automaticky použije na softwarový měřič, za který platíte předem. Výpočetní poplatky virtuálních počítači se plánne nevztahuje. Rezervace virtuálních mís můžete zakoupit samostatně.
 
-## <a name="discount-applies-to-different-suse-vm-sizes"></a>Sleva se vztahuje na různé velikosti virtuálních počítačů SUSE.
+## <a name="discount-applies-to-different-suse-vm-sizes"></a>Sleva se vztahuje na různé velikosti virtuálních montovek SUSE
 
-Podobně jako rezervované instance virtuálních počítačů nabízejí plány SUSE Linux flexibilitu velikosti instancí. Vaše sleva platí i v případě, že nasazujete virtuální počítač, který má jinou velikost než zakoupený plán SUSE. Další informace najdete v tématu [Vysvětlení způsobu použití slevy softwarového plánu](../../cost-management-billing/reservations/understand-suse-reservation-charges.md).
+Stejně jako rezervované instance virtuálních počítače nabízejí plány SUSE Linux flexibilitu velikosti instance. Vaše sleva platí i v případě, že nasadíte virtuální počítač, který má jinou velikost než zakoupený plán SUSE. Další informace naleznete v [tématu Understand How the software plan discount .](../../cost-management-billing/reservations/understand-suse-reservation-charges.md)
 
-## <a name="redhat-plan-discount"></a>Sleva plánu RedHat
+## <a name="redhat-plan-discount"></a>Sleva na plán RedHat
 
-Plány jsou k dispozici pouze pro Red Hat Enterprise Linux virtuálních počítačů. Tato sleva se nevztahuje na virtuální počítače RedHat Enterprise SAP HANA Linux nebo RedHat Enterprise Linux SAP Business Apps.
+Plány jsou k dispozici pouze pro virtuální počítače Red Hat Enterprise Linux. Sleva se nevztahuje na virtuální počítače RedHat Enterprise Linux SAP HANA nebo virtuální počítače RedHat Enterprise Linux SAP Business Apps.
 
-Slevy plánu RedHat se vztahují jenom na velikost virtuálního počítače, kterou jste vybrali v době nákupu. Plány RHEL se po nákupu nedají znovu vydávat ani vyměňovat.
+Slevy na plán RedHat platí jenom pro velikost virtuálního počítače, kterou vyberete v době nákupu. Plány RHEL nelze po zakoupení refundovat ani vyměnit.
 
 
-## <a name="cancellation-and-exchanges-not-allowed"></a>Zrušení a výměny nejsou povolené.
+## <a name="cancellation-and-exchanges-not-allowed"></a>Zrušení a výměna není povolena
 
-Nemůžete zrušit nebo vyměnit plán SUSE nebo RedHat, který jste si koupili. Zkontrolujte své využití, abyste se ujistili, že kupujete správný plán. Nápovědu k určení toho, co koupit, najdete v tématu [Vysvětlení způsobu použití slevy softwarového plánu](../../cost-management-billing/reservations/understand-suse-reservation-charges.md).
+Zakoupený plán SUSE nebo RedHat nelze zrušit ani vyměnit. Zkontrolujte své využití, abyste se ujistili, že kupujete správný plán. Nápovědu k identifikaci toho, co koupit, [najdete v tématu Informace o tom, jak se používá sleva softwarového plánu](../../cost-management-billing/reservations/understand-suse-reservation-charges.md).
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
@@ -68,10 +68,10 @@ Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https
 
 Informace o tom, jak spravovat rezervaci, najdete v tématu [Správa rezervací Azure](../../cost-management-billing/reservations/manage-reserved-vm-instance.md).
 
-Další informace najdete v následujících článcích:
+Další informace naleznete v následujících článcích:
 
 - [Co jsou rezervace Azure?](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
 - [Správa rezervací v Azure](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)
-- [Vysvětlení způsobu použití slevy za rezervaci SUSE](../../cost-management-billing/reservations/understand-suse-reservation-charges.md)
+- [Pochopit, jak se vztahuje sleva rezervace SUSE](../../cost-management-billing/reservations/understand-suse-reservation-charges.md)
 - [Vysvětlení využití rezervací u předplatného s průběžnými platbami](../../cost-management-billing/reservations/understand-reserved-instance-usage.md)
 - [Vysvětlení využití rezervací u smlouvy Enterprise](../../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)

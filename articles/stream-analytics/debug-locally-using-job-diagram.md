@@ -1,6 +1,6 @@
 ---
-title: Ladění Azure Stream Analytics dotazů místně pomocí diagramu úloh v aplikaci Visual Studio
-description: Tento článek popisuje, jak místně ladit dotazy pomocí diagramu úloh v Azure Stream Analyticsch nástrojích pro Visual Studio.
+title: Ladění dotazů Azure Stream Analytics místně pomocí diagramu úloh v Sadě Visual Studio
+description: Tento článek popisuje, jak ladit dotazy místně pomocí diagramu úloh v Nástrojích Azure Stream Analytics pro Visual Studio.
 author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
@@ -8,121 +8,121 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.openlocfilehash: 106b1f0b765700803d2cd55b5e049fae5be3dfad
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76847196"
 ---
-# <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Ladění Azure Stream Analytics dotazů místně pomocí diagramu úloh v aplikaci Visual Studio
+# <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Ladění dotazů Azure Stream Analytics místně pomocí diagramu úloh v Sadě Visual Studio
 
-Úlohy, které mají výstup bez výsledku nebo neočekávané výsledky, jsou běžnými scénáři řešení potíží pro streamování dotazů. Diagram úlohy můžete použít při testování dotazu místně v sadě Visual Studio, abyste prozkoumali mezilehlé sady výsledků a metriky pro jednotlivé kroky. Diagramy úloh vám můžou pomoct rychle izolovat zdroj problému při řešení problémů.
+Úlohy, které výstup žádný výsledek nebo neočekávané výsledky jsou běžné scénáře řešení potíží pro streamování dotazů. Diagram úloh můžete použít při testování dotazu místně v sadě Visual Studio prozkoumat zprostředkující sadu výsledků a metriky pro každý krok. Diagramy úloh vám mohou pomoci rychle izolovat zdroj problému při řešení problémů.
 
 ## <a name="debug-a-query-using-job-diagram"></a>Ladění dotazu pomocí diagramu úloh
 
-Skript Azure Stream Analytics slouží k transformaci vstupních dat na výstupní data. Diagram úlohy ukazuje, jak toky dat ze vstupních zdrojů (centra událostí, IoT Hub atd.) prostřednictvím více kroků dotazů a nakonec až po výstupní jímky. Každý krok dotazu je namapován na dočasnou sadu výsledků definovanou ve skriptu pomocí příkazu `WITH`. Můžete zobrazit data a také metriky jednotlivých kroků dotazu v každé mezilehlé sadě výsledků, abyste našli zdroj problému.
+Skript Azure Stream Analytics se používá k transformaci vstupních dat do výstupních dat. Diagram úloh ukazuje, jak data toky ze vstupních zdrojů (Event Hub, IoT Hub, atd.) prostřednictvím několika kroků dotazu a nakonec do výstupu propadů. Každý krok dotazu je mapován na dočasnou `WITH` sadu výsledků definovanou ve skriptu pomocí příkazu. Můžete zobrazit data, stejně jako metriky každého kroku dotazu v každé sadě zprostředkující výsledek najít zdroj problému.
 
 > [!NOTE]
-> Tento diagram úlohy zobrazuje pouze data a metriky pro místní testování v jednom uzlu. Neměl by se používat k ladění výkonu a odstraňování potíží.
+> Tento diagram úloh zobrazuje pouze data a metriky pro místní testování v jednom uzlu. Neměl by být používán pro ladění výkonu a řešení potíží.
 
 ### <a name="start-local-testing"></a>Spustit místní testování
 
-V tomto [rychlém](stream-analytics-quick-create-vs.md) startu se dozvíte, jak vytvořit úlohu Stream Analytics pomocí sady Visual Studio nebo [Jak exportovat existující úlohu do místního projektu](stream-analytics-vs-tools.md#export-jobs-to-a-project). Pokud chcete otestovat dotaz pomocí místních vstupních dat, postupujte podle těchto [pokynů](stream-analytics-live-data-local-testing.md). Pokud chcete provést test pomocí živého vstupu, přejděte k dalšímu kroku.
+Pomocí tohoto [úvodního panelu](stream-analytics-quick-create-vs.md) se dozvíte, jak vytvořit úlohu Stream Analytics pomocí sady Visual Studio nebo [exportovat existující úlohu do místního projektu](stream-analytics-vs-tools.md#export-jobs-to-a-project). Chcete-li dotaz otestovat pomocí místních vstupních dat, postupujte podle těchto [pokynů](stream-analytics-live-data-local-testing.md). Pokud chcete testovat s živým vstupem, přejděte k dalšímu kroku.
 
 > [!NOTE]
-> Pokud exportujete úlohu do místního projektu a chcete provést test proti živému vstupnímu streamu, musíte zadat přihlašovací údaje pro všechny vstupy znovu.  
+> Pokud exportujete úlohu do místního projektu a chcete testovat proti živému vstupnímu datovému proudu, musíte znovu zadat pověření pro všechny vstupy.  
 
-V editoru skriptů zvolte vstupní a výstupní zdroj a vyberte **spustit místně**. Diagram úlohy se zobrazí na pravé straně.
+Zvolte vstupní a výstupní zdroj z editoru skriptů a vyberte **Spustit místně**. Diagram úloh se zobrazí na pravé straně.
 
-### <a name="view-the-intermediate-result-set"></a>Zobrazit mezilehlé sady výsledků  
+### <a name="view-the-intermediate-result-set"></a>Zobrazit průběžnou sadu výsledků  
 
-1. Vyberte krok dotazu pro přechod ke skriptu. Automaticky se přesměruje na odpovídající skript v editoru na levé straně.
+1. Vyberte krok dotazu pro přechod na skript. Budete automaticky přesměrováni na odpovídající skript v editoru vlevo.
 
-   ![Skript pro procházení diagramu úloh](./media/debug-locally-using-job-diagram/navigate-script.png)
+   ![Skript navigace diagramu úloh](./media/debug-locally-using-job-diagram/navigate-script.png)
 
-2. Vyberte krok dotazu a v dialogovém okně vyberte **Náhled** . Sada výsledků se zobrazí na kartě v dolním okně výsledků.
+2. Vyberte krok dotazu a v dialogovém okně Vyskočilo vyberte **Náhled.** Sada výsledků se zobrazí na kartě v dolním okně výsledků.
 
    ![Výsledek náhledu diagramu úlohy](./media/debug-locally-using-job-diagram/preview-result.png)
 
-### <a name="view-step-metrics"></a>Zobrazit metriky kroků
+### <a name="view-step-metrics"></a>Zobrazit metriky kroku
 
-V této části prozkoumáte metriky, které jsou k dispozici pro každou část diagramu.
+V této části se podíváte na metriky, které jsou k dispozici pro každou část diagramu.
 
-#### <a name="input-sources-live-stream"></a>Vstupní zdroje (živý datový proud)
+#### <a name="input-sources-live-stream"></a>Vstupní zdroje (živý přenos)
 
-![Zdroje dynamických vstupních zdrojů diagramu úloh](./media/debug-locally-using-job-diagram/live-input.png)
+![Zdroje živého zadávání diagramu úloh](./media/debug-locally-using-job-diagram/live-input.png)
 
 |Metrika|Popis|
 |-|-|
-|**TaxiRide**| Název vstupu.|
-|**Centrum událostí** | Vstupní typ zdroje.|
+|**TaxiRideRide**| Název vstupu.|
+|**Centrum událostí** | Typ vstupního zdroje.|
 |**Události**|Počet přečtených událostí.|
-|**Nevyřízené zdroje událostí**|Kolik dalších zpráv je potřeba číst pro Event Hubs a IoT Hub vstupy.|
-|**Události v bajtech**|Počet přečtených bajtů.|
-| **Omezené události**|Počet událostí, které mají jiný problém než s deserializací.|
-|**Předčasné události**| Počet událostí, které mají časové razítko aplikace před horním limitem.|
-|**Zpožděné události**| Počet událostí, které mají časové razítko aplikace za horním limitem.|
-|**Zdroje událostí**| Počet přečtených datových jednotek. Například počet objektů BLOB.|
+|**Backlogged zdroje událostí**|Kolik dalších zpráv je potřeba číst pro události huby a ioT hub vstupy.|
+|**Události v byty**|Počet přečtených bajtů.|
+| **Zhoršené události**|Počet událostí, které měly problém než s rekonstrukcí.|
+|**Rané události**| Počet událostí, které mají časové razítko aplikace před vysokým vodoznakem.|
+|**Pozdní události**| Počet událostí, které mají časové razítko aplikace za vysokým vodoznakem.|
+|**Zdroje událostí**| Počet čtených datových jednotek. Například počet objektů BLOB.|
 
 #### <a name="input-sources-local-input"></a>Vstupní zdroje (místní vstup)
 
-![Zdroje místních vstupů diagramu úloh](./media/debug-locally-using-job-diagram/local-input.png)
+![Místní vstupní zdroje diagramu úloh](./media/debug-locally-using-job-diagram/local-input.png)
 
 |Metrika|Popis|
 |-|-|
-|**TaxiRide**| Název vstupu.|
-|**Počet řádků**| Počet řádků vygenerovaných z kroku.|
-|**Velikost dat**| Velikost dat vygenerovaných z tohoto kroku.|
-|**Místní vstup**| Použijte místní data jako vstup.|
+|**TaxiRideRide**| Název vstupu.|
+|**Row Count**| Počet řádků generovaných z kroku.|
+|**Velikost dat**| Velikost dat generovaných z tohoto kroku.|
+|**Místní vstup**| Jako vstup použijte místní data.|
 
 #### <a name="query-steps"></a>Kroky dotazu
 
-![Krok dotazu na diagram úlohy](./media/debug-locally-using-job-diagram/query-step.png)
+![Krok dotazu diagramu úlohy](./media/debug-locally-using-job-diagram/query-step.png)
 
 |Metrika|Popis|
 |-|-|
 |**TripData**|Název dočasné sady výsledků.|
-|**Počet řádků**| Počet řádků vygenerovaných z kroku.|
-|**Velikost dat**| Velikost dat vygenerovaných z tohoto kroku.|
+|**Row Count**| Počet řádků generovaných z kroku.|
+|**Velikost dat**| Velikost dat generovaných z tohoto kroku.|
   
-#### <a name="output-sinks-live-output"></a>Výstupní jímky (živý výstup)
+#### <a name="output-sinks-live-output"></a>Výstupní propady (živý výstup)
 
-![Místní výstupní jímky diagramu úloh](./media/debug-locally-using-job-diagram/live-output.png)
+![Místní propady výstupu diagramu úloh](./media/debug-locally-using-job-diagram/live-output.png)
 
 |Metrika|Popis|
 |-|-|
 |**regionaggEH**|Název výstupu.|
-|**Události**|Počet událostí výstupu do jímky.|
+|**Události**|Počet událostí výstupu jímky.|
 
-#### <a name="output-sinks-local-output"></a>Výstupní jímky (místní výstup)
+#### <a name="output-sinks-local-output"></a>Výstupní propady (místní výstup)
 
-![Místní výstupní jímky diagramu úloh](./media/debug-locally-using-job-diagram/local-output.png)
+![Místní propady výstupu diagramu úloh](./media/debug-locally-using-job-diagram/local-output.png)
 
 |Metrika|Popis|
 |-|-|
 |**regionaggEH**|Název výstupu.|
 |**Místní výstup**| Výstup výsledku do místního souboru.|
-|**Počet řádků**| Počet výstupních řádků do místního souboru.|
+|**Row Count**| Počet řádků výstupu do místního souboru.|
 |**Velikost dat**| Velikost výstupu dat do místního souboru.|
 
 ### <a name="close-job-diagram"></a>Zavřít diagram úlohy
 
-Pokud diagram úlohy již nepotřebujete, v pravém horním rohu vyberte **Zavřít** . Po zavření okna diagramu je třeba znovu spustit místní testování, aby se zobrazilo.
+Pokud už diagram úloh nepotřebujete, v pravém horním rohu vyberte **Zavřít.** Po zavření okna diagramu je třeba znovu spustit místní testování, abyste ho viděli.
 
-### <a name="view-job-level-metrics-and-stop-running"></a>Zobrazení metrik na úrovni úlohy a zastavení běhu
+### <a name="view-job-level-metrics-and-stop-running"></a>Zobrazit metriky úrovně úlohy a zastavit spuštění
 
-Další metriky na úrovni úlohy se zobrazí v místní konzole. Pokud chcete úlohu zastavit, stiskněte **CTRL + C** v konzole.
+Další metriky úrovně úloh se zobrazují v rozbalovací konzoli. Chcete-li úlohu zastavit, stiskněte v konzole **kombinaci kláves Ctrl+C.**
 
-![Úloha zastavení diagramu úlohy](./media/debug-locally-using-job-diagram/stop-job.png)
+![Úloha zastavení úlohy](./media/debug-locally-using-job-diagram/stop-job.png)
 
 ## <a name="limitations"></a>Omezení
 
-* Výstupní jímky Power BI a Azure Data Lake Storage Gen1 nejsou v důsledku omezení modelu ověřování podporované.
+* Výstupní propady Power BI a Azure Data Lake Storage Gen1 nejsou podporované z důvodu omezení modelu ověřování.
 
-* Mít pouze vstupní možnosti cloudu [čas zásady](stream-analytics-out-of-order-and-late-events.md) podporují, zatímco místní možnosti vstupu, tomu tak není.
+* Pouze možnosti vstupu do cloudu mají podporu [zásad času,](stream-analytics-out-of-order-and-late-events.md) zatímco místní vstupní možnosti nemají.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Rychlý Start: vytvoření úlohy Stream Analytics pomocí sady Visual Studio](stream-analytics-quick-create-vs.md)
-* [Chcete-li zobrazit úlohy Azure Stream Analytics pomocí sady Visual Studio](stream-analytics-vs-tools.md)
-* [Místní testování živých dat pomocí Azure Stream Analyticsch nástrojů pro Visual Studio (Preview)](stream-analytics-live-data-local-testing.md)
+* [Úvodní příručka: Vytvoření úlohy Stream Analytics pomocí Visual Studia](stream-analytics-quick-create-vs.md)
+* [Zobrazení úloh Azure Stream Analytics pomocí Visual Studia](stream-analytics-vs-tools.md)
+* [Testování živých dat místně pomocí nástrojů Azure Stream Analytics pro Visual Studio (Preview)](stream-analytics-live-data-local-testing.md)

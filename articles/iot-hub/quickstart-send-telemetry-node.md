@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: odeslání telemetrie do Azure IoT (Node. js)'
+title: 'Úvodní příručka: Odeslání telemetrie do Azure IoT (Node.js)'
 description: V tomto rychlém startu spustíte dvě ukázkové aplikace Node.js, které odesílají simulovaná telemetrická data do centra IoT a čtou z centra IoT telemetrická data pro účely zpracování v cloudu.
 author: wesmc7777
 manager: philmea
@@ -11,27 +11,27 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019
 ms.date: 06/21/2019
 ms.openlocfilehash: 8b99cf08e0e47ab99deb443a0fefee6ba0d61a88
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78675391"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-nodejs"></a>Rychlý Start: odeslání telemetrie ze zařízení do služby IoT Hub a její čtení pomocí back-endové aplikace (Node. js)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-nodejs"></a>Úvodní příručka: Odeslání telemetrie ze zařízení do centra IoT hub a čtení pomocí back-endové aplikace (Node.js)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
- V tomto rychlém startu odešlete telemetrii z aplikace simulovaného zařízení prostřednictvím Azure IoT Hub do back-endové aplikace ke zpracování. IoT Hub je služba Azure, která umožňuje ingestovat velké objemy telemetrických dat ze zařízení IoT do cloudu pro účely uložení nebo zpracování. Tento rychlý Start používá dvě předem napsané aplikace Node. js: jeden pro odeslání telemetrie a jednu pro čtení telemetrie z centra. Před spuštěním těchto dvou aplikací vytvoříte centrum IoT a zaregistrujete v tomto centru zařízení.
+ V tomto rychlém startu odesíláte telemetrická data z aplikace simulovaných zařízení prostřednictvím služby Azure IoT Hub do back-endové aplikace pro zpracování. IoT Hub je služba Azure, která umožňuje ingestovat velké objemy telemetrických dat ze zařízení IoT do cloudu pro účely uložení nebo zpracování. Tento rychlý start používá dvě předem napsané aplikace Node.js: jednu pro odeslání telemetrie a druhou pro čtení telemetrie z centra. Před spuštěním těchto dvou aplikací vytvoříte centrum IoT a zaregistrujete v tomto centru zařízení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-* [Node. js 10 +](https://nodejs.org) Pokud používáte Azure Cloud Shell, neaktualizujte nainstalovanou verzi Node. js. Azure Cloud Shell již má nejnovější verzi Node. js.
+* [Node.js 10+](https://nodejs.org). Pokud používáte Prostředí Azure Cloud Shell, neaktualizujte nainstalovanou verzi souboru Node.js. Prostředí Azure Cloud Shell už má nejnovější verzi node.js.
 
-* [Ukázkový projekt Node. js](https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip)
+* [Ukázkový projekt Node.js](https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip).
 
-* Port 8883 otevřete v bráně firewall. Ukázka zařízení v tomto rychlém startu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* Port 8883 otevřít ve vašem firewallu. Ukázka zařízení v tomto rychlém startu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokován v některých prostředích podnikové a vzdělávací sítě. Další informace a způsoby, jak tento problém vyřešit, najdete [v tématu připojení k centru IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 Aktuální verzi Node.js na počítači používaném pro vývoj můžete ověřit pomocí následujícího příkazu:
 
@@ -41,9 +41,9 @@ node --version
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-### <a name="add-azure-iot-extension"></a>Přidat rozšíření Azure IoT
+### <a name="add-azure-iot-extension"></a>Přidání rozšíření Azure IoT
 
-Spuštěním následujícího příkazu přidejte do instance služby Cloud Shell Microsoft Azure rozšíření IoT pro rozhraní příkazového řádku Azure. Rozšíření IoT přidá do Azure CLI příkazy určené pro služby IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
+Spusťte následující příkaz a přidejte rozšíření Microsoft Azure IoT extension pro Azure CLI do instance Cloud Shellu. Rozšíření IoT přidá do rozhraní příkazového příkazu Azure CLI specifické pro služby IoT Hub, IoT Edge a Služby zřizování zařízení IoT (DPS).
 
 ```azurecli-interactive
 az extension add --name azure-iot
@@ -59,19 +59,19 @@ az extension add --name azure-iot
 
 Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připojit. V tomto rychlém startu zaregistrujete simulované zařízení pomocí služby Azure Cloud Shell.
 
-1. Spuštěním následujícího příkazu v Azure Cloud Shell vytvořte identitu zařízení.
+1. Spusťte následující příkaz v Azure Cloud Shell a vytvořte identitu zařízení.
 
-   **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
+   **YourIoTHubName**: Nahraďte tento zástupný symbol níže názvem, který jste vybrali pro svůj centr IoT.
 
-   **MyNodeDevice**: Toto je název zařízení, které registrujete. Doporučuje se používat **MyNodeDevice** , jak je znázorněno na obrázku. Pokud pro vaše zařízení zvolíte jiný název, budete ho muset použít i v celém rámci tohoto článku a před jeho spuštěním aktualizovat název zařízení v ukázkových aplikacích.
+   **MyNodeDevice**: Toto je název zařízení, které registrujete. Doporučuje se používat **MyNodeDevice,** jak je znázorněno. Pokud pro své zařízení zvolíte jiný název, budete muset tento název použít v celém tomto článku a aktualizovat název zařízení v ukázkových aplikacích před jejich spuštěním.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyNodeDevice
     ```
 
-1. Spuštěním následujícího příkazu v Azure Cloud Shell Získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
+1. Spusťte následující příkaz v Prostředí Azure Cloud Shell a získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
 
-   **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
+   **YourIoTHubName**: Nahraďte tento zástupný symbol níže názvem, který jste vybrali pro svůj centr IoT.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyNodeDevice --output table
@@ -85,7 +85,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 1. Potřebujete také _připojovací řetězec služby_, který back-endové aplikaci umožní připojení k vašemu centru IoT a načtení zpráv. Následující příkaz načte připojovací řetězec služby pro vaše centrum IoT:
 
-   **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
+   **YourIoTHubName**: Nahraďte tento zástupný symbol níže názvem, který jste vybrali pro svůj centr IoT.
 
     ```azurecli-interactive
     az iot hub show-connection-string --name {YourIoTHubName} --policy-name service --output table
@@ -95,17 +95,17 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
    `HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}`
 
-    Tuto hodnotu použijete později v rychlém startu. Tento připojovací řetězec služby se liší od připojovacího řetězce zařízení, který jste si poznamenali v předchozím kroku.
+    Tuto hodnotu použijete později v rychlém startu. Tento připojovací řetězec služby se liší od připojovacího řetězce zařízení, který jste zaznamenali v předchozím kroku.
 
 ## <a name="send-simulated-telemetry"></a>Odesílání simulovaných telemetrických dat
 
-Aplikace simulovaného zařízení se připojí ke koncovému bodu vašeho centra IoT pro konkrétní zařízení a odesílá simulovaná telemetrická data o teplotě a vlhkosti vzduchu.
+Aplikace simulovaného zařízení se připojuje ke koncovému bodu vašeho centra IoT pro konkrétní zařízení a odesílá simulovaná telemetrická data o teplotě a vlhkosti vzduchu.
 
 1. Otevřete okno místního terminálu a přejděte do kořenové složky ukázkového projektu Node.js. Pak přejděte do složky **iot-hub\Quickstarts\simulated-device**.
 
 1. V libovolném textovém editoru otevřete soubor **SimulatedDevice.js**.
 
-    Nahraďte hodnotu `connectionString` proměnné pomocí připojovacího řetězce zařízení, který jste si poznamenali dříve. Potom uložte změny do souboru **SimulatedDevice. js**.
+    Nahraďte hodnotu `connectionString` proměnné připojovacím řetězcem zařízení, který jste si dříve poznamenali. Potom uložte změny **na SimulatedDevice.js**.
 
 1. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované knihovny a spusťte aplikaci simulovaného zařízení:
 
@@ -126,9 +126,9 @@ Back-endová aplikace se připojí ke koncovému bodu **Events** na straně slu�
 
 1. V libovolném textovém editoru otevřete soubor **ReadDeviceToCloudMessages.js**.
 
-    Nahraďte hodnotu proměnné `connectionString` připojovacím řetězcem služby, který jste si poznamenali dříve. Potom uložte změny do souboru **ReadDeviceToCloudMessages. js**.
+    Nahraďte hodnotu `connectionString` proměnné připojovacím řetězcem služby, který jste si dříve poznamenali. Pak uložte změny **ReadDeviceToCloudMessages.js**.
 
-1. V okně místního terminálu spusťte následující příkazy pro instalaci požadovaných knihoven a spuštění back-endové aplikace:
+1. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované knihovny a spusťte back-endovou aplikaci:
 
     ```cmd/sh
     npm install
@@ -145,7 +145,7 @@ Back-endová aplikace se připojí ke koncovému bodu **Events** na straně slu�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu nastavíte centrum IoT, zaregistrovali zařízení, odeslali simulovanou telemetrii do centra pomocí aplikace Node. js a přečetli telemetrii z centra pomocí jednoduché back-endové aplikace.
+V tomto rychlém startu nastavíte službu IoT hub, zaregistrujete zařízení, odešlete simulovanou telemetrii do rozbočovače pomocí aplikace Node.js a načtete telemetrickou z rozbočovače pomocí jednoduché back-endové aplikace.
 
 Informace o tom, jak řídit simulované zařízení z back-endové aplikace, najdete v dalším rychlém startu.
 

@@ -1,6 +1,6 @@
 ---
-title: Monitorování datových továren pomocí Azure Monitor
-description: Naučte se používat Azure Monitor k monitorování kanálů Data Factory/Azure povolením diagnostických protokolů s informacemi z Data Factory.
+title: Monitorování datových továren pomocí Azure Monitoru
+description: Zjistěte, jak pomocí Azure Monitoru monitorovat kanály /Azure Data Factory povolením diagnostických protokolů s informacemi z Datové továrny.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,50 +12,50 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.openlocfilehash: 8325b4ef6b89a76eeec418386cec4922cb5916b1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75979151"
 ---
-# <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>Výstrahy a monitorování datových továren pomocí Azure Monitor
+# <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>Výstrahy a monitorování datových továren pomocí Azure Monitoru
 
-Cloudové aplikace jsou komplexní a obsahují mnoho pohyblivých částí. Monitory poskytují data, která vám pomůžou zajistit, aby vaše aplikace zůstaly v dobrém stavu. Monitory také umožňují vyhnout se potenciálním problémům a řešit předchozí problémy.
+Cloudové aplikace jsou složité a mají mnoho pohyblivých částí. Monitory poskytují data, která pomáhají zajistit, aby vaše aplikace zůstaly v provozu v pořádku. Monitory vám také pomohou vyhnout se potenciálním problémům a řešit problémy z minulosti.
 
-Data monitorování můžete využít k získání podrobných informací o vašich aplikacích. Tato znalostní báze vám pomůže zlepšit výkon a udržovatelnost aplikace. Pomáhá také automatizovat akce, které jinak vyžadují ruční zásah.
+Data monitorování můžete použít k získání podrobného přehledu o vašich aplikacích. Tyto znalosti vám pomohou zlepšit výkon aplikací a udržovatelnost. Pomáhá také automatizovat akce, které jinak vyžadují ruční zásah.
 
-Azure Monitor poskytuje základní metriky a protokoly infrastruktury na základní úrovni pro většinu služeb Azure. Diagnostické protokoly Azure jsou vydávány prostředkem a poskytují bohatou a častou data o provozu daného prostředku. A Azure Data Factory zapisuje diagnostické protokoly v monitorování.
+Azure Monitor poskytuje metriky a protokoly infrastruktury základní úrovně pro většinu služeb Azure. Diagnostické protokoly Azure jsou emitovány prostředek a poskytují bohaté, časté údaje o provozu tohoto prostředku. A Azure Data Factory zapisuje diagnostické protokoly v monitoru.
 
-Podrobnosti najdete v tématu [přehled Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor).
+Podrobnosti najdete v [tématu Azure Monitor přehled](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor).
 
-## <a name="keeping-azure-data-factory-data"></a>Udržování Azure Data Factorych dat
+## <a name="keeping-azure-data-factory-data"></a>Uchovávání dat Azure Data Factory
 
-Data Factory ukládá data o běhu kanálů jenom za 45 dní. Monitorování použijte v případě, že chcete uchovávat data delší dobu. S monitorováním můžete směrovat diagnostické protokoly pro účely analýzy. Můžete je také uchovat v účtu úložiště, abyste měli k dispozici informace o výrobě zvolené doby.
+Data Factory ukládá data spuštění kanálu pouze 45 dní. Pokud chcete tato data uchovávat delší dobu, použijte monitor. Pomocí nástroje Sledování můžete směrovat diagnostické protokoly pro analýzu. Můžete je také uchovávat v účtu úložiště, abyste měli informace z výroby po zvolenou dobu trvání.
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
 
-* Uložte diagnostické protokoly do účtu úložiště pro auditování nebo ruční kontrolu. Nastavení diagnostiky můžete použít k určení doby uchování ve dnech.
-* Streamujte protokoly do Azure Event Hubs. Protokoly se stanou vstupem do partnerské služby nebo do vlastního řešení pro analýzy, jako je Power BI.
-* Analyzujte protokoly pomocí Log Analytics.
+* Uložte diagnostické protokoly do účtu úložiště pro auditování nebo ruční kontrolu. Pomocí nastavení diagnostiky můžete určit dobu uchovávání ve dnech.
+* Streamujte protokoly do Azure Event Hubs. Protokoly se stanou vstupem do partnerské služby nebo do vlastního analytického řešení, jako je Power BI.
+* Analyzujte protokoly pomocí analýzy protokolů.
 
-Můžete použít účet úložiště nebo obor názvů centra událostí, který není v předplatném prostředku, který generuje protokoly. Uživatel, který konfiguruje nastavení, musí mít k oběma předplatným vhodný přístup řízení přístupu na základě role (RBAC).
+Můžete použít účet úložiště nebo obor názvů centra událostí, který není v předplatném prostředku, který vydává protokoly. Uživatel, který konfiguruje nastavení musí mít odpovídající řízení přístupu na základě rolí (RBAC) přístup k oběma předplatným.
 
 ## <a name="set-up-diagnostic-logs"></a>Nastavení diagnostických protokolů
 
 ### <a name="diagnostic-settings"></a>Nastavení diagnostiky
 
-Použijte nastavení diagnostiky ke konfiguraci diagnostických protokolů pro nevýpočetní prostředky. Nastavení pro ovládací prvek prostředků má následující funkce:
+Pomocí diagnostických nastavení nakonfigurujte diagnostické protokoly pro nevýpočetní prostředky. Nastavení ovládacího prvku prostředků mají následující funkce:
 
-* Určují, kde jsou odesílány diagnostické protokoly. Mezi příklady patří účet Azure Storage, centrum událostí Azure nebo monitorování protokolů.
-* Určují, které kategorie protokolů se odesílají.
-* Určují, jak dlouho by měla být každá kategorie protokolů udržována v účtu úložiště.
-* Uchování 0 dnů znamená, že protokoly se uchovávají navždy. V opačném případě může být hodnota libovolný počet dní od 1 do 2 147 483 647.
-* Pokud jsou nastavené zásady uchovávání informací, ale ukládání protokolů v účtu úložiště je zakázané, zásady uchovávání dat nemají žádný vliv. K tomuto stavu může dojít například v případě, že jsou vybrány pouze možnosti Event Hubs nebo monitorovat protokoly.
-* Zásady uchovávání informací se používají za den. Hranice mezi dny probíhá po půlnoci koordinovaného světového času (UTC). Na konci dne se odpouštějí i protokoly ze dní, které jsou mimo zásady uchovávání informací. Například pokud máte zásady uchovávání informací jeden den, na začátku dnešního dne se odpouštějí protokoly od dřív než včera.
+* Určují, kam jsou odesílány diagnostické protokoly. Mezi příklady patří účet úložiště Azure, centrum událostí Azure nebo protokoly monitorování.
+* Určují, které kategorie protokolu jsou odesílány.
+* Určují, jak dlouho by měla být každá kategorie protokolu uchovávána v účtu úložiště.
+* Nastavení doby uchovávání na 0 dní znamená, že se protokoly uchovávají trvale. V opačném případě může být hodnota libovolný počet dní od 1 do 2,147,483,647.
+* Pokud jsou nastaveny zásady uchovávání informací, ale ukládání protokolů v účtu úložiště je zakázáno, zásady uchovávání informací nemají žádný vliv. K této podmínce může například dojít, když jsou vybrány pouze centra událostí nebo protokoly monitorování.
+* Zásady uchovávání informací jsou použity za den. Hranice mezi dny nastane o půlnoci koordinovaný světový čas (UTC). Na konci dne protokoly z dnů, které jsou mimo zásady uchovávání informací jsou odstraněny. Například pokud máte zásady uchovávání informací jeden den, na začátku dnešního dne protokoly z předevčírem jsou odstraněny.
 
-### <a name="enable-diagnostic-logs-via-the-azure-monitor-rest-api"></a>Povolení diagnostických protokolů prostřednictvím Azure Monitor REST API
+### <a name="enable-diagnostic-logs-via-the-azure-monitor-rest-api"></a>Povolení diagnostických protokolů prostřednictvím rozhraní AZURE Monitor REST API
 
-#### <a name="create-or-update-a-diagnostics-setting-in-the-monitor-rest-api"></a>Vytvoří nebo aktualizuje nastavení diagnostiky v REST API monitorování.
+#### <a name="create-or-update-a-diagnostics-setting-in-the-monitor-rest-api"></a>Vytvoření nebo aktualizace nastavení diagnostiky v rozhraní REST API monitoru
 
 ##### <a name="request"></a>Žádost
 
@@ -67,9 +67,9 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ##### <a name="headers"></a>Hlavičky
 
 * Nahraďte `{api-version}` za `2016-09-01` (Jak velká může být moje znalostní báze?).
-* Nahraďte `{resource-id}` číslem prostředku, pro který chcete upravit nastavení diagnostiky. Další informace najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/manage-resource-groups-portal.md).
-* Nastavte hlavičku `Content-Type` na `application/json`.
-* Nastavte autorizační hlavičku na webový token JSON, který jste získali z Azure Active Directory (Azure AD). Další informace najdete v tématu [ověřování požadavků](../active-directory/develop/authentication-scenarios.md).
+* Nahraďte `{resource-id}` ID prostředku, pro který chcete upravit nastavení diagnostiky. Další informace najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/manage-resource-groups-portal.md).
+* Nastavte `Content-Type` záhlaví `application/json`na .
+* Nastavte hlavičku autorizace na webový token JSON, který jste získali z Azure Active Directory (Azure AD). Další informace naleznete [v tématu Ověřování požadavků](../active-directory/develop/authentication-scenarios.md).
 
 ##### <a name="body"></a>Tělo
 
@@ -115,15 +115,15 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | Vlastnost | Typ | Popis |
 | --- | --- | --- |
 | **storageAccountId** |Řetězec | ID prostředku účtu úložiště, do kterého chcete odeslat diagnostické protokoly. |
-| **serviceBusRuleId** |Řetězec | ID pravidla sběrnice (Service-Bus) pro obor názvů sběrnice, ve kterém chcete mít Event Hubs vytvořené pro diagnostické protokoly pro streamování. ID pravidla má `{service bus resource ID}/authorizationrules/{key name}`formátu.|
-| **workspaceId** | Komplexní typ | Pole časových období metriky a jejich zásady uchovávání. Hodnota této vlastnosti je prázdná. |
-|**metriky**| Hodnoty parametrů běhu kanálu, které se mají předat vyvolanému kanálu| Objekt JSON, který mapuje názvy parametrů na hodnoty argumentu. |
-| **protokolování**| Komplexní typ| Název kategorie diagnostického protokolu pro typ prostředku. Chcete-li získat seznam kategorií diagnostického protokolu pro určitý prostředek, proveďte operaci získat diagnostiku – nastavení. |
-| **Kategorie**| Řetězec| Pole kategorií protokolů a jejich zásady uchovávání. |
-| **timeGrain** | Řetězec | Členitost metrik, která je zachycena ve formátu ISO 8601 Duration. Hodnota vlastnosti musí být `PT1M`, která určuje jednu minutu. |
-| **umožněn**| Logická hodnota | Určuje, zda je pro tento prostředek povolena kolekce metriky nebo kategorie protokolu. |
-| **retentionPolicy**| Komplexní typ| Popisuje zásady uchovávání informací pro kategorii metrik nebo protokolů. Tato vlastnost se používá jenom pro účty úložiště. |
-|**denní**| Int| Počet dní, po které se budou metriky nebo protokoly uchovávat Pokud je hodnota vlastnosti 0, protokoly se uchovávají trvale. Tato vlastnost se používá jenom pro účty úložiště. |
+| **serviceBusRuleId** |Řetězec | ID pravidla sběrnice oboru názvů service-bus, ve kterém chcete mít centra událostí vytvořená pro datové diagnostické protokoly. ID pravidla má `{service bus resource ID}/authorizationrules/{key name}`formát .|
+| **workspaceId** | Komplexní typ | Pole metriky čas zrna a jejich zásady uchovávání informací. Hodnota této vlastnosti je prázdná. |
+|**metriky**| Hodnoty parametrů kanálu, který má být předán do vyvolání kanálu| A JSON objekt, který mapuje názvy parametrů na hodnoty argumentů. |
+| **Protokoly**| Komplexní typ| Název kategorie diagnostického protokolu pro typ prostředku. Chcete-li získat seznam kategorií diagnostických protokolů pro prostředek, proveďte operaci nastavení diagnostiky GET. |
+| **Kategorie**| Řetězec| Pole kategorií protokolu a jejich zásady uchovávání informací. |
+| **timeGrain** | Řetězec | Členitost metriky, které jsou zachyceny ve formátu iso 8601 doba trvání. Hodnota vlastnosti `PT1M`musí být , která určuje jednu minutu. |
+| **Povoleno**| Logická hodnota | Určuje, zda je pro tento prostředek povolena kolekce metriky nebo kategorie protokolu. |
+| **retenčníZásady**| Komplexní typ| Popisuje zásady uchovávání informací pro kategorii metriky nebo protokolu. Tato vlastnost se používá pouze pro účty úložiště. |
+|**Dní**| Int| Počet dní, po které mají být metriky nebo protokoly uchovány. Pokud je hodnota vlastnosti 0, protokoly jsou uchovávány navždy. Tato vlastnost se používá pouze pro účty úložiště. |
 
 ##### <a name="response"></a>Odpověď
 
@@ -176,7 +176,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-#### <a name="get-information-about-diagnostics-settings-in-the-monitor-rest-api"></a>Získat informace o nastavení diagnostiky v REST API monitorování
+#### <a name="get-information-about-diagnostics-settings-in-the-monitor-rest-api"></a>Získání informací o nastavení diagnostiky v rozhraní REST API monitoru
 
 ##### <a name="request"></a>Žádost
 
@@ -188,9 +188,9 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ##### <a name="headers"></a>Hlavičky
 
 * Nahraďte `{api-version}` za `2016-09-01` (Jak velká může být moje znalostní báze?).
-* Nahraďte `{resource-id}` číslem prostředku, pro který chcete upravit nastavení diagnostiky. Další informace najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/manage-resource-groups-portal.md).
-* Nastavte hlavičku `Content-Type` na `application/json`.
-* Nastavte autorizační hlavičku na webový token JSON, který jste získali ze služby Azure AD. Další informace najdete v tématu [ověřování požadavků](../active-directory/develop/authentication-scenarios.md).
+* Nahraďte `{resource-id}` ID prostředku, pro který chcete upravit nastavení diagnostiky. Další informace najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/manage-resource-groups-portal.md).
+* Nastavte `Content-Type` záhlaví `application/json`na .
+* Nastavte hlavičku autorizace na webový token JSON, který jste získali z Azure AD. Další informace naleznete [v tématu Ověřování požadavků](../active-directory/develop/authentication-scenarios.md).
 
 ##### <a name="response"></a>Odpověď
 
@@ -242,13 +242,13 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 
 ```
-Další informace najdete v tématu [nastavení diagnostiky](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings).
+Další informace naleznete [v tématu Diagnostic Settings](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings).
 
 ## <a name="schema-of-logs-and-events"></a>Schéma protokolů a událostí
 
-### <a name="monitor-schema"></a>Monitorování schématu
+### <a name="monitor-schema"></a>Schéma monitoru
 
-#### <a name="activity-run-log-attributes"></a>Atributy protokolu spuštění aktivit
+#### <a name="activity-run-log-attributes"></a>Atributy protokolu spuštění aktivity
 
 ```json
 {
@@ -287,23 +287,23 @@ Další informace najdete v tématu [nastavení diagnostiky](https://docs.micros
 }
 ```
 
-| Vlastnost | Typ | Popis | Příklad: |
+| Vlastnost | Typ | Popis | Příklad |
 | --- | --- | --- | --- |
-| **Úroveň** |Řetězec | Úroveň diagnostických protokolů. Pro protokoly spuštění aktivit nastavte vlastnost hodnota na 4. | `4` |
+| **Úroveň** |Řetězec | Úroveň diagnostických protokolů. Pro protokoly spuštění aktivity nastavte hodnotu vlastnosti na hodnotu 4. | `4` |
 | **correlationId** |Řetězec | Jedinečné ID pro sledování konkrétního požadavku. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| **čas** | Řetězec | Čas události ve formátu TimeSpan `YYYY-MM-DDTHH:MM:SS.00000Z`. | `2017-06-28T21:00:27.3534352Z` |
+| **Čas** | Řetězec | Čas události ve formátu `YYYY-MM-DDTHH:MM:SS.00000Z`UTC časového rozpětí . | `2017-06-28T21:00:27.3534352Z` |
 |**activityRunId**| Řetězec| ID spuštění aktivity. | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
-|**pipelineRunId**| Řetězec| ID spuštění kanálu | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
-|**ID prostředku**| Řetězec | ID přidružené k prostředku datové továrny | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|**Kategorie**| Řetězec | Kategorie diagnostických protokolů. Nastavte hodnotu vlastnosti na `ActivityRuns`. | `ActivityRuns` |
-|**obsah**| Řetězec | Úroveň diagnostických protokolů. Nastavte hodnotu vlastnosti na `Informational`. | `Informational` |
-|**OperationName**| Řetězec | Název aktivity se stavem. Pokud je aktivita spouštěcí prezenční signál, hodnota vlastnosti je `MyActivity -`. Pokud je aktivita koncovým prezenčním signálem, hodnota vlastnosti je `MyActivity - Succeeded`. | `MyActivity - Succeeded` |
-|**profilace**| Řetězec | Název kanálu. | `MyPipeline` |
-|**Název aktivity ActivityName**| Řetězec | Název aktivity. | `MyActivity` |
-|**start**| Řetězec | Čas spuštění aktivity běží ve formátu TimeSpan UTC. | `2017-06-26T20:55:29.5007959Z`|
-|**účelu**| Řetězec | Čas ukončení aktivity běží ve formátu TimeSpan UTC. Pokud diagnostický protokol ukazuje, že aktivita začala, ale ještě nebyla ukončena, hodnota vlastnosti je `1601-01-01T00:00:00Z`. | `2017-06-26T20:55:29.5007959Z` |
+|**pipelineRunId**| Řetězec| ID spuštění kanálu. | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
+|**Resourceid**| Řetězec | ID přidružené k prostředku datové továrny. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|**Kategorie**| Řetězec | Kategorie diagnostických protokolů. Nastavte hodnotu `ActivityRuns`vlastnosti na . | `ActivityRuns` |
+|**Úrovni**| Řetězec | Úroveň diagnostických protokolů. Nastavte hodnotu `Informational`vlastnosti na . | `Informational` |
+|**název_operace**| Řetězec | Název aktivity s jejím stavem. Pokud je aktivita počáteční prezenční `MyActivity -`signál, hodnota vlastnosti je . Pokud je aktivita koncový prezenční `MyActivity - Succeeded`signál, hodnota vlastnosti je . | `MyActivity - Succeeded` |
+|**název_kanálu**| Řetězec | Název kanálu. | `MyPipeline` |
+|**Název aktivity activityName**| Řetězec | Název aktivity. | `MyActivity` |
+|**Spustit**| Řetězec | Čas zahájení aktivity běží ve formátu Timespan UTC. | `2017-06-26T20:55:29.5007959Z`|
+|**Konec**| Řetězec | Koncový čas aktivity běží ve formátu Timespan UTC. Pokud diagnostický protokol ukazuje, že aktivita byla spuštěna, `1601-01-01T00:00:00Z`ale ještě neskončila, hodnota vlastnosti je . | `2017-06-26T20:55:29.5007959Z` |
 
-#### <a name="pipeline-run-log-attributes"></a>Kanály – atributy protokolu spuštění
+#### <a name="pipeline-run-log-attributes"></a>Atributy protokolu spuštěného kanálem
 
 ```json
 {
@@ -333,22 +333,22 @@ Další informace najdete v tématu [nastavení diagnostiky](https://docs.micros
 }
 ```
 
-| Vlastnost | Typ | Popis | Příklad: |
+| Vlastnost | Typ | Popis | Příklad |
 | --- | --- | --- | --- |
-| **Úroveň** |Řetězec | Úroveň diagnostických protokolů. Pro protokoly spuštění aktivit nastavte vlastnost hodnota na 4. | `4` |
+| **Úroveň** |Řetězec | Úroveň diagnostických protokolů. Pro protokoly spuštění aktivity nastavte hodnotu vlastnosti na hodnotu 4. | `4` |
 | **correlationId** |Řetězec | Jedinečné ID pro sledování konkrétního požadavku. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| **čas** | Řetězec | Čas události ve formátu TimeSpan `YYYY-MM-DDTHH:MM:SS.00000Z`. | `2017-06-28T21:00:27.3534352Z` |
-|**runId**| Řetězec| ID spuštění kanálu | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
-|**ID prostředku**| Řetězec | ID přidružené k prostředku datové továrny | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|**Kategorie**| Řetězec | Kategorie diagnostických protokolů. Nastavte hodnotu vlastnosti na `PipelineRuns`. | `PipelineRuns` |
-|**obsah**| Řetězec | Úroveň diagnostických protokolů. Nastavte hodnotu vlastnosti na `Informational`. | `Informational` |
-|**OperationName**| Řetězec | Název kanálu spolu s jeho stavem. Po dokončení spuštění kanálu se hodnota vlastnosti `Pipeline - Succeeded`. | `MyPipeline - Succeeded`. |
-|**profilace**| Řetězec | Název kanálu. | `MyPipeline` |
-|**start**| Řetězec | Čas spuštění aktivity běží ve formátu TimeSpan UTC. | `2017-06-26T20:55:29.5007959Z`. |
-|**účelu**| Řetězec | Čas ukončení aktivity běží ve formátu TimeSpan UTC. Pokud diagnostický protokol zobrazuje aktivitu, která byla spuštěna, ale ještě nebyla ukončena, hodnota vlastnosti je `1601-01-01T00:00:00Z`.  | `2017-06-26T20:55:29.5007959Z` |
-|**status**| Řetězec | Konečný stav spuštění kanálu. Možné hodnoty vlastností jsou `Succeeded` a `Failed`. | `Succeeded`|
+| **Čas** | Řetězec | Čas události ve formátu `YYYY-MM-DDTHH:MM:SS.00000Z`UTC časového rozpětí . | `2017-06-28T21:00:27.3534352Z` |
+|**runId**| Řetězec| ID spuštění kanálu. | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
+|**Resourceid**| Řetězec | ID přidružené k prostředku datové továrny. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|**Kategorie**| Řetězec | Kategorie diagnostických protokolů. Nastavte hodnotu `PipelineRuns`vlastnosti na . | `PipelineRuns` |
+|**Úrovni**| Řetězec | Úroveň diagnostických protokolů. Nastavte hodnotu `Informational`vlastnosti na . | `Informational` |
+|**název_operace**| Řetězec | Název kanálu spolu s jeho stavem. Po dokončení spuštění kanálu je `Pipeline - Succeeded`hodnota vlastnosti . | `MyPipeline - Succeeded`. |
+|**název_kanálu**| Řetězec | Název kanálu. | `MyPipeline` |
+|**Spustit**| Řetězec | Čas zahájení aktivity běží ve formátu Timespan UTC. | `2017-06-26T20:55:29.5007959Z`. |
+|**Konec**| Řetězec | Koncový čas aktivity běží ve formátu Timespan UTC. Pokud diagnostický protokol ukazuje, že aktivita byla spuštěna, ale ještě neskončila, hodnota vlastnosti je `1601-01-01T00:00:00Z`.  | `2017-06-26T20:55:29.5007959Z` |
+|**status**| Řetězec | Konečný stav spuštění kanálu. Možné hodnoty `Succeeded` vlastností jsou a `Failed`. | `Succeeded`|
 
-#### <a name="trigger-run-log-attributes"></a>Trigger-spustit atributy protokolu
+#### <a name="trigger-run-log-attributes"></a>Atributy protokolu s pouštěm
 
 ```json
 {
@@ -377,183 +377,183 @@ Další informace najdete v tématu [nastavení diagnostiky](https://docs.micros
 
 ```
 
-| Vlastnost | Typ | Popis | Příklad: |
+| Vlastnost | Typ | Popis | Příklad |
 | --- | --- | --- | --- |
-| **Úroveň** |Řetězec | Úroveň diagnostických protokolů. Pro protokoly spuštění aktivit nastavte vlastnost hodnota na 4. | `4` |
+| **Úroveň** |Řetězec | Úroveň diagnostických protokolů. Pro protokoly spuštění aktivity nastavte hodnotu vlastnosti na hodnotu 4. | `4` |
 | **correlationId** |Řetězec | Jedinečné ID pro sledování konkrétního požadavku. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| **čas** | Řetězec | Čas události ve formátu TimeSpan `YYYY-MM-DDTHH:MM:SS.00000Z`. | `2017-06-28T21:00:27.3534352Z` |
-|**triggerId**| Řetězec| ID spuštění triggeru. | `08587023010602533858661257311` |
-|**ID prostředku**| Řetězec | ID přidružené k prostředku datové továrny | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|**Kategorie**| Řetězec | Kategorie diagnostických protokolů. Nastavte hodnotu vlastnosti na `PipelineRuns`. | `PipelineRuns` |
-|**obsah**| Řetězec | Úroveň diagnostických protokolů. Nastavte hodnotu vlastnosti na `Informational`. | `Informational` |
-|**OperationName**| Řetězec | Název triggeru s konečným stavem, který označuje, zda se aktivační událost úspěšně aktivovala. Pokud byl prezenční signál úspěšný, hodnota vlastnosti je `MyTrigger - Succeeded`. | `MyTrigger - Succeeded` |
-|**triggerName**| Řetězec | Název triggeru | `MyTrigger` |
-|**triggerType**| Řetězec | Typ triggeru Možné hodnoty vlastností jsou `Manual Trigger` a `Schedule Trigger`. | `ScheduleTrigger` |
-|**triggerEvent**| Řetězec | Událost triggeru | `ScheduleTime - 2017-07-06T01:50:25Z` |
-|**start**| Řetězec | Čas spuštění triggeru, který se spouští ve formátu TimeSpan UTC. | `2017-06-26T20:55:29.5007959Z`|
-|**status**| Řetězec | Konečný stav ukazující, zda se aktivační událost úspěšně aktivovala. Možné hodnoty vlastností jsou `Succeeded` a `Failed`. | `Succeeded`|
+| **Čas** | Řetězec | Čas události ve formátu `YYYY-MM-DDTHH:MM:SS.00000Z`UTC časového rozpětí . | `2017-06-28T21:00:27.3534352Z` |
+|**triggerId**| Řetězec| ID spuštění aktivační události. | `08587023010602533858661257311` |
+|**Resourceid**| Řetězec | ID přidružené k prostředku datové továrny. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|**Kategorie**| Řetězec | Kategorie diagnostických protokolů. Nastavte hodnotu `PipelineRuns`vlastnosti na . | `PipelineRuns` |
+|**Úrovni**| Řetězec | Úroveň diagnostických protokolů. Nastavte hodnotu `Informational`vlastnosti na . | `Informational` |
+|**název_operace**| Řetězec | Název aktivační události s jeho konečný stav, který označuje, zda aktivační událost úspěšně aktivována. Pokud byl prezenční signál `MyTrigger - Succeeded`úspěšný, hodnota vlastnosti je . | `MyTrigger - Succeeded` |
+|**název_spoušť**| Řetězec | Název aktivační události. | `MyTrigger` |
+|**triggerType**| Řetězec | Typ aktivační události. Možné hodnoty `Manual Trigger` vlastností jsou a `Schedule Trigger`. | `ScheduleTrigger` |
+|**triggerEvent**| Řetězec | Událost aktivační události. | `ScheduleTime - 2017-07-06T01:50:25Z` |
+|**Spustit**| Řetězec | Čas spuštění spuštění aktivační události ve formátu UTC časového období. | `2017-06-26T20:55:29.5007959Z`|
+|**status**| Řetězec | Konečný stav zobrazující, zda aktivační událost úspěšně aktivována. Možné hodnoty `Succeeded` vlastností jsou a `Failed`. | `Succeeded`|
 
-### <a name="log-analytics-schema"></a>Log Analytics schéma
+### <a name="log-analytics-schema"></a>Schéma analýzy protokolů
 
-Log Analytics dědí schéma z monitorování s následujícími výjimkami:
+Log Analytics dědí schéma z Monitor s následujícími výjimkami:
 
-* První písmeno v každém názvu sloupce je velkými písmeny. Například název sloupce "ID korelace" v monitorování je "ID korelace" v Log Analytics.
-* Neexistuje žádný sloupec Level.
-* Dynamický sloupec Properties (vlastnosti) se zachová jako následující dynamický typ objektu BLOB JSON.
+* První písmeno v každém názvu sloupce je velkými písmeny. Například název sloupce "correlationId" v monitoru je "CorrelationId" v Log Analytics.
+* Není tu žádný sloupec "Úroveň".
+* Dynamický sloupec "vlastnosti" je zachován jako následující dynamický typ objektu blob JSON.
 
-    | Azure Monitor sloupec | Log Analytics sloupec | Typ |
+    | Sloupec Azure Monitor | Sloupec Log Analytics | Typ |
     | --- | --- | --- |
-    | $. Properties. UserProperties | UserProperties | Dynamický |
-    | $. Properties. Anotac | Poznámky | Dynamický |
-    | $. Properties. Vstup | Vstup | Dynamický |
-    | $. Properties. Výkonem | Výstup | Dynamický |
-    | $. Properties. Chyba. errorCode | Kód chyby | int |
-    | $. Properties. Chyba. zpráva | Chybová | string |
-    | $. Properties. Chyba | Chyba | Dynamický |
-    | $. Properties. Předchůdci | Předchůdci | Dynamický |
-    | $. Properties. Ukazatelů | Parametry | Dynamický |
-    | $. Properties. Třídy SystemParameters | SystemParameters | Dynamický |
-    | $. Properties. Značky | Značky | Dynamický |
+    | $.properties. Vlastnosti uživatele | Vlastnosti uživatele | Dynamická |
+    | $.properties. Poznámky | Poznámky | Dynamická |
+    | $.properties. Vstupní | Vstup | Dynamická |
+    | $.properties. Výstup | Výstup | Dynamická |
+    | $.properties. Error.errorCode | ErrorCode | int |
+    | $.properties. Chyba.zpráva | Errormessage | řetězec |
+    | $.properties. Chyba | Chyba | Dynamická |
+    | $.properties. Předchůdci | Předchůdci | Dynamická |
+    | $.properties. Parametry | Parametry | Dynamická |
+    | $.properties. Parametry systému | Parametry systému | Dynamická |
+    | $.properties. Tagy | Značky | Dynamická |
     
 ## <a name="metrics"></a>Metriky
 
-S monitorováním můžete získat přehled o výkonu a stavu úloh Azure. Nejdůležitější typ dat monitorování je metrika, která se také označuje jako čítač výkonu. Metriky generuje většina prostředků Azure. Monitorování nabízí několik způsobů konfigurace a využívání těchto metrik pro monitorování a řešení potíží.
+Pomocí monitoru můžete získat přehled o výkonu a stavu vašich úloh Azure. Nejdůležitějším typem dat monitorování je metrika, která se také nazývá čítač výkonu. Metriky jsou emitovány většinou prostředků Azure. Monitor poskytuje několik způsobů, jak nakonfigurovat a využívat tyto metriky pro monitorování a řešení potíží.
 
-Azure Data Factory verze 2 vygeneruje následující metriky.
+Azure Data Factory verze 2 vydává následující metriky.
 
-| **Metrika**           | **Zobrazovaný název metriky**         | **Jednotce** | **Typ agregace** | **Popis**                                       |
+| **Metrika**           | **Grafický název metriky**         | **Jednotka** | **Typ agregace** | **Popis**                                       |
 |----------------------|---------------------------------|----------|----------------------|-------------------------------------------------------|
-| PipelineSucceededRuns | Úspěšné metriky spuštění kanálu | Počet    | Celkem                | Celkový počet spuštění kanálu, které byly úspěšně dokončeny během minutového okna. |
-| PipelineFailedRuns   | Neúspěšná metrika spuštění kanálu    | Počet    | Celkem                | Celkový počet spuštění kanálu, které selhaly během minutového okna.    |
-| ActivitySucceededRuns | Úspěšná aktivita spustí metriky | Počet    | Celkem                | Celkový počet spuštění aktivit, které byly úspěšně dokončeny během minutového okna.  |
-| ActivityFailedRuns   | Neúspěšná aktivita spustí metriky    | Počet    | Celkem                | Celkový počet spuštění aktivit, které selhaly během minutového okna.     |
-| TriggerSucceededRuns | Úspěšná aktivační událost spustí metriky  | Počet    | Celkem                | Celkový počet spuštěných aktivačních událostí, které byly úspěšně dokončeny během minutového okna.   |
-| TriggerFailedRuns    | Neúspěšná aktivační událost spustí metriky     | Počet    | Celkem                | Celkový počet spuštění triggerů, které selhaly během minutového okna.      |
+| PipelineSucceededRuns | Úspěšné metriky spuštění kanálu | Počet    | Celkem                | Celkový počet spuštění kanálu, který byl úspěšný v rámci minuty. |
+| Spuštění pipelinefailedruns   | Metriky spuštění neúspěšného kanálu    | Počet    | Celkem                | Celkový počet spuštění kanálu, které se nezdařilo v rámci minuty.    |
+| Úspěšné spuštění aktivity | Úspěšná aktivita spustí metriky | Počet    | Celkem                | Celkový počet spuštění aktivity, která byla úspěšná v rámci minuty.  |
+| ActivityFailedRuns   | Neúspěšná aktivita spustí metriky    | Počet    | Celkem                | Celkový počet spuštění aktivity, které se nezdařilo v rámci minuty.     |
+| TriggerSucceededRuns | Úspěšné aktivační události spustí metriky  | Počet    | Celkem                | Celkový počet spuštění aktivační události, které byly úspěšné v rámci minutového okna.   |
+| Spuštění spouštění    | Metriky spuštění aktivační události se nezdařilo.     | Počet    | Celkem                | Celkový počet spuštění aktivační události, které se nezdařilo v rámci minuty.      |
 
-Pokud chcete získat přístup k metrikám, postupujte podle pokynů v [Azure monitor datovou platformu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics).
+Chcete-li získat přístup k metrikám, vyplňte pokyny v [datové platformě Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics).
 
 > [!NOTE]
-> Emitují se jenom dokončené události, aktivované aktivity a spuštění kanálu. Probíhající a izolovaný prostor nebo spuštění ladění **nejsou vydávány** . 
+> Jsou emitovány pouze dokončené, aktivované aktivity a události spuštění kanálu. Probíhá a spuštění izolovaného prostoru/ladění **nejsou** emitovány. 
 
-## <a name="monitor-data-factory-metrics-with-azure-monitor"></a>Monitorování Data Factory metriky pomocí Azure Monitor
+## <a name="monitor-data-factory-metrics-with-azure-monitor"></a>Monitorování metrik Datové továrny pomocí Azure Monitoru
 
-Pomocí Data Factory integrace s monitorováním můžete směrovat data, která chcete monitorovat. Tato integrace je užitečná v následujících scénářích:
+Pomocí integrace Data Factory s monitorem můžete směrovat data do monitoru. Tato integrace je užitečná v následujících scénářích:
 
-* Chcete zapisovat komplexní dotazy na bohatou sadu metrik, která je publikována nástrojem Data Factory k monitorování. Můžete vytvářet vlastní výstrahy na těchto dotazech prostřednictvím monitorování.
+* Chcete psát složité dotazy na bohatou sadu metrik, které je publikovány Data Factory na monitor. Můžete vytvořit vlastní výstrahy na tyto dotazy prostřednictvím monitoru.
 
-* Chcete monitorovat napříč datovými továrnami. Data z několika datových továrn můžete směrovat do jednoho pracovního prostoru monitorování.
+* Chcete sledovat napříč datovými továrnami. Data z více továren dat můžete směrovat do jednoho pracovního prostoru monitoru.
 
-Pokud chcete tuto funkci seznámit a předvedení této funkce, podívejte se na následující video:
+Sedmiminutový úvod a ukázku této funkce najdete v následujícím videu:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Monitor-Data-Factory-pipelines-using-Operations-Management-Suite-OMS/player]
 
-### <a name="configure-diagnostic-settings-and-workspace"></a>Konfigurovat nastavení diagnostiky a pracovní prostor
+### <a name="configure-diagnostic-settings-and-workspace"></a>Konfigurace nastavení diagnostiky a pracovního prostoru
 
-Vytvořte nebo přidejte nastavení diagnostiky pro datovou továrnu.
+Vytvořte nebo přidejte diagnostická nastavení pro vaši datovou továrnu.
 
-1. Na portálu klikněte na monitorování. Vyberte **nastavení** > **nastavení diagnostiky**.
+1. Na portálu přejděte na Monitor. Vyberte **Nastavení** > **nastavení diagnostiky**.
 
-1. Vyberte objekt pro vytváření dat, pro který chcete nastavit nastavení diagnostiky.
+1. Vyberte datovou továrnu, pro kterou chcete nastavit diagnostické nastavení.
 
-1. Pokud ve vybrané datové továrně žádná nastavení neexistují, budete vyzváni k vytvoření nastavení. Vyberte **zapnout diagnostiku**.
+1. Pokud ve vybrané datové továrně neexistují žádná nastavení, budete vyzváni k vytvoření nastavení. Vyberte **možnost Zapnout diagnostiku**.
 
-   ![Vytvořit nastavení diagnostiky, pokud neexistuje žádné nastavení](media/data-factory-monitor-oms/monitor-oms-image1.png)
+   ![Vytvoření diagnostického nastavení, pokud neexistují žádná nastavení](media/data-factory-monitor-oms/monitor-oms-image1.png)
 
-   Pokud v datové továrně existují nastavení, zobrazí se seznam nastavení, která jsou už nakonfigurovaná u objektu pro vytváření dat. Vyberte **Přidat nastavení diagnostiky**.
+   Pokud existují existující nastavení v datové továrně, zobrazí se seznam nastavení, která jsou již nakonfigurována v datové továrně. Vyberte **Přidat diagnostické nastavení**.
 
-   ![Pokud existují nastavení, přidejte nastavení diagnostiky.](media/data-factory-monitor-oms/add-diagnostic-setting.png)
+   ![Přidání diagnostického nastavení, pokud existují nastavení](media/data-factory-monitor-oms/add-diagnostic-setting.png)
 
-1. Zadejte název nastavení, vyberte **Odeslat do Log Analytics**a pak vyberte pracovní prostor z **pracovního prostoru Log Analytics**.
+1. Pojmenujte své nastavení, vyberte **Odeslat do log Analytics**a pak vyberte pracovní prostor z **pracovního prostoru Analýzy protokolů**.
 
-    ![Pojmenujte nastavení a vyberte pracovní prostor Log-Analytics.](media/data-factory-monitor-oms/monitor-oms-image2.png)
+    ![Pojmenujte nastavení a vyberte pracovní prostor pro analýzu protokolů](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
 1. Vyberte **Uložit**.
 
-Po chvíli se nové nastavení zobrazí v seznamu nastavení pro tuto datovou továrnu. Diagnostické protokoly se do tohoto pracovního prostoru streamují ihned po vygenerování nových dat událostí. Mezi při vygenerování události a jejím zobrazením v Log Analytics může uplynout až 15 minut.
+Po chvíli se nové nastavení zobrazí v seznamu nastavení pro tuto datovou továrnu. Diagnostické protokoly jsou přenášeny datovým proudem do tohoto pracovního prostoru, jakmile jsou generována nová data událostí. Až 15 minut může uplynout mezi při vyzařování události a když se zobrazí v Log Analytics.
 
-* V režimu _specifickém pro prostředky_ diagnostické protokoly z Azure Data Factory Flow do tabulek _ADFPipelineRun_, _ADFTriggerRun_a _ADFActivityRun_
+* V režimu _specifickém pro prostředky_ diagnostické protokoly z Azure Data Factory toku do _tabulek ADFPipelineRun_, _ADFTriggerRun_a _ADFActivityRun_
 * V režimu _Azure-Diagnostics_ se diagnostické protokoly přenášejí do tabulky _AzureDiagnostics_.
 
 > [!NOTE]
-> Vzhledem k tomu, že tabulka protokolů Azure nemůže mít více než 500 sloupců, důrazně doporučujeme vybrat režim specifický pro daný prostředek. Další informace najdete v tématu [Log Analytics známá omezení](../azure-monitor/platform/resource-logs-collect-workspace.md#column-limit-in-azurediagnostics).
+> Vzhledem k tomu, že tabulka protokolu Azure nemůže mít více než 500 sloupců, důrazně doporučujeme vybrat režim specifické pro prostředky. Další informace naleznete v [tématu Log Analytics Known Limitations](../azure-monitor/platform/resource-logs-collect-workspace.md#column-limit-in-azurediagnostics).
 
 ### <a name="install-azure-data-factory-analytics-from-azure-marketplace"></a>Instalace Azure Data Factory Analytics z Azure Marketplace
 
-![Přejděte na "Azure Marketplace", zadejte "analytický filtr" a vyberte "Azure Data Factory Analytics (Preview").](media/data-factory-monitor-oms/monitor-oms-image3.png)
+![Přejděte na "Azure Marketplace", zadejte "Filtr Analytics" a vyberte "Azure Data Factory Analytics (Preview")](media/data-factory-monitor-oms/monitor-oms-image3.png)
 
-![Podrobnosti o Azure Data Factory Analytics (Preview)](media/data-factory-monitor-oms/monitor-oms-image4.png)
+![Podrobnosti o "Azure Data Factory Analytics (Preview)"](media/data-factory-monitor-oms/monitor-oms-image4.png)
 
-Vyberte **vytvořit** a pak vyberte **pracovní prostor OMS** a **Nastavení pracovního prostoru OMS**.
+Vyberte **Vytvořit** a pak vyberte nastavení **pracovního prostoru OMS** a **OMS .**
 
-![Vytváření nového řešení](media/data-factory-monitor-oms/monitor-oms-image5.png)
+![Vytvoření nového řešení](media/data-factory-monitor-oms/monitor-oms-image5.png)
 
-### <a name="monitor-data-factory-metrics"></a>Monitorovat Data Factory metriky
+### <a name="monitor-data-factory-metrics"></a>Monitorování metrik datové továrny
 
-Když nainstalujete Azure Data Factory Analytics, vytvoří se výchozí sada zobrazení, aby se aktivovaly následující metriky:
+Instalace Azure Data Factory Analytics vytvoří výchozí sadu zobrazení tak, aby byly povoleny následující metriky:
 
-- Spuštění ADF – 1) spuštění kanálu pomocí Data Factory
+- Spuštění adf - 1) Spuštění kanálu podle datové továrny
  
-- Spuštění ADF – 2) spuštění aktivit pomocí Data Factory
+- ADF runs- 2) Aktivita běží podle data factory
 
-- Spuštění ADF – 3) spuštění triggeru pomocí Data Factory
+- Spuštění adf - 3) Spuštění aktivační události podle datové továrny
 
-- Chyby ADF – 1) horní 10 chyb kanálu podle Data Factory
+- Chyby ADF - 1) Top 10 potrubní chyby podle data factory
 
-- Chyby ADF – 2) prvních 10 spuštění aktivit pomocí Data Factory
+- Chyby ADF - 2) Top 10 aktivit běží podle data factory
 
-- Chyby ADF – 3) hlavních 10 chyb triggerů podle Data Factory
+- Chyby ADF - 3) Top 10 Trigger Chyby podle data Factory
 
-- Statistika ADF – 1) spuštění aktivit podle typu
+- Statistika ADF - 1) Aktivita běží podle typu
 
-- Statistika ADF – 2) spuštění triggeru podle typu
+- Statistika ADF - 2) Spuštění aktivační události podle typu
 
-- Statistika ADF – 3) maximální doba běhu kanálu
+- Statistika ADF - 3) Maximální doba trvání spuštění kanálu
 
-![Okno s "sešity (Preview)" a "AzureDataFactoryAnalytics" se zvýrazní](media/data-factory-monitor-oms/monitor-oms-image6.png)
+![Okno se zvýrazněnými sešity (preview) a AzureDataFactoryAnalytics](media/data-factory-monitor-oms/monitor-oms-image6.png)
 
-Můžete vizualizovat předchozí metriky, zobrazit dotazy za těmito metrikami, upravit dotazy, vytvořit upozornění a provést další akce.
+Můžete vizualizovat předchozí metriky, podívat se na dotazy za těmito metrikami, upravit dotazy, vytvořit výstrahy a provést další akce.
 
-![Grafická reprezentace kanálu spouštěná službou Data Factory](media/data-factory-monitor-oms/monitor-oms-image8.png)
+![Grafické znázornění potrubí běží podle data factory"](media/data-factory-monitor-oms/monitor-oms-image8.png)
 
 > [!NOTE]
-> Azure Data Factory Analytics (Preview) odesílá diagnostické protokoly do cílových tabulek _specifických pro prostředky_ . Můžete zapisovat dotazy z následujících tabulek: _ADFPipelineRun_, _ADFTriggerRun_a _ADFActivityRun_.
+> Azure Data Factory Analytics (Preview) odesílá diagnostické protokoly do cílových tabulek _specifických pro prostředky._ Můžete psát dotazy proti následujícím tabulkám: _ADFPipelineRun_, _ADFTriggerRun_a _ADFActivityRun_.
 
 ## <a name="alerts"></a>Výstrahy
 
-Přihlaste se k Azure Portal a vyberte **monitorovat** > **výstrahy** a vytvořte upozornění.
+Přihlaste se na portál Azure a vyberte **výstrahy** > **monitorování** a vytvořte výstrahy.
 
-![Výstrahy v nabídce portálu](media/monitor-using-azure-monitor/alerts_image3.png)
+![Upozornění v nabídce portálu](media/monitor-using-azure-monitor/alerts_image3.png)
 
-### <a name="create-alerts"></a>Vytváření výstrah
+### <a name="create-alerts"></a>Vytvořit výstrahy
 
-1. Vyberte **+ nové pravidlo výstrahy** pro vytvoření nové výstrahy.
+1. Chcete-li vytvořit novou výstrahu, vyberte **možnost + nové pravidlo výstrahy.**
 
-    ![Nové pravidlo upozornění](media/monitor-using-azure-monitor/alerts_image4.png)
+    ![Nové pravidlo výstrahy](media/monitor-using-azure-monitor/alerts_image4.png)
 
-1. Definujte podmínku upozornění.
+1. Definujte podmínku výstrahy.
 
     > [!NOTE]
-    > V rozevíracím seznamu **filtrovat podle typu prostředku** nezapomeňte vybrat **vše** .
+    > Nezapomeňte vybrat **možnost Vše** v rozevíracím seznamu **Filtr podle typu prostředku.**
 
-    !["Definování podmínky upozornění" > "vybrat cíl", který otevře podokno vybrat prostředek ](media/monitor-using-azure-monitor/alerts_image5.png)
+    !["Definovat výstražnou podmínku" > "Vybrat cíl", který otevře podokno Vybrat prostředek ](media/monitor-using-azure-monitor/alerts_image5.png)
 
-    !["Definování podmínky upozornění" > "přidat kritéria", která otevře podokno "konfigurovat logiku signálu"](media/monitor-using-azure-monitor/alerts_image6.png)
+    !["Definovat výstražnou podmínku" >" Přidat kritéria", která otevře podokno Konfigurovat logiku signálu](media/monitor-using-azure-monitor/alerts_image6.png)
 
-    ![Podokno konfigurace typu signálu](media/monitor-using-azure-monitor/alerts_image7.png)
+    ![Podokno Konfigurovat typ signálu](media/monitor-using-azure-monitor/alerts_image7.png)
 
-1. Definujte podrobnosti o upozornění.
+1. Definujte podrobnosti výstrahy.
 
     ![Podrobnosti upozornění](media/monitor-using-azure-monitor/alerts_image8.png)
 
 1. Definujte skupinu akcí.
 
-    ![Vytvoření pravidla se zvýrazněnou možností nová skupina akcí](media/monitor-using-azure-monitor/alerts_image9.png)
+    ![Vytvoření pravidla se zvýrazněnou možností "Skupina nové akce"](media/monitor-using-azure-monitor/alerts_image9.png)
 
-    ![Vytvoří novou skupinu akcí.](media/monitor-using-azure-monitor/alerts_image10.png)
+    ![Vytvoření nové skupiny akcí](media/monitor-using-azure-monitor/alerts_image10.png)
 
-    ![Konfigurace e-mailu, SMS, nabízených oznámení a hlasu](media/monitor-using-azure-monitor/alerts_image11.png)
+    ![Konfigurace e-mailu, SMS, push a hlasu](media/monitor-using-azure-monitor/alerts_image11.png)
 
     ![Definování skupiny akcí](media/monitor-using-azure-monitor/alerts_image12.png)
 
 ## <a name="next-steps"></a>Další kroky
-[Programové monitorování a Správa kanálů](monitor-programmatically.md)
+[Programové sledování a správa kanálů](monitor-programmatically.md)

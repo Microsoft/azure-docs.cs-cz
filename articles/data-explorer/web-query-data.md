@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý start: Dotazování dat ve službě Azure Data Explorer webového uživatelského rozhraní'
-description: V tomto rychlém startu se dozvíte, jak pro dotazování a sdílet data v Azure Data Explorer webového uživatelského rozhraní.
+title: 'Úvodní příručka: Dotazujte se na data ve webovém uživatelském rozhraní Průzkumníka dat Azure'
+description: V tomto rychlém startu se dozvíte, jak dotazovat a sdílet data ve webovém uživatelském rozhraní Aplikace Azure Data Explorer.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,15 +8,15 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/04/2019
 ms.openlocfilehash: 145e452a3a914e1026d6da11f2ce38e85fa724f0
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67797195"
 ---
-# <a name="quickstart-query-data-in-azure-data-explorer-web-ui"></a>Rychlý start: Dotazování dat ve službě Azure Data Explorer webového uživatelského rozhraní
+# <a name="quickstart-query-data-in-azure-data-explorer-web-ui"></a>Úvodní příručka: Dotazujte se na data ve webovém uživatelském rozhraní Průzkumníka dat Azure
 
-Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Data Explorer poskytuje webovou aplikaci, která umožňuje spouštět a sdílet dotazy. Aplikace je dostupná na portálu Azure Portal a jako samostatná webová aplikace. V tomto článku pracujete v samostatné verzi, která umožňuje připojení k více clusterům a sdílení přímých odkazů na vaše dotazy.
+Průzkumník dat Azure je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Data Explorer poskytuje webovou aplikaci, která umožňuje spouštět a sdílet dotazy. Aplikace je dostupná na portálu Azure Portal a jako samostatná webová aplikace. V tomto článku pracujete v samostatné verzi, která umožňuje připojení k více clusterům a sdílení přímých odkazů na vaše dotazy.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -26,7 +26,7 @@ Kromě předplatného Azure budete k dokončení tohoto rychlého startu potřeb
 
 ## <a name="sign-in-to-the-application"></a>Přihlášení k aplikaci
 
-Přihlaste se k [aplikaci](https://dataexplorer.azure.com/).
+Přihlaste se [k aplikaci](https://dataexplorer.azure.com/).
 
 ## <a name="add-clusters"></a>Přidání clusterů
 
@@ -38,11 +38,11 @@ Abyste mohli začít spouštět dotazy, musíte přidat připojení aspoň k jed
 
 1. V levém horním rohu aplikace vyberte **Přidat cluster**.
 
-1. V **clusteru přidat** dialogové okno, zadejte identifikátor URI a pak vyberte **přidat**.
+1. V dialogovém okně **Přidat cluster** zadejte identifikátor URI a vyberte **Přidat**.
 
-   Můžete použít identifikátor URI, clusteru help `https://help.kusto.windows.net`. Pokud máte vlastní cluster, zadejte identifikátor URI clusteru. Například `https://mydataexplorercluster.westus.kusto.windows.net` stejně jako na následujícím obrázku:
+   Můžete použít identifikátor URI `https://help.kusto.windows.net`clusteru nápovědy . Pokud máte vlastní cluster, zadejte identifikátor URI clusteru. Například `https://mydataexplorercluster.westus.kusto.windows.net` jako na následujícím obrázku:
 
-    ![Identifikátor URI webu Portal serveru](media/web-query-data/server-uri.png)
+    ![Identifikátor URI serveru na portálu](media/web-query-data/server-uri.png)
 
 1. V levém podokně byste teď měli vidět cluster **nápovědy**. Rozbalením databáze **Ukázky** si zobrazte ukázkové tabulky, ke kterým máte přístup.
 
@@ -151,7 +151,7 @@ Už víte, jak fungují základní dotazy. Teď se pojďme podívat na to, jak s
 
     Tento panel funguje podobně jako seznam polí kontingenční tabulky v Excelu, protože vám přímo v mřížce umožňuje provádět další analýzu.
 
-1. Vyberte **režim Pivotu**, přetáhněte sloupce následujícím způsobem: **Stav** k **řádek skupiny**; **DamageProperty** k **hodnoty**; a **EventType** k **popisky sloupců**.  
+1. Zaškrtněte políčko **Režim pivotu** a potom přetáhněte sloupce následovně: **State** do části **Row groups** (Skupiny řádků); **DamageProperty** do části **Values** (Hodnoty) a **EventType** do části **Column labels** (Popisky sloupců).  
 
     ![Režim pivotu](media/web-query-data/pivot-mode.png)
 
@@ -189,6 +189,6 @@ Data Explorer je aktuálně ve verzi Preview a uvítáme jakékoli názory a př
 
 V tomto rychlém startu jste nevytvořili žádné prostředky, ale pokud byste chtěli z aplikace odebrat jeden nebo oba clustery, klikněte na cluster pravým tlačítkem myši a vyberte **Odebrat připojení**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Psaní dotazů pro Azure Data Explorer](write-queries.md)

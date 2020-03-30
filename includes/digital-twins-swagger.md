@@ -10,17 +10,17 @@ ms.topic: include
 ms.date: 01/07/2020
 ms.custom: include file
 ms.openlocfilehash: 096e28c875634e248ee95e1010fa915dd35bddab
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75751594"
 ---
 > [!TIP]
-> K dispozici je vás zajímá Swagger Preview, který předvádí sadu funkcí rozhraní API.
-> Hostuje se na [docs.westcentralus.azuresmartspaces.NET/Management/Swagger](https://docs.westcentralus.azuresmartspaces.net/management/swagger).
+> Swagger sneak preview je k dispozici k prokázání sady funkcí rozhraní API.
+> Hostuje se v [docs.westcentralus.azuresmartspaces.net/management/swagger](https://docs.westcentralus.azuresmartspaces.net/management/swagger).
 
-K dokumentaci k nástroji pro vygenerované rozhraní API pro správu můžete získat přístup na adrese:
+K vlastní generované dokumentaci rozhraní API pro správu můžete přistupovat na adrese:
 
 ```URL
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
@@ -28,5 +28,5 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 
 | Name (Název) | Nahradit hodnotou |
 | --- | --- |
-| YOUR_INSTANCE_NAME | Název instance digitálního vlákna Azure |
-| YOUR_LOCATION | Jaké oblasti serveru vaší instance je hostován aplikací |
+| YOUR_INSTANCE_NAME | Název instance Azure Digital Twins |
+| YOUR_LOCATION | Ve které oblasti serveru je instance hostována |

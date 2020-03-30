@@ -1,6 +1,6 @@
 ---
-title: Komunikace s aplikacemi pro zařízení C# pomocí datových proudů zařízení v Azure IoT Hub
-description: V tomto rychlém startu spustíte dvě ukázkové C# aplikace, které komunikují prostřednictvím datového proudu zařízení vytvořeného prostřednictvím IoT Hub.
+title: Komunikujte s aplikací zařízení v C# pomocí datových proudů zařízení Azure IoT Hub
+description: V tomto rychlém startu spustíte dvě ukázkové aplikace jazyka C#, které komunikují prostřednictvím datového proudu zařízení vytvořeného prostřednictvím služby IoT Hub.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -10,41 +10,41 @@ ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
 ms.openlocfilehash: 64af62cb6c2c56ca8c7e67e2f1467d4a7e8335a0
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78675523"
 ---
-# <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Rychlý Start: komunikace s aplikací zařízení v C# přes IoT Hub streamy zařízení (Preview)
+# <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Úvodní příručka: Komunikace s aplikací zařízení v C# prostřednictvím datových proudů zařízení služby IoT Hub (náhled)
 
 [!INCLUDE [iot-hub-quickstarts-3-selector](../../includes/iot-hub-quickstarts-3-selector.md)]
 
-Azure IoT Hub aktuálně podporuje streamy zařízení jako [funkci ve verzi Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Azure IoT Hub aktuálně podporuje datové proudy zařízení jako [funkci náhledu](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-[IoT Hub datové proudy zařízení](./iot-hub-device-streams-overview.md) umožňují aplikacím služeb a zařízením komunikovat zabezpečeným způsobem a bránou firewall. Tento rychlý Start zahrnuje C# dvě aplikace, které využívají datové proudy zařízení k posílání a vracení dat (ECHO).
+[Datové proudy zařízení služby IoT Hub umožňují aplikacím služby](./iot-hub-device-streams-overview.md) a zařízení komunikovat bezpečným způsobem a způsobem, který je vhodný pro bránu firewall. Tento rychlý start zahrnuje dvě aplikace jazyka C#, které využívají datové proudy zařízení k odesílání dat tam a zpět (echo).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Verze Preview datových proudů zařízení je momentálně podporovaná jenom pro centra IoT, která jsou vytvořená v následujících oblastech:
+* Náhled datových proudů zařízení je aktuálně podporován pouze pro centra IoT, které jsou vytvořeny v následujících oblastech:
   * USA – střed
-  * Střed USA EUAP
+  * Centrální US EUAP
   * Severní Evropa
   * Jihovýchodní Asie
 
-* Dvě ukázkové aplikace, které spustíte v rámci tohoto rychlého startu, jsou C#napsané v. Ve vývojovém počítači potřebujete .NET Core SDK 2.1.0 nebo novější.
-  * Stáhněte si [.NET Core SDK pro více platforem od .NET](https://www.microsoft.com/net/download/all).
-  * Ověřte aktuální verzi nástroje C# ve vývojovém počítači pomocí následujícího příkazu:
+* Dvě ukázkové aplikace, které spustíte v tomto rychlém startu jsou zapsány v C#. Potřebujete .NET Core SDK 2.1.0 nebo novější ve vývojovém počítači.
+  * Stáhněte si [sdk jádra .NET pro více platforem z rozhraní .NET](https://www.microsoft.com/net/download/all).
+  * Ověřte aktuální verzi jazyka C# ve vývojovém počítači pomocí následujícího příkazu:
 
    ```
    dotnet --version
    ```
 
-* Spuštěním následujícího příkazu přidejte rozšíření Azure IoT pro Azure CLI do instance Cloud Shell. Rozšíření IOT přidá do Azure CLI příkazy, které jsou specifické pro služby IoT Hub, IoT Edge a IoT Device Provisioning (DPS).
+* Přidejte rozšíření Azure IoT pro Azure CLI do instance Cloud Shell spuštěním následujícího příkazu. Rozšíření IOT přidá do rozhraní příkazového příkazu Azure CLI služby IoT Hub, IoT Edge a Služby zřizování zařízení IoT (DPS).
 
     ```azurecli-interactive
     az extension add --name azure-iot
@@ -52,7 +52,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-* [Stáhněte si ukázky Azure C# IoT](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) a Extrahujte archiv zip. Budete ho potřebovat na straně zařízení i na straně služby.
+* [Stáhněte si ukázky Azure IoT C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) a extrahujte archiv ZIP. Potřebujete ji jak na straně zařízení, tak na straně služby.
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
@@ -60,55 +60,55 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="register-a-device"></a>Registrování zařízení
 
-Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připojit. V této části použijete Azure Cloud Shell k registraci simulovaného zařízení.
+Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připojit. V této části použijete Azure Cloud Shell k registraci simulované zařízení.
 
-1. Chcete-li vytvořit identitu zařízení, spusťte následující příkaz v Cloud Shell:
+1. Chcete-li vytvořit identitu zařízení, spusťte v prostředí Cloud Shell následující příkaz:
 
    > [!NOTE]
-   > * Zástupný text *YourIoTHubName* nahraďte názvem, který jste zvolili pro Centrum IoT.
-   > * Pro název zařízení, které zaregistrujete, se doporučuje používat *mojezařízení* , jak je znázorněno na obrázku. Pokud pro své zařízení zvolíte jiný název, použijte tento název v celém rámci tohoto článku a aktualizujte název zařízení v ukázkových aplikacích ještě předtím, než je spustíte.
+   > * Nahraďte zástupný symbol *YourIoTHubName* názvem, který jste zvolili pro centrum IoT.
+   > * Pro název zařízení, které registrujete, je doporučeno použít *MyDevice,* jak je znázorněno. Pokud pro své zařízení zvolíte jiný název, použijte tento název v celém tomto článku a aktualizujte název zařízení v ukázkových aplikacích před jejich spuštěním.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
-1. Pokud chcete získat *připojovací řetězec zařízení* pro zařízení, které jste právě zaregistrovali, spusťte v Cloud Shell následující příkaz:
+1. Chcete-li získat *připojovací řetězec zařízení* pro zařízení, které jste právě zaregistrovali, spusťte v prostředí Cloud Shell následující příkaz:
 
    > [!NOTE]
-   > Zástupný text *YourIoTHubName* nahraďte názvem, který jste zvolili pro Centrum IoT.
+   > Nahraďte zástupný symbol *YourIoTHubName* názvem, který jste zvolili pro centrum IoT.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
-    Poznamenejte si vrácený připojovací řetězec zařízení pro pozdější použití v tomto rychlém startu. Soubor bude vypadat jako v následujícím příkladu:
+    Všimněte si vrácené zařízení připojovací řetězec pro pozdější použití v tomto rychlém startu. Soubor bude vypadat jako v následujícím příkladu:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDevice;SharedAccessKey={YourSharedAccessKey}`
 
-3. *Připojovací řetězec služby* je také potřeba z vašeho centra IoT, aby se aplikace na straně služby mohla připojit ke službě IoT Hub a vytvořit datový proud zařízení. Následující příkaz načte tuto hodnotu služby IoT Hub:
+3. Potřebujete také *připojovací řetězec služby* z vašeho centra IoT, abyste povolili aplikaci na straně služby připojení k centru IoT hub a vytvořili datový proud zařízení. Následující příkaz načte tuto hodnotu pro vaše služby IoT hub:
 
    > [!NOTE]
-   > Zástupný text *YourIoTHubName* nahraďte názvem, který jste zvolili pro Centrum IoT.
+   > Nahraďte zástupný symbol *YourIoTHubName* názvem, který jste zvolili pro centrum IoT.
 
     ```azurecli-interactive
     az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
     ```
 
-    Všimněte si vráceného připojovacího řetězce služby pro pozdější použití v tomto rychlém startu. Soubor bude vypadat jako v následujícím příkladu:
+    Všimněte si vrácené služby připojovací řetězec pro pozdější použití v tomto rychlém startu. Soubor bude vypadat jako v následujícím příkladu:
 
    `"HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"`
 
 ## <a name="communicate-between-the-device-and-the-service-via-device-streams"></a>Komunikace mezi zařízením a službou prostřednictvím datových proudů zařízení
 
-V této části spustíte jak aplikaci na straně zařízení, tak aplikaci na straně služby a komunikujete mezi nimi.
+V této části spustíte aplikaci na straně zařízení i aplikaci na straně služby a komunikujete mezi nimi.
 
 ### <a name="run-the-service-side-application"></a>Spuštění aplikace na straně služby
 
-V místním okně terminálu přejděte do adresáře `iot-hub/Quickstarts/device-streams-echo/service` ve složce projektu getzip. Mějte na ruce následující informace:
+V místním okně terminálu `iot-hub/Quickstarts/device-streams-echo/service` přejděte do adresáře ve složce projektu, který je rozepnut. Mějte po ruce následující informace:
 
 | Název parametru | Hodnota parametru |
 |----------------|-----------------|
-| `ServiceConnectionString` | Připojovací řetězec služby centra IoT Hub. |
+| `ServiceConnectionString` | Připojovací řetězec služby služby služby služby IoT hub. |
 | `MyDevice` | Identifikátor zařízení, které jste vytvořili dříve. |
 
 Zkompilujte a spusťte kód pomocí následujících příkazů:
@@ -126,18 +126,18 @@ dotnet run "{ServiceConnectionString}" "MyDevice"
 # In Windows
 dotnet run {ServiceConnectionString} MyDevice
 ```
-Aplikace bude čekat na zpřístupnění aplikace zařízení.
+Aplikace bude čekat na aplikaci zařízení k dispozici.
 
 > [!NOTE]
-> K vypršení časového limitu dojde, pokud aplikace na straně zařízení nereaguje v čase.
+> K časovému výtce dochází, pokud aplikace na straně zařízení nereaguje včas.
 
 ### <a name="run-the-device-side-application"></a>Spuštění aplikace na straně zařízení
 
-V jiném místním okně terminálu přejděte do adresáře `iot-hub/Quickstarts/device-streams-echo/device` ve složce projektu Get. Mějte na ruce následující informace:
+V jiném okně místního `iot-hub/Quickstarts/device-streams-echo/device` terminálu přejděte do adresáře ve složce projektu, který je rozepnut. Mějte po ruce následující informace:
 
 | Název parametru | Hodnota parametru |
 |----------------|-----------------|
-| `DeviceConnectionString` | Připojovací řetězec zařízení vašeho IoT Hub. |
+| `DeviceConnectionString` | Připojovací řetězec zařízení vašeho centra IoT Hub. |
 
 Zkompilujte a spusťte kód pomocí následujících příkazů:
 
@@ -155,17 +155,17 @@ dotnet run "{DeviceConnectionString}"
 dotnet run {DeviceConnectionString}
 ```
 
-Na konci posledního kroku aplikace na straně služby inicializuje datový proud na vaše zařízení. Po navázání datového proudu aplikace odešle službě přes datový proud vyrovnávací paměť řetězců. V této ukázce aplikace na straně služby jednoduše vrátí zpět stejná data do zařízení, které demonstruje úspěšnou obousměrnou komunikaci mezi těmito dvěma aplikacemi.
+Na konci posledního kroku aplikace na straně služby zahájí datový proud do vašeho zařízení. Po vytvoření datového proudu aplikace odešle vyrovnávací paměť řetězce do služby přes datový proud. V této ukázce aplikace na straně služby jednoduše ozvěny zpět stejná data do zařízení, což demonstruje úspěšnou obousměrnou komunikaci mezi dvěma aplikacemi.
 
-Výstup na konzole na straně zařízení:
+Výstup konzoly na straně zařízení:
 
-![Výstup na konzole na straně zařízení](./media/quickstart-device-streams-echo-csharp/device-console-output.png)
+![Výstup konzoly na straně zařízení](./media/quickstart-device-streams-echo-csharp/device-console-output.png)
 
-Výstup na konzole na straně služby:
+Výstup konzoly na straně služby:
 
-![Výstup na konzole na straně služby](./media/quickstart-device-streams-echo-csharp/service-console-output.png)
+![Výstup konzoly na straně služby](./media/quickstart-device-streams-echo-csharp/service-console-output.png)
 
-Přenos přenášený přes datový proud se místo přímého posílání prostřednictvím tunelového přenosu prostřednictvím centra IoT. Uvedené výhody jsou popsány v části [výhody streamování zařízení](./iot-hub-device-streams-overview.md#benefits).
+Přenosy odesílané přes datový proud jsou tunelovány přes centrum IoT, nikoli odesílané přímo. Výhody poskytované jsou podrobně popsány v [výhody zařízení proudy](./iot-hub-device-streams-overview.md#benefits).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -173,9 +173,9 @@ Přenos přenášený přes datový proud se místo přímého posílání prost
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu nastavíte centrum IoT, zaregistrované zařízení, navázali jste datový C# proud zařízení mezi aplikacemi na stranách zařízení a služeb a pomocí tohoto datového proudu odesíláte data mezi aplikacemi.
+V tomto rychlém startu nastavíte službu IoT hub, zaregistrujete zařízení, nastavíte datový proud zařízení mezi aplikacemi jazyka C# na straně zařízení a služby a pomocí datového proudu odesíláte data tam a zpět mezi aplikacemi.
 
-Další informace o datových proudech zařízení najdete v těchto tématech:
+Další informace o streamech zařízení najdete v tématu:
 
 > [!div class="nextstepaction"]
-> [Přehled streamů zařízení](./iot-hub-device-streams-overview.md)
+> [Přehled datových proudů zařízení](./iot-hub-device-streams-overview.md)

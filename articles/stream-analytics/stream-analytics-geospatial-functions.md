@@ -1,6 +1,6 @@
 ---
-title: Úvod do služby Azure Stream Analytics geoprostorové funkce
-description: Tento článek popisuje geoprostorové funkce, které se používají v úlohách Azure Stream Analytics.
+title: Úvod ke geoprostorovým funkcím Azure Stream Analytics
+description: Tento článek popisuje geoprostorové funkce, které se používají v azure stream analytics úlohy.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -8,31 +8,31 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.openlocfilehash: f47f34b60c858bb9a0feafd25176e4a811046630
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75426228"
 ---
-# <a name="introduction-to-stream-analytics-geospatial-functions"></a>Úvod do služby Stream Analytics geoprostorové funkce
+# <a name="introduction-to-stream-analytics-geospatial-functions"></a>Úvod do geoprostorových funkcí Stream Analytics
 
-Geoprostorové funkce ve službě Azure Stream Analytics umožňují v reálném čase analýzy datových proudů Geoprostorová data. Pomocí několika řádků kódu můžete vyvíjet řešení na podnikové úrovni produkčního prostředí pro komplexní scénáře. 
+Geoprostorové funkce ve službě Azure Stream Analytics umožňují analýzu streamování geoprostorových dat v reálném čase. Pomocí několika řádků kódu můžete vyvinout řešení výrobní třídy pro složité scénáře. 
 
-Příklady scénářů, které může přinést geoprostorové funkce:
+Příklady scénářů, které mohou těžit z geoprostorových funkcí:
 
-* Sdílením
+* Sdílení jízd
 * Správa vozového parku
-* Sledování majetku
-* Geograficky monitorování geografických zón
-* Sledování Phone napříč lokalitami buňky
+* Sledování prostředků
+* Geografické oplocení
+* Sledování telefonu na mobilních webech
 
-Dotazovací jazyk Stream Analytics je sedm geoprostorové funkce: **CreateLineString**, **CreatePoint**, **: CreatePolygon**, **ST_DISTANCE** , **ST_OVERLAPS**, **ST_INTERSECTS**, a **ST_WITHIN**.
+Dotazovací jazyk Stream Analytics má sedm vestavěných geoprostorových funkcí: **CreateLineString**, **CreatePoint**, **CreatePolygon**, **ST_DISTANCE**, **ST_OVERLAPS**, **ST_INTERSECTS**a **ST_WITHIN**.
 
 ## <a name="createlinestring"></a>CreateLineString
 
-`CreateLineString` Funkce přijímá body a vrátí GeoJSON LineString, které mohou být vykreslena jako řádek na mapě. Musí mít alespoň dva body vytvořit typ LineString. LineString body se budou připojovat k pořadí.
+Funkce `CreateLineString` přijímá body a vrací GeoJSON LineString, který může být vykreslen jako řádek na mapě. Chcete-li vytvořit linestring, musíte mít alespoň dva body. Body LineString budou připojeny v pořadí.
 
-Následující dotaz používá `CreateLineString` vytvořit LineString pomocí tři body. První bod je vytvořen ze streamovaných vstupních dat, zatímco se další dva ručně vytvořené.
+Následující dotaz `CreateLineString` používá k vytvoření LineString pomocí tří bodů. První bod je vytvořen z streamování vstupních dat, zatímco další dva jsou vytvořeny ručně.
 
 ```SQL 
 SELECT  
@@ -40,26 +40,26 @@ SELECT
 FROM input  
 ```  
 
-### <a name="input-example"></a>Příklad vstupu  
+### <a name="input-example"></a>Vstupní příklad  
   
-|Zeměpisná šířka|Zeměpisná délka|  
+|Šířky|Délky|  
 |--------------|---------------|  
 |3.0|-10.2|  
 |-87.33|20.2321|  
   
 ### <a name="output-example"></a>Příklad výstupu  
 
- {"type": "LineString", "coordinates": [[-10.2, 3.0], [10.0, 10.0], [10.5, 10.5]]}
+ {"type" : "LineString", "coordinates" : [ [-10.2, 3.0], [10.0, 10.0], [10.5, 10.5] ]}
 
- {"type": "LineString", "coordinates": [[20.2321,-87.33], [10.0, 10.0], [10.5, 10.5]]}
+ {"type" : "LineString", "coordinates" : [ [20.2321, -87.33], [10.0, 10.0], [10.5, 10.5] ]}
 
-Další informace najdete [CreateLineString](https://docs.microsoft.com/stream-analytics-query/createlinestring) odkaz.
+Další informace naleznete na odkazu [CreateLineString.](https://docs.microsoft.com/stream-analytics-query/createlinestring)
 
 ## <a name="createpoint"></a>CreatePoint
 
-`CreatePoint` Funkce přijímá zeměpisné šířky a délky a vrátí bod GeoJSON, což mohou být vykreslena na mapě. Zeměpisná šířka a délka musí být **float** datového typu.
+Funkce `CreatePoint` přijme zeměpisnou šířku a délku a vrátí bod GeoJSON, který lze vykreslit na mapě. Zeměpisné šířky a délky musí být **plovoucí** datový typ.
 
-Následující příklad dotazu používá `CreatePoint` -li vytvořit pomocí zeměpisná šířka a délka ze streamovaných dat vstupní bod.
+Následující ukázkový `CreatePoint` dotaz používá k vytvoření bodu pomocí zeměpisných šířky a délky z streamování vstupních dat.
 
 ```SQL 
 SELECT  
@@ -67,26 +67,26 @@ SELECT
 FROM input 
 ```  
 
-### <a name="input-example"></a>Příklad vstupu  
+### <a name="input-example"></a>Vstupní příklad  
   
-|Zeměpisná šířka|Zeměpisná délka|  
+|Šířky|Délky|  
 |--------------|---------------|  
 |3.0|-10.2|  
 |-87.33|20.2321|  
   
 ### <a name="output-example"></a>Příklad výstupu
   
- {"type": "Point", "coordinates": [-10.2, 3.0]}  
+ {"typ" : "Point", "coordinates" : [-10.2, 3.0]}  
   
- {"type": "Point", "coordinates": [20.2321,-87.33]}  
+ {"typ" : "Point", "coordinates" : [20.2321, -87.33]}  
 
-Další informace najdete [CreatePoint](https://docs.microsoft.com/stream-analytics-query/createpoint) odkaz.
+Další informace najdete v odkazu [na vytvoření pointy.](https://docs.microsoft.com/stream-analytics-query/createpoint)
 
 ## <a name="createpolygon"></a>CreatePolygon
 
-`CreatePolygon` Funkce přijímá body a vrátí záznam mnohoúhelník GeoJSON. Pořadí bodů musí odpovídat orientaci pravém kanál, nebo proti směru hodinových ručiček. Představte si walking z jednoho místa do jiného v pořadí, ve kterém byly deklarovány. System center mnohoúhelníku by levé po celou dobu.
+Funkce `CreatePolygon` přijme body a vrátí polygonový záznam GeoJSON. Pořadí bodů musí následovat orientace pravého kroužku nebo proti směru hodinových ručiček. Představte si, že chodíte z jednoho místa do druhého v pořadí, v jakém byly deklarovány. Střed polyga by byl po celou dobu po vaší levici.
 
-Následující příklad dotazu používá `CreatePolygon` vytvořit mnohoúhelníku z tři body. První dva body jsou vytvářeny ručně, a poslední bod je vytvořený vstupní data.
+Následující příklad dotazu používá `CreatePolygon` k vytvoření polygon ze tří bodů. První dva body jsou vytvořeny ručně a poslední bod je vytvořen ze vstupních dat.
 
 ```SQL 
 SELECT  
@@ -94,26 +94,26 @@ SELECT
 FROM input  
 ```  
 
-### <a name="input-example"></a>Příklad vstupu  
+### <a name="input-example"></a>Vstupní příklad  
   
-|Zeměpisná šířka|Zeměpisná délka|  
+|Šířky|Délky|  
 |--------------|---------------|  
 |3.0|-10.2|  
 |-87.33|20.2321|  
   
 ### <a name="output-example"></a>Příklad výstupu  
 
- {"type": "Mnohoúhelníku", "coordinates": [[[-10.2, 3.0], [10.0, 10.0], [10.5, 10.5], [-10.2, 3.0]]]}
+ {"typ" : "Polygon", "souřadnice" : [[ -10,2, 3,0], [10,0, 10,0], [10,5, 10,5], [-10,2, 3,0] ]]}
  
- {"type": "Mnohoúhelníku", "coordinates": [[[20.2321,-87.33], [10.0, 10.0], [10.5, 10.5], [20.2321,-87.33]]]}
+ {"typ" : "Polygon", "souřadnice" : [[ [20.2321, -87.33], [10.0, 10.0], [10.5, 10.5], [20.2321, -87.33] ]]}
 
-Další informace najdete [: CreatePolygon](https://docs.microsoft.com/stream-analytics-query/createpolygon) odkaz.
+Další informace naleznete v odkazu [Vytvořit polygon.](https://docs.microsoft.com/stream-analytics-query/createpolygon)
 
 
 ## <a name="st_distance"></a>ST_DISTANCE
-`ST_DISTANCE` Funkce vrací vzdálenost mezi dvěma body v metrech. 
+Funkce `ST_DISTANCE` vrátí vzdálenost mezi dvěma body v metrech. 
 
-Následující dotaz používá `ST_DISTANCE` generovat událost, když je menší než 10 km od auta čerpací stanici.
+Následující dotaz `ST_DISTANCE` používá ke generování události, pokud je čerpací stanice méně než 10 km od vozu.
 
 ```SQL
 SELECT Cars.Location, Station.Location 
@@ -121,12 +121,12 @@ FROM Cars c
 JOIN Station s ON ST_DISTANCE(c.Location, s.Location) < 10 * 1000
 ```
 
-Další informace najdete [ST_DISTANCE](https://docs.microsoft.com/stream-analytics-query/st-distance) odkaz.
+Chcete-li se dozvědět více, navštivte [odkaz na ST_DISTANCE.](https://docs.microsoft.com/stream-analytics-query/st-distance)
 
 ## <a name="st_overlaps"></a>ST_OVERLAPS
-`ST_OVERLAPS` Funkce porovná dva mnohoúhelníku. Pokud polygonů překrývají, funkce vrátí hodnotu 1. Funkce vrátí hodnotu 0, pokud polygonů nepřekrývají. 
+Funkce `ST_OVERLAPS` porovná dva polygony. Pokud se polygony překrývají, funkce vrátí hodnotu 1. Funkce vrátí hodnotu 0, pokud se vícenoly nepřekrývají. 
 
-Následující dotaz používá `ST_OVERLAPS` generovat událost v případě, že v budově se v rámci možný výskyt zahlcení zóny.
+Následující dotaz `ST_OVERLAPS` používá ke generování události, pokud je budova v rámci možné zaplavovací zóny.
 
 ```SQL
 SELECT Building.Polygon, Building.Polygon 
@@ -134,7 +134,7 @@ FROM Building b
 JOIN Flooding f ON ST_OVERLAPS(b.Polygon, b.Polygon) 
 ```
 
-Následující příklad dotazu vygeneruje událost, když je storm záhlaví směrem k automobilu.
+Následující příklad dotazu generuje událost, když bouře směřuje k vozu.
 
 ```SQL
 SELECT Cars.Location, Storm.Course
@@ -142,12 +142,12 @@ FROM Cars c, Storm s
 JOIN Storm s ON ST_OVERLAPS(c.Location, s.Course)
 ```
 
-Další informace najdete [ST_OVERLAPS](https://docs.microsoft.com/stream-analytics-query/st-overlaps) odkaz.
+Chcete-li se dozvědět více, navštivte [odkaz na ST_OVERLAPS.](https://docs.microsoft.com/stream-analytics-query/st-overlaps)
 
 ## <a name="st_intersects"></a>ST_INTERSECTS
-`ST_INTERSECTS` Funkce porovná dva LineString. Pokud LineString intersect, funkce vrátí hodnotu 1. Funkce vrátí hodnotu 0, pokud LineString nepřekrývají.
+Funkce `ST_INTERSECTS` porovná dva LineString. Pokud se linestring protíná, funkce vrátí hodnotu 1. Funkce vrátí hodnotu 0, pokud se protínají řetězce LineString.
 
-Následující příklad dotazu používá `ST_INTERSECTS` k určení, pokud silnici protíná nečistoty cestách.
+Následující příklad dotazu používá `ST_INTERSECTS` k určení, zda zpevněné silnice protíná prašné cesty.
 
 ```SQL 
 SELECT  
@@ -155,25 +155,25 @@ SELECT
 FROM input  
 ```  
 
-### <a name="input-example"></a>Příklad vstupu  
+### <a name="input-example"></a>Vstupní příklad  
   
-|datacenterArea|stormArea|  
+|oblast datového centra|bouřeOblast|  
 |--------------------|---------------|  
-|{"Type": "LineString"; "souřadnice": [[-10,0, 0,0], [0,0, 0,0], [10,0, 0,0]]}|{"Type": "LineString"; "souřadnice": [[0,0, 10,0], [0,0, 0,0], [0,0,-10,0]]}|  
-|{"Type": "LineString"; "souřadnice": [[-10,0, 0,0], [0,0, 0,0], [10,0, 0,0]]}|{"Type": "LineString"; "souřadnice": [[-10,0, 10,0], [0,0, 10,0], [10,0, 10,0]]}|  
+|{"type":"LineString", "coordinates": [ [-10.0, 0.0], [0.0, 0.0], [10.0, 0.0] ]}|{"type":"LineString", "coordinates": [ [0.0, 10.0], [0.0, 0.0], [0.0, -10.0] ]}|  
+|{"type":"LineString", "coordinates": [ [-10.0, 0.0], [0.0, 0.0], [10.0, 0.0] ]}|{"type":"LineString", "coordinates": [ [-10.0, 10.0], [0.0, 10.0], [10.0, 10.0] ]}|  
   
 ### <a name="output-example"></a>Příklad výstupu  
 
- 1\. místo  
+ 1  
   
  0  
 
-Další informace najdete [ST_INTERSECTS](https://docs.microsoft.com/stream-analytics-query/st-intersects) odkaz.
+Chcete-li se dozvědět více, navštivte odkaz na [ST_INTERSECTS.](https://docs.microsoft.com/stream-analytics-query/st-intersects)
 
 ## <a name="st_within"></a>ST_WITHIN
-`ST_WITHIN` Funkce určuje, jestli je v rámci mnohoúhelníku bodu nebo mnohoúhelníku. Obsahuje-li mnohoúhelníku bodu nebo mnohoúhelníku, funkce vrátí hodnotu 1. Funkce vrátí 0, pokud není umístěn v rámci deklarovaný mnohoúhelníku bodu nebo mnohoúhelníku.
+Funkce `ST_WITHIN` určuje, zda je bod nebo polygon v polygonu. Pokud polygon obsahuje bod nebo polygon, funkce vrátí 1. Funkce vrátí 0, pokud bod nebo polygon není umístěn v deklarovaném polygu.
 
-Následující příklad dotazu používá `ST_WITHIN` zjistit, jestli je cílový bod doručování v rámci dané skladu mnohoúhelníku.
+Následující ukázkový `ST_WITHIN` dotaz používá k určení, zda je cílový bod dodávky v rámci daného polygonu skladu.
 
 ```SQL 
 SELECT  
@@ -181,24 +181,24 @@ SELECT
 FROM input 
 ```  
 
-### <a name="input-example"></a>Příklad vstupu  
+### <a name="input-example"></a>Vstupní příklad  
   
-|deliveryDestination|Sklad|  
+|deliveryDestination|Skladu|  
 |-------------------------|---------------|  
-|{"Type": "Point", "souřadnice": [76,6, 10,1]}|{"Type": "mnohoúhelník"; "souřadnice": [[0,0, 0,0], [10,0, 0,0], [10,0, 10,0], [0,0, 10,0], [0,0, 0,0]]}|  
-|{"Type": "Point", "souřadnice": [15,0, 15,0]}|{"Type": "mnohoúhelník"; "souřadnice": [[10,0, 10,0], [20,0, 10,0], [20,0, 20,0], [10,0, 20,0], [10,0, 10,0]]}|  
+|{"type":"Point", "coordinates": [76.6, 10.1]}|{"type":"Polygon", "coordinates": [ [0.0, 0.0], [10.0, 0.0], [10.0, 10.0], [0.0, 10.0], [0.0, 0.0] ]}|  
+|{"type":"Point", "coordinates": [15.0, 15.0]}|{"type":"Polygon", "coordinates": [ [10.0, 10.0], [20.0, 10.0], [20.0, 20.0], [10.0, 20.0], [10.0, 10.0] ]}|  
   
 ### <a name="output-example"></a>Příklad výstupu  
 
  0  
   
- 1\. místo  
+ 1  
 
-Další informace najdete [ST_WITHIN](https://docs.microsoft.com/stream-analytics-query/st-within) odkaz.
+Další informace naleznete v [ST_WITHIN](https://docs.microsoft.com/stream-analytics-query/st-within) odkazu.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
+* [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
 * [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

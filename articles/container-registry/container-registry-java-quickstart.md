@@ -1,36 +1,36 @@
 ---
-title: Rychlý Start – sestavení a nabízení imagí kontejnerů Java pro Azure Container Registry s využitím Maven a výložníku
-description: Sestavte kontejnerovou aplikaci Java a nahrajte ji do Azure Container Registry pomocí modulu plug-in Maven pro výložník.
+title: Úvodní příručka – vytváření a nabízení ibi kontejnerů Java do registru kontejnerů Azure pomocí Maven a Jib
+description: Vytvořte kontejnerizovanou aplikaci Java a zatlačte ji do registru kontejnerů Azure pomocí pluginu Maven Jib.
 author: KarlErickson
 ms.author: karler
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.openlocfilehash: 62d63b24baab204cb029565b109ea2de768e1d80
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78165443"
 ---
-# <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>Rychlý Start: sestavení a vložení imagí kontejnerů Java do Azure Container Registry
+# <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>Úvodní příručka: Vytváření a nabízení ibi kontejnerů Java do registru kontejnerů Azure
 
-V tomto rychlém startu se dozvíte, jak vytvořit kontejnerovou aplikaci Java a vložit ji do Azure Container Registry pomocí modulu plug-in Maven. Jedním z příkladů použití nástrojů pro vývojáře k interakci se službou Azure Container Registry je použití Maven a výložníku.
+Tento rychlý start ukazuje, jak vytvořit kontejnerizovanou aplikaci Java a zatlačit ji do registru kontejnerů Azure pomocí pluginu Maven Jib. Použití Maven a Jib je jedním z příkladů použití vývojářských nástrojů pro interakci s registrem kontejnerů Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud zatím předplatné Azure nemáte, můžete si aktivovat výhody [předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) nebo si zaregistrovat [bezplatný účet Azure](https://azure.microsoft.com/pricing/free-trial).
-* [Rozhraní příkazového řádku Azure (Azure CLI)](/cli/azure/overview)
-* Podporovaná sada Java Development Kit (JDK). Další informace o sadách JDK, které můžete využít při vývoji v Azure, najdete na adrese <https://aka.ms/azure-jdks>.
-* Nástroj [Maven](http://maven.apache.org) Build pro Apache (verze 3 nebo vyšší).
+* Předplatné Azure. Pokud zatím předplatné Azure nemáte, můžete si aktivovat [výhody předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) nebo si zaregistrovat [bezplatný účet Azure](https://azure.microsoft.com/pricing/free-trial).
+* [Rozhraní příkazového řádku Azure (CLI)](/cli/azure/overview)
+* Podporovaná sada Java Development Kit (JDK). Další informace o sadách JDK, které můžete využít při vývoji v Azure, najdete tady: <https://aka.ms/azure-jdks>.
+* Apache [Maven](http://maven.apache.org) sestavení nástroj (verze 3 nebo vyšší).
 * Klient [Git](https://git-scm.com).
-* Klient [Dockeru](https://www.docker.com)
-* [Pomocníka s přihlašovacími údaji ACR Docker](https://github.com/Azure/acr-docker-credential-helper)
+* Klient [Docker](https://www.docker.com).
+* [Pomocník pověření ACR Docker .](https://github.com/Azure/acr-docker-credential-helper)
 
 ## <a name="create-the-spring-boot-on-docker-getting-started-web-app"></a>Vytvoření webové aplikace Začínáme s aplikací Spring Boot v Dockeru
 
 Následující kroky vás provedou sestavením webové aplikace Spring Boot a jejím místním otestováním.
 
-1. Z příkazového řádku pomocí následujícího příkazu naklonujte [jarní spuštění v docker Začínáme](https://github.com/spring-guides/gs-spring-boot-docker) ukázkový projekt.
+1. Na příkazovém řádku můžete pomocí následujícího příkazu klonovat ukázkový projekt [Jarní spuštění v Dockeru Začínáme.](https://github.com/spring-guides/gs-spring-boot-docker)
 
    ```bash
    git clone https://github.com/spring-guides/gs-spring-boot-docker.git
@@ -54,25 +54,25 @@ Následující kroky vás provedou sestavením webové aplikace Spring Boot a je
    curl http://localhost:8080
    ```
 
-Měla by se zobrazit následující zpráva: **Hello World**
+Měla by se zobrazit následující zpráva: **Hello Docker World**
 
-## <a name="create-an-azure-container-registry-using-the-azure-cli"></a>Vytvoření služby Azure Container Registry pomocí Azure CLI
+## <a name="create-an-azure-container-registry-using-the-azure-cli"></a>Vytvoření registru kontejneru Azure pomocí Azure CLI
 
-V dalším kroku vytvoříte skupinu prostředků Azure a své ACR pomocí následujících kroků:
+Dále vytvoříte skupinu prostředků Azure a acr pomocí následujících kroků:
 
-1. Přihlaste se k účtu Azure pomocí následujícího příkazu:
+1. Přihlaste se ke svému účtu Azure pomocí následujícího příkazu:
 
    ```azurecli
    az login
    ```
 
-1. Zadejte předplatné Azure, které se má použít:
+1. Zadejte předplatné Azure, které se má používat:
 
    ```azurecli
    az account set -s <subscription ID>
    ```
 
-1. Vytvořte skupinu prostředků pro prostředky Azure použité v tomto kurzu. V následujícím příkazu Nezapomeňte nahradit zástupné symboly vlastním názvem prostředku a umístěním, jako je například `eastus`.
+1. Vytvořte skupinu prostředků pro prostředky Azure použité v tomto kurzu. V následujícím příkazu nezapomeňte nahradit zástupné symboly vlastním názvem prostředku `eastus`a umístěním, například .
 
    ```azurecli
    az group create \
@@ -80,7 +80,7 @@ V dalším kroku vytvoříte skupinu prostředků Azure a své ACR pomocí násl
        --location=<location>
    ```
 
-1. Pomocí následujícího příkazu vytvořte ve skupině prostředků privátní službu Azure Container Registry. Zástupné symboly Nezapomeňte nahradit skutečnými hodnotami. Kurz v pozdějších krocích předá ukázkovou aplikaci jako image Dockeru do tohoto registru.
+1. Vytvořte soukromý registr kontejnerů Azure ve skupině prostředků pomocí následujícího příkazu. Nezapomeňte nahradit zástupné symboly skutečnými hodnotami. Kurz v pozdějších krocích předá ukázkovou aplikaci jako image Dockeru do tohoto registru.
 
    ```azurecli
    az acr create \
@@ -92,20 +92,20 @@ V dalším kroku vytvoříte skupinu prostředků Azure a své ACR pomocí násl
 
 ## <a name="push-your-app-to-the-container-registry-via-jib"></a>Předání aplikace do registru kontejneru pomocí Jib
 
-Nakonec aktualizujete konfiguraci projektu a pomocí příkazového řádku sestavíte a nasadíte svou image.
+Nakonec aktualizujete konfiguraci projektu a pomocí příkazového řádku vytvoříte a nasadíte svou bitovou kopii.
 
-1. Přihlaste se ke svému Azure Container Registry z Azure CLI pomocí následujícího příkazu. Zástupný symbol je nutné nahradit vlastním názvem registru.
+1. Přihlaste se k registru kontejnerů Azure z azure cli pomocí následujícího příkazu. Zástupný symbol nezapomeňte nahradit vlastním názvem registru.
 
    ```azurecli
    az configure --defaults acr=<your registry name>
    az acr login
    ```
 
-   Příkaz `az configure` nastaví výchozí název registru pro použití s příkazy `az acr`.
+   Příkaz `az configure` nastaví výchozí název registru `az acr` pro použití s příkazy.
 
-1. Přejděte do adresáře dokončeného projektu pro aplikaci Spring Boot (například "*C:\SpringBoot\gs-spring-boot-docker\complete*" nebo " */users/robert/SpringBoot/gs-spring-boot-docker/complete*") a v textovém editoru otevřete soubor *pom.xml*.
+1. Přejděte do adresáře dokončeného projektu pro aplikaci Spring Boot (například "*C:\SpringBoot\gs-spring-boot-docker\complete*" nebo "*/users/robert/SpringBoot/gs-spring-boot-docker/complete*") a v textovém editoru otevřete soubor *pom.xml*.
 
-1. Aktualizujte kolekci `<properties>` v souboru *pom. XML* pomocí následujícího kódu XML. Nahraďte zástupný text názvem registru a aktualizujte `<jib-maven-plugin.version>` hodnotu pomocí nejnovější verze [Maven-plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin).
+1. Aktualizujte `<properties>` kolekci v souboru *pom.xml* pomocí následujícího xml. Nahraďte zástupný symbol názvem registru `<jib-maven-plugin.version>` a aktualizujte hodnotu nejnovější verzí [modulu plug-in jib-maven](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin).
 
    ```xml
    <properties>
@@ -115,7 +115,7 @@ Nakonec aktualizujete konfiguraci projektu a pomocí příkazového řádku sest
    </properties>
    ```
 
-1. Aktualizujte kolekci `<plugins>` v souboru *pom. XML* tak, aby element `<plugin>` obsahoval a položku pro `jib-maven-plugin`, jak je znázorněno v následujícím příkladu. Všimněte si, že používáme základní image ze sady Microsoft Container Registry (MCR): `mcr.microsoft.com/java/jdk:8-zulu-alpine`, která obsahuje oficiálně podporovanou JDK pro Azure. Další základní image MCR s oficiálně podporovaným sady JDK najdete v tématu [Java se JDK](https://hub.docker.com/_/microsoft-java-jdk), [Java se JRE](https://hub.docker.com/_/microsoft-java-jre), [Java se bez periferních JRE](https://hub.docker.com/_/microsoft-java-jre-headless)a [Java se JDK a Maven](https://hub.docker.com/_/microsoft-java-maven).
+1. Aktualizujte `<plugins>` kolekci v souboru *pom.xml* tak, aby `<plugin>` prvek obsahoval a pozadáním `jib-maven-plugin`pro , jak je znázorněno v následujícím příkladu. Všimněte si, že používáme základní bitovou kopii z registru kontejnerů Microsoft (MCR): `mcr.microsoft.com/java/jdk:8-zulu-alpine`, která obsahuje oficiálně podporovanou sadu JDK pro Azure. Další základní obrázky MCR s oficiálně podporovanými JDK viz [Java SE JDK](https://hub.docker.com/_/microsoft-java-jdk), [Java SE JRE](https://hub.docker.com/_/microsoft-java-jre), [Java SE Headless JRE](https://hub.docker.com/_/microsoft-java-jre-headless)a [Java SE JDK a Maven](https://hub.docker.com/_/microsoft-java-maven).
 
    ```xml
    <plugin>
@@ -141,11 +141,11 @@ Nakonec aktualizujete konfiguraci projektu a pomocí příkazového řádku sest
 
 > [!NOTE]
 >
-> Pověření vytvořená nástrojem `az acr login` z bezpečnostních důvodů platí pouze pro 1 hodinu. Pokud obdržíte *401 neoprávněnou* chybu, můžete znovu spustit příkaz `az acr login -n <your registry name>` a znovu ověřit.
+> Z bezpečnostních důvodů je `az acr login` pověření vytvořená pouze 1 hodinu. Pokud se zobrazí chyba *401 Neautorizovaný,* můžete `az acr login -n <your registry name>` příkaz spustit znovu a znovu ověřit.
 
-## <a name="verify-your-container-image"></a>Ověření image kontejneru
+## <a name="verify-your-container-image"></a>Ověření obrázku kontejneru
 
-Blahopřejeme! Teď máte svoji kontejnerovou aplikaci Java, která je v Azure podporovaná JDK, vložená do vaší ACR. Bitovou kopii teď můžete otestovat nasazením, aby se Azure App Service, nebo když ji nasadíte do místní příkazového řádku (nahraďte zástupný symbol):
+Blahopřejeme! Teď máte kontejnerizované Java App sestavení na Azure podporované JDK zasunuté do acr. Nyní můžete otestovat image nasazením do služby Azure App Service nebo vytažením do místní ho pomocí příkazu (nahrazení zástupného symbolu):
 
 ```bash
 docker pull <your registry name>.azurecr.io/gs-spring-boot-docker:v1
@@ -153,11 +153,11 @@ docker pull <your registry name>.azurecr.io/gs-spring-boot-docker:v1
 
 ## <a name="next-steps"></a>Další kroky
 
-Další verze oficiálních imagí založených na jazyce Java podporovaných Microsoftem najdete v těchto tématech:
+Další verze oficiálních základních bitových kopií Jazyka Java podporovaných společností Microsoft naleznete v následujících tématech:
 
 * [Java SE JDK](https://hub.docker.com/_/microsoft-java-jdk)
 * [Java SE JRE](https://hub.docker.com/_/microsoft-java-jre)
-* [Java SE JRE bez periferních zařízení](https://hub.docker.com/_/microsoft-java-jre-headless)
+* [Java SE Bezhlavý JRE](https://hub.docker.com/_/microsoft-java-jre-headless)
 * [Java SE JDK a Maven](https://hub.docker.com/_/microsoft-java-maven)
 
 Pokud se chcete dozvědět více o architektuře Spring a Azure, přejděte do centra dokumentace Spring v Azure.
@@ -165,11 +165,11 @@ Pokud se chcete dozvědět více o architektuře Spring a Azure, přejděte do c
 > [!div class="nextstepaction"]
 > [Spring v Azure](/azure/java/spring-framework)
 
-### <a name="additional-resources"></a>Další prostředky
+### <a name="additional-resources"></a>Další zdroje
 
-Další informace najdete v následujících zdrojích:
+Další informace najdete v následujících materiálech:
 
-* [Azure pro vývojáře v Javě](/azure/java)
+* [Azure pro vývojáře Vivy](/azure/java)
 * [Práce s Azure DevOps a Javou](/azure/devops/java)
 * [Začínáme s aplikací Spring Boot v Dockeru](https://spring.io/guides/gs/spring-boot-docker)
 * [Spring Initializr](https://start.spring.io)

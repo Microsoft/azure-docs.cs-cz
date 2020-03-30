@@ -1,5 +1,5 @@
 ---
-title: Zkuste založené na cloudu IoT řešení prediktivní údržby – Azure | Dokumentace Microsoftu
+title: Vyzkoušejte cloudové řešení prediktivní údržby IoT – Azure | Dokumenty společnosti Microsoft
 description: V tomto rychlém startu nasadíte akcelerátor řešení prediktivní údržby Azure IoT, přihlásíte se k řídicímu panelu řešení a budete s ním pracovat.
 author: dominicbetts
 manager: timlt
@@ -10,13 +10,13 @@ ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: cecf23d61d6a12c20aa3e64e4ee0ddacddbe7823
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "62106809"
 ---
-# <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>Rychlý start: Zkuste cloudové řešení pro spuštění analýzy prediktivní údržby na připojené zařízení
+# <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>Rychlý start: Vyzkoušení cloudového řešení za účelem spuštění analýzy prediktivní údržby na připojených zařízeních
 
 V tomto rychlém startu se dozvíte, jak nasadit akcelerátor řešení prediktivní údržby Azure IoT, abyste mohli spustit cloudovou simulaci prediktivní údržby. Po nasazení akcelerátoru řešení spustíte na stránce **řídicího panelu** řešení analýzu prediktivní údržby u dat ze simulace leteckého motoru. Tento akcelerátor řešení můžete využít jako výchozí bod pro vlastní implementaci nebo jako učební nástroj.
 
@@ -26,7 +26,7 @@ Motory letadel společnosti Fabrikam jsou vybaveny snímači, které monitorují
 
 K dokončení tohoto rychlého startu potřebujete aktivní předplatné Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 ## <a name="deploy-the-solution"></a>Nasazení řešení
 
@@ -40,9 +40,9 @@ Klikněte na dlaždici **Prediktivní údržba**. Na stránce **Prediktivní úd
 
 Na stránce **vytvoření řešení prediktivní údržby** zadejte jedinečný **název řešení** pro akcelerátor řešení prediktivní údržby. Pro účely tohoto rychlého startu používáme název **MyPredictiveMaintenance**.
 
-Vyberte **Předplatné** a **Oblast**, které chcete při nasazování akcelerátoru řešení použít. Obvykle byste měli zvolit oblast, která je vám nejblíže. V tomto rychlém zprovoznění používáme možnosti **Visual Studio Enterprise** a **Východní USA**. V předplatném musíte být [globálním správcem nebo uživatelem](iot-accelerators-permissions.md).
+Vyberte **Předplatné** a **Oblast**, které chcete při nasazování akcelerátoru řešení použít. Obvykle byste měli zvolit oblast, která je vám nejblíže. V tomto rychlém startu používáme možnosti **Visual Studio Enterprise** a **USA – východ**. V předplatném musíte být [globálním správcem nebo uživatelem](iot-accelerators-permissions.md).
 
-Klikněte na tlačítko **vytvořit** spusťte nasazení. Dokončení tohoto procesu trvá minimálně pět minut:
+Chcete-li zahájit nasazení, klepněte na tlačítko **Vytvořit.** Dokončení tohoto procesu trvá minimálně pět minut:
 
 ![Podrobnosti řešení prediktivní údržby](./media/quickstart-predictive-maintenance-deploy/createform.png)
 
@@ -54,7 +54,7 @@ Na stránce **Zřízená řešení** klikněte na nový akcelerátor řešení p
 
 ![Panel řešení](./media/quickstart-predictive-maintenance-deploy/solution.png)
 
- Informace o akcelerátor řešení můžete zobrazit na stránce, které se zobrazí. Zvolte **přejít na akcelerátor řešení** zobrazíte akcelerátor řešení prediktivní údržby:
+ Informace o akcelerátoru řešení můžete zobrazit na stránce, která se zobrazí. Zvolte **Přejít na akcelerátor řešení** a zobrazte si akcelerátor řešení prediktivní údržby:
 
 ![Panel řešení](./media/quickstart-predictive-maintenance-deploy/solutionpaneldetails.png)
 
@@ -80,11 +80,11 @@ Simulaci lze zastavit v libovolný okamžik, ale kliknutím na tlačítko **Star
 
 Pokud chcete pokračovat v prozkoumávání, ponechte akcelerátor řešení prediktivní údržby nasazený.
 
-Pokud už akcelerátor řešení nepotřebujete, odstraňte ho na stránce [Zřízená řešení](https://www.azureiotsolutions.com/Accelerators#dashboard) tak, že ho vyberete a pak kliknete na **Odstranit řešení**:
+Pokud už akcelerátor řešení nepotřebujete, odstraňte ho ze stránky [Zřízená řešení](https://www.azureiotsolutions.com/Accelerators#dashboard) tak, že ho vyberete a kliknete na **Odstranit řešení**:
 
 ![Odstranění řešení](media/quickstart-predictive-maintenance-deploy/deletesolution.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste nasadili akcelerátor řešení prediktivní údržby a spustili jste simulaci.
 

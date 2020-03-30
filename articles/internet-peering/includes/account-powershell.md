@@ -9,25 +9,25 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 3a5f7157ef8f3645dd03ec93684238dd8bbc067e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774221"
 ---
-Než začnete s konfigurací, nainstalujte a importujte požadované moduly. K instalaci modulů do PowerShellu budete potřebovat oprávnění správce.
+Před zahájením konfigurace nainstalujte a importujte požadované moduly. K instalaci modulů v prostředí PowerShell budete potřebovat oprávnění správce.
 
-1. Instalace a import AZ Module
+1. Instalace a import modulu Az
     ```powershell
     Install-Module Az -AllowClobber
     Import-Module Az
     ```
-1. Instalace a importující modul AZ. peering
+1. Instalace a import modulu Az.Peering
     ```powershell
     Install-Module -Name Az.Peering -AllowClobber
     Import-Module Az.Peering
     ```
-1. Pomocí níže uvedeného příkazu ověřte, že jsou moduly naimportovány správně.
+1. Ověřte, zda jsou moduly importovány jemně pomocí níže uvedeného příkazu.
     ```powershell
     Get-Module
     ```
@@ -35,18 +35,18 @@ Než začnete s konfigurací, nainstalujte a importujte požadované moduly. K i
     ```powershell
     Connect-AzAccount
     ```
-1. Ověřte odběry účtu a vyberte předplatné, ve kterém chcete vytvořit partnerský vztah.
+1. Zkontrolujte předplatná pro účet a vyberte předplatné, ve kterém chcete vytvořit partnerský vztah.
     ```powershell
     Get-AzSubscription
     Select-AzSubscription -SubscriptionId "subscription-id"
     ```
-1. Pokud ještě nemáte skupinu prostředků, musíte ji před vytvořením partnerského vztahu vytvořit. Je to tak, že spustíte následující příkaz:
+1. Pokud ještě nemáte skupinu prostředků, musíte ji vytvořit před vytvořením partnerského vztahu. Můžete tak učinit spuštěním následujícího příkazu:
 
     ```powershell
     New-AzResourceGroup -Name "PeeringResourceGroup" -Location "Central US"
     ```
 > [!IMPORTANT]
-> Pokud jste ještě nepřiřadili ASN a předplatné, postupujte podle kroků pro [přidružení partnerského čísla ASN](../howto-subscription-association-powershell.md). To je nutné pro vyžádání partnerského vztahu.
+> Pokud jste ještě nepřidružili asn a předplatné, postupujte podle pokynů pro [přidružený partner peer ASN](../howto-subscription-association-powershell.md). To je nutné požádat o partnerský vztah.
 
 > [!NOTE]
 > Umístění skupiny prostředků je nezávislé na umístění, kde se rozhodnete nastavit partnerský vztah.

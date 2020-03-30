@@ -1,5 +1,5 @@
 ---
-title: Vyzkoušejte řešení pro správu průmyslová zařízení IoT – Azure | Dokumentace Microsoftu
+title: Vyzkoušejte řešení pro správu průmyslových zařízení IoT – Azure | Dokumenty společnosti Microsoft
 description: V tomto rychlém zprovoznění nasadíte akcelerátor řešení připojené továrny Azure IoT, přihlásíte se k řídicímu panelu řešení a budete s ním pracovat.
 author: dominicbetts
 manager: timlt
@@ -10,13 +10,13 @@ ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 6338403818259c7263fe66af7d8c8840d98efbcd
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "62127459"
 ---
-# <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>Rychlý start: Zkuste cloudové řešení ke správě mých průmyslová zařízení IoT
+# <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>Rychlé zprovoznění: Zkouška cloudového řešení pro správu průmyslových zařízení IoT
 
 V tomto rychlém zprovoznění se dozvíte, jak nasadit akcelerátor řešení připojené továrny Azure IoT pro cloudovou simulaci monitorování a správy průmyslových zařízení IoT. Když nasadíte akcelerátor řešení připojené továrny, bude předem naplněný simulovanými prostředky, které vám umožní projít si běžný scénář z oblasti průmyslu IoT. K řešení je připojených několik simulovaných továren, které hlásí hodnoty dat potřebné k výpočtu celkové účinnosti vybavení (OEE) a klíčových ukazatelů výkonu (KPI). V tomto rychlém zprovoznění se dozvíte, jak pomocí řídicího panelu řešení provést tyto úkony:
 
@@ -26,7 +26,7 @@ V tomto rychlém zprovoznění se dozvíte, jak nasadit akcelerátor řešení p
 
 K dokončení tohoto rychlého startu potřebujete aktivní předplatné Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 ## <a name="deploy-the-solution"></a>Nasazení řešení
 
@@ -40,9 +40,9 @@ Klikněte na dlaždici **Připojená továrna**. Na stránce **Připojená tová
 
 Na dlaždici **Vytvořit řešení připojené továrny** zadejte jedinečný **Název řešení** akcelerátoru řešení připojené továrny. Tento název odpovídá názvu skupiny prostředků Azure, která obsahuje všechny prostředky akcelerátoru řešení. V tomto rychlém startu se používá název **MyDemoConnectedFactory**.
 
-Vyberte **Předplatné** a **Oblast**, které chcete při nasazování akcelerátoru řešení použít. Obvykle byste měli zvolit oblast, která je vám nejblíže. V tomto rychlém zprovoznění používáme možnosti **Visual Studio Enterprise** a **Východní USA**. V předplatném musíte být [globálním správcem nebo uživatelem](iot-accelerators-permissions.md).
+Vyberte **Předplatné** a **Oblast**, které chcete při nasazování akcelerátoru řešení použít. Obvykle byste měli zvolit oblast, která je vám nejblíže. V tomto rychlém startu používáme možnosti **Visual Studio Enterprise** a **USA – východ**. V předplatném musíte být [globálním správcem nebo uživatelem](iot-accelerators-permissions.md).
 
-Klikněte na tlačítko **vytvořit** k zahájení nasazení. Dokončení tohoto procesu trvá minimálně pět minut:
+Kliknutím na **Vytvořit** spusťte nasazení. Dokončení tohoto procesu trvá minimálně pět minut:
 
 ![Podrobnosti řešení připojené továrny](./media/quickstart-connected-factory-deploy/createform.png)
 
@@ -54,7 +54,7 @@ Na stránce **Zřízená řešení** klikněte na nový akcelerátor řešení p
 
 ![Výběr nového řešení](./media/quickstart-connected-factory-deploy/choosenew.png)
 
-Zobrazí se informace o akcelerátor řešení připojená továrna na stránce, které se zobrazí. Zvolte **přejít na akcelerátor řešení** zobrazíte akcelerátor řešení připojená továrna:
+Informace o akcelerátoru řešení připojené továrny můžete zobrazit na stránce, která se zobrazí. Zvolte **Přejít na akcelerátor řešení** a zobrazte akcelerátor řešení připojené továrny:
 
 ![Panel řešení](./media/quickstart-connected-factory-deploy/solutionpanel.png)
 
@@ -74,13 +74,13 @@ Na řídicím panelu se zobrazují tyto položky:
 
 Panel **Celková efektivita zařízení** zobrazuje hodnoty celkové účinnosti vybavení pro celý podnik nebo továrnu / výrobní linku / stanici, kterou si právě prohlížíte. Tato hodnota se shromažďuje od zobrazení stanice až po úroveň podniku. Hodnotu celkové efektivity zařízení a elementy, ze kterých se skládá, můžete dále analyzovat.
 
-[![Celková účinnost vybavení](./media/quickstart-connected-factory-deploy/oee-inline.png)](./media/quickstart-connected-factory-deploy/oee-expanded.png#lightbox)
+[![Celková účinnost zařízení](./media/quickstart-connected-factory-deploy/oee-inline.png)](./media/quickstart-connected-factory-deploy/oee-expanded.png#lightbox)
 
-Celková účinnost vybavení hodnotí efektivitu výrobního procesu pomocí provozních parametrů souvisejících s výrobou. Celková efektivita zařízení je v oboru standardním měřítkem a počítá se vynásobením míry dostupnosti, míry výkonu a míry kvality: OEE = dostupnost × výkon × kvalita.
+Celková účinnost vybavení hodnotí efektivitu výrobního procesu pomocí provozních parametrů souvisejících s výrobou. Celková efektivita zařízení (OEE) je v oboru standardním měřítkem a počítá se vynásobením míry dostupnosti, míry výkonu a míry kvality: OEE = dostupnost × výkon × kvalita.
 
 Celkovou účinnost vybavení můžete hlouběji analyzovat na libovolné úrovni dat v hierarchii. Klikněte na ukazatel celkové účinnosti vybavení, dostupnosti, výkonu nebo kvality. Zobrazí se místní panel s vizualizacemi, která znázorňují data za různá časová období:
 
-[![Podrobné zobrazení celkové účinnosti vybavení](./media/quickstart-connected-factory-deploy/oeedetail-inline.png)](./media/quickstart-connected-factory-deploy/oeedetail-expanded.png#lightbox)
+[![Detail celkové účinnosti zařízení](./media/quickstart-connected-factory-deploy/oeedetail-inline.png)](./media/quickstart-connected-factory-deploy/oeedetail-expanded.png#lightbox)
 
 Pokud chcete data dál analyzovat, klikněte na požadovaný graf.
 
@@ -92,7 +92,7 @@ Panel **Klíčové ukazatele výkonu** udává počet jednotek vyrobených za ho
 
 Klíčové ukazatele výkonu můžete hlouběji analyzovat na libovolné úrovni dat v hierarchii. Klikněte na ukazatel celkové účinnosti vybavení, dostupnosti, výkonu nebo kvality. Zobrazí se místní panel s vizualizacemi, která znázorňují data za různá časová období:
 
-[![Podrobné zobrazení klíčových ukazatelů výkonu](./media/quickstart-connected-factory-deploy/kpidetail-inline.png)](./media/quickstart-connected-factory-deploy/kpidetail-expanded.png#lightbox)
+[![Detail klíčového ukazatele výkonu](./media/quickstart-connected-factory-deploy/kpidetail-inline.png)](./media/quickstart-connected-factory-deploy/kpidetail-expanded.png#lightbox)
 
 Pokud chcete data dál analyzovat, klikněte na požadovaný graf.
 
@@ -100,7 +100,7 @@ Pokud chcete data dál analyzovat, klikněte na požadovaný graf.
 
 Panel **Umístění továren**, na kterém se zobrazuje stav, umístění a aktuální konfigurace výroby továren v řešení. Při prvním spuštění akcelerátoru řešení se na řídicím panelu zobrazí simulovaná sada továren. Každá simulace výrobní linky se skládá ze tří skutečných serverů OPC UA, které provádějí simulované úlohy a sdílejí data. Další informace o OPC UA najdete v článku [Propojená továrna – nejčastější dotazy](iot-accelerators-faq-cf.md):
 
-[![Umístění továrny](./media/quickstart-connected-factory-deploy/factorylocations-inline.png)](./media/quickstart-connected-factory-deploy/factorylocations-expanded.png#lightbox)
+[![Umístění v továrnách](./media/quickstart-connected-factory-deploy/factorylocations-inline.png)](./media/quickstart-connected-factory-deploy/factorylocations-expanded.png#lightbox)
 
 Můžete procházet hierarchii řešení a na každé úrovni si zobrazit hodnoty celkové účinnosti zařízení a klíčových ukazatelů výkonu:
 
@@ -112,19 +112,19 @@ Můžete procházet hierarchii řešení a na každé úrovni si zobrazit hodnot
 
 1. Klikněte na **Spotřeba energie**. Zobrazí se několik grafů znázorňujících tuto hodnotu za různá časová období. Pokud chcete data dál analyzovat, klikněte na požadovaný graf.
 
-[![Zobrazení spotřeby energie](./media/quickstart-connected-factory-deploy/explorelocations-inline.png)](./media/quickstart-connected-factory-deploy/explorelocations-expanded.png#lightbox)
+[![Zobrazit spotřebu energie](./media/quickstart-connected-factory-deploy/explorelocations-inline.png)](./media/quickstart-connected-factory-deploy/explorelocations-expanded.png#lightbox)
 
 ### <a name="map"></a>Mapa
 
 Pokud má vaše předplatné přístup k rozhraní [API pro Mapy Bing](iot-accelerators-faq-cf.md), na mapě *Továrny* se zobrazí zeměpisné umístění a stav všech továren v řešení. Pokud chcete zobrazit podrobnosti o umístění, klikněte na umístění zobrazená na mapě.
 
-[![Mapa](./media/quickstart-connected-factory-deploy/map-inline.png)](./media/quickstart-connected-factory-deploy/map-expanded.png#lightbox)
+[![Mapu](./media/quickstart-connected-factory-deploy/map-inline.png)](./media/quickstart-connected-factory-deploy/map-expanded.png#lightbox)
 
 ### <a name="alarms"></a>Upozornění
 
 Na panelu **Upozornění** se zobrazí upozornění vygenerovaná v případě, že některá hlášená hodnota nebo vypočítaná hodnota celkové efektivity zařízení nebo klíčového ukazatele výkonu překročí prahovou hodnotu. Tento panel zobrazuje upozornění na všech úrovních hierarchie, od úrovně jednotlivých stanic po úroveň celého podniku. Každé upozornění obsahuje popis, datum, čas, umístění a počet výskytů:
 
-[![Upozornění](./media/quickstart-connected-factory-deploy/alarms-inline.png)](./media/quickstart-connected-factory-deploy/alarms-expanded.png#lightbox)
+[![Alarmy](./media/quickstart-connected-factory-deploy/alarms-inline.png)](./media/quickstart-connected-factory-deploy/alarms-expanded.png#lightbox)
 
 Na řídicím panelu můžete analyzovat data, která upozornění způsobila. Pokud jste správce, můžete na upozornění reagovat výchozími akcemi, jako jsou tyto:
 
@@ -133,11 +133,11 @@ Na řídicím panelu můžete analyzovat data, která upozornění způsobila. P
 
 Klikněte na některé upozornění, v rozevírací nabídce **Zvolte akci** vyberte **Potvrdit upozornění** a klikněte na **Použít**:
 
-[![Potvrzení upozornění](./media/quickstart-connected-factory-deploy/acknowledge-inline.png)](./media/quickstart-connected-factory-deploy/acknowledge-expanded.png#lightbox)
+[![Potvrzení poplachu](./media/quickstart-connected-factory-deploy/acknowledge-inline.png)](./media/quickstart-connected-factory-deploy/acknowledge-expanded.png#lightbox)
 
 Pokud chcete hlouběji analyzovat data alarmu, klikněte na graf na panelu alarmů.
 
-Tyto alarmy se generují podle pravidel zadaných v konfiguračním souboru v akcelerátoru řešení. Tato pravidla můžou generovat alarmy v případě, že hodnoty celkové efektivity zařízení nebo klíčového ukazatele výkonu nebo hodnoty uzlu OPC UA přejděte nad prahovou hodnotou. Tuto prahovou hodnotu můžete nastavit.
+Tyto alarmy se generují podle pravidel zadaných v konfiguračním souboru v akcelerátoru řešení. Tato pravidla mohou generovat alarmy, když hodnoty OEE nebo KPI nebo Hodnoty uzlu OPC UA překročí prahovou hodnotu. Tuto prahovou hodnotu můžete nastavit.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -147,7 +147,7 @@ Pokud už akcelerátor řešení nepotřebujete, odstraňte ho na stránce [Zř�
 
 ![Odstranění řešení](media/quickstart-connected-factory-deploy/deletesolution.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém zprovoznění jste nasadili akcelerátor řešení připojené továrny a naučili se procházet továrny, výrobní linky a stanice. Taky jste se naučili zobrazit na libovolné úrovni hodnoty celkové účinnosti vybavení a klíčových ukazatelů výkonu a dozvěděli jste se, jak reagovat na upozornění.
 

@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: Vytvoření aplikace pro Xamarin Android'
-description: V tomto rychlém startu se dozvíte, jak vytvořit aplikaci pro Android pomocí prostorových ukotvení.
+title: 'Úvodní příručka: Vytvoření aplikace Xamarin pro Android'
+description: V tomto rychlém startu se dozvíte, jak vytvořit aplikaci pro Android s Xamarin pomocí prostorových kotev.
 author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
@@ -9,15 +9,15 @@ ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 94906d645ec38a24d54536ee8aa93e7418c8dc35
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75465178"
 ---
-# <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>Rychlý Start: Vytvoření aplikace pro Xamarin Android pomocí prostorových kotev Azure
+# <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>Úvodní příručka: Vytvoření aplikace Xamarin pro Android s prostorovými kotvami Azure
 
-Tento rychlý Start popisuje, jak vytvořit aplikaci pro Android s použitím [prostorových kotev Azure](../overview.md). Prostorové kotvy Azure je služba pro vývojáře napříč platformami, která umožňuje vytvářet hybridní prostředí realit pomocí objektů, které v průběhu času trvale uchovávají jejich umístění v rámci zařízení. Až budete hotovi, budete mít aplikaci pro Android, která může uložit a odvolat prostorovou kotvu.
+Tento rychlý start popisuje, jak vytvořit aplikaci pro Android s Xamarin pomocí [Azure Prostorové kotvy](../overview.md). Azure Spatial Anchors je vývojářská služba napříč platformami, která umožňuje vytvářet prostředí smíšené reality pomocí objektů, které v průběhu času napříč zařízeními přetrvávají. Po dokončení budete mít aplikaci pro Android, která může uložit a vyvolat prostorovou kotvu.
 
 Dozvíte se, jak provést tyto akce:
 
@@ -31,67 +31,67 @@ Dozvíte se, jak provést tyto akce:
 ## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
-- Počítač s Windows nebo macOS:
+- Počítač se systémem Windows nebo macOS:
   - Pokud používáte Windows:
-    - Aktuální verze sady <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019 16.2 +</a>.
-    - <a href="https://git-scm.com/download/win" target="_blank">Git pro Windows</a>
-    - <a href="https://git-lfs.github.com/">Úložiště Git LFS:</a>
+    - Aktuální verze Visual Studia <a href="https://www.visualstudio.com/downloads/" target="_blank">2019 16.2+</a>.
+    - <a href="https://git-scm.com/download/win" target="_blank">Git pro Windows</a>.
+    - <a href="https://git-lfs.github.com/">Git LFS</a>.
   - Pokud používáte macOS:
-    - Aktuální verze <a href="https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio pro Mac 8.1 +</a>.
-    - <a href="https://git-scm.com/download/mac" target="_blank">Git pro MacOS</a>.
-    - <a href="https://git-lfs.github.com/">Úložiště Git LFS:</a>
-- Na vámi zvolenou platformu je nainstalovaná a spuštěná nejnovější verze Xamarin. Androidu. Průvodce instalací Xamarin. Android najdete v příručkách k [instalaci Xamarin. Android](https://docs.microsoft.com/xamarin/android/get-started/installation/index) .
-- Zařízení s Androidem podporující <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">vývojáře</a> a <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore</a> .
-  - Počítač může pro komunikaci se zařízením s Androidem vyžadovat další ovladače zařízení. Další informace najdete [tady](https://developer.android.com/studio/run/device.html).
-- Vaše aplikace musí cílit na ARCore **1,8**.
+    - Aktuální verze Visual Studia <a href="https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019" target="_blank">pro Mac 8.1+</a>.
+    - <a href="https://git-scm.com/download/mac" target="_blank">Git pro macOS</a>.
+    - <a href="https://git-lfs.github.com/">Git LFS</a>.
+- Nejnovější verze Xamarin.Android nainstalován a běží na vaší platformě volby. Průvodce instalací Xamarin.Android naleznete v příručkách [pro instalaci Xamarin.Android.](https://docs.microsoft.com/xamarin/android/get-started/installation/index)
+- <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">Vývojář povoleno</a> a <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore schopné</a> zařízení Android.
+  - Pro komunikaci s vaším zařízením Android mohou být vyžadovány další ovladače zařízení. Další informace naleznete [zde](https://developer.android.com/studio/run/device.html).
+- Vaše aplikace musí cílit na ARCore **1.8**.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
-## <a name="open-the-sample-project"></a>Otevřete vzorový projekt
+## <a name="open-the-sample-project"></a>Otevření ukázkového projektu
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-Otevřete `Xamarin/SampleXamarin.sln` v aplikaci Visual Studio.
+Otevřít `Xamarin/SampleXamarin.sln` v sadě Visual Studio.
 
-## <a name="configure-account-identifier-and-key"></a>Konfigurace identifikátoru a klíče účtu
+## <a name="configure-account-identifier-and-key"></a>Konfigurace identifikátoru účtu a klíče
 
-Dalším krokem je konfigurace aplikace tak, aby používala identifikátor účtu a klíč účtu. Při [nastavování prostředku prostorových ukotvení](#create-a-spatial-anchors-resource)jste je zkopírovali do textového editoru.
+Dalším krokem je konfigurace aplikace tak, aby používala identifikátor účtu a klíč účtu. Zkopírovali jste je do textového [editoru při nastavování prostředku Prostorové kotvy](#create-a-spatial-anchors-resource).
 
-Otevřít `Xamarin/SampleXamarin.Common/AccountDetails.cs`.
+Otevřete `Xamarin/SampleXamarin.Common/AccountDetails.cs`.
 
-Vyhledejte pole `SpatialAnchorsAccountKey` a nahraďte `Set me` klíčem účtu.
+Vyhledejte `SpatialAnchorsAccountKey` pole `Set me` a nahraďte jej klíčem účtu.
 
-Vyhledejte pole `SpatialAnchorsAccountId` a nahraďte `Set me` identifikátorem účtu.
+Vyhledejte `SpatialAnchorsAccountId` pole `Set me` a nahraďte jej identifikátorem účtu.
 
-## <a name="deploy-the-app-to-your-android-device"></a>Nasazení aplikace na zařízení s Androidem
+## <a name="deploy-the-app-to-your-android-device"></a>Nasazení aplikace do zařízení Android
 
-Zapněte zařízení se systémem Android, přihlaste se a připojte ho k počítači pomocí kabelu USB.
+Zapojte zařízení se systémem Android, přihlaste se a připojte jej k počítači pomocí kabelu USB.
 
-Nastavte projekt po spuštění na **SampleXamarin. Android**, změňte **konfiguraci řešení** na **release**a v rozevíracím seznamu pro výběr zařízení vyberte zařízení, do kterého chcete nasadit.
+Nastavte projekt spuštění na **SampleXamarin.Android**, změňte **konfiguraci řešení** na **verzi**a vyberte zařízení, do kterého chcete nasadit v rozevíracím okně pro výběr zařízení.
 
-# <a name="windowstabdeploy-windows"></a>[Windows](#tab/deploy-windows)
+# <a name="windows"></a>[Windows](#tab/deploy-windows)
 
 ![Konfigurace sady Visual Studio](./media/get-started-xamarin-android/visual-studio-windows-configuration.png)
 
-Vyberte **ladit** > **Spustit ladění** pro nasazení a spuštění vaší aplikace.
+Vyberte **Ladění** > **Start ladění** k nasazení a spuštění aplikace.
 
-# <a name="macostabdeploy-macos"></a>[macOS](#tab/deploy-macos)
+# <a name="macos"></a>[Macos](#tab/deploy-macos)
 
 ![Konfigurace sady Visual Studio](./media/get-started-xamarin-android/visual-studio-macos-configuration.jpg)
 
-Vyberte **spustit** > **Spustit bez ladění** pro nasazení a spuštění vaší aplikace.
+Chcete-li nasadit a spustit aplikaci, vyberte **spustit** > **spustit spustit bez ladění.**
 
 ---
 
-V aplikaci vyberte **základní** , aby se spustila ukázka, a postupujte podle pokynů k umístění a odvolání kotvy.
+V aplikaci vyberte **Základní** spustit ukázku a postupujte podle pokynů umístit a odvolat kotvu.
 
-> ![snímku 1](./media/get-started-xamarin-android/screenshot-1.jpg)
-> ![snímku obrazovky 2](./media/get-started-xamarin-android/screenshot-2.jpg)
-> ![snímek 3](./media/get-started-xamarin-android/screenshot-3.jpg)
+> ![Snímek](./media/get-started-xamarin-android/screenshot-1.jpg)
+> ![obrazovky](./media/get-started-xamarin-android/screenshot-2.jpg)
+> ![1 Snímek obrazovky 2 Snímek obrazovky 3](./media/get-started-xamarin-android/screenshot-3.jpg)
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Kurz: sdílení prostorových ukotvení napříč zařízeními](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Kurz: Sdílení prostorových kotev napříč zařízeními](../tutorials/tutorial-share-anchors-across-devices.md)

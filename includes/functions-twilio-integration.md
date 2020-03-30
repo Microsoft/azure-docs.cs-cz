@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: 467e09f9bd46df6d888d82f2961c5aed9cca4ab5
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67174808"
 ---
-Tento příklad zahrnuje použití [Twilio](https://www.twilio.com/) služby umožňující odesílání zpráv serveru SMS na mobilní telefon. Služba Azure Functions již obsahuje podporu pro Twilio prostřednictvím [Twilio vazby](https://docs.microsoft.com/azure/azure-functions/functions-bindings-twilio), a ukázka používá tuto funkci.
+Tato ukázka zahrnuje použití služby [Twilio](https://www.twilio.com/) k odesílání sms zpráv na mobilní telefon. Azure Functions už má podporu pro Twilio prostřednictvím [vazby Twilio](https://docs.microsoft.com/azure/azure-functions/functions-bindings-twilio)a ukázka používá tuto funkci.
 
-První věc, co potřebujete, je účtu Twilio. Můžete si ho vytvořit zdarma na https://www.twilio.com/try-twilio. Jakmile budete mít účet, přidejte následující tři **nastavení aplikace** aplikaci function App.
+První věc, kterou potřebujete, je účet Twilio. Můžete vytvořit jeden https://www.twilio.com/try-twiliozdarma na . Až budete mít účet, přidejte do aplikace funkce následující tři **nastavení aplikace.**
 
-| Název nastavení aplikace | Hodnota Popis |
+| Název nastavení aplikace | Popis hodnoty |
 | - | - |
-| **TwilioAccountSid**  | Identifikátor SID účtu Twilio |
-| **TwilioAuthToken**   | Ověřovací token účtu Twilio |
-| **TwilioPhoneNumber** | Telefonní číslo přidružené k účtu Twilio. To se používá k odeslání serveru SMS zprávy. |
+| **TwilioAccountSid**  | SID pro váš účet Twilio |
+| **Token TwilioAuth**   | Auth token pro váš účet Twilio |
+| **Číslo twiliotelefonu** | Telefonní číslo spojené s vaším účtem Twilio. Používá se k odesílání SMS zpráv. |

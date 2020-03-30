@@ -1,6 +1,6 @@
 ---
-title: Použití Pythonu k dotazování databáze
-description: V tomto tématu se dozvíte, jak pomocí Pythonu vytvořit program, který se připojí ke službě Azure SQL Database a provede dotaz pomocí příkazů jazyka Transact-SQL.
+title: Použití Pythonu k dotazování na databázi
+description: Toto téma ukazuje, jak pomocí Pythonu vytvořit program, který se připojí k databázi Azure SQL a dotazovat se na něj pomocí příkazů Transact-SQL.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,74 +12,74 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
 ms.openlocfilehash: e82f8feae0096202e48a58296dd2e9d21bb61885
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76768577"
 ---
 # <a name="quickstart-use-python-to-query-an-azure-sql-database"></a>Rychlý start: Použití Pythonu k dotazování databáze Azure SQL
 
-V tomto rychlém startu pomocí Pythonu se připojíte k databázi SQL Azure a použijete k dotazování dat příkazy T-SQL.
+V tomto rychlém startu použijete Python k připojení k databázi Azure SQL a pomocí příkazů T-SQL k dotazování dat.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Databáze SQL Azure](sql-database-single-database-get-started.md)
+- [Databáze Azure SQL](sql-database-single-database-get-started.md)
 - [Python](https://python.org/downloads) 3 a související software
 
-  # <a name="macostabmacos"></a>[macOS](#tab/macos)
+  # <a name="macos"></a>[Macos](#tab/macos)
 
-  K instalaci homebrew a Pythonu, ovladače ODBC a nástroje SQLCMD a ovladače Pythonu pro SQL Server použijte kroky **1,2**, **1,3**a **2,1** v části [vytváření aplikací v Pythonu pomocí SQL Server na MacOS](https://www.microsoft.com/sql-server/developer-get-started/python/mac/).
+  Chcete-li nainstalovat Homebrew a Python, ovladač ODBC a SQLCMD a ovladač Pythonu pro SQL Server, použijte kroky **1.2**, **1.3**a **2.1** při [vytváření aplikací Pythonu pomocí SQL Serveru v systému macOS](https://www.microsoft.com/sql-server/developer-get-started/python/mac/).
 
-  Další informace najdete v tématu [ovladač Microsoft ODBC na MacOS](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server).
+  Další informace naleznete v [tématu Microsoft ODBC Driver on macOS](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server).
 
-  # <a name="ubuntutabubuntu"></a>[Ubuntu](#tab/ubuntu)
+  # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
 
-  Pokud chcete nainstalovat Python a další požadované balíčky, použijte `sudo apt-get install python python-pip gcc g++ build-essential`.
+  Chcete-li nainstalovat Python a `sudo apt-get install python python-pip gcc g++ build-essential`další požadované balíčky, použijte .
 
-  Informace o instalaci ovladače ODBC, SQLCMD a ovladače Pythonu pro SQL Server najdete v tématu [Konfigurace prostředí pro vývoj Pythonu v pyodbc](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#linux).
+  Chcete-li nainstalovat ovladač ODBC, SQLCMD a ovladač Pythonu pro SQL Server, přečtěte si [informace o konfiguraci prostředí pro vývoj pyodbc Pythonu](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#linux).
 
-  Další informace najdete v tématu [ovladač Microsoft ODBC na platformě Linux](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server).
+  Další informace naleznete v [tématu Microsoft ODBC Driver on Linux](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server).
 
-  # <a name="windowstabwindows"></a>[Windows](#tab/windows)
+  # <a name="windows"></a>[Windows](#tab/windows)
 
-  Informace o instalaci Pythonu, ovladače ODBC a nástroje SQLCMD a ovladače Pythonu pro SQL Server najdete v tématu [Konfigurace prostředí pro vývoj Pythonu v pyodbc](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#windows).
+  Chcete-li nainstalovat Python, ovladač ODBC a SQLCMD a ovladač Pythonu pro SQL Server, přečtěte si [informace o konfiguraci prostředí pro vývoj pyodbc Pythonu](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#windows).
 
-  Další informace najdete v tématu [ovladač Microsoft ODBC](/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
+  Další informace naleznete v tématu [Microsoft ODBC Driver](/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
 
 ---
 
 > [!IMPORTANT]
-> Skripty v tomto článku jsou určeny k používání databáze **Adventure Works** .
+> Skripty v tomto článku jsou zapsány k použití databáze **Adventure Works.**
 
 > [!NOTE]
 > Volitelně můžete zvolit použití spravované instance Azure SQL.
 >
-> K vytvoření a konfiguraci použijte [Azure Portal](sql-database-managed-instance-get-started.md), [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md)nebo [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)a pak nastavte připojení [na pracovišti](sql-database-managed-instance-configure-p2s.md) nebo [virtuálním počítači](sql-database-managed-instance-configure-vm.md) .
+> Chcete-li vytvořit a nakonfigurovat, použijte [portál Azure Portal](sql-database-managed-instance-get-started.md), [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md)nebo [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)a nastavte připojení [na místě](sql-database-managed-instance-configure-p2s.md) nebo [v počítači.](sql-database-managed-instance-configure-vm.md)
 >
-> Pokud chcete načíst data, přečtěte si téma [Restore with BacPac](sql-database-import.md) se souborem [Adventure Works](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) nebo si přečtěte část [obnovení databáze World Importers](sql-database-managed-instance-get-started-restore.md).
+> Chcete-li načíst data, viz [obnovení pomocí BACPAC](sql-database-import.md) se souborem [Adventure Works](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) nebo naleznete [v tématu obnovení databáze Wide World Importers](sql-database-managed-instance-get-started-restore.md).
 
-Další prozkoumání Pythonu a databáze SQL Azure najdete v tématech [knihovny Azure SQL Database pro Python](/python/api/overview/azure/sql), [úložiště pyodbc](https://github.com/mkleehammer/pyodbc/wiki/)a [Ukázka pyodbc](https://github.com/mkleehammer/pyodbc/wiki/Getting-started).
+Další informace o Pythonu a databázi Azure SQL najdete v [tématu Knihovny databází Azure SQL pro Python](/python/api/overview/azure/sql), úložiště [pyodbc](https://github.com/mkleehammer/pyodbc/wiki/)a [ukázku pyodbc](https://github.com/mkleehammer/pyodbc/wiki/Getting-started).
 
-## <a name="get-sql-server-connection-information"></a>Získat informace o připojení k SQL serveru
+## <a name="get-sql-server-connection-information"></a>Získání informací o připojení k serveru SQL
 
-Získejte informace o připojení, které potřebujete pro připojení ke službě Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
+Získejte informace o připojení, které potřebujete k připojení k databázi Azure SQL. Pro nadcházející postupy budete potřebovat úplný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
 
-2. Přejít na stránku **databáze SQL** nebo **spravované instance SQL** .
+2. Přejděte na stránku **databází SQL** nebo **instancí spravovaných SQL.**
 
-3. Na stránce **Přehled** zkontrolujte plně kvalifikovaný název serveru vedle **názvu serveru** pro izolovanou databázi nebo plně kvalifikovaný název serveru vedle možnost **hostitel** pro spravovanou instanci. Pokud chcete zkopírovat název serveru nebo název hostitele, najeďte na něj ukazatelem myši a vyberte ikonu **kopírování** .
+3. Na stránce **Přehled** zkontrolujte úplný název serveru vedle **názvu serveru** pro jednu databázi nebo plně kvalifikovaný název serveru vedle **hostitele** pro spravovanou instanci. Chcete-li zkopírovat název serveru nebo název hostitele, najeďte na něj a vyberte ikonu **Kopírovat.**
 
 ## <a name="create-code-to-query-your-sql-database"></a>Vytvoření kódu pro dotazování databáze SQL 
 
 1. V textovém editoru vytvořte nový soubor s názvem *sqltest.py*.  
    
-1. Přidejte následující kód. Nahraďte vlastní hodnoty pro \<Server >, \<Database >, \<username > a \<Password >.
+1. Přidejte následující kód. Nahraďte vlastní \<hodnoty \<> serveru, databázových \< \<>,> uživatelského jména a> hesla.
    
    >[!IMPORTANT]
-   >Kód v tomto příkladu používá ukázková data AdventureWorksLT, která můžete zvolit jako zdroj při vytváření databáze. Pokud má vaše databáze jiná data, použijte tabulky z vlastní databáze v dotazu SELECT. 
+   >Kód v tomto příkladu používá ukázková data AdventureWorksLT, která si můžete vybrat jako zdroj při vytváření databáze. Pokud databáze obsahuje jiná data, použijte tabulky z vlastní databáze v dotazu SELECT. 
    
    ```python
    import pyodbc
@@ -106,11 +106,11 @@ Získejte informace o připojení, které potřebujete pro připojení ke služb
    python sqltest.py
    ```
 
-1. Ověřte, že jsou vraceny prvních 20 řádků kategorie/produktu, a pak zavřete příkazové okno.
+1. Ověřte, zda je vráceno prvních 20 řádků kategorie/produktu, a zavřete příkazové okno.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Návrh první databáze Azure SQL](sql-database-design-first-database.md)
 - [Ovladače Microsoft Pythonu pro SQL Server](https://docs.microsoft.com/sql/connect/python/python-driver-for-sql-server/)
-- [Středisko pro vývojáře v Pythonu](https://azure.microsoft.com/develop/python/?v=17.23h)
+- [Vývojářské centrum Pythonu](https://azure.microsoft.com/develop/python/?v=17.23h)
 

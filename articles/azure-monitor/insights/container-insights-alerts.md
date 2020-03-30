@@ -1,36 +1,36 @@
 ---
-title: Vytváření výstrah výkonu pro Azure Monitor pro kontejnery | Microsoft Docs
-description: Tento článek popisuje, jak vytvořit vlastní výstrahy na základě dotazů protokolu pro paměť a využití procesoru z Azure Monitor pro kontejnery.
+title: Vytváření výstrah výkonu pro Azure Monitor pro kontejnery | Dokumenty společnosti Microsoft
+description: Tento článek popisuje, jak vytvořit vlastní výstrahy založené na dotazech protokolu pro využití paměti a procesoru z Azure Monitor pro kontejnery.
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 5d73f4399d10683597fb2a2e8a3a2ab4ba0d1165
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75730921"
 ---
-# <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Nastavení výstrah pro problémy s výkonem v Azure Monitor pro kontejnery
+# <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Jak nastavit výstrahy pro problémy s výkonem ve službě Azure Monitor pro kontejnery
 
-Azure Monitor pro kontejnery monitorují výkon zatížení kontejnerů, které jsou nasazené do Azure Container Instances nebo spravovaných clusterů Kubernetes hostovaných ve službě Azure Kubernetes (AKS).
+Azure Monitor pro kontejnery monitoruje výkon úloh kontejnerů, které se nasazují do instancí kontejnerů Azure nebo do spravovaných clusterů Kubernetes, které jsou hostované ve službě Azure Kubernetes Service (AKS).
 
-Tento článek popisuje, jak povolit výstrahy v následujících situacích:
+Tento článek popisuje, jak povolit výstrahy pro následující situace:
 
-- Pokud využití procesoru nebo paměti na uzlech clusteru překročí prahovou hodnotu
-- Pokud využití procesoru nebo paměti na jakémkoli kontejneru v rámci kontroleru překročí prahovou hodnotu v porovnání s limitem nastaveným na odpovídajícím prostředku
-- Počet *uzlů stavu pro* stav
-- Počet *neúspěšných*, *nevyřízených*, *neznámých*, *spuštěných*nebo *úspěšných* fází pod sebou
-- Pokud volné místo na disku na uzlech clusteru překročí prahovou hodnotu 
+- Když využití procesoru nebo paměti v uzlech clusteru překročí prahovou hodnotu
+- Když využití procesoru nebo paměti na libovolném kontejneru v rámci řadiče překročí prahovou hodnotu ve srovnání s limitem nastaveným na odpovídající prostředek.
+- Počet stavových uzlů *NotReady*
+- *Počet neúspěšných*, *čekajících*, *neznámých*, *spuštěných*nebo *úspěšných* počtů podových fází
+- Pokud volné místo na disku v uzlech clusteru překročí prahovou hodnotu 
 
-Pokud chcete upozornit na vysoké využití procesoru nebo paměti nebo je málo volného místa na disku v uzlech clusteru, použijte dotazy, které jsou k dispozici k vytvoření výstrahy metriky nebo upozornění na měření metriky. Výstrahy metriky mají nižší latenci než výstrahy protokolu. Výstrahy protokolu ale poskytují pokročilé dotazy a větší sofistikovanější. Dotazy protokolu výstrahy protokolují data a času pomocí operátoru *Now* a vrátí jednu hodinu. (Azure Monitor pro kontejnery ukládají všechna data ve formátu koordinovaného světového času (UTC).)
+Chcete-li upozornit na vysoké využití procesoru nebo paměti nebo nedostatek volného místa na disku v uzlech clusteru, použijte dotazy, které jsou k dispozici k vytvoření upozornění metriky nebo upozornění na měření metriky. Upozornění metriky mají nižší latenci než výstrahy protokolu. Ale výstrahy protokolu poskytují rozšířené dotazování a větší propracovanost. Dotazy výstrah protokolu porovnat datetime k současnosti pomocí *nyní* operátor a přecvač zpět jednu hodinu. (Azure Monitor pro kontejnery ukládá všechna data ve formátu UTC (Coordinated Universal Time).)
 
-Pokud nejste obeznámeni s výstrahami Azure Monitor, přečtěte si téma [Přehled výstrah v Microsoft Azure](../platform/alerts-overview.md) před tím, než začnete. Další informace o výstrahách, které používají dotazy protokolu, najdete [v tématu protokolování výstrah v Azure monitor](../platform/alerts-unified-log.md). Další informace o upozorněních metrik najdete [v tématu výstrahy metrik v Azure monitor](../platform/alerts-metric-overview.md).
+Pokud nejste obeznámeni s výstrahami Azure Monitor, přečtěte si [přehled výstrah v Microsoft Azure,](../platform/alerts-overview.md) než začnete. Další informace o výstrahách, které používají dotazy protokolu, najdete [v tématu Protokolvýstrahy v Azure Monitor](../platform/alerts-unified-log.md). Další informace o upozorněních na metriky najdete [v tématu Upozornění metrik y v Azure Monitoru](../platform/alerts-metric-overview.md).
 
-## <a name="resource-utilization-log-search-queries"></a>Dotazy na hledání protokolu využití prostředků
+## <a name="resource-utilization-log-search-queries"></a>Vyhledávací dotazy protokolu využití prostředků
 
-Dotazy v této části podporují jednotlivé scénáře upozorňování. Používají se v kroku 7 části [Vytvoření výstrahy](#create-an-alert-rule) tohoto článku.
+Dotazy v této části podporují každý scénář výstrahy. Používají se v kroku 7 části [vytvořit upozornění](#create-an-alert-rule) tohoto článku.
 
-Následující dotaz vypočítá průměrné využití procesoru jako průměr využití procesoru členskými uzly každou minutu.  
+Následující dotaz vypočítá průměrné využití procesoru jako průměr využití procesoru členských uzlů každou minutu.  
 
 ```kusto
 let endDateTime = now();
@@ -100,9 +100,9 @@ KubeNodeInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize), ClusterName
 ```
 >[!IMPORTANT]
->Následující dotazy používají zástupné hodnoty \<název-clusteru > a \<, že váš cluster a kontroler > reprezentují. Nahraďte je hodnotami specifickými pro vaše prostředí při nastavování výstrah.
+>Následující dotazy používají zástupné \<hodnoty vašeho názvu clusteru> a \<název řadiče> představují váš cluster a řadič. Při nastavování výstrah je nahraďte hodnotami specifickými pro vaše prostředí.
 
-Následující dotaz vypočítá průměrné využití procesoru u všech kontejnerů v řadiči jako průměrnou hodnotu využití procesoru každé instance kontejneru v řadiči v každé minutě. Měření je procento limitu nastaveného pro kontejner.
+Následující dotaz vypočítá průměrné využití procesoru všech kontejnerů v řadiči jako průměr využití procesoru každé instance kontejneru v řadiči každou minutu. Měření je procento limitu nastaveného pro kontejner.
 
 ```kusto
 let endDateTime = now();
@@ -142,7 +142,7 @@ KubePodInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize) , ContainerName
 ```
 
-Následující dotaz vypočítá průměrné využití paměti u všech kontejnerů v řadiči jako průměr využití paměti každé instance kontejneru v kontroleru každou minutu. Měření je procento limitu nastaveného pro kontejner.
+Následující dotaz vypočítá průměrné využití paměti všech kontejnerů v řadiči jako průměr využití paměti každé instance kontejneru v řadiči každou minutu. Měření je procento limitu nastaveného pro kontejner.
 
 ```kusto
 let endDateTime = now();
@@ -182,7 +182,7 @@ KubePodInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize) , ContainerName
 ```
 
-Následující dotaz vrátí všechny uzly a počty, které mají stav *připraveno* a nepříliš *stupňů*.
+Následující dotaz vrátí všechny uzly a počty, které mají stav *Ready* a *NotReady*.
 
 ```kusto
 let endDateTime = now();
@@ -209,7 +209,7 @@ KubeNodeInventory
             NotReadyCount = todouble(NotReadyCount) / ClusterSnapshotCount
 | order by ClusterName asc, Computer asc, TimeGenerated desc
 ```
-Následující dotaz vrátí hodnotu pod počty fází na základě všech fází: *selhání*, *čeká*, *Neznámý*, *spuštěný*nebo *úspěšný*.  
+Následující dotaz vrátí počty fází podu na základě všech fází: *Se nezdařilo*, *Čeká na vyřízení*, *Neznámý*, *Spuštěno*nebo *Úspěšné*.  
 
 ```kusto
 let endDateTime = now();
@@ -246,9 +246,9 @@ let endDateTime = now();
 ```
 
 >[!NOTE]
->Chcete-li upozornit na některé fáze pod, jako je například *nevyřízená*, *neúspěšná*nebo *neznámá*, upravte poslední řádek dotazu. Například pro upozornění na *FailedCount* použití: <br/>`| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)`
+>Chcete-li upozornit na určité fáze podu, například *Čekající*, *Neúspěšné*nebo *Neznámé*, upravte poslední řádek dotazu. Chcete-li například upozornit na *failedcount* použití: <br/>`| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)`
 
-Následující dotaz vrátí disky uzlů clusteru, které překračují 90% volného místa. Chcete-li získat ID clusteru, nejprve spusťte následující dotaz a zkopírujte hodnotu z vlastnosti `ClusterId`:
+Následující dotaz vrátí disky uzlů clusteru, které přesahují 90 % volného místa. Chcete-li získat ID clusteru, nejprve spusťte následující dotaz a zkopírujte hodnotu z vlastnosti: `ClusterId`
 
 ```kusto
 InsightsMetrics
@@ -277,35 +277,35 @@ InsightsMetrics
 
 ## <a name="create-an-alert-rule"></a>Vytvoření pravidla upozornění
 
-Pomocí těchto kroků vytvořte v Azure Monitor upozornění protokolu pomocí jednoho z pravidel hledání protokolu, která byla k dispozici dříve. Pokud chcete vytvořit pomocí šablony ARM, přečtěte si téma [Vytvoření ukázkového upozornění protokolu pomocí šablony prostředků Azure](../platform/alerts-log.md#sample-log-alert-creation-using-azure-resource-template).
+Podle těchto kroků vytvořte výstrahu protokolu v Azure Monitorpomocí jednoho z pravidel hledání protokolu, která byla poskytnuta dříve. Pokud chcete vytvořit pomocí šablony ARM, přečtěte [si tématu Ukázkový protokol vytváření výstrah pomocí šablony prostředků Azure](../platform/alerts-log.md#sample-log-alert-creation-using-azure-resource-template).
 
 >[!NOTE]
->Následující postup vytvoření pravidla výstrahy pro využití prostředků kontejneru vyžaduje, abyste přešli na nové rozhraní API upozornění protokolu, jak je popsáno v tématu [předvoleb rozhraní API pro protokolování výstrah](../platform/alerts-log-api-switch.md).
+>Následující postup pro vytvoření pravidla výstrahy pro využití prostředků kontejneru vyžaduje, abyste přepnuli na nové rozhraní API upozornění protokolu, jak je popsáno v [předvolbách Rozhraní API přepínače pro výstrahy protokolu](../platform/alerts-log-api-switch.md).
 >
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-2. V Azure Portal vyhledejte a vyberte **Log Analytics pracovní prostory**.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+2. Na webu Azure Portal vyhledejte a vyberte **pracovní prostory Log Analytics**.
 3. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor podporující Azure Monitor pro kontejnery. 
-4. V podokně na levé straně vyberte **protokoly** a otevřete stránku Azure monitor protokoly. Tato stránka slouží k zápisu a provádění dotazů Azure Log Analytics.
-5. Na stránce **protokoly** vložte jeden z [dotazů](#resource-utilization-log-search-queries) , které jste zadali dříve do pole **vyhledávací dotaz** , a pak výběrem **příkazu Spustit** Ověřte výsledky. Pokud tento krok neprovedete, možnost **+ nová výstraha** není dostupná k výběru.
-6. Vyberte **+ nová výstraha** a vytvořte výstrahu protokolu.
-7. V části **Podmínka** vyberte **pokaždé, když je hledání vlastního protokolu \<logic nedefinované >** předem definované podmínky vlastního protokolu. Vlastní typ signálu **hledání vlastního protokolu** se vybere automaticky, protože vytváříme pravidlo upozornění přímo ze stránky Azure monitor protokoly.  
-8. Vložte jeden z [dotazů](#resource-utilization-log-search-queries) , které byly zadány dříve, do pole **vyhledávacího dotazu** .
-9. Výstrahy nakonfigurujte následujícím způsobem:
+4. V podokně na levé straně vyberte **Protokoly,** chcete-li otevřít stránku protokolů Azure Monitoru. Tato stránka slouží k zápisu a spuštění dotazů Azure Log Analytics.
+5. Na stránce **Protokoly** vložte jeden z [dotazů uvedených](#resource-utilization-log-search-queries) dříve do pole **Vyhledávací dotaz** a pak vyberte **Spustit,** abyste ověřili výsledky. Pokud tento krok neprovedete, možnost **+Nová výstraha** není k dispozici pro výběr.
+6. Chcete-li vytvořit výstrahu protokolu, vyberte **možnost +Nová výstraha.**
+7. V části **Podmínka** vyberte **vždy, když \<je hledání vlastního protokolu logické,>** předdefinované vlastní podmínky protokolu. Typ **signálu vlastního hledání protokolu** je automaticky vybrán, protože vytváříme pravidlo výstrahy přímo ze stránky protokolů Azure Monitoru.  
+8. Vložte jeden z [dotazů uvedených](#resource-utilization-log-search-queries) dříve do pole **Vyhledávací dotaz.**
+9. Nakonfigurujte výstrahu následujícím způsobem:
 
-    1. V rozevíracím seznamu **Na základě** vyberte **Měření metriky**. Měření metriky vytvoří výstrahu pro každý objekt v dotazu, který má hodnotu nad naši zadanou prahovou hodnotou.
-    1. Jako **podmínku**vyberte **větší než**a jako počáteční **hodnotu prahové hodnoty** počátečního směrného plánu pro výstrahy využití procesoru a paměti zadejte **75** . Pro upozornění na nedostatek místa na disku zadejte **90**. Nebo zadejte jinou hodnotu, která vyhovuje vašim kritériím.
-    1. V části **Výstraha aktivační události na základě** oddílu vyberte **po sobě jdoucí porušení**. V rozevíracím seznamu vyberte **větší než**a zadejte **2**.
-    1. Chcete-li nakonfigurovat výstrahu pro využití procesoru nebo paměti kontejneru, vyberte v části **agregace zapnuto**možnost **ContainerName**. Pokud chcete konfigurovat pro upozornění na nízký disk uzlu clusteru, vyberte **ClusterId**.
-    1. V části **vyhodnocováno na základě** oddílu nastavte hodnotu **perioda** na **60 minut**. Pravidlo se spustí každých 5 minut a vrátí záznamy, které byly vytvořeny během poslední hodiny od aktuálního času. Nastavení časového období pro velké účty oken za účelem potenciální latence dat. Také zajišťuje, že dotaz vrátí data, aby se předešlo nezápornému falešně pozitivnímu upozornění, že výstraha nebude nikdy aktivována.
+    1. V rozevíracím seznamu **Na základě** vyberte **metrické měření**. Měření metriky vytvoří výstrahu pro každý objekt v dotazu, který má hodnotu nad naší zadanou prahovou hodnotu.
+    1. V **poli Podmínka**vyberte možnost Větší **než**a zadejte **hodnotu 75** jako počáteční **prahovou hodnotu** podle směrného plánu pro výstrahy využití procesoru a paměti. Pro upozornění na nedostatek místa na disku zadejte **hodnotu 90**. Nebo zadejte jinou hodnotu, která splňuje vaše kritéria.
+    1. V části **Trigger Alert Based Based On** vyberte Po sobě jdoucí **porušení**. V rozevíracím seznamu vyberte **možnost Větší než**a zadejte **hodnotu 2**.
+    1. Chcete-li nakonfigurovat výstrahu pro využití procesoru kontejneru nebo paměti, vyberte v části **Agregace na** **položku ContainerName**. Chcete-li konfigurovat výstrahu nízkého disku uzlu clusteru, vyberte **možnost ClusterId**.
+    1. V části **Vyhodnocení na základě** nastavte hodnotu **Období** na **60 minut**. Pravidlo bude spuštěno každých 5 minut a vrátí záznamy, které byly vytvořeny během poslední hodiny od aktuálního času. Nastavení časového období na široké okno účty pro potenciální latenci dat. Také zajišťuje, že dotaz vrátí data, aby se zabránilo falešně negativní, ve kterém výstraha nikdy požáry.
 
-10. Vyberte **Hotovo** a dokončete pravidlo výstrahy.
-11. Do pole **název pravidla výstrahy** zadejte název. Zadejte **Popis** , který poskytuje podrobnosti o výstraze. A vyberte příslušnou úroveň závažnosti z poskytnutých možností.
-12. Chcete-li ihned aktivovat pravidlo výstrahy, přijměte výchozí hodnotu pro **pravidlo Povolit při vytváření**.
-13. Vyberte existující **skupinu akcí** nebo vytvořte novou skupinu. Tento krok zajistí, aby se při každém spuštění výstrahy provedly stejné akce. Nakonfigurujte na základě toho, jak váš tým IT nebo DevOps Operations spravuje incidenty.
-14. Vyberte **vytvořit pravidlo výstrahy** a dokončete pravidlo výstrahy. Pravidlo se okamžitě spustí.
+10. Chcete-li vyplnit pravidlo **výstrahy,** vyberte Hotovo.
+11. Do pole **Název pravidla výstrahy** zadejte název. Zadejte **popis,** který obsahuje podrobnosti o výstraze. A vyberte odpovídající úroveň závažnosti z uvedených možností.
+12. Chcete-li pravidlo výstrahy okamžitě aktivovat, přijměte při vytváření výchozí hodnotu pravidla **Povolit**.
+13. Vyberte existující **skupinu akcí** nebo vytvořte novou skupinu. Tento krok zajišťuje, že stejné akce jsou prováděny při každém spuštění výstrahy. Nakonfigurujte na základě toho, jak váš provozní tým IT nebo DevOps spravuje incidenty.
+14. Chcete-li pravidlo výstrahy dokončit, vyberte **možnost Vytvořit pravidlo výstrahy.** Pravidlo se okamžitě spustí.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Podívejte se na [příklady dotazů protokolu](container-insights-log-search.md#search-logs-to-analyze-data) , kde najdete předdefinované dotazy a příklady pro vyhodnocení nebo přizpůsobení výstrah, vizualizace a analýzy clusterů.
-- Další informace o Azure Monitor a o tom, jak monitorovat další aspekty clusteru Kubernetes, najdete v tématu [zobrazení výkonu clusterů Kubernetes](container-insights-analyze.md) a [zobrazení stavu clusteru Kubernetes](container-insights-health.md).
+- Chcete-li zobrazit předdefinované dotazy a příklady pro vyhodnocení nebo přizpůsobení pro výstrahy, vizualizaci nebo analýzu clusterů, zobrazte [příklady dotazů](container-insights-log-search.md#search-logs-to-analyze-data) protokolu.
+- Další informace o Azure Monitoru a o tom, jak sledovat další aspekty vašeho clusteru Kubernetes, najdete [v tématu Zobrazení výkonu clusteru Kubernetes](container-insights-analyze.md) a [Zobrazení stavu clusteru Kubernetes](container-insights-health.md).

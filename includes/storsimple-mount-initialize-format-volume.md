@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 592131bf6cca4c4c3c827de23742e8d52bcb4d1c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67175062"
 ---
 #### <a name="to-mount-initialize-and-format-a-volume"></a>Připojení, inicializace a formátování svazku
@@ -30,7 +30,7 @@ ms.locfileid: "67175062"
     3. Zvolte velikost alokační jednotky 64 kB. Tato velikost alokační jednotky dobře funguje s algoritmy pro odstranění duplicit, které používá řešení StorSimple.
     4. Proveďte rychlé formátování.
 
-![Dostupné video](./media/storsimple-mount-initialize-format-volume/Video_icon.png)**Dostupné video**
+![Dostupné video](./media/storsimple-mount-initialize-format-volume/Video_icon.png) **Dostupné video**
 
 Pokud si chcete přehrát video, které ukazuje, jak připojit, inicializovat a naformátovat svazek StorSimple, klikněte [sem](https://azure.microsoft.com/documentation/videos/mount-initialize-and-format-a-storsimple-volume/).
 

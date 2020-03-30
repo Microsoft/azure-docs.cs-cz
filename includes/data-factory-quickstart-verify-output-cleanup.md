@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: b838e411e2795405c439a4107daab7aa8f033059
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76021018"
 ---
 ## <a name="verify-the-output"></a>Ověření výstupu
@@ -16,11 +16,11 @@ Kanál v kontejneru objektů blob adftutorial automaticky vytvoří výstupní s
 
 1. Na webu Azure Portal na stránce kontejneru **adftutorial** klikněte na **Obnovit**. Zobrazí se výstupní složka. 
     
-    ![Obnovit](media/data-factory-quickstart-verify-output-cleanup/output-refresh.png)
+    ![Obnovení](media/data-factory-quickstart-verify-output-cleanup/output-refresh.png)
 2. V seznamu složek klikněte na **output**. 
 2. Potvrďte, že je do výstupní složky zkopírovaný soubor **emp.txt**. 
 
-    ![Obnovit](media/data-factory-quickstart-verify-output-cleanup/output-file.png)
+    ![Obnovení](media/data-factory-quickstart-verify-output-cleanup/output-file.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Prostředky, které jste vytvořili v rámci tohoto rychlého startu, můžete vyčistit dvěma způsoby. Můžete odstranit [skupinu prostředků Azure](../articles/azure-resource-manager/management/overview.md), což zahrnuje odstranění všech prostředků v této skupině prostředků. Pokud chcete ostatní prostředky zachovat beze změny, odstraňte pouze datovou továrnu, kterou jste vytvořili v tomto kurzu.

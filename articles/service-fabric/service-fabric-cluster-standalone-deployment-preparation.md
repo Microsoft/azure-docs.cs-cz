@@ -1,124 +1,124 @@
 ---
 title: Příprava nasazení samostatného clusteru
-description: Dokumentace týkající se přípravy prostředí a vytváření konfigurace clusteru, aby bylo považováno za před nasazením clusteru určená pro zpracování a produkční úlohy.
+description: Dokumentace týkající se přípravy prostředí a vytvoření konfigurace clusteru, které mají být považovány před nasazením clusteru určeného pro zpracování produkčního zatížení.
 author: dkkapur
 ms.topic: conceptual
 ms.date: 9/11/2018
 ms.author: dekapur
 ms.openlocfilehash: 6a00b7d1b72d594c08021982b2448de6275414c8
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75610059"
 ---
-# <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Plánování a příprava vašeho nasazení clusteru Service Fabric Standalone
+# <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Plánování a příprava nasazení samostatného clusteru Service Fabric
 
 <a id="preparemachines"></a>Před vytvořením clusteru proveďte následující kroky.
 
 ## <a name="plan-your-cluster-infrastructure"></a>Plánování infrastruktury clusteru
-Chystáte se vytvořit cluster Service Fabric na počítačích "vlastníte", abyste se mohli rozhodnout, jaké druhy chyb, které má cluster k překonání. Například potřebujete samostatné řádky napájení nebo zadaný k těmto počítačům připojení k Internetu? Kromě toho zvážit fyzické zabezpečení těchto počítačů. Kde se počítače nacházejí a kdo potřebuje přístup k nim? Po těchto rozhodnutí, můžete namapovat na počítače logicky do různých domén selhání (viz dál). Plánování pro produkční clustery infrastruktury je složitější než pro testovací clustery.
+Chystáte se vytvořit cluster Service Fabric na počítačích, které "vlastníte", takže se můžete rozhodnout, jaké druhy selhání chcete clusteru přežít. Potřebujete například samostatné elektrické vedení nebo připojení k Internetu dodávané do těchto strojů? Kromě toho zvažte fyzické zabezpečení těchto strojů. Kde se stroje nacházejí a kdo k nim potřebuje přístup? Po těchto rozhodnutích můžete logicky mapovat počítače na různé domény selhání (viz další krok). Plánování infrastruktury pro produkční clustery je více než pro testovací clustery.
 
-## <a name="determine-the-number-of-fault-domains-and-upgrade-domains"></a>Určení počtu domén selhání a upgradovací domény
-A [ *doména selhání* (FD)](service-fabric-cluster-resource-manager-cluster-description.md) je fyzická jednotka, selhání a souvisí s fyzickou infrastrukturou v datových centrech. Doména selhání se skládá z hardwarové součásti (počítače, přepínače, sítě a další), které mají společný bod selhání. Ačkoli neexistuje žádné mapování 1:1 mezi doménami selhání a stojany, volně vzato každý rack lze považovat za doménu selhání.
+## <a name="determine-the-number-of-fault-domains-and-upgrade-domains"></a>Určení počtu domén selhání a upgradovacích domén
+[ *Doména selhání* (FD)](service-fabric-cluster-resource-manager-cluster-description.md) je fyzická jednotka selhání a přímo souvisí s fyzickou infrastrukturou v datových centrech. Doména selhání se skládá z hardwarových součástí (počítače, přepínače, sítě a další), které sdílejí jeden bod selhání. Přestože neexistuje žádné mapování 1:1 mezi doménami selhání a racky, volně řečeno, každý rack může být považován za doménu selhání.
 
-Když zadáte ClusterConfig.json doménami selhání, můžete název pro každý FD. Service Fabric podporuje hierarchické doménami selhání, takže topologii vaší infrastruktury v nich můžete sledovat.  Například následující doménami selhání jsou platné:
+Když zadáte FDs v ClusterConfig.json, můžete zvolit název pro každý FD. Service Fabric podporuje hierarchické FDs, takže můžete odrážet topologii infrastruktury v nich.  Například následující fds jsou platné:
 
-* "faultDomain": "fd: / Room1/Rack1/Počítač1"
-* "faultDomain": "fd: / FD1"
-* "faultDomain": "fd: / Room1/Rack1/PDU1/M1"
+* "faultDomain": "fd:/Room1/Rack1/Machine1"
+* "faultDomain": "fd:/FD1"
+* "faultDomain": "fd:/Room1/Rack1/PDU1/M1"
 
-*Upgradovací doména* (UD) je logická jednotka z uzlů. Během Service Fabric orchestrované upgradů (upgrade aplikace nebo upgradu clusteru) jsou všechny uzly v UD odstavit k provedení upgradu nadále k dispozici pro požadavků, uzly v jiných aktualizačními doménami. Upgrady firmwaru provádět na počítačích, takže je nutné je provést některou nerespektují aktualizačními doménami, počítači současně.
+*Inovace domény* (UD) je logická jednotka uzlů. Během upgradu řízeného service fabric (upgrade aplikace nebo upgrade clusteru) jsou všechny uzly v ud odebrány k provedení upgradu, zatímco uzly v jiných udů zůstávají k dispozici pro obsluhu požadavků. Upgrady firmwaru, které provádíte na svých počítačích, nerespektují udů, takže je musíte provádět po jednom počítači.
 
-Nejjednodušší způsob, jak přemýšlejte o těchto konceptech je doménami selhání je třeba brát jako jednotka neplánovaných selhání a aktualizačními doménami jako jednotka plánované údržby.
+Nejjednodušší způsob, jak přemýšlet o těchto konceptech, je považovat fds jako jednotku neplánovaného selhání a UDs jako jednotku plánované údržby.
 
-Když zadáte aktualizačními doménami v ClusterConfig.json, můžete název pro každý UD. Platné jsou například následující názvy:
+Když zadáte uds v ClusterConfig.json, můžete zvolit název pro každý UD. Například následující názvy jsou platné:
 
 * "upgradeDomain": "UD0"
 * "upgradeDomain": "UD1A"
 * "upgradeDomain": "DomainRed"
-* "upgradeDomain": "Blue"
+* "upgradeDomain": "Modrá"
 
-Podrobnější informace o doménami selhání a aktualizačními doménami, najdete v článku [popisující cluster Service Fabric](service-fabric-cluster-resource-manager-cluster-description.md).
+Podrobnější informace o fds a UDs, naleznete [v tématu popisující service fabric clusteru](service-fabric-cluster-resource-manager-cluster-description.md).
 
-Cluster v produkčním prostředí by měl zahrnovat aspoň tři doménami selhání, aby byla podporována v produkčním prostředí, pokud máte plnou kontrolu nad údržbu a správu uzlů, to znamená, budete muset pro aktualizaci nebo nahrazení počítače. Pro clustery spuštěné v prostředí (to znamená, instance virtuálního počítače Amazon Web Services), kde nemáte plnou kontrolu nad na počítače měli byste mít minimálně pěti doménami selhání ve vašem clusteru. Každý FD může mít jeden nebo více uzlů. Tím se brání potíže způsobené službou machine upgrady a aktualizace, které v závislosti na jejich načasování, může vést k potížím s běžící aplikací a služeb v clusterech.
+Cluster v produkčním prostředí by měl span alespoň tři FDs, aby byly podporovány v produkčním prostředí, pokud máte plnou kontrolu nad údržbou a správou uzlů, to znamená, že jste zodpovědní za aktualizaci a výměnu počítačů. Pro clustery spuštěné v prostředích (to znamená, Amazon Web Services VM instance), kde nemáte úplnou kontrolu nad počítači, měli byste mít minimálně pět FDs v clusteru. Každý FD může mít jeden nebo více uzlů. To to je zabránit problémům způsobeným upgrady a aktualizace počítače, které v závislosti na jejich načasování, může narušit spouštění aplikací a služeb v clusterech.
 
-## <a name="determine-the-initial-cluster-size"></a>Určit velikost počáteční clusteru
+## <a name="determine-the-initial-cluster-size"></a>Určení počáteční velikosti clusteru
 
-Obecně platí počet uzlů v clusteru je určen podle potřeb firmy, které je, kolik služby a kontejnery poběží v clusteru a kolik prostředků je třeba udržovat vaše úlohy. Pro produkční clustery doporučujeme, abyste s alespoň pět uzlů v clusteru, pokrývání uzlů 5 doménami selhání. Ale jak bylo popsáno výše, pokud budete mít plnou kontrolu nad uzly, které můžou využívat tři doménami selhání, pak tři uzly by měl také provést úlohy.
+Obecně platí, že počet uzlů ve vašem clusteru je určen na základě vašich obchodních potřeb, to znamená, kolik služeb a kontejnerů bude spuštěno v clusteru a kolik prostředků potřebujete k udržení vašich úloh. Pro produkční clustery doporučujeme mít v clusteru alespoň pět uzlů, které pokrývají 5 fds. Nicméně, jak je popsáno výše, pokud máte plnou kontrolu nad uzly a může span tři FDs, pak tři uzly by měl také dělat práci.
 
-Testovací clustery se systémem zatížení se sdílením stavu by měla mít tři uzly, že testovacích clusterů pouze spuštěná Bezstavová zatížení jenom jeden uzel. Také je potřeba poznamenat, že pro účely vývoje můžete mít více než jeden uzel na daném počítači. V produkčním prostředí ale Service Fabric podporuje pouze jeden uzel na fyzický nebo virtuální počítač.
+Testovací clustery se stavovými úlohami by měly mít tři uzly, zatímco testovací clustery spouštějí pouze bezstavové úlohy, které potřebují pouze jeden uzel. Je třeba také poznamenat, že pro účely vývoje můžete mít více než jeden uzel na daném počítači. V produkčním prostředí však Service Fabric podporuje pouze jeden uzel na fyzický nebo virtuální počítač.
 
-## <a name="prepare-the-machines-that-will-serve-as-nodes"></a>Příprava počítačů, které bude sloužit jako uzly
+## <a name="prepare-the-machines-that-will-serve-as-nodes"></a>Příprava strojů, které budou sloužit jako uzly
 
-Tady jsou některé doporučené specifikace pro každý počítač, který chcete přidat do clusteru:
+Zde jsou některé doporučené specifikace pro každý počítač, který chcete přidat do clusteru:
 
 * Minimálně 16 GB paměti RAM
 * Minimálně 40 GB volného místa na disku
-* 4 jádra nebo větší využití procesoru
-* Připojení k zabezpečené sítě nebo sítě pro všechny počítače
-* Nainstalovaný operační systém Windows Server (platné verze: 2012 R2, 2016, 1709 nebo 1803). Verze Service Fabric 6.4.654.9590 a novější také podporuje servery 2019 a 1809.
-* [Rozhraní .NET framework 4.5.1 nebo novější](https://www.microsoft.com/download/details.aspx?id=40773), úplné instalace
-* [Prostředí Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/install/installing-windows-powershell)
-* [RemoteRegistry služby](https://technet.microsoft.com/library/cc754820) by měla být spuštěná na všech počítačích
+* Procesor s výkonem 4 jádra nebo vyšší
+* Připojení k zabezpečené síti nebo sítím pro všechny počítače
+* Operační systém Windows Server nainstalován (platné verze: 2012 R2, 2016, 1709 nebo 1803). Service Fabric verze 6.4.654.9590 a novější také podporuje Server 2019 a 1809.
+* [Rozhraní .NET Framework 4.5.1 nebo vyšší](https://www.microsoft.com/download/details.aspx?id=40773), úplná instalace
+* [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/install/installing-windows-powershell)
+* [Služba RemoteRegistry](https://technet.microsoft.com/library/cc754820) by měla být spuštěna na všech počítačích.
 * Instalační jednotka Service Fabric musí být systém souborů NTFS.
 
-Správce clusteru, nasazení a konfigurace clusteru, musí mít [oprávnění správce](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) na všech počítačích. Service Fabric nelze nainstalovat na řadič domény.
+Správce clusteru, který nasadí a konfiguruje cluster, musí mít [oprávnění správce](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) v každém počítači. Service Fabric nelze nainstalovat na řadič domény.
 
-## <a name="download-the-service-fabric-standalone-package-for-windows-server"></a>Stáhněte si samostatného balíčku Service Fabric pro Windows Server
-[Stáhněte si odkaz - samostatného balíčku Service Fabric – Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690) a rozbalte balíček k počítači nasazení, který není součástí clusteru nebo do jednoho počítače, které budou součástí clusteru.
+## <a name="download-the-service-fabric-standalone-package-for-windows-server"></a>Stažení samostatného balíčku Service Fabric pro Windows Server
+[Odkaz ke stažení – samostatný balíček Service Fabric – Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690) a rozbalte balíček, a to buď do počítače nasazení, který není součástí clusteru, nebo do jednoho z počítačů, které budou součástí clusteru.
 
-## <a name="modify-cluster-configuration"></a>Upravit konfigurace clusteru
-K vytvoření samostatného clusteru je nutné vytvořit samostatný cluster konfigurace ClusterConfig.json soubor, který popisuje specifikace clusteru. Můžete založit na šablony v konfiguračním souboru odkaz níže. <br>
+## <a name="modify-cluster-configuration"></a>Změna konfigurace clusteru
+Chcete-li vytvořit samostatný cluster, musíte vytvořit samostatný konfigurační soubor ClusterConfig.json, který popisuje specifikaci clusteru. Konfigurační soubor můžete založit na šablonách, které se nacházejí na níže uvedeném odkazu. <br>
 [Konfigurace samostatného clusteru](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)
 
-Podrobnosti v části v tomto souboru najdete v tématu [nastavení konfigurace pro samostatný cluster Windows](service-fabric-cluster-manifest.md).
+Podrobnosti o částech v tomto souboru naleznete v [tématu Nastavení konfigurace samostatného clusteru Windows](service-fabric-cluster-manifest.md).
 
-Otevřete jednu z ClusterConfig.json soubory z balíčku, který jste stáhli a upravte následující nastavení:
+Otevřete jeden ze souborů ClusterConfig.json z staženého balíčku a upravte následující nastavení:
 
 | **Nastavení konfigurace** | **Popis** |
 | --- | --- |
-| **NodeTypes** |Typy uzlů umožňují rozdělit uzly clusteru do různých skupin. Cluster musí mít aspoň jeden typ NodeType. Všechny uzly ve skupině mají následující běžné vlastnosti: <br> **Název** – Toto je název typu uzlu. <br>**Porty koncových bodů** – tyto pojmenovány různé koncové body (porty), které jsou spojeny s tímto typem uzlu. Můžete použít libovolné číslo portu, který chcete, za předpokladu, že nejsou v konfliktu se nic jiného v manifestu a nejsou již používá jiná aplikace, na počítači nebo virtuálním počítači běží. <br> **Vlastnosti umístění** -popisují tyto vlastnosti pro tento typ uzlu, který používáte jako omezení umístění pro služby systému nebo služby. Tyto vlastnosti jsou páry klíč/hodnota definovaný uživatelem, které poskytují další metadata pro daný uzel. Příkladem vlastnosti uzlu by se určuje, zda má uzel pevný disk nebo grafickou kartu, počet diskových jednotek v jeho pevného disku, počet jader a další fyzické vlastnosti. <br> **Kapacity** -kapacity uzlů zadat název a množství určitý prostředek, že konkrétní uzel k dispozici pro použití. Uzlem může například definovat, že má kapacitu pro metriku s názvem "MemoryInMb" a že má 2 048 MB k dispozici ve výchozím nastavení. Tyto kapacity se používají v době běhu k zajištění, že služby, které vyžadují určité množství prostředků umísťují na uzly, které byly jejich prostředky, které jsou k dispozici požadované množství.<br>**IsPrimary** – Pokud máte více než jeden NodeType definované Ujistěte se, že pouze jeden je nastaven na primární hodnotou *true*, což je, kde systém služeb spustit. Všechny ostatní typy uzlů musí být nastaveno na hodnotu *false* |
-| **Uzly** |Toto jsou podrobnosti pro každý z uzlů, které jsou součástí clusteru (typ uzlu, název uzlu, IP adresa, doména selhání a upgradovací doména uzlu). Na počítačích, které má cluster má být vytvořena na potřeba zde uvedené pomocí jejich IP adresy. <br> Pokud používáte stejnou IP adresu pro všechny uzly, pak políčko jeden cluster je vytvořený, který můžete použít pro účely testování. Nepoužívejte One-box clustery pro nasazení úlohy v produkčním prostředí. |
+| **Typy uzlů** |Typy uzlů umožňují oddělit uzly clusteru do různých skupin. Cluster musí mít alespoň jeden NodeType. Všechny uzly ve skupině mají následující společné charakteristiky: <br> **Název** - Toto je název typu uzlu. <br>**Porty koncového bodu** – jedná se o různé pojmenované koncové body (porty), které jsou přidruženy k tomuto typu uzlu. Můžete použít libovolné číslo portu, které si přejete, pokud nejsou v konfliktu s ničím jiným v tomto manifestu a nejsou již používány jinou aplikací spuštěnou v počítači nebo virtuálním počítači. <br> **Vlastnosti umístění** – popisují vlastnosti pro tento typ uzlu, které používáte jako omezení umístění pro systémové služby nebo služby. Tyto vlastnosti jsou uživatelem definované dvojice klíč/hodnota, které poskytují další meta data pro daný uzel. Příklady vlastností uzlu by bylo, zda uzel má pevný disk nebo grafickou kartu, počet vřeten v jeho pevném disku, jádra a další fyzikální vlastnosti. <br> **Kapacity** - kapacity uzlů definují název a množství konkrétního prostředku, který má konkrétní uzel k dispozici pro spotřebu. Například uzel může definovat, že má kapacitu pro metriku s názvem "MemoryInMb" a že má 2048 MB k dispozici ve výchozím nastavení. Tyto kapacity se používají za běhu k zajištění, že služby, které vyžadují určité množství prostředků jsou umístěny na uzly, které mají tyto prostředky k dispozici v požadovaných částkách.<br>**IsPrimary** - Pokud máte více než jeden NodeType definována zajistit, že pouze jeden je nastaven na primární s hodnotou *true*, což je místo, kde jsou spuštěny systémové služby. Všechny ostatní typy uzlů by měly být nastaveny na hodnotu *false.* |
+| **Uzly** |Jedná se o podrobnosti pro každý z uzlů, které jsou součástí clusteru (typ uzlu, název uzlu, IP adresa, doména selhání a upgradovací doména uzlu). Počítače, na kterých má být cluster vytvořen, musí být zde uvedeny s jejich IP adresami. <br> Pokud používáte stejnou adresu IP pro všechny uzly, vytvoří se cluster s jedním polem, který můžete použít pro účely testování. Nepoužívejte one-box clustery pro nasazení produkčních úloh. |
 
-Po konfiguraci clusteru byla všechna nastavení nakonfigurovaná tak, aby prostředí, můžete testovat v prostředí clusteru (krok 7).
+Poté, co konfigurace clusteru má všechna nastavení nakonfigurována pro prostředí, může být testována v prostředí clusteru (krok 7).
 
 <a id="environmentsetup"></a>
 
 ## <a name="environment-setup"></a>Nastavení prostředí
 
-Při konfiguraci Správce clusteru samostatného clusteru Service Fabric, prostředí, musí být nastavení s následujícími kritérii: <br>
-1. Uživatel vytvářející cluster by měl mít oprávnění zabezpečení na úrovni správce na všech počítačích, které jsou uvedeny jako uzly v clusteru konfigurační soubor.
-2. Počítač, ze kterého se cluster vytvoří, jakož i každého počítače uzlu clusteru musí:
-   * Jste odinstalovali sadu Service Fabric SDK
-   * Mají odinstalovat modul runtime Service Fabric
-   * Jste povolili službu Windows Firewall (mpssvc)
-   * Povolíte služby Remote Registry (vzdálený registr)
-   * Soubor, který povoleno sdílení (SMB)
-   * Mají potřebné porty otevřít, založené na portech konfigurace clusteru
-   * Mít nezbytné porty otevřené pro Windows, SMB a Remote Registry service: 135, 137, 138, 139 a 445
-   * Mít síťové připojení mezi sebou
-3. Žádná z počítače uzlu clusteru by měl být řadičem domény.
-4. Pokud je cluster k nasazení zabezpečeného clusteru, ověřte nezbytné požadavky jsou v umístění a správně nakonfigurované pro konfiguraci zabezpečení.
-5. Pokud cluster počítače nejsou přístupné z Internetu, nastavte v konfiguraci clusteru následující:
-   * Zakázat telemetrická data: v části *vlastnosti* nastavit *"enableTelemetry": false*
-   * Zakázat automatické stahování verze prostředků infrastruktury a oznámení, že aktuální verze clusteru se blíží konec podpory: v části *vlastnosti* nastavit *"fabricClusterAutoupgradeEnabled": false*
-   * Případně, pokud přístup k síti internet, je omezený na uvedené prázdné domény, domény níže jsou požadovány pro automatický upgrade: go.microsoft.com download.microsoft.com
+Pokud správce clusteru konfiguruje samostatný cluster Service Fabric, je třeba prostředí nastavit s následujícími kritérii: <br>
+1. Uživatel vytvářející cluster by měl mít oprávnění zabezpečení na úrovni správce pro všechny počítače, které jsou uvedeny jako uzly v konfiguračním souboru clusteru.
+2. Počítač, ze kterého je cluster vytvořen, stejně jako každý počítač uzlu clusteru musí:
+   * Nechat odinstalovat sadu Service Fabric SDK
+   * Nechat odinstalovat runtime service fabric
+   * Byla povolena služba Brána Firewall systému Windows (mpssvc)
+   * Byla povolena služba Vzdálená registrace (vzdálený registr)
+   * Mít povoleno sdílení souborů (SMB)
+   * Otevření potřebných portů na základě konfiguračních portů clusteru
+   * Otevření potřebných portů pro službu Windows SMB a Vzdáleného registru: 135, 137, 138, 139 a 445
+   * Mít k sobě navzájem připojení k síti
+3. Žádný z počítačů uzlů clusteru by neměl být řadičem domény.
+4. Pokud je cluster, který má být nasazen, zabezpečený cluster, ověřte, zda jsou na místě nezbytné požadavky zabezpečení, a jsou správně nakonfigurovány podle konfigurace.
+5. Pokud počítače clusteru nejsou přístupné internetu, nastavte v konfiguraci clusteru následující:
+   * Zakázat telemetrii: Pod *vlastnostmi* nastavit *"enableTelemetry": false*
+   * Zakázat automatické stahování verze prostředků fabric & oznámení, že aktuální verze clusteru se blíží ke konci podpory: V *části vlastnosti* nastavit *"fabricClusterAutoupgradeEnabled": false*
+   * Pokud je přístup k internetu v síti omezen na domény uvedené na seznamu povolených, jsou pro automatický upgrade vyžadovány níže uvedené domény: go.microsoft.com download.microsoft.com
 
-6. Nastavit příslušné výjimky antivirové ochrany v Service Fabric:
+6. Nastavte příslušná vyloučení antivirového programu Service Fabric:
 
-| **Antivirové Vyloučené adresáře** |
+| **Antivirové vyloučené adresáře** |
 | --- |
-| Program Files\Microsoft Service Fabric |
-| FabricDataRoot (od konfigurace clusteru) |
-| FabricLogRoot (od konfigurace clusteru) |
+| Soubory programů\Aplikace Microsoft Service Fabric |
+| FabricDataRoot (z konfigurace clusteru) |
+| FabricLogRoot (z konfigurace clusteru) |
 
-| **Antivirové vyloučené procesy** |
+| **Procesy vyloučené antivirovým programem** |
 | --- |
 | Fabric.exe |
 | FabricHost.exe |
 | FabricInstallerService.exe |
-| FabricSetup.exe |
+| Soubor FabricSetup.exe |
 | FabricDeployer.exe |
 | ImageBuilder.exe |
 | FabricGateway.exe |
@@ -126,12 +126,12 @@ Při konfiguraci Správce clusteru samostatného clusteru Service Fabric, prost�
 | FabricFAS.exe |
 | FabricUOS.exe |
 | FabricRM.exe |
-| FileStoreService.exe |
+| Soubor StoreService.exe |
 
-## <a name="validate-environment-using-testconfiguration-script"></a>Ověření prostředí pomocí TestConfiguration skriptu
-TestConfiguration.ps1 skript nachází v samostatném balíčku. Slouží jako Analyzátor osvědčených postupů k ověření některé z výše uvedených kritérií a by měla sloužit jako kontrolu správnosti k ověření, jestli je možné cluster nasadit do daného prostředí. Pokud je jakékoli neúspěchy, podívejte se na seznam v části [prostředí](service-fabric-cluster-standalone-deployment-preparation.md) pro řešení potíží.
+## <a name="validate-environment-using-testconfiguration-script"></a>Ověřit prostředí pomocí skriptu TestConfiguration
+Skript TestConfiguration.ps1 naleznete v samostatném balíčku. Používá se jako analyzátor osvědčených postupů k ověření některých výše uvedených kritérií a měl by být použit jako kontrola příčetnosti k ověření, zda lze cluster nasadit v daném prostředí. Pokud dojde k nějaké chybě, naleznete v seznamu v [části Nastavení prostředí](service-fabric-cluster-standalone-deployment-preparation.md) pro řešení potíží.
 
-Tento skript můžete spustit na jakýkoli počítač, který má přístup správce pro všechny počítače, které jsou označeny jako uzly v clusteru konfigurační soubor. Počítače, ve kterém se skript spouští na nemusí být součástí clusteru.
+Tento skript lze spustit v libovolném počítači, který má přístup správce ke všem počítačům, které jsou uvedeny jako uzly v konfiguračním souboru clusteru. Počítač, na který je tento skript spuštěn, nemusí být součástí clusteru.
 
 ```powershell
 PS C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer> .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json
@@ -152,12 +152,12 @@ FabricInstallable          : True
 Passed                     : True
 ```
 
-Tento modul testování konfigurace aktuálně neověřuje konfiguraci zabezpečení, tak to je třeba provést nezávisle na sobě.
+V současné době tento modul testování konfigurace neověřuje konfiguraci zabezpečení, takže to musí být provedeno nezávisle.
 
 > [!NOTE]
-> Průběžně provádíme vylepšení robustnější, aby tento modul, pokud je poškozené nebo chybějící případu, což si myslíte, že není aktuálně zachycuje se prostřednictvím TestConfiguration, dejte nám vědět prostřednictvím našich [podporují kanály](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).
+> Neustále vylepšujeme, aby byl tento modul robustnější, takže pokud existuje vadný nebo chybějící případ, o kterém se domníváte, že není v současné době zachycen TestConfiguration, dejte nám prosím vědět prostřednictvím našich [kanálů podpory](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).
 >
 >
 
 ## <a name="next-steps"></a>Další kroky
-* [Vytvoření samostatného clusteru běžící na Windows serveru](service-fabric-cluster-creation-for-windows-server.md)
+* [Vytvoření samostatného clusteru běžícího na Windows Serveru](service-fabric-cluster-creation-for-windows-server.md)

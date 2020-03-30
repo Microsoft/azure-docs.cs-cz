@@ -1,40 +1,40 @@
 ---
-title: 'Rychlý Start: vytvoření Azure Database for MySQL pomocí AZ MySQL up'
-description: Průvodce rychlým startem k vytvoření Azure Database for MySQL serveru pomocí příkazu Azure CLI (rozhraní příkazového řádku)
+title: 'Úvodní příručka: Vytvoření azure databáze pro MySQL pomocí az mysql nahoru'
+description: Průvodce rychlým startem k vytvoření Azure Database for MySQL server pomocí příkazu Azure CLI (rozhraní příkazového řádku).
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 12/02/2019
+ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: 4bb5c62a7df53548ff59a03c6ccc8fb28f1503d3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 7b81e88fe6f658fdf4c1857c6082100894c6f2f6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74765679"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067723"
 ---
-# <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>Rychlý Start: vytvoření Azure Database for MySQL pomocí jednoduchého příkazu rozhraní příkazového řádku Azure – AZ MySQL up (Preview)
+# <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>Úvodní příručka: Vytvoření databáze Azure pro MySQL pomocí jednoduchého příkazu Azure CLI – az mysql up (preview)
 
 > [!IMPORTANT]
-> Příkaz [AZ MySQL up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) Azure CLI je ve verzi Preview.
+> Příkaz [az mysql up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) Azure CLI je ve verzi Preview.
 
-Azure Database for MySQL je spravovaná služba, která umožňuje spouštět, spravovat a škálovat vysoce dostupné databáze MySQL v cloudu. Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. V tomto rychlém startu se dozvíte, jak pomocí příkazu [AZ MySQL up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) vytvořit server Azure Database for MySQL pomocí rozhraní příkazového řádku Azure CLI. Kromě vytvoření serveru vytvoří příkaz `az mysql up` ukázkovou databázi, kořenového uživatele v databázi, otevře bránu firewall pro služby Azure a vytvoří výchozí pravidla brány firewall pro klientský počítač. To pomáhá urychlit proces vývoje.
+Azure Database for MySQL je spravovaná služba, která umožňuje spouštět, spravovat a škálovat vysoce dostupné databáze MySQL v cloudu. Azure CLI se používá k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. Tento rychlý start ukazuje, jak pomocí příkazu [az mysql up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) vytvořit azure databázi pro server MySQL pomocí azure cli. Kromě vytvoření serveru `az mysql up` příkaz vytvoří ukázkovou databázi, kořenového uživatele v databázi, otevře bránu firewall pro služby Azure a vytvoří výchozí pravidla brány firewall pro klientský počítač. To pomáhá urychlit proces vývoje.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet, než začnete.
 
-Tento článek vyžaduje, abyste v místním prostředí používali Azure CLI verze 2,0 nebo novější. Pokud chcete zjistit nainstalovanou verzi, spusťte příkaz `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+Tento článek vyžaduje, abyste místně spouštěli azure CLI verze 2.0 nebo novější. Pokud chcete zjistit nainstalovanou verzi, spusťte příkaz `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
-K účtu se budete muset přihlásit pomocí příkazu [AZ Login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) . Z výstupu příkazu si poznamenejte vlastnost **id** pro odpovídající název předplatného.
+Budete se muset přihlásit ke svému účtu pomocí příkazu [az login.](/cli/azure/authenticate-azure-cli?view=interactive-log-in) Z výstupu příkazu si poznamenejte vlastnost **id** pro odpovídající název předplatného.
 
 ```azurecli
 az login
 ```
 
-Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Ve svém účtu vyberte pomocí příkazu [az account set](/cli/azure/account) konkrétní ID předplatného. Nahraďte vlastnost **ID předplatného** z výstupu **AZ Login** pro vaše předplatné na zástupný symbol ID předplatného.
+Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Ve svém účtu vyberte pomocí příkazu [az account set](/cli/azure/account) konkrétní ID předplatného. Nahraďte vlastnost **ID předplatného** z výstupu **přihlášení az** pro vaše předplatné do zástupného symbolu ID předplatného.
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -42,63 +42,63 @@ az account set --subscription <subscription id>
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Vytvoření serveru Azure Database for MySQL
 
-Chcete-li použít příkazy, nainstalujte rozšíření [DB](/cli/azure/ext/db-up) . Pokud se vrátí chyba, ujistěte se, že máte nainstalovanou nejnovější verzi rozhraní příkazového řádku Azure CLI. Viz Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
+Chcete-li použít příkazy, nainstalujte rozšíření [db-up.](/cli/azure/ext/db-up) Pokud je vrácena chyba, ujistěte se, že jste nainstalovali nejnovější verzi rozhraní příkazového příkazu Azure. Viz [Instalace azure cli](/cli/azure/install-azure-cli).
 
 ```azurecli
 az extension add --name db-up
 ```
 
-Pomocí následujícího příkazu vytvořte server Azure Database for MySQL:
+Vytvořte databázi Azure pro server MySQL pomocí následujícího příkazu:
 
 ```azurecli
 az mysql up
 ```
 
-Server se vytvoří s následujícími výchozími hodnotami (Pokud je nepřepíšete ručně):
+Server je vytvořen s následujícími výchozími hodnotami (pokud je ručně nepřepíšete):
 
 **Nastavení** | **Výchozí hodnota** | **Popis**
 ---|---|---
-název-serveru | Vygenerované systémem | Jedinečný název, který identifikuje váš server Azure Database for MySQL.
-resource-group | Vygenerované systémem | Nová skupina prostředků Azure.
-sku-name | GP_Gen5_2 | Název skladové jednotky. Dodržuje konvenci {cenová úroveň}\_{výpočetní generace}\_{virtuální jádra} ve zkráceném zápisu. Výchozím nastavením je Pro obecné účely Server Gen5 se 2 virtuální jádra. Další informace o úrovních najdete na naší [stránce s cenami](https://azure.microsoft.com/pricing/details/mysql/) .
+název-serveru | Systém generován | Jedinečný název, který identifikuje váš server Azure Database for MySQL.
+resource-group | Systém generován | Nová skupina prostředků Azure.
+sku-name | GP_Gen5_2 | Název sku. Dodržuje konvenci {cenová úroveň}\_{výpočetní generace}\_{virtuální jádra} ve zkráceném zápisu. Výchozí je server Gen5 pro obecné účely se 2 virtuálními jádry. Další informace o úrovních najdete na naší stránce s [cenami.](https://azure.microsoft.com/pricing/details/mysql/)
 backup-retention | 7 | Určuje, jak dlouho se mají uchovávat zálohy. Jednotkou jsou dny.
 geo-redundant-backup | Zakázáno | Určuje, jestli pro tento server mají nebo nemají být povolené geograficky redundantní zálohy.
 location | westus2 | Lokace Azure pro server.
-ssl-enforcement | Zakázáno | Určuje, jestli pro tento server má nebo nemá být povolený protokol SSL.
+ssl-enforcement | Zakázáno | Určuje, zda má být pro tento server povolen protokol SSL.
 velikost úložiště | 5120 | Kapacita úložiště serveru (jednotkou jsou megabajty).
 version | 5.7 | Hlavní verze MySQL.
-admin-user | Vygenerované systémem | Uživatelské jméno pro přihlášení správce.
-admin-password | Vygenerované systémem | Heslo uživatele, který je správcem.
+admin-user | Systém generován | Uživatelské jméno pro přihlášení správce.
+admin-password | Systém generován | Heslo uživatele, který je správcem.
 
 > [!NOTE]
-> Další informace o příkazu `az mysql up` a jeho dalších parametrech najdete v dokumentaci k rozhraní příkazového [řádku Azure CLI](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up).
+> Další informace o `az mysql up` příkazu a jeho další parametry naleznete v [dokumentaci k rozhraní příkazového řádku Azure](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up).
 
-Po vytvoření serveru se objeví následující nastavení:
+Jakmile je server vytvořen, je dodáván s následujícím nastavením:
 
-- Vytvoří se pravidlo brány firewall nazvané "devbox". Rozhraní příkazového řádku Azure CLI zjistí IP adresu počítače, na kterém je spuštěný příkaz `az mysql up`, a seznam povolených IP adres.
-- Možnost "povolení přístupu ke službám Azure" je nastavená na ZAPNUTo. Toto nastavení nakonfiguruje bránu firewall serveru tak, aby přijímala připojení ze všech prostředků Azure, včetně prostředků, které se ve vašem předplatném nepoužívá.
-- Parametr `wait_timeout` je nastaven na 8 hodin.
-- Vytvoří se prázdná databáze s názvem "sampledb".
-- Vytvoří se nový uživatel s názvem root s oprávněními k SampleDB.
+- Je vytvořeno pravidlo brány firewall s názvem "devbox". Azure CLI pokusí zjistit IP adresu počítače `az mysql up` příkaz je spuštěn z a whitelists, že IP adresu.
+- "Povolit přístup ke službám Azure" je nastavena na ZAPNUTO. Toto nastavení konfiguruje bránu firewall serveru tak, aby přijímala připojení ze všech prostředků Azure, včetně prostředků, které nejsou ve vašem předplatném.
+- Parametr `wait_timeout` je nastaven na 8 hodin
+- Je vytvořena prázdná databáze s názvem "sampledb"
+- Je vytvořen nový uživatel s názvem "root" s oprávněními k "sampledb"
 
 > [!NOTE]
-> Azure Database for MySQL komunikuje přes port 3306. Pokud se připojujete z podnikové sítě, nemusí být odchozí provoz přes port 3306 bránou firewall vaší sítě povolený. Vaše IT oddělení otevře port 3306 pro připojení k vašemu serveru.
+> Azure Database for MySQL komunikuje přes port 3306. Při připojování z podnikové sítě nemusí být odchozí provoz přes port 3306 bránou firewall sítě povolen. Připojte se k serveru, otevřete své IT oddělení.
 
 ## <a name="get-the-connection-information"></a>Získání informací o připojení
 
-Po dokončení příkazu `az mysql up` se vám vrátí seznam připojovacích řetězců pro oblíbené programovací jazyky. Tyto připojovací řetězce jsou předem nakonfigurované s konkrétními atributy nově vytvořeného serveru Azure Database for MySQL.
+Po `az mysql up` dokončení příkazu je vrácen seznam připojovacích řetězců pro oblíbené programovací jazyky. Tyto připojovací řetězce jsou předem nakonfigurované s konkrétními atributy nově vytvořené databáze Azure pro server MySQL.
 
-Pomocí příkazu [AZ MySQL show-Connection-String](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-show-connection-string) můžete tyto připojovací řetězce znovu zobrazit.
+Pomocí příkazu [az mysql show-connection-string](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-show-connection-string) můžete tyto připojovací řetězce znovu vypsat.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Všechny prostředky, které jste vytvořili v rychlém startu, vyčistěte pomocí následujícího příkazu. Tento příkaz odstraní Server Azure Database for MySQL a skupinu prostředků.
+Vyčistěte všechny prostředky, které jste vytvořili v rychlém startu pomocí následujícího příkazu. Tento příkaz odstraní Azure Database for MySQL server a skupinu prostředků.
 
 ```azurecli
 az mysql down --delete-group
 ```
 
-Pokud byste chtěli odstranit nově vytvořený server, můžete spustit příkaz [AZ MySQL Down](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-down) .
+Pokud byste chtěli odstranit nově vytvořený server, můžete spustit [příkaz az mysql down.](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-down)
 
 ```azurecli
 az mysql down
@@ -107,4 +107,4 @@ az mysql down
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Návrh databáze MySQL pomocí rozhraní příkazového řádku Azure](./tutorial-design-database-using-cli.md)
+> [Návrh databáze MySQL pomocí rozhraní příkazového příkazu Azure](./tutorial-design-database-using-cli.md)

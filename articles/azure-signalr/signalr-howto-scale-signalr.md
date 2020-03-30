@@ -1,47 +1,47 @@
 ---
-title: Škálování instance služby signalizace Azure
-description: Naučte se škálovat instance služby signalizace Azure za účelem přidání nebo snížení kapacity, prostřednictvím Azure Portal nebo Azure CLI.
+title: Škálování instance služby Azure SignalR
+description: Zjistěte, jak škálovat instanci služby Azure SignalR a přidat nebo snížit kapacitu, a to prostřednictvím portálu Azure nebo vytelatého příkazového příkazu Azure.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.author: zhshang
 ms.openlocfilehash: c8d74342e624b837c7ee803a2bcdcc12a3fb814b
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75659283"
 ---
-# <a name="how-to-scale-an-azure-signalr-service-instance"></a>Jak škálovat instanci služby signalizace Azure?
-V tomto článku se dozvíte, jak škálovat instanci služby signalizace Azure. Existují dva scénáře pro škálování, horizontální navýšení kapacity a horizontální navýšení kapacity.
+# <a name="how-to-scale-an-azure-signalr-service-instance"></a>Jak škálovat instanci služby Azure SignalR?
+Tento článek ukazuje, jak škálovat instanci služby Azure SignalR. Existují dva scénáře pro škálování, škálování nakapacitu a horizontální navýšení kapacity.
 
-* [Horizontální navýšení kapacity](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Získejte další jednotky, připojení, zprávy a další. Škálujte nahoru změnou cenové úrovně od bezplatné na standard.
-* [Horizontální](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)navýšení kapacity: zvyšte počet jednotek signalizace. Můžete škálovat až na až 100 jednotek.
+* [Škálování navýšit](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)kapacitu: Získejte další jednotky, připojení, zprávy a další. Můžete vertikálně navýšit tím, že změníte cenovou úroveň z free na standard.
+* [Horizontální navýšení kapacity](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Zvýšení počtu jednotek SignalR. Můžete škálovat až na 100 jednotek.
 
-Použití nastavení škálování trvá několik minut. Ve výjimečných případech může trvat přibližně 30 minut, než se použije. Nevyžadují, abyste změnili kód nebo znovu nasadili serverovou aplikaci.
+Nastavení měřítka trvá několik minut. Ve vzácných případech může trvat přibližně 30 minut. Nevyžadují, abyste změnili kód nebo znovu nasadili serverové aplikace.
 
-Informace o cenách a kapacitě jednotlivých služeb signalizace najdete v [podrobnostech o cenách služby Azure Signal Service](https://azure.microsoft.com/pricing/details/signalr-service/).  
+Informace o cenách a kapacitách jednotlivých služeb SignalR najdete [v tématu Podrobnosti o cenách služby Azure SignalR](https://azure.microsoft.com/pricing/details/signalr-service/).  
 
 > [!NOTE]
-> Změna služby signalizace z úrovně **Free** na úroveň **Standard** nebo naopak dojde ke změně IP adresy veřejné služby a obvykle zabere 30-60 minut na rozšíření změn na servery DNS v celém internetu. Vaše služba může být nedosažitelná, než se aktualizuje služba DNS. Obecně se nedoporučuje měnit cenovou úroveň příliš často.
+> Změna služby SignalR z úrovně **Free** na **úroveň Standard** nebo naopak, IP adresa veřejné služby se změní a obvykle trvá 30-60 minut, než se změna na servery DNS rozšíří na servery DNS po celém internetu. Vaše služba může být nedostupná před aktualizací služby DNS. Obecně se nedoporučuje měnit cenovou úroveň příliš často.
 
 
-## <a name="scale-on-azure-portal"></a>Škálování podle Azure Portal
+## <a name="scale-on-azure-portal"></a>Škálování na webu Azure Portal
 
 1. Otevřete v prohlížeči portál [Azure Portal](https://portal.azure.com).
 
-2. Na stránce služby signalizace v nabídce vlevo vyberte možnost **škálovat**.
+2. Na stránce SignalR Service v yberte v levé nabídce **měřítko**.
    
-3. Zvolte cenovou úroveň a pak klikněte na **Vybrat**. Nastavte počet jednotek pro úroveň **Standard** .
+3. Zvolte cenovou úroveň a klikněte na **Vybrat**. Nastavte počet jednotek pro **úroveň Standard.**
    
     ![Škálování na portálu](./media/signalr-howto-scale/signalr-howto-scale.png)
 
-4. Klikněte na možnost **Uložit**.
+4. Klikněte na **Uložit**.
 
-## <a name="scale-using-azure-cli"></a>Škálování pomocí Azure CLI
+## <a name="scale-using-azure-cli"></a>Škálování pomocí azure cli
 
-Tento skript vytvoří nový prostředek služby signálu úrovně **Free** a novou skupinu prostředků a škáluje ji na úroveň **Standard** . 
+Tento skript vytvoří nový prostředek služby SignalR na úroveň **Free** tier a novou skupinu prostředků a škáluje ji až na **úroveň Standard.** 
 
 ```azurecli-interactive
 #!/bin/bash
@@ -77,17 +77,17 @@ Poznamenejte si vygenerovaný název pro novou skupinu prostředků. Tento náze
 
 [!INCLUDE [cli-script-clean-up](../../includes/cli-script-clean-up.md)]
 
-## <a name="compare-pricing-tiers"></a>Porovnat cenové úrovně
+## <a name="compare-pricing-tiers"></a>Porovnání cenových úrovní
 
-Podrobné informace, jako jsou zahrnuté zprávy a připojení pro jednotlivé cenové úrovně, najdete v tématu [Podrobnosti o cenách služby signaler](https://azure.microsoft.com/pricing/details/signalr-service/).
+Podrobné informace, jako jsou zahrnuté zprávy a připojení pro každou cenovou úroveň, naleznete v [tématu SignalR Service Pricing Details](https://azure.microsoft.com/pricing/details/signalr-service/).
 
-Tabulka omezení služby, kvót a omezení v každé úrovni najdete v tématu [omezení služby Signal Service](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-signalr-service-limits).
+Tabulka omezení služeb, kvót a omezení v každé vrstvě naleznete v tématu [Omezení služby SignalR](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-signalr-service-limits).
 
 ## <a name="next-steps"></a>Další kroky
 
-V této příručce jste se dozvěděli, jak škálovat instanci služby jednoho signálu.
+V této příručce jste se dozvěděli o tom, jak škálovat jednu instanci služby SignalR.
 
-Pro scénáře škálování, horizontálního dělení a mezi oblastmi se podporuje i více koncových bodů.
+Více koncových bodů jsou také podporovány pro škálování, horizontálního oddílu a mezi oblastmi scénáře.
 
 > [!div class="nextstepaction"]
-> [škálování služby signalizace s víc instancemi](./signalr-howto-scale-multi-instances.md)
+> [škálování služby SignalR s více instancemi](./signalr-howto-scale-multi-instances.md)

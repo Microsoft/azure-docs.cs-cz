@@ -1,6 +1,6 @@
 ---
-title: Konfigurace GPU pro virtuální počítače s Windows – Azure
-description: Jak povolit urychlené vykreslování a kódování GPU na virtuálním počítači s Windows
+title: Konfigurace GPU pro Virtuální plochu Windows – Azure
+description: Jak povolit vykreslování a kódování s akcelerací GPU ve virtuální ploše Windows.
 services: virtual-desktop
 author: gundarev
 ms.service: virtual-desktop
@@ -8,61 +8,61 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
 ms.openlocfilehash: 941a1ff23668a3202028e8b693b57d902095b3b2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78384819"
 ---
-# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Konfigurace akcelerace GPU (Graphics Processing Unit) pro virtuální počítače s Windows
+# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Konfigurace akcelerace grafických procesorů (GPU) pro virtuální plochu windows
 
-Virtuální počítač s Windows podporuje vykreslování a kódování GPU pro lepší výkon a škálovatelnost aplikace. Akcelerace GPU je zvláště důležitá pro aplikace náročné na grafiku.
+Virtuální plocha Windows podporuje vykreslování a kódování s akcelerací GPU pro lepší výkon a škálovatelnost aplikací. Akcelerace GPU je obzvláště důležitá pro aplikace náročné na grafiku.
 
-Podle pokynů v tomto článku vytvořte virtuální počítač Azure optimalizovaný pro GPU, přidejte ho do fondu hostitelů a nakonfigurujte ho tak, aby používal akceleraci GPU pro vykreslování a kódování. V tomto článku se předpokládá, že už máte nakonfigurovaného tenanta virtuálních klientů s Windows.
+Podle pokynů v tomto článku vytvořte virtuální počítač Azure optimalizovaný pro GPU, přidejte ho do fondu hostitelů a nakonfigurujte ho tak, aby používal akceleraci GPU pro vykreslování a kódování. Tento článek předpokládá, že již máte nakonfigurovaný klienta virtuální plochy Windows.
 
-## <a name="select-a-gpu-optimized-azure-virtual-machine-size"></a>Vyberte velikost virtuálního počítače Azure optimalizované grafickým procesorem.
+## <a name="select-a-gpu-optimized-azure-virtual-machine-size"></a>Výběr velikosti virtuálního počítače Azure optimalizovaného pro GPU
 
-Azure nabízí řadu [velikostí virtuálních počítačů](/azure/virtual-machines/windows/sizes-gpu), které jsou optimalizované pro GPU. Správná volba pro fond hostitelů závisí na mnoha faktorech, včetně konkrétních aplikačních úloh, požadované kvality uživatelského prostředí a nákladů. Celkově větší a více schopných GPU nabízí lepší uživatelské prostředí při dané hustotě uživatelů.
+Azure nabízí řadu [velikostí virtuálních strojů optimalizovaných pro GPU](/azure/virtual-machines/windows/sizes-gpu). Správná volba pro hostitelský fond závisí na řadě faktorů, včetně konkrétníúlohy aplikace, požadované kvality uživatelského prostředí a nákladů. Obecně platí, že větší a schopnější gpu nabízejí lepší uživatelské prostředí při dané hustotě uživatele.
 
 ## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>Vytvoření fondu hostitelů, zřízení virtuálního počítače a konfigurace skupiny aplikací
 
-Vytvořte nový fond hostitelů pomocí virtuálního počítače zvolené velikosti. Pokyny najdete v tématu [kurz: Vytvoření fondu hostitelů pomocí Azure Marketplace](/azure/virtual-desktop/create-host-pools-azure-marketplace).
+Vytvořte nový fond hostitelů pomocí virtuálního počítače o vybrané velikosti. Pokyny najdete [v tématu Kurz: Vytvoření fondu hostitelů s Azure Marketplace](/azure/virtual-desktop/create-host-pools-azure-marketplace).
 
-Virtuální počítač s Windows podporuje vykreslování a kódování GPU v následujících operačních systémech:
+Windows Virtual Desktop podporuje vykreslování a kódování s akcelerací GPU v následujících operačních systémech:
 
 * Windows 10 verze 1511 nebo novější
 * Windows Server 2016 nebo novější
 
-Musíte taky nakonfigurovat skupinu aplikací nebo použít výchozí skupinu desktopových aplikací (nazvanou "skupina desktopových aplikací"), která se automaticky vytvoří při vytváření nového fondu hostitelů. Pokyny najdete v tématu [kurz: Správa skupin aplikací pro virtuální počítač s Windows](/azure/virtual-desktop/manage-app-groups).
+Musíte také nakonfigurovat skupinu aplikací nebo použít výchozí skupinu aplikací pro stolní počítače (s názvem "Skupina aplikací pro stolní počítače"), která se automaticky vytvoří při vytváření nového fondu hostitelů. Pokyny najdete [v tématu Výuka: Správa skupin aplikací pro Windows Virtual Desktop](/azure/virtual-desktop/manage-app-groups).
 
-## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>Instalace podporovaných grafických ovladačů ve vašem virtuálním počítači
+## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>Instalace podporovaných grafických ovladačů ve virtuálním počítači
 
-Pokud chcete využít výhod schopností GPU virtuálních počítačů Azure N-Series na virtuálním počítači s Windows, musíte nainstalovat příslušné ovladače grafiky. Podle pokynů v části [podporované operační systémy a ovladače](/azure/virtual-machines/windows/sizes-gpu#supported-operating-systems-and-drivers) nainstalujte ovladače od příslušného dodavatele grafiky, a to buď ručně, nebo pomocí rozšíření virtuálního počítače Azure.
+Chcete-li využít funkce GPU virtuálních počítačů řady Azure N ve virtuální ploše Windows, je nutné nainstalovat příslušné grafické ovladače. Postupujte podle pokynů na [podporované operační systémy a ovladače](/azure/virtual-machines/windows/sizes-gpu#supported-operating-systems-and-drivers) k instalaci ovladačů od příslušného dodavatele grafiky, a to buď ručně nebo pomocí rozšíření virtuálního počítače Azure.
 
-Pro virtuální počítače s Windows se podporují jenom ovladače distribuované pomocí Azure. Další pro virtuální počítače Azure s grafickými procesory NVIDIA podporují se jenom [ovladače NVIDIA gridu](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers) pro virtuální počítače s Windows.
+Pro Virtuální plochu Windows jsou podporované jenom ovladače distribuované službou Azure. Navíc pro virtuální počítače Azure s grafickými procesory NVIDIA jsou pro virtuální plochu Windows podporované jenom [ovladače NVIDIA GRID.](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers)
 
-Po instalaci ovladače se vyžaduje restartování virtuálního počítače. Pomocí kroků pro ověření výše uvedených pokynů potvrďte, že ovladače grafiky byly úspěšně nainstalovány.
+Po instalaci ovladače je vyžadováno restartování virtuálního počítače. Pomocí ověřovacích kroků uvedených ve výše uvedených pokynech ověřte, zda byly grafické ovladače úspěšně nainstalovány.
 
-## <a name="configure-gpu-accelerated-app-rendering"></a>Konfigurace vykreslování aplikace akcelerované GPU
+## <a name="configure-gpu-accelerated-app-rendering"></a>Konfigurace vykreslování aplikací s akcelerací GPU
 
-Ve výchozím nastavení se aplikace a počítače běžící v konfiguracích s více relacemi vykreslují s využitím procesoru a nevyužívají k vykreslování dostupné GPU. Nakonfigurujte Zásady skupiny pro hostitele relací, aby bylo možné povolit vykreslování akcelerované GPU:
+Ve výchozím nastavení jsou aplikace a plochy spuštěné v konfiguracích s více relacemi vykresleny pomocí procesoru a nevyužívají dostupné grafické procesory pro vykreslování. Konfigurace zásad skupiny pro hostitele relace pro povolení vykreslování akcelerovaného GPU:
 
 1. Připojte se k ploše virtuálního počítače pomocí účtu s oprávněními místního správce.
-2. Otevřete nabídku Start a zadáním příkazu gpedit. msc otevřete Editor Zásady skupiny.
-3. Procházejte stromovou **konfigurací počítače** > **šablony pro správu** > **součásti systému Windows** > **vzdálené plochy** > **hostitel relace vzdálené plochy** > **prostředí vzdálené relace**.
-4. Vyberte zásady **použít pro všechny relace vzdálené plochy výchozí grafický adaptér hardwaru** a nastavte tuto zásadu na **povoleno** , aby se povolilo vykreslování GPU ve vzdálené relaci.
+2. Otevřete nabídku Start a zadáním příkazu gpedit.msc otevřete Editor zásad skupiny.
+3. Přejděte strom do pole **Šablony pro správu konfigurace** > počítače**Součásti služby** > **Vzdálená plocha** > **služby** > **Vzdálená plocha Hostitel** > **vzdálené relace Vzdálené relace Environment**.
+4. Vyberte **zásadu: Použijte výchozí hardwarový grafický adaptér pro všechny relace služby Vzdálená plocha** a nastavte tuto zásadu na **Povoleno,** aby bylo možné povolit vykreslování GPU ve vzdálené relaci.
 
-## <a name="configure-gpu-accelerated-frame-encoding"></a>Konfigurace kódování rámce akcelerovaného GPU
+## <a name="configure-gpu-accelerated-frame-encoding"></a>Konfigurace kódování rámce akcelerovaného gpu
 
-Vzdálená plocha zakóduje všechny grafiky vygenerované aplikacemi a plochami (ať už vygenerované pomocí GPU nebo s využitím procesoru) pro přenos do klientů vzdálené plochy. Ve výchozím nastavení Vzdálená plocha nevyužívá k tomuto kódování dostupné GPU. Nakonfigurujte Zásady skupiny pro hostitele relací, aby bylo možné povolit kódování rámce GPU. Pokračuje se výše uvedenými kroky:
+Vzdálená plocha kóduje všechny grafiky vykreslené aplikacemi a plochami (ať už vykreslené pomocí grafického procesoru nebo cpu) pro přenos klientům vzdálené plochy. Ve výchozím nastavení vzdálená plocha nevyužívá dostupné grafické procesory pro toto kódování. Nakonfigurujte zásady skupiny pro hostitele relace tak, aby umožňovaly kódování rámce akcelerované grafickým procesorem. Pokračování výše uvedených kroků:
 
-1. **Pro připojení ke vzdálené ploše vyberte možnost nastavit prioritu zásad v grafickém režimu H. 264/avc 444** a nastavte tuto zásadu na **povoleno** , aby ve vzdálené relaci vynutila kodek H. 264/AVC 444.
-2. Vyberte zásady **Konfigurace H. 264/AVC hardwarového kódování pro připojení ke vzdálené ploše** a nastavte tuto zásadu na **povoleno** , pokud chcete povolit kódování hardwaru pro AVC/H. 264 ve vzdálené relaci.
+1. Vyberte zásadu **Priorita grafického režimu H.264/AVC 444 pro připojení ke vzdálené ploše** a nastavte tuto zásadu na **Povoleno** tak, aby ve vzdálené relaci vynucova kodek H.264/AVC 444.
+2. Vyberte zásadu **Konfigurace hardwarového kódování H.264/AVC pro připojení ke vzdálené ploše** a nastavte tuto zásadu na **Povoleno,** aby bylo ve vzdálené relaci povoleno hardwarové kódování pro AVC/H.264.
 
     >[!NOTE]
-    >V systému Windows Server 2016 nastavte možnost **PREFEROVAT AVC hardwarové kódování** , aby se **vždy pokoušelo o pokus**.
+    >V systému Windows Server 2016 nastavte možnost **Preferovat kódování hardwaru AVC** na **vždy pokus**.
 
-3. Teď, když jste upravili zásady skupiny, vynuťte aktualizaci zásad skupiny. Otevřete příkazový řádek a zadejte:
+3. Nyní, když byly zásady skupiny upraveny, vynuťte aktualizaci zásad skupiny. Otevřete příkazový řádek a zadejte:
 
     ```batch
     gpupdate.exe /force
@@ -70,25 +70,25 @@ Vzdálená plocha zakóduje všechny grafiky vygenerované aplikacemi a plochami
 
 4. Odhlaste se z relace vzdálené plochy.
 
-## <a name="verify-gpu-accelerated-app-rendering"></a>Ověření vykreslování aplikace akcelerované GPU
+## <a name="verify-gpu-accelerated-app-rendering"></a>Ověření vykreslování aplikací s akcelerací GPU
 
-Pokud chcete ověřit, jestli aplikace používají GPU k vykreslování, zkuste použít některou z těchto možností:
+Chcete-li ověřit, zda aplikace používají grafický procesor pro vykreslování, vyzkoušejte některou z následujících možností:
 
-* Pro virtuální počítače Azure s grafickým procesorem NVIDIA použijte nástroj `nvidia-smi`, jak je popsáno v tématu [ověření instalace ovladače](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation) a kontrola využití GPU při spuštění aplikací.
-* V podporovaných verzích operačních systémů můžete použít Správce úloh ke kontrole využití GPU. Vyberte GPU na kartě výkon, abyste viděli, jestli aplikace využívají GPU.
+* Pro virtuální počítače Azure s grafickým procesorem NVIDIA použijte `nvidia-smi` nástroj popsaný v části Ověření instalace [ovladače](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation) ke kontrole využití GPU při spouštění aplikací.
+* V podporovaných verzích operačního systému můžete pomocí Správce úloh zkontrolovat využití GPU. Vyberte GPU na kartě "Výkon", abyste zjistili, zda aplikace používají GPU.
 
-## <a name="verify-gpu-accelerated-frame-encoding"></a>Ověřit kódování rámce akcelerované GPU
+## <a name="verify-gpu-accelerated-frame-encoding"></a>Ověření kódování rámce akcelerované houštinou gpu
 
-Ověření, že Vzdálená plocha používá kódování GPU-akcelerované:
+Chcete-li ověřit, zda vzdálená plocha používá kódování s akcelerací GPU:
 
-1. Připojte se k ploše virtuálního počítače pomocí klienta virtuální plochy Windows.
-2. Spusťte Prohlížeč událostí a přejděte do následujícího uzlu: **protokoly aplikací a služeb** > **Microsoft** > **Windows** > **RemoteDesktopServices-RdpCoreCDV** > **provozní**
-3. Pokud chcete zjistit, jestli se používá kódování GPU, hledejte událost s ID 170. Pokud se zobrazí zpráva "je povolen hardwarový kodér AVC: 1", použije se kódování GPU.
-4. Pokud chcete zjistit, jestli se používá režim AVC 444, vyhledejte ID události 162. Pokud se zobrazí možnost AVC je k dispozici: 1 počáteční profil: 2048, použije se AVC 444.
+1. Připojte se ke ploše virtuálního počítače pomocí klienta Virtuální desktop windows.
+2. Spusťte Prohlížeč událostí a přejděte na následující uzel: **Protokoly** > aplikací a služeb**microsoft** > **Windows** > **RemoteDesktopServices-RdpCoreCDV** > **Provozní**
+3. Chcete-li zjistit, zda se používá kódování akcelerované GPU, vyhledejte ID události 170. Pokud se zobrazí "Hardwarový kodér AVC povolen: 1", použije se kódování GPU.
+4. Chcete-li zjistit, zda se používá režim AVC 444, vyhledejte ID události 162. Pokud vidíte "AVC K dispozici: 1 Počáteční profil: 2048", pak AVC 444 se používá.
 
 ## <a name="next-steps"></a>Další kroky
 
-Tyto pokyny by měly být v provozu s akcelerací GPU na virtuálním počítači hostitele s jednou relací. Některé další předpoklady pro povolení akcelerace GPU napříč větším fondem hostitelů:
+Tyto pokyny by vás měly zprovoznit s akceleracegpu na jednom hostitelském virtuálním počítači relace. Některé další důležité informace pro povolení akcelerace GPU ve větším hostitelském fondu:
 
-* Zvažte použití [rozšíření virtuálního počítače](/azure/virtual-machines/extensions/overview) pro zjednodušení instalace a aktualizace ovladačů v rámci několika virtuálních počítačů. Pro virtuální počítače s grafickými procesory NVIDIA použijte [rozšíření ovladače GPU NVIDIA](/azure/virtual-machines/extensions/hpccompute-gpu-windows) a použijte rozšíření ovladače AMD GPU (už brzy) pro virtuální počítače s grafickým procesorem AMD.
-* Zvažte použití služby Active Directory Zásady skupiny ke zjednodušení konfigurace zásad skupiny pro celou řadu virtuálních počítačů. Informace o nasazení Zásady skupiny v doméně služby Active Directory naleznete v tématu [Working with zásady skupiny Objects](https://go.microsoft.com/fwlink/p/?LinkId=620889).
+* Zvažte použití [rozšíření virtuálního zařízení](/azure/virtual-machines/extensions/overview) pro zjednodušení instalace a aktualizací ovladačů napříč řadou virtuálních aplikací. Použijte [rozšíření ovladače GPU NVIDIA](/azure/virtual-machines/extensions/hpccompute-gpu-windows) pro virtuální zařízení s grafickými procesory NVIDIA a použijte rozšíření ovladače GPU AMD (již brzy) pro virtuální zařízení s grafickými procesory AMD.
+* Zvažte použití zásad skupiny služby Active Directory ke zjednodušení konfigurace zásad skupiny na příčce několika virtuálních počítačů. Informace o nasazení zásad skupiny v doméně služby Active Directory naleznete v [tématu Práce s objekty zásad skupiny](https://go.microsoft.com/fwlink/p/?LinkId=620889).

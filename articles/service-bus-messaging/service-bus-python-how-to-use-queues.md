@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: použití Azure Service Bus front s Pythonem'
-description: V tomto článku se dozvíte, jak pomocí Pythonu vytvářet, odesílat zprávy a přijímat zprávy z Azure Service Busch front.
+title: 'Úvodní příručka: Použití front Azure Service Bus v Pythonu'
+description: Tento článek ukazuje, jak pomocí Pythonu vytvářet, odesílat zprávy a přijímat zprávy z front Azure Service Bus.
 services: service-bus-messaging
 documentationcenter: python
 author: axisc
@@ -15,46 +15,46 @@ ms.date: 01/27/2020
 ms.author: aschhab
 ms.custom: seo-python-october2019
 ms.openlocfilehash: aa9ffc48d9b1374fa510f450bab2c66641421446
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76773494"
 ---
-# <a name="quickstart-use-azure-service-bus-queues-with-python"></a>Rychlý Start: použití Azure Service Bus front s Pythonem
+# <a name="quickstart-use-azure-service-bus-queues-with-python"></a>Úvodní příručka: Použití front Azure Service Bus v Pythonu
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-V tomto článku se dozvíte, jak pomocí Pythonu vytvářet, odesílat zprávy a přijímat zprávy z Azure Service Busch front. 
+Tento článek ukazuje, jak pomocí Pythonu vytvářet, odesílat zprávy a přijímat zprávy z front Azure Service Bus. 
 
-Další informace o knihovnách Azure Service Bus Pythonu najdete v tématu [knihovny Service Bus pro Python](/python/api/overview/azure/servicebus?view=azure-python).
+Další informace o knihovnách service bus Pythonu Azure najdete v [tématu Knihovny service bus pro Python](/python/api/overview/azure/servicebus?view=azure-python).
 
 ## <a name="prerequisites"></a>Požadavky
-- Předplatné Azure. Můžete aktivovat výhody pro [předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-- Service Bus obor názvů vytvořený podle kroků v [části rychlý Start: pomocí Azure Portal vytvořte Service Bus téma a odběry](service-bus-quickstart-topics-subscriptions-portal.md). Zkopírujte primární připojovací řetězec z obrazovky **zásady sdíleného přístupu** , která se použije později v tomto článku. 
-- Python 3.4 x nebo vyšší s nainstalovaným balíčkem [Python Azure Service Bus][Python Azure Service Bus package] . Další informace najdete v příručce pro [instalaci Pythonu](/azure/python/python-sdk-azure-install). 
+- Předplatné Azure. Můžete aktivovat [výhody pro předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- Obor názvů Service Bus vytvořený podle kroků na [úvodním panelu: Pomocí portálu Azure vytvořte téma služby Service Bus a předplatná](service-bus-quickstart-topics-subscriptions-portal.md). Zkopírujte primární připojovací řetězec z obrazovky **Zásady sdíleného přístupu,** který se použije později v tomto článku. 
+- Python 3.4x nebo vyšší s nainstalovaným balíčkem [service bus Pythonu Azure.][Python Azure Service Bus package] Další informace naleznete v [Průvodci instalací pythonu](/azure/python/python-sdk-azure-install). 
 
 ## <a name="create-a-queue"></a>Vytvoření fronty
 
-Objekt **ServiceBusClient** vám umožní pracovat s frontami. K programovému přístupu Service Bus přidejte do horní části souboru Pythonu následující řádek:
+Objekt **ServiceBusClient** umožňuje pracovat s frontami. Chcete-li programově přistupovat ke službě Service Bus, přidejte v horní části souboru Pythonu následující řádek:
 
 ```python
 from azure.servicebus import ServiceBusClient
 ```
 
-Přidejte následující kód pro vytvoření objektu **ServiceBusClient** . Nahraďte `<connectionstring>` hodnotou primárního připojovacího řetězce Service Bus. Tuto hodnotu můžete najít v části **zásady sdíleného přístupu** v oboru názvů Service Bus v [Azure Portal][Azure portal].
+Přidejte následující kód k vytvoření objektu **ServiceBusClient.** Nahraďte `<connectionstring>` primární hodnotou připojovacího řetězce service bus. Tuto hodnotu najdete v části **Zásady sdíleného přístupu** v oboru názvů Service Bus na [webu Azure Portal][Azure portal].
 
 ```python
 sb_client = ServiceBusClient.from_connection_string('<connectionstring>')
 ```
 
-Následující kód používá metodu `create_queue` **ServiceBusClient** k vytvoření fronty s názvem `taskqueue` s výchozími nastaveními:
+Následující kód používá `create_queue` metodu **ServiceBusClient** k vytvoření `taskqueue` fronty s názvem s výchozím nastavením:
 
 ```python
 sb_client.create_queue("taskqueue")
 ```
 
-Pomocí možností můžete přepsat výchozí nastavení fronty, jako je například hodnota TTL (Time to Live) nebo maximální velikost tématu. Následující kód vytvoří frontu s názvem `taskqueue` s maximální velikostí fronty 5 GB a hodnotou TTL 1 minutou:
+Pomocí možností můžete přepsat výchozí nastavení fronty, například čas zprávy do života (TTL) nebo maximální velikost tématu. Následující kód vytvoří frontu volanou `taskqueue` s maximální velikostí fronty 5 GB a hodnotou TTL 1 minutu:
 
 ```python
 sb_client.create_queue("taskqueue", max_size_in_megabytes=5120,
@@ -63,7 +63,7 @@ sb_client.create_queue("taskqueue", max_size_in_megabytes=5120,
 
 ## <a name="send-messages-to-a-queue"></a>Zasílání zpráv do fronty
 
-Chcete-li odeslat zprávu do fronty Service Bus, aplikace zavolá metodu `send` v objektu **ServiceBusClient** . Následující příklad kódu vytvoří klienta fronty a pošle zkušební zprávu do fronty `taskqueue`. Nahraďte `<connectionstring>` hodnotou primárního připojovacího řetězce Service Bus. 
+Chcete-li odeslat zprávu do fronty služby Service Bus, aplikace volá metodu `send` na objektu **ServiceBusClient.** Následující příklad kódu vytvoří klienta fronty a `taskqueue` odešle zkušební zprávu do fronty. Nahraďte `<connectionstring>` primární hodnotou připojovacího řetězce service bus. 
 
 ```python
 from azure.servicebus import QueueClient, Message
@@ -76,15 +76,15 @@ msg = Message(b'Test Message')
 queue_client.send(msg)
 ```
 
-### <a name="message-size-limits-and-quotas"></a>Omezení velikosti zpráv a kvóty
+### <a name="message-size-limits-and-quotas"></a>Omezení velikosti a kvóty zpráv
 
-Fronty Service Bus podporují maximální velikost zprávy 256 KB [na úrovni Standard](service-bus-premium-messaging.md) a 1 MB [na úrovni Premium](service-bus-premium-messaging.md). Hlavička, která obsahuje standardní a vlastní vlastnosti aplikace, může mít velikost až 64 KB. Počet zpráv, které fronta může obsahovat, není nijak omezený, ale celková velikost zpráv, které fronta uchovává, je příliš velká. Velikost fronty můžete definovat při vytváření s horním limitem 5 GB. 
+Fronty Service Bus podporují maximální velikost zprávy 256 KB [na úrovni Standard](service-bus-premium-messaging.md) a 1 MB [na úrovni Premium](service-bus-premium-messaging.md). Hlavička, která obsahuje standardní a vlastní vlastnosti aplikace, může mít velikost až 64 KB. Počet zpráv, které může fronta obsahovat, není nijak omezen, ale je omezencelkový počet zpráv, které fronta obsahuje. Velikost fronty můžete definovat v době vytvoření s horním limitem 5 GB. 
 
-Další informace o kvótách najdete v tématu [Service Bus kvóty][Service Bus quotas].
+Další informace o kvótách naleznete v [tématu Kvóty služby Service Bus][Service Bus quotas].
 
-## <a name="receive-messages-from-a-queue"></a>Přijímání zpráv z fronty
+## <a name="receive-messages-from-a-queue"></a>Příjem zpráv z fronty
 
-Klient fronty přijímá zprávy z fronty pomocí metody `get_receiver` v objektu **ServiceBusClient** . Následující příklad kódu vytvoří klienta fronty a přijme zprávu z fronty `taskqueue`. Nahraďte `<connectionstring>` hodnotou primárního připojovacího řetězce Service Bus. 
+Klient fronty přijímá zprávy z fronty `get_receiver` pomocí metody na objektu **ServiceBusClient.** Následující příklad kódu vytvoří klienta fronty a `taskqueue` obdrží zprávu z fronty. Nahraďte `<connectionstring>` primární hodnotou připojovacího řetězce service bus. 
 
 ```python
 from azure.servicebus import QueueClient, Message
@@ -100,28 +100,28 @@ with queue_client.get_receiver() as queue_receiver:
         message.complete()
 ```
 
-### <a name="use-the-peek_lock-parameter"></a>Použití parametru peek_lock
+### <a name="use-the-peek_lock-parameter"></a>Použití peek_lock parametru
 
-Volitelný parametr `peek_lock` `get_receiver` určuje, zda Service Bus odstraní zprávy z fronty při jejich čtení. Výchozím režimem pro přijímání zpráv je *PeekLock*nebo `peek_lock` nastaveno na **hodnotu true**, která čte (prohlédne) a uzamkne zprávy bez jejich odstranění z fronty. Každá zpráva musí být pak explicitně dokončena, aby ji bylo možné odebrat z fronty.
+Volitelný `peek_lock` parametr `get_receiver` určuje, zda Service Bus odstraní zprávy z fronty při jejich čtení. Výchozí režim pro příjem zpráv je `peek_lock` *PeekLock*nebo nastavena na **True**, který čte (náhledy) a uzamkne zprávy bez jejich odstranění z fronty. Každá zpráva pak musí být explicitně dokončena, aby byla odebrána z fronty.
 
-Pokud chcete odstranit zprávy z fronty při jejich čtení, můžete nastavit parametr `peek_lock` `get_receiver` na **hodnotu false (NEPRAVDA**). Odstraňování zpráv v rámci operace Receive je nejjednodušší model, ale funguje pouze v případě, že aplikace může tolerovat chybějící zprávy, pokud dojde k selhání. Pro pochopení tohoto chování Vezměte v úvahu situaci, ve které spotřebitel vydá žádost o přijetí, a poté dojde k chybě před jejím zpracováním. Pokud se zpráva odstranila při obdržení, když se aplikace znovu spustí a začne znovu přijímat zprávy, vynechala zprávu přijatou před selháním.
+Chcete-li odstranit zprávy z fronty při jejich `peek_lock` čtení, `get_receiver` můžete nastavit parametr **False**. Odstranění zpráv jako součást operace příjmu je nejjednodušší model, ale funguje pouze v případě, že aplikace může tolerovat chybějící zprávy, pokud dojde k selhání. Chcete-li pochopit toto chování, zvažte scénář, ve kterém spotřebitel vydá požadavek na přijetí a pak dojde k chybě před jeho zpracováním. Pokud byla zpráva odstraněna při přijetí, když se aplikace restartuje a začne znovu spotřebovávat zprávy, zmeškala zprávu, kterou obdržela před selháním.
 
-Pokud vaše aplikace nemůže tolerovat zmeškaných zpráv, je příjem operace se dvěma fázemi. PeekLock najde další zprávu, která se má spotřebovat, zamkne ji, aby zabránila ostatním příjemcům v přijetí a vrátila ji do aplikace. Po zpracování nebo uložení zprávy aplikace dokončí druhou fázi procesu Receive voláním metody `complete` u objektu **Message** .  Metoda `complete` označí zprávu jako spotřebou a odebere ji z fronty.
+Pokud vaše aplikace nemůže tolerovat zmeškané zprávy, příjem je dvoustupňová operace. PeekLock najde další zprávu, která má být spotřebována, uzamkne ji zabránit ostatním spotřebitelům v přijímání a vrátí ji do aplikace. Po zpracování nebo uložení zprávy aplikace dokončí druhou fázi procesu příjmu `complete` voláním metody na **Message** objektu.  Metoda `complete` označí zprávu jako spotřebované a odebere ji z fronty.
 
-## <a name="handle-application-crashes-and-unreadable-messages"></a>Zpracování chyb aplikace a nečitelných zpráv
+## <a name="handle-application-crashes-and-unreadable-messages"></a>Zpracování selhání aplikací a nečitelných zpráv
 
-Service Bus poskytuje funkce, které vám pomůžou se elegantně zotavit z chyb v aplikaci nebo vyřešit potíže se zpracováním zprávy. Pokud aplikace příjemce z nějakého důvodu nedokáže zpracovat zprávu, může volat metodu `unlock` pro objekt **zprávy** . Service Bus odemkne zprávu v rámci fronty a zpřístupní ji tak, aby byla znovu přijata, a to buď pomocí stejné, nebo jiné náročné aplikace.
+Service Bus poskytuje funkce, které vám pomůžou se elegantně zotavit z chyb v aplikaci nebo vyřešit potíže se zpracováním zprávy. Pokud aplikace příjemce nemůže znějakého důvodu zpracovat zprávu, může volat metodu `unlock` na **Message** objektu. Service Bus odemkne zprávu ve frontě a zpřístupní ji k přijetí znovu, buď stejnou nebo jinou náročnou aplikací.
 
-Je také časový limit pro zprávy uzamčený ve frontě. Pokud aplikace nedokáže zpracovat zprávu před vypršením časového limitu zámku, například pokud dojde k selhání aplikace, Service Bus automaticky odemkne zprávu a zpřístupní ji pro příjem.
+K dispozici je také časový čas pro zprávy zamčené ve frontě. Pokud aplikace nepodaří zpracovat zprávu před vypršením časového limitu uzamčení, například pokud dojde k chybě aplikace, service bus automaticky odemkne zprávu a zpřístupní ji k přijetí znovu.
 
-Pokud dojde k chybě aplikace po zpracování zprávy, ale před voláním metody `complete`, zpráva se znovu doručí do aplikace při restartu. Toto chování se často nazývá *zpracování nejméně jednou*. Každá zpráva je zpracována alespoň jednou, ale v některých situacích může být stejná zpráva doručena znovu. Pokud váš scénář nemůže tolerovat duplicitní zpracování, můžete použít vlastnost **MessageID** zprávy, která zůstává při pokusůch o doručení konstantní, pro zpracování duplicitního doručování zpráv. 
+Pokud dojde k chybě aplikace po zpracování `complete` zprávy, ale před voláním metody, zpráva je znovu doručena do aplikace při restartování. Toto chování se často nazývá *At-least-once Processing*. Každá zpráva je zpracována alespoň jednou, ale v určitých situacích může být stejná zpráva znovu doručena. Pokud váš scénář nemůže tolerovat duplicitní zpracování, můžete použít **MessageId** vlastnost zprávy, která zůstává konstantní napříč pokusy o doručení, ke zpracování duplicitní doručení zprávy. 
 
 > [!TIP]
-> Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer vám umožní připojit se k Service Busmu oboru názvů a snadno spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, a možnost testovat témata, fronty, odběry, služby přenosu, centra oznámení a centra událostí.
+> Prostředky služby Service Bus můžete spravovat pomocí [aplikace Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Aplikace Service Bus Explorer umožňuje připojit se k oboru názvů service bus a snadno spravovat entity zasílání zpráv. Nástroj poskytuje pokročilé funkce, jako je funkce importu a exportu a možnost testovat témata, fronty, předplatná, přenosové služby, centra oznámení a centra událostí.
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili základy Service Busch front, najdete další informace v tématu [fronty, témata a předplatná][Queues, topics, and subscriptions] .
+Teď, když jste se naučili základy front service bus, najdete [v tématu Fronty, témata a předplatná][Queues, topics, and subscriptions] další informace.
 
 [Azure portal]: https://portal.azure.com
 [Python Azure Service Bus package]: https://pypi.python.org/pypi/azure-servicebus  

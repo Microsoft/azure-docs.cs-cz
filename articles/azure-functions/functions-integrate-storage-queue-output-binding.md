@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 09/19/2017
 ms.custom: mvc
 ms.openlocfilehash: 73f8d23dcd53b4cbbb3fbd902c789e868c2b021b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75769179"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Přidání zpráv do fronty Azure Storage pomocí funkcí
@@ -20,13 +20,13 @@ Vstupní a výstupní vazby ve službě Azure Functions poskytují deklarativní
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto rychlého startu je potřeba:
+K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 * Postupujte podle pokynů v části [Vytvoření první funkce na webu Azure Portal](functions-create-first-azure-function.md) a neprovádějte krok **Vyčištění prostředků**. Tento rychlý start vytvoří aplikaci funkcí a funkci, kterou tady použijete.
 
 * Nainstalujte [Průzkumníka služby Microsoft Azure Storage](https://storageexplorer.com/). Tento nástroj použijete k prozkoumání zpráv fronty, které vytvoří vaše výstupní vazba.
 
-## <a name="add-binding"></a>Přidání výstupní vazby
+## <a name="add-an-output-binding"></a><a name="add-binding"></a>Přidání výstupní vazby
 
 V této části použijete uživatelské rozhraní portálu pro přidání výstupní vazby úložiště front do funkce, kterou jste vytvořili dříve. Tato vazba umožní k vytvoření zprávy ve frontě napsat jen minimum kódu. Nemusíte psát kód pro úlohy, jako je otevření připojení úložiště, vytvoření fronty nebo získání odkazu na frontu. O tyto věci se z vás postarají modul runtime Azure Functions a výstupní vazba fronty.
 
@@ -34,9 +34,9 @@ V této části použijete uživatelské rozhraní portálu pro přidání výst
 
 1. Vyberte funkci, kterou jste vytvořili v tomto dřívějším rychlém startu.
 
-1. Vyberte **integration > New Output > Azure Queue Storage**.
+1. Vyberte **integrovat > nový výstup > Azure Queue Storage**.
 
-1. Klikněte na **Vybrat**.
+1. Klepněte na **tlačítko Vybrat**.
 
     ![Přidejte výstupní vazbu Queue Storage do funkce na webu Azure Portal.](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
 
@@ -66,7 +66,7 @@ V této části přidáte kód, který zapíše zprávu do výstupní fronty. Zp
 
 1. Aktualizujte kód funkce v závislosti na jazyku funkce:
 
-    # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+    # <a name="c"></a>[C\#](#tab/csharp)
 
     Přidejte parametr **outputQueueItem** do podpisu metody, jak ukazuje následující obrázek.
 
@@ -84,7 +84,7 @@ V této části přidáte kód, který zapíše zprávu do výstupní fronty. Zp
     outputQueueItem.Add("Name passed to the function: " + name);
     ```
 
-    # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+    # <a name="javascript"></a>[Javascript](#tab/nodejs)
 
     Přidejte kód, který používá výstupní vazbu objektu `context.bindings` k vytvoření zprávy fronty. Vložte tento kód před příkaz `context.done`.
 

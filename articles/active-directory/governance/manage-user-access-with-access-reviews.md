@@ -1,5 +1,5 @@
 ---
-title: Správa přístupu uživatelů pomocí revizí přístupu – Azure AD
+title: Správa přístupu uživatelů pomocí kontrol přístupu – Azure AD
 description: Zjistěte, jak spravovat přístup uživatelů jako členství ve skupině nebo přiřazení k aplikaci s využitím kontrol přístupu Azure Active Directory.
 services: active-directory
 documentationcenter: ''
@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2c307b349144974a4d38f937feeebb98f369d047
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75932403"
 ---
 # <a name="manage-user-access-with-azure-ad-access-reviews"></a>Správa přístupu uživatelů pomocí kontrol přístupu Azure AD
@@ -34,7 +34,7 @@ S Azure Active Directory (Azure AD) můžete snadno zajistit, že uživatelé ma
 
 - Azure AD Premium P2
 
-Další informace najdete v tématu [licenční požadavky](access-reviews-overview.md#license-requirements).
+Další informace naleznete v tématu [Licenční požadavky](access-reviews-overview.md#license-requirements).
 
 ## <a name="create-and-perform-an-access-review"></a>Vytvoření a provedení kontroly přístupu
 
@@ -44,15 +44,15 @@ V rámci kontroly přístupu může revidujícími být mít jednoho nebo někol
 
 2. Rozhodněte, jestli má každý uživatel kontrolovat svůj vlastní přístup, nebo jestli má jeden nebo několik uživatelů kontrolovat přístup všech.
 
-3. Jako globální správce nebo Správce uživatelů přejdete na [stránku zásad správného řízení identity](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
+3. Jako globální správce nebo správce uživatelů přejděte na [stránku Zásad správného řízení identit .](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)
 
-4. Vytvořte kontrolu přístupu. Další informace najdete v tématu [Vytvoření kontroly přístupu skupin nebo aplikací](create-access-review.md).
+4. Vytvořte kontrolu přístupu. Další informace naleznete [v tématu Vytvoření kontroly přístupu skupin nebo aplikací](create-access-review.md).
 
-5. Jakmile se spustí Kontrola přístupu, požádejte kontrolora, aby poskytli vstup. Ve výchozím nastavení každý z nich obdrží e-mail od Azure AD s odkazem na přístupový panel, kde se [posoudí o přístupu ke skupinám nebo aplikacím](perform-access-review.md).
+5. Po spuštění kontroly přístupu požádejte recenzenty, aby nám poskytli vstup. Ve výchozím nastavení každý obdrží e-mail z Azure AD s odkazem na přístupový panel, kde [kontrolují přístup ke skupinám nebo aplikacím](perform-access-review.md).
 
 6. Pokud revidující neposkytli informace, můžete požádat službu Azure AD, aby jim odeslala připomenutí. Ve výchozím nastavení Azure AD automaticky pošle připomenutí revidujícím, kteří ještě neodpověděli, po uplynutí poloviny času.
 
-7. Jakmile revidující poskytnou potřebné informace, zastavte kontrolu přístupu a proveďte příslušné změny. Další informace najdete v tématu [dokončení kontroly přístupu skupin nebo aplikací](complete-access-review.md).
+7. Jakmile revidující poskytnou potřebné informace, zastavte kontrolu přístupu a proveďte příslušné změny. Další informace naleznete [v tématu Complete a access review of groups or applications](complete-access-review.md).
 
 
 ## <a name="next-steps"></a>Další kroky

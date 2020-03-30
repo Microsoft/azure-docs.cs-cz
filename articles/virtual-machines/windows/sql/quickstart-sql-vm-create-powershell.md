@@ -14,10 +14,10 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 8994079cf18a9af5f5e1368761015bbd8b836bd9
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74790911"
 ---
 # <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>Rychlý start: Vytvoření virtuálního počítače s Windows a SQL Serverem pomocí Azure PowerShellu
@@ -28,28 +28,28 @@ Tento rychlý start vás provede vytvořením virtuálního počítače s SQL Se
 > - Tento rychlý start obsahuje postup pro rychlé zřízení virtuálního počítače SQL a připojení k němu. Další informace o jiných možnostech vytváření virtuálních počítačů SQL pomocí Azure PowerShellu najdete v tématu [Průvodce zřizováním virtuálních počítačů s SQL Serverem pomocí Azure PowerShellu](virtual-machines-windows-ps-sql-create.md).
 > - Pokud máte dotazy k virtuálním počítačům s SQL Serverem, přečtěte si [Nejčastější dotazy](virtual-machines-windows-sql-server-iaas-faq.md).
 
-## <a id="subscription"></a>Získání předplatného Azure
+## <a name="get-an-azure-subscription"></a><a id="subscription"></a>Získání předplatného Azure
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 
-## <a id="powershell"></a>Získání Azure PowerShellu
+## <a name="get-azure-powershell"></a><a id="powershell"></a>Získání Azure PowerShellu
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
 ## <a name="configure-powershell"></a>Konfigurace prostředí PowerShell
 
-1. Otevřete PowerShell a navažte přístup ke svému účtu Azure spuštěním příkazu **Connect-AzAccount** .
+1. Otevřete PowerShell a vytvořte přístup ke svému účtu Azure spuštěním příkazu **Connect-AzAccount.**
 
    ```powershell
    Connect-AzAccount
    ```
 
-1. Měla by se zobrazit obrazovka pro zadání vašich přihlašovacích údajů. Použijte stejný e-mail a heslo, pomocí kterých se přihlašujete na webu Azure Portal.
+1. Měli byste vidět obrazovku pro zadání pověření. Použijte stejný e-mail a heslo, pomocí kterých se přihlašujete na webu Azure Portal.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-1. Definujte proměnnou s jedinečným názvem skupiny prostředků. Aby bylo možné zjednodušit zbytek rychlého startu, zbývající příkazy používají tento název jako základ pro jiné názvy prostředků.
+1. Definujte proměnnou s jedinečným názvem skupiny prostředků. Chcete-li zjednodušit zbytek rychlého startu, zbývající příkazy použít tento název jako základ pro jiné názvy prostředků.
 
    ```powershell
    $ResourceGroupName = "sqlvm1"
@@ -120,7 +120,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="create-the-sql-vm"></a>Vytvoření virtuálního počítače pro SQL
 
-1. Definujte přihlašovací údaje pro přihlášení k virtuálnímu počítači. Uživatelské jméno je "azureadmin". Před spuštěním příkazu se ujistěte, že jste změnili \<heslo >.
+1. Definujte přihlašovací údaje pro přihlášení k virtuálnímu počítači. Uživatelské jméno je "azureadmin". Před spuštěním \<příkazu nezapomeňte změnit> hesla.
 
    ``` PowerShell
    # Define a credential object
@@ -148,7 +148,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="install-the-sql-iaas-agent"></a>Instalace agenta SQL IaaS
 
-Chcete-li získat funkce integrace portálu a virtuálního počítače SQL, je nutné nainstalovat [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md). Pokud chcete nainstalovat agenta na nový virtuální počítač, spusťte po vytvoření virtuálního počítače následující příkaz.
+Chcete-li získat funkce integrace portálu a virtuálního počítače SQL, je nutné nainstalovat [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md). Chcete-li nainstalovat agenta na nový virtuální počítač, spusťte následující příkaz po vytvoření virtuálního počítače.
 
    ```powershell
    Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "2.0" -Location $Location
@@ -156,41 +156,41 @@ Chcete-li získat funkce integrace portálu a virtuálního počítače SQL, je 
 
 ## <a name="remote-desktop-into-the-vm"></a>Připojení k virtuálnímu počítači pomocí Vzdálené plochy
 
-1. Pomocí následujícího příkazu načtěte veřejnou IP adresu nového virtuálního počítače.
+1. Pomocí následujícího příkazu načtěte veřejnou IP adresu pro nový virtuální soud.
 
    ```powershell
    Get-AzPublicIpAddress -ResourceGroupName $ResourceGroupName | Select IpAddress
    ```
 
-1. Předat vrácenou IP adresu jako parametr příkazového řádku pro **mstsc** ke spuštění relace vzdálené plochy do nového virtuálního počítače.
+1. Předajte vrácenou IP adresu jako parametr příkazového řádku **mstsc** a spusťte relaci vzdálené plochy do nového virtuálního počítače.
 
    ```
    mstsc /v:<publicIpAddress>
    ```
 
-1. Po zobrazení výzvy k zadání přihlašovacích údajů vyberte zadání přihlašovacích údajů k jinému účtu. Zadejte uživatelské jméno s předchozím zpětným lomítkem (například `\azureadmin`) a heslo, které jste nastavili dříve v tomto rychlém startu.
+1. Po zobrazení výzvy k zadání přihlašovacích údajů vyberte zadání přihlašovacích údajů k jinému účtu. Zadejte uživatelské jméno s předchozím zpětným `\azureadmin`lomítkem (například) a heslo, které jste nastavili dříve v tomto rychlém startu.
 
 ## <a name="connect-to-sql-server"></a>Připojení k SQL Serveru
 
-1. Po přihlášení k relaci vzdálené plochy spusťte v nabídce Start **SQL Server Management Studio 2017** .
+1. Po přihlášení k relaci vzdálené plochy spusťte **sql server management studio 2017** z nabídky Start.
 
-1. V dialogovém okně **připojit k serveru** ponechte výchozí nastavení. Název serveru je shodný s názvem virtuálního počítače. Ověřování je nastavené na **Ověřování systému Windows**. Vyberte **Connect** (Připojit).
+1. V dialogovém okně **Připojit k serveru** zachováte výchozí hodnoty. Název serveru je shodný s názvem virtuálního počítače. Ověřování je nastavené na **Ověřování systému Windows**. Vyberte **Connect** (Připojit).
 
-Nyní jste připojeni k SQL Server místně. Pokud se chcete připojit vzdáleně, musíte [nakonfigurovat připojení](virtual-machines-windows-sql-connect.md) z portálu nebo ručně.
+Nyní jste připojeni k serveru SQL Server místně. Pokud se chcete vzdáleně připojit, je nutné [nakonfigurovat připojení](virtual-machines-windows-sql-connect.md) z portálu nebo ručně.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nepotřebujete, aby se virtuální počítač spouštěl nepřetržitě, můžete se vyhnout zbytečným poplatkům, když ho zastavíte, když se nepoužívá. Následující příkaz zastaví virtuální počítač, ale ponechá ho k dispozici pro budoucí použití.
+Pokud nepotřebujete virtuální ho spustit nepřetržitě, můžete se vyhnout zbytečné poplatky zastavením, když se nepoužívá. Následující příkaz zastaví virtuální počítač, ale ponechá ho k dispozici pro budoucí použití.
 
 ```powershell
 Stop-AzVM -Name $VMName -ResourceGroupName $ResourceGroupName
 ```
 
-Pomocí příkazu **Remove-AzResourceGroup** můžete také trvale odstranit všechny prostředky přidružené k virtuálnímu počítači. Tím se trvale odstraní i virtuální počítač, takže tento příkaz používejte opatrně.
+Můžete také trvale odstranit všechny prostředky přidružené k virtuálnímu počítači pomocí příkazu **Remove-AzResourceGroup.** Pokud tak učiníte trvale odstraní virtuální počítač stejně, takže použijte tento příkaz opatrně.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili virtuální počítač se systémem SQL Server 2017 pomocí prostředí Azure PowerShell. Další informace o tom, jak na tento nový SQL Server migrovat data, najdete v následujícím článku.
+V tomto rychlém startu jste vytvořili virtuální počítač se systémem SQL Server 2017 pomocí prostředí Azure PowerShell. Další informace o tom, jak na tento nový SQL Server přenést data, najdete v následujícím článku.
 
 > [!div class="nextstepaction"]
 > [Migrace databáze na virtuální počítač s SQL](virtual-machines-windows-migrate-sql.md)

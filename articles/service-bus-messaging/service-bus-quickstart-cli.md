@@ -1,6 +1,6 @@
 ---
-title: Rychlý start – použití rozhraní příkazového řádku Azure můžete vytvořit frontu služby Service Bus | Dokumentace Microsoftu
-description: V tomto rychlém startu se dozvíte, jak používat rozhraní příkazového řádku Azure můžete vytvořit frontu služby Service Bus. Potom pomocí ukázkové aplikace v Javě pro odesílání a příjem zpráv z fronty.
+title: Úvodní příručka – pomocí příkazového příkazového příkazu Azure vytvořte frontu služby Service Bus | Dokumenty společnosti Microsoft
+description: V tomto rychlém startu se dozvíte, jak pomocí příkazového příkazu Azure vytvořit frontu service bus. Potom použijete ukázkovou aplikaci Java k odesílání zpráv a přijímání zpráv z fronty.
 services: service-bus-messaging
 author: spelluru
 manager: timlt
@@ -10,29 +10,29 @@ ms.topic: quickstart
 ms.date: 04/10/2019
 ms.author: spelluru
 ms.openlocfilehash: e34599b12b8b0c487c6813038951b051d1eaf425
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "66400265"
 ---
-# <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>Rychlý start: Vytvořit frontu služby Service Bus pomocí Azure CLI
-Tento rychlý start popisuje způsob odesílání a příjem zpráv pomocí Service Bus pomocí Azure CLI a knihovny Service Bus v Javě. Pokud vás zajímají techničtější podrobnosti, můžete si [přečíst vysvětlení](#understand-the-sample-code) klíčových prvků vzorového kódu.
+# <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>Úvodní příručka: Vytvoření fronty služby Service Bus pomocí příkazového příkazového příkazu Azure
+Tento rychlý start popisuje, jak odesílat a přijímat zprávy pomocí service bus pomocí Azure CLI a knihovny Java service bus. Pokud vás zajímají techničtější podrobnosti, můžete si [přečíst vysvětlení](#understand-the-sample-code) klíčových prvků vzorového kódu.
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
 ## <a name="prerequisites"></a>Požadavky
-Pokud nemáte předplatné Azure, můžete vytvořit [bezplatný účet] [ free account] předtím, než začnete.
+Pokud ještě nemáte předplatné Azure, můžete si vytvořit [bezplatný účet][free account] před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
-Pokud používáte **vyzkoušet** tlačítko Spustit Cloud Shell, přihlaste se k Azure pomocí přihlašovacích údajů. 
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+Pokud ke spuštění Cloud Shellu použijete tlačítko **Try It,** přihlaste se do Azure pomocí svých přihlašovacích údajů. 
 
-Pokud jste spustili službě Cloud Shell ve webovém prohlížeči buď přímo, nebo na webu Azure Portal, přepněte na **Bash** Pokud se zobrazí **Powershellu** v horní části levého horního rohu službě Cloud Shell. 
+Pokud jste cloudové prostředí spustili ve webovém prohlížeči přímo nebo na webu Azure Portal, přepněte na **Bash,** pokud se v levém horním rohu Cloud Shellu zobrazí **PowerShell.** 
 
-## <a name="use-the-azure-cli-to-create-resources"></a>Vytvoření prostředků pomocí Azure CLI
-Ve službě Cloud Shell zřiďte v příkazovém řádku Bash pomocí následujících příkazů prostředky služby Service Bus. Nezapomeňte všechny zástupné symboly nahradit příslušnými hodnotami: Ukázkový program v jazyce Java očekává, že název fronty, který se má BasicQueue, takže neměňte ho. Můžete chtít kopírování/vkládání příkazy jeden po druhém, takže můžete nahradit hodnoty před spuštěním je. 
+## <a name="use-the-azure-cli-to-create-resources"></a>Použití azure cli k vytvoření prostředků
+Ve službě Cloud Shell zřiďte v příkazovém řádku Bash pomocí následujících příkazů prostředky služby Service Bus. Nezapomeňte nahradit všechny zástupné symboly příslušnými hodnotami: Ukázkový program Javy očekává, že název fronty bude BasicQueue, takže jej neměňte. Můžete chtít zkopírovat nebo vložit příkazy jeden po druhém, takže můžete nahradit hodnoty před jejich spuštěním. 
 
 ```azurecli-interactive
 # Create a resource group
@@ -55,9 +55,9 @@ Po dokončení všech příkazů zkopírujte vybraný připojovací řetězec a 
 
 ## <a name="send-and-receive-messages"></a>Odesílání a příjem zpráv
 
-Když vytvoříte obor názvů a frontu a máte potřebná pověření, jste připraveni odesílat a přijímat zprávy. Kód můžete zkontrolovat v [této složce s ukázkami na GitHubu](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters).
+Když vytvoříte obor názvů a frontu a máte potřebná pověření, jste připraveni odesílat a přijímat zprávy. Kód si můžete zkontrolovat v [této složce s ukázkami na GitHubu](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters).
 
-1. Klonování [úložiště GitHub služby Service Bus](https://github.com/Azure/azure-service-bus/) v počítači pomocí následujícího příkazu:
+1. Naklonujte [úložiště GitHub service busu](https://github.com/Azure/azure-service-bus/) v počítači vydáním následujícího příkazu:
 
    ```bash
    git clone https://github.com/Azure/azure-service-bus.git
@@ -75,13 +75,13 @@ Když vytvoříte obor názvů a frontu a máte potřebná pověření, jste př
    mvn clean package -DskipTests
    ```
 
-1. Chcete-li spustit program, vydejte následující příkaz po nahrazení připojovací řetězec s hodnotou, kterou jste si zkopírovali dříve:
+1. Chcete-li spustit program, vyjezte po nahrazení připojovacího řetězce hodnotou, kterou jste zkopírovali dříve, následující příkaz:
 
    ```bash
    java -jar ./target/queuesgettingstarted-1.0.0-jar-with-dependencies.jar -c "<SERVICE BUS NAMESPACE CONNECTION STRING>" 
    ```
 
-1. Sledujte, jak se do fronty odešle 10 zpráv. Řazení zpráv, které není zaručeno, ale můžete zobrazit zprávy odesílá, pak potvrzení a přijetí spolu s daty o datové části:
+1. Sledujte, jak se do fronty odešle 10 zpráv. Řazení zpráv není zaručeno, ale můžete vidět odeslané, pak potvrzené a přijaté, spolu s daty datové části:
 
     ```
     Message sending: Id = 0
@@ -187,7 +187,7 @@ Když vytvoříte obor názvů a frontu a máte potřebná pověření, jste př
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Ve službě Azure Cloud Shell spuštěním následujícího příkazu odeberte skupinu prostředků, obor názvů a všechny související prostředky:
+V prostředí Azure Cloud Shell spusťte následující příkaz a odeberte skupinu prostředků, obor názvů a všechny související prostředky:
 
 ```azurecli-interactive
 az group delete --resource-group myResourceGroup
@@ -197,9 +197,9 @@ az group delete --resource-group myResourceGroup
 
 Tato část obsahuje další podrobnosti o klíčových částech vzorového kódu. Kód si můžete prohlédnout [zde](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters) na úložišti GitHub.
 
-### <a name="get-connection-string"></a>Získání připojovacího řetězce
+### <a name="get-connection-string"></a>Získat připojovací řetězec
 
-Metoda akce přečte hodnotu připojovacího řetězce z argumentů do programu. 
+Metoda runApp přečte hodnotu připojovacího řetězce z argumentů do programu. 
 
 ```java
 public static void main(String[] args) {
@@ -368,11 +368,11 @@ void registerReceiver(QueueClient queueClient, ExecutorService executorService) 
 ```
 
 > [!NOTE]
-> Můžete spravovat prostředky služby Service Bus s [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Exploreru umožňuje uživatelům připojit k oboru názvů služby Service Bus a správě entit pro zasílání zpráv snadno způsobem. Tento nástroj nabízí pokročilé funkce, například funkce importu/exportu nebo možnost otestovat tématu, fronty, předplatná, služby pro přenos přes, notification hubs a centra událostí. 
+> Prostředky služby Service Bus můžete spravovat pomocí [aplikace Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Průzkumník služby Service Bus umožňuje uživatelům připojit se k oboru názvů service bus a snadno spravovat entity zasílání zpráv. Nástroj poskytuje pokročilé funkce, jako je funkce importu a exportu nebo možnost testovat téma, fronty, předplatná, přenosové služby, centra oznámení a centra událostí. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste vytvořil obor názvů služby Service Bus a další prostředky potřebné k odesílání a přijímání zpráv z fronty. Další informace o psaní kódu pro odesílání a příjem zpráv, pokračovat v kurzech **odesílání a příjem zpráv** oddílu. 
+V tomto článku jste vytvořil obor názvů služby Service Bus a další prostředky potřebné k odesílání a přijímání zpráv z fronty. Další informace o psaní kódu pro odesílání a přijímání zpráv, pokračujte v kurzech v části **Odesílat a přijímat zprávy.** 
 
 > [!div class="nextstepaction"]
 > [Odesílání a příjem zpráv](service-bus-dotnet-get-started-with-queues.md)

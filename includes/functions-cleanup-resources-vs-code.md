@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
 ms.openlocfilehash: fcfc86a3aca4aae042ce3589988aa91d821dce98
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76842119"
 ---
-1. V Visual Studio Code stisknutím klávesy F1 otevřete paletu příkazů. V paletě příkazů vyhledejte a vyberte `Azure Functions: Open in portal`.
+1. V kódu sady Visual Studio otevřete paletu příkazů stisknutím klávesy F1. V paletě příkazů vyhledejte `Azure Functions: Open in portal`a vyberte .
 
-1. Zvolte aplikaci Function App a stiskněte klávesu ENTER. Stránka Function App se otevře v [Azure Portal](https://portal.azure.com).
+1. Vyberte aplikaci funkcí a stiskněte Enter. Stránka aplikace funkce se otevře na [webu Azure Portal](https://portal.azure.com).
 
-1. Na kartě **Přehled** vyberte v části **Skupina prostředků**odkaz pojmenovaný.
+1. Na kartě **Přehled** vyberte pojmenovaný odkaz v části **Skupina prostředků**.
 
     ![Vyberte skupinu prostředků, kterou chcete odstranit ze stránky aplikace funkcí.](./media/functions-cleanup-resources-vs-code/functions-app-delete-resource-group.png)
 

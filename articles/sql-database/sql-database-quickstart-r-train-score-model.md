@@ -1,7 +1,7 @@
 ---
-title: Vytvoření a výuka prediktivního modelu v jazyce R
+title: Vytvoření a trénování prediktivního modelu v R
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Vytvořte v R jednoduché prediktivní modely pomocí Azure SQL Database Machine Learning Services (Preview) a pak předpověď výsledku pomocí nových dat.
+description: Vytvořte jednoduchý prediktivní model v R pomocí Služby strojového učení Azure SQL Database Machine Learning Services (preview) a pak předpovědět výsledek pomocí nových dat.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -14,51 +14,51 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
 ms.openlocfilehash: a54d418f668d8c7292c8332c1b14c4df45e59308
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76768464"
 ---
-# <a name="quickstart-create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Rychlý Start: vytvoření a výuka prediktivního modelu v R s Azure SQL Database Machine Learning Services (Preview)
+# <a name="quickstart-create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Úvodní příručka: Vytvoření a trénování prediktivního modelu v R se službami Machine Learning Services azure SQL database (preview)
 
-V tomto rychlém startu vytvoříte a provedete prediktivní model pomocí jazyka R, uložíte model do tabulky v databázi a potom použijete model k předpovědi hodnot z nových dat pomocí Machine Learning Services (s R) v Azure SQL Database.
+V tomto rychlém startu vytvoříte a trénete prediktivní model pomocí R, uložíte model do tabulky v databázi a pak pomocí modelu předpovídáte hodnoty z nových dat pomocí služby Machine Learning Services (s R) v Azure SQL Database.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Azure SQL Database](sql-database-single-database-get-started.md) s [pravidlem brány firewall na úrovni serveru](sql-database-server-level-firewall-rule.md)
-- [Machine Learning Services](sql-database-machine-learning-services-overview.md) s povoleným R. [Zaregistrujte se do verze Preview](sql-database-machine-learning-services-overview.md#signup).
-- [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
+- [Databáze Azure SQL](sql-database-single-database-get-started.md) s [pravidlem brány firewall na úrovni serveru](sql-database-server-level-firewall-rule.md)
+- [Služby strojového učení](sql-database-machine-learning-services-overview.md) s povolenou r. [Zaregistrovat verzi Preview](sql-database-machine-learning-services-overview.md#signup)
+- [Sql Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
 > [!NOTE]
-> V rámci verze Public Preview vám Microsoft zaregistruje a povolí Machine Learning pro vaši stávající nebo novou databázi.
+> Během veřejné verze Preview vás Microsoft připojí k vaší službě a umožní strojové učení pro vaši stávající nebo novou databázi.
 
-V tomto příkladu se používá jednoduchý regresní model k předpovídání brzdné dráhy auta na základě rychlosti pomocí datové sady **automobilů** zahrnuté v jazyce R.
+Tento příklad používá jednoduchý regresní model k předvídání brzdné dráhy vozu na základě rychlosti pomocí datové sady **vozů,** která je součástí r.
 
 > [!TIP]
-> K dispozici je řada datových sad s modulem runtime R, aby bylo možné získat seznam nainstalovaných datových sad, zadejte `library(help="datasets")` z příkazového řádku R.
+> Mnoho datových sad jsou součástí runtime R, chcete-li `library(help="datasets")` získat seznam nainstalovaných datových sad, zadejte z příkazového řádku R.
 
-## <a name="create-and-train-a-predictive-model"></a>Vytvoření a výuka prediktivního modelu
+## <a name="create-and-train-a-predictive-model"></a>Vytvoření a trénování prediktivního modelu
 
-Data rychlosti auta v datové sadě **automobilů** obsahují dva sloupce, jak číselné: **DIST** , tak i **Speed**. Data obsahují více zastavování pozorování s různou rychlostí. Z těchto dat vytvoříte model lineární regrese, který popisuje vztah mezi rychlostí auta a vzdáleností nutnou k zastavení auta.
+Údaje o rychlosti **vozidla** v datové sadě vozů obsahují dva sloupce, oba číselné: **dist** a **speed**. Data zahrnují více zastavení pozorování při různých rychlostech. Z těchto dat vytvoříte lineární regresní model, který popisuje vztah mezi rychlostí auta a vzdáleností potřebnou k zastavení auta.
 
 Požadavky na lineární model jsou jednoduché:
-- Definujte vzorec, který popisuje vztah mezi proměnnou závislých proměnných a *vzdáleností* *nezávislé proměnné.*
+- Definujte vzorec, který popisuje vztah mezi závislou proměnnou *rychlostí* a nezávislou proměnnou *vzdáleností*.
 - Poskytnutí vstupních dat pro použití při trénování modelu.
 
 > [!TIP]
-> Pokud potřebujete aktualizační program pro lineární modely, vyzkoušejte tento kurz, který popisuje proces přizpůsobení modelu pomocí rxLinMod: [přizpůsobení lineárních modelů](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)
+> Pokud potřebujete opakovací postup u lineárních modelů, vyzkoušejte tento návod, který popisuje proces montáže modelu pomocí rxLinMod: [Montáž lineárních modelů](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)
 
-V následujících krocích nastavíte školicí údaje, vytvoříte regresní model, provedete ho pomocí školicích dat a pak uložíte model do tabulky SQL.
+V následujících krocích nastavíte trénovací data, vytvoříte regresní model, natrénujete ho pomocí trénovacích dat a pak model uložíte do tabulky SQL.
 
-1. Otevřete aplikaci **SQL Server Management Studio** a připojte se ke své databázi SQL.
+1. Otevřete **SQL Server Management Studio** a připojte se k databázi SQL.
 
-   Pokud potřebujete pomáhat s připojením, přečtěte si téma [rychlý Start: použití SQL Server Management Studio k připojení a dotazování databáze SQL Azure](sql-database-connect-query-ssms.md).
+   Pokud potřebujete pomoc s připojením, přečtěte si [úvodní příručku: Pomocí aplikace SQL Server Management Studio se můžete připojit k databázi Azure SQL a zadat dotaz](sql-database-connect-query-ssms.md)na ni .
 
-1. Vytvořte tabulku **CarSpeed** k uložení školicích dat.
+1. Vytvořte tabulku **CarSpeed** pro uložení trénovacích dat.
 
     ```sql
     CREATE TABLE dbo.CarSpeed (
@@ -78,9 +78,9 @@ V následujících krocích nastavíte školicí údaje, vytvoříte regresní m
     GO
     ```
 
-1. Vytvořte regresní model pomocí `rxLinMod`. 
+1. Vytvořte regresní `rxLinMod`model pomocí . 
 
-   Chcete-li vytvořit model, který definujete v kódu R, a pak předejte školicí data **CarSpeed** jako vstupní parametr.
+   Chcete-li vytvořit model, definujete vzorec uvnitř kódu R a pak předáte trénovací data **CarSpeed** jako vstupní parametr.
 
     ```sql
     DROP PROCEDURE IF EXISTS generate_linear_model;
@@ -104,9 +104,9 @@ V následujících krocích nastavíte školicí údaje, vytvoříte regresní m
 
      První argument funkce rxLinMod je parametr *formula*, který definuje závislost proměnné distance (vzdálenost) na proměnné speed (rychlost). Vstupní data jsou uložená v proměnné `CarsData`, která se naplní dotazem SQL.
 
-1. Vytvořte tabulku, do které model uložíte, abyste ho mohli později použít pro předpověď. 
+1. Vytvořte tabulku, do které uložíte model, abyste ho později mohli použít pro předpověď. 
 
-   Výstupem balíčku R, který vytváří model, je obvykle **binární objekt**, takže tabulka musí mít sloupec typu **varbinary (max)** .
+   Výstup balíčku R, který vytvoří model, je obvykle **binární objekt**, takže tabulka musí mít sloupec typu **VARBINARY(max).**
 
     ```sql
     CREATE TABLE dbo.stopping_distance_models (
@@ -115,7 +115,7 @@ V následujících krocích nastavíte školicí údaje, vytvoříte regresní m
         );
     ```
 
-1. Nyní zavolejte uloženou proceduru, vygenerujte model a uložte ji do tabulky.
+1. Nyní volání uložené procedury, generovat model a uložit do tabulky.
 
    ```sql
    INSERT INTO dbo.stopping_distance_models (model)
@@ -128,7 +128,7 @@ V následujících krocích nastavíte školicí údaje, vytvoříte regresní m
    Violation of PRIMARY KEY constraint...Cannot insert duplicate key in object bo.stopping_distance_models
    ```
 
-   Jednu z možností, jak se vyhnout této chybě, je aktualizovat název pro každý nový model. Můžete například použít popisnější název a zahrnout do něj typ modelu, den vytvoření atd.
+   Jednou z možností, jak se této chybě vyhnout, je aktualizovat název každého nového modelu. Můžete například použít popisnější název a zahrnout do něj typ modelu, den vytvoření atd.
 
    ```sql
    UPDATE dbo.stopping_distance_models
@@ -140,7 +140,7 @@ V následujících krocích nastavíte školicí údaje, vytvoříte regresní m
 
 Obecně platí, že výstup kódu R z uložené procedury [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) je omezený na jeden datový rámec. Kromě datového rámce však můžete vracet i výstupy jiných typů, například skaláry.
 
-Předpokládejme například, že chcete vytvořit výuku modelu, ale hned zobrazit tabulku koeficientů z modelu. K tomu je třeba vytvořit tabulku koeficientů jako hlavní sadu výsledků a výstupem vyškolený model v proměnné SQL. Model můžete okamžitě znovu použít voláním proměnné, nebo můžete model Uložit do tabulky, jak je znázorněno zde.
+Předpokládejme například, že chcete trénovat model, ale okamžitě zobrazit tabulku koeficientů z modelu. Chcete-li tak učinit, vytvořte tabulku koeficientů jako hlavní sadu výsledků a výstup trénovaného modelu v proměnné SQL. Model můžete okamžitě znovu použít voláním proměnné, nebo můžete model uložit do tabulky, jak je znázorněno zde.
 
 ```sql
 DECLARE @model VARBINARY(max)
@@ -173,11 +173,11 @@ VALUES (
 
 ![Natrénovaný model s dalším výstupem](./media/sql-database-quickstart-r-train-score-model/r-train-model-with-additional-output.png)
 
-## <a name="score-new-data-using-the-trained-model"></a>Hodnocení nových dat pomocí trained model
+## <a name="score-new-data-using-the-trained-model"></a>Skóre nových dat pomocí trénovaného modelu
 
-*Bodování* je termín používaný v datové vědy k vytvoření předpovědi, pravděpodobnosti nebo dalších hodnot na základě nových dat, která jsou vydávána do trained model. Pomocí modelu, který jste vytvořili v předchozí části, můžete určit skóre předpovědi proti novým datům.
+*Vyhodnocování* je termín používaný v datové vědě znamenat generování předpovědi, pravděpodobnosti nebo jiné hodnoty založené na nových dat do trénovaného modelu. Model, který jste vytvořili v předchozí části, použijete k porovnání s novými daty.
 
-Všimli jste si, že původní trénovací data končila rychlostí 25 MPH? Je to proto, že původní data vycházela z experimentu z roku 1920. Můžete se setkat s tím, jak dlouho by se od 1920s dostal automobil, pokud by mohl trvat až 60 mph nebo dokonce 100 mph? K zodpovězení této otázky můžete pro svůj model zadat nějaké nové hodnoty rychlosti.
+Všimli jste si, že původní trénovací data končila rychlostí 25 MPH? Je to proto, že původní data vycházela z experimentu z roku 1920. Možná se divíte, jak dlouho by trvalo automobil u 1920 zastavit, pokud by to mohlo jít tak rychle, jak 60 mph nebo dokonce 100 mph? Chcete-li odpovědět na tuto otázku, můžete zadat některé nové hodnoty rychlosti modelu.
 
 1. Vytvořte tabulku s novými daty o rychlosti.
 
@@ -198,19 +198,19 @@ Všimli jste si, že původní trénovací data končila rychlostí 25 MPH? Je t
         , (100)
    ```
 
-2. Předpovídání zastavování vzdálenosti z těchto nových hodnot rychlosti.
+2. Předpovědět brzdnou dráhu z těchto nových hodnot rychlosti.
 
-   Vzhledem k tomu, že váš model je založen na algoritmu **rxLinMod** , který je součástí balíčku **RevoScaleR** , je místo obecné funkce `predict` jazyka R volána funkce [rxPredict](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxpredict) .
+   Vzhledem k tomu, že váš model je založen na algoritmu **rxLinMod** poskytované jako součást balíčku **RevoScaleR,** zavoláte funkci [rxPredict,](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxpredict) nikoli obecnou funkci R. `predict`
 
    Tento ukázkový skript:
-   - Pomocí příkazu SELECT získá jeden model z tabulky.
-   - Předá ho jako vstupní parametr.
-   - Volá funkci `unserialize` v modelu.
-   - Aplikuje funkci `rxPredict` s příslušnými argumenty na model.
-   - Poskytuje nová vstupní data.
+   - Používá příkaz SELECT k získání jednoho modelu z tabulky.
+   - Předá jej jako vstupní parametr
+   - Volá `unserialize` funkci na modelu
+   - Aplikuje `rxPredict` funkci s příslušnými argumenty na model.
+   - Poskytuje nová vstupní data
 
    > [!TIP]
-   > Pro bodování v reálném čase naleznete informace v tématu [serializace Functions](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxserializemodel) , které poskytuje RevoScaleR.
+   > Vyhodnocování v reálném čase najdete [v tématu Serializace funkce](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxserializemodel) poskytované RevoScaleR.
 
    ```sql
     DECLARE @speedmodel VARBINARY(max) = (
@@ -242,15 +242,15 @@ Všimli jste si, že původní trénovací data končila rychlostí 25 MPH? Je t
    ![Sada výsledků dotazu pro předpověď brzdné dráhy](./media/sql-database-quickstart-r-train-score-model/r-predict-stopping-distance-resultset.png)
 
 > [!NOTE]
-> V tomto ukázkovém skriptu je funkce `str` přidána během testovací fáze pro kontrolu schématu dat vrácených z R. Příkaz můžete odebrat později.
+> V tomto příkladskriptu `str` funkce je přidánběhem fáze testování ke kontrole schématu dat vrácených z R. Příkaz můžete odebrat později.
 >
-> Názvy sloupců použité ve skriptu R není nutné předávat do výstupu uložené procedury. Tady je klauzule WITH RESULTs definující některé nové názvy sloupců.
+> Názvy sloupců použité ve skriptu R není nutné předávat do výstupu uložené procedury. Zde s výsledky klauzule definuje některé nové názvy sloupců.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure SQL Database Machine Learning Services s R (Preview) najdete v následujících článcích.
+Další informace o službách Azure SQL Database Machine Learning Services s R (preview) najdete v následujících článcích.
 
-- [Azure SQL Database Machine Learning Services s R (Preview)](sql-database-machine-learning-services-overview.md)
-- [Vytvoření a spuštění jednoduchých skriptů R v Azure SQL Database Machine Learning Services (Preview)](sql-database-quickstart-r-create-script.md)
-- [Zápis pokročilých funkcí R v Azure SQL Database pomocí Machine Learning Services (Preview)](sql-database-machine-learning-services-functions.md)
-- [Práce s daty R a SQL v Azure SQL Database Machine Learning Services (Preview)](sql-database-machine-learning-services-data-issues.md)
+- [Služby strojového učení azure SQL database s r (preview)](sql-database-machine-learning-services-overview.md)
+- [Vytváření a spouštění jednoduchých skriptů R ve službách Azure SQL Database Machine Learning Services (preview)](sql-database-quickstart-r-create-script.md)
+- [Psaní pokročilých funkcí R v Azure SQL Database pomocí služby Machine Learning Services (preview)](sql-database-machine-learning-services-functions.md)
+- [Práce s daty R a SQL ve službě Azure SQL Database Machine Learning Services (preview)](sql-database-machine-learning-services-data-issues.md)

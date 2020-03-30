@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 0ed2137d1fd7a3c207db3ec49590a61f00b5fd99
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774273"
 ---
-V tuto chvíli se zrušení zřízení nepodporuje pomocí portálu nebo PowerShellu. požádejte o zrušení zřízení [partnera Microsoftu](mailto:peeringexperience@microsoft.com) .
+V současné době deprovision není podporovánpomocí portálu nebo prostředí PowerShell, obraťte se na [partnerský vztah Microsoftu](mailto:peeringexperience@microsoft.com) k zrušení zřízení.

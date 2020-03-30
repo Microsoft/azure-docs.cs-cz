@@ -1,6 +1,6 @@
 ---
 title: Porovnání služeb Azure pro zasílání zpráv
-description: Popisuje tři zasílání zpráv služby Azure – Azure Event Grid, Event Hubs a služby Service Bus. Doporučuje nejvhodnější služby pro různé situace.
+description: Popisuje tři služby zasílání zpráv Azure – Azure Event Grid, Event Hubs a Service Bus. Doporučuje nejvhodnější služby pro různé situace.
 services: event-grid
 author: spelluru
 manager: timlt
@@ -10,18 +10,18 @@ ms.date: 10/22/2019
 ms.author: spelluru
 ms.custom: seodec18
 ms.openlocfilehash: 6122f17637e76f42cc4fbcc87ac9f48da3cdca36
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76122198"
 ---
-# <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Výběr mezi zasílání zpráv služby Azure - Event Grid, Event Hubs a služby Service Bus
+# <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Vyberte si mezi službami zasílání zpráv Azure – Event Grid, Event Hubs a Service Bus
 
 Azure nabízí tři služby, které v rámci určitého řešení pomáhají doručovat zprávy o událostech. Jsou to tyto služby:
 
 * [Event Grid](/azure/event-grid/)
-* [Event Hubs](/azure/event-hubs/)
+* [Centra událostí](/azure/event-hubs/)
 * [Service Bus](/azure/service-bus-messaging/)
 
 I když se tyto služby v mnohém podobají, každá z nich je navržená pro určité situace. Tento článek vysvětluje rozdíly mezi nimi a pomůže vám pochopit, kterou službu si máte pro svoji aplikaci vybrat. V mnoha případech se služby zasílání zpráv vzájemně doplňují a dají se použít společně.
@@ -34,7 +34,7 @@ Je potřeba rozlišovat mezi službami, které doručují události, a službami
 
 Událost je odlehčené oznámení o stavu nebo změně stavu. Vydavatel události nemá žádné očekávání ohledně toho, jak se má událost zpracovat. Příjemce události se rozhodne, jak s oznámením naložit. Události můžou být samostatné jednotky nebo můžou být součástí řady.
 
-Samostatné události hlásí změny stavu a dá se na ně reagovat. Pokud chce příjemce přejít k dalšímu kroku, stačí mu jenom vědět, že se něco stalo. Data události obsahují informace o tom, co se stalo, ale neobsahují data, která událost aktivovala. Událost třeba příjemcům oznamuje, že došlo k vytvoření souboru. Může obsahovat obecné informace o tomto souboru, ale ne soubor samotný. Diskrétní události jsou ideální pro řešení bez [serveru](https://azure.com/serverless) , která se musí škálovat.
+Samostatné události hlásí změny stavu a dá se na ně reagovat. Pokud chce příjemce přejít k dalšímu kroku, stačí mu jenom vědět, že se něco stalo. Data události obsahují informace o tom, co se stalo, ale neobsahují data, která událost aktivovala. Událost třeba příjemcům oznamuje, že došlo k vytvoření souboru. Může obsahovat obecné informace o tomto souboru, ale ne soubor samotný. Diskrétní události jsou ideální pro řešení [bez serveru,](https://azure.com/serverless) která je třeba škálovat.
 
 Řady událostí hlásí určitý stav a jsou analyzovatelné. Události jsou seřazené podle času a vzájemně provázané. Pokud chcete příjemce analyzovat, co se stalo, potřebuje sekvenční řadu událostí.
 
@@ -44,7 +44,7 @@ Zprávu tvoří nezpracovaná data vytvořená určitou službou, která se maj�
 
 ## <a name="comparison-of-services"></a>Porovnání služeb
 
-| Služba | Účel | Typ | When to use |
+| Služba | Účel | Typ | Kdy je použít |
 | ------- | ------- | ---- | ----------- |
 | Event Grid | Reaktivní programování | Distribuce události (samostatná) | Reakce na změny stavu |
 | Event Hubs | Kanál pro velké objemy dat | Streamování událostí (řady) | Streamování telemetrických a distribuovaných dat |
@@ -56,7 +56,7 @@ Event Grid je propojovací rovina událostí, která umožňuje reaktivní progr
 
 Služba Event Grid je úzce propojená se službami Azure a umožňuje taky integraci se službami třetích stran. To zjednodušuje příjem událostí a snižuje náklady, protože není potřeba neustále provádět dotazování. Event Grid efektivně a spolehlivě směruje události z prostředků Azure i mimo Azure. Distribuuje události do registrovaných koncových bodů odběratelů. Zpráva události obsahuje informace, které potřebujete, abyste mohli reagovat na změny ve službách a aplikacích. Event Grid není datový kanál a nedoručuje samotný objekt, u kterého došlo k aktualizaci.
 
-Podporuje Služba Event Grid dead-lettering pro události, které nejsou doručeny do koncového bodu.
+Event Grid podporuje nedoručené pro události, které nejsou doručovány do koncového bodu.
 
 Má následující vlastnosti:
 
@@ -77,7 +77,7 @@ Má následující vlastnosti:
 
 ### <a name="service-bus"></a>Service Bus
 
-Služba Service Bus je určená pro tradiční podnikové aplikace. Tyto podnikové aplikace vyžadují transakce, řazení, vyhledávání duplicit a okamžitou konzistenci. Service Bus umožňuje [cloudovým nativním](https://azure.microsoft.com/overview/cloudnative/) aplikacím poskytovat správu přenosů spolehlivého stavu pro obchodní procesy. Pokud zpracováváte zprávy s vysokou hodnotou, které se nesmí ztratit ani duplikovat, použijte Azure Service Bus. Service Bus zároveň usnadňuje vysoce zabezpečenou komunikaci v rámci hybridního cloudového řešení a může propojovat stávající místní systémy s cloudovými řešeními.
+Služba Service Bus je určená pro tradiční podnikové aplikace. Tyto podnikové aplikace vyžadují transakce, řazení, vyhledávání duplicit a okamžitou konzistenci. Service Bus umožňuje [aplikacím nativním pro cloud](https://azure.microsoft.com/overview/cloudnative/) poskytovat spolehlivou správu přechodu stavu pro obchodní procesy. Pokud zpracováváte zprávy s vysokou hodnotou, které se nesmí ztratit ani duplikovat, použijte Azure Service Bus. Service Bus zároveň usnadňuje vysoce zabezpečenou komunikaci v rámci hybridního cloudového řešení a může propojovat stávající místní systémy s cloudovými řešeními.
 
 Service Bus je zprostředkovaný systém zasílání zpráv. Ukládá zprávy do „zprostředkovatele“ (třeba fronty), dokud není přijímající strana připravená zprávy přijmout.
 
@@ -90,7 +90,7 @@ Má následující vlastnosti:
 
 ## <a name="use-the-services-together"></a>Použití služeb v kombinaci
 
-V některých případech používáte služby současně k plnění různých úkolů. Například web elektronického obchodování může použít Service Bus ke zpracování objednávky, Event Hubs k zachycení telemetrie webu a Event Grid reakci na události, jako byla položka odeslána.
+V některých případech používáte služby současně k plnění různých úkolů. Web elektronického obchodování může například použít službu Service Bus ke zpracování objednávky, centra událostí k zachycení telemetrie webu a Event Grid k reakci na události, jako je přeprava zboží.
 
 V jiných případech služby vzájemně propojíte do kanálu událostí a dat. Event Grid slouží k reagování na události v jiných službách. V článku [Streamování velkých objemů dat do datového skladu](event-grid-event-hubs-integration.md) najdete příklad použití Event Gridu v kombinaci se službou Event Hubs. Následující obrázek ukazuje pracovní postup pro streamování dat.
 
@@ -100,7 +100,7 @@ V jiných případech služby vzájemně propojíte do kanálu událostí a dat.
 Viz následující články: 
 - [Možnosti asynchronního zasílání zpráv v Azure](/azure/architecture/guide/technology-choices/messaging)
 - [Události, datové body a zprávy – výběr správné služby zasílání zpráv Azure pro vaše data](https://azure.microsoft.com/blog/events-data-points-and-messages-choosing-the-right-azure-messaging-service-for-your-data/).
-- [Fronty úložiště a fronty Service Bus – porovnání a kontrast](../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+- [Fronty úložiště a fronty service bus – porovnání a porovnání](../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 - Pokud chcete začít pracovat s Event Gridem, přečtěte si článek [Vytvoření a směrování vlastních událostí pomocí služby Azure Event Grid](custom-event-quickstart.md).
 - Pokud chcete začít pracovat se službou Event Hubs, přečtěte si článek [Vytvoření oboru názvů služby Event Hubs a centra událostí pomocí webu Azure Portal](../event-hubs/event-hubs-create.md).
 - Pokud chcete začít pracovat se službou Service Bus, přečtěte si článek [Vytvoření oboru názvů služby Service Bus pomocí webu Azure Portal](../service-bus-messaging/service-bus-create-namespace-portal.md).

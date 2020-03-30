@@ -1,6 +1,6 @@
 ---
-title: Architektury řízené událostmi na Edge – Azure Event Grid na IoT Edge
-description: Pro přeposílání událostí mezi moduly, hraničními zařízeními a cloudem použijte Azure Event Grid jako modul IoT Edge.
+title: Architektury řízené událostmi na hraničních zařízeních – Azure Event Grid na IoT Edge
+description: Azure Event Grid můžete použít jako modul na IoT Edge pro události vpřed mezi moduly, hraničními zařízeními a cloudem.
 services: event-grid
 author: banisadr
 ms.service: event-grid
@@ -8,84 +8,84 @@ ms.topic: overview
 ms.date: 10/22/2019
 ms.author: babanisa
 ms.openlocfilehash: feac5891734731e6f7377750127958a40a815036
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76844648"
 ---
-# <a name="what-is-azure-event-grid-on-azure-iot-edge"></a>Co je Azure Event Grid v Azure IoT Edge?
-Event Grid v IoT Edge přináší výkon a flexibilitu Azure Event Grid na hraničních zařízeních. Vytvářejte témata, publikujte události a přihlaste se k odběru více míst, ať už jsou moduly na stejném zařízení, v jiných hraničních zařízeních nebo službách v cloudu.
+# <a name="what-is-azure-event-grid-on-azure-iot-edge"></a>Co je Azure Event Grid na Azure IoT Edge?
+Event Grid na IoT Edge přináší výkon a flexibilitu Azure Event Grid na okraj. Vytvářejte témata, publikujte události a odebíráte si více cílů bez ohledu na to, zda se jedná o moduly na stejném zařízení, jiných hraničních zařízeních nebo službách v cloudu.
 
-Stejně jako v cloudu Event Grid modul IoT Edge zpracovává směrování, filtrování a spolehlivé doručování událostí ve velkém měřítku. Filtrovat události, aby se zajistilo, že se do různých obslužných rutin událostí odesílají pouze relevantní události pomocí pokročilých řetězcových, číselných a logických filtrů. Logika opakování zajišťuje, že událost dosáhne cílového cíle i v případě, že není k dispozici v době publikování. Umožňuje použít Event Grid v IoT Edge jako výkonný mechanismus úložiště a dopředné mechanismu.
+Stejně jako v cloudu zpracovává modul Event Grid na IoT Edge směrování, filtrování a spolehlivé doručování událostí ve velkém měřítku. Filtrování událostí, abyste zajistili, že do různých obslužných rutin událostí pomocí rozšířených řetězcových, číselných a logických filtrů budou odesílat pouze relevantní události. Logika opakování zajišťuje, že událost dosáhne cílového cíle i v případě, že není k dispozici v době publikování. Umožňuje používat Event Grid na IoT Edge jako výkonný mechanismus úložiště a dopředu.
 
-Event Grid v IoT Edge podporuje jak CloudEvents v 1.0, tak i vlastní schémata událostí. Zároveň podporuje stejnou sémantiku pro publikování na více systémů, jako Event Grid v cloudu, a umožňuje tak snadnou spolupráci.
+Event Grid na IoT Edge podporuje cloudevents v1.0 a vlastní schémata událostí. Podporuje také stejnou pub/sub sémantiku jako Event Grid v cloudu pro snadnou interoperabilitu.
 
-Tento článek poskytuje přehled Azure Event Grid v IoT Edge. Podrobné pokyny, jak používat tento modul na hraničních zařízeních, najdete v tématu [publikování a přihlášení k odběru událostí místně](pub-sub-events-webhook-local.md). 
+Tento článek obsahuje přehled Azure Event Grid na IoT Edge. Podrobné pokyny k použití tohoto modulu na hraničních zařízeních naleznete v tématu [Publish, subscribe to events locally](pub-sub-events-webhook-local.md). 
 
-![Event Grid IoT Edge modelu zdrojů a obslužných rutin](../media/edge-overview/functional-model.png)
+![Mřížka událostí na modelu zdrojů a obslužných rutin IoT Edge](../media/edge-overview/functional-model.png)
 
-Tento obrázek ukazuje některé způsoby, jak můžete použít Event Grid na IoT Edge a není vyčerpávající seznam podporovaných funkcí.
+Tento obrázek znázorňuje některé způsoby použití event gridu na okraji IoT edge a není úplný seznam podporovaných funkcí.
 
-## <a name="when-to-use-event-grid-on-iot-edge"></a>Kdy použít Event Grid v IoT Edge
+## <a name="when-to-use-event-grid-on-iot-edge"></a>Kdy použít mřížku událostí na ioT edge
 
-Event Grid v IoT Edge nabízí snadno použitelný a spolehlivý model událostí pro mezi hraničním a cloudem.
+Event Grid na IoT Edge poskytuje snadno použitelný a spolehlivý model událostí mezi hranou a cloudem.
 
-Event Grid v IoT Edge je postavená s symetrickou plochou pro modul runtime do cloudové služby Azure, takže můžete použít stejné události a volání rozhraní API kdekoli, co potřebujete. Bez ohledu na to, jestli v cloudu provedete Pub/sub, může být na hranici nebo mezi těmito dvěma Event Grid v IoT Edge teď vaše řešení pro přechod do více stran.
+Event Grid na IoT Edge je sestavený s symetrickou plochou runtime pro cloudovou službu Azure, takže můžete používat stejné události a volání rozhraní API všude tam, kde potřebujete. Ať už děláte pub/sub v cloudu, na okraji nebo mezi těmito dvěma, Event Grid na IoT Edge teď může být vaše jediné řešení.
 
-Pomocí Event Grid na IoT Edge můžete aktivovat jednoduché pracovní postupy mezi moduly. Například vytvořte téma a z modulu úložiště publikujte události "objekt BLOB služby Storage" vytvořený v tématu. Nyní můžete k těmto tématům přihlašovat odběr jedné nebo několika funkcí nebo vlastních modulů.
+Pomocí funkce Event Grid na ioT edge můžete aktivovat jednoduché pracovní postupy mezi moduly. Můžete například vytvořit téma a publikovat události objektu blob úložiště z modulu úložiště do tématu. Nyní se můžete přihlásit k odběru jedné nebo několika funkcí nebo vlastních modulů k tomuto tématu.
 
-Rozšíříte své funkce mezi hraničními zařízeními. Pokud publikujete události modulu objektů BLOB a chcete používat výpočetní výkon více zařízení poblíž hraničních zařízení, vytvořte odběry mezi zařízeními.
+Rozšiřte své funkce mezi hraničními zařízeními. Pokud publikujete události modulu blob a chcete použít výpočetní výkon více zařízení v blízkosti hraničních zařízení, vytvořte předplatná mezi zařízeními.
 
-Nakonec se připojte ke cloudu. Pokud mají být události modulu objektů BLOB pravidelně synchronizovány do cloudu, využijte vyšší výpočetní prostředky, které jsou k dispozici v cloudu, nebo zasílejte zpracovaná data, vytvořte další odběry cloudových služeb.
+Nakonec se připojte ke cloudu. Pokud se události vašeho modulu blob mají pravidelně synchronizovat do cloudu, použijte větší výpočetní prostředky dostupné v cloudu nebo odesílejte zpracovaná data, vytvořte další předplatná cloudových služeb.
 
-Event Grid v IoT Edge poskytuje flexibilní a spolehlivě oddělené architektury pro události.
+Event Grid na IoT Edge poskytuje flexibilní a spolehlivou oddělenou architekturu událostí.
 
 ## <a name="event-sources"></a>Zdroje událostí
 
-Podobně jako v cloudu Event Grid v IoT Edge umožňuje přímou integraci mezi moduly pro sestavování architektur řízených událostmi. V současné době mohou být události odesílány do Event Grid IoT Edge z:
+Stejně jako v cloudu, Event Grid na IoT Edge umožňuje přímou integraci mezi moduly k vytváření architektur řízených událostmi. V současné době mohou být události odeslány do event gridu na IoT Edge z:
 
 * Azure Blob Storage ve službě IoT Edge
-* CloudEvents zdroje
-* Vlastní moduly & kontejnery prostřednictvím HTTP POST
+* Zdroje CloudEvents
+* Vlastní moduly & kontejnery přes HTTP POST
 
 ## <a name="event-handlers"></a>Obslužné rutiny událostí
 
-Event Grid na IoT Edge je sestavená tak, aby odesílala události kdekoli, kde chcete. V současné době jsou podporovány následující cíle:
+Event Grid na IoT Edge je vytvořený tak, aby odesílá události kamkolichcete. V současné době jsou podporovány následující cíle:
 
-* Další moduly zahrnující IoT Hub, funkce a vlastní moduly
-* Jiná hraniční zařízení
+* Další moduly včetně IoT Hubu, funkcí a vlastních modulů
+* Ostatní hraniční zařízení
 * Webhooky
 * Cloudová služba Azure Event Grid
 * Event Hubs
-* Fronty Service Bus
-* Témata Service Bus
-* Fronty úložiště
+* Fronty služby Service Bus
+* Témata služby Service Bus
+* Fronty služby Storage
 
 ## <a name="supported-environments"></a>Podporovaná prostředí
-V současné době jsou podporována prostředí Windows 64-bit, Linux 64-bit a ARM 32-bit.
+V současné době jsou podporována 64bitová, 64bitová a ARM 32bitová prostředí systému Windows.
 
 ## <a name="concepts"></a>Koncepty
 
-V Azure Event Grid existuje pět konceptů, které vám umožní začít:
+Ve službě Azure Event Grid je pět konceptů, které vám umožní začít:
 
-* **Události** – co se stalo.
-* **Zdroje událostí** , kde došlo k události.
+* **Události** — Co se stalo.
+* **Zdroje událostí** — Kde se událost konala.
 * **Témata** – koncový bod, kde vydavatelé odesílají události.
-* **Odběry událostí** – koncový bod nebo integrovaný mechanismus pro směrování událostí, někdy do více než jedné obslužné rutiny. Pomocí odběrů taky obslužné rutiny inteligentně filtrují příchozí události.
+* **Odběry událostí** – koncový bod nebo integrovaný mechanismus pro směrování událostí, někdy na více než jednu obslužnou rutinu. Pomocí odběrů taky obslužné rutiny inteligentně filtrují příchozí události.
 * **Obslužné rutiny událostí** – aplikace nebo služba, která reaguje na událost.
 
 ## <a name="cost"></a>Náklady
 
-Event Grid v IoT Edge je ve verzi Public Preview zdarma.
+Event Grid na IoT Edge je zdarma během public preview.
 
 ## <a name="issues"></a>Problémy
-Nahlaste všechny problémy pomocí Event Grid v IoT Edge na [https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues).
+Nahlásit všechny problémy s používáním [https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues)funkce Event Grid na ioT edge na adrese .
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Publikování, přihlášení k odběru událostí místně](pub-sub-events-webhook-local.md)
-* [Publikování, přihlášení k odběru událostí v cloudu](pub-sub-events-webhook-cloud.md)
-* [Předávané události do cloudu Event Grid](forward-events-event-grid-cloud.md)
-* [Předávané události do IoTHub](forward-events-iothub.md)
-* [Reakce na události Blob Storage v místním prostředí](react-blob-storage-events-locally.md)
+* [Publikovat, přihlásit se k odběru událostí místně](pub-sub-events-webhook-local.md)
+* [Publikovat, přihlásit se k odběru událostí v cloudu](pub-sub-events-webhook-cloud.md)
+* [Přeposílání událostí do cloudu Event Grid](forward-events-event-grid-cloud.md)
+* [Předávání událostí na IoTHub](forward-events-iothub.md)
+* [Reakce na události služby Blob Storage v místním prostředí](react-blob-storage-events-locally.md)

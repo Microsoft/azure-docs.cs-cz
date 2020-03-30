@@ -1,48 +1,50 @@
 ---
-title: Rychlý Start – vytvoření clusteru služby Azure Kubernetes (AKS)
-description: Naučte se rychle vytvořit cluster Kubernetes pomocí šablony Azure Resource Manager a nasadit aplikaci ve službě Azure Kubernetes Service (AKS).
+title: Úvodní příručka – vytvoření clusteru služby Azure Kubernetes Service (AKS)
+description: Zjistěte, jak rychle vytvořit cluster Kubernetes pomocí šablony Azure Resource Manager a nasadit aplikaci ve službě Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: quickstart
 ms.date: 04/19/2019
-ms.custom: mvc
-ms.openlocfilehash: 9c4a79f196cc0737ddc9490f2fedda99961289f4
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.custom: mvc,subject-armqs
+ms.openlocfilehash: e8117eb1b521dc2e3fa9eaca1316e0b9c14f0e98
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273782"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80129454"
 ---
-# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-azure-resource-manager-template"></a>Rychlý Start: nasazení clusteru služby Azure Kubernetes (AKS) pomocí šablony Azure Resource Manager
+# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-azure-resource-manager-template"></a>Úvodní příručka: Nasazení clusteru služby Azure Kubernetes Service (AKS) pomocí šablony Azure Resource Manager
 
-Služba Azure Kubernetes Service (AKS) je spravovaná služba Kubernetes, která umožňuje rychle nasadit a spravovat clustery. V tomto rychlém startu nasadíte cluster AKS pomocí šablony Azure Resource Manager. Aplikace s více kontejnery, která zahrnuje webový front-end a instanci Redis, se spouští v clusteru.
+Azure Kubernetes Service (AKS) je spravovaná služba Kubernetes, která umožňuje rychle nasadit a spravovat clustery. V tomto rychlém startu nasadíte cluster AKS pomocí šablony Azure Resource Manager. V clusteru je spuštěna aplikace s více kontejnery, která obsahuje webový front-end a instanci Redis.
 
 ![Obrázek přechodu na aplikaci Azure Vote](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
-Tento rychlý start předpokládá základní znalosti konceptů Kubernetes. Další informace najdete v tématu [základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)][kubernetes-concepts].
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Tento rychlý start předpokládá základní znalosti konceptů Kubernetes. Další informace najdete v tématu [Kubernetes základní koncepty pro službu Azure Kubernetes Service (AKS)][kubernetes-concepts].
+
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.61 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+Pokud se rozhodnete nainstalovat a používat příkaz cli místně, tento rychlý start vyžaduje, abyste spustili Azure CLI verze 2.0.61 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete vytvořit cluster AKS pomocí šablony Správce prostředků, poskytnete veřejný klíč SSH a Azure Active Directory instančního objektu. Pokud potřebujete některý z těchto prostředků, přečtěte si následující část. v opačném případě přejděte k části [Vytvoření clusteru AKS](#create-an-aks-cluster) .
+Chcete-li vytvořit cluster AKS pomocí šablony Správce prostředků, zadejte veřejný klíč SSH a instanční objekt služby Azure Active Directory. Pokud potřebujete některý z těchto zdrojů, naleznete v následující části; jinak přejděte k části [Vytvořit cluster AKS.](#create-an-aks-cluster)
 
 ### <a name="create-an-ssh-key-pair"></a>Vytvoření páru klíčů SSH
 
-Chcete-li získat přístup k uzlům AKS, připojte se pomocí páru klíčů SSH. Pomocí příkazu `ssh-keygen` vygenerujte soubory veřejného a privátního klíče SSH. Ve výchozím nastavení se tyto soubory vytvoří v adresáři *~/.ssh* . Pokud v daném umístění existuje pár klíčů SSH se stejným názvem, tyto soubory se přepíší.
+Chcete-li získat přístup k uzlům AKS, připojte se pomocí dvojice klíčů SSH. Pomocí `ssh-keygen` příkazu vygenerujte soubory s veřejným a soukromým klíčem SSH. Ve výchozím nastavení jsou tyto soubory vytvořeny v adresáři *~/.ssh.* Pokud v daném umístění existuje dvojice klíčů SSH se stejným názvem, jsou tyto soubory přepsány.
 
-Cloud Shell v prohlížeči otevřete tak, že přejdete na [https://shell.azure.com](https://shell.azure.com) .
+Přejděte [https://shell.azure.com](https://shell.azure.com) na otevření cloudového prostředí ve vašem prohlížeči.
 
-Následující příkaz vytvoří pár klíčů SSH pomocí šifrování RSA a bitovou délku 2048:
+Následující příkaz vytvoří dvojici klíčů SSH pomocí šifrování RSA a bitovou délku 2048:
 
 ```console
 ssh-keygen -t rsa -b 2048
 ```
 
-Další informace o vytváření klíčů SSH najdete v tématu [vytváření a Správa klíčů ssh pro ověřování v Azure][ssh-keys].
+Další informace o vytváření klíčů SSH najdete v [tématu Vytvoření a správa klíčů SSH pro ověřování v Azure][ssh-keys].
 
 ### <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
@@ -68,42 +70,52 @@ Poznamenejte si *appId* a *password*. Tyto hodnoty se použijí v dalších kroc
 
 ## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
 
-Šablona použitá v tomto rychlém startu slouží k [nasazení clusteru služby Azure Kubernetes](https://azure.microsoft.com/resources/templates/101-aks/). Další ukázky AKS najdete na webu [šablony pro rychlý Start AKS][aks-quickstart-templates] .
+### <a name="review-the-template"></a>Kontrola šablony
+
+Šablona použitá v tomto rychlém startu je ze [šablon Azure QuickStart](https://azure.microsoft.com/resources/templates/101-aks/).
+
+:::code language="json" source="~/quickstart-templates/101-aks/azuredeploy.json" range="1-126" highlight="86-118":::
+
+Další ukázky AKS najdete na webu [šablon rychlých startů AKS.][aks-quickstart-templates]
+
+### <a name="deploy-the-template"></a>Nasazení šablony
 
 1. Vyberte následující obrázek a přihlaste se k Azure a otevřete šablonu.
 
     [![Nasazení do Azure](./media/kubernetes-walkthrough-rm-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aks%2Fazuredeploy.json)
 
-2. Vyberte nebo zadejte následující hodnoty.  
+2. Vyberte nebo zadejte následující hodnoty.
 
-    V tomto rychlém startu ponechte výchozí hodnoty pro *velikost disku operačního systému GB*, *počet agentů*, *Velikost virtuálního počítače agenta*, *typ operačního systému*a *verzi Kubernetes*. Zadejte vlastní hodnoty pro následující parametry šablony:
+    Pro tento rychlý start ponechte výchozí hodnoty pro *velikost disku operačního systému GB*, Počet *agentů*, *Velikost virtuálního počítače agenta*, *Typ operačního systému*a *Verze Kubernetes*. Zadejte vlastní hodnoty pro následující parametry šablony:
 
-    * **Předplatné:** Vyberte předplatné Azure.
-    * **Skupina prostředků**: vyberte **vytvořit novou**. Zadejte jedinečný název pro skupinu prostředků, třeba *myResourceGroup*, a pak zvolte **OK**.
-    * **Umístění**: vyberte umístění, například **východní USA**.
-    * **Název clusteru**: Zadejte jedinečný název pro cluster AKS, jako je například *myAKSCluster*.
-    * **Předpona DNS**: Zadejte jedinečnou předponu DNS pro váš cluster, například *myakscluster*.
-    * **Uživatelské jméno správce systému Linux**: zadejte uživatelské jméno pro připojení pomocí protokolu SSH, například *azureuser*.
-    * **Veřejný klíč SSH RSA**: Zkopírujte a vložte *veřejnou* část páru klíčů ssh (ve výchozím nastavení obsah *~/.ssh/id_rsa. pub*).
-    * **ID klienta instančního objektu**: Zkopírujte a vložte *appId* objektu služby z příkazu `az ad sp create-for-rbac`.
-    * **Tajný kód klienta instančního objektu**: Zkopírujte a vložte *heslo* vašeho instančního objektu z příkazu `az ad sp create-for-rbac`.
-    * **Souhlasím s výše uvedenými podmínkami a ujednáními**: zaškrtněte toto políčko, aby bylo možné souhlasit.
+    * **Předplatné**: Vyberte předplatné Azure.
+    * **Skupina prostředků**: Vyberte **vytvořit nový**. Zadejte jedinečný název skupiny prostředků, například *myResourceGroup*, a pak zvolte **OK**.
+    * **Umístění**: Vyberte umístění, například **východní USA**.
+    * **Název clusteru**: Zadejte jedinečný název clusteru AKS, například *myAKSCluster*.
+    * **Předpona DNS**: Zadejte jedinečnou předponu DNS pro cluster, například *myakscluster*.
+    * **Uživatelské jméno správce Linuxu**: Zadejte uživatelské jméno pro připojení pomocí SSH, například *azureuser*.
+    * **SSH RSA Public Key**: Zkopírujte a vložte *veřejnou* část dvojice klíčů SSH (ve výchozím nastavení obsah *~/.ssh/id_rsa.pub).*
+    * **Id klienta instančního objektu služby**: `az ad sp create-for-rbac` Zkopírujte a vložte *id aplikace* instančního objektu z příkazu.
+    * **Tajný klíč klienta hlavního objektu služby** `az ad sp create-for-rbac` : Zkopírujte a vložte *heslo* instančního objektu služby z příkazu.
+    * **Souhlasím s výše uvedeným zněním podmínek**: Zaškrtnutím tohoto políčka souhlasíte.
 
-    ![Správce prostředků šablonu pro vytvoření clusteru služby Azure Kubernetes na portálu](./media/kubernetes-walkthrough-rm-template/create-aks-cluster-using-template-portal.png)
+    ![Šablona Správce prostředků pro vytvoření clusteru služby Azure Kubernetes na portálu](./media/kubernetes-walkthrough-rm-template/create-aks-cluster-using-template-portal.png)
 
 3. Vyberte **Koupit**.
 
-Vytvoření clusteru AKS trvá několik minut. Než přejdete k dalšímu kroku, počkejte, než se cluster úspěšně nasadí.
+Vytvoření clusteru AKS trvá několik minut. Než přejdete k dalšímu kroku, počkejte na úspěšné nasazení clusteru.
 
-## <a name="connect-to-the-cluster"></a>Připojení ke clusteru
+## <a name="validate-the-deployment"></a>Ověření nasazení
 
-Ke správě clusteru Kubernetes použijete klienta příkazového řádku Kubernetes [kubectl][kubectl]. Pokud používáte Azure Cloud Shell, `kubectl` už je nainstalovaný. Pokud chcete `kubectl` nainstalovat místně, použijte příkaz [AZ AKS Install-CLI][az-aks-install-cli] :
+### <a name="connect-to-the-cluster"></a>Připojení ke clusteru
+
+Chcete-li spravovat cluster Kubernetes, použijte [kubectl][kubectl], klientpříkazového řádku Kubernetes. Pokud používáte Azure `kubectl` Cloud Shell, je už nainstalovaný. Chcete-li nainstalovat `kubectl` místně, použijte příkaz [az aks install-cli:][az-aks-install-cli]
 
 ```azurecli
 az aks install-cli
 ```
 
-Pokud chcete nakonfigurovat `kubectl` pro připojení ke clusteru Kubernetes, použijte příkaz [AZ AKS Get-Credentials][az-aks-get-credentials] . Tento příkaz stáhne pověření a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití.
+Pomocí příkazu [az aks get-credentials][az-aks-get-credentials] nakonfigurujte klienta `kubectl` pro připojení k vašemu clusteru Kubernetes. Tento příkaz stáhne pověření a nakonfiguruje rozhraní příkazového příkazu Kubernetes tak, aby je používalo.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -115,7 +127,7 @@ Pokud chcete ověřit připojení ke clusteru, použijte příkaz [kubectl get][
 kubectl get nodes
 ```
 
-Následující příklad výstupu ukazuje uzly vytvořené v předchozích krocích. Ujistěte se, že stav všech uzlů je *připravený*:
+Následující příklad výstup uzly vytvořené v předchozích krocích. Ujistěte se, že stav všech uzlů je *připraven*:
 
 ```output
 NAME                       STATUS   ROLES   AGE     VERSION
@@ -124,14 +136,14 @@ aks-agentpool-41324942-1   Ready    agent   6m46s   v1.12.6
 aks-agentpool-41324942-2   Ready    agent   6m45s   v1.12.6
 ```
 
-## <a name="run-the-application"></a>Spuštění aplikace
+### <a name="run-the-application"></a>Spuštění aplikace
 
-Soubor manifestu Kubernetes definuje požadovaný stav clusteru, například jaké image kontejnerů se mají spustit. V tomto rychlém startu manifest slouží k vytvoření všech objektů potřebných ke spuštění aplikace Azure Vote. Tento manifest obsahuje dvě [Kubernetes nasazení][kubernetes-deployment] – jeden pro ukázkové aplikace v Pythonu pro Azure a druhý pro instanci Redis. Vytvoří se také dvě [služby Kubernetes Services][kubernetes-service] – interní služba pro instanci Redis a externí služba pro přístup k aplikaci hlasování Azure z Internetu.
+Soubor manifestu Kubernetes definuje požadovaný stav clusteru, například jaké image kontejneru mají být spuštěny. V tomto rychlém startu manifest slouží k vytvoření všech objektů potřebných ke spuštění aplikace Azure Vote. Tento manifest zahrnuje dvě [nasazení Kubernetes][kubernetes-deployment] – jedno pro ukázkové aplikace Azure Vote Python a druhé pro instanci Redis. Jsou také vytvořeny dvě [služby Kubernetes][kubernetes-service] – interní služba pro instanci Redis a externí služba pro přístup k aplikaci Azure Vote z internetu.
 
 > [!TIP]
-> V tomto rychlém startu ručně vytvoříte manifest aplikace a nasadíte ho do clusteru AKS. V dalších scénářích reálného světa můžete použít [Azure dev Spaces][azure-dev-spaces] k rychlému iterování a ladění kódu přímo v clusteru AKS. Dev Spaces můžete používat na různých platformách operačních systémů a v různých vývojových prostředích a spolupracovat s ostatními členy vašeho týmu.
+> V tomto rychlém startu ručně vytvoříte manifest aplikace a nasadíte ho do clusteru AKS. V reálnějších situacích můžete k rychlé iteraci a ladění kódu přímo v clusteru AKS použít [Azure Dev Spaces][azure-dev-spaces]. Dev Spaces můžete používat na různých platformách operačních systémů a v různých vývojových prostředích a spolupracovat s ostatními členy vašeho týmu.
 
-Vytvořte soubor s názvem `azure-vote.yaml` a zkopírujte následující definici YAML. Pokud Azure Cloud Shell použijete, můžete tento soubor vytvořit pomocí `vi` nebo `nano` jako při práci na virtuálním nebo fyzickém systému:
+Vytvořte soubor `azure-vote.yaml` s názvem a zkopírujte v následující definici YAML. Pokud používáte Azure Cloud Shell, tento `vi` soubor `nano` lze vytvořit pomocí nebo jako by pracovat na virtuální nebo fyzický systém:
 
 ```yaml
 apiVersion: apps/v1
@@ -218,13 +230,13 @@ spec:
     app: azure-vote-front
 ```
 
-Nasaďte aplikaci pomocí příkazu [kubectl Apply][kubectl-apply] a zadejte název manifestu YAML:
+Nasazení aplikace pomocí příkazu [kubectl apply][kubectl-apply] a zadejte název manifestu YAML:
 
 ```console
 kubectl apply -f azure-vote.yaml
 ```
 
-Následující příklad výstupu ukazuje, že se nasazení a služby úspěšně vytvořily:
+Následující ukázkový výstup ukazuje úspěšně vytvořené nasazení a služby:
 
 ```output
 deployment "azure-vote-back" created
@@ -233,9 +245,9 @@ deployment "azure-vote-front" created
 service "azure-vote-front" created
 ```
 
-## <a name="test-the-application"></a>Testování aplikace
+### <a name="test-the-application"></a>Testování aplikace
 
-Když je aplikace spuštěná, služba Kubernetes zpřístupňuje front-end aplikace na internetu. Dokončení tohoto procesu může trvat několik minut.
+Při spuštění aplikace služba Kubernetes zpřístupňuje front-end aplikace k internetu. Dokončení tohoto procesu může trvat několik minut.
 
 Pomocí příkazu [kubectl get service][kubectl-get] s argumentem `--watch` můžete sledovat průběh.
 
@@ -243,48 +255,48 @@ Pomocí příkazu [kubectl get service][kubectl-get] s argumentem `--watch` mů�
 kubectl get service azure-vote-front --watch
 ```
 
-Zpočátku je *externí IP adresa* pro službu *Azure-hlas-front-end* zobrazená jako *nevyřízená*.
+Zpočátku *EXTERNAL-IP* pro *azure-hlasování front* služby se zobrazí jako *čekající*.
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
-Pokud se *IP* adresa změní z *čekání* na skutečnou veřejnou IP adresu, použijte k zastavení procesu sledování `kubectl` `CTRL-C`. Následující příklad výstupu ukazuje platnou veřejnou IP adresu přiřazenou ke službě:
+Když se adresa *EXTERNAL-IP* změní z *čekající* na `CTRL-C` skutečnou `kubectl` veřejnou IP adresu, použijte k zastavení procesu sledování. Následující ukázkový výstup ukazuje platnou veřejnou IP adresu přiřazenou službě:
 
 ```output
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 
-Pokud chcete zobrazit hlasovou aplikaci Azure v akci, otevřete webový prohlížeč na externí IP adresu vaší služby.
+Chcete-li zobrazit aplikaci Azure Vote v akci, otevřete webový prohlížeč na externí IP adresu vaší služby.
 
 ![Obrázek přechodu na aplikaci Azure Vote](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
-## <a name="delete-cluster"></a>Odstranění clusteru
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už cluster nepotřebujete, odeberte skupinu prostředků, službu kontejneru a všechny související prostředky pomocí příkazu [AZ Group Delete][az-group-delete] .
+Pokud už cluster nepotřebujete, použijte k odebrání skupiny prostředků, služby kontejneru a všech souvisejících prostředků příkaz [az group delete][az-group-delete].
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> Při odstranění clusteru se neodebere instanční objekt služby Azure Active Directory používaný clusterem AKS. Postup odebrání instančního objektu najdete v tématu [AKS a informace o instančním objektu a jejich odstranění][sp-delete].
+> Při odstranění clusteru se neodebere instanční objekt služby Azure Active Directory používaný clusterem AKS. Postup odebrání instančního objektu najdete v tématu věnovaném [aspektům instančního objektu AKS a jeho odstranění][sp-delete].
 
 ## <a name="get-the-code"></a>Získání kódu
 
-V tomto rychlém startu se k vytvoření nasazení Kubernetes použily předem vytvořené image kontejneru. Související kód aplikace, soubor Dockerfile a soubor manifestu Kubernetes jsou k dispozici na GitHubu.
+V tomto rychlém startu byly k vytvoření nasazení Kubernetes použity předem vytvořené image kontejneru. Související kód aplikace, soubor Dockerfile a soubor manifestu Kubernetes jsou k dispozici na GitHubu.
 
 [https://github.com/Azure-Samples/azure-voting-app-redis][azure-vote-app]
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste nasadili cluster Kubernetes a do něj jste nasadili vícekontejnerovou aplikaci. [Přístup k webovému řídicímu panelu Kubernetes][kubernetes-dashboard] pro vytvořený cluster.
+V tomto rychlém startu jste nasadili cluster Kubernetes a do něj jste nasadili vícekontejnerovou aplikaci. [Přístup k webovému řídicímu panelu Kubernetes][kubernetes-dashboard] pro cluster, který jste vytvořili.
 
 Další informace o službě AKS a podrobné vysvětlení kompletního příkladu od kódu až po nasazení najdete v kurzu clusteru Kubernetes.
 
 > [!div class="nextstepaction"]
-> [Kurz k AKS][aks-tutorial]
+> [Kurz AKS][aks-tutorial]
 
 <!-- LINKS - external -->
 [azure-vote-app]: https://github.com/Azure-Samples/azure-voting-app-redis.git

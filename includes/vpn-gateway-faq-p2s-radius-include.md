@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: b802cab7d52fd886770c326e97d0378a0da64762
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75752033"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
@@ -39,9 +39,9 @@ Ne. Směrovat je možné jenom přes připojení typu Site-to-Site.
  
 ### <a name="is-there-a-change-in-the-number-of-sstp-connections-supported-with-radius-authentication-what-is-the-maximum-number-of-sstp-and-ikev2-connections-supported"></a>Došlo ke změně počtu připojení SSTP podporovaných ověřováním pomocí protokolu RADIUS? Jaký je maximální podporovaný počet připojení SSTP a IKEv2?
 
-K žádné změně maximálního počtu připojení SSTP podporovaných ověřováním pomocí protokolu RADIUS nedošlo. Zůstane 128 pro protokol SSTP, ale závisí na SKU brány pro IKEv2. Další informace o počtu podporovaných připojení najdete v tématu [SKU brány](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku).
+K žádné změně maximálního počtu připojení SSTP podporovaných ověřováním pomocí protokolu RADIUS nedošlo. Zůstane 128 pro SSTP, ale závisí na skladové jednotce brány pro IKEv2.Další informace o počtu podporovaných připojení naleznete v [tématu Brána SKU](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku).
  
-### <a name="what-is-the-difference-between-doing-certificate-authentication-using-a-radius-server-vs-using-azure-native-certificate-authentication-by-uploading-a-trustedcertificate-to-azure"></a>Jaký je rozdíl mezi ověřováním certifikátů pomocí serveru RADIUS a pomocí nativního ověřování certifikátů Azure (nahráním důvěryhodného certifikátu do Azure).
+### <a name="what-is-the-difference-between-doing-certificate-authentication-using-a-radius-server-vs-using-azure-native-certificate-authentication-by-uploading-a-trustedcertificate-to-azure"></a>Jaký je rozdíl mezi ověřováním certifikátů pomocí protokolu RADIUS a nativním ověřováním certifikátů Azure (nahráním důvěryhodného certifikátu do Azure)?
 
 Při ověřování certifikátů pomocí protokolu RADIUS se žádost o ověření předá serveru RADIUS, který zpracuje vlastní ověření certifikátu. Tato možnost je užitečná, pokud chcete využít integraci s infrastrukturou ověřování certifikátů, kterou již prostřednictvím protokolu RADIUS máte.
   
@@ -51,6 +51,6 @@ Při použití Azure k ověřování certifikátů provádí ověření certifik
 
 Ano, ověřování RADIUS je podporované jak pro IKEv2, tak i pro SSTP VPN. 
 
-### <a name="does-radius-authentication-work-with-the-openvpn-client"></a>Funguje ověřování RADIUS u klienta OpenVPN?
+### <a name="does-radius-authentication-work-with-the-openvpn-client"></a>Funguje ověřování RADIUS s klientem OpenVPN?
 
-Ověřování pomocí protokolu RADIUS se podporuje jenom u protokolu OpenVPN prostřednictvím PowerShellu.
+Ověřování RADIUS je podporováno pro protokol OpenVPN pouze prostřednictvím prostředí PowerShell.

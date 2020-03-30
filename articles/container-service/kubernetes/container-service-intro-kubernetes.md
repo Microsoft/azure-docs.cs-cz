@@ -1,5 +1,5 @@
 ---
-title: ZASTARALÉ Úvod do Azure Container Service pro Kubernetes
+title: (ZASTARALÉ) Úvod do služby Azure Container Service pro Kubernetes
 description: Azure Container Service pro Kubernetes zjednodušuje nasazování a správu aplikací založených na kontejnerech v Azure.
 author: gabrtv
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 07/21/2017
 ms.author: gamonroy
 ms.custom: mvc
 ms.openlocfilehash: c0ef7255a087dd5dc26532316deab337f9eff715
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76271573"
 ---
-# <a name="deprecated-introduction-to-azure-container-service-for-kubernetes"></a>ZASTARALÉ Úvod do Azure Container Service pro Kubernetes
+# <a name="deprecated-introduction-to-azure-container-service-for-kubernetes"></a>(ZASTARALÉ) Úvod do služby Azure Container Service pro Kubernetes
 
 > [!TIP]
-> Aktualizovanou verzi tohoto článku, který používá službu Azure Kubernetes, najdete v tématu [Přehled služby Azure Kubernetes Service (AKS)](../../aks/intro-kubernetes.md).
+> Aktualizovanou verzi tohoto článku, který používá službu Azure Kubernetes, najdete [v tématu Přehled služby Azure Kubernetes Service (AKS).](../../aks/intro-kubernetes.md)
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 

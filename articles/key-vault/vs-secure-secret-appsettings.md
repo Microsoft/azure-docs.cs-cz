@@ -1,6 +1,6 @@
 ---
-title: Bezpečné uložení nastavení tajné aplikace pro webovou aplikaci – Azure Key Vault | Microsoft Docs
-description: Jak bezpečně ukládat nastavení tajných aplikací, jako jsou přihlašovací údaje Azure nebo klíče rozhraní API třetích stran, pomocí ASP.NET Core Key Vault poskytovatele, tajného uživatele nebo tvůrců konfigurace .NET 4.7.1
+title: Bezpečné ukládání tajných nastavení aplikací pro webovou aplikaci – Azure Key Vault | Dokumenty společnosti Microsoft
+description: Jak bezpečně uložit nastavení tajných aplikací, jako jsou pověření Azure nebo klíče rozhraní API třetích stran pomocí ASP.NET základního zprostředkovatele úložiště klíčů, tajného uživatele nebo tvůrce konfigurace .NET 4.7.1
 services: visualstudio
 author: cawaMS
 manager: paulyuk
@@ -11,58 +11,58 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: cawa
 ms.openlocfilehash: 6bbadd0deb1b7b6fe1056ed7bb47dc3e666a7b9c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78197704"
 ---
-# <a name="securely-save-secret-application-settings-for-a-web-application"></a>Bezpečně uložit nastavení tajné aplikace pro webovou aplikaci
+# <a name="securely-save-secret-application-settings-for-a-web-application"></a>Bezpečné uložení tajných nastavení aplikace pro webovou aplikaci
 
 ## <a name="overview"></a>Přehled
 Tento článek popisuje, jak bezpečně uložit nastavení konfigurace tajných aplikací pro aplikace Azure.
 
-Tradičně se všechna nastavení konfigurace webové aplikace ukládají do konfiguračních souborů, jako je například web. config. Tento postup vede k vrácení nastavení tajného klíče, jako jsou například přihlašovací údaje cloudu, do veřejných systémů správy zdrojového kódu, jako je GitHub. V obou případech by mohlo být obtížné podléhat osvědčeným postupům zabezpečení z důvodu režie nutné ke změně zdrojového kódu a překonfigurování nastavení vývoje.
+Všechna nastavení konfigurace webových aplikací jsou tradičně uložena v konfiguračních souborech, jako je web.config. Tento postup vede ke kontrole v tajných nastaveních, jako jsou přihlašovací údaje cloudu do systémů veřejné správy zdrojového kódu, jako je GitHub. Mezitím může být obtížné dodržovat osvědčené postupy zabezpečení z důvodu režie potřebné ke změně zdrojového kódu a překonfigurovat nastavení vývoje.
 
-Chcete-li zajistit, aby byl proces vývoje zabezpečený, jsou vytvořeny knihovny nástrojů a architektury pro bezpečné uložení nastavení tajného klíče aplikace s minimální nebo žádnou změnou zdrojového kódu.
+Chcete-li se ujistit, že proces vývoje je bezpečný, nástroje a framework knihovny jsou vytvořeny pro uložení nastavení tajných barev aplikace bezpečně s minimální nebo žádnou změnu zdrojového kódu.
 
-## <a name="aspnet-and-net-core-applications"></a>ASP.NET a .NET Core – aplikace
+## <a name="aspnet-and-net-core-applications"></a>ASP.NET a .NET Core aplikace
 
-### <a name="save-secret-settings-in-user-secret-store-that-is-outside-of-source-control-folder"></a>Uložit nastavení tajného klíče v úložišti tajného uživatele, které je mimo složku správy zdrojového kódu
-Pokud provádíte rychlý prototyp nebo nemáte přístup k Internetu, začněte s přesunutím nastavení tajného klíče mimo složku správy zdrojového kódu do úložiště tajného klíče uživatele. Úložiště tajného uživatele je soubor uložený ve složce Profiler uživatele, takže tajné klíče nejsou vráceny se změnami do správy zdrojového kódu. Následující obrázek ukazuje, jak funguje [tajný klíč uživatele](https://docs.microsoft.com/aspnet/core/security/app-secrets?tabs=visual-studio) .
+### <a name="save-secret-settings-in-user-secret-store-that-is-outside-of-source-control-folder"></a>Uložit tajné nastavení v úložišti uživatelských tajných kódů, které je mimo složku správy zdrojového kódu
+Pokud provádíte rychlý prototyp nebo nemáte přístup k internetu, začněte přesunutím tajných nastavení mimo složku správy zdrojového kódu do úložiště User Secret. Úložiště uživatelských tajných kódů je soubor uložený ve složce profileru uživatele, takže tajné klíče nejsou se změnami do správy zdrojového kódu. Následující diagram ukazuje, jak funguje [tajný klíč uživatele.](https://docs.microsoft.com/aspnet/core/security/app-secrets?tabs=visual-studio)
 
-![Tajný klíč uživatele uchovává nastavení tajného klíče mimo správu zdrojového kódu.](./media/vs-secure-secret-appsettings/aspnetcore-usersecret.PNG)
+![User Secret udržuje tajné nastavení mimo slučování zdrojů](./media/vs-secure-secret-appsettings/aspnetcore-usersecret.PNG)
 
-Pokud používáte konzolovou aplikaci .NET Core, použijte Key Vault k bezpečnému uložení tajného kódu.
+Pokud používáte aplikaci konzoly jádra .NET, bezpečně uložte tajný klíč pomocí trezoru klíčů.
 
-### <a name="save-secret-settings-in-azure-key-vault"></a>Uložit nastavení tajného klíče v Azure Key Vault
+### <a name="save-secret-settings-in-azure-key-vault"></a>Uložení tajných nastavení v trezoru klíčů Azure
 Pokud vyvíjíte projekt a potřebujete bezpečně sdílet zdrojový kód, použijte [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
 
-1. Vytvořte Key Vault v předplatném Azure. Vyplňte všechna povinná pole v uživatelském rozhraní a klikněte na *vytvořit* v dolní části okna.
+1. Vytvořte trezor klíčů ve svém předplatném Azure. Vyplňte všechna povinná pole v ui a klikněte na *Vytvořit* na spodní straně okna
 
-    ![Vytvořit Azure Key Vault](./media/vs-secure-secret-appsettings/create-keyvault.PNG)
+    ![Vytvoření trezoru klíčů Azure](./media/vs-secure-secret-appsettings/create-keyvault.PNG)
 
-2. Udělte vám a členům vašeho týmu přístup k Key Vault. Máte-li velký tým, můžete vytvořit [skupinu Azure Active Directory](../active-directory/active-directory-groups-create-azure-portal.md) a přidat tuto skupinu zabezpečení k Key Vault. V rozevíracím seznamu *oprávnění tajného klíče* zaškrtněte *získat* a *seznam* v části *operace správy tajných*kódů.
-Pokud již máte vytvořenou webovou aplikaci, udělte webové aplikaci přístup k Key Vault, aby mohla přistupovat k trezoru klíčů bez uložení konfigurace tajného klíče do nastavení aplikace nebo souborů. Vyhledejte svou webovou aplikaci podle jejího názvu a přidejte ji stejným způsobem, jakým udělíte přístup uživatelům.
+2. Udělte vám a vašim členům týmu přístup do trezoru klíčů. Pokud máte velký tým, můžete vytvořit [skupinu Azure Active Directory](../active-directory/active-directory-groups-create-azure-portal.md) a přidat přístup skupiny zabezpečení do trezoru klíčů. V rozevíracím seznamu *Tajná oprávnění* zaškrtněte *políčko Získat* a *Seznam* v části Operace *tajné správy*.
+Pokud už máte vytvořenou webovou aplikaci, udělte webové aplikaci přístup k trezoru klíčů, aby měla přístup k trezoru klíčů bez ukládání tajné konfigurace v nastavení aplikace nebo v souborech. Vyhledejte webovou aplikaci podle jejího názvu a přidejte ji stejným způsobem, jakým uživatelům udělíte přístup.
 
-    ![Přidat zásady přístupu Key Vault](./media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
+    ![Přidat zásady přístupu trezoru klíčů](./media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 
-3. Do Azure Portal Key Vault přidejte svůj tajný kód. Pro vnořená nastavení konfigurace nahraďte ': ' '--', aby byl název Key Vault tajného klíče platný. hodnota ': ' nesmí být v názvu Key Vault tajného klíče.
+3. Přidejte svůj tajný klíč do trezoru klíčů na webu Azure Portal. Pro vnořené nastavení konfigurace nahraďte ":" slovem '--', aby byl tajný název trezoru klíčů platný. ':' nesmí být v názvu tajného klíče trezoru klíčů.
 
-    ![Přidat Key Vault tajný klíč](./media/vs-secure-secret-appsettings/add-keyvault-secret.png)
+    ![Přidat tajný klíč trezoru klíčů](./media/vs-secure-secret-appsettings/add-keyvault-secret.png)
 
     > [!NOTE]
-    > Před verzí sady Visual Studio 2017 V 15.6 jsme použili k doporučení instalace rozšíření pro ověřování služeb Azure pro Visual Studio. Je ale teď zastaralá, protože je funkce integrovaná v rámci sady Visual Studio. Proto, pokud jste na starší verzi sady Visual Studio 2017, doporučujeme, abyste aktualizovali aspoň na 2017 15,6 nebo nahoru, abyste mohli tuto funkci používat nativně a přistupovat k trezoru klíčů pomocí samotné identity sady Visual Studio.
+    > Před Visual Studio 2017 V15.6 jsme doporučili nainstalovat rozšíření Ověřování služeb Azure pro Visual Studio. Ale je nyní zastaralé jako funkce je integrován do sady Visual Studio . Pokud tedy používáte starší verzi visual studia 2017 , doporučujeme aktualizovat alespoň Na VS 2017 15.6 nebo novější, abyste mohli tuto funkci používat nativně a přistupovat k trezoru klíčů pomocí samotné přihlašovací identity Visual Studia.
     >
 
-4. Do projektu přidejte následující balíčky NuGet:
+4. Přidejte do projektu následující balíčky NuGet:
 
     ```
     Microsoft.Azure.KeyVault
     Microsoft.Azure.Services.AppAuthentication
     Microsoft.Extensions.Configuration.AzureKeyVault
     ```
-5. Do souboru Program.cs přidejte následující kód:
+5. Do Program.cs souboru přidejte následující kód:
 
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -87,26 +87,26 @@ Pokud již máte vytvořenou webovou aplikaci, udělte webové aplikaci přístu
 
         private static string GetKeyVaultEndpoint() => Environment.GetEnvironmentVariable("KEYVAULT_ENDPOINT");
     ```
-6. Přidejte adresu URL Key Vault do souboru launchsettings. JSON. Název proměnné prostředí *KEYVAULT_ENDPOINT* je definován v kódu, který jste přidali v kroku 6.
+6. Přidejte adresu URL trezoru klíčů do souboru launchsettings.json. Název proměnné prostředí *KEYVAULT_ENDPOINT* je definován v kódu, který jste přidali v kroku 6.
 
-    ![Přidat adresu URL Key Vault jako proměnnou prostředí projektu](./media/vs-secure-secret-appsettings/add-keyvault-url.png)
+    ![Přidat adresu URL úložiště klíčů jako proměnnou prostředí projektu](./media/vs-secure-secret-appsettings/add-keyvault-url.png)
 
-7. Spusťte ladění projektu. Mělo by se úspěšně spustit.
+7. Spusťte ladění projektu. Měl by být úspěšně spuštěn.
 
-## <a name="aspnet-and-net-applications"></a>ASP.NET a aplikace .NET
+## <a name="aspnet-and-net-applications"></a>aplikace ASP.NET a .NET
 
-.NET 4.7.1 podporuje sestavování konfigurací Key Vault a tajných kódů, které zajistí, aby tajné klíče bylo možné přesunout mimo složku správy zdrojového kódu bez změny kódu.
-Pokud chcete pokračovat, [Stáhněte si .NET 4.7.1](https://www.microsoft.com/download/details.aspx?id=56115) a migrujte svou aplikaci, pokud používá starší verzi rozhraní .NET Framework.
+.NET 4.7.1 podporuje key vault a tajné konfigurace tvůrci, který zajišťuje, že tajné klíče lze přesunout mimo složku správy zdrojového kódu bez změny kódu.
+Chcete-li pokračovat, [stáhněte si rozhraní .NET 4.7.1](https://www.microsoft.com/download/details.aspx?id=56115) a migrujte aplikaci, pokud používá starší verzi rozhraní .NET Framework.
 
-### <a name="save-secret-settings-in-a-secret-file-that-is-outside-of-source-control-folder"></a>Uložit nastavení tajného klíče do tajného souboru, který je mimo složku správy zdrojového kódu
-Pokud píšete rychlý prototyp a nechcete zřizovat prostředky Azure, Projděte si tuto možnost.
+### <a name="save-secret-settings-in-a-secret-file-that-is-outside-of-source-control-folder"></a>Uložení tajných nastavení do tajného souboru, který je mimo složku správy zdrojového kódu
+Pokud píšete rychlý prototyp a nechcete zřídit prostředky Azure, přejděte k této možnosti.
 
-1. Do projektu nainstalujte následující balíček NuGet
+1. Nainstalujte do projektu následující balíček NuGet
     ```
     Microsoft.Configuration.ConfigurationBuilders.Base
     ```
 
-2. Vytvořte soubor podobný následujícímu. Uložte ho do umístění mimo složku vašeho projektu.
+2. Vytvořte soubor, který je podobný následujícímu. Uložte jej pod umístěním mimo složku projektu.
 
     ```xml
     <root>
@@ -117,7 +117,7 @@ Pokud píšete rychlý prototyp a nechcete zřizovat prostředky Azure, Projdět
     </root>
     ```
 
-3. V souboru Web. config definujte tajný soubor, který bude tvůrcem konfigurace. Tuto část vložte do oddílu *appSettings* .
+3. V souboru Web.config definujte tajný soubor jako tvůrce konfigurace. Tuto část předložte části *nastavení aplikace.*
 
     ```xml
     <configBuilders>
@@ -129,7 +129,7 @@ Pokud píšete rychlý prototyp a nechcete zřizovat prostředky Azure, Projdět
     </configBuilders>
     ```
 
-4. Část určení appSettings používá tvůrce konfigurace tajného klíče. Ujistěte se, že existuje položka pro nastavení tajného klíče se fiktivní hodnotou.
+4. Zadejte appSettings sekce používá tvůrce tajných konfigurací. Ujistěte se, že je položka pro nastavení tajného klíče s fiktivní hodnotou.
 
     ```xml
         <appSettings configBuilders="Secrets">
@@ -141,17 +141,17 @@ Pokud píšete rychlý prototyp a nechcete zřizovat prostředky Azure, Projdět
         </appSettings>
     ```
 
-5. Ladit aplikaci. Mělo by se úspěšně spustit.
+5. Ladění aplikace. Měl by být úspěšně spuštěn.
 
-### <a name="save-secret-settings-in-an-azure-key-vault"></a>Uložení nastavení tajného klíče v Azure Key Vault
-Postupujte podle pokynů v části ASP.NET Core a nakonfigurujte Key Vault pro svůj projekt.
+### <a name="save-secret-settings-in-an-azure-key-vault"></a>Uložení tajných nastavení do trezoru klíčů Azure
+Podle pokynů z ASP.NET základní části nakonfigurujte trezor klíčů pro váš projekt.
 
-1. Do projektu nainstalujte následující balíček NuGet
+1. Nainstalujte do projektu následující balíček NuGet
    ```
    Microsoft.Configuration.ConfigurationBuilders.UserSecrets
    ```
 
-2. Definujte Key Vault Configuration Builder v souboru Web. config. Tuto část vložte do oddílu *appSettings* . Pokud používáte svrchovaný Cloud, nahraďte název *trezoru* názvem Key Vault, pokud je váš Key Vault ve veřejném Azure nebo v ÚPLNÉm identifikátoru URI.
+2. Definujte tvůrce konfigurace úložiště klíčů v souboru Web.config. Tuto část předložte části *nastavení aplikace.* Nahradit *vaultName* být název trezoru klíčů, pokud váš trezor klíčů je ve veřejném Azure nebo úplné URI, pokud používáte cloud Sovereign.
 
     ```xml
     <configSections>
@@ -163,7 +163,7 @@ Postupujte podle pokynů v části ASP.NET Core a nakonfigurujte Key Vault pro s
         </builders>
     </configBuilders>
     ```
-3. Oddíl určení appSettings používá Key Vault Configuration Builder. Ujistěte se, že existuje nějaká položka pro nastavení tajného klíče se fiktivní hodnotou.
+3. Zadejte, aby se část appSettings používala tvůrce konfigurace trezoru klíčů. Ujistěte se, že existuje nějaká položka pro nastavení tajného klíče s hodnotou figuríny.
 
    ```xml
    <appSettings configBuilders="AzureKeyVault">
@@ -175,4 +175,4 @@ Postupujte podle pokynů v části ASP.NET Core a nakonfigurujte Key Vault pro s
    </appSettings>
    ```
 
-4. Spusťte ladění projektu. Mělo by se úspěšně spustit.
+4. Spusťte ladění projektu. Měl by být úspěšně spuštěn.

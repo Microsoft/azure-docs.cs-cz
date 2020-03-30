@@ -1,6 +1,6 @@
 ---
-title: Připojení pomocí Pythonu-Azure Database for PostgreSQL-Single server
-description: V tomto rychlém startu najdete ukázky kódu v Pythonu, které můžete použít k připojení a dotazování dat z Azure Database for PostgreSQL na jednom serveru.
+title: Připojení k Pythonu – databáze Azure pro PostgreSQL – jeden server
+description: Tento rychlý start poskytuje ukázky kódu Pythonu, které můžete použít k připojení a dotazování dat z databáze Azure pro PostgreSQL - jeden server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -9,38 +9,38 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
 ms.openlocfilehash: 3694c0b74393068538a0c8f496444a1541d88fee
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76769062"
 ---
-# <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití Pythonu k připojení a dotazování dat v Azure Database for PostgreSQL-Single server
+# <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Úvodní příručka: Připojení a dotazování dat v Azure Database for PostgreSQL – jeden server pomocí Pythonu
 
-V tomto rychlém startu pracujete s Azure Database for PostgreSQL s využitím Pythonu na macOS, Ubuntu Linux nebo Windows. V tomto rychlém startu se dozvíte, jak se připojit k databázi a použít příkazy SQL k dotazování, vkládání, aktualizaci a odstraňování dat. Článek předpokládá, že jste obeznámeni s Pythonem, ale novinkou pro práci s Azure Database for PostgreSQL.
+V tomto rychlém startu pracujete s databází Azure pro PostgreSQL pomocí Pythonu v macOS, Ubuntu Linux nebo Windows. Rychlý start ukazuje, jak se připojit k databázi a používat příkazy SQL k dotazování, vkládání, aktualizaci a odstraňování dat. Článek předpokládá, že jste obeznámeni s Pythonem, ale jste noví v práci s Azure Database pro PostgreSQL.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- Dokončení [rychlého startu: vytvoření serveru Azure Database for PostgreSQL v Azure Portal](quickstart-create-server-database-portal.md) nebo [rychlém startu: vytvoření Azure Database for POSTGRESQL pomocí Azure CLI](quickstart-create-server-database-azure-cli.md).
+- Dokončení [úvodního článku: Vytvořte databázi Azure pro postgreSQL server na webu Azure Portal](quickstart-create-server-database-portal.md) nebo [Quickstart: Vytvořte databázi Azure pro PostgreSQL pomocí azure cli](quickstart-create-server-database-azure-cli.md).
   
-- [Python](https://www.python.org/downloads/) 2.7.9 + nebo 3.4 +.
+- [Python](https://www.python.org/downloads/) 2.7.9+ nebo 3.4+.
   
-- Poslední instalační program balíčku [PIP](https://pip.pypa.io/en/stable/installing/)
+- Nejnovější [pip](https://pip.pypa.io/en/stable/installing/) balíček instalátor.
 
 ## <a name="install-the-python-libraries-for-postgresql"></a>Instalace knihoven Pythonu pro PostgreSQL
-Modul [psycopg2](https://pypi.python.org/pypi/psycopg2/) umožňuje připojení k databázi PostgreSQL a dotazování na ni a je k dispozici jako balíček pro Linux, MacOS nebo Windows [kolo](https://pythonwheels.com/) . Nainstalujte binární verzi modulu včetně všech závislostí. Další informace o instalaci a požadavcích `psycopg2` najdete v tématu [instalace](http://initd.org/psycopg/docs/install.html). 
+Modul [psycopg2](https://pypi.python.org/pypi/psycopg2/) umožňuje připojení k databázi PostgreSQL a dotazování se na ni a je k dispozici jako balíček [kolečka](https://pythonwheels.com/) Linux, macOS nebo Windows. Nainstalujte binární verzi modulu, včetně všech závislostí. Další informace `psycopg2` o instalaci a požadavcích naleznete v [tématu Instalace](http://initd.org/psycopg/docs/install.html). 
 
-Chcete-li nainstalovat `psycopg2`, otevřete terminál nebo příkazový řádek a spusťte příkaz `pip install psycopg2`.
+Chcete-li nainstalovat `psycopg2`, otevřete terminál `pip install psycopg2`nebo příkazový řádek a spusťte příkaz .
 
-## <a name="get-database-connection-information"></a>Získat informace o připojení databáze
-Připojení k databázi Azure Database for PostgreSQL vyžaduje plně kvalifikovaný název serveru a přihlašovací údaje. Tyto informace můžete získat z Azure Portal.
+## <a name="get-database-connection-information"></a>Získání informací o připojení k databázi
+Připojení k databázi Azure database for PostgreSQL vyžaduje plně kvalifikovaný název serveru a přihlašovací údaje. Tyto informace můžete získat z webu Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)vyhledejte a vyberte název vašeho Azure Database for PostgreSQL serveru. 
-1. Na stránce **Přehled** serveru zkopírujte plně kvalifikovaný **název serveru** a **uživatelské jméno správce**. Plně kvalifikovaný **název serveru** má vždycky formu *\<název My-Server-Name >. Postgres. Database. Azure. com*a **uživatelské jméno správce** je vždycky ve formátu *\<my-admin-username > @\<My-Server-Name >* . 
+1. Na [webu Azure Portal](https://portal.azure.com/)vyhledejte a vyberte název serveru Azure Database for PostgreSQL. 
+1. Na stránce **Přehled** serveru zkopírujte plně kvalifikovaný **název serveru** a uživatelské **jméno správce**. Plně kvalifikovaný **název serveru** je vždy ve formě * \<my-server-name>.postgres.database.azure.com*a uživatelské jméno **správce** je vždy ve formě * \<my-admin-username>@\<my-server-name>*. 
    
-   Budete také potřebovat heslo správce. Pokud ho zapomenete, můžete ho resetovat z této stránky. 
+   Potřebujete také heslo správce. Pokud ji zapomenete, můžete ji obnovit z této stránky. 
    
    ![Název serveru Azure Database for PostgreSQL](./media/connect-python/1-connection-string.png)
 
@@ -50,17 +50,17 @@ Pro každý příklad kódu v tomto článku:
 
 1. Vytvořte nový soubor v textovém editoru. 
    
-1. Přidejte do souboru příklad kódu. V kódu nahraďte:
-   - `<server-name>` a `<admin-username>` hodnoty, které jste zkopírovali z Azure Portal.
-   - `<admin-password>` hesla serveru.
-   - `<database-name>` s názvem vaší databáze Azure Database for PostgreSQL. Výchozí databáze s názvem *Postgres* byla automaticky vytvořena při vytvoření serveru. Tuto databázi můžete přejmenovat nebo vytvořit novou databázi pomocí příkazů SQL. 
+1. Přidejte příklad kódu do souboru. V kódu nahraďte:
+   - `<server-name>`a `<admin-username>` s hodnotami, které jste zkopírovali z portálu Azure.
+   - `<admin-password>`s heslem serveru.
+   - `<database-name>`s názvem databáze Azure pro databázi PostgreSQL. Při vytváření serveru byla automaticky vytvořena výchozí databáze s názvem *postgres.* Tuto databázi můžete přejmenovat nebo vytvořit novou databázi pomocí příkazů SQL. 
    
-1. Uložte soubor do složky vašeho projektu s příponou *. py* , například *Postgres-INSERT.py*. Pro Windows se ujistěte, že je při ukládání souboru vybraný kódování UTF-8. 
+1. Uložte soubor do složky projektu s příponou *Py,* například *postgres-insert.py*. V systému Windows zkontrolujte, zda je při uložení souboru vybráno kódování UTF-8. 
    
-1. Chcete-li spustit soubor, přejděte do složky projektu v rozhraní příkazového řádku a zadejte `python` následovaný názvem souboru, například `python postgres-insert.py`.
+1. Chcete-li soubor spustit, změňte složku projektu v rozhraní `python` příkazového řádku a `python postgres-insert.py`zadejte například název souboru .
 
 ## <a name="create-a-table-and-insert-data"></a>Vytvoření tabulky a vložení dat
-Následující příklad kódu se připojuje k vaší Azure Database for PostgreSQL databázi pomocí funkce [psycopg2. Connect](http://initd.org/psycopg/docs/connection.html) a načítá data pomocí příkazu SQL **INSERT** . Funkce [Cursor. Execute](http://initd.org/psycopg/docs/cursor.html#execute) SPUSTÍ dotaz SQL na databázi. 
+Následující příklad kódu se připojí k databázi Azure Database for PostgreSQL pomocí funkce [psycopg2.connect](http://initd.org/psycopg/docs/connection.html) a načte data pomocí příkazu SQL **INSERT.** Funkce [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) spustí dotaz SQL proti databázi. 
 
 ```Python
 import psycopg2
@@ -99,12 +99,12 @@ cursor.close()
 conn.close()
 ```
 
-Po úspěšném spuštění kódu se vytvoří následující výstup:
+Při úspěšném spuštění kódu vytvoří následující výstup:
 
 ![Výstup příkazového řádku](media/connect-python/2-example-python-output.png)
 
 ## <a name="read-data"></a>Čtení dat
-Následující příklad kódu se připojuje k vaší Azure Database for PostgreSQL databázi a používá [Cursor. Execute](http://initd.org/psycopg/docs/cursor.html#execute) pomocí příkazu SQL **Select** pro čtení dat. Tato funkce přijme dotaz a vrátí sadu výsledků pro iteraci pomocí [Cursor. fetchall ()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall). 
+Následující příklad kódu se připojí k databázi Azure Database for PostgreSQL a ke čtení dat použije [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) s příkazem SQL **SELECT.** Tato funkce přijme dotaz a vrátí sadu výsledků k iterátu přes pomocí [cursor.fetchall()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall). 
 
 ```Python
 import psycopg2
@@ -138,7 +138,7 @@ conn.close()
 ```
 
 ## <a name="update-data"></a>Aktualizace dat
-Následující příklad kódu se připojí k vaší Azure Database for PostgreSQL databázi a pomocí příkazu [Cursor. Execute](http://initd.org/psycopg/docs/cursor.html#execute) s příkazem SQL **Update** aktualizuje data. 
+Následující příklad kódu se připojí k databázi Azure Database for PostgreSQL a k aktualizaci dat použije [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) s příkazem SQL **UPDATE.** 
 
 ```Python
 import psycopg2
@@ -168,7 +168,7 @@ conn.close()
 ```
 
 ## <a name="delete-data"></a>Odstranění dat
-Následující příklad kódu se připojí k vaší Azure Database for PostgreSQL databázi a pomocí příkazu [Cursor. Execute](http://initd.org/psycopg/docs/cursor.html#execute) s příkazem SQL **Delete** odstraní položku inventáře, kterou jste předtím vložili. 
+Následující příklad kódu se připojí k databázi Azure Database for PostgreSQL a pomocí [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) s příkazem SQL **DELETE** odstraní položku inventáře, kterou jste dříve vložili. 
 
 ```Python
 import psycopg2

@@ -1,6 +1,6 @@
 ---
-title: Notification Hubs integrace s App Service Mobile Apps
-description: Přečtěte si, jak Azure Notification Hubs pracuje s Mobile Appsem Azure App Service.
+title: Integrace center oznámení s mobilními aplikacemi služby App Service
+description: Zjistěte, jak Azure Notification Hubs funguje s mobilními aplikacemi Služby Ap.
 author: sethmanheim
 manager: femila
 editor: jwargo
@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: e6c4fb767e6237f390cdb467b35c323f637bebf2
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76264148"
 ---
 # <a name="integration-with-app-service-mobile-apps"></a>Integrace s App Service Mobile Apps
@@ -45,4 +45,4 @@ Zde jsou některé výhody, které vývojáři získají díky této integraci:
   - *Zasílání nabízených oznámení zařízením:* Sady SDK k registraci ve službě Notification Hubs automaticky používají instalační ID funkce Mobile Apps jako identifikátor GUID, aby vývojáři nemuseli spravovat identifikátory GUID různých služeb.
 - **Instalační model:** Funkce Mobile Apps pracuje s nejnovějším modelem nabízených oznámení služby Notification Hubs. Zastupuje všechny vlastnosti nabízených oznámení v instalaci JSON spojené se zařízením, aby vyhovovaly Službě nabízených oznámení a daly se snadno použít.
 - **Flexibilita:** Vývojáři se vždy mohou rozhodnout, že budou pracovat přímo se službou Notification Hubs, i když je tato služba integrovaná.
-- **Integrované prostředí [Azure Portal](https://portal.azure.com)** : Nabízená oznámení jsou v Mobile Apps vizuálně znázorněná jako funkce. Vývojáři mohou prostřednictvím Mobile Apps snadno pracovat s přidruženým centrem oznámení.
+- **Integrované prostředí [Azure Portal](https://portal.azure.com)**: Nabízená oznámení jsou v Mobile Apps vizuálně znázorněná jako funkce. Vývojáři mohou prostřednictvím Mobile Apps snadno pracovat s přidruženým centrem oznámení.

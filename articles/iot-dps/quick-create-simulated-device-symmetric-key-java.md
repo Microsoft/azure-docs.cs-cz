@@ -1,6 +1,6 @@
 ---
-title: Rychlý Start – použití symetrického klíče ke zřízení simulovaného zařízení pro Azure IoT Hub pomocí jazyka Java
-description: V tomto rychlém startu použijete sadu SDK pro zařízení Java k vytvoření simulovaného zařízení, které používá symetrický klíč s Azure IoT Hub Device Provisioning Service (DPS).
+title: Úvodní příručka – použití symetrického klíče k zřízení simulovaných zařízení do služby Azure IoT Hub pomocí Jazyka Java
+description: V tomto rychlém startu použijete sadu SDK zařízení Java k vytvoření simulovaného zařízení, které používá symetrický klíč se službou Azure IoT Hub Device Provisioning Service (DPS).
 author: wesmc7777
 ms.author: wesmc
 ms.date: 01/30/2020
@@ -10,17 +10,17 @@ services: iot-dps
 manager: eliotgra
 ms.custom: mvc
 ms.openlocfilehash: aaa1a4423363255536db7d53a1f8f8fa9ba686ff
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76941399"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Rychlý start: Zřízení simulovaného zařízení se symetrickými klíči
 
-V tomto rychlém startu se dozvíte, jak vytvořit a spustit simulátor zařízení na vývojovém počítači s Windows. Toto simulované zařízení nakonfigurujete tak, aby používalo symetrický klíč k ověřování pomocí instance služby Device Provisioning (DPS) a aby se přiřadila ke službě IoT Hub. Vzorový kód z [Microsoft Azure sady IoT SDK pro jazyk Java](https://github.com/Azure/azure-iot-sdk-java) bude použit k simulaci spouštěcí sekvence pro zařízení, které iniciuje zřizování. Zařízení se rozpozná na základě individuální registrace s instancí služby DPS a přiřazenou ke službě IoT Hub.
+V tomto rychlém startu se dozvíte, jak vytvořit a spustit simulátor zařízení na vývojovém počítači s Windows. Nakonfigurujete toto simulované zařízení tak, aby používalo symetrický klíč k ověření pomocí instance služby DPS (Device Provisioning Service) a bylo přiřazeno k centru IoT Hub. Ukázkový kód z [sad Microsoft Azure IoT SDK pro Javu](https://github.com/Azure/azure-iot-sdk-java) se použije k simulaci spouštěcí sekvence pro zařízení, které iniciuje zřizování. Zařízení bude rozpoznáno na základě individuální registrace s instancí služby DPS a přiřazeno k centru IoT.
 
-I když tento článek popisuje, jak zřídit jednotlivé registrace, můžete použít skupiny registrací. Při používání skupin registrací jsou některé rozdíly. Například je nutné použít odvozený klíč zařízení s jedinečným ID registrace pro zařízení. Přestože skupiny registrací symetrického klíče nejsou omezené na starší verze zařízení, příklad skupiny registrací najdete v článku o [zřízení starší verze zařízení pomocí osvědčení symetrického klíče](how-to-legacy-device-symm-key.md). Další informace najdete v článku o [osvědčení symetrického klíče v části o skupinových registracích](concepts-symmetric-key-attestation.md#group-enrollments).
+I když tento článek ukazuje zřizování s jednotlivými registrace, můžete použít skupiny registrace. Existují určité rozdíly při použití skupin y zápisu. Například je nutné použít odvozený klíč zařízení s jedinečným ID registrace pro zařízení. Přestože skupiny registrací symetrického klíče nejsou omezené na starší verze zařízení, příklad skupiny registrací najdete v článku o [zřízení starší verze zařízení pomocí osvědčení symetrického klíče](how-to-legacy-device-symm-key.md). Další informace najdete v článku o [osvědčení symetrického klíče v části o skupinových registracích](concepts-symmetric-key-attestation.md#group-enrollments).
 
 Pokud neznáte proces automatického zřizování, projděte si [koncepty automatického zřizování](concepts-auto-provisioning.md). 
 
@@ -34,7 +34,7 @@ Tento článek je orientovaný na pracovní stanici s Windows. Stejným postupem
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Ujistěte se, že na svém počítači máte nainstalovanou [Java se Development Kit 8](https://aka.ms/azure-jdks) nebo novější.
+* Ujistěte se, že máte [java SE Development Kit 8](https://aka.ms/azure-jdks) nebo novější nainstalován na vašem počítači.
 
 * Stáhněte a nainstalujte [Maven](https://maven.apache.org/install.html).
 
@@ -51,7 +51,7 @@ Tento článek je orientovaný na pracovní stanici s Windows. Stejným postupem
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
     ```
-3. Přejděte do kořenového adresáře `azure-iot-sdk-java` a sestavte projekt, aby se stáhly všechny potřebné balíčky.
+3. Přejděte do `azure-iot-sdk-java` kořenového adresáře a vytvořte projekt ke stažení všech potřebných balíčků.
    
    ```cmd/sh
    cd azure-iot-sdk-java
@@ -60,25 +60,25 @@ Tento článek je orientovaný na pracovní stanici s Windows. Stejným postupem
 
 ## <a name="create-a-device-enrollment"></a>Vytvoření registrace zařízení
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com), v nabídce na levé straně vyberte tlačítko **všechny prostředky** a otevřete instanci služby Device Provisioning Service (DPS).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com), vyberte tlačítko **Všechny prostředky** v levé nabídce a otevřete instanci služby Device Provisioning (DPS).
 
-2. Vyberte kartu **spravovat registrace** a pak v horní části vyberte tlačítko **přidat jednotlivou registraci** . 
+2. Vyberte kartu **Spravovat zápisy** a nahoře vyberte tlačítko **Přidat jednotlivé zápisy.** 
 
-3. Na panelu **Přidat registraci** zadejte následující informace a stiskněte tlačítko **Uložit** .
+3. V panelu **Přidat zápis** zadejte následující informace a stiskněte tlačítko **Uložit.**
 
    - **Mechanismus:** Jako *Mechanismus* pro ověření identity vyberte **Symetrický klíč**.
 
-   - **Automaticky generovat klíče**: zaškrtněte toto políčko.
+   - **Automaticky generovat klíče**: Zaškrtněte toto políčko.
 
-   - **ID registrace**: Zadejte ID registrace k identifikaci registrace. Použijte k tomu pouze malá písmena, číslice a spojovník („-“). Například **symm-Key-Java-Device-007**.
+   - **ID registrace**: Zadejte ID registrace k identifikaci registrace. Použijte k tomu pouze malá písmena, číslice a spojovník („-“). Například **symm-key-java-device-007**.
 
-   - **ID zařízení IoT Hubu**: Zadejte identifikátor zařízení – Například **Java-Device-007**.
+   - **ID zařízení IoT Hubu**: Zadejte identifikátor zařízení – Například **java-device-007**.
 
      ![Přidání jednotlivé registrace pro ověření symetrického klíče na webu Azure Portal](./media/quick-create-simulated-device-symm-key-java/create-individual-enrollment-java.png)
 
-4. Po uložení registrace se vygeneruje **primární klíč** a **sekundární klíč** a přidá se k položce registrace. Vaše registrace zařízení symetrického klíče se zobrazí ve sloupci *ID registrace* na kartě *jednotlivé registrace* jako **symm-Key-Java-Device-007** . 
+4. Po uložení registrace se primární **klíč** a sekundární klíč vygenerují a přidají do **položky** registrace. Registrace zařízení symetrického klíče se zobrazí jako **symm-key-java-device-007** ve *sloupci ID registrace* na kartě *Jednotlivé registrace.* 
 
-    Otevřete registraci a zkopírujte hodnotu vygenerovaného **primárního klíče**. Tuto hodnotu klíče a **ID registrace** budete používat později, když aktualizujete kód Java pro zařízení.
+    Otevřete registraci a zkopírujte hodnotu vygenerovaného **primárního klíče**. Tuto hodnotu klíče a **ID registrace** použijete později, až aktualizujete kód Javy pro zařízení.
 
 
 
@@ -86,17 +86,17 @@ Tento článek je orientovaný na pracovní stanici s Windows. Stejným postupem
 
 ## <a name="simulate-device-boot-sequence"></a>Simulace spouštěcí sekvence zařízení
 
-V této části provedete aktualizaci ukázkového kódu zařízení a odešlete spouštěcí sekvenci zařízení do instance DPS. Tato spouštěcí sekvence způsobí, že se zařízení rozpozná, ověří a přiřadí ke službě IoT Hub propojené s instancí DPS.
+V této části aktualizujete ukázkový kód zařízení, abyste odeslali spouštěcí sekvenci zařízení do instance DPS. Tato spouštěcí sekvence způsobí, že zařízení bude rozpoznáno, ověřeno a přiřazeno k centru IoT propojenému s instancí DPS.
 
-1. V nabídce služba Device Provisioning vyberte **Přehled** a poznamenejte si _Rozsah ID_ a _globální koncový bod služby zřizování_.
+1. V nabídce Služba zřizování zařízení vyberte **Přehled** a poznamenejte si globální koncový bod _oboru ID_ a _zřizovací služby_.
 
     ![Informace o službě](./media/java-quick-create-simulated-device-x509/extract-dps-endpoints.png)
 
-2. Otevřete vzorový kód zařízení Java pro úpravy. Úplná cesta k ukázkovému kódu zařízení je:
+2. Otevřete ukázkový kód zařízení Java pro úpravy. Úplná cesta k ukázkovému kódu zařízení je:
 
     `azure-iot-sdk-java/provisioning/provisioning-samples/provisioning-symmetrickey-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningSymmetricKeySampleSample.java`
 
-   - Přidejte _obor ID_ a _globální koncový bod služby zřizování_ pro instanci DPS. Také zahrňte primární symetrický klíč a ID registrace, které jste zvolili pro jednotlivé registrace. Uložte provedené změny. 
+   - Přidejte globální koncový bod _oboru ID_ a _zřizovací služby_ instance DPS. Zahrňte také primární symetrický klíč a ID registrace, které jste zvolili pro individuální zápis. Uložte provedené změny. 
 
       ```java
         private static final String SCOPE_ID = "[Your scope ID here]";
@@ -105,13 +105,13 @@ V této části provedete aktualizaci ukázkového kódu zařízení a odešlete
         private static final String REGISTRATION_ID = "[Enter your Registration ID here]";
       ```
 
-3. Otevřete příkazový řádek pro sestavení. Přejděte do složky ukázkový projekt zřizování v úložišti sady Java SDK.
+3. Otevřete příkazový řádek pro vytváření. Přejděte do ukázkové složky projektu zřizování úložiště Java SDK.
 
     ```cmd/sh
     cd azure-iot-sdk-java/provisioning/provisioning-samples/provisioning-symmetrickey-sample
     ```
 
-4. Sestavte ukázku a potom přejděte do složky `target` a spusťte vytvořený soubor. jar.
+4. Vytvořte ukázku a `target` přejděte do složky a spusťte vytvořený soubor JAR.
 
     ```cmd/sh
     mvn clean install
@@ -119,7 +119,7 @@ V této části provedete aktualizaci ukázkového kódu zařízení a odešlete
     java -jar ./provisioning-symmetrickey-sample-{version}-with-deps.jar
     ```
 
-5. Očekávaný výstup by měl vypadat nějak takto:
+5. Očekávaný výstup by měl vypadat podobně jako následující:
 
     ```cmd/sh
       Starting...
@@ -132,7 +132,7 @@ V této části provedete aktualizaci ukázkového kódu zařízení a odešlete
       Message received! Response status: OK_EMPTY
     ```
 
-6. Na webu Azure Portal přejděte k centru IoT propojenému s vaší službou zřizování a otevřete okno **Device Explorer**. Po úspěšném zřízení simulovaného zařízení symetrického klíče do centra se jeho ID zařízení zobrazí v okně **Device Explorer** s **povoleným** *stavem* .  Pokud jste okno už otevřeli před spuštěním ukázkové aplikace zařízení, možná budete muset stisknout tlačítko **aktualizovat** v horní části. 
+6. Na webu Azure Portal přejděte k centru IoT propojenému s vaší službou zřizování a otevřete okno **Device Explorer**. Po úspěšném zřizování simulované hospo- zařízení symetrického klíče do rozbočovače se jeho ID zařízení zobrazí v okně **Průzkumníka zařízení** s *funkcí STATUS* jako **povolenou**.  Možná budete muset stisknout tlačítko **Aktualizovat** v horní části, pokud jste již otevřeli okno před spuštěním ukázkové aplikace zařízení. 
 
     ![Zařízení je zaregistrované u centra IoT](./media/quick-create-simulated-device-symm-key-java/hubregistration-java.png) 
 
@@ -143,15 +143,15 @@ V této části provedete aktualizaci ukázkového kódu zařízení a odešlete
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud máte v úmyslu pokračovat v práci a prozkoumat si ukázku klienta zařízení, neprovádějte čištění prostředků vytvořených v rámci tohoto rychlého startu. Pokud pokračovat nechcete, pomocí následujícího postupu odstraňte všechny prostředky vytvořené tímto rychlým startem.
+Pokud máte v plánu pokračovat v práci a zkoumání ukázky klienta zařízení, nečistěte prostředky vytvořené v tomto rychlém startu. Pokud neplánujete pokračovat, odstraňte pomocí následujících kroků všechny prostředky vytvořené tímto rychlým startem.
 
 1. Zavřete na svém počítači okno výstupu ukázky klienta zařízení.
-1. V nabídce na levé straně Azure Portal vyberte **všechny prostředky** a potom vyberte svou službu Device Provisioning. Otevřete **spravovat registrace** pro vaši službu a pak vyberte kartu **jednotlivé registrace** . zaškrtněte políčko vedle *ID registrace* zařízení, které jste zaregistrovali v rámci tohoto rychlého startu, a pak stiskněte tlačítko **Odstranit** v horní části podokna. 
-1. V nabídce na levé straně Azure Portal vyberte **všechny prostředky** a potom vyberte Centrum IoT. Otevřete **zařízení IoT** pro vaše centrum, zaškrtněte políčko vedle *ID zařízení* , které jste zaregistrovali v rámci tohoto rychlého startu, a pak klikněte na tlačítko **Odstranit** v horní části podokna.
+1. V levé nabídce na webu Azure Portal vyberte **Všechny prostředky** a pak vyberte službu Zřizování zařízení. Otevřete **Spravovat registrace** pro vaši službu a pak zaškrtněte kartu **Jednotlivé registrace.** Zaškrtněte políčko vedle *ID registrace* zařízení, které jste zaregistrovali v tomto rychlém startu, a stiskněte tlačítko **Odstranit** v horní části podokna. 
+1. V levé nabídce na webu Azure Portal vyberte **Všechny prostředky** a pak vyberte své centrum IoT. Otevřete **zařízení IoT** pro svůj rozbočovač, zaškrtněte políčko vedle *ID zařízení* zařízení, které jste zaregistrovali v tomto rychlém startu, a stiskněte tlačítko **Odstranit** v horní části podokna.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste na svém počítači s Windows vytvořili simulované zařízení a prostřednictvím služby Azure IoT Hub Device Provisioning Service na portálu jste ho zřídili ve službě IoT Hub pomocí symetrického klíče. Pokud se chcete dozvědět, jak zařízení programově zaregistrovat, přejděte k rychlému startu pro programovou registraci zařízení X. 509. 
+V tomto rychlém startu jste vytvořili simulované zařízení v počítači s Windows a zřídit ho do vašeho centra IoT pomocí symetrického klíče se službou Azure IoT Hub DeviceProvisioning Service na portálu. Chcete-li se dozvědět, jak zaregistrovat zařízení programově, pokračujte na úvodním startu pro programovou registraci zařízení X.509. 
 
 > [!div class="nextstepaction"]
-> [Rychlý Start Azure – registrace zařízení X. 509 do Azure IoT Hub Device Provisioning Service](quick-enroll-device-x509-java.md)
+> [Azure quickstart – registrace zařízení X.509 do služby Azure IoT Hub Device Provisioning Service](quick-enroll-device-x509-java.md)

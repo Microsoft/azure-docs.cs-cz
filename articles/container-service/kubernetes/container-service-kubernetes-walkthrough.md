@@ -1,5 +1,5 @@
 ---
-title: ZASTARALÉ Rychlý Start – cluster Azure Kubernetes pro Linux
+title: (ZASTARALÉ) Úvodní příručka – cluster Azure Kubernetes pro Linux
 description: Rychle se naučíte, jak pomocí rozhraní příkazového řádku Azure vytvářet cluster Kubernetes pro linuxové kontejnery ve službě Azure Container Service.
 author: iainfoulds
 ms.service: container-service
@@ -8,20 +8,20 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
 ms.openlocfilehash: cfd0f8a9a3180b14b4da9dc61e252054fe06628c
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78274172"
 ---
-# <a name="deprecated-deploy-kubernetes-cluster-for-linux-containers"></a>ZASTARALÉ Nasazení clusteru Kubernetes pro kontejnery platformy Linux
+# <a name="deprecated-deploy-kubernetes-cluster-for-linux-containers"></a>(ZASTARALÉ) Nasazení clusteru Kubernetes pro linuxové kontejnery
 
 > [!TIP]
-> Aktualizovanou verzi v tomto rychlém startu, která používá službu Azure Kubernetes, najdete v tématu [rychlý Start: nasazení clusteru Azure Kubernetes Service (AKS)](../../aks/kubernetes-walkthrough.md).
+> Aktualizovanou verzi tohoto rychlého startu, který používá službu Azure Kubernetes Service, najdete v [tématu Úvodní příručka: Nasazení clusteru služby Azure Kubernetes Service (AKS).](../../aks/kubernetes-walkthrough.md)
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-V tomto rychlém startu se cluster Kubernetes nasazuje pomocí Azure CLI. Následně se na tomto clusteru nasadí a spustí vícekontejnerová aplikace skládající se z webu front-end a instance Redis. Po dokončení bude aplikace přístupná přes internet. 
+V tomto rychlém startu clusteru Kubernetes se nasadí pomocí azure CLI. Následně se na tomto clusteru nasadí a spustí vícekontejnerová aplikace skládající se z webu front-end a instance Redis. Po dokončení bude aplikace přístupná přes internet. 
 
 Ukázková aplikace použitá v tomto dokumentu je napsaná v Pythonu. Pomocí zde podrobně popsaných konceptů a postupů je možné do clusteru Kubernetes nasadit jakoukoli image kontejneru. Kód, soubor Dockerfile a předem vytvořené soubory manifestu Kubernetes související s tímto projektem jsou k dispozici na [GitHubu](https://github.com/Azure-Samples/azure-voting-app-redis.git).
 
@@ -29,11 +29,11 @@ Ukázková aplikace použitá v tomto dokumentu je napsaná v Pythonu. Pomocí z
 
 V tomto rychlém startu se předpokládá základní znalost konceptů Kubernetes. Podrobné informace o Kubernetes najdete v [dokumentaci ke Kubernetes]( https://kubernetes.io/docs/home/).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít rozhraní příkazového řádku Azure ve verzi 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít rozhraní příkazového řádku Azure ve verzi 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli). 
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -192,7 +192,7 @@ Pomocí příkazu [kubectl get service](https://kubernetes.io/docs/reference/gen
 kubectl get service azure-vote-front --watch
 ```
 
-Zpočátku se **EXTERNAL-IP** (Externí IP adresa) pro službu *azure-vote-front* bude zobrazovat ve stavu *probíhá*. Jakmile se adresa EXTERNAL-IP změní ze stavu *probíhá* na *IP adresu*, pomocí klávesové zkratky `CTRL-C` zastavte sledovací proces kubectl. 
+Zpočátku **EXTERNAL-IP** pro *azure-hlasování front* služby se zobrazí jako *čekající*. Jakmile se stav adresy EXTERNAL-IP změní ze stavu *Probíhá* na hodnotu *IP adresa*, pomocí klávesové zkratky `CTRL-C` zastavte sledovací proces kubectl. 
   
 ```output
 azure-vote-front   10.0.34.242   <pending>     80:30676/TCP   7s

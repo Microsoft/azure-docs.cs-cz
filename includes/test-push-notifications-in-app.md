@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: crdun
 ms.openlocfilehash: e81d11c01ef1cd8cb1ca6b63e48554cc46d146ee
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67175691"
 ---
-* V Xcode, stiskněte klávesu **spustit** sestavil a aplikace na zařízení s Iosem (Všimněte si, že nabízených oznámení nebude fungovat v simulátoru). Klikněte na tlačítko **OK** přijímat nabízená oznámení; tento požadavek vyvolá se při prvním spuštění aplikace.
-* V aplikaci, přidejte novou položku a klikněte na tlačítko **+** .
-* Ověřte, že přijetí oznámení a pak klikněte na **OK** chcete oznámení zavřít. Teď úspěšně jste dokončili tento kurz.
+* V Xcode stiskněte **Spustit** a spustit aplikaci na zařízení se systémem iOS (všimněte si, že push nebude fungovat na simulátorech). Klepnutím na **tlačítko OK** přijmete nabízená oznámení. K tomuto požadavku dojde při prvním spuštění aplikace.
+* V aplikaci přidejte novou **+** položku a klikněte na tlačítko .
+* Ověřte, zda je přijato oznámení, a klepnutím na tlačítko **OK** oznámení zavřete. Nyní jste úspěšně dokončili tento kurz.
 

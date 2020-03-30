@@ -1,41 +1,41 @@
 ---
 title: Vytvoření kontejnerů Azure Cosmos s velkým klíčem oddílu
-description: Naučte se, jak vytvořit kontejner ve Azure Cosmos DB s velkým klíčem oddílu pomocí Azure Portal a různých sad SDK.
+description: Zjistěte, jak vytvořit kontejner v Azure Cosmos DB s velkým klíčem oddílu pomocí portálu Azure a různých sad SDK.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
 ms.openlocfilehash: 7184a6b85e93c41dfe914813301a4b1a0c88f2cd
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75887678"
 ---
-# <a name="create-containers-with-large-partition-key"></a>Vytváření kontejnerů s velkým klíčem oddílu
+# <a name="create-containers-with-large-partition-key"></a>Vytvoření kontejnerů s velkým klíčem oddílu
 
-Azure Cosmos DB používá schéma dělení na základě hodnoty hash k zajištění horizontálního škálování dat. Všechny kontejnery Azure Cosmos vytvořené před může 3 2019 použít funkci hash, která vypočítá hodnotu hash na základě prvních 100 bajtů klíče oddílu. Pokud existuje více klíčů oddílů, které mají stejné prvních 100 bajtů, pak se tyto logické oddíly považují za stejný logický oddíl služby. To může vést k problémům, jako je nesprávná kvóta velikosti oddílu a jedinečné indexy použité v rámci klíčů oddílu. Pro vyřešení tohoto problému jsou představeny klíče s velkými oddíly. Azure Cosmos DB teď podporuje velké klíče oddílů s hodnotami až do 2 KB.
+Azure Cosmos DB používá schéma dělení založené na hash k dosažení horizontální škálování dat. Všechny kontejnery Azure Cosmos vytvořené před 3 května 2019 použít funkci hash, která vypočítá hash na základě prvních 100 bajtů klíče oddílu. Pokud existuje více klíčů oddílů, které mají stejné první 100 bajtů, pak tyto logické oddíly jsou považovány za stejný logický oddíl službou. To může vést k problémům, jako je kvóta velikosti oddílu je nesprávné a jedinečné indexy jsou použity v klíčích oddílu. K vyřešení tohoto problému jsou zavedeny velké klíče oddílů. Azure Cosmos DB teď podporuje klíče velkých oddílů s hodnotami až 2 KB.
 
-Klíče s velkými oddíly se podporují pomocí funkce Rozšířené verze funkce hash, která může vygenerovat jedinečnou hodnotu hash z klíčů velkých oddílů až do 2 KB. Tato verze algoritmu hash se také doporučuje u scénářů s vysokou mohutnou klíč oddílu bez ohledu na velikost klíče oddílu. Mohutnost klíče oddílu je definovaná jako počet jedinečných logických oddílů, například v pořadí logických oddílů ~ 30000 v kontejneru. Tento článek popisuje, jak vytvořit kontejner s velkým klíčem oddílu pomocí Azure Portal a různých sad SDK.
+Velké klíče oddílů jsou podporovány pomocí funkce rozšířené verze funkce hash, která může generovat jedinečnou hash z velkých klíčů oddílů až po 2 kB. Tato verze hash je také doporučeno pro scénáře s vysokou klíč oddílu mohutnost bez ohledu na velikost klíče oddílu. Mohutnost klíče oddílu je definována jako počet jedinečných logických oddílů, například v pořadí ~30000 logických oddílů v kontejneru. Tento článek popisuje, jak vytvořit kontejner s velkým klíčem oddílu pomocí portálu Azure a různých sad SDK.
 
-## <a name="create-a-large-partition-key-azure-portal"></a>Vytvoření klíče s velkým oddílem (Azure Portal)
+## <a name="create-a-large-partition-key-azure-portal"></a>Vytvoření velkého klíče oddílu (portál Azure)
 
-Pokud chcete vytvořit velký klíč oddílu, když vytvoříte nový kontejner pomocí Azure Portal, podívejte se, jestli **je klíč oddílu můj oddíl větší než 100 bajtů** . Zrušte zaškrtnutí políčka, pokud nepotřebujete klíče velkých oddílů, nebo pokud máte aplikace spuštěné v sadách SDK verze starší než 1,18.
+Chcete-li vytvořit velký klíč oddílu, při vytváření nového kontejneru pomocí portálu Azure, zkontrolujte, že **můj klíč oddílu je větší než 100 bajtů** možnost. Zrušte zaškrtnutí políčka, pokud nepotřebujete velké klíče oddílů nebo pokud máte aplikace spuštěné ve verzi sad SDK starší než 1.18.
 
-![Vytváření velkých klíčů oddílů pomocí Azure Portal](./media/large-partition-keys/large-partition-key-with-portal.png)
+![Vytvoření velkých klíčů oddílů pomocí portálu Azure](./media/large-partition-keys/large-partition-key-with-portal.png)
 
-## <a name="create-a-large-partition-key-powershell"></a>Vytvoření klíče s velkým oddílem (PowerShell)
+## <a name="create-a-large-partition-key-powershell"></a>Vytvoření velkého klíče oddílu (PowerShell)
 
-Pokud chcete vytvořit kontejner s podporou klíče velkých oddílů, přejděte na
+Chcete-li vytvořit kontejner s podporou velkých klíčů oddílu, podívejte se,
 
 * [Vytvoření kontejneru Azure Cosmos s velkou velikostí klíče oddílu](manage-with-powershell.md#create-container-big-pk)
 
-## <a name="create-a-large-partition-key-net-sdk"></a>Vytvoření klíče s velkým oddílem (.NET SDK)
+## <a name="create-a-large-partition-key-net-sdk"></a>Vytvoření velkého klíče oddílu (.Net SDK)
 
-Chcete-li vytvořit kontejner s velkým klíčem oddílu pomocí sady .NET SDK, zadejte vlastnost `PartitionKeyDefinitionVersion.V2`. Následující příklad ukazuje, jak určit vlastnost verze v objektu PartitionKeyDefinition a nastavit ji na PartitionKeyDefinitionVersion. v2.
+Chcete-li vytvořit kontejner s velkým klíčem oddílu pomocí `PartitionKeyDefinitionVersion.V2` sady .NET SDK, zadejte vlastnost. Následující příklad ukazuje, jak určit Vlastnost Version v rámci objektu PartitionKeyDefinition a nastavit ji na PartitionKeyDefinitionVersion.V2.
 
-### <a name="v3-net-sdk"></a>V3 .NET SDK
+### <a name="v3-net-sdk"></a>v3 sada SDK .NET
 
 ```csharp
 await database.CreateContainerAsync(
@@ -45,7 +45,7 @@ await database.CreateContainerAsync(
     })
 ```
 
-### <a name="v2-net-sdk"></a>v2 .NET SDK
+### <a name="v2-net-sdk"></a>v2 Sada SDK .NET
 
 ```csharp
 DocumentCollection collection = await newClient.CreateDocumentCollectionAsync(
@@ -64,21 +64,21 @@ database,
 
 ## <a name="supported-sdk-versions"></a>Podporované verze sady SDK
 
-V následujících minimálních verzích sad SDK jsou podporovány klíče s velkými oddíly:
+Velké klíče oddílů jsou podporovány následujícími minimálními verzemi sad SDK:
 
 |Typ sady SDK  | Minimální verze   |
 |---------|---------|
-|.NET     |    1,18     |
-|Synchronizace Java     |   2.4.0      |
+|.Net     |    1.18     |
+|Synchronizace javy     |   2.4.0      |
 |Java Async   |  2.5.0        |
-| Rozhraní REST API | verze vyšší než `2017-05-03` pomocí hlavičky žádosti `x-ms-version`.|
-| Šablona Resource Manageru | verze 2 pomocí vlastnosti `"version":2` v rámci objektu `partitionKey`. |
+| REST API | verze vyšší `2017-05-03` než `x-ms-version` pomocí hlavičky požadavku.|
+| Šablona Resource Manageru | verze 2 pomocí `"version":2` vlastnosti `partitionKey` v rámci objektu. |
 
-V současné době nelze v nástroji Power BI a Azure Logic Apps použít kontejnery s velkým klíčem oddílu. Z těchto aplikací můžete použít kontejnery bez klíče oddílu.
+V současné době nelze použít kontejnery s velkým klíčem oddílu v rámci Power BI a Azure Logic Apps. Můžete použít kontejnery bez klíče velkého oddílu z těchto aplikací.
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Dělení ve službě Azure Cosmos DB](partitioning-overview.md)
-* [Jednotky žádostí ve službě Azure Cosmos DB](request-units.md)
+* [Jednotky požadavků v Azure Cosmos DB](request-units.md)
 * [Zřízení propustnosti u kontejnerů a databází](set-throughput.md)
 * [Práce s účtem Azure Cosmos](account-overview.md)

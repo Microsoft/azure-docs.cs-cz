@@ -1,6 +1,6 @@
 ---
-title: Vytvoření fronty Service Bus pomocí Azure PowerShell
-description: V tomto rychlém startu se dozvíte, jak pomocí Azure PowerShell vytvořit frontu Service Bus. Pak použijete ukázkovou aplikaci k posílání zpráv do fronty a jejich přijímání.
+title: Vytvoření fronty service bus pomocí Azure PowerShellu
+description: V tomto rychlém startu se dozvíte, jak pomocí Prostředí Azure PowerShell vytvořit frontu služby Service Bus. Potom použijete ukázkovou aplikaci k odesílání zpráv do fronty a přijímání zpráv z fronty.
 services: service-bus-messaging
 author: spelluru
 manager: timlt
@@ -11,13 +11,13 @@ ms.custom: mvc
 ms.date: 12/20/2019
 ms.author: spelluru
 ms.openlocfilehash: 890e8d3a7592a6794fd19ac28b6ca613ac7201c6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75426940"
 ---
-# <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>Rychlý Start: použití Azure PowerShell k vytvoření fronty Service Bus
+# <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>Úvodní příručka: Vytvoření fronty service bus pomocí Azure PowerShellu
 Tento rychlý start popisuje, jak odesílat zprávy do fronty Service Bus a přijímat je. Používá se k tomu prostředí PowerShell, kde se vytvoří obor názvů pro zasílání zpráv a v tomto oboru názvů fronta. Dále je třeba získat v oboru názvů přihlašovací údaje pro autorizaci. Postup pak ukazuje, jak do této fronty odesílat zprávy a přijímat je z ní pomocí [knihovny .NET Standard](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -29,11 +29,11 @@ Tento rychlý start popisuje, jak odesílat zprávy do fronty Service Bus a při
 
 Před tímto kurzem se ujistěte, že máte nainstalované tyto položky:
 
-- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet][] před tím, než začnete. 
-- [Visual Studio 2017 s aktualizací Update 3 (verze 15.3, 26730.01)](https://www.visualstudio.com/vs) nebo novější. Pomocí sady Visual Studio vytvoříte ukázku, která odesílá zprávy do fronty a přijímá z ní zprávu. Ukázka je testování fronty, kterou jste vytvořili na portálu. 
+- Předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,][] než začnete. 
+- [Visual Studio 2017 s aktualizací Update 3 (verze 15.3, 26730.01)](https://www.visualstudio.com/vs) nebo novější. Pomocí sady Visual Studio můžete vytvořit ukázku, která odesílá zprávy a přijímá zprávy z fronty. Ukázka je otestovat frontu, kterou jste vytvořili na portálu. 
 - [NET Core SDK](https://www.microsoft.com/net/download/windows) verze 2.0 nebo novější.
 
-Tento rychlý start vyžaduje použití nejnovější verze Azure PowerShellu. Pokud PowerShell potřebujete nainstalovat nebo upgradovat, přečtěte si téma [Instalace a konfigurace Azure PowerShellu][]. Pokud jste obeznámeni s Azure Cloud Shell, můžete ji použít bez instalace Azure PowerShell na svém počítači. Podrobnosti o Azure Cloud Shell najdete v tématu [přehled Azure Cloud Shell](../cloud-shell/overview.md)
+Tento rychlý start vyžaduje použití nejnovější verze Azure PowerShellu. Pokud potřebujete nainstalovat nebo upgradovat, přečtěte si informace [o instalaci a konfiguraci Azure PowerShellu][]. Pokud jste obeznámeni s Azure Cloud Shell, můžete ho použít bez instalace Azure PowerShellu do vašeho počítače. Podrobnosti o Azure Cloud Shell najdete v [tématu Přehled Azure Cloud Shellu.](../cloud-shell/overview.md)
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -128,7 +128,7 @@ Tato část obsahuje další podrobnosti o chování ukázkového kódu.
 
 ### <a name="get-connection-string-and-queue"></a>Získání připojovacího řetězce a fronty
 
-Připojovací řetězec a název fronty jsou předány metodě `Main()` jako argumenty příkazového řádku. Metoda `Main()` deklaruje dvě proměnné řetězce, do kterých se tyto údaje načtou:
+Připojovací řetězec a název `Main()` fronty jsou předány metodě jako argumenty příkazového řádku. Metoda `Main()` deklaruje dvě proměnné řetězce, do kterých se tyto údaje načtou:
 
 ```csharp
 static void Main(string[] args)
@@ -165,7 +165,7 @@ Metoda `Main()` pak spustí asynchronní smyčku zpráv, `MainAsync()`.
 
 ### <a name="message-loop"></a>Smyčka zpráv
 
-Metoda MainAsync () vytvoří klienta fronty s argumenty příkazového řádku, zavolá obslužnou rutinu pro příjem zpráv nazvanou `RegisterOnMessageHandlerAndReceiveMessages()`a odešle sadu zpráv:
+Metoda MainAsync() vytvoří klienta fronty s argumenty příkazového řádku, `RegisterOnMessageHandlerAndReceiveMessages()`zavolá obslužnou rutinu přijímající zprávy s názvem a odešle sadu zpráv:
 
 ```csharp
 static async Task MainAsync(string ServiceBusConnectionString, string QueueName)
@@ -256,11 +256,11 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 ```
 
 > [!NOTE]
-> Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer umožňuje uživatelům připojit se k oboru názvů Service Bus a snadno spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, nebo možnost testovat témata, fronty, odběry, služby Relay, centra oznámení a centra událostí. 
+> Prostředky služby Service Bus můžete spravovat pomocí [aplikace Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Průzkumník služby Service Bus umožňuje uživatelům připojit se k oboru názvů service bus a snadno spravovat entity zasílání zpráv. Nástroj poskytuje pokročilé funkce, jako je funkce importu a exportu nebo možnost testovat téma, fronty, předplatná, přenosové služby, centra oznámení a centra událostí. 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste vytvořil obor názvů služby Service Bus a další prostředky potřebné k odesílání a přijímání zpráv z fronty. Další informace o psaní kódu pro posílání a přijímání zpráv najdete v kurzech v části **posílání a přijímání zpráv** . 
+V tomto článku jste vytvořil obor názvů služby Service Bus a další prostředky potřebné k odesílání a přijímání zpráv z fronty. Další informace o psaní kódu pro odesílání a přijímání zpráv, pokračujte v kurzech v části **Odesílat a přijímat zprávy.** 
 
 > [!div class="nextstepaction"]
 > [Odesílání a příjem zpráv](service-bus-dotnet-get-started-with-queues.md)

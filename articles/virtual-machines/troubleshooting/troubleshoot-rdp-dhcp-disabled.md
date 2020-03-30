@@ -1,6 +1,6 @@
 ---
-title: Nelze vzdáleně připojit k Azure Virtual Machines vzhledem k tomu, že je zakázané DHCP | Dokumentace Microsoftu
-description: Informace o řešení potíží s RDP problém, který je způsobeno tím, služba Klient DHCP je zakázaný ve službě Microsoft Azure. | Dokumentace Microsoftu
+title: Nelze vzdáleně připojit k virtuálním počítačům Azure, protože služba DHCP je zakázána| Dokumenty společnosti Microsoft
+description: Zjistěte, jak vyřešit problém protokolu RDP způsobený klientskou službou DHCP, který je v Microsoft Azure zakázán.| Dokumenty společnosti Microsoft
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,87 +13,87 @@ ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
 ms.openlocfilehash: 2c5b0556554d280e57b2df51875e1b057b5fb4a8
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75749889"
 ---
-#  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>Nelze RDP na virtuálních počítačích Azure, protože služba Klient DHCP je zakázána.
+#  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>Nelze rdp do virtuálních počítačů Azure, protože služba klienta DHCP je zakázána
 
-Tento článek popisuje problém, který se po zakázání služby Klient DHCP ve virtuálním počítači je nelze vzdálené plochy Azure Windows Virtual Machines (VM).
+Tento článek popisuje problém, ve kterém nelze vzdálenou plochu na Virtuální počítače Azure Windows (VMs) po zakázání služby klienta DHCP ve virtuálním počítači.
 
 
 ## <a name="symptoms"></a>Příznaky
-Nemůžete provádět připojení ke vzdálené ploše virtuálního počítače v Azure protože ve virtuálním počítači je zakázána služba Klient DHCP. Když vrátíte se změnami na snímku obrazovky [Diagnostika spouštění](../troubleshooting/boot-diagnostics.md) na webu Azure Portal, uvidíte, že virtuální počítač se spustí normálně a čeká se přihlašovací údaje na přihlašovací obrazovce. Vzdáleně Zkontrolujte protokoly událostí ve virtuálním počítači s použitím prohlížeče události. Uvidíte, že služba Klient DHCP není spuštěná nebo nepodaří spustit. Následující ukázka protokolu:
+Připojení RDP nelze vytvořit jako virtuální počítač v Azure, protože služba klienta DHCP je ve virtuálním počítači zakázána. Když zkontrolujete snímek obrazovky v [diagnostice spouštění](../troubleshooting/boot-diagnostics.md) na webu Azure Portal, uvidíte spuštění virtuálního počítače normálně a čeká na přihlašovací údaje na přihlašovací obrazovce. Protokoly událostí ve virtuálním ms můžete vzdáleně zobrazit pomocí Prohlížeče událostí. Uvidíte, že klientská služba DHCP není spuštěna nebo se nespustí. Následující ukázkový protokol:
 
-**Název protokolu**: systému </br>
-**Zdroj**: správce řízení služeb </br>
-**Datum**: 12/16/2015 11:19:36 AM </br>
+**Název protokolu**: Systém </br>
+**Zdroj**: Správce řízení služeb </br>
+**Datum**: 12/16/2015 11:19:36 </br>
 **ID události**: 7022 </br>
-**Úloha kategorie**: žádné </br>
+**Kategorie úkolu**: Žádná </br>
 **Úroveň**: Chyba </br>
 **Klíčová slova**: Classic</br>
-**Uživatel**: není k dispozici </br>
+**Uživatel**: Není k msti </br>
 **Počítač**: myvm.cosotos.com</br>
-**Popis**: Služba Klient DHCP přestala během spouštění reagovat.</br>
+**Popis**: Služba klienta DHCP byla spuštěna při spuštění.</br>
 
-Pro virtuální počítače Resource Manageru můžete použít funkce konzoly sériového portu přístup k dotazu pro protokoluje událost 7022 pomocí následujícího příkazu:
+Pro virtuální zařízení Správce prostředků můžete pomocí funkce Konzoly pro sériový přístup dotazovat se na protokoly událostí 7022 pomocí následujícího příkazu:
 
     wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 
-Klasické virtuální počítače musíte pracovat v OFFLINE režimu a shromažďovat protokoly ručně.
+Pro klasické virtuální chod, budete muset pracovat v režimu OFFLINE a shromažďovat protokoly ručně.
 
 ## <a name="cause"></a>Příčina
 
-Služba klienta DHCP není spuštěná na virtuálním počítači.
+Klientská služba DHCP není spuštěna na virtuálním počítači.
 
 > [!NOTE]
-> Tento článek se týká pouze pro služby Klient DHCP a ne Server DHCP.
+> Tento článek se vztahuje pouze na službu klienta DHCP, nikoli na server DHCP.
 
 ## <a name="solution"></a>Řešení
 
-Předtím, než budete postupovat podle těchto kroků, vytvořte snímek disku s operačním systémem virtuálního počítače ovlivněný jako záložní. Další informace najdete v tématu [pořízení snímku disku](../windows/snapshot-copy-managed-disk.md).
+Než budete postupovat podle těchto kroků, pořiďte snímek disku operačního systému ovlivněného virtuálního počítače jako zálohu. Další informace naleznete [v tématu Snímek disku](../windows/snapshot-copy-managed-disk.md).
 
-Chcete-li tento problém vyřešit, povolte protokol DHCP pomocí sériového portu ovládací prvek nebo [resetování síťové rozhraní](reset-network-interface.md) pro virtuální počítač.
+Chcete-li tento problém vyřešit, použijte sériové řízení k povolení DHCP nebo [obnovení síťového rozhraní](reset-network-interface.md) pro virtuální hod.
 
-### <a name="use-serial-control"></a>Použití sériového portu ovládacího prvku
+### <a name="use-serial-control"></a>Použití sériového řízení
 
-1. Připojte se k [sériové konzoly a otevřené instance CMD](serial-console-windows.md#use-cmd-or-powershell-in-serial-console).
-). Pokud konzole sériového portu není povolená na virtuálním počítači, přečtěte si téma [resetování síťové rozhraní](reset-network-interface.md).
-2. Zaškrtněte, pokud služba DHCP je zakázána na síťovém rozhraní:
+1. Připojte se k [konzoli Serial Console a otevřete instanci CMD](serial-console-windows.md#use-cmd-or-powershell-in-serial-console).
+). Pokud konzola Sériové konzole není na vašem virtuálním počítači povolená, přečtěte si článek [Obnovení síťového rozhraní](reset-network-interface.md).
+2. Zkontrolujte, zda je v síťovém rozhraní zakázánserver DHCP:
 
         sc query DHCP
-3. Pokud je služba DHCP zastavená, zkuste spustit službu
+3. Pokud je služba DHCP zastavena, pokuste se službu spustit
 
         sc start DHCP
 
-4. Dotazování na službu znovu, abyste měli jistotu, že je služba úspěšně spuštěna.
+4. Dotaz služby znovu a ujistěte se, že služba byla úspěšně spuštěna.
 
         sc query DHCP
 
-    Zkuste se připojit k virtuálnímu počítači a zobrazit, pokud se problém vyřeší.
-5. Pokud služba nespustí, použijte následující vhodné řešení na základě chybové zprávy, který jste obdrželi:
+    Zkuste se připojit k virtuálnímu virtuálnímu zařízení a zjistěte, jestli je problém vyřešen.
+5. Pokud se služba nespustí, použijte následující vhodné řešení na základě chybové zprávy, kterou jste obdrželi:
 
     | Chyba  |  Řešení |
     |---|---|
-    | 5 - PŘÍSTUP BYL ODEPŘEN  | Zobrazit [klientská služba DHCP zastavená chyba přístup odepřen](#dhcp-client-service-is-stopped-because-of-an-access-denied-error).  |
-    |1053 - ERROR_SERVICE_REQUEST_TIMEOUT   | Zobrazit [služba Klient DHCP selže nebo přestane reagovat](#dhcp-client-service-crashes-or-hangs).  |
-    | 1058 - ERROR_SERVICE_DISABLED  | Zobrazit [zakázána služba Klient DHCP](#dhcp-client-service-is-disabled).  |
-    | . 1059 - ERROR_CIRCULAR_DEPENDENCY  |[Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychlé vyřešení problému.   |
-    | 1067 - ERROR_PROCESS_ABORTED |Zobrazit [služba Klient DHCP selže nebo přestane reagovat](#dhcp-client-service-crashes-or-hangs).   |
-    |1068 - ERROR_SERVICE_DEPENDENCY_FAIL   | [Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychlé vyřešení problému.  |
-    |1069 - ERROR_SERVICE_LOGON_FAILED   |  Zobrazit [služba Klient DHCP selže z důvodu selhání přihlášení](#dhcp-client-service-fails-because-of-logon-failure) |
-    | 1070 - ERROR_SERVICE_START_HANG  | Zobrazit [služba Klient DHCP selže nebo přestane reagovat](#dhcp-client-service-crashes-or-hangs).  |
-    | 1077. - ERROR_SERVICE_NEVER_STARTED  | Zobrazit [zakázána služba Klient DHCP](#dhcp-client-service-is-disabled).  |
-    |1079 - ERROR_DIFERENCE_SERVICE_ACCOUNT   | [Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychlé vyřešení problému.  |
-    |1053 | [Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychlé vyřešení problému.  |
+    | 5 - PŘÍSTUP ODEPŘEN  | Viz [Služba klienta DHCP je zastavena z důvodu chyby odepření přístupu](#dhcp-client-service-is-stopped-because-of-an-access-denied-error).  |
+    |1053 - ERROR_SERVICE_REQUEST_TIMEOUT   | Viz [Selhání nebo zablokování služby klienta DHCP](#dhcp-client-service-crashes-or-hangs).  |
+    | 1058 - ERROR_SERVICE_DISABLED  | Viz [Služba klienta DHCP je zakázána](#dhcp-client-service-is-disabled).  |
+    | 1059 - ERROR_CIRCULAR_DEPENDENCY  |[Obraťte](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) se na podporu a získejte problém rychle vyřešen.   |
+    | 1067 - ERROR_PROCESS_ABORTED |Viz [Selhání nebo zablokování služby klienta DHCP](#dhcp-client-service-crashes-or-hangs).   |
+    |1068 - ERROR_SERVICE_DEPENDENCY_FAIL   | [Obraťte](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) se na podporu a získejte problém rychle vyřešen.  |
+    |1069 - ERROR_SERVICE_LOGON_FAILED   |  Viz [Selhání služby klienta DHCP z důvodu selhání přihlášení](#dhcp-client-service-fails-because-of-logon-failure) |
+    | 1070 - ERROR_SERVICE_START_HANG  | Viz [Selhání nebo zablokování služby klienta DHCP](#dhcp-client-service-crashes-or-hangs).  |
+    | 1077 - ERROR_SERVICE_NEVER_STARTED  | Viz [Služba klienta DHCP je zakázána](#dhcp-client-service-is-disabled).  |
+    |1079 - ERROR_DIFERENCE_SERVICE_ACCOUNT   | [Obraťte](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) se na podporu a získejte problém rychle vyřešen.  |
+    |1053 | [Obraťte](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) se na podporu a získejte problém rychle vyřešen.  |
 
 
-#### <a name="dhcp-client-service-is-stopped-because-of-an-access-denied-error"></a>Klientská služba DHCP zastavená chyba přístup odepřen
+#### <a name="dhcp-client-service-is-stopped-because-of-an-access-denied-error"></a>Klientská služba DHCP je zastavena z důvodu chyby odepření přístupu.
 
-1. Připojte se k [konzoly sériového portu](serial-console-windows.md) a otevřete instance prostředí PowerShell.
-2. Stáhněte si nástroj pro monitorování procesu spuštěním následujícího skriptu:
+1. Připojte se k [konzoli Serial Console](serial-console-windows.md) a otevřete instanci prostředí PowerShell.
+2. Stáhněte nástroj Sledování procesů spuštěním následujícího skriptu:
 
    ```powershell
    remove-module psreadline
@@ -102,87 +102,87 @@ Chcete-li tento problém vyřešit, povolte protokol DHCP pomocí sériového po
    $wc = New-Object System.Net.WebClient
    $wc.DownloadFile($source,$destination)
    ```
-3. Začít **procmon** trasování:
+3. Nyní spusťte **procmon** stopu:
 
    ```
    procmon /Quiet /Minimized /BackingFile c:\temp\ProcMonTrace.PML
    ```
-4. Reprodukujte problém spuštěním služby, která generuje **přístup odepřen** zpráva:
+4. Reprodukovat problém spuštěním služby, která je generování **zprávy odepřen přístup:**
 
    ```
    sc start DHCP
    ```
 
-   Pokud se nezdaří, ukončete monitorování procesu trasování:
+   Pokud se nezdaří, ukončete trasování sledování procesů:
 
    ```
    procmon /Terminate
    ```
-5. Shromažďování **c:\temp\ProcMonTrace.PML** souboru:
+5. Shromážděte soubor **c:\temp\ProcMonTrace.PML:**
 
-    1. [Připojení datového disku k virtuálnímu počítači](../windows/attach-managed-disk-portal.md
+    1. [Připojení datového disku k virtuálnímu počítače](../windows/attach-managed-disk-portal.md
 ).
-    2. Pomocí konzoly sériového portu můžete zkopírovat soubor na nový disk. Například, `copy C:\temp\ProcMonTrace.PML F:\`. V tomto příkazu F je ovladač písmeno přídavný datový disk. Písmeno podle potřeby nahraďte správnou hodnotu.
-    3. Odpojit datový disk a připojit ho k funkční virtuální počítač, který má nainstalovaný ubstakke monitorování procesu.
+    2. Pomocí konzoly Sériové konzole můžete soubor zkopírovat na novou jednotku. Například, `copy C:\temp\ProcMonTrace.PML F:\`. V tomto příkazu f je písmeno ovladače připojeného datového disku. Podle potřeby nahraďte písmeno správnou hodnotou.
+    3. Odpojte datovou jednotku a pak ji připojte k funkčnímu virtuálnímu virtuálnímu mase, který má nainstalovaný umulovací monitor procesu.
 
-6. Otevřít **ProcMonTrace.PML** pomocí monitorování procesu ve funkčním virtuálním počítači. Potom vyfiltrovat **výsledkem je přístup ODEPŘEN**, jak je znázorněno na následujícím snímku obrazovky:
+6. Otevřete **ProcMonTrace.PML** pomocí process monitoru na pracovním virtuálním počítači. Pak filtr podle **výsledek je přístup odepřen**, jak je znázorněno na následujícím snímku obrazovky:
 
-    ![Filtrovat podle výsledku v monitorování procesu](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
+    ![Filtrovat podle výsledku v procesu monitoru](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
 
-7. Opravte klíče registru, složky nebo soubory, které jsou na výstupu. Tento problém je obvykle nastává, když přihlašovací účet, který se používá ve službě nemá oprávnění seznamu ACL pro přístup k těmto objektům. K určení správné oprávnění seznamu ACL pro přihlašovací účet, můžete zkontrolovat na virtuálním počítači v pořádku.
+7. Opravte klíče registru, složky nebo soubory, které jsou na výstupu. Obvykle tento problém je způsoben, když přihlašovací účet, který se používá ve službě nemá oprávnění ACL pro přístup k těmto objektům. Chcete-li zjistit správné oprávnění acl pro přihlašovací účet, můžete zkontrolovat na virtuálním počítači v pořádku.
 
-#### <a name="dhcp-client-service-is-disabled"></a>Služba Klient DHCP je zakázána.
+#### <a name="dhcp-client-service-is-disabled"></a>Služba klienta DHCP je zakázána.
 
-1. Služba obnovíte jeho výchozí hodnota při spuštění:
+1. Obnovení výchozí hodnoty při spuštění služby:
 
    ```
    sc config DHCP start= auto
    ```
 
-2. Spusťte službu:
+2. Spuštění služby:
 
    ```
    sc start DHCP
    ```
 
-3. Dotaz na stav služby znovu a ujistěte se, zda je spuštěná:
+3. Chcete-li se ujistit, že je spuštěná, zadejte stav služby znovu:
 
    ```
    sc query DHCP
    ```
 
-4. Pokuste se připojit k virtuálnímu počítači pomocí vzdálené plochy.
+4. Zkuste se připojit k virtuálnímu počítači pomocí vzdálené plochy.
 
-#### <a name="dhcp-client-service-fails-because-of-logon-failure"></a>Služba Klient DHCP selže z důvodu selhání přihlášení
+#### <a name="dhcp-client-service-fails-because-of-logon-failure"></a>Služba klienta DHCP se nezdaří z důvodu selhání přihlášení
 
-1. Protože k tomuto problému dochází, pokud byl změněn účet při spuštění této služby, vrácení účtu k jeho výchozí stav:
+1. Vzhledem k tomu, že k tomuto problému dochází, pokud byl změněn spouštěcí účet této služby, vraťte účet do výchozího stavu:
 
         sc config DHCP obj= 'NT Authority\Localservice'
-2. Spusťte službu:
+2. Spuštění služby:
 
         sc start DHCP
-3. Pokuste se připojit k virtuálnímu počítači pomocí vzdálené plochy.
+3. Zkuste se připojit k virtuálnímu počítači pomocí vzdálené plochy.
 
-#### <a name="dhcp-client-service-crashes-or-hangs"></a>Služba Klient DHCP selže nebo přestane reagovat
+#### <a name="dhcp-client-service-crashes-or-hangs"></a>Selhání nebo zablokování služby klienta DHCP
 
-1. Pokud stav služby se zasekla v automatickém **počáteční** nebo **zastavení** stavu, zkuste zastavit službu:
+1. Pokud se stav služby zasekne ve stavu **Spuštění** nebo **Zastavení,** zkuste službu zastavit:
 
         sc stop DHCP
-2. Izolace službu na kontejneru "svchost":
+2. Izolujte službu na vlastním kontejneru "svchost":
 
         sc config DHCP type= own
-3. Spusťte službu:
+3. Spuštění služby:
 
         sc start DHCP
-4. Pokud službu stále nespustí, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+4. Pokud se služba stále nespustí, [kontaktujte podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-### <a name="repair-the-vm-offline"></a>Opravte virtuální počítač v režimu offline
+### <a name="repair-the-vm-offline"></a>Oprava virtuálního virtuálního montovadova offline
 
-#### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Připojte disk s operačním systémem pro virtuální počítač pro obnovení
+#### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Připojení disku operačního systému k virtuálnímu virtuálnímu počítače pro obnovení
 
-1. [Připojte disk s operačním systémem pro virtuální počítač pro obnovení](../windows/troubleshoot-recovery-disks-portal.md).
-2. Spusťte připojení ke vzdálené ploše pro virtuální počítač pro obnovení. Ujistěte se, že je připojený disk označený jako **Online** v konzole Správa disků. Poznamenejte si písmeno jednotky, která je přiřazena připojeném disku s operačním systémem.
-3.  Otevřete příkazový řádek se zvýšenými oprávněními instance (**spustit jako správce**). Potom spusťte následující skript. Tento skript předpokládá, že písmeno jednotky přiřazené k připojenému disku s operačním systémem je **F**. Nahraďte písmeno odpovídající hodnotou ve vašem VIRTUÁLNÍm počítači.
+1. [Připojte disk operačního systému k virtuálnímu virtuálnímu počítače pro obnovení](../windows/troubleshoot-recovery-disks-portal.md).
+2. Spusťte připojení vzdálené plochy k virtuálnímu počítači pro obnovení. Zkontrolujte, zda je připojený disk v konzole pro správu disků označen jako **online.** Všimněte si písmena jednotky, které je přiřazeno k připojenému disku operačního systému.
+3.  Otevřete instanci příkazového řádku se zvýšenými oprávněními **(Spustit jako správce**). Potom spusťte následující skript. Tento skript předpokládá, že písmeno jednotky přiřazené k připojenému disku operačního systému je **F**. Podle potřeby nahraďte písmeno hodnotou ve vašem virtuálním počítači.
 
     ```
     reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM
@@ -198,8 +198,8 @@ Chcete-li tento problém vyřešit, povolte protokol DHCP pomocí sériového po
     reg unload HKLM\BROKENSYSTEM
     ```
 
-4. [Odpojit disk s operačním systémem a znovu vytvořte virtuální počítač](../windows/troubleshoot-recovery-disks-portal.md). Zkontrolujte, zda byl problém vyřešen.
+4. [Odpojte disk operačního systému a znovu vytvořte virtuální hod](../windows/troubleshoot-recovery-disks-portal.md). Potom zkontrolujte, zda je problém vyřešen.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat váš problém vyřešit.
+Pokud stále potřebujete pomoc, obraťte se na [podporu,](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) abyste problém vyřešili.

@@ -5,14 +5,14 @@ ms.service: iot-pnp
 ms.topic: include
 ms.date: 10/24/2019
 ms.openlocfilehash: 7a3891b26971757e107d6c35ee4863f18918afee
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75473427"
 ---
-1. Otevřete Azure IoT Explorer. Zobrazí se stránka **Konfigurace aplikace** .
+1. Otevřete Průzkumník ataky Azure. Zobrazí se stránka **Konfigurace aplikací.**
 
-1. Zadejte _připojovací řetězec IoT Hub_ a vyberte **připojit**.
+1. Zadejte _připojovací řetězec služby IoT Hub_ a vyberte **Připojit**.
 
-1. Po připojení se zobrazí stránka s přehledem **zařízení** .
+1. Po připojení se zobrazí stránka **Přehled zařízení.**

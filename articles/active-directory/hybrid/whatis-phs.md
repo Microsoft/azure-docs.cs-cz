@@ -1,5 +1,5 @@
 ---
-title: Co je synchronizace hodnot hash hesel v Azure AD? | Dokumenty Microsoft
+title: Co je synchronizace hash hesla s Azure AD? | Dokumentace Microsoftu
 description: Popisuje synchronizaci hodnot hash hesel.
 services: active-directory
 author: billmath
@@ -12,35 +12,35 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 83e172e61411c7c1c098706b5ff4566f565d6bf1
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "66253863"
 ---
-# <a name="what-is-password-hash-synchronization-with-azure-ad"></a>Co je synchronizace hodnot hash hesel v Azure AD?
-Synchronizace hodnot hash hesel je jedna z metod přihlašování používat k provádění hybridní identita. Azure AD Connect synchronizuje hodnoty hash,-the-hash, hesla uživatelů z místní instance Active Directory do služby Azure AD se cloudové instance.
+# <a name="what-is-password-hash-synchronization-with-azure-ad"></a>Co je synchronizace hash hesla s Azure AD?
+Synchronizace hodnot hash hesla je jednou z metod přihlášení používaných k dosažení hybridní identity. Azure AD Connect synchronizuje hash, hash, hesla uživatelů z místní instance služby Active Directory na cloudovou instanci Azure AD.
 
-Synchronizace hodnot hash hesel je rozšíření funkce synchronizace adresáře implementované synchronizace Azure AD Connect. Tuto funkci můžete použít pro přihlášení ke službám Azure AD, jako je Office 365. Přihlášení ke službě s použitím stejné heslo, které používáte pro přihlášení k vaší místní instancí Active Directory.
+Synchronizace hodnot hash hesla je rozšíření funkce synchronizace adresářů implementované synchronizací Azure AD Connect. Pomocí této funkce se můžete přihlásit ke službám Azure AD, jako je Office 365. Ke službě se přihlašujete pomocí stejného hesla, které používáte k přihlášení k místní instanci služby Active Directory.
 
 ![Co je služba Azure AD Connect](./media/how-to-connect-password-hash-synchronization/arch1.png)
 
-Synchronizace hodnot hash hesel pomáhá snížením počtu hesel, vaši uživatelé potřebují k údržbě pouze k jedné. Synchronizace hodnot hash hesel můžete:
+Synchronizace hash hesel pomáhá snížením počtu hesel, uživatelé musí udržovat pouze jeden. Synchronizace hodnot hash hesla může:
 
-* Zvýšení produktivity uživatelů.
+* Zlepšete produktivitu svých uživatelů.
 * Snižte náklady na helpdesk.  
 
-Volitelně můžete nastavit synchronizaci hodnot hash hesel jako záložní Pokud se rozhodnete použít [federace se službou Active Directory Federation Services (AD FS)](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Configuring-AD-FS-for-user-sign-in-with-Azure-AD-Connect) jako metodu přihlašování.
+Volitelně můžete nastavit synchronizaci hodnot hash hesel jako zálohu, pokud se rozhodnete použít [federaci se službou AD FS (AD FS)](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Configuring-AD-FS-for-user-sign-in-with-Azure-AD-Connect) jako metodu přihlášení.
 
-Pokud chcete použít synchronizaci hodnot hash hesel ve vašem prostředí, budete muset:
+Chcete-li používat synchronizaci hodnot hash hesel ve vašem prostředí, je třeba:
 
-* Instalace služby Azure AD Connect.  
-* Konfigurace synchronizace adresářů mezi vaší místní služby Active Directory instanci a instanci služby Azure Active Directory.
+* Nainstalujte Azure AD Connect.  
+* Nakonfigurujte synchronizaci adresářů mezi místní instancí služby Active Directory a instancí služby Azure Active Directory.
 * Povolte synchronizaci hodnot hash hesel.
 
 
 
-Další informace najdete v tématu [co je hybridní identita?](whatis-hybrid-identity.md).
+Další informace naleznete v tématu [Co je hybridní identita?](whatis-hybrid-identity.md).
 
 
 
@@ -51,5 +51,5 @@ Další informace najdete v tématu [co je hybridní identita?](whatis-hybrid-id
 - [Co je Azure AD Connect a Connect Health?](whatis-azure-ad-connect.md)
 - [Co je předávací ověřování (PTA)?](how-to-connect-pta.md)
 - [Co je federace?](whatis-fed.md)
-- [Co je jednotné přihlašování na?](how-to-connect-sso.md)
-- [Jak funguje synchronizace hodnot hash hesel](how-to-connect-password-hash-synchronization.md)
+- [Co je jednotné přihlášení?](how-to-connect-sso.md)
+- [Jak funguje synchronizace hash hesel](how-to-connect-password-hash-synchronization.md)

@@ -7,17 +7,17 @@ ms.topic: overview
 ms.date: 3/21/2019
 ms.author: rohink
 ms.openlocfilehash: 1543c0daae7d637730a5f8f9da2305423ba7f84e
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76932409"
 ---
 # <a name="what-is-azure-dns"></a>Co je Azure DNS?
 
 Azure DNS je hostitelská služba určená pro domény DNS, která zajišťuje překlad názvů s využitím infrastruktury Microsoft Azure. Pokud své domény hostujete v Azure, můžete spravovat záznamy DNS pomocí stejných přihlašovacích údajů, rozhraní API a nástrojů a za stejných fakturačních podmínek jako u ostatních služeb Azure.
 
-Azure DNS nelze použít k nákupu názvu domény. V případě ročního poplatku můžete koupit název domény pomocí [App Service domény](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain#buy-the-domain) nebo registrátora názvu domény třetí strany. Domény pak můžete hostovat v Azure DNS za účelem správy záznamů. Další informace najdete v tématu [Delegování domény do DNS Azure](dns-domain-delegation.md).
+Azure DNS nelze použít k nákupu názvu domény. Za roční poplatek si můžete koupit název domény pomocí [domén služby App Service](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain#buy-the-domain) nebo registrátora domén třetích stran. Domény pak můžete hostovat v Azure DNS za účelem správy záznamů. Další informace najdete [v tématu Delegování domény na Azure DNS](dns-domain-delegation.md).
 
 Součástí Azure DNS jsou následující funkce.
 
@@ -37,11 +37,11 @@ DNS domény v Azure DNS jsou hostované na globální síti názvových serverů
 
 Další informace najdete v tématu o [ochraně záznamů a zón DNS](dns-protect-zones-recordsets.md). 
 
-## <a name="dnssec"></a>DNSSEC
+## <a name="dnssec"></a>Dnssec
 
-Azure DNS aktuálně nepodporuje DNSSEC. Ve většině případů můžete snížit nutnost rozšíření DNSSEC tím, že ve svých aplikacích konzistentně použijete HTTPS/TLS. Pokud je DNSSEC zásadním požadavkem pro zóny DNS, můžete tyto zóny hostovat s poskytovateli hostování DNS třetích stran.
+Azure DNS aktuálně nepodporuje DNSSEC. Ve většině případů můžete snížit potřebu DNSSEC konzistentně pomocí HTTPS/TLS ve vašich aplikacích. Pokud je dnssec kritickým požadavkem pro vaše zóny DNS, můžete tyto zóny hostovat s poskytovateli hostingu DNS třetích stran.
 
-## <a name="ease-of-use"></a>Snadné použití
+## <a name="ease-of-use"></a>Snadné používání
 
  Azure DNS může spravovat záznamy DNS vašich služeb Azure a poskytovat DNS i externím prostředkům. Služba Azure DNS je integrovaná na webu Azure Portal a používá stejné přihlašovací údaje, smlouvu o podpoře i fakturaci jako ostatní služby Azure. 
 
@@ -51,15 +51,15 @@ Své domény a záznamy můžete spravovat pomocí webu Azure Portal, rutin Azur
 
 ## <a name="customizable-virtual-networks-with-private-domains"></a>Přizpůsobitelné virtuální sítě s privátními doménami
 
-Azure DNS podporuje i privátní domény DNS. Tato funkce umožňuje v privátních virtuálních sítích místo aktuálně dostupných názvů poskytovaných Azure používat vlastní názvy domén.
+Azure DNS také podporuje privátní domény DNS. Tato funkce umožňuje v privátních virtuálních sítích místo aktuálně dostupných názvů poskytovaných Azure používat vlastní názvy domén.
 
 Další informace najdete v tématu [Použití Azure DNS pro privátní domény](private-dns-overview.md).
 
 ## <a name="alias-records"></a>Záznamy aliasů
 
-Azure DNS podporuje sady záznamů aliasů. Pomocí sady záznamů aliasů můžete odkazovat na prostředek Azure, jako je například veřejná IP adresa Azure, profil Azure Traffic Manager nebo koncový bod Azure Content Delivery Network (CDN). Pokud se změní IP adresa základního prostředku, sada záznamů aliasů se bez problémů aktualizuje během překladu DNS. Sada záznamů aliasů odkazuje na instanci služby a instance služby je spojená s IP adresou.
+Azure DNS podporuje sady záznamů aliasů. Sadu záznamů aliasu můžete použít k odkazování na prostředek Azure, jako je veřejná IP adresa Azure, profil Azure Traffic Manager nebo koncový bod Sítě pro doručování obsahu Azure (CDN). Pokud se změní IP adresa základního prostředku, sada záznamů aliasů se bez problémů aktualizuje během překladu DNS. Sada záznamů aliasů odkazuje na instanci služby a instance služby je spojená s IP adresou.
 
-Nyní můžete na vrchol nebo zaholé domény nasměrovat Traffic Manager profil nebo adresu CDN pomocí záznamu aliasu. Příklad: contoso.com.
+Nyní můžete také nasměrovat svou vrcholnou nebo holou doménu na profil Traffic Manageru nebo koncový bod CDN pomocí záznamu aliasu. Příklad: contoso.com.
 
 Další informace najdete v [přehledu záznamů aliasů Azure DNS](dns-alias.md).
 
