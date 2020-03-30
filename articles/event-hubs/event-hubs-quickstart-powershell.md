@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: vytvoření centra událostí pomocí prostředí PowerShell – Azure Event Hubs'
+title: 'Úvodní příručka: Vytvoření centra událostí pomocí PowerShellu – Centra událostí Azure'
 description: Tento rychlý start popisuje, jak pomocí Azure PowerShellu vytvořit centrum událostí a pak odesílat a přijímat události pomocí sady .NET Standard SDK.
 services: event-hubs
 author: spelluru
@@ -11,10 +11,10 @@ ms.custom: seodec18
 ms.date: 11/05/2019
 ms.author: spelluru
 ms.openlocfilehash: 89ec1957e75fa45eef6c7939a77e5cc1b3cf7806
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77162119"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>Rychlý start: Vytvoření centra událostí pomocí Azure PowerShellu
@@ -23,19 +23,19 @@ Azure Event Hubs je platforma pro streamování velkých objemů dat a služba p
 
 V tomto rychlém startu vytvoříte centrum událostí pomocí Azure PowerShellu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující:
 
-- Předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet][] před tím, než začnete.
+- Předplatné Azure. Pokud ho nemáte, [vytvořte si účet zdarma,][] než začnete.
 - [Visual Studio 2019](https://www.visualstudio.com/vs).
 - [NET Standard SDK](https://www.microsoft.com/net/download/windows) verze 2.0 nebo novější.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud používáte PowerShell místně, k dokončení tohoto rychlého startu je potřeba, abyste měli nejnovější verzi PowerShellu. Pokud PowerShell potřebujete nainstalovat nebo upgradovat, přečtěte si téma [Instalace a konfigurace Azure PowerShellu](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Pokud používáte PowerShell místně, k dokončení tohoto rychlého startu je potřeba, abyste měli nejnovější verzi PowerShellu. Pokud potřebujete nainstalovat nebo upgradovat, přečtěte si informace [o instalaci a konfiguraci Azure PowerShellu](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -58,7 +58,7 @@ New-AzEventHubNamespace -ResourceGroupName myResourceGroup -NamespaceName namesp
 ## <a name="create-an-event-hub"></a>Vytvoření centra událostí
 
 Teď, když máte obor názvů služby Event Hubs, v něm vytvořte centrum událostí:  
-Povolené období pro `MessageRetentionInDays` je 1 až 7 dní.
+Povolená `MessageRetentionInDays` lhůta je mezi 1 a 7 dny.
 
 ```azurepowershell-interactive
 New-AzEventHub -ResourceGroupName myResourceGroup -NamespaceName namespace_name -EventHubName eventhub_name -MessageRetentionInDays 3
@@ -68,15 +68,15 @@ Blahopřejeme! Pomocí Azure PowerShellu jste vytvořili obor názvů služby Ev
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste vytvořili obor názvů služby Event Hubs a použili jste ukázkové aplikace k odesílání a přijímání událostí z centra událostí. Podrobné pokyny k odesílání událostí do (nebo) přijímání událostí z centra událostí najdete v tématu kurzy pro **odesílání a příjem** : 
+V tomto článku jste vytvořili obor názvů služby Event Hubs a použili jste ukázkové aplikace k odesílání a přijímání událostí z centra událostí. Podrobné pokyny k odesílání událostí do centra událostí (nebo) příjmu událostí najdete v tématu **Kurzy odesílání a přijímání událostí:** 
 
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](get-started-java-send-v2.md)
 - [Python](get-started-python-send-v2.md)
-- [JavaScript](get-started-java-send-v2.md)
-- [Go](event-hubs-go-get-started-send.md)
-- [C (pouze odeslat)](event-hubs-c-getstarted-send.md)
-- [Apache Storm (pouze příjem)](event-hubs-storm-getstarted-receive.md)
+- [Javascript](get-started-java-send-v2.md)
+- [Přejít](event-hubs-go-get-started-send.md)
+- [C (jenom odesílání)](event-hubs-c-getstarted-send.md)
+- [Apache Storm (jenom příjem)](event-hubs-storm-getstarted-receive.md)
 
 
 [vytvořte si bezplatný účet]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

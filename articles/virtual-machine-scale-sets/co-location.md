@@ -1,6 +1,6 @@
 ---
-title: Společné umístění Azure Virtual Machine Scale Sets
-description: Přečtěte si, jak se ve společném umístění prostředků služby škálování virtuálních počítačů Azure dá zvýšit výkon.
+title: Spoluhledání škálovacísady virtuálních strojů Azure
+description: Přečtěte si, jak může spoluvyhledání prostředků škálovací sady virtuálních strojů Azure zlepšit výkon.
 author: cynthn
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
@@ -9,21 +9,21 @@ ms.workload: infrastructure-services
 ms.date: 05/14/2019
 ms.author: cynthn
 ms.openlocfilehash: 9d6e4e15c552cc4467dd17221a1ba901fd8e4f58
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79250826"
 ---
 # <a name="co-location"></a>Společné umístění
 
-Jedním z největších přispěvatelů k latenci mezi virtuálními počítači je pouze vzdálenost.
+Jedním z největších přispěvatelů k latenci mezi virtuálními zařízeními je jednoduše vzdálenost.
 
-## <a name="preview-proximity-placement-groups"></a>Náhled: skupiny umístění pro Proximity 
+## <a name="preview-proximity-placement-groups"></a>Náhled: Skupiny umístění bezkontaktního umístění 
 
 [!INCLUDE [virtual-machines-common-ppg-overview](../../includes/virtual-machines-common-ppg-overview.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-Vytvořte [skupinu umístění blízkosti](proximity-placement-groups.md) pro sadu škálování.
+Vytvořte [skupinu umístění bezkontaktní](proximity-placement-groups.md) ho diody pro škálovací sadu.
 

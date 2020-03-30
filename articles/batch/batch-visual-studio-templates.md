@@ -1,6 +1,6 @@
 ---
-title: Vytváření řešení pomocí šablon sady Visual Studio – Azure Batch | Microsoft Docs
-description: Přečtěte si, jak vám šablony projektů sady Visual Studio pomůžou implementovat a spouštět úlohy náročné na výpočetní výkon na Azure Batch.
+title: Vytváření řešení pomocí šablon Visual Studia – Azure Batch | Dokumenty společnosti Microsoft
+description: Zjistěte, jak vám šablony projektů Visual Studia můžou pomoct implementovat a spouštět úlohy náročné na výpočetní výkon v Azure Batch.
 services: batch
 documentationcenter: .net
 author: LauraBrenner
@@ -15,119 +15,119 @@ ms.date: 02/27/2017
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: a71dbd1b38ff58ccf1eb7a4d50daad5b24922e2f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77022745"
 ---
-# <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Použití šablon projektů sady Visual Studio ke skoku na zahájení dávkového řešení
+# <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Použití šablon projektů sady Visual Studio k nastartování dávkových řešení
 
-Šablony **úloh** a **procesorů sady Visual Studio** pro Batch poskytují kód, který vám umožňuje implementovat a spouštět úlohy náročné na výpočetní výkon v dávce s minimálním úsilím. Tento dokument popisuje tyto šablony a poskytuje pokyny k jejich použití.
+**Šablony správce úloh** a **procesorúloh Visual Studio** pro Batch poskytují kód, který vám pomůže implementovat a spustit úlohy náročné na výpočetní výkon v batch s nejmenším úsilím. Tento dokument popisuje tyto šablony a poskytuje pokyny pro jejich použití.
 
 > [!IMPORTANT]
-> Tento článek se zabývá pouze informacemi, které se vztahují na tyto dvě šablony, a předpokládá, že jste obeznámeni se službou Batch a s klíčovými koncepty, které se týkají: fondy, výpočetní uzly, úlohy a úlohy, úlohy Správce úloh, proměnné prostředí a další relevantní. informace. Další informace najdete v článku [základy Azure Batch](batch-technical-overview.md) a [Batch – přehled funkcí pro vývojáře](batch-api-basics.md).
+> Tento článek popisuje pouze informace vztahující se k těmto dvěma šablonám a předpokládá, že jste obeznámeni se službou Batch a klíčovými koncepty, které s ní souvisejí: fondy, výpočetní uzly, úlohy a úkoly, úlohy správce úloh, proměnné prostředí a další relevantní Informace. Další informace najdete v [přehledu základních](batch-technical-overview.md) funkcí Azure Batch a [Batch pro vývojáře](batch-api-basics.md).
 > 
 > 
 
 ## <a name="high-level-overview"></a>Podrobný přehled
-Šablony úlohy Správce úloh a procesoru úloh lze použít k vytvoření dvou užitečných komponent:
+Šablony Správce úloh a Procesor úloh lze použít k vytvoření dvou užitečných součástí:
 
-* Úkol správce úloh, který implementuje rozdělovač úlohy, který může úlohu rozdělit do několika úloh, které mohou běžet nezávisle, paralelně.
+* Úloha správce úloh, která implementuje rozdělovač úloh, který může rozdělit úlohu na více úloh, které lze spustit nezávisle, paralelně.
 * Procesor úloh, který lze použít k provedení předběžného zpracování a následného zpracování kolem příkazového řádku aplikace.
 
-Například ve scénáři vykreslování filmu by příčka úlohy provede jednu filmovou úlohu na stovky nebo tisíce samostatných úloh, které by zpracovaly jednotlivé snímky samostatně. V souladu s tím procesor úlohy vyvolal aplikaci vykreslování a všechny závislé procesy, které jsou potřebné pro vykreslení jednotlivých rámců, a také provádění dalších akcí (například zkopírování vykresleného snímku do umístění úložiště).
+Například ve scénáři vykreslování filmu by rozdělovač úloh přeměnil jednu úlohu filmu na stovky nebo tisíce samostatných úloh, které by zpracovaly jednotlivé snímky samostatně. Odpovídajícím způsobem by procesor úloh vyvolat vykreslovací aplikace a všechny závislé procesy, které jsou potřebné k vykreslení každého rámce, stejně jako provádět všechny další akce (například kopírování vykresleného rámce do umístění úložiště).
 
 > [!NOTE]
-> Šablony úloh a procesoru úloh jsou nezávisle na sobě navzájem nezávislé, takže se můžete rozhodnout použít obojí nebo pouze jeden z nich, v závislosti na požadavcích výpočetní úlohy a na vašich preferencích.
+> Šablony Job Managera a task processoru jsou na sobě nezávislé, takže můžete použít obojí nebo jenom jednu z nich v závislosti na požadavcích vaší výpočetní úlohy a vašich preferencích.
 > 
 > 
 
-Jak je znázorněno v následujícím diagramu, výpočetní úloha, která používá tyto šablony, projde třemi fázemi:
+Jak je znázorněno na obrázku níže, výpočetní úloha, která používá tyto šablony, projde třemi fázemi:
 
-1. Klientský kód (např. aplikace, Webová služba atd.) odesílá úlohu do služby Batch v Azure a jako úlohu správce úloh zadává program Správce úloh.
-2. Služba Batch spustí úlohu správce úloh ve výpočetním uzlu a příčka úlohy spustí zadaný počet úloh procesoru úloh, a to na základě požadavků a specifikací v kódu rozdělovače úlohy.
-3. Úlohy procesoru úloh se spouštějí samostatně, paralelně pro zpracování vstupních dat a generování výstupních dat.
+1. Kód klienta (např. aplikace, webová služba atd.) odešle úlohu službě Batch v Azure a jako úlohu správce úloh určí program správce úloh.
+2. Služba Batch spustí úlohu správce úloh na výpočetním uzlu a rozdělovač úloh spustí zadaný počet úloh procesoru úloh na tolika výpočetních uzlech, kolik je požadováno, na základě parametrů a specifikací v kódu rozdělovače úloh.
+3. Úlohy procesoru úloh spustit nezávisle, paralelně, ke zpracování vstupních dat a generování výstupních dat.
 
-![Diagram znázorňující, jak klientský kód komunikuje se službou Batch][diagram01]
+![Diagram znázorňující interakci klientského kódu se službou Batch][diagram01]
 
 ## <a name="prerequisites"></a>Požadavky
 Chcete-li použít šablony Batch, budete potřebovat následující:
 
-* Počítač s nainstalovanou sadou Visual Studio 2015. Šablony služby Batch se aktuálně podporují jenom pro Visual Studio 2015.
-* Šablony služby Batch, které jsou k dispozici z [Galerie sady Visual Studio][vs_gallery] jako rozšíření sady Visual Studio. Existují dva způsoby, jak získat šablony:
+* Počítač s nainstalovaným Visual Studio 2015. Dávkové šablony jsou aktuálně podporované pouze pro Visual Studio 2015.
+* Předlohy Batch, které jsou k dispozici v [Galerii Visual Studia][vs_gallery] jako rozšíření sady Visual Studio. Existují dva způsoby, jak získat šablony:
   
-  * Instalace šablon pomocí dialogového okna **rozšíření a aktualizace** v aplikaci Visual Studio (Další informace najdete v tématu [vyhledání a používání rozšíření sady Visual Studio][vs_find_use_ext]). V dialogovém okně **rozšíření a aktualizace** vyhledejte a stáhněte následující dvě rozšíření:
+  * Nainstalujte šablony pomocí dialogového okna **Rozšíření a aktualizace** v sadě Visual Studio (další informace naleznete v [tématu Hledání a používání rozšíření sady Visual Studio][vs_find_use_ext]). V dialogovém okně **Rozšíření a aktualizace** vyhledejte a stáhněte následující dvě rozšíření:
     
-    * Azure Batch Správce úloh s rozdělovačem úlohy
-    * Procesor úloh Azure Batch
-  * Stažení šablon z Online galerie pro Visual Studio: [Microsoft Azure Batch šablon projektů][vs_gallery_templates]
-* Pokud plánujete použít funkci [balíčky aplikací](batch-application-packages.md) k nasazení Správce úloh a procesoru úloh do výpočetních uzlů služby Batch, musíte propojit účet úložiště s účtem Batch.
+    * Správce dávkových úloh Azure s rozdělovačem úloh
+    * Procesor dávek Azure
+  * Stažení šablon z online galerie pro Visual Studio: [Šablony dávkových projektů Microsoft Azure][vs_gallery_templates]
+* Pokud plánujete použít funkci [Balíčky aplikací](batch-application-packages.md) k nasazení správce úloh a procesoru úloh do výpočetních uzlů Batch, musíte propojit účet úložiště s účtem Batch.
 
 ## <a name="preparation"></a>Příprava
-Doporučujeme vytvořit řešení, které může obsahovat Správce úloh i procesor úkolů, protože díky tomu může být snazší sdílet kód mezi správcem úloh a programy procesoru úloh. Chcete-li vytvořit toto řešení, postupujte podle následujících kroků:
+Doporučujeme vytvořit řešení, které může obsahovat správce úloh i procesor úloh, protože to může usnadnit sdílení kódu mezi programem správce úloh a programů procesoru úloh. Chcete-li vytvořit toto řešení, postupujte takto:
 
-1. Otevřete Visual Studio a vyberte **soubor** > **Nový** > **projekt**.
-2. V části **šablony**rozbalte **jiné typy projektů**, klikněte na **řešení sady Visual Studio**a pak vyberte **prázdné řešení**.
-3. Zadejte název, který popisuje vaši aplikaci, a účel tohoto řešení (např. "LitwareBatchTaskPrograms").
-4. Chcete-li vytvořit nové řešení, klikněte na tlačítko **OK**.
+1. Otevřete Visual Studio a vyberte **Soubor** > **nový** > **projekt**.
+2. V **části Šablony**rozbalte **položku Další typy projektů**, klepněte na položku Řešení sady Visual **Studio**a vyberte možnost **Prázdné řešení**.
+3. Zadejte název, který popisuje vaši aplikaci a účel tohoto řešení (například "LitwareBatchTaskPrograms").
+4. Chcete-li vytvořit nové řešení, klepněte na tlačítko **OK**.
 
-## <a name="job-manager-template"></a>Šablona správce úloh
-Šablona správce úloh vám pomůže implementovat úkol správce úloh, který může provádět tyto akce:
+## <a name="job-manager-template"></a>Šablona Správce úloh
+Šablona Správce úloh vám pomůže implementovat úlohu správce úloh, která může provádět následující akce:
 
-* Rozdělit úlohu na více úkolů.
-* Odešlete tyto úlohy ke spuštění v dávce.
+* Rozdělení úlohy na více úkolů.
+* Odešlete tyto úlohy ke spuštění na Batch.
 
 > [!NOTE]
-> Další informace o úlohách Správce úloh najdete v tématu [Přehled funkcí Batch pro vývojáře](batch-api-basics.md#job-manager-task).
+> Další informace o úlohách správce úloh naleznete v [tématu Přehled dávkových funkcí pro vývojáře](batch-api-basics.md#job-manager-task).
 > 
 > 
 
 ### <a name="create-a-job-manager-using-the-template"></a>Vytvoření správce úloh pomocí šablony
-Chcete-li do řešení, které jste vytvořili dříve, přidat správce úloh, postupujte podle následujících kroků:
+Chcete-li přidat správce úloh do řešení, které jste vytvořili dříve, postupujte takto:
 
-1. Otevřete existující řešení v aplikaci Visual Studio.
-2. V Průzkumník řešení klikněte pravým tlačítkem myši na řešení, klikněte na **přidat** > **Nový projekt**.
-3. V **části C#vizuál** klikněte na **Cloud**a potom klikněte na **Azure Batch Správce úloh s rozdělovačem úlohy**.
-4. Zadejte název, který popisuje vaši aplikaci, a tento projekt Identifikujte jako správce úloh (např. "LitwareJobManager").
-5. Chcete-li vytvořit projekt, klikněte na tlačítko **OK**.
-6. Nakonec sestavte projekt, aby aplikace Visual Studio načetla všechny odkazované balíčky NuGet a ověřila, že projekt je platný před tím, než začnete upravovat.
+1. Otevřete stávající řešení v sadě Visual Studio.
+2. V Průzkumníku řešení klikněte pravým tlačítkem myši na řešení a klikněte na **Přidat** > **nový projekt**.
+3. V **části Visual C#** klikněte na **Cloud**a potom klikněte na Azure Batch Job Manager with **Job Splitter**.
+4. Zadejte název, který popisuje vaši aplikaci a identifikuje tento projekt jako správce úloh (např.
+5. Chcete-li vytvořit projekt, klepněte na tlačítko **OK**.
+6. Nakonec vytvořte projekt vynutit Visual Studio načíst všechny odkazované balíčky NuGet a ověřit, že projekt je platný před zahájením jeho úpravy.
 
 ### <a name="job-manager-template-files-and-their-purpose"></a>Soubory šablon Správce úloh a jejich účel
-Když vytvoříte projekt pomocí šablony Správce úloh, vygeneruje tři skupiny souborů s kódem:
+Když vytvoříte projekt pomocí šablony Správce úloh, generuje tři skupiny souborů kódu:
 
-* Hlavní soubor programu (Program.cs). Obsahuje vstupní bod programu a zpracování výjimek nejvyšší úrovně. Nemusíte to obvykle měnit.
-* Adresář rozhraní. Obsahuje soubory zodpovědné za práci "často používaného programu Správce úloh" – rozbalení parametrů, přidání úkolů do úlohy služby Batch atd. Tyto soubory byste neměli normálně měnit.
-* Soubor rozdělovače úlohy (JobSplitter.cs). Tady umístíte logiku specifickou pro aplikaci pro rozdělení úlohy do úkolů.
+* Hlavní soubor programu (Program.cs). Obsahuje vstupní bod programu a zpracování výjimek nejvyšší úrovně. Za normálních okolností byste to neměli měnit.
+* Adresář rozhraní Framework. Obsahuje soubory odpovědné za "často používaný text" práce prováděné programem správce úloh – rozbalení parametrů, přidání úkolů do dávkové úlohy atd. Za normálních okolností byste neměli tyto soubory upravovat.
+* Soubor rozdělovače úloh (JobSplitter.cs). Toto je místo, kde budete umístit logiku specifické pro aplikaci pro rozdělení úlohy do úkolů.
 
-Samozřejmě můžete přidat další soubory podle potřeby pro podporu kódu rozdělovače úlohy v závislosti na složitosti logiky rozdělení úloh.
+Samozřejmě můžete přidat další soubory podle potřeby pro podporu kódu rozdělovač úlohy, v závislosti na složitosti logiky rozdělení úlohy.
 
-Šablona také generuje standardní soubory projektu .NET, jako je například soubor. csproj, App. config, Packages. config, atd.
+Šablona také generuje standardní soubory projektu .NET, jako je soubor .csproj, app.config, packages.config atd.
 
-Zbytek této části popisuje různé soubory a jejich strukturu kódu a vysvětluje, co jednotlivé třídy dělá.
+Zbývající část této části popisuje různé soubory a jejich strukturu kódu a vysvětluje, co jednotlivé třídy dělá.
 
-![Visual Studio Průzkumník řešení znázorňující řešení šablony úlohy Správce úloh][solution_explorer01]
+![Průzkumník řešení Visual Studia zobrazující řešení šablony Správce úloh][solution_explorer01]
 
-**Soubory architektury**
+**Soubory frameworku**
 
-* `Configuration.cs`: zapouzdřuje načítání dat konfigurace úlohy, jako jsou například podrobnosti účtu Batch, přihlašovací údaje k propojenému účtu úložiště, informace o úloze a úkolu a parametry úlohy. Poskytuje také přístup k proměnným prostředím definovaným v dávce (viz nastavení prostředí pro úlohy v dokumentaci ke službě Batch) prostřednictvím třídy Configuration. objekt EnvironmentVariable.
-* `IConfiguration.cs`: vyabstrakcí implementaci třídy konfigurace, takže můžete rozdělit rozdělovač úlohy pomocí falešného nebo objektového konfiguračního objektu.
-* `JobManager.cs`: orchestruje součásti programu Správce úloh. Zodpovídá za inicializaci rozdělovače úlohy, vyvolání rozdělovače úlohy a odeslání úloh vrácených rozdělovačem úlohy odesílateli úkolu.
-* `JobManagerException.cs`: představuje chybu, která vyžaduje ukončení Správce úloh. JobManagerException se používá k zabalení očekávaných chyb, kde konkrétní diagnostické informace mohou být k dispozici jako součást ukončení.
-* `TaskSubmitter.cs`: Tato třída zodpovídá za přidání úkolů vrácených rozdělovačem úlohy do úlohy Batch. Třída JobManager agreguje sekvenci úloh do dávek pro efektivní, ale včas přičtenou úlohu, a pak zavolá TaskSubmitter. SubmitTasks ve vlákně na pozadí pro každou dávku.
+* `Configuration.cs`: Zapouzdřuje načítání dat konfigurace úlohy, jako jsou podrobnosti o účtu dávky, pověření propojeného účtu úložiště, informace o úloze a úloze a parametry úlohy. Poskytuje také přístup k dávkově definovaným proměnným prostředí (viz nastavení prostředí pro úkoly v dokumentaci batch) prostřednictvím třídy Configuration.EnvironmentVariable.
+* `IConfiguration.cs`: Abstrahuje implementaci třídy Configuration, takže můžete otestovat rozdělovač úloh pomocí falešného nebo falešného konfiguračního objektu.
+* `JobManager.cs`: Orchestruje součásti programu správce úloh. Je zodpovědný za inicializaci rozdělovačúloh, vyvolání rozdělovačúloh a odeslání úkolů vrácených rozdělovačem úlohy do zadavatele.
+* `JobManagerException.cs`: Představuje chybu, která vyžaduje ukončení správce úloh. JobManagerException se používá k zabalení "očekávané" chyby, kde konkrétní diagnostické informace mohou být poskytnuty jako součást ukončení.
+* `TaskSubmitter.cs`: Tato třída je zodpovědná za přidání úkolů vrácených rozdělovačem úloh do dávkové úlohy. JobManager třída agreguje pořadí úkolů do dávek pro efektivní, ale včasné přidání do úlohy, pak volá TaskSubmitter.SubmitTasks na vlákno na pozadí pro každou dávku.
 
 **Rozdělovač úlohy**
 
-`JobSplitter.cs`: Tato třída obsahuje logiku specifickou pro aplikaci pro rozdělení úlohy na úkoly. Rozhraní vyvolá metodu JobSplitter. Split, aby získala sekvenci úloh, která se přidá do úlohy, jak je metoda vrátí. Toto je třída, do které vložíte logiku vaší úlohy. Implementujte metodu Split pro vrácení posloupnosti CloudTask instancí představujících úkoly, do kterých chcete rozdělit úlohu.
+`JobSplitter.cs`: Tato třída obsahuje logiku specifickou pro aplikaci pro rozdělení úlohy na úkoly. Rozhraní framework vyvolá metodu JobSplitter.Split, aby získala posloupnost úkolů, které přidá do úlohy, když je metoda vrátí. Toto je třída, kde budete aplikovat logiku své práce. Implementujte Split metoda vrátit posloupnost CloudTask instance představující úkoly, do kterých chcete rozdělit úlohu.
 
-**Standardní soubory projektu příkazového řádku .NET**
+**Standardní soubory projektu příkazového řádku rozhraní .NET**
 
-* `App.config`: standardní konfigurační soubor aplikace .NET.
-* `Packages.config`: standardní soubor závislosti balíčku NuGet.
-* `Program.cs`: obsahuje vstupní bod programu a zpracování výjimek nejvyšší úrovně.
+* `App.config`: Standardní konfigurační soubor aplikace .NET.
+* `Packages.config`: Standardní soubor závislostí balíčku NuGet.
+* `Program.cs`: Obsahuje vstupní bod programu a zpracování výjimek nejvyšší úrovně.
 
-### <a name="implementing-the-job-splitter"></a>Implementace rozdělovače úlohy
-Když otevřete projekt šablony Správce úloh, projekt bude mít ve výchozím nastavení otevřený soubor JobSplitter.cs. Můžete implementovat logiku rozdělení pro úlohy v úloze pomocí níže uvedené metody Split ():
+### <a name="implementing-the-job-splitter"></a>Implementace rozdělovače úloh
+Když otevřete projekt šablony Správce úloh, projekt bude mít ve výchozím nastavení otevřený JobSplitter.cs soubor. Můžete implementovat logiku rozdělení pro úlohy ve vaší pracovní zátěži pomocí Split() metoda zobrazit níže:
 
 ```csharp
 /// <summary>
@@ -156,56 +156,56 @@ public IEnumerable<CloudTask> Split()
 ```
 
 > [!NOTE]
-> Oddíl s poznámkou v metodě `Split()` je jediným oddílem kódu šablony Správce úloh, který je určen pro úpravy přidáním logiky pro rozdělení úloh do různých úloh. Pokud chcete upravit jiný oddíl šablony, ujistěte se, že jste obeznámení s tím, jak funguje Batch, a vyzkoušejte několik [ukázek kódu Batch][github_samples].
+> Část s popisem v `Split()` metodě je jedinou částí kódu šablony Správce úloh, která je určena k úpravě přidáním logiky pro rozdělení úloh na různé úkoly. Pokud chcete upravit jinou část šablony, ujistěte se, že jste obeznámeni s tím, jak Batch funguje, a vyzkoušejte několik [ukázek dávkového kódu][github_samples].
 > 
 > 
 
-Vaše implementace rozdělení () má přístup k:
+Vaše implementace Split() má přístup k:
 
-* Parametry úlohy, a to prostřednictvím pole `_parameters`.
-* Objekt vlastnosti cloudjob, který představuje úlohu, prostřednictvím pole `_job`.
-* Objekt CloudTask, který představuje úkol správce úloh, prostřednictvím pole `_jobManagerTask`.
+* Parametry úlohy prostřednictvím `_parameters` pole.
+* Objekt CloudJob představující úlohu prostřednictvím `_job` pole.
+* Objekt CloudTask představující úlohu správce úlohy prostřednictvím `_jobManagerTask` pole.
 
-Vaše implementace `Split()` nepotřebuje přidávat úkoly přímo do úlohy. Místo toho by měl váš kód vracet sekvenci objektů CloudTask a tyto objekty budou automaticky přidány do úlohy pomocí tříd rozhraní, které vyvolávají rozdělovač úlohy. Je běžné použít C#funkci iterátoru (`yield return`) k implementaci rozdělovačů úloh, protože to umožňuje, aby se úlohy spouštěly co nejdříve a nikoli čekaly na výpočet všech úkolů.
+Implementace `Split()` nemusí přidávat úkoly přímo do úlohy. Místo toho váš kód by měl vrátit posloupnost CloudTask objekty a tyto budou přidány do úlohy automaticky framework třídy, které vyvolávají rozdělovač úloh. Je běžné používat c#'s iterator`yield return`( ) funkce implementovat rozdělovačúloh, protože to umožňuje úlohy spustit co nejdříve, spíše než čekat na všechny úkoly, které mají být vypočteny.
 
-**Selhání rozdělovače úlohy**
+**Selhání rozdělovače úloh**
 
-Pokud v průběhu úlohy dojde k chybě, mělo by to mít jednu z těchto akcí:
+Pokud rozdělovač úlohy narazí na chybu, měl by buď:
 
-* Ukončí sekvenci pomocí příkazu C# `yield break`. v takovém případě se Správce úloh bude považovat za úspěšný. ani
-* Vyvolejte výjimku. v takovém případě se Správce úloh bude považovat za neúspěšný a může se pokusit znovu v závislosti na tom, jak klient nakonfigurovali.
+* Ukončit pořadí pomocí `yield break` příkazu C#, v takovém případě bude správce úloh považován za úspěšný; Nebo
+* Vyvolat výjimku, v takovém případě bude správce úloh považován za neúspěšný a může být opakován v závislosti na tom, jak jej klient nakonfiguroval).
 
-V obou případech bude možné spustit všechny úlohy, které už vrátil rozdělovač úlohy a přidaly do úlohy Batch. Pokud nechcete, aby k tomu docházelo, můžete:
+V obou případech budou všechny úkoly, které již byly vráceny rozdělovačem úloh a přidány do dávkové úlohy, způsobilé ke spuštění. Pokud nechcete, aby se to stalo, pak byste mohli:
 
-* Ukončit úlohu před návratem z rozdělovače úlohy
-* Před vrácením celé kolekce úkolů formulujte (to znamená vrácení `ICollection<CloudTask>` nebo `IList<CloudTask>` namísto implementace rozdělovače úlohy pomocí C# iterátoru).
-* Použití závislostí úkolů k provedení všech úkolů na úspěšném dokončení Správce úloh
+* Ukončení úlohy před návratem z rozdělovače úloh
+* Formulovat celou kolekci úkolů před vrácením (to `IList<CloudTask>` znamená vrátit nebo `ICollection<CloudTask>` namísto implementace rozdělovačúloh pomocí iterátoru Jazyka C#)
+* Použití závislostí mezi úkoly k tomu, aby všechny úkoly závisely na úspěšném dokončení správce úloh
 
-**Opakování Správce úloh**
+**Opakování úlohy vedoucího**
 
-Pokud se Správce úloh nepovede, může ho služba Batch zkusit znovu v závislosti na nastaveních opakování klienta. Obecně je to bezpečné, protože když rozhraní přidává úlohy do úlohy, ignoruje všechny úlohy, které již existují. Pokud je ale výpočet úkolů nákladné, možná nebudete chtít počítat s náklady na přepočítání úloh, které už byly do úlohy přidané. Naopak, pokud není zaručeno, že opakované spuštění vygeneruje stejné ID úlohy, nebude chování ignorovat duplicit v provozu. V těchto případech byste měli navrhnout rozdělovač úlohy a zjistit práci, která už skončila, a neopakovat ji, například provedením vlastnosti cloudjob. ListTasks před tím, než začnete vracet úkoly.
+Pokud správce úloh selže, může být opakován službou Batch v závislosti na nastavení opakování klienta. Obecně je to bezpečné, protože když rámec přidá úkoly do úlohy, ignoruje všechny úkoly, které již existují. Pokud je však výpočet úkolů nákladný, nemusíte chtít vynaložit náklady na přepočet úkolů, které již byly do projektu přidány. naopak, pokud není zaručeno, že opakované spuštění vygeneruje id stejné úlohy, nebude chování "ignorovat duplikáty". V těchto případech byste měli navrhnout rozdělovač úlohy, abyste zjistili práci, která již byla provedena, a neopakovat ji, například provedením CloudJob.ListTasks před zahájením výnosů úkolů.
 
 ### <a name="exit-codes-and-exceptions-in-the-job-manager-template"></a>Ukončovací kódy a výjimky v šabloně Správce úloh
-Ukončovací kódy a výjimky poskytují mechanismus pro určení výsledku spuštění programu a mohou pomáhat identifikovat případné problémy s prováděním programu. Šablona správce úloh implementuje kódy ukončení a výjimky popsané v této části.
+Ukončovací kódy a výjimky poskytují mechanismus k určení výsledku spuštění programu a mohou pomoci identifikovat všechny problémy s prováděním programu. Šablona Job Manager implementuje ukončovací kódy a výjimky popsané v této části.
 
-Úkol správce úloh implementovaný pomocí šablony Správce úloh může vracet tři možné ukončovací kódy:
+Úloha správce úloh, která je implementována pomocí šablony Správce úloh, může vrátit tři možné kódy ukončení:
 
 | kód | Popis |
 | --- | --- |
-| 0 |Správce úloh byl úspěšně dokončen. Došlo k dokončení kódu rozdělovače úlohy a všechny úkoly byly přidány do úlohy. |
-| 1\. místo |Úloha správce úloh se nezdařila s výjimkou v části očekávaná v programu. Výjimka byla přeložena do JobManagerException s diagnostickými informacemi a tam, kde je to možné, návrhy pro vyřešení selhání. |
-| 2 |Úloha správce úloh se nezdařila s výjimkou "neočekávaná" výjimka. Výjimka byla zaznamenána do standardního výstupu, ale Správce úloh nemohl přidat žádné další informace o diagnostice nebo nápravě. |
+| 0 |Vedoucí úloh byl úspěšně dokončen. Kód rozdělovače úloh byl dokončen a všechny úkoly byly přidány do úlohy. |
+| 1 |Úloha správce úloh se nezdařila s výjimkou v "očekávané" části programu. Výjimka byla přeložena do JobManagerException s diagnostickými informacemi a pokud je to možné, návrhy na řešení selhání. |
+| 2 |Úloha správce úloh se nezdařila s neočekávanou výjimkou. Výjimka byla zaznamenána do standardního výstupu, ale správce úloh nemohl přidat žádné další diagnostické nebo nápravné informace. |
 
-V případě selhání úlohy Správce úloh může být do služby ještě před tím, než došlo k chybě, stále přidány některé úlohy. Tyto úlohy budou spouštěny normálním způsobem. Projděte si část "selhání rozdělení úlohy" výše pro diskuzi o této cestě k kódu.
+V případě selhání úlohy správce úloh y mohou být některé úkoly ještě přidány do služby před tím, než došlo k chybě. Tyto úlohy budou spuštěny jako normální. Viz "Selhání rozdělovač úlohy" výše pro diskusi o této cestě kódu.
 
-Všechny informace vrácené výjimkami se zapisují do souborů STDOUT. txt a stderr. txt. Další informace najdete v tématu [zpracování chyb](batch-api-basics.md#error-handling).
+Všechny informace vrácené výjimkami jsou zapsány do souborů stdout.txt a stderr.txt. Další informace naleznete v [tématu Zpracování chyb](batch-api-basics.md#error-handling).
 
-### <a name="client-considerations"></a>Klientské požadavky
-Tato část popisuje některé požadavky implementace klienta při vyvolání Správce úloh na základě této šablony. Podrobnosti o předávání parametrů a nastavení prostředí najdete v tématu [postup předání parametrů a proměnných prostředí z klientského kódu](#pass-environment-settings) .
+### <a name="client-considerations"></a>Aspekty klienta
+Tato část popisuje některé požadavky implementace klienta při vyvolání správce úloh na základě této šablony. Podrobnosti o předávání parametrů a nastavení prostředí naleznete v tématu [Jak předat parametry a proměnné prostředí z klientského kódu.](#pass-environment-settings)
 
-**Povinné přihlašovací údaje**
+**Povinné pověření**
 
-Aby bylo možné přidat úlohy do úlohy Azure Batch, vyžaduje úkol správce úloh vaši adresu URL a klíč účtu služby Azure Batch. Tyto jsou nutné předat do proměnných prostředí s názvem YOUR_BATCH_URL a YOUR_BATCH_KEY. Můžete je nastavit v nastavení prostředí úloh Správce úloh. Například v C# klientovi:
+Aby bylo možné přidat úkoly do úlohy Azure Batch, úloha správce úloh vyžaduje adresu URL a klíč účtu Azure Batch. Je nutné předat tyto proměnné prostředí s názvem YOUR_BATCH_URL a YOUR_BATCH_KEY. Můžete je nastavit v nastavení prostředí úloh Správce úloh. Například v klientovi Jazyka C#:
 
 ```csharp
 job.JobManagerTask.EnvironmentSettings = new [] {
@@ -213,9 +213,9 @@ job.JobManagerTask.EnvironmentSettings = new [] {
     new EnvironmentSetting("YOUR_BATCH_KEY", "{your_base64_encoded_account_key}"),
 };
 ```
-**Přihlašovací údaje úložiště**
+**Pověření úložiště**
 
-Klient obvykle nemusí poskytovat přihlašovací údaje účtu úložiště k úkolu správce úloh, protože (a) Většina správců úloh nemusí explicitně přistupovat k účtu propojeného úložiště a (b) propojený účet úložiště je často k dispozici pro všechny úlohy jako společné nastavení prostředí pro úlohu. Pokud neposkytujete propojený účet úložiště prostřednictvím společného nastavení prostředí a Správce úloh vyžaduje přístup k propojenému úložišti, měli byste zadat přihlašovací údaje k odkazovanému úložišti následujícím způsobem:
+Klient obvykle nemusí poskytovat pověření propojeného účtu úložiště k úloze správce úloh, protože (a) většina správců úloh nemusí explicitně přistupovat k propojenému účtu úložiště a (b) propojený účet úložiště je často k dispozici všem úkolům jako společné nastavení prostředí pro úlohu. Pokud neposkytujete účet propojeného úložiště prostřednictvím společného nastavení prostředí a správce úloh vyžaduje přístup k propojenému úložišti, měli byste zadat pověření propojeného úložiště následujícím způsobem:
 
 ```csharp
 job.JobManagerTask.EnvironmentSettings = new [] {
@@ -225,83 +225,83 @@ job.JobManagerTask.EnvironmentSettings = new [] {
 };
 ```
 
-**Nastavení úkolu správce úloh**
+**Nastavení úloh správce úloh**
 
-Klient by měl nastavit příznak *killJobOnCompletion* Správce úloh na **hodnotu false (NEPRAVDA**).
+Klient by měl nastavit správce úloh *killJobOnCompletion* příznak **false**.
 
-Je obvykle bezpečné, aby klient nastavil *runExclusive* na **hodnotu false**.
+Obvykle je bezpečné pro klienta nastavit *runExclusive* na **false**.
 
-Klient by měl pomocí kolekce *resourceFiles* nebo *applicationPackageReferences* mít na výpočetním uzlu nasazený spustitelný soubor Správce úloh (a jeho požadované knihovny DLL).
+Klient by měl použít *kolekci resourceFiles* nebo *applicationPackageReferences* k tomu, aby byl do výpočetního uzlu nasazen správce úloh (a jeho požadované knihovny DLL).
 
-Ve výchozím nastavení se Správce úloh nebude opakovat, pokud selže. V závislosti na vaší logice Správce úloh může klient chtít povolit opakované pokusy prostřednictvím *omezení*/*maxTaskRetryCount*.
+Ve výchozím nastavení nebude správce úloh opakován, pokud se nezdaří. V závislosti na logice správce úloh může klient chtít povolit opakování pomocí *omezení*/*maxTaskRetryCount*.
 
 **Nastavení úlohy**
 
-Pokud příčka úlohy vysílá úkoly se závislostmi, musí klient nastavit usesTaskDependencies úlohy na hodnotu true.
+Pokud rozdělovač úloh y vydává úkoly se závislostmi, musí klient nastavit usesTaskDependencies úlohy na true.
 
-V modelu rozdělovače úlohy není neobvyklé, že klienti chtějí přidat úlohy do úloh a nad tím, co příčka úlohy vytvoří. Klient by proto měl obvykle nastavit *onAllTasksComplete* úlohy na **terminatejob**.
+V modelu rozdělovač úloh je neobvyklé, že klienti chtějí přidávat úkoly do úloh nad rámec toho, co vytváří rozdělovač úloh. Klient by proto měl obvykle nastavit úlohy *naAllTasksComplete* **ukončit úlohu**.
 
 ## <a name="task-processor-template"></a>Šablona procesoru úloh
 Šablona procesoru úloh vám pomůže implementovat procesor úloh, který může provádět následující akce:
 
-* Nastavte informace požadované jednotlivými úlohami Batch ke spuštění.
-* Spustí všechny akce vyžadované každou dávkovou úlohou.
+* Nastavte informace vyžadované jednotlivými úlohami dávky ke spuštění.
+* Spusťte všechny akce vyžadované jednotlivými úlohami dávky.
 * Uložte výstupy úloh do trvalého úložiště.
 
-I když procesor úloh není potřebný ke spouštění úloh v dávce, klíčovou výhodou použití procesoru úloh je, že poskytuje obálku pro implementaci všech akcí spuštění úloh na jednom místě. Například pokud potřebujete spustit několik aplikací v kontextu jednotlivých úloh nebo pokud potřebujete po dokončení jednotlivých úloh zkopírovat data do trvalého úložiště.
+Přestože procesor úloh není nutné spustit úlohy na Batch, klíčovou výhodou použití procesoru úloh je, že poskytuje obálku k implementaci všech akcí provádění úloh v jednom umístění. Například pokud potřebujete spustit několik aplikací v kontextu každé úlohy, nebo pokud potřebujete zkopírovat data do trvalého úložiště po dokončení každého úkolu.
 
-Akce prováděné procesorem úloh můžou být jednoduché nebo složité a tolik nebo víc, kolik vyžaduje vaše zatížení. Díky implementaci všech akcí úloh do jednoho procesoru úloh můžete snadno aktualizovat nebo přidat akce na základě změn aplikací nebo úloh. V některých případech však procesor úloh nemusí být optimálním řešením pro vaši implementaci, protože může přidat zbytečné složitosti, například při spuštění úloh, které lze rychle spustit z jednoduchého příkazového řádku.
+Akce prováděné procesorem úloh může být stejně jednoduché nebo složité a tolik nebo jako málo, jak to vyžaduje vaše úlohy. Navíc implementací všech akcí úloh do jednoho procesoru úloh můžete snadno aktualizovat nebo přidat akce na základě změn aplikací nebo požadavků na pracovní vytížení. V některých případech však procesor úloh nemusí být optimálním řešením pro implementaci, protože může přidat zbytečnou složitost, například při spuštění úloh, které lze rychle spustit z jednoduchého příkazového řádku.
 
-### <a name="create-a-task-processor-using-the-template"></a>Vytvoření procesoru úkolů pomocí šablony
-Chcete-li přidat procesor úkolů do řešení, které jste vytvořili dříve, postupujte takto:
+### <a name="create-a-task-processor-using-the-template"></a>Vytvoření procesoru úloh pomocí šablony
+Chcete-li přidat procesor úloh do řešení, které jste vytvořili dříve, postupujte takto:
 
-1. Otevřete existující řešení v aplikaci Visual Studio.
-2. V Průzkumník řešení klikněte pravým tlačítkem myši na řešení, klikněte na tlačítko **Přidat**a poté klikněte na možnost **Nový projekt**.
-3. V **části C#vizuál** klikněte na **Cloud**a pak klikněte na **Azure Batch procesor úloh**.
-4. Zadejte název, který popisuje vaši aplikaci, a Identifikujte tento projekt jako procesor úloh (např. "LitwareTaskProcessor").
-5. Chcete-li vytvořit projekt, klikněte na tlačítko **OK**.
-6. Nakonec sestavte projekt, aby aplikace Visual Studio načetla všechny odkazované balíčky NuGet a ověřila, že projekt je platný před tím, než začnete upravovat.
+1. Otevřete stávající řešení v sadě Visual Studio.
+2. V Průzkumníku řešení klikněte pravým tlačítkem myši na řešení, klikněte na **Přidat**a potom klikněte na **Nový projekt**.
+3. V **části Visual C#** klikněte na **Cloud**a potom klikněte na Azure Batch **Task Processor**.
+4. Zadejte název, který popisuje vaši aplikaci a identifikuje tento projekt jako procesor úloh (např.
+5. Chcete-li vytvořit projekt, klepněte na tlačítko **OK**.
+6. Nakonec vytvořte projekt vynutit Visual Studio načíst všechny odkazované balíčky NuGet a ověřit, že projekt je platný před zahájením jeho úpravy.
 
 ### <a name="task-processor-template-files-and-their-purpose"></a>Soubory šablon procesoru úloh a jejich účel
-Při vytváření projektu pomocí šablony procesoru úloh generuje tři skupiny souborů kódu:
+Když vytvoříte projekt pomocí šablony procesoru úloh, generuje tři skupiny souborů kódu:
 
-* Hlavní soubor programu (Program.cs). Obsahuje vstupní bod programu a zpracování výjimek nejvyšší úrovně. Nemusíte to obvykle měnit.
-* Adresář rozhraní. Obsahuje soubory zodpovědné za práci "často používaného programu Správce úloh" – rozbalení parametrů, přidání úkolů do úlohy služby Batch atd. Tyto soubory byste neměli normálně měnit.
-* Soubor procesoru úloh (TaskProcessor.cs). Tady umístíte logiku specifickou pro konkrétní aplikaci pro spuštění úlohy (obvykle voláním na existující spustitelný soubor). Kód předběžného a následného zpracování, jako je například stahování dalších dat nebo odesílání výsledných souborů, zde také prochází.
+* Hlavní soubor programu (Program.cs). Obsahuje vstupní bod programu a zpracování výjimek nejvyšší úrovně. Za normálních okolností byste to neměli měnit.
+* Adresář rozhraní Framework. Obsahuje soubory odpovědné za "často používaný text" práce prováděné programem správce úloh – rozbalení parametrů, přidání úkolů do dávkové úlohy atd. Za normálních okolností byste neměli tyto soubory upravovat.
+* Soubor procesoru úloh (TaskProcessor.cs). Toto je místo, kde budete umístit logiku specifické pro aplikaci pro provádění úlohy (obvykle voláním existující spustitelný soubor). Pre- a post-processing kód, jako je stahování dalších dat nebo nahrávání výsledných souborů, také jde sem.
 
-Samozřejmě můžete přidat další soubory podle potřeby pro podporu kódu procesoru úloh v závislosti na složitosti rozdělené logiky úlohy.
+Samozřejmě můžete přidat další soubory podle potřeby pro podporu kódu procesoru úloh, v závislosti na složitosti logiky rozdělení úlohy.
 
-Šablona také generuje standardní soubory projektu .NET, jako je například soubor. csproj, App. config, Packages. config, atd.
+Šablona také generuje standardní soubory projektu .NET, jako je soubor .csproj, app.config, packages.config atd.
 
-Zbytek této části popisuje různé soubory a jejich strukturu kódu a vysvětluje, co jednotlivé třídy dělá.
+Zbývající část této části popisuje různé soubory a jejich strukturu kódu a vysvětluje, co jednotlivé třídy dělá.
 
-![Visual Studio Průzkumník řešení znázorňující řešení šablony procesoru úloh][solution_explorer02]
+![Průzkumník řešení Visual Studia zobrazující řešení šablony úlohového procesoru][solution_explorer02]
 
-**Soubory architektury**
+**Soubory frameworku**
 
-* `Configuration.cs`: zapouzdřuje načítání dat konfigurace úlohy, jako jsou například podrobnosti účtu Batch, přihlašovací údaje k propojenému účtu úložiště, informace o úloze a úkolu a parametry úlohy. Poskytuje také přístup k proměnným prostředím definovaným v dávce (viz nastavení prostředí pro úlohy v dokumentaci ke službě Batch) prostřednictvím třídy Configuration. objekt EnvironmentVariable.
-* `IConfiguration.cs`: vyabstrakcí implementaci třídy konfigurace, takže můžete rozdělit rozdělovač úlohy pomocí falešného nebo objektového konfiguračního objektu.
-* `TaskProcessorException.cs`: představuje chybu, která vyžaduje ukončení Správce úloh. TaskProcessorException se používá k zabalení očekávaných chyb, kde konkrétní diagnostické informace mohou být k dispozici jako součást ukončení.
+* `Configuration.cs`: Zapouzdřuje načítání dat konfigurace úlohy, jako jsou podrobnosti o účtu dávky, pověření propojeného účtu úložiště, informace o úloze a úloze a parametry úlohy. Poskytuje také přístup k dávkově definovaným proměnným prostředí (viz nastavení prostředí pro úkoly v dokumentaci batch) prostřednictvím třídy Configuration.EnvironmentVariable.
+* `IConfiguration.cs`: Abstrahuje implementaci třídy Configuration, takže můžete otestovat rozdělovač úloh pomocí falešného nebo falešného konfiguračního objektu.
+* `TaskProcessorException.cs`: Představuje chybu, která vyžaduje ukončení správce úloh. TaskProcessorException se používá k zabalení "očekávané" chyby, kde konkrétní diagnostické informace mohou být poskytnuty jako součást ukončení.
 
 **Procesor úloh**
 
-* `TaskProcessor.cs`: spustí úlohu. Rozhraní vyvolá metodu TaskProcessor. Run. Toto je třída, do které zadáte logiku úlohy pro konkrétní aplikaci. Implementujte metodu Run na:
+* `TaskProcessor.cs`: Spustí úlohu. Rozhraní framework vyvolá metodu TaskProcessor.Run. Toto je třída, kde vložíte logiku specifické pro aplikaci úlohy. Implementujte metodu Run takto:
   * Analyzovat a ověřit všechny parametry úlohy
-  * Vytvoření příkazového řádku pro libovolný externí program, který chcete vyvolat
-  * Protokolování všech diagnostických informací, které mohou být požadovány pro účely ladění
+  * Vytvořit příkazový řádek pro libovolný externí program, který chcete vyvolat.
+  * Protokolovat všechny diagnostické informace, které můžete potřebovat pro účely ladění
   * Spuštění procesu pomocí tohoto příkazového řádku
-  * Počkejte na ukončení procesu.
-  * Zaznamenejte ukončovací kód procesu, abyste zjistili, zda bylo úspěšné nebo neúspěšné.
-  * Uložte všechny výstupní soubory, které chcete uchovat do trvalého úložiště.
+  * Počkejte na ukončení procesu
+  * Zachyťte ukončovací kód procesu a zjistěte, zda byl úspěšný nebo neúspěšný.
+  * Uložení všech výstupních souborů, které chcete zachovat, na trvalé úložiště
 
-**Standardní soubory projektu příkazového řádku .NET**
+**Standardní soubory projektu příkazového řádku rozhraní .NET**
 
-* `App.config`: standardní konfigurační soubor aplikace .NET.
-* `Packages.config`: standardní soubor závislosti balíčku NuGet.
-* `Program.cs`: obsahuje vstupní bod programu a zpracování výjimek nejvyšší úrovně.
+* `App.config`: Standardní konfigurační soubor aplikace .NET.
+* `Packages.config`: Standardní soubor závislostí balíčku NuGet.
+* `Program.cs`: Obsahuje vstupní bod programu a zpracování výjimek nejvyšší úrovně.
 
 ## <a name="implementing-the-task-processor"></a>Implementace procesoru úloh
-Když otevřete projekt šablony procesoru úloh, projekt bude mít ve výchozím nastavení otevřený soubor TaskProcessor.cs. Můžete implementovat logiku spuštění pro úlohy v úloze pomocí metody Run () uvedené níže:
+Při otevření projektu šablony procesoru úloh bude mít projekt ve výchozím nastavení otevřený TaskProcessor.cs soubor. Logiku spuštění pro úlohy ve vaší pracovní zátěži můžete implementovat pomocí metody Run() uvedené níže:
 
 ```csharp
 /// <summary>
@@ -347,44 +347,44 @@ public async Task<int> Run()
 }
 ```
 > [!NOTE]
-> Oddíl s poznámkou v metodě Run () je jediným oddílem kódu šablony procesoru úloh, který je určen pro úpravu, přidáním logiky spuštění pro úkoly v rámci úlohy. Pokud chcete upravit jiný oddíl šablony, Seznamte se s tím, jak funguje služba Batch, v dokumentaci ke službě Batch a vyzkoušením několika ukázek kódu Batch.
+> Anotovaný oddíl v Run() metoda je jediná část kódu šablony task processor, který je určen pro úpravu přidáním logiky spuštění pro úlohy ve vaší pracovní zátěži. Pokud chcete upravit jinou část šablony, nejprve se seznamte s tím, jak Batch funguje, a to kontrolou dokumentace dávky a vyzkoušením několika ukázek dávkového kódu.
 > 
 > 
 
-Metoda Run () zodpovídá za spuštění příkazového řádku, spuštění jednoho nebo více procesů, čekání na dokončení všech procesů, uložení výsledků a nakonec návratu pomocí ukončovacího kódu. Metoda Run () je místo, kde implementujete logiku zpracování pro vaše úkoly. Rozhraní procesoru úloh vyvolá metodu Run () pro vás. nemusíte je volat sami.
+Run() Metoda je zodpovědná za spuštění příkazového řádku, spuštění jednoho nebo více procesů, čekání na dokončení celého procesu, uložení výsledků a nakonec vrácení s ukončovacíkód. Run() Metoda je, kde implementovat logiku zpracování pro vaše úkoly. Architektura procesoru úloh vyvolá Run() metoda pro vás; nemusíte volat sami.
 
-Vaše implementace Run () má přístup k:
+Implementace Run() má přístup k:
 
-* Parametry úlohy prostřednictvím pole `_parameters`.
-* ID úlohy a úlohy prostřednictvím polí `_jobId` a `_taskId`.
-* Konfigurace úlohy prostřednictvím pole `_configuration`.
+* Parametry úkolu prostřednictvím `_parameters` pole.
+* Id úlohy a úlohy `_jobId` `_taskId` prostřednictvím polí a.
+* Konfigurace úlohy `_configuration` prostřednictvím pole.
 
 **Selhání úlohy**
 
-V případě selhání můžete ukončit metodu Run () vyvoláním výjimky, ale to nechá obslužnou rutinu výjimky nejvyšší úrovně v ovládacím prvku ukončovacího kódu úlohy. Pokud potřebujete řídit ukončovací kód, abyste mohli rozlišovat různé typy selhání, například pro diagnostické účely nebo protože některé režimy selhání by měly úlohu ukončit a jiné by neměly, pak byste měli ukončit metodu Run () vrácením nenulového typu. ukončovací kód. Tím se vytvoří ukončovací kód úlohy.
+V případě selhání můžete ukončit Run() metoda vyvoláním výjimky, ale to ponechává obslužnou rutinu výjimky nejvyšší úrovně v řízení kódu ukončení úlohy. Pokud potřebujete řídit ukončovací kód, abyste mohli rozlišit různé typy selhání, například pro diagnostické účely nebo proto, že některé režimy selhání by měly ukončit úlohu a jiné by neměly, měli byste ukončit metodu Run() vrácením nenulové ukončovací kód. To se stane kód ukončení úlohy.
 
-### <a name="exit-codes-and-exceptions-in-the-task-processor-template"></a>Ukončovací kódy a výjimky v šabloně procesoru úloh
-Ukončovací kódy a výjimky poskytují mechanismus pro určení výsledku spuštění programu a mohou pomáhat identifikovat případné problémy s prováděním programu. Šablona procesoru úloh implementuje ukončovací kódy a výjimky popsané v této části.
+### <a name="exit-codes-and-exceptions-in-the-task-processor-template"></a>Ukončovací kódy a výjimky v šabloně Procesor úloh
+Ukončovací kódy a výjimky poskytují mechanismus k určení výsledku spuštění programu a mohou pomoci identifikovat všechny problémy s prováděním programu. Šablona task processor implementuje ukončovací kódy a výjimky popsané v této části.
 
-Úloha procesoru úlohy, která je implementovaná pomocí šablony procesoru úloh, může vracet tři možné ukončovací kódy:
+Úloha procesoru úloh, která je implementována pomocí šablony procesoru úloh, může vrátit tři možné ukončovací kódy:
 
 | kód | Popis |
 | --- | --- |
-| [Process. ExitCode][process_exitcode] |Procesor úkolů byl dokončen. Všimněte si, že to neznamená, že program, který jste vyvolali, byl úspěšný – pouze tento procesor úkol vyvolal úspěšně a provedl jakékoli následné zpracování bez výjimek. Význam ukončovacího kódu závisí na vyvolaném programu – obvykle ukončovací kód 0 znamená úspěšné dokončení programu a další ukončovací kód znamená, že se program nezdařil. |
-| 1\. místo |Procesor úloh se nezdařil s výjimkou v části očekávaná v programu. Výjimka byla přeložena do `TaskProcessorException` s diagnostickými informacemi a kde je to možné, návrhy pro vyřešení selhání. |
-| 2 |Procesor úloh se nezdařil s výjimkou neočekávané výjimky. Výjimka byla zaznamenána do standardního výstupu, ale procesor úloh nemohl přidat žádné další informace o diagnostice nebo nápravě. |
+| [Proces.Ukončovací kód][process_exitcode] |Procesor úloh byl dokončen. Všimněte si, že to neznamená, že program, který jste vyvolali byl úspěšný – pouze, že procesor úloh y jej úspěšně vyvolat a provedl jakékoli následné zpracování bez výjimky. Význam ukončovacího kódu závisí na vyvolaném programu – obvykle ukončovací kód 0 znamená, že program byl úspěšný a jakýkoli jiný ukončovací kód znamená, že program selhal. |
+| 1 |Procesor úloh se nezdařil s výjimkou v "očekávané" části programu. Výjimka byla přeložena `TaskProcessorException` do diagnostické informace a pokud možno návrhy na vyřešení selhání. |
+| 2 |Procesor úloh se nezdařil s neočekávanou výjimkou. Výjimka byla zaznamenána do standardního výstupu, ale procesor úloh nemohl přidat žádné další diagnostické nebo nápravné informace. |
 
 > [!NOTE]
-> Pokud program, který vyvoláte, používá ukončovací kódy 1 a 2 k označení konkrétních režimů selhání, pak použití ukončovacích kódů 1 a 2 pro chyby procesoru úloh je nejednoznačné. Tyto kódy chyb procesoru úkolů můžete změnit na kódy pro odlišené ukončení úpravou případů výjimek v souboru Program.cs.
+> Pokud program, který vyvoláte, používá k označení určitých režimů selhání kódy ukončení 1 a 2, je použití kódů ukončení 1 a 2 pro chyby procesoru úloh nejednoznačné. Tyto kódy chyb procesoru úloh můžete změnit na charakteristické kódy ukončení úpravou případů výjimek v souboru Program.cs.
 > 
 > 
 
-Všechny informace vrácené výjimkami se zapisují do souborů STDOUT. txt a stderr. txt. Další informace najdete v dokumentaci ke službě Batch v tématu zpracování chyb.
+Všechny informace vrácené výjimkami jsou zapsány do souborů stdout.txt a stderr.txt. Další informace naleznete v tématu Zpracování chyb v dokumentaci dávky.
 
-### <a name="client-considerations"></a>Klientské požadavky
-**Přihlašovací údaje úložiště**
+### <a name="client-considerations"></a>Aspekty klienta
+**Pověření úložiště**
 
-Pokud váš procesor úloh používá úložiště objektů BLOB v Azure k uchování výstupů, například pomocí pomocné knihovny pro konvence souborů, pak potřebuje *přístup k* přihlašovacím údajům účtu cloudového úložiště *nebo* k adrese URL kontejneru objektů blob, která obsahuje sdílený přístupový podpis (SAS). Šablona zahrnuje podporu pro poskytování přihlašovacích údajů prostřednictvím běžných proměnných prostředí. Váš klient může přihlašovací údaje k úložišti předat následujícím způsobem:
+Pokud váš procesor úloh používá úložiště objektů blob Azure k uchování výstupů, například pomocí pomocné knihovny konvencí souborů, potřebuje přístup *k* přihlašovacím údajům účtu cloudového úložiště *nebo* k adrese URL kontejneru objektů blob, který obsahuje sdílený přístupový podpis (SAS). Šablona obsahuje podporu pro poskytování přihlašovacích údajů prostřednictvím běžných proměnných prostředí. Váš klient může předat pověření úložiště následujícím způsobem:
 
 ```csharp
 job.CommonEnvironmentSettings = new [] {
@@ -393,50 +393,50 @@ job.CommonEnvironmentSettings = new [] {
 };
 ```
 
-Účet úložiště je pak k dispozici ve třídě TaskProcessor prostřednictvím vlastnosti `_configuration.StorageAccount`.
+Účet úložiště je pak k dispozici ve `_configuration.StorageAccount` třídě TaskProcessor prostřednictvím vlastnosti.
 
-Pokud dáváte přednost použití adresy URL kontejneru s SAS, můžete to předat taky pomocí společného prostředí úlohy, ale šablona procesoru úloh v současné době neobsahuje integrovanou podporu pro tuto možnost.
+Pokud dáváte přednost použití adresy URL kontejneru s SAS, můžete také předat prostřednictvím nastavení společného prostředí úlohy, ale šablona procesoru úloh aktuálně neobsahuje integrovanou podporu pro toto.
 
 **Nastavení úložiště**
 
-Před přidáním úkolů do úlohy doporučujeme, aby úloha klienta nebo Správce úloh vytvořila kontejnery požadované úlohou. To je povinné, pokud použijete adresu URL kontejneru s SAS, protože taková adresa URL nezahrnuje oprávnění k vytvoření kontejneru. Doporučuje se i v případě, že přihlašovací údaje účtu úložiště zadáte, protože všechny úlohy s voláním CloudBlobContainer. CreateIfNotExistsAsync na kontejneru.
+Před přidáním úkolů do úlohy se doporučuje, aby úloha klienta nebo správce úloh vytvořila všechny kontejnery vyžadované úkoly. To je povinné, pokud používáte adresu URL kontejneru s SAS, jako taková adresa URL neobsahuje oprávnění k vytvoření kontejneru. Doporučuje se i v případě, že předáte přihlašovací údaje účtu úložiště, protože ukládá všechny úlohy, které mají volat CloudBlobContainer.CreateIfNotExistsAsync v kontejneru.
 
-## <a name="pass-parameters-and-environment-variables"></a>Předání parametrů a proměnných prostředí
+## <a name="pass-parameters-and-environment-variables"></a>Předat parametry a proměnné prostředí
 ### <a name="pass-environment-settings"></a>Předat nastavení prostředí
-Klient může předat informace do úlohy Správce úloh ve formě nastavení prostředí. Tyto informace může použít úkol správce úloh při generování úkolů procesoru úloh, které se spustí jako součást výpočetní úlohy. Příklady informací, které můžete předat jako nastavení prostředí:
+Klient může předat informace úlohě správce úlohy ve formě nastavení prostředí. Tyto informace pak může úloha správce úloh použít při generování úloh procesoru úloh, které budou spuštěny jako součást výpočetní úlohy. Příklady informací, které můžete předat jako nastavení prostředí jsou:
 
 * Název účtu úložiště a klíče účtu
-* Adresa URL účtu Batch
-* Klíč účtu Batch
+* Adresa URL dávkového účtu
+* Klíč dávkového účtu
 
-Služba Batch má jednoduchý mechanismus, jak předat nastavení prostředí úkolu správce úloh pomocí vlastnosti `EnvironmentSettings` v [Microsoft. Azure. batch. JobManagerTask][net_jobmanagertask].
+Služba Batch má jednoduchý mechanismus pro předání nastavení prostředí `EnvironmentSettings` úloze správce úloh pomocí vlastnosti [Microsoft.Azure.Batch.JobManagerTask][net_jobmanagertask].
 
-Například pro získání instance `BatchClient` pro účet Batch můžete předat jako proměnné prostředí z kódu klienta přihlašovací údaje adresy URL a sdíleného klíče pro účet Batch. Podobně pro přístup k účtu úložiště, který je propojený s účtem Batch, můžete název účtu úložiště a klíč účtu úložiště předat jako proměnné prostředí.
+Chcete-li například `BatchClient` získat instanci pro účet Batch, můžete předat jako proměnné prostředí z kódu klienta adresu URL a pověření sdíleného klíče pro účet Batch. Podobně pro přístup k účtu úložiště, který je propojen s účtem Batch, můžete předat název účtu úložiště a klíč účtu úložiště jako proměnné prostředí.
 
-### <a name="pass-parameters-to-the-job-manager-template"></a>Předání parametrů do šablony Správce úloh
-V mnoha případech je vhodné předat parametry za úlohu do úlohy Správce úloh, a to buď k řízení rozděleného procesu úlohy, nebo ke konfiguraci úkolů pro úlohu. To můžete provést tak, že nahrajete soubor JSON s názvem Parameters. JSON jako soubor prostředků pro úkol správce úloh. Parametry pak mohou být k dispozici v poli `JobSplitter._parameters` v šabloně Správce úloh.
+### <a name="pass-parameters-to-the-job-manager-template"></a>Předat parametry šabloně Správce úloh
+V mnoha případech je užitečné předat parametry na úlohu úlohy správce úlohy, a to buď pro řízení procesu rozdělení úlohy, nebo pro konfiguraci úloh pro úlohu. To lze provést nahráním souboru JSON s názvem parameters.json jako souboru prostředků pro úlohu správce úloh. Parametry pak mohou být `JobSplitter._parameters` k dispozici v poli v šabloně Správce úloh.
 
 > [!NOTE]
-> Vestavěný parametr obslužné rutiny podporuje pouze slovníky řetězců do řetězce. Pokud chcete předat složitých hodnot JSON jako hodnoty parametrů, budete je muset předat jako řetězce a analyzovat je v rozdělovači úlohy nebo můžete upravit metodu `Configuration.GetJobParameters` rozhraní.
+> Vestavěná obslužná rutina parametru podporuje pouze slovníky string-to-string. Pokud chcete předat komplexní hodnoty JSON jako hodnoty parametrů, budete muset předat tyto řetězce a analyzovat je v `Configuration.GetJobParameters` rozdělovači úloh nebo upravit metodu rozhraní.
 > 
 > 
 
-### <a name="pass-parameters-to-the-task-processor-template"></a>Předání parametrů do šablony procesoru úloh
-Můžete také předat parametry jednotlivým úlohám implementovaným pomocí šablony procesoru úloh. Stejně jako u šablony Správce úloh vyhledává šablona procesoru úloh soubor prostředků s názvem.
+### <a name="pass-parameters-to-the-task-processor-template"></a>Předání parametrů šabloně procesoru úloh
+Parametry můžete také předat jednotlivým úlohám implementovaným pomocí šablony Task Processor. Stejně jako u šablony správce úloh hledá šablona procesoru úloh soubor prostředků s názvem
 
-Parameters. JSON, a pokud ho najde, načte ho jako slovník parametrů. Existuje několik možností, jak předat parametry úlohám procesoru úloh:
+parameters.json, a pokud byl nalezen, načte jej jako slovník parametrů. Existuje několik možností, jak předat parametry úlohprocesoru úloh:
 
-* Znovu použijte parametry úlohy JSON. To funguje dobře, pokud jsou jediné parametry v rámci úlohy (například výška a šířka vykreslování). Pokud to chcete provést, při vytváření CloudTask v rozdělovače úlohy přidejte odkaz na objekt souboru prostředků Parameters. JSON z ResourceFiles úlohy Správce úloh (`JobSplitter._jobManagerTask.ResourceFiles`) do kolekce ResourceFiles CloudTask.
-* Vygenerujte a nahrajte dokument parametry konkrétního úkolu. JSON jako součást provádění rozdělovače úlohy a odkázat na tento objekt BLOB v kolekci souborů prostředků úlohy. To je nezbytné v případě, že různé úlohy mají různé parametry. Příkladem může být scénář prostorového vykreslování, ve kterém je index rámce předán úkolu jako parametr.
+* Znovu použít parametry úlohy JSON. To funguje dobře, pokud jsou jedinými parametry ty, které jsou celé úlohy (například výška a šířka vykreslení). Chcete-li to provést, při vytváření CloudTask v rozdělovač úlohy, přidejte odkaz na parameters.json`JobSplitter._jobManagerTask.ResourceFiles`objektu souboru prostředků z úlohy správce úlohy ResourceFiles ( ) do kolekce CloudTask ResourceFiles.
+* Vygenerujte a nahrajte dokument parameters.json specificképro úlohu jako součást provádění rozdělovače úloh a odkazujte na tento objekt blob v kolekci souborů prostředků úlohy. To je nezbytné, pokud různé úkoly mají různé parametry. Příkladem může být scénář 3D vykreslování, kde je index rámce předán úloze jako parametr.
 
 > [!NOTE]
-> Vestavěný parametr obslužné rutiny podporuje pouze slovníky řetězců do řetězce. Pokud chcete předat složitých hodnot JSON jako hodnoty parametrů, budete je muset předat jako řetězce a analyzovat je v procesoru úloh nebo upravit metodu `Configuration.GetTaskParameters` architektury.
+> Vestavěná obslužná rutina parametru podporuje pouze slovníky string-to-string. Pokud chcete předat komplexní hodnoty JSON jako hodnoty parametrů, budete muset předat tyto řetězce a analyzovat je v `Configuration.GetTaskParameters` procesoru úloh nebo upravit metodu rozhraní.
 > 
 > 
 
 ## <a name="next-steps"></a>Další kroky
-### <a name="persist-job-and-task-output-to-azure-storage"></a>Zachovat výstup úlohy a úlohy do Azure Storage
-Dalším užitečným nástrojem pro vývoj řešení Batch je [Azure Batch konvence souborů][nuget_package]. Pomocí této knihovny tříd .NET (v současnosti ve verzi Preview) můžete v aplikacích Batch .NET snadno ukládat a načítat výstupy úloh z Azure Storage. [Trvalý výstup úlohy a úlohy Azure Batch](batch-task-output.md) obsahuje úplnou diskuzi o knihovně a jejím využití.
+### <a name="persist-job-and-task-output-to-azure-storage"></a>Zachování úlohy a výstupu úloh do Úložiště Azure
+Dalším užitečným nástrojem ve vývoji řešení Batch je [Azure Batch File Conventions][nuget_package]. Pomocí této knihovny tříd .NET (aktuálně ve verzi preview) v aplikacích Batch .NET můžete snadno ukládat a načítat výstupy úloh do a z Azure Storage. [Zachovat Azure Batch úlohy a výstup úlohy](batch-task-output.md) obsahuje úplnou diskusi o knihovně a jeho využití.
 
 
 [net_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobmanagertask.aspx

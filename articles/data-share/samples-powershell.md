@@ -1,35 +1,35 @@
 ---
-title: Ukázky Azure PowerShell pro Azure Data Share
-description: Přečtěte si o Azure PowerShell ukázkových skriptech, které vám pomůžou vytvořit a spravovat sdílené složky dat v Azure Data Share.
+title: Ukázky Prostředí Azure pro Sdílení dat Azure
+description: Přečtěte si o ukázkových skriptech Azure PowerShellu, které vám pomůžou vytvářet a spravovat datové sdílené složky ve službě Azure Data Share.
 ms.service: data-share
 author: joannapea
 ms.author: joanpo
 ms.topic: conceptual
 ms.date: 07/06/2019
 ms.openlocfilehash: c2593c4c03f48624b8b9e3b9d72a3558f5f581be
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73499285"
 ---
-# <a name="azure-powershell-samples-for-azure-data-share"></a>Ukázky Azure PowerShell pro Azure Data Share
+# <a name="azure-powershell-samples-for-azure-data-share"></a>Ukázky Azure PowerShellu pro Azure Data Share
 
-Následující tabulka obsahuje odkazy na ukázkové Azure PowerShell skripty pro Azure Data Share.
+Následující tabulka obsahuje odkazy na ukázkové skripty Azure PowerShellu pro Azure Data Share.
 
 | |  |
 |---|---|
-|**Ukázky PowerShellu**||
-|[Vytvořit nový účet pro sdílení dat](scripts/powershell/create-new-share-account-powershell.md)| Tento skript PowerShellu vytvoří nový účet pro sdílení dat. |
-|[Vytvoření nové sdílené složky dat](scripts/powershell/create-new-share-powershell.md)| Tento skript PowerShellu vytvoří novou sdílenou složku dat. |
-|[Přidání datových sad do sdílené složky](scripts/powershell/add-datasets-powershell.md)| Tento skript PowerShellu přidá datovou sadu objektů blob do stávajícího účtu pro sdílení dat. |
-|[Nastavení a zobrazení synchronizací sdílené složky](scripts/powershell/set-view-synchronizations-powershell.md)| Tento skript PowerShellu vytvoří a zobrazí synchronizaci stávajícího sdíleného data. |
-|[Vytvoření pozvánky ke sdílení dat](scripts/powershell/create-share-invitation-powershell.md)| Tento ukázkový skript PowerShellu vytvoří pozvánku pro přístup k existující sdílené složce dat. |
-|[Zobrazit pozvánky odeslaných sdílených složek](scripts/powershell/view-sent-invitations-powershell.md)| Tento ukázkový skript PowerShellu načte seznam pozvánek odeslaných z existujícího sdíleného data. |
-|[Přijmout přijaté pozvánky sdílené složky](scripts/powershell/accept-share-invitations-powershell.md)| Tento ukázkový skript PowerShellu přijme pozvánku ke sdílení dat.|
-|[Zobrazit podrobnosti o sdílených složkách dat](scripts/powershell/view-share-details-powershell.md)| Tento ukázkový skript PowerShellu vypíše a načte podrobnosti o sdílených složkách dat. |
-|[Monitorování využití sdílených dat](scripts/powershell/monitor-usage-powershell.md)| Tento ukázkový skript PowerShellu monitoruje použití odeslaných sdílených dat. |
-|[Vytvořit a zobrazit triggery snímků](scripts/powershell/create-view-trigger-powershell.md)| Tento ukázkový skript PowerShellu vytvoří triggery snímků sdílené složky.
+|**Ukázky prostředí Powershell**||
+|[Vytvoření nového účtu sdílení dat](scripts/powershell/create-new-share-account-powershell.md)| Tento skript prostředí PowerShell vytvoří nový účet sdílení dat. |
+|[Vytvoření nové sdílené složky dat](scripts/powershell/create-new-share-powershell.md)| Tento skript prostředí PowerShell vytvoří novou sdílenou složku dat. |
+|[Přidání datových sad do sdílené složky](scripts/powershell/add-datasets-powershell.md)| Tento skript prostředí PowerShell přidá datovou sadu objektů blob do existujícího účtu sdílení dat. |
+|[Nastavení a zobrazení synchronizací sdílené položky](scripts/powershell/set-view-synchronizations-powershell.md)| Tento skript prostředí PowerShell vytváří a zobcí synchronizace existující sdílené složky dat. |
+|[Vytvoření pozvánky ke sdílení dat](scripts/powershell/create-share-invitation-powershell.md)| Tento ukázkový skript prostředí PowerShell vytvoří pozvánku pro přístup k existující sdílené složce dat. |
+|[Zobrazit odeslané pozvánky ke sdílení](scripts/powershell/view-sent-invitations-powershell.md)| Tento ukázkový skript prostředí PowerShell načte seznam pozvánek odeslaných z existující sdílené složky dat. |
+|[Přijetí přijatých pozvánek na sdílení](scripts/powershell/accept-share-invitations-powershell.md)| Tento ukázkový skript prostředí PowerShell přijímá pozvánku ke sdílení dat|
+|[Zobrazení podrobností o sdílených sporecích dat](scripts/powershell/view-share-details-powershell.md)| Tato ukázková skript prostředí PowerShell uvádí a načítá podrobnosti o sdílených sporecích dat. |
+|[Sledování využití sdílených dat](scripts/powershell/monitor-usage-powershell.md)| Tato ukázková ukázka skriptu prostředí PowerShell monitoruje využití odeslaných sdílených dat. |
+|[Vytvoření a zobrazení aktivačních událostí snímků](scripts/powershell/create-view-trigger-powershell.md)| Tato ukázková skript prostředí PowerShell vytvoří aktivační události snímku sdílené složky.
 
 
 

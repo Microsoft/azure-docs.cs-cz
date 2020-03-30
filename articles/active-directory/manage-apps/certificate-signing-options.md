@@ -1,6 +1,6 @@
 ---
-title: Pokročilé možnosti podepisování certifikátů tokenu SAML pro aplikace Azure AD
-description: Naučte se používat rozšířené možnosti podepisování certifikátů v tokenu SAML pro předem integrované aplikace v Azure Active Directory
+title: Pokročilé možnosti podepisování certifikátů tokenů SAML pro aplikace Azure AD
+description: Zjistěte, jak používat pokročilé možnosti podepisování certifikátů v tokenu SAML pro předem integrované aplikace ve službě Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,17 +17,17 @@ ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dc911ff06208b1fd0af7651c8274a45c958bf0cd
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77159195"
 ---
-# <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Rozšířené možnosti podepisování certifikátů v tokenu SAML pro aplikace Galerie v Azure Active Directory
+# <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Pokročilé možnosti podepisování certifikátů v tokenu SAML pro galerijní aplikace ve službě Azure Active Directory
 
-Dnešní Azure Active Directory (Azure AD) podporuje v galerii aplikací Azure Active Directory tisíce předem integrovaných aplikací. Více než 500 aplikací podporuje jednotné přihlašování pomocí protokolu [Security Assertion Markup Language](https://wikipedia.org/wiki/Security_Assertion_Markup_Language) (SAML) 2,0, jako je například aplikace [NetSuite](https://azuremarketplace.microsoft.com/marketplace/apps/aad.netsuite) . Když se zákazník v rámci služby Azure AD ověřuje pomocí SAML, služba Azure AD pošle token do aplikace (prostřednictvím HTTP POST). Aplikace potom ověří a použije token pro přihlášení zákazníka, nikoli zobrazení výzvy k zadání uživatelského jména a hesla. Tyto tokeny SAML jsou podepsané jedinečným certifikátem vygenerovaným v Azure AD a konkrétními standardními algoritmy.
+Azure Active Directory (Azure AD) dnes podporuje tisíce předintegrovaných aplikací v Galerii aplikací Azure Active Directory. Více než 500 aplikací podporuje jednotné přihlašování pomocí protokolu [SAML (Security Assertion Markup Language)](https://wikipedia.org/wiki/Security_Assertion_Markup_Language) 2.0, například aplikace [NetSuite.](https://azuremarketplace.microsoft.com/marketplace/apps/aad.netsuite) Když se zákazník ověří do aplikace prostřednictvím Azure AD pomocí SAML, Azure AD odešle token do aplikace (prostřednictvím HTTP POST). Aplikace pak ověří a použije token k přihlášení zákazníka namísto výzvy k zadání uživatelského jména a hesla. Tyto tokeny SAML jsou podepsány pomocí jedinečného certifikátu, který je generován ve službě Azure AD a konkrétnístandardní algoritmy.
 
-Azure AD používá pro aplikace v galerii některé výchozí nastavení. Výchozí hodnoty jsou nastavené na základě požadavků aplikace.
+Azure AD používá některá výchozí nastavení pro aplikace galerie. Výchozí hodnoty jsou nastaveny na základě požadavků aplikace.
 
 Ve službě Azure AD můžete nastavit možnosti podepisování certifikátů a algoritmus podepisování certifikátů.
 
@@ -35,45 +35,45 @@ Ve službě Azure AD můžete nastavit možnosti podepisování certifikátů a 
 
 Azure AD podporuje tři možnosti podepisování certifikátů:
 
-* **Podepsat kontrolní výraz SAML**. Tato výchozí možnost je nastavena pro většinu aplikací galerie. Pokud vyberete tuto možnost, Azure AD jako zprostředkovatel identity (IdP) podepíše kontrolní výraz a certifikát SAML s certifikátem [X. 509](https://wikipedia.org/wiki/X.509) aplikace.
+* **Podepište kontrolní výraz SAML**. Tato výchozí možnost je nastavena pro většinu aplikací galerie. Pokud vyberete tuto možnost, Azure AD jako zprostředkovatel identity (IdP) podepíše kontrolní výraz SAML a certifikát s certifikátem [X.509](https://wikipedia.org/wiki/X.509) aplikace.
 
-* **Podepsat odpověď SAML**. Pokud vyberete tuto možnost, Azure AD jako IdP podepíše odpověď SAML pomocí certifikátu X. 509 aplikace.
+* **Podepsat odpověď SAML**. Pokud vyberete tuto možnost, Azure AD jako IdP podepíše odpověď SAML s certifikátem X.509 aplikace.
 
-* **Podepsat odpověď a kontrolní výraz SAML**. Pokud vyberete tuto možnost, Azure AD jako IdP podepíše celý token SAML s certifikátem X. 509 aplikace.
+* **Podepsat odpověď a kontrolní výraz SAML**. Pokud vyberete tuto možnost, Azure AD jako IdP podepíše celý token SAML s certifikátem X.509 aplikace.
 
 ## <a name="certificate-signing-algorithms"></a>Algoritmy podepisování certifikátů
 
-Azure AD podporuje dva podpisové algoritmy nebo algoritmy SHA (Secure Hash Algorithm) pro podepsání odpovědi SAML:
+Azure AD podporuje dva algoritmy podepisování nebo zabezpečené algoritmy hash (SH), k podepsání odpovědi SAML:
 
-* **SHA-256**. Azure AD používá tento výchozí algoritmus k podepsání odpovědi SAML. Je to nejnovější algoritmus a je bezpečnější než SHA-1. Většina aplikací podporuje algoritmus SHA-256. Pokud aplikace jako podpisový algoritmus podporuje pouze SHA-1, můžete ho změnit. V opačném případě doporučujeme použít algoritmus SHA-256 pro podepsání odpovědi SAML.
+* **SHA-256**. Azure AD používá tento výchozí algoritmus k podepsání odpovědi SAML. Je to nejnovější algoritmus a je bezpečnější než SHA-1. Většina aplikací podporuje algoritmus SHA-256. Pokud aplikace podporuje pouze SHA-1 jako podpisový algoritmus, můžete jej změnit. V opačném případě doporučujeme použít algoritmus SHA-256 pro podepsání odpovědi SAML.
 
-* **SHA-1**. Tento algoritmus je starší a je považován za méně bezpečný než SHA-256. Pokud aplikace podporuje pouze tento podpisový algoritmus, můžete tuto možnost vybrat v rozevíracím seznamu **algoritmus podepisování** . Služba Azure AD pak podepíše odpověď SAML pomocí algoritmu SHA-1.
+* **SHA-1**. Tento algoritmus je starší a je považován za méně bezpečný než SHA-256. Pokud aplikace podporuje pouze tento algoritmus podepisování, můžete tuto možnost vybrat v rozevíracím seznamu **Algoritmus podepisování.** Azure AD pak podepíše odpověď SAML pomocí algoritmu SHA-1.
 
-## <a name="change-certificate-signing-options-and-signing-algorithm"></a>Změna možností podepsání certifikátu a podpisového algoritmu
+## <a name="change-certificate-signing-options-and-signing-algorithm"></a>Změna možností podepisování certifikátů a algoritmu podpisu
 
-Pokud chcete změnit možnosti podepisování certifikátů SAML aplikace a algoritmus podepisování certifikátů, vyberte příslušnou aplikaci:
+Chcete-li změnit možnosti podepisování certifikátů SAML aplikace a algoritmu s podpisem certifikátu, vyberte dotyčnou aplikaci:
 
-1. Na [portálu Azure Active Directory](https://aad.portal.azure.com/)se přihlaste ke svému účtu. Zobrazí se stránka **Centrum pro správu Azure Active Directory** .
+1. Na [portálu Azure Active Directory](https://aad.portal.azure.com/)se přihlaste ke svému účtu. Zobrazí se stránka **Centra pro správu Služby Azure Active Directory.**
 1. V levém podokně vyberte **Podnikové aplikace**. Zobrazí se seznam podnikových aplikací ve vašem účtu.
-1. Vyberte aplikaci. Zobrazí se stránka s přehledem pro aplikaci.
+1. Vyberte aplikaci. Zobrazí se stránka s přehledem aplikace.
 
-   ![Příklad: Stránka s přehledem aplikace](./media/certificate-signing-options/application-overview-page.png)
+   ![Příklad: Stránka s přehledem aplikací](./media/certificate-signing-options/application-overview-page.png)
 
-V dalším kroku změňte možnosti podepsání certifikátu v tokenu SAML pro tuto aplikaci:
+Dále změňte možnosti podepisování certifikátů v tokenu SAML pro tuto aplikaci:
 
-1. V levém podokně stránky přehled aplikace vyberte **jednotné přihlašování**.
-1. Pokud se zobrazí stránka **nastavit jednotné přihlašování pomocí SAML-Preview** , pokračujte krokem 5.
-1. Pokud se nezobrazí stránka pro **Výběr metody jednotného přihlašování** , vyberte možnost **změnit režimy jednotného přihlašování** a tuto stránku zobrazte.
-1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML** , pokud je k dispozici. (Pokud není **SAML** k dispozici, aplikace nepodporuje SAML, ale můžete zbývající část tohoto postupu a článku ignorovat.)
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML-Preview** Najděte hlavičku **podpisového certifikátu SAML** a vyberte ikonu pro **Úpravy** (tužka). Zobrazí se stránka **podpisový certifikát SAML** .
+1. V levém podokně stránky přehledu aplikace vyberte **Možnost Jednotné přihlašování**.
+1. Pokud se zobrazí stránka **Nastavit jednotné přihlašování pomocí saml – náhled,** přejděte ke kroku 5.
+1. Pokud se stránka **Vybrat metodu jednotného přihlašování** nezobrazí, vyberte **Změnit režimy jednotného přihlašování,** aby se tato stránka zobrazila.
+1. Na stránce **Vybrat metodu jednotného přihlašování** vyberte **možnost SAML,** pokud je k dispozici. (Pokud **SAML** není k dispozici, aplikace nepodporuje SAML a můžete ignorovat zbytek tohoto postupu a článku.)
+1. Na stránce **Nastavit jednotné přihlašování pomocí saml – náhled** najděte záhlaví **podpisového certifikátu SAML** a vyberte ikonu **Upravit** (tužku). Zobrazí se stránka **podpisového certifikátu SAML.**
 
-   ![Příklad: stránka podpisového certifikátu SAML](./media/certificate-signing-options/saml-signing-page.png)
+   ![Příklad: Stránka podpisového certifikátu SAML](./media/certificate-signing-options/saml-signing-page.png)
 
-1. V rozevíracím seznamu **možnost podepisování vyberte možnost** **podepsat odpověď SAML**, **podepsat kontrolní výraz SAML**nebo **podepsat odpověď a kontrolní výraz SAML**. Popisy těchto možností se zobrazí výše v tomto článku v části [možnosti podepisování certifikátu](#certificate-signing-options).
-1. V rozevíracím seznamu **algoritmus podepisování** vyberte **SHA-1** nebo **SHA-256**. Popisy těchto možností se zobrazí výše v tomto článku v části [algoritmy podepisování certifikátů](#certificate-signing-algorithms) .
-1. Pokud jste s vašimi možnostmi spokojeni, vyberte **Uložit** a použijte tak nové nastavení podpisového certifikátu SAML. V opačném případě vyberte **X** , chcete-li změny zahodit.
+1. V rozevíracím seznamu **Možnost podepisování** zvolte **Podepsat odpověď SAML**, **Podepsat kontrolní výraz SAML**nebo **Podepsat odpověď a kontrolní výraz SAML**. Popisy těchto možností se zobrazí dříve v tomto článku v [možnostech podepisování certifikátů](#certificate-signing-options).
+1. V rozevíracím seznamu **Algoritmus podepisování** zvolte **SHA-1** nebo **SHA-256**. Popisy těchto možností se zobrazí dříve v tomto článku v části [Algoritmy podepisování certifikátů.](#certificate-signing-algorithms)
+1. Pokud jste se svými volbami spokojeni, vyberte **Uložit a** použijte nové nastavení podpisového certifikátu SAML. V opačném případě vyberte **x** zahodit změny.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](configure-federated-single-sign-on-non-gallery-applications.md)
-* [Řešení potíží s jednotným přihlašováním založeném na SAML](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
+* [Konfigurace jednotného přihlášení k aplikacím, které nejsou v Galerii aplikací Služby Azure Active Directory](configure-federated-single-sign-on-non-gallery-applications.md)
+* [Poradce připotíží k jednotnému přihlašování na saml](../azuread-dev/howto-v1-debug-saml-sso-issues.md)

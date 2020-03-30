@@ -1,6 +1,6 @@
 ---
-title: Odesílání a příjem událostí z Azure Event Hubs pomocí jazyka Java (starší verze)
-description: Tento článek popisuje postup vytvoření aplikace Java, která odesílá a přijímá události z Azure Event Hubs pomocí starého balíčku Azure-eventhubs.
+title: Odesílání nebo přijímání událostí z Azure Event Hubs pomocí Jazyka Java (starší verze)
+description: Tento článek poskytuje návod k vytvoření aplikace Java, která odesílá nebo přijímá události do/z Azure Event Hubs pomocí starého balíčku azure-eventhubs.
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
@@ -9,39 +9,39 @@ ms.topic: quickstart
 ms.date: 02/11/2020
 ms.author: spelluru
 ms.openlocfilehash: 2c9baa4c0e048419ece09b954cee1af21b1f0cc1
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77158005"
 ---
-# <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Použití jazyka Java k posílání událostí nebo přijímání událostí z Azure Event Hubs (Azure-eventhubs)
+# <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Použití Jazyka Java k odesílání událostí nebo přijímání událostí z Azure Event Hubs (azure-eventhubs)
 
-V tomto rychlém startu se dozvíte, jak odesílat události do centra událostí a přijímat z něj události pomocí balíčku Java **Azure-eventhubs** .
+Tento rychlý start ukazuje, jak odesílat události a přijímat události z centra událostí pomocí balíčku **Azure-eventhubs** Java.
 
 > [!WARNING]
-> V tomto rychlém startu se používají staré balíčky **Azure-eventhubs** a **Azure-eventhubs-EPH** . Rychlý Start, který používá nejnovější balíček **Azure-Messaging-eventhubs** , najdete v tématu [posílání a přijímání událostí pomocí Azure-Messaging-eventhubs](get-started-java-send-v2.md). Pokud chcete aplikaci přesunout z použití starého balíčku na nový, přečtěte si [Průvodce migrace z Azure-eventhubs do Azure-Messaging-eventhubs](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md). 
+> Tento rychlý start používá staré **balíčky azure-eventhubs** a **azure-eventhubs-eph.** Pro rychlý start, který používá nejnovější balíček **azure-messaging eventhubs,** najdete v tématu [odesílání a přijímání událostí pomocí azure-messaging eventhubs](get-started-java-send-v2.md). Pokud chcete přesunout aplikaci z používání starého balíčku na nový, [přečtěte si průvodce migrací z azure-eventhubs na azure-messaging eventhubs](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md). 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Pokud s Azure Event Hubs teprve začínáte, přečtěte si téma [přehled Event Hubs](event-hubs-about.md) před provedením tohoto rychlého startu. 
+Pokud s Azure Event Hubs tečujete, přečtěte si [téma Přehled centra událostí,](event-hubs-about.md) než začnete tento rychlý start. 
 
-K dokončení tohoto rychlého startu potřebujete následující požadavky:
+Chcete-li tento rychlý start dokončit, potřebujete následující požadavky:
 
-- **Microsoft Azure předplatné**. Pokud chcete používat služby Azure, včetně Azure Event Hubs, potřebujete předplatné.  Pokud nemáte existující účet Azure, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/) nebo využít výhody pro předplatitele MSDN při [vytváření účtu](https://azure.microsoft.com).
-- Vývojové prostředí Java. V tomto rychlém startu se používá [zatmění](https://www.eclipse.org/).
-- **Vytvoří obor názvů Event Hubs a centrum událostí**. Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v [tomto článku](event-hubs-create.md). Pak Získejte hodnotu přístupového klíče pro centrum událostí podle pokynů uvedených v článku [získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Přístupovou klávesu použijete v kódu, který napíšete později v tomto rychlém startu. Výchozí název klíče je: **RootManageSharedAccessKey**.
+- **Předplatné Microsoft Azure**. Pokud chcete používat služby Azure, včetně Azure Event Hubs, potřebujete předplatné.  Pokud nemáte existující účet Azure, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/) nebo použít výhody předplatitele MSDN při vytváření [účtu](https://azure.microsoft.com).
+- Vývojové prostředí Javy. Tento rychlý start používá [Eclipse](https://www.eclipse.org/).
+- **Vytvořte obor názvů Event Hubs a centrum událostí**. Prvním krokem je použití [portálu Azure](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Chcete-li vytvořit obor názvů a centrum událostí, postupujte podle postupu v [tomto článku](event-hubs-create.md). Potom získat hodnotu přístupového klíče pro centrum událostí podle pokynů z článku: [Získat připojovací řetězec](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Přístupový klíč v kódu, který napíšete později v tomto rychlém startu. Výchozí název klíče je: **RootManageSharedAccessKey**.
 
 ## <a name="send-events"></a>Odesílání událostí 
-V této části se dozvíte, jak vytvořit aplikaci Java pro posílání událostí do centra událostí. 
+V této části se zobrazí, jak vytvořit java aplikaci pro odesílání událostí z centra událostí. 
 
 > [!NOTE]
 > Tento rychlý start si můžete stáhnout jako ukázku z [GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend), nahradit řetězce `EventHubConnectionString` a `EventHubName`, hodnotami pro vaše centrum událostí a spustit. Případně můžete postupovat podle kroků v tomto rychlém startu a vytvořit si vlastní.
 
-### <a name="add-reference-to-azure-event-hubs-library"></a>Přidat odkaz na knihovnu služby Azure Event Hubs
+### <a name="add-reference-to-azure-event-hubs-library"></a>Přidání odkazu na knihovnu Azure Event Hubs
 
-Klientská knihovna Java pro Event Hubs je k dispozici pro použití v projektech Maven z [centrálního úložiště Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22). Na tuto knihovnu můžete odkazovat pomocí následující deklarace závislosti v rámci souboru projektu Maven:
+Klientská knihovna Java pro Event Hubs je k dispozici pro použití v projektech Maven z [Centrálního úložiště Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22). Na tuto knihovnu můžete odkazovat pomocí následující deklarace závislostí uvnitř souboru projektu Maven:
 
 ```xml
 <dependency>
@@ -53,11 +53,11 @@ Klientská knihovna Java pro Event Hubs je k dispozici pro použití v projektec
 
 Pro různé typy prostředí sestavení můžete explicitně získat nejnovější vydané soubory JAR z [centrálního úložiště Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22).  
 
-Pro jednoduchého vydavatele událostí importujte balíček *com. Microsoft. Azure. eventhubs* pro klientské třídy Event Hubs a balíček *com. Microsoft. Azure. ServiceBus* pro třídy nástrojů, jako jsou například běžné výjimky, které jsou sdíleny s klientem Azure Service Bus Messaging. 
+Pro jednoduchého vydavatele událostí importujte balíček *com.microsoft.azure.eventhubs* pro třídy klientů Event Hubs a balíček *com.microsoft.azure.servicebus* pro třídy nástrojů, jako jsou běžné výjimky sdílené s klientem zasílání zpráv Služby Azure Service Bus. 
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>Napsání kódu pro odesílání zpráv do centra událostí
 
-Pro následující příklad nejprve vytvořte nový projekt Maven pro aplikaci konzoly nebo prostředí v oblíbeném vývojovém prostředí Java. Přidejte třídu s názvem `SimpleSend`a do třídy přidejte následující kód:
+Pro následující příklad nejprve vytvořte nový projekt Maven pro aplikaci konzoly nebo prostředí v oblíbeném vývojovém prostředí Java. Přidejte třídu s názvem `SimpleSend`a přidejte do ní následující kód:
 
 ```java
 import com.google.gson.Gson;
@@ -84,9 +84,9 @@ public class SimpleSend {
  }
 ```
 
-### <a name="construct-connection-string"></a>Vytvoření připojovacího řetězce
+### <a name="construct-connection-string"></a>Vytvořit připojovací řetězec
 
-ConnectionStringBuilder třídu použijte k sestavení kompletních hodnotu připojovacího řetězce k předání do instance služby Event Hubs klienta. Nahraďte zástupné symboly hodnotami, které jste získali při vytváření obor názvů a Centrum událostí:
+Pomocí třídy ConnectionStringBuilder vytvořte hodnotu připojovacího řetězce, která se předává instanci klienta Event Hubs. Nahraďte zástupné symboly hodnotami, které jste získali při vytváření oboru názvů a centra událostí:
 
 ```java
         final ConnectionStringBuilder connStr = new ConnectionStringBuilder()
@@ -96,9 +96,9 @@ ConnectionStringBuilder třídu použijte k sestavení kompletních hodnotu při
                 .setSasKey("SHARED ACCESS KEY");
 ```
 
-### <a name="write-code-to-send-events"></a>Napsání kódu pro odesílání událostí
+### <a name="write-code-to-send-events"></a>Napsat kód pro odesílání událostí
 
-Vytvořte jednotný událost pomocí transformace řetězce do jeho kódování bajtů kódování UTF-8. Potom vytvořte nové instance služby Event Hubs klienta z připojovacího řetězce a odeslat zprávu:   
+Vytvořte jedinečnou událost transformací řetězce do kódování Bajt UTF-8. Potom vytvořte novou instanci klienta Event Hubs z připojovacího řetězce a odešlete zprávu:   
 
 ```java 
         final Gson gson = new GsonBuilder().create();
@@ -138,17 +138,17 @@ Vytvořte jednotný událost pomocí transformace řetězce do jeho kódování 
 
 ``` 
 
-Sestavení a spusťte program a ujistěte se, že zde nejsou žádné chyby.
+Sestavení a spuštění programu a ujistěte se, že neexistují žádné chyby.
 
 Blahopřejeme! Nyní jste odeslali zprávy do centra událostí.
 
-### <a name="appendix-how-messages-are-routed-to-eventhub-partitions"></a>Dodatek: Jak zprávy se směrují do oddílů centra událostí
+### <a name="appendix-how-messages-are-routed-to-eventhub-partitions"></a>Dodatek: Způsob směrování zpráv do oddílů EventHub
 
-Předtím, než zprávy jsou načítána pro spotřebitele, mají být publikována do oddílů nejprve podle vydavatele. Po publikování zprávy do centra událostí synchronně pomocí metody sendSync() com.microsoft.azure.eventhubs.EventHubClient objektu, může být zprávu odeslat do konkrétního oddílu ani distribuován do všech dostupných oddílech způsobem kruhové dotazování v závislosti na tom, jestli je nebo není zadána klíč oddílu.
+Před načtení mši příjemci musí být publikovány do oddílů nejprve vydavatelé. Když jsou zprávy publikovány do centra událostí synchronně pomocí metody sendSync() v objektu com.microsoft.azure.eventhubs.EventHubClient, může být zpráva odeslána do určitého oddílu nebo distribuována do všech dostupných oddílů způsobem kruhového dotazování v závislosti na tom, zda je zadán klíč oddílu nebo ne.
 
-Pokud je zadán řetězec představující klíč oddílu, klíč se k určení oddíl, který se k odeslání události do hashovat.
+Pokud je zadán řetězec představující klíč oddílu, bude kód zajistěn, aby bylo možné určit, do kterého oddílu se má událost odeslat.
 
-Pokud není nastaven klíč oddílu, pak zprávy budou kruhové robined na všechny dostupné oddíly.
+Pokud není nastaven klíč oddílu, budou zprávy zaokrouhleny do všech dostupných oddílů.
 
 ```java
 // Serialize the event into bytes
@@ -170,30 +170,30 @@ eventHubClient.closeSync();
 ```
 
 ## <a name="receive-events"></a>Příjem událostí
-Kód v tomto kurzu vychází z [EventProcessorSample kódu na GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/EventProcessorSample), který můžete prostudovat, abyste viděli úplnou funkční aplikaci.
+Kód v tomto kurzu je založen na [kódu EventProcessorSample na GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/EventProcessorSample), který můžete zkontrolovat, abyste viděli úplnou pracovní aplikaci.
 
 ### <a name="receive-messages-with-eventprocessorhost-in-java"></a>Přijímání zpráv pomocí třídy EventProcessorHost v Javě
 
-**EventProcessorHost** je třída Java, která zjednodušuje přijímání událostí z Event Hubs tím, že spravuje trvalé kontrolní body a paralelní příjem z těchto Event Hubs. Pomocí třídy EventProcessorHost můžete události rozdělit mezi několik příjemců, i když jsou hostované v různých uzlech. Tento příklad ukazuje způsob použití třídy EventProcessorHost pro jednoho příjemce.
+**EventProcessorHost** je třída Java, která zjednodušuje příjem událostí z event hubů správou trvalých kontrolních bodů a paralelních příjemů z těchto center událostí. Pomocí EventProcessorHost, můžete rozdělit události mezi více přijímačů, i když hostované v různých uzlech. Tento příklad ukazuje způsob použití třídy EventProcessorHost pro jednoho příjemce.
 
 ### <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-Chcete-li použít EventProcessorHost, musíte mít účet [Azure Storage] [Azure Storage účet]:
+Chcete-li používat EventProcessorHost, musíte mít účet [Azure Storage][Účet úložiště Azure]:
 
-1. Přihlaste se [Azure Portal](https://portal.azure.com)a na levé straně obrazovky vyberte **vytvořit prostředek** .
-2. Vyberte **úložiště**a pak vyberte **účet úložiště**. V okně **vytvořit účet úložiště** zadejte název účtu úložiště. Dokončete zbývající pole, vyberte požadovanou oblast a pak vyberte **vytvořit**.
+1. Přihlaste se na [portál Azure](https://portal.azure.com)a vyberte **Vytvořit prostředek** na levé straně obrazovky.
+2. Vyberte **Úložiště**a pak vyberte **Účet úložiště**. V okně **Vytvořit účet úložiště** zadejte název účtu úložiště. Vyplňte zbývající pole, vyberte požadovanou oblast a pak vyberte **Vytvořit**.
    
-    ![Vytvořte účet úložiště v Azure Portal](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-azure-storage-account.png)
+    ![Vytvoření účtu úložiště na Webu Azure Portal](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-azure-storage-account.png)
 
-3. Vyberte nově vytvořený účet úložiště a pak vyberte **přístupové klíče**:
+3. Vyberte nově vytvořený účet úložiště a pak vyberte **Přístupové klíče**:
    
-    ![Získání přístupových klíčů v Azure Portal](./media/event-hubs-dotnet-framework-getstarted-receive-eph/select-azure-storage-access-keys.png)
+    ![Získání přístupových klíčů na webu Azure Portal](./media/event-hubs-dotnet-framework-getstarted-receive-eph/select-azure-storage-access-keys.png)
 
     Zkopírujte hodnotu key1 do dočasného umístění. Použijete ho později v tomto kurzu.
 
 ### <a name="create-a-java-project-using-the-eventprocessor-host"></a>Vytvoření projektu jazyka Java pomocí hostitele EventProcessor
 
-Klientská knihovna Java pro Event Hubs je k dispozici pro použití v projektech Maven z [centrálního úložiště Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22)a lze na ni odkazovat pomocí následující deklarace závislosti v souboru projektu Maven: 
+Klientská knihovna Java pro centra událostí je k dispozici pro použití v projektech Maven z [centrálního úložiště Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22)a může být odkazována pomocí následující deklarace závislostí uvnitř souboru projektu Maven: 
 
 ```xml
 <dependency>
@@ -210,7 +210,7 @@ Klientská knihovna Java pro Event Hubs je k dispozici pro použití v projektec
 
 Pro různé typy prostředí sestavení můžete explicitně získat nejnovější vydané soubory JAR z [centrálního úložiště Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22).
 
-1. Pro následující příklad nejprve vytvořte nový projekt Maven pro aplikaci konzoly nebo prostředí v oblíbeném vývojovém prostředí Java. Třída se nazývá `ErrorNotificationHandler`.     
+1. Pro následující příklad nejprve vytvořte nový projekt Maven pro aplikaci konzoly nebo prostředí v oblíbeném vývojovém prostředí Java. Třída se `ErrorNotificationHandler`nazývá .     
    
     ```java
     import java.util.function.Consumer;
@@ -225,7 +225,7 @@ Pro různé typy prostředí sestavení můžete explicitně získat nejnovějš
         }
     }
     ```
-2. Použijte následující kód k vytvoření nové třídy s názvem `EventProcessorSample`. Nahraďte zástupné symboly hodnotami použitými při vytváření event hubu a úložiště účtu:
+2. Použijte následující kód k vytvoření nové třídy s názvem `EventProcessorSample`. Nahraďte zástupné symboly hodnotami použitými při vytváření centra událostí a účtu úložiště:
    
    ```java
    package com.microsoft.azure.eventhubs.samples.eventprocessorsample;
@@ -315,7 +315,7 @@ Pro různé typy prostředí sestavení můžete explicitně získat nejnovějš
            System.out.println("End of sample");
        }
     ```
-3. Vytvořte jednu další třídu s názvem `EventProcessor`pomocí následujícího kódu:
+3. Vytvořte ještě `EventProcessor`jednu třídu s názvem , pomocí následujícího kódu:
    
     ```java
     public static class EventProcessor implements IEventProcessor
@@ -380,15 +380,15 @@ Pro různé typy prostředí sestavení můžete explicitně získat nejnovějš
     }
     ```
 
-Tento kurz používá jednu instanci třídy EventProcessorHost. Pokud chcete zvýšit propustnost, doporučujeme, spusťte několik instancí třídy EventProcessorHost, pokud možno na samostatných počítačích.  Poskytuje také redundance. V těchto případech se spolu různé instance navzájem automaticky koordinují, aby dokázaly vyrovnávat zatížení přijatých událostí. Pokud chcete, aby každý z několika příjemců zpracovával *všechny* události, musíte použít koncept **ConsumerGroup**. Když přijímáte události z různých počítačů, může být užitečné nazvat instance třídy EventProcessorHost podle počítačů (nebo rolí), ve kterých jsou nasazené.
+Tento kurz používá jednu instanci třídy EventProcessorHost. Chcete-li zvýšit propustnost, doporučujeme spustit více instancí EventProcessorHost, nejlépe na samostatných počítačích.  Poskytuje také redundanci. V těchto případech se spolu různé instance navzájem automaticky koordinují, aby dokázaly vyrovnávat zatížení přijatých událostí. Pokud chcete, aby každý z několika příjemců zpracovával *všechny* události, musíte použít koncept **ConsumerGroup**. Když přijímáte události z různých počítačů, může být užitečné nazvat instance třídy EventProcessorHost podle počítačů (nebo rolí), ve kterých jsou nasazené.
 
-### <a name="publishing-messages-to-eventhub"></a>Publikování zprávy do centra událostí
+### <a name="publishing-messages-to-eventhub"></a>Publikování zpráv na EventHub
 
-Předtím, než zprávy jsou načítána pro spotřebitele, mají být publikována do oddílů nejprve podle vydavatele. Je vhodné poznamenat, že po publikování zprávy do centra událostí synchronně pomocí metody sendSync() com.microsoft.azure.eventhubs.EventHubClient objektu, zpráva může odeslat do konkrétního oddílu ani distribuovat do všech dostupných oddílech kruhové dotazování způsobem v závislosti na tom, zda je nebo není zadána klíč oddílu.
+Před načtení mši příjemci musí být publikovány do oddílů nejprve vydavatelé. Stojí za zmínku, že při publikování zpráv do centra událostí synchronně pomocí metody sendSync() na objektu com.microsoft.azure.eventhubs.EventHubClient může být zpráva odeslána do určitého oddílu nebo distribuována do všech dostupných oddílů způsobem kruhového dotazování v závislosti na tom, zda je zadán klíč oddílu nebo ne.
 
-Pokud je zadán řetězec představující klíč oddílu, klíč se po zahašování použije k určení oddíl, který se k odeslání události.
+Pokud je zadán řetězec představující klíč oddílu, je zakódován klíč, který určuje, do kterého oddílu má být událost odeslána.
 
-Pokud není nastaven klíč oddílu, pak zprávy jsou kruhové robined na všechny dostupné oddíly.
+Pokud klíč oddílu není nastaven, jsou zprávy kruhové dotazování na všechny dostupné oddíly
 
 ```java
 // Serialize the event into bytes
@@ -406,21 +406,21 @@ eventHubClient.sendSync(sendEvent, partitionKey);
 
 ```
 
-### <a name="implementing-a-custom-checkpointmanager-for-eventprocessorhost-eph"></a>Implementace vlastního CheckpointManager pro třídy EventProcessorHost (EPH)
+### <a name="implementing-a-custom-checkpointmanager-for-eventprocessorhost-eph"></a>Implementace vlastního nástroje checkpointmanager pro EventProcessorHost (EPH)
 
-Rozhraní API poskytuje mechanismus pro implementaci správce vlastní kontrolní bod pro scénáře, kde výchozí implementace není kompatibilní s vašemu případu použití.
+Rozhraní API poskytuje mechanismus pro implementaci vlastního správce kontrolních bodů pro scénáře, kde výchozí implementace není kompatibilní s případem použití.
 
-Správce kontrolního bodu výchozí využívá úložiště objektů blob, ale pokud přepíšete kontrolního bodu správce používá EPH s vlastní implementaci, můžete použít jakékoli úložiště, které chcete zálohovat vaší implementace Správce kontrolního bodu.
+Výchozí správce kontrolních bodů používá úložiště objektů blob, ale pokud přepíšete správce kontrolních bodů používaný EPH s vlastní implementací, můžete použít libovolné úložiště, které chcete zálohovat implementaci správce kontrolních bodů.
 
-Vytvořte třídu, která implementuje rozhraní com.microsoft.azure.eventprocessorhost.ICheckpointManager
+Vytvoření třídy, která implementuje rozhraní com.microsoft.azure.eventprocessorhost.ICheckpointManager
 
-Použít vlastní implementaci správce kontrolního bodu (com.microsoft.azure.eventprocessorhost.ICheckpointManager)
+Použijte vlastní implementaci správce kontrolních bodů (com.microsoft.azure.eventprocessorhost.ICheckpointManager)
 
-V rámci vaší implementace můžete přepsat výchozí mechanizmus kontrolního bodu a implementovat vlastní kontrolní body na základě vašeho vlastního úložiště dat (například SQL Server, CosmosDB a mezipaměti Azure pro Redis). Doporučujeme vám, že úložiště využívané vaší implementace Správce kontrolního bodu je přístupné pro všechny instance EPH, které zpracovávají události pro skupinu příjemců.
+V rámci implementace můžete přepsat výchozí mechanismus kontrolních bodů a implementovat vlastní kontrolní body na základě vlastního úložiště dat (jako je SQL Server, CosmosDB a Azure Cache for Redis). Doporučujeme, aby úložiště používané k zálohování implementace správce kontrolních bodů je přístupné všem instancím EPH, které zpracovávají události pro skupinu spotřebitelů.
 
-Můžete použít libovolné úložiště dat, která je k dispozici ve vašem prostředí.
+Můžete použít libovolné úložiště dat, které je k dispozici ve vašem prostředí.
 
-Třída com.microsoft.azure.eventprocessorhost.EventProcessorHost vám poskytne dva konstruktory, které umožňují kontrolního bodu správce pro vaše EventProcessorHost override.
+Třída com.microsoft.azure.eventprocessorhost.EventProcessorHost poskytuje dva konstruktory, které umožňují přepsat správce kontrolních bodů pro eventprocessorhost.
 
 
 ## <a name="next-steps"></a>Další kroky

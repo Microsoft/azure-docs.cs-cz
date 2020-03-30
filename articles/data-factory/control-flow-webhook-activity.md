@@ -1,6 +1,6 @@
 ---
-title: Aktivita Webhooku v Azure Data Factory
-description: Aktivita Webhooku nepokračuje v provádění kanálu, dokud neověřuje připojenou datovou sadu s určitými kritérii, které uživatel zadá.
+title: Aktivita webhooku v Azure Data Factory
+description: Aktivita webhooku nepokračuje v provádění kanálu, dokud neověří připojenou datovou sadu s určitými kritérii, která uživatel zadá.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,15 +12,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.openlocfilehash: ced2279878ee2eb361ec7338647418658e411513
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79213006"
 ---
-# <a name="webhook-activity-in-azure-data-factory"></a>Aktivita Webhooku v Azure Data Factory
+# <a name="webhook-activity-in-azure-data-factory"></a>Aktivita webhooku v Azure Data Factory
 
-Aktivita Webhooku může řídit provádění kanálů pomocí vlastního kódu. V případě aktivity Webhooku může kód zákazníka zavolat koncovému bodu a předat mu adresu URL zpětného volání. Běh kanálu počká na vyvolání zpětného volání, než pokračuje na další aktivitu.
+Webhooku aktivity můžete řídit provádění kanálů prostřednictvím vlastního kódu. S aktivitou webhooku může kód zákazníků volat koncový bod a předat mu adresu URL zpětného volání. Spuštění kanálu čeká na vyvolání zpětného volání před pokračováním další aktivity.
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -51,29 +51,29 @@ Aktivita Webhooku může řídit provádění kanálů pomocí vlastního kódu.
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povolené hodnoty | Požadováno
+Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-**Jméno** | Název aktivity Webhooku. | String | Ano |
-**type** | Musí být nastavené na Webhook. | String | Ano |
-**Metoda** | Metoda REST API pro cílový koncový bod. | Řetězec. Podporovaný typ je POST. | Ano |
-**Adresa URL** | Cílový koncový bod a cesta. | Řetězec nebo výraz s hodnotou **ResultType** řetězce. | Ano |
-**záhlaví** | Hlavičky, které se odesílají do žádosti Tady je příklad, který nastaví jazyk a typ na žádost: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Řetězec nebo výraz s hodnotou **ResultType** řetězce. | Ano. Vyžaduje se `Content-Type` záhlaví jako `"headers":{ "Content-Type":"application/json"}`. |
-**těles** | Představuje datovou část, která je odeslána do koncového bodu. | Platný JSON nebo výraz s hodnotou **RESULTTYPE** JSON. Schéma datové části požadavku najdete v tématu [schéma datové části požadavku](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#request-payload-schema) . | Ano |
-**přihlašovací** | Metoda ověřování použitá pro volání koncového bodu. Podporované typy jsou "základní" a "ClientCertificate". Další informace najdete v tématu [Ověřování](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#authentication). Pokud se ověřování nepožaduje, vylučte tuto vlastnost. | Řetězec nebo výraz s hodnotou **ResultType** řetězce. | Ne |
-**prodlev** | Jak dlouho aktivita čeká na vyvolání zpětného volání zadaného parametrem **callBackUri** . Výchozí hodnota je 10 minut ("00:10:00"). Hodnoty mají formát TimeSpan *d*. *HH*:*mm*:*SS*. | String | Ne |
-**Vykázat stav při zpětném volání** | Umožňuje uživateli ohlásit stav selhání aktivity Webhooku. | Logická hodnota | Ne |
+**Jméno** | Název aktivity webhooku. | Řetězec | Ano |
+**Typ** | Musí být nastavena na "WebHook". | Řetězec | Ano |
+**Metoda** | Metoda rozhraní REST API pro cílový koncový bod. | Řetězec. Podporovaný typ je "POST". | Ano |
+**Adresu url** | Cílový koncový bod a cesta. | Řetězec nebo výraz s hodnotou **resultType** řetězce. | Ano |
+**Záhlaví** | Hlavičky, které jsou odeslány do požadavku. Zde je příklad, který nastaví jazyk a `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`typ na žádost: . | Řetězec nebo výraz s hodnotou **resultType** řetězce. | Ano. Záhlaví `Content-Type` jako `"headers":{ "Content-Type":"application/json"}` je povinné. |
+**Tělo** | Představuje datovou část, která je odeslána do koncového bodu. | Platný JSON nebo výraz s hodnotou **resultType** json. Schéma [datové části naleznete](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#request-payload-schema) v tématu Schéma datové části požadavku. | Ano |
+**Ověřování** | Metoda ověřování používaná k volání koncového bodu. Podporované typy jsou "Basic" a "ClientCertificate". Další informace najdete v tématu [Ověřování](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#authentication). Pokud ověřování není vyžadováno, vylučte tuto vlastnost. | Řetězec nebo výraz s hodnotou **resultType** řetězce. | Ne |
+**timeout** | Jak dlouho aktivita čeká na zpětné volání zadané **callBackUri,** které mají být vyvolány. Výchozí hodnota je 10 minut ("00:10:00"). Hodnoty mají formát TimeSpan *d*. *hh*:*mm*:*ss*. | Řetězec | Ne |
+**Stav sestavy při zpětném volání** | Umožňuje uživateli nahlásit neúspěšný stav aktivity webhooku. | Logická hodnota | Ne |
 
 ## <a name="authentication"></a>Ověřování
 
-Aktivita Webhooku podporuje následující typy ověřování.
+Aktivita webhooku podporuje následující typy ověřování.
 
-### <a name="none"></a>Žádné
+### <a name="none"></a>Žádný
 
-Pokud se ověřování nepožaduje, nezahrnujte vlastnost **ověřování** .
+Pokud ověřování není vyžadováno, nezahrnejte vlastnost **ověřování.**
 
 ### <a name="basic"></a>Basic
 
-Zadejte uživatelské jméno a heslo, které chcete použít pro základní ověřování.
+Zadejte uživatelské jméno a heslo, které se má použít při základním ověřování.
 
 ```json
 "authentication":{
@@ -83,9 +83,9 @@ Zadejte uživatelské jméno a heslo, které chcete použít pro základní ově
 }
 ```
 
-### <a name="client-certificate"></a>Certifikát klienta
+### <a name="client-certificate"></a>Klientský certifikát
 
-Zadejte obsah souboru PFX v kódování Base64 a heslo.
+Zadejte obsah kódu Base64 souboru PFX a heslo.
 
 ```json
 "authentication":{
@@ -97,7 +97,7 @@ Zadejte obsah souboru PFX v kódování Base64 a heslo.
 
 ### <a name="managed-identity"></a>Spravovaná identita
 
-Pomocí spravované identity objektu pro vytváření dat určete identifikátor URI prostředku, pro který je požadován přístupový token. K volání rozhraní API pro správu prostředků Azure použijte `https://management.azure.com/`. Další informace o tom, jak spravované identity fungují, najdete v tématu [Přehled prostředků spravovaných identit pro Azure](/azure/active-directory/managed-identities-azure-resources/overview).
+Pomocí spravované identity datové továrny určete identifikátor URI prostředku, pro který je požadován přístupový token. Chcete-li volat rozhraní API `https://management.azure.com/`pro správu prostředků Azure, použijte . Další informace o tom, jak spravované identity fungují, najdete v tématu [spravované identity pro prostředky Azure přehled](/azure/active-directory/managed-identities-azure-resources/overview).
 
 ```json
 "authentication": {
@@ -107,21 +107,21 @@ Pomocí spravované identity objektu pro vytváření dat určete identifikátor
 ```
 
 > [!NOTE]
-> Pokud je vaše Datová továrna nakonfigurovaná s úložištěm Git, musíte přihlašovací údaje uložit v Azure Key Vault, abyste mohli používat základní ověřování nebo ověřování klientského certifikátu. Azure Data Factory neukládá hesla v Gitu.
+> Pokud je vaše továrna na data nakonfigurovaná pomocí úložiště Git, musíte uložit přihlašovací údaje do služby Azure Key Vault, abyste měli používat základní ověřování nebo ověřování klientského certifikátu. Azure Data Factory neukládá hesla v Gitu.
 
 ## <a name="additional-notes"></a>Další poznámky
 
-Data Factory předá další vlastnost **callBackUri** v těle odeslání na koncový bod adresy URL. Data Factory očekává, že se tento identifikátor URI vyvolá před určenou hodnotou časového limitu. Pokud není identifikátor URI vyvolán, aktivita se nezdařila se stavem "časované vyprší".
+Data Factory předá další vlastnost **callBackUri** v těle odeslané koncovému bodu URL. Data Factory očekává, že tento identifikátor URI bude vyvolán před zadanou hodnotou časového času. Pokud identifikátor URI není vyvolána, aktivita se nezdaří se stavem "TimedOut".
 
-Aktivita Webhooku se nezdařila, pokud volání vlastního koncového bodu neproběhne úspěšně. Do těla zpětného volání lze přidat jakoukoli chybovou zprávu a použít ji v pozdější aktivitě.
+Webhook aktivita se nezdaří, když se nezdaří volání vlastního koncového bodu. Všechny chybové zprávy lze přidat do těla zpětného volání a použít v pozdější aktivity.
 
-U každého volání REST API vyprší časový limit, pokud koncový bod neodpoví během jedné minuty. Toto chování je osvědčeným postupem standardu HTTP. Chcete-li tento problém vyřešit, implementujte vzor 202. V aktuálním případě koncový bod vrátí 202 (přijato) a dotaz na klienta.
+Pro každé volání rozhraní REST API klienta časový mat, pokud koncový bod nereaguje do jedné minuty. Toto chování je standardní http osvědčený postup. Chcete-li tento problém vyřešit, implementujte vzor 202. V aktuálním případě koncový bod vrátí 202 (Přijato) a dotazování klienta.
 
-Časový limit minut na žádosti nemá žádnou akci s časovým limitem aktivity. Druhý se používá pro čekání na zpětné volání určené parametrem **callbackUri**.
+Časový čas jedné minuty na žádost nemá nic společného s časovým časem aktivity. Ten se používá k čekání na zpětné volání určené **callbackUri**.
 
-Tělo předané zpět do identifikátoru URI zpětného volání musí být platný kód JSON. Nastavte hlavičku `Content-Type` na `application/json`.
+Tělo předané zpět do identifikátoru URI zpětného volání musí být platné JSON. Nastavte `Content-Type` záhlaví `application/json`na .
 
-Použijete-li vlastnost **stav vlastnosti zpětného volání** , je nutné do těla při zpětném volání přidat následující kód:
+Při použití **stav sestavy na zpětné volání** vlastnost, musíte přidat následující kód do těla při volání:
 
 ```json
 {
@@ -140,12 +140,12 @@ Použijete-li vlastnost **stav vlastnosti zpětného volání** , je nutné do t
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na následující aktivity toku řízení podporované Data Factory:
+Podívejte se na následující aktivity toku řízení podporované factory:
 
 - [Aktivita podmínky If](control-flow-if-condition-activity.md)
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)
-- [Pro každou aktivitu](control-flow-for-each-activity.md)
-- [Aktivita GetMetadata](control-flow-get-metadata-activity.md)
+- [Aktivita For Each](control-flow-for-each-activity.md)
+- [Získat aktivitu metadat](control-flow-get-metadata-activity.md)
 - [Aktivita vyhledávání](control-flow-lookup-activity.md)
 - [Aktivita webu](control-flow-web-activity.md)
 - [Aktivita Until](control-flow-until-activity.md)

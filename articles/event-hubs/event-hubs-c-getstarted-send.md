@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: odeslání událostí pomocí jazyka C-Azure Event Hubs'
-description: 'Rychlý Start: Tento článek popisuje postup vytvoření aplikace v jazyce C, která odesílá události do služby Azure Event Hubs.'
+title: 'Úvodní příručka: Odesílání událostí pomocí C – Azure Event Hubs'
+description: 'Úvodní příručka: Tento článek poskytuje návod pro vytvoření aplikace C, která odesílá události do Centra událostí Azure.'
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -16,42 +16,42 @@ ms.custom: seodec18
 ms.date: 11/05/2019
 ms.author: shvija
 ms.openlocfilehash: 5bd4bb66b7e3c3ec37724f8684105befbc9132ff
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73720676"
 ---
-# <a name="quickstart-send-events-to-azure-event-hubs-using-c"></a>Rychlý Start: odeslání událostí do Azure Event Hubs pomocí jazyka C
+# <a name="quickstart-send-events-to-azure-event-hubs-using-c"></a>Úvodní příručka: Odeslání událostí do Centra událostí Azure pomocí C
 
 ## <a name="introduction"></a>Úvod
 Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md).
 
-V tomto kurzu se dozvíte, jak odesílat události do centra událostí pomocí konzolové aplikace v jazyce C. 
+Tento kurz popisuje, jak odesílat události do centra událostí pomocí konzolové aplikace v C. 
 
 ## <a name="prerequisites"></a>Požadavky
 Pro absolvování tohoto kurzu potřebujete:
 
-* Vývojové prostředí jazyka C. V tomto kurzu se předpokládá, že se zásobník RSZ na virtuálním počítači Azure Linux s Ubuntu 14,04.
-* [Microsoft Visual Studio](https://www.visualstudio.com/).
-* **Vytvoří obor názvů Event Hubs a centrum událostí**. Použijte [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v [tomto článku](event-hubs-create.md). Získejte hodnotu přístupového klíče pro centrum událostí podle pokynů uvedených v článku [získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Přístupovou klávesu použijete v kódu, který napíšete později v tomto kurzu. Výchozí název klíče je: **RootManageSharedAccessKey**.
+* Vývojové prostředí C. Tento kurz předpokládá zásobník gcc na virtuálním počítači Azure Linux s Ubuntu 14.04.
+* [Aplikace Microsoft Visual Studio](https://www.visualstudio.com/).
+* **Vytvořte obor názvů Event Hubs a centrum událostí**. Na [portálu Azure](https://portal.azure.com) můžete vytvořit obor názvů typu Event Hubs a získat přihlašovací údaje pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Chcete-li vytvořit obor názvů a centrum událostí, postupujte podle postupu v [tomto článku](event-hubs-create.md). Získejte hodnotu přístupového klíče pro centrum událostí podle pokynů z článku: [Získat připojovací řetězec](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Přístupový klíč v kódu, který napíšete později v tomto kurzu. Výchozí název klíče je: **RootManageSharedAccessKey**.
 
-## <a name="write-code-to-send-messages-to-event-hubs"></a>Psaní kódu pro odesílání zpráv do Event Hubs
-V této části se dozvíte, jak napsat aplikaci v jazyce C pro odesílání událostí do centra událostí. Kód používá knihovnu Proton AMQP z [projektu Apache Qpid](https://qpid.apache.org/). To je obdobou použití Service Bus front a témat s AMQP z jazyka C, jak je znázorněno [v této ukázce](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504). Další informace najdete v [dokumentaci k Qpid Proton](https://qpid.apache.org/proton/index.html).
+## <a name="write-code-to-send-messages-to-event-hubs"></a>Psaní kódu pro odesílání zpráv do centra událostí
+V této části se ukazuje, jak napsat aplikaci C pro odesílání událostí do centra událostí. Kód používá knihovnu Proton AMQP z [projektu Apache Qpid](https://qpid.apache.org/). To je obdobou použití front service bus a témata s AMQP z C, jak je znázorněno [v této ukázce](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504). Další informace naleznete v [dokumentaci Qpid Proton](https://qpid.apache.org/proton/index.html).
 
-1. Na [stránce kurýrní služby QPID AMQP](https://qpid.apache.org/proton/messenger.html)postupujte podle pokynů pro instalaci Qpid Proton v závislosti na vašem prostředí.
-2. Pro zkompilování knihovny Proton nainstalujte následující balíčky:
+1. Na [stránce Qpid AMQP Messenger](https://qpid.apache.org/proton/messenger.html)postupujte podle pokynů k instalaci Qpid Proton, v závislosti na vašem prostředí.
+2. Chcete-li zkompilovat knihovnu Proton, nainstalujte následující balíčky:
    
     ```shell
     sudo apt-get install build-essential cmake uuid-dev openssl libssl-dev
     ```
-3. Stáhněte si [knihovnu Proton Qpid](https://qpid.apache.org/proton/index.html)a extrahujte ji, např.:
+3. Stáhněte si [knihovnu Qpid Proton](https://qpid.apache.org/proton/index.html)a vyhovte ji, např.:
    
     ```shell
     wget https://archive.apache.org/dist/qpid/proton/0.7/qpid-proton-0.7.tar.gz
     tar xvfz qpid-proton-0.7.tar.gz
     ```
-4. Vytvořte adresář sestavení, zkompilujte a nainstalujte:
+4. Vytvořte adresář sestavení, kompilujte a nainstalujte:
    
     ```shell
     cd qpid-proton-0.7
@@ -60,7 +60,7 @@ V této části se dozvíte, jak napsat aplikaci v jazyce C pro odesílání ud�
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
     sudo make install
     ```
-5. V pracovním adresáři vytvořte nový soubor s názvem **sender. c** s následujícím kódem. Nezapomeňte nahradit hodnoty pro klíč/název SAS, název centra událostí a obor názvů. Také je nutné nahradit verzi klíče kódovaného adresou URL dříve vytvořeného **SendRule** . Adresu URL můžete [tady](https://www.w3schools.com/tags/ref_urlencode.asp)zakódovat.
+5. V pracovním adresáři vytvořte nový soubor s názvem **sender.c** s následujícím kódem. Nezapomeňte nahradit hodnoty klíče/názvu sas, názvu centra událostí a oboru názvů. Musíte také nahradit url kódované verze klíče pro **SendRule** vytvořené dříve. Můžete URL-kódovat [zde](https://www.w3schools.com/tags/ref_urlencode.asp).
    
     ```c
     #include "proton/message.h"
@@ -141,16 +141,16 @@ V této části se dozvíte, jak napsat aplikaci v jazyce C pro odesílání ud�
         return 0;
     }
     ```
-6. Zkompilujte soubor za předpokladu **RSZ**:
+6. Kompilace souboru, za předpokladu, **gcc**:
    
     ```
     gcc sender.c -o sender -lqpid-proton
     ```
 
     > [!NOTE]
-    > Tento kód používá odchozí okno 1 k tomu, aby se zprávy vynutily co nejrychleji. Doporučuje se, aby se vaše aplikace pokusila o zvýšení propustnosti zpráv. Informace o tom, jak používat knihovnu Qpid Proton v tomto a dalších prostředích a na platformách, pro které jsou k dispozici vazby (aktuálně Perl, PHP, Python a Ruby), najdete na [stránce QPID AMQP Messenger](https://qpid.apache.org/proton/messenger.html) .
+    > Tento kód používá odchozí okno 1 vynutit zprávy ven co nejdříve. Doporučujese, aby se aplikace pokusila dávkové zprávy zvýšit propustnost. Informace o tom, jak používat knihovnu Qpid Proton v tomto a dalších prostředích a na platformách, pro které jsou k dispozici vazby (v současné době Perl, PHP, Python a Ruby), najdete na [stránce Qpid AMQP Messenger.](https://qpid.apache.org/proton/messenger.html)
 
-Spusťte aplikaci, aby odesílala zprávy do centra událostí. 
+Spusťte aplikaci a odesílejte zprávy do centra událostí. 
 
 Blahopřejeme! Nyní jste odeslali zprávy do centra událostí.
 

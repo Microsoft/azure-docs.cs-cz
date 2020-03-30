@@ -1,6 +1,6 @@
 ---
-title: Pro interní směrování pro koncový bod příchozího přenosu dat použít privátní IP adresu
-description: Tento článek poskytuje informace o tom, jak používat privátní IP adresy pro interní směrování a vystavit koncový bod příchozího přenosu v clusteru do zbytku virtuální sítě.
+title: Použití privátní IP adresy pro interní směrování pro koncový bod příchozího přenosu dat
+description: Tento článek obsahuje informace o tom, jak používat privátní IP adresy pro interní směrování a tedy vystavení koncového bodu příchozího přenosu dat v rámci clusteru zbytku virtuální sítě.
 services: application-gateway
 author: caya
 ms.service: application-gateway
@@ -8,30 +8,30 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 570f28ce559ff1c1180ffaacb781b9120b1890a2
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73795497"
 ---
-# <a name="use-private-ip-for-internal-routing-for-an-ingress-endpoint"></a>Použití soukromé IP adresy pro interní směrování pro koncový bod příchozího přenosu dat 
+# <a name="use-private-ip-for-internal-routing-for-an-ingress-endpoint"></a>Použití privátní IP adresy pro interní směrování pro koncový bod příchozího přenosu dat 
 
-Tato funkce umožňuje vystavit koncový bod příchozího přenosu dat v rámci `Virtual Network` pomocí privátní IP adresy.
+Tato funkce umožňuje vystavit koncový bod `Virtual Network` příchozího přenosu dat v rámci pomocí privátní IP adresy.
 
 ## <a name="pre-requisites"></a>Požadavky  
-Application Gateway s [konfigurací privátní IP adresy](https://docs.microsoft.com/azure/application-gateway/configure-application-gateway-with-private-frontend-ip)
+Aplikační brána s [konfigurací privátní IP adresy](https://docs.microsoft.com/azure/application-gateway/configure-application-gateway-with-private-frontend-ip)
 
-Existují dva způsoby, jak řadič nakonfigurovat tak, aby používal privátní IP adresu pro příchozí přenosy,
+Existují dva způsoby, jak nakonfigurovat řadič pro použití privátní IP pro příchozí přenos dat,
 
-## <a name="assign-to-a-particular-ingress"></a>Přiřadit ke konkrétnímu příchozímu přenosu dat
-Pokud chcete zobrazit konkrétní příchozí přenos dat přes privátní IP adresu, použijte anotaci [`appgw.ingress.kubernetes.io/use-private-ip`](./ingress-controller-annotations.md#use-private-ip) v příchozím přenosu dat.
+## <a name="assign-to-a-particular-ingress"></a>Přiřazení k určitému příchozímu přenosu dat
+Chcete-li vystavit konkrétní příchozí přenos dat [`appgw.ingress.kubernetes.io/use-private-ip`](./ingress-controller-annotations.md#use-private-ip) přes privátní IP, použijte poznámky v příchozím přenosu dat.
 
 ### <a name="usage"></a>Využití
 ```yaml
 appgw.ingress.kubernetes.io/use-private-ip: "true"
 ```
 
-Pro aplikační brány bez privátních IP adres jsou příchozí přenosy s poznámkou `appgw.ingress.kubernetes.io/use-private-ip: "true"` budou ignorovány. Tato akce bude uvedena v protokolu událostí příchozího přenosu dat a AGIC pod.
+Pro aplikační brány bez privátní IP adresy `appgw.ingress.kubernetes.io/use-private-ip: "true"` ingresses s notated s budou ignorovány. To bude uvedeno v příchozím přenosu dat události a AGIC pod protokolu.
 
 * Chyba, jak je uvedeno v události příchozího přenosu dat
 
@@ -51,7 +51,7 @@ Pro aplikační brány bez privátních IP adres jsou příchozí přenosy s poz
 
 
 ## <a name="assign-globally"></a>Přiřadit globálně
-V případě požadavku je nutné omezit všechny příchozí přenosy na zpřístupnění přes soukromou IP adresu, a to pomocí `appgw.usePrivateIP: true` v `helm` config.
+V případě, že požadavek je omezit všechny příchozí být `appgw.usePrivateIP: true` `helm` vystaveny přes soukromé IP, použití v config.
 
 ### <a name="usage"></a>Využití
 ```yaml
@@ -62,8 +62,8 @@ appgw:
     usePrivateIP: true
 ```
 
-Při konfiguraci naslouchacího procesu front-endu na Application Gateway bude adaptér příchozího přenosu dat filtrovat konfiguraci IP adres pro privátní IP adresu.
-AGIC se bude tísňový a selhat, pokud `usePrivateIP: true` a není přiřazená žádná privátní IP adresa.
+To způsobí, že řadič příchozího přenosu dat filtruje konfigurace IP adres pro privátní IP adresu při konfiguraci front-endových posluchačů v bráně aplikace.
+AGIC bude panika `usePrivateIP: true` a selhání, pokud a není přiřazena žádná soukromá IP adresa.
 
 > [!NOTE]
-> SKU Application Gateway v2 vyžaduje veřejnou IP adresu. Pokud vyžadujete, Application Gateway být privátní, připojte [`Network Security Group`](https://docs.microsoft.com/azure/virtual-network/security-overview) k podsíti Application Gateway, abyste omezili provoz.
+> Aplikační brána v2 Skladová položka vyžaduje veřejnou IP adresu. Pokud požadujete, aby byla aplikační [`Network Security Group`](https://docs.microsoft.com/azure/virtual-network/security-overview) brána soukromá, připojte k podsíti aplikační brány a zamezte provozu.

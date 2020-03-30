@@ -3,83 +3,83 @@ title: Nejčastější dotazy týkající se Azure Dev Spaces
 services: azure-dev-spaces
 ms.date: 01/28/2020
 ms.topic: conceptual
-description: Vyhledejte odpovědi na některé běžné otázky týkající se Azure Dev Spaces
-keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
-ms.openlocfilehash: 7439af9c5f936d309df655ca6fa301c39fa3f9ec
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+description: Najděte odpovědi na některé běžné otázky týkající se Azure Dev Spaces
+keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery, Helm, síť služeb, směrování sítě služeb, kubectl, k8s '
+ms.openlocfilehash: e7b4620faa01aa9f6d46c34bafb1c623c338beb7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79117795"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240502"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Nejčastější dotazy týkající se Azure Dev Spaces
 
-Tato adresa obsahuje nejčastější dotazy týkající se Azure Dev Spaces.
+To řeší nejčastější dotazy týkající se Azure Dev Spaces.
 
 ## <a name="which-azure-regions-currently-provide-azure-dev-spaces"></a>Které oblasti Azure aktuálně poskytují Azure Dev Spaces?
 
-Úplný seznam dostupných oblastí najdete v části [podporované oblasti][supported-regions] .
+Úplný seznam dostupných oblastí najdete v [části Podporované oblasti.][supported-regions]
 
-## <a name="can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region"></a>Můžu migrovat AKS svůj cluster s Azure Dev Spaces do jiné oblasti?
+## <a name="can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region"></a>Můžu migrovat svůj cluster AKS pomocí Azure Dev Spaces do jiné oblasti?
 
-Ano, pokud chcete přesunout cluster AKS s Azure Dev Spaces do jiné [podporované oblasti][supported-regions], doporučujeme vytvořit nový cluster v jiné oblasti a pak nainstalovat a nakonfigurovat Azure dev Spaces a nasadit své prostředky a aplikace do nového clusteru. Další informace o migraci AKS najdete v tématu [migrace do služby Azure Kubernetes Service (AKS)][aks-migration].
+Ano, pokud chcete přesunout cluster AKS s Azure Dev Spaces do jiné [podporované oblasti][supported-regions], doporučujeme vytvořit nový cluster v jiné oblasti a pak nainstalovat a nakonfigurovat Azure Dev Spaces a nasadit prostředky a aplikace do nového clusteru. Další informace o migraci AKS najdete v [tématu migrace do služby Azure Kubernetes Service (AKS).][aks-migration]
 
-## <a name="can-i-use-azure-dev-spaces-with-existing-dockerfiles-or-helm-charts"></a>Můžu použít Azure Dev Spaces se stávajícími grafy fázemi nebo Helm?
+## <a name="can-i-use-azure-dev-spaces-with-existing-dockerfiles-or-helm-charts"></a>Můžu používat Azure Dev Spaces s existujícími dockerovými soubory nebo grafy helmu?
 
-Ano, pokud projekt již obsahuje souboru Dockerfile nebo Helm, můžete tyto soubory použít s Azure Dev Spaces. Při spuštění `azds prep`použijte parametr `--chart` a určete umístění grafu. Azure Dev Spaces bude stále generovat soubor *azds. yaml* a *souboru Dockerfile. vývoj* , ale nenahradí ani nezmění existující souboru Dockerfile nebo graf Helm. Může být nutné upravit *azds. yaml* a *souboru Dockerfile. vývoj* souborů, aby vše správně fungovalo se stávající aplikací při spuštění `azds up`.
+Ano, pokud váš projekt už má Dockerfile nebo Helm grafu, můžete použít tyto soubory s Azure Dev Spaces. Při spuštění `azds prep`použijte `--chart` parametr a určete umístění grafu. Azure Dev Spaces bude stále generovat soubor *azds.yaml* a *Dockerfile.develop,* ale nenahradí ani neupraví existující Dockerfile nebo graf Helm. Možná budete muset upravit *azds.yaml* a *Dockerfile.develop* soubory, aby vše fungovalo `azds up`správně s vaší stávající aplikace při spuštění .
 
-Při použití vlastního grafu souboru Dockerfile nebo Helm existují tato omezení:
-* Pokud používáte jenom jeden souboru Dockerfile, musí obsahovat všechno, co potřebujete k povolení vývojářských scénářů, jako je například jazyková sada SDK, nikoli jenom modul runtime. Pokud používáte samostatné souboru Dockerfile pro Azure Dev Spaces, jako je například souboru Dockerfile. vývoj, je nutné do tohoto souboru Dockerfile zahrnout všechno, co potřebujete k povolení vývojářských scénářů.
-* Váš graf Helm musí podporovat předání části nebo celé značky obrázku jako hodnoty z *Values. yaml*.
-* Pokud upravujete cokoli pomocí příchozího přenosu dat, můžete graf Helm také aktualizovat tak, aby používal řešení příchozího přenosu dat, které poskytuje Azure Dev Spaces.
-* Pokud chcete použít [Možnosti směrování poskytované Azure dev Spaces][dev-spaces-routing], musí se všechny služby pro jednotlivé projekty vejít do jednoho oboru názvů Kubernetes a musí být nasazeny s jednoduchým pojmenování, například *služba-a*. V standardních grafech Helm se tato aktualizace názvů dá udělat zadáním hodnoty vlastnosti *fullnameOverride* .
+Při použití vlastního grafu Dockerfile nebo Helm existují následující omezení:
+* Pokud používáte pouze jeden soubor Dockerfile, musí obsahovat vše, co potřebujete k povolení scénářů vývoje, jako je například jazyk SDK není jen runtime. Pokud používáte samostatný soubor Dockerfile pro Azure Dev Spaces, jako je například Dockerfile.develop, vše, co potřebujete k povolení scénářů vývoje, musí být zahrnuto do tohoto souboru Dockerfile.
+* Helm graf musí podporovat předávání části nebo celé značky obrázku jako hodnotu z *values.yaml*.
+* Pokud něco upravujete pomocí příchozího přenosu dat, můžete také aktualizovat helmový graf tak, aby používal řešení příchozího přenosu dat poskytované azure dev spaces.
+* Pokud chcete použít [možnosti směrování poskytované Azure Dev Spaces][dev-spaces-routing], všechny služby pro jednotlivé projekty musí být vejde do jednoho oboru názvů Kubernetes a musí být nasazen s jednoduchým pojmenováním, například *service-a*. Ve standardních grafech helmu lze tuto aktualizaci pojmenování provést zadáním hodnoty vlastnosti *fullnameOverride.*
 
-Pokud chcete porovnat vlastní souboru Dockerfile nebo Helm graf s existující verzí, která funguje s Azure Dev Spaces, zkontrolujte soubory vygenerované v [rychlém][quickstart-cli]startu.
+Chcete-li porovnat vlastní graf Dockerfile nebo Helm s existující verzí, která pracuje s Azure Dev Spaces, zkontrolujte soubory generované v [rychlém startu][quickstart-cli].
 
 
-## <a name="can-i-modify-the-files-generated-by-azure-dev-spaces"></a>Můžu měnit soubory generované Azure Dev Spaces?
+## <a name="can-i-modify-the-files-generated-by-azure-dev-spaces"></a>Můžu upravit soubory generované Azure Dev Spaces?
 
-Ano, můžete upravit soubor *azds. yaml* , souboru Dockerfile a Helm, který [vygeneroval Azure dev Spaces při přípravě projektu][dev-spaces-prep]. Změna těchto souborů mění způsob sestavení a spuštění projektu.
+Ano, můžete upravit soubor *azds.yaml,* Dockerfile a Helm graf [generovaný Azure Dev Spaces při přípravě projektu][dev-spaces-prep]. Úprava těchto souborů změní způsob, jakým je projekt sestaven a spuštěn.
 
-## <a name="can-i-use-azure-dev-spaces-without-a-public-ip-address"></a>Můžu Azure Dev Spaces použít bez veřejné IP adresy?
+## <a name="can-i-use-azure-dev-spaces-without-a-public-ip-address"></a>Můžu používat Azure Dev Spaces bez veřejné IP adresy?
 
-Ne, nemůžete zřídit Azure Dev Spaces v clusteru AKS bez veřejné IP adresy. [Azure dev Spaces pro směrování vyžaduje][dev-spaces-routing]veřejnou IP adresu.
+Ne, azure dev spaces nelze zřídit v clusteru AKS bez veřejné IP adresy. Azure [Dev Spaces potřebuje pro směrování veřejnou][dev-spaces-routing]IP adresu.
 
-## <a name="can-i-use-my-own-ingress-with-azure-dev-spaces"></a>Můžu použít vlastní příchozí přenosy s Azure Dev Spaces?
+## <a name="can-i-use-my-own-ingress-with-azure-dev-spaces"></a>Můžu použít vlastní příchozí přenos dat s Azure Dev Spaces?
 
-Ano, můžete nakonfigurovat příchozí příchozí přenos dat na straně Azure Dev Spaces vytvoření. Můžete například použít [traefik][ingress-traefik] nebo [Nginx][ingress-nginx].
+Ano, můžete nakonfigurovat vlastní příchozí přenos dat spolu s příchozí azure dev spaces vytvoří. Můžete například použít [traefik][ingress-traefik] nebo [NGINX][ingress-nginx].
 
-## <a name="can-i-use-https-with-azure-dev-spaces"></a>Můžu použít HTTPS s Azure Dev Spaces?
+## <a name="can-i-use-https-with-azure-dev-spaces"></a>Můžu používat protokol HTTPS s Azure Dev Spaces?
 
-Ano, můžete nakonfigurovat příchozí příchozí přenosy pomocí protokolu HTTPS pomocí [traefik][ingress-https-traefik] nebo [Nginx][ingress-https-nginx].
+Ano, můžete nakonfigurovat vlastní příchozí přenos pomocí protokolu HTTPS pomocí [traefik][ingress-https-traefik] nebo [NGINX][ingress-https-nginx].
 
-## <a name="can-i-use-azure-dev-spaces-on-a-cluster-that-uses-cni-rather-than-kubenet"></a>Můžu použít Azure Dev Spaces na clusteru, který používá CNI místo kubenet? 
+## <a name="can-i-use-azure-dev-spaces-on-a-cluster-that-uses-cni-rather-than-kubenet"></a>Můžu použít Azure Dev Spaces v clusteru, který používá CNI místo kubenet? 
 
-Ano, Azure Dev Spaces můžete použít v clusteru AKS, který používá CNI pro práci v síti. Můžete například použít Azure Dev Spaces v clusteru AKS s [existujícími kontejnery Windows][windows-containers], které používají CNI pro práci v síti. Další informace o používání CNI pro sítě s Azure Dev Spaces [najdete tady](configure-networking.md#using-azure-cni).
+Ano, azure dev spaces můžete použít v clusteru AKS, který používá CNI pro vytváření sítí. Můžete například použít Azure Dev Spaces v clusteru AKS s [existujícími kontejnery Windows][windows-containers], který používá CNI pro vytváření sítí. Další informace o použití CNI pro vytváření sítí s Azure Dev Spaces jsou k dispozici [zde](configure-networking.md#using-azure-cni).
 
-## <a name="can-i-use-azure-dev-spaces-with-windows-containers"></a>Můžu Azure Dev Spaces použít s kontejnery Windows?
+## <a name="can-i-use-azure-dev-spaces-with-windows-containers"></a>Můžu s kontejnery windows používat Azure Dev Spaces?
 
-V současné době je Azure Dev Spaces určena ke spouštění pouze v systémech Linux a pouze na uzlech. můžete však spustit Azure Dev Spaces v clusteru AKS s [existujícími kontejnery Windows][windows-containers].
+V současné době azure dev spaces je určen ke spuštění pouze na linuxových podech a uzly, ale můžete spustit Azure Dev Spaces v clusteru AKS s [existující kontejnery Windows][windows-containers].
 
-## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-api-server-authorized-ip-address-ranges-enabled"></a>Můžu použít Azure Dev Spaces u clusterů AKS s povoleným rozsahem IP adres serveru API?
+## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-api-server-authorized-ip-address-ranges-enabled"></a>Můžu v clusterech AKS používat Azure Dev Spaces s povolenými rozsahy IP adres na serveru API?
 
-Ano, můžete použít Azure Dev Spaces u clusterů AKS s povolenými [rozsahy IP adres serveru API][aks-auth-range] . Další informace o používání clusterů AKS s povolenými rozsahy IP adres serveru API s povoleným Azure Dev Spaces je k dispozici [zde](configure-networking.md#using-api-server-authorized-ip-ranges).
+Ano, Azure Dev Spaces můžete použít v clusterech AKS s [povolenými rozsahy IP adres na serveru API.][aks-auth-range] Další informace o používání clusterů AKS s rozsahy IP adres autorizovanými servery API, které jsou povoleny v Azure Dev Spaces, jsou k dispozici [zde](configure-networking.md#using-api-server-authorized-ip-ranges).
 
-## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-restricted-egress-traffic-for-cluster-nodes"></a>Můžu použít Azure Dev Spaces u clusterů AKS s omezeným provozem odchozích dat pro uzly clusteru?
+## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-restricted-egress-traffic-for-cluster-nodes"></a>Můžu použít Azure Dev Spaces v clusterech AKS s omezeným přenosem odchozího přenosu pro uzly clusteru?
 
-Ano, v případě, že jsou povolené správné plně kvalifikované názvy domén, můžete použít Azure Dev Spaces v clusterech AKS s [omezeným přenosem dat pro uzly clusteru][aks-restrict-egress-traffic] povolené. Další informace o použití AKS clusterů s omezeným přenosem dat pro uzly clusteru s povoleným Azure Dev Spaces je k dispozici [zde](configure-networking.md#ingress-and-egress-network-traffic-requirements).
+Ano, azure dev spaces v clusterech AKS s [omezeným přenosem odchozího přenosu pro uzly clusteru][aks-restrict-egress-traffic] povolené po povolení správné sítě souborů se kvofací. Další informace o používání clusterů AKS s omezeným přenosem odchozího přenosu pro uzly clusteru povolené pomocí Azure Dev Spaces jsou k dispozici [zde](configure-networking.md#ingress-and-egress-network-traffic-requirements).
 
-## <a name="can-i-use-azure-dev-spaces-on-rbac-enabled-aks-clusters"></a>Můžu použít Azure Dev Spaces u clusterů AKS s podporou RBAC?
+## <a name="can-i-use-azure-dev-spaces-on-rbac-enabled-aks-clusters"></a>Můžu používat Azure Dev Spaces v clusterech AKS s podporou RBAC?
 
-Ano, můžete použít Azure Dev Spaces v clusterech AKS s povolenou RBAC nebo bez ní.
+Ano, azure dev spaces v clusterech AKS s povoleným RBAC nebo bez něj.
 
-## <a name="what-happens-when-i-enable-ingress-for-project-in-visual-studio"></a>Co se stane, když povolím příchozí přenos dat pro projekt v aplikaci Visual Studio?
+## <a name="what-happens-when-i-enable-ingress-for-project-in-visual-studio"></a>Co se stane, když povolím příchozí přenos dat pro projekt v sadě Visual Studio?
 
-Při použití sady Visual Studio k přípravě projektu máte možnost Povolit pro vaši službu příchozí přenos dat. Když příchozí připojení povolíte, vytvoří se pro přístup ke službě při spuštění v clusteru AKS veřejný koncový bod, který je nepovinný. Pokud příchozí příchozí přenosy nepovolíte, bude služba dostupná jenom z vašeho clusteru AKS.
+Při použití sady Visual Studio k přípravě projektu máte možnost povolení příchozího přenosu dat pro vaši službu. Povolení příchozího přenosu dat vytvoří veřejný koncový bod pro přístup ke službě při spuštění v clusteru AKS, což je volitelné. Pokud nepovolíte příchozí přenos dat, vaše služba je přístupná pouze z clusteru AKS.
 
-## <a name="can-i-use-pod-managed-identities-with-azure-dev-spaces"></a>Můžu použít spravované identity pod Azure Dev Spaces?
+## <a name="can-i-use-pod-managed-identities-with-azure-dev-spaces"></a>Můžu používat spravované identity podu s Azure Dev Spaces?
 
-V současné době Azure Dev Spaces nepodporuje použití [spravované identity pod spravovanými identitami][aks-pod-managed-id] v clusterech AKS s povoleným Azure dev Spaces. Pokud máte nainstalované spravované identity a chcete ji odinstalovat, můžete najít další podrobnosti v [poznámkách k odinstalaci][aks-pod-managed-id-uninstall].
+Azure Dev Spaces v současné době nepodporuje použití [pod spravované identity][aks-pod-managed-id] v clusterech AKS s povolenou Azure Dev Spaces. Pokud máte nainstalovány spravované identity pod a chcete je odinstalovat, najdete další podrobnosti v poznámkách k [odinstalaci][aks-pod-managed-id-uninstall].
 
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled
@@ -89,8 +89,8 @@ V současné době Azure Dev Spaces nepodporuje použití [spravované identity 
 [aks-pod-managed-id]: ../aks/developer-best-practices-pod-security.md#use-pod-managed-identities
 [aks-pod-managed-id-uninstall]: https://github.com/Azure/aad-pod-identity#uninstall-notes
 [aks-restrict-egress-traffic]: ../aks/limit-egress-traffic.md
-[dev-spaces-prep]: how-dev-spaces-works.md#prepare-your-code
-[dev-spaces-routing]: how-dev-spaces-works.md#how-routing-works
+[dev-spaces-prep]: how-dev-spaces-works-prep.md
+[dev-spaces-routing]: how-dev-spaces-works-routing.md#how-routing-works
 [ingress-nginx]: how-to/ingress-https-nginx.md#configure-a-custom-nginx-ingress-controller
 [ingress-traefik]: how-to/ingress-https-traefik.md#configure-a-custom-traefik-ingress-controller
 [ingress-https-nginx]: how-to/ingress-https-nginx.md#configure-the-nginx-ingress-controller-to-use-https

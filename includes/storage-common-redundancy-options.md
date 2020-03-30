@@ -9,17 +9,17 @@ ms.date: 01/14/2020
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 73c2b742ede21a4e86d717d994f8ebc4f16389c9
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77157210"
 ---
-Mezi možnosti redundance účtu úložiště patří:
+Možnosti redundance pro účet úložiště zahrnují:
 
-* Místně redundantní úložiště (LRS): jednoduchá strategie redundance s nízkými náklady. Data se zkopírují synchronně třikrát v rámci primární oblasti.
-* Zóna – redundantní úložiště (ZRS): redundance pro scénáře vyžadující vysokou dostupnost. Data se zkopírují synchronně v rámci tří zón dostupnosti Azure v primární oblasti.
-* Geograficky redundantní úložiště (GRS): meziregionální redundance pro ochranu před místními výpadky. Data se zkopírují synchronně třikrát v primární oblasti a zkopírují se asynchronně do sekundární oblasti. Pro přístup pro čtení dat v sekundární oblasti povolte geograficky redundantní úložiště s přístupem pro čtení (RA-GRS).
-* Geo-Zone – redundantní úložiště (GZRS) (Preview): redundance pro scénáře vyžadující vysokou dostupnost a maximální odolnost. Data se zkopírují synchronně v rámci tří zón dostupnosti Azure v primární oblasti a pak se asynchronně zkopírovaly do sekundární oblasti. Pro přístup pro čtení dat v sekundární oblasti povolte přístup pro čtení Geo-Zone-redundantní úložiště (RA-GZRS).
+* Místně redundantní úložiště (LRS): Jednoduchá, nízkonákladová redundantní strategie. Data jsou zkopírována synchronně třikrát v rámci primární oblasti.
+* Zónově redundantní úložiště (ZRS): Redundance pro scénáře vyžadující vysokou dostupnost. Data se synchronně kopírují ve třech zónách dostupnosti Azure v primární oblasti.
+* Geograficky redundantní úložiště (GRS): Meziregionální redundance na ochranu před regionálními výpadky. Data jsou zkopírována synchronně třikrát v primární oblasti a pak asynchronně zkopírována do sekundární oblasti. Pro přístup pro čtení dat v sekundární oblasti povolte geograficky redundantní úložiště pro čtení (RA-GRS).
+* Geograficky redundantní úložiště (GZRS) (preview): Redundance pro scénáře vyžadující vysokou dostupnost a maximální odolnost. Data se synchronně kopírují přes tři zóny dostupnosti Azure v primární oblasti a pak se asynchronně zkopírují do sekundární oblasti. Pro přístup ke čtení dat v sekundární oblasti povolte geograficky redundantní úložiště pro čtení geograficky zónově redundantní (RA-GZRS).
 
-Další informace o možnostech redundance v Azure Storage najdete v tématu [Azure Storage redundance](../articles/storage/common/storage-redundancy.md).
+Další informace o možnostech redundance ve službě Azure Storage najdete v [tématu Redundance Azure Storage](../articles/storage/common/storage-redundancy.md).

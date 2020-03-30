@@ -1,6 +1,6 @@
 ---
-title: Kódy chyb pro instance virtuálních počítačů a sad škálování na místě Azure
-description: Přečtěte si o chybových kódech, které by mohly být zobrazeny při použití virtuálních počítačů s přímým odkazem a instancí sad.
+title: Kódy chyb pro virtuální počítače Azure Spot a instance škálovacích sad
+description: Přečtěte si o kódech chyb, které byste mohli vidět při použití virtuálních virtuálních virtuálních měn spotů a instancí škálovací sady.
 author: cynthn
 manager: gwallace
 ms.service: virtual-machines
@@ -9,41 +9,41 @@ ms.topic: article
 ms.date: 11/20/2019
 ms.author: cynthn
 ms.openlocfilehash: 1863c510967dcf80044d768aee1a37643a068ce4
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77115853"
 ---
-# <a name="preview-error-messages-for-spot-vms-and-scale-sets"></a>Preview: chybové zprávy pro virtuální počítače s přímým zobrazením a sady škálování
+# <a name="preview-error-messages-for-spot-vms-and-scale-sets"></a>Náhled: Chybové zprávy pro virtuální aplikace Spot a škálovací sady
 
 
 > [!IMPORTANT]
-> Virtuální počítače a služba Virtual Machine Scale Sets jsou momentálně ve verzi Public Preview.
+> Virtuální počítače spot a škálovací sady virtuálních strojů jsou aktuálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
-Tady jsou některé možné kódy chyb, které byste mohli obdržet při použití virtuálních počítačů a sad škálování na místě.
+Tady jsou některé možné kódy chyb, které můžete obdržet při použití virtuálních virtuálních měn spotů a škálovacích sad.
 
 
 | Klíč | Zpráva | Popis |
 |-----|---------|-------------|
-| SkuNotAvailable | Požadovaná úroveň prostředku\<\>prostředků není v tuto chvíli k dispozici v umístění\<umístění\>pro předplatné\<subscriptionID\>. Zkuste prosím jinou vrstvu nebo ji nasaďte do jiného umístění. | V tomto umístění není k dispozici dostatek úložné kapacity Azure k vytvoření virtuálního počítače nebo instance sady škálování. |
-| EvictionPolicyCanBeSetOnlyOnAzureSpotVirtualMachines  |  Zásada vyřazení se dá nastavit jenom v Azure na místě Virtual Machines. | Tento virtuální počítač není virtuálním počítačem s přímým odkazem, takže nemůžete nastavit zásady vyřazení. |
-| AzureSpotVMNotSupportedInAvailabilitySet  |  Virtuální počítač se službou Azure na místě není v sadě dostupnosti podporovaný. | Musíte zvolit, že chcete použít virtuální počítač nebo virtuální počítač ve skupině dostupnosti, ale nemůžete použít obojí. |
-| AzureSpotFeatureNotEnabledForSubscription  |  Předplatné není pro funkci Azure bodových funkcí zapnuté. | Musíte mít předplatné, které podporuje virtuální počítače na místě. |
-| VMPriorityCannotBeApplied  |  Zadanou hodnotu priority{0}nejde použít u virtuálního počítače{1}, protože při vytváření virtuálního počítače se nezadala žádná priorita. | Při vytváření virtuálního počítače musíte zadat prioritu. |
-| SpotPriceGreaterThanProvidedMaxPrice  |  Operaci '{0}' nelze provést, protože zadaná maximální cena '{1} USD ' je nižší než aktuální cena za cenu '{2} USD ' pro velikost virtuálního počítače Azure "{3}". | Vyberte vyšší maximální cenu. Další informace najdete v tématu informace o cenách pro [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) nebo [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/).|
-| MaxPriceValueInvalid  |  Hodnota maximální ceny je neplatná. Jediné podporované hodnoty pro max Price jsou-1 nebo desetinné číslo větší než nula. Maximální hodnota ceny-1 znamená, že virtuální počítač se službou Azure na místě nebude z důvodu cen vyřazen. | Zadejte platnou Maxu cenu. Další informace najdete v tématu ceny pro [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) nebo [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). |
-| MaxPriceChangeNotAllowedForAllocatedVMs | Pokud je virtuální počítač{0}aktuálně přidělený, není povolená Změna maximální ceny. Navraťte se prosím a zkuste to znovu. | Stop\Deallocate virtuální počítač, abyste mohli změnit maximální cenu. |
-| MaxPriceChangeNotAllowed | Maximální změna ceny není povolená. | Pro tento virtuální počítač nemůžete změnit maximální cenu. |
-| AzureSpotIsNotSupportedForThisAPIVersion  |  Pro tuto verzi rozhraní API není podporováno Azure spot. | Verze rozhraní API musí být 2019-03-01. |
-| AzureSpotIsNotSupportedForThisVMSize  |  Pro tuto velikost virtuálního počítače se nepodporují Azure spot {0}. | Vyberte jinou velikost virtuálního počítače. Další informace najdete v tématu [přímá Virtual Machines](./linux/spot-vms.md). |
-| MaxPriceIsSupportedOnlyForAzureSpotVirtualMachines  |  Maximální cena je podporovaná jenom pro Azure spot Virtual Machines. | Další informace najdete v tématu [přímá Virtual Machines](./linux/spot-vms.md). |
-| MoveResourcesWithAzureSpotVMNotSupported  |  Požadavek na přesunutí prostředků obsahuje virtuální počítač se službou Azure na místě. To se v tuto chvíli nepodporuje. Podívejte se prosím na podrobnosti o chybách pro ID virtuálních počítačů. | Nemůžete přesunout virtuální počítače na místě. |
-| MoveResourcesWithAzureSpotVmssNotSupported  |  Požadavek na přesunutí prostředků obsahuje sadu škálování služby Virtual Machine na platformě Azure. To se v tuto chvíli nepodporuje. Podívejte se prosím na podrobnosti o chybách pro ID sady škálování virtuálních počítačů. | Nemůžete přesunout instance sady přímých škálování. |
-| EphemeralOSDisksNotSupportedForSpotVMs | Dočasné disky s operačním systémem se pro virtuální počítače s přímým odkazem nepodporují. | Musíte používat běžný disk s operačním systémem pro virtuální počítač s přímým použitím. |
-| AzureSpotVMNotSupportedInVmssWithVMOrchestrationMode | Virtuální počítač se službou Azure na úrovni škálování virtuálního počítače se nepodporuje v režimu orchestrace virtuálních počítačů. | Nastavte režim orchestrace na Virtual Machine Scale set, aby bylo možné použít instance bodového řízení. |
+| SkuNotAvailable | Požadovaná úroveň pro\<\>prostředek " prostředek " není\<\>momentálně k\<dispozici v\>umístění lokace pro id předplatného . Zkuste jinou úroveň nebo nasazení do jiného umístění. | V tomto umístění není dostatečná kapacita Azure Spot k vytvoření instance virtuálního počítače nebo škálovací sady. |
+| EvictionPolicyCanBeSetOnlyOnAzureSpotVirtualMachines  |  Zásady vyřazení lze nastavit pouze na virtuálních počítačích Azure Spot. | Tento virtuální počítač není virtuální počítač s bodem, takže nelze nastavit zásady vyřazení. |
+| AzureSpotVMNotSupportedInAvailabilitySet  |  Virtuální počítač Azure Spot není v sadě dostupnosti podporován. | Musíte se rozhodnout použít virtuální virtuální hod spot nebo použít virtuální hovado v sadě dostupnosti, nemůžete vybrat obojí. |
+| AzureSpotFeaturenotEnabledforsubscription  |  Předplatné není povoleno s funkcí Azure Spot. | Musíte mít předplatné, které podporuje virtuální chod spotů. |
+| VMPriority nelze použít.  |  Zadanou hodnotu{0}priority " nelze použít{1}pro virtuální počítač , protože při vytvoření virtuálního počítače nebyla zadána žádná priorita. | Musíte určit prioritu při vytvoření virtuálního virtuálního soudu. |
+| SpotPriceGreaterThanProvidedMaxPrice  |  Operaci " "{0}nelze provést, protože{1} zadaný maximální cena ' USD{2} ' je nižší než{3}aktuální spotová cena ' USD ' pro velikost virtuálního počítače Azure Spot ' '. | Vyberte vyšší maximální cenu. Další informace naleznete v informacích o cenách pro [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) nebo [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/).|
+| MaxPriceValueNe  |  Neplatná maximální cena. Jediné podporované hodnoty pro maximální cenu jsou -1 nebo desetinné číslo větší než nula. Maximální hodnota ceny -1 označuje, že virtuální počítač Azure Spot nebude vyřazen z důvodů ceny. | Zadejte platnou maximální cenu. Další informace naleznete v tématu ceny pro [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) nebo [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). |
+| MaxPriceChangeNotAllowedForAllocatedVMs | Maximální změna ceny není povolena,{0}pokud je aktuálně přidělen virtuální virtuální město . Navrátit a akci opakujte. | Stop\Narozdělit virtuální ho disponizuje, abyste mohli změnit maximální cenu. |
+| MaxPriceChangeNotAllowed | Maximální změna ceny není povolena. | Maximální cenu pro tento virtuální virtuální soud nelze změnit. |
+| AzureSpotisnotsupportedForThisAPIversion  |  Azure Spot není pro tuto verzi rozhraní API podporován. | Verze rozhraní API musí být 2019-03-01. |
+| AzureSpotisnot supportedforThisVMsize  |  Azure Spot není pro tuto {0}velikost virtuálního počítače podporovaný. | Vyberte jinou velikost virtuálního počítače. Další informace naleznete v tématu [Spot Virtual Machines](./linux/spot-vms.md). |
+| MaxPriceissupportedOnlyForAzureSpotVirtualMachines MaxpriceissupportedOnlyForAzureSpotVirtualMachines MaxpriceissupportedOnlyForAzureSpotVirtualMachines Maxprice  |  Maximální cena je podporovaná jenom pro virtuální počítače Azure Spot. | Další informace naleznete v tématu [Spot Virtual Machines](./linux/spot-vms.md). |
+| MoveResourcesWithAzureSpotVMNotSupported  |  Požadavek přesunout prostředky obsahuje virtuální počítač Azure Spot. Tato tato podpora není v současné době podporována. Zkontrolujte podrobnosti o chybě pro ID virtuálních strojů. | Virtuální virtuální aplikace nelze přesunout. |
+| MoveResourcesWithAzureSpotVmssNotSupported  |  Požadavek přesunout prostředky obsahuje škálovací sadu virtuálních strojů Azure Spot. Tato tato podpora není v současné době podporována. Zkontrolujte podrobnosti o chybě pro ID škálovací sady virtuálních strojů. | Instance sady škálovacích stupňů nelze přesunout. |
+| EfmeralOSDisksNotSupportedForSpotVMs | Dočasné disky operačního systému nejsou podporovány pro virtuální počítače Spot. | Musíte používat běžný disk operačního systému pro virtuální počítač Spot. |
+| AzureSpotVMNotSupportedInVMssWithVMOrchestrationMode | Virtuální počítač Azure Spot není v režimu orchestrace virtuálních počítačů podporován v škálovací sadě virtuálních strojů. | Nastavte režim orchestrace na škálovací sadu virtuálních strojů, abyste mohli používat instance Spot. |
 
 
-**Další kroky** Další informace najdete v tématu [přímá Virtual Machines](./linux/spot-vms.md).
+**Další kroky** Další informace naleznete v [tématu spot virtuální počítače](./linux/spot-vms.md).

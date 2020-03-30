@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/30/2019
 ms.author: daveba
 ms.openlocfilehash: 5e430b16bbdebf97c1499d997fe2c30771270987
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73522552"
 ---
-Použití této funkce vyžaduje licenci Azure AD Premium P2. Správnou licenci pro vaše požadavky najdete v tématu [porovnání všeobecně dostupných funkcí edice Free, Basic a Premium](https://azure.microsoft.com/pricing/details/active-directory/).
+Použití této funkce vyžaduje licenci Azure AD Premium P2. Pokud chcete najít správnou licenci pro vaše požadavky, přečtěte si téma [Porovnání obecně dostupných funkcí edic Free, Basic a Premium](https://azure.microsoft.com/pricing/details/active-directory/).

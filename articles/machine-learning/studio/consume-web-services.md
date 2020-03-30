@@ -1,7 +1,7 @@
 ---
-title: Spotřebovat webovou službu
+title: Využití webové služby
 titleSuffix: ML Studio (classic) - Azure
-description: Po nasazení služby Machine Learning z Azure Machine Learning Studio (Classic) je možné webovou službu RESTFul spotřebovat buď jako službu požadavků a odpovědí v reálném čase, nebo jako na službu spuštění služby Batch.
+description: Jakmile se služba strojového učení nasadí ze služby Azure Machine Learning Studio (klasické), webová služba RESTFul se dá využívat buď jako službu odezvy na základě požadavků v reálném čase, nebo jako službu dávkového spuštění.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,104 +11,104 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 06/02/2017
 ms.openlocfilehash: de395f7167f0ab7d7c6429c14d5efce46831b576
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79218241"
 ---
-# <a name="how-to-consume-an-azure-machine-learning-studio-classic-web-service"></a>Jak využívat webovou službu Azure Machine Learning Studio (Classic)
+# <a name="how-to-consume-an-azure-machine-learning-studio-classic-web-service"></a>Jak využívat webovou službu Azure Machine Learning Studio (klasická)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Po nasazení prediktivního modelu Azure Machine Learning Studio (Classic) jako webové služby můžete použít REST API k odeslání dat IT a získání předpovědi. Můžete odeslat data v reálném čase nebo v dávkovém režimu.
+Jakmile nasadíte prediktivní model Azure Machine Learning Studio (klasický) jako webovou službu, můžete použít rozhraní REST API k jeho odeslání dat a získání předpovědi. Data můžete odesílat v reálném čase nebo v dávkovém režimu.
 
-Další informace o tom, jak vytvořit a nasadit webovou službu Machine Learning pomocí Machine Learning Studio (Classic), najdete tady:
+Další informace o tom, jak vytvořit a nasadit webovou službu Machine Learning pomocí Machine Learning Studio (klasika), najdete zde:
 
-* Kurz o tom, jak vytvořit experiment v Machine Learning Studio (Classic), najdete v tématu [Vytvoření prvního experimentu](create-experiment.md).
-* Podrobnosti o tom, jak nasadit webovou službu, najdete v tématu [nasazení webové služby Machine Learning](deploy-a-machine-learning-web-service.md).
-* Další informace o Machine Learning obecně najdete v [centru dokumentace Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/).
+* Návod, jak vytvořit experiment ve Studiu strojového učení (klasika), najdete v [tématu Vytvoření prvního experimentu](create-experiment.md).
+* Podrobnosti o nasazení webové služby naleznete v [tématu Deploy a Machine Learning Web service](deploy-a-machine-learning-web-service.md).
+* Další informace o strojovém učení obecně naleznete v [Centru dokumentace strojového učení](https://azure.microsoft.com/documentation/services/machine-learning/).
 
 
 
 ## <a name="overview"></a>Přehled
-Se službou Azure Machine Learning Web externí aplikace komunikuje s hodnoticí modelem Machine Learning pracovních postupů v reálném čase. Volání služby Web Microsoft Machine Learning vrací do externí aplikace predikované výsledky. Volání služby Machine Learning Web, předáním klíče rozhraní API, který je vytvořen při nasazování predikcí. Služba Web Microsoft Machine Learning je založená na REST, možnost Oblíbené architektuře programátorských projektů na webu.
+S webovou službou Azure Machine Learning komunikuje externí aplikace s modelem hodnocení pracovního postupu Machine Learning v reálném čase. Volání webové služby Machine Learning vrátí výsledky předpovědi externí aplikaci. Chcete-li volat webovou službu Machine Learning, předáte klíč rozhraní API, který se vytvoří při nasazení předpověď. Webová služba Machine Learning je založena na REST, oblíbené architektuře pro projekty webového programování.
 
-Azure Machine Learning Studio (Classic) má dva typy služeb:
+Azure Machine Learning Studio (klasické) má dva typy služeb:
 
-* Služba Request-response (RR) – nízká latence, vysoce škálovatelná služba, která poskytuje rozhraní pro bezstavové modely vytvořené a nasazené z Machine Learning Studio (Classic).
-* Služba batch Execution (BES) – asynchronní služba pro vyhodnocování dávek datových záznamů.
+* Služba odezvy na požadavky (RRS) – služba s nízkou latencí a vysokou škálovatelnou službou, která poskytuje rozhraní pro bezstavové modely vytvořené a nasazené ze studia Machine Learning Studio (klasické).
+* Služba dávkového spuštění (BES) – asynchronní služba, která získá skóre dávky pro datové záznamy.
 
-Další informace o Machine Learning webových služeb najdete v tématu [nasazení webové služby Machine Learning](deploy-a-machine-learning-web-service.md).
+Další informace o webových službách Machine Learning naleznete [v tématu Deploy a Machine Learning Web service](deploy-a-machine-learning-web-service.md).
 
-## <a name="get-an-authorization-key"></a>Získat autorizační klíč
-Při nasazení experimentu, vygenerují se klíče rozhraní API pro webovou službu. Načtení klíčů v několika umístěních.
+## <a name="get-an-authorization-key"></a>Získání autorizačního klíče
+Při nasazení experimentu jsou pro webovou službu generovány klíče rozhraní API. Klíče můžete načíst z několika umístění.
 
 ### <a name="from-the-microsoft-azure-machine-learning-web-services-portal"></a>Z portálu Microsoft Azure Machine Learning Web Services
-Přihlaste se k portálu [Microsoft Azure Machine Learning Web Services](https://services.azureml.net) .
+Přihlaste se k portálu [Microsoft Azure Machine Learning Web Services.](https://services.azureml.net)
 
-Načíst klíč rozhraní API pro službu Web Microsoft Learning nový počítač:
+Chcete-li načíst klíč rozhraní API pro novou webovou službu Machine Learning:
 
-1. Na portálu Azure Machine Learning Web Services klikněte v horní nabídce na **webové služby** .
-2. Klikněte na webovou službu, pro které chcete načíst klíč.
-3. V horní nabídce klikněte na možnost **spotřebovat**.
+1. Na portálu Azure Machine Learning Web Services klikněte na **Web Services** v horní nabídce.
+2. Klepněte na webovou službu, pro kterou chcete klíč načíst.
+3. V horní nabídce klikněte na **Konzumujte**.
 4. Zkopírujte a uložte **primární klíč**.
 
-Načíst klíč rozhraní API pro službu Web Microsoft Learning klasické počítače:
+Chcete-li načíst klíč rozhraní API pro webovou službu Classic Machine Learning:
 
-1. Na portálu Azure Machine Learning Web Services klikněte v horní nabídce na **klasické webové služby** .
-2. Klikněte na webovou službu, se kterým pracujete.
-3. Klikněte na koncový bod, pro které chcete načíst klíč.
-4. V horní nabídce klikněte na možnost **spotřebovat**.
+1. Na portálu Azure Machine Learning Web Services klikněte na **klasické webové služby** v horní nabídce.
+2. Klepněte na webovou službu, se kterou pracujete.
+3. Klikněte na koncový bod, pro který chcete klíč načíst.
+4. V horní nabídce klikněte na **Konzumujte**.
 5. Zkopírujte a uložte **primární klíč**.
 
-### <a name="classic-web-service"></a>Klasické webové služby
- Můžete také načíst klíč pro klasickou webovou službu z Machine Learning Studio (Classic).
+### <a name="classic-web-service"></a>Klasická webová služba
+ Můžete také načíst klíč pro klasické webové služby z Machine Learning Studio (classic).
 
 #### <a name="machine-learning-studio-classic"></a>Machine Learning Studio (Classic)
-1. V Machine Learning Studio (Classic) klikněte vlevo na **webové služby** .
-2. Klikněte na webovou službu. **Klíč rozhraní API** je na kartě **řídicí panel** .
+1. V Machine Learning Studio (klasické) klikněte na **WEB SERVICES** vlevo.
+2. Klepněte na webovou službu. **Klíč rozhraní API** je na kartě ŘÍDICÍ **PANEL.**
 
-## <a id="connect"></a>Připojení k webové službě Machine Learning
-Můžete připojit ke službě Machine Learning Web použitím libovolného programovacího jazyka, který podporuje HTTP požadavku a odpovědi. Můžete zobrazit příklady v C#, Pythonu a r. od stránce nápovědy služby Machine Learning Web.
+## <a name="connect-to-a-machine-learning-web-service"></a><a id="connect"></a>Připojení k webové službě Machine Learning
+K webové službě Machine Learning se můžete připojit pomocí libovolného programovacího jazyka, který podporuje požadavek a odpověď HTTP. Příklady v jazycích C#, Python a R můžete zobrazit na stránce nápovědy webové služby Machine Learning.
 
-**Machine Learning nápovědě k rozhraní API** Při nasazení webové služby se vytvoří Help Machine Learning API. Viz [kurz 3: nasazení modelu úvěrového rizika](tutorial-part3-credit-risk-deploy.md).
-Machine Learning API nápovědy obsahuje podrobnosti o predikcí webové služby.
+**Nápověda k rozhraní API pro strojové učení** Pomoc rozhraní API strojového učení se vytvoří při nasazení webové služby. Viz [kurz 3: Nasazení modelu úvěrového rizika](tutorial-part3-credit-risk-deploy.md).
+Nápověda rozhraní API strojového učení obsahuje podrobnosti o webové službě předpověď.
 
-1. Klikněte na webovou službu, se kterým pracujete.
-2. Klikněte na koncový bod, pro kterou chcete zobrazit stránce nápovědy k API.
-3. V horní nabídce klikněte na možnost **spotřebovat**.
-4. Klikněte na **stránku s nápovědě k rozhraní API** pod koncovými body pro požadavek a odpověď na zpracování dávky.
+1. Klepněte na webovou službu, se kterou pracujete.
+2. Klikněte na koncový bod, pro který chcete zobrazit stránku nápovědy rozhraní API.
+3. V horní nabídce klikněte na **Konzumujte**.
+4. V části Koncové body požadavku a odpovědi nebo Dávkového spuštění klikněte na **stránku nápovědy** rozhraní API.
 
-**Zobrazení Machine Learning nápovědu k rozhraní API pro novou webovou službu**
+**Zobrazení nápovědy rozhraní API pro strojové učení pro novou webovou službu**
 
-Na [portálu Azure Machine Learning Web Services](https://services.azureml.net/):
+Na [portálu webových služeb Azure Machine Learning:](https://services.azureml.net/)
 
-1. V horní nabídce klikněte na **webové služby** .
-2. Klikněte na webovou službu, pro které chcete načíst klíč.
+1. V horní nabídce klikněte na **WEBOVÉ SLUŽBY.**
+2. Klepněte na webovou službu, pro kterou chcete klíč načíst.
 
-Kliknutím na možnost **použít webovou službu** získáte identifikátory URI pro služby požadavku a odpovědi na zpracování dávky a ukázkový kód v C#, R a Pythonu.
+Kliknutím na **Použít webovou službu** získáte identifikátory URI pro služby odezvy na požadavky a dávkové spuštění a ukázkový kód v jazycích C#, R a Pythonu.
 
-Kliknutím na **rozhraní Swagger API** získáte dokumentaci na bázi Swagger pro rozhraní API volaná ze zadaných identifikátorů URI.
+Kliknutím na **rozhraní API Swagger** získáte dokumentaci založenou na rozhraní API s názvem Swagger ze zadaných identifikátorů URI.
 
-### <a name="c-sample"></a>Ukázka v jazyce C#
-Pokud se chcete připojit k webové službě Machine Learning, použijte ScoreData předávání **HttpClient** . ScoreData obsahuje FeatureVector, n rozměrný vektor číselné funkce, která představuje ScoreData. Ověření ve službě Machine Learning pomocí klíče rozhraní API.
+### <a name="c-sample"></a>Ukázka jazyka C#
+Chcete-li se připojit k webové službě Machine Learning, použijte **httpclient** předávání ScoreData. ScoreData obsahuje FeatureVector, n-dimenzionální vektor numerických funkcí, který představuje ScoreData. Ověření služby Machine Learning pomocí klíče rozhraní API.
 
-Chcete-li se připojit k webové službě Machine Learning, musí být nainstalován balíček NuGet **Microsoft. ASPNET. WebApi. Client** .
+Chcete-li se připojit k webové službě Machine Learning, musí být nainstalován balíček **Microsoft.AspNet.WebApi.Client** NuGet.
 
-**Instalace sady Microsoft. AspNet. WebApi. Client NuGet v aplikaci Visual Studio**
+**Instalace aplikace Microsoft.AspNet.WebApi.Client NuGet v sadě Visual Studio**
 
-1. Publikování datové sady ke stažení z UCI: Třída dataset dospělé 2 webové služby.
-2. Klikněte na **Nástroje** > **Správce balíčků NuGet** > **Konzola správce balíčků**.
-3. Vyberte **Install-Package Microsoft. ASPNET. WebApi. Client**.
+1. Publikujte datovou sadu Stáhnout z webové služby datové sady třídy UCI: Adult 2.
+2. Klepněte na **položku Nástroje** > **Aplikace NuGet , konzola** > **správce balíčků správce balíčků**.
+3. Zvolte **Instalační balíček Microsoft.AspNet.WebApi.Client**.
 
 **Spuštění ukázky kódu**
 
-1. Publikování "Příklad 1: stáhnout datovou sadu z UCI: Třída dataset Adult 2" experiment, součástí kolekce ukázky Machine learningu.
-2. Přiřaďte apiKey klíčem z webové služby. Viz **získat autorizační klíč** výše.
-3. Přiřaďte identifikátorem URI služby s identifikátorem URI žádosti.
+1. Publikovat "Ukázka 1: Stáhnout datovou sadu z UCI: Adult 2 třídy datové sady" experiment, který je součástí kolekce vzorků Machine Learning.
+2. Přiřaďte apiKey s klíčem z webové služby. Viz **Získání autorizačního klíče** výše.
+3. Přiřaďte serviceUri s identifikátorem URI požadavku.
 
-**Tady je, jak bude vypadat kompletní požadavek.**
+**Zde je to, co kompletní žádost bude vypadat.**
 ```csharp
 using System;
 using System.Collections.Generic;
@@ -195,16 +195,16 @@ namespace CallRequestResponseService
 }
 ```
 
-### <a name="python-sample"></a>Ukázky Pythonu
-Chcete-li se připojit k webové službě Machine Learning, použijte knihovnu **urllib2** pro Python 2. x a **urllib. Request** Library for Python 3. x. Předá ScoreData, který obsahuje FeatureVector, n rozměrný vektor číselné funkce, která představuje ScoreData. Ověření ve službě Machine Learning pomocí klíče rozhraní API.
+### <a name="python-sample"></a>Ukázka Pythonu
+Chcete-li se připojit k webové službě Machine Learning, použijte knihovnu **urllib2** pro Python 2.X a **urllib.request** knihovnu pro Python 3.X. Předáte ScoreData, který obsahuje FeatureVector, n-dimenzionální vektor číselných funkcí, které představuje ScoreData. Ověření služby Machine Learning pomocí klíče rozhraní API.
 
 **Spuštění ukázky kódu**
 
-1. Nasazení "Příklad 1: stáhnout datovou sadu z UCI: Třída dataset Adult 2" experiment, součástí kolekce ukázky Machine learningu.
-2. Přiřaďte apiKey klíčem z webové služby. Viz část **získání autorizačního klíče** v blízkosti začátku tohoto článku.
-3. Přiřaďte identifikátorem URI služby s identifikátorem URI žádosti.
+1. Nasazení experimentu "Ukázka 1: Stáhnout datovou sadu z datové sady Třídy Pro dospělé: Dospělí 2", který je součástí kolekce vzorků Machine Learning.
+2. Přiřaďte apiKey s klíčem z webové služby. Podívejte se na část **Získat autorizační klíč** poblíž začátku tohoto článku.
+3. Přiřaďte serviceUri s identifikátorem URI požadavku.
 
-**Tady je, jak bude vypadat kompletní požadavek.**
+**Zde je to, co kompletní žádost bude vypadat.**
 ```python
 import urllib2 # urllib.request and urllib.error for Python 3.X
 import json
@@ -248,11 +248,11 @@ except urllib2.HTTPError, error:
     print(json.loads(error.read())) 
 ```
 
-### <a name="r-sample"></a>Ukázky jazyka R
+### <a name="r-sample"></a>Ukázka R
 
-Chcete-li se připojit k webové službě Machine Learning, pomocí knihoven **RCurl** a **rjson** proveďte požadavek a ZPRACUJTE vrácenou odpověď JSON. Předá ScoreData, který obsahuje FeatureVector, n rozměrný vektor číselné funkce, která představuje ScoreData. Ověření ve službě Machine Learning pomocí klíče rozhraní API.
+Chcete-li se připojit k webové službě Machine Learning, použijte knihovny **RCurl** a **rjson** k vytvoření požadavku a zpracování vrácené odpovědi JSON. Předáte ScoreData, který obsahuje FeatureVector, n-dimenzionální vektor číselných funkcí, které představuje ScoreData. Ověření služby Machine Learning pomocí klíče rozhraní API.
 
-**Tady je, jak bude vypadat kompletní požadavek.**
+**Zde je to, co kompletní žádost bude vypadat.**
 ```r
 library("RCurl")
 library("rjson")
@@ -304,11 +304,11 @@ result = h$value()
 print(fromJSON(result))
 ```
 
-### <a name="javascript-sample"></a>Ukázky jazyka JavaScript
+### <a name="javascript-sample"></a>Ukázka javascriptu
 
-Chcete-li se připojit k webové službě Machine Learning, použijte balíček **Request** npm v projektu. K formátování vstupu a analýze výsledku použijete také objekt `JSON`. Nainstalujte pomocí `npm install request --save`nebo do balíčku. JSON přidejte `"request": "*"` v části `dependencies` a spusťte `npm install`.
+Chcete-li se připojit k webové službě Machine Learning, použijte balíček **request** npm v projektu. Objekt použijete `JSON` také k formátování vstupu a analýzy výsledku. Nainstalujte `npm install request --save`pomocí `"request": "*"` aplikace nebo přidejte do `dependencies` souboru package.json pod a spusťte `npm install`.
 
-**Tady je, jak bude vypadat kompletní požadavek.**
+**Zde je to, co kompletní žádost bude vypadat.**
 ```js
 let req = require("request");
 

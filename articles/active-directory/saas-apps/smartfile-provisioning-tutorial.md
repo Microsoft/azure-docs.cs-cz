@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace SmartFile pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
-description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro SmartFile.
+title: 'Kurz: Konfigurace souboru SmartFile pro automatické zřizování uživatelů pomocí služby Azure Active Directory | Dokumenty společnosti Microsoft'
+description: Přečtěte si, jak nakonfigurovat službu Azure Active Directory tak, aby automaticky zřašovala a zřašovala uživatelské účty do souboru SmartFile.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,156 +16,156 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: b113cc27195b2ce954d677ab0f1ec83e394946be
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77060214"
 ---
-# <a name="tutorial-configure-smartfile-for-automatic-user-provisioning"></a>Kurz: Konfigurace SmartFile pro Automatické zřizování uživatelů
+# <a name="tutorial-configure-smartfile-for-automatic-user-provisioning"></a>Kurz: Konfigurace souboru SmartFile pro automatické zřizování uživatelů
 
-Cílem tohoto kurzu je předvést kroky, které je třeba provést v SmartFile a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD pro Automatické zřizování a zrušení zřizování uživatelů nebo skupin pro SmartFile.
+Cílem tohoto kurzu je demonstrovat kroky, které mají být provedeny v SmartFile a Azure Active Directory (Azure AD) nakonfigurovat Azure AD automaticky zřídit a de-provision uživatelů nebo skupin na SmartFile.
 
 > [!NOTE]
-> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
+> Tento kurz popisuje konektor postavený na nad službou zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá, jak funguje, a nejčastější dotazy, najdete [v tématu Automatizace zřizování uživatelů a zrušení zřizování aplikací SaaS pomocí služby Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
-> Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
+> Tento konektor je aktuálně ve verzi Public Preview. Další informace o obecných podmínkách použití Microsoft Azure pro funkce preview najdete v [tématu Doplňkové podmínky použití pro Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
+Scénář popsaný v tomto kurzu předpokládá, že již máte následující požadavky:
 
 * Tenanta Azure AD.
-* [Tenant SmartFile](https://www.SmartFile.com/pricing/)
-* Uživatelský účet v SmartFile s oprávněními správce.
+* [Klient smartfile](https://www.SmartFile.com/pricing/).
+* Uživatelský účet v souboru SmartFile s oprávněními správce.
 
-## <a name="assigning-users-to-smartfile"></a>Přiřazování uživatelů k SmartFile
+## <a name="assigning-users-to-smartfile"></a>Přiřazení uživatelů k souboru SmartFile
 
-Azure Active Directory používá koncept nazvaný *přiřazení* k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelů se synchronizují jenom uživatelé a skupiny, které jsou přiřazené k aplikaci v Azure AD.
+Azure Active Directory používá koncept s názvem *přiřazení* k určení, kteří uživatelé by měli získat přístup k vybraným aplikacím. V kontextu automatickézřižené zřizování uživatelů jsou synchronizovány pouze uživatelé nebo skupiny, které byly přiřazeny k aplikaci ve službě Azure AD.
 
-Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé a skupiny ve službě Azure AD potřebují přístup k SmartFile. Po rozhodnutí můžete přiřadit tyto uživatele nebo skupiny k SmartFile podle pokynů uvedených tady:
+Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé nebo skupiny ve službě Azure AD potřebují přístup k smartfile. Jakmile se rozhodnete, můžete těmto uživatelům a/nebo skupinám přiřadit program SmartFile podle pokynů zde:
 * [Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-smartfile"></a>Důležité tipy pro přiřazení uživatelů k SmartFile
+## <a name="important-tips-for-assigning-users-to-smartfile"></a>Důležité tipy pro přiřazení uživatelů k souboru SmartFile
 
-* Doporučuje se, aby se k SmartFile k testování automatické konfigurace zřizování uživatelů přiřadil jeden uživatel Azure AD. Další uživatele a skupiny můžete přiřadit později.
+* Doporučuje se, aby jeden uživatel Azure AD je přiřazen k SmartFile k testování konfigurace automatického zřizování uživatelů. Další uživatelé a/nebo skupiny mohou být přiřazeny později.
 
-* Při přiřazování uživatele k SmartFile musíte v dialogovém okně přiřazení vybrat jakoukoli platnou roli specifickou pro aplikaci (Pokud je dostupná). Uživatelé s **výchozí rolí přístupu** se z zřizování vylučují.
+* Při přiřazování uživatele k souboru SmartFile je nutné v dialogovém okně přiřazení vybrat libovolnou platnou roli specifickou pro aplikaci (pokud je k dispozici). Uživatelé s rolí **Výchozí přístup** jsou z zřizování vyloučeni.
 
-## <a name="setup-smartfile-for-provisioning"></a>Nastavení SmartFile pro zřizování
+## <a name="setup-smartfile-for-provisioning"></a>Instalace inteligentního souboru pro zřizování
 
-Před konfigurací SmartFile pro Automatické zřizování uživatelů se službou Azure AD budete muset povolit SCIM zřizování na SmartFile a shromažďovat další podrobnosti, které potřebujete.
+Před konfigurací SmartFile pro automatické zřizování uživatelů pomocí Azure AD, budete muset povolit zřizování SCIM na SmartFile a shromažďovat další potřebné podrobnosti.
 
-1. Přihlaste se ke konzole pro správu SmartFile. Přejděte do pravého horního rohu konzoly pro správu SmartFile. Vyberte **kód Product Key**.
+1. Přihlaste se do konzole SmartFile Admin Console. Přejděte do pravého horního rohu konzole SmartFile Admin Console. Vyberte **kód Product Key**.
 
-    ![Konzola pro správu SmartFile](media/smartfile-provisioning-tutorial/login.png)
+    ![Konzola pro správu souboru SmartFile](media/smartfile-provisioning-tutorial/login.png)
 
-2. Pokud chcete vygenerovat nosný token, zkopírujte **kód Product Key** a **heslo k produktu**. Vložte je do poznámkového bloku s dvojtečkou mezi nimi.
+2. Chcete-li vygenerovat nosný token, zkopírujte **kód Product Key** a heslo **produktu**. Vložte je do poznámkového bloku s dvojtečkou mezi nimi.
     
-     ![SmartFile přidat SCIM](media/smartfile-provisioning-tutorial/auth.png)
+     ![Přidání scim smartfile](media/smartfile-provisioning-tutorial/auth.png)
 
-    ![SmartFile přidat SCIM](media/smartfile-provisioning-tutorial/key.png)
+    ![Přidání scim smartfile](media/smartfile-provisioning-tutorial/key.png)
 
-## <a name="add-smartfile-from-the-gallery"></a>Přidání SmartFile z Galerie
+## <a name="add-smartfile-from-the-gallery"></a>Přidání smartfile z galerie
 
-Pokud chcete nakonfigurovat SmartFile pro Automatické zřizování uživatelů pomocí Azure AD, musíte přidat SmartFile z Galerie aplikací Azure AD do svého seznamu spravovaných aplikací SaaS.
+Chcete-li nakonfigurovat SmartFile pro automatické zřizování uživatelů pomocí Azure AD, je třeba přidat SmartFile z galerie aplikací Azure AD do seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat SmartFile z Galerie aplikací Azure AD, proveďte následující kroky:**
+**Chcete-li přidat SmartFile z galerie aplikací Azure AD, proveďte následující kroky:**
 
-1. V **[Azure Portal](https://portal.azure.com)** v levém navigačním panelu vyberte možnost **Azure Active Directory**.
+1. Na **[webu Azure Portal](https://portal.azure.com)** vyberte na levém navigačním panelu **položku Azure Active Directory**.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Přejděte na **podnikové aplikace**a vyberte **všechny aplikace**.
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
 
 3. Chcete-li přidat novou aplikaci, vyberte tlačítko **Nová aplikace** v horní části podokna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **SmartFile**, na panelu výsledků vyberte **SmartFile** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **SmartFile**, vpanelu výsledky vyberte **SmartFile** a pak klepnutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![SmartFile v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-smartfile"></a>Konfigurace automatického zřizování uživatelů na SmartFile 
+## <a name="configuring-automatic-user-provisioning-to-smartfile"></a>Konfigurace automatického zřizování uživatelů do souboru SmartFile 
 
-V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v SmartFile na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
+Tato část vás provede kroky konfigurace služby zřizování Azure AD k vytvoření, aktualizaci a zakázání uživatelů nebo skupin v smartfile na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro SmartFile podle pokynů uvedených v [kurzu SmartFile jednotného přihlašování](SmartFile-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když se tyto dvě funkce vzájemně přidávají.
+> Můžete také povolit jednotné přihlašování na saml pro SmartFile podle pokynů uvedených v [kurzu smartfile jednotné přihlášení](SmartFile-tutorial.md). Jednotné přihlašování lze konfigurovat nezávisle na automatickézřivací službě uživatelů, i když tyto dvě funkce se vzájemně doplňují
 
 ### <a name="to-configure-automatic-user-provisioning-for-smartfile-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro SmartFile ve službě Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **Všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **SmartFile**.
+2. V seznamu aplikací vyberte **SmartFile**.
 
-    ![Odkaz SmartFile v seznamu aplikací](common/all-applications.png)
+    ![Odkaz SmartFile v seznamu Aplikace](common/all-applications.png)
 
-3. Vyberte kartu **zřizování** .
+3. Vyberte kartu **Zřizování.**
 
-    ![Karta zřizování](common/provisioning.png)
+    ![Karta Zřizování](common/provisioning.png)
 
-4. Nastavte **režim zřizování** na **automaticky**.
+4. Nastavte **režim zřizování** na **automatické**.
 
-    ![Karta zřizování](common/provisioning-automatic.png)
+    ![Karta Zřizování](common/provisioning-automatic.png)
 
-5.  V části **přihlašovací údaje správce** zadejte `https://<SmartFile sitename>.smartfile.com/ftp/scim` na **adrese URL tenanta**. Příklad by vypadal jako `https://demo1test.smartfile.com/ftp/scim`. Zadejte hodnotu **tokenu nosiče** (ProductKey: ProductPassword), kterou jste získali dříve v **tajném tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k SmartFile. Pokud se připojení nepovede, ujistěte se, že má váš účet SmartFile oprávnění správce, a zkuste to znovu.
+5.  V části **Pověření správce** `https://<SmartFile sitename>.smartfile.com/ftp/scim` zadejte adresu **URL klienta**. Příklad by vypadal `https://demo1test.smartfile.com/ftp/scim`jako . Zadejte hodnotu **tokenu nosiče** (ProductKey:ProductPassword), kterou jste načetli dříve v **tajném tokenu**. Kliknutím na **Testovat připojení** zajistíte, že se Azure AD může připojit k SmartFile. Pokud se připojení nezdaří, ujistěte se, že váš účet SmartFile má oprávnění správce a zkuste to znovu.
 
-    ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Adresa URL klienta + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
+6. Do pole **E-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, která by měla dostávat oznámení o chybách při zřizování, a zaškrtněte políčko – **Odeslat e-mailové oznámení, když dojde k chybě**.
 
     ![E-mail s oznámením](common/provisioning-notification-email.png)
 
 7. Klikněte na **Uložit**.
 
-8. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé SmartFile**.
+8. V části **Mapování** vyberte **Synchronizovat uživatele služby Azure Active Directory s programem SmartFile**.
 
-    ![Mapování uživatelů SmartFile](media/smartfile-provisioning-tutorial/usermapping.png)
+    ![Mapování uživatelů smartfile](media/smartfile-provisioning-tutorial/usermapping.png)
 
-9. Zkontrolujte atributy uživatele synchronizované z Azure AD do SmartFile v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v SmartFile pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
+9. Zkontrolujte atributy uživatele, které jsou synchronizovány z Azure AD na SmartFile v části **Mapování atributů.** Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelským účtům v souboru SmartFile pro operace aktualizace. Chcete-li potvrdit všechny změny, vyberte tlačítko **Uložit.**
 
-    ![Atributy uživatele SmartFile](media/smartfile-provisioning-tutorial/userattribute.png)
+    ![Uživatelské atributy smartfile](media/smartfile-provisioning-tutorial/userattribute.png)
 
-10. V části **mapování** vyberte **synchronizovat Azure Active Directory skupiny do SmartFile**.
+10. V části **Mapování** vyberte **Synchronizovat skupiny Služby Azure Active Directory s programem SmartFile**.
 
-    ![Mapování skupin SmartFile](media/smartfile-provisioning-tutorial/groupmapping.png)
+    ![Mapování skupin smartfile](media/smartfile-provisioning-tutorial/groupmapping.png)
 
-11. Zkontrolujte atributy skupiny synchronizované z Azure AD do SmartFile v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v SmartFile pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
+11. Zkontrolujte atributy skupiny, které jsou synchronizovány z Azure AD na SmartFile v části **Mapování atributů.** Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly skupinám v souboru SmartFile pro operace aktualizace. Chcete-li potvrdit všechny změny, vyberte tlačítko **Uložit.**
 
-    ![SmartFile – atributy skupiny](media/smartfile-provisioning-tutorial/groupattribute.png)
+    ![Atributy skupiny smartfile](media/smartfile-provisioning-tutorial/groupattribute.png)
 
-12. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+12. Chcete-li konfigurovat filtry oborů, naleznete v následujících pokynech uvedených v [kurzu filtru oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Pokud chcete povolit službu Azure AD Provisioning pro SmartFile, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
+13. Chcete-li povolit službu zřizování Azure AD pro SmartFile, změňte **stav zřizování** **na Zapnuto** v části **Nastavení.**
 
-    ![Zapnutý stav zřizování](common/provisioning-toggle-on.png)
+    ![Stav zřizování zapnutý](common/provisioning-toggle-on.png)
 
-14. Definujte uživatele nebo skupiny, které chcete zřídit pro SmartFile, výběrem požadovaných hodnot v **oboru** v části **Nastavení** .
+14. Definujte uživatele nebo skupiny, které chcete zřídit pro smartfile výběrem požadovaných hodnot v **oboru** v části **Nastavení.**
 
-    ![Rozsah zřizování](common/provisioning-scope.png)
+    ![Obor zřizování](common/provisioning-scope.png)
 
-15. Až budete připraveni zřídit, klikněte na **Uložit**.
+15. Až budete připraveni k zřízení, klikněte na **Uložit**.
 
-    ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
+    ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
 
-    Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v SmartFile.
+    Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení.** Počáteční synchronizace trvá déle než následné synchronizace, ke kterým dochází přibližně každých 40 minut tak dlouho, dokud je spuštěna služba zřizování Azure AD. Část **Podrobnosti synchronizace** můžete použít ke sledování průběhu a sledování odkazů na sestavu aktivit zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD na SmartFile.
 
-    Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md) .
+    Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v [tématu Vytváření sestav na automatické zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md)
     
 ## <a name="connector-limitations"></a>Omezení konektoru
 
-* SmartFile podporuje pouze pevné odstranění. 
+* Soubor SmartFile podporuje pouze pevné odstranění. 
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
- [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+ [Přečtěte si, jak zkontrolovat protokoly a získat sestavy o aktivitě zřizování.](../app-provisioning/check-status-user-account-provisioning.md)

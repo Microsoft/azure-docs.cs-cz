@@ -1,6 +1,6 @@
 ---
-title: Připojení k Azure Analysis Services se souborem. odc | Microsoft Docs
-description: Naučte se vytvořit soubor datových připojení Office pro připojení a načtení dat z Analysis Servicesho serveru v Azure.
+title: Připojení ke službě Azure Analysis Services pomocí souboru .odc | Dokumenty společnosti Microsoft
+description: Zjistěte, jak vytvořit soubor datového připojení Office pro připojení a získat data ze serveru Analysis Services v Azure.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,30 +8,30 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: a4e2dc09c54b39d58b0193e7ac9f585236886722
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73572672"
 ---
-# <a name="create-an-office-data-connection-file"></a>Vytvoření souboru s datovým připojením Office
+# <a name="create-an-office-data-connection-file"></a>Vytvoření souboru datového připojení Sady Office
 
-Informace v tomto článku popisují, jak můžete vytvořit soubor datového připojení Office pro připojení k serveru Azure Analysis Services z verze Excel 2016, 16.0.7369.2117 nebo starší nebo Excel 2013. Vyžaduje se i aktualizovaný [poskytovatel MSOLAP. 7](analysis-services-data-providers.md) .
+Informace v tomto článku popisují, jak můžete vytvořit soubor datového připojení Office pro připojení k serveru Azure Analysis Services z Excelu 2016 číslo verze 16.0.7369.2117 nebo starší nebo Excel 2013. Je také vyžadován aktualizovaný [zprostředkovatel MSOLAP.7.](analysis-services-data-providers.md)
 
 
-1. Níže zkopírujte soubor s ukázkovým připojením a vložte ho do textového editoru. 
+1. Zkopírujte ukázkový soubor připojení níže a vložte jej do textového editoru. 
 
-2. V `odc:ConnectionString`změňte následující vlastnosti:
+2. V `odc:ConnectionString`, změňte následující vlastnosti:
 
-    *   V `Data Source=asazure://<region>.asazure.windows.net/<servername>;` změňte `<region>` na oblast Analysis Services serveru a `<servername>` na název vašeho serveru.
+    *   Změna `Data Source=asazure://<region>.asazure.windows.net/<servername>;` `<region>` na oblast serveru Analysis Services `<servername>` a název serveru.
 
-    *   V `Initial Catalog=<database>;` změňte `<database>` na název vaší databáze.
+    *   Změna `Initial Catalog=<database>;` `<database>` názvu databáze.
 
-3. V `<odc:CommandText>Model</odc:CommandText>` změňte `Model` na název vašeho modelu nebo perspektivy. 
+3. `<odc:CommandText>Model</odc:CommandText>` Změnou `Model` názvu modelu nebo perspektivy. 
 
-4. Uložte soubor s příponou `.odc` do složky C:\Users\\*username*\Documents\My data sources.
+4. Uložte soubor `.odc` s příponou do\\složky C:\Users*s uživatelským jménem*\Documents\My Data Sources.
 
-5. Klikněte na soubor pravým tlačítkem a pak klikněte na **otevřít v Excelu**. Nebo v aplikaci Excel klikněte na pásu karet **data** na **existující připojení**, vyberte soubor a klikněte na **otevřít**.
+5. Klikněte pravým tlačítkem myši na soubor a potom klikněte na **Otevřít v aplikaci Excel**. Nebo v Excelu klikněte na pásu karet **Data** na **Položku Existující připojení**, vyberte soubor a potom klikněte na **Otevřít**.
 
 
 

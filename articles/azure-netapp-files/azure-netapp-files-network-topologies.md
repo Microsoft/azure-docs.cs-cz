@@ -1,6 +1,6 @@
 ---
-title: Pokyny pro Azure NetApp Files plánování sítě | Microsoft Docs
-description: Popisuje pokyny, které vám mohou pomoci při návrhu efektivní síťové architektury pomocí Azure NetApp Files.
+title: Pokyny pro plánování sítě Soubory Azure NetApp | Dokumenty společnosti Microsoft
+description: Popisuje pokyny, které vám můžou pomoct navrhnout efektivní síťovou architekturu pomocí souborů Azure NetApp.
 services: azure-netapp-files
 documentationcenter: ''
 author: ram-kakani
@@ -15,95 +15,95 @@ ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
 ms.openlocfilehash: 8e6a1c3472c6b20b27cf181edbeeb96ab71eb58d
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73242480"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Pokyny pro plánování sítě Azure NetApp Files
 
-Plánování síťové architektury je klíčovým prvkem návrhu jakékoli aplikační infrastruktury. Tento článek vám pomůže navrhnout efektivní architekturu sítě pro vaše úlohy, aby bylo možné využít bohatých možností Azure NetApp Files.
+Plánování síťové architektury je klíčovým prvkem návrhu libovolné aplikační infrastruktury. Tento článek vám pomůže navrhnout efektivní síťovou architekturu pro vaše úlohy, abyste měli prospěch z bohatých funkcí souborů Azure NetApp.
 
-Azure NetApp Files svazky jsou navržené tak, aby se obsahovaly v podsíti pro zvláštní účely označované jako [delegovaná podsíť](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet) v rámci Azure Virtual Network. Proto můžete ke svazkům přistupovat přímo z vaší virtuální sítě, ze virtuální sítě partnerských uzlů ve stejné oblasti nebo z místní sítě přes bránu Virtual Network (ExpressRoute nebo VPN Gateway) podle potřeby. Podsíť je vyhrazená pro Azure NetApp Files a neexistuje žádné připojení k ostatním službám Azure nebo Internetu.
+Svazky souborů Azure NetApp jsou navržené tak, aby byly obsaženy v podsíti pro speciální účely nazývané [delegovaná podsíť](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet) v rámci virtuální sítě Azure. Proto můžete přistupovat ke svazkům přímo z vaší virtuální sítě, z partnerských virtuálních sítí ve stejné oblasti nebo z místních prostředků přes bránu virtuální sítě (ExpressRoute nebo VPN Gateway) podle potřeby. Podsíť je vyhrazená pro soubory Azure NetApp a neexistuje žádné připojení k jiným službám Azure nebo k Internetu.
 
 ## <a name="considerations"></a>Požadavky  
 
-Při plánování Azure NetApp Files sítě byste měli pochopit několik důležitých informací.
+Měli byste pochopit několik aspektů při plánování sítě Azure NetApp Files.
 
 ### <a name="constraints"></a>Omezení
 
-Následující funkce jsou aktuálně pro Azure NetApp Files nepodporované: 
+Níže uvedené funkce nejsou aktuálně nepodporované pro soubory Azure NetApp: 
 
-* Skupiny zabezpečení sítě (skupin zabezpečení sítě) použité pro delegovanou podsíť
-* Trasy definované uživatelem (udr) s předponou adresy jako podsíť souborů Azure NetApp
-* Zásady Azure (například vlastní zásady pojmenování) na rozhraní Azure NetApp Files
-* Nástroje pro vyrovnávání zatížení pro Azure NetApp Files provoz
+* Skupiny zabezpečení sítě (NSG) použité v delegované podsíti
+* Uživatelem definované trasy (UDR) s předponou adresy jako podsíť souborů Azure NetApp
+* Zásady Azure (například vlastní zásady pojmenování) v rozhraní Azure NetApp Files
+* Nástroji pro vyrovnávání zatížení pro provoz souborů Azure NetApp
 
-Následující omezení sítě platí pro Azure NetApp Files:
+Následující síťová omezení platí pro soubory Azure NetApp:
 
-* Počet IP adres, které se používají ve virtuální síti s Azure NetApp Files (včetně partnerských virtuální sítě), nesmí překročit 1000. Pracujeme na zvýšení tohoto limitu, aby se splnily požadavky na škálování zákazníka. Pokud požadujete další IP adresy, kontaktujte tým podpory s vaším případem použití a požadovaným limitem v provizorním případě.
-* V každé službě Azure Virtual Network (VNet) je možné delegovat Azure NetApp Files jenom jednu podsíť.
+* Počet IP adresy v ypoužívají ve virtuální síti se soubory Azure NetApp (včetně partnerských virtuálních sítí) nesmí překročit 1000. Pracujeme na zvýšení tohoto limitu, abychom vyhověli požadavkům na zákaznickou stupnici. V mezidobí, pokud požadujete více IP adresy, obraťte se na náš tým podpory s případem použití a požadovaným limitem.
+* V každé virtuální síti Azure (VNet) lze delegovat jenom jednu podsíť na soubory Azure NetApp.
 
 
 ### <a name="supported-network-topologies"></a>Podporované síťové topologie
 
-Následující tabulka popisuje síťové topologie podporované nástrojem Azure NetApp Files.  Popisuje také alternativní řešení pro nepodporované topologie. 
+Následující tabulka popisuje topologie sítě podporované soubory Azure NetApp.  Také popisuje řešení pro nepodporované topologie. 
 
-|    Topologie    |    Je podporováno    |     Alternativní řešení    |
+|    Topologie    |    Je podporována    |     Alternativní řešení    |
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
-|    Připojení ke svazku v místní síti VNet    |    Ano    |         |
-|    Připojení ke svazku ve virtuální síti s partnerským vztahem (stejná oblast)    |    Ano    |         |
-|    Připojení ke svazku ve virtuální síti s partnerským vztahem (mezi oblastí nebo globálním partnerským vztahem)    |    Ne    |    Žádné    |
-|    Připojení ke svazku přes ExpressRoute bránu    |    Ano    |         |
-|    Připojení z místního prostředí ke svazku ve virtuální síti rozbočovače prostřednictvím brány ExpressRoute a partnerského vztahu virtuálních sítí s přenosem brány    |    Ano    |        |
-|    Připojení z místního prostředí k svazku ve virtuální síti rozbočovače přes bránu VPN    |    Ano    |         |
-|    Připojení z místního prostředí k svazku ve virtuální síti rozbočovače prostřednictvím brány VPN a partnerského vztahu virtuálních sítí s přenosem brány    |    Ano    |         |
+|    Připojení ke svazku v místní virtuální síti    |    Ano    |         |
+|    Připojení ke svazku v partnerské virtuální síti (stejná oblast)    |    Ano    |         |
+|    Připojení ke svazku v partnerské virtuální síti (mezi oblastnebo globální partnerský vztah)    |    Ne    |    Žádný    |
+|    Připojení ke svazku přes bránu ExpressRoute    |    Ano    |         |
+|    Připojení z místního prostředí ke svazku ve virtuální síti s paprskem přes bránu ExpressRoute a partnerský vztah virtuální sítě s přenosem brány    |    Ano    |        |
+|    Připojení z místního k svazku ve virtuální síti pro paprsky přes bránu VPN    |    Ano    |         |
+|    Připojení z místního k svazku ve virtuální síti pro paprsku přes bránu VPN a partnerský vztah virtuální sítě s přenosem brány    |    Ano    |         |
 
 
-## <a name="virtual-network-for-azure-netapp-files-volumes"></a>Virtuální síť pro Azure NetApp Files svazky
+## <a name="virtual-network-for-azure-netapp-files-volumes"></a>Virtuální síť pro svazky souborů Azure NetApp
 
-V této části najdete vysvětlení konceptů, které vám pomůžou s plánováním virtuálních sítí.
+Tato část vysvětluje koncepty, které vám pomohou s plánováním virtuální sítě.
 
 ### <a name="azure-virtual-networks"></a>Virtuální sítě Azure
 
-Před zřízením Azure NetApp Filesho svazku je potřeba vytvořit virtuální síť Azure (VNet) nebo použít ji, která už ve vašem předplatném existuje. Virtuální síť definuje hranice sítě pro daný svazek.  Další informace o vytváření virtuálních sítí najdete v dokumentaci k [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
+Před zřízením svazku souborů Azure NetApp je potřeba vytvořit virtuální síť Azure (VNet) nebo použít ten, který už ve vašem předplatném existuje. Virtuální síť definuje síť hranice svazku.  Další informace o vytváření virtuálních sítí najdete v [dokumentaci k virtuální síti Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
 
 ### <a name="subnets"></a>Podsítě
 
-Podsítě segmentují virtuální síť do samostatných adresních prostorů, které jsou použitelné pro prostředky Azure v nich.  Azure NetApp Files svazky jsou obsaženy v podsíti pro speciální účely označované jako [delegovaná podsíť](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet). 
+Podsítě segmentvirtuální sítě do samostatných adresových prostorů, které jsou použitelné prostředky Azure v nich.  Svazky souborů Azure NetApp jsou obsaženy v podsíti pro speciální účely nazývané [delegovaná podsíť](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet). 
 
-Delegování podsítě poskytuje explicitní oprávnění pro službu Azure NetApp Files k vytváření prostředků specifických pro službu v podsíti.  Používá jedinečný identifikátor při nasazení služby. V takovém případě se vytvoří síťové rozhraní, které umožňuje připojení k Azure NetApp Files.
+Delegování podsítě uděluje explicitní oprávnění službě Soubory Azure NetApp k vytvoření prostředků specifických pro službu v podsíti.  Používá jedinečný identifikátor při nasazování služby. V takovém případě je vytvořeno síťové rozhraní umožňující připojení k souborům Azure NetApp.
 
-Pokud používáte novou virtuální síť, můžete vytvořit podsíť a delegovat ji tak, aby se Azure NetApp Files, a to podle pokynů v tématu [delegování podsítě na Azure NetApp Files](azure-netapp-files-delegate-subnet.md). Můžete také delegovat existující prázdnou podsíť, která už není delegovaná na jiné služby.
+Pokud používáte novou virtuální síť, můžete vytvořit podsíť a delegovat podsíť na soubory Azure NetApp podle pokynů v [příkazech delegovat podsíť na soubory Azure NetApp](azure-netapp-files-delegate-subnet.md). Můžete také delegovat existující prázdnou podsíť, která ještě není delegována na jiné služby.
 
-Pokud je virtuální síť v partnerském vztahu s jinou virtuální sítí, nemůžete rozšířit adresní prostor virtuální sítě. Z tohoto důvodu je potřeba novou delegovanou podsíť vytvořit v adresním prostoru virtuální sítě. Pokud potřebujete rozšířit adresní prostor, musíte před rozšířením adresního prostoru odstranit partnerský vztah virtuální sítě.
+Pokud virtuální síť je partnerský vztah s jinou virtuální sítí, nelze rozbalit adresní prostor virtuální sítě. Z tohoto důvodu je třeba vytvořit novou delegovanou podsíť v adresním prostoru virtuální sítě. Pokud potřebujete rozšířit adresní prostor, musíte před rozbalením adresního prostoru odstranit partnerský vztah virtuální sítě.
 
-### <a name="udrs-and-nsgs"></a>Udr a skupin zabezpečení sítě
+### <a name="udrs-and-nsgs"></a>UDR a NSG
 
-Trasy definované uživatelem (udr) a skupiny zabezpečení sítě (skupin zabezpečení sítě) nejsou podporovány v delegovaných podsítích pro Azure NetApp Files.
+Uživatelem definované trasy (UDR) a skupiny zabezpečení sítě (NSG) nejsou podporovány v delegovaných podsítích pro soubory Azure NetApp.
 
-Alternativním řešením je, že skupin zabezpečení sítě můžete použít u jiných podsítí, které povolují nebo zakazují provoz do a z Azure NetApp Files delegované podsítě.  
+Jako řešení můžete použít skupiny zabezpečení sítě pro jiné podsítě, které buď povolit nebo odepřít provoz do a z azure netapp soubory delegované podsítě.  
 
 ## <a name="azure-native-environments"></a>Nativní prostředí Azure
 
-Následující diagram znázorňuje prostředí Azure Native:
+Následující diagram znázorňuje nativní prostředí Azure:
 
-![Azure – nativní síťové prostředí](../media/azure-netapp-files/azure-netapp-files-network-azure-native-environment.png)
+![Síťové prostředí nativní pro Azure](../media/azure-netapp-files/azure-netapp-files-network-azure-native-environment.png)
 
 ### <a name="local-vnet"></a>Místní virtuální síť
 
-Základní scénář je vytvořit nebo připojit se k Azure NetApp Files svazku z virtuálního počítače ve stejné virtuální síti. Pro virtuální síť 2 v diagramu výše se svazek 1 vytvoří v delegované podsíti a dá se připojit k virtuálnímu počítači 1 ve výchozí podsíti.
+Základním scénářem je vytvoření nebo připojení ke svazku souborů Azure NetApp z virtuálního počítače (VM) ve stejné virtuální síti. Pro virtuální síť 2 ve výše uvedeném diagramu se svazek 1 vytvoří v delegované podsíti a lze jej připojit na Virtuální počítač 1 ve výchozí podsíti.
 
-### <a name="vnet-peering"></a>VNet Peering
+### <a name="vnet-peering"></a>Partnerské vztahy virtuálních sítí
 
-Pokud máte další virtuální sítě ve stejné oblasti, která potřebuje přístup k prostředkům ostatních zdrojů, virtuální sítě se dá připojit pomocí [partnerského vztahu](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) virtuálních sítí a povolit tak zabezpečené připojení prostřednictvím infrastruktury Azure. 
+Pokud máte další virtuální sítě ve stejné oblasti, které potřebují přístup k navzájem prostředky, virtuální sítě můžete připojit pomocí [partnerského vztahu virtuální sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) k povolení zabezpečené připojení prostřednictvím infrastruktury Azure. 
 
-V diagramu výše zvažte virtuální síť 2 a virtuální síť 3. Pokud se virtuální počítač 1 potřebuje připojit k virtuálnímu počítači 2 nebo ke svazku 2 nebo pokud se virtuální počítač 2 potřebuje připojit k virtuálnímu počítači 1 nebo ke svazku 1, musíte povolit partnerský vztah virtuálních sítí mezi virtuálními sítěmi 2 a virtuální sítě 3. 
+Zvažte Virtuální síť 2 a Virtuální síť 3 ve výše uvedeném diagramu. Pokud se virtuální montovna 1 potřebuje připojit k Virtuálnímu zařízení 2 nebo ke svazku 2 nebo pokud se virtuální montovna 2 potřebuje připojit k Virtuálnímu virtuálnímu zařízení 1 nebo ke svazku 1, musíte povolit partnerský vztah virtuální sítě mezi virtuální sítí 2 a virtuální sítí 3. 
 
-Zvažte také situaci, kdy je virtuální síť 1 partnerského vztahu s virtuální sítí 2 a virtuální síť 2 je v partnerském vztahu s virtuální sítí 3 ve stejné oblasti. Prostředky z virtuální sítě 1 se můžou připojit k prostředkům ve virtuální síti 2, ale nemůžou se připojit k prostředkům ve virtuální síti 3, pokud virtuální síť 1 a virtuální síť 3 nejsou partnerského vztahu. 
+Kromě toho zvažte scénář, kde virtuální síť 1 je partnerský vztah s virtuální sítí 2 a virtuální síť 2 je partnerský vztah s Virtuální síť 3 ve stejné oblasti. Prostředky z virtuální sítě 1 se můžou připojit k prostředkům ve virtuální síti 2, ale nemohou se připojit k prostředkům ve Virtuální síti 3, pokud nejsou partnerskými partnery virtuální sítě 1 a 3. 
 
-I když se virtuální počítač 3 může připojit ke svazku 1 výše, virtuální počítač 4 se nemůže připojit ke svazku 2.  Důvodem je to, že paprskový virtuální sítě nemá partnerský vztah a _směrování přenosu není podporováno prostřednictvím partnerského vztahu virtuálních sítí_.
+Ve výše uvedeném diagramu, i když v Dot 3 můžete připojit ke svazku 1, VM 4 nelze připojit ke svazku 2.  Důvodem je, že virtuální sítě paprsku nejsou partnerským vztahem a _směrování tranzitu není podporováno přes partnerský vztah virtuální sítě_.
 
 ## <a name="hybrid-environments"></a>Hybridní prostředí
 
@@ -111,21 +111,21 @@ Následující diagram znázorňuje hybridní prostředí:
 
 ![Hybridní síťové prostředí](../media/azure-netapp-files/azure-netapp-files-network-hybrid-environment.png)
 
-V hybridním scénáři potřebují aplikace z místních datových center přístup k prostředkům v Azure.  Jedná se o případ, že chcete své datacentrum rozšíříte do Azure nebo pokud chcete používat nativní služby Azure nebo pro zotavení po havárii. Informace o tom, jak propojit více prostředků v místním prostředí s prostředky v Azure pomocí sítě VPN typu Site-to-site nebo ExpressRoute, najdete VPN Gateway v tématu [Možnosti plánování](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable) .
+V hybridním scénáři potřebují aplikace z místních datových center přístup k prostředkům v Azure.  To je případ, zda chcete rozšířit své datové centrum do Azure, nebo chcete použít nativní služby Azure nebo pro zotavení po havárii. Informace o tom, jak připojit více místních prostředků k prostředkům v Azure prostřednictvím sítě VPN nebo ExpressRoute, najdete v tématu [možnosti plánování brány VPN.](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable)
 
-Virtuální síť rozbočovače v Azure v hybridní hvězdicové topologii funguje jako centrální bod připojení k vaší místní síti. Paprsky jsou virtuální sítě partnerského vztahu s rozbočovačem a lze je použít k izolaci úloh.
+V topologii hybridních uzlů funguje virtuální síť rozbočovače v Azure jako centrální bod připojení k vaší místní síti. Paprsky jsou virtuální sítě partnerský s rozbočovačem a lze je použít k izoluje úlohy.
 
-V závislosti na konfiguraci můžete k prostředkům v centru a paprskech připojit místní prostředky.
+V závislosti na konfiguraci můžete připojit místní prostředky k prostředkům v centru a paprsky.
 
-V topologii zobrazené výše je místní síť připojená k virtuální síti rozbočovače v Azure a ve stejné oblasti, ve které je partnerský virtuální síť rozbočovače, je 2 paprsková virtuální sítěá.  V tomto scénáři jsou možnosti připojení podporované pro Azure NetApp Files svazky následující:
+V topologii ilustrované výše je místní síť připojena k virtuální síti rozbočovače v Azure a ve stejné oblasti jsou virtuální sítě s 2 paprsky ve stejné oblasti, která je propojena s virtuální sítí rozbočovače.  V tomto scénáři možnosti připojení podporované pro svazky Souborů Azure NetApp jsou následující:
 
-* Virtuální počítače s místními prostředky a virtuálním počítačem 2 se můžou připojit ke svazku 1 v centru prostřednictvím sítě VPN typu Site-to-site nebo okruhu ExpressRoute. 
-* Virtuální počítače s místními prostředky a VIRTUÁLNÍm počítačem 2 se mohou připojit ke svazku 2 nebo 3 prostřednictvím sítě VPN typu Site-to-site a regionálního partnerského vztahu VNET.
-* Virtuální počítač 3 v síti rozbočovače se může připojit ke svazku 2 v síti VNet s paprsky 1 a svazkem 3 v síti VNet-paprsek 2.
-* Virtuální počítač 4 z rozbočovače s koncovými virtuálními počítači 1 a virtuálního počítače 5 z virtuální sítě rozbočovače 2 se může připojit ke svazku 1 v síti VNet.
+* Místní prostředky VM 1 a VM 2 se můžou připojit ke svazku 1 v rozbočovači přes okruh VPN nebo ExpressRoute. 
+* Místní prostředky VM 1 a VM 2 se můžou připojit ke svazku 2 nebo svazku 3 přes síť VPN typu site-to-site a regionální partnerský vztah virtuální sítě.
+* Virtuální virtuální připojení 3 ve virtuální síti rozbočovače se může připojit ke svazku 2 ve virtuální síti 1 s paprskem a ve svazku 3 ve virtuální síti 2 s paprskem.
+* Virtuální va 4 z virtuální sítě 1 a Virtuálního Měna 5 z virtuální sítě s paprskem se můžou připojit ke svazku 1 ve virtuální síti rozbočovače.
 
-Virtuální počítač 4 ve virtuální síti rozbočovače 1 se nemůže připojit ke svazku 3 ve virtuální síti rozbočovače 2. Virtuální počítač 5 v paprskovém VNet2 se navíc nemůže připojit ke svazku 2 v síti VNet-paprsek 1. Jedná se o případ, že virtuální sítě paprsků není v partnerském vztahu virtuálních _sítí podporována a směrování přenosu není podporováno_.
+Virtuální měna 4 ve virtuální síti 1 s paprskem se nemůže připojit ke svazku 3 ve virtuální síti 2 s paprskem. Také VM 5 ve virtuální síti s paprskem se nemůže připojit ke svazku 2 ve virtuální síti 1 s paprskem. To je případ, protože virtuální sítě paprsku nejsou partnerský vztah a _směrování tranzitu není podporováno přes partnerský vztah virtuální sítě_.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Delegování podsítě na Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
+[Delegování podsítě do Azure NetApp Files](azure-netapp-files-delegate-subnet.md)

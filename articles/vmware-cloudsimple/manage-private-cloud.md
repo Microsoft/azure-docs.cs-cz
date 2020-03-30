@@ -1,6 +1,6 @@
 ---
-title: Správa privátního cloudu řešení Azure VMware Solutions (AVS)
-description: V této části najdete popis dostupných možností pro správu prostředků a aktivit privátního cloudu služby AVS.
+title: Správa řešení Azure VMware pomocí cloudového privátního cloudu
+description: Popisuje funkce, které jsou k dispozici pro správu prostředků a aktivit cloudu CloudSimple.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/10/2019
@@ -8,87 +8,87 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 47bf2251f71204b99245c1a9d55ef87157c41dd8
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 620c0226d3aca907352658ebbe1b94c7673d91cd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77014823"
 ---
-# <a name="manage-avs-private-cloud-resources-and-activities"></a>Správa prostředků a aktivit privátního cloudu pro funkci AVS
+# <a name="manage-private-cloud-resources-and-activity"></a>Správa prostředků a aktivit privátního cloudu
 
-Privátní cloudy služby AVS se spravují z portálu AVS. Ověřte stav, dostupné prostředky, činnost na privátním cloudu služby AVS a další nastavení z portálu služby AVS.
+Privátní cloudy se spravují z portálu CloudSimple.  Zkontrolujte stav, dostupné prostředky, aktivitu v privátním cloudu a další nastavení z portálu CloudSimple.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
+Přihlaste se k [https://portal.azure.com](https://portal.azure.com)portálu Azure na adrese .
 
-## <a name="access-the-avs-portal"></a>Přístup k portálu pro funkci AVS
+## <a name="access-the-cloudsimple-portal"></a>Přístup k portálu CloudSimple
 
-Přístup k [portálu AVS](access-cloudsimple-portal.md).
+Přístup k [portálu CloudSimple](access-cloudsimple-portal.md).
 
-## <a name="view-the-list-of-avs-private-clouds"></a>Zobrazit seznam privátních cloudů pro funkci AVS
+## <a name="view-the-list-of-private-clouds"></a>Zobrazit seznam soukromých cloudů
 
-Karta **soukromé cloudy služby AVS** na stránce **prostředky** obsahuje seznam všech privátních cloudů služby AVS v rámci vašeho předplatného. Informace zahrnují název, počet clusterů vSphere, umístění, aktuální stav privátního cloudu pro funkci AVS a informace o prostředku.
+Na kartě **Soukromé cloudy** na stránce **Prostředky** jsou uvedeny všechny privátní cloudy ve vašem předplatném. Informace zahrnují název, počet clusterů vSphere, umístění, aktuální stav privátního cloudu a informace o prostředcích.
 
-![Stránka privátního cloudu pro funkci AVS](media/manage-private-cloud.png)
+![Stránka Privátního cloudu](media/manage-private-cloud.png)
 
-Pokud chcete získat další informace a akce, vyberte privátní cloud služby AVS.
+Vyberte privátní cloud pro další informace a akce.
 
-## <a name="avs-private-cloud-summary"></a>Souhrn privátního cloudu pro funkci AVS
+## <a name="private-cloud-summary"></a>Souhrn privátního cloudu
 
-Zobrazí komplexní souhrn vybraného privátního cloudu pro funkci AVS. Stránka Souhrn obsahuje servery DNS nasazené v privátním cloudu služby AVS. Předávání DNS z místních serverů DNS můžete nastavit na servery DNS privátního cloudu služby AVS. Další informace o předávání DNS najdete v tématu [Konfigurace DNS pro překlad IP adres pro službu AVS Private Cloud vCenter z místního](https://docs.azure.cloudsimple.com/on-premises-dns-setup/)prostředí.
+Prohlédněte si komplexní souhrn vybraného privátního cloudu.  Souhrnná stránka obsahuje servery DNS nasazené v privátním cloudu.  Můžete nastavit předávání DNS z místních serverů DNS na servery DNS privátního cloudu.  Další informace o předávání DNS najdete [v tématu Konfigurace dns pro překlad názvů pro private cloud vCenter z místního prostředí](https://docs.azure.cloudsimple.com/on-premises-dns-setup/).
 
-![Souhrn privátního cloudu pro funkci AVS](media/private-cloud-summary.png)
+![Souhrn privátního cloudu](media/private-cloud-summary.png)
 
 ### <a name="available-actions"></a>Dostupné akce
 
-* [Spusťte klienta vSphere](https://docs.azure.cloudsimple.com/vsphere-access/). Přístup k vCenter pro tento privátní cloud služby AVS
-* [Koupit uzly](create-nodes.md). Přidejte uzly do tohoto privátního cloudu pro funkci AVS.
-* [Rozbalte](expand-private-cloud.md). Přidejte uzly do tohoto privátního cloudu pro funkci AVS.
+* [Spusťte klienta vSphere](https://docs.azure.cloudsimple.com/vsphere-access/). Přístup k virtuálnímu centru pro tento privátní cloud.
+* [Nákupní uzly](create-nodes.md). Přidejte uzly do tohoto privátního cloudu.
+* [Rozbalte](expand-private-cloud.md). Přidejte uzly do tohoto privátního cloudu.
 * **Aktualizovat**. Aktualizujte informace na této stránce.
-* **Odstraňte**. Privátní cloud AVS můžete kdykoli odstranit. **Před odstraněním se ujistěte, že jste zálohovali všechny systémy a data.** Odstranění privátního cloudu služby AVS odstraní všechny virtuální počítače, konfiguraci vCenter a data. V části Souhrn pro vybraný privátní cloud služby AVS klikněte na **Odstranit** . Po odstranění se všechna data privátního cloudu AVS vymažou v bezpečném a vysoce kompatibilním procesu mazání.
-* [Změňte oprávnění vSphere](escalate-private-cloud-privileges.md). Eskalovat vaše oprávnění k tomuto privátnímu cloudu služby AVS.
+* **Odstranit**. Privátní cloud můžete kdykoli odstranit. **Před odstraněním se ujistěte, že jste zálohovali všechny systémy a data.** Odstraněním privátního cloudu odstraníte všechny virtuální počítače, konfiguraci vcenter a data. V souhrnné části vybraného privátního cloudu klikněte na **Odstranit.** Po odstranění jsou všechna data privátního cloudu vymazána v zabezpečeném, vysoce kompatibilním procesu vymazání.
+* [Změňte oprávnění vSphere](escalate-private-cloud-privileges.md).  Eskalujte svá oprávnění v tomto privátním cloudu.
 
-## <a name="avs-private-cloud-vlanssubnets"></a>SÍTĚ VLAN a podsítě privátního cloudu pro funkci AVS
+## <a name="private-cloud-vlanssubnets"></a>Privátní cloudové sítě VLANS/podsítě
 
-Zobrazí seznam definovaných sítí VLAN a podsítí pro vybraný privátní cloud služby AVS. Seznam obsahuje sítě VLAN a podsítě pro správu, které byly vytvořeny při vytváření privátního cloudu pro funkci AVS.
+Zobrazení seznamu definovaných sítí VLAN/podsítí pro vybraný privátní cloud.  Seznam obsahuje správu sítí VLAN/podsítí vytvořených při vytvoření privátního cloudu.
 
-![Privátní cloud pro funkci AVS – sítě VLAN/podsítě](media/private-cloud-vlans-subnets.png) 
+![Privátní cloud – sítě VLAN/podsítě](media/private-cloud-vlans-subnets.png) 
 
 ### <a name="available-actions"></a>Dostupné akce
 
-* [Přidejte sítě VLAN/podsítě](https://docs.azure.cloudsimple.com/create-vlan-subnet/). Přidejte do tohoto privátního cloudu pro funkci AVS síť VLAN nebo podmnožinu.
+* [Přidejte VLANS/podsítě](https://docs.azure.cloudsimple.com/create-vlan-subnet/). Přidejte do tohoto privátního cloudu síť VLAN/podmnožinu.
 
-Vyberte síť VLAN nebo podsíť pro následující akce.
-* [Připojte tabulku brány firewall](https://docs.azure.cloudsimple.com/firewall/). Umožňuje připojit tabulku brány firewall k tomuto privátnímu cloudu funkce AVS.
+Výběr sítě VLAN/podsítě pro následující akce
+* [Připojte tabulku brány firewall](https://docs.azure.cloudsimple.com/firewall/). Připojte k tomuto privátnímu cloudu tabulku brány firewall.
 * **Upravit**
-* **Odstranit** (jenom uživatelsky definované sítě VLAN/podsítě)
+* **Odstranit** (pouze uživatelem definované sítě VLAN/podsítě)
 
-## <a name="avs-private-cloud-activity"></a>Aktivita privátního cloudu pro funkci AVS
+## <a name="private-cloud-activity"></a>Aktivita privátního cloudu
 
-Zobrazí následující informace o vybraném privátním cloudu služby AVS. Informace o aktivitách jsou filtrovaný seznam všech aktivit pro vybraný privátní cloud služby AVS. Tato stránka zobrazuje až 25 posledních aktivit.
+Zobrazení následujících informací pro vybraný privátní cloud.  Informace o aktivitě jsou filtrovaným seznamem všech aktivit pro vybraný privátní cloud.  Na této stránce se zobrazuje až 25 nedávných aktivit.
 
-* Nedávné výstrahy
+* Nedávná upozornění
 * Nedávné události
-* Poslední úkoly
-* Poslední audit
+* Nedávné úkoly
+* Nedávný audit
 
-![Privátní cloud AVS – aktivita](media/private-cloud-activity.png)
+![Privátní cloud – aktivita](media/private-cloud-activity.png)
 
-## <a name="cloud-racks"></a>Cloudové racky
+## <a name="cloud-racks"></a>Cloudové regály
 
-Cloudové racky představují stavební kameny vašeho privátního cloudu služby AVS. Každý stojan poskytuje jednotku kapacity. Při vytváření nebo rozšiřování privátního cloudu služby AVS automaticky konfiguruje cloudové racky na základě vašich voleb. Zobrazte úplný seznam cloudových stojanů, včetně privátního cloudu pro funkci AVS, ke kterému jsou přiřazeny.
+Cloudové regály jsou stavebními kameny vašeho privátního cloudu. Každý stojan poskytuje jednotku kapacity. CloudSimple automaticky konfiguruje cloudové racky na základě vašich výběrů při vytváření nebo rozšiřování privátního cloudu.  Prohlédněte si úplný seznam cloudových racků, včetně privátního cloudu, ke kterému je každý přiřazen.
 
-![Privátní cloud pro funkci AVS – cloudové racky](media/private-cloud-cloudracks.png)
+![Privátní cloud – cloudové regály](media/private-cloud-cloudracks.png)
 
 ## <a name="vsphere-management-network"></a>Síť pro správu vSphere
 
-Seznam prostředků správy VMware a virtuálních počítačů, které jsou aktuálně nakonfigurované v privátním cloudu pro funkci AVS Informace zahrnují verzi softwaru, plně kvalifikovaný název domény (FQDN) a IP adresu prostředků.
+Seznam prostředků pro správu společnosti VMware a virtuálních počítačů, které jsou aktuálně nakonfigurované v privátním cloudu. Informace zahrnují verzi softwaru, plně kvalifikovaný název domény (FQDN) a IP adresu prostředků.
 
-![Privátní cloud AVS – síť pro správu vSphere](media/private-cloud-vsphere-management-network.png)
+![Privátní cloud – síť pro správu vSphere](media/private-cloud-vsphere-management-network.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Využití virtuálních počítačů VMware v Azure](quickstart-create-vmware-virtual-machine.md)
-* Další informace o [privátních cloudech](cloudsimple-private-cloud.md) pro funkci AVS
+* [Využívání virtuálních počítačů VMware v Azure](quickstart-create-vmware-virtual-machine.md)
+* Další informace o [privátních cloudech](cloudsimple-private-cloud.md)

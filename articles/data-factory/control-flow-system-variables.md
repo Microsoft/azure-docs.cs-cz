@@ -1,6 +1,6 @@
 ---
 title: Systémové proměnné v Azure Data Factory
-description: Tento článek popisuje systémové proměnné, které podporuje Azure Data Factory. Tyto proměnné můžete použít ve výrazech při definování Data Factory entit.
+description: Tento článek popisuje systémové proměnné podporované službou Azure Data Factory. Tyto proměnné můžete použít ve výrazech při definování entit Factory dat.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,43 +12,43 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.openlocfilehash: 0a5237336530d30c3801b13b910171e236e87a23
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73679275"
 ---
-# <a name="system-variables-supported-by-azure-data-factory"></a>Systémové proměnné podporované nástrojem Azure Data Factory
-Tento článek popisuje systémové proměnné, které podporuje Azure Data Factory. Tyto proměnné můžete použít ve výrazech při definování Data Factory entit.
+# <a name="system-variables-supported-by-azure-data-factory"></a>Systémové proměnné podporované službou Azure Data Factory
+Tento článek popisuje systémové proměnné podporované službou Azure Data Factory. Tyto proměnné můžete použít ve výrazech při definování entit Factory dat.
 
 ## <a name="pipeline-scope"></a>Obor kanálu
-Na tyto systémové proměnné se dá odkazovat kdekoli v kódu JSON kanálu.
+Tyto systémové proměnné lze odkazovat kdekoli v kanálu JSON.
 
 | Název proměnné | Popis |
 | --- | --- |
-| @pipeline(). DataFactory |Název datové továrny, na které běží běh kanálu v rámci |
-| @pipeline(). Kanálu |Název kanálu |
+| @pipeline(). DataFactory |Název datové továrny, kterou je spuštěno v rámci spuštění kanálu |
+| @pipeline(). Potrubí |Název potrubí |
 | @pipeline(). RunId | ID konkrétního spuštění kanálu |
-| @pipeline(). TriggerType | Typ triggeru, který vyvolal kanál (ruční, Scheduler) |
-| @pipeline(). TriggerId| ID triggeru, který vyvolá kanál |
-| @pipeline(). TriggerName| Název triggeru, který vyvolá kanál. |
-| @pipeline(). TriggerTime| Čas, kdy Trigger vyvolal kanál. Doba triggeru je skutečný čas aktivace, nikoli naplánovaný čas. Například `13:20:08.0149599Z` se vrátí místo `13:20:00.00Z` |
+| @pipeline(). Typ aktivační události | Typ aktivační události, která vyvolala kanál (Ruční, Plánovač) |
+| @pipeline(). TriggerId| ID aktivační události, která vyvolá kanál |
+| @pipeline(). Název_aktivační události| Název aktivační události, která vyvolá kanál |
+| @pipeline(). TriggerTime| Čas, kdy aktivační událost, která vyvolala kanál. Čas aktivační události je skutečný čas vypalovaného, nikoli naplánovaný čas. Například `13:20:08.0149599Z` je vrácena namísto`13:20:00.00Z` |
 
-## <a name="schedule-trigger-scope"></a>Rozsah triggeru plánu
-V případě, že je Trigger typu "ScheduleTrigger", mohou být tyto systémové proměnné odkazovány kdekoli v triggeru JSON.
-
-| Název proměnné | Popis |
-| --- | --- |
-| @trigger(). scheduledTime |Čas, kdy byla aktivační událost naplánována k vyvolání spuštění kanálu. Například pro Trigger, který se aktivuje každých 5 minut, bude tato proměnná vracet `2017-06-01T22:20:00Z`, `2017-06-01T22:25:00Z``2017-06-01T22:30:00Z` v uvedeném pořadí.|
-| @trigger(). Čas_spuštění |Čas, kdy se Trigger **skutečně** vyvolal pro vyvolání spuštění kanálu. Například pro aktivační událost, která se aktivuje každých 5 minut, může tato proměnná vracet něco podobného `2017-06-01T22:20:00.4061448Z`, `2017-06-01T22:25:00.7958577Z``2017-06-01T22:30:00.9935483Z` v uvedeném pořadí. (Poznámka: ve výchozím nastavení je časové razítko ve formátu ISO 8601.)|
-
-## <a name="tumbling-window-trigger-scope"></a>Rozsah triggeru pro bubnový interval
-V případě, že je Trigger typu "TumblingWindowTrigger", mohou být tyto systémové proměnné odkazovány kdekoli v triggeru JSON.
-(Poznámka: ve výchozím nastavení je časové razítko ve formátu ISO 8601.)
+## <a name="schedule-trigger-scope"></a>Obor aktivační události plánu
+Tyto systémové proměnné lze odkazovat kdekoli v aktivační události JSON, pokud aktivační událost je typu: "ScheduleTrigger."
 
 | Název proměnné | Popis |
 | --- | --- |
-| @trigger(). Outputs. windowStartTime |Spustí se okno, když se Trigger naplánoval na vyvolání běhu kanálu. Pokud má aktivační událost pro bubnové okno frekvenci "každou hodinu", bude to čas na začátku hodiny.|
-| @trigger(). Outputs. windowEndTime |Konec okna v případě, že Trigger naplánoval vyvolání spuštění kanálu. Pokud má aktivační událost pro bubnové okno frekvenci "každou hodinu", bude to čas na konci hodiny.|
+| @trigger().scheduledTime |Čas, kdy byla naplánovaná aktivační událost k vyvolání spuštění kanálu. Například pro aktivační událost, která se aktivuje každých `2017-06-01T22:25:00Z` `2017-06-01T22:30:00Z` 5 minut, tato proměnná vrátí `2017-06-01T22:20:00Z`, , v uvedeném pořadí.|
+| @trigger().startTime |Čas, kdy aktivační událost **skutečně** aktivována vyvolat spuštění kanálu. Například pro aktivační událost, která se aktivuje každých 5 `2017-06-01T22:20:00.4061448Z` `2017-06-01T22:25:00.7958577Z`minut, může tato proměnná vrátit něco takového , , `2017-06-01T22:30:00.9935483Z` v uvedeném pořadí. (Poznámka: Časové razítko je ve výchozím nastavení ve formátu ISO 8601)|
+
+## <a name="tumbling-window-trigger-scope"></a>Rozsah aktivační události omílání okna
+Tyto systémové proměnné lze odkazovat kdekoli v aktivační události JSON, pokud aktivační událost je typu: "TumblingWindowTrigger."
+(Poznámka: Časové razítko je ve výchozím nastavení ve formátu ISO 8601)
+
+| Název proměnné | Popis |
+| --- | --- |
+| @trigger().outputs.windowStartTime |Začátek okna, kdy byla naplánována aktivační událost vyvolat spuštění kanálu. Pokud omílání okno spoušť má frekvenci "hodinové" by to čas na začátku hodiny.|
+| @trigger().outputs.windowEndTime |Konec okna, kdy byla naplánována aktivační událost vyvolat spuštění kanálu. Pokud omílání okno spoušť má frekvenci "hodinové" by to čas na konci hodiny.|
 ## <a name="next-steps"></a>Další kroky
-Informace o tom, jak se tyto proměnné používají ve výrazech, najdete v tématu [Expression language & Functions](control-flow-expression-language-functions.md).
+Informace o tom, jak jsou tyto proměnné používány ve výrazech, naleznete v [tématu Výraz jazyka & funkce](control-flow-expression-language-functions.md).

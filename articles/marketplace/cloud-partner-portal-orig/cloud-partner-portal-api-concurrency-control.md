@@ -1,38 +1,37 @@
 ---
-title: Řízení souběžnosti | Azure Marketplace
-description: Strategie řízení souběžnosti pro portál partnerů cloudu publikování rozhraní API.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Kontrola souběžnosti | Azure Marketplace
+description: Strategie řízení souběžnosti pro portál cloudových partnerů publikování api.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 6e2f8922d42e40d14338f06be983d3913b20859d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 6d0f035d77e74f157b793b9edf3ab5d3494096d7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819752"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288644"
 ---
 # <a name="concurrency-control"></a>Řízení souběžnosti
 
-Každé volání portál partnerů cloudu rozhraní API pro publikování musí explicitně určit, kterou strategii řízení souběžnosti použít. **Pokud záhlaví If-Match** neposkytnete, výsledkem bude chybná odpověď HTTP 400. Nabízíme dvě strategie řízení souběžnosti.
+Každé volání na portál cloudových partnerů publikování api musí explicitně určit, které strategie řízení souběžnosti použít. Neposkytnutí hlavičky **If-Match** bude mít za následek odpověď na chybu HTTP 400. Nabízíme dvě strategie pro řízení souběžnosti.
 
--   **Optimistická** – klient, který provádí aktualizaci, ověří, jestli se data od posledního načtení dat změnila.
--   **Poslední služba WINS** – klient přímo aktualizuje data, bez ohledu na to, jestli ji od posledního čtení změnila jiná aplikace.
+-   **Optimistický** - Klient provádějící aktualizaci ověří, zda se data změnila od posledního čtení dat.
+-   **Poslední vyhrává** - Klient přímo aktualizuje data, bez ohledu na to, zda ji od posledního čtení upravila jiná aplikace.
 
-<a name="optimistic-concurrency-workflow"></a>Optimistická pracovní postup souběžnosti
+<a name="optimistic-concurrency-workflow"></a>Optimistický pracovní postup souběžnosti
 -------------------------------
 
-Doporučujeme použít strategii optimistického souběžnosti s následujícím pracovním postupem, abyste zajistili, že se neprovádí žádné neočekávané úpravy vašich prostředků.
+Doporučujeme použít optimistickou strategii souběžnosti s následujícím pracovním postupem, která zaručí, že nebudou provedeny žádné neočekávané úpravy vašich prostředků.
 
-1.  Načtěte entitu pomocí rozhraní API. Odpověď obsahuje hodnotu ETag, která identifikuje aktuálně uloženou verzi entity (v době odezvy).
-2.  V okamžiku aktualizace zahrňte stejnou hodnotu ETag do hlavičky žádosti o povinnou hodnotu **If-Match** .
-3.  Rozhraní API porovnává hodnotu ETag přijatou v požadavku s aktuální hodnotou ETag entity v atomické transakci.
-    *   Pokud se hodnoty ETag liší, vrátí rozhraní API odpověď `412 Precondition Failed` HTTP. Tato chyba znamená, že se entita aktualizovala jiným procesem, protože ji klient naposledy načetl nebo že hodnota ETag zadaná v požadavku není správná.
-    *  Pokud jsou hodnoty ETag stejné nebo hlavička **If-Match** obsahuje zástupný znak hvězdičky (`*`), rozhraní API provede požadovanou operaci. Operace rozhraní API také aktualizuje uloženou hodnotu ETag entity.
+1.  Načíst entitu pomocí api. Odpověď obsahuje hodnotu ETag, která identifikuje aktuálně uloženou verzi entity (v době odpovědi).
+2.  V době aktualizace zahrňte stejnou hodnotu ETag do povinné hlavičky požadavku **If-Match.**
+3.  Rozhraní API porovná hodnotu ETag přijatou v požadavku s aktuální hodnotou ETag entity v atomické transakci.
+    *   Pokud eTag hodnoty se liší, `412 Precondition Failed` rozhraní API vrátí odpověď HTTP. Tato chyba označuje, že buď jiný proces aktualizoval entitu od posledního načtení klienta, nebo že hodnota ETag zadaná v požadavku je nesprávná.
+    *  Pokud jsou hodnoty ETag stejné nebo hlavička **If-Match** obsahuje zástupný`*`znak hvězdičky ( ), rozhraní API provede požadovanou operaci. Operace rozhraní API také aktualizuje uloženou hodnotu ETag entity.
 
 
 > [!NOTE]
-> Zadání zástupných znaků (*) v hlavičce **If-Match** vede k rozhraní API pomocí strategie souběžnosti poslední služby WINS. V tomto případě se neobjeví porovnávání značek ETag a prostředek se aktualizuje bez jakýchkoli kontrol. 
+> Zadání zástupný znak (*) v **záhlaví If-Match** výsledky v rozhraní API pomocí Last-one wins souběžnosti strategie. V tomto případě nedochází k porovnání eTag a prostředek je aktualizován bez kontrol. 
