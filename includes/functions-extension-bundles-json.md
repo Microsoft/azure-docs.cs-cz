@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/14/2019
 ms.author: glenga
 ms.openlocfilehash: f47a543143c949715fe2a49adccf074759a346fa
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
-ms.translationtype: HT
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79381833"
 ---
 ```json
@@ -21,13 +21,13 @@ ms.locfileid: "79381833"
 }
 ```
 
-V objektu `extensionBundle` jsou k dispozici následující vlastnosti:
+Následující vlastnosti jsou `extensionBundle`k dispozici v :
 
 | Vlastnost | Popis |
 | -------- | ----------- |
-| id | Obor názvů pro sady rozšíření Microsoft Azure Functions |
-| version | Verze sady, která se má nainstalovat. Modul runtime služby Functions vždy vybere maximální přípustnou verzi definovanou rozsahem nebo intervalem verzí. Výše uvedená hodnota verze povoluje všechny verze sady od 1.0.0 až po, ale ne včetně 2.0.0. Další informace najdete v části věnované [zápisu intervalů pro zadávání rozsahů verzí](/nuget/reference/package-versioning#version-ranges). |
+| id | Obor názvů pro rozšíření Microsoft Azure Functions. |
+| version | Verze balíčku k instalaci. Zaběhu Funkce vždy vybere maximální přípustnou verzi definovanou rozsahem verze nebo intervalem. Výše uvedená hodnota verze umožňuje všechny verze balíčku od 1.0.0 do, ale bez hodnoty 2.0.0. Další informace naleznete v [zápisu intervalu pro určení rozsahů verzí](/nuget/reference/package-versioning#version-ranges). |
 
-Verze sady se zvyšují s ohledem na změny balíčků v sadě. Ke změnám hlavní verze dochází, když se zvýší hlavní verze balíčků v sadě. Změny hlavní verze sady se obvykle časově shodují se změnami hlavní verze modulu runtime služby Functions.  
+Přírůstek verzí balíčků jako balíčky v balíčku se mění. Změny hlavních verzí nastanou, když balíčky v přírůstek svazku hlavní verze. Hlavní změny verzí v balíčku se obvykle shodují se změnou hlavní verze runtime Funkce.  
 
-Aktuální seznam rozšíření, která instaluje výchozí sada, najdete v tomto [souboru extensions.json](https://github.com/Azure/azure-functions-extension-bundles/blob/master/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json).
+Aktuální sada rozšíření nainstalovaných ve výchozí sadě je uvedena v tomto [souboru extensions.json](https://github.com/Azure/azure-functions-extension-bundles/blob/master/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json).

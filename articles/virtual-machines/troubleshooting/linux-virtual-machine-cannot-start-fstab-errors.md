@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží se spouštěním virtuálních počítačů s Linuxem z důvodu chyb fstab | Microsoft Docs
-description: Vysvětluje, proč nelze spustit virtuální počítač se systémem Linux a jak tento problém vyřešit.
+title: Poradce při potížích se spuštěním virtuálního počítače s Linuxem kvůli chybám fstab | Dokumenty společnosti Microsoft
+description: Vysvětluje, proč se virtuální počítač s Linuxem nemůže spustit a jak problém vyřešit.
 services: virtual-machines-linux
 documentationcenter: ''
 author: v-miegge
@@ -14,42 +14,42 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: 868a0238092786d0999a6a41de71d30011bbef7a
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 7e16eabc4f9572591eabd37b93258fcd783cce7e
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72245341"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80351154"
 ---
-# <a name="troubleshoot-linux-vm-starting-issues-due-to-fstab-errors"></a>Řešení potíží se spouštěním virtuálních počítačů s Linuxem z důvodu chyb fstab
+# <a name="troubleshoot-linux-vm-starting-issues-due-to-fstab-errors"></a>Poradce při potížích se spuštěním virtuálního počítače s Linuxem kvůli chybám fstab
 
-K virtuálnímu počítači Azure Linux se nemůžete připojit pomocí připojení Secure Shell (SSH). Když spustíte funkci [diagnostiky spouštění](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) na [Azure Portal](https://portal.azure.com/), zobrazí se položky protokolu, které budou vypadat jako v následujících příkladech:
+K virtuálnímu počítači Azure Linux (VM) se nemůžete připojit pomocí zabezpečeného prostředí (SSH). Při spuštění funkce [Diagnostika spouštění](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) na [webu Azure Portal](https://portal.azure.com/)se zobrazí položky protokolu, které se podobají následujícím příkladům:
 
 ## <a name="examples"></a>Příklady
 
-Níže jsou uvedeny příklady možných chyb.
+Následují příklady možných chyb.
 
-### <a name="example-1-a-disk-is-mounted-by-the-scsi-id-instead-of-the-universally-unique-identifier-uuid"></a>Příklad 1: disk je připojen pomocí ID SCSI místo univerzálního jedinečného identifikátoru (UUID).
+### <a name="example-1-a-disk-is-mounted-by-the-scsi-id-instead-of-the-universally-unique-identifier-uuid"></a>Příklad 1: Disk je připojen pomocí ID SCSI namísto univerzálně jedinečného identifikátoru (UUID)
 
 ```
 [K[[1;31m TIME [0m] Timed out waiting for device dev-incorrect.device.
 [[1;33mDEPEND[0m] Dependency failed for /data.
 [[1;33mDEPEND[0m] Dependency failed for Local File Systems.
 …
-Welcome to emergency mode! After logging in, type “journalctl -xb” to viewsystem logs, “systemctl reboot” to reboot, “systemctl default” to try again to boot into default mode.
+Welcome to emergency mode! After logging in, type "journalctl -xb" to viewsystem logs, "systemctl reboot" to reboot, "systemctl default" to try again to boot into default mode.
 Give root password for maintenance
 (or type Control-D to continue)
 ```
 
-### <a name="example-2-an-unattached-device-is-missing-on-centos"></a>Příklad 2: v CentOS chybí nepřipojené zařízení
+### <a name="example-2-an-unattached-device-is-missing-on-centos"></a>Příklad 2: V CentOS chybí nepřipojené zařízení
 
 ```
 Checking file systems…
 fsck from util-linux 2.19.1
 Checking all file systems.
-/dev/sdc1: nonexistent device (“nofail” fstab option may be used to skip this device)
-/dev/sdd1: nonexistent device (“nofail” fstab option may be used to skip this device)
-/dev/sde1: nonexistent device (“nofail” fstab option may be used to skip this device)
+/dev/sdc1: nonexistent device ("nofail" fstab option may be used to skip this device)
+/dev/sdd1: nonexistent device ("nofail" fstab option may be used to skip this device)
+/dev/sde1: nonexistent device ("nofail" fstab option may be used to skip this device)
 
 [/sbin/fsck.ext3 (1) — /CODE] sck.ext3 -a /dev/sdc1
 fsck.ext3: No such file or directory while trying to open /dev/sdc1
@@ -67,14 +67,14 @@ e2fsck -b 8193 <device>
 [/sbin/fsck.ext3 (1) — /DATATEMP] fsck.ext3 -a /dev/sde1 fsck.ext3: No such file or directory while trying to open /dev/sde1
 ```
 
-### <a name="example-3-a-vm-cannot-start-because-of-an-fstab-misconfiguration-or-because-the-disk-is-no-longer-attached"></a>Příklad 3: virtuální počítač nejde spustit z důvodu nefstabé konfigurace nebo to, že disk už není připojený.
+### <a name="example-3-a-vm-cannot-start-because-of-an-fstab-misconfiguration-or-because-the-disk-is-no-longer-attached"></a>Příklad 3: Virtuální modul nelze spustit z důvodu chybné konfigurace fstab nebo protože disk již není připojen
 
 ```
 The disk drive for /var/lib/mysql is not ready yet or not present.
 Continue to wait, or Press S to skip mounting or M for manual recovery
 ```
 
-### <a name="example-4-a-serial-log-entry-shows-an-incorrect-uuid"></a>Příklad 4: položka sériového protokolu zobrazuje nesprávný UUID
+### <a name="example-4-a-serial-log-entry-shows-an-incorrect-uuid"></a>Příklad 4: Položka sériového protokolu zobrazuje nesprávné UUID
 
 ```
 Checking filesystems
@@ -90,27 +90,63 @@ fsck.ext4: Unable to resolve UUID="<UUID>"
 *** when you leave the shell.
 *** Warning — SELinux is active
 *** Disabling security enforcement for system recovery.
-*** Run ‘setenforce 1’ to reenable.
+*** Run 'setenforce 1' to reenable.
 type=1404 audit(1428047455.949:4): enforcing=0 old_enforcing=1 auid=<AUID> ses=4294967295
 Give root password for maintenance
 (or type Control-D to continue)
 ```
 
-K tomuto problému může dojít v případě, že syntaxe tabulky systému souborů (fstab) je nesprávná nebo pokud není k virtuálnímu počítači připojen požadovaný datový disk, který je namapován na záznam v souboru "/etc/fstab".
+K tomuto problému může dojít, pokud je nesprávná syntaxe tabulky systémů souborů (fstab) nebo pokud není k virtuálnímu počítače připojen požadovaný datový disk, který je mapován na položku v souboru "/etc/fstab".
 
 ## <a name="resolution"></a>Řešení
 
-Pokud chcete tento problém vyřešit, spusťte virtuální počítač v nouzovém režimu pomocí sériové konzoly pro Azure Virtual Machines. Pak pomocí nástroje opravte systém souborů. Pokud není na vašem VIRTUÁLNÍm počítači povolená sériová konzola, přečtěte si část [opravy offline virtuálního počítače](#repair-the-vm-offline) .
+Chcete-li tento problém vyřešit, spusťte virtuální počítač v nouzovém režimu pomocí sériové konzoly pro virtuální počítače Azure. Potom pomocí nástroje opravte systém souborů. Pokud konzole sériové konzole není na vašem virtuálním počítači povolená, přejděte do části [Oprava virtuálního počítače offline.](#repair-the-vm-offline)
 
-## <a name="use-the-serial-console"></a>Použití konzoly sériového portu
+## <a name="use-the-serial-console"></a>Použití sériové konzoly
 
-1. Připojte se ke [konzole sériového portu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux).
+### <a name="using-single-user-mode"></a>Použití režimu jednoho uživatele
+
+1. Připojte se [k sériové konzoli](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux).
+2. Použití sériové konzoly k převzít režim jednoho uživatele [režimu jednoho uživatele](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)
+3. Jakmile je virtuální měna spuštěna do režimu jednoho uživatele. Pomocí oblíbeného textového editoru otevřete soubor fstab. 
+
+   ```
+   # nano /etc/fstab
+   ```
+
+4. Zkontrolujte uvedené systémy souborů. Každý řádek v souboru fstab označuje systém souborů, který je připojen při spuštění virtuálního aplikace. Pro více informací o syntaxi souboru fstab, spusťte příkaz man fstab. Chcete-li vyřešit selhání spuštění, zkontrolujte každý řádek a ujistěte se, že je správný ve struktuře i obsahu.
+
+   > [!Note]
+   > * Pole na každém řádku jsou oddělena kartami nebo mezerami. Prázdné řádky jsou ignorovány. Řádky, které mají znak čísla (#) jako první znak jsou komentáře. Komentované řádky mohou zůstat v souboru fstab, ale nebudou zpracovány. Doporučujeme, abyste místo odstranění řádků komentovali řádky, o kterých si nejste jisti.
+   > * Pro virtuální ho virtuálního mě nit k obnovení a spuštění by měly být oddíly systému souborů pouze požadované oddíly. Virtuální ho virtuálního objektu může dojít k chybám aplikace o další komentáře oddíly. Virtuální virtuální byl však spustit bez další oddíly. Později můžete odkomentovat všechny komentované řádky.
+   > * Doporučujeme připojit datové disky na virtuálních počítačích Azure pomocí UUID oddílu systému souborů. Spusťte například následující příkaz:``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
+   > * Chcete-li určit UUID systému souborů, spusťte příkaz blkid. Další informace o syntaxi získáte spuštěním příkazu man blkid.
+   > * Možnost nofail pomáhá zajistit, že se virtuální vír spustí i v případě, že je systém souborů poškozen nebo při spuštění neexistuje systém souborů. Doporučujeme použít možnost nofail v souboru fstab, abyste povolili pokračování při spuštění po chybách v oddílech, které nejsou nutné pro spuštění virtuálního aplikace.
+
+5. Změňte nebo zakomentujte všechny nesprávné nebo nepotřebné řádky v souboru fstab, aby se virtuální svět mohl správně spustit.
+
+6. Uložte změny do souboru fstab.
+
+7. Restartujte virtuální počítač pomocí níže uvedeného příkazu.
+   
+   ```
+   # reboot -f
+   ```
+> [!Note]
+   > Můžete také použít příkaz "ctrl+x", který by také restartoval virtuální počítač.
+
+
+8. Pokud položky komentář nebo oprava byla úspěšná, systém by měl dosáhnout bash výzvu na portálu. Zkontrolujte, jestli se můžete připojit k virtuálnímu virtuálnímu zařízení.
+
+### <a name="using-root-password"></a>Použití kořenového hesla
+
+1. Připojte se [k sériové konzoli](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux).
 2. Přihlaste se k systému pomocí místního uživatele a hesla.
 
    > [!Note]
-   > Nelze použít klíč SSH pro přihlášení k systému v konzole sériového portu.
+   > K přihlášení k systému v konzole sériové ho nelze použít klíč SSH.
 
-3. Vyhledejte chybu, která indikuje, že disk není připojený. V následujícím příkladu se systém pokusil připojit disk, který již není přítomen:
+3. Vyhledejte chybu, která označuje, že disk nebyl připojen. V následujícím příkladu se systém pokoušel připojit disk, který již nebyl přítomen:
 
    ```
    [DEPEND] Dependency failed for /datadisk1.
@@ -123,40 +159,40 @@ Pokud chcete tento problém vyřešit, spusťte virtuální počítač v nouzov�
    (or type Control-D to continue):
    ```
 
-4. Připojte se k virtuálnímu počítači pomocí kořenového hesla (virtuální počítače se systémem Red Hat).
+4. Připojte se k virtuálnímu počítače pomocí kořenového hesla (virtuální počítače založené na Red Hat).
 
-5. K otevření souboru fstab použijte oblíbený textový editor. Po připojení disku spusťte následující příkaz pro nano:
+5. Pomocí oblíbeného textového editoru otevřete soubor fstab. Po navjetí disku spusťte pro Nano následující příkaz:
 
    ```
    $ nano /mnt/troubleshootingdisk/etc/fstab
    ```
 
-6. Zkontrolujte uvedené systémy souborů. Každý řádek v souboru fstab označuje systém souborů, který je připojený při spuštění virtuálního počítače. Další informace o syntaxi souboru fstab spustíte příkazem Man fstab. Chcete-li vyřešit chybu spuštění, zkontrolujte jednotlivé řádky a ujistěte se, že jsou správné v obou strukturách i v obsahu.
+6. Zkontrolujte uvedené systémy souborů. Každý řádek v souboru fstab označuje systém souborů, který je připojen při spuštění virtuálního aplikace. Pro více informací o syntaxi souboru fstab, spusťte příkaz man fstab. Chcete-li vyřešit selhání spuštění, zkontrolujte každý řádek a ujistěte se, že je správný ve struktuře i obsahu.
 
    > [!Note]
-   > * Pole na každém řádku jsou oddělená tabulátory nebo mezerami. Prázdné řádky jsou ignorovány. Řádky, které mají znak čísla (#) jako první znak jsou komentáře. Řádky s komentářem mohou zůstat v souboru fstab, ale nebudou zpracovány. Doporučujeme, abyste fstab řádky, na které si nejste jisti, místo odebrání řádků.
-   > * Aby se virtuální počítač mohl zotavit a spustit, měly by být oddíly systému souborů jedinými požadovanými oddíly. Virtuální počítač může zaznamenat chyby aplikace o dalších oddílech s komentářem. Virtuální počítač by se ale měl spustit bez dalších oddílů. Později můžete odkomentovat všechny řádky s komentářem.
-   > * Pro virtuální počítače Azure doporučujeme připojit datové disky pomocí identifikátoru UUID oddílu systému souborů. Například spusťte následující příkaz: ``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
-   > * Chcete-li zjistit UUID systému souborů, spusťte příkaz blkid. Další informace o syntaxi získáte spuštěním příkazu man blkid.
-   > * Možnost neúspěchu pomáhá zajistit, že se virtuální počítač spustí i v případě, že je systém souborů poškozený nebo když systém souborů neexistuje při spuštění. Doporučujeme, abyste v souboru fstab použili možnost neúspěšného spuštění, abyste mohli v případě výskytu chyb v oddílech, které nejsou nutné k tomu, aby se virtuální počítač spustil, pokračovat v práci.
+   > * Pole na každém řádku jsou oddělena kartami nebo mezerami. Prázdné řádky jsou ignorovány. Řádky, které mají znak čísla (#) jako první znak jsou komentáře. Komentované řádky mohou zůstat v souboru fstab, ale nebudou zpracovány. Doporučujeme, abyste místo odstranění řádků komentovali řádky, o kterých si nejste jisti.
+   > * Pro virtuální ho virtuálního mě nit k obnovení a spuštění by měly být oddíly systému souborů pouze požadované oddíly. Virtuální ho virtuálního objektu může dojít k chybám aplikace o další komentáře oddíly. Virtuální virtuální byl však spustit bez další oddíly. Později můžete odkomentovat všechny komentované řádky.
+   > * Doporučujeme připojit datové disky na virtuálních počítačích Azure pomocí UUID oddílu systému souborů. Spusťte například následující příkaz:``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
+   > * Chcete-li určit UUID systému souborů, spusťte příkaz blkid. Další informace o syntaxi získáte spuštěním příkazu man blkid.
+   > * Možnost nofail pomáhá zajistit, že se virtuální vír spustí i v případě, že je systém souborů poškozen nebo při spuštění neexistuje systém souborů. Doporučujeme použít možnost nofail v souboru fstab, abyste povolili pokračování při spuštění po chybách v oddílech, které nejsou nutné pro spuštění virtuálního aplikace.
 
-7. Pokud chcete povolit, aby se virtuální počítač spouštěl správně, změňte nebo zakomentujte všechny nesprávné nebo nepotřebné řádky v souboru fstab.
+7. Změňte nebo zakomentujte všechny nesprávné nebo nepotřebné řádky v souboru fstab, aby se virtuální svět mohl správně spustit.
 
 8. Uložte změny do souboru fstab.
 
 9. Restartujte virtuální počítač.
 
-10. Pokud komentář nebo opravu záznamů proběhla úspěšně, měl by se systém dostat na výzvu bash na portálu. Ověřte, jestli se můžete připojit k virtuálnímu počítači.
+10. Pokud položky komentář nebo oprava byla úspěšná, systém by měl dosáhnout bash výzvu na portálu. Zkontrolujte, jestli se můžete připojit k virtuálnímu virtuálnímu zařízení.
 
-11. Zkontrolujte přípojné body, když otestujete jakoukoli fstab změnu spuštěním příkazu Mount – a. Pokud nedochází k žádným chybám, měly by být přípojné body správné.
+11. Zkontrolujte, zda vaše přípojné body při testování jakékoli fstab změnit spuštěním připojit -příkaz. Pokud nejsou žádné chyby, přípojné body by měly být dobré.
 
-## <a name="repair-the-vm-offline"></a>Oprava virtuálního počítače v režimu offline
+## <a name="repair-the-vm-offline"></a>Oprava virtuálního virtuálního montovadova offline
 
-1. Připojte systémový disk virtuálního počítače jako datový disk k virtuálnímu počítači pro obnovení (libovolný pracovní virtuální počítač se systémem Linux). K tomu můžete použít [příkazy rozhraní příkazového řádku](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux) nebo můžete automatizovat nastavení virtuálního počítače pro obnovení pomocí příkazů pro [opravu virtuálního počítače](repair-linux-vm-using-azure-virtual-machine-repair-commands.md).
+1. Připojte systémový disk virtuálního počítače jako datový disk k virtuálnímu počítači pro obnovení (jakýkoli funkční virtuální počítač s Linuxem). Chcete-li to provést, můžete použít [příkazy příkazu příkazu příkazu příkazy nebo](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux) můžete automatizovat nastavení virtuálního virtuálního soudu pro obnovení pomocí [příkazů pro opravu virtuálních virtuálních stránek](repair-linux-vm-using-azure-virtual-machine-repair-commands.md).
 
-2. Jakmile připojíte systémový disk jako datový disk na virtuálním počítači pro obnovení, před provedením změn zálohujte soubor fstab a pak postupujte podle dalších kroků a opravte soubor fstab.
+2. Po připojení systémového disku jako datového disku na virtuální ms pro obnovení zálohujte soubor fstab před prováděním změn a postupujte podle následujících kroků k opravě souboru fstab.
 
-3.  Vyhledejte chybu, která indikuje, že disk není připojený. V následujícím příkladu se systém pokusil připojit disk, který již není přítomen:
+3.    Vyhledejte chybu, která označuje, že disk nebyl připojen. V následujícím příkladu se systém pokoušel připojit disk, který již nebyl přítomen:
 
     ```
     [DEPEND] Dependency failed for /datadisk1.
@@ -167,43 +203,43 @@ Pokud chcete tento problém vyřešit, spusťte virtuální počítač v nouzov�
     Give root password for maintenance (or type Control-D to continue):
     ```
 
-4. Připojte se k virtuálnímu počítači pomocí kořenového hesla (virtuální počítače se systémem Red Hat).
+4. Připojte se k virtuálnímu počítače pomocí kořenového hesla (virtuální počítače založené na Red Hat).
 
-5. K otevření souboru fstab použijte oblíbený textový editor. Po připojení disku spusťte následující příkaz pro nano. Ujistěte se, že pracujete na souboru fstab, který je umístěný na připojeném disku, a ne na fstab soubor, který je na záchranném virtuálním počítači.
+5. Pomocí oblíbeného textového editoru otevřete soubor fstab. Po navjetí disku spusťte následující příkaz pro Nano. Ujistěte se, že pracujete na souboru fstab, který je umístěn na připojeném disku, a ne na souboru fstab, který je na záchranném virtuálním počítači.
 
    ```
    $ nano /mnt/troubleshootingdisk/etc/fstab
    ```
 
-6. Zkontrolujte uvedené systémy souborů. Každý řádek v souboru fstab označuje systém souborů, který je připojený při spuštění virtuálního počítače. Další informace o syntaxi souboru fstab spustíte příkazem Man fstab. Chcete-li vyřešit chybu spuštění, zkontrolujte jednotlivé řádky a ujistěte se, že jsou správné v obou strukturách i v obsahu.
+6. Zkontrolujte uvedené systémy souborů. Každý řádek v souboru fstab označuje systém souborů, který je připojen při spuštění virtuálního aplikace. Pro více informací o syntaxi souboru fstab, spusťte příkaz man fstab. Chcete-li vyřešit selhání spuštění, zkontrolujte každý řádek a ujistěte se, že je správný ve struktuře i obsahu.
 
    > [!Note]
-   > * Pole na každém řádku jsou oddělená tabulátory nebo mezerami. Prázdné řádky jsou ignorovány. Řádky, které mají znak čísla (#) jako první znak jsou komentáře. Řádky s komentářem mohou zůstat v souboru fstab, ale nebudou zpracovány. Doporučujeme, abyste fstab řádky, na které si nejste jisti, místo odebrání řádků.
-   > * Aby se virtuální počítač mohl zotavit a spustit, měly by být oddíly systému souborů jedinými požadovanými oddíly. Virtuální počítač může zaznamenat chyby aplikace o dalších oddílech s komentářem. Virtuální počítač by se ale měl spustit bez dalších oddílů. Později můžete odkomentovat všechny řádky s komentářem.
-   > * Pro virtuální počítače Azure doporučujeme připojit datové disky pomocí identifikátoru UUID oddílu systému souborů. Například spusťte následující příkaz: ``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
-   > * Chcete-li zjistit UUID systému souborů, spusťte příkaz blkid. Další informace o syntaxi získáte spuštěním příkazu man blkid. Všimněte si, že disk, který chcete obnovit, je nyní připojen k novému virtuálnímu počítači. I když by identifikátory UUID měly být konzistentní, ID oddílů zařízení (například "/dev/sda1") se na tomto virtuálním počítači liší. Oddíly systému souborů původního neúspěšného virtuálního počítače, které jsou umístěné na nesystémovém virtuálním pevném disku, nejsou k dispozici pro virtuální počítač pro obnovení [pomocí příkazů rozhraní příkazového řádku](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux).
-   > * Možnost neúspěchu pomáhá zajistit, že se virtuální počítač spustí i v případě, že je systém souborů poškozený nebo když systém souborů neexistuje při spuštění. Doporučujeme, abyste v souboru fstab použili možnost neúspěšného spuštění, abyste mohli v případě výskytu chyb v oddílech, které nejsou nutné k tomu, aby se virtuální počítač spustil, pokračovat v práci.
+   > * Pole na každém řádku jsou oddělena kartami nebo mezerami. Prázdné řádky jsou ignorovány. Řádky, které mají znak čísla (#) jako první znak jsou komentáře. Komentované řádky mohou zůstat v souboru fstab, ale nebudou zpracovány. Doporučujeme, abyste místo odstranění řádků komentovali řádky, o kterých si nejste jisti.
+   > * Pro virtuální ho virtuálního mě nit k obnovení a spuštění by měly být oddíly systému souborů pouze požadované oddíly. Virtuální ho virtuálního objektu může dojít k chybám aplikace o další komentáře oddíly. Virtuální virtuální byl však spustit bez další oddíly. Později můžete odkomentovat všechny komentované řádky.
+   > * Doporučujeme připojit datové disky na virtuálních počítačích Azure pomocí UUID oddílu systému souborů. Spusťte například následující příkaz:``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
+   > * Chcete-li určit UUID systému souborů, spusťte příkaz blkid. Další informace o syntaxi získáte spuštěním příkazu man blkid. Všimněte si, že disk, který chcete obnovit, je teď připojený k novému virtuálnímu počítači. Přestože UUID by měly být konzistentní, ID oddílu zařízení (například "/dev/sda1") se na tomto virtuálním počítači liší. Oddíly systému souborů původního selhání virtuálního počítači, které jsou umístěny na non-systém v hd nejsou k dispozici pro obnovení virtuálního počítači [pomocí příkazů rozhraní příkazu příkazu příkazu příkazu .](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux)
+   > * Možnost nofail pomáhá zajistit, že se virtuální vír spustí i v případě, že je systém souborů poškozen nebo při spuštění neexistuje systém souborů. Doporučujeme použít možnost nofail v souboru fstab, abyste povolili pokračování při spuštění po chybách v oddílech, které nejsou nutné pro spuštění virtuálního aplikace.
 
-7. Pokud chcete povolit, aby se virtuální počítač spouštěl správně, změňte nebo zakomentujte všechny nesprávné nebo nepotřebné řádky v souboru fstab.
+7. Změňte nebo zakomentujte všechny nesprávné nebo nepotřebné řádky v souboru fstab, aby se virtuální svět mohl správně spustit.
 
 8. Uložte změny do souboru fstab.
 
-9. Restartujte virtuální počítač nebo znovu sestavte původní virtuální počítač.
+9. Restartujte virtuální počítač nebo znovu vytvořte původní virtuální počítač.
 
-10. Pokud komentář nebo opravu záznamů proběhla úspěšně, měl by se systém dostat na výzvu bash na portálu. Ověřte, jestli se můžete připojit k virtuálnímu počítači.
+10. Pokud položky komentář nebo oprava byla úspěšná, systém by měl dosáhnout bash výzvu na portálu. Zkontrolujte, jestli se můžete připojit k virtuálnímu virtuálnímu zařízení.
 
-11. Zkontrolujte přípojné body, když otestujete jakoukoli fstab změnu spuštěním příkazu Mount – a. Pokud nedochází k žádným chybám, měly by být přípojné body správné.
+11. Zkontrolujte, zda vaše přípojné body při testování jakékoli fstab změnit spuštěním připojit -příkaz. Pokud nejsou žádné chyby, přípojné body by měly být dobré.
 
-12. Odpojte a odpojte původní virtuální pevný disk a pak vytvořte virtuální počítač z původního systémového disku. K tomu můžete použít [příkazy rozhraní příkazového řádku](troubleshoot-recovery-disks-linux.md) nebo [příkazy pro opravu virtuálního počítače](repair-linux-vm-using-azure-virtual-machine-repair-commands.md) , pokud jste je použili k vytvoření virtuálního počítače pro obnovení.
+12. Odpojte a odpojte původní virtuální pevný disk a potom vytvořte virtuální počítač z původního systémového disku. Chcete-li to provést, můžete použít [příkazy příkazu příkazu příkazu příkazu příkazu příkazu příkazu nebo](troubleshoot-recovery-disks-linux.md) [příkazy pro opravu virtuálního provozu,](repair-linux-vm-using-azure-virtual-machine-repair-commands.md) pokud jste je použili k vytvoření virtuálního virtuálního soudu pro obnovení.
 
-13. Jakmile znovu vytvoříte virtuální počítač a můžete se k němu připojit přes SSH, proveďte následující akce:
-    * Projděte si všechny fstab řádky, které se změnily nebo Zakomentovat při obnovení.
-    * Ujistěte se, že používáte UUID a možnost neúspěchu.
-    * Před restartováním virtuálního počítače otestujte všechny fstab změny. Použijte následující příkaz: ``$ sudo mount -a``
+13. Po vytvoření virtuálního virtuálního uživatele znovu a můžete se k němu připojit prostřednictvím SSH, provést následující akce:
+    * Zkontrolujte všechny řádky fstab, které byly během obnovení změněny nebo zakomentovány.
+    * Ujistěte se, že používáte UUID a možnost nofail vhodně.
+    * Otestujte všechny změny fstab před restartováním virtuálního počítače. Chcete-li to provést, použijte následující příkaz:``$ sudo mount -a``
     * Vytvořte další kopii opraveného souboru fstab pro použití v budoucích scénářích obnovení.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Řešení potíží s virtuálním počítačem se systémem Linux připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure CLI 2,0](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
-* [Řešení potíží s virtuálním počítačem se systémem Linux připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure Portal](https://docs.microsoft.com/azure/virtual-machines/linux/troubleshoot-recovery-disks-portal)
+* [Poradce při potížích s virtuálním počítačem s Linuxem připojením disku operačního systému k virtuálnímu počítači pro obnovení pomocí azure CLI 2.0](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
+* [Poradce při potížích s virtuálním počítačem s Linuxem připojením disku operačního systému k virtuálnímu počítači pro obnovení pomocí portálu Azure](https://docs.microsoft.com/azure/virtual-machines/linux/troubleshoot-recovery-disks-portal)
 

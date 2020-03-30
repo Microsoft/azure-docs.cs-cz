@@ -1,50 +1,60 @@
 ---
-title: Agregovaná transformace v toku mapování dat
-description: Naučte se, jak agregovat data ve velkém měřítku v Azure Data Factory s mapováním agregované transformace toku dat.
+title: Agregovaná transformace v toku dat mapování
+description: Zjistěte, jak agregovat data ve velkém měřítku v Azure Data Factory s agregační transformací toku dat mapování.
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/15/2019
-ms.openlocfilehash: 74b96bf2cac0de7c57e496c637f2e3ef549eb61f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 03/24/2020
+ms.openlocfilehash: 1830a16108e6d8bb251d7ca45ae471e2f606874b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930461"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240587"
 ---
-# <a name="aggregate-transformation-in-mapping-data-flow"></a>Agregovaná transformace v toku mapování dat 
+# <a name="aggregate-transformation-in-mapping-data-flow"></a>Agregovaná transformace v toku dat mapování 
 
-Agregovaná transformace definuje agregace sloupců v datových proudech. Pomocí Tvůrce výrazů můžete definovat různé typy agregací, jako například SUM, MIN, MAX a COUNT seskupené podle existujících nebo počítaných sloupců.
+Agregační transformace definuje agregace sloupců v datových proudech. Pomocí Tvůrce výrazů můžete definovat různé typy agregací, například SUMA, MIN, MAX a POČET seskupené podle existujících nebo vypočítaných sloupců.
 
 ## <a name="group-by"></a>Seskupit podle
 
-Vyberte existující sloupec nebo vytvořte nový počítaný sloupec, který chcete použít jako klauzuli Group by pro agregaci. Pokud chcete použít existující sloupec, vyberte ho z rozevíracího seznamu. Pokud chcete vytvořit nový počítaný sloupec, najeďte myší na klauzuli a klikněte na **vypočítaný sloupec**. Tím se otevře [Tvůrce výrazů toku dat](concepts-data-flow-expression-builder.md). Po vytvoření vypočítaného sloupce zadejte název výstupního sloupce pod pole **název jako** . Pokud chcete přidat další klauzuli Group by, najeďte myší nad existující klauzuli a klikněte na ikonu se symbolem plus.
+Vyberte existující sloupec nebo vytvořte nový vypočítaný sloupec, který chcete použít jako klauzuli podle skupiny pro vaši agregaci. Chcete-li použít existující sloupec, vyberte jej z rozevíracího přehledu. Pokud chcete vytvořit nový vypočítaný sloupec, najeďte na klauzuli a klikněte na **Sloupec vypočítaný**. Tím se otevře [tvůrce výrazů toku dat](concepts-data-flow-expression-builder.md). Po vytvoření počítaného sloupce zadejte název výstupního sloupce pod pole **MAs jako.** Pokud chcete přidat další klauzuli skupiny podle, najeďte na existující klauzuli a klikněte na ikonu plus.
 
-![Agregovaná transformační skupina podle nastavení](media/data-flow/agg.png "Agregovaná transformační skupina podle nastavení")
+![Agregovat transformační skupinu podle nastavení](media/data-flow/agg.png "Agregovat transformační skupinu podle nastavení")
 
-Klauzule GROUP by je volitelná v agregační transformaci.
+Klauzule group by je volitelná v agregační transformaci.
 
-## <a name="aggregate-column"></a>Agregovaný sloupec 
+## <a name="aggregate-column"></a>Agregační sloupec 
 
-Pro sestavení agregačních výrazů použijte kartu **agregace** . Existující sloupec můžete buď přepsat agregací, nebo vytvořit nové pole s novým názvem. Agregační výraz je zadán v pravém poli vedle pole selektor názvu sloupce. Chcete-li upravit výraz, klikněte na textové pole a otevřete Tvůrce výrazů. Chcete-li přidat další agregace, najeďte myší na existující výraz a kliknutím na ikonu Plus vytvořte nový agregační sloupec nebo [vzorec sloupce](concepts-data-flow-column-pattern.md).
+Přejděte na kartu **Agregace** a vytvořte výrazy agregace. Můžete buď přepsat existující sloupec agregací, nebo vytvořit nové pole s novým názvem. Výraz agregace se zadá do pravého pole vedle voliče názvu sloupce. Chcete-li výraz upravit, kliknutím na textové pole otevřete tvůrce výrazů. Chcete-li přidat další agregace, najeďte na existující výraz a klepnutím na ikonu plus vytvořte nový sloupec nebo [vzorek sloupce agregace](concepts-data-flow-column-pattern.md).
 
-Každý agregační výraz musí obsahovat alespoň jednu agregační funkci.
+Každý výraz agregace musí obsahovat alespoň jednu agregační funkci.
 
-![Agregovaná nastavení agregace transformace](media/data-flow/agg2.png "Agregovaná nastavení agregace transformace")
+![Agregovaná agregační nastavení transformace](media/data-flow/agg2.png "Agregovaná agregační nastavení transformace")
 
 
 > [!NOTE]
-> V režimu ladění nemůže Tvůrce výrazů vydávat náhledy dat s agregačními funkcemi. Chcete-li zobrazit náhledy dat pro agregované transformace, ukončete Tvůrce výrazů a zobrazte data prostřednictvím karty Náhled dat.
+> V režimu ladění tvůrce výrazů nemůže vytvářet náhledy dat s agregačními funkcemi. Chcete-li zobrazit náhledy dat pro agregované transformace, zavřete tvůrce výrazů a zobrazte data na kartě Náhled dat.
 
-## <a name="reconnect-rows-and-columns"></a>Znovu připojit řádky a sloupce
+## <a name="reconnect-rows-and-columns"></a>Opětovné připojení řádků a sloupců
 
-Agregované transformace jsou podobné dotazům na agregační výběr SQL. Sloupce, které nejsou zahrnuté v klauzuli Group by ani agregační funkce, nepřecházejí do výstupu agregační transformace. Pokud chcete zahrnout další sloupce do agregovaného výstupu, proveďte jednu z následujících metod:
+Agregační transformace jsou podobné dotazům sql agregace výběru. Sloupce, které nejsou zahrnuty ve vaší skupině podle klauzule nebo agregační funkce nebude tok až do výstupu agregační transformace. Chcete-li do agregovaného výstupu zahrnout další sloupce, proveďte jednu z následujících metod:
 
-* Pro zahrnutí tohoto dalšího sloupce použijte agregační funkci, jako je `last()` nebo `first()`.
-* Znovu připojte sloupce k výstupnímu datovému proudu pomocí [vzoru pro vlastní spojení](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/).
+* Použijte agregační `last()` funkci, například nebo `first()` zahrnout tento další sloupec.
+* Znovu se připojte ke sloupcům výstupního datového proudu pomocí [vzoru vlastního spojení](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/).
+
+## <a name="removing-duplicate-rows"></a>Odebrání duplicitních řádků
+
+Běžné použití agregační transformace je odebrání nebo identifikace duplicitních položek ve zdrojových datech. Tento proces se nazývá odstranění duplicit. Na základě sady skupinpo klíčů, použijte heuristickou podle vašeho výběru k určení, který duplicitní řádek zachovat. Běžné heuristiky `last()` `max()`jsou `first()` `min()`, , , a . Pomocí [vzorů sloupců](concepts-data-flow-column-pattern.md) použijte pravidlo pro každý sloupec s výjimkou skupinpo sloupců.
+
+![Odstranění duplicit](media/data-flow/agg-dedupe.png "Odstranění duplicit")
+
+Ve výše uvedeném `ProductID` `Name` příkladu sloupce a jsou používány pro seskupení. Pokud dva řádky mají stejné hodnoty pro tyto dva sloupce, jsou považovány za duplicitní. V této agregační transformaci budou zachovány hodnoty prvního řádku odpovídající a všechny ostatní budou vynechány. Pomocí syntaxe vzorku sloupce jsou všechny `ProductID` `Name` sloupce, jejichž názvy nejsou a jsou mapovány na jejich existující název sloupce a vzhledem k hodnotě prvních odpovídajících řádků. Výstupní schéma je stejné jako vstupní schéma.
+
+Pro scénáře ověření `count()` dat funkce lze spočítat, kolik duplicity existují.
 
 ## <a name="data-flow-script"></a>Skript toku dat
 
@@ -67,17 +77,17 @@ Agregované transformace jsou podobné dotazům na agregační výběr SQL. Slou
           ) ~> <aggregateTransformationName>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
-Následující příklad přijímá příchozí datový proud `MoviesYear` a seskupuje řádky podle `year`sloupců. Transformace vytvoří agregovaný sloupec `avgrating`, který se vyhodnotí jako průměr `Rating`sloupců. Tato agregovaná transformace je pojmenována `AvgComedyRatingsByYear`.
+Níže uvedený příklad přebírá `MoviesYear` příchozí datový proud `year`a seskupuje řádky podle sloupců . Transformace vytvoří agregační sloupec, `avgrating` který je `Rating`vyhodnocen jako průměr sloupce . Tato agregační `AvgComedyRatingsByYear`transformace je pojmenována .
 
-V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
+V ux datové továrny tato transformace vypadá jako následující obrázek:
 
 ![Seskupit podle příkladu](media/data-flow/agg-script1.png "Seskupit podle příkladu")
 
-![Agregovaný příklad](media/data-flow/agg-script2.png "Agregovaný příklad")
+![Agregační příklad](media/data-flow/agg-script2.png "Agregační příklad")
 
-Skript toku dat pro tuto transformaci je v následujícím fragmentu kódu.
+Skript toku dat pro tuto transformaci je ve fragmentu níže.
 
 ```
 MoviesYear aggregate(
@@ -88,4 +98,4 @@ MoviesYear aggregate(
 
 ## <a name="next-steps"></a>Další kroky
 
-* Definování agregace na základě okna pomocí [transformace okna](data-flow-window.md)
+* Definovat agregaci na základě okna pomocí [window transformace](data-flow-window.md)

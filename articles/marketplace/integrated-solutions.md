@@ -1,53 +1,52 @@
 ---
 title: Integrovaná řešení – Azure Marketplace
-description: Integrovaná řešení v Azure Marketplace a AppSource
-services: Azure, Marketplace, Compute, Storage, Networking
-author: ChJenk
+description: Integrovaná řešení na Azure Marketplace a AppSource
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/16/2019
-ms.author: v-chjen
-ms.openlocfilehash: 11f1504e8bd57fe34eb7acdc50598403225adcd9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: dsindona
+ms.openlocfilehash: d99b061b57beb003cc47b2d809f493d5a9c66888
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427179"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286162"
 ---
 # <a name="integrated-solutions-in-microsoft-appsource-and-azure-marketplace"></a>Integrovaná řešení v Microsoft AppSource a Azure Marketplace
 
-Integrované řešení přináší dohromady špičkové technologie od partnerů Microsoftu, společně s konzultacemi, nasazením a podporou poskytovanou odborníky z odborníků na služby.
+Integrované řešení sdružuje špičkové technologie od partnerů microsoftu spolu s konzultacemi, nasazením a podporou poskytovanými partnery odborných služeb.
 
-Dva nebo víc partnerů Microsoftu integruje své technologie a služby, aby vytvořily jednotné, bezproblémové a opakované nasazení, aby zákazníci mohli rychle začít pracovat.  Vedoucí pracovník v řešení (obvykle partner služeb) poskytuje jeden kontaktní bod pro zákazníka, který poskytuje relevantní přizpůsobení, konzultace a podporu řešení.
+Dva nebo více partnerů společnosti Microsoft integrují své technologie a služby a vytvářejí jednotné, bezproblémové a opakovatelné prostředí pro nasazení, aby zákazníci mohli rychle začít.  Vedoucí partner v řešení (obvykle partner služeb) poskytuje jediné kontaktní místo pro zákazníka, poskytuje relevantní přizpůsobení, poradenství a podporu kolem řešení.
 
-V jiných scénářích se partneři společně prodávají nebo spolupracují na jejich řešení, zatímco integrované řešení je společně sestavené nové řešení, které integruje technologie a služby mezi partnery.
+V jiných scénářích partneři společně prodají nebo prodají své řešení, zatímco integrované řešení je společně vybudované nové řešení, které integruje technologie a služby napříč partnery.
 
 ## <a name="advantages"></a>Výhody
 
-Mezi výhody integrovaného přístupu patří:
+Výhody integrovaného přístupu jsou:
 
-* *Oborové zkušenosti*: partneři služeb, kteří poskytují konkrétní řešení a znalosti v oboru
-* *Čas do hodnoty*: přístup k integrovanému nasazení, který vám může pomáhat s okamžitými výhodami
-* *Nejlepší řešení*: Seznamte se s usnadněním integrovaného nákupu a implementačního prostředí.
+* *Odborné znalosti v oboru:* Servisní partneři poskytující řešení a znalosti specifické pro dané odvětví
+* *Doba potřebná k ocenění*: Integrovaný přístup k nasazení, který vám pomůže realizovat okamžité výhody
+* *Nejlepší řešení :* Objevte snadnost integrovaného nákupního a implementačního prostředí
 
-Další informace najdete v tématu [publikování integrovaného řešení](https://docs.microsoft.com/azure/marketplace/integrated-solutions-for-publishers).
+Další informace naleznete [v tématu Publish an Integrated Solution](https://docs.microsoft.com/azure/marketplace/integrated-solutions-for-publishers).
 
-## <a name="submit-a-nomination"></a>Odeslat jmenování
+## <a name="submit-a-nomination"></a>Vyplňte nominační formulář.
 
-Partneři, kteří chtějí účast v programu, by měli identifikovat jiné partnery, se kterými chtějí pracovat. Měly by vyplnit [formulář pro pojmenování integrovaných řešení](https://assetsprod.microsoft.com/mpn/integrated-solutions-partner-nomination.docx). Tým programu integrovaných řešení kontroluje jeho jmenování a následuje během 10 pracovních dnů. Tým poskytuje schválení a další kroky.
+Partneři, kteří se chtějí programu zúčastnit, by měli identifikovat další partnery, se kterými chtějí pracovat. Měli by vyplnit [nominační formulář pro integrovaná řešení](https://assetsprod.microsoft.com/mpn/integrated-solutions-partner-nomination.docx). Programový tým Integrated Solutions zkontroluje nominaci a vyzvedne ji do 10 pracovních dnů. Tým poskytuje schválení a další kroky.
 
 ## <a name="next-steps"></a>Další kroky
 
-Můžete vyhledat integrovaná řešení a spojit se s těmito oceněnými partnery, a to návštěvou svých seznamů:
+Můžete objevit integrovaná řešení a spojit se s těmito váženými partnery tím, že navštívíte jejich výpisy zde:
 
-* [Zákazník 360, který využívá Zero2Hero](https://azuremarketplace.microsoft.com/marketplace/consulting-services/bardess.customer-360-powered-by-zero2hero)
+* [Zákazník 360 Powered by Zero2Hero](https://azuremarketplace.microsoft.com/marketplace/consulting-services/bardess.customer-360-powered-by-zero2hero)
 * [Rychlý obchod](https://azuremarketplace.microsoft.com/marketplace/consulting-services/publicis-sapient.rapid_commerce)
-* [Analýza portfolia půjček](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rcg-us.rcg-enable-credit-analytics)
-* [Sada zabezpečení zdravotnictví v cloudu](https://azuremarketplace.microsoft.com/marketplace/consulting-services/xentit.azure-xentit-trendmicro-qualys-hcss-12months)
+* [Analýza úvěrového portfolia](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rcg-us.rcg-enable-credit-analytics)
+* [Cloudový zásobník zabezpečení ve zdravotnictví](https://azuremarketplace.microsoft.com/marketplace/consulting-services/xentit.azure-xentit-trendmicro-qualys-hcss-12months)
 * [Modul pro akceleraci DevOps](https://azuremarketplace.microsoft.com/marketplace/consulting-services/sirrus7.sirrus7-devops-acceleration-engine?search=devops%20acceleration%20engine&page=1)
-* [Konec podpory pro Windows Server](https://azuremarketplace.microsoft.com/marketplace/consulting-services/new-signature.eos_appfactory)
-* [Rychlé sloučení Datacenter rychlé zprovoznění](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rivermeadowsoftwareinc.rapid-datacenter-consolidation-jumpstart?flightCodes=100discovermigrate)
-* [DeviceTone IoT pro službu propojených polí](https://azuremarketplace.microsoft.com/marketplace/apps/marketplaceprodware.devicetone_iot_for_connected_field_service?tab=Overview)
-* [Úlohách: jednotné řešení pro správu marketingu](https://appsource.microsoft.com/marketplace/consulting-services/barhead_solutions.unison_p2p?pub_source=email&pub_status=success)
-* [Inteligentní M & v důsledku opatrnosti](https://azuremarketplace.microsoft.com/marketplace/consulting-services/avanadeinc.intelligent_ma_due_diligence)
+* [Ukončení podpory systému Windows Server](https://azuremarketplace.microsoft.com/marketplace/consulting-services/new-signature.eos_appfactory)
+* [Rychlý rychlý start konsolidace datového centra](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rivermeadowsoftwareinc.rapid-datacenter-consolidation-jumpstart?flightCodes=100discovermigrate)
+* [IoT tónzařízení pro službu připojeného pole](https://azuremarketplace.microsoft.com/marketplace/apps/marketplaceprodware.devicetone_iot_for_connected_field_service?tab=Overview)
+* [Unisono: Řešení sjednoceného řízení marketingu](https://appsource.microsoft.com/marketplace/consulting-services/barhead_solutions.unison_p2p?pub_source=email&pub_status=success)
+* [Inteligentní M&due diligence](https://azuremarketplace.microsoft.com/marketplace/consulting-services/avanadeinc.intelligent_ma_due_diligence)

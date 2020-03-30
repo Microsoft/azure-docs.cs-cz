@@ -1,18 +1,18 @@
 ---
-title: Vytvořit definici spravované aplikace
+title: Vytvoření definice spravované aplikace
 description: Ukazuje, jak vytvořit spravovanou aplikaci Azure, která je určená pro členy vaší organizace.
 author: tfitzmac
 ms.topic: quickstart
 ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 11d4eb396d332327addcd85ed7badd36ef8f1d10
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 5168dab7501cdb2907b3eede5877dce39e9e5c97
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75650342"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79473043"
 ---
-# <a name="publish-an-azure-managed-application-definition"></a>Publikování definice aplikace spravované Azure
+# <a name="quickstart-publish-an-azure-managed-application-definition"></a>Rychlý start: Publikování definice aplikace spravované Azure
 
 Tento rychlý start obsahuje úvod k práci se spravovanými aplikacemi. Přidáte definici spravované aplikace do interního katalogu pro uživatele ve vaší organizaci. Pro zjednodušení tohoto úvodu jsme soubory pro vaši spravovanou aplikaci sestavili předem. Tyto soubory jsou dostupné prostřednictvím GitHubu. Tyto soubory se naučíte sestavovat v kurzu [Vytvoření aplikace katalogu služeb](publish-service-catalog-app.md).
 

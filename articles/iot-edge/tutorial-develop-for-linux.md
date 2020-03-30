@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 4a127c8c77f97708729cf91d6ced214e98924fb6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 478d9c0485125870f8d5ffb4132f46476b4bb4ef
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78943014"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384360"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Kurz: Vývoj modulů IoT Edge pro linuxová zařízení
 
@@ -90,6 +90,7 @@ K instalaci do vývojového počítače použijte dokumentaci dockeru:
 * [Instalace Docker desktopu pro Mac](https://docs.docker.com/docker-for-mac/install/)
 
 * Přečtěte si [o Docker CE](https://docs.docker.com/install/) informace o instalaci na několika platformách Linuxu.
+  * Pro podsystém Windows pro Linux (WSL) nainstalujte Docker Desktop pro Windows.
 
 ## <a name="set-up-vs-code-and-tools"></a>Nastavení kódu VS a nástrojů
 

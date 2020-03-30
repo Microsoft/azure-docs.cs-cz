@@ -1,97 +1,89 @@
 ---
-title: Vytváření a Správa aplikací Azure IoT Central z portálu CSP | Microsoft Docs
-description: Jako CSP můžete vytvořit aplikaci Azure IoT Central jménem svého zákazníka.
+title: Vytváření a správa aplikací Azure IoT Central z portálu CSP | Dokumenty společnosti Microsoft
+description: Jako csp, jak vytvořit aplikaci Azure IoT Central jménem svého zákazníka.
 services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
 ms.date: 08/23/2019
-ms.topic: conceptual
+ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 40c5f612b5b1571bb3d39f452d64a7005701f7c1
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 5d876d7db13ce73603f212ec11544cb2f680bf46
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023799"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80158176"
 ---
-# <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Vytvoření a Správa aplikace Azure IoT Central z portálu CSP
+# <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Vytvoření a správa aplikace Azure IoT Central z portálu CSP
 
-Program poskytovatele řešení Microsoft Cloud (CSP) je program pro prodej v Microsoftu. Jejím záměrem je poskytnout našim partnerům pro partnery, kteří budou moci znovu prodávat všechny komerční online služby Microsoftu. Přečtěte si další informace o [programu Cloud Solution Provider](https://partner.microsoft.com/cloud-solution-provider).
+Program Zprostředkovatel e-cloudových řešení (CSP) společnosti Microsoft je program prodejce microsoftu. Jeho záměrem je poskytnout našim obchodním partnerům program na jednom zastávku pro další prodej všech komerčních online služeb společnosti Microsoft. Další informace o [programu Poskytovatele cloudových řešení](https://partner.microsoft.com/cloud-solution-provider).
 
-Jako CSP můžete pomocí [partnerského centra Microsoftu](https://partnercenter.microsoft.com/partner/home)vytvářet a spravovat Microsoft Azure IoT Central aplikací jménem zákazníky. Když poskytovatelé cloudu vytvoří aplikace IoT Central Azure jménem zákazníky, stejně jako u jiných služeb Azure spravovaných CSP, můžou CSP spravovat fakturace pro zákazníky. Poplatky za Azure IoT Central se zobrazí v celkovém vyúčtování v partnerském centru Microsoftu.
+Jako csp můžete vytvářet a spravovat aplikace Microsoft Azure IoT Central jménem svých zákazníků prostřednictvím [Centra partnerů společnosti Microsoft](https://partnercenter.microsoft.com/partner/home). Když jsou aplikace Azure IoT Central vytvářeny jménem zákazníků csp, stejně jako u jiných služeb Azure spravovaných csp, správou služeb Kisp správou fakturace pro zákazníky. Poplatek za Azure IoT Central se zobrazí ve vaší celkové vyúčtování v Centru partnerů Microsoftu.
 
-Začněte tím, že se přihlásíte ke svému účtu na portálu Microsoft Partner Portal a vyberete zákazníka, pro který chcete vytvořit aplikaci Azure IoT Central. Přejděte na správu služby pro zákazníka z levé navigace.
+Chcete-li začít, přihlaste se ke svému účtu na portálu microsoft partner a vyberte zákazníka, pro kterého chcete vytvořit aplikaci Azure IoT Central. Přejděte na služby management pro zákazníka z levé navigace.
 
-![Centrum partnerů Microsoftu, zobrazení zákazníků](media/howto-create-and-manage-applications-csp/image1.png)
+![Centrum partnerů společnosti Microsoft, zobrazení pro zákazníky](media/howto-create-and-manage-applications-csp/image1.png)
 
-Azure IoT Central je uveden jako služba, kterou je možné spravovat. Na stránce vyberte odkaz Azure IoT Central, abyste mohli vytvářet nové aplikace nebo spravovat existující aplikace pro tohoto zákazníka.
+Azure IoT Central je uveden jako služba, která je k dispozici pro správu. Vyberte odkaz Azure IoT Central na stránce a vytvořte nové aplikace nebo spravujte stávající aplikace pro tohoto zákazníka.
 
-![Správa Azure IoT Central k dispozici pro správu](media/howto-create-and-manage-applications-csp/image2.png)
+![Azure IoT Central, který je k dispozici pro správu](media/howto-create-and-manage-applications-csp/image2.png)
 
-Na stránce Azure IoT Central Správce aplikací se zakoupíte. Azure IoT Central udržuje kontext, který jste dostali z partnerského centra Microsoftu a kterou jste získali za správu tohoto konkrétního zákazníka. Toto potvrzení se zobrazí v záhlaví stránky Správce aplikací. Z tohoto místa můžete buď přejít na existující aplikaci, kterou jste předtím vytvořili, aby tento zákazník mohl spravovat nebo vytvořit novou aplikaci pro zákazníka.
+Přistanete na stránce Azure IoT Central Application Manager. Azure IoT Central udržuje kontext, který jste přišli z Centra partnerů Microsoftu a že jste přišli spravovat konkrétního zákazníka. Zobrazí se v záhlaví stránky Správce aplikací. Zde můžete přejít na existující aplikaci, kterou jste vytvořili dříve, aby tento zákazník mohl spravovat, nebo vytvořit novou aplikaci pro zákazníka.
 
-![Vytvořit správce pro zprostředkovatele CSP](media/howto-create-and-manage-applications-csp/image3.png)
+![Vytvořit správce pro ošetřovně](media/howto-create-and-manage-applications-csp/image3.png)
 
-Pokud chcete vytvořit aplikaci Azure IoT Central, v levé nabídce vyberte **sestavit** . Vyberte jednu z průmyslových šablon nebo vyberte **starší aplikace** a vytvořte zcela novou aplikaci. Tím se načte stránka pro vytvoření aplikace. Musíte vyplnit všechna pole na této stránce a pak zvolit **vytvořit**. Další informace o každém z těchto polí najdete v části.
+Pokud chcete vytvořit aplikaci Azure IoT Central, v levém menu vyberte **Build.** Vyberte jednu z oborových šablon nebo zvolte **starší aplikaci** a vytvořte aplikaci od začátku. Tím se načte stránka Vytvoření aplikace. Musíte vyplnit všechna pole na této stránce a pak zvolte **Vytvořit**. Další informace o jednotlivých polích naleznete níže.
 
-![Vytvořit stránku aplikace pro zprostředkovatele CSP](media/howto-create-and-manage-applications-csp/image4.png)
+![Vytvořit stránku aplikace pro ospravky](media/howto-create-and-manage-applications-csp/image4.png)
 
-![Vytvořit stránku aplikace pro zprostředkovatele CSP](media/howto-create-and-manage-applications-csp/image4-1.png)
+![Vytvořit stránku aplikace pro ospravky](media/howto-create-and-manage-applications-csp/image4-1.png)
 
-![Vytvořit stránku aplikace pro informace o fakturaci CSP](media/howto-create-and-manage-applications-csp/image4-2.png)
+![Vytvořit stránku aplikace pro fakturační údaje kostit](media/howto-create-and-manage-applications-csp/image4-2.png)
 
-## <a name="pricing-plan"></a>Cenový tarif
+## <a name="pricing-plan"></a>Cenový plán
 
-Můžete vytvářet jenom aplikace, které jako CSP používají standardní cenový plán. Abyste svým zákazníkům předvedli IoT Central Azure, můžete vytvořit aplikaci, která bude používat bezplatný cenový plán zvlášť. Další informace o cenových plánech zdarma a Standard najdete na [stránce s cenami za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
+Můžete vytvářet pouze aplikace, které používají standardní cenový plán jako csp. Pokud chcete zákazníkovi předvést Azure IoT Central, můžete vytvořit aplikaci, která používá bezplatný cenový plán samostatně. Další informace o bezplatných a standardních cenových plánech najdete na [stránce s cenami Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
 
-Můžete vytvářet jenom aplikace, které jako CSP používají standardní cenový plán. Abyste svým zákazníkům předvedli IoT Central Azure, můžete vytvořit aplikaci, která bude používat bezplatný cenový plán zvlášť. Další informace o cenových plánech zdarma a Standard najdete na [stránce s cenami za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
+Můžete vytvářet pouze aplikace, které používají standardní cenový plán jako csp. Pokud chcete zákazníkovi předvést Azure IoT Central, můžete vytvořit aplikaci, která používá bezplatný cenový plán samostatně. Další informace o bezplatných a standardních cenových plánech najdete na [stránce s cenami Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
 
 ## <a name="application-name"></a>Název aplikace
 
-Název vaší aplikace se zobrazí na stránce **Správce aplikací** a v každé aplikaci IoT Central Azure. Můžete zvolit libovolný název aplikace IoT Central pro Azure. Vyberte si název, který vám dává smysl, a ostatním uživatelům ve vaší organizaci.
+Název vaší aplikace se zobrazí na stránce **Správce aplikací** a v rámci každé aplikace Azure IoT Central. Můžete zvolit libovolný název pro vaši aplikaci Azure IoT Central. Vyberte jméno, které dává smysl vám i ostatním uživatelům ve vaší organizaci.
 
 ## <a name="application-url"></a>Adresa URL aplikace
 
-Adresa URL aplikace je odkaz na vaši aplikaci. Záložku můžete do ní uložit v prohlížeči nebo ji sdílet s ostatními.
+Adresa URL aplikace je odkaz na vaši aplikaci. Záložku si do ní můžete uložit do prohlížeče nebo ji sdílet s ostatními.
 
-Když zadáte název vaší aplikace, adresa URL vaší aplikace se automaticky vygeneruje. Pokud chcete, můžete pro svou aplikaci zvolit jinou adresu URL. Každá adresa URL IoT Central v Azure musí být v rámci Azure IoT Central jedinečná. V případě, že adresa URL, kterou si zvolíte, se zobrazí chybová zpráva.
+Když zadáte název aplikace, bude automaticky vygenerována adresa URL aplikace. Pokud chcete, můžete pro aplikaci zvolit jinou adresu URL. Každá adresa URL Azure IoT Central musí být v rámci Azure IoT Central jedinečná. Pokud již byla přijata adresa URL, kterou jste zvolili, zobrazí se chybová zpráva.
 
 ## <a name="directory"></a>Adresář
 
-Vzhledem k tomu, že Azure IoT Central obsahuje kontext, který jste získali za správu zákazníka vybraného na portálu Microsoft Partner, zobrazí se v poli Adresář pouze Azure Active Directory tenant tohoto zákazníka. 
+Vzhledem k tomu, že Azure IoT Central má kontext, který jste přišli ke správě zákazníka, kterého jste vybrali na portálu Microsoft Partner Portal, zobrazí se v poli Adresář jenom tenant azure active directory pro tohoto zákazníka. 
 
-Tenant Azure Active Directory obsahuje identity uživatelů, přihlašovací údaje a další informace o organizaci. K jednomu Azure Active Directory tenantovi může být přidruženo několik předplatných Azure.
+Tenant Azure Active Directory obsahuje identity uživatelů, přihlašovací údaje a další informace o organizaci. K jednomu tenantovi Služby Azure služby Active Directory lze přidružit více předplatných Azure.
 
-Další informace najdete v tématu [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/).
+Další informace najdete v [tématu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/).
 
 ## <a name="azure-subscription"></a>Předplatné Azure
 
-Předplatné Azure umožňuje vytvářet instance služeb Azure. Azure IoT Central automaticky najde všechna předplatná Azure, ke kterým máte přístup, a zobrazí je v rozevírací nabídce na stránce **vytvořit aplikaci** . Pokud chcete vytvořit novou aplikaci Azure IoT Central, vyberte předplatné Azure.
+Předplatné Azure vám umožňuje vytvářet instance služeb Azure. Azure IoT Central automaticky vyhledá všechna předplatná Azure zákazníka, ke kterému máte přístup, a zobrazí je v rozevíracím seznamu na stránce **Vytvořit aplikaci.** Zvolte předplatné Azure a vytvořte novou centrální aplikaci Azure IoT.
 
-Pokud nemáte předplatné Azure, můžete ho vytvořit v partnerském centru Microsoftu. Po vytvoření předplatného Azure se vraťte na stránku **Create Application** (Vytvořit aplikaci). Vaše nové předplatné se zobrazí v rozevírací nabídce **Azure Subscription** (Předplatné Azure).
+Pokud nemáte předplatné Azure, můžete ho vytvořit v Centru partnerů Microsoftu. Po vytvoření předplatného Azure se vraťte na stránku **Create Application** (Vytvořit aplikaci). Vaše nové předplatné se zobrazí v rozevírací nabídce **Azure Subscription** (Předplatné Azure).
 
-Další informace najdete v tématu [předplatná Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing).
+Další informace najdete v [tématu Předplatná Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing).
 
-## <a name="region"></a>Region (Oblast)
+## <a name="location"></a>Umístění
 
-Vyberte oblast nebo [zeměpisnou](https://azure.microsoft.com/global-infrastructure/geographies/) oblast, ve které chcete vytvořit aplikaci Azure IoT Central. Obvykle byste měli zvolit oblast, která je pro vaše zařízení nejbližší, aby získala optimální výkon.
-
-Další informace najdete v tématu [oblasti Azure](https://azure.microsoft.com/global-infrastructure/regions/) a [Zeměpisná oblast Azure](https://azure.microsoft.com/global-infrastructure/geographies/).
-
-Oblasti, ve kterých je Azure IoT Central k dispozici, můžete zobrazit na stránce [produkty dostupné podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=iot-central) .
-
-> [!Note]
-> Po zvolení oblasti už později nebude možné přesunout aplikaci do jiné oblasti.
+**Umístění** je [zeměpis,](https://azure.microsoft.com/global-infrastructure/geographies/) kde chcete vytvořit aplikaci. Obvykle byste měli zvolit umístění, které je fyzicky nejblíže k vašim zařízením, abyste získali optimální výkon. V současné době můžete vytvořit aplikaci IoT Central v **oblastech Zeměpisné**oblasti Austrálie , Asie **a Tichomoří**, **Evropa**, **Spojené státy**, **Velká Británie**a **Japonsko.** Jakmile zvolíte umístění, nemůžete později přesunout aplikaci do jiného umístění.
 
 ## <a name="application-template"></a>Šablona aplikace
 
 Vyberte šablonu aplikace, kterou chcete použít pro vaši aplikaci.
 
-
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili, jak vytvořit aplikaci Azure IoT Central jako CSP, je zde doporučený další krok:
+Teď, když jste se naučili, jak vytvořit aplikaci Azure IoT Central jako csp, tady je navrhovaný další krok:
 
 > [!div class="nextstepaction"]
-> [Správa aplikace](howto-administer.md)
+> [Správa vaší aplikace](howto-administer.md)

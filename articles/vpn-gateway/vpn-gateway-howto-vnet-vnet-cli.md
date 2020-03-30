@@ -1,5 +1,5 @@
 ---
-title: 'Připojení virtuální sítě k virtuální síti pomocí připojení typu VNet-to-VNet: Azure CLI'
+title: 'Připojení virtuální sítě k virtuální síti pomocí připojení virtuální sítě k virtuální síti: Azure CLI'
 description: Propojení virtuálních sítí s použitím připojení typu VNet-to-VNet a Azure CLI.
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: cherylmc
 ms.openlocfilehash: a354f8031c26ca86876dc6f3a2092610226cc84b
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75834570"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Konfigurace připojení brány VPN typu VNet-to-VNet pomocí Azure CLI
@@ -22,7 +22,7 @@ Tento článek vám pomůže propojit virtuální sítě s použitím typu přip
 Postupy v tomto článku se týkají modelu nasazení Resource Manager a používají Azure CLI. Tuto konfiguraci můžete vytvořit také pomocí jiného nástroje nasazení nebo pro jiný model nasazení, a to výběrem jiné možnosti z následujícího seznamu:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Portál Azure](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure Portal (Classic)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
@@ -31,7 +31,7 @@ Postupy v tomto článku se týkají modelu nasazení Resource Manager a použí
 >
 >
 
-## <a name="about"></a>Informace o propojování virtuálních sítí
+## <a name="about-connecting-vnets"></a><a name="about"></a>Informace o propojování virtuálních sítí
 
 Existuje více způsobů propojení virtuálních sítí. Následující oddíly popisují různé způsoby připojení virtuálních sítí.
 
@@ -43,15 +43,15 @@ Konfigurace připojení VNet-to-VNet je dobrým způsobem, jak snadno připojit 
 
 Pokud pracujete se složitou konfigurací sítě, můžete chtít vaše virtuální sítě raději připojit pomocí kroků [Site-to-Site](vpn-gateway-howto-site-to-site-resource-manager-cli.md) než pomocí kroků VNet-to-VNet. Při použití kroků Site-to-Site vytvoříte a nakonfigurujete brány místní sítě ručně. Brána místní sítě pro každou virtuální síť zpracovává jiné virtuální sítě jako místní síť. Ten vám umožní pro místní síťovou bránu zadat další adresní prostor pro směrování provozu. Pokud se adresní prostor pro virtuální síť změní, musíte ručně aktualizovat odpovídající bránu místní sítě tak, aby tuto změnu odrážela. Nedojde k automatické aktualizaci.
 
-### <a name="vnet-peering"></a>VNet Peering
+### <a name="vnet-peering"></a>Partnerské vztahy virtuálních sítí
 
 Můžete chtít zvážit připojení vašich virtuálních sítí pomocí VNET Peering. VNET Peering nepoužívá bránu sítě VPN a má jiná omezení. Kromě toho [ceny pro VNET Peering](https://azure.microsoft.com/pricing/details/virtual-network) se vypočítávají odlišně než [ceny pro VNet-to-VNet VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway). Další informace najdete v tématu [Partnerské vztahy virtuálních sítí](../virtual-network/virtual-network-peering-overview.md).
 
-## <a name="why"></a>Proč vytvářet připojení typu VNet-to-VNet?
+## <a name="why-create-a-vnet-to-vnet-connection"></a><a name="why"></a>Proč vytvářet připojení typu VNet-to-VNet?
 
 Virtuální sítě může být vhodné propojit pomocí připojení VNet-to-VNet z následujících důvodů:
 
-* **Geografická redundance napříč oblastmi a geografická přítomnost**
+* **Geografická redundance a geografická přítomnost mezi oblastmi**
 
   * Můžete nastavit vlastní geografickou replikaci nebo synchronizaci se zabezpečeným připojením bez procházení koncovými body připojenými k internetu.
   * Pomocí Azure Traffic Manageru a služby Load Balancer je možné vytvářet úlohy s vysokou dostupností s geografickou redundancí nad několika oblastmi Azure. Jedním z důležitých příkladů je nastavení technologie SQL Always On se skupinami dostupnosti nad několika oblastmi Azure.
@@ -61,13 +61,13 @@ Virtuální sítě může být vhodné propojit pomocí připojení VNet-to-VNet
 
 Komunikaci typu VNet-to-VNet můžete kombinovat s konfiguracemi s více servery. Díky tomu je možné vytvářet topologie sítí, ve kterých se používá propojování více míst i propojování virtuálních sítí.
 
-## <a name="steps"></a>Které kroky VNet-to-VNet mám použít?
+## <a name="which-vnet-to-vnet-steps-should-i-use"></a><a name="steps"></a>Které kroky VNet-to-VNet mám použít?
 
 V tomto článku uvidíte dvě různé sady kroků připojení VNet-to-VNet. Jedna sada kroků pro [virtuální sítě patřící do stejného předplatného](#samesub) a jedna pro [virtuální sítě patřící do různých předplatných](#difsub). 
 
 Pro toto cvičení můžete konfigurace kombinovat nebo prostě vybrat tu, se kterou chcete pracovat. Všechny konfigurace používají typ připojení VNet-to-VNet. Provoz probíhá mezi virtuálními sítěmi, které jsou vzájemně přímo propojené. V tomto cvičení se provoz ze sítě TestVNet4 nesměruje do sítě TestVNet5.
 
-* [Virtuální sítě patřící do stejného předplatného:](#samesub) V postupu pro tuto konfiguraci se používají sítě TestVNet1 a TestVNet4.
+* [Virtuální sítě, které jsou umístěny ve stejném předplatném:](#samesub) Postup pro tuto konfiguraci používá TestVNet1 a TestVNet4.
 
   ![Diagram v2v](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
 
@@ -76,13 +76,13 @@ Pro toto cvičení můžete konfigurace kombinovat nebo prostě vybrat tu, se kt
   ![Diagram v2v](./media/vpn-gateway-howto-vnet-vnet-cli/v2vdiffsub.png)
 
 
-## <a name="samesub"></a>Propojení virtuálních sítí patřících ke stejnému předplatnému
+## <a name="connect-vnets-that-are-in-the-same-subscription"></a><a name="samesub"></a>Propojení virtuálních sítí patřících ke stejnému předplatnému
 
 ### <a name="before-you-begin"></a>Než začnete
 
 Než začnete, nainstalujte si nejnovější verzi příkazů rozhraní příkazového řádku (2.0 nebo novější). Informace o instalaci příkazů rozhraní příkazového řádku najdete v tématu [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
-### <a name="Plan"></a>Plánování rozsahů IP adres
+### <a name="plan-your-ip-address-ranges"></a><a name="Plan"></a>Plánování rozsahů IP adres
 
 V následujících krocích vytvoříte dvě virtuální sítě spolu s příslušnými podsítěmi a konfiguracemi brány. Potom vytvoříte propojení VPN mezi oběma virtuálními sítěmi. Je důležité určit rozsahy IP adres pro konfiguraci vaší sítě. Mějte na paměti, že je třeba zajistit, aby se žádné rozsahy virtuálních sítí ani místní síťové rozsahy žádným způsobem nepřekrývaly. V těchto příkladech nezahrnujeme server DNS. Pokud chcete překlad IP adres pro virtuální sítě, přečtěte si téma [Překlad IP adres](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
@@ -117,11 +117,11 @@ V příkladech používáme následující hodnoty:
 * Typ sítě VPN: RouteBased
 * Připojení: VNet4toVNet1
 
-### <a name="Connect"></a>Krok 1: Připojení k vašemu předplatnému
+### <a name="step-1---connect-to-your-subscription"></a><a name="Connect"></a>Krok 1: Připojení k vašemu předplatnému
 
 [!INCLUDE [CLI login](../../includes/vpn-gateway-cli-login-numbers-include.md)]
 
-### <a name="TestVNet1"></a>Krok 2: Vytvoření a konfigurace virtuální sítě TestVNet1
+### <a name="step-2---create-and-configure-testvnet1"></a><a name="TestVNet1"></a>Krok 2: Vytvoření a konfigurace virtuální sítě TestVNet1
 
 1. Vytvořte skupinu prostředků.
 
@@ -159,7 +159,7 @@ V příkladech používáme následující hodnoty:
    az network vnet-gateway create -n VNet1GW -l eastus --public-ip-address VNet1GWIP -g TestRG1 --vnet TestVNet1 --gateway-type Vpn --sku VpnGw1 --vpn-type RouteBased --no-wait
    ```
 
-### <a name="TestVNet4"></a>Krok 3: Vytvoření a konfigurace virtuální sítě TestVNet4
+### <a name="step-3---create-and-configure-testvnet4"></a><a name="TestVNet4"></a>Krok 3: Vytvoření a konfigurace virtuální sítě TestVNet4
 
 1. Vytvořte skupinu prostředků.
 
@@ -194,11 +194,11 @@ V příkladech používáme následující hodnoty:
    az network vnet-gateway create -n VNet4GW -l westus --public-ip-address VNet4GWIP -g TestRG4 --vnet TestVNet4 --gateway-type Vpn --sku VpnGw1 --vpn-type RouteBased --no-wait
    ```
 
-### <a name="createconnect"></a>Krok 4: Vytvoření připojení
+### <a name="step-4---create-the-connections"></a><a name="createconnect"></a>Krok 4: Vytvoření připojení
 
 Nyní máte dvě virtuální sítě s bránami VPN. Dalším krokem je vytvoření propojení bran VPN mezi bránami virtuálních sítí. Pokud jste použili výše uvedené příklady, vaše brány virtuálních sítí jsou v různých skupinách prostředků. Když jsou brány v různých skupinách prostředků, musíte při vytváření propojení identifikovat a zadat ID prostředků pro každou bránu. Pokud jsou vaše virtuální sítě ve stejné skupině prostředků, můžete použít [druhou sadu pokynů](#samerg), protože nemusíte zadávat ID prostředků.
 
-### <a name="diffrg"></a>Propojení virtuálních sítí patřících do různých skupin prostředků
+### <a name="to-connect-vnets-that-reside-in-different-resource-groups"></a><a name="diffrg"></a>Propojení virtuálních sítí patřících do různých skupin prostředků
 
 1. Z výstupu následujícího příkazu získejte ID prostředku brány VNet1GW:
 
@@ -225,7 +225,7 @@ Nyní máte dvě virtuální sítě s bránami VPN. Dalším krokem je vytvořen
    "ipConfigurations":
    ```
 
-   Zkopírujte hodnoty v uvozovkách následující po **"id":** .
+   Zkopírujte hodnoty v uvozovkách následující po **"id":**.
 
    ```
    "id": "/subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW"
@@ -249,7 +249,7 @@ Nyní máte dvě virtuální sítě s bránami VPN. Dalším krokem je vytvořen
    ```
 5. Ověřte stav připojení. Viz [Ověření stavu připojení](#verify).
 
-### <a name="samerg"></a>Propojení virtuálních sítí patřících do stejné skupiny prostředků
+### <a name="to-connect-vnets-that-reside-in-the-same-resource-group"></a><a name="samerg"></a>Propojení virtuálních sítí patřících do stejné skupiny prostředků
 
 1. Vytvořte připojení virtuální sítě TestVNet1 k virtuální síti TestVNet4. V tomto kroku vytvoříte připojení z virtuální sítě TestVNet1 do virtuální sítě TestVNet4. Všimněte si, že skupiny prostředků v příkladech jsou stejné. V příkladech také vidíte uvedený sdílený klíč. Pro sdílený klíč můžete použít vlastní hodnoty, ale sdílené klíče pro obě připojení se musí shodovat. Vytvoření připojení nějakou dobu trvá.
 
@@ -263,15 +263,15 @@ Nyní máte dvě virtuální sítě s bránami VPN. Dalším krokem je vytvořen
    ```
 3. Ověřte stav připojení. Viz [Ověření stavu připojení](#verify).
 
-## <a name="difsub"></a>Propojení virtuálních sítí patřících k různým předplatným
+## <a name="connect-vnets-that-are-in-different-subscriptions"></a><a name="difsub"></a>Propojení virtuálních sítí patřících k různým předplatným
 
 V tomto scénáři propojíte sítě TestVNet1 a TestVNet5. Virtuální sítě patří k různým předplatným. Předplatná nemusí být přidružená ke stejnému tenantovi Active Directory. Tento postup přidá nové propojení VNet-to-VNet pro připojení virtuální sítě TestVNet1 k virtuální síti TestVNet5.
 
-### <a name="TestVNet1diff"></a>Krok 5: Vytvoření a konfigurace virtuální sítě TestVNet1
+### <a name="step-5---create-and-configure-testvnet1"></a><a name="TestVNet1diff"></a>Krok 5: Vytvoření a konfigurace virtuální sítě TestVNet1
 
 Tyto pokyny navazují na kroky v předchozích částech. Je třeba vytvořit a konfigurovat virtuální síť TestVNet1 a bránu VPN pro virtuální síť TestVNet1 provedením [kroku 1](#Connect) a [kroku 2](#TestVNet1). Pro tuto konfiguraci není nutné vytvářet virtuální síť TestVNet4 z předchozí části, ale pokud ji vytvoříte, nebude to s těmito kroky v konfliktu. Po dokončení kroků 1 a 2 pokračujte krokem 6 (níže).
 
-### <a name="verifyranges"></a>Krok 6: Ověření rozsahů IP adres
+### <a name="step-6---verify-the-ip-address-ranges"></a><a name="verifyranges"></a>Krok 6: Ověření rozsahů IP adres
 
 Při vytváření dalších připojení je důležité ověřit, že se adresní prostor IP adres nové virtuální sítě nepřekrývá se žádným z rozsahů jiných virtuálních sítí ani rozsahů bran místních sítí. Pro tento postup použijte následující hodnoty pro virtuální síť TestVNet5:
 
@@ -290,9 +290,9 @@ Při vytváření dalších připojení je důležité ověřit, že se adresní
 * Připojení: VNet5toVNet1
 * Typ připojení: VNet2VNet
 
-### <a name="TestVNet5"></a>Krok 7: Vytvoření a konfigurace virtuální sítě TestVNet5
+### <a name="step-7---create-and-configure-testvnet5"></a><a name="TestVNet5"></a>Krok 7: Vytvoření a konfigurace virtuální sítě TestVNet5
 
-Tento krok je třeba provést v rámci nového předplatného (předplatné 5). Tuto část může provést správce v organizaci, která je vlastníkem druhého předplatného. K přepínání mezi předplatnými použijte `az account list --all` k vypsání předplatných, která jsou k dispozici pro váš účet, a pak pomocí `az account set --subscription <subscriptionID>` přepněte do předplatného, které chcete použít.
+Tento krok je třeba provést v rámci nového předplatného (předplatné 5). Tuto část může provést správce v organizaci, která je vlastníkem druhého předplatného. Chcete-li přepnout `az account list --all` mezi předplatnými, použijte k `az account set --subscription <subscriptionID>` zobrazení seznamu předplatných, která jsou k dispozici pro váš účet, a pak přepněte na předplatné, které chcete použít.
 
 1. Ujistěte se, že jste připojeni k předplatnému 5, a pak vytvořte skupinu prostředků.
 
@@ -329,9 +329,9 @@ Tento krok je třeba provést v rámci nového předplatného (předplatné 5). 
    az network vnet-gateway create -n VNet5GW -l japaneast --public-ip-address VNet5GWIP -g TestRG5 --vnet TestVNet5 --gateway-type Vpn --sku VpnGw1 --vpn-type RouteBased --no-wait
    ```
 
-### <a name="connections5"></a>Krok 8: Vytvoření připojení
+### <a name="step-8---create-the-connections"></a><a name="connections5"></a>Krok 8: Vytvoření připojení
 
-Vzhledem k tomu, že brány patří do různých předplatných, je tento krok rozdělený do dvou relací rozhraní příkazového řádku označených jako **[Předplatné 1]** a **[Předplatné 5]** . K přepínání mezi předplatnými použijte `az account list --all` k vypsání předplatných, která jsou k dispozici pro váš účet, a pak pomocí `az account set --subscription <subscriptionID>` přepněte do předplatného, které chcete použít.
+Vzhledem k tomu, že brány patří do různých předplatných, je tento krok rozdělený do dvou relací rozhraní příkazového řádku označených jako **[Předplatné 1]** a **[Předplatné 5]**. Chcete-li přepnout `az account list --all` mezi předplatnými, použijte k `az account set --subscription <subscriptionID>` zobrazení seznamu předplatných, která jsou k dispozici pro váš účet, a pak přepněte na předplatné, které chcete použít.
 
 1. **[Předplatné 1]** Přihlaste a připojte se k předplatnému 1. Spusťte následující příkaz a z výstupu získejte název a ID brány:
 
@@ -355,7 +355,7 @@ Vzhledem k tomu, že brány patří do různých předplatných, je tento krok r
 
    Zkopírujte část výstupu uvedeného textem „id:“. E-mailem nebo jiným způsobem odešlete ID a název brány virtuální sítě (VNet5GW) správci předplatného 1.
 
-3. **[Předplatné 1]** V tomto kroku vytvoříte připojení z virtuální sítě TestVNet1 k virtuální síti TestVNet5. Pro sdílený klíč můžete použít vlastní hodnoty, ale sdílené klíče pro obě připojení se musí shodovat. Vytvoření připojení může nějakou dobu trvat. Ujistěte se, že se připojujete k předplatnému 1.
+3. **[Předplatné 1]** V tomto kroku vytvoříte připojení z virtuální sítě TestVNet1 k virtuální síti TestVNet5. Pro sdílený klíč můžete použít vlastní hodnoty, ale sdílené klíče pro obě připojení se musí shodovat. Vytvoření připojení může nějakou dobu trvat.Ujistěte se, že jste připojeni k předplatnému 1.
 
    ```azurecli
    az network vpn-connection create -n VNet1ToVNet5 -g TestRG1 --vnet-gateway1 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW -l eastus --shared-key "eeffgg" --vnet-gateway2 /subscriptions/e7e33b39-fe28-4822-b65c-a4db8bbff7cb/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW
@@ -367,12 +367,12 @@ Vzhledem k tomu, že brány patří do různých předplatných, je tento krok r
    az network vpn-connection create -n VNet5ToVNet1 -g TestRG5 --vnet-gateway1 /subscriptions/e7e33b39-fe28-4822-b65c-a4db8bbff7cb/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW -l japaneast --shared-key "eeffgg" --vnet-gateway2 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW
    ```
 
-## <a name="verify"></a>Ověření stavu připojení
+## <a name="verify-the-connections"></a><a name="verify"></a>Ověření stavu připojení
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
 [!INCLUDE [verify connections](../../includes/vpn-gateway-verify-connection-cli-rm-include.md)]
 
-## <a name="faq"></a>Nejčastější dotazy týkající se propojení VNet-to-VNet
+## <a name="vnet-to-vnet-faq"></a><a name="faq"></a>Nejčastější dotazy týkající se propojení VNet-to-VNet
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
 ## <a name="next-steps"></a>Další kroky

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: jak migrovat databázi SQLite na Azure SQL Database bez serveru'
-description: Naučte se provádět offline migraci z SQLite do Azure SQL Database bez serveru pomocí Azure Data Factory.
+title: 'Kurz: Jak migrovat databázi SQLite do azure SQL databázového serveru bez'
+description: Pomocí Azure Data Factory se naučte provádět offline migraci z SQLite na azure sql databázový server bez.
 services: sql-database
 author: joplum
 ms.author: joplum
@@ -10,76 +10,76 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 01/08/2020
 ms.openlocfilehash: c718daa4bc99bffd6fcfeb084299bed6682fe884
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75780506"
 ---
-# <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>Postup migrace databáze SQLite na Azure SQL Database bez serveru
-Pro mnoho lidí poskytuje program SQLite své první zkušenosti s databázemi a programováním SQL. Zahrnutím do mnoha operačních systémů a oblíbených aplikací se bude posazovat jedna z nejoblíbenějších nasazených a využitých databázových strojů na světě. A vzhledem k tomu, že je pravděpodobný, že první databázový stroj používá mnoho lidí, může často končit jako centrální součást projektů nebo aplikací. V takových případech, kdy projekt nebo aplikace přesáhne počáteční implementaci SQLite, mohou vývojáři potřebovat migrovat svá data do spolehlivého a centralizovaného úložiště dat.
+# <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>Jak migrovat databázi SQLite do azure SQL databázového serveru bez
+Pro mnoho lidí, SQLite poskytuje své první zkušenosti s databázemi a SQL programování. Je to zařazení do mnoha operačních systémů a populárních aplikací dělá SQLite jeden z nejrozšířenějších a používaných databázových strojů na světě. A protože je pravděpodobné, že první databázový stroj, který používá mnoho lidí, může často skončit jako centrální součást projektů nebo aplikací. V takových případech, kdy projekt nebo aplikace přeroste počáteční implementaci SQLite, vývojáři mohou potřebovat migrovat svá data do spolehlivého, centralizovanéúložiště dat.
 
-Azure SQL Database bez serveru je výpočetní vrstva pro izolované databáze, která automaticky škáluje výpočetní výkon na základě požadavků na zatížení a účtuje množství výpočetních operací za sekundu. Výpočetní vrstva bez serveru taky automaticky pozastaví databáze během neaktivních období, kdy se účtují jenom úložiště, a automaticky obnoví databáze při návratu aktivity.
+Azure SQL Database serverless je výpočetní vrstva pro jednotlivé databáze, které automaticky škáluje výpočetní prostředky na základě požadavku na pracovní vytížení a účty za množství výpočetních prostředků spoužívaných za sekundu. Výpočetní úroveň bez serveru také automaticky pozastaví databáze během neaktivních období, kdy se účtuje pouze úložiště a automaticky obnoví databáze, když se vrátí aktivita.
 
-Až budete postupovat podle následujících kroků, vaše databáze se migruje na Azure SQL Database bez serveru a umožní vám zpřístupnit databázi ostatním uživatelům nebo aplikacím v cloudu a platit jenom za to, co používáte, s minimálními změnami kódu aplikace.
+Jakmile budete postupovali podle níže uvedených kroků, bude databáze migrována do Azure SQL Database Serverless, což vám umožní zpřístupnit databázi ostatním uživatelům nebo aplikacím v cloudu a platit jenom za to, co používáte, s minimálními změnami kódu aplikace.
 
 ## <a name="prerequisites"></a>Požadavky
 - Předplatné Azure
 - Databáze SQLite2 nebo SQLite3, kterou chcete migrovat
-- Prostředí systému Windows
-  - Pokud nemáte místní prostředí systému Windows, můžete k migraci použít virtuální počítač s Windows v Azure. Přesuňte a zpřístupněte svůj soubor databáze SQLite na VIRTUÁLNÍm počítači pomocí souborů Azure a Průzkumník služby Storage.
+- Prostředí Windows
+  - Pokud nemáte místní prostředí Windows, můžete pro migraci použít virtuální počítač s Windows v Azure. Přesuňte a zpřístupněte svůj databázový soubor SQLite na virtuálním počítači pomocí Průzkumníka souborů Azure a Průzkumníka úložiště.
 
 ## <a name="steps"></a>Kroky
 
-1. Zřídí novou Azure SQL Database na výpočetní úrovni bez serveru.
+1. Zřídit novou Azure SQL Database v výpočetní vrstvě bez serveru.
 
-    ![snímek obrazovky Azure Portal znázorňující příklad zřizování pro Azure SQL Database bez serveru](./media/tutorial-sqlite-db-to-azure-sql-serverless-offline/provision-serverless.png)
+    ![Snímek obrazovky portálu Azure s příkladem zřizování pro azure sql databázový server bez](./media/tutorial-sqlite-db-to-azure-sql-serverless-offline/provision-serverless.png)
 
-2. Ujistěte se, že máte ve svém prostředí Windows k dispozici soubor databáze SQLite. Nainstalujte ovladač pro rozhraní ODBC pro SQLite, pokud ho ještě nemáte (v otevřeném zdroji je k dispozici mnoho), například http://www.ch-werner.de/sqliteodbc/).
+2. Ujistěte se, že máte svůj databázový soubor SQLite k dispozici ve vašem prostředí Windows. Nainstalujte ovladač SQLite ODBC, pokud jej ještě nemáte (v Open Source http://www.ch-werner.de/sqliteodbc/)je jich k dispozici mnoho, například .
 
-3. Vytvořte systémový název DSN pro databázi. Ujistěte se, že používáte aplikaci Správce zdrojů dat, která odpovídá architektuře systému (32 bitů vs 64 bitů). Verzi, kterou používáte, najdete v nastavení systému.
+3. Vytvořte systémové dsn pro databázi. Ujistěte se, že používáte aplikaci Správce zdroje dat, která odpovídá vaší systémové architektuře (32bitová vs 64bitová). Kterou verzi používáte v nastavení systému.
 
-    - Otevřete Správce zdrojů dat ODBC ve vašem prostředí.
-    - Klikněte na kartu systémové DSN a pak klikněte na Přidat.
-    - Vyberte konektor rozhraní ODBC SQLite, který jste nainstalovali, a zadejte smysluplný název, například sqlitemigrationsource.
-    - Nastavte název databáze na soubor. DB.
+    - Otevřete správce zdroje dat ROZHRANÍ ODBC ve vašem prostředí.
+    - Klikněte na kartu Systémové dsn systému a klikněte na tlačítko "Přidat"
+    - Vyberte nainstalovaný konektor OdBC SQLite a pojmenujte připojení smysluplným názvem, například sqlitemigrationsource
+    - Nastavení názvu databáze na soubor DB
     - Uložit a ukončit
 
-4. Stáhněte a nainstalujte prostředí Integration runtime v místním prostředí. Nejjednodušší způsob, jak to provést, je možnost Expresní instalace, jak je popsáno v dokumentaci. Pokud si vyžádáte ruční instalaci, budete ji muset zadat pomocí ověřovacího klíče, který může být umístěný v instanci Data Factory:
+4. Stáhněte a nainstalujte runtime integrace s vlastním hostitelem. Nejjednodušší způsob, jak to udělat, je možnost expresní instalace, jak je podrobně popsáno v dokumentaci. Pokud se rozhodnete pro ruční instalaci, budete muset aplikaci poskytnout ověřovací klíč, který může být umístěn v instanci Data Factory:
 
-    - Spouští se ADF (vytváření a monitorování ze služby v Azure Portal).
-    - Klikněte na kartu Autor (modrá tužka) vlevo.
-    - Klikněte na připojení (vlevo dole) a potom na modul runtime integrace.
-    - Přidejte nové Integration Runtime v místním prostředí, zadejte název, vyberte *možnost 2*.
+    - Spuštění adf (Autor a monitor ze služby na webu Azure Portal)
+    - Klikněte na záložku "Autor" (Modrá tužka) vlevo
+    - Klikněte na Připojení (vlevo dole), pak integrační runtimes
+    - Přidejte nový vlastní hostovaný integrační runtime, pojmenujte jej a vyberte *možnost 2*.
 
-5. Vytvořte novou propojenou službu pro zdrojovou databázi SQLite ve vašem Data Factory.
+5. Vytvořte novou propojenou službu pro zdrojovou databázi SQLite ve vaší datové továrně.
 
-    ![snímek obrazovky znázorňující okno prázdné propojené služby v Azure Data Factory](./media/tutorial-sqlite-db-to-azure-sql-serverless-offline/linked-services-create.png)
+    ![snímek obrazovky s prázdnou čepelí propojených služeb v Azure Data Factory](./media/tutorial-sqlite-db-to-azure-sql-serverless-offline/linked-services-create.png)
 
-6. V části připojení klikněte v části propojená služba na nový.
+6. V části Připojení klikněte v části Propojená služba na Nový.
 
-7. Vyhledejte a vyberte konektor "ODBC".
+7. Vyhledejte a vyberte konektor "ODBC"
 
 
-    ![snímek obrazovky znázorňující logo konektoru ODBC v okně propojených služeb v Azure Data Factory](./media/tutorial-sqlite-db-to-azure-sql-serverless-offline/linked-services-odbc.png)
+    ![snímek obrazovky s logem konektoru ODBC v okně propojených služeb v Azure Data Factory](./media/tutorial-sqlite-db-to-azure-sql-serverless-offline/linked-services-odbc.png)
 
-8. Poskytněte propojené službě smysluplný název, například "sqlite_odbc". Z rozevíracího seznamu připojit přes modul Integration runtime vyberte prostředí Integration runtime. Do připojovacího řetězce zadejte níže, nahraďte počáteční proměnnou katalogu příponou FilePath pro soubor. DB a DSN s názvem připojení k systémovému DSN: 
+8. Pojmenujte propojenou službu smysluplným názvem, například "sqlite_odbc". Vyberte dobu runtime integrace z rozevíracího souboru "Připojit prostřednictvím integračního runtime". Do připojovacího řetězce zadejte níže a nahrazujte proměnnou Počáteční katalog pathem souboru pro soubor DB a dsn názvem systémového připojení DSN: 
 
     ```
     Connection string: Provider=MSDASQL.1;Persist Security Info=False;Mode=ReadWrite;Initial Catalog=C:\sqlitemigrationsource.db;DSN=sqlitemigrationsource
     ```
 
-9. Nastavit typ ověřování na anonymní
+9. Nastavení typu ověřování na anonymní
 
 10. Otestování připojení
 
-    ![snímek obrazovky znázorňující úspěšné připojení v Azure Data Factory](./media/tutorial-sqlite-db-to-azure-sql-serverless-offline/linked-services-test-successful.png)
+    ![snímek obrazovky s úspěšným připojením v Azure Data Factory](./media/tutorial-sqlite-db-to-azure-sql-serverless-offline/linked-services-test-successful.png)
 
-11. Vytvořte další propojenou službu pro cílový SQL Server bez serveru. Vyberte databázi pomocí Průvodce propojenou službou a zadejte přihlašovací údaje pro ověřování SQL.
+11. Vytvořte další propojenou službu pro cíl SQL bez serveru. Vyberte databázi pomocí průvodce propojenou službou a zadejte pověření ověřování SQL.
 
-    ![snímek obrazovky zobrazující Azure SQL Database vybraný v Azure Data Factory](./media/tutorial-sqlite-db-to-azure-sql-serverless-offline/linked-services-create-target.png)
+    ![snímek obrazovky s azure SQL databází vybranou v Azure Data Factory](./media/tutorial-sqlite-db-to-azure-sql-serverless-offline/linked-services-create-target.png)
 
-12. Extrahujte CREATE TABLE příkazy z databáze SQLite. To můžete provést tak, že v souboru databáze spustíte níže uvedený skript Pythonu.
+12. Extrahujte příkazy CREATE TABLE z databáze SQLite. Můžete to provést spuštěním níže uvedeného skriptu Pythonu v databázovém souboru.
 
     ```
     #!/usr/bin/python
@@ -96,15 +96,15 @@ Až budete postupovat podle následujících kroků, vaše databáze se migruje 
     c.close()
     ```
 
-13. Vytvořte cílové tabulky v cílovém prostředí SQL bez serveru tak, že zkopírujete příkazy CREATE TABLE ze souboru CreateTables. SQL a spustíte příkazy SQL v editoru dotazů v Azure Portal.
+13. Vytvořte tabulky podest v cílovém prostředí SQL bez serveru zkopírováním příkazů tabulky CREATE ze souboru CreateTables.sql a spuštěním příkazů SQL v Editoru dotazů na webu Azure Portal.
 
-14. Vraťte se na domovskou obrazovku Data Factory a kliknutím na "Kopírování dat" spusťte Průvodce vytvořením úlohy.
+14. Vraťte se na domovskou obrazovku data factory a klikněte na "Kopírovat data" pro spuštění průvodce vytvořením úlohy.
 
-    ![snímek obrazovky s logem Průvodce Kopírování dat v Azure Data Factory](./media/tutorial-sqlite-db-to-azure-sql-serverless-offline/copy-data.png)
+    ![snímek obrazovky s logem Průvodce kopírováním dat v Azure Data Factory](./media/tutorial-sqlite-db-to-azure-sql-serverless-offline/copy-data.png)
 
-15. Vyberte všechny tabulky ze zdrojové databáze SQLite pomocí zaškrtávacích políček a namapujte je na cílové tabulky v Azure SQL. Po spuštění úlohy jste úspěšně migrovali data z SQLite do Azure SQL.
+15. Vyberte všechny tabulky ze zdrojové databáze SQLite pomocí zaškrtávacích políček a namapujte je na cílové tabulky v Azure SQL. Po spuštění úlohy jste úspěšně migrovali data z SQLite do Azure SQL!
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o tom, jak začít, najdete v tématu [rychlý Start: vytvoření izolované databáze v Azure SQL Database pomocí Azure Portal](sql-database-single-database-get-started.md).
-- Omezení prostředků najdete v tématu [omezení prostředků výpočetní vrstvy bez serveru](sql-database-vCore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5).
+- Další informace najdete v [tématu Úvodní příručka: Vytvoření jedné databáze v Azure SQL Database pomocí webu Azure Portal](sql-database-single-database-get-started.md).
+- Omezení prostředků naleznete v [tématu Limity prostředků výpočetní úrovně bez serveru](sql-database-vCore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5).

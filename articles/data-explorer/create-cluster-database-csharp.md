@@ -1,6 +1,6 @@
 ---
-title: Vytvoření clusteru Azure Průzkumník dat & DB pomocíC#
-description: Naučte se vytvořit cluster a databázi Azure Průzkumník dat pomocíC#
+title: 'Vytvoření clusteru Průzkumníka dat Azure & DB pomocí C #'
+description: 'Zjistěte, jak vytvořit cluster a databázi Průzkumníka dat Azure pomocí c #'
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,35 +8,35 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 0c32d438ac8551f061343edb747e9fc035b498e2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79246406"
 ---
-# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>Vytvoření clusteru a databáze Azure Průzkumník dat pomocíC#
+# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>Vytvoření clusteru a databáze Průzkumníka dat Azure pomocí C #
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](create-cluster-database-portal.md)
-> * [Rozhraní příkazového řádku](create-cluster-database-cli.md)
+> * [Portál](create-cluster-database-portal.md)
+> * [Cli](create-cluster-database-cli.md)
 > * [PowerShell](create-cluster-database-powershell.md)
-> * [C#](create-cluster-database-csharp.md)
+> * [C #](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
 > * [Šablona Azure Resource Manageru](create-cluster-database-resource-manager.md)
 
-Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Pokud chcete použít Azure Průzkumník dat, musíte nejdřív vytvořit cluster a v tomto clusteru vytvořit jednu nebo víc databází. Pak data ingestujte do databáze, abyste na ni mohli spouštět dotazy. V tomto článku vytvoříte cluster a databázi pomocí nástroje C#.
+Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Pokud chcete použít Azure Data Explorer, musíte nejdříve vytvořit cluster a v něm vytvořit jednu nebo více databází. Do databáze potom ingestujete (načtete) data, abyste se na ně mohli dotazovat spouštěním dotazů. V tomto článku vytvoříte cluster a databázi pomocí jazyka C#.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pokud nemáte nainstalovanou aplikaci Visual Studio 2019, můžete si stáhnout a použít **bezplatnou** [edici Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
+* Pokud nemáte nainstalovaný Visual Studio 2019, můžete si stáhnout a použít **bezplatnou** [visual studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
 [!INCLUDE [data-explorer-data-connection-install-nuget-csharp](../../includes/data-explorer-data-connection-install-nuget-csharp.md)]
 
 ## <a name="authentication"></a>Ověřování
-Pro spuštění příkladů v tomto článku potřebujeme aplikaci služby Azure AD a instanční objekt, který má přístup k prostředkům. Pokud chcete vytvořit bezplatnou aplikaci Azure AD a přidat přiřazení role v oboru předplatného, podívejte se na [vytvořit aplikaci Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) . Také ukazuje, jak získat `Directory (tenant) ID`, `Application ID`a `Client Secret`.
+Pro spuštění příklady v tomto článku potřebujeme azure ad aplikace a instanční objekt, který může získat přístup k prostředkům. Zaškrtněte [vytvořit aplikaci Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) k vytvoření bezplatné aplikace Azure AD a přidejte přiřazení role v oboru předplatného. To také `Directory (tenant) ID`ukazuje, jak `Application ID`získat `Client Secret`, a .
 
-## <a name="create-the-azure-data-explorer-cluster"></a>Vytvoření clusteru Azure Průzkumník dat
+## <a name="create-the-azure-data-explorer-cluster"></a>Vytvoření clusteru Průzkumníka dat Azure
 
 1. Vytvořte cluster pomocí následujícího kódu:
 
@@ -70,23 +70,23 @@ Pro spuštění příkladů v tomto článku potřebujeme aplikaci služby Azure
    |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|
    | clusterName | *mykustocluster* | Požadovaný název clusteru.|
-   | skuName | *Standard_D13_v2* | SKU, které bude použito pro váš cluster. |
-   | tier | *Standard* | Úroveň SKU. |
-   | kapacita | *Automatické* | Počet instancí clusteru |
-   | resourceGroupName | *testrg* | Název skupiny prostředků, ve které se cluster vytvoří. |
+   | skuName | *Standard_D13_v2* | Skladová položka, která bude použita pro váš cluster. |
+   | tier | *Standard* | Úroveň Skladové položky. |
+   | capacity | *Číslo* | Počet instancí clusteru. |
+   | resourceGroupName | *testrg* | Název skupiny prostředků, kde bude vytvořen cluster. |
 
     > [!NOTE]
-    > **Vytvoření clusteru** je dlouhodobá operace, takže se doporučujeme místo CreateOrUpdate použít CreateOrUpdateAsync. 
+    > **Vytvoření clusteru** je dlouho běžící operace, takže je vysoce doporučeno použít CreateOrUpdateAsync, namísto CreateOrUpdate. 
 
-1. Spusťte následující příkaz a ověřte, zda byl cluster úspěšně vytvořen:
+1. Spuštěním následujícího příkazu zkontrolujte, zda byl cluster úspěšně vytvořen:
 
     ```csharp
     kustoManagementClient.Clusters.Get(resourceGroupName, clusterName);
     ```
 
-Pokud výsledek obsahuje `ProvisioningState` s hodnotou `Succeeded`, cluster se úspěšně vytvořil.
+Pokud výsledek `ProvisioningState` obsahuje `Succeeded` s hodnotou, byl cluster úspěšně vytvořen.
 
-## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>Vytvoření databáze v clusteru Azure Průzkumník dat
+## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>Vytvoření databáze v clusteru Průzkumníka dat Azure
 
 1. Vytvořte databázi pomocí následujícího kódu:
 
@@ -104,24 +104,24 @@ Pokud výsledek obsahuje `ProvisioningState` s hodnotou `Succeeded`, cluster se 
 
    |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|
-   | clusterName | *mykustocluster* | Název clusteru, ve kterém se databáze vytvoří.|
-   | databaseName | *mykustodatabase* | Název vaší databáze.|
-   | resourceGroupName | *testrg* | Název skupiny prostředků, ve které se cluster vytvoří. |
-   | softDeletePeriod | *3650:00:00:00* | Doba, po kterou budou data uchována k dispozici pro dotaz. |
-   | hotCachePeriod | *3650:00:00:00* | Doba, po kterou budou data uchována v mezipaměti. |
+   | clusterName | *mykustocluster* | Název clusteru, kde bude databáze vytvořena.|
+   | Databasename | *mykustodatabáze* | Název databáze.|
+   | resourceGroupName | *testrg* | Název skupiny prostředků, kde bude vytvořen cluster. |
+   | softDeletePeriod | *3650:00:00:00* | Doba, po kterou budou data k dispozici pro dotaz. |
+   | hotCachePeriod | *3650:00:00:00* | Doba, po kterou budou data uložena v mezipaměti. |
 
-2. Spuštěním následujícího příkazu zobrazíte databázi, kterou jste vytvořili:
+2. Chcete-li zobrazit databázi, kterou jste vytvořili, spusťte následující příkaz:
 
     ```csharp
     kustoManagementClient.Databases.Get(resourceGroupName, clusterName, databaseName) as ReadWriteDatabase;
     ```
 
-Teď máte cluster a databázi.
+Nyní máte cluster a databázi.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-* Pokud plánujete postupovat podle našich dalších článků, ponechejte prostředky, které jste vytvořili.
-* Pokud chcete vyčistit prostředky, odstraňte cluster. Když odstraníte cluster, odstraní se i všechny jeho databáze. Pomocí následujícího příkazu odstraňte cluster:
+* Pokud máte v plánu sledovat naše další články, uchovávejte zdroje, které jste vytvořili.
+* Chcete-li vyčistit prostředky, odstraňte cluster. Když odstraníte cluster, odstraní také všechny databáze v něm. K odstranění clusteru použijte následující příkaz:
 
     ```csharp
     kustoManagementClient.Clusters.Delete(resourceGroupName, clusterName);
@@ -129,4 +129,4 @@ Teď máte cluster a databázi.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Ingestování dat pomocí sady Azure Průzkumník dat .NET Standard SDK (Preview)](net-standard-ingest-data.md)
+* [Ingestování dat pomocí azure data exploreru .NET Standard SDK (Preview)](net-standard-ingest-data.md)

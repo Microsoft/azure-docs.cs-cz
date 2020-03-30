@@ -1,6 +1,6 @@
 ---
-title: Použití škálování a Sparku v Azure HDInsight
-description: Použití škálování a Sparku pro manipulaci s daty a vývoj modelů pomocí služeb ML ve službě Azure HDInsight
+title: Použití ScaleR a SparkR s Azure HDInsight
+description: Použití ScaleR a SparkR pro manipulaci s daty a vývoj modelů se službami ML ve službě Azure HDInsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,29 +9,29 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/26/2019
 ms.openlocfilehash: 5989692aeb59c7394299b4cb2474b244818895b2
-ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75500071"
 ---
-# <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Kombinování škály a Sparku v HDInsight
+# <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Kombinujte ScaleR a SparkR v HDInsightu
 
-V tomto dokumentu se dozvíte, jak předpovědět prodlevy při příchodu letu pomocí **modelu logistické** regrese. V příkladu se používá zpoždění letu a data o počasí připojená pomocí **Sparku**.
+Tento dokument ukazuje, jak předpovědět zpoždění příletu letu pomocí modelu logistické regrese **ScaleR.** Příklad používá zpoždění letu a data o počasí, spojená pomocí **SparkR**.
 
-I když oba balíčky běží na spouštěcím modulu Spark Apache Hadoop, jsou blokované ze sdílení dat v paměti, protože každý z nich vyžaduje své vlastní relace Sparku. Dokud se tento problém nevyřeší v nadcházející verzi ml Server, doporučujeme, abyste zachovali překrývající se relace Spark a mohli data Exchange obejít prostřednictvím zprostředkujících souborů. Zde uvedené pokyny ukazují, že tyto požadavky je jednoduché dosáhnout.
+I když oba balíčky běží na spuštění Apache Hadoop spark motoru, jsou blokovány od sdílení dat v paměti, protože každý vyžaduje své vlastní relace Spark. Dokud se tento problém nevyřeší v nadcházející verzi serveru ML, je toto řešení udržovat nepřekrývající se relace Spark a vyměňovat si data prostřednictvím zprostředkujících souborů. Pokyny zde ukazují, že tyto požadavky jsou jednoduché dosáhnout.
 
-Tento příklad se původně sdílel v hovořit na úrovni vrstvy 2016 od Mario Inchiosa a Roni Burd. Tento rozhovor můžete najít na [tvorbě škálovatelné platformy pro datovou vědu pomocí jazyka R](https://channel9.msdn.com/blogs/Cloud-and-Enterprise-Premium/Building-A-Scalable-Data-Science-Platform-with-R-and-Hadoop).
+Tento příklad byl původně sdílen v rozhovoru na Strata 2016 Mario Inchiosa a Roni Burd. Tuto přednášku najdete na [platformě Building a Scalable Data Science Platform s R](https://channel9.msdn.com/blogs/Cloud-and-Enterprise-Premium/Building-A-Scalable-Data-Science-Platform-with-R-and-Hadoop).
 
-Kód byl původně napsán pro ML Server běžící na Sparku v clusteru HDInsight v Azure. Ale koncept kombinace použití Sparku a nástroje pro škálování v jednom skriptu je platný i v kontextu místních prostředí.
+Kód byl původně napsán pro ML Server spuštěný na Spark v clusteru HDInsight v Azure. Ale koncept míchání použití SparkR a ScaleR v jednom skriptu je také platný v kontextu místních prostředí.
 
-Kroky v tomto dokumentu předpokládají, že máte pokročilou úroveň znalostí R a že je knihovna pro [škálování](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) ml Server. Při procházení tohoto scénáře jste zavedeni do [Sparku](https://spark.apache.org/docs/2.1.0/sparkr.html) .
+Kroky v tomto dokumentu předpokládají, že máte střední úroveň znalostí R a jsou [knihovnou ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) serveru ML. Jste představeni [SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) při procházení tohoto scénáře.
 
-## <a name="the-airline-and-weather-datasets"></a>Letecké a počasí datové sady
+## <a name="the-airline-and-weather-datasets"></a>Datové sady leteckých společností a počasí
 
-Letová data jsou dostupná z [archivů státní správy USA](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236). Je také k dispozici jako PSČ z [AirOnTimeCSV. zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip).
+Letová data jsou k dispozici v [archivu vlády USA](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236). Je také k dispozici jako zip z [AirOnTimeCSV.zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip).
 
-Data o počasí je možné stáhnout jako soubory zip v nezpracované podobě po měsících z [národního úložiště pro správu oceán a atmosféry](https://www.ncdc.noaa.gov/orders/qclcd/). V tomto příkladu si stáhněte data pro květen 2007 – prosinec 2012. Použijte hodinové datové soubory a `YYYYMMMstation.txt` soubor v každém z zips.
+Údaje o počasí lze stáhnout jako zip soubory v surové formě, podle měsíce, z [Národníoceánské a atmosférické správy úložiště](https://www.ncdc.noaa.gov/orders/qclcd/). V tomto příkladu stáhněte data za květen 2007 – prosinec 2012. Použijte hodinové datové soubory `YYYYMMMstation.txt` a soubor v rámci každého zips.
 
 ## <a name="setting-up-the-spark-environment"></a>Nastavení prostředí Spark
 
@@ -80,7 +80,7 @@ logmsg('Start')
 logmsg(paste('Number of task nodes=',length(trackers)))
 ```
 
-Dále přidejte `Spark_Home` do cesty pro vyhledávání pro balíčky R. Když ho přidáte do cesty pro hledání, budete moct použít Spark a inicializovat relaci Sparku:
+Dále přidejte `Spark_Home` do cesty hledání pro balíčky R. Přidání do vyhledávací cesty umožňuje použít SparkR a inicializovat relaci SparkR:
 
 ```
 #..setup for use of SparkR  
@@ -101,20 +101,20 @@ sc <- sparkR.init(
 sqlContext <- sparkRSQL.init(sc)
 ```
 
-## <a name="preparing-the-weather-data"></a>Příprava dat o počasí
+## <a name="preparing-the-weather-data"></a>Příprava údajů o počasí
 
-Chcete-li připravit data o počasí, podmnožinu do sloupců potřebných pro modelování: 
+Chcete-li připravit data o počasí, podmnožinou je do sloupců potřebných pro modelování: 
 
-- Viditelnost
+- "Viditelnost"
 - "DryBulbCelsius"
 - "DewPointCelsius"
-- "RelativeHumidity"
-- "WindSpeed"
-- "Altimeter"
+- "Relativní vlhkost"
+- "Rychlost větru"
+- "Vesušovač"
 
-Pak přidejte kód letiště přidružený ke povětrnostnímu stanovišti a převeďte měření z místního času na UTC.
+Poté přidejte kód letiště přidružený k meteorologické stanici a převeďte měření z místního času na UTC.
 
-Začněte tím, že vytvoříte soubor pro mapování informací o počasí (WBAN) na kód letiště. Následující kód přečte každý z hodinových nezpracovaných datových souborů počasí, podmnožiny do sloupců, které potřebujeme, sloučí soubor mapování povětrnostních stanic, upraví datum a čas měření na UTC a pak zapíše novou verzi souboru:
+Začněte vytvořením souboru pro mapování informací o meteorologické stanici (WBAN) na kód letiště. Následující kód přečte každý z hodinových nezpracovaných datových souborů počasí, podmnožiny sloupců, které potřebujeme, sloučí soubor mapování meteorologických stanic, upraví data měření na UTC a pak zapíše novou verzi souboru:
 
 ```
 # Look up AirportID and Timezone for WBAN (weather station ID) and adjust time
@@ -192,9 +192,9 @@ rxDataStep(weatherDF, outFile = weatherDF1, rowsPerRead = 50000, overwrite = T,
            transformObjects = list(wbanToAirIDAndTZDF1 = wbanToAirIDAndTZDF))
 ```
 
-## <a name="importing-the-airline-and-weather-data-to-spark-dataframes"></a>Import leteckých a počasí dat do sparkových datových rámců
+## <a name="importing-the-airline-and-weather-data-to-spark-dataframes"></a>Import dat letecké společnosti a počasí do datových rámců Spark DataFrames
 
-Teď k importu povětrnostních a leteckých dat do Spark dataframes používáme funkci Spark [()](https://spark.apache.org/docs/latest/api/R/read.df.html) pro import počasí. Tato funkce, podobně jako mnoho dalších metod Spark, je spouštěna laxně vytvářená, což znamená, že jsou zařazeny do fronty pro provedení, ale nebudou vykonány, dokud není vyžadováno.
+Nyní používáme funkci SparkR [read.df()](https://spark.apache.org/docs/latest/api/R/read.df.html) k importu počasí a dat leteckých společností do datových rámců Spark DataFrames. Tato funkce, stejně jako mnoho jiných metod Spark, je spuštěna líně, což znamená, že jsou zařazeny do fronty pro spuštění, ale nejsou provedeny, dokud není vyžadováno.
 
 ```
 airPath     <- file.path(inputDataDir, "AirOnTime08to12CSV")
@@ -216,9 +216,9 @@ weatherDF <- read.df(sqlContext, weatherPath, source = "com.databricks.spark.csv
                      header = "true", inferSchema = "true")
 ```
 
-## <a name="data-cleansing-and-transformation"></a>Čištění a transformace dat
+## <a name="data-cleansing-and-transformation"></a>Čištění dat a transformace
 
-V dalším kroku provedeme vyčištění leteckých dat, která jsme naimportovali pro přejmenování sloupců. Potřebujeme jenom potřebné proměnné a zaokrouhlit naplánované časy odchodu na nejbližší hodinu, abyste mohli sloučit s nejnovějšími daty počasí při odchodu:
+Dále uděláme nějaké vyčištění dat letecké společnosti, které jsme importovali, abychom přejmenovali sloupce. Potřebné proměnné uchováváme pouze na nejbližší hodinu, abychom umožnili sloučení s nejnovějšími údaji o počasí při odjezdu:
 
 ```
 logmsg('clean the airline data') 
@@ -246,7 +246,7 @@ coltypes(airDF) <- c("character", "integer", "integer", "integer", "integer", "c
 airDF$CRSDepTime <- floor(airDF$CRSDepTime / 100)
 ```
 
-Nyní provádíme podobné operace s daty o počasí:
+Nyní provádíme podobné operace s údaji o počasí:
 
 ```
 # Average weather readings by hour
@@ -265,9 +265,9 @@ weatherDF <- rename(weatherDF,
 )
 ```
 
-## <a name="joining-the-weather-and-airline-data"></a>Připojení k povětrnostním a leteckým datům
+## <a name="joining-the-weather-and-airline-data"></a>Připojení k údajům o počasí a leteckých společnostech
 
-Nyní používáme funkci Spark [Join ()](https://spark.apache.org/docs/latest/api/R/join.html) k provedení levého vnějšího spojení se leteckou a povětrnostním objemem dat odchodu AirportID a DateTime. Vnější spojení nám umožňuje uchovávat všechny záznamy leteckých dat i v případě, že nejsou k dispozici žádná data o počasí. Po připojení odebereme některé nadbytečné sloupce a přejmenujeme zachované sloupce, aby se odebrala příchozí předpona dataframe, kterou služba JOIN zavedla.
+Nyní používáme sparkr [join()](https://spark.apache.org/docs/latest/api/R/join.html) funkce udělat levé vnější spojení letecké společnosti a údaje o počasí odletem AirportID a datetime. Vnější spojení nám umožňuje uchovávat všechny záznamy leteckých dat, i když nejsou k dispozici žádné odpovídající údaje o počasí. Po spojení odebereme některé nadbytečné sloupce a přejmenujeme uchovávané sloupce, abychom odebrali předponu příchozího datového rámce zavedenou spojením.
 
 ```
 logmsg('Join airline data with weather at Origin Airport')
@@ -298,7 +298,7 @@ joinedDF2 <- rename(joinedDF1,
 )
 ```
 
-Podobným způsobem spojíme data o počasí a leteckých společnostech na základě příjezdu AirportID a DateTime:
+Podobným způsobem se připojujeme k údajům o počasí a leteckých společnostech na základě příjezdu AirportID a datetime:
 
 ```
 logmsg('Join airline data with weather at Destination Airport')
@@ -329,9 +329,9 @@ joinedDF5 <- rename(joinedDF4,
                     )
 ```
 
-## <a name="save-results-to-csv-for-exchange-with-scaler"></a>Uložení výsledků do sdíleného svazku clusteru pro Exchange s nástrojem pro škálování
+## <a name="save-results-to-csv-for-exchange-with-scaler"></a>Uložit výsledky do CSV pro výměnu s ScaleR
 
-To dokončí spojení, které potřebujeme udělat pomocí Sparku. Uložíme data z finálního dataframe "joinedDF5" do sdíleného svazku clusteru pro vstup do škálování a pak uzavřete relaci Sparku. K zajištění dostatečného paralelismu v rámci zpracování nástroje pro škálování jsme výslovně informovali Spark, aby ušetřil výsledný soubor CSV v 80 samostatných oddílech:
+To dokončuje spojení, které musíme udělat se SparkRem. Uložíme data z konečného Spark DataFrame "joinedDF5" do CSV pro vstup do ScaleR a pak uzavřete relaci SparkR. Explicitně řekneme SparkR, aby uložil výsledný CSV v 80 samostatných oddílech, aby umožnil dostatečný paralelismus při zpracování ScaleR:
 
 ```
 logmsg('output the joined data from Spark to CSV') 
@@ -347,9 +347,9 @@ sparkR.stop()
 rxHadoopRemove(file.path(dataDir, "joined5Csv/_SUCCESS"))
 ```
 
-## <a name="import-to-xdf-for-use-by-scaler"></a>Importovat do XDF pro použití nástrojem pro horizontální navýšení kapacity
+## <a name="import-to-xdf-for-use-by-scaler"></a>Import do XDF pro použití scaler
 
-Mohli jsme použít soubor CSV připojených leteckých a povětrnostních dat, jak je pro modelování prostřednictvím textového zdroje dat nástroje pro škálování. Ale nejdřív ho naimportujeme na XDF, protože je efektivnější při spouštění více operací s datovou sadou:
+Mohli bychom použít soubor CSV spojených leteckých společností a data o počasí, jak-je pro modelování prostřednictvím zdroje textových dat ScaleR. Ale nejprve jej importujeme do XDF, protože je efektivnější při spuštění více operací v datové sadě:
 
 ```
 logmsg('Import the CSV to compressed, binary XDF format') 
@@ -432,9 +432,9 @@ finalData <- RxXdfData(file.path(dataDir, "joined5XDF"), fileSystem = hdfsFS)
 
 ```
 
-## <a name="splitting-data-for-training-and-test"></a>Rozdělení dat pro školení a testování
+## <a name="splitting-data-for-training-and-test"></a>Rozdělení dat pro trénování a testování
 
-RxDataStep používáme k rozdělení dat 2012 pro testování a udržování zbývajícího školení:
+Používáme rxDataStep rozdělit data 2012 pro testování a zachovat zbytek pro školení:
 
 ```
 # split out the training data
@@ -457,9 +457,9 @@ rxGetInfo(trainDS)
 rxGetInfo(testDS)
 ```
 
-## <a name="train-and-test-a-logistic-regression-model"></a>Výuka a testování modelu logistické regrese
+## <a name="train-and-test-a-logistic-regression-model"></a>Trénování a testování logistického regresního modelu
 
-Teď jsme připraveni sestavit model. K zobrazení vlivu dat o počasí v době příchodu používáme rutinu logistické regrese pro škálování. Používáme ho k modelování, jestli je zpoždění doručení větší než 15 minut ovlivněné počasí na letištích odchodu a příjezdu:
+Nyní jsme připraveni postavit model. Chcete-li zjistit vliv údajů o počasí na zpoždění v době příjezdu, používáme sekční regresní rutina ScaleR. Používáme jej k modelování, zda zpoždění příjezdu delší než 15 minut je ovlivněno počasím na odletových a příletových letištích:
 
 ```
 logmsg('train a logistic regression model for Arrival Delay > 15 minutes') 
@@ -479,7 +479,7 @@ logitModel <- rxLogit(formula, data = trainDS, maxIterations = 3)
 base::summary(logitModel)
 ```
 
-Teď se podívejme na to, jak to dělá na testovacích datech tím, že se předpovědi a díváte se na ROC a AUC.
+Nyní se podívejme, jak to dělá na testovacích datech tím, že některé předpovědi a při pohledu na ROC a AUC.
 
 ```
 # Predict over test data (Logistic Regression).
@@ -506,7 +506,7 @@ plot(logitRoc)
 
 ## <a name="scoring-elsewhere"></a>Bodování jinde
 
-Model pro vyhodnocování dat můžete použít také na jiné platformě. Uložením do souboru RDS a následným převodem a importem této služby RDS do cílového prostředí bodování, jako je například MIcrosoft SQL Server R Services. Je důležité zajistit, aby úrovně faktoru dat, které mají být hodnoceny, odpovídaly hodnotám, na kterých byl model sestaven. Tuto shodu je možné dosáhnout extrakcí a uložením informací o sloupcích přidružených k datům modelování prostřednictvím funkce škálování `rxCreateColInfo()` a následným použitím informací o tomto sloupci na vstupní zdroj dat pro předpověď. V následujícím příkladu ušetříme několik řádků testovací datové sady a extrahujete a použijeme informace o sloupci z této ukázky ve skriptu předpovědi:
+Můžeme také použít model pro vyhodnocování dat na jiné platformě. Uložením do souboru RDS a následným přenesením a importem tohoto rds do cílového bodovacího prostředí, jako je například MIcrosoft SQL Server R Services. Je důležité zajistit, aby úrovně faktoru dat, která mají být skóre, odpovídaly těm, na kterých byl model vytvořen. Této shody lze dosáhnout extrahování a uložení informací sloupce spojených `rxCreateColInfo()` s daty modelování prostřednictvím funkce ScaleR a potom použití této informace sloupce na vstupní zdroj dat pro předpověď. V následujícím textu uložíme několik řádků testovací datové sady a extrahujeme a použijeme informace o sloupci z této ukázky ve skriptu předpověď:
 
 ```
 # save the model and a sample of the test dataset 
@@ -531,16 +531,16 @@ logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 
 ## <a name="summary"></a>Souhrn
 
-V tomto článku jsme ukázali, jak je možné kombinovat použití Sparku k manipulaci s daty pomocí nástroje pro vývoj modelů v Hadoop Spark. Tento scénář vyžaduje, abyste zachovali samostatné relace Spark, běželi jenom jednu relaci najednou a data Exchange prostřednictvím souborů CSV. I když je to jasné, měl by být tento proces ještě snazší v nadcházející verzi služby ML, když Spark a služba pro škálování můžou sdílet relaci Sparku a sdílet tak datarámce Sparku.
+V tomto článku jsme ukázali, jak je možné kombinovat použití SparkR pro manipulaci s daty s ScaleR pro vývoj modelu v Hadoop Spark. Tento scénář vyžaduje, abyste udržovali samostatné relace Spark, spouštěli jste současně pouze jednu relaci a vyměňovali si data prostřednictvím souborů CSV. Ačkoli je tento proces přímočarý, měl by být ještě jednodušší v nadcházející verzi služby ML Services, když SparkR a ScaleR mohou sdílet relaci Spark a tak sdílet datové rámce Spark.
 
 ## <a name="next-steps-and-more-information"></a>Další kroky a další informace
 
-- Další informace o použití ML Server v Apache Spark najdete v [příručce Začínáme](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started).
+- Další informace o použití serveru ML na Apache Spark naleznete v [průvodci Začínáme](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started).
 
-- Informace o službách ML ve službě HDInsight najdete v tématu [Přehled služeb ml v HDInsight](r-server/r-server-overview.md).
+- Informace o službách ML na rozhraní HDInsight naleznete v [tématu Přehled služeb ML na rozhraní HDInsight](r-server/r-server-overview.md).
 
-Další informace o použití Sparku najdete v těchto tématech:
+Další informace o použití SparkR naleznete v těchto tématech:
 
-- [Dokument Apache Spark](https://spark.apache.org/docs/2.1.0/sparkr.html).
+- [Dokument Apache SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html).
 
-- [Sparkový přehled](https://docs.databricks.com/spark/latest/sparkr/overview.html) z datacihly.
+- [SparkR Přehled](https://docs.databricks.com/spark/latest/sparkr/overview.html) z Databricks.

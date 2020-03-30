@@ -1,52 +1,53 @@
 ---
-title: Služby Azure, které podporují Azure Data Lake Storage Gen2 | Microsoft Docs
-description: Informace o tom, které služby Azure se integrují s Azure Data Lake Storage Gen2
+title: Služby Azure, které podporují Azure Data Lake Storage Gen2 | Dokumenty společnosti Microsoft
+description: Informace o integraci služeb Azure s Azure Data Lake Storage Gen2
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 03/26/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: cb68f1bc851a8573ddec01d1eee803135a11b067
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 0cf8a4a78894cb7f0e1ddcf7aa18bbb4006bbeeb
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78195354"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80345638"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>Služby Azure, které podporují Azure Data Lake Storage Gen2
 
-Služby Azure můžete použít k ingestování dat, provádění analýz a vytváření vizuálních reprezentace. Tento článek obsahuje seznam podporovaných služeb Azure, zveřejňuje jejich úroveň podpory a poskytuje odkazy na články, které vám pomůžou tyto služby používat s Azure Data Lake Storage Gen2.
+Služby Azure můžete používat k ingestování dat, provádění analýz a vytváření vizuálních reprezentací. Tento článek obsahuje seznam podporovaných služeb Azure, zveřejňuje jejich úroveň podpory a poskytuje odkazy na články, které vám pomohou používat tyto služby s Azure Data Lake Storage Gen2.
 
 ## <a name="supported-azure-services"></a>Podporované služby Azure
 
-V této tabulce jsou uvedené služby Azure, které můžete používat s Azure Data Lake Storage Gen2. Položky, které se zobrazí v těchto tabulkách, se v průběhu času změní, dokud je podpora stále rozbalená.
+V této tabulce jsou uvedeny služby Azure, které můžete používat s Azure Data Lake Storage Gen2. Položky, které se zobrazí v těchto tabulkách se bude měnit v průběhu času jako podpora nadále rozšiřovat.
 
 > [!NOTE]
-> Úroveň podpory odkazuje jenom na to, jak je služba podporovaná s Data Lake Storage Gen 2.
+> Úroveň podpory odkazuje pouze na to, jak je služba podporována pomocí data lake storage gen 2.
 
 |Služba Azure |Úroveň podpory |Související články |
 |---------------|-------------------|---|
-|Azure Data Factory|Obecně dostupná|[Načtení dat do Azure Data Lake Storage Gen2 s využitím Azure Data Factory](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|Azure Databricks|Obecně dostupná|[Použít s Azure Databricks](https://docs.azuredatabricks.net/data/data-sources/azure/azure-datalake-gen2.html) <br> [Rychlý Start: Analýza dat v Azure Data Lake Storage Gen2 pomocí Azure Databricks](data-lake-storage-quickstart-create-databricks-account.md) <br>[Kurz: extrakce, transformace a načtení dat pomocí Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse) <br>[Kurz: přístup k datům Data Lake Storage Gen2 pomocí Azure Databricks pomocí Sparku](data-lake-storage-use-databricks-spark.md)|
-|Azure Event Hubs Capture| Obecně dostupná|[Zachycení událostí prostřednictvím Azure Event Hubs v Azure Blob Storage nebo Azure Data Lake Storage](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)|
-|Azure Logic Apps|Obecně dostupná|[Přehled – co je Azure Logic Apps?](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)|
-|Azure Machine Learning|Obecně dostupná|[Přístup k datům ve službě Azure Storage](https://docs.microsoft.com/azure/machine-learning/how-to-access-data)|
-|Azure Stream Analytics|Obecně dostupná|[Rychlý Start: vytvoření úlohy Stream Analytics pomocí Azure Portal](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal) <br> [Odchozí přenos dat do Azure Data Lake Gen2](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-outputs#blob-storage-and-azure-data-lake-gen2)|
-|Data Box| Obecně dostupná|[Pomocí Azure Data Box migrujte data z místního úložiště HDFS do Azure Storage](data-lake-storage-migrate-on-premises-hdfs-cluster.md)|
-|HDInsight | Obecně dostupná|[Použití služby Azure Data Lake Storage Gen2 s clustery Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br>[Použití rozhraní příkazového řádku HDFS s Data Lake Storage Gen2](data-lake-storage-use-hdfs-data-lake-storage.md) <br>[Kurz: extrakce, transformace a načtení dat pomocí Apache Hive ve službě Azure HDInsight](data-lake-storage-tutorial-extract-transform-load-hive.md)|
-|IoT Hub | Obecně dostupná|[Použití směrování zpráv IoT Hub k posílání zpráv ze zařízení do cloudu do různých koncových bodů](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)|
-|Power BI| Obecně dostupná|[Analyzovat data v Data Lake Storage Gen2 pomocí Power BI](https://docs.microsoft.com/power-query/connectors/datalakestorage)|
-|SQL Data Warehouse|Obecně dostupná|[Použít s Azure SQL Data Warehouse](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-sql-data-warehouse-polybase)|
-|SQL Server Integration Services (SSIS)|Obecně dostupná|[Správce připojení Azure Storage](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-2017)|
-|Azure Cognitive Search| Preview|[Index a hledání Azure Data Lake Storage Gen2ch dokumentů (Preview)](https://docs.microsoft.com/azure/search/search-howto-index-azure-data-lake-storage)|
-|Azure Content Delivery Network|Zatím nepodporováno|[Index a hledání Azure Data Lake Storage Gen2ch dokumentů (Preview)](https://docs.microsoft.com/azure/cdn/cdn-overview)|
+|Azure Data Factory|Obecná dostupnost|[Načtení dat do Azure Data Lake Storage Gen2 s Azure Data Factory](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure Databricks|Obecná dostupnost|[Použití se službou Azure Databricks](https://docs.azuredatabricks.net/data/data-sources/azure/azure-datalake-gen2.html) <br> [Úvodní příručka: Analýza dat v Azure Data Lake Storage Gen2 pomocí Azure Databricks](data-lake-storage-quickstart-create-databricks-account.md) <br>[Kurz: Extrahujte, transformujte a načtěte data pomocí Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse) <br>[Kurz: Přístup k datům Gen2 úložiště datového jezera pomocí Azure Databricks pomocí Sparku](data-lake-storage-use-databricks-spark.md)|
+|Zachycení centra událostí Azure| Obecná dostupnost|[Zachyťte události prostřednictvím Azure Event Hubs v Azure Blob Storage nebo Azure Data Lake Storage](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)|
+|Azure Logic Apps|Obecná dostupnost|[Přehled – Co jsou aplikace Azure Logic Apps?](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)|
+|Azure Machine Learning|Obecná dostupnost|[Přístup k datům ve službách úložiště Azure](https://docs.microsoft.com/azure/machine-learning/how-to-access-data)|
+|Azure Stream Analytics|Obecná dostupnost|[Rychlý start: Vytvoření úlohy Stream Analytics pomocí webu Azure Portal](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal) <br> [Výstup do Azure Data Lake Gen2](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-outputs#blob-storage-and-azure-data-lake-gen2)|
+|Data Box| Obecná dostupnost|[Migrace dat z místního úložiště HDFS do Úložiště Azure se používá k migraci dat z místního úložiště HDFS](data-lake-storage-migrate-on-premises-hdfs-cluster.md)|
+|HDInsight | Obecná dostupnost|[Použití služby Azure Data Lake Storage Gen2 s clustery Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br>[Použití rozhraní SE konstruum HDFS s datovým úložištěm jezera Gen2](data-lake-storage-use-hdfs-data-lake-storage.md) <br>[Kurz: Extrahujte, transformujte a načítajíte data pomocí Apache Hive na Azure HDInsight](data-lake-storage-tutorial-extract-transform-load-hive.md)|
+|IoT Hub | Obecná dostupnost|[Směrování zpráv služby IoT Hub slouží k odesílání zpráv mezi zařízeními a cloudy do různých koncových bodů](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)|
+|Power BI| Obecná dostupnost|[Analýza dat v zařízení Data Lake Storage Gen2 pomocí Power BI](https://docs.microsoft.com/power-query/connectors/datalakestorage)|
+|SQL Data Warehouse|Obecná dostupnost|[Použití se službou Azure SQL Data Warehouse](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-sql-data-warehouse-polybase)|
+|SQL Server Integration Services (SSIS)|Obecná dostupnost|[Správce připojení azure úložiště](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-2017)|
+|Azure Cognitive Search|Preview|[Indexování a vyhledávání dokumentů Azure Data Lake Storage Gen2 (preview)](https://docs.microsoft.com/azure/search/search-howto-index-azure-data-lake-storage)|
+|Průzkumník dat Azure|Preview|[Dotazování na data v Azure Data Lake pomocí Azure Data Exploreru](https://docs.microsoft.com/azure/data-explorer/data-lake-query-data)|
+|Azure Content Delivery Network|Dosud není podporováno|[Indexování a vyhledávání dokumentů Azure Data Lake Storage Gen2 (preview)](https://docs.microsoft.com/azure/cdn/cdn-overview)|
 
 
 ## <a name="see-also"></a>Viz také
 
 - [Známé problémy s Azure Data Lake Storage Gen2](data-lake-storage-known-issues.md)
-- [Funkce BLOB Storage dostupné v Azure Data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md)
-- [Open Source platformy, které podporují Azure Data Lake Storage Gen2](data-lake-storage-supported-open-source-platforms.md)
-- [Přístup k více protokolům na Azure Data Lake Storage](data-lake-storage-multi-protocol-access.md)
+- [Funkce úložiště objektů blob dostupné v Azure Data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md)
+- [Open source platformy, které podporují Azure Data Lake Storage Gen2](data-lake-storage-supported-open-source-platforms.md)
+- [Přístup k více protokolům v úložišti Azure Data Lake Storage](data-lake-storage-multi-protocol-access.md)

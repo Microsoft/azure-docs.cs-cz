@@ -9,24 +9,24 @@ ms.date: 12/13/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 70ac106995324c758bde942d12191a01e3457e6e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67174741"
 ---
 > [!NOTE]
-> Tyto příklady se nevztahují na S2S a ExpressRoute existovat vedle sebe konfigurace.
-> Další informace o práci s bránami v konfiguraci coexist najdete v tématu [konfigurace současně existujících připojení.](../articles/expressroute/expressroute-howto-coexist-classic.md#gw)
+> Tyto příklady se nevztahují na konfigurace S2S/ExpressRoute koexistující.
+> Další informace o práci s bránami v koexistující konfiguraci naleznete v [tématu Konfigurace koexistujících připojení.](../articles/expressroute/expressroute-howto-coexist-classic.md#gw)
 
 ## <a name="add-a-gateway"></a>Přidání brány
 
-Po přidání brány do virtuální sítě pomocí modelu klasického prostředků, který upravíte soubor konfigurace sítě přímo před vytvořením brány. Hodnoty v následujících příkladech se musí nacházet v souboru k vytvoření brány. Pokud vaše virtuální síť dříve měli bránu přiřazen, některé z těchto hodnot už bude k dispozici. Upravte soubor tak, aby odrážely níže uvedené hodnoty.
+Když přidáte bránu do virtuální sítě pomocí klasického modelu prostředků, upravíte konfigurační soubor sítě přímo před vytvořením brány. Hodnoty v níže uvedených příkladech musí být k dispozici v souboru k vytvoření brány. Pokud vaše virtuální síť dříve měla bránu k ní spojené, některé z těchto hodnot již budou k dispozici. Upravte soubor tak, aby odrážel níže uvedené hodnoty.
 
-### <a name="download-the-network-configuration-file"></a>Stáhněte si soubor konfigurace sítě
+### <a name="download-the-network-configuration-file"></a>Stažení konfiguračního souboru sítě
 
-1. Stáhněte si soubor konfigurace sítě pomocí postupu v [soubor konfigurace sítě](../articles/virtual-network/virtual-networks-using-network-configuration-file.md) článku. Otevřete soubor pomocí textového editoru.
-2. Přidání místní síťové lokality do souboru. Můžete použít jakoukoli předponu platnou adresu. Můžete přidat libovolná platná IP adresa brány VPN. Hodnoty adres v této části se používá pro operace ExpressRoute, ale jsou požadovány pro ověření souboru. "Pobočka1" v příkladu je název webu. Můžete použít jiný název, ale nezapomeňte použít stejnou hodnotu v bráně část souboru.
+1. Stáhněte si konfigurační soubor sítě pomocí kroků v článku [konfiguračního souboru sítě.](../articles/virtual-network/virtual-networks-using-network-configuration-file.md) Otevřete soubor pomocí textového editoru.
+2. Přidejte do souboru lokalitu místní sítě. Můžete použít libovolnou platnou předponu adresy. Můžete přidat libovolnou platnou IP adresu pro bránu VPN. Hodnoty adres v této části se nepoužívají pro operace ExpressRoute, ale jsou vyžadovány pro ověření souboru. V příkladu "branch1" je název webu. Můžete použít jiný název, ale nezapomeňte použít stejnou hodnotu v části Brána souboru.
 
    ```
    <VirtualNetworkConfiguration>
@@ -39,11 +39,11 @@ Po přidání brány do virtuální sítě pomocí modelu klasického prostředk
         <VPNGatewayAddress>3.2.1.4</VPNGatewayAddress>
     </LocalNetworkSite>
    ```
-3. Přejděte VirtualNetworkSites a upravit pole.
+3. Přejděte na web virtualnetworkwe a upravte pole.
 
-   * Ověřte, zda existuje podsíť brány pro vaši virtuální síť. Pokud tomu tak není, můžete přidat jednu v tuto chvíli. Název musí být "GatewaySubnet".
-   * Ověřte, zda že existuje brány část souboru. Pokud tomu tak není, přidejte ji. To se vyžaduje pro virtuální síť přidružit k místní síťové lokality (která představuje síť, ke kterému se připojujete).
-   * Ověřte, že typ připojení = Dedicated. To je potřeba pro připojení ExpressRoute.
+   * Ověřte, zda podsíť brány existuje pro vaši virtuální síť. Pokud tomu tak není, můžete přidat jeden v tomto okamžiku. Název musí být "GatewaySubnet".
+   * Ověřte, zda v části Brána souboru existuje. Pokud ne, přidejte to. To je nutné k přidružení virtuální sítě k lokalitě místní sítě (která představuje síť, ke které se připojujete).
+   * Ověřte, zda typ připojení = Vyhrazeno. To je vyžadováno pro připojení ExpressRoute.
 
    ```
    </LocalNetworkSites>
@@ -72,30 +72,30 @@ Po přidání brány do virtuální sítě pomocí modelu klasického prostředk
    </VirtualNetworkConfiguration>
    </NetworkConfiguration>
    ```
-4. Soubor uložte a nahrajte ho do Azure.
+4. Uložte soubor a nahrajte ho do Azure.
 
 ### <a name="create-the-gateway"></a>Vytvoření brány
 
-Pomocí následujícího příkazu vytvořte bránu. Nahraďte všechny hodnoty vlastními.
+Pomocí níže uvedeného příkazu vytvořte bránu. Nahraďte všechny hodnoty za své vlastní.
 
 ```powershell
 New-AzureVNetGateway -VNetName "MyAzureVNET" -GatewayType DynamicRouting -GatewaySKU  Standard
 ```
 
-## <a name="verify-the-gateway-was-created"></a>Ověřte, že vytvoření brány
+## <a name="verify-the-gateway-was-created"></a>Ověření vytvoření brány
 
-Pomocí následujícího příkazu Pokud chcete ověřit vytvoření brány. Tento příkaz načte také ID brány, které jsou nutné pro další operace.
+Pomocí následujícího příkazu ověřte, zda byla brána vytvořena. Tento příkaz také načte ID brány, které potřebujete pro další operace.
 
 ```powershell
 Get-AzureVNetGateway
 ```
 
-## <a name="resize-a-gateway"></a>Změňte velikost brány
+## <a name="resize-a-gateway"></a>Změna velikosti brány
 
-Několik položek [skladové položky brány](../articles/expressroute/expressroute-about-virtual-network-gateways.md). Následující příkaz můžete kdykoli změnit SKU brány.
+Existuje několik [skum brány](../articles/expressroute/expressroute-about-virtual-network-gateways.md). Pomocí následujícího příkazu můžete kdykoli změnit skladovou položku brány.
 
 > [!IMPORTANT]
-> Tento příkaz nefunguje pro brány UltraPerformance. Chcete-li změnit brána brány UltraPerformance, nejprve odeberte existující bránu ExpressRoute a pak vytvořte nové brány UltraPerformance. Přejít na nižší verzi z brány UltraPerformance bránu, nejprve odeberte brány UltraPerformance a pak vytvořit novou bránu.
+> Tento příkaz nefunguje pro bránu UltraPerformance. Chcete-li změnit bránu na bránu UltraPerformance, nejprve odeberte existující bránu ExpressRoute a vytvořte novou bránu UltraPerformance. Chcete-li bránu snížit na nižší verzi z brány UltraPerformance, nejprve bránu UltraPerformance odeberte a pak vytvořte novou bránu.
 >
 >
 
@@ -105,7 +105,7 @@ Resize-AzureVNetGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
 
 ## <a name="remove-a-gateway"></a>Odebrání brány
 
-Pomocí následujícího příkazu k odebrání brány
+Odebrání brány pomocí následujícího příkazu
 
 ```powershell
 Remove-AzureVnetGateway -GatewayId <Gateway ID>

@@ -1,6 +1,6 @@
 ---
-title: Ingestování dat pomocí knihovny Azure uzlu Průzkumníka dat
-description: V tomto článku se dozvíte, jak se přijmout data (načíst) do Průzkumníku dat Azure pomocí Node.js.
+title: Ingestování dat pomocí knihovny uzlů Průzkumníka dat Azure
+description: V tomto článku se dozvíte, jak ingestovat (načíst) data do Průzkumníka dat Azure pomocí Node.js.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,21 +8,21 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 19da42437cfe1d7b63dfed4bd2b30716d691a0e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66494485"
 ---
-# <a name="ingest-data-using-the-azure-data-explorer-node-library"></a>Ingestování dat pomocí knihovny Azure uzlu Průzkumníka dat
+# <a name="ingest-data-using-the-azure-data-explorer-node-library"></a>Ingestování dat pomocí knihovny uzlů Průzkumníka dat Azure
 
-Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Data Explorer nabízí dvě klientské knihovny pro Node: [knihovnu ingestování](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-ingest) a [knihovnu dat](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-data). Tyto knihovny umožňují snadno ingestovat (načíst) data do clusteru a dotazovat se na data z vašeho kódu. V tomto článku nejprve vytvoříte mapování dat v testu clusteru a tabulky. Pak vytvoříte frontu ingestace do clusteru a ověříte výsledky.
+Průzkumník dat Azure je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Data Explorer nabízí dvě klientské knihovny pro Node: [knihovnu ingestování](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-ingest) a [knihovnu dat](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-data). Tyto knihovny umožňují snadno ingestovat (načíst) data do clusteru a dotazovat se na data z vašeho kódu. V tomto článku nejprve vytvoříte mapování tabulky a dat v testovacím clusteru. Pak vytvoříte frontu ingestace do clusteru a ověříte výsledky.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Kromě předplatné Azure budete potřebovat k dokončení tohoto článku:
+Kromě předplatného Azure potřebujete k dokončení tohoto článku následující:
 
 * [Testovací cluster a databázi](create-cluster-database-portal.md)
 
@@ -88,7 +88,7 @@ const blobPath = `https://${account}.blob.core.windows.net/${container}/${filePa
 
 ## <a name="create-a-table-on-your-test-cluster"></a>Vytvoření tabulky v testovacím clusteru
 
-Vytvořte tabulku, která odpovídá schématu dat v souboru `StormEvents.csv`. Když tento kód se spustí, vrátí se zpráva podobná následující: *Pro přihlášení, použijte webový prohlížeč a otevřete stránku https://microsoft.com/devicelogin a zadejte kód XXXXXXXXX k ověření*. Podle pokynů se přihlaste a pak se vraťte a spusťte další blok kódu. Následující bloky kódu, které provedou připojení, budou vyžadovat, abyste se znovu přihlásili.
+Vytvořte tabulku, která odpovídá schématu dat v souboru `StormEvents.csv`. Když se tento kód spustí, vrátí podobnou zprávu: *Pokud se chcete přihlásit, otevřete ve webovém prohlížeči stránku https://microsoft.com/devicelogin a zadejte kód XXXXXXXXX k ověření*. Podle pokynů se přihlaste a pak se vraťte a spusťte další blok kódu. Následující bloky kódu, které provedou připojení, budou vyžadovat, abyste se znovu přihlásili.
 
 ```javascript
 const kustoClient = new KustoClient(kcsbData);
@@ -141,7 +141,7 @@ kustoClient.execute(kustoDatabase, query, (err, results) => {
 
 ## <a name="run-troubleshooting-queries"></a>Spuštění dotazů pro řešení potíží
 
-Přihlaste se k [https://dataexplorer.azure.com](https://dataexplorer.azure.com) a připojte se k vašemu clusteru. Spuštěním následujícího příkazu ve vaší databázi zjistíte, jestli za poslední čtyři hodiny došlo k chybám ingestování. Přes spuštěním nahraďte název databáze.
+Přihlaste [https://dataexplorer.azure.com](https://dataexplorer.azure.com) se ke clusteru a připojte se ke svému clusteru. Spuštěním následujícího příkazu ve vaší databázi zjistíte, jestli za poslední čtyři hodiny došlo k chybám ingestování. Přes spuštěním nahraďte název databáze.
     
 ```Kusto
 .show ingestion failures
@@ -158,12 +158,12 @@ Spuštěním následujícího příkazu zobrazíte stav všech operací ingestac
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud budete chtít postupujte podle našich článků, zachovat prostředky, které jste vytvořili. Pokud ne, spuštěním následujícího příkazu v databázi tabulku `StormEvents` vyčistěte.
+Pokud máte v plánu sledovat naše další články, uchovávejte zdroje, které jste vytvořili. Pokud ne, spuštěním následujícího příkazu v databázi tabulku `StormEvents` vyčistěte.
 
 ```Kusto
 .drop table StormEvents
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Zápis dotazů](write-queries.md)

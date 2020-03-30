@@ -1,86 +1,85 @@
 ---
-title: Kódy stavů pro spoluprodejní pracovní | Azure Marketplace
-description: Tyto kódy států nebo provincie použijte při poskytování kontaktních údajů na stránce pro spoluprodej vaší nabídky.
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+title: Kódy států spoluprodej | Azure Marketplace
+description: Tyto kódy státu/provincie použijte při poskytování kontaktních údajů na stránce spoluprodeje vaší nabídky.
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: c64fc161108560e893ef7b207782d79b6c3c01d4
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: f87014a599afd6d1c56d175b92d4da1ea49d9470
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934366"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277035"
 ---
-# <a name="co-sell-state-codes"></a>Kódy stavu společného prodeje
+# <a name="co-sell-state-codes"></a>Kódy států spoluprodej
 
-Pokud je to možné, použijte tyto kódy k poskytnutí informací o stavu nebo provincii při [poskytování kontaktních údajů na stránce pro spoluprodej vaší nabídky](commercial-marketplace-co-sell.md#contacts).
+Pokud je to možné, použijte tyto kódy k poskytnutí informací o stavu nebo provincii při [poskytování kontaktních údajů na stránce spoluprodeje vaší nabídky](commercial-marketplace-co-sell.md#contacts).
 
-## <a name="stateprovince-table"></a>Tabulka krajního/provincie
+## <a name="stateprovince-table"></a>Tabulka Stát/Provincie
 
-|   Název země/provincie               |   kód    |
+|   Název státu/provincie               |   kód    |
 |-------------------------------------|-----------|
-| Alabama                             | US-AL     |
-| Aljaška                              | US – AK     |
-| Arizona                             | US – AZ     |
-| Arkansas                            | SPOJENÉ STÁTY – AR     |
-| Kalifornie                          | US – CA     |
-| Colorado                            | US – CO     |
-| Connecticut                         | US-CT     |
+| Alabama                             | USA-AL     |
+| Alaska                              | US-AK     |
+| Arizona                             | US-AZ     |
+| Arkansas                            | US-AR     |
+| California                          | US-CA     |
+| Colorado                            | US-CO     |
+| Connecticut                         | US-ČT     |
 | Delaware                            | US-DE     |
-| Florida                             | US-FL     |
+| Florida                             | USA-FL     |
 | Gruzie                             | US-GA     |
-| Havaj                              | US – HI     |
+| Hawaii                              | US-HI     |
 | Idaho                               | US-ID     |
 | Illinois                            | US-IL     |
-| Indiana                             | US     |
-| Iowa                                | US – IA     |
-| Kansas                              | US – KS     |
-| Kentucky                            | US – KY     |
-| Louisiana                           | US-LA     |
-| Maine                               | US     |
+| Indiana                             | US-IN     |
+| Iowa                                | US-IA     |
+| Kansas                              | US-KS     |
+| Kentucky                            | US-KY     |
+| Louisiana                           | USA-LA     |
+| Maine                               | US-ME     |
 | Maryland                            | US-MD     |
 | Massachusetts                       | US-MA     |
-| Michigan                            | US – MI     |
+| Michigan                            | USA-MI     |
 | Minnesota                           | US-MN     |
 | Mississippi                         | US-MS     |
-| Missouri                            | US – MO     |
+| Missouri                            | US-MO     |
 | Montana                             | US-MT     |
-| Nebraska                            | US-NE     |
+| Nebraska                            | USA-NE     |
 | Nevada                              | US-NV     |
-| New Hampshire                       | US – NH     |
-| New Jersey                          | US – NEWARKU     |
-| Nové Mexiko                          | US-NM     |
-| New York                            | US-NY     |
-| Severní Karolína                      | US-NC     |
-| Severní Dakota                        | US – ND     |
-| Ohio                                | US – NE     |
-| Oklahoma                            | US – OK     |
-| Oregon                              | US-NEBO     |
-| Pensylvánie                        | US-PA     |
+| New Hampshire                       | US-NH     |
+| New Jersey                          | USA-NJ     |
+| New Mexico                          | US-NM     |
+| New York                            | USA-NY     |
+| North Carolina                      | USA-NC     |
+| North Dakota                        | US-ND     |
+| Ohio                                | US-OH     |
+| Oklahoma                            | US-OK     |
+| Oregon                              | USA-NEBO     |
+| Pennsylvania                        | US-PA     |
 | Rhode Island                        | US-RI     |
-| Jižní Karolína                      | US – SC     |
-| Jižní Dakota                        | US-SD     |
+| South Carolina                      | US-SC     |
+| South Dakota                        | US-SD     |
 | Tennessee                           | US-TN     |
 | Texas                               | US-TX     |
 | Utah                                | US-UT     |
 | Vermont                             | US-VT     |
-| Virginie                            | US-VA     |
-| Washington                          | US – WA     |
-| West Virginia                       | US – WV     |
+| Virginia                            | US-VA     |
+| Washington                          | US-WA     |
+| West Virginia                       | US-WV     |
 | Wisconsin                           | US-WI     |
-| Wyoming                             | US – WY     |
-| District of Columbia                | US-DC     |
-| Americká Samoa                      | US – JAKO     |
+| Wyoming                             | US-WY     |
+| District of Columbia                | USA –Dc     |
+| Americká Samoa                      | US-AS     |
 | Guam                                | US-GU     |
 | Severní Mariany            | US-MP     |
 | Portoriko                         | US-PR     |
-| Menší odlehlé ostrovy Spojených států amerických | SPOJENÉ STÁTY – UM    |
+| Spojené státy menší odlehlé ostrovy | US-UM    |
 |Americké Panenské ostrovy                 | US-VI     |
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si informace o [možnosti společného prodeje v partnerském centru](./commercial-marketplace-co-sell.md).
+- Další informace o [možnosti spoluprodeje v Partnerském centru](./commercial-marketplace-co-sell.md).

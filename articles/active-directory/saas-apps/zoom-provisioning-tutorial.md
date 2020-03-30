@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace přiblížení pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
-description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů k přiblížení.
+title: 'Kurz: Konfigurace přiblížení pro automatické zřizování uživatelů pomocí služby Azure Active Directory | Dokumenty společnosti Microsoft'
+description: Zjistěte, jak automaticky zřídit a odpojit uživatelské účty z Azure AD do lupy.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -14,159 +14,151 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
-ms.author: jeedes
-ms.openlocfilehash: cd832a9dfec4680222d2c985f49aba499a56aaac
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.author: Zhchia
+ms.openlocfilehash: 94c261da0c935cb7a41dde768069099b4e5ed251
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062736"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384071"
 ---
-# <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>Kurz: Konfigurace přiblížení pro Automatické zřizování uživatelů
+# <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>Kurz: Konfigurace lupy pro automatické zřizování uživatelů
 
-Cílem tohoto kurzu je Ukázat kroky, které je třeba provést v rámci lupy a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD tak, aby automaticky zřídily a zrušily zřizování uživatelů a/nebo skupin, které se mají přiblížit.
+Tento kurz popisuje kroky, které je potřeba provést v zoomu a Azure Active Directory (Azure AD) ke konfiguraci automatickézřižení služby uživatelů. Při konfiguraci Azure AD automaticky zřídí a de-zřídí uživatele a skupiny [pro zvětšení](https://zoom.us/pricing/) pomocí služby Azure AD zřizování. Důležité podrobnosti o tom, co tato služba dělá, jak funguje, a nejčastější dotazy, najdete [v tématu Automatizace zřizování uživatelů a zrušení zřizování aplikací SaaS pomocí služby Azure Active Directory](../manage-apps/user-provisioning.md). 
 
-> [!NOTE]
-> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
->
-> Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
+
+## <a name="capabilities-supported"></a>Podporované funkce
+> [!div class="checklist"]
+> * Vytvoření uživatelů v lupě
+> * Odebrání uživatelů v aplikaci Lupa, pokud již nevyžadují přístup
+> * Zachování synchronizace atributů uživatelů mezi Azure AD a Zoomem
+> * [Jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-tutorial) k zoomu (doporučeno)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
+Scénář popsaný v tomto kurzu předpokládá, že již máte následující požadavky:
 
-* Tenant Azure AD
-* [Tenant lupy](https://zoom.us/pricing)
-* Uživatelský účet v přiblížení s oprávněními správce
+* [Klient Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant).
+* Uživatelský účet ve službě Azure AD s [oprávněním](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) ke konfiguraci zřizování (například správce aplikací, správce cloudových aplikací, vlastník aplikace nebo globální správce). 
+* [Klient zoom .](https://zoom.us/pricing)
+* Uživatelský účet v lupě s oprávněními správce.
 
-## <a name="add-zoom-from-the-gallery"></a>Přidat přiblížení z Galerie
+## <a name="step-1-plan-your-provisioning-deployment"></a>Krok 1. Plánování nasazení zřizování
+1. Přečtěte si o [tom, jak funguje služba zřizování](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+2. Určete, kdo bude v [oboru pro zřizování](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+3. Určete, jaká data se [mají mapovat mezi Azure AD a Zoom](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
 
-Než nakonfigurujete přiblížení pro Automatické zřizování uživatelů pomocí Azure AD, musíte přidat přiblížení z Galerie aplikací Azure AD do seznamu spravovaných aplikací SaaS.
+## <a name="step-2-configure-zoom-to-support-provisioning-with-azure-ad"></a>Krok 2. Konfigurace lupy pro podporu zřizování pomocí Azure AD
 
-**Pokud chcete přidat přiblížení z Galerie aplikací Azure AD, proveďte následující kroky:**
+1. Přihlaste se ke službě [Zoom Admin Console](https://zoom.us/signin). V levém navigačním podokně přejděte na **rozšířené > lupy pro vývojáře.**
 
-1. V **[Azure Portal](https://portal.azure.com)** v levém navigačním panelu vyberte možnost **Azure Active Directory**.
+    ![Integrace přiblížení](media/zoom-provisioning-tutorial/zoom01.png)
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+2. Přejděte na **Spravovat** v pravém horním rohu stránky. 
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+    ![Instalace lupy](media/zoom-provisioning-tutorial/zoom02.png)
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+3. Přejděte do vytvořené aplikace Azure AD. 
+    
+    ![Aplikace Lupa](media/zoom-provisioning-tutorial/zoom03.png)
 
-3. Chcete-li přidat novou aplikaci, vyberte tlačítko **Nová aplikace** v horní části podokna.
+4. V levém navigačním podokně vyberte **Přihlašovací údaje aplikace.**
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Aplikace Lupa](media/zoom-provisioning-tutorial/zoom04.png)
 
-4. Do vyhledávacího pole zadejte **přiblížení**, v panelu výsledky vyberte **přiblížení** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+5. Zkopírujte a uložte **token JWT**. Tato hodnota se zadá do pole **Tajný token** na kartě Zřizování aplikace Zoom na webu Azure Portal. Pokud potřebujete nový token bez vypršení platnosti, budete muset znovu nakonfigurovat čas vypršení platnosti, který bude automaticky generovat nový token. 
 
-    ![Přiblížení v seznamu výsledků](common/search-new-app.png)
+    ![Instalace lupy](media/zoom-provisioning-tutorial/zoom05.png)
 
-## <a name="assign-users-to-zoom"></a>Přiřadit uživatele k přiblížení
+## <a name="step-3-add-zoom-from-the-azure-ad-application-gallery"></a>Krok 3. Přidání lupy z galerie aplikací Azure AD
 
-Azure Active Directory používá koncept nazvaný *přiřazení* k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelů se synchronizují jenom uživatelé a skupiny, které jsou přiřazené k aplikaci v Azure AD.
+Přidejte lupu z galerie aplikací Azure AD a začněte spravovat zřizování do lupy. Pokud jste již dříve nastavili lupu pro sso, můžete použít stejnou aplikaci. Doporučujeme však vytvořit samostatnou aplikaci při testování integrace zpočátku. Další informace o přidání aplikace z galerie [naleznete zde](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app). 
 
-Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé a skupiny ve službě Azure AD potřebují přístup k přiblížení. Po rozhodnutí můžete přiřadit tyto uživatele nebo skupiny, abyste je mohli přiblížit podle pokynů uvedených tady:
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Krok 4. Definujte, kdo bude v oboru pro zřizování 
 
-* [Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
+Služba zřizování Azure AD umožňuje obor, který bude zřízen na základě přiřazení k aplikaci a nebo na základě atributů uživatele nebo skupiny. Pokud se rozhodnete obor, kdo bude zřízen do vaší aplikace na základě přiřazení, můžete použít následující [kroky](../manage-apps/assign-user-or-group-access-portal.md) k přiřazení uživatelů a skupin k aplikaci. Pokud se rozhodnete obor, který bude zřízen výhradně na základě atributů uživatele nebo skupiny, můžete použít filtr oborů, jak je popsáno [zde](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
-### <a name="important-tips-for-assigning-users-to-zoom"></a>Důležité tipy pro přiřazení uživatelů k přiblížení
+* Při přiřazování uživatelů a skupin k aplikaci Lupa je nutné vybrat jinou roli než **výchozí přístup**. Uživatelé s rolí výchozí přístup jsou vyloučeni z zřizování a budou označeny jako neefektivně oprávněné v protokolech zřizování. Pokud je k dispozici pouze role v aplikaci výchozí přístupová role, můžete [aktualizovat manifest aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) a přidat další role. 
 
-* Doporučuje se, aby byl k přiblížení přiřazený jeden uživatel Azure AD, aby bylo možné otestovat automatickou konfiguraci zřizování uživatelů. Další uživatele a skupiny můžete přiřadit později.
+* Začněte v malém. Vyzkoušejte s malou sadou uživatelů a skupin před zavedením pro všechny. Pokud je obor zřizování nastaven na přiřazené uživatele a skupiny, můžete to řídit přiřazením jednoho nebo dvou uživatelů nebo skupin do aplikace. Pokud je obor nastaven na všechny uživatele a skupiny, můžete určit [filtr oborů založených na atributech](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
-* Při přiřazování uživatele k přiblížení musíte v dialogovém okně přiřazení vybrat jakoukoli platnou roli specifickou pro aplikaci (Pokud je dostupná). Uživatelé s **výchozí rolí přístupu** se z zřizování vylučují.
 
-## <a name="configure-automatic-user-provisioning-to-zoom"></a>Konfigurace automatického zřizování uživatelů pro přiblížení 
+## <a name="step-5-configure-automatic-user-provisioning-to-zoom"></a>Krok 5. Konfigurace automatického zřizování uživatelů pro zvětšení 
 
-V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v přiblížení na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
+Tato část vás provede kroky konfigurace služby zřizování Azure AD k vytvoření, aktualizaci a zakázání uživatelů nebo skupin v Aplikaci TestApp na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
-> [!TIP]
-> Můžete se také rozhodnout povolit pro přiblížení jednotné přihlašování založené na SAML, a to podle pokynů uvedených v [kurzu přiblížení jednotného přihlašování](zoom-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když se tyto dvě funkce navzájem doplňují.
+### <a name="to-configure-automatic-user-provisioning-for-zoom-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro přiblížení ve službě Azure AD:
 
-### <a name="configure-automatic-user-provisioning-for-zoom-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro přiblížení ve službě Azure AD
-
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **Všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte možnost **Lupa**.
+2. V seznamu aplikací vyberte **Lupa**.
 
-    ![Odkaz Lupa v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Lupa v seznamu Aplikace](common/all-applications.png)
 
-3. Vyberte kartu **zřizování** .
+3. Vyberte kartu **Zřizování.**
 
-    ![Karta zřizování](common/provisioning.png)
+    ![Karta Zřizování](common/provisioning.png)
 
-4. Nastavte **režim zřizování** na **automaticky**.
+4. Nastavte **režim zřizování** na **automatické**.
 
-    ![Karta zřizování](common/provisioning-automatic.png)
+    ![Karta Zřizování](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** zadejte `https://api.zoom.us/scim` v **adrese URL tenanta**. Pokud chcete načíst **tajný token** účtu lupy, postupujte podle návodu popsaného v kroku 6.
+5. V části **Přihlašovací údaje** `https://api.zoom.us/scim` správce zadejte **adresu URL klienta**. Zadejte hodnotu **tokenu JWT** načtenou dříve v **tajném tokenu**. Kliknutím na **Testovat připojení** zajistíte, že se Azure AD může připojit ke lupě. Pokud se připojení nezdaří, ujistěte se, že váš účet Zoom má oprávnění správce a zkuste to znovu.
 
-6. Přihlaste se ke [konzole správce lupy](https://zoom.us/signin). Přejděte na **upřesnit > přiblížení pro vývojáře** v levém navigačním podokně.
+    ![Zřizování přiblížení](./media/zoom-provisioning-tutorial/provisioning.png)
 
-    ![Integrace lupy](media/zoom-provisioning-tutorial/zoom01.png)
-
-    V pravém horním rohu stránky přejděte ke **správě** . 
-
-    ![Přiblížit instalaci](media/zoom-provisioning-tutorial/zoom02.png)
-
-    Přejděte na vytvořenou aplikaci Azure AD. 
-    
-    ![Přiblížení aplikace](media/zoom-provisioning-tutorial/zoom03.png)
-
-    V levém navigačním podokně vyberte možnost **přihlašovací údaje aplikace** .
-
-    ![Přiblížení aplikace](media/zoom-provisioning-tutorial/zoom04.png)
-
-    Načtěte níže uvedenou hodnotu tokenu JWT a zadejte ji do pole **tajný token** v Azure AD. Pokud potřebujete nový token bez vypršení platnosti, budete muset znovu nakonfigurovat čas vypršení platnosti, který bude automaticky generovat nový token. 
-
-    ![Přiblížit instalaci](media/zoom-provisioning-tutorial/zoom05.png)
-
-7. Po vyplnění polí zobrazených v kroku 5 klikněte na **Test připojení** . tím zajistíte, aby se služba Azure AD mohla připojit k přiblížení. Pokud se připojení nepovede, zajistěte, aby měl váš účet přiblížení oprávnění správce, a zkuste to znovu.
-
-    ![Podpisový](common/provisioning-testconnection-tenanturltoken.png)
-
-8. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
+6. Do pole **E-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, která by měla dostávat oznámení o chybách zřizování, a zaškrtněte políčko **Odeslat e-mailové oznámení, když dojde k chybě.**
 
     ![E-mail s oznámením](common/provisioning-notification-email.png)
 
-9. Klikněte na **Uložit**.
+7. Vyberte **Uložit**.
 
-10. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé pro přiblížení**.
+8. V části **Mapování** vyberte **synchronizovat uživatele služby Azure Active Directory k přiblížení**.
 
-    ![Přiblížení mapování uživatelů](media/zoom-provisioning-tutorial/zoom-user-mapping.png)
+9. Zkontrolujte atributy uživatele, které jsou synchronizovány z Azure AD do zvětšení v části **Mapování atributů.** Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelským účtům v lupě pro operace aktualizace. Pokud se rozhodnete změnit [odpovídající cílový atribut](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), budete muset zajistit, aby rozhraní API zoomu podporovalo filtrování uživatelů na základě tohoto atributu. Chcete-li potvrdit všechny změny, vyberte tlačítko **Uložit.**
 
-11. Zkontrolujte atributy uživatelů synchronizované z Azure AD pro přiblížení oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelským účtům v přiblížení pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
-    
-     ![Přiblížení mapování uživatelů](media/zoom-provisioning-tutorial/zoom-user-attributes.png)
+   |Atribut|Typ|
+   |---|---|
+   |userName|Řetězec|
+   |Aktivní|Logická hodnota|
+   |name.givenName|Řetězec|
+   |name.familyName|Řetězec|
+   |e-maily[zadejte eq "práce"]|Řetězec|
+   |urn:ietf:params:scim:schémata:rozšíření:enterprise:2.0:Uživatel:oddělení|Řetězec|
 
-12. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Chcete-li konfigurovat filtry oborů, naleznete v následujících pokynech uvedených v [kurzu filtru oborů](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Pokud chcete povolit službu Azure AD Provisioning pro přiblížení, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
-    
-    ![Zapnutý stav zřizování](common/provisioning-toggle-on.png)
+11. Chcete-li povolit službu zřizování Azure AD pro lupu, změňte **stav zřizování** **na Zapnuto** v části **Nastavení.**
 
-14. Definujte uživatele nebo skupiny, které chcete zřídit pro přiblížení, výběrem požadovaných hodnot v části **Rozsah** **Nastavení** .
+    ![Stav zřizování zapnutý](common/provisioning-toggle-on.png)
 
-    ![Rozsah zřizování](common/provisioning-scope.png)
+12. Definujte uživatele nebo skupiny, které chcete zřídit lupě, výběrem požadovaných hodnot v **oboru** v části **Nastavení.**
 
-15. Až budete připraveni zřídit, klikněte na **Uložit**.
+    ![Obor zřizování](common/provisioning-scope.png)
 
-    ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
+13. Až budete připraveni k zřízení, klikněte na **Uložit**.
 
-Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. Část **Podrobnosti o synchronizaci** můžete použít ke sledování průběhu a následnému zobrazení odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD při přiblížení.
+    ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
 
-Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
+Tato operace spustí počáteční cyklus synchronizace všech uživatelů a skupin definovaných v **oboru** v části **Nastavení.** Počáteční cyklus trvá déle než následující cykly, ke kterým dochází přibližně každých 40 minut tak dlouho, dokud je spuštěna služba zřizování Azure AD. 
+
+## <a name="step-6-monitor-your-deployment"></a>Krok 6. Monitorování nasazení
+Po konfiguraci zřizování můžete ke sledování nasazení použít následující prostředky:
+
+1. Pomocí [protokolů zřizování](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) určete, kteří uživatelé byli zřízeni úspěšně nebo neúspěšně
+2. Zkontrolujte [indikátor průběhu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) zobrazíte stav cyklu zřizování a jak blízko je k dokončení
+3. Pokud se zdá, že konfigurace zřizování je v nestavu, aplikace přejde do karantény. Další informace o stavech karantény naleznete [zde](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).  
 
 ## <a name="connector-limitations"></a>Omezení konektoru
+* Zoom umožňuje pouze maximálně 9.999 základních uživatelů dnes.
 
-* Přiblížení nepodporuje zřizování skupin.
+## <a name="additional-resources"></a>Další zdroje
 
-## <a name="additional-resources"></a>Další zdroje informací:
-
-* [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy o aktivitě zřizování.](../manage-apps/check-status-user-account-provisioning.md)

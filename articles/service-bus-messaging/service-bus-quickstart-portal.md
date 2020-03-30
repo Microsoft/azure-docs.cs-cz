@@ -1,6 +1,6 @@
 ---
-title: Vytvoření fronty Service Bus pomocí Azure Portal
-description: V tomto rychlém startu se dozvíte, jak vytvořit frontu Service Bus pomocí Azure Portal. Pak použijete ukázkovou klientskou aplikaci k posílání zpráv a přijímání zpráv z fronty.
+title: Vytvoření fronty service busu pomocí portálu Azure
+description: V tomto rychlém startu se dozvíte, jak vytvořit frontu service bus pomocí portálu Azure. Potom použijete ukázkovou klientskou aplikaci k odesílání zpráv a přijímání zpráv z fronty.
 services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
@@ -9,14 +9,14 @@ ms.custom: mvc
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 0c88db652efe54a497af094160fb426be7c43d16
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240643"
 ---
-# <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Rychlý Start: použití Azure Portal k vytvoření fronty Service Bus
-V tomto rychlém startu se dozvíte, jak odesílat a přijímat zprávy z Service Bus fronty, pomocí [Azure Portal][Azure portal] k vytvoření oboru názvů pro zasílání zpráv a fronty v rámci tohoto oboru názvů a získání přihlašovacích údajů pro autorizaci v tomto oboru názvů. Postup pak ukazuje, jak do této fronty odesílat zprávy a přijímat je z ní pomocí [knihovny .NET Standard](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
+# <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Úvodní příručka: Vytvoření fronty service bus pomocí portálu Azure
+Tento rychlý start popisuje, jak odesílat zprávy do fronty Service Bus a přijímat je. Používá se k tomu web [Azure Portal][Azure portal], kde se vytvoří obor názvů pro odesílání zpráv a v tomto oboru názvů fronta. Dále je třeba získat v oboru názvů přihlašovací údaje pro autorizaci. Postup pak ukazuje, jak do této fronty odesílat zprávy a přijímat je z ní pomocí [knihovny .NET Standard](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
@@ -25,7 +25,7 @@ V tomto rychlém startu se dozvíte, jak odesílat a přijímat zprávy z Servic
 Před tímto kurzem se ujistěte, že máte nainstalované tyto položky:
 
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, můžete si vytvořit [bezplatný účet][] před tím, než začnete.
-- [Visual Studio 2017 s aktualizací Update 3 (verze 15.3, 26730.01)](https://www.visualstudio.com/vs) nebo novější. Pomocí sady Visual Studio vytvoříte ukázku, která odesílá zprávy do fronty a přijímá z ní zprávu. Ukázka je testování fronty, kterou jste vytvořili pomocí prostředí PowerShell. 
+- [Visual Studio 2017 s aktualizací Update 3 (verze 15.3, 26730.01)](https://www.visualstudio.com/vs) nebo novější. Pomocí sady Visual Studio můžete vytvořit ukázku, která odesílá zprávy a přijímá zprávy z fronty. Ukázka je otestovat frontu, kterou jste vytvořili pomocí prostředí PowerShell. 
 - [NET Core SDK](https://www.microsoft.com/net/download/windows) verze 2.0 nebo novější.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
@@ -35,20 +35,20 @@ Před tímto kurzem se ujistěte, že máte nainstalované tyto položky:
 ## <a name="send-and-receive-messages"></a>Odesílání a příjem zpráv
 
 > [!NOTE]
-> Ukázka použitá v této části pro odesílání a příjem zpráv je ukázka .NET. Ukázky pro posílání a přijímání zpráv pomocí jiných programovacích jazyků najdete v tématu [Service Bus Samples](service-bus-samples.md). 
+> Ukázka použitá v této části k odesílání a přijímání zpráv je ukázka rozhraní .NET. Ukázky pro odesílání a přijímání zpráv pomocí jiných programovacích jazyků naleznete v [tématu Service Bus ukázky](service-bus-samples.md). 
 > 
-> Podrobné pokyny pro posílání a přijímání zpráv pomocí různých programovacích jazyků najdete v následujících rychlých startech:
+> Podrobné pokyny pro odesílání a přijímání zpráv pomocí různých programovacích jazyků naleznete v následujících rychlých spuštěních:
 > - [.NET](service-bus-dotnet-get-started-with-queues.md)
 > - [Java](service-bus-java-how-to-use-queues.md)
-> - [Node. js s využitím balíčku Azure/Service-Bus](service-bus-nodejs-how-to-use-queues-new-package.md)
-> - [Node. js s využitím balíčku Azure-Sb](service-bus-nodejs-how-to-use-queues.md)
+> - [Soubor Node.js používající balíček azure/service-bus](service-bus-nodejs-how-to-use-queues-new-package.md)
+> - [Soubor Node.js používající balíček azure-sb](service-bus-nodejs-how-to-use-queues.md)
 > - [PHP](service-bus-php-how-to-use-queues.md)
 > - [Python](service-bus-python-how-to-use-queues.md)
 > - [Ruby](service-bus-ruby-how-to-use-queues.md)
 
-Pokud jste zřídili obor názvů a frontu a máte potřebná pověření, můžete začít odesílat a přijímat zprávy. Kód můžete zkontrolovat v [této složce s ukázkami na GitHubu](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters).
+Pokud jste zřídili obor názvů a frontu a máte potřebná pověření, můžete začít odesílat a přijímat zprávy. Kód si můžete zkontrolovat v [této složce s ukázkami na GitHubu](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters).
 
-Kód spustíte následovně:
+Při spuštění kódu postupujte takto:
 
 1. Pomocí následujícího příkazu naklonujte [úložiště Service Bus na GitHubu](https://github.com/Azure/azure-service-bus/):
 
@@ -56,8 +56,8 @@ Kód spustíte následovně:
    git clone https://github.com/Azure/azure-service-bus.git
    ```
 3. Přejděte do složky s ukázkou `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveQuickStart\BasicSendReceiveQuickStart`.
-4. Zkopírujte připojovací řetězec a název fronty, který jste získali v části získání přihlašovacích údajů pro správu.
-5.  Na příkazovém řádku zadejte následující příkaz:
+4. Zkopírujte připojovací řetězec a název fronty, které jste získali v části Získání přihlašovacích údajů pro správu.
+5.  Do příkazového řádku zadejte následující příkaz:
 
     ```
     dotnet build
@@ -82,7 +82,7 @@ Tato část obsahuje další podrobnosti o chování ukázkového kódu.
 
 ### <a name="get-connection-string-and-queue"></a>Získání připojovacího řetězce a fronty
 
-Připojovací řetězec a název fronty jsou předány metodě `Main()` jako argumenty příkazového řádku. Metoda `Main()` deklaruje dvě proměnné řetězce, do kterých se tyto údaje načtou:
+Připojovací řetězec a název `Main()` fronty jsou předány metodě jako argumenty příkazového řádku. Metoda `Main()` deklaruje dvě proměnné řetězce, do kterých se tyto údaje načtou:
 
 ```csharp
 static void Main(string[] args)
@@ -119,7 +119,7 @@ Metoda `Main()` pak spustí asynchronní smyčku zpráv, `MainAsync()`.
 
 ### <a name="message-loop"></a>Smyčka zpráv
 
-Metoda MainAsync () vytvoří klienta fronty s argumenty příkazového řádku, zavolá obslužnou rutinu pro příjem zpráv nazvanou `RegisterOnMessageHandlerAndReceiveMessages()`a odešle sadu zpráv:
+Metoda MainAsync() vytvoří klienta fronty s argumenty příkazového řádku, `RegisterOnMessageHandlerAndReceiveMessages()`zavolá obslužnou rutinu přijímající zprávy s názvem a odešle sadu zpráv:
 
 ```csharp
 static async Task MainAsync(string ServiceBusConnectionString, string QueueName)
@@ -209,11 +209,11 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 }
 ```
 > [!NOTE]
-> Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer umožňuje uživatelům připojit se k oboru názvů Service Bus a snadno spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, nebo možnost testovat témata, fronty, odběry, služby Relay, centra oznámení a centra událostí. 
+> Prostředky služby Service Bus můžete spravovat pomocí [aplikace Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Průzkumník služby Service Bus umožňuje uživatelům připojit se k oboru názvů service bus a snadno spravovat entity zasílání zpráv. Nástroj poskytuje pokročilé funkce, jako je funkce importu a exportu nebo možnost testovat téma, fronty, předplatná, přenosové služby, centra oznámení a centra událostí. 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste vytvořil obor názvů služby Service Bus a další prostředky potřebné k odesílání a přijímání zpráv z fronty. Další informace o psaní kódu pro posílání a přijímání zpráv najdete v kurzech v části **posílání a přijímání zpráv** . 
+V tomto článku jste vytvořil obor názvů služby Service Bus a další prostředky potřebné k odesílání a přijímání zpráv z fronty. Další informace o psaní kódu pro odesílání a přijímání zpráv, pokračujte v kurzech v části **Odesílat a přijímat zprávy.** 
 
 > [!div class="nextstepaction"]
 > [Odesílání a příjem zpráv](service-bus-dotnet-get-started-with-queues.md)

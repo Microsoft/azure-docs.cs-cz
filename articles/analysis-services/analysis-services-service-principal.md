@@ -1,6 +1,6 @@
 ---
-title: Automatizace úloh Azure Analysis Services s instančními objekty | Microsoft Docs
-description: Naučte se, jak vytvořit instanční objekt pro automatizaci Azure Analysis Services úloh správy.
+title: Automatizace úloh služby Azure Analysis Services pomocí instančních objektů | Dokumenty společnosti Microsoft
+description: Zjistěte, jak vytvořit instanční objekt pro automatizaci úloh správy služby Azure Analysis Services.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,51 +8,51 @@ ms.date: 02/18/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: dc163de9a7fb46d62f4bc2983e040e68bbf9231c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266140"
 ---
 # <a name="automation-with-service-principals"></a>Automatizace s využitím instančních objektů
 
-Instanční objekty jsou prostředky aplikací služby Azure Active Directory, které vytvoříte v tenantovi za účelem provedení bezobslužných operací na úrovni prostředků a služeb. Jsou to jedinečný typ *identity uživatele* s ID aplikace a heslem nebo certifikátem. Instanční objekt má pouze ta oprávnění, která jsou nutná pro provádění úloh definovaných rolemi a oprávněními, ke kterým je přiřazena. 
+Instanční objekty jsou prostředky aplikací služby Azure Active Directory, které vytvoříte v tenantovi za účelem provedení bezobslužných operací na úrovni prostředků a služeb. Jedná se o jedinečný typ *identity uživatele* s ID aplikace a heslem nebo certifikátem. Instanční objekt má pouze oprávnění potřebná k provádění úloh definovaných rolemi a oprávněními, pro které je přiřazen. 
 
-V Analysis Services se instanční objekty používají s Azure Automation, bezobslužným režimem PowerShellu, vlastními klientskými aplikacemi a webovými aplikacemi pro automatizaci běžných úloh. Například zřizování serverů, nasazování modelů, aktualizace dat, horizontální navýšení nebo snížení kapacity a pozastavení/obnovení je možné automatizovat pomocí instančních objektů. Oprávnění se přiřazují instančním objektům prostřednictvím členství v rolích, podobně jako běžné účty hlavního názvu uživatele (UPN) služby Azure AD.
+Ve službě Analysis Services se instanční objekty používají s Azure Automation, bezobslužným režimem PowerShellu, vlastními klientskými aplikacemi a webovými aplikacemi k automatizaci běžných úloh. Například zřizování serverů, nasazování modelů, aktualizace dat, škálování nahoru/dolů a pozastavení/obnovení lze automatizovat pomocí instančních objektů. Oprávnění jsou přiřazena k objektům zabezpečení služeb prostřednictvím členství v rolích, podobně jako běžné účty Upn Azure AD.
 
-Analysis Services taky podporuje operace prováděné spravovanými identitami pomocí instančních objektů. Další informace najdete v tématu [spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) a [služby Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services).  
+Analysis Services také podporuje operace prováděné spravované identity pomocí instančních objektů. Další informace najdete v [tématu Spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) a [služby Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services).  
 
 ## <a name="create-service-principals"></a>Vytvoření instančních objektů
  
-Instanční objekty se dají vytvořit v Azure Portal nebo pomocí PowerShellu. Další informace naleznete v tématu:
+Instanční objekty lze vytvořit na webu Azure portal nebo pomocí PowerShellu. Další informace naleznete v tématu:
 
-[Vytvoření instančního objektu – Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)   
+[Vytvoření instančního objektu – portál Azure](../active-directory/develop/howto-create-service-principal-portal.md)   
 [Vytvoření instančního objektu – PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
-## <a name="store-credential-and-certificate-assets-in-azure-automation"></a>Ukládat přihlašovací údaje a prostředky certifikátů v Azure Automation
+## <a name="store-credential-and-certificate-assets-in-azure-automation"></a>Ukládání přihlašovacích údajů a prostředků certifikátů v Azure Automation
 
-Přihlašovací údaje instančního objektu a certifikáty je možné bezpečně ukládat v Azure Automation pro operace sady Runbook. Další informace naleznete v tématu:
+Pověření a certifikáty hlavního účtu služeb lze bezpečně uložit v Azure Automation pro operace sady Runbook. Další informace naleznete v tématu:
 
 [Prostředky přihlašovacích údajů v Azure Automation](../automation/automation-credentials.md)   
 [Prostředky certifikátů ve službě Azure Automation](../automation/automation-certificates.md)
 
 ## <a name="add-service-principals-to-server-admin-role"></a>Přidání instančních objektů do role správce serveru
 
-Než budete moct použít instanční objekt pro Analysis Services operace správy serveru, musíte ho přidat do role Správci serveru. Další informace najdete v tématu [Přidání instančního objektu k roli správce serveru](analysis-services-addservprinc-admins.md).
+Před použitím instančního objektu pro operace správy serveru služby Analysis Services je nutné jej přidat do role správců serveru. Další informace naleznete [v tématu Přidání instančního objektu do role správce serveru](analysis-services-addservprinc-admins.md).
 
-## <a name="service-principals-in-connection-strings"></a>Objekty služby v připojovacích řetězcích
+## <a name="service-principals-in-connection-strings"></a>Instanční objekty v připojovacích řetězcích
 
-V připojovacích řetězcích se dá použít identifikátor appID a heslo nebo certifikát, který je stejný jako hlavní název uživatele (UPN).
+Id instančního objektu service id a heslo nebo certifikát lze použít v připojovacích řetězcích podobně jako hlavní název služby.
 
 ### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-#### <a name="a-nameazmodule-using-azanalysisservices-module"></a><a name="azmodule" />pomocí modulu AZ. AnalysisServices
+#### <a name="using-azanalysisservices-module"></a><a name="azmodule" />Použití modulu Az.AnalysisServices
 
-Při použití instančního objektu pro operace správy prostředků pomocí modulu [AZ. AnalysisServices](/powershell/module/az.analysisservices) použijte rutinu `Connect-AzAccount`. 
+Při použití instančního objektu pro operace správy prostředků `Connect-AzAccount` s modulem [Az.AnalysisServices](/powershell/module/az.analysisservices) použijte rutinu. 
 
-V následujícím příkladu appID a Password slouží k provádění operací roviny řízení pro synchronizaci do replik jen pro čtení a horizontálního navýšení nebo navýšení kapacity:
+V následujícím příkladu appID a heslo se používají k provádění operací roviny řízení pro synchronizaci replik jen pro čtení a vertikálně navýšit/vyřadit:
 
 ```powershell
 Param (
@@ -75,7 +75,7 @@ Set-AzAnalysisServicesServer -Name "testsvr" -ResourceGroupName "testRG" -Sku "S
 
 #### <a name="using-sqlserver-module"></a>Použití modulu SQLServer
 
-V následujícím příkladu se k provedení operace aktualizace databáze modelu používá appID a heslo:
+V následujícím příkladu appID a heslo se používají k provedení operace aktualizace databáze modelu:
 
 ```powershell
 Param (
@@ -92,9 +92,9 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO a ADOMD 
 
-Když se připojujete ke klientským aplikacím a webovým aplikacím, verze 15.0.2 [klienta AMO a ADOMD](analysis-services-data-providers.md) z NuGet podporují instanční objekty v připojovacích řetězcích pomocí následující syntaxe: `app:AppID` a heslo nebo `cert:thumbprint`. 
+Při připojování s klientskými aplikacemi a webovými aplikacemi, [AMO a ADOMD klientské knihovny](analysis-services-data-providers.md) verze 15.0.2 `app:AppID` a `cert:thumbprint`vyšší instalovatelné balíčky z objektů podpory NuGet v připojovacích řetězcích pomocí následující syntaxe: a heslo nebo . 
 
-V následujícím příkladu `appID` a `password` slouží k provedení operace aktualizace databáze modelu:
+V následujícím příkladu `appID` `password` a a se používají k provedení operace aktualizace databáze modelu:
 
 ```csharp
 string appId = "xxx";
@@ -109,5 +109,5 @@ db.Model.SaveChanges();
 ```
 
 ## <a name="next-steps"></a>Další kroky
-[Přihlášení pomocí Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
-[Přidání instančního objektu k roli správce serveru](analysis-services-addservprinc-admins.md)   
+[Přihlášení pomocí Azure PowerShellu](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
+[Přidání objektu zabezpečení služby do role správce serveru](analysis-services-addservprinc-admins.md)   

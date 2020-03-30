@@ -1,6 +1,6 @@
 ---
-title: Nastavte si upozornění na metriky Azure VPN Gateway
-description: Postup konfigurace výstrah pro metriky brány sítě VPN
+title: Nastavení výstrah na metrikách služby Azure VPN Gateway
+description: Postup konfigurace výstrah v metrikách brány VPN
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
@@ -8,67 +8,67 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: alzam
 ms.openlocfilehash: d57663f683ba4e2107ec6813a19fac7b2dcdd26a
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67605232"
 ---
-# <a name="set-up-alerts-on-vpn-gateway-metrics"></a>Nastavte si upozornění na metriky brány sítě VPN
+# <a name="set-up-alerts-on-vpn-gateway-metrics"></a>Nastavení upozornění na metriky brány VPN
 
-Tento článek vám pomůže nastavit upozornění na metriky Azure VPN Gateway. Azure Monitor umožňuje nastavit výstrahy pro prostředky Azure. Můžete nastavit výstrahy pro brány virtuální sítě typu "VPN".
+Tento článek vám pomůže nastavit výstrahy na metriky Azure VPN Gateway. Azure Monitor poskytuje možnost nastavit výstrahy pro prostředky Azure. Můžete nastavit výstrahy pro brány virtuální sítě typu "VPN".
 
 
 |**Metrika**   | **Jednotka** | **Členitost** | **Popis** | 
 |---       | ---        | ---       | ---            | ---       |
-|**AverageBandwidth**| Bajty/s  | 5 minut| Průměrné využití šířky pásma kombinované všechna připojení site-to-site k bráně.     |
-|**P2SBandwidth**| Bajty/s  | 1 minuta  | Průměrné využití šířky pásma kombinované všechna připojení point-to-site k bráně.    |
-|**P2SConnectionCount**| Count  | 1 minuta  | Počet připojení point-to-site k bráně.   |
-|**TunnelAverageBandwidth** | Bajty/s    | 5 minut  | Průměrné využití šířky pásma tunely vytvořené v bráně. |
-|**TunnelEgressBytes** | B | 5 minut | Odchozí přenosy na tunely vytvořené v bráně.   |
-|**TunnelEgressPackets** | Count | 5 minut | Počet odchozích paketů v tunely vytvořené v bráně.   |
-|**TunnelEgressPacketDropTSMismatch** | Count | 5 minut | Počet odchozích paketů přesunuta tunely způsobené neshoda selektor provozu. |
-|**TunnelIngressBytes** | B | 5 minut | Příchozí provoz na tunely vytvořené v bráně.   |
-|**TunnelIngressPackets** | Count | 5 minut | Počet příchozích paketů na tunely vytvořené v bráně.   |
-|**TunnelIngressPacketDropTSMismatch** | Count | 5 minut | Počet příchozích paketů na tunely způsobené neshoda selektor provozu. |
+|**Průměrná šířka pásma**| Bajty/s  | 5 minut| Průměrné kombinované využití šířky pásma všech připojení mezi lokalitami v bráně.     |
+|**Šířka pásma P2S**| Bajty/s  | 1 minuta  | Průměrné kombinované využití šířky pásma všech připojení typu point-to-site v bráně.    |
+|**P2SConnectionCount**| Počet  | 1 minuta  | Počet připojení bodu k webu v bráně.   |
+|**TunnelAverageBandwidth** | Bajty/s    | 5 minut  | Průměrné využití šířky pásma tunelů vytvořených na bráně. |
+|**TunnelEgressBytes** | Bajty | 5 minut | Odchozí provoz na tunelech vytvořených na bráně.   |
+|**TunnelEgressPackets** | Počet | 5 minut | Počet odchozích paketů v tunelech vytvořených v bráně.   |
+|**TunnelEgressPacketDropTSMismatch** | Počet | 5 minut | Počet odchozích paketů vynechaných v tunelech způsobených neshodou selektoru provozu. |
+|**TunnelIngressBytes** | Bajty | 5 minut | Příchozí provoz na tunelech vytvořených na bráně.   |
+|**TunnelIngressPackets** | Počet | 5 minut | Počet příchozích paketů v tunelových propojeních vytvořených v bráně.   |
+|**TunnelIngressPacketDropTSMismatch** | Počet | 5 minut | Počet příchozích paketů vynechaných v tunelech způsobených neshodou voličů provozu. |
 
 
-## <a name="setup"></a>Nastavení Azure Monitor výstrah na základě metrik s využitím webu Azure portal
+## <a name="set-up-azure-monitor-alerts-based-on-metrics-by-using-the-azure-portal"></a><a name="setup"></a>Nastavení výstrah Azure Monitoru na základě metrik pomocí portálu Azure
 
-Následující příklady postupu bude vytvoření výstrahy pro bránu pro:
+Následující příklad kroků vytvoří výstrahu na bráně pro:
 
 - **Metrika:** TunnelAverageBandwidth
-- **Podmínka:** Šířka pásma > 10 bajtů za sekundu
+- **Stav:** Šířka pásma > 10 bajtů za sekundu
 - **Okno:** 5 minut
-- **Akce upozornění:** Email
+- **Výstražná akce:** E-mail
 
 
 
-1. Přejděte do prostředku brány virtuální sítě a vyberte **výstrahy** z **monitorování** kartu. Pak vytvořte nové pravidlo upozornění nebo upravit stávající pravidla upozornění.
+1. Přejděte na prostředek brány virtuální sítě a na kartě **Monitorování** vyberte **Výstrahy.** Potom vytvořte nové pravidlo výstrahy nebo upravte existující pravidlo výstrahy.
 
-   ![Vybrané možnosti pro vytvoření pravidla upozornění](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert1.png "Create")
+   ![Výběry pro vytvoření pravidla výstrahy](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert1.png "Vytvořit")
 
-2. Vyberte bránu VPN jako prostředek.
+2. Jako prostředek vyberte bránu VPN.
 
-   ![Vyberte tlačítko a brány VPN v seznamu prostředků](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert2.png "vyberte")
+   ![Tlačítko Vybrat a brána VPN v seznamu zdrojů](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert2.png "Vyberte")
 
-3. Vyberte metriku, která se konfigurace výstrahy.
+3. Vyberte metriku, kterou chcete pro výstrahu nakonfigurovat.
 
-   ![Vybraná metrika v seznamu metrik](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert3.png "vyberte")
-4. Konfigurovat logiku signálů. Existují tři součásti:
+   ![Vybraná metrika v seznamu metrik](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert3.png "Vyberte")
+4. Nakonfigurujte logiku signálu. Existují tři složky:
 
-    a. **Dimenze:** Pokud metrika dimenze, můžete vybrat konkrétní hodnoty dimenze tak, aby upozornění vyhodnotí jenom data z dané dimenzi. Toto jsou volitelné.
+    a. **Dimenze**: Pokud má metrika dimenze, můžete vybrat konkrétní hodnoty dimenzí tak, aby výstraha vyhodnotila pouze data této dimenze. Ty jsou volitelné.
 
-    b. **Podmínka**: Právě tato operace se vyhodnotit hodnotu metriky.
+    b. **Podmínka**: Jedná se o operaci k vyhodnocení hodnoty metriky.
 
-    c. **Čas**: Zadejte úrovně podrobností dat metriky a časového intervalu pro vyhodnocení výstrahy.
+    c. **Čas**: Zadejte rozlišovací schopnost dat metriky a dobu vyhodnocení výstrahy.
 
-   ![Podrobnosti o konfiguraci signalizuje, že logic](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert4.png "vyberte")
+   ![Podrobnosti pro konfiguraci logiky signálu](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert4.png "Vyberte")
 
-5. Chcete-li zobrazit nakonfigurovaná pravidla, vyberte **spravovat pravidla výstrah**.
+5. Chcete-li zobrazit nakonfigurovaná pravidla, vyberte **možnost Spravovat pravidla výstrah**.
 
-   ![Tlačítko pro spravovat pravidla výstrah](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert8.png "vyberte")
+   ![Tlačítko pro správu pravidel výstrah](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert8.png "Vyberte")
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Konfigurace výstrah pro diagnostické protokoly pro tunelové propojení, najdete v článku [nastavení výstrah u diagnostické protokoly brány sítě VPN](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md).
+Informace o konfiguraci výstrah v protokolech diagnostiky tunelového propojení naleznete v [tématu Nastavení výstrah v diagnostických protokolech brány VPN](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md).

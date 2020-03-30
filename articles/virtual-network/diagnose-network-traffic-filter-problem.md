@@ -1,6 +1,6 @@
 ---
-title: Diagnostika problému s filtrem síťového provozu virtuálního počítače | Microsoft Docs
-description: Přečtěte si, jak diagnostikovat problém filtru síťových přenosů virtuálních počítačů, a to zobrazením platných pravidel zabezpečení pro virtuální počítač.
+title: Diagnostika problému s filtrem síťového provozu virtuálních strojů | Dokumenty společnosti Microsoft
+description: Zjistěte, jak diagnostikovat problém s filtrem provozu sítě virtuálních strojů zobrazením účinných pravidel zabezpečení pro virtuální počítač.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -15,73 +15,73 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
-ms.openlocfilehash: f84e8a24e8f28cdccc987afbd1449cb17422ce0c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 6939ea2497a9f12321e1a6dfb9bf9fbb353bc7db
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79279751"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240778"
 ---
-# <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Diagnostika problému s filtrováním síťového provozu virtuálního počítače
+# <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Diagnostika problému s filtrem síťového provozu virtuálních strojů
 
-V tomto článku se dozvíte, jak diagnostikovat problém s filtrováním síťových přenosů, a to zobrazením pravidel zabezpečení skupiny zabezpečení sítě (NSG), která jsou platná pro virtuální počítač (VM).
+V tomto článku se dozvíte, jak diagnostikovat problém s filtrem síťového provozu zobrazením pravidel zabezpečení sítě (NSG), která jsou efektivní pro virtuální počítač (VM).
 
-Skupin zabezpečení sítě vám umožní řídit typy provozu, které se budou směrovat do virtuálního počítače a z něj. NSG můžete přidružit k podsíti ve službě Azure Virtual Network, síťovém rozhraní připojenému k virtuálnímu počítači nebo obojímu. Platná pravidla zabezpečení používaná pro síťové rozhraní jsou agregace pravidel, která existují v NSG přidružených k síťovému rozhraní, a v podsíti, ve které se síťové rozhraní nachází. Pravidla v různých skupin zabezpečení sítě můžou někdy kolidovat a ovlivnit připojení k síti virtuálního počítače. Můžete zobrazit všechna platná pravidla zabezpečení z skupin zabezpečení sítě, která se aplikují na síťová rozhraní vašeho virtuálního počítače. Pokud nejste obeznámeni s koncepty virtuální sítě, síťového rozhraní nebo NSG, přečtěte si téma Přehled [virtuální sítě](virtual-networks-overview.md), [síťové rozhraní](virtual-network-network-interface.md)a [skupiny zabezpečení sítě](security-overview.md).
+Skupiny sítě nsg umožňují řídit typy provozu, které toku dovnitř a ven z virtuálního počítače. Skupinu zabezpečení sítě můžete přidružit k podsíti ve virtuální síti Azure, síťovému rozhraní připojenému k virtuálnímu počítači nebo obojímu. Účinná pravidla zabezpečení použitá pro síťové rozhraní jsou agregací pravidel, která existují v souboru zabezpečení sítě přidruženém k síťovému rozhraní, a podsíti, ve které se síťové rozhraní nachází. Pravidla v různých sítích zabezpečení sítě může někdy konflikt mezi sebou a vliv na připojení k síti virtuálního zařízení. Můžete zobrazit všechna platná pravidla zabezpečení ze skupin nsg, které se používají v síťových rozhraních virtuálního počítače. Pokud nejste obeznámeni s koncepty virtuální sítě, síťového rozhraní nebo skupiny zabezpečení sítě, přečtěte si informace o [přehledu virtuální sítě](virtual-networks-overview.md), [síťovém rozhraní](virtual-network-network-interface.md)a [skupinách zabezpečení sítě](security-overview.md).
 
 ## <a name="scenario"></a>Scénář
 
-Pokusíte se připojit k virtuálnímu počítači přes port 80 z Internetu, ale připojení se nezdaří. Pokud chcete zjistit, proč nemůžete získat přístup k portu 80 z Internetu, můžete zobrazit platná pravidla zabezpečení pro síťové rozhraní pomocí webu Azure [Portal](#diagnose-using-azure-portal), [PowerShellu](#diagnose-using-powershell)nebo rozhraní příkazového [řádku Azure CLI](#diagnose-using-azure-cli).
+Pokusíte se připojit k virtuálnímu virtuálnímu zařízení přes port 80 z Internetu, ale připojení se nezdaří. Chcete-li zjistit, proč nemáte přístup k portu 80 z Internetu, můžete zobrazit účinná pravidla zabezpečení pro síťové rozhraní pomocí [portálu](#diagnose-using-azure-portal)Azure , [PowerShellu](#diagnose-using-powershell)nebo [rozhraní příkazového řádku Azure](#diagnose-using-azure-cli).
 
-Následující postup předpokládá, že máte existující virtuální počítač pro zobrazení platných pravidel zabezpečení pro. Pokud nemáte existující virtuální počítač, nasaďte nejdřív virtuální počítač se systémem [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , abyste mohli dokončit úkoly v tomto článku. Příklady v tomto článku jsou pro virtuální počítač s názvem *myVM* se síťovým rozhraním s názvem *myVMVMNic*. Virtuální počítač a síťové rozhraní jsou ve skupině prostředků s názvem *myResourceGroup*a jsou v oblasti *východní USA* . Podle potřeby změňte hodnoty v krocích pro virtuální počítač, pro který chcete problém diagnostikovat.
+Kroky, které následují předpokládat, že máte existující virtuální hod zobrazit pravidla zabezpečení pro. Pokud nemáte existující virtuální počítač, nejprve nasaďte [virtuální počítač s Linuxem](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) k dokončení úkolů v tomto článku. Příklady v tomto článku jsou pro virtuální hod s názvem *myVM* se síťovým rozhraním s názvem *myVMVMNic*. Virtuální jazyk a síťové rozhraní jsou ve skupině prostředků s názvem *myResourceGroup*a jsou v oblasti *USA – východ.* Podle potřeby změňte hodnoty v krocích pro virtuální ho disponující problém.
 
-## <a name="diagnose-using-azure-portal"></a>Diagnostika pomocí Azure Portal
+## <a name="diagnose-using-azure-portal"></a>Diagnostika pomocí portálu Azure
 
-1. Přihlaste se k webu Azure [Portal](https://portal.azure.com) pomocí účtu Azure, který má [potřebná oprávnění](virtual-network-network-interface.md#permissions).
-2. V horní části Azure Portal do vyhledávacího pole zadejte název virtuálního počítače. Jakmile se ve výsledcích hledání zobrazí název virtuálního počítače, vyberte ho.
-3. V části **Nastavení**vyberte **sítě**, jak je znázorněno na následujícím obrázku:
+1. Přihlaste se k [portálu](https://portal.azure.com) Azure pomocí účtu Azure, který má [potřebná oprávnění](virtual-network-network-interface.md#permissions).
+2. V horní části portálu Azure zadejte název virtuálního počítače do vyhledávacího pole. Když se ve výsledcích hledání zobrazí název virtuálního počítače, vyberte ho.
+3. V části **NASTAVENÍ**vyberte **Možnost Síť**, jak je znázorněno na následujícím obrázku:
 
    ![Zobrazit pravidla zabezpečení](./media/diagnose-network-traffic-filter-problem/view-security-rules.png)
 
-   Pravidla zobrazená na předchozím obrázku jsou pro síťové rozhraní s názvem **myVMVMNic**. Vidíte, že pro síťové rozhraní existují **pravidla příchozího portu** ze dvou různých skupin zabezpečení sítě:
+   Pravidla uvedená na předchozím obrázku jsou pro síťové rozhraní s názvem **myVMVMNic**. Uvidíte, že existují **pravidla příchozíport pro** síťové rozhraní ze dvou různých skupin zabezpečení sítě:
    
-   - **mySubnetNSG**: přidruženo k podsíti, ve které se nachází síťové rozhraní.
-   - **myVMNSG**: přidruženo k síťovému rozhraní ve virtuálním počítači s názvem **myVMVMNic**.
+   - **mySubnetNSG**: Přidruženo k podsíti, ve které se nachází síťové rozhraní.
+   - **myVMNSG**: Přidruženo k síťovému rozhraní ve Virtuálním virtuálním montovi s názvem **myVMVMNic**.
 
-   Pravidlo s názvem **DenyAllInBound** to brání příchozí komunikaci virtuálního počítače přes port 80 z Internetu, jak je popsáno ve [scénáři](#scenario). Pravidlo obsahuje hodnotu *0.0.0.0/0* pro **zdroj**, který zahrnuje Internet. Žádné jiné pravidlo s vyšší prioritou (nižším číslem) umožňuje příchozí port 80. Pokud chcete virtuálnímu počítači povolit příchozí port 80 z Internetu, přečtěte si téma [řešení problému](#resolve-a-problem). Další informace o pravidlech zabezpečení a o tom, jak je Azure používá, najdete v tématu [skupiny zabezpečení sítě](security-overview.md).
+   Pravidlo s názvem **DenyAllInBound** je to, co brání příchozí komunikaci s virtuálním počítačem přes port 80 z Internetu, jak je popsáno ve [scénáři](#scenario). Pravidlo uvádí *0.0.0.0/0* pro **SOURCE**, který zahrnuje internet. Žádné jiné pravidlo s vyšší prioritou (nižší číslo) umožňuje port 80 příchozí. Pokud chcete povolit příchozí port 80 k virtuálnímu virtuálnímu uživateli z Internetu, [přečtěte si](#resolve-a-problem)informace o řešení problému . Další informace o pravidlech zabezpečení a jejich použití v Azure najdete v [tématu Skupiny zabezpečení sítě](security-overview.md).
 
-   V dolní části obrázku se zobrazí také **pravidla odchozího portu**. V části se nacházejí pravidla odchozího portu pro síťové rozhraní. I když obrázek zobrazuje pouze čtyři příchozí pravidla pro každý NSG, vaše skupin zabezpečení sítě může mít mnoho více než čtyři pravidla. Na obrázku vidíte **VirtualNetwork** pod položkou **zdroj** a **cíl** a **AzureLoadBalancer** pod položkou **source**. **VirtualNetwork** a **AzureLoadBalancer** jsou [značky služeb](security-overview.md#service-tags). Značky služby reprezentují skupinu předpon IP adres, které vám pomůžou minimalizovat složitost pro vytváření pravidel zabezpečení.
+   V dolní části obrázku se také zobrazí **pravidla odchozího portu**. Pod tím jsou pravidla odchozího portu pro síťové rozhraní. Ačkoli obrázek zobrazuje pouze čtyři příchozí pravidla pro každý soubor nsg, vaše nsgy může mít mnohem více než čtyři pravidla. Na obrázku se zobrazí **VirtualNetwork** pod **SOURCE** a **DESTINATION** a **AzureLoadBalancer** v části **SOURCE**. **VirtualNetwork** a **AzureLoadBalancer** jsou [značky služeb](security-overview.md#service-tags). Značky služeb představují skupinu předpon IP adres, které pomáhají minimalizovat složitost vytváření pravidel zabezpečení.
 
-4. Ujistěte se, že je virtuální počítač ve stavu spuštěno, a pak vyberte **platná pravidla zabezpečení**, jak je znázorněno na předchozím obrázku, abyste zobrazili platná pravidla zabezpečení, která jsou znázorněná na následujícím obrázku:
+4. Ujistěte se, že je virtuální virtuální hotel v běžícím stavu, a pak vyberte **Platná pravidla zabezpečení**, jak je znázorněno na předchozím obrázku, abyste viděli účinná pravidla zabezpečení zobrazená na následujícím obrázku:
 
-   ![Zobrazit platná pravidla zabezpečení](./media/diagnose-network-traffic-filter-problem/view-effective-security-rules.png)
+   ![Zobrazení účinných pravidel zabezpečení](./media/diagnose-network-traffic-filter-problem/view-effective-security-rules.png)
 
-   Uvedená pravidla se shodují s pravidly, která jste viděli v kroku 3, i když jsou k dispozici různé karty NSG přidružené k síťovému rozhraní a podsíti. Jak vidíte na obrázku, zobrazují se jenom první pravidla 50. Pokud chcete stáhnout soubor. csv, který obsahuje všechna pravidla, vyberte **Stáhnout**.
+   Uvedená pravidla jsou stejná jako v kroku 3, i když existují různé karty pro skupiny zabezpečení sítě přidružené k síťovému rozhraní a podsíti. Jak můžete vidět na obrázku, zobrazí se pouze prvních 50 pravidel. Chcete-li stáhnout soubor .csv, který obsahuje všechna pravidla, vyberte **možnost Stáhnout**.
 
-   Chcete-li zjistit, které předpony jednotlivých značek služeb představují, vyberte pravidlo, například pravidlo s názvem **AllowAzureLoadBalancerInbound**. Následující obrázek ukazuje předpony pro značku služby **AzureLoadBalancer** :
+   Chcete-li zjistit, které předpony představují jednotlivé značky služby, vyberte pravidlo, například pravidlo s názvem **AllowAzureLoadBalancerInbound**. Následující obrázek znázorňuje předpony pro značku služby **AzureLoadBalancer:**
 
-   ![Zobrazit platná pravidla zabezpečení](./media/diagnose-network-traffic-filter-problem/address-prefixes.png)
+   ![Zobrazení účinných pravidel zabezpečení](./media/diagnose-network-traffic-filter-problem/address-prefixes.png)
 
-   I když značka služby **AzureLoadBalancer** představuje pouze jednu předponu, jiné značky služby představují několik předpon.
+   Přestože značka služby **AzureLoadBalancer** představuje pouze jednu předponu, jiné značky služby představují několik předpon.
 
-5. Předchozí kroky ukázaly pravidla zabezpečení pro síťové rozhraní s názvem **myVMVMNic**, ale v některých předchozích obrázcích jste také viděli síťové rozhraní s názvem **myVMVMNic2** . Virtuální počítač v tomto příkladu obsahuje dvě síťová rozhraní, která jsou k němu připojená. Platná pravidla zabezpečení mohou být pro každé síťové rozhraní odlišná.
+5. Předchozí kroky ukázaly pravidla zabezpečení pro síťové rozhraní s názvem **myVMVMNic**, ale také jste viděli síťové rozhraní s názvem **myVMVMNic2** v některých předchozích obrázků. Virtuální modul v tomto příkladu má dvě síťová rozhraní, která jsou k němu připojena. Efektivní pravidla zabezpečení se mohou lišit pro každé síťové rozhraní.
 
-   Pokud se chcete podívat na pravidla síťového rozhraní **myVMVMNic2** , vyberte ho. Jak je znázorněno na následujícím obrázku, síťové rozhraní má stejná pravidla jako síťové rozhraní **myVMVMNic** , protože obě síťová rozhraní jsou ve stejné podsíti. Když přidružíte NSG k podsíti, uplatní se jejich pravidla na všechna síťová rozhraní v podsíti.
+   Chcete-li zobrazit pravidla pro síťové rozhraní **myVMVMNic2,** vyberte jej. Jak je znázorněno na následujícím obrázku, síťové rozhraní má stejná pravidla přidružená k podsíti jako síťové rozhraní **myVMVMNic,** protože obě síťová rozhraní jsou ve stejné podsíti. Při přidružení skupiny zabezpečení sítě k podsíti se jeho pravidla použijí na všechna síťová rozhraní v podsíti.
 
    ![Zobrazit pravidla zabezpečení](./media/diagnose-network-traffic-filter-problem/view-security-rules2.png)
 
-   Na rozdíl od síťového rozhraní **myVMVMNic** nemá síťové rozhraní **myVMVMNic2** přiřazenou skupinu zabezpečení sítě. Ke každému síťovému rozhraní a podsíti může být přidružena nula nebo jedna z nich NSG. NSG přidružené k jednotlivým síťovým rozhraním nebo podsíti můžou být stejné nebo jiné. Stejnou skupinu zabezpečení sítě můžete přidružit k tolika síťovým rozhraním a podsítím, kolik jich zvolíte.
+   Na rozdíl od síťového rozhraní **myVMVMNic** nemá síťové rozhraní **myVMVMNic2** přidruženou skupinu zabezpečení sítě. Každé síťové rozhraní a podsíť může mít nula nebo jeden, nsg k němu spojené. Skupina zabezpečení sítě přidružená ke každému síťovému rozhraní nebo podsíti může být stejná nebo odlišná. Stejnou skupinu zabezpečení sítě můžete přidružit k tolika síťovým rozhraním a podsítím, kolik chcete.
 
-I když jste přes virtuální počítač viděli skutečná pravidla zabezpečení, můžete si také zobrazit skutečná pravidla zabezpečení prostřednictvím jednotlivce:
-- **Síťové rozhraní**: Naučte se [zobrazovat síťové rozhraní](virtual-network-network-interface.md#view-network-interface-settings).
-- **NSG**: Naučte se, jak [Zobrazit NSG](manage-network-security-group.md#view-details-of-a-network-security-group).
+Přestože účinná pravidla zabezpečení byla zobrazena prostřednictvím virtuálního virtuálního provozu, můžete také zobrazit platná pravidla zabezpečení prostřednictvím jednotlivce:
+- **Síťové rozhraní**: Přečtěte [si,](virtual-network-network-interface.md#view-network-interface-settings)jak zobrazit síťové rozhraní .
+- **NSG**: Přečtěte si, jak [zobrazit soubor NSG](manage-network-security-group.md#view-details-of-a-network-security-group).
 
-## <a name="diagnose-using-powershell"></a>Diagnostika pomocí prostředí PowerShell
+## <a name="diagnose-using-powershell"></a>Diagnostika pomocí PowerShellu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Můžete spustit příkazy, které následují v [Azure Cloud Shell](https://shell.azure.com/powershell), nebo spuštěním PowerShellu z počítače. Azure Cloud Shell je bezplatné interaktivní prostředí. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Pokud spustíte PowerShell z počítače, budete potřebovat modul Azure PowerShell, verze 1.0.0 nebo novější. Pokud chcete najít nainstalovanou verzi, spusťte v počítači `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit `Connect-AzAccount` pro přihlášení k Azure pomocí účtu, který má [potřebná oprávnění](virtual-network-network-interface.md#permissions)].
+Můžete spustit příkazy, které následují v [Prostředí Azure Cloud Shell](https://shell.azure.com/powershell), nebo spuštěním Prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatná interaktivní prostředí. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Pokud spustíte PowerShell z počítače, budete potřebovat modul Azure PowerShell, verze 1.0.0 nebo novější. Spuštěním `Get-Module -ListAvailable Az` v počítači vyhledejte nainstalovanou verzi. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte Prostředí PowerShell místně, musíte `Connect-AzAccount` se také spustit a přihlásit se k Azure pomocí účtu, který má [potřebná oprávnění](virtual-network-network-interface.md#permissions)].
 
-Získejte platná pravidla zabezpečení pro síťové rozhraní pomocí [Get-AzEffectiveNetworkSecurityGroup](/powershell/module/az.network/get-azeffectivenetworksecuritygroup). Následující příklad získá platná pravidla zabezpečení pro síťové rozhraní s názvem *myVMVMNic*, které je ve skupině prostředků s názvem *myResourceGroup*:
+Získejte účinná pravidla zabezpečení pro síťové rozhraní pomocí [skupiny Get-AzEffectiveNetworkSecurityGroup](/powershell/module/az.network/get-azeffectivenetworksecuritygroup). Následující příklad získá účinná pravidla zabezpečení pro síťové rozhraní s názvem *myVMVMNic*, který je ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurepowershell-interactive
 Get-AzEffectiveNetworkSecurityGroup `
@@ -89,21 +89,21 @@ Get-AzEffectiveNetworkSecurityGroup `
   -ResourceGroupName myResourceGroup
 ```
 
-Výstup se vrátí ve formátu JSON. Chcete-li pochopit výstup, přečtěte si téma [Interpretace výstupu příkazu](#interpret-command-output).
-Výstup je vrácen pouze v případě, že je NSG přidružen k síťovému rozhraní, podsíti, ve které je síťové rozhraní, nebo obojí. Virtuální počítač musí být ve spuštěném stavu. Virtuální počítač může mít několik síťových rozhraní s různými skupin zabezpečení sítě. Při řešení potíží spusťte příkaz pro každé síťové rozhraní.
+Výstup je vrácen ve formátu json. Chcete-li pochopit výstup, viz [interpretovat výstup příkazu](#interpret-command-output).
+Výstup je vrácen pouze v případě, že je k síťovému rozhraní přidružen soubor nSG, podsíť, ve které se síťové rozhraní nachází, nebo obojí. Virtuální ho virtuálního provozu musí být ve spuštěném stavu. Virtuální počítač může mít více síťových rozhraní s různými skupinami zabezpečení sítě použít. Při řešení potíží spusťte příkaz pro každé síťové rozhraní.
 
-Pokud stále dochází k potížím s připojením, přečtěte si další [informace o](#considerations) [diagnostice](#additional-diagnosis) a důležitých bodech.
+Pokud potíže s připojením přetrvávají, přečtěte si [další diagnózu](#additional-diagnosis) a [důležité informace](#considerations).
 
-Pokud název síťového rozhraní neznáte, ale znáte název virtuálního počítače, ke kterému je síťové rozhraní připojené, následující příkazy vrátí identifikátory všech síťových rozhraní připojených k virtuálnímu počítači:
+Pokud neznáte název síťového rozhraní, ale znáte název virtuálního virtuálního serveru, ke kterému je síťové rozhraní připojeno, následující příkazy vrátí ID všech síťových rozhraní připojených k virtuálnímu virtuálnímu zařízení:
 
 ```azurepowershell-interactive
 $VM = Get-AzVM -Name myVM -ResourceGroupName myResourceGroup
 $VM.NetworkProfile
 ```
 
-Zobrazí se výstup podobný následujícímu příkladu:
+Obdržíte výstup podobný následujícímu příkladu:
 
-```powershell
+```output
 NetworkInterfaces
 -----------------
 {/subscriptions/<ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic
@@ -111,11 +111,11 @@ NetworkInterfaces
 
 V předchozím výstupu je název síťového rozhraní *myVMVMNic*.
 
-## <a name="diagnose-using-azure-cli"></a>Diagnostika pomocí Azure CLI
+## <a name="diagnose-using-azure-cli"></a>Diagnostika pomocí azure cli
 
-Pokud k dokončení úkolů v tomto článku používáte příkazy rozhraní příkazového řádku Azure (CLI), buď spusťte příkazy v [Azure Cloud Shell](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku z počítače. Tento článek vyžaduje Azure CLI verze 2.0.32 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte taky spustit `az login` a přihlásit se k Azure pomocí účtu, který má [potřebná oprávnění](virtual-network-network-interface.md#permissions).
+Pokud pomocí příkazů rozhraní Příkazového řádku Azure (CLI) k dokončení úloh v tomto článku, buď spustit příkazy v [prostředí Azure Cloud Shell](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku z vašeho počítače. Tento článek vyžaduje Azure CLI verze 2.0.32 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také `az login` spustit a přihlásit se do Azure s účtem, který má [potřebná oprávnění](virtual-network-network-interface.md#permissions).
 
-Získejte platná pravidla zabezpečení pro síťové rozhraní pomocí [AZ Network nic list-efektivní-NSG](/cli/azure/network/nic#az-network-nic-list-effective-nsg). Následující příklad získá platná pravidla zabezpečení pro síťové rozhraní s názvem *myVMVMNic* , které je ve skupině prostředků s názvem *myResourceGroup*:
+Získejte účinná pravidla zabezpečení pro síťové rozhraní s [az network nic list-effective-nsg](/cli/azure/network/nic#az-network-nic-list-effective-nsg). Následující příklad získá účinná pravidla zabezpečení pro síťové rozhraní s názvem *myVMVMNic,* která je ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurecli-interactive
 az network nic list-effective-nsg \
@@ -123,12 +123,12 @@ az network nic list-effective-nsg \
   --resource-group myResourceGroup
 ```
 
-Výstup se vrátí ve formátu JSON. Chcete-li pochopit výstup, přečtěte si téma [Interpretace výstupu příkazu](#interpret-command-output).
-Výstup je vrácen pouze v případě, že je NSG přidružen k síťovému rozhraní, podsíti, ve které je síťové rozhraní, nebo obojí. Virtuální počítač musí být ve spuštěném stavu. Virtuální počítač může mít několik síťových rozhraní s různými skupin zabezpečení sítě. Při řešení potíží spusťte příkaz pro každé síťové rozhraní.
+Výstup je vrácen ve formátu json. Chcete-li pochopit výstup, viz [interpretovat výstup příkazu](#interpret-command-output).
+Výstup je vrácen pouze v případě, že je k síťovému rozhraní přidružen soubor nSG, podsíť, ve které se síťové rozhraní nachází, nebo obojí. Virtuální ho virtuálního provozu musí být ve spuštěném stavu. Virtuální počítač může mít více síťových rozhraní s různými skupinami zabezpečení sítě použít. Při řešení potíží spusťte příkaz pro každé síťové rozhraní.
 
-Pokud stále dochází k potížím s připojením, přečtěte si další [informace o](#considerations) [diagnostice](#additional-diagnosis) a důležitých bodech.
+Pokud potíže s připojením přetrvávají, přečtěte si [další diagnózu](#additional-diagnosis) a [důležité informace](#considerations).
 
-Pokud název síťového rozhraní neznáte, ale znáte název virtuálního počítače, ke kterému je síťové rozhraní připojené, následující příkazy vrátí identifikátory všech síťových rozhraní připojených k virtuálnímu počítači:
+Pokud neznáte název síťového rozhraní, ale znáte název virtuálního virtuálního serveru, ke kterému je síťové rozhraní připojeno, následující příkazy vrátí ID všech síťových rozhraní připojených k virtuálnímu virtuálnímu zařízení:
 
 ```azurecli-interactive
 az vm show \
@@ -136,9 +136,9 @@ az vm show \
   --resource-group myResourceGroup
 ```
 
-V rámci vráceného výstupu se zobrazí podobné informace jako v následujícím příkladu:
+V rámci vrácené výstupu se zobrazí informace podobné následujícímu příkladu:
 
-```azurecli
+```output
 "networkProfile": {
     "additionalProperties": {},
     "networkInterfaces": [
@@ -150,58 +150,58 @@ V rámci vráceného výstupu se zobrazí podobné informace jako v následujíc
       },
 ```
 
-V předchozím výstupu je název síťového rozhraní *myVMVMNic Interface*.
+V předchozím výstupu je název síťového rozhraní *myVMVMNic interface*.
 
 ## <a name="interpret-command-output"></a>Interpretovat výstup příkazu
 
-Bez ohledu na to, jestli jste pro diagnostiku problému použili [PowerShell](#diagnose-using-powershell)nebo [Azure CLI](#diagnose-using-azure-cli) , se zobrazí výstup, který obsahuje následující informace:
+Bez ohledu na to, zda jste k diagnostice problému použili [prostředí PowerShell](#diagnose-using-powershell)nebo [azure cli,](#diagnose-using-azure-cli) obdržíte výstup, který obsahuje následující informace:
 
 - **NetworkSecurityGroup**: ID skupiny zabezpečení sítě.
-- **Asociace**: Určuje, jestli je skupina zabezpečení sítě přidružená k *NetworkInterface* nebo *podsíti*. Pokud je NSG k oběma, vrátí se výstup s **NetworkSecurityGroup**, **asociací**a **EffectiveSecurityRules**pro každé NSG. Pokud je NSG přidružená nebo nepřidružená bezprostředně před spuštěním příkazu k zobrazení platných pravidel zabezpečení, možná budete muset počkat několik sekund, než se změna projeví ve výstupu příkazu.
-- **EffectiveSecurityRules**: vysvětlení jednotlivých vlastností je podrobně popsáno v [článku Vytvoření pravidla zabezpečení](manage-network-security-group.md#create-a-security-rule). Názvy pravidel s *defaultSecurityRules/* jsou výchozí pravidla zabezpečení, která existují v každé NSG. Názvy pravidel s *securityRules/* jsou pravidla, která jste vytvořili. Pravidla, která určují [značku služby](security-overview.md#service-tags), jako je například **Internet**, **VirtualNetwork**a **AzureLoadBalancer** pro vlastnosti **DestinationAddressPrefix** nebo **sourceAddressPrefix** , mají také hodnoty pro vlastnost **expandedDestinationAddressPrefix** . Vlastnost **expandedDestinationAddressPrefix** vypíše všechny předpony adres reprezentované značkou služby.
+- **Přidružení**: Určuje, zda je skupina zabezpečení sítě přidružena k *rozhraní NetworkInterface* nebo *Podsíti*. Pokud je skupina zabezpečení sítě přidružena k oběma, je výstup vrácen s **networksecuritygroup**, **association**a **effectiveSecurityRules**pro každý soubor zabezpečení sítě. Pokud je skupina zabezpečení zabezpečení přidružena nebo odpojena bezprostředně před spuštěním příkazu k zobrazení účinných pravidel zabezpečení, bude pravděpodobně nutné počkat několik sekund, než se změna projeví ve výstupu příkazu.
+- **EffectiveSecurityRules**: Vysvětlení každé vlastnosti je podrobně popsáno v [článku Vytvořit pravidlo zabezpečení](manage-network-security-group.md#create-a-security-rule). Názvy pravidel předchází *defaultSecurityRules/* jsou výchozí pravidla zabezpečení, které existují v každém souboru zabezpečení zabezpečení. Názvy pravidel přednastavené s *securityRules/* jsou pravidla, která jste vytvořili. Pravidla, která určují [značku služby](security-overview.md#service-tags), například **Internet**, **VirtualNetwork**a **AzureLoadBalancer** pro vlastnosti **destinationAddressPrefix** nebo **sourceAddressPrefix,** mají také hodnoty pro **vlastnost expandedDestinationAddressPrefix.** V rozšířené vlastnosti **DestinationAddressPrefix** jsou uvedeny všechny předpony adres reprezentované značkou služby.
 
-Pokud se ve výstupu zobrazí duplicitní pravidla, je to způsobeno tím, že NSG je přidružen k síťovému rozhraní i podsíti. Obě skupin zabezpečení sítě mají stejná výchozí pravidla a můžou mít další duplicitní pravidla, pokud jste vytvořili vlastní pravidla, která jsou stejná v obou skupin zabezpečení sítě.
+Pokud se ve výstupu zobrazují duplicitní pravidla, je to proto, že skupina zabezpečení sítě je přidružena k síťovému rozhraní i k podsíti. Both NSGs have the same default rules, and may have additional duplicate rules, if you've created your own rules that are the same in both NSGs.
 
-Pravidlo s názvem **defaultSecurityRules/DenyAllInBound** znemožňuje příchozí komunikaci s virtuálním počítačem přes port 80 z Internetu, jak je popsáno ve [scénáři](#scenario). Žádné jiné pravidlo s vyšší prioritou (nižším číslem) povoluje port 80 příchozí z Internetu.
+Pravidlo s názvem **defaultSecurityRules/DenyAllInBound** je to, co brání příchozí komunikaci s virtuálním počítačem přes port 80 z Internetu, jak je popsáno ve [scénáři](#scenario). Žádné jiné pravidlo s vyšší prioritou (nižší číslo) umožňuje port 80 příchozí z internetu.
 
-## <a name="resolve-a-problem"></a>Vyřešit problém
+## <a name="resolve-a-problem"></a>Řešení problému
 
-Ať už pomocí webu Azure [Portal](#diagnose-using-azure-portal), [PowerShellu](#diagnose-using-powershell)nebo rozhraní příkazového [řádku Azure CLI](#diagnose-using-azure-cli) Diagnostikujte problém prezentovaný ve [scénáři](#scenario) v tomto článku, vytvořte pravidlo zabezpečení sítě s následujícími vlastnostmi:
+Ať už používáte [portál](#diagnose-using-azure-portal)Azure , [PowerShell](#diagnose-using-powershell)nebo [rozhraní příkazového příkazu k Azure](#diagnose-using-azure-cli) k diagnostice problému uvedeného ve [scénáři](#scenario) v tomto článku, řešením je vytvořit pravidlo zabezpečení sítě s následujícími vlastnostmi:
 
 | Vlastnost                | Hodnota                                                                              |
 |---------                |---------                                                                           |
-| Zdroj                  | Vše                                                                                |
-| Source port ranges      | Vše                                                                                |
-| Cíl             | IP adresa virtuálního počítače, rozsah IP adres nebo všechny adresy v podsíti. |
+| Zdroj                  | Všechny                                                                                |
+| Rozsahy zdrojových portů      | Všechny                                                                                |
+| Cíl             | IP adresa virtuálního soudu, rozsah IP adres nebo všechny adresy v podsíti. |
 | Rozsahy cílových portů | 80                                                                                 |
-| Protokol                | TCP                                                                                |
+| Protocol (Protokol)                | TCP                                                                                |
 | Akce                  | Povolit                                                                              |
 | Priorita                | 100                                                                                |
-| Název                    | Allow-HTTP-All                                                                     |
+| Name (Název)                    | Povolit-HTTP-Vše                                                                     |
 
-Po vytvoření pravidla je port 80 povolený pro příchozí připojení z Internetu, protože priorita pravidla je vyšší než výchozí pravidlo zabezpečení s názvem *DenyAllInBound*, které zakazuje provoz. Přečtěte si, jak [vytvořit pravidlo zabezpečení](manage-network-security-group.md#create-a-security-rule). Pokud jsou k síťovému rozhraní i podsíti přidruženy různé skupin zabezpečení sítě, musíte stejné pravidlo vytvořit v obou skupin zabezpečení sítě.
+Po vytvoření pravidla je povolen vstup portu 80 z Internetu, protože priorita pravidla je vyšší než výchozí pravidlo zabezpečení s názvem *DenyAllInBound*, které odepře provoz. Přečtěte si, jak [vytvořit pravidlo zabezpečení](manage-network-security-group.md#create-a-security-rule). Pokud jsou k síťovému rozhraní a podsíti přidruženy různé skupiny zabezpečení sítě, je nutné vytvořit stejné pravidlo v obou skupinách sítě.
 
-Když Azure zpracovává příchozí provoz, zpracovává pravidla v NSG přidružených k podsíti (pokud existuje přidružená NSG) a zpracovává pravidla v NSG přidružených k síťovému rozhraní. Pokud je k síťovému rozhraní a podsíti přidružená NSG, musí být port otevřený v obou skupin zabezpečení sítě, aby se provoz dostal k virtuálnímu počítači. Aby se usnadnila Správa a komunikace, doporučujeme přidružit NSG k podsíti místo individuálních síťových rozhraní. Pokud virtuální počítače v podsíti potřebují odlišná pravidla zabezpečení, můžete učinit síťová rozhraní členy skupiny zabezpečení aplikace (ASG) a určit ASG jako zdroj a cíl pravidla zabezpečení. Přečtěte si další informace o [skupinách zabezpečení aplikací](security-overview.md#application-security-groups).
+Když Azure zpracovává příchozí provoz, zpracovává pravidla v souboru zabezpečení sítě přidružené k podsíti (pokud je přidružený skupinu zabezpečení sítě), a pak zpracuje pravidla v souboru zabezpečení sítě přidružené k síťovému rozhraní. Pokud je k síťovému rozhraní a podsíti přidruženo skupiny zabezpečení sítě, musí být port otevřený v obou skupinách zabezpečení sítě, aby se provoz dostal k virtuálnímu zařízení. Chcete-li usnadnit problémy se správou a komunikací, doporučujeme přidružit skupinu zabezpečení sítě k podsíti, nikoli k jednotlivým síťovým rozhraním. Pokud virtuální moduly v rámci podsítě potřebují různá pravidla zabezpečení, můžete vytvořit členy síťových rozhraní skupiny zabezpečení aplikace (ASG) a zadat asg jako zdroj a cíl pravidla zabezpečení. Další informace o [skupinách zabezpečení aplikací](security-overview.md#application-security-groups).
 
-Pokud stále dochází k potížím s komunikací, přečtěte si téma [předpoklady](#considerations) a další Diagnostika.
+Pokud potíže s komunikací přetrvávají, přečtěte [si informace a](#considerations) další diagnózu.
 
 ## <a name="considerations"></a>Požadavky
 
-Při odstraňování problémů s připojením Vezměte v úvahu následující body:
+Při řešení potíží s připojením zvažte následující body:
 
-* Výchozí pravidla zabezpečení blokují příchozí přístup z Internetu a povolují pouze příchozí provoz z virtuální sítě. Pokud chcete povolit příchozí provoz z Internetu, přidejte pravidla zabezpečení s vyšší prioritou než výchozí pravidla. Přečtěte si další informace o [výchozích pravidlech zabezpečení](security-overview.md#default-security-rules)nebo o tom, jak [Přidat pravidlo zabezpečení](manage-network-security-group.md#create-a-security-rule).
-* Pokud máte partnerské virtuální sítě, ve výchozím nastavení se značka služby **VIRTUAL_NETWORK** automaticky rozbalí, aby zahrnovala předpony pro partnerské virtuální sítě. Pokud chcete řešit problémy související s partnerským vztahem virtuální sítě, můžete si zobrazit předpony v seznamu **ExpandedAddressPrefix** . Přečtěte si další informace o [partnerském vztahu virtuálních sítí](virtual-network-peering-overview.md) a [značkách služeb](security-overview.md#service-tags).
-* Platná pravidla zabezpečení se zobrazují jenom pro síťové rozhraní, pokud je k dispozici NSG přidružené k síťovému rozhraní virtuálního počítače a, nebo podsíť, a pokud je virtuální počítač ve spuštěném stavu.
-* Pokud k síťovému rozhraní nebo podsíti nejsou přidružené žádné skupin zabezpečení sítě a máte přiřazenou [veřejnou IP adresu](virtual-network-public-ip-address.md) k virtuálnímu počítači, budou všechny porty otevřené pro příchozí přístup a odchozí přístup odkudkoli. Pokud má virtuální počítač veřejnou IP adresu, doporučujeme použít NSG k podsíti síťového rozhraní.
+* Výchozí pravidla zabezpečení blokují příchozí přístup z Internetu a povolují pouze příchozí provoz z virtuální sítě. Chcete-li povolit příchozí přenosy z Internetu, přidejte pravidla zabezpečení s vyšší prioritou než výchozí pravidla. Přečtěte si další informace o [výchozích pravidlech zabezpečení](security-overview.md#default-security-rules)nebo [o přidání pravidla zabezpečení](manage-network-security-group.md#create-a-security-rule).
+* Pokud jste měli partnerský virtuální sítě, **VIRTUAL_NETWORK** značka služby se ve výchozím nastavení automaticky rozbalí tak, aby zahrnovala předpony pro partnerské virtuální sítě. Chcete-li vyřešit všechny problémy související s partnerským vztahem virtuální sítě, můžete zobrazit předpony v seznamu **ExpandedAddressPrefix.** Další informace o [partnerském vztahu virtuální sítě](virtual-network-peering-overview.md) a [značky služeb](security-overview.md#service-tags).
+* Účinná pravidla zabezpečení se zobrazují jenom pro síťové rozhraní, pokud je k síťovému rozhraní virtuálního zařízení a podsítě přidruženo k síťovému rozhraní virtuálního zařízení nebo k podsíti a pokud je virtuální modul ve spuštěném stavu.
+* Pokud nejsou k síťovému rozhraní nebo podsíti přidruženy žádné skupiny zabezpečení sítě a máte k virtuálnímu virtuálnímu počítačůmu přiřazenou [veřejnou IP adresu,](virtual-network-public-ip-address.md) jsou všechny porty otevřené pro příchozí přístup z libovolného místa a odchozí přístup odkudkoli. Pokud má virtuální modul veřejnou IP adresu, doporučujeme použít skupinu zabezpečení sítě na podsíť síťového rozhraní.
 
-## <a name="additional-diagnosis"></a>Další Diagnostika
+## <a name="additional-diagnosis"></a>Další diagnóza
 
-* Pokud chcete spustit rychlý test, abyste zjistili, jestli je povolený provoz do nebo z virtuálního počítače, použijte funkci [ověření toku IP](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md) pro Azure Network Watcher. Při ověřování toků IP adres se dozvíte, jestli je provoz povolený nebo zakázaný. Pokud je odepřený, ověří tok IP adres, které pravidlo zabezpečení odepře přenos.
-* Pokud neexistují žádná pravidla zabezpečení, která by způsobila selhání síťového připojení k síti virtuálního počítače, může problém způsobovat tyto příčiny:
-  * Software brány firewall běžící v operačním systému virtuálního počítače
-  * Trasy nakonfigurované pro virtuální zařízení nebo místní provoz. Internetový provoz se dá přes [vynucené tunelové propojení](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)přesměrovat do místní sítě. Pokud vynutíte tunelový přenos v Internetu na virtuální zařízení nebo v místním prostředí, možná se nebudete moci připojit k virtuálnímu počítači z Internetu. Informace o tom, jak diagnostikovat problémy s směrováním, které by mohly bránit toku provozu z virtuálního počítače, najdete v tématu [Diagnostika problému se směrováním provozu sítě virtuálních počítačů](diagnose-network-routing-problem.md).
+* Chcete-li spustit rychlý test k určení, pokud je povolen provoz na nebo z virtuálního počítače, použijte [možnost ověření toku IP](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md) Azure Network Watcher. Ověření toku IP vás informuje o tom, zda je provoz povolen nebo odepřen. Pokud je tok ip odepřen, ověření toku IP vám řekne, které pravidlo zabezpečení odepře provoz.
+* Pokud neexistují žádná pravidla zabezpečení, která by způsobovala selhání síťového připojení virtuálního zařízení, může být problém způsoben:
+  * Software brány firewall spuštěný v operačním systému virtuálního počítače
+  * Trasy nakonfigurované pro virtuální zařízení nebo místní provoz. Internetový provoz lze přesměrovat do místní sítě pomocí [vynuceného tunelování](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Pokud vynutíte tunelový internetový provoz na virtuální zařízení nebo místně, nemusí být možné se připojit k virtuálnímu počítači z internetu. Informace o tom, jak diagnostikovat problémy se směrováním, které mohou bránit přenosu provozu z virtuálního počítače, najdete v [tématu Diagnostika problému směrování provozu v síti virtuálních strojů](diagnose-network-routing-problem.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si o všech úlohách, vlastnostech a nastaveních pro [skupinu zabezpečení sítě](manage-network-security-group.md#work-with-network-security-groups) a [pravidla zabezpečení](manage-network-security-group.md#work-with-security-rules).
-- Přečtěte si o [výchozích pravidlech zabezpečení](security-overview.md#default-security-rules), [značkách služby](security-overview.md#service-tags)a [o tom, jak Azure zpracovává pravidla zabezpečení pro příchozí a odchozí provoz](security-overview.md#network-security-groups) pro virtuální počítač.
+- Seznamte se se všemi úkoly, vlastnostmi a nastaveními [skupiny zabezpečení sítě](manage-network-security-group.md#work-with-network-security-groups) a [pravidel zabezpečení](manage-network-security-group.md#work-with-security-rules).
+- Přečtěte si o [výchozích pravidlech zabezpečení](security-overview.md#default-security-rules), [značkách služeb](security-overview.md#service-tags)a [o tom, jak Azure zpracovává pravidla zabezpečení pro příchozí a odchozí provoz](security-overview.md#network-security-groups) pro virtuální počítač.

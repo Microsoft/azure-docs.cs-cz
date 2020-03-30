@@ -1,6 +1,6 @@
 ---
-title: Řešit latenci pomocí protokolů Analýza úložiště
-description: Identifikujte a vyřešte potíže s latencí pomocí Azure Storage analytických protokolů a optimalizujte klientskou aplikaci.
+title: Řešení potíží s latencí s využitím protokolů Analýzy úložiště
+description: Identifikujte a vyřešujte problémy s latencí pomocí protokolů Azure Storage Analytic a optimalizujte klientskou aplikaci.
 author: v-miegge
 ms.topic: troubleshooting
 ms.author: kartup
@@ -11,25 +11,25 @@ ms.subservice: common
 services: storage
 tags: ''
 ms.openlocfilehash: 2197a149235c0dca98a24a57549538b2a4cbb1c8
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74196508"
 ---
-# <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Řešit latenci pomocí protokolů Analýza úložiště
+# <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Řešení potíží s latencí s využitím protokolů Analýzy úložiště
 
-Diagnostikování a řešení potíží je klíčovou dovedností pro sestavování a podporu klientských aplikací pomocí Azure Storage.
+Diagnostika a řešení potíží je klíčovou dovedností pro vytváření a podporu klientských aplikací pomocí Azure Storage.
 
-Z důvodu distribuované povahy aplikace Azure může být Diagnostika a řešení potíží s chybami a problémy s výkonem složitější než v tradičních prostředích.
+Vzhledem k distribuované povaze aplikace Azure může být diagnostika a řešení problémů s chybami a výkonem složitější než v tradičních prostředích.
 
-Následující kroky ukazují, jak identifikovat a řešit potíže s latencí pomocí Azure Storage analytických protokolů a optimalizovat klientskou aplikaci.
+Následující kroky ukazují, jak identifikovat a řešit problémy s latencí pomocí protokolů Azure Storage Analytic a optimalizovat klientskou aplikaci.
 
 ## <a name="recommended-steps"></a>Doporučené kroky
 
-1. Stáhněte si [protokoly analýza úložiště](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging#download-storage-logging-log-data).
+1. Stáhněte si [protokoly Storage Analytics](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging#download-storage-logging-log-data).
 
-2. Pomocí následujícího skriptu PowerShellu převeďte protokoly nezpracovaných formátů do tabulkového formátu:
+2. K převodu nezpracovaných protokolů formátu do tabulkového formátu použijte následující skript prostředí PowerShell:
 
    ```Powershell
    $Columns = 
@@ -70,99 +70,99 @@ Následující kroky ukazují, jak identifikovat a řešit potíže s latencí p
    $logs | Out-GridView -Title "Storage Analytic Log Parser"
    ```
 
-3. Skript spustí okno grafického uživatelského rozhraní, kde můžete filtrovat informace podle sloupců, jak je znázorněno níže.
+3. Skript spustí okno GUI, kde můžete filtrovat informace podle sloupců, jak je znázorněno níže.
 
-   ![Okno analyzátoru protokolů pro analýzu úložiště](media/troubleshoot-latency-storage-analytics-logs/storage-analytic-log-parser-window.png)
+   ![Okno analyzátoru protokolů analyticstorage](media/troubleshoot-latency-storage-analytics-logs/storage-analytic-log-parser-window.png)
  
-4. Zužte položky protokolu na základě typu "typ operace" a vyhledejte položku protokolu vytvořenou během časového rámce problému.
+4. Zúžit položky protokolu na základě "operation-type" a vyhledejte položku protokolu vytvořenou během časového rámce problému.
 
    ![Položky protokolu typu operace](media/troubleshoot-latency-storage-analytics-logs/operation-type.png)
 
-5. V době, kdy k tomuto problému došlo, jsou důležité následující hodnoty:
+5. Během doby, kdy k problému došlo, jsou důležité následující hodnoty:
 
-   * Typ operace = getblob
-   * požadavek – stav = SASNetworkError
-   * Koncová latence-in-MS = 8453
-   * Server – latence-in-MS = 391
+   * Typ operace = GetBlob
+   * stav požadavku = Chyba SASNetworkError
+   * End-to-End-Latency-In-Ms = 8453
+   * Latence serveru v ms = 391
 
-   Koncová latence se počítá pomocí následující rovnice:
+   Latence od konce se vypočítá pomocí následující rovnice:
 
-   * Koncová latence = Server – latence + latence klienta
+   * Latence od konce na konec = latence serveru + latence klienta
 
-   Vypočítat latenci klienta pomocí položky protokolu:
+   Výpočet latence klienta pomocí položky protokolu:
 
-   * Latence klienta = koncová latence – Server – latence
+   * Latence klienta = latence mezi koncovými místy – latence serveru
 
           * Example: 8453 – 391 = 8062ms
 
-   Následující tabulka poskytuje informace o typem operace OperationType a výsledcích stavem žádosti s vysokou latencí:
+   Následující tabulka obsahuje informace o výsledcích operationtype s vysokou latencí a stavu requeststatus:
 
-   |   |Stavem žádosti =<br>Úspěch|Stavem žádosti =<br>VEDE NetworkError|Doporučení|
+   |   |RequestStatus=<br>Úspěch|RequestStatus=<br>(SAS) Chyba sítě|Doporučení|
    |---|---|---|---|
-   |GetBlob|Ano|Ne|[**Operace getblob:** Stavem žádosti = úspěch](#getblob-operation-requeststatus--success)|
-   |GetBlob|Ne|Ano|[**Operace getblob:** Stavem žádosti = (SAS) NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|
-   |PutBlob|Ano|Ne|[**Operace Put:** Stavem žádosti = úspěch](#put-operation-requeststatus--success)|
-   |PutBlob|Ne|Ano|[**Operace Put:** Stavem žádosti = (SAS) NetworkError](#put-operation-requeststatus--sasnetworkerror)|
+   |GetBlob|Ano|Ne|[**Operace GetBlob:** RequestStatus = Úspěch](#getblob-operation-requeststatus--success)|
+   |GetBlob|Ne|Ano|[**Operace GetBlob:** Stav_požadavku = (SAS)Chyba sítě](#getblob-operation-requeststatus--sasnetworkerror)|
+   |PutBlob|Ano|Ne|[**Operace Put:** RequestStatus = Úspěch](#put-operation-requeststatus--success)|
+   |PutBlob|Ne|Ano|[**Operace Put:** Stav_požadavku = (SAS)Chyba sítě](#put-operation-requeststatus--sasnetworkerror)|
 
 ## <a name="status-results"></a>Výsledky stavu
 
-### <a name="getblob-operation-requeststatus--success"></a>Operace getblob: stavem žádosti = Success
+### <a name="getblob-operation-requeststatus--success"></a>Operace GetBlob: RequestStatus = Úspěch
 
-Ověřte následující hodnoty, jak je uvedeno v kroku 5 části doporučený postup:
+Zkontrolujte následující hodnoty, jak je uvedeno v kroku 5 části Doporučené kroky:
 
-* Koncová latence
-* Server – latence
-* Klient – latence
+* Latence od konce na konec
+* Latence serveru
+* Latence klienta
 
-Pokud v **operaci getblob** s **stavem žádosti = Success**dojde k **překročení maximální doby** v **latenci klienta**, znamená to, že Azure Storage stráví velkou dobu zápisu dat do klienta. Tato prodleva indikuje problém na straně klienta.
+V **operaci GetBlob** s **RequestStatus = Úspěch**, pokud **maximální čas** strávený v **latenci klienta**, to znamená, že Azure Storage tráví velký objem času psaní dat do klienta. Toto zpoždění označuje problém na straně klienta.
 
-**Základě**
-
-* Prozkoumejte kód ve vašem klientovi.
-* K prozkoumání problémů s připojením k síti od klienta použijte Nástroj Wireshark, Microsoft Message Analyzer nebo Tcping. 
-
-### <a name="getblob-operation-requeststatus--sasnetworkerror"></a>Operace getblob: stavem žádosti = (SAS) NetworkError
-
-Ověřte následující hodnoty, jak je uvedeno v kroku 5 části doporučený postup:
-
-* Koncová latence
-* Server – latence
-* Klient – latence
-
-Pokud je v **operaci getblob** s **stavem žádosti = (SAS) NetworkError** **Maximální doba** strávená v **latenci klienta**, Nejběžnějším problémem je to, že se klient odpojí před vypršením časového limitu ve službě úložiště.
-
-**Základě**
-
-* Prozkoumejte kód ve vašem klientovi, abyste zjistili, proč a kdy se klient odpojí od služby úložiště.
-* K prozkoumání problémů s připojením k síti od klienta použijte Nástroj Wireshark, Microsoft Message Analyzer nebo Tcping. 
-
-### <a name="put-operation-requeststatus--success"></a>Operace Put: stavem žádosti = Success
-
-Ověřte následující hodnoty, jak je uvedeno v kroku 5 části doporučený postup:
-
-* Koncová latence
-* Server – latence
-* Klient – latence
-
-Pokud je v **operaci Put** s **stavem žádosti = Success**vyčerpána **Maximální doba** v **latenci klienta**, znamená to, že klient trvá déle, než pošle data do Azure Storage. Tato prodleva indikuje problém na straně klienta.
-
-**Základě**
+**Doporučení:**
 
 * Prozkoumejte kód ve vašem klientovi.
-* K prozkoumání problémů s připojením k síti od klienta použijte Nástroj Wireshark, Microsoft Message Analyzer nebo Tcping. 
+* Pomocí nástroje Wireshark, Microsoft Message Analyzer nebo Tcping prozkoumejte problémy s připojením k síti z klienta. 
 
-### <a name="put-operation-requeststatus--sasnetworkerror"></a>Operace Put: stavem žádosti = (SAS) NetworkError
+### <a name="getblob-operation-requeststatus--sasnetworkerror"></a>Operace GetBlob: RequestStatus = (SAS)NetworkError
 
-Ověřte následující hodnoty, jak je uvedeno v kroku 5 části doporučený postup:
+Zkontrolujte následující hodnoty, jak je uvedeno v kroku 5 části Doporučené kroky:
 
-* Koncová latence
-* Server – latence
-* Klient – latence
+* Latence od konce na konec
+* Latence serveru
+* Latence klienta
 
-Pokud je v **operaci PutBlob** s **NetworkErrorem stavem žádosti = (SAS)** , je-li **Maximální doba** strávena při **latenci klienta**, Nejběžnějším problémem je, že se klient odpojí, než vyprší časový limit ve službě úložiště.
+V **operaci GetBlob** s **RequestStatus = (SAS)NetworkError**, pokud **maximální čas** strávený v **latenci klienta**, nejčastější problém je, že klient se odpojí před vypršením časového limitu ve službě úložiště.
 
-**Základě**
+**Doporučení:**
 
-* Prozkoumejte kód ve vašem klientovi, abyste zjistili, proč a kdy se klient odpojí od služby úložiště.
-* K prozkoumání problémů s připojením k síti od klienta použijte Nástroj Wireshark, Microsoft Message Analyzer nebo Tcping.
+* Prozkoumejte kód ve vašem klientovi, abyste pochopili, proč a kdy se klient odpojí od služby úložiště.
+* Pomocí nástroje Wireshark, Microsoft Message Analyzer nebo Tcping prozkoumejte problémy s připojením k síti z klienta. 
+
+### <a name="put-operation-requeststatus--success"></a>Operace Put: RequestStatus = Úspěch
+
+Zkontrolujte následující hodnoty, jak je uvedeno v kroku 5 části Doporučené kroky:
+
+* Latence od konce na konec
+* Latence serveru
+* Latence klienta
+
+V **operaci Put** s **RequestStatus = Úspěch,** pokud **maximální čas** strávený v **latenci klienta**, to znamená, že klient trvá více času na odeslání dat do úložiště Azure. Toto zpoždění označuje problém na straně klienta.
+
+**Doporučení:**
+
+* Prozkoumejte kód ve vašem klientovi.
+* Pomocí nástroje Wireshark, Microsoft Message Analyzer nebo Tcping prozkoumejte problémy s připojením k síti z klienta. 
+
+### <a name="put-operation-requeststatus--sasnetworkerror"></a>Operace Put: RequestStatus = (SAS)NetworkError
+
+Zkontrolujte následující hodnoty, jak je uvedeno v kroku 5 části Doporučené kroky:
+
+* Latence od konce na konec
+* Latence serveru
+* Latence klienta
+
+V **operaci PutBlob** s **RequestStatus = (SAS)NetworkError**, pokud **maximální čas** strávený v **latenci klienta**, nejčastější problém je, že klient se odpojí před vypršením časového limitu ve službě úložiště.
+
+**Doporučení:**
+
+* Prozkoumejte kód ve vašem klientovi, abyste pochopili, proč a kdy se klient odpojí od služby úložiště.
+* Pomocí nástroje Wireshark, Microsoft Message Analyzer nebo Tcping prozkoumejte problémy s připojením k síti z klienta.
 

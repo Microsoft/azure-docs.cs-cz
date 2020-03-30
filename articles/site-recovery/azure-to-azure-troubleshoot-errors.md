@@ -1,114 +1,114 @@
 ---
-title: Řešení potíží s replikací virtuálních počítačů Azure v Azure Site Recovery
-description: Řešení chyb při replikaci virtuálních počítačů Azure na zotavení po havárii.
+title: Poradce při potížích s replikací virtuálních stránek Azure v Azure Site Recovery
+description: Poradce při potížích při replikaci virtuálních počítačů Azure pro zotavení po havárii.
 author: rochakm
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: rochakm
-ms.openlocfilehash: 32d826f3c27cea3d0993c47e8562360315b7bd2e
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: c131609a5622061e2ea49db422bc4e9da96666d1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78256047"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80276678"
 ---
-# <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Řešení chyb replikace virtuálních počítačů z Azure do Azure
+# <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Poradce při potížích s chybami replikace virtuálních počítačů Azure-to-Azure
 
-Tento článek popisuje, jak řešit běžné chyby v Azure Site Recovery během replikace a obnovení virtuálních počítačů Azure z jedné oblasti do druhé. Další informace o podporovaných konfiguracích najdete v [matrici podpory pro replikaci virtuálních počítačů Azure](site-recovery-support-matrix-azure-to-azure.md).
+Tento článek popisuje, jak řešit běžné chyby v Azure Site Recovery během replikace a obnovení virtuálních počítačů Azure (VM) z jedné oblasti do druhé. Další informace o podporovaných konfiguracích najdete v [matici podpory pro replikaci virtuálních počítačů Azure](site-recovery-support-matrix-azure-to-azure.md).
 
-## <a name="azure-resource-quota-issues-error-code-150097"></a>Problémy s kvótou prostředků Azure (kód chyby 150097)
+## <a name="azure-resource-quota-issues-error-code-150097"></a><a name="azure-resource-quota-issues-error-code-150097"></a>Problémy s kvótami prostředků Azure (kód chyby 150097)
 
-Ujistěte se, že je ve vašem předplatném povolené vytváření virtuálních počítačů Azure v cílové oblasti, kterou plánujete použít jako oblast zotavení po havárii. Také se ujistěte, že vaše předplatné má dostatečnou kvótu pro vytvoření virtuálních počítačů nezbytných velikostí. Ve výchozím nastavení Site Recovery zvolí cílovou velikost virtuálního počítače, která je stejná jako velikost zdrojového virtuálního počítače. Pokud není odpovídající velikost k dispozici, Site Recovery automaticky zvolí nejbližší dostupnou velikost.
+Ujistěte se, že vaše předplatné je povoleno k vytvoření virtuálních počítačích Azure v cílové oblasti, kterou chcete použít jako oblast zotavení po havárii. Také se ujistěte, že vaše předplatné má dostatečnou kvótu k vytvoření virtuálních počítačů potřebných velikostí. Ve výchozím nastavení site recovery zvolí cílovou velikost virtuálního počítače, která je stejná jako velikost zdrojového virtuálního počítače. Pokud odpovídající velikost není k dispozici, site recovery automaticky vybere nejbližší dostupnou velikost.
 
-Pokud neexistují žádné velikosti, která podporuje konfiguraci zdrojového virtuálního počítače, zobrazí se následující zpráva:
+Pokud neexistuje žádná velikost, která podporuje konfiguraci zdrojového virtuálního počítače, zobrazí se následující zpráva:
 
-> "Replikaci nešlo povolit pro virtuální počítač *VmName*."
+> "Replikace nemohla být povolena pro virtuální počítač *VmName*."
 
 ### <a name="possible-causes"></a>Možné příčiny
 
-- Vaše ID předplatného nemá povoleno vytvářet žádné virtuální počítače v umístění cílové oblasti.
-- ID vašeho předplatného není povolené nebo nemá dostatečnou kvótu, aby bylo možné vytvořit konkrétní velikosti virtuálních počítačů v umístění cílové oblasti.
-- Nenašla se žádná vhodná Cílová velikost virtuálního počítače, která by odpovídala počtu síťových rozhraní (2) zdrojového virtuálního počítače pro ID předplatného v umístění cílové oblasti.
+- ID předplatného není povoleno k vytvoření žádné virtuální počítače v umístění cílové oblasti.
+- ID předplatného není povolené nebo nemá dostatečnou kvótu k vytvoření konkrétních velikostí virtuálních virtuálních zařízení v umístění cílové oblasti.
+- Není nalezena žádná vhodná velikost cílového virtuálního počítače, která by odpovídala počtu zdrojových síťových karet virtuálního počítače (NIC) pro ID předplatného v umístění cílové oblasti.
 
-### <a name="fix-the-problem"></a>Tento problém vyřešit
+### <a name="fix-the-problem"></a>Oprava problému
 
-Obraťte se na [podporu fakturace Azure](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) a umožněte vašemu předplatnému vytváření virtuálních počítačů požadovaných velikostí v cílovém umístění. Pak zkuste neúspěšnou operaci zopakovat.
+Obraťte se na [podporu fakturace Azure](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) a povolte svému předplatnému vytvářet virtuální počítače požadovaných velikostí v cílovém umístění. Potom opakujte neúspěšnou operaci.
 
-Pokud má cílové umístění omezení kapacity, zakažte na něj replikaci. Potom povolte replikaci do jiného umístění, kde má vaše předplatné dostatečnou kvótu pro vytvoření virtuálních počítačů požadovaných velikostí.
+Pokud má cílové umístění omezení kapacity, zakažte replikaci. Potom povolte replikaci do jiného umístění, kde vaše předplatné má dostatečnou kvótu k vytvoření virtuálních počítačů požadovaných velikostí.
 
-## <a name="trusted-root-certificates-error-code-151066"></a>Důvěryhodné kořenové certifikáty (kód chyby 151066)
+## <a name="trusted-root-certificates-error-code-151066"></a><a name="trusted-root-certificates-error-code-151066"></a>Důvěryhodné kořenové certifikáty (kód chyby 151066)
 
-Pokud na virtuálním počítači neexistují všechny nejnovější důvěryhodné kořenové certifikáty, může se Site Recovery úlohy povolit replikaci zdařit. Ověřování a autorizace volání služby Site Recovery z virtuálního počítače selžou bez těchto certifikátů. 
+Pokud nejsou na virtuálním počítači k dispozici všechny nejnovější důvěryhodné kořenové certifikáty, může se nezdaří úloha obnovení lokality "Povolit replikaci". Ověřování a autorizace volání služby Site Recovery z virtuálního zařízení se nezdaří bez těchto certifikátů.
 
-Pokud úloha "Povolit replikaci" neproběhne úspěšně, zobrazí se následující zpráva:
+Pokud úloha Povolit replikaci se nezdaří, zobrazí se následující zpráva:
 
-> Site Recovery konfigurace se nezdařila.
+> "Konfigurace obnovení sítě se nezdařila."
 
 ### <a name="possible-cause"></a>Možná příčina
 
-Na virtuálním počítači nejsou k dispozici důvěryhodné kořenové certifikáty, které jsou vyžadovány k autorizaci a ověřování.
+Důvěryhodné kořenové certifikáty potřebné pro autorizaci a ověřování nejsou ve virtuálním počítači k dispozici.
 
-### <a name="fix-the-problem"></a>Tento problém vyřešit
+### <a name="fix-the-problem"></a>Oprava problému
 
 #### <a name="windows"></a>Windows
 
-V případě virtuálního počítače s operačním systémem Windows nainstalujte na virtuální počítač nejnovější aktualizace Windows, aby se na tomto počítači nacházely všechny důvěryhodné kořenové certifikáty. Pokud chcete získat nejnovější kořenové certifikáty a aktualizovaný seznam odvolaných certifikátů na virtuálních počítačích, postupujte podle obvyklého procesu správy aktualizací Windows nebo aktualizace certifikátů ve vaší organizaci.
+Pro virtuální počítač s operačním systémem Windows nainstalujte nejnovější aktualizace systému Windows na virtuální počítač tak, aby všechny důvěryhodné kořenové certifikáty jsou v počítači. Postupujte podle typického procesu správy aktualizací systému Windows nebo správy aktualizací certifikátů ve vaší organizaci a získejte nejnovější kořenové certifikáty a aktualizovaný seznam odvolání certifikátů na virtuálních počítačích.
 
-Pokud jste v odpojeném prostředí, postupujte podle standardního procesu aktualizace Windows ve vaší organizaci získat certifikáty. Pokud požadované certifikáty není k dispozici na virtuálním počítači, volání služby Site Recovery se nezdaří z důvodu zabezpečení.
+Pokud se právě v odpojeném prostředí uvidíte podle standardního procesu aktualizace systému Windows ve vaší organizaci, abyste získali certifikáty. Pokud požadované certifikáty nejsou k dispozici na virtuálním počítači, volání služby Site Recovery nezdaří z bezpečnostních důvodů.
 
-Pokud chcete ověřit, že byl problém vyřešen, přejděte na login.microsoftonline.com z prohlížeče ve virtuálním počítači.
+Pokud chcete ověřit, že je problém vyřešen, přejděte na login.microsoftonline.com z prohlížeče ve vašem virtuálním počítači.
 
-Další informace najdete v tématu [Konfigurace důvěryhodných kořenových adresářů a zakázaných certifikátů](https://technet.microsoft.com/library/dn265983.aspx).
+Další informace naleznete v [tématu Konfigurace důvěryhodných kořenových adresářů a nepovolených certifikátů](https://technet.microsoft.com/library/dn265983.aspx).
 
 #### <a name="linux"></a>Linux
 
-Pokud chcete získat nejnovější důvěryhodné kořenové certifikáty a nejnovější seznam odvolaných certifikátů na virtuálním počítači, postupujte podle pokynů, které poskytuje distributor vaší verze operačního systému Linux.
+Postupujte podle pokynů, které poskytuje distributor verze operačního systému Linux získat nejnovější důvěryhodné kořenové certifikáty a nejnovější seznam odvolání certifikátů na virtuálním počítači.
 
-Vzhledem k tomu, že SUSE Linux používá k údržbě seznamu certifikátů symbolické odkazy (nebo *symbolických odkazů*), postupujte podle následujících kroků:
+Vzhledem k tomu, že SUSE Linux používá symbolické odkazy (nebo *symbolické odkazy)* k udržování seznamu certifikátů, postupujte takto:
 
-1. Přihlaste se jako uživatel root.
+1. Přihlaste se jako root uživatel.
 
-1. Spuštěním tohoto příkazu změňte adresář:
+1. Chcete-li změnit adresář, spusťte tento příkaz:
 
-    **# CD/etc/SSL/certs**
+    **# cd /etc/ssl/certs**
 
-1. Ověřte, zda je k dispozici certifikát kořenové certifikační autority Symantec:
+1. Zkontrolujte, zda je k dispozici kořenový certifikát certifikační autority společnosti Symantec:
 
-    **# LS VeriSign_Class_3_Public_Primary_Certification_Authority_G5. pem**
+    **# Ls VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem**
 
-1. Pokud se certifikát kořenové certifikační autority Symantec nenajde, spusťte následující příkaz a Stáhněte soubor. Vyhledejte případné chyby a proveďte doporučené akce při selhání sítě.
+1. Pokud kořenový certifikát certifikační autority symantec není nalezen, stáhněte soubor následujícím příkazem. Zkontrolujte případné chyby a postupujte podle doporučených akcí pro selhání sítě.
 
-    **# wget https://docs.broadcom.com/docs-and-downloads/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem-O VeriSign_Class_3_Public_Primary_Certification_Authority_G5. pem**
+    **# wget https://docs.broadcom.com/docs-and-downloads/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem -O VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem**
 
-1. Ověřte, jestli je přítomný certifikát kořenové certifikační autority Baltimore:
+1. Zkontrolujte, zda je k dispozici kořenový certifikát certifikační autority Baltimore:
 
-    **# LS Baltimore_CyberTrust_Root. pem**
+    **# LS Baltimore_CyberTrust_Root.pem**
 
-1. Pokud se nenalezne certifikát kořenové certifikační autority Baltimore, spusťte tento příkaz a Stáhněte certifikát:
+1. Pokud není kořenový certifikát certifikační autority Baltimore nalezen, stáhněte certifikát spusťte tento příkaz:
 
-    **# wget https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem-O Baltimore_CyberTrust_Root. pem**
+    **# wget https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem -O Baltimore_CyberTrust_Root.pem**
 
-1. Ověřte, zda je k dispozici DigiCert_Global_Root_CA certifikát:
+1. Zkontrolujte, zda je k dispozici certifikát DigiCert_Global_Root_CA:
 
-    **# LS DigiCert_Global_Root_CA. pem**
+    **# ls DigiCert_Global_Root_CA.pem**
 
-1. Pokud se DigiCert_Global_Root_CA nenajde, spusťte následující příkazy a Stáhněte certifikát:
+1. Pokud DigiCert_Global_Root_CA není nalezen, stáhněte certifikát následujícími příkazy:
 
-    **# wget http://www.digicert.com/CACerts/DigiCertGlobalRootCA.crt**
+    **# wgethttp://www.digicert.com/CACerts/DigiCertGlobalRootCA.crt**
 
-    **# OpenSSL x509-in DigiCertGlobalRootCA. CRT – informování formátu der – PEM-out DigiCert_Global_Root_CA. pem**
+    **# openssl x509 -in DigiCertGlobalRootCA.crt -inform der -outform pem -out DigiCert_Global_Root_CA.pem**
 
-1. Spusťte skript znovu hash, který aktualizuje hodnoty hash subjektu certifikátu pro nově stažené certifikáty:
+1. Spusťte skript rehash a aktualizujte stavy hash subjektu certifikátu pro nově stažené certifikáty:
 
     **# c_rehash**
 
-1. Spusťte tyto příkazy a ověřte, zda byly pro certifikáty vytvořeny hodnoty hash předmětu jako symbolických odkazů:
+1. Spuštěním těchto příkazů zkontrolujte, zda byly pro certifikáty vytvořeny objekthasy jako symbolické odkazy:
 
-    - Systému
+    - Příkaz:
 
-        **# ls-l | Baltimore grep**
+        **# ls -l | grep Baltimore**
 
     - Výstup:
 
@@ -116,9 +116,9 @@ Vzhledem k tomu, že SUSE Linux používá k údržbě seznamu certifikátů sym
 
         `-rw-r--r-- 1 root root 1303 Jun  5  2014 Baltimore_CyberTrust_Root.pem`
 
-    - Systému
+    - Příkaz:
 
-        **# ls-l | VeriSign_Class_3_Public_Primary_Certification_Authority_G5 grep**
+        **# ls -l | grep VeriSign_Class_3_Public_Primary_Certification_Authority_G5**
 
     - Výstup:
 
@@ -126,9 +126,9 @@ Vzhledem k tomu, že SUSE Linux používá k údržbě seznamu certifikátů sym
 
         `lrwxrwxrwx 1 root root   62 Jan  8 09:48 facacbc6.0 -> VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem`
 
-    - Systému
+    - Příkaz:
 
-        **# ls-l | DigiCert_Global_Root grep**
+        **# ls -l | DigiCert_Global_Root grep**
 
     - Výstup:
 
@@ -136,23 +136,23 @@ Vzhledem k tomu, že SUSE Linux používá k údržbě seznamu certifikátů sym
 
         `-rw-r--r-- 1 root root 1380 Jun  5  2014 DigiCert_Global_Root_CA.pem`
 
-1. Vytvořte kopii souboru VeriSign_Class_3_Public_Primary_Certification_Authority_G5. pem s názvem filename b204d74a. 0:
+1. Vytvořte kopii souboru VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem s názvem souboru b204d74a.0:
 
-    **# CP VeriSign_Class_3_Public_Primary_Certification_Authority_G5. pem b204d74a. 0**
+    **# cp VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem b204d74a.0**
 
-1. Vytvořte kopii souboru Baltimore_CyberTrust_Root. pem s názvem filename 653b494a. 0:
+1. Vytvořte kopii souboru Baltimore_CyberTrust_Root.pem s názvem souboru 653b494a.0:
 
-    **# CP Baltimore_CyberTrust_Root. pem 653b494a. 0**
+    **# cp Baltimore_CyberTrust_Root.pem 653b494a.0**
 
-1. Vytvořte kopii souboru DigiCert_Global_Root_CA. pem s názvem filename 3513523f. 0:
+1. Vytvořte kopii souboru DigiCert_Global_Root_CA.pem s názvem souboru 3513523f.0:
 
-    **# CP DigiCert_Global_Root_CA. pem 3513523f. 0**
+    **# cp DigiCert_Global_Root_CA.pem 3513523f.0**
 
-1. Ověřte, zda jsou soubory k dispozici:
+1. Zkontrolujte, zda jsou soubory přítomny:
 
-    - Systému
+    - Příkaz:
 
-        **# ls-l 653b494a. 0 b204d74a. 0 3513523f. 0**
+        **# ls -l 653b494a.0 b204d74a.0 3513523f.0**
 
     - Výstup
 
@@ -162,311 +162,294 @@ Vzhledem k tomu, že SUSE Linux používá k údržbě seznamu certifikátů sym
 
         `-rw-r--r-- 1 root root 1774 Jan  8 09:52 b204d74a.0`
 
-## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Odchozí připojení pro rozsahy adresám URL služby Site Recovery nebo adresy IP (kód chyby 151037 nebo 151072)
+## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Odchozí připojení pro adresy URL obnovení lokality nebo rozsahy IP adres (kód chyby 151037 nebo 151072)
 
-Aby mohla replikace Site Recovery fungovat, vyžaduje se odchozí připojení z virtuálního počítače na konkrétní adresy URL nebo rozsahy IP adres. Pokud se váš virtuální počítač nachází za bránou firewall nebo používá síť pravidla skupiny zabezpečení (NSG) k řízení odchozího připojení, může setkat jednu z těchto problémů.
+Aby replikace obnovení lokality fungovala, je z virtuálního serveru vyžadováno odchozí připojení k určitým adresám URL. Pokud váš virtuální počítač je za bránou firewall nebo používá pravidla skupiny zabezpečení sítě (NSG) k řízení odchozí připojení, může čelit jeden z těchto problémů. Vezměte prosím na vědomí, že i když nadále podporujeme odchozí přístup prostřednictvím adres URL, použití seznamu povolených rozsahů IP adres již není podporováno.
 
-### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>Problém 1: Nepodařilo se zaregistrovat virtuální počítač Azure s Site Recovery (kód chyby 151195).
+### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a><a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>Problém 1: Nepodařilo se zaregistrovat virtuální počítač Azure pomocí site recovery (151195) </br>
+- **Možná příčina** </br>
+  - Nelze navázat připojení ke koncovým bodům obnovení sítě z důvodu selhání překladu DNS.
+  - Častěji k tomu dochází při opětovném nastavování ochrany po převzetí služeb při selhání virtuálního počítače, kdy server DNS není dostupný z oblasti pro zotavení po havárii.
 
-#### <a name="possible-cause"></a>Možná příčina 
+- **Rozlišení**
+   - Pokud používáte vlastní DNS, ujistěte se, že dns server je přístupný z oblasti zotavení po havárii. Chcete-li zkontrolovat, zda máte vlastní DNS, přejděte na virtuální mon> sítě zotavení po havárii> servery DNS. Zkuste získat přístup k serveru DNS z virtuálního počítače. Pokud není přístupná, zpřístupní ji buď selháním převzetí služeb při selhání přes server DNS, nebo vytvořením řádku sítě mezi sítí ZOTAVENÍ po havárii a službou DNS.
 
-Připojení k koncovým bodům Site Recovery nelze navázat z důvodu chyby překladu DNS.
-
-K tomuto problému dochází nejčastěji během opětovné ochrany, Pokud převezmete služby při selhání virtuálního počítače, ale server DNS není dosažitelný z oblasti zotavení po havárii (DR).
-
-#### <a name="fix-the-problem"></a>Tento problém vyřešit
-
-Pokud používáte vlastní server DNS, ujistěte se, že je server DNS přístupný z oblasti zotavení po havárii. Pokud chcete zjistit, jestli máte vlastní DNS, na virtuálním počítači přejdete do části *zotavení po havárii sítě* **servery DNS** > .
-
-![Seznam vlastních serverů DNS](./media/azure-to-azure-troubleshoot-errors/custom_dns.PNG)
-
-Zkuste získat přístup k serveru DNS z virtuálního počítače. Pokud server není dostupný, zpřístupněte ho buď při selhání prostřednictvím serveru DNS, nebo vytvořením řádku lokality mezi sítí DR a DNS.
-
-### <a name="issue-2-site-recovery-configuration-failed-error-code-151196"></a>Problém 2: Konfigurace Site Recovery se nezdařila (kód chyby 151196)
-
-#### <a name="possible-cause"></a>Možná příčina
-
-Nejde navázat připojení k ověřování Office 365 a koncovým bodům IP4 identity.
-
-#### <a name="fix-the-problem"></a>Tento problém vyřešit
-
-Site Recovery vyžaduje přístup k rozsahům IP adres Office 365 pro ověřování.
-Pokud k řízení odchozího připojení k síti na virtuálním počítači používáte pravidla Azure NSG nebo proxy serveru brány firewall, ujistěte se, že jste povolili komunikaci s rozsahy IP adres Office 365. Vytvořte pravidlo NSG založené na [značce služby Azure Active Directory (Azure AD)](../virtual-network/security-overview.md#service-tags)a umožněte přístup ke všem IP adresám, které odpovídají službě Azure AD. Pokud v budoucnu přidáte do Azure AD nové adresy, musíte vytvořit nová pravidla NSG.
-
-> [!NOTE]
-> Pokud jsou virtuální počítače za *standardním* interním nástrojem pro vyrovnávání zatížení, nemá nástroj pro vyrovnávání zatížení ve výchozím nastavení přístup k ROZSAHŮM IP adres Office 365 (tj. Login.microsoftonline.com). Buď změňte typ interního nástroje pro vyrovnávání zatížení na *Basic* , nebo vytvořte odchozí přístup, jak je popsáno v článku [konfigurace vyrovnávání zatížení a odchozích pravidel](https://aka.ms/lboutboundrulescli).
-
-### <a name="issue-3-site-recovery-configuration-failed-error-code-151197"></a>Problém 3: Konfigurace Site Recovery se nezdařila (kód chyby 151197)
-
-#### <a name="possible-cause"></a>Možná příčina
-
-Nepovedlo se navázat připojení k Site Recovery koncovým bodům služby.
-
-#### <a name="fix-the-problem"></a>Tento problém vyřešit
-
-Site Recovery vyžaduje přístup k [rozsahům IP adres Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)v závislosti na oblasti. Ujistěte se, že virtuální počítač má přístup k požadovaným rozsahům IP adres.
-
-### <a name="issue-4-azure-to-azure-replication-failed-when-the-network-traffic-goes-through-an-on-premises-proxy-server-error-code-151072"></a>Problém 4: replikace z Azure do Azure selhala, když síťový provoz projde místními proxy server (kód chyby 151072).
-
-#### <a name="possible-cause"></a>Možná příčina
-
-Vlastní nastavení proxy serveru je neplatné a agent služby Site Recovery mobility automaticky nerozpoznal nastavení proxy serveru z Internet Exploreru.
-
-#### <a name="fix-the-problem"></a>Tento problém vyřešit
-
-Agent služby mobility detekuje nastavení proxy serveru z Internet Exploreru ve Windows a z/etc/Environment v systému Linux.
-
-Pokud dáváte přednost nastavení proxy serveru jenom pro službu mobility, můžete zadat podrobnosti o proxy serveru v souboru ProxyInfo. conf v těchto umístěních:
-
-- **Linux**:/usr/local/InMage/config/
-- **Windows**: C:\ProgramData\Microsoft Azure Site Recovery\Config
-
-V ProxyInfo. conf zadejte nastavení proxy serveru v následujícím formátu inicializačního souboru:
-
-> [*proxy*]
-
-> Adresa = *http://1.2.3.4*
-
-> Port =*567*
+    ![com-chyba](./media/azure-to-azure-troubleshoot-errors/custom_dns.png)
 
 
-> [!NOTE]
-> Agent služby mobility Site Recovery podporuje jenom *neověřené proxy servery*.
+### <a name="issue-2-site-recovery-configuration-failed-151196"></a>Problém 2: Konfigurace obnovení lokality se nezdařila (151196)
+- **Možná příčina** </br>
+  - Nelze navázat připojení k koncovým bodům IP4 služby Office 365 a identity.
+
+- **Rozlišení**
+  - Azure Site Recovery vyžaduje přístup k rozsahům IP stránek Office 365 pro ověřování.
+    Pokud používáte pravidla/proxy serveru firewall skupiny Azure Network Security Group (NSG) k řízení odchozího připojení k síti na virtuálním počítači, ujistěte se, že používáte pravidlo nsg na [základě značky služby Azure Active Directory (AAD)](../virtual-network/security-overview.md#service-tags) pro povolení přístupu k ad. Již nepodporujeme pravidla nsg založené na IP adresách.
+
+
+### <a name="issue-3-site-recovery-configuration-failed-151197"></a>Problém 3: Konfigurace obnovení lokality se nezdařila (151197)
+- **Možná příčina** </br>
+  - Připojení nelze navázat na koncové body služby Azure Site Recovery.
+
+- **Rozlišení**
+  - Pokud používáte pravidla/proxy firewall skupiny Azure Network Security Group (NSG) k řízení odchozího připojení k síti na virtuálním počítači, ujistěte se, že používáte značky služeb. Už nepodporujeme použití seznamu povolených IP adres prostřednictvím sítí zabezpečení sítě pro azure site recovery (ASR).
+
+
+### <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premise-proxy-server-151072"></a>Problém 4: Replikace A2A se nezdařila při přenosu síťového provozu přes místní proxy server (151072)
+ - **Možná příčina** </br>
+   - Vlastní nastavení proxy serveru je neplatné a agent služby MOBILITY ASR automaticky nezjistil nastavení serveru proxy z aplikace IE.
+
+
+ - **Rozlišení**
+   1.    Agent služby Mobility Service detekuje nastavení proxy serveru z aplikace IE v systému Windows a prostředí /etc/v systému Linux.
+   2.  Pokud dáváte přednost nastavení proxy pouze pro ASR Mobility Service, pak můžete poskytnout proxy podrobnosti v ProxyInfo.conf se nachází na adrese:</br>
+       - ``/usr/local/InMage/config/``na ***Linuxu***
+       - ``C:\ProgramData\Microsoft Azure Site Recovery\Config``ve ***Windows***
+   3.    Soubor ProxyInfo.conf by měl obsahovat nastavení proxy v následujícím formátu INI:</br>
+                   *[proxy]*</br>
+                   *Adresa=http://1.2.3.4*</br>
+                   *Port=567*</br>
+   4. Agent služby ASR Mobility Service podporuje pouze ***neověřené proxy servery***.
+
+
+### <a name="fix-the-problem"></a>Oprava problému
+
+Chcete-li přidat požadované adresy URL do seznamu [povolených](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) adres, postupujte podle pokynů pro [síť](site-recovery-azure-to-azure-networking-guidance.md).
+
 
 ### <a name="more-information"></a>Další informace
 
-Pokud chcete zadat [požadované adresy URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) nebo [požadované rozsahy IP](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)adres, postupujte podle pokynů v článku [o sítích v Azure do replikace Azure](site-recovery-azure-to-azure-networking-guidance.md).
+Pokud chcete určit [požadované adresy URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) nebo požadované [rozsahy IP adres](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags), postupujte podle pokynů v části O [sítích v azure to Azure replication](site-recovery-azure-to-azure-networking-guidance.md).
 
-## <a name="disk-not-found-in-the-machine-error-code-150039"></a>Nebyl nalezen v počítači (kód chyby: 150039)
+## <a name="disk-not-found-in-the-machine-error-code-150039"></a>Disk nebyl v počítači nalezen (kód chyby 150039)
 
-Nový disk připojen k virtuálnímu počítači musí být inicializován. Pokud se disk nenajde, zobrazí se následující zpráva:
+Nový disk připojený k virtuálnímu počítače musí být inicializován. Pokud disk není nalezen, zobrazí se následující zpráva:
 
-> " *Datový disk Azure* *DiskURI* s logickou jednotkou *LUN* *LUNValue* nebyl namapován na odpovídající disk hlášený z virtuálního počítače, který má stejnou hodnotu logické jednotky (LUN).
-
-### <a name="possible-causes"></a>Možné příčiny
-
-- K virtuálnímu počítači byl připojen nový datový disk, ale nebyl inicializován.
-- Datový disk ve virtuálním počítači nehlásí správně hodnotu logické jednotky (LUN), při které byl disk připojen k virtuálnímu počítači.
-
-### <a name="fix-the-problem"></a>Tento problém vyřešit
-
-Zajistěte, aby byly datové disky inicializovány, a potom operaci opakujte.
-
-- **Windows**: [připojte a inicializujte nový disk](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal).
-
-- **Linux**: [inicializujte nový datový disk v systému Linux](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk).
-
-Pokud se problém nevyřeší, obraťte se na podporu.
-
-## <a name="one-or-more-disks-are-available-for-protection-error-code-153039"></a>Pro ochranu je k dispozici jeden nebo více disků (kód chyby 153039)
+> "Azure datový disk *DiskDiskURI* *DiskURI* s logickým číslem jednotky *LUNValue* *LUNValue* nebyl amapován na odpovídající disk, který je hlášen z virtuálního počítače, který má stejnou hodnotu logické jednotky.
 
 ### <a name="possible-causes"></a>Možné příčiny
 
-- Jeden nebo více disků byl po ochraně nedávno přidán do virtuálního počítače.
-- Po ochraně virtuálního počítače se inicializoval minimálně jeden disk.
+- Nový datový disk byl připojen k virtuálnímu počítače, ale nebyl inicializován.
+- Datový disk uvnitř virtuálního počítače není správně hlášení logické jednotky číslo (LUN) hodnotu, při které byl disk připojen k virtuálnímu počítače.
 
-### <a name="fix-the-problem"></a>Tento problém vyřešit
+### <a name="fix-the-problem"></a>Oprava problému
 
-Chcete-li znovu nastavit stav replikace virtuálního počítače, můžete zvolit, že chcete chránit disky, nebo zrušit upozornění.
+Ujistěte se, že datové disky jsou inicializovány a opakujte operaci.
 
-#### <a name="to-protect-the-disks"></a>Ochrana disků
+- **Windows**: [Připojení a inicializaci nového disku](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal).
 
-1. Přejít na **replikované položky** > *název virtuálního počítače* > **disky**.
+- **Linux**: [Inicializovat nový datový disk v Linuxu](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk).
+
+Pokud problém přetrvává, obraťte se na podporu.
+
+## <a name="one-or-more-disks-are-available-for-protection-error-code-153039"></a>Jeden nebo více disků je k dispozici pro ochranu (kód chyby 153039)
+
+### <a name="possible-causes"></a>Možné příčiny
+
+- Jeden nebo více disků byly nedávno přidány do virtuálního počítače po ochraně.
+- Jeden nebo více disků byly inicializovány po ochraně virtuálního počítače.
+
+### <a name="fix-the-problem"></a>Oprava problému
+
+Chcete-li, aby byl stav replikace virtuálního počítače znovu v pořádku, můžete zvolit ochranu disků nebo upozornění.
+
+#### <a name="to-protect-the-disks"></a>Chcete-li chránit disky
+
+1. Přejděte na **název replikovaných položek** > *virtuálních počítačů* > **disky**.
 1. Vyberte nechráněný disk a pak vyberte **Povolit replikaci**:
 
     ![Povolení replikace na discích virtuálních počítačů](./media/azure-to-azure-troubleshoot-errors/add-disk.png)
 
-#### <a name="to-dismiss-the-warning"></a>Zavření upozornění
+#### <a name="to-dismiss-the-warning"></a>Zrušení upozornění
 
-1. Přejít na **replikované položky** > *název virtuálního počítače*.
-1. V části **Přehled** vyberte upozornění a pak vyberte **OK**.
+1. Přejděte na*název virtuálního serveru* **replikovaných položek** > .
+1. Vyberte upozornění v části **Přehled** a pak vyberte **OK**.
 
     ![Zavřít upozornění na nový disk](./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png)
 
-## <a name="remove-the-virtual-machine-from-the-vault-completed-with-information-error-code-150225"></a>Odebrání virtuálního počítače z trezoru bylo dokončeno s informacemi (kód chyby 150225).
+## <a name="remove-the-virtual-machine-from-the-vault-completed-with-information-error-code-150225"></a>Odebrání virtuálního počítače z trezoru dokončeného s informacemi (kód chyby 150225)
 
-Při ochraně virtuálního počítače Site Recovery vytvoří některé odkazy na zdrojovém virtuálním počítači. Když ochranu odeberete nebo zakážete, Site Recovery tyto odkazy odebrat jako součást úlohy čištění. Pokud má virtuální počítač zámek prostředků, úloha vyčištění se dokončí s informacemi. Tyto informace říká, že virtuální počítač byl odebrán z trezoru Recovery Services, ale některé ze zastaralých propojení nebylo na zdrojovém počítači možné vyčistit.
+Když chrání virtuální počítač, Site Recovery vytvoří některé odkazy na zdrojovém virtuálním počítači. Pokud odeberete ochranu nebo zakážete replikaci, site recovery odebere tato propojení jako součást úlohy vyčištění. Pokud má virtuální počítač zámek prostředků, úloha vyčištění se dokončí s informacemi. Informace říkají, že virtuální počítač byl odebrán z trezoru služby Recovery Services, ale že některé zastaralé odkazy nelze vyčistit ve zdrojovém počítači.
 
-Toto upozornění můžete ignorovat, pokud už nemáte v úmyslu chránit tento virtuální počítač znovu. Pokud ale budete chtít tento virtuální počítač chránit později, postupujte podle kroků v části "řešení problému" pro vyčištění odkazů.
+Toto upozornění můžete ignorovat, pokud už nikdy nechcete tento virtuální počítač chránit. Ale pokud budete muset chránit tento virtuální počítač později, postupujte podle kroků v části "Opravit problém" vyčistit odkazy.
 
 > [!WARNING]
-> Pokud toto čištění neprovedete:
+> Pokud nechcete provést vyčištění:
 >
-> - Pokud povolíte replikaci pomocí trezoru Recovery Services, virtuální počítač se nebude zobrazovat v seznamu.
-> - Pokud se pokusíte chránit virtuální počítač pomocí > **Nastavení** **virtuálního počítače** > **zotavení po havárii**, operace se nezdaří a zobrazí se zpráva "replikaci nelze povolit z důvodu existujících propojení zastaralých prostředků na virtuálním počítači".
+> - Pokud povolíte replikaci pomocí trezoru služby Recovery Services, virtuální počítač nebude uveden.
+> - Pokud se pokusíte chránit virtuální počítač pomocí obnovení zotavení po**havárii****nastavení** >  **virtuálního počítače** > , operace se nezdaří se zprávou "Replikace nelze povolit z důvodu existující zastaralá propojení prostředků na virtuálním počítači."
 
-### <a name="fix-the-problem"></a>Tento problém vyřešit
+### <a name="fix-the-problem"></a>Oprava problému
 
 > [!NOTE]
-> Při provádění těchto kroků Site Recovery neodstraní zdrojový virtuální počítač nebo ho nijak neovlivní.
+> Site Recovery neodstraní zdrojový virtuální počítač ani ho nijak neovlivní při provádění těchto kroků.
 
-1. Odeberte zámek z virtuálního počítače nebo skupiny prostředků virtuálního počítače. Například na následujícím obrázku je nutné odstranit zámek prostředků na virtuálním počítači s názvem "MoveDemo":
+1. Odeberte zámek ze skupiny prostředků virtuálního nebo virtuálního soudu. Například v následujícím obrázku musí být odstraněn zámek prostředků na virtuálním počítači s názvem MoveDemo:
 
-    ![Odebrat zámek z virtuálního počítače](./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png)
+    ![Odebrání zámku z virtuálního mísu](./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png)
 
-1. Stáhněte si skript, kterým [odeberete starou konfiguraci Site Recovery](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
-1. Spusťte skript, který se nazývá Cleanup-stale-asr-config-Azure-VM. ps1. Jako parametry zadejte ID předplatného, skupinu prostředků virtuálního počítače a název virtuálního počítače.
-1. Pokud budete požádáni o zadání přihlašovacích údajů Azure, poskytněte je. Pak ověřte, že se skript spouští bez jakýchkoli selhání.
+1. Stáhněte si skript a [odeberte zastaralou konfiguraci site recovery](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
+1. Spusťte skript, který se nazývá Cleanup-stale-asr-config-Azure-VM.ps1. Zadejme jako parametry ID předplatného, skupinu prostředků virtuálního soudu a název virtuálního_knem.
+1. Pokud jste požádáni o pověření Azure, zadejte je. Potom ověřte, zda je skript spuštěn bez jakýchkoli chyb.
 
-## <a name="replication-cant-be-enabled-because-of-stale-resource-links-on-the-vm-error-code-150226"></a>Replikaci nejde povolit kvůli zastaralým odkazům na prostředky na virtuálním počítači (kód chyby 150226).
+## <a name="replication-cant-be-enabled-because-of-stale-resource-links-on-the-vm-error-code-150226"></a>Replikace nelze povolit z důvodu zastaralých propojení prostředků na virtuálním počítači (kód chyby 150226)
 
 ### <a name="possible-cause"></a>Možná příčina
 
-Virtuální počítač má nestarou konfiguraci z předchozí ochrany Site Recovery.
+Virtuální počítač má zastaralou konfiguraci z předchozí ochrany obnovení webu.
 
-Pokud jste povolili replikaci pro virtuální počítač Azure pomocí Site Recovery, může dojít k zastaralým konfiguracím na virtuálním počítači Azure.
+Zastaralá konfigurace může dojít na virtuálním počítači Azure, pokud jste povolili replikaci pro virtuální počítač Azure pomocí site recovery a pak:
 
-- Zakázali jste replikaci, ale zdrojový virtuální počítač měl zámek prostředků.
-- Odstranili jste Site Recovery trezor bez explicitního zákazu replikace na virtuálním počítači.
-- Odstranili jste skupinu prostředků obsahující Site Recovery trezor bez explicitního zákazu replikace na virtuálním počítači.
+- Zakázali jste replikaci, ale zdrojový virtuální virtuální byl uzamčení prostředků.
+- Trezor obnovení webu jste odstranili, aniž byste explicitně zakáže replikaci na virtuálním počítači.
+- Odstranili jste skupinu prostředků obsahující trezor obnovení webu bez explicitního zakázání replikace na virtuálním počítači.
 
-### <a name="fix-the-problem"></a>Tento problém vyřešit
+### <a name="fix-the-problem"></a>Oprava problému
 
 > [!NOTE]
-> Při provádění těchto kroků Site Recovery neodstraní zdrojový virtuální počítač nebo ho nijak neovlivní.
+> Site Recovery neodstraní zdrojový virtuální počítač ani ho nijak neovlivní při provádění těchto kroků.
 
-1. Odeberte zámek z virtuálního počítače nebo skupiny prostředků virtuálního počítače. Například na následujícím obrázku je nutné odstranit zámek prostředků na virtuálním počítači s názvem "MoveDemo":
+1. Odeberte zámek ze skupiny prostředků virtuálního nebo virtuálního soudu. Například v následujícím obrázku musí být odstraněn zámek prostředků na virtuálním počítači s názvem MoveDemo:
 
-    ![Odebrat zámek z virtuálního počítače](./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png)
+    ![Odebrání zámku z virtuálního mísu](./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png)
 
-1. Stáhněte si skript, kterým [odeberete starou konfiguraci Site Recovery](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
-1. Spusťte skript, který se nazývá Cleanup-stale-asr-config-Azure-VM. ps1. Jako parametry zadejte ID předplatného, skupinu prostředků virtuálního počítače a název virtuálního počítače.
-1. Pokud budete požádáni o zadání přihlašovacích údajů Azure, poskytněte je. Pak ověřte, že se skript spouští bez jakýchkoli selhání.
+1. Stáhněte si skript a [odeberte zastaralou konfiguraci site recovery](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
+1. Spusťte skript, který se nazývá Cleanup-stale-asr-config-Azure-VM.ps1. Zadejme jako parametry ID předplatného, skupinu prostředků virtuálního soudu a název virtuálního_knem.
+1. Pokud jste požádáni o pověření Azure, zadejte je. Potom ověřte, zda je skript spuštěn bez jakýchkoli chyb.
 
-## <a name="unable-to-see-the-azure-vm-or-resource-group-for-the-selection-in-the-enable-replication-job"></a>Nepovedlo se zobrazit virtuální počítač nebo skupinu prostředků Azure pro výběr v úloze povolit replikaci.
+## <a name="unable-to-see-the-azure-vm-or-resource-group-for-the-selection-in-the-enable-replication-job"></a>Nelze zobrazit virtuální počítač Azure nebo skupinu prostředků pro výběr v úloze "Povolit replikaci"
 
 ### <a name="cause-1-the-resource-group-and-source-virtual-machine-are-in-different-locations"></a>Příčina 1: Skupina prostředků a zdrojový virtuální počítač jsou v různých umístěních
 
-Site Recovery aktuálně vyžaduje, aby byla skupina prostředků zdrojové oblasti a virtuální počítače ve stejném umístění. Pokud ne, nebudete při pokusu o použití ochrany moci najít virtuální počítač nebo skupinu prostředků.
+Obnovení lokality aktuálně vyžaduje, aby skupina prostředků zdrojové oblasti a virtuální počítače byly ve stejném umístění. Pokud nejsou, nebudete moct najít virtuální počítač nebo skupinu prostředků při pokusu o použití ochrany.
 
-Jako alternativní řešení můžete místo Recovery Services trezoru povolit replikaci z virtuálního počítače. Přejít na **zdrojový virtuální počítač** > **vlastnosti** > **zotavení po havárii** a povolení replikace.
+Jako řešení můžete povolit replikaci z virtuálního serveru namísto trezoru služby Recovery Services. Přejděte na **zdrojové** > **vlastnosti virtuálního počítače zotavení** > **po havárii** a povolte replikaci.
 
-### <a name="cause-2-the-resource-group-is-not-part-of-the-selected-subscription"></a>Příčina 2: Skupina prostředků není součástí vybraného předplatného.
+### <a name="cause-2-the-resource-group-is-not-part-of-the-selected-subscription"></a>Příčina 2: Skupina prostředků není součástí vybraného předplatného
 
-Pokud skupina prostředků není součástí vybraného předplatného, možná nebudete schopni najít skupinu prostředků v době ochrany. Ujistěte se, že skupina prostředků patří k předplatnému, které používáte.
+Pokud skupina prostředků není součástí vybraného předplatného, nemusí být možné najít skupinu prostředků v době ochrany. Ujistěte se, že skupina prostředků patří k předplatnému, které používáte.
 
-### <a name="cause-3-stale-configuration"></a>Příčina 3: zastaralá konfigurace
+### <a name="cause-3-stale-configuration"></a>Příčina 3: Zatuchlá konfigurace
 
-Pokud na virtuálním počítači Azure zůstala zastaralá konfigurace Site Recovery, nemusíte mít virtuální počítač, který chcete povolit pro replikaci. K tomuto stavu může dojít, pokud jste povolili replikaci pro virtuální počítač Azure pomocí Site Recovery a pak:
+Nemusí se zobrazit virtuální počítač, který chcete povolit pro replikaci, pokud byla na virtuálním počítači Azure ponechána zastaralá konfigurace site recovery. K této podmínce může dojít, pokud jste povolili replikaci pro virtuální počítač Azure pomocí site recovery a potom:
 
-- Odstranili jste Site Recovery trezor bez explicitního zákazu replikace na virtuálním počítači.
-- Odstranili jste skupinu prostředků obsahující Site Recovery trezor bez explicitního zákazu replikace na virtuálním počítači.
-- Zakázali jste replikaci, ale zdrojový virtuální počítač měl zámek prostředků.
+- Trezor obnovení webu jste odstranili, aniž byste explicitně zakáže replikaci na virtuálním počítači.
+- Odstranili jste skupinu prostředků obsahující trezor obnovení webu bez explicitního zakázání replikace na virtuálním počítači.
+- Zakázali jste replikaci, ale zdrojový virtuální virtuální byl uzamčení prostředků.
 
-### <a name="fix-the-problem"></a>Tento problém vyřešit
+### <a name="fix-the-problem"></a>Oprava problému
 
 > [!NOTE]
-> Před použitím skriptu uvedeného v této části nezapomeňte aktualizovat modul AzureRM. Resources.  Při provádění těchto kroků Site Recovery neodstraní zdrojový virtuální počítač nebo ho nijak neovlivní.
+> Před použitím skriptu uvedeného v této části nezapomeňte aktualizovat modul "AzureRM.Resources".  Site Recovery neodstraní zdrojový virtuální počítač ani ho nijak neovlivní při provádění těchto kroků.
 
-1. Odeberte zámek (pokud existuje) z virtuálního počítače nebo skupiny prostředků virtuálního počítače. Například na následujícím obrázku je nutné odstranit zámek prostředků na virtuálním počítači s názvem "MoveDemo":
+1. Odeberte zámek, pokud existuje, ze skupiny prostředků virtuálního objektu nebo virtuálního soudu. Například v následujícím obrázku musí být odstraněn zámek prostředků na virtuálním počítači s názvem MoveDemo:
 
-    ![Odebrat zámek z virtuálního počítače](./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png)
+    ![Odebrání zámku z virtuálního mísu](./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png)
 
-1. Stáhněte si skript, kterým [odeberete starou konfiguraci Site Recovery](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
-1. Spusťte skript, který se nazývá Cleanup-stale-asr-config-Azure-VM. ps1. Jako parametry zadejte ID předplatného, skupinu prostředků virtuálního počítače a název virtuálního počítače.
-1. Pokud budete požádáni o zadání přihlašovacích údajů Azure, poskytněte je. Pak ověřte, že se skript spouští bez jakýchkoli selhání.
+1. Stáhněte si skript a [odeberte zastaralou konfiguraci site recovery](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
+1. Spusťte skript, který se nazývá Cleanup-stale-asr-config-Azure-VM.ps1. Zadejme jako parametry ID předplatného, skupinu prostředků virtuálního soudu a název virtuálního_knem.
+1. Pokud jste požádáni o pověření Azure, zadejte je. Potom ověřte, zda je skript spuštěn bez jakýchkoli chyb.
 
-## <a name="unable-to-select-a-virtual-machine-for-protection"></a>Nepovedlo se vybrat virtuální počítač pro ochranu.
+## <a name="unable-to-select-a-virtual-machine-for-protection"></a>Nelze vybrat virtuální počítač pro ochranu
 
-### <a name="cause-1-the-virtual-machine-has-an-extension-installed-in-a-failed-or-unresponsive-state"></a>Příčina 1: virtuální počítač má rozšíření nainstalované v neúspěšném nebo nereagující stavu.
+### <a name="cause-1-the-virtual-machine-has-an-extension-installed-in-a-failed-or-unresponsive-state"></a>Příčina 1: Virtuální počítač má rozšíření nainstalované ve stavu selhání nebo neodpovídá
 
-Přejít na **virtuální počítače** > **Nastavení** > **rozšíření** a vyhledat jakákoli rozšíření ve stavu selhání. Odinstalujte všechna neúspěšná rozšíření a pak to zkuste znovu, abyste virtuální počítač chránili.
+Přejděte na Rozšíření**nastavení** > **virtuálních** **počítačů** > a zkontrolujte, zda ve stavu se nezdařilo. Odinstalujte všechny neúspěšné rozšíření a zkuste znovu chránit virtuální počítač.
 
-### <a name="cause-2-the-vms-provisioning-state-is-not-valid"></a>Příčina 2: stav zřizování virtuálního počítače není platný.
+### <a name="cause-2-the-vms-provisioning-state-is-not-valid"></a>Příčina 2: Stav zřizování virtuálního mísy není platný
 
-Postup řešení potíží ve [stavu zřizování virtuálního počítače není platný](#the-vms-provisioning-state-is-not-valid-error-code-150019)dále v tomto článku.
+Viz kroky řešení potíží ve [stavu zřizování virtuálního soudu není platný](#the-vms-provisioning-state-is-not-valid-error-code-150019), dále v tomto článku.
 
-## <a name="the-vms-provisioning-state-is-not-valid-error-code-150019"></a>Stav zřizování virtuálního počítače není platný (kód chyby 150019).
+## <a name="the-vms-provisioning-state-is-not-valid-error-code-150019"></a>Stav zřizování virtuálního zařízení není platný (kód chyby 150019)
 
-Aby bylo možné povolit replikaci na virtuálním počítači, musí být jeho stav zřizování **úspěšný**. Chcete-li zjistit stav zřizování, postupujte podle následujících kroků:
+Chcete-li povolit replikaci na virtuálním počítači, musí být jeho stav zřizování **úspěšný**. Chcete-li zkontrolovat stav zřizování, postupujte takto:
 
-1. V Azure Portal vyberte **Průzkumník prostředků** ze **všech služeb**.
-1. Rozbalte seznam **předplatných** a vyberte své předplatné.
-1. Rozbalte seznam **ResourceGroups** a vyberte skupinu prostředků virtuálního počítače.
-1. Rozbalte seznam **prostředky** a vyberte svůj virtuální počítač.
-1. Zkontrolujte pole **provisioningState** v zobrazení instance na pravé straně.
+1. Na webu Azure Portal vyberte **Průzkumník prostředků** ze **všech služeb**.
+1. Rozbalte seznam **Odběry** a vyberte předplatné.
+1. Rozbalte seznam **ResourceGroups** a vyberte skupinu prostředků virtuálního soudu.
+1. Rozbalte seznam **Zdroje** a vyberte virtuální počítač.
+1. Zkontrolujte pole **provisioningState** v zobrazení Instance na pravé straně.
 
-### <a name="fix-the-problem"></a>Tento problém vyřešit
+### <a name="fix-the-problem"></a>Oprava problému
 
-- Pokud se ProvisioningState **nezdařil**, obraťte se na podporu s podrobnostmi o řešení potíží.
-- Pokud se provisioningState **aktualizuje**, může se nasadit další rozšíření. Zkontrolujte, jestli virtuální počítač neobsahuje nějaké probíhající operace, počkejte, až se dokončí, a pak zkuste neúspěšnou Site Recovery úlohy povolit replikaci.
+- Pokud **provisioningState** se **nezdařilo**, obraťte se na podporu s podrobnostmi k řešení potíží.
+- Pokud **provisioningState** je **aktualizace**, může být nasazena jiné rozšíření. Zkontrolujte, zda existují nějaké probíhající operace na virtuálním počítači, počkejte na jejich dokončení a opakujte selhání úlohy obnovení lokality "Povolit replikaci".
 
-## <a name="unable-to-select-target-vm-network-selection-tab-is-unavailable"></a>Nejde vybrat cílový virtuální počítač (karta výběr sítě není k dispozici).
+## <a name="unable-to-select-target-vm-network-selection-tab-is-unavailable"></a>Nelze vybrat cílový virtuální počítač (karta výběru sítě není k dispozici)
 
-### <a name="cause-1-your-vm-is-attached-to-a-network-thats-already-mapped-to-a-target-network"></a>Příčina 1: váš virtuální počítač je připojený k síti, která už je namapovaná na cílovou síť.
+### <a name="cause-1-your-vm-is-attached-to-a-network-thats-already-mapped-to-a-target-network"></a>Příčina 1: Virtuální počítač je připojený k síti, která už je namapovaná na cílovou síť
 
-Pokud je zdrojový virtuální počítač součástí virtuální sítě a v cílové skupině prostředků už je namapovaný jiný virtuální počítač ze stejné virtuální sítě, rozevírací seznam pro výběr sítě není ve výchozím nastavení k dispozici (zobrazuje se šedě).
+Pokud je zdrojový virtuální počítač součástí virtuální sítě a jiný virtuální počítač ze stejné virtuální sítě je již namapován se sítí v cílové skupině prostředků, rozevírací seznam výběru sítě není ve výchozím nastavení k dispozici (zobrazí se ztlumený).
 
-![Seznam výběru sítě není dostupný.](./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png)
+![Seznam výběru sítě není k dispozici.](./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png)
 
-### <a name="cause-2-you-previously-protected-the-vm-by-using-site-recovery-and-then-you-disabled-the-replication"></a>Příčina 2: předtím jste virtuální počítač chránili pomocí Site Recovery a pak jste zakázali replikaci.
+### <a name="cause-2-you-previously-protected-the-vm-by-using-site-recovery-and-then-you-disabled-the-replication"></a>Příčina 2: Dříve jste zabezpečili virtuální počítač pomocí site recovery a pak jste zakázali replikaci
 
-Vypnutím replikace virtuálního počítače se neodstraní mapování sítě. Mapování je nutné odstranit z Recovery Services trezoru, ve kterém byl virtuální počítač chráněn. Přejít na *Recovery Services trezor* > **Site Recovery infrastruktura** > **mapování sítě**.
+Zakázáníreplikace virtuálního virtuálního aplikace neodstraní mapování sítě. Mapování musí být odstraněno z trezoru služby Recovery Services, kde byl virtuální počítač chráněn. Přejděte na web *recovery services site* > **recovery infrastructure** > **infrastructure mapping**.
 
 ![Odstranit mapování sítě](./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png)
 
-Cílová síť, která byla nakonfigurovaná během instalace pro zotavení po havárii, se dá po počáteční instalaci změnit, jakmile je virtuální počítač chráněný:
+Cílovou síť, která byla nakonfigurována během nastavení zotavení po havárii, lze po počátečním nastavení po chráněném virtuálním počítači změnit:
 
-![Upravit mapování sítě](./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png)
+![Změna síťového mapování](./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png)
 
-Všimněte si, že změna mapování sítě má vliv na všechny chráněné virtuální počítače, které používají stejné mapování sítě.
+Všimněte si, že změna mapování sítě ovlivňuje všechny chráněné virtuální počítače, které používají stejné mapování sítě.
 
-## <a name="com-or-volume-shadow-copy-service-error-error-code-151025"></a>Chyba služby COM+ nebo Stínová kopie svazku (kód chyby 151025)
+## <a name="com-or-volume-shadow-copy-service-error-error-code-151025"></a>Chyba služby STÍNOVÁ Kopie modelu COM+ nebo služby Volume (kód chyby 151025)
 
-Při výskytu této chyby se zobrazí následující zpráva:
+Dojde-li k této chybě, zobrazí se následující zpráva:
 
-> Nepovedlo se nainstalovat rozšíření Site Recovery.
+> Instalace rozšíření site recovery se nezdařila.
 
 ### <a name="possible-causes"></a>Možné příčiny
 
-- Služba systémová aplikace modelu COM+ je zakázána.
+- Služba systémových aplikací modelu COM+ je zakázána.
 - Služba Stínová kopie svazku je zakázána.
 
-### <a name="fix-the-problem"></a>Tento problém vyřešit
+### <a name="fix-the-problem"></a>Oprava problému
 
-Nastavte systémové aplikace modelu COM+ a služby stínové kopie svazku na automatický nebo ruční režim spouštění.
+Nastavte služby systémových aplikací a stínové kopie svazků modelu COM+ do automatického nebo ručního režimu spuštění.
 
-1. Otevřete konzolu služby v systému Windows.
-1. Ujistěte se, že systémová aplikace modelu COM+ a služba Stínová kopie svazku nejsou **nastaveny jako** **Typ spouštění**.
+1. Otevřete konzolu Služby v systému Windows.
+1. Ujistěte se, že služby systémových aplikací modelu COM+ a stínové kopie svazků nejsou nastaveny na **zakázáno** jako **typ spuštění**.
 
-    ![Kontrolovat typ spouštění systémové aplikace modelu COM+ a služby Stínová kopie svazku](./media/azure-to-azure-troubleshoot-errors/com-error.png)
+    ![Kontrola typu spuštění služeb stínové kopie systémových aplikací a svazků](./media/azure-to-azure-troubleshoot-errors/com-error.png)
 
 ## <a name="unsupported-managed-disk-size-error-code-150172"></a>Nepodporovaná velikost spravovaného disku (kód chyby 150172)
 
-Při výskytu této chyby se zobrazí následující zpráva:
+Dojde-li k této chybě, zobrazí se následující zpráva:
 
-> "Pro virtuální počítač se nepovedlo povolit ochranu, protože má *disk* s velikostí *DiskSize*) *, která je menší než minimální podporovaná velikost 1024 MB.
+> "Ochrana nelze povolit pro virtuální počítač, protože má *DiskName* s velikostí *DiskSize*)*, která je menší než minimální podporovaná velikost 1024 MB."
 
 ### <a name="possible-cause"></a>Možná příčina
 
 Disk je menší než podporovaná velikost 1024 MB.
 
-### <a name="fix-the-problem"></a>Tento problém vyřešit
+### <a name="fix-the-problem"></a>Oprava problému
 
-Ujistěte se, že velikost disku je v rozsahu podporované velikosti, a potom operaci opakujte.
+Ujistěte se, že velikost disku je v podporovaném rozsahu velikostí a opakujte operaci.
 
-## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-error-code-151126"></a>Ochrana není povolená, protože konfigurace GRUB zahrnuje místo identifikátoru UUID název zařízení (kód chyby 151126).
+## <a name="protection-was-not-enabled-because-the-grub-configuration-includes-the-device-name-instead-of-the-uuid-error-code-151126"></a><a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-error-code-151126"></a>Ochrana nebyla povolena, protože konfigurace GRUB obsahuje název zařízení namísto UUID (kód chyby 151126)
 
 ### <a name="possible-cause"></a>Možná příčina
 
-Konfigurační soubory pro Linux GRUB (/boot/grub/menu.lst,/boot/grub/grub.cfg,/Boot/grub2/grub.cfg nebo/etc/default/grub) můžou místo hodnot UUID pro parametry *root* a *Resume* zadat skutečné názvy zařízení. Site Recovery vyžaduje identifikátory UUID, protože se můžou změnit názvy zařízení. Po restartování se může stát, že virtuální počítač nebude při převzetí služeb při selhání pracovat se stejným názvem, což vede k problémům.
+Konfigurační soubory Linux GRUB (/boot/grub/menu.lst", /boot/grub/grub.cfg, /boot/grub2/grub.cfg nebo /etc/default/grub) mohou určovat skutečné názvy zařízení namísto hodnot UUID pro parametry *root* a *resume.* Obnovení webu vyžaduje UUID, protože názvy zařízení se mohou změnit. Po restartování virtuálního počítače nemusí přijít se stejným názvem při převzetí služeb při selhání, což má za následek problémy.
 
-V následujících příkladech jsou řádky ze souborů GRUB, kde se místo požadovaných identifikátorů UUID zobrazují názvy zařízení (zobrazují se tučně):
+Následující příklady jsou řádky ze souborů GRUB, kde se místo požadovaných UUID zobrazují názvy zařízení (zobrazené tučně):
 
-- /Boot/grub2/grub.cfg souboru
+- Soubor /boot/grub2/grub.cfg
 
-  > Linux/Boot/vmlinuz-3.12.49-11-default **root =/dev/sda2** $ {extra_cmdline} **Resume =/dev/sda1** Úvod = tiché tiché showopts
+  > linux /boot/vmlinuz-3.12.49-11-default **root=/dev/sda2** ${extra_cmdline} **resume=/dev/sda1** splash=tichý tichý showopts
 
-- Soubor:/boot/grub/menu.lst
+- Soubor: /boot/grub/menu.lst
 
-  > jádro/Boot/vmlinuz-3.0.101-63-default **root =/dev/sda2** **Resume =/dev/sda1** Úvod = Silent crashkernel = 256M-: 128M showopts VGA = 0x314
+  > kernel /boot/vmlinuz-3.0.101-63-default **root=/dev/sda2** **resume=/dev/sda1** splash=silent crashkernel=256M-:128M showopts vga=0x314
 
 
-### <a name="fix-the-problem"></a>Tento problém vyřešit
+### <a name="fix-the-problem"></a>Oprava problému
 
-Nahraďte názvy každého zařízení odpovídajícím identifikátorem UUID:
+Nahraďte každý název zařízení odpovídajícím UUID:
 
-1. Vyhledejte identifikátor UUID zařízení spuštěním příkazu **blkid** ***název zařízení***. Příklad:
+1. Najděte UUID zařízení provedením příkazu **blkid** ***název zařízení***. Například:
 
     ```
     blkid /dev/sda1
@@ -475,54 +458,54 @@ Nahraďte názvy každého zařízení odpovídajícím identifikátorem UUID:
     /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3"
    ```
 
-1. Název zařízení nahraďte identifikátorem UUID, ve formátech **root = uuid**=*UUID* a **Resume = UUID**=*UUID*. Například po nahrazení by čára z/boot/grub/menu.lst (popsaná výše) vypadala takto:
+1. Nahraďte název zařízení jeho UUID, ve formátech **root=UUID**=*UUID* a **resume=UUID**=*UUID*. Například po nahrazení bude řádek z /boot/grub/menu.lst (popisovaný dříve) vypadat takto:
 
-    > jádro/Boot/vmlinuz-3.0.101-63-default **root = UUID = 62927e85-f7ba-40bc-9993-cc1feeb191e4** **Resume = UUID = 6f614b44-433b-431b-9ca1-4dd2f6f74f6b** úvodní = tichá crashkernel = 256M-: 128M showopts VGA = 0x314
+    > jádro /boot/vmlinuz-3.0.101-63-default **root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4** **resume=UUI D=6f614b44-433b-431b-9ca1-4dd2f6f74f6b** splash=tichý crashkernel=256M-:128M showopts vga=0x314
 
-1. Zkuste ochranu zopakovat.
+1. Opakujte ochranu.
 
-## <a name="enable-protection-failed-because-the-device-mentioned-in-the-grub-configuration-doesnt-exist-error-code-151124"></a>Ochranu se nepovedlo zapnout, protože zařízení uvedené v konfiguraci GRUB neexistuje (kód chyby 151124).
+## <a name="enable-protection-failed-because-the-device-mentioned-in-the-grub-configuration-doesnt-exist-error-code-151124"></a>Povolení ochrany se nezdařilo, protože zařízení uvedené v konfiguraci GRUB neexistuje (kód chyby 151124)
 
 ### <a name="possible-cause"></a>Možná příčina
 
-Konfigurační soubory GRUB (/boot/grub/menu.lst,/boot/grub/grub.cfg,/Boot/grub2/grub.cfg nebo/etc/default/grub) můžou obsahovat parametry *Rd.LVM.lv* nebo *rd_LVM_LV*. Tyto parametry identifikují zařízení LVM (Logical Volume Manager), která mají být zjištěna při spuštění. Pokud tato zařízení LVM neexistují, samotný chráněný systém se nespustí a zablokuje se v procesu spouštění. Stejný problém se také zobrazí u virtuálního počítače s podporou převzetí služeb při selhání. Tady je několik příkladů:
+Konfigurační soubory GRUB (/boot/grub/menu.lst, /boot/grub/grub.cfg, /boot/grub2/grub.cfg nebo /etc/default/grub) mohou obsahovat parametry *rd.lvm.lv* nebo *rd_LVM_LV*. Tyto parametry identifikují zařízení Správce logických svazků (LVM), která mají být zjištěna při spuštění. Pokud tato zařízení LVM neexistují, samotný chráněný systém se nespustí a bude uvízl v procesu zavádění. Stejný problém se také zobrazí s virtuálním virtuálním voláním s podporou převzetí služeb při selhání. Zde je několik příkladů:
 
-- Soubor:/Boot/grub2/grub.cfg na RHEL7:
+- Soubor: /boot/grub2/grub.cfg na RHEL7:
 
-    > linux16/vmlinuz-3.10.0-957.el7. x86_64 root =/dev/Mapper/rhel_mup--rhel7u6-root ro crashkernel = 128M\@64M **Rd. LVM. lv = rootvg/root Rd. LVM. lv = rootvg/swap** RHGB quiet LANG = en_US. UTF-8
+    > linux16 /vmlinuz-3.10.0-957.el7.x86_64 root=/dev/mapper/rhel_mup--rhel7u6-root ro crashkernel=128M\@64M **rd.lvm.lv=rootvg/root rd.lvm.lv=rootvg/swap** rhgb quiet LANG=en_US. UTF-8
 
-- Soubor:/etc/default/grub na RHEL7:
+- Soubor: /etc/default/grub na RHEL7:
 
-    > GRUB_CMDLINE_LINUX = "crashkernel = auto **Rd. LVM. Lotyšsko = rootvg/root Rd. LVM. Lotyšsko = rootvg/swap** rhgb quiet"
+    > GRUB_CMDLINE_LINUX="crashkernel=auto **rd.lvm.lv=rootvg/root rd.lvm.lv=rootvg/swap** rhgb quiet"
 
-- Soubor:/boot/grub/menu.lst na počítače RHEL6:
+- Soubor: /boot/grub/menu.lst na RHEL6:
 
-    > jádro/vmlinuz-2.6.32-754.el6. x86_64 ro root = UUID = 36dd8b45-e90d-40d6-81ac-ad0d0725d69e rd_NO_LUKS LANG = en_US. UTF-8 rd_NO_MD SYSFONT = latarcyrheb-sun16 crashkernel = auto **rd_LVM_LV = rootvg/lv_root** KEYBOARDTYPE = PC = US **rd_LVM_LV = rootvg/lv_swap** rd_NO_DM rhgb quiet
+    > jádro /vmlinuz-2.6.32-754.el6.x86_64 ro root=UUID=36dd8b45-e90d-40d6-81ac-ad0d0725d69e rd_NO_LUKS LANG=en_US. UTF-8 rd_NO_MD SYSFONT=latarcyrheb-sun16 crashkernel=auto **rd_LVM_LV=rootvg/lv_root** KEYBOARDTYPE=pc KEYTABLE=us **rd_LVM_LV=rootvg/lv_swap** rd_NO_DM rhgb quiet
 
-V každém příkladu ukazuje část tučného písma, že GRUB musí detekovat dvě zařízení LVM s názvy "root" a "swap" ze skupiny svazků "rootvg".
+V každém příkladu část tučně ukazuje, že GRUB musí detekovat dvě zařízení LVM s názvy "root" a "swap" ze skupiny svazků "rootvg".
 
-### <a name="fix-the-problem"></a>Tento problém vyřešit
+### <a name="fix-the-problem"></a>Oprava problému
 
-Pokud zařízení LVM neexistuje, buď ho vytvořte, nebo odeberte odpovídající parametry z konfiguračních souborů GRUB. Pak zkuste ochranu zapnout znovu.
+Pokud zařízení LVM neexistuje, vytvořte jej nebo odeberte odpovídající parametry z konfiguračních souborů GRUB. Potom zkuste znovu povolit ochranu.
 
-## <a name="a-site-recovery-mobility-service-update-finished-with-warnings-error-code-151083"></a>Aktualizace služby mobility Site Recovery se dokončila s upozorněními (kód chyby 151083).
+## <a name="a-site-recovery-mobility-service-update-finished-with-warnings-error-code-151083"></a>Aktualizace služby Mobility Recovery site byla dokončena s upozorněními (kód chyby 151083)
 
-Služba Site Recovery mobility má mnoho komponent, z nichž jeden se nazývá ovladač filtru. Ovladač filtru je načten do systémové paměti pouze během restartování systému. Pokaždé, když aktualizace služby mobility zahrnuje změny ovladače filtru, počítač se aktualizuje, ale pořád se zobrazí upozornění, že některé opravy vyžadují restart. Upozornění se zobrazí, protože opravy ovladačů filtru se mohou projevit pouze při načtení nového ovladače filtru, který se stane pouze během restartování.
+Služba mobility site recovery má mnoho součástí, z nichž jedna se nazývá ovladač filtru. Ovladač filtru je načten do systémové paměti pouze během restartování systému. Kdykoli aktualizace služby mobility zahrnuje změny ovladače filtru, počítač se aktualizuje, ale stále se zobrazí upozornění, že některé opravy vyžadují restartování. Upozornění se zobrazí, protože opravy ovladačů filtru se mohou projevit pouze při načtení nového ovladače filtru, k němuž dochází pouze během restartování.
 
 > [!NOTE]
-> Toto je pouze upozornění. Existující replikace i nadále funguje i po novém aktualizace agenta. Můžete se rozhodnout, že se budete chtít restartovat kdykoli, když chcete mít výhody nového ovladače filtru, ale starý ovladač filtru bude fungovat, i když ho nerestartujete.
+> Tohle je jen varování. Existující replikace pokračuje v práci i po aktualizaci nového agenta. Můžete se kdykoli restartovat, kdykoli budete chtít, aby výhody nového ovladače filtru, ale starý ovladač filtru stále pracuje, pokud nerestartujete.
 >
-> Kromě ovladače filtru se výhody všech dalších vylepšení a oprav v rámci aktualizace služby mobility projeví bez nutnosti restartování.  
+> Kromě ovladače filtru se projeví výhody dalších vylepšení a oprav v aktualizaci služby Mobility Service bez nutnosti restartování.
 
-## <a name="protection-couldnt-be-enabled-because-the-replica-managed-disk-already-exists-without-expected-tags-in-the-target-resource-group-error-code-150161"></a>Ochranu nelze povolit, protože spravovaný disk repliky již existuje bez očekávaných značek v cílové skupině prostředků (kód chyby 150161).
+## <a name="protection-couldnt-be-enabled-because-the-replica-managed-disk-already-exists-without-expected-tags-in-the-target-resource-group-error-code-150161"></a>Ochranu nelze povolit, protože replika spravovaného disku již existuje bez očekávaných značek v cílové skupině prostředků (kód chyby 150161).
 
 ### <a name="possible-cause"></a>Možná příčina
 
-K tomuto problému může dojít, pokud byl virtuální počítač dříve chráněn a když byla replikace zakázaná, disk repliky se nevyčistí.
+K tomuto problému může dojít, pokud byl virtuální počítač dříve chráněn a pokud byla zakázána replikace, replika disk nebyl vyčištěn.
 
-### <a name="fix-the-problem"></a>Tento problém vyřešit
+### <a name="fix-the-problem"></a>Oprava problému
 
-Odstraňte disk repliky identifikovaný v chybové zprávě a opakujte úlohu ochrany, která se nezdařila.
+Odstraňte repliku disku identifikovanou v chybové zprávě a opakujte úlohu ochrany, která selhala.
 
 ## <a name="next-steps"></a>Další kroky
 

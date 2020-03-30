@@ -1,196 +1,195 @@
 ---
-Description: Aby bylo možné získat peníze z nabídky prodejů na komerčním webu Marketplace, musíte nastavit svůj účet pro výběr a vyplnit nezbytné daňové formuláře.
-title: Nastavte svůj účet výběr a daňové formuláře | Azure Marketplace
+Description: Chcete-li získat peníze z prodeje nabídky na komerčním trhu, musíte si nastavit výplatní účet a vyplnit potřebné daňové formuláře.
+title: Nastavení výplatního účtu a daňových formulářů | Azure Marketplace
 ms.date: 12/10/2019
-ms.topic: article
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+ms.topic: conceptual
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
-ms.openlocfilehash: a6ef9711d6047a75ca5058f12e95d72a79628e30
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: fb0caa64feb7cb024b684a2e94937aec8893bb5e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934159"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281302"
 ---
 # <a name="set-up-your-payout-account-and-tax-forms"></a>Nastavení platebního účtu a daňových formulářů
 
-Aby bylo možné získat peníze z nabídky prodejů na komerčním webu Marketplace, musíte nastavit svůj účet pro výběr a vyplnit nezbytné daňové formuláře v [partnerském centru](https://partner.microsoft.com/dashboard).
+Chcete-li získat peníze z prodeje nabídky na komerčním trhu, musíte si nastavit výplatní účet a vyplnit potřebné daňové formuláře v [Partnerském centru](https://partner.microsoft.com/dashboard).
 
-Pokud plánujete jenom vypsat bezplatné nabídky (a neplánujete nabízet nákupy v aplikaci ani používat Microsoft Advertising), nemusíte nastavovat účet typu výběr ani plnit žádné daňové formuláře. Pokud později změníte své rozhodnutí a rozhodnete se, že chcete nabídky (nebo doplňky) prodávat, můžete si nastavit svůj účet výběr a v tuto chvíli vyplnit daňové formuláře. Dokud nedokončíte svůj účet výběr a daňový profil, nebudete moci odesílat žádné placené nabídky nebo doplňky.
-
-> [!NOTE]
-> Na určitých trzích můžou vydavatelé odeslat jenom bezplatnou nabídku. Pokud je váš účet zaregistrován na jednom z těchto trhů, nebudete mít možnost nastavit účet pro výběr.
-
-Po nastavení účtu je třeba provést dvě věci, abyste mohli prodávat nabídky (nebo doplňky) na komerčním webu Marketplace:
-
-- [Vyplňte svoje daňové formuláře.](#tax-forms)
-- [Nastavení účtu výběr](#payout-account)
+Pokud plánujete pouze vypsat bezplatné nabídky (a neplánujete nabízet nákupy v aplikacích nebo používat Službu Microsoft Advertising), nemusíte si nastavovat výplatní účet ani vyplňovat žádné daňové formuláře. Pokud si to později rozmyslíte a rozhodnete se, že chcete nabídky (nebo doplňky) prodávat, můžete si v té době nastavit výplatní účet a vyplnit daňové formuláře. Dokud nebude váš výplatní účet a daňový profil dokončeny, nebudete moci odesílat žádné placené nabídky nebo doplňky.
 
 > [!NOTE]
-> Podrobnosti o tom, jak a kdy budete platit za peníze, které vaše nabídka nabízí, najdete v tématu [získání placeného](get-paid.md).
+> Na některých trzích mohou vydavatelé předkládat pouze bezplatnou nabídku. Pokud je váš účet registrován na jednom z těchto trhů, nebudete mít možnost založit si výplatní účet.
+
+Po nastavení účtu je třeba před prodejem nabídky (nebo doplňků) na komerčním trhu provést dvě věci:
+
+- [Vyplňte daňové formuláře](#tax-forms)
+- [Nastavení výplatního účtu](#payout-account)
+
+> [!NOTE]
+> Podrobnosti o tom, jak a kdy vám budou vyplaceny peníze, které vaše nabídka, viz [Jak zaplatit](get-paid.md).
 
 ## <a name="tax-forms"></a>Daňové formuláře
 
-### <a name="filling-out-your-tax-forms"></a>Naplnění daňových formulářů
+### <a name="filling-out-your-tax-forms"></a>Vyplňování daňových formulářů
 
-Nejdřív budete muset vytvořit daňový profil a přiřadit ho k programům, které se účastníte. Pro komerční tržiště můžete vytvořit svůj *daňový profil* , a to provedením následujících kroků:
+Nejprve budete muset vytvořit daňový profil a přiřadit jej programům, kterých se účastníte. *Daňový profil* pro komerční trh můžete vytvořit provedením následujících kroků:
 
-- Určete zemi bydliště a občanství.
+- Uveďte zemi svého bydliště a občanství.
 - Vyplňte příslušné daňové formuláře.
 
-Daňové formuláře můžete v partnerském centru doplňovat a odesílat elektronicky. ve většině případů nemusíte tisknout ani tisknout žádné formuláře.
+Daňové formuláře můžete vyplnit a podat elektronicky v Partnerském centru; ve většině případů není nutné tisknout a zasílat žádné formuláře.
 
 > [!IMPORTANT]
-> Různé země a oblasti mají různé daňové požadavky. Přesná částka, kterou musíte zaplatit za daně, závisí na zemích a oblastech, kde prodáváte nabídku. Informace o tom, které země společnost Microsoft zavazuje k prodeji a používání daní vaším jménem, najdete v článku o [smlouvě Microsoft Azure Marketplace Publisher](https://go.microsoft.com/fwlink/p/?LinkID=699560) . V jiných zemích v závislosti na tom, kde jste zaregistrováni, může být nutné uhradit prodej a daň za spotřebu přímo do místní autority zdanění. Kromě toho prodejní příjem aplikace může být zdanitelný jako příjem. Důrazně doporučujeme, abyste se obrátili na příslušné oprávnění pro vaši zemi nebo oblast, která vám nejlépe pomůže určit správné daňové informace pro vaše komerční aktivity na webu Marketplace.
+> Různé země a regiony mají různé daňové požadavky. Přesná částka, kterou musíte zaplatit na daních, závisí na zemích a oblastech, kde nabídku prodáváte. Informace o tom, do kterých zemí Microsoft Microsoft Azure Marketplace u. í vaše oddělení daně, najdete ve [smlouvě s vydavatelem webu Microsoft Azure Marketplace.](https://go.microsoft.com/fwlink/p/?LinkID=699560) V jiných zemích, v závislosti na tom, kde jste registrováni, může být nutné provést daň z prodeje a použití prodeje pro prodej nabídky přímo místnímu daňovému úřadu. Kromě toho výnosy z prodeje aplikace, které obdržíte, mohou být zdanitelné jako příjem. Důrazně doporučujeme, abyste se obrátili na příslušný úřad pro vaši zemi nebo region, který vám může nejlépe pomoci určit správné daňové údaje pro vaše aktivity na komerčním trhu.
 
-1. V [partnerském centru](https://partner.microsoft.com/dashboard)vyberte v pravém horním rohu ikonu **Nastavení účtu** a pak vyberte **Nastavení vývojáře**.
-2. V navigační nabídce vlevo vyberte výběr **a daň**a pak vyberte **Výběr a daňová přiřazení**.
+1. V [Centru partnerů](https://partner.microsoft.com/dashboard)vyberte v pravém horním rohu ikonu Nastavení **účtu** a pak vyberte **Nastavení vývojáře**.
+2. V levé navigační nabídce vyberte **Možnost Výplata a Daň**a potom vyberte Možnost **Výplata a Daňová přiřazení**.
 
-3. Vyberte kombinaci programu a ID prodejce, pro kterou chcete nakonfigurovat daňové informace.
+3. Vyberte kombinaci id programu a prodejce, pro kterou chcete konfigurovat daňové informace.
 
-4. Pokud chcete použít existující daňový profil, vyberte ho z rozevíracího seznamu. V opačném případě vyberte **vytvořit nový profil** a stiskněte **Odeslat**. Přejdete na stránku daňové profily.
-5. Kliknutím na tlačítko **Upravit** upravte daňové informace.
-6. Vyberte příslušný přepínač a pokud se zobrazí výzva, vyberte svou zemi. Tento krok určuje obchodní entitu Microsoftu, která se bude používat k vyvýběru vašeho účtu.
+4. Pokud chcete použít existující daňový profil, vyberte jej z rozevíracího souboru. V opačném případě vyberte **Vytvořit nový profil** a stiskněte **odeslat**. Budete převedena na stránku daňových profilů.
+5. Kliknutím na tlačítko **Upravit** upravte daňové údaje.
+6. Vyberte příslušné přepínací tlačítko a v případě výzvy vyberte zemi. Tento krok určuje obchodní entitu Microsoftu, která bude použita k výplatám na vašem účtu.
 
-7. V závislosti na výběru v kroku 6 se zobrazí výzva, abyste zadali daňové informace vyžadované pro vaši zemi.
+7. V závislosti na vašem výběru v kroku 6 budete vyzváni k zadání daňových údajů požadovaných pro vaši zemi.
 
 > [!NOTE]
-> Bez ohledu na zemi pobytu nebo občanství musíte vyplnit USA daňové formuláře k prodeji jakékoli nabídky nebo doplňků prostřednictvím komerčního tržiště. Vydavatelé, kteří splňují určité USA požadavky na zaplňování, musí vyplnit formulář finančního úřadu W-9. Jiní vydavatelé mimo USA musí vyplnit formulář finančního úřadu W-8. Tyto formuláře můžete po dokončení finančního profilu vyplnit online.
+> Bez ohledu na zemi vašeho bydliště nebo občanství, musíte vyplnit Spojené státy daňové formuláře prodat jakoukoli nabídku nebo add-ons prostřednictvím komerčního trhu. Vydavatelé, kteří splňují určité požadavky na pobyt ve Spojených státech, musí vyplnit formulář IRS W-9. Ostatní vydavatelé mimo Spojené státy musí vyplnit formulář IRS W-8. Tyto formuláře můžete vyplnit online po vyplnění daňového profilu.
 
-### <a name="withholding-rates"></a>Míry odmítnutí
+### <a name="withholding-rates"></a>Srážkové sazby
 
-Informace, které odesíláte v daňovém formuláři, určují odpovídající míru srážkové srážky. Míra odmítnutí se vztahuje pouze na prodej, který provedete do USA; prodej uskutečněný v jiných umístěních než USA nezávisí na odmítnutí. Sazby pro srážka se liší, ale u většiny vydavatelů, které registrují mimo USA, je výchozí sazba 30%. Tuto sazbu máte možnost snížit, pokud vaše země souhlasila se smlouvou o dani ze zisku s USA.
+Údaje, které zadáte ve svých daňových formulářích, určují příslušnou sazbu srážkové daně. Srážková sazba se vztahuje pouze na prodeje, které provedete do Spojených států; prodeje uskutečněné do poboček mimo USA nepodléhají srážkové účasti. Sazby srážkové daně se liší, ale u většiny vydavatelů, kteří se registrují mimo Spojené státy, je výchozí sazba 30 %. Máte možnost snížit tuto sazbu, pokud vaše země souhlasila se smlouvou o dani z příjmu se Spojenými státy.
 
 ### <a name="tax-treaty-benefits"></a>Výhody daňové smlouvy
 
-Pokud nejste mimo USA, možná budete moct využít výhody daňové smlouvy. Tyto výhody se liší od země až po zemi a umožňují snížit množství daní, které si komerční tržiště odpírá. Výhody daňové smlouvy můžete uplatnit vyplněním části II formuláře W-8BEN. Doporučujeme, abyste komunikovali s příslušnými prostředky ve vaší zemi nebo oblasti, abyste zjistili, jestli se vám tyto výhody vztahují.
+Pokud se nejste mimo Spojené státy, můžete využít výhod daňových smluv. Tyto výhody se v jednotlivých zemích liší a mohou vám umožnit snížit výši daní, které komerční trh zadržuje. O výhody daňové smlouvy můžete žádat vyplněním části II formuláře W-8BEN. Doporučujeme, abyste komunikovali s příslušnými zdroji ve vaší zemi nebo oblasti a zjistili, zda se na vás tyto výhody vztahují.
 
 > [!NOTE]
-> USA jednotlivé daňové identifikační číslo (nebo ITIN) se nevyžaduje pro příjem plateb od společnosti Microsoft nebo nárokování na výhody daňové smlouvy.
+> Identifikační číslo daňového poplatníka (nebo ITIN) ve Spojených státech amerických není nutné přijímat platby od společnosti Microsoft nebo žádat o výhody daňové smlouvy.
 
-## <a name="payout-account"></a>Účet pro výběr
+## <a name="payout-account"></a>Výplatní účet
 
-Účet pro výběr je bankovní účet, na který budeme odeslat výsledek z prodeje. Můžete zobrazit všechny platební účty, které jste zadali na stránce profil.
+Výplatní účet je bankovní účet, na který posíláme výtěžek z vašeho prodeje. Můžete zobrazit všechny platební účty, které jste zadali na stránce Profil.
 
 > [!NOTE]
-> V některých trzích se dá účet PayPal použít pro svůj účet ve výběrovém účtu. Další informace o tom, jestli se pro konkrétní trh podporuje PayPal, najdete v tématu [prahové hodnoty pro platby, metody a časové rámce](payment-thresholds-methods-timeframes.md) a [informace PayPal](#paypal-info) níže.
+> Na některých trzích může být PayPal použit pro váš výplatní účet. Chcete-li zjistit, zda je paypal podporován pro konkrétní trh, přečtěte si další podrobnosti najdete [v tématu Prahové hodnoty, metody a časové rámce](payment-thresholds-methods-timeframes.md) plateb a informace o [paypalu](#paypal-info) níže.
 
-### <a name="create-a-payment-profile"></a>Vytvořit platební profil
+### <a name="create-a-payment-profile"></a>Vytvoření platebního profilu
 
-1. V [partnerském centru](https://partner.microsoft.com/dashboard)vyberte ikonu ozubeného kola **Nastavení** v pravém horním rohu a pak vyberte **Nastavení vývojáře**.
-2. Pod záhlavím *Výběr a daň* vyberte možnost **Výběr a přiřazení daňového profilu**.
-
-    > [!NOTE]
-    > Vzhledem k tomu, že se jedná o citlivé informace, může se zobrazit výzva, abyste se znovu přihlásili.
-
-3. Vyberte způsob platby, který chcete nakonfigurovat.
-
-4. Vyberte existující platební profil, nebo klikněte na **vytvořit nový platební profil** a vytvořte nový profil pro zvolený způsob platby.
-
-### <a name="create-a-bank-based-payment-profile"></a>Vytvoření platebního profilu založeného na bance
-
-Pokud jste se rozhodli použít bankovní účet pro příjem výběrů, dokončíte následující postup konfigurace účtu bank.
-
-1. Na stránce *profil banky* zadejte požadované informace o bance.
-2. Zadejte podrobnosti o bankovním účtu.
+1. V [Centru partnerů](https://partner.microsoft.com/dashboard)vyberte v pravém horním rohu ikonu Ozubená kola **Nastavení** a pak vyberte **Nastavení vývojáře**.
+2. Pod nadpisem *Výplata a daň* vyberte **možnost Výplata a přiřazení daňového profilu**.
 
     > [!NOTE]
-    > Pole, která použijete k zadání informací o účtu, akceptují pouze alfanumerické znaky.
+    > Vzhledem k tomu, že se jedná o citlivé informace, můžete být vyzváni k přihlášení znovu.
 
-3. Zadejte podrobnosti o příjemci.
-4. Zpátky na stránce *přiřazení profilu* vyberte měnu, kterou byste chtěli použít, když vydáte vaše výběry.
+3. Vyberte způsob platby, který chcete konfigurovat.
+
+4. Vyberte existující platební profil nebo kliknutím na **Vytvořit nový platební profil** vytvořte nový profil pro zvolený způsob platby.
+
+### <a name="create-a-bank-based-payment-profile"></a>Vytvoření bankovního platebního profilu
+
+Pokud jste se rozhodli použít bankovní účet k přijímání výplat, dokončíte následující proces konfigurace bankovního účtu.
+
+1. Na stránce *Profil banky* uveďte požadované informace o vaší bance.
+2. Uveďte údaje o bankovním účtu.
+
+    > [!NOTE]
+    > Pole, která používáte k poskytnutí informací o účtu, přijímají pouze alfanumerické znaky.
+
+3. Uveďte podrobnosti o příjemci.
+4. Zpět na stránce *přiřazení profilu* vyberte měnu, kterou chcete použít, když vydáváme vaše výplaty.
 
     > [!WARNING]
-    > Ujistěte se, že vaše banka přijímá vybranou měnu výběru.
+    > Ujistěte se, že vaše banka přijímá výplatní měnu, kterou vyberete.
 
-5. Pro každý program, který se účastníte, budete muset vybrat platební profil, ale můžete použít stejný profil pro více programů.
+5. Pro každý program, který se účastníte, budete muset vybrat platební profil, i když stejný profil můžete použít pro více programů.
 
-6. Kliknutím na Odeslat uložte změny.
+6. Kliknutím na odeslat uložte změny.
 
 > [!NOTE]
-> Microsoft může trvat až 48 hodin, než ověří informace ve vašem profilu. Po dokončení tohoto procesu se zobrazí **úplný** *stav ověření* .
+> Ověření informací ve vašem profilu může společnosti Microsoft trvat až 48 hodin. Po dokončení tohoto *procesu* se stav ověření zobrazí **jako Dokončeno.**
 
-Aby byl váš výběr úspěšný, ujistěte se, že:
+Chcete-li zajistit úspěšnou výplatu, ujistěte se, že:
 
-- **Název držitele účtu** , který jste zadali pro svůj účet pro výběr v partnerském centru, musí mít stejný název, který je přidružený k vašemu bankovnímu účtu. Pokud například název vašeho bankovního účtu obsahuje prostřední jméno, přidejte prostřední jméno do svého **názvu držitele účtu**.
-- Výběry se přenášejí přímo z Microsoftu na váš bankovní účet v měně USD.
-- Informace o bance zadané v partnerském centru v latince jsou přeloženy na znaky cyrilice.
+- **Jméno držitele účtu** zadané pro váš výplatní účet v Partnerském centru musí být přesně stejné jméno spojené s vaším bankovním účtem. Pokud například název bankovního účtu obsahuje druhé jméno, přidejte druhé jméno **ke jménu držitele účtu**.
+- Výplaty se převádí přímo z Microsoftu na váš bankovní účet v měně USD.
+- Bankovní informace zadané v Partnerském centru latinkou jsou přeloženy na znaky cyrilice.
 
-### <a name="editing-existing-payment-profiles"></a>Úprava stávajících platebních profilů
+### <a name="editing-existing-payment-profiles"></a>Úprava existujících platebních profilů
 
 Pokud potřebujete provést změny nebo opravit nesprávné informace, můžete upravit existující platební profily.
 
-1. V [partnerském centru](https://partner.microsoft.com/dashboard)vyberte ikonu ozubeného kola **Nastavení** v pravém horním rohu a pak vyberte **Nastavení vývojáře**.
-2. Pod položkou *Výběr a daň* vyberte výběr **a daňové profily**.
-3. Vaše platební profily budou uvedené spolu se stavem. Najděte profil, který chcete upravit, a klikněte na **Upravit** úplně vpravo.
+1. V [Centru partnerů](https://partner.microsoft.com/dashboard)vyberte v pravém horním rohu ikonu Ozubená kola **Nastavení** a pak vyberte **Nastavení vývojáře**.
+2. Pod nadpisem *Výplata a daň* vyberte **výplatní a daňové profily**.
+3. Vaše platební profily budou uvedeny spolu s jejich stavem. Najděte profil, který chcete upravit, a klikněte na **Upravit** zcela vpravo.
 
 > [!IMPORTANT]
-> Změna účtu výběr může zpozdit vaše platby až do jednoho platebního cyklu. K tomuto zpoždění dochází, protože potřebujeme ověřit změnu účtu, stejně jako při prvním nastavení účtu výběr. Po ověření účtu se pořád bude platit celá částka. jakékoli platby splatné za aktuální platební cyklus budou přidány do dalšího. Další informace najdete v tématu [získání placeného](get-paid.md) .
+> Změna výplatního účtu může zpozdit platby až o jeden platební cyklus. K tomuto zpoždění dochází, protože potřebujeme ověřit změnu účtu, stejně jako jsme to udělali při prvním nastavení výplatního účtu. Po ověření účtu vám bude vyplacena celá částka. všechny platby splatné pro aktuální platební cyklus budou přidány do dalšího. Viz [Získání placení za](get-paid.md) další informace.
 
-### <a name="paypal-info"></a>Informace PayPal
+### <a name="paypal-info"></a>Informace o paypalu
 
-Ve vybraných zemích a oblastech můžete vytvořit platební účet tím, že zadáte svoje informace PayPal. Před volbou možnosti účet PayPal jako platebního účtu ale vyberte:
+Ve vybraných zemích a oblastech si můžete vytvořit platební účet zadáním údajů o paypalu. Nicméně, před výběrem PayPal jako způsob platby účtu:
 
-- Zkontrolujte [prahové hodnoty plateb, metody a časové rámce a](payment-thresholds-methods-timeframes.md) ověřte, jestli je PayPal podporovaným způsobem platby ve vaší zemi nebo oblasti.
-- Přečtěte si následující Nejčastější dotazy. V závislosti na vaší situaci nemusí být PayPal pro vás nejvhodnější možností platebního účtu a může být upřednostňovaný bankovní účet.
+- Zkontrolujte [limity, metody a časové rámce platby a](payment-thresholds-methods-timeframes.md) ověřte, zda je PayPal ve vaší zemi nebo oblasti podporovaným způsobem platby.
+- Přečtěte si následující časté dotazy. V závislosti na vaší situaci nemusí být paypal pro vás nejlepší možností platebního účtu a může být upřednostňován bankovní účet.
 
-Běžné dotazy týkající se používání služby PayPal jako způsobu platby:
+Časté otázky týkající se používání služby PayPal jako způsobu platby:
 
-- **Jaká nastavení PayPal je potřeba mít, aby se daly přijímat platby?** Ujistěte se, že váš účet PayPal neblokuje platby eCheck. Toto nastavení se spravuje na stránce předvolby pro příjem plateb v PayPal. Další informace najdete na [stránce nastavení účtu pro účet PayPal](https://go.microsoft.com/fwlink/p/?linkid=513139) .
-- **Je moje země/oblast podporovaná?** V tématu [prahové hodnoty plateb, metody a časové rámce](payment-thresholds-methods-timeframes.md) zjistíte, kde je PayPal podporovaným způsobem platby.
-- **Musí se můj účet PayPal zaregistrovat ve stejné zemi nebo oblasti jako účet partnerského centra?** Ne. Při nastavování účtu PayPal můžete přijmout výchozí konfiguraci. Pokud jste v některých měnách neblokovali platbu, neměli byste mít žádné problémy s jinými zeměmi nebo oblastmi a měnami. Toto nastavení se spravuje na stránce předvolby pro příjem plateb v PayPal.
-- **Musím platby přes PayPal akceptovat ručně?** Ne. Účty PayPal se ve výchozím nastavení nastavují tak, aby uživatelé mohli platby přijmout ručně. to znamená, že platbu nepřijmete do 30 dnů, která se vrátí. Toto nastavení můžete změnit vypnutím možnosti zeptat se na stránce další nastavení PayPal.
-- **Jaké měny podporuje PayPal?** Aktuální seznam najdete na [stránce podpory pro PayPal](https://developer.paypal.com/docs/classic/api/currency-codes/#paypal) .
+- **Jaká nastavení služby PayPal potřebuji k přijímání plateb?** Ujistěte se, že váš účet PayPal neblokuje platby eCheck. Toto nastavení je spravováno na stránce Předvolby příjmu plateb služby PayPal. Další informace najdete na [stránce nastavení účtu služby PayPal.](https://go.microsoft.com/fwlink/p/?linkid=513139)
+- **Je moje země/oblast podporována?** Viz [Limity plateb, metody a časové rámce,](payment-thresholds-methods-timeframes.md) kde je PayPal podporovanou platební metodou.
+- **Musí být můj účet PayPal zaregistrován ve stejné zemi nebo oblasti jako můj účet partnerského centra?** Ne. Při nastavovat účet PayPal můžete přijmout výchozí konfiguraci. Pokud jste nezablokovali platbu v některých měnách, neměli byste mít žádné problémy s jinými zeměmi nebo oblastmi a měnami. Toto nastavení je spravováno na stránce Předvolby příjmu plateb služby PayPal.
+- **Musím přijímat platby PayPal ručně?** Ne. Účty PayPal jsou ve výchozím nastavení nastaveny tak, aby vyžadovaly, aby uživatelé přijímali platby ručně, což znamená, že pokud platbu nepřijmete do 30 dnů, bude vrácena. Toto nastavení můžete změnit vypnutím možnosti "Zeptejte se" na stránce Další nastavení služby PayPal.
+- **Jaké měny společnost PayPal podporuje?** Aktuální seznam naleznete na [stránce podpory společnosti PayPal.](https://developer.paypal.com/docs/classic/api/currency-codes/#paypal)
 
-### <a name="specific-requirements-for-certain-countriesregions"></a>Konkrétní požadavky na určité země nebo oblasti
+### <a name="specific-requirements-for-certain-countriesregions"></a>Zvláštní požadavky pro některé země/regiony
 
-V některých zemích a oblastech musí být dodrženy další požadavky na účty výběr. Pokud jste rezidentem Pákistánu, Rusko nebo Ukrajina, vezměte na vědomí následující požadavky.
+V některých zemích a oblastech je třeba dodržovat další požadavky na výplatní účty. Pokud jste obyvatelem Pákistánu, Ruska nebo Ukrajiny, poznamenejte si následující požadavky.
 
 #### <a name="pakistan"></a>Pákistán
 
-Form-R je pákistánský zákonný zákon platný. Slouží k označení účelu a důvodu přijetí finančních prostředků z zahraničí. Proto je možné, že kdykoli máte nárok na měsíční výběr od Microsoftu, před vydáním výběr do svého účtu budete muset odeslat formulář-R do své banky. Další informace o tom, jak získat kopii formuláře-R, získáte v místní větvi bank.
+Form-R je pákistánský bankovní regulační požadavek. Používá se k označení účelu a důvodu pro příjem finančních prostředků ze zahraničí. Proto kdykoli, kdykoli máte nárok na měsíční výplatu od společnosti Microsoft, budete muset předložit formulář-R do vaší banky před výplatou může být uvolněna na váš účet. Informace o tom, jak získat kopii formuláře-R, vám poskytne místní pobočka banky.
 
-Do své banky budete muset poslat každý měsíc formulář-R, pro který máte nárok na výběr. Například pokud očekáváte, že vydáte výběr každý měsíc v roce, budete muset odeslat formulář-R 12 krát (jednou za každý měsíc).
+Každý měsíc budete muset bance předložit formulář-R, který máte nárok na výplatu. Pokud například očekáváte výplatu každý měsíc v roce, budete muset formulář odeslat 12krát (jednou za měsíc).
 
-Po odeslání tohoto výběru do banky máte 30 dní na odeslání formuláře-R. Pokud nedojde k odeslání do 30 dnů, prostředky se vrátí společnosti Microsoft.
+Jakmile je výplata odeslána do vaší banky, máte 30 dní na odeslání formuláře.Once the pay out has been submitted to your bank, you have 30 days to submit a Form-R. Pokud nebude odeslána do 30 dnů, budou finanční prostředky vráceny společnosti Microsoft.
 
 #### <a name="russia"></a>Rusko
 
-Pokud jste Vydavatel, který je v Rusku, možná budete muset před bankou poskytnout do svého účtu dokumentaci k bance. Pokud máte nárok na placené platby, poskytneme vám v e-mailové zprávě následující dokumentaci:
+Pokud jste vydavatel, který žije v Rusku, možná budete muset poskytnout dokumentaci do vaší banky, než vaše banka bude vklad finančních prostředků na váš účet. Jakmile budete mít nárok na zaplacení, poskytneme vám v e-mailové zprávě následující dokumentaci:
 
-- Certifikát přijetí (AC) – obsahuje množství druhu, které se přenáší do vašeho účtu.
-- [Smlouva vydavatele Microsoft Azure Marketplace](https://go.microsoft.com/fwlink/p/?LinkID=699560) – podepsaná kopie smlouvy vydavatele, která musí být podepsána.
+- Přejímací certifikát (AC) – obsahuje částku výplaty převedené na váš účet.
+- [Smlouva s vydavatelem na webu Microsoft Azure Marketplace](https://go.microsoft.com/fwlink/p/?LinkID=699560) – podepsaná kopie smlouvy s vydavatelem, kterou je třeba podepsat protiútokem.
 
-Aby byl váš výběr úspěšný, ujistěte se, že:
+Chcete-li zajistit úspěšnou výplatu, ujistěte se, že:
 
-- **Název držitele účtu** , který jste zadali pro svůj účet pro výběr v partnerském centru, musí mít stejný název, který je přidružený k vašemu bankovnímu účtu. Pokud například název vašeho bankovního účtu obsahuje prostřední jméno, přidejte prostřední jméno do svého **názvu držitele účtu**.
-- Výběry se přenášejí přímo z Microsoftu na váš bankovní účet v měně Rubl (RUB).
-- Informace o bance zadané v partnerském centru v latince jsou přeloženy na znaky cyrilice.
-- Výběry musí být provedeny na bankovní účet, nikoli na bankovní kartu.
+- **Jméno držitele účtu** zadané pro váš výplatní účet v Partnerském centru musí být přesně stejné jméno spojené s vaším bankovním účtem. Pokud například název bankovního účtu obsahuje druhé jméno, přidejte druhé jméno **ke jménu držitele účtu**.
+- Výplaty se převádí přímo z Microsoftu na váš bankovní účet v měně Rubl (RUB).
+- Bankovní informace zadané v Partnerském centru latinkou jsou přeloženy na znaky cyrilice.
+- Výplaty musí být provedeny na bankovní účet, a nikoli na bankovní kartu.
 
 #### <a name="ukraine"></a>Ukrajina
 
-Pokud jste Vydavatel, který bydlí na Ukrajině, možná budete muset před bankou poskytnout do svého účtu dokumentaci k vaší bance. Pokud máte nárok na placené platby, poskytneme vám v e-mailové zprávě následující dokumentaci:
+Pokud jste vydavatel, který žije na Ukrajině, možná budete muset poskytnout dokumentaci do vaší banky, než vaše banka bude vklad finančních prostředků na váš účet. Jakmile budete mít nárok na zaplacení, poskytneme vám v e-mailové zprávě následující dokumentaci:
 
-- Certifikát přijetí (AC) – obsahuje množství druhu, které se přenáší do vašeho účtu.
-- [Smlouva vydavatele Microsoft Azure Marketplace](https://go.microsoft.com/fwlink/p/?LinkID=699560) – podepsaná kopie smlouvy vydavatele, která musí být podepsána.
-- Dohoda o změně (AA) – Tento dokument může vaše banka použít k identifikaci vašich výběrových prostředků.
+- Přejímací certifikát (AC) – obsahuje částku výplaty převedené na váš účet.
+- [Smlouva s vydavatelem na webu Microsoft Azure Marketplace](https://go.microsoft.com/fwlink/p/?LinkID=699560) – podepsaná kopie smlouvy s vydavatelem, kterou je třeba podepsat protiútokem.
+- Dodatková smlouva (AA) – tento dokument může vaše banka použít k identifikaci vašich výplatních prostředků.
 
-Microsoft poskytuje všechny tři dokumenty při pokusu o váš první výběr. Pro jakékoli následné výběry obdržíte pouze dokument AC. Ponechte si dokumenty ADA a AA pro případ, že je budete potřebovat pro příjem budoucích výběrů z banky.
+Společnost Microsoft poskytuje všechny tři dokumenty při pokusu o první výplatu. Pro všechny následné výplaty obdržíte pouze dokument Střídavého kol. Uchovávejte dokumenty ADA a AA v případě, že je budete potřebovat k tomu, aby od vaší banky obdrželi budoucí výplaty.
 
-### <a name="create-a-paypal-payment-profile"></a>Vytvořit platební profil služby PayPal
+### <a name="create-a-paypal-payment-profile"></a>Vytvoření platebního profilu PayPal
 
-Pokud jste se rozhodli použít bankovní účet pro příjem výběrů, dokončíte následující postup konfigurace účtu bank.
+Pokud jste se rozhodli použít bankovní účet k přijímání výplat, dokončíte následující proces konfigurace bankovního účtu.
 
-1. Na stránce *PayPal* zadejte požadované informace o vašem účtu PayPal.
-2. Zadejte podrobnosti účtu PayPal.
+1. Na stránce *PayPal* uveďte požadované informace o svém účtu PayPal.
+2. Uveďte podrobnosti o svém účtu PayPal.
 
     > [!NOTE]
-    > Pole, která použijete k zadání informací o účtu, akceptují pouze alfanumerické znaky.
+    > Pole, která používáte k poskytnutí informací o účtu, přijímají pouze alfanumerické znaky.
 
-3. Zadejte podrobnosti o příjemci.
-4. Zpátky na stránce *přiřazení profilu* vyberte měnu, kterou byste chtěli použít, když vydáte vaše výběry.
-5. Pro každý program, který se účastníte, budete muset vybrat platební profil, ale můžete použít stejný profil pro více programů.
-6. Kliknutím na Odeslat uložte změny.
+3. Uveďte podrobnosti o příjemci.
+4. Zpět na stránce *přiřazení profilu* vyberte měnu, kterou chcete použít, když vydáváme vaše výplaty.
+5. Pro každý program, který se účastníte, budete muset vybrat platební profil, i když stejný profil můžete použít pro více programů.
+6. Kliknutím na odeslat uložte změny.

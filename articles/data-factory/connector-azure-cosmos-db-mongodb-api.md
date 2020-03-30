@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat z rozhraní API Azure Cosmos DB pro MongoDB
-description: Naučte se, jak kopírovat data z podporovaných zdrojových úložišť dat do nebo z rozhraní API Azure Cosmos DB pro MongoDB pro podporovaná úložiště jímky pomocí Data Factory.
+title: Kopírování dat z rozhraní API služby Azure Cosmos DB pro MongoDB
+description: Zjistěte, jak kopírovat data z podporovaných zdrojových úložišť dat do nebo z rozhraní API Služby Azure Cosmos DB pro MongoDB do podporovaných úložišť jímek pomocí datové továrny.
 services: data-factory, cosmosdb
 ms.author: jingwang
 author: linda33wj
@@ -12,45 +12,45 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/20/2019
 ms.openlocfilehash: 9b13920252b3a5626fd192c6e899154efd31a3de
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75893246"
 ---
-# <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>Kopírování dat do nebo z rozhraní API Azure Cosmos DB pro MongoDB pomocí Azure Data Factory
+# <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>Kopírování dat do a z rozhraní API služby Azure Cosmos DB pro MongoDB pomocí služby Azure Data Factory
 
-Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data z a do Azure Cosmos DB API pro MongoDB. Tento článek vychází [aktivita kopírování ve službě Azure Data Factory](copy-activity-overview.md), který nabízí obecný přehled o aktivitě kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory kopírovat data do a z rozhraní API služby Azure Cosmos DB pro MongoDB. Článek vychází [z aktivity kopírování v Azure Data Factory](copy-activity-overview.md), která představuje obecný přehled aktivity kopírování.
 
 >[!NOTE]
->Tento konektor podporuje pouze kopírování dat do a z rozhraní API Azure Cosmos DB pro MongoDB. Informace o rozhraní SQL API najdete v tématu [Cosmos DB SQL API Connector](connector-azure-cosmos-db.md). Jiné typy rozhraní API se teď nepodporují.
+>Tento konektor podporuje jenom kopírování dat do/z rozhraní API Azure Cosmos DB pro MongoDB. Sql API naleznete [v konektoru rozhraní COSMOS DB SQL API](connector-azure-cosmos-db.md). Jiné typy rozhraní API nejsou nyní podporovány.
 
-## <a name="supported-capabilities"></a>Podporované funkce
+## <a name="supported-capabilities"></a>Podporované možnosti
 
-Data z rozhraní API Azure Cosmos DB pro MongoDB můžete kopírovat do libovolného podporovaného úložiště dat jímky nebo zkopírovat data z libovolného podporovaného zdrojového úložiště dat do rozhraní API Azure Cosmos DB pro MongoDB. Seznam dat ukládá podporovanou aktivitou kopírování jako zdroje a jímky, najdete v části [podporovaných úložišť dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats).
+Můžete zkopírovat data z rozhraní API Azure Cosmos DB pro MongoDB do libovolného podporovaného úložiště dat jímky nebo zkopírovat data z libovolného úložiště dat podporovaného zdroje do rozhraní API Azure Cosmos DB pro MongoDB. Seznam úložišť dat, která podporují aktivita kopírování jako zdroje a propady, naleznete v [tématu Podporovaná úložiště a formáty dat](copy-activity-overview.md#supported-data-stores-and-formats).
 
-K MongoDB konektoru můžete použít rozhraní API Azure Cosmos DB pro:
+Rozhraní API Azure Cosmos DB pro konektor MongoDB můžete použít k:
 
-- Kopírovat data z a do [rozhraní API Azure Cosmos DB pro MongoDB](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction).
-- Zapsat do služby Azure Cosmos DB jako **vložit** nebo **upsert**.
-- Import a export dokumentů JSON jako-je, nebo zkopírovat data z nebo do tabulkové datové sady. Mezi příklady patří SQL database a soubor CSV. Pokud chcete kopírovat dokumenty tak, jak jsou, nebo ze souborů JSON nebo do jiné kolekce Azure Cosmos DB, přečtěte si téma import nebo export dokumentů JSON.
+- Kopírování dat z a do [rozhraní API Azure Cosmos DB pro MongoDB](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction).
+- Zapište do Azure Cosmos DB jako **vložit** nebo **upsert**.
+- Importaje a exportuje dokumenty JSON tak, jak jsou, nebo zkopírujte data z tabulkové datové sady nebo do ní. Příklady zahrnují databázi SQL a soubor CSV. Pokud chcete kopírovat dokumenty tak, jak jsou do nebo ze souborů JSON nebo do nebo z jiné kolekce Azure Cosmos DB, přečtěte si článek Import nebo export dokumentů JSON.
 
-## <a name="get-started"></a>Začít
+## <a name="get-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobné informace o vlastnostech, které můžete použít k definování Data Factory entit, které jsou specifické pro rozhraní API Azure Cosmos DB pro MongoDB.
+V následujících částech jsou uvedeny podrobnosti o vlastnostech, které můžete použít k definování entit Datové továrny, které jsou specifické pro rozhraní API Azure Cosmos DB pro MongoDB.
 
-## <a name="linked-service-properties"></a>Vlastnosti propojené služby
+## <a name="linked-service-properties"></a>Vlastnosti propojených služeb
 
-Pro propojenou službu MongoDB se podporují následující vlastnosti rozhraní API pro Azure Cosmos DB:
+Pro rozhraní API Azure Cosmos DB pro propojenou službu MongoDB jsou podporované následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost **Type** musí být nastavená na **CosmosDbMongoDbApi**. | Ano |
-| connectionString |Zadejte připojovací řetězec pro rozhraní API Azure Cosmos DB pro MongoDB. Můžete ji najít v Azure Portal – Cosmos DB > primárním nebo sekundárním připojovacím řetězcem >, a to se vzorem `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`. <br/><br />Můžete také vložit heslo do Azure Key Vault a načíst `password` konfiguraci z připojovacího řetězce. Další podrobnosti najdete [v tématu uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md) .|Ano |
-| databáze | Název databáze, ke které chcete získat přístup. | Ano |
-| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) používat pro připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít modul Runtime integrace v Azure nebo místního prostředí integration runtime. Pokud není tato vlastnost určena, použije se výchozí prostředí Azure Integration Runtime. |Ne |
+| type | Vlastnost **type** musí být nastavena na **CosmosDbMongoDbApi**. | Ano |
+| připojovací řetězec |Zadejte připojovací řetězec pro rozhraní API databáze Azure Cosmos pro MongoDB. Najdete ji na portálu Azure -> okno Cosmos DB -> primární nebo `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`sekundární připojovací řetězec, se vzorem . <br/><br />Můžete také umístit heslo v Azure Key `password` Vault a vyžádat konfiguraci z připojovacího řetězce.Další podrobnosti najdete [v přihlašovacích údajích úložiště v azure trezoru](store-credentials-in-key-vault.md) klíčů.|Ano |
+| database | Název databáze, ke které chcete získat přístup. | Ano |
+| connectVia | [Prostředí Integrace Runtime](concepts-integration-runtime.md) pro připojení k úložišti dat. Můžete použít Prostředí Azure Integration Runtime nebo runtime integrace s vlastním hostitelem (pokud je úložiště dat umístěné v privátní síti). Pokud tato vlastnost není zadána, použije se výchozí prostředí Azure Integration Runtime. |Ne |
 
 **Příklad**
 
@@ -73,12 +73,12 @@ Pro propojenou službu MongoDB se podporují následující vlastnosti rozhraní
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, naleznete v tématu [datové sady a propojené služby](concepts-datasets-linked-services.md). Pro Azure Cosmos DB rozhraní API pro sadu MongoDB jsou podporovány následující vlastnosti:
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete [v tématu Datové sady a propojené služby](concepts-datasets-linked-services.md). Pro rozhraní API Azure Cosmos DB pro datovou sadu MongoDB jsou podporované následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost **Type** datové sady musí být nastavená na **CosmosDbMongoDbApiCollection**. |Ano |
-| collectionName |Název kolekce Azure Cosmos DB. |Ano |
+| type | Vlastnost **type** datové sady musí být nastavena na **CosmosDbMongoDbApiCollection**. |Ano |
+| název kolekce |Název kolekce Azure Cosmos DB. |Ano |
 
 **Příklad**
 
@@ -99,28 +99,28 @@ Pro propojenou službu MongoDB se podporují následující vlastnosti rozhraní
 }
 ```
 
-## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
+## <a name="copy-activity-properties"></a>Kopírovat vlastnosti aktivity
 
-V této části najdete seznam vlastností, které Azure Cosmos DB rozhraní API pro podporu zdrojů MongoDB a jímky.
+Tato část obsahuje seznam vlastností, které rozhraní API Azure Cosmos DB pro podporu zdroje a jímky MongoDB.
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v tématu [kanály](concepts-pipelines-activities.md).
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, naleznete v [tématu Potrubí](concepts-pipelines-activities.md).
 
-### <a name="azure-cosmos-dbs-api-for-mongodb-as-source"></a>Azure Cosmos DB rozhraní API pro MongoDB jako zdroj
+### <a name="azure-cosmos-dbs-api-for-mongodb-as-source"></a>Rozhraní API Azure Cosmos DB pro MongoDB jako zdroj
 
-Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
+V části Zdroj **kopírování aktivity** jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **CosmosDbMongoDbApiSource**. |Ano |
-| filter | Určuje filtr výběru pomocí operátorů dotazu. Chcete-li vrátit všechny dokumenty v kolekci, vynechejte tento parametr nebo předejte prázdný dokument ({}). | Ne |
-| cursorMethods.project | Určuje pole, která se mají vrátit v dokumentech pro projekci. Chcete-li vrátit všechna pole v porovnání dokumentů, vynechejte tento parametr. | Ne |
-| cursorMethods. Sort | Určuje pořadí, ve kterém dotaz vrátí vyhovující dokumenty. Podívejte se na [kurzor. Sort ()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Ne |
-| cursorMethods. limit | Určuje maximální počet dokumentů vrácených serverem. Viz [Cursor. limit ()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Ne | 
-| cursorMethods.skip | Určuje počet dokumentů, které se mají přeskočit a kde MongoDB začne vracet výsledky. Podívejte se na [kurzor. Skip ()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip). | Ne |
-| batchSize | Určuje počet dokumentů, které se mají vrátit v každé dávce odpovědi z instance MongoDB. Ve většině případů Změna velikosti dávky nebude mít vliv na uživatele nebo aplikaci. Cosmos DB omezí, že každá dávka nemůže překročit velikost 40MB, což je součet batchSize počtu dokumentů, takže tuto hodnotu snížíte, pokud je velikost dokumentu velká. | Ne<br/>(výchozí hodnota je **100**) |
+| type | Vlastnost **type** zdroje aktivity kopírování musí být nastavena na **CosmosDbMongoDbApiSource**. |Ano |
+| filtrování | Určuje filtr výběru pomocí operátorů dotazů. Chcete-li vrátit všechny dokumenty v kolekci, vynechat tento parametr nebo předat prázdný dokument ({}). | Ne |
+| cursorMethods.project | Určuje pole, která se mají vrátit v dokumentech pro projekci. Chcete-li vrátit všechna pole v odpovídajících dokumentech, vyneche tento parametr. | Ne |
+| cursorMethods.sort | Určuje pořadí, ve kterém dotaz vrací odpovídající dokumenty. Viz [cursor.sort()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Ne |
+| cursorMethods.limit | Určuje maximální počet dokumentů, které server vrátí. Viz [cursor.limit()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Ne | 
+| cursorMethods.skip | Určuje počet dokumentů, které mají být přeskakovány a odkud začíná mongoDB vracet výsledky. Viz [cursor.skip()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip). | Ne |
+| batchSize | Určuje počet dokumentů, které mají být vráceny v každé dávce odpovědi z instance MongoDB. Ve většině případů změna velikosti dávky nebude mít vliv na uživatele nebo aplikace. Cosmos DB omezuje každou dávku nesmí překročit 40 MB ve velikosti, což je součet batchSize počet velikosti dokumentů, takže snížit tuto hodnotu, pokud velikost dokumentu je velký. | Ne<br/>(výchozí hodnota je **100**) |
 
 >[!TIP]
->Podpora ADF spotřebovává BSON dokument ve **striktním režimu**. Zajistěte, aby byl dotaz filtru v režimu Strict, nikoli v režimu Shell. Další popis najdete na adrese [MongoDB ručně](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html).
+>ADF podporuje náročné BSON dokument v **přísném režimu**. Ujistěte se, že váš filtr dotaz je v přísném režimu místo shellrežimu. Další popis lze nalézt na [manuálu MongoDB](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html).
 
 **Příklad**
 
@@ -160,19 +160,19 @@ Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** 
 ]
 ```
 
-### <a name="azure-cosmos-dbs-api-for-mongodb-as-sink"></a>Rozhraní API pro MongoDB Azure Cosmos DB jako jímku
+### <a name="azure-cosmos-dbs-api-for-mongodb-as-sink"></a>Rozhraní API Azure Cosmos DB pro MongoDB jako jímku
 
-Následující vlastnosti jsou podporovány v aktivitě kopírování **jímky** části:
+V části **Jímka** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost **Type** jímky aktivity kopírování musí být nastavená na **CosmosDbMongoDbApiSink**. |Ano |
-| writeBehavior |Popisuje, jak zapsat data do služby Azure Cosmos DB. Povolené hodnoty: **vložit** a **upsert**.<br/><br/>Chování **Upsert** je nahradit dokument, pokud již existuje dokument se stejným `_id`; v opačném případě vložte dokument.<br /><br />**Poznámka**: Data Factory automaticky vygeneruje `_id` pro dokument, pokud `_id` není zadán v původním dokumentu nebo mapování sloupce. To znamená, že musíte zajistit, aby, pro **upsert** fungovat podle očekávání, váš dokument nemá identifikátor. |Ne<br />(výchozí hodnota je **vložit**) |
-| writeBatchSize | Vlastnost **writeBatchSize** určuje velikost dokumentů pro zápis v každé dávce. Můžete zkusit zvýšit hodnotu pro **writeBatchSize** a zvýšit tak výkon a snížit hodnotu, pokud je velikost dokumentu velká. |Ne<br />(výchozí hodnota je **10 000**) |
-| writeBatchTimeout | Doba čekání na dokončení operace dávkového vložení před vypršením časového limitu. Povolená hodnota je TimeSpan. | Ne<br/>(výchozí hodnota je **00:30:00** – 30 minut) |
+| type | Vlastnost **type** jímky aktivity kopírování musí být nastavena na **CosmosDbMongoDbApiSink**. |Ano |
+| writeBehavior |Popisuje, jak zapisovat data do Azure Cosmos DB. Povolené hodnoty: **insert** a **upsert**.<br/><br/>Chování **upsert** je nahradit dokument, pokud dokument `_id` se stejným již existuje; v opačném případě vložte dokument.<br /><br />**Poznámka:** Data Factory automaticky `_id` vygeneruje `_id` pro dokument, pokud není zadán v původním dokumentu nebo pomocí mapování sloupců. To znamená, že je nutné zajistit, aby **upsert** fungoval podle očekávání, že váš dokument má ID. |Ne<br />(výchozí hodnota je **vložit**) |
+| writeBatchSize | Vlastnost **writeBatchSize** určuje velikost dokumentů, které mají být zapsány v každé dávce. Můžete zkusit zvýšit hodnotu pro **writeBatchSize** ke zlepšení výkonu a snížení hodnoty, pokud je velikost dokumentu velká. |Ne<br />(výchozí hodnota je **10 000**) |
+| writeBatchTimeout | Čekací doba pro operaci dávkové vložení dokončit před časovým oponem časového režimu. Povolená hodnota je časový rozsah. | Ne<br/>(výchozí hodnota je **00:30:00** - 30 minut) |
 
 >[!TIP]
->Pokud chcete importovat dokumenty JSON tak, jak jsou, přečtěte si část [Import nebo export dokumentů JSON](#import-and-export-json-documents) . Chcete-li kopírovat z tabulkových dat, přečtěte si téma [mapování schématu](#schema-mapping).
+>Chcete-li importovat dokumenty JSON tak, jak jsou, podívejte se do části [Import nebo export dokumentů JSON;](#import-and-export-json-documents) chcete-li kopírovat z tabulkových dat, naleznete v [části Mapování schématu](#schema-mapping).
 
 **Příklad**
 
@@ -208,26 +208,26 @@ Následující vlastnosti jsou podporovány v aktivitě kopírování **jímky**
 
 ## <a name="import-and-export-json-documents"></a>Import a export dokumentů JSON
 
-Tento konektor služby Azure Cosmos DB můžete snadno:
+Tento konektor Azure Cosmos DB můžete snadno použít k:
 
-* Zkopírujte dokumenty mezi dvě kolekce Azure Cosmos DB jako-je.
-* Import dokumentů JSON z různých zdrojů do Azure Cosmos DB, včetně MongoDB, úložiště objektů BLOB v Azure, Azure Data Lake Store a dalších úložišť založených na souborech, které Azure Data Factory podporuje.
-* Exportujte dokumentů JSON z kolekce Azure Cosmos DB do různých úložišť založená na souborech.
+* Zkopírujte dokumenty mezi dvěma kolekcemi Azure Cosmos DB tak, jak jsou.
+* Importujte dokumenty JSON z různých zdrojů do Azure Cosmos DB, včetně mongoDB, úložiště objektů blob Azure, Azure Data Lake Store a dalších úložišť založených na souborech, které Azure Data Factory podporuje.
+* Exportujte dokumenty JSON z kolekce Azure Cosmos DB do různých úložišť založených na souborech.
 
-K dosažení dogmaticky na schématu kopírování:
+Chcete-li dosáhnout nezávislá kopie schématu:
 
-* Při použití nástroje pro kopírování dat vyberte **exportovat jako-soubory JSON nebo kolekce Cosmos DB** možnost.
-* Pokud používáte vytváření aktivit, vyberte formát JSON s odpovídajícím úložištěm souborů pro zdroj nebo jímku.
+* Při použití nástroje Kopírovat data vyberte volbu **Exportovat jako je do souborů JSON nebo kolekce Cosmos DB.**
+* Při použití vytváření aktivit zvolte formát JSON s odpovídajícím úložištěm souborů pro zdroj nebo jímku.
 
-## <a name="schema-mapping"></a>Schema mapping
+## <a name="schema-mapping"></a>Mapování schématu
 
-Chcete-li kopírovat data z rozhraní Azure Cosmos DB API pro MongoDB do tabulkové jímky nebo obráceně, přečtěte si téma [mapování schématu](copy-activity-schema-and-type-mapping.md#schema-mapping).
+Chcete-li zkopírovat data z rozhraní API Služby Azure Cosmos DB pro MongoDB do tabulkového jímky nebo stornovat, přečtěte si [mapování schématu](copy-activity-schema-and-type-mapping.md#schema-mapping).
 
-Konkrétně pro psaní do Cosmos DB, abyste měli jistotu, že naplníte Cosmos DB se správným ID objektu ze zdrojových dat, například sloupec ID v tabulce SQL Database a chcete použít hodnotu, která jako ID dokumentu v MongoDB pro INSERT/Upsert, je třeba nastavit správné mapování schématu podle definice MongoDB striktního režimu (`_id.$oid`), jak je uvedeno níže:
+Konkrétně pro zápis do Cosmos DB, abyste se ujistili, že naplníte Cosmos DB pravým ID objektu ze zdrojových dat, například máte sloupec "id" v databázové tabulce SQL a chcete použít hodnotu jako ID dokumentu v`_id.$oid`MongoDB pro vložení/upsert, musíte nastavit správné mapování schématu podle definice přísného režimu MongoDB ( ) jako následující:
 
-![ID mapy v jímky MongoDB](./media/connector-azure-cosmos-db-mongodb-api/map-id-in-mongodb-sink.png)
+![ID mapy v umyvadle MongoDB](./media/connector-azure-cosmos-db-mongodb-api/map-id-in-mongodb-sink.png)
 
-Po spuštění aktivity kopírování se v jímky vygeneruje pod BSON ObjectId:
+Po spuštění aktivity kopírování pod BSON ObjectId je generován v jímce:
 
 ```json
 {
@@ -237,4 +237,4 @@ Po spuštění aktivity kopírování se v jímky vygeneruje pod BSON ObjectId:
 
 ## <a name="next-steps"></a>Další kroky
 
-Seznam úložišť dat, která aktivitu kopírování, která podporuje jako zdroje a jímky ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat, která podporují aktivity kopírování jako zdroje a propady v Azure Data Factory, najdete v [tématu podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

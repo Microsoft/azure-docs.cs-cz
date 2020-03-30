@@ -1,6 +1,6 @@
 ---
-title: Odebrat osobní data – Proxy aplikací služby Azure Active Directory
-description: Odebrat osobní data z konektorů nainstalovaných na zařízeních pro Proxy aplikací služby Azure Active Directory.
+title: Odebrání osobních údajů – proxy aplikace služby Azure Active Directory
+description: Odeberte osobní data z konektorů nainstalovaných na zařízeních pro proxy aplikace služby Azure Active Directory.
 documentationcenter: ''
 author: msmimart
 manager: CelesteDG
@@ -16,69 +16,69 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe97956d99bd5c677e499b532ef85a1bb4d324ef
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74275411"
 ---
-# <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>Odebrat osobní data pro Proxy aplikací služby Azure Active Directory
+# <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>Odebrání osobních dat pro proxy aplikace služby Azure Active Directory
 
-Proxy aplikací služby Azure Active Directory vyžaduje, abyste na zařízení nainstalovali konektory, což znamená, že na vašich zařízeních můžou být osobní údaje. Tento článek popisuje postup odstranění těchto osobních údajů pro zlepšení ochrany osobních údajů.
+Proxy aplikace Azure Active Directory vyžaduje instalaci konektorů na vašich zařízeních, což znamená, že na vašich zařízeních mohou být osobní data. Tento článek obsahuje postup, jak tyto osobní údaje odstranit, aby se zlepšila ochrana osobních údajů.
 
 ## <a name="where-is-the-personal-data"></a>Kde jsou osobní údaje?
 
-Proxy aplikací může zapisovat osobní data do následujících typů protokolů:
+Pro proxy aplikace je možné zapisovat osobní údaje do následujících typů protokolů:
 
 - Protokoly událostí konektoru
 - Protokoly událostí Windows
 
 ## <a name="remove-personal-data-from-windows-event-logs"></a>Odebrání osobních údajů z protokolů událostí systému Windows
 
-Informace o tom, jak nakonfigurovat uchovávání dat v protokolech událostí systému Windows, najdete v tématu [nastavení pro protokoly událostí](https://technet.microsoft.com/library/cc952132.aspx). Další informace o protokolech událostí systému Windows najdete v tématu [použití protokolu událostí systému Windows](https://msdn.microsoft.com/library/windows/desktop/aa385772.aspx).
+Informace o konfiguraci uchovávání dat pro protokoly událostí systému Windows naleznete v [tématu Nastavení protokolů událostí](https://technet.microsoft.com/library/cc952132.aspx). Další informace o protokolech událostí systému Windows naleznete [v tématu Použití protokolu událostí systému Windows](https://msdn.microsoft.com/library/windows/desktop/aa385772.aspx).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-hybrid-note.md)]
 
-## <a name="remove-personal-data-from-connector-event-logs"></a>Odebrat osobní data z protokolů událostí konektoru
+## <a name="remove-personal-data-from-connector-event-logs"></a>Odebrání osobních údajů z protokolů událostí programu Konektor
 
-Chcete-li zajistit, aby protokoly proxy aplikací neměly osobní údaje, můžete:
+Chcete-li zajistit, aby protokoly proxy aplikace neměly osobní údaje, můžete buď:
 
-- V případě potřeby data odstraňte nebo zobrazte.
-- Vypnout protokolování
+- V případě potřeby odstraňte nebo zobrazte data, nebo
+- Vypnutí protokolování
 
-Pomocí následujících částí můžete odebrat osobní data z protokolů událostí konektoru. Je nutné dokončit proces odstranění pro všechna zařízení, na kterých je konektor nainstalován.
+Následující části slouží k odebrání osobních údajů z protokolů událostí konektoru. Proces odebrání je nutné dokončit u všech zařízení, na kterých je konektor nainstalován.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-### <a name="view-or-export-specific-data"></a>Zobrazit nebo exportovat konkrétní data
+### <a name="view-or-export-specific-data"></a>Zobrazení nebo export určitých dat
 
-Chcete-li zobrazit nebo exportovat konkrétní data, vyhledejte související položky v každém z protokolů událostí konektoru. Protokoly jsou umístěny na adrese `C:\ProgramData\Microsoft\Microsoft AAD Application Proxy Connector\Trace`.
+Chcete-li zobrazit nebo exportovat určitá data, vyhledejte související položky v každém protokolu událostí konektoru. Protokoly jsou umístěny na adrese `C:\ProgramData\Microsoft\Microsoft AAD Application Proxy Connector\Trace`.
 
-Vzhledem k tomu, že protokoly jsou textové soubory, můžete pomocí nástroje [findstr](https://docs.microsoft.com/windows-server/administration/windows-commands/findstr) vyhledat textové položky týkající se uživatele.  
+Vzhledem k tomu, že protokoly jsou textové soubory, můžete použít [findstr](https://docs.microsoft.com/windows-server/administration/windows-commands/findstr) k vyhledávání textových položek souvisejících s uživatelem.  
 
-Pokud chcete najít osobní údaje, vyhledejte soubory protokolu pro uživatele UserID.
+Chcete-li najít osobní údaje, vyhledejte soubory protokolu pro UserID.
 
-Chcete-li najít osobní údaje zaznamenané aplikací, které používají vynucené delegování protokolu Kerberos, vyhledejte tyto součásti typu uživatelského jména:
+Chcete-li vyhledat osobní údaje zaznamenané aplikací, která používá delegování s omezeným i protokolem Kerberos, vyhledejte tyto součásti typu uživatelského jména:
 
-- Místní hlavní název uživatele
-- Část hlavního názvu uživatele v uživatelském jménu
-- Část místního hlavního názvu uživatele v uživatelském jménu
-- Místní název účtu správce zabezpečení účtů (SAM)
+- Místní hlavní jméno uživatele
+- Uživatelské jméno část hlavního jména uživatele
+- Uživatelské jméno část místního uživatelského hlavního jména
+- Název účtu správce místních účtů zabezpečení (SAM)
 
-### <a name="delete-specific-data"></a>Odstranit konkrétní data
+### <a name="delete-specific-data"></a>Odstranění konkrétních dat
 
 Odstranění konkrétních dat:
 
-1. Restartujte službu Microsoft Azure AD proxy aplikace konektor pro vygenerování nového souboru protokolu. Nový soubor protokolu umožňuje odstranit nebo změnit staré soubory protokolu. 
-1. Pokud chcete najít informace, které je třeba odstranit, postupujte podle výše popsaných kroků v tématu [zobrazení nebo export konkrétního data](#view-or-export-specific-data) . Prohledejte všechny protokoly konektoru.
-1. Buď odstraňte příslušné soubory protokolu, nebo selektivně odstraňte pole obsahující osobní údaje. Pokud už je nepotřebujete, můžete taky odstranit všechny staré soubory protokolu.
+1. Chcete-li vygenerovat nový soubor protokolu, restartujte službu Microsoft Azure AD Application Proxy Connector. Nový soubor protokolu umožňuje odstranit nebo upravit staré soubory protokolu. 
+1. Chcete-li najít informace, které je třeba odstranit, postupujte podle výše popsaného procesu [zobrazení nebo exportu konkrétních dat.](#view-or-export-specific-data) Prohledejte všechny protokoly konektorů.
+1. Odstraňte příslušné soubory protokolu nebo selektivně odstraňte pole obsahující osobní údaje. Můžete také odstranit všechny staré soubory protokolu, pokud je již nepotřebujete.
 
-### <a name="turn-off-connector-logs"></a>Vypnout protokoly konektorů
+### <a name="turn-off-connector-logs"></a>Vypnutí protokolů konektorů
 
-Jedna z možností, jak zajistit, aby protokoly konektoru neobsahují osobní údaje, je vypnutí generování protokolu vypnuté. Chcete-li zastavit generování protokolů konektoru, odeberte následující zvýrazněný řádek z `C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config`.
+Jednou z možností, jak zajistit, aby protokoly konektorů neobsahovaly osobní údaje, je vypnout generování protokolu. Chcete-li zastavit generování protokolů konektorů, `C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config`odeberte z programu .
 
-![Zobrazuje fragment kódu se zvýrazněným kódem, který se má odebrat.](./media/application-proxy-remove-personal-data/01.png)
+![Zobrazí fragment kódu se zvýrazněným kódem, který chcete odebrat.](./media/application-proxy-remove-personal-data/01.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Přehled aplikačního proxy serveru najdete v tématu [jak poskytnout zabezpečený vzdálený přístup k místním aplikacím](application-proxy.md).
+Přehled proxy aplikací najdete v tématu [Jak zajistit zabezpečený vzdálený přístup k místním aplikacím](application-proxy.md).

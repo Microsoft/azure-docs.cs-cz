@@ -1,35 +1,35 @@
 ---
-title: Získat data senzorů od partnerů
+title: Získejte data ze senzorů od partnerů
 description: Tento článek popisuje, jak získat data ze senzorů od partnerů.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 9364c344c58d17f9f6e6404dd8aa850af032cee9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 916c828365c8f9f50f408bd6c51182bb6e89605f
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79271808"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384190"
 ---
-# <a name="get-sensor-data-from-sensor-partners"></a>Získat data ze senzorů od partnerů snímačů
+# <a name="get-sensor-data-from-sensor-partners"></a>Získejte data ze senzorů od partnerů senzorů
 
-Azure FarmBeats pomáhá přenést streamovaná data ze zařízení IoT a senzorů do DataHub. V současné době jsou podporovány následující partneři zařízení snímačů.
+Azure FarmBeats vám pomůže přenést streamovaná data z vašich zařízení ioT a senzorů do Datahubu. V současné době jsou podporovány následující partnery zařízení senzoru.
 
   ![Partneři FarmBeats](./media/get-sensor-data-from-sensor-partner/partner-information-2.png)
 
-Integrace dat zařízení s Azure FarmBeats vám pomůže získat základní data ze senzorů IoT nasazených ve vaší farmě do datového centra. Data, jakmile jsou k dispozici, je možné vizuálně vymezit pomocí akcelerátoru FarmBeats. Data se dají použít pro vytváření modelů datových fúzí a machine learningu a umělé Intelligence (ML/AI) pomocí FarmBeats.
+Integrace dat zařízení s Azure FarmBeats vám pomůže získat pozemní data ze senzorů IoT nasazených ve vaší farmě do datového centra. Data, jakmile jsou k dispozici, mohou být vizualizována pomocí akcelerátoru FarmBeats. Data mohou být použita pro fúzi dat a strojové učení / umělou inteligenci (ML / AI) model budovy pomocí FarmBeats.
 
-Pokud chcete spustit streamování dat senzorů, zajistěte následující:
+Chcete-li spustit datový přenos dat ze senzorů, zajistěte následující:
 
--  Nainstalovali jste FarmBeats do Azure Marketplace.
--  Rozhodli jste se senzory a zařízení, která chcete nainstalovat na farmu.
--  Pokud plánujete používat senzory vlhkosti v půdě, použijte mapu umístění snímače vlhkosti FarmBeats, abyste získali doporučení k počtu senzorů a tam, kde je přesně chcete umístit. Další informace najdete v tématu věnovaném [generování map](generate-maps-in-azure-farmbeats.md).
-- Zakoupíte a nasadíte zařízení nebo senzory od partnera zařízení ve vaší farmě. Ujistěte se, že máte přístup k datům ze senzorů prostřednictvím řešení partnerů pro zařízení.
+-  FarmBeats jste nainstalovali na Azure Marketplace.
+-  Rozhodli jste se pro senzory a zařízení, které chcete nainstalovat na svou farmu.
+-  Pokud máte v plánu používat senzory vlhkosti půdy, použijte FarmBeats Půdní vlhkost senzor umístění mapy získat doporučení o počtu senzorů a kde přesně byste měli umístit. Další informace naleznete v [tématu Generování map](generate-maps-in-azure-farmbeats.md).
+- Nakupujete a nasazujete zařízení nebo senzory od partnera zařízení na farmě. Ujistěte se, že máte přístup k datům senzorů prostřednictvím řešení partnerů zařízení.
 
 ## <a name="enable-device-integration-with-farmbeats"></a>Povolit integraci zařízení s FarmBeats
 
-Po spuštění streamování dat ze senzorů můžete zahájit proces získávání dat do systému FarmBeats. Poskytněte poskytovateli zařízení následující informace, které umožní integraci do FarmBeats:
+Po spuštění streamování dat ze senzorů můžete zahájit proces získávání dat do systému FarmBeats. Poskytněte svému poskytovateli zařízení následující informace, které umožní integraci do služby FarmBeats:
 
  - Koncový bod rozhraní API
  - ID tenanta
@@ -37,35 +37,43 @@ Po spuštění streamování dat ze senzorů můžete zahájit proces získává
  - Tajný klíč klienta
  - Připojovací řetězec EventHub
 
-Výše uvedené informace můžete vygenerovat pomocí následujících kroků: (Upozorňujeme, že tyto kroky je potřeba provést v Azure, abyste měli přístup k předplatnému Azure, kde je nasazený FarmBeats.)
+Výše uvedené informace můžete vygenerovat následujícím postupem: (Vezměte prosím na vědomí, že tyto kroky je nutné provést v Azure, takže budete potřebovat přístup k předplatnému Azure, kde se nasadí FarmBeats)
 
-1. Stáhněte [soubor zip](https://aka.ms/farmbeatspartnerscriptv2)a extrahujte ho na místní disk. V souboru zip bude k dispozici jeden soubor.
+1. Přihlaste se k webu https://portal.azure.com/.
 
-2. Přihlaste se k https://portal.azure.com/.
+2. **Pokud jste na FarmBeats verze 1.2.7 nebo novější, přeskočte kroky 2a, 2b a 2c a přejděte ke kroku 3.**. Můžete zkontrolovat Verzi FarmBeats kliknutím na ikonu Nastavení na pravé horní straně ui FarmBeats.
 
-3. **Pokud používáte FarmBeats verze 1.2.7 nebo novější, přeskočte prosím kroky 3a, 3b a 3C a přejděte ke kroku 4.** Verzi FarmBeats můžete ověřit kliknutím na ikonu nastavení v pravé horní části uživatelského rozhraní FarmBeats.
+2a. Přejít na registrace aplikací služby Azure Active Directory ->
 
-3a. Přejít na Azure Active Directory > Registrace aplikací
+2b. Klikněte na registraci aplikace, která byla vytvořena jako součást vašeho nasazení FarmBeats. Bude mít stejný název jako vaše datové centrum FarmBeats.
 
-3b. Klikněte na registrace aplikace, která se vytvořila jako součást nasazení FarmBeats. Bude mít stejný název jako FarmBeats data hub.
+2c. Klikněte na "Vystavit API" -> Klikněte na "Přidat klientskou aplikaci" a zadejte **04b07795-8ddb-461a-bbee-02f9e1bf7b46** a zkontrolujte "Authorize Scope". Tím se umožní přístup k Azure CLI (Cloud Shell) k provedení níže uvedených kroků.
 
-3c. Klikněte na "vystavení rozhraní API" – > klikněte na Přidat klientskou aplikaci a zadejte **04b07795-8ddb-461a-bbee-02f9e1bf7b46** a zaškrtněte možnost autorizovat rozsah. Tím se zajistí přístup k rozhraní příkazového řádku Azure CLI (Cloud Shell), aby se prováděly níže uvedené kroky.
+3. Otevřete Cloud Shell. Tato možnost je dostupná na panelu nástrojů v pravém horním rohu portálu Azure.
 
-4. Otevřete Cloud Shell. Tato možnost je k dispozici na panelu nástrojů v pravém horním rohu Azure Portal.
+    ![Panel nástrojů portálu Azure](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-    ![Panel nástrojů Azure Portal](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
+5. Ujistěte se, že je prostředí nastaveno na **Prostředí PowerShell**. Ve výchozím nastavení je nastavena na Bash.
 
-5. Ujistěte se, že je prostředí nastavené na **PowerShell**. Ve výchozím nastavení je nastavená na bash.
+    ![Nastavení panelu nástrojů prostředí PowerShell](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-    ![Nastavení panelu nástrojů PowerShell](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
+6. Přejděte do domovského adresáře.
 
-6. Nahrajte soubor z kroku 1 v instanci Cloud Shell.
+   ```azurepowershell-interactive 
 
-    ![Tlačítko nahrát na panelu nástrojů](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
+    cd  
 
-7. Přejít do adresáře, kam se soubor nahrál. Ve výchozím nastavení se soubory odešlou do domovského adresáře pod uživatelským jménem.
+    ```
 
-8. Spusťte následující skript. Skript zobrazí výzvu k zadání ID tenanta, které se dá získat ze stránky s přehledem Azure Active Directory >.
+7. Spusťte následující příkaz. Tím se stáhne skript do domovského adresáře.
+
+    ```azurepowershell-interactive 
+
+    wget –q https://aka.ms/farmbeatspartnerscriptv3 -O ./generatePartnerCredentials.ps1 
+
+    ```
+
+8. Spusťte následující skript. Skript požádá o ID klienta, které lze získat ze stránky Azure Active Directory -> Přehled.
 
     ```azurepowershell-interactive 
 
@@ -73,100 +81,104 @@ Výše uvedené informace můžete vygenerovat pomocí následujících kroků: 
 
     ```
 
-9. Postupujte podle pokynů na obrazovce a zaznamenejte hodnoty pro **koncový bod rozhraní API**, **ID tenanta**, **ID klienta**, **tajný klíč klienta**a **připojovací řetězec EventHub**.
+9. Podle pokynů na obrazovce zachyťte hodnoty pro **koncový bod rozhraní API**, **ID klienta**, **ID klienta**, **tajný klíč klienta**a **připojovací řetězec EventHub**.
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>Integrace dat zařízení pomocí generovaných přihlašovacích údajů
 
-Nyní máte následující informace vygenerované z předchozí části.
+Nyní máte následující informace generované z předchozí části.
  - Koncový bod rozhraní API
  - Připojovací řetězec EventHub
  - ID klienta
  - Tajný klíč klienta
  - ID tenanta
  
-Pro připojení FarmBeats ho budete muset poskytnout vašemu partnerovi zařízení. Pro stejný postup použijte portál pro partnery zařízení. Pokud třeba používáte zařízení z nástrojů Davis, přejděte prosím na následující stránku:
+Budete muset poskytnout to to vaše zařízení partnera pro propojení FarmBeats. Přejděte na portál pro partnery zařízení, kde můžete udělat totéž. Například v případě, že používáte zařízení od Davis Instruments, Teralytic nebo Pessl Instruments (Metos.at), přejděte prosím na odpovídající stránky, jak je uvedeno níže:
 
-[Davisové nástroje](https://weatherlink.github.io/azure-farmbeats/setup)
+[Davis nástroje](https://weatherlink.github.io/azure-farmbeats/setup)
 
- Poskytovatel zařízení potvrdí úspěšnou integraci. Po potvrzení můžete zobrazit všechna zařízení a senzory v Azure FarmBeats.
+[Teralytické](https://app.teralytic.com/)
 
-## <a name="view-devices-and-sensors"></a>Zobrazit zařízení a snímače
+[Pessl nástroje](https://ng.fieldclimate.com/user-api-services)
 
-V následující části můžete zobrazit zařízení a senzory pro vaši farmu.
+ Poskytovatel zařízení potvrzuje úspěšnou integraci. Po potvrzení můžete zobrazit všechna zařízení a senzory na Azure FarmBeats.
+
+## <a name="view-devices-and-sensors"></a>Zobrazit zařízení a senzory
+
+Pomocí následující části můžete zobrazit zařízení a senzory pro vaši farmu.
 
 ### <a name="view-devices"></a>Zobrazení zařízení
 
 V současné době FarmBeats podporuje následující zařízení:
 
-- **Uzel**: zařízení, ke kterému jsou připojené některé snímače.
-- **Brána**: zařízení, ke kterému jsou připojené aspoň jeden uzel.
+- **Uzel**: Zařízení, ke kterému je připojen jeden nebo více senzorů.
+- **Brána**: Zařízení, ke kterému je připojen jeden nebo více uzlů.
 
-Postupujte takto:
+Postupujte následovně.
 
-1. Na domovské stránce v nabídce vyberte **zařízení** .
-  Na stránce **zařízení** se zobrazí typ zařízení, model, stav, farma, na kterou je umístěna, a datum poslední aktualizace pro metadata. Ve výchozím nastavení je sloupec farma nastaven na *hodnotu null*. Můžete se rozhodnout přiřadit zařízení k farmě. Další informace najdete v tématu [přiřazení zařízení](#assign-devices).
-2. Vyberte zařízení, ve kterém se zobrazí vlastnosti zařízení, telemetrie a podřízená zařízení připojená k zařízení.
+1. Na domovské stránce vyberte **Zařízení** z nabídky.
+  Stránka **Zařízení** zobrazuje typ zařízení, model, stav, farmu, do které je umístěna, a poslední aktualizované datum metadat. Ve výchozím nastavení je sloupec farmy nastaven na *hodnotu NULL*. Zařízení můžete přiřadit ke farmě. Další informace naleznete v tématu [Přiřazení zařízení](#assign-devices).
+2. Výběrem zařízení zobrazíte vlastnosti zařízení, telemetrii a podřízená zařízení připojená k zařízení.
 
-    ![Stránka zařízení](./media/get-sensor-data-from-sensor-partner/view-devices-1.png)
+    ![Stránka Zařízení](./media/get-sensor-data-from-sensor-partner/view-devices-1.png)
 
 ### <a name="view-sensors"></a>Zobrazit senzory
 
-Postupujte takto:
+Postupujte následovně.
 
-1. Na domovské stránce vyberte z nabídky **snímače** .
-  Na stránce **senzory** se zobrazí podrobnosti o typu senzoru, farmě, k níž je připojen, k nadřazenému zařízení, názvu portu, typu portu a posledním aktualizovanému stavu.
-2. Vyberte senzor pro zobrazení vlastností senzorů, aktivních výstrah a telemetrie ze senzoru.
+1. Na domovské stránce vyberte **senzory** z nabídky.
+  Na stránce **Senzory** se zobrazují podrobnosti o typu senzoru, farmě, ke které je připojen, nadřazeném zařízení, názvu portu, typu portu a posledním aktualizovaném stavu.
+2. Vyberte senzor, chcete-li ze senzoru zobrazit vlastnosti senzoru, aktivní výstrahy a telemetrii.
 
-    ![Stránka senzorů](./media/get-sensor-data-from-sensor-partner/view-sensors-1.png)
+    ![Stránka senzory](./media/get-sensor-data-from-sensor-partner/view-sensors-1.png)
 
 ## <a name="assign-devices"></a>Přiřazení zařízení  
 
-Po přetečení dat senzoru je můžete přiřadit do farmy, do které jste nasadili senzory.
+Poté, co data senzorů proudí dovnitř, můžete je přiřadit k farmě, kde jste nasadili senzory.
 
-1. Na stránce domů v nabídce vyberte možnost **farmy** . Zobrazí se stránka seznam **farmy** .
+1. Na domovské stránce vyberte **Farmy** z nabídky. Zobrazí se stránka se **seznamem Farmy.**
 2. Vyberte farmu, ke které chcete zařízení přiřadit, a vyberte **Přidat zařízení**.
-3. Zobrazí se okno **Přidat zařízení** . Vyberte zařízení, které chcete pro farmu přiřadit.
+3. Zobrazí se okno **Přidat zařízení.** Vyberte zařízení, které chcete přiřadit farmě.
 
     ![Okno Přidat zařízení](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
 
-4. Vyberte **Přidat zařízení**. Případně přejděte do nabídky **zařízení** , vyberte zařízení, která chcete přiřadit k farmě, a vyberte **přidružit zařízení**.
-5. V okně **přidružit zařízení** vyberte farmu z rozevíracího seznamu a výběrem **použít u všech** přidružte farmu ke všem vybraným zařízením.
+4. Vyberte **Přidat zařízení**. Případně přejděte do nabídky **Zařízení,** vyberte zařízení, která chcete přiřadit farmě, a vyberte **Přidružit zařízení**.
+5. V okně **Přidružit zařízení** vyberte farmu z rozevíracího seznamu a vyberte **Použít u všech,** chcete-li přidružit farmu ke všem vybraným zařízením.
 
-    ![Okno přidružit zařízení](./media/get-sensor-data-from-sensor-partner/associate-devices-1.png)
+    ![Okno Přidružit zařízení](./media/get-sensor-data-from-sensor-partner/associate-devices-1.png)
 
-6. Pokud chcete každé zařízení přidružit k jiné farmě, vyberte šipku rozevíracího seznamu ve sloupci **přiřadit k farmě** a vyberte farmu pro každý řádek zařízení.
-7. Vyberte **přiřadit** a dokončete přiřazení zařízení.
+6. Chcete-li přidružit každé zařízení k jiné farmě, vyberte šipku rozevíracího seznamu ve sloupci **Přiřadit farmě** a vyberte farmu pro každý řádek zařízení.
+7. Chcete-li dokončit přiřazení zařízení, vyberte **Přiřadit.**
 
-### <a name="visualize-sensor-data"></a>Vizualizace dat ze senzorů
+### <a name="visualize-sensor-data"></a>Vizualizace dat ze snímačů
 
-Postupujte takto:
+Postupujte následovně.
 
-1. Na stránce domů v nabídce vyberte možnost **farmy** a zobrazte stránku **farmy** .
-2. Vyberte **farmu** , pro kterou chcete zobrazit data ze senzorů.
-3. Na řídicím panelu **farmy** můžete zobrazit data telemetrie. Můžete zobrazit živou telemetrii nebo použít **vlastní rozsah** pro zobrazení určitého rozsahu kalendářních dat.
+1. Na domovské stránce vyberte **Farmy** z nabídky a zobrazte stránku **Farmy.**
+2. Vyberte **farmu,** pro kterou chcete zobrazit data ze senzorů.
+3. Na řídicím panelu **farma** můžete zobrazit telemetrická data. Můžete zobrazit živou telemetrii nebo použít **vlastní rozsah** k zobrazení určitého rozsahu dat.
 
     ![Řídicí panel farmy](./media/get-sensor-data-from-sensor-partner/telemetry-data-1.png)
 
-## <a name="delete-a-sensor"></a>Odstranění snímače
+## <a name="delete-a-sensor"></a>Odstranění senzoru
 
-Postupujte takto:
+Postupujte následovně.
 
-1. Na domovské stránce výběrem **senzorů** z nabídky zobrazíte stránku **senzory** .
-2. Vyberte zařízení, které chcete odstranit, a v potvrzovacím okně vyberte **Odstranit** .
+1. Na domovské stránce vyberte **Senzory** z nabídky a zobrazte stránku **Senzory.**
+2. Vyberte zařízení, které chcete odstranit, a v **potvrzovacím** okně vyberte Odstranit.
 
     ![Tlačítko Odstranit](./media/get-sensor-data-from-sensor-partner/delete-sensors-1.png)
 
 Potvrzovací zpráva ukazuje, že senzor byl úspěšně odstraněn.
 
-## <a name="delete-devices"></a>Odstranit zařízení
+## <a name="delete-devices"></a>Odstranění zařízení
 
-Postupujte takto:
+Postupujte následovně.
 
-1. Na stránce domů v nabídce vyberte **zařízení** a zobrazte stránku **zařízení** .
-2. Vyberte zařízení, které chcete odstranit, a v potvrzovacím okně vyberte **Odstranit** .
+1. Na domovské stránce vyberte **Zařízení** z nabídky a zobrazte stránku **Zařízení.**
+2. Vyberte zařízení, které chcete odstranit, a v **potvrzovacím** okně vyberte Odstranit.
 
     ![Tlačítko Odstranit](./media/get-sensor-data-from-sensor-partner/delete-device-1.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď máte k dispozici data ze senzorů do instance služby Azure FarmBeats. Nyní se dozvíte, jak [vygenerovat mapy](generate-maps-in-azure-farmbeats.md#generate-maps) pro vaše farmy.
+Nyní máte data senzorů toku do instance Azure FarmBeats. Nyní se naučte vytvářet [mapy](generate-maps-in-azure-farmbeats.md#generate-maps) pro vaše farmy.

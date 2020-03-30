@@ -1,6 +1,6 @@
 ---
 title: Začínáme s frontami služby Azure Service Bus | Dokumentace Microsoftu
-description: V tomto kurzu vytvoříte konzolové aplikace .NET Core pro posílání zpráv a přijímání zpráv z fronty Service Bus.
+description: V tomto kurzu vytvoříte aplikace konzoly .NET Core pro odesílání zpráv a přijímání zpráv z fronty služby Service Bus.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -15,27 +15,27 @@ ms.workload: na
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 5718106aee0e60d111398efdb839945c2c7a8a06
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77471733"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Začínáme s frontami služby Service Bus
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-V tomto kurzu vytvoříte konzolové aplikace .NET Core pro posílání zpráv a přijímání zpráv z fronty Service Bus.
+V tomto kurzu vytvoříte aplikace konzoly .NET Core pro odesílání zpráv a přijímání zpráv z fronty služby Service Bus.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Visual Studio 2019](https://www.visualstudio.com/vs).
 - [NET Core SDK](https://www.microsoft.com/net/download/windows) verze 2.0 nebo novější.
-- Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-- Pokud nemáte frontu, ve které byste mohli pracovat, postupujte podle kroků v tématu [použití Azure Portal k vytvoření fronty Service Bus](service-bus-quickstart-portal.md) .
+- Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat [výhody předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- Pokud nemáte frontu pro práci s, postupujte podle kroků na [portálu Azure k vytvoření](service-bus-quickstart-portal.md) článku fronty Service Bus k vytvoření fronty.
 
-  - Přečtěte si rychlý přehled Service Busch front.
-  - Vytvořte obor názvů Service Bus.
-  - Získá připojovací řetězec.
-  - Vytvořte frontu Service Bus.
+  - Přečtěte si rychlý přehled front service bus.
+  - Vytvořte obor názvů service bus.
+  - Získejte připojovací řetězec.
+  - Vytvořte frontu služby Service Bus.
 
 ## <a name="send-messages-to-the-queue"></a>Zasílání zpráv do fronty
 
@@ -43,19 +43,19 @@ Abychom mohli do fronty odesílat zprávy, napíšeme v sadě Visual Studio konz
 
 ### <a name="create-a-console-application"></a>Vytvoření konzolové aplikace
 
-Spusťte Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NET Core)** pro C#. V tomto příkladu se pojmenuje *CoreSenderApp*aplikace.
+Spusťte Visual Studio a vytvořte nový projekt **konzolové aplikace (.NET Core)** pro C#. Tento příklad pojmenuje aplikaci *CoreSenderApp*.
 
 ### <a name="add-the-service-bus-nuget-package"></a>Přidání balíčku Service Bus NuGet
 
 1. Klikněte pravým tlačítkem na nově vytvořený projekt a vyberte možnost **Spravovat balíčky NuGet**.
-1. Vyberte **Procházet**. Vyhledejte a vyberte **[Microsoft. Azure. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)** .
-1. Vyberte **instalovat** a dokončete instalaci a potom zavřete Správce balíčků NuGet.
+1. Vyberte **Procházet**. Vyhledejte a vyberte **[microsoft.azure.servicebus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)**.
+1. Vyberte **Instalovat,** chcete-li dokončit instalaci, zavřete Správce balíčků NuGet.
 
     ![Výběr balíčku NuGet][nuget-pkg]
 
 ### <a name="write-code-to-send-messages-to-the-queue"></a>Napsání kódu pro odesílání zpráv do fronty
 
-1. V *program.cs*přidejte následující příkazy `using` v horní části definice oboru názvů před deklaraci třídy:
+1. V *Program.cs*přidejte `using` následující příkazy v horní části definice oboru názvů před deklaraci třídy:
 
     ```csharp
     using System.Text;
@@ -64,7 +64,7 @@ Spusťte Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NET Cor
     using Microsoft.Azure.ServiceBus;
     ```
 
-1. Ve třídě `Program` deklarovat následující proměnné:
+1. Ve `Program` třídě deklarujte následující proměnné:
 
     ```csharp
     const string ServiceBusConnectionString = "<your_connection_string>";
@@ -72,9 +72,9 @@ Spusťte Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NET Cor
     static IQueueClient queueClient;
     ```
 
-    Jako proměnnou `ServiceBusConnectionString` zadejte připojovací řetězec pro obor názvů. Zadejte název fronty.
+    Zadejte připojovací řetězec `ServiceBusConnectionString` pro obor názvů jako proměnnou. Zadejte název fronty.
 
-1. Metodu `Main()` nahraďte následující **asynchronní** metodou `Main`. Volá metodu `SendMessagesAsync()`, kterou přidáte v dalším kroku k odesílání zpráv do fronty. 
+1. Nahraďte metodu `Main()` následující **asynchronní** `Main` metodou. Volá metodu, `SendMessagesAsync()` kterou přidáte v dalším kroku k odeslání zpráv do fronty. 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -94,7 +94,7 @@ Spusťte Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NET Cor
         await queueClient.CloseAsync();
     }
     ```
-1. Přímo za metodu `MainAsync()` přidejte následující metodu `SendMessagesAsync()`, která provede práci odesláním počtu zpráv určených `numberOfMessagesToSend` (aktuálně nastavené na hodnotu 10):
+1. Bezprostředně za `MainAsync()` metodu přidejte následující `SendMessagesAsync()` metodu, která provádí práci `numberOfMessagesToSend` odesílání počtu zpráv určených (aktuálně nastavena na 10):
 
     ```csharp
     static async Task SendMessagesAsync(int numberOfMessagesToSend)
@@ -121,7 +121,7 @@ Spusťte Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NET Cor
     }
     ```
 
-Soubor *program.cs* by měl vypadat nějak takto:
+Zde je to, co *váš Program.cs* soubor by měl vypadat.
 
 ```csharp
 namespace CoreSenderApp
@@ -183,25 +183,25 @@ namespace CoreSenderApp
 }
 ```
 
-Spusťte program a ověřte Azure Portal.
+Spusťte program a zkontrolujte portál Azure.
 
-Vyberte název vaší fronty v okně Přehled oboru názvů, aby se zobrazila **základní** **informace** o frontě.
+Vyberte název fronty v okně **Přehled** oboru názvů, chcete-li zobrazit frontu **Essentials**.
 
 ![Přijaté zprávy s počtem a velikostí][queue-message]
 
-Hodnota **Počet aktivních zpráv** pro tuto frontu je teď **10**. Pokaždé, když spustíte tuto aplikaci odesílatele bez načtení zpráv, se tato hodnota zvýší o 10.
+Hodnota **Počet zpráv Active** pro frontu je nyní **10**. Pokaždé, když spustíte tuto aplikaci odesílatele bez načtení zpráv, tato hodnota se zvýší o 10.
 
-Aktuální velikost fronty zvýší **aktuální** hodnotu v nástroji **Essentials** pokaždé, když aplikace přidá zprávy do fronty.
+Aktuální velikost fronty zvyšuje hodnotu **CURRENT** v **položkách Essentials** pokaždé, když aplikace přidá zprávy do fronty.
 
-V další části se dozvíte, jak tyto zprávy načíst.
+V další části je popsáno, jak načíst tyto zprávy.
 
 ## <a name="receive-messages-from-the-queue"></a>Přijetí zpráv z fronty
 
-Pokud chcete přijímat zprávy, které jste odeslali, vytvořte další aplikaci **Konzolová aplikace (.NET Core)** . Nainstalujte balíček NuGet **Microsoft. Azure. ServiceBus** , stejně jako u aplikace odesílatele.
+Chcete-li přijímat odeslané zprávy, vytvořte jinou **aplikaci console app (.NET Core).** Nainstalujte balíček **Microsoft.Azure.ServiceBus** NuGet, stejně jako u aplikace odesílatele.
 
 ### <a name="write-code-to-receive-messages-from-the-queue"></a>Napsání kódu pro příjem zpráv z fronty
 
-1. V *program.cs*přidejte následující příkazy `using` v horní části definice oboru názvů před deklaraci třídy:
+1. V *Program.cs*přidejte `using` následující příkazy v horní části definice oboru názvů před deklaraci třídy:
 
     ```csharp
     using System;
@@ -211,7 +211,7 @@ Pokud chcete přijímat zprávy, které jste odeslali, vytvořte další aplikac
     using Microsoft.Azure.ServiceBus;
     ```
 
-1. Ve třídě `Program` deklarovat následující proměnné:
+1. Ve `Program` třídě deklarujte následující proměnné:
 
     ```csharp
     const string ServiceBusConnectionString = "<your_connection_string>";
@@ -219,7 +219,7 @@ Pokud chcete přijímat zprávy, které jste odeslali, vytvořte další aplikac
     static IQueueClient queueClient;
     ```
 
-    Jako proměnnou `ServiceBusConnectionString` zadejte připojovací řetězec pro obor názvů. Zadejte název fronty.
+    Zadejte připojovací řetězec `ServiceBusConnectionString` pro obor názvů jako proměnnou. Zadejte název fronty.
 
 1. Nahraďte metodu `Main()` následujícím kódem:
 
@@ -246,7 +246,7 @@ Pokud chcete přijímat zprávy, které jste odeslali, vytvořte další aplikac
     }
     ```
 
-1. Přímo za metodu `MainAsync()` přidejte následující metodu, která zaregistruje popisovač zprávy a přijme zprávy odesílané aplikací odesílatele:
+1. Bezprostředně za `MainAsync()` metodu přidejte následující metodu, která zaregistruje obslužnou rutinu zprávy a přijme zprávy odeslané aplikací odesílatele:
 
     ```csharp
     static void RegisterOnMessageHandlerAndReceiveMessages()
@@ -302,7 +302,7 @@ Pokud chcete přijímat zprávy, které jste odeslali, vytvořte další aplikac
     }
     ```
 
-Soubor *program.cs* by měl vypadat nějak takto:
+Zde je to, co *váš Program.cs* soubor by měl vypadat takto:
 
 ```csharp
 namespace CoreReceiverApp
@@ -388,14 +388,14 @@ namespace CoreReceiverApp
 }
 ```
 
-Spusťte program a znovu se podívejte na portál. **Počet aktivních zpráv** a **aktuální** hodnoty jsou nyní **0**.
+Spusťte program a znovu se podívejte na portál. Počet **aktivních zpráv** a **aktuální** hodnoty jsou nyní **0**.
 
-![Zařadit do fronty po přijetí zpráv][queue-message-receive]
+![Fronta po přijetí zpráv][queue-message-receive]
 
-Blahopřejeme! Nyní jste vytvořili frontu, do této fronty jste odeslali sadu zpráv a tyto zprávy přijali ze stejné fronty.
+Blahopřejeme! Nyní jste vytvořili frontu, odeslali do ní sadu zpráv a tyto zprávy jste obdrželi ze stejné fronty.
 
 > [!NOTE]
-> Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer umožňuje uživatelům snadno se připojit k oboru názvů Service Bus a spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, nebo možnost testovat témata, fronty, odběry, služby přenosu, centra oznámení a centra událostí.
+> Prostředky služby Service Bus můžete spravovat pomocí [aplikace Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Průzkumník služby Service Bus umožňuje uživatelům snadno se připojit k oboru názvů service bus a spravovat entity zasílání zpráv. Nástroj poskytuje pokročilé funkce, jako je funkce importu a exportu nebo možnost testovat témata, fronty, předplatná, přenosové služby, centra oznámení a centra událostí.
 
 ## <a name="next-steps"></a>Další kroky
 

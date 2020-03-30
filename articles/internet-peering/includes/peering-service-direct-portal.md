@@ -3,21 +3,38 @@ title: zahrnout soubor
 titleSuffix: Azure
 description: zahrnout soubor
 services: internet-peering
-author: prmitiki
+author: derekolo
 ms.service: internet-peering
 ms.topic: include
-ms.date: 11/27/2019
-ms.author: prmitiki
-ms.openlocfilehash: 149ac1caf7085a48396129408826b7ef35bc25a9
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.date: 3/18/2020
+ms.author: derekol
+ms.openlocfilehash: 60752cf1b3c05ab7817083e70310ba7b40227dec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75774936"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80129963"
 ---
-1. Klikněte na připojení partnerského vztahu, které chcete povolit pro službu partnerského vztahu, a pak klikněte na tlačítko **Upravit připojení** >  **.**
+1. Klikněte na peering připojení, které chcete povolit pro Peering Service a pak klikněte na **...**  >  **Tlačítko Upravit připojení.**
     > [!div class="mx-imgBorder"]
-    > ![úprav připojení partnerských vztahů](../media/setup-direct-modify-editconnection.png)
-1. V části ***použití pro službu peering Service***klikněte na možnost **povoleno** a **Uložit**.
+    > ![Úprava připojení partnerského vztahu](../media/setup-direct-modify-editconnection.png)
+1. V části ***Použít pro službu partnerského vztahu***klikněte na **Povoleno** a **Uložit**.
     > [!div class="mx-imgBorder"]
-    > Připojení partnerského vztahu ![povolit službu peering Service](../media/setup-direct-modify-editconnectionsettings-peering-service.png)
+    > ![Služba partnerského vztahu umožňuje partnerský vztah](../media/setup-direct-modify-editconnectionsettings-peering-service.png)
+1. Na obrazovce Přehled se zobrazí podrobnosti o nasazení. Po dokončení nasazení klikněte na **Přejít na prostředek**.
+    > [!div class="mx-imgBorder"]
+    > ![Vaše nasazení je dokončeno.](../media/setup-direct-modify-overview-deployment-complete.png)
+
+1. Poté se zobrazí v části Nastavení **registrovaných předpon**. Klikněte na **Přidat registrovanou předponu**.
+    > [!div class="mx-imgBorder"]
+    > ![Registrované předpony a připojení](../media/setup-direct-modify-add-registered-prefix.png)
+1. Registrace předpony výběrem **názvu** a **předpony** a **kliknutí** uložit
+    > [!div class="mx-imgBorder"]
+    >  ![Registrace předpony](../media/setup-direct-modify-register-a-prefix.png) 
+
+1. Po vytvoření předpony se zobrazí v seznamu registrovaných předpon. Kliknutím na **název** předpony zobrazíte další podrobnosti.
+    > [!div class="mx-imgBorder"]
+    > ![Registrované předpony a připojení](../media/setup-direct-modify-registered-prefixes.png)
+1. Na stránce registrované předpony se zobrazí úplné podrobnosti, které obsahují **klíč předpony** pro každou předponu. Tento klíč bude nutné poskytnout zákazníkovi přidělenou tuto předponu od poskytovatele služeb Internetu. Zákazník pak může zaregistrovat svou předponu v rámci svého předplatného s tímto klíčem.
+    > [!div class="mx-imgBorder"]
+    > ![Předpona s předponou](../media/setup-direct-modify-registered-prefix-detail.png)

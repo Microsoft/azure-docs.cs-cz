@@ -1,7 +1,7 @@
 ---
-title: Automatické určení a přepisovat obsahu s více jazyky pomocí Video Indexer
+title: Automatická identifikace a přepis vícejazyčné hospo-
 titleSuffix: Azure Media Services
-description: Toto téma ukazuje, jak automaticky identifikovat a přepisovat vícejazyčného obsahu pomocí Video Indexer.
+description: Toto téma ukazuje, jak automaticky identifikovat a přepsat vícejazyčný obsah pomocí video indexeru.
 services: media-services
 author: Juliako
 manager: femila
@@ -11,39 +11,39 @@ ms.topic: article
 ms.date: 09/01/2019
 ms.author: juliako
 ms.openlocfilehash: f0dede42891069bb5d01ddc33f3797c20c5493d7
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72968741"
 ---
-# <a name="automatically-identify-and-transcribe-multi-language-content-preview"></a>Automatické určení a přepisovat obsahu s více jazyky (Preview)
+# <a name="automatically-identify-and-transcribe-multi-language-content-preview"></a>Automatická identifikace a přepis vícejazyčné položky (náhled)
 
-Video Indexer podporuje automatickou identifikaci jazyka a přepis v obsahu s více jazyky. Tento proces zahrnuje automatickou identifikaci mluveného jazyka v různých segmentech ze zvukového přenosu, posílání jednotlivých segmentů mediálního souboru, které se přepisu, a jejich kombinování zpátky do jednoho sjednoceného přepisu. 
+Video Indexer podporuje automatickou identifikaci jazyka a přepis ve vícejazyčném obsahu. Tento proces zahrnuje automatickou identifikaci mluveného jazyka v různých segmentech od zvuku, odeslání každého segmentu mediálního souboru, který má být přepisován, a zkombinování přepisu zpět do jednoho jednotného přepisu. 
 
 ## <a name="choosing-multilingual-identification-on-indexing-with-portal"></a>Výběr vícejazyčné identifikace při indexování pomocí portálu
 
-Můžete zvolit **rozpoznávání více jazyků** při nahrávání a indexování videa. Případně můžete zvolit **rozpoznávání více jazyků** při opakovaném indexování videa. Následující postup popisuje, jak znovu indexovat:
+Při nahrávání a indexování videa můžete zvolit **detekci více jazyků.** Případně můžete zvolit **detekci více jazyků** při přeindexování videa. Následující kroky popisují, jak přeindexovat:
 
 1. Přejděte na web [Video Indexer](https://vi.microsoft.com/) a přihlaste se.
-1. Přejděte na stránku **Knihovna** a najeďte myší na název videa, které chcete znovu indexovat. 
-1. V pravém dolním rohu klikněte na tlačítko **znovu indexovat video** . 
-1. V dialogovém okně **znovu index videa** v rozevíracím seznamu **jazyk zdrojové video** vyberte možnost **detekce více jazyků** .
+1. Přejděte na stránku **Knihovna** a najeďte na název videa, které chcete přeindexovat. 
+1. V pravém dolním rohu klikněte na tlačítko **Přeindexovat video.** 
+1. V dialogovém okně **Přeindexovat video** zvolte **vícejazyčné zjišťování** z rozevíracího pole **Zdrojový jazyk videa.**
 
-    * Pokud je video indexováno jako vícejazyčná, bude stránka přehled zahrnovat tuto možnost. zobrazí se další typ Insight, který uživateli umožní zobrazit, který segment je přepisu, ve kterém jazyce "mluvený jazyk".
-    * Překlad do všech jazyků je plně dostupný z přepisu pro více jazyků.
-    * Všechny ostatní přehledy se zobrazí v zjištěném hlavním jazyce – což je jazyk, který se ve zvukovém zařízení objevil nejčastěji.
-    * Skryté titulky jsou v přehrávači dostupné i ve více jazycích.
+    * Pokud je video indexováno jako vícejazyčné, stránka přehledu tuto možnost zahrne a zobrazí se další typ přehledu, který uživateli umožní zobrazit segment, ve kterém je přepsán jazyk "Mluvený jazyk".
+    * Překlad do všech jazyků je plně k dispozici z vícejazyčné hospo-
+    * Všechny ostatní poznatky se zobrazí v dektovovaném hlavním jazyce – to je jazyk, který se ve zvuku objevil nejvíce.
+    * Skryté titulky na přehrávači je k dispozici ve více jazycích stejně.
 
 ![Prostředí portálu](./media/multi-language-identification-transcription/portal-experience.png)
 
 ## <a name="choosing-multilingual-identification-on-indexing-with-api"></a>Výběr vícejazyčné identifikace při indexování pomocí rozhraní API
 
-Při indexování nebo [přeindexování](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) videa pomocí rozhraní API vyberte v parametru `sourceLanguage` možnost `multi-language detection`.
+Při indexování nebo [přeindexování](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) videa pomocí `multi-language detection` rozhraní `sourceLanguage` API zvolte možnost v parametru.
 
 ### <a name="model-output"></a>Výstup modelu
 
-Model získá všechny jazyky zjištěné ve videu v jednom seznamu.
+Model načte všechny jazyky zjištěné ve videu v jednom seznamu
 
 ```json
 "sourceLanguage": null,
@@ -53,7 +53,7 @@ Model získá všechny jazyky zjištěné ve videu v jednom seznamu.
 ],
 ```
 
-Kromě toho všechny instance v oddílu přepisu budou zahrnovat jazyk, ve kterém byl přepisu.
+Kromě toho každá instance v části přepisu bude obsahovat jazyk, ve kterém byla přepsána
 
 ```json
 {
@@ -76,18 +76,18 @@ Kromě toho všechny instance v oddílu přepisu budou zahrnovat jazyk, ve kter�
 ## <a name="guidelines-and-limitations"></a>Pokyny a omezení
 
 * Sada podporovaných jazyků: angličtina, francouzština, němčina, španělština.
-* Podpora vícejazyčného obsahu s až třemi podporovanými jazyky.
-* Pokud zvuk obsahuje jiné jazyky než seznam podporované, výsledek je neočekávaný.
-* Minimální délka segmentu, která se má detekovat pro každý jazyk – 15 sekund
-* Hodnota posunu detekce jazyka je v průměru 3 sekundy.
-* Očekává se, že řeč bude průběžné. Časté střídající se mezi jazyky mohou ovlivnit výkon modelů.
-* Rozpoznávání řeči nenativních mluvčích může ovlivnit výkon modelu (například když reproduktory používají svůj nativní jazyk a přepínají se na jiný jazyk).
-* Model je navržený pro rozpoznávání spontánního mluveného hlasu s přiměřenými akustickými zvukovými nahrávkami (ne hlasové příkazy, přihlásí atd.).
-* Vytváření a úpravy projektů nejsou aktuálně k dispozici pro videa s více jazyky.
-* Vlastní jazykové modely nejsou k dispozici při použití rozpoznávání více jazyků.
-* Přidávání klíčových slov se nepodporuje.
-* Při exportování souborů titulků se nezobrazí označení jazyka.
-* Rozhraní API pro aktualizaci přepisu nepodporuje soubory s více jazyky.
+* Podpora vícejazyčového obsahu až se třemi podporovanými jazyky.
+* Pokud zvuk obsahuje jiné jazyky než výše podporovaný seznam, výsledek je neočekávaný.
+* Minimální délka segmentu pro detekci pro každý jazyk – 15 sekund.
+* Posun detekce jazyka je v průměru 3 sekundy.
+* Očekává se, že řeč bude nepřetržitá. Časté střídání mezi jazyky může ovlivnit výkon modelů.
+* Řeč nerodilých mluvčích může ovlivnit výkon modelu (například když mluvčí používají svůj rodný jazyk a přecházejí do jiného jazyka).
+* Model je navržen tak, aby rozpoznal spontánní konverzační řeč s rozumnou zvukovou akustikou (ne hlasové příkazy, zpěv atd.).
+* Vytváření a úpravy projektu nejsou v současné době k dispozici pro vícejazyčná videa.
+* Vlastní jazykové modely nejsou k dispozici při použití detekce více jazyků.
+* Přidání klíčových slov není podporováno.
+* Při exportu souborů skrytých titulků se nezobrazí jazyková indikace.
+* Rozhraní API pro přepis aktualizace nepodporuje soubory více jazyků.
 
 ## <a name="next-steps"></a>Další kroky
 
