@@ -1,6 +1,6 @@
 ---
-title: Dotazování Apache Hive prostřednictvím ovladače JDBC – Azure HDInsight
-description: Pomocí ovladače JDBC z aplikace Java můžete odesílat Apache Hive dotazy do Hadoop v HDInsight. Připojte se prostřednictvím kódu programu a z klienta SQL SQuirrel.
+title: Dotaz apache hive prostřednictvím ovladače JDBC - Azure HDInsight
+description: Pomocí ovladače JDBC z aplikace Java odešlete dotazy Apache Hive hadoopu na HDInsight. Připojte se programově a z klienta SQuirrel SQL.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,63 +9,63 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 7d1a77800093ae01bc4eb1e1269d1e9a60f9ce26
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77616648"
 ---
-# <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Dotazování Apache Hive prostřednictvím ovladače JDBC v HDInsight
+# <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Dotazování Apache Hivu prostřednictvím ovladače JDBC v HDInsightu
 
 [!INCLUDE [ODBC-JDBC-selector](../../../includes/hdinsight-selector-odbc-jdbc.md)]
 
-Naučte se používat ovladač JDBC z aplikace Java k odesílání dotazů Apache Hive do Apache Hadoop ve službě Azure HDInsight. Informace v tomto dokumentu ukazují, jak se připojit prostřednictvím kódu programu a z klienta SQL SQuirreL.
+Přečtěte si, jak pomocí ovladače JDBC z aplikace Java odesílat dotazy Apache Hive apache hadoopu v Azure HDInsight. Informace v tomto dokumentu ukazuje, jak se připojit programově a z klienta SQuirreL SQL.
 
-Další informace o rozhraní JDBC podregistru najdete v tématu [HiveJDBCInterface](https://cwiki.apache.org/confluence/display/Hive/HiveJDBCInterface).
+Další informace o rozhraní JDBC hive naleznete v [tématu HiveJDBCInterface](https://cwiki.apache.org/confluence/display/Hive/HiveJDBCInterface).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* An HDInsight clusteru Hadoop. Pokud ho chcete vytvořit, přečtěte si téma Začínáme [se službou Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md). Ujistěte se, že je služba HiveServer2 spuštěná.
-* [Sada Java Developer Kit (JDK) verze 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html) nebo vyšší.
-* [SQUIRREL SQL](http://squirrel-sql.sourceforge.net/). SQuirreL je klientská aplikace JDBC.
+* Cluster HDInsight Hadoop. Pokud chcete ho vytvořit, [přečtěte si, že začínáme s Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md). Ujistěte se, že je spuštěna služba HiveServer2.
+* [Java Developer Kit (JDK) verze 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html) nebo vyšší.
+* [SquirreL SQL](http://squirrel-sql.sourceforge.net/). SQuirreL je klientská aplikace JDBC.
 
 ## <a name="jdbc-connection-string"></a>Připojovací řetězec JDBC
 
-Připojení JDBC k clusteru HDInsight v Azure se provádí přes port 443 a přenos se zabezpečuje pomocí protokolu SSL. Veřejná brána, kterou cluster zaznamená, přesměruje provoz na port, na kterém HiveServer2 skutečně naslouchá. Následující připojovací řetězec ukazuje formát, který se má použít pro HDInsight:
+Připojení JDBC k clusteru HDInsight v Azure se provádí přes port 443 a provoz je zabezpečen pomocí ssl. Veřejná brána, za kterou clustery sedí, přesměruje přenos na port, na který HiveServer2 ve skutečnosti naslouchá. Následující připojovací řetězec zobrazuje formát, který se má použít pro HDInsight:
 
     jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2
 
 Parametr `CLUSTERNAME` nahraďte názvem vašeho clusteru HDInsight.
 
-Nebo můžete získat připojení prostřednictvím **uživatelského rozhraní Ambari > > konfiguracích registru > Upřesnit**.
+Nebo můžete získat připojení prostřednictvím **Ambari UI > Hive > Configs > Advanced**.
 
-![Získání připojovacího řetězce JDBC prostřednictvím Ambari](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-get-connection-string-through-ambari.png)
+![Získat připojovací řetězec JDBC přes Ambari](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-get-connection-string-through-ambari.png)
 
 ### <a name="host-name-in-connection-string"></a>Název hostitele v připojovacím řetězci
 
-Název hostitele CLUSTERNAME.azurehdinsight.net v připojovacím řetězci je stejný jako adresa URL clusteru. Můžete ji získat prostřednictvím Azure Portal. 
+Název hostitele "CLUSTERNAME.azurehdinsight.net" v připojovacím řetězci je stejný jako název adresy URL clusteru. Můžete ji získat prostřednictvím portálu Azure. 
 
 ### <a name="port-in-connection-string"></a>Port v připojovacím řetězci
 
-**Port 443** můžete použít jenom pro připojení ke clusteru z některých míst mimo virtuální síť Azure. HDInsight je spravovaná služba, která znamená, že všechna připojení ke clusteru se spravují přes zabezpečenou bránu. K HiveServer 2 se nemůžete připojit přímo na portech 10001 nebo 10000, protože tyto porty nejsou vystavené vně. 
+**Port 443** můžete použít jenom k připojení ke clusteru z některých míst mimo virtuální síť Azure. HDInsight je spravovaná služba, což znamená, že všechna připojení ke clusteru jsou spravována prostřednictvím zabezpečené brány. Nelze připojit k HiveServer 2 přímo na portech 10001 nebo 10000, protože tyto porty nejsou vystaveny vnější. 
 
 ## <a name="authentication"></a>Ověřování
 
-Při navazování připojení musíte k ověření brány clusteru použít název a heslo správce clusteru HDInsight. Při připojování z JDBC klientů, jako je SQuirreL SQL, je nutné v nastavení klienta zadat jméno správce a heslo.
+Při navazování připojení je nutné k ověření brány clusteru použít název a heslo správce clusteru HDInsight. Při připojování z klientů JDBC, jako je SQuirreL SQL, musíte zadat název správce a heslo v nastavení klienta.
 
-Z aplikace Java je nutné použít při navazování připojení jméno a heslo. Například následující kód Java otevírá nové připojení pomocí připojovacího řetězce, jména správce a hesla:
+Z aplikace Java, musíte použít název a heslo při navazování připojení. Například následující kód Jazyka Java otevře nové připojení pomocí připojovacího řetězce, názvu správce a hesla:
 
 ```java
 DriverManager.getConnection(connectionString,clusterAdmin,clusterPassword);
 ```
 
-## <a name="connect-with-squirrel-sql-client"></a>Připojení pomocí klienta SQL SQuirreL
+## <a name="connect-with-squirrel-sql-client"></a>Spojte se s klientem SQuirreL SQL
 
-SQuirreL SQL je klient JDBC, který se dá použít pro vzdálenou spouštění dotazů na podregistry v clusteru HDInsight. V následujících krocích se předpokládá, že jste už nainstalovali SQuirreL SQL.
+SQuirreL SQL je klient JDBC, který lze použít ke vzdálenému spuštění dotazů Hive s clusterem HDInsight. Následující kroky předpokládají, že jste již nainstalovali SQuirreL SQL.
 
-1. Vytvořte adresář, který bude obsahovat určité soubory, které se mají zkopírovat z clusteru.
+1. Vytvořte adresář obsahující určité soubory, které mají být zkopírovány z clusteru.
 
-2. V následujícím skriptu nahraďte `sshuser` názvem uživatelského účtu SSH pro daný cluster.  Nahraďte `CLUSTERNAME` názvem clusteru HDInsight.  Z příkazového řádku změňte pracovní adresář na ten vytvořený v předchozím kroku a potom zadejte následující příkaz ke zkopírování souborů z clusteru HDInsight:
+2. V následujícím skriptu `sshuser` nahraďte názvem uživatelského účtu SSH pro cluster.  Nahraďte `CLUSTERNAME` název clusteru HDInsight.  Z příkazového řádku změňte svůj pracovní adresář na adresář vytvořený v předchozím kroku a zadejte následující příkaz pro kopírování souborů z clusteru HDInsight:
 
     ```cmd
     scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/{hadoop-auth.jar,hadoop-common.jar,lib/log4j-*.jar,lib/slf4j-*.jar,lib/curator-*.jar} .
@@ -73,69 +73,69 @@ SQuirreL SQL je klient JDBC, který se dá použít pro vzdálenou spouštění 
     scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/{commons-codec*.jar,commons-logging-*.jar,hive-*-*.jar,httpclient-*.jar,httpcore-*.jar,libfb*.jar,libthrift-*.jar} .
     ```
 
-3. Spusťte aplikaci SQuirreL SQL. V levé části okna vyberte možnost **ovladače**.
+3. Spusťte aplikaci SQuirreL SQL. Vlevo od okna vyberte **Ovladače**.
 
-    ![Karta ovladače na levé straně okna](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-squirreldrivers.png)
+    ![Karta Ovladače na levé straně okna](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-squirreldrivers.png)
 
-4. Z ikon v horní části dialogového okna **ovladače** vyberte ikonu **+** pro vytvoření ovladače.
+4. Z ikon v horní **Drivers** části dialogového **+** okna Ovladače vyberte ikonu pro vytvoření ovladače.
 
-    ![SQuirreL – ikona ovladačů aplikace SQL](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-driversicons.png)
+    ![Ikona ovladačů aplikací SQuirreL SQL](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-driversicons.png)
 
 5. V dialogovém okně Přidat ovladač přidejte následující informace:
 
     |Vlastnost | Hodnota |
     |---|---|
-    |Název|Hive|
-    |Příklad adresy URL|JDBC: hive2://localhost: 443/výchozí; transportMode = http; SSL = true; httpPath =/hive2|
-    |Cesta k nadbytečné třídě|Pomocí tlačítka **Přidat** přidejte všechny soubory jar stažené dříve.|
-    |Název třídy|org. Apache. podregistr. JDBC. HiveDriver|
+    |Name (Název)|Hive|
+    |Příklad adresy URL|jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2|
+    |Cesta k extra třídě|Pomocí tlačítka **Přidat** přidejte všechny dříve stažené soubory jar.|
+    |Název třídy|org.apache.hive.jdbc.HiveDriver|
 
-   ![Dialog Přidat ovladač s parametry](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-add-driver.png)
+   ![přidat dialogové okno ovladače s parametry](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-add-driver.png)
 
-   Kliknutím na **tlačítko OK** tato nastavení uložte.
+   Chcete-li tato nastavení uložit, vyberte **OK.**
 
-6. Na levé straně okna SQuirreL SQL vyberte **aliasy**. Pak vyberte ikonu **+** pro vytvoření aliasu připojení.
+6. Na levé straně okna SQuirreL SQL vyberte **Aliasy**. Pak vyberte **+** ikonu a vytvořte alias připojení.
 
-    ![Dialog SQuirreL SQL přidat nový alias](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
+    ![SQuirreL SQL přidat nový alias dialog](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
 
-7. V dialogovém okně **Přidat alias** použijte následující hodnoty:
+7. Pro dialogové okno **Přidat alias** použijte následující hodnoty:
 
     |Vlastnost |Hodnota |
     |---|---|
-    |Název|Podregistr v HDInsight|
-    |Ovladač|Pomocí rozevíracího seznamu vyberte ovladač **podregistru** .|
-    |zprostředkovatele identity|JDBC: hive2://CLUSTERNAME.azurehdinsight.net: 443/výchozí; transportMode = http; SSL = true; httpPath =/hive2. Nahraďte **CLUSTERNAME** názvem clusteru HDInsight.|
-    |Uživatelské jméno|Název přihlašovacího účtu clusteru pro cluster HDInsight. Výchozí hodnota je **admin (správce**).|
-    |Heslo|Heslo pro přihlašovací účet clusteru|
+    |Name (Název)|Hive na HDInsight|
+    |Ovladač|Pomocí rozevíracího výběru vyberte ovladač **Hive.**|
+    |zprostředkovatele identity|jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2. Nahraďte **CLUSTERNAME** názvem clusteru HDInsight.|
+    |Uživatelské jméno|Název přihlašovacího účtu clusteru pro váš cluster HDInsight. Výchozí hodnota je **admin**.|
+    |Heslo|Heslo pro přihlašovací účet clusteru.|
 
-    ![Dialog Přidat alias s parametry](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png)
+    ![dialogové okno přidání aliasu s parametry](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png)
 
     > [!IMPORTANT]
-    > K ověření, že připojení funguje, použijte tlačítko **test** . Když se připojíte k: zobrazí se dialogové okno pro zobrazení **podregistru v HDInsight** , vyberte **připojit** a proveďte test. Pokud je test úspěšný, zobrazí se dialogové okno **připojení bylo úspěšné** . Pokud dojde k chybě, přečtěte si téma [Poradce při potížích](#troubleshooting).
+    > Pomocí tlačítka **Test** ověřte, zda připojení funguje. Když se zobrazí dialogové okno **Připojit k: Hive na HDInsight,** vyberte **Připojit** a proveďte test. Pokud je test úspěšný, zobrazí se dialogové **okno Connection úspěšné.** Pokud dojde k chybě, [přečtěte si článek Poradce při potížích](#troubleshooting).
 
-    Pokud chcete uložit alias připojení, použijte tlačítko **OK** v dolní části dialogu **Přidat alias** .
+    Chcete-li uložit alias připojení, použijte tlačítko **Ok** v dolní části dialogového okna **Přidat alias.**
 
-8. Z rozevíracího seznamu **připojit k** v horní části SQuirreL SQL vyberte **podregistr v HDInsight**. Po zobrazení výzvy vyberte **připojit**.
+8. V rozevíracím souboru **Připojit k** horní části squirrel SQL vyberte **Možnost Hive na hdinsightu**. Po zobrazení výzvy vyberte **Připojit**.
 
-    ![Dialogové okno připojení s parametry](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-connect-dialog.png)
+    ![dialogové okno připojení s parametry](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-connect-dialog.png)
 
-9. Po připojení zadejte následující dotaz do dialogového okna dotazu SQL a pak vyberte ikonu **Spustit** (spuštěná osoba). V oblasti výsledků by se měly zobrazit výsledky dotazu.
+9. Po připojení zadejte následující dotaz do dialogového okna dotazu SQL a pak vyberte ikonu **Spustit** (spuštěná osoba). Oblast výsledků by měla zobrazit výsledky dotazu.
 
     ```hql
     select * from hivesampletable limit 10;
     ```
 
-    ![Dialogové okno dotazu SQL, včetně výsledků](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-sqlquery-dialog.png)
+    ![dialogové okno dotazu SQL, včetně výsledků](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-sqlquery-dialog.png)
 
 ## <a name="connect-from-an-example-java-application"></a>Připojení z ukázkové aplikace Java
 
-Příklad použití klienta Java k dotazování na podregistr v HDInsight je k dispozici na adrese [https://github.com/Azure-Samples/hdinsight-java-hive-jdbc](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc). Podle pokynů v úložišti Sestavte a spusťte ukázku.
+Příklad použití klienta Java k dotazování Hive [https://github.com/Azure-Samples/hdinsight-java-hive-jdbc](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc)na HDInsight je k dispozici na adrese . Podle pokynů v úložišti vytvořte a spusťte ukázku.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="unexpected-error-occurred-attempting-to-open-an-sql-connection"></a>Při pokusu o otevření připojení SQL došlo k neočekávané chybě.
 
-**Příznaky**: při připojování ke clusteru HDInsight, který má verzi 3,3 nebo vyšší, se může zobrazit chyba, že došlo k neočekávané chybě. Trasování zásobníku pro tuto chybu začíná na následujících řádcích:
+**Příznaky**: Při připojování ke clusteru HDInsight, který je verze 3.3 nebo vyšší, se může zobrazit chyba, že došlo k neočekávané chybě. Trasování zásobníku pro tuto chybu začíná následujícířádky:
 
 ```java
 java.util.concurrent.ExecutionException: java.lang.RuntimeException: java.lang.NoSuchMethodError: org.apache.commons.codec.binary.Base64.<init>(I)V
@@ -143,35 +143,35 @@ at java.util.concurrent.FutureTas...(FutureTask.java:122)
 at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 ```
 
-**Příčina**: Tato chyba je způsobená starším souborem. jar Commons-Codec verze, který je součástí SQuirreL.
+**Příčina**: Tato chyba je způsobena starší verzí souboru commons-codec.jar, který je součástí squirrelu.
 
-**Řešení**: Pokud chcete tuto chybu opravit, použijte následující postup:
+**Řešení**: Chcete-li tuto chybu opravit, postupujte takto:
 
-1. Ukončete SQuirreL a potom v systému vyhledejte adresář, ve kterém je nainstalováno SQuirreL, případně `C:\Program Files\squirrel-sql-4.0.0\lib`. V adresáři SquirreL v adresáři `lib` nahraďte existující Commons-Codec. jar jedním staženým z clusteru HDInsight.
+1. Ukončit SQuirreL, a pak přejděte do adresáře, kde squirrel je nainstalován na vašem systému, možná `C:\Program Files\squirrel-sql-4.0.0\lib`. V adresáři SquirreL `lib` pod adresářem nahraďte existující soubor commons-codec.jar souborem staženým z clusteru HDInsight.
 
-1. Restartujte SQuirreL. Tato chyba by se už neměla vyskytnout při připojování k podregistru v HDInsight.
+1. Restartujte squirrel. K chybě by již nemělo dojít při připojování k Hive na HDInsight.
 
-### <a name="connection-disconnected-by-hdinsight"></a>Připojení odpojené službou HDInsight
+### <a name="connection-disconnected-by-hdinsight"></a>Připojení odpojeno hdinsightem
 
-**Příznaky**: při pokusu o stažení obrovských objemů dat (například několik GB) prostřednictvím JDBC/ODBC se při stahování neočekávaně odpojí připojení ke službě HDInsight. 
+**Příznaky**: Při pokusu o stažení obrovské množství dat (řekněme několik GBs) prostřednictvím JDBC/ODBC, připojení je odpojen HDInsight neočekávaně při stahování. 
 
-**Příčina**: Tato chyba je způsobená omezením u uzlů brány. Při získávání dat z JDBC/ODBC musí všechna data projít uzlem brány. Brána však není navržena tak, aby stahoval velké množství dat, takže připojení může být uzavřeno bránou, pokud nemůže zpracovávat přenosy.
+**Příčina**: Tato chyba je způsobena omezením uzlů brány. Při získávání dat z JDBC/ODBC, všechna data musí projít uzlu brány. Brána však není určena ke stažení obrovské množství dat, takže připojení může být uzavřen bránou, pokud nemůže zpracovat provoz.
 
-**Řešení**: Vyhněte se použití ovladače JDBC/ODBC ke stahování velkých objemů dat. Místo toho zkopírujte data přímo z úložiště objektů BLOB.
+**Rozlišení**: Vyhněte se použití ovladače JDBC/ODBC ke stažení velkého množství dat. Místo toho zkopírujte data přímo z úložiště objektů blob.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili, jak používat JDBC k práci s podregistrem, použijte následující odkazy k prozkoumání dalších způsobů, jak pracovat s Azure HDInsight.
+Teď, když jste se naučili používat JDBC pro práci s Hive, použijte následující odkazy k prozkoumání dalších způsobů práce s Azure HDInsight.
 
-* [Vizualizujte Apache Hive data pomocí Microsoft Power BI ve službě Azure HDInsight](apache-hadoop-connect-hive-power-bi.md).
-* [Vizualizovat data podregistru interaktivního dotazu pomocí Power BI ve službě Azure HDInsight](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
-* [Použijte Apache Zeppelin ke spouštění dotazů Apache Hive ve službě Azure HDInsight](../interactive-query/hdinsight-connect-hive-zeppelin.md).
-* [Připojte Excel k HDInsight pomocí Microsoft Hive ODBC Driver](apache-hadoop-connect-excel-hive-odbc-driver.md).
-* [Připojení Excelu k Apache Hadoop pomocí Power Query](apache-hadoop-connect-excel-power-query.md).
-* [Připojte se ke službě Azure HDInsight a spouštějte Apache Hive dotazy pomocí nástrojů Data Lake pro Visual Studio](apache-hadoop-visual-studio-tools-get-started.md).
-* [Použijte nástroj Azure HDInsight pro Visual Studio Code](../hdinsight-for-vscode.md).
-* [Nahrání dat do HDInsight](../hdinsight-upload-data.md)
-* [Použití Apache Hive se službou HDInsight](hdinsight-use-hive.md)
-* [Použití Apache prasete se službou HDInsight](hdinsight-use-pig.md)
-* [Použití úloh MapReduce se službou HDInsight](hdinsight-use-mapreduce.md)
+* [Vizualizujte data Apache Hive pomocí Microsoft Power BI v Azure HDInsight](apache-hadoop-connect-hive-power-bi.md).
+* [Vizualizujte data interactive query hive pomocí Power BI v Azure HDInsight](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
+* [Pomocí Apache Zeppelin můžete ve službě Azure HDInsight spouštět dotazy Apache Hive](../interactive-query/hdinsight-connect-hive-zeppelin.md).
+* [Připojte Excel k hdinsightu pomocí ovladače Microsoft Hive ODBC .](apache-hadoop-connect-excel-hive-odbc-driver.md)
+* [Připojte Excel k Apache Hadoop pomocí Power Query](apache-hadoop-connect-excel-power-query.md).
+* [Připojte se k Azure HDInsight a spouštět dotazy Apache Hive pomocí nástrojů Data Lake Tools pro Visual Studio](apache-hadoop-visual-studio-tools-get-started.md).
+* [Použijte nástroj Azure HDInsight pro kód Visual Studia](../hdinsight-for-vscode.md).
+* [Nahrání dat do služby HDInsight](../hdinsight-upload-data.md)
+* [Použití Apache Hive s HDInsight](hdinsight-use-hive.md)
+* [Použijte Apache Pig s HDInsight](hdinsight-use-pig.md)
+* [Použijte úlohy MapReduce s HDInsight](hdinsight-use-mapreduce.md)

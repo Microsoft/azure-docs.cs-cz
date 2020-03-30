@@ -1,61 +1,61 @@
 ---
 title: Přehled Istio
-description: Získání přehledu o Istio
+description: Získat přehled o Istio
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 8518e30a54c2486abf84cd9ac026cc4dccb3fa84
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77593896"
 ---
 # <a name="istio"></a>Istio
 
 ## <a name="overview"></a>Přehled
 
-[Istio][istio] je plně vybavená síť, přizpůsobitelné a rozšiřitelná síť pro služby.
+[Istio][istio] je plně vybavený, přizpůsobitelný a rozšiřitelný servisní síť.
 
 ## <a name="architecture"></a>Architektura
 
-Istio poskytuje rovinu dat, která se skládá z sajdkáry založeného na [zástupné][envoy-proxy]. Tyto inteligentní proxy servery řídí veškerý síťový provoz v a z vašich aplikací a úloh.
+Istio poskytuje datovou rovinu, která se skládá z postranních vozů založených na [vyslanci.][envoy-proxy] Tyto inteligentní proxy servery řídí veškerý síťový provoz ve vašich aplikacích a úlohách.
 
-Řídicí rovina spravuje konfiguraci, zásady a telemetrii prostřednictvím následujících [součástí][what-is-istio]:
+Řídicí rovina spravuje konfiguraci, zásadu a telemetrii pomocí [následujících součástí][what-is-istio]:
 
-- **Mixer** – vynutilo řízení přístupu a zásady použití. Shromažďuje telemetrii z proxy serverů, které jsou vloženy do [Prometheus][prometheus].
+- **Mixer** - Vynucuje zásady řízení přístupu a použití. Shromažďuje telemetrii z proxy, která je zasunuta do [Prometheus][prometheus].
 
-- **Pilotní nasazení** – poskytuje zásady pro zjišťování služeb a správu provozu a konfiguraci pro proxy servery.
+- **Pilot** - Poskytuje zásady/konfiguraci zjišťování a řízení provozu pro servery proxy.
 
-- **Souborech Citadel** – poskytuje možnosti identity a zabezpečení, které umožňují mTLS mezi službami.
+- **Citadela** – poskytuje funkce identity a zabezpečení, které umožňují mTLS mezi službami.
 
-- **Sloupce** – abstrakce a poskytuje konfiguraci pro součásti.
+- **Galley** - Abstrakty a poskytuje konfiguraci komponent.
 
-Následující diagram architektury znázorňuje, jak různé komponenty v rovině dat a řídící rovině pracují.
+Následující diagram architektury ukazuje, jak různé součásti v rovině dat a rovině ovládacího prvku interagují.
 
 
-![Přehled komponent a architektury Istio](media/servicemesh/istio/about-architecture.png)
+![Přehled komponent a architektury Istio.](media/servicemesh/istio/about-architecture.png)
 
 
 ## <a name="selection-criteria"></a>Kritéria výběru
 
-Při vyhodnocování Istio pro vaše úlohy je důležité pochopit a vzít v úvahu následující oblasti:
+Při hodnocení istio pro vaše úlohy je důležité porozumět následujícím oblastem a zvážit je následující oblasti:
 
 - [Cíle návrhu](#design-goals)
-- [Vestavěn](#capabilities)
+- [Možnosti](#capabilities)
 - [Scénáře](#scenarios)
 
 
 ### <a name="design-goals"></a>Cíle návrhu
 
-Následující cíle návrhu [provedou][design-goals] projekt Istio:
+Projekt Istio [se řídí][design-goals] následujícími cíli návrhu:
 
-- **Maximalizuje transparentnost** – umožní přijetí s minimálním množstvím práce, aby se získala skutečná hodnota ze systému.
+- **Maximalizovat transparentnost** - Povolit přijetí s minimálním množstvím práce získat skutečnou hodnotu ze systému.
 
-- **Rozšiřitelnost** – musí být schopné rozrůstat a přizpůsobovat měnícím se potřebám.
+- **Rozšiřitelnost** - Musí být schopen růst a přizpůsobit se měnícím se potřebám.
 
-- **Přenositelnost** – spouštějte snadno v různých druzích prostředí – cloudové, místní.
+- **Přenositelnost** – spouštění se snadno v různých typech prostředí – cloud, místně.
 
 - **Jednotnost zásad** – konzistence v definici zásad napříč různými prostředky.
 
@@ -64,36 +64,36 @@ Následující cíle návrhu [provedou][design-goals] projekt Istio:
 
 Istio poskytuje následující sadu funkcí:
 
-- **Síť** – brány (vícenásobné clustery), virtuální počítače (rozšíření sítě)
+- **Mesh** – brány (multicluster), virtuální počítače (rozšíření sítě)
 
-- **Správa provozu** – směrování, rozdělování, časové limity, přerušení okruhů, opakované pokusy, příchozí přenos dat
+- **Řízení provozu** – směrování, rozdělení, časové výtky, jističe, opakování, vstup, výstup
 
-- **Zásady** – řízení přístupu, omezení četnosti, kvóta, vlastní adaptéry zásad
+- **Zásady** – řízení přístupu, omezení rychlosti, kvóta, adaptéry vlastních zásad
 
-- **Zabezpečení** – ověřování (Jwt), autorizace, šifrování (mTLS), externí certifikační autorita (HashiCorp trezor)
+- **Bezpečnost** – autentizace (jwt), autorizace, šifrování (mTLS), externí CA (HashiCorp Vault)
 
-- **Pozorování** – zlatá metrika, zrcadlení, trasování, vlastní adaptéry, Prometheus, grafana
+- **Pozorovatelnost** – zlaté metriky, zrcadlo, trasování, vlastní adaptéry, prometheus, grafana
 
 ### <a name="scenarios"></a>Scénáře
 
-Istio je vhodný pro a navržený z následujících scénářů:
+Istio je vhodný pro následující scénáře a je navržen takto:
 
 - Vyžadovat rozšiřitelnost a bohatou sadu funkcí
 
-- Rozšíření sítě pro zahrnutí úloh založených na virtuálních počítačích
+- Rozšíření sítě tak, aby zahrnovalo úlohy založené na virtuálních virtuálních mích
 
-- Síť s více clustery
+- Síť víceclusterových služeb
 
 ## <a name="next-steps"></a>Další kroky
 
-Následující dokumentace popisuje, jak můžete nainstalovat Istio do služby Azure Kubernetes Service (AKS):
+Následující dokumentace popisuje, jak můžete nainstalovat Istio na Azure Kubernetes Service (AKS):
 
 > [!div class="nextstepaction"]
-> [Instalace Istio ve službě Azure Kubernetes (AKS)][istio-install]
+> [Instalace Istia ve službě Azure Kubernetes Service (AKS)][istio-install]
 
 Můžete také dále prozkoumat koncepty Istio a další modely nasazení:
 
-- [Koncepty Istio][what-is-istio]
+- [Istio Koncepty][what-is-istio]
 - [Modely nasazení Istio][deployment-models]
 
 <!-- LINKS - external -->

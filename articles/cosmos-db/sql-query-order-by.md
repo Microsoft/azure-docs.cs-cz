@@ -1,21 +1,21 @@
 ---
 title: Klauzule ORDER BY v Azure Cosmos DB
-description: Přečtěte si o klauzuli ORDER BY jazyka SQL pro Azure Cosmos DB. Použijte SQL jako dotazovací jazyk Azure Cosmos DB JSON.
+description: Další informace o klauzuli SQL ORDER BY pro Azure Cosmos DB. Použijte SQL jako dotazovací jazyk Azure Cosmos DB JSON.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: tisande
 ms.openlocfilehash: b88184be39a41ec42f8fb304a7511073f645f1cb
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77188736"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>Klauzule ORDER BY v Azure Cosmos DB
 
-Volitelná klauzule ORDER BY určuje pořadí řazení pro výsledky vrácené dotazem.
+Volitelná klauzule ORDER BY určuje pořadí řazení výsledků vrácených dotazem.
 
 ## <a name="syntax"></a>Syntaxe
   
@@ -29,34 +29,34 @@ ORDER BY <sort_specification>
   
 - `<sort_specification>`  
   
-   Určuje vlastnost nebo výraz, podle kterého chcete řazení sady výsledků dotazu. Sloupec řazení lze zadat jako název nebo alias vlastnosti.  
+   Určuje vlastnost nebo výraz, na kterém se má seřadit sadu výsledků dotazu. Sloupec řazení lze zadat jako název nebo alias vlastnosti.  
   
-   Lze zadat více vlastností. Názvy vlastností musí být jedinečné. Pořadí vlastností řazení v klauzuli ORDER BY definuje organizaci seřazené sady výsledků. To znamená sada výsledků je seřazený podle první vlastnost a potom tuto seřazený seznam je seřazen podle druhý vlastnosti a tak dále.  
+   Lze zadat více vlastností. Názvy vlastností musí být jedinečné. Posloupnost vlastností řazení v klauzuli ORDER BY definuje organizaci seřazené sady výsledků. To znamená, že sada výsledků je seřazena podle první vlastnosti a pak je seřazený seznam podle druhé vlastnosti a tak dále.  
   
-   Názvy vlastností, na které odkazuje klauzule ORDER BY, musí odpovídat buď vlastnosti v seznamu SELECT, nebo vlastnosti definované v kolekci určené v klauzuli FROM bez nejednoznačnosti.  
+   Názvy vlastností odkazované v klauzuli ORDER BY musí odpovídat vlastnosti ve výběrovém seznamu nebo vlastnosti definované v kolekci zadané v klauzuli FROM bez jakýchkoli nejasností.  
   
 - `<sort_expression>`  
   
-   Určuje jednu nebo více vlastností nebo výrazů, u kterých se má seřadit sada výsledků dotazu.  
+   Určuje jednu nebo více vlastností nebo výrazů, na kterých se má seřadit sadu výsledků dotazu.  
   
 - `<scalar_expression>`  
   
-   Podrobnosti najdete v části [skalární výrazy](sql-query-scalar-expressions.md) .  
+   Podrobnosti najdete v části [Výrazy Skalární](sql-query-scalar-expressions.md) výrazy.  
   
 - `ASC | DESC`  
   
-   Určuje, zda mají být řazeny hodnot v zadaném sloupci ve vzestupném nebo sestupném pořadí. ASC řadí od nejnižší hodnoty po nejvyšší hodnotu. DESC seřadí od nejvyšší hodnotu na nejnižší hodnotu. ASC se použije výchozí pořadí řazení. Hodnoty Null jsou považovány za nejnižší možné hodnoty.  
+   Určuje, že hodnoty v zadaném sloupci by měly být seřazeny vzestupně nebo sestupně. ASC seřadí od nejnižší hodnoty k nejvyšší hodnotě. DESC seřadí od nejvyšší hodnoty na nejnižší hodnotu. ASC je výchozí pořadí řazení. Hodnoty Null jsou považovány za nejnižší možné hodnoty.  
   
 ## <a name="remarks"></a>Poznámky  
   
-   Klauzule `ORDER BY` vyžaduje, aby zásady indexování zahrnovaly index pro pole, která se seřadí. Modul runtime dotazu Azure Cosmos DB podporuje řazení proti názvu vlastnosti a nikoli k vypočítaným vlastnostem. Azure Cosmos DB podporuje více vlastností `ORDER BY`. Chcete-li spustit dotaz s více OBJEDNÁVKAmi podle vlastností, měli byste pro pole, která jsou seřazena, definovat [složený index](index-policy.md#composite-indexes) .
+   Klauzule `ORDER BY` vyžaduje, aby zásady indexování obsahovat index pro pole, která jsou seřazena. Runtime dotazu Azure Cosmos DB podporuje řazení podle názvu vlastnosti a ne proti vypočítané vlastnosti. Azure Cosmos DB `ORDER BY` podporuje více vlastností. Chcete-li spustit dotaz s více vlastnostmi ORDER BY, měli byste definovat [složený index](index-policy.md#composite-indexes) v seřazených polích.
 
 > [!Note]
-> Pokud jsou seřazené vlastnosti pro některé dokumenty nedefinovány a chcete je načíst v dotazu ORDER BY, je nutné explicitně zahrnout tuto cestu do indexu. Výchozí zásada indexování neumožní načtení dokumentů, kde není definovaná vlastnost Sort. [Přečtěte si příklady dotazů na dokumenty s některými chybějícími poli](#documents-with-missing-fields).
+> Pokud vlastnosti, které jsou seřazeny může být nedefinované pro některé dokumenty a chcete načíst v dotazu ORDER BY, je nutné explicitně zahrnout tuto cestu do indexu. Výchozí zásady indexování neumožní načtení dokumentů, kde není definována vlastnost řazení. [Projděte si ukázkové dotazy na dokumenty s některými chybějícími poli](#documents-with-missing-fields).
 
 ## <a name="examples"></a>Příklady
 
-Tady je příklad dotazu, který načte rodiny ve vzestupném pořadí podle jména rezidentního města:
+Například tady je dotaz, který načítá rodiny ve vzestupném pořadí názvu města bydliště:
 
 ```sql
     SELECT f.id, f.address.city
@@ -64,7 +64,7 @@ Tady je příklad dotazu, který načte rodiny ve vzestupném pořadí podle jm�
     ORDER BY f.address.city
 ```
 
-Výsledky jsou:
+Výsledky jsou následující:
 
 ```json
     [
@@ -79,7 +79,7 @@ Výsledky jsou:
     ]
 ```
 
-Následující dotaz načte rodinu `id`s v pořadí data vytvoření položky. Položka `creationDate` je číslo představující *epocha čas*nebo uplynulý čas od ledna. 1, 1970 v sekundách.
+Následující dotaz načte `id`rodinu s v pořadí podle data vytvoření položky. Položka `creationDate` je číslo představující *čas epochy*nebo uplynulý čas od 1.
 
 ```sql
     SELECT f.id, f.creationDate
@@ -87,7 +87,7 @@ Následující dotaz načte rodinu `id`s v pořadí data vytvoření položky. P
     ORDER BY f.creationDate DESC
 ```
 
-Výsledky jsou:
+Výsledky jsou následující:
 
 ```json
     [
@@ -102,7 +102,7 @@ Výsledky jsou:
     ]
 ```
 
-Navíc můžete řadit podle více vlastností. Dotaz, který ORDER by s více vlastnostmi vyžaduje [složený index](index-policy.md#composite-indexes). Vezměte v úvahu následující dotaz:
+Kromě toho můžete objednat podle více vlastností. Dotaz, který objednává podle více vlastností, vyžaduje [složený index](index-policy.md#composite-indexes). Zamyslete se nad následujícím dotazem:
 
 ```sql
     SELECT f.id, f.creationDate
@@ -110,13 +110,13 @@ Navíc můžete řadit podle více vlastností. Dotaz, který ORDER by s více v
     ORDER BY f.address.city ASC, f.creationDate DESC
 ```
 
-Tento dotaz načte `id` řady ve vzestupném pořadí podle názvu města. Pokud má více položek stejný název města, dotaz bude seřazen podle `creationDate` v sestupném pořadí.
+Tento dotaz načte `id` rodinu ve vzestupném pořadí názvu města. Pokud má více položek stejný název města, `creationDate` bude dotaz sestupněpodle sestupné ho pořadí.
 
 ## <a name="documents-with-missing-fields"></a>Dokumenty s chybějícími poli
 
-Dotazy s `ORDER BY`, které se spouštějí u kontejnerů s výchozími zásadami indexování, nebudou vracet dokumenty, u kterých není definovaná vlastnost Sort. Pokud chcete zahrnout dokumenty, kde není definovaná vlastnost Sort, měli byste tuto vlastnost výslovně zahrnout do zásad indexování.
+Dotazy, `ORDER BY` které jsou spuštěny proti kontejnerům s výchozí zásadou indexování, nevrátí dokumenty, kde není definována vlastnost řazení. Pokud chcete zahrnout dokumenty, kde není definována vlastnost řazení, měli byste tuto vlastnost explicitně zahrnout do zásad indexování.
 
-Tady je například kontejner se zásadami indexování, které explicitně nezahrnují žádné cesty kromě `"/*"`:
+Například zde je kontejner s indexování zásady, která není `"/*"`explicitně obsahovat žádné cesty kromě :
 
 ```json
 {
@@ -131,9 +131,9 @@ Tady je například kontejner se zásadami indexování, které explicitně neza
 }
 ```
 
-Pokud spustíte dotaz, který obsahuje `lastName` v klauzuli `Order By`, budou výsledky obsahovat jenom dokumenty, které mají definovanou vlastnost `lastName`. Nedefinovali jste explicitní zahrnutou cestu pro `lastName` tak, aby se ve výsledcích dotazu nezobrazovaly žádné dokumenty bez `lastName`.
+Pokud spustíte dotaz, `lastName` který `Order By` obsahuje klauzuli, výsledky budou `lastName` zahrnovat pouze dokumenty, které mají definovanou vlastnost. Nedefinovali jsme explicitně `lastName` zahrnutou cestu, `lastName` takže žádné dokumenty bez a se ve výsledcích dotazu nezobrazí.
 
-Tady je dotaz, který se seřadí podle `lastName` ve dvou dokumentech, z nichž jeden není definován `lastName`:
+Zde je dotaz, `lastName` který seřadí podle dvou dokumentů, `lastName` z nichž jeden nemá definovaný:
 
 ```sql
     SELECT f.id, f.lastName
@@ -141,7 +141,7 @@ Tady je dotaz, který se seřadí podle `lastName` ve dvou dokumentech, z nichž
     ORDER BY f.lastName
 ```
 
-Výsledky zahrnují pouze dokument, který má definovanou `lastName`:
+Výsledky zahrnují pouze dokument, který `lastName`má definovaný :
 
 ```json
     [
@@ -152,9 +152,9 @@ Výsledky zahrnují pouze dokument, který má definovanou `lastName`:
     ]
 ```
 
-Pokud aktualizujete zásady indexování kontejneru tak, aby explicitně zahrnovaly cestu pro `lastName`, budeme do výsledků dotazu zahrnout dokumenty s nedefinovanou vlastností řazení. Je nutné explicitně definovat cestu, která má vést k této skalární hodnotě (a ne i mimo ni). V definici cesty v zásadách indexování byste měli použít `?` znak, abyste se ujistili, že explicitně Indexujte vlastnost `lastName` a žádné další vnořené cesty nad ní.
+Pokud aktualizujeme zásady indexování kontejneru tak, `lastName`aby explicitně zahrnovaly cestu pro , zahrneme do výsledků dotazu dokumenty s nedefinovanou vlastností řazení. Je nutné explicitně definovat cestu vést k této skalární hodnotu (a ne za ní). Znak v `?` definici cesty v zásadách indexování byste měli použít `lastName` k zajištění explicitního indexování vlastnosti a žádné další vnořené cesty za ní.
 
-Tady je ukázková zásada indexování, která umožňuje mít ve výsledcích dotazu k dispozici dokumenty s nedefinovaným `lastName`.
+Zde je ukázka indexování zásady, která umožňuje `lastName` mít dokumenty s nedefinované zobrazí ve výsledcích dotazu:
 
 ```json
 {
@@ -172,7 +172,7 @@ Tady je ukázková zásada indexování, která umožňuje mít ve výsledcích 
 }
 ```
 
-Pokud znovu spustíte stejný dotaz, ve výsledcích dotazu se zobrazí nejprve dokumenty, které chybí `lastName`:
+Pokud spusťte stejný dotaz znovu, `lastName` dokumenty, které chybí, se zobrazí jako první ve výsledcích dotazu:
 
 ```sql
     SELECT f.id, f.lastName
@@ -180,7 +180,7 @@ Pokud znovu spustíte stejný dotaz, ve výsledcích dotazu se zobrazí nejprve 
     ORDER BY f.lastName
 ```
 
-Výsledky jsou:
+Výsledky jsou následující:
 
 ```json
 [
@@ -194,7 +194,7 @@ Výsledky jsou:
 ]
 ```
 
-Pokud změníte pořadí řazení na `DESC`, zobrazí se v seznamu výsledky dotazu dokumenty, které chybí `lastName`.
+Pokud změníte pořadí `DESC`řazení na , `lastName` dokumenty, které chybí, se zobrazí jako poslední ve výsledcích dotazu:
 
 ```sql
     SELECT f.id, f.lastName
@@ -202,7 +202,7 @@ Pokud změníte pořadí řazení na `DESC`, zobrazí se v seznamu výsledky dot
     ORDER BY f.lastName DESC
 ```
 
-Výsledky jsou:
+Výsledky jsou následující:
 
 ```json
 [
@@ -220,4 +220,4 @@ Výsledky jsou:
 
 - [Začínáme](sql-query-getting-started.md)
 - [Zásady indexování ve službě Azure Cosmos DB](index-policy.md)
-- [Klauzule LIMIT POSUNu](sql-query-offset-limit.md)
+- [Klauzule OFFSET LIMIT](sql-query-offset-limit.md)

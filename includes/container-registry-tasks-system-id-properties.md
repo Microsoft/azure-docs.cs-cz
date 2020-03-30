@@ -9,13 +9,13 @@ ms.date: 07/12/2019
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 700dbfde3be2f24eb57acbdeb9d2841ef2bdfe44
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77112332"
 ---
-Ve výstupu příkazu zobrazuje oddíl `identity` identitu typu `SystemAssigned` je nastavena v úloze. `principalId` je hlavní ID identity úlohy:
+Ve výstupu příkazu `identity` se v části `SystemAssigned` zobrazí identita typu nastavená v úloze. Je `principalId` id hlavního úkolu identity úkolu:
 
 ```console
 [...]
@@ -28,7 +28,7 @@ Ve výstupu příkazu zobrazuje oddíl `identity` identitu typu `SystemAssigned`
   "location": "eastus",
 [...]
 ``` 
-Pomocí příkazu [AZ ACR Task show][az-acr-task-show] uložte principalId do proměnné pro použití v pozdějších příkazech. V následujícím příkazu nahraďte název svého úkolu a registru:
+Pomocí příkazu [az acr task show][az-acr-task-show] uložte principalId v proměnné, chcete-li použít v pozdějších příkazech. Název úkolu a registru nahraďte následujícím příkazem:
 
 ```azurecli
 principalID=$(az acr task show --name mytask --registry myregistry --query identity.principalId --output tsv)

@@ -1,7 +1,7 @@
 ---
-title: Dovednost pro vnímání textu sloučení
+title: Kognitivní dovednosti sloučení textu
 titleSuffix: Azure Cognitive Search
-description: Sloučí text z kolekce polí do jednoho konsolidovaného pole. Využijte tuto funkci rozpoznávání v kanálu rozšíření AI v Azure Kognitivní hledání.
+description: Sloučit text z kolekce polí do jednoho sloučeného pole. Pomocí této kognitivní dovednosti v kanálu obohacení ai v Azure Cognitive Search.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,34 +9,34 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 98ea416305f080850d85498f74693eb2d45b0944
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162340"
 ---
-#   <a name="text-merge-cognitive-skill"></a>Dovednost pro vnímání textu sloučení
+#   <a name="text-merge-cognitive-skill"></a>Kognitivní dovednosti sloučení textu
 
-Dovednost **sloučení textu** slučuje text z kolekce polí do jednoho pole. 
+Dovednost **Sloučení textu** sloučí text ze sbírky polí do jednoho pole. 
 
 > [!NOTE]
-> Tato dovednost není vázaná na rozhraní Cognitive Services API a neúčtují se za jejich použití. K dispozici byste ale měli i [prostředek Cognitive Services](cognitive-search-attach-cognitive-services.md), abyste mohli přepsat možnost **bezplatného** prostředku, která omezuje na malý počet denních rozšíření za den.
+> Tato dovednost není vázána na rozhraní API služby Cognitive Services a za jeho použití se vám neúčtují poplatky. Stále byste měli [připojit prostředek služeb Cognitive Services](cognitive-search-attach-cognitive-services.md), abyste však přepsali možnost **Volný** prostředek, který vás omezuje na malý počet denních obohacení za den.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.MergeSkill
 
 ## <a name="skill-parameters"></a>Parametry dovednosti
 
-V parametrech jsou rozlišována malá a velká písmena.
+U parametrů se rozlišují malá a velká písmena.
 
 | Název parametru     | Popis |
 |--------------------|-------------|
-| insertPreTag  | Řetězec, který má být zahrnut před každým vložením. Výchozí hodnota je `" "`. Chcete-li vynechat místo, nastavte hodnotu na `""`.  |
-| insertPostTag | Řetězec, který má být zahrnut po každém vložení. Výchozí hodnota je `" "`. Chcete-li vynechat místo, nastavte hodnotu na `""`.  |
+| insertPreTag  | Řetězec, který má být zahrnut před každým vložením. Výchozí hodnota je `" "`. Chcete-li místo vynechat, nastavte `""`hodnotu na .  |
+| insertPostTag | Řetězec, který má být zahrnut po každém vložení. Výchozí hodnota je `" "`. Chcete-li místo vynechat, nastavte `""`hodnotu na .  |
 
 
-##  <a name="sample-input"></a>Vzorový vstup
-Dokument JSON, který poskytuje použitelný vstup pro tuto dovednost, může být:
+##  <a name="sample-input"></a>Vstup vzorku
+Dokument JSON poskytující použitelný vstup pro tuto dovednost může být:
 
 ```json
 {
@@ -55,7 +55,7 @@ Dokument JSON, který poskytuje použitelný vstup pro tuto dovednost, může b�
 ```
 
 ##  <a name="sample-output"></a>Ukázkový výstup
-Tento příklad ukazuje výstup předchozí vstupní hodnoty za předpokladu, že je *insertPreTag* nastaven na hodnotu `" "`a *insertPostTag* je nastaven na hodnotu `""`. 
+Tento příklad ukazuje výstup předchozího vstupu, za předpokladu, `" "`že *insertPreTag* je nastavena na , a *insertPostTag* je nastavena na `""`. 
 
 ```json
 {
@@ -71,11 +71,11 @@ Tento příklad ukazuje výstup předchozí vstupní hodnoty za předpokladu, ž
 }
 ```
 
-## <a name="extended-sample-skillset-definition"></a>Rozšířená ukázka definice dovednosti
+## <a name="extended-sample-skillset-definition"></a>Rozšířená definice sady dovedností vzorku
 
-Běžným scénářem použití sloučení textu je sloučení textové reprezentace obrázků (text z dovednosti OCR nebo titulku obrázku) do pole obsah dokumentu. 
+Běžným scénářem pro použití sloučení textu je sloučení textové reprezentace obrazů (text z dovednosti rozpoznávání OCR nebo titulek obrázku) do pole obsahu dokumentu. 
 
-Následující příklad dovednosti používá dovednost optického rozpoznávání znaků k extrakci textu z obrázků vložených v dokumentu. V dalším kroku vytvoří *merged_text* pole, které bude obsahovat původní i OCRed text z každého obrázku. Další informace o dovednostech OCR najdete [tady](https://docs.microsoft.com/azure/search/cognitive-search-skill-ocr).
+Následující příklad skillset používá dovednost OCR extrahovat text z obrazů vložených do dokumentu. Dále vytvoří *pole merged_text,* které bude obsahovat původní text i text OCRed z každého obrázku. Další informace o dovednostech ocr naleznete [zde](https://docs.microsoft.com/azure/search/cognitive-search-skill-ocr).
 
 ```json
 {
@@ -126,7 +126,7 @@ Následující příklad dovednosti používá dovednost optického rozpoznává
   ]
 }
 ```
-Výše uvedený příklad předpokládá, že existuje pole Normalized-images. Chcete-li získat pole Normalized-images, nastavte v definici indexeru konfiguraci *imageAction* na *generateNormalizedImages* , jak je znázorněno níže:
+Výše uvedený příklad předpokládá, že existuje pole normalizované obrázky. Chcete-li získat pole normalizované obrázky, nastavte konfiguraci *imageAction* v definici indexeru tak, aby *generovala Normalizované obrázky,* jak je znázorněno níže:
 
 ```json
 {
@@ -143,5 +143,5 @@ Výše uvedený příklad předpokládá, že existuje pole Normalized-images. C
 ## <a name="see-also"></a>Viz také
 
 + [Integrované dovednosti](cognitive-search-predefined-skills.md)
-+ [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
-+ [Vytvořit indexer (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Jak definovat sadu dovedností](cognitive-search-defining-skillset.md)
++ [Vytvoření indexeru (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

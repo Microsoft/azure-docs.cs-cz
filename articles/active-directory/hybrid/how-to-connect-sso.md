@@ -1,8 +1,8 @@
 ---
-title: 'Azure AD Connect: bezproblémové jednotné přihlašování | Microsoft Docs'
-description: Toto téma popisuje Azure Active Directory (Azure AD) bezproblémové jednotné přihlašování a to, jak vám umožňuje poskytovat skutečné jednotné přihlašování pro uživatele firemních stolních počítačů v podnikové síti.
+title: 'Azure AD Connect: Bezproblémové jednotné přihlašování | Dokumenty společnosti Microsoft'
+description: Toto téma popisuje Azure Active Directory (Azure AD) bezproblémové jednotné přihlašování a jak umožňuje poskytovat skutečné jednotné přihlašování pro podnikové uživatele stolních počítačů v rámci podnikové sítě.
 services: active-directory
-keywords: Co je Azure AD Connect, instalace služby Active Directory, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování
+keywords: co je Azure AD Connect, nainstalujte službu Active Directory, požadované součásti pro Azure AD, Jednotné přihlašování, jednotné přihlašování
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -17,75 +17,75 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f1b7e4716e731e6b73e3ac60b64baa71043906fc
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77483750"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory bezproblémové jednotné přihlašování
+# <a name="azure-active-directory-seamless-single-sign-on"></a>Bezproblémové jednotné přihlašování služby Azure Active Directory
 
-## <a name="what-is-azure-active-directory-seamless-single-sign-on"></a>Co je Azure Active Directory bezproblémové jednotné přihlašování?
+## <a name="what-is-azure-active-directory-seamless-single-sign-on"></a>Co je bezproblémové jednotné přihlašování služby Azure Active Directory?
 
-Bezproblémové jednotné přihlašování Azure Active Directory (bezproblémové jednotné přihlašování Azure AD) automaticky přihlašuje uživatele, kteří zrovna používají svá podniková zařízení připojená k vaší podnikové síti. Pokud je tato možnost povolená, uživatelé nebudou muset zadávat hesla pro přihlášení ke službě Azure AD a obvykle dokonce zadávejte své uživatelské jméno. Tato funkce poskytuje uživatelům snadný přístup k vašim cloudovým aplikacím bez potřeby dalších místních komponent.
+Bezproblémové jednotné přihlašování Azure Active Directory (bezproblémové jednotné přihlašování Azure AD) automaticky přihlašuje uživatele, kteří zrovna používají svá podniková zařízení připojená k vaší podnikové síti. Pokud je povoleno, uživatelé nemusí zadávat svá hesla pro přihlášení k Azure AD a obvykle dokonce zadejte svá uživatelská jména. Tato funkce poskytuje uživatelům snadný přístup k vašim cloudovým aplikacím bez potřeby dalších místních komponent.
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-Bezproblémové jednotné přihlašování se dá kombinovat buď se [synchronizací hodnot hash hesel](how-to-connect-password-hash-synchronization.md) , nebo [pomocí předávacích ověřovacích metod ověřování](how-to-connect-pta.md) . Bezproblémové jednotné přihlašování se _nevztahuje_ na Active Directory Federation Services (AD FS) (ADFS).
+Bezproblémové jednotné přihlašování lze kombinovat s [synchronizací hash hesla](how-to-connect-password-hash-synchronization.md) nebo [předávací ověřování](how-to-connect-pta.md) přihlašovací metody. Bezproblémové jednotné přihlašované služby _se nevztahuje_ na službu ADFS (Active Directory Federation Services).
 
 ![Bezproblémové jednotné přihlašování](./media/how-to-connect-sso/sso1.png)
 
 >[!IMPORTANT]
->Bezproblémové jednotné přihlašování vyžaduje, aby zařízení uživatele bylo jenom **připojené k doméně** , ale nepoužívá se pro zařízení připojená k [Azure AD](../devices/concept-azure-ad-join.md) nebo pro zařízení [připojená k hybridní službě Azure AD](../devices/concept-azure-ad-join-hybrid.md) . Jednotné přihlašování pro službu Azure AD připojené a hybridní připojení ke službě Azure AD funguje na základě [primárního obnovovacího tokenu](../devices/concept-primary-refresh-token.md).
+>Bezproblémové jednotné přihlašování potřebuje zařízení uživatele, aby se připojil pouze k **doméně,** ale nepoužívá se na [azure ad připojená](../devices/concept-azure-ad-join.md) zařízení nebo [hybridní Azure AD připojenzařízení.](../devices/concept-azure-ad-join-hybrid.md) Připojovací služby ve službě Azure AD se připojily a hybridní Azure AD připojil funguje na základě [primární hotokenu aktualizace](../devices/concept-primary-refresh-token.md).
 
 ## <a name="key-benefits"></a>Klíčové výhody
 
 - *Skvělé uživatelské prostředí*
-  - Uživatelé se automaticky přihlásí k místním i cloudovým aplikacím.
-  - Uživatelé nemusejí opakovaně zadávat hesla.
-- *Snadné nasazení & spravovat*
-  - K provedení této práce nejsou potřeba žádné další součásti v místním prostředí.
-  - Funguje s libovolnou metodou cloudového ověřování – [synchronizace hodnot hash hesel](how-to-connect-password-hash-synchronization.md) nebo [předávacího ověřování](how-to-connect-pta.md).
-  - Je možné je navrátit pro některé nebo všechny uživatele pomocí Zásady skupiny.
-  - Registrovat zařízení s jiným systémem než Windows 10 pomocí Azure AD bez nutnosti infrastruktury AD FS. Tato funkce vyžaduje, abyste používali verzi 2,1 nebo novější z [klienta připojení k síti na pracovišti](https://www.microsoft.com/download/details.aspx?id=53554).
+  - Uživatelé jsou automaticky přihlášeni k místním i cloudovým aplikacím.
+  - Uživatelé nemusí zadávat svá hesla opakovaně.
+- *Snadné nasazení & správa*
+  - Žádné další součásti potřebné v místním prostředí, aby to fungovalo.
+  - Funguje s libovolnou metodou cloudového ověřování – [synchronizace hash hesel](how-to-connect-password-hash-synchronization.md) nebo [předávací ověřování](how-to-connect-pta.md).
+  - Lze použít pro některé nebo všechny uživatele pomocí zásad skupiny.
+  - Zaregistrujte zařízení, která nejsou windows 10, pomocí Azure AD bez nutnosti jakékoli infrastruktury služby AD FS. Tato funkce vyžaduje použití verze 2.1 nebo novější [klienta připojení k pracovišti](https://www.microsoft.com/download/details.aspx?id=53554).
 
 ## <a name="feature-highlights"></a>Zvýraznění funkcí
 
-- Přihlašovací uživatelské jméno může být buď místní výchozí uživatelské jméno (`userPrincipalName`), nebo jiný atribut nakonfigurovaný v Azure AD Connect (`Alternate ID`). Jak fungují případy použití, protože bezproblémové jednotné přihlašování používá deklaraci identity `securityIdentifier` v lístku protokolu Kerberos k vyhledání odpovídajícího objektu uživatele ve službě Azure AD.
-- Bezproblémové jednotné přihlašování je příležitostné funkce. Pokud z nějakého důvodu dojde k chybě, přihlašovací prostředí uživatele se vrátí k běžnému chování – tzn. uživatel musí na přihlašovací stránce zadat heslo.
-- Pokud aplikace (například `https://myapps.microsoft.com/contoso.com`) předá parametr `domain_hint` (OpenID Connect) nebo `whr` (SAML) – Identifikujte vašeho tenanta nebo `login_hint` parametr-Identifikujte uživatele, v jeho žádosti o přihlášení k Azure AD se uživatelé automaticky přihlásí, aniž by museli zadávat uživatelská jména nebo hesla.
-- Uživatelé taky získají tiché přihlašování, pokud aplikace (například `https://contoso.sharepoint.com`) odesílá požadavky na přihlášení do koncových bodů služby Azure AD nastavené jako klienti – to znamená `https://login.microsoftonline.com/contoso.com/<..>` nebo `https://login.microsoftonline.com/<tenant_ID>/<..>` – místo společného koncového bodu služby Azure AD – to znamená `https://login.microsoftonline.com/common/<...>`.
-- Odhlášení se podporuje. To umožňuje uživatelům zvolit si jiný účet služby Azure AD pro přihlášení, místo aby se automaticky přihlásili pomocí bezproblémového jednotného přihlašování automaticky.
-- Klienti Win32 Office 365 (Outlook, Word, Excel a další) s verzemi 16.0.8730. xxxx a novější se podporují pomocí neinteraktivního toku. Pro OneDrive budete muset pro tiché přihlašování aktivovat [funkci bezobslužné konfigurace OneDrive](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) .
-- Dá se povolit prostřednictvím Azure AD Connect.
-- Je to bezplatná funkce a nepotřebujete žádné placené edice Azure AD, abyste ji mohli používat.
-- Podporuje se u klientů a klientů Office využívajících webový prohlížeč, kteří podporují [moderní ověřování](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) na platformách a prohlížečích, které podporují ověřování protokolem Kerberos:
+- Přihlašovací uživatelské jméno může být místní výchozí uživatelské`userPrincipalName`jméno ( ) nebo jiný atribut`Alternate ID`nakonfigurovaný v Azure AD Connect ( ). Oba případy použití fungují, protože `securityIdentifier` bezproblémové jednotné přihlašující používá deklarace v lístku protokolu Kerberos vyhledat odpovídající objekt uživatele ve službě Azure AD.
+- Bezproblémové jednotné přihlašovatosti je oportunistické funkce. Pokud se z nějakého důvodu nezdaří, prostředí pro přihlášení uživatele se vrátí k jeho pravidelnému chování - tj.
+- Pokud aplikace (například `https://myapps.microsoft.com/contoso.com`) předá parametr `domain_hint` (OpenID Connect) nebo `whr` (SAML) `login_hint` – identifikaci vašeho klienta nebo parametr – identifikaci uživatele v žádosti o přihlášení azure ad, uživatelé jsou automaticky přihlášeni, aniž by zadali uživatelská jména nebo hesla.
+- Uživatelé také získat tiché přihlašovací prostředí, pokud `https://contoso.sharepoint.com`aplikace (například) odešle požadavky na přihlášení do koncových bodů Azure `https://login.microsoftonline.com/contoso.com/<..>` `https://login.microsoftonline.com/<tenant_ID>/<..>` AD nastavených jako klienti – to znamená, nebo - namísto společného koncového bodu Azure AD - to znamená `https://login.microsoftonline.com/common/<...>`.
+- Odhlášení je podporováno. To umožňuje uživatelům zvolit jiný účet Azure AD pro přihlášení, místo toho, aby se automaticky přihlásili pomocí bezproblémového jednotného přihlašování.
+- Klienti Office 365 Win32 (Outlook, Word, Excel a další) s verzemi 16.0.8730.xxxx a vyššími jsou podporováni pomocí neinteraktivního toku. Pro OneDrive budete muset aktivovat [funkci tiché konfigurace OneDrivu](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) pro tiché přihlašování.
+- Dá se povolit prostřednictvím služby Azure AD Connect.
+- Jedná se o bezplatnou funkci a k jeho použití nepotřebujete žádné placené edice Azure AD.
+- Je podporován a klienty webového prohlížeče a klienty sady Office, kteří podporují [moderní ověřování](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) na platformách a prohlížečích schopných ověřování protokolem Kerberos:
 
-| OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
+| OS\Prohlížeč |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Ano\*|Ano|Ano|Ano\*\*\*|NEUŽÍVÁ SE.
-|Windows 8.1|Ano\*|NEUŽÍVÁ SE.|Ano|Ano\*\*\*|NEUŽÍVÁ SE.
-|Windows 8|Ano\*|NEUŽÍVÁ SE.|Ano|Ano\*\*\*|NEUŽÍVÁ SE.
-|Windows 7|Ano\*|NEUŽÍVÁ SE.|Ano|Ano\*\*\*|NEUŽÍVÁ SE.
-|Windows Server 2012 R2 nebo novější|Ano\*\*|NEUŽÍVÁ SE.|Ano|Ano\*\*\*|NEUŽÍVÁ SE.
-|Mac OS X|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|Ano\*\*\*|Ano\*\*\*|Ano\*\*\*
+|Windows 10|Ano\*|Ano|Ano|Ano\*\*\*|Není dostupné.
+|Windows 8.1|Ano\*|Není dostupné.|Ano|Ano\*\*\*|Není dostupné.
+|Windows 8|Ano\*|Není dostupné.|Ano|Ano\*\*\*|Není dostupné.
+|Windows 7|Ano\*|Není dostupné.|Ano|Ano\*\*\*|Není dostupné.
+|Windows Server 2012 R2 nebo vyšší|Ano\*\*|Není dostupné.|Ano|Ano\*\*\*|Není dostupné.
+|Mac OS X|Není dostupné.|Není dostupné.|Ano\*\*\*|Ano\*\*\*|Ano\*\*\*
 
 
-\*vyžaduje Internet Explorer verze 10 nebo vyšší.
+\*Vyžaduje aplikaci Internet Explorer verze 10 nebo vyšší.
 
-\*\*vyžaduje Internet Explorer verze 10 nebo vyšší. Zakázat Rozšířený chráněný režim
+\*\*Vyžaduje aplikaci Internet Explorer verze 10 nebo vyšší. Zakázání rozšířeného chráněného režimu
 
-\*\*\*vyžaduje [Další konfiguraci](how-to-connect-sso-quick-start.md#browser-considerations) .
+\*\*\*Vyžaduje [další konfiguraci](how-to-connect-sso-quick-start.md#browser-considerations)
 
 >[!NOTE]
->V případě Windows 10 doporučujeme použít službu [Azure AD JOIN](../devices/concept-azure-ad-join.md) k optimálnímu jednotnému přihlašování v Azure AD.
+>Pro Windows 10 doporučujeme použít [Azure AD Join](../devices/concept-azure-ad-join.md) pro optimální jednotné přihlašování pomocí Azure AD.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [**Rychlé zprovoznění**](how-to-connect-sso-quick-start.md) – zprovoznění služby Azure AD bez problémů s jednotným přihlašováním
+- [**Rychlý start**](how-to-connect-sso-quick-start.md) – zprovoznění bezproblémového jednotného přihlašování Azure AD.
 - [**Plán nasazení**](https://aka.ms/deploymentplans/sso) – podrobný plán nasazení.
-- [**Technický obsáhlý podrobně**](how-to-connect-sso-how-it-works.md) – pochopení, jak tato funkce funguje.
-- [**Nejčastější dotazy**](how-to-connect-sso-faq.md) – odpovědi na nejčastější dotazy
-- [**Řešení potíží**](tshoot-connect-sso.md) – Naučte se řešit běžné problémy s touto funkcí.
-- [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) – pro nové žádosti o funkce
+- [**Technické Deep Dive**](how-to-connect-sso-how-it-works.md) - Pochopit, jak tato funkce funguje.
+- [**Nejčastější dotazy**](how-to-connect-sso-faq.md) - Odpovědi na často kladené otázky.
+- [**Poradce při potížích**](tshoot-connect-sso.md) – Přečtěte si, jak vyřešit běžné problémy s funkcí.
+- [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - Pro podání nových žádostí o funkce.
 

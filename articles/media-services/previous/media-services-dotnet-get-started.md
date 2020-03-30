@@ -1,6 +1,6 @@
 ---
 title: Začínáme s doručováním obsahu na vyžádání pomocí technologie .NET | Dokumentace Microsoftu
-description: Tento kurz vás provede jednotlivými kroky implementace aplikace pro doručování obsahu na vyžádání pomocí služeb Azure Media Services a .NET.
+description: V tomto kurzu vás provede jednotlivými kroky implementace aplikace pro doručování obsahu na vyžádání pomocí služeb Azure Media Services, které používají .NET.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 7dd49df782115c8c328eed819395209ee7217fd3
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77566059"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>Začínáme s doručováním obsahu na vyžádání pomocí sady SDK pro .NET  
@@ -31,7 +31,7 @@ Tento kurz vás provede jednotlivými kroky implementace základní aplikace pro
 
 K dokončení kurzu potřebujete následující:
 
-* Účet Azure. Podrobnosti najdete v tématu [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
+* Účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * Účet Media Services. Pokud chcete vytvořit účet Media Services, přečtěte si článek [Jak vytvořit účet Media Services](media-services-portal-create-account.md).
 * Rozhraní .NET 4.0 nebo novější.
 * Visual Studio.
@@ -42,14 +42,14 @@ Tento kurz sestává z následujících úloh:
 2. Vytvoření a konfigurace projektu Visual Studia.
 3. Připojení k účtu Media Services.
 2. Nahrání videosouboru
-3. Zakódování zdrojového souboru do sady souborů MP4 s adaptivní přenosovou rychlostí
+3. Zakódování zdrojového souboru do sady souborů MP4 s adaptivní přenosovou rychlostí.
 4. Publikování assetu a získání adres URL streamování a progresivního stahování  
 5. Přehrání obsahu
 
 ## <a name="overview"></a>Přehled
 Tento kurz vás provede jednotlivými kroky implementace aplikace pro doručování videa na vyžádání (VoD, Video-on-Demand) pomocí sady SDK služby Azure Media Services (AMS) pro .NET.
 
-Kurz představuje základní pracovní postup služby Media Services a nejběžnější programovací objekty a úkoly, které Media Services vyžaduje. Po dokončení kurzu bude umět streamovat nebo progresivně stáhnout ukázkový multimediální soubor, který jste odeslali, zakódovali a stáhli.
+Kurz představuje základní pracovní postup služby Media Services a nejběžnější programovací objekty a úkoly, které Media Services vyžaduje. Po dokončení kurzu bude umět streamovat nebo progresivně stáhnout ukázkový mediální soubor, který jste odeslali, nakódovali a stáhli.
 
 ### <a name="ams-model"></a>Model AMS
 
@@ -70,7 +70,7 @@ Při práci se službou Azure Media Services je jedním z nejběžnější scén
 
 Pokud chcete spustit koncový bod streamování, postupujte takto:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [webu Azure Portal](https://portal.azure.com/).
 2. V okně Nastavení klikněte na Koncové body streamování.
 3. Klikněte na výchozí koncový bod streamování.
 
@@ -152,11 +152,11 @@ Funkce **Main** volá metody, které si definujeme v této části.
 
 ## <a name="create-a-new-asset-and-upload-a-video-file"></a>Vytvoření nového prostředku a odeslání videosouboru
 
-Ve službě Media Services můžete digitální soubory nahrát (nebo ingestovat) do prostředku. Entita **assetu** může obsahovat video, zvuk, obrázky, kolekce miniatur, textové stopy a soubory titulků (a metadata o těchto souborech.)  Po nahrání souborů je váš obsah bezpečně uložen v cloudu pro další zpracování a streamování. Soubory v prostředku se nazývají **soubory prostředku**.
+Ve službě Media Services můžete digitální soubory nahrát (nebo ingestovat) do prostředku. Entita **Asset** může obsahovat video, zvuk, obrázky, kolekce miniatur, textové stopy a soubory skrytých titulků (a metadata o těchto souborech).)  Jakmile jsou soubory nahrány, váš obsah je bezpečně uložen v cloudu pro další zpracování a streamování. Soubory v prostředku se nazývají **soubory prostředku**.
 
 Metoda **UploadFile** definovaná níže volá metodu **CreateFromFile** (definovanou v rozšíření sady SDK pro .NET). **CreateFromFile** vytvoří nový prostředek, do kterého se zadaný zdrojový soubor odešle.
 
-Metoda **CreateFromFile** přijímá parametr **AssetCreationOptions**, který vám umožňuje určit jednu z následujících možností vytvoření prostředku:
+Metoda **CreateFromFile** přebírá **možnosti AssetCreationOptions**, která umožňuje určit jednu z následujících možností vytvoření datového zdroje:
 
 * **Žádné** – nepoužívá se žádné šifrování. Toto je výchozí hodnota. Pamatujte, že při použití této možnosti není váš obsah chráněný během přenosu ani při umístění v úložišti.
   Pokud chcete pomocí progresivního stahování dodávat obsah ve formátu MP4, použijte tuto možnost.

@@ -1,6 +1,6 @@
 ---
-title: Jak provádět živé streamování s místními kodéry pomocí .NET | Microsoft Docs
-description: V tomto tématu se dozvíte, jak používat rozhraní .NET k provádění kódování v reálném čase pomocí místních kodérů.
+title: Jak provádět živé streamování s místními kodéry pomocí rozhraní .NET | Dokumenty společnosti Microsoft
+description: Toto téma ukazuje, jak používat rozhraní .NET k živému kódování s místními kodéry.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,37 +14,37 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 11c6da0b79f169b250dc0178f76dcd885ce91668
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162867"
 ---
-# <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Jak provádět živé streamování s místními kodéry pomocí .NET
+# <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Jak provádět živé streamování s místními kodéry pomocí rozhraní .NET
 > [!div class="op_single_selector"]
-> * [Azure Portal](media-services-portal-live-passthrough-get-started.md)
+> * [Portál](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
-> * [REST](https://docs.microsoft.com/rest/api/media/operations/channel)
+> * [Odpočinku](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > 
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
 
-Tento kurz vás provede jednotlivými kroky použití sady Azure Media Services .NET SDK k vytvoření **kanálu** , který je nakonfigurovaný pro předávací doručování. 
+Tento kurz vás provede kroky použití sady Azure Media Services .NET SDK k vytvoření **kanálu,** který je nakonfigurovaný pro předávací doručení. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 K dokončení kurzu potřebujete následující:
 
 * Účet Azure.
 * Účet Media Services. Pokud chcete vytvořit účet Media Services, přečtěte si článek [Jak vytvořit účet Media Services](media-services-portal-create-account.md).
 * Zkontrolujte, že koncový bod streamování, ze kterého chcete streamovat obsah, je ve stavu **Spuštěno**. 
-* Nastavte své vývojové prostředí. Další informace najdete v tématu [nastavení prostředí](media-services-set-up-computer.md).
+* Nastavte dev prostředí. Další informace naleznete v tématu [Nastavení prostředí](media-services-set-up-computer.md).
 * Webová kamera. Například [kodér Telestream Wirecast](media-services-configure-wirecast-live-encoder.md).
 
-Doporučujeme, abyste si přečtěte následující články:
+Doporučujeme zkontrolovat následující články:
 
-* [Podpora RTMP ve službě Azure Media Services a kodéry služby Live Encoding](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)
+* [Podpora RTMP ve službě Azure Media Services a kodéry pro kódování v reálném čase.](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)
 * [Živé streamování pomocí místních kodérů, které vytvářejí datové proudy s více přenosovými rychlostmi](media-services-live-streaming-with-onprem-encoders.md)
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
@@ -53,23 +53,23 @@ Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o
 
 ## <a name="example"></a>Příklad
 
-Následující příklad kódu ukazuje, jak dosáhnout následujících úloh:
+Následující příklad kódu ukazuje, jak dosáhnout následujících úkolů:
 
 * Připojení ke službě Media Services
 * Vytvoření kanálu
 * Aktualizace kanálu
-* Načte vstupní koncový bod kanálu. Vstupní koncový bod by měl být k dispozici pro místní kodér Live Encoder. Živý kodér převede signály z kamery na datové proudy, které jsou odeslány do koncového bodu vstupu kanálu.
-* Načíst koncový bod náhledu kanálu
+* Načíst vstupní koncový bod kanálu. Vstupní koncový bod by měl být poskytnut místnímu živému kodéru. Živý kodér převádí signály z kamery na datové proudy, které jsou odesílány do koncového bodu vstupu (ingestování) kanálu.
+* Načtení koncového bodu náhledu kanálu
 * Vytvoření a spuštění programu
-* Vytvořit Lokátor potřebný k přístupu k programu
-* Vytvoření a spuštění StreamingEndpoint
+* Vytvoření lokátoru potřebného pro přístup k programu
+* Vytvoření a spuštění koncového bodu streamování
 * Aktualizace koncového bodu streamování
 * Vypnutí prostředků
     
 >[!NOTE]
->Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Pokud vždy používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez odeslání), měli byste použít stejné ID zásad. Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) článku.
+>Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Pokud vždy používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez odeslání), měli byste použít stejné ID zásad. Další informace naleznete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) článku.
 
-Informace o tom, jak nakonfigurovat živý kodér, najdete v tématu [Azure Media Services podpoře RTMP a živých kodérů](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/).
+Informace o konfiguraci živého kodéru najdete v [tématu Podpora RTMP služby Azure Media Services a Živé kodéry](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/).
 
 ```csharp
 using System;
@@ -400,10 +400,10 @@ namespace AMSLiveTest
 ```
 
 ## <a name="next-step"></a>Další krok
-Kontrola cest Media Services výuky
+Studijní cesty k recenzují mediální služby
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

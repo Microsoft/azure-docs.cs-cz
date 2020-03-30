@@ -1,37 +1,37 @@
 ---
-title: Vytvoření Ubuntu serveru NFS (Network File System) pro použití v luskech služby Azure Kubernetes (AKS)
-description: Naučte se ručně vytvořit svazek Ubuntu Linuxho serveru NFS pro použití s lusky ve službě Azure Kubernetes Service (AKS).
+title: Vytvoření serveru Ubuntu (NFS) Pro Ubuntu Server pro použití pody služby Azure Kubernetes Service (AKS)
+description: Naučte se ručně vytvořit svazek NFS Ubuntu Linux Server pro použití s pody ve službě Azure Kubernetes Service (AKS).
 services: container-service
 author: ozboms
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: obboms
 ms.openlocfilehash: e5676710bc47557318f3e2adcf36ec0ed13d47de
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77596619"
 ---
-# <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>Ruční vytvoření a použití svazku serveru NFS (Network File System) se systémem Linux pomocí služby Azure Kubernetes Service (AKS)
-Sdílení dat mezi kontejnery je často nezbytnou součástí služeb a aplikací založených na kontejnerech. Obvykle máte různá lusky, které potřebují přístup ke stejným informacím na vnějším trvalém svazku.    
-I když jsou soubory Azure možnosti, vytvoření serveru NFS na virtuálním počítači Azure je další forma trvalého sdíleného úložiště. 
+# <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>Ruční vytvoření a použití svazku serveru Linux Serveru nfs (network file system) se službou Azure Kubernetes Service (AKS)
+Sdílení dat mezi kontejnery je často nezbytnou součástí služeb a aplikací založených na kontejnerech. Obvykle máte různé pody, které potřebují přístup ke stejným informacím na externím trvalém svazku.    
+Zatímco soubory Azure jsou možnost, vytvoření nfs serveru na virtuálním počítači Azure je další forma trvalé sdílené úložiště. 
 
-Tento článek vám ukáže, jak vytvořit server NFS na virtuálním počítači s Ubuntu. A také udělte vašim kontejnerům AKS přístup k tomuto sdílenému systému souborů.
+Tento článek vám ukáže, jak vytvořit nfs server na virtuálním stroji Ubuntu. A také poskytnout aks kontejnery přístup k tomuto sdílenému systému souborů.
 
 ## <a name="before-you-begin"></a>Než začnete
-V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
+Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, podívejte se na aks rychlý start [pomocí Azure CLI][aks-quickstart-cli] nebo [pomocí portálu Azure][aks-quickstart-portal].
 
-Váš cluster AKS bude muset být živý ve stejných nebo partnerských virtuálních sítích jako server NFS. Cluster se musí vytvořit v existující virtuální síti, což může být stejná virtuální síť jako virtuální počítač.
+Cluster AKS bude muset žít ve stejných nebo partnerských virtuálních sítích jako server NFS. Cluster musí být vytvořen v existující virtuální síti, která může být stejná virtuální síť jako virtuální počítač.
 
-Postup pro konfiguraci existující virtuální sítě je popsaný v dokumentaci: [Vytvoření clusteru AKS v existující virtuální][aks-virtual-network] [síti a propojení virtuálních sítí s partnerským vztahem VNet][peer-virtual-networks]
+Postup konfigurace s existující virtuální sítí je popsán v dokumentaci: [vytvoření clusteru AKS v existující virtuální síti][aks-virtual-network] a připojení [virtuálních sítí s partnerským vztahem virtuální sítě][peer-virtual-networks]
 
-Také předpokládá, že jste vytvořili virtuální počítač Ubuntu Linux (například 18,04 LTS). Nastavení a velikost můžou být míru a můžou být nasazeny prostřednictvím Azure. Informace o rychlém startu pro Linux najdete v tématu [Správa virtuálních počítačů Linux][linux-create].
+To také předpokládá, že jste vytvořili Ubuntu Linux Virtual Machine (například 18.04 LTS). Nastavení a velikost může být podle vašich představ a lze je nasadit prostřednictvím Azure. Informace o rychlém startu linuxu najdete v [tématu Správa virtuálních počítačů v Linuxu][linux-create].
 
-Pokud nasadíte svůj cluster AKS jako první, Azure při nasazení Ubuntu počítače automaticky vyplní pole virtuální síť, takže budou živá v rámci stejné virtuální sítě. Pokud ale chcete pracovat s partnerskými sítěmi, Projděte si dokumentaci výše.
+Pokud nejprve nasadíte cluster AKS, Azure automaticky naplní pole virtuální sítě při nasazování počítače Ubuntu, takže budou žít ve stejné virtuální síti. Ale pokud chcete pracovat s partnerskými sítěmi místo toho, podívejte se do dokumentace výše.
 
-## <a name="deploying-the-nfs-server-onto-a-virtual-machine"></a>Nasazení serveru NFS na virtuální počítač
-Tady je skript pro nastavení serveru NFS na vašem virtuálním počítači s Ubuntu:
+## <a name="deploying-the-nfs-server-onto-a-virtual-machine"></a>Nasazení serveru NFS do virtuálního počítače
+Zde je skript pro nastavení nfs serveru ve vašem virtuálním stroji Ubuntu:
 ```bash
 #!/bin/bash
 
@@ -73,32 +73,32 @@ echo "/export        localhost(rw,async,insecure,fsid=0,crossmnt,no_subtree_chec
 
 nohup service nfs-kernel-server restart
 ```
-Server se restartuje (kvůli skriptu) a server pro systém souborů NFS můžete připojit k AKS.
+Server se restartuje (z důvodu skriptu) a můžete připojit nfs server na AKS.
 
 >[!IMPORTANT]  
->Nezapomeňte nahradit **AKS_SUBNET** správným z vašeho clusteru nebo jinak "*" otevřete Server NFS na všechny porty a připojení.
+>Ujistěte se, že **nahradit AKS_SUBNET** s ten správný z clusteru, jinak "*" otevře server NFS na všechny porty a připojení.
 
-Po vytvoření virtuálního počítače zkopírujte tento skript do souboru. Pak ho můžete přesunout z místního počítače nebo kdekoli do virtuálního počítače pomocí: 
+Po vytvoření virtuálního počítače zkopírujte výše uvedený skript do souboru. Potom můžete přesunout z místního počítače nebo kdekoli skript je do virtuálního počítače pomocí: 
 ```console
 scp /path/to/script_file username@vm-ip-address:/home/{username}
 ```
-Jakmile je váš virtuální počítač ve vašem virtuálním počítači, můžete k němu použít SSH a spustit ho pomocí příkazu:
+Jakmile je váš skript ve vašem virtuálním počítači, můžete ssh do virtuálního počítače a spustit jej pomocí příkazu:
 ```console
 sudo ./nfs-server-setup.sh
 ```
-Pokud se jeho spuštění nepovede kvůli chybě odepření oprávnění, nastavte oprávnění ke spouštění prostřednictvím příkazu:
+Pokud se jeho spuštění nezdaří z důvodu chyby odepření oprávnění, nastavte oprávnění k spuštění pomocí příkazu:
 ```console
 chmod +x ~/nfs-server-setup.sh
 ```
 
-## <a name="connecting-aks-cluster-to-nfs-server"></a>Připojení clusteru AKS k serveru NFS
-Server systému souborů NFS můžeme připojit k našemu clusteru zřízením trvalého svazku a deklarace identity trvalého svazku, který určuje, jak se má přistoupit ke svazku.
+## <a name="connecting-aks-cluster-to-nfs-server"></a>Připojení clusteru AKS k serveru nfs
+Server nfs můžeme připojit k našemu clusteru zřízením trvalého svazku a trvalé deklarace svazku, která určuje způsob přístupu ke svazku.
 
-Připojení ke dvěma službám ve stejných nebo partnerských virtuálních sítích je nezbytné. Pokyny pro nastavení clusteru ve stejné virtuální síti najdete tady: [Vytvoření clusteru AKS v existující virtuální][aks-virtual-network] síti.
+Připojení dvou služeb ve stejných nebo partnerských virtuálních sítích je nezbytné. Pokyny pro nastavení clusteru ve stejné virtuální síti jsou tady: [Vytvoření clusteru AKS v existující virtuální síti][aks-virtual-network]
 
-Až budou ve stejné virtuální síti (nebo partnerském vztahu), musíte zřídit trvalý svazek a trvalou deklaraci identity na trvalém svazku v clusteru AKS. Kontejnery pak mohou připojit jednotku NFS do svého místního adresáře.
+Jakmile jsou ve stejné virtuální síti (nebo peered), je třeba zřídit trvalý svazek a trvalé deklarace svazku v clusteru AKS. Kontejnery pak můžete připojit jednotku nfs do svého místního adresáře.
 
-Tady je příklad definice Kubernetes trvalého svazku (Tato definice předpokládá, že váš cluster a virtuální počítač jsou ve stejné virtuální síti):
+Tady je příklad Kubernetesdefinice pro trvalý svazek (Tato definice předpokládá, že cluster a virtuální počítač jsou ve stejné virtuální síti):
 
 ```yaml
 apiVersion: v1
@@ -116,12 +116,12 @@ spec:
     server: <NFS_INTERNAL_IP>
     path: <NFS_EXPORT_FILE_PATH>
 ```
-Nahraďte **NFS_INTERNAL_IP**, **NFS_NAME** a **NFS_EXPORT_FILE_PATH** informace o serveru NFS.
+Nahraďte **NFS_INTERNAL_IP**, **NFS_NAME** a **NFS_EXPORT_FILE_PATH** informacemi o serveru systému sdílení sítí NFS.
 
-Budete také potřebovat soubor deklarace identity trvalého svazku. Tady je příklad toho, co se má zahrnout:
+Budete také potřebovat trvalý soubor deklarací svazku. Zde je příklad toho, co zahrnout:
 
 >[!IMPORTANT]  
->**"storageClassName"** musí zůstat v prázdném řetězci, jinak deklarace nebude fungovat.
+>**"storageClassName"** musí zůstat prázdný řetězec nebo deklarace nebude fungovat.
 
 ```yaml
 apiVersion: v1
@@ -141,22 +141,22 @@ spec:
 ```
 
 ## <a name="troubleshooting"></a>Řešení potíží
-Pokud se nemůžete připojit k serveru z clusteru, může být problém exportovaným adresářem nebo jeho nadřazeným adresářem, nemá dostatečná oprávnění pro přístup k serveru.
+Pokud se nemůžete připojit k serveru z clusteru, problém může být exportovaný adresář nebo jeho nadřazený adresář nemá dostatečná oprávnění pro přístup k serveru.
 
-Ověřte, zda má váš adresář exportu i jeho nadřazený adresář oprávnění 777.
+Zkontrolujte, zda exportní i nadřazený adresář mají oprávnění 777.
 
-Oprávnění můžete ověřit spuštěním následujícího příkazu a adresáře by měly mít oprávnění *"drwxrwxrwx"* :
+Oprávnění můžete zkontrolovat spuštěním níže uvedeného příkazu a adresáře by měly mít oprávnění *"drwxrwxrwx":*
 ```console
 ls -l
 ```
 
 ## <a name="more-information"></a>Další informace
-Úplný návod nebo pomoc při ladění nastavení serveru pro systém souborů NFS najdete v podrobném kurzu:
-  - [Kurz NFS][nfs-tutorial]
+Chcete-li získat úplný návod nebo vám pomoci s laděním nastavení serveru NFS, je zde podrobný kurz:
+  - [Výuka nfs][nfs-tutorial]
 
 ## <a name="next-steps"></a>Další kroky
 
-Související osvědčené postupy najdete [v tématu osvědčené postupy pro úložiště a zálohování v AKS][operator-best-practices-storage].
+Doporučené postupy najdete v [tématu Doporučené postupy pro ukládání a zálohování v AKS][operator-best-practices-storage].
 
 <!-- LINKS - external -->
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/volumes/

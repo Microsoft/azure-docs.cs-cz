@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace předvyhovujícího náborového softwaru pro Automatické zřizování uživatelů s Azure Active Directory | Microsoft Docs'
-description: Naučte se, jak nakonfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro spoluuspokojení náborového softwaru.
+title: 'Kurz: Konfigurace náborového softwaru Comeet pro automatické zřizování uživatelů pomocí služby Azure Active Directory | Dokumenty společnosti Microsoft'
+description: Přečtěte si, jak nakonfigurovat službu Azure Active Directory tak, aby automaticky zřašovala a odpočovávala uživatelské účty do softwaru Comeet Recruiting.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,142 +16,142 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: jeedes
 ms.openlocfilehash: f427fb75cfaeda79b037c327992e4ad482a7e689
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77058327"
 ---
-# <a name="tutorial-configure-comeet-recruiting-software-for-automatic-user-provisioning"></a>Kurz: Konfigurace předvyhovujícího náborového softwaru pro Automatické zřizování uživatelů
+# <a name="tutorial-configure-comeet-recruiting-software-for-automatic-user-provisioning"></a>Kurz: Konfigurace náborového softwaru Comeet pro automatické zřizování uživatelů
 
-Cílem tohoto kurzu je předvést kroky, které je třeba provést v rámci předplatného náborového softwaru a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD pro Automatické zřizování a zrušení zřizování uživatelů a skupin, aby splnily náborový software.
+Cílem tohoto kurzu je demonstrovat kroky, které mají být provedeny v Comeet Nábor software a Azure Active Directory (Azure AD) nakonfigurovat Azure AD automaticky zřizování a de-provision uživatelů nebo skupin comeet náboru software.
 
 > [!NOTE]
-> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
+> Tento kurz popisuje konektor postavený na nad službou zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá, jak funguje, a nejčastější dotazy, najdete [v tématu Automatizace zřizování uživatelů a zrušení zřizování aplikací SaaS pomocí služby Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
-> Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
+> Tento konektor je aktuálně ve verzi Public Preview. Další informace o obecných podmínkách použití Microsoft Azure pro funkce preview najdete v [tématu Doplňkové podmínky použití pro Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
+Scénář popsaný v tomto kurzu předpokládá, že již máte následující požadavky:
 
-* Tenant Azure AD
-* [Nevyhovující tenant náborového softwaru](https://www.comeet.co/)
-* Uživatelský účet v rámci vyhovujícího náborového softwaru s oprávněními správce.
+* Klient Azure AD
+* [Comeet Nábor software nájemce](https://www.comeet.co/)
+* Uživatelský účet v comeet náborovém softwaru s oprávněními správce.
 
-## <a name="add-comeet-recruiting-software-from-the-gallery"></a>Přidání kovyhovujícího náborového softwaru z Galerie
+## <a name="add-comeet-recruiting-software-from-the-gallery"></a>Přidat Comeet Nábor software z galerie
 
-Než nakonfigurujete vyhovující náborový software pro Automatické zřizování uživatelů se službou Azure AD, musíte do svého seznamu spravovaných aplikací pro SaaS přidat do svého seznamu spravovaných aplikací pro příjem softwaru z Galerie aplikací Azure AD.
+Před konfigurací Comeet Nábor software pro automatické zřizování uživatelů s Azure AD, je třeba přidat Comeet Nábor software z galerie aplikací Azure AD do seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat vyhovující náborový software z Galerie aplikací Azure AD, proveďte následující kroky:**
+**Chcete-li přidat software Comeet Recruiting Software z galerie aplikací Azure AD, proveďte následující kroky:**
 
-1. V **[Azure Portal](https://portal.azure.com)** v levém navigačním panelu vyberte možnost **Azure Active Directory**.
+1. Na **[webu Azure Portal](https://portal.azure.com)** vyberte na levém navigačním panelu **položku Azure Active Directory**.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Přejděte na **podnikové aplikace**a vyberte **všechny aplikace**.
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
 
 3. Chcete-li přidat novou aplikaci, vyberte tlačítko **Nová aplikace** v horní části podokna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte předaný **náborový software**, na panelu výsledků vyberte možnost **přeplnit náborový software** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **comeet Recruiting Software**, vpanelu s výsledky vyberte **comeet Recruiting Software** a pak klepnutím na tlačítko **Přidat** přidejte aplikaci.
 
-    ![Vyhovující náborový software v seznamu výsledků](common/search-new-app.png)
+    ![Comeet Recruiting Software v seznamu výsledků](common/search-new-app.png)
 
-## <a name="assigning-users-to-comeet-recruiting-software"></a>Přiřazování uživatelů k předplatnému náborového softwaru
+## <a name="assigning-users-to-comeet-recruiting-software"></a>Přiřazení uživatelů k náborovému softwaru Comeet
 
-Azure Active Directory používá koncept nazvaný *přiřazení* k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelů se synchronizují jenom uživatelé a skupiny, které jsou přiřazené k aplikaci v Azure AD.
+Azure Active Directory používá koncept s názvem *přiřazení* k určení, kteří uživatelé by měli získat přístup k vybraným aplikacím. V kontextu automatickézřižené zřizování uživatelů jsou synchronizovány pouze uživatelé nebo skupiny, které byly přiřazeny k aplikaci ve službě Azure AD.
 
-Než nakonfigurujete a povolíte automatické zřizování uživatelů, měli byste se rozhodnout, kteří uživatelé a skupiny ve službě Azure AD potřebují přístup k prohlášenému náborovému softwaru. Jakmile se rozhodnete, můžete těmto uživatelům nebo skupinám přiřadit tyto uživatele, aby splnili náborový software, a to podle pokynů uvedených tady:
+Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé nebo skupiny ve službě Azure AD potřebují přístup k náborovému softwaru Comeet. Jakmile se rozhodnete, můžete přiřadit tyto uživatele a / nebo skupiny Comeet Nábor Software podle pokynů zde:
 
 * [Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-comeet-recruiting-software"></a>Důležité tipy pro přiřazování uživatelů k předplatnému náborového softwaru
+### <a name="important-tips-for-assigning-users-to-comeet-recruiting-software"></a>Důležité tipy pro přiřazení uživatelů k comeet Nábor software
 
-* Doporučuje se, aby jeden uživatel Azure AD byl přiřazený k tomu, aby splnil náborový software, aby otestoval automatickou konfiguraci zřizování uživatelů. Další uživatele a skupiny můžete přiřadit později.
+* Doporučuje se, aby jeden uživatel Azure AD je přiřazen ke softwaru Comeet Recruiting Software k testování konfigurace automatického zřizování uživatelů. Další uživatelé a/nebo skupiny mohou být přiřazeny později.
 
-* Při přiřazování uživatele k souběžnému náborovém softwaru musíte vybrat jakoukoli platnou roli specifickou pro aplikaci (Pokud je dostupná) v dialogovém okně přiřazení. Uživatelé s **výchozí rolí přístupu** se z zřizování vylučují.
+* Při přiřazování uživatele ke softwaru Comeet Recruiting Software musíte v dialogovém okně přiřazení vybrat libovolnou platnou roli specifickou pro aplikaci (pokud je k dispozici). Uživatelé s rolí **Výchozí přístup** jsou z zřizování vyloučeni.
 
-## <a name="configuring-automatic-user-provisioning-to-comeet-recruiting-software"></a>Konfigurace automatického zřizování uživatelů pro vyhovující náborový software 
+## <a name="configuring-automatic-user-provisioning-to-comeet-recruiting-software"></a>Konfigurace automatického zřizování uživatelů na software Comeet Recruiting 
 
-V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v rámci vyhovujícího náborového softwaru na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
+Tato část vás provede kroky konfigurace služby zřizování Azure AD k vytvoření, aktualizaci a zakázání uživatelů nebo skupin v softwaru Comeet Recruiting software na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro dopředný náborový software, a to podle pokynů uvedených v [kurzu kovyhovujícího náborového softwaru pro jednotné přihlašování](comeetrecruitingsoftware-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když se tyto dvě funkce navzájem doplňují.
+> Můžete se také rozhodnout povolit jednotné přihlašování založené na saml pro Comeet Recruiting Software podle pokynů uvedených v [kurzu comeet Nábor ového softwaru pro jednotné přihlášení](comeetrecruitingsoftware-tutorial.md). Jednotné přihlašování lze nakonfigurovat nezávisle na automatické zřizování uživatelů, i když tyto dvě funkce kompliment navzájem.
 
-### <a name="to-configure-automatic-user-provisioning-for-comeet-recruiting-software-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro vyhovující náborový software v Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-comeet-recruiting-software-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro náborový software Comeet ve službě Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **Všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte možnost **dodržet náborový software**.
+2. V seznamu aplikací vyberte **možnost Comeet Recruiting Software**.
 
-    ![Odkaz na vyhovující náborový software v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Comeet Recruiting Software v seznamu Aplikace](common/all-applications.png)
 
-3. Vyberte kartu **zřizování** .
+3. Vyberte kartu **Zřizování.**
 
-    ![Karta zřizování](common/provisioning.png)
+    ![Karta Zřizování](common/provisioning.png)
 
-4. Nastavte **režim zřizování** na **automaticky**.
+4. Nastavte **režim zřizování** na **automatické**.
 
-    ![Karta zřizování](common/provisioning-automatic.png)
+    ![Karta Zřizování](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** zadejte **adresu URL tenanta** a **tajný token** vašeho účtu náborového softwaru, jak je popsáno v kroku 6.
+5. V části **Přihlašovací údaje správce** zadejte adresu URL **klienta** a **tajný token** účtu vašeho náborového softwaru Comeet, jak je popsáno v kroku 6.
 
-6. V konzole pro správu nástroje pro naplnění se [doplněním](https://app.comeet.co/)Nástroje přejděte do pole **> nastavení > ověřování > Microsoft Azure**a zkopírujte **tajný token pro hodnotu vaší společnosti** do pole **tajného tokenu** v Azure AD.
+6. V [konzole pro správu náborového softwaru Comeet](https://app.comeet.co/)přejděte do pole **Comeet > Nastavení > ověřování > Microsoft Azure**a zkopírujte tajný token pro hodnotu vaší **společnosti** do pole **Tajný token** ve službě Azure AD.
 
-    ![Vyhovující zřizování náborového softwaru](./media/comeet-recruiting-software-provisioning-tutorial/secret-token-1.png)
+    ![Comeet Nábor Software Zřizování](./media/comeet-recruiting-software-provisioning-tutorial/secret-token-1.png)
 
-7. Po vyplnění polí zobrazených v kroku 5 klikněte na **Test připojení** . tím zajistíte, aby se služba Azure AD mohla připojit k prohlášenému náborovému softwaru. Pokud se připojení nepovede, zajistěte, aby váš náborový účet pro nábor softwaru měl oprávnění správce, a zkuste to znovu.
+7. Po vyplnění polí uvedených v kroku 5 klikněte na **test připojení** a ujistěte se, že Azure AD můžete připojit k Comeet Nábor software. Pokud se připojení nezdaří, ujistěte se, že váš účet Náborový software Comeet má oprávnění správce a zkuste to znovu.
 
     ![Podpisový](common/provisioning-testconnection-token.png)
 
-8. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
+8. Do pole **E-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, která by měla dostávat oznámení o chybách při zřizování, a zaškrtněte políčko – **Odeslat e-mailové oznámení, když dojde k chybě**.
 
     ![E-mail s oznámením](common/provisioning-notification-email.png)
 
 9. Klikněte na **Uložit**.
 
-10. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory uživatelů, aby splňovaly**podmínky.
+10. V části **Mapování** vyberte **Synchronizovat uživatele služby Azure Active Directory na comeet**.
 
-    ![Doplnění uživatelských mapování na nábor softwaru](media/comeet-recruiting-software-provisioning-tutorial/user-mappings.png)
+    ![Comeet Nábor Software User Mapování](media/comeet-recruiting-software-provisioning-tutorial/user-mappings.png)
 
-11. Zkontrolujte atributy uživatelů synchronizované z Azure AD a Projděte si náborový software v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v rámci vyhovujícího náborového softwaru pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
+11. Zkontrolujte atributy uživatele, které jsou synchronizovány z Azure AD na Comeet Nábor software v části **Mapování atributů.** Atributy vybrané jako **odpovídající** vlastnosti se používají k porovnání uživatelských účtů v Comeet Nábor software pro operace aktualizace. Chcete-li potvrdit všechny změny, vyberte tlačítko **Uložit.**
 
-    ![Vyhovuje v sevýšení náborových atributů skupin softwaru](media/comeet-recruiting-software-provisioning-tutorial/user-mapping-attributes.png)
+    ![Atributy skupiny náborového softwaru Comeet](media/comeet-recruiting-software-provisioning-tutorial/user-mapping-attributes.png)
 
-12. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+12. Chcete-li konfigurovat filtry oborů, naleznete v následujících pokynech uvedených v [kurzu filtru oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Pokud chcete povolit službu Azure AD Provisioning pro spolusplňujecí náborový software, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
+13. Chcete-li povolit službu zřizování Azure AD pro software comeet náboru, změňte **stav zřizování** **na Zapnuto** v části **Nastavení.**
 
-    ![Zapnutý stav zřizování](common/provisioning-toggle-on.png)
+    ![Stav zřizování zapnutý](common/provisioning-toggle-on.png)
 
-14. Definujte uživatele nebo skupiny, které chcete zřídit pro provedený náborový software, a to tak, že v části **Nastavení** vyberete požadované hodnoty v poli **Rozsah** .
+14. Definujte uživatele nebo skupiny, které chcete zřídit comeet náborového softwaru výběrem požadovaných hodnot v **scope** v části **Nastavení.**
 
-    ![Rozsah zřizování](common/provisioning-scope.png)
+    ![Obor zřizování](common/provisioning-scope.png)
 
-15. Až budete připraveni zřídit, klikněte na **Uložit**.
+15. Až budete připraveni k zřízení, klikněte na **Uložit**.
 
-    ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
+    ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
 
-Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD na základě průběžného náborového softwaru.
+Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení.** Počáteční synchronizace trvá déle než následné synchronizace, ke kterým dochází přibližně každých 40 minut tak dlouho, dokud je spuštěna služba zřizování Azure AD. Část **Podrobnosti synchronizace** můžete použít ke sledování průběhu a sledování odkazů na sestavu aktivit zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v softwaru Comeet Recruiting Software.
 
-Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, naleznete [v tématu Vytváření sestav na automatické zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="connector-limitations"></a>Omezení konektoru
+## <a name="connector-limitations"></a>Omezení konektorů
 
-* Prohlášený náborový software v současné době nepodporuje skupiny.
+* Comeet Recruiting Software v současné době nepodporuje skupiny.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy o aktivitě zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
 

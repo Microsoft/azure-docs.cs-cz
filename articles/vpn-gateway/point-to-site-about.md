@@ -1,6 +1,6 @@
 ---
-title: O připojeních k síti VPN typu Point-to-site | VPN Gateway
-description: Tento článek vám pomůže pochopit připojení typu Point-to-site a pomůže vám určit, který typ ověřování brány VPN P2S použít.
+title: O připojení CHOd Azure k webu VPN | Brána VPN
+description: Tento článek vám pomůže porozumět připojení typu Point-to-Site a pomůže vám rozhodnout, který typ ověřování brány P2S VPN se má použít.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,101 +8,101 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: cherylmc
 ms.openlocfilehash: 78ed07560fdb15efb2de13c194549f5b433b775a
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77500604"
 ---
-# <a name="about-point-to-site-vpn"></a>O síti VPN typu Point-to-site
+# <a name="about-point-to-site-vpn"></a>O síti VPN z bodu na web
 
 Připojení brány VPN typu Point-to-Site (P2S) umožňuje vytvořit zabezpečené připojení k virtuální síti z jednotlivých klientských počítačů. Připojení P2S se vytvoří jeho zahájením z klientského počítače. Toto řešení je užitečné pro osoby pracující z domova, které se chtějí k virtuálním sítím Azure připojit ze vzdáleného umístění, například z domova nebo z místa konání konference. Síť VPN P2S je také užitečným řešením nahrazujícím síť VPN S2S, pokud máte pouze několik klientů, kteří se potřebují připojit k virtuální síti. Tento článek se týká modelu nasazení Resource Manager.
 
-## <a name="protocol"></a>Jaký protokol P2S použít?
+## <a name="what-protocol-does-p2s-use"></a><a name="protocol"></a>Jaký protokol používá P2S?
 
-SÍŤ VPN typu Point-to-site může používat jeden z následujících protokolů:
+Point-to-site VPN můžete použít jeden z následujících protokolů:
 
-* **Protokol OpenVPN®**, protokol VPN založený na protokolu SSL/TLS. Řešení SSL VPN může proniknout do brány firewall, protože většina bran firewall otevírá odchozí TCP port 443, který používá protokol SSL. OpenVPN se dá použít k připojení z Androidu, iOS (verze 11,0 a vyšší), Windows, Linux a Mac (OSX verze 10,13 a vyšší).
+* **OpenVPN® Protocol**, protokol VPN založený na Protokolu SSL/TLS. Řešení SSL VPN může proniknout firewally, protože většina firewallů otevírá tcp port 443 odchozí, který Používá SSL. OpenVPN lze použít pro připojení z Android, iOS (verze 11.0 a vyšší), Windows, Linux a Mac zařízení (OSX verze 10.13 a vyšší).
 
-* Protokol SSTP (Secure Socket Tunneling Protocol), což je proprietární protokol VPN založený na protokolu SSL. Řešení SSL VPN může proniknout do brány firewall, protože většina bran firewall otevírá odchozí TCP port 443, který používá protokol SSL. SSTP se podporuje jenom na zařízeních s Windows. Azure podporuje všechny verze Windows, které mají protokol SSTP (Windows 7 a novější).
+* Protokol SSTP (Secure Socket Tunneling Protocol) – proprietární protokol VPN založený na protokolu SSL. Řešení SSL VPN může proniknout firewally, protože většina firewallů otevírá tcp port 443 odchozí, který Používá SSL. SSTP je podporována pouze na zařízeních se systémem Windows. Azure podporuje všechny verze Windows, které mají SSTP (Windows 7 a novější).
 
 * IKEv2 VPN, řešení IPsec VPN založené na standardech. IKEv2 VPN je možné použít k připojení ze zařízení se systémem Mac (OSX verze 10.11 a vyšší).
 
 
 >[!NOTE]
->IKEv2 a OpenVPN pro P2S jsou k dispozici pouze pro model nasazení Správce prostředků. Nejsou k dispozici pro model nasazení Classic.
+>IKEv2 a OpenVPN pro P2S jsou k dispozici pouze pro model nasazení Resource Manager. Nejsou k dispozici pro model klasického nasazení.
 >
 
-## <a name="authentication"></a>Jak se ověřují klienti VPN P2S?
+## <a name="how-are-p2s-vpn-clients-authenticated"></a><a name="authentication"></a>Jak jsou klienti P2S VPN ověřeni?
 
-Než Azure přijme připojení VPN P2S, musíte nejdřív ověřit uživatele. Existují dva mechanismy, které Azure nabízí k ověřování připojujícího se uživatele.
+Než Azure přijme připojení VPN P2S, musí být uživatel nejprve ověřen. Existují dva mechanismy, které Azure nabízí k ověření připojení uživatele.
 
-### <a name="authenticate-using-native-azure-certificate-authentication"></a>Ověřování pomocí nativního ověřování certifikátů Azure
+### <a name="authenticate-using-native-azure-certificate-authentication"></a>Ověření pomocí nativního ověřování certifikátu Azure
 
-Při použití nativního ověřování certifikátů Azure se k ověřování připojujícího uživatele používá klientský certifikát, který je k dispozici v zařízení. Klientské certifikáty se generují z důvěryhodného kořenového certifikátu a pak se nainstalují do každého klientského počítače. Můžete použít kořenový certifikát, který byl vygenerován pomocí podnikového řešení, nebo můžete vygenerovat certifikát podepsaný svým držitelem.
+Při použití nativního ověřování certifikátu Azure se k ověření připojujícího uživatele používá klientský certifikát, který se v zařízení nachází. Klientské certifikáty jsou generovány z důvěryhodného kořenového certifikátu a poté nainstalovány v každém klientském počítači. Můžete použít kořenový certifikát, který byl vygenerován pomocí řešení Enterprise, nebo můžete vygenerovat certifikát podepsaný svým držitelem.
 
-Ověření klientského certifikátu se provádí pomocí brány VPN a probíhá během navazování připojení P2S VPN. Pro ověření se vyžaduje kořenový certifikát a musí se nahrát do Azure.
+Ověření klientského certifikátu provádí brána VPN a probíhá při navazování připojení P2S VPN. Kořenový certifikát je vyžadován pro ověření a musí být odeslán do Azure.
 
-### <a name="authenticate-using-native-azure-active-directory-authentication"></a>Ověřování pomocí nativního ověřování Azure Active Directory
+### <a name="authenticate-using-native-azure-active-directory-authentication"></a>Ověření pomocí nativního ověřování služby Azure Active Directory
 
-Ověřování Azure AD umožňuje uživatelům připojit se k Azure pomocí svých Azure Active Directory přihlašovacích údajů. Nativní ověřování Azure AD se podporuje jenom pro protokol OpenVPN a Windows 10 a vyžaduje použití [klienta Azure VPN](https://go.microsoft.com/fwlink/?linkid=2117554).
+Ověřování Azure AD umožňuje uživatelům připojit se k Azure pomocí jejich přihlašovacích údajů služby Azure Active Directory. Nativní ověřování Azure AD je podporované jenom pro protokol OpenVPN a Windows 10 a vyžaduje použití [klienta Azure VPN](https://go.microsoft.com/fwlink/?linkid=2117554)Client .
 
-S nativním ověřováním Azure AD můžete využít podmíněný přístup Azure AD a také funkce Multi-Factor Authentication (MFA) pro VPN.
+Díky nativnímu ověřování Azure AD můžete využít funkce podmíněného přístupu Azure AD i funkce vícefaktorového ověřování (MFA) pro VPN.
 
-Pokud chcete nakonfigurovat ověřování Azure AD, musíte na vysoké úrovni provést následující kroky:
+Na vysoké úrovni je třeba provést následující kroky ke konfiguraci ověřování Azure AD:
 
 1. [Konfigurace tenanta Azure AD](openvpn-azure-ad-tenant.md)
 
-2. [Povolit ověřování Azure AD v bráně](openvpn-azure-ad-tenant.md#enable-authentication)
+2. [Povolení ověřování Azure AD na bráně](openvpn-azure-ad-tenant.md#enable-authentication)
 
 3. [Stažení a konfigurace klienta Azure VPN](https://go.microsoft.com/fwlink/?linkid=2117554)
 
 
-### <a name="authenticate-using-active-directory-ad-domain-server"></a>Ověřování pomocí serveru domény služby Active Directory (AD)
+### <a name="authenticate-using-active-directory-ad-domain-server"></a>Ověření pomocí serveru domény služby Active Directory (AD)
 
-Ověřování domény AD umožňuje uživatelům připojit se k Azure pomocí svých přihlašovacích údajů domény organizace. Vyžaduje server RADIUS, který se integruje se serverem AD. Organizace můžou využít i stávající nasazení RADIUS.
+Ověřování domény služby AD umožňuje uživatelům připojit se k Azure pomocí přihlašovacích údajů k jejich organizační doméně. Vyžaduje server RADIUS, který se integruje se serverem AD. Organizace mohou také využít své stávající nasazení RADIUS.
   
-Server RADIUS se dá nasadit místně nebo ve vaší virtuální síti Azure. Při ověřování funguje VPN Gateway Azure jako předávací a přesměruje ověřovací zprávy mezi serverem RADIUS a připojeným zařízením. Proto je důležité dostupnost brány pro server RADIUS. Pokud se server RADIUS nachází v místním prostředí, vyžaduje se pro dostupnost připojení S2S VPN z Azure do místní lokality.  
+Server RADIUS může být nasazený místně nebo ve vaší virtuální síti Azure. Během ověřování funguje brána Azure VPN Gateway jako předávání a předává ověřovací zprávy tam a zpět mezi serverem RADIUS a připojujícím se zařízením. Takže přístupnost brány na server RADIUS je důležitá. Pokud je server RADIUS k dispozici místně, je pro dosažení potřeba připojení VPN S2S z Azure k místnímu webu.  
   
-Server RADIUS se taky může integrovat se službou AD Certificate Services. To vám umožní používat server RADIUS a nasazení podnikového certifikátu pro ověřování certifikátů P2S jako alternativu k ověřování certifikátů Azure. Výhodou je, že nemusíte do Azure nahrávat kořenové certifikáty a odvolané certifikáty.
+Server RADIUS lze také integrovat se službami certifikátu AD. To vám umožní použít server RADIUS a nasazení podnikového certifikátu pro ověřování certifikátů P2S jako alternativu k ověřování certifikátů Azure. Výhodou je, že do Azure nemusíte nahrávat kořenové certifikáty a odvolané certifikáty.
 
-Server RADIUS se taky může integrovat s jinými externími systémy identit. Tím se otevře dostatek možností ověřování pro P2S VPN, včetně Multi-Factor Options.
+Server RADIUS lze také integrovat s jinými externími systémy identit. To otevírá spoustu možností ověřování pro P2S VPN, včetně vícefaktorových možností.
 
-![Point-to-site](./media/point-to-site-about/p2s.png "Point-to-site")
+![bod na místo](./media/point-to-site-about/p2s.png "Point-to-Site")
 
 ## <a name="what-are-the-client-configuration-requirements"></a>Jaké jsou požadavky na konfiguraci klienta?
 
 >[!NOTE]
->U klientů se systémem Windows musíte mít v klientském zařízení práva správce, aby bylo možné iniciovat připojení VPN z klientského zařízení do Azure.
+>Pro klienty windows musíte mít práva správce na klientském zařízení, abyste mohli zahájit připojení VPN z klientského zařízení do Azure.
 >
 
-Uživatelé používají nativní klienty VPN na zařízeních s Windows a Mac pro P2S. Azure poskytuje soubor zip konfigurace klienta VPN, který obsahuje nastavení požadovaná těmito nativními klienty pro připojení k Azure.
+Uživatelé používají nativní klienty VPN na zařízeních Se systémem Windows a Mac pro P2S. Azure poskytuje soubor ZIP konfigurace klienta VPN, který obsahuje nastavení vyžadovaná těmito nativními klienty pro připojení k Azure.
 
-* V případě zařízení s Windows se konfigurace klienta VPN skládá z balíčku instalačního programu, který si uživatelé nainstalují na svá zařízení.
-* Pro zařízení Mac se skládá ze souboru mobileconfig, který uživatelé nainstalují na svá zařízení.
+* Pro zařízení se systémem Windows se konfigurace klienta VPN skládá z instalačního balíčku, který uživatelé instalují na svých zařízeních.
+* Pro zařízení Mac se skládá z souboru mobileconfig, který uživatelé instalují do svých zařízení.
 
-Soubor zip také poskytuje hodnoty některých důležitých nastavení na straně Azure, které můžete použít k vytvoření vlastního profilu pro tato zařízení. Mezi některé z těchto hodnot patří adresa brány VPN, nakonfigurované typy tunelového propojení, trasy a kořenový certifikát pro ověření brány.
+Soubor zip také poskytuje hodnoty některých důležitých nastavení na straně Azure, které můžete použít k vytvoření vlastního profilu pro tato zařízení. Některé hodnoty zahrnují adresu brány VPN, nakonfigurované typy tunelů, trasy a kořenový certifikát pro ověření brány.
 
 >[!NOTE]
 >[!INCLUDE [TLS version changes](../../includes/vpn-gateway-tls-change.md)]
 >
 
-## <a name="gwsku"></a>Které skladové položky brány podporují P2S VPN?
+## <a name="which-gateway-skus-support-p2s-vpn"></a><a name="gwsku"></a>Které brány SKU podporují P2S VPN?
 
 [!INCLUDE [aggregate throughput sku](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
-* Doporučení pro SKU brány najdete v tématu [informace o nastaveních VPN Gateway](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
+* Doporučení skladové položky brány najdete [v tématu O nastavení brány VPN](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
 >[!NOTE]
 >Skladová položka Basic nepodporuje ověřování IKEv2 ani RADIUS.
 >
 
-## <a name="IKE/IPsec policies"></a>Jaké zásady IKE/IPsec jsou nakonfigurované na bránách VPN pro P2S?
+## <a name="what-ikeipsec-policies-are-configured-on-vpn-gateways-for-p2s"></a><a name="IKE/IPsec policies"></a>Jaké zásady Protokolu IKE/IPsec jsou konfigurovány v branách VPN pro P2S?
 
 
 **IKEv2**
 
-|**Šifr** | **Způsobilost** | **PRF** | **Skupina DH** |
+|**Šifra** | **Integrita** | **PRF** | **Skupina DH** |
 |---        | ---           | ---       | ---   |
 |GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_24 |
 |GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_14 |
@@ -122,9 +122,9 @@ Soubor zip také poskytuje hodnoty některých důležitých nastavení na stran
 |AES256     |   SHA256      | SHA256    | GROUP_ECP256 |
 |AES256     |   SHA256      | SHA256    | GROUP_2 |
 
-**Podporují**
+**Protokol IPsec**
 
-|**Šifr** | **Způsobilost** | **Skupina PFS** |
+|**Šifra** | **Integrita** | **Skupina PFS** |
 |---        | ---           | ---       |
 |GCM_AES256 | GCM_AES256 | GROUP_NONE |
 |GCM_AES256 | GCM_AES256 | GROUP_24 |
@@ -138,8 +138,8 @@ Soubor zip také poskytuje hodnoty některých důležitých nastavení na stran
 | AES256    | SHA256 | GROUP_ECP256 |
 | AES256    | SHA1 | GROUP_NONE |
 
-## <a name="TLS policies"></a>Jaké zásady TLS jsou nakonfigurované na bránách VPN pro P2S?
-**PROTOKOLY**
+## <a name="what-tls-policies-are-configured-on-vpn-gateways-for-p2s"></a><a name="TLS policies"></a>Jaké zásady TLS jsou konfigurovány na branách VPN pro P2S?
+**Tls**
 
 |**Zásady** |
 |---| 
@@ -156,32 +156,32 @@ Soubor zip také poskytuje hodnoty některých důležitých nastavení na stran
 |TLS_RSA_WITH_AES_128_CBC_SHA256 |
 |TLS_RSA_WITH_AES_256_CBC_SHA256 |
 
-## <a name="configure"></a>Návody nakonfigurovat připojení P2S?
+## <a name="how-do-i-configure-a-p2s-connection"></a><a name="configure"></a>Jak nakonfiguruji připojení P2S?
 
-Konfigurace P2S vyžaduje pár specifických kroků. Následující články obsahují postup, který vás provede konfigurací P2S a odkazy na konfiguraci zařízení klienta VPN:
+Konfigurace P2S vyžaduje poměrně málo konkrétních kroků. Následující články obsahují kroky, které vás provedou konfigurací P2S, a odkazy na konfiguraci klientských zařízení VPN:
 
-* [Konfigurace připojení P2S – ověřování pomocí protokolu RADIUS](point-to-site-how-to-radius-ps.md)
+* [Konfigurace připojení P2S – ověřování RADIUS](point-to-site-how-to-radius-ps.md)
 
-* [Konfigurace připojení P2S – ověření nativního certifikátu Azure](vpn-gateway-howto-point-to-site-rm-ps.md)
+* [Konfigurace připojení P2S – ověřování nativního certifikátu Azure](vpn-gateway-howto-point-to-site-rm-ps.md)
 
 * [Konfigurace OpenVPN](vpn-gateway-howto-openvpn.md)
 
 ### <a name="to-remove-the-configuration-of-a-p2s-connection"></a>Odebrání konfigurace připojení P2S
 
-Postup najdete v části [Nejčastější dotazy](#removeconfig).
+Postup najdete v [nejčastějších dotazech](#removeconfig)níže.
  
-## <a name="faqcert"></a>Nejčastější dotazy k nativnímu ověřování certifikátů Azure
+## <a name="faq-for-native-azure-certificate-authentication"></a><a name="faqcert"></a>Nejčastější dotazy k nativnímu ověřování certifikátů Azure
 
 [!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 
-## <a name="faqradius"></a>Nejčastější dotazy k ověřování RADIUS
+## <a name="faq-for-radius-authentication"></a><a name="faqradius"></a>Nejčastější dotazy k ověřování v rámci radius
 
 [!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-radius-include.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Konfigurace připojení P2S – ověřování pomocí protokolu RADIUS](point-to-site-how-to-radius-ps.md)
+* [Konfigurace připojení P2S – ověřování RADIUS](point-to-site-how-to-radius-ps.md)
 
-* [Konfigurace připojení P2S – ověření nativního certifikátu Azure](vpn-gateway-howto-point-to-site-rm-ps.md)
+* [Konfigurace připojení P2S – ověřování nativního certifikátu Azure](vpn-gateway-howto-point-to-site-rm-ps.md)
 
 **"OpenVPN" je ochranná známka společnosti OpenVPN Inc.**

@@ -1,47 +1,47 @@
 ---
-title: výraz App () v Azure Monitorch dotazech k protokolu | Microsoft Docs
-description: Výraz aplikace se používá v dotazu protokolu Azure Monitor k načtení dat z konkrétní aplikace Application Insights ve stejné skupině prostředků, v jiné skupině prostředků nebo jiném předplatném.
+title: výraz aplikace() v dotazech protokolu Azure Monitor | Dokumenty společnosti Microsoft
+description: Výraz aplikace se používá v dotazu protokolu Azure Monitor k načtení dat z konkrétní aplikace Application Insights ve stejné skupině prostředků, jiné skupině prostředků nebo jiném předplatném.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/25/2019
 ms.openlocfilehash: 5502df1cd119c0f63c65945d73431a17282ebc0c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670250"
 ---
-# <a name="app-expression-in-azure-monitor-query"></a>výraz App () v Azure Monitor dotazu
+# <a name="app-expression-in-azure-monitor-query"></a>výraz aplikace() v dotazu Azure Monitoru
 
-Výraz `app` se používá v dotazu Azure Monitor k načtení dat z konkrétní Application Insights aplikace ve stejné skupině prostředků, v jiné skupině prostředků nebo jiném předplatném. To je užitečné, pokud chcete zahrnout data aplikace do dotazu protokolu Azure Monitor a dotazovat data napříč více aplikacemi v dotazu Application Insights.
+Výraz `app` se používá v dotazu Azure Monitor k načtení dat z konkrétní aplikace Application Insights ve stejné skupině prostředků, jiné skupině prostředků nebo jiném předplatném. To je užitečné zahrnout data aplikací do dotazu protokolu Azure Monitor a dotazovat data napříč více aplikacemi v dotazu Application Insights.
 
 
 
 ## <a name="syntax"></a>Syntaxe
 
-*identifikátor* `app(``)`
+`app(`*Identifikátor*`)`
 
 
 ## <a name="arguments"></a>Argumenty
 
-- *Identifikátor*: aplikace identifikuje jednu z formátů v následující tabulce.
+- *Identifikátor*: Identifikuje aplikaci pomocí jednoho z formátů v následující tabulce.
 
 | Identifikátor | Popis | Příklad
 |:---|:---|:---|
-| Název prostředku | Lidský čitelný název aplikace (neboli "název komponenty") | aplikace ("fabrikamapp") |
-| Kvalifikovaný název | Úplný název aplikace ve formátu: "Subscription/resourceName/resourceName/název součásti" | aplikace (' AI-prototyp/Fabrikam/fabrikamapp ') |
-| ID | Identifikátor GUID aplikace | app("988ba129-363e-4415-8fe7-8cbab5447518") |
-| ID prostředku Azure | Identifikátor prostředku Azure |app("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
+| Název prostředku | Lidsky čitelný název aplikace (AKA "název komponenty") | app("fabrikamapp") |
+| Kvalifikovaný název | Úplný název aplikace ve formuláři: "subscriptionName/resourceGroup/componentName" | app('AI-Prototype/Fabrikam/fabrikamapp') |
+| ID | IDENTIFIKÁTOR GUID aplikace | app("988ba129-363e-4415-8fe7-8cbab5447518") |
+| ID prostředků Azure | Identifikátor prostředku Azure |app("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
 
 
-## <a name="notes"></a>Poznámky:
+## <a name="notes"></a>Poznámky
 
-* Musíte mít oprávnění ke čtení aplikace.
-* Identifikace aplikace podle jejího názvu předpokládá, že je v rámci všech přístupných předplatných jedinečná. Pokud máte více aplikací se zadaným názvem, dotaz selže z důvodu nejednoznačnosti. V takovém případě je nutné použít jeden z ostatních identifikátorů.
-* K dotazování napříč Log Analyticsmi pracovními prostory použijte související [pracovní prostor](workspace-expression.md) výrazu.
-* Výraz App () není v současné době ve vyhledávacím dotazu podporován, pokud se používá Azure Portal k vytvoření [vlastního pravidla upozornění prohledávání protokolu](../platform/alerts-log.md), pokud se jako prostředek pro pravidlo výstrahy nepoužívá aplikace Application Insights.
+* Musíte mít přístup pro čtení do aplikace.
+* Identifikace aplikace podle jejího názvu předpokládá, že je jedinečný ve všech přístupných předplatných. Pokud máte více aplikací se zadaným názvem, dotaz se nezdaří z důvodu nejednoznačnosti. V takovém případě musíte použít jeden z dalších identifikátorů.
+* Pomocí souvisejícího [pracovního prostoru výrazů](workspace-expression.md) můžete dotazovat v pracovních prostorech Analýzy protokolů.
+* Výraz app() není aktuálně podporován ve vyhledávacím dotazu při použití portálu Azure k vytvoření [vlastního pravidla výstrahy hledání protokolu](../platform/alerts-log.md), pokud se jako prostředek pro pravidlo výstrahy nepoužívá aplikace Application Insights.
 
 ## <a name="examples"></a>Příklady
 
@@ -71,6 +71,6 @@ union
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud chcete odkazovat na pracovní prostor Log Analytics, podívejte se do [výrazu pracovní prostor](workspace-expression.md) .
-- Přečtěte si informace o tom, jak jsou uložená [data Azure monitor](../../azure-monitor/log-query/log-query-overview.md) .
-- Přístup k celé dokumentaci pro [dotazovací jazyk Kusto](/azure/kusto/query/).
+- Viz [výraz pracovního prostoru,](workspace-expression.md) který odkazuje na pracovní prostor Analýzy protokolů.
+- Přečtěte si o tom, jak se data [Azure Monitoru](../../azure-monitor/log-query/log-query-overview.md) ukládají.
+- Získejte přístup k úplné dokumentaci [k dotazovacímu jazyku Kusto](/azure/kusto/query/).

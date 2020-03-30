@@ -1,40 +1,40 @@
 ---
-title: Vytvoření a nahrání image OpenBSD
-description: Zjistěte, jak vytvořit a nahrát virtuální pevný disk (VHD), který obsahuje operační systém OpenBSD k vytvoření virtuálního počítače Azure pomocí rozhraní příkazového řádku Azure.
-author: thomas1206
+title: Vytvoření a nahrání obrázku OpenBSD
+description: Zjistěte, jak vytvořit a nahrát virtuální pevný disk (VHD), který obsahuje operační systém OpenBSD pro vytvoření virtuálního počítače Azure prostřednictvím rozhraní příkazového příkazu Azure
+author: gbowerman
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 05/24/2017
-ms.author: huishao
-ms.openlocfilehash: d4ecc539d71933c4aecc9124b903c57cb72838de
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.author: guybo
+ms.openlocfilehash: 1ad1a66d67be7aefe4d9a7acae993e8788cbb193
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78969484"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066739"
 ---
-# <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Vytvoření a nahrání image OpenBSD disku do Azure
-V tomto článku se dozvíte, jak vytvořit a nahrát virtuální pevný disk (VHD), který obsahuje operační systém OpenBSD. Po nahrání ji můžete použít jako vlastní image k vytvoření virtuálního počítače v Azure prostřednictvím rozhraní příkazového řádku Azure CLI.
+# <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Vytvoření a nahrání bitové kopie disku OpenBSD do Azure
+Tento článek vám ukáže, jak vytvořit a nahrát virtuální pevný disk (VHD), který obsahuje operační systém OpenBSD. Po nahrání ji můžete použít jako vlastní image k vytvoření virtuálního počítače (VM) v Azure prostřednictvím Azure CLI.
 
 
-## <a name="prerequisites"></a>Předpoklady
-V tomto článku se předpokládá, že máte následující položky:
+## <a name="prerequisites"></a>Požadavky
+Tento článek předpokládá, že máte následující položky:
 
-* **Předplatné Azure** – Pokud účet nemáte, můžete si ho vytvořit během několika minut. Pokud máte předplatné MSDN, podívejte se na [měsíční kredit Azure pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). V opačném případě se dozvíte, jak [vytvořit bezplatný zkušební účet](https://azure.microsoft.com/pricing/free-trial/).  
-* **Azure CLI** – Ujistěte se, že máte nainstalované nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) a přihlásili jste se k účtu Azure pomocí [AZ Login](/cli/azure/reference-index).
-* **OpenBSD operační systém nainstalovaný v souboru. VHD** – na virtuální pevný disk musí být nainstalovaný podporovaný operační systém OpenBSD ([6,6 verze amd64](https://ftp.openbsd.org/pub/OpenBSD/6.6/amd64/)). Pro vytváření souborů. VHD existuje víc nástrojů. Například můžete použít virtualizační řešení, jako je Hyper-V, a vytvořit soubor. VHD a nainstalovat operační systém. Pokyny k instalaci a používání technologie Hyper-V najdete v tématu [instalace technologie Hyper-v a vytvoření virtuálního počítače](https://technet.microsoft.com/library/hh846766.aspx).
+* **Předplatné Azure** – Pokud nemáte účet, můžete ho vytvořit během několika minut. Pokud máte předplatné MSDN, přečtěte si [měsíční kredit Azure pro předplatitele Visual Studia](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). V opačném případě se dozvíte, jak [vytvořit bezplatný zkušební účet](https://azure.microsoft.com/pricing/free-trial/).  
+* **Azure CLI** – ujistěte se, že máte nainstalovaný nejnovější [Azure CLI](/cli/azure/install-azure-cli) a přihlášen k účtu Azure s [az přihlášení](/cli/azure/reference-index).
+* **Operační systém OpenBSD nainstalovaný v souboru .vhd** - Podporovaný operační systém OpenBSD ([6.6 verze AMD64](https://ftp.openbsd.org/pub/OpenBSD/6.6/amd64/)) musí být nainstalován na virtuální pevný disk. Pro vytváření souborů VHD existuje více nástrojů. Můžete například použít virtualizační řešení, jako je Například Technologie Hyper-V, k vytvoření souboru .vhd a k instalaci operačního systému. Pokyny k instalaci a použití technologie Hyper-V najdete v [tématu Instalace technologie Hyper-V a vytvoření virtuálního počítače](https://technet.microsoft.com/library/hh846766.aspx).
 
 
 ## <a name="prepare-openbsd-image-for-azure"></a>Příprava image OpenBSD pro Azure
-Na virtuálním počítači, na který jste nainstalovali operační systém OpenBSD 6,1, který přidal podporu technologie Hyper-V, proveďte následující postupy:
+Na virtuálním počítači, kde jste nainstalovali operační systém OpenBSD 6.1, který přidal podporu Hyper-V, proveďte následující postupy:
 
-1. Pokud během instalace není protokol DHCP povolený, povolte službu následujícím způsobem:
+1. Pokud není během instalace povolena funkce DHCP, povolte službu následujícím způsobem:
 
     ```sh    
     echo dhcp > /etc/hostname.hvn0
     ```
 
-2. Pomocí následujícího postupu nastavte konzolu sériového portu:
+2. Konzolu sériového zařízení nastavte takto:
 
     ```sh
     echo "stty com0 115200" >> /etc/boot.conf
@@ -47,9 +47,9 @@ Na virtuálním počítači, na který jste nainstalovali operační systém Ope
     echo "https://ftp.openbsd.org/pub/OpenBSD" > /etc/installurl
     ```
    
-4. Ve výchozím nastavení je uživatel `root` na virtuálních počítačích v Azure zakázaný. Uživatelé můžou spouštět příkazy se zvýšenými oprávněními pomocí příkazu `doas` na virtuálním počítači s OpenBSD. DOAs je ve výchozím nastavení povolená. Další informace najdete v tématu [DOAs. conf](https://man.openbsd.org/doas.conf.5). 
+4. Ve výchozím `root` nastavení je uživatel zakázán na virtuálních počítačích v Azure. Uživatelé mohou spouštět příkazy se `doas` zvýšenými oprávněními pomocí příkazu na virtuálním počítači OpenBSD. Doas je ve výchozím nastavení povolen. Další informace naleznete [v tématu doas.conf](https://man.openbsd.org/doas.conf.5). 
 
-5. Požadavky na agenta Azure nainstalujte a nakonfigurujte následujícím způsobem:
+5. Nainstalujte a nakonfigurujte požadavky pro Azure Agent takto:
 
     ```sh
     pkg_add py-setuptools openssl git
@@ -59,7 +59,7 @@ Na virtuálním počítači, na který jste nainstalovali operační systém Ope
     ln -sf /usr/local/bin/pydoc2.7  /usr/local/bin/pydoc
     ```
 
-6. Nejnovější verzi agenta Azure můžete vždycky najít na [GitHubu](https://github.com/Azure/WALinuxAgent/releases). Nainstalujte agenta následujícím způsobem:
+6. Nejnovější verzi agenta Azure lze vždy nalézt na [GitHubu](https://github.com/Azure/WALinuxAgent/releases). Agenta nainstaluje takto:
 
     ```sh
     git clone https://github.com/Azure/WALinuxAgent 
@@ -69,7 +69,7 @@ Na virtuálním počítači, na který jste nainstalovali operační systém Ope
     ```
 
     > [!IMPORTANT]
-    > Po instalaci agenta Azure je vhodné ověřit, že je spuštěný takto:
+    > Po instalaci Azure Agent, je vhodné ověřit, že běží takto:
     >
     > ```bash
     > ps auxw | grep waagent
@@ -77,30 +77,30 @@ Na virtuálním počítači, na který jste nainstalovali operační systém Ope
     > cat /var/log/waagent.log
     > ```
 
-7. Zrušením zřízení systému ho vyčistěte a zpřístupněte pro opětovné zřízení. Následující příkaz odstraní také naposledy zřízený uživatelský účet a přidružená data:
+7. Zrušení zřízení systému k jeho vyčištění a jeho vhodná pro opětovné zřízení. Následující příkaz také odstraní poslední zřízený uživatelský účet a přidružená data:
 
     ```sh
     waagent -deprovision+user -force
     ```
 
-Nyní můžete virtuální počítač vypnout.
+Teď můžete virtuální počítač vypnout.
 
 
 ## <a name="prepare-the-vhd"></a>Příprava virtuálního pevného disku
-Formát VHDX není v Azure podporovaný, jenom **pevný virtuální pevný disk**. Disk můžete převést na pevný formát VHD pomocí Správce technologie Hyper-V nebo rutiny [Convert-VHD](https://technet.microsoft.com/itpro/powershell/windows/hyper-v/convert-vhd) prostředí PowerShell. Příklad je následující.
+Formát VHDX není v Azure podporován, pouze **pevný virtuální pevný disk .** Disk můžete převést do pevného formátu VHD pomocí správce technologie Hyper-V nebo rutiny [powershellového převodu vhd.](https://technet.microsoft.com/itpro/powershell/windows/hyper-v/convert-vhd) Příklad je následující.
 
 ```powershell
 Convert-VHD OpenBSD61.vhdx OpenBSD61.vhd -VHDType Fixed
 ```
 
 ## <a name="create-storage-resources-and-upload"></a>Vytvoření prostředků úložiště a nahrání
-Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
+Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus:*
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Pokud chcete nahrát virtuální pevný disk, vytvořte účet úložiště pomocí [AZ Storage Account Create](/cli/azure/storage/account). Názvy účtů úložiště musí být jedinečné, takže zadejte vlastní název. Následující příklad vytvoří účet úložiště s názvem *mystorageaccount*:
+Chcete-li nahrát virtuální pevný disk, vytvořte si účet úložiště s [vytvořením účtu úložiště az](/cli/azure/storage/account). Názvy účtů úložiště musí být jedinečné, proto zadejte své vlastní jméno. Následující příklad vytvoří účet úložiště s názvem *mystorageaccount*:
 
 ```azurecli
 az storage account create --resource-group myResourceGroup \
@@ -109,7 +109,7 @@ az storage account create --resource-group myResourceGroup \
     --sku Premium_LRS
 ```
 
-Pokud chcete řídit přístup k účtu úložiště, Získejte klíč úložiště pomocí příkazu [AZ Storage Account Keys list](/cli/azure/storage/account/keys) takto:
+Chcete-li řídit přístup k účtu úložiště, získejte klíč úložiště se [seznamem klíčů účtu úložiště az](/cli/azure/storage/account/keys) takto:
 
 ```azurecli
 STORAGE_KEY=$(az storage account keys list \
@@ -118,7 +118,7 @@ STORAGE_KEY=$(az storage account keys list \
     --query "[?keyName=='key1']  | [0].value" -o tsv)
 ```
 
-Pokud chcete logicky oddělit virtuální pevné disky, které nahráváte, vytvořte kontejner v rámci účtu úložiště pomocí [AZ Storage Container Create](/cli/azure/storage/container):
+Chcete-li logicky oddělit nahrané virtuální disky, vytvořte kontejner v rámci účtu úložiště s [vytvořením kontejneru úložiště az](/cli/azure/storage/container):
 
 ```azurecli
 az storage container create \
@@ -127,7 +127,7 @@ az storage container create \
     --account-key ${STORAGE_KEY}
 ```
 
-Nakonec nahrajte virtuální pevný disk pomocí příkazu [AZ Storage BLOB upload](/cli/azure/storage/blob) následujícím způsobem:
+Nakonec nahrajte svůj Virtuální pevný disk s [nahráním objektu blob úložiště AZ](/cli/azure/storage/blob) takto:
 
 ```azurecli
 az storage blob upload \
@@ -140,7 +140,7 @@ az storage blob upload \
 
 
 ## <a name="create-vm-from-your-vhd"></a>Vytvoření virtuálního počítače z virtuálního pevného disku
-Virtuální počítač můžete vytvořit pomocí [ukázkového skriptu](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md) nebo přímo pomocí [AZ VM Create](/cli/azure/vm). K určení nahraného virtuálního pevného disku OpenBSD použijte parametr `--image` následujícím způsobem:
+Virtuální ho virtuálního virtuálního ms můžete vytvořit pomocí [ukázkového skriptu](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md) nebo přímo pomocí [az vm create](/cli/azure/vm). Chcete-li určit Nahraný Virtuální pevný disk `--image` OpenBSD, použijte parametr následujícím způsobem:
 
 ```azurecli
 az vm create \
@@ -152,13 +152,13 @@ az vm create \
     --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-Získejte IP adresu pro virtuální počítač s OpenBSD pomocí příkazu [AZ VM list-IP-addresss](/cli/azure/vm) následujícím způsobem:
+Získejte IP adresu pro váš Virtuální počítač OpenBSD se [seznamem az vm-ip-adres](/cli/azure/vm) takto:
 
 ```azurecli
 az vm list-ip-addresses --resource-group myResourceGroup --name myOpenBSD61
 ```
 
-Nyní můžete SSH na virtuální počítač s OpenBSD jako normální:
+Nyní můžete SSH do svého OpenBSD VM jako normální:
         
 ```bash
 ssh azureuser@<ip address>
@@ -166,6 +166,6 @@ ssh azureuser@<ip address>
 
 
 ## <a name="next-steps"></a>Další kroky
-Pokud se chcete dozvědět více o podpoře technologie Hyper-V na OpenBSD 6.1, přečtěte si [OpenBSD 6,1](https://www.openbsd.org/61.html) a [HyperV. 4](https://man.openbsd.org/hyperv.4).
+Pokud se chcete dozvědět více o podpoře Hyper-V na OpenBSD6.1, přečtěte si [OpenBSD 6.1](https://www.openbsd.org/61.html) a [hyperv.4](https://man.openbsd.org/hyperv.4).
 
-Pokud chcete vytvořit virtuální počítač ze spravovaného disku, přečtěte si [AZ disk](/cli/azure/disk). 
+Pokud chcete vytvořit virtuální hod ze spravovaného disku, přečtěte si [az disk](/cli/azure/disk). 

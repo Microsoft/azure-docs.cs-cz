@@ -1,6 +1,6 @@
 ---
-title: Použití konektoru rozhraní ODBC pro Azure Průzkumník dat k vizualizaci dat Tableau
-description: V tomto článku se dozvíte, jak používat připojení rozhraní ODBC (Open Database Connectivity) k Azure Průzkumník dat připojení k vizualizaci dat pomocí Tableau.
+title: Vizualizace dat Tableau pomocí konektoru ODBC průzkumníka dat Azure
+description: V tomto článku se dozvíte, jak používat připojení k připojení otevřené databáze (ODBC) k připojení Průzkumníka dat Azure k vizualizaci dat pomocí Tableau.
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
@@ -8,53 +8,53 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 903daf450800a7f060899d736c2b31920c1b51f6
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77562441"
 ---
-# <a name="visualize-data-from-azure-data-explorer-in-tableau"></a>Vizualizace dat z Azure Průzkumník dat v Tableau
+# <a name="visualize-data-from-azure-data-explorer-in-tableau"></a>Vizualizace dat z Průzkumníka dat Azure v Tableau
 
- [Tableau](https://www.tableau.com/) je platforma pro vizuální analýzy Business Intelligence. Pokud se chcete připojit k Azure Průzkumník dat z Tableau a dostat data z ukázkového clusteru, použijte SQL Server ovladač ODBC (Open Database Connectivity). 
+ [Tableau](https://www.tableau.com/) je platforma vizuální analýzy pro business intelligence. Chcete-li se připojit k Průzkumníku dat Azure z Tableau a přenést data z ukázkového clusteru, použijte ovladač PŘIPOJENÍ OTEVŘENÉ DATABÁZE SQL Server (ODBC). 
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto článku potřebujete následující:
+K dokončení tohoto článku je třeba provést následující:
 
-* [Připojte se k azure Průzkumník dat pomocí rozhraní ODBC](connect-odbc.md) pomocí SQL Server ovladače ODBC, abyste se připojili ke službě Azure Průzkumník dat z Tableau. 
+* [Připojte se k Průzkumníku dat Azure pomocí rozhraní ODBC](connect-odbc.md) pomocí ovladače SQL Server ODBC a připojte se k Průzkumníku dat Azure z Tableau. 
 
-* Tableau Desktop, úplnou nebo [zkušební](https://www.tableau.com/products/desktop/download) verzi.
+* Tableau Desktop, plná nebo [zkušební](https://www.tableau.com/products/desktop/download) verze.
 
-* Cluster, který obsahuje ukázková data StormEvents. Další informace najdete v tématu [Vytvoření clusteru azure Průzkumník dat a databáze](create-cluster-database-portal.md) a ingestování [ukázkových dat do Azure Průzkumník dat](ingest-sample-data.md).
+* Cluster, který obsahuje ukázková data StormEvents. Další informace najdete [v tématu Vytvoření clusteru A databáze Azure Průzkumníka dat](create-cluster-database-portal.md) a [ukázkových dat ingestování do Průzkumníka dat Azure](ingest-sample-data.md).
 
     [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
 ## <a name="visualize-data-in-tableau"></a>Vizualizace dat v Tableau 
 
-Jakmile dokončíte konfiguraci rozhraní ODBC, můžete do Tableau přenést ukázková data.
+Po dokončení konfigurace rozhraní ODBC můžete přenést ukázková data do tableau.
 
-1. V Tableau desktopu v levé nabídce vyberte **Další databáze (ODBC)** .
+1. V tableau desktop, v levém menu, vyberte **jiné databáze (ODBC)**.
 
     ![Připojení přes ODBC](media/tableau/connect-odbc.png)
 
-1. V poli **DSN**vyberte zdroj dat, který jste vytvořili pro rozhraní ODBC, a pak vyberte **Přihlásit**se.
+1. V **aplikaci DSN**vyberte zdroj dat, který jste vytvořili pro rozhraní ODBC, a pak **vyberte Přihlásit se**.
 
-    ![Přihlášení ODBC](media/tableau/odbc-sign-in.png)
+    ![Přihlášení od bc](media/tableau/odbc-sign-in.png)
 
-1. V části **databáze**vyberte databázi v ukázkovém clusteru, například *TestDatabase*. V poli **schéma**vyberte položku *dbo*a v části **tabulka**vyberte ukázkovou tabulku *StormEvents* .
+1. V **části Databáze**vyberte databázi v ukázkovém clusteru, například *TestDatabase*. V **části Schéma**vyberte *dbo*a **tabulka**vyberte ukázkovou tabulku *StormEvents.*
 
     ![Vybrat databázi a tabulku](media/tableau/select-database-table.png)
 
-1. Tableau nyní zobrazuje schéma pro ukázková data. Pokud chcete data přenést do Tableauu, vyberte **aktualizovat hned** .
+1. Tableau nyní zobrazuje schéma pro ukázková data. Chcete-li data přenést do tableau, vyberte **možnost Aktualizovat nyní.**
 
     ![Aktualizace dat](media/tableau/update-data.png)
 
-    Když se data naimportují, Tableau zobrazí řádky dat podobné následujícímu obrázku.
+    Při importu dat Tableau zobrazí řádky dat podobné na následujícím obrázku.
 
     ![Sada výsledků](media/tableau/result-set.png)
 
-1. V Tableau teď můžete vytvářet vizualizace na základě dat, která jste pronesli v Azure Průzkumník dat. Další informace najdete v tématu [Tableau Learning](https://www.tableau.com/learn).
+1. Teď můžete vytvářet vizualizace v Tableau na základě dat, která jste přinesli z Azure Data Exploreru. Další informace naleznete v [tématu Tableau Learning](https://www.tableau.com/learn).
 
 ## <a name="next-steps"></a>Další kroky
 

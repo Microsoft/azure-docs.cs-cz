@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect podporované topologie a scénáře zřizování cloudu
-description: V tomto tématu jsou popsány předpoklady a hardwarové požadavky na zřízení cloudu.
+title: Azure AD Connect zřizování cloudu podporované topologie a scénáře
+description: Toto téma popisuje předpoklady a hardwarové požadavky cloud zřizování.
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,52 +12,52 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 386af46bbee623d37bc914d2ee9130c914c6c885
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77620872"
 ---
-# <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Azure AD Connect podporované topologie a scénáře zřizování cloudu
-Tento článek popisuje různé místní a Azure Active Directory (Azure AD) topologie, které používají zřizování cloudu Azure AD Connect. Tento článek obsahuje jenom podporované konfigurace a scénáře.
+# <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Azure AD Connect zřizování cloudu podporované topologie a scénáře
+Tento článek popisuje různé místní topologie azure active directory (Azure AD), které používají azure ad připojení zřizování cloudu. Tento článek obsahuje pouze podporované konfigurace a scénáře.
 
 > [!IMPORTANT]
-> Společnost Microsoft nepodporuje úpravu ani Azure AD Connect provozní zřizování cloudu mimo konfigurace nebo akce, které jsou podrobně dokumentovány. Kterákoli z těchto konfigurací nebo akcí může způsobit nekonzistentní nebo nepodporovaný stav zřizování cloudu Azure AD Connect. Microsoft proto nemůže pro taková nasazení poskytovat technickou podporu.
+> Microsoft nepodporuje úpravy nebo provoz Azure AD Connect zřizování cloudu mimo konfigurace nebo akce, které jsou formálně zdokumentovány. Každá z těchto konfigurací nebo akcí může mít za následek nekonzistentní nebo nepodporovaný stav zřizování cloudu Azure AD Connect. Microsoft proto nemůže pro taková nasazení poskytovat technickou podporu.
 
-## <a name="things-to-remember-about-all-scenarios-and-topologies"></a>Co je třeba si uvědomit o všech scénářích a topologiích
-V následující části najdete seznam informací, které je potřeba vzít v úvahu při výběru řešení.
+## <a name="things-to-remember-about-all-scenarios-and-topologies"></a>Co si pamatovat o všech scénářích a topologii
+Následuje seznam informací, které je třeba mít na paměti při výběru řešení.
 
 - Uživatelé a skupiny musí být jednoznačně identifikováni ve všech doménových strukturách.
-- Při zřizování cloudu nedochází k shodě mezi doménovými strukturami
-- Uživatel nebo skupina musí být ve všech doménových strukturách zastoupená jenom jednou.
-- Zdrojové ukotvení pro objekty je vybráno automaticky.  Používá MS-DS-ConsistencyGuid, pokud je k dispozici, v opačném případě se používá identifikátor ObjectGUID.
-- Nemůžete změnit atribut, který se používá pro zdrojové ukotvení.
+- Párování mezi doménovými strukturami nedochází při zřizování cloudu
+- Uživatel nebo skupina musí být reprezentována pouze jednou ve všech doménových strukturách.
+- Zdrojová kotva pro objekty je vybrána automaticky.  Používá ms-DS-ConsistencyGuid, pokud je k dispozici, jinak ObjectGUID se používá.
+- Atribut, který se používá pro zdrojovou kotvu, nelze změnit.
 
-## <a name="single-forest-single-azure-ad-tenant"></a>Jedna doménová struktura, jeden tenant Azure AD
-![Topologie pro jednu doménovou strukturu a jednoho tenanta](media/plan-cloud-provisioning-topologies/single-forest.png)
+## <a name="single-forest-single-azure-ad-tenant"></a>Jedna doménová struktura, jeden klient Azure AD
+![Topologie pro jednu doménovou strukturu a jednoho klienta](media/plan-cloud-provisioning-topologies/single-forest.png)
 
-Nejjednodušší topologie je jediná místní doménová struktura s jednou nebo více doménami a jedním tenanta Azure AD.  Příklad tohoto scénáře najdete v tématu [kurz: jediná doménová struktura s jedním klientem služby Azure AD.](tutorial-single-forest.md)
+Nejjednodušší topologie je jedna místní doménová struktura s jednou nebo více doménami a jedním klientem Azure AD.  Příklad tohoto scénáře najdete [v tématu Kurz: Jedna doménová struktura s jedním klientem Azure AD](tutorial-single-forest.md)
 
 
-## <a name="multi-forest-single-azure-ad-tenant"></a>Více doménových struktur, jeden tenant Azure AD
-![Topologie pro více doménovou strukturu a jednoho tenanta](media/plan-cloud-provisioning-topologies/multi-forest.png)
+## <a name="multi-forest-single-azure-ad-tenant"></a>Vícedoménových doménových oborů, jeden klient Azure AD
+![Topologie pro vícedoménovou strukturu a jednoho klienta](media/plan-cloud-provisioning-topologies/multi-forest.png)
 
-Společná topologie je několik doménových struktur AD, s jednou nebo více doménami a s jedním tenanta Azure AD.  
+Společná topologie je více doménových struktur služby AD s jednou nebo více doménami a jedním klientem Azure AD.  
 
-## <a name="existing-forest-with-azure-ad-connect-new-forest-with-cloud-provisioning"></a>Existující doménová struktura s Azure AD Connect, Nová doménová struktura s zřizováním cloudu
-![Topologie pro jednu doménovou strukturu a jednoho tenanta](media/plan-cloud-provisioning-topologies/existing-forest-new-forest.png)
+## <a name="existing-forest-with-azure-ad-connect-new-forest-with-cloud-provisioning"></a>Existující doménová struktura s Azure AD Connect, nová doménová struktura s cloudovým zřizováním
+![Topologie pro jednu doménovou strukturu a jednoho klienta](media/plan-cloud-provisioning-topologies/existing-forest-new-forest.png)
 
-Tento scénář je podobný scénáři s více doménovými strukturami, ale ta zahrnuje existující prostředí Azure AD Connect a pak se přinášejí do nové doménové struktury pomocí Azure AD Connect zřizování cloudu.  Příklad tohoto scénáře najdete v tématu [kurz: existující doménová struktura s jedním klientem služby Azure AD.](tutorial-existing-forest.md)
+Tento scénář je topologie je podobný scénář s více doménovými strukturami, ale tento zahrnuje existující prostředí Azure AD Connect a pak přináší na nové doménové struktury pomocí Azure AD Connect zřizování cloudu.  Příklad tohoto scénáře najdete [v tématu Kurz: Existující doménová struktura s jedním klientem Azure AD](tutorial-existing-forest.md)
 
-## <a name="piloting-azure-ad-connect-cloud-provisioning-in-an-existing-hybrid-ad-forest"></a>Pilotní nasazení Azure AD Connect zřízení cloudu v existující hybridní doménové struktuře AD
-![topologie pro jednu doménovou strukturu a jednoho tenanta](media/plan-cloud-provisioning-topologies/migrate.png) scénář pilotního nasazení zahrnuje existenci cloudového zřizování Azure AD Connect i Azure AD Connect ve stejné doménové struktuře a určení oboru uživatelů a skupin. Poznámka: objekt by měl být v oboru pouze v jednom z nástrojů. 
+## <a name="piloting-azure-ad-connect-cloud-provisioning-in-an-existing-hybrid-ad-forest"></a>Pilotní zabezpečení zřizování cloudu Azure AD Connect ve stávající hybridní doménové struktuře služby AD
+![Topologie pro jednu doménovou](media/plan-cloud-provisioning-topologies/migrate.png) strukturu a jednoho tenanta Scénář pilotního řízení zahrnuje existenci azure ad connect a azure ad připojení cloud zřizování ve stejné doménové struktuře a vymezení uživatelů a skupin odpovídajícím způsobem. Poznámka: Objekt by měl být v oboru pouze v jednom z nástrojů. 
 
-Příklad tohoto scénáře najdete [v tématu Kurz: zřízení pilotního nasazení cloud Azure AD Connect v existující synchronizované doménové struktuře AD.](tutorial-pilot-aadc-aadccp.md)
+Příklad tohoto scénáře najdete [v tématu Kurz: Pilotní Azure AD Connect zřizování cloudu v existující synchronizované doménové struktuře služby AD](tutorial-pilot-aadc-aadccp.md)
 
 
 
 ## <a name="next-steps"></a>Další kroky 
 
 - [Co je zřizování?](what-is-provisioning.md)
-- [Co je zřizování cloudu Azure AD Connect?](what-is-cloud-provisioning.md)
+- [Co je zřízení cloudu Azure AD Connect?](what-is-cloud-provisioning.md)
 

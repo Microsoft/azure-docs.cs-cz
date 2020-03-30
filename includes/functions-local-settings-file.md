@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 04/14/2019
 ms.author: glenga
 ms.openlocfilehash: 1c2196f1f834002b76dbea555b54a5162655ec1c
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77205749"
 ---
 ## <a name="local-settings-file"></a>Soubor místního nastavení
 
-Soubor Local. Settings. JSON ukládá nastavení aplikace, připojovací řetězce a nastavení, které používají místní vývojové nástroje. Nastavení v souboru Local. Settings. JSON se použijí pouze v případě, že používáte projekty místně. Soubor místních nastavení má tuto strukturu:
+Soubor local.settings.json ukládá nastavení aplikací, připojovací řetězce a nastavení používaná nástroji pro místní vývoj. Nastavení v souboru local.settings.json se používá pouze v případě, že spouštěte projekty místně. Soubor místního nastavení má tuto strukturu:
 
 ```json
 {
@@ -35,16 +35,16 @@ Soubor Local. Settings. JSON ukládá nastavení aplikace, připojovací řetěz
 }
 ```
 
-Tato nastavení jsou podporována při spuštění projektů místně:
+Tato nastavení jsou podporována při místním spuštění projektů:
 
 | Nastavení      | Popis                            |
 | ------------ | -------------------------------------- |
-| **`IsEncrypted`** | Když je toto nastavení nastavené na `true`, všechny hodnoty se šifrují pomocí klíče místního počítače. Používá se s příkazy `func settings`. Výchozí hodnota je `false`. |
-| **`Values`** | Pole nastavení aplikace a připojovacích řetězců, které se použijí, když je projekt spuštěn místně. Tyto páry klíč-hodnota (řetězcové řetězce) odpovídají nastavení aplikace ve vaší aplikaci Function App v Azure, například [`AzureWebJobsStorage`]. Mnoho triggerů a vazeb má vlastnost, která odkazuje na nastavení aplikace připojovacího řetězce, například `Connection` pro [Trigger služby Blob Storage](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#configuration). U těchto vlastností potřebujete nastavení aplikace definované v `Values` poli. <br/>[`AzureWebJobsStorage`] je požadované nastavení aplikace pro triggery jiné než HTTP. <br/>Verze 2. x a vyšší modulu runtime funkcí vyžaduje nastavení [`FUNCTIONS_WORKER_RUNTIME`], které je vygenerováno pro váš projekt pomocí základních nástrojů. <br/> Pokud máte [emulátor úložiště Azure](../articles/storage/common/storage-use-emulator.md) nainstalovaný místně a nastavili jste [`AzureWebJobsStorage`] na `UseDevelopmentStorage=true`, nástroj Core Tools používá emulátor. Emulátor je užitečný během vývoje, ale před nasazením je třeba otestovat pomocí skutečného připojení úložiště.<br/> Hodnoty musí být řetězce, nikoli objekty nebo pole JSON. Názvy nastavení nemůžou obsahovat dvojtečku (`:`) nebo dvojité podtržení (`__`). Tyto znaky jsou vyhrazeny modulem runtime.  |
-| **`Host`** | Nastavení v této části přizpůsobuje hostitelský proces Functions, když spouštíte projekty místně. Tato nastavení jsou oddělená od nastavení Host. JSON, která platí také při spuštění projektů v Azure. |
-| **`LocalHttpPort`** | Nastaví výchozí port, který se používá při spuštění místního hostitele Functions (`func host start` a `func run`). Možnost příkazového řádku `--port` má přednost před tímto nastavením. |
-| **`CORS`** | Definuje zdroje povolené pro [sdílení prostředků mezi zdroji (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). Zdroje jsou zadány jako čárkami oddělený seznam bez mezer. Je podporována znaková hodnota (\*), která umožňuje požadavky z libovolného původu. |
-| **`CORSCredentials`** |  Pokud je nastaveno na `true`, umožňuje `withCredentials` požadavky. |
-| **`ConnectionStrings`** | Kolekce. Tuto kolekci nepoužívejte pro připojovací řetězce používané vašimi vazbami funkcí. Tato kolekce je používána pouze rozhraními, které obvykle získávají připojovací řetězce z oddílu `ConnectionStrings` konfiguračního souboru, například [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Připojovací řetězce v tomto objektu jsou přidány do prostředí s typem zprostředkovatele [System. data. SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx). Položky v této kolekci se nepublikují do Azure s dalšími nastaveními aplikací. Tyto hodnoty musíte explicitně přidat do kolekce `Connection strings` nastavení aplikace Function App. Pokud vytváříte [`SqlConnection`](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) v kódu funkce, měli byste uložit hodnotu připojovacího řetězce s dalšími připojeními v **nastavení aplikace** na portálu. |
+| **`IsEncrypted`** | Pokud je toto `true`nastavení nastaveno na , jsou všechny hodnoty zašifrovány klíčem místního počítače. Používá `func settings` se s příkazy. Výchozí hodnota `false`je . |
+| **`Values`** | Pole nastavení aplikace a připojovacích řetězců používaných v případě, že projekt běží místně. Tyto dvojice klíč-hodnota (řetězec řetězec) odpovídají nastavení aplikace ve vaší [`AzureWebJobsStorage`]aplikaci funkce v Azure, jako je . Mnoho aktivačních událostí a vazeb má vlastnost, která odkazuje `Connection` na nastavení aplikace připojovacího řetězce, například pro [aktivační událost úložiště objektů blob](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#configuration). Pro tyto vlastnosti potřebujete nastavení aplikace `Values` definované v poli. <br/>[`AzureWebJobsStorage`]je požadované nastavení aplikace pro jiné aktivační události než HTTP. <br/>Verze 2.x a vyšší funkce runtime`FUNCTIONS_WORKER_RUNTIME`vyžaduje [ ] nastavení, které je generováno pro váš projekt základní nástroje. <br/> Když máte [emulátor úložiště Azure](../articles/storage/common/storage-use-emulator.md) nainstalován místně [`AzureWebJobsStorage`] a `UseDevelopmentStorage=true`nastavíte na , Základní nástroje používá emulátor. Emulátor je užitečný během vývoje, ale před nasazením byste měli otestovat s připojením skutečného úložiště.<br/> Hodnoty musí být řetězce a nikoli JSON objekty nebo pole. Nastavení názvů nemůže obsahovat`:`dvojtečku (`__`) nebo dvojité podtržení ( ). Tyto znaky jsou vyhrazeny runtime.  |
+| **`Host`** | Nastavení v této části přizpůsobit proces hostitele funkce při spuštění projektů místně. Tato nastavení jsou oddělená od nastavení host.json, které platí také při spuštění projektů v Azure. |
+| **`LocalHttpPort`** | Nastaví výchozí port používaný při spuštění`func host start` `func run`místního hostitele functions ( a ). Možnost `--port` příkazového řádku má přednost před tímto nastavením. |
+| **`CORS`** | Definuje počátky povolené pro [sdílení prostředků mezi zdroji (CORS).](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) Počátky jsou dodávány jako seznam oddělený čárkami bez mezer. Je podporována\*hodnota zástupných symbolů ( ), která umožňuje požadavky z libovolného původu. |
+| **`CORSCredentials`** |  Pokud je `true`nastavena na , umožňuje `withCredentials` požadavky. |
+| **`ConnectionStrings`** | Kolekce. Nepoužívejte tuto kolekci pro připojovací řetězce používané vazby funkce. Tato kolekce se používá pouze rozhraní, které obvykle `ConnectionStrings` získat připojovací řetězce z části konfiguračního souboru, jako [je entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Připojovací řetězce v tomto objektu jsou přidány do prostředí s typem zprostředkovatele [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx). Položky v této kolekci se do Azure nepublikují s jinýmnastavením aplikace. Tyto hodnoty je nutné `Connection strings` explicitně přidat do kolekce nastavení aplikace funkce. Pokud vytváříte [`SqlConnection`](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) v kódu funkce, měli byste uložit hodnotu připojovacího řetězce s ostatními připojeními v nastavení **aplikace** na portálu. |
 
-[AzureWebJobsStorage]: ../articles/azure-functions/functions-app-settings.md#azurewebjobsstorage
+["AzureWebJobsStorage"]: ../articles/azure-functions/functions-app-settings.md#azurewebjobsstorage

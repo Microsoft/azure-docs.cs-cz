@@ -1,42 +1,42 @@
 ---
 title: Ověření z clusteru Kubernetes
-description: Naučte se, jak poskytnout cluster Kubernetes s přístupem k imagím ve službě Azure Container Registry vytvořením tajného kódu pro vyžádání obsahu pomocí instančního objektu.
+description: Zjistěte, jak poskytnout clusteru Kubernetes přístup k ibi v registru kontejnerů Azure vytvořením tajného klíče pro vyžádat pomocí instančního objektu
 ms.topic: article
 author: karolz-ms
 ms.author: karolz
 ms.reviewer: danlep
 ms.date: 02/10/2020
 ms.openlocfilehash: 0608ca0e0e53acf2f19910a7f1107dacf67d4e61
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77154891"
 ---
-# <a name="pull-images-from-an-azure-container-registry-to-a-kubernetes-cluster"></a>Vyžádání imagí z Azure Container Registry do clusteru Kubernetes
+# <a name="pull-images-from-an-azure-container-registry-to-a-kubernetes-cluster"></a>Vyžádat ibi z registru kontejnerů Azure do clusteru Kubernetes
 
-Můžete použít službu Azure Container Registry jako zdroj imagí kontejneru s jakýmkoli clusterem Kubernetes, včetně "místních" clusterů Kubernetes, jako jsou [minikube](https://minikube.sigs.k8s.io/) a [druh](https://kind.sigs.k8s.io/). V tomto článku se dozvíte, jak vytvořit Kubernetes tajný klíč pro vyžádání obsahu, který je založený na Azure Active Directory instančního objektu. Pak použijte tajný klíč k vyžádání imagí z služby Azure Container Registry v nasazení Kubernetes.
+Registr kontejnerů Azure můžete použít jako zdroj ibi kontejnerů s libovolným clusterem Kubernetes, včetně "místních" klastrů Kubernetes, jako jsou [minikube](https://minikube.sigs.k8s.io/) a [kind](https://kind.sigs.k8s.io/). Tento článek ukazuje, jak vytvořit tajný klíč obnovení Kubernetes na základě instančního objektu služby Azure Active Directory. Potom použijte tajný klíč k vyžádat image z registru kontejnerů Azure v nasazení Kubernetes.
 
 > [!TIP]
-> Pokud používáte spravovanou [službu Azure Kubernetes](../aks/intro-kubernetes.md), můžete [cluster integrovat](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json) do cílového registru kontejneru Azure pro stažení imagí. 
+> Pokud používáte spravovanou [službu Azure Kubernetes Service](../aks/intro-kubernetes.md), můžete také [integrovat svůj cluster](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json) s cílovým registrem kontejnerů Azure pro vyžádat image. 
 
-V tomto článku se předpokládá, že jste už vytvořili privátní službu Azure Container Registry. Také musíte mít cluster s Kubernetes spuštěný a přístupný prostřednictvím nástroje příkazového řádku `kubectl`.
+Tento článek předpokládá, že jste už vytvořili soukromý registr kontejnerů Azure. Musíte mít také cluster Kubernetes spuštěný `kubectl` a přístupný prostřednictvím nástroje příkazového řádku.
 
 [!INCLUDE [container-registry-service-principal](../../includes/container-registry-service-principal.md)]
 
-Pokud heslo instančního objektu neuložíte nebo si ho nezapamatujete, můžete ho resetovat pomocí příkazu [AZ AD SP Credential Reset][az-ad-sp-credential-reset] :
+Pokud heslo hlavního povinného servisu neuložíte nebo si nezapamatujete, můžete ho obnovit pomocí příkazu [resetování pověření az az ad sp:][az-ad-sp-credential-reset]
 
 ```azurecli
 az ad sp credential reset  --name http://<service-principal-name> --query password --output tsv
 ```
 
-Tento příkaz vrátí nové platné heslo k instančnímu objektu.
+Tento příkaz vrátí nové, platné heslo pro instanční objekt.
 
-## <a name="create-an-image-pull-secret"></a>Vytvoření bitové kopie pro vyžádání obsahu
+## <a name="create-an-image-pull-secret"></a>Vytvoření tajného klíče pro vytažení obrázku
 
-Kubernetes používá k ukládání informací potřebných k ověření vašeho registru *tajný klíč pro získání bitové kopie* . Pokud chcete vytvořit tajný kód pro vyžádání obsahu pro službu Azure Container Registry, zadejte ID instančního objektu, heslo a adresu URL registru. 
+Kubernetes používá *tajný klíč pro vyprošťuji obrázku* k ukládání informací potřebných k ověření do registru. Chcete-li vytvořit tajný klíč vyžádat pro registr kontejneru Azure, zadejte ID instančního objektu, heslo a adresu URL registru. 
 
-Vytvoření bitové kopie pro vyžádání obsahu pomocí následujícího příkazu `kubectl`:
+Vytvořte tajný klíč pro `kubectl` vytažení obrázku pomocí následujícího příkazu:
 
 ```console
 kubectl create secret docker-registry <secret-name> \
@@ -49,15 +49,15 @@ kde:
 
 | Hodnota | Popis |
 | :--- | :--- |
-| `secret-name` | Název tajného klíče pro čtení z image, například *ACR-Secret* |
-| `namespace` | Kubernetes obor názvů pro vložení tajného kódu do <br/> Nutné pouze v případě, že chcete tajný klíč umístit v jiném oboru názvů, než je výchozí obor názvů |
-| `container-registry-name` | Název vašeho registru kontejneru Azure |
-| `service-principal-ID` | ID instančního objektu, který bude Kubernetes používat pro přístup k registru |
-| `service-principal-password` | Heslo instančního objektu |
+| `secret-name` | Název obrázku vytáhnout tajemství, například *acr-tajné* |
+| `namespace` | Kubernetes obor názvů, aby tajný klíč do <br/> Potřebujete pouze v případě, že chcete tajný klíč umístit do jiného oboru názvů, než je výchozí obor názvů. |
+| `container-registry-name` | Název registru kontejnerů Azure |
+| `service-principal-ID` | ID instančního objektu, který bude k přístupu k registru použit společností Kubernetes |
+| `service-principal-password` | Heslo hlavního povinného servisu |
 
-## <a name="use-the-image-pull-secret"></a>Použít tajný klíč pro vyžádání image
+## <a name="use-the-image-pull-secret"></a>Použít tajný klíč pro vytažení obrázku
 
-Po vytvoření bitové kopie pro vyžádání obsahu image můžete použít k vytváření Kubernetesch lusků a nasazení. Zadejte název tajného klíče v části `imagePullSecrets` v souboru nasazení. Například:
+Jakmile vytvoříte tajný klíč pro vytažení obrázku, můžete ho použít k vytvoření kubernetes podů a nasazení. Zadejte název tajného `imagePullSecrets` klíče v části v souboru nasazení. Například:
 
 ```yaml
 apiVersion: v1
@@ -74,13 +74,13 @@ spec:
     - name: acr-secret
 ```
 
-V předchozím příkladu je `your-awesome-app:v1` název obrázku, který se má načíst ze služby Azure Container Registry, a `acr-secret` je název tajného kódu pro vyžádání obsahu, který jste vytvořili pro přístup k registru. Když nasadíte pod, Kubernetes automaticky načte image z registru, pokud ještě není v clusteru.
+V předchozím příkladu `your-awesome-app:v1` je název bitové kopie naváděné z registru kontejneru Azure a `acr-secret` je název tajného klíče pro vyžádat, který jste vytvořili pro přístup k registru. Při nasazení pod, Kubernetes automaticky vytáhne bitovou kopii z registru, pokud již není k dispozici v clusteru.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o práci s instančními objekty a Azure Container Registry najdete v tématu [ověřování Azure Container Registry pomocí instančních objektů](container-registry-auth-service-principal.md) .
-* Další informace o tajných klíčích pro vyžádání imagí najdete v [dokumentaci k Kubernetes](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod) .
+* Další informace o práci s objekty zabezpečení služeb a Azure Container Registry najdete v tématu [ověřování registru kontejnerů Azure s objekty zabezpečení služeb](container-registry-auth-service-principal.md)
+* Další informace o tajných informacích o vytažení obrázků v [dokumentaci Kubernetes](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod)
 
 
 <!-- IMAGES -->

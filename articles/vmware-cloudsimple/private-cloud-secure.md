@@ -1,6 +1,6 @@
 ---
-title: Řešení Azure VMware podle CloudSimple – zabezpečení privátního cloudu
-description: Popisuje, jak zabezpečit řešení Azure VMware pomocí CloudSimple privátního cloudu.
+title: Řešení Azure VMware od CloudSimple – zabezpečený privátní cloud
+description: Popisuje, jak zabezpečit řešení Azure VMware pomocí cloudového privátního cloudu.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/19/2019
@@ -9,68 +9,68 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 4541874a9e8fc4111e5c65d02f07535c4d14f9f1
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77565974"
 ---
 # <a name="how-to-secure-your-private-cloud-environment"></a>Jak zabezpečit prostředí privátního cloudu
 
-Definujte řízení přístupu na základě role (RBAC) pro službu CloudSimple, portál CloudSimple a privátní cloud z Azure.  Uživatelé, skupiny a role pro přístup k vCenter privátního cloudu se zadává pomocí jednotného přihlašování VMware.  
+Definujte řízení přístupu na základě rolí (RBAC) pro cloudovou službu CloudSimple, portál CloudSimple a privátní cloud z Azure.  Uživatelé, skupiny a role pro přístup k vCenter privátního cloudu jsou určeny pomocí vmware semaforu.  
 
 ## <a name="rbac-for-cloudsimple-service"></a>RBAC pro službu CloudSimple
 
-Vytváření služby CloudSimple vyžaduje roli **vlastníka** nebo **přispěvatele** v předplatném Azure.  Ve výchozím nastavení mohou všichni vlastníci a přispěvatelé vytvořit službu CloudSimple a přistupovat k portálu CloudSimple pro vytváření a správu privátních cloudů.  Pro každou oblast se dá vytvořit jenom jedna služba CloudSimple.  Pokud chcete omezit přístup ke konkrétním správcům, postupujte podle níže uvedeného postupu.
+Vytvoření služby CloudSimple vyžaduje roli **vlastníka** nebo **přispěvatele** v předplatném Azure.  Ve výchozím nastavení mohou všichni vlastníci a přispěvatelé vytvořit službu CloudSimple a přistupovat k portálu CloudSimple pro vytváření a správu privátních cloudů.  Pro každý region lze vytvořit pouze jednu službu CloudSimple.  Chcete-li omezit přístup na konkrétní správce, postupujte podle následujícího postupu.
 
-1. Vytvoření služby CloudSimple v nové **skupině prostředků** v Azure Portal
+1. Vytvoření služby CloudSimple v nové **skupině prostředků** na webu Azure Portal
 2. Zadejte RBAC pro skupinu prostředků.
-3. Koupit uzly a použít stejnou skupinu prostředků jako služba CloudSimple
+3. Nákup uzlů a použití stejné skupiny prostředků jako služba CloudSimple
 
-Pouze uživatelé, kteří mají oprávnění **vlastníka** nebo **přispěvatelé** ve skupině prostředků, uvidí službu CloudSimple a spustí portál CloudSimple.
+Pouze uživatelé, kteří mají oprávnění **vlastníka** nebo **přispěvatele** ve skupině prostředků, uvidí službu CloudSimple a spustí portál CloudSimple.
 
-Další informace o RBAC najdete v tématu [co je řízení přístupu na základě role (RBAC) pro prostředky Azure](../role-based-access-control/overview.md).
+Další informace o RBAC najdete [v tématu Co je řízení přístupu na základě rolí (RBAC) pro prostředky Azure](../role-based-access-control/overview.md).
 
 ## <a name="rbac-for-private-cloud-vcenter"></a>RBAC pro privátní cloud vCenter
 
-Výchozí uživatel `CloudOwner@cloudsimple.local` se v doméně vCenter jednotného přihlašování vytvoří, když se vytvoří privátní cloud.  CloudOwner uživatel má oprávnění ke správě vCenter. Další zdroje identity se přidají do služby vCenter SSO pro udělení přístupu různým uživatelům.  Předdefinované role a skupiny se nastavují na vCenter, který se dá použít k přidání dalších uživatelů.
+Při vytvoření `CloudOwner@cloudsimple.local` privátního cloudu se v doméně s připojovacím zabezpečení virtuálního centra vytvoří výchozí uživatel.  Uživatel CloudOwner má oprávnění pro správu vCenter. Další zdroje identit jsou přidány do vCenter SSO pro poskytování přístupu k různým uživatelům.  Předdefinované role a skupiny jsou nastaveny v centru, které lze použít k přidání dalších uživatelů.
 
-### <a name="add-new-users-to-vcenter"></a>Přidat nové uživatele do vCenter
+### <a name="add-new-users-to-vcenter"></a>Přidání nových uživatelů do aplikace vCenter
 
-1. [Eskalace oprávnění](escalate-private-cloud-privileges.md) pro **CloudOwner\@cloudsimple. místní** uživatel na privátním cloudu.
-2. Přihlaste se k vCenter pomocí **CloudOwner\@cloudsimple. Local**
-3. [Přidejte uživatele s jednotným přihlašováním vCenter](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-72BFF98C-C530-4C50-BF31-B5779D2A4BBB.html).
-4. Přidejte uživatele do [skupin s jednotným přihlašováním vCenter](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
+1. [Eskalovat oprávnění](escalate-private-cloud-privileges.md) pro **cloudOwner\@cloudsimple.local** uživatele v privátním cloudu.
+2. Přihlášení k virtuálnímu centru pomocí **cloudowner\@cloudsimple.local**
+3. [Přidat uživatele s jedním přihlášením vCenter](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-72BFF98C-C530-4C50-BF31-B5779D2A4BBB.html).
+4. Přidání uživatelů do [skupin y jednotného přihlašování vCenter](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
 
-Další informace o předem definovaných rolích a skupinách najdete v článku o [modelu oprávnění privátního cloudu CloudSimple v článku o VMware vCenter](learn-private-cloud-permissions.md) .
+Další informace o předdefinovaných rolích a skupinách najdete v článku [CloudSimple Private Cloud, který se v článku vcentru VMware.](learn-private-cloud-permissions.md)
 
-### <a name="add-new-identity-sources"></a>Přidat nové zdroje identity
+### <a name="add-new-identity-sources"></a>Přidání nových zdrojů identity
 
-Můžete přidat další zprostředkovatele identity pro doménu vCenter SSO vašeho privátního cloudu.  Zprostředkovatelé identit poskytují skupiny ověřování a vCenter SSO pro uživatele autorizaci.
+Můžete přidat další zprostředkovatele identit pro doménu vCenter SSO vašeho privátního cloudu.  Zprostředkovatelé identit poskytují ověřování a skupiny spřibíná vCenter poskytují autorizaci pro uživatele.
 
-* V privátním cloudu vCenter [použijte službu Active Directory jako zprostředkovatele identity](set-vcenter-identity.md) .
-* [Použití Azure AD jako zprostředkovatele identity](azure-ad.md) v privátním cloudu vCenter
+* [Službu Active Directory použijte jako poskytovatele identity](set-vcenter-identity.md) v programu Private Cloud vCenter.
+* [Použití Azure AD jako poskytovatele identity](azure-ad.md) v privátním cloudu vCenter
 
-1. [Eskalace oprávnění](escalate-private-cloud-privileges.md) pro **CloudOwner\@cloudsimple. místní** uživatel na privátním cloudu.
-2. Přihlaste se k vCenter pomocí **CloudOwner\@cloudsimple. Local**
-3. Přidejte uživatele z poskytovatele identity do [skupin s jednotným přihlašováním vCenter](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
+1. [Eskalovat oprávnění](escalate-private-cloud-privileges.md) pro **cloudOwner\@cloudsimple.local** uživatele v privátním cloudu.
+2. Přihlášení k virtuálnímu centru pomocí **cloudowner\@cloudsimple.local**
+3. Přidejte uživatele z poskytovatele identity do [skupin y jednotného přihlašování vCenter](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
 
-## <a name="secure-network-on-your-private-cloud-environment"></a>Zabezpečení sítě v prostředí privátního cloudu
+## <a name="secure-network-on-your-private-cloud-environment"></a>Zabezpečená síť v prostředí privátního cloudu
 
-Zabezpečení sítě v prostředí privátního cloudu je řízeno pomocí zabezpečení přístupu k síti a řízení síťového provozu mezi prostředky.
+Zabezpečení sítě privátního cloudového prostředí je řízeno zabezpečením přístupu k síti a řízením síťového provozu mezi prostředky.
 
 ### <a name="access-to-private-cloud-resources"></a>Přístup k prostředkům privátního cloudu
 
-Přístup k vCenter a prostředkům privátního cloudu je přes zabezpečené síťové připojení:
+Privátní cloud vCenter a prostředky přístup je přes zabezpečené síťové připojení:
 
-* **[ExpressRoute připojení](on-premises-connection.md)** . ExpressRoute zajišťuje zabezpečené připojení s vysokou šířkou pásma a nízkou latencí z místního prostředí.  Použití připojení umožňuje vašim místním službám, sítím a uživatelům přístup k vašemu privátnímu cloudu vCenter.
-* **[Brána VPN typu Site-to-site](vpn-gateway.md)** . Síť Site-to-Site VPN poskytuje přístup k prostředkům privátního cloudu z místního prostředí prostřednictvím zabezpečeného tunelového propojení.  Určíte, které místní sítě mohou odesílat a přijímat síťový provoz do privátního cloudu.
-* **[Brána VPN typu Point-to-site](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)** . Použijte připojení VPN typu Point-to-site pro rychlý vzdálený přístup k vašemu privátnímu cloudu vCenter.
+* **[ExpressRoute připojení](on-premises-connection.md)**. ExpressRoute poskytuje zabezpečené připojení s vysokou šířkou pásma a nízkou latencí z místního prostředí.  Pomocí připojení umožňuje vaše místní služby, sítě a uživatelé přístup k priviacloudvCenter.
+* **[Brána VPN site-to-site](vpn-gateway.md)**. Vpn site-to-Site poskytuje přístup k prostředkům privátního cloudu z místního prostředí prostřednictvím zabezpečeného tunelu.  Určíte, které místní sítě mohou odesílat a přijímat síťový provoz do vašeho privátního cloudu.
+* **[Brána VPN point-to-site](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)**. Pro rychlý vzdálený přístup k privátnímu cloudu vCenter použijte připojení VPN z bodu na místo.
 
 ### <a name="control-network-traffic-in-private-cloud"></a>Řízení síťového provozu v privátním cloudu
 
-Tabulky a pravidla brány firewall řídí síťový provoz v privátním cloudu.  Tabulka brány firewall umožňuje řídit síťový provoz mezi zdrojovou nebo IP adresou a cílovou sítí nebo IP adresou založenou na kombinaci pravidel definovaných v tabulce.
+Tabulky brány firewall a pravidla řídí síťový provoz v privátním cloudu.  Tabulka brány firewall umožňuje řídit síťový provoz mezi zdrojovou sítí nebo adresou IP a cílovou sítí nebo adresou IP na základě kombinace pravidel definovaných v tabulce.
 
 1. Vytvořte [tabulku brány firewall](firewall.md#add-a-new-firewall-table).
 2. [Přidejte pravidla](firewall.md#create-a-firewall-rule) do tabulky brány firewall.
-3. [Připojte tabulku brány firewall k síti VLAN nebo podsíti](firewall.md#attach-vlans-subnet).
+3. [Připojte tabulku brány firewall k síti VLAN/podsíti](firewall.md#attach-vlans-subnet).

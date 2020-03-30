@@ -1,6 +1,6 @@
 ---
-title: Dotazování dat z prostředí GA pomocí C# Azure Time Series Insights kódu | Microsoft Docs
-description: Naučte se, jak zadávat dotazy na data z Azure Time Series Insights prostředí pomocí vlastní aplikace C#napsané v.
+title: Dotazujte se na data z prostředí GA pomocí kódu C# – Přehledy azure time series | Dokumenty společnosti Microsoft
+description: Zjistěte, jak dotazovat data z prostředí Azure Time Series Insights pomocí vlastní aplikace napsané v C#.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -12,73 +12,73 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.custom: seodec18
 ms.openlocfilehash: 9f7819974e3548baf5e10f0bf9a2d656d9412beb
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76987967"
 ---
-# <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>Dotazování dat z Azure Time Series Insightsho prostředí GA pomocíC#
+# <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>Dotazovat se na data z prostředí Azure Time Series Insights GA pomocí C #
 
-Tento C# příklad ukazuje, jak použít [rozhraní API pro dotazy GA](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) k dotazování dat z Azure Time Series Insights GA prostředí.
+Tento příklad jazyka C# ukazuje, jak používat [API dotazu GA](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) k dotazování dat z prostředí Ga Azure Time Series Insights.
 
 > [!TIP]
-> Podívejte se C# na ukázky kódů GA na [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample).
+> Zobrazit ukázky kódu [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)GA C# na .
 
 ## <a name="summary"></a>Souhrn
 
-Vzorový kód níže znázorňuje následující funkce:
+Ukázkový kód níže ukazuje následující funkce:
 
-* Získání přístupového tokenu prostřednictvím Azure Active Directory pomocí [Microsoft. IdentityModel. clients. Active](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).
+* Jak získat přístupový token prostřednictvím služby Azure Active Directory pomocí [adresáře Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).
 
-* Postup předání tohoto přístupového tokenu v `Authorization` hlavičce dalších požadavků na rozhraní API pro dotazování. 
+* Jak předat tento získaný přístupový token v `Authorization` záhlaví následujících požadavků rozhraní API dotazu. 
 
-* Ukázka volá každé z rozhraní API pro dotazy GA, které demonstrují, jakým způsobem jsou požadavky HTTP provedeny:
-    * [Získat prostředí API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environments-api) pro vrácení prostředí, ke kterým má uživatel přístup
-    * [Získat rozhraní API dostupnosti prostředí](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-availability-api)
-    * [Získat rozhraní API metadat prostředí](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-metadata-api) pro načtení metadat prostředí
-    * [Získat rozhraní API pro události prostředí](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api)
+* Ukázka volá každé z GA dotazu API ukazuje, jak jsou požadavky HTTP provedeny na:
+    * [Získejte rozhraní API prostředí,](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environments-api) které vrátí prostředí, ke kterým má uživatel přístup.
+    * [Získat rozhraní API pro dostupnost prostředí](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-availability-api)
+    * [Získání rozhraní API metadat prostředí](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-metadata-api) pro načtení metadat prostředí
+    * [Rozhraní API událostí prostředí](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api)
     * [Získat rozhraní API pro agregace prostředí](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api)
     
-* Jak pracovat s rozhraními API pro dotazy GA pomocí WSS ke zprávě:
+* Jak pracovat s GA query API pomocí WSS zprávu:
 
-   * [Načíst rozhraní API pro streamované události prostředí](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-streamed-api)
-   * [Načíst rozhraní API pro agregované datové prostředí](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-streamed-api)
+   * [Získat rozhraní API pro streamované události prostředí](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-streamed-api)
+   * [Získat streamované rozhraní API pro agregace prostředí](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-streamed-api)
 
-## <a name="prerequisites-and-setup"></a>Požadavky a instalace
+## <a name="prerequisites-and-setup"></a>Požadavky a nastavení
 
 Před kompilací a spuštěním ukázkového kódu proveďte následující kroky:
 
-1. [Zřízení Azure Time Series Insightsho prostředí GA](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started)
-1. Nakonfigurujte Azure Time Series Insights prostředí pro Azure Active Directory, jak je popsáno v tématu [ověřování a autorizace](time-series-insights-authentication-and-authorization.md). 
+1. [Zřídit](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started) prostředí GA Azure Time Series Insights.
+1. Nakonfigurujte prostředí Azure Time Series Insights pro Azure Active Directory, jak je popsáno v [protokolu Ověřování a autorizace](time-series-insights-authentication-and-authorization.md). 
 1. Nainstalujte požadované závislosti projektu.
-1. Níže uvedený ukázkový kód nahraďte každým **#DUMMY #** a příslušným identifikátorem prostředí.
-1. Spusťte kód v rámci sady Visual Studio.
+1. Upravte ukázkový kód níže nahrazením každého **#DUMMY#** příslušným identifikátorem prostředí.
+1. Spusťte kód uvnitř sady Visual Studio.
 
 ## <a name="project-dependencies"></a>Závislosti projektu
 
-Doporučuje se použít nejnovější verzi sady Visual Studio:
+Doporučujeme používat nejnovější verzi sady Visual Studio:
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) – verze 16.4.2 +
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) - verze 16.4.2+
 
-Vzorový kód má dvě požadované závislosti:
+Ukázkový kód má dvě požadované závislosti:
 
-* Balíček [Microsoft. IdentityModel. clients. Active](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) -3.13.9.
-* Balíček [Newtonsoft. JSON](https://www.nuget.org/packages/Newtonsoft.Json) -9.0.1.
+* [Balíček Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) - 3.13.9.
+* [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json) - balení 9.0.1.
 
-Stáhněte balíčky v aplikaci Visual Studio 2019 výběrem možnosti **sestavit** > **Sestavit řešení** .
+Stáhněte si balíčky v Visual Studiu 2019 výběrem **možnosti Sestavení** > **sestavení řešení.**
 
-Případně přidejte balíčky pomocí [NuGet 2.12 +](https://www.nuget.org/):
+Případně přidejte balíčky pomocí [NuGet 2.12+](https://www.nuget.org/):
 
 * `dotnet add package Newtonsoft.Json --version 9.0.1`
 * `dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory --version 3.13.9`
 
-## <a name="c-sample-code"></a>C#vzorový kód
+## <a name="c-sample-code"></a>Ukázkový kód jazyka C#
 
 [!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-ga-sample/Program.cs)]
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o dotazování najdete v referenčních informacích k [rozhraní API pro dotazy](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api).
+- Další informace o dotazování najdete v [odkazu rozhraní API dotazu](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api).
 
-- Přečtěte si, jak [připojit aplikaci JavaScriptu pomocí klientské sady SDK](https://github.com/microsoft/tsiclient) pro Time Series Insights.
+- Přečtěte si, jak [připojit aplikaci JavaScript pomocí sady SDK klienta](https://github.com/microsoft/tsiclient) k přehledům time series.

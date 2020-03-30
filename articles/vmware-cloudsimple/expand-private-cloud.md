@@ -1,6 +1,6 @@
 ---
-title: Rozšíření privátního cloudu řešení Azure VMware Solutions (AVS)
-description: Popisuje postup rozšíření existujícího privátního cloudu služby AVS za účelem přidání kapacity v existujícím nebo novém clusteru.
+title: Rozšíření řešení Azure VMware pomocí cloudového privátního cloudu
+description: Popisuje, jak rozšířit existující CloudSimple Private Cloud přidat kapacitu v existujícínebo nový cluster
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/06/2019
@@ -8,53 +8,53 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3286b7537056a6c2f282533aa629ebbe47612690
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a82ba1b433e62ed1c4b72b8e942d4ade29f26c4a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025295"
 ---
-# <a name="expand-an-avs-private-cloud"></a>Rozšíření privátního cloudu služby AVS
+# <a name="expand-a-cloudsimple-private-cloud"></a>Rozšíření cloudového jednoduchého privátního cloudu
 
-AVS nabízí flexibilitu pro dynamické rozšíření privátního cloudu služby AVS. Můžete začít s menší konfigurací a pak je rozšířit podle potřeby větší kapacity. Nebo můžete vytvořit privátní cloud služby AVS na základě aktuálních potřeb a pak rozbalovat růst spotřeby.
+CloudSimple poskytuje flexibilitu dynamicky rozbalovat privátní cloud. Můžete začít s menší konfigurací a potom rozbalit, jak budete potřebovat vyšší kapacitu. Nebo můžete vytvořit privátní cloud na základě aktuálních potřeb a pak rozšířit s rostoucí spotřebou.
 
-Privátní cloud služby AVS se skládá z jednoho nebo více clusterů vSphere. Každý cluster může mít 3 až 16 uzlů. Při rozšiřování privátního cloudu služby AVS můžete přidat uzly do stávajícího clusteru nebo vytvořit nový cluster. Chcete-li rozšířit existující cluster, musí být další uzly stejného typu (SKU) jako stávající uzly. Pro vytvoření nového clusteru může být uzly jiného typu. Další informace o omezeních privátního cloudu služby AVS najdete v části omezení v článku [Přehled privátního](cloudsimple-private-cloud.md) cloudu služby AVS.
+Privátní cloud se skládá z jednoho nebo více clusterů vSphere. Každý cluster může mít 3 až 16 uzlů.  Při rozbalení privátního cloudu přidáte uzly do existujícího clusteru nebo vytvoříte nový cluster. Chcete-li rozbalit existující cluster, musí být další uzly stejného typu (SKU) jako existující uzly. Pro vytvoření nového clusteru mohou být uzly jiného typu. Další informace o limitech privátního cloudu najdete v části Limity v článku [přehled privátního cloudu CloudSimple.](cloudsimple-private-cloud.md)
 
-Privátní cloud služby AVS se vytvoří **s výchozím** datacentrem na vCenter. Každé datové centrum slouží jako entita správy na nejvyšší úrovni. V případě nového clusteru funkce AVS nabízí možnost přidání do stávajícího datového centra nebo vytvoření nového datacentra.
+Privátní cloud se vytvoří s výchozím **datovým centrem** v centru.  Každé datové centrum slouží jako entita pro správu nejvyšší úrovně.  Pro nový cluster CloudSimple poskytuje možnost přidání do existujícího datového centra nebo vytvoření nového datového centra.
 
-V rámci nové konfigurace clusteru služba AVS konfiguruje infrastrukturu VMware. Mezi tato nastavení patří nastavení úložiště pro síti vSAN diskové skupiny, VMware high availability a Distributed Resource Scheduler (DRS).
+CloudSimple v rámci nové konfigurace clusteru konfiguruje infrastrukturu VMware.  Nastavení zahrnují nastavení úložiště pro skupiny disků vSAN, vysokou dostupnost vmware a plánovač distribuovaných prostředků (DRS).
 
-Privátní cloud služby AVS lze několikrát rozšířit. Rozšíření se dá udělat jenom v případě, že zůstanete v rámci celkových omezení uzlu. Pokaždé, když rozbalíte privátní cloud služby AVS, přidáte ho do existujícího clusteru nebo vytvoříte nový.
+Privátní cloud lze rozšířit vícekrát. Rozšíření lze provést pouze v případě, že zůstanete v rámci celkových limitů uzlů. Pokaždé, když rozbalíte privátní cloud, přidáte do existujícího clusteru nebo vytvoříte nový.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Aby bylo možné rozšířit svůj privátní cloud služby AVS, musí být uzly zřízené. Další informace o zřizovacích uzlech najdete v článku [zřízení uzlů pro řešení VMware pomocí služby AVS-Azure](create-nodes.md) . Pro vytvoření nového clusteru musíte mít aspoň tři dostupné uzly stejné SKU.
+Před rozšířením privátního cloudu je nutné zřídit uzly.  Další informace o zřizování uzlů najdete v článku [Zřízení uzlů pro řešení VMware podle CloudSimple – Azure.](create-nodes.md)  Pro vytvoření nového clusteru musíte mít alespoň tři dostupné uzly stejné skladové položky.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
+Přihlaste se k [https://portal.azure.com](https://portal.azure.com)portálu Azure na adrese .
 
-## <a name="expand-an-avs-private-cloud"></a>Rozšíření privátního cloudu služby AVS
+## <a name="expand-a-private-cloud"></a>Rozšíření privátního cloudu
 
-1. [Přístup k portálu AVS](access-cloudsimple-portal.md).
+1. [Přístup k portálu CloudSimple](access-cloudsimple-portal.md).
 
-2. Otevřete stránku **prostředky** a vyberte privátní cloud služby AVS, pro který chcete rozšíření rozšířit.
+2. Otevřete stránku **Prostředky** a vyberte privátní cloud, pro který chcete rozbalit.
 
-3. V části Souhrn klikněte na **Rozbalit**.
+3. V souhrnné části klikněte na **Rozbalit**.
 
-    ![Rozbalit privátní cloud AVS](media/resources-expand-private-cloud.png)
+    ![Rozšíření privátního cloudu](media/resources-expand-private-cloud.png)
 
-4. Vyberte, jestli chcete rozšířit svůj existující cluster, nebo vytvořte nový cluster vSphere. Při provádění změn se aktualizovaly souhrnné informace na stránce.
+4. Zvolte, zda chcete rozbalit stávající cluster nebo vytvořit nový cluster vSphere. Při provádění změn se aktualizují souhrnné informace na stránce.
 
-    * Pokud chcete rozšířit svůj existující cluster, klikněte na **Rozbalit existující cluster**. Vyberte cluster, který chcete rozšířit, a zadejte počet uzlů, které chcete přidat. Každý cluster může mít maximálně 16 uzlů.
-    * Chcete-li přidat nový cluster, klikněte na tlačítko **vytvořit nový cluster**. Zadejte název clusteru. Vyberte existující datové centrum nebo zadejte název pro vytvoření nového datacentra. Vyberte typ uzlu. Při vytváření nového clusteru vSphere můžete zvolit jiný typ uzlu, ale ne při rozšiřování stávajícího clusteru vSphere. Vyberte počet uzlů. Každý nový cluster musí mít alespoň tři uzly.
+    * Chcete-li rozšířit existující cluster, klepněte na tlačítko **Rozbalit existující cluster**. Vyberte cluster, který chcete rozbalit, a zadejte počet uzlů, které chcete přidat. Každý cluster může mít maximálně 16 uzlů.
+    * Chcete-li přidat nový cluster, klepněte na tlačítko **Vytvořit nový cluster**. Zadejte název clusteru. Vyberte existující datové centrum nebo zadejte název pro vytvoření nového datového centra. Zvolte typ uzlu. Při vytváření nového clusteru vSphere můžete zvolit jiný typ uzlu, ale ne při rozbalení existujícího clusteru vSphere. Vyberte počet uzlů. Každý nový cluster musí mít alespoň tři uzly.
 
-    ![Rozbalte privátní cloud AVS – přidat uzly](media/resources-expand-private-cloud-add-nodes.png)
+    ![Rozšíření privátního cloudu – přidání uzlů](media/resources-expand-private-cloud-add-nodes.png)
 
-5. Kliknutím na **Odeslat** rozbalte privátní cloud AVS.
+5. Kliknutím na **Odeslat** rozbalte privátní cloud.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Využití virtuálních počítačů VMware v Azure](quickstart-create-vmware-virtual-machine.md)
-* Další informace o [privátních cloudech](cloudsimple-private-cloud.md) pro funkci AVS
+* [Využívání virtuálních počítačů VMware v Azure](quickstart-create-vmware-virtual-machine.md)
+* Další informace o [privátních cloudech](cloudsimple-private-cloud.md)

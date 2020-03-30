@@ -1,6 +1,6 @@
 ---
-title: Integrace Time Series Insights se vzdáleným monitorováním – Azure | Microsoft Docs
-description: V tomto postupu se naučíte, jak nakonfigurovat Time Series Insights pro stávající řešení vzdáleného monitorování, které ještě nezahrnuje Time Series Insights.
+title: Integrace přehledů časových řad se vzdáleným monitorováním – Azure | Dokumenty společnosti Microsoft
+description: V tomto návodu se dozvíte, jak nakonfigurovat Přehledy časových řad pro existující řešení vzdáleného monitorování, které ještě neobsahuje přehledy časových řad.
 author: Philmea
 manager: timlt
 ms.author: philmea
@@ -9,138 +9,138 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 752529454a5b6293d9cbfdf8378b46947aed5a0e
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77564640"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integrace služby Azure Time Series Insights se vzdáleným monitorováním
 
-Azure Time Series Insights je plně spravovaná služba pro analýzy, ukládání a vizualizace, která slouží ke správě dat časových řad ve službě IoT-Scale v cloudu. Pomocí Time Series Insights můžete ukládat a spravovat data časových řad, zkoumat a vizualizovat události souběžně, provádět analýzu původních příčin a porovnat několik webů a prostředků.
+Azure Time Series Insights je plně spravovaná analytická, úložná a vizualizační služba pro správu dat časových řad v měřítku IoT v cloudu. Pomocí přehledů Time Series Insights můžete současně ukládat a spravovat data časových řad, zkoumat a vizualizovat události, provádět analýzu hlavních příčin a porovnávat více webů a prostředků.
 
-Akcelerátor řešení vzdáleného monitorování teď poskytuje automatické nasazení a integraci s Time Series Insights. V tomto postupu se naučíte, jak nakonfigurovat Time Series Insights pro stávající řešení vzdáleného monitorování, které ještě nezahrnuje Time Series Insights.
+Akcelerátor řešení vzdáleného monitorování nyní poskytuje automatické nasazení a integraci s time series insights. V tomto návodu se dozvíte, jak nakonfigurovat Přehledy časových řad pro existující řešení vzdáleného monitorování, které ještě neobsahuje přehledy časových řad.
 
 > [!NOTE]
-> Time Series Insights není aktuálně k dispozici v cloudu Azure Čína. Nové nasazení akcelerátoru řešení vzdáleného monitorování v cloudu Azure Čína používá Cosmos DB pro všechna úložiště.
+> Time Series Insights není momentálně dostupná v cloudu Azure China. Nová nasazení akcelerátoru řešení vzdáleného monitorování v cloudu Azure China používají Cosmos DB pro všechna úložiště.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li dokončit tento postup, musíte již nasadit řešení vzdáleného monitorování:
+Chcete-li tento postup dokončit, musíte již nasadit řešení vzdáleného monitorování:
 
 * [Nasazení akcelerátoru řešení vzdáleného monitorování](quickstart-remote-monitoring-deploy.md)
 
-## <a name="create-a-consumer-group"></a>Vytvořit skupinu uživatelů
+## <a name="create-a-consumer-group"></a>Vytvoření skupiny spotřebitelů
 
-Vytvořte ve svém IoT Hub vyhrazenou skupinu příjemců, která se použije pro streamování dat do Time Series Insights.
+Vytvořte vyhrazenou skupinu spotřebitelů ve vašem Centru IoT, která se použije pro streamování dat do Přehledů time series.
 
 > [!NOTE]
-> Skupiny uživatelů používají aplikace k vyžádání dat z Azure IoT Hub. Každá skupina uživatelů umožňuje až pět výstupních spotřebitelů. Měli byste vytvořit novou skupinu uživatelů pro každých pět výstupních umyvadel a můžete vytvořit až 32 skupin uživatelů.
+> Skupiny spotřebitelů používají aplikace k vyprávění dat z Azure IoT Hub. Každá skupina spotřebitelů umožňuje až pět výstupních spotřebitelů. Měli byste vytvořit novou skupinu spotřebitelů pro každých pět výstupních propadů a můžete vytvořit až 32 skupin spotřebitelů.
 
-1. V Azure Portal klikněte na tlačítko Cloud Shell.
+1. Na webu Azure Portal klikněte na tlačítko Cloud Shell.
 
-1. Spuštěním následujícího příkazu vytvořte novou skupinu uživatelů. V nasazení vzdáleného monitorování použijte název centra IoT a jako název skupiny prostředků zadejte název svého nasazení vzdáleného monitorování:
+1. Chcete-li vytvořit novou skupinu spotřebitelů, proveďte následující příkaz. Použijte název služby IoT hub v nasazení vzdáleného monitorování a název nasazení vzdáleného monitorování jako název skupiny prostředků:
 
 ```azurecli-interactive
 az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsights --resource-group ContosoRM
 ```
 
-## <a name="deploy-time-series-insights"></a>Nasazení Time Series Insights
+## <a name="deploy-time-series-insights"></a>Nasazení přehledů časových řad
 
-V dalším kroku nasaďte Time Series Insights jako další prostředek do řešení vzdáleného monitorování a připojte ho ke službě IoT Hub.
+Dále nasaďte Time Series Insights jako další prostředek do vašeho řešení vzdáleného monitorování a připojte ho k centru IoT.
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
 
-1. Vyberte **vytvořit prostředek** > **Internet věcí** > **Time Series Insights**.
+1. Vyberte **možnost Vytvořit zdroj** > **Internet of Things** > **Time Series Insights**.
 
-    ![Nový Time Series Insights](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights.png)
+    ![Nové přehledy časové řady](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights.png)
 
 1. Chcete-li vytvořit prostředí Time Series Insights, použijte hodnoty v následující tabulce:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Název prostředí | Následující snímek obrazovky používá název **contorosrmtsi**. Po dokončení tohoto kroku vyberte svůj vlastní jedinečný název. |
+    | Název prostředí | Následující snímek obrazovky používá název **contorosrmtsi**. Po dokončení tohoto kroku si vyberte vlastní jedinečný název. |
     | Předplatné | Z rozevíracího seznamu vyberte své předplatné Azure. |
     | Skupina prostředků | **Použijte existující**. Vyberte název existující skupiny prostředků vzdáleného monitorování. |
     | Umístění | Používáme **východní USA**. Pokud je to možné, vytvořte prostředí ve stejné oblasti jako řešení vzdáleného monitorování. |
-    | Skladová položka |**S1** |
+    | Skladová jednotka (SKU) |**S1** |
     | Kapacita | **1** |
 
-    ![Vytvořit Time Series Insights](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights-create.png)
+    ![Vytváření přehledů časových řad](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights-create.png)
 
-1. Klikněte na možnost **Vytvořit**. Vytvoření prostředí může chvíli trvat.
+1. Klikněte na **Vytvořit**. Může chvíli trvat, než bude prostředí vytvořeno.
 
 ## <a name="create-event-source"></a>Vytvoření zdroje událostí
 
-Vytvořte nový zdroj událostí pro připojení ke službě IoT Hub. Ujistěte se, že používáte skupinu uživatelů vytvořenou v předchozích krocích. Time Series Insights vyžaduje, aby každá služba měla vyhrazenou skupinu uživatelů, kterou nepoužívá jiná služba.
+Vytvořte nový zdroj událostí pro připojení k centru IoT hub. Ujistěte se, že používáte skupinu spotřebitelů vytvořenou v předchozích krocích. Time Series Insights vyžaduje, aby každá služba měla vyhrazenou skupinu spotřebitelů, která není používána jinou službou.
 
-1. Přejděte do nového Time Series Insights prostředí.
+1. Přejděte do nového prostředí Time Series Insights.
 
-1. Na levé straně vyberte **zdroje událostí**.
+1. Vlevo vyberte **Zdroje událostí**.
 
-    ![Zobrazení zdrojů událostí](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources.png)
+    ![Zobrazit zdroje událostí](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources.png)
 
 1. Klikněte na **Přidat**.
 
-    ![Přidat zdroj události](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources-add.png)
+    ![Přidat zdroj událostí](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources-add.png)
 
-1. Ke konfiguraci služby IoT Hub jako nového zdroje událostí použijte hodnoty v následující tabulce:
+1. Chcete-li službu IoT hub nakonfigurovat jako nový zdroj událostí, použijte hodnoty v následující tabulce:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Název zdroje události | Následující snímek obrazovky používá název **contosorm-IoT-Hub**. Po dokončení tohoto kroku použijte vlastní jedinečný název. |
+    | Název zdroje událostí | Následující snímek obrazovky používá název **contosorm-iot-hub**. Po dokončení tohoto kroku použijte svůj vlastní jedinečný název. |
     | Zdroj | **IoT Hub** |
-    | Možnost importu | **Použít IoT Hub z dostupných předplatných** |
+    | Možnost importu | **Použití služby IoT Hub z dostupných předplatných** |
     | ID předplatného | Z rozevíracího seznamu vyberte své předplatné Azure. |
-    | Název centra IoT Hub | **contosorma57a6**. Použijte název centra IoT z řešení vzdáleného monitorování. |
-    | Název zásad centra IoT Hub | **iothubowner** Ujistěte se, že použitá zásada je zásada vlastníka. |
-    | Klíč zásad centra IoT Hub | Toto pole je vyplněno automaticky. |
-    | Skupina uživatelů centra IoT Hub | **timeseriesinsights** |
+    | Název centra IoT Hub | **contosorma57a6**. Použijte název služby IoT hub z vašeho řešení vzdáleného monitorování. |
+    | Název zásady centra IoT Hub | **iothubmajitel** Ujistěte se, že použitá zásada je zásada vlastníka. |
+    | Klíč zásad centra Iot | Toto pole je vyplněno automaticky. |
+    | Skupina uživatelů centra IoT Hub | **přehled y timeseriesinsights** |
     | Formát serializace události | **JSON**     | 
     | Název vlastnosti časového razítka | Ponechte prázdné |
 
-    ![Vytvořit zdroj události](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-source-create.png)
+    ![Vytvořit zdroj událostí](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-source-create.png)
 
-1. Klikněte na možnost **Vytvořit**.
+1. Klikněte na **Vytvořit**.
 
 ## <a name="configure-the-data-access-policy"></a>Konfigurace zásad přístupu k datům
 
-Abyste měli jistotu, že všichni uživatelé, kteří mají přístup k řešení vzdáleného monitorování, budou moci prozkoumat data v Průzkumníkovi Time Series Insights, přidejte svoji aplikaci a uživatele v části zásady přístupu k datům v Azure Portal. 
+Chcete-li se ujistit, že všichni uživatelé, kteří mají přístup k vašemu řešení vzdáleného monitorování, budou moct zkoumat data v průzkumníku Time Series Insights, přidejte vaši aplikaci a uživatele v rámci zásad přístupu k datům na webu Azure Portal. 
 
 1. V navigačním seznamu zvolte **Skupiny prostředků**.
 
-1. Vyberte skupinu prostředků **ContosoRM** .
+1. Zvolte skupinu prostředků **ContosoRM.**
 
-1. V seznamu prostředků Azure vyberte **contosormtsi** .
+1. V seznamu prostředků Azure zvolte **contosormtsi.**
 
-1. Pokud chcete zobrazit aktuální seznam přiřazení rolí, vyberte **zásady přístupu k datům** .
+1. Zvolte **Zásady přístupu k datům,** chcete-li zobrazit aktuální seznam přiřazení rolí.
 
-1. Zvolte **Přidat** a otevřete tak podokno **vybrat pravidlo uživatele** .
+1. Zvolte **Přidat,** chcete-li otevřít podokno **Vybrat uživatelské pravidlo.**
 
-   Pokud nemáte oprávnění k přiřazování rolí, neuvidíte možnost **Přidat** .
+   Pokud nemáte oprávnění k přiřazování rolí, možnost **Přidat** se nezobrazí.
 
-1. V rozevíracím seznamu **role** vyberte roli **Čtenář** a **Přispěvatel**.
+1. V rozevíracím seznamu **Role** vyberte roli, například **Čtečku** a **Přispěvatel**.
 
 1. V seznamu **Vybrat** vyberte uživatele, skupinu nebo aplikaci. Pokud se objekt zabezpečení v seznamu nezobrazí, pomocí pole **Vybrat** můžete v adresáři prohledat zobrazované názvy, e-mailové adresy a identifikátory objektů.
 
-1. Zvolte **Uložit** a vytvořte přiřazení role. Po chvíli se objektu zabezpečení přiřadí role v zásadách přístupu k datům.
+1. Zvolte **Uložit** a vytvořte přiřazení role. Po několika okamžicích je objektu zabezpečení přiřazena role v zásadách přístupu k datům.
 
 > [!NOTE]
-> Pokud potřebujete udělit dalším uživatelům přístup k aplikaci Time Series Insights Explorer, můžete k [udělení přístupu k datům](../time-series-insights/time-series-insights-data-access.md#grant-data-access)použít tento postup.
+> Pokud potřebujete udělit přístup dalším uživatelům průzkumníku Time Series Insights, můžete pomocí těchto kroků [udělit přístup k datům](../time-series-insights/time-series-insights-data-access.md#grant-data-access).
 
 ## <a name="configure-azure-stream-analytics"></a>Konfigurace Azure Stream Analytics 
 
-Dalším krokem je konfigurace mikroslužby Azure Stream Analytics Manageru na odesílání zpráv Cosmos DB a jejich ukládání do Time Series Insights. Tento krok přeskočte, pokud byste chtěli duplikovat zprávy v Cosmos DB.
+Dalším krokem je konfigurace mikroslužby Azure Stream Analytics Manager tak, aby přestala odesílat zprávy do Cosmos DB a ukláněla je jenom do přehledů Time Series. Tento krok přeskočte, pokud chcete duplikovat zprávy v Cosmos DB.
 
 1. V navigačním seznamu zvolte **Skupiny prostředků**.
 
-1. Vyberte skupinu prostředků **ContosoRM** .
+1. Zvolte skupinu prostředků **ContosoRM.**
 
-1. V seznamu prostředků Najděte úlohu streamování Azure Stream Analytics (ASA). Název prostředku začíná na **streamingjobs-** .
+1. Najděte úlohu streamování Azure Stream Analytics (ASA) v seznamu prostředků. Název prostředku začíná **streamingjobs-**.
 
-1. V horní části klikněte na tlačítko a zastavte úlohy streamování ASA.
+1. V horní části klikněte na tlačítko pro zastavení úloh y streamování ASA.
 
-1. Upravte dotaz ASA a odeberte klauzule **Select**, **into**a **from** , které odkazují na datový proud zpráv v Cosmos DB. Tyto klauzule by měly být na konci dotazu a měly by vypadat jako v následujícím příkladu:
+1. Upravte dotaz ASA a odeberte klauzule **SELECT**, **INTO**a **FROM,** které odkazují na datový proud zpráv v Cosmos DB. Tyto klauzule by měly být v dolní části dotazu a vypadat jako v následujícím příkladu:
 
     ```sql
     SELECT
@@ -161,7 +161,7 @@ Dalším krokem je konfigurace mikroslužby Azure Stream Analytics Manageru na o
 
 6. Restartujte úlohy streamování Azure Stream Analytics.
 
-7. Do příkazového řádku zadejte následující příkaz a Stáhněte si nejnovější změny mikroslužby Azure Stream Analytics Manageru:
+7. Vytáhněte nejnovější změny mikroslužby správce Azure Stream Analytics zadáním následujícího příkazu na příkazovém řádku:
 
 .NET: 
 
@@ -175,9 +175,9 @@ Java:
 docker pull azureiotpcs/asa-manager-java:1.0.2
 ```
 
-## <a name="configure-the-telemetry-microservice"></a>Konfigurace mikroslužby telemetrie
+## <a name="configure-the-telemetry-microservice"></a>Konfigurace mikroslužby Telemetrie
 
-Stáhněte si nejnovější mikroslužbu telemetrie zadáním následujícího příkazu do příkazového řádku:
+Vytáhněte nejnovější mikroslužbu Telemetrie zadáním následujícího příkazu do příkazového řádku:
 
 .NET:
 
@@ -191,9 +191,9 @@ Java:
 docker pull azureiotpcs/telemetry-java:1.0.2
 ```
 
-## <a name="optional-configure-the-web-ui-to-link-to-the-time-series-insights-explorer"></a>*[Nepovinné]* Konfigurace webového uživatelského rozhraní pro odkazování na Time Series Insights Explorer
+## <a name="optional-configure-the-web-ui-to-link-to-the-time-series-insights-explorer"></a>*[Nepovinné]* Konfigurace webového uživatelského rozhraní pro propojení s průzkumníkem Přehledy time series
 
-Chcete-li snadno zobrazit data v Průzkumníkovi Time Series Insights, doporučujeme přizpůsobovat uživatelské rozhraní pro snadné připojení k prostředí. Provedete to tak, že pomocí následujícího příkazu načtete do webového uživatelského rozhraní nejnovější změny:
+Chcete-li snadno zobrazit data v průzkumníku Time Series Insights, doporučujeme přizpůsobit ui tak, aby bylo snadno propojeno s prostředím. Chcete-li tak učinit, vytáhněte nejnovější změny webového uživatelského uživatelského uživatelského času pomocí následujícího příkazu:
 
 ```cmd/sh
 docker pull azureiotpcs/pcs-remote-monitoring-webui:1.0.2
@@ -201,27 +201,27 @@ docker pull azureiotpcs/pcs-remote-monitoring-webui:1.0.2
 
 ## <a name="configure-the-environment-variables"></a>Konfigurace proměnných prostředí
 
-Pro dokončení integrace Time Series Insights budete muset nakonfigurovat prostředí nasazení pro aktualizované mikroslužby.
+Chcete-li dokončit integraci Time Series Insights, budete muset nakonfigurovat prostředí vašeho nasazení pro aktualizované mikroslužby.
 
 ### <a name="basic-deployments"></a>Základní nasazení
 
-Nakonfigurujte prostředí nasazení `basic` pro aktualizované mikroslužby.
+Nakonfigurujte prostředí `basic` nasazení pro aktualizované mikroslužby.
 
-1. V Azure Portal klikněte na panelu na levé straně na kartu **Azure Active Directory** .
+1. Na webu Azure Portal klikněte na kartě **Azure Active Directory** na levém panelu.
 
-1. Klikněte na **Registrace aplikací**.
+1. Klikněte na **registrace aplikací**.
 
-1. Vyhledejte a klikněte na aplikaci **ContosoRM** .
+1. Vyhledejte aplikaci **ContosoRM** a klikněte na ni.
 
-1. Přejděte do **nastavení** > **klíče** a pak vytvořte nový klíč pro svou aplikaci. Nezapomeňte zkopírovat hodnotu klíče do bezpečného umístění.
+1. Přejděte na**položku Klávesy** **nastavení** > a vytvořte nový klíč pro aplikaci. Ujistěte se, že zkopírujete hodnotu klíče do bezpečného umístění.
 
-1. Pomocí nejnovější značky si z úložiště GitHubu [Stáhněte nejnovější soubor YAML Docker](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm) . 
+1. Vytáhněte [nejnovější docker compose yaml soubor](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm) z úložiště GitHub pomocí nejnovější značky. 
 
-1. Připojte se k virtuálnímu počítači přes SSH podle postupu popsaného v tématu [jak vytvářet a používat klíče SSH](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows).
+1. SSH do virtuálního počítači podle kroků popsaných o [tom, jak vytvořit a používat SSH keys](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows).
 
-1. Po připojení zadejte `cd /app`.
+1. Po připojení `cd /app`zadejte .
 
-1. Přidejte následující proměnné prostředí do každého mikroslužby v souboru Docker YAML a ve skriptu `env-setup` na virtuálním počítači:
+1. Přidejte následující proměnné prostředí ke každé mikroslužbě v souboru yaml dockeru a skriptu `env-setup` ve virtuálním počítači:
 
     ```sh
     PCS_TELEMETRY_STORAGE_TYPE=tsi
@@ -231,24 +231,24 @@ Nakonfigurujte prostředí nasazení `basic` pro aktualizované mikroslužby.
     PCS_AAD_APPSECRET={AAD application key}
     ```
 
-1. Přejděte do **služby telemetrie** a také upravte soubor s doplňováním Docker přidáním stejných proměnných prostředí výše.
+1. Přejděte do **služby telemetrie** a také upravte soubor compose dockeru přidáním stejných proměnných prostředí výše.
 
-1. Přejděte do **služby správce ASA** a upravte soubor Docker pro vložení přidáním `PCS_TELEMETRY_STORAGE_TYPE`.
+1. Přejděte na **službu správce ASA** a upravte `PCS_TELEMETRY_STORAGE_TYPE`soubor docker compose přidáním .
 
-1. Z virtuálního počítače restartujte kontejnery Docker pomocí `sudo ./start.sh`.
+1. Restartujte kontejnery `sudo ./start.sh` dockeru pomocí z virtuálního počítače.
 
 > [!NOTE]
-> Výše uvedená konfigurace proměnných prostředí je platná pro vzdálené monitorování verzí před 1.0.2
+> Výše uvedená konfigurace proměnných prostředí je platná pro verze vzdáleného monitorování před 1.0.2
 
 ### <a name="standard-deployments"></a>Standardní nasazení
 
-Nakonfigurujte prostředí nasazení `standard` pro aktualizované mikroslužby výše.
+Konfigurace prostředí `standard` nasazení pro výše uvedené aktualizované mikroslužby
 
-1. Na příkazovém řádku spusťte `kubectl proxy`. Další informace najdete v tématu [přístup k rozhraní Kubernetes API](https://kubernetes.io/docs/tasks/access-kubernetes-api/http-proxy-access-api/#using-kubectl-to-start-a-proxy-server).
+1. Na příkazovém `kubectl proxy`řádku spusťte . Další informace naleznete [v tématu přístup k rozhraní API Kubernetes](https://kubernetes.io/docs/tasks/access-kubernetes-api/http-proxy-access-api/#using-kubectl-to-start-a-proxy-server).
 
 1. Otevřete konzolu pro správu Kubernetes.
 
-1. Vyhledejte mapu konfigurace a přidejte následující nové proměnné prostředí pro TSI:
+1. Vyhledejte konfigurační mapu a přidejte pro TSI následující nové proměnné prostředí:
 
     ```yaml
     telemetry.storage.type: "tsi"
@@ -256,7 +256,7 @@ Nakonfigurujte prostředí nasazení `standard` pro aktualizované mikroslužby 
     security.auth.serviceprincipal.secret: "{AAD application service principal secret}"
     ```
 
-4. Upravte soubor YAML šablony pro službu telemetrie pod:
+4. Upravte soubor šablony yaml pro pod služby telemetrie:
 
     ```yaml
     - name: PCS_AAD_TENANT
@@ -286,7 +286,7 @@ Nakonfigurujte prostředí nasazení `standard` pro aktualizované mikroslužby 
             key: telemetry.tsi.fqdn
     ```
 
-5. Upravte soubor YAML šablony pro službu správce ASA pod:
+5. Upravte soubor šablony yaml pro pod služby správce ASA:
 
     ```yaml
     - name: PCS_TELEMETRY_STORAGE_TYPE
@@ -298,6 +298,6 @@ Nakonfigurujte prostředí nasazení `standard` pro aktualizované mikroslužby 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o tom, jak prozkoumat data a diagnostikovat upozornění v Průzkumníkovi Time Series Insights, najdete v našem kurzu o [provedení analýzy hlavní příčiny](iot-accelerators-remote-monitoring-root-cause-analysis.md).
+* Další informace o tom, jak prozkoumat data a diagnostikovat výstrahu v průzkumníku Time Series Insights, najdete v našem kurzu o [provádění analýzy hlavních příčin](iot-accelerators-remote-monitoring-root-cause-analysis.md).
 
-* Informace o tom, jak prozkoumat a dotazovat data v Průzkumníkovi Time Series Insights, najdete v dokumentaci v [průzkumníkovi Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer).
+* Informace o tom, jak zkoumat a dotazovat data v průzkumníku Time Series Insights, najdete v dokumentaci k [průzkumníku Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer).

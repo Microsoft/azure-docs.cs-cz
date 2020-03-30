@@ -1,6 +1,6 @@
 ---
-title: Prozkoumejte výstrahy pomocí služby Azure Sentinel | Microsoft Docs
-description: V tomto kurzu se dozvíte, jak prozkoumat výstrahy pomocí funkce Sentinel Azure.
+title: Prozkoumejte výstrahy pomocí Azure Sentinelu| Dokumenty společnosti Microsoft
+description: V tomto kurzu se dozvíte, jak prozkoumat výstrahy s Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,55 +15,55 @@ ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
 ms.openlocfilehash: df855aa768fdeb279482b8407259be1a644322d9
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77585199"
 ---
-# <a name="tutorial-detect-threats-out-of-the-box"></a>Kurz: okamžité zjištění hrozeb
+# <a name="tutorial-detect-threats-out-of-the-box"></a>Kurz: Zjišťování hrozeb ioutací
 
 
 > [!IMPORTANT]
-> Předem připravená detekce hrozeb je aktuálně ve verzi Public Preview.
-> Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy.
+> Out-of-the-box detekce hrozeb je aktuálně ve verzi Public Preview.
+> Tato funkce je k dispozici bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Po [připojení zdrojů dat](quickstart-onboard.md) ke službě Azure Sentinel budete chtít dostávat oznámení, když dojde k nějakému podezřelému. Pokud to chcete povolit, Azure Sentinel vám poskytne předem připravené předdefinované šablony. Tyto šablony byly navržené týmem společnosti Microsoft pro odborníky na zabezpečení a analytikům na základě známých hrozeb, běžných vektorů útoku a řetězů eskalace útoků na podezřelé aktivity. Po povolení těchto šablon budou automaticky vyhledávat všechny aktivity, které vypadají podezřele napříč vaším prostředím. Mnohé z šablon můžete přizpůsobit tak, aby vyhledaly nebo odfiltroval aktivity podle vašich potřeb. Výstrahy vygenerované pomocí těchto šablon vytvoří incidenty, které můžete přiřadit a prozkoumat ve svém prostředí.
+Po [připojení zdrojů](quickstart-onboard.md) dat k Azure Sentinelu chcete být upozorněni, když se stane něco podezřelého. Aby vám to umožnilo, Azure Sentinel vám poskytuje předem integrované šablony. Tyto šablony byly navrženy týmem odborníků a analytiků společnosti Microsoft na základě známých hrozeb, běžných vektorů útoků a řetězců eskalace podezřelých aktivit. Po povolení těchto šablon budou automaticky vyhledávat všechny aktivity, které vypadají podezřele ve vašem prostředí. Mnoho šablon lze přizpůsobit tak, aby vyhledávalo nebo odfiltrovalo aktivity podle vašich potřeb. Výstrahy generované těmito šablonami vytvoří incidenty, které můžete přiřadit a prozkoumat ve vašem prostředí.
 
-Tento kurz vám pomůže detekovat hrozby pomocí služby Azure Sentinel:
+Tento kurz vám pomůže zjistit hrozby s Azure Sentinelem:
 
 > [!div class="checklist"]
-> * Použití předem připravených detekcí
-> * Automatizace odpovědí na hrozby
+> * Použití out-of-the-box detekce
+> * Automatizace reakcí na hrozby
 
-## <a name="about-out-of-the-box-detections"></a>O dopředných detekcích box
+## <a name="about-out-of-the-box-detections"></a>Informace o předem připravených detekcích
 
-Pokud chcete zobrazit všechna připravená zjišťování, pokračujte na **analýzy** a pak na **šablony pravidel**. Tato karta obsahuje všechna předdefinovaná pravidla Azure Sentinel.
+Chcete-li zobrazit všechna zjišťování před výběrem, přejděte na **službu Analytics** a potom na **šablony pravidel**. Tato karta obsahuje všechna předdefinovaná pravidla Azure Sentinelu.
 
-   ![Použití vestavěných detekcí k nalezení hrozeb pomocí Sentinel Azure](media/tutorial-detect-built-in/view-oob-detections.png)
+   ![Hledání hrozeb pomocí Azure Sentinelu pomocí integrovaných detekčních detekcí](media/tutorial-detect-built-in/view-oob-detections.png)
 
 K dispozici jsou následující typy šablon:
 
-- **Microsoft Security** – šablony zabezpečení Microsoftu automaticky vytvářejí incidenty Sentinel Azure z výstrah vygenerovaných jinými řešeními zabezpečení Microsoftu v reálném čase. Pravidla zabezpečení Microsoftu můžete použít jako šablonu k vytvoření nových pravidel s podobnou logikou. Další informace o pravidlech zabezpečení najdete v tématu [Automatické vytváření incidentů z výstrah zabezpečení společnosti Microsoft](create-incidents-from-alerts.md).
-- **Syntéza** založená na technologii Fusion, Pokročilá detekce útoků s více fázemi v Azure Sentinel používá škálovatelné algoritmy strojového učení, které mohou korelovat mnoho výstrah a událostí s nízkou kvalitou v různých produktech na vysoce věrné a napadnutelné incidenty. Fusion je ve výchozím nastavení povolená. Vzhledem k tomu, že je logika skrytá, nemůžete ji použít jako šablonu k vytvoření více než jednoho pravidla.
-- **Analýza chování ve strojovém učení** – tyto šablony jsou založené na vlastních algoritmech strojového učení od Microsoftu, takže nemůžete vidět interní logiku, jak fungují a kdy se spouštějí. Vzhledem k tomu, že je logika skrytá, nemůžete ji použít jako šablonu k vytvoření více než jednoho pravidla.
--   **Plánovaná** – plánovaná analytická pravidla jsou naplánované dotazy napsané odborníky na zabezpečení Microsoftu. Můžete zobrazit logiku dotazu a provést změny. Můžete použít plánovaná pravidla jako šablonu a vytvořit nová pravidla s podobnou logikou.
+- **Zabezpečení Microsoftu** – šablony zabezpečení Microsoftu automaticky vytvářejí incidenty Azure Sentinelu z výstrah generovaných v jiných bezpečnostních řešeních Microsoftu v reálném čase. Pravidla zabezpečení společnosti Microsoft můžete použít jako šablonu k vytvoření nových pravidel s podobnou logikou. Další informace o pravidlech zabezpečení naleznete v tématu [Automatické vytváření incidentů z výstrah zabezpečení společnosti Microsoft](create-incidents-from-alerts.md).
+- **Fusion** – na základě technologie Fusion používá pokročilá vícestupňová detekce útoků v Azure Sentinelu škálovatelné algoritmy strojového učení, které mohou korelovat mnoho výstrah a událostí s nízkou věrností napříč různými produkty do incidentů s vysokou věrností a možností použití. Fúze je ve výchozím nastavení povolena. Vzhledem k tomu, že logika je skrytá, nelze použít jako šablonu k vytvoření více než jedno pravidlo.
+- **Analýza chování strojového učení** – tyto šablony jsou založeny na proprietárních algoritmech strojového učení microsoftu, takže nevidíte vnitřní logiku jejich práce a při jejich spuštění. Vzhledem k tomu, že logika je skrytá, nelze použít jako šablonu k vytvoření více než jedno pravidlo.
+-   **Plánovaná** – plánovaná analytická pravidla jsou naplánované dotazy napsané odborníky společnosti Microsoft na zabezpečení. Můžete zobrazit logiku dotazu a provést v ní změny. Naplánovaná pravidla můžete použít jako šablonu k vytvoření nových pravidel s podobnou logikou.
 
-## <a name="use-out-of-the-box-detections"></a>Použití předem připravených detekcí
+## <a name="use-out-of-the-box-detections"></a>Použití out-of-the-box detekce
 
-1. Pokud chcete použít předdefinovanou šablonu, klikněte na **vytvořit pravidlo** a vytvořte nové aktivní pravidlo založené na této šabloně. Každá položka má seznam požadovaných zdrojů dat, které jsou automaticky zkontrolovány, a výsledkem může být zakázané **Vytvoření pravidla** .
+1. Chcete-li použít předdefinovanou šablonu, klikněte na **Vytvořit pravidlo** a vytvořte nové aktivní pravidlo založené na této šabloně. Každá položka obsahuje seznam požadovaných zdrojů dat, které jsou automaticky kontrolovány, což může mít za následek zakázání **pravidla vytvořit.**
   
-   ![Použití vestavěných detekcí k nalezení hrozeb pomocí Sentinel Azure](media/tutorial-detect-built-in/use-built-in-template.png)
+   ![Hledání hrozeb pomocí Azure Sentinelu pomocí integrovaných detekčních detekcí](media/tutorial-detect-built-in/use-built-in-template.png)
  
-1. Otevře se Průvodce vytvořením pravidla v závislosti na vybrané šabloně. Všechny podrobnosti jsou vyplněné a pro **plánovaná pravidla** nebo **pravidla zabezpečení Microsoftu**můžete logiku přizpůsobit tak, aby lépe vyhovovala vaší organizaci, nebo vytvořit další pravidla založená na předdefinované šabloně. Po provedení kroků v Průvodci vytvořením pravidla a dokončení vytvoření pravidla na základě šablony se nové pravidlo zobrazí na kartě **aktivní pravidla** .
+1. Otevře se průvodce vytvořením pravidla na základě vybrané šablony. Všechny podrobnosti jsou automaticky **vyplněny** a pro plánovaná pravidla nebo **pravidla zabezpečení společnosti Microsoft**můžete přizpůsobit logiku tak, aby lépe vyhovovala vaší organizaci, nebo vytvořit další pravidla založená na předdefinované šabloně. Po provedení kroků v průvodci vytvořením pravidla a dokončení vytvoření pravidla založeného na šabloně se nové pravidlo zobrazí na kartě **Aktivní pravidla.**
 
-Další informace o polích v průvodci najdete v tématu [kurz: vytvoření vlastních pravidel pro analytiky k detekci podezřelých hrozeb](tutorial-detect-threats-custom.md).
+Další informace o polích v průvodci naleznete v [tématu Výuka: Vytvoření vlastních analytických pravidel pro zjišťování podezřelých hrozeb](tutorial-detect-threats-custom.md).
 
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste zjistili, jak začít s detekcí hrozeb pomocí funkce Azure Sentinel. 
+V tomto kurzu jste se naučili, jak začít rozpoznávat hrozby pomocí Azure Sentinelu. 
 
-Pokud se chcete dozvědět, jak automatizovat vaše odezvy na hrozby, [nastavte v Azure Sentinelu automatické odpovědi na hrozby](tutorial-respond-threats-playbook.md).
+Chcete-li se dozvědět, jak automatizovat odpovědi na hrozby, [nastavte automatické reakce na hrozby v Azure Sentinelu](tutorial-respond-threats-playbook.md).
 

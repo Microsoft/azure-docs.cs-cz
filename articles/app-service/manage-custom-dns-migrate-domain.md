@@ -1,81 +1,81 @@
 ---
 title: Migrace aktivního názvu DNS
-description: Naučte se migrovat vlastní název domény DNS, který je už přiřazený k živému webu, abyste Azure App Service bez výpadků.
+description: Zjistěte, jak migrovat vlastní název domény DNS, který je už přiřazený k živému webu službě Azure App Service bez prostojů.
 tags: top-support-issue
 ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
 ms.topic: article
 ms.date: 10/21/2019
 ms.custom: seodec18
 ms.openlocfilehash: 79bd0a19a9bd8ebd100ed80ca0206656d73ef76c
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74672363"
 ---
-# <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Migrace aktivního názvu DNS na Azure App Service
+# <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Migrace aktivního názvu DNS do služby Azure App Service
 
-V tomto článku se dozvíte, jak migrovat aktivní název DNS do [Azure App Service](../app-service/overview.md) bez výpadků.
+Tento článek ukazuje, jak migrovat aktivní název DNS do [služby Azure App Service](../app-service/overview.md) bez prostojů.
 
-Když migrujete živý web a název domény DNS na App Service, tento název DNS už obsluhuje živý provoz. Během migrace se můžete vyhnout výpadkům v překladu názvů DNS tím, že provedete nemožnost svázat aktivní název DNS s aplikací App Service.
+Když migrujete živý web a jeho název domény DNS do služby App Service, tento název DNS již zobrazuje živý provoz. Výtky v rozlišení DNS během migrace se můžete vyhnout tím, že aktivní název DNS svážete s aplikací App Service preventivně.
 
-Pokud se vám Neobáváte o výpadkech v překladu DNS, přečtěte si téma [Mapování existujícího vlastního názvu DNS na Azure App Service](app-service-web-tutorial-custom-domain.md).
+Pokud se neobáváte prostojů v překladu DNS, přečtěte si témat [mapovat existující vlastní název DNS na Službu Azure App Service](app-service-web-tutorial-custom-domain.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Dokončení tohoto postupu:
+Postup:
 
-- Ujistěte se [, že vaše aplikace App Service není na úrovni Free](app-service-web-tutorial-custom-domain.md#checkpricing).
+- [Ujistěte se, že vaše aplikace App Service není na úrovni FREE](app-service-web-tutorial-custom-domain.md#checkpricing).
 
-## <a name="bind-the-domain-name-preemptively"></a>Propojte název domény současně.
+## <a name="bind-the-domain-name-preemptively"></a>Preventivní vazba názvu domény
 
-Když propojíte vlastní doménu bez jakýchkoli změn, provedete tyto změny v záznamech DNS:
+Pokud preventivně svážete vlastní doménu, před provedením jakýchkoli změn v záznamech DNS provádíte obě následující skutečnosti:
 
-- Ověřit vlastnictví domény
-- Povolit název domény pro vaši aplikaci
+- Ověření vlastnictví domény
+- Povolení názvu domény aplikace
 
-Když nakonec migrujete svůj vlastní název DNS z původního webu do aplikace App Service, nebudete mít v překladu DNS žádný výpadek.
+Když konečně migrujete vlastní název DNS ze starého webu do aplikace App Service, nebude v rozlišení DNS žádné prostoje.
 
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
 
-### <a name="create-domain-verification-record"></a>Vytvořit záznam pro ověření domény
+### <a name="create-domain-verification-record"></a>Vytvořit záznam ověření domény
 
-Chcete-li ověřit vlastnictví domény, přidejte záznam TXT. Záznam TXT se mapuje z _> awverify.&lt;subdomény_ do _&lt;AppName >. azurewebsites. NET_. 
+Chcete-li ověřit vlastnictví domény, přidejte záznam TXT. TXT záznam mapy z _awverify.&lt; subdoména>_ na _ &lt;název aplikace>.azurewebsites.net_. 
 
-Záznam TXT, který potřebujete, závisí na záznamu DNS, který chcete migrovat. Příklady najdete v následující tabulce (`@` obvykle představuje kořenovou doménu):
+Potřebný záznam TXT závisí na záznamu DNS, který chcete migrovat. Příklady naleznete v následující`@` tabulce (obvykle představuje kořenovou doménu):
 
 | Příklad záznamu DNS | Hostitel TXT | Hodnota TXT |
 | - | - | - |
-| \@ (kořen) | _awverify_ | _&lt;AppName >. azurewebsites. NET_ |
-| Webová (sub) | _awverify. www_ | _&lt;AppName >. azurewebsites. NET_ |
-| \* (zástupný znak) | _awverify.\*_ | _&lt;AppName >. azurewebsites. NET_ |
+| \@(kořen) | _awverify_ | _&lt;název aplikace>.azurewebsites.net_ |
+| www (sub) | _awverify.www_ | _&lt;název aplikace>.azurewebsites.net_ |
+| \*(zástupný znak) | _awverify.\*_ | _&lt;název aplikace>.azurewebsites.net_ |
 
-Na stránce záznamy DNS si poznamenejte typ záznamu názvu DNS, který chcete migrovat. App Service podporuje mapování ze záznamů CNAME a a.
-
-> [!NOTE]
-> Pro určité poskytovatele, jako je například CloudFlare, `awverify.*` není platný záznam. Místo toho použijte `*`.
+Na stránce DNS záznamů si poznamenejte typ záznamu názvu DNS, který chcete migrovat. Služba App Service podporuje mapování ze záznamů CNAME a A.
 
 > [!NOTE]
-> Zástupné `*` záznamy neověřují subdomény s existujícím záznamem CNAME. Možná budete muset explicitně vytvořit záznam TXT pro každou subdoménu.
+> Pro některé poskytovatele, jako `awverify.*` je CloudFlare, není platný záznam. Místo `*` toho použijte pouze.
+
+> [!NOTE]
+> Záznamy `*` se zástupnými symboly neověřují subdomény pomocí existujícího záznamu CNAME. Možná budete muset explicitně vytvořit záznam TXT pro každou subdoménu.
 
 
-### <a name="enable-the-domain-for-your-app"></a>Povolení domény pro vaši aplikaci
+### <a name="enable-the-domain-for-your-app"></a>Povolení domény aplikace
 
-V [Azure Portal](https://portal.azure.com)v levém navigačním panelu na stránce aplikace vyberte **vlastní domény**. 
+Na [webu Azure Portal](https://portal.azure.com)v levém navigačním panelu aplikace vyberte **Vlastní domény**. 
 
 ![Nabídka Vlastní domény](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-Na stránce **vlastní domény** vyberte ikonu **+** vedle **Přidat název hostitele**.
+Na stránce Vlastní domény vyberte **+** ikonu vedle **položky** **Přidat název hostitele**.
 
 ![Přidat název hostitele](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-Zadejte plně kvalifikovaný název domény, pro který jste přidali záznam TXT pro, například `www.contoso.com`. V případě domény se zástupnými znaky (například \*. contoso.com) můžete použít libovolný název DNS, který odpovídá zástupné doméně. 
+Zadejte plně kvalifikovaný název domény, pro který jste `www.contoso.com`přidali záznam TXT, například . Pro doménu se \*zástupnými symboly (například .contoso.com) můžete použít libovolný název DNS, který odpovídá doméně se zástupnými symboly. 
 
 Vyberte **Ověřit**.
 
 Aktivuje se tlačítko **Přidat název hostitele**. 
 
-Ujistěte se, že **typ záznamu názvu hostitele** je nastavený na typ záznamu DNS, který chcete migrovat.
+Ujistěte se, že **typ záznamu Hostname** je nastaven na typ záznamu DNS, který chcete migrovat.
 
 Vyberte **Přidat název hostitele**.
 
@@ -85,21 +85,21 @@ Zobrazení nového názvu hostitele na stránce **Vlastní domény** aplikace m�
 
 ![Přidaný záznam CNAME](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
-Ve vaší aplikaci Azure je teď povolený vlastní název DNS. 
+Váš vlastní název DNS je teď povolený v aplikaci Azure. 
 
-## <a name="remap-the-active-dns-name"></a>Přemapovat aktivní název DNS
+## <a name="remap-the-active-dns-name"></a>Přemapování aktivního názvu DNS
 
-Jediná věc, kterou je potřeba udělat, je přemapování aktivního záznamu DNS tak, aby odkazovalo na App Service. Nyní stále odkazuje na starý Web.
+Jediné, co zbývá udělat, je přemapování aktivního záznamu DNS tak, aby přecšlápne na službu App Service. Právě teď, to ještě ukazuje na vaše staré stránky.
 
 <a name="info"></a>
 
-### <a name="copy-the-apps-ip-address-a-record-only"></a>Zkopírujte IP adresu aplikace (jenom záznam).
+### <a name="copy-the-apps-ip-address-a-record-only"></a>Kopírování IP adresy aplikace (pouze záznam)
 
-Pokud přemapujete záznam CNAME, přeskočte tuto část. 
+Pokud přemapujete záznam CNAME, tuto část přeskočte. 
 
-K přemapování záznamu A potřebujete externí IP adresu aplikace App Service, která se zobrazí na stránce **vlastní domény** .
+Chcete-li přemapovat záznam A, potřebujete externí IP adresu aplikace App Service, která se zobrazí na stránce **Vlastní domény.**
 
-Kliknutím na **X** v pravém horním rohu zavřete stránku **Přidat název hostitele** . 
+Zavřete stránku **Přidat název hostitele** tak, že v pravém horním rohu **vyberete X.** 
 
 Na stránce **Vlastní domény** zkopírujte IP adresu aplikace.
 
@@ -107,29 +107,29 @@ Na stránce **Vlastní domény** zkopírujte IP adresu aplikace.
 
 ### <a name="update-the-dns-record"></a>Aktualizace záznamu DNS
 
-Zpátky na stránce záznamy DNS vašeho poskytovatele domény vyberte záznam DNS, který chcete přemapovat.
+Zpět na stránce dns záznamů poskytovatele domény vyberte záznam DNS, který chcete přemapovat.
 
-V příkladu `contoso.com` kořenové domény přemapujte záznam A nebo CNAME jako příklady v následující tabulce: 
+V `contoso.com` příkladu kořenové domény přemapujte záznam A nebo CNAME jako příklady v následující tabulce: 
 
-| Příklad plně kvalifikovaného názvu domény | Typ záznamu | Hostitel | Hodnota |
+| Příklad FQDN | Typ záznamu | Hostitel | Hodnota |
 | - | - | - | - |
 | contoso.com (kořen) | A | `@` | IP adresa z části [Zkopírování IP adresy aplikace](#info) |
-| Webová\.contoso.com (sub) | CNAME | `www` | _&lt;AppName >. azurewebsites. NET_ |
-| \*. contoso.com (zástupný znak) | CNAME | _\*_ | _&lt;AppName >. azurewebsites. NET_ |
+| www\.contoso.com (sub) | CNAME | `www` | _&lt;název aplikace>.azurewebsites.net_ |
+| \*.contoso.com (zástupný znak) | CNAME | _\*_ | _&lt;název aplikace>.azurewebsites.net_ |
 
 Uložte nastavení.
 
-Dotazy DNS by se měly hned po šíření DNS začít řešit do vaší aplikace App Service.
+Dotazy DNS by se měly začít řešit do aplikace App Service ihned po šíření DNS.
 
 ## <a name="active-domain-in-azure"></a>Aktivní doména v Azure
 
-Můžete migrovat aktivní vlastní doménu v Azure, mezi předplatnými nebo v rámci stejného předplatného. Taková migrace ale bez výpadků ale vyžaduje, aby se zdrojová aplikace a cílová aplikace v určitou dobu přiřadily k stejné vlastní doméně. Proto je nutné zajistit, aby tyto dvě aplikace nebyly nasazeny na stejné jednotce nasazení (interně označované jako webový prostor). Název domény se dá přiřadit jenom k jedné aplikaci v každé jednotce nasazení.
+Aktivní vlastní doménu můžete migrovat v Azure, mezi předplatnými nebo v rámci stejného předplatného. Taková migrace bez prostojů však vyžaduje zdrojovou aplikaci a cílové aplikaci je v určitém okamžiku přiřazena stejná vlastní doména. Proto je třeba se ujistit, že dvě aplikace nejsou nasazeny do stejné jednotky nasazení (interně označované jako webový prostor). Název domény lze přiřadit pouze jedné aplikaci v každé jednotce nasazení.
 
-Jednotku nasazení pro vaši aplikaci najdete na adrese URL `<deployment-unit>.ftp.azurewebsites.windows.net`FTP/S. Zkontrolujte a zajistěte, aby se jednotka nasazení v cílové aplikaci lišila od zdrojové aplikace. Jednotka nasazení aplikace je určena [plánem App Service](overview-hosting-plans.md) . Při vytváření plánu ho náhodně vybrala Azure a nedá se změnit. Azure jenom v případě, že je [vytvoříte ve stejné skupině prostředků *a* ve stejné oblasti](app-service-plan-manage.md#create-an-app-service-plan), jsou ve stejné jednotce nasazení pouze dva plány, ale nemá žádnou logiku, která by zajistila, že se plány nacházejí v různých jednotkách nasazení. Jediným způsobem, jak vytvořit plán v jiné jednotce nasazení, je zachovat plán v nové skupině nebo oblasti prostředků, dokud nezískáte jinou jednotku nasazení.
+Jednotku nasazení aplikace najdete tak, že se podíváte na `<deployment-unit>.ftp.azurewebsites.windows.net`název domény adresy URL FTP/S . Zkontrolujte a ujistěte se, že se jednotka nasazení liší mezi zdrojovou a cílovou aplikací. Jednotka nasazení aplikace je určena [plánem služby App Service,](overview-hosting-plans.md) ve které se nachází. Je vybrán náhodně Azure při vytváření plánu a nelze změnit. Azure pouze zajišťuje, že dva plány jsou ve stejné jednotce nasazení při [jejich vytvoření ve stejné skupině prostředků *a* ve stejné oblasti](app-service-plan-manage.md#create-an-app-service-plan), ale nemá žádnou logiku, aby se ujistil, že plány jsou v různých jednotkách nasazení. Jediným způsobem, jak vytvořit plán v jiné jednotce nasazení, je pokračovat ve vytváření plánu v nové skupině prostředků nebo oblasti, dokud nezískáte jinou jednotku nasazení.
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte se navazovat vlastní certifikát SSL na App Service.
+Přečtěte si, jak svázat vlastní certifikát SSL se službou App Service.
 
 > [!div class="nextstepaction"]
-> [Vytvoření vazby certifikátu SSL pro Azure App Service](configure-ssl-bindings.md)
+> [Vytvoření svázání certifikátu SSL se službou Azure App Service](configure-ssl-bindings.md)

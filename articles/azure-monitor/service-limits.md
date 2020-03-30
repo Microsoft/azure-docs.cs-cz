@@ -1,21 +1,21 @@
 ---
-title: Omezení služby Azure Monitor | Microsoft Docs
-description: Vypisuje omezení v různých oblastech Azure Monitor.
+title: Limity služeb Azure Monitor | Dokumenty společnosti Microsoft
+description: Seznam y omezení v různých oblastech Azure Monitor.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/10/2019
 ms.openlocfilehash: d2a2230613f9e4be3e0c9359a082843a4701b6f8
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77657907"
 ---
-# <a name="azure-monitor-service-limits"></a>Omezení služby Azure Monitor
+# <a name="azure-monitor-service-limits"></a>Limity služeb Azure Monitor
 
-V tomto článku jsou uvedena omezení v různých oblastech Azure Monitor.
+Tento článek uvádí omezení v různých oblastech Azure Monitoru.
 
 ## <a name="alerts"></a>Výstrahy
 
@@ -25,7 +25,7 @@ V tomto článku jsou uvedena omezení v různých oblastech Azure Monitor.
 
 [!INCLUDE [monitoring-limits](../../includes/azure-monitor-limits-action-groups.md)]
 
-## <a name="log-queries-and-language"></a>Dotazy a jazyky protokolu
+## <a name="log-queries-and-language"></a>Protokolovat dotazy a jazyk
 
 [!INCLUDE [monitoring-limits](../../includes/azure-monitor-limits-log-queries.md)]
 
@@ -39,6 +39,6 @@ V tomto článku jsou uvedena omezení v různých oblastech Azure Monitor.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Ceny Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/)
-- [Monitorování využití a odhadovaných nákladů v Azure Monitor](platform/usage-estimated-costs.md)
-- [Správa využití a nákladů pro Application Insights](app/pricing.md)
+- [Ceny Azure Monitoru](https://azure.microsoft.com/pricing/details/monitor/)
+- [Monitorování využití a odhadovaných nákladů ve službě Azure Monitor](platform/usage-estimated-costs.md)
+- [Správa využití a nákladů pro službu Application Insights](app/pricing.md)

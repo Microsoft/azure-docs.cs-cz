@@ -1,6 +1,6 @@
 ---
-title: Správa Azure Data Box/Azure Data Box Heavy pomocí místního webového uživatelského rozhraní
-description: Popisuje způsob použití místního webového uživatelského rozhraní pro správu Data Box a Data Box Heavy zařízení.
+title: Správa Azure Data Box/Azure Data Box Heavy pomocí místního webového uživatelského prostředí
+description: Popisuje, jak používat místní webové uživatelské prostředí ke správě zařízení Data Box a Data Box Heavy.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,29 +9,29 @@ ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
 ms.openlocfilehash: cf7cf0a7aa2812d7a93c282cbda5f82dd83aac29
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77560180"
 ---
-# <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Použití místního webového uživatelského rozhraní ke správě Data Box a Data Box Heavy
+# <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Použití místního webového uživatelského uživatelského prostředí ke správě datové schránky a datové schránky Heavy
 
-Tento článek popisuje některé úlohy konfigurace a správy, které je možné provádět na Data Box a Data Box Heavych zařízeních. Zařízení Data Box a Data Box Heavy můžete spravovat prostřednictvím uživatelského rozhraní Azure Portal a místního webového uživatelského rozhraní pro dané zařízení. Tento článek se zaměřuje na úlohy, které můžete provádět pomocí místního webového uživatelského rozhraní.
+Tento článek popisuje některé úlohy konfigurace a správy, které lze provádět na zařízeních Data Box a Data Box Heavy. Zařízení Data Box a Data Box Heavy můžete spravovat prostřednictvím uživatelského rozhraní portálu Azure a místního webového uživatelského rozhraní pro zařízení. Tento článek se zaměřuje na úlohy, které můžete provádět pomocí místního webového uživatelského rozhraní.
 
-Místní webové uživatelské rozhraní pro Data Box a Data Box Heavy se používá pro počáteční konfiguraci zařízení. Pomocí místního webového uživatelského rozhraní můžete také vypnout nebo restartovat zařízení, spustit diagnostické testy, aktualizovat software, zobrazit kopie protokolů a vygenerovat balíček protokolu pro podpora Microsoftu. Na zařízení Data Box Heavy se dvěma nezávislými uzly můžete přistupovat ke dvěma samostatným místním webovým uživatelská rozhraníám, které odpovídají každému uzlu zařízení.
+Pro počáteční konfiguraci zařízení se používá místní webové uživatelské rozhraní pro datovou schránku a datovou schránku Heavy. Pomocí místního webového uživatelského rozhraní můžete také vypnout nebo restartovat zařízení, spustit diagnostické testy, aktualizovat software, zobrazit protokoly kopírování a vygenerovat balíček protokolu pro podporu společnosti Microsoft. Na zařízení Data Box Heavy se dvěma nezávislými uzly můžete přistupovat ke dvěma samostatným místním webovým unám, která odpovídají jednotlivým uzlům zařízení.
 
 Tento článek obsahuje následující návody:
 
 - Generování balíčku pro podporu
 - Vypnutí nebo restartování zařízení
-- Stažení souboru kusovníku nebo manifestu
+- Stažení souborů kusovníku nebo manifestu
 - Zobrazení dostupné kapacity zařízení
 - Přeskočení ověření kontrolního součtu
 
 ## <a name="generate-support-package"></a>Generování balíčku pro podporu
 
-Pokud budete mít se zařízením jakékoliv problémy, můžete vytvořit ze systémových protokolů balíček pro podporu. Podpora Microsoftu používá tento balíček k řešení příslušných potíží. Chcete-li vytvořit balíček pro podporu, proveďte následující kroky:
+Pokud budete mít se zařízením jakékoliv problémy, můžete vytvořit ze systémových protokolů balíček pro podporu. Podpora Microsoftu používá tento balíček k řešení příslušných potíží. Chcete-li vygenerovat balíček podpory, postupujte takto:
 
 1. V místním webovém uživatelském rozhraní přejděte na **Kontaktovat podporu** a klikněte na **Vytvořit balíček pro podporu**.
 
@@ -54,7 +54,7 @@ Pokud budete mít se zařízením jakékoliv problémy, můžete vytvořit ze sy
 
 Zařízení můžete vypnout nebo restartovat pomocí místního webového uživatelského rozhraní. Doporučujeme před restartováním přepnout sdílené složky na hostiteli a potom na zařízení do offline režimu. Minimalizuje se tak možnost poškození dat. Při vypnutí zařízení zkontrolujte, že se nekopírují data.
 
-Pokud chcete zařízení vypnout, proveďte následující kroky.
+Chcete-li zařízení vypnout, postupujte takto.
 
 1. V místním webovém uživatelském rozhraní přejděte na **Vypnout nebo restartovat**.
 2. Klikněte na **Vypnout**.
@@ -78,40 +78,40 @@ Při restartování Data Boxu postupujte podle následujících pokynů.
 
    Zařízení se vypne a restartuje.
 
-## <a name="download-bom-or-manifest-files"></a>Stažení souboru kusovníku nebo manifestu
+## <a name="download-bom-or-manifest-files"></a>Stažení souborů kusovníku nebo manifestu
 
-Kusovník nebo soubory manifestu obsahují seznam souborů, které jsou zkopírovány do Data Box nebo Data Box Heavy. Tyto soubory jsou vygenerovány při přípravě zařízení k odeslání.
+Kusovník (BOM) nebo soubory manifestu obsahují seznam souborů, které jsou zkopírovány do datové schránky nebo datové schránky Těžké. Tyto soubory jsou generovány při přípravě zařízení k odeslání.
 
-Než začnete, ujistěte se, že se v zařízení dokončilo **Příprava k odeslání** krok. Chcete-li stáhnout soubory kusovníku nebo manifestu, postupujte podle následujících kroků:
+Než začnete, ujistěte se, že zařízení dokončilo **připravit krok.** Stažení souborů kusovníku nebo manifestu postupujte takto:
 
-1. Přejít k místnímu webovému uživatelskému rozhraní pro vaše zařízení. Uvidíte, že zařízení dokončilo Příprava na odeslání. Až se dokončí příprava zařízení, zobrazí se stav zařízení jako **připravený k odeslání**.
+1. Přejděte do místního webového uživatelského rozhraní pro vaše zařízení. Uvidíte, že zařízení dokončilo přípravu k odeslání. Po dokončení přípravy zařízení se stav zařízení zobrazí jako **Připravený k odeslání**.
 
-    ![Zařízení připravené k dodání](media/data-box-portal-admin/ready-to-ship.png)
+    ![Zařízení připraveno k odeslání](media/data-box-portal-admin/ready-to-ship.png)
 
-2. Klikněte na **Stáhnout seznam souborů** a Stáhněte si seznam souborů, které jste zkopírovali v data box.
+2. Kliknutím na **Stáhnout seznam souborů** stáhněte seznam souborů, které byly zkopírovány do datové schránky.
 
     ![Klikněte na Stáhnout seznam souborů.](media/data-box-portal-admin/download-list-of-files.png)
 
-3. V Průzkumníkovi souborů uvidíte, že se v závislosti na protokolu používaném pro připojení k zařízení a používaném typu Azure Storage generují samostatné seznamy souborů.
+3. V Průzkumníkovi souborů uvidíte, že samostatný seznam souborů se generuje v závislosti na protokolu použitém pro připojení k zařízení a použitém typu úložiště Azure.
 
     ![Soubory pro typ úložiště a protokol připojení](media/data-box-portal-admin/files-storage-connection-type.png)
 
-   Následující tabulka mapuje názvy souborů na typ Azure Storage a použitý protokol připojení.
+   Následující tabulka mapuje názvy souborů na typ úložiště Azure a použitý protokol připojení.
 
-    |Název souboru  |Typ Azure Storage  |Použitý protokol připojení |
+    |Název souboru  |Typ úložiště Azure  |Použitý protokol připojení |
     |---------|---------|---------|
     |databoxe2etest_BlockBlob.txt     |Objekty blob bloku         |SMB/NFS         |
     |databoxe2etest_PageBlob.txt     |Objekty blob stránky         |SMB/NFS         |
     |databoxe2etest_AzFile-BOM.txt    |Soubory Azure         |SMB/NFS         |
     |databoxe2etest_PageBlock_Rest-BOM.txt     |Objekty blob stránky         |REST        |
     |databoxe2etest_BlockBlock_Rest-BOM.txt    |Objekty blob bloku         |REST         |
-    |mydbmdrg1_MDisk-BOM.txt    |Spravovaný disk         |SMB/NFS         |
+    |soubor mydbmdrg1_MDisk-BOM.txt    |Spravovaný disk         |SMB/NFS         |
     |mydbmdrg2_MDisk-BOM.txt     |Spravovaný disk         |SMB/NFS         |
 
-Pomocí tohoto seznamu ověříte soubory nahrané do Azure Storage účtu poté, co se Data Box vrátí do datacentra Azure. Ukázkový soubor manifestu je uveden níže.
+Tento seznam slouží k ověření souborů nahraných do účtu Azure Storage poté, co se data box vrátí do datového centra Azure. Ukázkový soubor manifestu je uveden níže.
 
 > [!NOTE]
-> Na Data Box Heavy jsou k dispozici dvě sady souborů (soubory KUSOVNÍKŮ) odpovídající dvěma uzlům na zařízení.
+> V datové schránce Heavy jsou k dispozici dvě sady souborů (soubory kusovníku), které odpovídají dvěma uzlům v zařízení.
 
 ```xml
 <file size="52689" crc64="0x95a62e3f2095181e">\databox\media\data-box-deploy-copy-data\prepare-to-ship2.png</file>
@@ -153,7 +153,7 @@ Pomocí tohoto seznamu ověříte soubory nahrané do Azure Storage účtu poté
 <file size="3603" crc64="0x7e34c25d5606693f">\databox\TOC.yml</file>
 ```
 
-Tento soubor obsahuje seznam všech souborů, které byly zkopírovány na Data Box nebo Data Box Heavy. V tomto souboru se hodnota *crc64* vztahuje k kontrolnímu součtu vygenerovanému pro odpovídající soubor.
+Tento soubor obsahuje seznam všech souborů, které byly zkopírovány na datové schránce nebo datové schránky Heavy. V tomto souboru hodnota *crc64* se vztahuje k kontrolnímu součtu generovanému pro odpovídající soubor.
 
 ## <a name="view-available-capacity-of-the-device"></a>Zobrazení dostupné kapacity zařízení
 
@@ -166,11 +166,11 @@ Dostupnou a využitou kapacitu zařízení můžete zobrazit na řídicím panel
 
 ## <a name="skip-checksum-validation"></a>Přeskočení ověření kontrolního součtu
 
-Při přípravě na dodávání se pro vaše data generují kontrolní součty ve výchozím nastavení. Ve výjimečných případech v závislosti na datovém typu (malé velikosti souborů) může být výkon pomalý. V takových případech můžete kontrolní součet přeskočit.
+Kontrolní součty jsou generovány pro vaše data ve výchozím nastavení při přípravě na odeslání. V některých výjimečných případech, v závislosti na datovém typu (malé velikosti souborů), může být výkon pomalý. V takových případech můžete kontrolní součet přeskočit.
 
 Důrazně doporučujeme kontrolní součet nezakazovat, pokud to výrazně neovlivňuje výkon.
 
-1. V pravém horním rohu místního webového uživatelského rozhraní vašeho zařízení, přejít na **Nastavení**.
+1. V pravém horním rohu místního webového uživatelského rozhraní zařízení přejděte do **části Nastavení**.
 
     ![Zakázání kontrolních součtů](media/data-box-local-web-ui-admin/disable-checksum.png)
 
@@ -179,5 +179,5 @@ Důrazně doporučujeme kontrolní součet nezakazovat, pokud to výrazně neovl
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se [spravovat data box a data box Heavy prostřednictvím Azure Portal](data-box-portal-admin.md).
+- Přečtěte si, jak [spravovat datovou schránku a datovou schránku těžkou prostřednictvím portálu Azure](data-box-portal-admin.md).
 

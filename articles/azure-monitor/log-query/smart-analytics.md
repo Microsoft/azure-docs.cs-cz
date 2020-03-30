@@ -1,28 +1,28 @@
 ---
-title: Příklady Log Analytics inteligentních analýz | Microsoft Docs
-description: Příklady, které používají funkce inteligentní analýzy v Log Analytics k analýze aktivity uživatelů.
+title: Příklady inteligentní analýzy Log Analytics | Dokumenty společnosti Microsoft
+description: Příklady, které používají funkce inteligentní analýzy v Log Analytics k provedení analýzy aktivity uživatele.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/15/2019
 ms.openlocfilehash: 51584ccf5f845be8a06b1e049cae11e636edef11
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77659828"
 ---
-# <a name="log-analytics-smart-analytics-examples"></a>Příklady inteligentních analýz Log Analytics
-Tento článek obsahuje příklady použití funkcí inteligentní analýzy v Log Analytics k analýze aktivity uživatelů. Tyto příklady můžete použít k analýze vlastních aplikací monitorovaných Application Insights nebo použití konceptů v těchto dotazech pro podobnou analýzu dalších dat. 
+# <a name="log-analytics-smart-analytics-examples"></a>Příklady inteligentní analýzy Log Analytics
+Tento článek obsahuje příklady, které používají funkce inteligentní analýzy v Log Analytics k provedení analýzy aktivity uživatele. Tyto příklady můžete použít k analýze vlastních aplikací monitorovaných application insights nebo použít koncepty v těchto dotazech pro podobnou analýzu na jiných datech. 
 
-Podrobnosti o různých klíčových slovech použitých v těchto ukázkách najdete v referenčních informacích k [jazyku Kusto](https://docs.microsoft.com/azure/kusto/query/) . Pokud jste Log Analytics, Projděte si [lekci o vytváření dotazů](get-started-queries.md) .
+Podrobnosti o různých klíčových slovech použitých v těchto ukázkách naleznete v [referenční příručce v jazyce Kusto.](https://docs.microsoft.com/azure/kusto/query/) Pokud s analýzou protokolů tečujete [lekci o vytváření dotazů.](get-started-queries.md)
 
-## <a name="cohorts-analytics"></a>Kohorty Analytics
+## <a name="cohorts-analytics"></a>Kohortová analytika
 
-Analýza kohorta sleduje aktivity konkrétních skupin uživatelů, označované jako kohorty. Pokusí se změřit způsob, jakým se dá vyhodnotit, jak se má vyhodnotit. Uživatelé jsou seskupení podle času, kdy službu poprvé používali. Při analýze kohorty očekáváme, že se v aktivitě v průběhu prvních sledovaných období zjistí pokles aktivity. Každý kohorta má podobu v týdnu, ve kterém byly členy zjištěny poprvé.
+Kohortová analýza sleduje aktivitu konkrétních skupin uživatelů, známých jako kohorty. Snaží se měřit, jak přitažlivá je služba měřením rychlosti vracejících se uživatelů. Uživatelé jsou seskupeny podle okamžiku, kdy službu poprvé použili. Při analýze kohort očekáváme snížení aktivity během prvních sledovaných období. Každá kohorta je pojmenována v týdnu, kdy její členové byli poprvé pozorováni.
 
-Následující příklad analyzuje počet aktivit, které uživatelé provádějí v průběhu 5 týdnů po prvním používání služby.
+Následující příklad analyzuje počet aktivit, které uživatelé provádějí v průběhu 5 týdnů po prvním použití služby.
 
 ```Kusto
 let startDate = startofweek(bin(datetime(2017-01-20T00:00:00Z), 1d));
@@ -83,12 +83,12 @@ week
           p4 = todouble(r4)/todouble(r0)*100 
 | sort by Cohort asc
 ```
-Tento příklad vede k následujícímu výstupu.
+Výsledkem tohoto příkladu je následující výstup.
 
-![Výstup analýzy kohorta](media/smart-analytics/cohorts.png)
+![Výstup analýzy kohorty](media/smart-analytics/cohorts.png)
 
-## <a name="rolling-monthly-active-users-and-user-stickiness"></a>Zajištění měsíčních aktivních uživatelů a vytrvalost uživatelů
-Následující příklady používají analýzu časových řad s funkcí [series_fir](/azure/kusto/query/series-firfunction) , která umožňuje provádět pozvolna výpočty okna. Monitorovaná ukázková aplikace je online obchod, který sleduje činnost uživatelů prostřednictvím vlastních událostí. Dotaz sleduje dva typy aktivit uživatelů, _AddToCart_ a _rezervací_a definuje _aktivní uživatele_ jako ty, kteří provedli rezervaci alespoň jednou během daného dne.
+## <a name="rolling-monthly-active-users-and-user-stickiness"></a>Postupný měsíční počet aktivních uživatelů a uživatelská lepivost
+Následující příklady používají analýzu časových řad s [funkcí series_fir,](/azure/kusto/query/series-firfunction) která umožňuje provádět výpočty posuvných oken. Ukázková aplikace, která je monitorována, je online obchod, který sleduje aktivitu uživatelů prostřednictvím vlastních událostí. Dotaz sleduje dva typy uživatelských _aktivit, AddToCart_ a _Checkout_a definuje _aktivní uživatele_ jako ty, kteří provedli check-out alespoň jednou za daný den.
 
 
 
@@ -131,11 +131,11 @@ customEvents
 | render timechart
 ```
 
-Tento příklad vede k následujícímu výstupu.
+Výsledkem tohoto příkladu je následující výstup.
 
-![Výstup měsíčních uživatelů](media/smart-analytics/rolling-mau.png)
+![Průběžný výstup uživatelů měsíčně](media/smart-analytics/rolling-mau.png)
 
-Následující příklad změní výše uvedený dotaz na opakovaně použitelnou funkci a použije ho k výpočtu vytrvalost uživatele. Aktivní uživatelé v tomto dotazu jsou definováni jako pouze uživatelé, kteří provedli rezervaci alespoň jednou za daný den.
+Následující příklad změní výše uvedený dotaz na opakovaně použitelnou funkci a použije ji k výpočtu svažitosti uživatele. Aktivní uživatelé v tomto dotazu jsou definováni pouze jako uživatelé, kteří alespoň jednou za daný den provedli check-out.
 
 ``` Kusto
 let rollingDcount = (sliding_window_size: int, event_name:string)
@@ -173,17 +173,17 @@ on Timestamp
 | render timechart
 ```
 
-Tento příklad vede k následujícímu výstupu.
+Výsledkem tohoto příkladu je následující výstup.
 
-![Výstup vytrvalost uživatele](media/smart-analytics/user-stickiness.png)
+![Uživatelský výstup lepivost](media/smart-analytics/user-stickiness.png)
 
 ## <a name="regression-analysis"></a>Regresní analýza
-Tento příklad ukazuje, jak vytvořit automatizovaný detektor pro přerušení služby založené výhradně na protokolech trasování aplikace. Rozpoznávání detektoru neobvykle roste v relativním množství chybových a varovných trasování v aplikaci.
+Tento příklad ukazuje, jak vytvořit automatizovaný detektor pro přerušení služby založené výhradně na protokolech trasování aplikace. Detektor hledá abnormální náhlé zvýšení relativního množství chyb a výstražných stop v aplikaci.
 
 K vyhodnocení stavu služby na základě dat protokolů trasování se používají dvě techniky:
 
-- Pomocí rutiny [make-Series](/azure/kusto/query/make-seriesoperator) můžete převést částečně strukturované textové protokoly trasování do metriky, která představuje poměr mezi kladným a záporným sledovacím řádkem.
-- Pomocí [series_fit_2lines](/azure/kusto/query/series-fit-2linesfunction) a [series_fit_line](/azure/kusto/query/series-fit-linefunction) můžete provádět pokročilé zjišťování kroků pomocí analýzy časových řad s lineární regresí na dvou řádcích.
+- [Make-series](/azure/kusto/query/make-seriesoperator) slouží k převodu polostrukturovaných textových trasovacích protokolů na metriku, která představuje poměr mezi kladné a záporné stopové čáry.
+- Pomocí [series_fit_2lines](/azure/kusto/query/series-fit-2linesfunction) a [series_fit_line](/azure/kusto/query/series-fit-linefunction) můžete provádět pokročilou detekci krok-skok pomocí analýzy časových řad s dvouřádkovou lineární regresí.
 
 ``` Kusto
 let startDate = startofday(datetime("2017-02-01"));
@@ -214,5 +214,5 @@ traces
 
 ## <a name="next-steps"></a>Další kroky
 
-- Podrobnosti o jazyku najdete v referenčních informacích k [jazyku Průzkumník dat](/azure/kusto/query) .
-- Projděte si [lekci v lekci o zápisu dotazů v Log Analytics](get-started-queries.md).
+- Podrobnosti o jazyce naleznete v [referenční příručce pro jazyk Průzkumníka dat.](/azure/kusto/query)
+- Projděte si [lekci o psaní dotazů v Log Analytics](get-started-queries.md).

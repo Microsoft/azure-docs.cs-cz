@@ -1,6 +1,6 @@
 ---
-title: Publikování obsahu Azure Media Services pomocí REST
-description: Naučte se, jak vytvořit lokátor, který se používá k vytvoření adresy URL streamování. Kód používá REST API.
+title: Publikování obsahu Azure Media Services pomocí rest
+description: Přečtěte si, jak vytvořit lokátor, který se používá k vytvoření adresy URL streamování. Kód používá rozhraní REST API.
 author: Juliako
 manager: femila
 editor: ''
@@ -15,54 +15,54 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 787336f00a83d9403e3069754787743b9be6c5b1
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77050005"
 ---
-# <a name="publish-azure-media-services-content-using-rest"></a>Publikování obsahu Azure Media Services pomocí REST 
+# <a name="publish-azure-media-services-content-using-rest"></a>Publikování obsahu Azure Media Services pomocí rest 
 > [!div class="op_single_selector"]
 > * [.NET](media-services-deliver-streaming-content.md)
-> * [REST](media-services-rest-deliver-streaming-content.md)
-> * [Azure Portal](media-services-portal-publish.md)
+> * [Odpočinku](media-services-rest-deliver-streaming-content.md)
+> * [Portál](media-services-portal-publish.md)
 > 
 > 
 
-Můžete vytvořit datový proud sady MP4 s adaptivní přenosovou rychlostí vytvořením lokátoru pro streamování OnDemand a vytvořením adresy URL streamování. Článek [kódování prostředku](media-services-rest-encode-asset.md) ukazuje, jak se zakódovat do sady souborů MP4 s adaptivní přenosovou rychlostí. Pokud je váš obsah zašifrovaný, nakonfigurujte zásady doručení assetu (jak je popsáno v [tomto](media-services-rest-configure-asset-delivery-policy.md) článku) ještě před vytvořením lokátoru. 
+Sadu MP4 s adaptivní přenosovou rychlostí můžete streamovat vytvořením lokátoru streamování OnDemand a vytvořením adresy URL streamování. Kódování [encoding an asset](media-services-rest-encode-asset.md) asset článek ukazuje, jak kódovat do sady MP4 s adaptivní datový majek. Pokud je váš obsah zašifrován, před vytvořením lokátoru nakonfigurujte zásady doručování datových zdrojů (jak je popsáno v [tomto](media-services-rest-configure-asset-delivery-policy.md) článku). 
 
-Lokátor streamování OnDemand můžete použít také k sestavení adres URL, které odkazují na soubory MP4, které se dají postupně stahovat.  
+Můžete také použít ondemand streaming lokátor k vytvoření adresy URL, které odkazují na SOUBORY MP4, které lze postupně stáhnout.  
 
-V tomto článku se dozvíte, jak vytvořit Lokátor streamování OnDemand, abyste mohli publikovat svůj Asset a vytvářet hladké adresy URL a HLS streamování MPEG. Také ukazuje, jak vytvářet progresivní adresy URL pro stahování.
+Tento článek ukazuje, jak vytvořit lokátor streamování OnDemand, aby bylo možné publikovat datový zdroj a vytvořit adresy URL streamování Plynulý, MPEG DASH a HLS. Ukazuje také, jak vytvořit progresivní stahování adres URL.
 
-V [následující](#types) části jsou uvedeny typy výčtu, jejichž hodnoty jsou použity v voláních REST.   
+[V následující](#types) části jsou uvedeny typy výčtu, jejichž hodnoty se používají ve volání REST.   
 
 > [!NOTE]
-> Při přístupu k entitám v Media Services musíte nastavit konkrétní pole a hodnoty hlaviček v požadavcích HTTP. Další informace najdete v tématu [instalace Media Services REST APIm vývoji](media-services-rest-how-to-use.md).
+> Při přístupu k entitám ve službě Media Services je nutné nastavit konkrétní pole záhlaví a hodnoty v požadavcích HTTP. Další informace naleznete [v tématu Setup for Media Services REST API Development](media-services-rest-how-to-use.md).
 > 
 
 ## <a name="connect-to-media-services"></a>Připojení ke službě Media Services
 
-Informace o tom, jak se připojit k rozhraní API AMS, najdete v tématu [přístup k rozhraní Azure Media Services API pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Informace o tom, jak se připojit k rozhraní AMS API, najdete [v tématu Přístup k rozhraní API Azure Media Services pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
 >[!NOTE]
->Po úspěšném připojení k https://media.windows.netobdržíte přesměrování 301 určující jiný identifikátor URI Media Services. Je nutné provést následná volání nového identifikátoru URI.
+>Po úspěšném připojení https://media.windows.netk programu obdržíte přesměrování 301 určující jiný identifikátor URI služby Media Services. Je nutné provést následná volání nového identifikátoru URI.
 
-## <a name="create-an-ondemand-streaming-locator"></a>Vytvoření lokátoru pro streamování OnDemand
-Chcete-li vytvořit Lokátor streamování OnDemand a získat adresy URL, je nutné provést následující akce:
+## <a name="create-an-ondemand-streaming-locator"></a>Vytvoření lokátoru streamování OnDemand
+Chcete-li vytvořit lokátor streamování OnDemand a získat adresy URL, musíte provést následující kroky:
 
-1. Pokud je obsah zašifrovaný, definujte zásady přístupu.
-2. Vytvořte Lokátor streamování OnDemand.
-3. Pokud máte v úmyslu streamovat, Získejte v assetu soubor manifestu pro streamování (. ISM). 
+1. Pokud je obsah zašifrován, definujte zásady přístupu.
+2. Vytvořte lokátor streamování OnDemand.
+3. Pokud máte v plánu streamovat, získejte soubor manifestu streamování (.ism) do datového zdroje. 
    
-   Pokud se chystáte se postupně stahovat, Získejte názvy souborů MP4 v assetu. 
-4. Vytvoří adresy URL pro soubor manifestu nebo soubory MP4. 
-5. Nemůžete vytvořit Lokátor streamování pomocí AccessPolicy, který zahrnuje oprávnění zapisovat nebo odstranit.
+   Pokud plánujete postupné stahování, získejte názvy souborů MP4 v datovém zdroji. 
+4. Vytvořte adresy URL do souboru manifestu nebo souborů MP4. 
+5. Lokátor streamování nelze vytvořit pomocí zásad accesspolicy, který zahrnuje oprávnění k zápisu nebo odstranění.
 
-### <a name="create-an-access-policy"></a>Vytvoření zásady přístupu
+### <a name="create-an-access-policy"></a>Vytvoření zásad přístupu
 
 >[!NOTE]
->Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Použijte stejné ID zásad, pokud vždycky používáte stejné dny nebo přístupová oprávnění, například zásady pro Lokátory, které mají zůstat v platnosti po dlouhou dobu (zásady bez nahrávání). Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) článku.
+>Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Stejné ID zásad použijte, pokud vždy používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez nahrávání). Další informace naleznete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) článku.
 
 Požadavek:
 
@@ -99,8 +99,8 @@ Odpověď:
 
     {"odata.metadata":"https://media.windows.net/api/$metadata#AccessPolicies/@Element","Id":"nb:pid:UUID:69c80d98-7830-407f-a9af-e25f4b0d3e5f","Created":"2015-02-18T06:52:09.8862191Z","LastModified":"2015-02-18T06:52:09.8862191Z","Name":"access policy","DurationInMinutes":43200.0,"Permissions":1}
 
-### <a name="create-an-ondemand-streaming-locator"></a>Vytvoření lokátoru pro streamování OnDemand
-Vytvoří Lokátor pro zadané zásady assetu a assetu.
+### <a name="create-an-ondemand-streaming-locator"></a>Vytvoření lokátoru streamování OnDemand
+Vytvořte lokátor pro zadaný majetek a zásady majetku.
 
 Požadavek:
 
@@ -137,39 +137,39 @@ Odpověď:
 
     {"odata.metadata":"https://media.windows.net/api/$metadata#Locators/@Element","Id":"nb:lid:UUID:be245661-2bbd-4fc6-b14f-9cf9a1492e5e","ExpirationDateTime":"2015-03-20T06:34:47.267872+00:00","Type":2,"Path":"https://amstest1.streaming.mediaservices.windows.net/be245661-2bbd-4fc6-b14f-9cf9a1492e5e/","BaseUri":"https://amstest1.streaming.mediaservices.windows.net","ContentAccessComponent":"be245661-2bbd-4fc6-b14f-9cf9a1492e5e","AccessPolicyId":"nb:pid:UUID:1480030d-c481-430a-9687-535c6a5cb272","AssetId":"nb:cid:UUID:cc1e445d-1500-80bd-538e-f1e4b71b465e","StartTime":"2015-02-18T06:34:47.267872+00:00","Name":null}
 
-### <a name="build-streaming-urls"></a>Vytváření adres URL streamování
-Použijte hodnotu **cesty** vrácenou po vytvoření lokátoru a vytvořte tak vyhlazené adresy URL, HLS a MPEG pomlčky. 
+### <a name="build-streaming-urls"></a>Vytváření adres URL datových proudů
+Pomocí hodnoty **Cesta** vrácené po vytvoření lokátoru vytvořte adresy URL Vyhlazení, HLS a MPEG DASH. 
 
-Smooth Streaming: **cesta** + název souboru manifestu + "/manifest"
+Plynulé streamování: **Cesta** + název souboru manifestu + "/manifest"
 
 Příklad:
 
     https://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest
 
-HLS: **cesta** + název souboru manifestu + "/manifest (Format = M3U8-AAPL)"
+HLS: **Path** + název souboru manifestu + "/manifest(format=m3u8-aapl)"
 
 Příklad:
 
     https://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=m3u8-aapl)
 
 
-POMLČKa: **cesta** + název souboru manifestu + "/manifest (Format = MPD-Time-CSF)"
+DASH: **Path** + název souboru manifestu + "/manifest(format=mpd-time-csf)"
 
 Příklad:
 
     https://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=mpd-time-csf)
 
 
-### <a name="build-progressive-download-urls"></a>Sestavit progresivní adresy URL pro stahování
-Pro sestavení adresy URL postupného stahování použijte hodnotu **cesty** vrácenou po vytvoření lokátoru.   
+### <a name="build-progressive-download-urls"></a>Vytváření progresivních adres URL stahování
+Pomocí hodnoty **Cesta** vrácené po vytvoření lokátoru vytvořte adresu URL postupného stahování.   
 
-Adresa URL: **cesta** + název souboru MP4 prostředku
+ADRESA URL: Název mp4 souboru prostředků **Cesta** + majetek
 
 Příklad:
 
     https://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
 
-## <a id="types"></a>Výčtové typy
+## <a name="enum-types"></a><a id="types"></a>Výčet typy
     [Flags]
     public enum AccessPermissions
     {
@@ -187,14 +187,14 @@ Příklad:
         OnDemandOrigin = 2,
     }
 
-## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
+## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>Viz také:
-[Přehled Media Servicesch operací REST API](media-services-rest-how-to-use.md)
+## <a name="see-also"></a>Viz také
+[Media Services operace REST API přehled](media-services-rest-how-to-use.md)
 
-[Konfigurace zásad doručení assetu](media-services-rest-configure-asset-delivery-policy.md)
+[Konfigurace zásad pro doručování majetku](media-services-rest-configure-asset-delivery-policy.md)
 

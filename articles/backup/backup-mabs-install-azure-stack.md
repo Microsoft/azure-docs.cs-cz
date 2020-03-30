@@ -1,341 +1,341 @@
 ---
 title: Instalace Azure Backup Serveru v Azure Stacku
-description: V tomto článku se dozvíte, jak pomocí Azure Backup Server chránit nebo zálohovat úlohy v Azure Stack.
+description: V tomto článku se dozvíte, jak pomocí Azure Backup Server chránit nebo zálohovat úlohy v Azure Stacku.
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.openlocfilehash: b78e5a662bdcf23ad38cb33292658d4d2455e579
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77583431"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Instalace Azure Backup Serveru v Azure Stacku
 
-Tento článek vysvětluje, jak nainstalovat Azure Backup Server v Azure Stack. Pomocí Azure Backup Server můžete chránit úlohy IaaS (infrastruktura jako služba), jako jsou virtuální počítače běžící v Azure Stack. Výhodou použití Azure Backup Server k ochraně vašich úloh můžete spravovat veškerou ochranu úloh z jediné konzoly.
+Tento článek vysvětluje, jak nainstalovat Azure Backup Server na Azure Stack. Pomocí Azure Backup Server můžete chránit úlohy infrastruktury jako služby (IaaS), jako jsou virtuální počítače spuštěné v Azure Stacku. Výhodou použití Azure Backup Serveru k ochraně vašich úloh je správa veškeré ochrany úloh z jedné konzoly.
 
 > [!NOTE]
-> Další informace o možnostech zabezpečení najdete v [dokumentaci k funkcím Azure Backup zabezpečení](backup-azure-security-feature.md).
+> Další informace o možnostech zabezpečení najdete v dokumentaci k [funkcím zabezpečení Azure Backup](backup-azure-security-feature.md).
 >
 
 ## <a name="azure-backup-server-protection-matrix"></a>Systém ochrany Azure Backup Serveru
 
-Azure Backup Server chrání následující Azure Stack úlohy virtuálních počítačů.
+Azure Backup Server chrání následující úlohy virtuálních strojů Azure Stack.
 
-| Chráněný zdroj dat | Ochrana a obnovení |
+| Chráněné zdroje dat | Ochrana a obnovení |
 | --------------------- | ----------------------- |
-| Windows Server – pololetní kanál – Datacenter/Enterprise/Standard | Svazky, soubory, složky |
-| Windows Server 2016 – Datacenter/Enterprise/Standard | Svazky, soubory, složky |
-| Windows Server 2012 R2 – Datacenter/Enterprise/Standard | Svazky, soubory, složky |
-| Windows Server 2012 – Datacenter/Enterprise/Standard | Svazky, soubory, složky |
-| Windows Server 2008 R2 – Datacenter/Enterprise/Standard | Svazky, soubory, složky |
-| SQL Server 2016 | databáze |
-| SQL Server 2014 | databáze |
-| SQL Server 2012 SP1 | databáze |
-| SharePoint 2016 | Farma, databáze, front-end, webový server |
-| SharePoint 2013 | Farma, databáze, front-end, webový server |
-| SharePoint 2010 | Farma, databáze, front-end, webový server |
+| Pololetní kanál Windows Serveru – datové centrum/podnik/standard | Svazky, soubory a složky |
+| Windows Server 2016 – datové centrum/podnik/standard | Svazky, soubory a složky |
+| Windows Server 2012 R2 – datové centrum/podnik/standard | Svazky, soubory a složky |
+| Windows Server 2012 – datové centrum/podnik/standard | Svazky, soubory a složky |
+| Windows Server 2008 R2 – datové centrum/podnik/standard | Svazky, soubory a složky |
+| SQL Server 2016 | Databáze |
+| SQL Server 2014 | Databáze |
+| SQL Server 2012 SP1 | Databáze |
+| SharePoint 2016 | Farma, databáze, frontend, webový server |
+| SharePoint 2013 | Farma, databáze, frontend, webový server |
+| SharePoint 2010 | Farma, databáze, frontend, webový server |
 
-## <a name="prerequisites-for-the-azure-backup-server-environment"></a>Předpoklady pro prostředí Azure Backup Server
+## <a name="prerequisites-for-the-azure-backup-server-environment"></a>Požadavky pro prostředí Azure Backup Server
 
-Při instalaci Azure Backup Server ve vašem prostředí Azure Stack zvažte doporučení v této části. Instalační služba Azure Backup Server kontroluje, jestli vaše prostředí splňuje nezbytné požadavky, ale ušetříte čas tím, že se připraví před instalací.
+Při instalaci Azure Backup Serveru v prostředí Azure Stacku zvažte doporučení v této části. Instalační program Serveru zálohování Azure zkontroluje, zda vaše prostředí má nezbytné předpoklady, ale při přípravě před instalací ušetříte čas.
 
 ### <a name="determining-size-of-virtual-machine"></a>Určení velikosti virtuálního počítače
 
-Pokud chcete spustit Azure Backup Server na virtuálním počítači s Azure Stack, použijte velikost a2 nebo větší. Pokud potřebujete pomoc při výběru velikosti virtuálního počítače, Stáhněte si [Azure Stack kalkulačku velikosti virtuálního](https://www.microsoft.com/download/details.aspx?id=56832)počítače.
+Pokud chcete spouštět Azure Backup Server na virtuálním počítači Azure Stack, použijte velikost A2 nebo větší. Pro pomoc při výběru velikosti virtuálního počítače, stáhněte si [kalkulačku velikosti virtuálního počítače Azure zásobníku](https://www.microsoft.com/download/details.aspx?id=56832).
 
-### <a name="virtual-networks-on-azure-stack-virtual-machines"></a>Virtuální sítě na virtuálních počítačích s Azure Stack
+### <a name="virtual-networks-on-azure-stack-virtual-machines"></a>Virtuální sítě na virtuálních počítačích Azure Stack
 
-Všechny virtuální počítače, které se používají v úlohách Azure Stack, musí patřit do stejné služby Azure Virtual Network a předplatného Azure.
+Všechny virtuální počítače používané v zatížení Azure Stack musí patřit do stejné virtuální sítě Azure a předplatného Azure.
 
-### <a name="azure-backup-server-vm-performance"></a>Výkon virtuálního počítače s Azure Backup Server
+### <a name="azure-backup-server-vm-performance"></a>Výkon virtuálního počítače azure backup serveru
 
-Pokud sdílíte s jinými virtuálními počítači, omezení velikosti a IOPS účtu úložiště ovlivní Azure Backup Server výkon virtuálního počítače. Z tohoto důvodu byste měli pro Azure Backup Server virtuální počítač použít samostatný účet úložiště. Agent Azure Backup spuštěný v Azure Backup Server potřebuje dočasné úložiště pro:
+Pokud je sdílena s jinými virtuálními počítači, velikost účtu úložiště a omezení viop vliv na výkon virtuálních počítačů Azure Backup Server. Z tohoto důvodu byste měli použít samostatný účet úložiště pro virtuální počítač Azure Backup Server. Agent Azure Backup spuštěný na Azure Backup Serveru potřebuje dočasné úložiště pro:
 
 - vlastní použití (umístění mezipaměti),
 - data obnovená z cloudu (místní pracovní oblast)
 
-### <a name="configuring-azure-backup-temporary-disk-storage"></a>Konfigurace Azure Backup dočasného diskového úložiště
+### <a name="configuring-azure-backup-temporary-disk-storage"></a>Konfigurace dočasného úložiště disků Azure Backup
 
-Každý Azure Stack virtuální počítač obsahuje dočasné diskové úložiště, které je k dispozici pro uživatele jako `D:\`svazku. Místní pracovní oblast, kterou vyžaduje Azure Backup, lze nakonfigurovat tak, aby se nacházela v `D:\`a umístění mezipaměti lze umístit na `C:\`. Tímto způsobem není potřeba žádné úložiště Carved z datových disků připojených k Azure Backup Servermu virtuálnímu počítači.
+Každý virtuální počítač Azure Stack je dodáván s dočasným `D:\`úložištěm disku, které je k dispozici uživateli jako svazek . Místní pracovní oblast potřebnou službou Azure Backup `D:\`lze nakonfigurovat tak, `C:\`aby se nakresleti v a umístění mezipaměti lze umístit do aplikace . Tímto způsobem není potřeba žádné úložiště vyřezávat od datových disků připojených k virtuálnímu počítači Azure Backup Server.
 
-### <a name="storing-backup-data-on-local-disk-and-in-azure"></a>Ukládání zálohovaných dat na místní disk a v Azure
+### <a name="storing-backup-data-on-local-disk-and-in-azure"></a>Ukládání záložních dat na místní disk a v Azure
 
-Azure Backup Server ukládá data záloh na discích Azure připojených k virtuálnímu počítači pro provozní obnovení. Jakmile jsou disky a prostory úložiště připojené k virtuálnímu počítači, Azure Backup Server pro vás spravuje úložiště. Velikost úložiště záloh dat závisí na počtu a velikosti disků připojených ke každému [Azure Stackmu virtuálnímu počítači](/azure-stack/user/azure-stack-storage-overview). Každá velikost Azure Stack virtuálního počítače má maximální počet disků, které lze připojit k virtuálnímu počítači. Například a2 je čtyři disky. A3 je osm disků. A4 je 16 disků. Opět velikost a počet disků určuje celkový fond úložiště záloh.
+Azure Backup Server ukládá záložní data na disky Azure připojené k virtuálnímu počítači pro provozní obnovení. Jakmile jsou disky a úložný prostor připojeny k virtuálnímu počítači, Azure Backup Server spravuje úložiště za vás. Velikost úložiště záložních dat závisí na počtu a velikosti disků připojených ke každému [virtuálnímu počítači Azure Stack](/azure-stack/user/azure-stack-storage-overview). Každá velikost virtuálního počítače azure zásobníku má maximální počet disků, které lze připojit k virtuálnímu počítači. Například A2 je čtyři disky. A3 je osm disků. A4 je 16 disků. Velikost a počet disků opět určuje celkový fond úložiště záloh.
 
 > [!IMPORTANT]
-> **Neměli byste uchovávat data** obnovení (zálohování) na discích s Azure Backup Server po dobu delší než pět dní.
+> Neměli **not** byste uchovávat data provozního obnovení (zálohování) na discích připojených k serveru Zálohování Azure více než pět dní.
 >
 
-Ukládání zálohovaných dat v Azure omezuje infrastrukturu zálohování na Azure Stack. Pokud jsou data starší než pět dnů, měla by být uložena v Azure.
+Ukládání záložních dat v Azure snižuje infrastrukturu zálohování v Azure Stacku. Pokud jsou data starší než pět dní, měla by být uložena v Azure.
 
-Pokud chcete ukládat zálohovaná data v Azure, vytvořte nebo použijte Recovery Services trezor. Při přípravě zálohování Azure Backup Server úlohy [nakonfigurujete trezor Recovery Services](backup-azure-microsoft-azure-backup.md#create-a-recovery-services-vault). Po nakonfigurování pokaždé, když se úloha zálohování spustí, se v trezoru vytvoří bod obnovení. Každý trezor Recovery Services uchovává až 9999 bodů obnovení. V závislosti na počtu vytvořených bodů obnovení a dobu, po kterou jsou zachována, můžete data zálohy uchovávat mnoho let. Můžete například vytvořit měsíční body obnovení a uchovávat je po dobu pěti let.
+Chcete-li ukládat záložní data v Azure, vytvořte nebo použijte trezor služby Recovery Services. Při přípravě na zálohování úlohy serveru Zálohování Azure [nakonfigurujete trezor služby Recovery Services](backup-azure-microsoft-azure-backup.md#create-a-recovery-services-vault). Po konfiguraci je při každém spuštění úlohy zálohování vytvořen bod obnovení v úschovně. Každý trezor služby Recovery Services pojme až 9999 bodů obnovení. V závislosti na počtu vytvořených bodů obnovení a jejich uchování po dobu jejich uchování můžete uchovávat záložní data po mnoho let. Můžete například vytvořit měsíční body obnovení a uchovat je po dobu pěti let.
 
 ### <a name="scaling-deployment"></a>Škálování nasazení
 
 Pokud chcete škálovat nasazení, máte následující možnosti:
 
-- Horizontální navýšení kapacity – zvětšete velikost Azure Backup Server virtuálního počítače z řady na řady D a zvyšte místní úložiště [podle pokynů pro virtuální počítače Azure Stack](/azure-stack/user/azure-stack-manage-vm-disks).
-- Přesměrování dat – odešlete starší data do Azure a zachovejte jenom nejnovější data v úložišti připojeném k Azure Backup Server.
-- Horizontální navýšení kapacity – přidejte další Azure Backup servery, abyste chránili úlohy.
+- Škálování nahoru – zvětšit velikost virtuálního počítače Azure Backup Server z řady A na řady D a zvýšit místní úložiště [podle pokynů virtuálního počítače azure zásobníku](/azure-stack/user/azure-stack-manage-vm-disks).
+- Přetížit data – odesílat starší data do Azure a uchovávat jenom nejnovější data v úložišti připojeném k Azure Backup Serveru.
+- Horizontální navýšení kapacity – přidejte další servery zálohování Azure k ochraně úloh.
 
 ### <a name="net-framework"></a>.NET Framework
 
-Na virtuálním počítači musí být nainstalovaná .NET Framework 3,5 SP1 nebo novější.
+Rozhraní .NET Framework 3.5 SP1 nebo vyšší musí být nainstalováno ve virtuálním počítači.
 
 ### <a name="joining-a-domain"></a>Připojení k doméně
 
-Azure Backup Server virtuální počítač musí být připojený k doméně. Na virtuálním počítači se musí nainstalovat Azure Backup Server uživatel domény s oprávněními správce.
+Virtuální počítač Azure Backup Server musí být připojen k doméně. Uživatel domény s oprávněními správce musí nainstalovat Azure Backup Server na virtuálním počítači.
 
-## <a name="using-an-iaas-vm-in-azure-stack"></a>Použití virtuálního počítače s IaaS v Azure Stack
+## <a name="using-an-iaas-vm-in-azure-stack"></a>Použití virtuálního počítače IaaS v Azure Stacku
 
-Při volbě serveru pro Azure Backup Server začněte s imagí Windows Server 2012 R2 Datacenter nebo Windows Server 2016 Datacenter. [V tomto článku vytvořte svůj první virtuální počítač s Windows ve službě Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), který poskytuje kurz, jak začít s doporučeným virtuálním počítačem. Doporučené minimální požadavky pro virtuální počítač serveru (VM) by měly být: a2 Standard se dvěma jádry a 3,5-GB RAM.
+Při výběru serveru pro Azure Backup Server začněte s bitovou kopií datového centra Windows Server 2012 R2 nebo galerie datového centra Windows Server 2016. Tento článek [Create your first Windows virtual machine in the Azure portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), provides a tutorial for getting start with the recommended virtual machine. Doporučené minimální požadavky na serverový virtuální počítač (VM) by měly být: A2 Standard se dvěma jádry a 3,5 GB paměti RAM.
 
-Ochrana úloh pomocí Azure Backup Server má spoustu drobné odlišnosti. Tento článek vám pomůže vysvětlit tyto drobné odlišnostiy, [nainstalovat DPM jako virtuální počítač Azure](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj852163(v=sc.12)). Než počítač nasadíte, přečtěte si tento článek kompletně.
+Ochrana úloh pomocí Azure Backup Server má mnoho nuancí. Článek [Instalace aplikace DPM jako virtuálního počítače Azure](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj852163(v=sc.12))pomáhá vysvětlit tyto nuance. Před nasazením počítače si přečtěte tento článek úplně.
 
 > [!NOTE]
-> Azure Backup Server je navržená tak, aby běžela na vyhrazeném virtuálním počítači s jedním účelem. Nemůžete nainstalovat Azure Backup Server na:
+> Azure Backup Server je navržený tak, aby běžel na vyhrazeném jednoúčelovém virtuálním počítači. Azure Backup Server nelze nainstalovat na:
 >
 > - Počítač spuštěný jako řadič domény
 > - Počítač, na kterém je nainstalovaná role aplikačního serveru
 > - Počítač, na kterém je spuštěný server Exchange
 > - Počítač, který je uzlem clusteru
 
-Vždy připojte Azure Backup Server k doméně. Pokud potřebujete přesunout Azure Backup Server do jiné domény, napřed nainstalujte Azure Backup Server a pak ho připojte k nové doméně. Když nasadíte Azure Backup Server, nemůžete ho přesunout do nové domény.
+Vždy připojte Azure Backup Server k doméně. Pokud potřebujete přesunout Azure Backup Server do jiné domény, nejprve nainstalujte Azure Backup Server a pak se k němu připojte k nové doméně. Po nasazení Serveru Zálohování Azure ho nemůžete přesunout do nové domény.
 
 [!INCLUDE [backup-create-rs-vault.md](../../includes/backup-create-rs-vault.md)]
 
 ### <a name="set-storage-replication"></a>Nastavení replikace úložiště
 
-Možnost replikace úložiště Recovery Services trezoru umožňuje výběr mezi geograficky redundantním úložištěm a místně redundantním úložištěm. Ve výchozím nastavení používají trezory Recovery Services geograficky redundantní úložiště. Pokud je tento trezor vaším primárním trezorem, ponechte možnost úložiště nastavenou na geograficky redundantní úložiště. Pokud chcete levnější možnost, která je méně trvalá, vyberte možnost místně redundantní úložiště. Další informace o možnostech [geograficky redundantního](../storage/common/storage-redundancy-grs.md) a [místně redundantního](../storage/common/storage-redundancy-lrs.md) úložiště naleznete v tématu [Přehled replikace Azure Storage](../storage/common/storage-redundancy.md).
+Možnost replikace úložiště úložiště služby Recovery Services umožňuje vybrat si mezi geograficky redundantním úložištěm a místně redundantním úložištěm. Ve výchozím nastavení využívají trezory služby Recovery Services geograficky redundantní úložiště. Pokud je tento trezor primárním trezorem, ponechejte možnost úložiště nastavenou na geograficky redundantní úložiště. Zvolte místně redundantní úložiště, pokud chcete levnější možnost, která je méně trvanlivá. Další informace o [geograficky redundantních](../storage/common/storage-redundancy-grs.md) a [místně redundantních](../storage/common/storage-redundancy-lrs.md) možnostech úložiště najdete v [přehledu replikace úložiště Azure.](../storage/common/storage-redundancy.md)
 
 Chcete-li upravit nastavení replikace úložiště:
 
-1. Vyberte svůj trezor a otevřete tak řídicí panel trezoru a nabídku nastavení. Pokud se nabídka **Nastavení** neotevře, klikněte na **všechna nastavení** na řídicím panelu trezoru.
-2. V nabídce **Nastavení** klikněte na **infrastruktura zálohování** > **Konfigurace zálohování** . otevře se nabídka **Konfigurace zálohování** . V nabídce **Konfigurace zálohování** vyberte pro svůj trezor možnost replikace úložiště.
+1. Výběrem trezoru otevřete řídicí panel trezoru a nabídku Nastavení. Pokud se nabídka **Nastavení** neotevře, klikněte na řídicím panelu trezoru na **Všechna nastavení.**
+2. V nabídce **Nastavení** klepněte na**položku** Konfigurace zálohování **infrastruktury** > a otevřete nabídku **Konfigurace zálohování.** V nabídce **Konfigurace zálohování** zvolte možnost replikace úložiště pro úložiště.
 
     ![Seznam trezorů záloh](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
-## <a name="download-azure-backup-server-installer"></a>Stažení instalačního programu Azure Backup Server
+## <a name="download-azure-backup-server-installer"></a>Stažení instalačního programu serveru Azure Backup Server
 
-Existují dva způsoby, jak stáhnout instalační službu Azure Backup Server. Instalační program Azure Backup Server můžete stáhnout z webu [služby Stažení softwaru](https://www.microsoft.com/download/details.aspx?id=55269). Můžete si také stáhnout instalační program Azure Backup Server, když konfigurujete Recovery Services trezor. Následující kroky vás provedou stažením instalačního programu z Azure Portal při konfiguraci trezoru Recovery Services.
+Existují dva způsoby, jak stáhnout instalační program Azure Backup Server. Instalační program serveru Azure Backup Server si můžete stáhnout ze služby [Stažení softwaru .](https://www.microsoft.com/download/details.aspx?id=55269) Instalační službu Azure Backup Server můžete také stáhnout při konfiguraci trezoru služby Recovery Services. Následující kroky vás provedou stažením instalačního programu z webu Azure Portal při konfiguraci trezoru služby Recovery Services.
 
-1. Z Azure Stack virtuálního počítače se [přihlaste ke svému předplatnému Azure v Azure Portal](https://portal.azure.com/).
-2. V nabídce na levé straně vyberte **všechny služby**.
+1. Z virtuálního počítače Azure Stack [se přihlaste k předplatnému Azure na webu Azure Portal](https://portal.azure.com/).
+2. V levé nabídce vyberte **všechny služby**.
 
-    ![Výběr možnosti všechny služby v hlavní nabídce](./media/backup-mabs-install-azure-stack/click-all-services.png)
+    ![Volba Možnost všechny služby v hlavní nabídce](./media/backup-mabs-install-azure-stack/click-all-services.png)
 
-3. V dialogovém okně **všechny služby** zadejte *Recovery Services*. Když začnete psát, váš vstupní seznam prostředků se vyfiltruje. Jakmile se zobrazí, vyberte **Recovery Services trezory**.
+3. V dialogovém okně **Všechny služby** zadejte *služby obnovení*. Při psaní vstupní filtry seznamu prostředků. Jakmile se zobrazí, vyberte **trezory služby Recovery Services**.
 
-    ![Zadejte Recovery Services v dialogovém okně všechny služby.](./media/backup-mabs-install-azure-stack/all-services.png)
+    ![Zadejte služby obnovení v dialogovém okně Všechny služby.](./media/backup-mabs-install-azure-stack/all-services.png)
 
-    Zobrazí se seznam trezorů Recovery Services v předplatném.
+    Zobrazí se seznam trezorů služby Recovery Services v předplatném.
 
-4. V seznamu trezorů Recovery Services vyberte svůj trezor a otevřete jeho řídicí panel.
+4. Ze seznamu trezorů služby Recovery Services vyberte trezor a otevřete řídicí panel.
 
-    ![Zadejte Recovery Services v dialogovém okně všechny služby.](./media/backup-mabs-install-azure-stack/rs-vault-dashboard.png)
+    ![Zadejte služby obnovení v dialogovém okně Všechny služby.](./media/backup-mabs-install-azure-stack/rs-vault-dashboard.png)
 
-5. V nabídce Začínáme trezoru klikněte na **zálohování** a otevřete Průvodce Začínáme.
+5. V nabídce Začínáme v úschovně klepnutím na **tlačítko Zálohovat** otevřete Průvodce začínáme.
 
-    ![Začínáme se zálohováním](./media/backup-mabs-install-azure-stack/getting-started-backup.png)
+    ![Zálohování začíná](./media/backup-mabs-install-azure-stack/getting-started-backup.png)
 
     Otevře se nabídka zálohování.
 
-    ![Zálohování – cíle – výchozí – otevřeno](./media/backup-mabs-install-azure-stack/getting-started-menu.png)
+    ![Výchozí otevření cílů zálohování](./media/backup-mabs-install-azure-stack/getting-started-menu.png)
 
-6. V nabídce zálohovat v nabídce **kde je spuštěná vaše úloha** , vyberte **místní**. V rozevírací nabídce **co chcete zálohovat?** vyberte úlohy, které chcete chránit pomocí Azure Backup Server. Pokud si nejste jistí, jaké úlohy vybrat, vyberte **Hyper-V Virtual Machines** a pak klikněte na **připravit infrastrukturu**.
+6. V nabídce zálohování vyberte v nabídce **Kde je spuštěná úloha** **možnost Místní**. V rozevírací nabídce **Co chcete zálohovat?** Pokud si nejste jistí, které úlohy vybrat, zvolte **Virtuální počítače Hyper-V** a klikněte na **Připravit infrastrukturu**.
 
-    ![místní a úlohy jako cíle](./media/backup-mabs-install-azure-stack/getting-started-menu-onprem-hyperv.png)
+    ![místní a pracovní vytížení jako cíle](./media/backup-mabs-install-azure-stack/getting-started-menu-onprem-hyperv.png)
 
-    Otevře se nabídka **připravit infrastrukturu** .
+    Otevře se nabídka **Připravit infrastrukturu.**
 
-7. V nabídce **připravit infrastrukturu** klikněte na **Stáhnout** a otevřete webovou stránku pro stažení Azure Backup Server instalačních souborů.
+7. V nabídce **Připravit infrastrukturu** kliknutím na **stáhnout** otevřete webovou stránku a stáhněte instalační soubory serveru Azure Backup Server.
 
-    ![Změna Průvodce Začínáme](./media/backup-mabs-install-azure-stack/prepare-infrastructure.png)
+    ![Změna průvodce Začínáme](./media/backup-mabs-install-azure-stack/prepare-infrastructure.png)
 
-    Otevře se webová stránka společnosti Microsoft, která je hostitelem souborů ke stažení pro Azure Backup Server.
+    Otevře se webová stránka Microsoftu, která je hostitelem souborů ke stažení pro Azure Backup Server.
 
-8. Na stránce pro stažení serveru Microsoft Azure Backup vyberte jazyk a klikněte na tlačítko **Stáhnout**.
+8. Na stránce pro stažení serveru Microsoft Azure Backup Server vyberte jazyk a klepněte na tlačítko **Stáhnout**.
 
-    ![Otevře se centrum stažení.](./media/backup-mabs-install-azure-stack/mabs-download-center-page.png)
+    ![Otevře se centrum stahování.](./media/backup-mabs-install-azure-stack/mabs-download-center-page.png)
 
-9. Instalační program Azure Backup Server se skládá z osmi souborů – instalační program a sedm souborů. bin. Zaškrtnutím políčka **název souboru** vyberte všechny požadované soubory a klikněte na **Další**. Všechny soubory si můžete stáhnout do stejné složky.
+9. Instalační program Azure Backup Server se skládá z osmi souborů – instalačního programu a sedmi souborů .bin. **Zaškrtnutím políčka Název souboru** vyberte všechny požadované soubory a klepněte na tlačítko **Další**. Stáhněte si všechny soubory do stejné složky.
 
-    ![Stažení centra 1](./media/backup-mabs-install-azure-stack/download-center-selected-files.png)
+    ![Centrum stahování 1](./media/backup-mabs-install-azure-stack/download-center-selected-files.png)
 
-    Velikost stahovaných souborů všech instalačních souborů je větší než 3 GB. Na odkaz pro stažení 10 MB/s může stahování všech instalačních souborů trvat až 60 minut. Soubory se stáhnou do zadaného umístění pro stahování.
+    Velikost stahování všech instalačních souborů je větší než 3 GB. Na 10 Mb/s odkaz ke stažení může stahování všech instalačních souborů trvat až 60 minut. Soubory se stahují do zadaného umístění pro stahování.
 
-## <a name="extract-azure-backup-server-install-files"></a>Extrakce Azure Backup Server instalačních souborů
+## <a name="extract-azure-backup-server-install-files"></a>Extrahování instalačních souborů serveru Azure Backup Server
 
-Po stažení všech souborů na virtuální počítač s Azure Stack přejdete do umístění pro stahování. První fází instalace Azure Backup Server je extrakce souborů.
+Po stažení všech souborů do virtuálního počítače Azure Stack přejděte do umístění pro stahování. První fáze instalace Azure Backup Server je extrahovat soubory.
 
-![Stažení centra 1](./media/backup-mabs-install-azure-stack/download-mabs-installer.png)
+![Centrum stahování 1](./media/backup-mabs-install-azure-stack/download-mabs-installer.png)
 
-1. Pokud chcete spustit instalaci, ze seznamu stažených souborů klikněte na **MicrosoftAzureBackupserverInstaller. exe**.
+1. Chcete-li spustit instalaci, klepněte v seznamu stažených souborů na soubor **MicrosoftAzureBackupserverInstaller.exe**.
 
     > [!WARNING]
-    > K extrakci instalačních souborů je potřeba aspoň 4 GB volného místa.
+    > K extrahování instalačních souborů je zapotřebí alespoň 4 GB volného místa.
     >
 
-2. V průvodci Azure Backup Server pokračujte kliknutím na tlačítko **Další** .
+2. V průvodci Server zálohování Azure klikněte na **Další** a pokračujte.
 
-    ![Průvodce instalací Microsoft Azure Backup](./media/backup-mabs-install-azure-stack/mabs-install-wiz-1.png)
+    ![Průvodce instalací zálohování microsoft azure](./media/backup-mabs-install-azure-stack/mabs-install-wiz-1.png)
 
-3. Vyberte cestu pro Azure Backup Server soubory a klikněte na **Další**.
+3. Zvolte cestu pro soubory Azure Backup Server a klepněte na tlačítko **Další**.
 
-   ![Průvodce instalací Microsoft Azure Backup](./media/backup-mabs-install-azure-stack/mabs-install-wizard-select-destination-1.png)
+   ![Průvodce instalací zálohování microsoft azure](./media/backup-mabs-install-azure-stack/mabs-install-wizard-select-destination-1.png)
 
-4. Ověřte umístění pro extrakci a klikněte na **extrahovat**.
+4. Ověřte místo extrakce a klepněte na **tlačítko Extrahovat**.
 
-   ![Průvodce instalací Microsoft Azure Backup](./media/backup-mabs-install-azure-stack/mabs-install-wizard-extract-2.png)
+   ![Průvodce instalací zálohování microsoft azure](./media/backup-mabs-install-azure-stack/mabs-install-wizard-extract-2.png)
 
-5. Průvodce extrahuje soubory a přečte proces instalace.
+5. Průvodce extrahuje soubory a připravuje proces instalace.
 
-   ![Průvodce instalací Microsoft Azure Backup](./media/backup-mabs-install-azure-stack/mabs-install-wizard-install-3.png)
+   ![Průvodce instalací zálohování microsoft azure](./media/backup-mabs-install-azure-stack/mabs-install-wizard-install-3.png)
 
-6. Po dokončení procesu extrakce klikněte na tlačítko **Dokončit**. Ve výchozím nastavení je zvolena možnost **Spustit soubor Setup. exe** . Po kliknutí na **Dokončit**nainstaluje Setup. exe Microsoft Azure Backup Server do zadaného umístění.
+6. Po dokončení procesu extrakce klepněte na tlačítko **Dokončit**. Ve výchozím nastavení je vybrán **příkaz Spustit soubor setup.exe.** Po klepnutí na tlačítko **Dokončit**nainstaluje program Setup.exe server Microsoft Azure Backup Server do zadaného umístění.
 
-   ![Průvodce instalací Microsoft Azure Backup](./media/backup-mabs-install-azure-stack/mabs-install-wizard-finish-4.png)
+   ![Průvodce instalací zálohování microsoft azure](./media/backup-mabs-install-azure-stack/mabs-install-wizard-finish-4.png)
 
 ## <a name="install-the-software-package"></a>Instalace softwarového balíčku
 
-V předchozím kroku jste klikli na tlačítko **Dokončit** a ukončili fázi extrakce a spustíte Průvodce instalací nástroje Azure Backup Server.
+V předchozím kroku jste klepnutím na tlačítko **Dokončit** ukončili fázi extrakce a spusťte průvodce nastavením serveru Zálohování Azure.
 
-![Průvodce instalací Microsoft Azure Backup](./media/backup-mabs-install-azure-stack/mabs-install-wizard-local-5.png)
+![Průvodce instalací zálohování microsoft azure](./media/backup-mabs-install-azure-stack/mabs-install-wizard-local-5.png)
 
-Azure Backup Server sdílí kód s Data Protection Manager. V instalačním programu Azure Backup Server se zobrazí odkazy na Data Protection Manager a DPM. I když Azure Backup Server a Data Protection Manager jsou samostatné produkty, tyto produkty úzce souvisejí.
+Azure Backup Server sdílí kód se Správcem ochrany dat. Odkazy na Správce ochrany dat a DPM se zobrazí v instalačním programu Serveru zálohování Azure. Přestože Azure Backup Server a Správce ochrany dat jsou samostatné produkty, tyto produkty jsou úzce související.
 
-1. Chcete-li spustit Průvodce instalací nástroje, klikněte na možnost **Microsoft Azure Backup Server**.
+1. Chcete-li spustit průvodce instalací, klepněte na položku **Microsoft Azure Backup Server**.
 
-   ![Průvodce instalací Microsoft Azure Backup](./media/backup-mabs-install-azure-stack/mabs-install-wizard-local-5b.png)
+   ![Průvodce instalací zálohování microsoft azure](./media/backup-mabs-install-azure-stack/mabs-install-wizard-local-5b.png)
 
-2. Na **úvodní** obrazovce klikněte na **Další**.
+2. Na obrazovce **Vítejte** klikněte na **Další**.
 
-    ![Azure Backup Server – uvítání a kontrolu předpokladů](./media/backup-mabs-install-azure-stack/mabs-install-wizard-setup-6.png)
+    ![Azure Backup Server – kontrola uvítání a předpokladů](./media/backup-mabs-install-azure-stack/mabs-install-wizard-setup-6.png)
 
-3. Na obrazovce **kontroly požadovaných součástí** klikněte na tlačítko **zkontrolovat** a určete, zda byly splněny požadavky na hardware a software pro Azure Backup Server.
+3. Na obrazovce **Kontrola předpokladů** klikněte na **zkontrolovat** a zjistěte, zda byly splněny požadavky hardwaru a softwaru pro Server zálohování Azure.
 
-    ![Azure Backup Server – uvítání a kontrolu předpokladů](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-7.png)
+    ![Azure Backup Server – kontrola uvítání a předpokladů](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-7.png)
 
-    Pokud má vaše prostředí nezbytné požadavky, zobrazí se zpráva oznamující, že počítač splňuje požadavky. Klikněte na **Další**.  
+    Pokud vaše prostředí má nezbytné požadavky, zobrazí se zpráva oznamující, že počítač splňuje požadavky. Klikněte na **Další**.  
 
-    ![Azure Backup Server – byla úspěšná kontrolu předpokladů.](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-passed-8.png)
+    ![Azure Backup Server – byla předána kontrola předpokladů](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-passed-8.png)
 
-    Pokud vaše prostředí nesplňuje nezbytné požadavky, budou uvedené problémy. Požadavky, které nebyly splněny, jsou uvedeny také v protokolu DpmSetup. log. Vyřešte chyby požadovaných součástí a pak znovu spusťte **kontrolu**. Instalace nemůže pokračovat, dokud nebudou splněny všechny požadavky.
+    Pokud vaše prostředí nesplňuje nezbytné požadavky, budou určeny problémy. Požadavky, které nebyly splněny, jsou také uvedeny v souboru DpmSetup.log. Vyřešte chyby předpokladů a **spusťte znovu spustit klávesu Check again**. Instalace nemůže pokračovat, dokud nejsou splněny všechny požadavky.
 
-    ![Azure Backup Server – požadavky instalace nejsou splněné](./media/backup-mabs-install-azure-stack/installation-errors.png)
+    ![Azure Backup Server – nejsou splněny požadavky na instalaci](./media/backup-mabs-install-azure-stack/installation-errors.png)
 
-4. Microsoft Azure Backup Server vyžaduje SQL Server. Instalační balíček Azure Backup Server obsahuje balíčky s odpovídajícími binárními soubory SQL Server. Pokud chcete použít vlastní instalaci SQL, můžete. Doporučená volba ale umožňuje, aby instalační program přidal novou instanci SQL Server. Pokud chcete mít jistotu, že vaše volba funguje ve vašem prostředí, klikněte na **zkontrolovat a nainstalovat**.
+4. Microsoft Azure Backup Server vyžaduje SQL Server. Instalační balíček Azure Backup Server je dodáván s příslušnými binárními soubory sql serveru. Pokud chcete použít vlastní instalaci SQL, můžete. Doporučenou volbou je však nechat instalační program přidat novou instanci SQL Server. Chcete-li zajistit, aby vaše volba fungovala s vaším prostředím, klepněte na tlačítko **Zkontrolovat a nainstalovat**.
 
    > [!NOTE]
-   > Azure Backup Server nebudou fungovat s instancí vzdáleného SQL Server. Instance, kterou používá Azure Backup Server, musí být místní.
+   > Azure Backup Server nebude fungovat se vzdálenou instancí serveru SQL Server. Instance používaná serverem Azure Backup Server musí být místní.
    >
 
-    ![Azure Backup Server – uvítání a kontrolu předpokladů](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-install-9.png)
+    ![Azure Backup Server – kontrola uvítání a předpokladů](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-install-9.png)
 
-    Po ověření, jestli má virtuální počítač nezbytné předpoklady pro instalaci Azure Backup Server, klikněte na **Další**.
+    Pokud má virtuální počítač po kontrole nezbytné předpoklady k instalaci serveru Azure Backup Server, klikněte po použití na tlačítko **Další**.
 
-    ![Azure Backup Server – uvítání a kontrolu předpokladů](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-ready-10.png)
+    ![Azure Backup Server – kontrola uvítání a předpokladů](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-ready-10.png)
 
-    Pokud dojde k selhání s doporučením pro restartování počítače, restartujte počítač. Po restartování počítače restartujte instalační program a až se dostanete na obrazovku **nastavení SQL** , klikněte na **znovu ověřit**.
+    Pokud dojde k selhání s doporučením restartovat počítač, restartujte počítač. Po restartování počítače restartujte instalační program a po zobrazení na obrazovce **Nastavení SQL** klepněte na tlačítko **Znovu**zkontrolovat .
 
-5. V **nastavení instalace**zadejte umístění instalace souborů Microsoft Azure Backup serveru a klikněte na **Další**.
+5. V **nastavení instalace**zadejte umístění pro instalaci souborů serveru Microsoft Azure Backup a klepněte na tlačítko **Další**.
 
     ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
 
-    K zálohování do Azure se vyžaduje pomocné umístění. Zajistěte, aby velikost pravého umístění byla stejná jako aspoň 5% dat, která se mají zálohovat do Azure. V případě ochrany disku je potřeba po dokončení instalace nakonfigurovat samostatné disky. Další informace o fondech úložiště najdete v tématu [Konfigurace fondů úložiště a diskového úložiště](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758075(v=sc.12)).
+    Odškrtnuté umístění je potřeba zálohovat do Azure. Ujistěte se, že velikost odkládací umístění je ekvivalentní alespoň 5 % plánovaných dat, která mají být zálohována do Azure. Z důvodu ochrany disku je třeba po dokončení instalace nakonfigurovat samostatné disky. Další informace týkající se fondů úložiště naleznete v [tématu Konfigurace fondů úložišť a diskového úložiště](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758075(v=sc.12)).
 
-6. Na obrazovce **nastavení zabezpečení** zadejte silné heslo pro omezené místní uživatelské účty a klikněte na **Další**.
+6. Na obrazovce **Nastavení zabezpečení** zadejte silné heslo pro místní uživatelské účty s omezeným přístupem a klepněte na tlačítko **Další**.
 
     ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-security-12.png)
 
-7. Na obrazovce **Microsoft Update opt-in** vyberte, jestli chcete ke kontrole aktualizací použít *Microsoft Update* , a klikněte na **Další**.
+7. Na obrazovce **Přihlášení k webu Microsoft Update** vyberte, zda chcete pomocí služby Microsoft *Update* vyhledat aktualizace, a klepněte na tlačítko **Další**.
 
    > [!NOTE]
-   > Doporučujeme, abyste web Windows Update přesměrování na Microsoft Update, což nabízí zabezpečení a důležité aktualizace pro Windows a další produkty, jako je Microsoft Azure Backup Server.
+   > Doporučujeme přesměrovat službu Windows Update na službu Microsoft Update, která nabízí aktualizace zabezpečení a důležité aktualizace pro systém Windows a další produkty, jako je Microsoft Azure Backup Server.
    >
 
     ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-update-13.png)
 
-8. Zkontrolujte *Souhrn nastavení* a klikněte na **nainstalovat**.
+8. Projděte si *souhrn nastavení* a klepněte na tlačítko **Instalovat**.
 
     ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-summary-14.png)
 
-    Po dokončení instalace Azure Backup Server instalační program okamžitě spustí instalační program agenta Microsoft Azure Recovery Services.
+    Po dokončení instalace serveru Azure Backup Server instalační program okamžitě spustí instalační program agenta služby Microsoft Azure Recovery Services.
 
-9. Spustí se instalační program agenta Microsoft Azure Recovery Services a zkontroluje připojení k Internetu. Pokud je k dispozici připojení k Internetu, pokračujte v instalaci. Pokud není k dispozici žádné připojení, zadejte podrobnosti o proxy serveru pro připojení k Internetu. Po zadání nastavení proxy serveru klikněte na **Další**.
+9. Otevře se instalační program agenta služby Microsoft Azure Recovery Services a zkontroluje připojení k Internetu. Pokud je k dispozici připojení k Internetu, pokračujte v instalaci. Pokud není k dispozici připojení, zadejte podrobnosti proxy pro připojení k Internetu. Po zadání nastavení proxy serveru klepněte na tlačítko **Další**.
 
     ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-proxy-15.png)
 
-10. Chcete-li nainstalovat agenta Microsoft Azure Recovery Services, klikněte na tlačítko **nainstalovat**.
+10. Chcete-li nainstalovat agenta služby Microsoft Azure Recovery Services, klepněte na tlačítko **Nainstalovat**.
 
     ![Azure Backup Server PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-mars-agent-16.png)
 
-    Agent Microsoft Azure Recovery Services, označovaný také jako agent Azure Backup, nakonfiguruje Azure Backup Server na Recovery Services trezor. Po nakonfigurování bude Azure Backup Server vždy zálohovat data do stejného trezoru Recovery Services.
+    Agent služby Microsoft Azure Recovery Services, nazývaný také agent Azure Backup, konfiguruje server Zálohování Azure do trezoru služby Recovery Services. Po konfiguraci bude Server Zálohování Azure vždy zálohovat data do stejného trezoru služby Recovery Services.
 
-11. Po dokončení instalace agenta Microsoft Azure Recovery Services klikněte na **Další** a spusťte další fázi: registrace Azure Backup Server pomocí Recovery Servicesho trezoru.
+11. Po dokončení instalace agenta služby Microsoft Azure Recovery Services klikněte na **Další** a spusťte další fázi: registrace serveru Azure Backup Server pomocí trezoru služby Recovery Services.
 
     ![Azure Backup Server PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-complete-16.png)
 
-    Instalační program spustí **Průvodce registrací serveru**.
+    Instalační program spustí **Průvodce registrem serveru**.
 
-12. Přepněte do svého předplatného Azure a svého Recovery Servicesho trezoru. V nabídce **připravit infrastrukturu** klikněte na **Stáhnout** a stáhněte přihlašovací údaje trezoru. Pokud tlačítko **Stáhnout** v kroku 2 není aktivní, vyberte možnost **již staženo nebo použití nejnovější instalace Azure Backup Server** k aktivaci tlačítka. Přihlašovací údaje trezoru se stáhnou do umístění, kam budete ukládat soubory ke stažení. Uvědomte si toto umístění, protože ho budete potřebovat pro další krok.
+12. Přepněte na předplatné Azure a trezor služeb pro obnovení. V nabídce **Připravit infrastrukturu** klikněte na **Stáhnout a** stáhněte přihlašovací údaje trezoru. Pokud tlačítko **Stáhnout** v kroku 2 není aktivní, vyberte **možnost Již staženo nebo pomocí nejnovější instalace serveru Azure Backup Server** tlačítko aktivovat. Přihlašovací údaje trezoru se stáhnou do umístění, kde ukládáte soubory ke stažení. Uvědomte si toto umístění, protože ho budete potřebovat pro další krok.
 
     ![Azure Backup Server PreReq2](./media/backup-mabs-install-azure-stack/download-mars-credentials-17.png)
 
-13. V nabídce **Identifikace trezoru** klikněte na **procházet** a najděte Recovery Services přihlašovací údaje trezoru.
+13. V nabídce **Identifikace úložiště** klikněte na **Procházet** a vyhledejte přihlašovací údaje trezoru služby Recovery Services.
 
     ![Azure Backup Server PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-vault-id-18.png)
 
-    V dialogovém okně **vybrat přihlašovací údaje trezoru** přejděte do umístění pro stahování, vyberte své přihlašovací údaje trezoru a klikněte na **otevřít**.
+    V dialogovém okně **Vybrat pověření trezoru** přejděte do umístění pro stahování, vyberte přihlašovací údaje trezoru a klepněte na **tlačítko Otevřít**.
 
-    Cesta k přihlašovacím údajům se zobrazí v nabídce identifikace trezoru. Kliknutím na tlačítko **Další** přejdete k nastavení šifrování.
+    Cesta k pověřením se zobrazí v nabídce Identifikace úložiště. Klepnutím na tlačítko **Další** překroušěte nastavení šifrování.
 
-14. V dialogovém okně **nastavení šifrování** zadejte heslo pro šifrování záloh a umístění pro uložení hesla a klikněte na **Další**.
+14. V dialogovém okně **Nastavení šifrování** zadejte přístupové heslo pro šifrování záloh a umístění pro uložení přístupové fráze a klepněte na tlačítko **Další**.
 
     ![Azure Backup Server PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-encryption-19.png)
 
-    Můžete zadat vlastní přístupové heslo, nebo ho vytvořit pomocí generátoru přístupového hesla. Přístupové heslo je vaše a Microsoft toto heslo neuloží ani nespravuje. Pro přípravu na havárii uložte heslo do přístupného umístění.
+    Můžete zadat vlastní přístupové heslo, nebo použít generátor přístupových frází k vytvoření jednoho pro vás. Přístupové heslo je vaše a společnost Microsoft toto přístupové heslo neukládá ani nespravuje. Chcete-li se připravit na havárii, uložte přístupové heslo na přístupné místo.
 
-    Po kliknutí na tlačítko **Další**je Azure Backup Server zaregistrován v trezoru Recovery Services. Instalační program pokračuje v instalaci SQL Server a Azure Backup Server.
+    Po klepnutí na tlačítko **Další**se server Azure Backup Server zaregistruje v trezoru služby Recovery Services. Instalační program pokračuje v instalaci serveru SQL Server a serveru Zálohování Azure.
 
     ![Azure Backup Server PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-still-installing-20.png)
 
-15. Po dokončení instalačního programu se ve stavu zobrazí, že veškerý software byl úspěšně nainstalován.
+15. Po dokončení instalačního programu stav zobrazí, že byl úspěšně nainstalován veškerý software.
 
     ![Azure Backup Server PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-done-22.png)
 
-    Po dokončení instalace se na ploše serveru vytvoří Konzola Azure Backup Server a Azure Backup Server PowerShellové ikony.
+    Po dokončení instalace se na ploše serveru vytvoří konzola Azure Backup Server a ikony Azure Backup Server PowerShell.
 
-## <a name="add-backup-storage"></a>Přidat úložiště zálohování
+## <a name="add-backup-storage"></a>Přidání úložiště záloh
 
-První záložní kopie je udržována v úložišti připojeném k Azure Backup Servermu počítači. Další informace o přidávání disků najdete v tématu [Přidání moderního úložiště záloh](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-1801).
+První záložní kopie se uchovává v úložišti připojeném k počítači Azure Backup Server. Další informace o přidávání disků naleznete v tématu [Přidání úložiště moderního zálohování](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-1801).
 
 > [!NOTE]
-> Úložiště zálohování je nutné přidat i v případě, že plánujete odeslat data do Azure. V architektuře Azure Backup Server ukládá trezor Recovery Services *druhou* kopii dat, zatímco místní úložiště obsahuje první (a povinnou) záložní kopii.
+> Úložiště záloh je potřeba přidat, i když plánujete odesílat data do Azure. V architektuře Azure Backup Server trezoru služby recovery Services obsahuje *druhou* kopii dat, zatímco místní úložiště obsahuje první (a povinné) záložní kopie.
 >
 >
 
 ## <a name="network-connectivity"></a>Připojení k síti
 
-Aby produkt mohl úspěšně fungovat, Azure Backup Server vyžaduje připojení ke službě Azure Backup. Pokud chcete ověřit, jestli má počítač připojení k Azure, použijte rutinu ```Get-DPMCloudConnection``` v konzole PowerShellu Azure Backup Server. Pokud má výstup rutiny hodnotu TRUE, pak připojení existuje, jinak není dostupné žádné připojení.
+Azure Backup Server vyžaduje připojení ke službě Azure Backup, aby produkt úspěšně fungoval. Chcete-li ověřit, zda má počítač ```Get-DPMCloudConnection``` připojení k Azure, použijte rutinu v konzole PowerShell serveru Zálohování Azure. Pokud je výstup rutiny TRUE, pak připojení existuje, jinak neexistuje žádné připojení.
 
-Kromě toho musí být předplatné Azure v dobrém stavu. Pokud chcete zjistit stav předplatného a spravovat ho, přihlaste se na [portál předplatného](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+Současně předplatné Azure musí být ve stavu v pořádku. Chcete-li zjistit stav předplatného a spravovat ho, přihlaste se na [portál předplatného](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 
 Jakmile budete znát stav připojení Azure a předplatného Azure, můžete pomocí následující tabulky zjistit dopad na nabízené funkce zálohování a obnovení.
 
-| Stav připojení | předplatné Azure | Zálohování do Azure | Zálohovat na disk | Obnovení z Azure | Obnovení z disku |
+| Stav připojení | předplatné Azure | Zálohování do Azure | Zálohování na disk | Obnovení z Azure | Obnovení z disku |
 | --- | --- | --- | --- | --- | --- |
 | Připojeno |Aktivní |Povoleno |Povoleno |Povoleno |Povoleno |
 | Připojeno |Platnost vypršela |Zastaveno |Zastaveno |Povoleno |Povoleno |
-| Připojeno |Zajištění zrušeno |Zastaveno |Zastaveno |Zastaveno a body obnovení Azure byly odstraněny |Zastaveno |
-| Ztracené připojení > 15 dní |Aktivní |Zastaveno |Zastaveno |Povoleno |Povoleno |
-| Ztracené připojení > 15 dní |Platnost vypršela |Zastaveno |Zastaveno |Povoleno |Povoleno |
-| Ztracené připojení > 15 dní |Zajištění zrušeno |Zastaveno |Zastaveno |Zastaveno a body obnovení Azure byly odstraněny |Zastaveno |
+| Připojeno |Zrušení zřízení |Zastaveno |Zastaveno |Zastaveno a odstraněny body obnovení Azure |Zastaveno |
+| Ztráta připojení > 15 dní |Aktivní |Zastaveno |Zastaveno |Povoleno |Povoleno |
+| Ztráta připojení > 15 dní |Platnost vypršela |Zastaveno |Zastaveno |Povoleno |Povoleno |
+| Ztráta připojení > 15 dní |Zrušení zřízení |Zastaveno |Zastaveno |Zastaveno a odstraněny body obnovení Azure |Zastaveno |
 
-### <a name="recovering-from-loss-of-connectivity"></a>Obnovování ze ztráty připojení
+### <a name="recovering-from-loss-of-connectivity"></a>Zotavuje se ze ztráty připojení
 
-Pokud brána firewall nebo proxy server brání v přístupu k Azure, přidejte následující adresy domény do seznamu povolených profilů brány firewall nebo proxy serveru:
+Pokud brána firewall nebo proxy server brání přístupu k Azure, přidejte do seznamu povolených profilů brány firewall/proxy následující adresy domén:
 
 - `http://www.msftncsi.com/ncsi.txt`
 - \*.Microsoft.com
@@ -343,26 +343,26 @@ Pokud brána firewall nebo proxy server brání v přístupu k Azure, přidejte 
 - \*.microsoftonline.com
 - \*.windows.net
 
-Po obnovení připojení k Azure do Azure Backup Server stav předplatného Azure určí operace, které je možné provést. Po **připojení**serveru použijte tabulku v [Možnosti připojení k síti](backup-mabs-install-azure-stack.md#network-connectivity) , abyste viděli dostupné operace.
+Po obnovení připojení k Azure na Azure Backup Server, stav předplatného Azure určuje operace, které lze provést. Jakmile je server **připojen**, použijte tabulku v [části Připojení k síti,](backup-mabs-install-azure-stack.md#network-connectivity) abyste viděli dostupné operace.
 
 ### <a name="handling-subscription-states"></a>Zpracování stavů předplatného
 
-Je možné změnit předplatné Azure ze stavu, ve kterém *vypršela platnost* , nebo *Zrušit* stav na *aktivní* . I když stav předplatného není *aktivní*:
+Je možné změnit předplatné Azure z *vypršela* nebo *deprovisioned* stavu *aktivní* ho stavu. Zatímco stav předplatného není *aktivní*:
 
-- Při *zrušení zřízení*předplatného ztratí funkčnost. Obnovení předplatného na *aktivní*revives funkce zálohování a obnovení. Pokud se zálohovaná data na místním disku uchovávají s dostatečně velkým obdobím uchovávání, můžou se data ze zálohy načíst. Data záloh v Azure se ale irretrievably ztratí, jakmile předplatné vstoupí do stavu *zrušení zřízení* .
-- I když platnost předplatného *vypršela*, ztratí funkčnost. Po *vypršení platnosti*předplatného se naplánované zálohy nespustí.
+- Zatímco předplatné je *deprovisioned*, ztratí funkce. Obnovení předplatného *active*, oživí funkce zálohování a obnovení. Pokud byla záložní data na místním disku zachována s dostatečně velkou dobou uchování, lze tato záložní data načíst. Záložní data v Azure se však nenávratně ztratí, jakmile předplatné vstoupí do stavu *Deprovisioned.*
+- Při vypršení *Expired*platnosti předplatného ztratí funkce. Plánované zálohy se nespustí, pokud *vypršela platnost*předplatného .
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud Microsoft Azure Backup server selhává s chybami při fázi nastavení (nebo zálohování nebo obnovení), přečtěte si [dokument kódy chyb](https://support.microsoft.com/kb/3041338).
-Můžete se také podívat na [Azure Backup souvisejících nejčastějších](backup-azure-backup-faq.md) dotazech.
+Pokud server Microsoft Azure Backup selže s chybami během fáze instalace (nebo zálohování nebo obnovení), přečtěte si [dokument kódů chyb](https://support.microsoft.com/kb/3041338).
+Můžete také odkazovat na [nejčastější dotazy týkající se azure backup](backup-azure-backup-faq.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-Článek [Příprava prostředí pro aplikaci DPM](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1801)obsahuje informace o podporovaných konfiguracích Azure Backup Server.
+Článek [Příprava prostředí pro aplikaci DPM](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1801)obsahuje informace o podporovaných konfiguracích serveru Zálohování Azure.
 
-Následující články vám pomohou získat hlubší princip ochrany zatížení pomocí Microsoft Azure Backup serveru.
+Následující články můžete získat hlubší znalosti ochrany úloh pomocí Microsoft Azure Backup Server.
 
-- [Zálohování SQL Server](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)
-- [Zálohování serveru SharePoint](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
+- [Zálohování serveru SQL Server](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)
+- [Zálohování sharepointového serveru](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
 - [Alternativní zálohování serveru](backup-azure-alternate-dpm-server.md)

@@ -4,10 +4,10 @@ description: Analyzujte využití a výkon vaší desktopové aplikace Windows p
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.openlocfilehash: 8234b9ba2c92fc64cfa8f598db99954e00caab45
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670827"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Monitorování využití a výkonu klasických desktopových aplikací pro Windows
@@ -20,7 +20,7 @@ Aplikace hostované místně, v Azure a jiných cloudech mohou využít všech v
 3. V sadě Visual Studio upravte balíčky NuGet projektu aplikace a přidejte Microsoft.ApplicationInsights.WindowsServer. (Nebo zvolte Microsoft.ApplicationInsights, pokud chcete prosté rozhraní API bez standardních modulů kolekce telemetrie.)
 4. Nastavte klíč instrumentace, buď ve vašem kódu:
    
-    `TelemetryConfiguration.Active.InstrumentationKey = "` *key* `";`
+    `TelemetryConfiguration.Active.InstrumentationKey = "` *váš klíč* `";`
    
     nebo v souboru ApplicationInsights.config (pokud jste nainstalovali jeden ze standardních balíčků telemetrie):
    
@@ -28,9 +28,9 @@ Aplikace hostované místně, v Azure a jiných cloudech mohou využít všech v
    
     Pokud používáte soubor ApplicationInsights.config, ujistěte se, že jsou jeho vlastnosti v Průzkumníku řešení nastavené na: **Build Action = Content, Copy to Output Directory = Copy**.
 5. [Použijte rozhraní API](../../azure-monitor/app/api-custom-events-metrics.md) k odesílání telemetrie.
-6. Spusťte aplikaci a podívejte se na telemetrii v prostředku, který jste vytvořili v Azure Portal.
+6. Spusťte aplikaci a podívejte se na telemetrii v prostředku, který jste vytvořili na webu Azure Portal.
 
-## <a name="telemetry"></a>Příklad kódu
+## <a name="example-code"></a><a name="telemetry"></a>Příklad kódu
 ```csharp
 using Microsoft.ApplicationInsights;
 
@@ -70,9 +70,9 @@ using Microsoft.ApplicationInsights;
 
 ## <a name="override-storage-of-computer-name"></a>Přepsat úložiště názvu počítače
 
-Ve výchozím nastavení bude tato sada SDK shromažďovat a ukládat název počítače, který generuje telemetrii. Pro přepsání kolekce potřebujete použít inicializátor telemetrie:
+Ve výchozím nastavení bude tato sada SDK shromažďovat a ukládat název počítače vyzařující telemetrii. Chcete-li přepsat kolekci, musíte použít telemetrickou inicializátor:
 
-**Pište vlastní TelemetryInitializer, jak je uvedeno níže.**
+**Napište vlastní TelemetryInitializer, jak je uvedeno níže.**
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -93,7 +93,7 @@ namespace CustomInitializer.Telemetry
     }
 }
 ```
-Vytvořte instanci inicializátoru v metodě `Program.cs` `Main()` níže v části nastavení klíče instrumentace:
+Vytvořte iniciaci v `Program.cs` `Main()` níže uvedené metodě nastavení instrumentačního klíče:
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;

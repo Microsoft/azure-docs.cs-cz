@@ -1,6 +1,6 @@
 ---
-title: Vytváření incidentů z upozornění v ověřovacích událostech Azure | Microsoft Docs
-description: Naučte se vytvářet incidenty z výstrah v Azure Sentinel.
+title: Vytváření incidentů z výstrah v Azure Sentinelu | Dokumenty společnosti Microsoft
+description: Zjistěte, jak vytvářet incidenty z výstrah v Azure Sentinelu.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,57 +16,57 @@ ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
 ms.openlocfilehash: b29b337d7487087bec268528ff26617f7a995235
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77587970"
 ---
 # <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>Automatické vytváření incidentů z výstrah zabezpečení společnosti Microsoft
 
-Výstrahy aktivované v řešeních zabezpečení Microsoftu, která jsou připojená ke službě Azure Sentinel, jako je Microsoft Cloud App Security a Rozšířená ochrana před internetovými útoky, nevytvářejí v Azure Sentinel automaticky incidenty. Ve výchozím nastavení platí, že když připojíte řešení Microsoftu ke službě Azure Sentinel, všechna upozornění vygenerovaná v této službě se uloží jako nezpracovaná data v Azure Sentinel v tabulce výstrahy zabezpečení v pracovním prostoru Azure Sentinel. Tato data pak můžete použít stejně jako jakákoli jiná nezpracovaná data, ke kterým se připojíte pomocí ověřovacích dat.
+Výstrahy aktivované v řešeních zabezpečení Microsoftu, která jsou připojená k Azure Sentinelu, jako je Microsoft Cloud App Security a Azure Advanced Threat Protection, nevytvářejí incidenty v Azure Sentinelu automaticky. Ve výchozím nastavení při připojení řešení Microsoft u Azure Sentinelu se všechny výstrahy generované v této službě uloží jako nezpracovaná data v Azure Sentinelu v tabulce Výstrahy zabezpečení ve vašem pracovním prostoru Azure Sentinel. Tato data pak můžete použít jako jakákoli jiná nezpracovaná data, která připojíte k Sentinelu.
 
-Pomocí pokynů v tomto článku můžete snadno nakonfigurovat službu Azure Sentinel tak, aby automaticky vytvářela incidenty pokaždé, když se aktivuje výstraha v rámci připojeného řešení zabezpečení Microsoftu.
+Azure Sentinel můžete snadno nakonfigurovat tak, aby automaticky vytvářel incidenty při každém spuštění výstrahy v připojeném řešení zabezpečení Microsoftu podle pokynů v tomto článku.
 
-## <a name="prerequisites"></a>Předpoklady
-Aby bylo možné vytvářet incidenty z výstrah služby zabezpečení, je nutné [připojit řešení zabezpečení společnosti Microsoft](connect-data-sources.md#data-connection-methods) .
+## <a name="prerequisites"></a>Požadavky
+Chcete-li povolit vytváření incidentů pomocí výstrah služby zabezpečení, je nutné [připojit řešení zabezpečení společnosti Microsoft.](connect-data-sources.md#data-connection-methods)
 
-## <a name="using-microsoft-security-incident-creation-analytic-rules"></a>Pomocí analytických pravidel pro vytváření incidentů zabezpečení Microsoftu
+## <a name="using-microsoft-security-incident-creation-analytic-rules"></a>Použití analytických pravidel pro vytváření incidentů zabezpečení společnosti Microsoft
 
-Pomocí předdefinovaných pravidel dostupných v Azure Sentinel můžete zvolit, která připojená řešení zabezpečení Microsoftu by měla v reálném čase vytvářet incidenty Sentinel Azure automaticky. Můžete také upravit pravidla a definovat konkrétnější možnosti pro filtrování, které výstrahy vygenerované řešením zabezpečení Microsoftu by měly vytvářet incidenty v Azure Sentinel. Můžete se třeba rozhodnout vytvořit incidenty Sentinel Azure automaticky jenom z Azure Security Center výstrahy s vysokou závažností.
+Pomocí předdefinovaných pravidel dostupných v Azure Sentinelu si můžete vybrat, která propojená řešení zabezpečení Microsoftu by měla automaticky vytvářet incidenty Azure Sentinelu v reálném čase. Můžete také upravit pravidla definovat konkrétnější možnosti pro filtrování, které z výstrah generovaných řešením zabezpečení Microsoft u měl vytvořit incidenty v Azure Sentinelu. Můžete například automaticky vytvářet incidenty Azure Sentinelu pouze z výstrah Azure Security Center s vysokou závažností.
 
-1. V Azure Portal v části Azure Sentinel vyberte **Analytics**.
+1. Na webu Azure Portal v části Azure Sentinel vyberte **Analytics**.
 
-1. Vyberte kartu **šablony pravidel** a zobrazte všechna předdefinovaná analytická pravidla.
+1. Výběrem karty **Šablony pravidel** zobrazíte všechna předdefinovaná analytická pravidla.
 
     ![Šablony pravidel](media/incidents-from-alerts/rule-templates.png)
 
-1. Vyberte šablonu pravidla **Microsoft Security** Analytics, kterou chcete použít, a klikněte na **vytvořit pravidlo**.
+1. Zvolte šablonu pravidel analýzy **zabezpečení společnosti Microsoft,** kterou chcete použít, a klikněte na **tlačítko Vytvořit pravidlo**.
 
     ![Pravidlo analýzy zabezpečení](media/incidents-from-alerts/security-analytics-rule.png)
 
-1. Můžete upravit podrobnosti pravidla a vybrat, jestli se mají filtrovat výstrahy, které vytvoří incidenty podle závažnosti výstrahy nebo podle textu obsaženého v názvu výstrahy.  
+1. Můžete upravit podrobnosti pravidla a zvolit filtrování výstrah, které vytvoří incidenty podle závažnosti výstrahy nebo podle textu obsaženého v názvu výstrahy.  
       
-    Pokud například **v poli** filtr podle závažnosti zvolíte možnost **Azure Security Center** a v poli **filtrovat podle závažnosti** zvolíte možnost **Vysoká** , budou automaticky ve službě Azure Sentinel automaticky vytvořeny pouze vysoké závažnost Azure Security Center výstrahy.  
+    Pokud například zvolíte **Azure Security Center** v poli **služby zabezpečení Microsoftu** a zvolíte **Vysoká** v poli **Filtr podle závažnosti,** budou incidenty v Azure Sentinelu automaticky vytvářet jenom výstrahy Azure Security Center s vysokou závažností.  
 
-    ![Průvodce vytvořením pravidla](media/incidents-from-alerts/create-rule-wizard.png)
+    ![Vytvořit průvodce pravidlem](media/incidents-from-alerts/create-rule-wizard.png)
 
-1. Můžete také vytvořit nové pravidlo **zabezpečení společnosti Microsoft** , které filtruje výstrahy z různých služeb zabezpečení společnosti Microsoft kliknutím na **+ vytvořit** a vybrat **pravidlo pro vytvoření incidentu Microsoft**.
+1. Můžete také vytvořit nové pravidlo **zabezpečení společnosti Microsoft,** které filtruje výstrahy z různých služeb zabezpečení společnosti Microsoft, kliknutím na **tlačítko +Vytvořit** a výběrem **pravidla pro vytváření incidentů společnosti Microsoft**.
 
-    ![Pravidlo vytvoření incidentu](media/incidents-from-alerts/incident-creation-rule.png)
+    ![Pravidlo pro vytvoření incidentu](media/incidents-from-alerts/incident-creation-rule.png)
 
-  Pro každý typ **služby zabezpečení Microsoft** můžete vytvořit více než jedno pravidlo analytického **zabezpečení společnosti Microsoft** . Tím se nevytvoří duplicitní incidenty, protože každé pravidlo se používá jako filtr. I v případě, že se výstraha shoduje s více než jedním pravidlem analytického řešení **společnosti Microsoft** , vytvoří se jenom jeden incident Sentinel Azure.
+  Můžete vytvořit více než jedno analytické pravidlo **zabezpečení společnosti Microsoft** pro každý typ **služby zabezpečení společnosti Microsoft.** Tím se nevytvoří duplicitní incidenty, protože každé pravidlo se používá jako filtr. I v případě, že výstraha odpovídá více než jedno analytické pravidlo **zabezpečení Microsoft,** vytvoří pouze jeden incident Azure Sentinel.
 
-## <a name="enable-incident-generation-automatically-during-connection"></a>Povolit generování incidentů automaticky během připojení
- Když se připojíte k řešení zabezpečení Microsoftu, můžete vybrat, jestli chcete, aby výstrahy z řešení zabezpečení automaticky generovaly incidenty v Azure Sentinel automaticky.
+## <a name="enable-incident-generation-automatically-during-connection"></a>Povolit automatické generování incidentů během připojení
+ Když připojíte řešení zabezpečení Microsoftu, můžete vybrat, jestli chcete, aby výstrahy z řešení zabezpečení automaticky generovaly incidenty v Azure Sentinelu automaticky.
 
-1. Připojte zdroj dat řešení Microsoft Security. 
+1. Připojte zdroj dat řešení zabezpečení společnosti Microsoft. 
 
-   ![Generovat incidenty zabezpečení](media/incidents-from-alerts/generate-security-incidents.png)
+   ![Generovat bezpečnostní incidenty](media/incidents-from-alerts/generate-security-incidents.png)
 
-1. V části **vytvořit incidenty** vyberte **Povolit** , pokud chcete povolit výchozí analytické pravidlo, které automaticky vytvoří incidenty z výstrah vygenerovaných v připojené službě zabezpečení. Toto pravidlo pak můžete upravit v části **Analýza** a pak na **aktivní pravidla**.
+1. V části **Vytvořit incidenty** vyberte **Povolit,** chcete-li povolit výchozí analytické pravidlo, které automaticky vytváří incidenty z výstrah generovaných v připojené službě zabezpečení. Toto pravidlo pak můžete upravit v části **Analytics** a potom **v části Aktivní pravidla**.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Abyste mohli začít používat službu Azure Sentinel, potřebujete Microsoft Azure předplatné. Pokud předplatné nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
-- Naučte se, jak začlenit [data do Azure Sentinel](quickstart-onboard.md)a [získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
+- Abyste mohli začít pracovat s Azure Sentinelem, potřebujete předplatné Microsoft Azure. Pokud nemáte předplatné, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
+- Zjistěte, jak [založit data do Azure Sentinelu](quickstart-onboard.md)a [získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).

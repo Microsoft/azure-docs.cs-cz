@@ -1,6 +1,6 @@
 ---
-title: Změna datových proudů v rozhraní Azure Cosmos DB API pro MongoDB
-description: Naučte se používat rozhraní Change Streams n Azure Cosmos DB API pro MongoDB k získání změn provedených ve vašich datech.
+title: Změna datových proudů v rozhraní API Služby Azure Cosmos DB pro MongoDB
+description: Zjistěte, jak používat datové proudy změn n rozhraní API Azure Cosmos DB pro MongoDB k získání změn provedených v datech.
 author: srchi
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: srchi
 ms.openlocfilehash: ec1ec1a8a80953f8988355341ee7128bd29b982d
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77467773"
 ---
-# <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Změna datových proudů v rozhraní Azure Cosmos DB API pro MongoDB
+# <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Změna datových proudů v rozhraní API Služby Azure Cosmos DB pro MongoDB
 
-Podpora [kanálů změn](change-feed.md) v rozhraní Azure Cosmos DB API pro MongoDB je k dispozici prostřednictvím rozhraní API Change Streams. Pomocí rozhraní Change Streams API můžou vaše aplikace získat změny provedené v kolekci nebo na položky v jednom horizontálních oddílů. Později můžete na základě výsledků provádět další akce. Změny položek v kolekci jsou zachyceny v pořadí podle doby jejich úpravy a je zaručeno pořadí řazení podle horizontálních oddílů klíče.
+[Podpora kanálu změn](change-feed.md) v rozhraní API Azure Cosmos DB pro MongoDB je dostupná pomocí rozhraní API datových proudů změn. Pomocí rozhraní API datových proudů změn, vaše aplikace můžete získat změny provedené v kolekci nebo položky v jednom oddílu. Později můžete provést další akce na základě výsledků. Změny položek v kolekci jsou zachyceny v pořadí jejich čas úpravy a pořadí řazení je zaručena na klíč střepu.
 
 > [!NOTE]
-> Chcete-li použít změnu datových proudů, vytvořte účet s verzí 3,6 rozhraní API Azure Cosmos DB pro MongoDB nebo novější verzi. Pokud spustíte příklady pro Stream změn v předchozí verzi, může se zobrazit chyba `Unrecognized pipeline stage name: $changeStream`. 
+> Chcete-li použít datové proudy změn, vytvořte účet s verzí 3.6 rozhraní API Azure Cosmos DB pro MongoDB nebo novější verzi. Pokud spustíte příklady datového proudu změn proti `Unrecognized pipeline stage name: $changeStream` starší verzi, může se zobrazit chyba. 
 
-Následující příklad ukazuje, jak získat datové proudy změn pro všechny položky v kolekci. Tento příklad vytvoří kurzor pro sledování položek při jejich vložení, aktualizaci nebo nahrazení. Pro získání datových proudů změn se vyžadují $match fáze, $project fáze a možnost fullDocument. Sledování operací odstranění pomocí datových proudů není aktuálně podporováno. Jako alternativní řešení můžete přidat měkké označení pro položky, které se odstraňují. Můžete například přidat atribut do položky s názvem "Deleted" a nastavit ji na hodnotu "true" a nastavit hodnotu TTL pro položku, abyste ji mohli automaticky odstranit a také ji sledovat.
+Následující příklad ukazuje, jak získat datové proudy změn na všechny položky v kolekci. Tento příklad vytvoří kurzor pro sledování položek při jejich vložení, aktualizaci nebo nahrazení. Fáze $match, fáze $project a fullDocument možnost jsou nutné získat datové proudy změn. Sledování operací odstranění pomocí datových proudů změn není aktuálně podporováno. Jako řešení můžete přidat měkkou značku na položky, které jsou odstraněny. Můžete například přidat atribut v položce s názvem "odstraněno" a nastavit jej na hodnotu "true" a nastavit ttl na položku, takže ji můžete automaticky odstranit a sledovat.
 
 ```javascript
 var cursor = db.coll.watch(
@@ -38,7 +38,7 @@ while (!cursor.isExhausted()) {
 }
 ```
 
-Následující příklad ukazuje, jak získat změny položek v jednom horizontálních oddílů. Tento příklad načte změny položek, které mají klíč horizontálních oddílů se rovná "a" a hodnotu klíče horizontálních oddílů rovnající se 1.
+Následující příklad ukazuje, jak získat změny položek v jednom šiřidlo. Tento příklad získá změny položek, které mají klíč střepu rovná "a" a hodnota klíče střepu rovná "1".
 
 ```javascript
 var cursor = db.coll.watch(
@@ -59,22 +59,22 @@ var cursor = db.coll.watch(
 
 ## <a name="current-limitations"></a>Aktuální omezení
 
-Při použití datových proudů změn platí následující omezení:
+Následující omezení platí při použití datových proudů změn:
 
-* Ve výstupním dokumentu se zatím nepodporují vlastnosti `operationType` a `updateDescription`.
-* Typy operací `insert`, `update`a `replace` se momentálně podporují. Operace odstranění nebo jiné události ještě nejsou podporované.
+* `operationType` Vlastnosti `updateDescription` a ještě nejsou podporovány ve výstupním dokumentu.
+* Typy `insert` `update`, `replace` a operace jsou aktuálně podporovány. Operace odstranění nebo jiné události ještě nejsou podporovány.
 
-V důsledku těchto omezení jsou vyžadovány $match fáze, $project fáze a možnosti fullDocument, jak je znázorněno v předchozích příkladech.
+Z důvodu těchto omezení jsou vyžadovány $match fáze, $project fáze a fullDocument možnosti, jak je znázorněno v předchozích příkladech.
 
 ## <a name="error-handling"></a>Zpracování chyb
 
-Při použití datových proudů změn jsou podporovány následující chybové kódy a zprávy:
+Při použití datových proudů změn jsou podporovány následující kódy chyb a zprávy:
 
-* **Kód chyby HTTP 429** – Pokud je datový proud změny omezený, vrátí prázdnou stránku.
+* **Kód chyby HTTP 429** - Při omezení datového proudu změn vrátí prázdnou stránku.
 
-* **NamespaceNotFound (typem operace OperationType unvalidate)** – Pokud spustíte datový proud změn v kolekci, která neexistuje, nebo pokud je kolekce vyřazena, vrátí se `NamespaceNotFound` chyba. Vzhledem k tomu, že vlastnost `operationType` nelze vrátit do výstupního dokumentu namísto `operationType Invalidate` chyby, je vrácena chyba `NamespaceNotFound`.
+* **NamespaceNotFound (OperationType Invalidate)** - Pokud spustíte datový proud změny v kolekci, `NamespaceNotFound` která neexistuje, nebo pokud je kolekce vynechána, je vrácena chyba. Vzhledem `operationType` k tomu, že vlastnost nemůže být `operationType Invalidate` vrácena `NamespaceNotFound` ve výstupním dokumentu, místo chyby je vrácena chyba.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Využijte čas k automatickému vypršení platnosti dat v rozhraní Azure Cosmos DB API pro MongoDB](mongodb-time-to-live.md)
-* [Indexování v rozhraní API Azure Cosmos DB pro MongoDB](mongodb-indexing.md)
+* [Využijte čas k automatickému vypršení platnosti dat v rozhraní API Azure Cosmos DB pro MongoDB](mongodb-time-to-live.md)
+* [Indexování v rozhraní API Služby Azure Cosmos DB pro MongoDB](mongodb-indexing.md)

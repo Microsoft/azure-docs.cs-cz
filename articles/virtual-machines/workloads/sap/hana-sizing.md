@@ -1,6 +1,6 @@
 ---
-title: Určení velikosti SAP HANA v Azure (velké instance) | Microsoft Docs
-description: Určení velikosti SAP HANA v Azure (velké instance).
+title: Dimenzování SAP HANA v Azure (velké instance) | Dokumenty společnosti Microsoft
+description: Dimenzování SAP HANA v Azure (velké instance).
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -14,25 +14,25 @@ ms.date: 09/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 404f8318816edcc2cfd1c50ca42304ff6ec93039
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77616912"
 ---
 # <a name="sizing"></a>Velikosti
 
-Velikost pro velkou instanci HANA se neliší od obecné velikosti pro HANA. Pro existující a nasazené systémy, které chcete přesunout z jiných RDBMS na HANA, poskytuje SAP řadu sestav, které se spouštějí ve stávajících systémech SAP. Pokud se databáze přesune na HANA, tyto sestavy kontrolují data a počítají požadavky na paměť pro instanci HANA. Další informace o tom, jak tyto sestavy spustit a jak získat nejnovější opravy nebo verze, najdete v následujících komentářích ke službě SAP:
+Změna velikosti pro velké instance HANA se neliší od velikosti pro HANA obecně. Pro stávající a nasazené systémy, které chcete přesunout z jiných RDBMS na HANA, SAP poskytuje řadu sestav, které běží na stávajících systémech SAP. Pokud je databáze přesunuta na HANA, tyto sestavy zkontrolovat data a vypočítat požadavky na paměť pro instanci HANA. Další informace o tom, jak spustit tyto sestavy a získat jejich nejnovější opravy nebo verze, přečtěte si následující poznámky SAP:
 
-- [Poznámky SAP #1793345 – určení velikosti pro SAP Suite na HANA](https://launchpad.support.sap.com/#/notes/1793345)
-- [Zpráva SAP Poznámka #1872170 – sada v HANA a S/4 HANA – sestava velikosti](https://launchpad.support.sap.com/#/notes/1872170)
-- [Poznámky SAP #2121330 – Nejčastější dotazy: SAP BW v sestavě pro změny velikosti HANA](https://launchpad.support.sap.com/#/notes/2121330)
-- [Poznámka SAP Poznámka #1736976 – sestava velikosti pro ČERNOBÍLé nasazení v HANA](https://launchpad.support.sap.com/#/notes/1736976)
-- [Poznámka SAP #2296290 – Nová sestava velikosti pro šířku v HANA](https://launchpad.support.sap.com/#/notes/2296290)
+- [SAP Note #1793345 - Velikost pro SAP Suite na HANA](https://launchpad.support.sap.com/#/notes/1793345)
+- [SAP Note #1872170 - Sada na HANA a S/4 HANA sestavy velikosti](https://launchpad.support.sap.com/#/notes/1872170)
+- [SAP Note #2121330 – nejčastější dotazy: SAP BW na sestavě velikosti HANA](https://launchpad.support.sap.com/#/notes/2121330)
+- [SAP Note #1736976 - sestava velikosti pro BW na HANA](https://launchpad.support.sap.com/#/notes/1736976)
+- [SAP Note #2296290 - Nová sestava velikosti pro BW na HANA](https://launchpad.support.sap.com/#/notes/2296290)
 
-Pro implementace zelených polí je k dispozici Sizer SAP pro výpočet požadavků na paměť pro implementaci softwaru SAP nad HANA.
+Pro zelené pole implementace SAP Quick Sizer je k dispozici pro výpočet požadavků na paměť implementace softwaru SAP nad HANA.
 
-Požadavky na paměť pro HANA zvýšit objem dat roste. Zamyslete se nad aktuální spotřebou paměti, abyste mohli předpovědět, co bude v budoucnosti. Na základě požadavků na paměť můžete namapovat svou žádost na jednu z SKU velkých instancí HANA.
+Požadavky na paměť pro HANA zvýšit s růstem objemu dat. Uvědomte si aktuální spotřebu paměti, která vám pomůže předpovědět, co to bude v budoucnu. Na základě požadavků na paměť pak můžete mapovat poptávku do jednoho z velkých sad Itu HANA velké instance.
 
 **Další kroky**
-- Odkazy na [požadavky na registraci](hana-onboarding-requirements.md)
+- Odkazovat [na požadavky na připojení](hana-onboarding-requirements.md)

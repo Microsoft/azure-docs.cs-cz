@@ -1,6 +1,6 @@
 ---
-title: Povolit transparentní šifrování dat pro Stretch Database
-description: Povolit transparentní šifrování dat (TDE) pro SQL Server Stretch Database v Azure
+title: Povolit transparentní šifrování dat pro roztažnou databázi
+description: Povolení transparentního šifrování dat (TDE) pro databázi roztažení serveru SQL Server v Azure
 services: sql-server-stretch-database
 documentationcenter: ''
 ms.assetid: a44ed8f5-b416-4c41-9b1e-b7271f10bdc3
@@ -15,42 +15,42 @@ ms.reviewer: jroth
 manager: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 465338bb793ad7b4fc406e9d1c073b9dc0dc06c8
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74034013"
 ---
-# <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a>Povolit transparentní šifrování dat (TDE) pro Stretch Database v Azure
+# <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a>Povolení transparentního šifrování dat (TDE) pro roztažnou databázi v Azure
 > [!div class="op_single_selector"]
-> * [Azure Portal](sql-server-stretch-database-encryption-tde.md)
+> * [Portál Azure](sql-server-stretch-database-encryption-tde.md)
 > * [TSQL](sql-server-stretch-database-tde-tsql.md)
 >
 >
 
-Transparentní šifrování dat (TDE) pomáhá chránit před hrozbou škodlivých aktivit tím, že provádí šifrování a dešifrování databáze, přidružených záloh a souborů protokolu transakcí v reálném čase bez nutnosti změny aplikace.
+Transparentní šifrování dat (TDE) pomáhá chránit před hrozbou škodlivé aktivity prováděním šifrování a dešifrování databáze v reálném čase, přidružené zálohy a soubory protokolu transakcí v klidovém stavu bez nutnosti změny v aplikaci.
 
-TDE šifruje úložiště celé databáze pomocí symetrického klíče, který se nazývá šifrovací klíč databáze. Šifrovací klíč databáze je chráněn integrovaným certifikátem serveru. Integrovaný certifikát serveru je pro každý server Azure jedinečný. Microsoft tyto certifikáty automaticky přetočí nejméně každých 90 dnů. Obecný popis TDE naleznete v tématu [Transparentní šifrování dat].
+Transparentní šifrování dat šifruje úložiště celé databáze pomocí symetrického klíče nazývaného šifrovací klíč databáze. Šifrovací klíč databáze je chráněn integrovaným certifikátem serveru. Integrovaný certifikát serveru je jedinečný pro každý server Azure. Společnost Microsoft automaticky otočí tyto certifikáty alespoň každých 90 dní. Obecný popis TDE naleznete v tématu [Transparentní šifrování dat (TDE)].
 
 ## <a name="enabling-encryption"></a>Povolení šifrování
-Pokud chcete povolit TDE pro databázi Azure, která ukládá data migrovaná z databáze SQL Server s povolenou funkcí Stretch, proveďte následující akce:
+Chcete-li povolit TDE pro databázi Azure, která ukládá data migrovaná z databáze SQL Serveru s podporou stretch, proveďte následující kroky:
 
-1. Otevřete databázi v [Azure Portal](https://portal.azure.com)
-2. V okně databáze klikněte na tlačítko **Nastavení** .
-3. Vyberte možnost **transparentní šifrování dat** ![][1]
-4. Vyberte nastavení **zapnuto** a pak vyberte **Uložit**
+1. Otevření databáze na [webu Azure Portal](https://portal.azure.com)
+2. V okně databáze klepněte na tlačítko **Nastavení.**
+3. Výběr možnosti **Transparentní šifrování dat**![][1]
+4. Vyberte nastavení **Zapnuto** a pak vyberte **Uložit**
    ![][2]
 
 ## <a name="disabling-encryption"></a>Zakázání šifrování
-Pokud chcete zakázat TDE pro databázi Azure, která ukládá data migrovaná z databáze SQL Server s povolenou funkcí Stretch, proveďte následující akce:
+Chcete-li zakázat TDE pro databázi Azure, která ukládá data migrovaná z databáze SQL Serveru s podporou stretch, proveďte následující kroky:
 
-1. Otevřete databázi v [Azure Portal](https://portal.azure.com)
-2. V okně databáze klikněte na tlačítko **Nastavení** .
-3. Vybrat možnost **transparentní šifrování dat**
-4. Vyberte nastavení **vypnuto** a pak vyberte **Uložit** .
+1. Otevření databáze na [webu Azure Portal](https://portal.azure.com)
+2. V okně databáze klepněte na tlačítko **Nastavení.**
+3. Výběr možnosti **Transparentní šifrování dat**
+4. Vyberte nastavení **Vypnuto** a pak vyberte **Uložit**
 
 <!--Anchors-->
-[Transparentní šifrování dat]: https://msdn.microsoft.com/library/bb934049.aspx
+[Transparentní šifrování dat (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
 
 
 <!--Image references-->

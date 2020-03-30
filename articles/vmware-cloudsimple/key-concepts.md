@@ -1,7 +1,7 @@
 ---
-title: Klíčové pojmy pro správu řešení Azure VMware podle CloudSimple
+title: Klíčové koncepty pro správu řešení Azure VMware pomocí CloudSimple
 titleSuffix: Azure VMware Solution by CloudSimple
-description: Popisuje klíčové koncepty pro správu řešení Azure VMware podle CloudSimple
+description: Popisuje klíčové koncepty pro správu řešení Azure VMware pomocí CloudSimple.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 04/24/2019
@@ -10,55 +10,55 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: efe6cc132b062e833dc85c13cf2f6c5f6289484c
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77564615"
 ---
-# <a name="key-concepts-for-administration-of-azure-vmware-solutions-by-cloudsimple"></a>Klíčové koncepty pro správu řešení Azure VMware podle CloudSimple
+# <a name="key-concepts-for-administration-of-azure-vmware-solutions-by-cloudsimple"></a>Klíčové koncepty pro správu řešení Azure VMware pomocí CloudSimple
 
-Správa řešení Azure VMware podle CloudSimple vyžaduje porozumění následujícím koncepcím:
+Správa řešení Azure VMware pomocí CloudSimple vyžaduje pochopení následujících konceptů:
 
-* Služba CloudSimple, která se zobrazuje jako řešení Azure VMware podle CloudSimple-Service
-* Uzel CloudSimple, který se zobrazuje jako řešení Azure VMware podle CloudSimple-Node
-* Privátní cloud CloudSimple
-* Síťové služby
-* Virtuální počítač CloudSimple, který se zobrazuje jako řešení Azure VMware podle CloudSimple – virtuální počítač
+* Služba CloudSimple, která se zobrazuje jako řešení Azure VMware od CloudSimple – služba
+* Uzel CloudSimple, který se zobrazuje jako řešení Azure VMware od CloudSimple – uzel
+* CloudSimple privátní cloud
+* Síť služeb
+* CloudSimple virtuální počítač, který se zobrazí jako Azure VMware Solutions od CloudSimple – virtuální počítač
 
-## <a name="cloudsimple-service"></a>Služba CloudSimple
+## <a name="cloudsimple-service"></a>CloudSimple služba
 
-Pomocí služby CloudSimple můžete vytvořit a spravovat všechny prostředky, které jsou přidružené k řešení VMware pomocí CloudSimple z Azure Portal. Vytvořte prostředek služby v každé oblasti, ve které chcete službu používat.
+Pomocí služby CloudSimple můžete vytvářet a spravovat všechny prostředky přidružené k řešení VMware pomocí CloudSimple z portálu Azure. Vytvořte prostředek služby ve všech oblastech, kde chcete službu používat.
 
-Přečtěte si další informace o [službě CloudSimple](cloudsimple-service.md).
+Další informace o [službě CloudSimple](cloudsimple-service.md).
 
-## <a name="cloudsimple-node"></a>Uzel CloudSimple
+## <a name="cloudsimple-node"></a>CloudSimple uzel
 
-Uzel CloudSimple je vyhrazený, holé hostitel s více technologiemi a hostitele úložiště, do kterého je nasazený VMware ESXi hypervisor. Tento uzel je pak začleněn do platforem VMware vSphere, vCenter, síti vSAN a NSX. Jsou povolené i síťové služby CloudSimple a hraniční sítě. Každý uzel slouží jako jednotka výpočetní kapacity a úložiště, kterou můžete zřídit pro vytváření [privátních cloudů CloudSimple](cloudsimple-private-cloud.md). Uzly zřídíte nebo rezervujete v oblasti, kde je dostupná služba CloudSimple.
+Uzel CloudSimple je vyhrazený, holý, hyperkonvergovaný výpočetní a úložný hostitel, do kterého je nasazen hypervisor VMware ESXi. Tento uzel je pak začleněn do platforem VMware vSphere, vCenter, vSAN a NSX. CloudSimple síťové služby a hraniční síťové služby jsou také povoleny. Každý uzel slouží jako jednotka výpočetní a úložné kapacity, kterou můžete zřídit k vytvoření [privátních cloudových cloudových cloudů](cloudsimple-private-cloud.md). Zřizujete nebo rezervujete uzly v oblasti, kde je služba CloudSimple k dispozici.
 
-Přečtěte si další informace o [CloudSimple uzlech](cloudsimple-node.md).
+Další informace o [cloudových jednoduchých uzlech](cloudsimple-node.md).
 
-## <a name="cloudsimple-private-cloud"></a>Privátní cloud CloudSimple
+## <a name="cloudsimple-private-cloud"></a>CloudSimple privátní cloud
 
-Privátní cloud CloudSimple je izolované prostředí VMware Stack spravované serverem vCenter ve vlastní doméně pro správu. Zásobník VMware zahrnuje hostitele ESXi, vSphere, vCenter, síti vSAN a NSX. Zásobník běží na vyhrazených uzlech (vyhrazený a izolovaný holý hardware) a využívají ho uživatelé prostřednictvím nativních nástrojů VMware, které zahrnují vCenter a NSX Manager. Vyhrazené uzly se nasazují v umístěních Azure a spravují se pomocí Azure. Každý privátní cloud je možné segmentovat a zabezpečit pomocí síťových služeb, jako jsou sítě VLAN a podsítě a tabulky brány firewall. Připojení k místnímu prostředí a síti Azure se vytvářejí pomocí zabezpečených, privátních sítí VPN a připojení Azure ExpressRoute.
+Privátní cloud CloudSimple je izolované prostředí zásobníku VMware spravované serverem vCenter ve vlastní doméně pro správu. Zásobník VMware obsahuje hostitele ESXi, vSphere, vCenter, vSAN a NSX. Zásobník běží na vyhrazených uzlech (vyhrazený a izolovaný holý hardware) a je spotřebován uživateli prostřednictvím nativních nástrojů VMware, které zahrnují vCenter a NSX Manager. Vyhrazené uzly se nasazují v umístěních Azure a jsou spravované Azure. Každý soukromý cloud lze segmentovat a zabezpečit pomocí síťových služeb, jako jsou sítě VLAN a podsítě a tabulky brány firewall. Připojení k místnímu prostředí a síti Azure se vytvářejí pomocí zabezpečené, privátní VPN a připojení Azure ExpressRoute.
 
-Přečtěte si další informace o [privátním cloudu CloudSimple](cloudsimple-private-cloud.md).
+Další informace o [cloudovém privátním cloudu](cloudsimple-private-cloud.md).
 
-## <a name="service-networking"></a>Síťové služby
+## <a name="service-networking"></a>Síť služeb
 
-Služba CloudSimple poskytuje síť pro každou oblast, ve které je nasazená vaše služba CloudSimple. Ve výchozím nastavení je síť jedním adresním prostorem TCP vrstvy 3 s povoleným směrováním. Všechny privátní cloudy a podsítě vytvořené v této oblasti spolu vzájemně komunikují bez jakékoli další konfigurace. Distribuované skupiny portů můžete v vCenter vytvořit pomocí sítí VLAN. Pomocí následujících síťových funkcí můžete nakonfigurovat a zabezpečit prostředky úloh ve vašem privátním cloudu:
+Služba CloudSimple poskytuje síť podle oblasti, kde je vaše služba CloudSimple nasazena. Síť je jeden adresní prostor vrstvy TCP vrstvy 3, ve kterých je směrování povoleno. Všechny privátní cloudy a podsítě vytvořené v této oblasti vzájemně komunikují bez jakékoli další konfigurace. Skupiny distribuovaných portů v programu VCenter vytváříte pomocí programů VLAN. Ke konfiguraci a zabezpečení prostředků pracovního vytížení v privátním cloudu můžete použít následující síťové funkce:
 
-* [SÍTĚ VLAN a podsítě](cloudsimple-vlans-subnets.md)
-* [Tabulky brány firewall](cloudsimple-firewall-tables.md)
+* [Sítě VLAN a podsítě](cloudsimple-vlans-subnets.md)
+* [Tabulky bran firewall](cloudsimple-firewall-tables.md)
 * [Brány VPN](cloudsimple-vpn-gateways.md)
 * [Veřejná IP adresa](cloudsimple-public-ip-address.md)
-* [Připojení k síti Azure](cloudsimple-azure-network-connection.md)
+* [Síťová připojení Azure](cloudsimple-azure-network-connection.md)
 
-## <a name="cloudsimple-virtual-machine"></a>Virtuální počítač CloudSimple
+## <a name="cloudsimple-virtual-machine"></a>CloudSimple virtuální počítač
 
-Pomocí služby CloudSimple můžete spravovat virtuální počítače VMware z Azure Portal. Jeden nebo více clusterů nebo fondů prostředků z prostředí vSphere lze namapovat na předplatné, ve kterém je služba vytvořená.
+Pomocí služby CloudSimple můžete spravovat virtuální počítače VMware z portálu Azure. Jeden nebo více clusterů nebo fondů prostředků z vašeho prostředí vSphere lze mapovat na předplatné, ve kterém je služba vytvořena.
 
 Další informace:
 
-* [Virtuální počítače s CloudSimple](cloudsimple-virtual-machines.md)
+* [CloudSimple virtuální počítače](cloudsimple-virtual-machines.md)
 * [Mapování předplatného Azure](https://docs.azure.cloudsimple.com/azure-subscription-mapping/)

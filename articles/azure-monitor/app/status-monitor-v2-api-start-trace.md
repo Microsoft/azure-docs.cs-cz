@@ -1,73 +1,73 @@
 ---
-title: Reference k rozhraní API agenta Azure Application Insights
-description: Reference k rozhraní API agenta Application Insights. Spustit – trasovat. Shromažďovat protokoly ETW z Monitorování stavu a Application Insights SDK
+title: Odkaz na rozhraní API agenta Azure Application Insights
+description: Odkaz na rozhraní API agenta Application Insights. Start-Trace. Shromážděte protokoly ETW z monitorování stavu a scharty aplikací SDK.
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: b9680101f1a22dd6d9c1617c8afc13a10ad1c594
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671218"
 ---
-# <a name="application-insights-agent-api-start-applicationinsightsmonitoringtrace"></a>Application Insights rozhraní API agenta: Start-ApplicationInsightsMonitoringTrace
+# <a name="application-insights-agent-api-start-applicationinsightsmonitoringtrace"></a>Rozhraní API agenta Application Insights: Start-ApplicationInsightsMonitoring
 
-Tento článek popisuje rutinu, která je členem [modulu PowerShellu AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
+Tento článek popisuje rutinu, která je členem [modulu Az.ApplicationMonitor PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
 ## <a name="description"></a>Popis
 
-Shromažďuje [události ETW](https://docs.microsoft.com/windows/desktop/etw/event-tracing-portal) z běhového modulu připojení s kódováním. Tato rutina je alternativou ke spuštění [PerfView](https://github.com/microsoft/perfview).
+Shromažďuje [Události ETW](https://docs.microsoft.com/windows/desktop/etw/event-tracing-portal) z bezkódového připojení runtime. Tato rutina je alternativou ke spuštění [PerfView](https://github.com/microsoft/perfview).
 
-Shromážděné události budou v reálném čase vytištěny do konzoly a uloženy do souboru ETL. Výstupní soubor ETL může otevřít [PerfView](https://github.com/microsoft/perfview) k dalšímu prošetření.
+Shromážděné události budou vytištěny do konzoly v reálném čase a uloženy do souboru ETL. Výstupní soubor ETL lze otevřít [PerfView](https://github.com/microsoft/perfview) pro další šetření.
 
-Tato rutina se spustí, dokud nedosáhne časového limitu (výchozí hodnota je 5 minut) nebo se zastaví ručně (`Ctrl + C`).
+Tato rutina bude spuštěna, dokud nedosáhne doby trvání časového limitu`Ctrl + C`(výchozí 5 minut) nebo dokud není zastavena ručně ( ).
 
 > [!IMPORTANT] 
-> Tato rutina vyžaduje relaci PowerShellu s oprávněními správce.
+> Tato rutina vyžaduje relaci prostředí PowerShell s oprávněními správce.
 
 ## <a name="examples"></a>Příklady
 
 ### <a name="how-to-collect-events"></a>Jak shromažďovat události
 
-Normálně bychom vás poznamenali, že shromáždíte události, abyste zjistili, proč se vaše aplikace neinstrumentuje.
+Za normálních okolností bychom vás požádat, abyste shromažďovat události, aby prošetřila, proč vaše aplikace není instrumentované.
 
-Modul runtime pro nekódování kódu bude generovat události ETW při spuštění služby IIS a při spuštění aplikace.
+Bezkódový připojit runtime bude vyzařovat Události ETW při spuštění služby IIS a při spuštění aplikace.
 
-Shromažďování těchto událostí:
-1. V konzole cmd s oprávněními správce spusťte `iisreset /stop` pro vypnutí služby IIS a všech webových aplikací.
+Chcete-li shromáždit tyto události:
+1. V konzoli cmd s oprávněními správce spouštějte `iisreset /stop` Vypnutí služby IIS a všech webových aplikací.
 2. Spustit tuto rutinu
-3. V konzole cmd s oprávněními správce spusťte `iisreset /start` a spusťte službu IIS.
+3. V konzoli cmd s oprávněními správce spusťte `iisreset /start` Spuštění služby IIS.
 4. Zkuste přejít do aplikace.
-5. Až se vaše aplikace dokončí, můžete ji ručně zastavit (`Ctrl + C`) nebo počkat na vypršení časového limitu.
+5. Po dokončení načítání aplikace ji můžete ručně`Ctrl + C`zastavit ( ) nebo počkat na časový rámec.
 
-### <a name="what-events-to-collect"></a>Jaké události se mají shromáždit
+### <a name="what-events-to-collect"></a>Jaké události sbírat
 
-Při shromažďování událostí máte k dispozici tři možnosti:
-1. Pomocí přepínače `-CollectSdkEvents` shromažďovat události vydávané ze sady Application Insights SDK.
-2. Pomocí přepínače `-CollectRedfieldEvents` shromažďovat události vydávané Monitorování stavu a modulu runtime Redfield. Tyto protokoly jsou užitečné při diagnostikování služby IIS a spuštění aplikace.
-3. Oba přepínače slouží ke shromáždění obou typů událostí.
+Při shromažďování událostí máte tři možnosti:
+1. Přepínač slouží `-CollectSdkEvents` ke shromažďování událostí vyzařovaných ze sady Application Insights SDK.
+2. Přepínač slouží `-CollectRedfieldEvents` ke shromažďování událostí vyzařovaných sledováním stavu a redfieldovým runtime. Tyto protokoly jsou užitečné při diagnostice služby IIS a spuštění aplikace.
+3. Pomocí obou přepínačů můžete shromažďovat oba typy událostí.
 4. Ve výchozím nastavení, pokud není zadán žádný přepínač, budou shromažďovány oba typy událostí.
 
 
 ## <a name="parameters"></a>Parametry
 
-### <a name="-maxdurationinminutes"></a>-MaxDurationInMinutes
-**Volitelné.** Pomocí tohoto parametru můžete nastavit, jak dlouho má tento skript shromažďovat události. Výchozí hodnota je 5 minut.
+### <a name="-maxdurationinminutes"></a>-MaxdurationInMinutes
+**Volitelné.** Tento parametr slouží k nastavení, jak dlouho by měl tento skript shromažďovat události. Výchozí hodnota je 5 minut.
 
 ### <a name="-logdirectory"></a>-LogDirectory
-**Volitelné.** Pomocí tohoto přepínače Nastavte výstupní adresář souboru ETL. Ve výchozím nastavení se tento soubor vytvoří v adresáři modulů PowerShellu. Úplná cesta se zobrazí během provádění skriptu.
+**Volitelné.** Tento přepínač slouží k nastavení výstupního adresáře souboru ETL. Ve výchozím nastavení bude tento soubor vytvořen v adresáři Modules prostředí PowerShell. Úplná cesta se zobrazí během spuštění skriptu.
 
 
 ### <a name="-collectsdkevents"></a>-CollectSdkEvents
-**Volitelné.** Pomocí tohoto přepínače můžete shromažďovat události Application Insights SDK.
+**Volitelné.** Tento přepínač slouží ke shromažďování událostí sady Application Insights SDK.
 
-### <a name="-collectredfieldevents"></a>-CollectRedfieldEvents
-**Volitelné.** Pomocí tohoto přepínače můžete shromažďovat události z Monitorování stavu a modulu runtime Redfield.
+### <a name="-collectredfieldevents"></a>-CollectRedfieldUdálosti
+**Volitelné.** Tento přepínač slouží ke shromažďování událostí z monitoru stavu a runtime Redfield.
 
-### <a name="-verbose"></a>– Verbose
-**Společný parametr** Pomocí tohoto přepínače můžete vyvýstupovat podrobné protokoly.
+### <a name="-verbose"></a>-Podrobné
+**Společný parametr.** Tento přepínač použijte k výstupu podrobných protokolů.
 
 
 
@@ -108,13 +108,13 @@ Timeout Reached. Stopping...
 
 Další řešení potíží:
 
-- Projděte si další kroky pro řešení potíží: https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-troubleshoot
-- Podívejte se na [Reference k rozhraní API](status-monitor-v2-overview.md#powershell-api-reference) , kde najdete informace o parametrech, které jste možná vynechali
-- Pokud potřebujete další informace, můžete nás kontaktovat na [GitHubu](https://github.com/Microsoft/ApplicationInsights-Home/issues).
+- Zde naleznete další kroky při řešení potíží:https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-troubleshoot
+- Projděte si [odkaz na rozhraní API,](status-monitor-v2-overview.md#powershell-api-reference) abyste se dozvěděli o parametrech, které jste možná vynechali.
+- Pokud potřebujete další pomoc, můžete nás kontaktovat na [GitHubu](https://github.com/Microsoft/ApplicationInsights-Home/issues).
 
 
 
- Další Application Insights agenta:
- - Pomocí naší příručky můžete [řešit potíže s](status-monitor-v2-troubleshoot.md) agentem Application Insights.
- - [Získáním konfigurace](status-monitor-v2-api-get-config.md) potvrďte, že vaše nastavení se správně nahrálo.
+ S agentem Application Insights toho zvládnete víc:
+ - Použijte náš průvodce [k řešení potíží s](status-monitor-v2-troubleshoot.md) agentem Application Insights.
+ - [Získejte config](status-monitor-v2-api-get-config.md) a ověřte, zda byla vaše nastavení zaznamenána správně.
  - [Získejte stav](status-monitor-v2-api-get-status.md) pro kontrolu monitorování.

@@ -4,13 +4,13 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 8931ba97cf72891c78e20389be10178dd2c0317a
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77594238"
 ---
-V prostředí založeném na prostředí PowerShell ve Windows použijte `Invoke-WebRequest` ke stažení verze grafu Helm pro Consul a potom extrakci pomocí `Expand-Archive` následujícím způsobem:
+V prostředí založeném na prostředí `Invoke-WebRequest` PowerShell ve Windows použijte ke stažení `Expand-Archive` vydání grafu Consul Helm a pak extrahujte následujícím způsobem:
 
 ```powershell
 # Specify the Consul Helm chart version that will be leveraged throughout these instructions

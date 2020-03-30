@@ -1,6 +1,6 @@
 ---
 title: Konfigurace skupiny převzetí služeb při selhání
-description: Naučte se konfigurovat skupinu automatického převzetí služeb při selhání pro Azure SQL Database izolovanou databázi, elastický fond a spravovanou instanci pomocí Azure Portal, AZ CLI a PowerShell.
+description: Zjistěte, jak nakonfigurovat skupinu automatického převzetí služeb při selhání pro jednu databázi Azure SQL Database, elastický fond a spravovanou instanci pomocí portálu Azure, rozhraní příkazového příkazu Az a prostředí PowerShell.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,49 +12,49 @@ ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
 ms.openlocfilehash: 3b423a25b6b13ad543ef4a74bc0335ce19f5766d
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461798"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Konfigurace skupiny převzetí služeb při selhání pro Azure SQL Database
 
-V tomto tématu se dozvíte, jak nakonfigurovat [skupinu automatického převzetí služeb při selhání](sql-database-auto-failover-group.md) pro Azure SQL Database izolovanou databázi, elastický fond a spravovanou instanci pomocí Azure Portal nebo PowerShellu. 
+Toto téma vás naučí, jak nakonfigurovat [skupinu automatického převzetí služeb při selhání](sql-database-auto-failover-group.md) pro jednu databázi Azure SQL Database, elastický fond a spravovanou instanci pomocí portálu Azure nebo PowerShellu. 
 
 ## <a name="single-database"></a>Izolovaná databáze
-Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu databázi pomocí Azure Portal nebo PowerShellu.
+Vytvořte skupinu s podporou převzetí služeb při selhání a přidejte do ní jednu databázi pomocí portálu Azure nebo PowerShellu.
 
 ### <a name="prerequisites"></a>Požadavky
 
-Vezměte v úvahu následující požadavky:
+Zvažte následující předpoklady:
 
-- Přihlašovací údaje serveru a nastavení brány firewall pro sekundární server se musí shodovat s primárním serverem. 
+- Nastavení přihlášení a brány firewall pro sekundární server se musí shodovat s nastavením primárního serveru. 
 
 ### <a name="create-failover-group"></a>Vytvořit skupinu převzetí služeb při selhání
 
-# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
-Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu databázi pomocí Azure Portal.
+# <a name="portal"></a>[Portál](#tab/azure-portal)
+Vytvořte skupinu s podporou převzetí služeb při selhání a přidejte do ní jednu databázi pomocí portálu Azure.
 
 
-1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu. 
+1. V levém menu [portálu Azure](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte Všechny **služby**, zadejte Azure SQL do vyhledávacího pole. (Nepovinné) Vyberte hvězdičku vedle **Azure SQL,** kterou chcete uvěznit a přidejte ji jako položku v levé navigaci. 
 1. Vyberte jednu databázi, kterou chcete přidat do skupiny převzetí služeb při selhání. 
-1. Kliknutím na název serveru v části **název serveru** otevřete nastavení serveru.
+1. Vyberte název serveru v části **Název serveru** a otevřete nastavení serveru.
 
-   ![Otevřít server pro jednu databázi](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
+   ![Otevřít server pro jeden db](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
 
-1. V podokně **Nastavení** vyberte **skupiny převzetí služeb při selhání** a pak vyberte **Přidat skupinu** a vytvořte novou skupinu převzetí služeb při selhání. 
+1. V podokně **Nastavení** vyberte **skupiny převzetí služeb při selhání** a pak vyberte **Přidat skupinu,** abyste vytvořili novou skupinu převzetí služeb při selhání. 
 
     ![Přidat novou skupinu převzetí služeb při selhání](media/sql-database-single-database-failover-group-tutorial/sqldb-add-new-failover-group.png)
 
-1. Na stránce **Skupina převzetí služeb při selhání** zadejte nebo vyberte požadované hodnoty a pak vyberte **vytvořit**.
+1. Na stránce **Skupina s podporou převzetí služeb při selhání** zadejte nebo vyberte požadované hodnoty a pak vyberte **Vytvořit**.
 
-   - **Databáze v rámci této skupiny**: Vyberte databázi, kterou chcete přidat do skupiny převzetí služeb při selhání. Když přidáte databázi do skupiny převzetí služeb při selhání, automaticky se spustí proces geografické replikace. 
+   - **Databáze v rámci skupiny**: Zvolte databázi, kterou chcete přidat do skupiny převzetí služeb při selhání. Přidání databáze do skupiny převzetí služeb při selhání automaticky spustí proces geografické replikace. 
         
-    ![Přidat databázi SQL do skupiny převzetí služeb při selhání](media/sql-database-single-database-failover-group-tutorial/add-sqldb-to-failover-group.png)
+    ![Přidání sql db do skupiny převzetí služeb při selhání](media/sql-database-single-database-failover-group-tutorial/add-sqldb-to-failover-group.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu databázi pomocí PowerShellu. 
+Vytvořte skupinu s podporou převzetí služeb při selhání a přidejte do ní jednu databázi pomocí PowerShellu. 
 
    ```powershell-interactive
    $subscriptionId = "<SubscriptionID>"
@@ -105,35 +105,35 @@ Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu dat
 
 ### <a name="test-failover"></a>Testovací převzetí služeb při selhání 
 
-Otestujte převzetí služeb při selhání ve skupině převzetí služeb při selhání pomocí Azure Portal nebo PowerShellu. 
+Otestujte převzetí služeb při selhání skupiny převzetí služeb při selhání pomocí portálu Azure nebo PowerShellu. 
 
-# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Otestujte převzetí služeb při selhání ve skupině převzetí služeb při selhání pomocí Azure Portal. 
+Otestujte převzetí služeb při selhání skupiny převzetí služeb při selhání pomocí portálu Azure. 
 
-1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu. 
+1. V levém menu [portálu Azure](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte Všechny **služby**, zadejte Azure SQL do vyhledávacího pole. (Nepovinné) Vyberte hvězdičku vedle **Azure SQL,** kterou chcete uvěznit a přidejte ji jako položku v levé navigaci. 
 1. Vyberte jednu databázi, kterou chcete přidat do skupiny převzetí služeb při selhání. 
 
-   ![Otevřít server pro jednu databázi](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
+   ![Otevřít server pro jeden db](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
 
-1. V podokně **Nastavení** vyberte **skupiny převzetí služeb při selhání** a pak vyberte skupinu převzetí služeb při selhání, kterou jste právě vytvořili. 
+1. V podokně **Nastavení** vyberte **skupiny s podporou převzetí služeb při selhání** a pak zvolte skupinu s podporou převzetí služeb při selhání, kterou jste právě vytvořili. 
   
    ![Výběr skupiny převzetí služeb při selhání z portálu](media/sql-database-single-database-failover-group-tutorial/select-failover-group.png)
 
 1. Zkontrolujte, který server je primární a který server je sekundární. 
-1. V podokně úloh vyberte **převzetí služeb při** selhání pro skupinu převzetí služeb při selhání, která obsahuje vaši jedinou databázi. 
-1. U upozornění, které vás upozorní na to, že relace TDS budou odpojeny, vyberte **Ano** . 
+1. Vyberte **převzetí služeb při selhání** z podokna úloh, chcete-li přepojit skupinu převzetí služeb při selhání obsahující jednu databázi. 
+1. Vyberte **Ano** na upozornění, které vás upozorní, že relace TDS budou odpojeny. 
 
-   ![Převzetí služeb při selhání ve skupině, která obsahuje vaše databáze SQL](media/sql-database-single-database-failover-group-tutorial/failover-sql-db.png)
+   ![Převzetí služeb při selhání skupiny převzetí služeb při selhání obsahující databázi SQL](media/sql-database-single-database-failover-group-tutorial/failover-sql-db.png)
 
-1. Zkontrolujte, který server je teď primární a který server je sekundární. Pokud se převzetí služeb při selhání úspěšně převedlo, musí mít dva servery zaměnitelné role. 
-1. Znovu vyberte **převzetí služeb při selhání** , aby se servery převedly zpátky na původní role. 
+1. Zkontrolujte, který server je nyní primární a který server je sekundární. Pokud je převzetí služeb při selhání úspěšné, měly mít dva servery vyměněné role. 
+1. Chcete-li servery vrátit zpět do původních rolí, vyberte znovu **možnost Převzetí služeb při selhání.** 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Testovací převzetí služeb při selhání ve skupině převzetí služeb při selhání pomocí PowerShellu  
+Otestujte převzetí služeb při selhání skupiny s podporou převzetí služeb při selhání pomocí prostředí PowerShell.  
 
-Ověřte roli sekundární repliky: 
+Zkontrolujte roli sekundární repliky: 
 
    ```powershell-interactive
    # Set variables
@@ -148,7 +148,7 @@ Ověřte roli sekundární repliky:
       -ResourceGroupName $resourceGroupName `
       -ServerName $drServerName).ReplicationRole
    ```
-Převzetí služeb při selhání sekundárním serverem: 
+Převzetí služeb při selhání na sekundární server: 
 
    ```powershell-interactive
    # Set variables
@@ -165,7 +165,7 @@ Převzetí služeb při selhání sekundárním serverem:
    Write-host "Failed failover group to successfully to" $drServerName 
    ```
 
-Vraťte skupinu převzetí služeb při selhání zpátky na primární server:
+Vrátit skupinu převzetí služeb při selhání zpět na primární server:
 
    ```powershell-interactive
    # Set variables
@@ -185,45 +185,45 @@ Vraťte skupinu převzetí služeb při selhání zpátky na primární server:
 ---
 
 > [!IMPORTANT]
-> Pokud potřebujete sekundární databázi odstranit, odeberte ji ze skupiny převzetí služeb při selhání před jejím odstraněním. Odstranění sekundární databáze před jejím odebráním ze skupiny převzetí služeb při selhání může způsobit nepředvídatelné chování. 
+> Pokud potřebujete sekundární databázi odstranit, odeberte ji ze skupiny převzetí služeb při selhání, než ji odstraníte. Odstranění sekundární databáze před odebráním ze skupiny převzetí služeb při selhání může způsobit nepředvídatelné chování. 
 
 ## <a name="elastic-pool"></a>Elastický fond
-Vytvořte skupinu převzetí služeb při selhání a přidejte do ní elastický fond pomocí Azure Portal nebo PowerShellu.  
+Vytvořte skupinu s podporou převzetí služeb při selhání a přidejte do ní elastický fond pomocí portálu Azure nebo PowerShellu.  
 
 ### <a name="prerequisites"></a>Požadavky
 
-Vezměte v úvahu následující požadavky:
+Zvažte následující předpoklady:
 
-- Přihlašovací údaje serveru a nastavení brány firewall pro sekundární server se musí shodovat s primárním serverem. 
+- Nastavení přihlášení a brány firewall pro sekundární server se musí shodovat s nastavením primárního serveru. 
 
 ### <a name="create-the-failover-group"></a>Vytvoření skupiny převzetí služeb při selhání 
 
-Vytvořte skupinu převzetí služeb při selhání pro elastický fond pomocí Azure Portal nebo PowerShellu. 
+Vytvořte skupinu převzetí služeb při selhání pro elastický fond pomocí portálu Azure nebo PowerShellu. 
 
-# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
-Vytvořte skupinu převzetí služeb při selhání a přidejte do ní elastický fond pomocí Azure Portal.
+# <a name="portal"></a>[Portál](#tab/azure-portal)
+Vytvořte skupinu s podporou převzetí služeb při selhání a přidejte elastický fond pomocí portálu Azure.
 
-1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu. 
+1. V levém menu [portálu Azure](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte Všechny **služby**, zadejte Azure SQL do vyhledávacího pole. (Nepovinné) Vyberte hvězdičku vedle **Azure SQL,** kterou chcete uvěznit a přidejte ji jako položku v levé navigaci. 
 1. Vyberte elastický fond, který chcete přidat do skupiny převzetí služeb při selhání. 
-1. V podokně **Přehled** vyberte název serveru v části **název serveru** a otevřete tak nastavení serveru.
+1. V podokně **Přehled** vyberte název serveru v části **Název serveru** a otevřete nastavení serveru.
   
-    ![Otevřít server pro elastický fond](media/sql-database-elastic-pool-failover-group-tutorial/server-for-elastic-pool.png)
+    ![Otevřený server pro elastický fond](media/sql-database-elastic-pool-failover-group-tutorial/server-for-elastic-pool.png)
 
-1. V podokně **Nastavení** vyberte **skupiny převzetí služeb při selhání** a pak vyberte **Přidat skupinu** a vytvořte novou skupinu převzetí služeb při selhání. 
+1. V podokně **Nastavení** vyberte **skupiny převzetí služeb při selhání** a pak vyberte **Přidat skupinu,** abyste vytvořili novou skupinu převzetí služeb při selhání. 
 
     ![Přidat novou skupinu převzetí služeb při selhání](media/sql-database-single-database-failover-group-tutorial/sqldb-add-new-failover-group.png)
 
-1. Na stránce **Skupina převzetí služeb při selhání** zadejte nebo vyberte požadované hodnoty a pak vyberte **vytvořit**. Buď vytvořte nový sekundární server, nebo vyberte existující sekundární server. 
+1. Na stránce **Skupina s podporou převzetí služeb při selhání** zadejte nebo vyberte požadované hodnoty a pak vyberte **Vytvořit**. Vytvořte nový sekundární server nebo vyberte existující sekundární server. 
 
-1. **V rámci skupiny vyberte databáze** a pak zvolte elastický fond, který chcete přidat do skupiny převzetí služeb při selhání. Pokud elastický fond na sekundárním serveru ještě neexistuje, zobrazí se upozornění s výzvou k vytvoření elastického fondu na sekundárním serveru. Vyberte upozornění a pak vyberte **OK** a vytvořte elastický fond na sekundárním serveru. 
+1. Vyberte **databáze ve skupině** a pak zvolte elastický fond, který chcete přidat do skupiny převzetí služeb při selhání. Pokud elastický fond ještě neexistuje na sekundárním serveru, zobrazí se upozornění s výzvou k vytvoření elastického fondu na sekundárním serveru. Vyberte upozornění a pak vyberte **OK,** chcete-li vytvořit elastický fond na sekundárním serveru. 
         
-    ![Přidat elastický fond do skupiny převzetí služeb při selhání](media/sql-database-elastic-pool-failover-group-tutorial/add-elastic-pool-to-failover-group.png)
+    ![Přidání elastického fondu do skupiny převzetí služeb při selhání](media/sql-database-elastic-pool-failover-group-tutorial/add-elastic-pool-to-failover-group.png)
         
-1. Vyberte **možnost vyberte** , pokud chcete nastavení elastického fondu použít pro skupinu převzetí služeb při selhání, a pak vyberte **vytvořit** a vytvořte skupinu převzetí služeb při selhání. Přidáním elastického fondu do skupiny převzetí služeb při selhání se automaticky spustí proces geografické replikace. 
+1. Vyberte **Vybrat,** chcete-li použít nastavení elastického fondu pro skupinu s podporou převzetí služeb při selhání, a pak vyberte **Vytvořit,** chcete-li vytvořit skupinu převzetí služeb při selhání. Přidáním elastického fondu do skupiny převzetí služeb při selhání se automaticky spustí proces geografické replikace. 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Vytvořte skupinu převzetí služeb při selhání a přidejte do ní elastický fond pomocí PowerShellu. 
+Vytvořte skupinu s podporou převzetí služeb při selhání a přidejte do ní elastický fond pomocí PowerShellu. 
 
    ```powershell-interactive
    $subscriptionId = "<SubscriptionID>"
@@ -269,35 +269,35 @@ Vytvořte skupinu převzetí služeb při selhání a přidejte do ní elastick�
 
 ### <a name="test-failover"></a>Testovací převzetí služeb při selhání
 
-Otestujte převzetí služeb při selhání elastického fondu pomocí Azure Portal nebo PowerShellu. 
+Otestujte převzetí služeb při selhání vašeho elastického fondu pomocí portálu Azure nebo PowerShellu. 
 
-# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Převzetí služeb při selhání pro skupinu převezmete do sekundárního serveru a pak navrácení služeb po obnovení pomocí Azure Portal. 
+Selhat skupiny převzetí služeb při selhání převést na sekundární server a pak navrácení služeb po selhání pomocí portálu Azure. 
 
-1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu. 
+1. V levém menu [portálu Azure](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte Všechny **služby**, zadejte Azure SQL do vyhledávacího pole. (Nepovinné) Vyberte hvězdičku vedle **Azure SQL,** kterou chcete uvěznit a přidejte ji jako položku v levé navigaci. 
 1. Vyberte elastický fond, který chcete přidat do skupiny převzetí služeb při selhání. 
-1. V podokně **Přehled** vyberte název serveru v části **název serveru** a otevřete tak nastavení serveru.
+1. V podokně **Přehled** vyberte název serveru v části **Název serveru** a otevřete nastavení serveru.
   
-    ![Otevřít server pro elastický fond](media/sql-database-elastic-pool-failover-group-tutorial/server-for-elastic-pool.png)
-1. V podokně **Nastavení** vyberte **skupiny převzetí služeb při selhání** a pak vyberte skupinu převzetí služeb při selhání, kterou jste vytvořili v části 2. 
+    ![Otevřený server pro elastický fond](media/sql-database-elastic-pool-failover-group-tutorial/server-for-elastic-pool.png)
+1. V podokně **Nastavení** vyberte **skupiny s podporou převzetí služeb při selhání** a pak zvolte skupinu s podporou převzetí služeb při selhání, kterou jste vytvořili v části 2. 
   
    ![Výběr skupiny převzetí služeb při selhání z portálu](media/sql-database-single-database-failover-group-tutorial/select-failover-group.png)
 
 1. Zkontrolujte, který server je primární a který server je sekundární. 
-1. V podokně úloh vyberte **převzetí služeb při** selhání pro skupinu převzetí služeb při selhání, která obsahuje váš elastický fond. 
-1. U upozornění, které vás upozorní na to, že relace TDS budou odpojeny, vyberte **Ano** . 
+1. Vyberte **převzetí služeb při selhání** z podokna úloh, chcete-li přepojit skupinu převzetí služeb při selhání obsahující elastický fond. 
+1. Vyberte **Ano** na upozornění, které vás upozorní, že relace TDS budou odpojeny. 
 
-   ![Převzetí služeb při selhání ve skupině, která obsahuje vaše databáze SQL](media/sql-database-single-database-failover-group-tutorial/failover-sql-db.png)
+   ![Převzetí služeb při selhání skupiny převzetí služeb při selhání obsahující databázi SQL](media/sql-database-single-database-failover-group-tutorial/failover-sql-db.png)
 
-1. Zkontrolujte, který server je primární a který server je sekundární. Pokud se převzetí služeb při selhání úspěšně převedlo, musí mít dva servery zaměnitelné role. 
-1. Znovu vyberte **převzetí služeb při** selhání, abyste skupinu převzetí služeb při selhání mohli obnovit původní nastavení. 
+1. Zkontrolujte, který server je primární, který server je sekundární. Pokud je převzetí služeb při selhání úspěšné, měly mít dva servery vyměněné role. 
+1. Vyberte **převzetí služeb při selhání** znovu, chcete-li skupinu převzetí služeb při selhání vrátit zpět do původního nastavení. 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Testovací převzetí služeb při selhání ve skupině převzetí služeb při selhání pomocí PowerShellu
+Otestujte převzetí služeb při selhání skupiny s podporou převzetí služeb při selhání pomocí prostředí PowerShell.
 
-Ověřte roli sekundární repliky: 
+Zkontrolujte roli sekundární repliky: 
 
    ```powershell-interactive
    # Set variables
@@ -313,7 +313,7 @@ Ověřte roli sekundární repliky:
       -ServerName $drServerName).ReplicationRole
    ```
 
-Převzetí služeb při selhání sekundárním serverem: 
+Převzetí služeb při selhání na sekundární server: 
 
    ```powershell-interactive
    # Set variables
@@ -333,66 +333,66 @@ Převzetí služeb při selhání sekundárním serverem:
 ---
 
 > [!IMPORTANT]
-> Pokud potřebujete sekundární databázi odstranit, odeberte ji ze skupiny převzetí služeb při selhání před jejím odstraněním. Odstranění sekundární databáze před jejím odebráním ze skupiny převzetí služeb při selhání může způsobit nepředvídatelné chování. 
+> Pokud potřebujete sekundární databázi odstranit, odeberte ji ze skupiny převzetí služeb při selhání, než ji odstraníte. Odstranění sekundární databáze před odebráním ze skupiny převzetí služeb při selhání může způsobit nepředvídatelné chování. 
 
 ## <a name="managed-instance"></a>Spravovaná instance
 
-Pomocí Azure Portal nebo PowerShellu vytvořte skupinu převzetí služeb při selhání mezi dvěma spravovanými instancemi. 
+Vytvořte skupinu převzetí služeb při selhání mezi dvěma spravovanými instancemi pomocí portálu Azure nebo PowerShellu. 
 
-Budete muset buď nakonfigurovat [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) , nebo vytvořit bránu pro virtuální síť každé spravované instance, připojit tyto dvě brány a pak vytvořit skupinu převzetí služeb při selhání. 
+Budete muset buď nakonfigurovat [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) nebo vytvořit bránu pro virtuální síť každé spravované instance, připojit dvě brány a pak vytvořit skupinu převzetí služeb při selhání. 
 
 ### <a name="prerequisites"></a>Požadavky
-Vezměte v úvahu následující požadavky:
+Zvažte následující předpoklady:
 
 - Sekundární spravovaná instance musí být prázdná.
-- Rozsah podsítě pro sekundární virtuální síť se nesmí překrývat s rozsahem podsítě primární virtuální sítě. 
-- Kolace a časové pásmo sekundární instance se musí shodovat s primární instancí. 
+- Rozsah podsítí pro sekundární virtuální síť nesmí překrývat rozsah podsítí primární virtuální sítě. 
+- Řazení a časové pásmo sekundární instance se musí shodovat s primární instancí. 
 - Při připojování dvou bran by měl být **sdílený klíč** stejný pro obě připojení. 
 
-### <a name="create-primary-virtual-network-gateway"></a>Vytvořit primární bránu virtuální sítě 
+### <a name="create-primary-virtual-network-gateway"></a>Vytvoření primární brány virtuální sítě 
 
-Pokud jste nenakonfigurovali [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md), můžete vytvořit primární bránu virtuální sítě pomocí Azure Portal nebo PowerShellu. 
+Pokud jste [expressroute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)nenakonfigurovali , můžete vytvořit primární bránu virtuální sítě pomocí portálu Azure nebo PowerShellu. 
 
-# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Vytvořte primární bránu virtuální sítě pomocí Azure Portal. 
+Vytvořte primární bránu virtuální sítě pomocí portálu Azure. 
 
-1. V [Azure Portal](https://portal.azure.com)přejdete do skupiny prostředků a vyberete prostředek **virtuální sítě** pro vaši primární spravovanou instanci. 
-1. V části **Nastavení** vyberte **podsítě** a pak vyberte, pokud chcete přidat novou **podsíť brány**. Ponechte výchozí hodnoty. 
+1. Na [webu Azure Portal](https://portal.azure.com)přejděte do skupiny prostředků a vyberte prostředek **virtuální sítě** pro primární spravovanou instanci. 
+1. V části **Nastavení** vyberte **Podsítě** a pak vyberte přidání nové **podsítě Brány**. Ponechte výchozí hodnoty. 
 
-   ![Přidat bránu pro primární spravovanou instanci](media/sql-database-managed-instance-failover-group-tutorial/add-subnet-gateway-primary-vnet.png)
+   ![Přidání brány pro primární spravovanou instanci](media/sql-database-managed-instance-failover-group-tutorial/add-subnet-gateway-primary-vnet.png)
 
-1. Po vytvoření brány podsítě v levém navigačním podokně vyberte **vytvořit prostředek** a potom do vyhledávacího pole zadejte `Virtual network gateway`. Vyberte prostředek **brány virtuální sítě** publikovaný **Microsoftem**. 
+1. Po vytvoření brány podsítě vyberte **Vytvořit prostředek** z levého `Virtual network gateway` navigačního podokna a zadejte do vyhledávacího pole. Vyberte prostředek **brány virtuální sítě** publikovaný společností **Microsoft**. 
 
-   ![Vytvořit novou bránu virtuální sítě](media/sql-database-managed-instance-failover-group-tutorial/create-virtual-network-gateway.png)
+   ![Vytvoření nové brány virtuální sítě](media/sql-database-managed-instance-failover-group-tutorial/create-virtual-network-gateway.png)
 
-1. Vyplňte požadovaná pole a nakonfigurujte bránu vaší primární spravované instance. 
+1. Vyplňte požadovaná pole pro konfiguraci brány primární spravované instance. 
 
-   Následující tabulka uvádí hodnoty nutné pro bránu pro primární spravovanou instanci:
+   V následující tabulce jsou uvedeny hodnoty nezbytné pro bránu pro primární spravovanou instanci:
  
     | **Pole** | Hodnota |
     | --- | --- |
-    | **Předplatné** |  Předplatné, ve kterém je vaše primární spravovaná instance. |
+    | **Předplatné** |  Předplatné, kde je vaše primární spravovaná instance. |
     | **Název** | Název brány virtuální sítě. | 
-    | **Oblast** | Oblast, ve které je vaše sekundární spravovaná instance. |
-    | **Typ brány** | Vyberte **VPN**. |
-    | **Typ sítě VPN** | Vybrat **na základě trasy** |
-    | **SKU**| Ponechte výchozí `VpnGw1`. |
+    | **Oblasti** | Oblast, kde je sekundární spravovaná instance. |
+    | **Typ brány** | Vyberte **možnost VPN**. |
+    | **Typ vpn** | Vybrat **na základě trasy** |
+    | **Sku**| Ponechat `VpnGw1`výchozí hodnotu . |
     | **Umístění**| Umístění, kde je sekundární spravovaná instance a sekundární virtuální síť.   |
     | **Virtuální síť**| Vyberte virtuální síť pro sekundární spravovanou instanci. |
     | **Veřejná IP adresa**| Vyberte, že chcete **vytvořit novou** IP adresu. |
-    | **Název veřejné IP adresy**| Zadejte název vaší IP adresy. |
+    | **Název veřejné IP adresy**| Zadejte název své IP adresy. |
     | &nbsp; | &nbsp; |
 
-1. Ostatní hodnoty ponechte jako výchozí a potom vyberte **zkontrolovat + vytvořit** a zkontrolujte nastavení brány virtuální sítě.
+1. Ostatní hodnoty ponechejte jako výchozí a pak vyberte **Revize + vytvořit a** zkontrolujte nastavení brány virtuální sítě.
 
    ![Nastavení primární brány](media/sql-database-managed-instance-failover-group-tutorial/settings-for-primary-gateway.png)
 
-1. Vyberte **vytvořit** a vytvořte novou bránu virtuální sítě. 
+1. Vyberte **Vytvořit,** chcete-li vytvořit novou bránu virtuální sítě. 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Vytvořte primární bránu virtuální sítě pomocí prostředí PowerShell. 
+Vytvořte primární bránu virtuální sítě pomocí PowerShellu. 
 
    ```powershell-interactive
    $primaryResourceGroupName = "<Primary-Resource-Group>"
@@ -422,34 +422,34 @@ Vytvořte primární bránu virtuální sítě pomocí prostředí PowerShell.
 
 ---
 
-### <a name="create-secondary-virtual-network-gateway"></a>Vytvořit sekundární bránu virtuální sítě
+### <a name="create-secondary-virtual-network-gateway"></a>Vytvoření sekundární brány virtuální sítě
 
-Vytvořte sekundární bránu virtuální sítě pomocí Azure Portal nebo PowerShellu. 
+Vytvořte sekundární bránu virtuální sítě pomocí portálu Azure nebo PowerShellu. 
 
-# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
-Zopakováním kroků v předchozí části vytvořte podsíť virtuální sítě a bránu pro sekundární spravovanou instanci. Vyplňte požadovaná pole a nakonfigurujte bránu pro sekundární spravovanou instanci. 
+# <a name="portal"></a>[Portál](#tab/azure-portal)
+Opakováním kroků v předchozí části vytvořte podsíť virtuální sítě a bránu pro sekundární spravovanou instanci. Vyplňte požadovaná pole pro konfiguraci brány pro sekundární spravovanou instanci. 
 
-   V následující tabulce jsou uvedeny hodnoty nutné pro bránu sekundární spravované instance:
+   V následující tabulce jsou uvedeny hodnoty nezbytné pro bránu pro sekundární spravovanou instanci:
 
    | **Pole** | Hodnota |
    | --- | --- |
-   | **Předplatné** |  Předplatné, ve kterém je vaše sekundární spravovaná instance. |
+   | **Předplatné** |  Předplatné, kde je vaše sekundární spravovaná instance. |
    | **Název** | Název brány virtuální sítě, například `secondary-mi-gateway`. | 
-   | **Oblast** | Oblast, ve které je vaše sekundární spravovaná instance. |
-   | **Typ brány** | Vyberte **VPN**. |
-   | **Typ sítě VPN** | Vybrat **na základě trasy** |
-   | **SKU**| Ponechte výchozí `VpnGw1`. |
+   | **Oblasti** | Oblast, kde je sekundární spravovaná instance. |
+   | **Typ brány** | Vyberte **možnost VPN**. |
+   | **Typ vpn** | Vybrat **na základě trasy** |
+   | **Sku**| Ponechat `VpnGw1`výchozí hodnotu . |
    | **Umístění**| Umístění, kde je sekundární spravovaná instance a sekundární virtuální síť.   |
-   | **Virtuální síť**| Vyberte virtuální síť, která byla vytvořena v části 2, například `vnet-sql-mi-secondary`. |
+   | **Virtuální síť**| Vyberte virtuální síť, která byla vytvořena `vnet-sql-mi-secondary`v části 2, například . |
    | **Veřejná IP adresa**| Vyberte, že chcete **vytvořit novou** IP adresu. |
-   | **Název veřejné IP adresy**| Zadejte název vaší IP adresy, například `secondary-gateway-IP`. |
+   | **Název veřejné IP adresy**| Zadejte název adresy IP, `secondary-gateway-IP`například . |
    | &nbsp; | &nbsp; |
 
    ![Nastavení sekundární brány](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Vytvořte sekundární bránu virtuální sítě pomocí prostředí PowerShell. 
+Vytvořte sekundární bránu virtuální sítě pomocí PowerShellu. 
 
    ```powershell-interactive
    $secondaryResourceGroupName = "<Secondary-Resource-Group>"
@@ -482,33 +482,33 @@ Vytvořte sekundární bránu virtuální sítě pomocí prostředí PowerShell.
 
 
 ### <a name="connect-the-gateways"></a>Připojení bran 
-Vytvořte připojení mezi dvěma branami pomocí Azure Portal nebo PowerShellu. 
+Vytvořte připojení mezi dvěma branami pomocí portálu Azure nebo PowerShellu. 
 
-Je potřeba vytvořit dvě připojení – připojení z primární brány k sekundární bráně a pak připojení ze sekundární brány k primární bráně. 
+Je třeba vytvořit dvě připojení – připojení z primární brány k sekundární bráně a potom připojení ze sekundární brány k primární bráně. 
 
-Sdílený klíč použitý pro obě připojení by měl být pro každé připojení stejný. 
+Sdílený klíč používaný pro obě připojení by měl být pro každé připojení stejný. 
 
-# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
-Vytvořte připojení mezi dvěma branami pomocí Azure Portal. 
+# <a name="portal"></a>[Portál](#tab/azure-portal)
+Vytvořte připojení mezi dvěma branami pomocí portálu Azure. 
 
-1. Vyberte **vytvořit prostředek** z [Azure Portal](https://portal.azure.com).
-1. Do vyhledávacího pole zadejte `connection` a stisknutím klávesy ENTER prohledejte, což vás přesměruje do prostředku **připojení** publikovaného společností Microsoft.
-1. Vyberte **vytvořit** a vytvořte připojení. 
-1. Na kartě **základy** vyberte následující hodnoty a pak vyberte **OK**. 
-    1. Jako **Typ připojení**vyberte `VNet-to-VNet`. 
+1. Vyberte **Vytvořit prostředek** z [webu Azure Portal](https://portal.azure.com).
+1. Zadejte `connection` do vyhledávacího pole a stisknutím klávesy enter vyhledejte, které vás přenese k prostředku **připojení** vydanému společností Microsoft.
+1. Chcete-li vytvořit připojení, vyberte **Vytvořit.** 
+1. Na kartě **Základy** vyberte následující hodnoty a pak vyberte **OK**. 
+    1. Tuto `VNet-to-VNet` možnost vyberte pro **typ připojení**. 
     1. Vyberte vaše předplatné z rozevíracího seznamu. 
-    1. V rozevíracím seznamu vyberte skupinu prostředků pro spravovanou instanci. 
-    1. Z rozevíracího seznamu vyberte umístění vaší primární spravované instance. 
+    1. V rozevíracím seznamku vyberte skupinu prostředků pro spravovanou instanci. 
+    1. V rozevíracím centru vyberte umístění primární spravované instance. 
 1. Na kartě **Nastavení** vyberte nebo zadejte následující hodnoty a pak vyberte **OK**:
-    1. Vyberte bránu primární sítě pro **první bránu virtuální sítě**, například `Primary-Gateway`.  
-    1. Vyberte bránu sekundární sítě pro **druhou bránu virtuální sítě**, například `Secondary-Gateway`. 
-    1. Zaškrtněte políčko vedle možnosti **navázat obousměrné připojení**. 
-    1. Buď ponechte výchozí název primárního připojení, nebo ho přejmenujte na hodnotu podle vašeho výběru. 
-    1. Zadejte **sdílený klíč (PSK)** pro připojení, například `mi1m2psk`. 
+    1. Zvolte primární síťovou bránu pro **první bránu virtuální sítě**, například `Primary-Gateway`.  
+    1. Zvolte bránu sekundární sítě pro **druhou bránu virtuální sítě**, například `Secondary-Gateway`. 
+    1. Zaškrtněte políčko vedle **položky Nařídit obousměrné připojení**. 
+    1. Ponechte buď výchozí název primárního připojení, nebo jej přejmenujte na hodnotu podle vašeho výběru. 
+    1. Zadejte **sdílený klíč (PSK)** pro `mi1m2psk`připojení, například . 
 
    ![Vytvořit připojení brány](media/sql-database-managed-instance-failover-group-tutorial/create-gateway-connection.png)
 
-1. Na kartě **Souhrn** zkontrolujte nastavení obousměrného připojení a pak vyberte **OK** . tím vytvoříte připojení. 
+1. Na kartě **Souhrn** zkontrolujte nastavení obousměrné připojení a pak vyberte **OK,** chcete-li vytvořit připojení. 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -544,27 +544,27 @@ Vytvořte připojení mezi dvěma branami pomocí PowerShellu.
 ---
 
 ### <a name="create-the-failover-group"></a>Vytvoření skupiny převzetí služeb při selhání 
-Vytvořte skupinu převzetí služeb při selhání pro vaše spravované instance pomocí Azure Portal nebo PowerShellu. 
+Vytvořte skupinu převzetí služeb při selhání pro spravované instance pomocí portálu Azure nebo PowerShellu. 
 
-# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Vytvořte skupinu převzetí služeb při selhání pro vaše spravované instance pomocí Azure Portal. 
+Vytvořte skupinu převzetí služeb při selhání pro spravované instance pomocí portálu Azure Portal. 
 
-1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu. 
+1. V levém menu [portálu Azure](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte Všechny **služby**, zadejte Azure SQL do vyhledávacího pole. (Nepovinné) Vyberte hvězdičku vedle **Azure SQL,** kterou chcete uvěznit a přidejte ji jako položku v levé navigaci. 
 1. Vyberte primární spravovanou instanci, kterou chcete přidat do skupiny převzetí služeb při selhání.  
-1. V části **Nastavení**přejděte na **instance skupiny převzetí služeb při selhání** a pak zvolte **Přidat skupinu** a otevřete stránku **skupiny převzetí služeb při selhání instance** . 
+1. V části **Nastavení**přejděte do **skupin y převzetí služeb při selhání instance** a pak zvolte Přidat **skupinu** a otevřete stránku **Skupina převzetí služeb při selhání instance.** 
 
-   ![Přidat skupinu převzetí služeb při selhání](media/sql-database-managed-instance-failover-group-tutorial/add-failover-group.png)
+   ![Přidání skupiny převzetí služeb při selhání](media/sql-database-managed-instance-failover-group-tutorial/add-failover-group.png)
 
-1. Na stránce **Skupina převzetí služeb při selhání** zadejte název skupiny převzetí služeb při selhání a potom z rozevíracího seznamu zvolte sekundární spravovanou instanci. Vyberte **vytvořit** a vytvořte skupinu převzetí služeb při selhání. 
+1. Na stránce **Skupina převzetí služeb při selhání instance** zadejte název skupiny s podporou převzetí služeb při selhání a z rozevíracího seznamu zvolte sekundární spravovanou instanci. Chcete-li vytvořit skupinu s podporou převzetí služeb při selhání, vyberte **možnost Vytvořit.** 
 
    ![Vytvořit skupinu převzetí služeb při selhání](media/sql-database-managed-instance-failover-group-tutorial/create-failover-group.png)
 
-1. Po dokončení nasazení skupiny převzetí služeb při selhání se vrátíte zpátky na stránku **skupiny převzetí služeb při selhání** . 
+1. Po dokončení nasazení skupiny s podporou převzetí služeb při selhání budete převedena zpět na stránku **skupiny převzetí služeb při selhání.** 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Vytvořte skupinu převzetí služeb při selhání pro vaše spravované instance pomocí prostředí PowerShell. 
+Vytvořte skupinu převzetí služeb při selhání pro spravované instance pomocí PowerShellu. 
 
    ```powershell-interactive
    $primaryResourceGroupName = "<Primary-Resource-Group>"
@@ -586,27 +586,27 @@ Vytvořte skupinu převzetí služeb při selhání pro vaše spravované instan
 
 ### <a name="test-failover"></a>Testovací převzetí služeb při selhání
 
-Otestujte převzetí služeb při selhání ve skupině převzetí služeb při selhání pomocí Azure Portal nebo PowerShellu. 
+Otestujte převzetí služeb při selhání skupiny převzetí služeb při selhání pomocí portálu Azure nebo PowerShellu. 
 
-# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Otestujte převzetí služeb při selhání ve skupině převzetí služeb při selhání pomocí Azure Portal. 
+Otestujte převzetí služeb při selhání skupiny převzetí služeb při selhání pomocí portálu Azure. 
 
-1. V [Azure Portal](https://portal.azure.com) přejděte do _sekundární_ spravované instance a v části nastavení vyberte **instance skupiny převzetí služeb při selhání** . 
+1. Přejděte na _sekundární_ spravovanou instanci na [webu Azure Portal](https://portal.azure.com) a v nastavení vyberte **skupiny převzetí služeb při selhání instance.** 
 1. Zkontrolujte, která spravovaná instance je primární a která spravovaná instance je sekundární. 
-1. Vyberte **převzetí služeb při selhání** a pak pro upozornění na odpojené relace TDS vyberte **Ano** . 
+1. Vyberte **převzetí služeb při selhání** a pak vyberte **Ano** na upozornění na odpojené relace TDS. 
 
-   ![Převzít služby při selhání skupiny převzetí služeb při selhání](media/sql-database-managed-instance-failover-group-tutorial/failover-mi-failover-group.png)
+   ![Převzetí služeb při selhání skupiny převzetí služeb při selhání](media/sql-database-managed-instance-failover-group-tutorial/failover-mi-failover-group.png)
 
-1. Zkontrolujte, která instance spravovaných je primární a která instance je sekundární. Pokud převzetí služeb při selhání proběhlo úspěšně, měly by tyto dvě instance mít přepnuté role. 
+1. Zkontrolujte, která instance manged je primární a která instance je sekundární. Pokud je převzetí služeb při selhání úspěšné, měly dvě instance přepínat role. 
 
-   ![Spravované instance mají po převzetí služeb při selhání přepnuté role.](media/sql-database-managed-instance-failover-group-tutorial/mi-switched-after-failover.png)
+   ![Spravované instance přepnuly role po převzetí služeb při selhání](media/sql-database-managed-instance-failover-group-tutorial/mi-switched-after-failover.png)
 
-1. Vraťte se do nové _sekundární_ spravované instance a znovu vyberte **převzetí služeb při selhání** , aby se primární instance znovu nezdařila do primární role. 
+1. Přejděte na novou _sekundární_ spravovanou instanci a znovu vyberte **převzetí služeb při selhání,** aby primární instance selhala zpět do primární role. 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Testovací převzetí služeb při selhání ve skupině převzetí služeb při selhání pomocí PowerShellu 
+Otestujte převzetí služeb při selhání skupiny s podporou převzetí služeb při selhání pomocí prostředí PowerShell. 
 
    ```powershell-interactive
    $primaryResourceGroupName = "<Primary-Resource-Group>"
@@ -644,24 +644,24 @@ Testovací převzetí služeb při selhání ve skupině převzetí služeb při
 
 ---
 
-## <a name="locate-listener-endpoint"></a>Najít koncový bod naslouchacího procesu
+## <a name="locate-listener-endpoint"></a>Vyhledání koncového bodu posluchače
 
-Po nakonfigurování skupiny převzetí služeb při selhání aktualizujte připojovací řetězec pro vaši aplikaci na koncový bod naslouchacího procesu. Tím zůstane aplikace připojená k naslouchacího procesu skupiny převzetí služeb při selhání místo primární databáze, elastického fondu nebo spravované instance. Tímto způsobem nemusíte ručně aktualizovat připojovací řetězec pokaždé, když dojde k převzetí služeb Azure SQL Database, a provoz se směruje do jakékoli entity, která je aktuálně primární. 
+Po konfiguraci skupiny převzetí služeb při selhání aktualizujte připojovací řetězec pro vaši aplikaci na koncový bod posluchače. Tím zachováte aplikaci připojenou k naslouchací proces skupiny převzetí služeb při selhání, nikoli k primární databázi, elastickém fondu nebo spravované instanci. Tímto způsobem není nutné ručně aktualizovat připojovací řetězec pokaždé, když vaše entita databáze Azure SQL databáze převzetí služby při selhání a provoz je směrován do kterékoli entity je aktuálně primární. 
 
-Koncový bod naslouchacího procesu je ve formě `fog-name.database.windows.net`a je viditelný v Azure Portal při zobrazení skupiny převzetí služeb při selhání:
+Koncový bod naslouchací `fog-name.database.windows.net`proces je ve formě aplikace a je viditelný na webu Azure Portal při zobrazení skupiny převzetí služeb při selhání:
 
 ![Připojovací řetězec skupiny převzetí služeb při selhání](media/sql-database-configure-failover-group/find-failover-group-connection-string.png)
 
 ## <a name="remarks"></a>Poznámky
 
-- Odebrání skupiny převzetí služeb při selhání pro jednu nebo sdruženou databázi neukončí replikaci a replikovaná databáze neodstraní. Pokud chcete přidat jednu nebo sdruženou databázi zpátky do skupiny převzetí služeb při selhání po jejím odebrání, budete muset ručně zastavit geografickou replikaci a odstranit databázi ze sekundárního serveru. V důsledku neúspěšného provedení některé z těchto věcí může být chyba podobná `The operation cannot be performed due to multiple errors` při pokusu o přidání databáze do skupiny převzetí služeb při selhání. 
+- Odebráním skupiny převzetí služeb při selhání pro jednu nebo sdruženou databázi replikaci nezastavíte a replikovanou databázi neodstraníte. Pokud chcete přidat jednu nebo sdruženou databázi zpět do skupiny převzetí služeb při selhání po odebrání, budete muset ručně zastavit geografickou replikaci a odstranit databázi ze sekundárního serveru. Pokud to neuděláte, může dojít `The operation cannot be performed due to multiple errors` k chybě podobné při pokusu o přidání databáze do skupiny převzetí služeb při selhání. 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Podrobný postup konfigurace skupiny převzetí služeb při selhání najdete v následujících kurzech:
+Podrobné kroky konfigurace skupiny s podporou převzetí služeb při selhání naleznete v následujících kurzech:
 - [Přidání jedné databáze do skupiny převzetí služeb při selhání](sql-database-single-database-failover-group-tutorial.md)
 - [Přidání elastického fondu do skupiny převzetí služeb při selhání](sql-database-elastic-pool-failover-group-tutorial.md)
 - [Přidání spravovaných instancí do skupiny převzetí služeb při selhání](sql-database-managed-instance-failover-group-tutorial.md)
  
-Přehled možností Azure SQL Database vysoké dostupnosti najdete v tématu [geografická replikace](sql-database-active-geo-replication.md) a [skupiny automatického převzetí služeb při selhání](sql-database-auto-failover-group.md). 
+Přehled možností vysoké dostupnosti Azure SQL Database najdete v [tématu geografická replikace](sql-database-active-geo-replication.md) a [skupiny automatického převzetí služeb při selhání](sql-database-auto-failover-group.md). 

@@ -5,30 +5,30 @@ ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: 47e9e37676a4afa9ec29393bf970c368f3f9e5be
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77586120"
 ---
-## <a name="add-to-your-functions-app"></a>Přidat do aplikace Functions
+## <a name="add-to-your-functions-app"></a>Přidání do aplikace Funkce
 
-### <a name="functions-2x-and-higher"></a>Functions 2. x a vyšší
+### <a name="functions-2x-and-higher"></a>Funkce 2.x a vyšší
 
-Práce s triggerem a vazbami vyžaduje, abyste odkazovali na příslušný balíček. Balíček NuGet se používá pro knihovny tříd .NET, pokud se sada rozšíření používá pro všechny ostatní typy aplikací.
+Práce s aktivační událost a vazby vyžaduje, abyste odkazovat na příslušný balíček. Balíček NuGet se používá pro knihovny tříd .NET, zatímco rozšíření svazku se používá pro všechny ostatní typy aplikací.
 
-| Jazyk                                        | Přidat do...                                   | Poznámky 
+| Jazyk                                        | Přidat podle...                                   | Poznámky 
 |-------------------------------------------------|---------------------------------------------|-------------|
-| C#                                              | Instalace [Balíček NuGet]verze 3. x | |
-| C#Skript, Java, JavaScript, Python, PowerShell | Registrace [Sada rozšíření]          | [Rozšíření nástrojů Azure] se doporučuje používat s Visual Studio Code. |
-| C#Skript (online – pouze v Azure Portal)         | Přidání vazby                            | Pokud chcete aktualizovat existující rozšíření vazby bez nutnosti opětovného publikování aplikace Function App, přečtěte si téma [aktualizace rozšíření]. |
+| C#                                              | Instalace [balíčku NuGet], verze 3.x | |
+| C# Script, Java, JavaScript, Python, PowerShell | Registrace [rozšíření balíčku]          | Rozšíření [Nástroje Azure] se doporučuje používat s Visual Studio Code. |
+| Skript C# (jenom online na webu Azure Portal)         | Přidání vazby                            | Pokud chcete aktualizovat existující rozšíření o vazby, aniž byste museli znovu publikovat aplikaci funkcí, přečtěte si informace [o aktualizaci rozšíření]. |
 
 [Balíček NuGet]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs
 [core tools]: ../articles/azure-functions/functions-run-local.md
-[Sada rozšíření]: ../articles/azure-functions/functions-bindings-register.md#extension-bundles
+[rozšiřující balíček]: ../articles/azure-functions/functions-bindings-register.md#extension-bundles
 [Aktualizace rozšíření]: ../articles/azure-functions/install-update-binding-extensions-manual.md
 [Rozšíření nástrojů Azure]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
 ### <a name="functions-1x"></a>Functions 1.x
 
-Aplikace Functions 1. x mají automaticky odkaz na balíček NuGet [Microsoft. Azure. WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) , verze 2. x.
+Aplikace functions 1.x mají automaticky odkaz na balíček [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet verze 2.x.

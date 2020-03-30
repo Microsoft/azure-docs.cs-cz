@@ -1,29 +1,29 @@
 ---
-title: Klauzule FROM v Azure Cosmos DB
-description: Přečtěte si o syntaxi SQL a příklad pro klauzuli FROM pro Azure Cosmos DB. Tento článek také ukazuje příklady určení rozsahu výsledků a získání dílčích položek pomocí klauzule FROM.
+title: KLAUZULE FROM v Azure Cosmos DB
+description: Další informace o syntaxi SQL a příklad pro FROM klauzule pro Azure Cosmos DB. Tento článek také ukazuje příklady k oboru výsledky a získat dílčí položky pomocí FROM klauzule.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 3939594064b63c567720378b9d316acca64d3266
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77587681"
 ---
-# <a name="from-clause-in-azure-cosmos-db"></a>Klauzule FROM v Azure Cosmos DB
+# <a name="from-clause-in-azure-cosmos-db"></a>KLAUZULE FROM v Azure Cosmos DB
 
-Klauzule FROM (`FROM <from_specification>`) je volitelná, pokud se zdroj nefiltruje nebo se v dotazu později nepoužívá. Dotaz, jako je `SELECT * FROM Families`, se vyčísluje v celém kontejneru `Families`. Místo použití názvu kontejneru můžete použít také kořenový kořenový identifikátor pro kontejner.
+From (`FROM <from_specification>`) Klauzule je volitelné, pokud zdroj je filtrován nebo promítán dále v dotazu. Dotaz jako `SELECT * FROM Families` zákuse je `Families` v celém kontejneru. Můžete také použít speciální identifikátor ROOT pro kontejner namísto použití názvu kontejneru.
 
-Klauzule FROM vynutila následující pravidla na dotaz:
+From klauzule vynucuje následující pravidla na dotaz:
 
-* Kontejner může mít alias, například `SELECT f.id FROM Families AS f` nebo jednoduše `SELECT f.id FROM Families f`. Zde je `f` alias pro `Families`. Stejně jako volitelné klíčové slovo pro [alias](sql-query-aliasing.md) identifikátoru.  
+* Kontejner může být aliasován, například nebo `SELECT f.id FROM Families AS f` jednoduše `SELECT f.id FROM Families f`. Zde `f` je alias `Families`pro . AS je volitelné klíčové slovo pro [alias](sql-query-aliasing.md) identifikátor.  
 
-* Po aliasu nelze původní název zdroje svázat. Například `SELECT Families.id FROM Families f` je syntakticky neplatný, protože `Families` identifikátoru byl alias vytvořen a již jej nelze přeložit.  
+* Po vyhlazení nemůže být původní název zdroje svázán. Například `SELECT Families.id FROM Families f` je syntakticky neplatný, protože identifikátor `Families` byl aliasován a již nemůže být vyřešen.  
 
-* Všechny odkazované vlastnosti musí být plně kvalifikované, aby nedocházelo k nejednoznačným vazbám při neexistenci striktního dodržování schématu. Například `SELECT id FROM Families f` je syntakticky neplatný, protože `id` vlastností není svázáno.
+* Všechny odkazované vlastnosti musí být plně kvalifikované, aby se zabránilo jakékoli nejednoznačné vazby v nepřítomnosti přísné schéma dodržování. Například `SELECT id FROM Families f` syntakticky neplatné, `id` protože vlastnost není vázána.
 
 ## <a name="syntax"></a>Syntaxe
   
@@ -49,72 +49,72 @@ FROM <from_specification>
   
 - `<from_source>`  
   
-  Určuje zdroj dat, s nebo bez něj alias. Pokud není zadán alias, bude odvozen z `<container_expression>` pomocí následujících pravidel:  
+  Určuje zdroj dat s aliasem nebo bez něj. Pokud alias není zadán, bude odvozen z `<container_expression>` použití následujících pravidel:  
   
-  -  Pokud má výraz hodnotu container_name, bude container_name použít jako alias.  
+  -  Pokud je výraz container_name, bude container_name použit jako alias.  
   
-  -  Pokud je výraz `<container_expression>`, pak property_name, property_name bude použit jako alias. Pokud má výraz hodnotu container_name, bude container_name použít jako alias.  
+  -  Pokud je `<container_expression>`výraz , pak property_name, pak property_name bude použit jako alias. Pokud je výraz container_name, bude container_name použit jako alias.  
   
-- JAKO `input_alias`  
+- Jako`input_alias`  
   
-  Určuje, že `input_alias` je množinou hodnot vrácených podkladovým výrazem kontejneru.  
+  Určuje, že `input_alias` se jedná o sadu hodnot vrácených podkladovým výrazem kontejneru.  
  
-- `input_alias` v  
+- `input_alias`In  
   
-  Určuje, že `input_alias` by měl představovat sadu hodnot získaných pomocí iterace u všech prvků pole každého pole vráceného podkladovým výrazem kontejneru. Libovolnou hodnotu vrácenou základní výraz kontejneru, který není pole se ignoruje.  
+  Určuje, že `input_alias` by měla představovat sadu hodnot získaných iterace přes všechny prvky pole každého pole vrácené základní výraz kontejneru. Jakákoli hodnota vrácená podkladovým výrazem kontejneru, který není polem, je ignorována.  
   
 - `<container_expression>`  
   
-  Určuje výraz kontejneru se použije k načtení dokumentů.  
+  Určuje výraz kontejneru, který má být použit k načtení dokumentů.  
   
 - `ROOT`  
   
-  Určuje, že tento dokument by mělo být získáno z výchozí hodnoty, aktuálně připojeného kontejneru.  
+  Určuje, že dokument by měl být načten z výchozího aktuálně připojeného kontejneru.  
   
 - `container_name`  
   
-  Určuje, že tento dokument by měl být načten ze zadaného kontejneru. Název kontejneru musí odpovídat názvu kontejneru aktuálně připojeni.  
+  Určuje, že dokument by měl být načten z poskytnutého kontejneru. Název kontejneru se musí shodovat s názvem kontejneru, ke jehož stavu je aktuálně připojen.  
   
 - `input_alias`  
   
-  Určuje, že tento dokument by měl být načten z jiného zdroje určené zadaný alias.  
+  Určuje, že dokument by měl být načten z jiného zdroje definovaného poskytnutým aliasem.  
   
 - `<container_expression> '.' property_name`  
   
-  Určuje, že se má dokument načíst přístupem k vlastnosti `property_name`.  
+  Určuje, že dokument by měl být `property_name` načten přístupem k vlastnosti.  
   
 - `<container_expression> '[' "property_name" | array_index ']'`  
   
-  Určuje, že se má dokument načíst přístupem k vlastnosti `property_name` nebo k array_index elementu pole pro všechny dokumenty načtené pomocí zadaného výrazu kontejneru.  
+  Určuje, že dokument by měl být `property_name` načten přístupem k vlastnosti nebo array_index prvku pole pro všechny dokumenty načtené zadaným výrazem kontejneru.  
   
 ## <a name="remarks"></a>Poznámky
   
-Všechny aliasy zadané nebo odvozené ve `<from_source>(`s) musí být jedinečné. Syntaxe `<container_expression>.`property_name je stejná jako `<container_expression>' ['"property_name"']'`. Druhá možnost syntaxi však můžete použít, pokud název vlastnosti obsahuje znak identifikátoru.  
+Všechny aliasy zadaný nebo odvozené v `<from_source>(`s) musí být jedinečné. Syntaxe `<container_expression>.`property_name je `<container_expression>' ['"property_name"']'`stejná jako . Druhá syntaxe však může být použita, pokud název vlastnosti obsahuje znak bez identifikátoru.  
   
-### <a name="handling-missing-properties-missing-array-elements-and-undefined-values"></a>zpracování chybí vlastnosti chybějící prvky pole a nedefinované hodnoty
+### <a name="handling-missing-properties-missing-array-elements-and-undefined-values"></a>Zpracování chybějících vlastností, chybějících prvků pole a nedefinovaných hodnot
   
-Pokud výraz kontejneru, který přistupuje k vlastnosti nebo prvky pole a že hodnota neexistuje, tuto hodnotu budou ignorovány a další nebyl zpracován.  
+Pokud výraz kontejneru přistupuje k vlastnostem nebo prvkům pole a tato hodnota neexistuje, bude tato hodnota ignorována a nebude dále zpracována.  
   
-### <a name="container-expression-context-scoping"></a>Zkoumání kontextu výrazu kontejneru  
+### <a name="container-expression-context-scoping"></a>Vymezení kontextu výrazu kontejneru  
   
-Kontejner výrazu může být kontejner rozsahem nebo rozsahem dokumentu:  
+Výraz kontejneru může být s rozsahem kontejneru nebo s rozsahem dokumentu:  
   
--   Výraz je obor kontejneru, pokud je podkladový zdroj výrazu kontejneru buď ROOT, nebo `container_name`. Takový výraz představuje sadu dokumentů načíst přímo z kontejneru a není závislá na zpracování jiných výrazech kontejneru.  
+-   Výraz je s rozsahem kontejneru, pokud je základním zdrojem výrazu kontejneru root nebo `container_name`. Takový výraz představuje sadu dokumentů načtených přímo z kontejneru a není závislý na zpracování jiných výrazů kontejneru.  
   
--   Výraz je v oboru dokumentu, pokud je podkladový zdroj výrazu kontejneru `input_alias` představen dříve v dotazu. Takový výraz představuje sadu dokumentů získanou vyhodnocením výrazu kontejneru v rámci jednotlivých dokumentů, které patří do sady spojenými s daným kontejnerem alias.  Výsledná sada bude sjednocení sad získanou vyhodnocením výrazu kontejner pro všechny dokumenty v základní sadě. 
+-   Výraz je vymezen rozsahem dokumentu, pokud je `input_alias` základní zdroj výrazu kontejneru zaveden dříve v dotazu. Takový výraz představuje sadu dokumentů získaných vyhodnocením výrazu kontejneru v oboru každého dokumentu, který patří k sadě přidružené k kontejneru aliasu.  Výsledná sada bude sjednocení sad získaných vyhodnocením výrazu kontejneru pro každý z dokumentů v podkladové sadě. 
 
 ## <a name="examples"></a>Příklady
 
-### <a name="get-subitems-by-using-the-from-clause"></a>Získat podpoložky pomocí klauzule FROM
+### <a name="get-subitems-by-using-the-from-clause"></a>Získání dílčích položek pomocí klauzule FROM
 
-Klauzule FROM může snížit zdroj na menší podmnožinu. Chcete-li vytvořit výčet pouze podstrom v každé položce, může se stát, že se dílčí kořen stane zdrojem, jak je znázorněno v následujícím příkladu:
+From klauzule může snížit zdroj na menší podmnožinu. Chcete-li vytvořit výčet pouze podstrom v každé položce, podkořen se může stát zdrojem, jak je znázorněno v následujícím příkladu:
 
 ```sql
     SELECT *
     FROM Families.children
 ```
 
-Výsledky jsou:
+Výsledky jsou následující:
 
 ```json
     [
@@ -147,14 +147,14 @@ Výsledky jsou:
     ]
 ```
 
-Předchozí dotaz použil pole jako zdroj, ale můžete také použít objekt jako zdroj. Dotaz považuje při zahrnutí do výsledku platnou definovanou hodnotu JSON ve zdroji. Následující příklad vyloučí `Families`, které nemají hodnotu `address.state`.
+Předchozí dotaz použil pole jako zdroj, ale jako zdroj můžete také použít objekt. Dotaz bere v úvahu všechny platné, definované json hodnotu ve zdroji pro zahrnutí do výsledku. Následující příklad by `Families` vyloučit, které `address.state` nemají hodnotu.
 
 ```sql
     SELECT *
     FROM Families.address.state
 ```
 
-Výsledky jsou:
+Výsledky jsou následující:
 
 ```json
     [
@@ -167,4 +167,4 @@ Výsledky jsou:
 
 - [Začínáme](sql-query-getting-started.md)
 - [Klauzule SELECT](sql-query-select.md)
-- [Klauzule WHERE](sql-query-where.md)
+- [KDE doložka](sql-query-where.md)

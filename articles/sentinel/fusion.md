@@ -1,6 +1,6 @@
 ---
-title: Rozšířená detekce útoků s více fázemi v Azure Sentinel
-description: Pomocí technologie Fusion v Azure Sentinel můžete snížit únavu výstrah a vytvořit incidenty, které jsou založené na pokročilé detekci útoku na více fází.
+title: Pokročilá vícestupňová detekce útoků v Azure Sentinelu
+description: Pomocí technologie Fusion v Azure Sentinelu můžete snížit únavu výstrah a vytvořit události, které lze použít a které jsou založeny na pokročilé detekci vícestupňového útoku.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -13,328 +13,328 @@ ms.workload: na
 ms.date: 02/18/2020
 ms.author: yelevin
 ms.openlocfilehash: 87ca322cbdfdd8a53a3ecefcb120a961ea1bb936
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77587919"
 ---
-# <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Rozšířená detekce útoků s více fázemi v Azure Sentinel
+# <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Pokročilá vícestupňová detekce útoků v Azure Sentinelu
 
 
 > [!IMPORTANT]
-> Některé funkce Fusion v Azure Sentinel jsou momentálně ve verzi Public Preview.
-> Tyto funkce se poskytují bez smlouvy o úrovni služeb a nedoporučují se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Některé funkce Fusion v Azure Sentinelu jsou aktuálně ve verzi Public Preview.
+> Tyto funkce jsou k dispozici bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
 
-Pomocí technologie Fusion, která je založená na strojovém učení, může Azure Sentinel automaticky detekovat útoky s více fázemi kombinací chování neobvyklé a podezřelých aktivit, které jsou pozorovány v různých fázích dezaktivačního řetězu. Azure Sentinel pak generuje incidenty, které by jinak bylo obtížné zachytit. Tyto incidenty uzavřou dvě nebo více výstrah nebo aktivit. V takovém případě mají tyto incidenty nízký objem, vysokou přesnost a vysokou závažnost.
+Pomocí technologie Fusion, která je založena na strojovém učení, Azure Sentinel můžete automaticky detekovat vícestupňové útoky kombinací neobvyklé chování a podezřelé aktivity, které jsou pozorovány v různých fázích kill-chain. Azure Sentinel pak generuje incidenty, které by jinak bylo velmi obtížné zachytit. Tyto incidenty zapouzdřené dva nebo více výstrah nebo aktivit. Podle návrhu jsou tyto incidenty nízké objem, vysoká věrnost a vysoká závažnost.
 
-Tato detekce přizpůsobená vašemu prostředí neomezuje jenom falešně pozitivní míru, ale může také detekovat útoky s omezenými nebo chybějícími informacemi.
+Přizpůsobené pro vaše prostředí, tato detekce nejen snižuje falešně pozitivní sazby, ale může také detekovat útoky s omezenými nebo chybějícími informacemi.
 
-## <a name="configuration-for-advanced-multistage-attack-detection"></a>Konfigurace pro pokročilou detekci útoku na více fází
+## <a name="configuration-for-advanced-multistage-attack-detection"></a>Konfigurace pro pokročilou detekci útoků s více fázemi
 
-Tato detekce je ve výchozím nastavení povolená v Azure Sentinel. Pokud chcete stav ověřit nebo ho zakázat, protože používáte alternativní řešení k vytváření incidentů na základě více výstrah, postupujte podle následujících pokynů:
+Toto zjišťování je ve výchozím nastavení povoleno v Azure Sentinelu. Chcete-li zkontrolovat stav nebo jej zakázat, možná proto, že používáte alternativní řešení pro vytváření incidentů na základě více výstrah, použijte následující pokyny:
 
 1. Pokud jste to ještě neudělali, přihlaste se k [Portálu Azure](https://portal.azure.com).
 
-2. Přejděte na **Azure Sentinel** > **Configuration** > **Analytics** .
+2. Přechod na Azure **Sentinel** > **Configuration** > **Analytics**
 
-3. Vyberte **aktivní pravidla** a ve sloupci **název** vyhledejte **Pokročilé zjišťování útoků s více fázemi** . Zkontrolujte sloupec **stav** a potvrďte, jestli je toto zjišťování povolené nebo zakázané.
+3. Vyberte **Aktivní pravidla** a vyhledejte **rozšířené vícestupňové detekce útoků** ve sloupci **NÁZEV.** Zkontrolujte sloupec **STAV a** ověřte, zda je tato detekce povolena nebo zakázána.
 
-4. Chcete-li změnit stav, vyberte tuto položku a v okně **Pokročilé zjišťování útoků s více fázemi** vyberte možnost **Upravit**.
+4. Chcete-li změnit stav, vyberte tuto položku a v okně **Rozšířená vícestupňová detekce útoků** vyberte **upravit**.
 
-5. V okně **Průvodce vytvořením pravidla** se automaticky vybere Změna stavu, takže vyberte **Další: zkontrolovat**a pak **Uložit**. 
+5. V okně **Průvodce vytvořením pravidla** je automaticky vybrána změna stavu, takže vyberte **Další: Revize**a Potom **Uložit**. 
 
-Šablony pravidel nelze použít pro pokročilou detekci útoku na více fází.
+Šablony pravidel se nevztahují na pokročilou detekci vícestupňového útoku.
 
 > [!NOTE]
-> Služba Azure Sentinel aktuálně používá ke studiu systémů strojového učení 30 dní historických dat. Tato data se vždycky šifrují pomocí klíčů Microsoftu při jejich předávání prostřednictvím kanálu strojového učení. Školicí data se ale nešifrují pomocí [zákaznických klíčů (CMK)](customer-managed-keys.md) , pokud jste v pracovním prostoru Sentinel Azure povolili CMK. Pokud se chcete odhlásit z fúze, přejděte do části **Azure Sentinel** \> **Configuration** \> **Analytics \> aktivní pravidla \> Pokročilá detekce útoků s více fázemi** a ve sloupci **stav** vyberte **zakázat.**
+> Azure Sentinel v současné době používá 30 dní historických dat k trénování systémů strojového učení. Tato data jsou vždy šifrována pomocí klíčů společnosti Microsoft při průchodu kanálem strojového učení. Trénovací data však není šifrována pomocí [klíčů spravovaných zákazníky (CMK),](customer-managed-keys.md) pokud jste povolili CMK v pracovním prostoru Azure Sentinel. Pokud se chcete z **Azure Sentinel** \>fúze odhlásit, přejděte na aktivní pravidla **Configuration** \> **Status**  ** \> \> ** Azure Sentinel Configuration Analytics Rozšířené vícestupňové zjišťování útoků a ve sloupci Stav vyberte **Zakázat.**
 
-## <a name="fusion-using-palo-alto-networks-and-microsoft-defender-atp"></a>Fúze pomocí Palo Alto Networks a ATP v programu Microsoft Defender
+## <a name="fusion-using-palo-alto-networks-and-microsoft-defender-atp"></a>Fúze pomocí palo alto sítí a microsoft defender atp
 
-Tyto scénáře kombinují dva ze základních protokolů používaných analytiky zabezpečení: protokoly brány firewall z Palo Alto Networks a protokoly detekce koncových bodů z ATP v programu Microsoft Defender. Ve všech scénářích uvedených níže se v koncovém bodě, který zahrnuje externí IP adresu, detekuje podezřelá aktivita, a pak se za ní potom neobvyklé provoz z externí IP adresy zpátky do brány firewall. V protokolech Palo Alto se Azure Sentinel zaměřuje na [protokoly hrozeb](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)a provoz se považuje za podezřelý, pokud jsou povolené hrozby (podezřelá data, soubory, zaplavení, pakety, kontroly, spyware, adresy URL, viry, chyby zabezpečení, Wildfire-viry, wildfires).
+Tyto scénáře kombinují dva základní protokoly používané analytiky zabezpečení: protokoly brány firewall z palo alto sítí a protokoly zjišťování koncových bodů z programu Microsoft Defender ATP. Ve všech scénářích uvedených níže je v koncovém bodě, který zahrnuje externí IP adresu, zjištěna podezřelá aktivita, po níž následuje neobvyklý provoz z externí IP adresy zpět do brány firewall. V protokolech Palo Alto se Azure Sentinel zaměřuje na [protokoly hrozeb](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)a provoz je považován za podezřelý, když jsou povoleny hrozby (podezřelá data, soubory, záplavy, pakety, skeny, spyware, adresy URL, viry, slabá místa, viry požáru, požáry).
 
-### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Požadavek na síť na službu pro samoobslužné zpracování dat následovaný provozem neobvyklé označeným příznakem Palo Alto Networks firewall.
+### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Požadavek sítě na anonymizační službu TOR následovaný anomálním provozem označeným bránou firewall Palo Alto Networks.
 
-V tomto scénáři Azure Sentinel nejdřív detekuje výstrahu, že služba Microsoft Defender Advanced Threat Protection zjistila požadavek na síť pro službu anonymity v rámci MANDÁTu, která vede k neobvyklé aktivity. To bylo iniciováno v účtu {account Name} s ID SID {SID} v {time}. Odchozí IP adresa pro připojení byla {IndividualIp}.
-Pak se zjistila neobvyklá aktivita v bráně firewall sítě Palo Alto na adrese {TimeGenerated}. To znamená, že se škodlivý provoz zadaný v síti cílová IP adresa pro síťový provoz je {DestinationIP}.
-
-Tento scénář je aktuálně ve verzi Public Preview.
-
-
-### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Prostředí PowerShell provedlo podezřelé síťové připojení, po kterém následují přenosy neobvyklé s příznakem Palo Alto Networks firewall.
-
-V tomto scénáři Azure Sentinel nejprve detekuje výstrahu, že služba Microsoft Defender Advanced Threat Protection zjistila, že prostředí PowerShell provedlo podezřelé síťové připojení, které vedlo k neobvyklé aktivitě, kterou zjistila brána firewall Palo Alto Network. Toto spustil účet {Account Name} s ID SID {SID} v {time}. Odchozí IP adresa pro připojení byla {IndividualIp}. Pak se zjistila neobvyklá aktivita v bráně firewall sítě Palo Alto na adrese {TimeGenerated}. To znamená, že škodlivý provoz vstoupil do vaší sítě. Cílová IP adresa pro síťový provoz je {DestinationIP}.
-
-Tento scénář je aktuálně ve verzi Public Preview.
-
-### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Odchozí připojení k IP adrese s historií neautorizovaných pokusů o přístup následovaných neobvyklé provozem označenými příznakem Palo Alto Networks firewall
-
-V tomto scénáři zjistí Azure Sentinel výstrahu, že služba Microsoft Defender Advanced Threat Protection zjistila odchozí připojení k IP adrese s historií neautorizovaných pokusů o přístup, které vedou k detekci aktivit neobvyklé pomocí Palo Alto. Brány firewall sítě. Toto spustil účet {Account Name} s ID SID {SID} v {time}. Odchozí IP adresa pro připojení byla {IndividualIp}. Po této instalaci zjistila brána firewall sítě Palo Alto v lokalitě {TimeGenerated} neobvyklé aktivity. To znamená, že škodlivý provoz vstoupil do vaší sítě. Cílová IP adresa pro síťový provoz je {DestinationIP}.
+V tomto scénáři Azure Sentinel nejprve zjistí výstrahu, že Microsoft Defender Advanced Threat Protection zjistil požadavek sítě na anonymizační službu TOR, která vede k anomální aktivitě. Toto bylo zahájeno pod účtem {název účtu} s ID SID {sid} v {time}. Odchozí ADRESA IP připojení byla {IndividualIp}.
+Poté byla brána firewall palo alto sítí zjištěna neobvyklou aktivitou v {TimeGenerated}. To znamená, že škodlivý provoz vstoupil do vaší sítě Cílová ADRESA IP pro síťový provoz je {DestinationIP}.
 
 Tento scénář je aktuálně ve verzi Public Preview.
 
 
+### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Prostředí PowerShell vytvořilo podezřelé síťové připojení následované neobvyklým provozem označeným bránou firewall Palo Alto Networks.
 
-## <a name="fusion-using-identity-protection-and-microsoft-cloud-app-security"></a>Fúze pomocí Identity Protection a Microsoft Cloud App Security
+V tomto scénáři Azure Sentinel nejprve zjistí výstrahu, že Microsoft Defender Advanced Threat Protection zjistil, že PowerShell vytvořil podezřelé síťové připojení vedoucí k anomální aktivity, která byla zjištěna palo Alto síťové brány firewall. To to bylo iniciováno účtem {název účtu} s ID SID {sid} v {time}. Odchozí ADRESA IP připojení byla {IndividualIp}. Poté byla brána firewall palo alto sítí zjištěna neobvyklou aktivitou v {TimeGenerated}. To znamená, že do sítě vstoupil škodlivý provoz. Cílová adresa IP síťového provozu je {DestinationIP}.
 
-Pomocí pokročilé detekce útoků na více fází podporuje Azure Sentinel následující scénáře, které kombinují události anomálií z Azure Active Directory Identity Protection a Microsoft Cloud App Security:
+Tento scénář je aktuálně ve verzi Public Preview.
 
-- [Nemožná cesta do neobvyklých umístění následovaných aktivitou neobvyklé Office 365](#impossible-travel-to-atypical-location-followed-by-anomalous-office-365-activity)
-- [Přihlašovací aktivita pro neznámé místo, po kterém následují neobvyklé aktivita Office 365](#sign-in-activity-for-unfamiliar-location-followed-by-anomalous-office-365-activity)
-- [Přihlašovací aktivita z infikovaného zařízení následovaný neobvyklé aktivitou Office 365](#sign-in-activity-from-infected-device-followed-by-anomalous-office-365-activity)
-- [Přihlašovací aktivita z anonymní IP adresy, za kterou následuje aktivita neobvyklé Office 365](#sign-in-activity-from-anonymous-ip-address-followed-by-anomalous-office-365-activity)
-- [Přihlašovací aktivita od uživatele s nevrácenými přihlašovacími údaji následovanými aktivitou neobvyklé Office 365](#sign-in-activity-from-user-with-leaked-credentials-followed-by-anomalous-office-365-activity)
+### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Odchozí připojení k PROTOKOLU IP s historií pokusů o neoprávněný přístup následovaných anomálním provozem označeným bránou firewall palo alto networks
 
-Je nutné mít nakonfigurované [konektory Azure AD Identity Protection data](connect-azure-ad-identity-protection.md) a [Cloud App Security](connect-cloud-app-security.md) .
+V tomto scénáři Azure Sentinel zjistí výstrahu, že Microsoft Defender Advanced Threat Protection zjistil odchozí připojení k IP adrese s historií pokusů o neoprávněný přístup, které vedou k neobvyklé aktivity zjištěné Palo Alto Brána firewall sítě. To to bylo iniciováno účtem {název účtu} s ID SID {sid} v {time}. Odchozí ADRESA IP připojení byla {IndividualIp}. Poté byla brána firewall palo alto sítí zjištěna neobvyklou aktivitou v {TimeGenerated}. To znamená, že do sítě vstoupil škodlivý provoz. Cílová adresa IP síťového provozu je {DestinationIP}.
 
-V popisech, které následují, zobrazí Azure Sentinel skutečnou hodnotu z dat, která se na této stránce reprezentují jako proměnné v závorkách. Například skutečný zobrazovaný název účtu místo \<*název účtu*> a skutečný počet, nikoli \<*číslo*>.
-
-### <a name="impossible-travel-to-atypical-location-followed-by-anomalous-office-365-activity"></a>Nemožná cesta do neobvyklých umístění následovaných aktivitou neobvyklé Office 365
-
-K dispozici je sedm možných incidentů Sentinel Azure, které spojují nepravděpodobné cesty k neobvyklým výstrahám umístění z Azure AD Identity Protection a neobvyklé výstrahy sady Office 365 vygenerované Microsoft Cloud App Security:
-
-- **Nemožná cesta do netypických míst, která vedou k exfiltrace poštovní schránky Office 365**
-    
-    Tato výstraha je označením události přihlášení \<*název účtu*> z nemožného umístění do \<ho *umístění*>, což je neobvyklým umístěním, po kterém následuje pravidlo pro přesměrování doručené pošty, které bylo nastaveno v doručené poště uživatele.
-    
-    To může znamenat, že došlo k ohrožení zabezpečení účtu a že se poštovní schránka používá k exfiltrovatí informací z vaší organizace. *Název účtu*uživatele \<> vytvořil nebo aktualizoval pravidlo přeposílání doručené pošty, které předává všechny příchozí e-maily na externí adresu \<> *e-mailová adresa*.
-
-- **Nemožná cesta do netypických míst, která by vedla k podezřelé aktivitě správy Cloud**
-    
-    Tato výstraha je označením události přihlášení \<*název účtu*> z nemožného cestování do \<ho *umístění*>, což je neobvyklé umístění.
-    
-    V dalším kroku se *název*účtu \<účtu > provedl v rámci \<*číslo*> aktivity správy v jedné relaci.
-
-- **Nemožná cesta do netypických umístění, což vede k hromadnému odstranění souborů**
-    
-    Tato výstraha je označením události přihlášení \<*název účtu*> do \<ho *umístění*>, což je neobvyklé umístění. 
-    
-    V dalším kroku se *název*účtu \<účtu > odstranil v jedné relaci \<*počet*> jedinečných souborů.
-
-- **Nemožná cesta do netypických míst, která vedou ke stažení hromadného souboru**
-    
-    Tato výstraha je označením události přihlášení \<*název účtu*> z nemožného cestování do \<ho *umístění*>, což je neobvyklé umístění. 
-    
-    V dalším kroku se *název*účtu \<účtu > stáhl přes \<*počet*> jedinečných souborů v jedné relaci.
-
-- **Nemožná cesta k netypickým místům, které vede k zosobnění Office 365**
-    
-    Tato výstraha je označením události přihlášení \<*název účtu*> z nemožného cestování do \<ho *umístění*>, což je neobvyklé umístění. 
-    
-    V dalším kroku *název*účtu \<účtu > v jedné relaci provedl neobvyklou částku (\<*počet aktivit*>) aktivit zosobnění.
-
-- **Nemožná cesta do netypických míst, která vedou ke sdílení souborů**
-    
-    Tato výstraha je označením události přihlášení \<*název účtu*> z nemožného cestování do \<ho *umístění*>, což je neobvyklé umístění. 
-    
-    V dalším kroku \<*název účtu*účtu > sdílet přes \<*počet*> jedinečných souborů v jedné relaci.
-
-- **Nepovedlo se cestovat do neobvyklých míst, která ransomwarem v cloudové aplikaci.**
-    
-    Tato výstraha je označením události přihlášení \<*název účtu*> z nemožného cestování do \<ho *umístění*>, což je neobvyklé umístění. 
-    
-    V dalším kroku se název účtu \<*účtu*> nahrál \<*počet*souborů > a odstranil se celkový *počet \<souborů >.* 
-    
-    Tento vzor aktivity je indikativní pro potenciální útok ransomwarem.
+Tento scénář je aktuálně ve verzi Public Preview.
 
 
-### <a name="sign-in-activity-for-unfamiliar-location-followed-by-anomalous-office-365-activity"></a>Přihlašovací aktivita pro neznámé místo, po kterém následují neobvyklé aktivita Office 365
 
-K dispozici je sedm možných incidentů Sentinel Azure, které spojují přihlašovací aktivitu pro neznámé výstrahy umístění od Azure AD Identity Protection a neobvyklé výstrahy sady Office 365 vygenerované Microsoft Cloud App Security.
+## <a name="fusion-using-identity-protection-and-microsoft-cloud-app-security"></a>Fúze pomocí ochrany identity a zabezpečení aplikací Microsoft Cloud App Security
 
-- **Přihlašovací událost z neznámého umístění, které vede k Exchange Online Mailbox exfiltrace**
-    
-    Tato výstraha je označením události přihlášení \<*název účtu*> z \<ho *umístění*>, neznámého umístění, po kterém následuje pravidlo pro předávání podezřelé doručené pošty, bylo nastaveno na doručenou poštu uživatele.
-    
-    To může znamenat, že došlo k ohrožení zabezpečení účtu a že se poštovní schránka používá k exfiltrovatí informací z vaší organizace. *Název účtu*uživatele \<> vytvořil nebo aktualizoval pravidlo přeposílání doručené pošty, které předává všechny příchozí e-maily na externí adresu \<> *e-mailová adresa*. 
+Pomocí pokročilé vícestupňové detekce útoků podporuje Azure Sentinel následující scénáře, které kombinují události anomálií z Azure Active Directory Identity Protection a Microsoft Cloud App Security:
 
-- **Přihlašovací událost z neznámého umístění vedoucí k podezřelé aktivitě správy cloudové aplikace**
-    
-    Tato výstraha je označením události přihlášení \<*název účtu*> z \<ho *umístění*>, neznámého umístění. 
-    
-    V dalším kroku se *název*účtu \<účtu > provedl v rámci \<*počtu*> aktivit správy v jedné relaci.
+- [Nemožné cestování do atypické polohy následované anomální aktivitou Office 365](#impossible-travel-to-atypical-location-followed-by-anomalous-office-365-activity)
+- [Aktivita přihlášení pro neznámé umístění následovaná neobvyklou aktivitou Office 365](#sign-in-activity-for-unfamiliar-location-followed-by-anomalous-office-365-activity)
+- [Aktivita přihlášení z infikovaného zařízení následovaná anomální aktivitou Office 365](#sign-in-activity-from-infected-device-followed-by-anomalous-office-365-activity)
+- [Aktivita přihlášení z anonymní IP adresy následovaná neobvyklou aktivitou Office 365](#sign-in-activity-from-anonymous-ip-address-followed-by-anomalous-office-365-activity)
+- [Aktivita přihlášení od uživatele s uniklými přihlašovacími údaji následovanými neobvyklou aktivitou Office 365](#sign-in-activity-from-user-with-leaked-credentials-followed-by-anomalous-office-365-activity)
 
-- **Událost přihlášení z neznámého umístění, které vede k odstranění souboru**
-    
-    Tato výstraha je označením události přihlášení \<*název účtu*> z \<ho *umístění*>, neznámého umístění. 
-    
-    V dalším kroku se *název*účtu \<účtu > odstranil v jedné relaci \<*počet*> jedinečných souborů.
+Musíte mít nakonfigurovaný [datový konektor Azure AD Identity Protection](connect-azure-ad-identity-protection.md) a konektory Cloud App [Security.](connect-cloud-app-security.md)
 
-- **Událost přihlášení z neznámého umístění, které vede k hromadnému stažení souboru**
-    
-    Tato výstraha je označením události přihlášení \<*název účtu*> z \<ho *umístění*>, neznámého umístění. 
-    
-    V dalším kroku se *název*účtu \<účtu > stáhl přes \<*počet*> jedinečných souborů v jedné relaci.
+V následujících popisech Azure Sentinel zobrazí skutečnou hodnotu z vašich dat, která je na této stránce reprezentována jako proměnné v závorkách. Například skutečný zobrazovaný název účtu, \<nikoli *název účtu*> a \<skutečné číslo *>.*
 
-- **Přihlašovací událost z neznámého umístění, které vede k zosobnění Office 365**
-    
-    Tato výstraha je označením události přihlášení \<*název účtu*> z \<ho *umístění*>, neznámého umístění.
-    
-    V dalším kroku se *název*účtu \<účtu > zosobnit přes \<*počet*> různých účtů v jedné relaci.
+### <a name="impossible-travel-to-atypical-location-followed-by-anomalous-office-365-activity"></a>Nemožné cestování do atypické polohy následované anomální aktivitou Office 365
 
-- **Událost přihlášení z neznámého umístění, které vede k hromadnému sdílení souborů**
-    
-    Tato výstraha je označením události přihlášení \<*název účtu*> z \<ho *umístění*>, neznámého umístění. 
-    
-    V dalším kroku \<*název účtu*účtu > sdílet přes \<*počet*> jedinečných souborů v jedné relaci.
+Existuje sedm možných incidentů Azure Sentinelu, které kombinují nemožné cestování s atypickými výstrahami polohy z Azure AD Identity Protection a neobvyklými výstrahami Office 365 generovanými službou Microsoft Cloud App Security:
 
-- **Přihlašovací událost z neznámého umístění, které vede k ransomwarem v cloudové aplikaci**
+- **Nemožné cestování do atypických míst vedoucích k exfiltraci poštovní schránky Office 365**
     
-    Tato výstraha je označením události přihlášení \<*název účtu*> z \<ho *umístění*>, neznámého umístění. 
+    Tato výstraha je označením události \<přihlášení *podle názvu účtu* \<> z nemožnécesty do *místa*>, atypické umístění, následované podezřelým pravidlem pro přesměrování doručené pošty, které bylo nastaveno v doručené poště uživatele.
     
-    V dalším kroku se název účtu \<*účtu*> nahrál \<*počet*souborů > a odstranil se celkový *počet \<souborů >.* 
-    
-    Tento vzor aktivity je indikativní pro potenciální útok ransomwarem.
+    To může znamenat, že účet je ohrožena a že poštovní schránka se používá k exfiltraci informací z vaší organizace. Název \< *uživatelského účtu*> vytvořit nebo aktualizovat pravidlo předávání doručené pošty, \<které předává všechny příchozí e-maily na *e-mailovou adresu* externí adresy>.
 
-### <a name="sign-in-activity-from-infected-device-followed-by-anomalous-office-365-activity"></a>Přihlašovací aktivita z infikovaného zařízení následovaný neobvyklé aktivitou Office 365
+- **Nemožné cestování do atypických míst vedoucích k podezřelé administrativní činnosti cloudových aplikací**
+    
+    Tato výstraha je označením události \<přihlášení podle *názvu účtu* \<> z nemožné cesty do *místa*>, což je atypické umístění.
+    
+    Dále> \< *název účtu* proveden \<přes *číslo*> aktivity správy v jedné relaci.
 
-Existuje sedm možných incidentů Sentinel Azure, které spojují přihlašovací aktivitu z nakažených výstrah zařízení od Azure AD Identity Protection a neobvyklé výstrah Office 365 generovaných Microsoft Cloud App Security:
+- **Nemožné cestování do atypických míst vedoucích k hromadnému mazání souborů**
+    
+    Tato výstraha je označením události \<přihlášení podle *názvu účtu*> \< *umístění*>, což je atypické umístění. 
+    
+    Dále název \< *účtu*> \< *odstraněný počet*> jedinečných souborů v jedné relaci.
 
-- **Přihlašovací událost z nakaženého zařízení, které vede k exfiltrace poštovní schránky Office 365**
+- **Nemožné cestování do atypických míst vedoucích k hromadnému stahování souborů**
     
-    Tato výstraha je označením události přihlášení \<*název účtu*> ze zařízení, které je potenciálně nakažené malwarem, po kterém následuje podezřelé pravidlo pro přesměrování doručené pošty nastavené na doručenou poštu uživatele.
+    Tato výstraha je označením události \<přihlášení podle *názvu účtu* \<> z nemožné cesty do *místa*>, což je atypické umístění. 
     
-    To může znamenat, že došlo k ohrožení zabezpečení účtu a že se poštovní schránka používá k exfiltrovatí informací z vaší organizace. *Název účtu*uživatele \<> vytvořil nebo aktualizoval pravidlo přeposílání doručené pošty, které předává všechny příchozí e-maily na externí adresu \<> *e-mailová adresa*. 
+    Dále> \< *název účtu* stažen \<přes počet> *jedinečných* souborů v jedné relaci.
 
-- **Přihlašovací událost z nakaženého zařízení vedoucí k podezřelé aktivitě správy cloudové aplikace**
+- **Nemožné cestování do atypických míst vedoucích k zosobnění Office 365**
     
-    Tato výstraha je označením události přihlášení \<*název účtu*> ze zařízení, které je potenciálně napadené malwarem.
+    Tato výstraha je označením události \<přihlášení podle *názvu účtu* \<> z nemožné cesty do *místa*>, což je atypické umístění. 
     
-    V dalším kroku se *název*účtu \<účtu > provedl v rámci \<*počtu*> aktivit správy v jedné relaci.
+    Dále název \< *účtu*> provedl neobvyklou\<*částku (počet aktivit*>) aktivit zosobnění v jedné relaci.
 
-- **Událost přihlášení z nakaženého zařízení, které by vedlo k odstranění souboru**
+- **Nemožné cestování do atypických míst vedoucích k hromadnému sdílení souborů**
     
-    Tato výstraha je označením události přihlášení \<*název účtu*> ze zařízení, které je potenciálně napadené malwarem. 
+    Tato výstraha je označením události \<přihlášení podle *názvu účtu* \<> z nemožné cesty do *místa*>, což je atypické umístění. 
     
-    V dalším kroku se *název*účtu \<účtu > odstranil v jedné relaci \<*počet*> jedinečných souborů.
+    Dále> \< *název účtu* sdílen \<přes počet> *jedinečných* souborů v jedné relaci.
 
-- **Událost přihlášení z nakaženého zařízení, které vede k hromadnému stažení souboru**
+- **Nemožné cestování do atypických míst vedoucích k ransomwaru v cloudové aplikaci**
     
-    Tato výstraha je označením události přihlášení \<*název účtu*> ze zařízení, které je potenciálně napadené malwarem. 
+    Tato výstraha je označením události \<přihlášení podle *názvu účtu* \<> z nemožné cesty do *místa*>, což je atypické umístění. 
     
-    V dalším kroku se *název*účtu \<účtu > stáhl přes \<*počet*> jedinečných souborů v jedné relaci.
+    Dále> \< *název účtu* nahrál \< *počet*> souborů a \<odstranil celkem *počet* souborů>. 
+    
+    Tento vzorec aktivity svědčí o potenciálním útoku ransomware.
 
-- **Přihlašovací událost z nakaženého zařízení, které vede k zosobnění Office 365**
-    
-    Tato výstraha je označením události přihlášení \<*název účtu*> ze zařízení, které je potenciálně napadené malwarem. 
-    
-    V dalším kroku se *název*účtu \<účtu > zosobnit přes \<*počet*> různých účtů v jedné relaci.
 
-- **Událost přihlášení z nakaženého zařízení, které vede k hromadnému sdílení souborů**
-    
-    Tato výstraha je označením události přihlášení \<*název účtu*> ze zařízení, které je potenciálně napadené malwarem. 
-    
-    V dalším kroku \<*název účtu*účtu > sdílet přes \<*počet*> jedinečných souborů v jedné relaci.
+### <a name="sign-in-activity-for-unfamiliar-location-followed-by-anomalous-office-365-activity"></a>Aktivita přihlášení pro neznámé umístění následovaná neobvyklou aktivitou Office 365
 
-- **Přihlašovací událost z nakaženého zařízení, které se ransomwarem v cloudové aplikaci**
-    
-    Tato výstraha je označením události přihlášení \<*název účtu*> ze zařízení, které je potenciálně napadené malwarem. 
-    
-    V dalším kroku se název účtu \<*účtu*> nahrál \<*počet*souborů > a odstranil se celkový *počet \<souborů >.* 
-    
-    Tento vzor aktivity je indikativní pro potenciální útok ransomwarem.
+Existuje sedm možných incidentů Azure Sentinelu, které kombinují aktivitu přihlášení pro neznámé výstrahy polohy z Azure AD Identity Protection a neobvyklé výstrahy Office 365 generované Microsoft Cloud App Security.
 
-### <a name="sign-in-activity-from-anonymous-ip-address-followed-by-anomalous-office-365-activity"></a>Přihlašovací aktivita z anonymní IP adresy, za kterou následuje aktivita neobvyklé Office 365
+- **Událost přihlášení z neznámého místa vedoucího k exfiltraci poštovní schránky Exchange Online**
+    
+    Tato výstraha je označením události \<přihlášení podle \<názvu *účtu*> z *umístění*>, neznámého umístění, následované podezřelým pravidlem pro předávání doručené pošty, které bylo nastaveno v doručené poště uživatele.
+    
+    To může znamenat, že účet je ohrožena a že poštovní schránka se používá k exfiltraci informací z vaší organizace. Název \< *uživatelského účtu*> vytvořit nebo aktualizovat pravidlo předávání doručené pošty, \<které předává všechny příchozí e-maily na *e-mailovou adresu* externí adresy>. 
 
-K dispozici je sedm možných incidentů ověřování Azure, které spojují přihlašovací aktivitu z výstrah anonymních IP adres z Azure AD Identity Protection a neobvyklé výstrahy sady Office 365 vygenerované Microsoft Cloud App Security:
+- **Událost přihlášení z neznámého umístění vedoucí k podezřelé aktivitě správy cloudových aplikací**
+    
+    Tato výstraha je označením události \<přihlášení podle \<názvu *účtu*> z *umístění*> neznámého umístění. 
+    
+    Dále> \< *název účtu* proveden \<přes *počet*> aktivit správy v jedné relaci.
 
-- **Událost přihlášení z anonymní IP adresy, která vede k exfiltrace poštovní schránky Office 365**
+- **Událost přihlášení z neznámého umístění vedoucík hromadnému odstranění souboru**
     
-    Tato výstraha je označením události přihlášení \<*název účtu*> z IP adresy anonymního proxy serveru \<> *IP adresa*, po které následuje pravidlo pro přeposílání podezřelé doručené pošty v doručené poště uživatele.
+    Tato výstraha je označením události \<přihlášení podle \<názvu *účtu*> z *umístění*> neznámého umístění. 
     
-    To může znamenat, že došlo k ohrožení zabezpečení účtu a že se poštovní schránka používá k exfiltrovatí informací z vaší organizace. *Název účtu*uživatele \<> vytvořil nebo aktualizoval pravidlo přeposílání doručené pošty, které předává všechny příchozí e-maily na externí adresu \<> *e-mailová adresa*. 
+    Dále název \< *účtu*> \< *odstraněný počet*> jedinečných souborů v jedné relaci.
 
-- **Událost přihlášení z anonymní IP adresy, která vede k podezřelé aktivitě správy cloudové aplikace**
+- **Událost přihlášení z neznámého umístění vedoucí hoštinového souboru**
     
-    Tato výstraha je označením události přihlášení \<*název účtu*> z IP adresy anonymního proxy serveru \<> *IP adresa*. 
+    Tato výstraha je označením události \<přihlášení podle \<názvu *účtu*> z *umístění*> neznámého umístění. 
     
-    V dalším kroku se *název*účtu \<účtu > provedl v rámci \<*počtu*> aktivit správy v jedné relaci.
+    Dále> \< *název účtu* stažen \<přes počet> *jedinečných* souborů v jedné relaci.
 
-- **Událost přihlášení z anonymní IP adresy, která vede k odstranění souboru**
+- **Událost přihlášení z neznámého místa vedoucího k zosobnění Office 365**
     
-    Tato výstraha je označením události přihlášení \<*název účtu*> z IP adresy anonymního proxy serveru \<> *IP adresa*. 
+    Tato výstraha je označením události \<přihlášení podle \<názvu *účtu*> z *umístění*> neznámého umístění.
     
-    V dalším kroku se *název*účtu \<účtu > odstranil v jedné relaci \<*počet*> jedinečných souborů.
+    Dále název \< *účtu*> zosobněn přes \< *počet*> různých účtů v jedné relaci.
 
-- **Událost přihlášení z anonymní IP adresy, která vede ke stažení hromadného souboru**
+- **Událost přihlášení z neznámého umístění vedoucího k hromadnému sdílení souborů**
     
-    Tato výstraha je označením události přihlášení \<*název účtu*> z IP adresy anonymního proxy serveru \<> *IP adresa*. 
+    Tato výstraha je označením události \<přihlášení podle \<názvu *účtu*> z *umístění*> neznámého umístění. 
     
-    V dalším kroku se *název*účtu \<účtu > stáhl přes \<*počet*> jedinečných souborů v jedné relaci.
+    Dále> \< *název účtu* sdílen \<přes počet> *jedinečných* souborů v jedné relaci.
 
-- **Událost přihlášení z anonymní IP adresy, která vede k zosobnění systému Office 365**
+- **Událost přihlášení z neznámého místa vedoucího k ransomwaru v cloudové aplikaci**
     
-    Tato výstraha je označením události přihlášení \<*název účtu*> z IP adresy anonymního proxy serveru \<> *IP adresa*. 
+    Tato výstraha je označením události \<přihlášení podle \<názvu *účtu*> z *umístění*> neznámého umístění. 
     
-    V dalším kroku se *název*účtu \<účtu > zosobnit přes \<*počet*> různých účtů v jedné relaci.
+    Dále> \< *název účtu* nahrál \< *počet*> souborů a \<odstranil celkem *počet* souborů>. 
+    
+    Tento vzorec aktivity svědčí o potenciálním útoku ransomware.
 
-- **Událost přihlášení z anonymní IP adresy, která vede ke sdílení souborů**
-    
-    Tato výstraha je označením události přihlášení \<*název účtu*> z IP adresy anonymního proxy serveru \<> *IP adresa*. 
-    
-    V dalším kroku \<*název účtu*účtu > sdílet přes \<*počet*> jedinečných souborů v jedné relaci.
+### <a name="sign-in-activity-from-infected-device-followed-by-anomalous-office-365-activity"></a>Aktivita přihlášení z infikovaného zařízení následovaná anomální aktivitou Office 365
 
-- **Událost přihlášení z anonymní IP adresy do ransomwarem v cloudové aplikaci**
-    
-    Tato výstraha je označením události přihlášení \<*název účtu*> z IP adresy anonymního proxy serveru \<> *IP adresa*. 
-    
-    V dalším kroku se název účtu \<*účtu*> nahrál \<*počet*souborů > a odstranil se celkový *počet \<souborů >.* 
-    
-    Tento vzor aktivity je indikativní pro potenciální útok ransomwarem.
+Existuje sedm možných incidentů Azure Sentinelu, které kombinují aktivitu přihlášení z infikovaných zařízení výstrah z Azure AD Identity Protection a neobvyklé výstrahy Office 365 generované Microsoft Cloud App Security:
 
-### <a name="sign-in-activity-from-user-with-leaked-credentials-followed-by-anomalous-office-365-activity"></a>Přihlašovací aktivita od uživatele s nevrácenými přihlašovacími údaji následovanými aktivitou neobvyklé Office 365
+- **Událost přihlášení z infikovaného zařízení vedoucího k exfiltraci poštovní schránky Office 365**
+    
+    Tato výstraha je označením události \<přihlášení *podle názvu účtu*> ze zařízení potenciálně infikovaného malwarem, následované podezřelým pravidlem pro přesměrování doručené pošty nastaveným v doručené poště uživatele.
+    
+    To může znamenat, že účet je ohrožena a že poštovní schránka se používá k exfiltraci informací z vaší organizace. Název \< *uživatelského účtu*> vytvořit nebo aktualizovat pravidlo předávání doručené pošty, \<které předává všechny příchozí e-maily na *e-mailovou adresu* externí adresy>. 
 
-Existuje sedm možných incidentů Sentinel Azure, které spojují přihlašovací aktivitu od uživatele s nevrácenými výstrahami přihlašovacích údajů z Azure AD Identity Protection a neobvyklé výstrah Office 365 generovaných Microsoft Cloud App Security:
+- **Událost přihlášení z infikovaného zařízení vedoucí k podezřelé aktivitě správy cloudových aplikací**
+    
+    Tato výstraha je označením události \<přihlášení podle *názvu účtu*> ze zařízení potenciálně infikovaného malwarem.
+    
+    Dále> \< *název účtu* proveden \<přes *počet*> aktivit správy v jedné relaci.
 
-- **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucími k poštovní schránce Office 365 exfiltrace**
+- **Událost přihlášení z infikovaného zařízení vedoucí k hromadnému odstranění souborů**
     
-    Tato výstraha znamená, že přihlašovací událost podle \<*název účtu*> použila nepoužívané přihlašovací údaje, na které se v doručené poště uživatele nastavilo pravidlo pro přeposílání podezřelé doručené pošty. 
+    Tato výstraha je označením události \<přihlášení podle *názvu účtu*> ze zařízení potenciálně infikovaného malwarem. 
     
-    To může znamenat, že došlo k ohrožení zabezpečení účtu a že se poštovní schránka používá k exfiltrovatí informací z vaší organizace. *Název účtu*uživatele \<> vytvořil nebo aktualizoval pravidlo přeposílání doručené pošty, které předává všechny příchozí e-maily na externí adresu \<> *e-mailová adresa*. 
+    Dále název \< *účtu*> \< *odstraněný počet*> jedinečných souborů v jedné relaci.
 
-- **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucími k podezřelé aktivitě správy cloudové aplikace**
+- **Událost přihlášení z infikovaného zařízení vedoucí k hromadnému stahování souborů**
     
-    Tato výstraha znamená, že přihlašovací událost podle \<*název účtu*> použitá nevrácená pověření.
+    Tato výstraha je označením události \<přihlášení podle *názvu účtu*> ze zařízení potenciálně infikovaného malwarem. 
     
-    V dalším kroku se *název*účtu \<účtu > provedl v rámci \<*počtu*> aktivit správy v jedné relaci.
+    Dále> \< *název účtu* stažen \<přes počet> *jedinečných* souborů v jedné relaci.
 
-- **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucími k hromadnému odstranění souboru**
+- **Událost přihlášení z infikovaného zařízení vedoucího k zosobnění Office 365**
     
-    Tato výstraha znamená, že přihlašovací událost podle \<*název účtu*> použitá nevrácená pověření.
+    Tato výstraha je označením události \<přihlášení podle *názvu účtu*> ze zařízení potenciálně infikovaného malwarem. 
     
-    V dalším kroku se *název*účtu \<účtu > odstranil v jedné relaci \<*počet*> jedinečných souborů.
+    Dále název \< *účtu*> zosobněn přes \< *počet*> různých účtů v jedné relaci.
 
-- **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucím ke stažení souboru**
+- **Událost přihlášení z infikovaného zařízení vedoucí k hromadnému sdílení souborů**
     
-    Tato výstraha znamená, že přihlašovací událost podle \<*název účtu*> použitá nevrácená pověření.
+    Tato výstraha je označením události \<přihlášení podle *názvu účtu*> ze zařízení potenciálně infikovaného malwarem. 
     
-    V dalším kroku se *název*účtu \<účtu > stáhl přes \<*počet*> jedinečných souborů v jedné relaci.
+    Dále> \< *název účtu* sdílen \<přes počet> *jedinečných* souborů v jedné relaci.
 
-- **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucími k zosobnění systému Office 365**
+- **Událost přihlášení z infikovaného zařízení vedoucího k ransomwaru v cloudové aplikaci**
     
-    Tato výstraha znamená, že přihlašovací událost podle \<*název účtu*> použitá nevrácená pověření. 
+    Tato výstraha je označením události \<přihlášení podle *názvu účtu*> ze zařízení potenciálně infikovaného malwarem. 
     
-    V dalším kroku se *název*účtu \<účtu > zosobnit přes \<*počet*> různých účtů v jedné relaci.
+    Dále> \< *název účtu* nahrál \< *počet*> souborů a \<odstranil celkem *počet* souborů>. 
+    
+    Tento vzorec aktivity svědčí o potenciálním útoku ransomware.
 
-- **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucími k hromadnému sdílení souborů**
-    
-    Tato výstraha znamená, že přihlašovací událost podle \<*název účtu*> použitá nevrácená pověření.
-    
-    V dalším kroku \<*název účtu*účtu > sdílet přes \<*počet*> jedinečných souborů v jedné relaci.
+### <a name="sign-in-activity-from-anonymous-ip-address-followed-by-anomalous-office-365-activity"></a>Aktivita přihlášení z anonymní IP adresy následovaná neobvyklou aktivitou Office 365
 
-- **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji do ransomwarem v cloudové aplikaci**
+Existuje sedm možných incidentů Azure Sentinelu, které kombinují aktivitu přihlášení z anonymních výstrah IP adres z Azure AD Identity Protection a neobvyklých výstrah Office 365 generovaných microsoftcloudovým zabezpečením aplikací:
+
+- **Událost přihlášení z anonymní IP adresy vedoucí k exfiltraci poštovní schránky Office 365**
     
-    Tato výstraha znamená, že přihlašovací událost podle \<*název účtu*> použitá nevrácená pověření. 
+    Tato výstraha je označením události \<přihlášení *podle názvu účtu*> \<z adresy *IP* anonymní proxy adresy>, následovanou podezřelým pravidlem pro předávání doručené pošty, které bylo nastaveno v doručené poště uživatele.
     
-    V dalším kroku se název účtu \<*účtu*> nahrál \<*počet*souborů > a odstranil se celkový *počet \<souborů >.* 
+    To může znamenat, že účet je ohrožena a že poštovní schránka se používá k exfiltraci informací z vaší organizace. Název \< *uživatelského účtu*> vytvořit nebo aktualizovat pravidlo předávání doručené pošty, \<které předává všechny příchozí e-maily na *e-mailovou adresu* externí adresy>. 
+
+- **Událost přihlášení z anonymní IP adresy vedoucí k podezřelé aktivitě správy cloudových aplikací**
     
-    Tento vzor aktivity je indikativní pro potenciální útok ransomwarem.
+    Tato výstraha je označením události \<přihlášení podle *názvu účtu*> \<z ip *adresy* IP anonymní proxy adresy>. 
+    
+    Dále> \< *název účtu* proveden \<přes *počet*> aktivit správy v jedné relaci.
+
+- **Událost přihlášení z anonymní IP adresy vedoucí k hromadnému odstranění souborů**
+    
+    Tato výstraha je označením události \<přihlášení podle *názvu účtu*> \<z ip *adresy* IP anonymní proxy adresy>. 
+    
+    Dále název \< *účtu*> \< *odstraněný počet*> jedinečných souborů v jedné relaci.
+
+- **Událost přihlášení z anonymní IP adresy vedoucí k hromadnému stahování souborů**
+    
+    Tato výstraha je označením události \<přihlášení podle *názvu účtu*> \<z ip *adresy* IP anonymní proxy adresy>. 
+    
+    Dále> \< *název účtu* stažen \<přes počet> *jedinečných* souborů v jedné relaci.
+
+- **Událost přihlášení z anonymní IP adresy vedoucí k zosobnění Office 365**
+    
+    Tato výstraha je označením události \<přihlášení podle *názvu účtu*> \<z ip *adresy* IP anonymní proxy adresy>. 
+    
+    Dále název \< *účtu*> zosobněn přes \< *počet*> různých účtů v jedné relaci.
+
+- **Událost přihlášení z anonymní IP adresy vedoucí k hromadnému sdílení souborů**
+    
+    Tato výstraha je označením události \<přihlášení podle *názvu účtu*> \<z ip *adresy* IP anonymní proxy adresy>. 
+    
+    Dále> \< *název účtu* sdílen \<přes počet> *jedinečných* souborů v jedné relaci.
+
+- **Událost přihlášení z anonymní IP adresy na ransomware v cloudové aplikaci**
+    
+    Tato výstraha je označením události \<přihlášení podle *názvu účtu*> \<z ip *adresy* IP anonymní proxy adresy>. 
+    
+    Dále> \< *název účtu* nahrál \< *počet*> souborů a \<odstranil celkem *počet* souborů>. 
+    
+    Tento vzorec aktivity svědčí o potenciálním útoku ransomware.
+
+### <a name="sign-in-activity-from-user-with-leaked-credentials-followed-by-anomalous-office-365-activity"></a>Aktivita přihlášení od uživatele s uniklými přihlašovacími údaji následovanými neobvyklou aktivitou Office 365
+
+Existuje sedm možných incidentů Azure Sentinelu, které kombinují přihlašovací aktivitu od uživatele s uniklými výstrahami přihlašovacích údajů z Azure AD Identity Protection a neobvyklými výstrahami Office 365 generovanými službou Microsoft Cloud App Security:
+
+- **Událost přihlášení od uživatele s uniklými přihlašovacími údaji vedoucími k exfiltraci poštovní schránky Office 365**
+    
+    Tato výstraha označuje, že událost \<přihlášení podle *názvu účtu*> použita neuniklá pověření následovaná podezřelým pravidlem pro předávání doručené pošty, které bylo nastaveno v doručené poště uživatele. 
+    
+    To může znamenat, že účet je ohrožena a že poštovní schránka se používá k exfiltraci informací z vaší organizace. Název \< *uživatelského účtu*> vytvořit nebo aktualizovat pravidlo předávání doručené pošty, \<které předává všechny příchozí e-maily na *e-mailovou adresu* externí adresy>. 
+
+- **Událost přihlášení od uživatele s uniklými přihlašovacími údaji vedoucími k podezřelé aktivitě správy cloudových aplikací**
+    
+    Tato výstraha označuje, že událost \<přihlášení podle *názvu účtu*> použita neuniklá pověření.
+    
+    Dále> \< *název účtu* proveden \<přes *počet*> aktivit správy v jedné relaci.
+
+- **Událost přihlášení od uživatele s uniklými přihlašovacími údaji vedoucími k hromadnému odstranění souborů**
+    
+    Tato výstraha označuje, že událost \<přihlášení podle *názvu účtu*> použita neuniklá pověření.
+    
+    Dále název \< *účtu*> \< *odstraněný počet*> jedinečných souborů v jedné relaci.
+
+- **Událost přihlášení od uživatele s uniklými přihlašovacími údaji vedoucími k hromadnému stahování souborů**
+    
+    Tato výstraha označuje, že událost \<přihlášení podle *názvu účtu*> použita neuniklá pověření.
+    
+    Dále> \< *název účtu* stažen \<přes počet> *jedinečných* souborů v jedné relaci.
+
+- **Událost přihlášení od uživatele s uniklými přihlašovacími údaji vedoucími k zosobnění Office 365**
+    
+    Tato výstraha označuje, že událost \<přihlášení podle *názvu účtu*> použita neuniklá pověření. 
+    
+    Dále název \< *účtu*> zosobněn přes \< *počet*> různých účtů v jedné relaci.
+
+- **Událost přihlášení od uživatele s uniklými přihlašovacími údaji vedoucími k hromadnému sdílení souborů**
+    
+    Tato výstraha označuje, že událost \<přihlášení podle *názvu účtu*> použita neuniklá pověření.
+    
+    Dále> \< *název účtu* sdílen \<přes počet> *jedinečných* souborů v jedné relaci.
+
+- **Událost přihlášení od uživatele s uniklými přihlašovacími údaji k ransomwaru v cloudové aplikaci**
+    
+    Tato výstraha označuje, že událost \<přihlášení podle *názvu účtu*> použita neuniklá pověření. 
+    
+    Dále> \< *název účtu* nahrál \< *počet*> souborů a \<odstranil celkem *počet* souborů>. 
+    
+    Tento vzorec aktivity svědčí o potenciálním útoku ransomware.
 
 ## <a name="next-steps"></a>Další kroky
 
-Seznámili jste se s tím, že jste se dozvěděli o pokročilé detekci útoků ve více fázích, a můžete se zajímat, jak získat přehled o vašich datech a potenciálních hrozbách: [Začínáme s Sentinel Azure](quickstart-get-visibility.md).
+Nyní jste se dozvěděli více o pokročilé vícestupňové detekci útoků, které by vás mohly zajímat následující rychlý start, abyste zjistili, jak získat přehled o vašich datech a potenciálních hrozbách: [Začněte s Azure Sentinelem](quickstart-get-visibility.md).
 
-Pokud jste připraveni prozkoumat incidenty, které jste si vytvořili, přečtěte si následující kurz: [Prozkoumejte incidenty pomocí Azure Sentinel](tutorial-investigate-cases.md).
+Pokud jste připraveni prozkoumat incidenty, které jsou vytvořeny pro vás, podívejte se na následující kurz: [Prozkoumat incidenty s Azure Sentinel](tutorial-investigate-cases.md).
 

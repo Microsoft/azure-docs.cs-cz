@@ -1,18 +1,18 @@
 ---
-title: Nastavení gMSA pro službu Azure Service Fabric Container Services
-description: Naučte se nastavit skupinový účet spravované služby (gMSA) pro kontejner běžící v Azure Service Fabric.
+title: Nastavení gMSA pro služby kontejneru Azure Service Fabric
+description: Naučte se teď nastavit skupinu účtů spravovaných služeb (gMSA) pro kontejner spuštěný ve službě Azure Fabric.
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.openlocfilehash: 9873e2d7672412b0e1e22c6c2a774cf629fd728a
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75639203"
 ---
-# <a name="set-up-gmsa-for-windows-containers-running-on-service-fabric"></a>Nastavení gMSA pro kontejnery Windows běžící na Service Fabric
+# <a name="set-up-gmsa-for-windows-containers-running-on-service-fabric"></a>Nastavení gMSA pro kontejnery windows spuštěné na Service Fabric
 
-Pokud chcete nastavit gMSA (skupinový účet spravované služby), uloží se soubor specifikace přihlašovacích údajů (`credspec`) do všech uzlů v clusteru. Soubor se dá zkopírovat na všech uzlech pomocí rozšíření virtuálního počítače.  `credspec` soubor musí obsahovat informace o účtu gMSA. Další informace o souboru `credspec` najdete v tématu [Vytvoření specifikace přihlašovacích údajů](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#create-a-credential-spec). Specifikace pověření a značka `Hostname` jsou uvedeny v manifestu aplikace. Značka `Hostname` musí odpovídat názvu účtu gMSA, pod kterým je kontejner spuštěný.  Značka `Hostname` umožňuje kontejneru sám se ověřit s ostatními službami v doméně pomocí ověřování pomocí protokolu Kerberos.  Ukázka pro určení `Hostname` a `credspec` v manifestu aplikace je uvedena v následujícím fragmentu kódu:
+Chcete-li nastavit gMSA (skupinová správa účtů`credspec`služeb), je na všech uzlech v clusteru umístěn soubor specifikace pověření ( ). Soubor lze zkopírovat na všechny uzly pomocí rozšíření virtuálního počítače.  Soubor `credspec` musí obsahovat informace o účtu gMSA. Další informace o `credspec` souboru naleznete v [tématu Vytvoření specifikace pověření](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#create-a-credential-spec). Specifikace pověření a `Hostname` značka jsou určeny v manifestu aplikace. Značka `Hostname` musí odpovídat názvu účtu gMSA, pod kterým kontejner běží.  Značka `Hostname` umožňuje kontejneru ověřit sám na jiné služby v doméně pomocí ověřování protokolem Kerberos.  Ukázka pro určení `Hostname` manifestu `credspec` a v aplikaci je uvedena v následujícím fragmentu:
 
 ```xml
 <Policies>
@@ -21,7 +21,7 @@ Pokud chcete nastavit gMSA (skupinový účet spravované služby), uloží se s
   </ContainerHostPolicies>
 </Policies>
 ```
-V dalším kroku si přečtěte následující články:
+Jako další krok si přečtěte následující články:
 
-* [Nasazení kontejneru Windows pro Service Fabric v systému Windows Server 2016](service-fabric-get-started-containers.md)
-* [Nasazení kontejneru Docker pro Service Fabric v systému Linux](service-fabric-get-started-containers-linux.md)
+* [Nasazení kontejneru Windows do service fabricu na Windows Serveru 2016](service-fabric-get-started-containers.md)
+* [Nasazení kontejneru Dockeru do Service Fabric na Linuxu](service-fabric-get-started-containers-linux.md)

@@ -1,6 +1,6 @@
 ---
-title: AzCopy úlohy obnovit | Microsoft Docs
-description: Tento článek popisuje referenční informace o příkazu pro obnovení úloh AzCopy.
+title: azcopy pracovních míst pokračovat | Dokumenty společnosti Microsoft
+description: Tento článek obsahuje referenční informace pro příkaz obnovení azkopie.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -9,17 +9,17 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 3ee7879475801660b5200dddca88a0a81b2b6b9b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74034143"
 ---
 # <a name="azcopy-jobs-resume"></a>azcopy jobs resume
 
-Obnoví existující úlohu s daným ID úlohy.
+Obnoví existující úlohu s ID dané úlohy.
 
-## <a name="synopsis"></a>Stručný obsah
+## <a name="synopsis"></a>Synopse
 
 ```azcopy
 azcopy jobs resume [jobID] [flags]
@@ -27,28 +27,28 @@ azcopy jobs resume [jobID] [flags]
 
 ## <a name="related-conceptual-articles"></a>Související koncepční články
 
-- [Začínáme s AzCopy](storage-use-azcopy-v10.md)
-- [Přenos dat pomocí AzCopy a BLOB Storage](storage-use-azcopy-blobs.md)
-- [Přenos dat pomocí AzCopy a úložiště souborů](storage-use-azcopy-files.md)
-- [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
+- [Začínáme s nástrojem AzCopy](storage-use-azcopy-v10.md)
+- [Přenos dat pomocí úložiště AzCopy a Blob](storage-use-azcopy-blobs.md)
+- [Přenos dat pomocí AzCopy a ukládání souborů](storage-use-azcopy-files.md)
+- [Konfigurace, optimalizace a řešení potíží s azcopy](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>Možnosti
 
 |Možnost|Popis|
 |--|--|
-|--cíl-řetězec SAS|Cílové SAS cíle pro daný JobId|
-|--vyloučit řetězec|Filtr: při obnovování úlohy Vylučte tyto neúspěšné přenosy. Soubory by měly být oddělené znakem '; '.|
-|-h,--help|Zobrazit obsah nápovědu pro příkaz Resume.|
-|--zahrnout řetězec|Filtr: při obnovování úlohy zahrňte pouze tyto neúspěšné přenosy. Soubory by měly být oddělené znakem '; '.|
-|--Source-řetězec SAS |zdrojové SAS zdroje pro daný JobId|
+|--destination-sas string --destination-sas string --destination-sas string --destination|Cíl SAS cíle pro daný JobId.|
+|--vyloučit řetězec|Filtr: Při obnovení úlohy vylučte tyto neúspěšné přenosy. Soubory by měly být odděleny ';'.|
+|-h, --pomoc|Zobrazit obsah nápovědy pro příkaz pokračovat.|
+|--zahrnout řetězec|Filtr: zahrnout pouze tyto neúspěšné převody při obnovení úlohy. Soubory by měly být odděleny ';'.|
+|--source-sas řetězec |zdroj SAS zdroje pro daný JobId.|
 
 ## <a name="options-inherited-from-parent-commands"></a>Možnosti zděděné z nadřazených příkazů
 
 |Možnost|Popis|
 |---|---|
-|--Cap – Mbps|Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.|
-|--výstupní řetězec typu|Formát výstupu příkazu Mezi možnosti patří: text, JSON. Výchozí hodnota je "text".|
+|--cap-mbps uint32|Završuje přenosovou rychlost v megabitech za sekundu. Propustnost se může mírně lišit od víčka. Pokud je tato možnost nastavena na nulu nebo je vynechána, propustnost není omezena.|
+|--řetězec výstupního typu|Formát výstupu příkazu. Volby zahrnují: text, json. Výchozí hodnota je "text".|
 
 ## <a name="see-also"></a>Viz také
 
-- [AzCopy úlohy](storage-ref-azcopy-jobs.md)
+- [azcopy jobs](storage-ref-azcopy-jobs.md)

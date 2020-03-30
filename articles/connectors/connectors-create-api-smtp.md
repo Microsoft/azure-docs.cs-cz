@@ -1,6 +1,6 @@
 ---
-title: Připojení k SMTP z Azure Logic Apps
-description: Automatizace úloh a pracovních postupů, které odesílají e-maily prostřednictvím účtu SMTP (Simple Mail Transfer Protocol) pomocí Azure Logic Apps
+title: Připojení ke smtp z aplikací Azure Logic Apps
+description: Automatizace úloh a pracovních postupů, které posílají e-maily prostřednictvím účtu SMTP (Simple Mail Transfer Protocol) pomocí Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,44 +8,44 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: 60acd128495176cd0a90418c61edf53bdcd88e5a
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77647581"
 ---
-# <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>Odeslání e-mailu z účtu SMTP pomocí Azure Logic Apps
+# <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>Odesílání e-mailů z účtu SMTP pomocí aplikací Azure Logic Apps
 
-Pomocí Azure Logic Apps a konektoru SMTP (Simple Mail Transfer Protocol) můžete vytvářet automatizované úlohy a pracovní postupy, které odesílají e-maily z vašeho účtu SMTP. Můžete také použít další akce výstup z akcí SMTP. Například po odeslání e-mailu prostřednictvím protokolu SMTP můžete týmu Odeslat výstrahu do časové rezervy pomocí konektoru časové rezervy. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Pomocí aplikací Azure Logic Apps a konektoru SMTP (Simple Mail Transfer Protocol) můžete vytvářet automatizované úlohy a pracovní postupy, které odesílají e-maily z vašeho účtu SMTP. Můžete také mít jiné akce použít výstup z akcí SMTP. Například poté, co váš SMTP odešle e-mail, můžete upozornit svůj tým v Slack s konektorem Slack. Pokud s aplikacemi logiky tečujete, přečtěte [si, co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
-* Účet SMTP a přihlašovací údaje uživatele
+* Váš účet SMTP a pověření uživatele
 
-  Vaše přihlašovací údaje autorizují vaši aplikaci logiky, aby vytvořila připojení a měl přístup k vašemu účtu SMTP.
+  Vaše přihlašovací údaje autorizují aplikaci logiky k vytvoření připojení a přístupu k účtu SMTP.
 
-* Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Základní znalosti o [vytváření aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Aplikace logiky, ke které chcete získat přístup k účtu SMTP. Pokud chcete použít akci SMTP, spusťte aplikaci logiky s triggerem, jako je například Trigger služby Salesforce, pokud máte účet Salesforce.
+* Aplikace logiky, kde chcete získat přístup k účtu SMTP. Chcete-li použít akci SMTP, spusťte aplikaci logiky s aktivační událostí, jako je například aktivační událost Salesforce, pokud máte účet Salesforce.
 
-  Aplikaci logiky můžete například spustit pomocí triggeru **při vytvoření záznamu** Salesforce. 
-  Tato aktivační událost se aktivuje pokaždé, když se v Salesforce vytvoří nový záznam, třeba zájemce. 
-  Tuto aktivační událost pak můžete sledovat pomocí akce **Odeslat E-mail** SMTP. Tímto způsobem bude při vytváření nového záznamu aplikace logiky odeslána z vašeho účtu SMTP e-mail o novém záznamu.
+  Můžete například spustit aplikaci logiky s aktivační událostí **When a record is created** Salesforce. 
+  Tato aktivační událost se aktivuje pokaždé, když je v salesforce vytvořen nový záznam, například zájemce. 
+  Tuto aktivační událost pak můžete sledovat pomocí akce SMTP **Odeslat e-mail.** Tímto způsobem při vytvoření nového záznamu aplikace logiky odešle e-mail z vašeho účtu SMTP o nový záznam.
 
-## <a name="connect-to-smtp"></a>Připojení k SMTP
+## <a name="connect-to-smtp"></a>Připojení ke smtp
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)a otevřete aplikaci logiky v návrháři aplikace logiky, pokud už není otevřený.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com)a otevřete aplikaci logiky v Návrháři aplikací logiky, pokud už není otevřená.
 
-1. V posledním kroku, kam chcete přidat akci SMTP, vyberte **Nový krok**. 
+1. V posledním kroku, kam chcete přidat akci SMTP, zvolte **Nový krok**. 
 
-   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. 
-   Zvolte znaménko plus ( **+** ), které se zobrazí, a pak vyberte **přidat akci**.
+   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi kroky. 
+   Zvolte znaménko plus (**+**), které se zobrazí, a pak vyberte Přidat **akci**.
 
-1. Do vyhledávacího pole zadejte jako filtr "SMTP". V seznamu akce vyberte akci, kterou chcete.
+1. Do vyhledávacího pole zadejte jako filtr "smtp". V seznamu akcí vyberte požadovanou akci.
 
 1. Po zobrazení výzvy zadejte tyto informace o připojení:
 
@@ -54,22 +54,22 @@ Pomocí Azure Logic Apps a konektoru SMTP (Simple Mail Transfer Protocol) může
    | **Název připojení** | Ano | Název připojení k serveru SMTP | 
    | **Adresa serveru SMTP** | Ano | Adresa serveru SMTP | 
    | **Uživatelské jméno** | Ano | Vaše uživatelské jméno pro váš účet SMTP | 
-   | **Heslo** | Ano | Heslo pro váš účet SMTP | 
+   | **Heslo** | Ano | Heslo k účtu SMTP | 
    | **Port serveru SMTP** | Ne | Konkrétní port na serveru SMTP, který chcete použít | 
    | **Povolit SSL?** | Ne | Zapněte nebo vypněte šifrování SSL. | 
    |||| 
 
-1. Zadejte potřebné podrobnosti pro vybranou akci. 
+1. Uveďte potřebné podrobnosti pro vybranou akci. 
 
-1. Uložte aplikaci logiky nebo pokračujte v sestavování pracovního postupu aplikace logiky.
+1. Uložte aplikaci logiky nebo pokračujte v vytváření pracovního postupu aplikace logiky.
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Další technické podrobnosti o této spojnici, jako jsou triggery, akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete na [referenční stránce konektoru](https://docs.microsoft.com/connectors/smtpconnector/).
+Další technické podrobnosti o tomto konektoru, jako jsou aktivační události, akce a omezení, jak je popsáno v souboru Swagger konektoru, naleznete [na referenční stránce konektoru](https://docs.microsoft.com/connectors/smtpconnector/).
 
 > [!NOTE]
-> V případě Logic Apps v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Tato verze konektoru ISE-Label používá místo toho [omezení zpráv ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
+> Pro aplikace logiky v [prostředí služby integrace (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), tento konektor je ise označené verze používá [omezení zpráv ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) místo.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)
+* Další informace o dalších [konektorech logic apps](../connectors/apis-list.md)

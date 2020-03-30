@@ -1,35 +1,35 @@
 ---
 title: Odolnost konfigurace aplikace Azure a zotavení po havárii
-description: Vyštíhlá implementace odolnosti a zotavení po havárii s využitím konfigurace aplikací Azure.
+description: Osviďte se, jak implementovat odolnost proti chybám a zotavení po havárii pomocí konfigurace aplikací Azure.
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: 96ef09ac081aa328014217592a7fcd3ed6314c0e
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77523760"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Odolnost a zotavení po havárii
 
-V současné době je konfigurace aplikace Azure místní službou. Každé úložiště konfigurace se vytvoří v konkrétní oblasti Azure. Výpadek celého regionu ovlivňuje všechna úložiště v této oblasti. Konfigurace aplikace nenabízí automatické převzetí služeb při selhání do jiné oblasti. Tento článek obsahuje obecné pokyny k používání více úložišť konfigurací napříč oblastmi Azure ke zvýšení geografické odolnosti vaší aplikace.
+V současné době Azure App Configuration je místní služba. Každé úložiště konfigurace se vytvoří v určité oblasti Azure. Výpadek v celé oblasti ovlivní všechny obchody v této oblasti. Konfigurace aplikace nenabízí automatické převzetí služeb při selhání do jiné oblasti. Tento článek obsahuje obecné pokyny, jak můžete použít více úložišť konfigurace v rámci oblastí Azure ke zvýšení geografické odolnosti vaší aplikace.
 
 ## <a name="high-availability-architecture"></a>Architektura s vysokou dostupností
 
-Pokud chcete realizovat redundanci mezi oblastmi, musíte v různých oblastech vytvořit několik úložišť konfigurací aplikace. V rámci tohoto nastavení má vaše aplikace ještě aspoň jedno další úložiště konfigurace, aby se mohlo vrátit, pokud se primární úložiště nezpřístupní. Následující diagram znázorňuje topologii mezi vaší aplikací a jejich primárními a sekundárními úložišti konfigurací:
+Chcete-li realizovat redundanci mezi oblastmi, musíte vytvořit více obchodů konfigurace aplikací v různých oblastech. S tímto nastavením aplikace má alespoň jeden další úložiště konfigurace se vrátit zpět, pokud primární úložiště stane nepřístupné. Následující diagram znázorňuje topologii mezi aplikací a její primární a sekundární konfigurační úložiště:
 
 ![Geograficky redundantní obchody](./media/geo-redundant-app-configuration-stores.png)
 
-Vaše aplikace načte svou konfiguraci z primárního i sekundárního úložiště současně. Tím se zvyšuje riziko úspěšného získání konfiguračních dat. Zodpovídáte za udržování dat v obou úložištích. V následujících částech se dozvíte, jak můžete do aplikace sestavit geografickou odolnost.
+Aplikace načte svou konfiguraci z primárního i sekundárního úložiště paralelně. Tím se zvyšuje pravděpodobnost úspěšného získání konfiguračních dat. Jste zodpovědní za synchronizaci dat v obou obchodech. V následujících částech je vysvětleno, jak můžete do aplikace vytvořit geografickou odolnost.
 
-## <a name="failover-between-configuration-stores"></a>Převzetí služeb při selhání mezi úložišti konfigurací
+## <a name="failover-between-configuration-stores"></a>Převzetí služeb při selhání mezi úložišti konfigurace
 
-Technicky, vaše aplikace neprovádí převzetí služeb při selhání. Probíhá pokus o načtení stejné sady konfiguračních dat ze dvou úložišť konfigurací aplikace současně. Uspořádejte svůj kód tak, aby nejprve načítal ze sekundárního úložiště a pak jako primární úložiště. Tento přístup zajišťuje, že konfigurační data v primárním úložišti mají přednost, kdykoli bude k dispozici. Následující fragment kódu ukazuje, jak můžete implementovat toto uspořádání v .NET Core:
+Technicky vzato vaše aplikace není provádění převzetí služeb při selhání. Pokouší se načíst stejnou sadu konfiguračních dat ze dvou obchodů konfigurace aplikací současně. Uspořádejte kód tak, aby se nejprve načte z sekundárního úložiště a potom z primárního úložiště. Tento přístup zajišťuje, že konfigurační data v primárním úložišti mají přednost vždy, když jsou k dispozici. Následující fragment kódu ukazuje, jak můžete implementovat toto uspořádání v .NET Core:
 
-#### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+#### <a name="net-core-2x"></a>[.NET Jádro 2.x](#tab/core2x)
 
 ```csharp
 public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -44,7 +44,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
     
 ```
 
-#### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
+#### <a name="net-core-3x"></a>[.NET Jádro 3.x](#tab/core3x)
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -60,23 +60,23 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 ```
 ---
 
-Všimněte si, že parametr `optional` předaný do funkce `AddAzureAppConfiguration`. Když se nastaví na `true`, tento parametr brání aplikaci v neúspěšném pokračování, pokud funkce nemůže načíst konfigurační data.
+Všimněte `optional` si, `AddAzureAppConfiguration` že parametr předán do funkce. Pokud je `true`tato možnost nastavena na , zabrání tomu, aby aplikace nepokračovala, pokud funkce nemůže načíst konfigurační data.
 
-## <a name="synchronization-between-configuration-stores"></a>Synchronizace mezi úložišti konfigurací
+## <a name="synchronization-between-configuration-stores"></a>Synchronizace mezi konfiguračními úložišti
 
-Je důležité, aby úložiště geograficky redundantních konfigurací měla stejnou sadu dat. Pomocí funkce **exportu** v konfiguraci aplikace můžete kopírovat data z primárního úložiště na sekundární na vyžádání. Tato funkce je k dispozici prostřednictvím Azure Portal i v rozhraní příkazového řádku.
+Je důležité, aby vaše geograficky redundantní konfigurační úložiště měla stejnou sadu dat. Pomocí funkce **Export** v konfiguraci aplikace můžete kopírovat data z primárního úložiště do sekundárního na vyžádání. Tato funkce je dostupná prostřednictvím portálu Azure a rozhraní příkazového příkazu.
 
-Z Azure Portal můžete vložit změnu do jiného úložiště konfigurace pomocí následujících kroků.
+Z webu Azure Portal můžete nabízenou změnu do jiného úložiště konfigurace podle následujících kroků.
 
-1. Otevřete kartu **Import/export** a vyberte **exportovat** > **Konfigurace aplikace** > **cíli** > **Vybrat prostředek**.
+1. Přejděte na kartu **Import nebo export** a vyberte **Exportovat** > **cíl** > **konfigurace** > aplikace**Vyberte prostředek**.
 
-1. V novém okně, které se otevře, zadejte předplatné, skupinu prostředků a název prostředku svého sekundárního úložiště a pak vyberte **použít**.
+1. V novém okně, které se otevře, zadejte předplatné, skupinu prostředků a název prostředku sekundárního úložiště a vyberte **použít**.
 
-1. Uživatelské rozhraní je aktualizované, abyste si mohli vybrat, jaká konfigurační data chcete exportovat do sekundárního úložiště. Můžete ponechat výchozí hodnotu čas jako je a nastavit jak **z popisku** , tak na **popisek** na stejnou hodnotu. Vyberte **Použít**.
+1. UI je aktualizován, takže si můžete vybrat, jaká konfigurační data chcete exportovat do sekundárního úložiště. Výchozí hodnotu času můžete ponechat tak, jak je, a nastavit **popisek Od** i **Popisek Na** na stejnou hodnotu. Vyberte **Použít**.
 
-1. Předchozí kroky opakujte pro všechny změny konfigurace.
+1. Opakujte předchozí kroky pro všechny změny konfigurace.
 
-K automatizaci tohoto procesu exportu použijte rozhraní příkazového řádku Azure. Následující příkaz ukazuje, jak exportovat jednu změnu konfigurace z primárního úložiště do sekundárního:
+Chcete-li tento proces exportu automatizovat, použijte příkazové příkazové příkazy Azure. Následující příkaz ukazuje, jak exportovat jednu změnu konfigurace z primárního úložiště do sekundárního:
 
 ```azurecli
     az appconfig kv export --destination appconfig --name {PrimaryStore} --label {Label} --dest-name {SecondaryStore} --dest-label {Label}
@@ -84,4 +84,4 @@ K automatizaci tohoto procesu exportu použijte rozhraní příkazového řádku
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak rozšířit svou aplikaci tak, aby při konfiguraci aplikace dosáhla geografické odolnosti za běhu. Můžete také vložit konfigurační data z konfigurace aplikace v době sestavení nebo nasazení. Další informace najdete v tématu [integrace s kanálem CI/CD](./integrate-ci-cd-pipeline.md).
+V tomto článku jste se dozvěděli, jak rozšířit aplikaci k dosažení geografické odolnosti za běhu pro konfiguraci aplikace. Můžete také vložit konfigurační data z konfigurace aplikace v době sestavení nebo nasazení. Další informace naleznete v [tématu Integrace s kanálem CI/CD](./integrate-ci-cd-pipeline.md).
