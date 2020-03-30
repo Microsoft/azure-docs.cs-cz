@@ -1,5 +1,5 @@
 ---
-title: 'Transformace dat pomocí Sparku v Azure Data Factory '
+title: 'Transformace dat pomocí Spark v Azure Data Factory '
 description: Tento kurz obsahuje podrobné pokyny pro transformaci dat pomocí aktivity Sparku ve službě Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,10 +11,10 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.openlocfilehash: e70a59a75531cb7c3a7e5c5573f9e50cc574ab09
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75439145"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>Transformace dat v cloudu pomocí aktivity Sparku ve službě Azure Data Factory
@@ -27,18 +27,18 @@ V tomto kurzu použijete Azure PowerShell k vytvoření kanálu Data Factory, kt
 > * Zahajte spuštění kanálu.
 > * Monitorování spuštění kanálu
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* **Účet služby Azure Storage**. Vytvoříte skript Pythonu a vstupní soubor a nahrajete je do úložiště Azure. V tomto účtu úložiště se ukládá výstup z programu Sparku. Cluster Spark na vyžádání používá stejný účet úložiště jako primární úložiště.  
+* **Účet Azure Storage**. Vytvoříte skript Pythonu a vstupní soubor a nahrajete je do úložiště Azure. V tomto účtu úložiště se ukládá výstup z programu Sparku. Cluster Spark na vyžádání používá stejný účet úložiště jako primární úložiště.  
 * **Azure PowerShell**. Postupujte podle pokynů v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/install-Az-ps).
 
 
 ### <a name="upload-python-script-to-your-blob-storage-account"></a>Uložení skriptu Pythonu do účtu služby Blob Storage
-1. Vytvořte soubor Pythonu **WordCount_Spark.py** s následujícím obsahem: 
+1. Vytvořte soubor pythonu s názvem **WordCount_Spark.py** s následujícím obsahem: 
 
     ```python
     import sys
@@ -63,7 +63,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     if __name__ == "__main__":
         main()
     ```
-2. Nahraďte **&lt;storageAccountName&gt;** názvem vašeho účtu služby Azure Storage. Pak soubor uložte. 
+2. Nahraďte ** &lt;&gt; název úložiště AccountName** názvem svého účtu Azure Storage. Pak soubor uložte. 
 3. Ve službě Azure Blob Storage, vytvořte kontejner nazvaný **adftutorial**, pokud ještě neexistuje. 
 4. Vytvořte složku **spark**.
 5. Ve složce **spark** vytvořte podsložku **script**. 
@@ -132,8 +132,8 @@ Pomocí preferovaného editoru vytvořte soubor JSON, zkopírujte do něj násle
 V definici propojené služby aktualizujte hodnoty následujících vlastností: 
 
 - **hostSubscriptionId**. Místo &lt;subscriptionID&gt; použijte ID vašeho předplatného Azure. Cluster HDInsight na vyžádání se vytvoří v tomto předplatném. 
-- **tenant**. Místo &lt;tenantID&gt; použijte ID vašeho tenanta Azure. 
-- **servicePrincipalId**, **servicePrincipalKey**. Místo &lt;servicePrincipalID&gt; a &lt;servicePrincipalKey&gt; použijte ID a klíč instančního objektu vaší služby v Azure Active Directory. Tento instanční objekt musí být členem role přispěvatele předplatného nebo skupiny prostředků, ve které se cluster vytvoří. Podrobnosti najdete v tématu [Vytvoření aplikace Azure Active Directory a instančního objektu](../active-directory/develop/howto-create-service-principal-portal.md). **ID instančního objektu** je ekvivalentní *ID aplikace* a **klíč instančního objektu** je ekvivalentní hodnotě pro *tajný klíč klienta*.
+- **nájemce**. Místo &lt;tenantID&gt; použijte ID vašeho tenanta Azure. 
+- **servicePrincipalId**, **servicePrincipalKey**. Místo &lt;servicePrincipalID&gt; a &lt;servicePrincipalKey&gt; použijte ID a klíč instančního objektu vaší služby v Azure Active Directory. Tento instanční objekt musí být členem role přispěvatele předplatného nebo skupiny prostředků, ve které se cluster vytvoří. Podrobnosti najdete v tématu [Vytvoření aplikace Azure Active Directory a instančního objektu](../active-directory/develop/howto-create-service-principal-portal.md). **ID instančního objektu je** ekvivalentní *ID aplikace* a **zaregistrovaný klíč služby** je ekvivalentní hodnotě *tajného klíče klienta*.
 - **clusterResourceGroup**. Nahraďte &lt;resourceGroupOfHDICluster&gt; názvem skupiny prostředků, ve které se má cluster HDInsight vytvořit. 
 
 > [!NOTE]
@@ -188,7 +188,7 @@ Vytvořili jste definice propojené služby a kanálu v souborech JSON. Teď vyt
     $resourceGroupName = "ADFTutorialResourceGroup" 
     ```
 
-    **Název Data Factory Musí být globálně jedinečný.** 
+    **Název datové továrny. Musí být globálně jedinečný** 
     ```powershell
     $dataFactoryName = "MyDataFactory09102017"
     ```
@@ -197,7 +197,7 @@ Vytvořili jste definice propojené služby a kanálu v souborech JSON. Teď vyt
     ```powershell
     $pipelineName = "MySparkOnDemandPipeline" # Name of the pipeline
     ```
-2. Spusťte **PowerShell**. Nechte prostředí Azure PowerShell otevřené až do konce tohoto kurzu Rychlý start. Pokud ho zavřete a znovu otevřete, bude potřeba tyto příkazy spustit znovu. Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:** [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+2. Spusťte **prostředí PowerShell**. Nechte prostředí Azure PowerShell otevřené až do konce tohoto kurzu Rychlý start. Pokud ho zavřete a znovu otevřete, bude potřeba tyto příkazy spustit znovu. Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:**[Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 
     Spusťte následující příkaz a zadejte uživatelské jméno a heslo, které používáte k přihlášení na web Azure Portal:
         
@@ -209,7 +209,7 @@ Vytvořili jste definice propojené služby a kanálu v souborech JSON. Teď vyt
     ```powershell
     Get-AzSubscription
     ```
-    Spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Místo **SubscriptionId** použijte ID vašeho předplatného Azure:
+    Spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Nahraďte **Id předplatného** ID vašeho předplatného Azure:
 
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
@@ -341,7 +341,7 @@ Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístěn
 Pokud chcete zjistit, jak transformovat data spuštěním skriptu Hivu v clusteru Azure HDInsight ve virtuální síti, přejděte k následujícímu kurzu. 
 
 > [!div class="nextstepaction"]
-> [Kurz: Transformace dat pomocí Hivu ve službě Azure Virtual Network](tutorial-transform-data-hive-virtual-network.md)
+> [Kurz: transformace dat pomocí Hive ve virtuální síti Azure](tutorial-transform-data-hive-virtual-network.md).
 
 
 

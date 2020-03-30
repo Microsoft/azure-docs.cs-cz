@@ -14,18 +14,18 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: d0a28bafef887bf0c40aa88eba1873f82cf36fd7
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 5d1dc90832a399aa9ee253b2c7962b8536c1926a
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346080"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80383000"
 ---
-# <a name="cli-example-upload-a-local-file-to-a-container"></a>Ukázka CLI: Nahrání místního souboru do kontejneru 
+# <a name="azure-cli-example-upload-a-local-file-to-a-container"></a>Příklad azure cli: Nahrání místního souboru do kontejneru
 
 Skript Azure CLI v tomto článku znázorňuje, jak nahrát místní soubor do kontejneru úložiště.
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Požadavky
 
 * [Vytvořte účet mediálních služeb](create-account-cli-how-to.md).
 * Zkontrolujte [správu majetku](manage-asset-concept.md).
@@ -34,7 +34,7 @@ Skript Azure CLI v tomto článku znázorňuje, jak nahrát místní soubor do k
 
 ## <a name="example-script"></a>Ukázkový skript
 
-```Azure CLI 
+```azurecli-interactive
 #!/bin/bash
 # Update the following variables for your own settings:
 storageAccountName=build2018storage

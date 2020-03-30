@@ -1,87 +1,87 @@
 ---
-title: Škálování hostitelů relací Azure Automation – Azure
-description: Automatické škálování hostitelů relací virtuálních počítačů s Windows pomocí Azure Automation.
+title: Relace škálování hostí Azure Automation – Azure
+description: Jak automaticky škálovat hostitele relací Virtuální plochy Windows pomocí Azure Automation.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 02/06/2020
+ms.date: 03/26/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2078869aef5964b30723d8b6854c4b15f0423205
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 3a853dc32f8716f3f2ba32896a7a4a239efcc5bd
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127541"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80349870"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Škálování hostitelů relací pomocí Azure Automation
 
-Celkové náklady na nasazení virtuálních klientů s Windows můžete snížit tak, že změníte velikost virtuálních počítačů (VM). To znamená vypnutí a zrušení přidělení virtuálních počítačů hostitele relace v době mimo špičku a jejich opětovné zapnutí a přerozdělení během špičky.
+Celkovýpočet nákladů na nasazení virtuální plochy windows můžete snížit škálováním virtuálních počítačů (VMs). To znamená vypnutí a zrušení umístění hostitelských virtuálních počítačů relace během doby mimo špičku, pak je znovu zapnout a přerozdělovat je ve špičce.
 
-V tomto článku se dozvíte o nástroji pro škálování vytvořeném pomocí Azure Automation a Azure Logic Apps, které budou automaticky škálovat virtuální počítače hostitele relací ve vašem prostředí virtuálních počítačů s Windows. Pokud se chcete dozvědět, jak používat nástroj pro škálování, přeskočte dopředu s [požadavky](#prerequisites).
+V tomto článku se dozvíte o škálovacínástroj vytvořený pomocí Azure Automation a Azure Logic Apps, které automaticky škálují virtuální počítače hostitele relací ve vašem prostředí Virtuální desktop windows. Chcete-li se dozvědět, jak používat nástroj pro změnu měřítka, přejděte na [požadavky](#prerequisites).
 
-## <a name="how-the-scaling-tool-works"></a>Jak nástroj pro škálování funguje
+## <a name="how-the-scaling-tool-works"></a>Jak nástroj pro změnu měřítka funguje
 
-Nástroj pro škálování nabízí možnost automatizace s nízkými náklady pro zákazníky, kteří chtějí optimalizovat náklady na virtuální počítače hostitele relace.
+Nástroj pro škálování poskytuje možnost automatizace s nízkými náklady pro zákazníky, kteří chtějí optimalizovat náklady na virtuální počítač hostitele relace.
 
-Nástroj pro škálování můžete použít k těmto akcím:
+Pomocí nástroje pro změnu měřítka můžete:
  
-- Naplánujte, aby se virtuální počítače spouštěly a zastavily na základě špičky a špičky v pracovní době.
+- Naplánujte virtuální mích spuštění a zastavení na základě pracovní doby ve špičce a mimo špičku.
 - Horizontální navýšení kapacity virtuálních počítačů na základě počtu relací na jádro procesoru.
-- Škálování virtuálních počítačů v době mimo špičku ponechte minimální počet spuštěných virtuálních počítačů hostitele relace.
+- Škálování ve virtuálních hodinách během mimo špičku hodin, takže minimální počet hostitelských virtuálních jevů relace spuštěna.
 
-Nástroj pro škálování používá kombinaci Azure Automation PowerShellových runbooků, webhooků a Azure Logic Apps k fungování. Když se nástroj spustí, Azure Logic Apps volá Webhook, aby se spouštěl Azure Automation Runbook. Sada Runbook potom vytvoří úlohu.
+Nástroj pro škálování používá kombinaci runbooků Azure Automation PowerShell, webhooků a aplikací Azure Logic Apps. Když se nástroj spustí, Azure Logic Apps volá webhook u spuštění runbooku Azure Automation. Runbook pak vytvoří úlohu.
 
-Během špičky využívání úlohy zkontroluje aktuální počet relací a kapacitu virtuálního počítače aktuálně spuštěného hostitele relace pro každý fond hostitelů. Tyto informace používá k výpočtu, jestli virtuální počítače hostitele spuštěné relace můžou podporovat existující relace na základě parametru *SessionThresholdPerCPU* definovaného pro soubor **createazurelogicapp. ps1** . Pokud virtuální počítače hostitele relace nepodporují existující relace, spustí úloha další virtuální počítače hostitele relace ve fondu hostitelů.
+Během doby využití ve špičce úloha zkontroluje aktuální počet relací a kapacitu virtuálního počítače aktuálního spuštěného hostitele relací pro každý hostitelský fond. Tyto informace používá k výpočtu, pokud spuštěné hostované virtuální počítače relace mohou podporovat existující relace na základě parametru *SessionThresholdPerCPU* definovaného pro soubor **createazurelogicapp.ps1.** Pokud virtuální virtuální soudy hostitele relace nemůže podporovat existující relace, úloha spustí další virtuální chod hostitele relace ve fondu hostitelů.
 
 >[!NOTE]
->*SessionThresholdPerCPU* neomezuje počet relací na virtuálním počítači. Tento parametr určuje, zda je nutné spustit nové virtuální počítače pro vyrovnávání zatížení připojení. Pokud chcete omezit počet relací, musíte podle pokynů [set-RdsHostPool](/powershell/module/windowsvirtualdesktop/set-rdshostpool/) nakonfigurovat parametr *MaxSessionLimit* odpovídajícím způsobem.
+>*SessionThresholdPerCPU* neomezuje počet relací na virtuálním počítači. Tento parametr určuje jenom při spuštění nových virtuálních připojení k vyrovnávání zatížení připojení. Chcete-li omezit počet relací, musíte podle pokynů [Set-RdsHostPool](/powershell/module/windowsvirtualdesktop/set-rdshostpool/) odpovídajícím způsobem nakonfigurovat parametr *MaxSessionLimit.*
 
-V době mimo špičku bude úloha určovat, které virtuální počítače hostitele relace by se měly vypnout na základě parametru *MinimumNumberOfRDSH* . Úloha nastaví virtuální počítače hostitele relace na režim vyprázdnění, aby se zabránilo novým relacím, které se připojují k hostitelům. Pokud nastavíte parametr *LimitSecondsToForceLogOffUser* na nenulovou kladnou hodnotu, úloha upozorní všechny aktuálně přihlášené uživatele, aby ušetřili svou práci, čekali nakonfigurovanou dobu a pak vynutila odhlášení uživatelů. Po odhlášení všech uživatelských relací na virtuálním počítači hostitele relace dojde k vypnutí tohoto virtuálního počítače.
+Během doby využití mimo špičku úloha určuje, které hostované virtuální počítače relace by měly být vypnuty na základě parametru *MinimumNumberOfRDSH.* Úloha nastaví hostitelské virtuální uživatele relace do režimu vypouštění, aby se zabránilo připojení nových relací k hostitelům. Pokud nastavíte parametr *LimitSecondsToForceLogOffUser* na nenulovou kladnou hodnotu, úloha upozorní všechny aktuálně přihlášené uživatele, aby uložili svou práci, počkejte na konfigurované množství času a potom vynutí, aby se uživatelé odhlásili. Jakmile jsou odhlášeny všechny uživatelské relace na hostitelském virtuálním počítači relace, úloha virtuální počítač vypne.
 
-Pokud nastavíte parametr *LimitSecondsToForceLogOffUser* na hodnotu nula, úloha umožní nastavení konfigurace relace v zadaných zásadách skupiny zpracovávat odhlašování uživatelských relací. Chcete-li zobrazit tyto zásady skupiny, přejděte na téma **Konfigurace počítače** > **zásady** > **Šablony pro správu** > **součásti systému Windows** > **Terminálové služby** > **terminálový server** > **časový limit relace**. Pokud na virtuálním počítači hostitele relace existují aktivní relace, úloha ponechá virtuální počítač hostitele relace spuštěný. Pokud neexistují žádné aktivní relace, úloha vypne virtuální počítač hostitele relace.
+Pokud nastavíte parametr *LimitSecondsToForceLogOffUser* na nulu, úloha umožní nastavení konfigurace relace v zadaných zásadách skupiny pro zpracování odhlašování uživatelských relací. Chcete-li**Policies** > zobrazit tyto zásady skupiny, **přejděte** > na informace o časových**limitech relací**terminálového serveru Terminálového serveru > **terminálové služby služby Windows Components** > **Terminal** > **Services** > .**Administrative Templates** Pokud existují nějaké aktivní relace na hostitelský virtuální počítač relace, úloha opustí hostrelace virtuálního počítači spuštěna. Pokud neexistují žádné aktivní relace, úloha vypne virtuální ho virtuálního soudu hostitele relace.
 
-Úloha se pravidelně spouští na základě nastaveného intervalu opakování. Tento interval můžete změnit na základě velikosti prostředí pro virtuální počítače s Windows, ale mějte na paměti, že spouštění a vypínání virtuálních počítačů může nějakou dobu trvat, takže si nezapomeňte vzít v úvahu zpoždění. Doporučujeme nastavit interval opakování na každých 15 minut.
+Úloha se spouští pravidelně na základě nastaveného intervalu opakování. Tento interval můžete změnit na základě velikosti prostředí Virtuální plocha systému Windows, ale nezapomeňte, že spuštění a vypnutí virtuálních počítačů může nějakou dobu trvat, takže nezapomeňte zpoždění zohlednit. Doporučujeme nastavit interval opakování na každých 15 minut.
 
 Nástroj má však také následující omezení:
 
-- Toto řešení se vztahuje pouze na virtuální počítače hostitele ve fondu.
-- Toto řešení spravuje virtuální počítače v jakékoli oblasti, ale dá se použít jenom ve stejném předplatném jako účet Azure Automation a Azure Logic Apps.
+- Toto řešení platí jenom pro hostované virtuální chod s dravou relace.
+- Toto řešení spravuje virtuální počítače v libovolné oblasti, ale lze použít jenom ve stejném předplatném jako váš účet Azure Automation a Azure Logic Apps.
 
 >[!NOTE]
->Nástroj pro škálování řídí režim vyrovnávání zatížení fondu hostitelů, který je škálovatelný. Nastaví ji na geografickou vyrovnávání zatížení pro hodiny špičky i mimo špičku.
+>Nástroj pro škálování řídí režim vyrovnávání zatížení hostitelského fondu, který je škálování. Nastaví jej na šířku první vyrovnávání zatížení pro špičku i mimo špičku.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Než začnete s nastavením nástroje pro škálování, ujistěte se, že máte připravené následující akce:
+Než začnete nastavovat nástroj pro změnu měřítka, ujistěte se, že máte připravené následující věci:
 
-- [Tenant a fond hostitelů virtuálních počítačů s Windows](create-host-pools-arm-template.md)
-- Virtuální počítače fondu hostitele relace nakonfigurované a zaregistrované ve službě Virtual Desktop systému Windows
-- Uživatel s [přístupem Přispěvatel](../role-based-access-control/role-assignments-portal.md) v předplatném Azure
+- [Klient a fond hostitelů virtuální plochy Windows](create-host-pools-arm-template.md)
+- Virtuální počítače fondu relací nakonfigurované a registrované ve službě Windows Virtual Desktop
+- Uživatel s [přístupem přispěvatele k](../role-based-access-control/role-assignments-portal.md) předplatnému Azure
 
-Počítač, který použijete k nasazení nástroje, musí mít: 
+Stroj, který používáte k nasazení nástroje, musí mít: 
 
-- Windows PowerShell 5,1 nebo novější
-- Microsoft AZ PowerShell Module
+- Prostředí Windows PowerShell 5.1 nebo novější
+- Modul Microsoft Az PowerShell
 
-Pokud máte všechno připravené, můžeme začít.
+Pokud máte všechno připraveno, tak začneme.
 
 ## <a name="create-an-azure-automation-account"></a>Vytvoření účtu Azure Automation
 
-Nejdřív budete potřebovat účet Azure Automation ke spuštění Runbooku PowerShellu. Tady je postup nastavení účtu:
+Nejprve budete potřebovat účet Azure Automation ke spuštění runbooku Prostředí PowerShell. Účet si můžete nastavit takto:
 
-1. Otevřete Windows PowerShell jako správce.
-2. Spusťte následující rutinu, abyste se přihlásili ke svému účtu Azure.
+1. Spusťte Windows PowerShell jako správce.
+2. Spusťte následující rutinu a přihlaste se ke svému účtu Azure.
 
      ```powershell
      Login-AzAccount
      ```
 
      >[!NOTE]
-     >Váš účet musí mít oprávnění přispěvatele v předplatném Azure, na kterém chcete nástroj pro škálování nasadit.
+     >Váš účet musí mít práva přispěvatele na předplatné Azure, které chcete nasadit nástroj škálování na.
 
-3. Spuštěním následující rutiny Stáhněte skript pro vytvoření účtu Azure Automation:
+3. Spusťte následující rutinu a stáhněte si skript pro vytvoření účtu Azure Automation:
 
      ```powershell
      Set-Location -Path "c:\temp"
@@ -89,47 +89,47 @@ Nejdřív budete potřebovat účet Azure Automation ke spuštění Runbooku Pow
      Invoke-WebRequest -Uri $uri -OutFile ".\createazureautomationaccount.ps1"
      ```
 
-4. Spuštěním následující rutiny spusťte skript a vytvořte účet Azure Automation:
+4. Spusťte následující rutinu, abyste provedli skript a vytvořili účet Azure Automation:
 
      ```powershell
      .\createazureautomationaccount.ps1 -SubscriptionID <azuresubscriptionid> -ResourceGroupName <resourcegroupname> -AutomationAccountName <name of automation account> -Location "Azure region for deployment"
      ```
 
-5. Výstup rutiny bude obsahovat identifikátor URI Webhooku. Ujistěte se, že zachováte záznam identifikátoru URI, protože ho použijete jako parametr při nastavování plánu spouštění pro Azure Logic Apps.
+5. Výstup rutiny bude obsahovat identifikátor URI webhooku. Ujistěte se, že uchováte záznam identifikátoru URI, protože ho použijete jako parametr při nastavu plánu spuštění pro aplikace Azure Logic.
 
-Až nastavíte účet Azure Automation, přihlaste se ke svému předplatnému Azure a ujistěte se, že se Váš účet Azure Automation a relevantní sada Runbook objevily v zadané skupině prostředků, jak je znázorněno na následujícím obrázku:
+6. Po nastavení účtu Azure Automation se přihlaste k předplatnému Azure a zkontrolujte, jestli se váš účet Azure Automation a příslušná sada runbook zobrazily ve vaší zadané skupině prostředků, jak je znázorněno na následujícím obrázku:
 
-![Obrázek stránky s přehledem Azure zobrazující nově vytvořený účet služby Automation a sadu Runbook.](media/automation-account.png)
+   ![Obrázek stránky přehled Azure zobrazující nově vytvořený účet automatizace a runbook.](media/automation-account.png)
 
-Pokud chcete zjistit, jestli je Webhook tam, kde by měl být, v levé části obrazovky klikněte na seznam prostředky a vyberte **Webhook**.
+  Chcete-li zkontrolovat, zda je váš webhook tam, kde má být, vyberte název sady Runbook. Dále přejděte do části Zdroje sady Runbook a vyberte **Webhooks**.
 
-## <a name="create-an-azure-automation-run-as-account"></a>Vytvoření účtu Azure Automation spustit jako
+## <a name="create-an-azure-automation-run-as-account"></a>Vytvoření účtu Azure Automation Run Run As
 
-Teď, když máte účet Azure Automation, budete také muset vytvořit účet Azure Automation spustit jako pro přístup k prostředkům Azure.
+Teď, když máte účet Azure Automation, budete taky muset vytvořit účet Azure Automation Run As pro přístup k prostředkům Azure.
 
-[Azure Automation účet Spustit jako](../automation/manage-runas-account.md) poskytuje ověřování pro správu prostředků v Azure pomocí rutin Azure. Když vytvoříte účet Spustit jako, vytvoří se nový uživatel instančního objektu v Azure Active Directory a přiřadí roli přispěvatele k uživatelskému objektu služby na úrovni předplatného, účet Spustit jako pro Azure je skvělým způsobem, jak bezpečně ověřit s certifikáty a hlavní název služby, aniž byste museli ukládat uživatelské jméno a heslo do objektu přihlašovacích údajů. Další informace o ověřování spustit jako najdete v tématu [omezení oprávnění účtu Spustit jako](../automation/manage-runas-account.md#limiting-run-as-account-permissions).
+Účet [Azure Automation Run As](../automation/manage-runas-account.md) poskytuje ověřování pro správu prostředků v Azure pomocí rutin Azure. Když vytvoříte účet Spustit jako, vytvoří nového hlavního uživatele služby ve službě Azure Active Directory a přiřadí roli přispěvatele uživateli hlavního účtu služby na úrovni předplatného, azure spustit jako účet je skvělý způsob, jak bezpečně ověřit pomocí certifikáty a hlavní název služby bez nutnosti ukládat uživatelské jméno a heslo do objektu pověření. Další informace o oprávněních spustit jako, naleznete [v tématu Omezení oprávnění účtu Spustit jako](../automation/manage-runas-account.md#limiting-run-as-account-permissions).
 
-Každý uživatel, který je členem role správců předplatného a spolusprávcem předplatného, může vytvořit účet Spustit jako podle pokynů pro další oddíl.
+Každý uživatel, který je členem role Správci předplatného a spolusprávce masy předplatného, může vytvořit účet Spustit jako podle pokynů v další části.
 
 Vytvoření účtu Spustit jako ve vašem účtu Azure:
 
-1. Na webu Azure Portal vyberte **Všechny služby**. V seznamu prostředků zadejte a vyberte **účty Automation**.
+1. Na webu Azure Portal vyberte **Všechny služby**. V seznamu zdrojů zadejte a vyberte **účty automatizace**.
 
-2. Na stránce **účty Automation** vyberte název vašeho účtu Automation.
+2. Na stránce **Účty automatizace** vyberte název účtu automation.
 
-3. V podokně na levé straně okna vyberte **účty Spustit jako** v části nastavení účtu.
+3. V podokně na levé straně okna vyberte **spustit jako účty** v části Nastavení účtu.
 
-4. Vyberte **účet Spustit jako pro Azure**. Po zobrazení podokna **Přidat účet Spustit jako pro Azure** si přečtěte informace v přehledu a pak výběrem **vytvořit** spusťte proces vytváření účtů.
+4. Vyberte **Azure Spustit jako účet**. Když se zobrazí podokno **Přidat Azure Spustit jako účet,** zkontrolujte informace o přehledu a pak vyberte **Vytvořit** a spusťte proces vytváření účtu.
 
-5. Počkejte několik minut, než Azure vytvoří účet Spustit jako. Průběh vytváření můžete sledovat v nabídce v části oznámení.
+5. Počkejte několik minut, než Azure vytvoří účet Spustit jako. Průběh vytváření můžete sledovat v nabídce oznámení.
 
-6. Po dokončení procesu se v zadaném účtu Automation vytvoří Asset s názvem AzureRunAsConnection. Asset připojení obsahuje ID aplikace, ID tenanta, ID předplatného a kryptografický otisk certifikátu. Zapamatujte si ID aplikace, protože ho použijete později.
+6. Po dokončení procesu vytvoří prostředek s názvem AzureRunAsConnection v zadaném účtu automatizace. Prostředek připojení obsahuje ID aplikace, ID klienta, ID předplatného a kryptografický otisk certifikátu. Zapamatujte si ID aplikace, protože ho budete používat později.
 
-### <a name="create-a-role-assignment-in-windows-virtual-desktop"></a>Vytvoření přiřazení role na virtuálním počítači s Windows
+### <a name="create-a-role-assignment-in-windows-virtual-desktop"></a>Vytvoření přiřazení role ve virtuální ploše windows
 
-Dále je potřeba vytvořit přiřazení role, aby AzureRunAsConnection mohl komunikovat s virtuálním počítačem s Windows. Nezapomeňte použít PowerShell pro přihlášení pomocí účtu, který má oprávnění k vytváření přiřazení rolí.
+Dále je třeba vytvořit přiřazení role tak, aby AzureRunAsConnection můžete komunikovat s Windows Virtual Desktop. Nezapomeňte se pomocí PowerShellu přihlásit pomocí účtu, který má oprávnění k vytváření přiřazení rolí.
 
-Nejdřív Stáhněte a importujte [modul PowerShellu virtuálního počítače s Windows](/powershell/windows-virtual-desktop/overview/) , který chcete použít v relaci PowerShellu, pokud jste to ještě neudělali. Spusťte následující rutiny PowerShellu, abyste se připojili k virtuální ploše Windows a zobrazili své klienty.
+Nejprve si stáhněte a importujte [modul Windows Virtual Desktop PowerShell,](/powershell/windows-virtual-desktop/overview/) který se použije v relaci PowerShellu, pokud jste tak ještě neučinili. Spusťte následující rutiny prostředí PowerShell pro připojení k virtuální ploše Windows a zobrazení vašich klientů.
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
@@ -137,37 +137,37 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 Get-RdsTenant
 ```
 
-Když najdete tenanta s fondy hostitelů, které chcete škálovat, postupujte podle pokynů v části [Vytvoření účtu Azure Automation](#create-an-azure-automation-account) a použijte název tenanta, který jste získali z předchozí rutiny v následující rutině pro vytvoření přiřazení role:
+Když najdete klienta s fondy hostitelů, které chcete škálovat, postupujte podle pokynů v [části Vytvoření účtu Azure Automation](#create-an-azure-automation-account) a pomocí názvu klienta, který jste získali z předchozí rutiny v následující rutině, vytvořte přiřazení role:
 
 ```powershell
 New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId <applicationid> -TenantName <tenantname>
 ```
 
-## <a name="create-the-azure-logic-app-and-execution-schedule"></a>Vytvoření aplikace logiky Azure a plánu spuštění
+## <a name="create-the-azure-logic-app-and-execution-schedule"></a>Vytvoření aplikace Azure Logic a plánu provádění
 
-Nakonec budete muset vytvořit aplikaci logiky Azure a nastavit plán spouštění pro nový nástroj pro škálování.
+Nakonec budete muset vytvořit aplikaci Azure Logic App a nastavit plán provádění pro nový nástroj škálování.
 
-1.  Otevřete Windows PowerShell jako správce.
+1.  Spuštění prostředí Windows PowerShell jako správce
 
-2.  Spusťte následující rutinu, abyste se přihlásili ke svému účtu Azure.
+2.  Spusťte následující rutinu a přihlaste se ke svému účtu Azure.
 
      ```powershell
      Login-AzAccount
      ```
 
-3. Spuštěním následující rutiny Stáhněte soubor skriptu createazurelogicapp. ps1 na svém místním počítači.
+3. Spusťte následující rutinu a stáhněte soubor skriptu createazurelogicapp.ps1 do místního počítače.
 
      ```powershell
      Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/wvd-scaling-script/createazurelogicapp.ps1" -OutFile "your local machine path\ createazurelogicapp.ps1"
      ```
 
-4. Spuštěním následující rutiny se přihlaste k virtuálnímu počítači s Windows pomocí účtu, který má oprávnění vlastníka VP nebo RDS Přispěvatel.
+4. Spusťte následující rutinu pro přihlášení k virtuální ploše systému Windows pomocí účtu, který má oprávnění vlastníka rds nebo přispěvatele RDS.
 
      ```powershell
      Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
      ```
 
-5. Spusťte následující skript prostředí PowerShell pro vytvoření aplikace logiky Azure a plánovaného spuštění.
+5. Spusťte následující skript PowerShellu a vytvořte aplikaci Azure Logic a plán spuštění.
 
      ```powershell
      $resourceGroupName = Read-Host -Prompt "Enter the name of the resource group for the new Azure Logic App"
@@ -229,30 +229,34 @@ Nakonec budete muset vytvořit aplikaci logiky Azure a nastavit plán spouštěn
        -MaintenanceTagName $maintenanceTagName
      ```
 
-     Po spuštění skriptu by se aplikace logiky měla zobrazit ve skupině prostředků, jak je znázorněno na následujícím obrázku.
+     Po spuštění skriptu aplikace logiky by se měl zobrazit ve skupině prostředků, jak je znázorněno na následujícím obrázku.
 
      ![Obrázek stránky s přehledem pro ukázkovou aplikaci Azure Logic.](media/logic-app.png)
 
-Chcete-li provést změny v plánu spuštění, jako je například změna intervalu opakování nebo časového pásma, přejdete do plánovače automatického škálování a výběrem možnosti **Upravit** přejdete do návrháře Logic Apps.
+Chcete-li provést změny plánu provádění, jako je například změna intervalu opakování nebo časového pásma, přejděte do plánovače automatického škálování a vyberte **upravit,** chcete-li přejít do Návrháře aplikací logiky.
 
-![Obrázek návrháře Logic Apps. Nabídky opakování a Webhooku, které umožňují uživateli upravit časy opakování a soubor Webhooku, jsou otevřené.](media/logic-apps-designer.png)
+![Obrázek Návrháře logických aplikací. Nabídky Opakování a Webhook, které umožňují uživateli upravovat časy opakování a soubor webhooku jsou otevřené.](media/logic-apps-designer.png)
 
-## <a name="manage-your-scaling-tool"></a>Správa nástroje pro škálování
+## <a name="manage-your-scaling-tool"></a>Správa nástroje pro změnu velikosti
 
-Teď, když jste vytvořili Nástroj pro škálování, získáte přístup k jeho výstupu. Tato část popisuje několik funkcí, které můžete najít užitečné.
+Teď, když jste vytvořili nástroj pro změnu měřítka, můžete získat přístup k jeho výstupu. Tato část popisuje několik funkcí, které by mohly být užitečné.
 
 ### <a name="view-job-status"></a>Zobrazení stavu úlohy
 
-Můžete zobrazit souhrnnou stav všech úloh sady Runbook nebo zobrazit podrobnější stav konkrétní úlohy Runbooku v Azure Portal.
+Můžete zobrazit souhrnný stav všech úloh sady Runbook nebo zobrazit podrobnější stav konkrétní úlohy sady Runbook na portálu Azure.
 
-Napravo od vybraného účtu Automation v části Statistika úlohy můžete zobrazit seznam souhrnů všech úloh sady Runbook. Po otevření stránky **úlohy** na levé straně okna se zobrazí stav aktuální úlohy, časy spuštění a časy dokončení.
+Na pravé straně vybraného účtu automatizace můžete v části "Statistika úlohy" zobrazit seznam souhrnů všech úloh runbooku. Otevření stránky **Úlohy** na levé straně okna zobrazuje aktuální stavy úloh, časy zahájení a doby dokončení.
 
 ![Snímek obrazovky se stránkou stavu úlohy.](media/jobs-status.png)
 
-### <a name="view-logs-and-scaling-tool-output"></a>Zobrazení protokolů a škálování výstupu nástroje
+### <a name="view-logs-and-scaling-tool-output"></a>Zobrazení protokolů a výstupu nástroje pro změnu velikosti
 
-Protokoly o škálování na více instancí a operace škálování na více instancí můžete zobrazit otevřením Runbooku a výběrem názvu úlohy.
+Protokoly operací horizontálnínavýšení kapacity a škálování můžete zobrazit otevřením runbooku a výběrem názvu úlohy.
 
-V rámci skupiny prostředků hostující účet Azure Automation přejděte na Runbook (výchozí název je WVDAutoScaleRunbook) a vyberte **Přehled**. Na stránce Přehled vyberte úlohu v části Nedávné úlohy, abyste zobrazili její výstup nástroje pro změnu velikosti, jak je znázorněno na následujícím obrázku.
+Přejděte do sady Runbook (výchozí název je WVDAutoScaleRunbook) ve skupině prostředků, která hostuje účet Azure Automation, a vyberte **Přehled**. Na stránce s přehledem vyberte úlohu v části Poslední úlohy, chcete-li zobrazit výstup nástroje pro změnu měřítka, jak je znázorněno na následujícím obrázku.
 
-![Obrázek okna výstup pro nástroj pro škálování](media/tool-output.png)
+![Obrázek výstupního okna pro nástroj pro změnu měřítka.](media/tool-output.png)
+
+## <a name="report-issues"></a>Nahlášení potíží
+
+Pokud narazíte na nějaké problémy s nástrojem pro změnu měřítka, můžete je nahlásit na [stránce RDS GitHub](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4a-WVD-scaling-logicapps).

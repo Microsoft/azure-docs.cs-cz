@@ -1,6 +1,6 @@
 ---
-title: Vytvoření úlohy Azure Media Services s více transformačními výstupy
-description: Toto téma ukazuje, jak vytvořit úlohu Azure Media Services s více transformačními výstupy.
+title: Vytvoření úlohy Mediálních služeb Azure s více transformačními výstupy
+description: Toto téma ukazuje, jak vytvořit úlohu Mediální služby Azure s více výstupy transformace.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,19 +12,19 @@ ms.topic: article
 ms.date: 02/17/2020
 ms.author: juliako
 ms.openlocfilehash: dbbeeb33ee46b37ec920fe598483c332d3439689
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77563138"
 ---
 # <a name="create-a-job-with-multiple-transform-outputs"></a>Vytvoření úlohy s více transformačními výstupy
 
-Toto téma ukazuje, jak vytvořit transformaci pomocí dvou transformačních výstupů. První z nich volá, aby byl vstup kódovaný pro streamování s adaptivní přenosovou rychlostí s předdefinovaným přednastaveným [AdaptiveStreaming](encoding-concept.md#builtinstandardencoderpreset) . Druhé jedno volání zvukového signálu ve vstupním videu se zpracuje pomocí [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md#built-in-presets). Po vytvoření transformace můžete odeslat úlohu, která zpracuje vaše video odpovídajícím způsobem. Vzhledem k tomu, že v tomto příkladu zadáváme dva transformační výstupy, je nutné zadat dva výstupy úloh. Můžete zvolit, aby se výstupy úloh nasměrovaly do stejného Assetu (jak je vidět níže), nebo můžete mít do samostatných assetů zápis výsledků.
+Toto téma ukazuje, jak vytvořit transformace se dvěma výstupy transformace. První z nich vyžaduje, aby byl vstup kódován pro adaptivní streamování datového toku s vestavěným [přednastavením AdaptiveStreaming.](encoding-concept.md#builtinstandardencoderpreset) Druhý volá zvukový signál ve vstupním videu, které mají být zpracovány s [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md#built-in-presets). Po vytvoření transformace můžete odeslat úlohu, která bude odpovídajícím způsobem zpracovávat vaše video. Vzhledem k tomu, že v tomto příkladu zadáváme dva transformační výstupy, musíme zadat dva výstupy úloh. Můžete se rozhodnout nasměrovat oba výstupy úlohy na stejný datový zdroj (jak je znázorněno níže), nebo můžete nechat výsledky zapsat do samostatných datových zdrojů.
  
 
 > [!TIP]
-> Než začnete s vývojem, přečtěte si téma [vývoj s Media Services V3 API](media-services-apis-overview.md) (obsahuje informace o přístupu k rozhraním API, konvencím pojmenování atd.
+> Než začnete vyvíjet, [přečtěte si vývoj s media services v3 API](media-services-apis-overview.md) (obsahuje informace o přístupu k api, konvence pojmenování, atd.)
 
 ## <a name="create-a-transform"></a>Vytvoření transformace
 
@@ -65,9 +65,9 @@ private static async Task<Transform> GetOrCreateTransformAsync(
     return transform;
 }
 ```
-## <a name="submit-a-job"></a>Odeslat úlohu
+## <a name="submit-a-job"></a>Odeslání úlohy
 
-Vytvoří úlohu s zadáním adresy URL HTTPS a se dvěma výstupy úloh.
+Vytvořte úlohu se vstupem adresy URL HTTPS a dvěma výstupy úloh.
 
 ```csharp
 private static async Task<Job> SubmitJobAsync(IAzureMediaServicesClient client,
@@ -131,8 +131,8 @@ private static async Task<Job> SubmitJobAsync(IAzureMediaServicesClient client,
 ```
 ## <a name="job-error-codes"></a>Kódy chyb úlohy
 
-Viz [kódy chyb](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
+Viz [Chybové kódy](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
 
 ## <a name="next-steps"></a>Další kroky
 
-[Ukázky Azure Media Services V3 pomocí .NET](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/) 
+[Ukázky Azure Media Services v3 pomocí rozhraní .NET](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/) 

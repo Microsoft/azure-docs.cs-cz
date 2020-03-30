@@ -1,6 +1,6 @@
 ---
-title: Odeslat metriky do databáze metriky Azure Monitor pomocí REST API
-description: Odesílat vlastní metriky pro prostředek Azure do úložiště metrik Azure Monitor pomocí REST API
+title: Odesílání metrik do databáze metrik Azure Monitoru pomocí rozhraní REST API
+description: Odeslání vlastních metrik pro prostředek Azure do úložiště metrik Azure Monitor pomocí rozhraní REST API
 author: anirudhcavale
 services: azure-monitor
 ms.topic: conceptual
@@ -8,31 +8,31 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 84709c022631543101889f784231158ebb96b6f3
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77662260"
 ---
-# <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Odesílat vlastní metriky pro prostředek Azure do úložiště metrik Azure Monitor pomocí REST API
+# <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Odeslání vlastních metrik pro prostředek Azure do úložiště metrik Azure Monitor pomocí rozhraní REST API
 
-V tomto článku se dozvíte, jak odesílat vlastní metriky pro prostředky Azure do úložiště Azure Monitor metriky prostřednictvím REST API. Až budou metriky v Azure Monitor, můžete s nimi provádět všechny akce, které se budou používat se standardními metrikami. Příklady jsou grafy, výstrahy a směrování do jiných externích nástrojů.  
+Tento článek ukazuje, jak odesílat vlastní metriky pro prostředky Azure do úložiště metrik Azure Monitor prostřednictvím rozhraní REST API. Po metriky jsou ve službě Azure Monitor, můžete dělat všechny věci s nimi, které děláte se standardní metriky. Příkladem jsou vytváření grafů, výstrahy a směrování do jiných externích nástrojů.  
 
 >[!NOTE]  
->REST API povoluje pouze odesílání vlastních metrik pro prostředky Azure. Pokud chcete odesílat metriky pro prostředky v různých prostředích nebo v místním prostředí, můžete použít [Application Insights](../../azure-monitor/app/api-custom-events-metrics.md).    
+>Rozhraní REST API povoluje odesílání vlastních metrik pro prostředky Azure. Chcete-li odesílat metriky pro prostředky v různých prostředích nebo v místním prostředí, můžete použít [Application Insights](../../azure-monitor/app/api-custom-events-metrics.md).    
 
 
-## <a name="create-and-authorize-a-service-principal-to-emit-metrics"></a>Vytvoření a autorizace instančního objektu pro vygenerování metrik 
+## <a name="create-and-authorize-a-service-principal-to-emit-metrics"></a>Vytvoření a autorizace instančního objektu pro vyzařují metriky 
 
-Pomocí pokynů, které najdete v tématu [Vytvoření instančního objektu](../../active-directory/develop/howto-create-service-principal-portal.md), vytvořte v tenantovi Azure Active Directory objekt služby. 
+Vytvořte instanční objekt v tenantovi služby Azure Active Directory pomocí pokynů najdete v části [Vytvořit instanční objekt](../../active-directory/develop/howto-create-service-principal-portal.md). 
 
-Při procházení tohoto procesu mějte na paměti následující: 
+Při procházení tímto procesem si všimněte následujícího: 
 
 - Pro přihlašovací adresu URL můžete zadat libovolnou adresu URL.  
-- Vytvoří nový tajný klíč klienta pro tuto aplikaci.  
+- Vytvořte nový tajný klíč klienta pro tuto aplikaci.  
 - Uložte klíč a ID klienta pro použití v pozdějších krocích.  
 
-Poskytněte aplikaci vytvořenou jako součást kroku 1, monitoruje vydavatele metrik a oprávnění k prostředku, na který chcete metriky vygenerovat. Pokud plánujete použití aplikace k vygenerování vlastních metrik pro mnoho prostředků, můžete tato oprávnění udělit na úrovni skupiny prostředků nebo předplatného. 
+Udělte aplikaci vytvořené jako součást kroku 1, Vydavatele metrik monitorování, oprávnění k prostředku, proti jehož vyzařování metrik. Pokud máte v plánu použít aplikaci k vyzařování vlastní metriky proti mnoha prostředkům, můžete udělit tato oprávnění na úrovni skupiny prostředků nebo předplatného. 
 
 ## <a name="get-an-authorization-token"></a>Získání autorizačního tokenu
 Otevřete příkazový řádek a spusťte následující příkaz:
@@ -42,11 +42,11 @@ curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "g
 ```
 Uložte přístupový token z odpovědi.
 
-![přístupový token](./media/metrics-store-custom-rest-api/accesstoken.png)
+![Přístupový token](./media/metrics-store-custom-rest-api/accesstoken.png)
 
-## <a name="emit-the-metric-via-the-rest-api"></a>Generování metriky prostřednictvím REST API 
+## <a name="emit-the-metric-via-the-rest-api"></a>Vyzařovat metriku prostřednictvím rozhraní REST API 
 
-1. Vložte následující JSON do souboru a uložte ho jako **custommetric. JSON** na místním počítači. Aktualizujte časový parametr v souboru JSON: 
+1. Vložte následující jSON do souboru a uložte jej jako **custommetric.json** v místním počítači. Aktualizujte parametr time v souboru JSON: 
     
     ```json
     { 
@@ -76,42 +76,42 @@ Uložte přístupový token z odpovědi.
     } 
     ``` 
 
-1. V okně příkazového řádku publikujte data metriky: 
-   - **a**. Musí se shodovat s oblastí nasazení prostředku, pro který vydáváte metriky. 
-   - **ResourceID**.  ID prostředku prostředku Azure, na kterém sledujete metriku  
+1. V okně příkazového řádku zveřejněte metrická data: 
+   - **azureRegion**. Musí odpovídat oblasti nasazení prostředku, pro který vyzařujete metriky. 
+   - **resourceID**.  ID prostředku prostředku Azure, proti které metriku sledujete.  
    - **AccessToken**. Vložte token, který jste získali dříve.
 
      ```Shell 
      curl -X POST https://<azureRegion>.monitoring.azure.com/<resourceId>/metrics -H "Content-Type: application/json" -H "Authorization: Bearer <AccessToken>" -d @custommetric.json 
      ```
-1. Změna časového razítka a hodnot v souboru JSON. 
-1. Předchozí dva kroky zopakujte několikrát, takže budete mít data několik minut.
+1. Změňte časové razítko a hodnoty v souboru JSON. 
+1. Opakujte předchozí dva kroky několikrát, takže máte data po dobu několika minut.
 
-## <a name="troubleshooting"></a>Odstraňování potíží 
-Pokud se vám v některé části procesu zobrazí chybová zpráva, vezměte v úvahu následující informace pro řešení potíží:
+## <a name="troubleshooting"></a>Řešení potíží 
+Pokud se zobrazí chybová zpráva s určitou částí procesu, zvažte následující informace o řešení potíží:
 
-1. Nemůžete vystavovat metriky pro předplatné nebo skupinu prostředků jako prostředek Azure. 
-1. Nemůžete vložit metriku do úložiště, které je starší než 20 minut. Úložiště metrik je optimalizované pro upozorňování a vytváření grafů v reálném čase. 
-2. Počet názvů dimenzí by měl odpovídat hodnotám a naopak. Ověřte hodnoty. 
-2. Můžete vysílat metriky v oblasti, která nepodporuje vlastní metriky. Viz [podporované oblasti](../../azure-monitor/platform/metrics-custom-overview.md#supported-regions). 
+1. Jako prostředek Azure nelze vydávat metriky proti předplatnému nebo skupině prostředků. 
+1. Do obchodu, který je starší než 20 minut, nelze vložit metriku. Úložiště metrik je optimalizované pro upozorňování a vytváření grafů v reálném čase. 
+2. Počet názvů dimenzí by měl odpovídat hodnotám a naopak. Zkontrolujte hodnoty. 
+2. Je možné, že vyzařujete metriky proti oblasti, která nepodporuje vlastní metriky. Viz [podporované oblasti](../../azure-monitor/platform/metrics-custom-overview.md#supported-regions). 
 
 
 
-## <a name="view-your-metrics"></a>Zobrazit vaše metriky 
+## <a name="view-your-metrics"></a>Zobrazení metrik 
 
 1. Přihlaste se k portálu Azure. 
 
-1. V nabídce na levé straně vyberte **monitor**. 
+1. V levé nabídce vyberte **monitor .** 
 
-1. Na stránce **monitor** vyberte **metriky**. 
+1. Na stránce **Monitor** vyberte **Metriky**. 
 
    ![Vybrat metriky](./media/metrics-store-custom-rest-api/metrics.png) 
 
-1. Změňte období agregace na **posledních 30 minut**.  
+1. Změňte období agregace na **Posledních 30 minut**.  
 
-1. V rozevírací nabídce **prostředek** vyberte prostředek, oproti kterému jste tuto metriku vygenerovali.  
+1. V rozevírací nabídce **prostředků** vyberte prostředek, proti který jste metriku vypouštěli.  
 
-1. V rozevírací nabídce **obory názvů** vyberte **QueueProcessing**. 
+1. V rozevírací nabídce **Obory názvů** vyberte **queueprocessing**. 
 
 1. V rozevírací nabídce **metriky** vyberte **QueueDepth**.  
 

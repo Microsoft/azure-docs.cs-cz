@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: Vytvoření aplikace pro Xamarin iOS'
-description: V tomto rychlém startu se dozvíte, jak vytvořit aplikaci pro iOS pomocí prostorových ukotvení.
+title: 'Úvodní příručka: Vytvoření aplikace Xamarin pro iOS'
+description: V tomto rychlém startu se dozvíte, jak vytvořit aplikaci pro iOS s Xamarin pomocí prostorových kotev.
 author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
@@ -9,71 +9,71 @@ ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: c5e217a33c8b461a438e2d0209fe6733850634e6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75465141"
 ---
-# <a name="quickstart-create-a-xamarin-ios-app-with-azure-spatial-anchors"></a>Rychlý Start: Vytvoření aplikace Xamarin iOS pomocí prostorových kotev Azure
+# <a name="quickstart-create-a-xamarin-ios-app-with-azure-spatial-anchors"></a>Úvodní příručka: Vytvoření aplikace Pro iOS Xamarin s prostorovými kotvami Azure
 
-V tomto rychlém startu se dozvíte, jak vytvořit aplikaci pro iOS pomocí [prostorových kotev Azure](../overview.md). Prostorové kotvy Azure je služba pro vývojáře napříč platformami, která umožňuje vytvářet hybridní prostředí realit pomocí objektů, které v průběhu času trvale uchovávají jejich umístění v rámci zařízení. Až budete hotovi, budete mít aplikaci pro iOS, která může uložit a odvolat prostorovou kotvu.
+Tento rychlý start popisuje, jak vytvořit aplikaci pro iOS s Xamarin pomocí [Azure Spatial Anchors](../overview.md). Azure Spatial Anchors je vývojářská služba napříč platformami, která umožňuje vytvářet prostředí smíšené reality pomocí objektů, které v průběhu času napříč zařízeními přetrvávají. Po dokončení budete mít aplikaci pro iOS, která může uložit a vyvolat prostorovou kotvu.
 
 Dozvíte se, jak provést tyto akce:
 
 > [!div class="checklist"]
 > * Vytvoření účtu prostorových kotev
 > * Konfigurace identifikátoru účtu prostorových kotev a klíče účtu
-> * Nasazení a spuštění na zařízení s iOS
+> * Nasazení a spuštění na iOS zařízení
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
-- Mac s macOS vysokým Sierra (10,13) nebo novějším:
-  - Nejnovější verze Xcode a sady iOS SDK nainstalované z [App Storu](https://itunes.apple.com/us/app/xcode/id497799835?mt=12).
-  - Aktuální verze <a href="https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio pro Mac 8.1 +</a>.
-  - <a href="https://git-scm.com/download/mac" target="_blank">Git pro MacOS</a>.
-  - <a href="https://git-lfs.github.com/">Úložiště Git LFS:</a>
+- Mac se systémem macOS High Sierra (10.13) nebo vyšším s:
+  - Nejnovější verze Xcode a iOS SDK nainstalovaná z [App Store](https://itunes.apple.com/us/app/xcode/id497799835?mt=12).
+  - Aktuální verze Visual Studia <a href="https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019" target="_blank">pro Mac 8.1+</a>.
+  - <a href="https://git-scm.com/download/mac" target="_blank">Git pro macOS</a>.
+  - <a href="https://git-lfs.github.com/">Git LFS</a>.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
-## <a name="open-the-sample-project"></a>Otevřete vzorový projekt
+## <a name="open-the-sample-project"></a>Otevření ukázkového projektu
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-Otevřete `Xamarin/SampleXamarin.sln` v aplikaci Visual Studio.
+Otevřít `Xamarin/SampleXamarin.sln` v sadě Visual Studio.
 
-## <a name="configure-account-identifier-and-key"></a>Konfigurace identifikátoru a klíče účtu
+## <a name="configure-account-identifier-and-key"></a>Konfigurace identifikátoru účtu a klíče
 
-Dalším krokem je konfigurace aplikace tak, aby používala identifikátor účtu a klíč účtu. Při [nastavování prostředku prostorových ukotvení](#create-a-spatial-anchors-resource)jste je zkopírovali do textového editoru.
+Dalším krokem je konfigurace aplikace tak, aby používala identifikátor účtu a klíč účtu. Zkopírovali jste je do textového [editoru při nastavování prostředku Prostorové kotvy](#create-a-spatial-anchors-resource).
 
-Otevřít `Xamarin/SampleXamarin.Common/AccountDetails.cs`.
+Otevřete `Xamarin/SampleXamarin.Common/AccountDetails.cs`.
 
-Vyhledejte pole `SpatialAnchorsAccountKey` a nahraďte `Set me` klíčem účtu.
+Vyhledejte `SpatialAnchorsAccountKey` pole `Set me` a nahraďte jej klíčem účtu.
 
-Vyhledejte pole `SpatialAnchorsAccountId` a nahraďte `Set me` identifikátorem účtu.
+Vyhledejte `SpatialAnchorsAccountId` pole `Set me` a nahraďte jej identifikátorem účtu.
 
-## <a name="deploy-the-app-to-your-ios-device"></a>Nasazení aplikace do zařízení s iOS
+## <a name="deploy-the-app-to-your-ios-device"></a>Nasazení aplikace do iOS zařízení
 
-Zapněte zařízení s iOS, přihlaste se a připojte ho k počítači pomocí kabelu USB.
+Zapojte iOS zařízení, přihlaste se a připojte ho k počítači pomocí kabelu USB.
 
-Nastavte projekt po spuštění na **SampleXamarin. iOS**, změňte **konfiguraci řešení** na **release**a v rozevíracím seznamu pro výběr zařízení vyberte zařízení, do kterého chcete nasadit.
+Nastavte projekt spuštění na **SampleXamarin.iOS**, změňte **konfiguraci řešení** na **verzi**a vrozeném výběru zařízení vyberte zařízení, do kterého chcete nasadit.
 
 ![Konfigurace sady Visual Studio](./media/get-started-xamarin-iOS/visual-studio-macos-configuration.jpg)
 
-Vyberte **spustit** > **Spustit bez ladění** pro nasazení a spuštění vaší aplikace.
+Chcete-li nasadit a spustit aplikaci, vyberte **spustit** > **spustit spustit bez ladění.**
 
-V aplikaci vyberte **základní** , aby se spustila ukázka, a postupujte podle pokynů k umístění a odvolání kotvy.
+V aplikaci vyberte **Základní** spustit ukázku a postupujte podle pokynů umístit a odvolat kotvu.
 
-> ![snímku 1](./media/get-started-xamarin-ios/screenshot-1.jpg)
-> ![snímku obrazovky 2](./media/get-started-xamarin-ios/screenshot-2.jpg)
-> ![snímek 3](./media/get-started-xamarin-ios/screenshot-3.jpg)
+> ![Snímek](./media/get-started-xamarin-ios/screenshot-1.jpg)
+> ![obrazovky](./media/get-started-xamarin-ios/screenshot-2.jpg)
+> ![1 Snímek obrazovky 2 Snímek obrazovky 3](./media/get-started-xamarin-ios/screenshot-3.jpg)
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Kurz: sdílení prostorových ukotvení napříč zařízeními](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Kurz: Sdílení prostorových kotev napříč zařízeními](../tutorials/tutorial-share-anchors-across-devices.md)

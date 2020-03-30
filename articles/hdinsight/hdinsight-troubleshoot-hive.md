@@ -1,7 +1,7 @@
 ---
-title: Řešení potíží s registrací pomocí Azure HDInsight
-description: Získejte odpovědi na běžné otázky týkající se práce s Apache Hive a Azure HDInsight.
-keywords: Azure HDInsight, podregistr, nejčastější dotazy, Průvodce odstraňováním potíží, běžné otázky
+title: Poradce při potížích s Hive pomocí Azure HDInsight
+description: Získejte odpovědi na časté otázky týkající se práce s Apache Hive a Azure HDInsight.
+keywords: Azure HDInsight, Hive, nejčastější dotazy, průvodce odstraňováním problémů, běžné otázky
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,101 +9,101 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: 02247adb9852a72b386feb2ef0924b0f1b3d6277
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75895235"
 ---
-# <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Řešení potíží s Apache Hive pomocí Azure HDInsight
+# <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Řešení potíží s Apache Hivem s využitím Azure HDInsightu
 
-Přečtěte si o nejčastějších dotazech a jejich řešeních při práci s Apache Hivemi datovými částmi v Apache Ambari.
+Získejte informace o hlavních otázkách a jejich předsevzetí při práci s datovými částmi Apache Hive v Apache Ambari.
 
-## <a name="how-do-i-export-a-hive-metastore-and-import-it-on-another-cluster"></a>Návody exportovat metastore Hive a naimportovat ho na jiný cluster?
+## <a name="how-do-i-export-a-hive-metastore-and-import-it-on-another-cluster"></a>Jak exportuji metastore Hive a importuji ho do jiného clusteru?
 
 ### <a name="resolution-steps"></a>Postup řešení
 
-1. Připojení ke clusteru HDInsight pomocí klienta Secure Shell (SSH). Další informace najdete v tématu [další čtení](#additional-reading-end).
+1. Připojte se ke clusteru HDInsight pomocí klienta Secure Shell (SSH). Další informace naleznete v [tématu Další čtení](#additional-reading-end).
 
-2. Spusťte následující příkaz na clusteru HDInsight, ze kterého chcete exportovat metastore:
+2. V clusteru HDInsight, ze kterého chcete metastore exportovat, spusťte následující příkaz:
 
     ```apache
     for d in `hive -e "show databases"`; do echo "create database $d; use $d;" >> alltables.sql ; for t in `hive --database $d -e "show tables"` ; do ddl=`hive --database $d -e "show create table $t"`; echo "$ddl ;" >> alltables.sql ; echo "$ddl" | grep -q "PARTITIONED\s*BY" && echo "MSCK REPAIR TABLE $t ;" >> alltables.sql ; done; done
     ```
 
-   Tento příkaz vygeneruje soubor s názvem allatables. SQL.
+   Tento příkaz generuje soubor s názvem allatables.sql.
 
-3. Zkopírujte soubor alltables. SQL do nového clusteru HDInsight a pak spusťte následující příkaz:
+3. Zkopírujte soubor alltables.sql do nového clusteru HDInsight a spusťte následující příkaz:
 
     ```apache
     hive -f alltables.sql
     ```
 
-Kód v krocích řešení předpokládá, že cesty k datům v novém clusteru jsou stejné jako cesty k datům v původním clusteru. Pokud se cesty k datům liší, můžete vygenerovaný `alltables.sql` soubor ručně upravit tak, aby odrážel všechny změny.
+Kód v krocích řešení předpokládá, že datové cesty v novém clusteru jsou stejné jako datové cesty ve starém clusteru. Pokud se datové cesty liší, můžete ručně upravit `alltables.sql` generovaný soubor tak, aby odrážel všechny změny.
 
-### <a name="additional-reading"></a>Další čtení
+### <a name="additional-reading"></a>Dodatečné čtení
 
 - [Připojení ke clusteru HDInsight pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-## <a name="how-do-i-locate-hive-logs-on-a-cluster"></a>Návody najít v clusteru protokoly podregistru?
+## <a name="how-do-i-locate-hive-logs-on-a-cluster"></a>Jak lze najít protokoly Hive v clusteru?
 
 ### <a name="resolution-steps"></a>Postup řešení
 
-1. Připojte se ke clusteru HDInsight pomocí SSH. Další informace najdete v tématu **další čtení**.
+1. Připojte se ke clusteru HDInsight pomocí SSH. Další informace naleznete v **tématu Další čtení**.
 
-2. Chcete-li zobrazit protokoly klienta podregistru, použijte následující příkaz:
+2. Chcete-li zobrazit protokoly klientů Hive, použijte následující příkaz:
 
    ```apache
    /tmp/<username>/hive.log
    ```
 
-3. Chcete-li zobrazit protokoly metastore Hive, použijte následující příkaz:
+3. Chcete-li zobrazit protokoly metaúložiště Hive, použijte následující příkaz:
 
    ```apache
    /var/log/hive/hivemetastore.log
    ```
 
-4. Chcete-li zobrazit protokoly serveru pro podregistr, použijte následující příkaz:
+4. Chcete-li zobrazit protokoly serveru Hive, použijte následující příkaz:
 
    ```apache
    /var/log/hive/hiveserver2.log
    ```
 
-### <a name="additional-reading"></a>Další čtení
+### <a name="additional-reading"></a>Dodatečné čtení
 
 - [Připojení ke clusteru HDInsight pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-## <a name="how-do-i-launch-the-hive-shell-with-specific-configurations-on-a-cluster"></a>Návody spustit prostředí pro podregistr s konkrétní konfigurací v clusteru?
+## <a name="how-do-i-launch-the-hive-shell-with-specific-configurations-on-a-cluster"></a>Jak spusťte prostředí Hive s konkrétními konfiguracemi v clusteru?
 
 ### <a name="resolution-steps"></a>Postup řešení
 
-1. Při spuštění prostředí podregistr zadejte dvojici klíč-hodnota konfigurace. Další informace najdete v tématu [další čtení](#additional-reading-end).
+1. Při spuštění prostředí Hive zadejte dvojici konfiguračníklíč-hodnota. Další informace naleznete v [tématu Další čtení](#additional-reading-end).
 
    ```apache
    hive -hiveconf a=b
    ```
 
-2. Pokud chcete zobrazit seznam všech efektivních konfigurací v prostředí s podregistry, použijte následující příkaz:
+2. Chcete-li vypsat všechny efektivní konfigurace v prostředí Hive, použijte následující příkaz:
 
    ```apache
    hive> set;
    ```
 
-   Pomocí následujícího příkazu můžete například spustit prostředí registru s povoleným protokolováním ladění v konzole nástroje:
+   Pomocí následujícího příkazu můžete například spustit prostředí Hive s povoleným protokolováním ladění v konzole:
 
    ```apache
    hive -hiveconf hive.root.logger=ALL,console
    ```
 
-### <a name="additional-reading"></a>Další čtení
+### <a name="additional-reading"></a>Dodatečné čtení
 
-- [Vlastnosti konfigurace podregistru](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties)
+- [Vlastnosti konfigurace úlu](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties)
 
-## <a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>Návody analyzovat Apache Tez DAG data na cestě kritické pro cluster?
+## <a name="how-do-i-analyze-apache-tez-dag-data-on-a-cluster-critical-path"></a><a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>Jak lze analyzovat data Apache Tez DAG na cestě kritické pro cluster?
 
 ### <a name="resolution-steps"></a>Postup řešení
 
-1. Pokud chcete analyzovat Apache Tez acyklického Graph (DAG) v grafu kritickém pro cluster, připojte se ke clusteru HDInsight pomocí SSH. Další informace najdete v tématu [další čtení](#additional-reading-end).
+1. Chcete-li analyzovat acyklický graf (DAG) řízeného Apache Tez na grafu kritickém pro cluster, připojte se ke clusteru HDInsight pomocí SSH. Další informace naleznete v [tématu Další čtení](#additional-reading-end).
 
 2. Na příkazovém řádku spusťte následující příkaz:
 
@@ -111,36 +111,36 @@ Kód v krocích řešení předpokládá, že cesty k datům v novém clusteru j
    hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar CriticalPath --saveResults --dagId <DagId> --eventFileName <DagData.zip> 
    ```
 
-3. K vypsání dalších analyzátorů, které se dají použít k analýze tez DAG, použijte následující příkaz:
+3. Chcete-li uvést další analyzátory, které lze použít k analýze Tez DAG, použijte následující příkaz:
 
    ```apache
    hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar
    ```
 
-   Jako první argument musíte zadat vzorový program.
+   Jako první argument je nutné zadat ukázkový program.
 
-   Platné názvy programů zahrnují:
-    - **ContainerReuseAnalyzer**: tisk podrobností o opětovném použití kontejneru v Dag
-    - **CriticalPath**: vyhledejte kritickou cestu pro DAG.
-    - **LocalityAnalyzer**: podrobnosti o místním tisku v Dag
-    - **ShuffleTimeAnalyzer**: analyzovat podrobnosti času náhodného přehrávání v Dag
-    - **SkewAnalyzer**: analyzovat podrobnosti zkosení v Dag
-    - **SlowNodeAnalyzer**: tisk podrobností uzlu v Dag
-    - **SlowTaskIdentifier**: tisk pomalých úloh v Dag
-    - **SlowestVertexAnalyzer**: vytiskněte nejpomalejší podrobnosti vrcholu v Dag
-    - **SpillAnalyzer**: tisk podrobností o rozlití v Dag
-    - **TaskConcurrencyAnalyzer**: tisk podrobností o souběžnosti úkolu v Dag
-    - **VertexLevelCriticalPathAnalyzer**: najít kritickou cestu na úrovni vrcholu v Dag
+   Mezi platné názvy programů patří:
+    - **ContainerReuseAnalyzer**: Tisk kontejneru znovu použít podrobnosti v DAG
+    - **CriticalPath**: Najít kritickou cestu DAG
+    - **LocalityAnalyzer**: Tisk podrobností o lokalitě v DAG
+    - **ShuffleTimeAnalyzer**: Analyzovat podrobnosti o čase náhodného přehrávání v DAG
+    - **SkewAnalyzer**: Analýza detailů zkosení v DAG
+    - **SlowNodeAnalyzer**: Tisk podrobností uzlu v DAG
+    - **SlowTaskIdentifier**: Tisk pomalých podrobností úkolu v dag
+    - **SlowestVertexAnalyzer**: Tisk nejpomalejších podrobností o vrcholu v DAG
+    - **SpillAnalyzer**: Tisk podrobností o úniku v DAG
+    - **TaskConcurrencyAnalyzer**: Tisk podrobností souběžnosti úkolu v dag
+    - **VertexLevelCriticalPathAnalyzer**: Najít kritickou cestu na úrovni vrcholu v DAG
 
-### <a name="additional-reading"></a>Další čtení
+### <a name="additional-reading"></a>Dodatečné čtení
 
 - [Připojení ke clusteru HDInsight pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-## <a name="how-do-i-download-tez-dag-data-from-a-cluster"></a>Návody stáhnout data DAG z clusteru?
+## <a name="how-do-i-download-tez-dag-data-from-a-cluster"></a>Jak lze stáhnout data Tez DAG z clusteru?
 
 #### <a name="resolution-steps"></a>Postup řešení
 
-Existují dva způsoby, jak shromažďovat data DAG tez:
+Existují dva způsoby, jak shromažďovat data Tez DAG:
 
 - Z příkazového řádku:
 
@@ -150,23 +150,23 @@ Existují dva způsoby, jak shromažďovat data DAG tez:
   hadoop jar /usr/hdp/current/tez-client/tez-history-parser-*.jar org.apache.tez.history.ATSImportTool -downloadDir . -dagId <DagId>
   ```
 
-- Použijte zobrazení Ambari tez:
+- Použijte zobrazení Ambari Tez:
 
-  1. Přejít na Ambari.
-  2. V pravém horním rohu přejdete do zobrazení tez (pod ikonou dlaždice).
-  3. Vyberte DAG, který chcete zobrazit.
-  4. Vyberte **stáhnout data**.
+  1. Jeď do Ambari.
+  2. Přejděte do zobrazení Tez (pod ikonou dlaždic v pravém horním rohu).
+  3. Vyberte dag, který chcete zobrazit.
+  4. Vyberte **možnost Stáhnout data**.
 
-### <a name="additional-reading-end"></a>Další čtení
+### <a name="additional-reading"></a><a name="additional-reading-end"></a>Dodatečné čtení
 
 [Připojení ke clusteru HDInsight pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
+Pokud jste problém nezjistili nebo se vám nedaří problém vyřešit, navštivte jeden z následujících kanálů, kde najdete další podporu:
 
-- Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
+- Získejte odpovědi od odborníků na Azure prostřednictvím [podpory Azure Community Support](https://azure.microsoft.com/support/community/).
 
-- Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) – oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
+- Spojte [@AzureSupport](https://twitter.com/azuresupport) se s oficiálním účtem Microsoft Azure pro zlepšení zákaznického prostředí. Propojení komunity Azure se správnými prostředky: odpovědi, podpora a odborníci.
 
-- Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+- Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [webu Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na řádku nabídek vyberte **Podpora** nebo otevřete centrum **Nápověda + podpora.** Podrobnější informace najděte v části [Jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatného a fakturační podpoře je součástí vašeho předplatného Microsoft Azure a technická podpora se poskytuje prostřednictvím jednoho z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

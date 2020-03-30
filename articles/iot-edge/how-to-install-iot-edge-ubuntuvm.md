@@ -1,60 +1,92 @@
 ---
-title: Spustit Azure IoT Edge v Virtual Machines Ubuntu | Microsoft Docs
-description: Pokyny k instalaci Azure IoT Edge Azure Marketplace Ubuntu 16,04 Virtual Machines
-author: gregman-msft
-manager: arjmands
+title: Spouštějte Azure IoT Edge na virtuálních počítačích Ubuntu | Dokumenty společnosti Microsoft
+description: Pokyny k nastavení Azure IoT Edge pro virtuální počítače Ubuntu 18.04 LTS
+author: toolboc
+manager: veyalla
 ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 07/09/2019
-ms.author: philmea
-ms.openlocfilehash: 49a783e1360aeddc8eeaadba442acf578d9d6f7f
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.date: 03/19/2020
+ms.author: pdecarlo
+ms.openlocfilehash: 64e2787aa282e75893fa34e6de1373e6afed09fe
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046052"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80349602"
 ---
-# <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Spuštění Azure IoT Edge v Ubuntu Virtual Machines
+# <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Spouštějte Azure IoT Edge na virtuálních počítačích Ubuntu
 
-Modul runtime Azure IoT Edge je co se změní na zařízení do zařízení IoT Edge. Modul runtime můžete nasadit na zařízení jako Raspberry Pi malé nebo velké průmyslové serveru. Jakmile je zařízení nakonfigurovaná s modulem runtime IoT Edge, můžete začít nasazovat obchodní logiky k němu z cloudu.
+Azure IoT Edge runtime je to, co změní zařízení na zařízení IoT Edge. Runtime lze nasadit na zařízení tak malá jako Raspberry Pi nebo velká jako průmyslový server. Jakmile je zařízení nakonfigurované s runtime IoT Edge, můžete do něj začít nasazovat obchodní logiku z cloudu.
 
-Další informace o tom, jak modul runtime IoT Edge funguje a jaké součásti jsou zahrnuté, najdete v tématu [pochopení Azure IoT Edge runtime a jeho architektury](iot-edge-runtime.md).
+Další informace o tom, jak funguje runtime IoT Edge a jaké součásti jsou zahrnuty, najdete [v tématu Principy runtime Azure IoT Edge a jeho architektury](iot-edge-runtime.md).
 
-V tomto článku jsou uvedené kroky, jak spustit modul runtime Azure IoT Edge na virtuálním počítači s Ubuntu 16,04 pomocí předkonfigurované [Azure IoT Edge na Ubuntu Azure Marketplace nabídky](https://aka.ms/azure-iot-edge-ubuntuvm).
+Tento článek uvádí postup nasazení virtuálního počítače Ubuntu 18.04 LTS s nainstalovanou a nakonfigurovanou runtime Azure IoT Edge pomocí předem zadávaného připojovacího řetězce zařízení. Nasazení se provádí pomocí šablony Azure [Resource Manager](../azure-resource-manager/templates/overview.md) založené na [cloud-init](../virtual-machines/linux/using-cloud-init.md
+) udržované v úložišti projektů [iotedge-vm-deploy.](https://github.com/Azure/iotedge-vm-deploy)
 
-Při prvním spuštění předinstaluje Azure IoT Edge na virtuálním počítači s Ubuntu nejnovější verzi Azure IoT Edge runtime. Obsahuje také skript pro nastavení připojovacího řetězce a následné restartování modulu runtime, který může být aktivován vzdáleně prostřednictvím portálu virtuálního počítače Azure nebo pomocí příkazového řádku Azure, který umožňuje snadnou konfiguraci a připojení zařízení IoT Edge bez spuštění protokolu SSH nebo vzdáleného přístupu. relace plochy. Tento skript počká na nastavení připojovacího řetězce, dokud nebude klient IoT Edge plně nainstalován, takže nemusíte ho sestavovat do automatizace.
+Při prvním spuštění virtuální počítač Ubuntu 18.04 LTS [nainstaluje nejnovější verzi runtime Azure IoT Edge přes cloud-init](https://github.com/Azure/iotedge-vm-deploy/blob/master/cloud-init.txt). Také nastaví dodaný připojovací řetězec před spuštěním běhu, což vám umožní snadno konfigurovat a připojit zařízení IoT Edge bez nutnosti spouštět relaci SSH nebo vzdálené plochy. 
 
-## <a name="deploy-from-the-azure-marketplace"></a>Nasazení z Azure Marketplace
+## <a name="deploy-using-deploy-to-azure-button"></a>Nasazení pomocí tlačítka Nasazení do Azure
 
-1. Přejděte do [Azure IoT Edge nabídky na webu Ubuntu](https://aka.ms/azure-iot-edge-ubuntuvm) Marketplace nebo na [Azure Marketplace](https://azuremarketplace.microsoft.com/) Azure IoT Edge na Ubuntu.
-2. Vyberte **získat** a potom **pokračujte** v dalším dialogovém okně.
-3. V Azure Portal vyberte **vytvořit** a postupujte podle pokynů průvodce a NASAĎTE virtuální počítač.
-    * Pokud si virtuální počítač vyzkoušíte poprvé, je jednodušší použít heslo a povolit SSH v nabídce veřejného příchozího portu.
-    * Pokud máte úlohu náročné na prostředky, měli byste upgradovat velikost virtuálního počítače přidáním dalších procesorů nebo paměti.
-4. Po nasazení virtuálního počítače ho nakonfigurujte tak, aby se připojil k vašemu IoT Hub:
-    1. Z IoT Edge zařízení vytvořeného v IoT Hub zkopírujte připojovací řetězec zařízení. Pokud tento proces neznáte, můžete postupovat podle pokynů k [Načtení připojovacího řetězce v Azure Portal](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal) .
-    1. Vyberte nově vytvořený prostředek virtuálního počítače z Azure Portal a otevřete možnost **Spustit příkaz** .
-    1. Vyberte možnost **RunShellScript**
-    1. Spusťte skript níže prostřednictvím příkazového okna s připojovacím řetězcem zařízení: `/etc/iotedge/configedge.sh "{device_connection_string}"`
-    1. Vyberte **Spustit** .
-    1. Chvíli počkejte a obrazovka by pak měla poskytnout zprávu o úspěchu, která indikuje, že se připojovací řetězec úspěšně nastavil.
+[Tlačítko Nasazení do Azure](../azure-resource-manager/templates/deploy-to-azure-button.md) umožňuje zjednodušené nasazení šablon Azure Resource [Manager](../azure-resource-manager/templates/overview.md) uchovávaných na GitHubu.  Tato část bude demonstrovat využití tlačítka Nasazení do Azure obsaženého v úložišti projektů [iotedge-vm-deploy.](https://github.com/Azure/iotedge-vm-deploy)  
 
-## <a name="deploy-from-the-azure-portal"></a>Nasazení z Azure Portal
 
-V Azure Portal vyhledejte "Azure IoT Edge" a vyberte **Ubuntu Server 16,04 LTS + Azure IoT Edge runtime** pro zahájení pracovního postupu vytváření virtuálních počítačů. Odtud proveďte kroky 3 a 4 v části nasazení z Azure Marketplace výše.
+1. Nasadíme virtuální počítač s Linuxem s podporou Azure IoT Edge pomocí šablony Azure Resource Manager s podporou iotedge-vm.  Chcete-li začít, klikněte na tlačítko níže:
+
+    [![Nasazení do tlačítka Azure pro nasazení iotedge-vm](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fmaster%2FedgeDeploy.json)
+
+1. V nově spuštěném okně vyplňte dostupná pole formuláře:
+
+    > [!div class="mx-imgBorder"]
+    > [![Snímek obrazovky se šablonou iotedge-vm-deploy](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-deploy.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-deploy.png)
+
+    **Předplatné:** Aktivní předplatné Azure pro nasazení virtuálního počítače.
+
+    **Skupina prostředků**: Existující nebo nově vytvořená skupina prostředků, která obsahuje virtuální počítač a přidružené prostředky.
+
+    **Předpona popisku DNS**: Požadovaná hodnota podle vašeho výběru, která se používá k předponě názvu hostitele virtuálního počítače.
+
+    **Uživatelské jméno správce**: Uživatelské jméno, které bude při nasazení poskytnuto root oprávnění.
+
+    **Připojovací řetězec zařízení**: [Připojovací řetězec zařízení](how-to-register-device.md) pro zařízení, které bylo vytvořeno v rámci [zamýšleného centra IoT Hub](../iot-hub/about-iot-hub.md).
+
+    **Velikost virtuálního počítače:** [Velikost](../cloud-services/cloud-services-sizes-specs.md) virtuálního počítače, který se má nasadit
+
+    **Ubuntu OS Verze:** Verze Operačního systému Ubuntu, které mají být instalovány na základním virtuálním stroji.
+
+    **Umístění**: [Geografická oblast,](https://azure.microsoft.com/global-infrastructure/locations/) do které se má virtuální počítač nasadit, je výchozí pro umístění vybrané skupiny prostředků.
+
+    **Typ ověřování**: V závislosti na vašich preferencích zvolte **sshPublicKey** nebo **heslo.**
+
+    **Admin Password or Key**: Hodnota veřejného klíče SSH nebo hodnota hesla v závislosti na volbě typu ověřování.
+
+    Po vyplnění všech polí zaškrtněte políčko v dolní části stránky, chcete-li podmínky přijmout, a klepnutím na **tlačítko Nákup** zahájit nasazení.
+
+1. Ověřte, zda bylo nasazení úspěšně dokončeno.  Prostředek virtuálního počítače měl být nasazen do vybrané skupiny prostředků.  Vezměte na vědomí název stroje, mělo `vm-0000000000000`by to být ve formátu . Všimněte si také přidruženého **názvu DNS**, `<dnsLabelPrefix>`který by měl být ve formátu . `<location>`.cloudapp.azure.com.
+
+    **Název DNS** lze získat v části **Přehled** nově nasazeného virtuálního počítače v rámci portálu Azure.
+
+    > [!div class="mx-imgBorder"]
+    > [![Snímek obrazovky s názvem DNS iotedge vm](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)
+
+1. Pokud chcete SSH do tohoto virtuálního počítači po nastavení, použijte přidružený **název DNS** s příkazem:`ssh <adminUsername>@<DNS_Name>`
 
 ## <a name="deploy-from-azure-cli"></a>Nasazení z Azure CLI
 
-1. Pokud na ploše používáte rozhraní příkazového řádku Azure CLI, začněte přihlášením:
+1. Ujistěte se, že jste nainstalovali rozšíření Azure CLI iot s:
+    ```azurecli-interactive
+    az extension add --name azure-iot
+    ```
+
+1. Dále pokud používáte Azure CLI na ploše, začněte přihlášením:
 
    ```azurecli-interactive
    az login
    ```
 
 1. Pokud máte více předplatných, vyberte předplatné, které chcete použít:
-   1. Výpis předplatných:
+   1. Zobrazte výpis vašich předplatných:
 
       ```azurecli-interactive
       az account list --output table
@@ -62,44 +94,79 @@ V Azure Portal vyhledejte "Azure IoT Edge" a vyberte **Ubuntu Server 16,04 LTS +
 
    1. Zkopírujte pole SubscriptionID pro předplatné, které chcete použít.
 
-   1. Nastavte své pracovní předplatné s ID, které jste právě zkopírovali:
+   1. Nastavte pracovní předplatné na ID, které jste zkopírovali:
 
       ```azurecli-interactive
-      az account set -s {SubscriptionId}
+      az account set -s <SubscriptionId>
       ```
 
-1. Vytvořte novou skupinu prostředků (nebo v dalších krocích určete existující):
+1. Vytvořte novou skupinu prostředků (nebo v dalších krocích zadejte existující skupinu):
 
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus2
    ```
 
-1. Přijměte podmínky použití pro virtuální počítač. Pokud si chcete nejdřív projít tyto výrazy, postupujte podle kroků v [části nasazení z Azure Marketplace](#deploy-from-the-azure-marketplace).
+1. Vytvoření nového virtuálního počítače:
+
+    Chcete-li použít `password` **authenticationType** of , viz následující příklad:
 
    ```azurecli-interactive
-   az vm image terms accept --urn microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest
+   az group deployment create \
+   --name edgeVm \
+   --resource-group IoTEdgeResources \
+   --template-uri "https://aka.ms/iotedge-vm-deploy" \
+   --parameters dnsLabelPrefix='my-edge-vm1' \
+   --parameters adminUsername='<REPLACE_WITH_USERNAME>' \
+   --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id <REPLACE_WITH_DEVICE-NAME> --hub-name <REPLACE-WITH-HUB-NAME> -o tsv) \
+   --parameters authenticationType='password' \
+   --parameters adminPasswordOrKey="<REPLACE_WITH_SECRET_PASSWORD>"
    ```
 
-1. Vytvořit nový virtuální počítač:
+    Chcete-li ověřit pomocí klíče SSH, můžete tak učinit `sshPublicKey`zadáním **authenticationType** of , a pak zadejte hodnotu klíče SSH v parametru **adminPasswordOrKey.**  Příklad najdete níže.
 
-   ```azurecli-interactive
-   az vm create --resource-group IoTEdgeResources --name EdgeVM --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys
-   ```
+    ```azurecli-interactive
+    #Generate the SSH Key
+    ssh-keygen -m PEM -t rsa -b 4096 -q -f ~/.ssh/iotedge-vm-key -N ""  
 
-1. Nastavení připojovacího řetězce zařízení (Pokud nejste obeznámeni s tímto procesem, můžete postupovat podle postupu [Načtení připojovacího řetězce pomocí Azure CLI](how-to-register-device.md#retrieve-the-connection-string-with-the-azure-cli) ):
+    #Create a VM using the iotedge-vm-deploy script
+    az group deployment create \
+    --name edgeVm \
+    --resource-group IoTEdgeResources \
+    --template-uri "https://aka.ms/iotedge-vm-deploy" \
+    --parameters dnsLabelPrefix='my-edge-vm1' \
+    --parameters adminUsername='<REPLACE_WITH_USERNAME>' \
+    --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id <REPLACE_WITH_DEVICE-NAME> --hub-name <REPLACE-WITH-HUB-NAME> -o tsv) \
+    --parameters authenticationType='sshPublicKey' \
+    --parameters adminPasswordOrKey="$(< ~/.ssh/iotedge-vm-key.pub)"
+     
+    ```
 
-   ```azurecli-interactive
-   az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script "/etc/iotedge/configedge.sh '{device_connection_string}'"
-   ```
+1. Ověřte, zda bylo nasazení úspěšně dokončeno.  Prostředek virtuálního počítače měl být nasazen do vybrané skupiny prostředků.  Vezměte na vědomí název stroje, mělo `vm-0000000000000`by to být ve formátu . Všimněte si také přidruženého **názvu DNS**, `<dnsLabelPrefix>`který by měl být ve formátu . `<location>`.cloudapp.azure.com.
 
-Pokud chcete k tomuto virtuálnímu počítači po instalaci použít SSH, použijte publicIpAddress s příkazem: `ssh azureuser@{publicIpAddress}`
+    **Název DNS** lze získat z výstupu ve formátu JSON předchozího kroku v části výstupy jako součást veřejné **položky** **SSH.**  Hodnotu této položky lze použít pro SSH do nově nasazeného počítače.
+
+    ```bash
+    "outputs": {
+      "public SSH": {
+        "type": "String",
+        "value": "ssh <adminUsername>@<DNS_Name>"
+      }
+    }
+    ```
+
+    **Název DNS** lze také získat z části **Přehled** nově nasazeného virtuálního počítače v rámci portálu Azure.
+
+    > [!div class="mx-imgBorder"]
+    > [![Snímek obrazovky s názvem DNS iotedge vm](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)
+
+1. Pokud chcete SSH do tohoto virtuálního počítači po nastavení, použijte přidružený **název DNS** s příkazem:`ssh <adminUsername>@<DNS_Name>`
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když máte nainstalovanou IoT Edge zařízení s nainstalovaným modulem runtime, můžete [nasadit IoT Edge moduly](how-to-deploy-modules-portal.md).
+Teď, když máte zařízení IoT Edge zřízené s nainstalovaným modulem runtime, můžete [nasadit moduly IoT Edge](how-to-deploy-modules-portal.md).
 
-Pokud máte problémy s instalací modulu runtime IoT Edge správně, podívejte se na stránku [Poradce při potížích](troubleshoot.md) .
+Pokud máte problémy s instalací runtime IoT Edge správně, podívejte se na stránku [řešení potíží.](troubleshoot.md)
 
-Chcete-li aktualizovat existující instalaci na nejnovější verzi IoT Edge, přečtěte si téma [aktualizace procesu démona zabezpečení IoT Edge a modulu runtime](how-to-update-iot-edge.md).
+Informace o aktualizaci existující instalace na nejnovější verzi technologie IoT Edge naleznete v [tématu Aktualizace daemonu zabezpečení IoT Edge a runtime](how-to-update-iot-edge.md).
 
-Pokud chcete otevřít porty pro přístup k virtuálnímu počítači přes SSH nebo jiná příchozí připojení, přečtěte si dokumentaci k virtuálnímu počítači Azure o [otevření portů a koncových bodů na virtuálním počítači se systémem Linux](../virtual-machines/linux/nsg-quickstart.md) .
+Pokud chcete otevřít porty pro přístup k virtuálnímu počítači prostřednictvím SSH nebo jiných příchozích připojení, podívejte se na dokumentaci k virtuálním počítačům Azure o [otevírání portů a koncových bodů pro virtuální počítač s Linuxem.](../virtual-machines/linux/nsg-quickstart.md)

@@ -1,6 +1,6 @@
 ---
-title: Kódování vlastní transformace pomocí příkazového řádku služby Media Services v3 – Azure | Dokumentace Microsoftu
-description: Toto téma ukazuje, jak pomocí Azure Media Services v3 kódování vlastní transformace pomocí rozhraní příkazového řádku.
+title: Zakódovat vlastní transformaci pomocí media services v3 Azure CLI | Dokumenty společnosti Microsoft
+description: Toto téma ukazuje, jak pomocí Azure Media Services v3 kódovat vlastní transformaci pomocí Azure CLI.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,37 +12,39 @@ ms.topic: article
 ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
-ms.openlocfilehash: 42b7c2d86525c428253137b424fe58bb61edba70
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c1b446ccf04199449f012e738f6a03660735f50
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65762012"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382949"
 ---
-# <a name="how-to-encode-with-a-custom-transform---cli"></a>Kódování s vlastní transformace – rozhraní příkazového řádku
+# <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>Kódování pomocí vlastní transformace – Azure CLI
 
-Při kódování pomocí Azure Media Services, můžete začít rychle s jedním z doporučených předdefinované předvolby, podle doporučené postupy, jak je ukázáno v [streamování souborů](stream-files-cli-quickstart.md#create-a-transform-for-adaptive-bitrate-encoding) rychlý start. Můžete také vytvořit vlastní přednastavení cílit na konkrétní požadavky scénáře nebo zařízení.
+Při kódování pomocí Azure Media Services můžete rychle začít s jedním z doporučených předvoleb založených na osvědčených postupech v oboru, jak je znázorněno na rychlém startu [datových proudů souborů.](stream-files-cli-quickstart.md#create-a-transform-for-adaptive-bitrate-encoding) Můžete také vytvořit vlastní přednastavení pro cílí na konkrétní scénář nebo požadavky na zařízení.
 
 ## <a name="considerations"></a>Požadavky
 
-Při vytváření vlastní předvolby, platí následující aspekty:
+Při vytváření vlastních přednastavení platí následující aspekty:
 
-* Všechny hodnoty pro výšku a šířku na AVC obsahu musí být násobkem 4.
-* V Azure Media Services v3 kódování přenosových rychlostí jsou všechny bity za sekundu. Tím se liší od přednastavení pomocí rozhraní API v2, který používá kilobitů za sekundu za jednotku. Například pokud přenosovými rychlostmi ve verzi v2 byl zadán jako 128 (kilobitů za sekundu), ve verzi 3 to se nastavuje na 128000 (bitů za sekundu).
+* Všechny hodnoty pro výšku a šířku obsahu AVC musí být násobkem 4.
+* Ve službě Azure Media Services v3 jsou všechny přetáčicí přenosové rychlosti kódování v bitech za sekundu. To se liší od přednastavení s našimi v2 API, který používá kilobitů za sekundu jako jednotku. Například pokud byl určen přenosový tok v 2 jako 128 (kilobitů za sekundu), ve v3 by byla nastavena na 128000 (bitů za sekundu).
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Požadavky
 
-[Vytvoření účtu Media Services](create-account-cli-how-to.md). <br/>Ujistěte se, že si pamatovat název skupiny prostředků a název účtu Media Services. 
+[Vytvořte účet mediálních služeb](create-account-cli-how-to.md).
+
+Nezapomeňte si zapamatovat název skupiny prostředků a název účtu Mediální služby.
 
 [!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
-## <a name="define-a-custom-preset"></a>Definovat vlastní předvolba
+## <a name="define-a-custom-preset"></a>Definování vlastního přednastavení
 
-Následující příklad definuje nové transformace textu požadavku. Definujeme sadu výstupy, které chcete generovat, když se používá tato transformace. 
+Následující příklad definuje tělo požadavku nové transformace. Definujeme sadu výstupů, které chceme generovat při použití této transformace.
 
-V tomto příkladu přidáme první vrstvu AacAudio pro zvuk kódování a dvě vrstvy H264Video pro kódování videa. Ve vrstvách videa jsme přiřadit popisky, takže je možné v názvu výstupního souboru. V dalším kroku chceme výstup tak, aby zahrnoval miniatury. V níže uvedeném příkladu určíme obrázky ve formátu PNG, vygeneruje ve výši 50 % rozlišení vstupního videa a na tři časová razítka – {25 %, 50 %, 75} délky vstupního videa. A konečně, My určete formát pro výstupní soubory – jeden pro videa a zvuku a druhou pro miniaturu. Vzhledem k tomu, že máme několik H264Layers, musíme použít makra, která vytvoří jedinečné názvy jednu vrstvu. Můžeme použít `{Label}` nebo `{Bitrate}` – makro, příklad ukazuje bývalé.
+V tomto příkladu nejprve přidáme vrstvu AacAudio pro kódování zvuku a dvě vrstvy H264Video pro kódování videa. Ve vrstvách videa přiřazujeme popisky tak, aby je bylo možné použít v názvech výstupních souborů. Dále chceme, aby výstup obsahoval také miniatury. V níže uvedeném příkladu určíme obrázky ve formátu PNG, generované při 50 % rozlišení vstupního videa a na třech časových razítkách - {25%, 50%, 75} délky vstupního videa. Nakonec určíme formát výstupních souborů - jeden pro video + audio a druhý pro miniatury. Vzhledem k tomu, že máme více H264Layers, musíme použít makra, které produkují jedinečné názvy na vrstvu. Můžeme použít `{Label}` buď `{Bitrate}` nebo makro, příklad ukazuje bývalý.
 
-Budeme se tato transformace uložit do souboru. V tomto příkladu používáme název souboru `customPreset.json`. 
+Uložíme tuto transformaci do souboru. V tomto příkladu pojmenujeme soubor `customPreset.json`.
 
 ```json
 {
@@ -120,25 +122,24 @@ Budeme se tato transformace uložit do souboru. V tomto příkladu používáme 
         }
     ]
 }
-
 ```
 
-## <a name="create-a-new-transform"></a>Vytvořit nové transformace  
+## <a name="create-a-new-transform"></a>Vytvoření nové transformace  
 
-V tomto příkladu vytvoříme **transformace** , který je založen na vlastní předvolba jsme definovali dříve. Při vytváření transformace, měli by nejdřív zkontrolovat, pokud jedna již existuje. Pokud existuje transformací, která ji znovu použít. Následující `show` příkaz vrátí `customTransformName` transformace, pokud existuje:
+V tomto příkladu vytvoříme **transformaci,** která je založena na vlastní přednastavení jsme definovali dříve. Při vytváření transformace, měli byste nejprve zkontrolovat, zda již existují. Pokud transformace existuje, znovu jej použijte. Následující `show` příkaz vrátí `customTransformName` transformaci, pokud existuje:
 
-```cli
+```azurecli-interactive
 az ams transform show -a amsaccount -g amsResourceGroup -n customTransformName
 ```
 
-Následující příkaz rozhraní příkazového řádku vytvoří transformace podle vlastní předvolbu (definovali dříve). 
+Následující příkaz Azure CLI vytvoří transformace na základě vlastní přednastavení (definované dříve).
 
-```cli
+```azurecli-interactive
 az ams transform create -a amsaccount -g amsResourceGroup -n customTransformName --description "Basic Transform using a custom encoding preset" --preset customPreset.json
 ```
 
-Pro Media Services použít transformace na zadané video ani zvuk budete muset odeslat úlohu v rámci této transformace. Kompletní příklad, který ukazuje, jak se odeslat úlohu v rámci transformace, najdete v části [rychlý start: Stream video soubory – rozhraní příkazového řádku](stream-files-cli-quickstart.md).
+Chcete-li použít transformaci na zadané video nebo zvuk, je třeba odeslat úlohu v rámci této transformace. Úplný příklad, který ukazuje, jak odeslat úlohu v rámci transformace, najdete v článku [Úvodní příručka: Streamovat video soubory – Azure CLI](stream-files-cli-quickstart.md).
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+[Azure CLI](/cli/azure/ams)

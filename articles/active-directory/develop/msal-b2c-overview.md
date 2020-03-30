@@ -1,7 +1,7 @@
 ---
-title: Použití MSAL s Azure Active Directory B2CLearn | Azure
+title: Použití služby MSAL s Azure Active Directory B2CLearn | Azure
 titleSuffix: Microsoft identity platform
-description: Knihovna Microsoft Authentication Library (MSAL) umožňuje aplikacím spolupracovat s Azure AD B2C a získávat tokeny pro volání zabezpečených webových rozhraní API. Tato webová rozhraní API můžou být Microsoft Graph, jiná rozhraní API Microsoftu, webová rozhraní API od ostatních nebo vaše vlastní webové rozhraní API.
+description: Microsoft Authentication Library (MSAL) umožňuje aplikacím spolupracovat s Azure AD B2C a získat tokeny pro volání zabezpečených webových rozhraní API. Tato webová rozhraní API mohou být Microsoft Graph, další rozhraní API společnosti Microsoft, webová rozhraní API od jiných uživatelů nebo vlastní webové rozhraní API.
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -14,35 +14,35 @@ ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: e25564e64410701754390024a5bcfd39321343e2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76696448"
 ---
-# <a name="use-microsoft-authentication-library-to-interoperate-with-azure-active-directory-b2c"></a>Spolupráce s Azure Active Directory B2C pomocí knihovny Microsoft Authentication Library
+# <a name="use-microsoft-authentication-library-to-interoperate-with-azure-active-directory-b2c"></a>Použití knihovny ověřování Microsoftu ke slučovací mu s Azure Active Directory B2C
 
-Knihovna Microsoft Authentication Library (MSAL) umožňuje vývojářům aplikací ověřovat uživatele pomocí sociálních a místních identit pomocí [Azure Active Directory B2C (Azure AD B2C)](https://docs.microsoft.com/azure/active-directory-b2c/). Azure AD B2C je služba správy identit. Díky tomu můžete přizpůsobit a řídit, jak se zákazníci při používání vašich aplikací přihlásí, přihlásí a budou spravovat jejich profily.
+Microsoft Authentication Library (MSAL) umožňuje vývojářům aplikací ověřovat uživatele pomocí sociálních a místních identit pomocí [Azure Active Directory B2C (Azure AD B2C).](https://docs.microsoft.com/azure/active-directory-b2c/) Azure AD B2C je služba správy identit. Pomocí něj můžete přizpůsobit a řídit způsob, jakým se zákazníci přihlašují, přihlašují a spravují své profily při používání vašich aplikací.
 
-Azure AD B2C také umožňují snadnou značku a přizpůsobit uživatelské rozhraní svých aplikací, aby poskytovaly zákazníkům bezproblémové prostředí.
+Azure AD B2C také umožňuje značky a přizpůsobit uživatelské prostředí vašich aplikací poskytovat bezproblémové prostředí pro vaše zákazníky.
 
-V tomto kurzu se dozvíte, jak pomocí MSAL spolupracovat s Azure AD B2C.
+Tento kurz ukazuje, jak používat MSAL pro propojení s Azure AD B2C.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud jste ještě nevytvořili vlastního [tenanta Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant), vytvořte ho hned teď. Můžete také použít stávajícího klienta Azure AD B2C.
+Pokud jste ještě nevytvořili vlastního [klienta Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant), vytvořte ho teď. Můžete také použít existující klienta Azure AD B2C.
 
 ## <a name="javascript"></a>JavaScript
 
-Následující kroky ukazují, jak může aplikace s jednou stránkou používat Azure AD B2C k registraci, přihlášení a volání chráněného webového rozhraní API.
+Následující kroky ukazují, jak jednostránková aplikace můžete použít Azure AD B2C k registraci, přihlášení a volání chráněné webové rozhraní API.
 
 ### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
 
-Chcete-li implementovat ověřování, musíte nejprve zaregistrovat aplikaci. Podrobný postup najdete v tématu věnovaném [registraci aplikace](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp#step-4-register-your-own-web-application-with-azure-ad-b2c) .
+Chcete-li implementovat ověřování, musíte nejprve zaregistrovat aplikaci. Podrobné kroky naleznete [v tématu Registrace aplikace.](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp#step-4-register-your-own-web-application-with-azure-ad-b2c)
 
-### <a name="step-2-download-the-sample-application"></a>Krok 2: stažení ukázkové aplikace
+### <a name="step-2-download-the-sample-application"></a>Krok 2: Stažení ukázkové aplikace
 
-Stáhněte si ukázku jako soubor ZIP nebo ho naklonujte z GitHubu:
+Stáhněte si ukázku jako soubor zip nebo ji naklonujte z GitHubu:
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
@@ -50,9 +50,9 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 ### <a name="step-3-configure-authentication"></a>Krok 3: Konfigurace ověřování
 
-1. V ukázce otevřete soubor **index. html** .
+1. Otevřete soubor **index.html** v ukázce.
 
-1. Nakonfigurujte ukázku pomocí ID klienta a klíče, který jste si poznamenali dříve při registraci aplikace. Změňte následující řádky kódu nahrazením hodnot názvy vašich adresářů a rozhraní API:
+1. Nakonfigurujte ukázku s ID klienta a klíčem, které jste zaznamenali dříve při registraci aplikace. Změňte následující řádky kódu nahrazením hodnot názvy adresáře a rozhraní API:
 
    ```javascript
    // The current application coordinates were pre-registered in a B2C tenant.
@@ -78,20 +78,20 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
    ```
 
-Název [toku uživatele](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies) v tomto kurzu je **B2C_1_signupsignin1**. Pokud používáte jiný název toku uživatele, nastavte hodnotu **autority** na tento název.
+Název [toku uživatele](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies) v tomto kurzu je **B2C_1_signupsignin1**. Pokud používáte jiný název toku uživatele, nastavte **hodnotu autority** na tento název.
 
-### <a name="step-4-configure-your-application-to-use-b2clogincom"></a>Krok 4: Konfigurace aplikace pro použití `b2clogin.com`
+### <a name="step-4-configure-your-application-to-use-b2clogincom"></a>Krok 4: Konfigurace aplikace pro použití`b2clogin.com`
 
-Místo `login.microsoftonline.com` můžete jako adresu URL pro přesměrování použít `b2clogin.com`. Při nastavování poskytovatele identity pro registraci a přihlášení tak uděláte v aplikaci Azure AD B2C.
+Místo adresy `b2clogin.com` `login.microsoftonline.com` URL přesměrování můžete použít. Uděláte to v aplikaci Azure AD B2C při nastavení zprostředkovatele identity pro registraci a přihlášení.
 
-Použití `b2clogin.com` v kontextu `https://your-tenant-name.b2clogin.com/your-tenant-guid` má následující důsledky:
+Použití `b2clogin.com` v souvislosti `https://your-tenant-name.b2clogin.com/your-tenant-guid` s má následující účinky:
 
-- Služby společnosti Microsoft spotřebovávají méně místa v hlavičce souboru cookie.
-- Vaše adresy URL už neobsahují odkaz na Microsoft. Například vaše aplikace Azure AD B2C pravděpodobně odkazuje na `login.microsoftonline.com`.
+- Služby společnosti Microsoft spotřebovávají méně místa v záhlaví souborů cookie.
+- Adresy URL již neobsahují odkaz na společnost Microsoft. Například vaše aplikace Azure AD B2C `login.microsoftonline.com`pravděpodobně odkazuje na .
 
- Chcete-li použít `b2clogin.com`, je nutné aktualizovat konfiguraci aplikace.  
+ Chcete-li použít `b2clogin.com`, je třeba aktualizovat konfiguraci aplikace.  
 
-- Nastavte vlastnost **validateAuthority** na `false`, aby mohla probíhat přesměrování pomocí `b2clogin.com`.
+- Nastavte **vlastnost validateAuthority** na , aby mohlo dojít k `false`přesměrováním pomocí. `b2clogin.com`
 
 Následující příklad ukazuje, jak můžete nastavit vlastnost:
 
@@ -112,9 +112,9 @@ const myMSALObj = new UserAgentApplication(msalConfig);
 ```
 
 > [!NOTE]
-> Vaše aplikace Azure AD B2C pravděpodobně odkazuje na `login.microsoftonline.com` na několika místech, jako jsou například odkazy na uživatelský tok a koncové body tokenů. Ujistěte se, že byl koncový bod autorizace, koncový bod tokenu a vystavitele aktualizovaný, aby používal `your-tenant-name.b2clogin.com`.
+> Vaše aplikace Azure AD B2C `login.microsoftonline.com` pravděpodobně odkazuje na několika místech, jako jsou odkazy na tok uživatele a koncové body tokenu. Ujistěte se, že koncový bod autorizace, koncový bod `your-tenant-name.b2clogin.com`tokenu a vystavittel byly aktualizovány na použití .
 
-Podle [této ukázky MSAL JavaScriptu](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp#single-page-application-built-on-msaljs-with-azure-ad-b2c) použijte MSAL ve verzi Preview pro JavaScript (MSAL. js). Ukázka získá přístupový token a zavolá rozhraní API zabezpečené Azure AD B2C.
+Postupujte podle [tohoto vzorku MSAL JavaScript](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp#single-page-application-built-on-msaljs-with-azure-ad-b2c) o tom, jak používat MSAL Náhled pro JavaScript (MSAL.js). Ukázka získá přístupový token a volá rozhraní API zabezpečené Azure AD B2C.
 
 ## <a name="next-steps"></a>Další kroky
 

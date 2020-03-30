@@ -1,6 +1,6 @@
 ---
-title: Připojení dat Zscaler ke službě Azure Sentinel | Microsoft Docs
-description: Naučte se připojit data Zscaler ke službě Azure Sentinel.
+title: Připojení dat Zscaler k Azure Sentinelu| Dokumenty společnosti Microsoft
+description: Přečtěte si, jak připojit data Zscaler k Azure Sentinelu.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,42 +15,42 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: cc784afe5db64ccc4aad13fae7a2fa748e4befa3
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77587987"
 ---
-# <a name="connect-zscaler-internet-access-to-azure-sentinel"></a>Připojení Zscaler k Internetu do Azure Sentinel
+# <a name="connect-zscaler-internet-access-to-azure-sentinel"></a>Připojení internetového přístupu Zscaler k Azure Sentinelu
 
 > [!IMPORTANT]
-> Zscaler data Connector ve službě Azure Sentinel je momentálně ve verzi Public Preview.
-> Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Datový konektor Zscaler v Azure Sentinelu je aktuálně ve verzi Public Preview.
+> Tato funkce je k dispozici bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Tento článek vysvětluje, jak připojit zařízení s internetovým přístupem Zscaler ke službě Azure Sentinel. Zscaler data Connector umožňuje snadno připojit protokoly Zscaler Internet Access (ZIA) k Azure Sentinel, zobrazit řídicí panely, vytvořit vlastní výstrahy a vylepšit šetření. Použití Zscaler v Azure Sentinel vám poskytne více informací o používání internetu vaší organizace a zlepší možnosti jejich provozu. 
+Tento článek vysvětluje, jak připojit zařízení Zscaler Internet Access k Azure Sentinelu. Datový konektor Zscaler umožňuje snadno připojit protokoly Zscaler Internet Access (ZIA) pomocí Azure Sentinelu, zobrazit řídicí panely, vytvořit vlastní výstrahy a zlepšit vyšetřování. Použití Zscaleru v Azure Sentinelu vám poskytne další přehled o využití internetu vaší organizace a zlepší možnosti operací zabezpečení. 
 
 
-## <a name="configure-your-zscaler-to-send-cef-messages"></a>Konfigurace Zscaler pro posílání zpráv CEF
+## <a name="configure-your-zscaler-to-send-cef-messages"></a>Konfigurace zařízení Zscaler pro odesílání zpráv cef
 
-1. Na zařízení Zscaler musíte nastavit tyto hodnoty tak, aby zařízení odesílalo potřebné protokoly v potřebném formátu do agenta Azure Sentinel syslog na základě agenta Log Analytics. Tyto parametry můžete upravit v zařízení, pokud je také upravíte v procesu démona syslog na agentu služby Azure Sentinel.
+1. Na zařízení Zscaler je třeba nastavit tyto hodnoty tak, aby zařízení odešle potřebné protokoly v potřebném formátu agenta Azure Sentinel Syslog, na základě agenta Log Analytics. Tyto parametry můžete upravit ve vašem zařízení, tak dlouho, dokud je upravit v daemon U Syslog na agenta Azure Sentinel.
     - Protokol = TCP
     - Port = 514
-    - Format = CEF
-    - IP adresa – zajistěte odeslání zpráv CEF na IP adresu virtuálního počítače, který jste si pro tento účel vyhradi.
- Další informace najdete v [Průvodci nasazením Zscaler a Azure Sentinel](https://aka.ms/ZscalerCEFInstructions).
+    - Formát = CeF
+    - IP adresa - nezapomeňte odeslat zprávy CEF na IP adresu virtuálního počítače, který jste pro tento účel věnovali.
+ Další informace naleznete v [Průvodci nasazením Zscaler a Azure Sentinel .](https://aka.ms/ZscalerCEFInstructions)
  
    > [!NOTE]
-   > Toto řešení podporuje syslog RFC 3164 nebo RFC 5424.
+   > Toto řešení podporuje Syslog RFC 3164 nebo RFC 5424.
 
 
-1. Pokud chcete použít příslušné schéma v Log Analytics pro události CEF, vyhledejte `CommonSecurityLog`.
-1. Pokračujte [krokem 3: ověření připojení](connect-cef-verify.md).
+1. Chcete-li použít příslušné schéma v log analytics pro události `CommonSecurityLog`CeF, vyhledejte .
+1. Pokračovat krokem [3: Ověřit připojení](connect-cef-verify.md).
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto dokumentu jste zjistili, jak připojit přístup k Internetu Zscaler k Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
-- Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
-- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats.md).
-- [Pomocí sešitů](tutorial-monitor-your-data.md) můžete monitorovat data.
+V tomto dokumentu jste se dozvěděli, jak připojit Zscaler Internet Access k Azure Sentinelu. Další informace o Azure Sentinelu najdete v následujících článcích:
+- Přečtěte [si, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
+- Začínáme [s detekcí hrozeb pomocí Azure Sentinelu](tutorial-detect-threats.md).
+- Ke sledování dat [použijte sešity.](tutorial-monitor-your-data.md)
 
 

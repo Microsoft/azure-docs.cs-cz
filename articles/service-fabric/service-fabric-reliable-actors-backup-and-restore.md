@@ -1,24 +1,24 @@
 ---
-title: Zálohování a obnovení Azure Service Fabric Actors
-description: Naučte se implementovat zálohování a obnovení ve službě Azure Service Fabric Actors.
+title: Zálohování a obnovení objektů Azure Service Fabric
+description: Zjistěte, jak implementovat zálohování a obnovení v objektech actor Azure Service Fabric.
 author: vturecek
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vturecek
 ms.openlocfilehash: 41ba3f9c7d362756b800005d0c140c23dd96caa6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75370455"
 ---
-# <a name="implement-reliable-actors-backup-and-restore"></a>Implementace Reliable Actors zálohování a obnovení
+# <a name="implement-reliable-actors-backup-and-restore"></a>Implementujte zálohování a obnovení spolehlivých herců
 
 > [!NOTE]
-> Společnost Microsoft doporučuje používat pro konfiguraci zálohování spolehlivých stavových služeb a Reliable Actors [pravidelné zálohování a obnovování](service-fabric-backuprestoreservice-quickstart-azurecluster.md) dat. 
+> Společnost Microsoft doporučuje používat [pravidelné zálohování a obnovení](service-fabric-backuprestoreservice-quickstart-azurecluster.md) pro konfiguraci zálohování dat spolehlivé stavové služby a spolehlivé objekty actor. 
 > 
 
-V následujícím příkladu zpřístupňuje služba vlastního objektu actor metodu zálohování dat objektu actor využitím naslouchacího procesu vzdálené komunikace, který je již přítomen v `ActorService`:
+V následujícím příkladu vlastní služba objektu actor zpřístupňuje metodu pro zálohování dat objektu actor využitím vzdáleného naslouchací proces již v `ActorService`:
 
 ```csharp
 public interface IMyActorService : IService
@@ -94,7 +94,7 @@ class MyActorServiceImpl extends ActorService implements MyActorService
 }
 ```
 
-V tomto příkladu je `IMyActorService` kontraktem vzdálené komunikace, který implementuje `IService`C#() a `Service` (Java) a následně se implementuje pomocí `MyActorService`. Přidáním této smlouvy vzdálené komunikace jsou metody v `IMyActorService` nyní k dispozici klientovi vytvořením vzdálené proxy serveru prostřednictvím `ActorServiceProxy`:
+V tomto `IMyActorService` příkladu je smlouva vzdálené `IService` komunikace, která `Service` implementuje (C#) `MyActorService`a (Java) a je pak implementována . Přidáním této smlouvy vzdálené komunikace `IMyActorService` jsou nyní metody k dispozici také klientovi `ActorServiceProxy`vytvořením proxy vzdálené komunikace prostřednictvím :
 
 ```csharp
 IMyActorService myActorServiceProxy = ActorServiceProxy.Create<IMyActorService>(
@@ -109,12 +109,12 @@ MyActorService myActorServiceProxy = ActorServiceProxy.create(MyActorService.cla
 myActorServiceProxy.backupActorsAsync();
 ```
 
-Pokud chcete získat další informace o Reliable Actors, přečtěte si následující články:
-* [Správa stavu objektu actor](service-fabric-reliable-actors-state-management.md)
+Další informace o spolehlivých aktérech naleznete v následujících článcích:
+* [Správa stavu actoru](service-fabric-reliable-actors-state-management.md)
 * [Životní cyklus objektu actor a uvolňování paměti](service-fabric-reliable-actors-lifecycle.md)
-* [Referenční dokumentace k rozhraní actor API](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [Vzorový kód .NET](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Vzorový kód Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Referenční dokumentace rozhraní API actors](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Ukázkový kód rozhraní .NET](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Ukázkový kód Javy](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-platform/actor-service.png

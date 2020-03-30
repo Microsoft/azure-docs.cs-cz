@@ -1,6 +1,6 @@
 ---
-title: Šablony stránek v Azure API Management | Microsoft Docs
-description: Naučte se přizpůsobit obsah stránek portálu pro vývojáře pomocí sady šablon v Azure API Management.
+title: Šablony stránek ve správě rozhraní Azure API | Dokumenty společnosti Microsoft
+description: Zjistěte, jak přizpůsobit obsah stránek portálu pro vývojáře pomocí sady šablon ve správě rozhraní Azure API.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,34 +14,34 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: ce56c406c884471c445b25343d5c42f9edcbe4c4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79249539"
 ---
-# <a name="page-templates-in-azure-api-management"></a>Šablony stránek v Azure API Management
-Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu pro vývojáře pomocí sady šablon, které konfigurují svůj obsah. Pomocí syntaxe [DotLiquid](http://dotliquidmarkup.org/) a editoru podle vlastního výběru, jako je například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)a poskytnutá sada lokalizovaných [řetězcových prostředků](api-management-template-resources.md#strings), [prostředků glyfů](api-management-template-resources.md#glyphs)a [ovládacích prvků stránky](api-management-page-controls.md), máte skvělou flexibilitu pro konfiguraci obsahu stránek, jak vidíte, aby byly použity pomocí těchto šablon.  
+# <a name="page-templates-in-azure-api-management"></a>Šablony stránek ve správě rozhraní Azure API
+Azure API Management poskytuje možnost přizpůsobit obsah stránek portálu pro vývojáře pomocí sady šablon, které konfigurují jejich obsah. Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxe a editor podle vašeho výběru, jako je [například DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)a za předpokladu, sadu lokalizovaných [prostředků řetězce](api-management-template-resources.md#strings), glyph [prostředky](api-management-template-resources.md#glyphs)a page [ovládací prvky](api-management-page-controls.md), máte velkou flexibilitu ke konfiguraci obsahu stránek, jak uznáte za vhodné pomocí těchto šablon.  
   
- Šablony v této části vám umožní přizpůsobit obsah stránek přihlášení, registrace a nenalezené stránky na portálu pro vývojáře.  
+ Šablony v této části umožňují přizpůsobit obsah přihlašovacích stránek, registrací a stránek, které nebyly nalezeny na portálu pro vývojáře.  
   
--   [Přihlásit se](#SignIn)  
+-   [Přihlásit](#SignIn)  
   
--   [Zaregistrovat se](#SignUp)  
+-   [Registrace](#SignUp)  
   
--   [Stránka nenalezena](#PageNotFound)  
+-   [Stránka nebyla nalezena.](#PageNotFound)  
   
 > [!NOTE]
->  Ukázkové výchozí šablony jsou uvedené v následující dokumentaci, ale můžou se změnit z důvodu průběžných vylepšení. Živé výchozí šablony můžete zobrazit na portálu pro vývojáře tak, že přejdete na požadované jednotlivé šablony. Další informace o práci se šablonami najdete v tématu [Postup přizpůsobení API Management portálu pro vývojáře pomocí šablon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Ukázkové výchozí šablony jsou zahrnuty v následující dokumentaci, ale mohou se měnit z důvodu neustálého zlepšování. Výchozí živé šablony můžete zobrazit na portálu pro vývojáře tak, že přejdete na požadované jednotlivé šablony. Další informace o práci se šablonami najdete [v tématu Jak přizpůsobit portál pro vývojáře pro správu rozhraní API pomocí šablon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="SignIn"></a>Přihlásit se  
- Šablona **přihlášení** vám umožní přizpůsobit přihlašovací stránku na portálu pro vývojáře.  
+##  <a name="sign-in"></a><a name="SignIn"></a>Přihlásit se  
+ Přihlašovací **sign in** šablona umožňuje přizpůsobit přihlašovací stránku na portálu pro vývojáře.  
   
- ![Přihlašovací stránka](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "Šablony portálu pro vývojáře pro APIM přihlašovací stránky")  
+ ![Přihlašovací stránka](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "Šablony portálu pro přihlášení apimů na portálu pro vývojáře stránek")  
   
 ### <a name="default-template"></a>Výchozí šablona  
   
@@ -102,12 +102,12 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 ### <a name="controls"></a>Ovládací prvky  
  Tato šablona může používat následující [ovládací prvky stránky](api-management-page-controls.md).  
   
--   [základní – přihlášení](api-management-page-controls.md#basic-signin)  
+-   [základní signin](api-management-page-controls.md#basic-signin)  
   
--   [dodavateli](api-management-page-controls.md#providers)  
+-   [Poskytovatelů](api-management-page-controls.md#providers)  
   
 ### <a name="data-model"></a>Datový model  
- [Přihlašovací entita uživatele](api-management-template-data-model-reference.md#UseSignIn)  
+ [Entita přihlášení uživatele.](api-management-template-data-model-reference.md#UseSignIn)  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -137,10 +137,10 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 }
 ```  
   
-##  <a name="SignUp"></a>Registrace  
- Šablona pro **registraci** vám umožní přizpůsobit si přihlašovací stránku na portálu pro vývojáře.  
+##  <a name="sign-up"></a><a name="SignUp"></a>Registrace  
+ Šablona **registrace** umožňuje přizpůsobit stránku registrace na portálu pro vývojáře.  
   
- ![Přihlašovací stránka](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "Šablony portálu pro APIM pro registraci stránek pro vývojáře")  
+ ![Zaregistrovat stránku](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "Šablony portálu pro registraci stránek APIM")  
   
 ### <a name="default-template"></a>Výchozí šablona  
   
@@ -161,10 +161,10 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 ### <a name="controls"></a>Ovládací prvky  
  Tato šablona může používat následující [ovládací prvky stránky](api-management-page-controls.md).  
   
--   [registrace](api-management-page-controls.md#sign-up)  
+-   [Sign-up](api-management-page-controls.md#sign-up)  
   
 ### <a name="data-model"></a>Datový model  
- Entita [registrace uživatele](api-management-template-data-model-reference.md#UserSignUp)  
+ [Entita registrace uživatele.](api-management-template-data-model-reference.md#UserSignUp)  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -185,10 +185,10 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 }  
 ```  
   
-##  <a name="PageNotFound"></a>Stránka nenalezena  
- Šablona **nenalezené stránky** vám umožní přizpůsobit stránku nenalezené stránky na portálu pro vývojáře.  
+##  <a name="page-not-found"></a><a name="PageNotFound"></a>Stránka nebyla nalezena.  
+ Šablona **stránka nebyla nalezena** umožňuje přizpůsobit stránku, která nebyla nalezena na portálu pro vývojáře.  
   
- ![Stránka nenalezena](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "Šablony portálu pro vývojáře stránky APIM se nenašly.")  
+ ![Stránka Nebyla nalezena](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "Šablony portálu pro vývojáře stránek APIM nebyly nalezeny")  
   
 ### <a name="default-template"></a>Výchozí šablona  
   
@@ -223,17 +223,17 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 ```  
   
 ### <a name="controls"></a>Ovládací prvky  
- Tato šablona nemůže používat žádné [ovládací prvky stránky](api-management-page-controls.md).  
+ Tato šablona nesmí používat žádné [ovládací prvky stránky](api-management-page-controls.md).  
   
 ### <a name="data-model"></a>Datový model  
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|referenceCode|string|Generuje se kód, pokud se tato stránka zobrazila jako výsledek vnitřní chyby.|  
-|errorCode|string|Generuje se kód, pokud se tato stránka zobrazila jako výsledek vnitřní chyby.|  
-|emailBody|string|Tělo e-mailu vygenerovalo, pokud se tato stránka zobrazila jako výsledek vnitřní chyby.|  
-|requestedUrl|string|Adresa URL požadovaná při nalezení stránky|  
-|referrerUrl|string|Adresa URL odkazující na požadovanou adresu URL|  
+|referenceKód|řetězec|Kód generovaný, pokud byla tato stránka zobrazena jako výsledek vnitřní chyby.|  
+|Errorcode|řetězec|Kód generovaný, pokud byla tato stránka zobrazena jako výsledek vnitřní chyby.|  
+|emailBody|řetězec|Tělo e-mailu generované, pokud tato stránka byla zobrazena jako výsledek vnitřní chyby.|  
+|požadovaná adresa Url|řetězec|Adresa URL požadovaná v případě, že stránka nebyla nalezena.|  
+|odkazová adresa Url|řetězec|Adresa URL odkazované ho odkazuje na požadovanou adresu URL.|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -248,4 +248,4 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o práci se šablonami najdete v tématu [Postup přizpůsobení API Management portálu pro vývojáře pomocí šablon](api-management-developer-portal-templates.md).
+Další informace o práci se šablonami najdete [v tématu Jak přizpůsobit portál pro vývojáře pro správu rozhraní API pomocí šablon](api-management-developer-portal-templates.md).

@@ -1,6 +1,6 @@
 ---
-title: Přístup k virtuálnímu počítači za běhu v Azure Security Center | Microsoft Docs
-description: Tento dokument ukazuje, jak přístup k virtuálnímu počítači za běhu v Azure Security Center pomáhá řídit přístup k virtuálním počítačům Azure.
+title: Přístup k virtuálnímu počítači za chvíli v Azure Security Center | Dokumenty společnosti Microsoft
+description: Tento dokument ukazuje, jak přístup k virtuálním počítačům v Azure Pomáhá řídit přístup k virtuálním počítačům Azure.
 services: security-center
 author: memildin
 manager: rkarlin
@@ -9,207 +9,207 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: 4b2b388fb736997010a6cbbdf93b23b77c7ef3a3
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77603968"
 ---
-# <a name="secure-your-management-ports-with-just-in-time-access"></a>Zabezpečení portů pro správu pomocí přístupu za běhu
+# <a name="secure-your-management-ports-with-just-in-time-access"></a>Zabezpečení portů pro správu pomocí přístupu just-in-time
 
-Pokud používáte cenovou úroveň Standard Security Center (viz [ceny](/azure/security-center/security-center-pricing)), můžete na virtuální počítače Azure uzamknout příchozí provoz s přístupem JIT (just-in-time) k virtuálnímu počítači (VM). Tím se snižuje riziko útoků při poskytování snadného přístupu pro připojení k virtuálním počítačům v případě potřeby.
+Pokud jste na standardní cenové úrovni Security Center (viz [ceny),](/azure/security-center/security-center-pricing)můžete uzamknout příchozí provoz na virtuální počítače Azure s přístupem virtuálního počítače (VM) just-in-time (JIT). To snižuje vystavení útokům a zároveň poskytuje snadný přístup k připojení k virtuálním mům v případě potřeby.
 
 > [!NOTE]
-> Přístup k virtuálnímu počítači za běhu Security Center aktuálně podporuje jenom virtuální počítače nasazené prostřednictvím Azure Resource Manager. Další informace o modelech nasazení Classic a Správce prostředků najdete v tématu [Azure Resource Manager vs. Classic Deployment](../azure-resource-manager/management/deployment-models.md).
+> Služba Security Center just-in-time přístup k virtuálním počítačům aktuálně podporuje jenom virtuální počítače nasazené prostřednictvím Správce prostředků Azure. Další informace o klasických modelech nasazení a modelech nasazení Správce prostředků najdete v [tématu Azure Resource Manager vs. klasické nasazení](../azure-resource-manager/management/deployment-models.md).
 
 [!INCLUDE [security-center-jit-description](../../includes/security-center-jit-description.md)]
 
 ## <a name="configure-jit-on-a-vm"></a>Konfigurace JIT na virtuálním počítači
 
-Existují tři způsoby, jak nakonfigurovat zásady JIT na virtuálním počítači:
+Zásady JIT lze nakonfigurovat na virtuálním počítači třemi způsoby:
 
 - [Konfigurace přístupu JIT v Azure Security Center](#jit-asc)
 - [Konfigurace přístupu JIT na stránce virtuálního počítače Azure](#jit-vm)
-- [Programové nakonfigurování zásad JIT na virtuálním počítači](#jit-program)
+- [Programová konfigurace zásad JIT na virtuálním počítači](#jit-program)
 
 ## <a name="configure-jit-in-azure-security-center"></a>Konfigurace JIT v Azure Security Center
 
-Z Security Center můžete nakonfigurovat zásady JIT a požádat o přístup k virtuálnímu počítači pomocí zásad JIT.
+Z Security Center můžete nakonfigurovat zásady JIT a požádat o přístup k virtuálnímu počítače pomocí zásad y JIT
 
-### Konfigurace přístupu JIT na virtuálním počítači v Security Center<a name="jit-asc"></a>
+### <a name="configure-jit-access-on-a-vm-in-security-center"></a>Konfigurace přístupu JIT na virtuálním počítači v Centru zabezpečení<a name="jit-asc"></a>
 
 1. Otevřete řídicí panel **Security Center**.
 
-1. V levém podokně vyberte **přístup k virtuálnímu počítači za běhu**.
+1. V levém podokně vyberte **přístup k virtuálním ms just-in-time**.
 
-    ![Dlaždice přístupu k virtuálnímu počítači za běhu](./media/security-center-just-in-time/just-in-time.png)
+    ![Dlaždice přístupu k virtuálním virtuálním můtím za včase](./media/security-center-just-in-time/just-in-time.png)
 
-    Otevře se okno **přístup k virtuálnímu počítači za běhu** , ve kterém se zobrazí informace o stavu virtuálních počítačů:
+    Otevře **se okno přístupu k virtuálním počítačům za chvíli** a zobrazí informace o stavu virtuálních počítačů:
 
-    - **Nakonfigurováno** – virtuální počítače, které byly nakonfigurovány pro podporu přístupu k virtuálnímu počítači za běhu. Uvedená data jsou za poslední týden a obsahují pro každý virtuální počítač počet schválených požadavků, datum posledního přístupu a čas a poslední uživatel.
-    - **Doporučené** – virtuální počítače, které můžou podporovat přístup k virtuálním počítačům za běhu, ale nejsou nakonfigurované na. Pro tyto virtuální počítače doporučujeme povolit řízení přístupu k virtuálnímu počítači za běhu.
+    - **Nakonfigurované** – virtuální počítače, které byly nakonfigurované tak, aby podporovaly přístup k virtuálním počítačem just-in-time. Prezentovaná data jsou za poslední týden a zahrnují pro každý virtuální ms počet schválených požadavků, datum a čas posledního přístupu a posledního uživatele.
+    - **Doporučené** – virtuální počítače, které podporují přístup k virtuálním virtuálním počítačem just-in-time, ale nebyly nakonfigurované. Doporučujeme povolit řízení přístupu k virtuálním virtuálním můcích za včase pro tyto virtuální aplikace.
     - **Žádné doporučení** – Mezi důvody, proč virtuální počítač nemusí být doporučený, patří:
-      - Chybějící NSG – řešení za běhu vyžaduje, aby bylo na místě NSG.
-      - Klasický přístup k VIRTUÁLNÍm počítačům (VM) – Security Center za běhu aktuálně podporuje jenom virtuální počítače nasazené prostřednictvím Azure Resource Manager. Řešení za běhu nepodporuje klasické nasazení. 
-      - Jiné – virtuální počítač je v této kategorii, pokud je řešení za běhu vypnuto v zásadách zabezpečení předplatného nebo skupiny prostředků, nebo pokud virtuální počítač nemá veřejnou IP adresu a NSG na něj.
+      - Chybějící nsg - řešení just-in-time vyžaduje nsg být na místě.
+      - Klasický virtuální počítač – přístup k virtuálním počítači centra zabezpečení just-in-time, který momentálně podporuje jenom virtuální počítače nasazené prostřednictvím Správce prostředků Azure. Klasické nasazení není podporováno řešením just-in-time. 
+      - Ostatní – virtuální ho virtuálního počítačů je v této kategorii, pokud je řešení just-in-time vypnuté v zásadách zabezpečení předplatného nebo skupiny prostředků, nebo pokud virtuální hod chybí veřejná IP adresa a nemá skupinu zabezpečení na místě.
 
-1. Vyberte kartu **Doporučené** .
+1. Vyberte kartu **Doporučené.**
 
-1. V části **virtuální počítač**klikněte na virtuální počítače, které chcete povolit. Tím se zaškrtne políčko vedle virtuálního počítače.
+1. V části **VIRTUAL MACHINE**klikněte na virtuální počítače, které chcete povolit. Tím se vedle virtuálního virtuálního virtuálního virtuálního min zaškrtne tememe.
 
-      ![Povolit přístup za běhu](./media/security-center-just-in-time/enable-just-in-time.png)
+      ![Povolení přístupu za čase](./media/security-center-just-in-time/enable-just-in-time.png)
 
-1. Klikněte na **Povolit JIT na virtuálních počítačích**. Otevře se podokno, ve kterém se zobrazí výchozí porty Doporučené Azure Security Center:
+1. Klepněte **na položku Povolit JIT na virtuálních počítačích**. Otevře se podokno zobrazující výchozí porty doporučené Službou Zabezpečení Azure:
     - 22 - SSH
-    - 3389 – RDP
-    - 5985 – WinRM 
-    - 5986 – WinRM
+    - 3389 – PRV
+    - 5985 - WinRM 
+    - 5986 - WinRM
 1. Volitelně můžete do seznamu přidat vlastní porty:
 
-      1. Klikněte na **Přidat**. Otevře se okno **Přidat konfiguraci portu** .
-      1. Pro každý port, který se rozhodnete nakonfigurovat, můžete nastavit výchozí i vlastní, abyste mohli přizpůsobit následující nastavení:
-            - **Typ protokolu**– protokol, který je na tomto portu povolený, když je žádost schválená.
-            - **Povolené zdrojové IP adresy**– ROZSAHy IP adres, které jsou na tomto portu povolené, když je žádost schválená.
-            - **Maximální doba požadavku**– maximální časový interval, během kterého lze otevřít konkrétní port.
+      1. Klikněte na **Přidat**. Otevře se okno **Přidat konfiguraci portu.**
+      1. Pro každý port, který se rozhodnete konfigurovat, výchozí i vlastní, můžete přizpůsobit následující nastavení:
+            - **Typ protokolu**- Protokol, který je povolen na tomto portu při schválení požadavku.
+            - **Povolené zdrojové ADRESY IP**– Rozsahy IP adres, které jsou na tomto portu povoleny při schválení požadavku.
+            - **Maximální doba požadavku**– maximální doba, během které lze otevřít konkrétní port.
 
      1. Klikněte na tlačítko **OK**.
 
-1. Klikněte na možnost **Uložit**.
+1. Klikněte na **Uložit**.
 
 > [!NOTE]
->Když je pro virtuální počítač povolený přístup k virtuálnímu počítači JIT, Azure Security Center vytvoří pravidla odepřít veškerý příchozí provoz pro vybrané porty ve skupinách zabezpečení sítě, které jsou k ní přidružené a Azure Firewall. Pokud se pro vybrané porty vytvořila jiná pravidla, stávající pravidla mají přednost před novými pravidly odepřít všechna příchozí provoz. Pokud na vybraných portech neexistují žádná pravidla, nová pravidla odepřít všechna příchozí přenosy mají ve skupinách zabezpečení sítě a Azure Firewall nejvyšší prioritu.
+>Když je pro virtuální počítač povolen přístup k jit voblasti virtuálního počítače, Azure Security Center vytvoří pravidla "odepřít veškerý příchozí provoz" pro vybrané porty ve skupinách zabezpečení sítě přidružených a Azure Firewall s ním. Pokud byla pro vybrané porty vytvořena jiná pravidla, mají stávající pravidla přednost před novými pravidly "odepřít veškerý příchozí provoz". Pokud neexistují žádná existující pravidla pro vybrané porty, nové "odepřít všechny příchozí provoz" pravidla mají nejvyšší prioritu ve skupinách zabezpečení sítě a Azure Firewall.
 
 
-## <a name="request-jit-access-via-security-center"></a>Vyžádat přístup JIT pomocí Security Center
+## <a name="request-jit-access-via-security-center"></a>Požádat o přístup JIT prostřednictvím centra zabezpečení
 
-Vyžádání přístupu k virtuálnímu počítači prostřednictvím Security Center:
+Chcete-li požádat o přístup k virtuálnímu virtuálnímu serveru prostřednictvím Centra zabezpečení:
 
-1. V části **přístup k virtuálnímu počítači za běhu**vyberte **nakonfigurovanou** kartu.
+1. V **části Přístup k virtuálním montovně just-in-time**vyberte kartu **Nakonfigurovaný.**
 
-1. V části **virtuální počítač**klikněte na virtuální počítače, pro které chcete požádat o přístup. Tím se zaškrtne políčko vedle virtuálního počítače.
+1. V části **Virtuální počítač**klikněte na virtuální počítače, pro které chcete požádat o přístup. Tím se vedle virtuálního virtuálního virtuálního virtuálního míse zaškrtnete.
 
-    - Ikona ve sloupci **Podrobnosti o připojení** označuje, zda je v NSG nebo FW povolena JIT. Pokud je tato možnost povolena, zobrazí se pouze ikona brány firewall.
+    - Ikona ve sloupci **Podrobnosti o připojení** označuje, zda je jit povolen v souboru zabezpečení sítě nebo FW. Pokud je povolena v obou, zobrazí se pouze ikona brány firewall.
 
-    - Sloupec **Podrobnosti o připojení** poskytuje informace požadované pro připojení virtuálního počítače a jeho otevřených portů.
+    - Sloupec **Podrobnosti připojení** obsahuje informace potřebné k připojení virtuálního uživatele a jeho otevřených portů.
 
       ![Vyžádání přístupu za běhu](./media/security-center-just-in-time/request-just-in-time-access.png)
 
-1. Klikněte na **požádat o přístup**. Otevře se okno **žádosti o přístup** .
+1. Klepněte na **tlačítko Požádat o přístup**. Otevře se okno **Požádat o přístup.**
 
-      ![Podrobnosti JIT](./media/security-center-just-in-time/just-in-time-details.png)
+      ![Podrobnosti o JIT](./media/security-center-just-in-time/just-in-time-details.png)
 
-1. V části **požádat o přístup**nakonfigurujte pro každý virtuální počítač porty, které chcete otevřít, a zdrojové IP adresy, na kterých je port otevřený, a časový interval, pro který bude port otevřený. Bude možné požádat jenom o přístup k portům, které jsou nakonfigurované v zásadě za běhu. Každý port má maximální povolený čas odvozený ze zásad za běhu.
+1. V části **Požádat o přístup**nakonfigurujte pro každý virtuální počítač porty, které chcete otevřít, a zdrojové ADRESY IP, na kterých je port otevřen, a časové okno, pro které bude port otevřen. Bude možné pouze požádat o přístup k portům, které jsou nakonfigurovány v zásadách just-in-time. Každý port má maximální povolený čas odvozený od zásady just-in-time.
 
-1. Klikněte na **otevřít porty**.
+1. Klepněte na tlačítko **Otevřít porty**.
 
 > [!NOTE]
-> Pokud je uživatel požadující přístup za proxy, možnost **moje IP adresa** nemusí fungovat. Možná budete muset definovat úplný rozsah IP adres organizace.
+> Pokud uživatel, který požaduje přístup, je za proxy serverem, nemusí fungovat možnost **Moje IP** adresa. Možná budete muset definovat úplný rozsah IP adres organizace.
 
 
 
-## <a name="edit-a-jit-access-policy-via-security-center"></a>Úprava zásad přístupu JIT prostřednictvím Security Center
+## <a name="edit-a-jit-access-policy-via-security-center"></a>Úprava zásad přístupu JIT prostřednictvím Centra zabezpečení
 
-Existující zásady za běhu virtuálního počítače můžete změnit tak, že přidáte a nakonfigurujete nový port pro ochranu tohoto virtuálního počítače nebo změníte jakékoli jiné nastavení týkající se již chráněného portu.
+Můžete změnit stávající zásady virtuálního počítače just-in-time přidáním a konfigurací nového portu pro ochranu pro tento virtuální počítač nebo změnou jakéhokoli jiného nastavení souvisejícího s již chráněným portem.
 
-Postup úpravy existujících zásad za běhu virtuálního počítače:
+Pokud chcete upravit existující zásady virtuálního virtuálního aplikace za čase:
 
-1. Na kartě **konfigurované** v části **virtuální počítače**vyberte virtuální počítač, ke kterému chcete přidat port kliknutím na tři tečky v řádku tohoto virtuálního počítače. 
+1. Na **kartě Configured** v části **Virtuální počítače**vyberte virtuální počítač, ke kterému chcete přidat port, kliknutím na tři tečky v řádku pro tento virtuální počítač. 
 
 1. Vyberte **Upravit**.
 
-1. V části **Konfigurace přístupu k virtuálním počítačům JIT**můžete upravit existující nastavení již chráněného portu nebo přidat nový vlastní port. 
-  ](./media/security-center-just-in-time/edit-policy.png) přístup k virtuálním počítačům ![JIT
+1. V části **Konfigurace přístupu k virtuálním počítačům JIT**můžete buď upravit existující nastavení již chráněného portu, nebo přidat nový vlastní port. 
+  ![jit vm přístup](./media/security-center-just-in-time/edit-policy.png)
 
 
 
-## <a name="audit-jit-access-activity-in-security-center"></a>Auditovat aktivitu přístupu JIT v Security Center
+## <a name="audit-jit-access-activity-in-security-center"></a>Auditovat aktivitu přístupu JIT v Centru zabezpečení
 
-Můžete získat přehled o aktivitách virtuálních počítačů pomocí prohledávání protokolů. Postup zobrazení protokolů:
+Přehled o aktivitách virtuálních montovek můžete získat pomocí vyhledávání protokolů. Zobrazení protokolů:
 
-1. V části **přístup k virtuálnímu počítači za běhu**vyberte **nakonfigurovanou** kartu.
-2. V části **virtuální počítače**vyberte virtuální počítač, pro který chcete zobrazit informace. stačí kliknout na tři tečky v řádku daného virtuálního počítače a v nabídce vybrat **Protokol aktivit** . Otevře se **Protokol aktivit** .
+1. V **části Přístup k virtuálním montovně just-in-time**vyberte kartu **Nakonfigurovaný.**
+2. V části **Virtuální počítači**vyberte virtuální počítač a zobrazte informace o tom, že kliknete na tři tečky v řádku pro tento virtuální počítač a z nabídky vyberte **Protokol aktivit.** Otevře se **protokol aktivit.**
 
    ![Vybrat protokol aktivit](./media/security-center-just-in-time/select-activity-log.png)
 
-   **Protokol aktivit** poskytuje filtrované zobrazení předchozích operací pro daný virtuální počítač společně s časem, datem a předplatným.
+   **Protokol aktivit** poskytuje filtrované zobrazení předchozích operací pro tento virtuální virtuální ms spolu s časem, datem a odběrem.
 
-Informace o protokolu si můžete stáhnout tak, že vyberete **kliknutím sem stáhnete všechny položky jako CSV**.
+Informace protokolu si můžete stáhnout tak, že vyberete **Kliknutím sem stáhnete všechny položky jako CSV**.
 
-Upravte filtry a kliknutím na **použít** vytvořte hledání a protokol.
+Upravte filtry a kliknutím na **Použít** vytvořte hledání a protokol.
 
 
 
-## Konfigurace přístupu JIT ze stránky virtuálního počítače Azure<a name="jit-vm"></a>
+## <a name="configure-jit-access-from-an-azure-vms-page"></a>Konfigurace přístupu JIT ze stránky virtuálního počítače Azure<a name="jit-vm"></a>
 
-Pro usnadnění práce se můžete připojit k virtuálnímu počítači pomocí prostředí JIT přímo ze stránky virtuálního počítače v Security Center.
+Pro vaše pohodlí se můžete připojit k virtuálnímu počítači pomocí JIT přímo ze stránky virtuálního počítače v Centru zabezpečení.
 
-### <a name="configure-jit-access-on-a-vm-via-the-azure-vm-page"></a>Konfigurace přístupu JIT na virtuálním počítači přes stránku virtuálního počítače Azure
+### <a name="configure-jit-access-on-a-vm-via-the-azure-vm-page"></a>Konfigurace přístupu JIT na virtuálním počítači prostřednictvím stránky virtuálního počítače Azure
 
-Aby bylo možné v rámci virtuálních počítačů snadno naprogramovat přístup za běhu, můžete nastavit virtuální počítač tak, aby umožňoval pouze přístup za běhu přímo z virtuálního počítače.
+Chcete-li usnadnit zavedení přístupu just-in-time mezi virtuálními počítači, můžete nastavit virtuální počítač tak, aby umožňoval pouze přístup za chvíli přímo z virtuálního počítače.
 
-1. V [Azure Portal](https://ms.portal.azure.com)vyhledejte a vyberte **virtuální počítače**. 
-2. Vyberte virtuální počítač, který chcete omezit na přístup za běhu.
-3. V nabídce vyberte **Konfigurace**.
-4. V části **přístup za běhu**vyberte **Povolit**za běhu. 
+1. Na [webu Azure Portal](https://ms.portal.azure.com)vyhledejte a vyberte **virtuální počítače**. 
+2. Vyberte virtuální počítač, který chcete omezit na přístup za chvíli.
+3. V nabídce vyberte **Možnost Konfigurace**.
+4. V části **Přístup za chvíli**vyberte **Povolit just-in-time**. 
 
-To umožňuje použít pro virtuální počítač přístup za běhu pomocí následujících nastavení:
+To umožňuje přístup za čas pro virtuální počítače pomocí následujících nastavení:
 
-- Servery Windows:
+- Servery windows:
     - Port RDP 3389
-    - Tři hodiny z maximálního povoleného přístupu
-    - Povolené zdrojové IP adresy jsou nastavené na any.
-- Servery Linux:
-    - Port SSH 22
-    - Tři hodiny z maximálního povoleného přístupu
-    - Povolené zdrojové IP adresy jsou nastavené na any.
+    - Maximální povolený přístup na tři hodiny
+    - Povolené zdrojové IP adresy jsou nastaveny na libovolný
+- Linuxové servery:
+    - SSH port 22
+    - Maximální povolený přístup na tři hodiny
+    - Povolené zdrojové IP adresy jsou nastaveny na libovolný
      
-Pokud má virtuální počítač už povolený just-in-time, budete při přechodu na jeho stránku konfigurace moct zjistit, jestli je povolený za běhu, a můžete použít odkaz k otevření zásady v Azure Security Center k zobrazení a změně nastavení.
+Pokud virtuální počítač už má povoleno just-in-time povoleno, když přejdete na jeho konfigurační stránku, uvidíte, že je povoleno just-in-time a můžete použít odkaz k otevření zásad v Centru zabezpečení Azure k zobrazení a změně nastavení.
 
-![Konfigurace JIT ve virtuálním počítači](./media/security-center-just-in-time/jit-vm-config.png)
+![jit config v vm](./media/security-center-just-in-time/jit-vm-config.png)
 
-### <a name="request-jit-access-to-a-vm-via-an-azure-vms-page"></a>Vyžádat přístup JIT k virtuálnímu počítači prostřednictvím stránky virtuálního počítače Azure
+### <a name="request-jit-access-to-a-vm-via-an-azure-vms-page"></a>Žádost o přístup JIT k virtuálnímu počítači prostřednictvím stránky virtuálního počítače Azure
 
-Když se v Azure Portal pokusíte připojit k virtuálnímu počítači, Azure zkontroluje, jestli máte na daném virtuálním počítači nakonfigurovanou zásadu přístupu za běhu.
+Na webu Azure Portal při pokusu o připojení k virtuálnímu počítači Azure zkontroluje, jestli máte na konfigurované zásady přístupu za čase na tomto virtuálním počítači.
 
-- Pokud máte na virtuálním počítači nakonfigurovanou zásadu JIT, můžete kliknout na **požádat o přístup** a udělit přístup v souladu se sadou zásad JIT nastavenou pro virtuální počítač. 
+- Pokud máte zásady JIT nakonfigurované na virtuálním počítači, můžete kliknout **na požádat o přístup** k udělení přístupu v souladu s sadou zásad JIT pro virtuální počítač. 
 
-  >![požadavek JIT](./media/security-center-just-in-time/jit-request.png)
+  >![jit požadavek](./media/security-center-just-in-time/jit-request.png)
 
-  Je požadován přístup s následujícími výchozími parametry:
+  Přístup je požadován s následujícími výchozími parametry:
 
-  - **zdrojová IP adresa**: Any (*) (nedá se změnit)
-  - **časový rozsah**: tři hodiny (nelze změnit) <!--Isn't this set in the policy-->
-  - **číslo portu** Port RDP 3389 pro Windows/port 22 pro Linux (lze změnit)
+  - **zdroj IP**: 'Any' (*) (nelze změnit)
+  - **časový rozsah**: Tři hodiny (nelze změnit) <!--Isn't this set in the policy-->
+  - **číslo portu** RDP port 3389 pro Windows / port 22 pro Linux (lze změnit)
 
     > [!NOTE]
-    > Po schválení žádosti o virtuální počítač chráněný serverem Azure Firewall Security Center poskytne uživateli správné podrobnosti o připojení (mapování portů z tabulky DNAT), které se použijí pro připojení k virtuálnímu počítači.
+    > Po schválení požadavku pro virtuální počítač chráněný bránou Azure Firewall poskytuje Security Center uživateli správné podrobnosti o připojení (mapování portů z tabulky DNAT), které se mají použít k připojení k virtuálnímu počítači.
 
-- Pokud na virtuálním počítači není kompilátor JIT nakonfigurovaný, zobrazí se vám výzva ke konfiguraci zásad JIT.
+- Pokud nemáte JIT nakonfigurován na virtuálním počítači, budete vyzváni ke konfiguraci zásady JIT na něm.
 
-  ![příkazový řádek JIT](./media/security-center-just-in-time/jit-prompt.png)
+  ![jit výzva](./media/security-center-just-in-time/jit-prompt.png)
 
-## Programové nakonfigurování zásad JIT na virtuálním počítači<a name="jit-program"></a>
+## <a name="configure-a-jit-policy-on-a-vm-programmatically"></a>Programová konfigurace zásad JIT na virtuálním počítači<a name="jit-program"></a>
 
-Pomocí rozhraní REST API a prostředí PowerShell můžete nastavit a použít za běhu.
+Můžete nastavit a používat just-in-time přes REST API a přes PowerShell.
 
-### <a name="jit-vm-access-via-rest-apis"></a>Přístup k virtuálnímu počítači JIT přes rozhraní REST API
+### <a name="jit-vm-access-via-rest-apis"></a>Přístup k virtuálnímu virtuálnímu virtuálnímu připojení JIT prostřednictvím rest API
 
-Funkce přístupu k VIRTUÁLNÍm počítačům za běhu se dá použít přes rozhraní Azure Security Center API. Pomocí tohoto rozhraní API můžete získat informace o konfigurovaných virtuálních počítačích, přidat nové, vyžadovat přístup k virtuálnímu počítači a další. Další informace o REST API pro dobu běhu najdete v tématu [zásady přístupu k síti JIT](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies).
+Funkci přístupu k virtuálním počítači just-in-time lze použít prostřednictvím rozhraní AZURE Security Center API. Můžete získat informace o nakonfigurovaných virtuálních počítače, přidat nové, požádat o přístup k virtuálnímu počítače a další, prostřednictvím tohoto rozhraní API. Další informace o rozhraní REST API just-in-time najdete v [tématu Zásady přístupu k jit.](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies)
 
-### <a name="jit-vm-access-via-powershell"></a>Přístup k virtuálnímu počítači JIT prostřednictvím PowerShellu
+### <a name="jit-vm-access-via-powershell"></a>Přístup k virtuálnímu virtuálnímu připojení JIT přes PowerShell
 
-Pokud chcete použít řešení přístupu k virtuálnímu počítači podle potřeby přes PowerShell, použijte oficiální rutiny Azure Security Center PowerShellu a konkrétně `Set-AzJitNetworkAccessPolicy`.
+Pokud chcete použít řešení pro přístup k virtuálním počítačům za čase prostřednictvím PowerShellu, `Set-AzJitNetworkAccessPolicy`použijte oficiální rutiny Azure Security Center PowerShell a konkrétně .
 
-Následující příklad nastaví zásady přístupu k VIRTUÁLNÍm počítačům za běhu na konkrétní virtuální počítač a nastaví následující:
+Následující příklad nastaví zásady přístupu k virtuálním počítači za čase na konkrétním virtuálním počítači a nastaví následující:
 
 1.  Zavřete porty 22 a 3389.
 
-2.  Nastavte maximální časový interval pro každé 3 hodiny, aby bylo možné je otevřít na základě schválené žádosti.
-3.  Umožňuje uživateli, který žádá o přístup k řízení zdrojových IP adres, a umožňuje uživateli vytvořit úspěšnou relaci v rámci schválené žádosti o přístup za běhu.
+2.  Nastavte maximální dobu 3 hodiny pro každý, takže mohou být otevřeny na základě schválenéžádosti.
+3.  Umožňuje uživateli, který požaduje přístup k řízení zdrojových IP adres, a umožňuje uživateli vytvořit úspěšnou relaci na základě schválené žádosti o přístup za včase.
 
-K tomu použijte následující příkaz v PowerShellu:
+Chcete-li to provést, spusťte v Prostředí PowerShell následující:
 
-1.  Přiřaďte proměnnou, která obsahuje zásady přístupu k VIRTUÁLNÍm počítačům za běhu pro virtuální počítač:
+1.  Přiřaďte proměnnou, která obsahuje zásady přístupu k virtuálním virtuálním zařízením za čase:
 
         $JitPolicy = (@{
          id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"
@@ -224,20 +224,20 @@ K tomu použijte následující příkaz v PowerShellu:
              allowedSourceAddressPrefix=@("*");
              maxRequestAccessDuration="PT3H"})})
 
-2.  Do pole vložte zásady přístupu k virtuálnímu počítači za běhu podle potřeby:
+2.  Vložte zásady přístupu virtuálního zařízení just-in-time k poli:
     
         $JitPolicyArr=@($JitPolicy)
 
-3.  Nakonfigurujte zásady přístupu k VIRTUÁLNÍm počítačům za běhu na vybraném virtuálním počítači:
+3.  Konfigurace zásady přístupu k virtuálním počítači za včase na vybraném virtuálním počítači:
     
         Set-AzJitNetworkAccessPolicy -Kind "Basic" -Location "LOCATION" -Name "default" -ResourceGroupName "RESOURCEGROUP" -VirtualMachine $JitPolicyArr 
 
-### <a name="request-access-to-a-vm-via-powershell"></a>Vyžádat přístup k virtuálnímu počítači přes PowerShell
+### <a name="request-access-to-a-vm-via-powershell"></a>Vyžádání přístupu k virtuálnímu virtuálnímu serveru přes PowerShell
 
-V následujícím příkladu uvidíte požadavek na přístup k virtuálnímu počítači za běhu na konkrétní virtuální počítač, ve kterém se vyžaduje otevření portu 22 pro konkrétní IP adresu a po určitou dobu:
+V následujícím příkladu uvidíte požadavek na přístup virtuálních počítačů za chvíli ke konkrétnímu virtuálnímu virtuálnímu serveru, ve kterém se požaduje otevření portu 22 pro konkrétní IP adresu a na určitou dobu:
 
-Spusťte následující příkaz v PowerShellu:
-1.  Konfigurovat vlastnosti přístupu k žádosti virtuálních počítačů
+V PowerShellu spusťte následující:
+1.  Konfigurace vlastností přístupu k požadavku na virtuální počítače
 
         $JitPolicyVm1 = (@{
           id="/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"
@@ -245,32 +245,32 @@ Spusťte následující příkaz v PowerShellu:
            number=22;
            endTimeUtc="2018-09-17T17:00:00.3658798Z";
            allowedSourceAddressPrefix=@("IPV4ADDRESS")})})
-2.  Vložte parametry žádosti o přístup k virtuálnímu počítači do pole:
+2.  Vložte parametry požadavku na přístup virtuálního zařízení do pole:
 
         $JitPolicyArr=@($JitPolicyVm1)
-3.  Poslat žádost o přístup (použijte ID prostředku, které jste získali v kroku 1)
+3.  Odeslat žádost o přístup (použijte ID prostředku, které jste dostali v kroku 1)
 
         Start-AzJitNetworkAccessPolicy -ResourceId "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Security/locations/LOCATION/jitNetworkAccessPolicies/default" -VirtualMachine $JitPolicyArr
 
-Další informace najdete v [dokumentaci k rutinám PowerShellu](https://docs.microsoft.com/powershell/scripting/developer/cmdlet/cmdlet-overview).
+Další informace naleznete v [dokumentaci rutiny prostředí PowerShell](https://docs.microsoft.com/powershell/scripting/developer/cmdlet/cmdlet-overview).
 
 
-## <a name="automatic-cleanup-of-redundant-jit-rules"></a>Automatické čištění redundantních pravidel JIT 
+## <a name="automatic-cleanup-of-redundant-jit-rules"></a>Automatické vyčištění nadbytečných pravidel JIT 
 
-Vždy, když aktualizujete zásadu JIT, nástroj pro vyčištění se automaticky spustí, aby zkontroloval platnost celého RuleSet. Nástroj vyhledá neshody mezi pravidly v zásadách a pravidly v NSG. Pokud nástroj pro vyčištění najde neshodu, určí příčinu a v případě, že je to bezpečné, odebere předdefinovaná pravidla, která ještě nejsou potřeba. Čisticí nikdy neodstraní pravidla, která jste vytvořili.
+Při každé aktualizaci zásad JIT se automaticky spustí nástroj pro vyčištění, který zkontroluje platnost celé sady pravidel. Nástroj hledá neshody mezi pravidly ve vaší zásady a pravidla v souboru zásad nsg. Pokud nástroj pro vyčištění najde neshodu, určuje příčinu a pokud je to bezpečné, odebere předdefinovaná pravidla, která už nejsou potřeba. Čistič nikdy neodstraní pravidla, která jste vytvořili.
 
-Příklady scénářů, kdy může čisticí modul odebrat předdefinované pravidlo:
+Příklady scénářů, kdy může čistič odebrat předdefinované pravidlo:
 
-- Pokud existují dvě pravidla se stejnými definicemi a jedna má vyšší prioritu než druhá (tzn. pravidlo nižší priority nebude nikdy použito)
-- Když popis pravidla obsahuje název virtuálního počítače, který se neshoduje s cílovou IP adresou v pravidle. 
+- Pokud existují dvě pravidla se stejnými definicemi a jedno má vyšší prioritu než druhé (což znamená, že pravidlo s nižší prioritou se nikdy nepoužije)
+- Když popis pravidla obsahuje název virtuálního počítačů, který neodpovídá cílové IP adrese v pravidle 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak přístup k virtuálnímu počítači za běhu v Security Center pomáhá řídit přístup k virtuálním počítačům Azure.
+V tomto článku jste se dozvěděli, jak přístup k virtuálním počítačům v centru zabezpečení pomáhá řídit přístup k virtuálním počítačům Azure.
 
 Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-- [Nastavení zásad zabezpečení](tutorial-security-policy.md) – Naučte se konfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
-- [Správa doporučení zabezpečení](security-center-recommendations.md) – Přečtěte si, jak doporučení vám pomůžou chránit vaše prostředky Azure.
-- [Sledování stavu zabezpečení](security-center-monitoring.md) – Naučte se monitorovat stav svých prostředků Azure.
+- [Nastavení zásad zabezpečení](tutorial-security-policy.md) – Zjistěte, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
+- [Správa doporučení zabezpečení](security-center-recommendations.md) – Zjistěte, jak vám doporučení pomáhají chránit prostředky Azure.
+- [Monitorování stavu zabezpečení](security-center-monitoring.md) – Přečtěte si, jak sledovat stav prostředků Azure.

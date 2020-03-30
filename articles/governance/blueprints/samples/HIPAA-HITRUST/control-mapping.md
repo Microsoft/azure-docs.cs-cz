@@ -1,243 +1,243 @@
 ---
-title: Ukázkové ovládací prvky HIPAA HITRUST details
-description: Mapování ovládacího prvku pro ukázky HIPAA HITRUST details Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
+title: HIPAA HITRUST vzorové ovládací prvky
+description: Mapování řízení vzorků plánů HIPAA HITRUST. Každý ovládací prvek je mapován na jednu nebo více zásad Azure, které pomáhají s hodnocením.
 ms.date: 11/26/2019
 ms.topic: sample
 ms.openlocfilehash: c6680055cfe41a2f893d46cba797783913d880ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75472307"
 ---
-# <a name="control-mapping-of-the-hipaa-hitrust-blueprint-sample"></a>Mapování ovládacího prvku Sample HIPAA HITRUST details
+# <a name="control-mapping-of-the-hipaa-hitrust-blueprint-sample"></a>Mapování řízení ukázky plánu HIPAA HITRUST
 
-Následující článek podrobně popisuje, jak se vzor Azure modrotisky HIPAA HITRUST Details mapuje na ovládací prvky HIPAA HITRUST. Další informace o ovládacích prvcích najdete v tématu [HIPAA HiTRUST](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html).
+V následujícím článku podrobně popisuje, jak Azure Blueprints HIPAA HITRUST podrobný plán ukázka mapuje hipaa HITRUST ovládací prvky. Další informace o ovládacích prvcích naleznete v tématu [HIPAA HITRUST](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html).
 
-Následující mapování jsou k ovládacím prvkům **HIPAA HiTRUST** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte **\[Preview\]: audit HIPAA HiTRUST Controls** předdefinovaná iniciativa zásad.
+Následující mapování jsou **hipaa HITRUST** ovládací prvky. Pomocí navigace vpravo přejděte přímo na konkrétní mapování ovládacího prvku. Mnoho mapovaných ovládacích prvků se implementuje pomocí iniciativy [Zásad azure.](../../../policy/overview.md) Pokud chcete zkontrolovat celou iniciativu, otevřete **zásady** na webu Azure portal a vyberte stránku **Definice.** Potom vyhledejte a vyberte ** \[náhled\]: Audit hipaa HITRUST řídí** integrovanou iniciativu zásad.
 
 > [!IMPORTANT]
-> Každý ovládací prvek níže je přidružen k jedné nebo více definicím [Azure Policy](../../../policy/overview.md) . Tyto zásady vám pomůžou [zhodnotit dodržování předpisů](../../../policy/how-to/get-compliance-data.md) pomocí ovládacího prvku. často však není 1:1 nebo Úplná shoda mezi ovládacím prvkem a jednou nebo více zásadami. V takovém případě **vyhovuje** v Azure Policy pouze zásadám, které jsou samotné. Tím se nezajistí, že budete plně kompatibilní se všemi požadavky ovládacího prvku. Standard kompatibility zahrnuje i ovládací prvky, které nejsou v tuto chvíli řešeny žádnými definicemi Azure Policy. Proto je dodržování předpisů v Azure Policy jenom částečný pohled na celkový stav dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi Azure Policy pro tuto ukázku podrobného plánu dodržování předpisů se mohou v průběhu času měnit. Historii změn si můžete prohlédnout v [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/HIPAA-HITRUST/control-mapping.md).
+> Každý ovládací prvek níže je přidružen k jedné nebo více definic [zásad Azure.](../../../policy/overview.md) Tyto zásady vám mohou pomoci [posoudit dodržování](../../../policy/how-to/get-compliance-data.md) ovládacího prvku; však často není 1:1 nebo úplnou shodu mezi ovládacím prvkem a jednu nebo více zásad. Jako **takový, kompatibilní** v zásadách Azure odkazuje pouze na zásady samotné; Tím nezajistíte, že jste plně kompatibilní se všemi požadavky ovládacího prvku. Kromě toho standard dodržování předpisů zahrnuje ovládací prvky, které nejsou v tuto chvíli adresovány žádnými definicemi zásad Azure. Dodržování předpisů v zásadách Azure je tedy pouze částečným zobrazením celkového stavu dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi zásad Azure pro tento ukázkový plán dodržování předpisů se může v průběhu času měnit. Chcete-li zobrazit historii změn, podívejte se na [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/HIPAA-HITRUST/control-mapping.md).
 
 ## <a name="control-against-malicious-code"></a>Řízení proti škodlivému kódu
 
-Tento podrobný plán vám pomůže spravovat ochranu koncových bodů včetně ochrany škodlivých kódů tím, že přiřazuje definice [Azure Policy](../../../policy/overview.md) , které monitorují chybějící Endpoint Protection na virtuálních počítačích v Azure Security Center a vynutila řešení Microsoft Antimalware na virtuálních počítačích s Windows.
+Tento podrobný plán vám pomůže spravovat ochranu koncových bodů, včetně ochrany škodlivého kódu, přiřazením definic [zásad Azure,](../../../policy/overview.md) které monitorují chybějící ochranu koncových bodů na virtuálních počítačích v Azure Security Center a vynucují antimalwarové řešení Microsoftu na virtuálních počítačích s Windows.
 
-- Nasazení výchozího antimalwarového rozšíření Microsoft IaaS pro Windows Server
-- V účtech Batch by měly být povolené diagnostické protokoly.
-- Na počítače by se měly nainstalovat aktualizace systému.
+- Nasazení výchozího rozšíření Microsoft IaaS Antimalware pro systém Windows Server
+- Diagnostické protokoly v dávkových účtech by měly být povoleny.
+- Na počítače by se měly nainstalovat aktualizace systému
 
 
-## <a name="management-of-removable-media"></a>Správa vyměnitelného média
+## <a name="management-of-removable-media"></a>Správa vyměnitelných médií
 
-Organizace na základě úrovně klasifikace dat registruje média (včetně přenosných počítačů) před použitím, umisťuje vhodná omezení na to, jak se tato média používají, a poskytuje odpovídající úroveň fyzické a logické ochrany (včetně šifrování) pro. média obsahující zahrnuté informace, dokud nebudou správně zničena nebo upravena.
+Organizace na základě úrovně klasifikace dat registruje média (včetně přenosných počítačů) před použitím, přiměřeně omezuje způsob použití těchto médií a poskytuje odpovídající úroveň fyzické a logické ochrany (včetně šifrování) pro obsahující chod zahrnutých informací, dokud nebudou řádně zničeny nebo dezinfikovány.
 
-- Vyžadovat šifrování u Data Lake Store účtů
-- Ochrana TDE spravované instance SQL by se měla šifrovat pomocí vlastního klíče.
-- Pro virtuální počítače by se mělo povolit šifrování disků.
-- Je třeba povolit transparentní šifrování dat databází SQL.
+- Vyžadovat šifrování na účtech Data Lake Store
+- Ochrana TDE spravované SQL by měla být šifrována pomocí vlastního klíče
+- Šifrování disku by mělo být použito na virtuálních počítačích.
+- Transparentní šifrování dat v databázích SQL by mělo být povoleno
 
 
 ## <a name="information-exchange-policies-and-procedures"></a>Zásady a postupy výměny informací
 
-Poskytovatelé cloudových služeb používají pro zajištění interoperability rozpoznávanou virtualizační platformu a standardní virtualizační formáty (například Open Virtualization Format, OVF), které vám pomůžou zajistit vzájemnou spolupráci a zdokumentují vlastní změny provedené na jakémkoli hypervisoru, který se používá. k dispozici jsou moduly virtualizace specifické pro řešení, které jsou dostupné pro kontrolu zákazníků.
+Poskytovatelé cloudových služeb používají průmyslově uznávanou virtualizační platformu a standardní formáty virtualizace (např. formát Open Virtualization Format, OVF), aby zajistili interoperabilitu, a zdokumentovali vlastní změny provedené v jakémkoli hypervisoru a všech virtualizační háčky specifické pro řešení, které jsou k dispozici pro kontrolu zákazníků.
 
-- Nasazení požadavků pro audit virtuálních počítačů s Windows, u kterých nejsou nainstalované zadané aplikace
+- Nasazení požadavků pro auditování virtuálních aplikací systému Windows, které nemají nainstalované zadané aplikace
 
 ## <a name="control-of-operational-software"></a>Řízení provozního softwaru 
 
-Organizace identifikuje neoprávněný software v informačním systému, včetně serverů, pracovních stanic a přenosných počítačů, využívá zásady Allow-all, Deny-by-výjimky, které zakazují spuštění známého neautorizovaného softwaru v informačním systému a zkontroluje a aktualizuje seznam neautorizovaného softwaru pravidelně, ale ne méně než jednou ročně.
+Organizace identifikuje neoprávněný software v informačním systému, včetně serverů, pracovních stanic a notebooků, používá zásady povolit vše, odepřít podle výjimky, aby zakázala spuštění známého neautorizovaného softwaru v informačním systému, a pravidelně kontroluje a aktualizuje seznam neautorizovaného softwaru, avšak nejméně jednou ročně.
 
-- \[Preview\] zobrazit výsledky auditu z konfigurací virtuálních počítačů s Windows v části Možnosti zabezpečení-audit
-- \[Preview\] zobrazit výsledky auditu z konfigurací virtuálních počítačů s Windows v tématu Zásady auditu systému – Správa účtů "
+- \[Preview\] Zobrazit výsledky auditu z konfigurací virtuálních počítačů se systémem Windows v části Možnosti zabezpečení–audit
+- \[Preview\] Zobrazit výsledky auditu z konfigurací virtuálních počítačů se systémem Windows v části Zásady auditu systému – správa účtů
 
-## <a name="change-control-procedures"></a>Změnit řídicí procedury
+## <a name="change-control-procedures"></a>Postupy řízení změn
 
-Integrita všech imagí virtuálních počítačů se neustále zajišťuje protokolováním a vyvoláním výstrahy pro všechny změny provedené v imagí virtuálních počítačů a zpřístupnění podnikovým vlastníkům a/nebo zákazníkům prostřednictvím elektronických metod (například portály nebo výstrahy) výsledky změny nebo přesunu a následného ověření integrity image.
+Integrita všech bitových kopií virtuálních strojů je vždy zajištěna protokolováním a upozorněním na jakékoli změny provedené v iblakci virtuálních strojů a zpřístupněním vlastníkům a/nebo zákazníkům prostřednictvím elektronických metod (např. portálů nebo výstrah) výsledků změny nebo přesunutí a následného ověření integrity obrázku.
 
-- \[Preview\] zobrazit výsledky auditu z konfigurace virtuálních počítačů s Windows v zásadách auditování systému – podrobné sledování
+- \[Preview\] Zobrazit výsledky auditu z konfigurace virtuálních počítačů systému Windows v části Zásady auditu systému –podrobné sledování
 
-## <a name="inventory-of-assets"></a>Inventář prostředků 
+## <a name="inventory-of-assets"></a>Soupis aktiv 
 
-Inventář prostředků a služeb se zachovává.
+Soupis aktiv a služeb je veden
 
-- Měly by být povolené diagnostické protokoly ve vyhledávacích službách.
-- \[Preview\] nasazení požadavků pro audit konfigurací virtuálních počítačů s Windows v části Možnosti zabezpečení – síťový server Microsoftu "
-- \[Preview\] nasazení požadavků pro audit konfigurací virtuálních počítačů s Windows v síti "Šablony pro správu-síť"
+- Diagnostické protokoly ve vyhledávacích službách by měly být povoleny.
+- \[Preview\] Požadavky na nasazení pro audit konfigurace virtuálních počítačů se systémem Windows v části Možnosti zabezpečení – microsoft síťový server
+- \[Preview\] Požadavky na nasazení pro audit konfigurace virtuálních počítačů se systémem Windows v části Šablony pro správu – síť
 
-## <a name="control-of-technical-vulnerabilities"></a>Kontrola technických ohrožení zabezpečení 
+## <a name="control-of-technical-vulnerabilities"></a>Kontrola technických zranitelností 
 
-Pro všechny systémové a síťové součásti existuje zpřísněný standardní konfigurace.
+Pro všechny součásti systému a sítě existuje konhardenovaný konfigurační standard.
 
-- Audit Virtual Machines bez nakonfigurovaného zotavení po havárii
-- Na spravovaných instancích SQL by mělo být povolené posouzení ohrožení zabezpečení
-- Ohrožení zabezpečení by se mělo opravit řešením posouzení ohrožení zabezpečení.
+- Auditovat virtuální počítače bez nakonfigurovaného zotavení po havárii
+- Posouzení ohrožení zabezpečení by mělo být povoleno ve vašich instancích spravovaných SQL.
+- Chyba zabezpečení by měla být opravena řešením pro posouzení zranitelnosti
 
-## <a name="segregation-in-networks"></a>Oddělení v sítích
+## <a name="segregation-in-networks"></a>Segregace v sítích
 
-Brány zabezpečení organizace (například brány firewall) vynutily zásady zabezpečení a jsou nakonfigurované pro filtrování provozu mezi doménami, blokování neoprávněného přístupu a použití k udržení oddělení mezi interním kabelem, interním bezdrátovým a externím segmenty sítě (například Internet), včetně zóny DMZ a prosazování zásad řízení přístupu pro jednotlivé domény.
+Brány zabezpečení organizace (např. brány firewall) vynucují zásady zabezpečení a jsou nakonfigurovány tak, aby filtrovaly provoz mezi doménami, blokovaly neoprávněný přístup a používají se k udržování segregace mezi interním kabelovým, interním bezdrátovým a externím (např. internet) včetně DMZ a vynucovat zásady řízení přístupu pro každou z domén.
 
-- Automatické zřizování agenta zabezpečení monitoring
-- Při vytváření virtuálních sítí nasadit sledovací proces sítě
+- Automatické zřizování agenta monitorování zabezpečení
+- Nasazení sledovacího procesu sítě při vytváření virtuálních sítí
 
 ## <a name="input-data-validation"></a>Ověření vstupních dat
 
-Pro všechny veřejné webové aplikace jsou pro řízení provozu implementovány brány firewall na úrovni aplikace. Pro veřejné aplikace, které nejsou založené na webu, implementuje organizace bránu firewall založenou na síti specifickou pro daný typ aplikace. Pokud je přenos dat do veřejné aplikace zašifrovaný, zařízení buď zastaví za šifrováním, nebo je schopné dešifrovat provoz před analýzou.
+Pro všechny veřejné webové aplikace jsou pro řízení provozu implementovány brány firewall na úrovni aplikace. Pro veřejné aplikace, které nejsou založeny na webu, organizace implementovala síťovou bránu firewall specifickou pro typ aplikace. Pokud je provoz na veřejnou aplikaci šifrován, zařízení buď sedí za šifrováním, nebo je schopno dešifrovat provoz před analýzou.
 
-- \[Preview\] zobrazit výsledky auditu z konfigurace virtuálních počítačů s Windows ve vlastnostech brány Windows Firewall
+- \[Náhled\] Zobrazit výsledky auditu z konfigurace virtuálních počítačů se systémem Windows v části Vlastnosti brány Windows Firewall
 
 
-## <a name="network-connection-control"></a>Řízení připojení k síti
+## <a name="network-connection-control"></a>Řízení síťového připojení
 
-Síťový provoz se řídí v souladu se zásadami řízení přístupu organizace prostřednictvím brány firewall a dalšími omezeními týkajícími se sítě pro každý přístupový bod sítě nebo spravované rozhraní externí telekomunikační služby.
+Síťový provoz je řízen v souladu se zásadami řízení přístupu organizace prostřednictvím brány firewall a dalších omezení souvisejících se sítí pro každý přístupový bod sítě nebo spravované rozhraní externí telekomunikační služby.
 
-- Přístup prostřednictvím internetových koncových bodů by měl být omezený.
-- Ochrana TDE spravované instance SQL by se měla šifrovat pomocí vlastního klíče.
-- Pro aplikace API by mělo být vypnuto vzdálené ladění.
+- Přístup přes koncové body směřující k Internetu by měl být omezen
+- Ochrana TDE spravované SQL by měla být šifrována pomocí vlastního klíče
+- Vzdálené ladění by mělo být vypnuto pro aplikace rozhraní API.
 
 ## <a name="network-controls"></a>Ovládací prvky sítě
 
 Organizace používá zabezpečené a šifrované komunikační kanály při migraci fyzických serverů, aplikací nebo dat na virtualizované servery.
 
-- Na virtuálních počítačích by se mělo použít šifrování disku
-- Ochrana TDE serverů SQL by měla být šifrovaná pomocí vašeho vlastního klíče.
-- \[Preview\] zobrazit výsledky auditů z konfigurací virtuálních počítačů s Windows v části Možnosti zabezpečení – přístup k síti
-- Auditování neomezeného síťového přístupu k účtům úložiště
-- \[Preview\] zobrazit výsledky auditů z konfigurace virtuálních počítačů s Windows ve vlastnostech brány Windows Firewall
-- Nasadit nastavení diagnostiky ze skupin zabezpečení sítě
-- Přístup prostřednictvím internetových koncových bodů by měl být omezený.
+- Šifrování disku by se mělo použít na virtuálních počítačích.
+- Ochrana TDE serveru SQL server by měla být šifrována pomocí vlastního klíče
+- \[Náhled\] Zobrazit výsledky auditů z konfigurací virtuálních počítačů se systémem Windows v části Možnosti zabezpečení – přístup k síti
+- Auditovat neomezený přístup k účtům úložiště v síti
+- \[Náhled\] Zobrazit výsledky auditů z konfigurace virtuálních počítačů se systémem Windows v části Vlastnosti brány Windows Firewall
+- Nasazení nastavení diagnostiky ze skupin zabezpečení sítě
+- Přístup přes koncové body směřující k Internetu by měl být omezen
 
 ## <a name="sensitive-system-isolation"></a>Citlivá izolace systému
 
-Sdílené systémové prostředky (například Registry, hlavní paměť, sekundární úložiště) se uvolňují zpátky do systému, chráněny před zveřejněním jiným systémům, aplikacím/uživatelům a uživatelé nemůžou úmyslně nebo neúmyslně přistupovat ke zbytkům informací.
+Sdílené systémové prostředky (např. registry, hlavní paměť, sekundární úložiště) jsou uvolněny zpět do systému, chráněny před zveřejněním jiným systémům/aplikacím/uživatelům, a uživatelé nemohou úmyslně nebo neúmyslně přistupovat ke zbytkům informací.
 
-- Virtual Machines by se měly migrovat do nových prostředků Azure Resource Manager
+- Virtuální počítače by se měly migrovat do nových prostředků Azure Resource Manageru.
 
-## <a name="security-of-network-services"></a>Zabezpečení Network Services
+## <a name="security-of-network-services"></a>Zabezpečení síťových služeb
 
-Dohodnuté služby, které poskytuje poskytovatel nebo správce síťové služby, jsou spravovány a monitorovány, aby byly zajištěny jejich bezpečné zabezpečení.
+Dohodnuté služby poskytované poskytovatelem/správcem síťových služeb jsou formálně spravovány a monitorovány, aby bylo zajištěno jejich bezpečné poskytování.
 
-- Virtual Machines by se měly migrovat do nových prostředků Azure Resource Manager
+- Virtuální počítače by se měly migrovat do nových prostředků Azure Resource Manageru.
 
 ## <a name="network-routing-control"></a>Řízení směrování sítě
 
-Ovládací prvky směrování se implementují prostřednictvím bran zabezpečení (například bran firewall) používaných mezi interními a externími sítěmi (například sítě Internet a třetích stran).
+Ovládací prvky směrování jsou implementovány prostřednictvím bezpečnostních bran (např. firewallů) používaných mezi interními a externími sítěmi (např. sítěmi Internetu a třetích stran).
 
-- Na virtuálních počítačích by měly být povolené Adaptivní řízení aplikací.
+- Adaptivní ovládací prvky aplikací by měly být povoleny na virtuálních počítačích
 
 ## <a name="information-exchange-policies-and-procedures"></a>Zásady a postupy výměny informací
 
-Organizace omezuje použití přenosného úložného média řízeného organizací autorizovanými osobami v externích informačních systémech.
+Organizace omezuje používání přenosných paměťových médií řízených organizací oprávněnými osobami v externích informačních systémech.
 
-- Auditování neomezeného síťového přístupu k účtům úložiště
-- Vzdálené ladění by mělo být pro webové aplikace vypnuté.
-- Aplikace APi by měla být přístupná jen přes protokol HTTPS
+- Auditovat neomezený přístup k účtům úložiště v síti
+- Vzdálené ladění by mělo být vypnuto pro webové aplikace.
+- Aplikace APi by měla být přístupná pouze přes protokol HTTPS
 
 ## <a name="electronic-messaging"></a>Elektronické zasílání zpráv
 
-Schválení se získávají před použitím externích veřejných služeb, včetně zasílání rychlých zpráv nebo sdílení souborů.
+Schválení jsou získána před použitím externích veřejných služeb, včetně zasílání rychlých zpráv nebo sdílení souborů.
 
-- \[Preview\] zobrazit výsledky auditu z virtuálních počítačů se systémem Linux, které nemají oprávnění k souboru s heslem nastavenou na 0644
+- \[Preview\] Zobrazit výsledky auditu z virtuálních počítačů s Linuxem, které nemají oprávnění k souboru hesel nastavená na 0644
 
-## <a name="on-line-transactions"></a>Transakce na řádku
+## <a name="on-line-transactions"></a>On-line transakce
 
-Organizace vyžaduje použití šifrování mezi a používání elektronických podpisů každou ze smluvních stran, které jsou zapojeny do transakce. Organizace zajišťuje, že úložiště podrobností transakcí se nachází mimo všechna veřejně přístupná prostředí (např. na platformě úložiště existující v intranetu organizace) a Nezachované a zpřístupněné na úložném médiu, které je přímo přístupné z Internetu. při použití důvěryhodné autority (např. pro účely vydávání a údržby digitálních podpisů a/nebo digitálních certifikátů) je zabezpečení integrováno a vloženo během celé komplexní správy certifikátů a podpisů. přihlášení.
+Organizace vyžaduje použití šifrování mezi a použití elektronických podpisů každou ze stran zapojených do transakce. Organizace zajišťuje, aby byly údaje o transakci umístěny mimo všechna veřejně přístupná prostředí (např. na platformě úložiště existující na intranetu organizace) a nebyly uchovávány a vystaveny na paměťovém médiu přímo přístupném z Internetu.Pokud se používá důvěryhodný orgán (např. pro účely vydávání a údržby digitálních podpisů a/nebo digitálních certifikátů), je zabezpečení integrováno a integrováno do celého koncového/certifikačního úřadu Proces.
 
-- Na virtuálních počítačích by se mělo použít šifrování disku
-- \[Preview\] zobrazit výsledky auditu z virtuálních počítačů s Windows, které neobsahují zadané certifikáty v důvěryhodném kořenovém adresáři.
+- Šifrování disku by se mělo použít na virtuálních počítačích.
+- \[Náhled\] Zobrazit výsledky auditu z virtuálních aplikací windows, které neobsahují zadané certifikáty v důvěryhodném kořenovém adresáři
 
 ## <a name="password-management"></a>Správa hesel
 
-Hesla se šifrují během přenosu a ukládání na všechny součásti systému.
+Hesla jsou během přenosu a ukládání šifrována na všech systémových součástech.
 
-- \[Preview\] zobrazit výsledky auditu z virtuálních počítačů s Windows, u kterých není povolené nastavení složitosti hesla
+- \[Náhled\] Zobrazit výsledky auditu z virtuálních počítače windows, u kterých není povoleno nastavení složitosti hesla
 
 ## <a name="user-authentication-for-external-connections"></a>Ověřování uživatelů pro externí připojení
 
-Metody silného ověřování, jako je Multi-Factor, RADIUS nebo Kerberos (pro privilegovaný přístup) a CHAP (pro šifrování přihlašovacích údajů pro metody telefonického připojení), se implementují pro všechna externí připojení k síti organizací.
+Pro všechna externí připojení k síti organizací jsou implementovány silné metody ověřování, jako je vícefaktorový, Radius nebo Kerberos (pro privilegovaný přístup) a protokol CHAP (pro šifrování pověření pro metody telefonického připojení).
 
-- V rámci vašeho předplatného by měly být povolené účty s oprávněním k zápisu.
-- Řízení přístupu k síti na virtuálních počítačích by se mělo použít jenom v čase
+- MFA by měly mít povolené účty s oprávněními k zápisu ve vašem předplatném.
+- Just In Time řízení přístupu k síti by měla být použita na virtuálních počítačích
 
-## <a name="user-identification-and-authentication"></a>Identifikace a ověřování uživatelů
+## <a name="user-identification-and-authentication"></a>Identifikace a ověření uživatele
 
-Uživatelé, kteří použili privilegované funkce (například Správa systému), při provádění těchto privilegovaných funkcí používají samostatné účty. Metody Multi-Factor Authentication se používají v souladu se zásadami organizace (například pro vzdálený přístup k síti).
+Uživatelé, kteří vykonávali privilegované funkce (např. správa systému), používají při provádění těchto privilegovaných funkcí samostatné účty. Vícefaktorové metody ověřování se používají v souladu s organizačními zásadami (např. pro vzdálený přístup k síti).
 
-- V rámci vašeho předplatného by měly být povolené účty s oprávněním k zápisu.
-- Řízení přístupu k síti na virtuálních počítačích by se mělo použít jenom v čase
+- MFA by měly mít povolené účty s oprávněními k zápisu ve vašem předplatném.
+- Just In Time řízení přístupu k síti by měla být použita na virtuálních počítačích
 
 ## <a name="privilege-management"></a>Správa oprávnění
 
-Přístup ke správcovským funkcím a konzolám pro správu pro systémy hostující virtualizované systémy jsou omezené na pracovníky založené na principu minimálního oprávnění a podporovaných prostřednictvím technických ovládacích prvků.
+Přístup k funkcím správy nebo k administrativním konzolím pro systémy hostující virtualizované systémy je omezen na pracovníky na základě principu nejnižších oprávnění a je podporován technickými kontrolami.
 
-- Řízení přístupu k síti na virtuálních počítačích by se mělo použít jenom v čase
-- ve službě Kubernetes Services by se měla používat Access Control na základě rolí ve verzi Preview\] na základě role (RBAC). \[
+- Just In Time řízení přístupu k síti by měla být použita na virtuálních počítačích
+- \[Ve\] službách Kubernetes by měl být použit náhled řízení přístupu na základě role (RBAC).
 
-## <a name="review-of-user-access-rights"></a>Kontrola přístupových práv uživatele
+## <a name="review-of-user-access-rights"></a>Kontrola přístupových práv uživatelů
 
-Organizace udržuje dokumentovaný seznam autorizovaných uživatelů informačních prostředků.
+Organizace vede zdokumentovaný seznam oprávněných uživatelů informačních prostředků.
 
-- \[Preview\] zobrazit výsledky auditů z konfigurací virtuálních počítačů s Windows v části Možnosti zabezpečení – účty
+- \[Náhled\] Zobrazit výsledky auditů z konfigurací virtuálních počítačů se systémem Windows v části Možnosti zabezpečení – účty
 
-## <a name="remote-diagnostic-and-configuration-port-protection"></a>Ochrana portů pro vzdálenou diagnostiku a konfiguraci
+## <a name="remote-diagnostic-and-configuration-port-protection"></a>Ochrana vzdálené diagnostiky a konfiguračního portu
 
-Porty, služby a podobné aplikace nainstalované v počítači nebo v síťových systémech, které nejsou konkrétně vyžadované pro obchodní funkce, jsou zakázané nebo odebrané.
+Porty, služby a podobné aplikace nainstalované v počítači nebo síťových systémech, které nejsou výslovně vyžadovány pro obchodní funkce, jsou zakázány nebo odebrány.
 
-- Ve virtuálních počítačích by se měly uzavřít porty pro správu.
-- V konfiguraci zabezpečení na virtuálních počítačích musí být opravené ohrožení zabezpečení.
+- Porty pro správu by měly být uzavřeny na virtuálních počítačích
+- Chyby zabezpečení v konfiguraci zabezpečení ve škálovacích sadách virtuálních počítačů by měly být opraveny.
 
 ## <a name="audit-logging"></a>Protokolování auditu
 
-Protokoly odesílaných a přijatých zpráv se uchovávají včetně data, času, původu a cíle zprávy, ale ne jejího obsahu. Auditování je vždy k dispozici, když je systém aktivní a sleduje klíčové události, úspěšný/neúspěšný přístup k datům, změny konfigurace zabezpečení systému, privilegovaného nebo utility použití, všechna vyvolaná alarmy, aktivace a deaktivace systémů ochrany (např. a/V a ID), aktivaci a deaktivaci ověřovacích mechanismů a vytváření a mazání objektů na úrovni systému.
+Protokoly odeslaných a přijatých zpráv jsou udržovány včetně data, času, původu a cíle zprávy, nikoli však jejího obsahu. Auditování je vždy k dispozici, když je systém aktivní a sleduje klíčové události, úspěšný/neúspěšný přístup k datům, změny konfigurace zabezpečení systému, privilegované nebo užitkové použití, všechny alarmy, aktivaci a deaktivaci ochranných systémů (např. a/V a IDS), aktivaci a deaktivaci identifikačních a ověřovacích mechanismů a vytváření a mazání objektů na úrovni systému.
 
-- Měly by být povolené diagnostické protokoly v centru událostí.
-- Do škálovacích sad virtuálních počítačů by se měly nainstalovat aktualizace systému.
+- Diagnostické protokoly v centru událostí by měly být povoleny
+- Aktualizace systému na škálovacísady virtuálních strojů by měly být nainstalovány
 
-## <a name="monitoring-system-use"></a>Monitorování využití systému
+## <a name="monitoring-system-use"></a>Využití monitorovacího systému
 
-Automatizované systémy nasazené v prostředí organizace se používají ke sledování klíčových událostí a aktivit neobvyklé a k analýze systémových protokolů. výsledky se pravidelně kontrolují. Monitorování zahrnuje privilegované operace, autorizovaný přístup nebo neoprávněné pokusy o přístup, včetně pokusů o přístup k deaktivovaným účtům a upozornění systému nebo selhání.
+Automatizované systémy nasazené v celém prostředí organizace se používají ke sledování klíčových událostí a anomální aktivity a k analýze systémových protokolů, jejichž výsledky jsou pravidelně kontrolovány. Monitorování zahrnuje privilegované operace, oprávněný přístup nebo pokusy o neoprávněný přístup, včetně pokusů o přístup k deaktivovaným účtům a systémových výstrah nebo selhání.
 
-- Měly by být povolené diagnostické protokoly v sadách škálování virtuálních počítačů.
+- Diagnostické protokoly ve škálovacích sadách virtuálních strojů by měly být povoleny
 
 ## <a name="segregation-of-duties"></a>Oddělení povinností
 
-Oddělení cel slouží k omezení rizika neoprávněné nebo neúmyslné úpravy informací a systémů. Žádná jediná osoba nemůže přistupovat k informačním systémům, měnit je ani používat, aniž by bylo možné provádět autorizaci nebo detekci. Přístup jednotlivců zodpovědný za správu a řízení přístupu je omezený na minimum nezbytné na základě role a odpovědností jednotlivých uživatelů a tito jednotlivci nemají přístup k funkcím auditu, které souvisejí s těmito ovládacími prvky.
+Oddělení povinností se používá k omezení rizika neoprávněné nebo neúmyslné změny informací a systémů. Žádná osoba nemá přístup k informačním systémům, upravovat je ani používat bez autorizace nebo detekce. Přístup pro osoby odpovědné za správu a kontrolu přístupu je omezen na nezbytné minimum na základě úlohy a odpovědnosti každého uživatele a tito jednotlivci nemají přístup k funkcím auditu souvisejícím s těmito kontrolami.
 
-- V rámci vašeho předplatného by měly být povolené účty s oprávněním k zápisu.
+- MFA by měly mít povolené účty s oprávněními k zápisu ve vašem předplatném.
 
-## <a name="administrator-and-operator-logs"></a>Protokoly správců a operátorů
+## <a name="administrator-and-operator-logs"></a>Protokoly správce a operátora
 
-Organizace zajišťuje správné protokolování, aby mohl auditovat činnosti správců. a pravidelně kontroluje správce a obsluha systému.
+Organizace zajišťuje správné protokolování je povolena za účelem auditu činnosti správce; a pravidelně přezkoumává protokoly správce systému a operátora.
 
-- V rámci vašeho předplatného by měly být povolené účty s oprávněním k zápisu.
+- MFA by měly mít povolené účty s oprávněními k zápisu ve vašem předplatném.
 
 ## <a name="identification-of-risks-related-to-external-parties"></a>Identifikace rizik souvisejících s externími stranami
 
-Připojení vzdáleného přístupu mezi organizací a externími stranami jsou zašifrovaná.
+Připojení vzdáleného přístupu mezi organizací a externími stranami jsou šifrována
 
-- Na virtuálních počítačích by se mělo použít šifrování disku
+- Šifrování disku by mělo být použito ve virtuálních počítačích.
 
-## <a name="business-continuity-and-risk-assessment"></a>Provozní kontinuita a hodnocení rizik
+## <a name="business-continuity-and-risk-assessment"></a>Kontinuita podnikání a hodnocení rizik
 
-Organizace identifikuje své důležité obchodní procesy a integruje požadavky na správu zabezpečení informací pro provozní kontinuitu s jinými požadavky na kontinuitu, které se týkají takových aspektů, jako jsou operace, personální oddělení, materiály, doprava. a zařízení.
+Organizace identifikuje své kritické obchodní procesy a integruje požadavky na řízení bezpečnosti informací týkající se kontinuity provozu s dalšími požadavky na kontinuitu týkajícími se takových aspektů, jako jsou operace, personální obsazení, materiály, doprava a zařízení.
 
-- \[Preview\] zobrazit výsledky auditu z konfigurace virtuálních počítačů s Windows v části Možnosti zabezpečení – konzola pro obnovení "
+- \[Náhled\] Zobrazit výsledky auditu z konfigurace virtuálních počítačů se systémem Windows v části Možnosti zabezpečení – konzola pro zotavení
 
 > [!NOTE]
-> Dostupnost konkrétních definic Azure Policy se může v Azure Government a dalších národních cloudech lišit. 
+> Dostupnost konkrétních definic zásad Azure se může lišit v Azure Government a dalších národních cloudech. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Zkontrolovali jste mapování ovládacího prvku ukázky HIPAA HITRUST details. Další informace o přehledu a způsobu nasazení této ukázky najdete v následujících článcích:
+Zkontrolovali jste mapování ovládacích prvku ukázky plánu HIPAA HITRUST. Dále navštivte následující články, kde se dozvíte o přehledu a o tom, jak tuto ukázku nasadit:
 
 > [!div class="next step action"]
-> [HIPAA HiTRUST Details-Overview](./control-mapping.md)
-> [HIPAA HiTRUST Details-Deploy Steps](./deploy.md)
+> [Plán HIPAA HITRUST – přehled](./control-mapping.md)
+> [plánu HIPAA HITRUST – nasazení kroků](./deploy.md)
 
 Další články věnované podrobným plánům a postupu jejich využití:
 
-- Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
-- Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)
-- Další informace o přizpůsobení [pořadí podrobných plánů](../../concepts/sequencing-order.md)
-- Použití [zamykání prostředků podrobného plánu](../../concepts/resource-locking.md)
-- Další informace o [aktualizaci existujících přiřazení](../../how-to/update-existing-assignments.md)
+- Přečtěte si o [životním cyklu podrobného plánu](../../concepts/lifecycle.md).
+- Pochopit, jak používat [statické a dynamické parametry](../../concepts/parameters.md).
+- Naučte se přizpůsobit [pořadí sekvencování podrobných plánů](../../concepts/sequencing-order.md).
+- Zjistěte, jak využít [zamykání prostředků podrobného plánu](../../concepts/resource-locking.md).
+- Přečtěte si, jak [aktualizovat existující přiřazení](../../how-to/update-existing-assignments.md).

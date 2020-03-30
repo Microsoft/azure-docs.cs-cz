@@ -1,37 +1,37 @@
 ---
-title: Zobrazit data o přenosech na mapě Androidu | Mapy Microsoft Azure
-description: V tomto článku se dozvíte, jak zobrazit data o přenosech na mapě pomocí Android SDK Microsoft Azure Maps.
-author: farah-alyasari
-ms.author: v-faalya
+title: Zobrazit dopravní údaje na mapě android | Mapy Microsoft Azure
+description: V tomto článku se dozvíte, jak zobrazit data o provozu na mapě pomocí sady Microsoft Azure Maps Android SDK.
+author: philmea
+ms.author: philmea
 ms.date: 02/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 37de55d671bb19cfcd9fd494c2e76f658fc7db21
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: e5611eeb08ac370e12cf452d57a87e449fbd80da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249499"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335380"
 ---
-# <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Zobrazit data o přenosech na mapě pomocí Azure Maps Android SDK
+# <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Zobrazení provozních dat na mapě pomocí sady Azure Maps SDK pro Android
 
-Data toku a data incidentů jsou dva typy dat přenosů, které lze zobrazit na mapě. V této příručce se dozvíte, jak zobrazit oba typy dat přenosů. Data incidentů se skládají z bodových a řádkových dat pro věci, jako jsou konstrukce, uzavření provozu a nehody. Data toku zobrazují metriky týkající se toku provozu na cestách.
+Data toku a incidenty jsou dva typy provozních dat, které lze zobrazit na mapě. Tato příručka ukazuje, jak zobrazit oba typy provozních dat. Údaje o incidentech se skládají z údajů o bodových a linkových datech pro věci, jako jsou konstrukce, uzavírky silnic a nehody. Údaje o toku zobrazují metriky o toku provozu na silnici.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Než budete moci zobrazit provoz na mapě, je třeba [vytvořit účet Azure](quick-demo-map-app.md#create-an-account-with-azure-maps)a [získat klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account). Pak je nutné nainstalovat [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) a načíst mapu.
+Než budete moci zobrazit provoz na mapě, musíte [vytvořit účet Azure](quick-demo-map-app.md#create-an-account-with-azure-maps)a získat klíč [předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account). Potom je potřeba nainstalovat [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) a načíst mapu.
 
-## <a name="incidents-traffic-data"></a>Data o provozu incidentů 
+## <a name="incidents-traffic-data"></a>Údaje o provozu incidentů 
 
-Aby bylo možné volat `setTraffic` a `incidents`, bude nutné importovat následující knihovny:
+Chcete-li volat, `setTraffic` je třeba importovat `incidents`následující knihovny a:
 
 ```java
 import static com.microsoft.com.azure.maps.mapcontrol.options.TrafficOptions.incidents;
 ```
 
- Následující fragment kódu ukazuje, jak zobrazit data o přenosech na mapě. Do metody `incidents` předáte logickou hodnotu a předáte ji do metody `setTraffic`. 
+ Následující fragment kódu ukazuje, jak zobrazit dopravní data na mapě. Předáme metodě logickou `incidents` hodnotu a předáme ji metodě. `setTraffic` 
 
 ```java
 protected void onCreate(Bundle savedInstanceState) {
@@ -42,23 +42,23 @@ protected void onCreate(Bundle savedInstanceState) {
 }
 ```
 
-## <a name="flow-traffic-data"></a>Data toku přenosu dat
+## <a name="flow-traffic-data"></a>Údaje o toku
 
-Nejprve bude nutné importovat následující knihovny, aby bylo možné volat `setTraffic` a `flow`:
+Chcete-li volat, `setTraffic` musíte nejprve importovat `flow`následující knihovny a:
 
 ```java
 import com.microsoft.azure.maps.mapcontrol.options.TrafficFlow;
 import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
 ```
 
-Pomocí následujícího fragmentu kódu nastavte data toku provozu. Podobně jako u kódu v předchozí části předáte vrácenou hodnotu metody `flow` metodě `setTraffic`. Existují čtyři hodnoty, které lze předat `flow`a každá hodnota by aktivovala `flow`, aby vrátila příslušnou hodnotu. Návratová hodnota `flow` se pak předává jako argument pro `setTraffic`. Tyto čtyři hodnoty najdete v následující tabulce:
+K nastavení dat toku provozu použijte následující fragment kódu. Podobně jako kód v předchozí části předáme `flow` `setTraffic` metodě vrácenou hodnotu metody. Existují čtyři hodnoty, které `flow`mohou být předány `flow` do , a každá hodnota by aktivační událost vrátit příslušnou hodnotu. Vrácená hodnota `flow` bude pak předána `setTraffic`jako argument . Následující čtyři hodnoty naleznete v následující tabulce:
 
 | | |
 | :-- | :-- |
-| TrafficFlow. NONE | Nezobrazuje data o přenosech na mapě. |
-| TrafficFlow. relativní | Zobrazuje přenosová data, která se vztahují k rychlosti volného toku provozu. |
-| TrafficFlow. RELATIVE_DELAY | Zobrazí oblasti, které jsou pomalejší než průměrná očekávaná prodleva. |
-| TrafficFlow. absolutní | Zobrazuje absolutní rychlost všech vozidel na cestách. |
+| TrafficFlow.NONE | Nezobrazuje dopravní data na mapě |
+| TrafficFlow.RELATIVNÍ | Zobrazuje dopravní údaje, které jsou relativní vzhledem k rychlosti volného toku na silnici. |
+| TrafficFlow.RELATIVE_DELAY | Zobrazí oblasti, které jsou pomalejší než průměrná očekávaná prodleva. |
+| TrafficFlow.ABSOLUTE | Zobrazuje absolutní rychlost všech vozidel na silnici |
 
 ```java
 protected void onCreate(Bundle savedInstanceState) {
@@ -69,11 +69,11 @@ protected void onCreate(Bundle savedInstanceState) {
 }
 ```
 
-## <a name="show-incident-traffic-data-by-clicking-a-feature"></a>Zobrazit data o provozu incidentu kliknutím na funkci
+## <a name="show-incident-traffic-data-by-clicking-a-feature"></a>Zobrazení provozních údajů o incidentech kliknutím na funkci
 
-Chcete-li získat incidenty pro konkrétní funkci, můžete použít následující kód. Při kliknutí na funkci logika kódu zkontroluje incidenty a vytvoří zprávu o incidentu. V dolní části obrazovky se zobrazí zpráva s podrobnostmi.
+Chcete-li získat incidenty pro konkrétní funkci, můžete použít níže uvedený kód. Po kliknutí na funkci logika kódu zkontroluje incidenty a vytvoří zprávu o incidentu. V dolní části obrazovky se zobrazí zpráva s podrobnostmi.
 
-1. Nejprve je třeba upravit **> rozložení res > activity_main. XML**, aby vypadala níže. `mapcontrol_centerLat`, `mapcontrol_centerLng`a `mapcontrol_zoom` můžete nahradit požadovanými hodnotami. Odvolání, úroveň přiblížení je hodnota mezi 0 a 22. Na úrovni přiblížení 0 se celý svět vejde na jednu dlaždici.
+1. Nejprve je třeba upravit **rozložení res > > activity_main.xml**, aby vypadalo jako ten níže. Můžete nahradit `mapcontrol_centerLat`, `mapcontrol_centerLng`a `mapcontrol_zoom` požadované hodnoty. Odvolání, úroveň přiblížení je hodnota mezi 0 a 22. Při úrovni přiblížení 0 se celý svět vejde na jednu dlaždici.
 
    ```XML
    <?xml version="1.0" encoding="utf-8"?>
@@ -96,7 +96,7 @@ Chcete-li získat incidenty pro konkrétní funkci, můžete použít následuj�
    </FrameLayout>
    ```
 
-2. Do souboru **MainActivity. Java** přidejte následující kód. Balíček je ve výchozím nastavení zahrnutý, proto se ujistěte, že váš balíček zůstane v horní části.
+2. Přidejte následující kód do souboru **MainActivity.java.** Balíček je součástí ve výchozím nastavení, takže se ujistěte, že váš balíček nahoře.
 
    ```java
    package <yourpackagename>;
@@ -221,26 +221,26 @@ Chcete-li získat incidenty pro konkrétní funkci, můžete použít následuj�
    }
    ```
 
-3. Po začlenění výše uvedeného kódu do aplikace budete moci kliknout na funkci a zobrazit podrobnosti o incidentech provozu. V závislosti na hodnotách Zeměpisná šířka a délka a úroveň přiblížení, které jste použili v souboru **activity_main. XML** , se zobrazí podobné výsledky jako na následujícím obrázku:
+3. Jakmile do aplikace začleníte výše uvedený kód, budete moci kliknout na funkci a zobrazit podrobnosti o dopravních událostech. V závislosti na zeměpisné šířce, zeměpisné délky a hodnotách úrovně přiblížení, které jste použili v souboru **activity_main.xml,** se zobrazí výsledky podobné následujícímu obrázku:
 
    <center>
 
-   ![Incident – přenos na mapě](./media/how-to-show-traffic-android/android-traffic.png)
+   ![Incident-provoz na mapě](./media/how-to-show-traffic-android/android-traffic.png)
 
    </center>
 
 ## <a name="next-steps"></a>Další kroky
 
-V následujících průvodcích se dozvíte, jak na mapu přidat další data:
+V následujících průvodcích se dozvíte, jak do mapy přidat další data:
 
 > [!div class="nextstepaction"]
-> [Přidat vrstvu symbolů](how-to-add-symbol-to-android-map.md)
+> [Přidání vrstvy symbolů](how-to-add-symbol-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Přidat dlaždicovou vrstvu](how-to-add-tile-layer-android-map.md)
+> [Přidání vrstvy dlaždic](how-to-add-tile-layer-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Přidat obrazce do mapy pro Android](how-to-add-shapes-to-android-map.md)
+> [Přidání obrazců do mapy androida](how-to-add-shapes-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Zobrazit informace o funkci](display-feature-information-android.md)
+> [Zobrazení informací o funkci](display-feature-information-android.md)

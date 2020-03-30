@@ -5,23 +5,23 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: MicrosoftHelp@twilio.com
 ms.openlocfilehash: 8acb75f1cac83595da88a4a5ffa33102136266f2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67175033"
 ---
-## <a name="AdditionalServices"></a>Jak: Pomocí dalších služeb Twilio
-Kromě příkladů uvedených v tomto poli Twilio nabízí rozhraní API založeného na webu, která vám umožní využívat další funkce platformy Twilio vaše aplikace Azure. Úplné podrobnosti najdete v tématu [dokumentace k rozhraní API Twilia][twilio_api_documentation].
+## <a name="how-to-use-additional-twilio-services"></a><a name="AdditionalServices"></a>Postup: Použití dalších služeb Twilio
+Kromě příkladů uvedených zde nabízí Twilio webová řešení API, která můžete použít k využití dalších funkcí Twilio z vaší aplikace Azure. Podrobné informace naleznete v [dokumentaci k rozhraní TWILIO API][twilio_api_documentation].
 
-## <a name="NextSteps"></a>Další kroky
-Teď, když jste se naučili základy služba Twilio, použijte tyto odkazy na další informace:
+## <a name="next-steps"></a><a name="NextSteps"></a>Další kroky
+Nyní, když jste se naučili základy služby Twilio, postupujte podle následujících odkazů a dozvíte se více:
 
-* [Pokyny pro zabezpečení platformy Twilio][twilio_security_guidelines]
-* [Twilio HowTos a příklady kódu][twilio_howtos]
-* [Kurzy rychlý start Twilio][twilio_quickstarts] 
-* [Twilio na Githubu][twilio_on_github]
-* [Obraťte se na podporu Twilio][twilio_support]
+* [Bezpečnostní pokyny Twilio][twilio_security_guidelines]
+* [Twilio HowTos a příklad kódu][twilio_howtos]
+* [Úvodní kurzy rychlého startu Twilio][twilio_quickstarts] 
+* [Twilio na GitHubu][twilio_on_github]
+* [Promluvte si s podporou Twilio][twilio_support]
 
 [twilio_api_documentation]: http://www.twilio.com/api
 [twilio_security_guidelines]: http://www.twilio.com/docs/security

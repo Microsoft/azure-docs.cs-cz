@@ -1,6 +1,6 @@
 ---
-title: Řešení Azure VMware (AVS) – služba
-description: V této části najdete přehled služby a konceptů služby AVS.
+title: Řešení Azure VMware od CloudSimple – služba
+description: Obsahuje přehled cloudových služeb a konceptů.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,21 +8,21 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d09c8c34093e7d33122f934138ff9fdf4842508e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d128a248c2e6e1e2e35e3b633975ba081e77f028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024946"
 ---
-# <a name="avs-service-overview"></a>Služba AVS – přehled služby
+# <a name="cloudsimple-service-overview"></a>Přehled služby CloudSimple
 
-Služba AVS umožňuje využívat řešení Azure VMware pomocí služby AVS. Vytvořením služby můžete koupit uzly, rezervovat uzly a vytvořit privátní cloudy služby AVS. Službu AVS můžete vytvořit v každé oblasti Azure, kde je k dispozici služba AVS. Služba prostřednictvím služby AVS definuje hraniční síť řešení Azure VMware. Hraniční síť podporuje služby, které zahrnují připojení VPN, ExpressRoute a Internet k privátním cloudům služby AVS.
+Služba CloudSimple umožňuje využívat řešení Azure VMware od CloudSimple.  Vytvoření služby umožňuje zakoupit uzly, rezervovat uzly a vytvořit privátní cloudy.  Službu CloudSimple vytvoříte v každé oblasti Azure, kde je služba CloudSimple dostupná. Služba definuje hraniční síť řešení Azure VMware podle CloudSimple. Hraniční síť podporuje služby, které zahrnují VPN, ExpressRoute a připojení k internetu do privátních cloudů.
 
 ## <a name="gateway-subnet"></a>Podsíť brány
 
-Pro každou službu AVS se vyžaduje podsíť brány a je jedinečná pro oblast, ve které je vytvořená. Podsíť brány se používá při vytváření hraniční sítě a vyžaduje blok CIDR/28. Adresní prostor podsítě brány musí být jedinečný. Nesmí se překrývat s žádnou sítí, která komunikuje s prostředím AVS. Sítě, které komunikují se službou AVS, zahrnují místní sítě a Azure Virtual Network. Po vytvoření nelze odstranit podsíť brány. Podsíť brány se odebere, když se služba odstraní.
+Podsíť brány je vyžadována pro službu CloudSimple a je jedinečná pro oblast, ve které je vytvořena. Podsíť brány se používá při vytváření hraniční sítě a vyžaduje blok CIDR /28.  Adresní prostor podsítě brány musí být jedinečný. Nesmí se překrývat s žádnou sítí, která komunikuje s prostředím CloudSimple. Sítě, které komunikují s CloudSimple patří místní sítě a virtuální sítě Azure.  Podsíť brány nelze po vytvoření odstranit.  Podsíť brány je odebrána při odstranění služby.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Naučte se [vytvořit službu AVS v Azure](quickstart-create-cloudsimple-service.md).
+* Přečtěte si, jak [vytvořit službu CloudSimple v Azure](quickstart-create-cloudsimple-service.md).

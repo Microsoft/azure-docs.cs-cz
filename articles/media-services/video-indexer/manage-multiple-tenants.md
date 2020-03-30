@@ -1,6 +1,6 @@
 ---
-title: Správa více tenantů pomocí Video Indexer – Azure
-description: Tento článek navrhuje různé možnosti integrace pro správu více tenantů pomocí Video Indexer.
+title: Správa více klientů pomocí Video Indexer – Azure
+description: Tento článek navrhuje různé možnosti integrace pro správu více klientů s Video Indexer.
 services: media-services
 documentationcenter: ''
 author: ika-microsoft
@@ -14,68 +14,68 @@ ms.custom: ''
 ms.date: 05/15/2019
 ms.author: ikbarmen
 ms.openlocfilehash: 18f2cf3daa281400151ba223e1735e7138d97e8e
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76990500"
 ---
 # <a name="manage-multiple-tenants"></a>Správa několika klientů
 
-Tento článek popisuje různé možnosti správy více tenantů pomocí Video Indexer. Vyberte metodu, která je nejlépe vhodná pro váš scénář:
+Tento článek popisuje různé možnosti pro správu více klientů s Video Indexer. Zvolte metodu, která je nejvhodnější pro váš scénář:
 
-* Video Indexer účet na tenanta
-* Jeden Video Indexer účet pro všechny klienty
-* Předplatné Azure na tenanta
+* Účet video indexeru na klienta
+* Účet jednoho video indexeru pro všechny klienty
+* Předplatné Azure na klienta
 
-## <a name="video-indexer-account-per-tenant"></a>Video Indexer účet na tenanta
+## <a name="video-indexer-account-per-tenant"></a>Účet video indexeru na klienta
 
-Při použití této architektury se pro každého tenanta vytvoří účet Video Indexer. Klienti mají úplnou izolaci v trvalé a výpočetní vrstvě.  
+Při použití této architektury je vytvořen účet Video Indexer pro každého klienta. Klienti mají úplnou izolaci v trvalé a výpočetní vrstvy.  
 
-![Video Indexer účet na tenanta](./media/manage-multiple-tenants/video-indexer-account-per-tenant.png)
+![Účet video indexeru na klienta](./media/manage-multiple-tenants/video-indexer-account-per-tenant.png)
 
 ### <a name="considerations"></a>Požadavky
 
-* Zákazníci nesdílejí účty úložiště (Pokud je ručně nenakonfiguroval zákazník).
-* Zákazníci nesdílejí výpočetní výkon (rezervované jednotky) a neovlivňují zpracování úloh navzájem.
+* Zákazníci nesdílejí účty úložiště (pokud není ručně nakonfigurován zákazníkem).
+* Zákazníci nesdílejí výpočetní prostředky (rezervované jednotky) a nemají vliv na pracovní doby zpracování navzájem.
 * Klienta můžete snadno odebrat ze systému odstraněním účtu Video Indexer.
-* Není možné sdílet vlastní modely mezi klienty.
+* Neexistuje žádná možnost sdílet vlastní modely mezi tenanty.
 
-    Ujistěte se, že neexistuje žádný podnikový požadavek na sdílení vlastních modelů.
-* Těžší spravovat z důvodu několika účtů Video Indexer (a přidružených Media Services) na jednoho klienta.
+    Ujistěte se, že neexistuje žádný obchodní požadavek na sdílení vlastních modelů.
+* Těžší spravovat z důvodu více účtů Video Indexer (a přidružené media services) na klienta.
 
 > [!TIP]
-> Vytvořte uživatele s právy pro správu pro váš systém na [portálu video indexer Portal](https://api-portal.videoindexer.ai/) a pomocí AUTORIZAČNÍHO rozhraní API Poskytněte svým klientům příslušný [přístupový token účtu](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token).
+> Vytvořte uživatele správce pro váš systém na [portálu pro vývojáře videoindexeru](https://api-portal.videoindexer.ai/) a pomocí autorizačního rozhraní API poskytněte svým klientům příslušný [přístupový token účtu](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token).
 
-## <a name="single-video-indexer-account-for-all-users"></a>Jeden Video Indexer účet pro všechny uživatele
+## <a name="single-video-indexer-account-for-all-users"></a>Účet jednotného video indexeru pro všechny uživatele
 
-Při používání této architektury je zákazník zodpovědný za izolaci klientů. Všichni klienti musí používat jeden Video Indexer účet s jedním účtem Azure Media Service. Při nahrávání, vyhledávání nebo odstraňování obsahu bude zákazník potřebovat vyfiltrovat správné výsledky pro tohoto tenanta.
+Při použití této architektury je zákazník zodpovědný za izolaci klientů. Všichni klienti musí používat jeden účet Video Indexer s jedním účtem Azure Media Service. Při nahrávání, vyhledávání nebo odstranění obsahu bude zákazník muset filtrovat správné výsledky pro tohoto klienta.
 
-![Jeden Video Indexer účet pro všechny uživatele](./media/manage-multiple-tenants/single-video-indexer-account-for-all-users.png)
+![Účet jednotného video indexeru pro všechny uživatele](./media/manage-multiple-tenants/single-video-indexer-account-for-all-users.png)
 
-Díky této možnosti mohou být modely přizpůsobení (osoba, jazyk a značky) sdíleny nebo izolovány od klientů pomocí filtrování modelů.
+Pomocí této možnosti lze modely přizpůsobení (osoba, jazyk a značky) sdílet nebo izolovat mezi klienty filtrováním modelů podle tenanta.
 
-Při [nahrávání videí](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)můžete pro každého tenanta zadat jiný atribut oddílu. To umožní izolaci v [rozhraní API pro hledání](https://api-portal.videoindexer.ai/docs/services/operations/operations/Search-videos?). Zadáním atributu partition v rozhraní API pro hledání získáte jenom výsledky zadaného oddílu. 
+Při [nahrávání videí](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)můžete zadat jiný atribut oddílu na klienta. To umožní izolaci ve [vyhledávacím rozhraní API](https://api-portal.videoindexer.ai/docs/services/operations/operations/Search-videos?). Zadáním atributu oddílu v rozhraní API pro vyhledávání získáte pouze výsledky zadaného oddílu. 
 
 ### <a name="considerations"></a>Požadavky
 
-* Možnost sdílet obsah a přizpůsobit modely mezi klienty.
-* Jeden tenant má dopad na výkon jiných tenantů.
-* Zákazník musí vytvořit komplexní vrstvu správy nad Video Indexer.
+* Možnost sdílení obsahu a modelů přizpůsobení mezi klienty.
+* Jeden klient ovlivňuje výkon ostatních klientů.
+* Zákazník potřebuje vytvořit komplexní vrstvu správy nad video indexerem.
 
 > [!TIP]
-> Pomocí atributu [priority](upload-index-videos.md) můžete určit prioritu úloh klientů.
+> Atribut [priority](upload-index-videos.md) můžete použít k určení priority úloh nájemníků.
 
-## <a name="azure-subscription-per-tenant"></a>Předplatné Azure na tenanta 
+## <a name="azure-subscription-per-tenant"></a>Předplatné Azure na klienta 
 
-Když použijete tuto architekturu, bude mít každý tenant vlastní předplatné Azure. Pro každého uživatele vytvoříte nový účet Video Indexer v rámci předplatného tenanta.
+Při použití této architektury bude mít každý klient své vlastní předplatné Azure. Pro každého uživatele vytvoříte nový účet Video Indexer v předplatném klienta.
 
-![Předplatné Azure na tenanta](./media/manage-multiple-tenants/azure-subscription-per-tenant.png)
+![Předplatné Azure na klienta](./media/manage-multiple-tenants/azure-subscription-per-tenant.png)
 
 ### <a name="considerations"></a>Požadavky
 
 * Toto je jediná možnost, která umožňuje oddělení fakturace.
-* Tato integrace má větší nároky na správu než Video Indexer účet na tenanta. Pokud fakturace není požadavkem, doporučuje se použít jednu z dalších možností popsaných v tomto článku.
+* Tato integrace má větší režii na správu než účet Video Indexer na klienta. Pokud fakturace není požadavek, je doporučeno použít jednu z dalších možností popsaných v tomto článku.
 
 ## <a name="next-steps"></a>Další kroky
 

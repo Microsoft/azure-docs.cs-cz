@@ -1,6 +1,6 @@
 ---
-title: Monitorování a správa úloh Azure Stream Analytics pomocí prostředí PowerShell
-description: Tento článek popisuje, jak pomocí Azure Powershellu a rutiny pro monitorování a Správa úloh Azure Stream Analytics.
+title: Monitorování a správa úloh Azure Stream Analytics pomocí PowerShellu
+description: Tento článek popisuje, jak pomocí Azure PowerShellu a rutin ke sledování a správě úloh Azure Stream Analytics.
 author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
@@ -8,19 +8,19 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
 ms.openlocfilehash: 7781f35fe7c17e4a0f307f559945caf648b23f6a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75431707"
 ---
-# <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Monitorování a správa úlohy Stream Analytics s rutinami Azure Powershellu
-Zjistěte, jak monitorovat a Stream Analytics prostředky spravovat pomocí rutin prostředí Azure PowerShell a skriptů prostředí powershell, které jsou spouštěny základní úlohy Stream Analytics.
+# <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Sledování a správa úloh Stream Analytics pomocí rutin Azure PowerShell
+Zjistěte, jak monitorovat a spravovat prostředky Stream Analytics pomocí rutin Azure PowerShell a skriptování powershellu, které spouštějí základní úlohy Stream Analytics.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites-for-running-azure-powershell-cmdlets-for-stream-analytics"></a>Požadavky na spouštění rutin Azure Powershellu pro Stream Analytics
-* Vytvořte skupinu prostředků Azure v rámci vašeho předplatného. Následuje ukázkový skript Azure Powershellu. Informace o Azure Powershellu najdete v tématu [nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview);  
+## <a name="prerequisites-for-running-azure-powershell-cmdlets-for-stream-analytics"></a>Požadavky pro spuštění rutin Azure PowerShellpro Stream Analytics
+* Vytvořte skupinu prostředků Azure ve vašem předplatném. Následuje ukázkový skript Azure PowerShellu. Informace o Azure PowerShellu najdete v [tématu Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview);  
 
 Azure PowerShell 0.9.8:  
 
@@ -50,16 +50,16 @@ New-AzResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
 
 
 > [!NOTE]
-> Úlohy Stream Analytics vytvořené prostřednictvím kódu programu není nutné monitorování ve výchozím nastavení povolená.  Monitorování můžete na portálu Azure povolit ručně tak, že přejdete na stránku monitorování úlohy a kliknete na tlačítko Povolit, nebo to můžete provést programově podle kroků v části [Azure Stream Analytics-monitorovat Stream Analytics úlohy programově](stream-analytics-monitor-jobs.md).
+> Úlohy Služby Stream Analytics vytvořené programově nemají ve výchozím nastavení povoleno monitorování.  Monitorování můžete na webu Azure Portal povolit ručně tak, že přejdete na stránku sledování úloh a kliknete na tlačítko Povolit nebo to můžete provést programově podle kroků umístěných na [webu Azure Stream Analytics – monitorovat úlohy analýzy datového](stream-analytics-monitor-jobs.md)proudu programově .
 > 
 > 
 
-## <a name="azure-powershell-cmdlets-for-stream-analytics"></a>Rutiny Powershellu pro Stream Analytics pro Azure
-Následující rutiny prostředí Azure PowerShell slouží k monitorování a Správa úloh Azure Stream Analytics. Všimněte si, že prostředí Azure PowerShell má různé verze. 
-**V příklady uvedené první příkaz slouží pro prostředí Azure PowerShell 0.9.8, druhý příkaz je pro Azure PowerShell 1.0.** Příkazy Azure PowerShell 1,0 budou v příkazu vždy obsahovat "AZ".
+## <a name="azure-powershell-cmdlets-for-stream-analytics"></a>Rutiny Prostředí Azure PowerShell pro analýzu datových proudů
+Následující rutiny Azure PowerShellu se můžou použít ke sledování a správě úloh Azure Stream Analytics. Všimněte si, že Azure PowerShell má různé verze. 
+**V uvedených příkladech je první příkaz pro Azure PowerShell 0.9.8, druhý příkaz je pro Azure PowerShell 1.0.** Příkazy Azure PowerShell 1.0 bude mít vždy "Az" v příkazu.
 
 ### <a name="get-azurestreamanalyticsjob--get-azstreamanalyticsjob"></a>Get-AzureStreamAnalyticsJob | Get-AzStreamAnalyticsJob
-Obsahuje seznam všech úloh Stream Analytics, které jsou definované v zadané skupině prostředků nebo předplatného Azure nebo získá informace o úlohách o konkrétní úloze v rámci skupiny prostředků.
+Zobrazí seznam všech úloh Stream Analytics definovaných v předplatném Azure nebo v zadané skupině prostředků nebo získá informace o konkrétní úloze v rámci skupiny prostředků.
 
 **Příklad 1**
 
@@ -75,7 +75,7 @@ Azure PowerShell 1.0:
 Get-AzStreamAnalyticsJob
 ```
 
-Tento příkaz prostředí PowerShell vrátí informace o všech úloh Stream Analytics v rámci předplatného Azure.
+Tento příkaz PowerShellvrátí informace o všech úlohách Stream Analytics v předplatném Azure.
 
 **Příklad 2**
 
@@ -91,7 +91,7 @@ Azure PowerShell 1.0:
 Get-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US 
 ```
 
-Tento příkaz prostředí PowerShell vrátí informace o všech úloh Stream Analytics ve skupině prostředků StreamAnalytics výchozí Central US.
+Tento příkaz Prostředí PowerShell vrátí informace o všech úlohách Stream Analytics ve skupině prostředků StreamAnalytics-Default-Central-US.
 
 **Příklad 3**
 
@@ -107,10 +107,10 @@ Azure PowerShell 1.0:
 Get-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -Name StreamingJob
 ```
 
-Tento příkaz prostředí PowerShell vrátí informace o úloze Stream Analytics StreamingJob ve skupině prostředků StreamAnalytics výchozí Central US.
+Tento příkaz Prostředí PowerShell vrátí informace o úloze Stream Analytics StreamingJob ve skupině prostředků StreamAnalytics-Default-Central-US.
 
 ### <a name="get-azurestreamanalyticsinput--get-azstreamanalyticsinput"></a>Get-AzureStreamAnalyticsInput | Get-AzStreamAnalyticsInput
-Obsahuje seznam všech vstupních hodnot, které jsou definovány v zadané úloze Stream Analytics a získá informace o konkrétní vstup.
+Zobrazí seznam všech vstupů, které jsou definovány v zadané úloze Služby Stream Analytics, nebo získá informace o konkrétním vstupu.
 
 **Příklad 1**
 
@@ -126,7 +126,7 @@ Azure PowerShell 1.0:
 Get-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob
 ```
 
-Tento příkaz prostředí PowerShell vrátí informace o všech vstupů v úloze StreamingJob.
+Tento příkaz prostředí PowerShell vrátí informace o všech vstupech definovaných v úloze StreamingJob.
 
 **Příklad 2**
 
@@ -142,10 +142,10 @@ Azure PowerShell 1.0:
 Get-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �Name EntryStream
 ```
 
-Tento příkaz prostředí PowerShell vrátí informace o vstup s názvem EntryStream definované v rámci úlohy StreamingJob.
+Tento příkaz prostředí PowerShell vrátí informace o vstupu s názvem EntryStream definovanév úloze StreamingJob úlohy.
 
 ### <a name="get-azurestreamanalyticsoutput--get-azstreamanalyticsoutput"></a>Get-AzureStreamAnalyticsOutput | Get-AzStreamAnalyticsOutput
-Jsou uvedeny všechny výstupy, které jsou definovány v zadané úloze Stream Analytics a získá informace o konkrétní výstupu.
+Zobrazí seznam všech výstupů, které jsou definovány v zadané úloze Služby Stream Analytics, nebo získá informace o konkrétním výstupu.
 
 **Příklad 1**
 
@@ -161,7 +161,7 @@ Azure PowerShell 1.0:
 Get-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob
 ```
 
-Tento příkaz prostředí PowerShell vrátí informace o definované v rámci úlohy StreamingJob výstupy.
+Tento příkaz prostředí PowerShell vrátí informace o výstupech definovaných v úloze StreamingJob.
 
 **Příklad 2**
 
@@ -177,10 +177,10 @@ Azure PowerShell 1.0:
 Get-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �Name Output
 ```
 
-Tento příkaz prostředí PowerShell vrátí informace o výstupu s názvem definované v rámci úlohy StreamingJob výstup.
+Tento příkaz prostředí PowerShell vrátí informace o výstupu s názvem Výstup definovaný v úloze StreamingJob.
 
 ### <a name="get-azurestreamanalyticsquota--get-azstreamanalyticsquota"></a>Get-AzureStreamAnalyticsQuota | Get-AzStreamAnalyticsQuota
-Získá informace o kvótu počtu jednotek v určité oblasti streamování.
+Získá informace o kvótě jednotek streamování v zadané oblasti.
 
 **Příklad 1**
 
@@ -196,10 +196,10 @@ Azure PowerShell 1.0:
 Get-AzStreamAnalyticsQuota �Location "Central US" 
 ```
 
-Tento příkaz prostředí PowerShell vrátí informace o kvótách a využití jednotek streamování v oblasti USA (střed).
+Tento příkaz prostředí PowerShell vrátí informace o kvótě a využití jednotek streamování v oblasti Střední USA.
 
-### <a name="get-azurestreamanalyticstransformation--get-azstreamanalyticstransformation"></a>Get-AzureStreamAnalyticsTransformation | Get-AzStreamAnalyticsTransformation
-Získá informace o konkrétní transformace definované v úloze Stream Analytics.
+### <a name="get-azurestreamanalyticstransformation--get-azstreamanalyticstransformation"></a>Get-AzureStreamAnalyticsTransformace | Get-AzStreamAnalyticsTransformace
+Získá informace o konkrétní transformaci definované v úloze Stream Analytics.
 
 **Příklad 1**
 
@@ -215,18 +215,18 @@ Azure PowerShell 1.0:
 Get-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �Name StreamingJob
 ```
 
-Tento příkaz prostředí PowerShell vrátí informace o transformaci StreamingJob volat v rámci úlohy StreamingJob.
+Tento příkaz prostředí PowerShell vrátí informace o transformaci s názvem StreamingJob v úloze StreamingJob.
 
-### <a name="new-azurestreamanalyticsinput--new-azstreamanalyticsinput"></a>New-AzureStreamAnalyticsInput | New-AzStreamAnalyticsInput
-Vytvoří nový vstup do úlohy Stream Analytics nebo aktualizuje existující zadaný vstup.
+### <a name="new-azurestreamanalyticsinput--new-azstreamanalyticsinput"></a>Nový-AzureStreamAnalyticsInput | Nový-AzStreamAnalyticsInput
+Vytvoří nový vstup v rámci úlohy Stream Analytics nebo aktualizuje existující zadaný vstup.
 
-Název vstupu se dá nastavit v souboru .json nebo na příkazovém řádku. Pokud jsou zadány oba, název na příkazovém řádku musí být stejná jako ta, v souboru.
+Název vstupu lze zadat v souboru JSON nebo na příkazovém řádku. Pokud jsou zadány obě, název na příkazovém řádku musí být stejný jako název v souboru.
 
-Pokud zadáte vstup, který už existuje, a nezadáte parametr Force, bude tato rutina dotázána, jestli se má stávající vstup nahradit.
+Pokud zadáte vstup, který již existuje, a nezadáte parametr Force, rutina se zeptá, zda má být existující vstup nahrazen.
 
-Pokud zadáte parametr Force a zadáte existující název vstupu, bude vstup nahrazen bez potvrzení.
+Pokud zadáte parametr Force a existující vstupní název, vstup bude nahrazen bez potvrzení.
 
-Podrobné informace o struktuře a obsahu souborů JSON najdete v části věnované [Vytvoření vstupu (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-input] v [referenční knihovně REST API správy Stream Analytics][stream.analytics.rest.api.reference].
+Podrobné informace o struktuře a obsahu souboru JSON najdete v části [Vytvořit vstup (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-input] [v referenční knihovně rozhraní REST ROZHRANÍ API služby Stream Analytics][stream.analytics.rest.api.reference].
 
 **Příklad 1**
 
@@ -242,7 +242,7 @@ Azure PowerShell 1.0:
 New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �File "C:\Input.json" 
 ```
 
-Tento příkaz prostředí PowerShell vytvoří nový vstup ze souboru Input.JSON vypadá. Pokud stávající vstup s názvem zadaným v definici vstupní soubor je již definován, rutina se zeptá, jestli chcete jej nahradit.
+Tento příkaz prostředí PowerShell vytvoří nový vstup ze souboru Input.json. Pokud je již definován existující vstup s názvem zadaným v souboru definice vstupu, rutina se zeptá, zda má být nahrazen.
 
 **Příklad 2**
 
@@ -258,7 +258,7 @@ Azure PowerShell 1.0:
 New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �File "C:\Input.json" �Name EntryStream
 ```
 
-Tento příkaz prostředí PowerShell vytvoří nový vstup v úlohu nazvanou EntryStream. Pokud stávající vstup s tímto názvem je již definován, rutina se zeptá, jestli chcete jej nahradit.
+Tento příkaz prostředí PowerShell vytvoří nový vstup v úloze s názvem EntryStream. Pokud je již definován existující vstup s tímto názvem, rutina se zeptá, zda jej má nahradit.
 
 **Příklad 3**
 
@@ -274,18 +274,18 @@ Azure PowerShell 1.0:
 New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �File "C:\Input.json" �Name EntryStream -Force
 ```
 
-Tento příkaz prostředí PowerShell nahradí definici z existující vstupní zdroj s názvem EntryStream s definicí ze souboru.
+Tento příkaz prostředí PowerShell nahradí definici existujícího vstupního zdroje nazvaného EntryStream definicí ze souboru.
 
-### <a name="new-azurestreamanalyticsjob--new-azstreamanalyticsjob"></a>New-AzureStreamAnalyticsJob | New-AzStreamAnalyticsJob
-Vytvoří novou úlohu Stream Analytics v Microsoft Azure nebo aktualizuje definice existující zadanou úlohu.
+### <a name="new-azurestreamanalyticsjob--new-azstreamanalyticsjob"></a>Nová azurestreamanalyticsjob | Nová-AzStreamAnalyticsJob
+Vytvoří novou úlohu Stream Analytics v Microsoft Azure nebo aktualizuje definici existující zadané úlohy.
 
-V souboru .json nebo na příkazovém řádku lze zadat název úlohy. Pokud jsou zadány oba, název na příkazovém řádku musí být stejná jako ta, v souboru.
+Název úlohy lze zadat v souboru JSON nebo na příkazovém řádku. Pokud jsou zadány obě, název na příkazovém řádku musí být stejný jako název v souboru.
 
-Pokud zadáte název úlohy, která už existuje, a nezadáte parametr Force, rutina se zeptá, jestli má nahradit existující úlohu.
+Pokud zadáte název úlohy, která již existuje, a nezadáte parametr Force, rutina se zeptá, zda má být existující úloha nahrazena.
 
-Pokud zadáte parametr Force a zadáte existující název úlohy, definice úlohy bude nahrazena bez potvrzení.
+Pokud zadáte parametr Force a existující název úlohy, definice úlohy bude nahrazena bez potvrzení.
 
-Podrobné informace o struktuře a obsahu souborů JSON najdete v části [Stream Analytics úlohy][msdn-rest-api-create-stream-analytics-job] v [referenční knihovně REST API pro správu Stream Analytics][stream.analytics.rest.api.reference].
+Podrobné informace o struktuře a obsahu souboru JSON najdete v části [Vytvořit úlohu analýzy datového proudu][msdn-rest-api-create-stream-analytics-job] v referenční knihovně rozhraní REST ROZHRANÍ API [služby Stream Analytics][stream.analytics.rest.api.reference].
 
 **Příklad 1**
 
@@ -301,7 +301,7 @@ Azure PowerShell 1.0:
 New-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\JobDefinition.json" 
 ```
 
-Tento příkaz prostředí PowerShell vytvoří novou úlohu z definice v JobDefinition.json. Pokud existující úlohy s názvem zadaným v souboru definice úlohy je již definován, rutina se zeptá, jestli chcete jej nahradit.
+Tento příkaz prostředí PowerShell vytvoří novou úlohu z definice v jobdefinition.json. Pokud je již definována existující úloha s názvem zadaným v souboru definice úlohy, rutina se zeptá, zda ji má nahradit.
 
 **Příklad 2**
 
@@ -317,18 +317,18 @@ Azure PowerShell 1.0:
 New-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\JobDefinition.json" �Name StreamingJob -Force
 ```
 
-Tento příkaz prostředí PowerShell nahradí definici úlohy pro StreamingJob.
+Tento příkaz prostředí PowerShell nahrazuje definici úlohy pro StreamingJob.
 
-### <a name="new-azurestreamanalyticsoutput--new-azstreamanalyticsoutput"></a>New-AzureStreamAnalyticsOutput | New-AzStreamAnalyticsOutput
-Vytvoří nový výstup úlohy Stream Analytics nebo aktualizuje existující výstup.  
+### <a name="new-azurestreamanalyticsoutput--new-azstreamanalyticsoutput"></a>Nový výstup AzureStreamAnalytics | Nový-AzStreamAnalyticsOutput
+Vytvoří nový výstup v rámci úlohy Stream Analytics nebo aktualizuje existující výstup.  
 
-V souboru .json nebo na příkazovém řádku lze zadat název výstupu. Pokud jsou zadány oba, název na příkazovém řádku musí být stejná jako ta, v souboru.
+Název výstupu lze zadat v souboru JSON nebo na příkazovém řádku. Pokud jsou zadány obě, název na příkazovém řádku musí být stejný jako název v souboru.
 
-Pokud zadáte výstup, který již existuje, a nezadáte parametr Force, bude tato rutina dotázána, zda má být stávající výstup nahrazen.
+Pokud zadáte výstup, který již existuje, a nezadáte parametr Force, rutina se zeptá, zda má být nahrazen existující výstup.
 
-Pokud zadáte parametr Force a zadáte existující název výstupu, bude výstup nahrazen bez potvrzení.
+Pokud zadáte parametr Force a existující název výstupu, bude výstup nahrazen bez potvrzení.
 
-Podrobné informace o struktuře a obsahu souborů JSON najdete v části věnované [Vytvoření výstupu (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-output] v [referenční knihovně REST API správy Stream Analytics][stream.analytics.rest.api.reference].
+Podrobné informace o struktuře a obsahu souboru JSON najdete v části [Vytvořit výstup (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-output] [v referenční knihovně rozhraní REST ROZHRANÍ API služby Stream Analytics .][stream.analytics.rest.api.reference]
 
 **Příklad 1**
 
@@ -344,7 +344,7 @@ Azure PowerShell 1.0:
 New-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\Output.json" �JobName StreamingJob �Name output
 ```
 
-Tento příkaz prostředí PowerShell vytvoří nový výstup nazvaný "výstupní" v rámci úlohy StreamingJob. Pokud stávající výstup s tímto názvem je již definován, rutina se zeptá, jestli chcete jej nahradit.
+Tento příkaz prostředí PowerShell vytvoří nový výstup s názvem "výstup" v úloze StreamingJob. Pokud je již definován existující výstup s tímto názvem, rutina se zeptá, zda jej má nahradit.
 
 **Příklad 2**
 
@@ -360,18 +360,18 @@ Azure PowerShell 1.0:
 New-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\Output.json" �JobName StreamingJob �Name output -Force
 ```
 
-Tento příkaz prostředí PowerShell nahradí definici "výstupní" v rámci úlohy StreamingJob.
+Tento příkaz prostředí PowerShell nahrazuje definici "výstupu" v úloze StreamingJob.
 
-### <a name="new-azurestreamanalyticstransformation--new-azstreamanalyticstransformation"></a>New-AzureStreamAnalyticsTransformation | New-AzStreamAnalyticsTransformation
-Vytvoří nové transformace v rámci úlohy Stream Analytics nebo aktualizuje existující transformace.
+### <a name="new-azurestreamanalyticstransformation--new-azstreamanalyticstransformation"></a>Nová transformace AzureStreamAnalytics | Nová-AzStreamAnalyticsTransformace
+Vytvoří novou transformaci v rámci úlohy Stream Analytics nebo aktualizuje existující transformaci.
 
-V souboru .json nebo na příkazovém řádku lze zadat název transformace. Pokud jsou zadány oba, název na příkazovém řádku musí být stejná jako ta, v souboru.
+Název transformace lze zadat v souboru JSON nebo na příkazovém řádku. Pokud jsou zadány obě, název na příkazovém řádku musí být stejný jako název v souboru.
 
-Pokud zadáte transformaci, která už existuje, a nezadáte parametr Force, rutina se zeptá, jestli má nahradit stávající transformaci.
+Pokud zadáte transformaci, která již existuje a nezadáte Force parametr, rutina se zeptá, zda nahradit existující transformace.
 
-Zadáte-li parametr Force a zadáte existující název transformace, bude transformace nahrazena bez potvrzení.
+Pokud zadáte parametr Force a zadáte existující název transformace, transformace bude nahrazena bez potvrzení.
 
-Podrobné informace o struktuře a obsahu souborů JSON najdete v části věnované [Vytvoření transformace (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-transformation] v [referenční knihovně REST API správy Stream Analytics][stream.analytics.rest.api.reference].
+Podrobné informace o struktuře a obsahu souboru JSON najdete v části [Vytvořit transformaci (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-transformation] [v referenční knihovně rozhraní REST ROZHRANÍ API služby Stream Analytics .][stream.analytics.rest.api.reference]
 
 **Příklad 1**
 
@@ -387,7 +387,7 @@ Azure PowerShell 1.0:
 New-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\Transformation.json" �JobName StreamingJob �Name StreamingJobTransform
 ```
 
-Tento příkaz prostředí PowerShell vytvoří nové transformace StreamingJobTransform volat v rámci úlohy StreamingJob. Pokud stávající transformace je již definován s tímto názvem, rutina se zeptá, jestli chcete jej nahradit.
+Tento příkaz Prostředí PowerShell vytvoří novou transformaci nazvanou StreamingJobTransform v úloze StreamingJob. Pokud existující transformace je již definována s tímto názvem, rutina se zeptá, zda ji nahradit.
 
 **Příklad 2**
 
@@ -403,11 +403,11 @@ Azure PowerShell 1.0:
 New-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\Transformation.json" �JobName StreamingJob �Name StreamingJobTransform -Force
 ```
 
- Tento příkaz prostředí PowerShell nahradí definici StreamingJobTransform v úloze StreamingJob.
+ Tento příkaz prostředí PowerShell nahrazuje definici Položky StreamingJobTransform v úloze StreamingJob.
 
-### <a name="remove-azurestreamanalyticsinput--remove-azstreamanalyticsinput"></a>Remove-AzureStreamAnalyticsInput | Remove-AzStreamAnalyticsInput
-Asynchronně odstraní specifický vstup z úlohy Stream Analytics v Microsoft Azure.  
-Zadáte-li parametr Force, bude vstup odstraněn bez potvrzení.
+### <a name="remove-azurestreamanalyticsinput--remove-azstreamanalyticsinput"></a>Odebrat-AzureStreamAnalyticsInput | Odebrat-AzStreamAnalyticsInput
+Asynchronně odstraní konkrétní vstup z úlohy Stream Analytics v Microsoft Azure.  
+Pokud zadáte parametr Force, vstup bude odstraněn bez potvrzení.
 
 **Příklad 1**
 
@@ -425,9 +425,9 @@ Remove-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central
 
 Tento příkaz prostředí PowerShell odebere vstupní EventStream v úloze StreamingJob.  
 
-### <a name="remove-azurestreamanalyticsjob--remove-azstreamanalyticsjob"></a>Remove-AzureStreamAnalyticsJob | Remove-AzStreamAnalyticsJob
-Asynchronně odstraní určité úlohy Stream Analytics v Microsoft Azure.  
-Pokud zadáte parametr Force, úloha se odstraní bez potvrzení.
+### <a name="remove-azurestreamanalyticsjob--remove-azstreamanalyticsjob"></a>Odebrat AzureStreamAnalyticsJob | Odebrat-AzStreamAnalyticsJob
+Asynchronně odstraní konkrétní úlohu Stream Analytics v Microsoft Azure.  
+Pokud zadáte parametr Force, úloha bude odstraněna bez potvrzení.
 
 **Příklad 1**
 
@@ -443,11 +443,11 @@ Azure PowerShell 1.0:
 Remove-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US �Name StreamingJob 
 ```
 
-Tento příkaz prostředí PowerShell odebere StreamingJob úlohy.  
+Tento příkaz prostředí PowerShell odebere úlohu StreamingJob.  
 
-### <a name="remove-azurestreamanalyticsoutput--remove-azstreamanalyticsoutput"></a>Remove-AzureStreamAnalyticsOutput | Remove-AzStreamAnalyticsOutput
-Asynchronně odstraní konkrétní výstupu z úlohy Stream Analytics v Microsoft Azure.  
-Zadáte-li parametr Force, bude výstup odstraněn bez potvrzení.
+### <a name="remove-azurestreamanalyticsoutput--remove-azstreamanalyticsoutput"></a>Odebrat-AzureStreamAnalyticsOutput | Odebrat-AzStreamAnalyticsOutput
+Asynchronně odstraní konkrétní výstup z úlohy Stream Analytics v Microsoft Azure.  
+Pokud zadáte parametr Force, výstup bude odstraněn bez potvrzení.
 
 **Příklad 1**
 
@@ -463,10 +463,10 @@ Azure PowerShell 1.0:
 Remove-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US �JobName StreamingJob �Name Output
 ```
 
-Toto prostředí PowerShell příkaz odebere výstup výstup úlohy StreamingJob.  
+Tento příkaz prostředí PowerShell odebere výstupní výstup v úloze StreamingJob.  
 
 ### <a name="start-azurestreamanalyticsjob--start-azstreamanalyticsjob"></a>Start-AzureStreamAnalyticsJob | Start-AzStreamAnalyticsJob
-Asynchronně nasadí a spustí úlohu Stream Analytics v Microsoft Azure.
+Asynchronně nasazuje a spouští úlohu Stream Analytics v Microsoft Azure.
 
 **Příklad 1**
 
@@ -482,10 +482,10 @@ Azure PowerShell 1.0:
 Start-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -Name StreamingJob -OutputStartMode CustomTime -OutputStartTime 2012-12-12T12:12:12Z
 ```
 
-Tento příkaz prostředí PowerShell spustí úlohu StreamingJob s časem zahájení vlastního výstupu nastavena na 12. prosince 2012, 12:12:12 UTC.
+Tento příkaz Prostředí PowerShell spustí úlohu StreamingJob s vlastní výstupní čas zahájení nastavena na 12 prosince 2012, 12:12:12 UTC.
 
-### <a name="stop-azurestreamanalyticsjob--stop-azstreamanalyticsjob"></a>Stop – AzureStreamAnalyticsJob | Stop – AzStreamAnalyticsJob
-Asynchronně zastaví úlohu Stream Analytics z běžící v Microsoft Azure a zruší prostředky, které byly, které byly používány. Definice úlohy a metadata zůstanou k dispozici v rámci vašeho předplatného prostřednictvím webu Azure portal a rozhraní API pro správu tak, aby úlohy lze upravit a restartovat. Vám nebude účtovat na úlohu v zastaveném stavu.
+### <a name="stop-azurestreamanalyticsjob--stop-azstreamanalyticsjob"></a>Stop-AzureStreamAnalyticsJob | Stop-AzStreamAnalyticsJob
+Asynchronně zastaví spuštění úlohy Stream Analytics v Microsoft Azure a zruší přidělení prostředků, které byly používány. Definice úlohy a metadata zůstanou dostupné v rámci vašeho předplatného prostřednictvím portálu Azure a rozhraní API pro správu, takže úlohu lze upravit a restartovat. Za úlohu v zastaveném stavu vám nebude účtován poplatek.
 
 **Příklad 1**
 
@@ -504,7 +504,7 @@ Stop-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US 
 Tento příkaz prostředí PowerShell zastaví úlohu StreamingJob.  
 
 ### <a name="test-azurestreamanalyticsinput--test-azstreamanalyticsinput"></a>Test-AzureStreamAnalyticsInput | Test-AzStreamAnalyticsInput
-Otestuje schopnost služby Stream Analytics pro připojení k zadaného vstupu.
+Testuje schopnost Stream Analytics připojit se k zadanému vstupu.
 
 **Příklad 1**
 
@@ -520,10 +520,10 @@ Azure PowerShell 1.0:
 Test-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US �JobName StreamingJob �Name EntryStream
 ```
 
-Tento příkaz prostředí PowerShell testů v StreamingJob vstupní EntryStream stav připojení.  
+Tento příkaz prostředí PowerShell testuje stav připojení vstupního EntryStream v streamingjobu.  
 
 ### <a name="test-azurestreamanalyticsoutput--test-azstreamanalyticsoutput"></a>Test-AzureStreamAnalyticsOutput | Test-AzStreamAnalyticsOutput
-Otestuje schopnost služby Stream Analytics pro připojení k zadaným výstupem.
+Testuje schopnost Stream Analytics připojit se k zadanému výstupu.
 
 **Příklad 1**
 
@@ -539,13 +539,13 @@ Azure PowerShell 1.0:
 Test-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US �JobName StreamingJob �Name Output
 ```
 
-Tato testy příkaz prostředí PowerShell stav připojení výstupu výstup v StreamingJob.  
+Tento příkaz prostředí PowerShell testuje stav připojení výstupního výstupu v streamingjobu.  
 
 ## <a name="get-support"></a>Získat podporu
-Potřebujete další pomoc, vyzkoušejte naše [fóru Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics). 
+Další pomoc našlápneme na fórum [Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics). 
 
 ## <a name="next-steps"></a>Další kroky
-* [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
+* [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
 * [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

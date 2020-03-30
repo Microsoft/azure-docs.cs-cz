@@ -1,6 +1,6 @@
 ---
-title: Livestream nastavení nízké latence v Azure Media Services | Microsoft Docs
-description: Toto téma obsahuje přehled nastavení Livestream s nízkou latencí a ukazuje, jak nastavit nízkou latenci.
+title: Nastavení nízké latence LiveEvent ve službě Azure Media Services | Dokumenty společnosti Microsoft
+description: Toto téma poskytuje přehled nastavení nízké latence LiveEvent a ukazuje, jak nastavit nízkou latenci.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,22 +14,22 @@ ms.topic: article
 ms.date: 04/22/2019
 ms.author: juliako
 ms.openlocfilehash: a82a0644fac099b568ab86ea213b98cd8e7d5c22
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78199644"
 ---
-# <a name="live-event-low-latency-settings"></a>Nastavení nízké latence události za provozu
+# <a name="live-event-low-latency-settings"></a>Nastavení nízké latence živé události
 
-Tento článek ukazuje, jak nastavit nízkou latenci pro [živou událost](https://docs.microsoft.com/rest/api/media/liveevents). Pojednává také o typických výsledcích, které vidíte při použití nastavení nízké latence v různých přehrávačích. Výsledky se liší v závislosti na síti CDN a latenci sítě.
+Tento článek ukazuje, jak nastavit nízkou latenci na [živé události](https://docs.microsoft.com/rest/api/media/liveevents). Popisuje také typické výsledky, které se zobrazí při použití nastavení s nízkou latencí v různých přehrávačích. Výsledky se liší v závislosti na CDN a latenci sítě.
 
-Chcete-li použít novou funkci **LowLatency** , nastavte **StreamOptionsFlag** na **LowLatency** na **Livestream**. Při vytváření [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) pro přehrávání HLS nastavte [LiveOutput. HLS. fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) na hodnotu 1. Jakmile je datový proud v provozu, můžete použít [Azure Media Player](https://ampdemo.azureedge.net/) (Ukázková stránka amp) a nastavit možnosti přehrávání tak, aby používaly profil heuristiky s nízkou latencí.
+Chcete-li použít novou funkci **LowLatency,** nastavte **StreamOptionsFlag** na **LowLatency** na **LiveEvent**. Při vytváření [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) pro přehrávání HLS nastavte [LiveOutput.Hls.fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) na 1. Jakmile je datový proud v provozu, můžete použít [Azure Media Player](https://ampdemo.azureedge.net/) (ukázková stránka AMP) a nastavit možnosti přehrávání pro použití "Profil heuristiky s nízkou latencí".
 
 > [!NOTE]
-> V současné době je LowLatency HeuristicProfile v Azure Media Player navržena pro přehrávání back-streamů v protokolu MPEG-SPOJOVNÍKu, a to buď pomocí CSF, nebo CMAFho formátu (například `format=mdp-time-csf` nebo `format=mdp-time-cmaf`). 
+> V současné době LowLatency HeuristicProfile v Programu Azure Media Player je určen pro přehrávání datových proudů v `format=mdp-time-csf` protokolu `format=mdp-time-cmaf`MPEG-DASH, s formátem CSF nebo CMAF (například nebo ). 
 
-Následující příklad rozhraní .NET ukazuje, jak nastavit **LowLatency** na **Livestream**:
+Následující příklad rozhraní .NET ukazuje, jak nastavit **LowLatency** na **LiveEvent**:
 
 ```csharp
 LiveEvent liveEvent = new LiveEvent(
@@ -52,31 +52,31 @@ LiveEvent liveEvent = new LiveEvent(
         );
 ```                
 
-Podívejte se na úplný příklad: [MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126).
+Podívejte se na celý příklad: [MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126).
 
 ## <a name="live-events-latency"></a>Latence živých událostí
 
-V následujících tabulkách jsou uvedeny typické výsledky pro latenci (když je povolený příznak LowLatency) v Media Services, měřeno od doby, kdy kanál příspěvků dosáhne toho, kdy je v přehrávači vidět přehrávání. Chcete-li použít nízkou latenci, měli byste nastavení kodéru vyladit až na 1 sekundu "délku" skupiny obrázků (skupinu GOP). Při použití větší skupinu GOP délky minimalizujete využití šířky pásma a omezíte přenosovou rychlost při stejné frekvenci snímků. Je to obzvláště užitečné u videí s menším pohybem.
+Následující tabulky zobrazují typické výsledky latence (pokud je povolen příznak LowLatency) ve službě Media Services, měřeno od okamžiku, kdy kanál příspěvku dosáhne služby, až do okamžiku, kdy divák uvidí přehrávání v přehrávači. Chcete-li optimálně používat nízkou latenci, měli byste nastavení kodéru naladit na 1 sekundu délky "Skupina obrázků" (GOP). Při použití vyšší délky přídě minimalizujete spotřebu šířky pásma a snižujete datový tok při stejném kmitočetu snímků. To je výhodné zejména ve videích s menším pohybem.
 
 ### <a name="pass-through"></a>Průchod 
 
-||2S – skupinu GOP s povolenou nízkou latencí|1 skupinu GOP nízká latence povolena|
+||2s GOP s nízkou latencí povoleno|1s GOP s nízkou latencí povoleno|
 |---|---|---|
-|POMLČKa v AMP|10 s|8 s|
-|HLS v nativním přehrávači pro iOS|14 s|10 s|
+|DASH v AMP|10.|8s|
+|HLS na nativním přehrávači iOS|14s|10.|
 
 ### <a name="live-encoding"></a>Kódování v reálném čase
 
-||2S – skupinu GOP s povolenou nízkou latencí|1 skupinu GOP nízká latence povolena|
+||2s GOP s nízkou latencí povoleno|1s GOP s nízkou latencí povoleno|
 |---|---|---|
-|POMLČKa v AMP|14 s|10 s|
-|HLS v nativním přehrávači pro iOS|18s|13s|
+|DASH v AMP|14s|10.|
+|HLS na nativním přehrávači iOS|18s|13s|
 
 > [!NOTE]
-> Koncová latence se může lišit v závislosti na podmínkách místní sítě nebo při zavedení vrstvy mezipaměti CDN. Měli byste testovat přesnou konfiguraci.
+> Latence od konce se může lišit v závislosti na podmínkách místní sítě nebo zavedením vrstvy mezipaměti CDN. Měli byste otestovat přesné konfigurace.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Přehled živého streamování](live-streaming-overview.md)
-- [Kurz živého streamování](stream-live-tutorial-with-api.md)
+- [Živé streamování tutorial](stream-live-tutorial-with-api.md)
 

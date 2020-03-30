@@ -1,7 +1,7 @@
 ---
-title: Co je instance služby COMPUTE Azure Machine Learning?
+title: Co je výpočetní instance Azure Machine Learning?
 titleSuffix: Azure Machine Learning
-description: Přečtěte si o Azure Machine Learning výpočetní instanci, plně spravované cloudové pracovní stanici.
+description: Seznamte se s výpočetní instancí Azure Machine Learning, plně spravovanou cloudovou pracovní stanicí.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,40 +10,40 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
 ms.openlocfilehash: 280851b2fea0b8100a7d0f8ec8105109a41c8c83
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79283924"
 ---
-# <a name="what-is-an-azure-machine-learning-compute-instance"></a>Co je instance služby COMPUTE Azure Machine Learning?
+# <a name="what-is-an-azure-machine-learning-compute-instance"></a>Co je výpočetní instance Azure Machine Learning?
 
-Instance COMPUTE Azure Machine Learning (Preview) je plně spravovaná cloudová pracovní stanice pro odborníky na data. 
+Výpočetní instance Azure Machine Learning (preview) je plně spravovaná cloudová pracovní stanice pro datové vědce. 
 
-Výpočetní instance usnadňují začátek vývoje Azure Machine Learning a také poskytují možnosti pro správu a připravenost pro správce IT.  
+Výpočetní instance usnadňují zahájení vývoje Azure Machine Learning a poskytují možnosti správy a připravenosti podniku pro správce IT.  
 
-Použijte výpočetní instanci jako vaše plně nakonfigurované a spravované vývojové prostředí v cloudu.
+Použijte výpočetní instanci jako plně nakonfigurované a spravované vývojové prostředí v cloudu.
 
-Výpočetní instance se obvykle používají jako vývojová prostředí.  Můžou se také používat jako výpočetní cíl pro školení a Inferencing pro vývoj a testování.  Pro velké úlohy je [Azure Machine Learning výpočetní cluster](how-to-set-up-training-targets.md#amlcompute) s možnostmi škálování s více uzly lepší volbou cíle pro výpočty.
+Výpočetní instance se obvykle používají jako vývojová prostředí.  Lze je také použít jako výpočetní cíl pro školení a odvození pro vývoj a testování.  Pro velké úkoly výpočetní [cluster Azure Machine Learning](how-to-set-up-training-targets.md#amlcompute) s možnostmi škálování s více uzlovými daty je lepší volbou výpočetního cíle.
 
 
-## <a name="why-use-a-compute-instance"></a>Proč používat výpočetní instanci?
+## <a name="why-use-a-compute-instance"></a>Proč použít výpočetní instanci?
 
-Výpočetní instance je plně spravovaná cloudová pracovní stanice optimalizovaná pro vývojové prostředí ve službě Machine Learning. Přináší následující výhody:
+Výpočetní instance je plně spravovaná cloudová pracovní stanice optimalizovaná pro vývojové prostředí strojového učení. Poskytuje následující výhody:
 
 |Klíčové výhody||
 |----|----|
-|Produktivita|Vědečtí data mohou vytvářet a nasazovat modely pomocí integrovaných poznámkových bloků a ve svém webovém prohlížeči tyto nástroje:<br/>– Jupyter<br/>- JupyterLab<br/>– RStudio|
-|Spravované & zabezpečené|Snižte nároky na zabezpečení a přidejte dodržování požadavků podnikového zabezpečení. Výpočetní instance poskytují robustní zásady správy a zabezpečené síťové konfigurace, jako jsou:<br/><br/>– Automatické zřizování z Správce prostředků šablon nebo Azure Machine Learning SDK<br/>- [řízení přístupu na základě role (RBAC)](/azure/role-based-access-control/overview)<br/>[podpora - virtuální sítě](how-to-enable-virtual-network.md#compute-instance)<br/>-Zásada SSH pro povolení nebo zakázání přístupu SSH|
-|Předem nakonfigurované&nbsp;nebo&nbsp;ML|Ušetřete čas při instalaci s předem nakonfigurovanými a aktuálními balíčky ML, architekturou pro hloubkové učení a ovladači GPU.|
-|Plně přizpůsobitelné|Široká podpora typů virtuálních počítačů Azure, včetně GPU a trvalého přizpůsobení nízké úrovně, jako je instalace balíčků a ovladačů, vede k pokročilým scénářům Breeze. |
+|Produktivita|Datoví vědci mohou vytvářet a nasazovat modely pomocí integrovaných notebooků a následujících nástrojů ve svém webovém prohlížeči:<br/>- Jupyter (Jupyter)<br/>- JupyterLab<br/>- RStudio|
+|Spravované & zabezpečené|Snižte nároky na zabezpečení a přidejte dodržování předpisů na podnikové zabezpečení. Výpočetní instance poskytují robustní zásady správy a zabezpečené síťové konfigurace, jako jsou:<br/><br/>- Automatické zřizování ze šablon Správce prostředků nebo sady Azure Machine Learning SDK<br/>- [Řízení přístupu na základě rolí (RBAC)](/azure/role-based-access-control/overview)<br/>- [Podpora virtuální sítě](how-to-enable-virtual-network.md#compute-instance)<br/>- SSH politika povolit / zakázat Přístup SSH|
+|Předkonfigurované&nbsp;nebo&nbsp;ML|Ušetřete čas na úlohách nastavení s předem nakonfigurovanými a aktuálními balíčky ML, rámci hloubkového učení, ovladači GPU.|
+|Plně přizpůsobitelné|Široká podpora pro typy virtuálních počítačů Azure, včetně GPU a trvalé hojné přizpůsobení, jako je instalace balíčků a ovladačů, činí pokročilé scénáře hračkou. |
 
-## <a name="contents"></a>Nástroje a prostředí
+## <a name="tools-and-environments"></a><a name="contents"></a>Nástroje a prostředí
 
-Instance Azure Machine Learning COMPUTE vám umožní vytvářet, vyškolovat a nasazovat modely v plně integrovaném prostředí poznámkového bloku v pracovním prostoru.
+Výpočetní instance Azure Machine Learning umožňuje vytvářet, trénovat a nasazovat modely v plně integrovaném prostředí poznámkového bloku ve vašem pracovním prostoru.
 
 
-Tyto nástroje a prostředí se nainstalují do výpočetní instance: 
+Tyto nástroje a prostředí jsou nainstalovány na výpočetní instanci: 
 
 |Obecné nástroje & prostředí|Podrobnosti|
 |----|:----:|
@@ -51,103 +51,103 @@ Tyto nástroje a prostředí se nainstalují do výpočetní instance:
 |Knihovna Intel MPI||
 |Azure CLI ||
 |Ukázky Azure Machine Learning ||
-|Azure Machine Learning modul EDAT ||
+|Modul EDAT Azure Machine Learning ||
 |Docker||
 |Nginx||
 |NCCL 2,0 ||
 |Protobuf|| 
 
-|Prostředí pro & nástrojů **R**|Podrobnosti|
+|**R** nástroje & prostředí|Podrobnosti|
 |----|:----:|
-|Edice Open Source serveru RStudio||
+|RStudio Server Open Source Edition||
 |Jádro R||
-|Sada SDK Azure Machine Learning pro R|[azuremlsdk](https://azure.github.io/azureml-sdk-for-r/reference/index.html)</br>Ukázky SDK|
+|Azure Machine Learning SDK pro R|[azuremlsdk](https://azure.github.io/azureml-sdk-for-r/reference/index.html)</br>Ukázky SDK|
 
-|Prostředí & **Python** Tools|Podrobnosti|
+|**Nástroje PYTHON** & prostředí|Podrobnosti|
 |----|----|
 |Anaconda Python||
 |Jupyter a rozšíření||
 |Jupyterlab a rozšíření||
 |Visual Studio Code ||
-[Sada SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)</br>z PyPI|`azureml-sdk[notebooks,contrib,automl,explain]`</br>`azureml-contrib-datadrift`</br>`azureml-telemetry`</br>`azureml-tensorboard`</br>`azureml-contrib-opendatasets`</br>`azureml-opendatasets`</br>`azureml-contrib-reinforcementlearning`</br>`azureml-mlflow`</br>`azureml-contrib-interpret` |
+[Sada Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)</br>od PyPI|`azureml-sdk[notebooks,contrib,automl,explain]`</br>`azureml-contrib-datadrift`</br>`azureml-telemetry`</br>`azureml-tensorboard`</br>`azureml-contrib-opendatasets`</br>`azureml-opendatasets`</br>`azureml-contrib-reinforcementlearning`</br>`azureml-mlflow`</br>`azureml-contrib-interpret` |
 |Další balíčky PyPI|`jupytext`</br>`jupyterlab-git`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
-|Balíčky conda|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
-|Balíčky pro hloubkové učení|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
+|Conda balíčky|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
+|Balíčky pro hloubkové vzdělávání|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
 |Balíčky ONNX|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|
-|Ukázky Azure Machine Learning Python & R SDK||
+|Ukázky Pythonu Azure Machine Learning & R.||
 
-Balíčky Pythonu jsou nainstalované v prostředí **python 3,6-AzureML** .  
+Všechny balíčky Pythonu se nainstalované v **pythonu 3.6 – azureml** prostředí.  
 
-Výpočetní instance se obvykle používají jako vývojová prostředí.  Můžou se také používat jako výpočetní cíl pro školení a Inferencing pro vývoj a testování.  Pro velké úlohy je [Azure Machine Learning výpočetní cluster](how-to-set-up-training-targets.md#amlcompute) s možnostmi škálování s více uzly lepší volbou cíle pro výpočty.
+Výpočetní instance se obvykle používají jako vývojová prostředí.  Lze je také použít jako výpočetní cíl pro školení a odvození pro vývoj a testování.  Pro velké úkoly výpočetní [cluster Azure Machine Learning](how-to-set-up-training-targets.md#amlcompute) s možnostmi škálování s více uzlovými daty je lepší volbou výpočetního cíle.
 
-### <a name="installing-packages"></a>Instalují se balíčky.
+### <a name="installing-packages"></a>Instalace balíčků
 
-Balíčky můžete nainstalovat přímo do poznámkového bloku Jupyter nebo RStudio:
+Balíčky můžete instalovat přímo do notebooku Jupyter nebo Rstudia:
 
-* RStudio použijte kartu **balíčky** v pravém dolním rohu nebo kartu **Konzola** v levém horním rohu.  
-* Python: přidejte instalační kód a spusťte ho v buňce Jupyter poznámkového bloku.
+* RStudio Použijte kartu **Balíčky** vpravo dole nebo kartu **Console** v levém horním rohu.  
+* Python: Přidejte instalační kód a spusťte v buňce notebooku Jupyter.
 
-Případně můžete k oknu terminálu přistupovat některým z těchto způsobů:
+Nebo můžete přistupovat k oknu terminálu libovolným z těchto způsobů:
 
-* RStudio: v levém horním rohu vyberte kartu **terminálu** .
-* Jupyter Lab: v **druhém** záhlaví karty spouštěče vyberte dlaždici **terminálu** .
-* Jupyter: v pravém horním rohu na kartě soubory vyberte **nový > terminálu** .
-* SSH k počítači  Pak nainstalujte balíčky Pythonu do prostředí **Python 3,6-AzureML** .  Nainstalujte balíčky R do prostředí jazyka **r** .
+* RStudio: Vyberte kartu **Terminál** vlevo nahoře.
+* Jupyter Lab: Vyberte dlaždici **Terminál** pod **nadpisem Ostatní** na kartě Spouštěč.
+* Jupyter: Vyberte **nový>terminál vpravo** nahoře na kartě Soubory.
+* SSH do stroje.  Pak nainstalujte balíčky Pythonu do prostředí **Pythonu 3.6 – AzureML.**  Nainstalujte balíčky R do prostředí **R.**
 
 ## <a name="accessing-files"></a>Přístup k souborům
 
-Poznámkové bloky a skripty jazyka R se ukládají ve výchozím účtu úložiště vašeho pracovního prostoru ve sdílené souborové službě Azure.  Tyto soubory jsou umístěny v adresáři "uživatelské soubory". Toto úložiště usnadňuje sdílení poznámkových bloků mezi výpočetními instancemi. Účet úložiště také udržuje při zastavení nebo odstranění výpočetní instance bezpečně zachované vaše poznámkové bloky.
+Poznámkové bloky a skripty R se ukládají ve výchozím účtu úložiště vašeho pracovního prostoru ve sdílené složce Azure.  Tyto soubory jsou umístěny pod adresářem "Uživatelské soubory". Toto úložiště usnadňuje sdílení poznámkových bloků mezi výpočetními instancemi. Účet úložiště také udržuje vaše poznámkové bloky bezpečně zachovány při zastavení nebo odstranění výpočetní instance.
 
-Účet sdílené složky Azure vašeho pracovního prostoru je připojen jako jednotka na výpočetní instanci. Tato jednotka je výchozím pracovním adresářem pro Jupyter, Jupyter Labs a RStudio.
+Účet sdílení souborů Azure vašeho pracovního prostoru se namontuje jako jednotka na výpočetní instanci. Tato jednotka je výchozím pracovním adresářem pro Jupyter, Jupyter Labs a RStudio.
 
-Soubory ve sdílené složce jsou dostupné ze všech výpočetních instancí ve stejném pracovním prostoru. Všechny změny těchto souborů v instanci COMPUTE budou spolehlivě trvale zachované zpátky do sdílené složky.
+Soubory ve sdílené složce jsou přístupné ze všech výpočetních instancí ve stejném pracovním prostoru. Všechny změny těchto souborů v instanci výpočetních prostředků budou spolehlivě zachovány zpět do sdílené složky.
 
-Nejnovější ukázky Azure Machine Learning můžete také klonovat do složky v adresáři uživatelských souborů ve sdílené složce pracovního prostoru.
+Můžete také klonovat nejnovější ukázky Azure Machine Learning do složky v adresáři uživatelských souborů ve sdílené složce pracovního prostoru.
 
-Zápis malých souborů může být pomalejší na síťových jednotkách, než je zapisuje do samotného virtuálního počítače.  Pokud píšete mnoho malých souborů, zkuste použít adresář přímo na výpočetní instanci, jako je `/tmp` adresář. Upozorňujeme, že tyto soubory nebudou přístupné z jiných výpočetních instancí v pracovním prostoru.
+Psaní malých souborů může být pomalejší na síťových jednotkách než zápis do samotného virtuálního počítači.  Pokud píšete mnoho malých souborů, zkuste použít adresář přímo `/tmp` na výpočetní instanci, jako je například adresář. Upozorňujeme, že tyto soubory nebudou přístupné z jiných výpočetních instancí v pracovním prostoru.
 
 ## <a name="managing-a-compute-instance"></a>Správa výpočetní instance
 
-V pracovním prostoru v Azure Machine Learning Studiu vyberte **COMPUTE**a pak v horní části vyberte **výpočetní instanci** .
+Ve svém pracovním prostoru ve studiu Azure Machine Learning vyberte **Compute**a nahoře vyberte **Compute Instance** .
 
 ![Správa výpočetní instance](./media/concept-compute-instance/manage-compute-instance.png)
 
 Můžete provést následující akce:
 
-* Vytvořte výpočetní instanci. Zadejte název, typ virtuálního počítače Azure, včetně GPU (po vytvoření se nedá změnit typ virtuálního počítače), povolit nebo zakázat přístup přes SSH a nakonfigurovat nastavení virtuální sítě volitelně. Můžete také vytvořit instanci přímo z integrovaných poznámkových bloků, Azure Portal, Správce prostředků šablony nebo Azure Machine Learning SDK. Kvóta vyhrazených jader na oblast, která se vztahuje k vytváření výpočetních instancí, je jednotná a sdílená s Azure Machine Learning kvótou výpočetního clusteru.
-* Aktualizovat kartu výpočetních instancí
-* Spuštění, zastavení a restartování výpočetní instance
-* Odstranění instance COMPUTE
+* Vytvořit výpočetní instanci Zadejte název, typ virtuálního počítače Azure včetně GPU (upozorňujeme, že typ virtuálního počítače nelze po vytvoření změnit), povolit nebo zakázat přístup SSH a volitelně nakonfigurovat nastavení virtuální sítě. Instanci můžete také vytvořit přímo z integrovaných poznámkových bloků, portálu Azure, šablony Správce prostředků nebo sady Azure Machine Learning SDK. Vyhrazená jádra podle kvóty oblasti, která platí pro vytváření výpočetních instancí, jsou jednotná a sdílená s kvótou výpočetního clusteru Azure Machine Learning.
+* Aktualizace karty výpočetních instancí
+* Spuštění, zastavení a restartování instance výpočetních prostředků
+* Odstranění výpočetní instance
 
-Pro každou výpočetní instanci v pracovním prostoru můžete:
+Pro každou výpočetní instanci ve vašem pracovním prostoru můžete:
 
-* Přístup k Jupyter, JupyterLab, RStudio instance COMPUTE
-* SSH do výpočetní instance. Přístup SSH je ve výchozím nastavení zakázán, ale lze jej povolit v době vytváření výpočetních instancí. Přístup přes SSH je prostřednictvím mechanismu veřejného a privátního klíče. Karta vám poskytne podrobnosti o připojení SSH, jako je například IP adresa, uživatelské jméno a číslo portu.
-* Získejte podrobnosti o konkrétní výpočetní instanci, jako je třeba IP adresa a oblast.
+* Přístup K Jupyter, JupyterLab, RStudio na výpočetní instanci
+* SSH do výpočetní instance. Přístup SSH je ve výchozím nastavení zakázán, ale lze jej povolit v době vytvoření výpočetní instance. Přístup SSH je prostřednictvím mechanismu veřejného a soukromého klíče. Na kartě budou podrobnosti o připojení SSH, jako je IP adresa, uživatelské jméno a číslo portu.
+* Získejte podrobnosti o konkrétní výpočetní instanci, jako je IP adresa a oblast.
 
-[RBAC](/azure/role-based-access-control/overview) umožňuje řídit, kteří uživatelé v pracovním prostoru můžou vytvořit, odstranit, spustit, zastavit a restartovat výpočetní instanci. Všichni uživatelé v roli přispěvatel a vlastník pracovního prostoru můžou vytvářet, odstraňovat, spouštět, zastavovat a restartovat výpočetní instance v rámci pracovního prostoru. Pouze tvůrce konkrétní výpočetní instance má však povolen přístup k Jupyter, JupyterLab a RStudio této výpočetní instance. Tvůrce výpočetní instance má vyhrazenou instanci COMPUTE, má root Access a může být terminálem prostřednictvím Jupyter. Instance COMPUTE bude mít přihlášení uživatele Creator User a všechny akce budou používat identitu tohoto uživatele pro RBAC a navýšení spuštění experimentů. Přístup přes SSH je řízený pomocí mechanismu veřejného a privátního klíče.
+[RBAC](/azure/role-based-access-control/overview) umožňuje řídit, kteří uživatelé v pracovním prostoru můžete vytvořit, odstranit, spustit, zastavit, restartovat výpočetní instance. Všichni uživatelé v roli přispěvatele a vlastníka pracovního prostoru můžou vytvářet, odstraňovat, spouštět, zastavovat a restartovat výpočetní instance v celém pracovním prostoru. Však pouze tvůrce konkrétní výpočetní instance je povolen přístup Jupyter, JupyterLab a RStudio na této výpočetní instance. Tvůrce instance výpočetní ho compute má výpočetní instanci, která je pro ně vyhrazena, má root přístup a může terminálovat prostřednictvím Jupyteru. Instance výpočetních prostředků bude mít přihlášení jednoho uživatele uživatele tvůrce a všechny akce budou používat identitu tohoto uživatele pro RBAC a přiřazení spuštění experimentu. Přístup SSH je řízen prostřednictvím mechanismu veřejného a soukromého klíče.
 
-Můžete také vytvořit instanci.
-* Přímo z prostředí integrovaných poznámkových bloků
-* V Azure Portal
-* Z šablony Azure Resource Manager
+Můžete také vytvořit instanci
+* Přímo z integrovaného notebooku
+* Na portálu Azure
+* Ze šablony Správce prostředků Azure
 * S Azure Machine Learning SDK
 
-Vyhrazená kvóta jader na oblast, která platí pro vytváření výpočetních instancí, je jednotná a sdílená s Azure Machine Learningmi kvótami školicích clusterů. 
+Vyhrazená jádra podle kvóty oblasti, která platí pro vytváření výpočetních instancí, jsou jednotná a sdílená s kvótou clusteru školení Azure Machine Learning. 
 
-## <a name="compute-target"></a>Cíl výpočtů
+## <a name="compute-target"></a>Cílový výpočetní objekt
 
-Výpočetní instance se dají použít jako [školicí cíl](concept-compute-target.md#train) Azure Machine Learning pro výpočetní prostředky, podobně jako clustery výpočetního školení. Zřízení virtuálního počítače s více grafickými procesory pro spouštění úloh distribuovaného školení pomocí TensorFlow/PyTorch odhady. Můžete také vytvořit konfiguraci spuštění a použít ji ke spuštění experimentu na výpočetní instanci. Výpočetní instanci můžete použít jako cíl nasazení místní Inferencing pro scénáře testování a ladění.
+Výpočetní instance se dá použít jako [trénovací výpočetní cíl](concept-compute-target.md#train) podobný výpočetním výpočetním clusterům Azure Machine Learning. Zřízení virtuálního virtuálního provozu s více GPU pro spuštění distribuovaných úloh školení pomocí odhadů TensorFlow/PyTorch. Můžete také vytvořit konfiguraci spuštění a použít ji ke spuštění experimentu na výpočetní instanci. Výpočetní instance můžete použít jako cíl nasazení místního inferencingu pro scénáře testování a ladění.
 
-## <a name="notebookvm"></a>Co se stalo s virtuálním počítačem poznámkového bloku?
+## <a name="what-happened-to-notebook-vm"></a><a name="notebookvm"></a>Co se stalo s virtuálním počítačem s notebookem?
 
 Výpočetní instance nahrazují virtuální počítač poznámkového bloku.  
 
-Všechny soubory poznámkových bloků uložené ve sdílené složce pracovního prostoru a data v úložištích dat pracovního prostoru budou přístupná z instance Compute. Všechny vlastní balíčky, které byly dřív nainstalované na virtuálním počítači s poznámkovým blokem, se ale musí na instanci COMPUTE znovu nainstalovat. Omezení kvót, která se vztahují na vytváření výpočetních clusterů, se budou vztahovat i na výpočetní instance. 
+Všechny soubory poznámkového bloku uložené ve sdílené složce pracovního prostoru a data v úložištích dat pracovního prostoru budou přístupné z instance výpočetního prostředí. Všechny vlastní balíčky dříve nainstalované na virtuálním počítači poznámkového bloku však bude nutné znovu nainstalovat na výpočetní instanci. Omezení kvót, která platí pro vytváření výpočetních clusterů, se budou vztahovat i na vytváření výpočetních instancí. 
 
-Nelze vytvořit nové virtuální počítače poznámkového bloku. Máte ale pořád přístup k vytvořeným virtuálním počítačům s poznámkovým blokem s plnou funkčností. Výpočetní instance se dají vytvořit ve stejném pracovním prostoru jako stávající virtuální počítače s poznámkovým blokem. 
+Nové virtuální počítačky poznámkového bloku nelze vytvořit. Stále však můžete přistupovat a používat virtuální počítače poznámkového bloku, které jste vytvořili, s plnou funkčností. Výpočetní instance lze vytvořit ve stejném pracovním prostoru jako existující virtuální počítače poznámkového bloku. 
 
 
 ## <a name="next-steps"></a>Další kroky
 
- * [Kurz: analýza prvního modelu ml](tutorial-1st-experiment-sdk-train.md) ukazuje, jak používat výpočetní instanci s integrovaným poznámkovým blokem.
+ * [Kurz: Trénování prvního modelu ML](tutorial-1st-experiment-sdk-train.md) ukazuje, jak používat výpočetní instanci s integrovaným poznámkovým blokem.
