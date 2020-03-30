@@ -1,6 +1,6 @@
 ---
-title: Průvodce vytvořením fondu instancí (Preview)
-description: Tento článek popisuje, jak vytvořit a spravovat fondy instancí Azure SQL Database (Preview).
+title: Průvodce s návody k instancí (náhled)
+description: Tento článek popisuje, jak vytvořit a spravovat fondy instancí Azure SQL Database (náhled).
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,59 +12,59 @@ ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
 ms.openlocfilehash: 4a27165d929cc9bc5f18e372f7f108887e466e43
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79299358"
 ---
-# <a name="azure-sql-database-instance-pools-preview-how-to-guide"></a>Průvodce postupy pro Azure SQL Database fondy instancí (Preview)
+# <a name="azure-sql-database-instance-pools-preview-how-to-guide"></a>Fondy instancí Azure SQL Database (preview) s návody
 
-Tento článek poskytuje podrobné informace o tom, jak vytvářet a spravovat [fondy instancí](sql-database-instance-pools.md).
+Tento článek obsahuje podrobnosti o tom, jak vytvořit a spravovat [fondy instancí](sql-database-instance-pools.md).
 
 ## <a name="instance-pool-operations"></a>Operace fondu instancí
 
-V následující tabulce jsou uvedeny dostupné operace týkající se fondů instancí a jejich dostupnosti v Azure Portal a prostředí PowerShell.
+V následující tabulce jsou uvedeny dostupné operace související s fondy instancí a jejich dostupnost na webu Azure Portal a PowerShellu.
 
 |Příkaz|portál Azure|PowerShell|
 |:---|:---|:---|
 |Vytvoření fondu instancí|Ne|Ano|
 |Aktualizovat fond instancí (omezený počet vlastností)|Ne |Ano |
-|Zkontroluje využití fondu instancí a vlastnosti.|Ne|Ano |
+|Kontrola využití a vlastností fondu instancí|Ne|Ano |
 |Odstranit fond instancí|Ne|Ano|
-|Vytvoření spravované instance uvnitř fondu instancí|Ne|Ano|
-|Aktualizace využití prostředků spravované instance|Ano |Ano|
-|Zkontroluje využití a vlastnosti spravované instance.|Ano|Ano|
-|Odstranit spravovanou instanci z fondu|Ano|Ano|
-|Vytvoří databázi ve spravované instanci, která je umístěná ve fondu.|Ano|Ano|
-|Odstraní databázi ze spravované instance.|Ano|Ano|
+|Vytvoření spravované instance ve fondu instancí|Ne|Ano|
+|Aktualizovat využití prostředků spravované instance|Ano |Ano|
+|Kontrola využití spravované instance a vlastností|Ano|Ano|
+|Odstranění spravované instance z fondu|Ano|Ano|
+|Vytvoření databáze ve spravované instanci umístěné ve fondu|Ano|Ano|
+|Odstranění databáze ze spravované instance|Ano|Ano|
 
-Dostupné [Příkazy prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.sql/)
+Dostupné [příkazy Prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.sql/)
 
-|Rutiny |Popis |
+|Rutina |Popis |
 |:---|:---|
-|[New-AzSqlInstancePool](/powershell/module/az.sql/new-azsqlinstancepool/) | Vytvoří fond instancí Azure SQL Database. |
+|[Nový fond instance AzSql](/powershell/module/az.sql/new-azsqlinstancepool/) | Vytvoří fond instancí Azure SQL Database. |
 |[Get-AzSqlInstancePool](/powershell/module/az.sql/get-azsqlinstancepool/) | Vrátí informace o fondu instancí Azure SQL. |
 |[Set-AzSqlInstancePool](/powershell/module/az.sql/set-azsqlinstancepool/) | Nastaví vlastnosti fondu instancí Azure SQL Database. |
-|[Remove-AzSqlInstancePool](/powershell/module/az.sql/remove-azsqlinstancepool/) | Odebere fond instancí Azure SQL Database. |
+|[Odebrat fond instance AzSql](/powershell/module/az.sql/remove-azsqlinstancepool/) | Odebere fond instancí Azure SQL Database. |
 |[Get-AzSqlInstancePoolUsage](/powershell/module/az.sql/get-azsqlinstancepoolusage/) | Vrátí informace o využití fondu instancí Azure SQL. |
 
 
-Pokud chcete použít PowerShell, [nainstalujte nejnovější verzi prostředí PowerShell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell)a postupujte podle pokynů pro [instalaci modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Pokud chcete používat PowerShell, [nainstalujte nejnovější verzi PowerShellu Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell)a podle pokynů [nainstalujte modul Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
-V případě operací souvisejících s instancemi v rámci fondů i s jednou instancí použijte [příkazy standardní spravované instance](sql-database-managed-instance-create-manage.md#powershell-create-and-manage-managed-instances), ale při použití těchto příkazů pro instanci ve fondu musí být naplněna vlastnost *název fondu instancí* .
+Pro operace související s instancemi uvnitř fondů i s jedním instancí použijte standardní [příkazy spravované instance](sql-database-managed-instance-create-manage.md#powershell-create-and-manage-managed-instances), ale vlastnost *název fondu instancí* musí být naplněna při použití těchto příkazů pro instanci ve fondu.
 
 ## <a name="how-to-deploy-managed-instances-into-pools"></a>Jak nasadit spravované instance do fondů
 
 Proces nasazení instance do fondu se skládá z následujících dvou kroků:
 
-1. Nasazení fondu s jednorázovým instancí. Jedná se o dlouhodobou provozní operaci, kde doba trvání je stejná jako nasazení [jedné instance vytvořené v prázdné podsíti](sql-database-managed-instance.md#managed-instance-management-operations).
+1. Nasazení fondu jednorázových instancí. Jedná se o dlouho běžící operaci, kde doba trvání je stejná jako nasazení [jedné instance vytvořené v prázdné podsíti](sql-database-managed-instance.md#managed-instance-management-operations).
 
-2. Opakované nasazení instance v fondu instancí. Parametr fondu instancí se musí explicitně zadat jako součást této operace. Jedná se o relativně rychlou operaci, která obvykle trvá až 5 minut.
+2. Opakované nasazení instance ve fondu instancí. Parametr fondu instancí musí být explicitně určen jako součást této operace. Jedná se o relativně rychlou operaci, která obvykle trvá až 5 minut.
 
-Ve verzi Public Preview se oba kroky podporují jenom pomocí PowerShellu a Správce prostředků šablon. Prostředí Azure Portal není aktuálně k dispozici.
+Ve verzi Public Preview jsou oba kroky podporovány pouze pomocí šablon PowerShellu a Správce prostředků. Prostředí portálu Azure není momentálně dostupné.
 
-Po nasazení spravované instance do fondu *můžete* použít Azure Portal ke změně jejích vlastností na stránce s cenovou úrovní.
+Po nasazení spravované instance do fondu *můžete* pomocí portálu Azure změnit jeho vlastnosti na stránce cenové úrovně.
 
 
 ## <a name="create-an-instance-pool"></a>Vytvoření fondu instancí
@@ -77,10 +77,10 @@ Vytvoření fondu instancí:
 
 ### <a name="create-a-virtual-network-with-a-subnet"></a>Vytvoření virtuální sítě s podsítí 
 
-Chcete-li umístit více fondů instancí do stejné virtuální sítě, přečtěte si následující články:
+Pokud chcete umístit více fondů instancí do stejné virtuální sítě, přečtěte si následující články:
 
-- [Určete velikost podsítě virtuální sítě pro Azure SQL Database spravovanou instanci](sql-database-managed-instance-determine-size-vnet-subnet.md).
-- Vytvořte novou virtuální síť a podsíť pomocí [šablony Azure Portal](sql-database-managed-instance-create-vnet-subnet.md) nebo postupujte podle pokynů pro [přípravu existující virtuální sítě](sql-database-managed-instance-configure-vnet-subnet.md).
+- [Určete velikost podsítě virtuální sítě pro spravovanou instanci Azure SQL Database](sql-database-managed-instance-determine-size-vnet-subnet.md).
+- Vytvořte novou virtuální síť a podsíť pomocí [šablony portálu Azure](sql-database-managed-instance-create-vnet-subnet.md) nebo postupujte podle pokynů pro [přípravu existující virtuální sítě](sql-database-managed-instance-configure-vnet-subnet.md).
  
 
 
@@ -90,14 +90,14 @@ Po dokončení předchozích kroků jste připraveni vytvořit fond instancí.
 
 Následující omezení platí pro fondy instancí:
 
-- Ve verzi Public Preview jsou k dispozici pouze Pro obecné účely a Gen5.
-- Název fondu může obsahovat jenom malá písmena, číslice a spojovníky a nemůže začínat spojovníkem.
-- Pokud chcete použít AHB (Zvýhodněné hybridní využití Azure), použije se na úrovni fondu instancí. Typ licence můžete nastavit během vytváření fondu nebo ho aktualizovat kdykoli po vytvoření.
+- Ve verzi Public Preview jsou k dispozici pouze obecné účely a gen5.
+- Název fondu může obsahovat pouze malá písmena, čísla a pomlčku a nemůže začínat pomlčkou.
+- Pokud chcete použít AHB (Azure Hybrid Benefit), použije se na úrovni fondu instancí. Typ licence můžete nastavit během vytváření fondu nebo jej aktualizovat kdykoli po vytvoření.
 
 > [!IMPORTANT]
-> Nasazení fondu instancí je dlouhodobě běžící operace, která trvá přibližně 4,5 hodin.
+> Nasazení fondu instancí je dlouho běžící operace, která trvá přibližně 4,5 hodiny.
 
-Postup získání parametrů sítě:
+Chcete-li získat parametry sítě:
 
 ```powershell
 $virtualNetwork = Get-AzVirtualNetwork -Name "miPoolVirtualNetwork" -ResourceGroupName "myResourceGroup"
@@ -119,27 +119,27 @@ $instancePool = New-AzSqlInstancePool `
 ```
 
 > [!IMPORTANT]
-> Vzhledem k tomu, že nasazení fondu instancí je dlouhodobá operace, je třeba počkat na jeho dokončení, než spustíte některý z následujících kroků v tomto článku.
+> Vzhledem k tomu, že nasazení fondu instancí je dlouho běžící operace, musíte počkat, dokud nebude dokončena před spuštěním některého z následujících kroků v tomto článku.
 
-## <a name="create-a-managed-instance-inside-the-pool"></a>Vytvoření spravované instance v rámci fondu 
+## <a name="create-a-managed-instance-inside-the-pool"></a>Vytvoření spravované instance uvnitř fondu 
 
-Po úspěšném nasazení fondu instancí je čas vytvořit instanci uvnitř ní.
+Po úspěšném nasazení fondu instancí je čas vytvořit instanci uvnitř.
 
-Chcete-li vytvořit spravovanou instanci, spusťte následující příkaz:
+Chcete-li vytvořit spravovanou instanci, proveďte následující příkaz:
 
 ```powershell
 $instanceOne = $instancePool | New-AzSqlInstance -Name "mi-pool-name" -VCore 2 -StorageSizeInGB 256
 ```
 
-Nasazení instance do fondu trvá několik minut. Po vytvoření první instance je možné vytvořit další instance:
+Nasazení instance ve fondu trvá několik minut. Po vytvoření první instance lze vytvořit další instance:
 
 ```powershell
 $instanceTwo = $instancePool | New-AzSqlInstance -Name "mi-pool-name" -VCore 4 -StorageSizeInGB 512
 ```
 
-## <a name="create-a-database-inside-an-instance"></a>Vytvoření databáze v instanci 
+## <a name="create-a-database-inside-an-instance"></a>Vytvoření databáze uvnitř instance 
 
-Pokud chcete vytvářet a spravovat databáze ve spravované instanci, která je uvnitř fondu, použijte příkazy s jedinou instancí.
+Chcete-li vytvořit a spravovat databáze ve spravované instanci, která je uvnitř fondu, použijte příkazy jedné instance.
 
 Vytvoření databáze uvnitř spravované instance:
 
@@ -148,29 +148,29 @@ $poolinstancedb = New-AzSqlInstanceDatabase -Name "mipooldb1" -InstanceName "poo
 ```
 
 
-## <a name="get-instance-pool-usage"></a>Získat využití fondu instancí 
+## <a name="get-instance-pool-usage"></a>Získání využití fondu instancí 
  
-Získání seznamu instancí v rámci fondu:
+Získání seznamu instancí ve fondu:
 
 ```powershell
 $instancePool | Get-AzSqlInstance
 ```
 
 
-Získání využití prostředků fondu:
+Jak získat využití prostředků fondu:
 
 ```powershell
 $instancePool | Get-AzSqlInstancePoolUsage
 ```
 
 
-Získání podrobného přehledu využití fondu a instancí v rámci něj:
+Chcete-li získat podrobný přehled o využití fondu a instancí uvnitř fondu:
 
 ```powershell
 $instancePool | Get-AzSqlInstancePoolUsage –ExpandChildren
 ```
 
-Výpis databází v instanci:
+Chcete-li v instanci uvést databáze:
 
 ```powershell
 $databases = Get-AzSqlInstanceDatabase -InstanceName "pool-mi-001" -ResourceGroupName "resource-group-name"
@@ -178,16 +178,16 @@ $databases = Get-AzSqlInstanceDatabase -InstanceName "pool-mi-001" -ResourceGrou
 
 
 > [!NOTE]
-> Pro každý fond je povolený limit 100 databází (ne na instanci).
+> Je limit 100 databází na fond (ne na instanci).
 
 
-## <a name="scale-a-managed-instance-inside-a-pool"></a>Škálování spravované instance v rámci fondu 
+## <a name="scale-a-managed-instance-inside-a-pool"></a>Škálování spravované instance uvnitř fondu 
 
 
-Po naplnění spravované instance databázemi můžete vyhodnotit omezení pro instance týkající se úložiště nebo výkonu. V takovém případě, pokud se využití fondu nepřekročilo, můžete škálovat instanci.
-Škálování spravované instance v rámci fondu je operace, která trvá několik minut. Předpoklad pro škálování je dostupný virtuální jádra a Storage na úrovni fondu instancí.
+Po vyplnění spravované instance s databázemi, můžete sát omezení instance týkající se úložiště nebo výkonu. V takovém případě pokud využití fondu nebyla překročena, můžete škálovat instanci.
+Škálování spravované instance uvnitř fondu je operace, která trvá několik minut. Předpokladem pro škálování je k dispozici virtuální jádra a úložiště na úrovni fondu instancí.
 
-Aktualizace počtu virtuální jádra a velikosti úložiště:
+Aktualizace počtu virtuálních jader a velikosti úložiště:
 
 ```powershell
 $instanceOne | Set-AzSqlInstance -VCore 8 -StorageSizeInGB 512 -InstancePoolName "mi-pool-name"
@@ -202,18 +202,18 @@ $instance | Set-AzSqlInstance -StorageSizeInGB 1024 -InstancePoolName "mi-pool-n
 
 
 
-## <a name="connect-to-a-managed-instance-inside-a-pool"></a>Připojení ke spravované instanci v rámci fondu
+## <a name="connect-to-a-managed-instance-inside-a-pool"></a>Připojení ke spravované instanci uvnitř fondu
 
-Pokud se chcete připojit ke spravované instanci ve fondu, vyžadují se tyto dva kroky:
+Chcete-li se připojit ke spravované instanci ve fondu, jsou vyžadovány následující dva kroky:
 
-1. [Povolte pro instanci veřejný koncový bod](#enable-the-public-endpoint-for-the-instance).
-2. [Přidat příchozí pravidlo do skupiny zabezpečení sítě (NSG)](#add-an-inbound-rule-to-the-network-security-group).
+1. [Povolte veřejný koncový bod pro instanci](#enable-the-public-endpoint-for-the-instance).
+2. [Přidejte příchozí pravidlo do skupiny zabezpečení sítě (NSG).](#add-an-inbound-rule-to-the-network-security-group)
 
-Po dokončení obou kroků se můžete připojit k instanci pomocí veřejné adresy koncového bodu, portu a přihlašovacích údajů zadaných během vytváření instance. 
+Po dokončení obou kroků se můžete k instanci připojit pomocí veřejné adresy koncového bodu, portu a pověření zadaných během vytváření instance. 
 
 ### <a name="enable-the-public-endpoint-for-the-instance"></a>Povolení veřejného koncového bodu pro instanci
 
-Povolení veřejného koncového bodu pro instanci lze provést prostřednictvím Azure Portal nebo pomocí následujícího příkazu prostředí PowerShell:
+Povolení veřejného koncového bodu pro instanci lze provést prostřednictvím portálu Azure nebo pomocí následujícího příkazu PowerShell:
 
 
 ```powershell
@@ -222,26 +222,26 @@ $instanceOne | Set-AzSqlInstance -InstancePoolName "pool-mi-001" -PublicDataEndp
 
 Tento parametr lze nastavit také při vytváření instance.
 
-### <a name="add-an-inbound-rule-to-the-network-security-group"></a>Přidat příchozí pravidlo do skupiny zabezpečení sítě 
+### <a name="add-an-inbound-rule-to-the-network-security-group"></a>Přidání příchozího pravidla do skupiny zabezpečení sítě 
 
-Tento krok se dá provést pomocí Azure Portal nebo pomocí příkazů PowerShellu a dá se provést kdykoli po přípravě podsítě na spravovanou instanci.
+Tento krok lze provést prostřednictvím portálu Azure nebo pomocí příkazů Prostředí PowerShell a lze provést kdykoli po podsíti je připraven pro spravovanou instanci.
 
-Podrobnosti najdete v tématu [povolení provozu veřejného koncového bodu ve skupině zabezpečení sítě](sql-database-managed-instance-public-endpoint-configure.md#allow-public-endpoint-traffic-on-the-network-security-group).
+Podrobnosti naleznete v tématu [Povolit veřejný provoz koncových bodů ve skupině zabezpečení sítě](sql-database-managed-instance-public-endpoint-configure.md#allow-public-endpoint-traffic-on-the-network-security-group).
 
 
-## <a name="move-an-existing-single-instance-inside-an-instance-pool"></a>Přesunout existující jednu instanci v rámci fondu instancí 
+## <a name="move-an-existing-single-instance-inside-an-instance-pool"></a>Přesunutí existující jedné instance do fondu instancí 
  
-Přesunutí instancí do fondu a ven je jedním z omezení verze Public Preview. Alternativní řešení, které se dá použít, spoléhá na obnovení databází k určitému bodu v čase z instance mimo fond na instanci, která už je ve fondu. 
+Přesunutí instancí do a z fondu je jedním z omezení náhledu ve veřejném náhledu. Řešení, které lze použít, závisí na obnovení databází v čase z instance mimo fond na instanci, která je již ve fondu. 
 
-Obě instance musí být ve stejném předplatném a oblasti. Obnovení mezi různými oblastmi a mezi předplatnými není v současné době podporováno.
+Obě instance musí být ve stejném předplatném a oblasti. Obnovení mezi oblastmi a mezi odběry není aktuálně podporováno.
 
-Tento proces může mít dobu výpadku.
+Tento proces má období prostojů.
 
-Přesunutí stávajících databází:
+Přesunutí existujících databází:
 
-1. Pozastaví úlohy na spravované instanci, ze které migrujete.
-2. Vygenerujte skripty pro vytváření systémových databází a proveďte je v instanci, která je uvnitř fondu instancí.
-3. Proveďte obnovení jednotlivých databází z jedné instance do instance fondu v čase.
+1. Pozastavte úlohy spravované instance, ze které migrujete.
+2. Vygenerujte skripty k vytvoření systémových databází a spouštějte je na instanci, která je uvnitř fondu instancí.
+3. Proveďte obnovení bodu v čase každé databáze z jedné instance do instance ve fondu.
 
     ```powershell
     $resourceGroupName = "my resource group name"
@@ -262,16 +262,16 @@ Přesunutí stávajících databází:
       -TargetInstanceName $targetInstanceName
     ```
 
-4. Nasměrujte svoji aplikaci na novou instanci a obnovte její úlohy.
+4. Najeďte svou aplikaci na novou instanci a pokračujte v jeho úlohách.
 
-Pokud existuje více databází, opakujte tento postup pro každou databázi.
+Pokud existuje více databází, opakujte proces pro každou databázi.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Seznam funkcí a porovnání najdete v tématu věnovaném [běžným funkcím SQL](sql-database-features.md).
-- Další informace o konfiguraci virtuální sítě najdete v tématu [Konfigurace virtuální sítě VNet spravované instance](sql-database-managed-instance-connectivity-architecture.md).
-- Pro rychlý Start, který vytváří spravovanou instanci a obnovuje databázi ze záložního souboru, najdete v tématu [Vytvoření spravované instance](sql-database-managed-instance-get-started.md).
-- Kurz pro migraci pomocí Azure Database Migration Service (DMS) najdete v tématu [migrace spravované instance pomocí DMS](../dms/tutorial-sql-server-to-managed-instance.md).
-- Pro pokročilé monitorování výkonu databáze spravované instance s integrovanými funkcemi pro odstraňování potíží najdete informace v tématu [monitorování Azure SQL Database pomocí Azure SQL Analytics](../azure-monitor/insights/azure-sql.md).
-- Informace o cenách najdete v tématu [SQL Database ceny za Managed instance](https://azure.microsoft.com/pricing/details/sql-database/managed/).
+- Funkce a seznam porovnání naleznete v tématu [běžné funkce SQL](sql-database-features.md).
+- Další informace o konfiguraci virtuální sítě najdete v tématu [konfigurace virtuální sítě spravované instance](sql-database-managed-instance-connectivity-architecture.md).
+- Rychlý start, který vytvoří spravovanou instanci a obnoví databázi ze záložního souboru, najdete [v tématu vytvoření spravované instance](sql-database-managed-instance-get-started.md).
+- Kurz využívající službu Migrace databáze Azure (DMS) pro migraci najdete v tématu [migrace spravovaných instancí pomocí DMS](../dms/tutorial-sql-server-to-managed-instance.md).
+- Pokročilé monitorování výkonu databáze spravovaných instancí s integrovanou inteligencí řešení potíží najdete v tématu [Monitorování Azure SQL Database pomocí Azure SQL Analytics](../azure-monitor/insights/azure-sql.md).
+- Informace o cenách naleznete v [tématu SQL Database managed instance pricing](https://azure.microsoft.com/pricing/details/sql-database/managed/).

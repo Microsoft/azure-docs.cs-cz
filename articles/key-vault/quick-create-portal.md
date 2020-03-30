@@ -12,17 +12,17 @@ ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
 ms.openlocfilehash: a57370b7bf63ad73318ba13eff1b554aead7e186
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79241119"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webu Azure Portal
 
 Azure Key Vault je cloudová služba, která funguje jako zabezpečené úložiště tajných kódů. Můžete bezpečně ukládat klíče, hesla, certifikáty a další tajné klíče. Trezory klíčů Azure můžete vytvářet a spravovat přes web Azure Portal. V tomto rychlém startu vytvoříte trezor klíčů, do kterého uložíte tajný kód. Další informace o službě Key Vault najdete v tématu [Přehled](key-vault-overview.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -30,14 +30,14 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-a-vault"></a>Vytvoření trezoru
 
-1. V nabídce Azure Portal nebo na **domovské** stránce vyberte **vytvořit prostředek**.
+1. V nabídce Portál Azure nebo na **domovské** stránce vyberte **Vytvořit prostředek**.
 2. Do vyhledávacího pole zadejte **Key Vault**.
 3. V seznamu výsledků zvolte **Key Vault**.
 4. V části Key Vault zvolte **Vytvořit**.
 5. V části **Vytvořit trezor klíčů** zadejte následující informace:
-    - **Název:** Je potřeba zadat jedinečný název. V tomto rychlém startu používáme **Contoso-vault2**. 
+    - **Název:** Je potřeba zadat jedinečný název. Pro tento rychlý start používáme **Contoso-vault2**. 
     - **Předplatné:** Zvolte předplatné.
-    - V části **Skupina prostředků**vyberte **vytvořit novou** a zadejte název skupiny prostředků.
+    - V části **Skupina prostředků**zvolte **Vytvořit nový** a zadejte název skupiny prostředků.
     - V rozevírací nabídce **Umístění** zvolte umístění.
     - U ostatních možností ponechte jejich výchozí hodnoty.
 6. Po zadání výše uvedených informací vyberte **Vytvořit**.
@@ -53,23 +53,23 @@ V tuto chvíli je váš účet Azure jediným účtem s oprávněním provádět
 
 ## <a name="add-a-secret-to-key-vault"></a>Přidání tajného klíče do služby Key Vault
 
-Pokud chcete do trezoru přidat tajný klíč, stačí provést několik dalších kroků. V tomto případě přidáme heslo, které může používat aplikace. Heslo se nazývá **ExamplePassword** a ukládáme hodnotu **hVFkk965BuUv** .
+Pokud chcete do trezoru přidat tajný klíč, stačí provést několik dalších kroků. V tomto případě přidáme heslo, které může používat aplikace. Heslo se nazývá **ExamplePassword** a ukládáme hodnotu **hVFkk965BuUv** v něm.
 
-1. Na stránkách Key Vault vlastnosti vyberte **tajné**kódy.
+1. Na stránkách vlastností trezoru klíčů vyberte **položku Tajné položky**.
 2. Klikněte na **Vygenerovat/importovat**.
 3. Na obrazovce **Vytvoření tajného kódu** zvolte následující hodnoty:
     - **Možnosti nahrání:** Ruční
     - **Název:** ExamplePassword
     - **Hodnota**: hVFkk965BuUv
-    - U ostatních hodnot ponechte jejich výchozí nastavení. Klikněte na možnost **Vytvořit**.
+    - U ostatních hodnot ponechte jejich výchozí nastavení. Klikněte na **Vytvořit**.
 
 Jakmile se zobrazí zpráva o úspěšném vytvoření tajného kódu, můžete na něj kliknout v seznamu. Zobrazí se několik jeho vlastností. Pokud kliknete na aktuální verzi, zobrazí se hodnota, kterou jste zadali v předchozím kroku.
 
 ![Vlastnosti tajného klíče](./media/quick-create-portal/current-version-hidden.png)
 
-Kliknutím na tlačítko Zobrazit hodnotu tajného klíče v pravém podokně uvidíte skrytou hodnotu. 
+Kliknutím na tlačítko "Zobrazit tajnou hodnotu" v pravém podokně uvidíte skrytou hodnotu. 
 
-![Objevila se hodnota tajného klíče](./media/quick-create-portal/current-version-shown.png)
+![Objevila se tajná hodnota](./media/quick-create-portal/current-version-shown.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -83,9 +83,9 @@ Až nebudete prostředky potřebovat, odstraňte jejich skupinu. Tím odstranít
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili Key Vault a uložili do něj tajný klíč. Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete dál v článcích níže.
+V tomto rychlém startu jste vytvořili trezor klíčů a uložili do něj tajný klíč. Chcete-li se dozvědět více o trezoru klíčů a o tom, jak jej integrovat s aplikacemi, pokračujte v následujících článcích.
 
-- Přečtěte si [přehled Azure Key Vault](key-vault-overview.md)
-- Další informace najdete v [příručce pro vývojáře Azure Key Vault](key-vault-developers-guide.md) .
-- Další informace o [klíčích, tajných klíčích a certifikátech](about-keys-secrets-and-certificates.md)
-- Kontrola [Azure Key Vault osvědčených postupů](key-vault-best-practices.md)
+- Přečtěte si [přehled trezoru klíčů Azure](key-vault-overview.md)
+- Podívejte se na [průvodce vývojářem azure key vaultu](key-vault-developers-guide.md)
+- Informace o [klíčích, tajných kódech a certifikátech](about-keys-secrets-and-certificates.md)
+- Kontrola [doporučených postupů azure key vaultu](key-vault-best-practices.md)

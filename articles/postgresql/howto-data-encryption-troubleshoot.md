@@ -1,62 +1,62 @@
 ---
-title: Řešení potíží s šifrováním dat – Azure Database for PostgreSQL – jeden server
-description: Přečtěte si, jak řešit potíže s šifrováním dat na vašem serveru Azure Database for PostgreSQL.
+title: Poradce při potížích s šifrováním dat – Databáze Azure pro PostgreSQL – jeden server
+description: Zjistěte, jak řešit potíže s šifrováním dat v databázi Azure pro PostgreSQL – jeden server
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.openlocfilehash: 2902ff17ac14a48f1a11259339c2ab1bc4595980
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79299256"
 ---
-# <a name="troubleshoot-data-encryption-in-azure-database-for-postgresql---single-server"></a>Řešení potíží s šifrováním dat v Azure Database for PostgreSQL – jeden server
+# <a name="troubleshoot-data-encryption-in-azure-database-for-postgresql---single-server"></a>Poradce při potížích s šifrováním dat v databázi Azure pro PostgreSQL – jeden server
 
-Tento článek vám pomůže identifikovat a vyřešit běžné problémy, ke kterým může dojít při nasazení Azure Database for PostgreSQL na jednom serveru, když se nakonfigurují pomocí šifrování dat pomocí klíče spravovaného zákazníkem.
+Tento článek vám pomůže identifikovat a vyřešit běžné problémy, které mohou nastat v jednoserverovém nasazení Azure Database for PostgreSQL při konfiguraci s šifrováním dat pomocí klíče spravovaného zákazníkem.
 
 ## <a name="introduction"></a>Úvod
 
-Když nakonfigurujete šifrování dat pro použití klíče spravovaného zákazníkem v Azure Key Vault, server vyžaduje nepřetržitý přístup k tomuto klíči. Pokud server ztratí přístup k klíči spravovanému zákazníkem v Azure Key Vault, bude odepřít všechna připojení, vracet příslušnou chybovou zprávu a změnit její stav na ***nepřístupný*** v Azure Portal.
+Když nakonfigurujete šifrování dat tak, aby používal klíč spravovaný zákazníkem v úložišti klíčů Azure, server vyžaduje nepřetržitý přístup ke klíči. Pokud server ztratí přístup ke klíči spravovanému zákazníkem v azure key vault, odepře všechna připojení, vrátí příslušnou chybovou zprávu a změní jeho stav na ***Nepřístupný*** na webu Azure Portal.
 
-Pokud už nepotřebujete nedostupný Azure Database for PostgreSQL Server, můžete ho odstranit, abyste se přestali náklady. Žádné další akce na serveru nejsou povoleny, dokud nebude obnoven přístup k trezoru klíčů a server je k dispozici. Není také možné změnit možnost šifrování dat z `Yes`(spravované zákazníkem) na `No` (spravováno službou) na nepřístupovém serveru, když je zašifrovaný pomocí klíče spravovaného zákazníkem. Abyste mohli znovu získat přístup k serveru, budete muset klíč znovu ověřit ručně. Tato akce je nutná k ochraně dat před neoprávněným přístupem, zatímco oprávnění k klíči spravovanému zákazníkem jsou odvolána.
+Pokud už nepotřebujete nedostupnou databázi Azure pro postgreSQL server, můžete ji odstranit a zastavit náklady. Žádné další akce na serveru nejsou povoleny, dokud nebude obnoven přístup k trezoru klíčů a dokud nebude server k dispozici. Není také možné změnit možnost šifrování dat `Yes`z (spravované `No` zákazníkem) na (spravované službou) na nepřístupném serveru, když je zašifrována pomocí klíče spravovaného zákazníkem. Před opětovnou dostupností serveru bude nutné znovu ověřit platnost klíče. Tato akce je nezbytná k ochraně dat před neoprávněným přístupem, zatímco oprávnění ke klíči spravovanému zákazníkem jsou odvolána.
 
-## <a name="common-errors-causing-server-to-become-inaccessible"></a>Běžné chyby způsobující, že server nebude přístupný
+## <a name="common-errors-causing-server-to-become-inaccessible"></a>Běžné chyby způsobující nedostupnost serveru
 
-U následujících chybných konfigurací dojde u šifrování dat, které používá Azure Key Vault klíče:
+Následující chybné konfigurace způsobují většinu problémů s šifrováním dat, které používají klíče Azure Key Vault:
 
 - Trezor klíčů není k dispozici nebo neexistuje:
   - Trezor klíčů byl omylem odstraněn.
-  - Přerušovaná chyba sítě způsobí, že Trezor klíčů nebude k dispozici.
+  - Občasná chyba sítě způsobí, že trezor klíčů nebude k dispozici.
 
-- Nemáte oprávnění pro přístup k trezoru klíčů nebo tento klíč neexistuje:
-  - Platnost klíče vypršela nebo byla omylem odstraněna nebo zakázána.
+- Nemáte oprávnění k přístupu k trezoru klíčů nebo klíč neexistuje:
+  - Platnost klíče vypršela nebo byl omylem odstraněn nebo zakázán.
 - Spravovaná identita instance Azure Database for PostgreSQL byla omylem odstraněna.
-  - Spravovaná identita instance Azure Database for PostgreSQL má nedostatečná oprávnění klíče. Například oprávnění nezahrnují Get, Wrap a Unwrap.
-  - Oprávnění spravované identity pro instanci Azure Database for PostgreSQL byla odvolána nebo odstraněna.
+  - Spravovaná identita instance Azure Database for PostgreSQL nemá dostatečná oprávnění klíče. Oprávnění například nezahrnují get, wrap a unwrap.
+  - Oprávnění spravované identity k instanci Azure Database for PostgreSQL byla odvolána nebo odstraněna.
 
 ## <a name="identify-and-resolve-common-errors"></a>Identifikace a řešení běžných chyb
 
 ### <a name="errors-on-the-key-vault"></a>Chyby v trezoru klíčů
 
-#### <a name="disabled-key-vault"></a>Zakázaný Trezor klíčů
+#### <a name="disabled-key-vault"></a>Zakázaný trezor klíčů
 
 - `AzureKeyVaultKeyDisabledMessage`
-- **Vysvětlení**: operaci nelze dokončit na serveru, protože klíč Azure Key Vault je zakázán.
+- **Vysvětlení:** Operaci nelze dokončit na serveru, protože klíč Azure Key Vault je zakázán.
 
-#### <a name="missing-key-vault-permissions"></a>Chybí oprávnění trezoru klíčů.
+#### <a name="missing-key-vault-permissions"></a>Chybějící oprávnění trezoru klíčů
 
 - `AzureKeyVaultMissingPermissionsMessage`
-- **Vysvětlení**: Server nemá požadovaná oprávnění k získání, zabalení a rozbalení Azure Key Vault. Udělte objektu služby s ID všechna chybějící oprávnění.
+- **Vysvětlení:** Server nemá požadovaná oprávnění Získat, Zalomit a Rozbalit do úložiště klíčů Azure. Udělte všechna chybějící oprávnění instančnímu objektu s ID.
 
 ### <a name="mitigation"></a>Omezení rizik
 
-- Zkontrolujte, jestli je v trezoru klíčů přítomen klíč spravovaný zákazníkem.
-- Identifikujte Trezor klíčů a potom v Azure Portalu přejít na Trezor klíčů.
+- Zkontrolujte, zda je klíč spravovaný zákazníkem přítomen v trezoru klíčů.
+- Identifikujte trezor klíčů a přejděte do trezoru klíčů na webu Azure Portal.
 - Ujistěte se, že identifikátor URI klíče identifikuje klíč, který je k dispozici.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Pomocí Azure Portal můžete nastavit šifrování dat pomocí klíče spravovaného zákazníkem v Azure Database for PostgreSQL](howto-data-encryption-portal.md)
+[Nastavení šifrování dat pomocí klíče spravovaného zákazníkem v Azure Database for PostgreSQL pomocí portálu Azure Portal](howto-data-encryption-portal.md)

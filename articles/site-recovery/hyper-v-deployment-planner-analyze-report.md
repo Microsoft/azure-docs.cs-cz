@@ -1,6 +1,6 @@
 ---
-title: Analýza sestavy Plánovač nasazení Hyper-V v Azure Site Recovery
-description: Tento článek popisuje, jak analyzovat sestavu vygenerovanou Plánovač nasazení služby Azure Site Recovery pro zotavení po havárii virtuálních počítačů Hyper-V do Azure.
+title: Analýza sestavy Plánovače nasazení HyperV v nástroji Azure Site Recovery
+description: Tento článek popisuje, jak analyzovat sestavu generovanou plánovačem nasazení obnovení webu Azure pro zotavení po havárii virtuálních počítačích Hyper-V do Azure.
 services: site-recovery
 author: mayurigupta13
 manager: rochakm
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
 ms.openlocfilehash: 0d39f763d3cdc90f89e0bcd17d0facc67551ffc0
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79257898"
 ---
-# <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Analýza sestavy Plánovač nasazení služby Azure Site Recovery
+# <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Analýza sestavy Plánovač nasazení obnovení webu Azure
 Tento článek popisuje listy v sestavě aplikace Excel vygenerované Plánovačem nasazení služby Azure Site Recovery pro scénář nasazení Hyper-V do Azure.
 
 ## <a name="on-premises-summary"></a>On-premises summary (Přehled místního prostředí)
@@ -23,7 +23,7 @@ List On-premises summary (Přehled místního prostředí) poskytuje přehled pr
 
 ![On-premises summary (Přehled místního prostředí)](media/hyper-v-deployment-planner-analyze-report/on-premises-summary-h2a.png)
 
-**Start Date** a **End Date:** Počáteční a koncové datum dat profilace zahrnutých do generování sestavy. Ve výchozím nastavení je počátečním datem datum zahájení profilace a koncovým datem je datum zastavení profilace. Tyto informace můžou být hodnoty StartDate a EndDate, pokud se sestava generuje s použitím těchto parametrů.
+**Počáteční a** **koncové datum**: Počáteční a koncové datum profilovacích dat zvažovaných pro generování sestavy. Ve výchozím nastavení je počátečním datem datum zahájení profilace a koncovým datem je datum zastavení profilace. Tyto informace můžou být hodnoty StartDate a EndDate, pokud se sestava generuje s použitím těchto parametrů.
 
 **Total number of profiling days:** Celkový počet dnů profilace mezi počátečním a koncovým datem, pro které se generuje sestava.
 
@@ -35,7 +35,7 @@ List On-premises summary (Přehled místního prostředí) poskytuje přehled pr
 
 **Average disk size (GB):** Průměrná velikost disků ve všech kompatibilních virtuálních počítačích.
 
-**Desired RPO (minutes):** Buď výchozí cíl bodu obnovení, nebo hodnota předaná v parametru DesiredRPO při generování sestavy, sloužící k odhadu požadované šířky pásma.
+**Požadovaný objekt RPO (minuty):** Buď výchozí cíl bodu obnovení nebo hodnota předaná parametru "DesiredRPO" v době generování sestavy pro odhad požadované šířky pásma.
 
 **Desired bandwidth (Mbps):** Hodnota, kterou jste předali v parametru Bandwidth při generování sestavy, sloužící k odhadu dosažitelného cíle bodu obnovení.
 
@@ -179,7 +179,7 @@ Sestava aplikace Excel vygenerovaná Plánovačem nasazení služby Site Recover
 
 **VM Name:** Název virtuálního počítače, který se použil v souboru VMListFile při generování sestavy. V tomto sloupci jsou uvedeny také disky (VHD) připojené k virtuálním počítačům. Názvy zahrnují názvy hostitelů Hyper-V, kam byly virtuální počítače umístěné, když je nástroj během období profilace rozpoznal.
 
-**VM Compatibility** (Kompatibilita virtuálního počítače): Hodnoty jsou **Yes** (Ano) a **Yes**\* (Ano). **Ano**\* je pro instance, ve kterých je virtuální počítač vhodný pro [Premium SSD](../virtual-machines/windows/disks-types.md). Tady profilovaný disk s vysokou četností změn nebo IOPS odpovídá větší velikosti disku typu Premium, než je velikost namapovaná na tento disk. Účet úložiště určuje, na jaký typ disku služby Premium Storage se disk bude mapovat, na základě jeho velikosti: 
+**VM Compatibility** (Kompatibilita virtuálního počítače): Hodnoty jsou **Yes** (Ano) a **Yes**\* (Ano). **Ano** \* je pro případy, ve kterých je virtuální virtuální ms vhodný pro [prémiové ssd d.](../virtual-machines/windows/disks-types.md) Tady profilovaný disk s vysokou četností změn nebo IOPS odpovídá větší velikosti disku typu Premium, než je velikost namapovaná na tento disk. Účet úložiště určuje, na jaký typ disku služby Premium Storage se disk bude mapovat, na základě jeho velikosti: 
 * Menší než 128 GB je P10.
 * 128 GB až 256 GB je P15.
 * 256 GB až 512 GB je P20.
@@ -187,7 +187,7 @@ Sestava aplikace Excel vygenerovaná Plánovačem nasazení služby Site Recover
 * 1 025 GB až 2 048 GB je P40.
 * 2 049 GB až 4 095 GB je P50.
 
-Pokud se například díky charakteristikám úloh disk umístil do kategorie P20 nebo P30, ale kvůli velikosti je mapován na nižší typ disku služby Premium Storage, nástroj označí tento virtuální počítač jako **Yes**\*. Nástroj také doporučí změnit velikost zdrojového disku tak, aby se vešel do doporučeného typu disku služby Premium Storage, nebo po převzetí služeb při selhání změnit typ cílového disku.
+Například pokud charakteristiky pracovního vytížení disku umístit do kategorie P20 nebo P30, ale velikost mapuje dolů na nižší typ úložiště premium, nástroj označí, že virtuální počítače jako **Ano**\*. Nástroj také doporučí změnit velikost zdrojového disku tak, aby se vešel do doporučeného typu disku služby Premium Storage, nebo po převzetí služeb při selhání změnit typ cílového disku.
 
 **Storage Type** (Typ služby Storage): Standard nebo Premium.
 
@@ -203,7 +203,7 @@ Pokud se například díky charakteristikám úloh disk umístil do kategorie P2
 
 **Number of Disks:** Celkový počet disků virtuálního počítače (VHD) ve virtuálním počítači.
 
-**Disk Size (GB):** Celková velikost všech disků virtuálního počítače. Nástroj ukazuje také velikosti jednotlivých disků ve virtuálním počítači.
+**Velikost disku (GB):** Celková velikost všech disků virtuálního počítače. Nástroj ukazuje také velikosti jednotlivých disků ve virtuálním počítači.
 
 **Cores:** Počet procesorových jader ve virtuálním počítači.
 
@@ -246,7 +246,7 @@ Sestava aplikace Excel vygenerovaná Plánovačem nasazení služby Site Recover
 
 * Source IOPS exceeds the supported storage IOPS limit of 80,000 per VM (Počet zdrojových IOPS překračuje podporované omezení úložiště – 80 000 IOPS na virtuální počítač).
 
-* Průměrná četnost změn dat zdrojového virtuálního počítače překračuje podporované omezení četnosti přenosů dat Site Recovery 20 MB/s pro průměrnou I/O velikost.
+* Průměrná hodnota dat zdrojového virtuálního počítače překračuje podporovaný limit změn dat obnovení webu 20 MB/s pro průměrnou velikost vstupně-videa.
 
 * Source VM average effective write IOPS exceeds the supported Site Recovery IOPS limit of 840 (Průměrný počet efektivních vstupně-výstupních operací zápisu za sekundu na zdrojovém virtuálním počítači překračuje podporované omezení Site Recovery pro počet IOPS – 840).
 
@@ -258,7 +258,7 @@ Sestava aplikace Excel vygenerovaná Plánovačem nasazení služby Site Recover
 
 **Number of Disks:** Celkový počet virtuálních pevných disků ve virtuálním počítači.
 
-**Disk Size (GB):** Celková nastavená velikost všech disků virtuálního počítače. Nástroj ukazuje také velikosti jednotlivých disků ve virtuálním počítači.
+**Velikost disku (GB):** Celková velikost nastavení všech disků virtuálního počítače. Nástroj ukazuje také velikosti jednotlivých disků ve virtuálním počítači.
 
 **Cores:** Počet procesorových jader ve virtuálním počítači.
 
@@ -271,11 +271,11 @@ Sestava aplikace Excel vygenerovaná Plánovačem nasazení služby Site Recover
 ## <a name="azure-site-recovery-limits"></a>Omezení Azure Site Recovery
 Následující tabulka obsahuje omezení Site Recovery. Tato omezení vycházejí z testů, nemůžou však pokrýt všechny možné kombinace vstupně-výstupních operací aplikace. Skutečné výsledky se můžou lišit v závislosti na kombinaci vstupně-výstupních operací vaší aplikace. Pro dosažení co nejlepších výsledků, a to i po naplánování nasazení, proveďte rozsáhlé testování aplikace pomocí testovacího převzetí služeb při selhání, abyste získali skutečnou představu o výkonu aplikace.
  
-**Cíl ukládání replikace** | **Průměrná velikost vstupně-výstupní operace na zdrojovém virtuálním počítači** |**Průměrná četnost změn dat na zdrojovém virtuálním počítači** | **Celková denní četnost změn dat na zdrojovém virtuálním počítači**
+**Cíl úložiště replikace** | **Průměrná velikost vstupně-videa zdrojového virtuálního počítače** |**Průměrná konve dat zdrojového virtuálního aplikace** | **Celková denní četnost změn dat na zdrojovém virtuálním počítači**
 ---|---|---|---
 Storage úrovně Standard | 8 kB | 2 MB/s na virtuální počítač | 168 GB na virtuální počítač
 Premium Storage | 8 kB  | 5 MB/s na virtuální počítač | 421 GB na virtuální počítač
-Premium Storage | 16 kB nebo větší| 20 MB/s na virtuální počítač | 1684 GB na virtuální počítač
+Premium Storage | 16 kB nebo větší| 20 MB/s na virtuální virtuální měsících | 1684 GB na virtuální virtuální měsíčkem
 
 Tato omezení jsou průměrné hodnoty za předpokladu, že se vstupně-výstupní operace z 30 % překrývají. Služba Site Recovery je schopna zpracovávat větší propustnost v závislosti na poměru překrývání, větší velikosti zápisů a skutečného chování vstupně-výstupních operací úloh. Předchozí čísla předpokládají typický backlog přibližně 5 minut. To znamená, že zpracování nahrávaných dat a vytvoření bodu obnovení proběhne do pěti minut od nahrání.
 
@@ -302,7 +302,7 @@ List obsahuje požadavek na celkový volný prostor úložiště pro všechny sv
 
 **Free space available (GB):** Volné místo dostupné na svazku.
 
-**Total storage space required on the volume (GB):** Celkový volný prostor úložiště vyžadovaný na svazku pro zajištění úspěšné počáteční a rozdílové replikace. 
+**Celkový úložný prostor potřebný na svazku (GB):** Celkový volný úložný prostor potřebný na svazku pro úspěšnou počáteční replikaci a rozdílovou replikaci. 
 
 **Total additional storage to be provisioned on the volume for successful replication (GB):** Doporučené celkové další místo, které musí být na svazku zřízené pro úspěšnou počáteční a rozdílovou replikaci.
 
@@ -341,12 +341,12 @@ Příklad: VM1, VM2 a VM3 se nacházejí na svazku E:\VHDpath. Před zahájením
 
 **Minimum bandwidth required for initial replication (Mbps):** Minimální šířka pásma vyžadovaná pro počáteční replikaci příslušného virtuálního počítače.
 
-**Minimum bandwidth required for delta replication (Mbps):** Minimální šířka pásma vyžadovaná pro rozdílovou replikaci příslušného virtuálního počítače.
+**Minimální šířka pásma požadovaná pro rozdílovou replikaci (Mb/s):** Minimální šířka pásma požadovaná pro rozdílovou replikaci pro virtuální ho.
 
 ### <a name="network-utilization-details-for-each-batch"></a>Podrobnosti o využití sítě pro jednotlivé dávky 
 Každá tabulka poskytuje přehled o využití sítě příslušnou dávkou.
 
-**Bandwidth available for batch:** Šířka pásma dostupná pro dávku potom, co se vezme v úvahu šířka pásma rozdílové replikace předchozí dávky.
+**Šířka pásma dostupná pro dávku**: Šířka pásma dostupná pro dávku po zvážení šířky pásma rozdílové replikace předchozí dávky.
 
 **Approximate bandwidth available for initial replication of batch:** Šířka pásma dostupná pro počáteční replikaci virtuálních počítačů příslušné dávky. 
 

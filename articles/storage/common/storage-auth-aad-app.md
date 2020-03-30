@@ -1,7 +1,7 @@
 ---
-title: Získání tokenu z Azure AD pro autorizaci žádostí z klientské aplikace
+title: Získání tokenu z Azure AD pro autorizaci požadavků z klientské aplikace
 titleSuffix: Azure Storage
-description: Použijte Azure Active Directory k ověření v rámci klientské aplikace, získání tokenu OAuth 2,0 a autorizaci požadavků do úložiště objektů BLOB v Azure a do fronty.
+description: Pomocí služby Azure Active Directory se můžete ověřovat v rámci klientské aplikace, získat token OAuth 2.0 a autorizovat požadavky do úložiště objektů blob Azure a úložiště front.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,128 +10,128 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: d3ee211298598d78f423d88fd4df1c58ed4bfa29
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79268480"
 ---
-# <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Získání tokenu z Azure AD pro autorizaci žádostí z klientské aplikace
+# <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Získání tokenu z Azure AD pro autorizaci požadavků z klientské aplikace
 
-Klíčovou výhodou použití Azure Active Directory (Azure AD) se službou Azure Blob Storage nebo Queue Storage je, že vaše přihlašovací údaje už nemusíte ukládat do kódu. Místo toho můžete požádat o přístupový token OAuth 2,0 z platformy Microsoft Identity Platform (dřív Azure AD). Azure AD ověřuje objekt zabezpečení (uživatel, skupina nebo instanční objekt), který spouští aplikaci. Pokud je ověření úspěšné, služba Azure AD vrátí přístupový token do aplikace a aplikace pak pomocí přístupového tokenu autorizuje žádosti do úložiště objektů BLOB v Azure nebo do úložiště fronty.
+Klíčovou výhodou používání Azure Active Directory (Azure AD) s úložištěm objektů blob Azure nebo úložištěm fronty je, že vaše přihlašovací údaje už nemusí být uloženy ve vašem kódu. Místo toho můžete požádat o přístupový token OAuth 2.0 z platformy identit Microsoftu (dříve Azure AD). Azure AD ověřuje intezuru zabezpečení (uživatele, skupiny nebo instančního objektu) spuštěné aplikace. Pokud ověřování proběhne úspěšně, Azure AD vrátí přístupový token do aplikace a aplikace pak můžete použít přístupový token k autorizaci požadavků do úložiště objektů blob Azure nebo úložiště fronty.
 
-Tento článek ukazuje, jak nakonfigurovat nativní aplikaci nebo webovou aplikaci pro ověřování pomocí platformy Microsoft Identity Platform 2,0. Funkce .NET příklad kódu, ale jiných jazycích používat podobný přístup. Další informace o Microsoft Identity Platform 2,0 najdete v tématu [Přehled Microsoft Identity Platform (v 2.0)](../../active-directory/develop/v2-overview.md).
+Tento článek ukazuje, jak nakonfigurovat nativní aplikaci nebo webovou aplikaci pro ověřování pomocí platformy Microsoft Identity Platform 2.0. Příklad kódu obsahuje rozhraní .NET, ale jiné jazyky používají podobný přístup. Další informace o platformě Microsoft Identity Platform 2.0 naleznete [v přehledu platformy microsoftidentit (v2.0).](../../active-directory/develop/v2-overview.md)
 
-Přehled toku udělení kódu OAuth 2,0 najdete v tématu [autorizace přístupu k Azure Active Directory webových aplikací pomocí toku udělení kódu oauth 2,0](../../active-directory/develop/v2-oauth2-auth-code-flow.md).
+Přehled toku udělení kódu OAuth 2.0 najdete v tématu [Autorizace přístupu k webovým aplikacím Služby Azure Active Directory pomocí toku udělení kódu OAuth 2.0](../../active-directory/develop/v2-oauth2-auth-code-flow.md).
 
-## <a name="assign-a-role-to-an-azure-ad-security-principal"></a>Přiřazení role k objektu zabezpečení služby Azure AD
+## <a name="assign-a-role-to-an-azure-ad-security-principal"></a>Přiřazení role k objektu zabezpečení Azure AD
 
-K ověření objektu zabezpečení z vaší aplikace Azure Storage, nejprve nakonfigurujte nastavení řízení přístupu na základě rolí pro tento objekt zabezpečení. Azure Storage definuje předdefinované role RBAC, které zahrnují oprávnění pro kontejnery a fronty. Pokud RBAC role je přiřazena k objektu zabezpečení, tento objekt zabezpečení se udělí přístup k prostředku. Další informace najdete v tématu [Správa přístupových práv k objektům blob Azure a zařazování dat do fronty pomocí RBAC](storage-auth-aad-rbac.md).
+Chcete-li ověřit objekt zabezpečení z aplikace Azure Storage, nejprve nakonfigurujte nastavení řízení přístupu na základě rolí (RBAC) pro tento objekt zabezpečení. Azure Storage definuje předdefinované role RBAC, které zahrnují oprávnění pro kontejnery a fronty. Pokud je role RBAC přiřazena k objektu zabezpečení, je tomuto objektu zabezpečení udělen přístup k tomuto prostředku. Další informace naleznete v [tématu Správa přístupových práv k datům objektů blob a fronty Azure pomocí RBAC](storage-auth-aad-rbac.md).
 
-## <a name="register-your-application-with-an-azure-ad-tenant"></a>Registrace aplikace pomocí tenanta služby Azure AD
+## <a name="register-your-application-with-an-azure-ad-tenant"></a>Registrace aplikace u klienta Azure AD
 
-Prvním krokem při použití Azure AD k autorizaci přístupu k prostředkům úložiště je registrace klientské aplikace pomocí klienta služby Azure AD z [Azure Portal](https://portal.azure.com). Při registraci klientské aplikace zadáváte informace o aplikaci do služby Azure AD. Azure AD pak poskytuje ID klienta (označované také jako *ID aplikace*), které můžete použít k přidružení aplikace k Azure AD za běhu. Další informace o ID klienta najdete [v tématu aplikace a objekty zabezpečení služby v Azure Active Directory](../../active-directory/develop/app-objects-and-service-principals.md).
+Prvním krokem při používání Azure AD k autorizaci přístupu k prostředkům úložiště je registrace klientské aplikace s klientem Azure AD z [webu Azure Portal](https://portal.azure.com). Při registraci klientské aplikace zadáte informace o aplikaci do služby Azure AD. Azure AD pak poskytuje ID klienta (také volal *ID aplikace),* které používáte k přidružení aplikace k Azure AD za běhu. Další informace o ID klienta najdete v [tématu Objekty za registrovaných aplikací a služeb ve službě Azure Active Directory](../../active-directory/develop/app-objects-and-service-principals.md).
 
-Pokud chcete zaregistrovat Azure Storage aplikaci, postupujte podle kroků uvedených v části [rychlý Start: registrace aplikace s platformou Microsoft Identity](../../active-directory/develop/quickstart-configure-app-access-web-apis.md). Následující obrázek ukazuje běžné nastavení pro registraci webové aplikace:
+Pokud chcete zaregistrovat aplikaci Azure Storage, postupujte podle kroků uvedených na [úvodním panelu: Zaregistrujte aplikaci na platformě microsoft identity](../../active-directory/develop/quickstart-configure-app-access-web-apis.md). Následující obrázek znázorňuje běžné nastavení pro registraci webové aplikace:
 
-![Snímek obrazovky, který ukazuje, jak zaregistrovat aplikaci úložiště ve službě Azure AD](./media/storage-auth-aad-app/app-registration.png)
+![Snímek obrazovky znázorňující, jak zaregistrovat aplikaci úložiště ve službě Azure AD](./media/storage-auth-aad-app/app-registration.png)
 
 > [!NOTE]
-> Pokud aplikaci zaregistrujete jako nativní aplikaci, můžete pro **identifikátor URI přesměrování**zadat libovolný platný identifikátor URI. Pro nativní aplikace nemusí být tato hodnota skutečnou adresou URL. Pro webové aplikace musí být identifikátor URI pro přesměrování platným identifikátorem URI, protože určuje adresu URL, na které jsou tokeny poskytovány.
+> Pokud zaregistrujete aplikaci jako nativní aplikaci, můžete zadat libovolný platný identifikátor URI pro **identifikátor URI přesměrování**. Pro nativní aplikace tato hodnota nemusí být skutečná adresa URL. U webových aplikací musí být identifikátor URI přesměrování platný identifikátor URI, protože určuje adresu URL, na kterou jsou k dispozici tokeny.
 
-Po zaregistrování aplikace se v části **Nastavení**zobrazí ID aplikace (nebo ID klienta):
+Po registraci aplikace se v části Nastavení zobrazí ID aplikace (nebo ID **klienta):**
 
-![Snímek obrazovky zobrazující ID klienta](./media/storage-auth-aad-app/app-registration-client-id.png)
+![Snímek obrazovky s ID klienta](./media/storage-auth-aad-app/app-registration-client-id.png)
 
-Další informace o registraci aplikace v Azure AD najdete v tématu [integrování aplikací pomocí Azure Active Directory](../../active-directory/develop/quickstart-v2-register-an-app.md).
+Další informace o registraci aplikace ve službě Azure AD najdete v [tématu Integrace aplikací s Azure Active Directory](../../active-directory/develop/quickstart-v2-register-an-app.md).
 
-## <a name="grant-your-registered-app-permissions-to-azure-storage"></a>Registrované aplikaci udělit oprávnění ke službě Azure Storage
+## <a name="grant-your-registered-app-permissions-to-azure-storage"></a>Udělení oprávnění registrované aplikace službě Azure Storage
 
-Potom udělte aplikaci oprávnění k volání rozhraní API Azure Storage. Tento krok umožňuje vaší aplikaci autorizovat žádosti o Azure Storage s využitím Azure AD.
+Dále udělte oprávnění k aplikacím pro volání api úložiště Azure. Tento krok umožňuje vaší aplikaci autorizovat požadavky na Azure Storage s Azure AD.
 
-1. Na stránce **Přehled** pro vaši registrovanou aplikaci vyberte **Zobrazit oprávnění rozhraní API**.
-1. V části **oprávnění rozhraní API** vyberte **Přidat oprávnění** a zvolte **Microsoft API**.
-1. V seznamu výsledků vyberte **Azure Storage** pro zobrazení PODOKNA **oprávnění API pro vyžádání** .
-1. V části **jaký typ oprávnění vaše aplikace požaduje?** si všimněte, že dostupný typ oprávnění jsou **delegovaná oprávnění**. Tato možnost je ve výchozím nastavení vybrána.
-1. V podokně **vybrat oprávnění** v PODOKNĚ **oprávnění API žádosti** zaškrtněte políčko vedle **User_impersonation**a pak klikněte na **Přidat oprávnění**.
+1. Na stránce **Přehled** registrované aplikace vyberte **Zobrazit oprávnění rozhraní API**.
+1. V části **Oprávnění rozhraní API** vyberte Přidat **oprávnění** a zvolte rozhraní **Microsoft API**.
+1. Vyberte **Azure Storage** ze seznamu výsledků, chcete-li zobrazit podokno **oprávnění Rozhraní API požadavku.**
+1. V části **Jaký typ oprávnění aplikace vyžaduje?**, všimněte si, že dostupným typem oprávnění jsou oprávnění **Delegovaná**. Tato možnost je vybrána ve výchozím nastavení.
+1. V části **Vybrat oprávnění** v podokně **Požádat o oprávnění rozhraní API** zaškrtněte políčko vedle **user_impersonation**a klepněte na tlačítko **Přidat oprávnění**.
 
-    ![Snímek obrazovky zobrazující oprávnění pro úložiště](media/storage-auth-aad-app/registered-app-permissions-1.png)
+    ![Snímek obrazovky s oprávněními pro úložiště](media/storage-auth-aad-app/registered-app-permissions-1.png)
 
-V podokně **oprávnění API** se teď zobrazí, že registrovaná aplikace Azure AD má přístup k oběma Microsoft Graph i Azure Storage. Oprávnění se udělují Microsoft Graph automaticky při první registraci vaší aplikace ve službě Azure AD.
+Podokno **oprávnění rozhraní API** teď ukazuje, že vaše registrovaná aplikace Azure AD má přístup k Microsoft Graphu i k Úložišti Azure. Oprávnění se microsoft graphu udělují automaticky při první registraci aplikace ve službě Azure AD.
 
-![Snímek obrazovky zobrazující oprávnění aplikace registrace](media/storage-auth-aad-app/registered-app-permissions-2.png)
+![Snímek obrazovky s oprávněními registrace aplikací](media/storage-auth-aad-app/registered-app-permissions-2.png)
 
 ## <a name="create-a-client-secret"></a>Vytvoření tajného klíče klienta
 
-Aplikace potřebuje při žádosti o tokenu klíč klienta k prokázání jeho identity. K přidání tajného klíče klienta použijte následující postup:
+Aplikace potřebuje tajný klíč klienta k prokázání své identity při požadování tokenu. Chcete-li přidat tajný klíč klienta, postupujte takto:
 
-1. Přejděte k registraci vaší aplikace v Azure Portal.
-1. Vyberte nastavení **certifikáty & tajných** kódů.
-1. V části **tajné klíče klienta**klikněte na **nový tajný klíč klienta** a vytvořte nový tajný klíč.
-1. Zadejte popis tajného kódu a vyberte požadovaný interval vypršení platnosti.
-1. Hodnotu nového tajného klíče hned zkopírujte do zabezpečeného umístění. Celá hodnota se zobrazí pouze jednou.
+1. Přejděte na registraci aplikace na webu Azure Portal.
+1. Vyberte nastavení **Certifikáty & tajných kódů.**
+1. V části **Tajné klíče klienta**klepněte na tlačítko **Nový tajný klíč klienta** a vytvořte nový tajný klíč.
+1. Zadejte popis tajného klíče a zvolte požadovaný interval vypršení platnosti.
+1. Okamžitě zkopírujte hodnotu nového tajného klíče do zabezpečeného umístění. Plná hodnota se zobrazí pouze jednou.
 
-    ![Snímek obrazovky zobrazující tajný klíč klienta](media/storage-auth-aad-app/client-secret.png)
+    ![Snímek obrazovky s tajným tajemstvím klienta](media/storage-auth-aad-app/client-secret.png)
 
-## <a name="client-libraries-for-token-acquisition"></a>Klientské knihovny pro získání tokenu
+## <a name="client-libraries-for-token-acquisition"></a>Klientské knihovny pro získávání tokenů
 
-Po zaregistrování aplikace a udělení oprávnění k přístupu k datům v úložišti objektů BLOB v Azure nebo ve frontě můžete do své aplikace přidat kód pro ověření objektu zabezpečení a získání tokenu OAuth 2,0. K ověření a získání tokenu můžete použít buď jednu z [knihoven ověřování Microsoft Identity Platform](../../active-directory/develop/reference-v2-libraries.md) , nebo jinou Open Source knihovnu, která podporuje OpenID Connect 1,0. Aplikace pak může pomocí přístupového tokenu autorizovat požadavek na úložiště objektů BLOB v Azure nebo ve frontě.
+Jakmile zaregistrujete aplikaci a udělíte jí oprávnění k přístupu k datům v úložišti objektů Blob Azure nebo ve frontě, můžete do aplikace přidat kód k ověření objektu zabezpečení a získat token OAuth 2.0. K ověření a získání tokenu můžete použít jednu z [knihoven ověřování platformy identit Microsoftu](../../active-directory/develop/reference-v2-libraries.md) nebo jinou otevřenou knihovnu, která podporuje OpenID Connect 1.0. Vaše aplikace pak můžete použít přístupový token k autorizaci požadavku proti úložišti objektů blob Azure nebo fronty úložiště.
 
-Seznam scénářů, pro které se podporují tokeny, najdete v části [toky ověřování](/en-us/azure/active-directory/develop/msal-authentication-flows) [obsahu knihovny Microsoft Authentication Library](/azure/active-directory/develop/msal-overview).
+Seznam scénářů, pro které je podporováno získávání tokenů, naleznete v části [toků ověřování](/en-us/azure/active-directory/develop/msal-authentication-flows) [obsahu knihovny ověřování společnosti Microsoft](/azure/active-directory/develop/msal-overview).
 
 ## <a name="well-known-values-for-authentication-with-azure-ad"></a>Známé hodnoty pro ověřování pomocí Azure AD
 
-K ověření objektu zabezpečení s využitím Azure AD, budete muset zahrnout některé známé hodnoty v kódu.
+Chcete-li ověřit objekt zabezpečení pomocí služby Azure AD, musíte do kódu zahrnout některé známé hodnoty.
 
 ### <a name="azure-ad-authority"></a>Autorita Azure AD
 
-Základní autorita Azure AD pro veřejný cloud Microsoftu je následující, kde *ID tenanta* je vaše ID tenanta služby Active Directory (nebo ID adresáře):
+Pro veřejný cloud Microsoftu je základní autorita Azure AD následující, kde *id klienta* je vaše ID klienta služby Active Directory (nebo ID adresáře):
 
 `https://login.microsoftonline.com/<tenant-id>/`
 
-ID tenanta identifikuje tenanta Azure AD pro účely ověření. Také se označuje jako ID adresáře. Pokud chcete načíst ID tenanta, přejděte na stránku **Přehled** pro registraci vaší aplikace v Azure Portal a zkopírujte hodnotu z tohoto umístění.
+ID klienta identifikuje klienta Azure AD, který se má použít pro ověřování. Označuje se také jako ID adresáře. Pokud chcete načíst ID klienta, přejděte na stránku **Přehled** pro registraci aplikace na webu Azure Portal a zkopírujte hodnotu odtud.
 
-### <a name="azure-storage-resource-id"></a>ID prostředku Azure Storage
+### <a name="azure-storage-resource-id"></a>ID prostředků úložiště Azure
 
 [!INCLUDE [storage-resource-id-include](../../../includes/storage-resource-id-include.md)]
 
-## <a name="net-code-example-create-a-block-blob"></a>Příklad kódu .NET: vytvoření objektu blob bloku
+## <a name="net-code-example-create-a-block-blob"></a>Příklad kódu rozhraní .NET: Vytvoření objektu blob bloku
 
-Příklad kódu ukazuje, jak získat přístupový token ze služby Azure AD. Přístupový token se používá k ověřování zadaného uživatele a potom budete autorizovat požadavek na vytvoření objektu blob bloku. Pokud chcete získat to ukázka funguje, nejdřív postupujte podle kroků uvedených v předchozí části.
+Příklad kódu ukazuje, jak získat přístupový token z Azure AD. Přístupový token se používá k ověření zadaného uživatele a potom autorizovat požadavek na vytvoření objektu blob bloku. Chcete-li tuto ukázku zpracovat, postupujte nejprve podle kroků popsaných v předchozích částech.
 
-K vyžádání tokenu budete potřebovat následující hodnoty z registrace vaší aplikace:
+Chcete-li požádat o token, budete potřebovat následující hodnoty z registrace aplikace:
 
-- Název vaší domény služby Azure AD. Tuto hodnotu si načtěte na stránce **přehled** Azure Active Directory.
-- ID tenanta (nebo adresáře). Tuto hodnotu si načtěte na stránce **Přehled** registrace vaší aplikace.
-- ID klienta (nebo aplikace). Tuto hodnotu si načtěte na stránce **Přehled** registrace vaší aplikace.
-- Identifikátor URI pro přesměrování klienta. Načtěte tuto hodnotu z nastavení **ověřování** pro registraci vaší aplikace.
-- Hodnota tajného klíče klienta. Načte tuto hodnotu z umístění, do kterého jste ji dříve zkopírovali.
+- Název domény Azure AD. Tuto hodnotu načtěte ze stránky **Přehled** služby Azure Active Directory.
+- ID klienta (nebo adresáře). Tuto hodnotu načtěte na stránce **Přehled** registrace aplikace.
+- ID klienta (nebo aplikace). Tuto hodnotu načtěte na stránce **Přehled** registrace aplikace.
+- Identifikátor URI přesměrování klienta. Načtěte tuto hodnotu z nastavení **ověřování** pro registraci aplikace.
+- Hodnota tajného klíče klienta. Načtěte tuto hodnotu z umístění, do kterého jste ji dříve zkopírovali.
 
 ### <a name="create-a-storage-account-and-container"></a>Vytvoření účtu úložiště a kontejneru
 
-Chcete-li spustit ukázku kódu, vytvořte účet úložiště v rámci stejného předplatného jako váš Azure Active Directory. Pak vytvořte kontejner v rámci tohoto účtu úložiště. Vzorový kód vytvoří objekt blob bloku v tomto kontejneru.
+Chcete-li spustit ukázku kódu, vytvořte účet úložiště v rámci stejného předplatného jako azure active directory. Pak vytvořte kontejner v rámci tohoto účtu úložiště. Ukázkový kód vytvoří objekt blob bloku v tomto kontejneru.
 
-Dále explicitně přiřaďte roli **Přispěvatel dat objektů BLOB úložiště** k uživatelskému účtu, pod kterým budete spouštět vzorový kód. Pokyny k přiřazení této role v Azure Portal najdete v tématu [udělení přístupu k datům objektů blob Azure a frontě pomocí RBAC v Azure Portal](storage-auth-aad-rbac-portal.md).
+Dále explicitně přiřaďte roli **přispěvatele dat objektů blob úložiště** k uživatelskému účtu, pod kterým spustíte ukázkový kód. Pokyny, jak přiřadit tuto roli na webu Azure Portal, najdete v tématu [Udělení přístupu k datům objektů blob Azure a fronty pomocí RBAC na webu Azure Portal](storage-auth-aad-rbac-portal.md).
 
 > [!NOTE]
-> Když vytvoříte účet Azure Storage, nebudete automaticky přiřazovat oprávnění pro přístup k datům prostřednictvím služby Azure AD. Je nutné explicitně přiřadit sami roli RBAC pro Azure Storage. Ji můžete přiřadit na úrovni předplatného, skupinu prostředků, účet úložiště nebo kontejner nebo fronty.
+> Když vytvoříte účet Azure Storage, nebudou automaticky přiřazena oprávnění k přístupu k datům prostřednictvím Azure AD. Musíte explicitně přiřadit sami roli RBAC pro Azure Storage. Můžete ji přiřadit na úrovni předplatného, skupiny prostředků, účtu úložiště nebo kontejneru nebo fronty.
 
-### <a name="create-a-web-application-that-authorizes-access-to-blob-storage-with-azure-ad"></a>Vytvoření webové aplikace, která autorizuje přístup k úložišti objektů BLOB pomocí Azure AD
+### <a name="create-a-web-application-that-authorizes-access-to-blob-storage-with-azure-ad"></a>Vytvoření webové aplikace, která autorizuje přístup k úložišti objektů Blob pomocí Azure AD
 
-Když vaše aplikace přistupuje k Azure Storage, provede její jménem uživatele, což znamená, že se k prostředkům BLOB nebo Queue přistupuje pomocí oprávnění přihlášeného uživatele. Chcete-li vyzkoušet tento příklad kódu, potřebujete webovou aplikaci, která vyzve uživatele k přihlášení pomocí identity Azure AD. Můžete vytvořit vlastní nebo použít ukázkovou aplikaci poskytovanou Microsoftem.
+Když vaše aplikace přistupuje k Azure Storage, činí tak jménem uživatele, což znamená, že prostředky objektu blob nebo fronty jsou přístupné pomocí oprávnění uživatele, který je přihlášen. Chcete-li vyzkoušet tento příklad kódu, budete potřebovat webovou aplikaci, která vyzve uživatele k přihlášení pomocí identity Azure AD. Můžete vytvořit vlastní nebo použít ukázkovou aplikaci poskytovanou společností Microsoft.
 
-Hotová Ukázková webová aplikace, která získá token a používá ho k vytvoření objektu BLOB v Azure Storage je k dispozici na [GitHubu](https://aka.ms/aadstorage). Kontrola a spuštění hotové ukázky může být užitečné pro porozumění příkladům kódu. Pokyny pro spuštění dokončené ukázky najdete v části s názvem [zobrazení a spuštěním dokončené ukázky](#view-and-run-the-completed-sample).
+Dokončená ukázková webová aplikace, která získá token a použije ho k vytvoření objektu blob ve službě Azure Storage, je dostupná na [GitHubu](https://aka.ms/aadstorage). Kontrola a spuštění dokončené ukázky může být užitečné pro pochopení příkladů kódu. Pokyny k spuštění dokončené ukázky naleznete v části s názvem [Zobrazení a spuštění dokončené ukázky](#view-and-run-the-completed-sample).
 
-#### <a name="add-references-and-using-statements"></a>Přidání odkazů a příkazy using  
+#### <a name="add-references-and-using-statements"></a>Přidání odkazů a použití příkazů  
 
-V aplikaci Visual Studio nainstalujte Azure Storage klientské knihovny. V nabídce **Nástroje** vyberte **Správce balíčků NuGet** a potom **Konzola Správce balíčků**. Do okna konzoly zadejte následující příkazy pro instalaci potřebných balíčků z klientské knihovny Azure Storage pro .NET:
+Z Visual Studia nainstalujte klientskou knihovnu Azure Storage. V nabídce **Nástroje** vyberte **Správce balíčků NuGet** a potom **Konzola Správce balíčků**. Zadejte do okna konzoly následující příkazy pro instalaci potřebných balíčků z klientské knihovny Úložiště Azure pro rozhraní .NET:
 
 ```console
 Install-Package Microsoft.Azure.Storage.Blob
 Install-Package Microsoft.Azure.Storage.Common
 ```
 
-Dále do souboru HomeController.cs přidejte následující příkazy using:
+Dále přidejte do souboru HomeController.cs následující příkazy pomocí:
 
 ```csharp
 using Microsoft.Identity.Client; //MSAL library for getting the access token
@@ -141,7 +141,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
 
 #### <a name="create-a-block-blob"></a>Vytvoření objektu blob bloku
 
-Přidejte následující fragment kódu pro vytvoření objektu blob bloku:
+Přidejte následující fragment kódu a vytvořte objekt blob bloku:
 
 ```csharp
 private static async Task<string> CreateBlob(string accessToken)
@@ -161,11 +161,11 @@ private static async Task<string> CreateBlob(string accessToken)
 ```
 
 > [!NOTE]
-> K autorizaci operací objektů BLOB a Queue s tokenem OAuth 2,0 je nutné použít protokol HTTPS.
+> Chcete-li autorizovat operace objektů blob a fronty pomocí tokenu OAuth 2.0, musíte použít protokol HTTPS.
 
-V předchozím příkladu zpracovává klientské knihovny .NET autorizaci žádost o vytvoření objektů blob bloku. Azure Storage klientské knihovny pro jiné jazyky také pořídí autorizaci žádosti za vás. Ale při volání operace služby Azure Storage k tokenu OAuth pomocí rozhraní REST API, pak bude nutné povolit tato žádost pomocí tokenu OAuth.
+Ve výše uvedeném příkladu klientská knihovna .NET zpracovává autorizaci požadavku na vytvoření objektu blob bloku. Klientské knihovny Azure Storage pro jiné jazyky také zpracovávají autorizaci požadavku za vás. Pokud však voláte operaci úložiště Azure s tokenem OAuth pomocí rozhraní REST API, budete muset požadavek autorizovat pomocí tokenu OAuth.
 
-Pokud chcete volat operace BLOB a Služba front pomocí přístupových tokenů OAuth, předejte přístupový token v **autorizační** hlavičce pomocí **nosného** schématu a zadejte verzi služby 2017-11-09 nebo vyšší, jak je znázorněno v následujícím příkladu:
+Chcete-li volat operace služby Objektů blob a fronty pomocí přístupových tokenů OAuth, předejte přístupový token v hlavičce **Autorizace** pomocí schématu **Nosič** a zadejte verzi služby 2017-11-09 nebo vyšší, jak je znázorněno v následujícím příkladu:
 
 ```https
 GET /container/file.txt HTTP/1.1
@@ -176,11 +176,11 @@ Authorization: Bearer eyJ0eXAiOnJKV1...Xd6j
 
 #### <a name="get-an-oauth-token-from-azure-ad"></a>Získání tokenu OAuth z Azure AD
 
-Dále přidejte metodu, která vyžaduje token od Azure AD jménem uživatele. Tato metoda definuje obor, pro který mají být udělena oprávnění. Další informace o oprávněních a oborech najdete [v tématu oprávnění a souhlas v koncovém bodě Microsoft Identity Platform](../../active-directory/develop/v2-permissions-and-consent.md).
+Dále přidejte metodu, která požaduje token z Azure AD jménem uživatele. Tato metoda definuje obor, pro který mají být udělena oprávnění. Další informace o oprávněních a oborech naleznete [v tématu Oprávnění a souhlas v koncovém bodě platformy identit microsoftu](../../active-directory/develop/v2-permissions-and-consent.md).
 
-K vytvoření oboru, pro který se má získat token, použijte ID prostředku. Tento příklad sestaví obor pomocí ID prostředku společně s integrovaným `user_impersonation`m oborem, který indikuje, že je token požadován jménem uživatele.
+ID prostředku použijte k vytvoření oboru, pro který chcete získat token. Příklad vytvoří obor pomocí ID prostředku spolu s předdefinovaným `user_impersonation` oborem, což znamená, že token je požadován jménem uživatele.
 
-Mějte na paměti, že možná budete muset uživatele prezentovat pomocí rozhraní, které uživateli umožňuje udělit souhlas s žádostí o jeho jménem. Když je souhlas nutný, příklad zachytí **MsalUiRequiredException** a zavolá jinou metodu pro usnadnění žádosti o souhlas:
+Mějte na paměti, že budete muset předložit uživateli rozhraní, které umožňuje uživateli souhlas požádat o token jejich jménem. Pokud je nutný souhlas, příklad zachytí **MsalUiRequiredException** a volá jinou metodu pro usnadnění žádosti o souhlas:
 
 ```csharp
 public async Task<IActionResult> Blob()
@@ -202,9 +202,9 @@ public async Task<IActionResult> Blob()
 }
 ```
 
-Souhlas je proces uživatele, který uděluje oprávnění k přístupu k chráněným prostředkům jménem uživatele. Microsoft Identity Platform 2,0 podporuje přírůstkový souhlas, což znamená, že instanční objekt může nejdřív požádat o minimální sadu oprávnění a přidat oprávnění v průběhu času podle potřeby. Když váš kód požádá o přístupový token, určete rozsah oprávnění, která vaše aplikace v daném okamžiku potřebuje, v parametru `scope`. Další informace o přírůstkovém souhlasu najdete v části s názvem **přírůstkové a dynamické vyjádření souhlasu** v tématu [aktualizace platformy Microsoft Identity Platform (v 2.0)?](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent).
+Souhlas je proces, kdy uživatel udělí oprávnění k aplikaci přístupu k chráněným prostředkům jejich jménem. Platforma identit společnosti Microsoft 2.0 podporuje přírůstkový souhlas, což znamená, že objekt zabezpečení může nejprve požadovat minimální sadu oprávnění a podle potřeby přidávat oprávnění v průběhu času. Když váš kód požaduje přístupový token, zadejte rozsah oprávnění, která vaše `scope` aplikace potřebuje v daném okamžiku v parametru. Další informace o přírůstkovém souhlasu naleznete v části **Přírůstkový a dynamický souhlas** v části [Proč aktualizovat na platformu identit microsoftu (v2.0)?](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent).
 
-Následující metoda vytvoří vlastnosti ověřování pro vyžadování přírůstkového souhlasu:
+Následující metoda vytváří vlastnosti ověřování pro vyžádání přírůstkového souhlasu:
 
 ```csharp
 private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalConsent(string[] scopes,
@@ -240,11 +240,11 @@ private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalCons
 
 ## <a name="view-and-run-the-completed-sample"></a>Zobrazení a spuštění dokončené ukázky
 
-Pokud chcete ukázkovou aplikaci spustit, nejdřív ji naklonujte nebo stáhněte z [GitHubu](https://github.com/Azure-Samples/storage-dotnet-azure-ad-msal). Pak aplikaci aktualizujte, jak je popsáno v následujících částech.
+Chcete-li spustit ukázkovou aplikaci, nejprve klonovat nebo stáhnout z [GitHub](https://github.com/Azure-Samples/storage-dotnet-azure-ad-msal). Potom aktualizujte aplikaci, jak je popsáno v následujících částech.
 
-### <a name="provide-values-in-the-settings-file"></a>Zadejte hodnoty do souboru nastavení.
+### <a name="provide-values-in-the-settings-file"></a>Zadání hodnot v souboru nastavení
 
-Dále aktualizujte soubor *appSettings. JSON* vlastními hodnotami následujícím způsobem:
+Dále aktualizujte soubor *appsettings.json* vlastními hodnotami takto:
 
 ```json
 {
@@ -270,7 +270,7 @@ Dále aktualizujte soubor *appSettings. JSON* vlastními hodnotami následujíc�
 
 ### <a name="update-the-storage-account-and-container-name"></a>Aktualizace účtu úložiště a názvu kontejneru
 
-V souboru *HomeController.cs* aktualizujte identifikátor URI, který odkazuje na objekt blob bloku, aby používal název vašeho účtu a kontejneru úložiště:
+V *souboru HomeController.cs* aktualizujte identifikátor URI, který odkazuje na objekt blob bloku, a použijte název účtu úložiště a kontejneru:
 
 ```csharp
 CloudBlockBlob blob = new CloudBlockBlob(
@@ -278,28 +278,28 @@ CloudBlockBlob blob = new CloudBlockBlob(
                       storageCredentials);
 ```
 
-### <a name="enable-implicit-grant-flow"></a>Povolit tok implicitního udělení
+### <a name="enable-implicit-grant-flow"></a>Povolit implicitní tok grantů
 
-Pokud chcete ukázku spustit, možná budete muset nakonfigurovat tok implicitního udělení pro registraci vaší aplikace. Postupujte následovně:
+Chcete-li spustit ukázku, budete muset nakonfigurovat implicitní tok udělení pro registraci aplikace. Postupujte následovně:
 
-1. Přejděte k registraci vaší aplikace v Azure Portal.
-1. V části Spravovat vyberte nastavení **ověřování** .
-1. V části **Upřesnit nastavení**v části **implicitní přístup** zaškrtněte políčka pro povolení přístupových tokenů a tokenů ID, jak je znázorněno na následujícím obrázku:
+1. Přejděte na registraci aplikace na webu Azure Portal.
+1. V části Spravovat vyberte nastavení **Ověřování.**
+1. V části **Upřesnit nastavení**zaškrtněte v části **Implicitní udělení** políčka, chcete-li povolit přístupové tokeny a tokeny ID, jak je znázorněno na následujícím obrázku:
 
-    ![Snímek obrazovky ukazující, jak povolit nastavení pro implicitní tok udělení](media/storage-auth-aad-app/enable-implicit-grant-flow.png)
+    ![Snímek obrazovky znázorňující, jak povolit nastavení pro implicitní tok grantů](media/storage-auth-aad-app/enable-implicit-grant-flow.png)
 
 ### <a name="update-the-port-used-by-localhost"></a>Aktualizace portu používaného localhost
 
-Když ukázku spustíte, můžete zjistit, že je potřeba aktualizovat identifikátor URI přesměrování zadaný v registraci aplikace tak, aby používal port *localhost* přiřazený za běhu. Chcete-li aktualizovat identifikátor URI pro přesměrování tak, aby používal přiřazený port, postupujte podle následujících kroků:
+Při spuštění ukázky, můžete zjistit, že budete muset aktualizovat identifikátor URI přesměrování zadaný v registraci aplikace použít port *localhost* přiřazený za běhu. Chcete-li aktualizovat identifikátor URI přesměrování tak, aby používal přiřazený port, postupujte takto:
 
-1. Přejděte k registraci vaší aplikace v Azure Portal.
-1. V části Spravovat vyberte nastavení **ověřování** .
-1. V části **identifikátory URI pro přesměrování**upravte port tak, aby odpovídal formátu používanému ukázkovou aplikací, jak je znázorněno na následujícím obrázku:
+1. Přejděte na registraci aplikace na webu Azure Portal.
+1. V části Spravovat vyberte nastavení **Ověřování.**
+1. V části **Přesměrovat identifikátory URI**upravte port tak, aby odpovídal portu používanému ukázkovou aplikací, jak je znázorněno na následujícím obrázku:
 
-    ![Snímek obrazovky ukazující identifikátory URI přesměrování pro registraci aplikace](media/storage-auth-aad-app/redirect-uri.png)
+    ![Snímek obrazovky s identifikátory URI přesměrování pro registraci aplikace](media/storage-auth-aad-app/redirect-uri.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o platformě Microsoft identity najdete v tématu [Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/).
-- Další informace o rolích RBAC pro Azure Storage najdete v tématu [Správa přístupových práv k datům úložiště pomocí RBAC](storage-auth-aad-rbac.md).
-- Další informace o použití spravovaných identit pro prostředky Azure s Azure Storage najdete v tématu [ověřování přístupu k objektům blob a frontám pomocí Azure Active Directory a spravovaných identit pro prostředky Azure](storage-auth-aad-msi.md).
+- Další informace o platformě microsoftidentity najdete v [tématu Platform identity Microsoftu](https://docs.microsoft.com/azure/active-directory/develop/).
+- Další informace o rolích RBAC pro úložiště Azure najdete v [tématu Správa přístupových práv k datům úložiště pomocí RBAC](storage-auth-aad-rbac.md).
+- Informace o používání spravovaných identit pro prostředky Azure pomocí Azure Storage najdete v [tématu Ověřování přístupu k objektům BLOB a front pomocí Služby Azure Active Directory a spravovaných identit pro prostředky Azure](storage-auth-aad-msi.md).

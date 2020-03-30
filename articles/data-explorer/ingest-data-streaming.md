@@ -1,6 +1,6 @@
 ---
-title: Použití ingestování streamování k ingestování dat do Azure Průzkumník dat
-description: Přečtěte si, jak ingestovat (načíst) data do Azure Průzkumník dat pomocí ingestování streamování.
+title: Použití streamování ingestování ingestování dat do Azure Data Explorer
+description: Přečtěte si, jak ingestovat (načíst) data do Azure Data Explorerpomocí streamování ingestování.
 author: orspod
 ms.author: orspodek
 ms.reviewer: tzgitlin
@@ -8,77 +8,77 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.openlocfilehash: d7d2bcf487c37fbb523b648d5aa4c572add5dfa9
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79297080"
 ---
-# <a name="streaming-ingestion-preview"></a>Ingestování streamování (Preview)
+# <a name="streaming-ingestion-preview"></a>Streamování (náhled)
 
-Ingestování streamování použijte, pokud požadujete nízkou latenci a dobu příjmu kratší než 10 sekund pro různá data svazků. Používá se k optimalizaci provozního zpracování mnoha tabulek v jedné nebo více databázích, kde datový proud dat do každé tabulky je relativně malý (několik záznamů za sekundu), ale celkový objem příjmu dat je vysoký (tisíce záznamů za sekundu). 
+Použití streamování ingestion, když budete potřebovat nízkou latenci s dobou ingestování méně než 10 sekund pro různá data svazku. Používá se k optimalizaci provozního zpracování mnoha tabulek v jedné nebo více databázích, kde je datový proud dat do každé tabulky relativně malý (málo záznamů za sekundu), ale celkový objem příjem dat je vysoký (tisíce záznamů za sekundu). 
 
-Použijte hromadnou příjem dat namísto příjmu streamování, když se objem dat zvětšuje na více než 1 MB za sekundu na tabulku. Přečtěte si [Přehled příjmu dat](/azure/data-explorer/ingest-data-overview) , kde se dozvíte víc o různých metodách přijímání.
+Použití hromadné holčičí požití namísto streamování při množství dat roste na více než 1 MB za sekundu na tabulku. Přečtěte [si přehled při přijím dat,](/azure/data-explorer/ingest-data-overview) kde se dozvíte více o různých způsobech ingestování.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
-* Přihlaste se k [webovému uživatelskému rozhraní](https://dataexplorer.azure.com/).
-* Vytvoření [clusteru a databáze Azure Průzkumník dat](create-cluster-database-portal.md)
+* Přihlaste se k [webovému uživatelskému uživatelskému uživatelskému uživatelskému](https://dataexplorer.azure.com/)
+* [Vytvoření clusteru a databáze Průzkumníka dat Azure](create-cluster-database-portal.md)
 
-## <a name="enable-streaming-ingestion-on-your-cluster"></a>Povolit přijímání streamování v clusteru
+## <a name="enable-streaming-ingestion-on-your-cluster"></a>Povolení streamování v clusteru
 
 > [!WARNING]
-> Zkontrolujte prosím [omezení](#limitations) před tím, než povolíte přijímání parou.
+> Před povolením požití v páře si prosím přečtěte [omezení.](#limitations)
 
-1. V Azure Portal přejdete do svého clusteru Azure Průzkumník dat. V **Nastavení**vyberte **Konfigurace**. 
-1. V podokně **Konfigurace** vyberte **zapnuto** , aby se povolilo **přijímání streamování**.
-1. Vyberte **Save** (Uložit).
+1. Na webu Azure Portal přejděte do clusteru Azure Data Explorer. V **části Nastavení**vyberte Možnost **Konfigurace**. 
+1. V podokně **Konfigurace** vyberte **Zapnuto,** chcete-li povolit **streamování .**
+1. Vyberte **Uložit**.
  
-    ![přijímání příjmu streamování](media/ingest-data-streaming/streaming-ingestion-on.png)
+    ![streamování na](media/ingest-data-streaming/streaming-ingestion-on.png)
  
-1. V [uživatelském rozhraní Web](https://dataexplorer.azure.com/)definujte [zásady přijímání streamování](/azure/kusto/management/streamingingestionpolicy) pro tabulky nebo databáze, které budou přijímat streamovaná data. 
+1. V [uživatelském právu webu](https://dataexplorer.azure.com/)definujte [zásady streamování při příjmu](/azure/kusto/management/streamingingestionpolicy) dat v tabulkách nebo databázích, které budou přijímat streamovaná data. 
 
     > [!NOTE]
-    > * Pokud je zásada definovaná na úrovni databáze, všechny tabulky v databázi mají povolený příjem dat do streamování.
-    > * Použitá zásada může odkazovat pouze na nově ingestovaná data a nikoli na jiné tabulky v databázi.
+    > * Pokud je zásada definována na úrovni databáze, všechny tabulky v databázi jsou povoleny pro streamování ingestování.
+    > * Použitá zásada může odkazovat pouze na nově ingemovaná data a nikoli na jiné tabulky v databázi.
 
-## <a name="use-streaming-ingestion-to-ingest-data-to-your-cluster"></a>Použití ingestování streamování k ingestování dat do clusteru
+## <a name="use-streaming-ingestion-to-ingest-data-to-your-cluster"></a>Použití streamování ingestování ingestovat data do clusteru
 
-Existují dva podporované typy přijímání streamování:
+Existují dva podporované typy streamování ingestování:
 
 
 * [**Centrum událostí**](/azure/data-explorer/ingest-data-event-hub), které se používá jako zdroj dat
-* **Vlastní** ingestování vyžaduje, abyste napsali aplikaci, která používá jednu z klientských knihoven Azure Průzkumník dat. Ukázková aplikace najdete v ukázce ingestování [streamování](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) .
+* Vlastní ingestování vyžaduje, abyste **napsali aplikaci,** která používá jednu z klientských knihoven Průzkumníka dat Azure. Viz [ukázka streamování ingestování](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) pro ukázkovou aplikaci.
 
-### <a name="choose-the-appropriate-streaming-ingestion-type"></a>Zvolit vhodný typ příjmu streamování
+### <a name="choose-the-appropriate-streaming-ingestion-type"></a>Zvolte vhodný typ streamování při požití
 
 |   |Centrum událostí  |Vlastní ingestování  |
 |---------|---------|---------|
-|Zpoždění dat mezi zahájením příjmu a daty dostupnými pro dotaz   |    delší zpoždění     |   kratší zpoždění      |
-|Režie vývoje    |   rychlé a snadné nastavení bez režie vývoje    |   vysoce vyvinutá režie pro aplikace pro zpracování chyb a zajištění konzistence dat     |
+|Prodleva dat mezi zahájením požití a údaji dostupnými pro dotaz   |    Delší zpoždění     |   Kratší zpoždění      |
+|Režie na vývoj    |   Rychlé a snadné nastavení, žádná vývojová režie    |   Vysoká režie vývoje pro aplikaci pro zpracování chyb a zajištění konzistence dat     |
 
-## <a name="disable-streaming-ingestion-on-your-cluster"></a>Zakázat ingestování streamování v clusteru
+## <a name="disable-streaming-ingestion-on-your-cluster"></a>Zakázání streamování v clusteru
 
 > [!WARNING]
-> Zakazování příjmu streamování může trvat několik hodin.
+> Zakázání příjmu streamování může trvat několik hodin.
 
-1. Přetáhněte [zásadu přijímání streamování](/azure/kusto/management/streamingingestionpolicy) ze všech relevantních tabulek a databází. Odebrání zásady přijímání do streamování spustí přenos dat příjmu streamování z počátečního úložiště do trvalého úložiště v úložišti sloupců (rozsahy nebo horizontálních oddílů). Pohyb dat může trvat během několika sekund po několik hodin, v závislosti na množství dat v počátečním úložišti a způsobu, jakým cluster používá paměť a paměť.
-1. V Azure Portal přejdete do svého clusteru Azure Průzkumník dat. V **Nastavení**vyberte **Konfigurace**. 
-1. V podokně **Konfigurace** vyberte **vypnuto** a zakažte příjem **vysílání datového proudu**.
-1. Vyberte **Save** (Uložit).
+1. Přetáhnout [zásady streamování při ingestování](/azure/kusto/management/streamingingestionpolicy) ze všech relevantních tabulek a databází. Odstranění zásad streamování při přihlašování aktivuje přesun dat streamování z počátečního úložiště do trvalého úložiště v úložišti sloupců (rozsahy nebo úlomky). Přesun dat může trvat několik sekund až několik hodin, v závislosti na množství dat v počátečním úložišti a jak je procesor a paměť používán clusteru.
+1. Na webu Azure Portal přejděte do clusteru Azure Data Explorer. V **části Nastavení**vyberte Možnost **Konfigurace**. 
+1. V podokně **Konfigurace** vyberte **Možnost Vypnuto,** chcete-li **zakázat ingestování datových proudů**.
+1. Vyberte **Uložit**.
 
-    ![Ingestování streamování vypnuto](media/ingest-data-streaming/streaming-ingestion-off.png)
+    ![Streamování zingestování vypnuto](media/ingest-data-streaming/streaming-ingestion-off.png)
 
 ## <a name="limitations"></a>Omezení
 
-* Přijímání streamování nepodporuje [kurzory databáze](/azure/kusto/management/databasecursor) ani [mapování dat](/azure/kusto/management/mappings). Je podporováno pouze [předem vytvořené](/azure/kusto/management/create-ingestion-mapping-command) mapování dat. 
-* Zvýšení výkonu a kapacity příjmu streamování díky větší velikosti virtuálních počítačů a clusterů. Souběžné přijímání je omezené na šest ingest na jádro. Například u 16 základních SKU, jako je například D14 a L16, je maximální podporované zatížení 96 souběžných ingestování. U dvou základních SKU, jako je D11, je maximální podporované zatížení 12 souběžných ingest.
-* Omezení velikosti dat na žádost o přijetí dat je 4 MB.
-* Aktualizace schématu, jako je vytváření a úprava tabulek a mapování přijímání, můžou trvat až pět minut, než se služba pro příjem dat streamuje.
-* Povolení ingestování streamování na clusteru, i když se data nedrží prostřednictvím streamování, používá část místního disku SSD clusterových počítačů pro data příjmu streamování a snižuje úložiště dostupné pro hotkou mezipaměť.
-* U dat příjmu streamování se nedají nastavit [značky rozsahu](/azure/kusto/management/extents-overview#extent-tagging) .
+* Streamování nepodporuje [kurzory databáze](/azure/kusto/management/databasecursor) nebo [mapování dat](/azure/kusto/management/mappings). Podporováno je pouze [předem vytvořené](/azure/kusto/management/create-ingestion-mapping-command) mapování dat. 
+* Streamování výkonu a kapacity kapacity s větší velikosti virtuálních her a clusterů. Souběžné požití je omezeno na šest požití na jádro. Například pro 16 jádrových sku, jako jsou D14 a L16, maximální podporované zatížení je 96 souběžných ingestů. Pro dvě hlavní sku, jako je například D11, maximální podporované zatížení je 12 souběžných ingestování.
+* Omezení velikosti dat na požadavek na požití je 4 MB.
+* Aktualizace schématu, jako je například vytváření a úpravy tabulek a mapování ingestování, může trvat až pět minut pro službu ingestování streamování.
+* Povolení streamování v clusteru, i když data nejsou ingestována prostřednictvím streamování, používá část místního disku SSD počítačů clusteru pro streamování dat a snižuje úložiště dostupné pro aktivní mezipaměť.
+* [Značky rozsahu](/azure/kusto/management/extents-overview#extent-tagging) nelze nastavit na data streamování ingestování.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Dotazování na data v Azure Průzkumník dat](web-query-data.md)
+* [Dotazovat se na data v Průzkumníku dat Azure](web-query-data.md)

@@ -1,6 +1,6 @@
 ---
-title: Konfigurace SSL pro cloudovou službu | Microsoft Docs
-description: Naučte se, jak zadat koncový bod HTTPS pro webovou roli a jak nahrát certifikát SSL pro zabezpečení aplikace. V těchto příkladech se používá Azure Portal.
+title: Konfigurace protokolu SSL pro cloudovou službu | Dokumenty společnosti Microsoft
+description: Přečtěte si, jak zadat koncový bod HTTPS pro webovou roli a jak nahrát certifikát SSL k zabezpečení vaší aplikace. Tyto příklady používají portál Azure.
 services: cloud-services
 documentationcenter: .net
 author: tgore03
@@ -9,44 +9,44 @@ ms.topic: article
 ms.date: 05/26/2017
 ms.author: tagore
 ms.openlocfilehash: 6ddb7001f770a9d8aea38d1a4698e15c167aeaa4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79273134"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>Konfigurace SSL pro aplikaci v Azure
 
-Šifrování SSL (Secure Socket Layer) představuje nejčastěji používanou metodu zabezpečení dat posílaných přes Internet. Tento společný úkol popisuje, jak zadat koncový bod HTTPS pro webovou roli a jak nahrát certifikát SSL pro zabezpečení aplikace.
+Šifrování SSL (Secure Socket Layer) je nejčastěji používanou metodou zabezpečení dat odeslaných přes Internet. Tato společná úloha popisuje, jak určit koncový bod HTTPS pro webovou roli a jak nahrát certifikát SSL k zabezpečení aplikace.
 
 > [!NOTE]
-> Postupy v této úloze se vztahují na Azure Cloud Services; App Services najdete v [tomto](../app-service/configure-ssl-bindings.md)tématu.
+> Postupy v této úloze platí pro Cloudové služby Azure; v tématu App Services [najdete v tomto](../app-service/configure-ssl-bindings.md).
 >
 
-Tato úloha používá nasazení v produkčním prostředí. Informace o použití pracovního nasazení najdete na konci tohoto tématu.
+Tento úkol používá produkční nasazení. Informace o použití pracovní nasazení je k dispozici na konci tohoto tématu.
 
-Pokud jste ještě nevytvořili cloudovou službu, přečtěte si [to](cloud-services-how-to-create-deploy-portal.md) jako první.
+Přečtěte si [to](cloud-services-how-to-create-deploy-portal.md) nejprve, pokud jste ještě nevytvořili cloudovou službu.
 
-## <a name="step-1-get-an-ssl-certificate"></a>Krok 1: získání certifikátu SSL
-Pokud chcete nakonfigurovat SSL pro aplikaci, musíte nejdřív získat certifikát SSL, který byl podepsaný certifikační autoritou (CA), důvěryhodnou třetí stranou, která pro tento účel vydává certifikáty. Pokud ho ještě nemáte, musíte ho získat od společnosti, která prodává certifikáty SSL.
+## <a name="step-1-get-an-ssl-certificate"></a>Krok 1: Získání certifikátu SSL
+Chcete-li nakonfigurovat protokol SSL pro aplikaci, musíte nejprve získat certifikát SSL, který byl podepsán certifikační autoritou (CA), důvěryhodnou třetí stranou, která vydává certifikáty pro tento účel. Pokud ještě nemáte, musíte získat od společnosti, která prodává ssl certifikáty.
 
 Certifikát musí splňovat následující požadavky na certifikáty SSL v Azure:
 
-* Certifikát musí obsahovat privátní klíč.
-* Certifikát musí být vytvořen pro výměnu klíčů, který lze exportovat do souboru. pfx (Personal Information Exchange).
-* Název subjektu certifikátu se musí shodovat s doménou používanou pro přístup ke cloudové službě. Certifikát SSL nemůžete od certifikační autority (CA) pro doménu cloudapp.net získat. Při přístupu ke službě musíte získat vlastní název domény. Když vyžádáte certifikát od certifikační autority, název subjektu certifikátu se musí shodovat s názvem vlastní domény použitým pro přístup k vaší aplikaci. Pokud je třeba název vlastní domény **contoso.com** , měli byste požádat o certifikát od certifikační autority pro * **. contoso.com** nebo na **webové\.contoso.com**.
-* Certifikát musí používat minimálně 2048 bitů šifrování.
+* Certifikát musí obsahovat soukromý klíč.
+* Certifikát musí být vytvořen pro výměnu klíčů, exportovatelný do souboru Výměny osobních informací (.pfx).
+* Název předmětu certifikátu se musí shodovat s doménou používanou pro přístup ke cloudové službě. Certifikát SSL nelze získat od certifikační autority (CA) pro doménu cloudapp.net. Musíte získat vlastní název domény, který chcete použít při přístupu ke službě. Pokud požadujete certifikát od certifikační autority, musí se název subjektu certifikátu shodovat s vlastním názvem domény používaným pro přístup k vaší aplikaci. Pokud je například název vaší vlastní domény **contoso.com,** požádáte certifikační autoritu o certifikát pro ***.contoso.com** nebo **\.www contoso.com**.
+* Certifikát musí používat minimálně 2048bitové šifrování.
 
-Pro účely testování můžete [vytvořit](cloud-services-certs-create.md) a použít certifikát podepsaný svým držitelem. Certifikát podepsaný svým držitelem se neověřuje prostřednictvím certifikační autority a může jako adresu URL webu používat cloudapp.net doménu. Následující úloha například používá certifikát podepsaný svým držitelem, ve kterém je **sslexample.cloudapp.NET**běžný název (CN), který je používán v certifikátu.
+Pro účely testování můžete [vytvořit](cloud-services-certs-create.md) a použít certifikát podepsaný svým držitelem. Certifikát podepsaný svým držitelem není ověřen prostřednictvím certifikační autority a může používat doménu cloudapp.net jako adresu URL webu. Následující úloha například používá certifikát podepsaný svým držitelem, ve kterém je běžný název (CN) použitý v certifikátu **sslexample.cloudapp.net**.
 
-Dále musíte do definice služby a konfiguračních souborů služby zahrnout informace o certifikátu.
+Dále je nutné zahrnout informace o certifikátu do definice služby a konfiguračních souborů služby.
 
 <a name="modify"> </a>
 
-## <a name="step-2-modify-the-service-definition-and-configuration-files"></a>Krok 2: Úprava definice služby a konfiguračních souborů
-Vaše aplikace musí být nakonfigurovaná tak, aby používala certifikát, a musí být přidán koncový bod HTTPS. V důsledku toho je potřeba aktualizovat definice služby a konfigurační soubory služby.
+## <a name="step-2-modify-the-service-definition-and-configuration-files"></a>Krok 2: Změna definice služby a konfiguračních souborů
+Aplikace musí být nakonfigurována tak, aby používala certifikát, a musí být přidán koncový bod HTTPS. V důsledku toho je třeba aktualizovat definici služby a konfigurační soubory služby.
 
-1. Ve vašem vývojovém prostředí otevřete soubor definice služby (CSDEF), přidejte část **certifikáty** do části **webrole** a vložte následující informace o certifikátu (a zprostředkující certifikáty):
+1. Ve vývojovém prostředí otevřete soubor definice služby (CSDEF), přidejte oddíl **Certifikáty** v části **WebRole** a uveďte následující informace o certifikátu (a zprostředkujících certifikátech):
 
    ```xml
     <WebRole name="CertificateTesting" vmsize="Small">
@@ -72,16 +72,16 @@ Vaše aplikace musí být nakonfigurovaná tak, aby používala certifikát, a m
     </WebRole>
     ```
 
-   Část **certifikáty** definuje název certifikátu, jeho umístění a název úložiště, kde se nachází.
+   Část **Certifikáty** definuje název našeho certifikátu, jeho umístění a název úložiště, kde se nachází.
 
-   Oprávnění (`permissionLevel` atribut) lze nastavit na jednu z následujících hodnot:
+   Oprávnění`permissionLevel` ( atribut) lze nastavit na jednu z následujících hodnot:
 
    | Hodnota oprávnění | Popis |
    | --- | --- |
-   | limitedOrElevated |**(Výchozí)** K privátnímu klíči mají přístup všechny procesy rolí. |
-   | úrovně |K privátnímu klíči mají přístup pouze procesy se zvýšenými oprávněními. |
+   | omezenáNeboElevated |**(Výchozí)** Všechny procesy rolí mají přístup k soukromému klíči. |
+   | Zvýšené |K soukromému klíči mají přístup pouze procesy se zvýšenými oprávněními. |
 
-2. V souboru definice služby přidejte do oddílu **Endpoints** element **InputEndpoint** , abyste mohli povolit protokol https:
+2. Do souboru definice služby přidejte element **InputEndpoint** do části **Koncové body,** abyste povolili protokol HTTPS:
 
    ```xml
     <WebRole name="CertificateTesting" vmsize="Small">
@@ -94,7 +94,7 @@ Vaše aplikace musí být nakonfigurovaná tak, aby používala certifikát, a m
     </WebRole>
     ```
 
-3. V souboru definice služby přidejte prvek **vazby** v rámci oddílu **weby** . Tento prvek přidá vazbu HTTPS pro mapování koncového bodu na váš web:
+3. Do souboru definice služby přidejte element **vazby** v části **Weby.** Tento prvek přidá vazbu HTTPS pro mapování koncového bodu na váš web:
 
    ```xml
     <WebRole name="CertificateTesting" vmsize="Small">
@@ -110,8 +110,8 @@ Vaše aplikace musí být nakonfigurovaná tak, aby používala certifikát, a m
     </WebRole>
     ```
 
-   Všechny požadované změny souboru definice služby byly dokončeny. je ale stále nutné přidat informace o certifikátu do konfiguračního souboru služby.
-4. V konfiguračním souboru služby (CSCFG), ServiceConfiguration. Cloud. cscfg, přidejte hodnotu **certifikátů** pomocí certifikátu. Následující ukázka kódu poskytuje podrobné informace o části **certifikáty** s výjimkou hodnoty kryptografického otisku.
+   Všechny požadované změny v souboru definice služby byly dokončeny; ale stále je třeba přidat informace o certifikátu do konfiguračního souboru služby.
+4. V konfiguračním souboru služby (CSCFG), ServiceConfiguration.Cloud.cscfg, přidejte hodnotu **certifikátů** s hodnotou certifikátu vašeho certifikátu. Následující ukázka kódu obsahuje podrobnosti o části **Certifikáty,** s výjimkou hodnoty kryptografického otisku.
 
    ```xml
     <Role name="Deployment">
@@ -128,54 +128,54 @@ Vaše aplikace musí být nakonfigurovaná tak, aby používala certifikát, a m
     </Role>
     ```
 
-(Tento příklad používá **SHA1** pro algoritmus kryptografického otisku. Zadejte vhodnou hodnotu pro algoritmus kryptografického otisku certifikátu.)
+(Tento příklad používá **sha1** pro algoritmus kryptografického potisku. Zadejte příslušnou hodnotu pro algoritmus kryptografického otisku certifikátu.)
 
-Teď, když je aktualizace definice služby a konfigurační soubory služby aktualizované, zabalite nasazení pro nahrávání do Azure. Pokud používáte **cspack**, nepoužívejte příznak **/generateConfigurationFile** , protože přepíše právě vložené informace o certifikátu.
+Teď, když byly aktualizovány definice služby a konfigurační soubory služby, zabalte vaše nasazení pro nahrávání do Azure. Pokud používáte **cspack**, nepoužívejte příznak **/generateConfigurationFile,** protože to přepíše informace o certifikátu, které jste právě vložili.
 
-## <a name="step-3-upload-a-certificate"></a>Krok 3: nahrání certifikátu
-Připojit k Azure Portal a...
+## <a name="step-3-upload-a-certificate"></a>Krok 3: Nahrání certifikátu
+Připojte se k portálu Azure a...
 
-1. V části **všechny prostředky** portálu vyberte svou cloudovou službu.
+1. V části **Všechny prostředky** na portálu vyberte cloudovou službu.
 
     ![Publikování cloudové služby](media/cloud-services-configure-ssl-certificate-portal/browse.png)
 
-2. Klikněte na **certifikáty**.
+2. Klepněte na **položku Certifikáty**.
 
-    ![Klikněte na ikonu certifikáty.](media/cloud-services-configure-ssl-certificate-portal/certificate-item.png)
+    ![Klikněte na ikonu certifikátů.](media/cloud-services-configure-ssl-certificate-portal/certificate-item.png)
 
-3. V horní části oblasti certifikátů klikněte na **nahrát** .
+3. V horní části oblasti certifikátů klikněte na **Nahrát.**
 
-    ![Klikněte na položku nabídky Odeslat.](media/cloud-services-configure-ssl-certificate-portal/Upload_menu.png)
+    ![Klikněte na položku nabídky Nahrát.](media/cloud-services-configure-ssl-certificate-portal/Upload_menu.png)
 
-4. Zadejte **soubor**, **heslo**a potom klikněte na tlačítko **nahrát** v dolní části oblasti pro zadávání dat.
+4. Zadejte **soubor**, **heslo**a klikněte na **Tlačítko Odeslat** v dolní části oblasti pro zadávání dat.
 
-## <a name="step-4-connect-to-the-role-instance-by-using-https"></a>Krok 4: připojení k instanci role pomocí protokolu HTTPS
-Teď, když je nasazení v Azure v provozu, můžete se k němu připojit pomocí protokolu HTTPS.
+## <a name="step-4-connect-to-the-role-instance-by-using-https"></a>Krok 4: Připojení k instanci role pomocí protokolu HTTPS
+Teď, když je vaše nasazení v Azure v provozu, můžete se k němu připojit pomocí protokolu HTTPS.
 
 1. Kliknutím na **adresu URL webu** otevřete webový prohlížeč.
 
    ![Klikněte na adresu URL webu.](media/cloud-services-configure-ssl-certificate-portal/navigate.png)
 
-2. Ve webovém prohlížeči upravte odkaz tak, aby místo **http**používal protokol **https** , a pak navštivte stránku.
+2. Ve webovém prohlížeči upravte odkaz tak, aby používal **protokol https** místo **http**, a pak navštivte stránku.
 
    > [!NOTE]
-   > Pokud používáte certifikát podepsaný svým držitelem, můžete při přechodu na koncový bod HTTPS, který je přidružený k certifikátu podepsanému svým držitelem, zobrazit v prohlížeči chybu certifikátu. Tento problém se eliminuje pomocí certifikátu podepsaného důvěryhodnou certifikační autoritou. do té doby můžete chybu ignorovat. (Další možností je přidání certifikátu podepsaného svým držitelem do úložiště certifikátů důvěryhodné certifikační autority uživatele.)
+   > Pokud používáte certifikát podepsaný svým držitelem, při procházení koncového bodu HTTPS, který je přidružen k certifikátu podepsanému svým držitelem, se může v prohlížeči zobrazit chyba certifikátu. Použití certifikátu podepsaného důvěryhodným certifikačním úřadem tento problém eliminuje. do té doby můžete chybu ignorovat. (Další možností je přidání certifikátu podepsaného svým držitelem do úložiště certifikátů důvěryhodné certifikační autority uživatele.)
    >
    >
 
    ![Náhled webu](media/cloud-services-configure-ssl-certificate-portal/show-site.png)
 
    > [!TIP]
-   > Pokud chcete použít protokol SSL pro pracovní nasazení místo nasazení v produkčním prostředí, musíte nejprve určit adresu URL používanou pro pracovní nasazení. Po nasazení cloudové služby se adresa URL přípravného prostředí určuje pomocí identifikátoru GUID **ID nasazení** v tomto formátu: `https://deployment-id.cloudapp.net/`  
+   > Pokud chcete použít SSL pro pracovní nasazení namísto produkčního nasazení, budete muset nejprve určit adresu URL použitou pro pracovní nasazení. Po nasazení cloudové služby je adresa URL pracovního prostředí určena identifikátorem GUID **ID nasazení** v tomto formátu:`https://deployment-id.cloudapp.net/`  
    >
-   > Vytvořte certifikát s běžným názvem (CN), který se rovná adrese URL založené na identifikátoru GUID (například **328187776e774ceda8fc57609d404462.cloudapp.NET**). Pomocí portálu přidejte certifikát do připravené cloudové služby. Pak přidejte informace o certifikátu do souborů CSDEF a CSCFG, znovu zabalením aplikace a aktualizujte připravené nasazení na použití nového balíčku.
+   > Vytvořte certifikát s běžným názvem (CN) rovným adrese URL založené na identifikátoru GUID (například **328187776e774ceda8fc57609d404462.cloudapp.net**). Pomocí portálu přidejte certifikát do fázované cloudové služby. Potom přidejte informace o certifikátu do souborů CSDEF a CSCFG, přebalte aplikaci a aktualizujte fázované nasazení tak, aby používalo nový balíček.
    >
 
 ## <a name="next-steps"></a>Další kroky
-* [Obecná konfigurace cloudové služby](cloud-services-how-to-configure-portal.md)
+* [Obecná konfigurace cloudové služby](cloud-services-how-to-configure-portal.md).
 * Přečtěte si, jak [nasadit cloudovou službu](cloud-services-how-to-create-deploy-portal.md).
-* Nakonfigurujte [vlastní název domény](cloud-services-custom-domain-name-portal.md).
-* [Spravujte svou cloudovou službu](cloud-services-how-to-manage-portal.md).
+* Konfigurace [vlastního názvu domény](cloud-services-custom-domain-name-portal.md).
+* [Spravujte cloudovou službu](cloud-services-how-to-manage-portal.md).
 
 
 

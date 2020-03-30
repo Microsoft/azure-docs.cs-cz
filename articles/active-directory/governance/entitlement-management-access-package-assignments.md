@@ -1,6 +1,6 @@
 ---
-title: Zobrazení, přidání a odebrání přiřazení balíčku pro přístup ve správě nároků Azure AD – Azure Active Directory
-description: Naučte se zobrazovat, přidávat a odebírat přiřazení pro balíček přístupu v Azure Active Directory správě nároků.
+title: Zobrazení, přidání a odebrání přiřazení pro přístupový balíček ve správě nároků Azure AD – Azure Active Directory
+description: Zjistěte, jak zobrazit, přidat a odebrat přiřazení pro přístupový balíček ve správě nároků služby Azure Active Directory.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,93 +17,93 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d5a2107974cd63c0d02aaeb555430453c39990bd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79262019"
 ---
-# <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Zobrazení, přidání a odebrání přiřazení balíčku pro přístup ve správě nároků Azure AD
+# <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Zobrazení, přidání a odebrání přiřazení pro přístupový balíček ve správě oprávnění Azure AD
 
-V části Správa opravňujících k Azure AD se můžete podívat, kdo byl přiřazený k balíčkům, zásadám a stavům. Pokud má přístupový balíček odpovídající zásady, můžete také přímo přiřadit uživatele k balíčku pro přístup. Tento článek popisuje, jak zobrazit, přidat a odebrat přiřazení pro balíčky přístupu.
+Ve správě nároků Azure AD uvidíte, kdo byl přiřazen k přístupu k balíčkům, jejich zásadám a stavu. Pokud přístupový balíček obsahuje příslušnou zásadu, můžete také přímo přiřadit uživatele k přístupu balíčku. Tento článek popisuje, jak zobrazit, přidat a odebrat přiřazení pro přístupové balíčky.
 
 ## <a name="view-who-has-an-assignment"></a>Zobrazit, kdo má přiřazení
 
-**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
+**Předpokladová role:** Globální správce, správce uživatele, vlastník katalogu nebo správce balíčků aplikace Access
 
-1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
+1. Na webu Azure Portal klikněte na **Azure Active Directory** a potom klikněte na **Identity Governance**.
 
-1. V nabídce vlevo klikněte na **přístup k balíčkům** a otevřete balíček pro přístup.
+1. V levé nabídce klikněte na **accessové balíčky** a potom otevřete přístupový balíček.
 
-1. Kliknutím na **přiřazení** zobrazíte seznam aktivních přiřazení.
+1. Kliknutím na **Přiřazení** zobrazíte seznam aktivních přiřazení.
 
-    ![Seznam přiřazení k balíčku pro přístup](./media/entitlement-management-access-package-assignments/assignments-list.png)
+    ![Seznam přiřazení k přístupovému balíčku](./media/entitlement-management-access-package-assignments/assignments-list.png)
 
 1. Kliknutím na konkrétní přiřazení zobrazíte další podrobnosti.
 
-1. Pokud chcete zobrazit seznam přiřazení, která neobsahovala správně zřízené všechny role prostředků, klikněte na stav filtru a vyberte **doručování**.
+1. Chcete-li zobrazit seznam přiřazení, která neměla správně zřízené všechny role zdrojů, klepněte na stav filtru a vyberte **možnost Doručení**.
 
-    Na stránce **žádosti** můžete zobrazit další podrobnosti o chybách doručení hledáním odpovídající žádosti uživatele.
+    Další podrobnosti o chybách doručení můžete zobrazit vyhledáním odpovídajícího požadavku uživatele na stránce **Požadavky.**
 
-1. Pokud chcete zobrazit vypršení platnosti, klikněte na stav filtru a vyberte **konec platnosti**.
+1. Chcete-li zobrazit přiřazení s ukončenou platností, klepněte na stav filtru a vyberte **možnost Vypršela platnost**.
 
-1. Pokud chcete stáhnout soubor CSV s filtrovaným seznamem, klikněte na **Stáhnout**.
+1. Chcete-li stáhnout soubor CSV z filtrovaného seznamu, klepněte na tlačítko **Stáhnout**.
 
-### <a name="viewing-assignments-programmatically"></a>Zobrazení přiřazení prostřednictvím kódu programu
+### <a name="viewing-assignments-programmatically"></a>Programové zobrazení přiřazení
 
-Můžete také načíst přiřazení v balíčku přístupu pomocí Microsoft Graph.  Uživatel v příslušné roli s aplikací, která má oprávnění delegovaný `EntitlementManagement.ReadWrite.All`, může volat rozhraní API k [vypsání seznamu accessPackageAssignments](https://docs.microsoft.com/graph/api/accesspackageassignment-list?view=graph-rest-beta).
+Můžete také načíst přiřazení v balíčku přístupu pomocí aplikace Microsoft Graph.  Uživatel v příslušné roli s aplikací, která `EntitlementManagement.ReadWrite.All` má delegované oprávnění, může volat rozhraní API do [seznamu accessPackageAssignments](https://docs.microsoft.com/graph/api/accesspackageassignment-list?view=graph-rest-beta).
 
-## <a name="directly-assign-a-user"></a>Přímo přiřadit uživatele
+## <a name="directly-assign-a-user"></a>Přímá přiřazení uživatele
 
-V některých případech můžete chtít přímo přiřadit konkrétní uživatele k balíčku pro přístup, aby uživatelé nemuseli projít procesem vyžadování balíčku pro přístup. Aby bylo možné přiřazovat uživatele přímo, musí mít přístupový balíček zásadu, která umožňuje přímé přiřazení správců.
+V některých případech můžete chtít přímo přiřadit konkrétní uživatele k balíčku přístupu tak, aby uživatelé nemuseli projít procesem vyžádání přístupového balíčku. Chcete-li přímo přiřadit uživatele, musí mít balíček přístupu zásadu, která umožňuje přímé přiřazení správce.
 
-**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
+**Předpokladová role:** Globální správce, správce uživatele, vlastník katalogu nebo správce balíčků aplikace Access
 
-1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
+1. Na webu Azure Portal klikněte na **Azure Active Directory** a potom klikněte na **Identity Governance**.
 
-1. V nabídce vlevo klikněte na **přístup k balíčkům** a otevřete balíček pro přístup.
+1. V levé nabídce klikněte na **accessové balíčky** a potom otevřete přístupový balíček.
 
-1. V nabídce vlevo klikněte na **přiřazení**.
+1. V levé nabídce klepněte na **položku Úlohy**.
 
-1. Kliknutím na **nové přiřazení** otevřete přidat uživatele pro přístup k balíčku.
+1. Kliknutím na **Nové přiřazení** otevřete tlačítko Přidat pro přístup k balíčku.
 
-    ![Přiřazení – přidat uživatele do balíčku pro přístup](./media/entitlement-management-access-package-assignments/assignments-add-user.png)
+    ![Přiřazení – přidání uživatele pro přístup k balíčku](./media/entitlement-management-access-package-assignments/assignments-add-user.png)
 
-1. Klikněte na **Přidat uživatele** a vyberte uživatele, kterým chcete přiřadit tento balíček přístupu.
+1. Kliknutím na **Přidat uživatele** vyberte uživatele, kterým chcete přiřadit tento přístupový balíček.
 
-1. V seznamu **Vybrat zásadu** vyberte zásadu, kterou budou řídit a sledovat budoucí požadavky uživatelů a životní cyklus. Pokud chcete, aby vybraní uživatelé měli jiná nastavení zásad, můžete kliknutím na **vytvořit novou zásadu** přidat novou zásadu.
+1. V seznamu **Vybrat zásady** vyberte zásady, které budou řídit a sledovat budoucí požadavky uživatelů a životní cyklus. Pokud chcete, aby vybraní uživatelé měli různá nastavení zásad, můžete klepnutím na **tlačítko Vytvořit novou zásadu** přidat novou zásadu.
 
-1. Nastavte datum a čas, kdy má přiřazení vybraných uživatelů začít a končit. Pokud není zadané koncové datum, použije se nastavení životního cyklu zásad.
+1. Nastavte datum a čas, kdy má přiřazení vybraných uživatelů začínat a končit. Pokud není k dispozici koncové datum, použije se nastavení životního cyklu zásady.
 
-1. Volitelně můžete zadat odůvodnění pro přímé přiřazení záznamu.
+1. Volitelně uveďte odůvodnění pro vaše přímé přiřazení pro vedení záznamů.
 
-1. Kliknutím na tlačítko **Přidat** můžete vybraným uživatelům přiřadit přímý přístup k balíčku přístupu.
+1. Chcete-li přímo přiřadit vybrané uživatele k přístupovému balíčku, klepněte na tlačítko **Přidat.**
 
-    Po chvíli klikněte na **aktualizovat** , aby se uživatelé mohli zobrazit v seznamu přiřazení.
+    Po chvíli klikněte na **Aktualizovat** a zozobrazujete uživatele v seznamu Přiřazení.
 
-### <a name="directly-assigning-users-programmatically"></a>Přímé přiřazování uživatelů prostřednictvím kódu programu
+### <a name="directly-assigning-users-programmatically"></a>Přímé přiřazení uživatelů programově
 
-Můžete také přímo přiřadit uživatele k balíčku přístupu pomocí Microsoft Graph.  Uživatel v příslušné roli s aplikací, která má oprávnění delegovaný `EntitlementManagement.ReadWrite.All`, může volat rozhraní API a vytvořit tak [accessPackageAssignmentRequest](https://docs.microsoft.com/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta).
+Můžete také přímo přiřadit uživatele k přístupu balíček pomocí microsoft graphu.  Uživatel v příslušné roli s aplikací, která `EntitlementManagement.ReadWrite.All` má delegované oprávnění můžete volat rozhraní API [k vytvoření accessPackageAssignmentRequest](https://docs.microsoft.com/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta).
 
 ## <a name="remove-an-assignment"></a>Odebrání přiřazení
 
-**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
+**Předpokladová role:** Globální správce, správce uživatele, vlastník katalogu nebo správce balíčků aplikace Access
 
-1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
+1. Na webu Azure Portal klikněte na **Azure Active Directory** a potom klikněte na **Identity Governance**.
 
-1. V nabídce vlevo klikněte na **přístup k balíčkům** a otevřete balíček pro přístup.
+1. V levé nabídce klikněte na **accessové balíčky** a potom otevřete přístupový balíček.
 
-1. V nabídce vlevo klikněte na **přiřazení**.
+1. V levé nabídce klepněte na **položku Úlohy**.
  
-1. Zaškrtněte políčko vedle uživatele, jehož přiřazení chcete odebrat z balíčku pro přístup. 
+1. Zaškrtněte políčko vedle uživatele, jehož přiřazení chcete odebrat z přístupového balíčku. 
 
-1. V horní části levého podokna klikněte na tlačítko **Odebrat** . 
+1. Klikněte na tlačítko **Odebrat** v horní části levého podokna. 
  
-    ![Přiřazení – odebrat uživatele z balíčku přístupu](./media/entitlement-management-access-package-assignments/remove-assignment-select-remove-assignment.png)
+    ![Přiřazení – odebrání uživatele z přístupového balíčku](./media/entitlement-management-access-package-assignments/remove-assignment-select-remove-assignment.png)
 
-    Zobrazí se oznámení o odebrání přiřazení. 
+    Zobrazí se oznámení informující o odebrání přiřazení. 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Žádost o změnu a nastavení balíčku pro přístup](entitlement-management-access-package-request-policy.md)
+- [Změnit požadavek a nastavení přístupového balíčku](entitlement-management-access-package-request-policy.md)
 - [Zobrazení sestav a protokolů](entitlement-management-reports.md)

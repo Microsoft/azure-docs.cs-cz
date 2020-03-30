@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory protokoly aktivit v Azure Monitor | Microsoft Docs
-description: Úvod do Azure Active Directory protokolů aktivit v Azure Monitor
+title: Protokoly aktivit služby Azure Active Directory ve službě Azure Monitor | Dokumenty společnosti Microsoft
+description: Úvod do protokolů aktivit služby Azure Active Directory v Azure Monitoru
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,20 +18,20 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 46e29fff3308f35b16dbff2f9cead82abc222a5c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266543"
 ---
-# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Protokoly aktivit Azure AD v Azure Monitor
+# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Protokoly aktivit Azure AD ve službě Azure Monitor
 
-Protokoly aktivit služby Azure Active Directory (Azure AD) můžete směrovat do několika koncových bodů pro dlouhodobé uchovávání dat a přehledy dat. Tato funkce umožňuje:
+Protokoly aktivit služby Azure Active Directory (Azure AD) můžete směrovat do několika koncových bodů pro dlouhodobé uchovávání informací a přehledy dat. Tato funkce umožňuje:
 
-* Archivace protokolů aktivit Azure AD do účtu služby Azure Storage za účelem zachování dat po dlouhou dobu.
-* Streamování protokolů aktivit Azure AD do centra událostí Azure pro analýzy pomocí oblíbených nástrojů pro správu událostí a SIEM (Security Information and Event Management), jako je Splunk a QRadar.
-* Integrujte protokoly aktivit služby Azure AD s vlastními řešeními pro vlastní protokoly jejich streamování do centra událostí.
-* Pošlete protokoly aktivit Azure AD, abyste Azure Monitor protokoly, abyste umožnili bohatou vizualizaci, monitorování a upozorňování na připojená data.
+* Archivujte protokoly aktivit Azure AD do účtu úložiště Azure, chcete-li data uchovávat po dlouhou dobu.
+* Streamujte protokoly aktivit Azure AD do centra událostí Azure pro analýzy pomocí oblíbených nástrojů pro správu informací o zabezpečení a událostí (SIEM), jako je Splunk a QRadar.
+* Integrujte protokoly aktivit Azure AD s vlastními řešeními protokolů tak, že je převezete do centra událostí.
+* Odesílejte protokoly aktivit Azure AD do protokolů Azure Monitoru, abyste povolili bohaté vizualizace, monitorování a upozorňování na připojená data.
 
 > [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
 
@@ -39,9 +39,9 @@ Protokoly aktivit služby Azure Active Directory (Azure AD) můžete směrovat d
 
 ## <a name="supported-reports"></a>Podporované sestavy
 
-Pomocí této funkce můžete směrovat protokoly auditu Azure AD a protokoly přihlášení k vašemu účtu služby Azure Storage, centru událostí, protokolům Azure Monitor nebo vlastnímu řešení. 
+Pomocí této funkce můžete směrovat protokoly auditu azure a přihlášení a protokoly přihlášení do svého účtu úložiště Azure, centra událostí, protokolů Azure Monitoru nebo vlastního řešení. 
 
-* **Protokoly auditu:** [Sestava aktivit protokolů auditu](concept-audit-logs.md) poskytuje přístup k historii každé úlohy provedené ve vašem tenantovi.
+* **Protokoly auditu:**[Sestava aktivit protokolů auditu](concept-audit-logs.md) poskytuje přístup k historii každé úlohy provedené ve vašem tenantovi.
 * **Protokoly přihlašování:** Se [sestavou aktivit přihlašování](concept-sign-ins.md) můžete určit, kdo provedl úlohy hlášené v protokolech auditu.
 
 > [!NOTE]
@@ -62,7 +62,7 @@ Podle toho, kam chcete směrovat data protokolů auditu, potřebujete některou 
 
 * Účet úložiště Azure, pro který máte oprávnění *ListKeys*. Doporučujeme použít obecný účet úložiště, ne účet úložiště objektů blob. Informace o cenách úložiště najdete v [cenové kalkulačce služby Azure Storage](https://azure.microsoft.com/pricing/calculator/?service=storage). 
 * Obor názvů služby Azure Event Hubs pro integraci s řešeními třetích stran.
-* Pracovní prostor Azure Log Analytics k odesílání protokolů do protokolů Azure Monitor.
+* Pracovní prostor Azure Log Analytics pro odesílání protokolů do protokolů Azure Monitor.
 
 ## <a name="cost-considerations"></a>Důležité informace o nákladech
 
@@ -70,7 +70,7 @@ Pokud už máte licenci Azure AD, potřebujete k vytvoření účtu úložiště
 
 ### <a name="storage-size-for-activity-logs"></a>Velikost úložiště pro protokoly aktivit
 
-Každá událost protokolu auditu zabere v úložišti dat asi 2 kB. Protokoly událostí přihlášení mají přibližně 4 KB úložiště dat. V případě tenanta se 100 000 uživateli, ve kterém dojde asi k 1,5 milionu událostí denně, byste za den spotřebovali asi 3 GB úložiště. Vzhledem k tomu, že k zápisům dochází v dávkách asi po pěti minutách, můžete očekávat asi 9 000 operací zápisu za měsíc. 
+Každá událost protokolu auditu zabere v úložišti dat asi 2 kB. Protokoly událostí přihlášení jsou asi 4 KB úložiště dat. V případě tenanta se 100 000 uživateli, ve kterém dojde asi k 1,5 milionu událostí denně, byste za den spotřebovali asi 3 GB úložiště. Vzhledem k tomu, že k zápisům dochází v dávkách asi po pěti minutách, můžete očekávat asi 9 000 operací zápisu za měsíc. 
 
 
 Následující tabulka obsahuje odhad nákladů na účet úložiště pro obecné účely v2 v oblasti USA – západ s dobou uchování minimálně jeden rok, v závislosti na velikosti tenanta. Přesnější odhad objemu dat, který můžete ve své aplikaci očekávat, vám poskytne [cenová kalkulačka služby Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
@@ -78,10 +78,10 @@ Následující tabulka obsahuje odhad nákladů na účet úložiště pro obecn
 
 | Kategorie protokolu | Počet uživatelů | Počet událostí za den | Objem dat za měsíc (odhad) | Náklady za měsíc (odhad) | Náklady za rok (odhad) |
 |--------------|-----------------|----------------------|--------------------------------------|----------------------------|---------------------------|
-| Auditování | 100,000 | 1,5&nbsp;milionu | 90 GB | 1,93 USD | 23,12 USD |
-| Auditování | 1 000 | 15,000 | 900 MB | 0,02 USD | 0,24 USD |
+| Auditování | 100 000 | 1,5&nbsp;milionu | 90 GB | 1,93 USD | 23,12 USD |
+| Auditování | 1 000 | 15 000 | 900 MB | 0,02 USD | 0,24 USD |
 | Přihlášení | 1 000 | 34 800 | 4 GB | 0,13 USD | 1,56 USD |
-| Přihlášení | 100,000 | 15&nbsp;milionů | 1,7 TB | 35,41 USD | 424,92 USD |
+| Přihlášení | 100 000 | 15&nbsp;milionů | 1,7 TB | 35,41 USD | 424,92 USD |
  
 
 
@@ -102,19 +102,19 @@ Následující tabulka obsahuje odhad měsíčních nákladů na základní cent
 
 | Kategorie protokolu | Počet uživatelů | Počet událostí za sekundu | Počet událostí za pětiminutový interval | Objem za interval | Počet zpráv za interval | Počet zpráv za měsíc | Náklady za měsíc (odhad) |
 |--------------|-----------------|-------------------------|----------------------------------------|---------------------|---------------------------------|------------------------------|----------------------------|
-| Auditování | 100,000 | 18 | 5 400 | 10,8 MB | 43 | 371 520 | 10,83 USD |
-| Auditování | 1 000 | 0,1 | 52 | 104 kB | 1 | 8 640 | 10,80 USD |
+| Auditování | 100 000 | 18 | 5 400 | 10,8 MB | 43 | 371 520 | 10,83 USD |
+| Auditování | 1 000 | 0.1 | 52 | 104 kB | 1 | 8 640 | 10,80 USD |
 | Přihlášení | 1 000 | 178 | 53 400 | 106,8&nbsp;MB | 418 | 3 611 520 | 11,06 USD |  
 
-### <a name="azure-monitor-logs-cost-considerations"></a>Náklady na Azure Monitor protokolů
+### <a name="azure-monitor-logs-cost-considerations"></a>Azure Monitor zaznamenává aspekty nákladů
 
 
 
-| Kategorie protokolu       | Počet uživatelů | Počet událostí za den | Události za měsíc (30 dní) | Cena za měsíc v USD (EST) |
+| Kategorie protokolu       | Počet uživatelů | Počet událostí za den | Události za měsíc (30 dní) | Cena za měsíc v USD (est.) |
 | :--                | ---             | ---            | ---                        | --:                          |
-| Audit a přihlášení | 100,000         | 16 500 000     | 495 000 000                |  $1093,00                       |
-| Auditování              | 100,000         | 1 500 000      | 45,000,000                 |  $246,66                     |
-| Přihlášení           | 100,000         | 15,000,000     | 450 000 000                |  $847,28                     |
+| Audit a přihlášení | 100 000         | 16,500,000     | 495,000,000                |  1093,00 dolarů                       |
+| Auditování              | 100 000         | 1,500,000      | 45,000,000                 |  246,66 dolarů                     |
+| Přihlášení           | 100 000         | 15,000,000     | 450,000,000                |  847,28 dolarů                     |
 
 
 
@@ -125,7 +125,7 @@ Následující tabulka obsahuje odhad měsíčních nákladů na základní cent
 
 
 
-Pokud chcete zkontrolovat náklady související se správou protokolů Azure Monitor, přečtěte si téma [Správa nákladů pomocí řízení objemu dat a uchovávání v protokolech Azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-cost-storage).
+Informace o nákladech souvisejících se správou protokolů Azure Monitoru najdete [v tématu Správa nákladů řízením objemu dat a uchováváním informací v protokolech Azure Monitoru](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-cost-storage).
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -137,21 +137,21 @@ V této části najdete odpovědi na nejčastější dotazy a popis známých pr
 
 ---
 
-**Otázka: jak brzy po akci se odpovídající protokoly zobrazí v centru událostí?**
+**Otázka: Za jak dlouho se v centru událostí zobrazí odpovídající protokoly?**
 
 **Odpověď:** Protokoly by se v centru událostí měly zobrazit během dvou až pěti minut od provedení akce. Další informace o službě Event Hubs najdete v tématu [Co je Azure Event Hubs?](../../event-hubs/event-hubs-about.md).
 
 ---
 
-**Otázka: jak brzy po akci se odpovídající protokoly zobrazí v mém účtu úložiště?**
+**Otázka: Za jak dlouho po akci se odpovídající protokoly zobrazí v mém účtu úložiště?**
 
 **Odpověď:** V případě účtů úložiště Azure se latence pohybuje mezi 5 až 15 minutami od provedení akce.
 
 ---
 
-**Otázka: co se stane, když správce změní dobu uchování nastavení diagnostiky?**
+**Otázka: Co se stane, když správce změní dobu uchování nastavení diagnostiky?**
 
-Odpověď **: nové**zásady uchovávání informací budou aplikovány na protokoly shromážděné po změně. Protokoly shromážděné před změnou zásad nebudou nijak ovlivněny.
+**A**: Nové zásady uchovávání informací budou použity pro protokoly shromážděné po změně. Protokoly shromážděné před změnou zásad nebudou ovlivněny.
 
 ---
 
@@ -197,7 +197,7 @@ Odpověď **: nové**zásady uchovávání informací budou aplikovány na proto
 
 **Otázka: Můžu získat přístup k datům z centra událostí bez použití externího nástroje SIEM?** 
 
-**Odpověď:** Ano. Pro přístup k protokolům z vlastní aplikace můžete použít [rozhraní API služby Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md). 
+**A:** Ano. Pro přístup k protokolům z vlastní aplikace můžete použít [rozhraní API služby Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md). 
 
 ---
 
@@ -206,4 +206,4 @@ Odpověď **: nové**zásady uchovávání informací budou aplikovány na proto
 
 * [Archivace protokolů aktivit do účtu úložiště](quickstart-azure-monitor-route-logs-to-storage-account.md)
 * [Směrování protokolů aktivit do centra událostí](quickstart-azure-monitor-stream-logs-to-event-hub.md)
-* [Integrace protokolů aktivit s Azure Monitor](howto-integrate-activity-logs-with-log-analytics.md)
+* [Integrace protokolů aktivit pomocí Azure Monitoru](howto-integrate-activity-logs-with-log-analytics.md)
