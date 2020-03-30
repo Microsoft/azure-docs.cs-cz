@@ -1,29 +1,33 @@
 ---
-title: Použití Node. js pro připojení k Azure Database for PostgreSQL – jeden server
-description: V tomto rychlém startu najdete vzorový kód Node. js, který můžete použít k připojení a dotazování dat z Azure Database for PostgreSQL na jeden server.
+title: Použití souboru Node.js pro připojení k databázi Azure pro PostgreSQL – jeden server
+description: Tento rychlý start obsahuje ukázku kódu Node.js, kterou můžete použít k připojení a dotazování dat z databáze Azure pro PostgreSQL – jeden server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.custom: seo-javascript-september2019, seo-javascript-october2019
+ms.custom:
+- mvc
+- devcenter
+- seo-javascript-september2019
+- seo-javascript-october2019
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: ca3a8bb093e81404da638ff869e05b5a4626626e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 1d48fc818ca32b6168b0986ddb6453fe66fc8341
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774839"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80062261"
 ---
-# <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití Node. js k připojení a dotazování dat v Azure Database for PostgreSQL-Single server
+# <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Úvodní příručka: Použití souboru Node.js k připojení a dotazování dat v databázi Azure pro PostgreSQL – jeden server
 
-V tomto rychlém startu se připojíte k Azure Database for PostgreSQL pomocí aplikace Node. js. Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Kroky v tomto článku předpokládají, že máte zkušenosti s vývojem pomocí Node.js a teprve začínáte pracovat se službou Azure Database for PostgreSQL.
+V tomto rychlém startu se připojíte k databázi Azure pro PostgreSQL pomocí aplikace Node.js. Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Kroky v tomto článku předpokládají, že máte zkušenosti s vývojem pomocí Node.js a teprve začínáte pracovat se službou Azure Database for PostgreSQL.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- Dokončení [rychlého startu: vytvoření serveru Azure Database for PostgreSQL v Azure Portal](quickstart-create-server-database-portal.md) nebo [rychlém startu: vytvoření Azure Database for POSTGRESQL pomocí Azure CLI](quickstart-create-server-database-azure-cli.md).
+- Dokončení [úvodního článku: Vytvořte databázi Azure pro postgreSQL server na webu Azure Portal](quickstart-create-server-database-portal.md) nebo [Quickstart: Vytvořte databázi Azure pro PostgreSQL pomocí azure cli](quickstart-create-server-database-azure-cli.md).
 
 - [Node.js](https://nodejs.org)
 
@@ -43,9 +47,9 @@ npm list
 ## <a name="get-connection-information"></a>Získání informací o připojení
 Získejte informace o připojení potřebné pro připojení ke službě Azure Database for PostgreSQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
 
-1. V [Azure Portal](https://portal.azure.com/)vyhledejte a vyberte server, který jste vytvořili (například **mydemoserver**).
+1. Na [webu Azure Portal](https://portal.azure.com/)vyhledejte a vyberte server, který jste vytvořili (například **mydemoserver**).
 
-1. Na panelu **Přehled** serveru si poznamenejte **název serveru** a **uživatelské jméno správce**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
+1. Z panelu **Přehled** serveru si poznamenejte **název serveru** a **uživatelské jméno správce**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
 
    ![Připojovací řetězec Azure Database for PostgreSQL](./media/connect-nodejs/server-details-azure-database-postgresql.png)
 

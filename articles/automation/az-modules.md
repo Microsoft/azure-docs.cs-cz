@@ -1,72 +1,72 @@
 ---
 title: Použití modulů Az ve službě Azure Automation
-description: Tento článek poskytuje informace pomocí AZ modules in Azure Automation
+description: Tento článek obsahuje informace pomocí modulů Az v Azure Automation
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 02/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: dfbf54c19aef00cbda886a4531797cda7ef3a191
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76986100"
 ---
-# <a name="az-module-support-in-azure-automation"></a>AZ modul Support in Azure Automation
+# <a name="az-module-support-in-azure-automation"></a>Podpora modulů Az ve službě Azure Automation
 
-Azure Automation podporuje možnost použít [Azure PowerShell AZ Module](/powershell/azure/new-azureps-module-az?view=azps-1.1.0) ve vašich sadách Runbook. Modul AZ není automaticky importován do žádného nového nebo stávajícího účtu Automation. Tento článek popisuje použití funkce AZ modules with Azure Automation.
+Azure automation podporuje možnost používat [modul Azure Powershell Az](/powershell/azure/new-azureps-module-az?view=azps-1.1.0) ve vašich runbookech. Modul Az se automaticky neimportuje do žádných nových nebo existujících účtů automatizace. Tento článek popisuje, jak používat moduly Az s Azure Automation.
 
 ## <a name="considerations"></a>Požadavky
 
-Při použití modulu AZ Module v Azure Automation je třeba vzít v úvahu mnoho věcí. Runbooky a moduly můžou používat řešení vyšší úrovně ve vašem účtu Automation. Úpravy runbooků nebo upgradované moduly můžou potenciálně způsobovat problémy se sadami Runbook. Před importem nových modulů `Az` byste měli všechny Runbooky a řešení pečlivě otestovat v samostatném účtu Automation. Jakékoli úpravy modulů můžou negativně ovlivnit řešení [Spustit/zastavit](automation-solution-vm-management.md) . Nedoporučujeme měnit moduly a runbooky v účtech Automation, které obsahují žádná řešení. Toto chování není specifické pro funkce AZ Modules. Toto chování je potřeba vzít v úvahu při zavádění změn v účtu Automation.
+Při použití modulu Az v Azure Automation je třeba vzít v úvahu mnoho věcí. Sady Runbook a moduly lze používat řešenívyšší úrovně ve vašem účtu Automation. Úpravy runbooků nebo upgradovacích modulů mohou potenciálně způsobit problémy s vašimi runbooky. Před importem nových `Az` modulů byste měli pečlivě otestovat všechny sady Runbook a řešení v samostatném účtu automatizace. Jakékoli změny modulů mohou negativně ovlivnit řešení [Start/Stop.](automation-solution-vm-management.md) Nedoporučujeme měnit moduly a runbooky v účtech automatizace, které obsahují žádná řešení. Toto chování není specifické pro moduly Az. Toto chování je třeba vzít v úvahu při zavádění jakékoli změny účtu automatizace.
 
-Import modulu `Az` ve vašem účtu Automation neimportuje modul automaticky v relaci PowerShellu, kterou používají Runbooky. Moduly se importují do relace PowerShellu v následujících situacích:
+Import modulu `Az` v účtu automation automaticky neimportuje modul v relaci prostředí PowerShell, kterou sady Runbook používají. Moduly se importují do relace prostředí PowerShell v následujících situacích:
 
-* Při vyvolání rutiny z modulu z Runbooku
-* Pokud je sada Runbook naimportovaná explicitně pomocí rutiny `Import-Module`
-* Když se jiný modul v závislosti na modulu importuje do relace PowerShellu
+* Když je rutina z modulu vyvolána z runbooku
+* Když jej runbook importuje `Import-Module` explicitně pomocí rutiny
+* Při importu jiného modulu v závislosti na modulu do relace prostředí PowerShell
 
 > [!IMPORTANT]
-> Je důležité zajistit, aby Runbooky v účtu Automation buď naimportovaly `Az` nebo `AzureRM` moduly do relací PowerShellu, které používají Runbooky, a ne obojí. Pokud je import `Az` před `AzureRM` v sadě Runbook, sada Runbook se dokončí, ale v datových proudech úlohy se zobrazí chyba, která [odkazuje na metodu get_SerializationSettings](troubleshoot/runbooks.md#get-serializationsettings) , a rutiny možná nebudou správně provedeny. Pokud naimportujete `AzureRM` a pak `Az` vaše sada Runbook bude stále dokončena, ale v datových proudech úlohy se zobrazí chyba s oznámením, že `Az` i `AzureRM` nelze importovat do stejné relace nebo použít ve stejné sadě Runbook.
+> Je důležité se ujistit, že sady Runbook `Az` `AzureRM` v účtu automatizace importovat nebo moduly do relací prostředí PowerShell používá runbooka a ne obojí. Pokud `Az` je importován před `AzureRM` v runbooku, sada Runbook bude dokončena, ale chyba [odkazující na get_SerializationSettings metoda](troubleshoot/runbooks.md#get-serializationsettings) se zobrazí v datových proudech úloh a rutiny nemusí být správně provedeny. Pokud `AzureRM` importujete a `Az` potom bude sada Runbook stále dokončena, ale `Az` v `AzureRM` datových proudech úloh se zobrazí chyba, která uvádí, že oba a nelze je importovat ve stejné relaci nebo použít ve stejném runbooku.
 
-## <a name="migrating-to-az-modules"></a>Migrace na az modules
+## <a name="migrating-to-az-modules"></a>Migrace na moduly Az
 
-Doporučuje se test migrace na používání AZ moduls místo AzureRM modulů v účtu testovací automatizace. Po vytvoření účtu Automation můžete pomocí následujících kroků zajistit plynulé dokončení migrace:
+Doporučujeme otestovat migraci na použití modulů Az namísto modulů AzureRM v testovacím účtu Automation. Po vytvoření účtu Automation můžete pomocí následujících kroků zajistit, aby migrace proběhla hladce:
 
-### <a name="stop-and-unschedule-all-runbook-that-uses-azurerm-modules"></a>Zastavit a zrušit plán pro sadu Runbook, která používá moduly AzureRM
+### <a name="stop-and-unschedule-all-runbook-that-uses-azurerm-modules"></a>Zastavení a zrušení plánování všech runbooků, které používají moduly AzureRM
 
-Chcete-li zajistit, aby neběžely žádné existující Runbooky, které používají rutiny `AzureRM`, měli byste zastavit a zrušit plán pro všechny sady Runbook, které používají moduly `AzureRM`. Můžete zjistit, jaké plány existují a které plány je nutné odebrat spuštěním následujícího příkladu:
+Chcete-li zajistit, že nespustíte `AzureRM` žádné existující sady Runbook, které používají rutiny, měli byste zastavit a zrušit plánování všech runbooků, které používají `AzureRM` moduly. Můžete zjistit, jaké plány existují a které plány musí být odebrány spuštěním následujícího příkladu:
 
   ```powershell-interactive
   Get-AzureRmAutomationSchedule -AutomationAccountName "<AutomationAccountName>" -ResourceGroupName "<ResourceGroupName>" | Remove-AzureRmAutomationSchedule -WhatIf
   ```
 
-Je důležité si projít každý plán zvlášť, abyste se ujistili, že v případě potřeby můžete v budoucnu změnit plán pro vaše Runbooky.
+Je důležité zkontrolovat každý plán zvlášť, abyste se ujistili, že ho můžete v budoucnu přeplánovat pro vaše sady Runbook, pokud je to nutné.
 
-### <a name="import-the-az-modules"></a>Import modulů AZ
+### <a name="import-the-az-modules"></a>Import modulů Az
 
-Importujte pouze moduly AZ, které jsou požadovány pro vaše Runbooky. Neimportujte kumulativní `Az` modul, protože zahrnuje všechny `Az.*` moduly, které se mají importovat. Tento návod je stejný pro všechny moduly.
+Importujte pouze moduly Az, které jsou vyžadovány pro vaše sady Runbook. Neimportujte souhrnný `Az` modul, protože obsahuje všechny `Az.*` moduly, které mají být importovány. Tento návod je stejný pro všechny moduly.
 
-Modul [AZ. Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) je závislostí pro ostatní moduly `Az.*`. Z tohoto důvodu je potřeba tento modul naimportovat do svého účtu Automation ještě před importem jakýchkoli jiných modulů.
+Modul [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) je závislost pro `Az.*` ostatní moduly. Z tohoto důvodu je třeba tento modul importovat do účtu automatizace před importem jiných modulů.
 
-Z účtu Automation v části **sdílené prostředky**vyberte **moduly** . Kliknutím na **Procházet galerii** otevřete stránku **Procházet galerii** .  Na panelu hledání zadejte název modulu (například `Az.Accounts`). Na stránce modul prostředí PowerShell klikněte na **importovat** a importujte modul do svého účtu Automation.
+V části **Sdílené prostředky**vyberte v části Sdílené prostředky **položku Moduly** . Kliknutím na **Procházet galerii** otevřete stránku **Galerie procházení.**  Na vyhledávacím panelu zadejte název `Az.Accounts`modulu (například). Na stránce Modul prostředí PowerShell klikněte na **Importovat** modul do účtu Automation.
 
-![Importovat moduly z účtu Automation](media/az-modules/import-module.png)
+![Import modulů z automatizačního účtu](media/az-modules/import-module.png)
 
-Tento proces importu je možné provést také pomocí [Galerie prostředí PowerShell](https://www.powershellgallery.com) hledáním modulu. Jakmile najdete modul, vyberte ho a na kartě **Azure Automation** klikněte na **nasadit a Azure Automation**.
+Tento proces importu lze provést také prostřednictvím [Galerie prostředí PowerShell](https://www.powershellgallery.com) vyhledáním modulu. Jakmile modul najdete, vyberte ho a na kartě **Azure Automation** klikněte na Deploy to **Azure Automation**.
 
-![Import modulů přímo z Galerie](media/az-modules/import-gallery.png)
+![Import modulů přímo z galerie](media/az-modules/import-gallery.png)
 
-## <a name="test-your-runbooks"></a>Testování runbooků
+## <a name="test-your-runbooks"></a>Otestujte své runbooky
 
-Po importu modulů `Az` do svého účtu Automation teď můžete začít upravovat své Runbooky a místo toho použít modul AZ Module. Většina rutin má stejný název, s výjimkou `AzureRM` byla změněna na `Az`. Seznam modulů, které tento proces nenásledují, najdete v tématu [seznam výjimek](/powershell/azure/migrate-from-azurerm-to-az#update-cmdlets-modules-and-parameters).
+Jakmile `Az` jsou moduly importovány do vašeho účtu Automation, můžete nyní začít upravovat sady Runbook a místo toho použít modul Az. Většina rutin má stejný název, s výjimkou `AzureRM` byla změněna na `Az`. Seznam modulů, které nesledují tento proces, naleznete [v seznamu výjimek](/powershell/azure/migrate-from-azurerm-to-az#update-cmdlets-modules-and-parameters).
 
-Jedním ze způsobů, jak testovat Runbooky před změnou sady Runbook tak, aby používaly nové rutiny, je použití `Enable-AzureRMAlias -Scope Process` na začátku Runbooku. Přidáním tohoto prostředí do Runbooku můžete Runbook spustit beze změn.
+Jedním ze způsobů, jak otestovat sady Runbook před úpravou sady `Enable-AzureRMAlias -Scope Process` Runbook tak, aby používala nové rutiny, je použití na začátku sady Runbook. Přidáním tohoto do runbooku, runbook můžete spustit beze změn.
 
-## <a name="after-migration-details"></a>Podrobnosti o migraci
+## <a name="after-migration-details"></a>Po migraci podrobnosti
 
-Po dokončení migrace nespouštějte Runbooky s použitím `AzureRM`ch modulů na účtu už delší dobu. U tohoto účtu doporučujeme také Neimportovat ani aktualizovat `AzureRM` moduly. Od tohoto okamžiku zvažte, že se tento účet migruje do `Az`a funguje jenom s `Az` moduly. Když se vytvoří nový účet Automation, existující moduly `AzureRM` se pořád nainstalují a runbooky se budou dál vytvářet pomocí rutin `AzureRM`. Tyto Runbooky by se neměly spouštět.
+Po dokončení migrace už nespouštějte `AzureRM` sady Runbook pomocí modulů na účtu. Doporučujeme také neimportovat ani `AzureRM` aktualizovat moduly v tomto účtu. Od tohoto okamžiku zvažte, zda `Az`je tento `Az` účet migrován na aplikaci a pracujte pouze s moduly. Při vytvoření nového účtu `AzureRM` automatizace existující moduly budou stále nainstalovány a `AzureRM` sady Runbook pro výukové programy budou stále vytvořeny s rutinami. Tyto sady runbooky by neměly být spuštěny.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o použití AZ modules najdete v tématu [Začínáme s AZ Module](/powershell/azure/get-started-azureps?view=azps-1.1.0).
+Další informace o používání modulů Az najdete [v tématu Začínáme s modulem Az](/powershell/azure/get-started-azureps?view=azps-1.1.0).

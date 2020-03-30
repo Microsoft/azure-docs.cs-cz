@@ -1,6 +1,6 @@
 ---
-title: Migrace Azure Notification Hubs a FCM (Google Firebase Cloud Messaging)
-description: Popisuje, jak Azure Notification Hubs adresuje migraci Google GCM na FCM.
+title: Azure Notification Hubs a migrace cloudových zpráv Google Firebase (FCM)
+description: Popisuje, jak Azure Notification Hubs řeší migraci Google GCM na FCM.
 services: notification-hubs
 author: sethmanheim
 manager: femila
@@ -14,51 +14,51 @@ ms.date: 04/10/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/10/2019
-ms.openlocfilehash: 80eae09240bde61870995468485338db5f0b9c2d
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 2f2ca4b56445b3f399477e396de579d8a8c539e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212315"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80127024"
 ---
-# <a name="azure-notification-hubs-and-the-google-firebase-cloud-messaging-fcm-migration"></a>Migrace Azure Notification Hubs a FCM (Google Firebase Cloud Messaging)
+# <a name="azure-notification-hubs-and-google-firebase-cloud-messaging-migration"></a>Azure Notification Hubs a migrace cloudových zpráv Google Firebase
 
 ## <a name="current-state"></a>Aktuální stav
 
-Když Google oznámila migraci z Google Cloud Messaging (GCM) na Firebase Cloud Messaging (FCM), služba nabízených oznámení jako náš musela upravit způsob, jakým jsme poslali oznámení na zařízení s Androidem, aby se tato změna vešla.
+Když Společnost Google oznámila přechod z aplikace Google Cloud Messaging (GCM) na Firebase Cloud Messaging (FCM), nabízené služby, jako je ta naše, musely upravit způsob, jakým jsme odeslali oznámení zařízením Android, aby se přizpůsobily změně.
 
-Aktualizovali jsme naše back-end služby a pak jsme podle potřeby publikovali aktualizace našich rozhraní API a sad SDK. Díky naší implementaci jsme se rozhodli zachovat kompatibilitu s existujícími schématy oznámení GCM, aby se minimalizoval dopad na zákazníky. To znamená, že aktuálně posíláme oznámení na zařízení s Androidem pomocí FCM ve starším režimu FCM. Nakonec chceme přidat skutečnou podporu pro FCM, včetně nových funkcí a formátu datové části. To je dlouhodobá změna a aktuální migrace se zaměřuje na zachování kompatibility se stávajícími aplikacemi a sadami SDK. V aplikaci můžete použít sady SDK GCM nebo FCM (spolu s naší sadou SDK) a ujistěte se, že je oznámení odesíláno správně.
+Aktualizovali jsme náš back-end služby a podle potřeby jsme publikovali aktualizace našeho rozhraní API a sad SDK. S naší implementací jsme se rozhodli zachovat kompatibilitu se stávajícími schématy oznámení GCM, abychom minimalizovali dopad na zákazníka. To znamená, že v současné době odesíláme oznámení zařízením Android pomocí FCM v starším režimu FCM. Nakonec chceme přidat skutečnou podporu pro FCM, včetně nových funkcí a formátu datové části. Jedná se o dlouhodobější změnu a současná migrace je zaměřena na zachování kompatibility se stávajícími aplikacemi a sadami SDK. Můžete použít buď GCM nebo FCM SDKs ve vaší aplikaci (spolu s naší Sad SDK) a my se ujistěte, že oznámení je odesláno správně.
 
-Někteří zákazníci nedávno obdrželi e-mail od společnosti Google Warning o aplikacích pomocí koncového bodu GCM pro oznámení. Toto bylo jenom upozornění a nic se nepřerušilo – oznámení Androidu vaší aplikace se pořád posílají do Google pro zpracování a Google je stále zpracovává. Někteří zákazníci, kteří v konfiguraci služby zadali explicitně zadaný koncový bod GCM, používali i zastaralý koncový bod. Tuto mezeru jsme již identifikovali a při řešení problému na webu Google poslali e-mail.
+Někteří zákazníci nedávno obdrželi od Googlu e-mail s upozorněním na aplikace, které používají koncový bod GCM pro oznámení. To bylo jen varování a nic není rozbité - oznámení androida vaší aplikace jsou stále odesílána společnosti Google ke zpracování a Google je stále zpracovává. Někteří zákazníci, kteří explicitně zadali koncový bod GCM v konfiguraci své služby, stále používali zastaralou koncový bod. Tuto mezeru jsme již identifikovali a pracovali jsme na vyřešení problému, když Google poslal e-mail.
 
-Nahradili jsme zastaralý koncový bod a tato oprava je nasazená.
+Nahradili jsme tento zastaralá koncový bod a oprava je nasazena.
 
-## <a name="going-forward"></a>Po přechodu dál
+## <a name="going-forward"></a>Do budoucna
 
-Nejčastější dotazy k FCM Google říkají, že nemusíte nic dělat. V [nejčastějších dotazech k FCM](https://developers.google.com/cloud-messaging/faq)se Google říká, že klientské sady SDK a tokeny GCM budou i nadále fungovat neomezeně. Nebudete ale moct cílit na nejnovější verzi Služby Google Play v aplikaci pro Android, pokud nemigrujete na FCM. "
+Google FCM FAQ říká, že nemusíte dělat nic. V [FCM FAQ](https://developers.google.com/cloud-messaging/faq), Google řekl: "klient SDK a GCM tokeny budou i nadále pracovat neomezeně dlouho. Pokud však nepřenesete migraci do fcm, nebudete moci v aplikaci pro Android cílit na nejnovější verzi služeb Google Play."
 
-Pokud vaše aplikace používá knihovnu GCM, pokračujte podle pokynů Google a upgradujte na knihovnu FCM ve vaší aplikaci. Naše sada SDK je kompatibilní s nástrojem, takže nebudete muset aktualizovat cokoli ve vaší aplikaci na naší straně (Pokud jste v naší verzi sady SDK aktuální).
+Pokud vaše aplikace používá knihovnu GCM, pokračujte a podle pokynů Google upgradujte na knihovnu FCM ve vaší aplikaci. Naše sada SDK je kompatibilní s jedním z nich, takže nebudete muset nic aktualizovat ve své aplikaci na naší straně (pokud jste aktuální s naší verzí SDK).
 
 ## <a name="questions-and-answers"></a>Otázky a odpovědi
 
-Tady jsou některé odpovědi na běžné otázky, které od zákazníků slyšeli:
+Zde je několik odpovědí na běžné otázky, které jsme slyšeli od zákazníků:
 
-**Otázka:** Co je potřeba k tomu, aby byly kompatibilní s datem přerušení (aktuální datum přerušení Google je možné vysílání 29. a může se změnit)?
+**Otázka:** Co musím udělat, aby byly kompatibilní do data přerušení (Google aktuální datum přerušení je 29.května a může změnit)?
 
-**Odpověď:** Žádným. Budeme udržovat kompatibilitu s existujícím schématem oznámení GCM. Váš GCM klíč bude i nadále fungovat jako normální, stejně jako všechny GCM sady SDK a knihovny, které vaše aplikace používá.
+**A:** Nic. Budeme udržovat kompatibilitu se stávajícím schématem oznámení GCM. Váš klíč GCM bude nadále fungovat stejně normálně jako všechny sady GCM SDK a knihovny používané vaší aplikací.
 
-Pokud se rozhodnete upgradovat na sady SDK a knihovny FCM, abyste mohli využívat nové funkce, bude váš GCM klíč pořád fungovat. Pokud chcete, můžete použít FCM klíč, ale při vytváření nového projektu Firebase se ujistěte, že přidáváte Firebase k vašemu stávajícímu projektu GCM. Tím zajistíte zpětnou kompatibilitu se zákazníky, kteří používají starší verze aplikace, která stále používá GCM SDK a knihovny.
+Pokud se rozhodnete upgradovat na sady FCM SDK a knihovny, abyste využili výhod nových funkcí, bude klíč GCM stále fungovat. Pokud chcete, můžete přepnout na použití klávesy FCM, ale ujistěte se, že přidáváte Firebase do vašeho stávajícího projektu GCM při vytváření nového projektu Firebase. To zaručí zpětnou kompatibilitu se zákazníky, kteří používají starší verze aplikace, které stále používají sady GCM SDK a knihovny.
 
-Pokud vytváříte nový projekt FCM a nepřipojujete se k existujícímu projektu GCM, po aktualizaci Notification Hubs s novým tajným klíčem FCM přijdete o možnost nabízených oznámení do vašich současných instalací aplikací, protože nový klíč FCM nemá odkaz na starý GCM. projektem.
+Pokud vytváříte nový projekt FCM a nepřipojujete se ke stávajícímu projektu GCM, po aktualizaci center oznámení s novým tajným klíčem FCM ztratíte možnost nabízení oznámení na aktuální instalace aplikací, protože nový klíč FCM nemá žádný odkaz na starý GCM Projektu.
 
-**Otázka:** Proč se mi tento e-mail zobrazuje I pro staré koncové body GCM? Co musím udělat?
+**Otázka:** Proč dostávám tento e-mail o starých koncových bodech GCM, které se používají? Co mám dělat?
 
-**Odpověď:** Žádným. Migrujeme se na nové koncové body a brzo se dokončí, takže není potřeba žádná změna. Nic neruší, náš jeden zmeškaný koncový bod jednoduše vyvolal varovné zprávy z Google.
+**A:** Nic. Přešli jsme na nové koncové body a brzy budeme dokončeni, takže není nutná žádná změna. Nic není rozbité, náš jeden zmeškaný koncový bod jednoduše způsobil varovné zprávy od společnosti Google.
 
-**Otázka:** Jak můžu přejít na nové sady SDK a knihovny FCM bez přerušení stávajících uživatelů?
+**Otázka:** Jak lze přejít na nové sady FCM SDK a knihovny bez porušení stávajících uživatelů?
 
-Odpověď: Upgrade kdykoli. Společnost Google zatím neoznámila žádné vyřazení stávajících GCM sad SDK a knihoven. Abyste se ujistili, že jste nepřerušili nabízená oznámení vašim stávajícím uživatelům, ujistěte se, že jste vytvořili nový projekt Firebase, který přidružíte ke stávajícímu projektu GCM. Tím zajistíte, že budou nové tajné kódy Firebase fungovat pro uživatele, kteří používají starší verze vaší aplikace pomocí sad SDK a knihoven GCM, stejně jako noví uživatelé vaší aplikace pomocí sad SDK a knihoven FCM.
+A: Upgrade kdykoliv. Společnost Google dosud neoznámila žádné vyřazení stávajících sad GCM SDK a knihoven. Abyste nepřerušili nabízená oznámení stávajícím uživatelům, ujistěte se, že při vytváření nového projektu Firebase, který se přizpůsobujete stávajícímu projektu GCM, se přizpůsobujete. Tím zajistíte, že nové tajné kódy Firebase budou fungovat pro uživatele, kteří scházejí starší verze vaší aplikace s sadami GCM SDK a knihovnami, stejně jako pro nové uživatele vaší aplikace pomocí sad FCM SDK a knihoven.
 
-**Otázka:** Kdy můžu použít nové funkce FCM a schémata pro moje oznámení?
+**Otázka:** Kdy mohu pro svá oznámení používat nové funkce a schémata FCM?
 
-**Odpověď:** Po publikování aktualizace našich rozhraní API a sad SDK si můžete zůstat vyladěné – očekáváme, že v nadcházejících měsících budeme mít něco za vás.
+**A:** Jakmile zveřejníme aktualizaci našeho rozhraní API a sad SDK, zůstaňte naladěni – očekáváme, že pro vás budeme mít v nadcházejících měsících něco.

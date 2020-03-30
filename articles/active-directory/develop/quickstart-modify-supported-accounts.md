@@ -1,5 +1,5 @@
 ---
-title: Upravit Microsoft Identifikujte účty aplikací platformy | Azure
+title: Změna microsoftu identifikovat účty aplikací platformy | Azure
 description: Konfigurací aplikace zaregistrované na platformě Microsoft Identity Platform můžete změnit, kdo (jaké účty) může k aplikaci přistupovat.
 services: active-directory
 author: rwike77
@@ -12,20 +12,20 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 56771658380e0a5b946c3acc70df98a262561b5c
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 94fed6f4aa62c7e649cf7d644e571b30561e0da4
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160685"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80050246"
 ---
-# <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Rychlý Start: Změna účtů podporovaných aplikací
+# <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Úvodní příručka: Úprava účtů podporovaných aplikací
 
 Při registraci aplikace na platformě Microsoft Identity Platform možná budete chtít svou aplikaci zpřístupnit pouze uživatelům ve vaší organizaci. Alternativně můžete chtít aplikaci zpřístupnit také uživatelům v externích organizacích nebo uživatelům v externích organizacích i uživatelům, kteří nutně nejsou součástí žádné organizace (osobní účty).
 
 V tomto rychlém startu se dozvíte, jak úpravou konfigurace vaší aplikace změnit, kdo (jaké účty) může k aplikaci přistupovat.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, musíte splnit následující požadavky:
 
@@ -39,7 +39,7 @@ Než budete moct nakonfigurovat aplikaci, postupujte podle těchto kroků:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
-1. V levém navigačním podokně vyberte službu **Azure Active Directory** a pak vyberte **Registrace aplikací**.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** a pak vyberte Registrace **aplikací**.
 1. Vyhledejte a vyberte aplikaci, kterou chcete nakonfigurovat. Jakmile vyberete aplikaci, zobrazí se stránka **Přehled** neboli hlavní stránka registrace dané aplikace.
 1. Postupujte podle pokynů a [změňte registraci aplikace tak, aby podporovala různé účty](#change-the-application-registration-to-support-different-accounts).
 1. Pokud máte jednostránkovou aplikaci, [povolte implicitní udělení OAuth 2.0](#enable-oauth-20-implicit-grant-for-single-page-applications).
@@ -49,7 +49,7 @@ Než budete moct nakonfigurovat aplikaci, postupujte podle těchto kroků:
 Pokud píšete aplikaci, kterou chcete zpřístupnit zákazníkům nebo partnerům mimo organizaci, musíte na webu Azure Portal aktualizovat definici aplikace.
 
 > [!IMPORTANT]
-> Azure AD vyžaduje, aby identifikátor URI ID aplikací s více tenanty byl globálně jedinečný. Identifikátor URI ID aplikace je jedním ze způsobů, kterými se může aplikace ve zprávách protokolu identifikovat. U aplikace s jedním tenantem stačí, když bude identifikátor URI ID aplikace jedinečný v rámci daného tenanta. U aplikace s více tenanty musí být globálně jedinečný, aby služba Azure AD aplikaci našla mezi všemi tenanty. Globální jedinečnost se vynucuje požadavkem, aby Identifikátor URI ID aplikace obsahoval název hostitele, který odpovídá ověřené doméně tenanta Azure AD. Když je například název tenanta contoso.onmicrosoft.com, pak by platným identifikátorem URI ID aplikace byl https://contoso.onmicrosoft.com/myapp. Pokud má tenant ověřenou doménu contoso.com, pak by platným identifikátorem URI ID aplikace byl i https://contoso.com/myapp. Pokud identifikátor URI ID aplikace nepoužívá tento vzor, nastavení aplikace jako aplikace s více tenanty se nezdaří.
+> Azure AD vyžaduje, aby identifikátor URI ID aplikací s více tenanty byl globálně jedinečný. Identifikátor URI ID aplikace je jedním ze způsobů, kterými se může aplikace ve zprávách protokolu identifikovat. U aplikace s jedním tenantem stačí, když bude identifikátor URI ID aplikace jedinečný v rámci daného tenanta. U aplikace s více tenanty musí být globálně jedinečný, aby služba Azure AD aplikaci našla mezi všemi tenanty. Globální jedinečnost se vynucuje požadavkem, aby Identifikátor URI ID aplikace obsahoval název hostitele, který odpovídá ověřené doméně tenanta Azure AD. Když je například název tenanta contoso.onmicrosoft.com, pak by platným identifikátorem URI ID aplikace byl `https://contoso.onmicrosoft.com/myapp`. Pokud má tenant ověřenou doménu contoso.com, pak by platným identifikátorem URI ID aplikace byl i `https://contoso.com/myapp`. Pokud identifikátor URI ID aplikace nepoužívá tento vzor, nastavení aplikace jako aplikace s více tenanty se nezdaří.
 
 ### <a name="to-change-who-can-access-your-application"></a>Změna toho, kdo má přístup k aplikaci
 
@@ -57,7 +57,7 @@ Pokud píšete aplikaci, kterou chcete zpřístupnit zákazníkům nebo partner�
     * Pokud vytváříte obchodní aplikaci, vyberte **Účty jen v tomto adresáři**. Tato možnost není dostupná, pokud aplikace není zaregistrovaná v adresáři.
     * Pokud chcete cílit na všechny zákazníky z řad firem a vzdělávacích institucí, vyberte **Účty v libovolném organizačním adresáři**.
     * Pokud chcete cílit na co nejširší okruh zákazníků, vyberte **Účty v libovolném organizačním adresáři a osobní účty Microsoft**.
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
 ## <a name="enable-oauth-20-implicit-grant-for-single-page-applications"></a>Povolení implicitního udělení OAuth 2.0 u jednostránkových aplikací
 
@@ -72,7 +72,7 @@ Ve výchozím nastavení je implicitní udělení OAuth 2.0 u aplikací zakázan
 1. Na stránce **Přehled** aplikace vyberte část **Ověřování**.
 1. V části **Upřesnit nastavení** vyhledejte část **Implicitní udělení**.
 1. Vyberte **Tokeny ID**, **Přístupové tokeny** nebo obojí.
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky
 

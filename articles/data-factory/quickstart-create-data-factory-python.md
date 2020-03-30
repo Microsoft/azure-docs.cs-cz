@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: vytvoření Azure Data Factory pomocí Pythonu'
+title: 'Úvodní příručka: Vytvoření Azure Data Factory pomocí Pythonu'
 description: Vytvořte datovou továrnu Azure ke zkopírování dat z jednoho umístění v úložišti objektů blob v Azure do jiného.
 services: data-factory
 documentationcenter: ''
@@ -14,35 +14,35 @@ ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019
 ms.openlocfilehash: 3b8edd249b19a61f8c80eb5b8c9df25754d4f070
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78399515"
 ---
-# <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Rychlý Start: vytvoření datové továrny a kanálu pomocí Pythonu
+# <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Úvodní příručka: Vytvoření datové továrny a kanálu pomocí Pythonu
 
-> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 > * [Verze 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuální verze](quickstart-create-data-factory-python.md)
 
-V tomto rychlém startu vytvoříte datovou továrnu pomocí Pythonu. Kanál v této datové továrně kopíruje data z jedné složky do jiné složky v úložišti objektů BLOB v Azure.
+V tomto rychlém startu vytvoříte továrnu dat pomocí Pythonu. Kanál v této datové továrně kopíruje data z jedné složky do jiné složky v úložišti objektů Blob Azure.
 
-Azure Data Factory je cloudová služba pro integraci dat, která umožňuje vytvářet pracovní postupy založené na datech pro orchestraci a automatizaci přesunu dat a transformace dat. Pomocí Azure Data Factory můžete vytvářet a plánovat pracovní postupy řízené daty, které se nazývají kanály.
+Azure Data Factory je cloudová služba pro integraci dat, která umožňuje vytvářet pracovní postupy řízené daty pro orchestraci a automatizaci přesunu dat a transformace dat. Pomocí Azure Data Factory můžete vytvářet a plánovat pracovní postupy řízené daty, nazývané kanály.
 
-Kanály mohou ingestovat data z různorodých úložišť dat. Kanály zpracovávají nebo transformují data pomocí výpočetních služeb, jako jsou Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics a Azure Machine Learning. Kanály publikují výstupní data do úložišť dat, jako jsou Azure SQL Data Warehouse pro aplikace business intelligence (BI).
+Kanály mohou ingestovat data z různorodých úložišť dat. Kanály zpracovávají nebo transformují data pomocí výpočetních služeb, jako jsou Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics a Azure Machine Learning. Kanály publikují výstupní data do úložišť dat, jako jsou aplikace Azure SQL Data Warehouse pro business intelligence (BI).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-* [Python 3.4 +](https://www.python.org/downloads/).
+* [Python 3.4+](https://www.python.org/downloads/).
 
-* [Účet Azure Storage](../storage/common/storage-account-create.md).
+* [Účet azure úložiště](../storage/common/storage-account-create.md).
 
-* [Průzkumník služby Azure Storage](https://storageexplorer.com/) (volitelné).
+* [Azure Storage Explorer](https://storageexplorer.com/) (volitelné).
 
-* [Aplikace v Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Poznamenejte si následující hodnoty, které chcete použít v pozdějších krocích: **ID aplikace**, **ověřovací klíč**a **ID tenanta**. Podle pokynů ve stejném článku přiřaďte aplikaci roli **Přispěvatel** .
+* [Aplikace ve službě Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Poznamenejte si následující hodnoty, které se mají použít v pozdějších krocích: **ID aplikace**, **ověřovací klíč**a **ID klienta**. Přiřaďte aplikaci roli **přispěvatele** podle pokynů ve stejném článku.
 
 ## <a name="create-and-upload-an-input-file"></a>Vytvoření a nahrání vstupního souboru
 
@@ -68,7 +68,7 @@ Kanály mohou ingestovat data z různorodých úložišť dat. Kanály zpracová
     pip install azure-mgmt-datafactory
     ```
 
-    [Sada Python SDK pro Data Factory](https://github.com/Azure/azure-sdk-for-python) podporuje Python 2,7, 3,3, 3,4, 3,5, 3,6 a 3,7.
+    [Sada Python SDK pro datovou továrnu](https://github.com/Azure/azure-sdk-for-python) podporuje Python 2.7, 3.3, 3.4, 3.5, 3.6 a 3.7.
 
 ## <a name="create-a-data-factory-client"></a>Vytvoření klienta datové továrny
 
@@ -114,7 +114,7 @@ Kanály mohou ingestovat data z různorodých úložišť dat. Kanály zpracová
         else:
             print("\tErrors: {}".format(activity_run.error['message']))
     ```
-3. Do metody **Main** přidejte následující kód, který vytvoří instanci třídy DataFactoryManagementClient. Tento objekt použijete k vytvoření datové továrny, propojené služby, datových sad a kanálu. Použijete ho také k monitorování podrobných informací o spuštění kanálu. Proměnnou **subscription_id** nastavte na ID vašeho předplatného Azure. Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:** [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+3. Do metody **Main** přidejte následující kód, který vytvoří instanci třídy DataFactoryManagementClient. Tento objekt použijete k vytvoření datové továrny, propojené služby, datových sad a kanálu. Použijete ho také k monitorování podrobných informací o spuštění kanálu. Proměnnou **subscription_id** nastavte na ID vašeho předplatného Azure. Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:**[Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 
     ```python
     def main():
@@ -180,7 +180,7 @@ V této části vytvoříte dvě datové sady, jednu pro zdroj a druhou pro jím
 
 Do metody Main přidejte následující kód, který vytvoří datovou sadu objektů blob Azure. Informace o vlastnostech datové sady objektů blob Azure najdete v článku [Konektor Azure Blob](connector-azure-blob-storage.md#dataset-properties).
 
-Definujete datovou sadu, která představuje zdroj dat ve službě Azure Blob. Tato datová sada objektů blob odkazuje na propojenou službu Azure Storage, kterou jste vytvořili v předchozím kroku.
+Nadefinujete datovou sadu, která představuje zdrojová data v objektu blob Azure. Tato datová sada objektů blob odkazuje na propojenou službu Azure Storage, kterou jste vytvořili v předchozím kroku.
 
 ```python
     # Create an Azure blob dataset (input)
@@ -193,11 +193,11 @@ Definujete datovou sadu, která představuje zdroj dat ve službě Azure Blob. T
     print_item(ds)
 ```
 
-### <a name="create-a-dataset-for-sink-azure-blob"></a>Vytvoření datové sady pro objekt blob Azure jímky
+### <a name="create-a-dataset-for-sink-azure-blob"></a>Vytvoření datové sady pro Azure Blob jímky
 
 Do metody Main přidejte následující kód, který vytvoří datovou sadu objektů blob Azure. Informace o vlastnostech datové sady objektů blob Azure najdete v článku [Konektor Azure Blob](connector-azure-blob-storage.md#dataset-properties).
 
-Definujete datovou sadu, která představuje zdroj dat ve službě Azure Blob. Tato datová sada objektů blob odkazuje na propojenou službu Azure Storage, kterou jste vytvořili v předchozím kroku.
+Nadefinujete datovou sadu, která představuje zdrojová data v objektu blob Azure. Tato datová sada objektů blob odkazuje na propojenou službu Azure Storage, kterou jste vytvořili v předchozím kroku.
 
 ```python
     # Create an Azure blob dataset (output)
@@ -415,9 +415,9 @@ main()
 
 Sestavte a spusťte aplikaci a potom ověřte spuštění kanálu.
 
-Konzola vytiskne průběh vytváření datové továrny, propojených služeb, datových sad, kanálu a spuštění kanálu. Počkejte, dokud aktivita kopírování nezobrazí údaje o velikosti načtených/zapsaných dat. Potom použijte nástroj, jako je [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/), a zkontrolujte, že se objekty blob zkopírovaly z inputBlobPath do outputBlobPath, jak jste zadali v proměnných.
+Konzola vytiskne průběh vytváření datové továrny, propojených služeb, datových sad, kanálu a spuštění kanálu. Počkejte, dokud aktivita kopírování nezobrazí údaje o velikosti načtených/zapsaných dat. Potom použijte nástroje, jako je [průzkumník Azure Storage](https://azure.microsoft.com/features/storage-explorer/) ke kontrole objektu blob (y) je zkopírován do "outputBlobPath" z "inputBlobPath", jak jste zadali v proměnných.
 
-Tady je ukázkový výstup:
+Zde je ukázkový výstup:
 
 ```json
 Name: <data factory name>
@@ -459,4 +459,4 @@ adf_client.factories.delete(rg_name, df_name)
 
 ## <a name="next-steps"></a>Další kroky
 
-Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob v Azure. Projděte si [kurzy](tutorial-copy-data-dot-net.md), kde se dozvíte o použití služby Data Factory ve více scénářích.
+Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob Azure. Projděte si [kurzy](tutorial-copy-data-dot-net.md), kde se dozvíte o použití služby Data Factory ve více scénářích.

@@ -1,80 +1,80 @@
 ---
-title: Monitorování a ladění pomocí metrik v Azure Cosmos DB
+title: Monitorování a ladění metrik v Azure Cosmos DB
 description: Pomocí metrik v Azure Cosmos DB můžete ladit běžné problémy a monitorovat databázi.
-ms.service: cosmos-db
 author: kanshiG
-ms.author: sngun
+ms.author: govindk
+ms.reviewer: sngun
+ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.reviewer: sngun
-ms.openlocfilehash: ef457fe8c21bc7e62f910a78913069df32bea1a3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: b65bc6097d4841c79a68d4313ac7a3f89f6d1dbb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79246458"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065936"
 ---
-# <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Monitorování a ladění pomocí metrik v Azure Cosmos DB
+# <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Monitorování a ladění metrik v Azure Cosmos DB
 
-Azure Cosmos DB poskytuje metriky pro propustnost, úložiště, konzistenci, dostupnost a latenci. Azure Portal nabízí agregované zobrazení těchto metrik. Metriky služby Azure Cosmos DB můžete zobrazit také s využitím rozhraní API služby Azure Monitor. Další informace o tom, jak zobrazit metriky z Azure monitoru, najdete v článku o [získání metrik z Azure monitor](cosmos-db-azure-monitor-metrics.md) . 
+Azure Cosmos DB poskytuje metriky pro propustnost, úložiště, konzistenci, dostupnost a latenci. Azure Portal nabízí agregované zobrazení těchto metrik. Metriky služby Azure Cosmos DB můžete zobrazit také s využitím rozhraní API služby Azure Monitor. Další informace o tom, jak zobrazit metriky z Azure Monitor, najdete v článku [Získat metriky z Azure Monitoru.](cosmos-db-azure-monitor-metrics.md) 
 
-Tento článek vás provede běžnými případy použití a Azure Cosmos DB metriky, které je možné použít k analýze a ladění těchto problémů. Metriky se shromažďují každých pět minut a uchovávají se po dobu sedmi dní.
+Tento článek vás provede běžnými případy použití a tím, jak lze metriky Azure Cosmos DB použít k analýze a ladění těchto problémů. Metriky jsou shromažďovány každých pět minut a jsou uchovávány po dobu sedmi dnů.
 
-## <a name="view-metrics-from-azure-portal"></a>Zobrazit metriky z Azure Portal
+## <a name="view-metrics-from-azure-portal"></a>Zobrazení metrik z webu Azure Portal
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
-1. Otevřete podokno **metriky** . Ve výchozím nastavení zobrazuje podokno metriky metriky úložiště, index, počet jednotek žádostí pro všechny databáze v účtu Azure Cosmos. Tyto metriky můžete filtrovat podle databáze, kontejneru nebo oblasti. Metriky můžete filtrovat také v konkrétní časové členitosti. Další podrobnosti o propustnosti, úložišti, dostupnosti, latenci a metrikě konzistence jsou k dispozici na jednotlivých kartách. 
+1. Otevřete podokno **Metriky.** Ve výchozím nastavení se v podokně metrik zobrazují metriky úložiště, index, jednotky požadavků pro všechny databáze ve vašem účtu Azure Cosmos. Tyto metriky můžete filtrovat podle databáze, kontejneru nebo oblasti. Metriky můžete také filtrovat v určitém čase rozlišovací schopnost. Další podrobnosti o propustnosti, úložiště, dostupnosti, latenci a konzistenci metriky jsou k dispozici na samostatných kartách. 
 
-   ![Cosmos DB metriky výkonu v Azure Portal](./media/use-metrics/performance-metrics.png)
+   ![Metriky výkonu Cosmos DB na webu Azure Portal](./media/use-metrics/performance-metrics.png)
 
-V podokně **metriky** jsou k dispozici následující metriky: 
+V podokně Metriky jsou k dispozici následující **metriky:** 
 
-* **Metriky propustnosti** – Tato metrika zobrazuje počet použitých nebo neúspěšných požadavků (kód odpovědi 429), protože byla překročena propustnost nebo kapacita úložiště zřízená pro kontejner.
+* **Metriky propustnosti** – tato metrika zobrazuje počet požadavků spotřebovaných nebo neúspěšných (429 kód odpovědi), protože byla překročena propustnost nebo kapacita úložiště zřízená pro kontejner.
 
-* **Metriky úložiště** – Tato metrika zobrazuje velikost dat a využití indexu.
+* **Metriky úložiště** – tato metrika zobrazuje velikost dat a využití indexu.
 
-* **Metriky dostupnosti** – Tato metrika zobrazuje procento úspěšných požadavků v rámci celkových požadavků za hodinu. Míra úspěšnosti je definována Azure Cosmos DB SLA.
+* **Metriky dostupnosti** – tato metrika zobrazuje procento úspěšných požadavků za celkový počet požadavků za hodinu. Úspěšnost je definována sla Služby SLA DB služby Azure Cosmos.
 
-* **Metriky latence** – Tato metrika zobrazuje latenci čtení a zápisu zjištěnou Azure Cosmos DB v oblasti, ve které váš účet pracuje. V geograficky replikovaném účtu můžete vizualizovat latenci napříč oblastmi. Tato metrika nepředstavuje koncovou latenci požadavku.
+* **Metriky latence** – tato metrika zobrazuje latenci čtení a zápisu pozorovanou službou Azure Cosmos DB v oblasti, kde funguje váš účet. Můžete vizualizovat latenci napříč oblastmi pro geograficky replikovaný účet. Tato metrika nepředstavuje latenci požadavků od konce na konec.
 
-* **Metriky konzistence** – Tato metrika ukazuje, jakým způsobem je možné konzistence modelu konzistence zvolit. U účtů s více oblastmi zobrazuje tato metrika také latenci replikace mezi oblastmi, které jste vybrali.
+* **Metriky konzistence** – tato metrika ukazuje, jak je konzistence pro model konzistence, který zvolíte. U účtů s více oblastmi tato metrika také zobrazuje latenci replikace mezi vybranými oblastmi.
 
-* **Metriky systému** – Tato metrika ukazuje, kolik požadavků na metadata jsou obsluhovány hlavním oddílem. Pomůže vám také identifikovat omezené požadavky.
+* **Systémové metriky** – tato metrika ukazuje, kolik požadavků metadat jsou obsluhovány hlavní oddíl. Pomáhá také identifikovat omezené požadavky.
 
-V následujících částech se vysvětlují běžné scénáře, kdy můžete použít Azure Cosmos DB metriky. 
+V následujících částech jsou vysvětleny běžné scénáře, kde můžete použít metriky Azure Cosmos DB. 
 
-## <a name="understand-how-many-requests-are-succeeding-or-causing-errors"></a>Vysvětlení, kolik požadavků je úspěšných nebo způsobujících chyby
+## <a name="understand-how-many-requests-are-succeeding-or-causing-errors"></a>Zjistěte, kolik požadavků je úspěšných nebo způsobujích chyby
 
-Začněte tím, že přejdete na [Azure Portal](https://portal.azure.com) a přejdete na okno **metriky** . V okně vyhledejte * * počet požadavků překročil kapacitu na 1 minutu. Tento graf znázorňuje minuty z celkového počtu minut segmentované na základě stavového kódu. Další informace o stavových kódech HTTP najdete v tématu [stavové kódy HTTP pro Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
+Chcete-li začít, přejděte na [portál Azure](https://portal.azure.com) a přejděte na okno **Metriky.** V okně najděte **Počet požadavků překročil kapacitu za 1 minutový graf. Tento graf zobrazuje celkové požadavky po minutách segmentované stavovým kódem. Další informace o stavových kódech HTTP najdete [v tématu STAVOVÉ KÓDY HTTP pro Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
 
-Nejběžnější stavový kód chyby je 429 (omezení rychlosti/omezování). Tato chyba znamená, že požadavky na Azure Cosmos DB jsou vyšší než zajištěná propustnost. Nejběžnějším řešením tohoto problému je [horizontální navýšení kapacity ru](./set-throughput.md) pro danou kolekci.
+Nejběžnější kód stavu chyby je 429 (omezení rychlosti nebo omezení). Tato chyba znamená, že požadavky na Azure Cosmos DB jsou více než zřízené propustnost. Nejběžnější řešení tohoto problému je [vertikálně navýšit kapacitu ru](./set-throughput.md) pro danou kolekci.
 
 ![Počet požadavků za minutu](media/use-metrics/metrics-12.png)
 
-## <a name="determine-the-throughput-distribution-across-partitions"></a>Určení distribuce propustnosti mezi oddíly
+## <a name="determine-the-throughput-distribution-across-partitions"></a>Určení distribuce propustnostna mezi oddíly
 
-Dobré mohutnosti klíčů oddílů je nezbytné pro libovolnou škálovatelnou aplikaci. Chcete-li určit rozdělení propustnosti děleného kontejneru rozděleného podle oddílů, přejděte do okna **metriky** v [Azure Portal](https://portal.azure.com). Na kartě **propustnost** se rozpis úložiště zobrazuje v poli **maximální spotřebované ru/sekund každého grafu fyzického oddílu** . Následující obrázek znázorňuje příklad špatné distribuce dat, jak znázorňuje zkosený oddíl úplně vlevo.
+S dobrou mohutnost klíče oddílu je nezbytné pro všechny škálovatelné aplikace. Chcete-li určit rozložení propustnost libovolného oddílového kontejneru rozděleného podle oddílů, přejděte k **okně Metriky** na [webu Azure Portal](https://portal.azure.com). Na kartě **Propustnost** se rozdělení úložiště zobrazuje v **maximální spotřebované RU za sekundu podle každého grafu fyzického oddílu.** Následující obrázek znázorňuje příklad špatné distribuce dat, jak ukazuje zkosený oddíl zcela vlevo.
 
-![Jeden oddíl se silným využitím v 3:05. odp.](media/use-metrics/metrics-17.png)
+![Jeden oddíl vidí těžké využití v 15:05](media/use-metrics/metrics-17.png)
 
-Nerovnoměrné rozdělení propustnosti může způsobovat *aktivní* oddíly, což může vést k omezení požadavků a může vyžadovat přerozdělení na oddíly. Další informace o dělení v Azure Cosmos DB najdete v tématu [dělení a škálování v Azure Cosmos DB](./partition-data.md).
+Nerovnoměrné rozložení propustnost může způsobit *horké* oddíly, což může mít za následek omezené požadavky a může vyžadovat přerozdělení. Další informace o dělení v Azure Cosmos DB najdete [v tématu dělení a škálování v Azure Cosmos DB](./partition-data.md).
 
 ## <a name="determine-the-storage-distribution-across-partitions"></a>Určení distribuce úložiště mezi oddíly
 
-Dobré mohutnosti oddílu je nezbytné pro všechny škálovatelné aplikace. Chcete-li určit distribuci úložiště děleného kontejneru rozděleného podle oddílů, přejděte na okno metriky v [Azure Portal](https://portal.azure.com). Na kartě úložiště se rozpis úložiště zobrazuje v grafu data a indexu spotřebovaného v horních klíčích oddílů. Následující obrázek znázorňuje špatnou distribuci úložiště dat, jak znázorňuje šikmý oddíl úplně vlevo.
+S dobrou mohutnost oddílu je nezbytné pro všechny škálovatelné aplikace. Chcete-li zjistit rozložení úložiště libovolného oddílového kontejneru rozděleného podle oddílů, přemisťujte se do okna Metriky na [webu Azure Portal](https://portal.azure.com). Na kartě Úložiště se rozdělení úložiště zobrazí v úložišti Data + Index spotřebovaném grafem klíčů horního oddílu. Následující obrázek znázorňuje špatnou distribuci úložiště dat, jak ukazuje zkosený oddíl zcela vlevo.
 
 ![Příklad špatné distribuce dat](media/use-metrics/metrics-07.png)
 
-Můžete hlavní příčinu, která klíč oddílu zkosí rozdělení, kliknutím na oddíl v grafu.
+Můžete způsobit, který klíč oddílu zkosení distribuce kliknutím na oddíl v grafu.
 
-![Klíč oddílu zkosí distribuci.](media/use-metrics/metrics-05.png)
+![Klíč oddílu zkosení distribuce](media/use-metrics/metrics-05.png)
 
-Po zjištění, který klíč oddílu způsobuje rozdělení v distribuci, bude pravděpodobně nutné znovu rozdělit svůj kontejner na více distribuovaných klíčů oddílu. Další informace o dělení v Azure Cosmos DB najdete v tématu [dělení a škálování v Azure Cosmos DB](./partition-data.md).
+Po určení, který klíč oddílu je příčinou zkosení v distribuci, bude pravděpodobně nutné přerozdělit kontejner s více distribuovaný klíč oddílu. Další informace o dělení v Azure Cosmos DB najdete [v tématu dělení a škálování v Azure Cosmos DB](./partition-data.md).
 
-## <a name="compare-data-size-against-index-size"></a>Porovnat velikost dat s velikostí indexu
+## <a name="compare-data-size-against-index-size"></a>Porovnání velikosti dat s velikostí indexu
 
-V Azure Cosmos DB celkové spotřebované úložiště je kombinací velikosti dat i velikosti indexu. Velikost indexu je obvykle zlomkem velikosti dat. V okně metriky v [Azure Portal](https://portal.azure.com)karta úložiště prezentuje rozdělení spotřeby úložiště na základě dat a indexu.
+V Azure Cosmos DB je celkové spotřebované úložiště kombinací velikosti dat i velikosti indexu. Velikost indexu je obvykle zlomek velikosti dat. V okně Metriky na [webu Azure Portal](https://portal.azure.com)karta Úložiště zobrazuje rozdělení spotřeby úložiště na základě dat a indexu.
 
 ```csharp
 // Measure the document size usage (which includes the index size)  
@@ -82,11 +82,11 @@ ResourceResponse<DocumentCollection> collectionInfo = await client.ReadDocumentC
  Console.WriteLine("Document size quota: {0}, usage: {1}", collectionInfo.DocumentQuota, collectionInfo.DocumentUsage);
 ```
 
-Pokud chcete chránit místo v indexu, můžete upravit [zásady indexování](index-policy.md).
+Chcete-li ušetřit místo v indexu, můžete upravit [zásady indexování](index-policy.md).
 
-## <a name="debug-why-queries-are-running-slow"></a>Ladění, proč jsou dotazy spuštěné pomalu
+## <a name="debug-why-queries-are-running-slow"></a>Ladění, proč dotazy běží pomalu
 
-V sadách SDK SQL API Azure Cosmos DB poskytuje statistiku spouštění dotazů.
+V sadách Sql API SDK poskytuje Azure Cosmos DB statistiky spuštění dotazu.
 
 ```csharp
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -105,12 +105,12 @@ FeedResponse<dynamic> result = await query.ExecuteNextAsync();
 IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 ```
 
-*QueryMetrics* poskytuje podrobné informace o tom, jak dlouho trvalo provádění každé součásti dotazu. Nejběžnější hlavní příčinou dlouhotrvajících dotazů je prohledávání, což znamená, že dotaz nedokázal využít indexy. Tento problém lze vyřešit pomocí lepší podmínky filtru.
+*QueryMetrics* poskytuje podrobnosti o tom, jak dlouho každá součást dotazu trvalo spuštění. Nejběžnější hlavní příčinou pro dlouho běžící dotazy je prohledává, což znamená, že dotaz nebyl schopen využít indexy. Tento problém lze vyřešit s lepší podmínkou filtru.
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste zjistili, jak monitorovat a ladit problémy pomocí metriky, které jsou k dispozici v Azure Portal. Další informace o vylepšení výkonu databáze najdete v následujících článcích:
+Teď jste se naučili, jak sledovat a ladit problémy pomocí metriky uvedené na webu Azure Portal. Další informace o zlepšení výkonu databáze získáte v následujících článcích:
 
-* Další informace o tom, jak zobrazit metriky z Azure monitoru, najdete v článku o [získání metrik z Azure monitor](cosmos-db-azure-monitor-metrics.md) . 
-* [Testování výkonu a škálování pomocí Azure Cosmos DB](performance-testing.md)
-* [Tipy pro zvýšení výkonu pro službu Azure Cosmos DB](performance-tips.md)
+* Další informace o tom, jak zobrazit metriky z Azure Monitor, najdete v článku [Získat metriky z Azure Monitoru.](cosmos-db-azure-monitor-metrics.md) 
+* [Testování výkonu a škálování s Azure Cosmos DB](performance-testing.md)
+* [Tipy pro zvýšení výkonu pro Azure Cosmos DB](performance-tips.md)

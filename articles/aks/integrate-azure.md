@@ -6,32 +6,32 @@ ms.topic: overview
 ms.date: 12/05/2017
 ms.author: zarhoads
 ms.openlocfilehash: 2eddedea7d626a92e21442c81aa49e00491958a1
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78273022"
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Integrace se službami spravovanými Azure s využitím OSBA (Open Service Broker for Azure)
 
-Open Service Broker for Azure (OSBA) společně s modulem [Kubernetes Service Catalog][kubernetes-service-catalog], umožňuje využívat služby spravované Azure v Kubernetes. Tato příručka se soustředí na nasazení modulu Service Catalog, Open Service Broker for Azure (OSBA) a aplikací, které používají služby spravované Azure s využitím Kubernetes.
+Open Service Broker for Azure (OSBA) společně s modulem [Kubernetes Service Catalog][kubernetes-service-catalog] umožňuje využívat služby spravované Azure v Kubernetes. Tato příručka se soustředí na nasazení modulu Service Catalog, Open Service Broker for Azure (OSBA) a aplikací, které používají služby spravované Azure s využitím Kubernetes.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Předplatné Azure
 
-* Azure CLI: [nainstalujte ho místně][azure-cli-install]nebo ho použijte v [Azure Cloud Shell][azure-cloud-shell].
+* Azure CLI: [Nainstalujte ho místně][azure-cli-install] nebo ho použijte ve službě [Azure Cloud Shell][azure-cloud-shell].
 
-* Helm CLI 2.7 +: [nainstalujte ho místně][helm-cli-install]nebo ho použijte v [Azure Cloud Shell][azure-cloud-shell].
+* Helm CLI 2.7+: [Nainstalujte ho místně][helm-cli-install] nebo ho použijte ve službě [Azure Cloud Shell][azure-cloud-shell].
 
 * Oprávnění pro vytvoření instančního objektu s rolí přispěvatele v předplatném Azure
 
-* Existující cluster Azure Kubernetes Service (AKS). Pokud potřebujete cluster AKS, postupujte podle [Vytvoření clusteru AKS][create-aks-cluster] (rychlý start).
+* Existující cluster Azure Kubernetes Service (AKS). Pokud potřebujete cluster AKS, postupujte podle článku [Vytvoření clusteru AKS][create-aks-cluster].
 
 ## <a name="install-service-catalog"></a>Instalace modulu Service Catalog
 
 Prvním krokem je instalace modulu Service Catalog v clusteru Kubernetes s využitím diagramu Helmu.
 
-Cloud Shell v prohlížeči otevřete tak, že přejdete na [https://shell.azure.com](https://shell.azure.com) .
+Přejděte [https://shell.azure.com](https://shell.azure.com) na otevření cloudového prostředí ve vašem prohlížeči.
 
 Upgraduje instalaci Tilleru (server Helmu) ve vašem clusteru pomocí příkazu:
 
@@ -78,7 +78,7 @@ v1beta1.storage.k8s.io               10
 
 Dalším krokem je instalace zprostředkovatele [Open Service Broker for Azure][open-service-broker-azure], která zahrnuje katalog pro služby spravované Azure. Příkladem dostupných služeb Azure jsou Azure Database for PostgreSQL, Azure Database for MySQL a Azure SQL Database.
 
-Začněte přidáním otevřené Service Broker pro úložiště Azure Helm:
+Začněte přidáním zprostředkovatele Open Service Broker for Azure do úložiště Helmu:
 
 ```console
 helm repo add azure https://kubernetescharts.blob.core.windows.net/azure

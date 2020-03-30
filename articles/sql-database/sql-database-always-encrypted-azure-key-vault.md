@@ -1,7 +1,7 @@
 ---
-title: Always Encrypted – Azure Key Vault
-description: V tomto článku se dozvíte, jak zabezpečit citlivá data v databázi SQL pomocí šifrování dat pomocí Průvodce Always Encrypted v SQL Server Management Studio.
-keywords: šifrování dat, šifrovací klíč, cloudové šifrování
+title: Vždy šifrované – trezor klíčů Azure
+description: Tento článek ukazuje, jak zabezpečit citlivá data v databázi SQL s šifrováním dat pomocí Průvodce vždy šifrované v SQL Server Management Studio.
+keywords: šifrování dat, šifrovací klíč, šifrování v cloudu
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,55 +12,55 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 22324f59f766e8cd7fd8776acea72e3a56a8519f
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 006c780aeb3db813c8fdfb5da0b5c13fc4dcfebc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74421691"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067420"
 ---
-# <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: Ochrana citlivých dat a ukládání šifrovacích klíčů v Azure Key Vault
+# <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Vždy šifrované: Ochrana citlivých dat a ukládání šifrovacích klíčů v trezoru klíčů Azure
 
-V tomto článku se dozvíte, jak zabezpečit citlivá data v databázi SQL pomocí šifrování dat pomocí [průvodce Always Encrypted](https://msdn.microsoft.com/library/mt459280.aspx) v [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx). Obsahuje také pokyny, které vám ukážou, jak uložit jednotlivé šifrovací klíče do Azure Key Vault.
+Tento článek ukazuje, jak zabezpečit citlivá data v databázi SQL s šifrováním dat pomocí [Průvodce vždy šifrované](https://msdn.microsoft.com/library/mt459280.aspx) v [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx). Obsahuje také pokyny, které vám ukáže, jak uložit každý šifrovací klíč v azure key vault.
 
-Always Encrypted je nová technologie šifrování dat v Azure SQL Database a SQL Server, která pomáhá chránit citlivá data umístěná na serveru, během pohybu mezi klientem a serverem a i když se data používají. Always Encrypted zajistí, aby se citlivá data v rámci databázového systému nikdy nezobrazovala jako prostý text. Po nakonfigurování šifrování dat budou mít přístup k datům ve formátu prostého textu jenom klientské aplikace nebo aplikační servery, které mají přístup ke klíčům. Podrobné informace najdete v tématu [Always Encrypted (databázový stroj)](https://msdn.microsoft.com/library/mt163865.aspx).
+Vždy šifrovaná je nová technologie šifrování dat v Azure SQL Database a SQL Server, která pomáhá chránit citlivá data v klidovém stavu na serveru, během pohybu mezi klientem a serverem a při použití dat. Vždy šifrované zajišťuje, že citlivá data se nikdy nezobrazí jako prostý text uvnitř databázového systému. Po konfiguraci šifrování dat mají k datům ve formátu prostého textu přístup pouze klientské aplikace nebo aplikační servery, které mají přístup ke klíčům. Podrobné informace naleznete v tématu [Vždy šifrované (Database Engine)](https://msdn.microsoft.com/library/mt163865.aspx).
 
-Po nakonfigurování databáze pro použití Always Encrypted vytvoříte klientskou aplikaci v C# nástroji se sadou Visual Studio, která bude fungovat s šifrovanými daty.
+Po konfiguraci databáze pro použití vždy šifrované, vytvoříte klientskou aplikaci v jazyce C# s Visual Studio pro práci s šifrovaná data.
 
-Postupujte podle kroků v tomto článku a Naučte se, jak nastavit Always Encrypted pro databázi SQL Azure. V tomto článku se dozvíte, jak provádět následující úlohy:
+Postupujte podle kroků v tomto článku a zjistěte, jak nastavit vždy šifrované pro databázi Azure SQL. V tomto článku se dozvíte, jak provádět následující úkoly:
 
-- Pomocí Průvodce Always Encrypted v SSMS můžete vytvořit [Always Encrypted klíče](https://msdn.microsoft.com/library/mt163865.aspx#Anchor_3).
-  - Vytvoří [hlavní klíč sloupce (CMK)](https://msdn.microsoft.com/library/mt146393.aspx).
-  - Vytvoří [šifrovací klíč sloupce (cek)](https://msdn.microsoft.com/library/mt146372.aspx).
-- Vytvořte databázovou tabulku a Zašifrujte sloupce.
-- Vytvořte aplikaci, která vloží, vybere a zobrazí data ze zašifrovaných sloupců.
+- Pomocí Průvodce vždy šifrovanými v ssms vytvořte [vždy šifrované klíče](https://msdn.microsoft.com/library/mt163865.aspx#Anchor_3).
+  - Vytvořte [hlavní klíč sloupce (CMK)](https://msdn.microsoft.com/library/mt146393.aspx).
+  - Vytvořte [sloupcový šifrovací klíč (CEK).](https://msdn.microsoft.com/library/mt146372.aspx)
+- Vytvořte databázovou tabulku a šifrujte sloupce.
+- Vytvořte aplikaci, která vloží, vybere a zobrazí data ze šifrovaných sloupců.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro tento kurz budete potřebovat:
+Pro účely tohoto kurzu budete potřebovat:
 
-- Účet a předplatné Azure. Pokud ho ještě nemáte, zaregistrujte si [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+- Účet a předplatné Azure. Pokud ji nemáte, zaregistrujte si [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 - [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) verze 13.0.700.242 nebo novější.
-- [.NET Framework 4,6](https://msdn.microsoft.com/library/w0x726c2.aspx) nebo novější (na klientském počítači).
-- Sadu [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
+- [Rozhraní .NET Framework 4.6](https://msdn.microsoft.com/library/w0x726c2.aspx) nebo novější (v klientském počítači).
+- [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
 - [Azure PowerShell](/powershell/azure/overview) nebo [Azure CLI](/cli/azure/install-azure-cli)
 
-## <a name="enable-your-client-application-to-access-the-sql-database-service"></a>Povolit klientské aplikaci přístup ke službě SQL Database
+## <a name="enable-your-client-application-to-access-the-sql-database-service"></a>Povolení přístupu klientské aplikace ke službě SQL Database
 
-Musíte povolit klientské aplikaci pro přístup ke službě SQL Database tím, že nastavíte aplikaci Azure Active Directory (AAD) a zkopírujete ID a *klíč* *aplikace* , které budete potřebovat k ověření vaší aplikace.
+Je nutné povolit klientské aplikace pro přístup ke službě SQL Database nastavením aplikace Azure Active Directory (AAD) a zkopírováním *ID aplikace* a *klíče,* který budete potřebovat k ověření aplikace.
 
-Chcete-li získat ID a *klíč* *aplikace* , postupujte podle kroků v části [Vytvoření Azure Active Directory aplikace a instančního objektu, který má přístup k prostředkům](../active-directory/develop/howto-create-service-principal-portal.md).
+Pokud chcete získat *ID a* *klíč*aplikace , postupujte podle pokynů při [vytváření aplikace azure active directory a instancí služby, které mají přístup k prostředkům](../active-directory/develop/howto-create-service-principal-portal.md).
 
-## <a name="create-a-key-vault-to-store-your-keys"></a>Vytvoření trezoru klíčů pro ukládání klíčů
+## <a name="create-a-key-vault-to-store-your-keys"></a>Vytvoření trezoru klíčů pro uložení klíčů
 
-Teď, když je nakonfigurovaná klientská aplikace a máte ID aplikace, je čas vytvořit Trezor klíčů a nakonfigurovat zásady přístupu, abyste vy a vaše aplikace mohli získat přístup k tajným tajným klíčům trezoru (Always Encrypted klíče). Pro vytvoření nového hlavního klíče sloupce a pro nastavení šifrování pomocí SQL Server Management Studio jsou nutná oprávnění *vytvořit*, *získat*, *Zobrazit*, *podepsat*, *ověřit*, *wrapKey*a *unwrapKey* .
+Teď, když je vaše klientská aplikace nakonfigurovaná a máte ID aplikace, je čas vytvořit trezor klíčů a nakonfigurovat jeho zásady přístupu, abyste vy i vaše aplikace měli přístup k tajným kódům trezoru (vždy šifrované klíče). Oprávnění *vytvořit*, *získat*, *seznam*, *podepsat*, *ověřit*, *wrapKey*a *rozbalitklíč* jsou vyžadována pro vytvoření nového hlavního klíče sloupce a pro nastavení šifrování pomocí aplikace SQL Server Management Studio.
 
-Trezor klíčů můžete rychle vytvořit spuštěním následujícího skriptu. Podrobné vysvětlení těchto příkazů a další informace o vytváření a konfiguraci trezoru klíčů najdete v tématu [co je Azure Key Vault?](../key-vault/key-vault-overview.md).
+Trezor klíčů můžete rychle vytvořit spuštěním následujícího skriptu. Podrobné vysvětlení těchto příkazů a další informace o vytváření a konfiguraci trezoru klíčů naleznete v tématu [Co je Azure Key Vault?](../key-vault/key-vault-overview.md).
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
-> Modul Azure Resource Manager PowerShellu (RM) je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou k dispozici pro modul AZ. SQL. V modulu AzureRM bude i nadále docházet k opravám chyb až do prosince 2020.  Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické. Další informace o kompatibilitě najdete v tématu [představení nového Azure PowerShell AZ Module](/powershell/azure/new-azureps-module-az).
+> Modul Správce prostředků Azure (RM) prostředí PowerShell je stále podporovaný službou Azure SQL Database, ale veškerý budoucí vývoj je pro modul Az.Sql. Modul AzureRM bude nadále dostávat opravy chyb nejméně do prosince 2020.  Argumenty pro příkazy v modulu Az a v modulech AzureRm jsou v podstatě identické. Další informace o jejich kompatibilitě [najdete v tématu Představení nového modulu Azure PowerShell Az](/powershell/azure/new-azureps-module-az).
 
 ```powershell
 $subscriptionName = '<subscriptionName>'
@@ -81,9 +81,9 @@ Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGro
 Set-AzKeyVaultAccessPolicy  -VaultName $vaultName  -ResourceGroupName $resourceGroupName -ServicePrincipalName $applicationId -PermissionsToKeys get,wrapKey,unwrapKey,sign,verify,list
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```powershell
+```azurecli
 $subscriptionName = '<subscriptionName>'
 $userPrincipalName = '<username@domain.com>'
 $applicationId = '<applicationId from AAD application>'
@@ -106,38 +106,38 @@ az keyvault set-policy --name $vaultName --key-permissions get, list, sign, unwr
 
 ## <a name="create-a-blank-sql-database"></a>Vytvoření prázdné databáze SQL
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
-2. Přejít na **vytvoření prostředku** > **databáze** > **SQL Database**.
-3. Vytvořte **prázdnou** databázi s názvem **Clinic** na novém nebo existujícím serveru. Podrobné pokyny o tom, jak vytvořit databázi v Azure Portal, najdete v [první databázi SQL Azure](sql-database-single-database-get-started.md).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+2. Přejděte na vytvoření**databáze databází** >  **prostředků** > **SQL Database**.
+3. Vytvořte **prázdnou** databázi s názvem **Klinika** na novém nebo existujícím serveru. Podrobné pokyny k vytvoření databáze na webu Azure Portal najdete v [tématu Vaše první databáze Azure SQL](sql-database-single-database-get-started.md).
 
     ![Vytvoření prázdné databáze](./media/sql-database-always-encrypted-azure-key-vault/create-database.png)
 
-Připojovací řetězec budete potřebovat později v tomto kurzu, takže po vytvoření databáze přejděte do nové aplikace Clinic Database a zkopírujte připojovací řetězec. Připojovací řetězec můžete získat kdykoli, ale je snadné ho zkopírovat do Azure Portal.
+Budete potřebovat připojovací řetězec později v kurzu, takže po vytvoření databáze, přejděte do nové databáze Clinic a zkopírujte připojovací řetězec. Připojovací řetězec můžete získat kdykoli, ale je snadné jej zkopírovat na webu Azure Portal.
 
-1. Přejít na **databáze SQL** > **Clinic** > **Zobrazit databázové připojovací řetězce**.
+1. Přejít na **SQL databáze** > **Klinika** > **Zobrazit připojovací řetězce databáze**.
 2. Zkopírujte připojovací řetězec pro **ADO.NET**.
 
     ![Zkopírování připojovacího řetězce](./media/sql-database-always-encrypted-azure-key-vault/connection-strings.png)
 
 ## <a name="connect-to-the-database-with-ssms"></a>Připojit se k databázi pomocí SSMS
 
-Otevřete SSMS a připojte se k serveru pomocí aplikace Clinic Database.
+Otevřete SSMS a připojte se k serveru pomocí databáze Clinic.
 
-1. Otevřete aplikaci SSMS. (Pokud není otevřený, otevřete okno **připojit k serveru** (Pokud není otevřené), otevřete Server **pro připojení > .** )
+1. Otevřete aplikaci SSMS. (Přejděte na **připojení** > **databázového stroje** a otevřete okno Připojit k **serveru,** pokud není otevřené.)
 
-2. Zadejte název svého serveru a přihlašovací údaje. Název serveru najdete v okně databáze SQL a v připojovacím řetězci, který jste zkopírovali dříve. Zadejte úplný název serveru, včetně *Database.Windows.NET*.
+2. Zadejte název serveru a pověření. Název serveru lze nalézt v okně databáze SQL a v připojovacím řetězci, který jste zkopírovali dříve. Zadejte úplný název serveru, včetně *database.windows.net*.
 
     ![Zkopírování připojovacího řetězce](./media/sql-database-always-encrypted-azure-key-vault/ssms-connect.png)
 
-Pokud se otevře okno **nové pravidlo brány firewall** , přihlaste se k Azure a umožněte SSMS vytvořit nové pravidlo brány firewall.
+Pokud se otevře okno **Pravidlo nové brány firewall,** přihlaste se do Azure a nechte SSMS vytvořit nové pravidlo brány firewall za vás.
 
 ## <a name="create-a-table"></a>Vytvoření tabulky
 
-V této části vytvoříte tabulku, která bude uchovávat data o pacientech. Zpočátku není šifrovaný – v další části budete konfigurovat šifrování.
+V této části vytvoříte tabulku pro uložení údajů o pacientech. Není zpočátku šifrována – šifrování nakonfigurujete v další části.
 
-1. Rozbalte položku **databáze**.
-2. Pravým tlačítkem myši klikněte na **Clinic** Database a klikněte na **Nový dotaz**.
-3. Vložte následující příkaz Transact-SQL (T-SQL) do nového okna dotazu a **Spusťte** jej.
+1. Rozbalte **položku Databáze**.
+2. Klepněte pravým tlačítkem myši na databázi **Kliniky** a klepněte na příkaz **Nový dotaz**.
+3. Vložte následující Transact-SQL (T-SQL) do nového okna dotazu a **Spusťte** jej.
 
 ```sql
 CREATE TABLE [dbo].[Patients](
@@ -155,94 +155,94 @@ CREATE TABLE [dbo].[Patients](
 GO
 ```
 
-## <a name="encrypt-columns-configure-always-encrypted"></a>Šifrovat sloupce (nakonfigurovat Always Encrypted)
+## <a name="encrypt-columns-configure-always-encrypted"></a>Šifrovat sloupce (konfigurace vždy šifrované)
 
-SSMS poskytuje průvodce, který vám pomůže snadno nakonfigurovat Always Encrypted nastavením hlavního klíče sloupce, šifrovacího klíče sloupce a šifrovaných sloupců za vás.
+Služba SSMS poskytuje průvodce, který vám pomůže snadno nakonfigurovat vždy šifrované nastavením hlavního klíče sloupce, šifrovacího klíče sloupce a šifrovaných sloupců.
 
-1. Rozbalte **databáze** > **Clinic** > **Tables**.
-2. Klikněte pravým tlačítkem na tabulku **pacientům** a vyberte možnost **Šifrovat sloupce** a otevřete tak Průvodce Always Encrypted:
+1. Rozbalte**tabulky****klinik** >  **databází** > .
+2. Klikněte pravým tlačítkem myši na tabulku **Pacienti** a výběrem **možnosti Šifrovat sloupce** otevřete Průvodce vždy šifrovanými:
 
-    ![Šifrovat sloupce](./media/sql-database-always-encrypted-azure-key-vault/encrypt-columns.png)
+    ![Šifrování sloupců](./media/sql-database-always-encrypted-azure-key-vault/encrypt-columns.png)
 
-Průvodce Always Encrypted obsahuje následující části: **Výběr sloupce**, **Konfigurace hlavního klíče**, **ověřování**a **Souhrn**.
+Průvodce vždy šifrovanými obsahuje následující části: **Výběr sloupců**, **Konfigurace hlavního klíče**, **Ověření**a **Souhrn**.
 
 ### <a name="column-selection"></a>Výběr sloupce
 
-Kliknutím na tlačítko **Další** na **úvodní** stránce otevřete stránku **Výběr sloupce** . Na této stránce můžete vybrat, které sloupce chcete šifrovat, [typ šifrování a který šifrovací klíč sloupce (cek)](https://msdn.microsoft.com/library/mt459280.aspx#Anchor_2) se má použít.
+Kliknutím na **Další** na stránce **Úvod** otevřete stránku **Výběr sloupců.** Na této stránce vyberete sloupce, které chcete zašifrovat, [typ šifrování a jaký kód šifrovacího klíče (CEK)](https://msdn.microsoft.com/library/mt459280.aspx#Anchor_2) použít.
 
-Zašifrujte informace **SSN** a **DatumNarození** pro každého pacienta. Sloupec SSN bude používat deterministické šifrování, které podporuje vyhledávání rovnosti, spojení a seskupování podle. Sloupec DatumNarození bude používat náhodné šifrování, které nepodporuje operace.
+Šifrujte informace **o SSN** a **Date pro** každého pacienta. Sloupec SSN bude používat deterministické šifrování, které podporuje vyhledávání rovnosti, spojení a seskupení podle. Sloupec Datum narození bude používat randomizované šifrování, které nepodporuje operace.
 
-Nastavte **typ šifrování** pro sloupec SSN na **deterministické** a sloupec DatumNarození, který se má **náhodným**nastavením. Klikněte na **Další**.
+Nastavte **typ šifrování** pro sloupec SSN na **deterministický** a sloupec Datum narození na **Randomizovaný**. Klikněte na **Další**.
 
-![Šifrovat sloupce](./media/sql-database-always-encrypted-azure-key-vault/column-selection.png)
+![Šifrování sloupců](./media/sql-database-always-encrypted-azure-key-vault/column-selection.png)
 
 ### <a name="master-key-configuration"></a>Konfigurace hlavního klíče
 
-Na stránce **Konfigurace hlavního klíče** je místo, kde jste nastavili CMK a vyberete poskytovatele úložiště klíčů, kde se CMK uloží. V současné době můžete CMK ukládat do úložiště certifikátů Windows, Azure Key Vault nebo modulu hardwarového zabezpečení (HSM).
+Stránka **Konfigurace hlavního klíče** je místo, kde nastavíte CMK a vyberete zprostředkovatele úložiště klíčů, kde bude cmk uložen. V současné době můžete uložit CMK v úložišti certifikátů Windows, Azure Key Vault nebo modul hardwarového zabezpečení (HSM).
 
-V tomto kurzu se dozvíte, jak ukládat klíče v Azure Key Vault.
+Tento kurz ukazuje, jak ukládat klíče v azure key vault.
 
 1. Vyberte **Azure Key Vault**.
-2. V rozevíracím seznamu vyberte požadovaný Trezor klíčů.
-3. Klikněte na **Další**.
+2. V rozevíracím seznamu vyberte požadovaný trezor klíčů.
+3. Klikněte na **Další**.
 
 ![Konfigurace hlavního klíče](./media/sql-database-always-encrypted-azure-key-vault/master-key-configuration.png)
 
-### <a name="validation"></a>Ověření
+### <a name="validation"></a>Ověřování
 
-Nyní můžete šifrovat sloupce nebo uložit skript prostředí PowerShell pro pozdější spuštění. Pro tento kurz vyberte **pokračovat** a klikněte na **Další**.
+Sloupce můžete nyní zašifrovat nebo uložit skript prostředí PowerShell, který chcete spustit později. V tomto kurzu vyberte **pokračovat a dokončit nyní** a klepněte na tlačítko **Další**.
 
 ### <a name="summary"></a>Souhrn
 
-Ověřte správnost nastavení a kliknutím na **Dokončit** dokončete instalaci pro Always Encrypted.
+Ověřte, zda jsou všechna nastavení správná, a klepnutím na **tlačítko Dokončit** dokončete nastavení pro vždy šifrované.
 
 ![Souhrn](./media/sql-database-always-encrypted-azure-key-vault/summary.png)
 
-### <a name="verify-the-wizards-actions"></a>Ověření akcí Průvodce
+### <a name="verify-the-wizards-actions"></a>Ověření akcí průvodce
 
-Po dokončení průvodce je vaše databáze nastavená pro Always Encrypted. Průvodce provedl následující akce:
+Po dokončení průvodce je databáze nastavena na vždy šifrované. Průvodce provedl následující akce:
 
-- Byl vytvořen hlavní klíč sloupce a uložený v Azure Key Vault.
-- Byl vytvořen šifrovací klíč sloupce a uložený v Azure Key Vault.
-- Nakonfigurovali jste vybrané sloupce pro šifrování. Tabulka pacientů aktuálně neobsahuje žádná data, ale všechna existující data ve vybraných sloupcích jsou nyní zašifrovaná.
+- Vytvořil hlavní klíč sloupce a uložil ho do úložiště klíčů Azure.
+- Vytvořil šifrovací klíč sloupce a uložil ho do úložiště klíčů Azure.
+- Nakonfiguroval vybrané sloupce pro šifrování. Tabulka Pacienti aktuálně neobsahuje žádná data, ale všechna existující data ve vybraných sloupcích jsou nyní zašifrována.
 
-Vytváření klíčů v SSMS můžete ověřit rozbalením **Clinic** > **Security** > **Always Encrypted Keys**.
+Vytvoření klíčů v SSMS můžete ověřit rozbalením**rozšířením zabezpečení** >  **kliniky** > **vždy šifrované klíče**.
 
-## <a name="create-a-client-application-that-works-with-the-encrypted-data"></a>Vytvořit klientskou aplikaci, která funguje s šifrovanými daty
+## <a name="create-a-client-application-that-works-with-the-encrypted-data"></a>Vytvoření klientské aplikace, která pracuje se šifrovanými daty
 
-Teď, když je nastavené Always Encrypted, můžete vytvořit aplikaci, která provede *vkládání* a *výběry* na šifrovaných sloupcích.  
+Nyní, když je nastaveno vždy šifrované, můžete vytvořit aplikaci, která provádí *vložení* a *výběr v* šifrovaných sloupcích.  
 
 > [!IMPORTANT]
-> Vaše aplikace musí při předávání nešifrovaných dat na server pomocí Always Encrypted sloupců používat objekty [SqlParameter](https://msdn.microsoft.com/library/system.data.sqlclient.sqlparameter.aspx) . Předání literálových hodnot bez použití objektů SqlParameter způsobí výjimku.
+> Aplikace musí používat [sqlparameter](https://msdn.microsoft.com/library/system.data.sqlclient.sqlparameter.aspx) objekty při předávání dat ve formátu prostého textu na server s vždy šifrované sloupce. Předání literálových hodnot bez použití objektů SqlParameter bude mít za následek výjimku.
 
-1. Otevřete Visual Studio a vytvořte novou C# **konzolovou aplikaci** (Visual Studio 2015 a starší) nebo **konzolovou aplikaci (.NET Framework)** (Visual Studio 2017 a novější). Ujistěte se, že je váš projekt nastaven na **.NET Framework 4,6** nebo novější.
-2. Pojmenujte projekt **AlwaysEncryptedConsoleAKVApp** a klikněte na **OK**.
-3. Pomocí **nástrojů** > **správce balíčků NuGet** > **konzole správce balíčků**nainstalujte následující balíčky NuGet.
+1. Otevřete Visual Studio a vytvořte novou **aplikaci konzoly** C# (Visual Studio 2015 a starší) nebo **konzolovou aplikaci (.NET Framework)** (Visual Studio 2017 a novější). Ujistěte se, že váš projekt je nastavena na **rozhraní .NET Framework 4.6** nebo novější.
+2. Pojmenujte projekt **AlwaysEncryptedConsoleAKVApp** a klepněte na tlačítko **OK**.
+3. Nainstalujte následující balíčky NuGet tak, že přejdete na **konzoli Správce** > **balíčků****nástroje NuGet .** > 
 
-Spusťte tyto dva řádky kódu v konzole správce balíčků:
+Spusťte tyto dva řádky kódu v konzole Správce balíčků:
 
    ```powershell
    Install-Package Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider
    Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
    ```
 
-## <a name="modify-your-connection-string-to-enable-always-encrypted"></a>Změňte připojovací řetězec tak, aby povoloval Always Encrypted
+## <a name="modify-your-connection-string-to-enable-always-encrypted"></a>Úprava připojovacího řetězce tak, aby povoloval vždy šifrované
 
-V této části se dozvíte, jak povolit Always Encrypted v připojovacím řetězci databáze.
+Tato část vysvětluje, jak povolit vždy šifrované v připojovacím řetězci databáze.
 
-Chcete-li povolit Always Encrypted, je nutné přidat klíčové slovo **nastavení šifrování sloupce** do připojovacího řetězce a nastavit jej na **povoleno**.
+Chcete-li povolit možnost Vždy šifrované, je třeba přidat klíčové slovo **Nastavení šifrování sloupců** do připojovacího řetězce a nastavit jej na **hodnotu Povoleno**.
 
-Tuto možnost můžete nastavit přímo v připojovacím řetězci nebo ji můžete nastavit pomocí [SqlConnectionStringBuilder](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.aspx). Ukázková aplikace v další části ukazuje, jak používat **SqlConnectionStringBuilder**.
+Můžete to nastavit přímo v připojovacím řetězci nebo ji můžete nastavit pomocí [sqlconnectionstringbuilderbuilder](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.aspx). Ukázková aplikace v další části ukazuje, jak používat **SqlConnectionStringBuilder**.
 
-### <a name="enable-always-encrypted-in-the-connection-string"></a>Povolit Always Encrypted v připojovacím řetězci
+### <a name="enable-always-encrypted-in-the-connection-string"></a>Povolit vždy šifrované v připojovacím řetězci
 
-Do připojovacího řetězce přidejte následující klíčové slovo.
+Přidejte do připojovacího řetězce následující klíčové slovo.
 
    `Column Encryption Setting=Enabled`
 
-### <a name="enable-always-encrypted-with-sqlconnectionstringbuilder"></a>Povolení Always Encrypted s SqlConnectionStringBuilder
+### <a name="enable-always-encrypted-with-sqlconnectionstringbuilder"></a>Povolit vždy šifrované pomocí sqlconnectionstringbuilderbuilder
 
-Následující kód ukazuje, jak povolit Always Encrypted nastavením [SqlConnectionStringBuilder. ColumnEncryptionSetting](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.columnencryptionsetting.aspx) na [Enabled](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectioncolumnencryptionsetting.aspx).
+Následující kód ukazuje, jak povolit vždy šifrované nastavením [SqlConnectionStringBuilder.ColumnEncryptionSetting](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.columnencryptionsetting.aspx) na [Povoleno](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectioncolumnencryptionsetting.aspx).
 
 ```csharp
 // Instantiate a SqlConnectionStringBuilder.
@@ -252,8 +252,8 @@ SqlConnectionStringBuilder connStringBuilder = new SqlConnectionStringBuilder("r
 connStringBuilder.ColumnEncryptionSetting = SqlConnectionColumnEncryptionSetting.Enabled;
 ```
 
-## <a name="register-the-azure-key-vault-provider"></a>Registrace poskytovatele Azure Key Vault
-Následující kód ukazuje, jak zaregistrovat poskytovatele Azure Key Vault s ovladačem ADO.NET.
+## <a name="register-the-azure-key-vault-provider"></a>Registrace zprostředkovatele azure key vault
+Následující kód ukazuje, jak zaregistrovat zprostředkovatele Azure Key Vault s ovladačem ADO.NET.
 
 ```csharp
 private static ClientCredential _clientCredential;
@@ -270,18 +270,18 @@ static void InitializeAzureKeyVaultProvider() {
 }
 ```
 
-## <a name="always-encrypted-sample-console-application"></a>Ukázková Konzolová aplikace Always Encrypted
+## <a name="always-encrypted-sample-console-application"></a>Vždy šifrovaná ukázková konzola
 
-Tato ukázka předvádí, jak:
+Tato ukázka ukazuje, jak:
 
-- Změňte připojovací řetězec tak, aby povoloval Always Encrypted.
+- Upravte připojovací řetězec tak, aby byl vždy šifrován.
 - Zaregistrujte Azure Key Vault jako zprostředkovatele úložiště klíčů aplikace.  
-- Vloží data do šifrovaných sloupců.
-- Vyberte záznam filtrováním konkrétní hodnoty v zašifrovaném sloupci.
+- Vložte data do šifrovaných sloupců.
+- Vyberte záznam filtrováním pro určitou hodnotu v zašifrovaném sloupci.
 
-Obsah *program.cs* nahraďte následujícím kódem. Nahraďte připojovací řetězec pro globální proměnnou connectionString v řádku, který přímo předchází metodě Main, s platným připojovacím řetězcem z Azure Portal. Toto je jediná změna, kterou je třeba provést v tomto kódu.
+Nahraďte obsah *Program.cs* následujícím kódem. Nahraďte připojovací řetězec pro globální proměnnou connectionstring v řádku, který přímo předchází Metodě Main platným připojovacím řetězcem z portálu Azure. Toto je jediná změna, kterou je třeba provést v tomto kódu.
 
-Spusťte aplikaci, abyste viděli Always Encrypted v akci.
+Spusťte aplikaci a podívejte se na vždy šifrované v akci.
 
 ```csharp
 using System;
@@ -575,11 +575,11 @@ namespace AlwaysEncryptedConsoleAKVApp {
 }
 ```
 
-## <a name="verify-that-the-data-is-encrypted"></a>Ověřte, že jsou data zašifrovaná.
+## <a name="verify-that-the-data-is-encrypted"></a>Ověření šifrování dat
 
-Můžete rychle ověřit, jestli jsou skutečná data na serveru šifrovaná pomocí dotazu na data pacientů pomocí SSMS (pomocí aktuálního připojení, ve kterém ještě není povolené **nastavení šifrování sloupce** ).
+Můžete rychle zkontrolovat, zda jsou skutečná data na serveru šifrována dotazem na data pacientů pomocí SSMS (pomocí aktuálního připojení, kde **nastavení šifrování sloupců** ještě není povoleno).
 
-Spusťte následující dotaz na Clinic Database.
+Spusťte následující dotaz v databázi Kliniky.
 
 ```sql
 SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
@@ -587,38 +587,38 @@ SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
 
 Můžete vidět, že šifrované sloupce neobsahují žádná data ve formátu prostého textu.
 
-   ![Nová Konzolová aplikace](./media/sql-database-always-encrypted-azure-key-vault/ssms-encrypted.png)
+   ![Nová konzolová aplikace](./media/sql-database-always-encrypted-azure-key-vault/ssms-encrypted.png)
 
-Pokud chcete pro přístup k datům ve formátu prostého textu používat SSMS, musíte nejdřív zajistit, aby měl uživatel správná oprávnění k Azure Key Vault: *Get*, *unwrapKey*a *verify*. Podrobné informace najdete v tématu [Vytvoření a uložení hlavních klíčů sloupce (Always Encrypted)](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted).
+Chcete-li použít SSMS pro přístup k datům ve formátu prostého textu, musíte nejprve zajistit, aby uživatel měl správná oprávnění k trezoru klíčů Azure: *get*, *unwrapKey*a *verify*. Podrobné informace naleznete v [tématu Vytvoření a uložení hlavních klíčů sloupců (vždy šifrované).](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted)
 
-Pak během připojení přidejte parametr *nastavení šifrování sloupce = povoleno* .
+Pak přidejte parametr *Column Encryption=enabled* během připojení.
 
-1. V SSMS klikněte pravým tlačítkem na server v **Průzkumník objektů** a vyberte **Odpojit**.
-2. Kliknutím na **připojit** > **databázový stroj** otevřete okno **připojit k serveru** a klikněte na **Možnosti**.
-3. Klikněte na **Další parametry připojení** a **nastavení šifrování sloupce typ = povoleno**.
+1. V ssms klepněte pravým tlačítkem myši na server v **Průzkumníkovi objektů** a zvolte **Odpojit**.
+2. Klepnutím na **tlačítko Připojit** > **databázový stroj** otevřete okno Připojit k **serveru** a klepněte na tlačítko **Možnosti**.
+3. Klepněte na **položku Další parametry připojení** a zadejte **příkaz Column Encryption Setting=enabled**.
 
-    ![Nová Konzolová aplikace](./media/sql-database-always-encrypted-azure-key-vault/ssms-connection-parameter.png)
+    ![Nová konzolová aplikace](./media/sql-database-always-encrypted-azure-key-vault/ssms-connection-parameter.png)
 
-4. Spusťte následující dotaz na Clinic Database.
+4. Spusťte následující dotaz v databázi Kliniky.
 
    ```sql
    SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
    ```
 
-     V šifrovaných sloupcích teď můžete zobrazit data ve formátu prostého textu.
-     ![novou konzolovou aplikaci](./media/sql-database-always-encrypted-azure-key-vault/ssms-plaintext.png)
+     Nyní můžete vidět data ve formátu prostého textu v šifrovaných sloupcích.
+     ![Nová konzolová aplikace](./media/sql-database-always-encrypted-azure-key-vault/ssms-plaintext.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Po vytvoření databáze, která používá Always Encrypted, je vhodné provést následující akce:
+Po vytvoření databáze, která používá vždy šifrované, můžete provést následující kroky:
 
-- [Otočení a vyčištění klíčů](https://msdn.microsoft.com/library/mt607048.aspx)
-- [Migrujte data, která jsou už zašifrovaná pomocí Always Encrypted](https://msdn.microsoft.com/library/mt621539.aspx).
+- [Otočte a vyčistěte klíče](https://msdn.microsoft.com/library/mt607048.aspx).
+- [Migrujte data, která jsou již zašifrována pomocí funkce Vždy šifrované](https://msdn.microsoft.com/library/mt621539.aspx).
 
 ## <a name="related-information"></a>Související informace
 
-- [Always Encrypted (vývoj klientů)](https://msdn.microsoft.com/library/mt147923.aspx)
+- [Vždy šifrované (vývoj klienta)](https://msdn.microsoft.com/library/mt147923.aspx)
 - [Transparentní šifrování dat](https://msdn.microsoft.com/library/bb934049.aspx)
-- [SQL Server šifrování](https://msdn.microsoft.com/library/bb510663.aspx)
-- [Průvodce Always Encrypted](https://msdn.microsoft.com/library/mt459280.aspx)
-- [Blog Always Encrypted](https://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
+- [Šifrování serveru SQL Server](https://msdn.microsoft.com/library/bb510663.aspx)
+- [Vždy šifrovaný průvodce](https://msdn.microsoft.com/library/mt459280.aspx)
+- [Vždy šifrovaný blog](https://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)

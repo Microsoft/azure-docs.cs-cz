@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: zřizování uživatelů pro LucidChart – Azure AD'
-description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro LucidChart.
+title: 'Kurz: Zřizování uživatelů pro LucidChart – Azure AD'
+description: Zjistěte, jak nakonfigurovat službu Azure Active Directory tak, aby automaticky zřašovala a odpočatou uživatelské účty do LucidChartu.
 services: active-directory
 documentationcenter: ''
 author: ArvindHarinder1
@@ -16,84 +16,84 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c5d946c6e257c7676178f9bc3c234f66ba6fe622
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77057324"
 ---
-# <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Kurz: Konfigurace LucidChart pro Automatické zřizování uživatelů
+# <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Kurz: Konfigurace přehledového grafu pro automatické zřizování uživatelů
 
-Cílem tohoto kurzu je Ukázat kroky, které musíte v LucidChart a Azure AD použít k automatickému zřízení a zrušení zřízení uživatelských účtů z Azure AD až LucidChart. 
+Cílem tohoto kurzu je zobrazit kroky, které je potřeba provést v LucidChart a Azure AD automaticky zřídit a de-provision uživatelské účty z Azure AD na LucidChart. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
+Scénář popsaný v tomto kurzu předpokládá, že již máte následující položky:
 
-* Tenant Azure Active Directory
-* Tenant LucidChart s [plánem Enterprise](https://www.lucidchart.com/user/117598685#/subscriptionLevel) nebo lepším povoleným
+* Klient adresáře Azure Active Directory
+* Klient LucidChart s [plánem Enterprise](https://www.lucidchart.com/user/117598685#/subscriptionLevel) nebo lépe povolený
 * Uživatelský účet v LucidChart s oprávněními správce
 
-## <a name="assigning-users-to-lucidchart"></a>Přiřazování uživatelů k LucidChart
+## <a name="assigning-users-to-lucidchart"></a>Přiřazení uživatelů k LucidChart
 
-Azure Active Directory používá koncept nazvaný "přiřazení" k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelských účtů se synchronizují jenom uživatelé a skupiny přiřazené k aplikaci v Azure AD.
+Azure Active Directory používá koncept s názvem "přiřazení" k určení, kteří uživatelé by měli získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelských účtů jsou synchronizováni pouze uživatelé a skupiny, které byly "přiřazeny" k aplikaci ve službě Azure AD.
 
-Než nakonfigurujete a povolíte službu zřizování, musíte se rozhodnout, co uživatelé a skupiny ve službě Azure AD reprezentují uživatelé, kteří potřebují přístup k aplikaci LucidChart. Po rozhodnutí můžete tyto uživatele přiřadit do aplikace LucidChart podle pokynů uvedených tady:
+Před konfigurací a povolením zřizovací služby se musíte rozhodnout, kteří uživatelé nebo skupiny ve službě Azure AD představují uživatele, kteří potřebují přístup k vaší aplikaci LucidChart. Jakmile se rozhodnete, můžete tyto uživatele přiřadit k aplikaci LucidChart podle pokynů zde:
 
 [Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-lucidchart"></a>Důležité tipy pro přiřazení uživatelů k LucidChart
 
-* Doporučuje se, abyste k testování konfigurace zřizování přiřadili jednoho uživatele Azure AD LucidChart. Další uživatele a skupiny můžete přiřadit později.
+* Doporučuje se, aby jeden uživatel Azure AD je přiřazen a LucidChart otestovat konfiguraci zřizování. Další uživatelé a/nebo skupiny mohou být přiřazeny později.
 
-* Když přiřadíte uživatele k LucidChart, musíte vybrat buď roli **uživatele** , nebo jinou platnou roli specifickou pro aplikaci (Pokud je dostupná) v dialogovém okně přiřazení. **Výchozí přístupová** role nefunguje pro zřizování a tito uživatelé se přeskočí.
+* Při přiřazování uživatele k LucidChart, musíte vybrat buď roli **uživatele** nebo jinou platnou roli specifické pro aplikaci (pokud je k dispozici) v dialogovém okně přiřazení. **Výchozí přístup** role nefunguje pro zřizování a tito uživatelé jsou přeskočeny.
 
 ## <a name="configuring-user-provisioning-to-lucidchart"></a>Konfigurace zřizování uživatelů na LucidChart
 
-V této části se seznámíte s připojením k rozhraní API pro zřizování uživatelských účtů ve službě Azure AD a konfigurací služby zřizování k vytváření, aktualizaci a zakázání přiřazených uživatelských účtů v LucidChart na základě přiřazení uživatelů a skupin ve službě Azure AD.
+Tato část vás provede připojením azure ad k rozhraní API pro zřizování uživatelských účtů LucidChart a konfigurací zřizovací služby pro vytváření, aktualizaci a zakázání přiřazených uživatelských účtů v LucidChart u na základě přiřazení uživatelů a skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro LucidChart, a to podle pokynů uvedených v tématu [Azure Portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování, i když se tyto dvě funkce navzájem doplňují.
+> Můžete také povolit jednotné přihlašování na saml pro LucidChart podle pokynů uvedených na [webu Azure Portal](https://portal.azure.com). Jednotné přihlašování lze nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce kompliment navzájem.
 
-### <a name="configure-automatic-user-account-provisioning-to-lucidchart-in-azure-ad"></a>Konfigurace automatického zřizování uživatelských účtů na LucidChart ve službě Azure AD
+### <a name="configure-automatic-user-account-provisioning-to-lucidchart-in-azure-ad"></a>Konfigurace automatického zřizování uživatelských účtů do Přehlednítabulky ve službě Azure AD
 
-1. V [Azure Portal](https://portal.azure.com)přejděte do části **Azure Active Directory > Enterprise Apps > všechny aplikace** .
+1. Na [webu Azure Portal](https://portal.azure.com)přejděte do části **Azure Active Directory > Podnikové aplikace > všechny aplikace.**
 
-2. Pokud jste už nakonfigurovali LucidChart pro jednotné přihlašování, vyhledejte vaši instanci LucidChart pomocí vyhledávacího pole. V opačném případě vyberte **Přidat** a vyhledejte **LucidChart** v galerii aplikací. Ve výsledcích hledání vyberte LucidChart a přidejte je do seznamu aplikací.
+2. Pokud jste již nakonfigurovali LucidChart pro jednotné přihlašování, vyhledejte svou instanci LucidChart pomocí vyhledávacího pole. V opačném případě vyberte **Přidat** a vyhledejte **LucidChart** v galerii aplikací. Ve výsledcích hledání vyberte LucidChart a přidejte ho do seznamu aplikací.
 
-3. Vyberte svou instanci LucidChart a pak vyberte kartu **zřizování** .
+3. Vyberte svou instanci LucidChart a pak vyberte kartu **Zřizování.**
 
-4. Nastavte **režim zřizování** na **automaticky**.
+4. Nastavte **režim zřizování** na **automatické**.
 
-    ![Zřizování LucidChart](./media/lucidchart-provisioning-tutorial/LucidChart1.png)
+    ![LucidChart Zřizování](./media/lucidchart-provisioning-tutorial/LucidChart1.png)
 
-5. V části **přihlašovací údaje správce** zadejte **tajný token** generovaný účtem LucidChart (token najdete pod účtem: **Team** > **App Integration** > **SCIM**).
+5. V části **Přihlašovací údaje správce** zadejte tajný **token** generovaný vaším účtem LucidChart (token najdete pod svým účtem: **Team** > **App Integration** > **SCIM**).
 
-    ![Zřizování LucidChart](./media/lucidchart-provisioning-tutorial/LucidChart2.png)
+    ![LucidChart Zřizování](./media/lucidchart-provisioning-tutorial/LucidChart2.png)
 
-6. V Azure Portal klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k vaší aplikaci LucidChart. Pokud se připojení nepovede, ujistěte se, že má váš účet LucidChart oprávnění správce, a zkuste krok 5 znovu.
+6. Na webu Azure Portal klikněte na **Test Connection** a ujistěte se, že se Azure AD může připojit k vaší aplikaci LucidChart. Pokud se připojení nezdaří, ujistěte se, že váš účet LucidChart má oprávnění správce a zkuste krok 5 znovu.
 
-7. Zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování v poli **e-mail s oznámením** , a zaškrtněte políčko Odeslat e-mailové oznámení, když dojde k chybě.
+7. Do pole **E-mail** s oznámením zadejte e-mailovou adresu osoby nebo skupiny, která by měla dostávat oznámení o chybách zřizování, a zaškrtněte políčko Odeslat e-mailové oznámení, když dojde k chybě.
 
 8. Klikněte na **Uložit**.
 
-9. V části mapování vyberte **synchronizovat Azure Active Directory uživatelé LucidChart**.
+9. V části Mapování vyberte **Synchronizovat uživatele služby Azure Active Directory s přehledem LucidChart**.
 
-10. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do LucidChart. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v LucidChart pro operace aktualizace. Vyberte tlačítko Uložit potvrďte změny.
+10. V části **Mapování atributů** zkontrolujte atributy uživatele, které jsou synchronizovány z Azure AD na LucidChart. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelským účtům v LucidChart pro operace aktualizace. Chcete-li potvrdit všechny změny, vyberte tlačítko Uložit.
 
-11. Pokud chcete povolit službu Azure AD Provisioning pro LucidChart, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
+11. Chcete-li povolit službu zřizování Azure AD pro LucidChart, změňte **stav zřizování** **na Zapnuto** v části **Nastavení**
 
 12. Klikněte na **Uložit**.
 
-Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin přiřazených LucidChart v části Uživatelé a skupiny. Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut za předpokladu, že služba běží. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na zřizování protokolů aktivit, které popisují všechny akce prováděné službou zřizování.
+Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin přiřazených k LucidChart v části Uživatelé a skupiny. Počáteční synchronizace trvá déle než následné synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba spuštěna. Část **Podrobnosti synchronizace** můžete použít ke sledování průběhu a sledování odkazů na protokoly aktivit zřizování, které popisují všechny akce prováděné službou zřizování.
 
-Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, naleznete [v tématu Vytváření sestav na automatické zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy o aktivitě zřizování.](../app-provisioning/check-status-user-account-provisioning.md)

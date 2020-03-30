@@ -1,6 +1,6 @@
 ---
-title: Omezení instalace rozšíření virtuálních počítačů pomocí Azure Policy
-description: K omezení nasazení rozšíření virtuálních počítačů použijte Azure Policy.
+title: Omezení instalace rozšíření virtuálních počítače pomocí zásad Azure
+description: Pomocí zásad Azure můžete omezit nasazení rozšíření virtuálních počítače.
 services: virtual-machines-linux
 documentationcenter: ''
 author: axayjo
@@ -13,32 +13,32 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 113736198f40510981c80909c862282fa07ac68d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3c660f7e05af43c2aad6f7283e32cfc1d85571ab
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073775"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066827"
 ---
-# <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Omezení instalace rozšíření na virtuálních počítačích se systémem Linux pomocí Azure Policy
+# <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Použití zásad Azure k omezení instalace rozšíření na virtuálních počítačích s Linuxem
 
-Pokud chcete zabránit použití nebo instalaci určitých rozšíření na virtuální počítače se systémem Linux, můžete vytvořit zásadu Azure pomocí rozhraní příkazového řádku k omezení rozšíření pro virtuální počítače v rámci skupiny prostředků. 
+Pokud chcete zabránit použití nebo instalaci určitých rozšíření na virtuálních počítačích s Linuxem, můžete vytvořit zásadu Azure pomocí příkazového příkazu k omezení rozšíření pro virtuální počítače v rámci skupiny prostředků. 
 
-V tomto kurzu se používá CLI v rámci Azure Cloud Shell, který se průběžně aktualizuje na nejnovější verzi. Pokud chcete rozhraní příkazového řádku Azure spustit místně, musíte nainstalovat verzi 2.0.26 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+Tento kurz používá vykreslování příkazového příkazu v rámci prostředí Azure Cloud Shell, který se neustále aktualizuje na nejnovější verzi. Pokud chcete spustit Azure CLI místně, budete muset nainstalovat verzi 2.0.26 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
 
 ## <a name="create-a-rules-file"></a>Vytvoření souboru pravidel
 
-Chcete-li omezit, jaká rozšíření lze nainstalovat, je nutné mít [pravidlo](../../governance/policy/concepts/definition-structure.md#policy-rule) , které poskytne Logic pro identifikaci rozšíření.
+Chcete-li omezit, jaká rozšíření lze nainstalovat, musíte mít [pravidlo,](../../governance/policy/concepts/definition-structure.md#policy-rule) které poskytuje logiku k identifikaci rozšíření.
 
-V tomto příkladu se dozvíte, jak zamítnout instalaci rozšíření publikovaných souborem ' Microsoft. OSTCExtensions ' vytvořením souboru pravidel v Azure Cloud Shell, ale pokud pracujete v rozhraní příkazového řádku místně, můžete také vytvořit místní soubor a nahradit cestu (~/clouddrive) cestou k místnímu souboru na počítači.
+Tento příklad ukazuje, jak odepřít instalaci rozšíření publikovaných "Microsoft.OSTCExtensions" vytvořením souboru pravidel v prostředí Azure Cloud Shell, ale pokud pracujete v rozhraní příkazového příkazu místně, můžete také vytvořit místní soubor a nahradit cestu (~/clouddrive) s cestou k místnímu souboru v počítači.
 
-Do [bash Cloud Shell](https://shell.azure.com/bash)zadejte:
+V [bash Cloud Shell](https://shell.azure.com/bash), zadejte:
 
-```azurecli-interactive 
+```bash
 vim ~/clouddrive/azurepolicy.rules.json
 ```
 
-Zkopírujte následující soubor. JSON a vložte ho do souboru.
+Zkopírujte a vložte do souboru následující soubor JSon.
 
 ```json
 {
@@ -64,22 +64,22 @@ Zkopírujte následující soubor. JSON a vložte ho do souboru.
 }
 ```
 
-Až skončíte, stiskněte klávesu **ESC** a potom zadejte **: WQ** a soubor uložte a zavřete.
+Až budete hotovi, stiskněte klávesu **Esc** a zadejte **:wq** pro uložení a zavření souboru.
 
 
 ## <a name="create-a-parameters-file"></a>Vytvoření souboru parametrů
 
-Budete také potřebovat soubor [parametrů](../../governance/policy/concepts/definition-structure.md#parameters) , který vytvoří strukturu, kterou můžete použít pro předání seznamu rozšíření, která chcete zablokovat. 
+Potřebujete také soubor [parametrů,](../../governance/policy/concepts/definition-structure.md#parameters) který vytvoří strukturu, kterou můžete použít pro předávání v seznamu rozšíření, která chcete blokovat. 
 
-V tomto příkladu se dozvíte, jak vytvořit soubor parametrů pro virtuální počítače se systémem Linux v Cloud Shell, ale pokud pracujete v rozhraní příkazového řádku místně, můžete také vytvořit místní soubor a nahradit cestu (~/clouddrive) cestou k místnímu souboru v počítači.
+Tento příklad ukazuje, jak vytvořit soubor parametrů pro virtuální počítače s Linuxem v prostředí Cloud Shell, ale pokud pracujete v rozhraní CLI místně, můžete také vytvořit místní soubor a nahradit cestu (~/clouddrive) s cestou k místnímu souboru v počítači.
 
-Do [Cloud Shell bash](https://shell.azure.com/bash)zadejte:
+V [bash Cloud Shell](https://shell.azure.com/bash), zadejte:
 
-```azurecli-interactive
+```bash
 vim ~/clouddrive/azurepolicy.parameters.json
 ```
 
-Zkopírujte následující soubor. JSON a vložte ho do souboru.
+Zkopírujte a vložte do souboru následující soubor JSon.
 
 ```json
 {
@@ -94,13 +94,13 @@ Zkopírujte následující soubor. JSON a vložte ho do souboru.
 }
 ```
 
-Až skončíte, stiskněte klávesu **ESC** a potom zadejte **: WQ** a soubor uložte a zavřete.
+Až budete hotovi, stiskněte klávesu **Esc** a zadejte **:wq** pro uložení a zavření souboru.
 
-## <a name="create-the-policy"></a>Vytvoření zásady
+## <a name="create-the-policy"></a>Vytvořit zásadu
 
-Definice zásady je objekt, který slouží k uložení konfigurace, kterou chcete použít. Definice zásady používá soubory pravidel a parametrů k definování zásad. Pomocí [AZ Policy definition Create vytvořte](/cli/azure/role/assignment?view=azure-cli-latest)definici zásady.
+Definice zásadje objekt používaný k uložení konfigurace, kterou chcete použít. Definice zásad používá k definování zásad soubory pravidel a parametrů. Vytvořte definici zásadpomocí vytvoření [definice zásada az](/cli/azure/role/assignment?view=azure-cli-latest).
 
-V tomto příkladu jsou pravidla a parametry soubory, které jste vytvořili a uložili ve službě cloud Shell jako soubory. JSON.
+V tomto příkladu jsou pravidly a parametry soubory, které jste vytvořili a uložili jako soubory JSON ve vašem cloudovém prostředí.
 
 ```azurecli-interactive
 az policy definition create \
@@ -113,11 +113,11 @@ az policy definition create \
 ```
 
 
-## <a name="assign-the-policy"></a>Přiřadit zásadu
+## <a name="assign-the-policy"></a>Přiřazení zásady
 
-Tento příklad přiřadí zásadu ke skupině prostředků pomocí [AZ Policy Assignment Create](/cli/azure/policy/assignment). Libovolný virtuální počítač vytvořený ve skupině prostředků **myResourceGroup** nebude moct nainstalovat přístup k virtuálnímu počítači Linux ani rozšíření vlastních skriptů pro Linux. Aby bylo možné zásadu přiřadit, musí existovat skupina prostředků.
+Tento příklad přiřadí zásadu skupině prostředků pomocí [vytvoření přiřazení zásad az](/cli/azure/policy/assignment). Žádný virtuální počítač vytvořený ve skupině prostředků **myResourceGroup** nebude možné nainstalovat linuxový přístup k virtuálním počítači nebo rozšíření vlastního skriptu pro Linux. Skupina prostředků musí existovat před přiřazením zásady.
 
-Pomocí [AZ Account list](/cli/azure/account?view=azure-cli-latest) můžete získat ID předplatného, které se má použít místo v příkladu.
+Pomocí [seznamu účtů az](/cli/azure/account?view=azure-cli-latest) získáte ID předplatného, které chcete použít místo id v příkladu.
 
 
 ```azurecli-interactive
@@ -137,7 +137,7 @@ az policy assignment create \
 
 ## <a name="test-the-policy"></a>Testování zásad
 
-Otestujte zásadu tak, že vytvoříte nový virtuální počítač a zkusíte přidat nového uživatele.
+Otestujte zásady vytvořením nového virtuálního uživatele a pokusem o přidání nového uživatele.
 
 
 ```azurecli-interactive
@@ -148,7 +148,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-Zkuste vytvořit nového uživatele s názvem **myNewUser** pomocí rozšíření přístupu k virtuálnímu počítači.
+Pokuste se vytvořit nového uživatele s názvem **myNewUser** pomocí rozšíření Přístup k virtuálnímu připojení.
 
 ```azurecli-interactive
 az vm user update \
@@ -160,7 +160,7 @@ az vm user update \
 
 
 
-## <a name="remove-the-assignment"></a>Odebrat přiřazení
+## <a name="remove-the-assignment"></a>Odebrání přiřazení
 
 ```azurecli-interactive
 az policy assignment delete --name 'not-allowed-vmextension-linux' --resource-group myResourceGroup

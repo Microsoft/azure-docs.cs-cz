@@ -1,6 +1,6 @@
 ---
-title: Řešení Azure VMware (AVS) – přidělit veřejné IP adresy
-description: Popisuje, jak přidělit veřejné IP adresy pro virtuální počítače v prostředí privátního cloudu služby AVS
+title: Řešení Azure VMware podle CloudSimple – přidělení veřejných IP adres
+description: Popisuje, jak přidělit veřejné IP adresy pro virtuální počítače v prostředí privátního cloudu.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,30 +8,30 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 87133f5efb9f096d3fdb0956aab1caac58b4bd94
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 565c9ad0fbd37b026a1ba555d83b9032d2efcba4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024292"
 ---
-# <a name="allocate-public-ip-addresses-for-avs-private-cloud-environment"></a>Přidělit veřejné IP adresy pro prostředí privátního cloudu pro funkci AVS
+# <a name="allocate-public-ip-addresses-for-private-cloud-environment"></a>Přidělení veřejných IP adres pro prostředí privátního cloudu
 
-Otevřete kartu veřejné IP adresy na stránce síť a přidělte veřejné IP adresy pro virtuální počítače v prostředí privátního cloudu služby AVS.
+Otevřete kartu Veřejné IP adresy na stránce Síť a přidělte veřejné IP adresy pro virtuální počítače v prostředí privátního cloudu.
 
-1. [Přejděte na portál pro funkci AVS](access-cloudsimple-portal.md) a v postranní nabídce vyberte **síť** .
+1. [Přístup k portálu CloudSimple](access-cloudsimple-portal.md) a v boční nabídce vyberte **možnost Síť.**
 2. Vyberte **veřejné IP adresy**.
-3. Klikněte na **nová veřejná IP adresa**.
+3. Klepněte na **položku Nová veřejná adresa IP**.
 
-    ![Stránka veřejné IP adresy](media/public-ips-page.png)
+    ![Stránka Veřejné IP adresy](media/public-ips-page.png)
 
 4. Zadejte název pro identifikaci položky IP adresy.
-5. Ponechte výchozí umístění.
+5. Zachovat výchozí umístění.
 6. V případě potřeby změňte časový limit nečinnosti pomocí posuvníku.
-7. Zadejte místní IP adresu, pro kterou chcete přiřadit veřejnou IP adresu.
+7. Zadejte místní ADRESU IP, ke které chcete přiřadit veřejnou IP adresu.
 8. Zadejte přidružený název DNS.
-9. Klikněte na **Submit** (Odeslat).
+9. Klepněte na **tlačítko Odeslat**.
 
-![Přidělit veřejné IP adresy](media/network-public-ip-allocate.png)
+![Přidělení veřejných IP služeb](media/network-public-ip-allocate.png)
 
-Spustí se úkol přidělení veřejné IP adresy. Stav úlohy můžete zjistit na stránce **aktivity > úlohy** . Po dokončení přidělení se nová položka zobrazí na stránce veřejné IP adresy.
+Začíná úkol přidělení veřejné IP adresy. Stav úkolu můžete zkontrolovat na stránce **Aktivita > úkoly.** Po dokončení přidělení se nová položka zobrazí na stránce Veřejné IP adresy.

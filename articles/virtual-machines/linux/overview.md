@@ -1,6 +1,6 @@
 ---
-title: Přehled virtuálních počítačů se systémem Linux v Azure
-description: Přehled virtuálních počítačů se systémem Linux v Azure.
+title: Přehled virtuálních počítačích s Linuxem v Azure
+description: Přehled virtuálních počítačů s Linuxem v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
 author: cynthn
@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bfda5fe7592d4c3f3f9550f406cf7635c43168ed
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 69a9722436aea1cf794e6e3f3ce02ec79180cff3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896194"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80159468"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Virtuální počítače s Linuxem v Azure
 
@@ -51,9 +51,9 @@ Tato tabulka ukazuje několik způsobů, jak můžete získat seznam dostupných
 
 | Metoda | Popis |
 | --- | --- |
-| Portál Azure |Při vytváření virtuálního počítače vyberte umístění ze seznamu. |
-| Azure PowerShell |Použijte příkaz [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) . |
-| Rozhraní REST API |Použijte operaci [Vypsat umístění](https://docs.microsoft.com/rest/api/resources/subscriptions). |
+| portál Azure |Při vytváření virtuálního počítače vyberte umístění ze seznamu. |
+| Azure PowerShell |Použijte příkaz [Get-AzLocation.](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) |
+| REST API |Použijte operaci [Vypsat umístění](https://docs.microsoft.com/rest/api/resources/subscriptions). |
 | Azure CLI |Použijte operaci [az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest). |
 
 ## <a name="availability"></a>Dostupnost
@@ -62,7 +62,7 @@ Platforma Azure oznámila špičkovou smlouvu o úrovni služeb (SLA) s 99,9% do
 ## <a name="vm-size"></a>Velikost virtuálního počítače
 [Velikost](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) virtuálního počítače, který použijete, se určuje podle úlohy, kterou chcete spustit. Velikost, kterou vyberete, pak určuje další faktory, jako například výpočetní výkon, paměť a kapacitu úložiště. Azure nabízí širokou škálu velikostí, které podporují mnoho typů použití.
 
-Azure účtuje [hodinovou cenu](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) na základě velikosti virtuálního počítače a na jeho operačním systému. V případě neúplných hodin Azure účtuje jenom využité minuty. Služba Storage je oceněna a účtována samostatně.
+Azure účtuje [hodinovou cenu](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) na základě velikosti virtuálního počítače a operačního systému. V případě neúplných hodin Azure účtuje jenom využité minuty. Služba Storage je oceněna a účtována samostatně.
 
 ## <a name="vm-limits"></a>Omezení virtuálního počítače
 Vaše předplatné má nastavené výchozí [kvóty](../../azure-resource-manager/management/azure-subscription-service-limits.md), které mohou ovlivnit nasazení velkého počtu virtuálních počítačů pro váš projekt. Aktuální limit jednoho předplatného je 20 virtuálních počítačů na oblast. Limity můžete navýšit tak, že [vyplníte lístek podpory s žádostí o navýšení](../../azure-portal/supportability/resource-manager-core-quotas-request.md).
@@ -85,7 +85,7 @@ Microsoft úzce spolupracuje s partnery na zajištění aktualizace a optimaliza
 * Red Hat – [Azure Marketplace – Red Hat Enterprise Linux 7.2](https://azure.microsoft.com/marketplace/partners/redhat/redhatenterpriselinux72/)
 * Canonical – [Azure Marketplace – Ubuntu Server 16.04 LTS](https://azure.microsoft.com/marketplace/partners/canonical/ubuntuserver1604lts/)
 * Debian –[Azure Marketplace – Debian 8 „Jessie“](https://azure.microsoft.com/marketplace/partners/credativ/debian8/)
-* FreeBSD- [Azure Marketplace-FreeBSD 10,4](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
+* FreeBSD - [Azure Marketplace - FreeBSD 10.4](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
 * CoreOS – [Azure Marketplace – CoreOS (stabilní verze)](https://azure.microsoft.com/marketplace/partners/coreos/coreosstable/)
 * RancherOS – [Azure Marketplace – RancherOS](https://azure.microsoft.com/marketplace/partners/rancher/rancheros/)
 * Bitnami – [Knihovna Bitnami pro Azure](https://azure.bitnami.com/)
@@ -93,35 +93,25 @@ Microsoft úzce spolupracuje s partnery na zajištění aktualizace a optimaliza
 * Docker – [Azure Marketplace – Azure Container Service s Dockerem Swarm](https://azure.microsoft.com/marketplace/partners/microsoft/acsswarms/)
 * Jenkins – [Azure Marketplace – Platforma CloudBees Jenkins](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudbees.cloudbees-core-contact)
 
-## <a name="vm-sizes"></a>Velikosti virtuálních počítačů
-[Velikost](sizes.md) virtuálního počítače, který použijete, se určuje podle úlohy, kterou chcete spustit. Velikost, kterou vyberete, pak určuje další faktory, jako například výpočetní výkon, paměť a kapacitu úložiště. Azure nabízí širokou škálu velikostí, které podporují mnoho typů použití.
-
-Azure účtuje [hodinovou cenu](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) na základě velikosti virtuálního počítače a na jeho operačním systému. V případě neúplných hodin Azure účtuje jenom využité minuty. Služba Storage je oceněna a účtována samostatně.
 
 ## <a name="cloud-init"></a>Cloud-init 
 
-K dosažení správné kultury DevOps musí být veškerá infrastruktura tvořená kódem.  Když je veškerá infrastruktura v kódu, můžete ji snadno vytvořit znovu.  Azure spolupracuje se všemi hlavními nástroji pro automatizaci, jako jsou Ansible, Chef, SaltStack a Puppet.  Azure obsahuje také vlastní nástroj pro automatizaci:
+K dosažení správné kultury DevOps musí být veškerá infrastruktura tvořená kódem.  Když všechny infrastruktury žije v kódu lze snadno znovu vytvořit.  Azure spolupracuje se všemi hlavními nástroji pro automatizaci, jako jsou Ansible, Chef, SaltStack a Puppet.  Azure obsahuje také vlastní nástroj pro automatizaci:
 
 * [Šablony Azure](create-ssh-secured-vm-from-template.md)
 * [Azure VMAccess](using-vmaccess-extension.md)
 
-Azure podporuje pro [Cloud-init](https://cloud-init.io/) napříč většinou Linux distribuce, která ho podporují.  Aktivně Pracujeme s našimi partnery doporučené distribuce Linuxu aby cloud-init povolené imagí dostupných v Tržišti Azure marketplace. Díky těmto imagí budou vaše nasazení a konfigurace pro cloudovou inicializaci bez problémů fungovat s virtuálními počítači a sadami škálování virtuálních počítačů.
+Azure podporuje [cloud-init na](https://cloud-init.io/) většině Distros Linuxu, které ho podporují.  Aktivně spolupracujeme s našimi schválenými partnery pro distribuci Linuxu, abychom měli na webu Azure Marketplace k dispozici image s podporou cloudu. Díky těmto bitovým kopiím budou nasazení a konfigurace v cloudu bezproblémově fungovat s virtuálními počítači a škálovacími sadami virtuálních počítačů.
 
 * [Použití cloud-init na virtuálních počítačích Azure s Linuxem](using-cloud-init.md)
 
-## <a name="quotas"></a>Kvóty
-Každé předplatné Azure má nastavené výchozí kvóty, které můžou ovlivnit nasazení velkého počtu virtuálních počítačů pro váš projekt. Aktuální limit jednoho předplatného je 20 virtuálních počítačů na oblast.  Limity kvót je možné rychle a snadno navýšit vyplněním lístku podpory s žádostí o navýšení limitu.  Další podrobnosti o limitech kvót:
-
-* [Omezení služeb v předplatném Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md)
-
-
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 * [Úvod do Microsoft Azure Storage](../../storage/common/storage-introduction.md)
 * [Přidání disku do virtuálního počítače s Linuxem pomocí Azure CLI](add-disk.md)
 * [Postup připojení datového disku k virtuálnímu počítači s Linuxem na webu Azure Portal](attach-disk-portal.md)
 
-## <a name="networking"></a>Sítě
-* [Přehled služby Virtual Network](../../virtual-network/virtual-networks-overview.md)
+## <a name="networking"></a>Síťové služby
+* [Přehled virtuální sítě](../../virtual-network/virtual-networks-overview.md)
 * [IP adresy v Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * [Otevření portů k virtuálnímu počítači s Linuxem v Azure](nsg-quickstart.md)
 * [Vytvoření plně kvalifikovaného názvu domény (FQDN) na webu Azure Portal](portal-create-fqdn.md)
@@ -129,9 +119,9 @@ Každé předplatné Azure má nastavené výchozí kvóty, které můžou ovliv
 
 ## <a name="next-steps"></a>Další kroky
 
-Vytvořte svůj první virtuální počítač!
+Vytvořte si první virtuální počítač!
 
-- [Azure Portal](quick-create-portal.md)
+- [Portál](quick-create-portal.md)
 - [Azure CLI](quick-create-cli.md)
 - [PowerShell](quick-create-powershell.md)
 

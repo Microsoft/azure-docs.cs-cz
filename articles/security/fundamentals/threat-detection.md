@@ -1,6 +1,6 @@
 ---
-title: Rozšířená detekce hrozeb Azure | Microsoft Docs
-description: Přečtěte si o Azure AD Identity Protection a jeho funkcích.
+title: Azure pokročilá detekce hrozeb | Dokumenty společnosti Microsoft
+description: Přečtěte si o azure ad identity protection a jeho možnosti.
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -16,374 +16,374 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: 3c1c385a87fc302d180729ec2e4bcd1c4a315f6f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75981466"
 ---
 # <a name="azure-advanced-threat-detection"></a>Rozšířená detekce hrozeb Azure
 
-Azure nabízí integrované funkce detekce hrozeb prostřednictvím služeb, jako je Azure Active Directory (Azure AD), protokoly Azure Monitor a Azure Security Center. Tato kolekce služeb zabezpečení a možností nabízí jednoduchý a rychlý způsob, jak porozumět tomu, co se děje v nasazeních Azure.
+Azure nabízí integrované funkce detekce hrozeb prostřednictvím služeb, jako je Azure Active Directory (Azure AD), protokoly Azure Monitoru a Azure Security Center. Tato kolekce služeb a funkcí zabezpečení poskytuje jednoduchý a rychlý způsob, jak pochopit, co se děje v rámci nasazení Azure.
 
-Azure nabízí nejrůznější možnosti konfigurace a přizpůsobení zabezpečení, aby splňovaly požadavky nasazení vaší aplikace. Tento článek popisuje, jak tyto požadavky splnit.
+Azure nabízí širokou škálu možností konfigurace a přizpůsobení zabezpečení tak, aby splňovaly požadavky nasazení aplikací. Tento článek popisuje, jak splnit tyto požadavky.
 
-## <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection
+## <a name="azure-active-directory-identity-protection"></a>Ochrana identit služby Azure Active Directory
 
-[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) je funkce [Azure Active Directory Premium P2](../../active-directory/active-directory-whatis.md) Edition, která poskytuje přehled o detekcích rizik a potenciálních ohroženích zabezpečení, které mohou ovlivnit identity vaší organizace. Identity Protection používá stávající možnosti detekce anomálií Azure AD, které jsou dostupné prostřednictvím [sestav aktivit Azure AD neobvyklé](../../active-directory/active-directory-reporting-azure-portal.md), a přináší nové typy detekce rizik, které mohou detekovat anomálie v reálném čase.
+[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) je funkce [edice Azure Active Directory Premium P2,](../../active-directory/active-directory-whatis.md) která poskytuje přehled detekcí rizik a potenciálních chyb zabezpečení, které mohou ovlivnit identity vaší organizace. Ochrana identity používá stávající funkce detekce anomálií Azure AD, které jsou dostupné prostřednictvím [sestav anomální aktivity Azure AD](../../active-directory/active-directory-reporting-azure-portal.md)a zavádí nové typy detekce rizik, které dokáží detekovat anomálie v reálném čase.
 
-![Diagram Azure AD Identity Protection](./media/threat-detection/azure-threat-detection-fig1.png)
+![Diagram ochrany identit azure ad](./media/threat-detection/azure-threat-detection-fig1.png)
 
-Identity Protection pomocí adaptivních algoritmů strojového učení a heuristiky detekuje anomálie a detekci rizik, které mohou znamenat, že došlo k ohrožení identity. Pomocí těchto dat aplikace Identity Protection generuje sestavy a výstrahy, aby bylo možné tyto detekce rizik prozkoumat a učinit patřičnou nápravu nebo zmírňující opatření.
+Ochrana identity používá adaptivní algoritmy strojového učení a heuristiky k detekci anomálií a detekce rizik, které by mohly naznačovat, že identita byla ohrožena. Pomocí těchto dat identity Protection generuje sestavy a výstrahy, takže můžete prozkoumat tyto detekce rizik a provést příslušnou nápravu nebo zmírnění opatření.
 
-Azure Active Directory Identity Protection je více než Nástroj pro monitorování a vytváření sestav. V závislosti na detekcích rizik aplikace Identity Protection počítá úroveň rizika uživatele pro každého uživatele, takže můžete nakonfigurovat zásady založené na rizicích, které budou automaticky chránit identity vaší organizace.
+Azure Active Directory Identity Protection je víc než jen nástroj pro monitorování a vytváření sestav. Na základě detekce rizik služba Identity Protection vypočítá úroveň rizika uživatele pro každého uživatele, takže můžete nakonfigurovat zásady založené na rizicích tak, aby automaticky chránily identity vaší organizace.
 
-Tyto rizikové zásady, kromě dalších [ovládacích prvků podmíněného přístupu](../../active-directory/active-directory-conditional-access-azure-portal.md) , které jsou poskytovány Azure Active Directory a [EMS](../../active-directory/active-directory-conditional-access-azure-portal.md), mohou automaticky blokovat nebo nabízet adaptivní nápravné akce, které zahrnují obnovení hesla a vynucení vícefaktorového ověřování.
+Tyto zásady založené na rizicích, kromě dalších [ovládacích prvků podmíněného přístupu,](../../active-directory/active-directory-conditional-access-azure-portal.md) které jsou poskytovány službou Azure Active Directory a [EMS](../../active-directory/active-directory-conditional-access-azure-portal.md), mohou automaticky blokovat nebo nabízet adaptivní nápravné akce, které zahrnují resetování hesla a vynucení vícefaktorového ověřování.
 
 ### <a name="identity-protection-capabilities"></a>Možnosti ochrany identity
 
-Azure Active Directory Identity Protection je více než Nástroj pro monitorování a vytváření sestav. Chcete-li chránit identity vaší organizace, můžete nakonfigurovat zásady založené na rizicích, které automaticky reagují na zjištěné problémy v případě dosažení zadané úrovně rizika. Tyto zásady, kromě dalších ovládacích prvků podmíněného přístupu poskytovaných Azure Active Directory a EMS, můžou automaticky blokovat nebo iniciovat adaptivní nápravné akce, včetně resetování hesel a vynucení vícefaktorového ověřování.
+Azure Active Directory Identity Protection je víc než jen nástroj pro monitorování a vytváření sestav. Chcete-li chránit identity vaší organizace, můžete nakonfigurovat zásady založené na rizicích, které automaticky reagují na zjištěné problémy po dosažení zadané úrovně rizika. Tyto zásady, kromě jiných ovládacích prvků podmíněného přístupu poskytovaných službou Azure Active Directory a EMS, mohou automaticky blokovat nebo iniciovat adaptivní nápravné akce, včetně resetování hesla a vynucení vícefaktorového ověřování.
 
-Příklady některých způsobů, jak může Azure Identity Protection pomáhat zabezpečit vaše účty a identity, zahrnují:
+Mezi příklady některých způsobů, jak azure identity protection může pomoci zabezpečit vaše účty a identity patří:
 
-[Zjišťování detekcí rizik a rizikových účtů](../../active-directory/identity-protection/overview.md)
--   Zjišťuje šest typů detekce rizik pomocí strojového učení a heuristických pravidel.
--   Vypočítat úrovně rizika uživatele.
--   Poskytněte vlastní doporučení pro zlepšení celkového stav zabezpečení tím, že zvýrazníte slabá místa.
+[Detekce detekce rizik a rizikových účtů](../../active-directory/identity-protection/overview.md)
+-   Detekujte šest typů detekce rizik pomocí strojového učení a heuristických pravidel.
+-   Vypočítejte úrovně rizika uživatele.
+-   Poskytněte vlastní doporučení ke zlepšení celkového stavu zabezpečení zvýrazněním chyb zabezpečení.
 
-[Zkoumání zjištění rizik](../../active-directory/identity-protection/overview.md)
+[Zkoumání zjišťování rizik](../../active-directory/identity-protection/overview.md)
 -   Odesílat oznámení pro detekci rizik.
 -   Prozkoumejte detekci rizik pomocí relevantních a kontextových informací.
 -   Poskytněte základní pracovní postupy pro sledování vyšetřování.
--   Poskytněte snadný přístup k opravám, jako je resetování hesla.
+-   Poskytněte snadný přístup k nápravným akcím, jako je resetování hesla.
 
-[Zásady podmíněného přístupu na základě rizik](../../active-directory/identity-protection/overview.md)
--   Omezení rizikových přihlášení blokováním přihlášení nebo vyžádáním výzev pro službu Multi-Factor Authentication.
--   Blokování nebo zabezpečení rizikových uživatelských účtů.
--   Vyžaduje, aby se uživatelé zaregistrovali pro službu Multi-Factor Authentication.
+[Zásady podmíněného přístupu založené na rizicích](../../active-directory/identity-protection/overview.md)
+-   Zmírňte riskantní přihlášení blokováním přihlášení nebo vyžadováním problémů s vícefaktorovým ověřováním.
+-   Blokovat nebo zabezpečit rizikové uživatelské účty.
+-   Vyžadovat, aby se uživatelé registrovali pro vícefaktorové ověřování.
 
 ### <a name="azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management
 
-S [Azure Active Directory Privileged identity managementem (PIM)](../../active-directory/privileged-identity-management/pim-configure.md)můžete spravovat, řídit a monitorovat přístup v rámci vaší organizace. Tato funkce zahrnuje přístup k prostředkům v Azure AD a dalších online služby Microsoftu, jako je například Office 365 nebo Microsoft Intune.
+Pomocí [správy privilegovaných identit (PIM) služby Azure Active Directory](../../active-directory/privileged-identity-management/pim-configure.md)můžete spravovat, řídit a monitorovat přístup v rámci vaší organizace. Tato funkce zahrnuje přístup k prostředkům ve službě Azure AD a dalších online službách Microsoftu, jako je Office 365 nebo Microsoft Intune.
 
-![Diagram Azure AD Privileged Identity Management](./media/threat-detection/azure-threat-detection-fig2.png)
+![Diagram správy privilegovaných identit Azure AD](./media/threat-detection/azure-threat-detection-fig2.png)
 
 PIM vám pomůže:
 
--   Získejte výstrahy a sestavy týkající se správců služby Azure AD a řízení přístupu JIT (just-in-time) do Microsoftu online služby, jako je například Office 365 a Intune.
+-   Získejte upozornění a sestavy o správcích Azure AD a přístupu pro správu microsoftu online službám, jako jsou Office 365 a Intune.
 
--   Získejte sestavy o historii přístupu správce a změnách v přiřazeních správce.
+-   Získejte sestavy o historii přístupu správce a změnách v přiřazeních správců.
 
--   Získejte výstrahy týkající se přístupu k privilegované roli.
+-   Získejte upozornění na přístup k privilegované roli.
 
 ## <a name="azure-monitor-logs"></a>Protokoly služby Azure Monitor
 
-[Protokoly Azure monitor](../../azure-monitor/index.yml) jsou cloudové řešení Microsoftu pro správu IT, které pomáhá spravovat a chránit místní i cloudovou infrastrukturu. Vzhledem k tomu, že protokoly Azure Monitor jsou implementovány jako cloudová služba, můžete ji rychle provozovat a s minimálními investicemi do služeb infrastruktury. Nové funkce zabezpečení se dodávají automaticky a šetří průběžné údržby a náklady na upgrade.
+[Protokoly Azure Monitoru](../../azure-monitor/index.yml) je cloudové řešení pro správu IT od Microsoftu, které vám pomůže spravovat a chránit místní a cloudovou infrastrukturu. Vzhledem k tomu, že protokoly Azure Monitor uplatní jako cloudovou službu, můžete mít zprovoznění a zprovoznění rychle s minimálními investicemi do infrastrukturních služeb. Nové funkce zabezpečení jsou dodávány automaticky, což šetří průběžné náklady na údržbu a upgrade.
 
-Kromě poskytování cenných služeb vlastním způsobem Azure Monitor protokoly mohou integrovat s součástmi nástroje System Center, jako je například [System Center Operations Manager](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/), a rozšířit tak stávající investice do cloudu do cloudu. Protokoly nástroje System Center a Azure Monitor můžou spolupracovat a poskytovat kompletní hybridní prostředí pro správu.
+Kromě poskytování cenných služeb samostatně, protokoly Azure Monitor můžete integrovat s součástmi System Center, jako je [například System Center Operations Manager](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/), rozšířit své stávající investice do správy zabezpečení do cloudu. Protokoly System Center a Azure Monitor můžou spolupracovat a poskytovat tak kompletní hybridní správu.
 
-### <a name="holistic-security-and-compliance-posture"></a>Holistický zabezpečení a dodržování předpisů stav
+### <a name="holistic-security-and-compliance-posture"></a>Holistické zabezpečení a dodržování předpisů
 
-[Řídicí panel Log Analytics Security and Audit](../../security-center/security-center-intro.md) poskytuje ucelený přehled o stav zabezpečení IT vaší organizace s integrovanými vyhledávacími dotazy pro významné problémy, které vyžadují vaši pozornost. Řídicí panel Security and Audit je domovská obrazovka pro všechno, co souvisí se zabezpečením v protokolech Azure Monitor. Poskytuje celkový přehled o stavu zabezpečení vašich počítačů. Můžete také zobrazit všechny události za posledních 24 hodin, 7 dní nebo jakýkoli jiný vlastní časový rámec.
+[Řídicí panel Zabezpečení a audit služby Log Analytics](../../security-center/security-center-intro.md) poskytuje komplexní přehled o stavu zabezpečení IT vaší organizace s integrovanými vyhledávacími dotazy na významné problémy, které vyžadují vaši pozornost. Řídicí panel zabezpečení a auditování je domovskou obrazovkou pro vše, co souvisí se zabezpečením v protokolech Azure Monitoru. Poskytuje celkový přehled o stavu zabezpečení vašich počítačů. Můžete také zobrazit všechny události za posledních 24 hodin, 7 dní nebo jakýkoli jiný vlastní časový rámec.
 
-Protokoly Azure Monitor vám pomůžou rychle a snadno pochopit celkové staví zabezpečení jakéhokoli prostředí, a to vše v kontextu provozu IT, včetně posouzení aktualizací softwaru, antimalwarového posouzení a standardních hodnot konfigurace. Data protokolu zabezpečení jsou snadno dostupná pro zjednodušení procesů auditu zabezpečení a dodržování předpisů.
+Protokoly Azure Monitoru vám pomohou rychle a snadno pochopit celkový stav zabezpečení libovolného prostředí, a to vše v kontextu operací IT, včetně vyhodnocení aktualizací softwaru, antimalwarového hodnocení a směrných plánů konfigurace. Data protokolu zabezpečení jsou snadno přístupná pro zjednodušení procesů auditu zabezpečení a dodržování předpisů.
 
-![Řídicí panel Security and Audit Log Analytics](./media/threat-detection/azure-threat-detection-fig3.jpg)
+![Řídicí panel Zabezpečení a audit analýzy protokolů](./media/threat-detection/azure-threat-detection-fig3.jpg)
 
-Řídicí panel Security and Audit Log Analytics se organizuje do čtyř hlavních kategorií:
+Řídicí panel Zabezpečení a audit analýzy protokolů je uspořádán do čtyř hlavních kategorií:
 
--   **Domény zabezpečení**: umožňuje podrobněji prozkoumat záznamy zabezpečení v průběhu času. přístup k posouzení malwaru; posouzení aktualizací; zobrazení informací o zabezpečení, identitě a přístupu k síti; Zobrazit počítače s událostmi zabezpečení; a rychlý přístup k řídicímu panelu Azure Security Center.
+-   **Domény zabezpečení**: Umožňuje dále zkoumat záznamy zabezpečení v průběhu času; přístup k hodnocení malwaru; hodnocení aktualizací; zobrazení informací o zabezpečení sítě, identitě a přístupu; zobrazení počítačů s událostmi zabezpečení; a rychle přistupovat k řídicímu panelu Azure Security Center.
 
--   **Významné problémy**: umožňuje rychle identifikovat počet aktivních problémů a závažnost problémů.
+-   **Významné problémy**: Umožňuje rychle identifikovat počet aktivních problémů a závažnost problémů.
 
--   **Detekce (Preview)** : umožňuje identifikovat vzory útoků tím, že zobrazuje výstrahy zabezpečení při jejich výskytu na vašich prostředcích.
+-   **Detekce (náhled)**: Umožňuje identifikovat vzory útoku zobrazením výstrah zabezpečení, jak k nim dochází proti vašim prostředkům.
 
--   **Analýza hrozeb**: umožňuje identifikovat vzory útoků tím, že zobrazuje celkový počet serverů s odchozím škodlivým provozem IP, typ škodlivé hrozby a mapa umístění IP adres.
+-   **Threat Intelligence**: Umožňuje identifikovat vzory útoků zobrazením celkového počtu serverů s odchozím škodlivým přenosem IP adres, typem škodlivé hrozby a mapou umístění IP adres.
 
--   **Běžné dotazy na zabezpečení**: seznam nejběžnějších bezpečnostních dotazů, které můžete použít k monitorování vašeho prostředí. Když vyberete libovolný dotaz, otevře se podokno hledání a zobrazí se výsledky tohoto dotazu.
+-   **Běžné dotazy zabezpečení**: Uvádí nejběžnější dotazy zabezpečení, které můžete použít ke sledování vašeho prostředí. Když vyberete libovolný dotaz, otevře se podokno Hledání a zobrazí výsledky tohoto dotazu.
 
-### <a name="insight-and-analytics"></a>Přehledy a analýzy
-V centru [Azure monitor protokolů](../../log-analytics/log-analytics-queries.md) je úložiště hostované v Azure.
+### <a name="insight-and-analytics"></a>Přehled a analytika
+V centru [protokolů Azure Monitor](../../log-analytics/log-analytics-queries.md) je úložiště, které hostuje Azure.
 
-![Diagram Insight and Analytics](./media/threat-detection/azure-threat-detection-fig4.png)
+![Diagram přehledů a analýz](./media/threat-detection/azure-threat-detection-fig4.png)
 
-Data se shromažďují do úložiště z připojených zdrojů tak, že se nakonfigurují zdroje dat a přidávají řešení do vašeho předplatného.
+Data do úložiště můžete shromažďovat z připojených zdrojů konfigurací zdrojů dat a přidáním řešení do předplatného.
 
-![Řídicí panel protokolů Azure Monitor](./media/threat-detection/azure-threat-detection-fig5.png)
+![Řídicí panel Azure Monitor protokoluje](./media/threat-detection/azure-threat-detection-fig5.png)
 
-Zdroje dat a řešení každý vytvoří samostatné typy záznamů s vlastní sadou vlastností, ale můžete je i nadále analyzovat v dotazech do úložiště. Stejné nástroje a metody můžete použít pro práci s nejrůznějšími daty, která jsou shromažďována různými zdroji.
+Zdroje dat a řešení každý vytvořit samostatné typy záznamů s vlastní sadou vlastností, ale stále můžete analyzovat společně v dotazech do úložiště. Můžete použít stejné nástroje a metody pro práci s různými daty, která jsou shromažďována z různých zdrojů.
 
 
-Většina vašich interakcí s protokoly Azure Monitor je prostřednictvím Azure Portal, která se spouští v jakémkoli prohlížeči a poskytuje přístup k nastavení konfigurace a několika nástrojům pro analýzy shromážděných dat a práci s nimi. Z portálu můžete použít:
-* [Hledání v protokolu](../../log-analytics/log-analytics-queries.md) , kde můžete vytvářet dotazy pro analýzu shromážděných dat.
-* [Řídicí panely](../../azure-monitor/learn/tutorial-logs-dashboards.md), které můžete přizpůsobit pomocí grafických zobrazení vašich nejcennějších hledání.
-* [Řešení](../../monitoring/monitoring-solutions.md), která poskytují další funkce a analytické nástroje.
+Většina vaší interakce s protokoly Azure Monitoru probíhá prostřednictvím portálu Azure, který běží v libovolném prohlížeči a poskytuje vám přístup k nastavení konfigurace a k několika nástrojům pro analýzu a interakci se shromážděnými daty. Z portálu můžete použít:
+* [Protokol vyhledávání,](../../log-analytics/log-analytics-queries.md) kde vytvářet dotazy k analýze shromážděných dat.
+* [Řídicí panely](../../azure-monitor/learn/tutorial-logs-dashboards.md), které si můžete přizpůsobit pomocí grafického zobrazení nejcennějších vyhledávání.
+* [řešení](../../monitoring/monitoring-solutions.md), která poskytují další nástroje pro funkčnost a analýzu.
 
 ![Analytické nástroje](./media/threat-detection/azure-threat-detection-fig6.png)
 
-Řešení přidávají funkce do protokolů Azure Monitor. Primárně běží v cloudu a poskytují analýzu dat, která jsou shromážděna v úložišti Log Analytics. Řešení mohou také definovat nové typy záznamů, které mají být shromažďovány, které lze analyzovat pomocí hledání v protokolu nebo pomocí dalšího uživatelského rozhraní, které řešení poskytuje v řídicím panelu Log Analytics.
+Řešení přidávají funkce do protokolů Azure Monitoru. Primárně běží v cloudu a poskytují analýzu dat, která jsou shromažďována v úložišti analýzy protokolů. Řešení může také definovat nové typy záznamů, které mají být shromažďovány, které lze analyzovat pomocí hledání protokolu nebo pomocí dalšího uživatelského rozhraní, které poskytuje řešení v řídicím panelu analýzy protokolů.
 
-Řídicí panel Security and Audit je příkladem těchto typů řešení.
+Příkladem těchto typů řešení je řídicí panel Zabezpečení a audit.
 
-### <a name="automation-and-control-alert-on-security-configuration-drifts"></a>Automatizace a řízení: výstraha o posunech konfigurace zabezpečení
+### <a name="automation-and-control-alert-on-security-configuration-drifts"></a>Automatizace a řízení: Výstraha na posuny konfigurace zabezpečení
 
-Azure Automation automatizuje procesy správy pomocí runbooků, které jsou založené na PowerShellu a běží v cloudu. Runbooky se mohou provádět také na serveru ve vašem místním datovém centru a mohou spravovat místní prostředky. Azure Automation poskytuje správu konfigurace pomocí prostředí PowerShell pro konfiguraci požadovaného stavu (DSC).
+Azure Automation automatizuje administrativní procesy pomocí runbooků, které jsou založené na PowerShellu a běží v cloudu. Runbooky se mohou provádět také na serveru ve vašem místním datovém centru a mohou spravovat místní prostředky. Azure Automation poskytuje správu konfigurace pomocí konfigurace požadovaného stavu prostředí PowerShell (DSC).
 
-![Diagram Azure Automation](./media/threat-detection/azure-threat-detection-fig7.png)
+![Diagram automatizace Azure](./media/threat-detection/azure-threat-detection-fig7.png)
 
-Můžete vytvářet a spravovat prostředky DSC hostované v Azure a použít je v cloudových a místních systémech. Díky tomu můžete definovat a automaticky vymáhat jejich konfiguraci nebo získat sestavy na posun, aby se zajistilo, že konfigurace zabezpečení zůstanou v zásadách.
+Můžete vytvářet a spravovat prostředky DSC, které jsou hostované v Azure, a použít je v cloudových a místních systémech. Tímto způsobem můžete definovat a automaticky vynucovat jejich konfiguraci nebo získat sestavy na drift, abyste zajistili, že konfigurace zabezpečení zůstanou v rámci zásad.
 
-## <a name="azure-security-center"></a>Centrum zabezpečení Azure
+## <a name="azure-security-center"></a>Azure Security Center
 
-Azure Security Center pomáhá chránit vaše prostředky Azure. Poskytuje integrované monitorování zabezpečení a správu zásad napříč předplatnými Azure. V rámci služby můžete definovat zásady pro větší členitost v předplatných Azure i [skupinám prostředků](../../azure-resource-manager/management/manage-resources-portal.md) .
+Azure Security Center pomáhá chránit vaše prostředky Azure. Poskytuje integrované monitorování zabezpečení a správu zásad napříč vašimi předplatnými Azure. V rámci služby můžete definovat police proti předplatným Azure a [skupiny prostředků](../../azure-resource-manager/management/manage-resources-portal.md) pro větší rozlišovací schopnost.
 
-![Diagram Azure Security Center](./media/threat-detection/azure-threat-detection-fig8.png)
+![Diagram Centra zabezpečení Azure](./media/threat-detection/azure-threat-detection-fig8.png)
 
 Výzkumníci v oblasti zabezpečení ze společnosti Microsoft neustále vyhledávají nové hrozby. Mají přístup k rozsáhlé sadě telemetrických údajů získávaných díky globálního prezenci společnosti Microsoft v cloudových i místních prostředích. Tento rozsáhlý a různorodý soubor datových sad umožňuje společnosti Microsoft objevovat nová schémata a trendy útoků v rámci jejích místních produktů pro zákazníky a podniky a rovněž i v rámci online služeb.
 
-Security Center tak můžou rychle aktualizovat algoritmy detekce, jako by útočníci vydávat nové a stále důmyslnější zneužití. Tento přístup vám pomůže udržet si krok s rychlým přesunutím ohroženého prostředí.
+Security Center tak může rychle aktualizovat své detekční algoritmy, protože útočníci vydávají nové a stále sofistikovanější exploity. Tento přístup vám pomůže držet krok s rychle se pohybujícím prostředím hrozeb.
 
-![Security Center detekce hrozeb](./media/threat-detection/azure-threat-detection-fig9.jpg)
+![Detekce hrozeb centra zabezpečení](./media/threat-detection/azure-threat-detection-fig9.jpg)
 
-Detekce hrozeb ve službě Security Center funguje tak, že se automaticky shromažďují informace o zabezpečení ze všech prostředků Azure, ze sítě a připojených partnerských řešení. Analyzuje tyto informace a koreluje informace z různých zdrojů, aby bylo možné identifikovat hrozby.
+Detekce hrozeb ve službě Security Center funguje tak, že se automaticky shromažďují informace o zabezpečení ze všech prostředků Azure, ze sítě a připojených partnerských řešení. Analyzuje tyto informace, koreluje informace z více zdrojů, aby identifikoval hrozby.
 
 U výstrah zabezpečení se ve službě Security Center stanoví priority spolu s doporučením, jak danou hrozbu vyřešit.
 
-Služba Security Center využívá pokročilou analýzu zabezpečení, která daleko překračuje možnosti detekce založené na signaturách či příznacích. Průlomy v technologiích pro velké objemy dat a [strojové učení](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/) se používají k vyhodnocení událostí napříč celými prostředky infrastruktury cloudu. Pokročilá analýza dokáže detekovat hrozby, které by nebylo možné identifikovat prostřednictvím ručních přístupů a předpovědi vývoje útoků. Tyto typy analýz zabezpečení jsou pokryté v dalších oddílech.
+Služba Security Center využívá pokročilou analýzu zabezpečení, která daleko překračuje možnosti detekce založené na signaturách či příznacích. Průlomy v technologiích velkých objemů dat a [strojového učení](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/) se používají k vyhodnocení událostí v celé cloudové struktuře. Pokročilá analytika dokáže detekovat hrozby, které by nebylo možné identifikovat pomocí manuálních přístupů a předpovídání vývoje útoků. Tyto typy analýzy zabezpečení jsou popsány v dalších částech.
 
-### <a name="threat-intelligence"></a>Inteligentní analýza hrozeb
+### <a name="threat-intelligence"></a>Analýza hrozeb
 
-Microsoft má přístup k obrovské množství globálních analýz hrozeb.
+Společnost Microsoft má přístup k obrovskému množství globálních informací o hrozbách.
 
-Telemetrie se nachází z různých zdrojů, jako je Azure, Office 365, Microsoft CRM Online, Microsoft Dynamics AX, outlook.com, MSN.com, DCU (Microsoft Digital Zločins Unit) a Microsoft Security Response Center (MSRC).
+Telemetrie proudí z různých zdrojů, jako je Azure, Office 365, Microsoft CRM online, Microsoft Dynamics AX, outlook.com, MSN.com, Microsoft Digital Crimes Unit (DCU) a Microsoft Security Response Center (MSRC).
 
 ![Zjištění analýzy hrozeb](./media/threat-detection/azure-threat-detection-fig10.jpg)
 
-Výzkumníki také dostanou informace analýzy hrozeb, které jsou sdíleny mezi hlavními poskytovateli cloudových služeb, a přihlásí se k odběru kanálů pro analýzu hrozeb od třetích stran. Služba Azure Security Center vás pomocí těchto informací může upozornit na hrozby známých útočníků. Možné příklady:
+Výzkumní pracovníci také dostávají informace o informacích o hrozbách, které jsou sdíleny mezi hlavními poskytovateli cloudových služeb, a předplatili informační kanály pro analýzu hrozeb od třetích stran. Služba Azure Security Center vás pomocí těchto informací může upozornit na hrozby známých útočníků. Možné příklady:
 
--   Využití **síly Machine Learning**: Azure Security Center má přístup k obrovskému množství dat o aktivitě cloudové sítě, které se dá použít ke zjišťování hrozeb cílících na nasazení Azure.
+-   **Využití výkonu strojového učení**: Azure Security Center má přístup k obrovskému množství dat o aktivitách cloudové sítě, které lze použít k detekci hrozeb zaměřených na vaše nasazení Azure.
 
--   **Detekce hrubou silou**: strojové učení slouží k vytvoření historických vzorů pokusů o vzdálený přístup, které umožňuje detekovat útoky hrubou silou proti Secure Shell (SSH), protokol RDP (Remote Desktop Protocol) (RDP) a portům SQL.
+-   **Detekce hrubé síly**: Strojové učení se používá k vytvoření historického vzoru pokusů o vzdálený přístup, který umožňuje detekovat útoky hrubou silou proti secure shellu (SSH), protokolu RDP (Remote Desktop Protocol) a portům SQL.
 
--   **Detekce odchozích DDoS a botnetu**: běžným cílem útoků, které cílí na cloudové prostředky, je použití výpočetní síly těchto prostředků ke spouštění dalších útoků.
+-   **Odchozí Detekce DDoS a botnetu**: Běžným cílem útoků, které cílí na cloudové prostředky, je použít výpočetní sílu těchto prostředků k provádění dalších útoků.
 
--   **Nové analytické servery a**virtuální počítače pro chování: po ohrožení bezpečnosti serveru nebo virtuálního počítače využívají útočníci širokou škálu technik pro spouštění škodlivého kódu v tomto systému, přičemž se vyhnete detekci, zajištění Persistence a už nemusí komplikovaně řízení zabezpečení.
+-   **Nové servery behaviorální analýzy a virtuální počítače**: Po ohrožení zabezpečení serveru nebo virtuálního počítače útočníci používají širokou škálu technik pro spuštění škodlivého kódu v tomto systému a zároveň se vyhnou detekci, zajistí trvalost a vyloupou ovládací prvky zabezpečení.
 
--   **Azure SQL Database detekce hrozeb**: detekce hrozeb pro Azure SQL Database, která identifikuje neobvyklé databázové aktivity, které označují neobvyklé a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití.
+-   **Azure SQL Database Threat Detection**: Detekce hrozeb pro Azure SQL Database, která identifikuje neobvyklé databázové aktivity, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití.
 
 ### <a name="behavioral-analytics"></a>Behaviorální analýza
 
 Behaviorální analýza je technika, která analyzuje a porovnává data se sadou známých schémat. Tato schémata však nepředstavují jednoduché příznaky. Určují se prostřednictvím komplexních algoritmů strojového učení, které se aplikují na rozsáhlé datové sady.
 
-![Zjištění chování při analýze](./media/threat-detection/azure-threat-detection-fig11.jpg)
+![Zjištění behaviorální analýzy](./media/threat-detection/azure-threat-detection-fig11.jpg)
 
-Vzorce jsou také určeny pečlivou analýzou škodlivých chování zkušenými analytiky. Azure Security Center může pomocí analýzy chování identifikovat ohrožené prostředky na základě analýzy protokolů virtuálních počítačů, protokolů virtuálních síťových zařízení, protokolů prostředků infrastruktury, výpisů stavu systému a dalších zdrojů.
+Vzory jsou také určeny pečlivou analýzou škodlivého chování odbornými analytiky. Azure Security Center můžete použít behaviorální analýzy k identifikaci ohrožených prostředků na základě analýzy protokolů virtuálních strojů, protokoly virtuálních síťových zařízení, protokoly prostředků infrastruktury, výpisy stavu systému a další zdroje.
 
-Kromě toho jsou vzory korelace s jinými signály, aby kontrolovaly podpůrný důkaz pro rozšířenou kampaň. Tato korelace pomáhá identifikovat události, které jsou konzistentní se zavedenými ukazateli ohrožení zabezpečení.
+Kromě toho jsou vzorce korelovány s dalšími signály, aby se zjistily, zda nejsou k dispozici podpůrné důkazy o rozsáhlé kampani. Tato korelace pomáhá identifikovat události, které jsou konzistentní se zavedenými ukazateli ohrožení zabezpečení.
 
 Možné příklady:
--   **Podezřelé spouštění procesů:** Útočníci používají řadu technik k tajnému spouštění škodlivého softwaru. Útočník by například mohl dát malwaru stejný název jako legitimní systémové soubory, ale umístit tyto soubory do alternativního umístění, použít název, který je podobný jako neškodný soubor, nebo maskovat příponu souboru na hodnotu true. Security Center modely chování procesu a monitorují provádění procesů, aby bylo možné zjistit odlehlé hodnoty, jako jsou tyto.
+-   **Podezřelé spouštění procesů:** Útočníci používají řadu technik k tajnému spouštění škodlivého softwaru. Útočník může například dát malwaru stejné názvy jako legitimní systémové soubory, ale umístit tyto soubory do alternativního umístění, použít název, který je podobný názvu neškodného souboru, nebo maskovat skutečnou příponu souboru. Modely Centra zabezpečení zpracovávají chování a monitorují provádění procesů, aby zjistily odlehlé hodnoty, jako jsou tyto.
 
--   **Skrytý malware a pokusy o zneužití**: důmyslný malware může obejít tradiční antimalwarové produkty tím, že nikdy nezapisuje na disk nebo nešifruje softwarové komponenty uložené na disku. Takový malware je však možné zjistit pomocí analýzy paměti, protože malware musí ponechat trasování v paměti, aby fungoval. Pokud dojde k chybě softwaru, ve výpisu stavu systému se zaznamená část paměti v době selhání. Díky analýze paměti ve výpisu stavu systému může Azure Security Center detekovat techniky používané pro zneužití ohrožení zabezpečení softwaru, přístup k důvěrným datům a nenápadně trvalý v napadeném počítači, aniž by to ovlivnilo výkon vašeho počítačové.
+-   **Skrytý malware a pokusy o zneužití**: Sofistikovaný malware se může vyhnout tradičním antimalwarovým produktům tím, že nikdy nezapisuje na disk nebo šifruje softwarové komponenty uložené na disku. Takový malware však může být detekován pomocí analýzy paměti, protože malware musí zanechat stopy v paměti, aby fungoval. Pokud dojde k chybě softwaru, ve výpisu stavu systému se zaznamená část paměti v době selhání. Analýzou paměti v výpisu stavu systému Azure centrum zabezpečení dokáže detekovat techniky používané ke zneužití zranitelnosti v softwaru, přístup u důvěrných dat a tajně přetrvávat v kompromitovaném počítači, aniž by to ovlivnilo výkon vašeho počítače. Stroj.
 
--   **Boční pohyb a interní rekognoskace**: Pokud chcete zachovat napadenou síť a vyhledat a získat cenná data, útočníci se často snaží přesunout z napadeného počítače na jiné v rámci stejné sítě. Security Center monitoruje aktivity procesu a přihlášení ke zjištění pokusů o rozšíření dostane útočníka v rámci sítě, jako je například spuštění vzdáleného příkazu, zjišťování sítě a výčet účtů.
+-   **Boční pohyb a vnitřní průzkum**: Chcete-li zachovat v ohrožené síti a lokalizovat a získat cenná data, útočníci se často pokoušejí přesunout bočně z ohroženého počítače k ostatním v rámci stejné sítě. Security Center monitoruje aktivity procesů a přihlášení a zjišťuje pokusy o rozšíření základny útočníka v síti, jako je například vzdálené spuštění příkazu, zjišťování sítě a výčet účtu.
 
--   **Škodlivé skripty PowerShellu**: útočníci můžou použít prostředí PowerShell k provádění škodlivého kódu na cílových virtuálních počítačích pro různé účely. Služba Security Center kontroluje aktivitu prostředí PowerShell a hledá známky podezřelé aktivity.
+-   **Škodlivé skripty prostředí PowerShell**: PowerShell mohou útočníci používat ke spuštění škodlivého kódu na cílových virtuálních počítačích pro různé účely. Služba Security Center kontroluje aktivitu prostředí PowerShell a hledá známky podezřelé aktivity.
 
--   **Odchozí útoky:** Útočníci často cílí na cloudové prostředky s cílem využít je k dalším útokům. Ohrožené virtuální počítače mohou být například použity ke spuštění útoků hrubou silou proti jiným virtuálním počítačům, k odesílání spamu nebo k prohledávání otevřených portů a dalších zařízení na internetu. Služba Security Center pomocí strojového učení, které uplatňuje na síťový provoz, dokáže detekovat odchozí síťovou komunikaci vybočující z normy. Když se zjistí spam, Security Center taky koreluje neobvyklý e-mailový přenos pomocí inteligentních dat z Office 365 a určí, jestli se e-mail nejspíš nekalé nebo výsledek legitimní e-mailové kampaně.
+-   **Odchozí útoky:** Útočníci často cílí na cloudové prostředky s cílem využít je k dalším útokům. Ohrožené virtuální počítače mohou být například použity ke spuštění útoků hrubou silou proti jiným virtuálním počítačům, k odesílání nevyžádané pošty nebo skenování otevřených portů a dalších zařízení na internetu. Služba Security Center pomocí strojového učení, které uplatňuje na síťový provoz, dokáže detekovat odchozí síťovou komunikaci vybočující z normy. Když je zjištěn spam, Security Center také koreluje neobvyklý e-mailový provoz s inteligencí z Office 365, aby zjistil, zda je pošta pravděpodobně hanebná nebo výsledek legitimní e-mailové kampaně.
 
 ### <a name="anomaly-detection"></a>Detekce anomálií
 
-Služba Azure Security Center také identifikuje hrozby pomocí detekce anomálií. Oproti behaviorální analýze (která závisí na známých schématech odvozovaných z velkých datových sad), je detekce anomálií více „personalizovaná“ a zaměřuje se na standardní hodnoty specifické pro vaše nasazení. Machine Learning se používá k určení normální aktivity pro vaše nasazení a pak se generují pravidla, která definují izolované podmínky, které by mohly představovat událost zabezpečení. Zde naleznete příklad:
+Služba Azure Security Center také identifikuje hrozby pomocí detekce anomálií. Oproti behaviorální analýze (která závisí na známých schématech odvozovaných z velkých datových sad), je detekce anomálií více „personalizovaná“ a zaměřuje se na standardní hodnoty specifické pro vaše nasazení. Strojové učení se používá k určení normální aktivity pro vaše nasazení a pak jsou generována pravidla k definování mimořádných podmínek, které by mohly představovat událost zabezpečení. Zde naleznete příklad:
 
--   **Příchozí útoky pomocí protokolu RDP/SSH**: vaše nasazení můžou mít každý den zaneprázdněné virtuální počítače s velkým množstvím přihlašovacích údajů a jiné virtuální počítače, které mají v nějakém případě nějaké přihlašovací údaje. Azure Security Center může pro tyto virtuální počítače určit aktivitu pro přihlašovací údaje směrného plánu a pomocí strojového učení definovat informace o běžných přihlašovacích aktivitách. Pokud dojde k nesouladu s směrným plánem definovaným pro vlastnosti související s přihlášením, může být vygenerována výstraha. A strojové učení tu zase určuje, co je významné.
+-   **Příchozí útoky hrubou silou RDP/SSH**: Vaše nasazení mohou mít zaneprázdněné virtuální počítače s mnoha přihlášeními každý den a dalšími virtuálními počítači, které mají málo přihlášení, pokud existují. Azure Security Center můžete určit základní přihlašovací aktivity pro tyto virtuální počítače a pomocí strojového učení definovat kolem běžné aktivity přihlášení. Pokud dojde k rozporu se směrným plánem definovaným pro charakteristiky související s přihlášením, může být generována výstraha. A strojové učení tu zase určuje, co je významné.
 
 ### <a name="continuous-threat-intelligence-monitoring"></a>Průběžné monitorování analýzy hrozeb
 
-Azure Security Center pracuje se službou Security Research a týmy pro datové vědy po celém světě, které neustále monitorují změny v rámci hrozby. To zahrnuje následující iniciativy:
+Azure Security Center spolupracuje s týmy pro výzkum zabezpečení a datové vědy po celém světě, které průběžně monitorují změny v prostředí hrozeb. To zahrnuje následující iniciativy:
 
--   **Monitorování analýzy hrozeb**: Analýza hrozeb zahrnuje mechanismy, ukazatele, dopady a Rady s případnými názory na stávající nebo nově vznikající hrozby. Tyto informace jsou sdílené v komunitě zabezpečení a Microsoft neustále monitoruje kanály o hrozbách hrozeb z interních a externích zdrojů.
+-   **Sledování analýzy hrozeb**: Analýza hrozeb zahrnuje mechanismy, ukazatele, důsledky a užitečné rady o stávajících nebo vznikajících hrozbách. Tyto informace jsou sdíleny v komunitě zabezpečení a společnost Microsoft průběžně monitoruje kanály analýzy hrozeb z interních a externích zdrojů.
 
--   **Sdílení signálu**: přehledy z bezpečnostních týmů v rámci širokého portfolia Microsoftu pro cloudové a místní služby, servery a zařízení koncového bodu klienta se sdílejí a analyzují.
+-   **Sdílení signálu**: Přehledy od bezpečnostních týmů v širokém portfoliu cloudových a místních služeb, serverů a koncových zařízení klienta společnosti Microsoft jsou sdíleny a analyzovány.
 
--   **Odborníci na zabezpečení Microsoftu**: nepřetržitá zapojení s týmy v rámci Microsoftu, které fungují ve specializovaných polích zabezpečení, jako je forenzní a detekce útoků na web.
+-   **Specialisté na zabezpečení společnosti Microsoft**: Pokračující spolupráce s týmy napříč Microsoftem, které pracují ve specializovaných oblastech zabezpečení, jako je forenzní analýza a detekce webových útoků.
 
--   **Optimalizace detekce**: algoritmy jsou spouštěny proti skutečným zákaznickým datovým sadám a výzkumníki zabezpečení pracují se zákazníky k ověření výsledků. Pravdivě a falešně pozitivní výsledky pak slouží ke zlepšování algoritmů strojového učení.
+-   **Optimalizace detekce**: Algoritmy jsou spuštěny proti skutečným datovým souborům zákazníků a výzkumní pracovníci zabezpečení spolupracují se zákazníky na ověření výsledků. Pravdivě a falešně pozitivní výsledky pak slouží ke zlepšování algoritmů strojového učení.
 
-Tato kombinovaná snaha má za následek nové a vylepšené detekce, na které můžete okamžitě využít výhody. K dispozici není žádná akce, kterou je potřeba provést.
+Tyto společné úsilí vyvrcholí novými a vylepšenými detekcemi, které můžete okamžitě využít. Není tu žádná akce, kterou bys mohl podniknout.
 
-## <a name="advanced-threat-detection-features-other-azure-services"></a>Funkce Rozšířené detekce hrozeb: další služby Azure
+## <a name="advanced-threat-detection-features-other-azure-services"></a>Pokročilé funkce detekce hrozeb: Další služby Azure
 
-### <a name="virtual-machines-microsoft-antimalware"></a>Virtuální počítače: Microsoft Antimalware
+### <a name="virtual-machines-microsoft-antimalware"></a>Virtuální počítače: Microsoft antimalware
 
-[Microsoft Antimalware](antimalware.md) pro Azure je jedním z agentů pro aplikace a klientská prostředí navržená tak, aby běžela na pozadí bez zásahu člověka. Ochranu můžete nasadit v závislosti na potřebách úloh aplikací, a to buď pomocí základní zabezpečené, nebo pokročilé vlastní konfigurace, včetně antimalwarového monitorování. Azure antimalware je možnost zabezpečení pro virtuální počítače Azure, která je automaticky nainstalovaná na všech virtuálních počítačích Azure PaaS.
+[Antimalwarový malware Microsoftu](antimalware.md) pro Azure je řešení pro jednoho agenta pro aplikace a prostředí tenantů, které je navrženo tak, aby běželo na pozadí bez lidského zásahu. Ochranu můžete nasadit na základě potřeb úloh aplikace pomocí základní vlastní konfigurace zabezpečené ve výchozím nastavení nebo pokročilé vlastní konfigurace, včetně antimalwarového monitorování. Azure antimalware je možnost zabezpečení pro virtuální počítače Azure, které se automaticky nainstalují na všechny virtuální počítače Azure PaaS.
 
-#### <a name="microsoft-antimalware-core-features"></a>Základní funkce Microsoft antimalwaru
+#### <a name="microsoft-antimalware-core-features"></a>Základní funkce antimalwaru společnosti Microsoft
 
-Tady jsou funkce Azure, které nasazují a povolují Microsoft Antimalware pro vaše aplikace:
+Tady jsou funkce Azure, které nasazují a povolují antimalwarový program Microsoft pro vaše aplikace:
 
--   **Ochrana v reálném čase**: monitoruje aktivity v cloudových službách a na virtuálních počítačích pro detekci a blokování spuštění malwaru.
+-   **Ochrana v reálném čase**: Monitoruje aktivitu v cloudových službách a na virtuálních počítačích, aby detekoval a blokoval spouštění malwaru.
 
--   **Naplánované prohledávání**: pravidelně provádí cílené prohledávání za účelem zjištění malwaru, včetně aktivně spouštěných programů.
+-   **Plánované prohledávání**: Pravidelně provádí cílené prohledávání za účelem detekce malwaru, včetně aktivně spuštěných programů.
 
--   **Náprava malwaru**: automaticky funguje u zjištěného malwaru, jako je odstranění nebo karanténa škodlivých souborů a vyčištění škodlivých položek registru.
+-   **Náprava malwaru**: Automaticky působí na zjištěný malware, jako je odstranění nebo umístění škodlivých souborů do karantény a vyčištění škodlivých položek registru.
 
--   **Aktualizace signatur**: automaticky nainstaluje nejnovější podpisy ochrany (definice virů), aby se zajistila aktuálnost ochrany v předem určené četnosti.
+-   **Aktualizace podpisů**: Automaticky nainstaluje nejnovější podpisy ochrany (definice virů), aby bylo zajištěno, že ochrana je aktuální na předem určené frekvenci.
 
--   **Aktualizace antimalwarového stroje**: automaticky aktualizuje modul Microsoft Antimalware.
+-   **Aktualizace modulu antimalwaru**: Automaticky aktualizuje modul Microsoft Antimalware Engine.
 
--   **Aktualizace antimalwarové platformy**: automaticky aktualizuje platformu Microsoft Antimalware.
+-   **Aktualizace antimalwarové platformy**: Automaticky aktualizuje antimalwarovou platformu společnosti Microsoft.
 
--   **Aktivní ochrana**: oznamuje metadata telemetrie o zjištěných hrozbách a podezřelých materiálech, aby bylo možné Microsoft Azure zajistit rychlou odezvu na vývojovou ochranu v reálném čase prostřednictvím systému Microsoft Active Protection System.
+-   **Aktivní ochrana**: Hlásí telemetrická metadata o zjištěných hrozbách a podezřelých prostředcích do Microsoft Azure, aby byla zajištěna rychlá reakce na vyvíjející se prostředí hrozeb, což umožňuje doručování synchronních podpisů v reálném čase prostřednictvím systému aktivní ochrany společnosti Microsoft.
 
--   **Vytváření sestav ukázek**: poskytuje a sestavuje ukázky služby Microsoft antimalwar Service, které vám pomůžou službu zdokonalit a povolit řešení potíží.
+-   **Ukázky vykazování**: Poskytuje a hlásí ukázky antimalwarové službě Microsoft, které pomáhají službu upřesnit a povolit řešení potíží.
 
--   **Vyloučení**: umožňuje správcům aplikací a služeb nakonfigurovat určité soubory, procesy a jednotky pro vyloučení z ochrany a kontrolu výkonu a dalších důvodů.
+-   **Vyloučení**: Umožňuje správcům aplikací a služeb konfigurovat určité soubory, procesy a jednotky pro vyloučení z ochrany a skenování z důvodu výkonu a z jiných důvodů.
 
--   **Shromažďování antimalwarových událostí**: zaznamenává stav antimalwarové služby, podezřelé aktivity a nápravné akce provedené v protokolu událostí operačního systému a shromažďuje je do účtu Azure Storage zákazníka.
+-   **Kolekce událostí antimalwaru**: Zaznamenává stav antimalwarové služby, podezřelé aktivity a nápravné akce provedené v protokolu událostí operačního systému a shromažďuje je do účtu úložiště Azure zákazníka.
 
-### <a name="azure-sql-database-threat-detection"></a>Azure SQL Database detekce hrozeb
+### <a name="azure-sql-database-threat-detection"></a>Azure SQL Database Threat Detection
 
-[Azure SQL Database detekce hrozeb](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-your-built-in-security-expert/) je nová funkce Security Intelligence integrovaná do služby Azure SQL Database. Při práci s časem se naučíte, profilovat a zjišťují aktivity databáze neobvyklé Azure SQL Database detekce hrozeb identifikuje potenciální hrozby pro databázi.
+[Azure SQL Database Threat Detection](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-your-built-in-security-expert/) je nová funkce inteligence zabezpečení integrovaná do služby Azure SQL Database. Azure SQL Database Threat Detection nepřetržitě pracuje na tom, aby se naučil, profiloval a detekoval neobvyklé databázové aktivity, a identifikuje potenciální hrozby pro databázi.
 
-Bezpečnostní důstojníci nebo jiní určení Správci mohou získat okamžité oznámení o podezřelých databázových činnostech, když k nim dojde. Každé oznámení poskytuje podrobné informace o podezřelé aktivitě a doporučuje, jak tuto hrozbu dále prozkoumat a zmírnit.
+Bezpečnostní pracovníci nebo jiní určení správci mohou získat okamžité oznámení o podezřelých databázových aktivitách, jakmile k nim dojde. Každé oznámení obsahuje podrobnosti o podezřelé aktivitě a doporučuje, jak dále prozkoumat a zmírnit hrozbu.
 
-V současné době Azure SQL Database detekce hrozeb detekuje potenciální ohrožení zabezpečení a útoky prostřednictvím injektáže SQL a neobvyklé vzory přístupu k databázi.
+V současné době Azure SQL Database Detekce hrozeb detekuje potenciální chyby zabezpečení a útoky injektáže SQL a neobvyklé vzory přístupu k databázi.
 
-Po přijetí e-mailového oznámení s detekcí hrozeb můžou uživatelé procházet a zobrazovat relevantní záznamy auditu prostřednictvím přímých odkazů v e-mailu. Odkaz otevře prohlížeč auditu nebo předem nakonfigurovanou excelovou šablonu auditu, která zobrazuje relevantní záznamy auditu v době výskytu podezřelé události, a to v závislosti na následujících případech:
+Po obdržení e-mailového oznámení o detekci hrozeb mohou uživatelé procházet a prohlížet příslušné záznamy auditu prostřednictvím přímého odkazu v e-mailu. Odkaz otevře prohlížeč auditu nebo předem nakonfigurovanou šablonu aplikace Excel pro auditování, která zobrazuje příslušné záznamy auditu v době podezřelé události, podle následujících následujících položek:
 
--   Auditujte úložiště pro databázi nebo server s neobvyklémi databázovými aktivitami.
+-   Auditovat úložiště pro databázi/server s aktivitami neobvyklé databáze.
 
--   Příslušná tabulka úložiště auditu, která se použila v době události pro zápis protokolu auditu.
+-   Příslušná tabulka úložiště auditu, která byla použita v době události k zápisu protokolu auditu.
 
--   Auditujte záznamy hodin hned po výskytu události.
+-   Auditovat záznamy hodiny bezprostředně následující po výskytu události.
 
--   Auditujte záznamy s podobným ID události v době události (volitelné pro některé detektory).
+-   Auditovat záznamy s podobným ID události v době události (volitelné pro některé detektory).
 
-SQL Database detektory hrozeb používají jednu z následujících metodologií detekce:
+Detektory hrozeb sql database používají jednu z následujících metod detekce:
 
--   **Deterministické zjišťování**: detekuje podezřelé vzorce (založené na pravidlech) v dotazech SQL klienta, které odpovídají známým útokům. Tato metodika má vysokou detekci a nízkou falešně pozitivní, ale omezené pokrytí, protože spadá do kategorie "zjišťování atomických".
+-   **Deterministické zjišťování**: Detekuje podezřelé vzory (pravidla založená) v dotazech klienta SQL, které odpovídají známým útokům. Tato metodika má vysokou detekci a nízké falešně pozitivní, ale omezené pokrytí, protože spadá do kategorie "atomové detekce."
 
--   **Detekce chování**: detekuje aktivitu neobvyklé, což je neobvyklé chování v databázi, které během posledních 30 dnů nevidělo. Příklady aktivity neobvyklé klientů SQL může být špičkou neúspěšných přihlášení nebo dotazů, velkým objemem dat, které se extrahují, neobvyklými kanonickými dotazy nebo neznámými IP adresami používanými pro přístup k databázi.
+-   **Detekce chování**: Detekuje anomální aktivitu, což je abnormální chování v databázi, která nebyla vidět během posledních 30 dnů. Příklady anomální aktivity klienta SQL mohou být špička neúspěšných přihlášení nebo dotazů, velký objem extrahování dat, neobvyklé kanonické dotazy nebo neznámé IP adresy používané pro přístup k databázi.
 
-### <a name="application-gateway-web-application-firewall"></a>Application Gateway Firewall webových aplikací
+### <a name="application-gateway-web-application-firewall"></a>Brána firewall webové aplikace brány aplikace
 
-[Firewall webových aplikací (WAF)](../../app-service/environment/app-service-app-service-environment-web-application-firewall.md) je funkce služby [Azure Application Gateway](../../application-gateway/application-gateway-web-application-firewall-overview.md) , která poskytuje ochranu webových aplikací, které používají Aplikační bránu pro standardní funkce [řízení doručování aplikací](https://kemptechnologies.com/in/application-delivery-controllers) . Firewall webových aplikací to dělá tak, že je chrání před většinou z [OWASP (Open Web Application Security Project) hlavních 10 běžných webových chyb zabezpečení](https://www.owasp.org/index.php/Top_10_2010-Main).
+[Brána firewall webových aplikací (WAF)](../../app-service/environment/app-service-app-service-environment-web-application-firewall.md) je funkce [brány Aplikace Azure,](../../application-gateway/application-gateway-web-application-firewall-overview.md) která poskytuje ochranu webovým aplikacím, které používají aplikační bránu pro standardní funkce [řízení doručování aplikací.](https://kemptechnologies.com/in/application-delivery-controllers) Brána firewall webových aplikací to provádí tak, že je chrání před většinou [10 nejčastějších webových chyb zabezpečení projektu Open Web Application Security Project (OWASP).](https://www.owasp.org/index.php/Top_10_2010-Main)
 
-![Application Gateway diagram firewallu webových aplikací](./media/threat-detection/azure-threat-detection-fig13.png)
+![Diagram brány webových aplikací pro aplikační aplikace](./media/threat-detection/azure-threat-detection-fig13.png)
 
-K ochraně patří:
+Ochrany zahrnují:
 
--   Ochrana injektáže SQL.
+-   Ochrana proti vstřikování SQL.
 
--   Ochrana skriptování mezi weby
+-   Ochrana skriptování mezi pracemi.
 
--   Běžné ochrany webových útoků, jako je vkládání příkazů, podkládání požadavků HTTP, rozdělování odpovědí HTTP a útok na vzdálené zahrnutí souborů.
+-   Společná ochrana webových útoků, jako je například vkládání příkazů, pašování požadavků HTTP, rozdělení odpovědi HTTP a útok na vzdálené zahrnutí souborů.
 
--   Ochrana proti narušení protokolu HTTP.
+-   Ochrana proti porušení protokolu HTTP.
 
--   Ochrana proti anomáliím protokolu HTTP, například chybějícímu uživatelskému agentovi a hlavičkám přijetí hostitele.
+-   Ochrana proti anomáliím protokolu HTTP, jako je například chybějící hostitelský uživatelský agent a přijímat záhlaví.
 
--   Prevence proti roboty, prohledávacím modulům a skenerům.
+-   Prevence proti robotům, prohledávačům a skenerům.
 
--   Detekce běžných neobvyklých konfigurací aplikací (tj. Apache, IIS atd.).
+-   Detekce běžných konfigurací aplikace (tj. Apache, IIS a tak dále).
 
-Konfigurace WAF ve vaší aplikační bráně přináší následující výhody:
+Konfigurace WAF v bráně aplikace poskytuje následující výhody:
 
--   Chrání webové aplikace před útoky z webových aplikací a útoků beze změny kódu back-endu.
+-   Chrání webovou aplikaci před webovými chybami zabezpečení a útoky bez úprav back-endového kódu.
 
 -   Chrání více webových aplikací současně za aplikační bránou. Aplikační brána podporuje hostování až 20 webů.
 
--   Monitoruje webové aplikace proti útokům pomocí sestav v reálném čase generovaných protokoly WAF služby Application Gateway.
+-   Monitoruje webové aplikace proti útokům pomocí sestav v reálném čase, které jsou generovány protokoly WAF aplikační brány.
 
--   Pomáhá splnit požadavky na dodržování předpisů. Některé ovládací prvky dodržování předpisů vyžadují ochranu všech internetových koncových bodů řešením WAF.
+-   Pomáhá splnit požadavky na dodržování předpisů. Některé kontroly dodržování předpisů vyžadují, aby všechny koncové body směřující k internetu byly chráněny řešením WAF.
 
-### <a name="anomaly-detection-api-built-with-azure-machine-learning"></a>Rozhraní API pro detekci anomálií: sestavené s Azure Machine Learning
+### <a name="anomaly-detection-api-built-with-azure-machine-learning"></a>Rozhraní API pro detekci anomálií: Vytvořeno pomocí Azure Machine Learning
 
-Rozhraní API pro detekci anomálií je rozhraní API, které je užitečné pro detekci nejrůznějších neobvyklé vzorů v datech časových řad. Rozhraní API přiřadí skóre anomálií každému datovému bodu v časové řadě, který se dá použít pro generování výstrah, monitorování prostřednictvím řídicích panelů nebo připojení k systémům pro lístky.
+Rozhraní API detekce anomálií je rozhraní API, které je užitečné pro detekci různých neobvyklých vzorů v datech časových řad. Rozhraní API přiřadí skóre anomálií každému datovému bodu v časových řadách, které lze použít pro generování výstrah, monitorování prostřednictvím řídicích panelů nebo připojení k systémům prodeje lístků.
 
-[Rozhraní API pro detekci anomálií](../../machine-learning/team-data-science-process/apps-anomaly-detection-api.md) dokáže detekovat následující typy anomálií v datech časových řad:
+Rozhraní [API pro detekci anomálií](../../machine-learning/team-data-science-process/apps-anomaly-detection-api.md) dokáže zjistit následující typy anomálií v datech časových řad:
 
--   **Špičky a**nedodržení: Pokud sledujete počet neúspěšných přihlášení ke službě nebo počtu rezervací na webu elektronického obchodování, neobvyklé špičky nebo nedodržení můžou znamenat útoky na zabezpečení nebo přerušení služeb.
+-   **Špičky a poklesy**: Pokud sledujete počet selhání přihlášení ke službě nebo počet ponechaných pokladny na webu elektronického obchodování, neobvyklé špičky nebo poklesy mohou znamenat útoky zabezpečení nebo přerušení služeb.
 
--   **Pozitivní a negativní trendy**: když sledujete využití paměti v výpočetním prostředí, zmenší se velikost volné paměti, což znamená potenciální nevracení paměti. V případě monitorování délky fronty služeb může trvalý vzestupný trend označovat základní problém se softwarem.
+-   **Pozitivní a negativní trendy**: Při sledování využití paměti v počítači, zmenšení volné velikosti paměti označuje potenciální nevracení paměti. Pro sledování délky fronty služby může trvalý vzestupný trend znamenat základní problém se softwarem.
 
--   **Změny úrovně a změny v dynamickém rozsahu hodnot**: Změna úrovně v latencích služby po upgradu služby nebo nižší úrovni výjimek po upgradu může být zajímavá pro monitorování.
+-   **Změny úrovně a změny dynamického rozsahu hodnot**: Sledování změn úrovně latencí služby po upgradu služby nebo nižších úrovních výjimek po upgradu může být zajímavé.
 
 Rozhraní API založené na strojovém učení umožňuje:
 
--   **Flexibilní a robustní detekce**: modely detekce anomálií umožňují uživatelům konfigurovat nastavení citlivosti a detekovat anomálie mezi sezónními a nesezónními datovými sadami. Uživatelé můžou upravit model detekce anomálií, aby rozhraní API pro detekci bylo podle svých potřeb méně nebo citlivější. To by znamenalo zjištění méně nebo více viditelných anomálií v datech s a bez sezónních vzorů.
+-   **Flexibilní a robustní detekce**: Modely detekce anomálií umožňují uživatelům konfigurovat nastavení citlivosti a detekovat anomálie mezi sezónními a nesezónními datovými sadami. Uživatelé mohou upravit model detekce anomálií tak, aby rozhraní API pro detekci bylo méně nebo citlivější podle svých potřeb. To by znamenalo detekci méně nebo více viditelných anomálií v datech se sezónními vzory a bez jejich chování.
 
--   **Škálovatelné a včasné zjišťování**: tradiční způsob monitorování s využitím současných prahových hodnot, které odborníci na doménu stanoví, jsou nákladné a Neškálovatelné s miliony dynamicky se měnícími se sadami dat. Dozvěděly se modely detekce anomálií v tomto rozhraní API a modely jsou automaticky vyladěny z historických dat i z dat v reálném čase.
+-   **Škálovatelná a včasná detekce**: Tradiční způsob monitorování se současnými prahovými hodnotami stanovenými znalostmi domén odborníků je nákladný a nelze škálovat na miliony dynamicky se měnících datových sad. Modely detekce anomálií v tomto rozhraní API se učí a modely jsou automaticky vyladěny z historických dat i dat v reálném čase.
 
--   **Proaktivní a zjistitelné zjišťování**: pro detekci počátečních anomálií lze použít pomalé zjišťování trendů a změn úrovně. Zjištěné počáteční neobvyklé signály se dají použít k tomu, aby se lidé mohli prozkoumat a reagovat na problémové oblasti. V této službě rozhraní API pro detekci anomálií je navíc možné vyvíjet modely analýz hlavní příčiny a nástroje pro upozorňování.
+-   **Proaktivní a žalovatelné zjišťování**: Pro včasnou detekci anomálií lze použít pomalou detekci trendu a změny úrovně. Časné abnormální signály, které jsou detekovány, mohou být použity k nasměrování lidí k vyšetřování a jednání v problémových oblastech. Kromě toho hlavní příčina analýzy modely a nástroje pro upozorňování lze vyvíjet nad tuto službu detekce anomálií rozhraní API.
 
-Rozhraní API pro detekci anomálií je efektivní a efektivní řešení pro široké spektrum scénářů, jako je monitorování stavu služby a sledování klíčových ukazatelů výkonu, IoT, sledování výkonu a monitorování síťových přenosů. Tady je několik oblíbených scénářů, ve kterých může být toto rozhraní API užitečné:
+Rozhraní API pro detekci anomálií je efektivní a efektivní řešení pro širokou škálu scénářů, jako je stav služby a monitorování klíčových ukazatelů výkonu, IoT, monitorování výkonu a monitorování síťového provozu. Zde jsou některé oblíbené scénáře, kde toto rozhraní API může být užitečné:
 
-- Oddělení IT potřebují včas sledovat nástroje pro sledování událostí, kód chyby, protokol využití a výkon (CPU, paměť a tak dále).
+- ODDĚLENÍ IT potřebují nástroje ke sledování událostí, kódu chyby, protokolu využití a výkonu (procesor, paměť a tak dále) včas.
 
--   Weby online Commerce chtějí sledovat aktivity zákazníků, zobrazení stránek, kliknutí a tak dále.
+-   Weby online obchodu chtějí sledovat aktivity zákazníků, zobrazení stránek, kliknutí a tak dále.
 
--   Pomocné společnosti chtějí sledovat spotřebu vody, plynu, elektřiny a dalších prostředků.
+-   Energetické společnosti chtějí sledovat spotřebu vody, plynu, elektřiny a dalších zdrojů.
 
--   Zařízení nebo služby pro správu, které chtějí monitorovat teplotu, vlhkost, provoz atd.
+-   Služby facility nebo správy budov chtějí monitorovat teplotu, vlhkost, provoz a tak dále.
 
--   IoT/výrobci chtějí používat data senzorů v časové řadě k monitorování pracovního toku, kvality a tak dále.
+-   Výrobci IoT/výrobci chtějí používat data ze senzorů v časových řadách ke sledování toku práce, kvality a tak dále.
 
--   Poskytovatelé služeb, například volací centra, potřebují monitorovat trend poptávky za služby, objem incidentu, délku fronty čekání atd.
+-   Poskytovatelé služeb, jako jsou například centra volání, musí sledovat trend poptávky po službách, objem incidentů, délku fronty čekání a tak dále.
 
--   Skupiny obchodních analýz chtějí monitorovat obchodní klíčové ukazatele výkonu (například objem prodeje, zákaznická zabarvení nebo ceny) abnormální pohyb v reálném čase.
+-   Skupiny obchodní analýzy chtějí monitorovat abnormální pohyb obchodních ki (například objem prodeje, nálady zákazníků nebo ceny) v reálném čase.
 
 ### <a name="cloud-app-security"></a>Cloud App Security
 
-[Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) je kritická součást sady Microsoft Cloud Security Stack. Jde o komplexní řešení, které může vaší organizaci pomáhat při přesunu, abyste plně využili výhod svých cloudových aplikací. Díky lepšímu přehledu o aktivitách zajišťuje kontrolu. Zvyšuje také úroveň ochrany důležitých dat napříč cloudovými aplikacemi.
+[Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) je důležitou součástí zásobníku Microsoft Cloud Security. Jedná se o komplexní řešení, které může vaší organizaci pomoci při přechodu plně využít příslib cloudových aplikací. Díky lepšímu přehledu o aktivitě budete mít kontrolu. Zvyšuje také úroveň ochrany důležitých dat napříč cloudovými aplikacemi.
 
 Díky nástrojům, které usnadňují odhalení stínového IT, vyhodnocování rizik, vynucování zásad, prošetřování aktivit a zastavení hrozeb, může vaše organizace bezpečně přejít na cloudové řešení a zároveň si zachovat kontrolu nad důležitými daty.
 
 | | |
 |---|---|
-| Identifikace | Odhalte pomocí Cloud App Security stínové IT. Získejte přehled díky zjišťování aplikací, aktivit, uživatelů, dat a souborů ve vašem cloudovém prostředí. Zjišťujte aplikace třetích stran, které jsou připojené k vašemu cloudu.|
-|Prošetření | Prošetřete cloudové aplikace pomocí cloudových forenzních nástrojů, které vám umožní zjistit podrobné informace o rizikových aplikacích, konkrétních uživatelích a souborech v síti. Najděte vzorce v datech shromážděných z cloudu. Generujte sestavy pro monitorování cloudu. |
+| Nenechte si ujít | Odhalte pomocí Cloud App Security stínové IT. Získejte přehled díky zjišťování aplikací, aktivit, uživatelů, dat a souborů ve vašem cloudovém prostředí. Zjišťujte aplikace třetích stran, které jsou připojené k vašemu cloudu.|
+|Prověřování | Prošetřete cloudové aplikace pomocí cloudových forenzních nástrojů, které vám umožní zjistit podrobné informace o rizikových aplikacích, konkrétních uživatelích a souborech v síti. Najděte vzorce v datech shromážděných z cloudu. Generujte sestavy pro monitorování cloudu. |
 | Řízení | Nastavením zásad a upozornění můžete zmírnit rizika a dosáhnout tak maximální kontroly nad síťovými přenosy v cloudu. Pomocí Cloud App Security můžete svoje uživatele migrovat do bezpečných a schválených alternativních cloudových aplikací. |
-| Ochrana | Pomocí Cloud App Security můžete schvalovat nebo zakazovat aplikace, vymáhat ochranu před únikem informací, řídit oprávnění a sdílení a generovat vlastní sestavy a výstrahy. |
+| Ochrana | Pomocí cloudového zabezpečení aplikací můžete sankcionovat nebo zakázat aplikace, vynucovat prevenci ztráty dat, řídit oprávnění a sdílení a generovat vlastní sestavy a výstrahy. |
 | Řízení | Nastavením zásad a upozornění můžete zmírnit rizika a dosáhnout tak maximální kontroly nad síťovými přenosy v cloudu. Pomocí Cloud App Security můžete svoje uživatele migrovat do bezpečných a schválených alternativních cloudových aplikací. |
 | | |
 
 
-![Diagram Cloud App Security](./media/threat-detection/azure-threat-detection-fig14.png)
+![Diagram zabezpečení cloudových aplikací](./media/threat-detection/azure-threat-detection-fig14.png)
 
-Cloud App Security integruje viditelnost s vaším cloudem:
+Cloud App Security integruje viditelnost s vaším cloudem takto:
 
--   Použití Cloud Discovery k mapování a identifikaci cloudového prostředí a cloudových aplikací, které vaše organizace používá.
+-   Pomocí Cloud Discovery můžete mapovat a identifikovat cloudové prostředí a cloudové aplikace, které vaše organizace používá.
 
--   Schválení a zakázání aplikací v cloudu.
+-   Sankce a zákaz aplikací ve vašem cloudu.
 
--   Pomocí snadno nasazených konektorů aplikací, které využívají rozhraní API poskytovatele, získáte přehled a řízení aplikací, ke kterým se připojujete.
+-   Pomocí snadno nasadit připojit konektory aplikací, které využívají rozhraní API poskytovatele, pro viditelnost a zásady správného řízení aplikací, které se připojíte k.
 
--   Pomoc s průběžným řízením nastavením a následným průběžným vyladěním zásad.
+-   Pomáháme vám mít nepřetržitou kontrolu nastavením a následným neustálým dolaďováním zásad.
 
-Při shromažďování dat z těchto zdrojů Cloud App Security spouští sofistikovanou analýzu. Okamžitě vás upozorní na neobvyklé aktivity a umožní vám podrobně prozkoumat cloudové prostředí. V Cloud App Security můžete nakonfigurovat zásady a používat je k ochraně všechno, co máte ve svém cloudovém prostředí.
+Při shromažďování dat z těchto zdrojů na něm cloudapp security spouští propracovanou analýzu. Okamžitě vás upozorní na neobvyklé aktivity a umožní vám podrobně prozkoumat cloudové prostředí. V Cloud App Security můžete nakonfigurovat zásady a používat je k ochraně všechno, co máte ve svém cloudovém prostředí.
 
-## <a name="third-party-advanced-threat-detection-capabilities-through-the-azure-marketplace"></a>Pokročilé možnosti detekce hrozeb od jiných výrobců prostřednictvím Azure Marketplace
+## <a name="third-party-advanced-threat-detection-capabilities-through-the-azure-marketplace"></a>Pokročilé funkce detekce hrozeb třetích stran prostřednictvím Azure Marketplace
 
-### <a name="web-application-firewall"></a>Web Application Firewall
+### <a name="web-application-firewall"></a>Web Application Firewall (Brána firewall webových aplikací)
 
-Firewall webových aplikací kontroluje příchozí webový provoz a blokuje injektáže SQL, skriptování mezi weby, nakládku malwaru, útoky aplikací DDoS a další útoky zaměřené na vaše webové aplikace. Také kontroluje odpovědi z back-endové webové servery na ochranu před únikem informací (DLP). Integrovaný modul řízení přístupu umožňuje správcům vytvářet podrobné zásady řízení přístupu pro ověřování, autorizaci a monitorování účtů (AAA), které organizacím poskytuje silné ověřování a uživatelský ovládací prvek.
+Brána firewall webových aplikací kontroluje příchozí webový provoz a blokuje injektáže SQL, skriptování mezi weby, nahrávání malwaru, útoky DDoS aplikací a další útoky zaměřené na vaše webové aplikace. Také kontroluje odpovědi z back-endových webových serverů pro prevenci ztráty dat (DLP). Integrovaný modul řízení přístupu umožňuje správcům vytvářet podrobné zásady řízení přístupu pro ověřování, autorizaci a účtování (AAA), což organizacím poskytuje silné ověřování a řízení uživatelů.
 
-Firewall webových aplikací nabízí následující výhody:
+Brána firewall webových aplikací poskytuje následující výhody:
 
--   Detekuje a blokuje injektáže SQL, skriptování mezi weby, nakládku malwaru, aplikace DDoS nebo jakékoli jiné útoky proti vaší aplikaci.
+-   Detekuje a blokuje sql injekce, skriptování mezi weby, nahrávání malwaru, ddos aplikace nebo jakékoli jiné útoky proti vaší aplikaci.
 
 -   Ověřování a řízení přístupu.
 
--   Vyhledá odchozí provoz a detekuje citlivá data a může maskovat nebo blokovat únik informací.
+-   Prohledá odchozí provoz, aby zjistil citlivá data, a může maskovat nebo blokovat únik informací.
 
--   Zrychluje doručování obsahu webové aplikace pomocí funkcí, jako je ukládání do mezipaměti, komprese a další optimalizace provozu.
+-   Urychluje doručování obsahu webových aplikací pomocí funkcí, jako je ukládání do mezipaměti, komprese a další optimalizace provozu.
 
-Příklady bran firewall webových aplikací, které jsou k dispozici v Azure Marketplace, najdete v tématu [Barracuda WAF, firewall pro Virtual Web Application firewall (vWAF), Imperva SecureSphere a ThreatSTOP IP adresa](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf).
+Příklady bran firewall webových aplikací, které jsou k dispozici na azure marketplace, najdete v [tématu Barracuda WAF, Brána firewall virtuální webové aplikace Brocade (vWAF), Imperva SecureSphere a brána firewall IP ThreatSTOP](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Reakce na dnešní hrozby](../../security-center/security-center-alerts-overview.md#respond-threats): pomáhá identifikovat aktivní hrozby, které cílí na vaše prostředky Azure, a poskytuje přehledy, které potřebujete k rychlé reakci.
+- [Reakce na dnešní hrozby](../../security-center/security-center-alerts-overview.md#respond-threats): Pomáhá identifikovat aktivní hrozby, které cílí na vaše prostředky Azure, a poskytuje přehledy, které potřebujete k rychlé reakci.
 
-- [Azure SQL Database detekce hrozeb](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-your-built-in-security-expert/): pomáhá řešit vaše obavy týkající se potenciálních hrozeb pro vaše databáze.
+- [Azure SQL Database Threat Detection](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-your-built-in-security-expert/): Pomáhá řešit vaše obavy z potenciálních hrozeb pro vaše databáze.

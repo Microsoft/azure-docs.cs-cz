@@ -1,6 +1,6 @@
 ---
 title: Co je Azure Databricks?
-description: Přečtěte si o Azure Databricks a o tom, jak přináší Spark na datacihly do Azure. Azure Databricks je analytická platforma založená na Apache Spark a optimalizovaná pro platformu cloudových služeb Microsoft Azure.
+description: Přečtěte si o Azure Databricks a o tom, jak do Azure přináší Spark on Databricks. Azure Databricks je analytická platforma založená na Apache Spark a optimalizovaná pro platformu cloudových služeb Microsoft Azure.
 services: azure-databricks
 author: mamccrea
 ms.reviewer: jasonh
@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/08/2019
 ms.author: mamccrea
 ms.custom: mvc
-ms.openlocfilehash: ed93f332c6361d2f7cd5189ee5fedf3d9f5cf82d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 53f1b9a2fde20cacccd0730213695f26c1200fa7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75410452"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80132539"
 ---
 # <a name="what-is-azure-databricks"></a>Co je Azure Databricks?
 
@@ -23,21 +23,21 @@ Azure Databricks je analytická platforma založená na Apache Spark a optimaliz
 
 ![Co je Azure Databricks?](./media/what-is-azure-databricks/azure-databricks-overview.png "Co je Azure Databricks?")
 
-Azure Databricks je rychlá a snadná analytická služba založená na Apache Spark a spolupráci. V případě kanálu pro velké objemy dat se data (hrubá nebo strukturovaná) ingestují do Azure prostřednictvím Azure Data Factory v dávkách nebo se streamují téměř v reálném čase s využitím Kafka, centra událostí nebo IoT Hub. Tato data se nacházejí v Data Lake pro dlouhodobé trvalé úložiště v Azure Blob Storage nebo Azure Data Lake Storage. V rámci vašeho pracovního postupu analýzy použijte Azure Databricks ke čtení dat z více zdrojů dat, jako je [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md), [Azure Data Lake Storage](../data-lake-store/index.md), [Azure Cosmos DB](../cosmos-db/index.yml)nebo [Azure SQL Data Warehouse](../sql-data-warehouse/index.yml) , a převeďte je na převratné přehledy pomocí Sparku.
+Azure Databricks je rychlá, snadná a kolaborativní analytická služba založená na Apache Spark. Pro kanál velkých objemů dat se data (nezpracovaná nebo strukturovaná) ingestují do Azure prostřednictvím Azure Data Factory v dávkách nebo se streamují téměř v reálném čase pomocí Kafka, Event Hub nebo IoT Hub. Tato data jsou v datovém jezírku pro dlouhodobé trvalé úložiště, v Azure Blob Storage nebo Azure Data Lake Storage. Jako součást pracovního postupu analýzy použijte Azure Databricks ke čtení dat z různých zdrojů dat, jako je [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md), [Azure Data Lake Storage](../data-lake-store/index.yml), Azure [Cosmos DB](../cosmos-db/index.yml)nebo Azure SQL Data [Warehouse](../synapse-analytics/sql-data-warehouse/index.yml) a proměnit je v průlomové poznatky pomocí Spark.
 
-![Kanál datacihly](./media/what-is-azure-databricks/databricks-pipeline.png)
+![Datový kanál](./media/what-is-azure-databricks/databricks-pipeline.png)
 
 ## <a name="apache-spark-based-analytics-platform"></a>Analytická platforma založená na Apache Sparku
 
 Azure Databricks zahrnuje kompletní opensourcové možnosti a technologie clusteru Apache Spark. Spark v Azure Databricks zahrnuje následující komponenty:
 
-![Apache Spark v Azure Databricks](./media/what-is-azure-databricks/apache-spark-ecosystem-databricks.png "Apache Spark na platformě Azure Databricks")
+![Apache Spark na platformě Azure Databricks](./media/what-is-azure-databricks/apache-spark-ecosystem-databricks.png "Apache Spark na platformě Azure Databricks")
 
 * **Spark SQL a DataFrames:** Spark SQL je modul Sparku pro práci se strukturovanými daty. DataFrame je distribuovaná kolekce dat uspořádaných do pojmenovaných sloupců. Je koncepčním ekvivalentem tabulky v relační databázi nebo datového rámce v R nebo Pythonu.
 
 * **Streamování:** Zpracování dat a analýzy v reálném čase pro analytické a interaktivní aplikace. Integruje se s HDFS, Flume a Kafka.
 
-* **MLlib**: knihovna Machine Learning skládající se ze společného výukového algoritmu a nástrojů, včetně klasifikace, regrese, clusteringu, filtrování spolupráce, snížení počtu dimenzí a také základních primitiv optimalizace.
+* **MLlib**: Knihovna strojového učení skládající se z běžných algoritmů učení a nástrojů, včetně klasifikace, regrese, clusteringu, kolaborativního filtrování, redukce dimenzionality a základních optimalizačních primitivů optimalizace.
 
 * **GraphX:** Grafy a grafické výpočetní funkce pro širokou škálu případů použití od kognitivních analýz až po zkoumání dat.
 

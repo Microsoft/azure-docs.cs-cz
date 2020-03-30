@@ -1,7 +1,7 @@
 ---
-title: 'Exportovat data: odkaz na modul'
+title: 'Exportovat data: Odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Naučte se používat modul exportovat data v Azure Machine Learning k uložení výsledků, mezilehlých dat a pracovních dat z vašich kanálů do cloudového úložiště do míst mimo Azure Machine Learning.
+description: Zjistěte, jak pomocí modulu Exportovat data v Azure Machine Learning ukládat výsledky, zprostředkující data a pracovní data z vašich kanálů do cílů cloudového úložiště mimo Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 40d8e298237b6110fee04aefbb7b79c5f3bac6f0
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 807771fd4018c9666f059c965370ebc36d0105df
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598608"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456297"
 ---
-# <a name="export-data-module"></a>Exportovat datový modul
+# <a name="export-data-module"></a>Modul Exportovat data
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v návrháři Azure Machine Learning (preview).
 
-Pomocí tohoto modulu můžete ukládat výsledky, mezilehlá data a pracovní data z vašich kanálů do cílů cloudového úložiště. 
+Tento modul slouží k ukládání výsledků, zprostředkujících dat a pracovních dat z vašich kanálů do cílů cloudového úložiště. 
 
 Tento modul podporuje export dat do následujících cloudových datových služeb:
 
@@ -29,30 +29,30 @@ Tento modul podporuje export dat do následujících cloudových datových služ
 - Azure Data Lake
 - Azure Data Lake Gen2
 
-Před exportem dat je třeba nejprve zaregistrovat úložiště dat v pracovním prostoru Azure Machine Learning. Další informace najdete v tématu [přístup k datům ve službě Azure Storage](../how-to-access-data.md).
+Před exportem dat musíte nejprve zaregistrovat úložiště dat v pracovním prostoru Azure Machine Learning. Další informace najdete [v tématu Přístup k datům ve službách úložiště Azure](../how-to-access-data.md).
 
-## <a name="how-to-configure-export-data"></a>Jak nakonfigurovat exportovaná data
+## <a name="how-to-configure-export-data"></a>Konfigurace exportních dat
 
-1. Přidejte modul **Export dat** do kanálu v návrháři. Tento modul můžete najít v kategorii **vstup a výstup** .
+1. Přidejte modul **Export dat** do kanálu v návrháři. Tento modul naleznete v kategorii **Vstup a Výstup.**
 
-1. Připojte **Export dat** do modulu obsahujícího data, která chcete exportovat.
+1. Připojte **exportní data** k modulu, který obsahuje data, která chcete exportovat.
 
-1. Vyberte **exportovat data** a otevřete podokno **vlastnosti** .
+1. Vyberte **Exportovat data,** chcete-li otevřít podokno **Vlastnosti.**
 
-1. V případě **úložiště dat**vyberte v rozevíracím seznamu existující úložiště dat. Můžete také vytvořit nové úložiště dat. Podívejte se, jak navštívíte [přístup k datům ve službě Azure Storage](../how-to-access-data.md).
+1. V **části Úložiště dat**vyberte existující úložiště dat z rozevíracího seznamu. Můžete také vytvořit nové úložiště dat. Podívejte se, jak se můžete podívat na [data Accessu ve službách úložiště Azure](../how-to-access-data.md).
 
-1. Zaškrtávací políčko **znovu vygenerovat výstup**určuje, zda se má spustit modul pro opětovné vygenerování výstupu za běhu. 
+1. Zaškrtávací políčko **Regenerate output**rozhodne, zda má být modul spuštěn za běhu. 
 
-    Ve výchozím nastavení je Nevybraná, což znamená, že pokud byl modul spuštěn se stejnými parametry dřív, systém použije výstup z posledního spuštění k omezení doby běhu. 
+    Ve výchozím nastavení není vybrán, což znamená, že pokud byl modul dříve proveden se stejnými parametry, systém znovu použije výstup z posledního spuštění, aby zkrátil dobu běhu. 
 
-    Pokud je vybraná, systém znovu spustí modul a obnoví výstup.
+    Pokud je vybrána, systém modul znovu spustí, aby se znovu vygeneroval výstup.
 
 1. Definujte cestu v úložišti dat, kde jsou data. Cesta je relativní cesta. Prázdné cesty nebo cesty URL nejsou povoleny.
 
 
-1. V poli **Formát souboru**vyberte formát, ve kterém mají být data uložena.
+1. Ve **formátu souboru**vyberte formát, ve kterém mají být data uložena.
  
-1. Spuštění kanálu
+1. Odešlete potrubí.
 
 ## <a name="next-steps"></a>Další kroky
 

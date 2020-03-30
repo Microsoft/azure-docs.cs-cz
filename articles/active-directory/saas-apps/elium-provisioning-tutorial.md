@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace Elium pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
-description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro Elium.
+title: 'Kurz: Konfigurace Elium pro automatické zřizování uživatelů pomocí služby Azure Active Directory | Dokumenty společnosti Microsoft'
+description: Zjistěte, jak nakonfigurovat službu Azure Active Directory tak, aby automaticky zřašovala a zřašovala uživatelské účty do Elium.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,143 +16,143 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: a3e1c936d46e0d9b0ad3b98dafeda7df0b4a23db
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77058459"
 ---
-# <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>Kurz: Konfigurace Elium pro Automatické zřizování uživatelů
+# <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>Kurz: Konfigurace Elium pro automatické zřizování uživatelů
 
-V tomto kurzu se dozvíte, jak nakonfigurovat Elium a Azure Active Directory (Azure AD) k automatickému zřízení a zrušení zřizování uživatelů nebo skupin pro Elium.
+Tento kurz ukazuje, jak nakonfigurovat Elium a Azure Active Directory (Azure AD) automaticky zřídit a de-provision uživatelů nebo skupin elium.
 
 > [!NOTE]
-> Tento kurz popisuje konektor, který je založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá a jak funguje, a nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
+> Tento kurz popisuje konektor, který je postavený na nad službou Azure AD User Provisioning. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a nejčastější dotazy najdete [v tématu Automatizace zřizování uživatelů a zrušení zřizování aplikací SaaS pomocí služby Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
-> Tento konektor je aktuálně ve verzi preview. Obecné informace o použití funkcí Azure ve verzi Preview najdete v tématu [dodatečné licenční podmínkami použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
+> Tento konektor je aktuálně ve verzi Preview. Obecné podmínky použití funkcí Azure ve verzi Preview najdete v [tématu Doplňkové podmínky použití pro Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Požadavky
 
-V tomto kurzu se předpokládá, že už máte následující předpoklady:
+Tento kurz předpokládá, že již máte následující požadavky:
 
-* Tenant Azure AD
-* [Tenant Elium](https://www.elium.com/pricing/)
+* Klient Azure AD
+* [Nájemce Elium](https://www.elium.com/pricing/)
 * Uživatelský účet v Elium s oprávněními správce
 
-## <a name="assigning-users-to-elium"></a>Přiřazování uživatelů k Elium
+## <a name="assigning-users-to-elium"></a>Přiřazení uživatelů k Elium
 
-Azure AD používá koncept nazvaný *přiřazení* k určení uživatelů, kteří přijímají přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelů se synchronizují jenom uživatelé a skupiny přiřazené k aplikaci v Azure AD.
+Azure AD používá koncept s názvem *přiřazení* k určení, kteří uživatelé získají přístup k vybraným aplikacím. V kontextu automatickézřižené zřizování uživatelů jsou synchronizovány pouze uživatelé a skupiny, které byly přiřazeny k aplikaci ve službě Azure AD.
 
-Než nakonfigurujete a povolíte automatické zřizování uživatelů, rozhodněte se, kteří uživatelé a skupiny ve službě Azure AD potřebují přístup k Elium. Pak přiřaďte tyto uživatele a skupiny k Elium pomocí postupu v části [přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md).
+Před konfigurací a povolením automatického zřizování uživatelů se rozhodněte, kteří uživatelé a skupiny ve službě Azure AD potřebují přístup k Elium. Potom přiřaďte tyto uživatele a skupiny elium podle kroků v části [Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md).
 
-## <a name="important-tips-for-assigning-users-to-elium"></a>Důležité tipy pro přiřazení uživatelů k Elium 
+## <a name="important-tips-for-assigning-users-to-elium"></a>Důležité tipy pro přiřazení uživatelů do Elium 
 
-Doporučujeme, abyste jednomu uživateli Azure AD přiřadili Elium k otestování automatické konfigurace zřizování uživatelů. Další uživatele a skupiny se dají přiřadit později.
+Doporučujeme přiřadit elium jednoho uživatele Azure AD k testování konfigurace automatického zřizování uživatelů. Další uživatelé a skupiny mohou být přiřazeny později.
 
-Když přiřadíte uživatele k Elium, musíte vybrat platnou roli specifickou pro aplikaci (Pokud je dostupná) v dialogovém okně přiřazení. Uživatelé, kteří mají **výchozí roli přístupu** , jsou ze zřizování vyloučeni.
+Při přiřazování uživatele elium, musíte vybrat platnou roli specifické pro aplikaci (pokud jsou k dispozici) v dialogovém okně přiřazení. Uživatelé, kteří mají **roli výchozí přístup** jsou vyloučeni z zřizování.
 
 ## <a name="set-up-elium-for-provisioning"></a>Nastavení Elium pro zřizování
 
-Před konfigurací Elium pro Automatické zřizování uživatelů se službou Azure AD musíte povolit systém pro zřizování SCIM (Domain Identity Management) na Elium. Postupujte následovně:
+Před konfigurací Elium pro automatické zřizování uživatelů s Azure AD, musíte povolit system for cross-domain Identity Management (SCIM) zřizování na Elium. Postupujte následovně:
 
-1. Přihlaste se k Elium a přečtěte si > **Nastavení** **profilu** .
+1. Přihlaste se do Elium a přejděte do části**Nastavení** **profilu** > .
 
-    ![Položka nabídky nastavení v Elium](media/Elium-provisioning-tutorial/setting.png)
+    ![Nastavení položky nabídky v Elium](media/Elium-provisioning-tutorial/setting.png)
 
-1. V levém dolním rohu v části **Upřesnit**vyberte **zabezpečení**.
+1. V levém dolním rohu vyberte v části **UPŘESNIT** **možnost Zabezpečení**.
 
-    ![Odkaz na zabezpečení v Elium](media/Elium-provisioning-tutorial/security.png)
+    ![Bezpečnostní odkaz v Elium](media/Elium-provisioning-tutorial/security.png)
 
-1. Zkopírujte **adresu URL tenanta** a hodnoty **tajného tokenu** . Tyto hodnoty použijete později v příslušných polích na kartě **zřizování** aplikace Elium v Azure Portal.
+1. Zkopírujte hodnoty **adresy URL klienta** a **tokenu tajného klíče.** Tyto hodnoty použijete později v odpovídajících polích na kartě **Zřizování** vaší aplikace Elium na webu Azure Portal.
 
-    ![Adresa URL tenanta a pole tajného tokenu v Elium](media/Elium-provisioning-tutorial/token.png)
+    ![Pole URL klienta a tajný token v Elium](media/Elium-provisioning-tutorial/token.png)
 
-## <a name="add-elium-from-the-gallery"></a>Přidání Elium z Galerie
+## <a name="add-elium-from-the-gallery"></a>Přidat Elium z galerie
 
-Pokud chcete nakonfigurovat Elium pro Automatické zřizování uživatelů pomocí Azure AD, musíte taky přidat Elium z Galerie aplikací Azure AD do seznamu spravovaných aplikací typu software jako služba (SaaS). Postupujte následovně:
+Chcete-li nakonfigurovat Elium pro automatické zřizování uživatelů pomocí Azure AD, musíte také přidat Elium z galerie aplikací Azure AD do seznamu spravovaných aplikací pro software jako služba (SaaS). Postupujte následovně:
 
-1. V [Azure Portal](https://portal.azure.com)v levém navigačním panelu vyberte možnost **Azure Active Directory**.
+1. Na [webu Azure Portal](https://portal.azure.com)vyberte na levém navigačním panelu **položku Azure Active Directory**.
 
     ![Položka nabídky Azure Active Directory](common/select-azuread.png)
 
-1. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přejděte na **podnikové aplikace**a vyberte **všechny aplikace**.
 
-     ![Okno Azure AD Enterprise Applications](common/enterprise-applications.png)
+     ![Okno aplikace Azure AD Enterprise](common/enterprise-applications.png)
 
-1. Chcete-li přidat novou aplikaci, vyberte v horní části podokna možnost **Nová aplikace** .
+1. Chcete-li přidat novou aplikaci, vyberte v horní části podokna možnost **Nová aplikace.**
 
     ![Odkaz na novou aplikaci](common/add-new-app.png)
 
-1. Do vyhledávacího pole zadejte **Elium**, v seznamu výsledků vyberte **Elium** a pak vyberte **Přidat** , aby se aplikace přidala.
+1. Ve vyhledávacím poli zadejte **Elium**, vyberte **elium** v seznamu výsledků a pak vyberte **Přidat** a přidejte aplikaci.
 
     ![Vyhledávací pole galerie](common/search-new-app.png)
 
-## <a name="configure-automatic-user-provisioning-to-elium"></a>Konfigurace automatického zřizování uživatelů na Elium
+## <a name="configure-automatic-user-provisioning-to-elium"></a>Konfigurace automatického zřizování uživatelů do Elium
 
-V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů a skupin v Elium podle přiřazení uživatelů a skupin ve službě Azure AD.
+Tato část vás provede kroky konfigurace služby zřizování Azure AD k vytvoření, aktualizaci a zakázání uživatelů a skupin v Elium, na základě přiřazení uživatelů a skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete se také rozhodnout povolit jednotné přihlašování pro Elium na základě Security Assertion Markup Language (SAML) podle pokynů v [kurzu Elium jednotného přihlašování](Elium-tutorial.md). Jednotné přihlašování můžete nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když tyto dvě funkce spolu doplňují.
+> Můžete také povolit jednotné přihlašování pro Elium na základě jazyka podpisu zabezpečení (SAML) podle pokynů v [kurzu jednotného přihlášení Elium](Elium-tutorial.md). Jednotné přihlašování můžete konfigurovat nezávisle na automatickém zřizování uživatelů, i když se obě funkce vzájemně doplňují.
 
-Pokud chcete nakonfigurovat automatické zřizování uživatelů pro Elium ve službě Azure AD, postupujte podle těchto kroků:
+Chcete-li nakonfigurovat automatické zřizování uživatelů pro Elium ve službě Azure AD, postupujte takto:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com), vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com)Portal , vyberte **podnikové aplikace**a pak vyberte **Všechny aplikace**.
 
-    ![Okno Azure AD Enterprise Applications](common/enterprise-applications.png)
+    ![Okno aplikace Azure AD Enterprise](common/enterprise-applications.png)
 
-1. V seznamu aplikace vyberte **Elium**.
+1. V seznamu aplikací vyberte **Elium**.
 
-    ![Seznam aplikací v okně podnikové aplikace](common/all-applications.png)
+    ![Seznam aplikací v okně Podnikové aplikace](common/all-applications.png)
 
-1. Vyberte kartu **zřizování** .
+1. Vyberte kartu **Zřizování.**
 
-    ![Karta zřizování v okně podnikové aplikace](common/provisioning.png)
+    ![Karta Zřizování v okně Podnikové aplikace](common/provisioning.png)
 
-1. Nastavte **režim zřizování** na **automaticky**.
+1. Nastavte **režim zřizování** na **automatické**.
 
-    ![Automatické nastavení pro režim zřizování](common/provisioning-automatic.png)
+    ![Automatické nastavení režimu zřizování](common/provisioning-automatic.png)
 
-1. V části **přihlašovací údaje správce** zadejte do pole **adresa URL klienta** **\<tenantURL\>/SCIM/v2** . ( **TenantURL** je hodnota načtená dříve z konzoly pro správu Elium.) Zadejte také hodnotu **tajného tokenu** Elium do pole **token tajného** kódu. Nakonec vyberte **Test připojení** , abyste ověřili, že se služba Azure AD může připojit k Elium. Pokud se připojení nepovede, ujistěte se, že má váš účet Elium oprávnění správce, a zkuste to znovu.
+1. V části **Pověření správce** zadejte ** \<adresu\>tenantURL /scim/v2** do pole ADRESA URL **klienta.** **(TenantURL** je hodnota načtená dříve z konzoly pro správu Elium.) Do pole **Tajný token** také zadejte hodnotu **tokenu Elium Secret.** Nakonec vyberte **testovat připojení** k ověření, že Azure AD můžete připojit k Elium. Pokud se připojení nezdaří, ujistěte se, že váš účet Elium má oprávnění správce a zkuste to znovu.
 
-    ![Adresa URL tenanta a pole tajného tokenu v přihlašovacích údajích správce](common/provisioning-testconnection-tenanturltoken.png)
+    ![Pole URL klienta a tajný token v pověřeních správce](common/provisioning-testconnection-tenanturltoken.png)
 
-1. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, kterým se budou zobrazovat oznámení o chybách zřizování. Potom zaškrtněte políčko **Odeslat e-mailové oznámení, když dojde k chybě** .
+1. Do pole **E-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, která obdrží oznámení o chybách zřizování. Potom zaškrtněte **políčko Odeslat e-mailové oznámení, když dojde k chybě.**
 
     ![E-mail s oznámením](common/provisioning-notification-email.png)
 
 1. Klikněte na **Uložit**.
 
-1. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé Elium**.
+1. V části **Mapování** vyberte **Synchronizovat uživatele služby Azure Active Directory s Elium**.
 
-    ![Synchronizovat odkaz pro mapování uživatelů Azure AD na Elium](media/Elium-provisioning-tutorial/usermapping.png)
+    ![Synchronizovat propojení pro mapování uživatelů Azure AD na Elium](media/Elium-provisioning-tutorial/usermapping.png)
 
-1. Zkontrolujte atributy uživatele synchronizované z Azure AD do Elium v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Elium pro operace aktualizace. Vyberte **Uložit** a potvrďte všechny změny.
+1. Zkontrolujte atributy uživatele, které jsou synchronizovány z Azure AD do Elium v části **Mapování atributů.** Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelským účtům v Elium pro operace aktualizace. Chcete-li potvrdit všechny změny, vyberte **uložit.**
 
     ![Mapování atributů mezi Azure AD a Elium](media/Elium-provisioning-tutorial/userattribute.png)
 
-1. Pokud chcete nakonfigurovat filtry oborů, postupujte podle pokynů v [kurzu filtru oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+1. Chcete-li konfigurovat filtry oborů, postupujte podle pokynů v [kurzu filtru oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-1. Pokud chcete povolit službu Azure AD Provisioning pro Elium, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
+1. Chcete-li povolit službu zřizování Azure AD pro Elium, změňte **stav zřizování** **na Zapnuto** v části **Nastavení.**
 
-    ![Stav zřizování je nastaven na zapnuto.](common/provisioning-toggle-on.png)
+    ![Stav zřizování nastavený na Zapnuto](common/provisioning-toggle-on.png)
 
-1. Určete uživatele a skupiny, které chcete zřídit pro Elium, tak, že vyberete požadované hodnoty v rozevíracím seznamu **obor** v části **Nastavení** .
+1. Definujte uživatele a skupiny, které chcete zřídit elium výběrem hodnot, které chcete v rozevíracím seznamu **Obor** v části **Nastavení.**
 
-    ![Seznam oborů zřizování](common/provisioning-scope.png)
+    ![Seznam Obor zřizování](common/provisioning-scope.png)
 
-1. Až budete připraveni zřídit, vyberte **Uložit**.
+1. Až budete připraveni k zřízení, vyberte **Uložit**.
 
-    ![Tlačítko Uložit pro konfiguraci zřizování](common/provisioning-configuration-save.png)
+    ![Tlačítko Uložit pro zřizování konfigurace](common/provisioning-configuration-save.png)
 
-Tato operace spustí počáteční synchronizaci všech uživatelů a skupin definovaných v **oboru** v části **Nastavení** . Tento proces počáteční synchronizace trvá déle než pozdější synchronizace. Další informace o době potřebné ke zřízení najdete v tématu [Jak dlouho bude trvat zřizování uživatelů?](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users).
+Tato operace spustí počáteční synchronizaci všech uživatelů a skupin definovaných v **oboru** v části **Nastavení.** Tento počáteční proces synchronizace trvá déle než pozdější synchronizace. Další informace o době potřebné pro zřizování naleznete [v tématu Jak dlouho bude trvat zřizování uživatelů?](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users).
 
-Pomocí oddílu **aktuální stav** můžete monitorovat průběh a postupovat podle odkazů na sestavu aktivity zřizování. Sestava aktivity zřizování popisuje všechny akce prováděné službou zřizování Azure AD v Elium. Další informace najdete v tématu o [kontrole stavu zřizování uživatelů](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md). Pokud si chcete přečíst protokoly zřizování Azure AD, přečtěte si téma [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
+Část **Aktuální stav** slouží ke sledování průběhu a sledování odkazů na přehled aktivit zřizování. Sestava aktivit zřizování popisuje všechny akce prováděné službou zřizování Azure AD na Elium. Další informace naleznete [v tématu Kontrola stavu zřizování uživatelů](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md). Chcete-li číst protokoly zřizování Azure AD, najdete [v tématu Vytváření sestav na automatické zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md).
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy o aktivitě zřizování.](../app-provisioning/check-status-user-account-provisioning.md)

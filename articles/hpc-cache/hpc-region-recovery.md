@@ -1,61 +1,61 @@
 ---
-title: Regionální redundance a převzetí služeb při selhání s využitím mezipaměti HPC Azure
-description: Techniky pro poskytování funkcí převzetí služeb při selhání pro zotavení po havárii s využitím mezipaměti HPC Azure
+title: Místní redundance a obnovení služeb při selhání s azure hpc cache
+description: Techniky pro poskytování možností převzetí služeb při selhání pro zotavení po havárii pomocí mezipaměti Azure HPC
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
 ms.openlocfilehash: 4eb203915c8fedbef6af0e5a3bc14eff1835a92b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75982164"
 ---
 # <a name="use-multiple-caches-for-regional-failover-recovery"></a>Použití více mezipamětí pro místní obnovení převzetí služeb při selhání
 
-Každá instance mezipaměti HPC Azure se spouští v rámci konkrétního předplatného a v jedné oblasti. To znamená, že váš pracovní postup mezipaměti může být přerušený, pokud má oblast plný výpadek.
+Každá instance mezipaměti HPC Azure běží v rámci konkrétního předplatného a v jedné oblasti. To znamená, že pracovní postup mezipaměti může být pravděpodobně přerušen, pokud má oblast úplný výpadek.
 
-Tento článek popisuje strategii pro snížení rizika přerušení práce pomocí druhé oblasti pro převzetí služeb při selhání mezipaměti.
+Tento článek popisuje strategii ke snížení rizika narušení práce pomocí druhé oblasti pro převzetí služeb při selhání mezipaměti.
 
-Klíč používá back-end úložiště, které je přístupné z více oblastí. Toto úložiště může být místní systém NAS s příslušnou podporou DNS nebo úložištěm objektů BLOB v Azure, které se nachází v jiné oblasti než mezipaměť.
+Klíč používá back-endové úložiště, které je přístupné z více oblastí. Toto úložiště může být buď místní systém NAS s odpovídající podporou DNS, nebo úložiště objektů blob Azure, které se nachází v jiné oblasti než v mezipaměti.
 
-V případě, že váš pracovní postup pokračuje v primární oblasti, data se ukládají v dlouhodobém úložišti mimo oblast. Pokud oblast mezipaměti nebude k dispozici, můžete vytvořit duplicitní instanci Azure HPC cache v sekundární oblasti, připojit se ke stejnému úložišti a pokračovat v práci z nové mezipaměti.
+Jak váš pracovní postup pokračuje ve vaší primární oblasti, data se ukládají do dlouhodobého úložiště mimo oblast. Pokud oblast mezipaměti přestane být k dispozici, můžete vytvořit duplicitní instanci mezipaměti Azure HPC v sekundární oblasti, připojit se ke stejnému úložišti a pokračovat v práci z nové mezipaměti.
 
 ## <a name="planning-for-regional-failover"></a>Plánování regionálního převzetí služeb při selhání
 
-Pokud chcete nastavit mezipaměť, která je připravená na možné převzetí služeb při selhání, postupujte podle těchto kroků:
+Chcete-li nastavit mezipaměť připravenou pro možné převzetí služeb při selhání, postupujte takto:
 
-1. Ujistěte se, že je vaše back-endové úložiště dostupné ve druhé oblasti.
-1. Když plánujete vytvořit instanci primární mezipaměti, měli byste také připravit na replikaci tohoto procesu instalace ve druhé oblasti. Zahrnout tyto položky:
+1. Ujistěte se, že vaše back-endové úložiště je přístupné v druhé oblasti.
+1. Při plánování vytvoření primární instance mezipaměti byste se měli také připravit na replikaci tohoto procesu instalace v druhé oblasti. Zahrnout tyto položky:
 
    1. Struktura virtuální sítě a podsítě
    1. Kapacita mezipaměti
-   1. Podrobnosti cíle úložiště, názvy a cesty oboru názvů
-   1. Podrobnosti o klientských počítačích, pokud se nacházejí ve stejné oblasti jako mezipaměť
-   1. Příkaz Mount pro použití klienty mezipaměti
+   1. Podrobnosti o cíli úložiště, názvy a cesty oboru názvů
+   1. Podrobnosti o klientských počítačích, pokud jsou umístěny ve stejné oblasti jako mezipaměť
+   1. Příkaz Připojit pro použití klienty mezipaměti
 
    > [!NOTE]
-   > Mezipaměť prostředí Azure HPC se dá vytvořit programově, a to prostřednictvím [šablony Azure Resource Manager](../azure-resource-manager/templates/overview.md) nebo přímým přístupem k jejímu rozhraní API. Podrobnosti získáte od týmu Azure HPC cache.
+   > Azure HPC Cache lze vytvořit programově, buď prostřednictvím [šablony Azure Resource Manager](../azure-resource-manager/templates/overview.md) nebo přímým přístupem k jeho rozhraní API. Podrobnosti vám poskytne tým Azure HPC Cache.
 
 ## <a name="failover-example"></a>Příklad převzetí služeb při selhání
 
-Představte si například, že chcete najít mezipaměť prostředí Azure HPC v Východní USA oblasti Azure. Bude mít přístup k datům uloženým v místním datovém centru.
+Jako příklad si představte, že chcete najít azure hpc mezipaměť v oblasti Azure east US. Bude přistupovat k datům uloženým v místním datovém centru.
 
-Jako zálohu při selhání můžete použít mezipaměť v Západní USA 2 oblasti.
+Mezipaměť v oblasti Západní USA 2 můžete použít jako zálohu převzetí služeb při selhání.
 
-Při vytváření mezipaměti v Východní USA Připravte druhou mezipaměť pro nasazení v Západní USA 2. Tuto přípravu můžete automatizovat pomocí skriptování nebo šablon.
+Při vytváření mezipaměti v USA – východ připravte druhou mezipaměť pro nasazení v západní ČÁSTI USA 2. K automatizaci této přípravy můžete použít skriptování nebo šablony.
 
-V případě selhání oblasti v rámci Východní USA vytvořte mezipaměť, kterou jste připravili v Západní USA 2 oblasti.
+V případě selhání celé oblasti v USA – východ vytvořte mezipaměť, kterou jste připravili v oblasti Západní USA 2.
 
-Po vytvoření mezipaměti přidejte cíle úložiště, které odkazují na stejné místní úložiště dat, a použijte stejné agregované cesty oboru názvů jako cíle úložiště staré mezipaměti.
+Po vytvoření mezipaměti přidejte cíle úložiště, které odkazují na stejná místní úložiště dat, a používejte stejné agregované cesty oboru názvů jako cíle úložiště staré mezipaměti.
 
-Pokud jsou původní klienti ovlivněni, vytvořte nové klienty v oblasti Západní USA 2 pro použití s novou mezipamětí.
+Pokud jsou ovlivněny původní klienti, vytvořte nové klienty v oblasti Západní USA 2 pro použití s novou mezipamětí.
 
-Všichni klienti budou muset připojit novou mezipaměť, a to i v případě, že nedošlo k ovlivnění těchto oblastí klienty. Nová mezipaměť má jiné adresy připojení než staré.
+Všichni klienti budou muset připojit novou mezipaměť, i v případě, že klienti nebyli ovlivněni výpadkem oblasti. Nová mezipaměť má různé adresy připojení od staré.
 
 ## <a name="learn-more"></a>Další informace
 
-Průvodce architekturou aplikací Azure obsahuje další informace o tom, jak provést [obnovení při přerušení služeb v rámci oblasti](<https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region>).
+Průvodce architekturou aplikací Azure obsahuje další informace o tom, jak [se zotavit z přerušení služby v rámci celé oblasti](<https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region>).
 <!-- this should be an internal link instead of a URL but I can't find the tree  -->

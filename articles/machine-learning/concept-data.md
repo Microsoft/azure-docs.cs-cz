@@ -1,7 +1,7 @@
 ---
 title: Data v Azure Machine Learning
 titleSuffix: Azure Machine Learning
-description: Přečtěte si, jak Azure Machine Learning vzájemně spolupracuje s Vašimi daty a jak se využívají při experimentech v rámci strojového učení.
+description: Zjistěte, jak se Azure Machine Learning bezpečně připojuje k vašim datům a používá je pro úlohy strojového učení.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,46 +9,52 @@ ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
-ms.date: 12/09/2019
-ms.openlocfilehash: a2af1e87ce7b17183ae09fb02b2652a04f585e84
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/20/2020
+ms.openlocfilehash: 982c9c9eadec4403c8116430e1e25092de99f1d9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79270261"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128492"
 ---
 # <a name="data-access-in-azure-machine-learning"></a>Přístup k datům v Azure Machine Learning
 
-V tomto článku se dozvíte o řešeních pro správu a integraci dat Azure Machine Learning pro úlohy strojového učení. V tomto článku se předpokládá, že jste už vytvořili [účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) a [službu Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction).
+Azure Machine Learning usnadňuje připojení k vašim datům v cloudu.  Poskytuje vrstvu abstrakce přes základní službu úložiště, takže můžete bezpečně přistupovat a pracovat s daty bez nutnosti psát kód specifický pro váš typ úložiště. Azure Machine Learning také poskytuje následující datové funkce:
 
-Až budete připraveni použít data v úložišti, doporučujeme vám
+*    Správa verzí a sledování datového původu
+*    Označování dat 
+*    Monitorování odchylek dat
+*    Interoperabilita s pandami a datovými rámy Spark
 
-1. Vytvořte úložiště dat Azure Machine Learning.
-2. Z tohoto úložiště dat vytvořte Azure Machine Learning datovou sadu. 
-3. Využijte tuto datovou sadu v experimentu ve službě Machine Learning, a to buď 
-    1. Připojení k cíli výpočetního cíle experimentu pro školení modelů
+## <a name="data-workflow"></a>Pracovní postup Data
 
-        **ANI** 
+Až budete připraveni použít data v cloudovém řešení úložiště, doporučujeme následující pracovní postup doručování dat. Tento pracovní postup předpokládá, že máte [účet úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) a data v cloudové službě úložiště v Azure. 
 
-    1. Přímo v Azure Machine Learning řešeních, jako je automatizované spouštění machine learningu (automatizované ML), kanály strojového učení a [návrhář Azure Machine Learning](concept-designer.md).
-4. Vytvořte monitorování datových sad pro výstupní datovou sadu modelu pro detekci posunu dat. 
-5. Pokud se zjistí posun dat, aktualizujte vstupní datovou sadu a odpovídajícím způsobem svůj model znovu nahlaste.
+1. Vytvořte úložiště [dat Azure Machine Learning](#datastores) pro ukládání informací o připojení do úložiště Azure.
 
-Následující diagram nabízí vizuální ukázku tohoto doporučeného pracovního postupu pro přístup k datům.
+2. Z tohoto úložiště dat vytvořte [datovou sadu Azure Machine Learning,](#datasets) která bude ukazovat na konkrétní soubor (soubory) ve vašem podkladovém úložišti. 
 
-![Data-koncept-diagram](./media/concept-data/data-concept-diagram.svg)
+3. Chcete-li tuto datovou sadu použít v experimentu strojového učení, můžete
+    1. Připojte jej k výpočetnímu cíli experimentu pro trénování modelu.
 
-## <a name="access-data-in-storage"></a>Přístup k datům v úložišti
+        **Nebo** 
 
-Pokud chcete získat přístup k datům ve vašem účtu úložiště, Azure Machine Learning nabízí úložiště dat a datové sady. Úložiště dat odpovědět na otázku: jak se dá bezpečně připojit k datům v mém Azure Storage? Úložiště dat poskytují v rámci služby úložiště vrstvu abstrakce. To pomáhá v zabezpečení a snadném přístupu k úložišti, protože informace o připojení jsou uchovávány v úložišti dat a nejsou vystaveny ve skriptech. 
+    1. Využijte ji přímo v řešeních Azure Machine [Learning,](concept-designer.md)jako jsou spuštění experimentu automatizovaného strojového učení (automatizovaná ML), kanály strojového učení nebo návrhář Azure Machine Learning .
 
-Datové sady odpovědět na otázku postup: Jak získám konkrétní datové soubory v úložišti dat? Datové sady odkazují na konkrétní soubor nebo soubory ve vašem zdrojovém úložišti, které chcete použít pro experimentování ve službě Machine Learning. Úložiště dat a datové sady společně poskytují zabezpečený, škálovatelný a reprodukovatelné pracovní postupy pro doručování dat pro vaše úlohy strojového učení.
+4. Vytvořte [monitorování datových sad](#data-drift) pro výstupní datovou sadu modelu, která zjišťuje posun dat. 
 
-### <a name="datastores"></a>Úložiště dat
+5. Pokud je zjištěn posun dat, aktualizujte vstupní datovou sadu a odpovídajícím způsobem přetrénte model.
 
-Úložiště dat Azure Machine Learning je abstrakcí úložiště ve vašich službách Azure Storage. [Zaregistrujte a vytvořte úložiště dat](how-to-access-data.md) , abyste se mohli snadno připojit k účtu služby Azure Storage a přistupovat k datům v základních službách úložiště Azure.
+Následující diagram poskytuje vizuální ukázku tohoto doporučeného pracovního postupu.
 
-Podporované služby úložiště Azure, které se dají zaregistrovat jako úložiště dat:
+![Diagram koncepce dat](./media/concept-data/data-concept-diagram.svg)
+
+## <a name="datastores"></a>Úložiště dat
+
+Úložiště dat Azure Machine Learning bezpečně uchovávejte informace o připojení do úložiště Azure, takže je nemusíte kódovat ve skriptech. [Zaregistrujte a vytvořte úložiště dat pro](how-to-access-data.md) snadné připojení k účtu úložiště a přístup k datům ve vaší základní službě úložiště Azure. 
+
+Podporované služby cloudového úložiště v Azure, které se můžou registrovat jako úložiště dat:
+
 + Kontejner objektů blob Azure
 + Sdílená složka Azure
 + Azure Data Lake
@@ -58,64 +64,55 @@ Podporované služby úložiště Azure, které se dají zaregistrovat jako úlo
 + Systém souborů Databricks
 + Azure Database for MySQL
 
-### <a name="datasets"></a>Datové sady
+## <a name="datasets"></a>Datové sady
 
-[Vytvořte datovou sadu Azure Machine Learning](how-to-create-register-datasets.md) pro interakci s daty v úložišti dat a zabalení dat do spotřebního objektu pro úlohy strojového učení. Zaregistrujte datovou sadu do svého pracovního prostoru, abyste ji mohli sdílet a opakovaně používat v různých experimentech bez složitosti příjmu dat.
+Datové sady Azure Machine Learning jsou odkazy, které odkazují na data ve vaší službě úložiště. Nejedná se o kopie vašich dat, takže nevznikají žádné další náklady na úložiště. Chcete-li pracovat s daty v úložišti, [vytvořte datovou sadu](how-to-create-register-datasets.md) pro sbalení dat do spotřebního objektu pro úlohy strojového učení. Zaregistrujte datovou sadu do pracovního prostoru a sdílejte ji a znovu ji používejte v různých experimentech bez složitosti přiřazování dat.
 
-Datové sady je možné vytvořit z místních souborů, veřejných adres URL, [otevřených datových sad Azure](#open)nebo konkrétních souborů v úložišti dat. Chcete-li vytvořit datovou sadu z datového rámce v PANDAS paměti, zapište data do místního souboru, třeba do sdíleného svazku clusteru, a vytvořte datovou sadu z tohoto souboru. Datové sady nejsou kopiemi vašich dat, ale odkazy odkazují na data ve službě úložiště, takže se neúčtují žádné dodatečné náklady na úložiště. 
+Datové sady lze vytvářet z místních souborů, veřejných adres URL, [otevřených datových sad Azure](https://azure.microsoft.com/services/open-datasets/)nebo služeb úložiště Azure prostřednictvím datových úložišť. Chcete-li vytvořit datovou sadu z datového rámce pandas v paměti, zapište data do místního souboru, jako jsou parkety, a vytvořte datovou sadu z tohoto souboru.  
 
-Následující diagram znázorňuje, že pokud nemáte službu Azure Storage, můžete vytvořit datovou sadu přímo z místních souborů, veřejných adres URL nebo pomocí Azure Open DataSet. Provedete to tak, že datovou sadu připojíte k výchozímu úložišti dat, které bylo automaticky vytvořeno s [Azure Machine Learning pracovním prostorem](concept-workspace.md)experimentu.
+Podporujeme 2 typy datových sad: 
++ [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) představuje data v tabulkovém formátu analýzou zadaný soubor nebo seznam souborů. Můžete načíst TabularDataset do Pandas nebo Spark DataFrame pro další manipulaci a čištění. Úplný seznam datových formátů, ze kterých můžete vytvořit TabularDatasets, naleznete v [tématu TabularDatasetFactory class](https://aka.ms/tabulardataset-api-reference).
 
-![Data-koncept-diagram](./media/concept-data/dataset-workflow.svg)
++ Soubor [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) odkazuje na jeden nebo více souborů ve vašem úložišti dat nebo veřejných adresÁCH URL. [Soubory,](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target) na které odkazuje FileDatasets, můžete stáhnout nebo připojit k vašemu výpočetnímu cíli.
 
-Další možnosti datových sad najdete v následující dokumentaci:
+Další možnosti datových sad naleznete v následující dokumentaci:
 
-+ [Verze a sledování](how-to-version-track-datasets.md) řádků datové sady
-+ [Monitorujte datovou sadu](how-to-monitor-datasets.md) , abyste usnadnili detekci přenosů dat.
-+  V dokumentaci k těmto dvěma typům datových sad si přečtěte následující informace:
-    + [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) představuje data v tabulkovém formátu tak, že analyzuje zadaný soubor nebo seznam souborů. Umožňuje vám vyhodnotit data do PANDAS nebo Spark dataframe pro další manipulaci a čištění. Úplný seznam souborů, ze kterých můžete vytvořit TabularDatasets, najdete v tématu [Třída TabularDatasetFactory](https://aka.ms/tabulardataset-api-reference).
-
-    + Soubor [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) odkazuje na jeden nebo více souborů v úložišti dat nebo veřejných adresách URL. Pomocí této metody můžete stáhnout nebo připojit soubory, které zvolíte, do svého cíle výpočetní služby jako objekt DataSet.
++ [Verze a sledovat](how-to-version-track-datasets.md) datové sady lineage.
++ [Sledujte svou datovou sadu,](how-to-monitor-datasets.md) abyste pomohli s detekcí posunu dat.    
 
 ## <a name="work-with-your-data"></a>Práce s daty
 
-S datovými sadami můžete provádět řadu úloh strojového učení prostřednictvím bezproblémové integrace s funkcemi Azure Machine Learning. 
+Díky datovým sestavám můžete provádět řadu úloh strojového učení prostřednictvím bezproblémové integrace s funkcemi Azure Machine Learning. 
 
-+ [Naučte se modely strojového učení](how-to-train-with-datasets.md).
-+ Využívání datových sad v 
++ Vytvořte [projekt označování dat](#label).
++ Modely strojového učení:
      + [automatizované experimenty ML](how-to-use-automated-ml-for-ml-models.md)
-     + [Návrhář](tutorial-designer-automobile-price-train-score.md#import-data) 
-+ Přístup k datovým sadám pro bodování pomocí dávkového odvozování v [kanálech strojového učení](how-to-create-your-first-pipeline.md).
-+ Vytvořte [projekt pro popisky dat](#label).
-+ Nastavte monitorování datových sad pro detekci [posunu dat](#drift) .
-
-<a name="open"></a>
-
-## <a name="azure-open-datasets"></a>Otevřené datové sady Azure
-
-[Otevřené datové sady v Azure](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets) jsou spravované veřejné datové sady, které můžete použít k přidání funkcí specifických pro konkrétní scénář do řešení Machine Learning pro přesnější modely. Otevřené datové sady jsou v cloudu na Microsoft Azure a jsou integrované do Azure Machine Learning. K datovým sadám můžete také přistupovat prostřednictvím rozhraní API a používat je v jiných produktech, například Power BI a Azure Data Factory.
-
-Azure Open DataSets zahrnuje data z veřejných domén pro počasí, sčítání, svátky, veřejné zabezpečení a umístění, které vám pomůžou naučit modely strojového učení a rozšířit prediktivní řešení. Veřejné datové sady můžete sdílet taky v otevřených datových sadách Azure.
+     + [projektant](tutorial-designer-automobile-price-train-score.md#import-data)
+     + [poznámkové bloky](how-to-train-with-datasets.md)
+     + [Kanály Azure Machine Learning](how-to-create-your-first-pipeline.md)
++ Přístup k datovým souborům pro vyhodnocování s [dávkovým odvozením](how-to-use-parallel-run-step.md) v [kanálech strojového učení](how-to-create-your-first-pipeline.md).
++ Nastavte monitorování datové sady pro detekci [posunu dat.](#drift)
 
 <a name="label"></a>
 
-## <a name="data-labeling"></a>Popisky dat
+## <a name="data-labeling"></a>Označování dat
 
-Popisování velkých objemů dat je často starostí v projektech strojového učení. Ty, které mají součást počítačové vize, jako je například klasifikace obrázku nebo detekce objektu, obvykle vyžadují tisíce imagí a odpovídající popisky.
+Označování velkého množství dat bylo často bolestmi hlavy v projektech strojového učení. Ti, kteří mají součást počítačového vidění, jako je klasifikace obrázků nebo detekce objektů, obvykle vyžadují tisíce obrázků a odpovídající popisky.
 
-Azure Machine Learning poskytuje centrální umístění pro vytváření, správu a sledování projektů označování. Označování projektů usnadňuje koordinaci dat, popisků a členů týmu, což vám umožní efektivněji spravovat úlohy označování. Aktuálně podporované úlohy jsou klasifikace obrázku, a to buď pomocí ohraničených polí, nebo s více třídami, nebo s identifikací objektů.
+Azure Machine Learning poskytuje centrální umístění pro vytváření, správu a monitorování projektů označování. Projekty označování pomáhají koordinovat data, popisky a členy týmu, což umožňuje efektivnější správu úkolů popisků. Aktuálně podporované úkoly jsou klasifikace obrázků, buď vícepopisek nebo více tříd, a identifikace objektu pomocí ohraničených polí.
 
-+ Vytvořte [projekt pro označování dat a vypište](how-to-create-labeling-projects.md)datovou sadu pro použití v experimentech Machine Learning.
+Vytvořte [projekt označování dat](how-to-create-labeling-projects.md)a vytvořte datovou sadu pro použití v experimentech strojového učení.
 
 <a name="drift"></a>
 
 ## <a name="data-drift"></a>Posun dat
 
-V kontextu strojového učení je posun dat změnou v modelu vstupní data, která vede k modelování snížení výkonu. Je jedním z hlavních důvodů, které se v průběhu času snižují přesností, a díky tomu sledování posunu dat pomáhá detekovat problémy s výkonem modelu.
-Další informace o tom, jak detekovat a upozorňovat na data pro nová data v datové sadě, najdete v článku o [vytvoření objektu pro monitorování datových sad](how-to-monitor-datasets.md) .
+V kontextu strojového učení je posun dat změnou vstupních dat modelu, která vede ke snížení výkonu modelu. Je to jeden z hlavních důvodů, proč přesnost modelu snižuje v průběhu času, a proto sledování dat drift pomáhá detekovat problémy s výkonem modelu.
+
+Další informace o tom, jak zjistit a upozornit na posun dat na nová data v datové sadě, najdete v článku [Vytvoření monitorování datové sady.](how-to-monitor-datasets.md)
 
 ## <a name="next-steps"></a>Další kroky 
 
-+ Vytvořte datovou sadu v Azure Machine Learning studiu nebo v sadě Python SDK, [použijte následující postup.](how-to-create-register-datasets.md)
-+ Vyzkoušejte si příklady školení datových sad pomocí našich [ukázkových poznámkových bloků](https://aka.ms/dataset-tutorial).
-+ Příklady posunu dat najdete v tomto [kurzu pro posun](https://aka.ms/datadrift-notebook)dat.
++ Pomocí [těchto kroků](how-to-create-register-datasets.md) vytvořte datovou sadu ve studiu Azure Machine Learning nebo pomocí sady Python SDK.
++ Vyzkoušejte příklady školení datové sady s [našimi ukázkovými poznámkovými bloky](https://aka.ms/dataset-tutorial).
++ Příklady posunu dat naleznete v tomto [kurzu posunu dat](https://aka.ms/datadrift-notebook).

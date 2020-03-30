@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Účet služby ADSync | Dokumentace Microsoftu'
-description: Toto téma popisuje účtu službu ADSync a seznamuje s osvědčenými postupy týkající se účtu.
+title: 'Azure AD Connect: Účet služby ADSync | Dokumenty společnosti Microsoft'
+description: Toto téma popisuje účet služby ADSync a poskytuje osvědčené postupy týkající se účtu.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,62 +16,62 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f228da5afc5998d8fa59ce2d720cec4c9f955b67
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67478716"
 ---
 # <a name="adsync-service-account"></a>Účet služby ADSync
-Azure AD Connect nainstaluje na místní službu, která orchestruje synchronizace mezi službami Active Directory a Azure Active Directory.  Synchronizační služba Microsoft Azure AD Sync (ADSync) běží na serveru ve vašem místním prostředí.  Přihlašovací údaje pro službu jsou nastaveny ve výchozím nastavení v zařízení Express, ale lze přizpůsobit podle požadavků vaší organizace na zabezpečení.  Tyto přihlašovací údaje nejsou používány k připojení k Azure Active Directory nebo místními doménovými strukturami.
+Azure AD Connect nainstaluje místní službu, která orchestruje synchronizaci mezi službou Active Directory a službou Azure Active Directory.  Synchronizační služba Synchronizace Synchronizace Microsoft Azure AD (ADSync) běží na serveru ve vašem místním prostředí.  Pověření pro službu jsou ve výchozím nastavení nastavena v expresních instalacích, ale mohou být přizpůsobena tak, aby splňovala požadavky na zabezpečení organizace.  Tato pověření se nepoužívají k připojení k místním doménovým strukturám nebo službě Azure Active Directory.
 
-Volba ADSync účet služby je důležité plánování rozhodnutí provést před instalací Azure AD Connect.  Žádný pokus o změnit pověření po instalaci bude mít za následek selhání spuštění, služby ztráty přístupu k databázi synchronizace a kteří neprovádějí ověřování pomocí vašich připojených adresářů (Azure a služby AD DS).  Žádné synchronizaci nedojde, dokud budou obnoveny původních přihlašovacích údajů.
+Výběr účtu služby ADSync je důležité rozhodnutí o plánování před instalací služby Azure AD Connect.  Jakýkoli pokus o změnu přihlašovacích údajů po instalaci bude mít za následek selhání služby ke spuštění, ztráta přístupu k databázi synchronizace a selhání ověření s připojenými adresáři (Azure a AD DS).  Dokud nebudou obnovena původní pověření, nedojde k žádné synchronizaci.
 
 ## <a name="the-default-adsync-service-account"></a>Výchozí účet služby ADSync
 
-Při spuštění na členském serveru, službu AdSync spouští v kontextu systému virtuální služby účtu (Atribut).  Kvůli omezením produktu vlastní účet služby se vytvoří při instalaci na řadič domény.  Pokud účet služby Expresní nastavení nesplňuje požadavky vaší organizace na zabezpečení, pokud vyberete možnost vlastní nasazení služby Azure AD Connect.  Zvolte si možnost účet služby, která splňuje požadavky vaší organizace.
+Při spuštění na členském serveru je služba AdSync spuštěna v kontextu účtu virtuální chodních (VSA).  Z důvodu omezení produktu je při instalaci v řadiči domény vytvořen vlastní účet služby.  Pokud účet služby Expresní nastavení nesplňuje požadavky na zabezpečení vaší organizace, nasaďte Azure AD Connect výběrem možnosti Přizpůsobit.  Pak zvolte možnost účtu služby, která splňuje požadavky vaší organizace.
 
 >[!NOTE]
->Výchozí účet služby při instalaci na řadič domény je Domain\AAD_InstallationIdentifier ve formuláři.  Heslo pro tento účet je náhodně generované a prezentuje zaměřující se problematiku pro rotaci obnovení a heslo.  Společnost Microsoft doporučuje přizpůsobení účtu služby při počáteční instalaci na řadič domény použít buď samostatně nebo skupinový účet spravované služby (sMSA / gMSA)
+>Výchozí účet služby při instalaci v řadiči domény je ve formuláři Domain\AAD_InstallationIdentifier.  Heslo pro tento účet je náhodně generováno a představuje významné problémy pro obnovení a střídání hesel.  Společnost Microsoft doporučuje přizpůsobit účet služby během počáteční instalace na řadiči domény tak, aby používal samostatný nebo skupinový účet spravované služby (sMSA / gMSA)
 
-|Umístění Azure AD Connect|Vytvoření účtu služby|
+|Umístění Azure AD Connect|Účet služby vytvořen|
 |-----|-----|
-|Členský Server|NT SERVICE\ADSync|
-|Řadič domény|Domain\AAD_74dc30c01e80 (viz poznámky)|
+|Členský server|SLUŽBA NT\ADSync|
+|Řadič domény|Doména\AAD_74dc30c01e80 (viz poznámka)|
 
 ## <a name="custom-adsync-service-accounts"></a>Vlastní účty služeb ADSync
-Společnost Microsoft doporučuje spuštěná ADSync service v rámci účet virtuální služby nebo samostatný nebo skupinový účet spravované služby.  Správce domény si také vytvořit účet služby pro splnění požadavků na zabezpečení pro konkrétní organizace.   Přizpůsobení účtu služby používaného během instalace, zvolte možnost přizpůsobit nastavení Express obrazovce níže.   Jsou k dispozici následující možnosti:
+Společnost Microsoft doporučuje spustit službu ADSync v kontextu účtu virtuální služby nebo samostatného nebo skupinového účtu spravované služby.  Správce domény se také může rozhodnout vytvořit účet služby zřízený tak, aby splňoval vaše specifické požadavky na zabezpečení organizace.   Chcete-li přizpůsobit účet služby použitý během instalace, zvolte možnost Přizpůsobit na stránce Expresní nastavení níže.   K dispozici jsou následující možnosti:
 
-- Výchozí účet – Azure AD Connect bude poskytovat přístup k účtu služby, jak je popsáno výše
-- Spravovat účet služby – použijte samostatný nebo skupinového účtu spravované zřízené správcem
-- účet domény – použijte účet zřídit vaším správcem služby domény
+- výchozí účet – Azure AD Connect zřídí účet služby, jak je popsáno výše
+- účet spravované služby – použijte samostatný nebo skupinový MSA zřízený správcem
+- účet domény – použijte účet služby domény zřízený správcem
 
 ![](media/concept-adsync-service-account/adsync1.png)
 
 ![](media/concept-adsync-service-account/adsync2.png)
 
-## <a name="diagnosing-adsync-service-account-changes"></a>Diagnostika ADSync změny účtu služby
-Změna přihlašovacích údajů pro službu ADSync po instalaci bude mít za následek selhání spuštění, služby, ztráty přístupu k databázi synchronizace a kteří neprovádějí ověřování pomocí vašich připojených adresářů (Azure a služby AD DS).  Udělení přístupu k databázi do nového účtu služby ADSync není dostatečná k zotavení z tohoto problému. Žádné synchronizaci nedojde, dokud budou obnoveny původních přihlašovacích údajů.
+## <a name="diagnosing-adsync-service-account-changes"></a>Diagnostika změn účtu služby ADSync
+Změna přihlašovacích údajů pro službu ADSync po instalaci bude mít za následek selhání spuštění služby, ztrátu přístupu k databázi synchronizace a selhání ověření s připojenými adresáři (Azure a AD DS).  Udělení přístupu k databázi k novému účtu služby ADSync nestačí k obnovení tohoto problému. Dokud nebudou obnovena původní pověření, nedojde k žádné synchronizaci.
 
-Službu ADSync vydá chybovou zprávu úrovně do protokolu událostí po nelze spustit.  Obsah zprávy se liší v závislosti na tom, zda je používán integrovanou databází (localdb) nebo úplný SQL.  Následují příklady položek protokolu událostí, které mohou být k dispozici.
+Služba ADSync vydá do protokolu událostí zprávu na úrovni chyb, když ji nelze spustit.  Obsah zprávy se bude lišit v závislosti na tom, zda je používána předdefinovaná databáze (localdb) nebo úplné SQL.  Následují příklady položek protokolu událostí, které mohou být k dispozici.
 
 ### <a name="example-1"></a>Příklad 1
 
-Šifrovací klíče AdSync service se nepovedlo najít a byly znovu vytvořeny.  K synchronizaci nedojde, dokud nebude tento problém je vyřešen.
+Šifrovací klíče služby AdSync nebyly nalezeny a byly znovu vytvořeny.  Synchronizace nebude probíhat, dokud tento problém je opraven.
 
-Řešení potíží s Tento problém Microsoft Azure AD Sync šifrovací klíče se stane nedostupný, pokud se změní protokol pověření service AdSync.  Pokud přihlašovací údaje byly změněny, použijte aplikace služby změnit přihlašovací účet zpět na původně nakonfigurovanou hodnotu (např. NT SERVICE\AdSync) a restartujte službu.  Tato akce obnoví okamžitě správné fungování AdSync service.
+Při řešení tohoto problému se šifrovací klíče Microsoft Azure AD Sync stanou nepřístupnými, pokud se změní přihlašovací údaje služby AdSync.  Pokud byla pověření změněna, změňte pomocí aplikace Services účet Přihlášení zpět na původně nakonfigurovanou hodnotu (např. NT SERVICE\AdSync) a restartujte službu.  Tím se okamžitě obnoví správný provoz služby AdSync.
 
-Podrobnosti najdete na následujících [článku](https://go.microsoft.com/fwlink/?linkid=2086764) pro další informace.
+Další informace naleznete v následujícím [článku.](https://go.microsoft.com/fwlink/?linkid=2086764)
 
 ### <a name="example-2"></a>Příklad 2
 
-Služba nemohla spustit, protože nelze navázat připojení k místní databázi (localdb).
+Službu nelze spustit, protože nebylo možné navázat připojení k místní databázi (localdb).
 
-Odstraňování potíží se službou tento problém Microsoft Azure AD Sync, dojde ke ztrátě oprávnění pro přístup k poskytovateli místní databázi, pokud se změní protokol pověření service AdSync.  Pokud se přihlašovací údaje změnily pomocí aplikace služby změnit přihlašovací účet zpět na původně nakonfigurovanou hodnotu (např. NT SERVICE\AdSync) a restartujte službu.  Tato akce obnoví okamžitě správné fungování AdSync service.
+Při řešení tohoto problému služba Microsoft Azure AD Sync ztratí oprávnění k přístupu k místnímu poskytovateli databáze, pokud dojde ke změně přihlašovacích údajů služby AdSync.  Pokud byla pověření změněna, použijte aplikaci Services a změňte přihlašovací účet zpět na původně nakonfigurovanou hodnotu (např. NT SERVICE\AdSync) a restartujte službu.  Tím se okamžitě obnoví správný provoz služby AdSync.
 
-Podrobnosti najdete na následujících [článku](https://go.microsoft.com/fwlink/?linkid=2086764) pro další informace.
+Další informace naleznete v následujícím [článku.](https://go.microsoft.com/fwlink/?linkid=2086764)
 
-Další podrobnosti vrátil následující informace o chybě zprostředkovatele:
+Další podrobnosti Zprostředkovatel vrátil následující informace o chybě:
  
 
 ``` 
@@ -81,5 +81,5 @@ Failure Code = 0x80004005
 Minor Number = 0 
 Description  = 'A network-related or instance-specific error has occurred while establishing a connection to SQL Server. Server is not found or not accessible. Check if instance name is correct and if SQL Server is configured to allow remote connections. For more information see SQL Server Books Online.'
 ```
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).

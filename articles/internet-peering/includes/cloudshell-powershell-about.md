@@ -9,24 +9,24 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 49212cb9ffdf1f3593acd32a02de11961e673fb7
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774169"
 ---
-Pokud chcete spustit rutiny, můžete použít Azure Cloud Shell, což je bezplatné interaktivní prostředí. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Stačí kliknout na **Kopírovat** a zkopírovat kód, vložit ho do Cloud Shellu a potom ho spustit stisknutím Enter. Existuje několik způsobů, jak Cloud Shell spustit:
+Chcete-li spustit rutiny, můžete použít Azure Cloud Shell, bezplatné interaktivní prostředí. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Stačí kliknout na **Kopírovat** a zkopírovat kód, vložit ho do Cloud Shellu a potom ho spustit stisknutím Enter. Existuje několik způsobů, jak Cloud Shell spustit:
 
 
 |  |   |
 |-----------------------------------------------|---|
 | Otevřete Cloud Shell ve vašem prohlížeči. | [![https://shell.azure.com/powershell](../media/launchcloudshell.png)](https://shell.azure.com/powershell) |
-| Klikněte na tlačítko **Cloud Shell** v nabídce v pravém horním rohu portálu. | [![Cloud Shell na portálu](../media/cloud-shell-menu.png)](https://portal.azure.com) |
+| Klikněte na tlačítko **Cloud Shell** v nabídce v pravém horním části portálu. | [![Cloud Shell na portálu](../media/cloud-shell-menu.png)](https://portal.azure.com) |
 |  |  |
 
 
-Pokud nechcete používat Azure Cloudshellu, můžete místo toho nainstalovat PowerShell místně. Pokud se rozhodnete nainstalovat a používat PowerShell místně, nezapomeňte nainstalovat nejnovější verzi rutin Správce prostředků PowerShellu. Rutiny PowerShellu se často aktualizují a obvykle je potřeba aktualizovat rutiny PowerShellu, aby se získaly nejnovější funkce, které se můžou setkat s chybami.
+Pokud nechcete používat Azure CloudShell, můžete místo toho nainstalovat PowerShell místně. Pokud se rozhodnete nainstalovat a používat prostředí PowerShell místně, nezapomeňte nainstalovat nejnovější verzi rutin prostředí PowerShell správce prostředků. Rutiny prostředí PowerShell jsou často aktualizovány a obvykle potřebujete aktualizovat rutiny prostředí PowerShell, abyste získali nejnovější funkce funkce, což se může stát problémem.
 
-Verzi PowerShellu, kterou používáte místně, zjistíte pomocí rutiny Get-Module-ListAvailable AZ. Chcete-li provést aktualizaci, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps). Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](https://docs.microsoft.com/powershell/azure/azurerm/overview).
+Chcete-li najít verzi prostředí PowerShell, kterou používáte místně, použijte rutinu Get-Module -ListAvailable Az. Informace o aktualizaci najdete [v tématu Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps). Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](https://docs.microsoft.com/powershell/azure/azurerm/overview).
 
-Pokud používáte prostředí PowerShell v macOS, postupujte podle kroků v části [instalace prostředí PowerShell Core na MacOS.](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-macos?view=powershell-6)
+Pokud používáte PowerShell v macOS, postupujte podle pokynů v [části Instalace jádra PowerShellu v macOS.](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-macos?view=powershell-6)

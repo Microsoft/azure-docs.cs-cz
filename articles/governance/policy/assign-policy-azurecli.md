@@ -1,16 +1,16 @@
 ---
-title: 'Rychlý Start: nové přiřazení zásad pomocí Azure CLI'
-description: V tomto rychlém startu pomocí Azure CLI vytvoříte přiřazení Azure Policy k identifikaci prostředků, které nedodržují předpisy.
+title: 'Úvodní příručka: Nové přiřazení zásad pomocí azure CLI'
+description: V tomto rychlém startu pomocí rozhraní příkazového příkazu Azure vytvoříte přiřazení zásad Azure k identifikaci nekompatibilních prostředků.
 ms.date: 01/11/2020
 ms.topic: quickstart
 ms.openlocfilehash: 7f76191d97a936c745fc2b13b54011e787e0b5e6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75978327"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Rychlý Start: vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, pomocí Azure CLI
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Úvodní příručka: Vytvoření přiřazení zásad k identifikaci nekompatibilních prostředků pomocí rozhraní příkazového příkazu Azure
 
 Prvním krokem k porozumění dodržování předpisů v Azure je zjištění stavu vašich prostředků.
 Tento rychlý start vás provede procesem vytvoření přiřazení zásady pro identifikaci virtuálních počítačů, které nepoužívají spravované disky.
@@ -21,11 +21,11 @@ Azure CLI slouží k vytváření a správě prostředků Azure z příkazového
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+- Pokud nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet, než začnete.
 
-- Tento rychlý Start vyžaduje, abyste spustili Azure CLI verze 2.0.76 nebo novější, aby bylo možné místně nainstalovat a používat rozhraní příkazového řádku. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+- Tento rychlý start vyžaduje spuštění azure CLI verze 2.0.76 nebo novější k místní instalaci a použití příkazového příkazového příkazu. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
-- Zaregistrujte poskytovatele prostředků služby Azure Policy Insights pomocí Azure CLI. Registrace poskytovatele prostředků zajistí, že s ním vaše předplatné bude fungovat. Zaregistrovat poskytovatele prostředků, musíte mít oprávnění pro operace registrace poskytovatele prostředků. Tato operace je součástí rolí Přispěvatel a Vlastník. Spuštěním následujícího příkazu zaregistrujte poskytovatele prostředků:
+- Zaregistrujte poskytovatele prostředků Azure Policy Insights pomocí azure cli. Registrace poskytovatele prostředků zajistí, že s ním vaše předplatné bude fungovat. Chcete-li zaregistrovat zprostředkovatele prostředků, musíte mít oprávnění k operaci poskytovatele prostředků registru. Tato operace je součástí rolí Přispěvatel a Vlastník. Spuštěním následujícího příkazu zaregistrujte poskytovatele prostředků:
 
   ```azurecli-interactive
   az provider register --namespace 'Microsoft.PolicyInsights'
@@ -39,7 +39,7 @@ Azure CLI slouží k vytváření a správě prostředků Azure z příkazového
 
 ## <a name="create-a-policy-assignment"></a>Vytvoření přiřazení zásady
 
-V tomto rychlém startu vytvoříte přiřazení zásady a přiřadíte definici **Auditovat virtuální počítače, které nepoužívají spravované disky**. Tato definice zásady identifikuje prostředky, které nedodržují předpisy podmínky nastavené v definici zásad.
+V tomto rychlém startu vytvoříte přiřazení zásady a přiřadíte definici **Auditovat virtuální počítače, které nepoužívají spravované disky**. Tato definice zásad identifikuje prostředky, které nejsou kompatibilní s podmínkami nastavené v definici zásady.
 
 Spuštěním následujícího příkazu vytvořte přiřazení zásady:
 
@@ -50,8 +50,8 @@ az policy assignment create --name 'audit-vm-manageddisks' --display-name 'Audit
 Předchozí příkaz používá následující informace:
 
 - **Name** – skutečný název přiřazení. V tomto příkladu je použitý název _audit-vm-manageddisks_.
-- **DisplayName** – zobrazovaný název přiřazení zásady. V tomto případě používáte _Audit virtuálních počítačů bez spravovaných disků přiřazení_.
-- **Policy** – ID definice zásady, kterou používáte k vytvoření tohoto přiřazení. V takovém případě je ID definice zásady _Audit virtuálních počítačů, které nepoužívají spravované disky_. ID definice zásady získáte spuštěním příkazu `az policy definition list --query "[?displayName=='Audit VMs that do not use managed disks']"`.
+- **DisplayName** – zobrazovaný název přiřazení zásady. V takovém případě používáte _auditovat virtuální počítače bez přiřazení spravovaných disků_.
+- **Policy** – ID definice zásady, kterou používáte k vytvoření tohoto přiřazení. V tomto případě je to ID definice zásad _auditní virtuální počítače, které nepoužívají spravované disky_. ID definice zásady získáte spuštěním příkazu `az policy definition list --query "[?displayName=='Audit VMs that do not use managed disks']"`.
 - **Scope** – Obor určuje, pro které prostředky nebo skupiny prostředků se toto přiřazení zásady bude vynucovat. Může sahat od předplatného až po skupinu prostředků. Nezapomeňte nahradit &lt;scope&gt; názvem vaší skupiny prostředků.
 
 ## <a name="identify-non-compliant-resources"></a>Identifikace prostředků, které nedodržují předpisy
@@ -62,7 +62,7 @@ Pokud chcete zobrazit prostředky, které nedodržují předpisy v rámci tohoto
 az policy assignment list --query "[?displayName=='Audit VMs without managed disks Assignment'].id"
 ```
 
-Další informace o ID přiřazení zásad najdete v tématu [AZ Policy Assignment](/cli/azure/policy/assignment).
+Další informace o ID přiřazení zásad naleznete [v tématu přiřazení zásad az](/cli/azure/policy/assignment).
 
 Pak spuštěním následujícího příkazu získejte a zapište do souboru JSON ID prostředků, které nedodržují předpisy:
 
@@ -100,7 +100,7 @@ Tyto výsledky jsou srovnatelné s tím, co se obvykle zobrazuje v části **Nek
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Odebrat přiřazení vytvořené, použijte následující příkaz:
+Chcete-li odebrat vytvořenou úlohu, použijte následující příkaz:
 
 ```azurecli-interactive
 az policy assignment delete --name 'audit-vm-manageddisks' --scope '/subscriptions/<subscriptionID>/<resourceGroupName>'
@@ -110,7 +110,7 @@ az policy assignment delete --name 'audit-vm-manageddisks' --scope '/subscriptio
 
 V tomto rychlém startu jste přiřadili definici zásady pro identifikaci prostředků, které nedodržují předpisy, ve vašem prostředí Azure.
 
-Další informace o přiřazování zásad pro ověření, že nové prostředky jsou kompatibilní, i nadále najdete v tomto kurzu:
+Další informace o přiřazení zásad k ověření, že nové prostředky jsou kompatibilní, pokračujte v kurzu pro:
 
 > [!div class="nextstepaction"]
 > [Vytváření a správa zásad](./tutorials/create-and-manage.md)

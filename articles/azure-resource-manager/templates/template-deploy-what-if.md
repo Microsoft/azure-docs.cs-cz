@@ -1,31 +1,31 @@
 ---
-title: Template deployment co-if (Preview)
-description: Než nasadíte šablonu Azure Resource Manager, určete, jaké změny se budou probíhat u vašich prostředků.
+title: Nasazení šablony what-if (Náhled)
+description: Zjistěte, jaké změny se stane s vašimi prostředky před nasazením šablony Azure Resource Manager.
 author: mumian
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: jgao
-ms.openlocfilehash: b9d4150779842614a5dc284a2b3a489593fabfe1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: bc42585204e5cc2c3ece5293a3934fd22fe8507b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388526"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156442"
 ---
-# <a name="resource-manager-template-deployment-what-if-operation-preview"></a>Operace s citlivostí pro nasazení šablony Správce prostředků (Preview)
+# <a name="arm-template-deployment-what-if-operation-preview"></a>Operace pro nasazení šablony ARM (preview)
 
-Před nasazením šablony můžete chtít zobrazit náhled změn, ke kterým dojde. Azure Resource Manager poskytuje operaci citlivostní operace, která vám umožní zjistit, jak se prostředky změní, pokud šablonu nasadíte. Operace citlivosti neprovede žádné změny stávajících prostředků. Místo toho odhadne změny, pokud je zadaná šablona nasazena.
+Před nasazením šablony Správce prostředků Azure (ARM) můžete chtít zobrazit náhled změn, ke kterým dojde. Azure Resource Manager poskytuje operace co by se vám umožní zobrazit, jak se změní prostředky, pokud nasadíte šablonu. Operace "Pokud" neprovede žádné změny existujících prostředků. Místo toho předpovídá změny, pokud je nasazena zadaná šablona.
 
 > [!NOTE]
-> Operace citlivosti je aktuálně ve verzi Preview. Pokud ho chcete použít, musíte se [zaregistrovat ve verzi Preview](https://aka.ms/armtemplatepreviews). Ve verzi Preview můžou výsledky někdy Ukázat, že se prostředek změní, když se ve skutečnosti žádná změna nestane. Pracujeme na tom, abychom tyto problémy snížili, ale potřebujeme vaši technickou podporu. Ohlaste prosím tyto problémy na [https://aka.ms/whatifissues](https://aka.ms/whatifissues).
+> Citlivostní operace je aktuálně ve verzi preview. Chcete-li jej použít, musíte [se zaregistrovat do náhledu](https://aka.ms/armtemplatepreviews). Jako verze preview mohou výsledky někdy ukázat, že se prostředek změní, když se ve skutečnosti nedojde k žádné změně. Pracujeme na snížení těchto problémů, ale potřebujeme vaši pomoc. Tyto problémy [https://aka.ms/whatifissues](https://aka.ms/whatifissues)nahlaste na adrese .
 
-Můžete použít operaci citlivostní operace s příkazy prostředí PowerShell nebo operacemi REST API.
+Funkci "Co se ještě chcete" použít s příkazy Prostředí PowerShell nebo s operacemi rozhraní REST API.
 
-Výstup v prostředí PowerShell obsahuje barevně kódované výsledky, které vám pomůžou se zobrazením různých typů změn.
+V Prostředí PowerShell obsahuje výstup barevně odlišené výsledky, které vám pomohou zobrazit různé typy změn.
 
-![Správce prostředků fullresourcepayload a typ změny nasazení šablony](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
+![Správce prostředků šablony nasazení co-if operace fullresourcepayload a typy změn](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
 
-Ouptput textu je:
+Text ouptput je:
 
 ```powershell
 Resource and property changes are indicated with these symbols:
@@ -54,62 +54,62 @@ Scope: /subscriptions/./resourceGroups/ExampleGroup
 Resource changes: 1 to modify.
 ```
 
-## <a name="what-if-commands"></a>Příkazy citlivostní informace
+## <a name="what-if-commands"></a>Co-if příkazy
 
-Pro operaci citlivostní operace můžete použít buď Azure PowerShell, nebo Azure REST API.
+Pro operaci What-if můžete použít azure prostředí nebo rozhraní AZURE REST API.
 
-### <a name="azure-powershell"></a>Azure Powershell
+### <a name="azure-powershell"></a>Azure PowerShell
 
-Chcete-li zobrazit náhled změn před nasazením šablony, přidejte do příkazu Deployment parametr `-Whatif` Switch.
+Chcete-li zobrazit náhled změn před nasazením `-Whatif` šablony, přidejte parametr switch do příkazu nasazení.
 
-* `New-AzResourceGroupDeployment -Whatif` pro nasazení skupin prostředků
-* `New-AzSubscriptionDeployment -Whatif` a `New-AzDeployment -Whatif` pro nasazení na úrovni předplatného
+* `New-AzResourceGroupDeployment -Whatif`pro nasazení skupin y prostředků
+* `New-AzSubscriptionDeployment -Whatif`a `New-AzDeployment -Whatif` pro nasazení na úrovni předplatného
 
-Nebo můžete použít parametr `-Confirm` Switch k zobrazení náhledu změn a zobrazit výzvu k pokračování v nasazení.
+Nebo můžete použít `-Confirm` parametr switch k zobrazení náhledu změn a zobrazí se výzva k pokračování v nasazení.
 
-* `New-AzResourceGroupDeployment -Confirm` pro nasazení skupin prostředků
-* `New-AzSubscriptionDeployment -Confirm` a `New-AzDeployment -Confirm` pro nasazení na úrovni předplatného
+* `New-AzResourceGroupDeployment -Confirm`pro nasazení skupin y prostředků
+* `New-AzSubscriptionDeployment -Confirm`a `New-AzDeployment -Confirm` pro nasazení na úrovni předplatného
 
-Předchozí příkazy vrátí textový souhrn, který můžete ručně zkontrolovat. Chcete-li získat objekt, který lze programově kontrolovat změny, použijte:
+Předchozí příkazy vrátí souhrn textu, který můžete ručně zkontrolovat. Chcete-li získat objekt, který můžete programově zkontrolovat změny, použijte:
 
-* `$results = Get-AzResourceGroupDeploymentWhatIf` pro nasazení skupin prostředků
-* `$results = Get-AzSubscriptionDeploymentWhatIf` nebo `$results = Get-AzDeploymentWhatIf` pro nasazení na úrovni předplatného
+* `$results = Get-AzResourceGroupDeploymentWhatIf`pro nasazení skupin y prostředků
+* `$results = Get-AzSubscriptionDeploymentWhatIf`nebo `$results = Get-AzDeploymentWhatIf` pro nasazení na úrovni předplatného
 
 > [!NOTE]
-> Před vydáním verze 2.0.1 – alpha5 jste použili příkaz `New-AzDeploymentWhatIf`. Tento příkaz byl nahrazen příkazy `Get-AzDeploymentWhatIf`, `Get-AzResourceGroupDeploymentWhatIf`a `Get-AzSubscriptionDeploymentWhatIf`. Pokud jste použili starší verzi, je třeba tuto syntaxi aktualizovat. Byl odebrán parametr `-ScopeType`.
+> Před vydáním verze 2.0.1-alpha5 jste `New-AzDeploymentWhatIf` použili příkaz. Tento příkaz byl nahrazen `Get-AzDeploymentWhatIf`příkazy `Get-AzResourceGroupDeploymentWhatIf` `Get-AzSubscriptionDeploymentWhatIf` , a příkazy. Pokud jste použili starší verzi, je třeba tuto syntaxi aktualizovat. Parametr `-ScopeType` byl odebrán.
 
-### <a name="azure-rest-api"></a>REST API Azure
+### <a name="azure-rest-api"></a>Azure REST API
 
-Pro REST API použijte:
+Pro rozhraní REST API použijte:
 
-* [Nasazení – what if](/rest/api/resources/deployments/whatif) pro nasazení skupin prostředků
-* [Nasazení – what if v oboru předplatného](/rest/api/resources/deployments/whatifatsubscriptionscope) pro nasazení na úrovni předplatného
+* [Nasazení – co když pro](/rest/api/resources/deployments/whatif) nasazení skupiny prostředků
+* [Nasazení – co když na subscription obor](/rest/api/resources/deployments/whatifatsubscriptionscope) pro nasazení na úrovni předplatného
 
 ## <a name="change-types"></a>Změnit typy
 
-Operace citlivostní zpracování seznamu obsahuje šest různých typů změn:
+Operace IF uvádí šest různých typů změn:
 
-- **Vytvořit**: prostředek aktuálně neexistuje, ale je definován v šabloně. Prostředek se vytvoří.
+- **Vytvořit**: Prostředek v současné době neexistuje, ale je definován v šabloně. Zdroj bude vytvořen.
 
-- **Odstranit**: Tento typ změny platí pouze v případě, že je pro nasazení použit [režim úplného režimu](deployment-modes.md) . Prostředek existuje, ale není definovaný v šabloně. V režimu úplného režimu se prostředek odstraní. V tomto typu změny jsou zahrnuty pouze prostředky, které [podporují odstranění režimu dokončení](complete-mode-deletion.md) .
+- **Odstranit**: Tento typ změny platí pouze při použití [úplného režimu](deployment-modes.md) pro nasazení. Prostředek existuje, ale není definován v šabloně. V režimu dokončení bude prostředek odstraněn. Do tohoto typu změny jsou zahrnuty pouze prostředky, které [podporují úplné odstranění režimu.](complete-mode-deletion.md)
 
-- **Ignore**: prostředek existuje, ale není definovaný v šabloně. Prostředek se nebude nasazovat ani upravovat.
+- **Ignorovat**: Prostředek existuje, ale není definován v šabloně. Prostředek nebude nasazen nebo změněn.
 
-- Žádná **Změna**: prostředek existuje a je definován v šabloně. Prostředek se znovu nasadí, ale vlastnosti prostředku se nezmění. Tento typ změny se vrátí, pokud je [ResultFormat](#result-format) nastaveno na `FullResourcePayloads`, což je výchozí hodnota.
+- **NoChange**: Prostředek existuje a je definován v šabloně. Prostředek bude znovu nasazen, ale vlastnosti prostředku se nezmění. Tento typ změny je vrácen, `FullResourcePayloads`pokud je [funkce ResultFormat](#result-format) nastavena na hodnotu , což je výchozí hodnota.
 
-- **Upravit**: prostředek existuje a je definován v šabloně. Prostředek se znovu nasadí a změní se vlastnosti prostředku. Tento typ změny se vrátí, pokud je [ResultFormat](#result-format) nastaveno na `FullResourcePayloads`, což je výchozí hodnota.
+- **Změnit**: Prostředek existuje a je definován v šabloně. Prostředek bude znovu nasazen a vlastnosti prostředku se změní. Tento typ změny je vrácen, `FullResourcePayloads`pokud je [funkce ResultFormat](#result-format) nastavena na hodnotu , což je výchozí hodnota.
 
-- **Nasazení**: prostředek existuje a je definován v šabloně. Prostředek se znovu nasadí. Vlastnosti prostředku mohou nebo nemusí být změněny. Tato operace vrátí tento typ změny, pokud nemá dostatek informací k určení, zda se změní některé vlastnosti. Tato podmínka se zobrazí jenom v případě, že je [ResultFormat](#result-format) nastavené na `ResourceIdOnly`.
+- **Nasazení**: Prostředek existuje a je definován v šabloně. Prostředek bude znovu nasazen. Vlastnosti prostředku se mohou nebo nemusí změnit. Operace vrátí tento typ změny, pokud nemá dostatek informací k určení, zda se změní všechny vlastnosti. Tato podmínka se zobrazí pouze v `ResourceIdOnly`případě, že je funkce [ResultFormat](#result-format) nastavena na .
 
-## <a name="result-format"></a>Výsledný formát
+## <a name="result-format"></a>Formát výsledků
 
-Můžete řídit úroveň podrobností vrácených o předpokládaných změnách. V příkazech nasazení (`New-Az*Deployment`) použijte parametr **-WhatIfResultFormat** . V příkazech programového objektu (`Get-Az*DeploymentWhatIf`) použijte parametr **ResultFormat** .
+Můžete řídit úroveň podrobností, která je vrácena o předpovídané změny. V příkazech nasazení`New-Az*Deployment`( ) použijte parametr **-WhatIfResultFormat.** V příkazech programového`Get-Az*DeploymentWhatIf`objektu ( ) použijte parametr **ResultFormat.**
 
-Nastavte parametr Format na **FullResourcePayloads** , abyste získali seznam prostředků, které se změní, a podrobnosti o vlastnostech, které se změní. Nastavte parametr Format na **ResourceIdOnly** a získejte tak seznam prostředků, které se změní. Výchozí hodnota je **FullResourcePayloads**.  
+Nastavte parametr format na **FullResourcePayloads,** abyste získali seznam prostředků, které se změní, a podrobnosti o vlastnostech, které se změní. Nastavte parametr format na **ResourceIdOnly** získat seznam prostředků, které se změní. Výchozí hodnota je **FullResourcePayloads**.  
 
-Následující výsledky znázorňují dva různé formáty výstupu:
+Následující výsledky ukazují dva různé výstupní formáty:
 
-- Úplné datové vytížení prostředků
+- Úplné datové části prostředků
 
   ```powershell
   Resource and property changes are indicated with these symbols:
@@ -153,11 +153,11 @@ Následující výsledky znázorňují dva různé formáty výstupu:
   Resource changes: 1 to deploy.
   ```
 
-## <a name="run-what-if-operation"></a>Spustit operaci s citlivostí
+## <a name="run-what-if-operation"></a>Spustit operaci "Pokud o něco"
 
 ### <a name="set-up-environment"></a>Nastavení prostředí
 
-Pokud chcete zjistit, jak to funguje, spustíme některé testy. Nejdřív nasaďte [šablonu, která vytvoří virtuální síť](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-before.json). Tuto virtuální síť použijete k otestování toho, jak jsou změny hlášeny podle toho, co je potřeba.
+Chcete-li zjistit, jak co-li funguje, pojďme spouštět některé testy. Nejprve nasadit [šablonu, která vytvoří virtuální síť](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-before.json). Tuto virtuální síť použijete k testování toho, jak jsou změny hlášeny what-if.
 
 ```azurepowershell
 New-AzResourceGroup `
@@ -168,9 +168,9 @@ New-AzResourceGroupDeployment `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-before.json"
 ```
 
-### <a name="test-modification"></a>Změna testu
+### <a name="test-modification"></a>Modifikace testu
 
-Po dokončení nasazení budete připraveni k otestování operace citlivostní zpracování. Tentokrát nasadíte [šablonu, která mění virtuální síť](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-after.json). Chybí vám původní značky, podsíť se odebrala a předpona adresy se změnila.
+Po dokončení nasazení jste připraveni otestovat operaci co-if. Tentokrát nasadit [šablonu, která změní virtuální síť](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-after.json). Chybí jedna z původních značek, byla odebrána podsíť a předpona adresy byla změněna.
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -179,9 +179,9 @@ New-AzResourceGroupDeployment `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json"
 ```
 
-Výstup citlivosti se zobrazuje jako:
+Výstup "pokud", který se podobá:
 
-![Výstup operace s popisem operace s Správce prostředků šablonou](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
+![Výstup operace nasazení šablony Resource Manageru](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
 
 Textový výstup je:
 
@@ -212,15 +212,15 @@ Scope: /subscriptions/./resourceGroups/ExampleGroup
 Resource changes: 1 to modify.
 ```
 
-V horní části výstupu si všimněte, že jsou definovány barvy, aby označovaly typ změn.
+Všimněte si v horní části výstupu, že barvy jsou definovány k označení typu změn.
 
-V dolní části výstupu se zobrazí vlastník značky byl odstraněn. Předpona adresy se změnila z 10.0.0.0/16 na 10.0.0.0/15. Podsíť s názvem subnet001 se odstranila. Zapamatujte si, že tyto změny nebyly skutečně nasazeny. Zobrazí se náhled změn, ke kterým dojde, pokud šablonu nasadíte.
+V dolní části výstupu se zobrazí značka Owner byla odstraněna. Předpona adresy byla změněna z 10.0.0.0/16 na 10.0.0.0/15. Podsíť s názvem podsíť001 byla odstraněna. Nezapomeňte, že tyto změny nebyly ve skutečnosti nasazeny. Zobrazí se náhled změn, ke kterým dojde, pokud nasadíte šablonu.
 
-Některé vlastnosti, které jsou uvedené jako odstraněné, se ve skutečnosti nezmění. Vlastnosti mohou být nesprávně hlášeny jako odstraněné, pokud nejsou v šabloně, ale budou automaticky nastaveny během nasazování jako výchozí hodnoty. Tento výsledek se považuje za "hluk" v reakci citlivosti. Konečný nasazený prostředek bude mít nastavené hodnoty pro vlastnosti. V případě, že se operace co-if dospěla, tyto vlastnosti se vyfiltrují z výsledku.
+Některé vlastnosti, které jsou uvedeny jako odstraněné, se ve skutečnosti nezmění. Vlastnosti mohou být nesprávně hlášeny jako odstraněné, pokud nejsou v šabloně, ale jsou automaticky nastaveny během nasazení jako výchozí hodnoty. Tento výsledek je považován za "šum" v citlivostní odpovědi. Konečný nasazený prostředek bude mít nastavené hodnoty pro vlastnosti. Jako operace co-if zraje, tyto vlastnosti budou odfiltrovány z výsledku.
 
-## <a name="programmatically-evaluate-what-if-results"></a>Programové vyhodnocení výsledků
+## <a name="programmatically-evaluate-what-if-results"></a>Programově vyhodnocovat výsledky " co-li
 
-Nyní programicky vyhodnotí výsledky citlivosti nastavením příkazu na proměnnou.
+Nyní programově vyhodnotíme výsledky "pokud" nastavením příkazu na proměnnou.
 
 ```azurepowershell
 $results = Get-AzResourceGroupDeploymentWhatIf `
@@ -228,7 +228,7 @@ $results = Get-AzResourceGroupDeploymentWhatIf `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json"
 ```
 
-Můžete zobrazit souhrn každé změny.
+Můžete zobrazit souhrn jednotlivých změn.
 
 ```azurepowershell
 foreach ($change in $results.Changes)
@@ -239,9 +239,9 @@ foreach ($change in $results.Changes)
 
 ## <a name="confirm-deletion"></a>Potvrzení odstranění
 
-Operace citlivosti podporuje použití [režimu nasazení](deployment-modes.md). Při nastavení na režim úplné se odstraní prostředky, které nejsou v šabloně. Následující příklad nasadí [šablonu, která nemá definované žádné prostředky](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json) v režimu úplného zobrazení.
+Operace if if podporuje použití [režimu nasazení](deployment-modes.md). Pokud je nastaven a do režimu dokončení, prostředky, které nejsou v šabloně jsou odstraněny. Následující příklad nasadí [šablonu, která nemá žádné prostředky definované](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json) v režimu dokončení.
 
-Chcete-li před nasazením šablony zobrazit náhled změn, použijte parametr `-Confirm` switch s příkazem nasazení. Pokud se změní podle očekávání, potvrďte, že chcete nasazení dokončit.
+Chcete-li zobrazit náhled změn před `-Confirm` nasazením šablony, použijte parametr switch s příkazem nasazení. Pokud jsou změny podle očekávání, potvrďte, že chcete nasazení dokončit.
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -251,9 +251,9 @@ New-AzResourceGroupDeployment `
   -Mode Complete
 ```
 
-Vzhledem k tomu, že v šabloně nejsou definovány žádné prostředky a režim nasazení je nastaven na dokončeno, bude virtuální síť odstraněna.
+Vzhledem k tomu, že v šabloně nejsou definovány žádné prostředky a režim nasazení je nastaven na dokončení, bude virtuální síť odstraněna.
 
-![Správce prostředků režim nasazení výstupu operace citlivosti nasazení šablon](./media/template-deploy-what-if/resource-manager-deployment-whatif-output-mode-complete.png)
+![Dokončení režimu nasazení výstupu operace správce prostředků správce prostředků dokončení](./media/template-deploy-what-if/resource-manager-deployment-whatif-output-mode-complete.png)
 
 Textový výstup je:
 
@@ -282,10 +282,10 @@ Are you sure you want to execute the deployment?
 [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "Y"):
 ```
 
-Zobrazí se očekávané změny a můžete potvrdit, že se nasazení má spustit.
+Zobrazí očekávané změny a můžete potvrdit, že chcete nasazení spustit.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud si všimnete špatných výsledků z verze Preview co-if, nahlaste prosím problémy na [https://aka.ms/whatifissues](https://aka.ms/whatifissues).
-- Postup nasazení šablon pomocí Azure PowerShell najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure PowerShell](deploy-powershell.md).
-- Pokud chcete nasadit šablony s REST, přečtěte si téma [nasazení prostředků pomocí šablon Správce prostředků a Správce prostředků REST API](deploy-rest.md).
+- Pokud zaznamenáte nesprávné výsledky z předběžné verze what-if, nahlaste problémy na adrese [https://aka.ms/whatifissues](https://aka.ms/whatifissues).
+- Pokud chcete nasadit šablony s Azure PowerShellem, [přečtěte si tématu Nasazení prostředků pomocí šablon ARM a Azure PowerShellu](deploy-powershell.md).
+- Pokud chcete nasadit šablony s REST, [přečtěte si informace o nasazení prostředků pomocí šablon ARM a rozhraní REST API správce prostředků](deploy-rest.md).

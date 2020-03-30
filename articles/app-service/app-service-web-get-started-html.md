@@ -1,22 +1,22 @@
 ---
-title: 'Rychlý Start: Vytvoření webové aplikace ve statickém HTML'
-description: Nasaďte první Hello World HTML do Azure App Service v řádu minut. Nasadíte pomocí Gitu, což je jedním z mnoha způsobů, jak nasadit do App Service.
+title: 'Úvodní příručka: Vytvoření statické webové aplikace HTML'
+description: Nasaďte svůj první HTML Hello World do služby Azure App Service během několika minut. Nasazujete pomocí Gitu, což je jeden z mnoha způsobů nasazení do služby App Service.
 author: msangapu-msft
 ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 1ec8944ea0b4cf44c05efe92d350ae0db66d338b
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: e975708eddad9b9b4a07b49e1f753d604d77ff94
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78247813"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80047576"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Vytvoření webové aplikace ve statickém HTML ve službě Azure
 
-[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. V tomto rychlém startu se dozvíte, jak nasadit základní web HTML + CSS do Azure App Service. Absolvujete ho ve službě [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), ale příkazy můžete také spouštět místně pomocí [Azure CLI](/cli/azure/install-azure-cli).
+[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Tento rychlý start ukazuje, jak nasadit základní web HTML+CSS do služby Azure App Service. Tento rychlý start dokončíte v [prostředí Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), ale tyto příkazy můžete spustit také místně pomocí azure [CLI](/cli/azure/install-azure-cli).
 
 ![Domovská stránka ukázkové aplikace](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 
@@ -84,7 +84,7 @@ Poznamenejte si hodnotu `resourceGroup`. Budete ji potřebovat v části [Vyči�
 
 ## <a name="browse-to-the-app"></a>Přechod do aplikace
 
-V prohlížeči přejdete na adresu URL aplikace: `http://<app_name>.azurewebsites.net`.
+V prohlížeči přejděte na `http://<app_name>.azurewebsites.net`adresu URL aplikace: .
 
 Stránka je spuštěná jako webová aplikace služby Azure App Service.
 
@@ -112,9 +112,9 @@ Po dokončení nasazení se vraťte do okna prohlížeče, které se otevřelo v
 
 ## <a name="manage-your-new-azure-app"></a>Správa nové aplikace Azure
 
-Pokud chcete spravovat webovou aplikaci, kterou jste vytvořili, v [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **App Services**. 
+Pokud chcete spravovat webovou aplikaci, kterou jste [vytvořili,](https://portal.azure.com)vyhledejte a vyberte **App Services**. 
 
-![Vyberte App Services v Azure Portal](./media/app-service-web-get-started-html/portal0.png)
+![Výběr služby App Services na webu Azure Portal](./media/app-service-web-get-started-html/portal0.png)
 
 Na stránce **App Services** vyberte název aplikace Azure.
 

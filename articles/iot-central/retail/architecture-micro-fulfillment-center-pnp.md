@@ -1,6 +1,6 @@
 ---
-title: Centrum pro Azure IoT Central Micro-doplňování | Microsoft Docs
-description: Naučte se vytvářet aplikace centra pro mikroplnění pomocí naší šablony aplikace pro vyřizování softwaru v IoT Central
+title: Centrum mikroplnění Azure IoT Central | Dokumenty společnosti Microsoft
+description: Naučte se vytvářet aplikaci centra mikroplnění pomocí naší šablony aplikace Centra pro mikroplnění v IoT Central
 author: avneet723
 ms.author: avneets
 ms.date: 10/13/2019
@@ -10,50 +10,50 @@ ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: f752c77a6a62b9b259a8bb1869ca03ff6a19b1f5
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77020875"
 ---
-# <a name="micro-fulfillment-center-architecture"></a>Architektura Micro-splního centra
+# <a name="micro-fulfillment-center-architecture"></a>Architektura centra mikroplnění
 
-Řešení pro vyplňování vám umožňují digitálně propojit, monitorovat a spravovat všechny aspekty plně automatizovaného centra plnění a snížit tak náklady tím, že se při zvyšování zabezpečení a celkové efektivity sníží prostoje. Tato řešení lze sestavit pomocí jedné z šablon aplikací v rámci IoT Central a níže uvedenou architekturou jako doprovodné materiály.
+Řešení centra pro mikroplnění umožňují digitální připojení, monitorování a správu všech aspektů plně automatizovaného centra plnění, abyste snížili náklady tím, že eliminují prostoje a současně zvyšují zabezpečení a celkovou efektivitu. Tato řešení lze sestavit pomocí jedné ze šablon aplikací v rámci IoT Central a architektury níže jako vodítko.
 
 ![Azure IoT Central Store Analytics](./media/architecture/micro-fulfillment-center-architecture-frame.png)
 
-- Sada senzorů IoT odesílajících data telemetrie na zařízení brány
-- Zařízení brány odesílající telemetrii a agregované přehledy pro IoT Central
-- Průběžný export dat do požadované služby Azure za účelem manipulace
-- Data mohou být strukturovaná v požadovaném formátu a odeslána do služby úložiště.
-- Obchodní aplikace se mohou dotazovat na data a generovat přehledy, které maloobchodní operace spotřeby
+- Sada ioT senzorů odesílajících telemetrická data do zařízení brány
+- Zařízení brány odesílající telemetrii a agregované přehledy do IoT Central
+- Nepřetržitý export dat do požadované služby Azure pro manipulaci
+- Data mohou být strukturována v požadovaném formátu a odeslána do služby úložiště
+- Obchodní aplikace mohou dotazovat data a generovat přehledy, které pohánějí maloobchodní provoz
  
-Pojďme se podívat na klíčové komponenty, které obvykle hrají součást v rámci řešení pro doplňování v centru.
+Podívejme se na klíčové komponenty, které obvykle hrají roli v řešení centra mikroplnění.
 
-## <a name="robotic-carriers"></a>Robotní operátoři
+## <a name="robotic-carriers"></a>Robotické nosiče
 
-Řešení pro mikroplnění do středu bude pravděpodobně mít velkou sadu automatických dopravců generujících různé druhy signálů telemetrie. Tyto signály můžou být ingestované zařízením brány, agregované a pak odesílány IoT Central tak, jak se projeví na levé straně diagramu architektury.  
+Řešení centra mikroplnění bude pravděpodobně mít velkou sadu robotických nosičů generujících různé druhy telemetrických signálů. Tyto signály mohou být ingestovány zařízením brány, agregovány a pak odeslány do IoT Central, jak se odráží na levé straně diagramu architektury.  
 
-## <a name="condition-monitoring-sensors"></a>Senzory monitorování podmínek
+## <a name="condition-monitoring-sensors"></a>Čidla pro sledování stavu
 
-Řešení IoT začíná sadou senzorů, které zachytí smysluplné signály v rámci vašeho centra pro splnění. Odrazí se v různých druzích senzorů úplně vlevo od diagramu architektury výše.
+Řešení IoT začíná sadou senzorů zachycujících smysluplné signály z vašeho centra plnění. Odráží se to různými druhy senzorů zcela vlevo od schématu architektury výše.
 
 ## <a name="gateway-devices"></a>Zařízení brány
 
-Mnoho senzorů IoT může zacházet s nezpracovanými signály přímo do cloudu nebo na zařízení brány, které se nachází poblíž. Zařízení brány provádí agregaci dat na hranici před odesláním souhrnných přehledů do aplikace IoT Central. Zařízení brány jsou také zodpovědná za přenos příkazů a operací řízení na zařízení snímače, pokud jsou k dispozici. 
+Mnoho senzorů IoT může podávat nezpracované signály přímo do cloudu nebo do zařízení brány umístěného v jejich blízkosti. Zařízení brány provádí agregaci dat na okraji před odesláním souhrnné přehledy do aplikace IoT Central. Zařízení brány jsou také zodpovědní za předávání řídicích a řídicích operací do senzorových zařízení, pokud je to možné. 
 
-## <a name="iot-central-application"></a>IoT Central aplikace
+## <a name="iot-central-application"></a>Aplikace IoT Central
 
-Aplikace IoT Central v Azure ingestuje data z různých druhů IoT snímačů, robotů, stejně jako zařízení brány v rámci prostředí pro splnění a vygeneruje sadu smysluplných přehledů.
+Aplikace Azure IoT Central ingestuje data z různých druhů senzorů IoT, robotů a také gateway zařízení v prostředí centra plnění a generuje sadu smysluplných přehledů.
 
-Azure IoT Central také poskytuje přizpůsobené prostředí pro operátora Store, které umožňuje vzdáleně monitorovat a spravovat zařízení infrastruktury.
+Azure IoT Central také poskytuje přizpůsobené prostředí pro operátora obchodu, které jim umožňuje vzdáleně monitorovat a spravovat zařízení infrastruktury.
 
 ## <a name="data-transform"></a>Transformace dat
-Aplikace Azure IoT Central v rámci řešení se dá nakonfigurovat tak, aby exportovali nezpracované nebo agregované poznatky do sady služeb Azure PaaS (platforma jako služba), které můžou provádět manipulaci s daty a rozšiřovat tyto přehledy před jejich vyvoláním do firmy. použití. 
+Aplikaci Azure IoT Central v rámci řešení lze nakonfigurovat tak, aby exportovala nezpracované nebo agregované přehledy do sady služeb Azure PaaS (Platforma jako služba), které můžou provádět manipulaci s daty a obohatit tyto poznatky před jejich přistáním v podniku. Aplikace. 
 
 ## <a name="business-application"></a>Obchodní aplikace
-Data IoT se dají použít k napájení různých druhů podnikových aplikací nasazených v rámci maloobchodního prostředí. Správce plnění nebo zaměstnanec může využít tyto aplikace k vizualizaci obchodních přehledů a provádět smysluplné akce v reálném čase. Pokud chcete zjistit, jak vytvořit řídicí panel Power BI v reálném čase pro maloobchodní tým, postupujte podle tohoto [kurzu](./tutorial-in-store-analytics-create-app-pnp.md).
+Data IoT lze použít k napájení různých druhů obchodních aplikací nasazených v maloobchodním prostředí. Manažer nebo zaměstnanec centra plnění může tyto aplikace použít k vizualizaci obchodních přehledů a k významným akcím v reálném čase. Pokud se chcete dozvědět, jak vytvořit řídicí panel Power BI v reálném čase pro váš maloobchodní tým, postupujte podle [kurzu](./tutorial-in-store-analytics-create-app-pnp.md).
 
 ## <a name="next-steps"></a>Další kroky
-* Začněte s šablonou aplikace [centra pro vyplňování](https://aka.ms/checkouttemplate) . 
-* Podívejte se na [kurz](https://aka.ms/mfc-tutorial) , který vás provede vytvořením řešení pomocí šablony aplikace pro vyplňování.
+* Začínáme se šablonou aplikace [Centrum pro mikroplnění.](https://aka.ms/checkouttemplate) 
+* Podívejte se na [kurz,](https://aka.ms/mfc-tutorial) který vás provede vytvořením řešení pomocí šablony aplikace Centrum pro mikroplnění.

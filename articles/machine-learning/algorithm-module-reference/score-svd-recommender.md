@@ -1,7 +1,7 @@
 ---
-title: 'Doporučení pro skóre SVD: odkaz na modul'
+title: 'Skóre SVD Doporučující: Odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak pomocí modulu skóre SVD doporučit v Azure Machine Learning k doporučení předpovědi pro skóre pro datovou sadu.
+description: Zjistěte, jak použít modul Doporučení skóre SVD v Azure Machine Learning k skóre předpovědi doporučení pro datovou sadu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,116 +9,116 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/10/2020
-ms.openlocfilehash: a3eafc28dc6d0f44a1f1019cb3393259aa2a698a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 82c3454ad4c8db3a9b19084f5b6ece988cc86b9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920344"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455974"
 ---
 # <a name="score-svd-recommender"></a>Určení skóre doporučovacího systému SVD
 
-Tento článek popisuje, jak v Návrháři Azure Machine Learning použít modul doporučení skóre SVD (Preview). Tento modul použijte k vytvoření předpovědi pomocí vyučeného modelu doporučení založeného na algoritmu SVD (Single Value rekompozice).
+Tento článek popisuje, jak používat modul Doporučení skóre SVD v návrháři Azure Machine Learning (preview). Tento modul slouží k vytvoření předpovědi pomocí trénovaného modelu doporučení na základě algoritmu rozkladu jedné hodnoty (SVD).
 
-Doporučení SVD může generovat dva různé druhy předpovědi:
+SVD doporučující může generovat dva různé druhy předpovědi:
 
-- [Předpověď hodnocení pro daného uživatele a položku](#prediction-of-ratings)
+- [Předvídání hodnocení pro daného uživatele a položku](#prediction-of-ratings)
 - [Doporučit položky uživateli](#recommendations-for-users)
 
-Když vytváříte druhý typ předpovědi, můžete pracovat v jednom z těchto režimů:
+Při vytváření druhého typu předpovědí můžete pracovat v jednom z těchto režimů:
 
-- **Provozní režim** bere v úvahu všechny uživatele nebo položky. Obvykle se používá ve webové službě.
+- **Produkční režim** bere v úvahu všechny uživatele nebo položky. Obvykle se používá ve webové službě.
 
-  Můžete vytvářet hodnocení pro nové uživatele, nikoli jenom uživatele, kteří se během školení viděli. Další informace najdete v tématu [technické poznámky](#technical-notes). 
+  Můžete vytvořit skóre pro nové uživatele, nejen pro uživatele, kteří se viděli během školení. Další informace naleznete v [technických poznámkách](#technical-notes). 
 
-- **Režim vyhodnocení** funguje na omezené sadě uživatelů nebo položek, které lze vyhodnotit. Obvykle se používá během operací kanálu.
+- **Režim hodnocení** pracuje se sníženou sadou uživatelů nebo položek, které lze vyhodnotit. Obvykle se používá během operací kanálu.
 
-Další informace o algoritmu doporučeného pro SVD najdete v tématu techniky vytváření [matrice pro zdroje informací pro doporučované systémy](https://datajobs.com/data-science-repo/Recommender-Systems-[Netflix].pdf).
+Další informace o algoritmu svd doporučující, viz výzkum papír [Matice faktorizace techniky pro doporučující systémy](https://datajobs.com/data-science-repo/Recommender-Systems-[Netflix].pdf).
 
-## <a name="how-to-configure-score-svd-recommender"></a>Jak nakonfigurovat doporučení SVD skóre
+## <a name="how-to-configure-score-svd-recommender"></a>Jak nakonfigurovat skóre SVD Recommender
 
-Tento modul podporuje dva typy předpovědi, z nichž každá má různé požadavky. 
+Tento modul podporuje dva typy předpovědí, každý s různými požadavky. 
 
-###  <a name="prediction-of-ratings"></a>Předpověď hodnocení
+###  <a name="prediction-of-ratings"></a>Predikce hodnocení
 
-Když odhadnete hodnocení, model vypočítá, jak bude uživatel reagovat na konkrétní položku, a to s ohledem na školicí data. Vstupní data pro bodování musí poskytovat rychlost uživateli i položku.
+Když předpovídáte hodnocení, model vypočítá, jak bude uživatel reagovat na konkrétní položku vzhledem k trénovacím datům. Vstupní data pro vyhodnocování musí poskytnout uživatele i položku, kterou chcete hodnotit.
 
-1. Přidejte do svého kanálu školený model doporučení a připojte ho k **škole SVD doporučení**. Model je potřeba vytvořit pomocí modulu SVD, který je [doporučený pro vlak](train-SVD-recommender.md) .
+1. Přidejte do kanálu trénovaný model doporučení a připojte jej k **trénovaného doporučujícího zařízení SVD**. Model je nutné vytvořit pomocí modulu [Train SVD Recommender.](train-SVD-recommender.md)
 
-2. V případě **doporučeného druhu odhadu**vyberte **předpověď hodnocení**. Nejsou vyžadovány žádné další parametry.
+2. U **druhu předpověď doporučení**vyberte možnost **Predikce hodnocení**. Nejsou vyžadovány žádné další parametry.
 
-3. Přidejte data, pro která chcete vytvořit předpovědi, a připojte je k **datové sadě ke skóre**.
+3. Přidejte data, pro která chcete provést předpovědi, a připojte je k **datové sadě, abyste získali skóre**.
 
-   Pro model pro předpověď hodnocení musí vstupní datová sada obsahovat páry uživatelských položek.
+   Aby model předpověděl hodnocení, musí vstupní datová sada obsahovat dvojice uživatelských položek.
 
-   Datová sada může obsahovat volitelný třetí sloupec hodnocení pro pár uživatel-položka v prvním a druhém sloupci. Ale třetí sloupec se během předpovědi ignoruje.
+   Datová sada může obsahovat volitelný třetí sloupec hodnocení pro dvojici uživatelských položek v prvním a druhém sloupci. Ale třetí sloupec bude ignorován během předpovědi.
 
-4. Spuštění kanálu
+4. Odešlete potrubí.
 
-### <a name="results-for-rating-predictions"></a>Výsledky pro hodnocení předpovědi 
+### <a name="results-for-rating-predictions"></a>Výsledky pro předpovědi hodnocení 
 
-Výstupní datová sada obsahuje tři sloupce: uživatelé, položky a předpokládané hodnocení pro každého vstupního uživatele a položku.
+Výstupní datová sada obsahuje tři sloupce: uživatele, položky a předpokládané hodnocení pro každého vstupního uživatele a položku.
 
 ###  <a name="recommendations-for-users"></a>Doporučení pro uživatele 
 
-Chcete-li doporučit položky pro uživatele, zadejte seznam uživatelů a položek jako vstup. Z těchto dat model používá své znalosti o stávajících položkách a uživatelích, aby vygeneroval seznam položek s pravděpodobným odvoláním pro jednotlivé uživatele. Můžete přizpůsobit počet vrácených doporučení. A můžete nastavit prahovou hodnotu pro počet předchozích doporučení, která jsou nutná k vygenerování doporučení.
+Chcete-li doporučit položky pro uživatele, zadejte seznam uživatelů a položek jako vstup. Z těchto dat model využívá své znalosti o existujících položkách a uživatelích ke generování seznamu položek s pravděpodobným odvoláním pro každého uživatele. Můžete přizpůsobit počet vrácených doporučení. A můžete nastavit prahovou hodnotu pro počet předchozích doporučení, které jsou nutné ke generování doporučení.
 
-1. Přidejte do svého kanálu školený model doporučení a připojte ho k **škole SVD doporučení**.  Model je potřeba vytvořit pomocí modulu SVD, který je [doporučený pro vlak](train-svd-recommender.md) .
+1. Přidejte do kanálu trénovaný model doporučení a připojte jej k **trénovaného doporučujícího zařízení SVD**.  Model je nutné vytvořit pomocí modulu [Train SVD Recommender.](train-svd-recommender.md)
 
-2. Chcete-li doporučit položky pro seznam uživatelů, nastavte **druh předpovědi** doporučení na **položku doporučení**.
+2. Chcete-li doporučit položky pro seznam uživatelů, nastavte **typ předpovědi doporučení doporučujícího uživatele** na **položku Doporučení**.
 
-3. Pro **Výběr Doporučené položky**uveďte, zda používáte modul bodování v produkčním prostředí nebo pro vyhodnocení modelu. Vyberte jednu z těchto hodnot:
+3. U **doporučeného výběru položek**označte, zda používáte modul hodnocení ve výrobě nebo pro vyhodnocení modelu. Zvolte jednu z těchto hodnot:
 
-    - **Ze všech položek**: tuto možnost vyberte, Pokud nastavujete kanál pro použití ve webové službě nebo v produkčním prostředí.  Tato možnost povolí *režim výroby*. Modul vytváří doporučení ze všech položek zobrazených během školení.
+    - **Ze všech položek**: Tuto možnost vyberte, pokud nastavujete kanál pro použití ve webové službě nebo v produkčním prostředí.  Tato možnost povolí *produkční režim*. Modul poskytuje doporučení ze všech položek, které byly pozorovány během tréninku.
 
-    - **Z hodnocených položek (pro vyhodnocení modelu)** : tuto možnost vyberte, pokud vyvíjíte nebo testujete model. Tato možnost povolí *režim vyhodnocování*. Modul vytváří doporučení pouze z těch položek ve vstupní datové sadě, které byly ohodnoceny.
+    - **Z hodnocené položky (pro vyhodnocení modelu)**: Tuto možnost vyberte, pokud vyvíjíte nebo testujete model. Tato možnost umožňuje *režim vyhodnocení*. Modul poskytuje doporučení pouze z těch položek ve vstupní datové sadě, které byly hodnoceny.
     
-    - Z nezpracovaných **položek (pro návrh nových položek uživatelům)** : tuto možnost vyberte, pokud chcete, aby modul provedl doporučení jenom z těch položek v datové sadě školení, které nebyly ohodnocené. 
+    - **Z nehodnocených položek (navrhnout nové položky uživatelům)**: Tuto možnost vyberte, pokud chcete, aby modul doporučení pouze z těch položek v datové sadě školení, které nebyly hodnoceny. 
 
-4. Přidejte datovou sadu, pro kterou chcete vytvořit předpovědi, a připojte ji k **datové sadě ke skóre**.
+4. Přidejte datovou sadu, pro kterou chcete provést předpovědi, a připojte ji k **datové sadě, abyste získali skóre**.
 
-    - Pro **ze všech položek**by vstupní datová sada měla sestávat z jednoho sloupce. Obsahuje identifikátory uživatelů, pro které chcete vytvořit doporučení.
+    - Pro **ze všech položek**by se vstupní datová sada měla skládat z jednoho sloupce. Obsahuje identifikátory uživatelů, pro které chcete doporučení.
 
       Datová sada může obsahovat další dva sloupce identifikátorů a hodnocení položek, ale tyto dva sloupce jsou ignorovány. 
 
-    - V případě **z hodnocených položek (pro vyhodnocení modelu)** by měla vstupní datová sada obsahovat páry uživatelských položek. První sloupec by měl obsahovat identifikátor uživatele. Druhý sloupec by měl obsahovat odpovídající identifikátory položek.
+    - Pro **z hodnocené položky (pro vyhodnocení modelu)**, vstupní datová sada by měla obsahovat dvojice uživatelských položek. První sloupec by měl obsahovat identifikátor uživatele. Druhý sloupec by měl obsahovat odpovídající identifikátory položek.
 
-      Datová sada může zahrnovat třetí sloupec hodnocení položky uživatele, ale tento sloupec je ignorován.
+      Datová sada může obsahovat třetí sloupec hodnocení uživatelských položek, ale tento sloupec je ignorován.
 
-    - V případě **z nehodnocených položek (pro návrh nových položek uživatelům)** by měla vstupní datová sada obsahovat páry uživatelských položek. První sloupec by měl obsahovat identifikátor uživatele. Druhý sloupec by měl obsahovat odpovídající identifikátory položek.
+    - Pro **From Unrated Items (chcete-li navrhnout nové položky uživatelům)**, vstupní datová sada by měla obsahovat dvojice uživatelských položek. První sloupec by měl obsahovat identifikátor uživatele. Druhý sloupec by měl obsahovat odpovídající identifikátory položek.
 
-     Datová sada může zahrnovat třetí sloupec hodnocení položky uživatele, ale tento sloupec je ignorován.
+     Datová sada může obsahovat třetí sloupec hodnocení uživatelských položek, ale tento sloupec je ignorován.
 
-5. **Maximální počet položek, které je potřeba doporučit pro uživatele**: zadejte počet položek, které se mají vrátit pro každého uživatele. Ve výchozím nastavení modul doporučuje pět položek.
+5. **Maximální počet položek, které chcete doporučit uživateli**: Zadejte počet položek, které se mají vrátit pro každého uživatele. Ve výchozím nastavení modul doporučuje pět položek.
 
-6. **Minimální velikost fondu doporučení na uživatele**: zadejte hodnotu, která určuje, kolik předchozích doporučení je potřeba. Ve výchozím nastavení je tento parametr nastaven na hodnotu 2, což znamená, že položka doporučila aspoň dva další uživatelé.
+6. **Minimální velikost fondu doporučení na uživatele**: Zadejte hodnotu, která označuje, kolik předchozích doporučení je vyžadováno. Ve výchozím nastavení je tento parametr nastaven na 2, což znamená, že položku doporučili alespoň dva další uživatelé.
 
-   Tuto možnost použijte pouze v případě, že vyhodnocujete režim vyhodnocování. Možnost není k dispozici, pokud vyberete možnost **ze všech položek** nebo **z nehodnocených položek (pro návrh nových položek uživatelům)** .
+   Tuto možnost použijte pouze v případě, že vyhodnocujete v režimu hodnocení. Tato možnost není k dispozici, pokud vyberete **možnost Ze všech položek** nebo Z položek bez hodnocení **(chcete-li uživatelům navrhnout nové položky).**
 
-7.  V případě z nezpracovaných **položek (pro návrh nových položek uživatelům)** použijte třetí vstupní port s názvem **školicí data**pro odebrání položek, které již byly ohodnoceny z výsledků předpovědi.
+7.  Pro **z nehodnocených položek (navrhnout nové položky pro uživatele)**, použijte třetí vstupní port s názvem **Trénovací data**, chcete-li odebrat položky, které již byly hodnoceny z výsledků předpovědi.
 
-    Chcete-li použít tento filtr, připojte původní datovou sadu školení ke vstupnímu portu.
+    Chcete-li použít tento filtr, připojte původní trénovací datovou sadu ke vstupnímu portu.
 
-8. Spuštění kanálu
+8. Odešlete potrubí.
 
 ### <a name="results-of-item-recommendation"></a>Výsledky doporučení položky
 
-Vyhodnocená datová sada vrácená funkcí skore SVD doporučuje, aby vypisuje Doporučené položky pro každého uživatele:
+Datová sada s hodnocením vrácená pomocí funkce Score SVD Recommender uvádí doporučené položky pro každého uživatele:
 
-- První sloupec obsahuje identifikátory uživatelů.
-- Vygeneruje se počet dalších sloupců v závislosti na hodnotě, kterou jste nastavili pro **maximální počet položek, které se doporučují pro uživatele**. Každý sloupec obsahuje doporučenou položku (podle identifikátoru). Doporučení jsou seřazená podle spřažení uživatelem a položky. Položka s největším spřažením je vložena do **položky sloupce 1**.
+- První sloupec obsahuje identifikátory uživatele.
+- V závislosti na hodnotě nastavené pro **maximální počet položek, které chcete uživateli doporučit,** je generováno několik dalších sloupců. Každý sloupec obsahuje doporučenou položku (podle identifikátoru). Doporučení jsou seřazeny podle spřažení uživatelských položek. Položka s nejvyšší spřažení je uvedena ve sloupci **Položka 1**.
 
 > [!WARNING]
-> Tuto datovou sadu s skóre nemůžete vyhodnotit pomocí modulu [vyhodnotit doporučený](evaluate-recommender.md) modul.
+> Tuto datovou sadu s hodnocením nelze vyhodnotit pomocí modulu [Vyhodnotit doporučení.](evaluate-recommender.md)
 
 
 ##  <a name="technical-notes"></a>Technické poznámky
 
-Pokud máte kanál s doporučeným nástrojem SVD a přesouváte model do produkčního prostředí, je potřeba si uvědomit, že v režimu vyhodnocování se doporučuje použít klíčové rozdíly a použít je v provozním režimu.
+Pokud máte kanál s svd doporučující a přesunout model do produkčního prostředí, uvědomte si, že existují klíčové rozdíly mezi použitím doporučující v režimu hodnocení a jeho použití v produkčním režimu.
 
-Vyhodnocení, podle definice, vyžaduje předpovědi, které lze ověřit proti *zemi* v sadě testů. Když vyhodnotili doporučení, musí předpovědět pouze položky, které byly ohodnoceny v sadě testů. Tím se omezí možné hodnoty, které jsou předpovězeny.
+Hodnocení, podle definice, vyžaduje předpovědi, které lze ověřit proti *zemi pravdu* v testovací sadě. Při vyhodnocování doporučující, musí předpovědět pouze položky, které byly hodnoceny v testovací sadě. Tím se omezí možné hodnoty, které jsou předpovězeny.
 
-Když model zprovozněníte, obvykle změníte režim předpovědi tak, aby vytvářely doporučení na základě všech možných položek, aby bylo možné získat nejlepší předpovědi. Pro mnohé z těchto předpovědi neexistuje žádná odpovídající země. Přesnost doporučení proto nelze ověřit stejným způsobem jako při operacích kanálu.
+Při zprovoznění modelu, obvykle změnit režim předpověď, aby doporučení na základě všech možných položek, chcete-li získat nejlepší předpovědi. Pro mnohé z těchto předpovědí neexistuje žádná odpovídající pozemní pravda. Takže přesnost doporučení nelze ověřit stejným způsobem jako během operací kanálu.
 
 
 ## <a name="next-steps"></a>Další kroky

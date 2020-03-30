@@ -1,6 +1,6 @@
 ---
-title: Nejčastější dotazy – řešení Azure VMware (AVS)
-description: Nejčastější dotazy týkající se řešení Azure VMware (AVS)
+title: Nejčastější dotazy – Řešení Azure VMware od CloudSimple
+description: Nejčastější dotazy k řešení Azure VMware od CloudSimple
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,159 +8,159 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c3808491c84f6c76a51c914aac6ee5e5ee370970
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 95d8c2974ea372dd59d15a9f2cc31ed171acd932
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025057"
 ---
-# <a name="frequently-asked-questions-about-vmware-solution-by-avs"></a>Nejčastější dotazy týkající se řešení VMware pomocí služba AVS
+# <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>Nejčastější dotazy týkající se řešení VMware od CloudSimple
 
-## <a name="avs-service"></a>Služba AVS
+## <a name="cloudsimple-service"></a>CloudSimple služba
 
-**Co je řešení Azure VMware (AVS)?**
+**Co je řešení Azure VMware od CloudSimple?**
 
-Azure VMware Solutions (AVS) transformuje a rozšiřuje úlohy VMware do privátních a vyhrazených cloudů v Azure během několika minut. Služby AVS se postará o zřizování, správu infrastruktury a orchestraci úloh mezi místními a Azure. Vzhledem k tomu, že vaše aplikace běží přesně v místním prostředí a v Azure, můžete využít flexibilitu a služby v cloudu bez nutnosti složitě měnit architekturu vašich aplikací. Služba AVS snižuje celkové náklady na vlastnictví pomocí modelu cloudové spotřeby, který poskytuje zřizování na vyžádání, průběžné platby a optimalizace kapacity. V tématu [co je řešení VMware v Azure pomocí funkce AVS](cloudsimple-vmware-solutions-overview.md) pro funkce, výhody a scénáře.
+Řešení Azure VMware od CloudSimple transformuje a rozšiřuje úlohy VMware na privátní vyhrazené cloudy v Azure během několika minut. CloudSimple se stará o zřizování, správu infrastruktury a orchestraci úloh mezi místním i Azure. Vzhledem k tomu, že vaše aplikace běží přesně stejně místně a v Azure, můžete těžit z elasticity a služeb cloudu bez složitosti rearchitecting vašich aplikací. CloudSimple snižuje celkové náklady na vlastnictví pomocí modelu spotřeby cloudu, který poskytuje zřizování na vyžádání, růst průběžných plateb a optimalizaci kapacity.  Podívejte [se, co je řešení VMware v Azure by CloudSimple,](cloudsimple-vmware-solutions-overview.md) kde najdete funkce, výhody a scénáře.
 
-**Co je privátní cloud služby AVS?**
+**Co je cloudový cloudový cloud?**
 
-Privátní cloud služby AVS je privátní vyhrazený Cloud, který se skládá z vysoce výkonného výpočetního prostředí, úložiště a síťového prostředí nasazeného v infrastruktuře Microsoft Azure (hardware a prostor Datacenter) v umístěních Azure. Privátní cloud služby AVS poskytuje nativní platformu VMware as a Service. Ve výrazech VMware obsahuje každý privátní cloud AVS přesně jednu instanci vCenter Server. VCenter Server spravuje více uzlů ESXi obsažených v jednom nebo několika clusterech vSphere spolu s odpovídajícím úložištěm virtuální sítě SAN (síti vSAN). Služba AVS může obsahovat několik privátních cloudů služby AVS v rámci vašeho předplatného Azure. Další podrobnosti najdete v tématu [Přehled služby AVS Private Cloud](cloudsimple-private-cloud.md).
+CloudSimple Private Cloud je privátní, vyhrazený cloud, který se skládá z vysoce výkonného výpočetního, úložného a síťového prostředí nasazeného na infrastruktuře Microsoft Azure (hardware a prostor pro datové centrum) v umístěních Azure.  Privátní cloud poskytuje nativní platformu VMware jako službu. Z hlediska vmware každý privátní cloud obsahuje přesně jednu instanci serveru vCenter. Server vCenter spravuje více uzlů ESXi obsažených v jednom nebo více clusterech vSphere spolu s odpovídajícím úložištěm Virtual SAN (vSAN). Služba CloudSimple může ve vašem předplatném Azure obsahovat více privátních cloudů.  Další podrobnosti najdete [v tématu Přehled privátního cloudu](cloudsimple-private-cloud.md).
 
-**Kde je služba AVS Service k dispozici?**
+**Kde je služba CloudSimple dostupná?**
 
-AVS je k dispozici v oblastech Východní USA, Západní USA a Západní Evropa s dalšími oblastmi, které už brzy připravujeme.
+CloudSimple je k dispozici v oblastech Východní USA, Západní USA a Západní Evropa s dalšími oblastmi již brzy.
 
-**Návody povolit předplatné pro funkci AVS?**
+**Jak povolím předplatné clouduSimple?**
 
-Můžete se obrátit na zástupce účet Microsoft na [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) a povolit tak předplatné služby AVS. Zadejte ID předplatného v e-mailu, pro který chcete povolit službu AVS. 
+Můžete se obrátit na [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) zástupce účtu Microsoft na adrese povolit předplatné pro službu CloudSimple. Zadejte ID předplatného v e-mailu, pro který chcete, aby byla povolena služba CloudSimple.  
 
-**Návody přístup k portálu pro funkci AVS?**
+**Jak se dostanu na portál CloudSimple?**
 
-Přístup k portálu služby AVS z Azure Portal. Podrobnosti najdete v tématu [přístup k portálu VMware Solutions (AVS) z Azure Portal](access-cloudsimple-portal.md).
+Přístup k portálu CloudSimple z portálu Azure.  Podrobnosti najdete [v tématu Přístup k řešení VMware podle portálu CloudSimple z portálu Azure](access-cloudsimple-portal.md).
 
-**Návody zvýšit kapacitu privátního cloudu služby AVS?**
+**Jak zvýším kapacitu privátního cloudu?**
 
-Pokud chcete zvýšit kapacitu, kupte si další uzly z Azure Portal a potom pomocí uzlů Rozšiřte svůj privátní cloud služby AVS z portálu AVS. Do existujícího clusteru vSphere můžete přidat další uzly nebo je přidat do nového clusteru vSphere. Podrobnosti najdete v tématu věnovaném [rozšíření privátního cloudu služby AVS](expand-private-cloud.md).
+Chcete-li zvýšit kapacitu, nakupujte další uzly z portálu Azure a pak pomocí uzlů rozbalte privátní cloud z portálu CloudSimple.  Do existujícího clusteru vSphere můžete přidat další uzly nebo je přidat do nového clusteru vSphere.  Podrobnosti najdete [v tématu Rozbalení clouduSimple privátní cloud](expand-private-cloud.md).
 
-**Co se stane s privátním cloudem pro funkci AVS během údržby?**
+**Co se stane s mým privátním cloudem během údržby?**
 
-AVS poskytuje oznámení několik dní před plánovaným intervalem údržby. Údržba se provádí nerušivým způsobem, aby se zajistila dostupnost vašeho privátního cloudu služby AVS. Údržba může být z následujících typů:
+CloudSimple poskytuje oznámení několik dní před plánovaným intervalem údržby.  Údržba se provádí nerušitým způsobem, aby byla zajištěna dostupnost vašeho privátního cloudu.  Údržba může být následujících typů:
 
-* **Infrastruktura AVS**. Infrastruktura AVS je navržená tak, aby byla vysoce dostupná. Během tohoto typu intervalu údržby se redundantní komponenty aktualizují po jednom, aby se předešlo jakémukoli přerušení služby. Udržujete přístup k vaší službě AVS Private Cloud vCenter, všem virtuálním počítačům, připojení k Internetu z vašeho privátního cloudu služby AVS a připojení k místnímu nebo Azure.
-* **Portál**pro funkci AVS Během tohoto typu intervalu údržby můžou být některé funkce na portálu AVS zakázané nebo nedostupné. Oznámení před intervalem údržby zahrnuje podrobnosti o omezeních funkcí během údržby.
+* **CloudSimple infrastruktury**.  CloudSimple infrastruktura je navržena tak, aby byla vysoce dostupná.  Během tohoto typu intervalu údržby redundantní součásti jsou aktualizovány jeden po druhém, aby se zabránilo přerušení služby. Udržujete přístup k privátnímu cloudu vCenter, všem virtuálním počítačům, připojení k internetu z privátního cloudu a připojení k místnímu zařízení nebo Azure.
+* **CloudSimple portál**. Během tohoto typu intervalu údržby některé funkce na portálu CloudSimple může být zakázánnebo nepřístupný.  Oznámení před intervalem údržby obsahuje podrobnosti o omezeních funkcí během údržby.
 
 ## <a name="connectivity"></a>Připojení
 
-**Jaké mám možnosti připojení k síti oblastí služby AVS?**
+**Jaké jsou moje možnosti připojení k síti cloudsimple region?**
 
-Funkce AVS nabízí následující možnosti připojení pro připojení k síti vaší sítě služby AVS. Současně lze použít více možností.
+CloudSimple poskytuje následující možnosti připojení pro připojení k síti CloudSimple region. Současně lze použít více možností.
 
-* **ExpressRoute připojení z místního datacentra k síti oblasti služby AVS**. Jedná se o vysokorychlostní a nízkou latenci, zabezpečené privátní připojení, které používá Global Reach k přemostění místního okruhu ExpressRoute do vašeho okruhu služby AVS ExpressRoute. Pokyny k nastavení připojení najdete v tématu [připojení z místního prostředí ke službě AVS pomocí ExpressRoute](on-premises-connection.md).
-* **ExpressRoute připojení z vaší virtuální sítě Azure do vaší místní sítě**. Jedná se o vysokorychlostní a nízkou latenci, zabezpečené privátní připojení, které používá brány virtuální sítě k přemostění vaší virtuální sítě v Azure do vašeho okruhu služby AVS ExpressRoute. Pokyny k nastavení připojení najdete v tématu [připojení vašeho prostředí privátního cloudu služby AVS ke službě Azure Virtual Network pomocí ExpressRoute](azure-expressroute-connection.md).
-* **Připojení VPN typu Site-to-Site z místního datacentra do vaší místní sítě**. Jedná se o zabezpečenou virtuální privátní síť z místního zařízení VPN do vaší oblasti privátního cloudu služby AVS. Podrobnosti najdete v tématu [Nastavení bran sítě VPN v síti služby AVS](vpn-gateway.md).
+* **Připojení ExpressRoute z místního datového centra do sítě CloudSimple region**. Jedná se o vysokorychlostní zabezpečené privátní připojení s nízkou latencí, které používá globální dosah k přemostění místního okruhu ExpressRoute do okruhu CloudSimple ExpressRoute. Pokyny k nastavení připojení najdete [v tématu Připojení z místního cloudu Simple pomocí ExpressRoute](on-premises-connection.md).
+* **Připojení ExpressRoute z virtuální sítě Azure do sítě CloudSimple region**. Jedná se o vysokorychlostní zabezpečené privátní připojení s nízkou latencí, které používá brány virtuální sítě k přemostění vaší virtuální sítě v Azure do okruhu CloudSimple ExpressRoute. Pokyny k nastavení připojení najdete v tématu [Připojení privátního cloudového prostředí CloudSimple k virtuální síti Azure pomocí ExpressRoute](azure-expressroute-connection.md).
+* **Připojení VPN site-to-Site z místního datového centra do sítě cloudových oblastí**. Jedná se o zabezpečenou virtuální privátní síť z místního zařízení VPN do oblasti cloudového privátního cloudu.  Podrobnosti najdete v tématu [Nastavení bran VPN v síti CloudSimple](vpn-gateway.md).
 
-**Návody se připojit k privátnímu cloudu služby AVS?**
+**Jak se připojím k privátnímu cloudu?**
 
-Podrobnosti o vašem privátním cloudu služby AVS můžete zobrazit na portálu služby AVS. Pokud se chcete připojit k serveru vCenter, který odpovídá privátnímu cloudu služby AVS, nejdřív ověřte, že se naváže připojení k síti pomocí sítě VPN typu Site-to-site, VPN typu Point-to-site nebo ExpressRoute. Pak z Azure Portal spusťte portál AVS a klikněte na tlačítko **Spustit klienta vSphere** na domovské stránce nebo na stránce s podrobnostmi privátního cloudu služby AVS.
+Podrobnosti o privátním cloudu můžete zobrazit na portálu CloudSimple. Chcete-li se připojit k virtuálnímu centru, které odpovídá vašemu privátnímu cloudu, nejprve ověřte, zda je síťové připojení navázáno pomocí sítě SITE-to-Site VPN, sítě SITE-to-Site VPN nebo ExpressRoute. Potom spusťte portál CloudSimple z portálu Azure a klikněte na **tlačítko Spustit klienta vSphere** na domovské stránce nebo na stránce podrobností privátního cloudu.
 
 **Jaká je výhoda okruhů ExpressRoute?**
 
-Okruh Azure ExpressRoute je vysokorychlostní a s nízkou latencí a zabezpečeným připojením. AVS poskytuje vyhrazený okruh ExpressRoute pro jednotlivé oblasti na zákazníka. Pomocí tohoto okruhu můžete vytvořit zabezpečené připojení z místního prostředí nebo předplatného Azure.
+Okruh Azure ExpressRoute je vysokorychlostní zabezpečené připojení s nízkou latencí a nízkou latencí.  CloudSimple poskytuje vyhrazený okruh ExpressRoute na oblast na zákazníka.  Pomocí tohoto okruhu můžete navázat zabezpečené připojení z místního nebo vašeho předplatného Azure.
 
-**Jaké jsou náklady na síť pro připojení ke službě AVS? Platí jakékoliv poplatky za odchozí přenosy mezi službou AVS a Azure nebo napříč různými oblastmi?**
+**Jaké jsou síťové náklady na připojení k CloudSimple?  Platí nějaké odchozí poplatky mezi CloudSimple a Azure nebo napříč oblastmi?**
 
-Pro odchozí přenosy z sítě není poplatek za funkci AVS. Standardní sazby za Azure se vztahují na jakýkoliv výstupní provoz z vaší virtuální sítě nebo z místního okruhu ExpressRoute.
+Neexistuje žádný CloudSimple poplatek za odchozí sítě.  Standardní sazby Azure platí pro všechny odchozí provozy z vaší virtuální sítě nebo z místního okruhu ExpressRoute.
 
-## <a name="networking"></a>Sítě
+## <a name="networking"></a>Síťové služby
 
-**Jaké síťové funkce jsou k dispozici pro privátní cloud služby AVS?**
+**Jaké síťové funkce jsou pro můj privátní cloud dostupné?**
 
-Můžete zřídit sítě VLAN (a jejich podsítě) a tabulky brány firewall a přiřadit veřejné IP adresy, které se mapují k virtuálnímu počítači spuštěnému v privátním cloudu služby AVS. Podrobnosti o funkcích sítě najdete v tématech [Přehled sítí VLAN a podsítí](cloudsimple-vlans-subnets.md), [Přehled tabulek brány firewall](cloudsimple-firewall-tables.md)a [Přehled veřejných IP adres](cloudsimple-public-ip-address.md).
+Můžete zřídit sítě VLAN (a jejich podsítě) a tabulky brány firewall a přiřadit veřejné IP adresy, které se mapují, virtuálnímu počítači spuštěného v privátním cloudu. Podrobnosti o síťových funkcích naleznete v tématech Přehled sítí [VLAN a podsítí](cloudsimple-vlans-subnets.md), [Přehled tabulek brány firewall](cloudsimple-firewall-tables.md)a Přehled [veřejných IP adres](cloudsimple-public-ip-address.md).
 
-**Návody pro moje aplikace nastavit různé podsítě v mém privátním cloudu služby AVS?**
+**Jak nastavím různé podsítě pro své aplikace v privátním cloudu?**
 
-SÍTĚ VLAN vytvoříte na privátním cloudu služby AVS na portálu služby AVS. Po vytvoření sítě VLAN můžete vytvořit distribuovanou skupinu portů na svém privátním cloudu služby AVS pomocí sítě VLAN a vytvořit virtuální počítače, které jsou připojené ke skupině distribuovaných portů. Můžete povolit tabulky brány firewall pro síť VLAN nebo podsíť a definovat pravidla brány firewall pro zabezpečení síťového provozu.
+Vlan y vytvářejíte ve svém privátním cloudu z portálu CloudSimple.  Po vytvoření sítě VLAN můžete vytvořit skupinu distribuovaných portů v programu Private Cloud vCenter pomocí sítě VLAN a vytvořit virtuální počítače připojené ke skupině distribuovaných portů.  Můžete povolit tabulky brány firewall pro síť VLAN/podsíť a definovat pravidla brány firewall pro zabezpečení síťového provozu.
 
-**Jaká nastavení brány firewall jsou pro privátní cloudy služby AVS k dispozici?**
+**Jaká nastavení brány firewall jsou k dispozici pro mé soukromé cloudy?**
 
-Můžete nakonfigurovat pravidla pro provoz sever-jih a východ-západ. Pravidla jsou definována v tabulce brány firewall. Tabulku brány firewall lze připojit k sítím VLAN v privátním cloudu služby AVS. Podrobnosti najdete v tématu [Nastavení tabulek a pravidel brány firewall pro privátní cloudy služby AVS](firewall.md).
+Můžete nakonfigurovat pravidla pro provoz mezi severem a jihem a východem a západem.  Pravidla jsou definována v tabulce brány firewall.  Tabulku brány firewall lze připojit k sítěem VLAN ve vašem privátním cloudu.  Podrobnosti naleznete v [tématu Nastavení tabulek brány firewall a pravidel pro privátní cloudy](firewall.md).
 
-**Můžu k virtuálním počítačům přiřadit veřejné IP adresy v prostředí privátního cloudu pro funkci AVS?**
+**Můžu virtuálním počítačům v privátním cloudu přiřadit veřejné IP adresy?**
 
-Na portálu služby AVS můžete přidělit novou veřejnou IP adresu a přidružit ji k privátní IP adrese virtuálního počítače nebo zařízení. Můžete také vytvořit nová pravidla brány firewall nebo použít existující pravidla brány firewall, která povolí provoz z konkrétních portů a IP adres na portálu. Podrobnosti najdete v tématu [přidělení veřejných IP adres pro prostředí služby AVS privátní cloud](public-ips.md).
+Na portálu CloudSimple můžete přidělit novou veřejnou IP adresu a přidružit ji k privátní IP adrese virtuálního počítače nebo zařízení.  Můžete také vytvořit nová pravidla brány firewall nebo použít existující pravidla brány firewall, která umožní přenos y z konkrétních portů a IP adres na portálu. Podrobnosti naleznete v [tématu Přidělení veřejných IP adres pro prostředí privátního cloudu](public-ips.md).
 
 ## <a name="security"></a>Zabezpečení
 
-**Jaké mám možnosti zabezpečení na funkci AVS?**
+**Jaké jsou moje možnosti zabezpečení na CloudSimple?**
 
-Funkce AVS poskytuje následující funkce zabezpečení pro zabezpečení vašeho privátního cloudového prostředí služby AVS:
+CloudSimple poskytuje následující funkce zabezpečení pro zabezpečení prostředí privátního cloudu:
 
-* **Šifrování v klidovém umístění**. Můžete šifrovat data uložená v úložišti síti vSAN v privátním cloudu služby AVS. Síti vSAN podporuje servery pro správu externích klíčů, které se dají nasadit ve virtuální síti Azure nebo v místním prostředí. Podrobnosti najdete v tématu [Konfigurace šifrování síti vSAN pro privátní cloud služby AVS](vsan-encryption.md).
-* **Zabezpečení sítě**. Řízení toku provozu sítě pomocí pravidel brány firewall, která platí mezi privátním cloudem služby AVS a internetem, Vaším privátním cloudem a místním prostředím služby AVS nebo v rámci podsítí vašeho privátního cloudu služby AVS.
-* **Zabezpečené, soukromé připojení**. Mezi vaší místní sítí a vaším předplatným Azure je navázáno zabezpečené privátní připojení.
+* **Šifrování dat v klidovém stavu**. Můžete šifrovat data v klidovém stavu, která se ubytovaly v úložišti vSAN ve vašem privátním cloudu. vSAN podporuje servery pro správu externích klíčů, které se můžou nasadit ve vaší virtuální síti Azure nebo v místním prostředí.  Podrobnosti najdete [v tématu Konfigurace šifrování vSAN pro cloudový privátní cloud](vsan-encryption.md).
+* **Zabezpečení sítě**. Ovládejte tok síťového provozu pomocí pravidel brány firewall, která platí mezi privátním cloudem a internetem, privátním cloudem a místním prostředím nebo v podsítích privátního cloudu.
+* **Zabezpečené, soukromé připojení**. Mezi místní sítí a předplatným Azure se napočne zabezpečené privátní připojení.
 
-## <a name="compute"></a>Služby Compute
+## <a name="compute"></a>Služba Compute
 
 **Jaký druh hostitelů je k dispozici?**
 
-Možnost AVS nabízí tyto typy hostitelů:
+CloudSimple nabízí tyto typy hostitelů:
 
-* **Uzel CS28:** Procesor: 2x 2,2 GHz, celkem 28 jader, 48 HT.  PAMĚŤ RAM: 256 GB.  Úložiště: 1600 GB NVMe cache, 5760 GB dat (all-Flash). Síť: 4x25Gbe NIC
-* **Uzel CS36:** PROCESOR 2x 2,3 GHz, celkem 36 jader, 72 HT.  PAMĚŤ RAM: 512 GB.  Úložiště: 3200 GB NVMe cache 11520 GB data (vše-bliknutí).  Síť: 4x25Gbe NIC
-* **Uzel CS36m:** PROCESOR 2x 2,3 GHz, celkem 36 jader, 72 HT.  PAMĚŤ RAM: 576 GB.  Úložiště: 3200 GB NVMe cache 13360 GB data (vše-bliknutí).  Síť: 4x25Gbe NIC
+* **Uzel CS28:** CPU: 2x 2,2 GHz, celkem 28 jader, 48 HT.  RAM: 256 GB.  Úložiště: 1600 GB NVMe cache, 5760 GB dat (All-Flash). Síť: 4x25Gbe NIC
+* **Uzel CS36:** CPU 2x 2,3 GHz, celkem 36 jader, 72 HT.  RAM: 512 GB.  Úložiště: 3200 GB NVMe cache 11520 GB dat (All-Flash).  Síť: 4x25Gbe NIC
+* **Uzel CS36m:** CPU 2x 2,3 GHz, celkem 36 jader, 72 HT.  RAM: 576 GB.  Úložiště: 3200 GB NVMe cache 13360 GB dat (All-Flash).  Síť: 4x25Gbe NIC
 
-**Jak se zpracovávají chyby hardwaru?**
+**Jak se řeší selhání hardwaru?**
 
-Veškerá infrastruktura služby AVS je nepřetržitě monitorovaná platformou AVS a týmy provozu služeb. Pokud se zjistí selhání hardwaru, přidá se do privátního cloudu služby AVS nový uzel a odebere se uzel, který se nezdařil.
+Veškerá infrastruktura CloudSimple je průběžně monitorována platformou CloudSimple a našimi provozními týmy služeb.  Pokud je zjištěna chyba hardwaru, nový uzel je přidán do privátního cloudu a uzel se nezdařilo je odebrán.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 
-**Jaký typ úložiště podporuje privátní cloud služby AVS?**
+**Jaký typ úložiště je v privátním cloudu podporovaný?**
 
-Služba AVS nabízí všechna řešení VMware síti vSAN Storage s každým privátním cloudem služby AVS. Každý vSphere se vytvoří s vlastním úložištěm dat síti vSAN. Podrobnosti najdete v tématu [komponenty VMware privátního cloudu pro síti vSAN úložiště](vmware-components.md#vsan-storage).
+CloudSimple nabízí all-flash VMware vSAN úložiště s každým Privátním cloudem.  Každý vSphere je vytvořen s vlastním úložištěm dat vSAN.  Podrobnosti naleznete v [tématu Private Cloud VMware components - vSAN storage](vmware-components.md#vsan-storage).
 
 **Je šifrování dat podporováno?**
-Ano. Úložiště síti vSAN můžete nastavit v privátním cloudu služby AVS a používat klíčovou management server (službu správy klíčů), která je nasazená místně nebo v Azure pro šifrování dat uložených v síti vSAN.
+Ano.  Úložiště vSAN můžete nastavit ve vašem privátním cloudu tak, aby používal server správy klíčů (KMS), který je nasazený místně nebo v Azure k šifrování dat uložených ve službě vSAN.
 
-**Jak se zpracovávají neúspěšné disky?**
+**Jak se zpracovávají nefunkční disky?**
 
-AVS nepřetržitě monitoruje všechny hardwarové součásti privátního cloudu AVS. Pokud se zjistilo selhání disku nebo je disk označený jako neúspěšný (založený na heuristikách), do privátního cloudu služby AVS se automaticky přidá nový uzel. Uzel s neúspěšným nebo neúspěšným diskem se odebere z privátního cloudu služby AVS.
+CloudSimple průběžně monitoruje všechny hardwarové součásti privátního cloudu.  Pokud je zjištěna chyba disku nebo disk je identifikován jako selhání (na základě heuristiky), nový uzel je automaticky přidán do privátního cloudu.  Uzel s neúspěšným nebo selhávajícím diskem je odebrán z privátního cloudu.
 
 ## <a name="vmware"></a>VMware
 
-**Návody provádět rozsáhlé nahrávání nebo migraci aplikací a dat z místního prostředí?**
+**Jak můžu provádět rozsáhlé nahrávání nebo migraci aplikací a dat z místního prostředí?**
 
-AVS poskytuje nativní řešení VMware vSphere. Všechny nástroje VMware pro migraci hromadných dat se dají použít spolu s Vaším privátním cloudem služby AVS. Mezi možnosti patří:
+CloudSimple poskytuje nativní řešení VMware vSphere.  Všechny nástroje VMware pro hromadnou migraci dat lze použít s vaším privátním cloudem.  Mezi možnosti patří:
 
-* HCX VMware pro hromadnou migraci dat.
-* Dostudená migrace dat pomocí úložiště vMotion z místního prostředí do služby AVS
+* VMware HCX pro hromadnou migraci dat.
+* Studená migrace dat pomocí úložiště vMotion z místního clouduSimple.
 
-**Můžu nainstalovat nějaké nástroje VMware?**
+**Mohu nainstalovat nějaké nástroje VMware?**
 
-AVS poskytuje nativní řešení VMware vSphere. Všechny nástroje VMware používané pro správu místního prostředí vSphere se dají použít na funkci AVS. AVS podporuje pro instalaci nástrojů VMware model BYOL (Přineste si vlastní licenci).
+CloudSimple poskytuje nativní řešení VMware vSphere.  Všechny nástroje VMware používané pro správu místního prostředí vSphere lze použít na CloudSimple.  CloudSimple podporuje model BYOL (bring-your-own-license) pro instalaci nástrojů VMware.
 
-**Jak se spravují aktualizace a upgrady?**
+**Jak jsou aktualizace a upgrady spravovány?**
 
-V rámci bezproblémového nepřerušovaného cloudu udržuje a aktualizuje všechny součásti infrastruktury privátního cloudu služby AVS. Všechny aktualizace a opravy zabezpečení vydané dodavateli VMware nebo infrastruktur jsou naplánovány na aktualizaci, jakmile jsou kvalifikovány službou AVS.
+CloudSimple spravuje a aktualizuje všechny součásti infrastruktury vašeho privátního cloudu bezproblémovým bezproblémovým způsobem.  Všechny aktualizace a opravy zabezpečení vydané společností VMware nebo dodavateli infrastruktury jsou naplánovány na aktualizaci, jakmile jsou kvalifikovány službou CloudSimple.
 
-Pro funkci AVS se neprovádí upgrade ani aktualizace aplikací nainstalovaných v privátním cloudu se systémem AVS.
+CloudSimple neprovádí upgrady nebo aktualizace aplikací nainstalovaných v privátním cloudu.
 
 ## <a name="azure-integration"></a>Integrace Azure
 
-**Které služby Azure jsou podporovány?**
+**Jaké služby Azure jsou podporované?**
 
-AVS poskytuje připojení Azure ExpressRoute k vašemu předplatnému v Azure. Všechny služby, které běží ve vašem předplatném, se můžou připojit k privátnímu cloudu služby AVS. Patří mezi ně například:
+CloudSimple poskytuje připojení Azure ExpressRoute k vašemu předplatnému v Azure.  Všechny služby spuštěné v rámci vašeho předplatného se mohou připojit k vašemu privátnímu cloudu.  Příklady obsahují:
 
-* **Azure Active Directory** jako zdroj identity pro vaši funkci AVS vCenter.
-* **Úložiště Azure** pro ukládání záloh, imagí a dalších dat z vašeho privátního cloudu služby AVS
-* **Hybridní aplikace** s architekturou aplikace, která pokrývá veřejné cloudy a privátní cloudy služby AVS V Azure můžete například vytvořit servery webserver, které přistupují k aplikačním a databázovým serverům ve vašem privátním cloudu služby AVS.
-* **Azure monitor** a **Azure Security Center** pro úlohy běžící na protokolování podpory VMware, metrikách výkonu a správě zabezpečení.
+* **Azure Active Directory** jako zdroj identity pro cloudsimple vCenter.
+* **Úložiště Azure** pro ukládání záloh, bitových kopií a dalších dat z vašeho privátního cloudu.
+* **Hybridní aplikace** s architekturou aplikací, která zahrnuje veřejné a soukromé cloudy.  Můžete například vytvořit webové servery v Azure, které mají přístup k aplikačním a databázovým serverům ve vašem privátním cloudu.
+* **Azure Monitor** a **Azure centrum zabezpečení** pro úlohy spuštěné na VMware podporují protokolování, metriky výkonu a správu zabezpečení.
 
-**Návody namapovat klienty VMware do Azure?**
+**Jak namapovat své klienty VMware do Azure?**
 
-Funkce AVS nabízí jedinečnou možnost správy virtuálních počítačů VMware v privátním cloudu služby AVS z Azure Portal. Fond zdrojů vCenter nakonfigurovaný s požadovanými omezeními prostředků může váš globální správce namapovat na vaše předplatné. 
+CloudSimple poskytuje jedinečnou možnost spravovat virtuální počítače VMware v privátním cloudu z portálu Azure.  Fond prostředků vCenter nakonfigurovaný s požadovanými omezeními prostředků může být mapován na vaše předplatné globálním správcem.  
 
-**Jaké výhody licencování mám získat s Azure?**
+**Jaké výhody licencování získám s Azure?**
 
-Díky funkci AVS můžete využít výhod programu Azure Hybrid Usage a ušetřit až 90% licencí. Tato výhoda zachovává vaše investice do licencí Microsoftu a snižuje celkové náklady na vlastnictví v souvislosti s ostatními cloudových řešeními. Získáte také rozšířené aktualizace zabezpečení pro Windows Server 2008 a Microsoft SQL Server 2008. Model BYOL (Přineste si vlastní licenci) pomáhá udržet nízké náklady na běžné aplikace, jako je například Veeam a Zerto. 
+S CloudSimple můžete využít výhod hybridního využití Azure a ušetřit až 90 % na licencích. Tato výhoda zachovává vaše investice do licencí Microsoftu a snižuje vaše náklady na ochranu a ochranu a ochranu nemovitostí ve srovnání s jinými cloudovými řešeními. Získáte také rozšířené aktualizace zabezpečení pro systémy Windows Server 2008 a Microsoft SQL Server 2008.  Model BYOL (bring-your-own-license) vám pomůže udržet nízké náklady na běžné aplikace, jako jsou Veeam a Zerto.  

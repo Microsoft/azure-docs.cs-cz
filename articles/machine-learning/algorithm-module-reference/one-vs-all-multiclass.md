@@ -1,7 +1,7 @@
 ---
-title: 1-versus-all Multiclass
+title: One-vs-All Multiclass
 titleSuffix: Azure Machine Learning
-description: Naučte se používat modul 1-versus-all Multiclass v Azure Machine Learning k vytvoření modelu klasifikace s více třídami ze sady binárních modelů klasifikace.
+description: Zjistěte, jak pomocí modulu One-vs-All Multiclass v Azure Machine Learning vytvořit vícetřídní klasifikační model ze souboru binárních klasifikačních modelů.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,54 +9,54 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 939ac7caacac7cfb55bd29ed9a5d9c136a8e5c90
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 29934758ab729e0fb888c10b7f834da3d0bf7fb0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314245"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456076"
 ---
-# <a name="one-vs-all-multiclass"></a>1-versus-all Multiclass
+# <a name="one-vs-all-multiclass"></a>One-vs-All Multiclass
 
-Tento článek popisuje, jak používat modul 1-versus-all Multiclass v Návrháři Azure Machine Learning. Cílem je vytvořit klasifikační model, který může odhadnout více tříd pomocí přístupu typu *1:1* .
+Tento článek popisuje, jak používat modul One-vs-All Multiclass v návrháři Azure Machine Learning (preview). Cílem je vytvořit klasifikační model, který může předpovědět více tříd pomocí přístupu *jeden proti všem.*
 
-Tento modul je vhodný pro vytváření modelů, které předpovídá tři nebo více možných výsledků, pokud výsledek závisí na kontinuálním nebo kategorií proměnných prediktivních proměnných. Tato metoda také umožňuje použít binární metody klasifikace pro problémy, které vyžadují více výstupních tříd.
+Tento modul je užitečný pro vytváření modelů, které předpovídají tři nebo více možných výsledků, když výsledek závisí na proměnných průběžného nebo kategorického prediktoru. Tato metoda také umožňuje použít binární metody klasifikace pro problémy, které vyžadují více výstupních tříd.
 
-### <a name="more-about-one-versus-all-models"></a>Další informace o jednotlivých modelech – srovnání
+### <a name="more-about-one-versus-all-models"></a>Více o modelech one-versus-all
 
-Některé algoritmy klasifikace umožňují použití více než dvou tříd podle návrhu. Jiné omezují možné výsledky na jednu ze dvou hodnot (binární neboli model se dvěma třídami). Ale dokonce i algoritmy binární klasifikace lze přizpůsobit pro úlohy klasifikace více tříd prostřednictvím celé řady strategií. 
+Některé klasifikační algoritmy umožňují použití více než dvou tříd podle návrhu. Jiné omezit možné výsledky na jednu ze dvou hodnot (binární nebo dvoutřídní model). Ale i binární klasifikační algoritmy mohou být přizpůsobeny pro vícetřídní klasifikační úkoly prostřednictvím různých strategií. 
 
-Tento modul implementuje metodu 1:1, ve které je vytvořen binární model pro každou z více tříd Output. Modul posuzuje každý z těchto binárních modelů pro jednotlivé třídy proti svému doplňku (všechny ostatní třídy v modelu), jako by se jednalo o binární problém klasifikace. Modul pak provede předpověď spuštěním těchto binárních klasifikátorů a výběrem předpovědi s nejvyšším skóre spolehlivosti.  
+Tento modul implementuje metodu one-versus-all, ve které je vytvořen binární model pro každou z více výstupních tříd. Modul vyhodnotí každý z těchto binárních modelů pro jednotlivé třídy proti jeho komplementu (všechny ostatní třídy v modelu), jako by se jednalo o problém binární klasifikace. Modul pak provede předpověď spuštěním těchto binárnítřídění a výběrem předpověď s nejvyšší skóre spolehlivosti.  
 
-V podstatě modul vytvoří komplet jednotlivých modelů a potom sloučí výsledky pro vytvoření jednoho modelu, který předpovídá všechny třídy. Každý binární klasifikátor lze použít jako základ pro model s jedním i všemi.  
+V podstatě modul vytvoří soubor jednotlivých modelů a pak sloučí výsledky, chcete-li vytvořit jeden model, který předpovídá všechny třídy. Všechny binární třídění lze použít jako základ pro jeden versus všechny modelu.  
 
-Řekněme například, že nakonfigurujete vícevrstvý model [strojového modelu podpory](two-class-support-vector-machine.md) a poskytnete ho jako vstup do modulu 1-versus-All Multiclass. Modul vytvoří pro všechny členy třídy Output modely vektorového stroje podpory. Pak by se pak použila Metoda 1:1 pro kombinování výsledků pro všechny třídy.  
+Řekněme například, že nakonfigurujete model [dvoutřídového podpůrného zařízení](two-class-support-vector-machine.md) a poskytnete jej jako vstup do modulu One-vs-All Multiclass. Modul by vytvořit dvoutřídní podporu vektorové modely strojů pro všechny členy výstupní třídy. Potom by použít one-versus-all metoda kombinovat výsledky pro všechny třídy.  
 
-## <a name="how-to-configure-the-one-vs-all-multiclass-classifier"></a>Postup konfigurace klasifikátoru 1-versus-all Multiclass  
+## <a name="how-to-configure-the-one-vs-all-multiclass-classifier"></a>Jak nakonfigurovat klasifikátor One-vs-All Multiclass  
 
-Tento modul vytvoří komplet binárních modelů klasifikace pro analýzu více tříd. Chcete-li použít tento modul, musíte nejprve nakonfigurovat a vytvořit *binární klasifikační* model. 
+Tento modul vytvoří soubor binární chod klasifikačních modelů pro analýzu více tříd. Chcete-li použít tento modul, musíte nejprve nakonfigurovat a trénovat *binární klasifikační* model. 
 
-Binární model připojíte k modulu 1-versus-all Multiclass. Potom provedete sadu modelů pomocí [výukového modelu](train-model.md) s popisem školicích dat s popisky.
+Binární model se připojí k modulu One-vs-All Multiclass. Potom trénovat soubor modelů pomocí [Train Model](train-model.md) s označenou trénovací datové sady.
 
-Při kombinaci modelů 1-versus-all Multiclass vytvoří více binárních klasifikačních modelů, optimalizuje algoritmus pro každou třídu a poté sloučí modely. Modul provádí tyto úlohy i v případě, že datová sada školení může mít více hodnot třídy.
+Když zkombinujete modely, One-vs-All Multiclass vytvoří více binárních klasifikačních modelů, optimalizuje algoritmus pro každou třídu a pak sloučí modely. Modul provádí tyto úkoly, i když trénovací datová sada může mít více hodnot třídy.
 
-1. Přidejte modul 1-versus-all Multiclass do kanálu v návrháři. Tento modul můžete najít v části **Machine Learning-Initialize**v kategorii **klasifikace** .
+1. Přidejte modul One-vs-All Multiclass do kanálu v návrháři. Tento modul najdete v části **Strojové učení – inicializace**v kategorii **Klasifikace.**
 
-   Klasifikátor 1-versus-all Multiclass nemá vlastní konfigurovatelné parametry. Jakékoli vlastní nastavení musí být provedeno v binárním klasifikačním modelu, který je zadán jako vstup.
+   Klasifikátor One-vs-All Multiclass nemá vlastní konfigurovatelné parametry. Všechny vlastní nastavení musí být provedeno v binární klasifikační model, který je k dispozici jako vstup.
 
-2. Přidejte do kanálu binární model klasifikace a nakonfigurujte tento model. Můžete například použít [dvě třídy podpora vektorového počítače](two-class-support-vector-machine.md) nebo se [dvěma třídami s posíleným rozhodovacím stromem](two-class-boosted-decision-tree.md).
+2. Přidejte binární klasifikační model do kanálu a nakonfigurujte tento model. Můžete například použít [dvoutřídní podpůrný vektorový stroj](two-class-support-vector-machine.md) nebo [dvoutřídný posílený rozhodovací strom](two-class-boosted-decision-tree.md).
 
-3. Přidejte modul [vlakového modelu](train-model.md) do vašeho kanálu. Připojte nevýukový klasifikátor, který je výstupem 1-versus-all Multiclass.
+3. Přidejte modul [Model vlaku](train-model.md) do kanálu. Připojte netrénovaný třídění, které je výstupem One-vs-All Multiclass.
 
-4. Na ostatních vstupech [modelu vlaků](train-model.md)připojte popisek datové sady s popiskem, který má více hodnot třídy.
+4. Na druhý vstup [Train Model](train-model.md), připojte popisek trénovací datové sady, která má více hodnot třídy.
 
-5. Spuštění kanálu
+5. Odešlete potrubí.
 
 ## <a name="results"></a>Výsledky
 
-Po dokončení školení můžete použít model k vytvoření předpovědi pro více tříd.
+Po dokončení školení můžete použít model k provedení vícetřídní předpovědi.
 
-Alternativně můžete předat nevýukový klasifikátor do [modelu křížového](cross-validate-model.md) ověření pro křížové ověřování proti popisku datové sady s popiskem.
+Alternativně můžete předat netrénovaný třídění [pro křížovou ověření modelu](cross-validate-model.md) pro křížové ověření proti popiskované ověřovací datové sady.
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -1,6 +1,6 @@
 ---
-title: Řešení Azure VMware (AVS) – použití privátního cloudu služby AVS jako havárie pro místní úlohy
-description: Popisuje, jak nastavit privátní cloud služby AVS jako lokalitu pro zotavení po havárii pro místní úlohy VMware.
+title: Řešení Azure VMware od CloudSimple – použijte privátní cloud jako web pro havárii pro místní úlohy
+description: Popisuje, jak nastavit cloudový privátní cloud jako lokalitu pro zotavení po havárii pro místní úlohy VMware.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,91 +8,91 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e5ee43af97e79f1e835787d61bd79cfb256ef445
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 0e019a9229b671be2fb73e758bd39f33657bc2d4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77083131"
 ---
-# <a name="set-up-avs-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>Nastavení privátního cloudu pro funkci AVS jako lokality pro zotavení po havárii pro místní úlohy VMware
+# <a name="set-up-cloudsimple-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>Nastavení cloudového privátního cloudu jako lokality pro zotavení po havárii pro místní úlohy VMware
 
-Váš privátní cloud služby AVS můžete nastavit jako lokalitu pro obnovení místních aplikací, aby se zajistila Kontinuita podnikových prostředí v případě havárie. Řešení obnovení vychází z Zerto virtuální replikace jako platforma pro replikaci a orchestraci. Kritickou infrastrukturu a virtuální počítače aplikací je možné replikovat nepřetržitě z místního serveru vCenter do vašeho privátního cloudu služby AVS. Privátní cloud služby AVS můžete použít pro testování převzetí služeb při selhání a zajištění dostupnosti aplikace během havárie. Podobný přístup můžete nastavit jako primární lokalitu, která je chráněná lokalitou pro obnovení v jiném umístění.
+Váš CloudSimple Private Cloud lze nastavit jako lokalitu pro obnovení pro místní aplikace, které poskytují kontinuitu podnikání v případě havárie. Řešení pro obnovení je založeno na virtuální replikaci Zerto jako platformy replikace a orchestrace. Kritické infrastruktury a virtuálních počítačů aplikací lze replikovat nepřetržitě z místního virtuálního centra do privátního cloudu. Privátní cloud můžete použít pro testování převzetí služeb při selhání a k zajištění dostupnosti vaší aplikace během havárie. Podobný přístup lze sledovat k nastavení privátního cloudu jako primární lokality, která je chráněna lokalitou pro obnovení v jiném umístění.
 
 > [!NOTE]
-> Pokyny k určení velikosti prostředí pro zotavení po havárii najdete v tématu [požadavky na změnu velikosti dokumentu Zerto pro virtuální replikaci Zerto](https://s3.amazonaws.com/zertodownload_docs/5.5U3/Zerto%20Virtual%20Replication%20Sizing.pdf) .
+> Pokyny pro nastavení velikosti prostředí pro zotavení po havárii naleznete v dokumentu Zerto S ohledem na [důležité informace o velikosti pro virtuální replikaci Zerto.](https://s3.amazonaws.com/zertodownload_docs/5.5U3/Zerto%20Virtual%20Replication%20Sizing.pdf)
 
-Řešení AVS:
+CloudSimple řešení:
 
-* Eliminuje nutnost nastavit datacentrum specificky pro zotavení po havárii (DR).
-* Umožňuje využívat umístění Azure, kde je nasazená službou AVS pro celosvětově geografickou odolnost.
-* Nabízí možnost snížit náklady na nasazení a celkové náklady na vlastnictví pro zotavení po havárii.
+* Eliminuje potřebu nastavit datové centrum speciálně pro zotavení po havárii (DR).
+* Umožňuje využít umístění Azure, kde se CloudSimple nasazuje pro celosvětovou geografickou odolnost.
+* Poskytuje možnost snížit náklady na nasazení a celkové náklady na vlastnictví zotavení po havárii.
 
-Řešení vyžaduje:
+Řešení vyžaduje, abyste:
 
-* Instalace, konfigurace a Správa Zerto v privátním cloudu služby AVS
-* Pokud je privátní cloud služby AVS chráněným webem, zadejte vlastní licence pro Zerto. Můžete spárovat Zerto běžící na webu služby AVS pomocí místní lokality pro licencování.
+* Nainstalujte, nakonfigurujte a spravujte Zerto ve svém privátním cloudu.
+* Poskytněte si vlastní licence pro Zerto, když je Privátní cloud chráněným webem. Zerto spuštěný na webu CloudSimple můžete spárovat s místním webem pro licencování.
 
-Následující obrázek ukazuje architekturu pro řešení Zerto.
+Následující obrázek znázorňuje architekturu řešení Zerto.
 
 ![Architektura](media/cloudsimple-zerto-architecture.png)
 
 ## <a name="how-to-deploy-the-solution"></a>Jak nasadit řešení
 
-Následující části popisují, jak nasadit řešení zotavení po havárii pomocí virtuální replikace Zerto v privátním cloudu služby AVS.
+Následující části popisují, jak nasadit řešení zotavení po havárii pomocí virtuální replikace Zerto v privátním cloudu.
 
 1. [Požadavky](#prerequisites)
-2. [Volitelná konfigurace privátního cloudu služby AVS](#optional-configuration-on-your-avs-private-cloud)
-3. [Nastavení ZVM a VRA v privátním cloudu služby AVS](#set-up-zvm-and-vra-on-your-avs-private-cloud)
-4. [Nastavení skupiny virtuálních ochran Zerto](#set-up-zerto-virtual-protection-group)
+2. [Volitelná konfigurace v privátním cloudu CloudSimple](#optional-configuration-on-your-private-cloud)
+3. [Nastavení ZVM a VRA v privátním cloudu CloudSimple](#set-up-zvm-and-vra-on-your-private-cloud)
+4. [Nastavit Skupinu virtuální ochrany Zerto](#set-up-zerto-virtual-protection-group)
 
 ### <a name="prerequisites"></a>Požadavky
 
-Pokud chcete povolit virtuální replikaci Zerto z místního prostředí do vašeho privátního cloudu služby AVS, proveďte následující požadavky.
+Chcete-li povolit virtuální replikaci Zerto z místního prostředí do privátního cloudu, vyplňte následující požadavky.
 
-1. [Nastavte připojení VPN typu Site-to-site mezi vaší místní sítí a Vaším privátním cloudem služby AVS](set-up-vpn.md).
-2. [Nastavte vyhledávání DNS tak, aby komponenty správy privátního cloudu služby AVS byly předávány na servery DNS privátního cloudu služby AVS](on-premises-dns-setup.md). Pokud chcete povolit předávání vyhledávání DNS, vytvořte záznam zóny přesměrování na místním serveru DNS pro `*.cloudsimple.io` na servery DNS se službou AVS.
-3. Nastavte vyhledávání DNS tak, aby místní součásti vCenter byly předávány na místní servery DNS. Servery DNS musí být dosažitelné z privátního cloudu služby AVS prostřednictvím sítě VPN typu Site-to-site. Pokud potřebujete pomoc, odešlete [žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), která poskytne následující informace. 
+1. [Nastavte připojení VPN site-to-site mezi místní sítí a privátním cloudem CloudSimple](set-up-vpn.md).
+2. [Nastavte vyhledávání DNS tak, aby byly komponenty správy privátního cloudu předávány serverům DNS privátního cloudu](on-premises-dns-setup.md).  Chcete-li povolit předávání vyhledávání DNS, vytvořte položku zóny předávání `*.cloudsimple.io` na místním serveru DNS pro servery CloudSimple DNS.
+3. Nastavte vyhledávání DNS tak, aby místní součásti vCenter byly předávány místním serverům DNS.  Servery DNS musí být dosažitelné z vašeho cloudu CloudSimple Private Cloud přes síť VPN site-to-site. Pro pomoc odešlete [žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)a uveďte následující informace.  
 
-    * Název místní domény DNS
-    * IP adresy místních serverů DNS
+    * Místní název domény DNS
+    * Adresy IP místního serveru DNS
 
-4. Nainstalujte Windows Server do privátního cloudu služby AVS. Server se používá k instalaci Virtual Manageru Zerto.
-5. [Eskalace vašich oprávnění](escalate-private-cloud-privileges.md)ke službě AVS
-6. Vytvořte nového uživatele v rámci vašeho privátního cloudu služby AVS s rolí správce, který se použije jako účet služby pro Virtual Manager Zerto.
+4. Nainstalujte server Windows do privátního cloudu. Server se používá k instalaci Zerto Virtual Manager.
+5. [Eskalovat vaše CloudSimple oprávnění](escalate-private-cloud-privileges.md).
+6. Vytvořte nového uživatele v privátním cloudu vCenter s rolí správce, kterou chcete použít jako účet služby pro virtuální manažerZerto.
 
-### <a name="optional-configuration-on-your-avs-private-cloud"></a>Volitelná konfigurace privátního cloudu služby AVS
+### <a name="optional-configuration-on-your-private-cloud"></a>Volitelná konfigurace v privátním cloudu
 
-1. Vytvořte jeden nebo víc fondů prostředků v rámci vašeho privátního cloudu služby AVS a použijte je jako cílové fondy zdrojů pro virtuální počítače z místního prostředí.
-2. Vytvořte ve vaší službě AVS privátní cloud vCenter jednu nebo víc složek, které se použijí jako cílové složky pro virtuální počítače z místního prostředí.
-3. Vytvořte sítě VLAN pro síť s podporou převzetí služeb při selhání a nastavte pravidla brány firewall. Otevřete [žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) pro pomoc.
-4. Vytvoření distribuovaných skupin portů pro síť s podporou převzetí služeb při selhání a testování sítě pro testování převzetí služeb virtuálních počítačů
-5. Nainstalujte [servery DHCP a DNS](dns-dhcp-setup.md) nebo použijte řadič domény služby Active Directory v prostředí privátního cloudu služby AVS.
+1. Vytvořte jeden nebo více fondů prostředků v privátním cloudu vCenter, který se použije jako cílové fondy prostředků pro virtuální počítače z místního prostředí.
+2. Vytvořte jednu nebo více složek v privátním cloudu vCenter, které se použijí jako cílové složky pro virtuální počítače z místního prostředí.
+3. Vytvořte sítě VLAN pro síť s podporou převzetí služeb při selhání a nastavte pravidla brány firewall. Otevřete [žádost o pomoc.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
+4. Vytvořte distribuované skupiny portů pro síť s podporou převzetí služeb při selhání a testovací síť pro testování převzetí služeb při selhání virtuálních připojení.
+5. Nainstalujte [servery DHCP a DNS](dns-dhcp-setup.md) nebo použijte řadič domény služby Active Directory v prostředí privátního cloudu.
 
-### <a name="set-up-zvm-and-vra-on-your-avs-private-cloud"></a>Nastavení ZVM a VRA v privátním cloudu služby AVS
+### <a name="set-up-zvm-and-vra-on-your-private-cloud"></a>Nastavení ZVM a VRA v privátním cloudu
 
-1. Nainstalujte Virtual Manager Zerto (ZVM) na Windows Server v privátním cloudu služby AVS.
+1. Nainstalujte Zerto Virtual Manager (ZVM) na server Windows ve vašem privátním cloudu.
 2. Přihlaste se k ZVM pomocí účtu služby vytvořeného v předchozích krocích.
-3. Nastavte licencování pro Virtual Manager Zerto.
-4. Nainstalujte zařízení Zerto Virtual Replication (VRA) na hostitele ESXi vašeho privátního cloudu v rámci služby AVS.
-5. Párování privátního cloudu služby AVS v ZVM s vašimi místními ZVM.
+3. Nastavte licencování pro virtuální manažerzerto.
+4. Nainstalujte zařízení Pro virtuální replikaci Zerto (VRA) na hostitele ESXi vašeho privátního cloudu.
+5. Spárujte svůj Privátní cloud ZVM s místním ZVM.
 
-### <a name="set-up-zerto-virtual-protection-group"></a>Nastavení skupiny virtuálních ochran Zerto
+### <a name="set-up-zerto-virtual-protection-group"></a>Nastavit Skupinu virtuální ochrany Zerto
 
-1. Vytvořte novou skupinu virtuální ochrany (VPG) a zadejte prioritu pro VPG.
-2. Vyberte virtuální počítače, které vyžadují ochranu pro provozní kontinuitu, a pokud je to potřeba, upravte pořadí spouštění.
-3. Vyberte lokalitu pro obnovení jako privátní cloud služby AVS a výchozí server pro obnovení jako cluster služby AVS Private Cloud nebo skupinu prostředků, kterou jste vytvořili. V privátním cloudu služby AVS vyberte **vsanDatastore** pro úložiště dat obnovení.
+1. Vytvořte novou skupinu virtuální ochrany (VPG) a určete prioritu v rámci vpg.
+2. Vyberte virtuální počítače, které vyžadují ochranu pro kontinuitu provozu a v případě potřeby přizpůsobte pořadí spouštění.
+3. Vyberte lokalitu pro obnovení jako privátní cloud a výchozí server pro obnovení jako cluster privátního cloudu nebo skupinu prostředků, kterou jste vytvořili. Vyberte **vsanDatastore** pro úložiště dat obnovení v privátním cloudu.
 
     ![VPG](media/cloudsimple-zerto-vpg.png)
 
     > [!NOTE]
-    > Možnost hostitele můžete přizpůsobit pro jednotlivé virtuální počítače v rámci možnosti nastavení virtuálního počítače.
+    > Můžete přizpůsobit možnost hostitele pro jednotlivé virtuální počítače v rámci možnostnastavení nastavení virtuálních počítače.
 
-4. Podle potřeby upravte možnosti úložiště.
-5. Zadejte sítě pro obnovení, které se mají použít pro síť s podporou převzetí služeb při selhání, a testovací síť převzetí služeb při selhání jako skupiny distribuovaných portů vytvořené dříve a podle potřeby upravte
-6. V případě potřeby upravte nastavení sítě pro jednotlivé virtuální počítače a vytvořte VPG.
-7. Po dokončení replikace test převzetí služeb při selhání.
+4. Podle potřeby si můžete přizpůsobit možnosti úložiště.
+5. Zadejte sítě pro obnovení, které mají být používány pro síť s podporou převzetí služeb při selhání a testovací síť s podporou převzetí služeb při selhání, jako dříve vytvořené distribuované skupiny portů a podle potřeby přizpůsobte skripty pro obnovení.
+6. V případě potřeby přizpůsobte nastavení sítě pro jednotlivé virtuální počítače a vytvořte VPG.
+7. Otestujte převzetí služeb při selhání po dokončení replikace.
 
 ## <a name="reference"></a>Odkaz
 
-[Dokumentace k Zerto](https://www.zerto.com/myzerto/technical-documentation/)
+[Zerto dokumentace](https://www.zerto.com/myzerto/technical-documentation/)

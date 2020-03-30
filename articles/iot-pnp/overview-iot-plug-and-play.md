@@ -1,6 +1,6 @@
 ---
-title: Úvod do IoT technologie Plug and Play Preview | Microsoft Docs
-description: Přečtěte si o IoT technologie Plug and Play ve verzi Preview. IoT technologie Plug and Play vychází z otevřeného modelovacího jazyka, který umožňuje zařízením IoT deklarovat své schopnosti. Zařízení IoT prezentují tuto deklaraci, která se označuje jako model schopností zařízení, když se připojují ke cloudovým řešením, jako je Azure IoT Central nebo partnerských aplikací. Cloudové řešení pak může automaticky pochopit zařízení a začít s ním spolupracovat – to vše bez psaní kódu.
+title: Úvod do náhledu ioT plug and play | Dokumenty společnosti Microsoft
+description: Přečtěte si o náhledu IoT Plug and Play. IoT Plug and Play je založen na otevřeném jazyce modelování, který umožňuje zařízením IoT deklarovat své schopnosti. Zařízení IoT představují tuto deklaraci, nazývanou model schopností zařízení, když se připojují ke cloudovým řešením, jako jsou Azure IoT Central nebo partnerské aplikace. Cloudové řešení pak může automaticky pochopit zařízení a začít s ním pracovat – to vše bez psaní kódu.
 author: ChrisGMsft
 ms.author: chrisgre
 ms.date: 12/23/2019
@@ -9,83 +9,83 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 54a18bb20ab9af3ad794ed678ea3234a712bf5cb
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 0399e1659fb7cc6a650c6b3c1d0189c8802d4904
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531158"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80064317"
 ---
-# <a name="what-is-iot-plug-and-play-preview"></a>Co je IoT technologie Plug and Play Preview?
+# <a name="what-is-iot-plug-and-play-preview"></a>Co je náhled ioT plug and play?
 
-IoT technologie Plug and Play Preview umožňuje vývojářům řešení integrovat zařízení s jejich řešeními bez psaní vloženého kódu. V jádru IoT technologie Plug and Play je schéma _modelu schopností zařízení_ , které popisuje možnosti zařízení. Toto schéma je dokument JSON strukturovaný jako sada rozhraní, která zahrnují definice:
+IoT Plug and Play Preview umožňuje vývojářům řešení integrovat zařízení s jejich řešeními bez psaní vloženého kódu. Jádrem IoT Plug and Play je _schéma modelu schopností zařízení,_ které popisuje možnosti zařízení. Toto schéma je dokument JSON, který je strukturován jako sada rozhraní, která obsahují definice:
 
-- _Vlastnosti_ , které reprezentují stav jen pro čtení a čtení/zápisu v zařízení nebo jiné entitě. Například sériové číslo zařízení může být vlastnost jen pro čtení a cílová teplota na termostatovi může být vlastnost pro čtení i zápis.
-- _Telemetrie_ , která je daty vysílaná zařízením, ať už je to pravidelný proud čtení snímačů, příležitostná chyba nebo informační zpráva.
-- _Příkazy_ , které popisují funkci nebo operaci, které lze provést na zařízení. Například příkaz může restartovat bránu nebo pořídit obrázek pomocí vzdálené kamery.
+- _Vlastnosti,_ které představují stav zařízení nebo jiné entity jen pro čtení a čtení a zápis. Sériové číslo zařízení může být například vlastností jen pro čtení a cílová teplota na termostatu může být vlastnost pro čtení a zápis.
+- _Telemetrie,_ která je data vyzařovaná zařízením, zda jsou data pravidelným proudem údajů senzorů, příležitostnou chybou nebo informační zprávou.
+- _Příkazy,_ které popisují funkci nebo operaci, kterou lze provést na zařízení. Příkaz může například restartovat bránu nebo pořit snímek pomocí vzdálené kamery.
 
-Můžete opakovaně používat rozhraní napříč modely schopností zařízení, aby se usnadnila spolupráce a urychlila vývoj.
+Můžete znovu použít rozhraní napříč modely funkcí zařízení, abyste usnadnili spolupráci a urychlili vývoj.
 
-Aby mohla aplikace IoT technologie Plug and Play bez problémů pracovat s [digitálními úkoly Azure](../digital-twins/about-digital-twins.md), je schéma IoT technologie Plug and Play definované pomocí [DTDL (Digital Definition Language)](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL). IoT technologie Plug and Play a DTDL jsou otevřené komunitě a Microsoft vítá spolupráci se zákazníky, partnery a odvětvím. Obě jsou založené na otevřených standardech W3C, jako jsou JSON-LD a RDF, což umožňuje snazší přijímání mezi službami a nástroji. Kromě toho se neúčtují žádné další poplatky za použití IoT technologie Plug and Play a DTDL. Standardní sazby za [azure IoT Hub](../iot-hub/about-iot-hub.md), [Azure IoT Central](../iot-central/core/overview-iot-central.md)a další služby Azure zůstávají stejné.
+Chcete-li, aby IoT Plug and Play bezproblémově fungovals [digitálními dvojčaty Azure](../digital-twins/about-digital-twins.md), je schéma IoT Plug and Play definováno pomocí [jazyka DTDL (Digital Twin Definition Language).](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL) IoT Plug and Play a DTDL jsou otevřené pro komunitu a Microsoft vítá spolupráci se zákazníky, partnery a odvětvím. Obě jsou založeny na otevřených standardech W3C, jako jsou JSON-LD a RDF, které umožňují snadnější přijetí napříč službami a nástroji. Navíc neexistuje žádné další náklady na používání IoT Plug and Play a DTDL. Standardní sazby pro [Azure IoT Hub](../iot-hub/about-iot-hub.md), [Azure IoT Central](../iot-central/core/overview-iot-central.md)a další služby Azure zůstávají stejné.
 
-Řešení založená na IoT Hub nebo IoT Central můžou těžit ze technologie Plug and Play IoT.
+Řešení postavená na IoT Hubu nebo IoT Central můžou využívat IoT Plug and Play.
 
 Tento článek popisuje:
 
-- Typické role přidružené k projektu, který používá IoT technologie Plug and Play.
-- Jak používat zařízení IoT technologie Plug and Play ve vaší aplikaci.
-- Jak vyvíjet aplikace zařízení IoT, která podporuje IoT technologie Plug and Play.
-- Jak certifikovat technologie Plug and Play zařízení IoT a publikovat do [katalogu zařízení Certified for IoT](https://catalog.azureiotsolutions.com/).
+- Typické role přidružené k projektu, který používá IoT Plug and Play.
+- Jak používat zařízení IoT Plug and Play ve vaší aplikaci.
+- Jak vyvinout aplikaci zařízení IoT, která podporuje IoT Plug and Play.
+- Jak certifikovat zařízení IoT Plug and Play a publikovat v [katalogu zařízení Certified for IoT](https://catalog.azureiotsolutions.com/).
 
 ## <a name="user-roles"></a>Role uživatelů
 
-IoT technologie Plug and Play je užitečné pro dva typy vývojářů:
+IoT Plug and Play je užitečný pro dva typy vývojářů:
 
-- _Vývojář řešení_ zodpovídá za vývoj řešení IoT pomocí Azure IoT a dalších prostředků Azure a pro identifikaci zařízení IoT, která se mají integrovat.
+- _Vývojář řešení_ je zodpovědný za vývoj řešení IoT pomocí Azure IoT a dalších prostředků Azure a za identifikaci zařízení IoT pro integraci.
 - _Vývojář zařízení_ vytvoří kód, který běží na zařízení připojeném k vašemu řešení.
 
-## <a name="use-iot-plug-and-play-devices"></a>Použití zařízení IoT technologie Plug and Play
+## <a name="use-iot-plug-and-play-devices"></a>Používání zařízení IoT Plug and Play
 
-Jako vývojář řešení můžete vyvíjet řešení IoT hostované v cloudu, které používá zařízení IoT technologie Plug and Play. Můžete použít kteroukoli z následujících služeb Azure:
+Jako vývojář řešení můžete vyvinout cloudové řešení IoT, které používá zařízení IoT Plug and Play. Můžete použít některou z následujících služeb Azure:
 
-- [IoT Central](../iot-central/core/overview-iot-central.md) – plně spravované řešení IoT typu software jako služba usnadňující vytváření produktů, které spojují fyzické a digitální světů.
-- [IoT Hub](../iot-hub/about-iot-hub.md) – spravovaná cloudová služba, která funguje jako centrum zpráv pro bezpečnou obousměrnou komunikaci mezi vaší aplikací IoT a vašimi zařízeními.
+- [IoT Central](../iot-central/core/overview-iot-central.md) - plně spravované softwarové řešení IoT jako služba, které usnadňuje vytváření produktů, které spojují fyzický a digitální svět.
+- [IoT Hub](../iot-hub/about-iot-hub.md) – spravovaná cloudová služba, která funguje jako centrum zpráv pro zabezpečenou obousměrnou komunikaci mezi vaší aplikací IoT a vašimi zařízeními.
 
-Zařízení IoT technologie Plug and Play můžete najít prostřednictvím katalogu zařízení Azure Certified for IoT. Každé zařízení IoT technologie Plug and Play v katalogu bylo ověřeno a má model schopností zařízení. Podívejte se na model schopností zařízení, abyste porozuměli funkcím zařízení nebo ho používali k simulaci zařízení v Azure IoT Central.
+Zařízení IoT Plug and Play najdete v katalogu zařízení Azure Certified for IoT. Každé zařízení IoT Plug and Play v katalogu bylo ověřeno a má model schopností zařízení. Zobrazte si model schopností zařízení, abyste porozuměli funkcím zařízení, nebo ho použijte k simulaci zařízení v Azure IoT Central.
 
-Když připojíte zařízení IoT technologie Plug and Play, můžete si zobrazit jeho model schopností, rozhraní zahrnuté v modelu a telemetrii, vlastnosti a příkazy definované v těchto rozhraních.
+Když připojíte zařízení IoT Plug and Play, můžete zobrazit jeho model schopností zařízení, rozhraní zahrnutá v modelu a telemetrická data, vlastnosti a příkazy definované v těchto rozhraních.
 
 ## <a name="develop-an-iot-device-application"></a>Vývoj aplikace zařízení IoT
 
-Jako vývojář zařízení můžete vyvíjet hardwarový produkt IoT, který podporuje technologie Plug and Play IoT. Tento proces zahrnuje dva klíčové kroky:
+Jako vývojář zařízení můžete vyvinout hardwarový produkt IoT, který podporuje IoT Plug and Play. Tento proces zahrnuje dva klíčové kroky:
 
-1. Definujte model a rozhraní schopností zařízení. Vytvoříte sadu souborů JSON, které deklarují schopnosti vašeho zařízení pomocí [DTDL](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL). Model schopností zařízení popisuje kompletní entitu, jako je třeba fyzický produkt, a definuje sadu rozhraní implementovaných touto entitou. Rozhraní jsou sdílené kontrakty, které jednoznačně identifikují telemetrii, vlastnosti a příkazy, které zařízení podporuje. Rozhraní se dají znovu použít napříč různými modely schopností zařízení.
+1. Definujte model a rozhraní schopností zařízení. Vytvoření sady souborů JSON, které deklarují možnosti vašeho zařízení pomocí [DTDL](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL). Model schopností zařízení popisuje úplnou entitu, například fyzický produkt, a definuje sadu rozhraní implementovaných touto entitou. Rozhraní jsou sdílené smlouvy, které jednoznačně identifikují telemetrii, vlastnosti a příkazy podporované zařízením. Rozhraní lze znovu použít v různých modelech schopností zařízení.
 
-1. Vytvořte software nebo firmware zařízení, který implementuje možnosti deklarované v modelu a rozhraních schopností zařízení. Sada Azure IoT SDK obsahuje rozhraní API pro implementaci modelů schopností zařízení.
+1. Author zařízení software nebo firmware, který implementuje funkce deklarované v modelu schopnosti zařízení a rozhraní. Sada Azure IoT SDK obsahuje rozhraní API pro implementaci modelů funkcí zařízení.
 
-Rozšíření [Azure IoT Tools for vs Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) Extension Pack poskytuje mnoho funkcí, které vám pomůžou. Například jako vývojář zařízení můžete použít rozšíření k vygenerování kostry projektu jazyka C z modelu schopností. K vytváření a implementaci modelů schopností zařízení ale můžete použít jakékoli integrované vývojové prostředí.
+Sada rozšíření [Azure IoT Tools for VS Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) poskytuje mnoho funkcí, které vám pomohou. Například jako vývojář zařízení můžete použít rozšíření ke generování projektu kostry C z modelu schopností. Však můžete použít libovolný ide k vytváření a implementaci modelů schopností zařízení.
 
-## <a name="certify-an-iot-plug-and-play-device"></a>Certifikace zařízení technologie Plug and Play IoT
+## <a name="certify-an-iot-plug-and-play-device"></a>Certifikace zařízení IoT Plug and Play
 
-Jako vývojář zařízení můžete odeslat hardwarové produkty IoT pro certifikaci. Certifikované zařízení můžete publikovat v katalogu zařízení Certified for IoT. Postup certifikace zahrnuje tyto kroky:
+Jako vývojář zařízení můžete odesílat hardwarové produkty IoT k certifikaci. Certifikované zařízení můžete publikovat v katalogu certifikovaných zařízení IoT. Kroky certifikačního procesu zahrnují:
 
-- Připojte se k [Microsoft Partner Network](https://partner.microsoft.com).
-- Připojte se k portálu s certifikací pro Azure IoT.
-- Odešlete model možnosti zařízení IoT technologie Plug and Play a marketingové informace pro vytvoření nového záznamu zařízení.
-- Předat automatizovanou sadu ověřovacích testů pro zařízení.
+- Připojte se k [programu Microsoft Partner Network](https://partner.microsoft.com).
+- Na palubě k certifikovanému portálu Azure IoT.
+- Odešlete model schopností zařízení IoT Plug and Play a marketingové informace a vytvořte nový záznam zařízení.
+- Projděte automatickou sadou ověřovacích testů pro zařízení.
 - Publikujte do katalogu zařízení Certified for IoT.
 
-## <a name="regional-availability"></a>Dostupnost podle oblastí
+## <a name="regional-availability"></a>Regionální dostupnost
 
-Ve verzi Public Preview je IoT technologie Plug and Play k dispozici v oblastech Severní Evropa, Střed USA a Japonsko – východ. Ujistěte se prosím, že jste vytvořili centrum v jedné z těchto oblastí.
+Během veřejné verze Preview je IoT Plug and Play k dispozici ve všech oblastech.
 
-## <a name="message-quotas-in-iot-hub"></a>Kvóty zpráv v IoT Hub
-Během veřejné verze Preview zařízení IoT technologie Plug and Play odesílají samostatné zprávy na jedno rozhraní, což může zvýšit počet zpráv započítaných do vaší [kvóty zpráv](../iot-hub/iot-hub-devguide-quotas-throttling.md).
+## <a name="message-quotas-in-iot-hub"></a>Kvóty zpráv v centru IoT Hub
+Během veřejné verze Preview odesílají zařízení IoT Plug and Play samostatné zprávy pro jednotlivá rozhraní, což může zvýšit počet zpráv započítaných do [kvóty zpráv](../iot-hub/iot-hub-devguide-quotas-throttling.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když máte přehled o IoT technologie Plug and Play, navržený další krok si vyzkoušíme jedno z rychlých startů:
+Teď, když máte přehled o IoT Plug and Play, je dalším krokem vyzkoušet jeden z rychlých startů:
 
-- [Vytvoření zařízení IoT technologie Plug and Play pomocí modelu schopností zařízení](./quickstart-create-pnp-device-windows.md)
-- [Připojení zařízení k IoT Hub](./quickstart-connect-pnp-device-c-windows.md)
+- [Vytvoření zařízení IoT Plug and Play pomocí modelu schopností zařízení](./quickstart-create-pnp-device-windows.md)
+- [Připojení zařízení ke službě IoT Hub](./quickstart-connect-pnp-device-c-windows.md)
 - [Připojení k zařízení ve vašem řešení](./quickstart-connect-pnp-device-solution-node.md)

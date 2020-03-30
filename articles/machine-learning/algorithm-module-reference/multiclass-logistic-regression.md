@@ -1,7 +1,7 @@
 ---
-title: 'Regresní regrese s více třídami: odkaz na modul'
+title: 'Vícetřídová logistická regrese: Odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Naučte se používat modul logistické regrese ve službě Azure Machine Learning k vytvoření modelu logistické regrese, který se dá použít k předpovědi více hodnot.
+description: Zjistěte, jak pomocí modulu Multiclass Logistic Regression v Azure Machine Learning vytvořit model logistické regrese, který lze použít k předvídání více hodnot.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,56 +9,56 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 40193a2547959b44c5753cfcc6ccad9344ab9486
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: ca446b0ab67a8a202c1f4d505262660ac55f42db
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920429"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456161"
 ---
-# <a name="multiclass-logistic-regression-module"></a>Modul logistické regrese pro více tříd
+# <a name="multiclass-logistic-regression-module"></a>Vícetřídový logistický regresní modul
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v návrháři Azure Machine Learning (preview).
 
-Pomocí tohoto modulu můžete vytvořit model logistické regrese, který se dá použít k předpovědi více hodnot.
+Tento modul slouží k vytvoření logistického regresního modelu, který lze použít k předvídání více hodnot.
 
-Klasifikace pomocí logistické regrese je metoda učení pod dohledem a proto vyžaduje datovou sadu s popiskem. Model provedete tak, že zadáte model a datovou sadu s popiskem jako vstup do modulu, jako je například [model výuky](./train-model.md). Školený model se pak dá použít k předpovědi hodnot pro nové vstupní příklady.
+Klasifikace pomocí logistické regrese je metoda učení pod dohledem, a proto vyžaduje označenou datovou sadu. Trénování modelu poskytnutím modelu a popisné datové sady jako vstup do modulu, jako je [například train model](./train-model.md). Trénovaný model pak lze předpovědět hodnoty pro nové vstupní příklady.
 
-Azure Machine Learning také poskytuje modul [logistické regrese se dvěma třídami](./two-class-logistic-regression.md) , který je vhodný pro klasifikaci binárních nebo dichotomous proměnných.
+Azure Machine Learning také poskytuje [modul dvoutřídní logistické regrese,](./two-class-logistic-regression.md) který je vhodný pro klasifikaci binárních nebo dichotomických proměnných.
 
-## <a name="about-multiclass-logistic-regression"></a>O mikrotřídě logistické regrese
+## <a name="about-multiclass-logistic-regression"></a>O vícetřídové logistické regresi
 
-Logistická regrese je dobře známá metoda, která se používá k předpovědi pravděpodobnosti výsledku a je oblíbená pro úlohy klasifikace. Algoritmus předpovídá pravděpodobnost výskytu události tím, že se data namontuje na logistickou funkci. 
+Logistická regrese je dobře známá metoda ve statistikách, která se používá k předvídání pravděpodobnosti výsledku a je populární pro úkoly klasifikace. Algoritmus předpovídá pravděpodobnost výskytu události přizpůsobením dat do logistické funkce. 
 
-V rámci více tříd logistické regrese lze klasifikátor použít k předpovědi více výsledků.
+V regresi vícetřídy logistické třídění lze předpovědět více výsledků.
 
-## <a name="configure-a-multiclass-logistic-regression"></a>Konfigurace s více třídami logistické regrese
+## <a name="configure-a-multiclass-logistic-regression"></a>Konfigurace logistické regrese více tříd
 
-1. Přidejte do kanálu modul **logistické regrese** .
+1. Přidejte do kanálu modul **Vícetřídové logistické regrese.**
 
-2. Určete, jak chcete model vyškolet nastavením možnosti **vytvořit Trainer režim** .
+2. Určete, jak má být model trénovaný, nastavením **možnosti Vytvořit režim trenažéru.**
 
-    + **Jediný parametr**: tuto možnost použijte, pokud víte, jak chcete model konfigurovat, a poskytněte konkrétní sadu hodnot jako argumenty.
+    + **Jeden parametr**: Tuto možnost použijte, pokud víte, jak chcete nakonfigurovat model a zadat určitou sadu hodnot jako argumenty.
 
-    + **Rozsah parametrů**: tuto možnost vyberte, pokud si nejste jisti nejlepšími parametry a chcete spustit mazání parametrů. Vyberte rozsah hodnot, na které se mají iterovat, a s [parametry modelu ladění](tune-model-hyperparameters.md) prochází všechny možné kombinace nastavení, které jste zadali, abyste určili, jaké parametry jsou výsledkem optimálních výsledků.  
+    + **Rozsah parametrů**: Tuto možnost vyberte, pokud si nejste jisti nejlepšími parametry a chcete spustit tažení parametrů. Vyberte rozsah hodnot, které chcete iterát přes a [Tune Model Hyperparameters](tune-model-hyperparameters.md) iterates přes všechny možné kombinace nastavení, které jste zadali k určení hyperparameters, které produkují optimální výsledky.  
 
-3. **Tolerance optimalizace**zadejte prahovou hodnotu pro konvergenci Optimalizátoru. Pokud je vylepšení mezi iteracemi menší než prahová hodnota, algoritmus se zastaví a vrátí aktuální model.
+3. **Tolerance optimalizace**, zadejte prahovou hodnotu pro konvergenci optimalizátoru. Pokud je zlepšení mezi iterací menší než prahová hodnota, algoritmus zastaví a vrátí aktuální model.
 
-4. **Pravidelná váha L1**, **váha pro pravidelnost v L2**: zadejte hodnotu, která se má použít pro parametry pro pravidelnou práci L1 a L2. Pro obojí se doporučuje nenulová hodnota.
+4. **Hmotnost regularizace L1**, **hmotnost regularizace L2**: Zadejte hodnotu, která se má použít pro parametry regularizace L1 a L2. Pro oba se doporučuje nenulová hodnota.
 
-    Pravidelná metoda představuje způsob, jak zabránit přeložení pomocí postihu modelů s hodnotami extrémního součinitele. Pravidelnou práci můžete provést přidáním pokuty, která je spojená s hodnotami koeficientu, na chybu hypotézy. Přesný model s hodnotami extrémního koeficientu by byl potrestán více, ale méně přesný model s více konzervativními hodnotami by byl méně trestný.
+    Regularizace je metoda, která zabraňuje nadměrnému vybavení penalizací modelů hodnotami s extrémními koeficienty. Regularizace funguje přidáním penalizace, která je spojena s hodnotami koeficientu k chybě hypotézy. Přesný model s hodnotami extrémních koeficientů by byl penalizován více, ale méně přesný model s konzervativnějšími hodnotami by byl penalizován méně.
 
-     Pravidelná L1 a L2 mají různé účinky a použití. L1 se dá použít na řídké modely, což je užitečné při práci s vysokými objemy dat. Na rozdíl od je pro data, která nejsou zhuštěná, vhodnější pravidelná navýšení L2.  Tento algoritmus podporuje lineární kombinaci hodnot L1 a L2 pro účely depravidelnosti: to znamená, že pokud `x = L1` a `y = L2`, `ax + by = c` definuje lineární rozpětí regulárních podmínek.
+     Legalizace L1 a L2 má různé účinky a použití. L1 lze použít pro řídké modely, což je užitečné při práci s vysokorozměrnými daty. Naproti tomu regularizace L2 je vhodnější pro data, která nejsou řídká.  Tento algoritmus podporuje lineární kombinaci hodnot regularizace L1 `x = L1` a `y = L2` `ax + by = c` L2: to znamená if a , definuje lineární rozsah termínů regularizace.
 
-     Pro logistické regresní modely, jako je [elastická pravidelná](https://wikipedia.org/wiki/Elastic_net_regularization)flexibilita, byly navrženy různé lineární kombinace L1 a L2.
+     Pro logistické regresní modely byly navrženy různé lineární kombinace termínů L1 a L2, jako je [například regulace elastické sítě](https://wikipedia.org/wiki/Elastic_net_regularization).
 
-6. **Počáteční číslo osiva**: Zadejte celočíselnou hodnotu, která se použije jako počáteční hodnota pro algoritmus, pokud chcete, aby se výsledky opakovaly při spuštění. Jinak se jako počáteční hodnota používá systémová časová hodnota, která může při spuštění stejného kanálu způsobit mírně odlišné výsledky.
+6. **Osiva náhodných čísel**: Zadejte celou hodnotu, která se má použít jako osivo pro algoritmus, pokud chcete, aby výsledky byly opakovatelné přes spuštění. V opačném případě se jako osiva používá hodnota systémových hodin, která může způsobit mírně odlišné výsledky při spuštění stejného kanálu.
 
-8. Propojit s popiskem datovou sadu a jeden z modulů vlaků:
+8. Připojte označenou datovou sadu a jeden z modulů vlaku:
 
-    + Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, použijte modul [vlakového modelu](./train-model.md) .
+    + Pokud nastavíte **vytvořit režim trenažéru** na **jeden parametr**, použijte modul [Model vlaku.](./train-model.md)
 
-9. Spuštění kanálu
+9. Odešlete potrubí.
 
 
 
