@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 64aa01995460837c820c90010d7c4e3f3d78e6a2
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.openlocfilehash: 8f2e2081ee31e2ce7b21677bd261ed7eda705334
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79300229"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79486044"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
 
@@ -26,22 +26,22 @@ ms.locfileid: "79300229"
 
 ## <a name="portal"></a>Portál
 
-Chcete-li vytvořit a nakonfigurovat přírůstkové snímky v globálním Azure Portal, je nutné použít následující odkaz: [https://aka.ms/incrementalsnapshots](https://aka.ms/incrementalsnapshots). Přírůstkové vytváření snímku ještě není v globálním Azure Portal k dispozici.
+Chcete-li vytvořit a nakonfigurovat přírůstkové snímky na globálním [https://aka.ms/incrementalsnapshots](https://aka.ms/incrementalsnapshots)portálu Azure, musíte použít následující odkaz: . Přírůstkové vytváření snímků ještě není k dispozici na globálním portálu Azure.
 
-1. Přihlaste se k [Azure Portal](https://aka.ms/incrementalsnapshots) pomocí zadaného odkazu a přejděte na disk, který chcete vytvořit snímek.
-1. Na disku vyberte **vytvořit snímek** .
+1. Přihlaste se k [portálu Azure](https://aka.ms/incrementalsnapshots) pomocí poskytnutého odkazu a přejděte na disk, který chcete snímek.
+1. Na disku vyberte **Vytvořit snímek.**
 
-    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/create-snapshot-button-incremental.png" alt-text=" ":::
+    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/create-snapshot-button-incremental.png" alt-text="Screenshot. Okno disku se zvýrazněným **+Create snapshot**, protože to je to, co musíte vybrat.":::
 
 1. Vyberte skupinu prostředků, kterou chcete použít, a zadejte název.
-1. Vyberte **přírůstkové** a vyberte **zkontrolovat + vytvořit** .
+1. Vyberte **Přírůstkové** a vyberte **Zkontrolovat + Vytvořit**
 
-    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/incremental-snapshot-create-snapshot-blade.png" alt-text=" ":::
+    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/incremental-snapshot-create-snapshot-blade.png" alt-text="Screenshot. Vytvořte snímek, vyplňte název a vyberte přírůstkové a vytvořte snímek.":::
 
-1. Vyberte **Vytvořit**.
+1. Vybrat **vytvořit**
 
-    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/create-incremental-snapshot-validation.png" alt-text=" ":::
+    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/create-incremental-snapshot-validation.png" alt-text="Screenshot. Ověřovací stránka snímku, potvrďte výběry a vytvořte snímek.":::
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud se chcete podívat na vzorový kód prokazující rozdílovou schopnost přírůstkových snímků pomocí .NET, přečtěte si téma [kopírování záloh Azure Managed disks do jiné oblasti s rozdílovou schopností přírůstkových snímků](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots).
+Pokud chcete zobrazit ukázkový kód demonstrující rozdílové schopnosti přírůstkových snímků pomocí rozhraní .NET, přečtěte si část [Kopírování záloh spravovaných disků Azure do jiné oblasti s rozdílovou schopností přírůstkových snímků](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots).

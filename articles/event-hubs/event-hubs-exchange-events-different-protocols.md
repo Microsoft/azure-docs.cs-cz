@@ -1,9 +1,9 @@
 ---
-title: Události Azure Event Hubs-Exchange pomocí různých protokolů
-description: V tomto článku se dozvíte, jak můžou zákazníci a výrobci, kteří používají různé protokoly (AMQP, Apache Kafka a HTTPS), vyměňovat události při použití Azure Event Hubs.
+title: Azure Event Hubs – exchange události pomocí různých protokolů
+description: Tento článek ukazuje, jak spotřebitelé a výrobci, kteří používají různé protokoly (AMQP, Apache Kafka a HTTPS) můžete vyměňovat události při používání Azure Event Hubs.
 services: event-hubs
 documentationcenter: ''
-author: basilhariri
+author: femila
 manager: ''
 ms.service: event-hubs
 ms.devlang: na
@@ -12,33 +12,33 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/20/2019
-ms.author: bahariri
-ms.openlocfilehash: aecde0c36fc48f75e5174ca3e1ab9e2b3476d08a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: femila
+ms.openlocfilehash: 368cc568c40e878338e6b45205e74cba1d0b6378
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437191"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80372215"
 ---
-# <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>Výměna událostí mezi spotřebiteli a producenty, kteří používají různé protokoly: AMQP, Kafka a HTTPS
-Azure Event Hubs podporuje tři protokoly pro příjemce a výrobce: AMQP, Kafka a HTTPS. Každý z těchto protokolů má svůj vlastní způsob, jak vyjádřit zprávu, takže když aplikace pošle události do centra událostí s jedním protokolem a využije je jiný protokol, co dělají různé části a hodnoty Vypadá to, že když dorazí na příjemce? Tento článek popisuje osvědčené postupy pro producenta i příjemce, aby bylo zajištěno, že hodnoty v rámci události jsou správně interpretovány náročnými aplikacemi.
+# <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>Výměna událostí mezi spotřebiteli a výrobci, kteří používají různé protokoly: AMQP, Kafka a HTTPS
+Azure Event Hubs podporuje tři protokoly pro spotřebitele a výrobce: AMQP, Kafka a HTTPS. Každý z těchto protokolů má svůj vlastní způsob, jak reprezentovat zprávu, takže přirozeně vzniká následující otázka: pokud aplikace odesílá události do centra událostí s jedním protokolem a spotřebovává je s jiným protokolem, co různé části a hodnoty událost vypadat, když dorazí ke spotřebiteli? Tento článek popisuje osvědčené postupy pro výrobce i spotřebitele, aby bylo zajištěno, že hodnoty v rámci události jsou správně interpretovány náročné aplikace.
 
-Rady v tomto článku se konkrétně zabývá těmito klienty a uvedenými verzemi použitými při vývoji fragmentů kódu:
+Rady v tomto článku se konkrétně vztahuje na tyto klienty, s uvedené verze používané při vývoji fragmenty kódu:
 
-* Kafka klient Java (verze 1.1.1 z https://www.mvnrepository.com/artifact/org.apache.kafka/kafka-clients)
-* Microsoft Azure Event Hubs klient pro jazyk Java (verze 1.1.0 od https://github.com/Azure/azure-event-hubs-java)
-* Klient Event Hubs Microsoft Azure pro .NET (verze 2.1.0 od https://github.com/Azure/azure-event-hubs-dotnet)
-* Microsoft Azure Service Bus (verze 5.0.0 z https://www.nuget.org/packages/WindowsAzure.ServiceBus)
-* HTTPS (podporuje jenom producenty)
+* Klient Kafka Java (verze 1.1.1 odhttps://www.mvnrepository.com/artifact/org.apache.kafka/kafka-clients)
+* Klient microsoft azure event hubů pro Jazyk Java (verze 1.1.0 odhttps://github.com/Azure/azure-event-hubs-java)
+* Klient center událostí Microsoft Azure pro rozhraní .NET (verze 2.1.0 odhttps://github.com/Azure/azure-event-hubs-dotnet)
+* Microsoft Azure Service Bus (verze 5.0.0 odhttps://www.nuget.org/packages/WindowsAzure.ServiceBus)
+* HTTPS (podporuje pouze výrobce)
 
-Ostatní klienti AMQP se můžou chovat trochu jinak. AMQP má dobře definovaný systém typů, ale specifika serializace typů typů do a z daného systému typů závisí na klientovi, jak klient poskytuje přístup k částem zprávy AMQP.
+Ostatní klienti AMQP se mohou chovat mírně odlišně. AMQP má dobře definovaný typ systému, ale specifika serializace typů specifických pro jazyk do a z tohoto typu systému závisí na klientovi, stejně jako jak klient poskytuje přístup k části zprávy AMQP.
 
 ## <a name="event-body"></a>Tělo události
-Všichni klienti Microsoft AMQP reprezentují tělo události jako neinterpretované penalty bajtů. Produkující aplikace předává klientovi sekvenci bajtů a přijímající aplikace obdrží stejnou sekvenci od klienta. Výklad sekvence bajtů se provádí v kódu aplikace.
+Všichni klienti Microsoft AMQP představují tělo události jako neinterpretovaný pytel bajtů. Vyrábějící aplikace předá klientovi posloupnost bajtů a náročná aplikace obdrží stejnou sekvenci od klienta. Interpretace pořadí bajtů probíhá v rámci kódu aplikace.
 
-Tělo události při odesílání události prostřednictvím protokolu HTTPS je vystaveným obsahem, který je také považován za neinterpretované bajty. Stejný stav můžete snadno dosáhnout v Kafka producentovi nebo spotřebiteli pomocí poskytnutých ByteArraySerializer a ByteArrayDeserializer, jak je znázorněno v následujícím kódu:
+Při odesílání události prostřednictvím protokolu HTTPS je tělo události obsah POSTed, který je také považován za neinterpretované bajty. Je snadné dosáhnout stejného stavu v kafka výrobce nebo spotřebitele pomocí zadaný ByteArraySerializer a ByteArrayDeserializer, jak je znázorněno v následujícím kódu:
 
-### <a name="kafka-byte-producer"></a>Kafka Byte [] – producent
+### <a name="kafka-byte-producer"></a>Kafka byte[] výrobce
 
 ```java
 final Properties properties = new Properties();
@@ -52,7 +52,7 @@ ProducerRecord<Long, byte[]> pr =
     new ProducerRecord<Long, byte[]>(myTopic, myPartitionId, myTimeStamp, eventBody);
 ```
 
-### <a name="kafka-byte-consumer"></a>Spotřebitel Kafka Byte []
+### <a name="kafka-byte-consumer"></a>Kafka byte[] spotřebitel
 ```java
 final Properties properties = new Properties();
 // add other properties
@@ -64,11 +64,11 @@ ConsumerRecord<Long, byte[]> cr = /* receive event */
 // cr.value() is a byte[] with values { 0x01, 0x02, 0x03, 0x04 }
 ```
 
-Tento kód vytvoří transparentní kanál bajtů mezi dvěma polovičními částmi aplikace a umožní vývojáři aplikace ruční serializaci a deserializaci jakýmkoli způsobem, včetně provádění rozhodnutí o deserializaci za běhu, například na základě typu nebo informace o odesílateli v události uživatelem nastavené vlastnosti.
+Tento kód vytvoří transparentní bajt potrubí mezi dvěma polovinami aplikace a umožňuje vývojáři aplikace ručně serializovat a rekonstruovat v libovolném požadovaném způsobem, včetně provádění rozhodnutí o rekonstrukci za běhu, například na základě typu nebo informace o odesílateli ve vlastnostech sady uživatelů události.
 
-Aplikace, které mají jediný typ těla události, mohou být schopny použít jiné Kafka serializace a deserializátory k transparentní konverzi dat. Zvažte například aplikaci, která používá JSON. Konstrukce a interpretace řetězce JSON se provádí na úrovni aplikace. Tělo události na úrovni Event Hubs je vždy řetězec, sekvence bajtů představuje znaky v kódování UTF-8. V takovém případě může producent Kafka nebo spotřebitel využít výhod poskytovaných StringSerializer nebo StringDeserializer, jak je znázorněno v následujícím kódu:
+Aplikace, které mají jeden, pevný typ těla události může být schopen použít jiné serializátory Kafka a deserializery pro transparentní převod dat. Zvažte například aplikaci, která používá JSON. Konstrukce a interpretace řetězce JSON probíhá na úrovni aplikace. Na úrovni Event Hubs je tělo události vždy řetězec, posloupnost bajtů představujících znaky v kódování UTF-8. V tomto případě může výrobce nebo spotřebitel Kafka využít poskytnutéstringserializer nebo StringDeserializer, jak je znázorněno v následujícím kódu:
 
-### <a name="kafka-utf-8-string-producer"></a>Producent řetězce Kafka UTF-8
+### <a name="kafka-utf-8-string-producer"></a>Kafka UTF-8 výrobce strun
 ```java
 final Properties properties = new Properties();
 // add other properties
@@ -81,7 +81,7 @@ ProducerRecord<Long, String> pr =
     new ProducerRecord<Long, String>(myTopic, myPartitionId, myTimeStamp, exampleJson);
 ```
 
-### <a name="kafka-utf-8-string-consumer"></a>Příjemce řetězce ve formátu UTF-8 Kafka
+### <a name="kafka-utf-8-string-consumer"></a>Kafka UTF-8 řetězec spotřebitele
 ```java
 final Properties properties = new Properties();
 // add other properties
@@ -93,27 +93,27 @@ ConsumerRecord<Long, Bytes> cr = /* receive event */
 final String receivedJson = cr.value();
 ```
 
-Pro AMQP stranu nabízí jazyk Java i rozhraní .NET integrované způsoby, jak převést řetězce na a ze sekvencí bajtů UTF-8. Klienti Microsoft AMQP reprezentují události jako třídu s názvem EventData. Následující příklady ukazují, jak serializovat řetězec UTF-8 do těla události EventData v producentovi AMQP a jak deserializovat tělo události EventData do řetězce znakové sady UTF-8 v příjemci AMQP.
+Na straně AMQP java a .NET poskytují předdefinované způsoby převodu řetězců do a z bajtových sekvencí UTF-8. Klienti Microsoft AMQP představují události jako třídu s názvem EventData. Následující příklady ukazují, jak serializovat řetězec UTF-8 do těla události EventData v producentovi AMQP a jak rekonstruovat tělo události EventData do řetězce UTF-8 v spotřebiteli AMQP.
 
-### <a name="java-amqp-utf-8-string-producer"></a>Výrobce řetězců Java AMQP UTF-8
+### <a name="java-amqp-utf-8-string-producer"></a>Java AMQP UTF-8 výrobce řetězců
 ```java
 final String exampleJson = "{\"name\":\"John\", \"number\":9001}";
 final EventData ed = EventData.create(exampleJson.getBytes(StandardCharsets.UTF_8));
 ```
 
-### <a name="java-amqp-utf-8-string-consumer"></a>Spotřebitel řetězců Java AMQP UTF-8
+### <a name="java-amqp-utf-8-string-consumer"></a>Java AMQP UTF-8 řetězec spotřebitele
 ```java
 EventData ed = /* receive event */
 String receivedJson = new String(ed.getBytes(), StandardCharsets.UTF_8);
 ```
 
-### <a name="c-net-utf-8-string-producer"></a>C#Výrobce řetězců .NET UTF-8
+### <a name="c-net-utf-8-string-producer"></a>Výrobce řetězce C# .NET UTF-8
 ```csharp
 string exampleJson = "{\"name\":\"John\", \"number\":9001}";
 EventData working = new EventData(Encoding.UTF8.GetBytes(exampleJson));
 ```
 
-### <a name="c-net-utf-8-string-consumer"></a>C#Příjemce řetězců .NET UTF-8
+### <a name="c-net-utf-8-string-consumer"></a>C# .NET UTF-8 řetězec příjemce
 ```csharp
 EventData ed = /* receive event */
 
@@ -124,21 +124,21 @@ byte[] bodyBytes = ed.Body.Array;  // Microsoft Azure Event Hubs Client for .NET
 string receivedJson = Encoding.UTF8.GetString(bodyBytes);
 ```
 
-Vzhledem k tomu, že Kafka je open source, může vývojář aplikace zkontrolovat implementaci jakéhokoli serializátoru nebo deserializace a implementovat kód, který vytváří nebo spotřebovává kompatibilní sekvenci bajtů na straně AMQP.
+Vzhledem k tomu, že Kafka je open source, vývojář aplikace může zkontrolovat implementaci libovolného serializátoru nebo deserializátoru a implementovat kód, který vytváří nebo spotřebovává kompatibilní sekvenci bajtů na straně AMQP.
 
 ## <a name="event-user-properties"></a>Vlastnosti uživatele události
 
-Vlastnosti uživatelské sady lze nastavit a načíst z obou AMQP klientů (v klientech Microsoft AMQP, které se nazývají vlastnosti) a Kafka (kde se nazývají záhlaví). Odesílatelé HTTPS můžou nastavit vlastnosti uživatele u události tím, že je v operaci POST zadávají jako hlavičky HTTP. Nicméně Kafka považuje tělo události a hodnoty hlaviček událostí jako bajtové sekvence. Vzhledem k tomu, že v klientech AMQP mají hodnoty vlastností typy, které jsou přenášeny pomocí kódování hodnot vlastností podle systému typů AMQP.
+Vlastnosti sady uživatelů lze nastavit a načíst z obou klientů AMQP (v klientech Microsoft AMQP se nazývají vlastnosti) a Kafka (kde se nazývají záhlaví). Odesílatelé protokolu HTTPS mohou nastavit vlastnosti uživatele události tím, že je dodávají jako hlavičky HTTP v operaci POST. Kafka však považuje těla událostí i hodnoty záhlaví události za bajtové sekvence. Vzhledem k tomu, že v klientech AMQP mají hodnoty vlastností typy, které jsou sdělovány kódováním hodnot vlastností podle systému typu AMQP.
 
-Protokol HTTPS je zvláštní případ. V bodě odeslání jsou všechny hodnoty vlastností text v kódování UTF-8. Služba Event Hubs poskytuje omezené množství výkladu pro převod odpovídajících hodnot vlastností na 32 AMQPá a 64 podepsaná celá čísla, která jsou omezená na, čísla s plovoucí desetinnou čárkou (64) a logické hodnoty. Jakákoli hodnota vlastnosti, která se nevejde na jeden z těchto typů, je považována za řetězec.
+HTTPS je zvláštní případ. V okamžiku odeslání jsou všechny hodnoty vlastností textEm UTF-8. Služba Event Hubs provádí omezené množství interpretace převést příslušné hodnoty vlastností na 32bitová a 64bitová podepsaná elipsa s kódem AMQP, čísla s plovoucí desetinnou čárkou a logické hodnoty. Jakákoli hodnota vlastnosti, která se nevejde jeden z těchto typů je považována za řetězec.
 
-Kombinování těchto přístupů k psaní vlastností znamená, že příjemce Kafka uvidí nezpracovanou sekvenci bajtů s kódováním AMQP, včetně informací o typu AMQP. Zatímco příjemce AMQP uvidí Netypový bajtovou sekvenci odeslanou výrobcem Kafka, kterou musí aplikace interpretovat.
+Míchání těchto přístupů k zadání vlastností znamená, že příjemce Kafka vidí nezpracovaná bajtová sekvence kódovaná AMQP, včetně informací o typu AMQP. Vzhledem k tomu, že příjemce AMQP vidí netypové bajtové sekvence odeslané výrobcem Kafka, který musí aplikace interpretovat.
 
-Pro příjemce Kafka, kteří přijímají vlastnosti od výrobců AMQP nebo HTTPS, použijte třídu AmqpDeserializer, která je modelována po jiných deserializátorech v ekosystému Kafka. Interpretuje informace o typu v bajtových sekvencích kódovaných v AMQP k rekonstrukci datových bajtů do typu Java.
+Pro kafka spotřebitelů, které přijímají vlastnosti od výrobců AMQP nebo HTTPS, použijte Třídu AmqpDeserializer, která je modelována podle ostatních deserializerů v ekosystému Kafka. Interpretuje informace o typu v bajtových sekvencích kódovaných AMQP, aby rekonstruoval bajty dat do typu Java.
 
-Jako osvědčený postup doporučujeme, abyste do zpráv odesílaných přes AMQP nebo HTTPS zahrnuli vlastnost. Příjemce Kafka ho může použít k určení, jestli hodnoty hlaviček potřebují deserializaci AMQP. Hodnota vlastnosti není důležitá. Potřebuje jenom známý název, který Kafka příjemce nalezne v seznamu hlaviček a odpovídajícím způsobem upraví jeho chování.
+Jako osvědčený postup doporučujeme zahrnout vlastnost ve zprávách odeslaných prostřednictvím AMQP nebo HTTPS. Kafka příjemce můžete použít k určení, zda hodnoty záhlaví potřebují amqp deserializace. Hodnota vlastnosti není důležitá. Potřebuje jen dobře známé jméno, které může spotřebitel Kafka najít v seznamu záhlaví a odpovídajícím způsobem upravit jeho chování.
 
-### <a name="amqp-to-kafka-part-1-create-and-send-an-event-in-c-net-with-properties"></a>AMQP na Kafka část 1: vytvoření a odeslání události v C# (.NET) s vlastnostmi
+### <a name="amqp-to-kafka-part-1-create-and-send-an-event-in-c-net-with-properties"></a>AMQP do Kafka část 1: vytvořit a odeslat událost v C# (.NET) s vlastnostmi
 ```csharp
 // Create an event with properties "MyStringProperty" and "MyIntegerProperty"
 EventData working = new EventData(Encoding.UTF8.GetBytes("an event body"));
@@ -149,7 +149,7 @@ working.Properties.Add("MyIntegerProperty", 1234);
 working.Properties.Add("AMQPheaders", 0);
 ```
 
-### <a name="amqp-to-kafka-part-2-use-amqpdeserializer-to-deserialize-those-properties-in-a-kafka-consumer"></a>AMQP na Kafka část 2: použití AmqpDeserializer k deserializaci těchto vlastností v příjemci Kafka
+### <a name="amqp-to-kafka-part-2-use-amqpdeserializer-to-deserialize-those-properties-in-a-kafka-consumer"></a>AMQP na Kafka část 2: použití AmqpDeserializer rekonstruovat tyto vlastnosti v kafka spotřebitele
 ```java
 final AmqpDeserializer amqpDeser = new AmqpDeserializer();
 
@@ -179,9 +179,9 @@ if (headerNamedAMQPheaders != null) {
 }
 ```
 
-Pokud aplikace ví očekávaný typ vlastnosti, existují metody deserializace, které nevyžadují přetypování poté, ale vyvolávají chybu, pokud vlastnost není očekávaného typu.
+Pokud aplikace zná očekávaný typ vlastnosti, existují metody deserializace, které nevyžadují přetypování později, ale vyvolat chybu, pokud vlastnost není očekávaného typu.
 
-### <a name="amqp-to-kafka-part-3-a-different-way-of-using-amqpdeserializer-in-a-kafka-consumer"></a>AMQP na Kafka část 3: jiný způsob použití AmqpDeserializeru v spotřebiteli Kafka
+### <a name="amqp-to-kafka-part-3-a-different-way-of-using-amqpdeserializer-in-a-kafka-consumer"></a>AMQP na Kafka část 3: jiný způsob použití AmqpDeserializer ve spotřebitelské Kafka
 ```java
 // BEST PRACTICE: detect whether AMQP deserialization is needed
 if (headerNamedAMQPheaders != null) {
@@ -208,11 +208,11 @@ if (headerNamedAMQPheaders != null) {
 }
 ```
 
-Druhý směr se zaznamená, protože hlavičky nastavené výrobcem Kafka se vždycky zobrazují jako nezpracované bajty (typ org. Apache. qpid. Proton. AMQP. Binary pro Microsoft Azure Event Hubs klienta pro Java nebo `System.Byte[]` pro klienty Microsoft .NET AMQP Microsoftu). Nejjednodušší cesta je použít jeden ze serializátorů dodaných Kafka k vygenerování bajtů pro hodnoty hlaviček na straně producenta Kafka a pak zapsat kompatibilní kód deserializace na straně spotřebitele AMQP.
+Jít opačným směrem je více zapojeno, protože záhlaví nastavená výrobcem Kafka jsou vždy považovány spotřebitelem AMQP jako raw bajty (zadejte org.apache.qpid.proton.amqp.Binary pro klienta Microsoft Azure Event Hubs pro Javu nebo `System.Byte[]` pro klienty Microsoftu .NET AMQP). Nejjednodušší cesta je použít jeden z Kafka dodaných serializerů generovat bajty pro hodnoty záhlaví na straně výrobce Kafka a potom napsat kompatibilní kód deserializace na straně příjemce AMQP.
 
-Stejně jako u AMQP-to-Kafka je osvědčeným postupem, který doporučujeme zahrnout vlastnost do zpráv odesílaných prostřednictvím Kafka. Příjemce AMQP může pomocí vlastnosti určit, zda jsou hodnoty hlaviček nutné deserializovat. Hodnota vlastnosti není důležitá. Potřebuje jenom známý název, který AMQP příjemce nalezne v seznamu hlaviček a odpovídajícím způsobem upraví jeho chování. Pokud producent Kafka nelze změnit, je také možné, že aplikace pro náročné aplikace kontroluje, zda je hodnota vlastnosti binární nebo bajtový typ a pokus o deserializaci na základě typu.
+Stejně jako u AMQP-to-Kafka, doporučujeme vlastnost zahrnout vlastnost ve zprávách odeslaných prostřednictvím Kafka. Příjemce AMQP můžete použít vlastnost k určení, zda hodnoty záhlaví je třeba rekonstruovat. Hodnota vlastnosti není důležitá. Potřebuje jen známý název, který může spotřebitel AMQP najít v seznamu záhlaví a odpovídajícím způsobem upravit jeho chování. Pokud výrobce Kafka nelze změnit, je také možné pro náročné aplikace zkontrolovat, zda hodnota vlastnosti je binární nebo byte typu a pokus o rekonstrukci na základě typu.
 
-### <a name="kafka-to-amqp-part-1-create-and-send-an-event-from-kafka-with-properties"></a>Kafka na AMQP část 1: vytvoření a odeslání události z Kafka s vlastnostmi
+### <a name="kafka-to-amqp-part-1-create-and-send-an-event-from-kafka-with-properties"></a>Kafka na AMQP část 1: vytvoření a odeslání události z Kafky s vlastnostmi
 ```java
 final String topicName = /* topic name */
 final ProducerRecord<Long, String> pr = new ProducerRecord<Long, String>(topicName, /* other arguments */);
@@ -241,7 +241,7 @@ h.add("MyStringProperty", stringSer.serialize(topicName, "hello world"));
 h.add("RawHeaders", intSer.serialize(0));
 ```
 
-### <a name="kafka-to-amqp-part-2-manually-deserialize-those-properties-in-c-net"></a>Kafka na AMQP část 2: ruční deserializace těchto vlastností C# v (.NET)
+### <a name="kafka-to-amqp-part-2-manually-deserialize-those-properties-in-c-net"></a>Kafka na AMQP část 2: ručně rekonstruovat tyto vlastnosti v C# (.NET)
 ```csharp
 EventData ed = /* receive event */
 
@@ -291,7 +291,7 @@ string myStringProperty = Encoding.UTF8.GetString(rawbytes);
 }
 ```
 
-### <a name="kafka-to-amqp-part-3-manually-deserialize-those-properties-in-java"></a>Kafka na AMQP část 3: ruční deserializace těchto vlastností v jazyce Java
+### <a name="kafka-to-amqp-part-3-manually-deserialize-those-properties-in-java"></a>Kafka na AMQP část 3: ručně rekonstruovat tyto vlastnosti v Javě
 ```java
 final EventData ed = /* receive event */
 
@@ -339,10 +339,10 @@ String myStringProperty = new String(rawbytes, StandardCharsets.UTF_8);
 ```
 
 ## <a name="next-steps"></a>Další kroky
-V tomto článku jste zjistili, jak streamovat do služby Event Hubs s podporou Kafka, aniž byste museli měnit klienty protokolů nebo provozovat vlastní clustery. Další informace o Event Hubs a Event Hubs pro Kafka najdete v následujících článcích:  
+V tomto článku jste se dozvěděli, jak streamovat do centra událostí bez změny klientů protokolu nebo spuštění vlastních clusterů. Další informace o centru událostí a centru událostí pro Kafku najdete v následujících článcích:  
 
 * [Informace o službě Event Hubs](event-hubs-what-is-event-hubs.md)
 * [Informace o službě Event Hubs pro ekosystém Kafka](event-hubs-for-kafka-ecosystem-overview.md)
 * [Další ukázky v úložišti Event Hubs pro ekosystém Kafka na GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka)
-* Pomocí [nástroje MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) můžete [streamovat události z Kafka místně do Kafka povolených Event Hubs v cloudu.](event-hubs-kafka-mirror-maker-tutorial.md)
-* Naučte se streamovat do Kafka s povolenou Event Hubs pomocí [nativních aplikací Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md), [Apache Flink](event-hubs-kafka-flink-tutorial.md)nebo [Akka streamů](event-hubs-kafka-akka-streams-tutorial.md) .
+* MirrorMaker slouží k [streamování událostí z Kafky místně do centra událostí v cloudu.](event-hubs-kafka-mirror-maker-tutorial.md) [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330)
+* Naučte se streamovat do event hubů pomocí [nativních aplikací Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md), [Apache Flink](event-hubs-kafka-flink-tutorial.md)nebo [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md)

@@ -1,99 +1,98 @@
 ---
 title: Konfigurace virtuálního počítače hostovaného Microsoft Azure pro Azure Marketplace
-description: Vysvětluje, jak velikost, aktualizace a generalizace virtuálních počítačů hostovaných v Azure.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+description: Vysvětluje, jak velikost, aktualizaci a generalizaci virtuálního počítače hostovaného v Azure.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.author: pabutler
-ms.openlocfilehash: ce7fe49b07dc250a9f56ff73229e347b997f0cc0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: b0ed430098203c5c1a0d00eb7bf17da1be0000cb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824501"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278088"
 ---
-# <a name="configure-the-azure-hosted-vm"></a>Konfigurace virtuálního počítače hostovaného pro Azure
+# <a name="configure-the-azure-hosted-vm"></a>Konfigurace virtuálního počítače hostovaného v Azure
 
-Tento článek vysvětluje, jak můžete měnit, aktualizovat a zobecnit virtuální počítač hostovaný v Azure.  Tyto kroky jsou nezbytné pro přípravu virtuálního počítače k nasazení z Azure Marketplace.
+Tento článek vysvětluje, jak velikost, aktualizaci a generalizaci virtuálního počítače (VM) hostovaného v Azure.  Tyto kroky jsou nezbytné k přípravě virtuálního počítače k nasazení z Azure Marketplace.
 
 
-## <a name="sizing-the-vhds"></a>Změna velikosti virtuálních pevných disků
+## <a name="sizing-the-vhds"></a>Dimenzování virtuálních diod
 
 <!--TD: Check if the following assertion is true. I didn't understand the original content. -->
-Pokud jste vybrali jeden z virtuálních počítačů, které jsou předem nakonfigurované s operačním systémem (a volitelně i další služby), pak jste už si vybrali standardní velikost virtuálního počítače Azure, jak je popsáno na [kartě SKU virtuálních počítačů](./cpp-skus-tab.md).  Doporučený postup je spuštění řešení s předem nakonfigurovaným operačním systémem.  Pokud ale instalujete operační systém ručně, musíte ve své imagi virtuálního počítače nastavit velikost primárního virtuálního pevného disku:
+Pokud jste vybrali jeden z virtuálních počítačů předem nakonfigurovaných s operačním systémem (a volitelně další služby), pak jste už vybrali standardní velikost virtuálního počítače Azure, jak je popsáno na [kartě Virtuální počítač skuf .](./cpp-skus-tab.md)  Spuštění řešení s předkonfigurovaným osem je doporučený přístup.  Pokud však instalujete operační systém ručně, musíte velikost primárního virtuálního pevného disku v bitové kopii virtuálního počítače:
 
-- V případě systému Windows by měl být virtuální pevný disk operačního systému vytvořen jako VHD s pevným formátem 127-128 GB. 
-- Pro Linux by se měl tento virtuální pevný disk vytvořit jako VHD s pevným formátem 30-50 GB.
+- Pro Windows by měl být operační systém VHD vytvořen jako 127-128 GB pevného formátu VHD. 
+- Pro Linux by měl být tento virtuální pevný disk vytvořen jako virtuální pevný disk s kapacitou 30–50 GB.
 
-Pokud je fyzická velikost menší než 127-128 GB, měl by být virtuální pevný disk zhuštěný. Základní image Windows a SQL Server, které už tyto požadavky splňují, neměňte formát nebo velikost získaného virtuálního pevného disku. 
+Pokud je fyzická velikost menší než 127-128 GB, virtuální pevný disk by měl být řídké. Základní bitové kopie systému Windows a SERVERU SQL Server již splňují tyto požadavky, proto neměňte formát ani velikost získaného virtuálního pevného disku. 
 
-Datové disky můžou být velké až 1 TB. Při rozhodování o velikosti si pamatujte, že zákazníci nemůžou v době nasazování měnit velikost virtuálních pevných disků v rámci bitové kopie. Virtuální pevné disky datového disku by se měly vytvářet jako virtuální pevné disky s pevným formátem. Měly by také být zhuštěné. Datové disky můžou být zpočátku prázdné nebo obsahovat data.
+Datové disky mohou být až 1 TB. Při rozhodování o jejich velikosti si uvědomte, že zákazníci nemohou změnit velikost virtuálních dispozičních discích v rámci bitové kopie v době nasazení. Vdisky datových disků by měly být vytvořeny jako virtuální pevné visuty. Měly by být také řídké. Datové disky mohou být zpočátku prázdné nebo mohou obsahovat data.
 
 
-## <a name="install-the-most-current-updates"></a>Nainstalovat nejaktuálnější aktualizace
+## <a name="install-the-most-current-updates"></a>Instalace nejaktuálnějších aktualizací
 
-Základní image virtuálních počítačů s operačním systémem obsahují nejnovější aktualizace až do jejich publikovaných dat. Před publikováním virtuálního pevného disku operačního systému, který jste vytvořili, se ujistěte, že aktualizujete operační systém a všechny nainstalované služby se všemi nejnovějšími opravami zabezpečení a údržby.
+Základní image virtuálních aplikací operačního systému obsahují nejnovější aktualizace až do data publikování. Před publikováním vytvořeného virtuálního pevného disku operačního systému se ujistěte, že aktualizujete operační systém a všechny nainstalované služby pomocí všech nejnovějších oprav zabezpečení a údržby.
 
-V případě systému Windows Server 2016 spusťte příkaz **Check for Updates** .  V opačném případě se v případě starších verzí Windows Podívejte [na téma Jak získat aktualizaci prostřednictvím web Windows Update](https://support.microsoft.com/help/3067639/how-to-get-an-update-through-windows-update).  Windows Update nainstaluje automaticky nejnovější kritické a důležité aktualizace zabezpečení.
+V systému Windows Server 2016 spusťte příkaz **Vyhledat aktualizace.**  V opačném případě u starších verzí systému Windows naleznete v tématu [Jak získat aktualizaci prostřednictvím služby Windows Update](https://support.microsoft.com/help/3067639/how-to-get-an-update-through-windows-update).  Služba Windows Update automaticky nainstaluje nejnovější důležité a důležité aktualizace zabezpečení.
 
-U distribucí pro Linux se aktualizace běžně stahují a instalují prostřednictvím nástroje příkazového řádku nebo grafického nástroje.  Například Ubuntu Linux poskytuje příkaz [apt-get](https://manpages.ubuntu.com/manpages/cosmic/man8/apt-get.8.html) a nástroj [správce aktualizací](https://manpages.ubuntu.com/manpages/cosmic/man8/update-manager.8.html) pro aktualizaci operačního systému.
+Pro linuxové distribuce jsou aktualizace běžně stahovány a instalovány prostřednictvím nástroje příkazového řádku nebo grafického nástroje.  Například Ubuntu Linux poskytuje příkaz [apt-get](https://manpages.ubuntu.com/manpages/cosmic/man8/apt-get.8.html) a nástroj [Správce aktualizací](https://manpages.ubuntu.com/manpages/cosmic/man8/update-manager.8.html) pro aktualizaci operačního systému.
 
 
 ## <a name="perform-additional-security-checks"></a>Provedení dalších kontrol zabezpečení
 
-Měli byste udržovat vysokou úroveň zabezpečení pro obrázky vašeho řešení v Azure Marketplace.  Následující článek poskytuje kontrolní seznam konfigurací a postupů zabezpečení, které vám pomůžou v tomto cíli: [doporučení zabezpečení pro Azure Marketplace image](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images).  Některá z těchto doporučení jsou specifická pro image založené na systému Linux, ale většina se vztahují na všechny image virtuálních počítačů. 
+Měli byste udržovat vysokou úroveň zabezpečení pro image řešení na Azure Marketplace.  Následující článek obsahuje kontrolní seznam konfigurací zabezpečení a postupů, které vám pomohou v tomto účelu: [Doporučení zabezpečení pro image Azure Marketplace](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images).  Některá z těchto doporučení jsou specifická pro bitové kopie založené na Linuxu, ale většina se vztahuje na libovolnou image virtuálního počítače. 
 
 
-## <a name="perform-custom-configuration-and-scheduled-tasks"></a>Provádění vlastních konfigurací a naplánovaných úloh
+## <a name="perform-custom-configuration-and-scheduled-tasks"></a>Provádění vlastní konfigurace a naplánovaných úloh
 
-Pokud je potřeba další konfigurace, doporučuje se použít naplánovanou úlohu, která se spustí při spuštění, aby se všechny závěrečné změny virtuálního počítače daly provést po jeho nasazení.  Vezměte v úvahu také následující doporučení:
-- Pokud se jedná o úlohu spuštění jednou, doporučuje se, aby se úloha po úspěšném dokončení odstranila.
-- Konfigurace by se neměla spoléhat na jiné jednotky než C nebo D, protože existují jenom tyto dvě jednotky, které jsou vždycky zaručené. Jednotka C je disk s operačním systémem a jednotka D je dočasný místní disk.
+Pokud je potřeba další konfigurace, doporučeným přístupem je použití naplánované úlohy, která se spustí při spuštění, k provádění konečných změn virtuálního počítače po jeho nasazení.  Zvažte také následující doporučení:
+- Pokud se jedná o úlohu run-once, doporučujeme, aby se úloha po úspěšném dokončení odstranila sama.
+- Konfigurace by neměly spoléhat na jiné jednotky než C nebo D, protože pouze tyto dvě jednotky, které jsou vždy zaručeno, že existují. Jednotka C je disk operačního systému a jednotka D je dočasný místní disk.
 
-Další informace o úpravách pro Linux najdete v tématu [rozšíření a funkce virtuálních počítačů pro Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/features-linux).
+Další informace o přizpůsobení Linuxu najdete v [tématu Rozšíření virtuálních strojů a funkce pro Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/features-linux).
 
 
-## <a name="generalize-the-image"></a>Zobecnění image
+## <a name="generalize-the-image"></a>Zobecnění obrázku
 
-Všechny obrázky v Azure Marketplace musí být obecně znovu použitelné. Pro dosažení této opětovné použitelnosti musí být virtuální pevný disk operačního systému *zobecněný*, operace, která odebere všechny identifikátory a ovladače softwaru z virtuálního počítače.
+Všechny image na Azure Marketplace musí být opakovaně použitelné obecným způsobem. K dosažení této opakované použitelnosti musí být operační systém VHD *zobecněn*, což je operace, která odebere všechny identifikátory specifické pro instance a softwarové ovladače z virtuálního počítače.
 
 ### <a name="windows"></a>Windows
 
-Disky s operačním systémem Windows jsou zobecněny pomocí [nástroje Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview). Pokud následně aktualizujete nebo znovu nakonfigurujete operační systém, musíte znovu spustit nástroj Sysprep. 
+Disky operačního systému Windows jsou zobecněny [pomocí nástroje sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview). Pokud následně aktualizujete nebo překonfigurujete operační systém, je nutné znovu spustit sysprep. 
 
 > [!WARNING]
->  Vzhledem k tomu, že aktualizace mohou být spouštěny automaticky, po spuštění nástroje Sysprep byste měli virtuální počítač vypnout, dokud nebude nasazen.  Toto vypnutí zabrání následným aktualizacím v provádění změn specifických pro konkrétní instance v operačním systému VHD nebo nainstalovaných službách.
+>  Vzhledem k tomu, že aktualizace může běžet automaticky, po spuštění sysprep, měli byste vypnout virtuální ho, dokud se nasadí.  Tímto vypnutím zabráníte tomu, aby následné aktualizace nedělaly změny v systému VHD nebo nainstalované služby specifické pro instance.
 
-Další informace o spuštění nástroje Sysprep najdete v tématu [postup generalizace VHD](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep) .
+Další informace o spuštění sysprepu naleznete v [tématu Kroky k generalizaci virtuálního pevného disku](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep)
 
 ### <a name="linux"></a>Linux
 
-Následující dvoustupňový proces generalizuje virtuální počítač Linux a znovu ho nasadí jako samostatný virtuální počítač. Tyto dva kroky jsou pouze základními kroky procesu. Další informace o těchto dvou krocích a o tom, proč je potřeba provést, najdete v tématu [Postup vytvoření image virtuálního počítače nebo virtuálního pevného disku](../../../virtual-machines/linux/capture-image.md). Pro účely vytvoření virtuálního pevného disku pro nabídku Azure Marketplace můžete zastavit po dosažení části Vytvoření virtuálního počítače ze zaznamenané bitové kopie.
+Následující dvoustupňový proces zobecní virtuální počítač s Linuxem a znovu jej nasadí jako samostatný virtuální počítač. Tyto dva kroky jsou jen základy procesu. Další informace o těchto dvou krocích a důvodech, proč je nutné provést, naleznete v [tématu Vytvoření bitové kopie virtuálního počítače nebo virtuálního počítače](../../../virtual-machines/linux/capture-image.md). Pro účely vytvoření virtuálního pevného disku pro vaši nabídku Azure Marketplace můžete zastavit, když se dostanete do části "Vytvoření virtuálního počítače ze zachycené image".
 
-#### <a name="remove-the-azure-linux-agent"></a>Odebrat agenta Azure Linux
-1.  Připojte se k VIRTUÁLNÍmu počítači se systémem Linux pomocí klienta SSH.
+#### <a name="remove-the-azure-linux-agent"></a>Odebrání agenta Azure Linuxu
+1.  Připojte se k virtuálnímu počítači s Linuxem pomocí klienta SSH.
 2.  V okně SSH zadejte následující příkaz: <br/>
     `sudo waagent -deprovision+user`
-3.  Pokračujte zadáním `y`. (Můžete přidat parametr `-force` k předchozímu příkazu, abyste se vyhnuli tomuto kroku potvrzení.)
-4.  Po dokončení příkazu zadejte `exit` k uzavření klienta SSH.
+3.  Chcete-li pokračovat, zadejte. `y` (Parametr můžete `-force` přidat k předchozímu příkazu, vyhněte se tomuto kroku potvrzení.)
+4.  Po dokončení příkazu `exit` zadejte zavření klienta SSH.
 
 <!-- TD: I need to add meat and/or references to the following steps -->
-#### <a name="capture-the-image"></a>Zachytit bitovou kopii
-1.  Přejít na Azure Portal, vyberte svou skupinu prostředků (RG) a zrušte přidělení virtuálního počítače.
-2.  Virtuální pevný disk je teď zobecněný a můžete vytvořit nový virtuální počítač pomocí tohoto virtuálního pevného disku.
+#### <a name="capture-the-image"></a>Zachycení obrazu
+1.  Přejděte na portál Azure, vyberte skupinu prostředků (RG) a zrušte přidělení virtuálního počítače.
+2.  Váš virtuální pevný disk je nyní generalizovaný a pomocí tohoto virtuálního počítače můžete vytvořit nový virtuální počítač.
 
 
-## <a name="create-one-or-more-copies"></a>Vytvořit jednu nebo více kopií
+## <a name="create-one-or-more-copies"></a>Vytvoření jedné nebo více kopií
 
-Vytváření kopií virtuálních počítačů je často užitečné pro zálohování, testování, přizpůsobení převzetí služeb při selhání nebo vyrovnávání zatížení, které nabízí různé konfigurace řešení a tak dále. Informace o tom, jak duplikovat a stáhnout primární VHD, najdete v tématu:
+Vytváření kopií virtuálního počítače je často užitečné pro zálohování, testování, přizpůsobené převzetí služeb při selhání nebo vyrovnávání zatížení, nabízet různé konfigurace řešení a tak dále. Informace o tom, jak duplikovat a stáhnout primární virtuální pevný disk, chcete-li vytvořit nespravovaný klon, naleznete v tématu:
 
-- Virtuální počítač se systémem Linux: [stažení virtuálního pevného disku se systémem Linux z Azure](../../../virtual-machines/linux/download-vhd.md)
-- Virtuální počítač s Windows: [stažení virtuálního pevného disku s Windows z Azure](../../../virtual-machines/windows/download-vhd.md)
+- Virtuální počítač s [Linuxem: Stažení virtuálního pevného disku Linuxu z Azure](../../../virtual-machines/linux/download-vhd.md)
+- Virtuální počítač s Windows: [Stažení virtuálního pevného disku s Windows z Azure](../../../virtual-machines/windows/download-vhd.md)
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Po zobecnění se virtuální počítač oddělí a vytvořili jste image virtuálního počítače, jste připraveni [nasadit virtuální počítač z virtuálního pevného disku](./cpp-deploy-vm-vhd.md).
+Po zobecnění virtuálního počítače, byla odebrána a jste vytvořili bitovou kopii virtuálního počítače, jste připraveni [nasadit virtuální počítač z virtuálního pevného disku](./cpp-deploy-vm-vhd.md).

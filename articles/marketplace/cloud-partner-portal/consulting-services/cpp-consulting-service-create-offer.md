@@ -1,39 +1,38 @@
 ---
-title: Vytvoření konzultační nabídky | Azure Marketplace
-description: V portál partnerů cloudu pro Azure Marketplace vytvořte nabídku konzultační služby Azure nebo Dynamics 365.
-services: Azure, Marketplace, Cloud Partner Portal,
+title: Vytvořit konzultační nabídku | Azure Marketplace
+description: Vytvořte nabídku konzultační ch služeb Azure nebo Dynamics 365 na portálu cloudových partnerů pro Azure Marketplace.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: pabutler
-ms.openlocfilehash: 0cea0810300db1448540f58aa25b5f3197080d0e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: c2700339a7ac8342da0250227cff898c20e60118
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818160"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278548"
 ---
 # <a name="create-a-consulting-offer"></a>Vytvoření konzultační nabídky
 
-Tento článek popisuje, jak vytvořit a publikovat konzultační nabídku služby.
+Tento článek popisuje, jak vytvořit a publikovat nabídku konzultační služby.
 
-## <a name="define-your-offer"></a>Definice nabídky
+## <a name="define-your-offer"></a>Definujte svou nabídku
 
-Definujte zabalené poskytování konzultačních služeb. Zaměřte se na pevný rozsah, pevnou dobu trvání, odhadovanou pevnou cenu (nebo bezplatnou) a primárně pro jednoho zákazníka na předprodejně orientované nabídky. Vyberte opakovaně zabalená nabízená zapojení, která jsou oblíbená a účinná při současném řízení nových obchodních aplikací.
+Definujte svou nabídku zabalených poradenských služeb. Zaměřte se na pevný rozsah, pevnou dobu trvání, odhadovanou pevnou cenu (nebo bezplatnou) a především nabídky zaměřené na předprodej pro jednoho zákazníka. Vyberte opakovatelné balené závazky, které jsou oblíbené a efektivní při řízení nových obchodů pro vás.
 
 ## <a name="create-a-new-offer"></a>Vytvoření nové nabídky
 
-Pokud chcete vytvořit novou nabídku, postupujte podle těchto kroků.
-1. V hlavní nabídce portál partnerů cloudu vyberte možnost **Nová nabídka**.
-1. V nabídce **Nová nabídka** vyberte **konzultační služba**.
+Chcete-li vytvořit novou nabídku, postupujte takto.
+1. V hlavní nabídce portálu partnerů cloudu vyberte **Nová nabídka**.
+1. V nabídce **Nová nabídka** vyberte Možnost **Konzultační služba**.
 
-    ![Vytvořit novou nabídku konzultační služby](media/cppselectnewconsultingoffer.png)
+    ![Vytvoření nové nabídky konzultačních služeb](media/cppselectnewconsultingoffer.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-**Nová stránka nabídky** pro typ nabídky konzultační služby poskytuje sadu karet a polí formuláře, která slouží k vytvoření nové nabídky. Následující články vysvětlují, jak pomocí karty definovat nastavení nabídky a prezentace podrobnosti o vaší nové nabídce:
+Stránka **Nová nabídka** pro typ nabídky konzultační služby obsahuje sadu karet a polí formulářů, které používáte k vytvoření nové nabídky. Následující články vysvětlují, jak pomocí karty definovat nastavení nabídky a podrobnosti o výloze pro novou nabídku:
 
 -   [Definovat nastavení nabídky](./cpp-consulting-service-define-offer-settings.md)
--   [Zadejte prezentace podrobnosti a určete, jestli se má publikovat v Azure Marketplace nebo na AppSource.](./cpp-consulting-service-storefront-details.md)
+-   [Zadejte podrobnosti o výloze a jestli se má publikovat na Azure Marketplace nebo na AppSource.](./cpp-consulting-service-storefront-details.md)

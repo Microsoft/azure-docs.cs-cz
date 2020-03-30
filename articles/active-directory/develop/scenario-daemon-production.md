@@ -1,6 +1,6 @@
 ---
-title: Přesunutí aplikace démona, která volá webová rozhraní API do produkčního prostředí – Microsoft Identity Platform | Azure
-description: Přečtěte si, jak přesunout aplikaci démona, která volá webová rozhraní API do produkčního prostředí.
+title: Přesunutí aplikace pro daemon, která volá webová rozhraní API do produkčního prostředí – platforma identit Microsoftu | Azure
+description: Přečtěte si, jak přesunout aplikaci pro daemon, která volá webová API do produkčního prostředí.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,56 +16,56 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: db5f52c95daf4e93c140b4c93f39dad19971319d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79262617"
 ---
-# <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Aplikace démona, která volá webová rozhraní API – přesun do produkčního prostředí
+# <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Daemon aplikace, která volá webOVÁ API - přejít na produkční
 
-Když teď víte, jak získat a použít token pro volání služby Service-to-Service, Naučte se, jak aplikaci přesunout do produkčního prostředí.
+Teď, když víte, jak získat a použít token pro volání služby služby, přečtěte si, jak přesunout aplikaci do produkčního prostředí.
 
-## <a name="deployment---multitenant-daemon-apps"></a>Nasazení – víceklientské aplikace démona
+## <a name="deployment---multitenant-daemon-apps"></a>Nasazení – víceklientské aplikace pro daemony
 
-Pokud jste nezávislý výrobce softwaru, který vytváří aplikaci démona, která může běžet v několika klientech, musíte se ujistit, že správce klienta:
+Pokud jste isv vytvoření daemon aplikace, která může běžet v několika tenantů, musíte se ujistit, že správce klienta:
 
 - Zřídí instanční objekt pro aplikaci.
-- Udělí souhlas aplikaci.
+- Uděluje souhlas s žádostí.
 
-Budete muset vysvětlit zákazníkům, jak tyto operace provést. Další informace najdete v tématu [vyžádání souhlasu pro celého tenanta](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
+Budete muset vysvětlit svým zákazníkům, jak provádět tyto operace. Další informace najdete [v tématu Požadování souhlasu pro celého klienta](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-Tady je několik odkazů, které vám pomohou získat další informace:
+Zde je několik odkazů, které vám pomohou dozvědět se více:
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-- Rychlý Start: [získání tokenu a volání Microsoft Graph API z konzolové aplikace pomocí identity aplikace](./quickstart-v2-netcore-daemon.md)
+- Úvodní příručka: [Získejte token a zavolejte rozhraní Microsoft Graph API z konzolové aplikace pomocí identity aplikace](./quickstart-v2-netcore-daemon.md).
 - Referenční dokumentace pro:
-  - [ConfidentialClientApplication](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder)se vytváření instancí.
-  - Volání [AcquireTokenForClient](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenforclientparameterbuilder).
-- Další ukázky/kurzy:
-  - [Microsoft-Identity-Platform-Console-démon](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon) nabízí jednoduchou konzolovou aplikaci .NET Core daemon, která zobrazuje uživatele Microsoft Graph dotazování tenanta.
+  - Vytvoření instance [aplikace ConfidentialClientApplication](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder).
+  - Volání [acquiretokenforclient](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenforclientparameterbuilder).
+- Další ukázky/výukové programy:
+  - [Microsoft-identity-platform-console-daemon](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon) obsahuje jednoduchou konzolovou aplikaci .NET Core, která zobrazuje uživatele klienta dotazujícího se na microsoft graph.
 
-    ![Ukázková topologie aplikace démona](media/scenario-daemon-app/daemon-app-sample.svg)
+    ![Ukázka topologie aplikace daemon](media/scenario-daemon-app/daemon-app-sample.svg)
 
-    Stejná ukázka také znázorňuje variaci s certifikáty:
+    Stejný vzorek také ilustruje variantu s certifikáty:
 
-    ![Ukázka topologie aplikace démona – certifikáty](media/scenario-daemon-app/daemon-app-sample-with-certificate.svg)
+    ![Ukázková topologie aplikací daemon - certifikáty](media/scenario-daemon-app/daemon-app-sample-with-certificate.svg)
 
-  - [Microsoft-Identity-Platform-ASPNET-WebApp-daemon](https://github.com/Azure-Samples/microsoft-identity-platform-aspnet-webapp-daemon) obsahuje webovou aplikaci ASP.NET MVC, která synchronizuje data z Microsoft Graph pomocí identity aplikace, nikoli jménem uživatele. Tato ukázka také znázorňuje proces souhlasu správce.
+  - [Microsoft-identity-platform-aspnet-webapp-daemon](https://github.com/Azure-Samples/microsoft-identity-platform-aspnet-webapp-daemon) obsahuje ASP.NET webové aplikace MVC, která synchronizuje data z microsoft graphu pomocí identity aplikace namísto jménem uživatele. Tato ukázka také ilustruje proces souhlasu správce.
 
     ![topologie](media/scenario-daemon-app/damon-app-sample-web.svg)
 
 # <a name="python"></a>[Python](#tab/python)
 
-Vyzkoušejte si rychlý Start, [Získejte token a zavolejte Microsoft Graph API z konzolové aplikace Pythonu pomocí identity aplikace](./quickstart-v2-python-daemon.md).
+Zkuste rychlý start [Získat token a volat rozhraní Microsoft Graph API z konzolové aplikace Pythonu pomocí identity aplikace](./quickstart-v2-python-daemon.md).
 
 # <a name="java"></a>[Java](#tab/java)
 
-MSAL Java je aktuálně ve verzi Public Preview. Další informace najdete v tématu [MSAL Java dev Samples](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples).
+MSAL Java je v současné době ve verzi Public Preview. Další informace naleznete v [tématu MSAL Java dev samples](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples).
 
 ---

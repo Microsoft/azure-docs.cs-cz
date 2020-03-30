@@ -1,65 +1,59 @@
 ---
 title: zahrnout soubor
-description: zahrnutí souboru textu do smlouvy Microsoft Commercial Marketplace Standard
-services: commercial marketplace
+description: zahrnout soubor textu pro standardní smlouvu microsoft commercial marketplace
 documentationcenter: partner-center-commercial-marketplace
-author: ChJenk
-manager: evansma
-editor: ''
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.devlang: na
 ms.topic: include
-ms.tgt_pltfrm: na
-ms.workload: identity
 ms.date: 01/22/2020
-ms.author: v-chjen
+ms.author: dsindona
 ms.custom: include file
-ms.openlocfilehash: 76603ef30cefa14018a7c6b976eb8541b9b608f4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 9b99876b66826cc5a66cba686a7d6a5243b47b98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76760881"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277218"
 ---
-Microsoft poskytuje standardní šablonu smlouvy pro komerční web Marketplace.
+Společnost Microsoft poskytuje standardní šablonu smlouvy pro komerční tržiště.
 
-- **Pro komerční tržiště Microsoftu použijte standardní smlouvu?**
+- **Použít standardní smlouvu pro komerční trh společnosti Microsoft?**
 
-Pro zjednodušení procesu nákupu pro zákazníky a omezení právní složitosti pro dodavatele softwaru nabízí společnost Microsoft standardní smlouvu pro komerční tržiště Microsoftu, která usnadňuje transakce na webu Marketplace. Místo toho, aby si mohli vlastní podmínky a ujednání, můžou si komerční vydavatelé na webu Marketplace vybrat svůj software v rámci standardní smlouvy, kteří zákazníci potřebují Vet a přijmout jenom jednou. Standardní kontrakt najdete tady: https://go.microsoft.com/fwlink/?linkid=2041178.
+Aby se zjednodušil proces zásobování zákazníků a snížila se právní složitost pro dodavatele softwaru, nabízí společnost Microsoft standardní smlouvu pro komerční tržiště společnosti Microsoft, která usnadňuje transakce na trhu. Namísto vytváření vlastních smluvních podmínek se vydavatelé komerčního trhu mohou rozhodnout nabízet svůj software podle standardní smlouvy, kterou zákazníci potřebují pouze jednou projet a přijmout. Standardní smlouvu naleznete zde: https://go.microsoft.com/fwlink/?linkid=2041178.
 
-Výběrem možnosti použít standardní smlouvu pro komerční web Marketplace můžete vybrat, že se má používat standardní smlouva místo poskytování vlastních podmínek a ujednání.
+Můžete vybrat, zda chcete použít standardní smlouvu namísto poskytnutí vlastních smluvních podmínek zaškrtnutím políčka Použít standardní smlouvu pro komerční tržiště.
 
-![Pomocí zaškrtávacího políčka standardní smlouva](./media/use-standard-contract.png)
+![Použití zaškrtávacího políčka Standardní smlouva](./media/use-standard-contract.png)
 
 > [!NOTE]
-> Po publikování nabídky pomocí standardní smlouvy pro komerční tržiště společnosti Microsoft nemůžete používat vlastní podmínky a ujednání. Jedná se o scénář "nebo". Vaše řešení si buď nabídnete v rámci standardní smlouvy, **nebo** podle vašich vlastních podmínek. Pokud chcete upravit podmínek standardní smlouvy, můžete to udělat prostřednictvím standardních změn smlouvy.
+> Jakmile nabídku publikujete pomocí smlouvy Standard pro komerční tržiště společnosti Microsoft, nebudete moci používat vlastní smluvní podmínky. Je to "nebo" scénář. Buď nabízíte své řešení podle standardní **smlouvy, nebo** vlastních podmínek. Chcete-li změnit podmínky standardní smlouvy, můžete tak učinit prostřednictvím standardních změn smlouvy.
 
-**Změny smlouvy Standard**
+**Standardní změny smlouvy**
 
-Změny smlouvy Standard umožňují vydavatelům vybrat standardní smluvní smlouvy pro jednoduchost a přizpůsobit si pro svůj produkt nebo firmu obory podmínek. Zákazníci si musí jenom projít změny smlouvy, pokud už zkontrolovali a přijali standardní kontrakt společnosti Microsoft.
+Standardní změny smlouvy umožňují vydavatelům vybrat standardní smluvní podmínky pro jednoduchost a přizpůsobit podmínky pro svůj produkt nebo firmu. Zákazníci potřebují zkontrolovat změny smlouvy pouze v případě, že již přezkoumali a přijali standardní smlouvu společnosti Microsoft.
 
-K dispozici jsou dva druhy změn pro komerční vydavatele na webu Marketplace:
+Existují dva druhy změn k dispozici pro komerční trh vydavatelů:
 
-- Univerzální změny: tyto změny se aplikují všeobecně na standardní smlouvu pro všechny zákazníky. Univerzální změny se zobrazují každému zákazníkovi nabídky v toku nákupu. Zákazníci musí přijmout podmínky standardní smlouvy a dodatku, aby mohli používat vaši nabídku.
-- Vlastní změny: tyto změny představují zvláštní změny standardní smlouvy, které jsou zaměřené na konkrétní zákazníky jenom prostřednictvím ID tenanta Azure. Vydavatelé můžou zvolit tenanta, na který chtějí cílit. S vlastními podmínkami změny v nákupním toku nabídky se zobrazí pouze zákazníci z tenanta.  Zákazníci musí přijmout podmínky smlouvy Standard a jejich změny, aby mohli používat vaši nabídku.
+- Univerzální změny: Tyto změny jsou uplatňovány univerzálně na standardní smlouvu pro všechny zákazníky. Univerzální změny jsou zobrazeny každému zákazníkovi nabídky v nákupním toku. Zákazníci musí před použitím vaší nabídky přijmout podmínky standardní smlouvy a dodatku.
+- Vlastní změny: Tyto změny jsou speciální změny standardní smlouvy, které jsou určeny pro konkrétní zákazníky pouze prostřednictvím ID klienta Azure. Vydavatelé si můžou vybrat klienta, na kterého chtějí cílit. Pouze zákazníci z nájemce budou prezentovány s vlastní změny podmínky v nabídce nákupní tok.  Zákazníci musí před použitím vaší nabídky přijmout podmínky standardní smlouvy a dodatků.
 
 >[!NOTE]
-> Tyto dva typy změn zásobníků jsou navzájem navzájem. Zákazníci, na které cílíte vlastní změny, získají při nákupu také univerzální změnu standardní smlouvy.
+> Tyto dva typy změn zásobníku na sebe. Zákazníci, na které se zaměňují s vlastními změnami, dostanou také univerzální změnu standardní smlouvy během nákupu.
 
-**Univerzální pozměňovací výrazy ke standardní smlouvě pro komerční tržiště Microsoftu**: do tohoto pole zadejte univerzální výrazy pro změnu. Pro každou nabídku můžete zadat jednu univerzální změnu. Do tohoto pole můžete zadat neomezený počet znaků. Tyto výrazy se zobrazí zákazníkům v AppSource, Azure Marketplace a/nebo Azure Portal během procesu zjišťování a nákupu.
+**Podmínky univerzálního dodatku ke standardní smlouvě pro komerční tržiště společnosti Microsoft**: Do tohoto pole zadejte univerzální podmínky změny. Můžete poskytnout jeden univerzální dodatek pro každou nabídku. Do tohoto pole můžete zadat neomezený počet znaků. Tyto podmínky se zobrazí zákazníkům v AppSource, Azure Marketplace a/nebo na webu Azure Portal během toku zjišťování a nákupu.
 
-**Vlastní výrazy pro změny standardní smlouvy pro komerční tržiště Microsoftu**: Začněte tím, že vyberete **Přidat vlastní výrazy pro změnu**. Pro každou nabídku můžete zadat až 10 vlastních podmínek pro změnu.
+**Podmínky vlastních změn ke standardní smlouvě pro komerční tržiště společnosti Microsoft**: Začněte výběrem **podmínek přidání vlastních změn**. V každé nabídce můžete poskytnout až 10 vlastních podmínek změny.
 
-- **Vlastní výrazy pro změnu**: do pole vlastní výrazy pro změnu zadejte vlastní vlastní údaje. Do tohoto pole můžete zadat neomezený počet znaků. Pouze zákazníkům z ID tenanta, které zadáte pro tyto vlastní výrazy, se zobrazí vlastní výrazy změny v toku nákupu nabídky v Azure Portal.  
-- **ID klientů** (povinné): každé vlastní změně může být až 20 ID klientů. Pokud přidáte vlastní změnu, musíte zadat aspoň jedno ID tenanta. ID tenanta identifikuje zákazníka v Azure. U zákazníka můžete požádat o toto ID a získat ho tak, že přejdete na portal.azure.com > Azure Active Directory > Vlastnosti. Hodnota ID adresáře je ID tenanta (například 50c464d3-4930-494c-963c-1e951d15360e). ID tenanta organizace zákazníka můžete také vyhledat pomocí adresy URL svého názvu domény v umístění [moje Microsoft Azure a ID tenanta Office 365?](https://www.whatismytenantid.com).
-- **Popis** (volitelné): Volitelně můžete zadat popis ID tenanta, který vám pomůže identifikovat zákazníka, kterému cílíte na změnu.
+- **Podmínky vlastního dodatku**: Do pole podmínky vlastního dodatku zadejte podmínky vlastní změny. Do tohoto pole můžete zadat neomezený počet znaků. Pouze zákazníci z ID klienta, které zadáte pro tyto vlastní podmínky, budou v nákupním toku nabídky na webu Azure Portal uvedeny s podmínkami vlastnízměny.  
+- **ID klienta** (povinné): Každá vlastní změna může být zaměřena až na 20 ID klienta. Pokud přidáte vlastní změnu, musíte zadat alespoň jedno ID klienta. ID klienta identifikuje vašeho zákazníka v Azure. Můžete požádat zákazníka o toto ID a oni ho můžou najít tak, že ho najdou portal.azure.com > služby Azure Active Directory > vlastnosti. Hodnota ID adresáře je ID klienta (například 50c464d3-4930-494c-963c-1e951d15360e). ID klienta vašeho zákazníka můžete také vyhledat pomocí adresy URL názvu domény na adrese [What is my Microsoft Azure and Office 365 tenant ID?](https://www.whatismytenantid.com)
+- **Popis** (volitelné): Volitelně zadejte popis pro ID klienta, který vám pomůže identifikovat zákazníka, na kterého cílíte s dodatkem.
 
 **Podmínky a ujednání**
 
-Pokud chcete zadat vlastní podmínky a ujednání, můžete je vybrat do pole podmínky a ujednání. Do tohoto pole můžete zadat až 10 000 znaků textu. Pokud vaše podmínky a ujednání vyžadují delší popis, zadejte do tohoto pole odkaz na jednu adresu URL, kde se dají podmínky a ujednání najít. Zobrazí se zákazníkům jako aktivní odkaz.
+Chcete-li zadat vlastní smluvní podmínky, můžete se rozhodnout, že je zadáte do pole smluvních podmínek. Do tohoto pole můžete zadat až 10 000 znaků textu. Pokud vaše smluvní podmínky vyžadují delší popis, zadejte do tohoto pole odkaz na jednu adresu URL, ve kterém lze vaše smluvní podmínky najít. Zobrazí se zákazníkům jako aktivní odkaz.
 
-Zákazníci musí tyto podmínky přijmout, aby mohli svoji nabídku vyzkoušet.
+Zákazníci jsou povinni přijmout tyto podmínky, než budou moci vyzkoušet vaši nabídku.
 
-Nezapomeňte **Uložit** před přechodem k další části.
-Nezapomeňte **Uložit** před přechodem k další části.
+Nezapomeňte **uložit** před přechodem na další část.
+Nezapomeňte **uložit** před přechodem na další část.

@@ -1,18 +1,18 @@
 ---
-title: O Mobile Apps
+title: O mobilních aplikacích
 description: Zjistěte, jaké výhody App Service přináší pro vaše firemní mobilní aplikace.
 ms.assetid: 4e96cb9d-a632-4cf6-8219-0810d8ade3f9
 ms.tgt_pltfrm: mobile-multiple
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 06/25/2019
-ms.openlocfilehash: 73fdf7f09ebb5073829f9787917946e8053f8e12
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 33548f202046310b91fc79d38ac7d8fb18a8727e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461432"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79499421"
 ---
-# <a name="getting-started"> </a>O Mobile Apps v Azure App Service
+# <a name="about-mobile-apps-in-azure-app-service"></a><a name="getting-started"> </a>Informace o funkci Mobile Apps v Azure App Service
 
 Azure App Service nabízí plně spravovanou [platformu jako službu](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) pro profesionální vývojáře. Tato služba přináší bohatou sadu možností pro webové, mobilní a integrační scénáře. 
 
@@ -35,7 +35,7 @@ Pro vývoj mobilních řešení využívajících cloud jsou důležité násled
 
     Projděte si další informace o [funkcích ověřování].
 
-* **Přístup k datům:** Funkce Mobile Apps poskytuje zdroj dat OData verze 3, který skvěle funguje s mobilními zařízeními a je propojený se službou Azure SQL Database nebo místním SQL Serverem. Protože tato služba může být založena na rozhraní Entity Framework, můžete ji snadno integrovat s jinými poskytovateli dat NoSQL i SQL, včetně [Azure Table Storage], MongoDB, [Databáze Azure Cosmos] a poskytovateli rozhraní API pro SaaS, jako je Office 365 a Salesforce.com.
+* **Přístup k datům:** Funkce Mobile Apps poskytuje zdroj dat OData verze 3, který skvěle funguje s mobilními zařízeními a je propojený se službou Azure SQL Database nebo místním SQL Serverem. Protože tato služba může být založena na rozhraní Entity Framework, můžete ji snadno integrovat s jinými poskytovateli dat NoSQL i SQL, včetně [Azure Table Storage], MongoDB, [Azure Cosmos DB] a poskytovateli rozhraní API pro SaaS, jako je Office 365 a Salesforce.com.
 
 * **Offline synchronizace:** Klientské sady SDK usnadňují vytváření robustních mobilních aplikací s rychlou odezvou, které pracují s offline datovou sadou. Tuto datovou sadu můžete automaticky synchronizovat s daty back-end, včetně podpory řešení konfliktů.
 
@@ -68,20 +68,20 @@ U systémů pro mobilní zařízení v provozním prostředí jsou užitečné n
 
 * **Izolovaná a vyhrazená prostředí:** Pro zabezpečené spouštění aplikací Azure App Service je možné App Service spustit v plně izolovaném a vyhrazeném prostředí. Toto prostředí je ideální pro úlohy aplikací vyžadující velké škálování, izolaci nebo zabezpečený přístup k síti.
 
-  Projděte si další informace o [Prostředí App Service].
+  Další informace o [prostředích služby App Service].
 
 ## <a name="next-steps"></a>Další kroky
 
 Pokud chcete začít s funkcí Mobile Apps ve službě Azure App Service, dokončete [úvodní] kurz. Tento kurz popisuje základy vytváření libovolného mobilního back-endu a klienta. Zabývá se také integrací ověřování, offline synchronizací a nabízenými oznámeními. Kurz můžete absolvovat vícekrát, pokaždé pro jinou klientskou aplikaci.
 
 Pokud chcete další informace o funkci Mobile Apps, prohlédněte si naši [mapu kurzů].
-Další informace o platformě Azure App Service najdete v článku [Azure App Service].
+Další informace o platformě Služby aplikací Azure najdete v [tématu Azure App Service].
 
 <!-- URLs. -->
 [Migrate your mobile service to App Service]: app-service-mobile-migrating-from-mobile-services.md
-[úvodní]: app-service-mobile-ios-get-started.md
+[Začínáme]: app-service-mobile-ios-get-started.md
 [Azure Table storage]:../cosmos-db/table-storage-how-to-use-dotnet.md
-[Databáze Azure Cosmos]: ../cosmos-db/sql-api-get-started.md
+[Azure Cosmos DB]: ../cosmos-db/sql-api-get-started.md
 [funkcích ověřování]: ./app-service-mobile-auth.md
 [datových funkcích]: ./app-service-mobile-offline-data-sync.md
 [funkcích pro nabízená oznámení]: ../notification-hubs/notification-hubs-push-notification-overview.md
@@ -91,11 +91,11 @@ Další informace o platformě Azure App Service najdete v článku [Azure App S
 [Xamarin.iOS a Xamarin.Android]: ./app-service-mobile-dotnet-how-to-use-client-library.md
 [Xamarin.Forms]: ./app-service-mobile-xamarin-forms-get-started.md
 [Apache Cordova]: ./app-service-mobile-cordova-how-to-use-client-library.md
-[automatickém škálování]: ../app-service/manage-scale-up.md
+[automatické škálování]: ../app-service/manage-scale-up.md
 [přípravná prostředí]: ../app-service/deploy-staging-slots.md
 [hybridní připojení]: ../biztalk-services/integration-hybrid-connection-overview.md
 [virtuální sítě]: ../app-service/web-sites-integrate-with-vnet.md
 [ExpressRoute]: ../app-service/environment/app-service-app-service-environment-network-configuration-expressroute.md
-[Prostředí App Service]: ../app-service/environment/intro.md
-[mapu kurzů]: https://azure.microsoft.com/documentation/learning-paths/appservice-mobileapps/
+[Prostředí služby App Service]: ../app-service/environment/intro.md
+[mapa kurzů]: https://azure.microsoft.com/documentation/learning-paths/appservice-mobileapps/
 [Azure App Service]: ../app-service/overview.md

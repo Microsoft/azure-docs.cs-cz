@@ -1,148 +1,90 @@
 ---
-title: Indexování v rozhraní API Azure Cosmos DB pro MongoDB
-description: Nabízí přehled možností indexování s rozhraním API Azure Cosmos DB pro MongoDB.
+title: Indexování v rozhraní API Služby Azure Cosmos DB pro MongoDB
+description: Představuje přehled možností indexování s rozhraním API Azure Cosmos DB pro MongoDB.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 12/26/2018
-author: sivethe
-ms.author: sivethe
-ms.openlocfilehash: c8879884cf3d882e6a6b441244ed139072bedeeb
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.date: 03/27/2020
+author: timsander1
+ms.author: tisande
+ms.openlocfilehash: 7c75f0d6f74fe8cf1417e0dc40a5ad01615d7057
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029465"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371079"
 ---
 # <a name="indexing-using-azure-cosmos-dbs-api-for-mongodb"></a>Indexování pomocí rozhraní API Azure Cosmos DB pro MongoDB
 
-Rozhraní API Azure Cosmos DB pro MongoDB využívá automatické možnosti správy indexů Cosmos DB. Výsledkem je, že uživatelé mají přístup k výchozím zásadám indexování Cosmos DB. Takže pokud uživatel nedefinoval žádné indexy nebo žádné indexy nebyly vyřazeny, pak budou všechna pole při vložení do kolekce automaticky indexována. Pro většinu scénářů doporučujeme použít výchozí zásady indexování nastavené v účtu.
+Rozhraní API Azure Cosmos DB pro MongoDB využívá základní možnosti správy indexů Azure Cosmos DB. Tento dokument se zaměřuje na to, jak přidat indexy pomocí rozhraní API Azure Cosmos DB pro MongoDB. Můžete si také přečíst [přehled indexování v Azure Cosmos DB,](index-overview.md) který je relevantní ve všech rozhraní API.
 
-## <a name="indexing-for-version-36"></a>Indexování pro verzi 3,6
+## <a name="indexing-for-version-36"></a>Indexování pro verzi 3.6
 
-Účty obsluhující síťový protokol verze 3,6 poskytují jiné výchozí zásady indexování než zásady poskytované staršími verzemi. Ve výchozím nastavení je indexováno pouze pole _id. Aby bylo možné indexovat další pole, musí uživatel použít příkazy pro správu indexu MongoDB. Chcete-li použít řazení pro dotaz, je v současné době nutné vytvořit index pro pole použitá v operaci řazení.
+Pole `_id` je vždy automaticky indexováno a nelze vypustit. Rozhraní API Azure Cosmos DB pro MongoDB automaticky `_id` vynucuje jedinečnost pole na klíč střepu.
 
-### <a name="dropping-the-default-indexes-36"></a>Vyřazení výchozích indexů (3,6)
+Chcete-li indexovat další pole, měli byste použít příkazy pro správu indexu MongoDB. Stejně jako v MongoDB je automaticky indexováno pouze `_id` pole. Tato výchozí zásada indexování se liší od rozhraní AZURE Cosmos DB SQL API, které ve výchozím nastavení indexuje všechna pole.
 
-U účtů obsluhujících síťový protokol verze 3,6 se _id jediný výchozí index, který nelze vyřadit.
+Chcete-li použít řazení na dotaz, musí být vytvořen index pro pole použitá v operaci řazení.
 
-### <a name="creating-a-compound-index-36"></a>Vytvoření složeného indexu (3,6)
+## <a name="index-types"></a>Typy indexů
 
-U účtů využívajících přenosový protokol 3,6 jsou podporovány i složené složené indexy. Následující příkaz vytvoří složený index pro pole a a b: `db.coll.createIndex({a:1,b:1})`
+### <a name="single-field"></a>Jedno pole
 
-Složené indexy lze použít k efektivnímu řazení více polí najednou, například: `db.coll.find().sort({a:1,b:1})`
+Indexy můžete vytvořit v libovolném poli. Pořadí řazení indexu jednoho pole nezáleží. Následující příkaz vytvoří index na `name`poli :
 
-### <a name="track-the-index-progress"></a>Sledovat průběh indexu
+`db.coll.createIndex({name:1})`
 
-Verze 3,6 Azure Cosmos DB API pro účty MongoDB podporuje `currentOp()` příkaz ke sledování průběhu indexu instance databáze. Tento příkaz vrátí dokument, který obsahuje informace o probíhajících operacích instance databáze. Příkaz `currentOp` se používá ke sledování všech probíhajících operací v nativním MongoDB, zatímco v rozhraní Azure Cosmos DB API pro MongoDB tento příkaz podporuje pouze sledování operace indexu.
+Jeden dotaz bude využívat více indexů jednoho pole, pokud je k dispozici.
 
-Zde je několik příkladů, které ukazují, jak použít příkaz `currentOp` ke sledování průběhu indexu:
+### <a name="compound-indexes-36"></a>Složené indexy (3.6)
 
-• Získejte průběh indexu pro kolekci:
+Složené indexy jsou podporovány pro účty pomocí drátového protokolu 3.6. Do složeného indexu můžete zahrnout až 8 polí. Na rozdíl od MongoDB byste měli vytvořit složený index pouze v případě, že dotaz potřebuje efektivně řadit na více polí najednou. Pro dotazy s více filtry, které není nutné řadit, měli byste vytvořit více indexů jednoho pole namísto jednoho složených indexů.
 
-   ```shell
-   db.currentOp({"command.createIndexes": <collectionName>, "command.$db": <databaseName>})
-   ```
+Následující příkaz vytvoří složený index polí `name` `age`a :
 
-• Získejte průběh indexu pro všechny kolekce v databázi:
+`db.coll.createIndex({name:1,age:1})`
 
-  ```shell
-  db.currentOp({"command.$db": <databaseName>})
-  ```
+Složené indexy lze efektivně řadit na více polí najednou, například:
 
-• Získejte průběh indexu pro všechny databáze a kolekce v účtu Azure Cosmos:
+`db.coll.find().sort({name:1,age:1})`
 
-  ```shell
-  db.currentOp({"command.createIndexes": { $exists : true } })
-  ```
+Výše uvedený složený index lze také použít pro efektivní řazení dotazu s opačným pořadím řazení ve všech polích. Tady je příklad:
 
-Podrobnosti o průběhu indexu obsahují procento průběhu aktuální operace indexu. Následující příklad ukazuje formát výstupního dokumentu pro různé fáze průběhu indexu:
+`db.coll.find().sort({name:-1,age:-1})`
 
-1. Pokud operace indexu v kolekci foo a na panelu databáze s úplným dokončením indexování 60%, bude mít následující výstupní dokument. `Inprog[0].progress.total` zobrazí 100 jako dokončení cíle.
+Pořadí cest ve složeném indexu však musí přesně odpovídat dotazu. Tady je příklad dotazu, který by vyžadoval další složený index:
 
-   ```json
-   {
-        "inprog" : [
-        {
-                ………………...
-                "command" : {
-                        "createIndexes" : foo
-                        "indexes" :[ ],
-                        "$db" : bar
-                },
-                "msg" : "Index Build (background) Index Build (background): 60 %",
-                "progress" : {
-                        "done" : 60,
-                        "total" : 100
-                },
-                …………..…..
-        }
-        ],
-        "ok" : 1
-   }
-   ```
+`db.coll.find().sort({age:1,name:1})`
 
-2. Pro operaci indexu, která se právě spustila v kolekci ' foo ' a ' bar ', může výstupní dokument zobrazovat 0% průběhu až do dosažení měřitelné úrovně.
+### <a name="multikey-indexes"></a>Víceklíčké indexy
 
-   ```json
-   {
-        "inprog" : [
-        {
-                ………………...
-                "command" : {
-                        "createIndexes" : foo
-                        "indexes" :[ ],
-                        "$db" : bar
-                },
-                "msg" : "Index Build (background) Index Build (background): 0 %",
-                "progress" : {
-                        "done" : 0,
-                        "total" : 100
-                },
-                …………..…..
-        }
-        ],
-       "ok" : 1
-   }
-   ```
+Azure Cosmos DB vytvoří víceklíčové indexy pro indexování obsahu uloženého v polích. Pokud indexujete pole s hodnotou pole, Azure Cosmos DB automaticky indexuje každý prvek v poli.
 
-3. Po dokončení probíhající operace indexu se ve výstupním dokumentu zobrazí prázdné operace inoperace.
+### <a name="geospatial-indexes"></a>Geoprostorové indexy
 
-   ```json
-   {
-      "inprog" : [],
-      "ok" : 1
-   }
-   ```
+Mnoho geoprostorových operátorů bude mít prospěch z geoprostorových indexů. Rozhraní API Azure Cosmos DB pro MongoDB v současné době podporuje `2dsphere` indexy. `2d`indexy ještě nejsou podporovány.
 
-## <a name="indexing-for-version-32"></a>Indexování pro verzi 3,2
+Zde je příklad pro vytvoření geoprostorového `location` indexu v poli:
 
-### <a name="dropping-the-default-indexes-32"></a>Vyřazení výchozích indexů (3,2)
+`db.coll.createIndex({ location : "2dsphere" })`
 
-Pomocí následujícího příkazu je možné zrušit výchozí indexy pro kolekci ```coll```:
+### <a name="text-indexes"></a>Textové indexy
 
-```JavaScript
-> db.coll.dropIndexes()
-{ "_t" : "DropIndexesResponse", "ok" : 1, "nIndexesWas" : 3 }
-```
+Textové indexy nejsou aktuálně podporovány. Pro dotazy pro textové vyhledávání na řetězce, měli byste použít [Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb) integrace s Azure Cosmos DB.
 
-### <a name="creating-a-compound-index-32"></a>Vytvoření složeného indexu (3,2)
+## <a name="index-properties"></a>Vlastnosti indexu
 
-Složené indexy obsahují odkazy na více polí dokumentu. Logicky jsou ekvivalentní k vytváření více jednotlivých indexů pro jednotlivá pole. Pokud chcete využít optimalizace, které nabízejí techniky indexování ve službě Cosmos DB, doporučujeme místo jediného (nejedinečného) složeného indexu vytvářet více jednotlivých indexů.
+Následující operace jsou společné pro oba účty obsluhující drátový protokol verze 3.6 a účty obsluhující starší verze drátového protokolu. Další informace o [podporovaných indexech a indexovaných vlastnostech](mongodb-feature-support-36.md#indexes-and-index-properties).
 
-## <a name="common-indexing-operations"></a>Běžné operace indexování
-
-Následující operace jsou společné pro oba účty obsluhující protokol drátové verze 3,6 a účty obsluhující starší verze přenosových protokolů. 
-
-## <a name="creating-unique-indexes"></a>Vytváření jedinečných indexů
+### <a name="unique-indexes"></a>Jedinečné indexy
 
 [Jedinečné indexy](unique-keys.md) jsou užitečné k vynucování, aby dva nebo více dokumentů neobsahovalo v indexovaných polích stejnou hodnotu.
 
 >[!Important]
-> V současné době je možné jedinečné indexy vytvořit pouze v případě, že je kolekce prázdná (neobsahuje žádné dokumenty).
+> Jedinečné indexy lze vytvořit pouze v případě, že kolekce je prázdná (neobsahuje žádné dokumenty).
 
-Následující příkaz vytvoří jedinečný index v poli student_id:
+Následující příkaz vytvoří jedinečný index v poli "student_id":
 
 ```shell
 globaldb:PRIMARY> db.coll.createIndex( { "student_id" : 1 }, {unique:true} )
@@ -155,7 +97,7 @@ globaldb:PRIMARY> db.coll.createIndex( { "student_id" : 1 }, {unique:true} )
 }
 ```
 
-V případě horizontálně dělených kolekcí se k vytvoření jedinečného indexu vyžaduje kvůli chování MongoDB zadání klíče horizontálního dělení (oddílu). Jinými slovy, všechny jedinečné indexy u horizontálně dělené kolekce jsou složené indexy, ve kterých je jedno z polí klíčem oddílu.
+Pro rozdělení kolekce vytvoření jedinečný index vyžaduje poskytnutí klíče střepu (oddíl). Jinými slovy, všechny jedinečné indexy u horizontálně dělené kolekce jsou složené indexy, ve kterých je jedno z polí klíčem oddílu.
 
 Následující příkazy vytvoří horizontálně dělenou kolekci ```coll``` (klíč horizontálního dělení je ```university```) s jedinečnými indexy u polí student_id a university:
 
@@ -180,7 +122,7 @@ Ve výše uvedeném příkladu se v případě vynechání klauzule ```"universi
 
 ```"cannot create unique index over {student_id : 1.0} with shard key pattern { university : 1.0 }"```
 
-## <a name="ttl-indexes"></a>Indexy TTL
+### <a name="ttl-indexes"></a>Indexy TTL
 
 Pokud chcete povolit vypršení platnosti dokumentu v konkrétní kolekci, je potřeba vytvořit [index TTL (Time to Live)](../cosmos-db/time-to-live.md). Index TTL je index u pole _ts s hodnotou expireAfterSeconds.
 
@@ -193,13 +135,123 @@ globaldb:PRIMARY> db.coll.createIndex({"_ts":1}, {expireAfterSeconds: 10})
 Předchozí příkaz způsobí odstranění všech dokumentů v kolekci ```db.coll```, které se během posledních 10 sekund neupravily.
 
 > [!NOTE]
-> Pole **_ts** je pole specifické pro službu Cosmos DB a není přístupné z klientů MongoDB. Jedná se o vyhrazenou (systémovou) vlastnost obsahující časové razítko poslední úpravy dokumentu.
+> **_ts** je pole specifické pro Azure Cosmos DB a není přístupné z klientů MongoDB. Jedná se o vyhrazenou (systémovou) vlastnost obsahující časové razítko poslední úpravy dokumentu.
+
+## <a name="track-the-index-progress"></a>Sledování průběhu indexu
+
+Verze 3.6 rozhraní API Azure Cosmos DB pro účty `currentOp()` MongoDB podporuje příkaz ke sledování průběhu indexu v instanci databáze. Tento příkaz vrátí dokument, který obsahuje informace o probíhajících operacích v instanci databáze. Příkaz `currentOp` se používá ke sledování všech probíhajících operací v nativním MongoDB, zatímco v rozhraní API Azure Cosmos DB pro MongoDB tento příkaz podporuje pouze sledování operace indexu.
+
+Zde jsou některé příklady, které `currentOp` ukazují, jak pomocí příkazu sledovat průběh indexu:
+
+* Získejte průběh indexu pro kolekci:
+
+   ```shell
+   db.currentOp({"command.createIndexes": <collectionName>, "command.$db": <databaseName>})
+   ```
+
+* Získejte průběh indexu pro všechny kolekce v databázi:
+
+  ```shell
+  db.currentOp({"command.$db": <databaseName>})
+  ```
+
+* Získejte průběh indexu pro všechny databáze a kolekce v účtu Azure Cosmos:
+
+  ```shell
+  db.currentOp({"command.createIndexes": { $exists : true } })
+  ```
+
+Podrobnosti průběhu indexu obsahují procento průběhu pro aktuální operaci indexu. Následující příklad ukazuje formát výstupního dokumentu pro různé fáze průběhu indexu:
+
+1. Pokud operace indexu na 'foo' kolekce a 'bar' databáze, která má 60 % indexování kompletní bude mít následující výstupní dokument. `Inprog[0].progress.total`jako cílové dokončení 100.
+
+   ```json
+   {
+        "inprog" : [
+        {
+                ………………...
+                "command" : {
+                        "createIndexes" : foo
+                        "indexes" :[ ],
+                        "$db" : bar
+                },
+                "msg" : "Index Build (background) Index Build (background): 60 %",
+                "progress" : {
+                        "done" : 60,
+                        "total" : 100
+                },
+                …………..…..
+        }
+        ],
+        "ok" : 1
+   }
+   ```
+
+2. Pro operaci indexu, která právě začala na 'foo' kolekce a 'pruh' databáze, výstupní dokument může zobrazit 0% pokrok, dokud nedosáhne měřitelné úrovně.
+
+   ```json
+   {
+        "inprog" : [
+        {
+                ………………...
+                "command" : {
+                        "createIndexes" : foo
+                        "indexes" :[ ],
+                        "$db" : bar
+                },
+                "msg" : "Index Build (background) Index Build (background): 0 %",
+                "progress" : {
+                        "done" : 0,
+                        "total" : 100
+                },
+                …………..…..
+        }
+        ],
+       "ok" : 1
+   }
+   ```
+
+3. Po dokončení operace indexu probíhající, výstupní dokument zobrazí prázdné inprog operace.
+
+   ```json
+   {
+      "inprog" : [],
+      "ok" : 1
+   }
+   ```
+
+### <a name="background-index-updates"></a>Aktualizace indexu na pozadí
+
+Bez ohledu na hodnotu zadanou pro vlastnost **indexu pozadí,** aktualizace indexu jsou vždy provedeny na pozadí. Aktualizace indexu spotřebovávají ru s nižší prioritou než jiné databázové operace. Změny indexu proto nebudou mít za následek žádné prostoje pro zápisy, aktualizace nebo odstranění.
+
+Při přidávání nového indexu budou dotazy okamžitě využívat. To znamená, že dotazy nemusí vrátit všechny odpovídající výsledky a provede tak bez vrácení chyb. Po dokončení transformace indexu budou konzistentní výsledky dotazu. Průběh [indexu](#track-the-index-progress)můžete sledovat .
 
 ## <a name="migrating-collections-with-indexes"></a>Migrace kolekcí s indexy
 
-V současné době je vytváření jedinečných indexů možné pouze v případě, že kolekce neobsahuje žádné dokumenty. Oblíbené nástroje pro migraci MongoDB se pokouší vytvořit jedinečné indexy po importu dat. Chcete-li tento problém obejít, doporučujeme, aby uživatelé ručně vytvořili odpovídající kolekce a jedinečné indexy místo toho, aby nástroj pro migraci (pro ```mongorestore``` tohoto chování byl dosažen pomocí příznaku `--noIndexRestore` v příkazovém řádku).
+V současné době je vytváření jedinečných indexů možné pouze v případě, že kolekce neobsahuje žádné dokumenty. Oblíbené nástroje pro migraci MongoDB se pokouší vytvořit jedinečné indexy po importu dat. Chcete-li tento problém obejít, doporučuje se, aby uživatelé ručně vytvořili odpovídající kolekce ```mongorestore``` a jedinečné indexy `--noIndexRestore` namísto povolení nástroje pro migraci (pro toto chování je dosaženo pomocí příznaku v příkazovém řádku).
+
+## <a name="indexing-for-version-32"></a>Indexování pro verzi 3.2
+
+Pro účty Azure Cosmos DB kompatibilní s verzí 3.2 drátového protokolu MongoDB se liší dostupné funkce indexování a výchozí hodnoty. Můžete [zkontrolovat verzi svého účtu](mongodb-feature-support-36.md#protocol-support). Na verzi 3.6 můžete upgradovat podáním [žádosti o podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+
+Pokud používáte verzi 3.2, tato část popisuje klíčové rozdíly s verzí 3.6.
+
+### <a name="dropping-the-default-indexes-32"></a>Uvolnění výchozí indexy (3.2)
+
+Na rozdíl od verze 3.6 rozhraní API Azure Cosmos DB pro MongoDB verze 3.2 indexuje každou vlastnost ve výchozím nastavení. Následující příkaz lze použít k přetažení těchto ```coll```výchozích indexů pro kolekci :
+
+```JavaScript
+> db.coll.dropIndexes()
+{ "_t" : "DropIndexesResponse", "ok" : 1, "nIndexesWas" : 3 }
+```
+
+Po uvolnění výchozí indexy, můžete přidat na další indexy, jak je tomu ve verzi 3.6.
+
+### <a name="compound-indexes-32"></a>Složené indexy (3.2)
+
+Složené indexy obsahují odkazy na více polí dokumentu. Chcete-li vytvořit složený index, upgradujte na verzi 3.6 podáním [žádosti o podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Indexování v Azure Cosmos DB](../cosmos-db/index-policy.md)
-* [Automatické vypršení platnosti dat v Azure Cosmos DB s časem až Live](../cosmos-db/time-to-live.md)
+* [Indexování ve službě Azure Cosmos DB](../cosmos-db/index-policy.md)
+* [Platnost dat v Azure Cosmos DB automaticky s časem žít](../cosmos-db/time-to-live.md)

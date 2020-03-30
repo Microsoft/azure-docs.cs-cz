@@ -1,5 +1,5 @@
 ---
-title: Azure MFA Server a služba Active Directory – Azure Active Directory
+title: Server Azure MFA a služba Active Directory – služba Azure Active Directory
 description: Postup integrace Azure Multi-Factor Authentication Serveru se službou Active Directory pro synchronizaci adresářů.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,28 +12,28 @@ manager: daveba
 ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b51c6284c0d7ee21f67d37465100f84d4b2f5ae2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: fceaa203944074b0c3fcf5cb6254f1e87ac16cba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848081"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480976"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Integrace adresáře mezi Azure MFA Serverem a službou Active Directory
 
 Pro integraci se službou Active Directory nebo jiným adresářem LDAP použijte část Azure MFA Serveru Integrace adresáře. Můžete nastavit atributy podle schématu adresáře a zapnout automatickou synchronizaci uživatelů.
 
 > [!IMPORTANT]
-> Od 1. července 2019 už Microsoft nenabídne MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat službu Multi-Factor Authentication od uživatelů, by měli používat cloudové Multi-Factor Authentication Azure. Stávající zákazníci, kteří mají aktivovaný MFA Server před 1. července, budou moci stáhnout nejnovější verzi, budoucí aktualizace a generovat přihlašovací údaje pro aktivaci obvyklým způsobem.
+> července 2019 již společnost Microsoft nebude nabízet server MFA pro nová nasazení. Noví zákazníci, kteří by chtěli od svých uživatelů vyžadovat vícefaktorové ověřování, by měli používat vícefaktorové ověřování Azure na základě cloudu. Stávající zákazníci, kteří aktivovali server MFA před 1.
 
 ## <a name="settings"></a>Nastavení
 
 Ve výchozím nastavení je Azure Multi-Factor Authentication (MFA) Server nakonfigurován pro import nebo synchronizaci uživatelů ze služby Active Directory.  Karta Integrace adresáře vám umožní potlačit výchozí chování a vytvořit vazbu na jiný adresář LDAP, adresář ADAM, nebo konkrétní ovladač domény služby Active Directory.  Taky umožňuje použití Ověřování pomocí protokolu LDAP na proxy serveru LDAP nebo pro Vázání protokolu LDAP jako cíl pro RADIUS, předběžné ověření pro Ověřování IIS nebo pro primární ověření pro portál User Portal.  V následující tabulce jsou popsaná jednotlivá nastavení.
 
-![Upravit konfiguraci LDAP na serveru MFA](./media/howto-mfaserver-dir-ad/dirint.png)
+![Úprava konfigurace LDAP na serveru MFA](./media/howto-mfaserver-dir-ad/dirint.png)
 
 > [!NOTE]
-> Integrace adresáře není zaručena pracovat s jinými adresáři než Active Directory Domain Services.
+> Není zaručeno, že integrace adresářů bude pracovat s jinými adresáři než se službou Active Directory Domain Services.
 
 | Funkce | Popis |
 | --- | --- |
@@ -47,7 +47,7 @@ V následující tabulce jsou popsaná nastavení konfigurace LDAP.
 
 | Funkce | Popis |
 | --- | --- |
-| Server |Zadejte název hostitele nebo IP adresu serveru, na kterém běží adresář LDAP.  Můžete taky zadat záložní server oddělený středníkem. <br>Poznámka: Když je Typ vazby nastavený na SSL, je potřeba zadat plně kvalifikovaný název hostitele. |
+| Server |Zadejte název hostitele nebo IP adresu serveru, na kterém běží adresář LDAP.  Můžete taky zadat záložní server oddělený středníkem. <br>Poznámka: Pokud je typ vazby SSL (TLS), je vyžadován plně kvalifikovaný název hostitele. |
 | Základní rozlišující název |Zadejte rozlišující název objektu základního adresáře, ze kterého začínají všechny dotazy na adresář.  Příklad: dc=abc,dc=com. |
 | Typ vazby - Dotazy |Vyberte požadovaný typ vazby pro použití při vytváření vazby pro vyhledávání v adresáři LDAP.  Používá se pro importy, synchronizaci a překlad uživatelského jména. <br><br>  Anonymní – Vytvoří se anonymní vazba.  Hodnoty Rozlišující název vázání a Heslo vázání se nepoužijí.  Toto funguje, pouze pokud adresář LDAP umožňuje anonymní vytváření vazby a oprávnění umožňují dotazování příslušných záznamů a atributů.  <br><br> Jednoduchá – Hodnoty Rozlišující název vázání a Heslo vázání se předají jako prostý text pro vazby k adresáři LDAP.  Tento typ slouží pro testovací účely k ověření, jestli se dá kontaktovat server a jestli má účet vazby odpovídající přístup. Po nainstalování příslušného certifikátu místo toho použijte protokol SSL.  <br><br> SSL – Hodnoty Rozlišující název vázání a Heslo vázání se zašifrují pomocí protokolu SSL pro vazbu k adresáři LDAP.  Nainstalujte v místním prostředí certifikát, kterému adresář LDAP důvěřuje.  <br><br> Windows – Uživatelské jméno vázání a Heslo vázání se použijí pro zabezpečené připojení k ovladači domény služby Active Directory nebo adresáři ADAM.  Pokud je pole Uživatelské jméno vázání prázdné, pro vazbu se použije účet přihlášeného uživatele. |
 | Typ vazby - Ověřování |Vyberte požadovaný typ vazby pro použití při ověřování vazby LDAP.  Podívejte se na popis typů vazby v části Typ vazby – Dotazy.  Umožňuje například použít Anonymní vázání pro dotazy a SSL vázání pro zabezpečení ověření vazby LDAP. |
@@ -74,13 +74,13 @@ Atributy můžete podle potřeby upravit pro konkrétní adresář.  To vám umo
 
 Atributy můžete zadat ručně a nemusí se shodovat s atributem v seznamu atributů.
 
-![Přizpůsobení atributů integrace adresáře na serveru MFA](./media/howto-mfaserver-dir-ad/dirint3.png)
+![Přizpůsobení atributů integrace adresářů na serveru MFA](./media/howto-mfaserver-dir-ad/dirint3.png)
 
 | Funkce | Popis |
 | --- | --- |
 | Jedinečný identifikátor |Zadejte název atributu, který slouží jako jedinečný identifikátor kontejneru, skupiny zabezpečení a záznamů uživatele.  V Active Directory je to obvykle objectGUID. V jiných implementacích LDAP se může používat entryUUID nebo něco podobného.  Výchozí hodnota je objectGUID. |
 | Typ jedinečného identifikátoru |Vyberte typ atributu jedinečného identifikátoru.  V Active Directory má atribut objectGUID typ GUID. V jiných implementacích LDAP se může používat typ Pole bajtů ASCII nebo Řetězec.  Výchozí hodnota je GUID. <br><br>Je důležité tento typ nastavit správně, protože na synchronizační položky se odkazuje pomocí jejich jedinečného identifikátoru. Typ jedinečného identifikátoru se používá pro přímé vyhledání objektu v adresáři.  Pokud se typ nastaví na Řetězec, když adresář ve skutečnosti ukládá hodnotu jako pole znaků ASCII, nebude synchronizace fungovat správně. |
-| Rozlišující název |Zadejte název atributu, který obsahuje rozlišující název pro každý záznam.  V Active Directory je to obvykle distinguishedName. V jiných implementacích LDAP se může používat entryDN nebo něco podobného.  Výchozí hodnota je distinguishedName. <br><br>Pokud atribut obsahující pouze rozlišující název neexistuje, může být použit atribut cesty reklamy.  Část cesty „LDAP://\<server\>/“ se automaticky odstraní a zůstane jen rozlišující název objektu. |
+| Rozlišující název |Zadejte název atributu, který obsahuje rozlišující název pro každý záznam.  V Active Directory je to obvykle distinguishedName. V jiných implementacích LDAP se může používat entryDN nebo něco podobného.  Výchozí hodnota je distinguishedName. <br><br>Pokud atribut obsahující pouze rozlišující název neexistuje, může být použit atribut cesty reklam.  Část cesty „LDAP://\<server\>/“ se automaticky odstraní a zůstane jen rozlišující název objektu. |
 | Název kontejneru |Zadejte název atributu, který v záznamu kontejneru obsahuje název.  Hodnota tohoto atributu se zobrazí v Hierarchii kontejneru při importu z Active Directory nebo při přidávání synchronizačních položek.  Výchozí hodnota je name. <br><br>Pokud různé kontejnery používají pro své názvy různé atributy, použijte k oddělení několika atributů názvu kontejneru středník.  Pro zobrazení názvu objektu kontejneru se použije první atribut názvu kontejneru, který se v něm najde. |
 | Název skupiny zabezpečení |Zadejte název atributu, který v záznamu skupiny zabezpečení obsahuje název.  Hodnota tohoto atributu se zobrazí v seznamu Skupiny zabezpečení při importu z Active Directory nebo při přidávání synchronizačních položek.  Výchozí hodnota je name. |
 | Uživatelské jméno |Zadejte název atributu, který v záznamu uživatele obsahuje uživatelské jméno.  Hodnota tohoto atributu se použije jako uživatelské jméno pro Multi-Factor Auth Server.  Můžete zadat i druhý, záložní atribut.  Druhý atribut se použije pouze v případě, že první atribut neobsahuje hodnotu pro uživatele.  Výchozí hodnoty jsou userPrincipalName a sAMAccountName. |
@@ -100,12 +100,12 @@ Atributy můžete zadat ručně a nemusí se shodovat s atributem v seznamu atri
 | Fax |Zadejte název atributu, který v záznamu uživatele obsahuje číslo faxu.  Výchozí hodnota je facsimileTelephoneNumber. |
 | IP telefon |Zadejte název atributu, který v záznamu uživatele obsahuje číslo IP telefonu.  Výchozí hodnota je ipPhone. |
 | Vlastní |Zadejte název atributu, který v záznamu uživatele obsahuje vlastní číslo telefonu.  Výchozí hodnota je prázdná. |
-| Přípona |Zadejte název atributu, který v záznamu uživatele obsahuje linku telefonního čísla.  Hodnota pole Linka se použije jako linka jen pro primární telefonní číslo.  Výchozí hodnota je prázdná. <br><br>Pokud atribut Linka není zadaný, můžete linky zadat v rámci atributu telefon. V takovém případě před linku zadejte znak „x“, aby se mohla správně parsovat.  Například hodnota 555-123-4567 x890 by znamenala telefonní číslo 555-123-4567 a linku 890. |
+| Linka |Zadejte název atributu, který v záznamu uživatele obsahuje linku telefonního čísla.  Hodnota pole Linka se použije jako linka jen pro primární telefonní číslo.  Výchozí hodnota je prázdná. <br><br>Pokud atribut Linka není zadaný, můžete linky zadat v rámci atributu telefon. V takovém případě před linku zadejte znak „x“, aby se mohla správně parsovat.  Například hodnota 555-123-4567 x890 by znamenala telefonní číslo 555-123-4567 a linku 890. |
 | Tlačítko Obnovit výchozí |Pokud kliknete na **Obnovit výchozí**, všechny atributy se obnoví na výchozí hodnoty.  Výchozí hodnoty by měly fungovat s normální službou Active Directory nebo schématem ADAM. |
 
-Chcete-li upravit atributy, klikněte na tlačítko **Upravit** na kartě atributy.  Tím se zobrazí okno, kde můžete atributy upravit. Výběrem **...** vedle libovolného atributu otevřete okno, kde můžete zvolit, jaké atributy se mají zobrazit.
+Pokud chcete upravit atributy, klikněte na kartě Atributy na **Upravit.**  Tím se vyvolá okno, ve kterém můžete atributy upravovat. Výběrem **...** vedle libovolného atributu otevřete okno, kde můžete zvolit, jaké atributy se mají zobrazit.
 
-![Upravit mapování atributů adresáře na MFA serveru](./media/howto-mfaserver-dir-ad/dirint4.png)
+![Upravit mapování atributů adresáře na serveru MFA](./media/howto-mfaserver-dir-ad/dirint4.png)
 
 ## <a name="synchronization"></a>Synchronizace
 
@@ -117,7 +117,7 @@ Služba Multi-Factor Auth ADSync používá rozšíření serveru DirSync LDAP o
 
 Pokud adresář LDAP podporuje ovládací prvek DirSync a je pro něj nakonfigurován, pak bude dotazování na uživatele a skupinu zabezpečení fungovat stejně, jako to funguje se službou Active Directory.  Pokud adresář LDAP ovládací prvek DirSync nepodporuje, pak se při každém cyklu provede úplná synchronizace.
 
-![Synchronizace objektů adresáře do serveru MFA](./media/howto-mfaserver-dir-ad/dirint5.png)
+![Synchronizace objektů adresáře se serverem MFA](./media/howto-mfaserver-dir-ad/dirint5.png)
 
 Následující tabulka obsahuje další informace k jednotlivým nastavením na kartě Synchronizace.
 
@@ -143,8 +143,8 @@ Tlačítka Přesunout nahoru a Přesunout dolů umožňují správci změnit po�
 > [!TIP]
 > Po odebrání synchronizačních položek by se měla provést úplná synchronizace.  Po změně pořadí synchronizačních položek by se měla provést úplná synchronizace.  Úplnou synchronizaci můžete provést kliknutím na **Synchronizovat nyní**.
 
-## <a name="multi-factor-authentication-servers"></a>Multi-Factor Authentication servery
+## <a name="multi-factor-authentication-servers"></a>Servery s vícefaktorovým ověřováním
 
-Další Multi-Factor Authentication servery je možné nastavit tak, aby sloužily jako záložní proxy server RADIUS, proxy server LDAP nebo ověřování služby IIS. Konfigurace synchronizace se sdílí mezi všemi agenty. Služba Multi-Factor Authentication Server je však možné spustit pouze v jednom z těchto agentů. Na této kartě můžete vybrat server Multi-Factor Authentication, který se má povolit pro synchronizaci.
+Další servery s vícefaktorovým ověřováním mohou být nastaveny tak, aby sloužily jako záložní proxy server RADIUS, proxy server LDAP nebo ověřování služby IIS. Konfigurace synchronizace se sdílí mezi všemi agenty. Pouze jeden z těchto agentů však může mít spuštěnou službu serveru vícefaktorového ověřování. Tato karta umožňuje vybrat vícefaktorový ověřovací server, který by měl být povolen pro synchronizaci.
 
-![Související Multi-Factor Authentication servery](./media/howto-mfaserver-dir-ad/dirint6.png)
+![Související vícefaktorové ověřovací servery](./media/howto-mfaserver-dir-ad/dirint6.png)

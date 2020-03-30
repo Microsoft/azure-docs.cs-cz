@@ -1,6 +1,6 @@
 ---
-title: Správa entit Media Services pomocí REST | Microsoft Docs
-description: Tento článek ukazuje, jak spravovat Media Services entit pomocí REST API.
+title: Správa subjektů mediálních služeb s REST | Dokumenty společnosti Microsoft
+description: Tento článek ukazuje, jak spravovat entity mediálních služeb pomocí rozhraní REST API.
 author: juliako
 manager: femila
 editor: ''
@@ -15,37 +15,37 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: a03bc24b689df342be40536c26149a7611fc5176
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79283313"
 ---
-# <a name="managing-media-services-entities-with-rest"></a>Správa entit Media Services pomocí REST  
+# <a name="managing-media-services-entities-with-rest"></a>Správa entit Mediálních služeb pomocí REST  
 
 > [!div class="op_single_selector"]
-> * [REST](media-services-rest-manage-entities.md)
+> * [Odpočinku](media-services-rest-manage-entities.md)
 > * [.NET](media-services-dotnet-manage-entities.md)
 > 
 > 
 
-Microsoft Azure Media Services je služba založená na REST postavená na OData V3. Entity můžete přidávat, dotazovat, aktualizovat a odstraňovat, a to podobně jako u jakékoli jiné služby OData. Výjimky budou vyvolány, pokud jsou k dispozici. Další informace o OData najdete v [dokumentaci k Open Data Protocol](https://www.odata.org/documentation/).
+Microsoft Azure Media Services je služba založená na rest založené na OData v3. Entity můžete přidávat, dotazovat, aktualizovat a odstraňovat stejným způsobem jako u jakékoli jiné služby OData. Výjimky budou v příslušných případech vyvolány. Další informace o OData naleznete v [dokumentaci k protokolu Open Data Protocol](https://www.odata.org/documentation/).
 
-V tomto tématu se dozvíte, jak spravovat Azure Media Services entit pomocí REST.
+Toto téma ukazuje, jak spravovat entity Azure Media Services s REST.
 
 >[!NOTE]
-> Od 1. dubna 2017 se automaticky odstraní libovolný záznam úlohy ve vašem účtu, který je starší než 90 dní. Spolu s ním se odstraní přidružené záznamy úkolů, a to i v případě, že celkový počet záznamů je nižší než maximální kvóta. Například od 1. dubna 2017 se automaticky odstraní libovolný záznam úlohy ve vašem účtu, který je starší než 31. prosince 2016. Pokud potřebujete archivovat informace o úloze nebo úloze, můžete použít kód popsaný v tomto tématu.
+> Od 1. dubna 2017 se automaticky odstraní libovolný záznam úlohy ve vašem účtu, který je starší než 90 dní. Spolu s ním se odstraní přidružené záznamy úkolů, a to i v případě, že celkový počet záznamů je nižší než maximální kvóta. Dubna 2017 bude například automaticky odstraněn veškerý záznam úlohy ve vašem účtu starší než 31. Pokud potřebujete archivovat informace o úloze/úloze, můžete použít kód popsaný v tomto tématu.
 
 ## <a name="considerations"></a>Požadavky  
 
-Při přístupu k entitám v Media Services musíte nastavit konkrétní pole a hodnoty hlaviček v požadavcích HTTP. Další informace najdete v tématu [instalace Media Services REST APIm vývoji](media-services-rest-how-to-use.md).
+Při přístupu k entitám ve službě Media Services je nutné nastavit konkrétní pole záhlaví a hodnoty v požadavcích HTTP. Další informace naleznete [v tématu Setup for Media Services REST API Development](media-services-rest-how-to-use.md).
 
 ## <a name="connect-to-media-services"></a>Připojení ke službě Media Services
 
-Informace o tom, jak se připojit k rozhraní API AMS, najdete v tématu [přístup k rozhraní Azure Media Services API pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Informace o tom, jak se připojit k rozhraní AMS API, najdete [v tématu Přístup k rozhraní API Azure Media Services pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
-## <a name="adding-entities"></a>Přidávání entit
-Každá entita v Media Services je přidána do sady entit, jako je například Assety, prostřednictvím požadavku HTTP POST.
+## <a name="adding-entities"></a>Přidání entit
+Každá entita ve službě Media Services je přidána do sady entit, například Prostředky, prostřednictvím požadavku POST HTTP.
 
 Následující příklad ukazuje, jak vytvořit AccessPolicy.
 
@@ -63,7 +63,7 @@ Následující příklad ukazuje, jak vytvořit AccessPolicy.
     {"Name": "DownloadPolicy", "DurationInMinutes" : "300", "Permissions" : 1}
 
 ## <a name="querying-entities"></a>Dotazování entit
-Dotazování a výpis entit je jednoduché a zahrnuje pouze požadavek GET HTTP a volitelné operace OData.
+Dotazování a výpis entity je jednoduché a zahrnuje pouze požadavek GET HTTP a volitelné operace OData.
 Následující příklad načte seznam všech entit MediaProcessor.
 
     GET https://media.windows.net/API/MediaProcessors HTTP/1.1
@@ -75,7 +75,7 @@ Následující příklad načte seznam všech entit MediaProcessor.
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.windows.net
 
-Můžete také načíst konkrétní entitu nebo všechny sady entit přidružené ke konkrétní entitě, například v následujících příkladech:
+Můžete také načíst určitou entitu nebo všechny sady entit přidružené k určité entitě, například v následujících příkladech:
 
     GET https://media.windows.net/API/JobTemplates('nb:jtid:UUID:e81192f5-576f-b247-b781-70a790c20e7c') HTTP/1.1
     Content-Type: application/json;odata=verbose
@@ -95,7 +95,7 @@ Můžete také načíst konkrétní entitu nebo všechny sady entit přidružen�
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.windows.net
 
-Následující příklad vrátí pouze vlastnost State všech úloh.
+Následující příklad vrátí pouze State vlastnost všechny Jobs.
 
     GET https://media.windows.net/API/Jobs?$select=State HTTP/1.1
     Content-Type: application/json;odata=verbose
@@ -106,7 +106,7 @@ Následující příklad vrátí pouze vlastnost State všech úloh.
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.windows.net
 
-Následující příklad vrátí všechny JobTemplates s názvem "SampleTemplate".
+Následující příklad vrátí všechny jobtemplates s názvem "SampleTemplate."
 
     GET https://media.windows.net/API/JobTemplates?$filter=startswith(Name,%20'SampleTemplate') HTTP/1.1
     Content-Type: application/json;odata=verbose
@@ -118,14 +118,14 @@ Následující příklad vrátí všechny JobTemplates s názvem "SampleTemplate
     Host: media.windows.net
 
 > [!NOTE]
-> Operace $expand není podporována v Media Services a také nepodporované metody LINQ popsané v tématu požadavky LINQ (WCF Data Services).
+> Operace $expand není podporována v Media Services, stejně jako nepodporované linq metody popsané v LINQ Aspekty (WCF Data Services).
 > 
 > 
 
-## <a name="enumerating-through-large-collections-of-entities"></a>Vytváření výčtu velkých kolekcí entit
-Při dotazování entit existuje limit 1000 entit vrácených v jednom okamžiku, protože veřejné REST v2 omezuje výsledky dotazu na 1000 výsledků. Pomocí **Skip** a **Top** můžete vytvořit výčet pomocí velké kolekce entit. 
+## <a name="enumerating-through-large-collections-of-entities"></a>Výčet prostřednictvím velkých kolekcí entit
+Při dotazování entit je limit 1000 entit vrácených najednou, protože veřejné REST v2 omezuje výsledky dotazu na 1000 výsledků. Pomocí **přeskočit** a **nahoře** výčet prostřednictvím velké kolekce entit. 
 
-Následující příklad ukazuje, jak pomocí funkce **Skip** a **top** přeskočit první 2000 úlohy a získat další 1000 úlohy.  
+Následující příklad ukazuje, jak použít **přeskočit** a **nahoru** přeskočit první 2000 úloh a získat dalších 1000 úloh.  
 
     GET https://media.windows.net/api/Jobs()?$skip=2000&$top=1000 HTTP/1.1
     Content-Type: application/json;odata=verbose
@@ -137,9 +137,9 @@ Následující příklad ukazuje, jak pomocí funkce **Skip** a **top** přesko�
     Host: media.windows.net
 
 ## <a name="updating-entities"></a>Aktualizace entit
-V závislosti na typu entity a stavu, ve kterém se nachází, můžete aktualizovat vlastnosti této entity prostřednictvím oprav, vložení nebo sloučení požadavků HTTP. Další informace o těchto operacích naleznete v tématu [patch/Put/Merge](https://msdn.microsoft.com/library/dd541276.aspx).
+V závislosti na typu entity a stavu, ve které se nachází, můžete aktualizovat vlastnosti této entity prostřednictvím požadavků HTTP PATCH, PUT nebo MERGE. Další informace o těchto operacích naleznete v tématu [PATCH/PUT/MERGE](https://msdn.microsoft.com/library/dd541276.aspx).
 
-Následující příklad kódu ukazuje, jak aktualizovat vlastnost Name v entitě Assetu.
+Následující příklad kódu ukazuje, jak aktualizovat vlastnost Name na entitě Asset.
 
     MERGE https://media.windows.net/API/Assets('nb:cid:UUID:80782407-3f87-4e60-a43e-5e4454232f60') HTTP/1.1
     Content-Type: application/json;odata=verbose
@@ -154,10 +154,10 @@ Následující příklad kódu ukazuje, jak aktualizovat vlastnost Name v entit�
 
     {"Name" : "NewName" }
 
-## <a name="deleting-entities"></a>Odstraňují se entity
-Entity lze v Media Services odstranit pomocí požadavku HTTP DELETE. V závislosti na entitě může být pořadí odstranění entit důležité. Například entity, například prostředky, vyžadují, abyste zrušili (nebo odstranili) všechny Lokátory, které odkazují na daný prostředek před odstraněním Assetu.
+## <a name="deleting-entities"></a>Odstranění entit
+Entity lze odstranit ve službě Media Services pomocí požadavku DELETE HTTP. V závislosti na entitě může být důležité pořadí, ve kterém odstraníte entity. Například entity, jako je majetek, vyžadují, abyste před odstraněním majetku odvolali (nebo odstranili) všechny lokátory, které odkazují na konkrétní majetek.
 
-Následující příklad ukazuje, jak odstranit lokátor, který jste použili k nahrání souboru do úložiště objektů BLOB.
+Následující příklad ukazuje, jak odstranit Lokátor, který byl použit k nahrání souboru do úložiště objektů blob.
 
     DELETE https://media.windows.net/API/Locators('nb:lid:UUID:76dcc8e8-4230-463d-97b0-ce25c41b5c8d') HTTP/1.1
     Content-Type: application/json;odata=verbose
@@ -169,7 +169,7 @@ Následující příklad ukazuje, jak odstranit lokátor, který jste použili k
     Host: media.windows.net
     Content-Length: 0
 
-## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
+## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby

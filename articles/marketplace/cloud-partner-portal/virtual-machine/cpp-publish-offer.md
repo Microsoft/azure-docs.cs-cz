@@ -1,41 +1,40 @@
 ---
-title: Publikování nabídky virtuálního počítače v Azure Marketplace
-description: Obsahuje seznam kroků potřebných k publikování stávající nabídky virtuálního počítače na Azure Marketplace.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Publikování nabídky virtuálních strojů na Azure Marketplace
+description: Uvádí kroky potřebné k publikování existující nabídky virtuálních strojů na Azure Marketplace.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/17/2018
-ms.author: pabutler
-ms.openlocfilehash: 1b07f3f3edab47f8f75835dffd4cc3f89f17ab63
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: c35f721131b997dcfdb0f23a91a39329168b757c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824412"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277340"
 ---
 # <a name="publish-a-virtual-machine-offer"></a>Publikování nabídky virtuálního počítače
 
- Poslední krok, po definování nabídky na portálu a vytvoření přidružených technických prostředků, je odeslání nabídky k publikování. Následující diagram znázorňuje hlavní kroky v procesu publikování na "jít živě":
+ Posledním krokem po definování nabídky na portálu a vytvoření souvisejících technických prostředků je odeslání nabídky k publikování. Následující diagram znázorňuje hlavní kroky v procesu publikování "přejít do provozu":
 
-![Kroky publikování pro nabídku virtuálních počítačů](./media/publishvm_013.png)
+![Kroky publikování nabídky virtuálních strojů](./media/publishvm_013.png)
 
-Následující tabulka popisuje tyto kroky a poskytuje maximální časový odhad jejich dokončení:
+Následující tabulka popisuje tyto kroky a poskytuje maximální odhad času pro jejich dokončení:
 <!-- we need to tell them that if an offer seems stuck in a step, to know that they should file a support ticket (link to support ticket doc) -->
 
 
-|  **Krok publikování**           | **Interval**    | **Popis**                                                            |
+|  **Krok publikování**           | **Čas**    | **Popis**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
-| Ověřit požadavky         | 15 min   | Budou ověřeny informace nabídky a nastavení nabídky.                        |
-| Ověření testovacích jednotek (volitelné) | 2 hodiny | Pokud jste vybrali možnost Povolit testovací verzi, společnost Microsoft ověří konfiguraci testovacích jednotek, její nasazení a replikaci prostřednictvím vybraných oblastí. |
-| Certifikace                  | 3 dny | Nabídka se analyzuje prostřednictvím certifikačního týmu Azure. Tento krok provede kontrolu virů, malwaru, dodržování bezpečnostních předpisů a problémů se zabezpečením. Pokud je nalezen problém, je poskytnuta zpětná vazba. |
-| Zřizování                   | 4 dny   | Nabídka virtuálních počítačů se replikuje v produkčních systémech Marketplace.               |
-| Registrace pro vytváření balíčků a vedoucích | \< 1 hodina  | Technické prostředky nabídky jsou zabaleny pro zákazníky a jsou nakonfigurované a nastavené systémy pro potenciální zákazníky. |
-|  Schvalování vydavatele             |  -        | Poslední kontrola a potvrzení vydavatele před tím, než bude nabídka živá. Nabídku můžete nasadit ve vybraných předplatných (v informacích o nabídce) a ověřit, že splňuje všechny vaše požadavky.  |
-| Zřizování                   | 4 dny | Dokončená nabídka virtuálních počítačů se replikuje v produkčních systémech a oblastech Marketplace. | 
-| Živé                           | 4 dny | Nabídka virtuálních počítačů se uvolní, replikuje se do požadovaných oblastí a zpřístupní se veřejnosti. |
+| Ověřit požadavky         | 15 min   | Informace o nabídce a nastavení nabídky jsou ověřeny.                        |
+| Ověření testovací jednotky (volitelné) | 2 hodiny | Pokud jste zvolili povolení testovací jednotky, společnost Microsoft ověří konfiguraci testovací jednotky, její nasazení a replikaci prostřednictvím vybraných oblastí. |
+| Certifikace                  | 3 dny | Nabídku analyzuje certifikační tým Azure. Tento krok provede kontroly virů, malwaru, dodržování předpisů v oblasti bezpečnosti a zabezpečení. Pokud je nalezen problém, je k dispozici zpětná vazba. |
+| Zřizování                   | 4 dny   | Nabídka virtuálních počítače se replikuje v produkčních systémech marketplace.               |
+| Registrace balení a generování olova | \<1 hodina  | Technické prostředky nabídky jsou baleny pro použití zákazníkem a systémy zájemců jsou konfigurovány a nastaveny. |
+|  Odhlášení vydavatele             |  -        | Konečná recenze a potvrzení vydavatele před tím, než nabídka začne být v provozu. Nabídku můžete nasadit ve vybraných předplatných (v krocích informací o nabídce) a ověřit, zda splňuje všechny vaše požadavky.  |
+| Zřizování                   | 4 dny | Dokončená nabídka virtuálních počítače se replikuje v produkčních systémech a oblastech tržiště. | 
+| Živé                           | 4 dny | Nabídka virtuálních montovny se uvolní, replikuje do požadovaných oblastí a zpřístupní veřejnosti. |
 |  |  |
 
-Povolí až 16 dní, než se tento proces dokončí.  Po provedení těchto kroků publikování se vaše nabídka VM zobrazí v [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/). 
+Po dobu až 16 dnů, než tento proces dokončíte.  Po procházení těchto kroků publikování bude vaše nabídka virtuálních počítačích uvedená na [webu Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/). 
 

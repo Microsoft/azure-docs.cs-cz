@@ -1,199 +1,198 @@
 ---
 title: Poskytovatelé cloudových řešení | Azure Marketplace
-description: Vydavatelé teď mohou prodávat své nabídky prostřednictvím kanálu partnerů Microsoft Cloud poskytovatel řešení (CSP).
-services: Azure, Marketplace, Compute, Storage, Networking, Partner Center
-author: ChJenk
+description: Vydavatelé nyní mohou prodávat své nabídky prostřednictvím partnerského kanálu Zprostředkovatele cloudových řešení (CSP) společnosti Microsoft.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/12/2019
-ms.author: v-chjen
-ms.openlocfilehash: 546702af671cfe9506a4fc0448f40b7b8353960c
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: dsindona
+ms.openlocfilehash: 9d7cbdd5ad551ba48f08f62237d5384aa7998fb8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038660"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281659"
 ---
 # <a name="cloud-solution-providers"></a>Poskytovatelé cloudových řešení
 
-Nabídky softwaru můžou kromě veřejné dostupnosti nabídek přes [Microsoft Web prodejní místa](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)kontaktovat miliony kvalifikovaných zákazníků Microsoftu, které obsluhují partneři v programu Cloud Solution Provider (CSP).
+Softwarové nabídky mohou kromě veřejné dostupnosti nabídek prostřednictvím [webových prodejen společnosti Microsoft](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)oslovit miliony kvalifikovaných zákazníků společnosti Microsoft obsluhovaných partnery v programu Zprostředkovatel cloudových řešení (CSP).
 
-Vydavatelé konfigurují nabídky pro dostupnost v programu CSP na základě výslovného souhlasu, pro novou nabídku nebo pro stávající a umožňují partnerům prodávat vaše produkty a vytvářet řešení pro zákazníky.
+Vydavatelé konfigurují nabídky dostupnosti v programu CSP na základě výslovného na novou nabídku nebo stávající nabídku, což partnerům umožňuje prodávat vaše produkty a vytvářet přibalená řešení pro zákazníky.
 
-Vydavatelé zodpovídají za poskytování podpory opravných řešení koncovým zákazníkům a poskytování mechanismů pro partnery v programu CSP a/nebo zákazníkům, aby vás kontaktovali o podporu. Osvědčeným postupem je poskytnout partnerům v programu CSP pomocí dokumentace uživatele, školení a oznámení o stavu/výpadku, aby partneři v programu CSP mohli zpracovávat žádosti o podporu vrstvy 1 od zákazníků.  
+Vydavatelé jsou zodpovědní za poskytování podpory pro koncové zákazníky a za poskytování mechanismu pro partnery v programu CSP a/nebo zákazníky, kteří vás budou kontaktovat s žádostí o podporu. Je osvědčeným postupem poskytovat partnerům v programu CSP uživatelskou dokumentaci, školení a oznámení o stavu a výpadku služby (podle potřeby), aby partneři v programu CSP byli vybaveni pro zpracování požadavků podpory úrovně 1 od zákazníků.  
 
-Následující nabídky mají nárok na to, aby je bylo možné prodávat partneři v programu CSP:
+Následující nabídky jsou způsobilé k tomu, aby se přihlásily k prodeji partnery v programu CSP:
 
-- Nabídky SaaS (software jako služba) Transact
-- Virtual Machines (virtuální počítače)
+- Software jako služba (SaaS) transact nabízí
+- Virtuální počítače (virtuální počítače)
 - Šablony řešení
 - Spravované aplikace
 
 > [!NOTE]
-> Ve výchozím nastavení se mohou v kontejnerech a prostředích SKU pro vlastní licence (BYOL) prodávat v programu CSP.
+> Kontejnery a přineste si vlastní licenci (BYOL) Virtuální počítače jsou přihlášeni k prodeji partnery v programu CSP ve výchozím nastavení.
 
-## <a name="how-to-configure-an-offering"></a>Postup konfigurace nabídky
+## <a name="how-to-configure-an-offering"></a>Jak nakonfigurovat nabídku
 
-Nastavení výslovných přihlášení k programu CSP se konfiguruje v partnerském centru nebo v prostředí pro vytváření nabídek portál partnerů cloudu. [Přečtěte si další informace o změně prostředí pro publikování](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293).
+Nastavení přihlášení k programu CSP je nakonfigurováno v partnerském centru nebo na portálu cloudových partnerů, které nabízí prostředí pro vytváření nabídek. [Přečtěte si další informace o měnícím se prostředí vydavatele](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293).
 
-### <a name="partner-center-opt-in"></a>Výslovný souhlas partnerského centra
+### <a name="partner-center-opt-in"></a>Přihlášení do partnerského centra
 
-V partnerském centru najdete přihlašovací informace v modulu cloudu pro prodejce CSP.
+V Partnerském centru najdete možnost i v ysty přihlášení v modulu publika prodejce CSP.
 
-![Cílová skupina pro prodejce CSP](media/marketplace-publishers-guide/csp-reseller-audience.png)
+![Publikum prodejce CSP](media/marketplace-publishers-guide/csp-reseller-audience.png)
 
-V modulu pro prodej prodejců CSP máte tři možnosti, jak vybírat z těchto možností:
+V modulu publika prodejce CSP máte tři možnosti, ze kterých si můžete vybrat:
 
-- Možnost One: libovolný partner v programu CSP
-- Možnost 2: konkrétní partneři v programu CSP, který vyberete
-- Možnost tři: žádní partneři v programu CSP
+- Možnost první: Každý partner v programu CSP
+- Druhá možnost: Konkrétní partneři v programu CSP, který vyberu
+- Třetí možnost: Žádní partneři v programu CSP
 
-#### <a name="option-one-any-partner-in-the-csp-program"></a>Možnost One: libovolný partner v programu CSP
+#### <a name="option-one-any-partner-in-the-csp-program"></a>Možnost první: Každý partner v programu CSP
 
-![Libovolný partner v programu CSP](media/marketplace-publishers-guide/csp-reseller-option-one.png)
+![Každý partner v programu CSP](media/marketplace-publishers-guide/csp-reseller-option-one.png)
 
- Když vyberete tuto možnost, všichni partneři v programu CSP budou mít nárok na prodej vaší nabídky svým zákazníkům.
+ Výběrem této možnosti jsou všichni partneři v programu CSP způsobilí vaši nabídku dále prodávat svým zákazníkům.
 
-#### <a name="option-two-specific-partners-in-the-csp-program-i-select"></a>Možnost 2: konkrétní partneři v programu CSP, který vyberete
+#### <a name="option-two-specific-partners-in-the-csp-program-i-select"></a>Druhá možnost: Konkrétní partneři v programu CSP, který vyberu
 
-![Konkrétní partneři v programu CSP, který jsem vybral](media/marketplace-publishers-guide/csp-reseller-option-two.png)
+![Konkrétní partneři v programu CSP, který vyberu](media/marketplace-publishers-guide/csp-reseller-option-two.png)
 
-Výběrem této možnosti autorizujete, kteří partneři v programu CSP mají nárok na prodej vaší nabídky.
+Výběrem této možnosti autorizujete, kteří partneři v programu CSP jsou způsobilí k prodeji vaší nabídky.
 
-Pokud chcete partnerům autorizovat, klikněte na **Vybrat partneři CSP** a zobrazí se nabídka, která vám umožní Hledat podle názvu partnera nebo ID tenanta Azure Active Directory (CSP).
+Pokud chcete autorizovat partnery, klikněte na **Vybrat partnery CSP** a zobrazí se nabídka, která vám umožní vyhledávat podle názvu partnera nebo podle ID klienta CSP Azure Active Directory (AAD).
 
-![Výběr nabídky CSP](media/marketplace-publishers-guide/csp-pop-up-module.png)
+![Vybrat nabídku CSP](media/marketplace-publishers-guide/csp-pop-up-module.png)
 
-Můžete použít vyhledávací filtry, jako je například **země**, **kompetence**nebo **dovednost**.
+Můžete použít vyhledávací filtry, například **Země**, **Kompetence**nebo **Dovednost**.
 
-![Země, kompetence a filtry dovedností pro hledání partnerů](media/marketplace-publishers-guide/csp-add-resellers.png)
+![Země, kompetence a filtry dovedností pro vyhledávání partnerů](media/marketplace-publishers-guide/csp-add-resellers.png)
 
 Po výběru seznamu partnerů vyberte **Přidat**.
 
 ![Příklad seznamu autorizovaných partnerů v programu CSP](media/marketplace-publishers-guide/csp-add-resellers-details.png)
 
-Tabulka zobrazující seznam partnerů, které jste vybrali, se zobrazí na stránce skupina prodejců CSP.
+Na stránce publika prodejce CSP se zobrazí tabulka se seznamem partnerů, které jste vybrali.
 
-![Tabulka se seznamem partnerů na stránce skupiny prodejců na poskytovateli CSP](media/marketplace-publishers-guide/csp-option-two-add-reseller.png)
+![Tabulka se seznamem partnerů na stránce publika prodejce CSP](media/marketplace-publishers-guide/csp-option-two-add-reseller.png)
 
-Pokud chcete zaregistrovat změny, vyberte **Uložit koncept** .
+Chcete-li změny zaregistrovat, vyberte **Uložit pracovní verzi.**
 
-Pokud je tato nabídka Nepublikovaná, budete ji muset publikovat, abyste ji mohli zpřístupnit vybraným partnerům.
+Pokud tato nabídka není publikovaná, budete muset nabídku publikovat, aby byla dostupná vybraným partnerům.
 
 >[!NOTE]
->Pokud v dané oblasti autorizujete partnera v programu CSP, může prodávat nabídku zákazníkovi, který patří do příslušné oblasti. Další informace o tom, jak jsou v oblastech klasifikovány nabídky CSP, najdete v tématu [Cloud Solution Provider program – místní trhy a měnu](https://docs.microsoft.com/partner-center/regional-authorization-overview) .
+>Pokud autorizujete partnera v programu CSP v dané oblasti, může nabídku prodat libovolnému zákazníkovi, který patří do této konkrétní oblasti. Další informace o tom, jak jsou nabídky CSP klasifikovány v regionech, najdete v tématu [Regionální trhy a měna programu Zprostředkovatel cloudových řešení.](https://docs.microsoft.com/partner-center/regional-authorization-overview)
 
-Pokud aktualizujete seznam CSP již publikované nabídky, přidejte další partnery a vyberte **synchronizovat cílovou skupinu CSP**.
+Pokud aktualizujete seznam CSP již publikované nabídky, přidejte další partnery a vyberte **možnost Synchronizovat cílovou skupinu CSP**.
 
-Pokud máte nabídku, která už má seznam autorizovaných partnerů a chcete použít stejný seznam pro jinou nabídku, použijte **Import/export**. Přejděte na nabídku, která má seznam CSP, a vyberte **exportovat zprostředkovatele CSP**. Funkce vytvoří soubor. csv, který lze importovat do jiné nabídky.
+Pokud máte nabídku, která již obsahuje seznam autorizovaných partnerů a chcete použít stejný seznam pro jinou nabídku, použijte **možnost Import/Export**. Přejděte na nabídku, která obsahuje seznam CSP, a vyberte **možnost Exportovat csp**. Funkce vyvíjí soubor .csv, který lze importovat do jiné nabídky.
 
-#### <a name="option-three-no-partners-in-the-csp-program"></a>Možnost tři: žádní partneři v programu CSP
+#### <a name="option-three-no-partners-in-the-csp-program"></a>Třetí možnost: Žádní partneři v programu CSP
 
-![Žádní partneři v programu CSP](media/marketplace-publishers-guide/csp-reseller-option-three.png)
+![V programu CSP nejsou žádní partneři](media/marketplace-publishers-guide/csp-reseller-option-three.png)
 
-Když vyberete tuto možnost, nebudete svoji nabídku mít v programu CSP. Tento výběr můžete kdykoli změnit.
+Výběrem této možnosti se odhlásíte z programu CSP. Tento výběr můžete kdykoli změnit.
 
-### <a name="cloud-partner-portal-opt-in"></a>portál partnerů cloudu výslovný souhlas
+### <a name="cloud-partner-portal-opt-in"></a>Přihlášení k portálu cloudových partnerů
 
-V portál partnerů cloudu se výslovný souhlas nastavuje na kartě Marketplace nebo prezentace. Možnost zvolit konkrétní partnery v programu CSP je k dispozici pouze v partnerském centru.
+Na portálu partnerů cloudu je přihlášení nastaveno na kartě Marketplace nebo Storefront. Možnost vybrat si konkrétní partnery v programu CSP je k dispozici pouze v Partnerském centru.
 
-![Prostředí pro výslovný souhlas zprostředkovatele CSP v CPP](media/marketplace-publishers-guide/csp-opt-in.png)
+![Zkušenosti s opt-inem CSP v CPP](media/marketplace-publishers-guide/csp-opt-in.png)
 
-## <a name="deauthorize-partners-in-the-csp-program"></a>Zrušení autorizace partnerů v programu CSP
+## <a name="deauthorize-partners-in-the-csp-program"></a>Deautorizovat partnery v programu CSP
 
-Pokud jste partner v programu CSP povolili a Tento partner už svůj produkt znovu prodal svým zákazníkům, nebudete moct tohoto partnera zrušit.
+Pokud jste autorizovali partnera v programu CSP a tento partner již produkt znovu prodal svým zákazníkům, nebudete moci tohoto partnera deautorizovat.
 
-Pokud partner v programu CSP neprodal váš produkt svým zákazníkům a chcete poskytovatele CSP odebrat po publikování vaší nabídky, postupujte podle následujících pokynů:
+Pokud partner v programu CSP neprodal váš produkt svým zákazníkům a chcete odstranit csp po publikování nabídky, postupujte podle následujících pokynů:
 
-1. Přejít na [stránku support Request](https://aka.ms/marketplacepublishersupport). Pro vás se automaticky vyplní prvních několik rozevíracích nabídek.
-
-   > [!NOTE]
-   > Neměňte výběry předem vyplněných rozevíracích nabídek.
-
-2. V **části vybrat verzi produktu**vyberte **živá nabídka Správa**.
-3. **Vyberte kategorii, která nejlépe popisuje problém**, a zvolte kategorii, která se vztahuje na vaši nabídku.
-4. Pro **vyberte problém, který nejlépe popisuje problém**, vyberte **aktualizovat existující nabídku**.
-5. Vyberte možnost **Další** , aby se přesměrovala na **stránku podrobnosti o problému** , kde můžete zadat další podrobnosti o vašem problému.
-6. Jako název problému použijte **deautorizovat CSP** a vyplňte zbývající části požadovaných oddílů.
-
-
-
-
-## <a name="navigate-between-options"></a>Navigace mezi možnostmi
-
-V této části můžete přecházet mezi třemi možnostmi prodejců CSP.
-
-### <a name="navigate-from-option-one-any-partner-in-the-csp-program"></a>Navigace z možnosti One: všichni partneři v programu CSP
-
-Pokud je vaše nabídka momentálně **možnost 1: všichni partneři v programu CSP** a chcete přejít na kteroukoli z dalších dvou možností, vytvořte žádost pomocí následujících pokynů:
-
-1. Přejít na [stránku support Request](https://aka.ms/marketplacepublishersupport). Pro vás se automaticky vyplní prvních několik rozevíracích nabídek.
+1. Přejděte na [stránku žádosti o podporu](https://aka.ms/marketplacepublishersupport). Prvních několik rozbalovacích nabídek se automaticky vyplní za vás.
 
    > [!NOTE]
-   > Neměňte výběry předem vyplněných rozevíracích nabídek.
+   > Neměňte předem vyplněný výběr rozbalovací nabídky.
 
-2. V **části vybrat verzi produktu**vyberte **živá nabídka Správa**.
-3. **Vyberte kategorii, která nejlépe popisuje problém**, a zvolte kategorii, která se vztahuje na vaši nabídku.
-4. Pro **vyberte problém, který nejlépe popisuje problém**, vyberte **aktualizovat existující nabídku**.
-5. Vyberte možnost **Další** , aby se přesměrovala na **stránku podrobnosti o problému** , kde můžete zadat další podrobnosti o vašem problému.
-6. Jako název problému použijte **deautorizovat CSP** a vyplňte zbývající části požadovaných oddílů.
+2. V **části Vyberte verzi produktu**vyberte možnost Správa **živých nabídek**.
+3. V **části Vyberte kategorii, která tento problém nejlépe popíše**, zvolte kategorii, která odkazuje na vaši nabídku.
+4. V **části Vyberte problém, který nejlépe popisuje problém**, vyberte možnost Aktualizovat existující **nabídku**.
+5. Chcete-li zadat další podrobnosti o **problému,** vyberte **možnost Další,** chcete-li zadat další podrobnosti o problému.
+6. Jako název problému použijte **deautorizovatautorac csp** a vyplňte zbývající části požadované.
+
+
+
+
+## <a name="navigate-between-options"></a>Přechod mezi možnostmi
+
+V této části můžete procházet mezi třemi možnostmi prodejce CSP.
+
+### <a name="navigate-from-option-one-any-partner-in-the-csp-program"></a>Přechod z možnosti jedna: Libovolný partner v programu CSP
+
+Pokud je vaše nabídka aktuálně **možnost 1: Libovolný partner v programu CSP** a chcete přejít na některou z dalších dvou možností, vytvořte požadavek podle následujících pokynů:
+
+1. Přejděte na [stránku žádosti o podporu](https://aka.ms/marketplacepublishersupport). Prvních několik rozbalovacích nabídek se automaticky vyplní za vás.
+
+   > [!NOTE]
+   > Neměňte předem vyplněný výběr rozbalovací nabídky.
+
+2. V **části Vyberte verzi produktu**vyberte možnost Správa **živých nabídek**.
+3. V **části Vyberte kategorii, která tento problém nejlépe popíše**, zvolte kategorii, která odkazuje na vaši nabídku.
+4. V **části Vyberte problém, který nejlépe popisuje problém**, vyberte možnost Aktualizovat existující **nabídku**.
+5. Chcete-li zadat další podrobnosti o **problému,** vyberte **možnost Další,** chcete-li zadat další podrobnosti o problému.
+6. Jako název problému použijte **deautorizovatautorac csp** a vyplňte zbývající části požadované.
 
 > [!NOTE]
-> Pokud se snažíte přejít na možnost 2 a partner v programu CSP již nabídku svým zákazníkům znovu prodal, je tento partner ve výchozím nastavení již v seznamu autorizovaných partnerů.  
+> Pokud se pokoušíte přejít na možnost dvě a partner v programu CSP již nabídku svým zákazníkům znovu prodal, je tento partner ve výchozím nastavení již ve vašem seznamu autorizovaných partnerů.  
 
-### <a name="navigate-from-option-two-specific-partners-in-the-csp-program-i-select"></a>Navigace z možnosti 2: konkrétní partneři v programu CSP vybraný program
+### <a name="navigate-from-option-two-specific-partners-in-the-csp-program-i-select"></a>Přechod z možnosti dvě: Konkrétní partneři v programu CSP, který jsem vybral
 
-Pokud je vaše nabídka v současné době **možnost 2: konkrétní partneři v programu CSP, který jsem vybral** a chcete přejít k **Možnosti jedna: všichni partneři v programu CSP**, vytvořte žádost pomocí následujících pokynů:
+Pokud je vaše nabídka aktuálně **možnost 2: Konkrétní partneři v programu CSP,** který jsem vybral, a chcete přejít na **možnost jedna: Libovolný partner v programu CSP**, vytvořte požadavek podle následujících pokynů:
 
-1. Přejít na [stránku support Request](https://aka.ms/marketplacepublishersupport). Pro vás se automaticky vyplní prvních několik rozevíracích nabídek.
-
-   > [!NOTE]
-   > Neměňte výběry předem vyplněných rozevíracích nabídek.
-
-2. V **části vybrat verzi produktu**vyberte **živá nabídka Správa**.
-3. **Vyberte kategorii, která nejlépe popisuje problém**, a zvolte kategorii, která se vztahuje na vaši nabídku.
-4. Pro **vyberte problém, který nejlépe popisuje problém**, vyberte **aktualizovat existující nabídku**.
-5. Vyberte možnost **Další** , aby se přesměrovala na **stránku podrobnosti o problému** , kde můžete zadat další podrobnosti o vašem problému.
-6. Jako název problému použijte **deautorizovat CSP** a vyplňte zbývající části požadovaných oddílů.
-
- Pokud je vaše nabídka v současné době **možnost 2: konkrétní partneři v programu CSP** , který je vybrán a chcete přejít k **Možnosti 3: žádní partneři v programu CSP**, budete moci přejít na tuto možnost pouze v případě, že partneři v programu CSP, který jste předtím povolili, neprodali vaši nabídku koncovým zákazníkům. K vytvoření žádosti prosím použijte následující pokyny:
-
-1. Přejít na [stránku support Request](https://aka.ms/marketplacepublishersupport). Pro vás se automaticky vyplní prvních několik rozevíracích nabídek.
+1. Přejděte na [stránku žádosti o podporu](https://aka.ms/marketplacepublishersupport). Prvních několik rozbalovacích nabídek se automaticky vyplní za vás.
 
    > [!NOTE]
-   > Neměňte výběry předem vyplněných rozevíracích nabídek.
+   > Neměňte předem vyplněný výběr rozbalovací nabídky.
 
-2. V **části vybrat verzi produktu**vyberte **živá nabídka Správa**.
-3. **Vyberte kategorii, která nejlépe popisuje problém**, a zvolte kategorii, která se vztahuje na vaši nabídku.
-4. Pro **vyberte problém, který nejlépe popisuje problém**, vyberte **aktualizovat existující nabídku**.
-5. Vyberte možnost **Další** , aby se přesměrovala na **stránku podrobnosti o problému** , kde můžete zadat další podrobnosti o vašem problému.
-6. Jako název problému použijte **deautorizovat CSP** a vyplňte zbývající části požadovaných oddílů.
+2. V **části Vyberte verzi produktu**vyberte možnost Správa **živých nabídek**.
+3. V **části Vyberte kategorii, která tento problém nejlépe popíše**, zvolte kategorii, která odkazuje na vaši nabídku.
+4. V **části Vyberte problém, který nejlépe popisuje problém**, vyberte možnost Aktualizovat existující **nabídku**.
+5. Chcete-li zadat další podrobnosti o **problému,** vyberte **možnost Další,** chcete-li zadat další podrobnosti o problému.
+6. Jako název problému použijte **deautorizovatautorac csp** a vyplňte zbývající části požadované.
 
-### <a name="navigate-from-option-3-no-partners-in-the-csp-program"></a>Navigace z možnosti 3: žádní partneři v programu CSP
+ Pokud je vaše nabídka v současné době **možností 2: Konkrétní partneři v programu CSP,** který jsem vybral, a chcete přejít na **možnost 3: Žádní partneři v programu CSP**, budete moci přejít na tuto možnost pouze v případě, že partneři v programu CSP, který jste dříve autorizovali, vaši nabídku neprodají koncovým zákazníkům. K vytvoření požadavku použijte následující pokyny:
 
-Pokud je vaše nabídka v současné době **možnost 3: žádní partneři v programu CSP**, můžete kdykoli přejít na kteroukoli z dalších dvou možností.
+1. Přejděte na [stránku žádosti o podporu](https://aka.ms/marketplacepublishersupport). Prvních několik rozbalovacích nabídek se automaticky vyplní za vás.
 
-## <a name="sharing-sales-and-support-materials-with-partners-in-the-csp-program"></a>Sdílení materiálů pro prodej a podporu s partnery v programu CSP
+   > [!NOTE]
+   > Neměňte předem vyplněný výběr rozbalovací nabídky.
 
-Aby mohli partneři v programu Cloud Solution Provider efektivně představovat vaši nabídku a zapojit se do vaší organizace, musíte odeslat prodejní a podpůrné materiály, které budou k dispozici pro prodejce. Tyto prostředky nebudou zveřejněny zákazníkům v prodejní místa na webu Marketplace.
+2. V **části Vyberte verzi produktu**vyberte možnost Správa **živých nabídek**.
+3. V **části Vyberte kategorii, která tento problém nejlépe popíše**, zvolte kategorii, která odkazuje na vaši nabídku.
+4. V **části Vyberte problém, který nejlépe popisuje problém**, vyberte možnost Aktualizovat existující **nabídku**.
+5. Chcete-li zadat další podrobnosti o **problému,** vyberte **možnost Další,** chcete-li zadat další podrobnosti o problému.
+6. Jako název problému použijte **deautorizovatautorac csp** a vyplňte zbývající části požadované.
 
-### <a name="partner-center-csp-channel"></a>Kanál CSP pro partnerské Centrum
+### <a name="navigate-from-option-3-no-partners-in-the-csp-program"></a>Přechod z možnosti 3: V programu CSP nejsou žádní partneři
 
-Pokud jste se přihlásili do kanálu CSP v partnerském centru, musí vydavatelé zadat adresu URL, která hostuje relevantní marketingové materiály a kontaktní informace kanálu, do kanálu CSP v modulu seznam nabídek:
+Pokud je vaše nabídka aktuálně **možnost 3: Žádní partneři v programu CSP**, můžete kdykoli přejít na některou z dalších dvou možností.
 
-![Informace o prostředcích CSP partnerského centra](media/marketplace-publishers-guide/pc-csp-channel.png)
+## <a name="sharing-sales-and-support-materials-with-partners-in-the-csp-program"></a>Sdílení prodejních a podpůrných materiálů s partnery v programu CSP
 
-### <a name="cloud-partner-portal-csp-channel"></a>portál partnerů cloudu kanál CSP
+Chcete-li partnerům v programu Poskytovatele cloudových řešení nejefektivněji reprezentovat vaši nabídku a spolupracovat s vaší organizací, musíte odeslat prodejní a podpůrné materiály, které budou k dispozici prodejcům. Tyto prostředky nebudou vystaveny zákazníkům v obchodech tržiště.
 
-Pokud jste se rozhodli do kanálu CSP v portál partnerů cloudu, vydavatelé musí zadat adresu URL, která hostuje relevantní marketingové materiály a kontaktní informace kanálu k kanálu CSP:
+### <a name="partner-center-csp-channel"></a>Partnerský centr csp kanál
 
-![portál partnerů cloudu informace o promateriálcích CSP](media/marketplace-publishers-guide/cpp-csp-information.png)
+Pokud jste se přihlásili do kanálu CSP v Partnerském centru, musí majitelé stránek zadat adresu URL, která hostuje relevantní marketingové materiály a kontaktní informace kanálu kanálu CSP v modulu nabídky:
+
+![Informace o zajištění csp partnerského centra](media/marketplace-publishers-guide/pc-csp-channel.png)
+
+### <a name="cloud-partner-portal-csp-channel"></a>Kanál CSP portálu cloudových partnerů
+
+Pokud jste se přihlásili do kanálu CSP na portálu partnerů cloudu, vydavatelé musí zadat adresu URL, která hostuje relevantní marketingové materiály a kontaktní informace kanálu CSP:
+
+![Informace o zajištění k zajištění portálu cloudových partnerů](media/marketplace-publishers-guide/cpp-csp-information.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Navštivte [příručku pro vydavatele Azure Marketplace a AppSource](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide).
+Navštivte [Azure Marketplace a Průvodce vydavatelem AppSource](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide).
 
-Další informace o službách GTM na webu Marketplace najdete v tématu [služby pro uvedení na trh](https://partner.microsoft.com/reach-customers/gtm).
+Další informace o službách MARKETPLACE GTM najdete v [tématu Služby pro uvedení na trh](https://partner.microsoft.com/reach-customers/gtm).
 
-Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) nebo [portál partnerů cloudu](https://cloudpartner.azure.com/) a vytvořte a nakonfigurujte vaši nabídku.
+Přihlaste se k [Partnerskému centru](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) nebo [portálu cloudových partnerů](https://cloudpartner.azure.com/) a vytvořte a nakonfigurujte svou nabídku.

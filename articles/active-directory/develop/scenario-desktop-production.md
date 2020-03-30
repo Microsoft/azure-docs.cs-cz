@@ -1,6 +1,6 @@
 ---
-title: Přesun aplikace klasické pracovní plochy volání webových rozhraní API do produkčního prostředí – Microsoft Identity Platform | Azure
-description: Přečtěte si, jak přesunout desktopovou aplikaci, která volá webová rozhraní API do produkčního prostředí.
+title: Přesunutí webových rozhraní API pro volání webových rozhraní API pro stolní počítače do produkčního prostředí – platforma identit Microsoftu | Azure
+description: Přečtěte si, jak přesunout desktopovou aplikaci, která volá webová api do produkčního prostředí.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -17,35 +17,35 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: c8a9cf0c05d8af14d52bb1efb536dc8bbe7db84d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79262565"
 ---
-# <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: přesunout do produkčního prostředí
+# <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Desktopová aplikace, která volá webová API: Přechod do produkčního prostředí
 
-V tomto článku se dozvíte, jak přesunout desktopovou aplikaci, která volá webová rozhraní API do produkčního prostředí.
+V tomto článku se dozvíte, jak přesunout desktopovou aplikaci, která volá webová api do produkčního prostředí.
 
 ## <a name="handle-errors-in-desktop-applications"></a>Zpracování chyb v aplikacích klasické pracovní plochy
 
-V různých tocích jste se naučili, jak zpracovávat chyby pro tiché toky, jak je znázorněno ve fragmentech kódu. Také jste viděli, že existují případy, kdy je potřeba interakce, jako v rámci přírůstkového souhlasu a podmíněného přístupu.
+V různých tocích jste se naučili, jak zpracovat chyby pro tiché toky, jak je znázorněno v fragmenty kódu. Viděli jste také, že existují případy, kdy je nutná interakce, jako v přírůstkovém souhlasu a podmíněném přístupu.
 
-## <a name="have-the-user-consent-upfront-for-several-resources"></a>Mít souhlas uživatele před několika prostředky
+## <a name="have-the-user-consent-upfront-for-several-resources"></a>Mít souhlas uživatele předem pro několik zdrojů
 
 > [!NOTE]
-> Získání souhlasu pro několik prostředků funguje pro Microsoft Identity Platform, ale ne pro Azure Active Directory (Azure AD) B2C. Azure AD B2C podporuje jenom souhlas správce, ne pro vyjádření souhlasu s uživatelem.
+> Získání souhlasu pro několik prostředků funguje pro platformu identit Microsoftu, ale ne pro Azure Active Directory (Azure AD) B2C. Azure AD B2C podporuje pouze souhlas správce, ne souhlas uživatele.
 
-Pomocí koncového bodu Microsoft Identity Platform (v 2.0) nemůžete získat token pro několik prostředků současně. Parametr `scopes` může obsahovat obory pouze pro jeden prostředek. Pomocí parametru `extraScopesToConsent` můžete zajistit, aby se uživatel předem poslal několika prostředkům.
+Nelze získat token pro několik prostředků najednou s koncovým bodem platformy identit y Microsoft (v2.0). Parametr `scopes` může obsahovat obory pouze pro jeden prostředek. Pomocí `extraScopesToConsent` parametru můžete zajistit, aby uživatel předem souhlasil s několika prostředky.
 
-Například můžete mít dva prostředky, které mají dva obory:
+Můžete mít například dva prostředky, které mají každý dva obory:
 
-- `https://mytenant.onmicrosoft.com/customerapi` s obory `customer.read` a `customer.write`
-- `https://mytenant.onmicrosoft.com/vendorapi` s obory `vendor.read` a `vendor.write`
+- `https://mytenant.onmicrosoft.com/customerapi`s rozsahy `customer.read` a`customer.write`
+- `https://mytenant.onmicrosoft.com/vendorapi`s rozsahy `vendor.read` a`vendor.write`
 
-V tomto příkladu použijte modifikátor `.WithAdditionalPromptToConsent`, který má parametr `extraScopesToConsent`.
+V tomto příkladu `.WithAdditionalPromptToConsent` použijte modifikátor, který má `extraScopesToConsent` parametr.
 
-Příklad:
+Například:
 
 ### <a name="in-msalnet"></a>V MSAL.NET
 
@@ -100,15 +100,15 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 Toto volání vám získá přístupový token pro první webové rozhraní API.
 
-Pokud potřebujete zavolat druhé webové rozhraní API, zavolejte rozhraní `AcquireTokenSilent` API.
+Když potřebujete volat druhé webové rozhraní `AcquireTokenSilent` API, zavolejte rozhraní API.
 
 ```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();
 ```
 
-### <a name="microsoft-personal-account-requires-reconsent-each-time-the-app-runs"></a>Osobní účet Microsoft vyžaduje při každém spuštění aplikace souhlas.
+### <a name="microsoft-personal-account-requires-reconsent-each-time-the-app-runs"></a>Osobní účet Microsoft vyžaduje souhlas při každém spuštění aplikace
 
-Pro uživatele osobního účtu Microsoft se znovu zobrazí výzva k zadání souhlasu každého nativního klienta (Desktop nebo mobilní aplikace) volání metody autorizovat je zamýšlené chování. Nativní identita klienta je ze své podstaty nezabezpečená, což je v rozporu s identitou důvěrné klientské aplikace. Důvěrné klientské aplikace vyměňují tajný kód s platformou Microsoft identity, aby prokázali jejich identitu. Platforma Microsoft identity se rozhodla snížit toto zabezpečení pro zákazníky pomocí výzvy k souhlasu uživatele při každém autorizaci aplikace.
+Pro uživatele osobního účtu Microsoft je záměrné chování, které je pro uživatele osobního účtu Microsoft vyzvání k udělení souhlasu u každého nativního klienta (stolního nebo mobilního počítače) k autorizaci. Nativní identita klienta je ze své podstaty nejistá, což je v rozporu s důvěrnou identitou klientské aplikace. Důvěrné klientské aplikace si vyměňují tajný klíč s platformou Microsoft Identity, aby prokázaly svou identitu. Platforma identit společnosti Microsoft se rozhodla zmírnit tuto nejistotu pro spotřebitelské služby tím, že vyzve uživatele k udělení souhlasu při každém autorizaci aplikace.
 
 ## <a name="next-steps"></a>Další kroky
 

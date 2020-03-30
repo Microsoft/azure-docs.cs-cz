@@ -1,5 +1,5 @@
 ---
-title: Partnerský vztah Azure Virtual Network
+title: Partnerský vztah virtuální sítě Azure
 titlesuffix: Azure Virtual Network
 description: Seznamte se s partnerskými vztahy virtuálních sítí v Azure.
 services: virtual-network
@@ -13,102 +13,102 @@ ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: anavin
 ms.openlocfilehash: 5fb54e812e72b9393ffdf632085d0f32ab8b1988
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79279543"
 ---
 # <a name="virtual-network-peering"></a>Partnerské vztahy virtuálních sítí
 
-Partnerské vztahy virtuálních sítí umožňují bezproblémové připojení sítí v [Azure Virtual Network](virtual-networks-overview.md). Virtuální sítě se zobrazí jako jedna pro účely připojení. Přenos dat mezi virtuálními počítači používá páteřní infrastrukturu Microsoftu. Podobně jako provoz mezi virtuálními počítači ve stejné síti se provoz směruje jenom přes *privátní* síť Microsoftu.
+Partnerský vztah virtuální chýše umožňuje bezproblémově připojovat sítě ve [virtuální síti Azure](virtual-networks-overview.md). Virtuální sítě se zobrazí jako jeden pro účely připojení. Provoz mezi virtuálními počítači používá páteřní infrastrukturu Microsoftu. Podobně jako provoz mezi virtuálními počítači ve stejné síti je provoz směrován pouze přes *privátní* síť společnosti Microsoft.
 
-Azure podporuje následující typy partnerských vztahů:
+Azure podporuje následující typy partnerského vztahu:
 
-* Partnerský vztah virtuální sítě: Propojte virtuální sítě v rámci stejné oblasti Azure.
-* Globální partnerské vztahy virtuálních sítí: propojení virtuálních sítí napříč oblastmi Azure.
+* Partnerský vztah virtuální sítě: Připojte virtuální sítě ve stejné oblasti Azure.
+* Partnerský vztah globální virtuální sítě: Připojení virtuálních sítí napříč oblastmi Azure.
 
 Mezi výhody partnerských vztahů virtuálních sítí (místních i globálních) patří:
 
 * Nízká latence a velká šířka pásma při propojení prostředků v různých virtuálních sítích.
-* Schopnost prostředků v jedné virtuální síti komunikovat s prostředky v jiné virtuální síti.
-* Možnost přenášet data mezi virtuálními sítěmi v rámci předplatných Azure, Azure Active Directory klienty, modely nasazení a oblastmi Azure.
-* Možnost vytvoření partnerského vztahu virtuálních sítí vytvořených prostřednictvím Azure Resource Manager.
-* Možnost navázání partnerského vztahu mezi virtuálními sítěmi vytvořenými prostřednictvím Správce prostředků, která je vytvořená prostřednictvím modelu nasazení Classic. Další informace o modelech nasazení Azure najdete v článku [Vysvětlení modelů nasazení Azure](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+* Možnost prostředků v jedné virtuální síti komunikovat s prostředky v jiné virtuální síti.
+* Možnost přenosu dat mezi virtuálními sítěmi napříč předplatnými Azure, tenanty Azure Active Directory, modely nasazení a oblastmi Azure.
+* Možnost partnerských virtuálních sítí vytvořených prostřednictvím Správce prostředků Azure.
+* Možnost peer virtuální sítě vytvořené prostřednictvím Správce prostředků na jeden vytvořený prostřednictvím klasického modelu nasazení. Další informace o modelech nasazení Azure najdete v článku [Vysvětlení modelů nasazení Azure](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 * Žádný výpadek prostředků ve virtuálních sítích při vytváření partnerského vztahu ani po jeho vytvoření.
 
 Provoz mezi partnerskými virtuálními sítěmi je privátní. Provoz mezi virtuálními sítěmi probíhá na páteřní síti Microsoftu. Komunikace mezi partnerskými virtuálními sítěmi nevyžaduje veřejný internet, brány ani šifrování.
 
 ## <a name="connectivity"></a>Připojení
 
-U partnerských virtuálních sítí se prostředky v některé z virtuálních sítí můžou přímo připojit k prostředkům v partnerské virtuální síti.
+U virtuálních sítí s partnerským vztahem se prostředky v obou virtuálních sítích mohou přímo připojit k prostředkům ve virtuální síti partnerského vztahu.
 
 Latence sítě mezi virtuálními počítači v partnerských virtuálních sítích ve stejné oblasti je stejná jako latence v rámci jedné virtuální sítě. Propustnost sítě závisí na šířce pásma, která je pro daný virtuální počítač povolená na základě jeho velikosti. S partnerským vztahem zde nejsou žádná další omezení týkající se šířky pásma.
 
 Provoz mezi virtuálními počítači v partnerských virtuálních sítích je směrován přímo přes páteřní infrastrukturu Microsoftu, ne prostřednictvím brány ani přes veřejný internet.
 
-Skupiny zabezpečení sítě v obou virtuálních sítích můžete použít k blokování přístupu k ostatním virtuálním sítím nebo podsítím.
-Při konfiguraci partnerského vztahu virtuálních sítí buď otevřete nebo zavřete pravidla skupiny zabezpečení sítě mezi virtuálními sítěmi. Pokud otevřete úplné propojení mezi partnerskými virtuálními sítěmi, můžete použít skupiny zabezpečení sítě a zablokovat nebo odepřít konkrétní přístup. Výchozí možností je úplné připojení. Další informace o skupinách zabezpečení sítě najdete v tématu [skupiny zabezpečení](security-overview.md).
+Skupiny zabezpečení sítě můžete použít ve virtuální síti a blokovat tak přístup k jiným virtuálním sítím nebo podsítím.
+Při konfiguraci partnerského vztahu virtuální sítě otevřete nebo zavřete pravidla skupiny zabezpečení sítě mezi virtuálními sítěmi. Pokud otevřete úplné připojení mezi partnerskými virtuálními sítěmi, můžete použít skupiny zabezpečení sítě k zablokování nebo odepření konkrétního přístupu. Výchozí možností je úplné připojení. Další informace o skupinách zabezpečení sítě naleznete v [tématu Skupiny zabezpečení](security-overview.md).
 
 ## <a name="service-chaining"></a>Řetězení služeb
 
-Řetězení služeb umožňuje směrovat provoz z jedné virtuální sítě do virtuálního zařízení nebo brány v partnerské síti prostřednictvím uživatelsky definovaných tras.
+Řetězení služeb umožňuje směrovat provoz z jedné virtuální sítě do virtuálního zařízení nebo brány v partnerské síti prostřednictvím uživatelem definovaných tras.
 
-Pokud chcete povolit řetězení služeb, nakonfigurujte uživatelsky definované trasy, které odkazují na virtuální počítače v partnerských virtuálních sítích jako na IP adresu *dalšího segmentu směrování* . Trasy definované uživatelem můžou také odkazovat na brány virtuální sítě, aby se povolily řetězení služeb.
+Chcete-li povolit zřetězení služeb, nakonfigurujte uživatelem definované trasy, které odkazují na virtuální počítače v partnerských virtuálních sítích jako další IP adresu *směrování.* Uživatelem definované trasy mohou také přejděte na brány virtuální sítě, které umožňují řetězení služeb.
 
-Můžete nasadit sítě rozbočovače a paprsků, ve kterých virtuální síť rozbočovače hostuje součásti infrastruktury, jako je síťové virtuální zařízení nebo brána sítě VPN. Všechny uvedené virtuální sítě pak můžou vytvořit partnerský vztah s centrální virtuální sítí. Přenos toků přes síťová virtuální zařízení nebo brány sítě VPN ve virtuální síti rozbočovače.
+Můžete nasadit sítě rozbočovače a paprsku, kde virtuální síť rozbočovače hostuje součásti infrastruktury, jako je síťové virtuální zařízení nebo brána VPN. Všechny uvedené virtuální sítě pak můžou vytvořit partnerský vztah s centrální virtuální sítí. Přenosy proudí přes síťová virtuální zařízení nebo brány VPN ve virtuální síti rozbočovače.
 
-Partnerské vztahy virtuálních sítí umožňují, aby další segment směrování v uživatelsky definované trase byl IP adresou virtuálního počítače v partnerské virtuální síti nebo branou VPN. Mezi virtuálními sítěmi nelze směrovat pomocí uživatelsky definované trasy, která jako typ dalšího segmentu směrování určuje bránu Azure ExpressRoute. Další informace o uživatelsky definovaných trasách najdete v [přehledu uživatelsky definovaných tras](virtual-networks-udr-overview.md#user-defined). Informace o vytvoření hvězdicové síťové topologie najdete v tématu [Síťová topologie centra s paprsky v Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Partnerské vztahy virtuálních sítí umožňují, aby další segment směrování v uživatelsky definované trase byl IP adresou virtuálního počítače v partnerské virtuální síti nebo branou VPN. Mezi virtuálními sítěmi nelze směrovat pomocí uživatelem definované trasy, která určuje bránu Azure ExpressRoute jako další typ směrování. Další informace o uživatelsky definovaných trasách najdete v [přehledu uživatelsky definovaných tras](virtual-networks-udr-overview.md#user-defined). Informace o tom, jak vytvořit topologii sítě rozbočovače a paprsku, najdete [v tématu Topologie sítě hubových paprsků v Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="gateways-and-on-premises-connectivity"></a>Brány a místní připojení
 
-Každá virtuální síť, včetně partnerské virtuální sítě, může mít svou vlastní bránu. Virtuální síť může použít bránu pro připojení k místní síti. Můžete také nakonfigurovat [připojení virtuální sítě k virtuální síti](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) pomocí bran, a to i u partnerských virtuálních sítí.
+Každá virtuální síť, včetně partnerské virtuální sítě, může mít vlastní bránu. Virtuální síť může používat svou bránu k připojení k místní síti. [Připojení virtuálních sítí k virtuální síti](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) můžete také nakonfigurovat pomocí bran, a to i pro virtuální sítě partnerského vztahu.
 
-Při konfiguraci obou možností pro virtuální síť vzájemné propojení přenos dat mezi virtuálními sítěmi projde konfigurací partnerského vztahu. Přenos využívá páteřní síť Azure.
+Při konfiguraci obou možností propojení virtuálních sítí, provoz mezi virtuálními sítěmi toky prostřednictvím konfigurace partnerského vztahu. Provoz používá páteřní sítě Azure.
 
-Bránu můžete také nakonfigurovat ve virtuální síti s partnerským vztahem jako tranzitní bod pro místní síť. V takovém případě virtuální síť, která používá vzdálenou bránu, nemůže mít svou vlastní bránu. Virtuální síť má pouze jednu bránu. Brána je místní nebo vzdálená brána v partnerské virtuální síti, jak je znázorněno v následujícím diagramu:
+Bránu můžete také nakonfigurovat ve virtuální síti partnerského vztahu jako tranzitní bod do místní sítě. V takovém případě virtuální síť, která používá vzdálenou bránu nemůže mít vlastní bránu. Virtuální síť má pouze jednu bránu. Brána je místní nebo vzdálená brána ve virtuální síti partnerského vztahu, jak je znázorněno na následujícím diagramu:
 
 ![přenos dat při partnerských vztazích virtuálních sítí](./media/virtual-networks-peering-overview/local-or-remote-gateway-in-peered-virual-network.png)
 
-Přenos brány podporuje partnerský vztah virtuálních sítí i globální partnerské vztahy virtuálních sítí.
+Partnerský vztah virtuální sítě i globální partnerský vztah virtuální sítě podporují přenos brány podpory.
 
-Podporuje se přenos bran mezi virtuálními sítěmi vytvořenými prostřednictvím různých modelů nasazení. Brána musí být ve virtuální síti v modelu Správce prostředků. Další informace o použití brány k průchodu najdete v tématu o [konfiguraci brány VPN pro průchod v partnerském vztahu virtuální sítě](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Je podporován přenos brány mezi virtuálními sítěmi vytvořenými prostřednictvím různých modelů nasazení. Brána musí být ve virtuální síti v modelu Správce prostředků. Další informace o použití brány k průchodu najdete v tématu o [konfiguraci brány VPN pro průchod v partnerském vztahu virtuální sítě](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-Při vytváření partnerského vztahu virtuálních sítí, které sdílejí jedno připojení Azure ExpressRoute, procházejí přenosy mezi nimi prostřednictvím vztahu partnerských vztahů. Tento provoz používá páteřní síť Azure. K připojení k místnímu okruhu lze v obou sítích nadále používat místní brány. V opačném případě můžete použít sdílenou bránu a nakonfigurovat přenos pro místní připojení.
+Když se střídáte virtuální sítě, které sdílejí jedno připojení Azure ExpressRoute, provoz mezi nimi prochází partnerský vztah. Tento provoz používá páteřní síť Azure. K připojení k místnímu okruhu lze v obou sítích nadále používat místní brány. V opačném případě můžete použít sdílenou bránu a nakonfigurovat přenos pro místní připojení.
 
-## <a name="troubleshoot"></a>Řešení problémů
+## <a name="troubleshoot"></a>Řešení potíží
 
-Pokud chcete potvrdit, že jsou virtuální sítě v partnerském vztahu, můžete zkontrolovat efektivní trasy. Podívejte se na trasy pro síťové rozhraní v jakékoli podsíti ve virtuální síti. Pokud partnerský vztah virtuální sítě existuje, mají všechny podsítě virtuální sítě trasy s typem dalšího přechodu *VNet peering*, a to u každého adresního prostoru v každé partnerské virtuální síti. Další informace najdete v tématu [Diagnostika problému s směrováním virtuálního počítače](diagnose-network-routing-problem.md).
+Chcete-li ověřit, že virtuální sítě jsou peered, můžete zkontrolovat efektivní trasy. Zkontrolujte trasy pro síťové rozhraní v libovolné podsíti ve virtuální síti. Pokud partnerský vztah virtuální sítě existuje, mají všechny podsítě virtuální sítě trasy s typem dalšího přechodu *VNet peering*, a to u každého adresního prostoru v každé partnerské virtuální síti. Další informace naleznete [v tématu Diagnostika problému směrování virtuálního počítače](diagnose-network-routing-problem.md).
 
-Můžete také řešit potíže s připojením k virtuálnímu počítači v partnerské virtuální síti pomocí Azure Network Watcher. Při kontrole připojení se zobrazí informace o směrování provozu ze síťového rozhraní zdrojového virtuálního počítače do síťového rozhraní cílového virtuálního počítače. Další informace najdete v tématu [řešení potíží s připojením k Azure Network Watcher pomocí Azure Portal](../network-watcher/network-watcher-connectivity-portal.md#check-connectivity-to-a-virtual-machine).
+Můžete také řešit potíže s připojením k virtuálnímu počítači ve virtuální síti s partnerským počítačem pomocí Nástroje sledování sítě Azure. Kontrola připojení umožňuje zobrazit způsob směrování provozu ze zdrojového síťového rozhraní virtuálního počítače do síťového rozhraní cílového virtuálního počítače. Další informace najdete [v tématu Poradce při potížích s připojením pomocí Azure Network Watcher pomocí portálu Azure](../network-watcher/network-watcher-connectivity-portal.md#check-connectivity-to-a-virtual-machine).
 
-Můžete také zkusit [řešit problémy s partnerským vztahem virtuální sítě](virtual-network-troubleshoot-peering-issues.md).
+Můžete také [zkusit poradce při potížích s partnerským vztahem virtuální sítě](virtual-network-troubleshoot-peering-issues.md).
 
-## Omezení pro virtuální sítě s partnerským vztahem<a name="requirements-and-constraints"></a>
+## <a name="constraints-for-peered-virtual-networks"></a>Omezení pro partnerské virtuální sítě<a name="requirements-and-constraints"></a>
 
-Následující omezení platí pouze v případě, že jsou virtuální sítě globálně partnerského vztahu:
+Následující omezení platí pouze v případě, že virtuální sítě jsou globálně partnerský:
 
-* Prostředky v jedné virtuální síti nemůžou komunikovat s front-end IP adresou základního interního Load Balancer (interního nástroje) v globálně partnerské virtuální síti.
-* Některé služby, které používají základní nástroj pro vyrovnávání zatížení, nefungují prostřednictvím globálního partnerského vztahu virtuálních sítí. Další informace najdete v tématu [jaká omezení se týkají globálních partnerských vztahů mezi virtuálními sítěmi a vyrovnávání zatížení](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
+* Prostředky v jedné virtuální síti nemohou komunikovat s front-endovou IP adresou základního nástroje pro vyrovnávání zatížení (ILB) v globálně partnerské virtuální síti.
+* Některé služby, které používají základní nástroj pro vyrovnávání zatížení nefungují přes partnerský vztah globální virtuální sítě. Další informace najdete [v tématu Jaká jsou omezení související s globálním partnerským vztahem virtuální sítě a vykladači zatížení?](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
 
-Další informace najdete v tématu [požadavky a omezení](virtual-network-manage-peering.md#requirements-and-constraints). Další informace o podporovaném počtu partnerských vztahů najdete v tématu [omezení sítě](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Další informace naleznete v [tématu Požadavky a omezení](virtual-network-manage-peering.md#requirements-and-constraints). Další informace o podporovaném počtu partnerských stran naleznete v tématu [Omezení sítě](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
 ## <a name="permissions"></a>Oprávnění
 
-Další informace o oprávněních potřebných k vytvoření partnerského vztahu virtuálních sítí najdete v tématu [oprávnění](virtual-network-manage-peering.md#permissions).
+Informace o oprávněních potřebných k vytvoření partnerského vztahu virtuální sítě naleznete v [tématu Oprávnění](virtual-network-manage-peering.md#permissions).
 
 ## <a name="pricing"></a>Ceny
 
-U příchozího a odchozího provozu, který používá připojení partnerského vztahu virtuálních sítí, se účtuje nominální poplatek. Další informace najdete v tématu [Virtual Network ceny](https://azure.microsoft.com/pricing/details/virtual-network).
+Je nominální poplatek za příchozí a odchozí přenosy, které používá připojení partnerského vztahu virtuální sítě. Další informace naleznete v tématu [Ceny virtuální sítě](https://azure.microsoft.com/pricing/details/virtual-network).
 
-Přenos brány je vlastnost partnerského vztahu, která umožňuje virtuální síti využívat bránu VPN/ExpressRoute v partnerské virtuální síti. Přenos brány funguje jak pro připojení mezi různými místy, tak pro připojení k síti. Provoz do brány (příchozí nebo odchozí) v partnerské virtuální síti vychází z poplatků za partnerské vztahy virtuálních sítí ve virtuální síti rozbočovače (nebo virtuální sítě bez brány). Další informace najdete v tématu [ceny za VPN Gateway cen](https://azure.microsoft.com/pricing/details/vpn-gateway/) za poplatky za brány VPN a ceny ExpressRoute brány pro poplatky za ExpressRoute brány.
+Gateway Transit je vlastnost partnerského vztahu, která umožňuje virtuální síti využívat bránu VPN/ExpressRoute ve virtuální síti s partnerským vztahem. Přenos brány funguje jak pro připojení mezi místními prostory, tak pro připojení k síti do sítě. Provoz do brány (příchozí nebo odchozí) v partnerské virtuální síti účtuje poplatky za partnerský vztah virtuální sítě na virtuální síti pro paprsky (nebo virtuální sítě bez brány). Další informace najdete v [tématu ceny brány VPN](https://azure.microsoft.com/pricing/details/vpn-gateway/) pro poplatky za brány VPN a ceny brány ExpressRoute pro poplatky za bránu ExpressRoute.
 
 >[!NOTE]
-> Předchozí verze tohoto dokumentu uvedla, že poplatky za partnerský vztah virtuálních sítí se nevztahují na virtuální síť rozbočovače (nebo virtuální síť mimo bránu) s přenosem brány. Nyní odráží přesné ceny na stránce s cenami.
+> Předchozí verze tohoto dokumentu uvádí, že poplatky za partnerský vztah virtuální sítě se nevztahují na virtuální síť pro paprsky (nebo virtuální síť bez brány) s přenosem brány. Nyní odráží přesné ceny na stránce s cenami.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Můžete vytvořit partnerský vztah mezi dvěma virtuálními sítěmi. Sítě můžou patřit do stejného předplatného, různých modelů nasazení ve stejném předplatném nebo různých předplatných. Dokončete kurz pro jeden z následujících scénářů:
+* Můžete vytvořit partnerský vztah mezi dvěma virtuálními sítěmi. Sítě mohou patřit do stejného předplatného, různých modelů nasazení ve stejném předplatném nebo různých předplatných. Dokončete kurz pro jeden z následujících scénářů:
 
     |Model nasazení Azure             | Předplatné  |
     |---------                          |---------|
@@ -117,6 +117,6 @@ Přenos brány je vlastnost partnerského vztahu, která umožňuje virtuální 
     |Jedna Resource Manager, druhá Classic  |[Stejné](create-peering-different-deployment-models.md)|
     |                                   |[Různé](create-peering-different-deployment-models-subscriptions.md)|
 
-* Informace o vytvoření hvězdicové síťové topologie najdete v tématu [Síťová topologie centra s paprsky v Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
-* Další informace o nastaveních partnerského vztahu virtuálních sítí najdete v tématu [Vytvoření, změna nebo odstranění partnerského vztahu virtuální sítě](virtual-network-manage-peering.md).
-* Odpovědi na běžné otázky týkající se partnerského vztahu virtuální sítě a globálních vztahů mezi virtuálními sítěmi najdete v tématu [VNet peering](virtual-networks-faq.md#vnet-peering).
+* Informace o tom, jak vytvořit topologii sítě rozbočovače a paprsku, najdete [v tématu Topologie sítě hubových paprsků v Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
+* Informace o všech nastaveních partnerského vztahu virtuální sítě najdete v [tématu Vytvoření, změna nebo odstranění partnerského vztahu virtuální sítě](virtual-network-manage-peering.md).
+* Odpovědi na společné partnerské vztahy virtuální sítě a otázky globálního partnerského vztahu virtuální sítě najdete v [tématu Partnerský vztah virtuální sítě](virtual-networks-faq.md#vnet-peering).

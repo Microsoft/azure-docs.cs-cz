@@ -1,6 +1,6 @@
 ---
-title: Azure přední dveře Service – adresa URL přesměrování | Dokumentace Microsoftu
-description: Tento článek pomůže pochopit, jak Azure branou služba podporuje přesměrování adresy URL pro jejich trasy, pokud nakonfigurované.
+title: Azure Front Door – přesměrování adres URL | Dokumenty společnosti Microsoft
+description: Tento článek vám pomůže pochopit, jak Azure Front Door podporuje přesměrování adres URL pro jejich trasy, pokud jsou nakonfigurované.
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -11,49 +11,49 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 3d77a16d24a1a843b39d97904a675518c43a525a
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 5e3e44c4aee84fe9e2e21174a1d65fdf26b765a2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332686"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295479"
 ---
-# <a name="url-redirect"></a>Adresa URL pro přesměrování
-Pro přesměrování přenosu dat můžete použít Azure branou služby. Můžete přesměrovat provoz na více úrovních (protokol, název hostitele, cesta, řetězec dotazu) a všechny funkce, je možné nakonfigurovat pro jednotlivých mikroslužeb, jako je přesměrování na základě cest. To zjednodušuje konfiguraci aplikací, optimalizuje využití prostředků a podporuje nové scénáře přesměrování, včetně globální a na základě cest přesměrování.
+# <a name="url-redirect"></a>Přesměrování adresy URL
+Pomocí Azure Front Door můžete přesměrovat provoz. Můžete přesměrovat provoz na více úrovních (protokol, název hostitele, cesta, řetězec dotazu) a všechny funkce lze nakonfigurovat pro jednotlivé mikroslužby jako přesměrování je cesta založená. To zjednodušuje konfiguraci aplikace, optimalizuje využití prostředků a podporuje nové scénáře přesměrování, včetně globálního přesměrování a přesměrování založeného na cestě.
 </br>
 
-![Adresa URL přesměrování branou Azure][1]
+![Přesměrování adresy URL předních dveří Azure][1]
 
 ## <a name="redirection-types"></a>Typy přesměrování
-Typ přesměrování nastaví stavový kód odpovědi pro klienty a pochopit účel přesměrování. Jsou podporovány následující typy přesměrování:
+Typ přesměrování nastaví kód stavu odpovědi pro klienty pochopit účel přesměrování. Podporovány jsou následující typy přesměrování:
 
-- **301 (trvale přesunuto)** : Označuje, že cílový prostředek přiřazen nový identifikátor URI trvalé a chcete použít jeden z uzavřených identifikátory URI by mělo být všechny budoucí odkazy na tento prostředek. Použijte 301 stavový kód HTTP pro přesměrování protokolu HTTPS. 
-- **302 (Najít)** : Označuje, že cílový prostředek dočasně nachází v jiný identifikátor URI. Vzhledem k tomu, že v některých případech může změnit přesměrování, klient by měla dál používat pro budoucí požadavky efektivní identifikátor URI požadavku.
-- **307 (dočasné přesměrování)** : Označuje, že cílový prostředek je dočasně umístěn pod jiný identifikátor URI a uživatelský agent nesmí změnit metodu žádosti v případě, že provádí automatické přesměrování na tento identifikátor URI. Protože v průběhu času měnit přesměrování, můžete klienta by mělo být pokračovat v používání původní efektivní identifikátor URI požadavku pro budoucí požadavky.
-- **308 (trvalé přesměrování)** : Označuje, že cílový prostředek přiřazen nový identifikátor URI trvalé a chcete použít jeden z uzavřených identifikátory URI by mělo být všechny budoucí odkazy na tento prostředek. Klienti s odkazem na úpravy funkce, by mělo být automaticky znovu připojit odkazy na efektivního identifikátor URI žádosti do jedné nebo více nových odkazů odeslané serverem, kde je to možné.
+- **301 (Trvale přesunuto)**: Označuje, že cílovému prostředku byl přiřazen nový trvalý identifikátor URI a všechny budoucí odkazy na tento prostředek by měly používat jednu z přiložených identifikátorů URI. Použijte stavový kód 301 pro přesměrování HTTP na HTTPS. 
+- **302 (Nalezeno)**: Označuje, že cílový prostředek je dočasně umístěn pod jiným identifikátorem URI. Vzhledem k tomu, že přesměrování může být příležitostně změněno, měl by klient nadále používat identifikátor URI efektivní požadavek pro budoucí požadavky.
+- **307 (Dočasné přesměrování)**: Označuje, že cílový prostředek je dočasně umístěn pod jiným identifikátorem URI a uživatelský agent nesmí změnit metodu požadavku, pokud provádí automatické přesměrování na tento identifikátor URI. Vzhledem k tomu, že přesměrování může v průběhu času měnit, měl by klient pokračovat v používání původního identifikátoru URI efektivní ho požadavku pro budoucí požadavky.
+- **308 (Trvalé přesměrování)**: Označuje, že cílovému prostředku byl přiřazen nový trvalý identifikátor URI a všechny budoucí odkazy na tento prostředek by měly používat jednu z přiložených identifikátorů URI. Klienti s možnostmi úprav odkazů by měli automaticky znovu propojit odkazy na identifikátor URI efektivního požadavku na jeden nebo více nových odkazů odeslaných serverem, pokud je to možné.
 
-## <a name="redirection-protocol"></a>Přesměrování protokolu
-Můžete nastavit na protokol, který se použije pro přesměrování. Díky tomu pro jeden z nejběžnějších případech použití funkce přesměrování, který je k nastavení protokolu HTTP na HTTPS přesměrování.
+## <a name="redirection-protocol"></a>Protokol přesměrování
+Můžete nastavit protokol, který bude použit pro přesměrování. To umožňuje jeden z nejběžnějších případů použití funkce přesměrování, to znamená nastavit http na přesměrování HTTPS.
 
-- **Pouze HTTPS**: Nastavte protokol na protokol HTTPS pouze, pokud chcete pro přesměrování přenosu dat z protokolu HTTP na HTTPS. Služba Azure branou doporučuje, že byste měli nastavit přesměrování na HTTPS pouze.
-- **Jenom HTTP**: To přesměruje příchozího požadavku HTTP. Pomocí této hodnoty pouze v případě, že chcete zachovat provoz protokolu HTTP, který je, bez šifrování.
-- **Žádost o shodu**: Tato možnost ponechá protokol používá příchozího požadavku. Tak požadavek HTTP zůstane HTTP a HTTPS příspěvek přesměrování zůstává požadavek HTTPS.
+- **Pouze HTTPS**: Nastavte protokol pouze na HTTPS, pokud chcete přesměrovat provoz z PROTOKOLU HTTP na HTTPS. Azure Front Door doporučuje, abyste vždy nastavili přesměrování pouze na https.
+- **Pouze http:** Tím přesměruje příchozí požadavek na HTTP. Tuto hodnotu použijte pouze v případě, že chcete zachovat provoz HTTP, který je nešifrovaný.
+- **Požadavek na shodu**: Tato možnost zachová protokol používaný příchozím požadavkem. Takže požadavek HTTP zůstává HTTP a požadavek HTTPS zůstává https post přesměrování.
 
 ## <a name="destination-host"></a>Cílový hostitel
-Jako součást konfigurace přesměrování směrování můžete také změnit název hostitele nebo doménu pro přesměrování požadavku. Můžete nastavit toto pole pro název hostitele v adrese URL pro přesměrování nebo jinak zachovat název hostitele z příchozího požadavku. Takže použití tohoto pole můžete přesměrovat všechny požadavky odeslané https://www.contoso.com/ * k https://www.fabrikam.com/ *.
+V rámci konfigurace směrování přesměrování můžete také změnit název hostitele nebo doménu pro požadavek na přesměrování. Toto pole můžete nastavit tak, aby změnilo název hostitele v adrese URL pro přesměrování nebo jinak zachovalo název hostitele z příchozí žádosti. Pomocí tohoto pole můžete tedy přesměrovat všechny `https://www.contoso.com/*` `https://www.fabrikam.com/*`odeslané požadavky na program .
 
 ## <a name="destination-path"></a>Cílová cesta
-Pro případy, ve kterém mají být nahrazeny segment cesty adresy URL jako součást přesměrování můžete nastavit toto pole s hodnotou novou cestu. V opačném případě můžete zachovat hodnotu cesty jako součást přesměrování. Takže použití tohoto pole můžete přesměrovat všechny požadavky odeslané na https://www.contoso.com/ * k https://www.contoso.com/redirected-site.
+V případech, kdy chcete nahradit segment cesty adresy URL jako součást přesměrování, můžete toto pole nastavit novou hodnotou cesty. V opačném případě můžete zvolit zachování hodnoty cesty jako součást přesměrování. Pomocí tohoto pole můžete tedy přesměrovat všechny `https://www.contoso.com/\*` požadavky `https://www.contoso.com/redirected-site`odeslané společnosti .
 
 ## <a name="query-string-parameters"></a>Parametry řetězce dotazu
-Můžete také nahradit parametry řetězce dotazu v adrese URL přesměrovaného. Aby bylo možné nahradit všechny existující řetězce dotazu z příchozí adrese URL požadavku, nastavte toto pole na "Nahradit" a potom nastavte na odpovídající hodnotu. V opačném případě můžete zachovat původní sadu řetězců dotazu nastavením pole "Zachování". Jako příklad použití tohoto pole můžete přesměrovat veškerý provoz odeslaný na https://www.contoso.com/foo/bar k https://www.contoso.com/foo/bar?&utm_referrer=https%3A%2F%2Fwww.bing.com%2F. 
+Můžete také nahradit parametry řetězce dotazu v přesměrované adrese URL. Chcete-li nahradit existující řetězec dotazu z adresy URL příchozího požadavku, nastavte toto pole na hodnotu Nahradit a nastavte příslušnou hodnotu. V opačném případě můžete zachovat původní sadu řetězců dotazu nastavením pole na Zachovat. Například pomocí tohoto pole můžete přesměrovat veškerý `https://www.contoso.com/foo/bar` provoz `https://www.contoso.com/foo/bar?&utm_referrer=https%3A%2F%2Fwww.bing.com%2F`odeslaný do aplikace . 
 
-## <a name="destination-fragment"></a>Určení fragmentu
-Fragment cíl je část adresy URL za "#", obvykle pomocí prohlížeče přejít na určitou část na stránku. Můžete nastavit toto pole pro přidání fragmentu k adrese URL přesměrování.
+## <a name="destination-fragment"></a>Cílový fragment
+Cílový fragment je část adresy URL po '#', obvykle používá prohlížeče přistát na konkrétní sekci na stránce. Toto pole můžete nastavit tak, aby bylo fragment upřeno na adresu URL přesměrování.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si, jak [vytvořit službu Front Door](quickstart-create-front-door.md).
+- Přečtěte si, jak [vytvořit Front Door](quickstart-create-front-door.md).
 - Přečtěte si, [jak služba Front Door funguje](front-door-routing-architecture.md).
 
 <!--Image references-->

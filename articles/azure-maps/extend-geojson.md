@@ -1,6 +1,6 @@
 ---
-title: Rozšířená geometriía pro injson | Mapy Microsoft Azure
-description: V tomto článku se dozvíte, jak Microsoft Azure Maps rozšiřuje specifikaci geometrií tak, aby představovala určitá.
+title: Rozšířené geometrie GeoJSON | Mapy Microsoft Azure
+description: V tomto článku se dozvíte, jak Mapy Microsoft Azure rozšiřují spec GeoJSON tak, aby reprezentovaly určité geometrie.
 author: sataneja
 ms.author: sataneja
 ms.date: 05/17/2018
@@ -9,51 +9,51 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 98db10f0fc7a417f39d4bb00e77af6bdea034a03
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79276397"
 ---
-# <a name="extended-geojson-geometries"></a>Rozšířená geometriía pro injson
+# <a name="extended-geojson-geometries"></a>Rozšířené geometrie GeoJSON
 
-Azure Maps poskytuje seznam výkonných rozhraní API pro vyhledávání uvnitř a podél geografických funkcí. Tato rozhraní API jsou v souladu se standardními [specifikacemi][1] geografického formátu JSON, které představují geografické funkce.  
+Azure Maps poskytuje seznam výkonných rozhraní API pro vyhledávání v geografických funkcích a podél nich. Tato api se řídí [standardním specifikací GeoJSON][1] představujících geografické funkce.  
 
-[Specifikace INjson][1] pro geometrií podporuje pouze následující:
+[Spec GeoJSON][1] podporuje pouze následující geometrie:
 
-* GeometryCollection
-* LineString
-* MultiLineString
-* MultiPoint
-* MultiPolygon
-* Vyberte
-* Postupně
+* Geometrycollection
+* Linestring
+* Multilinestring
+* Multipoint
+* Multipolygon
+* Bod
+* Mnohoúhelník
 
-Některá Azure Maps rozhraní API akceptují geometrií, která nejsou součástí [specifikace pro injson][1]. Například [vyhledávání uvnitř geometrie](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry) API přijímá kružnice a mnohoúhelníky.
+Některá rozhraní API Map Azure přijímají geometrie, které nejsou součástí [specifikace GeoJSON][1]. Například [rozhraní API pro hledání uvnitř geometrie](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry) přijímá circle a mnohonoly.
 
-Tento článek poskytuje podrobné vysvětlení způsobu, jakým Azure Maps rozšiřuje [specifikace][1] pro geometrií, aby představoval konkrétní.
+Tento článek obsahuje podrobné vysvětlení, jak Azure Maps rozšiřuje [geojson specifikace][1] představují určité geometrie.
 
 ## <a name="circle"></a>Kruh
 
-Geometrie `Circle` není podporována [specifikací injson][1]. K reprezentaci kruhu používáme objekt `GeoJSON Point Feature`.
+Geometrie `Circle` není podporována [specifikací GeoJSON][1]. Používáme `GeoJSON Point Feature` objekt k reprezentaci kruhu.
 
-Geometrie `Circle` reprezentovaná pomocí objektu `GeoJSON Feature` __musí__ obsahovat následující souřadnice a vlastnosti:
+Geometrie `Circle` reprezentovaná objektem `GeoJSON Feature` __musí__ obsahovat následující souřadnice a vlastnosti:
 
-- Center
+- Střed
 
-    Střed kružnice je reprezentován pomocí objektu `GeoJSON Point`.
+    Střed kruhu je reprezentován `GeoJSON Point` pomocí objektu.
 
-- Zaoblen
+- Poloměr
 
-    `radius` kružnice je reprezentovaná pomocí vlastností `GeoJSON Feature`. Hodnota poloměru je v _metrech_ a musí být typu `double`.
+    Kruh `radius` je reprezentován `GeoJSON Feature`pomocí vlastností společnosti . Hodnota poloměru je v _metrech_ `double`a musí být typu .
 
-- SubType
+- Podtypu
 
-    Geometrie kruhu musí také obsahovat vlastnost `subType`. Tato vlastnost musí být součástí vlastností `GeoJSON Feature`a její hodnota by měla být _Circle_ .
+    Geometrie kruhu musí `subType` také obsahovat vlastnost. Tato vlastnost musí být `GeoJSON Feature`součástí vlastností společnosti a její hodnota by měla být _Circle._
 
 #### <a name="example"></a>Příklad
 
-Tady je postup, jak znázornit kruh pomocí objektu `GeoJSON Feature`. Prostředte si kruh v šířce: 47,639754 a zeměpisná délka:-122,126986 a přiřaďte mu poloměr, který se rovná 100 měřičů:
+Zde je návod, jak budete reprezentovat `GeoJSON Feature` kruh pomocí objektu. Vystředíme kruh v zeměpisné šířce: 47.639754 a zeměpisné délky: -122.126986 a přiřadíme mu poloměr rovnající se 100 metrům:
 
 ```json            
 {
@@ -69,19 +69,19 @@ Tady je postup, jak znázornit kruh pomocí objektu `GeoJSON Feature`. Prostřed
 }          
 ```
 
-## <a name="rectangle"></a>Plocha
+## <a name="rectangle"></a>Obdélník
 
-Geometrie `Rectangle` není podporována [specifikací injson][1]. K reprezentaci obdélníku používáme objekt `GeoJSON Polygon Feature`. Rozšíření Rectangle je primárně používáno modulem nástrojů pro kreslení sady web SDK.
+Geometrie `Rectangle` není podporována [specifikací GeoJSON][1]. Používáme `GeoJSON Polygon Feature` objekt k reprezentaci obdélníku. Rozšíření obdélníku je primárně používáno modulem kreslicích nástrojů sady Web SDK.
 
-Geometrie `Rectangle` reprezentovaná pomocí objektu `GeoJSON Polygon Feature` __musí__ obsahovat následující souřadnice a vlastnosti:
+Geometrie `Rectangle` reprezentovaná objektem `GeoJSON Polygon Feature` __musí__ obsahovat následující souřadnice a vlastnosti:
 
-- Roh
+- Rohy
 
-    Rohy obdélníku jsou reprezentovány pomocí souřadnic objektu `GeoJSON Polygon`. Mělo by existovat pět souřadnic, jeden pro každý roh. A, pátou souřadnici, která je shodná s první souřadnicí, pro zavření kroužku mnohoúhelníku. Předpokládá se, že tyto souřadnice budou zarovnané a že je vývojář může otočit tak, jak je chtěli.
+    Rohy obdélníku jsou reprezentovány pomocí `GeoJSON Polygon` souřadnic objektu. Mělo by tam být pět souřadnic, jeden pro každý roh. A pátá souřadnice, která je stejná jako první souřadnice, zavřete polygonový kroužek. Předpokládá se, že tyto souřadnice zarovnat a že vývojář může otočit je podle potřeby.
 
-- SubType
+- Podtypu
 
-    Geometrie obdélníku musí také obsahovat vlastnost `subType`. Tato vlastnost musí být součástí vlastností `GeoJSON Feature`a její hodnota by měla být _Rectangle_ .
+    Geometrie obdélníku `subType` musí také obsahovat vlastnost. Tato vlastnost musí být `GeoJSON Feature`součástí vlastností společnosti a její hodnota by měla být _Rectangle_
 
 ### <a name="example"></a>Příklad
 
@@ -100,14 +100,14 @@ Geometrie `Rectangle` reprezentovaná pomocí objektu `GeoJSON Polygon Feature` 
 ```
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o datech o injson v Azure Maps:
+Další informace o datech GeoJSON v Mapách Azure:
 
 > [!div class="nextstepaction"]
-> [Formát geografického geografického formátu](geofence-geojson.md)
+> [Geofence GeoJSON formát](geofence-geojson.md)
 
-Projděte si Glosář běžných technických podmínek spojených s Azure Maps a inteligentními aplikacemi lokátoru:
+Projděte si glosář běžných technických termínů spojených s Mapami Azure a aplikacemi pro zjišťování polohy:
 
 > [!div class="nextstepaction"]
-> [Glosář Azure Maps](glossary.md)
+> [Glosář služby Azure Maps](glossary.md)
 
 [1]: https://tools.ietf.org/html/rfc7946

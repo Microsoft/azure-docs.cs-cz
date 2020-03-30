@@ -8,50 +8,53 @@ ms.topic: include
 ms.date: 05/09/2019
 ms.author: sharadag
 ms.custom: include file
-ms.openlocfilehash: 37ebe2f0c5cbbaca712e69ab4484379ecf0f4830
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 148ec3eccce71ab7a4a6c1391c0fa4753c248bd8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72237319"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335091"
 ---
-| Prostředek | Výchozí/maximální limit |
+| Prostředek | Omezení |
 | --- | --- |
-| Prostředky služby front-dveří pro Azure na předplatné | 100 |
-| Hostitelé front-endu, mezi které patří vlastní domény na prostředek | 100 |
-| Pravidla směrování na prostředek | 100 |
+| Prostředky Azure Front Door na jedno předplatné | 100 |
+| Front-endoví hostitelé, která zahrnuje vlastní domény na prostředek | 500 |
+| Pravidla směrování podle prostředku | 500 |
 | Fondy back-endu na prostředek | 50 |
-| Back-endy na fond back-endu | 100 |
-| Vzor cesty, který se má shodovat s pravidlem směrování | 25 |
-| Vlastní pravidla firewallu webových aplikací na jednu zásadu | 10 |
-| Zásada firewallu webových aplikací na předplatné | 100 |
-| Podmínky shody brány firewall webových aplikací na vlastní pravidlo | 10 |
-| Rozsahy IP adres firewallu webových aplikací na shodnou podmínku | 600 |
-| Hodnoty shody řetězců firewallu webových aplikací za shodné podmínky | 10 |
-| Délka hodnoty shody řetězců firewallu webových aplikací | 256 |
-| Délka názvu parametru POST firewallu webových aplikací | 256 |
-| Délka názvu záhlaví protokolu HTTP brány firewall webových aplikací | 256 |
-| Délka názvu souboru cookie pro bránu firewall webových aplikací | 256 |
-| Kontrola velikosti textu požadavku protokolu HTTP v bráně firewall webových aplikací | 128 KB |
-| Délka textu vlastní odpovědi firewallu webových aplikací | 2 KB |
+| Zadní konce na back-end ový fond | 100 |
+| Vzorky cesty odpovídající pravidlu směrování | 25 |
+| Adresy URL v jednom volání vymazání mezipaměti | 100 |
+| Vlastní pravidla brány firewall webových aplikací podle zásad | 100 |
+| Zásady brány firewall webové aplikace na jedno předplatné | 100 |
+| Podmínky pro bránu firewall webové aplikace odpovídají vlastnímu pravidlu | 10 |
+| Rozsahy IP adres brány firewall webové aplikace podle podmínky shody | 600 |
+| Řetězec řetězce brány firewall webové aplikace odpovídá hodnotám podle podmínky shody | 10 |
+| Délka hodnoty řetězce brány firewall webové aplikace | 256 |
+| Délka názvu parametru objektu post brány firewall webové aplikace | 256 |
+| Délka názvu hlavičky HTTP brány firewall webové aplikace | 256 |
+| Délka názvu souboru cookie brány firewall webové aplikace | 256 |
+| Kontrola velikosti těla požadavku HTTP brány firewall webové aplikace | 128 kB |
+| Délka těla vlastní odezvy brány firewall webové aplikace | 2 kB |
 
-### <a name="timeout-values"></a>Hodnoty časového limitu
-#### <a name="client-to-front-door"></a>Klient do front-dveří
-- Vypršel časový limit připojení TCP na přední dveře 61 sekund.
+### <a name="timeout-values"></a>Hodnoty časového opojení
+#### <a name="client-to-front-door"></a>Klient k předním dveřím
+* Front Door má nečinné vypršení připojení TCP 61 sekund.
 
-#### <a name="front-door-to-application-back-end"></a>Přední dveře do back-endu aplikace
-- Pokud je odpověď blokové odpovědi, vrátí se 200, pokud nebo dojde k přijetí prvního bloku.
-- Po přeposílání požadavku HTTP na back-end zaznamená přední dveře po dobu 30 sekund prvního paketu z back-endu. Pak vrátí klientovi chybu 503.
-- Po přijetí prvního paketu z back-endu budou přední dveře čekat po dobu 30 sekund v nečinném intervalu. Pak vrátí klientovi chybu 503.
-- Přední dveře do back-endu TCP relace vypršela 30 minut.
+#### <a name="front-door-to-application-back-end"></a>Přední dveře k aplikaci back-end
+* Pokud odpověď je bloková odpověď, 200 je vrácena, pokud nebo při přijetí prvního bloku.
+* Po předání požadavku HTTP do back-endu front door čeká 30 sekund na první paket ze zadní části. Potom vrátí chybu 503 klientovi. Tato hodnota je konfigurovatelná prostřednictvím pole sendRecvTimeoutSeconds v rozhraní API.
+    * Pro scénáře ukládání do mezipaměti tento časový rozsah není konfigurovatelný, a proto pokud je požadavek uložen do mezipaměti a trvá více než 30 sekund pro první paket z front door nebo z back-endu, je klientovi vrácena chyba 504. 
+* Po přijetí prvního paketu ze zadníčásti front door čeká 30 sekund v vypršení časového limitu nečinnosti. Potom vrátí chybu 503 klientovi. Tato hodnota časového opovce není konfigurovatelná.
+* Časový rozsah relace Front Door to the back-end TCP je 90 sekund.
 
-### <a name="upload-and-download-data-limit"></a>Nahrávání a stahování omezení dat
+### <a name="upload-and-download-data-limit"></a>Limit nahrávání a stahování dat
 
-|  | S kódováním přenosu v bloku dat (CTE) | Bez bloků HTTP |
+|  | S blokovým kódováním přenosu (CTE) | Bez bloků HTTP |
 | ---- | ------- | ------- |
-| **Stáhnout** | Velikost stahovaných velikostí není nijak omezena. | Velikost stahovaných velikostí není nijak omezena. |
-| **Nahrát** |  Neexistují žádné limity, pokud je každé nahrání CTE menší než 2 GB. | Velikost nemůže být větší než 2 GB. |
+| **Stáhnout** | Velikost stahování není nijak omezena. | Velikost stahování není nijak omezena. |
+| **Nahrát** |    Neexistuje žádný limit, pokud je každé nahrání CTE menší než 2 GB. | Velikost nesmí být větší než 2 GB. |
 
-### <a name="other-limits"></a>Další omezení
-- Maximální velikost adresy URL-8 192 bajtů – určuje maximální délku nezpracované adresy URL (schéma + název hostitele + port + cesta + řetězec dotazu adresy URL).
-- Maximální velikost řetězce dotazu-4 096 bajtů – určuje maximální délku řetězce dotazu v bajtech.
+### <a name="other-limits"></a>Jiné limity
+* Maximální velikost adresy URL - 8 192 bajtů - Určuje maximální délku nezpracované adresy URL (schéma + název_hostitele + port + cesta + řetězec dotazu adresy URL)
+* Maximální velikost řetězce dotazu - 4 096 bajtů - Určuje maximální délku řetězce dotazu v bajtech.
+* Maximální velikost hlavičky odpovědi HTTP z adresy URL sondy stavu - 4 096 bajtů - Zadaná maximální délka všech hlaviček odpovědí sond se stavem. 

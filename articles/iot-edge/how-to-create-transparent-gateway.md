@@ -1,6 +1,6 @@
 ---
-title: Vytvoření transparentní brány zařízení – Azure IoT Edge | Dokumentace Microsoftu
-description: Použití zařízení Azure IoT Edge jako transparentní brána, která dokáže zpracovávat informace ze zařízení příjem dat
+title: Vytvoření zařízení s transparentní bránou – Azure IoT Edge | Dokumenty společnosti Microsoft
+description: Použití zařízení Azure IoT Edge jako transparentní brány, která dokáže zpracovávat informace z podřizovaných zařízení
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,67 +8,67 @@ ms.date: 11/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bf60bfb41e48220845e9aa26dc26f20e6ed60d16
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 6069e0782f69d0dfb73d9be2998cbb11d59d7d22
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510681"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79529165"
 ---
-# <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurace zařízení tak, aby fungoval jako transparentní brána IoT Edge
+# <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurace zařízení IoT Edge tak, aby fungovalo jako transparentní brána
 
-Tento článek poskytuje podrobné pokyny ke konfiguraci IoT Edge zařízení pro fungování jako transparentní brány pro jiná zařízení, která budou komunikovat s IoT Hub. V tomto článku se používá pojem *IoT Edge brána* , která odkazuje na IoT Edge zařízení nakonfigurované jako transparentní bránu. Další informace najdete v tématu [jak se dá zařízení IoT Edge použít jako brána](./iot-edge-as-gateway.md).
+Tento článek obsahuje podrobné pokyny pro konfiguraci zařízení IoT Edge tak, aby fungovalo jako transparentní brána pro ostatní zařízení pro komunikaci s službou IoT Hub. Tento článek používá termín *Brána IoT Edge* odkazovat na zařízení IoT Edge nakonfigurované jako transparentní brána. Další informace najdete [v tématu Jak lze zařízení IoT Edge použít jako bránu](./iot-edge-as-gateway.md).
 
 >[!NOTE]
 >Aktuálně:
 >
-> * Hraniční zařízení nemůže připojit k brány IoT Edge.
-> * Příjem dat zařízení nemohou použít nahrávání souboru.
+> * Zařízení s podporou okrajů se nemohou připojit k bránám IoT Edge.
+> * Zařízení pro příjem dat nemohou nahrávat soubory.
 
-Existují tři obecné kroky k nastavení úspěšného transparentního připojení brány. Tento článek popisuje první krok:
+Existují tři obecné kroky k nastavení úspěšného připojení transparentní brány. Tento článek popisuje první krok:
 
-1. **Zařízení brány musí být schopné bezpečně připojit se k zařízením pro příjem dat, přijímat komunikaci ze zařízení pro příjem dat a směrovat zprávy do správného umístění.**
-2. Aby se zařízení mohla ověřit pomocí IoT Hub, musí mít k dispozici identitu zařízení, která může komunikovat prostřednictvím zařízení brány. Další informace najdete v tématu [ověření zařízení pro příjem dat do Azure IoT Hub](how-to-authenticate-downstream-device.md).
-3. Zařízení pro příjem dat se musí bezpečně připojit k zařízení brány. Další informace najdete v tématu [připojte zařízení za příjem dat k bráně Azure IoT Edge](how-to-connect-downstream-device.md).
+1. **Zařízení brány musí být schopno bezpečně se připojit k zařízením pro příjem dat, přijímat komunikaci z podřazených zařízení a směrovat zprávy na správné místo určení.**
+2. Zařízení pro příjem dat musí mít identitu zařízení, aby bylo možné ověřit pomocí služby IoT Hub a vědět, jak komunikovat prostřednictvím svého zařízení brány. Další informace najdete [v tématu Ověření navazujícího zařízení do služby Azure IoT Hub](how-to-authenticate-downstream-device.md).
+3. Zařízení pro příjem dat se musí bezpečně připojit k zařízení brány. Další informace najdete [v tématu Připojení podřízeného zařízení k bráně Azure IoT Edge](how-to-connect-downstream-device.md).
 
-Aby zařízení fungovalo jako brána, musí být schopné bezpečně se připojit ke svým zařízením pro příjem dat. Azure IoT Edge umožňuje používat infrastrukturu veřejných klíčů (PKI) nastavení zabezpečeného připojení mezi zařízeními. V tomto případě jsme se umožní příjem dat zařízení pro připojení k zařízení IoT Edge sloužit jako transparentní brána. Aby bylo možné zajistit přiměřené zabezpečení, musí zařízení pro příjem dat potvrdit identitu zařízení brány. Tato kontrolu identity zabraňuje zařízením v připojení k potenciálně škodlivým branám.
+Aby zařízení fungovalo jako brána, musí být schopno bezpečně se připojit ke svým zařízením pro příjem dat. Azure IoT Edge umožňuje používat infrastrukturu veřejných klíčů (PKI) k nastavení zabezpečeného připojení mezi zařízeními. V tomto případě povolujeme zařízení pro příjem dat připojení k zařízení IoT Edge, které funguje jako transparentní brána. Aby bylo zachováno přiměřené zabezpečení, mělo by zařízení pro příjem dat potvrdit identitu zařízení brány. Tato kontrola identity zabraňuje připojení zařízení k potenciálně škodlivým bránám.
 
-Pro podřízené zařízení v transparentní bráně může být libovolná aplikace nebo platforma, která má identitu vytvořenou pomocí cloudové služby [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) . V mnoha případech se tyto aplikace používat [zařízení Azure IoT SDK](../iot-hub/iot-hub-devguide-sdks.md). Pro všechny praktické účely může být podřízený zařízení i aplikace běžící na samotném zařízení brány IoT Edge. IoT Edge zařízení ale nemůže být podřízená bráně IoT Edge.
+Podřízené zařízení ve scénáři transparentní brány může být libovolná aplikace nebo platforma, která má identitu vytvořenou pomocí cloudové služby [Azure IoT Hub.](https://docs.microsoft.com/azure/iot-hub) V mnoha případech tyto aplikace používají [azure iot zařízení SDK](../iot-hub/iot-hub-devguide-sdks.md). Pro všechny praktické účely může být zařízení pro příjem dat dokonce aplikace spuštěná na samotném zařízení brány IoT Edge. Zařízení IoT Edge však nemůže být po proudu brány IoT Edge.
 
-Můžete vytvořit jakékoli infrastrukturu certifikátů, která umožňuje důvěryhodnosti vyžadované pro topologii zařízení brány. V tomto článku se předpokládáme, že použijete stejné nastavení certifikátu, které byste použili k povolení [zabezpečení CA x. 509](../iot-hub/iot-hub-x509ca-overview.md) v IoT Hub, což zahrnuje certifikát CA x. 509, který je přidružený ke konkrétnímu centru IoT (KOŘENová CA služby IoT Hub), sérii certifikátů podepsaných touto certifikační autoritou a certifikační autoritou pro IoT Edge zařízení.
+Můžete vytvořit libovolnou infrastrukturu certifikátů, která umožní důvěryhodnost požadovanou pro topologii brány zařízení. V tomto článku předpokládáme stejné nastavení certifikátu, které byste použili k povolení [zabezpečení certifikační autority X.509](../iot-hub/iot-hub-x509ca-overview.md) v centru IoT Hub, které zahrnuje certifikát Certifikační autority X.509 přidružený ke konkrétnímu centru IoT hub (kořenová certifikační autorita centra IoT), řadu certifikátů podepsaných touto certifikační autoritou a certifikační autoritu pro zařízení IoT Edge.
 
-![Instalace certifikátu brány](./media/how-to-create-transparent-gateway/gateway-setup.png)
+![Nastavení certifikátu brány](./media/how-to-create-transparent-gateway/gateway-setup.png)
 
 >[!NOTE]
->Pojem "Kořenová certifikační autorita", který se používá v celém tomto článku, odkazuje na veřejný certifikát certifikační autority certifikátu PKI, a ne nutně na kořen certifikátu pro syndikátní certifikační autoritu. V mnoha případech je ve skutečnosti veřejný certifikát zprostředkující certifikační autority.
+>Termín "kořenová certifikační autorita" používaný v tomto článku odkazuje na nejvyšší veřejný certifikát autority řetězce certifikátů PKI a ne nutně kořenový certifikát syndikované certifikační autority. V mnoha případech se ve skutečnosti jedná o zprostředkující veřejný certifikát certifikační autority.
 
-Brána při zahájení připojení prezentuje své IoT Edge certifikát CA zařízení. Zařízení pro příjem dat zkontroluje, že certifikát CA IoT Edge zařízení je podepsaný certifikátem kořenové certifikační autority. V rámci tohoto procesu může zařízení pro příjem dat potvrdit, že brána pochází z důvěryhodného zdroje.
+Brána představuje certifikát certifikační autority zařízení IoT Edge do zařízení pro příjem dat během zahájení připojení. Následné zařízení zkontroluje, zda je certifikát certifikační autority zařízení IoT Edge podepsán kořenovým certifikátem certifikační autority. Tento proces umožňuje zařízení pro příjem dat k potvrzení, že brána pochází z důvěryhodného zdroje.
 
-Následující kroky vás provedou procesem vytvoření certifikátů a jejich instalací do správných míst v bráně. Můžete použít libovolný počítač, čímž vygenerujete certifikáty a potom zkopírovat je do zařízení IoT Edge.
+Následující kroky vás provedou procesem vytváření certifikátů a jejich instalace na správných místech brány. Ke generování certifikátů můžete použít libovolný počítač a potom je zkopírovat do zařízení IoT Edge.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Zařízení Azure IoT Edge, které je nakonfigurováno pomocí [provozních certifikátů](how-to-install-production-certificates.md).
+Zařízení Azure IoT Edge nakonfigurované s [produkčními certifikáty](how-to-manage-device-certificates.md).
 
-## <a name="deploy-edgehub-to-the-gateway"></a>Nasazení edgeHub do brány
+## <a name="deploy-edgehub-to-the-gateway"></a>Nasazení edgeHubu do brány
 
-Při první instalaci IoT Edge na zařízení se automaticky spustí pouze jeden systémový modul: Agent IoT Edge. Když vytvoříte první nasazení na nějaké zařízení, spustí se i druhý systémový modul, Centrum IoT Edge.
+Při první instalaci IoT Edge na zařízení se automaticky spustí pouze jeden systémový modul: agent IoT Edge. Jakmile vytvoříte první nasazení více zařízení, druhý systémový modul, i centrum IoT Edge, se spustí také.
 
-Centrum IoT Edge zodpovídá za příjem příchozích zpráv ze zařízení pro příjem dat a jejich směrování do dalšího cíle. Pokud na vašem zařízení není modul **edgeHub** spuštěný, vytvořte počáteční nasazení pro vaše zařízení. Nasazení bude vypadat prázdné, protože nepřidáte žádné moduly, ale zajistěte, aby byly spuštěny oba systémové moduly.
+Centrum IoT Edge je zodpovědné za příjem příchozích zpráv z podřízeného zařízení a jejich směrování na další cíl. Pokud modul **edgeHub** neběží na vašem zařízení, vytvořte počáteční nasazení pro vaše zařízení. Nasazení bude vypadat prázdné, protože nepřidáte žádné moduly, ale zajistí, že jsou spuštěny oba systémové moduly.
 
-Můžete zkontrolovat, které moduly jsou spuštěny na zařízení, kontrolou podrobností o zařízení v Azure Portal, zobrazením stavu zařízení v aplikaci Visual Studio nebo Visual Studio Code nebo spuštěním příkazu `iotedge list` na samotném zařízení.
+Moduly spuštěné na zařízení můžete zkontrolovat podrobnosti jeho zařízení na webu Azure Portal, zobrazit stav zařízení v sadě `iotedge list` Visual Studio nebo Visual Studio Code nebo spustit příkaz na samotném zařízení.
 
-Pokud je modul **edgeAgent** spuštěný bez modulu **edgeHub** , použijte následující postup:
+Pokud je modul **edgeAgent** spuštěn bez modulu **edgeHub,** použijte následující kroky:
 
 1. Na webu Azure Portal přejděte do svého centra IoT.
 
-2. Přejděte na **IoT Edge** a vyberte zařízení IoT Edge, který chcete použít jako bránu.
+2. Přejděte na **IoT Edge** a vyberte zařízení IoT Edge, které chcete použít jako bránu.
 
-3. Vyberte **Nastavit moduly**.
+3. Vyberte **možnost Nastavit moduly**.
 
-4. Vyberte **Next** (Další).
+4. Vyberte **další**.
 
-5. V **trasy zadejte** stránky, měli byste mít výchozí trasu, která odešle všechny zprávy ze všech modulů pro službu IoT Hub. Pokud tomu tak není, přidejte následující kód a vyberte **Next** (Další).
+5. Na stránce **Zadat trasy** byste měli mít výchozí trasu, která odesílá všechny zprávy ze všech modulů do centra IoT Hub. Pokud tomu tak není, přidejte následující kód a vyberte **Next** (Další).
 
    ```JSON
    {
@@ -78,13 +78,13 @@ Pokud je modul **edgeAgent** spuštěný bez modulu **edgeHub** , použijte nás
    }
    ```
 
-6. V **šablona kontrolní** stránce **odeslat**.
+6. Na stránce **Předlohy Revize** vyberte **Odeslat**.
 
-## <a name="open-ports-on-gateway-device"></a>Otevřít porty na zařízení brány
+## <a name="open-ports-on-gateway-device"></a>Otevření portů na zařízení brány
 
-Zařízení Standard IoT Edge nepotřebují žádné příchozí připojení, protože veškerá komunikace s IoT Hub se provádí prostřednictvím odchozích připojení. Zařízení brány jsou odlišná, protože potřebují přijímat zprávy ze svých podřízených zařízení. Pokud je brána firewall mezi zařízeními pro příjem dat a zařízením brány, musí být komunikace také možná přes bránu firewall.
+Standardní zařízení IoT Edge nepotřebují žádné příchozí připojení, aby fungovala, protože veškerá komunikace s IoT Hubem se provádí prostřednictvím odchozích připojení. Zařízení brány se liší, protože potřebují přijímat zprávy ze svých zařízení pro příjem dat. Pokud je brána firewall mezi zařízeními pro příjem dat a zařízením brány, musí být komunikace možná i přes bránu firewall.
 
-Aby mohl scénář brány fungovat, musí být aspoň jeden z podporovaných protokolů centra IoT Edge otevřený pro příchozí provoz ze zařízení se systémem. Podporované protokoly jsou MQTT, AMQP, HTTPS, MQTT přes WebSockets a AMQP přes objekty WebSockets.
+Aby mohl scénář brány fungovat, musí být alespoň jeden z podporovaných protokolů centra IoT Edge otevřený pro příchozí provoz z podřízeného zařízení. Podporované protokoly jsou MQTT, AMQP, HTTPS, MQTT přes WebSockets a AMQP přes WebSockets.
 
 | Port | Protocol (Protokol) |
 | ---- | -------- |
@@ -92,13 +92,13 @@ Aby mohl scénář brány fungovat, musí být aspoň jeden z podporovaných pro
 | 5671 | AMQP |
 | 443 | HTTPS <br> MQTT+WS <br> AMQP+WS |
 
-## <a name="route-messages-from-downstream-devices"></a>Směrování zpráv ze zařízení příjem dat
+## <a name="route-messages-from-downstream-devices"></a>Směrování zpráv z podřazených zařízení
 
-Modul runtime IoT Edge může směrovat zprávy odeslané ze zařízení příjem dat, stejně jako zprávy odeslané moduly. Tato funkce umožňuje provádět analýzy v modulu spuštěném v bráně před odesláním dat do cloudu.
+Modul runtime IoT Edge může směrovat zprávy odeslané z podřízených zařízení, stejně jako zprávy odeslané moduly. Tato funkce umožňuje provádět analýzy v modulu spuštěném na bráně před odesláním dat do cloudu.
 
-V současné době je tak, jak směrovat zprávy odesílané zařízeními podřízené rozlišení na zprávy odeslané moduly. Zprávy odesílané všechny moduly obsahují systém vlastnost s názvem **connectionModuleId** ale zprávy odesílané zařízeními, podřízené, tomu tak není. Klauzule WHERE trasy můžete vyloučit všechny zprávy, které obsahují tuto vlastnost systému.
+V současné době je způsob směrování zpráv odeslaných zařízeními příjem dat jejich odlišením od zpráv odeslaných moduly. Zprávy odeslané moduly všechny obsahují vlastnost systému s názvem **connectionModuleId,** ale zprávy odeslané podřízené zařízení ne. Klauzuli WHERE postupu můžete použít k vyloučení všech zpráv, které obsahují tuto vlastnost systému.
 
-Níže uvedený postup slouží jako příklad, který by odesílal zprávy ze všech podřízených zařízení do modulu s názvem `ai_insights`a potom z `ai_insights` na IoT Hub.
+Níže uvedená trasa je příkladem, který by odesílat `ai_insights`zprávy z `ai_insights` libovolného zařízení příjem dat do modulu s názvem a potom z ioT Hub.
 
 ```json
 {
@@ -109,16 +109,16 @@ Níže uvedený postup slouží jako příklad, který by odesílal zprávy ze v
 }
 ```
 
-Další informace o směrování zpráv, najdete v části [nasadit moduly a vytvářet](./module-composition.md#declare-routes).
+Další informace o směrování zpráv naleznete v [tématu Nasazení modulů a vytvoření tras](./module-composition.md#declare-routes).
 
 ## <a name="enable-extended-offline-operation"></a>Povolit rozšířenou offline operaci
 
-Od verze sady IoT Edge runtime v [1.0.4](https://github.com/Azure/azure-iotedge/releases/tag/1.0.4) se dá zařízení brány a zařízení, která se k němu připojují, nakonfigurovat pro rozšířené operace offline.
+Počínaje [verzí v1.0.4](https://github.com/Azure/azure-iotedge/releases/tag/1.0.4) runtime IoT Edge lze zařízení brány a zařízení pro připojení k němu nakonfigurovat pro rozšířený offline provoz.
 
-Díky této funkci se můžou místní moduly nebo zařízení se stejným zařízením znovu ověřit podle potřeby IoT Edge zařízení a vzájemně komunikovat pomocí zpráv a metod, a to i v případě, že se odpojíte od služby IoT Hub. Další informace najdete v tématu [porozumění rozšířené offline možnosti pro IoT Edge, zařízení, moduly a podřízená zařízení](offline-capabilities.md).
+Díky této funkci mohou místní moduly nebo podřízené zařízení znovu ověřit pomocí zařízení IoT Edge podle potřeby a komunikovat mezi sebou pomocí zpráv a metod i při odpojení od služby IoT hub. Další informace najdete [v tématu Principy rozšířených offline funkcí pro zařízení, moduly a podřízená zařízení IoT Edge](offline-capabilities.md).
 
-Chcete-li povolit rozšířené možnosti offline, navažte vztah mezi nadřazenými a podřízenými zařízeními mezi zařízením IoT Edge brány a zařízeními pro příjem dat, která se k němu připojí. Tyto kroky jsou podrobněji vysvětleny v tématu [ověření zařízení pro příjem dat do Azure IoT Hub](how-to-authenticate-downstream-device.md).
+Chcete-li povolit rozšířené možnosti offline, vytvořte vztah mezi nadřazeným a podřízeným zařízením mezi bránou IoT Edge a zařízeními pro příjem dat, která se k němu připojí. Tyto kroky jsou podrobněji vysvětleny v [části Ověření navazujícího zařízení do služby Azure IoT Hub](how-to-authenticate-downstream-device.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když máte zařízení IoT Edge funguje jako transparentní brána, musíte pro příjem dat zařízení důvěřovat brány a odesílat zprávy do něj. Pokračujte tím, že na [Azure IoT Hub ověříte zařízení pro příjem dat](how-to-authenticate-downstream-device.md) s dalšími kroky v části nastavení vašeho transparentního scénáře brány.
+Teď, když máte zařízení IoT Edge, které funguje jako transparentní brána, musíte nakonfigurovat podřazená zařízení tak, aby důvěřovala bráně a odesílala jí zprávy. Pokračujte na [ověření navazující zařízení do služby Azure IoT Hub](how-to-authenticate-downstream-device.md) pro další kroky při nastavování scénáře transparentní brány.

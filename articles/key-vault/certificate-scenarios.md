@@ -1,6 +1,6 @@
 ---
-title: Začínáme s Key Vault certifikáty
-description: Následující scénáře popisují několik primárních použití služby správy certifikátů Key Vault, včetně dalších kroků potřebných k vytvoření prvního certifikátu v trezoru klíčů.
+title: Začínáme s certifikáty služby Key Vault
+description: Následující scénáře popisují několik primárních použití služby správy certifikátů trezoru klíčů, včetně dalších kroků potřebných k vytvoření prvního certifikátu v trezoru klíčů.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,120 +11,120 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 32a453678fe3702fcb4b77f0b04a8ed5c889ef59
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79271002"
 ---
-# <a name="get-started-with-key-vault-certificates"></a>Začínáme s Key Vault certifikáty
-Následující scénáře popisují několik primárních použití služby správy certifikátů Key Vault, včetně dalších kroků potřebných k vytvoření prvního certifikátu v trezoru klíčů.
+# <a name="get-started-with-key-vault-certificates"></a>Začínáme s certifikáty služby Key Vault
+Následující scénáře popisují několik primárních použití služby správy certifikátů trezoru klíčů, včetně dalších kroků potřebných k vytvoření prvního certifikátu v trezoru klíčů.
 
-Jsou popsaný následující:
-- Vytváří se první Key Vault certifikát.
-- Vytvoření certifikátu s certifikační autoritou, která je partnerkou Key Vault
-- Vytvoření certifikátu s certifikační autoritou, která není partnerkou Key Vault
-- Importovat certifikát
+Jsou uvedeny následující:
+- Vytvoření prvního certifikátu trezoru klíčů
+- Vytvoření certifikátu s certifikační autoritou, která je partnerem trezoru klíčů
+- Vytvoření certifikátu s certifikační autoritou, která není ve společnosti Key Vault
+- Import certifikátu
 
-## <a name="certificates-are-complex-objects"></a>Certifikáty jsou komplexní objekty.
-Certifikáty se skládají ze tří vzájemně propojených prostředků společně s certifikátem Key Vault. metadata certifikátu, klíč a tajný klíč.
-
-
-![Certifikáty jsou komplexní.](media/azure-key-vault.png)
+## <a name="certificates-are-complex-objects"></a>Certifikáty jsou složité objekty
+Certifikáty se skládají ze tří vzájemně propojených prostředků propojených jako certifikát trezoru klíčů. metadat certifikátu, klíče a tajného klíče.
 
 
-## <a name="creating-your-first-key-vault-certificate"></a>Vytváří se první Key Vault certifikát.  
- Předtím, než je možné vytvořit certifikát v Key Vault (KV), je nutné provést kroky 1 a 2 splnění požadavků a pro tohoto uživatele nebo organizaci musí existovat Trezor klíčů.  
+![Certifikáty jsou složité](media/azure-key-vault.png)
 
-**Krok 1** – poskytovatelé certifikační autority (CA)  
--   Připojování jako správce IT, správce PKI nebo kdokoli, kdo spravuje účty s CAs pro danou společnost (např. Contoso) je předpokladem pro použití Key Vaultch certifikátů.  
-    Následující CA jsou aktuální partneři partnerských služeb s Key Vault:  
-    -   DigiCert-Key Vault nabízí OV certifikáty TLS/SSL s DigiCert.  
-    -   GlobalSign-Key Vault nabízí OV certifikáty TLS/SSL s GlobalSign.  
 
-**Krok 2** – správce účtu pro poskytovatele certifikační autority vytvoří přihlašovací údaje, které Key Vault použít k registraci, obnovení a používání certifikátů TLS/SSL prostřednictvím Key Vault.
+## <a name="creating-your-first-key-vault-certificate"></a>Vytvoření prvního certifikátu trezoru klíčů  
+ Před vytvořením certifikátu v trezoru klíčů (KV) musí být úspěšně provedeny nezbytné kroky 1 a 2 a pro tohoto uživatele /organizace musí existovat trezor klíčů.  
 
-**Krok 3** – správce společnosti Contoso, společně se zaměstnancem společnosti Contoso (Key Vault uživatel), který vlastní certifikáty v závislosti na certifikační autoritě, může získat certifikát od správce nebo přímo od účtu s certifikační autoritou.  
+**Krok 1** – Poskytovatelé certifikačníautority (CA)  
+-   On-boarding jako správce IT, Správce PKI nebo kdokoli, kdo spravuje účty u ca, pro danou společnost (např. Contoso) je předpokladem pro použití certifikátů trezoru klíčů.  
+    Aktuálními partnerskými poskytovateli trezoru klíčů jsou následující společnosti:  
+    -   DigiCert - Key Vault nabízí Certifikáty OV TLS/SSL s DigiCert.  
+    -   GlobalSign - Key Vault nabízí Certifikáty OV TLS/SSL s GlobalSign.  
 
-- Zahajte operaci přidání přihlašovacích údajů do trezoru klíčů [nastavením prostředku vystavitele certifikátu](/rest/api/keyvault/setcertificateissuer/setcertificateissuer) . Vystavitel certifikátu je entita reprezentovaná v Azure Key Vault (KV) jako prostředek CertificateIssuer. Slouží k poskytnutí informací o zdroji certifikátu KV; název vystavitele, poskytovatel, přihlašovací údaje a další podrobnosti o správě.
+**Krok 2** – Správce účtu pro poskytovatele certifikační autority vytvoří pověření, která má trezor klíčů použít k zápisu, obnovení a použití certifikátů TLS/SSL prostřednictvím trezoru klíčů.
+
+**Krok 3** – Správce společnosti Contoso spolu se zaměstnancem contoso (uživatel trezoru klíčů), který vlastní certifikáty, může v závislosti na certifikační autoritě získat certifikát od správce nebo přímo z účtu u certifikační autority.  
+
+- Zahajte operaci přidání pověření do trezoru klíčů nastavením prostředku [vystavitela certifikátu.](/rest/api/keyvault/setcertificateissuer/setcertificateissuer) Vystavitel certifikátu je entita reprezentovaná v trezoru klíčů Azure (KV) jako prostředek certifikátu issuer. Používá se k poskytnutí informací o zdroji certifikátu KV; název vystavitele, zprostředkovatele, pověření a další podrobnosti o správě.
   - Například MyDigiCertIssuer  
-    -   Zprostředkovatel  
-    -   Přihlašovací údaje – přihlašovací údaje účtu certifikační autority Každá certifikační autorita má vlastní konkrétní data.  
+    -   Poskytovatel  
+    -   Pověření – pověření účtu certifikační autority. Každá certifikační autorita má svá vlastní specifická data.  
 
-    Další informace o vytváření účtů s poskytovateli certifikačních autorit najdete v souvisejícím příspěvku na [blogu Key Vault](https://aka.ms/kvcertsblog).  
+    Další informace o vytváření účtů u poskytovatelů certifikační autority naleznete v souvisejícím příspěvku na [blogu Key Vault](https://aka.ms/kvcertsblog).  
 
-**Krok 3,1** – nastavení [kontaktů certifikátů](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts) pro oznámení Toto je kontakt pro uživatele Key Vault. Key Vault nevynutila tento krok.  
+**Krok 3.1** – Nastavení [kontaktů certifikátů](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts) pro oznámení. Toto je kontakt pro uživatele trezoru klíčů. Trezor klíčů tento krok nevynucuje.  
 
-Poznámka: Tento proces, prostřednictvím kroku 3,1, je operace jednorázová.  
+Poznámka - Tento proces, prostřednictvím kroku 3.1, je jednorázová operace.  
 
-## <a name="creating-a-certificate-with-a-ca-partnered-with-key-vault"></a>Vytvoření certifikátu s certifikační autoritou, která je partnerkou Key Vault
+## <a name="creating-a-certificate-with-a-ca-partnered-with-key-vault"></a>Vytvoření certifikátu pomocí certifikační autority s partnerem trezoru klíčů
 
-![Vytvoření certifikátu s Key Vault Partnerská certifikační autorita](media/certificate-authority-2.png)
+![Vytvoření certifikátu s přidruženou certifikační autoritou s partnerem trezoru klíčů](media/certificate-authority-2.png)
 
-**Krok 4** : následující popisy odpovídají zeleným očíslovaným krokům v předchozím diagramu.  
-  (1) – v diagramu výše vaše aplikace vytváří certifikát, který interně začíná vytvořením klíče v trezoru klíčů.  
-  (2) – Key Vault odešle certifikační autoritě žádost o certifikát TLS/SSL.  
-  (3) – vaše aplikace se dotazuje v rámci smyčky a procesu čekání pro Key Vault pro dokončení certifikátu. Vytvoření certifikátu je dokončeno, když Key Vault obdrží odpověď certifikační autority s certifikátem x509.  
-  (4) – certifikační autorita reaguje na žádosti o certifikát TLS/SSL v Key Vault s certifikátem x509 TLS/SSL.  
-  (5) – vytvoření nového certifikátu se dokončí s fúzí certifikátu x509 pro certifikační autoritu.  
+**Krok 4** - Následující popisy odpovídají zeleným číslovaným krokům v předchozím diagramu.  
+  (1) - Ve výše uvedeném diagramu vaše aplikace vytváří certifikát, který interně začíná vytvořením klíče v trezoru klíčů.  
+  (2) - Trezor klíčů odešle certifikační autoritě žádost o certifikát TLS/SSL.  
+  (3) - Vaše aplikace dotazování, ve smyčce a čekání procesu pro trezor klíčů pro dokončení certifikátu. Vytvoření certifikátu je dokončeno, když Key Vault obdrží odpověď certifikační autority s certifikátem X.509.  
+  (4) - Certifikační autorita reaguje na žádost o certifikát TLS/SSL trezoru klíčů s certifikátem X509 TLS/SSL.  
+  (5) - Vytvoření nového certifikátu je dokončeno sloučením certifikátu X509 pro certifikační autoritu.  
 
-  Key Vault uživatel – vytvoří certifikát zadáním zásady.
+  Uživatel trezoru klíčů – vytvoří certifikát zadáním zásady
 
-  -   Opakovat podle potřeby  
-  -   Omezení zásad  
-      -   Vlastnosti x509  
-      -   Vlastnosti klíče  
-      -   Reference k poskytovateli – > ex. MyDigiCertIssure  
-      -   Informace o obnovení – > ex 90 dní před vypršením platnosti  
+  -   Opakujte podle potřeby  
+  -   Politická omezení  
+      -   Vlastnosti X509  
+      -   Základní vlastnosti  
+      -   Odkaz na zprostředkovatele - > ex. MyDigiCertIssure  
+      -   Informace o obnovení - > ex. 90 dní před vypršením platnosti  
 
-  - Proces vytvoření certifikátu je obvykle asynchronní proces a zahrnuje cyklické dotazování vašeho trezoru klíčů pro stav operace vytvoření certifikátu.  
+  - Proces vytváření certifikátů je obvykle asynchronní proces a zahrnuje dotazování trezoru klíčů pro stav operace vytvoření certifikátu.  
 [Získat operaci certifikátu](/rest/api/keyvault/getcertificateoperation/getcertificateoperation)  
-      -   Stav: dokončeno, selhalo s informacemi o chybě nebo bylo zrušeno.  
-      -   Kvůli prodlevě, která se má vytvořit, se dá iniciovat operace zrušení. Zrušení může nebo nemusí být účinné.  
+      -   Stav: dokončen, se nezdařilo s informacemi o chybě nebo bylo zrušeno  
+      -   Z důvodu zpoždění vytvořit, operace zrušení může být zahájena. Zrušení může nebo nemusí být účinné.  
 
-## <a name="import-a-certificate"></a>Importovat certifikát  
- Alternativně – certifikát lze importovat do Key Vault – PFX nebo PEM.  
+## <a name="import-a-certificate"></a>Import certifikátu  
+ Alternativně – certifikát lze importovat do trezoru klíčů – PFX nebo PEM.  
 
- Další informace o formátu PEM najdete v části certifikáty [o klíčích, tajných klíčích a certifikátech](about-keys-secrets-and-certificates.md).  
+ Další informace o formátu PEM naleznete v části Certifikáty [o klíčích, tajných klíčích a certifikátech](about-keys-secrets-and-certificates.md).  
 
- Import certifikátu – vyžaduje, aby byl PEM nebo PFX na disku a měl privátní klíč. 
--   Je nutné zadat název trezoru a název certifikátu (zásada je volitelná).
+ Importcertifikátu – vyžaduje, aby pem nebo PFX byl na disku a měl soukromý klíč. 
+-   Je nutné zadat: název úložiště a název certifikátu (zásada je nepovinná)
 
--   Soubory PEM/PFX obsahují atributy, které může KV analyzovat a použít k naplnění zásad certifikátu. Pokud je již zásada certifikátu zadána, KV se pokusí porovnat data ze souboru PFX/PEM.  
+-   Soubory PEM / PFX obsahuje atributy, které KV můžete analyzovat a použít k naplnění zásady certifikátu. Pokud je zásada certifikátu již zadána, KV se pokusí porovnat data ze souboru PFX / PEM.  
 
--   Po dokončení importu budou následné operace používat nové zásady (nové verze).  
+-   Jakmile je import konečný, následné operace budou používat nové zásady (nové verze).  
 
--   Pokud neexistují žádné další operace, první věc, na kterou Key Vault, pošle oznámení o vypršení platnosti. 
+-   Pokud nejsou žádné další operace, první věc, kterou trezor klíčů dělá, je odeslání oznámení o vypršení platnosti. 
 
--   Uživatel může také upravit zásadu, která je funkční v době importu, ale obsahuje výchozí hodnoty, při kterých nebyly při importu zadány žádné informace. Například žádné informace o vydavateli  
+-   Uživatel může také upravit zásadu, která je funkční v době importu, ale obsahuje výchozí hodnoty, kde při importu nebyly zadány žádné informace. Například žádné informace o emitentu  
 
 ### <a name="formats-of-import-we-support"></a>Formáty importu, které podporujeme
-Podporujeme následující typ importu pro formát souboru PEM. Jeden PEM kódovaný certifikát spolu s nezašifrovaným klíčem PKCS # 8, který má následující
+Podporujeme následující typ importu pro formát souboru PEM. Jeden certifikát kódovaný PEM spolu s nezašifrovaným klíčem PKCS#8, který má následující
 
------ZAČÍT CERTIFIKÁT UKONČIT---------------
+-----CERTIFIKÁTBEGIN----- -----KONEC-----
 
------SPUSTIT PRIVÁTNÍ KLÍČ----------KONCOVÝ PRIVÁTNÍ KLÍČ-----
+-----BEGIN PRIVATE KEY----- -----END PRIVATE KEY----------
 
-Při sloučení certifikátů podporujeme 2 formáty založené na PEM. Můžete buď sloučit jeden certifikát s kódováním PKCS # 8 nebo soubor P7B s kódováním base64. -----ZAČÍT CERTIFIKÁT UKONČIT---------------
+Při sloučení certifikátů podporujeme formáty založené na 2 PEM. Můžete buď sloučit jeden kódovaný certifikát PKCS#8 nebo soubor P7B kódovaný base64. -----CERTIFIKÁTBEGIN----- -----KONEC-----
 
-V současné době nepodporujeme klíče ES ve formátu PEM.
+V současné době nepodporujeme klíče EC ve formátu PEM.
 
-## <a name="creating-a-certificate-with-a-ca-not-partnered-with-key-vault"></a>Vytvoření certifikátu s certifikační autoritou, která není partnerkou Key Vault  
- Tato metoda umožňuje pracovat s jinými certifikačními autoritami než s partnerskými poskytovateli Key Vault, což znamená, že vaše organizace může pracovat s certifikační autoritou podle svého výběru.  
+## <a name="creating-a-certificate-with-a-ca-not-partnered-with-key-vault"></a>Vytvoření certifikátu s certifikační autoritou, která není partnerem trezoru klíčů  
+ Tato metoda umožňuje práci s jinými certifikačními autoritami než partnerskými poskytovateli trezoru klíčů, což znamená, že vaše organizace může pracovat s certifikační autoritou podle svého výběru.  
 
 ![Vytvoření certifikátu s vlastní certifikační autoritou](media/certificate-authority-1.png)  
 
  Následující popisy kroků odpovídají zeleným písmenům v předchozím diagramu.  
 
-  (1) – v diagramu výše vaše aplikace vytváří certifikát, který interně začíná vytvořením klíče v trezoru klíčů.  
+  (1) - Ve výše uvedeném diagramu vaše aplikace vytváří certifikát, který interně začíná vytvořením klíče v trezoru klíčů.  
 
-  (2) – Key Vault vrátí do vaší aplikace žádost o podepsání certifikátu (CSR).  
+  (2) - Trezor klíčů vrátí do vaší aplikace žádost o podpis certifikátu (CSR).  
 
-  (3) – vaše aplikace předá CSR vaší zvolené certifikační autoritě.  
+  (3) - Vaše přihláška předá zástupce společnosti vybranécertifikační autoritě.  
 
-  (4) – zvolená certifikační autorita odpoví certifikátem x509.  
+  (4) - Vámi zvolená certifikační autorita odpoví certifikátem X509.  
 
-  (5) – vaše aplikace dokončí vytváření nového certifikátu s fúzí certifikátu x509 z vaší certifikační autority.
+  (5) - Vaše přihláška dokončí vytvoření nového certifikátu sloučením certifikátu X509 od certifikační autority.
 
 ## <a name="see-also"></a>Viz také
 

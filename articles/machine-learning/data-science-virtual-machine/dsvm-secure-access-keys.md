@@ -1,8 +1,8 @@
 ---
-title: Přihlašovací údaje k zabezpečenému ukládání
+title: Bezpečné uložení přístupových přihlašovacích údajů
 titleSuffix: Azure Data Science Virtual Machine
-description: Zjistěte, jak bezpečně ukládat přihlašovací údaje pro přístup na virtuální počítač pro datové vědy. Naučíte se používat identity spravované služby a Azure Key Vault k ukládání přihlašovacích údajů pro přístup.
-keywords: obsáhlý learning, AI, nástrojů pro datové vědy, virtuální počítač pro datové vědy, geoprostorové analýzy, vědecké zpracování týmových dat
+description: Zjistěte, jak bezpečně ukládat přihlašovací údaje pro přístup do virtuálního počítače pro datové vědy. Dozvíte se, jak používat identity spravovaných služeb a Azure Key Vault k ukládání přístupových přihlašovacích údajů.
+keywords: hluboké učení, AI, nástroje pro datovou vědu, virtuální stroj pro datové vědy, geoprostorová analytika, proces vědecké analýzy týmových dat
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -10,27 +10,26 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.openlocfilehash: 17e611007d2b5400497597946159826df7aa4848
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 1cb0c5094d49eac5a1c8f63406a28d2927d8fa94
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195615"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477319"
 ---
-# <a name="store-access-credentials-securely-on-an-azure-data-science-virtual-machine"></a>Bezpečné ukládání přihlašovacích údajů pro přístup k Data Science Virtual Machine Azure
+# <a name="store-access-credentials-securely-on-an-azure-data-science-virtual-machine"></a>Bezpečně ukládat přístupová pověření na virtuálním počítači Azure Data Science
 
-Pro kód v cloudových aplikacích je běžné, že obsahuje přihlašovací údaje pro ověřování ve službě Cloud Services. Postup při správě a zabezpečení těchto přihlašovacích údajů je dobře známou výzvou při vytváření cloudových aplikací. V ideálním případě by se přihlašovací údaje neměly nikdy zobrazovat na pracovních stanicích pro vývojáře nebo se vrátit se změnami do správy zdrojového kódu.
+Je běžné, že kód v cloudových aplikacích obsahuje přihlašovací údaje pro ověřování cloudových služeb. Jak spravovat a zabezpečit tato pověření je dobře známá výzva při vytváření cloudových aplikací. V ideálním případě by se přihlašovací údaje nikdy neměly zobrazovat na vývojářských pracovních stanicích nebo se vrátit se změnami do správy zdrojového kódu.
 
 Funkce [spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) usnadňuje řešení tohoto problému tím, že poskytuje službám Azure automaticky spravovanou identitu ve službě Azure Active Directory (Azure AD). Tuto identitu můžete použít k ověření pro jakoukoli službu, která podporuje ověřování Azure AD, aniž byste ve vašem kódu museli mít přihlašovací údaje.
 
-Jedním ze způsobů zabezpečení přihlašovacích údajů je použití Instalační služba systému Windows (MSI) v kombinaci s [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/), spravovaná služba Azure pro bezpečné ukládání tajných klíčů a kryptografických klíčů. K trezoru klíčů můžete přistupovat pomocí spravované identity a pak z trezoru klíčů načíst autorizované tajné klíče a kryptografické klíče.
+Jedním ze způsobů zabezpečení přihlašovacích údajů je použití Instalační služby Systému Windows (MSI) v kombinaci s [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/), spravovanou službou Azure pro bezpečné ukládání tajných kódů a kryptografických klíčů. K trezoru klíčů můžete přistupovat pomocí spravované identity a potom načíst autorizované tajné klíče a kryptografické klíče z trezoru klíčů.
 
-Dokumentace ke spravovaným identitám pro prostředky Azure a Key Vault obsahuje ucelený prostředek pro podrobné informace o těchto službách. Zbývající část tohoto článku vás provede základní použití Instalační služby MSI a Key Vault na Data Science virtuálního počítače (datové VĚDY) přístup k prostředkům Azure. 
+Dokumentace o spravovaných identitách pro prostředky Azure a trezor klíčů obsahuje komplexní prostředek pro podrobné informace o těchto službách. Zbývající část tohoto článku vás provede základní použití MSI a key vault na virtuálním počítači datové vědy (DSVM) pro přístup k prostředkům Azure. 
 
-## <a name="create-a-managed-identity-on-the-dsvm"></a>Vytvořte spravovanou identitu na datové VĚDY 
+## <a name="create-a-managed-identity-on-the-dsvm"></a>Vytvoření spravované identity v dsvm
 
-
-```
+```azurecli-interactive
 # Prerequisite: You have already created a Data Science VM in the usual way.
 
 # Create an identity principal for the VM.
@@ -39,18 +38,18 @@ az vm assign-identity -g <Resource Group Name> -n <Name of the VM>
 az resource list -n <Name of the VM> --query [*].identity.principalId --out tsv
 ```
 
+## <a name="assign-key-vault-access-permissions-to-a-vm-principal"></a>Přiřazení přístupových oprávnění trezoru klíčů k objektu zabezpečení virtuálního připojení
 
-## <a name="assign-key-vault-access-permissions-to-a-vm-principal"></a>Přiřazení přístupových oprávnění Key Vault k objektu zabezpečení virtuálního počítače
-```
+```azurecli-interactive
 # Prerequisite: You have already created an empty Key Vault resource on Azure by using the Azure portal or Azure CLI.
 
 # Assign only get and set permissions but not the capability to list the keys.
 az keyvault set-policy --object-id <Principal ID of the DSVM from previous step> --name <Key Vault Name> -g <Resource Group of Key Vault>  --secret-permissions get set
 ```
 
-## <a name="access-a-secret-in-the-key-vault-from-the-dsvm"></a>Přístup k tajným kódem v trezoru klíčů z datové VĚDY
+## <a name="access-a-secret-in-the-key-vault-from-the-dsvm"></a>Přístup k tajnému klíči v trezoru klíčů z DSVM
 
-```
+```bash
 # Get the access token for the VM.
 x=`curl http://localhost:50342/oauth2/token --data "resource=https://vault.azure.net" -H Metadata:true`
 token=`echo $x | python -c "import sys, json; print(json.load(sys.stdin)['access_token'])"`
@@ -59,9 +58,9 @@ token=`echo $x | python -c "import sys, json; print(json.load(sys.stdin)['access
 curl https://<Vault Name>.vault.azure.net/secrets/SQLPasswd?api-version=2016-10-01 -H "Authorization: Bearer $token"
 ```
 
-## <a name="access-storage-keys-from-the-dsvm"></a>Přístupové klíče úložiště z datové VĚDY
+## <a name="access-storage-keys-from-the-dsvm"></a>Přístup k klíčům úložiště z DSVM
 
-```
+```bash
 # Prerequisite: You have granted your VMs MSI access to use storage account access keys based on instructions at https://docs.microsoft.com/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-storage. This article describes the process in more detail.
 
 y=`curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true`
@@ -70,6 +69,7 @@ curl https://management.azure.com/subscriptions/<SubscriptionID>/resourceGroups/
 
 # Now you can access the data in the storage account from the retrieved storage account keys.
 ```
+
 ## <a name="access-the-key-vault-from-python"></a>Přístup k trezoru klíčů z Pythonu
 
 ```python
@@ -99,9 +99,9 @@ secret = key_vault_client.get_secret(
 print("My secret value is {}".format(secret.value))
 ```
 
-## <a name="access-the-key-vault-from-azure-cli"></a>Přístup k trezoru klíčů z příkazového řádku Azure
+## <a name="access-the-key-vault-from-azure-cli"></a>Přístup k trezoru klíčů z Azure CLI
 
-```
+```azurecli-interactive
 # With managed identities for Azure resources set up on the DSVM, users on the DSVM can use Azure CLI to perform the authorized functions. The following commands enable access to the key vault from Azure CLI without requiring login to an Azure account.
 # Prerequisites: MSI is already set up on the DSVM as indicated earlier. Specific permissions, like accessing storage account keys, reading specific secrets, and writing new secrets, are provided to the MSI.
 

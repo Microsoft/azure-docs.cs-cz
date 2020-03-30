@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 01/22/2020
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 92c2e79910e40721a0ef62d44825bd1f3e19fc79
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 0df38533afe97f010d1050c3ee2a4a69a54d4cc7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548193"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335101"
 ---
-| Prostředek | Výchozí omezení |
+| Prostředek | Omezení |
 | --- | --- |
-| Propustnost dat |30 GB/s<sup>1</sup> |
-|Pravidla|10 000. Všechny typy pravidel jsou kombinované.|
-|Maximální počet pravidel DNAT|299|
-|Minimální velikost AzureFirewallSubnet |/26|
-|Rozsah portů v pravidlech sítě a aplikace|0 – 64000. Práce probíhá s cílem zmírnit toto omezení.|
-|Veřejné IP adresy|100 maximum (v současnosti jsou porty SNAT přidány pouze pro prvních pět veřejných IP adres.)|
-|Tabulka směrování|Ve výchozím nastavení má AzureFirewallSubnet trasu 0.0.0.0/0 s hodnotou typem nastavenou na **Internet**.<br><br>Azure Firewall musí mít přímé připojení k Internetu. Pokud vaše AzureFirewallSubnet zjišťuje výchozí trasu k místní síti přes protokol BGP, musíte přepsat to s hodnotou 0.0.0.0/0 UDR s hodnotou **typem** nastavenou jako **Internet** pro zachování přímého připojení k Internetu. Ve výchozím nastavení Azure Firewall nepodporuje vynucené tunelování v místní síti.<br><br>Pokud však vaše konfigurace vyžaduje vynucené tunelování v místní síti, společnost Microsoft je bude podporovat na základě případu. Obraťte se na podporu, abychom mohli zkontrolovat váš případ. V případě přijetí umožníme vašemu předplatnému a zajistíte, aby bylo zachováno požadované připojení k Internetu z brány firewall.|
+| Datová propustnost |30 Gb/s<sup>1</sup> |
+|Pravidla|10,000. Všechny typy pravidel v kombinaci.|
+|Maximální pravidla DNAT|299|
+|Minimální velikost azurefirewallsubnetu |/26|
+|Rozsah portů v pravidlech sítě a aplikací|0-64,000. Probíhá práce na uvolnění tohoto omezení.|
+|Veřejné IP adresy|Maximálně 100 (V současné době jsou porty SNAT přidány pouze pro prvních pět veřejných IP adres.)|
+|Tabulka směrování|Ve výchozím nastavení má azurefirewallsubnet trasu 0.0.0.0/0 s hodnotou NextHopType nastavenou na **Internet**.<br><br>Azure Firewall musí mít přímé připojení k Internetu. Pokud se vaše síť AzureFirewallSubnet učí výchozí trasu do místní sítě prostřednictvím protokolu BGP, musíte ji přepsat udr 0.0.0.0/0 s hodnotou **NextHopType** nastavenou jako **Internet,** aby bylo zachováno přímé připojení k Internetu. Ve výchozím nastavení azure firewall nepodporuje vynucené tunelové propojení do místní sítě.<br><br>Pokud však vaše konfigurace vyžaduje vynucené tunelové propojení do místní sítě, bude ji společnost Microsoft podporovat případ od případu. Kontaktujte podporu, abychom mohli váš případ zkontrolovat. Pokud bude přijato, povolíme vaše předplatné a zajistíme, aby bylo zachováno požadované připojení k internetu brány firewall.|
 
-<sup>1</sup> Pokud potřebujete tato omezení zvýšit, obraťte se na podporu Azure.
+<sup>1.</sup> Pokud potřebujete zvýšit tato omezení, obraťte se na podporu Azure.

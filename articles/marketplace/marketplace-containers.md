@@ -1,50 +1,49 @@
 ---
-title: Příručka pro publikování nabídky kontejnerů pro Azure Marketplace
+title: Průvodce publikováním nabídek kontejnerů pro Azure Marketplace
 description: Tento článek popisuje požadavky na publikování kontejnerů na webu Marketplace.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: ellacroi
-manager: nunoc
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/09/2018
-ms.author: ellacroi
-ms.openlocfilehash: ffdc6b22209c1d334ac7b75c7079e755a7405154
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 882d428d7a8a9b56408aaa68964fa1e36c7cc7c2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822993"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277302"
 ---
-# <a name="containers-offer-publishing-guide"></a>Průvodce publikováním nabídky kontejnerů
+# <a name="containers-offer-publishing-guide"></a>Průvodce publikováním nabídek kontejnerů
 
-Nabídky kontejnerů vám pomůžou publikovat image kontejneru do Azure Marketplace. Tento průvodce vám pomůže pochopit požadavky této nabídky. 
+Nabídky kontejnerů vám pomůžou publikovat image kontejneru na Azure Marketplace. V této příručce porozumíte požadavkům na tuto nabídku. 
 
-Jedná se o nabídky transakcí, které se nasazují a účtují prostřednictvím webu Marketplace. Volání akce, které uživatel vidí, je "získat hned".
+Jedná se o nabídky transakcí, které jsou nasazeny a účtovány prostřednictvím webu Marketplace. Výzva k akci, kterou uživatel vidí, je "Get It Now".
 
-Typ nabídky kontejneru použijte, pokud je vaše řešení image kontejneru Docker zřízená jako Kubernetes Azure Container Service.
+Typ nabídky Container použijte, když vaše řešení je image kontejneru Dockeru zřízená jako služba kontejneru Azure založená na Kubernetes.
 
 >[!NOTE]
->Například Kubernetes Azure Container Service, jako je Azure Kubernetes Service nebo Azure Container Instances, si můžete vybrat zákazníky Azure pro modul runtime kontejneru na bázi Kubernetes.  
+>Například kontejnerová služba Azure založená na Kubernetes, jako je služba Azure Kubernetes Service nebo Azure Container Instances, volba zákazníků Azure pro runtime kontejnerů založených na Kubernetes.  
 
-Microsoft v současné době podporuje bezplatných licenčních modelů (BYOL).
+Společnost Microsoft v současné době podporuje bezplatné licenční modely (BYOL) s vlastní licencí.
 
 ## <a name="containers-offer"></a>Nabídka kontejnerů
 
 | Požadavek | Podrobnosti |  
 |:--- |:--- |  
-| Fakturace a měření | Podpora modelu fakturace Free nebo BYOL. |  
-| Obrázek sestavený z souboru Dockerfile | Image kontejneru musí být založené na specifikaci image Docker a musí být sestavená z souboru Dockerfile.<ul> <li>Další informace o vytváření imagí Docker najdete v části věnované použití na adrese [docs.docker.com/engine/reference/builder/#usage](https://docs.docker.com/engine/reference/builder/#usage).</li> </ul> |  
-| Hostování v ACR | Image kontejneru musí být hostované v úložišti Azure Container Registry (ACR).<ul> <li>Další informace o práci s ACR najdete v rychlém startu: vytvoření registru kontejnerů pomocí stránky Azure Portal nacházející se na [docs.Microsoft.com/Azure/Container-Registry/Container-Registry-Get-Started-Portal](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal).</li> </ul> |  
-| Označení obrázku | Image kontejneru musí obsahovat alespoň 1 značku (maximální počet značek: 16).<ul> <li>Další informace o označování obrázku najdete na stránce značky Docker, která se nachází na adrese [docs.Docker.com/Engine/reference/CommandLine/tag](https://docs.docker.com/engine/reference/commandline/tag).</li> </ul> |  
+| Fakturace a měření | Podporujte bezplatný nebo BYOL fakturační model. |  
+| Obrázek vytvořený z Dockerfile | Image kontejneru musí být založeny na specifikaci image Dockeru a musí být sestaveny z dockerfile.<ul> <li>Další informace o vytváření iniciátorů naleznete v části Využití na [docs.docker.com/engine/reference/builder/#usage](https://docs.docker.com/engine/reference/builder/#usage).</li> </ul> |  
+| Hosting v ACR | Inaly kontejnerů musí být hostované v úložišti registru kontejnerů Azure (ACR).<ul> <li>Další informace o práci s ACR najdete na úvodním panelu: Vytvoření registru kontejnerů pomocí stránky portálu Azure umístěné na [docs.microsoft.com/azure/container-registry/container-registry-get-started-portal](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal).</li> </ul> |  
+| Označování obrázků | Image kontejneru musí obsahovat alespoň 1 značku (maximální počet značek: 16).<ul> <li>Další informace o označování bitové kopie najdete na stránce značky dockeru umístěné na [docs.docker.com/engine/reference/commandline/tag](https://docs.docker.com/engine/reference/commandline/tag).</li> </ul> |  
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste to ještě neudělali, 
+Pokud jste tak ještě neučinili, 
 
-- [Zaregistrujte](https://azuremarketplace.microsoft.com/sell) se na webu Marketplace.
+- [Zaregistrujte se](https://azuremarketplace.microsoft.com/sell) na trhu.
 
-Pokud jste zaregistrováni a vytváříte novou nabídku nebo pracujete na stávajícím typu,
+Pokud jste zaregistrováni a vytváříte novou nabídku nebo pracujete na stávající nabídce,
 
-- [Přihlaste se k portál partnerů cloudu](https://cloudpartner.azure.com) a vytvořte nebo dokončete vaši nabídku.
-- Další informace najdete v tématu [kontejnery](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer) .
+- [Přihlaste se na portál cloudových partnerů](https://cloudpartner.azure.com) a vytvořte nebo dokončete svou nabídku.
+- Další informace naleznete v [tématu Kontejnery.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer)

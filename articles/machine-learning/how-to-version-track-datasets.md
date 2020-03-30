@@ -1,40 +1,40 @@
 ---
-title: Správa verzí datových sad
+title: Správa verzí datové sady
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak nejlépe nastavovat datové sady a jak funguje Správa verzí s kanály strojového učení.
+description: Zjistěte, jak nejlépe vytvořit verzi datových sad a jak funguje správa verzí s kanály strojového učení.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: sihhu
-author: sihhu
+author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.custom: ''
-ms.openlocfilehash: 7b124c0f35b5cfda4380555385971e4968d4c45c
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: acbd2e3ba756255cbc69ae8a7b7ad62d7a1c1c5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78939249"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79528468"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Verze a sledování datových sad v experimentech
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto článku se dozvíte, jak verze a sledování Azure Machine Learning datových sad pro reprodukovatelnost. Správa verzí datových sad je způsob, jak můžete založit stav vašich dat, abyste pro budoucí experimenty mohli použít konkrétní verzi datové sady.
+V tomto článku se dozvíte, jak verzi a sledovat azure machine learning datové sady pro reprodukovatelnost. Správa verzí datové sady je způsob, jak zařadit do záložek stav dat, abyste mohli použít určitou verzi datové sady pro budoucí experimenty.
 
 Typické scénáře správy verzí:
 
-* Když jsou nová data dostupná pro přeškolení
-* Při použití různých přístupů k přípravě dat nebo technickému řízení funkcí
+* Jsou-li k dispozici nové údaje pro rekvalifikaci
+* Při použití různých přístupů k přípravě dat nebo k inženýrským prvkům
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Pro tento kurz potřebujete:
+Pro účely tohoto kurzu potřebujete:
 
-- [Sada Azure Machine Learning SDK pro Python je nainstalována](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py). Tato sada SDK obsahuje balíček [AzureML-DataSets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset?view=azure-ml-py) .
+- [Nainstalovaná sada Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py). Tato sada SDK obsahuje balíček [azureml-datasets.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset?view=azure-ml-py)
     
-- [Pracovní prostor Azure Machine Learning](concept-workspace.md). Načtěte existující kód spuštěním následujícího kódu nebo [vytvořte nový pracovní prostor](how-to-manage-workspace.md).
+- Pracovní [prostor Azure Machine Learning](concept-workspace.md). Načtěte existující pomocí následujícího kódu nebo [vytvořte nový pracovní prostor](how-to-manage-workspace.md).
 
     ```Python
     import azureml.core
@@ -42,17 +42,17 @@ Pro tento kurz potřebujete:
     
     ws = Workspace.from_config()
     ```
-- [Azure Machine Learning datovou sadu](how-to-create-register-datasets.md).
+- [Datová sada Azure Machine Learning](how-to-create-register-datasets.md).
 
 <a name="register"></a>
 
-## <a name="register-and-retrieve-dataset-versions"></a>Registrovat a načíst verze datové sady
+## <a name="register-and-retrieve-dataset-versions"></a>Registrace a načtení verzí datové sady
 
-Když zaregistrujete datovou sadu, můžete ji verze, znovu použít a sdílet mezi experimenty a kolegy. Můžete registrovat více datových sad pod stejným názvem a načíst konkrétní verzi podle názvu a čísla verze.
+Registrací datové sady můžete ji používat, znovu používat a sdílet mezi experimenty a s kolegy. Můžete zaregistrovat více datových sad pod stejným názvem a načíst konkrétní verzi podle názvu a čísla verze.
 
 ### <a name="register-a-dataset-version"></a>Registrace verze datové sady
 
-Následující kód zaregistruje novou verzi `titanic_ds` datové sady nastavením parametru `create_new_version` na `True`. Pokud není v pracovním prostoru registrována žádná `titanic_ds` DataSet, kód vytvoří novou datovou sadu s názvem `titanic_ds` a nastaví její verzi na 1.
+Následující kód registruje novou verzi `titanic_ds` datové sady `create_new_version` nastavením `True`parametru na . Pokud neexistuje žádná `titanic_ds` existující datová sada registrovaná v pracovním prostoru, kód `titanic_ds` vytvoří novou datovou sadu s názvem a nastaví její verzi na 1.
 
 ```Python
 titanic_ds = titanic_ds.register(workspace = workspace,
@@ -60,13 +60,13 @@ titanic_ds = titanic_ds.register(workspace = workspace,
                                  description = 'titanic training data',
                                  create_new_version = True)
 ```
-Novou verzi datové sady můžete zaregistrovat taky na 
+Novou verzi datové sady můžete také zaregistrovat na adrese 
 
-### <a name="retrieve-a-dataset-by-name"></a>Načíst datovou sadu podle názvu
+### <a name="retrieve-a-dataset-by-name"></a>Načtení datové sady podle názvu
 
-Ve výchozím nastavení metoda [get_by_name ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) na `Dataset` třídě vrátí nejnovější verzi datové sady registrované v pracovním prostoru. 
+Ve výchozím nastavení vrátí metoda `Dataset` [get_by_name()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) ve třídě nejnovější verzi datové sady registrované v pracovním prostoru. 
 
-Následující kód Získá verzi 1 `titanic_ds` datové sady.
+Následující kód získá verzi `titanic_ds` 1 datové sady.
 
 ```Python
 from azureml.core import Dataset
@@ -78,16 +78,16 @@ titanic_ds = Dataset.get_by_name(workspace = workspace,
 
 <a name="best-practice"></a>
 
-## <a name="versioning-best-practice"></a>Osvědčené postupy správy verzí
+## <a name="versioning-best-practice"></a>Osvědčený postup správy verzí
 
-Při vytváření verze datové sady *nevytváříte* další kopii dat v pracovním prostoru. Vzhledem k tomu, že datové sady odkazují na data ve vaší službě úložiště, máte k dispozici jeden zdroj pravdy, který spravuje vaše služba úložiště.
+Když vytvoříte verzi datové sady, *nevytváříte* další kopii dat s pracovním prostorem. Vzhledem k tomu, že datové sady jsou odkazy na data ve službě úložiště, máte jediný zdroj pravdy, spravovaný službou úložiště.
 
 >[!IMPORTANT]
-> Pokud jsou data, na která datová sada odkazuje, přepsána nebo odstraněna, volání konkrétní verze datové sady *nevrátí změnu* .
+> Pokud jsou data odkazovaná vaší datovou sadou přepsána nebo odstraněna, volání určité verze datové sady změnu *nevrátí.*
 
-Při načítání dat z datové sady je aktuální datový obsah odkazovaný datovou sadou vždy načten. Pokud se chcete ujistit, že je každá verze datové sady reprodukovatelná, doporučujeme Neupravovat datový obsah, na který odkazuje verze datové sady. Když jsou nová data dostupná v, uložte nové datové soubory do samostatné datové složky a pak vytvořte novou verzi datové sady, která bude obsahovat data z této nové složky.
+Při načítání dat z datové sady se vždy načte aktuální datový obsah, na který datová sada odkazuje. Pokud se chcete ujistit, že každá verze datové sady je reprodukovatelná, doporučujeme neupravovat datový obsah, na který odkazuje verze datové sady. Když přijdou nová data, uložte nové datové soubory do samostatné datové složky a vytvořte novou verzi datové sady, která bude obsahovat data z této nové složky.
 
-Následující obrázek a ukázkový kód ukazují doporučený způsob, jak strukturovat vaše složky dat a vytvářet verze datových sad, které na tyto složky odkazují:
+Následující obrázek a ukázkový kód ukazují doporučený způsob, jak strukturovat datové složky a vytvořit verze datové sady, které odkazují na tyto složky:
 
 ![Struktura složek](./media/how-to-version-track-datasets/folder-image.png)
 
@@ -119,9 +119,9 @@ dataset2.register(workspace = workspace,
 
 ## <a name="version-a-pipeline-output-dataset"></a>Verze výstupní datové sady kanálu
 
-Datovou sadu můžete použít jako vstup a výstup každého kroku Machine Learning kanálu. Při opětovném spuštění kanálů bude výstup každého kroku kanálu zaregistrován jako nová verze datové sady.
+Datovou sadu můžete použít jako vstup a výstup každého kroku kanálu Machine Learning. Při opětovném spuštění potrubí je výstup každého kroku kanálu registrován jako nová verze datové sady.
 
-Vzhledem k tomu, že Machine Learning potrubí naplní výstup každého kroku do nové složky pokaždé, když se kanál znovu spustí, výstupní datové sady se správou verzí budou reprodukovatelné. Přečtěte si další informace o [datových sadách v kanálech](how-to-create-your-first-pipeline.md#steps).
+Vzhledem k tomu, že kanály Machine Learning naplní výstup každého kroku do nové složky při každém opakování kanálu, jsou výstupní datové sady s verzí reprodukovatelné. Další informace o [datových sadách v kanálech](how-to-create-your-first-pipeline.md#steps).
 
 ```Python
 from azureml.core import Dataset
@@ -155,11 +155,11 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 <a name="track"></a>
 
-## <a name="track-datasets-in-experiments"></a>Sledovat datové sady v experimentech
+## <a name="track-datasets-in-experiments"></a>Sledování datových sad v experimentech
 
-Pro každý Machine Learning experiment můžete snadno trasovat datové sady použité jako vstup prostřednictvím objektu experiment `Run`.
+Pro každý experiment Machine Learning můžete snadno sledovat datové sady `Run` použité jako vstup prostřednictvím objektu experimentu.
 
-Následující kód používá metodu [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--) pro sledování, které vstupní datové sady byly použity při spuštění experimentu:
+Následující kód používá [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--) metodu ke sledování vstupních datových sad, které byly použity při spuštění experimentu:
 
 ```Python
 # get input datasets
@@ -170,9 +170,9 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-`input_datasets` můžete také vyhledat z experimentů pomocí https://ml.azure.com/. 
+Můžete také najít `input_datasets` z experimentů pomocí https://ml.azure.com/. 
 
-Následující obrázek ukazuje, kde najít vstupní datovou sadu experimentu v Azure Machine Learning Studiu. V tomto příkladu přejdete do podokna **experimenty** a otevřete kartu **vlastnosti** pro konkrétní spuštění experimentu, `keras-mnist`.
+Následující obrázek ukazuje, kde najít vstupní datovou sadu experimentu ve studiu Azure Machine Learning. V tomto příkladu přejděte do podokna **Experimenty** a otevřete `keras-mnist`kartu **Vlastnosti** pro konkrétní běh experimentu .
 
 ![Vstupní datové sady](./media/how-to-version-track-datasets/input-datasets.png)
 
@@ -184,13 +184,13 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-Po registraci můžete zobrazit seznam modelů registrovaných s datovou sadou pomocí Pythonu nebo přejít na https://ml.azure.com/.
+Po registraci můžete zobrazit seznam modelů registrovaných v datové sadě https://ml.azure.com/pomocí Pythonu nebo přejít na .
 
-Následující zobrazení je z podokna datové **sady** v části **assety**. Vyberte datovou sadu a pak vyberte kartu **modely** pro seznam modelů, které jsou zaregistrované s datovou sadou. 
+Následující zobrazení je z podokna **Datové sady** v části **Datové zdroje**. Vyberte datovou sadu a pak vyberte kartu **Modely** pro seznam modelů, které jsou registrovány v datové sadě. 
 
-![Vstupní modely datových sad](./media/how-to-version-track-datasets/dataset-models.png)
+![Modely vstupních datových sad](./media/how-to-version-track-datasets/dataset-models.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Výuka s datovými sadami](how-to-train-with-datasets.md)
-* [Další ukázkové poznámkové bloky datové sady](https://aka.ms/dataset-tutorial)
+* [Trénování s datovými sadami](how-to-train-with-datasets.md)
+* [Další ukázkové poznámkové bloky datových sad](https://aka.ms/dataset-tutorial)

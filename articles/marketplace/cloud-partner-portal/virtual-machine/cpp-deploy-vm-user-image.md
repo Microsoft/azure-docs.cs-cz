@@ -1,47 +1,46 @@
 ---
-title: Nasazení virtuálního počítače Azure z virtuálního pevného disku uživatele | Azure Marketplace
-description: Vysvětluje, jak nasadit image virtuálního pevného disku (VHD) uživatele pro vytvoření instance virtuálního počítače Azure.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Nasazení virtuálního počítače Azure z uživatelského virtuálního pevného disku | Azure Marketplace
+description: Vysvětluje, jak nasadit image virtuálního pevného disku uživatele k vytvoření instance virtuálního počítače Azure.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/29/2018
-ms.author: pabutler
-ms.openlocfilehash: 8421e9b7b7e2b7d13054e977da83be044b4e6af7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 957bc187b0123338947f62333c913cf82a6c66a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73816647"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277952"
 ---
-# <a name="deploy-an-azure-vm-from-a-user-vhd"></a>Nasazení virtuálního počítače Azure z virtuálního pevného disku uživatele
+# <a name="deploy-an-azure-vm-from-a-user-vhd"></a>Nasazení virtuálního počítače Azure z uživatelského virtuálního pevného disku
 
-Tento článek vysvětluje, jak nasadit zobecněnou image VHD pro vytvoření nového prostředku virtuálního počítače Azure pomocí dodané Azure Resource Manager šablony a Azure PowerShell skriptu.
+Tento článek vysvětluje, jak nasadit zobecněnou image virtuálního pevného disku k vytvoření nového prostředku virtuálního počítače Azure pomocí dodané šablony Azure Resource Manager a skriptu Azure PowerShell.
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="vhd-deployment-template"></a>Šablona nasazení VHD
 
-Zkopírujte šablonu Azure Resource Manager pro [nasazení VHD](cpp-deploy-json-template.md) do místního souboru s názvem `VHDtoImage.json`.  Úpravou tohoto souboru zadejte hodnoty pro následující parametry. 
+Zkopírujte šablonu Azure Resource Manager pro nasazení `VHDtoImage.json` [virtuálního pevného disku](cpp-deploy-json-template.md) do místního souboru s názvem .  Upravte tento soubor a zadejte hodnoty pro následující parametry. 
 
-|  **Ukazatele**             |   **Popis**                                                              |
+|  **Parametr**             |   **Popis**                                                              |
 |  -------------             |   ---------------                                                              |
-| ResourceGroupName          | Název existující skupiny prostředků Azure  Typicky používejte stejný RG přidružený k vašemu trezoru klíčů.  |
-| TemplateFile               | Úplná cesta k souboru `VHDtoImage.json`                                    |
+| ResourceGroupName          | Název existující skupiny prostředků Azure.  Obvykle používejte stejný RG přidružený k trezoru klíčů  |
+| Soubor šablony               | Úplný název cesty k souboru`VHDtoImage.json`                                    |
 | userStorageAccountName     | Název účtu úložiště                                                    |
-| sNameForPublicIP           | Název DNS pro veřejnou IP adresu. Musí být malá                                  |
+| sNameForPublicIP           | Název DNS pro veřejnou IP adresu. Musí být malá písmena                                  |
 | subscriptionId             | Identifikátor předplatného Azure                                                  |
-| Umístění                   | Standardní zeměpisná poloha služby Azure pro skupinu prostředků                       |
+| Umístění                   | Standardní geografické umístění Azure skupiny prostředků                       |
 | vmName                     | Název virtuálního počítače                                                    |
-| vaultName                  | Název trezoru klíčů                                                          |
+| název trezoru                  | Název trezoru klíčů                                                          |
 | vaultResourceGroup         | Skupina prostředků trezoru klíčů
-| certificateUrl             | Adresa URL certifikátu, včetně verze uložené v trezoru klíčů, například: `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` |
+| certificateUrl             | Url certifikátu, včetně verze uložené v trezoru klíčů, například:`https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` |
 | vhdUrl                     | Adresa URL virtuálního pevného disku                                                   |
 | vmSize                     | Velikost instance virtuálního počítače                                           |
 | publicIPAddressName        | Název veřejné IP adresy                                                  |
 | virtualNetworkName         | Název virtuální sítě                                                    |
-| nicName                    | Název karty síťového rozhraní pro virtuální síť                     |
+| nicNázev                    | Název karty síťového rozhraní pro virtuální síť                     |
 | adminUserName              | Uživatelské jméno účtu správce                                          |
 | adminPassword              | Heslo správce                                                          |
 |  |  |
@@ -49,7 +48,7 @@ Zkopírujte šablonu Azure Resource Manager pro [nasazení VHD](cpp-deploy-json-
 
 ## <a name="powershell-script"></a>Powershellový skript
 
-Zkopírováním a úpravou následujícího skriptu zadejte hodnoty pro proměnné `$storageaccount` a `$vhdUrl`.  Spusťte ho k vytvoření prostředku virtuálního počítače Azure ze stávajícího zobecněného virtuálního pevného disku.
+Zkopírujte a upravte následující skript `$storageaccount` `$vhdUrl` pro zadání hodnot pro proměnné a.  Spusťte jej k vytvoření prostředku virtuálního počítače Azure z existujícího generalizovaného virtuálního pevného disku.
 
 ```powershell
 # storage account of existing generalized VHD 
@@ -67,4 +66,4 @@ New-AzResourceGroupDeployment -Name "dplisvvm$postfix" -ResourceGroupName "$rgNa
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nasazení virtuálního počítače budete připraveni k [certifikaci vaší image virtuálního počítače](./cpp-certify-vm.md).
+Po nasazení virtuálního počítače jste připraveni [certifikovat image virtuálního počítače](./cpp-certify-vm.md).

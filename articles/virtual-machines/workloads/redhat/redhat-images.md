@@ -1,6 +1,6 @@
 ---
-title: Red Hat Enterprise Linux imagí v Azure | Microsoft Docs
-description: Přečtěte si o Red Hat Enterprise Linuxch imagí v Microsoft Azure.
+title: Image Red Hat Enterprise Linux v Azure | Dokumenty společnosti Microsoft
+description: Přečtěte si o inacích Red Hat Enterprise Linux v Microsoft Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
@@ -12,174 +12,174 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 7913cb888e1799efae0f3ecdf3391d19736cc273
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: f06c4304be67fbc2f3116375dae33b10228723a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970156"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239878"
 ---
-# <a name="overview-of-red-hat-enterprise-linux-images"></a>Přehled Red Hat Enterprise Linuxch imagí
+# <a name="overview-of-red-hat-enterprise-linux-images"></a>Přehled obrázků Red Hat Enterprise Linux
 
-Tento článek popisuje dostupné Red Hat Enterprise Linux (RHEL) imagí v Azure Marketplace a zásadách pro jejich pojmenování a uchovávání.
+Tento článek popisuje dostupné image Red Hat Enterprise Linux (RHEL) na Azure Marketplace a zásady týkající se jejich pojmenování a uchovávání.
 
-Informace o zásadách podpory Red Hat pro všechny verze RHEL najdete v tématu [Red Hat Enterprise Linux životní cyklus](https://access.redhat.com/support/policy/updates/errata). Podrobnosti o cenách najdete v tématu [Cenová Kalkulačka Azure](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
+Informace o zásadách podpory Red Hat pro všechny verze rhel, naleznete v tématu [Red Hat Enterprise Linux životní cyklus](https://access.redhat.com/support/policy/updates/errata). Podrobnosti o cenách najdete v [tématu Azure pricing calculator](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
 >[!IMPORTANT]
-> RHEL image aktuálně dostupné v Azure Marketplace podporují i modely licencování BYOS (Přineste si vlastní předplatné) nebo průběžné platby. [Zvýhodněné hybridní využití Azure](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) a dynamické přepínání mezi BYOS a licencováním s průběžnými platbami se nepodporují. Chcete-li přepnout režim licencování, musíte virtuální počítač znovu nasadit z odpovídající image.
+> Image RHEL, které jsou momentálně dostupné na Azure Marketplace, podporují buď modely licencování s průběžnými platbami s vaším vlastním předplatným (BYOS), nebo s průběžnými licenčními modely. [Výhoda hybridního využití Azure](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) a dynamické přepínání mezi BYOS a licencováním s průběžnými platbami není podporováno. Chcete-li přepnout režim licencování, je nutné znovu nasadit virtuální ho virtuálního zařízení z odpovídající bitové kopie.
 
 >[!NOTE]
-> Pro všechny problémy související s RHEL obrázky v Azure Marketplace si zaregistrujte lístek podpory s Microsoftem.
+> Pro všechny problémy související s ibi RHEL na Azure Marketplace, soubor lístek podpory s Microsoftem.
 
-## <a name="view-images-available-in-azure"></a>Zobrazení imagí dostupných v Azure
+## <a name="view-images-available-in-azure"></a>Zobrazení ibi dostupných v Azure
 
-Při hledání "Red Hat" v Azure Marketplace nebo při vytváření prostředku v uživatelském rozhraní Azure Portal se zobrazí pouze podmnožina všech dostupných imagí RHEL. Úplnou sadu dostupných imagí virtuálních počítačů můžete kdykoli získat pomocí rozhraní příkazového řádku Azure CLI, PowerShellu a rozhraní API.
+Když hledáte "Red Hat" na Azure Marketplace nebo když vytvoříte prostředek v unovém rozhraní portálu Azure, uvidíte jenom podmnožinu všech dostupných ibií RHEL. Celou sadu dostupných ibi virtuálních počítačů můžete získat vždy pomocí rozhraní API Azure, PowerShellu a rozhraní API.
 
-Pokud chcete zobrazit úplnou sadu dostupných imagí Red Hat v Azure, spusťte následující příkaz:
+Chcete-li zobrazit úplnou sadu dostupných ibi Red Hat v Azure, spusťte následující příkaz:
 
 ```azurecli-interactive
 az vm image list --publisher RedHat --all
 ```
 
-### <a name="naming-convention"></a>Konvence pojmenování
+### <a name="naming-convention"></a>Konvence
 
-Image virtuálních počítačů v Azure jsou seřazené podle vydavatele, nabídky, SKU a verze. Kombinace vydavatele: nabídka: SKU: verze je identifikátor URN image a jednoznačně identifikuje obrázek, který se má použít.
+Image virtuálních her v Azure jsou uspořádané podle vydavatele, nabídky, skladové položky a verze. Kombinace Publisher:Offer:SKU:Version je verno image a jednoznačně identifikuje obrázek, který má být použit.
 
-`RedHat:RHEL:7-LVM:7.6.2018103108` například odkazuje na bitovou kopii RHEL 7,6 LVM-partition vytvořenou 31. října 2018.
+Například `RedHat:RHEL:8-LVM:8.1.20200318` odkazuje na OBRÁZEK rhel 8.1 LVM-partitioned postavený na 18 března 2020.
 
-Ukázka, jak vytvořit virtuální počítač s RHEL 7,6, se zobrazí zde.
+Ukázka vytvoření virtuálního virtuálního jevu RHEL 8.1, která se zobrazí zde.
 
 ```azurecli-interactive
-az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-LVM:7.6.2018103108 --no-wait
+az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:8.1.20200318 --no-wait
 ```
 
-### <a name="the-latest-moniker"></a>Moniker "poslední"
+### <a name="the-latest-moniker"></a>"Nejnovější" zástupné spoje
 
-Azure REST API umožňuje použít moniker "nejnovější" pro verzi místo konkrétní verze. Při použití možnosti "poslední" se zřídí nejnovější dostupná image pro daného vydavatele, nabídku a SKU.
+Rozhraní API Azure REST umožňuje použití zástupného název "nejnovější" pro verzi namísto konkrétní verze. Použití "nejnovější" ustanovení nejnovější dostupné image pro daného vydavatele, nabídky a skladové položky.
 
-`RedHat:RHEL:7-LVM:latest` například odkazuje na nejnovější dostupnou bitovou kopii RHEL 7 Family LVM-Partitioned.
+Například `RedHat:RHEL:8-LVM:latest` odkazuje na nejnovější RHEL 8 řady LVM rozdělenimage k dispozici.
 
 ```azurecli-interactive
-az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-LVM:latest --no-wait
+az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:latest --no-wait
 ```
 
 >[!NOTE]
-> Obecně platí, že porovnání verzí za účelem určení nejnovější následuje pravidla [metody CompareTo](https://msdn.microsoft.com/library/a5ts8tb6.aspx).
-Porovnání verzí tohoto obrázku je provedeno porovnáním hodnot jako objektu [verze](https://docs.microsoft.com/dotnet/api/system.version.-ctor?view=netframework-4.8) , nikoli jako řetězce.
+> Obecně platí porovnání verzí k určení nejnovější postupujte podle pravidel [CompareTo metody](https://msdn.microsoft.com/library/a5ts8tb6.aspx).
+Toto porovnání verzí bitové kopie se provádí porovnáním hodnot jako objektu [Version,](https://docs.microsoft.com/dotnet/api/system.version.-ctor?view=netframework-4.8) nikoli jako řetězce.
 
-## <a name="rhel-6-image-types"></a>Typy imagí RHEL 6
+## <a name="rhel-6-image-types"></a>RHEL 6 typů obrázků
 
-Pro image RHEL 6. x jsou typy obrázků uvedené v následující tabulce.
+U obrazů RHEL 6.x jsou typy obrázků zobrazeny v následující tabulce.
 
-|Vydavatel | Nabídka | Hodnota SKU | Verze | Podrobnosti
+|Vydavatel | Nabídka | Hodnota skladové položky | Version | Podrobnosti
 |----------|-------|-----------|---------|--------
-|RedHat | RHEL | Dílčí verze (například 6,9) | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 6.9.2018010506) | Všechny standardní image RHEL 6. x se řídí touto konvencí.
-|RedHat | RHEL – BYOS | RHEL – raw69 | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 6.9.20181023) | Tato Image je image RHEL 6,9 BYOS.
-|RedHat | RHEL | RHEL-SAP-APPS | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 6.8.2017053118) | Tato Image je image RHEL 6,8 pro aplikace SAP. Má oprávnění k přístupu k úložištím aplikací SAP a základním úložištím RHEL.
-|RedHat | RHEL | RHEL-SAP-HANA | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 6.7.2017053121) | Tento obrázek je RHEL 6,7 pro Image SAP HANA. Má přístup k SAP HANA úložišť a základních úložišť RHEL.
+|RedHat | RHEL | Dílčí verze (například 6.9) | Zřetězené hodnoty dílčí verze RHEL a data publikována (například 6.9.2018010506) | Všechny standardní obrázky RHEL 6.x se řídí touto úmluvou.
+|RedHat | rhel-byos | rhel-raw69 | Zřetězené hodnoty dílčí verze RHEL a data publikována (například 6.9.20181023) | Tento obrázek je rhel 6.9 BYOS obraz.
+|RedHat | RHEL | RHEL-SAP-APPS | Zřetězené hodnoty dílčí verze RHEL a data publikována (například 6.8.2017053118) | Tento obrázek je rhel 6.8 pro SAP aplikace image. Má právo na přístup k úložištím SAP Applications a základním úložištím RHEL.
+|RedHat | RHEL | RHEL-SAP-HANA | Zřetězené hodnoty dílčí verze RHEL a data publikována (například 6.7.2017053121) | Tento obrázek je RHEL 6.7 pro SAP HANA image. Má právo na přístup k úložištím SAP HANA a základním úložištím RHEL.
 
-## <a name="rhel-7-image-types"></a>RHEL 7 – typy obrázků
+## <a name="rhel-7-image-types"></a>Typy obrázků RHEL 7
 
-Pro image RHEL 7. x existuje několik různých typů obrázků. V následující tabulce jsou uvedeny různé sady imagí, které nabízíme. Pokud chcete zobrazit úplný seznam, použijte příkaz Azure CLI `az vm image list --publisher redhat --all`.
-
->[!NOTE]
-> Pokud není uvedeno jinak, všechny image jsou LVM rozdělené do oddílů a připojují se k běžným úložištím RHEL. To znamená, že v úložištích nejsou Rozšířená podpora aktualizací (EUS) a ne služby aktualizace pro SAP (E4S). Až budete přesměrováni na publikování pouze imagí LVM, ale otevře se pro názory na toto rozhodnutí. Další informace o podpoře rozšířených aktualizací a aktualizacích služeb pro SAP najdete v tématu [Red Hat Enterprise Linux životní cyklus](https://access.redhat.com/support/policy/updates/errata).
-
-|Vydavatel | Nabídka | Hodnota SKU | Verze | Podrobnosti
-|----------|-------|------------|---------|--------
-|RedHat | RHEL | Dílčí verze (například 7,6) | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 7.6.2019102813) | Image publikované před dubna 2019 jsou připojené ke standardním úložištím RHEL. Image publikované po dubna 2019 jsou připojené k úložištím EUS Red Hat, aby bylo možné uzamknout určitou verzi konkrétní dílčí verze. Zákazníci, kteří chtějí pravidelná úložiště, by měli použít image, které v hodnotě SKU obsahují 7 – LVM nebo 7-RAW (podrobnosti následují). RHEL 7,7 a novější obrázky jsou LVM rozdělené na oddíly. Všechny ostatní obrázky v této kategorii jsou nezpracované dělené.
-|RedHat | RHEL | 7 – RAW | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 7.6.2019102813) | Tyto image nejsou rozdělené do oddílů (například nebyly přidány žádné logické svazky).
-|RedHat | RHEL | 7-RAW-CI | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 7.6.2019072418) | Tyto image nejsou rozdělené do oddílů (například nepřidaly se žádné logické svazky) a pro zřizování používají Cloud-init.
-|RedHat | RHEL | 7 – LVM | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 7.6.2019062414) | Tyto image jsou LVM rozdělené do oddílů.
-|RedHat | RHEL – BYOS | RHEL-{LVM, RAW} | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 7.7.20190819) | Tyto image jsou image BYOS v RHEL 7. Nejsou připojené k žádným úložištím a poplatky za RHEL Premium se neúčtují. Pokud máte zájem o image RHEL BYOS, [vyžádejte si přístup](https://aka.ms/rhel-byos). Hodnoty SKU končí podverzí a označují, zda je obrázek RAW nebo LVM rozdělený na oddíly. Například hodnota SKU RHEL-lvm77 označuje obrázek RHEL 7,7 s LVM oddíly.
-|RedHat | RHEL | RHEL-SAP | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 7.6.2019071300) | Tyto image jsou RHEL pro Image SAP. Mají nárok na přístup k úložištím SAP HANA a aplikacím a také k úložištím E4S v RHEL. Účtování zahrnuje RHEL Premium a SAP Premium nad základním výpočetním poplatkem.
-|RedHat | RHEL | RHEL-SAP-HA | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 7.6.2019062320) | Tyto image jsou RHEL pro SAP s imagí pro vysokou dostupnost a službu Update Services. Mají oprávnění k přístupu k úložištím SAP HANA a aplikací a k úložištím s vysokou dostupností a také k úložištím RHEL E4S. Účtování zahrnuje základní výpočetní poplatek na úrovni Premium RHEL Premium, SAP Premium a vysoká dostupnost.
-|RedHat | RHEL | RHEL-HA | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 7.6.2019062019) | Tyto image jsou RHEL obrázky, které mají také oprávnění k přístupu k doplňku vysoké dostupnosti. Účtují se trochu navíc nad RHEL a základním poplatkem za výpočetní výkon v důsledku doplňku vysoké dostupnosti Premium.
-|RedHat | RHEL | RHEL-SAP-APPS | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 7.3.2017053118) | Tyto image jsou zastaralé, protože aplikace SAP a SAP HANA úložiště byly sloučeny do úložišť SAP. Tyto image jsou RHEL pro Image aplikací SAP. Mají oprávnění získat přístup k úložištím aplikací SAP a základním úložištím RHEL.
-|RedHat | RHEL | RHEL-SAP-HANA | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 7.3.2018051421) | Tyto image jsou zastaralé, protože aplikace SAP a SAP HANA úložiště byly sloučeny do úložišť SAP. Tyto obrázky jsou RHEL for SAP HANA obrázky. Mají oprávnění pro přístup k SAP HANA úložišť a základních úložišť RHEL.
-
-## <a name="rhel-8-image-types"></a>Typy imagí RHEL 8
-
-Podrobnosti o typech imagí RHEL 8 jsou uvedené níže.
-
-|Vydavatel | Nabídka | Hodnota SKU | Verze | Podrobnosti
-|----------|-------|------------|---------|--------
-|RedHat | RHEL | 8 | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 8.0.20191023) | Tyto image jsou image RHEL 8,0 LVM-dělené bitové kopie připojené ke standardním úložištím Red Hat.
-|RedHat | RHEL | 8 – Gen2 | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 8.0.20191024) | Tyto image jsou Hyper-V Generation 2 RHEL 8,0 LVM-dělené image připojené ke standardním úložištím Red Hat. Další informace o virtuálních počítačích 2. generace v Azure najdete v tématu [Podpora virtuálních počítačů 2. generace v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2).
-
-## <a name="rhel-longer-support-add-ons"></a>RHEL už podporuje doplňky.
-
-### <a name="extended-update-support"></a>Podpora rozšířené aktualizace
-
-Od dubna 2019 jsou k dispozici image RHEL, které jsou ve výchozím nastavení připojené k úložištím EUS. Další informace o RHEL EUS najdete v [dokumentaci k Red Hat](https://access.redhat.com/articles/rhel-eus).
-
-Přepínání na úložiště EUS je možné a podporuje se. Pokyny, jak přepnout virtuální počítač na EUS a další informace o datech ukončení životnosti EUS, najdete v článku [RHEL EUS a virtuální počítače s zámky verze RHEL](https://aka.ms/rhui-update#rhel-eus-and-version-locking-rhel-vms).
+U obrázků RHEL 7.x existuje několik různých typů obrázků. V následující tabulce jsou uvedeny různé sady obrázků, které nabízíme. Pokud chcete zobrazit úplný seznam, použijte `az vm image list --publisher redhat --all`příkaz Azure CLI .
 
 >[!NOTE]
-> EUS se v RHEL Extras nepodporuje. To znamená, že pokud nainstalujete balíček, který je obvykle dostupný z kanálu RHEL Extras, nebudete ho moct v EUS použít. Další informace o životním cyklu produktu Red Hat extra získáte v tématu [Red Hat Enterprise Linux životní cyklus dalších](https://access.redhat.com/support/policy/updates/extras/).
+> Pokud není uvedeno jinak, všechny obrázky jsou rozděleny do oddílů LVM a připojují se k běžným repozitářům RHEL. To znamená, že úložiště nejsou rozšířená podpora aktualizací (EUS) a nejsou aktualizační služby pro SAP (E4S). Do budoucna se přesouváme k publikování pouze lvm-partitioned obrázky, ale jsou otevřeny pro zpětnou vazbu na toto rozhodnutí. Další informace o rozšířené podpoře aktualizací a aktualizačních službách pro SAP naleznete [v tématu Red Hat Enterprise Linux life cycle](https://access.redhat.com/support/policy/updates/errata).
 
-#### <a name="differentiate-between-regular-and-eus-images"></a>Rozlišení mezi pravidelnými a EUS obrázky
+|Vydavatel | Nabídka | Hodnota skladové položky | Version | Podrobnosti
+|----------|-------|------------|---------|--------
+|RedHat | RHEL | Dílčí verze (například 7.6) | Zřetězené hodnoty dílčí verze RHEL a data publikována (například 7.6.2019102813) | Obrázky publikované před dubnem 2019 jsou připojeny ke standardním repozitářům RHEL. Obrázky zveřejněné po dubnu 2019 jsou připojeny k repozitářům EUS společnosti Red Hat, aby bylo možné uzamknout verzi konkrétní dílčí verze. Zákazníci, kteří chtějí pravidelné repozitáře, by měli používat obrázky, které obsahují 7-LVM nebo 7-RAW v hodnotě Skladové položky (podrobnosti následují). Rhel 7.7 a novější obrázky jsou LVM rozděleny. Všechny ostatní obrázky v této kategorii jsou nezpracované oddíly.
+|RedHat | RHEL | 7-SUROVÝ | Zřetězené hodnoty dílčí verze RHEL a data publikována (například 7.6.2019102813) | Tyto obrázky jsou nezpracované rozdělené (například nebyly přidány žádné logické svazky).
+|RedHat | RHEL | 7-RAW-CI | Zřetězené hodnoty dílčí verze RHEL a data publikována (například 7.6.2019072418) | Tyto image jsou nezpracované rozdělené (například nebyly přidány žádné logické svazky) a používají cloud-init pro zřizování.
+|RedHat | RHEL | 7-LVM | Zřetězené hodnoty dílčí verze RHEL a data publikována (například 7.6.2019062414) | Tyto obrázky jsou LVM rozděleny.
+|RedHat | rhel-byos | rhel-{lvm,raw} | Zřetězené hodnoty dílčí verze RHEL a data publikována (například 7.7.20190819) | Tyto obrázky jsou obrazy RHEL 7 BYOS. Nejsou připojeny k žádným úložištím a nebudou účtovat prémiový poplatek RHEL. Máte-li zájem o obrázky RHEL BYOS, [požádejte o přístup](https://aka.ms/rhel-byos). Hodnoty skladové položky končí dílčí verzí a označují, zda je bitová kopie nezpracovaná nebo lVM rozdělená na oddíly. Například hodnota skladové položky rhel-lvm77 označuje bitovou kopii RHEL 7.7 s oddíly LVM.
+|RedHat | RHEL | RHEL-SAP | Zřetězené hodnoty dílčí verze RHEL a data publikována (například 7.6.2019071300) | Tyto obrázky jsou RHEL pro obrázky SAP. Mají právo na přístup k úložištím SAP HANA a Aplikací, stejně jako k úložištím RHEL E4S. Fakturace zahrnuje prémii RHEL a prémii SAP nad základní výpočetní poplatek.
+|RedHat | RHEL | RHEL-SAP-HA | Zřetězené hodnoty dílčí verze RHEL a data publikována (například 7.6.2019062320) | Tyto obrázky jsou RHEL pro SAP s vysokou dostupností a aktualizace služby obrázky. Mají právo na přístup k úložištím SAP HANA a Aplikacím a úložištím s vysokou dostupností, stejně jako k úložištím RHEL E4S. Fakturace zahrnuje prémii RHEL, prémii SAP a prémii s vysokou dostupností nad základní výpočetní poplatek.
+|RedHat | RHEL | RÝM-HA | Zřetězené hodnoty dílčí verze RHEL a data publikována (například 7.6.2019062019) | Tyto obrázky jsou obrázky RHEL, které mají také nárok na přístup k doplňku Vysoká dostupnost. Účtují si mírně navíc na vrcholu RHEL a základní výpočetní poplatek kvůli doplňkové muka s vysokou dostupností.
+|RedHat | RHEL | RHEL-SAP-APPS | Zřetězené hodnoty dílčí verze RHEL a data publikována (například 7.3.2017053118) | Tyto obrázky jsou zastaralé, protože aplikace SAP a úložiště SAP HANA byly sloučeny do úložišť SAP. Tyto obrázky jsou RHEL pro sap aplikace obrázky. Mají právo na přístup k úložištím SAP Applications a základním úložištím RHEL.
+|RedHat | RHEL | RHEL-SAP-HANA | Zřetězené hodnoty dílčí verze RHEL a data publikována (například 7.3.2018051421) | Tyto obrázky jsou zastaralé, protože aplikace SAP a úložiště SAP HANA byly sloučeny do úložišť SAP. Tyto obrázky jsou RHEL pro obrázky SAP HANA. Mají právo na přístup k úložištím SAP HANA a základním úložištím RHEL.
 
-Zákazníci, kteří chtějí používat image připojené k úložištím EUS, by měli použít image RHEL, která obsahuje číslo podverze RHEL v SKU.
+## <a name="rhel-8-image-types"></a>Rhel 8 typů obrázků
 
-Můžete například zobrazit následující dvě dostupné image RHEL 7,4.
+Podrobnosti o typech obrázků RHEL 8 jsou uvedeny níže.
+
+|Vydavatel | Nabídka | Hodnota skladové položky | Version | Podrobnosti
+|----------|-------|------------|---------|--------
+|RedHat | RHEL | 8 | Zřetězené hodnoty dílčí verze RHEL a data publikována (například 8.0.20191023) | Tyto obrázky jsou RHEL 8 LVM-dělené obrazy připojené ke standardním Red Hat repozitářů.
+|RedHat | RHEL | 8 gen2 | Zřetězené hodnoty dílčí verze RHEL a data publikována (například 8.0.20191024) | Tyto obrázky jsou Hyper-V Generace 2 RHEL 8 LVM-dělené obrazy připojené ke standardním Red Hat repozitáře. Další informace o virtuálních počítačích generace 2 v Azure najdete v [tématu Podpora virtuálních počítačích generace 2 v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2).
+
+## <a name="rhel-longer-support-add-ons"></a>Doplňky s delší podporou RHEL
+
+### <a name="extended-update-support"></a>Rozšířená podpora aktualizací
+
+Od dubna 2019 jsou k dispozici obrázky RHEL, které jsou ve výchozím nastavení připojeny k úložištím EUS. Více informací o RHEL EUS je k dispozici v [dokumentaci red hatu](https://access.redhat.com/articles/rhel-eus).
+
+Přechod na repozitáře EUS je možný a je podporován. Pokyny, jak přepnout virtuální počítač na EUS a další informace o termínech ukončení životnosti podpory EUS, najdete v [tématu RHEL EUS a virtuálnípočítače RHEL .](https://aka.ms/rhui-update#rhel-eus-and-version-locking-rhel-vms)
+
+>[!NOTE]
+> EUS není podporována na RHEL Extras. To znamená, že pokud nainstalujete balíček, který je obvykle k dispozici z kanálu RHEL Extras, nebudete tak moci učinit v EUS. Další informace o životním cyklu produktu Red Hat Extras najdete v [tématu Red Hat Enterprise Linux Extras životní cyklus](https://access.redhat.com/support/policy/updates/extras/).
+
+#### <a name="differentiate-between-regular-and-eus-images"></a>Rozlišovat mezi pravidelnými obrázky a obrázky EUS
+
+Zákazníci, kteří chtějí používat obrázky připojené k úložištím EUS, by měli používat bitovou kopii RHEL, která obsahuje číslo dílčí verze RHEL ve skladové jednotce.
+
+Například se mohou zobrazit následující dva obrázky RHEL 7.4 k dispozici.
 
 ```bash
 RedHat:RHEL:7-LVM:7.6.2019062414
 RedHat:RHEL:7.6:7.6.2019102813
 ```
 
-V takovém případě je ve výchozím nastavení `RedHat:RHEL:7.6:7.6.2019102813` k úložištím EUS připojena. Hodnota SKU je 7,4. A `RedHat:RHEL:7-LVM:7.6.2019062414` jsou ve výchozím nastavení připojeny k úložištím bez EUS. Hodnota SKU je 7 – LVM.
+V tomto `RedHat:RHEL:7.6:7.6.2019102813` případě je ve výchozím nastavení připojen k úložištím EUS. Hodnota skladové položky je 7,4. A `RedHat:RHEL:7-LVM:7.6.2019062414` ve výchozím nastavení je připojen k úložištím mimo EUS. Hodnota skladové položky je 7-LVM.
 
-Chcete-li používat pravidelná úložiště (bez EUS), použijte obrázek, který neobsahuje číslo podverze v SKU.
+Chcete-li používat běžné úložiště (mimo EUS), použijte obrázek, který ve skladové jednotce neobsahuje číslo dílčí verze.
 
-#### <a name="rhel-images-with-eus"></a>Image RHEL s EUS
+#### <a name="rhel-images-with-eus"></a>Obrázky RHEL s EUS
 
-Informace v následující tabulce se vztahují na RHEL image připojené k úložištím EUS.
+Informace v následující tabulce platí pro obrázky RHEL, které jsou připojeny k úložištím EUS.
 
 >[!NOTE]
-> V době psaní mají EUS podporu jenom RHEL 7,4 a novější podverze. EUS se už nepodporuje pro RHEL < = 7.3.
+> V době psaní tohoto článku mají podporu EUS pouze verze RHEL 7.4 a novější verze. EUS již není podporována pro rhel <=7.3.
 >
-> Další informace o dostupnosti RHEL EUS najdete v tématu [Red Hat Enterprise Linux životní cyklus](https://access.redhat.com/support/policy/updates/errata).
+> Další informace o dostupnosti RHEL EUS naleznete [v tématu Red Hat Enterprise Linux life cycle](https://access.redhat.com/support/policy/updates/errata).
 
-Dílčí verze |Příklad obrázku EUS              |Stav EUS                                                   |
+Podverze |Příklad obrázku EUS              |Status EUS                                                   |
 :-------------|:------------------------------|:------------------------------------------------------------|
-RHEL 7,4      |RedHat: RHEL: 7.4:7.4.2019041718 | Obrázky publikované v dubnu 2019 a novějších jsou ve výchozím nastavení EUS.|
-RHEL 7.5      |RedHat: RHEL: 7.5:7.5.2019060305 | Obrázky publikované od června 2019 a novějších jsou EUS ve výchozím nastavení. |
-RHEL 7,6      |RedHat: RHEL: 7.6:7.6.2019052206 | Publikované obrázky mohou být 2019 a novější EUS ve výchozím nastavení. |
-RHEL 8.0      |neuvedeno                            | V Red Hat není k dispozici žádný EUS.                               |
+RHEL 7,4      |RedHat:RHEL:7.4:7.4.2019041718 | Obrázky zveřejněné v dubnu 2019 a později jsou ve výchozím nastavení eus.|
+RHEL 7.5      |RedHat:RHEL:7.5:7.5.2019060305 | Obrázky zveřejněné v červnu 2019 a později jsou ve výchozím nastavení eus. |
+RHEL 7,6      |RedHat:RHEL:7.6:7.6.2019052206 | Obrázky zveřejněné v květnu 2019 a později jsou ve výchozím nastavení eus. |
+RHEL 8,0      |Není dostupné.                            | Od Red Hatu není k dispozici žádný EUS.                               |
 
-### <a name="update-services-for-sap"></a>Aktualizace služeb pro SAP
+### <a name="update-services-for-sap"></a>Aktualizovat služby pro SAP
 
-Nejnovější image RHEL for SAP budou připojeny ke službám Update Services for SAP Solutions Subscriptions (E4S). Další informace o E4S najdete v [dokumentaci](https://access.redhat.com/support/policy/updates/errata#Update_Services_for_SAP_Solutions)k Red Hat.
+Nejnovější image RHEL pro SAP budou připojeny k předplatným aktualizačních služeb pro řešení SAP (E4S). Další informace o e4S naleznete v [dokumentaci](https://access.redhat.com/support/policy/updates/errata#Update_Services_for_SAP_Solutions)k Red Hat .
 
-#### <a name="rhel-images-with-e4s"></a>Image RHEL s E4S
+#### <a name="rhel-images-with-e4s"></a>Obrázky RHEL s E4S
 
-Obrázky z následujících nabídek vytvořené po prosinci 2019 jsou připojené k úložištím E4S:
+Obrázky z následujících nabídek vytvořených po prosinci 2019 jsou připojeny k úložištím E4S:
 
 * RHEL-SAP (RHEL pro SAP)
-* RHEL-SAP-HA (RHEL pro SAP s vysokou dostupností a aktualizací Update Services)
+* RHEL-SAP-HA (RHEL pro SAP s vysokou dostupností a aktualizačními službami)
 
 ## <a name="other-available-offers-and-skus"></a>Další dostupné nabídky a SKU
 
-Úplný seznam dostupných nabídek a SKU může obsahovat další obrázky nad rámec toho, co je uvedeno v předchozí tabulce. Příklad: `RedHat:rhel-ocp-marketplace:rhel74:7.4.1`. Tyto nabídky mohou sloužit k poskytování podpory pro konkrétní řešení na webu Marketplace. Nebo mohou být publikovány pro účely verze Preview a testování. Můžou se kdykoli změnit nebo odebrat bez upozornění. Nepoužívejte je, pokud je jejich přítomnost veřejně dokumentována společností Microsoft nebo Red Hat.
+Úplný seznam dostupných nabídek a sku mohou obsahovat další obrázky nad rámec toho, co je uvedeno v předchozí tabulce. Příklad: `RedHat:rhel-ocp-marketplace:rhel74:7.4.1`. Tyto nabídky mohou být použity k poskytování podpory pro konkrétní řešení marketplace. Nebo mohou být publikovány pro účely náhledů a testování. Mohou být kdykoli bez varování změněny nebo odstraněny. Nepoužívejte je, pokud jejich přítomnost není veřejně zdokumentována společností Microsoft nebo Red Hat.
 
 ## <a name="publishing-policy"></a>Zásady publikování
 
-Obrázky aktualizací Microsoft a Red Hat jako nové podverze se uvolňují podle požadavků na konkrétní běžné chyby zabezpečení a hrozby (CVEs) nebo příležitostné změny nebo aktualizace konfigurace. Usilujeme o poskytování aktualizovaných imagí co nejdříve během tří pracovních dnů po vydání nebo dostupnosti CVE opravy.
+Microsoft a Red Hat aktualizace bitových kopií jako nové dílčí verze jsou vydávány, podle potřeby řešit konkrétní běžné chyby zabezpečení a expozice (CVEs) nebo pro příležitostné změny konfigurace nebo aktualizace. Snažíme se poskytovat aktualizované obrázky co nejdříve do tří pracovních dnů po vydání nebo dostupnosti opravy CVE.
 
-Aktualizujeme jenom aktuální dílčí verzi v dané rodině imagí. S vydáním novější dílčí verze zastavíme aktualizaci starší podverze. Například s vydáním RHEL 7,6 se již neaktualizují image RHEL 7,5.
+Aktualizujeme pouze aktuální dílčí verzi v dané rodině obrázků. S vydáním novější dílčí verze přestaneme aktualizovat starší dílčí verzi. Například s vydáním RHEL 7.6, RHEL 7.5 obrázky již nejsou aktualizovány.
 
 >[!NOTE]
-> Aktivní virtuální počítače Azure zřízené z RHEL imagí s průběžnými platbami jsou připojené ke službě Azure RHUI a můžou dostávat aktualizace a opravy hned po vydání Red Hat a replikovat do Azure RHUI. Načasování je obvykle méně než 24 hodin po oficiální verzi Red Hat. Tyto virtuální počítače pro získání aktualizací nevyžadují novou publikovanou image. Zákazníci mají plnou kontrolu nad tím, kdy se má aktualizace zahájit.
+> Aktivní virtuální počítače Azure zřízené z bitových kopií RHEL s průběžnými platbami jsou připojené k Azure RHUI a můžou přijímat aktualizace a opravy, jakmile je vydá Red Hat a replikuje do Azure RHUI. Načasování je obvykle méně než 24 hodin po oficiálním vydání Red Hat. Tyto virtuální virtuální měšce nevyžadují novou publikovanou bitovou kopii pro získání aktualizací. Zákazníci mají plnou kontrolu nad tím, kdy chcete aktualizaci zahájit.
 
-## <a name="image-retention-policy"></a>Zásady uchovávání imagí
+## <a name="image-retention-policy"></a>Zásady uchovávání obrázků
 
-Aktuální zásada zachová všechny dřív publikované image. Vyhrazujeme si právo odebrat obrázky, u kterých se říká, že způsobují problémy jakéhokoli druhu. Například Image s nesprávnými konfiguracemi z důvodu pozdější aktualizace platformy nebo součásti mohou být odebrány. Image, které by se mohly odebrat, se řídí zásadami aktuální Azure Marketplace a poskytují oznámení až 30 dnů před odebráním obrázku.
+Aktuální zásadou je zachovat všechny dříve publikované obrázky. Vyhrazujeme si právo odstranit obrázky, o kterých je známo, že způsobují problémy jakéhokoli druhu. Například obrázky s nesprávnou konfigurací z důvodu následné aktualizace platformy nebo součásti mohou být odebrány. Image, které mohou být odebrány, se řídí aktuálními zásadami Azure Marketplace a poskytují oznámení až 30 dní před odebráním bitové kopie.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokud chcete zobrazit úplný seznam imagí RHEL v Azure, přečtěte si část [Red Hat Enterprise Linux (RHEL) imagí dostupné v Azure](./redhat-imagelist.md).
-* Další informace o infrastruktuře aktualizací Red Hat najdete v tématu [infrastruktura aktualizace Red Hat pro virtuální počítače RHEL na vyžádání v Azure](https://aka.ms/rhui-update).
-* Další informace o nabídce BYOS pro RHEL Red Hat Enterprise Linux najdete v článku o tom, jak se v Azure naučíte používat [zlaté image pro vlastní odběry](./byos.md).
-* Informace o zásadách podpory Red Hat pro všechny verze RHEL najdete v tématu [Red Hat Enterprise Linux životní cyklus](https://access.redhat.com/support/policy/updates/errata).
+* Úplný seznam ibi v YRV u Něj najdete v tématu [Image Red Hat Enterprise Linux (RHEL) dostupné v Azure](./redhat-imagelist.md).
+* Další informace o infrastruktuře aktualizací Azure Red Hat najdete v [tématu Infrastruktura aktualizací Red Hat pro virtuální počítače RHEL na vyžádání v Azure](https://aka.ms/rhui-update).
+* Další informace o nabídce RHEL BYOS najdete v tématu [Red Hat Enterprise Linux , který vám přinese vlastní předplatné, zlaté obrázky v Azure](./byos.md).
+* Informace o zásadách podpory Red Hat pro všechny verze rhel, naleznete v tématu [Red Hat Enterprise Linux životní cyklus](https://access.redhat.com/support/policy/updates/errata).
