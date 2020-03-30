@@ -1,24 +1,23 @@
 ---
-title: Vytvoření nebo úprava nabídky | Azure Marketplace
-description: Rozhraní API k vytvoření nové nebo aktualizace a stávající nabídky
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Vytvořit nebo upravit nabídku | Azure Marketplace
+description: ROZHRANÍ API pro vytvoření nové nebo aktualizace a existující nabídky.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: bfb9cfbe2c63caafef8487015f42a05b98afa29c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 681e71fae161100c8804f95980b9e9567dcf1863
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819715"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288610"
 ---
 <a name="create-or-modify-an-offer"></a>Vytvoření nebo úprava nabídky
 =========================
 
-Toto volání aktualizuje konkrétní nabídku v rámci oboru názvů vydavatele nebo vytvoří novou nabídku.
+Toto volání aktualizuje konkrétní nabídku v oboru názvů vydavatele nebo vytvoří novou nabídku.
 
   `PUT https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>?api-version=2017-10-31`
 
@@ -28,25 +27,25 @@ Toto volání aktualizuje konkrétní nabídku v rámci oboru názvů vydavatele
 
 |  **Název**         |  **Popis**                      |  **Datový typ**  |
 |  --------         |  ----------------                     |  -------------  |
-| publisherId       |  Identifikátor vydavatele, například `contoso` |   Řetězec |
-| Hodnotami OfferId           |  Identifikátor nabídky                     |   Řetězec        |
-| verze API-Version       |  Nejnovější verze rozhraní API            |   Datum           |
+| id vydavatele       |  Identifikátor vydavatele, například`contoso` |   Řetězec |
+| offerId           |  Identifikátor nabídky                     |   Řetězec        |
+| verze-api       |  Nejnovější verze rozhraní API            |   Datum           |
 |  |  |  |
 
 <a name="header"></a>Hlavička
 ------
 
-|  **Název**        |  **Hodnota**               |
+|  **Název**        |  **Hodnotu**               |
 |  ---------       |  ----------              | 
 | Typ obsahu     | `application/json`       |
 | Autorizace    | `Bearer YOUR_TOKEN`      |
 |  |  |
 
 
-<a name="body-example"></a>Příklad textu
+<a name="body-example"></a>Příklad těla
 ------------
 
-Následující příklad vytvoří nabídku s hodnotami OfferId `contosovirtualmachine`.
+Následující příklad vytvoří nabídku s `contosovirtualmachine`offerID aplikace .
 
 ### <a name="request"></a>Žádost
 
@@ -240,23 +239,23 @@ Následující příklad vytvoří nabídku s hodnotami OfferId `contosovirtualm
 ```
 
 > [!NOTE]
-> Pokud chcete tuto nabídku upravit, přidejte do výše uvedené žádosti záhlaví **If-Match** nastavené na *. Použijte stejný text žádosti, jak je uvedeno výše, ale upravte hodnoty podle potřeby. 
+> Chcete-li tuto nabídku upravit, přidejte k výše uvedenému požadavku sadu hlavičky **If-Match** na * . Použijte stejné tělo požadavku, jak je uvedeno výše, ale upravte hodnoty podle potřeby. 
 
 
-### <a name="response-status-codes"></a>Stavové kódy odpovědí
+### <a name="response-status-codes"></a>Stavové kódy odpovědi
 
-| **Znakovou**  |  **Popis**                                                                            |
+| **kód**  |  **Popis**                                                                            |
 | --------  |  ---------------                                                                            |
 |  200      | `OK`. Požadavek byl úspěšně zpracován a nabídka byla úspěšně změněna.           |
 |  201      | `Created`. Požadavek byl úspěšně zpracován a nabídka byla úspěšně vytvořena.   |
-|  400      | `Bad/Malformed request`. Tělo odpovědi na chyby může poskytnout další informace.            |
+|  400      | `Bad/Malformed request`. Tělo odpovědi na chybu může poskytnout další informace.            |
 |  403      | `Forbidden`. Klient nemá přístup k požadovanému oboru názvů.                     |
-|  404      | `Not found`. Entita, na kterou odkazuje klient, neexistuje.                           |
-|  412      | Server nesplňuje jednu z podmínek, které žadatel zadal v žádosti. Klient by měl kontrolovat ETAG odeslaný s požadavkem. |
+|  404      | `Not found`. Entita, na kterou klient odkazuje, neexistuje.                           |
+|  412      | Server nesplňuje jednu z podmínek, které žadatel zadal v požadavku. Klient by měl zkontrolovat ETAG odeslané s požadavkem. |
 |  |  |
 
 
-<a name="uploading-artifacts"></a>Nahrávají se artefakty.
+<a name="uploading-artifacts"></a>Nahrávání artefaktů
 -------------------
 
-Artefakty, jako jsou obrázky a loga, byste měli sdílet tak, že je nahrajete do přístupného umístění na webu, a pak každý jako identifikátor URI v žádosti PUT, jako v předchozím příkladu. Systém zjistí, že tyto soubory nejsou k dispozici v úložišti Azure Marketplace, a stáhne tyto soubory do úložiště.  V důsledku toho zjistíte, že budoucí požadavky GET vrátí adresu URL služby Azure Marketplace pro tyto soubory.
+Artefakty, jako jsou obrázky a loga, by měly být sdíleny jejich nahráním do přístupného umístění na webu, pak včetně každého jako URI v požadavku PUT, jako v příkladu výše. Systém zjistí, že tyto soubory nejsou k dispozici v úložišti Azure Marketplace a stáhnout tyto soubory do úložiště.  V důsledku toho zjistíte, že budoucí požadavky GET vrátí adresu URL služby Azure Marketplace pro tyto soubory.

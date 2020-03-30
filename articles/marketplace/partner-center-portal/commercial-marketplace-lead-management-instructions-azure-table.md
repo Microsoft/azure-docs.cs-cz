@@ -1,44 +1,43 @@
 ---
 title: Tabulka Azure | Azure Marketplace
-description: Konfigurace správy zájemců pro Azure Table
-services: Azure, Marketplace, commercial marketplace, Partner Center
+description: Konfigurace správy potenciálních zákazníků pro Azure Table.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.author: evansma
-ms.openlocfilehash: 9b24e6eb714c531b49ba08591bf4ed33d0f10101
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: f511a60b533d6d1e0b1ae8847d0ee0fb6be3500c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812338"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288831"
 ---
 # <a name="configure-lead-management-using-an-azure-table"></a>Konfigurace správy potenciálních zákazníků pomocí tabulky Azure
 
-Pokud se v partnerském centru pro příjem Azure Marketplacech a AppSourcech potenciálních zákazníků nepodporovaný systém pro správu vztahů se zákazníky (CRM), můžete k obsluze těchto zájemců použít tabulku Azure. Pak můžete exportovat data a importovat je do systému CRM. Pokyny v tomto článku vás provedou procesem vytvoření účtu Azure Storage a tabulky Azure pod tímto účtem. Kromě toho můžete vytvořit nový tok pomocí Microsoft Flow k odeslání e-mailového oznámení, když vaše nabídka dostane zájemce.
+Pokud váš systém správy vztahů se zákazníky (CRM) není explicitně podporován v Centru partnerů pro příjem zájemců Azure Marketplace a AppSource, můžete k zpracování těchto zájemců použít tabulku Azure. Potom můžete data exportovat a importovat je do systému CRM. Pokyny v tomto článku vás provede procesem vytvoření účtu Azure Storage a tabulky Azure pod tímto účtem. Kromě toho můžete pomocí Microsoft Flow vytvořit nový tok a odeslat e-mailové oznámení, když vaše nabídka obdrží zájemce.
 
 ## <a name="configure-azure-table"></a>Konfigurace tabulky Azure
 
-1. Pokud nemáte účet Azure, můžete si [vytvořit bezplatný zkušební účet](https://azure.microsoft.com/pricing/free-trial/).
-2. Po aktivním účtu Azure se přihlaste k [Azure Portal](https://portal.azure.com).
-3. V Azure Portal vytvořte pomocí následujícího postupu účet úložiště.  
-    1. V levém panelu nabídek vyberte **+ vytvořit prostředek** .  **Nové** podokno (okno) se zobrazí vpravo.
-    2. V podokně **Nový** vyberte **úložiště** .  Na pravé straně se zobrazí **vybraný** seznam.
-    3. Vyberte **účet úložiště** a začněte vytvářet účet.  Postupujte podle pokynů v článku [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
+1. Pokud nemáte účet Azure, můžete [si vytvořit bezplatný zkušební účet](https://azure.microsoft.com/pricing/free-trial/).
+2. Až bude váš účet Azure aktivní, přihlaste se na [portál Azure](https://portal.azure.com).
+3. Na webu Azure Portal vytvořte účet úložiště pomocí následujícího postupu.  
+    1. V levém řádku nabídek vyberte **+Vytvořit zdroj.**  Vpravo se zobrazí podokno **Nový** (okno).
+    2. V **novém** podokně vyberte **Úložiště.**  Vpravo se zobrazí seznam **Doporučené.**
+    3. Chcete-li zahájit vytváření účtu, vyberte **účet úložiště.**  Postupujte podle pokynů v článku [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
 
         ![Postup vytvoření účtu úložiště Azure](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-create.png)
 
-        Další informace o účtech úložiště získáte po výběru [kurzu rychlý Start](https://docs.microsoft.com/azure/storage/).  Další informace o cenách služby Storage najdete v tématu [ceny služby Storage](https://azure.microsoft.com/pricing/details/storage/).
+        Další informace o účtech úložiště získáte výběrem [možnosti Úvodní kurz .](https://docs.microsoft.com/azure/storage/)  Další informace o cenách úložiště najdete v [tématu ceny za úložiště](https://azure.microsoft.com/pricing/details/storage/).
 
-4. Počkejte, než se zřídí účet úložiště, což je proces, který obvykle trvá několik minut.  Pak k účtu úložiště přistupujete z **domovské** stránky Azure Portal výběrem možnosti **Zobrazit všechny prostředky** nebo výběrem možnosti **všechny prostředky** v levém navigačním panelu Azure Portal.
+4. Počkejte, až se zřídí váš účet úložiště, proces, který obvykle trvá několik minut.  Pak přistupte ke svému účtu úložiště z **domovské** stránky portálu Azure výběrem **Zobrazit všechny vaše prostředky** nebo výběrem všechny **prostředky** z levého navigačního panelu nabídky na portálu Azure.
 
-    ![Přístup k účtu služby Azure Storage](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png)
+    ![Přístup k účtu úložiště Azure](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png)
 
-5. V podokně účtu úložiště vyberte **přístupové klíče** a zkopírujte hodnotu *připojovacího řetězce* pro tento klíč. Tuto hodnotu uložte, protože se jedná o hodnotu *připojovacího řetězce účtu úložiště* , kterou budete muset zadat na portálu pro publikování a získat zájemce pro vaši nabídku na webu Marketplace. 
+5. V podokně účtu úložiště vyberte **přístupové klíče** a zkopírujte hodnotu *připojovacího řetězce* pro klíč. Uložte tuto hodnotu, protože se jedná o hodnotu *připojovacího řetězce účtu úložiště,* kterou budete muset zadat na portálu pro publikování, abyste získali zájemce pro vaši nabídku marketplace. 
 
-    Příkladem připojení Sting je:
+    Příkladem připojení sting je:
 
     ```sql
     DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net
@@ -46,149 +45,149 @@ Pokud se v partnerském centru pro příjem Azure Marketplacech a AppSourcech po
 
     ![Klíč úložiště Azure](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png)
 
-6. V podokně účtu úložiště vyberte **tabulky** a vyberte **+ tabulka** pro vytvoření tabulky. Zadejte název tabulky a vyberte **OK**. Tuto hodnotu uložte, protože ji budete potřebovat, pokud chcete nakonfigurovat MS flow, který bude dostávat e-mailová oznámení při přijetí zájemců.
+6. V podokně účtu úložiště vyberte **Tabulky** a vyberte **+Tabulka** pro vytvoření tabulky. Zadejte název tabulky a vyberte **OK**. Tuto hodnotu uložte tak, jak ji budete potřebovat, pokud chcete nakonfigurovat Tok MS pro příjem e-mailových oznámení při přijetí zájemců.
 
     ![Tabulky Azure](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-tables.png)
 
-    K zobrazení dat v tabulce úložiště můžete použít [Průzkumníka služby Azure Storage](https://archive.codeplex.com/?p=azurestorageexplorer) nebo jakýkoli jiný nástroj. Data můžete také exportovat v tabulce Azure. 
+    Data v tabulce úložiště můžete zobrazit pomocí [Průzkumníka úložiště Azure](https://archive.codeplex.com/?p=azurestorageexplorer) nebo jiného nástroje. Data můžete také exportovat v tabulce Azure. 
 
-## <a name="optional-use-microsoft-flow-with-an-azure-table"></a>Volitelné Použití Microsoft Flow s tabulkou Azure  
+## <a name="optional-use-microsoft-flow-with-an-azure-table"></a>(Nepovinné) Použití Microsoft Flow s tabulkou Azure  
 
-[Microsoft Flow](https://docs.microsoft.com/flow/) můžete použít k automatizaci oznámení pokaždé, když se do tabulky Azure přidá zájemce. Pokud účet nemáte, můžete si [zaregistrovat bezplatný účet](https://flow.microsoft.com/).
+[Microsoft Flow](https://docs.microsoft.com/flow/) můžete použít k automatizaci oznámení při každém přidání zájemce do tabulky Azure. Pokud účet nemáte, můžete si [zaregistrovat bezplatný účet](https://flow.microsoft.com/).
 
-### <a name="lead-notification-example"></a>Příklad oznámení zájemce
+### <a name="lead-notification-example"></a>Příklad oznámení o potenciálních zákazníků
 
-Tento příklad slouží jako Průvodce vytvořením jednoduchého toku, který automaticky pošle e-mailové oznámení při přidání nového zájemce do tabulky Azure. V tomto příkladu se nastaví opakování pro odeslání informací o vedoucích každé hodiny, pokud se aktualizuje tabulka úložiště.
+Tento příklad použijte jako vodítko k vytvoření jednoduchého toku, který automaticky odešle e-mailové oznámení při přidání nového zájemce do tabulky Azure. Tento příklad nastaví opakování pro odesílání informací o zájemcích každou hodinu, pokud je aktualizováno úložiště tabulky.
 
-1. Přihlaste se k účtu Microsoft Flow.
-2. V levém navigačním panelu vyberte **Moje toky**.
-3. V horním navigačním panelu vyberte **+ Nový**.  
-4. V rozevíracím seznamu vyberte **+ naplánované – od prázdné** .
+1. Přihlaste se ke svému účtu Microsoft Flow.
+2. Na levém navigačním panelu vyberte **Moje toky**.
+3. Na horním navigačním panelu vyberte **+ Nový**.  
+4. V rozevíracím seznamu vyberte **+ Naplánované - z prázdné**
 
-   ![Moje toky * * + naplánované – od prázdné * *](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-scheduled-from-blank.png)
+   ![Moje toky **+ Naplánováno - z prázdné**](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-scheduled-from-blank.png)
 
-5.  V okně *sestavit naplánovaný tok* v části *opakovat každé* vyberte 1 pro interval a hodiny pro četnost. Pokud chcete, pojmenujte tok také. Vyberte **Vytvořit**.
+5.  V *sestavení naplánovaného toku* okna v části *Opakovat každý* výběr "1" pro interval a "hodina" pro frekvenci. Také uveďte název toku, pokud se vám líbí. Vyberte **Vytvořit**.
 
     >[!Note]
-    >I když tento příklad používá interval 1 hodiny, můžete vybrat interval a frekvenci, které nejlépe vyhovuje vašim obchodním potřebám.
+    >I když tento příklad používá interval 1 hodin, můžete vybrat interval a frekvenci, která je nejlepší pro vaše obchodní potřeby.
 
-    ![Sestavte naplánovaný tok.](./media/commercial-marketplace-lead-management-instructions-azure-table/build-scheduled-flow.png)
+    ![Vytvořte naplánovaný tok.](./media/commercial-marketplace-lead-management-instructions-azure-table/build-scheduled-flow.png)
 
 6. Vyberte **+ Nový krok**.
-7. V okně *Zvolte akci* vyhledejte "získat čas a" a potom v části Akce vyberte **získat uplynulý čas** .
+7. V části Zvolit okno *akce* vyhledejte "získat čas" a pak v části Akce vyberte **Získat čas.**
 
-   ![Vyberte akci.](./media/commercial-marketplace-lead-management-instructions-azure-table/choose-an-action.png)
+   ![Zvolte akci.](./media/commercial-marketplace-lead-management-instructions-azure-table/choose-an-action.png)
 
-8. V okně **načíst minulý čas** nastavte **interval** na 1. V rozevíracím seznamu **Časová jednotka** vyberte **hodina**.
+8. V okně **Získat za čas** nastavte **interval** na 1. V rozevíracím seznamu **Jednotky času** vyberte **Hodina**.
 
     >[!Important]
-    >Ujistěte se, že tento interval a Časová jednotka odpovídají intervalu a četnosti, kterou jste nakonfigurovali pro opakování v kroku 5.
+    >Ujistěte se, že tato jednotka intervalu a času odpovídá intervalu a frekvenci, které jste nakonfigurovali pro opakování v kroku 5.
 
-    ![Nastavit interval získání minulého časového intervalu](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-getpast-time.png)
+    ![Nastavit časový interval získání](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-getpast-time.png)
 
 >[!TIP] 
->Tok můžete kdykoli zkontrolovat, abyste ověřili, jestli je každý krok správně nakonfigurovaný. Pokud chcete tok kontrolovat, vyberte v řádku nabídek Flow možnost **Kontrola toku** .
+>Tok můžete kdykoli zkontrolovat a ověřit, zda je každý krok správně nakonfigurován. Chcete-li zkontrolovat tok, vyberte **kontrolu toku** na řádku nabídek Tok.
 
-V další sadě kroků se připojíte ke své tabulce Azure a nastavíte logiku zpracování pro zpracování nových potenciálních zákazníků.
+V další sadě kroků se připojíte k tabulce Azure a nastavíte logiku zpracování pro zpracování nových zájemců.
 
-9. Po kroku získat čas vyberte **+ Nový krok**a potom v okně *Zvolte akci* vyhledejte "získat entity".
-10. V části **Akce**vyberte **získat entity (Azure Table Storage)** .
-11. V okně **Azure Table Storage** zadejte informace o následujících polích a vyberte **vytvořit**:
+9. Po kroku Získat čas vyberte **+ Nový krok**a v okně *Zvolte akci* vyhledejte výraz "Získat entity".
+10. V části **Akce**vyberte **Získat entity (Azure Table Storage)**.
+11. V okně **Azure Table Storage** zadejte informace pro následující pole a vyberte **Vytvořit**:
 
-    * *Název připojení* – zadejte smysluplný název pro připojení, které nakonfigurujete mezi tímto tokem a tabulkou Azure.
-    * *Název účtu úložiště* – zadejte název účtu úložiště pro tabulku Azure. Najdete ho na stránce **přístupové klíče** účtu úložiště.
-    * *Klíč sdíleného úložiště* – zadejte hodnotu klíče pro váš účet úložiště pro tabulku Azure. Najdete ho na stránce **přístupové klíče** účtu úložiště.
+    * *Název připojení* – zadejte smysluplný název pro připojení, které vytváříte mezi tímto tokem a azure table.
+    * *Název účtu úložiště* – zadejte název účtu úložiště pro tabulku Azure. Najdete ji na stránce **přístupových klíčů** účtu úložiště.
+    * *Sdílený klíč úložiště* – zadejte hodnotu klíče pro váš účet úložiště pro vaši tabulku Azure. Najdete ji na stránce **přístupových klíčů** účtu úložiště.
 
-        ![Úložiště tabulek Azure.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
+        ![Azure Table storage.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
 
-    Po kliknutí na vytvořit se zobrazí okno *získat entity* . Tady vyberte **Zobrazit pokročilé možnosti** a zadejte informace pro následující pole:
+    Po kliknutí na tlačítko Vytvořit se zobrazí okno *Získat entity.* Zde vyberte **Zobrazit upřesňující možnosti** a poskytněte informace pro následující pole:
 
-       * *Tabulka* – vyberte název Azure Table Storage (z kroku 6 pokynů ke konfiguraci tabulky Azure). V dalším snímku obrazovky se zobrazí výzva, když je pro tento příklad Vybraná tabulka "marketplaceleads".
+       * *Tabulka* – vyberte název úložiště tabulek Azure (od kroku 6 pokynů ke konfiguraci tabulky Azure). Další snímek obrazovky zobrazí výzvu, když je vybrána tabulka "marketplaceleads" v tomto příkladu.
 
-            ![Entity Azure Table Get](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
+            ![Azure Table získat entity.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
-        * *Filtrovat dotaz* – toto pole vyberte a vložte tuto funkci do pole: `Timestamp gt datetime'@{body('Get_past_time')}'`
+        * *Filtrovat dotaz* - Vyberte toto pole a vložte tuto funkci do pole:`Timestamp gt datetime'@{body('Get_past_time')}'`
 
-            ![Entity Azure Table Get – filtr Querry.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
+            ![Azure Table získat entity – filtr Querry.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
 
-12. Když jste už nastavili připojení k tabulce Azure, vyberte **Nový krok** a přidejte podmínku pro kontrolu nových potenciálních zákazníků v tabulce Azure. 
+12. Teď, když jste dokončili nastavení připojení k tabulce Azure, vyberte **Nový krok** a přidejte podmínku pro skenování tabulky Azure pro nové zájemce. 
 
-13. V okně **Zvolte akci** vyberte **Akce**a potom vyberte **ovládací prvek podmínka**.
+13. V okně **Zvolit akci** vyberte **Akce**a pak vyberte ovládací **prvek Podmínka**.
 
-    ![Tabulka Azure – vyberte akci.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-choose-an-action.png)
+    ![Tabulka Azure – zvolte akci.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-choose-an-action.png)
 
-14. V okně **Podmínka** vyberte pole **zvolit hodnotu** a potom v místním okně vyberte **výraz** .
+14. V okně **Podmínka** vyberte pole **Zvolte hodnotu** a pak vyberte **Výraz** v vyskakovacím okně.
 
-15. Vložte `length(body('Get_entities')?['value'])` do pole ***FX*** . Pro přidání této funkce vyberte **OK** . 
+15. Vložit `length(body('Get_entities')?['value'])` do ***fx*** pole. Chcete-li přidat tuto funkci, vyberte **ok.** 
 
 16. Dokončení nastavení podmínky:
-    1. V rozevíracím seznamu vyberte "je větší než".
-    2. Jako hodnotu zadejte 0.
+    1. V rozevíracím seznamu vyberte možnost "je větší než".
+    2. Jako hodnotu zadejte hodnotu 0.
 
-        ![Tabulka Azure – podmínka](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-condition.png)
+        ![Azure Tabulka – podmínka.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-condition.png)
 
-V několika dalších krocích nastavíte akci, která se má provést, na základě výsledku podmínky.
+V několika dalších krocích nastavíte akci, která má být přijata na základě výsledku podmínky.
 
-* Pokud se podmínka vyřeší na **ne**, neprovádějte nic.
-* Pokud se podmínka přeloží na **hodnotu Ano**, spustí se akce, která připojí váš účet Office 365 k odeslání e-mailu. 
+* Pokud se podmínka vyřeší na **Pokud ne**, neprovázte nic.
+* Pokud se podmínka vyřeší na **Pokud ano**, aktivujte akci, která propojuje váš účet Office 365 a pošle e-mail. 
 
-17. **Pokud ano**, vyberte **přidat akci** .
+17. V části **Pokud ano**, **vyberte Přidat akci.**
 
-    ![Azure Table-Condition * * if Yes * *.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-condition-if-yes.png)
+    ![Azure Table – podmínka, **Pokud ano**.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-condition-if-yes.png)
 
-18. Vyberte **Odeslat e-mail (Office 365 Outlook)** .
+18. Vyberte **Odeslat e-mail (Office 365 Outlook)**.
 
-    ![Azure Table-Condition * * Pokud ano * *, poslat e-mail.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-condition-if-yes-send-email.png)
+    ![Tabulka Azure – podmínka, **Pokud ano**, odešlete e-mail.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-condition-if-yes-send-email.png)
 
     >[!Note]
-    >Pokud chcete použít jiné hledání poskytovatele e-mailu a místo toho vybrat odeslat e-mailové oznámení (E-mail). V pokynech se dozvíte, jak nakonfigurovat pomocí Office 365 Outlooku, ale pokyny jsou podobné pro jiného poskytovatele e-mailu.
+    >Pokud chcete použít jiného poskytovatele e-mailu, vyhledejte a místo toho jako akci vyberte Odeslat e-mailové oznámení (E-mail). Pokyny vám ukážou, jak nastavit pomocí Office 365 Outlook, ale pokyny jsou podobné pro jiného poskytovatele e-mailu.
 
-19. V okně **Office 365 Outlook** zadejte informace pro následující pole:
+19. V okně **Office 365 Outlook** zadejte informace o následujících polích:
 
-    1. Zadejte **e-** mailovou adresu pro každého, kdo získá toto oznámení.
-    1. **Předmět** – zadejte předmět e-mailu. Například: Noví zájemci!
-    1. **Tělo** – přidejte text, který chcete zahrnout do každého e-mailu (volitelné), a vložte ho do textu `body('Get_entities')?['value']`.
+    1. **Chcete-li** - Zadejte e-mailovou adresu pro každého, kdo dostane toto oznámení.
+    1. **Předmět** - Zadejte předmět pro e-mail. Například: Noví zájemci!
+    1. **Text** – Přidejte text, který chcete zahrnout do každého e-mailu (volitelné), a potom vložte do těla `body('Get_entities')?['value']`.
 
     >[!Note]
     >Do těla tohoto e-mailu můžete vložit další statické nebo dynamické datové body.
 
-    ![Tabulka Azure – podmínka * * if Ano * *, Office 365 Outlook Window.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-condition-if-yes-outlook.png)
+    ![Tabulka Azure – podmínka, **Pokud ano**, okno Office 365 Outlook.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-condition-if-yes-outlook.png)
 
-20. Vyberte **Uložit** a tok se uloží. Microsoft Flow automaticky otestuje tok a zobrazí chyby. Pokud nedojde k žádným chybám, tok začne běžet po jeho uložení.
+20. Uložte tok výběrem možnosti **Uložit**. Microsoft Flow automaticky otestuje tok chyb. Pokud nejsou žádné chyby, tok se spustí po uložení.
 
-Následující snímek obrazovky ukazuje příklad toho, jak by měl konečný tok vypadat.
+Další snímek obrazovky ukazuje příklad, jak by měl vypadat konečný tok.
 
-![Příklad finálního toku.](./media/commercial-marketplace-lead-management-instructions-azure-table/final-flow.png)
+![Příklad konečného toku.](./media/commercial-marketplace-lead-management-instructions-azure-table/final-flow.png)
 
 ### <a name="manage-your-flow"></a>Správa toku
 
-Správa toku po jeho spuštění je snadná. Máte plnou kontrolu nad vaším tokem. Můžete ho například zastavit, upravit, zobrazit historii spuštění a získat analýzy. Následující snímek obrazovky zobrazuje možnosti, které jsou k dispozici pro správu toku. 
+Správa toku po jeho spuštění je snadná. Máte úplnou kontrolu nad svým tokem. Můžete ji například zastavit, upravit, zobrazit historii běhu a získat analýzy. Další snímek obrazovky zobrazuje možnosti, které jsou k dispozici pro správu toku. 
 
  ![Správa toku](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-manage-completed.png)
 
-Tok zůstane spuštěný, dokud ho nezastavíte pomocí možnosti **zapnout tok** .
+Tok běží, dokud jej nezastavíte pomocí možnosti **Vypnout tok.**
 
-Pokud neobdržíte žádná e-mailová oznámení o potenciálních zákaznících, znamená to, že noví zájemci nebyli přidáni do tabulky Azure. Pokud dojde k výpadkům toků, dostanete e-mail podobný příkladu v následujícím snímku obrazovky.
+Pokud nedostáváte žádná e-mailová oznámení pro potenciální zákazníky, znamená to, že noví zájemci nebyli přidáni do tabulky Azure. Pokud dojde k selhání toku, dostanete e-mail jako v příkladu v dalším zachycení obrazovky.
 
  ![E-mailové oznámení o selhání toku](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-failure-note.png)
 
 ## <a name="configure-your-offer-to-send-leads-to-the-azure-table"></a>Konfigurace nabídky pro odesílání zájemců do tabulky Azure
 
-Až budete připraveni ke konfiguraci informací o správě zájemce pro vaši nabídku na portálu pro publikování, postupujte podle následujících kroků:
+Až budete připraveni nakonfigurovat informace o správě zájemců pro vaši nabídku na portálu pro publikování, postupujte podle následujících kroků:
 
-1. Přejděte na stránku **nastavení nabídky** pro vaši nabídku.
-2. V části Správa zájemců vyberte **připojit** .
-3. V automaticky otevíraném okně Podrobnosti připojení vyberte pro **cíl zájemce** **tabulku Azure** a vložte do připojovacího řetězce z účtu služby Azure Storage, který jste vytvořili pomocí předchozích kroků, do **připojovacího řetězce účtu úložiště** . dílčí.
+1. Přejděte na stránku **Nastavení nabídky** pro vaši nabídku.
+2. V části Správa zájemců vyberte **Připojit.**
+3. V rozbalovacím okně Podrobnosti o připojení vyberte **Azure Table** pro **cíl zájemce**a vložte do připojovacího řetězce z účtu úložiště Azure, který jste vytvořili podle předchozích kroků do pole **připojovacího řetězce účtu úložiště.**
 4. Vyberte **Uložit**. 
 
 >[!Note]
->Musíte dokončit konfiguraci zbytku nabídky a publikovat ji předtím, než budete moct získat zájemce pro tuto nabídku.
+>Před přijetím zájemců o nabídku je nutné dokončit konfiguraci zbývající nabídky a publikovat ji.
 
-Po vygenerování zájemců pošle společnost Microsoft zájemce do tabulky Azure. Pokud jste nakonfigurovali tok, pošle se e-mail na e-mailovou adresu, kterou jste nakonfigurovali.
+Když jsou vygenerováni zájemci, Microsoft odesílá zájemce do tabulky Azure. Pokud jste nakonfigurovali tok, bude na e-mailovou adresu, kterou jste nakonfigurovali, odeslán také e-mail.
 
 ![Správa potenciálních zákazníků](./media/commercial-marketplace-lead-management-instructions-azure-table/lead-management.png)
 
-![Správa vedoucích – podrobnosti připojení](./media/commercial-marketplace-lead-management-instructions-azure-table/connection-details.png)
+![Správa zájemců – podrobnosti o připojení](./media/commercial-marketplace-lead-management-instructions-azure-table/connection-details.png)
 
-![Správa vedoucích – účet úložiště podrobnosti o připojení](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-connection-details.png)
+![Správa zájemců – účet úložiště podrobností o připojení](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-connection-details.png)
 

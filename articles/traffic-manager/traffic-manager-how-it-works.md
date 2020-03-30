@@ -1,6 +1,6 @@
 ---
-title: Jak funguje Azure Traffic Manager | Microsoft Docs
-description: Tento článek vám pomůže pochopit, jak Traffic Manager směrovat provoz pro zajištění vysokého výkonu a dostupnosti webových aplikací.
+title: Jak Azure Traffic Manager funguje | Dokumenty společnosti Microsoft
+description: Tento článek vám pomůže pochopit, jak Traffic Manager směruje provoz pro vysoký výkon a dostupnost webových aplikací
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
@@ -12,92 +12,92 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: rohink
-ms.openlocfilehash: 709e89b94ba10db954aa5cf3f70aeffb0d239edb
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 4863ffd383cfcd46bad462156e26293d145fd418
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938625"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294854"
 ---
-# <a name="how-traffic-manager-works"></a>Jak Traffic Manager funguje
+# <a name="how-traffic-manager-works"></a>Jak funguje Traffic Manager
 
-Azure Traffic Manager umožňuje řídit distribuci provozu napříč koncovými body vaší aplikace. Koncový bod je jakákoli internetová služba hostovaná v rámci nebo mimo Azure.
+Azure Traffic Manager umožňuje řídit distribuci provozu mezi koncovými body aplikace. Koncový bod je jakákoli internetová služba hostovaná v rámci nebo mimo Azure.
 
 Traffic Manager poskytuje dvě klíčové výhody:
 
-- Distribuce provozu podle jedné z několika [metod směrování provozu](traffic-manager-routing-methods.md)
-- [Průběžné monitorování stavu koncového bodu](traffic-manager-monitoring.md) a automatického převzetí služeb při selhání koncových bodů
+- Rozdělení provozu podle jedné z několika [metod směrování provozu](traffic-manager-routing-methods.md)
+- [Průběžné sledování stavu koncového bodu](traffic-manager-monitoring.md) a automatické převzetí služeb při selhání koncových bodů
 
-Když se klient pokusí připojit ke službě, musí nejdřív vyhodnotit název DNS služby na IP adresu. Klient se pak připojí k této IP adrese a bude mít přístup ke službě.
+Když se klient pokusí připojit se ke službě, musí nejprve přeložit název DNS služby na IP adresu. Potom se klient připojí k této IP adrese, aby získal přístup ke službě.
 
-**Nejdůležitějším bodem, který je třeba pochopit, je, že Traffic Manager funguje na úrovni DNS.**  Traffic Manager používá DNS k přímému směrování klientů na konkrétní koncové body služby na základě pravidel metody směrování provozu. Klienti se připojují k vybranému koncovému bodu **přímo**. Traffic Manager není proxy server nebo brána. Traffic Manager se nezobrazuje přenos procházející mezi klientem a službou.
+**Nejdůležitějším bodem k pochopení je, že Traffic Manager pracuje na úrovni DNS.**  Traffic Manager používá službu DNS k přesměrování klientů na konkrétní koncové body služby na základě pravidel metody směrování provozu. Klienti se připojují k vybranému koncovému bodu **přímo**. Traffic Manager není proxy nebo brána. Traffic Manager nevidí přenosy procházející mezi klientem a službou.
 
-## <a name="traffic-manager-example"></a>Příklad Traffic Manager
+## <a name="traffic-manager-example"></a>Příklad správce provozu
 
-Společnost Contoso Corp vyvinula nový Partnerský portál. Adresa URL tohoto portálu je https://partners.contoso.com/login.aspx. Aplikace je hostována ve třech oblastech Azure. Pro zlepšení dostupnosti a maximalizace globálního výkonu používají Traffic Manager k distribuci klientského provozu do nejbližšího dostupného koncového bodu.
+Společnost Contoso Corp vyvinula nový partnerský portál. Adresa URL tohoto `https://partners.contoso.com/login.aspx`portálu je . Aplikace je hostovaná ve třech oblastech Azure. Chcete-li zlepšit dostupnost a maximalizovat globální výkon, používají Traffic Manager k distribuci provozu klienta do nejbližšího dostupného koncového bodu.
 
-Chcete-li dosáhnout této konfigurace, proveďte následující kroky:
+K dosažení této konfigurace, které dokončí následující kroky:
 
 1. Nasaďte tři instance jejich služby. Názvy DNS těchto nasazení jsou "contoso-us.cloudapp.net", "contoso-eu.cloudapp.net" a "contoso-asia.cloudapp.net".
-1. Vytvořte profil Traffic Manager s názvem "contoso.trafficmanager.net" a nakonfigurujte ho tak, aby používal metodu směrování přenosu dat "Performance" v rámci tří koncových bodů.
-1. Nakonfigurujte svůj název domény individuální, ' partners.contoso.com ', aby odkazoval na ' contoso.trafficmanager.net ' pomocí záznamu DNS CNAME.
+1. Vytvořte profil Traffic Managers s názvem "contoso.trafficmanager.net" a nakonfigurujte jej tak, aby používal metodu směrování provozu "Výkon" ve třech koncových bodech.
+1. Nakonfigurujte jejich název domény "partners.contoso.com", aby ukazoval na "contoso.trafficmanager.net" pomocí záznamu DNS CNAME.
 
-![Traffic Manager konfigurace DNS][1]
+![Konfigurace DNS správce provozu][1]
 
 > [!NOTE]
-> Při použití individuální domény s Azure Traffic Manager musíte použít CNAME k nasměrování názvu domény individuální na název domény Traffic Manager. Standardy DNS neumožňují vytvořit záznam CNAME ve vrcholu (nebo kořenovém adresáři) domény. Proto nemůžete vytvořit záznam CNAME pro ' contoso.com ' (někdy se mu říká doména "holé"). Záznam CNAME pro doménu můžete vytvořit pouze v části "contoso.com", například "www.contoso.com". Pokud chcete toto omezení obejít, doporučujeme hostovat doménu DNS na [Azure DNS](../dns/dns-overview.md) a pomocí [záznamů aliasů](../dns/tutorial-alias-tm.md) Ukázat na váš profil Traffic Manageru. Alternativně můžete pomocí jednoduchého přesměrování protokolu HTTP směrovat požadavky na "contoso.com" na alternativní název, jako je například "www.contoso.com".
+> Při použití dodomény marnosti s Azure Traffic Manager, musíte použít CNAME nasměrovat název domény marnost na název domény Traffic Manager. Standardy DNS neumožňují vytvořit CNAME na vrcholu (nebo root) domény. Proto nelze vytvořit CNAME pro 'contoso.com' (někdy volal 'nahý' domény). CNAME můžete vytvořit pouze pro doménu pod "contoso.com", například "www.contoso.com". Chcete-li toto omezení obejít, doporučujeme hostování domény DNS ve [službě Azure DNS](../dns/dns-overview.md) a použití záznamů [aliasu,](../dns/tutorial-alias-tm.md) které odkazují na profil správce provozu. Případně můžete použít jednoduché přesměrování HTTP k přímému požadavku na "contoso.com" alternativnímu názvu, například "www.contoso.com".
 
-### <a name="how-clients-connect-using-traffic-manager"></a>Jak se klienti připojují pomocí Traffic Manager
+### <a name="how-clients-connect-using-traffic-manager"></a>Jak se klienti připojují pomocí Traffic Manageru
 
-Když klient v předchozím příkladu vyžádá stránku https://partners.contoso.com/login.aspx, provede následující kroky, aby vyřešil název DNS a navázal připojení:
+Pokračování z předchozího příkladu, když klient `https://partners.contoso.com/login.aspx`požaduje stránku , klient provede následující kroky k vyřešení názvu DNS a navázat připojení:
 
-![Vytvoření připojení pomocí Traffic Manager][2]
+![Navázání připojení pomocí Traffic Manageru][2]
 
-1. Klient odešle dotaz DNS do nakonfigurované rekurzivní služby DNS, aby přeložil název partners.contoso.com. Rekurzivní služba DNS, která se někdy označuje jako místní služba DNS, nehostuje domény DNS přímo. Místo toho klient mimo jiné nahraje práci se spojením různých autoritativních služeb DNS v Internetu, které jsou potřeba k překladu názvu DNS.
-2. K překladu názvu DNS vyhledá rekurzivní služba DNS názvové servery pro doménu contoso.com. Potom kontaktuje tyto názvové servery a požádá o záznam DNS partners.contoso.com. Servery DNS contoso.com vracejí záznam CNAME, který odkazuje na contoso.trafficmanager.net.
-3. V dalším kroku najde rekurzivní služba DNS názvové servery pro doménu trafficmanager.net, které poskytuje služba Azure Traffic Manager. Pak pošle požadavek na záznam DNS contoso.trafficmanager.net na tyto servery DNS.
-4. Traffic Manager názvové servery obdrží požadavek. Zvolí koncový bod na základě:
+1. Klient odešle dotaz DNS na konfigurované rekurzivní službě DNS, aby přeložil název "partners.contoso.com". Rekurzivní služba DNS, někdy nazývaná "místní služba DNS", nehostuje domény DNS přímo. Klient spíše off-zatížení práce kontaktovat různé autoritativní služby DNS přes Internet potřebné k vyřešení názvu DNS.
+2. Chcete-li přeložit název DNS, vyhledá rekurzivní služba DNS názvové servery pro doménu contoso.com. Poté kontaktuje tyto názvové servery a požádá o záznam DNS "partners.contoso.com". Servery DNS contoso.com vrátí záznam CNAME, který odkazuje na contoso.trafficmanager.net.
+3. Dále rekurzivní služba DNS vyhledá názvové servery pro doménu "trafficmanager.net", které poskytuje služba Azure Traffic Manager. Poté odešle těmto serverům DNS požadavek na záznam DNS contoso.trafficmanager.net.
+4. Názevové servery Traffic Managerobdrží požadavek. Vyberou si koncový bod na základě:
 
-    - Nakonfigurovaný stav každého koncového bodu (zakázané koncové body nejsou vraceny)
-    - Aktuální stav každého koncového bodu, jak je stanoven Traffic Managermi kontrolami stavu. Další informace najdete v tématu [Traffic Manager monitorování koncového bodu](traffic-manager-monitoring.md).
-    - Vybraná metoda směrování provozu. Další informace najdete v tématu [metody směrování Traffic Manager](traffic-manager-routing-methods.md).
+    - Nakonfigurovaný stav každého koncového bodu (zakázané koncové body nejsou vráceny)
+    - Aktuální stav každého koncového bodu, jak je určeno traffic manager kontroly stavu. Další informace naleznete v tématu [Traffic Manager Endpoint Monitoring](traffic-manager-monitoring.md).
+    - Zvolená metoda směrování provozu. Další informace naleznete v tématu [Traffic Manager Routing Methods](traffic-manager-routing-methods.md).
 
-5. Zvolený koncový bod se vrátí jako jiný záznam CNAME DNS. V takovém případě se vám budeme vracet contoso-us.cloudapp.net.
-6. V dalším kroku najde rekurzivní služba DNS názvové servery pro doménu cloudapp.net. Kontaktuje tyto názvové servery, aby požádaly o záznam DNS ' contoso-us.cloudapp.net '. Vrátí se záznam DNS, který obsahuje IP adresu koncového bodu služby založeného na USA.
-7. Rekurzivní služba DNS slučuje výsledky a vrátí jednu odpověď DNS klientovi.
-8. Klient obdrží výsledky DNS a připojí se k dané IP adrese. Klient se připojí ke koncovému bodu služby Application Service přímo, nikoli prostřednictvím Traffic Manager. Vzhledem k tomu, že se jedná o koncový bod HTTPS, klient provede nezbytnou metodu handshake protokolu SSL/TLS a pak vytvoří požadavek HTTP GET na stránku/Login.aspx.
+5. Zvolený koncový bod je vrácen jako jiný záznam DNS CNAME. V tomto případě předpokládejme, že contoso-us.cloudapp.net je vrácena.
+6. Dále rekurzivní služba DNS vyhledá názvové servery pro doménu cloudapp.net. Kontaktuje tyto názvové servery a požádá o záznam DNS "contoso-us.cloudapp.net". Je vrácen záznam DNS "A", který obsahuje IP adresu koncového bodu služby v USA.
+7. Rekurzivní služba DNS sloučí výsledky a vrátí klientovi jednu odpověď DNS.
+8. Klient obdrží výsledky DNS a připojí se k dané adrese IP. Klient se připojuje ke koncovému bodu aplikační služby přímo, nikoli prostřednictvím Traffic Manageru. Vzhledem k tomu, že se jedná o koncový bod HTTPS, klient provede nezbytné ssl/tls handshake a potom vytvoří požadavek HTTP GET pro stránku '/login.aspx'.
 
-Rekurzivní služba DNS ukládá do mezipaměti odpovědi DNS, které obdrží. Překladač DNS v klientském zařízení ukládá do mezipaměti také výsledek. Ukládání do mezipaměti umožňuje rychlejší zodpovězení dalších dotazů DNS pomocí dat z mezipaměti, nikoli při dotazování na jiné názvové servery. Doba trvání mezipaměti je určena vlastností TTL (Time-to-Live) každého záznamu DNS. Výsledkem kratších hodnot je rychlejší vypršení platnosti mezipaměti, což znamená větší zpáteční přenos na Traffic Manager názvové servery. Delší hodnota znamená, že může trvat delší dobu, než se přesměruje provoz z neúspěšného koncového bodu. Traffic Manager umožňuje nakonfigurovat hodnotu TTL použitou v Traffic Manager odpovědích DNS tak, aby byla menší než 0 sekund a 2 147 483 647 sekund (maximální rozsah kompatibilní se [specifikací RFC-1035](https://www.ietf.org/rfc/rfc1035.txt)), což vám umožní zvolit hodnotu, která nejlépe vyvažuje požadavky vaší aplikace.
+Rekurzivní služba DNS ukládá odpovědi DNS, které obdrží. Překladač DNS na klientském zařízení také ukládá výsledek do mezipaměti. Ukládání do mezipaměti umožňuje rychlejší zodpovězení následných dotazů DNS pomocí dat z mezipaměti, nikoli dotazováním jiných názvových serverů. Doba trvání mezipaměti je určena vlastností Time-to-live (TTL) každého záznamu DNS. Kratší hodnoty mají za následek rychlejší vypršení mezipaměti a tím i další round-trips na názvové servery Traffic Manager. Delší hodnoty znamenají, že může trvat déle směrovat provoz od neúspěšného koncového bodu. Traffic Manager umožňuje nakonfigurovat TTL používané v Traffic Manager DNS odpovědi tak nízké, jak 0 sekund a tak vysoko, jak 2,147,483,647 sekund (maximální rozsah kompatibilní s [RFC-1035](https://www.ietf.org/rfc/rfc1035.txt)), což umožňuje zvolit hodnotu, která nejlépe vyvažuje potřeby vaší aplikace.
 
 ## <a name="faqs"></a>Nejčastější dotazy
 
-* [Jaká IP adresa Traffic Manager použít?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-ip-address-does-traffic-manager-use)
+* [Jakou IP adresu traffic manager používá?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-ip-address-does-traffic-manager-use)
 
-* [Jaké typy přenosů se dají směrovat pomocí Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-types-of-traffic-can-be-routed-using-traffic-manager)
+* [Jaké typy provozu lze směrovat pomocí Traffic Manageru?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-types-of-traffic-can-be-routed-using-traffic-manager)
 
-* [Podporuje Traffic Manager "rychlé" relace?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-support-sticky-sessions)
+* [Podporuje Traffic Manager "lepkavé" relace?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-support-sticky-sessions)
 
-* [Proč se mi při použití Traffic Manager zobrazuje chyba protokolu HTTP?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-am-i-seeing-an-http-error-when-using-traffic-manager)
+* [Proč se při používání Traffic Manageru zobrazuje chyba HTTP?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-am-i-seeing-an-http-error-when-using-traffic-manager)
 
-* [Jaký je dopad na výkon při používání Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-is-the-performance-impact-of-using-traffic-manager)
+* [Jaký je dopad používání Traffic Manageru na výkon?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-is-the-performance-impact-of-using-traffic-manager)
 
-* [Jaké aplikační protokoly můžu používat s Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-application-protocols-can-i-use-with-traffic-manager)
+* [Jaké aplikační protokoly lze použít s Traffic Managerem?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-application-protocols-can-i-use-with-traffic-manager)
 
-* [Můžu použít Traffic Manager s názvem domény "holé"?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-a-naked-domain-name)
+* [Mohu použít Traffic Manager s "nahým" názvem domény?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-a-naked-domain-name)
 
-* [Považuje Traffic Manager adresa klientské podsítě při zpracování dotazů DNS?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries)
+* [Bere Traffic Manager při zpracování dotazů DNS v úvahu adresu podsítě klienta?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries)
 
-* [Co je DNS TTL a jak má vliv na uživatele?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-is-dns-ttl-and-how-does-it-impact-my-users)
+* [Co je DNS TTL a jaký to má vliv na mé uživatele?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-is-dns-ttl-and-how-does-it-impact-my-users)
 
-* [Jak vysoká nebo nízká můžu nastavit hodnotu TTL pro Traffic Manager odezvy?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses)
+* [Jak vysoké nebo nízké lze nastavit TTL pro traffic manager odpovědi?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses)
 
-* [Jak můžu pochopit objem dotazů přicházejících do svého profilu?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-understand-the-volume-of-queries-coming-to-my-profile)
+* [Jak mohu porozumět objemu dotazů přicházejících do mého profilu?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-understand-the-volume-of-queries-coming-to-my-profile)
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Traffic Manager [monitorování koncového bodu a automatické převzetí služeb při selhání](traffic-manager-monitoring.md).
+Přečtěte si další informace o sledování koncového bodu Traffic [Manageru a automatickém převzetí služeb při selhání](traffic-manager-monitoring.md).
 
-Přečtěte si další informace o [metodách směrování provozu](traffic-manager-routing-methods.md)Traffic Manager.
+Další informace o [metodách směrování provozu](traffic-manager-routing-methods.md)traffic manageru .
 
 <!--Image references-->
 [1]: ./media/traffic-manager-how-traffic-manager-works/dns-configuration.png

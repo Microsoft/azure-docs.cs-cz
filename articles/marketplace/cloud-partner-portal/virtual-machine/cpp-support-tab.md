@@ -1,46 +1,45 @@
 ---
-title: Karta Podpora pro virtuální počítače v portál partnerů cloudu pro Azure Marketplace
-description: Popisuje kartu Podpora, která se používá při vytváření nabídky virtuálních počítačů s Azure Marketplace.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Karta Podpora virtuálních strojů na portálu partnerů cloudu pro Azure Marketplace
+description: Popisuje kartu Podpora používaná při vytváření nabídky virtuálního počítače Azure Marketplace.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: pabutler
-ms.openlocfilehash: fcf7a51e69e901ae04b29c4fb621d401d170d2f1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: e8143f33aacbc68653d19ffb72e88af447f8cc40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73808808"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288848"
 ---
-# <a name="virtual-machine-support-tab"></a>Karta podpora virtuálních počítačů
+# <a name="virtual-machine-support-tab"></a>Karta Podpora virtuálního počítače
 
-Karta **Podpora** na nové stránce **nabídek** vám umožní poskytovat prostředky technické podpory a podpory uživatelů pro vaši nabídku.  Je rozdělená na tři oblasti: **technické**, **zákaznické podpory**a **adresy URL podpory**.
+Karta **Podpora** na stránce **Nová nabídka** umožňuje poskytovat technické a uživatelské zdroje podpory pro vaši nabídku.  Je rozdělena do tří oblastí: **Inženýrské ,** **Zákaznická podpora**a **Adresy URL podpory**.
 
-![Karta Podpora na novém formuláři nabídky pro virtuální počítače](./media/publishvm_012.png)
+![Karta Podpora ve formuláři Nová nabídka pro virtuální počítače](./media/publishvm_012.png)
 
 ## <a name="field-values"></a>Hodnoty polí
 
-Následující tabulka popisuje účel a obsah těchto polí. Požadovaná pole jsou indicted hvězdičkou (*).
+Následující tabulka popisuje účel a obsah těchto polí. Povinná pole jsou obžalována hvězdičkou (*).
 
 |         Pole                 |       Popis                                                        |
 |        -------                |       ------------                                                       |
 | *Technický kontakt*     | Slouží jako technický kontakt mezi společností Microsoft a vaší organizací. | 
-| **Název\***                | Jméno osoby nebo skupiny, která slouží jako technická/technická podpora     |
-| **\* e-mailu**               | E-mailová adresa tohoto technického kontaktu                                      |
-| **\* pro telefon**               | Telefonní číslo pro technickou podporu                                           |
+| **Jméno\***                | Jméno osoby nebo skupiny, která slouží jako technická/technická podpora     |
+| **E-mail\***               | E-mailová adresa tohoto technického kontaktu                                      |
+| **Telefon\***               | Telefonní číslo pro technickou podporu                                           |
 | *Zákaznická podpora*        | Přijímá lístky podpory otevřené zákazníky v rámci Azure |
-| **Název\***                | Jméno osoby nebo skupiny, která slouží jako zákaznická podpora                  |
-| **\* e-mailu**               | E-mailová adresa zákaznické podpory                                            |
-| **\* pro telefon**               | Telefonní číslo pro zákaznickou podporu                                            |
-| *Adresy URL podpory*            | Weby podpory, které Microsoft použije, když vaši zákazníci otevřou lístky podpory |
-| **Veřejné Azure**          | Adresa URL webu podpory veřejné sítě Internet                                         |
-| **Cloud Azure Government**| Adresa URL webu podpory pro vládní Cloud                                        |
+| **Jméno\***                | Jméno osoby nebo skupiny, která slouží jako zákaznická podpora                  |
+| **E-mail\***               | E-mailová adresa zákaznické podpory                                            |
+| **Telefon\***               | Telefonní číslo zákaznické podpory                                            |
+| *Adresy URL podpory*            | Weby podpory, které bude společnost Microsoft používat, když vaši zákazníci otevřou lístky podpory |
+| **Veřejný Azure**          | Adresa URL pro veřejný web podpory internetu                                         |
+| **Azure Government Cloud**| Adresa URL webu podpory vládního cloudu                                        |
 |  |  |
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste to ještě nedoen, dokončete [technické prostředky virtuálního počítače](./cpp-create-technical-assets.md).
+Další, pokud jste tak ještě neučinili, dokonejte [technické prostředky virtuálního počítače](./cpp-create-technical-assets.md).

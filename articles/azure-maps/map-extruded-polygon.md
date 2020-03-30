@@ -1,51 +1,51 @@
 ---
-title: Přidání vrstvy vysunutí mnohoúhelníku na mapu | Mapy Microsoft Azure
-description: Postup přidání vrstvy vysunutí mnohoúhelníku do webové sady SDK Microsoft Azure Maps.
-author: farah-alyasari
-ms.author: v-faalya
+title: Přidání vrstvy vysunutí polyguna do mapy | Mapy Microsoft Azure
+description: Jak přidat vrstvu vysunutí polygonu do sady Microsoft Azure Maps Web SDK.
+author: philmea
+ms.author: philmea
 ms.date: 10/08/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 38a7e6c5f4c139343e735ae82616c11a224ae7ca
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 7405098bd4924333aafcd1c285eb2f37bb1d4f75
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209677"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334543"
 ---
-# <a name="add-a-polygon-extrusion-layer-to-the-map"></a>Přidání vrstvy vysunutí mnohoúhelníku na mapu
+# <a name="add-a-polygon-extrusion-layer-to-the-map"></a>Přidání vrstvy vysunutí polygunu do mapy
 
-V tomto článku se dozvíte, jak použít vrstvu vysunutí mnohoúhelníku k vykreslení oblastí `Polygon` a `MultiPolygon` funkcí geometrií jako vytlačené obrazce. Sada Azure Maps Web SDK podporuje vykreslování geometrií kroužků, jak je definováno v [rozšířeném schématu](extend-geojson.md#circle)pro zobrazení. JSON. Tyto kroužky je možné transformovat na mnohoúhelníky při vykreslování na mapě. Všechny funkce geometrií se můžou snadno aktualizovat při zabalení pomocí nástroje [Atlas. Třída Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest)
+Tento článek ukazuje, jak použít vrstvu vysunutí polygunu k vykreslení oblastí `Polygon` geometrií a `MultiPolygon` prvků jako vysunutých tvarů. Webová sada Azure Maps Podporuje vykreslování geometrií Circle, jak je definováno v [rozšířeném schématu GeoJSON](extend-geojson.md#circle). Tyto kruhy mohou být transformovány do polygonů při vykreslení na mapě. Všechny geometrie prvků lze snadno aktualizovat, když jsou zabaleny [do atlasu. Třída tvarů.](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest)
 
-## <a name="use-a-polygon-extrusion-layer"></a>Použití vrstvy vysunutí mnohoúhelníku
+## <a name="use-a-polygon-extrusion-layer"></a>Použití vrstvy vysunutí polygonu
 
-Připojte [vrstvu vysunutí mnohoúhelníku](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer?view=azure-maps-typescript-latest) ke zdroji dat. Pak ho načtete na mapě. Vrstva vysunutí mnohoúhelníku vykresluje oblasti `Polygon` a `MultiPolygon` funkcí jako vytlačené obrazce. Vlastnosti `height` a `base` vrstvy vysunutí mnohoúhelníku definují základní vzdálenost od základu a výšky vytlačeného obrazce v **měřičích**. Následující kód ukazuje, jak vytvořit mnohoúhelník, přidat ho do zdroje dat a vykreslit pomocí třídy vrstev vytlačení mnohoúhelníku.
+Připojte [vrstvu vysunutí polygonu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer?view=azure-maps-typescript-latest) ke zdroji dat. Pak ji nahrál na mapu. Vrstva vysunutí polygonu vykreslí oblasti `Polygon` a a `MultiPolygon` prvky jako vysunuté tvary. A `height` `base` vlastnosti vrstvy vysunutí polygunu definují základní vzdálenost od země a výšku vysunutého tvaru v **metrech**. Následující kód ukazuje, jak vytvořit polygon, přidat jej do zdroje dat a vykreslit pomocí třídy vysunutí polygonu.
 
 > [!Note]
-> Hodnota `base` definovaná ve vrstvě vytlačení mnohoúhelníku by měla být menší nebo rovna hodnotě `height`.
+> Hodnota `base` definovaná ve vrstvě vysunutí polygonu by `height`měla být menší nebo rovna hodnotě .
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Vytlačený mnohoúhelník" src="https://codepen.io/azuremaps/embed/wvvBpvE?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/wvvBpvE'>vytlačený mnohoúhelník</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.</iframe>
+<iframe height="500" style="width: 100%;" scrolling="no" title="Extrudovaný polygon" src="https://codepen.io/azuremaps/embed/wvvBpvE?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Podívejte se na <a href='https://codepen.io/azuremaps/pen/wvvBpvE'>pero extrudovaný polygon</a> podle Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.</iframe>
 
 
-## <a name="add-data-driven-polygons"></a>Přidat mnohoúhelníky řízené daty
+## <a name="add-data-driven-polygons"></a>Přidání víceletých polygonů řízených daty
 
-Mapu kartogramy lze vykreslit pomocí vrstvy vysunutí mnohoúhelníku. Nastavte `height` a vlastnosti `fillColor` vrstvy vytlačení na měření statistické proměnné v `Polygon` a `MultiPolygon` funkcí geometrií. Následující ukázka kódu ukazuje vytlačenou mapu kartogramyu U. S na základě měření hustoty populace podle stavu.
+Choropleth mapa může být vykreslen pomocí vrstvy vysunutí polygonu. Nastavte `height` vlastnosti a `fillColor` vysunutí vrstvy na měření `Polygon` statistické `MultiPolygon` proměnné v geometrii prvku a prvku. Následující ukázka kódu ukazuje extrudované choropleth mapy USA na základě měření hustoty obyvatelstva podle státu.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Vytlačená mapa kartogramy" src="https://codepen.io/azuremaps/embed/eYYYNox?height=265&theme-id=0&default-tab=result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Viz Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>v <a href='https://codepen.io/azuremaps/pen/eYYYNox'>mapě vytlačené</a> perem.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Extrudovaná mapa choroplethu" src="https://codepen.io/azuremaps/embed/eYYYNox?height=265&theme-id=0&default-tab=result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Podívejte se na <a href='https://codepen.io/azuremaps/pen/eYYYNox'>pero extrudované choropleth mapy</a> Azure Maps(<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="add-a-circle-to-the-map"></a>Přidání kruhu k mapě
+## <a name="add-a-circle-to-the-map"></a>Přidání kruhu do mapy
 
-Azure Maps používá rozšířenou verzi schématu injson, která poskytuje definici pro kruhy, jak je uvedeno [zde](https://docs.microsoft.com/azure/azure-maps/extend-geojson#circle). Vytlačený kruh lze na mapě vykreslit vytvořením funkce `point` s vlastností `subType` `Circle` a hodnotou číslovaného `Radius`, která představuje poloměr v **metrech**. Příklad:
+Azure Maps používá rozšířenou verzi schématu GeoJSON, která poskytuje definici kruhů, jak je uvedeno [zde](https://docs.microsoft.com/azure/azure-maps/extend-geojson#circle). Vysunutá kružnice může být vykreslena na `subType` mapě `Circle` vytvořením `Radius` `point` prvku s vlastností a očíslovnou vlastností představující poloměr v **metrech**. Například:
 
 ```Javascript
 {
@@ -61,34 +61,34 @@ Azure Maps používá rozšířenou verzi schématu injson, která poskytuje def
 } 
 ```
 
-Azure Maps webová sada SDK převede tyto `Point` funkce na `Polygon` funkce v digestoři. Tyto funkce `Point` lze na mapě vykreslovat pomocí vrstvy vytlačení mnohoúhelníku, jak je znázorněno v následujícím příkladu kódu.
+Sada Azure Maps Web SDK převádí tyto `Point` funkce na `Polygon` funkce pod kapotou. Tyto `Point` funkce lze vykreslit na mapě pomocí vrstvy vysunutí polygonu, jak je znázorněno v následujícím vzorku kódu.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Mnohoúhelník prostorů pro pomocí dronů" src="https://codepen.io/azuremaps/embed/zYYYrxo?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Prohlédněte si Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>v oblasti <a href='https://codepen.io/azuremaps/pen/zYYYrxo'>vzdušného prostoru</a> pera na pomocí dronů.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Polygon vzdušného prostoru dronů" src="https://codepen.io/azuremaps/embed/zYYYrxo?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Podívejte se na <a href='https://codepen.io/azuremaps/pen/zYYYrxo'>polygon vzdušného prostoru pera drone</a> podle Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="customize-a-polygon-extrusion-layer"></a>Přizpůsobení vrstvy vysunutí mnohoúhelníku
+## <a name="customize-a-polygon-extrusion-layer"></a>Přizpůsobení vrstvy vysunutí polygonu
 
-Vrstva vytlačení mnohoúhelníku má několik možností stylů. Tady je nástroj pro jejich vyzkoušení.
+Vrstva vysunutí mnohonoru má několik možností stylu. Zde je nástroj, jak je vyzkoušet.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='PoogBRJ' src='//codepen.io/azuremaps/embed/PoogBRJ/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na Azure Maps <a href='https://codepen.io/azuremaps/pen/PoogBRJ/'>PoogBRJ</a> pera na CodePen (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'></a>.
+<iframe height='700' scrolling='no' title='PoogBRJ' src='//codepen.io/azuremaps/embed/PoogBRJ/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na Pero <a href='https://codepen.io/azuremaps/pen/PoogBRJ/'>PoogBRJ</a> podle Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o třídách a metodách, které se používají v tomto článku:
+Další informace o třídách a metodách použitých v tomto článku:
 
 > [!div class="nextstepaction"]
 > [Mnohoúhelník](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [vrstva vysunutí mnohoúhelníku](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer?view=azure-maps-typescript-latest)
+> [polygonová vytlačovací vrstva](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer?view=azure-maps-typescript-latest)
 
-Další zdroje informací:
+Další prostředky:
 
 > [!div class="nextstepaction"]
-> [Azure Maps rozšíření pro injson Specification](extend-geojson.md#circle)
+> [Rozšíření specifikace Azure Maps GeoJSON](extend-geojson.md#circle)

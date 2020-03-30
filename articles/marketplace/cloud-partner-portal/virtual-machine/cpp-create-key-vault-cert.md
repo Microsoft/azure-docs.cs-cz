@@ -1,29 +1,28 @@
 ---
-title: Vytvoření certifikátu Azure Key Vault | Azure Marketplace
+title: Vytvoření certifikátu trezoru klíčů Azure | Azure Marketplace
 description: Vysvětluje, jak zaregistrovat virtuální počítač z virtuálního pevného disku nasazeného v Azure.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/29/2018
-ms.author: pabutler
-ms.openlocfilehash: 4adc6f716050e2d792e0a5c022972e4340d2846a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: dc106ecf40367172f28c0f339bbcce8bddb50a34
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823114"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278071"
 ---
-# <a name="create-certificates-for-azure-key-vault"></a>Vytvořit certifikáty pro Azure Key Vault
+# <a name="create-certificates-for-azure-key-vault"></a>Vytvoření certifikátů pro Azure Key Vault
 
-Tento článek vysvětluje, jak zřídit certifikáty podepsané svým držitelem, které jsou potřeba k navázání připojení Vzdálená správa systému Windows (WinRM) k virtuálnímu počítači hostovanému v Azure (VM). Tento proces se skládá ze tří kroků:
+Tento článek vysvětluje, jak zřídit certifikáty podepsané svým držitelem potřebné k vytvoření připojení Windows Remote Management (WinRM) k virtuálnímu počítači (VM) hostovanému v Azure. Tento proces se skládá ze tří kroků:
 
 1.  Vytvořte certifikát zabezpečení. 
-2.  Vytvořte Azure Key Vault pro uložení tohoto certifikátu. 
+2.  Vytvořte trezor klíčů Azure pro uložení tohoto certifikátu. 
 3.  Uložte certifikáty do tohoto trezoru klíčů. 
 
-Pro tuto práci můžete použít buď novou, nebo existující skupinu prostředků Azure.  Předchozí přístup se používá v následujícím vysvětlení.
+Pro tuto práci můžete použít novou nebo existující skupinu prostředků Azure.  První přístup se používá v následujícím vysvětlení.
 
 
 
@@ -31,15 +30,15 @@ Pro tuto práci můžete použít buď novou, nebo existující skupinu prostře
 
 ## <a name="create-the-certificate"></a>Vytvoření certifikátu
 
-Úpravou a spuštěním následujícího skriptu Azure PowerShellu vytvořte soubor certifikátu (. pfx) v místní složce.  Je potřeba nahradit hodnoty pro následující parametry:
+Chcete-li vytvořit soubor certifikátu (.pfx) v místní složce, upravte a spusťte následující skript Azure Powershellu.  Budete muset nahradit hodnoty pro následující parametry:
 
-|  **Ukazatele**        |   **Popis**                                                               |
+|  **Parametr**        |   **Popis**                                                               |
 |  -------------        |   ---------------                                                               |
-| `$certroopath` | Místní složka, do které se uloží soubor. pfx  |
-| `$location`    | Jedno ze standardních zeměpisných míst Azure  |
+| `$certroopath` | Místní složka pro uložení souboru .pfx  |
+| `$location`    | Jedna ze standardních geografických lokalit Azure  |
 | `$vmName`      | Název plánovaného virtuálního počítače Azure   |
-| `$certname`    | Název certifikátu; musí odpovídat plně kvalifikovanému názvu domény plánovaného virtuálního počítače.  |
-| `$certpassword` | Heslo pro certifikáty se musí shodovat s heslem použitým pro plánovaný virtuální počítač.  |
+| `$certname`    | Název osvědčení; musí odpovídat plně kvalifikovanému názvu domény plánovaného virtuálního mísu.  |
+| `$certpassword` | Heslo pro certifikáty, musí odpovídat heslo použité pro plánovaný virtuální mk.  |
 |  |  |
 
 ```powershell
@@ -69,22 +68,22 @@ Pro tuto práci můžete použít buď novou, nebo existující skupinu prostře
 
 ```
 > [!TIP]
-> Během těchto kroků nechejte aktivní stejnou relaci konzoly PowerShell, aby se zachovaly hodnoty různých parametrů.
+> Ponechte stejnou relaci konzoly prostředí PowerShell aktivní během těchto kroků, aby byly zachovány hodnoty různých parametrů.
 
 > [!WARNING]
-> Pokud tento skript uložíte, uložte ho pouze do zabezpečeného umístění, protože obsahuje informace o zabezpečení (heslo).
+> Pokud uložíte tento skript, uložte jej pouze na bezpečném místě, protože obsahuje informace o zabezpečení (heslo).
 
 
 ## <a name="create-the-key-vault"></a>Vytvoření trezoru klíčů
 
-Zkopírujte obsah [šablony nasazení trezoru klíčů](./cpp-key-vault-deploy-template.md) do souboru na místním počítači. (v následujícím příkladu skriptu je tento prostředek `C:\certLocation\keyvault.json`.)  Pokud chcete vytvořit instanci Azure Key Vault a přidruženou skupinu prostředků, upravte a spusťte následující skript Azure PowerShellu.  Je potřeba nahradit hodnoty pro následující parametry:
+Zkopírujte obsah [šablony nasazení trezoru klíčů](./cpp-key-vault-deploy-template.md) do souboru v místním počítači. (v ukázkovém skriptu `C:\certLocation\keyvault.json`níže je tento zdroj .)  Upravte a spusťte následující skript Azure Powershell u vytvořit instanci Azure Key Vault a přidruženou skupinu prostředků.  Budete muset nahradit hodnoty pro následující parametry:
 
-|  **Ukazatele**        |   **Popis**                                                               |
+|  **Parametr**        |   **Popis**                                                               |
 |  -------------        |   ---------------                                                               |
 | `$postfix`            | Libovolný číselný řetězec připojený k identifikátorům nasazení                     |
-| `$rgName`             | Název skupiny prostředků Azure (RG), která se má vytvořit                                        |
-|  `$location`          | Jedno ze standardních zeměpisných míst Azure                                  |
-| `$kvTemplateJson`     | Cesta souboru (Trezor klíčů. JSON), který obsahuje šablonu Správce prostředků pro Trezor klíčů |
+| `$rgName`             | Název skupiny prostředků Azure (RG) k vytvoření                                        |
+|  `$location`          | Jedna ze standardních geografických lokalit Azure                                  |
+| `$kvTemplateJson`     | Cesta k souboru (keyvault.json) obsahující šablonu Správce prostředků pro trezor klíčů |
 | `$kvname`             | Název nového trezoru klíčů                                                       |
 |  |  |
 
@@ -186,7 +185,7 @@ Zkopírujte obsah [šablony nasazení trezoru klíčů](./cpp-key-vault-deploy-t
 
 ## <a name="store-the-certificate"></a>Uložení certifikátu
 
-Certifikáty, které jsou obsaženy v souboru. pfx, teď můžete ukládat do nového trezoru klíčů spuštěním následujícího skriptu. 
+Nyní můžete uložit certifikáty obsažené v souboru .pfx do nového trezoru klíčů spuštěním následujícího skriptu. 
 
 ```powershell
     #push certificate to key vault secret
@@ -215,4 +214,4 @@ Certifikáty, které jsou obsaženy v souboru. pfx, teď můžete ukládat do no
 
 ## <a name="next-steps"></a>Další kroky
 
-Dále [nasadíte virtuální počítač z uživatelské image virtuálního](./cpp-deploy-vm-user-image.md)počítače.
+Dále [nasadíte virtuální počítač z image virtuálního počítače uživatele](./cpp-deploy-vm-user-image.md).

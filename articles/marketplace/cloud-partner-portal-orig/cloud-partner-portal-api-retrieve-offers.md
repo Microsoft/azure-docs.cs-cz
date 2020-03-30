@@ -1,19 +1,18 @@
 ---
-title: Načíst rozhraní API nabídky | Azure Marketplace
+title: Načíst nabídky API | Azure Marketplace
 description: Rozhraní API načte souhrnný seznam nabídek v oboru názvů vydavatele.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 5c94c03a63936be2b086085a1e52064dedf214b0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: a1f15e269481b9706f81fd02f19effc9ad37df32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819636"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280486"
 ---
 <a name="retrieve-offers"></a>Načtení nabídek
 ===============
@@ -28,22 +27,22 @@ Načte souhrnný seznam nabídek v oboru názvů vydavatele.
 
 | **Název**         |  **Popis**                         |  **Datový typ** |
 | -------------    |  ------------------------------------    |  -----------   |
-|  publisherId     | Identifikátor vydavatele, například `contoso` |   Řetězec    |
-|  verze API-Version     | Nejnovější verze rozhraní API                    |    Datum        |
+|  id vydavatele     | Identifikátor vydavatele, například`contoso` |   Řetězec    |
+|  verze-api     | Nejnovější verze rozhraní API                    |    Datum        |
 |  |  |
 
 
 <a name="header"></a>Hlavička
 ------
 
-|  **Název**        |         **Hodnota**       |
+|  **Název**        |         **Hodnotu**       |
 |  --------------- |       ----------------  |
 |  Typ obsahu    | `application/json`      |
 |  Autorizace   | `Bearer YOUR_TOKEN`     |
 |  |  |
 
 
-<a name="body-example"></a>Příklad textu
+<a name="body-example"></a>Příklad těla
 ------------
 
 ### <a name="response"></a>Odpověď
@@ -65,28 +64,28 @@ Načte souhrnný seznam nabídek v oboru názvů vydavatele.
   ]
 ```
 
-### <a name="response-body-properties"></a>Vlastnosti textu odpovědi
+### <a name="response-body-properties"></a>Vlastnosti těla odezvy
 
 |  **Název**       |       **Popis**                                                                                                  |
 |  -------------  |      --------------------------------------------------------------------------------------------------------------    |
-|  offerTypeId    | Identifikuje typ nabídky.                                                                                           |
-|  publisherId    | Identifikátor, který jednoznačně identifikuje vydavatele                                                                      |
-|  status         | Stav nabídky Seznam možných hodnot najdete v tématu o [stavu nabídky](#offer-status) níže.                         |
-|  id             | Identifikátor GUID, který jedinečně identifikuje nabídku v oboru názvů vydavatele.                                                    |
-|  version        | Aktuální verze nabídky Vlastnost Version nemůže změnit klient. Po každém publikování se zvýší. |
-|  Definition     | Obsahuje souhrnné zobrazení skutečné definice úlohy. Chcete-li získat podrobnou definici, použijte rozhraní API [nabídky načíst konkrétní](./cloud-partner-portal-api-retrieve-specific-offer.md) . |
-|  changedTime    | Čas UTC, kdy se nabídka naposledy změnila                                                                              |
+|  offerTypeId    | Identifikuje typ nabídky                                                                                           |
+|  id vydavatele    | Identifikátor, který jednoznačně identifikuje vydavatele                                                                      |
+|  status         | Stav nabídky. Seznam možných hodnot naleznete níže v [tématu Stav nabídky.](#offer-status)                         |
+|  id             | Identifikátor GUID, který jednoznačně identifikuje nabídku v oboru názvů vydavatele.                                                    |
+|  version        | Aktuální verze nabídky. Vlastnost version nemůže být klientem změněna. Po každém publikování se to zintáží. |
+|  definice     | Obsahuje souhrnné zobrazení skutečné definice pracovního vytížení. Chcete-li získat podrobnou definici, použijte [rozhraní API pro konkrétní nabídku.](./cloud-partner-portal-api-retrieve-specific-offer.md) |
+|  changedTime    | Čas UTC, kdy byla nabídka naposledy změněna                                                                              |
 |  |  |
 
 
-### <a name="response-status-codes"></a>Stavové kódy odpovědí
+### <a name="response-status-codes"></a>Stavové kódy odpovědi
 
-| **Znakovou**  |  **Popis**                                                                                                   |
+| **kód**  |  **Popis**                                                                                                   |
 | -------   |  ----------------------------------------------------------------------------------------------------------------- |
-|  200      | `OK` – požadavek byl úspěšně zpracován a do klienta byly vráceny všechny nabídky pod vydavatelem.  |
-|  400      | `Bad/Malformed request` – tělo chybové odpovědi může obsahovat další informace.                                    |
-|  403      | `Forbidden` – klient nemá přístup k zadanému oboru názvů.                                          |
-|  404      | `Not found` – zadaná entita neexistuje.                                                                 |
+|  200      | `OK`- Požadavek byl úspěšně zpracován a všechny nabídky pod vydavatelem byly vráceny klientovi.  |
+|  400      | `Bad/Malformed request`- Tělo odpovědi na chybu může obsahovat více informací.                                    |
+|  403      | `Forbidden`- Klient nemá přístup k zadanému oboru názvů.                                          |
+|  404      | `Not found`- Zadaná entita neexistuje.                                                                 |
 |  |  |
 
 
@@ -94,11 +93,11 @@ Načte souhrnný seznam nabídek v oboru názvů vydavatele.
 
 |  **Název**                    | **Popis**                                  |
 |  ------------------------    | -----------------------------------------------  |
-|  NeverPublished              | Nabídka nebyla nikdy publikována.                  |
-|  NotStarted                  | Nabídka je nová, ale není spuštěná.                 |
+|  Nikdy publikováno              | Nabídka nebyla nikdy zveřejněna.                  |
+|  Notstarted                  | Nabídka je nová, ale není spuštěna.                 |
 |  WaitingForPublisherReview   | Nabídka čeká na schválení vydavatele.         |
-|  Spuštěno                     | Zpracovává se odeslání nabídky.             |
-|  Úspěch                   | Bylo dokončeno zpracování příspěvku nabídky.       |
-|  Zrušeno                    | Odeslání nabídky se zrušilo.                   |
-|  Selhalo                      | Odeslání nabídky se nezdařilo.                         |
+|  Spuštěno                     | Probíhá zpracování odesílání nabídky.             |
+|  Úspěch                   | Odeslání nabídky bylo dokončeno zpracování.       |
+|  Zrušeno                    | Odeslání nabídky bylo zrušeno.                   |
+|  Failed                      | Odeslání nabídky se nezdařilo.                         |
 |  |  |

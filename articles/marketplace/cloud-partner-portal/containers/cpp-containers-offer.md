@@ -1,46 +1,45 @@
 ---
-title: Nabídka imagí Azure Containers | Azure Marketplace
-description: Přehled procesu publikování nabídky kontejneru na Azure Marketplace.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+title: Nabídka image azure kontejnerů | Azure Marketplace
+description: Přehled procesu publikování nabídky kontejnerů na Azure Marketplace.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/02/2018
-ms.author: pabutler
-ms.openlocfilehash: f0e71d8135a5dd691dc1f746ec54cfb6170e281d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 9c0b4ca6e9a26f13d1539845ca9fb43f31a1a9dd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823232"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281710"
 ---
 # <a name="containers"></a>Kontejnery
 
-<table> <tr> <td>V této části se dozvíte, jak publikovat image kontejneru do <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a>.  
-Typ nabídky kontejnerů podporuje image kontejnerů Docker zřízené jako instance <a href="https://docs.microsoft.com/azure/aks/index">služby Azure Kubernetes</a> nebo <a href="https://docs.microsoft.com/azure/container-instances/container-instances-overview">Azure Container Instances</a> a hostované v úložišti <a href="https://docs.microsoft.com/azure/container-registry">Azure Container Registry</a> . </td> <td><img src="./media/container-icon.png"  alt="Azure container icon" /></td> </tr> </table>
+<table> <tr> <td>Tato část vysvětluje, jak publikovat image kontejneru na <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a>.  
+Typ nabídky kontejneru podporuje iimage kontejnerů Dockeru zřízené instance <a href="https://docs.microsoft.com/azure/aks/index">služby Azure Kubernetes</a> nebo <a href="https://docs.microsoft.com/azure/container-instances/container-instances-overview">instance kontejneru Azure</a> a hostované v úložišti <a href="https://docs.microsoft.com/azure/container-registry">registru kontejnerů Azure.</a> </td> <td><img src="./media/container-icon.png"  alt="Azure container icon" /></td> </tr> </table>
 
-## <a name="offer-components"></a>Komponenty nabídky
+## <a name="offer-components"></a>Nabídka komponent
 
-Tato část popisuje prvky publikování kontejneru a je určený jako průvodce pro vydavatele Azure Marketplace. Publikování je rozdělené do těchto hlavních částí:
+Tato část popisuje prvky publikování kontejneru a je určena jako vodítko pro vydavatele na Azure Marketplace. Publikování je rozděleno do následujících hlavních částí:
 
-- [Požadavky](./cpp-prerequisites.md) – Seznamte se s technickými a obchodními požadavky před vytvořením nebo publikováním nabídky kontejneru.
-- [Vytvoření nabídky](./cpp-create-offer.md) – zobrazí seznam kroků požadovaných k vytvoření nové položky nabídky kontejneru pomocí portál partnerů cloudu.
-- [Příprava technických prostředků](./cpp-create-technical-assets.md) – jak vytvořit technické prostředky pro řešení kontejneru jako nabídku Azure Marketplace.
-- [Publikování nabídky](./cpp-publish-offer.md) – jak odeslat nabídku pro publikování do Azure Marketplace.
+- [Požadavky](./cpp-prerequisites.md) – zobrazí seznam technických a obchodních požadavků před vytvořením nebo publikováním nabídky kontejneru.
+- [Vytvořte nabídku](./cpp-create-offer.md) – uvádí kroky potřebné k vytvoření nové položky nabídky kontejneru pomocí portálu partnerů cloudu.
+- [Připravte technické prostředky](./cpp-create-technical-assets.md) – jak vytvořit technické prostředky pro řešení kontejnerů jako nabídku na Azure Marketplace.
+- [Publikování nabídky](./cpp-publish-offer.md) – jak odeslat nabídku k publikování na Azure Marketplace.
 
-## <a name="container-publishing-process"></a>Proces publikování kontejneru
+## <a name="container-publishing-process"></a>Proces publikování kontejnerů
 
-Následující diagram znázorňuje nejdůležitější kroky při publikování nabídky virtuálních počítačů.
-![kroky pro publikování nabídky](./media/containers-offer-process.png)
+Následující diagram znázorňuje kroky vysoké úrovně při publikování nabídky virtuálního připojení.
+![Postup zveřejnění nabídky](./media/containers-offer-process.png)
 
-Nejdůležitější kroky pro publikování nabídky kontejneru:
+Kroky vysoké úrovně pro publikování nabídky kontejneru jsou:
 
-1. Vytvoření nabídky – poskytněte podrobné informace o této nabídce. Tyto informace zahrnují: popis nabídky, marketingové materiály, informace o podpoře a specifikace assetu.
-2. Vytvořte si obchodní a technické prostředky – vytvořte si obchodní prostředky (právní dokumenty a marketingové materiály) a technické prostředky pro přidružené řešení (kontejnery imagí hostované v Azure Container Registry.
-3. Vytvoření SKU – vytvořte SKU přidružené k této nabídce. Pro každou bitovou kopii, kterou plánujete publikovat, se vyžaduje jedinečná SKU.
-4. Certifikace a publikování nabídky – po dokončení nabídky a technických prostředků můžete nabídku odeslat. Toto odeslání spustí proces publikování. Během tohoto procesu je řešení testováno, ověřeno, certifikováno a pak "" bude fungovat "na Azure Marketplace.
+1. Vytvořit nabídku - Poskytněte podrobné informace o nabídce. Tyto informace zahrnují: popis nabídky, marketingové materiály, informace o podpoře a specifikace aktiv.
+2. Vytvořte obchodní a technické prostředky – vytvořte obchodní prostředky (právní dokumenty a marketingové materiály) a technické prostředky pro přidružené řešení (image kontejnerů hostované v registru kontejnerů Azure.
+3. Vytvoření skladové položky – vytvořte skladové položky přidružené k nabídce. Pro každý obrázek, který plánujete publikovat, je vyžadována jedinečná skladová položka.
+4. Certifikovat a publikovat nabídku - Po dokončení nabídky a technických prostředků můžete nabídku odeslat. Toto odeslání spustí proces publikování. Během tohoto procesu se řešení testuje, ověřuje, certifikuje a pak "přejde do provozu" na Azure Marketplace.
 
 ## <a name="next-steps"></a>Další kroky
 
-Než se pustíte do tohoto postupu, musíte splnit [technické a obchodní požadavky](./cpp-prerequisites.md) na publikování kontejneru do Microsoft Azure Marketplace.
+Než začnete tyto kroky zvážit, musíte splnit [technické a obchodní požadavky](./cpp-prerequisites.md) pro publikování kontejneru na webu Microsoft Azure Marketplace.

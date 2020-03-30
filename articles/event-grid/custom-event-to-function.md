@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: odeslání vlastních událostí do funkce Azure Function-Event Grid'
-description: 'Rychlý Start: pomocí Azure Event Grid a Azure CLI nebo portálu můžete publikovat téma a přihlásit se k odběru této události. Pro koncový bod se používá funkce Azure Functions.'
+title: 'Úvodní příručka: Odeslání vlastních událostí do funkce Azure – grid událostí'
+description: 'Úvodní příručka: Pomocí Azure Event Grid a Azure CLI nebo portálu publikujte téma a přihlaste se k odběru této události. Funkce Azure se používá pro koncový bod.'
 services: event-grid
 keywords: ''
 author: banisadr
@@ -8,28 +8,28 @@ ms.author: babanisa
 ms.date: 11/15/2019
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: a9281ba1e2bf68da2318c32ab7037515697f92a5
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 5e38571cf84537fd722093b96cd277743e8ce80c
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708842"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80292149"
 ---
-# <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>Rychlý Start: směrování vlastních událostí do funkce Azure pomocí Event Grid
+# <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>Úvodní příručka: Směrování vlastních událostí do funkce Azure pomocí mřížky událostí
 
-Azure Event Grid je služba zpracování událostí pro cloud. Azure Functions je jednou z podporovaných obslužných rutin událostí. V tomto článku vytvoříte pomocí webu Azure Portal vlastní téma, přihlásíte se k jeho odběru a aktivujete událost, abyste viděli výsledek. Události odešlete do funkce Azure Functions.
+Azure Event Grid je služba zpracování událostí pro cloud. Funkce Azure je jedním z podporovaných obslužných rutin událostí. V tomto článku vytvoříte pomocí webu Azure Portal vlastní téma, přihlásíte se k jeho odběru a aktivujete událost, abyste viděli výsledek. Události odešlete do funkce Azure.
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-azure-function"></a>Vytvoření funkce Azure
 
-Před přihlášením k odběru vlastního tématu pojďme vytvořit funkci pro zpracování událostí. V Azure Portal klikněte na vytvořit prostředek, zadejte ' function ' a pak zvolte ' Function App ' a klikněte na vytvořit. V části Skupina prostředků vyberte vytvořit novou a pojmenujte ji. Použijete ji pro zbytek kurzu. Zadejte Function App název, ponechte přepínač ' publikovat ' na ' Code ', vyberte libovolný modul runtime a oblast a potom stiskněte vytvořit.
+Před přihlášením k odběru vlastního tématu vytvoříme funkci pro zpracování událostí. Na webu Azure Portal klikněte na "Vytvořit prostředek" a zadejte 'funkce', pak zvolte "Aplikace funkce" a klikněte na vytvořit. V části Skupina prostředků vyberte možnost Vytvořit nový a pojmenujte ji. Budete používat pro zbytek kurzu. Pojmenujte aplikaci function App, ponechte přepínač Publikovat na "Kód", vyberte libovolný běh a oblast a pak stiskněte klávesu create.
 
-Až budete Function App připraveni, přejděte na něj a klikněte na + nová funkce. Vyberte na portálu možnost pro vývojové prostředí a stiskněte pokračovat. V části Vytvoření funkce zvolte Další šablony a zobrazte další šablony, vyhledejte Azure Event Grid Trigger a vyberte ho. Pokud tuto aktivační událost použijete poprvé, bude pravděpodobně nutné kliknutím na tlačítko nainstalovat nainstalovat rozšíření.
+Jakmile je aplikace funkce připravena, přejděte na ni a klikněte na tlačítko "+ Nová funkce". Vyberte možnost In-portal pro vývojové prostředí a stiskněte dál. V části vytvořit funkci zvolte "Další šablony", chcete-li zobrazit další šablony a pak vyhledat "Aktivační událost sítě událostí Azure" a vyberte ji. Pokud tuto aktivační událost používáte poprvé, bude pravděpodobně nutné rozšíření nainstalovat kliknutím na tlačítko Instalovat.
 
-![Aktivační událost Event Grid funkce](./media/custom-event-to-function/grid-trigger.png)
+![Aktivační událost události funkce](./media/custom-event-to-function/grid-trigger.png)
 
-Po instalaci rozšíření klikněte na pokračovat, zadejte název funkce a potom stiskněte vytvořit.
+Po instalaci rozšíření klikněte na pokračovat, pojmenujte svou funkci a stiskněte klávesu Create.
 
 [!INCLUDE [event-grid-register-provider-portal.md](../../includes/event-grid-register-provider-portal.md)]
 
@@ -38,56 +38,56 @@ Po instalaci rozšíření klikněte na pokračovat, zadejte název funkce a pot
 Téma Event Gridu poskytuje uživatelsky definovaný koncový bod, do kterého odesíláte události. 
 
 1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
-2. V levém navigačním panelu vyberte **všechny služby** , vyhledejte **Event Grid**a vyberte **Event Grid témata**. 
+2. V levé navigační nabídce vyberte **Všechny služby,** vyhledejte **mřížku událostí**a vyberte **Témata mřížky událostí**. 
 
-    ![Vybrat Event Grid témata](./media/custom-event-to-function/select-event-grid-topics.png)
-3. Na stránce **Event Grid témata** vyberte **+ Přidat** na panelu nástrojů. 
+    ![Vybrat témata mřížky událostí](./media/custom-event-to-function/select-event-grid-topics.png)
+3. Na stránce **Témata mřížky událostí** vyberte **+ Přidat** na panelu nástrojů. 
 
-    ![Přidat Event Grid – tlačítko tématu](./media/custom-event-to-function/add-event-grid-topic-button.png)
+    ![Tlačítko Přidat mřížku událostí](./media/custom-event-to-function/add-event-grid-topic-button.png)
 
-4. Na stránce **vytvořit téma** postupujte podle následujících kroků:
+4. Na stránce **Vytvořit téma** postupujte takto:
 
-    1. Zadejte jedinečný **název** vlastního tématu. Název tématu musí být jedinečný, protože je reprezentován položkou DNS. Nepoužívejte název zobrazený na obrázku. Místo toho vytvořte vlastní název – musí být dlouhý 3 až 50 znaků a obsahovat jenom hodnoty a – z, A-Z, 0-9, a "-".
-    2. Vyberte své **předplatné** Azure.
+    1. Zadejte jedinečný **název** pro vlastní téma. Název tématu musí být jedinečný, protože je reprezentován položkou DNS. Nepoužívejte název zobrazený na obrázku. Místo toho vytvořte vlastní název - musí být mezi 3-50 znaky a obsahovat pouze hodnoty a-z, A-Z, 0-9 a "-".
+    2. Vyberte **předplatné**Azure .
     3. Vyberte stejnou skupinu prostředků z předchozích kroků.
-    4. Vyberte **umístění** tématu Event Grid.
-    5. Pro pole **schéma události** ponechte výchozí hodnotu **Event Grid Schema** . 
+    4. Vyberte **umístění** pro téma mřížky událostí.
+    5. Zachovat výchozí hodnotu **Schéma mřížky událostí** pro pole **Schéma události.** 
 
-       ![Vytvořit stránku tématu](./media/custom-event-to-function/create-custom-topic.png)
+       ![Stránka Vytvořit téma](./media/custom-event-to-function/create-custom-topic.png)
     6. Vyberte **Vytvořit**. 
 
 5. Po vytvoření vlastního tématu se zobrazí oznámení o úspěchu. Vyberte **Přejít do skupiny prostředků**. 
 
    ![Zobrazení oznámení o úspěchu](./media/custom-event-to-function/success-notification.png)
 
-6. Na stránce **Skupina prostředků** vyberte téma Event Grid. 
+6. Na stránce **Skupina prostředků** vyberte téma mřížky událostí. 
 
-   ![Výběr prostředku tématu Event gridu](./media/custom-event-to-function/select-event-grid-topic.png)
+   ![Výběr zdroje tématu mřížky událostí](./media/custom-event-to-function/select-event-grid-topic.png)
 
-7. Pro událost Event Grid se zobrazí stránka **Event Grid téma** . Tuto stránku nechte otevřenou. Použijete ji později v rychlém startu. 
+7. Zobrazí se stránka **Téma mřížky událostí** pro mřížku událostí. Nechte tuto stránku otevřenou. Můžete použít později v rychlém startu. 
 
-    ![Domovská stránka Event Gridho tématu](./media/custom-event-to-function/event-grid-topic-home-page.png)
+    ![Domovská stránka tématu mřížky událostí](./media/custom-event-to-function/event-grid-topic-home-page.png)
 
 ## <a name="subscribe-to-custom-topic"></a>Přihlášení k odběru vlastního tématu
 
 K odběru tématu Event Gridu se přihlašujete, aby služba Event Grid věděla, které události chcete sledovat a kam má tyto události odesílat.
 
-1. Nyní na stránce **Event Grid téma** pro vlastní téma vyberte **+ odběr události** na panelu nástrojů.
+1. Nyní na stránce **Téma události** pro vlastní téma vyberte na panelu nástrojů + **Odběr událostí.**
 
    ![Přidání odběru události](./media/custom-event-to-function/new-event-subscription.png)
 
-2. Na stránce **vytvořit odběr události** použijte následující postup:
-    1. Zadejte **název** odběru události.
-    3. Jako **Typ koncového bodu**vyberte **Azure Function** . 
+2. Na stránce **Vytvořit odběr událostí** postupujte takto:
+    1. Zadejte **název** předplatného události.
+    3. Vyberte **funkci Azure** pro **typ koncového bodu**. 
     4. Zvolte **Vybrat koncový bod**. 
 
        ![Zadání hodnot pro odběr události](./media/custom-event-to-function/provide-subscription-values.png)
 
-    5. V případě koncového bodu funkce vyberte předplatné Azure a skupinu prostředků, ve které je Function App, a pak vyberte Function App a funkci, kterou jste vytvořili dříve. Zvolte **Potvrdit výběr**.
+    5. Pro koncový bod funkce vyberte předplatné Azure a skupinu prostředků, ve které se vaše aplikace funkce nachází, a pak vyberte aplikaci funkcí a funkci, kterou jste vytvořili dříve. Zvolte **Potvrdit výběr**.
 
        ![Zadání adresy URL koncového bodu](./media/custom-event-to-function/provide-endpoint.png)
 
-    6. Zpátky na stránce **vytvořit odběr události** vyberte **vytvořit**.
+    6. Zpět na stránce **Vytvořit odběr události** vyberte **Vytvořit**.
 
 ## <a name="send-an-event-to-your-topic"></a>Odeslání události do tématu
 
@@ -97,25 +97,25 @@ V prvním příkladu se používá Azure CLI. Načte adresu URL a klíč vlastn�
 
 
 ### <a name="azure-cli"></a>Azure CLI
-1. V Azure Portal vyberte **Cloud Shell**. V levém horním rohu okna Cloud Shell vyberte **bash** . 
+1. Na webu Azure Portal vyberte **Cloud Shell**. V levém horním rohu okna Cloud Shell uyberte **Bash.** 
 
-    ![Cloud Shell – bash](./media/custom-event-quickstart-portal/cloud-shell-bash.png)
-1. Spusťte následující příkaz, který získá **koncový bod** pro téma: po zkopírování a vložení příkazu aktualizujte **název tématu** a **název skupiny prostředků** před spuštěním příkazu. 
+    ![Cloud Shell - Bash](./media/custom-event-quickstart-portal/cloud-shell-bash.png)
+1. Spusťte následující příkaz, abyste získali **koncový bod** pro téma: Po zkopírování a vložení příkazu aktualizujte **název tématu** a **název skupiny prostředků** před spuštěním příkazu. 
 
     ```azurecli
     endpoint=$(az eventgrid topic show --name <topic name> -g <resource group name> --query "endpoint" --output tsv)
     ```
-2. Spusťte následující příkaz, který získá **klíč** pro vlastní téma: po zkopírování a vložení příkazu aktualizujte **název tématu** a název **skupiny prostředků** před spuštěním příkazu. 
+2. Spusťte následující příkaz, abyste získali **klíč** pro vlastní téma: Po zkopírování a vložení příkazu aktualizujte **název tématu** a název **skupiny prostředků** před spuštěním příkazu. 
 
     ```azurecli
     key=$(az eventgrid topic key list --name <topic name> -g <resource group name> --query "key1" --output tsv)
     ```
-3. Zkopírujte následující příkaz s definicí události a stiskněte klávesu **ENTER**. 
+3. Zkopírujte následující příkaz s definicí události a stiskněte **klávesu ENTER**. 
 
     ```json
     event='[ {"id": "'"$RANDOM"'", "eventType": "recordInserted", "subject": "myapp/vehicles/motorcycles", "eventTime": "'`date +%Y-%m-%dT%H:%M:%S%z`'", "data":{ "make": "Ducati", "model": "Monster"},"dataVersion": "1.0"} ]'
     ```
-4. Spusťte následující příkaz **kudrlinkou** pro odeslání události:
+4. Chcete-li událost odeslat, spusťte následující příkaz **Zvlnění:**
 
     ```
     curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
@@ -124,20 +124,20 @@ V prvním příkladu se používá Azure CLI. Načte adresu URL a klíč vlastn�
 ### <a name="azure-powershell"></a>Azure PowerShell
 V druhém příkladu se k provedení podobných kroků používá PowerShell.
 
-1. V Azure Portal vyberte možnost **Cloud Shell** (případně přejít na https://shell.azure.com/). V levém horním rohu okna Cloud Shell vyberte **PowerShell** . Podívejte se na ukázku obrázku okna **Cloud Shell** v části Azure CLI.
+1. Na webu Azure Portal vyberte **Cloud** `https://shell.azure.com/`Shell (případně přejděte na). V levém horním rohu okna Cloud Shellu vyberte **PowerShell.** Podívejte se na ukázkovou bitovou kopii okna **Cloud Shell** v části Azure CLI.
 2. Nastavte následující proměnné. Po zkopírování a vložení každého příkazu aktualizujte **název tématu** a **název skupiny prostředků** před spuštěním příkazu:
 
     ```powershell
     $resourceGroupName = <resource group name>
     $topicName = <topic name>
     ```
-3. Spusťte následující příkazy, abyste získali **koncový bod** a **klíče** pro téma:
+3. Chcete-li získat koncový **bod** a **klíče** pro toto téma, spusťte následující příkazy:
 
     ```powershell
     $endpoint = (Get-AzEventGridTopic -ResourceGroupName $resourceGroupName -Name $topicName).Endpoint
     $keys = Get-AzEventGridTopicKey -ResourceGroupName $resourceGroupName -Name $topicName
     ```
-4. Připraví událost. Zkopírujte a spusťte příkazy v okně Cloud Shell. 
+4. Připravte akci. Zkopírujte a spusťte příkazy v okně Prostředí cloud. 
 
     ```powershell
     $eventID = Get-Random 99999
@@ -162,28 +162,28 @@ V druhém příkladu se k provedení podobných kroků používá PowerShell.
     #Append square brackets to the converted JSON payload since they are expected in the event's JSON payload syntax
     $body = "["+(ConvertTo-Json $htbody)+"]"
     ```
-5. K odeslání události použijte rutinu **Invoke-WebRequest** . 
+5. K odeslání události použijte rutinu **Invoke-WebRequest.** 
 
     ```powershell
     Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-key" = $keys.Key1}
     ```
 
-### <a name="verify-in-the-event-grid-viewer"></a>Ověření v prohlížeči Event Grid
-Právě jste aktivovali událost a služba Event Grid odeslala zprávu do koncového bodu, který jste nakonfigurovali při přihlášení k odběru. Přejděte do funkce aktivované Event Grid a otevřete protokoly. V protokolech by se měla zobrazit kopie datové části události. Pokud si nejste jistí, že jste nejdřív otevřeli okno protokoly, nebo se znovu připojte a zkuste znovu odeslat testovací událost.
+### <a name="verify-in-the-event-grid-viewer"></a>Ověřit v prohlížeči mřížky událostí
+Právě jste aktivovali událost a služba Event Grid odeslala zprávu do koncového bodu, který jste nakonfigurovali při přihlášení k odběru. Přejděte do funkce aktivované pomocí funkce Event Grid a otevřete protokoly. Měli byste vidět kopii datové části události v protokolech. Pokud se nejprve nerozhodnete otevřít okno protokolů, nebo se znovu připojit a zkuste znovu odeslat testovací událost.
 
-![Úspěšný protokol triggeru funkce](./media/custom-event-to-function/successful-function.png)
+![Protokol aktivačních událostí úspěšné funkce](./media/custom-event-to-function/successful-function.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Pokud chcete pokračovat v práci s touto událostí, nevyčišťujte prostředky vytvořené v rámci tohoto článku. V opačném případě odstraňte prostředky, které jste v rámci tohoto článku vytvořili.
 
-1. V nabídce vlevo vyberte **skupiny prostředků** . Pokud ho v nabídce vlevo nevidíte, v nabídce vlevo vyberte **všechny služby** a vyberte **skupiny prostředků**. 
-2. Vyberte skupinu prostředků, na které se má spustit stránka **skupiny prostředků** . 
-3. Na panelu nástrojů vyberte **Odstranit skupinu prostředků** . 
+1. V levé nabídce vyberte **Skupiny prostředků.** Pokud ji v levé nabídce nevidíte, vyberte v levé nabídce **všechny služby** a vyberte **Skupiny zdrojů**. 
+2. Vyberte skupinu prostředků, kterou chcete spustit stránku **Skupina prostředků.** 
+3. Na panelu nástrojů vyberte **Odstranit skupinu prostředků.** 
 4. Potvrďte odstranění zadáním názvu skupiny prostředků a vyberte **Odstranit**. 
 
     ![Skupiny prostředků](./media/custom-event-to-function/delete-resource-groups.png)
 
-    Další skupina prostředků, kterou vidíte v imagi, byla vytvořena a používána oknem Cloud Shell. Pokud neplánujete použít okno Cloud Shell později, odstraňte ho. 
+    Druhá skupina prostředků, kterou vidíte na obrázku, byla vytvořena a používána v okně Prostředí cloud. Pokud později neplánujete použít okno Cloud Shell, odstraňte ho. 
 
 ## <a name="next-steps"></a>Další kroky
 

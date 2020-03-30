@@ -1,73 +1,73 @@
 ---
-title: Vnímání znalostí rozpoznávání entit
+title: Kognitivní dovednosti rozpoznávání entit
 titleSuffix: Azure Cognitive Search
-description: Extrakce různých typů entit z textu v kanálu rozšíření v Azure Kognitivní hledání.
+description: Extrahujte různé typy entit z textu v kanálu obohacení v Azure Cognitive Search.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6393c1eeaaa72d653704fcc52442bfb326dc2cdd
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 6ef5952b6413563b2c2e16ff2218f709b414fb84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472328"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297810"
 ---
-#   <a name="entity-recognition-cognitive-skill"></a>Vnímání znalostí rozpoznávání entit
+#    <a name="entity-recognition-cognitive-skill"></a>Kognitivní dovednosti rozpoznávání entit
 
-Dovednost pro **rozpoznávání entit** extrahuje z textu entity různých typů. Tato dovednost používá v Cognitive Services modely strojového učení, které poskytuje [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) .
+Dovednost **Rozpoznávání entit** extrahuje entity různých typů z textu. Tato dovednost používá modely strojového učení poskytované [textovou analýzou](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) ve službách Cognitive Services.
 
 > [!NOTE]
-> Když rozbalíte rozsah zvýšením četnosti zpracování, přidáním dalších dokumentů nebo přidáním dalších algoritmů AI, budete muset [připojit fakturovatelné Cognitive Services prostředku](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API v Cognitive Services a pro extrakci obrázků jako součást fáze pro vystavování dokumentů ve službě Azure Kognitivní hledání. Pro extrakci textu z dokumentů se neúčtují žádné poplatky.
+> Při rozšiřování oboru zvýšením četnosti zpracování, přidáním dalších dokumentů nebo přidáním dalších algoritmů AI budete muset [připojit fakturovatelný prostředek služeb Cognitive Services](cognitive-search-attach-cognitive-services.md). Poplatky narůstají při volání API ve službách Cognitive Services a pro extrakci image jako součást fáze prolomení dokumentů v Azure Cognitive Search. Za extrakci textu z dokumentů se neúčtují žádné poplatky.
 >
-> Při provádění integrovaných dovedností se účtují poplatky za stávající [Cognitive Services průběžných plateb](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakci imagí jsou popsané na [stránce s cenami za Azure kognitivní hledání](https://go.microsoft.com/fwlink/?linkid=2042400).
+> Provádění vestavěných dovedností se účtuje za stávající [cenu průběžných plateb služeb Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakci obrázků jsou popsané na [stránce s cenami Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.EntityRecognitionSkill
 
 ## <a name="data-limits"></a>Omezení dat
-Maximální velikost záznamu musí být 50 000 znaků měřenou [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Pokud potřebujete data před odesláním do extraktoru klíčové fráze rozdělit, zvažte použití [dovednosti rozdělení textu](cognitive-search-skill-textsplit.md).
+Maximální velikost záznamu by měla být 50 000 [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)znaků měřená písmenem . Pokud potřebujete rozdělit data před odesláním do klíčové fráze extraktoru, zvažte použití [dovednosti Rozdělení textu](cognitive-search-skill-textsplit.md).
 
 ## <a name="skill-parameters"></a>Parametry dovednosti
 
-V parametrech jsou rozlišována malá a velká písmena a jsou volitelná.
+Parametry rozlišují malá a velká písmena a všechny jsou volitelné.
 
 | Název parametru     | Popis |
 |--------------------|-------------|
-| categories    | Pole kategorií, které mají být extrahovány.  Možné typy kategorií: `"Person"`, `"Location"`, `"Organization"`, `"Quantity"`, `"Datetime"`, `"URL"`, `"Email"`. Pokud není zadána žádná kategorie, jsou vráceny všechny typy.|
-|defaultLanguageCode |  Kód jazyka vstupního textu Podporovány jsou následující jazyky: `ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans`. Ne všechny kategorie entit jsou podporovány pro všechny jazyky; Viz poznámka níže.|
-|minimumPrecision | Hodnota v rozsahu 0 až 1. Pokud je hodnocení spolehlivosti (ve výstupu `namedEntities`) menší než tato hodnota, entita se nevrátí. Výchozí hodnota je 0. |
-|includeTypelessEntities | Nastavte na `true`, pokud chcete rozpoznat dobře známé entity, které se nevejdou do aktuálních kategorií. Rozpoznané entity jsou vráceny v poli `entities` složitý výstup. Například "Windows 10" je dobře známá entita (produkt), ale vzhledem k tomu, že "Products" není podporovanou kategorií, bude tato entita obsažena v poli výstup entit. Výchozí hodnota je `false` |
+| categories    | Pole kategorií, které by měly být extrahovány.  Možné `"Person"`typy kategorií: `"Location"` `"Organization"`, `"Quantity"` `"Datetime"`, `"URL"` `"Email"`, , , , . Pokud není k dispozici žádná kategorie, jsou vráceny všechny typy.|
+|defaultLanguageCode |    Kód jazyka vstupního textu. Podporovány jsou následující `ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans`jazyky: . Ne všechny kategorie entit jsou podporovány pro všechny jazyky; viz poznámka níže.|
+|minimumPřesnost | Hodnota mezi 0 a 1. Pokud je skóre spolehlivosti (ve `namedEntities` výstupu) nižší než tato hodnota, entita není vrácena. Výchozí hodnota je 0. |
+|includeTypelessEntities | Nastavte `true` na, pokud chcete rozpoznat známé entity, které neodpovídají aktuálním kategoriím. Rozpoznané entity jsou `entities` vráceny ve složitém výstupním poli. Například "Windows 10" je dobře známá entita (produkt), ale protože "Produkty" není podporovaná kategorie, tato entita by byla zahrnuta do výstupního pole entit. Výchozí hodnota je`false` |
 
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
-| Název vstupu      | Popis                   |
+| Vstupní název      | Popis                   |
 |---------------|-------------------------------|
-| languageCode  | Volitelné. Výchozí hodnota je `"en"`.  |
-| text          | Text, který se má analyzovat          |
+| languageCode    | Nepovinný parametr. Výchozí je `"en"`.  |
+| text          | Text k analýze.          |
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
 > [!NOTE]
-> Ne všechny kategorie entit jsou podporovány pro všechny jazyky. Typy kategorií entit `"Person"`, `"Location"`a `"Organization"` se podporují pro úplný seznam jazyků uvedených výše. Extrakce `"Quantity"`, `"Datetime"`, `"URL"`a typů `"Email"` podporují pouze _de_, _EN_, _ES_, _fr_a _zh-Hans_ . Další informace najdete v tématu [Podpora jazyků a oblastí pro rozhraní API pro analýzu textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support).  
+> Ne všechny kategorie entit jsou podporovány pro všechny jazyky. Typy `"Person"` `"Location"`kategorií `"Organization"` , a entity jsou podporovány pro úplný seznam výše uvedených jazyků. Extrakci `"Quantity"`, `"Datetime"`, `"URL"`a `"Email"` typů podporují pouze _de_, _en_, _es_, _fr_a _zh-hans._ Další informace naleznete v [tématu Podpora jazyka a oblasti pro rozhraní API pro analýzu textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support).  
 
-| Název výstupu     | Popis                   |
+| Název výstupu      | Popis                   |
 |---------------|-------------------------------|
-| obyvatel      | Pole řetězců, kde každý řetězec představuje jméno osoby. |
-| locations  | Pole řetězců, kde každý řetězec představuje umístění. |
+| Osob       | Pole řetězců, kde každý řetězec představuje jméno osoby. |
+| Umístění  | Pole řetězců, kde každý řetězec představuje umístění. |
 | organizations  | Pole řetězců, kde každý řetězec představuje organizaci. |
-| množství  | Pole řetězců, kde každý řetězec představuje množství. |
-| Typy DateTime  | Pole řetězců, kde každý řetězec představuje hodnotu DateTime (jak je zobrazeno v textu). |
-| adrese | Pole řetězců, kde každý řetězec představuje adresu URL |
-| emails | Pole řetězců, kde každý řetězec představuje e-mail |
-| namedEntities | Pole komplexních typů, které obsahují následující pole: <ul><li>category</li> <li>Value (skutečný název entity)</li><li>posun (umístění, kde byl nalezen v textu)</li><li>důvěra (vyšší hodnota znamená, že se jedná o skutečnou entitu)</li></ul> |
-| entity | Pole komplexních typů, které obsahují formátované informace o entitách extrahovaných z textu, s následujícími poli <ul><li> název (skutečný název entity. Toto představuje "normalizovaný" tvar.</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (odkaz na stránku Wikipedii pro entitu)</li><li>bingId</li><li>typ (kategorie rozpoznané entity)</li><li>Podtyp (k dispozici pouze pro určité kategorie, poskytuje podrobnější zobrazení typu entity)</li><li> odpovídá (komplexní kolekce, která obsahuje)<ul><li>text (nezpracovaný text pro entitu)</li><li>posun (umístění, kde byl nalezen)</li><li>Délka (délka textu nezpracované entity)</li></ul></li></ul> |
+| Množství  | Pole řetězců, kde každý řetězec představuje množství. |
+| dateTimes  | Pole řetězců, kde každý řetězec představuje datetime (jak se zobrazí v textu) hodnotu. |
+| Adresy url | Pole řetězců, kde každý řetězec představuje adresu URL |
+| E-maily | Pole řetězců, kde každý řetězec představuje e-mail |
+| pojmenované entity | Pole komplexních typů, které obsahuje následující pole: <ul><li>category</li> <li>hodnota (Název skutečné entity)</li><li>posun (Umístění, kde byl nalezen v textu)</li><li>důvěra (Vyšší hodnota znamená, že je to spíše být skutečnou entitou)</li></ul> |
+| Entity | Pole komplexních typů, které obsahuje bohaté informace o entitách extrahovaných z textu, s následujícími poli <ul><li> název (název skutečné entity. To představuje "normalizovaný" formulář)</li><li> wikipediaId</li><li>wikipediaJazyk</li><li>wikipediaUrl (odkaz na stránku Wikipedie pro entitu)</li><li>bingId</li><li>typu (kategorie účetní jednotky, která byla vykázána)</li><li>subType (k dispozici pouze pro určité kategorie, to dává podrobnější zobrazení typu entity)</li><li> shody (komplexní kolekce, která obsahuje)<ul><li>text (nezpracovaný text pro entitu)</li><li>offset (místo, kde byl nalezen)</li><li>délka (délka textu nezpracované entity)</li></ul></li></ul> |
 
-##  <a name="sample-definition"></a>Definice vzorku
+##    <a name="sample-definition"></a>Definice vzorku
 
 ```json
   {
@@ -97,7 +97,7 @@ V parametrech jsou rozlišována malá a velká písmena a jsou volitelná.
     ]
   }
 ```
-##  <a name="sample-input"></a>Vzorový vstup
+##    <a name="sample-input"></a>Vstup vzorku
 
 ```json
 {
@@ -114,7 +114,7 @@ V parametrech jsou rozlišována malá a velká písmena a jsou volitelná.
 }
 ```
 
-##  <a name="sample-output"></a>Ukázkový výstup
+##    <a name="sample-output"></a>Ukázkový výstup
 
 ```json
 {
@@ -187,6 +187,7 @@ V parametrech jsou rozlišována malá a velká písmena a jsou volitelná.
 }
 ```
 
+Všimněte si, že posuny vrácené pro entity ve výstupu této dovednosti jsou přímo vráceny z [rozhraní API analýzy textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview), což znamená, že pokud je používáte k indexování do původního řetězce, měli byste použít třídu [StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) v rozhraní .NET, abyste extrahovali správný obsah.  [Více informací naleznete zde.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/text-offsets)
 
 ## <a name="error-cases"></a>Chybové případy
 Pokud kód jazyka pro dokument není podporován, je vrácena chyba a nejsou extrahovány žádné entity.
@@ -194,4 +195,4 @@ Pokud kód jazyka pro dokument není podporován, je vrácena chyba a nejsou ext
 ## <a name="see-also"></a>Viz také
 
 + [Integrované dovednosti](cognitive-search-predefined-skills.md)
-+ [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
++ [Jak definovat sadu dovedností](cognitive-search-defining-skillset.md)

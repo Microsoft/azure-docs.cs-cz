@@ -1,43 +1,41 @@
 ---
 title: Příprava balíčku AppSource | Azure Marketplace
-description: Explanaion se, jak připravit a sestavovat balíčky AppSource.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
-manager: Ricardo.Villalobos
+description: Explanaion v tom, jak připravit a vytvořit AppSource balíčky .
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 2c6b78e62afb43562910c872d31e2c9f564040da
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 76f8cbd6cb16b585a7dbda7b2ffa5eeeeb1b68d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73806104"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280605"
 ---
 # <a name="appsource-package-preparation"></a>Příprava balíčku AppSource
 
-Kromě souboru Solution. zip budete potřebovat **balíček AppSource**. Toto je soubor. zip, který obsahuje všechny prostředky potřebné k automatizaci procesu nasazení vašeho řešení do prostředí CRM zákazníků. **Balíček AppSource** má následující součásti:
+Kromě souboru solution.zip budete potřebovat **balíček AppSource**. Jedná se o soubor ZIP, který obsahuje všechny prostředky potřebné k automatizaci procesu nasazení řešení do prostředí CRM zákazníků. **Balíček AppSource** má následující součásti.
 
-* Balíček pro nástroj pro nasazení balíčků
-* **Content_Types soubor. XML** s prostředky, které používáte
-* soubor XML s daty konkrétní aplikace
-* logo 32x32, které se zobrazí s vaším seznamem v centru pro správu
-* Licenční smlouvy, zásady ochrany osobních údajů
+* Balíček pro nasaditebalík balíčku
+* **Content_Types.xml** s datovými zdroji, které používáte
+* xml soubor s daty specifickými pro aplikaci
+* 32x32 logo, které se zobrazí s vaším zápisem v Centru pro správu
+* Licenční podmínky, zásady ochrany osobních údajů
 
-Následující postup vám pomůže vytvořit balíček AppSource.
+Níže uvedené kroky vám pomohou vytvořit balíček AppSource.
 
-## <a name="a-create-a-package-for-the-package-deployer"></a>a. Vytvoření balíčku pro nástroj pro nasazení balíčku
+## <a name="a-create-a-package-for-the-package-deployer"></a>a. Vytvoření balíčku pro nasaditého balíku
 
-Balíček pro nástroj pro nasazení balíčku je jednou součástí balíčku AppSource.
+Balíček pro nasazení balíčku je součástí balíčku AppSource.
 
-Chcete-li vytvořit balíček pro nástroj pro nasazení balíčku, postupujte podle následujících pokynů: [https://msdn.microsoft.com/library/dn688182.aspx](https://msdn.microsoft.com/library/dn688182.aspx). Po dokončení se balíček bude skládat z níže uvedených prostředků:
+Chcete-li vytvořit balíček pro pomocníka pro [https://msdn.microsoft.com/library/dn688182.aspx](https://msdn.microsoft.com/library/dn688182.aspx)nasazení balíčku, postupujte podle následujících pokynů: . Po dokončení se váš balíček bude skládat z níže uvedených aktiv:
 
-1. Složka balíčku: obsahuje všechna řešení, konfigurační data, ploché soubory a obsah vašeho balíčku. _Poznámka: v následujícím příkladu se předpokládá, že se složka Package nazývá "PkgFolder"._
-2. Knihovna DLL: sestavení obsahuje vlastní kód pro váš balíček. _Poznámka: v následujícím příkladu se předpokládá, že se tento soubor nazývá "MicrosoftSample. dll"._
+1. Složka balíčku: obsahuje všechna řešení, konfigurační data, ploché soubory a obsah balíčku. _Poznámka: V následujícím příkladu budeme předpokládat, že složka balíčku se nazývá "PkgFolder"_
+2. DLL: Sestavení obsahuje vlastní kód pro váš balíček. _Poznámka: V následujícím příkladu budeme předpokládat, že tento soubor se nazývá "MicrosoftSample.dll."_
 
-Nyní je třeba vytvořit soubor s názvem "**Content_Types. XML**", ve kterém se budou zobrazovat všechna rozšíření assetů, která jsou součástí vašeho balíčku. Zde je příklad kódu souboru.
+Nyní je třeba vytvořit soubor s názvem "**Content_Types.xml**" Tento soubor zobrazí seznam všech přípon datových zdrojů, které jsou součástí vašeho balíčku. Zde je příklad kódu souboru.
 
     <?xml version="1.0" encoding="utf-8"?>
         <Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
@@ -54,36 +52,36 @@ Nyní je třeba vytvořit soubor s názvem "**Content_Types. XML**", ve kterém 
         <Default Extension="css" ContentType="application/octet-stream" />
     </Types>
 
-Posledním krokem je následující soubor zip do jednoho souboru. Zavolejte na soubor **Package. zip**. Bude obsahovat
+Posledním krokem je zip následující do jednoho souboru. Nazvěme to **package.zip**. Bude obsahovat
 
 1. PkgFolder (včetně všeho uvnitř složky)
-2. DLL
-3. **Content_Types. XML**
+2. Knihovny dll
+3. **Content_Types.xml**
 
-Postup vytvoření souboru Package. zip:
+Kroky k vytvoření package.zip:
 
-1. Do jednoho adresáře Umístěte složku balíčku, soubor **Content_Types. XML** a balíček. dll.
+1. Vložte složku balíčku, soubor **Content_Types.xml** a soubor PackageName.dll do jednoho adresáře.
 
-![CRMScreenShot2](media/CRMScreenShot2.png)
+![CrmScreenShot2](media/CRMScreenShot2.png)
 
-1. Vyberte všechny položky ve složce, klikněte pravým tlačítkem a zvolte Odeslat do komprimované složky (ZIP).
+1. Vyberte všechny položky ve složce, klikněte pravým tlačítkem myši a zvolte Odeslat komprimovované (zip) složky
 
-![CRMScreenShot3](media/CRMScreenShot3.png)
+![CrmScreenShot3](media/CRMScreenShot3.png)
 
-1. Změňte název na Package. zip.
+1. Změnit název na package.zip
 
-![CRMScreenShot4](media/CRMScreenShot4.png)
+![CrmScreenShot4](media/CRMScreenShot4.png)
 
 ## <a name="b-create-an-appsource-package"></a>b. Vytvoření balíčku AppSource
 
 Balíček AppSource vyžaduje několik dalších souborů.
 
 1. jpg (rozlišení 32x32)
-2. HTML (soubor ve formátu HTML)
-3. **Content_Types. XML** (stejné jako výše)
+2. html (soubor ve formátu HTML)
+3. **Content_Types.xml** (stejné jako výše)
 4. xml
 
-Zde je příklad kódu pro Input. XML. Viz definice v níže uvedené tabulce.
+Zde je příklad kódu input.xml. Viz definice v následující tabulce.
 
     <PvsPackageData>
         <ProviderName>Microsoft</ProviderName>
@@ -103,35 +101,35 @@ Zde je příklad kódu pro Input. XML. Viz definice v níže uvedené tabulce.
         </Locales>
     </PvsPackageData>
  
-**,**
+**Kde:**
 
 |Pole|Podrobnosti|
 |---|---|
-|ProviderName|Pro koho řešení pochází. Pokud je tým Microsoftu, měl by to být Microsoft.|
-|PackageFile |Prostředky pro nasazení balíčku: zip společně s obsahem soubor. XML\_Types. XML. Tento soubor zip by měl obsahovat sestavení nástroje pro nasazení balíčku a složku s prostředky pro nasazení balíčku. To znamená Package. zip|
-|SolutionAnchorName |Název souboru ZIP řešení v nástroji pro nasazení balíčku, který se používá pro zobrazovaný název a popis prostředků řešení.|
-| StartDate| Toto je datum, kdy bude balíček řešení dostupný. Formát je MM/DD/RRRR.|
-|EndDate|Toto je datum, kdy se balíček řešení zastaví. Formát je MM/DD/RRRR. |
-|SupportedCountries |Toto je seznam zemí/oblastí oddělených čárkami, které by se měly zobrazit v tomto balíčku. Pokud chcete zobrazit seznam všech kódů zemí, obraťte se na online služby. V době psaní tohoto seznamu: AE, AL, AM, AO, AR, AT, AU, AZ, BA, BB, BD, BH, BG,, BM, BN, BO, BR, by, CA, CH, CI, CL, CM, DO,,,,,,, CV, ES, EE, např. , ES, FI, FR, GB, GE, GH, GR, GT, HK, HN, HR, HU, ID, IE, IL, IN, SWEETIQ, IS, JM, JO, JP, KE, KG, KN, KR, KW, KY, KZ, KG, LK, LT, LU, MN, LY, MT, MÍ, MX, MY , NG, NI, NL, NO, NZ, OM, PA, PE, PH, PK, PL, PR, PS, PT, PY, QA, RO, RS, RU, RW, SA, T, SG,, A, SK, SN, SV, TH, TM, TN, TR, UY, UZ, VE, VI, VN, ZA, ZW |
-|LearnMoreLink | Adresa URL stránky s dalšími informacemi pro tento balíček. |
-|Národní prostředí|Jedna instance tohoto uzlu pro každý jazyk uživatelského rozhraní, který chcete podporovat v uživatelském rozhraní preferovaného řešení. Tento uzel obsahuje podřízené položky, které popisují národní prostředí, logo a pojem pro jednotlivé jazyky.|
-|Národní prostředí: PackageLocale. Code|LCID jazyka pro tento uzel. Příklad: US English je 1033|
-|Národní prostředí: PackageLocale. výchozí|Označuje, že toto je výchozí jazyk. Tato možnost se používá jako jazyk zpětného volání, pokud není k dispozici jazyk UX vybraný zákazníkem.|
-|Národní prostředí: logo|To, pokud logo, které chcete použít pro tento balíček. Velikost pro ikonu je 32x32. Povolené formáty jsou PNG a JPG.|
-|Národní prostředí: terms: PackageTerm. File|Toto je název souboru HTML dokumentu, který obsahuje vaše licenční smlouvy.|
+|Providername|Od koho to řešení přichází. Pokud tým společnosti Microsoft, by to měl být Microsoft.|
+|Soubor balíčků |Prostředky Package Deployer jsou zazipovány společně se souborem content\_types.xml. Tento soubor zip by měl obsahovat sestavení nasadit balíček a složku s prostředky nasazené balíček. To znamená, že package.zip|
+|Název_řešeníAnchorName |Název souboru zip řešení v nasaditebalíku balíčku, který se používá pro zobrazovaný název a popis prostředků řešení.|
+| PočátečníDatum| Toto je datum, kdy bude k dispozici balíček řešení. Formát je MM/DD/YYYY|
+|Enddate|Toto je datum, kdy balíček řešení přestane být k dispozici. Formát je MM/DD/YYYY |
+|Podporované země |Toto je seznam zemí nebo oblastí oddělených čárkami, které by měly vidět tento balíček. Seznam všech aktuálních kódů zemí získáte od online služeb. V té době, tohoto psaní seznamu bylo: AE, AL, AM, AO, AR, AT, AU,AZ,BA, BB, BD, BE,BG,BH,BM, BN, BO, BR, BY, CA, CH, CI, CL, CM, CO, CR, CV, CW, CY,CZ,DE, DK, DO, DZ,EC,EE, EG ,ES,FI,FR,GB,GE,GH,GR,GT,HK,HN,HR,HU,ID,IE,IL,IN,IQ,IS,IT,JM,JO,JP,KE,KG,KN,KR,KW,KY,KZ,LB,LK,LT,LU,LV,LY,MA,MC,MD,ME,MK,MN,MO,MT,MU,MX,MY ,NG,NI,NL,NO,NZ,OM,PA,PE,PH,PK,PL,PR,PS,PT,PY,QA,RO,RS,RU,RW,SA,SE,SG,SI,SK,SV,TH,TM,TN,TR,TT,TW,UA,US,UY,UZ,VE,VI,VN,ZA,ZW |
+|LearnMoreLink | URL na stránku více informací pro tento balíček. |
+|Národní prostředí|Jedna instance tohoto uzlu pro každý jazyk uživatelského rozhraní, který chcete podporovat v uživatelském rozhraní upřednostňovaného řešení. Tento uzel obsahuje podřízené položky, které popisují národní prostředí, logo a termíny pro každý jazyk|
+|Národní prostředí: PackageLocale.Code|LCID jazyka pro tento uzel. Příklad: Americká angličtina je 1033|
+|Národní prostředí: PackageLocale.IsDefault|Označuje, že se jedná o výchozí jazyk. Používá se jako záložní jazyk, pokud jazyk uživatelského rozhraní zvolený zákazníkem není k dispozici.|
+|Národní prostředí: Logo|To to v případě, že logo, které chcete použít pro tento balíček. Velikost ikony je 32x32. Povolené formáty jsou PNG a JPG|
+|Národní prostředí:Termíny: PackageTerm.File|Toto je název souboru dokumentu HTML, který obsahuje licenční podmínky.|
 
-Tady je místo, kde se zobrazí logo:
+Zde je místo, kde se zobrazí logo:
 
-![CRMScreenShot5](media/CRMScreenShot5.png)
+![CrmScreenShot5](media/CRMScreenShot5.png)
 
-Posledním krokem je následující soubor zip do jednoho souboru.
+Posledním krokem je zip následující do jednoho souboru.
 
 1. zip (vytvořeno dříve)
-2. **Content_Types. XML**
+2. **Content_Types.xml**
 3. xml
-4. PNG
+4. png
 5. html
 
-![CRMScreenShot6](media/CRMScreenShot6.png)
+![CrmScreenShot6](media/CRMScreenShot6.png)
 
-Přejmenujte soubor na něco vhodného pro vaši aplikaci. Upřednostňujeme, abyste zahrnuli název vaší společnosti a název aplikace. Například: **_Microsoft_SamplePackage. zip**.
+Přejmenujte soubor na něco vhodného pro vaši aplikaci. Upřednostňujeme, abyste uvedei název společnosti a název aplikace. Například: **_Microsoft_SamplePackage.zip**.

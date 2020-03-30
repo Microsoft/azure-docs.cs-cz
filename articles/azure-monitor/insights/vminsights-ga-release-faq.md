@@ -1,125 +1,115 @@
 ---
-title: Nejčastější dotazy k Azure Monitor pro virtuální počítače (GA) | Microsoft Docs
-description: Azure Monitor pro virtuální počítače je řešení v Azure, které kombinuje monitorování stavu a výkonu operačního systému virtuálního počítače Azure a automaticky zjišťuje součásti aplikací a závislosti s dalšími prostředky a mapuje komunikaci mezi ihned. Tento článek obsahuje odpovědi na běžné dotazy týkající se verze GA.
+title: Azure Monitor pro virtuální počítače (GA) nejčastější dotazy | Dokumenty společnosti Microsoft
+description: Azure Monitor pro virtuální počítače je řešení v Azure, které kombinuje monitorování stavu a výkonu operačního systému Azure VM a také automaticky zjišťuje součásti a závislosti aplikací s jinými prostředky a mapuje komunikaci mezi Je. Tento článek odpovídá na běžné otázky týkající se vydání ga.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: 0af5e4b92b52b4ecfc4e0e302b5d2a7701297908
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 3d250ef1aba979be04a44acaf31a3d685f162e37
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656190"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80283884"
 ---
-# <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Azure Monitor pro virtuální počítače všeobecně dostupné (GA) nejčastější dotazy
-
-Tato obecná dostupnost – Nejčastější dotazy zahrnují změny, ke kterým dochází v Azure Monitor pro virtuální počítače, jak připravujeme pro naši verzi GA. 
+# <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Azure Monitor pro virtuální počítače obecně dostupné (GA) Nejčastější dotazy
+Tato nejčastější dotazy týkající se obecné dostupnosti zahrnují změny, které byly provedeny v Q4 2019 a Q1 2020, jak jsme se připravovali pro GA.
 
 ## <a name="updates-for-azure-monitor-for-vms"></a>Aktualizace pro Azure Monitor pro virtuální počítače
+Vydali jsme novou verzi Azure Monitor pro virtuální počítače v lednu 2020 před naší ga oznámení. Zákazníci, kteří povolí Azure Monitor pro virtuální počítače, teď dostanou verzi GA, ale stávající zákazníci používající verzi Azure Monitoru pro virtuální počítače z Q4 2019 a starší chtějí upgradovat. Tento častý dotaz nabízí pokyny k provedení upgradu ve velkém měřítku, pokud máte velké nasazení napříč více pracovními prostory.
 
-Vydali jsme novou verzi Azure Monitor pro virtuální počítače. Zákazníci, kteří můžou povolit monitorování Azure pro virtuální počítače, teď obdrží novou verzi, ale stávající zákazníci, kteří už používají Azure Monitor pro virtuální počítače, budou vyzváni k upgradu. Tyto nejčastější dotazy a naše dokumentace nabízí pokyny k provedení upgradu se škálováním v případě, že máte rozsáhlá nasazení napříč několika pracovními prostory.
 
-S tímto upgradem Azure Monitor pro virtuální počítače údaje o výkonu jsou uloženy ve stejné tabulce *InsightsMetrics* jako [Azure monitor pro kontejnery](container-insights-overview.md), což usnadňuje dotazování obou datových sad. Můžete také uložit více různých datových sad, které jsme nedokázali uložit v tabulce, která se dřív použila. 
+Díky tomuto upgradu jsou data o výkonu Azure Monitor pro virtuální počítače uložená ve stejné tabulce *InsightsMetrics* jako [Azure Monitor pro kontejnery](container-insights-overview.md), což usnadňuje dotazování na dvě sady dat. Také můžete ukládat rozmanitější datové sady, které jsme nemohli uložit v tabulce dříve používané. 
 
-Naše zobrazení výkonu teď používají uložená data v tabulce *InsightsMetrics* .  Pokud jste ještě neupgradovali na použití nejnovějšího řešení VMInsights v pracovním prostoru, grafy už nebudou zobrazovat informace.  Upgrade můžete provést **na stránce Začínáme** , jak je popsáno níže.
-
-Uvědomujeme si, že požádáme o upgrade stávajících zákazníků na jejich pracovní postup, což je důvod, proč jsme se k tomu rozhodli teď v Public Preview, ale ne později po GA.
+Naše zobrazení výkonu teď používají data, která ukládáme v tabulce *InsightsMetrics.*  Pokud jste ještě neupgradovali na použití nejnovějšího řešení VMInsights v pracovním prostoru, vaše grafy už nebudou zobrazovat informace.  Můžete upgradovat z naší stránky **Začínáme,** jak je popsáno níže.
 
 
 ## <a name="what-is-changing"></a>Co se mění?
+Vydali jsme nové řešení s názvem VMInsights, které obsahuje další funkce pro shromažďování dat spolu s novým umístěním pro ukládání těchto dat do pracovního prostoru Log Analytics. 
 
-Vydali jsme nové řešení s názvem VMInsights, které obsahuje další možnosti shromažďování dat a nové umístění pro ukládání těchto dat do pracovního prostoru Log Analytics. 
+V minulosti jsme povolili servicemap řešení na vašem pracovním prostoru a nastavení čítače výkonu v pracovním prostoru Log Analytics k odeslání dat do tabulky *Perf.* Toto nové řešení odesílá data do tabulky s názvem *InsightsMetrics,* která se používá také Azure Monitor pro kontejnery. Toto schéma tabulky nám umožňuje ukládat další metriky a sady dat služby, které nejsou kompatibilní s formátem tabulky *Perf.*
 
-V minulosti jsme povolili řešení ServiceMap v pracovním prostoru a nastavili čítače výkonu v pracovním prostoru Log Analytics k odeslání dat do tabulky *perf* . Toto nové řešení odesílá data do tabulky s názvem *InsightsMetrics* , která je také používána Azure monitor pro kontejnery. Toto schéma tabulky nám umožňuje ukládat další metriky a sady dat služby, které nejsou kompatibilní s formátem tabulky *perf* .
-
-Aktualizovali jsme naše grafy výkonu pro používání dat, která ukládáme do tabulky *InsightsMetrics* . Můžete upgradovat na použití tabulky *InsightsMetrics* **na naší stránce Začínáme,** jak je popsáno níže.
+Aktualizovali jsme naše grafy výkonu, abychom mohli používat data, která ukládáme v tabulce *InsightsMetrics.* Můžete upgradovat na použití tabulky *InsightsMetrics* z naší stránky **Začínáme,** jak je popsáno níže.
 
 
-## <a name="how-do-i-upgrade"></a>Návody upgradovat?
-Když se pracovní prostor Log Analytics upgraduje na nejnovější verzi Azure Monitor na virtuální počítače, upgraduje se agent závislostí na každém virtuálním počítači připojeném k tomuto pracovnímu prostoru. Každý virtuální počítač, který vyžaduje upgrade, se identifikuje na **kartě Začínáme v** Azure monitor pro virtuální počítače Azure Portal. Když se rozhodnete upgradovat virtuální počítač, upgraduje se pracovní prostor pro tento virtuální počítač společně s ostatními virtuálními počítači připojenými k tomuto pracovnímu prostoru. Můžete vybrat jeden nebo více virtuálních počítačů, skupiny prostředků nebo odběry. 
+## <a name="how-do-i-upgrade"></a>Jak mohu provést upgrade?
+Když se pracovní prostor Analýzy protokolů upgraduje na nejnovější verzi Azure Monitoru na virtuální počítače, upgraduje agenta závislostí na každém virtuálním počítači připojeném k tomuto pracovnímu prostoru. Každý virtuální počítač vyžadující upgrade se bude identifikovat na kartě **Začínáme** v Azure Monitoru pro virtuální počítače na webu Azure Portal. Když se rozhodnete upgradovat virtuální hod, upgraduje pracovní prostor pro tento virtuální virtuální ms spolu s dalšími virtuálními min připojenými k tomuto pracovnímu prostoru. Můžete vybrat jeden virtuální počítač nebo více virtuálních počítačů, skupin prostředků nebo předplatných. 
 
-Pomocí následujícího příkazu upgradujte pracovní prostor pomocí prostředí PowerShell:
+Pomocí následujícího příkazu můžete inovovat pracovní prostor pomocí PowerShellu:
 
 ```PowerShell
 Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-group-name> -WorkspaceName <workspace-name> -IntelligencePackName "VMInsights" -Enabled $True
 ```
 
-## <a name="what-should-i-do-about-the-performance-counters-in-my-workspace-if-i-install-the-vminsights-solution"></a>Co mám dělat s čítači výkonu v pracovním prostoru při instalaci řešení VMInsights?
+## <a name="what-should-i-do-about-the-performance-counters-in-my-workspace-if-i-install-the-vminsights-solution"></a>Co mám dělat s čítači výkonu v pracovním prostoru, když nainstaluji řešení VMInsights?
 
-Aktuální metoda povolení Azure Monitor pro virtuální počítače používá čítače výkonu ve vašem pracovním prostoru. Nová metoda uloží tato data do nové tabulky s názvem `InsightsMetrics`.
-
-Jakmile aktualizujeme naše uživatelské rozhraní tak, aby používalo data z `InsightsMetrics` tabulky, aktualizujeme naši dokumentaci a sdělíme toto oznámení prostřednictvím několika kanálů, včetně zobrazení proužkové reklamy v Azure Portal. V tomto okamžiku se můžete rozhodnout zakázat tyto [čítače výkonu](vminsights-enable-overview.md#performance-counters-enabled) v pracovním prostoru, pokud je už nepotřebujete používat. 
+Předchozí metoda povolení Azure Monitor pro virtuální počítače používá čítače výkonu ve vašem pracovním prostoru. Aktuální verze ukládá tato data `InsightsMetrics`v tabulce s názvem . Můžete zakázat tyto čítače výkonu v pracovním prostoru, pokud již není nutné je používat. 
 
 >[!NOTE]
->Pokud máte pravidla upozornění, která odkazují na tyto čítače v tabulce `Perf`, je nutné je aktualizovat, aby odkazovala na nová data uložená v `InsightsMetrics` tabulce. Příklady dotazů protokolu, které můžete použít, najdete v naší dokumentaci k této tabulce.
+>Pokud máte pravidla výstrah, které odkazují `Perf` na tyto čítače v tabulce, `InsightsMetrics` je třeba je aktualizovat tak, aby odkazovaly na nová data uložená v tabulce. Naleznete v naší dokumentaci, například dotazy protokolu, které můžete použít, které odkazují na tuto tabulku.
 >
 
-Pokud se rozhodnete ponechat čítače výkonu povolené, budou se vám účtovat data ingestovaná a uložená v tabulce `Perf` na základě [Log Analytics ceny [(https://azure.microsoft.com/pricing/details/monitor/).
+Pokud se rozhodnete ponechat čítače výkonu povolené, budou vám účtovány `Perf` údaje pořízené a uložené vhttps://azure.microsoft.com/pricing/details/monitor/)tabulce na základě [Log Analytics ceny[( .
 
-## <a name="how-will-this-change-affect-my-alert-rules"></a>Jak bude tato změna mít vliv na pravidla upozornění?
+## <a name="how-will-this-change-affect-my-alert-rules"></a>Jak tato změna ovlivní moje pravidla výstrah?
 
-Pokud jste vytvořili [výstrahy protokolu](../platform/alerts-unified-log.md) , které se dotazují na `Perf` tabulce cílící na čítače výkonu, které byly povolené v pracovním prostoru, měli byste tato pravidla aktualizovat tak, aby místo toho odkazovaly na tabulku `InsightsMetrics`. Tyto pokyny se vztahují také na všechna pravidla prohledávání protokolu pomocí `ServiceMapComputer_CL` a `ServiceMapProcess_CL`, protože tyto sady dat přecházejí do `VMComputer` a `VMProcess` tabulek.
+Pokud jste vytvořili [výstrahy protokolu,](../platform/alerts-unified-log.md) které dotaz na `Perf` tabulky cílení čítače výkonu, `InsightsMetrics` které byly povoleny v pracovním prostoru, měli byste aktualizovat tato pravidla odkazovat na tabulku místo. Tento návod platí také pro všechna `ServiceMapComputer_CL` `ServiceMapProcess_CL`pravidla hledání protokolu pomocí `VMComputer` a `VMProcess` , protože tyto sady dat se přesouvají do tabulky.
 
-Tyto nejčastější dotazy a naši dokumentaci budeme aktualizovat tak, aby obsahovaly ukázková pravidla upozornění pro prohledávání protokolů pro sady dat, které shromažďujeme.
+Tyto nejčastější dotazy a naši dokumentaci budeme aktualizovat tak, aby obsahovaly ukázková pravidla upozornění na vyhledávání protokolů pro shromažďovky dat.
 
-## <a name="how-will-this-affect-my-bill"></a>Jak to bude mít na vyúčtování vliv?
+## <a name="how-will-this-affect-my-bill"></a>Jak to ovlivní můj účet?
 
-Fakturace se pořád vychází z dat, která se ingestují a uchovávají v pracovním prostoru Log Analytics.
+Fakturace je stále založena na datech požitých a uchovávaných v pracovním prostoru Log Analytics.
 
-Údaje o výkonu na úrovni počítače, které shromažďujeme, mají stejnou velikost jako data uložená v `Perf` tabulce a budou mít náklady přibližně stejnou částku.
+Údaje o výkonu na úrovni počítače, které shromažďujeme, jsou stejné, `Perf` mají podobnou velikost jako data uložená v tabulce a budou stát přibližně stejnou částku.
 
-## <a name="what-if-i-only-want-to-use-service-map"></a>Co když chci použít jenom Service Map?
+## <a name="what-if-i-only-want-to-use-service-map"></a>Co když chci používat pouze mapu služeb?
 
-To je dobré. Při zobrazení Azure Monitor pro virtuální počítače o nadcházející aktualizaci se zobrazí výzvy Azure Portal. Po vydání se zobrazí výzva požadující, abyste aktualizovali na novou verzi. Pokud dáváte přednost použití funkce [Maps](vminsights-maps.md) , můžete se rozhodnout, že nebudete upgradovat a nadále používat funkci maps v Azure Monitor pro virtuální počítače a Service map řešení dostupného z dlaždice pracovního prostoru nebo řídicího panelu.
+To je v pořádku. Při zobrazení Azure Monitoru pro virtuální počítače o nadcházející aktualizaci se na webu Azure Portal zobrazí výzvy. Po vydání se zobrazí výzva s žádostí o aktualizaci na novou verzi. Pokud dáváte přednost jenom funkci [Mapy,](vminsights-maps.md) můžete se rozhodnout, že nebudete upgradovat a nadále používat funkci Mapy v Azure Monitoru pro virtuální počítače a řešení Mapy služeb, které se přistupuje z vašeho pracovního prostoru nebo dlaždice řídicího panelu.
 
-Pokud jste se rozhodli ručně povolit čítače výkonu v pracovním prostoru, můžete zobrazit data v některých našich grafech výkonu zobrazených z Azure Monitor. Po vydání nového řešení aktualizujeme naše grafy výkonu a provedeme dotaz na data uložená v `InsightsMetrics` tabulce. Pokud chcete zobrazit data z této tabulky v těchto grafech, budete muset upgradovat na novou verzi Azure Monitor pro virtuální počítače.
+Pokud jste se rozhodli ručně povolit čítače výkonu ve vašem pracovním prostoru, pak můžete zobrazit data v některých našich grafech výkonu zobrazených z Azure Monitoru. Po vydání nového řešení aktualizujeme naše grafy výkonu, `InsightsMetrics` abychom se dotazovali na data uložená v tabulce. Pokud chcete zobrazit data z této tabulky v těchto grafech, budete muset upgradovat na novou verzi Azure Monitor pro virtuální počítače.
 
-Změny přesunu dat z `ServiceMapComputer_CL` a `ServiceMapProcess_CL` budou mít vliv na Service Map i Azure Monitor pro virtuální počítače, takže stále budete muset tuto aktualizaci naplánovat.
+Změny přesunout data `ServiceMapComputer_CL` `ServiceMapProcess_CL` z a ovlivní mapu služeb a Azure Monitor pro virtuální počítače, takže stále potřebujete naplánovat pro tuto aktualizaci.
 
-Pokud se rozhodnete neupgradovat na řešení **VMInsights** , budeme dál poskytovat starší verze našich sešitů výkonu, které odkazují na data v `Perf` tabulce.  
+Pokud jste se rozhodli neupgradovat na řešení **VMInsights,** budeme i nadále poskytovat starší `Perf` verze našich sešitů výkonu, které odkazují na data v tabulce.  
 
-## <a name="will-the-service-map-data-sets-also-be-stored-in-insightsmetrics"></a>Budou se sady dat Service Map také ukládat v InsightsMetrics?
+## <a name="will-the-service-map-data-sets-also-be-stored-in-insightsmetrics"></a>Budou sady dat mapy služeb také uloženy v InsightsMetrics?
 
-Datové sady nebudou duplikovány, pokud použijete obě řešení. Obě nabídky sdílejí sady dat, které budou uložené v `VMComputer` (dřív ServiceMapComputer_CL), `VMProcess` (dříve ServiceMapProcess_CL), `VMConnection`a `VMBoundPort` tabulky pro uložení datových sad map, které shromažďujeme.  
+Datové sady nebudou duplikovány, pokud použijete obě řešení. Obě nabídky sdílejí sady dat, které `VMComputer` budou uloženy `VMProcess` v (dříve `VMConnection`ServiceMapComputer_CL), (dříve ServiceMapProcess_CL) a `VMBoundPort` tabulky pro ukládání mapových datových sad, které shromažďujeme.  
 
-Tabulka `InsightsMetrics` bude ukládat sady dat pro virtuální počítače, procesy a služby, které shromažďujeme a bude naplněna, jenom pokud používáte Azure Monitor pro virtuální počítače a řešení VM Insights. Řešení Service Map nebude shromažďovat ani ukládat data v tabulce `InsightsMetrics`.
+Tabulka `InsightsMetrics` bude ukládat sady dat virtuálních počítače, procesů a služeb, které shromažďujeme, a bude naplněna jenom v případě, že používáte Azure Monitor pro virtuální počítače a řešení VM Insights. Řešení Mapa služeb nebude shromažďovat nebo ukládat data v `InsightsMetrics` tabulce.
 
-## <a name="will-i-be-double-charged-if-i-have-the-service-map-and-vminsights-solutions-in-my-workspace"></a>Bude se mi něco účtovat, když mám v pracovním prostoru řešení Service Map a VMInsights?
+## <a name="will-i-be-double-charged-if-i-have-the-service-map-and-vminsights-solutions-in-my-workspace"></a>Bude mi v pracovním prostoru účtovándvojnásobný poplatek, pokud mám v pracovním prostoru řešení Mapy služeb a VMInsights?
 
-Ne, tato dvě řešení sdílí sady dat map, které ukládáme v `VMComputer` (dřív ServiceMapComputer_CL), `VMProcess` (dřív ServiceMapProcess_CL), `VMConnection`a `VMBoundPort`. V případě, že máte obě řešení ve vašem pracovním prostoru, nebudeme vám nic účtovat.
+Ne, obě řešení sdílejí sady mapových `VMComputer` dat, které `VMProcess` ukládáme (dříve `VMConnection`ServiceMapComputer_CL), (dříve ServiceMapProcess_CL) a `VMBoundPort`. Tato data nebudou účtována dvakrát, pokud máte obě řešení v pracovním prostoru.
 
-## <a name="if-i-remove-either-the-service-map-or-vminsights-solution-will-it-remove-my-data"></a>Když odeberem řešení Service Map nebo VMInsights, odeberou se moje data?
+## <a name="if-i-remove-either-the-service-map-or-vminsights-solution-will-it-remove-my-data"></a>Pokud odeberu mapu služeb nebo řešení VMInsights, odebere moje data?
 
-Ne, tato dvě řešení sdílí sady dat map, které ukládáme v `VMComputer` (dřív ServiceMapComputer_CL), `VMProcess` (dřív ServiceMapProcess_CL), `VMConnection`a `VMBoundPort`. Pokud odeberete jedno z těchto řešení, tyto sady dat si všimněte, že je stále k dispozici řešení, které používá data a zůstane v pracovním prostoru Log Analytics. Z pracovního prostoru musíte odebrat obě řešení, aby se z něho odstranila data.
+Ne, obě řešení sdílejí sady mapových `VMComputer` dat, které `VMProcess` ukládáme (dříve `VMConnection`ServiceMapComputer_CL), (dříve ServiceMapProcess_CL) a `VMBoundPort`. Pokud odeberete jedno z řešení, tyto sady dat oznámení, že je stále řešení na místě, které používá data a zůstane v pracovním prostoru Log Analytics. Chcete-li z pracovního prostoru odebrat obě řešení, je třeba je odebrat.
 
-## <a name="when-will-this-update-be-released"></a>Kdy bude tato aktualizace vydána?
+## <a name="health-feature-is-in-limited-public-preview"></a>Funkce stavu je v omezenéverzi Veřejné
 
-Očekáváme, že tuto aktualizaci vydáte Azure Monitor pro virtuální počítače do 15. ledna 2020. Jakmile se dostanete k datu vydání v lednu, budeme po otevření Azure Monitor dostávat aktualizace tady a prezentují oznámení v Azure Portal.
-
-## <a name="health-feature-is-in-limited-public-preview"></a>Funkce Health je ve verzi Public Preview omezená.
-
-Od zákazníků jsme dostali spoustu skvělé zpětné vazby o sadě funkcí stavu virtuálních počítačů. Tato funkce má spoustu zájmu a setkalo se na jejich potenciál, aby podporovaly monitorovací pracovní postupy. Plánujeme udělat řadu změn pro přidání funkcí a vyřešení zpětné vazby, kterou jsme dostali. 
+Obdrželi jsme spoustu skvělé zpětné vazby od zákazníků o naší sadě funkcí VM Health. O tuto funkci je velký zájem a vzrušení nad jejím potenciálem pro podporu pracovních postupů monitorování. Plánujeme provést řadu změn, abychom přidali funkce a řešili zpětnou vazbu, kterou jsme obdrželi. 
 
 Abychom minimalizovali dopad těchto změn na nové zákazníky, přesunuli jsme tuto funkci do **omezené verze Public Preview**. Tato aktualizace se stala v říjnu 2019.
 
-Plánujete znovu spustit tuto funkci stavu v 2020, po Azure Monitor pro virtuální počítače je v GA.
+Tuto funkci stavu plánujeme znovu spustit v roce 2020, po Azure Monitor u virtuálních počítačů je v GA.
 
-## <a name="how-do-existing-customers-access-the-health-feature"></a>Jak existující zákazníci získají přístup k funkci stavu?
+## <a name="how-do-existing-customers-access-the-health-feature"></a>Jak mají stávající zákazníci přístup k funkci Stav?
 
-Stávající zákazníci, kteří používají funkci stavu, budou mít k tomuto přístupu i nadále přístup, ale nebudou jim nabízeni noví zákazníci.  
+Stávající zákazníci, kteří používají funkci Stav, k ní budou mít i nadále přístup, ale nebudou nabídnuti novým zákazníkům.  
 
-Chcete-li získat přístup k funkci, můžete přidat následující příznak funkce `feature.vmhealth=true` do Azure Portal URL [https://portal.azure.com](https://portal.azure.com). Příklad `https://portal.azure.com/?feature.vmhealth=true`.
+Chcete-li získat přístup k této `feature.vmhealth=true` funkci, můžete [https://portal.azure.com](https://portal.azure.com)přidat příznak následující funkce na adresu URL portálu Azure . Příklad `https://portal.azure.com/?feature.vmhealth=true`.
 
-Můžete také použít tuto krátkou adresu URL, která automaticky nastaví příznak funkce: [https://aka.ms/vmhealthpreview](https://aka.ms/vmhealthpreview).
+Můžete také použít tuto krátkou adresu URL, [https://aka.ms/vmhealthpreview](https://aka.ms/vmhealthpreview)která automaticky nastaví příznak funkce: .
 
-Jako stávající zákazník můžete dál používat funkci stavu na virtuálních počítačích, které jsou připojené k existujícímu nastavení pracovního prostoru s funkcí stavu.  
+Jako stávající zákazník můžete nadále používat funkci Stav na virtuálních počítačích, které jsou připojené k existujícímu nastavení pracovního prostoru s funkcí stavu.  
 
-## <a name="i-use-vm-health-now-with-one-environment-and-would-like-to-deploy-it-to-a-new-one"></a>Nyní používám stav virtuálního počítače v jednom prostředí a chce ho nasadit na nový
+## <a name="i-use-vm-health-now-with-one-environment-and-would-like-to-deploy-it-to-a-new-one"></a>Používám VM Health nyní s jedním prostředím a chtěl bych nasadit do nového
 
-Pokud jste stávající zákazník, který používá funkci Health a chcete ho použít k novému uvedení, kontaktujte nás prosím na vminsights@microsoft.com, abyste si vyžádali pokyny.
+Pokud jste stávající zákazník, který používá funkci Stav a chcete ji použít pro nové vminsights@microsoft.com zavedení, kontaktujte nás prosím a vyžádejte si pokyny.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete pochopit požadavky a metody, které vám pomůžou monitorovat virtuální počítače, přečtěte si téma [nasazení Azure monitor pro virtuální počítače](vminsights-enable-overview.md).
+Chcete-li porozumět požadavkům a metodám, které vám pomohou monitorovat vaše virtuální počítače, přečtěte [si seznam nasazení Azure Monitoru pro virtuální počítače](vminsights-enable-overview.md).
